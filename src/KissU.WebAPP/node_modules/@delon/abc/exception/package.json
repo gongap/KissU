@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/exception.umd.js",
+  "module": "../fesm5/exception.js",
+  "es2015": "../fesm2015/exception.js",
+  "esm5": "../esm5/exception/exception.js",
+  "esm2015": "../esm2015/exception/exception.js",
+  "fesm5": "../fesm5/exception.js",
+  "fesm2015": "../fesm2015/exception.js",
+  "typings": "exception.d.ts",
+  "metadata": "exception.metadata.json",
+  "sideEffects": false,
+  "name": "@delon/abc/exception"
+}

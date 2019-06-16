@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/lodop.umd.js",
+  "module": "../fesm5/lodop.js",
+  "es2015": "../fesm2015/lodop.js",
+  "esm5": "../esm5/lodop/lodop.js",
+  "esm2015": "../esm2015/lodop/lodop.js",
+  "fesm5": "../fesm5/lodop.js",
+  "fesm2015": "../fesm2015/lodop.js",
+  "typings": "lodop.d.ts",
+  "metadata": "lodop.metadata.json",
+  "sideEffects": false,
+  "name": "@delon/abc/lodop"
+}

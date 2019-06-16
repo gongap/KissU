@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Util.Ui.Core" Version="1.8.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KissU.Data\KissU.Data.csproj" />
+    <ProjectReference Include="..\KissU.Domain\KissU.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,13 @@
+/bin
+/.vs
+obj/
+bin/
+BenchmarkDotNet.Artifacts/
+/output
+*.user
+*.log
+/src/KissU/node_modules
+/src/KissU/wwwroot/dist
+/src/KissU/yarn.lock
+/src/KissU/.vs
+/src/KissU/Typings/app/**/*.html

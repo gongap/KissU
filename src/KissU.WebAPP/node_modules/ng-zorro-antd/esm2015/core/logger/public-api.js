@@ -1,0 +1,14 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * @license
+ * Copyright Alibaba.com All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://github.com/NG-ZORRO/ng-zorro-antd/blob/master/LICENSE
+ */
+export { LoggerModule } from './logger.module';
+export { LoggerService, NZ_LOGGER_STATE, LOGGER_SERVICE_PROVIDER, LOGGER_SERVICE_PROVIDER_FACTORY } from './logger.service';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLWFwaS5qcyIsInNvdXJjZVJvb3QiOiJuZzovL25nLXpvcnJvLWFudGQvY29yZS8iLCJzb3VyY2VzIjpbImxvZ2dlci9wdWJsaWMtYXBpLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7O0FBUUEsT0FBTyxFQUFFLFlBQVksRUFBRSxNQUFNLGlCQUFpQixDQUFDO0FBQy9DLE9BQU8sRUFDTCxhQUFhLEVBQ2IsZUFBZSxFQUNmLHVCQUF1QixFQUN2QiwrQkFBK0IsRUFDaEMsTUFBTSxrQkFBa0IsQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogQGxpY2Vuc2VcbiAqIENvcHlyaWdodCBBbGliYWJhLmNvbSBBbGwgUmlnaHRzIFJlc2VydmVkLlxuICpcbiAqIFVzZSBvZiB0aGlzIHNvdXJjZSBjb2RlIGlzIGdvdmVybmVkIGJ5IGFuIE1JVC1zdHlsZSBsaWNlbnNlIHRoYXQgY2FuIGJlXG4gKiBmb3VuZCBpbiB0aGUgTElDRU5TRSBmaWxlIGF0IGh0dHBzOi8vZ2l0aHViLmNvbS9ORy1aT1JSTy9uZy16b3Jyby1hbnRkL2Jsb2IvbWFzdGVyL0xJQ0VOU0VcbiAqL1xuXG5leHBvcnQgeyBMb2dnZXJNb2R1bGUgfSBmcm9tICcuL2xvZ2dlci5tb2R1bGUnO1xuZXhwb3J0IHtcbiAgTG9nZ2VyU2VydmljZSxcbiAgTlpfTE9HR0VSX1NUQVRFLFxuICBMT0dHRVJfU0VSVklDRV9QUk9WSURFUixcbiAgTE9HR0VSX1NFUlZJQ0VfUFJPVklERVJfRkFDVE9SWVxufSBmcm9tICcuL2xvZ2dlci5zZXJ2aWNlJztcbiJdfQ==
