@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace KissU.API.Models.Home {
+namespace KissU.WebAPI.Models.Home {
     /// <summary>
     /// 应用程序数据
     /// </summary>

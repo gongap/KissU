@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace KissU.API.Models.Home {
+namespace KissU.WebAPI.Models.Home {
     /// <summary>
     /// 菜单信息
     /// </summary>

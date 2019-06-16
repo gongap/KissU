@@ -3,7 +3,7 @@ using KissU.Service.Dtos.Systems;
 using KissU.Service.Queries.Systems;
 using Util.Webs.Controllers;
 
-namespace KissU.API.Controllers.Systems
+namespace KissU.WebAPI.Controllers.Systems
 {
     /// <summary>
     /// 应用程序控制器

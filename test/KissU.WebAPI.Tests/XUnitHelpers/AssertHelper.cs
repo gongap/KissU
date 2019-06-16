@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using AspectCore.DynamicProxy;
 using Xunit;
 
-namespace KissU.API.Tests
+namespace KissU.WebAPI.Tests
 {
     /// <summary>
     /// 断言操作

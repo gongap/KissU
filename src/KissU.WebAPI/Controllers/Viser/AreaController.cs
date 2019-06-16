@@ -2,7 +2,7 @@
 using Util.Ui.Viser.Data;
 using Util.Webs.Controllers;
 
-namespace KissU.API.Controllers.Viser {
+namespace KissU.WebAPI.Controllers.Viser {
     /// <summary>
     /// 面积图控制器
     /// </summary>

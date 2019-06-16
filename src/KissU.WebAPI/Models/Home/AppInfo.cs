@@ -1,4 +1,4 @@
-﻿namespace KissU.API.Models.Home {
+﻿namespace KissU.WebAPI.Models.Home {
     /// <summary>
     /// App信息
     /// </summary>

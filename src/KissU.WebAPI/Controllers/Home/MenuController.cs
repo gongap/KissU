@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using KissU.API.Models.Home;
+using KissU.WebAPI.Models.Home;
 using Util.Webs.Controllers;
 
-namespace KissU.API.Controllers.Home {
+namespace KissU.WebAPI.Controllers.Home {
     /// <summary>
     /// 菜单控制器
     /// </summary>

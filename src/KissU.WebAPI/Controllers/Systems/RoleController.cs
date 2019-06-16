@@ -3,7 +3,7 @@ using KissU.Service.Dtos.Systems;
 using KissU.Service.Queries.Systems;
 using Util.Ui.Controllers;
 
-namespace KissU.API.Controllers.Systems {
+namespace KissU.WebAPI.Controllers.Systems {
     /// <summary>
     /// 角色控制器
     /// </summary>

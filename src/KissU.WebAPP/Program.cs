@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Util.Logs;
 using Util.Logs.Extensions;
 
-namespace KissU {
+namespace KissU.WebAPP {
     /// <summary>
     /// 应用程序
     /// </summary>
