@@ -4,6 +4,16 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\..\output\release\</OutputPath>
+    <DocumentationFile>..\..\output\release\KissU.Data.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\output\release\</OutputPath>
+    <DocumentationFile>..\..\output\release\KissU.Data.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\..\util\KissU.Data.Base\KissU.Data.Base.csproj" />
     <ProjectReference Include="..\KissU.Domain\KissU.Domain.csproj" />

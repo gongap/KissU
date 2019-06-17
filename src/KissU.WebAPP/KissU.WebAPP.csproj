@@ -10,13 +10,13 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>bin\Release\netcoreapp2.2\KissU.xml</DocumentationFile>
+    <OutputPath>..\..\output\release\</OutputPath>
+    <DocumentationFile>..\..\output\release\KissU.WebAPP.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>bin\Debug\KissU.WebAPP.xml</DocumentationFile>
+    <OutputPath>..\..\output\release\</OutputPath>
+    <DocumentationFile>..\..\output\release\KissU.WebAPP.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

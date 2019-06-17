@@ -61,10 +61,10 @@ namespace KissU.WebAPP {
 
             //添加Swagger
             services.AddSwaggerGen( options => {
-                options.SwaggerDoc( "v1", new Info { Title = "Util Api Demo", Version = "v1" } );
-                options.IncludeXmlComments( Path.Combine( AppContext.BaseDirectory, "Util.xml" ) );
-                options.IncludeXmlComments( Path.Combine( AppContext.BaseDirectory, "Util.Webs.xml" ) );
-                options.IncludeXmlComments( Path.Combine( AppContext.BaseDirectory, "KissU.xml" ) );
+                options.SwaggerDoc( "v1", new Info { Title = "KissU", Version = "v1" } );
+                //options.IncludeXmlComments( Path.Combine( AppContext.BaseDirectory, "Util.xml" ) );
+                //options.IncludeXmlComments( Path.Combine( AppContext.BaseDirectory, "Util.Webs.xml" ) );
+                options.IncludeXmlComments( Path.Combine( AppContext.BaseDirectory, "KissU.WebAPP.xml") );
             } );
 
             //添加Util基础设施服务

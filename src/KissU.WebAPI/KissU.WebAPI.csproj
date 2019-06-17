@@ -5,7 +5,13 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile></DocumentationFile>
+    <DocumentationFile>..\..\output\release\KissU.WebAPI.xml</DocumentationFile>
+    <OutputPath>..\..\output\release\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\output\release\</OutputPath>
+    <DocumentationFile>..\..\output\release\KissU.WebAPI.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
