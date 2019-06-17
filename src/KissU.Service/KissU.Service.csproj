@@ -5,10 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Util.Ui.Core" Version="1.8.4" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\..\util\KissU.Service.Base\KissU.Service.Base.csproj" />
     <ProjectReference Include="..\KissU.Data\KissU.Data.csproj" />
     <ProjectReference Include="..\KissU.Domain\KissU.Domain.csproj" />
   </ItemGroup>

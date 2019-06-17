@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\util\KissU.Domain.Base\KissU.Domain.Base.csproj" />
+    <PackageReference Include="Util.Core" Version="1.8.4" />
   </ItemGroup>
 
   <ItemGroup>
