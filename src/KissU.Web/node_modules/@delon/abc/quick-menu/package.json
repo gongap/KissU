@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/quickMenu.umd.js",
+  "module": "../fesm5/quickMenu.js",
+  "es2015": "../fesm2015/quickMenu.js",
+  "esm5": "../esm5/quick-menu/quickMenu.js",
+  "esm2015": "../esm2015/quick-menu/quickMenu.js",
+  "fesm5": "../fesm5/quickMenu.js",
+  "fesm2015": "../fesm2015/quickMenu.js",
+  "typings": "quickMenu.d.ts",
+  "metadata": "quickMenu.metadata.json",
+  "sideEffects": false,
+  "name": "@delon/abc/quick-menu"
+}

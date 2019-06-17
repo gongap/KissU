@@ -19,4 +19,10 @@
     <ProjectReference Include="..\KissU.Domain\KissU.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DbScripts\PgSql\" />
+    <Folder Include="DbScripts\MySql\" />
+    <Folder Include="新文件夹\" />
+  </ItemGroup>
+
 </Project>

@@ -1,0 +1,74 @@
+﻿@model MenuDto
+
+<util-toolbar>
+    <util-layout>
+        <util-textbox model="queryParam.keyword" placeholder="搜索" on-change="search()"></util-textbox>
+    </util-layout>
+    <util-layout>
+        <util-a styles="Icon" tooltip="添加" link="create">
+            <util-icon font-awesome-icon="Plus"></util-icon>
+        </util-a>
+        <util-button id="btnDisable" styles="Icon" tooltip="批量禁用" on-click="disable(null,btnDisable)">
+            <util-icon font-awesome-icon="Lock"></util-icon>
+        </util-button>
+        <util-button id="btnEnable" styles="Icon" tooltip="批量启用" on-click="enable(null,btnEnable)">
+            <util-icon font-awesome-icon="Unlock"></util-icon>
+        </util-button>
+        <util-button id="btnDelete" styles="Icon" tooltip="批量删除" on-click="delete(null,btnDelete)">
+            <util-icon font-awesome-icon="Trash"></util-icon>
+        </util-button>
+        <util-button id="btnRefresh" styles="Icon" tooltip="刷新" on-click="refresh(btnRefresh)">
+            <util-icon font-awesome-icon="Refresh"></util-icon>
+        </util-button>
+    </util-layout>
+</util-toolbar>
+
+<util-tree-table id="treeTable_Menu" base-url="menu" query-param="queryParam">
+    <util-tree-table-column for="Text"></util-tree-table-column>
+    <util-tree-table-column for="PinYin"></util-tree-table-column>
+    <util-tree-table-column for="Enabled"></util-tree-table-column>
+    <util-tree-table-column for="SortId"></util-tree-table-column>
+    <util-tree-table-column for="ParentId"></util-tree-table-column>
+    <util-tree-table-column for="Path"></util-tree-table-column>
+    <util-tree-table-column for="Level"></util-tree-table-column>
+    <util-tree-table-column for="I18n"></util-tree-table-column>
+    <util-tree-table-column for="Group"></util-tree-table-column>
+    <util-tree-table-column for="Link"></util-tree-table-column>
+    <util-tree-table-column for="LinkExact"></util-tree-table-column>
+    <util-tree-table-column for="ExternalLink"></util-tree-table-column>
+    <util-tree-table-column for="Target"></util-tree-table-column>
+    <util-tree-table-column for="Icon"></util-tree-table-column>
+    <util-tree-table-column for="Badge"></util-tree-table-column>
+    <util-tree-table-column for="BadgeDot"></util-tree-table-column>
+    <util-tree-table-column for="BadgeStatus"></util-tree-table-column>
+    <util-tree-table-column for="Disabled"></util-tree-table-column>
+    <util-tree-table-column for="Hide"></util-tree-table-column>
+    <util-tree-table-column for="HideInBreadcrumb"></util-tree-table-column>
+    <util-tree-table-column for="Acl"></util-tree-table-column>
+    <util-tree-table-column for="Shortcut"></util-tree-table-column>
+    <util-tree-table-column for="ShortcutRoot"></util-tree-table-column>
+    <util-tree-table-column for="Reuse"></util-tree-table-column>
+    <util-tree-table-column for="Open"></util-tree-table-column>
+    <util-tree-table-column for="Note"></util-tree-table-column>
+    <util-tree-table-column title="操作">
+        <util-a styles="Icon" tooltip="添加下级" link="create" query-params="{id:row.data.id}">
+            <util-icon material-icon="Add"></util-icon>
+        </util-a>
+        <util-button id="btnMoveUp" styles="Icon" tooltip="上移" ng-if="!isFirst(row)" on-click="moveUp(row,btnMoveUp,$event)">
+            <util-icon material-icon="Arrow_Upward"></util-icon>
+        </util-button>
+        <util-button id="btnMoveDown" styles="Icon" tooltip="下移" ng-if="!isLast(row)" on-click="moveDown(row, btnMoveDown,$event)">
+            <util-icon material-icon="Arrow_Downward"></util-icon>
+        </util-button>
+        <util-button styles="Icon" menu-id="menu" on-click="selectRow(row,$event)">
+            <util-icon material-icon="More_Vert"></util-icon>
+            <util-menu id="menu">
+                <util-menu-item label="编辑" material-icon="Edit" bind-link="['update',row.data.id]"></util-menu-item>
+                <util-menu-item label="禁用" material-icon="Lock" on-click="disable(row)"></util-menu-item>
+                <util-menu-item label="启用" material-icon="Lock_Open" on-click="enable(row)"></util-menu-item>
+                <util-menu-item label="删除" material-icon="Delete" on-click="delete(row)"></util-menu-item>
+                <util-menu-item label="详细" material-icon="Visibility" bind-link="['detail',row.data.id]"></util-menu-item>
+            </util-menu>
+        </util-button>
+    </util-tree-table-column>
+</util-tree-table>

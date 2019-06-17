@@ -1,0 +1,5 @@
+﻿<ItemGroup>
+    <Compile Update="Models/Menu.*.cs">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </Compile>
+</ItemGroup>
