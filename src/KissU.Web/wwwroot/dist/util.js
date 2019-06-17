@@ -649,10 +649,17 @@ var EditComponentBase = /** @class */ (function (_super) {
             return;
         this.util.webapi.get(this.getByIdUrl(id)).handle({
             ok: function (result) {
+                result = _this.loadBefore(result);
                 _this.model = result;
                 _this.loadAfter(result);
             }
         });
+    };
+    /**
+     * 加载完成前操作
+     */
+    EditComponentBase.prototype.loadBefore = function (result) {
+        return result;
     };
     /**
      * 加载完成后操作
@@ -819,6 +826,12 @@ var TableQueryComponentBase = /** @class */ (function () {
         };
     };
     /**
+     * 数据加载完成操作
+     * @param result
+     */
+    TableQueryComponentBase.prototype.loadAfter = function (result) {
+    };
+    /**
      * 查询
      * @param button 按钮
      */
@@ -830,7 +843,10 @@ var TableQueryComponentBase = /** @class */ (function () {
      * @param button 按钮
      */
     TableQueryComponentBase.prototype.search = function (button) {
-        this.table.search(button, this.getDelay());
+        this.table.search({
+            button: button,
+            delay: this.getDelay()
+        });
     };
     /**
      * 获取查询延迟间隔，单位：毫秒，默认500
@@ -842,7 +858,7 @@ var TableQueryComponentBase = /** @class */ (function () {
      * 清空复选框
      */
     TableQueryComponentBase.prototype.clearCheckboxs = function () {
-        this.table.clearCheckboxs();
+        this.table.clearChecked();
     };
     /**
      * 删除
@@ -850,7 +866,10 @@ var TableQueryComponentBase = /** @class */ (function () {
      * @param id 标识
      */
     TableQueryComponentBase.prototype.delete = function (button, id) {
-        this.table.delete(button, id);
+        this.table.delete({
+            button: button,
+            ids: id
+        });
     };
     /**
      * 刷新
@@ -861,13 +880,13 @@ var TableQueryComponentBase = /** @class */ (function () {
         this.table.refresh(this.queryParam, button);
     };
     /**
-     * 获取选中项列表
+     * 获取勾选的实体列表
      */
     TableQueryComponentBase.prototype.getChecked = function () {
         return this.table.getChecked();
     };
     /**
-     * 获取选中项标识列表
+     * 获取勾选的实体标识列表
      */
     TableQueryComponentBase.prototype.getCheckedIds = function () {
         return this.table.getCheckedIds();
@@ -886,12 +905,6 @@ var TableQueryComponentBase = /** @class */ (function () {
             return;
         }
         this.util.dialog.close(selection);
-    };
-    /**
-     * 数据加载完成操作
-     * @param result
-     */
-    TableQueryComponentBase.prototype.loadAfter = function (result) {
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["forwardRef"])(function () { return _index__WEBPACK_IMPORTED_MODULE_1__["Table"]; })),
@@ -972,7 +985,13 @@ var Dialog = /** @class */ (function () {
             nzMaskClosable: !options.disableClose,
             nzKeyboard: !options.disableClose,
             nzOnOk: options.onOk,
-            nzOnCancel: options.onBeforeClose
+            nzOnCancel: function (data) {
+                if (data.tag === true) {
+                    options.onBeforeClose && options.onBeforeClose(data.result);
+                    return;
+                }
+                options.onBeforeClose && options.onBeforeClose(null);
+            }
         };
     };
     /**
@@ -1017,7 +1036,7 @@ var Dialog = /** @class */ (function () {
         var dialogRef = dialog.openModals[dialog.openModals.length - 1];
         if (!dialogRef)
             return;
-        if (dialogRef["nzOnCancel"](result) === false)
+        if (dialogRef["nzOnCancel"]({ result: result, tag: true }) === false)
             return;
         dialogRef.close(result);
     };
@@ -1160,7 +1179,7 @@ var Form = /** @class */ (function () {
 /*!***************************************!*\
   !*** ./Typings/util/common/helper.ts ***!
   \***************************************/
-/*! exports provided: isUndefined, isString, isEmpty, isNumber, toNumber, toString, toBool, isArray, isEmptyArray, first, last, toJson, toObjectFromJson, clone, uuid, isValidDate, getValidDate, toDate, formatDate, to, remove, addToArray, clear, toList, except, exceptWith, concat, groupBy, distinct, truncate, insert, getExtension, getStartOfYear, getEndOfYear, getStartOfMonth, getEndOfMonth, getStartOfWeek, getEndOfWeek, isBeforeToday, isBeforeTomorrow */
+/*! exports provided: isUndefined, isString, isEmpty, isNumber, toNumber, toString, toBool, isArray, isEmptyArray, first, last, toJson, toObjectFromJson, clone, uuid, isValidDate, getValidDate, toDate, formatDate, to, remove, addToArray, clear, toList, except, exceptWith, concat, groupBy, distinct, truncate, insert, getExtension, getStartOfYear, getEndOfYear, getStartOfMonth, getEndOfMonth, getStartOfWeek, getEndOfWeek, isBeforeToday, isBeforeTomorrow, isImage */
 /*! all exports used */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1206,6 +1225,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getEndOfWeek", function() { return getEndOfWeek; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isBeforeToday", function() { return isBeforeToday; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isBeforeTomorrow", function() { return isBeforeTomorrow; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isImage", function() { return isImage; });
 /* harmony import */ var _internal_uuid__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./internal/uuid */ "./Typings/util/common/internal/uuid.ts");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
@@ -1627,6 +1647,23 @@ function isBeforeTomorrow(value) {
     var date = formatDate(value);
     var tomorrow = moment__WEBPACK_IMPORTED_MODULE_1__().add(1, 'day').format("YYYY-MM-DD");
     return moment__WEBPACK_IMPORTED_MODULE_1__(date).isBefore(tomorrow);
+}
+/**
+ * 是否图片
+ * @param name 文件名称
+ */
+function isImage(name) {
+    var extension = getExtension(name);
+    switch (extension) {
+        case ".jpg":
+        case ".jpeg":
+        case ".png":
+        case ".gif":
+        case ".bmp":
+            return true;
+        default:
+            return false;
+    }
 }
 
 
@@ -2129,6 +2166,14 @@ var MessageConfig = /** @class */ (function () {
      */
     MessageConfig.requiredMessage = "该项必须填写";
     /**
+     * 该项必须勾选
+     */
+    MessageConfig.groupRequiredMessage = "该项必须勾选";
+    /**
+     * 上传必填项默认验证消息
+     */
+    MessageConfig.uploadRequiredMessage = "请选择文件";
+    /**
      * 最小长度默认验证消息
      */
     MessageConfig.minLengthMessage = "输入内容的长度必须大于{0}位";
@@ -2530,181 +2575,11 @@ var TreeQueryParameter = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./Typings/util/directives/max-validator.directive.ts":
-/*!************************************************************!*\
-  !*** ./Typings/util/directives/max-validator.directive.ts ***!
-  \************************************************************/
-/*! exports provided: MaxValidator */
-/*! all exports used */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MaxValidator", function() { return MaxValidator; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-//============== 最大值验证器指令 ================
-//Copyright 2018 何镇汐
-//Licensed under the MIT license
-//================================================
-
-
-/**
- * 最大值验证器指令
- */
-var MaxValidator = /** @class */ (function () {
-    function MaxValidator() {
-    }
-    MaxValidator_1 = MaxValidator;
-    /**
-     * 变更事件
-     */
-    MaxValidator.prototype.ngOnChanges = function (changes) {
-        if ('max' in changes) {
-            this.createValidator();
-            this.onChange && this.onChange();
-        }
-    };
-    /**
-     * 创建验证器
-     */
-    MaxValidator.prototype.createValidator = function () {
-        this.validator = _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].max(this.max);
-    };
-    /**
-     * 验证
-     */
-    MaxValidator.prototype.validate = function (control) {
-        return this.validator && this.validator(control);
-    };
-    /**
-     * 注册变更事件
-     */
-    MaxValidator.prototype.registerOnValidatorChange = function (fn) {
-        this.onChange = fn;
-    };
-    var MaxValidator_1;
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Number)
-    ], MaxValidator.prototype, "max", void 0);
-    MaxValidator = MaxValidator_1 = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"])({
-            selector: '[max][formControlName],[max][formControl],[max][ngModel]',
-            providers: [{
-                    provide: _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NG_VALIDATORS"],
-                    useExisting: Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["forwardRef"])(function () { return MaxValidator_1; }),
-                    multi: true
-                }],
-            host: { '[attr.max]': 'max ? max : null' }
-        })
-    ], MaxValidator);
-    return MaxValidator;
-}());
-
-
-
-/***/ }),
-
-/***/ "./Typings/util/directives/min-validator.directive.ts":
-/*!************************************************************!*\
-  !*** ./Typings/util/directives/min-validator.directive.ts ***!
-  \************************************************************/
-/*! exports provided: MinValidator */
-/*! all exports used */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MinValidator", function() { return MinValidator; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-//============== 最小值验证器指令 ================
-//Copyright 2018 何镇汐
-//Licensed under the MIT license
-//================================================
-
-
-/**
- * 最小值验证器指令
- */
-var MinValidator = /** @class */ (function () {
-    function MinValidator() {
-    }
-    MinValidator_1 = MinValidator;
-    /**
-     * 变更事件
-     */
-    MinValidator.prototype.ngOnChanges = function (changes) {
-        if ('min' in changes) {
-            this.createValidator();
-            this.onChange && this.onChange();
-        }
-    };
-    /**
-     * 创建验证器
-     */
-    MinValidator.prototype.createValidator = function () {
-        this.validator = _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].min(this.min);
-    };
-    /**
-     * 验证
-     */
-    MinValidator.prototype.validate = function (control) {
-        return this.validator && this.validator(control);
-    };
-    /**
-     * 注册变更事件
-     */
-    MinValidator.prototype.registerOnValidatorChange = function (fn) {
-        this.onChange = fn;
-    };
-    var MinValidator_1;
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Number)
-    ], MinValidator.prototype, "min", void 0);
-    MinValidator = MinValidator_1 = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"])({
-            selector: '[min][formControlName],[min][formControl],[min][ngModel]',
-            providers: [{
-                    provide: _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NG_VALIDATORS"],
-                    useExisting: Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["forwardRef"])(function () { return MinValidator_1; }),
-                    multi: true
-                }],
-            host: { '[attr.min]': 'min ? min : null' }
-        })
-    ], MinValidator);
-    return MinValidator;
-}());
-
-
-
-/***/ }),
-
 /***/ "./Typings/util/index.ts":
 /*!*******************************!*\
   !*** ./Typings/util/index.ts ***!
   \*******************************/
-/*! exports provided: util, UtilModule, createOidcProviders, HttpContentType, HttpMethod, ComponentBase, FormComponentBase, EditComponentBase, TableQueryComponentBase, ViewModel, QueryParameter, TreeViewModel, TreeQueryParameter, PagerList, Result, FailResult, StateCode, SelectItem, DicService, UploadService, Session, Authorize, OidcAuthorize, OidcAuthorizeService, OidcAuthorizeConfig, LineWrapperComponent, ColumnWrapperComponent, BarWrapperComponent, AreaWrapperComponent, PieWrapperComponent, RosePieWrapperComponent, Button, TextBox, DatePicker, TextArea, Select, Radio, CheckboxGroup, Table, Upload, SingleUpload, Tree, TreeSelect, TreeTable */
+/*! exports provided: util, UtilModule, createOidcProviders, HttpContentType, HttpMethod, ComponentBase, FormComponentBase, EditComponentBase, TableQueryComponentBase, ViewModel, QueryParameter, TreeViewModel, TreeQueryParameter, PagerList, Result, FailResult, StateCode, SelectItem, DicService, UploadService, Session, Authorize, OidcAuthorize, OidcAuthorizeService, OidcAuthorizeConfig, LineWrapperComponent, ColumnWrapperComponent, BarWrapperComponent, AreaWrapperComponent, PieWrapperComponent, RosePieWrapperComponent, Button, TextBox, DatePicker, TextArea, NumberTextBox, Select, Radio, CheckboxGroup, Table, Upload, SingleUpload, Tree, TreeSelect, TreeTable */
 /*! all exports used */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2809,37 +2684,41 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _zorro_textarea_wrapper_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./zorro/textarea-wrapper.component */ "./Typings/util/zorro/textarea-wrapper.component.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TextArea", function() { return _zorro_textarea_wrapper_component__WEBPACK_IMPORTED_MODULE_28__["TextArea"]; });
 
-/* harmony import */ var _zorro_select_wrapper_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./zorro/select-wrapper.component */ "./Typings/util/zorro/select-wrapper.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Select", function() { return _zorro_select_wrapper_component__WEBPACK_IMPORTED_MODULE_29__["Select"]; });
+/* harmony import */ var _zorro_number_textbox_wrapper_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./zorro/number-textbox-wrapper.component */ "./Typings/util/zorro/number-textbox-wrapper.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "NumberTextBox", function() { return _zorro_number_textbox_wrapper_component__WEBPACK_IMPORTED_MODULE_29__["NumberTextBox"]; });
 
-/* harmony import */ var _zorro_radio_wrapper_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./zorro/radio-wrapper.component */ "./Typings/util/zorro/radio-wrapper.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Radio", function() { return _zorro_radio_wrapper_component__WEBPACK_IMPORTED_MODULE_30__["Radio"]; });
+/* harmony import */ var _zorro_select_wrapper_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./zorro/select-wrapper.component */ "./Typings/util/zorro/select-wrapper.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Select", function() { return _zorro_select_wrapper_component__WEBPACK_IMPORTED_MODULE_30__["Select"]; });
 
-/* harmony import */ var _zorro_checkbox_group_wrapper_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./zorro/checkbox-group-wrapper.component */ "./Typings/util/zorro/checkbox-group-wrapper.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CheckboxGroup", function() { return _zorro_checkbox_group_wrapper_component__WEBPACK_IMPORTED_MODULE_31__["CheckboxGroup"]; });
+/* harmony import */ var _zorro_radio_wrapper_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./zorro/radio-wrapper.component */ "./Typings/util/zorro/radio-wrapper.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Radio", function() { return _zorro_radio_wrapper_component__WEBPACK_IMPORTED_MODULE_31__["Radio"]; });
 
-/* harmony import */ var _zorro_table_wrapper_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./zorro/table-wrapper.component */ "./Typings/util/zorro/table-wrapper.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Table", function() { return _zorro_table_wrapper_component__WEBPACK_IMPORTED_MODULE_32__["Table"]; });
+/* harmony import */ var _zorro_checkbox_group_wrapper_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./zorro/checkbox-group-wrapper.component */ "./Typings/util/zorro/checkbox-group-wrapper.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CheckboxGroup", function() { return _zorro_checkbox_group_wrapper_component__WEBPACK_IMPORTED_MODULE_32__["CheckboxGroup"]; });
 
-/* harmony import */ var _zorro_upload_wrapper_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./zorro/upload-wrapper.component */ "./Typings/util/zorro/upload-wrapper.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Upload", function() { return _zorro_upload_wrapper_component__WEBPACK_IMPORTED_MODULE_33__["Upload"]; });
+/* harmony import */ var _zorro_table_wrapper_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./zorro/table-wrapper.component */ "./Typings/util/zorro/table-wrapper.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Table", function() { return _zorro_table_wrapper_component__WEBPACK_IMPORTED_MODULE_33__["Table"]; });
 
-/* harmony import */ var _zorro_single_upload_wrapper_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./zorro/single-upload-wrapper.component */ "./Typings/util/zorro/single-upload-wrapper.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SingleUpload", function() { return _zorro_single_upload_wrapper_component__WEBPACK_IMPORTED_MODULE_34__["SingleUpload"]; });
+/* harmony import */ var _zorro_upload_wrapper_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./zorro/upload-wrapper.component */ "./Typings/util/zorro/upload-wrapper.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Upload", function() { return _zorro_upload_wrapper_component__WEBPACK_IMPORTED_MODULE_34__["Upload"]; });
 
-/* harmony import */ var _zorro_tree_wrapper_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./zorro/tree-wrapper.component */ "./Typings/util/zorro/tree-wrapper.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Tree", function() { return _zorro_tree_wrapper_component__WEBPACK_IMPORTED_MODULE_35__["Tree"]; });
+/* harmony import */ var _zorro_single_upload_wrapper_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./zorro/single-upload-wrapper.component */ "./Typings/util/zorro/single-upload-wrapper.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SingleUpload", function() { return _zorro_single_upload_wrapper_component__WEBPACK_IMPORTED_MODULE_35__["SingleUpload"]; });
 
-/* harmony import */ var _zorro_tree_select_wrapper_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./zorro/tree-select-wrapper.component */ "./Typings/util/zorro/tree-select-wrapper.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TreeSelect", function() { return _zorro_tree_select_wrapper_component__WEBPACK_IMPORTED_MODULE_36__["TreeSelect"]; });
+/* harmony import */ var _zorro_tree_wrapper_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./zorro/tree-wrapper.component */ "./Typings/util/zorro/tree-wrapper.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Tree", function() { return _zorro_tree_wrapper_component__WEBPACK_IMPORTED_MODULE_36__["Tree"]; });
 
-/* harmony import */ var _zorro_tree_table_wrapper_component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./zorro/tree-table-wrapper.component */ "./Typings/util/zorro/tree-table-wrapper.component.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TreeTable", function() { return _zorro_tree_table_wrapper_component__WEBPACK_IMPORTED_MODULE_37__["TreeTable"]; });
+/* harmony import */ var _zorro_tree_select_wrapper_component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./zorro/tree-select-wrapper.component */ "./Typings/util/zorro/tree-select-wrapper.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TreeSelect", function() { return _zorro_tree_select_wrapper_component__WEBPACK_IMPORTED_MODULE_37__["TreeSelect"]; });
+
+/* harmony import */ var _zorro_tree_table_wrapper_component__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./zorro/tree-table-wrapper.component */ "./Typings/util/zorro/tree-table-wrapper.component.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TreeTable", function() { return _zorro_tree_table_wrapper_component__WEBPACK_IMPORTED_MODULE_38__["TreeTable"]; });
 
 //============== util操作=========================
 //Copyright 2019 何镇汐
 //Licensed under the MIT license
 //================================================
+
 
 
 
@@ -3261,12 +3140,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _authorize_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./authorize-service */ "./Typings/util/security/openid-connect/authorize-service.ts");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var rxjs_compat_add_observable_fromPromise__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs-compat/add/observable/fromPromise */ "./node_modules/rxjs-compat/add/observable/fromPromise.js");
-/* harmony import */ var rxjs_compat_add_observable_fromPromise__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(rxjs_compat_add_observable_fromPromise__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var rxjs_compat_add_operator_map__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs-compat/add/operator/map */ "./node_modules/rxjs-compat/add/operator/map.js");
-/* harmony import */ var rxjs_compat_add_operator_map__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(rxjs_compat_add_operator_map__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var rxjs_compat_add_operator_mergeMap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs-compat/add/operator/mergeMap */ "./node_modules/rxjs-compat/add/operator/mergeMap.js");
-/* harmony import */ var rxjs_compat_add_operator_mergeMap__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(rxjs_compat_add_operator_mergeMap__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3277,11 +3151,9 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 //============== OpenId Connect授权拦截器 ========
-//Copyright 2018 何镇汐
+//Copyright 2019 何镇汐
 //Licensed under the MIT license
 //================================================
-
-
 
 
 
@@ -3303,13 +3175,18 @@ var AuthorizeInterceptor = /** @class */ (function () {
      * @param next Http处理器
      */
     AuthorizeInterceptor.prototype.intercept = function (request, next) {
-        return rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"].fromPromise(this.auth.getUser()).map(function (user) {
+        var _this = this;
+        return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["from"])(this.auth.getUser()).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (user) {
             if (!user || !user.access_token)
                 return request;
             return request.clone({
                 setHeaders: { Authorization: user.token_type + " " + user.access_token }
             });
-        }).mergeMap(function (authRequest) { return next.handle(authRequest); });
+        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["mergeMap"])(function (authRequest) { return next.handle(authRequest); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(function (res) {
+            if (res.status === 401)
+                _this.auth.login();
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["throwError"])(res);
+        }));
     };
     AuthorizeInterceptor = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
@@ -3807,34 +3684,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var viser_ng__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! viser-ng */ "./node_modules/viser-ng/es/index.js");
 /* harmony import */ var _services_dic_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./services/dic.service */ "./Typings/util/services/dic.service.ts");
 /* harmony import */ var _security_session__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./security/session */ "./Typings/util/security/session.ts");
-/* harmony import */ var _directives_min_validator_directive__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./directives/min-validator.directive */ "./Typings/util/directives/min-validator.directive.ts");
-/* harmony import */ var _directives_max_validator_directive__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./directives/max-validator.directive */ "./Typings/util/directives/max-validator.directive.ts");
-/* harmony import */ var _pipes_safe_url_pipe__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./pipes/safe-url.pipe */ "./Typings/util/pipes/safe-url.pipe.ts");
-/* harmony import */ var _pipes_truncate_pipe__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./pipes/truncate.pipe */ "./Typings/util/pipes/truncate.pipe.ts");
-/* harmony import */ var _pipes_is_truncate_pipe__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./pipes/is-truncate.pipe */ "./Typings/util/pipes/is-truncate.pipe.ts");
-/* harmony import */ var _security_openid_connect_authorize__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./security/openid-connect/authorize */ "./Typings/util/security/openid-connect/authorize.ts");
-/* harmony import */ var _security_openid_connect_authorize_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./security/openid-connect/authorize-service */ "./Typings/util/security/openid-connect/authorize-service.ts");
-/* harmony import */ var _security_openid_connect_authorize_config__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./security/openid-connect/authorize-config */ "./Typings/util/security/openid-connect/authorize-config.ts");
-/* harmony import */ var _security_openid_connect_authorize_interceptor__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./security/openid-connect/authorize-interceptor */ "./Typings/util/security/openid-connect/authorize-interceptor.ts");
-/* harmony import */ var _viser_line_wrapper_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./viser/line-wrapper.component */ "./Typings/util/viser/line-wrapper.component.ts");
-/* harmony import */ var _viser_column_wrapper_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./viser/column-wrapper.component */ "./Typings/util/viser/column-wrapper.component.ts");
-/* harmony import */ var _viser_bar_wrapper_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./viser/bar-wrapper.component */ "./Typings/util/viser/bar-wrapper.component.ts");
-/* harmony import */ var _viser_area_wrapper_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./viser/area-wrapper.component */ "./Typings/util/viser/area-wrapper.component.ts");
-/* harmony import */ var _viser_pie_wrapper_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./viser/pie-wrapper.component */ "./Typings/util/viser/pie-wrapper.component.ts");
-/* harmony import */ var _viser_rose_pie_wrapper_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./viser/rose-pie-wrapper.component */ "./Typings/util/viser/rose-pie-wrapper.component.ts");
-/* harmony import */ var _zorro_button_wrapper_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./zorro/button-wrapper.component */ "./Typings/util/zorro/button-wrapper.component.ts");
-/* harmony import */ var _zorro_textbox_wrapper_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./zorro/textbox-wrapper.component */ "./Typings/util/zorro/textbox-wrapper.component.ts");
-/* harmony import */ var _zorro_datepicker_wrapper_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./zorro/datepicker-wrapper.component */ "./Typings/util/zorro/datepicker-wrapper.component.ts");
-/* harmony import */ var _zorro_textarea_wrapper_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./zorro/textarea-wrapper.component */ "./Typings/util/zorro/textarea-wrapper.component.ts");
-/* harmony import */ var _zorro_select_wrapper_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./zorro/select-wrapper.component */ "./Typings/util/zorro/select-wrapper.component.ts");
-/* harmony import */ var _zorro_radio_wrapper_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./zorro/radio-wrapper.component */ "./Typings/util/zorro/radio-wrapper.component.ts");
-/* harmony import */ var _zorro_checkbox_group_wrapper_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./zorro/checkbox-group-wrapper.component */ "./Typings/util/zorro/checkbox-group-wrapper.component.ts");
-/* harmony import */ var _zorro_table_wrapper_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./zorro/table-wrapper.component */ "./Typings/util/zorro/table-wrapper.component.ts");
-/* harmony import */ var _zorro_upload_wrapper_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./zorro/upload-wrapper.component */ "./Typings/util/zorro/upload-wrapper.component.ts");
-/* harmony import */ var _zorro_single_upload_wrapper_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./zorro/single-upload-wrapper.component */ "./Typings/util/zorro/single-upload-wrapper.component.ts");
-/* harmony import */ var _zorro_tree_wrapper_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./zorro/tree-wrapper.component */ "./Typings/util/zorro/tree-wrapper.component.ts");
-/* harmony import */ var _zorro_tree_select_wrapper_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./zorro/tree-select-wrapper.component */ "./Typings/util/zorro/tree-select-wrapper.component.ts");
-/* harmony import */ var _zorro_tree_table_wrapper_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./zorro/tree-table-wrapper.component */ "./Typings/util/zorro/tree-table-wrapper.component.ts");
+/* harmony import */ var _pipes_safe_url_pipe__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./pipes/safe-url.pipe */ "./Typings/util/pipes/safe-url.pipe.ts");
+/* harmony import */ var _pipes_truncate_pipe__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./pipes/truncate.pipe */ "./Typings/util/pipes/truncate.pipe.ts");
+/* harmony import */ var _pipes_is_truncate_pipe__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./pipes/is-truncate.pipe */ "./Typings/util/pipes/is-truncate.pipe.ts");
+/* harmony import */ var _security_openid_connect_authorize__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./security/openid-connect/authorize */ "./Typings/util/security/openid-connect/authorize.ts");
+/* harmony import */ var _security_openid_connect_authorize_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./security/openid-connect/authorize-service */ "./Typings/util/security/openid-connect/authorize-service.ts");
+/* harmony import */ var _security_openid_connect_authorize_config__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./security/openid-connect/authorize-config */ "./Typings/util/security/openid-connect/authorize-config.ts");
+/* harmony import */ var _security_openid_connect_authorize_interceptor__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./security/openid-connect/authorize-interceptor */ "./Typings/util/security/openid-connect/authorize-interceptor.ts");
+/* harmony import */ var _viser_line_wrapper_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./viser/line-wrapper.component */ "./Typings/util/viser/line-wrapper.component.ts");
+/* harmony import */ var _viser_column_wrapper_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./viser/column-wrapper.component */ "./Typings/util/viser/column-wrapper.component.ts");
+/* harmony import */ var _viser_bar_wrapper_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./viser/bar-wrapper.component */ "./Typings/util/viser/bar-wrapper.component.ts");
+/* harmony import */ var _viser_area_wrapper_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./viser/area-wrapper.component */ "./Typings/util/viser/area-wrapper.component.ts");
+/* harmony import */ var _viser_pie_wrapper_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./viser/pie-wrapper.component */ "./Typings/util/viser/pie-wrapper.component.ts");
+/* harmony import */ var _viser_rose_pie_wrapper_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./viser/rose-pie-wrapper.component */ "./Typings/util/viser/rose-pie-wrapper.component.ts");
+/* harmony import */ var _zorro_button_wrapper_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./zorro/button-wrapper.component */ "./Typings/util/zorro/button-wrapper.component.ts");
+/* harmony import */ var _zorro_textbox_wrapper_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./zorro/textbox-wrapper.component */ "./Typings/util/zorro/textbox-wrapper.component.ts");
+/* harmony import */ var _zorro_datepicker_wrapper_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./zorro/datepicker-wrapper.component */ "./Typings/util/zorro/datepicker-wrapper.component.ts");
+/* harmony import */ var _zorro_textarea_wrapper_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./zorro/textarea-wrapper.component */ "./Typings/util/zorro/textarea-wrapper.component.ts");
+/* harmony import */ var _zorro_number_textbox_wrapper_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./zorro/number-textbox-wrapper.component */ "./Typings/util/zorro/number-textbox-wrapper.component.ts");
+/* harmony import */ var _zorro_select_wrapper_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./zorro/select-wrapper.component */ "./Typings/util/zorro/select-wrapper.component.ts");
+/* harmony import */ var _zorro_radio_wrapper_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./zorro/radio-wrapper.component */ "./Typings/util/zorro/radio-wrapper.component.ts");
+/* harmony import */ var _zorro_checkbox_group_wrapper_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./zorro/checkbox-group-wrapper.component */ "./Typings/util/zorro/checkbox-group-wrapper.component.ts");
+/* harmony import */ var _zorro_table_wrapper_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./zorro/table-wrapper.component */ "./Typings/util/zorro/table-wrapper.component.ts");
+/* harmony import */ var _zorro_upload_wrapper_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./zorro/upload-wrapper.component */ "./Typings/util/zorro/upload-wrapper.component.ts");
+/* harmony import */ var _zorro_single_upload_wrapper_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./zorro/single-upload-wrapper.component */ "./Typings/util/zorro/single-upload-wrapper.component.ts");
+/* harmony import */ var _zorro_tree_wrapper_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./zorro/tree-wrapper.component */ "./Typings/util/zorro/tree-wrapper.component.ts");
+/* harmony import */ var _zorro_tree_select_wrapper_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./zorro/tree-select-wrapper.component */ "./Typings/util/zorro/tree-select-wrapper.component.ts");
+/* harmony import */ var _zorro_tree_table_wrapper_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./zorro/tree-table-wrapper.component */ "./Typings/util/zorro/tree-table-wrapper.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3855,9 +3731,6 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 //Util服务
-
-
-//Util指令
 
 
 //Util管道
@@ -3890,19 +3763,20 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 //导入模块集合
 var importModules = [
     ng_zorro_antd__WEBPACK_IMPORTED_MODULE_5__["NgZorroAntdModule"], viser_ng__WEBPACK_IMPORTED_MODULE_6__["ViserModule"]
 ];
 //组件集合
 var components = [
-    _directives_min_validator_directive__WEBPACK_IMPORTED_MODULE_9__["MinValidator"], _directives_max_validator_directive__WEBPACK_IMPORTED_MODULE_10__["MaxValidator"], _pipes_safe_url_pipe__WEBPACK_IMPORTED_MODULE_11__["SafeUrlPipe"], _pipes_truncate_pipe__WEBPACK_IMPORTED_MODULE_12__["TruncatePipe"], _pipes_is_truncate_pipe__WEBPACK_IMPORTED_MODULE_13__["IsTruncatePipe"],
-    _viser_line_wrapper_component__WEBPACK_IMPORTED_MODULE_18__["LineWrapperComponent"], _viser_column_wrapper_component__WEBPACK_IMPORTED_MODULE_19__["ColumnWrapperComponent"], _viser_bar_wrapper_component__WEBPACK_IMPORTED_MODULE_20__["BarWrapperComponent"], _viser_area_wrapper_component__WEBPACK_IMPORTED_MODULE_21__["AreaWrapperComponent"],
-    _viser_pie_wrapper_component__WEBPACK_IMPORTED_MODULE_22__["PieWrapperComponent"], _viser_rose_pie_wrapper_component__WEBPACK_IMPORTED_MODULE_23__["RosePieWrapperComponent"],
-    _zorro_button_wrapper_component__WEBPACK_IMPORTED_MODULE_24__["Button"], _zorro_textbox_wrapper_component__WEBPACK_IMPORTED_MODULE_25__["TextBox"], _zorro_datepicker_wrapper_component__WEBPACK_IMPORTED_MODULE_26__["DatePicker"], _zorro_textarea_wrapper_component__WEBPACK_IMPORTED_MODULE_27__["TextArea"],
-    _zorro_select_wrapper_component__WEBPACK_IMPORTED_MODULE_28__["Select"], _zorro_radio_wrapper_component__WEBPACK_IMPORTED_MODULE_29__["Radio"], _zorro_checkbox_group_wrapper_component__WEBPACK_IMPORTED_MODULE_30__["CheckboxGroup"],
-    _zorro_table_wrapper_component__WEBPACK_IMPORTED_MODULE_31__["Table"], _zorro_upload_wrapper_component__WEBPACK_IMPORTED_MODULE_32__["Upload"], _zorro_single_upload_wrapper_component__WEBPACK_IMPORTED_MODULE_33__["SingleUpload"],
-    _zorro_tree_wrapper_component__WEBPACK_IMPORTED_MODULE_34__["Tree"], _zorro_tree_select_wrapper_component__WEBPACK_IMPORTED_MODULE_35__["TreeSelect"], _zorro_tree_table_wrapper_component__WEBPACK_IMPORTED_MODULE_36__["TreeTable"]
+    _pipes_safe_url_pipe__WEBPACK_IMPORTED_MODULE_9__["SafeUrlPipe"], _pipes_truncate_pipe__WEBPACK_IMPORTED_MODULE_10__["TruncatePipe"], _pipes_is_truncate_pipe__WEBPACK_IMPORTED_MODULE_11__["IsTruncatePipe"],
+    _viser_line_wrapper_component__WEBPACK_IMPORTED_MODULE_16__["LineWrapperComponent"], _viser_column_wrapper_component__WEBPACK_IMPORTED_MODULE_17__["ColumnWrapperComponent"], _viser_bar_wrapper_component__WEBPACK_IMPORTED_MODULE_18__["BarWrapperComponent"], _viser_area_wrapper_component__WEBPACK_IMPORTED_MODULE_19__["AreaWrapperComponent"],
+    _viser_pie_wrapper_component__WEBPACK_IMPORTED_MODULE_20__["PieWrapperComponent"], _viser_rose_pie_wrapper_component__WEBPACK_IMPORTED_MODULE_21__["RosePieWrapperComponent"],
+    _zorro_button_wrapper_component__WEBPACK_IMPORTED_MODULE_22__["Button"], _zorro_textbox_wrapper_component__WEBPACK_IMPORTED_MODULE_23__["TextBox"], _zorro_datepicker_wrapper_component__WEBPACK_IMPORTED_MODULE_24__["DatePicker"], _zorro_textarea_wrapper_component__WEBPACK_IMPORTED_MODULE_25__["TextArea"], _zorro_number_textbox_wrapper_component__WEBPACK_IMPORTED_MODULE_26__["NumberTextBox"],
+    _zorro_select_wrapper_component__WEBPACK_IMPORTED_MODULE_27__["Select"], _zorro_radio_wrapper_component__WEBPACK_IMPORTED_MODULE_28__["Radio"], _zorro_checkbox_group_wrapper_component__WEBPACK_IMPORTED_MODULE_29__["CheckboxGroup"],
+    _zorro_table_wrapper_component__WEBPACK_IMPORTED_MODULE_30__["Table"], _zorro_upload_wrapper_component__WEBPACK_IMPORTED_MODULE_31__["Upload"], _zorro_single_upload_wrapper_component__WEBPACK_IMPORTED_MODULE_32__["SingleUpload"],
+    _zorro_tree_wrapper_component__WEBPACK_IMPORTED_MODULE_33__["Tree"], _zorro_tree_select_wrapper_component__WEBPACK_IMPORTED_MODULE_34__["TreeSelect"], _zorro_tree_table_wrapper_component__WEBPACK_IMPORTED_MODULE_35__["TreeTable"]
 ];
 /**
  * Util模块
@@ -3935,9 +3809,9 @@ var UtilModule = /** @class */ (function () {
  */
 function createOidcProviders() {
     return [
-        { provide: _security_openid_connect_authorize_service__WEBPACK_IMPORTED_MODULE_15__["AuthorizeService"], useClass: _security_openid_connect_authorize_service__WEBPACK_IMPORTED_MODULE_15__["AuthorizeService"], deps: [_security_openid_connect_authorize_config__WEBPACK_IMPORTED_MODULE_16__["AuthorizeConfig"]] },
-        { provide: _security_openid_connect_authorize__WEBPACK_IMPORTED_MODULE_14__["Authorize"], useClass: _security_openid_connect_authorize__WEBPACK_IMPORTED_MODULE_14__["Authorize"], deps: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injector"], _security_session__WEBPACK_IMPORTED_MODULE_8__["Session"], _security_openid_connect_authorize_service__WEBPACK_IMPORTED_MODULE_15__["AuthorizeService"]] },
-        { provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HTTP_INTERCEPTORS"], useClass: _security_openid_connect_authorize_interceptor__WEBPACK_IMPORTED_MODULE_17__["AuthorizeInterceptor"], deps: [_security_openid_connect_authorize_service__WEBPACK_IMPORTED_MODULE_15__["AuthorizeService"]], multi: true }
+        { provide: _security_openid_connect_authorize_service__WEBPACK_IMPORTED_MODULE_13__["AuthorizeService"], useClass: _security_openid_connect_authorize_service__WEBPACK_IMPORTED_MODULE_13__["AuthorizeService"], deps: [_security_openid_connect_authorize_config__WEBPACK_IMPORTED_MODULE_14__["AuthorizeConfig"]] },
+        { provide: _security_openid_connect_authorize__WEBPACK_IMPORTED_MODULE_12__["Authorize"], useClass: _security_openid_connect_authorize__WEBPACK_IMPORTED_MODULE_12__["Authorize"], deps: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injector"], _security_session__WEBPACK_IMPORTED_MODULE_8__["Session"], _security_openid_connect_authorize_service__WEBPACK_IMPORTED_MODULE_13__["AuthorizeService"]] },
+        { provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HTTP_INTERCEPTORS"], useClass: _security_openid_connect_authorize_interceptor__WEBPACK_IMPORTED_MODULE_15__["AuthorizeInterceptor"], deps: [_security_openid_connect_authorize_service__WEBPACK_IMPORTED_MODULE_13__["AuthorizeService"]], multi: true }
     ];
 }
 
@@ -5109,7 +4983,7 @@ var Button = /** @class */ (function () {
 /*!****************************************************************!*\
   !*** ./Typings/util/zorro/checkbox-group-wrapper.component.ts ***!
   \****************************************************************/
-/*! exports provided: CheckboxGroup, CheckboxOption */
+/*! exports provided: CheckboxGroup, CheckboxOption, requiredValidator */
 /*! all exports used */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -5117,9 +4991,11 @@ var Button = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CheckboxGroup", function() { return CheckboxGroup; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CheckboxOption", function() { return CheckboxOption; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "requiredValidator", function() { return requiredValidator; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _common_webapi__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/webapi */ "./Typings/util/common/webapi.ts");
+/* harmony import */ var _config_message_config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../config/message-config */ "./Typings/util/config/message-config.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5136,6 +5012,7 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 //Copyright 2019 何镇汐
 //Licensed under the MIT license
 //=======================================================
+
 
 
 
@@ -5156,7 +5033,7 @@ var CheckboxGroup = /** @class */ (function () {
          * 变更事件
          */
         this.onChange = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
-        this.isValid = true;
+        this.requiredMessage = _config_message_config__WEBPACK_IMPORTED_MODULE_3__["MessageConfig"].groupRequiredMessage;
     }
     Object.defineProperty(CheckboxGroup.prototype, "model", {
         /**
@@ -5181,6 +5058,21 @@ var CheckboxGroup = /** @class */ (function () {
         this.loadUrl();
     };
     /**
+     * 从服务器加载
+     * @param url 请求地址
+     */
+    CheckboxGroup.prototype.loadUrl = function (url) {
+        var _this = this;
+        url = url || this.url;
+        if (!url)
+            return;
+        _common_webapi__WEBPACK_IMPORTED_MODULE_2__["WebApi"].get(url).handle({
+            ok: function (result) {
+                _this.loadData(result);
+            }
+        });
+    };
+    /**
      * 加载数据
      * @param data 列表项集合
      */
@@ -5203,38 +5095,34 @@ var CheckboxGroup = /** @class */ (function () {
         });
     };
     /**
-     * 从服务器加载
-     * @param url 请求地址
-     */
-    CheckboxGroup.prototype.loadUrl = function (url) {
-        var _this = this;
-        url = url || this.url;
-        if (!url)
-            return;
-        _common_webapi__WEBPACK_IMPORTED_MODULE_2__["WebApi"].get(url).handle({
-            ok: function (result) {
-                _this.loadData(result);
-            }
-        });
-    };
-    /**
      * 视图加载完成
      */
     CheckboxGroup.prototype.ngAfterViewInit = function () {
-        this.form && this.form.addControl(this.controlModel);
-        this.validate();
+        this.addControl();
     };
     /**
-     * 验证
+     * 将控件添加到FormGroup
      */
-    CheckboxGroup.prototype.validate = function () {
-        if (!this.required)
+    CheckboxGroup.prototype.addControl = function () {
+        if (this.standalone)
             return;
-        if (this.dataSource.some(function (t) { return t.checked; })) {
-            this.isValid = true;
+        if (this.required)
+            this.controlModel.control.setValidators(requiredValidator(this.dataSource));
+        this.form && this.form.addControl(this.controlModel);
+    };
+    /**
+     * 组件销毁
+     */
+    CheckboxGroup.prototype.ngOnDestroy = function () {
+        this.removeControl();
+    };
+    /**
+     * 将控件移除FormGroup
+     */
+    CheckboxGroup.prototype.removeControl = function () {
+        if (this.standalone)
             return;
-        }
-        this.isValid = false;
+        this.form && this.form.removeControl(this.controlModel);
     };
     Object.defineProperty(CheckboxGroup.prototype, "value", {
         /**
@@ -5255,8 +5143,11 @@ var CheckboxGroup = /** @class */ (function () {
         var values = data.filter(function (t) { return t.checked; }).map(function (t) { return t.value; });
         this.modelChange.emit(values);
         this.onChange.emit(data);
-        this.validate();
     };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Boolean)
+    ], CheckboxGroup.prototype, "standalone", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", String)
@@ -5301,7 +5192,7 @@ var CheckboxGroup = /** @class */ (function () {
     CheckboxGroup = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'x-checkbox-group',
-            template: "\n        <nz-form-control [nzValidateStatus]=\"(!isValid && (controlModel?.dirty || controlModel.touched))?'error':'success'\">\n            <nz-checkbox-group #control #controlModel=\"ngModel\" [name]=\"name\" [nzDisabled]=\"disabled\"\n                [ngModel]=\"dataSource\" (ngModelChange)=\"onModelChange($event)\" [required]=\"required\"></nz-checkbox-group>\n            <nz-form-explain *ngIf=\"!isValid && (controlModel?.dirty || controlModel.touched)\">{{requiredMessage}}</nz-form-explain>\n        </nz-form-control>\n    ",
+            template: "\n        <nz-form-control [nzValidateStatus]=\"(controlModel?.hasError( 'required' ) && (controlModel?.dirty || controlModel.touched))?'error':'success'\">\n            <nz-checkbox-group #control #controlModel=\"ngModel\" [name]=\"name\" [nzDisabled]=\"disabled\"\n                [ngModel]=\"dataSource\" (ngModelChange)=\"onModelChange($event)\"></nz-checkbox-group>\n            <nz-form-explain *ngIf=\"controlModel?.hasError( 'required' ) && (controlModel?.dirty || controlModel.touched)\">{{requiredMessage}}</nz-form-explain>\n        </nz-form-control>\n    ",
             styles: ["\n    "]
         }),
         __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"])()),
@@ -5325,6 +5216,15 @@ var CheckboxOption = /** @class */ (function () {
     return CheckboxOption;
 }());
 
+/**
+ * 复选框组必填验证器
+ */
+function requiredValidator(data) {
+    return function (control) {
+        var isValid = data.some(function (t) { return t.checked; });
+        return isValid ? null : { 'required': { value: control.value } };
+    };
+}
 
 
 /***/ }),
@@ -5490,6 +5390,102 @@ var DatePicker = /** @class */ (function (_super) {
         __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["NgForm"]])
     ], DatePicker);
     return DatePicker;
+}(_base_form_control_wrapper_base__WEBPACK_IMPORTED_MODULE_2__["FormControlWrapperBase"]));
+
+
+
+/***/ }),
+
+/***/ "./Typings/util/zorro/number-textbox-wrapper.component.ts":
+/*!****************************************************************!*\
+  !*** ./Typings/util/zorro/number-textbox-wrapper.component.ts ***!
+  \****************************************************************/
+/*! exports provided: NumberTextBox */
+/*! all exports used */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NumberTextBox", function() { return NumberTextBox; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _base_form_control_wrapper_base__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./base/form-control-wrapper-base */ "./Typings/util/zorro/base/form-control-wrapper-base.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (undefined && undefined.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+//============== NgZorro数字文本框包装器=====================
+//Copyright 2019 何镇汐
+//Licensed under the MIT license
+//=======================================================
+
+
+
+/**
+ * NgZorro数字文本框包装器
+ */
+var NumberTextBox = /** @class */ (function (_super) {
+    __extends(NumberTextBox, _super);
+    /**
+     * 初始化数字文本框包装器
+     * @param form 表单
+     */
+    function NumberTextBox(form) {
+        var _this = _super.call(this, form) || this;
+        _this.precision = 6;
+        _this.step = 1;
+        return _this;
+    }
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Boolean)
+    ], NumberTextBox.prototype, "autoFocus", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Number)
+    ], NumberTextBox.prototype, "min", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Number)
+    ], NumberTextBox.prototype, "max", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Number)
+    ], NumberTextBox.prototype, "precision", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], NumberTextBox.prototype, "step", void 0);
+    NumberTextBox = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'x-number-textbox',
+            template: "\n        <nz-form-control [nzValidateStatus]=\"(controlModel?.hasError( 'required' ) && (controlModel?.dirty || controlModel.touched))?'error':'success'\">\n            <nz-input-number [name]=\"name\" [nzPlaceHolder]=\"placeholder\" [nzDisabled]=\"disabled\"\n                #control #controlModel=\"ngModel\" [ngModel]=\"model\" (ngModelChange)=\"onModelChange($event)\"\n                [nzAutoFocus]=\"autoFocus\" [nzPrecision]=\"precision\" [nzStep]=\"step\"\n                (nzBlur)=\"blur($event)\" (nzFocus)=\"focus($event)\" (keyup)=\"keyup($event)\" (keydown)=\"keydown($event)\"\n                [required]=\"required\" [nzMin]=\"min\" [nzMax]=\"max\"></nz-input-number>\n            <nz-form-explain *ngIf=\"controlModel?.hasError( 'required' ) && (controlModel?.dirty || controlModel.touched)\">{{requiredMessage}}</nz-form-explain>\n        </nz-form-control>\n    "
+        }),
+        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"])()),
+        __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["NgForm"]])
+    ], NumberTextBox);
+    return NumberTextBox;
 }(_base_form_control_wrapper_base__WEBPACK_IMPORTED_MODULE_2__["FormControlWrapperBase"]));
 
 
@@ -5665,7 +5661,7 @@ var Radio = /** @class */ (function () {
     Radio = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'x-radio',
-            template: "\n        <nz-radio-group #controlModel=\"ngModel\" [nzName]=\"name\" [ngModel]=\"model\" (ngModelChange)=\"onModelChange($event)\" [nzDisabled]=\"disabled\" [required]=\"required\">\n            <label nz-radio *ngFor=\"let item of dataSource\" [nzValue]=\"item.value\" [nzDisabled]=\"item.disabled\" \n                   [ngStyle]=\"vertical?verticalStyle:''\">\n            {{ item.text }}\n            </label>\n        </nz-radio-group>\n    ",
+            template: "\n        <nz-radio-group #controlModel=\"ngModel\" [name]=\"name\" [nzName]=\"name\" [ngModel]=\"model\" (ngModelChange)=\"onModelChange($event)\" [nzDisabled]=\"disabled\" [required]=\"required\">\n            <label nz-radio *ngFor=\"let item of dataSource\" [nzValue]=\"item.value\" [nzDisabled]=\"item.disabled\" \n                   [ngStyle]=\"vertical?verticalStyle:''\">\n            {{ item.text }}\n            </label>\n        </nz-radio-group>\n    ",
             styles: ["\n    "]
         }),
         __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"])()),
@@ -5693,7 +5689,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _base_form_control_wrapper_base__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./base/form-control-wrapper-base */ "./Typings/util/zorro/base/form-control-wrapper-base.ts");
 /* harmony import */ var _core_select_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../core/select-model */ "./Typings/util/core/select-model.ts");
-/* harmony import */ var _common_webapi__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../common/webapi */ "./Typings/util/common/webapi.ts");
+/* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../index */ "./Typings/util/index.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -5738,8 +5734,19 @@ var Select = /** @class */ (function (_super) {
      */
     function Select(form) {
         var _this = _super.call(this, form) || this;
+        /**
+         * 搜索事件
+         */
+        _this.onSearch = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        /**
+         * 滚动到底部事件
+         */
+        _this.onScrollToBottom = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        _this.queryParam = new _index__WEBPACK_IMPORTED_MODULE_4__["QueryParameter"]();
         _this.allowClear = true;
         _this.showSearch = true;
+        _this.showArrow = true;
+        _this.loading = false;
         _this.maxMultipleCount = 9999;
         return _this;
     }
@@ -5758,31 +5765,41 @@ var Select = /** @class */ (function (_super) {
         configurable: true
     });
     /**
-     * 获取样式
-     */
-    Select.prototype.getStyle = function () {
-        return {
-            'width': this.width ? this.width : null
-        };
-    };
-    /**
      * 组件初始化
      */
     Select.prototype.ngOnInit = function () {
+        this.initPageSize();
+        this.initOrder();
         this.loadData();
         if (this.dataSource)
             return;
         this.loadUrl();
     };
     /**
+     * 初始化分页大小
+     */
+    Select.prototype.initPageSize = function () {
+        if (this.isScrollLoad)
+            return;
+        this.queryParam.pageSize = 9999;
+    };
+    /**
+     * 初始化排序
+     */
+    Select.prototype.initOrder = function () {
+        if (!this.order)
+            return;
+        this.queryParam.order = this.order;
+    };
+    /**
      * 加载数据
      * @param data 列表项集合
      */
     Select.prototype.loadData = function (data) {
-        data = data || this.dataSource;
-        if (!data)
+        this.data = data || this.data;
+        if (!this.data)
             return;
-        var select = new _core_select_model__WEBPACK_IMPORTED_MODULE_3__["SelectList"](data);
+        var select = new _core_select_model__WEBPACK_IMPORTED_MODULE_3__["SelectList"](this.data);
         if (select.isGroup()) {
             this.isGroup = true;
             this.optionGroups = select.toGroups();
@@ -5793,22 +5810,95 @@ var Select = /** @class */ (function (_super) {
     };
     /**
      * 从服务器加载
-     * @param url 请求地址
-     * @param param 查询参数
      */
-    Select.prototype.loadUrl = function (url, param) {
+    Select.prototype.loadUrl = function (options) {
         var _this = this;
-        if (param === void 0) { param = null; }
-        url = url || this.url;
+        options = options || {};
+        var url = options.url || this.url;
         if (!url)
             return;
-        param = param || this.queryParam;
-        _common_webapi__WEBPACK_IMPORTED_MODULE_4__["WebApi"].get(url).param(param).handle({
+        var param = options.param || this.queryParam;
+        _index__WEBPACK_IMPORTED_MODULE_4__["util"].webapi.get(url).param(param).handle({
+            before: function () {
+                _this.loading = true;
+                return true;
+            },
             ok: function (result) {
+                if (options.handler) {
+                    options.handler(result);
+                    return;
+                }
                 _this.loadData(result);
+            },
+            complete: function () { return _this.loading = false; }
+        });
+    };
+    /**
+     * 获取样式
+     */
+    Select.prototype.getStyle = function () {
+        return {
+            'width': this.width ? this.width : null
+        };
+    };
+    /**
+     * 搜索
+     * @param value 值
+     */
+    Select.prototype.search = function (value) {
+        this.onSearch.emit(value);
+        if (this.isServerSearch)
+            this.serverSearch(value);
+    };
+    /**
+     * 服务端搜索
+     */
+    Select.prototype.serverSearch = function (value) {
+        this.queryParam.page = 1;
+        this.queryParam.keyword = value;
+        this.loadUrl();
+    };
+    /**
+     * 滚动到底部
+     */
+    Select.prototype.scrollToBottom = function () {
+        this.onScrollToBottom.emit();
+        if (this.isScrollLoad)
+            this.scrollLoad();
+    };
+    /**
+     * 下拉加载
+     */
+    Select.prototype.scrollLoad = function () {
+        var _this = this;
+        this.queryParam.page = _index__WEBPACK_IMPORTED_MODULE_4__["util"].helper.toNumber(this.queryParam.page) + 1;
+        this.loadUrl({
+            handler: function (result) {
+                if (!result || result.length === 0) {
+                    _this.isScrollLoad = false;
+                    return;
+                }
+                var data = _this.data.concat(result);
+                _this.loadData(data);
             }
         });
     };
+    /**
+     * 模型变更事件处理
+     */
+    Select.prototype.onModelChange = function (value) {
+        this.modelChange.emit(value);
+        var result = this.data.find(function (t) { return t.value === value; });
+        if (result) {
+            this.onChange.emit(result);
+            return;
+        }
+        this.onChange.emit(value);
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Boolean)
+    ], Select.prototype, "loading", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Array),
@@ -5822,6 +5912,10 @@ var Select = /** @class */ (function (_super) {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Object)
     ], Select.prototype, "queryParam", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", String)
+    ], Select.prototype, "order", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", String)
@@ -5846,10 +5940,30 @@ var Select = /** @class */ (function (_super) {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Boolean)
     ], Select.prototype, "showSearch", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Boolean)
+    ], Select.prototype, "showArrow", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Boolean)
+    ], Select.prototype, "isServerSearch", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Boolean)
+    ], Select.prototype, "isScrollLoad", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", Object)
+    ], Select.prototype, "onSearch", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", Object)
+    ], Select.prototype, "onScrollToBottom", void 0);
     Select = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'x-select',
-            template: "\n        <nz-form-control [nzValidateStatus]=\"(controlModel?.hasError( 'required' ) && (controlModel?.dirty || controlModel.touched))?'error':'success'\">\n            <nz-select #controlModel=\"ngModel\" [name]=\"name\" [ngModel]=\"model\" (ngModelChange)=\"onModelChange($event)\" \n                [nzPlaceHolder]=\"placeholder\" [ngStyle]=\"getStyle()\" \n                [nzMode]=\"multiple?'multiple':'default'\" [nzMaxMultipleCount]=\"maxMultipleCount\"\n                [nzShowSearch]=\"showSearch\" [nzAllowClear]=\"allowClear\"\n                (nzBlur)=\"blur($event)\" (nzFocus)=\"focus($event)\" (keyup)=\"keyup($event)\" (keydown)=\"keydown($event)\"\n                [nzDisabled]=\"disabled\" [required]=\"required\">\n                <nz-option *ngIf=\"defaultOptionText\" [nzLabel]=\"defaultOptionText\"></nz-option>\n                <ng-container *ngIf=\"!isGroup\">\n                    <nz-option *ngFor=\"let item of options\" [nzValue]=\"item.value\" [nzLabel]=\"item.text\" [nzDisabled]=\"item.disabled\"></nz-option>\n                </ng-container>\n                <ng-container *ngIf=\"isGroup\">\n                    <nz-option-group *ngFor=\"let group of optionGroups\" [nzLabel]=\"group.text\">\n                        <nz-option *ngFor=\"let item of group.value\" [nzValue]=\"item.value\" [nzLabel]=\"item.text\" [nzDisabled]=\"item.disabled\">\n                        </nz-option>\n                    </nz-option-group>\n                </ng-container>\n            </nz-select>\n            <nz-form-explain *ngIf=\"controlModel?.hasError( 'required' ) && (controlModel?.dirty || controlModel.touched)\">{{requiredMessage}}</nz-form-explain>\n        </nz-form-control>\n    "
+            template: "\n        <nz-form-control [nzValidateStatus]=\"(controlModel?.hasError( 'required' ) && (controlModel?.dirty || controlModel.touched))?'error':'success'\">\n            <nz-select #controlModel=\"ngModel\" [name]=\"name\" [ngModel]=\"model\" (ngModelChange)=\"onModelChange($event)\" \n                [nzPlaceHolder]=\"placeholder\" [ngStyle]=\"getStyle()\" [nzLoading]=\"loading\"\n                [nzMode]=\"multiple?'multiple':'default'\" [nzMaxMultipleCount]=\"maxMultipleCount\"\n                [nzShowSearch]=\"showSearch\" [nzAllowClear]=\"allowClear\" [nzShowArrow]=\"showArrow\"\n                [nzDisabled]=\"disabled\" [required]=\"required\" [nzServerSearch]=\"isServerSearch\"\n                (nzBlur)=\"blur($event)\" (nzFocus)=\"focus($event)\" (keyup)=\"keyup($event)\" (keydown)=\"keydown($event)\"\n                (nzOnSearch)=\"search($event)\" (nzScrollToBottom)=\"scrollToBottom()\">\n                <nz-option *ngIf=\"defaultOptionText\" [nzLabel]=\"defaultOptionText\"></nz-option>\n                <ng-container *ngIf=\"!isGroup\">\n                    <nz-option *ngFor=\"let item of options\" [nzValue]=\"item.value\" [nzLabel]=\"item.text\" [nzDisabled]=\"item.disabled\"></nz-option>\n                </ng-container>\n                <ng-container *ngIf=\"isGroup\">\n                    <nz-option-group *ngFor=\"let group of optionGroups\" [nzLabel]=\"group.text\">\n                        <nz-option *ngFor=\"let item of group.value\" [nzValue]=\"item.value\" [nzLabel]=\"item.text\" [nzDisabled]=\"item.disabled\">\n                        </nz-option>\n                    </nz-option-group>\n                </ng-container>\n            </nz-select>\n            <nz-form-explain *ngIf=\"controlModel?.hasError( 'required' ) && (controlModel?.dirty || controlModel.touched)\">{{requiredMessage}}</nz-form-explain>\n        </nz-form-control>\n    "
         }),
         __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"])()),
         __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["NgForm"]])
@@ -5873,8 +5987,9 @@ var Select = /** @class */ (function (_super) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SingleUpload", function() { return SingleUpload; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _services_upload_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/upload.service */ "./Typings/util/services/upload.service.ts");
-/* harmony import */ var _upload_wrapper_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./upload-wrapper.component */ "./Typings/util/zorro/upload-wrapper.component.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _services_upload_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/upload.service */ "./Typings/util/services/upload.service.ts");
+/* harmony import */ var _upload_wrapper_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./upload-wrapper.component */ "./Typings/util/zorro/upload-wrapper.component.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -5907,6 +6022,7 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 
 
 
+
 /**
  * NgZorro单文件上传组件包装器
  */
@@ -5915,10 +6031,13 @@ var SingleUpload = /** @class */ (function (_super) {
     /**
      * 初始化单文件上传组件包装器
      * @param uploadService 上传服务
+     * @param form 表单组件
      */
-    function SingleUpload(uploadService) {
-        var _this = _super.call(this, uploadService) || this;
+    function SingleUpload(uploadService, form) {
+        var _this = _super.call(this, uploadService, form) || this;
         _this.uploadService = uploadService;
+        _this.form = form;
+        _this.totalLimit = 1;
         return _this;
     }
     Object.defineProperty(SingleUpload.prototype, "model", {
@@ -5939,6 +6058,7 @@ var SingleUpload = /** @class */ (function (_super) {
                 clearTimeout(this.timeout);
             this.timeout = setTimeout(function () {
                 _this.files = [_this.uploadService.toFile(value)];
+                _this.loadValidate();
             }, 500);
         },
         enumerable: true,
@@ -5951,19 +6071,32 @@ var SingleUpload = /** @class */ (function (_super) {
     SingleUpload.prototype.handleChange = function (data) {
         if (!data || !data.file || !this.uploadService)
             return;
-        if (data.type === 'removed') {
-            this.clear();
-            this.modelChange.emit(this.model);
-            return;
-        }
-        if (!data.file.response)
-            return;
-        var item = this.uploadService.resolve(data.file.response);
-        if (!item)
-            return;
-        if (data.type === 'success') {
-            this.model = item;
-            this.modelChange.emit(this.model);
+        switch (data.file.status) {
+            case 'uploading':
+                this.loading = true;
+                break;
+            case 'done':
+                this.loading = false;
+                if (!data.file.response)
+                    return;
+                var item = this.uploadService.resolve(data.file.response);
+                if (!item)
+                    return;
+                if (data.type === 'success') {
+                    this.model = item;
+                    this.modelChange.emit(this.model);
+                    this.loadValidate();
+                }
+                break;
+            case 'removed':
+                this.loading = false;
+                this.clear();
+                this.modelChange.emit(this.model);
+                this.loadValidate();
+                break;
+            case 'error':
+                this.loading = false;
+                break;
         }
     };
     /**
@@ -5980,15 +6113,15 @@ var SingleUpload = /** @class */ (function (_super) {
     ], SingleUpload.prototype, "model", null);
     SingleUpload = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'nz-single-upload-wrapper',
-            template: "\n        <ng-content></ng-content>\n    ",
-            styles: ["\n    "]
+            selector: 'x-single-upload',
+            template: "\n        <nz-upload [nzName]=\"name\" [(nzFileList)]=\"files\" [nzListType]=\"listType\"\n                   [nzAction]=\"url\" [nzData]=\"data\" [nzHeaders]=\"headers\"\n                   [nzDisabled]=\"disabled\" [nzShowButton]=\"isShowButton()\" [nzAccept]=\"accept\"\n                   [nzFilter]=\"customFilters?customFilters:filters\" [nzWithCredentials]=\"withCredentials\"\n                   [nzSize]=\"size\" [nzShowUploadList]=\"showUploadList\"\n                   [nzPreview]=\"getPreviewHandler()\" [nzBeforeUpload]=\"beforeUpload\"\n                   [nzCustomRequest]=\"customRequest\" [nzRemove]=\"remove\"\n                   (nzChange)=\"handleChange($event)\" >\n            <button nz-button *ngIf=\"listType !== 'picture-card'\" [disabled]=\"disabled\">\n                <i nz-icon nzType=\"{{buttonIcon?buttonIcon:'upload'}}\"></i>\n                <span>{{buttonText}}</span>\n            </button>\n            <ng-container *ngIf=\"listType === 'picture-card'\">\n                <i nz-icon class=\"upload-icon\"  [nzType]=\"loading ? 'loading' : buttonIcon?buttonIcon:'plus'\"></i>\n                <div class=\"upload-text\">{{buttonText}}</div>\n            </ng-container>\n        </nz-upload>\n        <nz-modal [nzVisible]=\"previewVisible\" [nzContent]=\"modalContent\" [nzFooter]=\"null\" (nzOnCancel)=\"previewVisible = false\">\n            <ng-template #modalContent>\n                <img [src]=\"previewImage\" [ngStyle]=\"{ width: '100%' }\" />\n            </ng-template>\n        </nz-modal>\n        <nz-form-control [nzValidateStatus]=\"isValid()?'success':'error'\">\n            <input nz-input style=\"display: none\" [name]=\"validationId\" #validationModel=\"ngModel\" [(ngModel)]=\"validation\" [required]=\"required\" />\n            <nz-form-explain *ngIf=\"!isValid()\">{{requiredMessage}}</nz-form-explain>\n        </nz-form-control>\n    ",
+            styles: ["\n        .upload-icon {\n            font-size: 32px;\n            color: #999;\n        }\n        .upload-text {\n            margin-top: 8px;\n            color: #666;\n        }\n    "]
         }),
-        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"])()),
-        __metadata("design:paramtypes", [_services_upload_service__WEBPACK_IMPORTED_MODULE_1__["UploadService"]])
+        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"])()), __param(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"])()),
+        __metadata("design:paramtypes", [_services_upload_service__WEBPACK_IMPORTED_MODULE_2__["UploadService"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NgForm"]])
     ], SingleUpload);
     return SingleUpload;
-}(_upload_wrapper_component__WEBPACK_IMPORTED_MODULE_2__["Upload"]));
+}(_upload_wrapper_component__WEBPACK_IMPORTED_MODULE_3__["Upload"]));
 
 
 
@@ -6007,11 +6140,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Table", function() { return Table; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/cdk/collections */ "./node_modules/@angular/cdk/esm5/collections.es5.js");
-/* harmony import */ var _common_webapi__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/webapi */ "./Typings/util/common/webapi.ts");
-/* harmony import */ var _common_message__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common/message */ "./Typings/util/common/message.ts");
-/* harmony import */ var _core_pager_list__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../core/pager-list */ "./Typings/util/core/pager-list.ts");
-/* harmony import */ var _core_model__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../core/model */ "./Typings/util/core/model.ts");
-/* harmony import */ var _config_message_config__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../config/message-config */ "./Typings/util/config/message-config.ts");
+/* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../index */ "./Typings/util/index.ts");
+/* harmony import */ var _config_message_config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../config/message-config */ "./Typings/util/config/message-config.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6025,9 +6155,6 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 //Copyright 2019 何镇汐
 //Licensed under the MIT license
 //=======================================================
-
-
-
 
 
 
@@ -6052,15 +6179,14 @@ var Table = /** @class */ (function () {
          * 加载完成后事件
          */
         this.onLoad = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
-        this.queryParam = new _core_model__WEBPACK_IMPORTED_MODULE_5__["QueryParameter"]();
-        this.pageSizeOptions = [];
-        this.showPagination = true;
+        this.queryParam = new _index__WEBPACK_IMPORTED_MODULE_2__["QueryParameter"]();
         this.dataSource = new Array();
         this.checkedSelection = new _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_1__["SelectionModel"](true, []);
         this.selectedSelection = new _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_1__["SelectionModel"](false, []);
-        this.firstLoad = true;
-        this.loading = true;
+        this.pageSizeOptions = [];
+        this.showPagination = true;
         this.autoLoad = true;
+        this.multiple = true;
         this.delay = 500;
     }
     /**
@@ -6069,6 +6195,8 @@ var Table = /** @class */ (function () {
     Table.prototype.ngOnInit = function () {
         this.initPage();
         this.initSort();
+        if (this.autoLoad)
+            this.query();
     };
     /**
      * 初始化分页参数
@@ -6088,11 +6216,169 @@ var Table = /** @class */ (function () {
         this.queryParam.order = this.sortKey;
     };
     /**
-     * 内容加载完成操作
+     * 发送查询请求
+     * @param options 配置
      */
-    Table.prototype.ngAfterContentInit = function () {
-        if (this.autoLoad)
-            this.query();
+    Table.prototype.query = function (options) {
+        var _this = this;
+        options = options || {};
+        var url = options.url || this.url || (this.baseUrl && "/api/" + this.baseUrl);
+        if (!url)
+            return;
+        var param = options.param || this.queryParam;
+        if (options.pageIndex)
+            param.page = options.pageIndex;
+        _index__WEBPACK_IMPORTED_MODULE_2__["util"].webapi.get(url).param(param).button(options.button).handle({
+            before: function () {
+                _this.loading = true;
+                return true;
+            },
+            ok: function (result) {
+                _this.loadData(result);
+                options.handler && options.handler(result);
+                _this.loadAfter(result);
+                _this.onLoad.emit(result);
+            },
+            complete: function () { return _this.loading = false; }
+        });
+    };
+    /**
+     * 加载数据
+     */
+    Table.prototype.loadData = function (result) {
+        result = new _index__WEBPACK_IMPORTED_MODULE_2__["PagerList"](result);
+        result.initLineNumbers();
+        this.dataSource = result.data || [];
+        this.totalCount = result.totalCount;
+        this.checkedSelection.clear();
+        if (!result.totalCount)
+            this.showPagination = false;
+    };
+    /**
+     * 加载完成后操作
+     * @param result
+     */
+    Table.prototype.loadAfter = function (result) {
+    };
+    /**
+     * 延迟搜索
+     * @param options 配置
+     */
+    Table.prototype.search = function (options) {
+        var _this = this;
+        options = options || {};
+        var delay = options.delay || this.delay;
+        if (this.timeout)
+            clearTimeout(this.timeout);
+        this.timeout = setTimeout(function () {
+            _this.query({
+                button: options.button,
+                url: options.url,
+                param: options.param
+            });
+        }, delay);
+    };
+    /**
+     * 刷新
+     * @param queryParam 查询参数
+     * @param button 按钮
+     */
+    Table.prototype.refresh = function (queryParam, button) {
+        this.queryParam = queryParam;
+        this.queryParamChange.emit(queryParam);
+        this.initPage();
+        this.queryParam.order = this.sortKey;
+        this.query({
+            button: button
+        });
+    };
+    /**
+     * 批量删除被选中实体
+     * @param options 配置
+     */
+    Table.prototype.delete = function (options) {
+        var _this = this;
+        options = options || {};
+        var ids = options.ids || this.getCheckedIds();
+        if (!ids) {
+            _index__WEBPACK_IMPORTED_MODULE_2__["util"].message.warn(_config_message_config__WEBPACK_IMPORTED_MODULE_3__["MessageConfig"].deleteNotSelected);
+            return;
+        }
+        _index__WEBPACK_IMPORTED_MODULE_2__["util"].message.confirm(_config_message_config__WEBPACK_IMPORTED_MODULE_3__["MessageConfig"].deleteConfirm, function () {
+            _this.deleteRequest(options.button, ids, options.handler, options.url);
+        });
+    };
+    /**
+     * 发送删除请求
+     */
+    Table.prototype.deleteRequest = function (button, ids, handler, url) {
+        var _this = this;
+        url = url || this.deleteUrl || (this.baseUrl && "/api/" + this.baseUrl + "/delete");
+        if (!url) {
+            console.log("表格deleteUrl未设置");
+            return;
+        }
+        _index__WEBPACK_IMPORTED_MODULE_2__["util"].webapi.post(url, ids).button(button).handle({
+            ok: function () {
+                if (handler) {
+                    handler();
+                    return;
+                }
+                _index__WEBPACK_IMPORTED_MODULE_2__["util"].message.success(_config_message_config__WEBPACK_IMPORTED_MODULE_3__["MessageConfig"].deleteSuccessed);
+                _this.query({
+                    handler: function (result) {
+                        if (result.page <= 1)
+                            return;
+                        if (result.page > result.pageCount) {
+                            _this.query({
+                                pageIndex: result.page - 1
+                            });
+                        }
+                    }
+                });
+            }
+        });
+    };
+    /**
+     * 获取勾选的实体列表
+     */
+    Table.prototype.getChecked = function () {
+        var _this = this;
+        return this.dataSource.filter(function (data) { return _this.checkedSelection.isSelected(data); });
+    };
+    /**
+     * 获取勾选的实体标识列表
+     */
+    Table.prototype.getCheckedIds = function () {
+        return this.getChecked().map(function (value) { return value.id; }).join(",");
+    };
+    /**
+     * 仅勾选一行
+     */
+    Table.prototype.checkRowOnly = function (row) {
+        this.clearChecked();
+        this.checkRow(row);
+    };
+    /**
+     * 勾选一行
+     */
+    Table.prototype.checkRow = function (row) {
+        this.checkedSelection.select(row);
+    };
+    /**
+     * 清空勾选的行
+     */
+    Table.prototype.clearChecked = function () {
+        this.checkedSelection.clear();
+    };
+    /**
+     * 清理
+     */
+    Table.prototype.clear = function () {
+        this.dataSource = [];
+        this.queryParam.page = 1;
+        this.totalCount = 0;
+        this.checkedSelection.clear();
     };
     /**
      * 页索引变更事件处理
@@ -6129,84 +6415,6 @@ var Table = /** @class */ (function () {
         return sortKey + " desc";
     };
     /**
-     * 发送查询请求
-     * @param button 按钮
-     * @param url 查询请求地址
-     * @param param 查询参数
-     */
-    Table.prototype.query = function (button, url, param) {
-        var _this = this;
-        if (url === void 0) { url = null; }
-        if (param === void 0) { param = null; }
-        url = url || this.url || (this.baseUrl && "/api/" + this.baseUrl);
-        if (!url)
-            return;
-        param = param || this.queryParam;
-        _common_webapi__WEBPACK_IMPORTED_MODULE_2__["WebApi"].get(url).param(param).button(button).handle({
-            before: function () {
-                if (_this.firstLoad) {
-                    _this.firstLoad = false;
-                    return true;
-                }
-                _this.loading = true;
-                return true;
-            },
-            ok: function (result) {
-                _this.loadData(result);
-                _this.loadAfter(result);
-                _this.onLoad.emit(result);
-            },
-            complete: function () { return _this.loading = false; }
-        });
-    };
-    /**
-     * 加载数据
-     */
-    Table.prototype.loadData = function (result) {
-        result = new _core_pager_list__WEBPACK_IMPORTED_MODULE_4__["PagerList"](result);
-        result.initLineNumbers();
-        this.dataSource = result.data || [];
-        this.totalCount = result.totalCount;
-        this.checkedSelection.clear();
-        if (!result.totalCount)
-            this.showPagination = false;
-    };
-    /**
-     * 加载完成后操作
-     * @param result
-     */
-    Table.prototype.loadAfter = function (result) {
-    };
-    /**
-     * 延迟搜索
-     * @param button 按钮
-     * @param delay 查询延迟间隔，单位：毫秒，默认500
-     * @param url 查询请求地址
-     * @param param 查询参数
-     */
-    Table.prototype.search = function (button, delay, url, param) {
-        var _this = this;
-        if (url === void 0) { url = null; }
-        if (param === void 0) { param = null; }
-        if (this.timeout)
-            clearTimeout(this.timeout);
-        this.timeout = setTimeout(function () {
-            _this.query(url, param, button);
-        }, delay || this.delay);
-    };
-    /**
-     * 刷新
-     * @param queryParam 查询参数
-     * @param button 按钮
-     */
-    Table.prototype.refresh = function (queryParam, button) {
-        this.queryParam = queryParam;
-        this.queryParamChange.emit(queryParam);
-        this.initPage();
-        this.queryParam.order = this.sortKey;
-        this.query(button);
-    };
-    /**
      * 表头主复选框切换选中状态
      */
     Table.prototype.masterToggle = function () {
@@ -6238,81 +6446,14 @@ var Table = /** @class */ (function () {
     Table.prototype.isMasterIndeterminate = function () {
         return this.checkedSelection.hasValue() && (!this.isAllChecked() || !this.dataSource.length);
     };
-    /**
-     * 获取复选框被选中实体列表
-     */
-    Table.prototype.getChecked = function () {
-        var _this = this;
-        return this.dataSource.filter(function (data) { return _this.checkedSelection.isSelected(data); });
-    };
-    /**
-     * 获取复选框被选中实体Id列表
-     */
-    Table.prototype.getCheckedIds = function () {
-        return this.getChecked().map(function (value) { return value.id; }).join(",");
-    };
-    /**
-     * 批量删除被选中实体
-     * @param button 按钮
-     * @param ids 待删除的Id列表，多个Id用逗号分隔，范例：1,2,3
-     * @param handler 删除成功回调函数
-     * @param url 服务端删除Api地址，如果设置了基地址baseUrl，则可以省略该参数
-     */
-    Table.prototype.delete = function (button, ids, handler, url) {
-        var _this = this;
-        ids = ids || this.getCheckedIds();
-        if (!ids) {
-            _common_message__WEBPACK_IMPORTED_MODULE_3__["Message"].warn(_config_message_config__WEBPACK_IMPORTED_MODULE_6__["MessageConfig"].deleteNotSelected);
-            return;
-        }
-        _common_message__WEBPACK_IMPORTED_MODULE_3__["Message"].confirm(_config_message_config__WEBPACK_IMPORTED_MODULE_6__["MessageConfig"].deleteConfirm, function () {
-            _this.deleteRequest(button, ids, handler, url);
-        });
-    };
-    /**
-     * 发送删除请求
-     */
-    Table.prototype.deleteRequest = function (button, ids, handler, url) {
-        var _this = this;
-        url = url || this.deleteUrl || (this.baseUrl && "/api/" + this.baseUrl + "/delete");
-        if (!url) {
-            console.log("表格deleteUrl未设置");
-            return;
-        }
-        _common_webapi__WEBPACK_IMPORTED_MODULE_2__["WebApi"].post(url, ids).button(button).handle({
-            ok: function () {
-                if (handler) {
-                    handler();
-                    return;
-                }
-                _common_message__WEBPACK_IMPORTED_MODULE_3__["Message"].success(_config_message_config__WEBPACK_IMPORTED_MODULE_6__["MessageConfig"].deleteSuccessed);
-                _this.query();
-            }
-        });
-    };
-    /**
-     * 选中一行
-     * @param row 行
-     */
-    Table.prototype.checkRow = function (row) {
-        this.checkedSelection.clear();
-        this.checkedSelection.select(row);
-    };
-    /**
-     * 清理
-     */
-    Table.prototype.clear = function () {
-        this.dataSource = [];
-        this.queryParam.page = 1;
-        this.totalCount = 0;
-        this.checkedSelection.clear();
-    };
-    /**
-     * 清空复选框
-     */
-    Table.prototype.clearCheckboxs = function () {
-        this.checkedSelection.clear();
-    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], Table.prototype, "multiple", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], Table.prototype, "timeout", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Number)
@@ -6351,7 +6492,7 @@ var Table = /** @class */ (function () {
     ], Table.prototype, "deleteUrl", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", _core_model__WEBPACK_IMPORTED_MODULE_5__["QueryParameter"])
+        __metadata("design:type", _index__WEBPACK_IMPORTED_MODULE_2__["QueryParameter"])
     ], Table.prototype, "queryParam", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
@@ -6606,10 +6747,6 @@ var TextBox = /** @class */ (function (_super) {
             return this.emailMessage || _config_message_config__WEBPACK_IMPORTED_MODULE_3__["MessageConfig"].emailMessage;
         if (this.controlModel.hasError('pattern'))
             return this.patterMessage;
-        if (this.controlModel.hasError('min'))
-            return this.replace(this.minMessage || _config_message_config__WEBPACK_IMPORTED_MODULE_3__["MessageConfig"].minMessage, this.min);
-        if (this.controlModel.hasError('max'))
-            return this.replace(this.maxMessage || _config_message_config__WEBPACK_IMPORTED_MODULE_3__["MessageConfig"].maxMessage, this.max);
         return "";
     };
     /**
@@ -6630,22 +6767,6 @@ var TextBox = /** @class */ (function (_super) {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Boolean)
     ], TextBox.prototype, "readonly", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Number)
-    ], TextBox.prototype, "min", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", String)
-    ], TextBox.prototype, "minMessage", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Number)
-    ], TextBox.prototype, "max", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", String)
-    ], TextBox.prototype, "maxMessage", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Number)
@@ -6673,7 +6794,7 @@ var TextBox = /** @class */ (function (_super) {
     TextBox = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'x-textbox',
-            template: "\n        <nz-form-control [nzValidateStatus]=\"(controlModel?.invalid && (controlModel?.dirty || controlModel.touched))?'error':'success'\">\n            <input nz-input [name]=\"name\" [type]=\"type\" [placeholder]=\"placeholder\" [disabled]=\"disabled\" [readonly]=\"readonly\"\n                #control #controlModel=\"ngModel\" [ngModel]=\"model\" (ngModelChange)=\"onModelChange($event)\"                 \n                (blur)=\"blur($event)\" (focus)=\"focus($event)\" (keyup)=\"keyup($event)\" (keydown)=\"keydown($event)\"\n                [required]=\"required\" [email]=\"type==='email'\" [pattern]=\"pattern\" [min]=\"min\" [max]=\"max\"\n                [minlength]=\"minLength\" [maxlength]=\"maxLength\"\n            />\n            <nz-form-explain *ngIf=\"controlModel?.invalid && (controlModel?.dirty || controlModel.touched)\">{{getErrorMessage()}}</nz-form-explain>\n        </nz-form-control>\n    "
+            template: "\n        <nz-form-control [nzValidateStatus]=\"(controlModel?.invalid && (controlModel?.dirty || controlModel.touched))?'error':'success'\">\n            <input nz-input [name]=\"name\" [type]=\"type\" [placeholder]=\"placeholder\" [disabled]=\"disabled\" [readonly]=\"readonly\"\n                #control #controlModel=\"ngModel\" [ngModel]=\"model\" (ngModelChange)=\"onModelChange($event)\"                 \n                (blur)=\"blur($event)\" (focus)=\"focus($event)\" (keyup)=\"keyup($event)\" (keydown)=\"keydown($event)\"\n                [required]=\"required\" [email]=\"type==='email'\" [pattern]=\"pattern\"\n                [minlength]=\"minLength\" [maxlength]=\"maxLength\"\n            />\n            <nz-form-explain *ngIf=\"controlModel?.invalid && (controlModel?.dirty || controlModel.touched)\">{{getErrorMessage()}}</nz-form-explain>\n        </nz-form-control>\n    "
         }),
         __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"])()),
         __metadata("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["NgForm"]])
@@ -7126,6 +7247,41 @@ var TreeTable = /** @class */ (function (_super) {
         return this.isShow(parent);
     };
     /**
+     * 是否显示复选框
+     */
+    TreeTable.prototype.isShowCheckbox = function () {
+        if (!this.showCheckbox)
+            return false;
+        if (this.multiple)
+            return true;
+        return false;
+    };
+    /**
+     * 是否显示单选框
+     * @param node 节点
+     */
+    TreeTable.prototype.isShowRadio = function (node) {
+        if (!this.showCheckbox)
+            return false;
+        if (this.multiple)
+            return false;
+        if (!this.checkLeafOnly)
+            return true;
+        if (this.isLeaf(node))
+            return true;
+        return false;
+    };
+    /**
+     * 是否显示文本
+     */
+    TreeTable.prototype.isShowText = function (node) {
+        if (!this.showCheckbox)
+            return true;
+        if (!this.multiple && this.checkLeafOnly && !this.isLeaf(node))
+            return true;
+        return false;
+    };
+    /**
      * 节点复选框切换选中状态
      * @param node 节点
      */
@@ -7207,6 +7363,10 @@ var TreeTable = /** @class */ (function (_super) {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Boolean)
     ], TreeTable.prototype, "showCheckbox", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Boolean)
+    ], TreeTable.prototype, "checkLeafOnly", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
         __metadata("design:type", Object)
@@ -7552,10 +7712,11 @@ var Tree = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Upload", function() { return Upload; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var ng_zorro_antd__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ng-zorro-antd */ "./node_modules/ng-zorro-antd/fesm5/ng-zorro-antd.js");
-/* harmony import */ var _config_message_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../config/message-config */ "./Typings/util/config/message-config.ts");
-/* harmony import */ var _services_upload_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/upload.service */ "./Typings/util/services/upload.service.ts");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../util */ "./Typings/util/util.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var ng_zorro_antd__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ng-zorro-antd */ "./node_modules/ng-zorro-antd/fesm5/ng-zorro-antd.js");
+/* harmony import */ var _config_message_config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../config/message-config */ "./Typings/util/config/message-config.ts");
+/* harmony import */ var _services_upload_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/upload.service */ "./Typings/util/services/upload.service.ts");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util */ "./Typings/util/util.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7577,6 +7738,7 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 
 
 
+
 /**
  * NgZorro上传组件包装器
  */
@@ -7584,14 +7746,20 @@ var Upload = /** @class */ (function () {
     /**
      * 初始化上传组件包装器
      * @param uploadService 上传服务
+     * @param form 表单组件
      */
-    function Upload(uploadService) {
+    function Upload(uploadService, form) {
         var _this = this;
         this.uploadService = uploadService;
+        this.form = form;
         /**
          * 模型变更事件
          */
         this.modelChange = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        /**
+         * 验证模型变更事件
+         */
+        this.validateModelChange = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         /**
          * 上传过滤器
          */
@@ -7602,10 +7770,10 @@ var Upload = /** @class */ (function () {
                     if (!_this.instance || !_this.instance.nzAccept)
                         return files;
                     var accepts = _this.instance.nzAccept.split(',');
-                    var validFiles = files.filter(function (file) { return !file.name || ~accepts.indexOf(_util__WEBPACK_IMPORTED_MODULE_4__["Util"].helper.getExtension(file.name)); });
-                    var invalidFiles = _util__WEBPACK_IMPORTED_MODULE_4__["Util"].helper.except(files, validFiles);
+                    var validFiles = files.filter(function (file) { return !file.name || ~accepts.indexOf(_util__WEBPACK_IMPORTED_MODULE_5__["Util"].helper.getExtension(file.name)); });
+                    var invalidFiles = _util__WEBPACK_IMPORTED_MODULE_5__["Util"].helper.except(files, validFiles);
                     if (invalidFiles && invalidFiles.length > 0)
-                        _util__WEBPACK_IMPORTED_MODULE_4__["Util"].message.warn(_this.getMessageByType(invalidFiles));
+                        _util__WEBPACK_IMPORTED_MODULE_5__["Util"].message.warn(_this.getMessageByType(invalidFiles));
                     return validFiles;
                 }
             },
@@ -7615,9 +7783,9 @@ var Upload = /** @class */ (function () {
                     if (!_this.instance || _this.instance.nzSize === 0)
                         return files;
                     var validFiles = files.filter(function (file) { return file.size / 1024 <= _this.instance.nzSize; });
-                    var invalidFiles = _util__WEBPACK_IMPORTED_MODULE_4__["Util"].helper.except(files, validFiles);
+                    var invalidFiles = _util__WEBPACK_IMPORTED_MODULE_5__["Util"].helper.except(files, validFiles);
                     if (invalidFiles && invalidFiles.length > 0)
-                        _util__WEBPACK_IMPORTED_MODULE_4__["Util"].message.warn(_this.getMessageBySize(invalidFiles));
+                        _util__WEBPACK_IMPORTED_MODULE_5__["Util"].message.warn(_this.getMessageBySize(invalidFiles));
                     return validFiles;
                 }
             },
@@ -7627,13 +7795,30 @@ var Upload = /** @class */ (function () {
                     if (!_this.instance || !_this.instance.nzMultiple || _this.instance.nzLimit === 0)
                         return files;
                     var validFiles = files.slice(-_this.instance.nzLimit);
-                    var invalidFiles = _util__WEBPACK_IMPORTED_MODULE_4__["Util"].helper.except(files, validFiles);
+                    var invalidFiles = _util__WEBPACK_IMPORTED_MODULE_5__["Util"].helper.except(files, validFiles);
                     if (invalidFiles && invalidFiles.length > 0)
-                        _util__WEBPACK_IMPORTED_MODULE_4__["Util"].message.warn(_this.getMessageByLimit(invalidFiles));
+                        _util__WEBPACK_IMPORTED_MODULE_5__["Util"].message.warn(_this.getMessageByLimit(invalidFiles));
                     return validFiles;
                 }
             }
         ];
+        /**
+         * 预览处理
+         */
+        this.handlePreview = function (file) {
+            if (!file)
+                return;
+            if (!_util__WEBPACK_IMPORTED_MODULE_5__["Util"].helper.isImage(file.url))
+                return;
+            _this.previewImage = file.url || file.thumbUrl;
+            _this.previewVisible = true;
+        };
+        this.validationId = _util__WEBPACK_IMPORTED_MODULE_5__["Util"].helper.uuid();
+        this.listType = "text";
+        this.buttonText = _config_message_config__WEBPACK_IMPORTED_MODULE_3__["MessageConfig"].upload;
+        this.requiredMessage = _config_message_config__WEBPACK_IMPORTED_MODULE_3__["MessageConfig"].uploadRequiredMessage;
+        this.showButton = true;
+        this.showUploadList = true;
     }
     Object.defineProperty(Upload.prototype, "model", {
         /**
@@ -7653,11 +7838,72 @@ var Upload = /** @class */ (function () {
                 clearTimeout(this.timeout);
             this.timeout = setTimeout(function () {
                 _this.files = _this.items.map(function (item) { return _this.uploadService.toFile(item); });
+                _this.loadValidate();
             }, 500);
         },
         enumerable: true,
         configurable: true
     });
+    /**
+     * 初始化
+     */
+    Upload.prototype.ngAfterViewInit = function () {
+        this.addControl();
+    };
+    /**
+     * 将控件添加到FormGroup
+     */
+    Upload.prototype.addControl = function () {
+        if (this.standalone)
+            return;
+        this.form && this.form.addControl(this.controlModel);
+    };
+    /**
+     * 组件销毁
+     */
+    Upload.prototype.ngOnDestroy = function () {
+        this.removeControl();
+    };
+    /**
+     * 将控件移除FormGroup
+     */
+    Upload.prototype.removeControl = function () {
+        if (this.standalone)
+            return;
+        this.form && this.form.removeControl(this.controlModel);
+    };
+    /**
+     * 获取预览处理器
+     */
+    Upload.prototype.getPreviewHandler = function () {
+        if (this.listType === 'text')
+            return undefined;
+        if (this.preview)
+            return this.preview;
+        return this.handlePreview;
+    };
+    /**
+     * 是否验证有效
+     */
+    Upload.prototype.isValid = function () {
+        if (!this.required)
+            return true;
+        if (!this.dirty)
+            return true;
+        return this.validation;
+    };
+    /**
+     * 是否显示按钮
+     */
+    Upload.prototype.isShowButton = function () {
+        if (this.showButton === false)
+            return false;
+        if (!this.totalLimit)
+            return this.showButton;
+        if (!this.files)
+            return true;
+        return this.files.length < this.totalLimit;
+    };
     /**
      * 上传变更处理
      * @param data 上传参数
@@ -7665,42 +7911,66 @@ var Upload = /** @class */ (function () {
     Upload.prototype.handleChange = function (data) {
         if (!data || !data.file || !this.uploadService)
             return;
-        if (data.type === 'removed') {
-            this.uploadService.removeFromModel(this.model, data.file);
-            this.uploadService.removeFromFileList(this.files, data.file);
-            this.modelChange.emit(this.model);
+        switch (data.file.status) {
+            case 'uploading':
+                this.loading = true;
+                break;
+            case 'done':
+                this.loading = false;
+                if (!data.file.response)
+                    return;
+                var item = this.uploadService.resolve(data.file.response);
+                if (!item)
+                    return;
+                if (data.type === 'success') {
+                    this.model = (this.model || []).concat([item]);
+                    this.modelChange.emit(this.model);
+                    this.loadValidate();
+                }
+                break;
+            case 'removed':
+                this.loading = false;
+                this.uploadService.removeFromModel(this.model, data.file);
+                this.uploadService.removeFromFileList(this.files, data.file);
+                this.modelChange.emit(this.model);
+                this.loadValidate();
+                break;
+            case 'error':
+                this.loading = false;
+                break;
+        }
+    };
+    /**
+     * 加载验证值
+     */
+    Upload.prototype.loadValidate = function () {
+        this.dirty = true;
+        if (this.files && this.files.length > 0) {
+            this.validation = "1";
             return;
         }
-        if (!data.file.response)
-            return;
-        var item = this.uploadService.resolve(data.file.response);
-        if (!item)
-            return;
-        if (data.type === 'success') {
-            this.model = (this.model || []).concat([item]);
-            this.modelChange.emit(this.model);
-        }
+        this.validation = undefined;
     };
     /**
      * 获取文件类型错误消息
      */
     Upload.prototype.getMessageByType = function (files) {
         var _this = this;
-        return "" + files.map(function (t) { return _this.replace(_config_message_config__WEBPACK_IMPORTED_MODULE_2__["MessageConfig"].fileTypeFilter, t.name) + '<br/>'; }).join('');
+        return "" + files.map(function (t) { return _this.replace(_config_message_config__WEBPACK_IMPORTED_MODULE_3__["MessageConfig"].fileTypeFilter, t.name) + '<br/>'; }).join('');
     };
     /**
      * 获取文件大小错误消息
      */
     Upload.prototype.getMessageBySize = function (files) {
         var _this = this;
-        return "" + files.map(function (t) { return _this.replace(_config_message_config__WEBPACK_IMPORTED_MODULE_2__["MessageConfig"].fileSizeFilter, t.name, _this.instance.nzSize) + '<br/>'; }).join('');
+        return "" + files.map(function (t) { return _this.replace(_config_message_config__WEBPACK_IMPORTED_MODULE_3__["MessageConfig"].fileSizeFilter, t.name, _this.instance.nzSize) + '<br/>'; }).join('');
     };
     /**
      * 获取文件数量错误消息
      */
     Upload.prototype.getMessageByLimit = function (files) {
         var _this = this;
-        return "" + files.map(function (t) { return _this.replace(_config_message_config__WEBPACK_IMPORTED_MODULE_2__["MessageConfig"].fileLimitFilter, _this.instance.nzLimit) + '<br/>'; }).join('');
+        return "" + files.map(function (t) { return _this.replace(_config_message_config__WEBPACK_IMPORTED_MODULE_3__["MessageConfig"].fileLimitFilter, _this.instance.nzLimit) + '<br/>'; }).join('');
     };
     /**
      * 替换{0},{1}
@@ -7711,6 +7981,106 @@ var Upload = /** @class */ (function () {
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Boolean)
+    ], Upload.prototype, "standalone", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", String)
+    ], Upload.prototype, "name", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", String)
+    ], Upload.prototype, "listType", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Array)
+    ], Upload.prototype, "customFilters", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Boolean)
+    ], Upload.prototype, "disabled", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Number)
+    ], Upload.prototype, "size", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Number)
+    ], Upload.prototype, "limit", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Number)
+    ], Upload.prototype, "totalLimit", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", String)
+    ], Upload.prototype, "accept", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Boolean)
+    ], Upload.prototype, "showButton", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], Upload.prototype, "showUploadList", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Boolean)
+    ], Upload.prototype, "multiple", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Boolean)
+    ], Upload.prototype, "directory", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", String)
+    ], Upload.prototype, "url", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], Upload.prototype, "data", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], Upload.prototype, "headers", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], Upload.prototype, "withCredentials", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", String)
+    ], Upload.prototype, "buttonText", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", String)
+    ], Upload.prototype, "buttonIcon", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Boolean)
+    ], Upload.prototype, "required", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", String)
+    ], Upload.prototype, "requiredMessage", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Function)
+    ], Upload.prototype, "preview", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Function)
+    ], Upload.prototype, "remove", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Function)
+    ], Upload.prototype, "beforeUpload", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Function)
+    ], Upload.prototype, "customRequest", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Array),
         __metadata("design:paramtypes", [Object])
     ], Upload.prototype, "model", null);
@@ -7719,17 +8089,25 @@ var Upload = /** @class */ (function () {
         __metadata("design:type", Object)
     ], Upload.prototype, "modelChange", void 0);
     __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ContentChild"])(Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["forwardRef"])(function () { return ng_zorro_antd__WEBPACK_IMPORTED_MODULE_1__["NzUploadComponent"]; })),
-        __metadata("design:type", ng_zorro_antd__WEBPACK_IMPORTED_MODULE_1__["NzUploadComponent"])
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", Object)
+    ], Upload.prototype, "validateModelChange", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["forwardRef"])(function () { return ng_zorro_antd__WEBPACK_IMPORTED_MODULE_2__["NzUploadComponent"]; })),
+        __metadata("design:type", ng_zorro_antd__WEBPACK_IMPORTED_MODULE_2__["NzUploadComponent"])
     ], Upload.prototype, "instance", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["forwardRef"])(function () { return _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NgModel"]; })),
+        __metadata("design:type", _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NgModel"])
+    ], Upload.prototype, "controlModel", void 0);
     Upload = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'nz-upload-wrapper',
-            template: "\n        <ng-content></ng-content>\n    ",
-            styles: ["\n    "]
+            selector: 'x-upload',
+            template: "\n        <nz-upload [nzName]=\"name\" [(nzFileList)]=\"files\" [nzListType]=\"listType\"\n                   [nzAction]=\"url\" [nzData]=\"data\" [nzHeaders]=\"headers\"\n                   [nzDisabled]=\"disabled\" [nzShowButton]=\"isShowButton()\" [nzAccept]=\"accept\"\n                   [nzFilter]=\"customFilters?customFilters:filters\" [nzWithCredentials]=\"withCredentials\"\n                   [nzLimit]=\"limit\" [nzSize]=\"size\" [nzShowUploadList]=\"showUploadList\"\n                   [nzMultiple]=\"multiple\" [nzDirectory]=\"directory\"\n                   [nzPreview]=\"getPreviewHandler()\" [nzBeforeUpload]=\"beforeUpload\" \n                   [nzCustomRequest]=\"customRequest\" [nzRemove]=\"remove\"\n                   (nzChange)=\"handleChange($event)\" >\n            <button nz-button *ngIf=\"listType !== 'picture-card'\" [disabled]=\"disabled\">\n                <i nz-icon nzType=\"{{buttonIcon?buttonIcon:'upload'}}\"></i>\n                <span>{{buttonText}}</span>\n            </button>\n            <ng-container *ngIf=\"listType === 'picture-card'\">\n                <i nz-icon class=\"upload-icon\"  [nzType]=\"loading ? 'loading' : buttonIcon?buttonIcon:'plus'\"></i>\n                <div class=\"upload-text\">{{buttonText}}</div>\n            </ng-container>\n        </nz-upload>\n        <nz-modal [nzVisible]=\"previewVisible\" [nzContent]=\"modalContent\" [nzFooter]=\"null\" (nzOnCancel)=\"previewVisible = false\">\n            <ng-template #modalContent>\n                <img [src]=\"previewImage\" [ngStyle]=\"{ width: '100%' }\" />\n            </ng-template>\n        </nz-modal>\n        <nz-form-control [nzValidateStatus]=\"isValid()?'success':'error'\">\n            <input nz-input style=\"display: none\" [name]=\"validationId\" #validationModel=\"ngModel\" [(ngModel)]=\"validation\" [required]=\"required\" />\n            <nz-form-explain *ngIf=\"!isValid()\">{{requiredMessage}}</nz-form-explain>\n        </nz-form-control>\n    ",
+            styles: ["\n        .upload-icon {\n            font-size: 32px;\n            color: #999;\n        }\n        .upload-text {\n            margin-top: 8px;\n            color: #666;\n        }\n    "]
         }),
-        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"])()),
-        __metadata("design:paramtypes", [_services_upload_service__WEBPACK_IMPORTED_MODULE_3__["UploadService"]])
+        __param(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"])()), __param(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"])()),
+        __metadata("design:paramtypes", [_services_upload_service__WEBPACK_IMPORTED_MODULE_4__["UploadService"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NgForm"]])
     ], Upload);
     return Upload;
 }());
@@ -25650,42 +26028,6 @@ var n=r(27),i=r(28),o=r(29);function kMaxLength(){return Buffer.TYPED_ARRAY_SUPP
 
 /***/ }),
 
-/***/ "./node_modules/rxjs-compat/add/observable/fromPromise.js":
-/*!****************************************************************************************************!*\
-  !*** delegated ./node_modules/rxjs-compat/add/observable/fromPromise.js from dll-reference vendor ***!
-  \****************************************************************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = (__webpack_require__(/*! dll-reference vendor */ "dll-reference vendor"))("./node_modules/rxjs-compat/add/observable/fromPromise.js");
-
-/***/ }),
-
-/***/ "./node_modules/rxjs-compat/add/operator/map.js":
-/*!******************************************************************************************!*\
-  !*** delegated ./node_modules/rxjs-compat/add/operator/map.js from dll-reference vendor ***!
-  \******************************************************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = (__webpack_require__(/*! dll-reference vendor */ "dll-reference vendor"))("./node_modules/rxjs-compat/add/operator/map.js");
-
-/***/ }),
-
-/***/ "./node_modules/rxjs-compat/add/operator/mergeMap.js":
-/*!***********************************************************************************************!*\
-  !*** delegated ./node_modules/rxjs-compat/add/operator/mergeMap.js from dll-reference vendor ***!
-  \***********************************************************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = (__webpack_require__(/*! dll-reference vendor */ "dll-reference vendor"))("./node_modules/rxjs-compat/add/operator/mergeMap.js");
-
-/***/ }),
-
 /***/ "./node_modules/rxjs/_esm5/index.js":
 /*!******************************************************************************!*\
   !*** delegated ./node_modules/rxjs/_esm5/index.js from dll-reference vendor ***!
@@ -25695,6 +26037,18 @@ module.exports = (__webpack_require__(/*! dll-reference vendor */ "dll-reference
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = (__webpack_require__(/*! dll-reference vendor */ "dll-reference vendor"))("./node_modules/rxjs/_esm5/index.js");
+
+/***/ }),
+
+/***/ "./node_modules/rxjs/_esm5/operators/index.js":
+/*!****************************************************************************************!*\
+  !*** delegated ./node_modules/rxjs/_esm5/operators/index.js from dll-reference vendor ***!
+  \****************************************************************************************/
+/*! exports provided: audit, auditTime, buffer, bufferCount, bufferTime, bufferToggle, bufferWhen, catchError, combineAll, combineLatest, concat, concatAll, concatMap, concatMapTo, count, debounce, debounceTime, defaultIfEmpty, delay, delayWhen, dematerialize, distinct, distinctUntilChanged, distinctUntilKeyChanged, elementAt, endWith, every, exhaust, exhaustMap, expand, filter, finalize, find, findIndex, first, groupBy, ignoreElements, isEmpty, last, map, mapTo, materialize, max, merge, mergeAll, mergeMap, flatMap, mergeMapTo, mergeScan, min, multicast, observeOn, onErrorResumeNext, pairwise, partition, pluck, publish, publishBehavior, publishLast, publishReplay, race, reduce, repeat, repeatWhen, retry, retryWhen, refCount, sample, sampleTime, scan, sequenceEqual, share, shareReplay, single, skip, skipLast, skipUntil, skipWhile, startWith, subscribeOn, switchAll, switchMap, switchMapTo, take, takeLast, takeUntil, takeWhile, tap, throttle, throttleTime, throwIfEmpty, timeInterval, timeout, timeoutWith, timestamp, toArray, window, windowCount, windowTime, windowToggle, windowWhen, withLatestFrom, zip, zipAll */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = (__webpack_require__(/*! dll-reference vendor */ "dll-reference vendor"))("./node_modules/rxjs/_esm5/operators/index.js");
 
 /***/ }),
 

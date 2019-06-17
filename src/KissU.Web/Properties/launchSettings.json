@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "KissU.WebAPP": {
+    "KissU.Web": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

@@ -1,0 +1,92 @@
+﻿@model MenuDto
+<util-layout flex="70%" x-align="Center">
+    <util-card>
+        <util-card-header>
+            <util-icon font-awesome-icon="AddressCardO" style="margin-right: 10px;"></util-icon>
+            
+        </util-card-header>
+        <util-card-content class="form-content form-list-content">
+                <util-layout flex="100%">
+                    <label asp-for="Text"></label>: <util-label for="Text"/>
+                </util-layout>
+                <util-layout flex="100%">
+                    <label asp-for="PinYin"></label>: <util-label for="PinYin"/>
+                </util-layout>
+                <util-layout flex="100%">
+                    <label asp-for="Enabled"></label>: <util-label for="Enabled"/>
+                </util-layout>
+                <util-layout flex="100%">
+                    <label asp-for="SortId"></label>: <util-label for="SortId"/>
+                </util-layout>
+                <util-layout flex="100%">
+                    <label asp-for="ParentId"></label>: <util-label for="ParentId"/>
+                </util-layout>
+                <util-layout flex="100%">
+                    <label asp-for="Path"></label>: <util-label for="Path"/>
+                </util-layout>
+                <util-layout flex="100%">
+                    <label asp-for="Level"></label>: <util-label for="Level"/>
+                </util-layout>
+                <util-layout flex="100%">
+                    <label asp-for="I18n"></label>: <util-label for="I18n"/>
+                </util-layout>
+                <util-layout flex="100%">
+                    <label asp-for="Group"></label>: <util-label for="Group"/>
+                </util-layout>
+                <util-layout flex="100%">
+                    <label asp-for="Link"></label>: <util-label for="Link"/>
+                </util-layout>
+                <util-layout flex="100%">
+                    <label asp-for="LinkExact"></label>: <util-label for="LinkExact"/>
+                </util-layout>
+                <util-layout flex="100%">
+                    <label asp-for="ExternalLink"></label>: <util-label for="ExternalLink"/>
+                </util-layout>
+                <util-layout flex="100%">
+                    <label asp-for="Target"></label>: <util-label for="Target"/>
+                </util-layout>
+                <util-layout flex="100%">
+                    <label asp-for="Icon"></label>: <util-label for="Icon"/>
+                </util-layout>
+                <util-layout flex="100%">
+                    <label asp-for="Badge"></label>: <util-label for="Badge"/>
+                </util-layout>
+                <util-layout flex="100%">
+                    <label asp-for="BadgeDot"></label>: <util-label for="BadgeDot"/>
+                </util-layout>
+                <util-layout flex="100%">
+                    <label asp-for="BadgeStatus"></label>: <util-label for="BadgeStatus"/>
+                </util-layout>
+                <util-layout flex="100%">
+                    <label asp-for="Disabled"></label>: <util-label for="Disabled"/>
+                </util-layout>
+                <util-layout flex="100%">
+                    <label asp-for="Hide"></label>: <util-label for="Hide"/>
+                </util-layout>
+                <util-layout flex="100%">
+                    <label asp-for="HideInBreadcrumb"></label>: <util-label for="HideInBreadcrumb"/>
+                </util-layout>
+                <util-layout flex="100%">
+                    <label asp-for="Acl"></label>: <util-label for="Acl"/>
+                </util-layout>
+                <util-layout flex="100%">
+                    <label asp-for="Shortcut"></label>: <util-label for="Shortcut"/>
+                </util-layout>
+                <util-layout flex="100%">
+                    <label asp-for="ShortcutRoot"></label>: <util-label for="ShortcutRoot"/>
+                </util-layout>
+                <util-layout flex="100%">
+                    <label asp-for="Reuse"></label>: <util-label for="Reuse"/>
+                </util-layout>
+                <util-layout flex="100%">
+                    <label asp-for="Open"></label>: <util-label for="Open"/>
+                </util-layout>
+                <util-layout flex="100%">
+                    <label asp-for="Note"></label>: <util-label for="Note"/>
+                </util-layout>
+        </util-card-content>
+        <util-card-actions align="Right">
+            <util-button text="返回" styles="Default" on-click="back()"></util-button>
+        </util-card-actions>
+    </util-card>
+</util-layout>

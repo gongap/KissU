@@ -14,6 +14,7 @@
 <%@ Property Name="Namespace" Type="System.String"  %>
 <%@ Property Name="UnitOfWork" Type="System.String"  %>
 <%@ Property Name="IUnitOfWorkNamespace" Type="System.String"  %>
+using System;
 using Microsoft.EntityFrameworkCore;
 using Util.Datas.UnitOfWorks;
 
@@ -26,8 +27,8 @@ namespace <%= Namespace %>.Data.UnitOfWorks.MySql {
         /// 初始化工作单元
         /// </summary>
         /// <param name="options">配置项</param>
-        /// <param name="unitOfWorkManager">工作单元服务</param>
-        public <%= UnitOfWork %>( DbContextOptions options, IUnitOfWorkManager unitOfWorkManager ) : base( options, unitOfWorkManager ) {
+        /// <param name="serviceProvider">服务提供器</param>
+        public <%= UnitOfWork %>( DbContextOptions options, IServiceProvider serviceProvider) : base( options, serviceProvider ) {
         }
     }
 }

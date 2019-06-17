@@ -49,7 +49,7 @@ namespace KissU.WebAPP {
 
             //添加EF工作单元
             //====== 支持Sql Server 2012+ ==========
-            services.AddUnitOfWork<ISampleUnitOfWork, KissU.Data.UnitOfWorks.SqlServer.SampleUnitOfWork>( Configuration.GetConnectionString( "DefaultConnection" ) );
+            services.AddUnitOfWork<IKissUUnitOfWork, KissU.Data.UnitOfWorks.SqlServer.KissUUnitOfWork>( Configuration.GetConnectionString( "DefaultConnection" ) );
             //======= 支持Sql Server 2005+ ==========
             //services.AddUnitOfWork<ISampleUnitOfWork, KissU.Data.UnitOfWorks.SqlServer.SampleUnitOfWork>( builder => {
             //    builder.UseSqlServer( Configuration.GetConnectionString( "DefaultConnection" ), option => option.UseRowNumberForPaging() );

@@ -1,4 +1,33 @@
 /******/ (function(modules) { // webpackBootstrap
+/******/ 	// install a JSONP callback for chunk loading
+/******/ 	function webpackJsonpCallback(data) {
+/******/ 		var chunkIds = data[0];
+/******/ 		var moreModules = data[1];
+/******/
+/******/
+/******/ 		// add "moreModules" to the modules object,
+/******/ 		// then flag all "chunkIds" as loaded and fire callback
+/******/ 		var moduleId, chunkId, i = 0, resolves = [];
+/******/ 		for(;i < chunkIds.length; i++) {
+/******/ 			chunkId = chunkIds[i];
+/******/ 			if(installedChunks[chunkId]) {
+/******/ 				resolves.push(installedChunks[chunkId][0]);
+/******/ 			}
+/******/ 			installedChunks[chunkId] = 0;
+/******/ 		}
+/******/ 		for(moduleId in moreModules) {
+/******/ 			if(Object.prototype.hasOwnProperty.call(moreModules, moduleId)) {
+/******/ 				modules[moduleId] = moreModules[moduleId];
+/******/ 			}
+/******/ 		}
+/******/ 		if(parentJsonpFunction) parentJsonpFunction(data);
+/******/
+/******/ 		while(resolves.length) {
+/******/ 			resolves.shift()();
+/******/ 		}
+/******/
+/******/ 	};
+/******/
 /******/ 	function hotDisposeChunk(chunkId) {
 /******/ 		delete installedChunks[chunkId];
 /******/ 	}
@@ -63,7 +92,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "687728b0f868447431d9";
+/******/ 	var hotCurrentHash = "cc3b165815a5bd312a40";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -258,7 +287,7 @@
 /******/ 				};
 /******/ 			});
 /******/ 			hotUpdate = {};
-/******/ 			var chunkId = "app";
+/******/ 			for(var chunkId in installedChunks)
 /******/ 			// eslint-disable-next-line no-lone-blocks
 /******/ 			{
 /******/ 				/*globals chunkId */
@@ -703,6 +732,20 @@
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
+/******/ 	// object to store loaded and loading chunks
+/******/ 	// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 	// Promise = chunk loading, 0 = chunk loaded
+/******/ 	var installedChunks = {
+/******/ 		"app": 0
+/******/ 	};
+/******/
+/******/
+/******/
+/******/ 	// script path function
+/******/ 	function jsonpScriptSrc(chunkId) {
+/******/ 		return __webpack_require__.p + "" + chunkId + ".chunk.js"
+/******/ 	}
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/
@@ -730,6 +773,64 @@
 /******/ 		return module.exports;
 /******/ 	}
 /******/
+/******/ 	// This file contains only the entry chunk.
+/******/ 	// The chunk loading function for additional chunks
+/******/ 	__webpack_require__.e = function requireEnsure(chunkId) {
+/******/ 		var promises = [];
+/******/
+/******/
+/******/ 		// JSONP chunk loading for javascript
+/******/
+/******/ 		var installedChunkData = installedChunks[chunkId];
+/******/ 		if(installedChunkData !== 0) { // 0 means "already installed".
+/******/
+/******/ 			// a Promise means "currently loading".
+/******/ 			if(installedChunkData) {
+/******/ 				promises.push(installedChunkData[2]);
+/******/ 			} else {
+/******/ 				// setup Promise in chunk cache
+/******/ 				var promise = new Promise(function(resolve, reject) {
+/******/ 					installedChunkData = installedChunks[chunkId] = [resolve, reject];
+/******/ 				});
+/******/ 				promises.push(installedChunkData[2] = promise);
+/******/
+/******/ 				// start chunk loading
+/******/ 				var script = document.createElement('script');
+/******/ 				var onScriptComplete;
+/******/
+/******/ 				script.charset = 'utf-8';
+/******/ 				script.timeout = 120;
+/******/ 				if (__webpack_require__.nc) {
+/******/ 					script.setAttribute("nonce", __webpack_require__.nc);
+/******/ 				}
+/******/ 				script.src = jsonpScriptSrc(chunkId);
+/******/
+/******/ 				onScriptComplete = function (event) {
+/******/ 					// avoid mem leaks in IE.
+/******/ 					script.onerror = script.onload = null;
+/******/ 					clearTimeout(timeout);
+/******/ 					var chunk = installedChunks[chunkId];
+/******/ 					if(chunk !== 0) {
+/******/ 						if(chunk) {
+/******/ 							var errorType = event && (event.type === 'load' ? 'missing' : event.type);
+/******/ 							var realSrc = event && event.target && event.target.src;
+/******/ 							var error = new Error('Loading chunk ' + chunkId + ' failed.\n(' + errorType + ': ' + realSrc + ')');
+/******/ 							error.type = errorType;
+/******/ 							error.request = realSrc;
+/******/ 							chunk[1](error);
+/******/ 						}
+/******/ 						installedChunks[chunkId] = undefined;
+/******/ 					}
+/******/ 				};
+/******/ 				var timeout = setTimeout(function(){
+/******/ 					onScriptComplete({ type: 'timeout', target: script });
+/******/ 				}, 120000);
+/******/ 				script.onerror = script.onload = onScriptComplete;
+/******/ 				document.head.appendChild(script);
+/******/ 			}
+/******/ 		}
+/******/ 		return Promise.all(promises);
+/******/ 	};
 /******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
@@ -783,8 +884,18 @@
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "dist/";
 /******/
+/******/ 	// on error function for async loading
+/******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
+/******/
 /******/ 	// __webpack_hash__
 /******/ 	__webpack_require__.h = function() { return hotCurrentHash; };
+/******/
+/******/ 	var jsonpArray = window["webpackJsonp"] = window["webpackJsonp"] || [];
+/******/ 	var oldJsonpFunction = jsonpArray.push.bind(jsonpArray);
+/******/ 	jsonpArray.push = webpackJsonpCallback;
+/******/ 	jsonpArray = jsonpArray.slice();
+/******/ 	for(var i = 0; i < jsonpArray.length; i++) webpackJsonpCallback(jsonpArray[i]);
+/******/ 	var parentJsonpFunction = oldJsonpFunction;
 /******/
 /******/
 /******/ 	// Load entry module and return exports
@@ -825,7 +936,8 @@ var routes = [
         children: [
             { path: '', redirectTo: 'dashboard/v1', pathMatch: 'full' },
             { path: 'dashboard', redirectTo: 'dashboard/v1', pathMatch: 'full' },
-            { path: 'dashboard/v1', component: _home_dashboard_v1_component__WEBPACK_IMPORTED_MODULE_3__["DashboardV1Component"] }
+            { path: 'dashboard/v1', component: _home_dashboard_v1_component__WEBPACK_IMPORTED_MODULE_3__["DashboardV1Component"] },
+            { path: 'system', loadChildren: function () { return new Promise(function (resolve, reject) { __webpack_require__.e(/*! require.ensure */ 0).then((function (require) { resolve(__webpack_require__(/*! ./systems/system-routing.module */ "./Typings/app/systems/system-routing.module.ts")['SystemModule']); }).bind(null, __webpack_require__)).catch(function (e) { reject({ loadChunkError: true, details: e }); }); }); } },
         ]
     }
 ];
@@ -2382,7 +2494,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_3__["platformB
 /*!*****************************************************************!*\
   !*** delegated ./Typings/util/index.ts from dll-reference util ***!
   \*****************************************************************/
-/*! exports provided: util, UtilModule, createOidcProviders, HttpContentType, HttpMethod, ComponentBase, FormComponentBase, EditComponentBase, TableQueryComponentBase, ViewModel, QueryParameter, TreeViewModel, TreeQueryParameter, PagerList, Result, FailResult, StateCode, SelectItem, DicService, UploadService, Session, Authorize, OidcAuthorize, OidcAuthorizeService, OidcAuthorizeConfig, LineWrapperComponent, ColumnWrapperComponent, BarWrapperComponent, AreaWrapperComponent, PieWrapperComponent, RosePieWrapperComponent, Button, TextBox, DatePicker, TextArea, Select, Radio, CheckboxGroup, Table, Upload, SingleUpload, Tree, TreeSelect, TreeTable */
+/*! exports provided: util, UtilModule, createOidcProviders, HttpContentType, HttpMethod, ComponentBase, FormComponentBase, EditComponentBase, TableQueryComponentBase, ViewModel, QueryParameter, TreeViewModel, TreeQueryParameter, PagerList, Result, FailResult, StateCode, SelectItem, DicService, UploadService, Session, Authorize, OidcAuthorize, OidcAuthorizeService, OidcAuthorizeConfig, LineWrapperComponent, ColumnWrapperComponent, BarWrapperComponent, AreaWrapperComponent, PieWrapperComponent, RosePieWrapperComponent, Button, TextBox, DatePicker, TextArea, NumberTextBox, Select, Radio, CheckboxGroup, Table, Upload, SingleUpload, Tree, TreeSelect, TreeTable */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = (__webpack_require__(/*! dll-reference util */ "dll-reference util"))("./Typings/util/index.ts");
@@ -4246,13 +4358,13 @@ module.exports = (__webpack_require__(/*! dll-reference util */ "dll-reference u
 /***/ }),
 
 /***/ "./node_modules/rxjs/_esm5/operators/index.js":
-/*!****************************************************************************************!*\
-  !*** delegated ./node_modules/rxjs/_esm5/operators/index.js from dll-reference vendor ***!
-  \****************************************************************************************/
+/*!**************************************************************************************!*\
+  !*** delegated ./node_modules/rxjs/_esm5/operators/index.js from dll-reference util ***!
+  \**************************************************************************************/
 /*! exports provided: audit, auditTime, buffer, bufferCount, bufferTime, bufferToggle, bufferWhen, catchError, combineAll, combineLatest, concat, concatAll, concatMap, concatMapTo, count, debounce, debounceTime, defaultIfEmpty, delay, delayWhen, dematerialize, distinct, distinctUntilChanged, distinctUntilKeyChanged, elementAt, endWith, every, exhaust, exhaustMap, expand, filter, finalize, find, findIndex, first, groupBy, ignoreElements, isEmpty, last, map, mapTo, materialize, max, merge, mergeAll, mergeMap, flatMap, mergeMapTo, mergeScan, min, multicast, observeOn, onErrorResumeNext, pairwise, partition, pluck, publish, publishBehavior, publishLast, publishReplay, race, reduce, repeat, repeatWhen, retry, retryWhen, refCount, sample, sampleTime, scan, sequenceEqual, share, shareReplay, single, skip, skipLast, skipUntil, skipWhile, startWith, subscribeOn, switchAll, switchMap, switchMapTo, take, takeLast, takeUntil, takeWhile, tap, throttle, throttleTime, throwIfEmpty, timeInterval, timeout, timeoutWith, timestamp, toArray, window, windowCount, windowTime, windowToggle, windowWhen, withLatestFrom, zip, zipAll */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference vendor */ "dll-reference vendor"))("./node_modules/rxjs/_esm5/operators/index.js");
+module.exports = (__webpack_require__(/*! dll-reference util */ "dll-reference util"))("./node_modules/rxjs/_esm5/operators/index.js");
 
 /***/ }),
 
@@ -5083,7 +5195,7 @@ module.exports = (__webpack_require__(/*! dll-reference vendor */ "dll-reference
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! webpack-hot-middleware/client?path=__webpack_hmr&dynamicPublicPath=true */"./node_modules/webpack-hot-middleware/client.js?path=__webpack_hmr&dynamicPublicPath=true");
-module.exports = __webpack_require__(/*! D:\WorkSpace\Gongap\KissU\src\KissU.WebAPP\Typings\main.ts */"./Typings/main.ts");
+module.exports = __webpack_require__(/*! D:\WorkSpace\Gongap\KissU\src\KissU.Web\Typings\main.ts */"./Typings/main.ts");
 
 
 /***/ }),

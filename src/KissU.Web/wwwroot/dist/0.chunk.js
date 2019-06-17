@@ -1,262 +1,19 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[0],{
 
-/***/ "./Typings/app/components/component-routing.module.ts":
-/*!************************************************************!*\
-  !*** ./Typings/app/components/component-routing.module.ts ***!
-  \************************************************************/
-/*! exports provided: ComponentRoutingModule */
+/***/ "./Typings/app/systems/menu/menu-detail.component.ts":
+/*!***********************************************************!*\
+  !*** ./Typings/app/systems/menu/menu-detail.component.ts ***!
+  \***********************************************************/
+/*! exports provided: MenuDetailComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ComponentRoutingModule", function() { return ComponentRoutingModule; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _forms_form_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./forms/form.component */ "./Typings/app/components/forms/form.component.ts");
-/* harmony import */ var _forms_textbox_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./forms/textbox.component */ "./Typings/app/components/forms/textbox.component.ts");
-/* harmony import */ var _data_display_table_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./data-display/table.component */ "./Typings/app/components/data-display/table.component.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-//表单组件
-
-
-//数据展示组件
-
-//路由配置
-var routes = [
-    {
-        path: 'forms',
-        children: [
-            { path: 'form', component: _forms_form_component__WEBPACK_IMPORTED_MODULE_2__["FormComponent"] },
-            { path: 'textbox', component: _forms_textbox_component__WEBPACK_IMPORTED_MODULE_3__["TextBoxComponent"] }
-        ]
-    },
-    {
-        path: 'data-display',
-        children: [
-            { path: 'table', component: _data_display_table_component__WEBPACK_IMPORTED_MODULE_4__["TableComponent"] }
-        ]
-    }
-];
-/**
- * 组件路由配置模块
- */
-var ComponentRoutingModule = /** @class */ (function () {
-    function ComponentRoutingModule() {
-    }
-    ComponentRoutingModule = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
-            imports: [
-                _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"].forChild(routes)
-            ]
-        })
-    ], ComponentRoutingModule);
-    return ComponentRoutingModule;
-}());
-
-
-
-/***/ }),
-
-/***/ "./Typings/app/components/component.module.ts":
-/*!****************************************************!*\
-  !*** ./Typings/app/components/component.module.ts ***!
-  \****************************************************/
-/*! exports provided: ComponentModule */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ComponentModule", function() { return ComponentModule; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _framework_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../framework.module */ "./Typings/app/framework.module.ts");
-/* harmony import */ var _component_routing_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./component-routing.module */ "./Typings/app/components/component-routing.module.ts");
-/* harmony import */ var _forms_form_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./forms/form.component */ "./Typings/app/components/forms/form.component.ts");
-/* harmony import */ var _forms_textbox_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./forms/textbox.component */ "./Typings/app/components/forms/textbox.component.ts");
-/* harmony import */ var _forms_dialog_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./forms/dialog.component */ "./Typings/app/components/forms/dialog.component.ts");
-/* harmony import */ var _data_display_table_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./data-display/table.component */ "./Typings/app/components/data-display/table.component.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-//框架模块
-
-//路由模块
-
-//表单组件
-
-
-
-//数据展示组件
-
-/**
- * 组件模块
- */
-var ComponentModule = /** @class */ (function () {
-    function ComponentModule() {
-    }
-    ComponentModule = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
-            imports: [_framework_module__WEBPACK_IMPORTED_MODULE_1__["FrameworkModule"], _component_routing_module__WEBPACK_IMPORTED_MODULE_2__["ComponentRoutingModule"]],
-            declarations: [
-                _forms_form_component__WEBPACK_IMPORTED_MODULE_3__["FormComponent"], _forms_textbox_component__WEBPACK_IMPORTED_MODULE_4__["TextBoxComponent"], _forms_dialog_component__WEBPACK_IMPORTED_MODULE_5__["DialogComponent"],
-                _data_display_table_component__WEBPACK_IMPORTED_MODULE_6__["TableComponent"]
-            ],
-            entryComponents: [_forms_dialog_component__WEBPACK_IMPORTED_MODULE_5__["DialogComponent"]]
-        })
-    ], ComponentModule);
-    return ComponentModule;
-}());
-
-
-
-/***/ }),
-
-/***/ "./Typings/app/components/data-display/table.component.ts":
-/*!****************************************************************!*\
-  !*** ./Typings/app/components/data-display/table.component.ts ***!
-  \****************************************************************/
-/*! exports provided: TableComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TableComponent", function() { return TableComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _env__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../env */ "./Typings/app/env.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-/**
- * 表格数据展示
- */
-var TableComponent = /** @class */ (function () {
-    /**
-     * 初始化
-     */
-    function TableComponent() {
-        this.queryParam = {};
-    }
-    TableComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-components-table',
-            templateUrl: !_env__WEBPACK_IMPORTED_MODULE_1__["env"].dev() ? './html/table.component.html' : '/View/Components/DataDisplay/Table'
-        }),
-        __metadata("design:paramtypes", [])
-    ], TableComponent);
-    return TableComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./Typings/app/components/forms/dialog.component.ts":
-/*!**********************************************************!*\
-  !*** ./Typings/app/components/forms/dialog.component.ts ***!
-  \**********************************************************/
-/*! exports provided: DialogComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DialogComponent", function() { return DialogComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MenuDetailComponent", function() { return MenuDetailComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _env__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../env */ "./Typings/app/env.ts");
 /* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../util */ "./Typings/util/index.ts");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-/**
- * 弹出层组件
- */
-var DialogComponent = /** @class */ (function (_super) {
-    __extends(DialogComponent, _super);
-    /**
-     * 初始化
-     */
-    function DialogComponent(injector) {
-        var _this = _super.call(this, injector) || this;
-        _this.injector = injector;
-        return _this;
-    }
-    DialogComponent.prototype.ok = function () {
-        this.util.dialog.close(this.test);
-    };
-    DialogComponent.prototype.ok2 = function () {
-        this.util.dialog.close(this.model);
-    };
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", String)
-    ], DialogComponent.prototype, "test", void 0);
-    DialogComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-components-dialog',
-            templateUrl: !_env__WEBPACK_IMPORTED_MODULE_1__["env"].dev() ? './html/dialog.component.html' : '/View/Components/Forms/Dialog'
-        }),
-        __metadata("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injector"]])
-    ], DialogComponent);
-    return DialogComponent;
-}(_util__WEBPACK_IMPORTED_MODULE_2__["ComponentBase"]));
-
-
-
-/***/ }),
-
-/***/ "./Typings/app/components/forms/form.component.ts":
-/*!********************************************************!*\
-  !*** ./Typings/app/components/forms/form.component.ts ***!
-  \********************************************************/
-/*! exports provided: FormComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormComponent", function() { return FormComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _env__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../env */ "./Typings/app/env.ts");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../util */ "./Typings/util/index.ts");
-/* harmony import */ var _dialog_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./dialog.component */ "./Typings/app/components/forms/dialog.component.ts");
+/* harmony import */ var _model_menu_view_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./model/menu-view-model */ "./Typings/app/systems/menu/model/menu-view-model.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -284,71 +41,289 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 /**
- * 表单组件
+ * 详细
  */
-var FormComponent = /** @class */ (function (_super) {
-    __extends(FormComponent, _super);
+var MenuDetailComponent = /** @class */ (function (_super) {
+    __extends(MenuDetailComponent, _super);
     /**
-     * 初始化
+     * 初始化组件
+     * @param injector 注入器
      */
-    function FormComponent(injector) {
-        var _this = _super.call(this, injector) || this;
-        _this.injector = injector;
-        return _this;
+    function MenuDetailComponent(injector) {
+        return _super.call(this, injector) || this;
     }
+    /**
+     * 创建视图模型
+     */
+    MenuDetailComponent.prototype.createModel = function () {
+        return new _model_menu_view_model__WEBPACK_IMPORTED_MODULE_3__["MenuViewModel"]();
+    };
     /**
      * 获取基地址
      */
-    FormComponent.prototype.getBaseUrl = function () {
-        return "form";
+    MenuDetailComponent.prototype.getBaseUrl = function () {
+        return "menu";
     };
-    FormComponent.prototype.test = function () {
-        var _this = this;
-        this.util.dialog.open({
-            title: "Util应用框架 - 新增",
-            width: 800,
-            disableClose: true,
-            component: _dialog_component__WEBPACK_IMPORTED_MODULE_3__["DialogComponent"],
-            data: { test: "a" },
-            onOk: function (instance) {
-                instance.ok2();
-            },
-            onBeforeClose: function (result) {
-                if (result === "a")
-                    return false;
-                return true;
-            },
-            onClose: function (result) {
-                _this.util.message.success(result);
-            }
-        });
-    };
-    FormComponent = __decorate([
+    MenuDetailComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-components-form',
-            templateUrl: !_env__WEBPACK_IMPORTED_MODULE_1__["env"].dev() ? './html/form.component.html' : '/View/Components/Forms/Form'
+            selector: 'menu-detail',
+            templateUrl: _env__WEBPACK_IMPORTED_MODULE_1__["env"].prod() ? './html/menu-detail.component.html' : '/view/systems/menu/detail'
         }),
         __metadata("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injector"]])
-    ], FormComponent);
-    return FormComponent;
+    ], MenuDetailComponent);
+    return MenuDetailComponent;
 }(_util__WEBPACK_IMPORTED_MODULE_2__["EditComponentBase"]));
 
 
 
 /***/ }),
 
-/***/ "./Typings/app/components/forms/textbox.component.ts":
-/*!***********************************************************!*\
-  !*** ./Typings/app/components/forms/textbox.component.ts ***!
-  \***********************************************************/
-/*! exports provided: TextBoxComponent */
+/***/ "./Typings/app/systems/menu/menu-edit.component.ts":
+/*!*********************************************************!*\
+  !*** ./Typings/app/systems/menu/menu-edit.component.ts ***!
+  \*********************************************************/
+/*! exports provided: MenuEditComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TextBoxComponent", function() { return TextBoxComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MenuEditComponent", function() { return MenuEditComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _env__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../env */ "./Typings/app/env.ts");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../util */ "./Typings/util/index.ts");
+/* harmony import */ var _model_menu_view_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./model/menu-view-model */ "./Typings/app/systems/menu/model/menu-view-model.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+/**
+ * 编辑
+ */
+var MenuEditComponent = /** @class */ (function (_super) {
+    __extends(MenuEditComponent, _super);
+    /**
+     * 初始化组件
+     * @param injector 注入器
+     */
+    function MenuEditComponent(injector) {
+        return _super.call(this, injector) || this;
+    }
+    /**
+     * 创建视图模型
+     */
+    MenuEditComponent.prototype.createModel = function () {
+        return new _model_menu_view_model__WEBPACK_IMPORTED_MODULE_3__["MenuViewModel"]();
+    };
+    /**
+     * 获取基地址
+     */
+    MenuEditComponent.prototype.getBaseUrl = function () {
+        return "menu";
+    };
+    MenuEditComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'menu-edit',
+            templateUrl: _env__WEBPACK_IMPORTED_MODULE_1__["env"].prod() ? './html/menu-edit.component.html' : '/view/systems/menu/edit'
+        }),
+        __metadata("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injector"]])
+    ], MenuEditComponent);
+    return MenuEditComponent;
+}(_util__WEBPACK_IMPORTED_MODULE_2__["EditComponentBase"]));
+
+
+
+/***/ }),
+
+/***/ "./Typings/app/systems/menu/menu-index.component.ts":
+/*!**********************************************************!*\
+  !*** ./Typings/app/systems/menu/menu-index.component.ts ***!
+  \**********************************************************/
+/*! exports provided: MenuIndexComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MenuIndexComponent", function() { return MenuIndexComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _env__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../env */ "./Typings/app/env.ts");
+/* harmony import */ var _model_menu_query__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./model/menu-query */ "./Typings/app/systems/menu/model/menu-query.ts");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../util */ "./Typings/util/index.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+//import { TreeTableQueryComponentBase } from '../../../util';
+
+
+/**
+ * 首页
+ */
+var MenuIndexComponent = /** @class */ (function (_super) {
+    __extends(MenuIndexComponent, _super);
+    /**
+     * 初始化首页
+     * @param injector 注入器
+     */
+    function MenuIndexComponent(injector) {
+        return _super.call(this, injector) || this;
+    }
+    /**
+     * 创建查询参数
+     */
+    MenuIndexComponent.prototype.createQuery = function () {
+        return new _model_menu_query__WEBPACK_IMPORTED_MODULE_2__["MenuQuery"]();
+    };
+    MenuIndexComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'menu-index',
+            templateUrl: _env__WEBPACK_IMPORTED_MODULE_1__["env"].prod() ? './html/menu-index.component.html' : '/view/systems/menu'
+        }),
+        __metadata("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injector"]])
+    ], MenuIndexComponent);
+    return MenuIndexComponent;
+}(_util__WEBPACK_IMPORTED_MODULE_3__["ComponentBase"]));
+
+
+
+/***/ }),
+
+/***/ "./Typings/app/systems/menu/model/menu-query.ts":
+/*!******************************************************!*\
+  !*** ./Typings/app/systems/menu/model/menu-query.ts ***!
+  \******************************************************/
+/*! exports provided: MenuQuery */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MenuQuery", function() { return MenuQuery; });
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../util */ "./Typings/util/index.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+/**
+ * 查询参数
+ */
+var MenuQuery = /** @class */ (function (_super) {
+    __extends(MenuQuery, _super);
+    function MenuQuery() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    return MenuQuery;
+}(_util__WEBPACK_IMPORTED_MODULE_0__["TreeQueryParameter"]));
+
+
+
+/***/ }),
+
+/***/ "./Typings/app/systems/menu/model/menu-view-model.ts":
+/*!***********************************************************!*\
+  !*** ./Typings/app/systems/menu/model/menu-view-model.ts ***!
+  \***********************************************************/
+/*! exports provided: MenuViewModel */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MenuViewModel", function() { return MenuViewModel; });
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../util */ "./Typings/util/index.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+/**
+ * 视图模型
+ */
+var MenuViewModel = /** @class */ (function (_super) {
+    __extends(MenuViewModel, _super);
+    function MenuViewModel() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    return MenuViewModel;
+}(_util__WEBPACK_IMPORTED_MODULE_0__["TreeViewModel"]));
+
+
+
+/***/ }),
+
+/***/ "./Typings/app/systems/system-routing.module.ts":
+/*!******************************************************!*\
+  !*** ./Typings/app/systems/system-routing.module.ts ***!
+  \******************************************************/
+/*! exports provided: SystemRoutingModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SystemRoutingModule", function() { return SystemRoutingModule; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _menu_menu_index_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./menu/menu-index.component */ "./Typings/app/systems/menu/menu-index.component.ts");
+/* harmony import */ var _menu_menu_edit_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./menu/menu-edit.component */ "./Typings/app/systems/menu/menu-edit.component.ts");
+/* harmony import */ var _menu_menu_detail_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./menu/menu-detail.component */ "./Typings/app/systems/menu/menu-detail.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -357,16 +332,35 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 };
 
 
-var TextBoxComponent = /** @class */ (function () {
-    function TextBoxComponent() {
+
+
+
+//路由配置
+var routes = [
+    {
+        path: '',
+        children: [
+            { path: 'menu', children: [
+                    { path: '', component: _menu_menu_index_component__WEBPACK_IMPORTED_MODULE_2__["MenuIndexComponent"] },
+                    { path: 'create', component: _menu_menu_edit_component__WEBPACK_IMPORTED_MODULE_3__["MenuEditComponent"] },
+                    { path: 'update/:id', component: _menu_menu_edit_component__WEBPACK_IMPORTED_MODULE_3__["MenuEditComponent"] },
+                    { path: 'detail/:id', component: _menu_menu_detail_component__WEBPACK_IMPORTED_MODULE_4__["MenuDetailComponent"] }
+                ] },
+        ]
     }
-    TextBoxComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-components-textbox',
-            templateUrl: !_env__WEBPACK_IMPORTED_MODULE_1__["env"].dev() ? './html/text-box.component.html' : '/View/Components/Forms/TextBox',
+];
+/**
+ * systems路由模块
+ */
+var SystemRoutingModule = /** @class */ (function () {
+    function SystemRoutingModule() {
+    }
+    SystemRoutingModule = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
+            imports: [_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"].forChild(routes)]
         })
-    ], TextBoxComponent);
-    return TextBoxComponent;
+    ], SystemRoutingModule);
+    return SystemRoutingModule;
 }());
 
 

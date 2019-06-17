@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
 using Util.Datas.UnitOfWorks;
 
 namespace KissU.Data.UnitOfWorks.SqlServer {
@@ -10,8 +11,8 @@ namespace KissU.Data.UnitOfWorks.SqlServer {
         /// 初始化工作单元
         /// </summary>
         /// <param name="options">配置项</param>
-        /// <param name="unitOfWorkManager">工作单元服务</param>
-        public KissUUnitOfWork( DbContextOptions options, IUnitOfWorkManager unitOfWorkManager ) : base( options, unitOfWorkManager ) {
+        /// <param name="serviceProvider">服务提供器</param>
+        public KissUUnitOfWork( DbContextOptions options, IServiceProvider serviceProvider ) : base( options, serviceProvider ) {
         }
     }
 }
