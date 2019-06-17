@@ -14,8 +14,8 @@ namespace KissU.WebAPI.Controllers.Home {
         [HttpGet]
         public IActionResult GetAppData() {
             var data = new AppData {
-                App = { Name = "Util", Description = ".Net Core应用框架" },
-                User = { Name = "何镇汐", Avatar = "/assets/img/avatar.jpg", Email = "xiadao521@qq.com" },
+                App = { Name = "KissU", Description = ".Net Core应用框架" },
+                User = { Name = "龚安平", Avatar = "/assets/img/avatar.jpg", Email = "gonganping@qq.com" },
                 Menu = new List<MenuInfo> {
                     GetMainMenu(),
                     GetDemoMenu(),

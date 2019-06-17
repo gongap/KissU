@@ -5083,7 +5083,7 @@ module.exports = (__webpack_require__(/*! dll-reference vendor */ "dll-reference
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! webpack-hot-middleware/client?path=__webpack_hmr&dynamicPublicPath=true */"./node_modules/webpack-hot-middleware/client.js?path=__webpack_hmr&dynamicPublicPath=true");
-module.exports = __webpack_require__(/*! D:\Desktop\KFNets.Veterinary\src\KFNets.Veterinary\Typings\main.ts */"./Typings/main.ts");
+module.exports = __webpack_require__(/*! D:\WorkSpace\Gongap\KissU\src\KissU.WebAPP\Typings\main.ts */"./Typings/main.ts");
 
 
 /***/ }),
