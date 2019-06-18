@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace KissU.WebAPP.Controllers {
+namespace KissU.Web.Controllers {
     /// <summary>
     /// 主控制器
     /// </summary>

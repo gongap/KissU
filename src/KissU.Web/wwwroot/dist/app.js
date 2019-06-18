@@ -92,7 +92,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "cc3b165815a5bd312a40";
+/******/ 	var hotCurrentHash = "2038a821180113870bc1";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -937,7 +937,7 @@ var routes = [
             { path: '', redirectTo: 'dashboard/v1', pathMatch: 'full' },
             { path: 'dashboard', redirectTo: 'dashboard/v1', pathMatch: 'full' },
             { path: 'dashboard/v1', component: _home_dashboard_v1_component__WEBPACK_IMPORTED_MODULE_3__["DashboardV1Component"] },
-            { path: 'system', loadChildren: function () { return new Promise(function (resolve, reject) { __webpack_require__.e(/*! require.ensure */ 0).then((function (require) { resolve(__webpack_require__(/*! ./systems/system-routing.module */ "./Typings/app/systems/system-routing.module.ts")['SystemModule']); }).bind(null, __webpack_require__)).catch(function (e) { reject({ loadChunkError: true, details: e }); }); }); } },
+            { path: 'system', loadChildren: function () { return new Promise(function (resolve, reject) { __webpack_require__.e(/*! require.ensure */ 0).then((function (require) { resolve(__webpack_require__(/*! ./systems/system.module */ "./Typings/app/systems/system.module.ts")['SystemModule']); }).bind(null, __webpack_require__)).catch(function (e) { reject({ loadChunkError: true, details: e }); }); }); } }
         ]
     }
 ];
@@ -1189,11 +1189,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var ng2_ckeditor__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ng2-ckeditor */ "./node_modules/ng2-ckeditor/lib/ng2-ckeditor.js");
 /* harmony import */ var ng2_ckeditor__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(ng2_ckeditor__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var ng_zorro_antd__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ng-zorro-antd */ "./node_modules/ng-zorro-antd/fesm5/ng-zorro-antd.js");
-/* harmony import */ var viser_ng__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! viser-ng */ "./node_modules/viser-ng/es/index.js");
-/* harmony import */ var _delon_theme__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @delon/theme */ "./node_modules/@delon/theme/fesm5/theme.js");
-/* harmony import */ var _delon_abc__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @delon/abc */ "./node_modules/@delon/abc/fesm5/abc.js");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../util */ "./Typings/util/index.ts");
+/* harmony import */ var primeng_primeng__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! primeng/primeng */ "./node_modules/primeng/primeng.js");
+/* harmony import */ var primeng_primeng__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(primeng_primeng__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var ng_zorro_antd__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ng-zorro-antd */ "./node_modules/ng-zorro-antd/fesm5/ng-zorro-antd.js");
+/* harmony import */ var viser_ng__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! viser-ng */ "./node_modules/viser-ng/es/index.js");
+/* harmony import */ var _delon_theme__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @delon/theme */ "./node_modules/@delon/theme/fesm5/theme.js");
+/* harmony import */ var _delon_abc__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @delon/abc */ "./node_modules/@delon/abc/fesm5/abc.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../util */ "./Typings/util/index.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1207,6 +1209,8 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 //CKEditor模块
+
+//PrimeNg模块
 
 //Ant Design模块
 
@@ -1227,11 +1231,12 @@ var FrameworkModule = /** @class */ (function () {
                 _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["ReactiveFormsModule"],
                 ng2_ckeditor__WEBPACK_IMPORTED_MODULE_4__["CKEditorModule"],
-                ng_zorro_antd__WEBPACK_IMPORTED_MODULE_5__["NgZorroAntdModule"],
-                viser_ng__WEBPACK_IMPORTED_MODULE_6__["ViserModule"],
-                _delon_theme__WEBPACK_IMPORTED_MODULE_7__["AlainThemeModule"],
-                _delon_abc__WEBPACK_IMPORTED_MODULE_8__["DelonABCModule"],
-                _util__WEBPACK_IMPORTED_MODULE_9__["UtilModule"]
+                primeng_primeng__WEBPACK_IMPORTED_MODULE_5__["ColorPickerModule"],
+                ng_zorro_antd__WEBPACK_IMPORTED_MODULE_6__["NgZorroAntdModule"],
+                viser_ng__WEBPACK_IMPORTED_MODULE_7__["ViserModule"],
+                _delon_theme__WEBPACK_IMPORTED_MODULE_8__["AlainThemeModule"],
+                _delon_abc__WEBPACK_IMPORTED_MODULE_9__["DelonABCModule"],
+                _util__WEBPACK_IMPORTED_MODULE_10__["UtilModule"]
             ]
         })
     ], FrameworkModule);
@@ -2355,7 +2360,7 @@ var StartupService = /** @class */ (function () {
      */
     StartupService.prototype.load = function () {
         var _this = this;
-        return _util__WEBPACK_IMPORTED_MODULE_2__["util"].webapi.get('/api/menu').handleAsync({
+        return _util__WEBPACK_IMPORTED_MODULE_2__["util"].webapi.get('/api/main').handleAsync({
             ok: function (result) {
                 _this.settingService.setApp(result.app);
                 _this.settingService.setUser(result.user);
@@ -4123,6 +4128,17 @@ var CKGroupDirective = /** @class */ (function () {
 }());
 exports.CKGroupDirective = CKGroupDirective;
 //# sourceMappingURL=ckgroup.directive.js.map
+
+/***/ }),
+
+/***/ "./node_modules/primeng/primeng.js":
+/*!*****************************************************************************!*\
+  !*** delegated ./node_modules/primeng/primeng.js from dll-reference vendor ***!
+  \*****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = (__webpack_require__(/*! dll-reference vendor */ "dll-reference vendor"))("./node_modules/primeng/primeng.js");
 
 /***/ }),
 

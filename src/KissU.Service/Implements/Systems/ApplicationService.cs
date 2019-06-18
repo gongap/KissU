@@ -12,6 +12,7 @@ using KissU.Service.Dtos.Systems;
 using KissU.Service.Queries.Systems;
 using Util.Security.Properties;
 using Util;
+using System.Collections.Generic;
 
 namespace KissU.Service.Implements.Systems {
     /// <summary>
@@ -23,10 +24,12 @@ namespace KissU.Service.Implements.Systems {
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
         /// <param name="applicationRepository">应用程序仓储</param>
+        /// <param name="menuService"></param>
         /// <param name="sqlQuery">Sql查询对象</param>
-        public ApplicationService( ISampleUnitOfWork unitOfWork, IApplicationRepository applicationRepository, ISqlQuery sqlQuery )
+        public ApplicationService(ISampleUnitOfWork unitOfWork, IApplicationRepository applicationRepository, IMenuService menuService, ISqlQuery sqlQuery)
             : base( unitOfWork, applicationRepository ) {
             ApplicationRepository = applicationRepository;
+            MenuService = menuService;
             SqlQuery = sqlQuery;
         }
 
@@ -34,6 +37,8 @@ namespace KissU.Service.Implements.Systems {
         /// 应用程序仓储
         /// </summary>
         public IApplicationRepository ApplicationRepository { get; set; }
+        public IMenuService MenuService { get; }
+
         /// <summary>
         /// Sql查询对象
         /// </summary>
@@ -47,6 +52,15 @@ namespace KissU.Service.Implements.Systems {
             if( entity == null )
                 return new ApplicationDto();
             return entity.MapTo<ApplicationDto>();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="entity"></param>
+        protected override void DeleteAfter(List<Application> applications)
+        {
+            MenuService.DeleteAsync("123");
         }
 
         /// <summary>

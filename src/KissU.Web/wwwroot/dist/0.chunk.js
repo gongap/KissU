@@ -128,7 +128,12 @@ var MenuEditComponent = /** @class */ (function (_super) {
      * @param injector 注入器
      */
     function MenuEditComponent(injector) {
-        return _super.call(this, injector) || this;
+        var _this = _super.call(this, injector) || this;
+        _util__WEBPACK_IMPORTED_MODULE_2__["util"].webapi.post("htpp:///bm/user").param({ id: '123' }).handleAsync({
+            ok: function () {
+            },
+        });
+        return _this;
     }
     /**
      * 创建视图模型
@@ -361,6 +366,57 @@ var SystemRoutingModule = /** @class */ (function () {
         })
     ], SystemRoutingModule);
     return SystemRoutingModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./Typings/app/systems/system.module.ts":
+/*!**********************************************!*\
+  !*** ./Typings/app/systems/system.module.ts ***!
+  \**********************************************/
+/*! exports provided: SystemModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SystemModule", function() { return SystemModule; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _framework_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../framework.module */ "./Typings/app/framework.module.ts");
+/* harmony import */ var _system_routing_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./system-routing.module */ "./Typings/app/systems/system-routing.module.ts");
+/* harmony import */ var _menu_menu_index_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./menu/menu-index.component */ "./Typings/app/systems/menu/menu-index.component.ts");
+/* harmony import */ var _menu_menu_edit_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./menu/menu-edit.component */ "./Typings/app/systems/menu/menu-edit.component.ts");
+/* harmony import */ var _menu_menu_detail_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./menu/menu-detail.component */ "./Typings/app/systems/menu/menu-detail.component.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+
+/**
+ * systems模块
+ */
+var SystemModule = /** @class */ (function () {
+    function SystemModule() {
+    }
+    SystemModule = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
+            declarations: [
+                _menu_menu_index_component__WEBPACK_IMPORTED_MODULE_3__["MenuIndexComponent"], _menu_menu_edit_component__WEBPACK_IMPORTED_MODULE_4__["MenuEditComponent"], _menu_menu_detail_component__WEBPACK_IMPORTED_MODULE_5__["MenuDetailComponent"],
+            ],
+            imports: [
+                _framework_module__WEBPACK_IMPORTED_MODULE_1__["FrameworkModule"], _system_routing_module__WEBPACK_IMPORTED_MODULE_2__["SystemRoutingModule"]
+            ]
+        })
+    ], SystemModule);
+    return SystemModule;
 }());
 
 

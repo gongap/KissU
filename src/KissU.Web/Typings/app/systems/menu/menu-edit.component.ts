@@ -1,7 +1,9 @@
 ﻿import { Component, Injector } from '@angular/core';
 import { env } from '../../env';
-import { EditComponentBase } from '../../../util';
+import { EditComponentBase, util } from '../../../util';
 import { MenuViewModel } from './model/menu-view-model';
+
+
 
 /**
  * 编辑
@@ -17,6 +19,13 @@ export class MenuEditComponent extends EditComponentBase<MenuViewModel> {
      */
     constructor(injector: Injector) {
         super(injector);
+        util.webapi.post(`htpp:///bm/user`).param({ id: '123' }).handleAsync({
+            ok: () => {
+
+            },
+            
+        })
+        
     }
     
     /**

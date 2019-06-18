@@ -12,7 +12,7 @@ const routes: Routes = [
             { path: '', redirectTo: 'dashboard/v1', pathMatch: 'full' },
             { path: 'dashboard', redirectTo: 'dashboard/v1', pathMatch: 'full' },
             { path: 'dashboard/v1', component: DashboardV1Component },
-            { path: 'system', loadChildren: "./systems/system-routing.module#SystemModule" },
+            { path: 'system', loadChildren: "./systems/system.module#SystemModule" }
         ]
     }
 ];
