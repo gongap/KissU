@@ -1,7 +1,7 @@
 ﻿import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutDefaultComponent } from './home/layout/default/default.component';
-import { DashboardV1Component } from './home/dashboard/v1.component';
+import { DashboardIndexComponent } from './home/dashboard/dashboard-index.component';
 
 //路由配置
 const routes: Routes = [
@@ -10,9 +10,8 @@ const routes: Routes = [
         component: LayoutDefaultComponent,
         children: [
             { path: '', redirectTo: 'dashboard/v1', pathMatch: 'full' },
-            { path: 'dashboard', redirectTo: 'dashboard/v1', pathMatch: 'full' },
-            { path: 'dashboard/v1', component: DashboardV1Component },
-            { path: 'system', loadChildren: "./systems/system.module#SystemModule" }
+            { path: 'dashboard', redirectTo: 'dashboard/index', pathMatch: 'full' },
+            { path: 'dashboard/index', component: DashboardIndexComponent },
         ]
     }
 ];

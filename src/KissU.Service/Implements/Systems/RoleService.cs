@@ -1,17 +1,14 @@
-﻿using System;
-using System.Threading.Tasks;
-using Util.Applications.Trees;
-using Util.Datas.Queries;
-using Util.Domains.Repositories;
+﻿using Util;
 using Util.Maps;
+using Util.Domains.Repositories;
+using Util.Datas.Queries;
+using Util.Applications.Trees;
 using KissU.Data;
-using KissU.Domain.Models;
-using KissU.Domain.Repositories;
-using KissU.Domain.Services;
-using KissU.Service.Abstractions.Systems;
+using KissU.Domain.Systems.Models;
+using KissU.Domain.Systems.Repositories;
 using KissU.Service.Dtos.Systems;
 using KissU.Service.Queries.Systems;
-using Util;
+using KissU.Service.Abstractions.Systems;
 
 namespace KissU.Service.Implements.Systems {
     /// <summary>
@@ -22,67 +19,23 @@ namespace KissU.Service.Implements.Systems {
         /// 初始化角色服务
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
-        /// <param name="roleManager">角色服务</param>
         /// <param name="roleRepository">角色仓储</param>
-        public RoleService( ISampleUnitOfWork unitOfWork, IRoleManager roleManager,IRoleRepository roleRepository )
+        public RoleService( IKissUUnitOfWork unitOfWork, IRoleRepository roleRepository )
             : base( unitOfWork, roleRepository ) {
-            UnitOfWork = unitOfWork;
-            RoleManager = roleManager;
             RoleRepository = roleRepository;
         }
-
-        /// <summary>
-        /// 工作单元
-        /// </summary>
-        public ISampleUnitOfWork UnitOfWork { get; set; }
-        /// <summary>
-        /// 角色服务
-        /// </summary>
-        public IRoleManager RoleManager { get; set; }
+        
         /// <summary>
         /// 角色仓储
         /// </summary>
         public IRoleRepository RoleRepository { get; set; }
-
-        /// <summary>
-        /// 创建角色
-        /// </summary>
-        /// <param name="request">创建请求参数</param>
-        public async Task<Guid> CreateAsync( CreateRoleRequest request ) {
-            var role = ToEntity( request );
-            role.Type = "Role";
-            await RoleManager.CreateAsync( role );
-            await UnitOfWork.CommitAsync();
-            return role.Id;
-        }
-
-        /// <summary>
-        /// 转换为实体
-        /// </summary>
-        private Role ToEntity( CreateRoleRequest request ) {
-            return request.MapTo<Role>();
-        }
-
-        /// <summary>
-        /// 修改角色
-        /// </summary>
-        /// <param name="request">修改角色请求参数</param>
-        public async Task UpdateAsync( UpdateRoleRequest request ) {
-            var entity = await RoleRepository.FindAsync( request.Id.ToGuid() );
-            request.MapTo( entity );
-            await RoleManager.UpdateAsync( entity );
-            await UnitOfWork.CommitAsync();
-        }
-
+        
         /// <summary>
         /// 创建查询对象
         /// </summary>
         /// <param name="param">查询参数</param>
         protected override IQueryBase<Role> CreateQuery( RoleQuery param ) {
-            return new Query<Role>( param )
-                .Or( t => t.Name.Contains( param.Keyword ),
-                    t => t.Code.Contains( param.Keyword ),
-                    t => t.PinYin.Contains( param.Keyword ) );
+            return new Query<Role>( param );
         }
     }
 }

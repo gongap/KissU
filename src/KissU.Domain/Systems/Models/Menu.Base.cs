@@ -8,23 +8,23 @@ using Util.Domains.Trees;
 using Util.Domains.Auditing;
 using Util.Domains.Tenants;
 
-namespace KissU.Systems.Domain.Models {
+namespace KissU.Domain.Systems.Models {
     /// <summary>
-    /// 
+    /// 菜单
     /// </summary>
-    [Description( "" )]
+    [Description( "菜单" )]
     public partial class Menu : TreeEntityBase<Menu>,IDelete,IAudited {
         /// <summary>
-        /// 初始化
+        /// 初始化菜单
         /// </summary>
         public Menu()
             : this( Guid.Empty, "", 0 ) {
         }
 
         /// <summary>
-        /// 初始化
+        /// 初始化菜单
         /// </summary>
-        /// <param name="id">标识</param>
+        /// <param name="id">菜单标识</param>
         /// <param name="path">路径</param>
         /// <param name="level">级数</param>
         public Menu( Guid id, string path, int level )

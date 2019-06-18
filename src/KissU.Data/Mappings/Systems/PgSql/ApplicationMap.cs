@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using KissU.Domain.Models;
+using KissU.Domain.Systems.Models;
 
 namespace KissU.Data.Mappings.Systems.PgSql {
     /// <summary>

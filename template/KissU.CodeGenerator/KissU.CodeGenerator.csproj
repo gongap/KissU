@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B58D16AD-9987-4BB8-8BB2-2A0CE8BC9829}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KissU.CodeGenerator</RootNamespace>
+    <AssemblyName>KissU.CodeGenerator</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CodeSmith.Core, Version=1.1.0.0, Culture=neutral, PublicKeyToken=9fd61cdb91609a7a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\CodeSmith.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="CodeSmith.Engine, Version=6.0.0.0, Culture=neutral, PublicKeyToken=9fd61cdb91609a7a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\CodeSmith.Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.NRefactory, Version=5.0.0.6, Culture=neutral, PublicKeyToken=d4bfe873e7598c49, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\ICSharpCode.NRefactory.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.NRefactory.CSharp, Version=5.0.0.6, Culture=neutral, PublicKeyToken=d4bfe873e7598c49, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\ICSharpCode.NRefactory.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil, Version=0.9.5.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="SchemaExplorer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=9fd61cdb91609a7a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\SchemaExplorer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Templates\Common\Extensions.cs" />
+    <Compile Include="Templates\Common\Generator.cs" />
+    <Compile Include="Templates\Common\Model.cs" />
+    <Compile Include="Templates\Common\Parser.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Templates\Templates\Data\PgSql\Mapping.cst" />
+    <None Include="Templates\Templates\Data\PgSql\UnitOfWork.cst" />
+    <None Include="Templates\Templates\Data\MySql\Mapping.cst" />
+    <None Include="Templates\Templates\Data\MySql\UnitOfWork.cst" />
+    <None Include="Templates\Templates\Domain\Factory.cst" />
+    <None Include="Templates\Templates\Domain\ItemGroup.cst" />
+    <None Include="Templates\Templates\Persist\Datas\PgSql\PoMapping.cst" />
+    <None Include="Templates\Templates\Persist\Datas\PoExtension.cst" />
+    <None Include="Templates\Templates\Persist\Datas\Po.cst" />
+    <None Include="Templates\Templates\Data\IUnitOfWork.cst" />
+    <None Include="Templates\Templates\Data\Repository.cst" />
+    <None Include="Templates\Templates\Data\SqlServer\Mapping.cst" />
+    <None Include="Templates\Templates\Data\SqlServer\UnitOfWork.cst" />
+    <None Include="Templates\Templates\Persist\Datas\SqlServer\PoMapping.cst" />
+    <None Include="Templates\Templates\Persist\Datas\Repository.cst" />
+    <None Include="Templates\Templates\Persist\Datas\TreePo.cst" />
+    <None Include="Templates\Templates\Persist\Services\Service.cst" />
+    <None Include="Templates\Templates\Persist\Services\TreeService.cst" />
+    <None Include="Templates\Templates\Web\Apis\ApiController.cst" />
+    <None Include="Templates\Templates\Web\Apis\TreeApiController.cst" />
+    <None Include="Templates\Templates\Web\Typings\IndexComponent.cst" />
+    <None Include="Templates\Templates\Web\Typings\Module.cst" />
+    <None Include="Templates\Templates\Web\Typings\Query.cst" />
+    <None Include="Templates\Templates\Web\Typings\Routing.cst" />
+    <None Include="Templates\Templates\Web\Typings\Trees\TreeIndexComponent.cst" />
+    <None Include="Templates\Templates\Web\Typings\ViewModel.cst" />
+    <None Include="Templates\Templates\Web\Typings\EditComponent.cst" />
+    <None Include="Templates\Templates\Web\Typings\DetailComponent.cst" />
+    <None Include="Templates\Templates\Web\Typings\Trees\TreeViewModel.cst" />
+    <None Include="Templates\Templates\Web\Typings\Trees\TreeQuery.cst" />
+    <None Include="Templates\Templates\Web\Views\IndexView.cst" />
+    <None Include="Templates\Templates\Web\Views\EditView.cst" />
+    <None Include="Templates\Templates\Web\Views\DetailView.cst" />
+    <None Include="Templates\Templates\Web\Views\TreeIndexView.cst" />
+    <None Include="Templates\Templates\Service\Dto.cst" />
+    <None Include="Templates\Templates\Service\DtoExtension.cst" />
+    <None Include="Templates\Templates\Service\IocConfig.cst" />
+    <None Include="Templates\Templates\Domain\Entity.Base.cst" />
+    <None Include="Templates\Templates\Domain\Entity.cst" />
+    <None Include="Templates\Templates\Domain\IRepository.cst" />
+    <None Include="Templates\Templates\Domain\TreeEntity.cst" />
+    <None Include="Templates\Templates\Persist\Datas\Store.cst" />
+    <None Include="Templates\Templates\Persist\Datas\IStore.cst" />
+    <None Include="Templates\Templates\Persist\Domains\IRepository.cst" />
+    <None Include="Templates\Templates\Service\IService.cst" />
+    <None Include="Templates\Templates\Service\Query.cst" />
+    <None Include="Templates\Templates\Service\Service.cst" />
+    <None Include="Templates\Templates\Service\Trees\TreeQuery.cst" />
+    <None Include="Templates\Templates\Service\Trees\TreeDto.cst" />
+    <None Include="Templates\Templates\Service\Trees\ITreeService.cst" />
+    <None Include="Templates\Templates\Service\Trees\TreeService.cst" />
+    <None Include="Templates\Templates\Test\DtoTest.cst" />
+    <None Include="Templates\Templates\Test\EntityTest.cst" />
+    <None Include="Templates\Templates\Test\EntityTest.Data.cst" />
+    <None Include="Templates\Templates\Test\ServiceTest.cst" />
+    <None Include="Project.csp" />
+    <None Include="Templates\Templates.cst" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

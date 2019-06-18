@@ -20,14 +20,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="Pages\Home\Dashboard\V1.cshtml" />
-    <None Include="Pages\Home\Dashboard\V1\AreaChart.cshtml" />
-    <None Include="Pages\Home\Dashboard\V1\BarChart.cshtml" />
-    <None Include="Pages\Home\Dashboard\V1\CardStats.cshtml" />
-    <None Include="Pages\Home\Dashboard\V1\ColumnChart.cshtml" />
-    <None Include="Pages\Home\Dashboard\V1\LineChart.cshtml" />
-    <None Include="Pages\Home\Dashboard\V1\List.cshtml" />
-    <None Include="Pages\Home\Dashboard\V1\PieChart.cshtml" />
+    <None Include="Pages\Home\Dashboard\Index.cshtml" />
+    <None Include="Pages\Home\Dashboard\Partial\AreaChart.cshtml" />
+    <None Include="Pages\Home\Dashboard\Partial\BarChart.cshtml" />
+    <None Include="Pages\Home\Dashboard\Partial\CardStats.cshtml" />
+    <None Include="Pages\Home\Dashboard\Partial\ColumnChart.cshtml" />
+    <None Include="Pages\Home\Dashboard\Partial\LineChart.cshtml" />
+    <None Include="Pages\Home\Dashboard\Partial\List.cshtml" />
+    <None Include="Pages\Home\Dashboard\Partial\PieChart.cshtml" />
     <None Include="Pages\Home\NotFound.cshtml" />
     <None Include="Pages\Index.cshtml" />
     <None Include="Pages\_ViewImports.cshtml" />
@@ -46,10 +46,6 @@
     <Content Update="nlog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Typings\app\systems\menu\html\" />
   </ItemGroup>
 
   <!-- Debug调试模式打包第三方框架 -->

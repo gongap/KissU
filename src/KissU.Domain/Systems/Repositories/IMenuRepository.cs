@@ -1,9 +1,9 @@
 ﻿using Util.Domains.Repositories;
-using KissU.Systems.Domain.Models;
+using KissU.Domain.Systems.Models;
 
-namespace KissU.Systems.Domain.Repositories {
+namespace KissU.Domain.Systems.Repositories {
     /// <summary>
-    /// 仓储
+    /// 菜单仓储
     /// </summary>
     public interface IMenuRepository : IRepository<Menu> {
     }

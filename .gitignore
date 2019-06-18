@@ -2,10 +2,11 @@
 /.vs
 obj/
 bin/
+BenchmarkDotNet.Artifacts/
 /output
 *.user
 *.log
-/util/KissU.CodeGenerator/Results
+/template/KissU.CodeGenerator/Results
 /src/KissU.Web/node_modules
 /src/KissU.Web/wwwroot/dist
 /src/KissU.Web/yarn.lock

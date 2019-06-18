@@ -19,7 +19,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Models/Role.*.cs">
+    <Compile Update="Systems/Models/Application.Base.cs">
+      <DependentUpon>Application.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Systems/Models/Menu.Base.cs">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Systems/Models/Role.Base.cs">
       <DependentUpon>Role.cs</DependentUpon>
     </Compile>
   </ItemGroup>

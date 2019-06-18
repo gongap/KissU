@@ -7,18 +7,18 @@ using Util.Ui.Data;
 
 namespace KissU.Service.Dtos.Systems {
     /// <summary>
-    /// 数据传输对象
+    /// 菜单数据传输对象
     /// </summary>
     [Model("model")]
     public class MenuDto : TreeDto<MenuDto> {
-        ///// <summary>
-        ///// 文本
-        ///// </summary>
-        //[Required(ErrorMessage = "文本不能为空")]
-        //[StringLength( 256, ErrorMessage = "文本输入过长，不能超过256位" )]
-        //[Display( Name = "文本" )]
-        //[DataMember]
-        //public string Text { get; set; }
+        /// <summary>
+        /// 文本
+        /// </summary>
+        [Required(ErrorMessage = "文本不能为空")]
+        [StringLength( 256, ErrorMessage = "文本输入过长，不能超过256位" )]
+        [Display( Name = "文本" )]
+        [DataMember]
+        public string Text { get; set; }
         /// <summary>
         /// 拼音
         /// </summary>
@@ -67,13 +67,13 @@ namespace KissU.Service.Dtos.Systems {
         [Display( Name = "链接 target" )]
         [DataMember]
         public string Target { get; set; }
-        ///// <summary>
-        ///// 图标
-        ///// </summary>
-        //[StringLength( 256, ErrorMessage = "图标输入过长，不能超过256位" )]
-        //[Display( Name = "图标" )]
-        //[DataMember]
-        //public string Icon { get; set; }
+        /// <summary>
+        /// 图标
+        /// </summary>
+        [StringLength( 256, ErrorMessage = "图标输入过长，不能超过256位" )]
+        [Display( Name = "图标" )]
+        [DataMember]
+        public string Icon { get; set; }
         /// <summary>
         /// 徽标数，展示的数字
         /// </summary>

@@ -1,11 +1,12 @@
 ﻿@page
 @model MenuDto
-@*<util-toolbar>
+
+<util-toolbar>
     <util-layout>
         <util-textbox model="queryParam.keyword" placeholder="搜索" on-change="search()"></util-textbox>
     </util-layout>
     <util-layout>
-        <util-a styles="Icon" tooltip="添加" link="create">
+        <util-a styles="Icon" tooltip="添加菜单" link="create">
             <util-icon font-awesome-icon="Plus"></util-icon>
         </util-a>
         <util-button id="btnDisable" styles="Icon" tooltip="批量禁用" on-click="disable(null,btnDisable)">
@@ -21,7 +22,7 @@
             <util-icon font-awesome-icon="Refresh"></util-icon>
         </util-button>
     </util-layout>
-</util-toolbar>*@
+</util-toolbar>
 
 <util-tree-table id="treeTable_Menu" base-url="menu" query-param="queryParam">
     <util-tree-table-column for="Text"></util-tree-table-column>
@@ -51,7 +52,7 @@
     <util-tree-table-column for="Open"></util-tree-table-column>
     <util-tree-table-column for="Note"></util-tree-table-column>
     <util-tree-table-column title="操作">
-        @*<util-a styles="Icon" tooltip="添加下级" link="create" query-params="{id:row.data.id}">
+        <util-a styles="Icon" tooltip="添加下级菜单" link="create" query-params="{id:row.data.id}">
             <util-icon material-icon="Add"></util-icon>
         </util-a>
         <util-button id="btnMoveUp" styles="Icon" tooltip="上移" ng-if="!isFirst(row)" on-click="moveUp(row,btnMoveUp,$event)">
@@ -69,6 +70,6 @@
                 <util-menu-item label="删除" material-icon="Delete" on-click="delete(row)"></util-menu-item>
                 <util-menu-item label="详细" material-icon="Visibility" bind-link="['detail',row.data.id]"></util-menu-item>
             </util-menu>
-        </util-button>*@
+        </util-button>
     </util-tree-table-column>
 </util-tree-table>

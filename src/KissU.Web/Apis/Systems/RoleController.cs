@@ -1,7 +1,7 @@
-﻿using KissU.Service.Abstractions.Systems;
+﻿using Util.Ui.Controllers;
 using KissU.Service.Dtos.Systems;
 using KissU.Service.Queries.Systems;
-using Util.Ui.Controllers;
+using KissU.Service.Abstractions.Systems;
 
 namespace KissU.Web.Apis.Systems {
     /// <summary>
@@ -13,18 +13,12 @@ namespace KissU.Web.Apis.Systems {
         /// </summary>
         /// <param name="service">角色服务</param>
         public RoleController( IRoleService service ) : base( service ) {
+            RoleService = service;
         }
-    }
 
-    /// <summary>
-    /// 角色控制器
-    /// </summary>
-    public class RoleTableController : TreeTableControllerBase<RoleDto, RoleQuery> {
         /// <summary>
-        /// 初始化角色控制器
+        /// 角色服务
         /// </summary>
-        /// <param name="service">角色服务</param>
-        public RoleTableController( IRoleService service ) : base( service ) {
-        }
+        public IRoleService RoleService { get; }
     }
 }

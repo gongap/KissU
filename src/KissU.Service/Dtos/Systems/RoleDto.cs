@@ -1,17 +1,20 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
+using Util.Ui.Attributes;
+using Util.Applications.Dtos;
 using Util.Ui.Data;
 
 namespace KissU.Service.Dtos.Systems {
     /// <summary>
     /// 角色数据传输对象
     /// </summary>
+    [Model("model")]
     public class RoleDto : TreeDto<RoleDto> {
         /// <summary>
         /// 角色编码
         /// </summary>
-        [Required( ErrorMessage = "角色编码不能为空" )]
+        [Required(ErrorMessage = "角色编码不能为空")]
         [StringLength( 256, ErrorMessage = "角色编码输入过长，不能超过256位" )]
         [Display( Name = "角色编码" )]
         [DataMember]
@@ -19,19 +22,15 @@ namespace KissU.Service.Dtos.Systems {
         /// <summary>
         /// 角色名称
         /// </summary>
-        [Required( ErrorMessage = "角色名称不能为空" )]
+        [Required(ErrorMessage = "角色名称不能为空")]
         [StringLength( 256, ErrorMessage = "角色名称输入过长，不能超过256位" )]
         [Display( Name = "角色名称" )]
         [DataMember]
         public string Name { get; set; }
         /// <summary>
-        /// 角色名称
-        /// </summary>
-        public override string Text => Name;
-        /// <summary>
         /// 标准化角色名称
         /// </summary>
-        [Required( ErrorMessage = "标准化角色名称不能为空" )]
+        [Required(ErrorMessage = "标准化角色名称不能为空")]
         [StringLength( 256, ErrorMessage = "标准化角色名称输入过长，不能超过256位" )]
         [Display( Name = "标准化角色名称" )]
         [DataMember]
@@ -39,7 +38,7 @@ namespace KissU.Service.Dtos.Systems {
         /// <summary>
         /// 角色类型
         /// </summary>
-        [Required( ErrorMessage = "角色类型不能为空" )]
+        [Required(ErrorMessage = "角色类型不能为空")]
         [StringLength( 80, ErrorMessage = "角色类型输入过长，不能超过80位" )]
         [Display( Name = "角色类型" )]
         [DataMember]

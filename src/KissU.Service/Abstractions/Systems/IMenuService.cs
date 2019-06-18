@@ -4,7 +4,7 @@ using KissU.Service.Queries.Systems;
 
 namespace KissU.Service.Abstractions.Systems {
     /// <summary>
-    /// 服务
+    /// 菜单服务
     /// </summary>
     public interface IMenuService : ITreeService<MenuDto, MenuQuery> {
     }

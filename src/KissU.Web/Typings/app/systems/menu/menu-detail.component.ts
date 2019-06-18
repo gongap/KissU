@@ -4,7 +4,7 @@ import { EditComponentBase } from '../../../util';
 import { MenuViewModel } from './model/menu-view-model';
 
 /**
- * 详细
+ * 菜单详细
  */
 @Component({
     selector: 'menu-detail',

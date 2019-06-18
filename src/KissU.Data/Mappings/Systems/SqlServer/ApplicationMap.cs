@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using KissU.Domain.Models;
+using KissU.Domain.Systems.Models;
 
 namespace KissU.Data.Mappings.Systems.SqlServer {
     /// <summary>
@@ -13,14 +13,14 @@ namespace KissU.Data.Mappings.Systems.SqlServer {
         protected override void MapTable( EntityTypeBuilder<Application> builder ) {
             builder.ToTable( "Application", "Systems" );
         }
-
+        
         /// <summary>
         /// 映射属性
         /// </summary>
         protected override void MapProperties( EntityTypeBuilder<Application> builder ) {
             //应用程序编号
-            builder.Property( t => t.Id )
-                .HasColumnName( "ApplicationId" );
+            builder.Property(t => t.Id)
+                .HasColumnName("ApplicationId");
             builder.HasQueryFilter( t => t.IsDeleted == false );
         }
     }

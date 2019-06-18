@@ -1,7 +1,7 @@
 ﻿import { TreeViewModel } from '../../../../util';
 
 /**
- * 视图模型
+ * 菜单视图模型
  */
 export class MenuViewModel extends TreeViewModel {
     /**

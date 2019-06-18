@@ -1,6 +1,6 @@
-﻿namespace KissU.Systems.Domain.Models {
+﻿namespace KissU.Domain.Systems.Models {
     /// <summary>
-    /// 
+    /// 菜单
     /// </summary>
     public partial class Menu {
     }

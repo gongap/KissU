@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using KissU.Systems.Domain.Models;
+using KissU.Domain.Systems.Models;
 
 namespace KissU.Data.Mappings.Systems.MySql {
     /// <summary>
-    /// 映射配置
+    /// 菜单映射配置
     /// </summary>
     public class MenuMap : Util.Datas.Ef.MySql.AggregateRootMap<Menu> {
         /// <summary>

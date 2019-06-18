@@ -1,7 +1,7 @@
 ﻿import { TreeQueryParameter } from '../../../../util';
 
 /**
- * 查询参数
+ * 菜单查询参数
  */
 export class MenuQuery extends TreeQueryParameter {
     /**

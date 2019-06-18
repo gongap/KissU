@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using KissU.Domain.Models;
+using KissU.Domain.Systems.Models;
 
 namespace KissU.Data.Mappings.Systems.SqlServer {
     /// <summary>
@@ -13,16 +13,17 @@ namespace KissU.Data.Mappings.Systems.SqlServer {
         protected override void MapTable( EntityTypeBuilder<Role> builder ) {
             builder.ToTable( "Role", "Systems" );
         }
-
+        
         /// <summary>
         /// 映射属性
         /// </summary>
         protected override void MapProperties( EntityTypeBuilder<Role> builder ) {
-            builder.Property( t => t.Id ).HasColumnName( "RoleId" );
+            //角色编号
+            builder.Property(t => t.Id)
+                .HasColumnName("RoleId");
+            builder.HasQueryFilter( t => t.IsDeleted == false );
             builder.Property( t => t.Path ).HasColumnName( "Path" );
             builder.Property( t => t.Level ).HasColumnName( "Level" );
-            builder.Property( t => t.IsAdmin ).HasColumnName( "IsAdmin" );
-            builder.HasQueryFilter( t => t.IsDeleted == false );
         }
     }
 }
