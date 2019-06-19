@@ -8,7 +8,7 @@
             <v-chart [forceFit]="true" [height]="275">
                 <v-tooltip></v-tooltip>
                 <v-axis></v-axis>
-                <x-column url="/api/column"></x-column>
+                <x-column url="/api/dashboard/column"></x-column>
             </v-chart>
         </nz-card>
     </div>
@@ -22,7 +22,7 @@
                 <v-tooltip></v-tooltip>
                 <v-axis></v-axis>
                 <v-legend></v-legend>
-                <x-column url="/api/column/group"></x-column>
+                <x-column url="/api/dashboard/column/group"></x-column>
             </v-chart>
         </nz-card>
     </div>
@@ -37,7 +37,7 @@
             <v-chart [forceFit]="true" [height]="275">
                 <v-tooltip></v-tooltip>
                 <v-axis></v-axis>
-                <x-column url="/api/column/group" isStack="false"></x-column>
+                <x-column url="/api/dashboard/column/group" isStack="false"></x-column>
             </v-chart>
         </nz-card>
     </div>
@@ -51,8 +51,8 @@
                 <v-tooltip></v-tooltip>
                 <v-axis></v-axis>
                 <v-legend></v-legend>
-                <x-line url="/api/line/multi"></x-line>
-                <x-column url="/api/column/group"></x-column>
+                <x-line url="/api/dashboard/line/multi"></x-line>
+                <x-column url="/api/dashboard/column/group"></x-column>
             </v-chart>
         </nz-card>
     </div>

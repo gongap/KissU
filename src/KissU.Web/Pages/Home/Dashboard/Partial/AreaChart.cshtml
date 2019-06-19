@@ -8,7 +8,7 @@
             <v-chart [forceFit]="true" [height]="275">
                 <v-tooltip></v-tooltip>
                 <v-axis></v-axis>
-                <x-area url="/api/area"></x-area>
+                <x-area url="/api/dashboard/area"></x-area>
             </v-chart>
         </nz-card>
     </div>
@@ -22,7 +22,7 @@
                 <v-tooltip [crosshairs]="{ type: 'line' }"></v-tooltip>
                 <v-axis></v-axis>
                 <v-legend></v-legend>
-                <x-area url="/api/area/multi"></x-area>
+                <x-area url="/api/dashboard/area/multi"></x-area>
             </v-chart>
         </nz-card>
     </div>

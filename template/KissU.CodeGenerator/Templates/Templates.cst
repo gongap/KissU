@@ -684,7 +684,7 @@
         result.EntityContext = entityContext;
         result.Namespace = GetNamespace(entityContext.Entities.First());
         result.DbName = GetDbName(entityContext);
-        result.RenderToFile(GetPath(className,"Service\\Configs"), true);
+        //result.RenderToFile(GetPath(className,"Service\\Configs"), true);
     }
     
     //创建Dto

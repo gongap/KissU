@@ -18,7 +18,7 @@ import { HeaderUserComponent } from './layout/default/header/components/user.com
 import { LayoutPassportComponent } from './layout/passport/passport.component';
 
 //仪表盘
-import { DashboardV1Component } from './dashboard/v1.component';
+import { DashboardIndexComponent } from './dashboard/dashboard-index.component';
 
 //组件列表
 const components = [
@@ -34,7 +34,7 @@ const components = [
     HeaderComponent,
     SidebarComponent,
     LayoutPassportComponent,
-    DashboardV1Component
+    DashboardIndexComponent
 ];
 
 /**

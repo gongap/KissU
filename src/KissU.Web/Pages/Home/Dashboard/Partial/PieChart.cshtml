@@ -8,7 +8,7 @@
             <v-chart [forceFit]="true" [height]="275">
                 <v-tooltip></v-tooltip>
                 <v-axis></v-axis>
-                <x-pie url="/api/pie"></x-pie>
+                <x-pie url="/api/dashboard/pie"></x-pie>
             </v-chart>
         </nz-card>
     </div>
@@ -21,7 +21,7 @@
             <v-chart [forceFit]="true" [height]="275">
                 <v-tooltip></v-tooltip>
                 <v-axis></v-axis>
-                <x-pie url="/api/pie" [isInnerLabel]="true"></x-pie>
+                <x-pie url="/api/dashboard/pie" [isInnerLabel]="true"></x-pie>
             </v-chart>
         </nz-card>
     </div>
@@ -36,7 +36,7 @@
             <v-chart [forceFit]="true" [height]="275">
                 <v-tooltip></v-tooltip>
                 <v-axis></v-axis>
-                <x-pie url="/api/pie" isDonut="true"></x-pie>
+                <x-pie url="/api/dashboard/pie" isDonut="true"></x-pie>
             </v-chart>
         </nz-card>
     </div>
@@ -49,7 +49,7 @@
             <v-chart [forceFit]="true" [height]="275">
                 <v-tooltip></v-tooltip>
                 <v-axis></v-axis>
-                <x-pie url="/api/pie" isDonut="true" innerRadius="0.2"></x-pie>
+                <x-pie url="/api/dashboard/pie" isDonut="true" innerRadius="0.2"></x-pie>
             </v-chart>
         </nz-card>
     </div>
@@ -63,7 +63,7 @@
             </ng-template>
             <v-chart [forceFit]="true" [height]="275">
                 <v-tooltip></v-tooltip>
-                <x-rose-pie url="/api/pie/rose"></x-rose-pie>
+                <x-rose-pie url="/api/dashboard/pie/rose"></x-rose-pie>
             </v-chart>
         </nz-card>
     </div>
@@ -75,7 +75,7 @@
             </ng-template>
             <v-chart [forceFit]="true" [height]="275">
                 <v-tooltip></v-tooltip>
-                <x-rose-pie url="/api/pie/rose" isDonut="true" legendPosition="left" legendOffsetX="140"></x-rose-pie>
+                <x-rose-pie url="/api/dashboard/pie/rose" isDonut="true" legendPosition="left" legendOffsetX="140"></x-rose-pie>
             </v-chart>
         </nz-card>
     </div>
