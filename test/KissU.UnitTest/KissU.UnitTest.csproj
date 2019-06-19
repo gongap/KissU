@@ -5,9 +5,9 @@
 
     <IsPackable>false</IsPackable>
 
-    <AssemblyName>KissU.WebSite.Tests</AssemblyName>
+    <AssemblyName>KissU.UnitTest</AssemblyName>
 
-    <RootNamespace>KissU.WebSite.Tests</RootNamespace>
+    <RootNamespace>KissU.UnitTest</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
