@@ -9,7 +9,7 @@ const routes: Routes = [
         path: '',
         component: LayoutDefaultComponent,
         children: [
-            { path: '', redirectTo: 'dashboard/v1', pathMatch: 'full' },
+            { path: '', redirectTo: 'dashboard/index', pathMatch: 'full' },
             { path: 'dashboard', redirectTo: 'dashboard/index', pathMatch: 'full' },
             { path: 'dashboard/index', component: DashboardIndexComponent },
             { path: 'system', loadChildren: "./systems/system.module#SystemModule" },
