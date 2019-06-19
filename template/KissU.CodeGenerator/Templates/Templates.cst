@@ -936,7 +936,7 @@
             string className = string.Format( "{0}Test", entity.ClassName );
             result.Entity = entity;
             result.Namespace = GetNamespace(entity);
-            result.RenderToFile(GetPath(className,"Test\\UnitTests\\Models\\" + GetSchema(entity) ), true);
+            result.RenderToFile(GetPath(className,"IntegrationTest\\Tests\\Models\\" + GetSchema(entity) ), true);
         }
     }
     
@@ -950,7 +950,7 @@
             string className = string.Format( "{0}Test.Data", entity.ClassName );
             result.Entity = entity;
             result.Namespace = GetNamespace(entity);
-            result.RenderToFile(GetPath(className,"Test\\UnitTests\\Models\\" + GetSchema(entity)), true);
+            result.RenderToFile(GetPath(className,"IntegrationTest\\Tests\\Models\\" + GetSchema(entity)), true);
         }
     }
     
@@ -964,7 +964,7 @@
             string className = string.Format( "{0}DtoTest", entity.ClassName );
             result.Entity = entity;
             result.Namespace = GetNamespace(entity);
-            result.RenderToFile(GetPath(className,"Test\\IntegrationTests\\Dtos\\" + GetSchema(entity)), true);
+            result.RenderToFile(GetPath(className,"IntegrationTest\\Tests\\Dtos\\" + GetSchema(entity)), true);
         }
     }
     
@@ -979,7 +979,7 @@
             string className = string.Format( "{0}ServiceTest",entity.ClassName );
             result.Entity = entity;
             result.Namespace = GetNamespace(entity);
-            result.RenderToFile(GetPath(className,"Test\\IntegrationTests\\Services\\" + GetSchema(entity)), true);
+            result.RenderToFile(GetPath(className,"IntegrationTest\\Tests\\Services\\" + GetSchema(entity)), true);
         }
     }
     

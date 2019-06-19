@@ -1,6 +1,6 @@
 ﻿using Util.Sessions;
 
-namespace Util.Datas.Tests.Commons {
+namespace KissU.IntegrationTest.Commons {
     /// <summary>
     /// 用户会话
     /// </summary>

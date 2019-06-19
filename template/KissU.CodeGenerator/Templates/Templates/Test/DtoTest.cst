@@ -21,9 +21,9 @@ using Xunit;
 using Util;
 using <%= string.Format("{0}.Service.Dtos.{1}",Namespace,Entity.TableSchema) %>;
 using <%= string.Format("{0}.Service.Dtos.{1}.Extensions",Namespace,Entity.TableSchema) %>;
-using <%= string.Format("{0}.Test.Models.{1}",Namespace,Entity.TableSchema) %>;
+using <%= string.Format("{0}.IntegrationTest.Tests.Models.{1}",Namespace,Entity.TableSchema) %>;
 
-namespace <%= string.Format("{0}.Test.Integration.Dtos.{1}",Namespace,Entity.TableSchema) %> {
+namespace <%= string.Format("{0}.IntegrationTest.Tests.Dtos.{1}",Namespace,Entity.TableSchema) %> {
     /// <summary>
     /// <%= Description %>数据传输对象测试
     /// </summary>

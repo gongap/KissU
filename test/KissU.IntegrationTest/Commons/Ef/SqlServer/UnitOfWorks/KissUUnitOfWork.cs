@@ -2,11 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using Util.Aspects;
-using Util.Datas.Tests.Commons.Datas.SqlServer.Configs;
+using KissU.IntegrationTest.Commons.Datas.SqlServer.Configs;
 using Util.Datas.UnitOfWorks;
 using Util.Reflections;
 
-namespace Util.Datas.Tests.Ef.SqlServer.UnitOfWorks {
+namespace KissU.IntegrationTest.Ef.SqlServer.UnitOfWorks {
     /// <summary>
     /// SqlServer工作单元
     /// </summary>

@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace KissU.IntegrationTest.Commons.Datas.SqlServer.Configs {
+namespace KissU.UnitTest.Commons.Configs {
     /// <summary>
     /// 全局测试配置
     /// </summary>

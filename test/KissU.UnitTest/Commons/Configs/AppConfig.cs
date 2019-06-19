@@ -1,12 +1,8 @@
-﻿namespace KissU.IntegrationTest.Commons.Datas.SqlServer.Configs {
+﻿namespace KissU.UnitTest.Commons.Configs {
     /// <summary>
     /// 测试应用程序配置
     /// </summary>
     public static class AppConfig {
-        /// <summary>
-        /// 连接字符串
-        /// </summary>
-        public const string Connection = "Server=.;Database=KissU;uid=sa;pwd=saP@ss123;";
         /// <summary>
         /// 当前用户编号
         /// </summary>

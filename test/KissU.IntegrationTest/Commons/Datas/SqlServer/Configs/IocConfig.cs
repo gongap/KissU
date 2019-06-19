@@ -10,12 +10,12 @@ using Util.Sessions;
 using KissU.Data;
 using KissU.Data.Repositories.Systems;
 using KissU.Domain.Systems.Repositories;
-using Util.Datas.Tests.Ef.SqlServer.UnitOfWorks;
+using KissU.IntegrationTest.Ef.SqlServer.UnitOfWorks;
 using KissU.Service.Abstractions.Systems;
 using KissU.Service.Implements.Systems;
 using Util.Reflections;
 
-namespace Util.Datas.Tests.Commons.Datas.SqlServer.Configs
+namespace KissU.IntegrationTest.Commons.Datas.SqlServer.Configs
 {
     /// <summary>
     /// 依赖注入配置

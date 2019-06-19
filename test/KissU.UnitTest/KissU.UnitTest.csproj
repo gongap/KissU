@@ -28,4 +28,8 @@
     <ProjectReference Include="..\..\src\KissU.Web\KissU.Web.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Tests\" />
+  </ItemGroup>
+
 </Project>
