@@ -126,5 +126,49 @@ namespace KissU.Web.Apis.Home {
                 }
             };
         }
+
+        /// <summary>
+        /// 获取系统管理菜单
+        /// </summary>
+        private MenuInfo GetSystemMenu()
+        {
+            return new MenuInfo
+            {
+                Text = "System",
+                Group = true,
+                Children = {
+                    new MenuInfo {
+                        Text = "应用管理",
+                        Icon = "anticon anticon-edit",
+                        Children = {
+                            new MenuInfo {
+                                Text = "基础表单",
+                                Link = "/system/application"
+                            }
+                        }
+                    },
+                    new MenuInfo {
+                        Text = "角色管理",
+                        Icon = "anticon anticon-edit",
+                        Children = {
+                            new MenuInfo {
+                                Text = "基础列表",
+                                Link = "/system/role"
+                            }
+                        }
+                    },
+                    new MenuInfo {
+                        Text = "菜单管理",
+                        Icon = "anticon anticon-edit",
+                        Children = {
+                            new MenuInfo {
+                                Text = "树形",
+                                Link = "/system/menu"
+                            }
+                        }
+                    }
+                }
+            };
+        }
     }
 }

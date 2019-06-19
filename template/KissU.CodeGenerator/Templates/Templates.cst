@@ -890,7 +890,7 @@
         
         foreach(Entity entity in entityContext.Entities)
         {
-            string className = string.Format("{0}.routing.module",GetSchema(entity).ToSingular().ToCamelCase());
+            string className = string.Format("{0}-routing.module",GetSchema(entity).ToSingular().ToCamelCase());
             result.EntityContext = entityContext;
             result.Entity = entity;
             result.Namespace = GetSchema(entity).ToLower();            
