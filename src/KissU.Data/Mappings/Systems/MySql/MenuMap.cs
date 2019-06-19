@@ -20,7 +20,7 @@ namespace KissU.Data.Mappings.Systems.MySql {
         protected override void MapProperties( EntityTypeBuilder<Menu> builder ) {
             //
             builder.Property(t => t.Id)
-                .HasColumnName("Id");
+                .HasColumnName("MenuId");
             builder.HasQueryFilter( t => t.IsDeleted == false );
             builder.Property( t => t.Path ).HasColumnName( "Path" );
             builder.Property( t => t.Level ).HasColumnName( "Level" );
