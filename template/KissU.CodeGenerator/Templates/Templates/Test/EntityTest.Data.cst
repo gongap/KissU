@@ -86,7 +86,7 @@ namespace <%= string.Format("{0}.Test.Models.{1}",Namespace,Entity.TableSchema) 
         public static readonly <%= p.TypeName %> <%= p.PropertyName.ToSafeName() %>2 = Util.Helpers.Convert.ToBytes( "2" );
         <%continue;} %>
         <% if( p.ColumnName.ToLower() == "isdeleted" ){ %>
-        public static readonly <%= p.TypeName %> <%= p.PropertyName.ToSafeName() %> = false;
+        public static readonly <%= p.TypeName %> <%= p.PropertyName.ToSafeName() %>2 = false;
         <%continue;} %>
         <% if( p.DataType == DbType.Boolean ){ %>
         public static readonly <%= p.TypeName %> <%= p.PropertyName.ToSafeName() %>2 = true;
@@ -102,9 +102,15 @@ namespace <%= string.Format("{0}.Test.Models.{1}",Namespace,Entity.TableSchema) 
         /// 创建<%= Description %>实体
         /// </summary>
         public static <%= SafeClassName %> Create(string id = "") {
-            return new <%= SafeClassName %>( id<%=Entity.GetToEntityConvert() %> ) {
+            return 
+			<% if(Entity.IsTreeEntity()) {%>
+			new <%= SafeClassName %>( id<%=Entity.GetToEntityConvert() %>,"", 0  ) {
+			<%}else{%>
+			new <%= SafeClassName %>( id<%=Entity.GetToEntityConvert() %> ) {
+			<%}%>
             <% foreach(Property p in Entity.Properties) { %>
             <% if( p.IsPrimaryKey.SafeValue() ) continue; %>
+			<% if( Entity.IgnoreTreeEntityProperty(p) ) continue;%>
                 <%= p.PropertyName.ToSafeName() %> = <%= p.PropertyName.ToSafeName() %>,
             <% }%>
             };
@@ -115,9 +121,15 @@ namespace <%= string.Format("{0}.Test.Models.{1}",Namespace,Entity.TableSchema) 
         /// </summary>
         /// <param name="id"><%= Description %>编号</param>
         public static <%= SafeClassName %> Create2( string id = "" ) {
-            return new <%= SafeClassName %>( id<%=Entity.GetToEntityConvert() %> ) {
+            return 
+			<% if(Entity.IsTreeEntity()) {%>
+			new <%= SafeClassName %>( id<%=Entity.GetToEntityConvert() %>,"", 0 ) {
+			<%}else{%>
+			new <%= SafeClassName %>( id<%=Entity.GetToEntityConvert() %> ) {
+			<%}%>
             <% foreach(Property p in Entity.Properties) { %>
             <% if( p.IsPrimaryKey.SafeValue() ) continue; %>
+			<% if( Entity.IgnoreTreeEntityProperty(p) ) continue;%>
                 <%= p.PropertyName.ToSafeName() %> = <%= p.PropertyName.ToSafeName() %>2,
             <% }%>
             };

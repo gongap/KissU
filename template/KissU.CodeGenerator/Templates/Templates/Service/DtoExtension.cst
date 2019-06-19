@@ -18,6 +18,7 @@
 using Util;
 using Util.Maps;
 using <%= Entity.GetNamespace(Namespace,"Domain","Models") %>;
+using <%= Entity.GetNamespace(Namespace,"Domain","Factories") %>;
 
 namespace <%= string.Format("{0}.Service.Dtos.{1}.Extensions",Namespace,Entity.TableSchema) %> {
     /// <summary>
@@ -31,7 +32,11 @@ namespace <%= string.Format("{0}.Service.Dtos.{1}.Extensions",Namespace,Entity.T
         public static <%= SafeClassName %> ToEntity( this <%= SafeClassName %>Dto dto ) {
             if ( dto == null )
                 return new <%= SafeClassName %>();
-            return dto.MapTo( new <%= SafeClassName %>( dto.Id<%=Entity.GetToEntityConvert() %> ) );
+			<% if(Entity.IsTreeEntity()  ) {%>
+				return dto.MapTo( new <%= SafeClassName %>( dto.Id<%=Entity.GetToEntityConvert() %>, dto.Path, dto.Level.SafeValue() ) );
+			<%}else {%>
+				return dto.MapTo( new <%= SafeClassName %>( dto.Id<%=Entity.GetToEntityConvert() %> ) );
+			<%}%>
         }
         
         /// <summary>
@@ -41,11 +46,17 @@ namespace <%= string.Format("{0}.Service.Dtos.{1}.Extensions",Namespace,Entity.T
         public static <%= SafeClassName %> ToEntity2( this <%= SafeClassName %>Dto dto ) {
             if( dto == null )
                 return new <%= SafeClassName %>();
-            return new <%= SafeClassName %>( dto.Id<%=Entity.GetToEntityConvert() %> ) {
+            return 
+				<% if(Entity.IsTreeEntity()) {%>
+				new <%= SafeClassName %>( dto.Id<%=Entity.GetToEntityConvert() %>,dto.Path, dto.Level.SafeValue() ) {
+				<%}else{%>
+				new <%= SafeClassName %>( dto.Id<%=Entity.GetToEntityConvert() %> ) {
+				<%}%>
                 <% foreach(Property p in Entity.Properties) { %>
                 <% if( p.IsPrimaryKey.SafeValue() ) continue; %>
-                <% if( p.DataType == DbType.Boolean ){ %>
-                    <%= p.PropertyName.ToSafeName() %> = dto.<%= p.PropertyName.ToSafeName() %>.SafeValue(),
+				<% if( Entity.IgnoreTreeEntityProperty(p) ) continue;%>
+                <% if( p.DataType == DbType.Boolean){ %>
+                <%= p.PropertyName.ToSafeName() %> = dto.<%= p.PropertyName.ToSafeName() %>.SafeValue(),
                 <%continue;} %>
                 <%= p.PropertyName.ToSafeName() %> = dto.<%= p.PropertyName.ToSafeName() %>,
                 <%}%>
@@ -64,6 +75,12 @@ namespace <%= string.Format("{0}.Service.Dtos.{1}.Extensions",Namespace,Entity.T
                 <% if( p.IsPrimaryKey.SafeValue() ) {%>
                 <%= p.PropertyName.ToSafeName().ToCamelCase() %> : dto.Id<%=Entity.GetToEntityConvert() %>,
                 <%continue;}%>
+				<% if( p.DataType == DbType.Boolean|| p.DataType == DbType.Int32 ){ %>
+                <%= p.PropertyName.ToSafeName().ToCamelCase() %> : dto.<%= p.PropertyName.ToSafeName() %>.SafeValue(),
+                <%continue;} %>				
+				<% if( p.PropertyName == "ParentId" ){ %>
+                <%= p.PropertyName.ToSafeName().ToCamelCase() %> : dto.<%= p.PropertyName.ToSafeName() %>.ToGuidOrNull(),
+                <%continue;} %>
                 <%= p.PropertyName.ToSafeName().ToCamelCase() %> : dto.<%= p.PropertyName.ToSafeName() %><%= Entity.GetComma(p,false) %>
                 <%}%>
             );
@@ -91,6 +108,9 @@ namespace <%= string.Format("{0}.Service.Dtos.{1}.Extensions",Namespace,Entity.T
                 <% if( p.IsPrimaryKey.SafeValue() ) {%>
                 Id = entity.Id<%=Entity.GetToDtoConvert() %>,
                 <%continue;}%>
+				<% if( p.PropertyName == "ParentId" ){ %>
+                <%= p.PropertyName.ToSafeName() %> = entity.<%= p.PropertyName.ToSafeName() %>.SafeString(),
+                <%continue;} %>
                 <%= p.PropertyName.ToSafeName() %> = entity.<%= p.PropertyName.ToSafeName() %>,
                 <%}%>
             };

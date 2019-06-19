@@ -18,7 +18,9 @@
 using System;
 using System.Collections.Generic;
 using Xunit;
+using Util;
 using <%= string.Format("{0}.Service.Dtos.{1}",Namespace,Entity.TableSchema) %>;
+using <%= string.Format("{0}.Service.Dtos.{1}.Extensions",Namespace,Entity.TableSchema) %>;
 using <%= string.Format("{0}.Test.Models.{1}",Namespace,Entity.TableSchema) %>;
 
 namespace <%= string.Format("{0}.Test.Integration.Dtos.{1}",Namespace,Entity.TableSchema) %> {
@@ -61,7 +63,10 @@ namespace <%= string.Format("{0}.Test.Integration.Dtos.{1}",Namespace,Entity.Tab
         <% if( p.IsPrimaryKey.SafeValue() ) { %>
             Assert.Equal( <%= SafeClassName %>Test.Id<%= Entity.GetToDtoConvert() %>,dto.Id );
         <% continue;}%>
-            Assert.Equal( <%= SafeClassName %>Test.<%= p.ColumnName %>,dto.<%= p.ColumnName %> );
+		<% if( p.PropertyName == "ParentId" ) { %>
+            Assert.Equal( <%= SafeClassName %>Test.<%= p.PropertyName.ToSafeName() %>,dto.<%= p.PropertyName.ToSafeName() %>.ToGuidOrNull() );
+        <% continue;}%>
+            Assert.Equal( <%= SafeClassName %>Test.<%= p.PropertyName.ToSafeName() %>,dto.<%= p.PropertyName.ToSafeName() %> );
         <% }%>
         }
         
@@ -75,7 +80,7 @@ namespace <%= string.Format("{0}.Test.Integration.Dtos.{1}",Namespace,Entity.Tab
         <% if( p.IsPrimaryKey.SafeValue() ) { %>
             Assert.Equal( <%= SafeClassName %>Test.Id,entity.Id );
         <% continue;}%>
-            Assert.Equal( <%= SafeClassName %>Test.<%= p.ColumnName %>,entity.<%= p.ColumnName %> );
+            Assert.Equal( <%= SafeClassName %>Test.<%= p.PropertyName.ToSafeName() %>,entity.<%= p.PropertyName.ToSafeName() %> );
         <% }%>
         }
     }

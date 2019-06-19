@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Xunit;
+using Util;
 using KissU.Service.Dtos.Systems;
+using KissU.Service.Dtos.Systems.Extensions;
 using KissU.Test.Models.Systems;
 
 namespace KissU.Test.Integration.Dtos.Systems {

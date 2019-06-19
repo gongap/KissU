@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Xunit;
+using Util;
 using KissU.Service.Dtos.Systems;
+using KissU.Service.Dtos.Systems.Extensions;
 using KissU.Test.Models.Systems;
 
 namespace KissU.Test.Integration.Dtos.Systems {
@@ -45,7 +47,7 @@ namespace KissU.Test.Integration.Dtos.Systems {
             Assert.Equal( MenuTest.PinYin,dto.PinYin );
             Assert.Equal( MenuTest.Enabled,dto.Enabled );
             Assert.Equal( MenuTest.SortId,dto.SortId );
-            Assert.Equal( MenuTest.ParentId,dto.ParentId );
+            Assert.Equal( MenuTest.ParentId,dto.ParentId.ToGuidOrNull() );
             Assert.Equal( MenuTest.Path,dto.Path );
             Assert.Equal( MenuTest.Level,dto.Level );
             Assert.Equal( MenuTest.I18n,dto.I18n );
@@ -61,7 +63,7 @@ namespace KissU.Test.Integration.Dtos.Systems {
             Assert.Equal( MenuTest.Disabled,dto.Disabled );
             Assert.Equal( MenuTest.Hide,dto.Hide );
             Assert.Equal( MenuTest.HideInBreadcrumb,dto.HideInBreadcrumb );
-            Assert.Equal( MenuTest.ACL,dto.ACL );
+            Assert.Equal( MenuTest.Acl,dto.Acl );
             Assert.Equal( MenuTest.Shortcut,dto.Shortcut );
             Assert.Equal( MenuTest.ShortcutRoot,dto.ShortcutRoot );
             Assert.Equal( MenuTest.Reuse,dto.Reuse );
@@ -102,7 +104,7 @@ namespace KissU.Test.Integration.Dtos.Systems {
             Assert.Equal( MenuTest.Disabled,entity.Disabled );
             Assert.Equal( MenuTest.Hide,entity.Hide );
             Assert.Equal( MenuTest.HideInBreadcrumb,entity.HideInBreadcrumb );
-            Assert.Equal( MenuTest.ACL,entity.ACL );
+            Assert.Equal( MenuTest.Acl,entity.Acl );
             Assert.Equal( MenuTest.Shortcut,entity.Shortcut );
             Assert.Equal( MenuTest.ShortcutRoot,entity.ShortcutRoot );
             Assert.Equal( MenuTest.Reuse,entity.Reuse );

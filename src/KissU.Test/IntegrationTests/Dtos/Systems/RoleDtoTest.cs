@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Xunit;
+using Util;
 using KissU.Service.Dtos.Systems;
+using KissU.Service.Dtos.Systems.Extensions;
 using KissU.Test.Models.Systems;
 
 namespace KissU.Test.Integration.Dtos.Systems {
@@ -46,7 +48,7 @@ namespace KissU.Test.Integration.Dtos.Systems {
             Assert.Equal( RoleTest.NormalizedName,dto.NormalizedName );
             Assert.Equal( RoleTest.Type,dto.Type );
             Assert.Equal( RoleTest.IsAdmin,dto.IsAdmin );
-            Assert.Equal( RoleTest.ParentId,dto.ParentId );
+            Assert.Equal( RoleTest.ParentId,dto.ParentId.ToGuidOrNull() );
             Assert.Equal( RoleTest.Path,dto.Path );
             Assert.Equal( RoleTest.Level,dto.Level );
             Assert.Equal( RoleTest.SortId,dto.SortId );

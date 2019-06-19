@@ -56,7 +56,6 @@ namespace KissU.Test.Integration.Services.Systems {
         [Fact]
         public void Test() {
             var count = _applicationRepository.Count();
-            _applicationService.Save( _applicationDto );
             Assert.Equal( count + 1, _applicationRepository.Count() );
         }
     }

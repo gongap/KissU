@@ -14,7 +14,7 @@ namespace KissU.Test.Models.Systems {
         /// <summary>
         /// 角色编号
         /// </summary>
-        public static readonly Guid Id = "30de0f72-b123-4ff4-a49f-82f835502a99".ToGuid();
+        public static readonly Guid Id = "e087cd67-1e33-4097-a7e8-c01bf776b227".ToGuid();
         /// <summary>
         /// 角色编码
         /// </summary>
@@ -38,7 +38,7 @@ namespace KissU.Test.Models.Systems {
         /// <summary>
         /// 父编号
         /// </summary>
-        public static readonly Guid? ParentId = "669f3eb7-aef6-4b85-95cf-d5d5c3508545".ToGuid();
+        public static readonly Guid? ParentId = "1965a6b0-6b16-4396-9799-0e084bbb9bb4".ToGuid();
         /// <summary>
         /// 路径
         /// </summary>
@@ -70,19 +70,19 @@ namespace KissU.Test.Models.Systems {
         /// <summary>
         /// 创建时间
         /// </summary>
-        public static readonly DateTime? CreationTime = "2019/6/19 1:27:59".ToDate();
+        public static readonly DateTime? CreationTime = "2019/6/19 17:27:08".ToDate();
         /// <summary>
         /// 创建人编号
         /// </summary>
-        public static readonly Guid? CreatorId = "5df7b9fb-c0a0-4606-be06-a75549fc0fc4".ToGuid();
+        public static readonly Guid? CreatorId = "c92d32a5-ed8c-471f-b49a-3caf783f79af".ToGuid();
         /// <summary>
         /// 最后修改时间
         /// </summary>
-        public static readonly DateTime? LastModificationTime = "2019/6/19 1:27:59".ToDate();
+        public static readonly DateTime? LastModificationTime = "2019/6/19 17:27:08".ToDate();
         /// <summary>
         /// 最后修改人编号
         /// </summary>
-        public static readonly Guid? LastModifierId = "c72a2e12-28d2-49de-84e7-033606271049".ToGuid();
+        public static readonly Guid? LastModifierId = "011e1bae-3735-4280-830e-50060bf714eb".ToGuid();
         /// <summary>
         /// 是否删除
         /// </summary>
@@ -99,7 +99,7 @@ namespace KissU.Test.Models.Systems {
         /// <summary>
         /// 角色编号
         /// </summary>
-        public static readonly Guid Id2 = "9618d701-6521-4061-bd46-22fb9d895666".ToGuid();
+        public static readonly Guid Id2 = "26639465-6a39-437d-b3c3-cd2ce399a303".ToGuid();
         /// <summary>
         /// 角色编码
         /// </summary>
@@ -123,7 +123,7 @@ namespace KissU.Test.Models.Systems {
         /// <summary>
         /// 父编号
         /// </summary>
-        public static readonly Guid? ParentId2 = "54fe6ad0-05d4-426b-8ba0-a12ba0456130".ToGuid();
+        public static readonly Guid? ParentId2 = "96892060-8c44-475f-88d3-3e728a35e4e3".ToGuid();
         /// <summary>
         /// 路径
         /// </summary>
@@ -155,23 +155,23 @@ namespace KissU.Test.Models.Systems {
         /// <summary>
         /// 创建时间
         /// </summary>
-        public static readonly DateTime? CreationTime2 = "2019/6/20 1:27:59".ToDate();
+        public static readonly DateTime? CreationTime2 = "2019/6/20 17:27:08".ToDate();
         /// <summary>
         /// 创建人编号
         /// </summary>
-        public static readonly Guid? CreatorId2 = "2ff6dc6a-d894-4a69-96a8-a4bd6a6b16e4".ToGuid();
+        public static readonly Guid? CreatorId2 = "5b19df04-d0a1-4c56-886c-48e762d560af".ToGuid();
         /// <summary>
         /// 最后修改时间
         /// </summary>
-        public static readonly DateTime? LastModificationTime2 = "2019/6/20 1:27:59".ToDate();
+        public static readonly DateTime? LastModificationTime2 = "2019/6/20 17:27:08".ToDate();
         /// <summary>
         /// 最后修改人编号
         /// </summary>
-        public static readonly Guid? LastModifierId2 = "4c9460d4-01cd-4dc4-a1bb-99b802a78771".ToGuid();
+        public static readonly Guid? LastModifierId2 = "33ec021e-2661-47c7-abdb-e7923bad15ce".ToGuid();
         /// <summary>
         /// 是否删除
         /// </summary>
-        public static readonly bool IsDeleted = false;
+        public static readonly bool IsDeleted2 = false;
         /// <summary>
         /// 版本号
         /// </summary>
@@ -185,17 +185,13 @@ namespace KissU.Test.Models.Systems {
         /// 创建角色实体
         /// </summary>
         public static Role Create(string id = "") {
-            return new Role( id.ToGuid() ) {
+            return 
+			new Role( id.ToGuid(),"", 0  ) {
                 Code = Code,
                 Name = Name,
                 NormalizedName = NormalizedName,
                 Type = Type,
                 IsAdmin = IsAdmin,
-                ParentId = ParentId,
-                Path = Path,
-                Level = Level,
-                SortId = SortId,
-                Enabled = Enabled,
                 Comment = Comment,
                 PinYin = PinYin,
                 Sign = Sign,
@@ -213,17 +209,13 @@ namespace KissU.Test.Models.Systems {
         /// </summary>
         /// <param name="id">角色编号</param>
         public static Role Create2( string id = "" ) {
-            return new Role( id.ToGuid() ) {
+            return 
+			new Role( id.ToGuid(),"", 0 ) {
                 Code = Code2,
                 Name = Name2,
                 NormalizedName = NormalizedName2,
                 Type = Type2,
                 IsAdmin = IsAdmin2,
-                ParentId = ParentId2,
-                Path = Path2,
-                Level = Level2,
-                SortId = SortId2,
-                Enabled = Enabled2,
                 Comment = Comment2,
                 PinYin = PinYin2,
                 Sign = Sign2,

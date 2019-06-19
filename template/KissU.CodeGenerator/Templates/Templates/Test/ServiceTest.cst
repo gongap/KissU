@@ -73,7 +73,6 @@ namespace <%= string.Format("{0}.Test.Integration.Services.{1}",Namespace,Entity
         [Fact]
         public void Test() {
             var count = <%= SafeClassName.ToFieldName() %>Repository.Count();
-            <%= SafeClassName.ToFieldName() %>Service.Save( <%= SafeClassName.ToFieldName() %>Dto );
             Assert.Equal( count + 1, <%= SafeClassName.ToFieldName() %>Repository.Count() );
         }
     }

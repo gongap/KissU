@@ -56,7 +56,6 @@ namespace KissU.Test.Integration.Services.Systems {
         [Fact]
         public void Test() {
             var count = _roleRepository.Count();
-            _roleService.Save( _roleDto );
             Assert.Equal( count + 1, _roleRepository.Count() );
         }
     }

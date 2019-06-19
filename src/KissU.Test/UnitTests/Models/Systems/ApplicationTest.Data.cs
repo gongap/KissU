@@ -14,7 +14,7 @@ namespace KissU.Test.Models.Systems {
         /// <summary>
         /// 应用程序编号
         /// </summary>
-        public static readonly Guid Id = "1658530a-f5dd-4a10-9aaf-7704292a2381".ToGuid();
+        public static readonly Guid Id = "820d5a8f-8f38-4591-9204-53580e4949d9".ToGuid();
         /// <summary>
         /// 应用程序编码
         /// </summary>
@@ -38,19 +38,19 @@ namespace KissU.Test.Models.Systems {
         /// <summary>
         /// 创建时间
         /// </summary>
-        public static readonly DateTime? CreationTime = "2019/6/19 1:27:59".ToDate();
+        public static readonly DateTime? CreationTime = "2019/6/19 17:27:08".ToDate();
         /// <summary>
         /// 创建人编号
         /// </summary>
-        public static readonly Guid? CreatorId = "5ee6622e-b582-45c0-abdd-17cff6f14b0f".ToGuid();
+        public static readonly Guid? CreatorId = "9c8b1cae-4ab4-4621-9f9d-831adafdfcfd".ToGuid();
         /// <summary>
         /// 最后修改时间
         /// </summary>
-        public static readonly DateTime? LastModificationTime = "2019/6/19 1:27:59".ToDate();
+        public static readonly DateTime? LastModificationTime = "2019/6/19 17:27:08".ToDate();
         /// <summary>
         /// 最后修改人编号
         /// </summary>
-        public static readonly Guid? LastModifierId = "41cb3c20-18f6-478c-958c-5af3832cf9b7".ToGuid();
+        public static readonly Guid? LastModifierId = "8ce88851-7fe3-4e56-a093-52396a9132c7".ToGuid();
         /// <summary>
         /// 是否删除
         /// </summary>
@@ -67,7 +67,7 @@ namespace KissU.Test.Models.Systems {
         /// <summary>
         /// 应用程序编号
         /// </summary>
-        public static readonly Guid Id2 = "ea0c7243-f154-4a89-a298-9bd52b3e3d7c".ToGuid();
+        public static readonly Guid Id2 = "83d77017-382a-46e8-8665-5a5924b8c7e4".ToGuid();
         /// <summary>
         /// 应用程序编码
         /// </summary>
@@ -91,23 +91,23 @@ namespace KissU.Test.Models.Systems {
         /// <summary>
         /// 创建时间
         /// </summary>
-        public static readonly DateTime? CreationTime2 = "2019/6/20 1:27:59".ToDate();
+        public static readonly DateTime? CreationTime2 = "2019/6/20 17:27:08".ToDate();
         /// <summary>
         /// 创建人编号
         /// </summary>
-        public static readonly Guid? CreatorId2 = "023ca751-4a01-4277-b9da-96d57115a869".ToGuid();
+        public static readonly Guid? CreatorId2 = "64c3eb6f-1715-4d04-953e-137cec0a9df2".ToGuid();
         /// <summary>
         /// 最后修改时间
         /// </summary>
-        public static readonly DateTime? LastModificationTime2 = "2019/6/20 1:27:59".ToDate();
+        public static readonly DateTime? LastModificationTime2 = "2019/6/20 17:27:08".ToDate();
         /// <summary>
         /// 最后修改人编号
         /// </summary>
-        public static readonly Guid? LastModifierId2 = "03427cdb-dccc-4a76-aac7-2209e10913c7".ToGuid();
+        public static readonly Guid? LastModifierId2 = "3213773c-5be5-4328-9533-2cb4d1661564".ToGuid();
         /// <summary>
         /// 是否删除
         /// </summary>
-        public static readonly bool IsDeleted = false;
+        public static readonly bool IsDeleted2 = false;
         /// <summary>
         /// 版本号
         /// </summary>
@@ -121,11 +121,11 @@ namespace KissU.Test.Models.Systems {
         /// 创建应用程序实体
         /// </summary>
         public static Application Create(string id = "") {
-            return new Application( id.ToGuid() ) {
+            return 
+			new Application( id.ToGuid() ) {
                 Code = Code,
                 Name = Name,
                 Comment = Comment,
-                Enabled = Enabled,
                 RegisterEnabled = RegisterEnabled,
                 CreationTime = CreationTime,
                 CreatorId = CreatorId,
@@ -141,11 +141,11 @@ namespace KissU.Test.Models.Systems {
         /// </summary>
         /// <param name="id">应用程序编号</param>
         public static Application Create2( string id = "" ) {
-            return new Application( id.ToGuid() ) {
+            return 
+			new Application( id.ToGuid() ) {
                 Code = Code2,
                 Name = Name2,
                 Comment = Comment2,
-                Enabled = Enabled2,
                 RegisterEnabled = RegisterEnabled2,
                 CreationTime = CreationTime2,
                 CreatorId = CreatorId2,

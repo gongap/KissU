@@ -42,7 +42,7 @@ namespace <%= Entity.GetNamespace(Namespace,"Domain","Factories") %> {
             <% if( p.IsPrimaryKey.SafeValue() ) {%>
             result = new <%= SafeClassName %>( <%= p.PropertyName.ToSafeName().ToCamelCase() %> );
             <% continue;} %>
-			 <% if( Entity.IgnoreTreeEntityProperty(p) ) continue;%>
+			<% if( Entity.IgnoreTreeEntityProperty(p) ) continue;%>
             result.<%= p.PropertyName.ToSafeName() %> = <%= p.PropertyName.ToSafeName().ToCamelCase() %>;
             <%} %>
             return result;
