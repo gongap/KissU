@@ -17,7 +17,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Util.Ui.Angular.AntDesign" Version="1.8.4" />
+    <ProjectReference Include="..\..\util\src\Util.Ui.Angular.AntDesign\05-Util.Ui.Angular.AntDesign.csproj" />
   </ItemGroup>
 
 </Project>

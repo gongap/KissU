@@ -16,7 +16,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Util.Datas" Version="1.8.4" />
+    <ProjectReference Include="..\..\util\src\Util.Datas\07-Util.Datas.csproj" />
   </ItemGroup>
 
 </Project>

@@ -16,7 +16,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Util.Core" Version="1.8.4" />
+    <ProjectReference Include="..\..\util\src\Util\01-Util.csproj" />
   </ItemGroup>
 
   <ItemGroup>
