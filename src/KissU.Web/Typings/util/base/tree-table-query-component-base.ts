@@ -1,12 +1,12 @@
 // ================ 树形表格查询基类 ==================
 
 import { Injector, ViewChild, forwardRef, AfterViewInit } from '@angular/core';
-import { util, ViewModel, QueryParameter, TreeTable } from '../index';
+import { util, ViewModel, TreeTable, TreeQueryParameter } from '../index';
 
 /**
  * 表格查询基类
  */
-export abstract class TreeTableQueryComponentBase<TViewModel extends ViewModel, TQuery extends QueryParameter> implements AfterViewInit {
+export abstract class TreeTableQueryComponentBase<TViewModel extends ViewModel, TQuery extends TreeQueryParameter> implements AfterViewInit {
     /**
      * 操作库
      */

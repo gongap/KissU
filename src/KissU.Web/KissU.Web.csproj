@@ -28,7 +28,7 @@
     <None Include="Pages\Home\Dashboard\Partial\LineChart.cshtml" />
     <None Include="Pages\Home\Dashboard\Partial\List.cshtml" />
     <None Include="Pages\Home\Dashboard\Partial\PieChart.cshtml" />
-    <None Include="Pages\Home\NotFound.cshtml" />
+    <None Include="Pages\NotFound.cshtml" />
     <None Include="Pages\Index.cshtml" />
     <None Include="Pages\_ViewImports.cshtml" />
   </ItemGroup>

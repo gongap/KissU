@@ -19,7 +19,8 @@ namespace KissU.Web.Apis.Home {
                 Menu = new List<MenuInfo> {
                     GetMainMenu(),
                     GetDemoMenu(),
-                    GetComponentMenu()
+                    GetComponentMenu(),
+                    GetSystemMenu()
                 }
             };
             return Success( data );
@@ -140,32 +141,17 @@ namespace KissU.Web.Apis.Home {
                     new MenuInfo {
                         Text = "应用管理",
                         Icon = "anticon anticon-edit",
-                        Children = {
-                            new MenuInfo {
-                                Text = "基础表单",
-                                Link = "/system/application"
-                            }
-                        }
+                        Link = "/system/application"
                     },
                     new MenuInfo {
                         Text = "角色管理",
                         Icon = "anticon anticon-edit",
-                        Children = {
-                            new MenuInfo {
-                                Text = "基础列表",
-                                Link = "/system/role"
-                            }
-                        }
+                        Link = "/system/role"
                     },
                     new MenuInfo {
                         Text = "菜单管理",
                         Icon = "anticon anticon-edit",
-                        Children = {
-                            new MenuInfo {
-                                Text = "树形",
-                                Link = "/system/menu"
-                            }
-                        }
+                        Link = "/system/menu"
                     }
                 }
             };
