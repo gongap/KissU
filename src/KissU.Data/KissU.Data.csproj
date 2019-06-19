@@ -15,13 +15,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="新文件夹\**" />
-    <EmbeddedResource Remove="新文件夹\**" />
-    <None Remove="新文件夹\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\util\KissU.Data.Base\KissU.Data.Base.csproj" />
+    <ProjectReference Include="..\..\lib\KissU.Data.Base\KissU.Data.Base.csproj" />
     <ProjectReference Include="..\KissU.Domain\KissU.Domain.csproj" />
   </ItemGroup>
 

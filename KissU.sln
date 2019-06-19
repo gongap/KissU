@@ -19,22 +19,22 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "util", "util", "{1D9D99CF-89A7-4AE2-B8ED-02BF63B7E4EE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{1D9D99CF-89A7-4AE2-B8ED-02BF63B7E4EE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{17D88D07-C7C6-4782-91F0-B446A69564FE}"
 	ProjectSection(SolutionItems) = preProject
 		build\version.props = build\version.props
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Data.Base", "util\KissU.Data.Base\KissU.Data.Base.csproj", "{758754A3-31EB-4784-8EC1-ED2681971AC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Data.Base", "lib\KissU.Data.Base\KissU.Data.Base.csproj", "{758754A3-31EB-4784-8EC1-ED2681971AC4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Domain.Base", "util\KissU.Domain.Base\KissU.Domain.Base.csproj", "{FDE27395-9F1C-430D-894D-C96F648025FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Domain.Base", "lib\KissU.Domain.Base\KissU.Domain.Base.csproj", "{FDE27395-9F1C-430D-894D-C96F648025FB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Service.Base", "util\KissU.Service.Base\KissU.Service.Base.csproj", "{AC479364-856B-4549-8DFA-3DB893F8776F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Service.Base", "lib\KissU.Service.Base\KissU.Service.Base.csproj", "{AC479364-856B-4549-8DFA-3DB893F8776F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Web", "src\KissU.Web\KissU.Web.csproj", "{2BE70C07-7EBE-4A16-A978-F7BED90C00F6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Web.Base", "util\KissU.Web.Base\KissU.Web.Base.csproj", "{9186DD3C-756C-4FF1-ADBE-510BA4BDEC7C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Web.Base", "lib\KissU.Web.Base\KissU.Web.Base.csproj", "{9186DD3C-756C-4FF1-ADBE-510BA4BDEC7C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-Presentation", "01-Presentation", "{3B39E558-2827-4DE7-9631-7737524098CE}"
 EndProject

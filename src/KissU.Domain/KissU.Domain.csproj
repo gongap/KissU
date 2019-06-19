@@ -15,7 +15,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\util\KissU.Domain.Base\KissU.Domain.Base.csproj" />
+    <ProjectReference Include="..\..\lib\KissU.Domain.Base\KissU.Domain.Base.csproj" />
   </ItemGroup>
 
   <ItemGroup>

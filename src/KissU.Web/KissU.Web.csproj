@@ -38,7 +38,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\util\KissU.Web.Base\KissU.Web.Base.csproj" />
+    <ProjectReference Include="..\..\lib\KissU.Web.Base\KissU.Web.Base.csproj" />
     <ProjectReference Include="..\KissU.Service\KissU.Service.csproj" />
   </ItemGroup>
 
