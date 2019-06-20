@@ -158,6 +158,9 @@
 <%@ Register Name="IndexViewClass"
              Template="Templates\Web\Views\IndexView.cst"
              MergeProperties="False" %>
+<%@ Register Name="QueryFormClass"
+             Template="Templates\Web\Views\QueryForm.cst"
+             MergeProperties="False" %>
 <%@ Register Name="EditViewClass"
              Template="Templates\Web\Views\EditView.cst"
              MergeProperties="False" %>
@@ -284,6 +287,8 @@
         CreateApiController( context );
         //创建Index视图
         CreateIndexView( context );
+        //创建QueryForm视图
+        CreateQueryForm( context );
         //创建Edit视图
         CreateEditView( context );
         //创建Detail视图
@@ -788,6 +793,21 @@
             result.Entity = entity;
             result.Namespace = GetSchema(entity).ToLower();
             result.RenderToFile(GetPath(className,string.Format("Web\\Pages\\{0}\\{1}", GetSchema(entity),entity.ClassName ), "cshtml" ), true);
+        }
+    }    
+	
+	//创建QueryForm视图
+    public void CreateQueryForm(EntityContext entityContext)
+    {
+        QueryFormClass result = this.Create<QueryFormClass>();
+        this.CopyPropertiesTo(result);
+        
+        foreach(Entity entity in entityContext.Entities)
+        {
+            string className = "QueryForm";
+            result.Entity = entity;
+            result.Namespace = GetSchema(entity).ToLower();
+            result.RenderToFile(GetPath(className,string.Format("Web\\Pages\\{0}\\{1}\\Partial", GetSchema(entity),entity.ClassName ), "cshtml" ), true);
         }
     }
     

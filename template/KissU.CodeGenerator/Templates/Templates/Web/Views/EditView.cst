@@ -19,33 +19,28 @@
 <% string CamelClassName = SafeClassName.ToCamelCase(); %>
 @page
 @model <%=SafeClassName%>Dto
-
-<util-form id="form" on-submit="submit(form,btnSubmit)">
-    <util-card>
-        <util-card-header>
-            <util-card-title>
-                编辑<%=Description%>
-            </util-card-title>
-        </util-card-header>
-        <util-card-content>
-            <util-divider inset="true" />
-        <% foreach(Property p in Entity.Properties) { %>
+<page-header title="<%=Description%>">
+</page-header>
+<nz-card>
+    <util-form id="form" label-span="4" control-span="8" gutter="16" on-submit="submit(form,btnSubmit)">
+		<% foreach(Property p in Entity.Properties) { %>
         <% if( p.IsPrimaryKey.SafeValue() ) continue; %>
         <% if( Entity.IsHidden(p) ) continue; %>
-            <util-layout class="mt30">
-                <util-layout-item flex="50%" offset="5%">
-                    <% if( p.DataType == DbType.Boolean ){%>
-                    <util-slide-toggle for="<%= p.PropertyName.ToSafeName() %>"></util-slide-toggle>
-                    <% }else{ %>           
-                    <util-textbox for="<%= p.PropertyName.ToSafeName() %>"></util-textbox>                
-                    <% } %>
-                </util-layout-item>
-            </util-layout>
+            <util-form-item>
+				<util-form-label label="<%= p.PropertyName.ToSafeName() %>"></util-form-label>
+                <% if( p.DataType == DbType.Boolean ){%>
+				<util-switch for="<%= p.PropertyName.ToSafeName() %>"></util-switch>
+                <% }else{ %>
+                <util-textbox for="<%= p.PropertyName.ToSafeName() %>"></util-textbox>                
+                <% } %>
+            </util-form-item>
         <% } %>
-        </util-card-content>
-        <util-card-actions align="Right">
-            <util-button text="返回" styles="Default" on-click="back()"></util-button>
-            <util-button id="btnSubmit" type="Submit" color="Primary"></util-button>
-        </util-card-actions>
-    </util-card>
-</util-form>
+        <util-row>
+            <util-column span="3">
+                <util-button id="btnSubmit" validate-form="true" on-click="submit(form,btnSubmit)" color="Primary" icon="Check">
+                </util-button>
+				<util-button on-click="back()" text="返回"></util-button>
+            </util-column>
+        </util-row>
+    </util-form>
+</nz-card>

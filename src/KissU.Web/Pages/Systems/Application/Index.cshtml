@@ -1,11 +1,36 @@
 ﻿@page
 @model ApplicationDto
-<util-table id="table_Application" max-height="700" base-url="application" query-param="queryParam" sort="CreationTime" sort-direction="Desc">
-    <util-table-column type="Checkbox"></util-table-column>
-    <util-table-column type="LineNumber"></util-table-column>
-    <util-table-column for="Code"></util-table-column>
-    <util-table-column for="Name"></util-table-column>
-    <util-table-column for="Comment"></util-table-column>
-    <util-table-column for="Enabled"></util-table-column>
-    <util-table-column for="RegisterEnabled"></util-table-column>
-</util-table>
+<page-header [title]="'应用程序'"></page-header>
+<nz-card [nzBordered]="false">
+    @*查询表单*@
+    @await Html.PartialAsync("Partial/QueryForm")
+    <util-button color="Primary" text="新建">
+        <util-icon type="Plus"></util-icon>
+    </util-button>
+    <util-button id="btnDelete" color="Primary" text="删除" on-click="delete(btnDelete)">
+        <util-icon type="Delete"></util-icon>
+    </util-button>
+    <div class="my-md">
+        <nz-alert [nzType]="'info'" [nzShowIcon]="true" [nzMessage]="message">
+            <ng-template #message>
+                说明
+                <strong class="text-primary">重点</strong>
+            </ng-template>
+        </nz-alert>
+    </div>
+    @*表格*@
+    <util-table id="table_Application" max-height="700" base-url="application" query-param="queryParam" sort="CreationTime" sort-direction="Desc">
+        <util-table-column type="Checkbox"></util-table-column>
+        <util-table-column type="LineNumber"></util-table-column>
+        <util-table-column for="Code"></util-table-column>
+        <util-table-column for="Name"></util-table-column>
+        <util-table-column for="Comment"></util-table-column>
+        <util-table-column for="Enabled"></util-table-column>
+        <util-table-column for="RegisterEnabled"></util-table-column>
+        <util-table-column title="操作">
+            <a>Action 一 {{ row.name }}</a>
+            <nz-divider nzType="vertical"></nz-divider>
+            <a>Delete</a>
+        </util-table-column>
+    </util-table>
+</nz-card>
