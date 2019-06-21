@@ -3,20 +3,20 @@
 <page-header title="编辑角色">
 </page-header>
 <nz-card>
-<util-form id="form" label-span="5" control-span="15" gutter="16" on-submit="submit(form,btnSubmit)">
-        <util-textbox for="Code"></util-textbox>        
-        <util-textbox for="Name"></util-textbox>        
-        <util-textbox for="NormalizedName"></util-textbox>        
-        <util-textbox for="Type"></util-textbox>        
-        <util-switch for="IsAdmin"></util-switch>        
-        <util-textbox for="Comment"></util-textbox>        
-        <util-textbox for="PinYin"></util-textbox>        
-        <util-textbox for="Sign"></util-textbox>        
-    <util-form-item justify="Center">
-        <util-column>
-            <util-button id="btnSubmit" validate-form="true" on-click="submit(form,btnSubmit)" color="Primary" icon="Check"></util-button>
-            <util-button on-click="back()" text="返回" icon="Eye"></util-button>
-        </util-column>
-    </util-form-item>
-</util-form>
+	<util-form id="form" label-span="3" control-span="15" gutter="16" on-submit="submit(form,btnSubmit)">
+			<util-textbox for="Code"></util-textbox>        
+			<util-textbox for="Name"></util-textbox>        
+			<util-textbox for="NormalizedName"></util-textbox>        
+			<util-textbox for="Type"></util-textbox>        
+			<util-switch for="IsAdmin"></util-switch>        
+			<util-textbox for="Comment"></util-textbox>        
+			<util-textbox for="PinYin"></util-textbox>        
+			<util-textbox for="Sign"></util-textbox>        
+		<util-form-item justify="Center">
+			<util-column>
+				<util-button id="btnSubmit" validate-form="true" on-click="submit(form,btnSubmit)" color="Primary" icon="Check"></util-button>
+				<util-button on-click="back()" text="返回" icon="Backward"></util-button>
+			</util-column>
+		</util-form-item>
+	</util-form>
 </nz-card>

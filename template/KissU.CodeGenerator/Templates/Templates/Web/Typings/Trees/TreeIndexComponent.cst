@@ -30,15 +30,21 @@ import { <%=SafeClassName%>ViewModel } from './model/<%=CamelClassName%>-view-mo
     selector: '<%=CamelClassName%>-index',
     templateUrl: env.prod() ? './html/<%=CamelClassName%>-index.component.html' : '/view/<%=Namespace.ToCamelCase()%>/<%=CamelClassName%>'
 })
-export class <%=SafeClassName%>IndexComponent extends TreeTableQueryComponentBase<<%=SafeClassName%>ViewModel, <%=SafeClassName%>Query>  {
+export class <%=SafeClassName%>IndexComponent extends ComponentBase  {
     /**
-     * 初始化<%=Description%>首页
+     * 查询参数
+     */
+    queryParam: <%=SafeClassName%>Query;
+
+    /**
+     * 初始化
      * @param injector 注入器
      */
-    constructor(injector: Injector) {
-        super(injector);
+    constructor( injector: Injector ) {
+        super( injector );
+        this.queryParam = this.createQuery();
     }
-    
+
     /**
      * 创建查询参数
      */

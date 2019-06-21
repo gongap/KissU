@@ -41,6 +41,7 @@
     <None Include="Pages\Systems\Role\Detail.cshtml" />
     <None Include="Pages\Systems\Role\Edit.cshtml" />
     <None Include="Pages\Systems\Role\Index.cshtml" />
+    <None Include="Pages\Systems\Role\Partial\QueryForm.cshtml" />
     <None Include="Pages\_ViewImports.cshtml" />
   </ItemGroup>
 
