@@ -35,9 +35,9 @@ if( Entity.IsTreeEntity() ){
 <nz-card [nzBordered]="false">
     @*查询表单*@
     @await Html.PartialAsync( "Partial/QueryForm" )
-    <util-button color="Primary" text="新建">
-        <util-icon type="Plus"></util-icon>
-    </util-button>
+	<util-a text="添加" link="create">
+         <util-icon type="Plus"></util-icon>
+    </util-a>
     <util-button id="btnDelete" color="Primary" text="删除" on-click="delete(btnDelete)">
         <util-icon type="Delete"></util-icon>
     </util-button>
@@ -59,9 +59,9 @@ if( Entity.IsTreeEntity() ){
 		<util-table-column for="<%= p.PropertyName.ToSafeName() %>"></util-table-column>
 		<% } %>
 		<util-table-column title="操作">
-            <a>Action 一 {{ row.name }}</a>
+			<a [routerLink]="['update',row.id]">编辑</a>
             <nz-divider nzType="vertical"></nz-divider>
-            <a>Delete</a>
+            <a [routerLink]="['detail',row.id]">查看</a>
         </util-table-column>
     </util-table>
 </nz-card>

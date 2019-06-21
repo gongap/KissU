@@ -1,30 +1,60 @@
 ﻿@page
 @model MenuDto
-<util-tree-table id="treeTable_Menu" base-url="menu" query-param="queryParam">
-    <util-tree-table-column for="Text"></util-tree-table-column>
-    <util-tree-table-column for="PinYin"></util-tree-table-column>
-    <util-tree-table-column for="Enabled"></util-tree-table-column>
-    <util-tree-table-column for="SortId"></util-tree-table-column>
-    <util-tree-table-column for="ParentId"></util-tree-table-column>
-    <util-tree-table-column for="Path"></util-tree-table-column>
-    <util-tree-table-column for="Level"></util-tree-table-column>
-    <util-tree-table-column for="I18n"></util-tree-table-column>
-    <util-tree-table-column for="Group"></util-tree-table-column>
-    <util-tree-table-column for="Link"></util-tree-table-column>
-    <util-tree-table-column for="LinkExact"></util-tree-table-column>
-    <util-tree-table-column for="ExternalLink"></util-tree-table-column>
-    <util-tree-table-column for="Target"></util-tree-table-column>
-    <util-tree-table-column for="Icon"></util-tree-table-column>
-    <util-tree-table-column for="Badge"></util-tree-table-column>
-    <util-tree-table-column for="BadgeDot"></util-tree-table-column>
-    <util-tree-table-column for="BadgeStatus"></util-tree-table-column>
-    <util-tree-table-column for="Disabled"></util-tree-table-column>
-    <util-tree-table-column for="Hide"></util-tree-table-column>
-    <util-tree-table-column for="HideInBreadcrumb"></util-tree-table-column>
-    <util-tree-table-column for="Acl"></util-tree-table-column>
-    <util-tree-table-column for="Shortcut"></util-tree-table-column>
-    <util-tree-table-column for="ShortcutRoot"></util-tree-table-column>
-    <util-tree-table-column for="Reuse"></util-tree-table-column>
-    <util-tree-table-column for="Open"></util-tree-table-column>
-    <util-tree-table-column for="Note"></util-tree-table-column>
-</util-tree-table>
+<page-header [title]="'菜单'"></page-header>
+<nz-card [nzBordered]="false">
+    @*查询表单*@
+    @await Html.PartialAsync( "Partial/QueryForm" )
+	<util-a text="添加" link="create">
+         <util-icon type="Plus"></util-icon>
+    </util-a>
+    <util-button id="btnDelete" color="Primary" text="删除" on-click="delete(btnDelete)">
+        <util-icon type="Delete"></util-icon>
+    </util-button>
+    <div class="my-md">
+        <nz-alert [nzType]="'info'" [nzShowIcon]="true" [nzMessage]="message">
+            <ng-template #message>
+                说明
+                <strong class="text-primary">重点</strong>
+            </ng-template>
+        </nz-alert>
+    </div>
+	@*表格*@
+	<util-tree-table id="treeTable_Menu" base-url="menu" query-param="queryParam">
+		<util-tree-table-column for="Text"></util-tree-table-column>
+		<util-tree-table-column for="PinYin"></util-tree-table-column>
+		<util-tree-table-column for="I18n"></util-tree-table-column>
+		<util-tree-table-column for="Group"></util-tree-table-column>
+		<util-tree-table-column for="Link"></util-tree-table-column>
+		<util-tree-table-column for="LinkExact"></util-tree-table-column>
+		<util-tree-table-column for="ExternalLink"></util-tree-table-column>
+		<util-tree-table-column for="Target"></util-tree-table-column>
+		<util-tree-table-column for="Icon"></util-tree-table-column>
+		<util-tree-table-column for="Badge"></util-tree-table-column>
+		<util-tree-table-column for="BadgeDot"></util-tree-table-column>
+		<util-tree-table-column for="BadgeStatus"></util-tree-table-column>
+		<util-tree-table-column for="Disabled"></util-tree-table-column>
+		<util-tree-table-column for="Hide"></util-tree-table-column>
+		<util-tree-table-column for="HideInBreadcrumb"></util-tree-table-column>
+		<util-tree-table-column for="Acl"></util-tree-table-column>
+		<util-tree-table-column for="Shortcut"></util-tree-table-column>
+		<util-tree-table-column for="ShortcutRoot"></util-tree-table-column>
+		<util-tree-table-column for="Reuse"></util-tree-table-column>
+		<util-tree-table-column for="Open"></util-tree-table-column>
+		<util-tree-table-column for="Note"></util-tree-table-column>
+		<util-tree-table-column title="操作">
+			<a nz-tooltip nzTitle="添加子级" (click)="addSubordinate(row)"></a>
+            <nz-divider nzType="vertical"></nz-divider>
+			<a [routerLink]="['update',row.id]">编辑</a>
+			<nz-dropdown>
+				<a class="ant-dropdown-link" nz-dropdown>
+				  更多
+				  <i nz-icon type="down"></i>
+				</a>
+				<ul nz-menu>
+				  <li nz-menu-item><a [routerLink]="['detail',row.id]">查看</a></li>
+				  <li nz-menu-item (click)="delete(null,row.id)">删除</li>
+				</ul>
+			</nz-dropdown>
+		</util-tree-table-column>
+	</util-tree-table>
+</nz-card>

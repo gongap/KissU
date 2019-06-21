@@ -1,3 +1,35 @@
 ﻿@page
 @model MenuDto
-
+<page-header title="编辑菜单">
+</page-header>
+<nz-card>
+<util-form id="form" label-span="5" control-span="15" gutter="16" on-submit="submit(form,btnSubmit)">
+        <util-textbox for="Text"></util-textbox>        
+        <util-textbox for="PinYin"></util-textbox>        
+        <util-textbox for="I18n"></util-textbox>        
+        <util-switch for="Group"></util-switch>        
+        <util-textbox for="Link"></util-textbox>        
+        <util-switch for="LinkExact"></util-switch>        
+        <util-textbox for="ExternalLink"></util-textbox>        
+        <util-textbox for="Target"></util-textbox>        
+        <util-textbox for="Icon"></util-textbox>        
+        <util-textbox for="Badge"></util-textbox>        
+        <util-switch for="BadgeDot"></util-switch>        
+        <util-textbox for="BadgeStatus"></util-textbox>        
+        <util-switch for="Disabled"></util-switch>        
+        <util-switch for="Hide"></util-switch>        
+        <util-switch for="HideInBreadcrumb"></util-switch>        
+        <util-textbox for="Acl"></util-textbox>        
+        <util-switch for="Shortcut"></util-switch>        
+        <util-switch for="ShortcutRoot"></util-switch>        
+        <util-switch for="Reuse"></util-switch>        
+        <util-switch for="Open"></util-switch>        
+        <util-textbox for="Note"></util-textbox>        
+    <util-form-item justify="Center">
+        <util-column>
+            <util-button id="btnSubmit" validate-form="true" on-click="submit(form,btnSubmit)" color="Primary" icon="Check"></util-button>
+            <util-button on-click="back()" text="返回" icon="Eye"></util-button>
+        </util-column>
+    </util-form-item>
+</util-form>
+</nz-card>

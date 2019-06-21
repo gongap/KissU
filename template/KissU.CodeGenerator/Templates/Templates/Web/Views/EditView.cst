@@ -19,28 +19,21 @@
 <% string CamelClassName = SafeClassName.ToCamelCase(); %>
 @page
 @model <%=SafeClassName%>Dto
-<page-header title="<%=Description%>">
+<page-header title="编辑<%=Description%>">
 </page-header>
 <nz-card>
-    <util-form id="form" label-span="4" control-span="8" gutter="16" on-submit="submit(form,btnSubmit)">
+	<util-form id="form" label-span="3" control-span="15" gutter="16" on-submit="submit(form,btnSubmit)">
 		<% foreach(Property p in Entity.Properties) { %>
-        <% if( p.IsPrimaryKey.SafeValue() ) continue; %>
-        <% if( Entity.IsHidden(p) ) continue; %>
-            <util-form-item>
-				<util-form-label label="<%= p.PropertyName.ToSafeName() %>"></util-form-label>
-                <% if( p.DataType == DbType.Boolean ){%>
-				<util-switch for="<%= p.PropertyName.ToSafeName() %>"></util-switch>
-                <% }else{ %>
-                <util-textbox for="<%= p.PropertyName.ToSafeName() %>"></util-textbox>                
-                <% } %>
-            </util-form-item>
-        <% } %>
-        <util-row>
-            <util-column span="3">
-                <util-button id="btnSubmit" validate-form="true" on-click="submit(form,btnSubmit)" color="Primary" icon="Check">
-                </util-button>
-				<util-button on-click="back()" text="返回"></util-button>
-            </util-column>
-        </util-row>
-    </util-form>
+			<% if( p.IsPrimaryKey.SafeValue() ) continue; %>
+			<% if( Entity.IgnoreTreeEntityProperty(p) ) continue;%>
+			<% if( Entity.IsHidden(p) ) continue; %>
+			<%= p.GetFormItem() %>        
+		<% } %>
+		<util-form-item justify="Center">
+			<util-column>
+				<util-button id="btnSubmit" validate-form="true" on-click="submit(form,btnSubmit)" color="Primary" icon="Check"></util-button>
+				<util-button on-click="back()" text="返回" icon="Backward"></util-button>
+			</util-column>
+		</util-form-item>
+	</util-form>
 </nz-card>

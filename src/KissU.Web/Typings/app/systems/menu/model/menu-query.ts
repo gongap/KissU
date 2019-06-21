@@ -7,7 +7,7 @@ export class MenuQuery extends TreeQueryParameter {
     /**
      * 
      */
-    id;
+    menuId;
     /**
      * 文本
      */

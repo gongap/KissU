@@ -30,6 +30,17 @@
     <None Include="Pages\Home\Dashboard\Partial\PieChart.cshtml" />
     <None Include="Pages\NotFound.cshtml" />
     <None Include="Pages\Index.cshtml" />
+    <None Include="Pages\Systems\Application\Detail.cshtml" />
+    <None Include="Pages\Systems\Application\Edit.cshtml" />
+    <None Include="Pages\Systems\Application\Index.cshtml" />
+    <None Include="Pages\Systems\Application\Partial\QueryForm.cshtml" />
+    <None Include="Pages\Systems\Menu\Detail.cshtml" />
+    <None Include="Pages\Systems\Menu\Edit.cshtml" />
+    <None Include="Pages\Systems\Menu\Index.cshtml" />
+    <None Include="Pages\Systems\Menu\Partial\QueryForm.cshtml" />
+    <None Include="Pages\Systems\Role\Detail.cshtml" />
+    <None Include="Pages\Systems\Role\Edit.cshtml" />
+    <None Include="Pages\Systems\Role\Index.cshtml" />
     <None Include="Pages\_ViewImports.cshtml" />
   </ItemGroup>
 

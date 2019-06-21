@@ -1,35 +1,18 @@
 ﻿@page
 @model ApplicationDto
-<page-header title="应用程序">
+<page-header title="编辑应用程序">
 </page-header>
 <nz-card>
-    <util-form id="form" label-span="4" control-span="8" gutter="16" on-submit="submit(form,btnSubmit)">
-        <util-form-item>
-            <util-form-label label="Code"></util-form-label>
-            <util-textbox for="Code"></util-textbox>
-        </util-form-item>
-        <util-form-item>
-            <util-form-label label="Name"></util-form-label>
-            <util-textbox for="Name"></util-textbox>
-        </util-form-item>
-        <util-form-item>
-            <util-form-label label="Comment"></util-form-label>
-            <util-textbox for="Comment"></util-textbox>
-        </util-form-item>
-        <util-form-item>
-            <util-form-label label="Enabled"></util-form-label>
-            <util-switch for="Enabled"></util-switch>
-        </util-form-item>
-        <util-form-item>
-            <util-form-label label="RegisterEnabled"></util-form-label>
-            <util-switch for="RegisterEnabled"></util-switch>
-        </util-form-item>
-        <util-row>
-            <util-column span="3">
-                <util-button id="btnSubmit" validate-form="true" on-click="submit(form,btnSubmit)" color="Primary" icon="Check">
-                </util-button>
-                <util-button on-click="back()" text="返回"></util-button>
-            </util-column>
-        </util-row>
-    </util-form>
+<util-form id="form" label-span="5" control-span="15" gutter="16" on-submit="submit(form,btnSubmit)">
+        <util-textbox for="Code"></util-textbox>        
+        <util-textbox for="Name"></util-textbox>        
+        <util-textbox for="Comment"></util-textbox>        
+        <util-switch for="RegisterEnabled"></util-switch>        
+    <util-form-item justify="Center">
+        <util-column>
+            <util-button id="btnSubmit" validate-form="true" on-click="submit(form,btnSubmit)" color="Primary" icon="Check"></util-button>
+            <util-button on-click="back()" text="返回" icon="Eye"></util-button>
+        </util-column>
+    </util-form-item>
+</util-form>
 </nz-card>

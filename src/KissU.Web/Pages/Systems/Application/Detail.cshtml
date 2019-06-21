@@ -1,2 +1,17 @@
 ﻿@page
 @model ApplicationDto
+<page-header title="查看应用程序">
+</page-header>
+<nz-card>
+	<util-form id="form" label-span="3" control-span="15" gutter="16">
+			<util-textbox for="Code"></util-textbox>        
+			<util-textbox for="Name"></util-textbox>        
+			<util-textbox for="Comment"></util-textbox>        
+			<util-switch for="RegisterEnabled"></util-switch>        
+		<util-form-item justify="Center">
+			<util-column>
+				<util-button on-click="back()" text="返回" icon="Backward"></util-button>
+			</util-column>
+		</util-form-item>
+	</util-form>
+</nz-card>
