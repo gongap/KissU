@@ -2,22 +2,26 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using KissU.Domain.Systems.Models;
 
-namespace KissU.Data.Mappings.Systems.MySql {
+namespace KissU.Data.Mappings.Systems.MySql 
+{
     /// <summary>
     /// 角色映射配置
     /// </summary>
-    public class RoleMap : Util.Datas.Ef.MySql.AggregateRootMap<Role> {
+    public class RoleMap : Util.Datas.Ef.MySql.AggregateRootMap<Role> 
+	{
         /// <summary>
         /// 映射表
         /// </summary>
-        protected override void MapTable( EntityTypeBuilder<Role> builder ) {
+        protected override void MapTable( EntityTypeBuilder<Role> builder ) 
+		{
             builder.ToTable( "Systems.Role" );
         }
         
         /// <summary>
         /// 映射属性
         /// </summary>
-        protected override void MapProperties( EntityTypeBuilder<Role> builder ) {
+        protected override void MapProperties( EntityTypeBuilder<Role> builder ) 
+		{
             //角色编号
             builder.Property(t => t.Id)
                 .HasColumnName("RoleId");

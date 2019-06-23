@@ -20,11 +20,13 @@ using System.Collections.Generic;
 using Util;
 using <%= Entity.GetNamespace(Namespace,"Domain","Models") %>;
 
-namespace <%= string.Format("{0}.IntegrationTest.Tests.Models.{1}",Namespace,Entity.TableSchema) %> {
+namespace <%= string.Format("{0}.IntegrationTest.Tests.Models.{1}",Namespace,Entity.TableSchema) %> 
+{
     /// <summary>
     /// <%= Description %>测试数据
     /// </summary>
-    public partial class <%= SafeClassName %>Test {
+    public partial class <%= SafeClassName %>Test 
+	{
         
         #region 测试数据1
         
@@ -101,7 +103,8 @@ namespace <%= string.Format("{0}.IntegrationTest.Tests.Models.{1}",Namespace,Ent
         /// <summary>
         /// 创建<%= Description %>实体
         /// </summary>
-        public static <%= SafeClassName %> Create(string id = "") {
+        public static <%= SafeClassName %> Create(string id = "") 
+		{
             return 
 			<% if(Entity.IsTreeEntity()) {%>
 			new <%= SafeClassName %>( id<%=Entity.GetToEntityConvert() %>,"", 0  ) {
@@ -120,7 +123,8 @@ namespace <%= string.Format("{0}.IntegrationTest.Tests.Models.{1}",Namespace,Ent
         /// 创建<%= Description %>实体2
         /// </summary>
         /// <param name="id"><%= Description %>编号</param>
-        public static <%= SafeClassName %> Create2( string id = "" ) {
+        public static <%= SafeClassName %> Create2( string id = "" ) 
+		{
             return 
 			<% if(Entity.IsTreeEntity()) {%>
 			new <%= SafeClassName %>( id<%=Entity.GetToEntityConvert() %>,"", 0 ) {
@@ -142,7 +146,8 @@ namespace <%= string.Format("{0}.IntegrationTest.Tests.Models.{1}",Namespace,Ent
         /// <summary>
         /// 创建列表
         /// </summary>
-        public static List<<%= SafeClassName %>> CreateList() {
+        public static List<<%= SafeClassName %>> CreateList() 
+		{
             return new List<<%= SafeClassName %>>() {
                 Create(),
                 Create2()

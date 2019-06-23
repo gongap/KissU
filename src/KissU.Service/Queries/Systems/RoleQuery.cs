@@ -3,11 +3,13 @@ using System.ComponentModel.DataAnnotations;
 using Util;
 using Util.Datas.Queries.Trees;
 
-namespace KissU.Service.Queries.Systems {
+namespace KissU.Service.Queries.Systems 
+{
     /// <summary>
     /// 角色查询参数
     /// </summary>
-    public class RoleQuery : TreeQueryParameter {
+    public class RoleQuery : TreeQueryParameter 
+	{
         /// <summary>
         /// 角色编号
         /// </summary>

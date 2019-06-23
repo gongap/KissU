@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using Util;
 using KissU.Domain.Systems.Models;
 
-namespace KissU.IntegrationTest.Tests.Models.Systems {
+namespace KissU.IntegrationTest.Tests.Models.Systems 
+{
     /// <summary>
     /// 应用程序测试数据
     /// </summary>
-    public partial class ApplicationTest {
+    public partial class ApplicationTest 
+	{
         
         #region 测试数据1
         
         /// <summary>
         /// 应用程序编号
         /// </summary>
-        public static readonly Guid Id = "f3f9a80f-73b2-41cf-8015-dcc5e3f346bf".ToGuid();
+        public static readonly Guid Id = "ad57d699-2d85-4283-9ac1-9f6bd04c82fc".ToGuid();
         /// <summary>
         /// 应用程序编码
         /// </summary>
@@ -38,19 +40,19 @@ namespace KissU.IntegrationTest.Tests.Models.Systems {
         /// <summary>
         /// 创建时间
         /// </summary>
-        public static readonly DateTime? CreationTime = "2019/6/23 15:38:03".ToDate();
+        public static readonly DateTime? CreationTime = "2019/6/23 23:21:10".ToDate();
         /// <summary>
         /// 创建人编号
         /// </summary>
-        public static readonly Guid? CreatorId = "eb5563a8-68c1-4096-bef2-20638f5a5729".ToGuid();
+        public static readonly Guid? CreatorId = "ad7ae8c6-5531-4fbe-9b23-085aec65005e".ToGuid();
         /// <summary>
         /// 最后修改时间
         /// </summary>
-        public static readonly DateTime? LastModificationTime = "2019/6/23 15:38:03".ToDate();
+        public static readonly DateTime? LastModificationTime = "2019/6/23 23:21:10".ToDate();
         /// <summary>
         /// 最后修改人编号
         /// </summary>
-        public static readonly Guid? LastModifierId = "992fe1a3-7774-45e4-9f57-b947d96221f6".ToGuid();
+        public static readonly Guid? LastModifierId = "1e808094-af92-464d-89c9-6ed236b48045".ToGuid();
         /// <summary>
         /// 是否删除
         /// </summary>
@@ -67,7 +69,7 @@ namespace KissU.IntegrationTest.Tests.Models.Systems {
         /// <summary>
         /// 应用程序编号
         /// </summary>
-        public static readonly Guid Id2 = "a9028999-78cb-4205-8055-dcdb2d01e235".ToGuid();
+        public static readonly Guid Id2 = "8c174e71-c21c-4585-88c6-2e210bfa62c0".ToGuid();
         /// <summary>
         /// 应用程序编码
         /// </summary>
@@ -91,19 +93,19 @@ namespace KissU.IntegrationTest.Tests.Models.Systems {
         /// <summary>
         /// 创建时间
         /// </summary>
-        public static readonly DateTime? CreationTime2 = "2019/6/24 15:38:03".ToDate();
+        public static readonly DateTime? CreationTime2 = "2019/6/24 23:21:10".ToDate();
         /// <summary>
         /// 创建人编号
         /// </summary>
-        public static readonly Guid? CreatorId2 = "0a6ebba9-66ff-4dc3-a5e0-4b17b0cf648c".ToGuid();
+        public static readonly Guid? CreatorId2 = "e9cc103a-6068-41d0-918d-6efbd8a6ee67".ToGuid();
         /// <summary>
         /// 最后修改时间
         /// </summary>
-        public static readonly DateTime? LastModificationTime2 = "2019/6/24 15:38:03".ToDate();
+        public static readonly DateTime? LastModificationTime2 = "2019/6/24 23:21:10".ToDate();
         /// <summary>
         /// 最后修改人编号
         /// </summary>
-        public static readonly Guid? LastModifierId2 = "80bf73bb-83e2-45f2-b9e7-34acca762455".ToGuid();
+        public static readonly Guid? LastModifierId2 = "84b397a9-6f1c-4305-96bb-e5181cd867df".ToGuid();
         /// <summary>
         /// 是否删除
         /// </summary>
@@ -120,7 +122,8 @@ namespace KissU.IntegrationTest.Tests.Models.Systems {
         /// <summary>
         /// 创建应用程序实体
         /// </summary>
-        public static Application Create(string id = "") {
+        public static Application Create(string id = "") 
+		{
             return 
 			new Application( id.ToGuid() ) {
                 Code = Code,
@@ -140,7 +143,8 @@ namespace KissU.IntegrationTest.Tests.Models.Systems {
         /// 创建应用程序实体2
         /// </summary>
         /// <param name="id">应用程序编号</param>
-        public static Application Create2( string id = "" ) {
+        public static Application Create2( string id = "" ) 
+		{
             return 
 			new Application( id.ToGuid() ) {
                 Code = Code2,
@@ -163,7 +167,8 @@ namespace KissU.IntegrationTest.Tests.Models.Systems {
         /// <summary>
         /// 创建列表
         /// </summary>
-        public static List<Application> CreateList() {
+        public static List<Application> CreateList() 
+		{
             return new List<Application>() {
                 Create(),
                 Create2()

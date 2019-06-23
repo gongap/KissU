@@ -6,15 +6,18 @@ using KissU.Service.Dtos.Systems;
 using KissU.Service.Dtos.Systems.Extensions;
 using KissU.IntegrationTest.Tests.Models.Systems;
 
-namespace KissU.IntegrationTest.Tests.Dtos.Systems {
+namespace KissU.IntegrationTest.Tests.Dtos.Systems 
+{
     /// <summary>
     /// 角色数据传输对象测试
     /// </summary>
-    public class RoleDtoTest {
+    public class RoleDtoTest 
+	{
         /// <summary>
         /// 创建角色数据传输对象
         /// </summary>
-        public static RoleDto Create(string id = "") {
+        public static RoleDto Create(string id = "") 
+		{
             return RoleTest.Create(id).ToDto(); 
         }
         
@@ -22,14 +25,16 @@ namespace KissU.IntegrationTest.Tests.Dtos.Systems {
         /// 创建角色数据传输对象2
         /// </summary>
         /// <param name="id">角色编号</param>
-        public static RoleDto Create2( string id = "" ) {
+        public static RoleDto Create2( string id = "" ) 
+		{
             return RoleTest.Create2( id ).ToDto(); 
         }
         
         /// <summary>
         /// 创建角色数据传输对象列表
         /// </summary>
-        public static List<RoleDto> CreateList() {
+        public static List<RoleDto> CreateList() 
+		{
             return new List<RoleDto>() {
                 Create(),
                 Create2()
@@ -40,7 +45,8 @@ namespace KissU.IntegrationTest.Tests.Dtos.Systems {
         /// 转换为数据传输对象
         /// </summary>
         [Fact]
-        public void TestToDto() {
+        public void TestToDto() 
+		{
             var dto = Create();
             Assert.Equal( RoleTest.Id.ToString(),dto.Id );
             Assert.Equal( RoleTest.Code,dto.Code );
@@ -68,7 +74,8 @@ namespace KissU.IntegrationTest.Tests.Dtos.Systems {
         /// 转换为实体
         /// </summary>
         [Fact]
-        public void TestToEntity() {
+        public void TestToEntity() 
+		{
             var entity = Create().ToEntity();
             Assert.Equal( RoleTest.Id,entity.Id );
             Assert.Equal( RoleTest.Code,entity.Code );

@@ -23,15 +23,18 @@ using <%= string.Format("{0}.Service.Dtos.{1}",Namespace,Entity.TableSchema) %>;
 using <%= string.Format("{0}.Service.Dtos.{1}.Extensions",Namespace,Entity.TableSchema) %>;
 using <%= string.Format("{0}.IntegrationTest.Tests.Models.{1}",Namespace,Entity.TableSchema) %>;
 
-namespace <%= string.Format("{0}.IntegrationTest.Tests.Dtos.{1}",Namespace,Entity.TableSchema) %> {
+namespace <%= string.Format("{0}.IntegrationTest.Tests.Dtos.{1}",Namespace,Entity.TableSchema) %> 
+{
     /// <summary>
     /// <%= Description %>数据传输对象测试
     /// </summary>
-    public class <%= SafeClassName %>DtoTest {
+    public class <%= SafeClassName %>DtoTest 
+	{
         /// <summary>
         /// 创建<%= Description %>数据传输对象
         /// </summary>
-        public static <%= SafeClassName %>Dto Create(string id = "") {
+        public static <%= SafeClassName %>Dto Create(string id = "") 
+		{
             return <%= SafeClassName %>Test.Create(id).ToDto(); 
         }
         
@@ -39,14 +42,16 @@ namespace <%= string.Format("{0}.IntegrationTest.Tests.Dtos.{1}",Namespace,Entit
         /// 创建<%= Description %>数据传输对象2
         /// </summary>
         /// <param name="id"><%= Description %>编号</param>
-        public static <%= SafeClassName %>Dto Create2( string id = "" ) {
+        public static <%= SafeClassName %>Dto Create2( string id = "" ) 
+		{
             return <%= SafeClassName %>Test.Create2( id ).ToDto(); 
         }
         
         /// <summary>
         /// 创建<%= Description %>数据传输对象列表
         /// </summary>
-        public static List<<%= SafeClassName %>Dto> CreateList() {
+        public static List<<%= SafeClassName %>Dto> CreateList() 
+		{
             return new List<<%= SafeClassName %>Dto>() {
                 Create(),
                 Create2()
@@ -57,7 +62,8 @@ namespace <%= string.Format("{0}.IntegrationTest.Tests.Dtos.{1}",Namespace,Entit
         /// 转换为数据传输对象
         /// </summary>
         [Fact]
-        public void TestToDto() {
+        public void TestToDto() 
+		{
             var dto = Create();
         <% foreach(Property p in Entity.Properties) { %>
         <% if( p.IsPrimaryKey.SafeValue() ) { %>
@@ -74,7 +80,8 @@ namespace <%= string.Format("{0}.IntegrationTest.Tests.Dtos.{1}",Namespace,Entit
         /// 转换为实体
         /// </summary>
         [Fact]
-        public void TestToEntity() {
+        public void TestToEntity() 
+		{
             var entity = Create().ToEntity();
         <% foreach(Property p in Entity.Properties) { %>
         <% if( p.IsPrimaryKey.SafeValue() ) { %>

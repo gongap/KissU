@@ -19,7 +19,8 @@ using Util;
 using <%= Entity.GetNamespace(Namespace,"Domain","Models") %>;
 using Util.Maps;
 
-namespace <%= Namespace %>.Data.Pos.<%= Entity.TableSchema %>.Extensions {
+namespace <%= Namespace %>.Data.Pos.<%= Entity.TableSchema %>.Extensions 
+{
     /// <summary>
     /// <%= Description %>持久化对象扩展
     /// </summary>
@@ -28,7 +29,8 @@ namespace <%= Namespace %>.Data.Pos.<%= Entity.TableSchema %>.Extensions {
         /// 转换为<%= Description %>实体
         /// </summary>
         /// <param name="po"><%= Description %>持久化对象</param>
-        public static <%= SafeClassName %> ToEntity( this <%= SafeClassName %>Po po ) {
+        public static <%= SafeClassName %> ToEntity( this <%= SafeClassName %>Po po ) 
+		{
             if ( po == null )
                 return null;
             return po.MapTo( new <%= SafeClassName %>( po.Id ) );
@@ -38,7 +40,8 @@ namespace <%= Namespace %>.Data.Pos.<%= Entity.TableSchema %>.Extensions {
         /// 转换为<%= Description %>实体
         /// </summary>
         /// <param name="po"><%= Description %>持久化对象</param>
-        private static <%= SafeClassName %> ToEntity2( this <%= SafeClassName %>Po po ) {
+        private static <%= SafeClassName %> ToEntity2( this <%= SafeClassName %>Po po ) 
+		{
             if( po == null )
                 return null;
             return new <%= SafeClassName %>( po.Id ) {
@@ -53,7 +56,8 @@ namespace <%= Namespace %>.Data.Pos.<%= Entity.TableSchema %>.Extensions {
         /// 转换为<%= Description %>持久化对象
         /// </summary>
         /// <param name="entity"><%= Description %>实体</param>
-        public static <%= SafeClassName %>Po ToPo(this <%= SafeClassName %> entity) {
+        public static <%= SafeClassName %>Po ToPo(this <%= SafeClassName %> entity) 
+		{
             if( entity == null )
                 return null;
             return entity.MapTo<<%= SafeClassName %>Po>();
@@ -63,7 +67,8 @@ namespace <%= Namespace %>.Data.Pos.<%= Entity.TableSchema %>.Extensions {
         /// 转换为<%= Description %>持久化对象
         /// </summary>
         /// <param name="entity"><%= Description %>实体</param>
-        private static <%= SafeClassName %>Po ToPo2( this <%= SafeClassName %> entity ) {
+        private static <%= SafeClassName %>Po ToPo2( this <%= SafeClassName %> entity ) 
+		{
             if( entity == null )
                 return null;
             return new <%= SafeClassName %>Po {

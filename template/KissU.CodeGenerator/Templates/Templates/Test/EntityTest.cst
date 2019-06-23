@@ -18,11 +18,13 @@
 using Xunit;
 using <%= Entity.GetNamespace(Namespace,"Domain","Models") %>;
 
-namespace <%= string.Format("{0}.IntegrationTest.Tests.Models.{1}",Namespace,Entity.TableSchema) %> {
+namespace <%= string.Format("{0}.IntegrationTest.Tests.Models.{1}",Namespace,Entity.TableSchema) %> 
+{
     /// <summary>
     /// <%= Description %>测试
     /// </summary>
-    public partial class <%= SafeClassName %>Test {
+    public partial class <%= SafeClassName %>Test 
+	{
         /// <summary>
         /// <%= Description %>
         /// </summary>
@@ -31,7 +33,8 @@ namespace <%= string.Format("{0}.IntegrationTest.Tests.Models.{1}",Namespace,Ent
         /// <summary>
         /// 测试初始化
         /// </summary>
-        public <%= SafeClassName %>Test() {
+        public <%= SafeClassName %>Test() 
+		{
             <%= SafeClassName.ToFieldName() %> = Create();
         }
     }

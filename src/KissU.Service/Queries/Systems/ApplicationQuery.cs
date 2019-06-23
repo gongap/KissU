@@ -3,11 +3,13 @@ using System.ComponentModel.DataAnnotations;
 using Util;
 using Util.Datas.Queries;
 
-namespace KissU.Service.Queries.Systems {
+namespace KissU.Service.Queries.Systems 
+{
     /// <summary>
     /// 应用程序查询参数
     /// </summary>
-    public class ApplicationQuery : QueryParameter {
+    public class ApplicationQuery : QueryParameter 
+	{
         /// <summary>
         /// 应用程序编号
         /// </summary>

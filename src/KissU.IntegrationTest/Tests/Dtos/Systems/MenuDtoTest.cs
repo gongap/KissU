@@ -6,15 +6,18 @@ using KissU.Service.Dtos.Systems;
 using KissU.Service.Dtos.Systems.Extensions;
 using KissU.IntegrationTest.Tests.Models.Systems;
 
-namespace KissU.IntegrationTest.Tests.Dtos.Systems {
+namespace KissU.IntegrationTest.Tests.Dtos.Systems 
+{
     /// <summary>
     /// 菜单数据传输对象测试
     /// </summary>
-    public class MenuDtoTest {
+    public class MenuDtoTest 
+	{
         /// <summary>
         /// 创建菜单数据传输对象
         /// </summary>
-        public static MenuDto Create(string id = "") {
+        public static MenuDto Create(string id = "") 
+		{
             return MenuTest.Create(id).ToDto(); 
         }
         
@@ -22,14 +25,16 @@ namespace KissU.IntegrationTest.Tests.Dtos.Systems {
         /// 创建菜单数据传输对象2
         /// </summary>
         /// <param name="id">菜单编号</param>
-        public static MenuDto Create2( string id = "" ) {
+        public static MenuDto Create2( string id = "" ) 
+		{
             return MenuTest.Create2( id ).ToDto(); 
         }
         
         /// <summary>
         /// 创建菜单数据传输对象列表
         /// </summary>
-        public static List<MenuDto> CreateList() {
+        public static List<MenuDto> CreateList() 
+		{
             return new List<MenuDto>() {
                 Create(),
                 Create2()
@@ -40,7 +45,8 @@ namespace KissU.IntegrationTest.Tests.Dtos.Systems {
         /// 转换为数据传输对象
         /// </summary>
         [Fact]
-        public void TestToDto() {
+        public void TestToDto() 
+		{
             var dto = Create();
             Assert.Equal( MenuTest.Id.ToString(),dto.Id );
             Assert.Equal( MenuTest.Code,dto.Code );
@@ -82,7 +88,8 @@ namespace KissU.IntegrationTest.Tests.Dtos.Systems {
         /// 转换为实体
         /// </summary>
         [Fact]
-        public void TestToEntity() {
+        public void TestToEntity() 
+		{
             var entity = Create().ToEntity();
             Assert.Equal( MenuTest.Id,entity.Id );
             Assert.Equal( MenuTest.Code,entity.Code );

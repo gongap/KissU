@@ -78,7 +78,9 @@
     <None Include="Templates\Templates\Data\PgSql\UnitOfWork.cst" />
     <None Include="Templates\Templates\Data\MySql\Mapping.cst" />
     <None Include="Templates\Templates\Data\MySql\UnitOfWork.cst" />
+    <None Include="Templates\Templates\Data\TreeRepository.cst" />
     <None Include="Templates\Templates\Domain\Factory.cst" />
+    <None Include="Templates\Templates\Domain\ITreeRepository.cst" />
     <None Include="Templates\Templates\Domain\ItemGroup.cst" />
     <None Include="Templates\Templates\Persist\Datas\PgSql\PoMapping.cst" />
     <None Include="Templates\Templates\Persist\Datas\PoExtension.cst" />

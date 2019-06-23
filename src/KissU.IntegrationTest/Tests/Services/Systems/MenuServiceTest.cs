@@ -11,12 +11,14 @@ using KissU.Service.Dtos.Systems;
 using KissU.IntegrationTest.Tests.Dtos.Systems;
 using KissU.Service.Dtos.Systems.Extensions;
 
-namespace KissU.IntegrationTest.Tests.Services.Systems {
+namespace KissU.IntegrationTest.Tests.Services.Systems 
+{
     /// <summary>
     /// 菜单服务测试
     /// </summary>
     [Collection( "GlobalConfig" )]
-    public class MenuServiceTest : IDisposable {
+    public class MenuServiceTest : IDisposable 
+	{
         /// <summary>
         /// 容器作用域
         /// </summary>
@@ -37,7 +39,8 @@ namespace KissU.IntegrationTest.Tests.Services.Systems {
         /// <summary>
         /// 测试初始化
         /// </summary>
-        public MenuServiceTest() {
+        public MenuServiceTest() 
+		{
             _scope = Ioc.BeginScope();
             _menuRepository = _scope.Create<IMenuRepository>();
             _menuService = _scope.Create<IMenuService>();
@@ -47,7 +50,8 @@ namespace KissU.IntegrationTest.Tests.Services.Systems {
         /// <summary>
         /// 测试清理
         /// </summary>
-        public void Dispose() {
+        public void Dispose() 
+		{
             _scope.Dispose();
         }
         
@@ -55,7 +59,8 @@ namespace KissU.IntegrationTest.Tests.Services.Systems {
         /// 测试
         /// </summary>
         [Fact]
-        public void Test() {
+        public void Test() 
+		{
 		    var count = _menuRepository.Count();
 			_menuRepository.Add( _menuDto.ToEntity());
             Assert.Equal( count + 1, _menuRepository.Count() );

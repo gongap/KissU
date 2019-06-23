@@ -5,12 +5,14 @@ using Util.Ui.Attributes;
 using Util.Applications.Dtos;
 using Util.Ui.Data;
 
-namespace KissU.Service.Dtos.Systems {
+namespace KissU.Service.Dtos.Systems 
+{
     /// <summary>
     /// 角色数据传输对象
     /// </summary>
     [Model("model")]
-    public class RoleDto : TreeDto<RoleDto> {
+    public class RoleDto : TreeDto<RoleDto> 
+	{
         /// <summary>
         /// 角色编码
         /// </summary>
@@ -27,7 +29,6 @@ namespace KissU.Service.Dtos.Systems {
         [Display( Name = "角色名称" )]
         [DataMember]
         public string Name { get; set; }
-        public override string Text => Name;
         /// <summary>
         /// 标准化角色名称
         /// </summary>

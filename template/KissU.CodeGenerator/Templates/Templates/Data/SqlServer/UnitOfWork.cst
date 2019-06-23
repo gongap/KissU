@@ -18,17 +18,20 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Util.Datas.UnitOfWorks;
 
-namespace <%= Namespace %>.Data.UnitOfWorks.SqlServer {
+namespace <%= Namespace %>.Data.UnitOfWorks.SqlServer 
+{
     /// <summary>
     /// 工作单元
     /// </summary>
-    public class <%= UnitOfWork %> : Util.Datas.Ef.SqlServer.UnitOfWork,I<%= UnitOfWork %> {
+    public class <%= UnitOfWork %> : Util.Datas.Ef.SqlServer.UnitOfWork,I<%= UnitOfWork %> 
+	{
         /// <summary>
         /// 初始化工作单元
         /// </summary>
         /// <param name="options">配置项</param>
         /// <param name="serviceProvider">服务提供器</param>
-        public <%= UnitOfWork %>( DbContextOptions options, IServiceProvider serviceProvider ) : base( options, serviceProvider ) {
+        public <%= UnitOfWork %>( DbContextOptions options, IServiceProvider serviceProvider ) : base( options, serviceProvider ) 
+		{
         }
     }
 }

@@ -20,22 +20,26 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using <%= Entity.GetNamespace(Namespace,"Domain","Models") %>;
 
-namespace <%=Namespace%>.Data.Mappings.<%= Entity.TableSchema %>.MySql {
+namespace <%=Namespace%>.Data.Mappings.<%= Entity.TableSchema %>.MySql 
+{
     /// <summary>
     /// <%= Description %>映射配置
     /// </summary>
-    public class <%= SafeClassName %>Map : Util.Datas.Ef.MySql.AggregateRootMap<<%= SafeClassName %>> {
+    public class <%= SafeClassName %>Map : Util.Datas.Ef.MySql.AggregateRootMap<<%= SafeClassName %>> 
+	{
         /// <summary>
         /// 映射表
         /// </summary>
-        protected override void MapTable( EntityTypeBuilder<<%= SafeClassName %>> builder ) {
+        protected override void MapTable( EntityTypeBuilder<<%= SafeClassName %>> builder ) 
+		{
             builder.ToTable( "<%= Entity.TableSchema %>.<%= Entity.TableName %>" );
         }
         
         /// <summary>
         /// 映射属性
         /// </summary>
-        protected override void MapProperties( EntityTypeBuilder<<%= SafeClassName %>> builder ) {
+        protected override void MapProperties( EntityTypeBuilder<<%= SafeClassName %>> builder ) 
+		{
             <%
             foreach(var p in Entity.Properties)
             {

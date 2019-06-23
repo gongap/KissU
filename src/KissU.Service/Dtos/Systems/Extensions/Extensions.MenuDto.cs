@@ -3,16 +3,19 @@ using Util.Maps;
 using KissU.Domain.Systems.Models;
 using KissU.Domain.Systems.Factories;
 
-namespace KissU.Service.Dtos.Systems.Extensions {
+namespace KissU.Service.Dtos.Systems.Extensions 
+{
     /// <summary>
     /// 菜单数据传输对象扩展
     /// </summary>
-    public static class MenuDtoExtension {
+    public static class MenuDtoExtension 
+	{
         /// <summary>
         /// 转换为菜单实体
         /// </summary>
         /// <param name="dto">菜单数据传输对象</param>
-        public static Menu ToEntity( this MenuDto dto ) {
+        public static Menu ToEntity( this MenuDto dto ) 
+		{
             if ( dto == null )
                 return new Menu();
 				return dto.MapTo( new Menu( dto.Id.ToGuid(), dto.Path, dto.Level.SafeValue() ) );
@@ -22,7 +25,8 @@ namespace KissU.Service.Dtos.Systems.Extensions {
         /// 转换为菜单实体
         /// </summary>
         /// <param name="dto">菜单数据传输对象</param>
-        public static Menu ToEntity2( this MenuDto dto ) {
+        public static Menu ToEntity2( this MenuDto dto ) 
+		{
             if( dto == null )
                 return new Menu();
             return 
@@ -62,7 +66,8 @@ namespace KissU.Service.Dtos.Systems.Extensions {
         /// 转换为菜单实体
         /// </summary>
         /// <param name="dto">菜单数据传输对象</param>
-        public static Menu ToEntity3( this MenuDto dto ) {
+        public static Menu ToEntity3( this MenuDto dto ) 
+		{
             if( dto == null )
                 return new Menu();
             return MenuFactory.Create(
@@ -107,7 +112,8 @@ namespace KissU.Service.Dtos.Systems.Extensions {
         /// 转换为菜单数据传输对象
         /// </summary>
         /// <param name="entity">菜单实体</param>
-        public static MenuDto ToDto(this Menu entity) {
+        public static MenuDto ToDto(this Menu entity) 
+		{
             if( entity == null )
                 return new MenuDto();
             return entity.MapTo<MenuDto>();
@@ -117,7 +123,8 @@ namespace KissU.Service.Dtos.Systems.Extensions {
         /// 转换为菜单数据传输对象
         /// </summary>
         /// <param name="entity">菜单实体</param>
-        public static MenuDto ToDto2( this Menu entity ) {
+        public static MenuDto ToDto2( this Menu entity ) 
+		{
             if( entity == null )
                 return new MenuDto();
             return new MenuDto {

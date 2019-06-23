@@ -17,6 +17,8 @@
 <% string SafeClassName = Entity.ClassName.ToSafeName(); %>
 <%-- 描述 --%>
 <% string Description = Entity.Description; %>
+using System;
+using System.Threading.Tasks;
 using Util;
 using Util.Maps;
 using Util.Domains.Repositories;
@@ -29,18 +31,21 @@ using <%= string.Format("{0}.Service.Dtos.{1}",Namespace,Entity.TableSchema) %>;
 using <%= string.Format("{0}.Service.Queries.{1}",Namespace,Entity.TableSchema) %>;
 using <%= string.Format("{0}.Service.Abstractions.{1}",Namespace,Entity.TableSchema) %>;
 
-namespace <%= string.Format("{0}.Service.Implements.{1}",Namespace,Entity.TableSchema) %> {
+namespace <%= string.Format("{0}.Service.Implements.{1}",Namespace,Entity.TableSchema) %> 
+{
     /// <summary>
     /// <%= Description %>服务
     /// </summary>
-    public class <%= SafeClassName %>Service : TreeServiceBase<<%= SafeClassName %>, <%= SafeClassName %>Dto, <%= SafeClassName %>Query<%= Entity.GetKeyTypeNoContainsGuid() %>>, I<%= SafeClassName %>Service {
+    public class <%= SafeClassName %>Service : TreeServiceBase<<%= SafeClassName %>, <%= SafeClassName %>Dto, <%= SafeClassName %>Query<%= Entity.GetKeyTypeNoContainsGuid() %>>, I<%= SafeClassName %>Service 
+	{
         /// <summary>
         /// 初始化<%= Description %>服务
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
         /// <param name="<%= SafeClassName.ToCamelCase() %>Repository"><%= Description %>仓储</param>
         public <%= SafeClassName %>Service( I<%= UnitOfWork %> unitOfWork, I<%= SafeClassName %>Repository <%= SafeClassName.ToCamelCase() %>Repository )
-            : base( unitOfWork, <%= SafeClassName.ToCamelCase() %>Repository ) {
+            : base( unitOfWork, <%= SafeClassName.ToCamelCase() %>Repository ) 
+		{
             <%= SafeClassName %>Repository = <%= SafeClassName.ToCamelCase() %>Repository;
         }
         
@@ -53,8 +58,38 @@ namespace <%= string.Format("{0}.Service.Implements.{1}",Namespace,Entity.TableS
         /// 创建查询对象
         /// </summary>
         /// <param name="param">查询参数</param>
-        protected override IQueryBase<<%= SafeClassName %>> CreateQuery( <%= SafeClassName %>Query param ) {
+        protected override IQueryBase<<%= SafeClassName %>> CreateQuery( <%= SafeClassName %>Query param ) 
+		{
             return new Query<<%= SafeClassName %><%= Entity.GetKeyTypeNoContainsGuid() %>>( param );
+        }
+
+		/// <summary>
+        /// 创建<%= Description %>
+        /// </summary>
+        /// <param name="request">创建请求参数</param>
+        public async Task<Guid> CreateAsync(<%= SafeClassName %>Dto request)
+        {
+            var <%= SafeClassName.ToCamelCase() %> = new <%= SafeClassName %>();
+            request.MapTo(<%= SafeClassName.ToCamelCase() %>);
+            <%= SafeClassName.ToCamelCase() %>.Init();
+            var parent = await <%= SafeClassName %>Repository.FindAsync(<%= SafeClassName.ToCamelCase() %>.ParentId);
+            <%= SafeClassName.ToCamelCase() %>.InitPath(parent);
+            <%= SafeClassName.ToCamelCase() %>.SortId = await <%= SafeClassName %>Repository.GenerateSortIdAsync(<%= SafeClassName.ToCamelCase() %>.ParentId);
+            await <%= SafeClassName %>Repository.AddAsync(<%= SafeClassName.ToCamelCase() %>);
+            return <%= SafeClassName.ToCamelCase() %>.Id;
+        }
+
+        /// <summary>
+        /// 修改<%= Description %>
+        /// </summary>
+        /// <param name="request">修改请求参数</param>
+        public async Task UpdateAsync(<%= SafeClassName %>Dto request)
+        {
+            var <%= SafeClassName.ToCamelCase() %> = await <%= SafeClassName %>Repository.FindAsync(request.Id.ToGuid());
+            <%= SafeClassName.ToCamelCase() %>.CheckNull(nameof(<%= SafeClassName.ToCamelCase() %>));
+            request.MapTo(<%= SafeClassName.ToCamelCase() %>);
+            await <%= SafeClassName %>Repository.UpdatePathAsync(<%= SafeClassName.ToCamelCase() %>);
+            await <%= SafeClassName %>Repository.UpdateAsync(<%= SafeClassName.ToCamelCase() %>);
         }
     }
 }

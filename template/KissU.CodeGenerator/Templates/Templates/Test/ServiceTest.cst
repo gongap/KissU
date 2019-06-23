@@ -28,12 +28,14 @@ using <%= string.Format("{0}.Service.Dtos.{1}",Namespace,Entity.TableSchema) %>;
 using <%= string.Format("{0}.IntegrationTest.Tests.Dtos.{1}",Namespace,Entity.TableSchema) %>;
 using <%= string.Format("{0}.Service.Dtos.{1}.Extensions",Namespace,Entity.TableSchema) %>;
 
-namespace <%= string.Format("{0}.IntegrationTest.Tests.Services.{1}",Namespace,Entity.TableSchema) %> {
+namespace <%= string.Format("{0}.IntegrationTest.Tests.Services.{1}",Namespace,Entity.TableSchema) %> 
+{
     /// <summary>
     /// <%= Description %>服务测试
     /// </summary>
     [Collection( "GlobalConfig" )]
-    public class <%= SafeClassName %>ServiceTest : IDisposable {
+    public class <%= SafeClassName %>ServiceTest : IDisposable 
+	{
         /// <summary>
         /// 容器作用域
         /// </summary>
@@ -54,7 +56,8 @@ namespace <%= string.Format("{0}.IntegrationTest.Tests.Services.{1}",Namespace,E
         /// <summary>
         /// 测试初始化
         /// </summary>
-        public <%= SafeClassName %>ServiceTest() {
+        public <%= SafeClassName %>ServiceTest() 
+		{
             _scope = Ioc.BeginScope();
             <%= SafeClassName.ToFieldName() %>Repository = _scope.Create<I<%= SafeClassName %>Repository>();
             <%= SafeClassName.ToFieldName() %>Service = _scope.Create<I<%= SafeClassName %>Service>();
@@ -64,7 +67,8 @@ namespace <%= string.Format("{0}.IntegrationTest.Tests.Services.{1}",Namespace,E
         /// <summary>
         /// 测试清理
         /// </summary>
-        public void Dispose() {
+        public void Dispose() 
+		{
             _scope.Dispose();
         }
         
@@ -72,7 +76,8 @@ namespace <%= string.Format("{0}.IntegrationTest.Tests.Services.{1}",Namespace,E
         /// 测试
         /// </summary>
         [Fact]
-        public void Test() {
+        public void Test() 
+		{
 		    var count = <%= SafeClassName.ToFieldName() %>Repository.Count();
 			<%= SafeClassName.ToFieldName() %>Repository.Add( <%= SafeClassName.ToFieldName() %>Dto.ToEntity());
             Assert.Equal( count + 1, <%= SafeClassName.ToFieldName() %>Repository.Count() );

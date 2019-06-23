@@ -20,11 +20,13 @@ using System.ComponentModel.DataAnnotations;
 using Util;
 using Util.Datas.Queries.Trees;
 
-namespace <%= string.Format("{0}.Service.Queries.{1}",Namespace,Entity.TableSchema) %> {
+namespace <%= string.Format("{0}.Service.Queries.{1}",Namespace,Entity.TableSchema) %> 
+{
     /// <summary>
     /// <%= Description %>查询参数
     /// </summary>
-    public class <%= SafeClassName %>Query : TreeQueryParameter {
+    public class <%= SafeClassName %>Query : TreeQueryParameter 
+	{
         <% foreach(Property p in Entity.Properties) { %>
         <% if( Entity.IsFilterByQueryObject(p) ) continue;%>
         <% if( Entity.IgnoreTreeEntityProperty(p) ) continue;%>

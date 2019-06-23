@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using Util;
 using KissU.Domain.Systems.Models;
 
-namespace KissU.IntegrationTest.Tests.Models.Systems {
+namespace KissU.IntegrationTest.Tests.Models.Systems 
+{
     /// <summary>
     /// 菜单测试数据
     /// </summary>
-    public partial class MenuTest {
+    public partial class MenuTest 
+	{
         
         #region 测试数据1
         
         /// <summary>
         /// 
         /// </summary>
-        public static readonly Guid Id = "f512262b-cc51-44db-889a-ef9d061496c8".ToGuid();
+        public static readonly Guid Id = "a5c6375c-5728-428d-a2cc-e141782f4a73".ToGuid();
         /// <summary>
         /// 菜单编码
         /// </summary>
@@ -38,7 +40,7 @@ namespace KissU.IntegrationTest.Tests.Models.Systems {
         /// <summary>
         /// 父节点标识
         /// </summary>
-        public static readonly Guid? ParentId = "a9dad770-d769-4d0e-ad29-460a3752a8d7".ToGuid();
+        public static readonly Guid? ParentId = "f192fcdd-d3f3-4786-b064-fbece1d4da1c".ToGuid();
         /// <summary>
         /// 路径
         /// </summary>
@@ -126,19 +128,19 @@ namespace KissU.IntegrationTest.Tests.Models.Systems {
         /// <summary>
         /// 
         /// </summary>
-        public static readonly DateTime? CreationTime = "2019/6/23 15:38:03".ToDate();
+        public static readonly DateTime? CreationTime = "2019/6/23 23:21:10".ToDate();
         /// <summary>
         /// 
         /// </summary>
-        public static readonly Guid? CreatorId = "b9fea448-c6eb-4c2f-99b8-61b602b932bf".ToGuid();
+        public static readonly Guid? CreatorId = "b590b621-9ffc-426e-b78a-8904f389349c".ToGuid();
         /// <summary>
         /// 
         /// </summary>
-        public static readonly DateTime? LastModificationTime = "2019/6/23 15:38:03".ToDate();
+        public static readonly DateTime? LastModificationTime = "2019/6/23 23:21:10".ToDate();
         /// <summary>
         /// 
         /// </summary>
-        public static readonly Guid? LastModifierId = "2720a56d-6893-4e55-94b6-64bbe4840454".ToGuid();
+        public static readonly Guid? LastModifierId = "76f0573e-16dd-4b36-b42d-52703415601c".ToGuid();
         /// <summary>
         /// 
         /// </summary>
@@ -155,7 +157,7 @@ namespace KissU.IntegrationTest.Tests.Models.Systems {
         /// <summary>
         /// 
         /// </summary>
-        public static readonly Guid Id2 = "18d137fc-762c-4cf7-840b-e2672df2754d".ToGuid();
+        public static readonly Guid Id2 = "bd04d83d-9771-49ed-9ae9-f3f9efee3d99".ToGuid();
         /// <summary>
         /// 菜单编码
         /// </summary>
@@ -179,7 +181,7 @@ namespace KissU.IntegrationTest.Tests.Models.Systems {
         /// <summary>
         /// 父节点标识
         /// </summary>
-        public static readonly Guid? ParentId2 = "2bcff13d-a9ac-42c0-b747-9d1f2a321bf9".ToGuid();
+        public static readonly Guid? ParentId2 = "bba6b9ef-0ae8-4653-bb63-f05cd5140f16".ToGuid();
         /// <summary>
         /// 路径
         /// </summary>
@@ -267,19 +269,19 @@ namespace KissU.IntegrationTest.Tests.Models.Systems {
         /// <summary>
         /// 
         /// </summary>
-        public static readonly DateTime? CreationTime2 = "2019/6/24 15:38:03".ToDate();
+        public static readonly DateTime? CreationTime2 = "2019/6/24 23:21:10".ToDate();
         /// <summary>
         /// 
         /// </summary>
-        public static readonly Guid? CreatorId2 = "d5359951-4dc3-4281-8330-891513b0cdfb".ToGuid();
+        public static readonly Guid? CreatorId2 = "4a90d8db-d8c6-4fc3-93ad-68306b426ebb".ToGuid();
         /// <summary>
         /// 
         /// </summary>
-        public static readonly DateTime? LastModificationTime2 = "2019/6/24 15:38:03".ToDate();
+        public static readonly DateTime? LastModificationTime2 = "2019/6/24 23:21:10".ToDate();
         /// <summary>
         /// 
         /// </summary>
-        public static readonly Guid? LastModifierId2 = "deedbd2a-a9da-4857-83b9-c276fd060aa9".ToGuid();
+        public static readonly Guid? LastModifierId2 = "618e763a-2624-4eae-9cc5-5820f8545015".ToGuid();
         /// <summary>
         /// 
         /// </summary>
@@ -296,7 +298,8 @@ namespace KissU.IntegrationTest.Tests.Models.Systems {
         /// <summary>
         /// 创建菜单实体
         /// </summary>
-        public static Menu Create(string id = "") {
+        public static Menu Create(string id = "") 
+		{
             return 
 			new Menu( id.ToGuid(),"", 0  ) {
                 Code = Code,
@@ -334,7 +337,8 @@ namespace KissU.IntegrationTest.Tests.Models.Systems {
         /// 创建菜单实体2
         /// </summary>
         /// <param name="id">菜单编号</param>
-        public static Menu Create2( string id = "" ) {
+        public static Menu Create2( string id = "" ) 
+		{
             return 
 			new Menu( id.ToGuid(),"", 0 ) {
                 Code = Code2,
@@ -375,7 +379,8 @@ namespace KissU.IntegrationTest.Tests.Models.Systems {
         /// <summary>
         /// 创建列表
         /// </summary>
-        public static List<Menu> CreateList() {
+        public static List<Menu> CreateList() 
+		{
             return new List<Menu>() {
                 Create(),
                 Create2()

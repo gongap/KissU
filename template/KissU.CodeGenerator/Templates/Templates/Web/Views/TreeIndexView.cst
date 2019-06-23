@@ -31,7 +31,7 @@
         已选择<strong class="text-primary mx-md">{{getCheckedLength()}}</strong>行
     </util-alert>
     @*表格*@
-	<util-tree-table id="treeTable_<%=SafeClassName%>" base-url="<%=CamelClassName%>Table" query-param="queryParam">
+	<util-tree-table id="treeTable_<%=SafeClassName%>" base-url="<%=CamelClassName%>" query-param="queryParam">
 		<% foreach(Property p in Entity.Properties) { %>
 		<% if( p.IsPrimaryKey.SafeValue() ) continue; %>
 		<% if( Entity.IsHidden(p) ) continue; %>

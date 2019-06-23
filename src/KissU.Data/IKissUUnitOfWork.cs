@@ -1,9 +1,11 @@
 ﻿using Util.Datas.UnitOfWorks;
 
-namespace KissU.Data {
+namespace KissU.Data 
+{
     /// <summary>
     /// 工作单元
     /// </summary>
-    public interface IKissUUnitOfWork : IUnitOfWork {
+    public interface IKissUUnitOfWork : IUnitOfWork 
+	{
     }
 }

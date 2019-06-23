@@ -31,11 +31,13 @@ using Util.Domains;
 using Util.Domains.Auditing;
 using Util.Datas.Persistence;
 
-namespace <%= Namespace %>.Data.Pos.<%= Entity.TableSchema %>{
+namespace <%= Namespace %>.Data.Pos.<%= Entity.TableSchema %>
+{
     /// <summary>
     /// <%= Description %>持久化对象
     /// </summary>
-    public class <%= SafeClassName %>Po : PersistentObjectBase<<%= Entity.GetKeyTypeString() %>><%=Entity.GetInterfaces()%>{
+    public class <%= SafeClassName %>Po : PersistentObjectBase<<%= Entity.GetKeyTypeString() %>><%=Entity.GetInterfaces()%>
+	{
         <% foreach(Property p in Entity.Properties) { %>
         <% if( p.IsPrimaryKey.SafeValue() ) continue; %>
         <% if( p.ColumnName == "Version" && p.DataType == DbType.Binary ) continue;%>

@@ -20,10 +20,12 @@
 using Util.Datas.Stores;
 using <%=Namespace%>.Data.Pos.<%=Entity.TableSchema%>;
 
-namespace <%=Namespace%>.Data.Stores.Abstractions.<%=Entity.TableSchema%>  {
+namespace <%=Namespace%>.Data.Stores.Abstractions.<%=Entity.TableSchema%>  
+{
     /// <summary>
     /// <%= Description %>存储器
     /// </summary>
-    public interface I<%= SafeClassName %>PoStore : IStore<<%= SafeClassName %>Po<%= Entity.GetKeyTypeNoContainsGuid() %>> {
+    public interface I<%= SafeClassName %>PoStore : IStore<<%= SafeClassName %>Po<%= Entity.GetKeyTypeNoContainsGuid() %>> 
+	{
     }
 }

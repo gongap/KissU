@@ -1,10 +1,10 @@
-﻿using Util.Domains.Repositories;
+﻿using Util.Domains.Trees;
 using KissU.Domain.Systems.Models;
 
 namespace KissU.Domain.Systems.Repositories {
     /// <summary>
     /// 角色仓储
     /// </summary>
-    public interface IRoleRepository : IRepository<Role> {
+    public interface IRoleRepository : ITreeRepository<Role> {
     }
 }

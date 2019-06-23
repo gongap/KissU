@@ -5,12 +5,14 @@ using Util.Ui.Attributes;
 using Util.Applications.Dtos;
 using Util.Ui.Data;
 
-namespace KissU.Service.Dtos.Systems {
+namespace KissU.Service.Dtos.Systems 
+{
     /// <summary>
     /// 菜单数据传输对象
     /// </summary>
     [Model("model")]
-    public class MenuDto : TreeDto<MenuDto> {
+    public class MenuDto : TreeDto<MenuDto> 
+	{
         /// <summary>
         /// 菜单编码
         /// </summary>
@@ -27,7 +29,6 @@ namespace KissU.Service.Dtos.Systems {
         [Display( Name = "菜单名称" )]
         [DataMember]
         public string Name { get; set; }
-        public override string Text => Name;
         /// <summary>
         /// 拼音
         /// </summary>

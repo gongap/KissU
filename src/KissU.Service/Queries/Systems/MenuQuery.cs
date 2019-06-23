@@ -3,11 +3,13 @@ using System.ComponentModel.DataAnnotations;
 using Util;
 using Util.Datas.Queries.Trees;
 
-namespace KissU.Service.Queries.Systems {
+namespace KissU.Service.Queries.Systems 
+{
     /// <summary>
     /// 菜单查询参数
     /// </summary>
-    public class MenuQuery : TreeQueryParameter {
+    public class MenuQuery : TreeQueryParameter 
+	{
         /// <summary>
         /// 
         /// </summary>

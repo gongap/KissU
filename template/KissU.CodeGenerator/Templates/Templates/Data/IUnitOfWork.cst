@@ -14,10 +14,12 @@
 <%@ Property Name="UnitOfWork" Type="System.String"  %>
 using Util.Datas.UnitOfWorks;
 
-namespace <%= Namespace %>.Data {
+namespace <%= Namespace %>.Data 
+{
     /// <summary>
     /// 工作单元
     /// </summary>
-    public interface <%= UnitOfWork %> : IUnitOfWork {
+    public interface <%= UnitOfWork %> : IUnitOfWork 
+	{
     }
 }

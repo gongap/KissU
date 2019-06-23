@@ -33,17 +33,20 @@ using <%= string.Format("{0}.Service.Dtos.{1}",Namespace,Entity.TableSchema) %>;
 using <%= string.Format("{0}.Service.Queries.{1}",Namespace,Entity.TableSchema) %>;
 using <%= string.Format("{0}.Service.Abstractions.{1}",Namespace,Entity.TableSchema) %>;
 
-namespace <%= Namespace %>.Web.Apis.<%= Schema %> {
+namespace <%= Namespace %>.Web.Apis.<%= Schema %> 
+{
     /// <summary>
     /// <%= Description %>控制器
     /// </summary>
-    public class <%= SafeClassName %>Controller : CrudControllerBase<<%= SafeClassName %>Dto, <%= SafeClassName %>Query> {
+    public class <%= SafeClassName %>Controller : CrudControllerBase<<%= SafeClassName %>Dto, <%= SafeClassName %>Query> 
+	{
         
         /// <summary>
         /// 初始化<%= Description %>控制器
         /// </summary>
 		/// <param name="service"><%= Description %>服务</param>
-        public <%= SafeClassName %>Controller( I<%= SafeClassName %>Service service ) : base( service ) {
+        public <%= SafeClassName %>Controller( I<%= SafeClassName %>Service service ) : base( service ) 
+		{
             <%= SafeClassName %>Service = service;
         }
 
