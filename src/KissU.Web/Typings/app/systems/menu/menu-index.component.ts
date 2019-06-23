@@ -13,19 +13,13 @@ import { MenuViewModel } from './model/menu-view-model';
 })
 export class MenuIndexComponent extends TreeTableQueryComponentBase<MenuViewModel, MenuQuery>  {
     /**
-     * 查询参数
-     */
-    queryParam: MenuQuery;
-
-    /**
-     * 初始化
+     * 初始化菜单首页
      * @param injector 注入器
      */
-    constructor( injector: Injector ) {
-        super( injector );
-        this.queryParam = this.createQuery();
+    constructor(injector: Injector) {
+        super(injector);
     }
-
+    
     /**
      * 创建查询参数
      */

@@ -32,19 +32,13 @@ import { <%=SafeClassName%>ViewModel } from './model/<%=CamelClassName%>-view-mo
 })
 export class <%=SafeClassName%>IndexComponent extends TreeTableQueryComponentBase<<%=SafeClassName%>ViewModel, <%=SafeClassName%>Query>  {
     /**
-     * 查询参数
-     */
-    queryParam: <%=SafeClassName%>Query;
-
-    /**
-     * 初始化
+     * 初始化<%=Description%>首页
      * @param injector 注入器
      */
-    constructor( injector: Injector ) {
-        super( injector );
-        this.queryParam = this.createQuery();
+    constructor(injector: Injector) {
+        super(injector);
     }
-
+    
     /**
      * 创建查询参数
      */

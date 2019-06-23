@@ -27,6 +27,7 @@ namespace KissU.Service.Dtos.Systems {
         [Display( Name = "角色名称" )]
         [DataMember]
         public string Name { get; set; }
+        public override string Text => Name;
         /// <summary>
         /// 标准化角色名称
         /// </summary>

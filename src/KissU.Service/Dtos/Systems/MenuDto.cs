@@ -27,6 +27,7 @@ namespace KissU.Service.Dtos.Systems {
         [Display( Name = "菜单名称" )]
         [DataMember]
         public string Name { get; set; }
+        public override string Text => Name;
         /// <summary>
         /// 拼音
         /// </summary>

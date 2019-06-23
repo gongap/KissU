@@ -39,4 +39,22 @@ namespace <%= Namespace %>.Web.Apis.<%= Schema %> {
         /// </summary>
         public I<%= SafeClassName %>Service <%= SafeClassName %>Service { get; }
     }
+
+    /// <summary>
+    /// <%= Description %>控制器
+    /// </summary>
+    public class <%= SafeClassName %>TableController : TreeTableControllerBase<<%= SafeClassName %>Dto, <%= SafeClassName %>Query> {
+        /// <summary>
+        /// 初始化<%= Description %>控制器
+        /// </summary>
+        /// <param name="service"><%= Description %>服务</param>
+        public <%= SafeClassName %>TableController( I<%= SafeClassName %>Service service ) : base( service ) {
+            <%= SafeClassName %>Service = service;
+        }
+
+        /// <summary>
+        /// <%= Description %>服务
+        /// </summary>
+        public I<%= SafeClassName %>Service <%= SafeClassName %>Service { get; }
+    }
 }
