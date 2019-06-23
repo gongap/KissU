@@ -27,32 +27,33 @@ namespace KissU.Service.Dtos.Systems.Extensions {
                 return new Menu();
             return 
 				new Menu( dto.Id.ToGuid(),dto.Path, dto.Level.SafeValue() ) {
-                Text = dto.Text,
+                Code = dto.Code,
+                Name = dto.Name,
                 PinYin = dto.PinYin,
                 I18n = dto.I18n,
-                    Group = dto.Group.SafeValue(),
+                Group = dto.Group.SafeValue(),
                 Link = dto.Link,
-                    LinkExact = dto.LinkExact.SafeValue(),
+                LinkExact = dto.LinkExact.SafeValue(),
                 ExternalLink = dto.ExternalLink,
                 Target = dto.Target,
                 Icon = dto.Icon,
                 Badge = dto.Badge,
-                    BadgeDot = dto.BadgeDot.SafeValue(),
+                BadgeDot = dto.BadgeDot.SafeValue(),
                 BadgeStatus = dto.BadgeStatus,
-                    Disabled = dto.Disabled.SafeValue(),
-                    Hide = dto.Hide.SafeValue(),
-                    HideInBreadcrumb = dto.HideInBreadcrumb.SafeValue(),
+                Disabled = dto.Disabled.SafeValue(),
+                Hide = dto.Hide.SafeValue(),
+                HideInBreadcrumb = dto.HideInBreadcrumb.SafeValue(),
                 Acl = dto.Acl,
-                    Shortcut = dto.Shortcut.SafeValue(),
-                    ShortcutRoot = dto.ShortcutRoot.SafeValue(),
-                    Reuse = dto.Reuse.SafeValue(),
-                    Open = dto.Open.SafeValue(),
+                Shortcut = dto.Shortcut.SafeValue(),
+                ShortcutRoot = dto.ShortcutRoot.SafeValue(),
+                Reuse = dto.Reuse.SafeValue(),
+                Open = dto.Open.SafeValue(),
                 Note = dto.Note,
                 CreationTime = dto.CreationTime,
                 CreatorId = dto.CreatorId,
                 LastModificationTime = dto.LastModificationTime,
                 LastModifierId = dto.LastModifierId,
-                    IsDeleted = dto.IsDeleted.SafeValue(),
+                IsDeleted = dto.IsDeleted.SafeValue(),
                 Version = dto.Version,
             };
         }
@@ -65,8 +66,9 @@ namespace KissU.Service.Dtos.Systems.Extensions {
             if( dto == null )
                 return new Menu();
             return MenuFactory.Create(
-                id : dto.Id.ToGuid(),
-                text : dto.Text,
+                menuId : dto.Id.ToGuid(),
+                code : dto.Code,
+                name : dto.Name,
                 pinYin : dto.PinYin,
                 enabled : dto.Enabled.SafeValue(),
                 sortId : dto.SortId.SafeValue(),
@@ -120,7 +122,8 @@ namespace KissU.Service.Dtos.Systems.Extensions {
                 return new MenuDto();
             return new MenuDto {
                 Id = entity.Id.ToString(),
-                Text = entity.Text,
+                Code = entity.Code,
+                Name = entity.Name,
                 PinYin = entity.PinYin,
                 Enabled = entity.Enabled,
                 SortId = entity.SortId,

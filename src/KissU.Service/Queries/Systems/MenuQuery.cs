@@ -12,16 +12,26 @@ namespace KissU.Service.Queries.Systems {
         /// 
         /// </summary>
         [Display(Name="")]
-        public Guid? Id { get; set; }
+        public Guid? MenuId { get; set; }
         
-        private string _text = string.Empty;
+        private string _code = string.Empty;
         /// <summary>
-        /// 文本
+        /// 菜单编码
         /// </summary>
-        [Display(Name="文本")]
-        public string Text {
-            get => _text == null ? string.Empty : _text.Trim();
-            set => _text = value;
+        [Display(Name="菜单编码")]
+        public string Code {
+            get => _code == null ? string.Empty : _code.Trim();
+            set => _code = value;
+        }
+        
+        private string _name = string.Empty;
+        /// <summary>
+        /// 菜单名称
+        /// </summary>
+        [Display(Name="菜单名称")]
+        public string Name {
+            get => _name == null ? string.Empty : _name.Trim();
+            set => _name = value;
         }
         
         private string _pinYin = string.Empty;

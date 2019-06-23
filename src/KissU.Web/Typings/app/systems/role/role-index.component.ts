@@ -1,6 +1,6 @@
 ﻿import { Component, Injector } from '@angular/core';
 import { env } from '../../env';
-import { TableQueryComponentBase, ComponentBase } from '../../../util';
+import { TreeTableQueryComponentBase } from '../../../util';
 import { RoleQuery } from './model/role-query';
 import { RoleViewModel } from './model/role-view-model';
 
@@ -11,7 +11,7 @@ import { RoleViewModel } from './model/role-view-model';
     selector: 'role-index',
     templateUrl: env.prod() ? './html/role-index.component.html' : '/view/systems/role'
 })
-export class RoleIndexComponent extends ComponentBase  {
+export class RoleIndexComponent extends TreeTableQueryComponentBase<RoleViewModel, RoleQuery>  {
     /**
      * 查询参数
      */
@@ -21,8 +21,8 @@ export class RoleIndexComponent extends ComponentBase  {
      * 初始化
      * @param injector 注入器
      */
-    constructor(injector: Injector) {
-        super(injector);
+    constructor( injector: Injector ) {
+        super( injector );
         this.queryParam = this.createQuery();
     }
 

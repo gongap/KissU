@@ -31,7 +31,7 @@ namespace KissU.Service.Dtos.Systems.Extensions {
                 Name = dto.Name,
                 NormalizedName = dto.NormalizedName,
                 Type = dto.Type,
-                    IsAdmin = dto.IsAdmin.SafeValue(),
+                IsAdmin = dto.IsAdmin.SafeValue(),
                 Comment = dto.Comment,
                 PinYin = dto.PinYin,
                 Sign = dto.Sign,
@@ -39,7 +39,7 @@ namespace KissU.Service.Dtos.Systems.Extensions {
                 CreatorId = dto.CreatorId,
                 LastModificationTime = dto.LastModificationTime,
                 LastModifierId = dto.LastModifierId,
-                    IsDeleted = dto.IsDeleted.SafeValue(),
+                IsDeleted = dto.IsDeleted.SafeValue(),
                 Version = dto.Version,
             };
         }

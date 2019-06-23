@@ -817,18 +817,6 @@ namespace SchemaMapper
                 return Description;
             return PropertyName;
         }
-
-        /// <summary>
-        /// 获取表单项
-        /// </summary>
-        public string GetFormItem()
-        {
-            if (DataType == DbType.Boolean)
-                return "<util-switch for=\"" + PropertyName.ToSafeName() + "\"></util-switch>";
-            if (DataType == DbType.DateTime)
-                return "<util-date-picker for=\"" + PropertyName.ToSafeName() + "\"></util-date-picker>";
-            return "<util-textbox for=\"" + PropertyName.ToSafeName() + "\"></util-textbox>";
-        }
     }
 
     [DebuggerDisplay("Other: {OtherEntity}, Property: {OtherPropertyName}, Relationship: {RelationshipName}")]

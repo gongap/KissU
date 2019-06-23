@@ -19,14 +19,7 @@ import { MessageConfig } from '../config/message-config';
         <ng-container [ngTemplateOutlet]="template"></ng-container>
         {{getText()}}
         </button>
-    `,
-    styles: [
-        `
-        [nz-button] {
-          margin-right: 8px;
-        }
-      `
-    ]
+    `
 } )
 export class Button {
     /**

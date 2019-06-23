@@ -19,20 +19,20 @@
 <% string CamelClassName = SafeClassName.ToCamelCase(); %>
 @page
 @model <%=SafeClassName%>Dto
-<page-header title="查看<%=Description%>">
-</page-header>
-<nz-card>
-	<util-form id="form" label-span="3" control-span="15" gutter="16">
-		<% foreach(Property p in Entity.Properties) { %>
-			<% if( p.IsPrimaryKey.SafeValue() ) continue; %>
-			<% if( Entity.IgnoreTreeEntityProperty(p) ) continue;%>
-			<% if( Entity.IsHidden(p) ) continue; %>
-			<%= p.GetFormItem() %>        
-		<% } %>
-		<util-form-item justify="Center">
-			<util-column>
-				<util-button on-click="back()" text="返回" icon="Backward"></util-button>
-			</util-column>
-		</util-form-item>
-	</util-form>
-</nz-card>
+@*标题*@
+<page-header title="查看<%=Description%>"></page-header>
+@*表单*@
+<util-card show-border="false">
+    <util-form id="form" label-span="3" control-span="18" gutter="16">
+        <% foreach(Property p in Entity.Properties) { %>
+        <% if( p.IsPrimaryKey.SafeValue() ) continue; %>
+        <% if( Entity.IsHidden(p) ) continue; %>
+		<% if( Entity.IgnoreTreeEntityProperty(p) ) continue;%>
+        <% if( p.DataType == DbType.Boolean ){%>
+        <util-switch for="<%= p.PropertyName.ToSafeName() %>"></util-switch>
+        <% }else{ %>
+        <util-textbox for="<%= p.PropertyName.ToSafeName() %>"></util-textbox>
+        <% } %>
+        <% } %>
+    </util-form>
+</util-card>

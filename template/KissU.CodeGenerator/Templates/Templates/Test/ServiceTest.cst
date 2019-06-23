@@ -26,6 +26,7 @@ using <%= Entity.GetNamespace(Namespace,"Domain","Repositories") %>;
 using <%= string.Format("{0}.Service.Abstractions.{1}",Namespace,Entity.TableSchema) %>;
 using <%= string.Format("{0}.Service.Dtos.{1}",Namespace,Entity.TableSchema) %>;
 using <%= string.Format("{0}.IntegrationTest.Tests.Dtos.{1}",Namespace,Entity.TableSchema) %>;
+using <%= string.Format("{0}.Service.Dtos.{1}.Extensions",Namespace,Entity.TableSchema) %>;
 
 namespace <%= string.Format("{0}.IntegrationTest.Tests.Services.{1}",Namespace,Entity.TableSchema) %> {
     /// <summary>
@@ -72,7 +73,8 @@ namespace <%= string.Format("{0}.IntegrationTest.Tests.Services.{1}",Namespace,E
         /// </summary>
         [Fact]
         public void Test() {
-            var count = <%= SafeClassName.ToFieldName() %>Repository.Count();
+		    var count = <%= SafeClassName.ToFieldName() %>Repository.Count();
+			<%= SafeClassName.ToFieldName() %>Repository.Add( <%= SafeClassName.ToFieldName() %>Dto.ToEntity());
             Assert.Equal( count + 1, <%= SafeClassName.ToFieldName() %>Repository.Count() );
         }
     }

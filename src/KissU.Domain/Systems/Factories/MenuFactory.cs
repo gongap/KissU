@@ -9,8 +9,9 @@ namespace KissU.Domain.Systems.Factories {
         /// <summary>
         /// 创建菜单
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="text">文本</param>
+        /// <param name="menuId"></param>
+        /// <param name="code">菜单编码</param>
+        /// <param name="name">菜单名称</param>
         /// <param name="pinYin">拼音</param>
         /// <param name="enabled"></param>
         /// <param name="sortId">排序标识</param>
@@ -43,8 +44,9 @@ namespace KissU.Domain.Systems.Factories {
         /// <param name="isDeleted"></param>
         /// <param name="version"></param>
         public static Menu Create( 
-            Guid id,
-            string text,
+            Guid menuId,
+            string code,
+            string name,
             string pinYin,
             bool enabled,
             int? sortId,
@@ -78,8 +80,9 @@ namespace KissU.Domain.Systems.Factories {
             Byte[] version
         ) {
             Menu result;
-            result = new Menu( id, path, level);
-            result.Text = text;
+            result = new Menu( menuId, path, level);
+            result.Code = code;
+            result.Name = name;
             result.PinYin = pinYin;
             result.I18n = i18n;
             result.Group = group;

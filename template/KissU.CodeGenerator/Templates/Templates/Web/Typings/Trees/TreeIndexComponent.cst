@@ -30,7 +30,7 @@ import { <%=SafeClassName%>ViewModel } from './model/<%=CamelClassName%>-view-mo
     selector: '<%=CamelClassName%>-index',
     templateUrl: env.prod() ? './html/<%=CamelClassName%>-index.component.html' : '/view/<%=Namespace.ToCamelCase()%>/<%=CamelClassName%>'
 })
-export class <%=SafeClassName%>IndexComponent extends ComponentBase  {
+export class <%=SafeClassName%>IndexComponent extends TreeTableQueryComponentBase<<%=SafeClassName%>ViewModel, <%=SafeClassName%>Query>  {
     /**
      * 查询参数
      */

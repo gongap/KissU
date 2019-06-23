@@ -1,6 +1,6 @@
 ﻿import { Component, Injector } from '@angular/core';
 import { env } from '../../env';
-import { TableQueryComponentBase, ComponentBase } from '../../../util';
+import { TreeTableQueryComponentBase } from '../../../util';
 import { MenuQuery } from './model/menu-query';
 import { MenuViewModel } from './model/menu-view-model';
 
@@ -11,7 +11,7 @@ import { MenuViewModel } from './model/menu-view-model';
     selector: 'menu-index',
     templateUrl: env.prod() ? './html/menu-index.component.html' : '/view/systems/menu'
 })
-export class MenuIndexComponent extends ComponentBase  {
+export class MenuIndexComponent extends TreeTableQueryComponentBase<MenuViewModel, MenuQuery>  {
     /**
      * 查询参数
      */
@@ -21,8 +21,8 @@ export class MenuIndexComponent extends ComponentBase  {
      * 初始化
      * @param injector 注入器
      */
-    constructor(injector: Injector) {
-        super(injector);
+    constructor( injector: Injector ) {
+        super( injector );
         this.queryParam = this.createQuery();
     }
 

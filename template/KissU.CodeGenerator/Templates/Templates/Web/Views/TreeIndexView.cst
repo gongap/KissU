@@ -19,20 +19,18 @@
 <% string CamelClassName = SafeClassName.ToCamelCase(); %>
 @page
 @model <%=SafeClassName%>Dto
-<page-header [title]="'<%=Description%>'"></page-header>
-<nz-card [nzBordered]="false">
+<page-header title="<%=Description%>"></page-header>
+<util-card show-border="false">
     @*查询表单*@
-    @await Html.PartialAsync( "Partial/QueryForm" )
-	<util-a text="添加" link="create" color="Primary" ></util-a>
-    <div class="my-md">
-        <nz-alert [nzType]="'info'" [nzShowIcon]="true" [nzMessage]="message">
-            <ng-template #message>
-                说明
-                <strong class="text-primary">重点</strong>
-            </ng-template>
-        </nz-alert>
-    </div>
-	@*表格*@
+    @await Html.PartialAsync( "Index.Query" )
+    @*工具按钮*@
+    <util-a class="mr-sm" color="Primary" icon="Plus" text="新建" link="create"></util-a>
+    <util-button id="btnDelete" color="Danger" icon="Delete" text="删除" on-click="delete(btnDelete)"></util-button>
+    @*提示语*@
+    <util-alert class="my-md" type="Info" show-icon="true">
+        已选择<strong class="text-primary mx-md">{{getCheckedLength()}}</strong>行
+    </util-alert>
+    @*表格*@
 	<util-tree-table id="treeTable_<%=SafeClassName%>" base-url="<%=CamelClassName%>" query-param="queryParam">
 		<% foreach(Property p in Entity.Properties) { %>
 		<% if( p.IsPrimaryKey.SafeValue() ) continue; %>
@@ -57,4 +55,4 @@
 			</nz-dropdown>
 		</util-tree-table-column>
 	</util-tree-table>
-</nz-card>
+</util-card>

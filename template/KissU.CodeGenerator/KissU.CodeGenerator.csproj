@@ -104,7 +104,7 @@
     <None Include="Templates\Templates\Web\Typings\DetailComponent.cst" />
     <None Include="Templates\Templates\Web\Typings\Trees\TreeViewModel.cst" />
     <None Include="Templates\Templates\Web\Typings\Trees\TreeQuery.cst" />
-    <None Include="Templates\Templates\Web\Views\QueryForm.cst" />
+    <None Include="Templates\Templates\Web\Views\QueryView.cst" />
     <None Include="Templates\Templates\Web\Views\IndexView.cst" />
     <None Include="Templates\Templates\Web\Views\EditView.cst" />
     <None Include="Templates\Templates\Web\Views\DetailView.cst" />

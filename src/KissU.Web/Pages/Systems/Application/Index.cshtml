@@ -1,40 +1,28 @@
 ﻿@page
 @model ApplicationDto
-<page-header [title]="'应用程序'"></page-header>
-<nz-card [nzBordered]="false">
+<page-header title="应用程序"></page-header>
+<util-card show-border="false">
     @*查询表单*@
-    @await Html.PartialAsync( "Partial/QueryForm" )
-	<util-a text="添加" link="create" color="Primary" ></util-a>
-    <div class="my-md">
-        <nz-alert [nzType]="'info'" [nzShowIcon]="true" [nzMessage]="message">
-            <ng-template #message>
-                说明
-                <strong class="text-primary">重点</strong>
-            </ng-template>
-        </nz-alert>
-    </div>
+    @await Html.PartialAsync( "Index.Query" )
+    @*工具按钮*@
+    <util-a class="mr-sm" color="Primary" icon="Plus" text="新建" link="create"></util-a>
+    <util-button id="btnDelete" color="Danger" icon="Delete" text="删除" on-click="delete(btnDelete)"></util-button>
+    @*提示语*@
+    <util-alert class="my-md" type="Info" show-icon="true">
+        已选择<strong class="text-primary mx-md">{{getCheckedLength()}}</strong>行
+    </util-alert>
     @*表格*@
-    <util-table id="table_Application" max-height="700" base-url="application" query-param="queryParam" sort="CreationTime" sort-direction="Desc">
-		<util-table-column type="Checkbox"></util-table-column>
-		<util-table-column type="LineNumber"></util-table-column>
-		<util-table-column for="Code"></util-table-column>
-		<util-table-column for="Name"></util-table-column>
-		<util-table-column for="Comment"></util-table-column>
-		<util-table-column for="Enabled"></util-table-column>
-		<util-table-column for="RegisterEnabled"></util-table-column>
-		<util-table-column title="操作">
-            <a [routerLink]="['update',row.id]">编辑</a>
-			<nz-divider nzType="vertical"></nz-divider>
-            <nz-dropdown>
-                <a class="ant-dropdown-link" nz-dropdown>
-                    更多
-                    <i nz-icon type="down"></i>
-                </a>
-                <ul nz-menu>
-                    <li nz-menu-item [routerLink]="['detail',row.id]">查看</li>
-                    <li nz-menu-item (click)="delete(null,row.id)">删除</li>
-                </ul>
-            </nz-dropdown>
+    <util-table id="tableApplication" query-param="queryParam" base-url="application" sort="CreationTime desc">
+        <util-table-column type="Checkbox"></util-table-column>
+        <util-table-column type="LineNumber"></util-table-column>
+        <util-table-column for="Code"></util-table-column>
+        <util-table-column for="Name"></util-table-column>
+        <util-table-column for="Comment"></util-table-column>
+        <util-table-column for="Enabled"></util-table-column>
+        <util-table-column for="RegisterEnabled"></util-table-column>
+        <util-table-column title="操作">
+            <util-a class="mr-sm" color="Primary" shape="Circle" icon="Edit" tooltip="编辑" bind-link="['update',row.id]"></util-a>
+            <util-button color="Danger" shape="Circle" icon="Delete" tooltip="删除" on-click="delete(null,row.id)"></util-button>
         </util-table-column>
     </util-table>
-</nz-card>
+</util-card>

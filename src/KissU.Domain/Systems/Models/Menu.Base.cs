@@ -32,11 +32,17 @@ namespace KissU.Domain.Systems.Models {
         }
 
         /// <summary>
-        /// 文本
+        /// 菜单编码
         /// </summary>
-        [Required(ErrorMessage = "文本不能为空")]
-        [StringLength( 256, ErrorMessage = "文本输入过长，不能超过256位" )]
-        public string Text { get; set; }
+        [Required(ErrorMessage = "菜单编码不能为空")]
+        [StringLength( 256, ErrorMessage = "菜单编码输入过长，不能超过256位" )]
+        public string Code { get; set; }
+        /// <summary>
+        /// 菜单名称
+        /// </summary>
+        [Required(ErrorMessage = "菜单名称不能为空")]
+        [StringLength( 256, ErrorMessage = "菜单名称输入过长，不能超过256位" )]
+        public string Name { get; set; }
         /// <summary>
         /// 拼音
         /// </summary>
@@ -153,7 +159,8 @@ namespace KissU.Domain.Systems.Models {
         /// </summary>
         protected override void AddDescriptions() {
             AddDescription( t => t.Id );
-            AddDescription( t => t.Text );
+            AddDescription( t => t.Code );
+            AddDescription( t => t.Name );
             AddDescription( t => t.PinYin );
             AddDescription( t => t.Enabled );
             AddDescription( t => t.SortId );
@@ -190,7 +197,8 @@ namespace KissU.Domain.Systems.Models {
         /// </summary>
         protected override void AddChanges( Menu other ) {
             AddChange( t => t.Id, other.Id );
-            AddChange( t => t.Text, other.Text );
+            AddChange( t => t.Code, other.Code );
+            AddChange( t => t.Name, other.Name );
             AddChange( t => t.PinYin, other.PinYin );
             AddChange( t => t.Enabled, other.Enabled );
             AddChange( t => t.SortId, other.SortId );

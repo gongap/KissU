@@ -5,9 +5,13 @@
  */
 export class MenuViewModel extends TreeViewModel {
     /**
-     * 文本
+     * 菜单编码
      */
-    text;
+    code;
+    /**
+     * 菜单名称
+     */
+    name;
     /**
      * 拼音
      */

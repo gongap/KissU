@@ -12,13 +12,21 @@ namespace KissU.Service.Dtos.Systems {
     [Model("model")]
     public class MenuDto : TreeDto<MenuDto> {
         /// <summary>
-        /// 文本
+        /// 菜单编码
         /// </summary>
-        [Required(ErrorMessage = "文本不能为空")]
-        [StringLength( 256, ErrorMessage = "文本输入过长，不能超过256位" )]
-        [Display( Name = "文本" )]
+        [Required(ErrorMessage = "菜单编码不能为空")]
+        [StringLength( 256, ErrorMessage = "菜单编码输入过长，不能超过256位" )]
+        [Display( Name = "菜单编码" )]
         [DataMember]
-        public string Text { get; set; }
+        public string Code { get; set; }
+        /// <summary>
+        /// 菜单名称
+        /// </summary>
+        [Required(ErrorMessage = "菜单名称不能为空")]
+        [StringLength( 256, ErrorMessage = "菜单名称输入过长，不能超过256位" )]
+        [Display( Name = "菜单名称" )]
+        [DataMember]
+        public string Name { get; set; }
         /// <summary>
         /// 拼音
         /// </summary>

@@ -30,12 +30,12 @@ namespace KissU.Service.Dtos.Systems.Extensions {
                 Code = dto.Code,
                 Name = dto.Name,
                 Comment = dto.Comment,
-                    RegisterEnabled = dto.RegisterEnabled.SafeValue(),
+                RegisterEnabled = dto.RegisterEnabled.SafeValue(),
                 CreationTime = dto.CreationTime,
                 CreatorId = dto.CreatorId,
                 LastModificationTime = dto.LastModificationTime,
                 LastModifierId = dto.LastModifierId,
-                    IsDeleted = dto.IsDeleted.SafeValue(),
+                IsDeleted = dto.IsDeleted.SafeValue(),
                 Version = dto.Version,
             };
         }
