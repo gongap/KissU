@@ -23,7 +23,10 @@ export class RoleEditComponent extends EditComponentBase<RoleViewModel> {
      * 创建视图模型
      */
     protected createModel() {
-        return new RoleViewModel();
+	    var model = new RoleViewModel();
+        var parentId = null || this.util.router.getParam("parentId");
+        model.parentId = parentId;
+        return model;
     }
 
     /**

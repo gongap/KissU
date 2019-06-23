@@ -23,7 +23,10 @@ export class MenuEditComponent extends EditComponentBase<MenuViewModel> {
      * 创建视图模型
      */
     protected createModel() {
-        return new MenuViewModel();
+	    var model = new MenuViewModel();
+        var parentId = null || this.util.router.getParam("parentId");
+        model.parentId = parentId;
+        return model;
     }
 
     /**

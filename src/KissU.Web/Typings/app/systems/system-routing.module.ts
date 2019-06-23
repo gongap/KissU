@@ -24,12 +24,14 @@ const routes: Routes = [
             {path: 'menu', children: [
                 { path: '', component: MenuIndexComponent },
                 { path: 'create', component: MenuEditComponent },
+                { path: 'create/:parentId', component: MenuEditComponent },
                 { path: 'update/:id', component: MenuEditComponent },
                 { path: 'detail/:id', component: MenuDetailComponent }
             ]},
             {path: 'role', children: [
                 { path: '', component: RoleIndexComponent },
                 { path: 'create', component: RoleEditComponent },
+                { path: 'create/:parentId', component: RoleEditComponent },
                 { path: 'update/:id', component: RoleEditComponent },
                 { path: 'detail/:id', component: RoleDetailComponent }
             ]},

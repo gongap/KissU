@@ -23,7 +23,8 @@ export class ApplicationEditComponent extends EditComponentBase<ApplicationViewM
      * 创建视图模型
      */
     protected createModel() {
-        return new ApplicationViewModel();
+	    var model = new ApplicationViewModel();
+        return model;
     }
 
     /**

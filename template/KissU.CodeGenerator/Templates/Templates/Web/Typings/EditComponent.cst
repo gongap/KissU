@@ -42,7 +42,12 @@ export class <%=SafeClassName%>EditComponent extends EditComponentBase<<%=SafeCl
      * 创建视图模型
      */
     protected createModel() {
-        return new <%=SafeClassName%>ViewModel();
+	    var model = new <%=SafeClassName%>ViewModel();
+		<% if( Entity.IsTreeEntity() ){ %>
+        var parentId = null || this.util.router.getParam("parentId");
+        model.parentId = parentId;
+		<% } %>
+        return model;
     }
 
     /**

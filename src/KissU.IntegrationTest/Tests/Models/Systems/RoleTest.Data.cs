@@ -16,7 +16,7 @@ namespace KissU.IntegrationTest.Tests.Models.Systems
         /// <summary>
         /// 角色编号
         /// </summary>
-        public static readonly Guid Id = "94146eff-9f9d-4d3a-907d-c253176187f8".ToGuid();
+        public static readonly Guid Id = "13b1fe8b-23af-40ef-961b-5a566dfb279d".ToGuid();
         /// <summary>
         /// 角色编码
         /// </summary>
@@ -40,7 +40,7 @@ namespace KissU.IntegrationTest.Tests.Models.Systems
         /// <summary>
         /// 父编号
         /// </summary>
-        public static readonly Guid? ParentId = "676e3c9c-0b51-483f-b373-127632ebf459".ToGuid();
+        public static readonly Guid? ParentId = "d40d7781-9de5-43af-9ec3-3d9c095adb6d".ToGuid();
         /// <summary>
         /// 路径
         /// </summary>
@@ -72,19 +72,19 @@ namespace KissU.IntegrationTest.Tests.Models.Systems
         /// <summary>
         /// 创建时间
         /// </summary>
-        public static readonly DateTime? CreationTime = "2019/6/23 23:21:10".ToDate();
+        public static readonly DateTime? CreationTime = "2019/6/24 0:19:45".ToDate();
         /// <summary>
         /// 创建人编号
         /// </summary>
-        public static readonly Guid? CreatorId = "cc062631-bbb1-4a8c-b799-f047fa3748a0".ToGuid();
+        public static readonly Guid? CreatorId = "483145a9-03eb-41ab-bd41-29552828d3a8".ToGuid();
         /// <summary>
         /// 最后修改时间
         /// </summary>
-        public static readonly DateTime? LastModificationTime = "2019/6/23 23:21:10".ToDate();
+        public static readonly DateTime? LastModificationTime = "2019/6/24 0:19:45".ToDate();
         /// <summary>
         /// 最后修改人编号
         /// </summary>
-        public static readonly Guid? LastModifierId = "14412d9a-a71f-4df5-b4dc-739195d6f68d".ToGuid();
+        public static readonly Guid? LastModifierId = "994baf88-ca8b-46e3-98cd-34ffbfa79a2f".ToGuid();
         /// <summary>
         /// 是否删除
         /// </summary>
@@ -101,7 +101,7 @@ namespace KissU.IntegrationTest.Tests.Models.Systems
         /// <summary>
         /// 角色编号
         /// </summary>
-        public static readonly Guid Id2 = "a8fb3baa-6dd3-4029-950f-7a381ed630e4".ToGuid();
+        public static readonly Guid Id2 = "6342fda9-0f1d-40ce-ad42-33140501b9d2".ToGuid();
         /// <summary>
         /// 角色编码
         /// </summary>
@@ -125,7 +125,7 @@ namespace KissU.IntegrationTest.Tests.Models.Systems
         /// <summary>
         /// 父编号
         /// </summary>
-        public static readonly Guid? ParentId2 = "2b990394-5960-4668-a8e4-fb98fd91825b".ToGuid();
+        public static readonly Guid? ParentId2 = "2aa11819-bf68-4ed9-a66d-dea6601abc08".ToGuid();
         /// <summary>
         /// 路径
         /// </summary>
@@ -157,19 +157,19 @@ namespace KissU.IntegrationTest.Tests.Models.Systems
         /// <summary>
         /// 创建时间
         /// </summary>
-        public static readonly DateTime? CreationTime2 = "2019/6/24 23:21:10".ToDate();
+        public static readonly DateTime? CreationTime2 = "2019/6/25 0:19:45".ToDate();
         /// <summary>
         /// 创建人编号
         /// </summary>
-        public static readonly Guid? CreatorId2 = "3ac52a02-da49-45b2-ac48-91a220b3909a".ToGuid();
+        public static readonly Guid? CreatorId2 = "81fb9d8c-f180-4f5f-bc36-0493be1917c3".ToGuid();
         /// <summary>
         /// 最后修改时间
         /// </summary>
-        public static readonly DateTime? LastModificationTime2 = "2019/6/24 23:21:10".ToDate();
+        public static readonly DateTime? LastModificationTime2 = "2019/6/25 0:19:45".ToDate();
         /// <summary>
         /// 最后修改人编号
         /// </summary>
-        public static readonly Guid? LastModifierId2 = "9b211098-476b-4484-950a-db7ba5541380".ToGuid();
+        public static readonly Guid? LastModifierId2 = "d1fe015f-9666-4fa6-be2c-610347b82cee".ToGuid();
         /// <summary>
         /// 是否删除
         /// </summary>

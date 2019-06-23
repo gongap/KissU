@@ -36,20 +36,9 @@
 		<util-tree-table-column for="Open"></util-tree-table-column>
 		<util-tree-table-column for="Note"></util-tree-table-column>
 		<util-tree-table-column title="操作">
-			<a nz-tooltip nzTitle="添加子级" (click)="addSubordinate(row)"></a>
-            <nz-divider nzType="vertical"></nz-divider>
-			<a [routerLink]="['update',row.id]">编辑</a>
-			<nz-divider nzType="vertical"></nz-divider>
-			<nz-dropdown>
-				<a class="ant-dropdown-link" nz-dropdown>
-				  更多
-				  <i nz-icon type="down"></i>
-				</a>
-				<ul nz-menu>
-				  <li nz-menu-item [routerLink]="['detail',row.id]">查看</li>
-				  <li nz-menu-item (click)="delete(null,row.id)">删除</li>
-				</ul>
-			</nz-dropdown>
+            <util-a class="mr-sm" color="Primary" shape="Circle" icon="Plus" tooltip="添加子级" bind-link="['create',row.id]"></util-a>
+            <util-a class="mr-sm" color="Primary" shape="Circle" icon="Edit" tooltip="编辑" bind-link="['update',row.id]"></util-a>
+            <util-button color="Danger" shape="Circle" icon="Delete" tooltip="删除" on-click="delete(null,row.id)"></util-button>
 		</util-tree-table-column>
 	</util-tree-table>
 </util-card>

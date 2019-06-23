@@ -35,6 +35,9 @@ const routes: Routes = [
             {path: '<%= entity.ClassName.ToSafeName().ToCamelCase() %>', children: [
                 { path: '', component: <%= entity.ClassName.ToSafeName() %>IndexComponent },
                 { path: 'create', component: <%= entity.ClassName.ToSafeName() %>EditComponent },
+				<% if(entity.IsTreeEntity()) {%>
+                { path: 'create/:parentId', component: <%= entity.ClassName.ToSafeName() %>EditComponent },
+				<%} %>
                 { path: 'update/:id', component: <%= entity.ClassName.ToSafeName() %>EditComponent },
                 { path: 'detail/:id', component: <%= entity.ClassName.ToSafeName() %>DetailComponent }
             ]},

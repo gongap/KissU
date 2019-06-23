@@ -16,7 +16,7 @@ namespace KissU.IntegrationTest.Tests.Models.Systems
         /// <summary>
         /// 应用程序编号
         /// </summary>
-        public static readonly Guid Id = "ad57d699-2d85-4283-9ac1-9f6bd04c82fc".ToGuid();
+        public static readonly Guid Id = "1853a820-7abc-4848-af05-ed5380432d0f".ToGuid();
         /// <summary>
         /// 应用程序编码
         /// </summary>
@@ -40,19 +40,19 @@ namespace KissU.IntegrationTest.Tests.Models.Systems
         /// <summary>
         /// 创建时间
         /// </summary>
-        public static readonly DateTime? CreationTime = "2019/6/23 23:21:10".ToDate();
+        public static readonly DateTime? CreationTime = "2019/6/24 0:19:45".ToDate();
         /// <summary>
         /// 创建人编号
         /// </summary>
-        public static readonly Guid? CreatorId = "ad7ae8c6-5531-4fbe-9b23-085aec65005e".ToGuid();
+        public static readonly Guid? CreatorId = "6b25e2d5-bf36-4a8f-bcf2-4995a1e7fdbd".ToGuid();
         /// <summary>
         /// 最后修改时间
         /// </summary>
-        public static readonly DateTime? LastModificationTime = "2019/6/23 23:21:10".ToDate();
+        public static readonly DateTime? LastModificationTime = "2019/6/24 0:19:45".ToDate();
         /// <summary>
         /// 最后修改人编号
         /// </summary>
-        public static readonly Guid? LastModifierId = "1e808094-af92-464d-89c9-6ed236b48045".ToGuid();
+        public static readonly Guid? LastModifierId = "1789eed8-b0f2-4387-a53e-dc731b09b252".ToGuid();
         /// <summary>
         /// 是否删除
         /// </summary>
@@ -69,7 +69,7 @@ namespace KissU.IntegrationTest.Tests.Models.Systems
         /// <summary>
         /// 应用程序编号
         /// </summary>
-        public static readonly Guid Id2 = "8c174e71-c21c-4585-88c6-2e210bfa62c0".ToGuid();
+        public static readonly Guid Id2 = "ecee3566-7aae-4a1b-a256-5b36ff588226".ToGuid();
         /// <summary>
         /// 应用程序编码
         /// </summary>
@@ -93,19 +93,19 @@ namespace KissU.IntegrationTest.Tests.Models.Systems
         /// <summary>
         /// 创建时间
         /// </summary>
-        public static readonly DateTime? CreationTime2 = "2019/6/24 23:21:10".ToDate();
+        public static readonly DateTime? CreationTime2 = "2019/6/25 0:19:45".ToDate();
         /// <summary>
         /// 创建人编号
         /// </summary>
-        public static readonly Guid? CreatorId2 = "e9cc103a-6068-41d0-918d-6efbd8a6ee67".ToGuid();
+        public static readonly Guid? CreatorId2 = "ff6eb2c8-8388-4d98-99cd-c6c795aaef9f".ToGuid();
         /// <summary>
         /// 最后修改时间
         /// </summary>
-        public static readonly DateTime? LastModificationTime2 = "2019/6/24 23:21:10".ToDate();
+        public static readonly DateTime? LastModificationTime2 = "2019/6/25 0:19:45".ToDate();
         /// <summary>
         /// 最后修改人编号
         /// </summary>
-        public static readonly Guid? LastModifierId2 = "84b397a9-6f1c-4305-96bb-e5181cd867df".ToGuid();
+        public static readonly Guid? LastModifierId2 = "5cd2a7ff-e34a-487f-9653-5132b380e918".ToGuid();
         /// <summary>
         /// 是否删除
         /// </summary>
