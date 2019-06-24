@@ -1,0 +1,20 @@
+
+<page-header title="编辑Api许可范围"></page-header>
+<nz-card [nzBordered]="false">
+    <form #form="ngForm" nz-form="">
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzRequired]="true" [nzSpan]="3">Api资源标识</nz-form-label><nz-form-control [nzSpan]="18"><x-textbox name="apiId" requiredMessage="Api资源标识不能为空" [(model)]="model.apiId" [required]="true"></x-textbox></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzRequired]="true" [nzSpan]="3">名称</nz-form-label><nz-form-control [nzSpan]="18"><x-textbox name="name" requiredMessage="名称不能为空" [(model)]="model.name" [maxLength]="200" [required]="true"></x-textbox></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzSpan]="3">显示名</nz-form-label><nz-form-control [nzSpan]="18"><x-textbox name="displayName" [(model)]="model.displayName" [maxLength]="200"></x-textbox></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzSpan]="3">描述</nz-form-label><nz-form-control [nzSpan]="18"><x-textbox name="description" [(model)]="model.description" [maxLength]="1000"></x-textbox></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzSpan]="3">声明类型</nz-form-label><nz-form-control [nzSpan]="18"><x-textbox name="claimTypes" [(model)]="model.claimTypes" [maxLength]="2000"></x-textbox></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzSpan]="3">是否必选</nz-form-label><nz-form-control [nzSpan]="18"><nz-switch name="required" [(ngModel)]="model.required">是否必选</nz-switch></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzSpan]="3">是否强调</nz-form-label><nz-form-control [nzSpan]="18"><nz-switch name="emphasize" [(ngModel)]="model.emphasize">是否强调</nz-switch></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzSpan]="3">是否显示在发现文档中</nz-form-label><nz-form-control [nzSpan]="18"><nz-switch name="showInDiscoveryDocument" [(ngModel)]="model.showInDiscoveryDocument">是否显示在发现文档中</nz-switch></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16">
+            <nz-form-control [nzOffset]="2" [nzSpan]="18">
+                <x-button #btnSubmit="" (onClick)="submit(form,btnSubmit)" class="mr-sm" color="primary" [validateForm]="true"></x-button>
+                <x-button (onClick)="back()" text="返回"></x-button>
+            </nz-form-control>
+        </nz-form-item>
+    </form>
+</nz-card>

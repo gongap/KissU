@@ -62,7 +62,7 @@ namespace <%= string.Format("{0}.Service.Dtos.{1}.Extensions",Namespace,Entity.T
                 <% if( p.DataType == DbType.Boolean){ %>
                 <%= p.PropertyName.ToSafeName() %> = dto.<%= p.PropertyName.ToSafeName() %>.SafeValue(),
                 <%continue;} %>
-                <%= p.PropertyName.ToSafeName() %> = dto.<%= p.PropertyName.ToSafeName() %>,
+                <%= p.PropertyName.ToSafeName() %> = dto.<%= p.PropertyName.ToSafeName() %><%= Entity.GetComma(p,false) %>
                 <%}%>
             };
         }
@@ -118,7 +118,7 @@ namespace <%= string.Format("{0}.Service.Dtos.{1}.Extensions",Namespace,Entity.T
 				<% if( p.PropertyName == "ParentId" ){ %>
                 <%= p.PropertyName.ToSafeName() %> = entity.<%= p.PropertyName.ToSafeName() %>.SafeString(),
                 <%continue;} %>
-                <%= p.PropertyName.ToSafeName() %> = entity.<%= p.PropertyName.ToSafeName() %>,
+                <%= p.PropertyName.ToSafeName() %> = entity.<%= p.PropertyName.ToSafeName() %><%= Entity.GetComma(p,false) %>
                 <%}%>
             };
         }

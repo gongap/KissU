@@ -1,0 +1,45 @@
+<page-header title="Api许可范围"></page-header>
+<nz-card [nzBordered]="false">
+    
+<form class="search__form" nz-form="" nzLayout="inline">
+    <div nz-row="" [nzGutter]="32">
+        <div nz-col="" [nzSpan]="8">
+            <nz-form-item><nz-form-label>Api资源标识</nz-form-label><nz-form-control><x-textbox name="apiId" [(model)]="queryParam.apiId"></x-textbox></nz-form-control></nz-form-item>
+        </div>
+        <div nz-col="" [nzSpan]="8">
+            <nz-form-item><nz-form-label>名称</nz-form-label><nz-form-control><x-textbox name="name" [(model)]="queryParam.name"></x-textbox></nz-form-control></nz-form-item>
+        </div>
+        <div *ngIf="expand" nz-col="" [nzSpan]="8">
+            <nz-form-item><nz-form-label>显示名</nz-form-label><nz-form-control><x-textbox name="displayName" [(model)]="queryParam.displayName"></x-textbox></nz-form-control></nz-form-item>
+        </div>
+        <div nz-col="" [class.text-right]="expand" [nzSpan]="8">
+            <x-button #btnQuery="" (onClick)="query(btnQuery)" color="primary" text="查询"><ng-template><i nz-icon="" nzType="search"></i></ng-template></x-button>
+            <x-button #btnRefresh="" (onClick)="refresh(btnRefresh)" class="mx-sm" text="刷新"><ng-template><i nz-icon="" nzType="sync"></i></ng-template></x-button>
+            <a (click)="expand=!expand">
+                <i class="anticon" [class.anticon-down]="!expand" [class.anticon-up]="expand"></i>
+            </a>
+        </div>
+    </div>
+</form>
+    <a class="mr-sm" nz-button="" nzType="primary" routerLink="create"><i nz-icon="" nzType="plus"></i>新建</a>
+    <x-button #btnDelete="" (onClick)="delete(btnDelete)" color="danger" text="删除"><ng-template><i nz-icon="" nzType="delete"></i></ng-template></x-button>
+    <nz-alert class="my-md" nzType="info" [nzMessage]="m_11531ac1abe541d39d70418cb3b63870" [nzShowIcon]="true"><ng-template #m_11531ac1abe541d39d70418cb3b63870="">
+        已选择<strong class="text-primary mx-md">{{getCheckedLength()}}</strong>行
+    </ng-template></nz-alert>
+    <nz-table-wrapper #tableApiScope_wrapper="" baseUrl="apiScope" sortKey="CreationTime desc" [(queryParam)]="queryParam"><nz-table #tableApiScope="" (nzPageIndexChange)="tableApiScope_wrapper.pageIndexChange($event)" (nzPageSizeChange)="tableApiScope_wrapper.pageSizeChange($event)" [(nzPageIndex)]="tableApiScope_wrapper.queryParam.page" [(nzPageSize)]="tableApiScope_wrapper.queryParam.pageSize" [nzData]="tableApiScope_wrapper.dataSource" [nzFrontPagination]="false" [nzLoading]="tableApiScope_wrapper.loading" [nzShowPagination]="tableApiScope_wrapper.showPagination" [nzShowQuickJumper]="true" [nzShowSizeChanger]="true" [nzShowTotal]="template_tableApiScope" [nzTotal]="tableApiScope_wrapper.totalCount"><thead><tr><th (nzCheckedChange)="tableApiScope_wrapper.masterToggle()" nzWidth="30px" [nzChecked]="tableApiScope_wrapper.isMasterChecked()" [nzDisabled]="!tableApiScope_wrapper.dataSource.length" [nzIndeterminate]="tableApiScope_wrapper.isMasterIndeterminate()" [nzShowCheckbox]="tableApiScope_wrapper.multiple">{{tableApiScope_wrapper.multiple?'':'单选'}}</th><th nzWidth="70px">序号</th><th>Api资源标识</th><th>名称</th><th>显示名</th><th>描述</th><th>声明类型</th><th>是否必选</th><th>是否强调</th><th>是否显示在发现文档中</th><th>操作</th></tr></thead><tbody><tr *ngFor="let row of tableApiScope.data">
+        <td (click)="$event.stopPropagation()" (nzCheckedChange)="tableApiScope_wrapper.checkedSelection.toggle(row)" [nzChecked]="tableApiScope_wrapper.checkedSelection.isSelected(row)" [nzShowCheckbox]="tableApiScope_wrapper.multiple"><label (click)="$event.stopPropagation()" (ngModelChange)="tableApiScope_wrapper.checkRowOnly(row)" *ngIf="!tableApiScope_wrapper.multiple" name="radio_tableApiScope" nz-radio="" [ngModel]="tableApiScope_wrapper.checkedSelection.isSelected(row)"></label></td>
+        <td>{{row.lineNumber}}</td>
+        <td>{{row.apiId}}</td>
+        <td>{{row.name}}</td>
+        <td>{{row.displayName}}</td>
+        <td>{{row.description}}</td>
+        <td>{{row.claimTypes}}</td>
+        <td>{{row.required?'是':'否'}}</td>
+        <td>{{row.emphasize?'是':'否'}}</td>
+        <td>{{row.showInDiscoveryDocument?'是':'否'}}</td>
+        <td>
+            <a class="mr-sm" nz-button="" nz-tooltip="" nzShape="circle" nzTitle="编辑" nzType="primary" [routerLink]="['update',row.id]"><i nz-icon="" nzType="edit"></i></a>
+            <x-button (onClick)="delete(null,row.id)" color="danger" shape="circle" tooltip="删除"><ng-template><i nz-icon="" nzType="delete"></i></ng-template></x-button>
+        </td>
+    </tr></tbody></nz-table><ng-template #template_tableApiScope="" let-range="range" let-total="">{{ range[0] }}-{{ range[1] }} 共 {{ total }} 条</ng-template></nz-table-wrapper>
+</nz-card>
