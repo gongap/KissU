@@ -1,0 +1,34 @@
+
+<page-header title="编辑菜单"></page-header>
+<nz-card [nzBordered]="false">
+    <form #form="ngForm" nz-form="">
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzRequired]="true" [nzSpan]="3">菜单编码</nz-form-label><nz-form-control [nzSpan]="18"><x-textbox name="code" requiredMessage="菜单编码不能为空" [(model)]="model.code" [maxLength]="256" [required]="true"></x-textbox></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzRequired]="true" [nzSpan]="3">菜单名称</nz-form-label><nz-form-control [nzSpan]="18"><x-textbox name="name" requiredMessage="菜单名称不能为空" [(model)]="model.name" [maxLength]="256" [required]="true"></x-textbox></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzRequired]="true" [nzSpan]="3">拼音</nz-form-label><nz-form-control [nzSpan]="18"><x-textbox name="pinYin" requiredMessage="拼音不能为空" [(model)]="model.pinYin" [maxLength]="200" [required]="true"></x-textbox></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzSpan]="3">i18n主键</nz-form-label><nz-form-control [nzSpan]="18"><x-textbox name="i18n" [(model)]="model.i18n" [maxLength]="50"></x-textbox></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzSpan]="3">是否显示分组名</nz-form-label><nz-form-control [nzSpan]="18"><nz-switch name="group" [(ngModel)]="model.group">是否显示分组名</nz-switch></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzSpan]="3">路由</nz-form-label><nz-form-control [nzSpan]="18"><x-textbox name="link" [(model)]="model.link" [maxLength]="256"></x-textbox></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzSpan]="3">路由是否精准匹配</nz-form-label><nz-form-control [nzSpan]="18"><nz-switch name="linkExact" [(ngModel)]="model.linkExact">路由是否精准匹配</nz-switch></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzSpan]="3">外部链接</nz-form-label><nz-form-control [nzSpan]="18"><x-textbox name="externalLink" [(model)]="model.externalLink" [maxLength]="256"></x-textbox></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzSpan]="3">链接 target</nz-form-label><nz-form-control [nzSpan]="18"><x-textbox name="target" [(model)]="model.target" [maxLength]="20"></x-textbox></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzSpan]="3">图标</nz-form-label><nz-form-control [nzSpan]="18"><x-textbox name="icon" [(model)]="model.icon" [maxLength]="256"></x-textbox></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzSpan]="3">徽标数，展示的数字</nz-form-label><nz-form-control [nzSpan]="18"><x-number-textbox name="badge" [(model)]="model.badge"></x-number-textbox></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzSpan]="3">徽标数，显示小红点</nz-form-label><nz-form-control [nzSpan]="18"><nz-switch name="badgeDot" [(ngModel)]="model.badgeDot">徽标数，显示小红点</nz-switch></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzSpan]="3">徽标 Badge 颜色</nz-form-label><nz-form-control [nzSpan]="18"><x-textbox name="badgeStatus" [(model)]="model.badgeStatus" [maxLength]="20"></x-textbox></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzSpan]="3">是否禁用</nz-form-label><nz-form-control [nzSpan]="18"><nz-switch name="disabled" [(ngModel)]="model.disabled">是否禁用</nz-switch></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzSpan]="3">是否隐藏菜单</nz-form-label><nz-form-control [nzSpan]="18"><nz-switch name="hide" [(ngModel)]="model.hide">是否隐藏菜单</nz-switch></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzSpan]="3">隐藏面包屑</nz-form-label><nz-form-control [nzSpan]="18"><nz-switch name="hideInBreadcrumb" [(ngModel)]="model.hideInBreadcrumb">隐藏面包屑</nz-switch></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzSpan]="3">ACL配置</nz-form-label><nz-form-control [nzSpan]="18"><x-textbox name="acl" [(model)]="model.acl" [maxLength]="50"></x-textbox></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzSpan]="3">是否快捷菜单项</nz-form-label><nz-form-control [nzSpan]="18"><nz-switch name="shortcut" [(ngModel)]="model.shortcut">是否快捷菜单项</nz-switch></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzSpan]="3">快捷菜单根节点</nz-form-label><nz-form-control [nzSpan]="18"><nz-switch name="shortcutRoot" [(ngModel)]="model.shortcutRoot">快捷菜单根节点</nz-switch></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzSpan]="3">是否允许复用</nz-form-label><nz-form-control [nzSpan]="18"><nz-switch name="reuse" [(ngModel)]="model.reuse">是否允许复用</nz-switch></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzSpan]="3">是否展开</nz-form-label><nz-form-control [nzSpan]="18"><nz-switch name="open" [(ngModel)]="model.open">是否展开</nz-switch></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzSpan]="3">备注</nz-form-label><nz-form-control [nzSpan]="18"><x-textbox name="note" [(model)]="model.note" [maxLength]="500"></x-textbox></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16">
+            <nz-form-control [nzOffset]="2" [nzSpan]="18">
+                <x-button #btnSubmit="" (onClick)="submit(form,btnSubmit)" class="mr-sm" color="primary" [validateForm]="true"></x-button>
+                <x-button (onClick)="back()" text="返回"></x-button>
+            </nz-form-control>
+        </nz-form-item>
+    </form>
+</nz-card>

@@ -1,0 +1,20 @@
+
+<page-header title="编辑角色"></page-header>
+<nz-card [nzBordered]="false">
+    <form #form="ngForm" nz-form="">
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzRequired]="true" [nzSpan]="3">角色编码</nz-form-label><nz-form-control [nzSpan]="18"><x-textbox name="code" requiredMessage="角色编码不能为空" [(model)]="model.code" [maxLength]="256" [required]="true"></x-textbox></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzRequired]="true" [nzSpan]="3">角色名称</nz-form-label><nz-form-control [nzSpan]="18"><x-textbox name="name" requiredMessage="角色名称不能为空" [(model)]="model.name" [maxLength]="256" [required]="true"></x-textbox></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzRequired]="true" [nzSpan]="3">标准化角色名称</nz-form-label><nz-form-control [nzSpan]="18"><x-textbox name="normalizedName" requiredMessage="标准化角色名称不能为空" [(model)]="model.normalizedName" [maxLength]="256" [required]="true"></x-textbox></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzRequired]="true" [nzSpan]="3">角色类型</nz-form-label><nz-form-control [nzSpan]="18"><x-textbox name="type" requiredMessage="角色类型不能为空" [(model)]="model.type" [maxLength]="80" [required]="true"></x-textbox></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzSpan]="3">管理员</nz-form-label><nz-form-control [nzSpan]="18"><nz-switch name="isAdmin" [(ngModel)]="model.isAdmin">管理员</nz-switch></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzSpan]="3">备注</nz-form-label><nz-form-control [nzSpan]="18"><x-textbox name="comment" [(model)]="model.comment" [maxLength]="500"></x-textbox></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzSpan]="3">拼音简码</nz-form-label><nz-form-control [nzSpan]="18"><x-textbox name="pinYin" [(model)]="model.pinYin" [maxLength]="200"></x-textbox></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzSpan]="3">签名</nz-form-label><nz-form-control [nzSpan]="18"><x-textbox name="sign" [(model)]="model.sign" [maxLength]="256"></x-textbox></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16">
+            <nz-form-control [nzOffset]="2" [nzSpan]="18">
+                <x-button #btnSubmit="" (onClick)="submit(form,btnSubmit)" class="mr-sm" color="primary" [validateForm]="true"></x-button>
+                <x-button (onClick)="back()" text="返回"></x-button>
+            </nz-form-control>
+        </nz-form-item>
+    </form>
+</nz-card>

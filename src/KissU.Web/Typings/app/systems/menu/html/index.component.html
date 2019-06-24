@@ -1,0 +1,58 @@
+<page-header title="菜单"></page-header>
+<nz-card [nzBordered]="false">
+    
+<form class="search__form" nz-form="" nzLayout="inline">
+    <div nz-row="" [nzGutter]="32">
+        <div nz-col="" [nzSpan]="8">
+            <nz-form-item><nz-form-label>菜单编码</nz-form-label><nz-form-control><x-textbox name="code" [(model)]="queryParam.code"></x-textbox></nz-form-control></nz-form-item>
+        </div>
+        <div nz-col="" [nzSpan]="8">
+            <nz-form-item><nz-form-label>菜单名称</nz-form-label><nz-form-control><x-textbox name="name" [(model)]="queryParam.name"></x-textbox></nz-form-control></nz-form-item>
+        </div>
+        <div *ngIf="expand" nz-col="" [nzSpan]="8">
+            <nz-form-item><nz-form-label>拼音</nz-form-label><nz-form-control><x-textbox name="pinYin" [(model)]="queryParam.pinYin"></x-textbox></nz-form-control></nz-form-item>
+        </div>
+        <div nz-col="" [class.text-right]="expand" [nzSpan]="8">
+            <x-button #btnQuery="" (onClick)="query(btnQuery)" color="primary" text="查询"><ng-template><i nz-icon="" nzType="search"></i></ng-template></x-button>
+            <x-button #btnRefresh="" (onClick)="refresh(btnRefresh)" class="mx-sm" text="刷新"><ng-template><i nz-icon="" nzType="sync"></i></ng-template></x-button>
+            <a (click)="expand=!expand">
+                <i class="anticon" [class.anticon-down]="!expand" [class.anticon-up]="expand"></i>
+            </a>
+        </div>
+    </div>
+</form>
+    <a class="mr-sm" nz-button="" nzType="primary" routerLink="create"><i nz-icon="" nzType="plus"></i>新建</a>
+    <x-button #btnDelete="" (onClick)="delete(btnDelete)" color="danger" text="删除"><ng-template><i nz-icon="" nzType="delete"></i></ng-template></x-button>
+    <nz-alert class="my-md" nzType="info" [nzMessage]="m_e0ae93f1bcb74bcf97888a505302bc91" [nzShowIcon]="true"><ng-template #m_e0ae93f1bcb74bcf97888a505302bc91="">
+        已选择<strong class="text-primary mx-md">{{getCheckedLength()}}</strong>行
+    </ng-template></nz-alert>
+	<nz-tree-table-wrapper #treeTable_Menu_wrapper="" baseUrl="menu" [(queryParam)]="queryParam"><nz-table #treeTable_Menu="" (nzPageIndexChange)="treeTable_Menu_wrapper.pageIndexChange($event)" (nzPageSizeChange)="treeTable_Menu_wrapper.pageSizeChange($event)" [(nzPageIndex)]="treeTable_Menu_wrapper.queryParam.page" [(nzPageSize)]="treeTable_Menu_wrapper.queryParam.pageSize" [nzData]="treeTable_Menu_wrapper.dataSource" [nzFrontPagination]="false" [nzLoading]="treeTable_Menu_wrapper.loading" [nzShowPagination]="treeTable_Menu_wrapper.showPagination" [nzShowQuickJumper]="true" [nzShowSizeChanger]="true" [nzShowTotal]="template_treeTable_Menu" [nzTotal]="treeTable_Menu_wrapper.totalCount"><thead><tr><th><label (nzCheckedChange)="treeTable_Menu_wrapper.masterToggle()" *ngIf="treeTable_Menu_wrapper.isShowCheckbox()" nz-checkbox="" [nzChecked]="treeTable_Menu_wrapper.isMasterChecked()" [nzIndeterminate]="treeTable_Menu_wrapper.isMasterIndeterminate()">菜单编码</label><span *ngIf="!treeTable_Menu_wrapper.isShowCheckbox()">菜单编码</span></th><th>菜单名称</th><th>拼音</th><th>i18n主键</th><th>是否显示分组名</th><th>路由</th><th>路由是否精准匹配</th><th>外部链接</th><th>链接 target</th><th>图标</th><th>徽标数，展示的数字</th><th>徽标数，显示小红点</th><th>徽标 Badge 颜色</th><th>是否禁用</th><th>是否隐藏菜单</th><th>隐藏面包屑</th><th>ACL配置</th><th>是否快捷菜单项</th><th>快捷菜单根节点</th><th>是否允许复用</th><th>是否展开</th><th>备注</th><th>操作</th></tr></thead><tbody><ng-container *ngFor="let row of treeTable_Menu.data"><tr *ngIf="treeTable_Menu_wrapper.isShow(row)">
+		<td (nzExpandChange)="treeTable_Menu_wrapper.collapse(row,$event)" [nzExpand]="treeTable_Menu_wrapper.isExpand(row)" [nzIndentSize]="row.level*20" [nzShowExpand]="!treeTable_Menu_wrapper.isLeaf(row)"><label (nzCheckedChange)="treeTable_Menu_wrapper.toggle(row)" *ngIf="treeTable_Menu_wrapper.isShowCheckbox()" nz-checkbox="" [nzChecked]="treeTable_Menu_wrapper.isChecked(row)" [nzIndeterminate]="treeTable_Menu_wrapper.isIndeterminate(row)">{{row.code}}</label><label (click)="$event.stopPropagation()" (ngModelChange)="treeTable_Menu_wrapper.checkRowOnly(row)" *ngIf="treeTable_Menu_wrapper.isShowRadio(row)" name="radio_treeTable_Menu_wrapper" nz-radio="" [ngModel]="treeTable_Menu_wrapper.isChecked(row)">{{row.code}}</label><ng-container *ngIf="treeTable_Menu_wrapper.isShowText(row)">{{row.code}}</ng-container></td>
+		<td>{{row.name}}</td>
+		<td>{{row.pinYin}}</td>
+		<td>{{row.i18n}}</td>
+		<td>{{row.group?'是':'否'}}</td>
+		<td>{{row.link}}</td>
+		<td>{{row.linkExact?'是':'否'}}</td>
+		<td>{{row.externalLink}}</td>
+		<td>{{row.target}}</td>
+		<td>{{row.icon}}</td>
+		<td>{{row.badge}}</td>
+		<td>{{row.badgeDot?'是':'否'}}</td>
+		<td>{{row.badgeStatus}}</td>
+		<td>{{row.disabled?'是':'否'}}</td>
+		<td>{{row.hide?'是':'否'}}</td>
+		<td>{{row.hideInBreadcrumb?'是':'否'}}</td>
+		<td>{{row.acl}}</td>
+		<td>{{row.shortcut?'是':'否'}}</td>
+		<td>{{row.shortcutRoot?'是':'否'}}</td>
+		<td>{{row.reuse?'是':'否'}}</td>
+		<td>{{row.open?'是':'否'}}</td>
+		<td>{{row.note}}</td>
+		<td>
+            <a class="mr-sm" nz-button="" nz-tooltip="" nzShape="circle" nzTitle="添加子级" nzType="primary" [routerLink]="['create',row.id]"><i nz-icon="" nzType="plus"></i></a>
+            <a class="mr-sm" nz-button="" nz-tooltip="" nzShape="circle" nzTitle="编辑" nzType="primary" [routerLink]="['update',row.id]"><i nz-icon="" nzType="edit"></i></a>
+            <x-button (onClick)="delete(null,row.id)" color="danger" shape="circle" tooltip="删除"><ng-template><i nz-icon="" nzType="delete"></i></ng-template></x-button>
+		</td>
+	</tr></ng-container></tbody></nz-table><ng-template #template_treeTable_Menu="" let-range="range" let-total="">{{ range[0] }}-{{ range[1] }} 共 {{ total }} 条</ng-template></nz-tree-table-wrapper>
+</nz-card>

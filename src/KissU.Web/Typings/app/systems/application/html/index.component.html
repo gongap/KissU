@@ -1,0 +1,42 @@
+<page-header title="应用程序"></page-header>
+<nz-card [nzBordered]="false">
+    
+<form class="search__form" nz-form="" nzLayout="inline">
+    <div nz-row="" [nzGutter]="32">
+        <div nz-col="" [nzSpan]="8">
+            <nz-form-item><nz-form-label>应用程序编码</nz-form-label><nz-form-control><x-textbox name="code" [(model)]="queryParam.code"></x-textbox></nz-form-control></nz-form-item>
+        </div>
+        <div nz-col="" [nzSpan]="8">
+            <nz-form-item><nz-form-label>应用程序名称</nz-form-label><nz-form-control><x-textbox name="name" [(model)]="queryParam.name"></x-textbox></nz-form-control></nz-form-item>
+        </div>
+        <div *ngIf="expand" nz-col="" [nzSpan]="8">
+            <nz-form-item><nz-form-label>备注</nz-form-label><nz-form-control><x-textbox name="comment" [(model)]="queryParam.comment"></x-textbox></nz-form-control></nz-form-item>
+        </div>
+        <div nz-col="" [class.text-right]="expand" [nzSpan]="8">
+            <x-button #btnQuery="" (onClick)="query(btnQuery)" color="primary" text="查询"><ng-template><i nz-icon="" nzType="search"></i></ng-template></x-button>
+            <x-button #btnRefresh="" (onClick)="refresh(btnRefresh)" class="mx-sm" text="刷新"><ng-template><i nz-icon="" nzType="sync"></i></ng-template></x-button>
+            <a (click)="expand=!expand">
+                <i class="anticon" [class.anticon-down]="!expand" [class.anticon-up]="expand"></i>
+            </a>
+        </div>
+    </div>
+</form>
+    <a class="mr-sm" nz-button="" nzType="primary" routerLink="create"><i nz-icon="" nzType="plus"></i>新建</a>
+    <x-button #btnDelete="" (onClick)="delete(btnDelete)" color="danger" text="删除"><ng-template><i nz-icon="" nzType="delete"></i></ng-template></x-button>
+    <nz-alert class="my-md" nzType="info" [nzMessage]="m_f85d22a9bc8745d7a9c92210f9e1adfe" [nzShowIcon]="true"><ng-template #m_f85d22a9bc8745d7a9c92210f9e1adfe="">
+        已选择<strong class="text-primary mx-md">{{getCheckedLength()}}</strong>行
+    </ng-template></nz-alert>
+    <nz-table-wrapper #tableApplication_wrapper="" baseUrl="application" sortKey="CreationTime desc" [(queryParam)]="queryParam"><nz-table #tableApplication="" (nzPageIndexChange)="tableApplication_wrapper.pageIndexChange($event)" (nzPageSizeChange)="tableApplication_wrapper.pageSizeChange($event)" [(nzPageIndex)]="tableApplication_wrapper.queryParam.page" [(nzPageSize)]="tableApplication_wrapper.queryParam.pageSize" [nzData]="tableApplication_wrapper.dataSource" [nzFrontPagination]="false" [nzLoading]="tableApplication_wrapper.loading" [nzShowPagination]="tableApplication_wrapper.showPagination" [nzShowQuickJumper]="true" [nzShowSizeChanger]="true" [nzShowTotal]="template_tableApplication" [nzTotal]="tableApplication_wrapper.totalCount"><thead><tr><th (nzCheckedChange)="tableApplication_wrapper.masterToggle()" nzWidth="30px" [nzChecked]="tableApplication_wrapper.isMasterChecked()" [nzDisabled]="!tableApplication_wrapper.dataSource.length" [nzIndeterminate]="tableApplication_wrapper.isMasterIndeterminate()" [nzShowCheckbox]="tableApplication_wrapper.multiple">{{tableApplication_wrapper.multiple?'':'单选'}}</th><th nzWidth="70px">序号</th><th>应用程序编码</th><th>应用程序名称</th><th>备注</th><th>启用</th><th>启用注册</th><th>操作</th></tr></thead><tbody><tr *ngFor="let row of tableApplication.data">
+        <td (click)="$event.stopPropagation()" (nzCheckedChange)="tableApplication_wrapper.checkedSelection.toggle(row)" [nzChecked]="tableApplication_wrapper.checkedSelection.isSelected(row)" [nzShowCheckbox]="tableApplication_wrapper.multiple"><label (click)="$event.stopPropagation()" (ngModelChange)="tableApplication_wrapper.checkRowOnly(row)" *ngIf="!tableApplication_wrapper.multiple" name="radio_tableApplication" nz-radio="" [ngModel]="tableApplication_wrapper.checkedSelection.isSelected(row)"></label></td>
+        <td>{{row.lineNumber}}</td>
+        <td>{{row.code}}</td>
+        <td>{{row.name}}</td>
+        <td>{{row.comment}}</td>
+        <td>{{row.enabled?'是':'否'}}</td>
+        <td>{{row.registerEnabled?'是':'否'}}</td>
+        <td>
+            <a class="mr-sm" nz-button="" nz-tooltip="" nzShape="circle" nzTitle="编辑" nzType="primary" [routerLink]="['update',row.id]"><i nz-icon="" nzType="edit"></i></a>
+            <x-button (onClick)="delete(null,row.id)" color="danger" shape="circle" tooltip="删除"><ng-template><i nz-icon="" nzType="delete"></i></ng-template></x-button>
+        </td>
+    </tr></tbody></nz-table><ng-template #template_tableApplication="" let-range="range" let-total="">{{ range[0] }}-{{ range[1] }} 共 {{ total }} 条</ng-template></nz-table-wrapper>
+</nz-card>

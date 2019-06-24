@@ -13,7 +13,7 @@ using Util.Ui.Extensions;
 using Util.Webs.Extensions;
 using Util;
 
-namespace KissU.WebAPP {
+namespace KissU.Web {
     /// <summary>
     /// 启动配置
     /// </summary>
