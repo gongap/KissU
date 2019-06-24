@@ -1,9 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
+  <Import Project="../../build/version.props" />
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>KissU.Web</RootNamespace>
-    <AssemblyName>KissU.Web.Base</AssemblyName>
+    <Authors>龚安平</Authors>
+    <Description>展现层(Presentation)：向用户提供一个接口(UI)，使用应用层来和用户(UI)进行交互。</Description>
+    <Copyright>龚安平</Copyright>
+    <PackageProjectUrl>https://github.com/gongap/KissU</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/gongap/KissU</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>util;applicationframework;dotnetcore;aspnetcore;</PackageTags>
+    <PackageReleaseNotes>KissU应用框架以MIT开源发布，可随意使用</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

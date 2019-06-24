@@ -1,8 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="../../build/version.props" />
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>KissU.Data</RootNamespace>
+    <Authors>龚安平</Authors>
+    <Description>基础设施层(Infrastructure)：提供通用技术来支持更高的层。例如基础设施层的仓储(Repository)可通过ORM来实现数据库交互，或者提供发送邮件的支持。</Description>
+    <Copyright>龚安平</Copyright>
+    <PackageProjectUrl>https://github.com/gongap/KissU</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/gongap/KissU</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>util;applicationframework;dotnetcore;aspnetcore;</PackageTags>
+    <PackageReleaseNotes>KissU应用框架以MIT开源发布，可随意使用</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

@@ -1,8 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
+  <Import Project="../../build/version.props" />
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>KissU.Domain</RootNamespace>
+    <Authors>龚安平</Authors>
+    <Description>包括业务对象和业务规则，这是应用程序的核心层。</Description>
+    <Copyright>龚安平</Copyright>
+    <PackageProjectUrl>https://github.com/gongap/KissU</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/gongap/KissU</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>util;applicationframework;dotnetcore;aspnetcore;</PackageTags>
+    <PackageReleaseNotes>KissU应用框架以MIT开源发布，可随意使用</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
