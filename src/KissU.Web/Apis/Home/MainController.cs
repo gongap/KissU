@@ -59,6 +59,11 @@ namespace KissU.Web.Apis.Home {
                 Group = true,
                 Children = {
                     new MenuInfo {
+                        Text = "接口管理",
+                        Icon = "anticon anticon-appstore",
+                        Link = "/system/api"
+                    },
+                    new MenuInfo {
                         Text = "应用管理",
                         Icon = "anticon anticon-appstore",
                         Link = "/system/application"

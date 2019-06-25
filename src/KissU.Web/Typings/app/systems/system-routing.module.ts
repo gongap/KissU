@@ -3,9 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { ApiIndexComponent } from './api/api-index.component';
 import { ApiEditComponent } from './api/api-edit.component';
 import { ApiDetailComponent } from './api/api-detail.component';
-import { ApiScopeIndexComponent } from './apiScope/apiScope-index.component';
-import { ApiScopeEditComponent } from './apiScope/apiScope-edit.component';
-import { ApiScopeDetailComponent } from './apiScope/apiScope-detail.component';
 import { ApplicationIndexComponent } from './application/application-index.component';
 import { ApplicationEditComponent } from './application/application-edit.component';
 import { ApplicationDetailComponent } from './application/application-detail.component';
@@ -26,12 +23,6 @@ const routes: Routes = [
                 { path: 'create', component: ApiEditComponent },
                 { path: 'update/:id', component: ApiEditComponent },
                 { path: 'detail/:id', component: ApiDetailComponent }
-            ]},
-            {path: 'apiScope', children: [
-                { path: '', component: ApiScopeIndexComponent },
-                { path: 'create', component: ApiScopeEditComponent },
-                { path: 'update/:id', component: ApiScopeEditComponent },
-                { path: 'detail/:id', component: ApiScopeDetailComponent }
             ]},
             {path: 'application', children: [
                 { path: '', component: ApplicationIndexComponent },

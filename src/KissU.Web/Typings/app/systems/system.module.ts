@@ -4,9 +4,6 @@ import { SystemRoutingModule } from './system-routing.module';
 import { ApiIndexComponent } from './api/api-index.component';
 import { ApiEditComponent } from './api/api-edit.component';
 import { ApiDetailComponent } from './api/api-detail.component';
-import { ApiScopeIndexComponent } from './apiScope/apiScope-index.component';
-import { ApiScopeEditComponent } from './apiScope/apiScope-edit.component';
-import { ApiScopeDetailComponent } from './apiScope/apiScope-detail.component';
 import { ApplicationIndexComponent } from './application/application-index.component';
 import { ApplicationEditComponent } from './application/application-edit.component';
 import { ApplicationDetailComponent } from './application/application-detail.component';
@@ -23,7 +20,6 @@ import { RoleDetailComponent } from './role/role-detail.component';
 @NgModule({
     declarations: [
         ApiIndexComponent,ApiEditComponent,ApiDetailComponent,
-        ApiScopeIndexComponent,ApiScopeEditComponent,ApiScopeDetailComponent,
         ApplicationIndexComponent,ApplicationEditComponent,ApplicationDetailComponent,
         MenuIndexComponent,MenuEditComponent,MenuDetailComponent,
         RoleIndexComponent,RoleEditComponent,RoleDetailComponent,

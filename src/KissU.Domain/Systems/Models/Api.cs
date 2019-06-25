@@ -10,6 +10,6 @@ namespace KissU.Domain.Systems.Models
         /// <summary>
         /// Api许可范围
         /// </summary>
-        public List<ApiScope> ApiScopes { get; set; }
+        public List<ApiScope> ApiScopes { get; }
     }
 }
