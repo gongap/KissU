@@ -952,7 +952,7 @@
             string className = string.Format("{0}-list.component",entity.ClassName.ToCamelCase());
             result.Entity = entity;
             result.Namespace = GetSchema(entity).ToLower();
-            result.RenderToFile(GetPath(className,string.Format("Web\\Typings\\app\\{0}\\{1}\\dialog\\", GetSchema(entity).ToCamelCase(),entity.ClassName.ToCamelCase() ), "ts" ), true);
+            result.RenderToFile(GetPath(className,string.Format("Web\\Typings\\app\\dialog\\{0}\\{1}\\", GetSchema(entity).ToCamelCase(),entity.ClassName.ToCamelCase() ), "ts" ), true);
         }
     }
     
@@ -982,7 +982,7 @@
             string className = string.Format("{0}-edit.component",entity.ClassName.ToCamelCase());
             result.Entity = entity;
             result.Namespace = GetSchema(entity).ToLower();
-            result.RenderToFile(GetPath(className,string.Format("Web\\Typings\\app\\{0}\\{1}\\dialog\\", GetSchema(entity).ToCamelCase(),entity.ClassName.ToCamelCase() ), "ts" ), true);
+            result.RenderToFile(GetPath(className,string.Format("Web\\Typings\\app\\dialog\\{0}\\{1}\\", GetSchema(entity).ToCamelCase(),entity.ClassName.ToCamelCase() ), "ts" ), true);
         }
     }
     
@@ -1012,7 +1012,7 @@
             string className = string.Format("{0}-detail.component",entity.ClassName.ToCamelCase());            
             result.Entity = entity;
             result.Namespace = GetSchema(entity).ToLower();
-            result.RenderToFile(GetPath(className,string.Format("Web\\Typings\\app\\{0}\\{1}\\dialog\\", GetSchema(entity).ToCamelCase(),entity.ClassName.ToCamelCase() ), "ts" ), true);
+            result.RenderToFile(GetPath(className,string.Format("Web\\Typings\\app\\dialog\\{0}\\{1}\\", GetSchema(entity).ToCamelCase(),entity.ClassName.ToCamelCase() ), "ts" ), true);
         }
     }
     

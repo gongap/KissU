@@ -48,7 +48,6 @@ namespace KissU.Domain.Systems.Factories {
             Guid? creatorId,
             DateTime? lastModificationTime,
             Guid? lastModifierId,
-            bool isDeleted,
             Byte[] version
         ) {
             Role result;
@@ -65,7 +64,6 @@ namespace KissU.Domain.Systems.Factories {
             result.CreatorId = creatorId;
             result.LastModificationTime = lastModificationTime;
             result.LastModifierId = lastModifierId;
-            result.IsDeleted = isDeleted;
             result.Version = version;
             return result;
         }

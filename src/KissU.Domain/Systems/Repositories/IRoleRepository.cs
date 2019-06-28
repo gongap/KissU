@@ -1,4 +1,4 @@
-﻿using Util.Domains.Repositories;
+﻿using Util.Domains.Trees;
 using KissU.Domain.Systems.Models;
 
 namespace KissU.Domain.Systems.Repositories {

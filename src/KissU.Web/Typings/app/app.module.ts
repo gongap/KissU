@@ -24,7 +24,7 @@ import { FrameworkModule } from './framework.module';
 import { util,UploadService } from '../util';
 
 //通用服务
-import { TestUploadService } from "../common/services/test-upload.service";
+//import { TestUploadService } from "../common/services/test-upload.service";
 
 //路由模块
 import { AppRoutingModule } from './app-routing.module';

@@ -15,11 +15,14 @@
 <% string SafeClassName = Entity.ClassName.ToSafeName(); %>
 <%-- 描述 --%>
 <% string Description = Entity.Description; %>
+<%if( Entity.IsTreeEntity() ){ %>
+using Util.Domains.Trees;
+<%}else{%>
 using Util.Domains.Repositories;
+<%}%>
 using <%= Entity.GetNamespace(Namespace,"Domain","Models") %>;
 
-<%
-if( Entity.IsTreeEntity() ){ %>
+<%if( Entity.IsTreeEntity() ){ %>
 namespace <%= Entity.GetNamespace(Namespace,"Domain","Repositories") %> {
     /// <summary>
     /// <%= Description %>仓储

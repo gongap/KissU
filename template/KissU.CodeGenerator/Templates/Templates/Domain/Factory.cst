@@ -31,12 +31,14 @@ namespace <%= Entity.GetNamespace(Namespace,"Domain","Factories") %> {
         <%} %>
         public static <%= SafeClassName %> Create( 
             <% foreach(Property p in Entity.Properties) { %>
+			<% if( p.ColumnName == "IsDeleted" ) continue;%>
             <%= p.TypeName %> <%= p.PropertyName.ToSafeName().ToCamelCase() %><%= Entity.GetComma(p,false) %>
             <%} %> 
         ) {
             <%= SafeClassName %> result;
             <% foreach(Property p in Entity.Properties) { %>
-			 <% if( p.IsPrimaryKey.SafeValue() && Entity.IsTreeEntity()  ) {%>
+			<% if( p.ColumnName == "IsDeleted" ) continue;%>
+			<% if( p.IsPrimaryKey.SafeValue() && Entity.IsTreeEntity()  ) {%>
             result = new <%= SafeClassName %>( <%= p.PropertyName.ToSafeName().ToCamelCase() %>, path, level);
             <% continue;}else %>
             <% if( p.IsPrimaryKey.SafeValue() ) {%>

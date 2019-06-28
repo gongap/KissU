@@ -57,7 +57,7 @@ namespace <%= string.Format("{0}.Service.Dtos.{1}.Extensions",Namespace,Entity.T
 				new <%= SafeClassName %>( dto.Id<%=Entity.GetToEntityConvert() %> ) {
 				<%}%>
                 <% foreach(Property p in Entity.Properties) { %>
-				<% if( p.ColumnName == "IsDeleted" && p.DataType == DbType.Boolean ) continue;%>
+				<% if( p.ColumnName == "IsDeleted" ) continue;%>
                 <% if( p.IsPrimaryKey.SafeValue() ) continue; %>
 				<% if( Entity.IgnoreTreeEntityProperty(p) ) continue;%>
                 <% if( p.DataType == DbType.Boolean){ %>
@@ -78,7 +78,7 @@ namespace <%= string.Format("{0}.Service.Dtos.{1}.Extensions",Namespace,Entity.T
                 return new <%= SafeClassName %>();
             return <%= SafeClassName %>Factory.Create(
                 <% foreach(Property p in Entity.Properties) { %>
-				 <% if( p.ColumnName == "IsDeleted" && p.DataType == DbType.Boolean ) continue;%>
+				 <% if( p.ColumnName == "IsDeleted" ) continue;%>
                 <% if( p.IsPrimaryKey.SafeValue() ) {%>
                 <%= p.PropertyName.ToSafeName().ToCamelCase() %> : dto.Id<%=Entity.GetToEntityConvert() %>,
                 <%continue;}%>
@@ -114,7 +114,7 @@ namespace <%= string.Format("{0}.Service.Dtos.{1}.Extensions",Namespace,Entity.T
                 return new <%= SafeClassName %>Dto();
             return new <%= SafeClassName %>Dto {
                 <% foreach(Property p in Entity.Properties) { %>
-				<% if( p.ColumnName == "IsDeleted" && p.DataType == DbType.Boolean ) continue;%>
+				<% if( p.ColumnName == "IsDeleted" ) continue;%>
                 <% if( p.IsPrimaryKey.SafeValue() ) {%>
                 Id = entity.Id<%=Entity.GetToDtoConvert() %>,
                 <%continue;}%>
