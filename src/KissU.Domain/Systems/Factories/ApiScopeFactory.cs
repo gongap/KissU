@@ -22,6 +22,7 @@ namespace KissU.Domain.Systems.Factories {
         /// <param name="creatorId"></param>
         /// <param name="lastModificationTime"></param>
         /// <param name="lastModifierId"></param>
+        /// <param name="version"></param>
         public static ApiScope Create( 
             Guid apiScopeId,
             Guid apiId,
@@ -35,7 +36,8 @@ namespace KissU.Domain.Systems.Factories {
             DateTime? creationTime,
             Guid? creatorId,
             DateTime? lastModificationTime,
-            Guid? lastModifierId
+            Guid? lastModifierId,
+            Byte[] version
         ) {
             ApiScope result;
             result = new ApiScope( apiScopeId );
@@ -51,6 +53,7 @@ namespace KissU.Domain.Systems.Factories {
             result.CreatorId = creatorId;
             result.LastModificationTime = lastModificationTime;
             result.LastModifierId = lastModifierId;
+            result.Version = version;
             return result;
         }
     }

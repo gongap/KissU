@@ -1,0 +1,21 @@
+﻿@page
+@model LinkDto
+@*标题*@
+<page-header title="编辑链接"></page-header>
+@*表单*@
+<util-card show-border="false">
+    <util-form id="form" label-span="3" control-span="21" gutter="16">
+        <util-textbox for="Code"></util-textbox>
+        <util-textbox for="Title"></util-textbox>
+        <util-textbox for="Address"></util-textbox>
+        <util-textbox for="Image"></util-textbox>
+        <util-textbox for="Comment"></util-textbox>
+        <util-textbox for="Status"></util-textbox>
+        <util-form-item>
+            <util-form-control offset="2">
+                <util-button class="mr-sm" id="btnSubmit" validate-form="true" color="Primary" on-click="submit(form,btnSubmit)"></util-button>
+                <util-button text="返回" on-click="back()"></util-button>
+            </util-form-control>
+        </util-form-item>
+    </util-form>
+</util-card>

@@ -4,21 +4,21 @@ import { EditComponentBase } from '../../../util';
 import { MenuViewModel } from './model/menu-view-model';
 
 /**
- * 菜单编辑
+ * 菜单编辑页
  */
 @Component({
     selector: 'menu-edit',
-    templateUrl: env.prod() ? './html/menu-edit.component.html' : '/view/systems/menu/edit'
+    templateUrl: !env.dev() ? './html/edit.component.html' : '/view/systems/menu/edit'
 })
 export class MenuEditComponent extends EditComponentBase<MenuViewModel> {
     /**
-     * 初始化组件
+     * 初始化菜单编辑页
      * @param injector 注入器
      */
     constructor(injector: Injector) {
         super(injector);
     }
-    
+
     /**
      * 创建视图模型
      */

@@ -3,13 +3,11 @@ using System.ComponentModel.DataAnnotations;
 using Util;
 using Util.Datas.Queries.Trees;
 
-namespace KissU.Service.Queries.Systems 
-{
+namespace KissU.Service.Queries.Systems {
     /// <summary>
     /// 菜单查询参数
     /// </summary>
-    public class MenuQuery : TreeQueryParameter 
-	{
+    public class MenuQuery : TreeQueryParameter {
         /// <summary>
         /// 
         /// </summary>
@@ -189,7 +187,7 @@ namespace KissU.Service.Queries.Systems
         /// 结束
         /// </summary>
         [Display( Name = "结束" )]
-        public DateTime? EndCreationTime { get; set; }        
+        public DateTime? EndCreationTime { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -204,7 +202,7 @@ namespace KissU.Service.Queries.Systems
         /// 结束
         /// </summary>
         [Display( Name = "结束" )]
-        public DateTime? EndLastModificationTime { get; set; }        
+        public DateTime? EndLastModificationTime { get; set; }
         /// <summary>
         /// 
         /// </summary>

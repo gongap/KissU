@@ -23,9 +23,7 @@ namespace KissU.Domain.Systems.Models {
         /// 初始化Api资源
         /// </summary>
         /// <param name="id">Api资源标识</param>
-        public Api(Guid id) : base(id)
-        {
-            this.ApiScopes = new List<ApiScope>();
+        public Api( Guid id ) : base( id ) {
         }
 
         /// <summary>
@@ -33,25 +31,25 @@ namespace KissU.Domain.Systems.Models {
         /// </summary>
         [DisplayName( "名称" )]
         [Required(ErrorMessage = "名称不能为空")]
-        [StringLength( 200, ErrorMessage = "名称输入过长，不能超过200位" )]
+        [StringLength( 200 )]
         public string Name { get; set; }
         /// <summary>
         /// 显示名
         /// </summary>
         [DisplayName( "显示名" )]
-        [StringLength( 200, ErrorMessage = "显示名输入过长，不能超过200位" )]
+        [StringLength( 200 )]
         public string DisplayName { get; set; }
         /// <summary>
         /// 描述
         /// </summary>
         [DisplayName( "描述" )]
-        [StringLength( 1000, ErrorMessage = "描述输入过长，不能超过1000位" )]
+        [StringLength( 1000 )]
         public string Description { get; set; }
         /// <summary>
         /// 声明类型
         /// </summary>
         [DisplayName( "声明类型" )]
-        [StringLength( 2000, ErrorMessage = "声明类型输入过长，不能超过2000位" )]
+        [StringLength( 2000 )]
         public string ClaimTypes { get; set; }
         /// <summary>
         /// 是否启用

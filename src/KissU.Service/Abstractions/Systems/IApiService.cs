@@ -2,12 +2,10 @@
 using KissU.Service.Dtos.Systems;
 using KissU.Service.Queries.Systems;
 
-namespace KissU.Service.Abstractions.Systems 
-{
+namespace KissU.Service.Abstractions.Systems {
     /// <summary>
     /// Api资源服务
     /// </summary>
-    public interface IApiService : ICrudService<ApiDto, ApiQuery> 
-	{
+    public interface IApiService : ICrudService<ApiDto, ApiQuery> {
     }
 }

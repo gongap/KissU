@@ -27,10 +27,6 @@ export class ApiViewModel extends ViewModel {
     /**
      * 
      */
-    version;
-    /**
-     * 
-     */
     creationTime;
     /**
      * 
@@ -47,5 +43,5 @@ export class ApiViewModel extends ViewModel {
     /**
      * 
      */
-    isDeleted;
+    version;
 }

@@ -4,21 +4,21 @@ import { EditComponentBase } from '../../../util';
 import { ApiViewModel } from './model/api-view-model';
 
 /**
- * Api资源编辑
+ * Api资源编辑页
  */
 @Component({
     selector: 'api-edit',
-    templateUrl: env.prod() ? './html/api-edit.component.html' : '/view/systems/api/edit'
+    templateUrl: !env.dev() ? './html/edit.component.html' : '/view/systems/api/edit'
 })
 export class ApiEditComponent extends EditComponentBase<ApiViewModel> {
     /**
-     * 初始化组件
+     * 初始化Api资源编辑页
      * @param injector 注入器
      */
     constructor(injector: Injector) {
         super(injector);
     }
-    
+
     /**
      * 创建视图模型
      */

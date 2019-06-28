@@ -26,7 +26,7 @@ namespace KissU.Domain.Systems.Models {
         /// </summary>
         /// <param name="id">角色标识</param>
         /// <param name="path">路径</param>
-        /// <param name="level">级数</param>
+        /// <param name="level">层级</param>
         public Role( Guid id, string path, int level )
             : base( id, path, level ) {
         }
@@ -35,25 +35,25 @@ namespace KissU.Domain.Systems.Models {
         /// 角色编码
         /// </summary>
         [Required(ErrorMessage = "角色编码不能为空")]
-        [StringLength( 256, ErrorMessage = "角色编码输入过长，不能超过256位" )]
+        [StringLength( 256 )]
         public string Code { get; set; }
         /// <summary>
         /// 角色名称
         /// </summary>
         [Required(ErrorMessage = "角色名称不能为空")]
-        [StringLength( 256, ErrorMessage = "角色名称输入过长，不能超过256位" )]
+        [StringLength( 256 )]
         public string Name { get; set; }
         /// <summary>
         /// 标准化角色名称
         /// </summary>
         [Required(ErrorMessage = "标准化角色名称不能为空")]
-        [StringLength( 256, ErrorMessage = "标准化角色名称输入过长，不能超过256位" )]
+        [StringLength( 256 )]
         public string NormalizedName { get; set; }
         /// <summary>
         /// 角色类型
         /// </summary>
         [Required(ErrorMessage = "角色类型不能为空")]
-        [StringLength( 80, ErrorMessage = "角色类型输入过长，不能超过80位" )]
+        [StringLength( 80 )]
         public string Type { get; set; }
         /// <summary>
         /// 管理员
@@ -62,17 +62,17 @@ namespace KissU.Domain.Systems.Models {
         /// <summary>
         /// 备注
         /// </summary>
-        [StringLength( 500, ErrorMessage = "备注输入过长，不能超过500位" )]
+        [StringLength( 500 )]
         public string Comment { get; set; }
         /// <summary>
         /// 拼音简码
         /// </summary>
-        [StringLength( 200, ErrorMessage = "拼音简码输入过长，不能超过200位" )]
+        [StringLength( 200 )]
         public string PinYin { get; set; }
         /// <summary>
         /// 签名
         /// </summary>
-        [StringLength( 256, ErrorMessage = "签名输入过长，不能超过256位" )]
+        [StringLength( 256 )]
         public string Sign { get; set; }
         /// <summary>
         /// 创建时间

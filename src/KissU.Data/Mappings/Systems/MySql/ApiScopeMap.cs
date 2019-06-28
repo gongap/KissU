@@ -7,7 +7,7 @@ namespace KissU.Data.Mappings.Systems.MySql
     /// <summary>
     /// Api许可范围映射配置
     /// </summary>
-    public class ApiScopeMap : Util.Datas.Ef.MySql.EntityMap<ApiScope> 
+    public class ApiScopeMap : Util.Datas.Ef.MySql.AggregateRootMap<ApiScope> 
 	{
         /// <summary>
         /// 映射表

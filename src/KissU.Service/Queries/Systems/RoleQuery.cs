@@ -3,13 +3,11 @@ using System.ComponentModel.DataAnnotations;
 using Util;
 using Util.Datas.Queries.Trees;
 
-namespace KissU.Service.Queries.Systems 
-{
+namespace KissU.Service.Queries.Systems {
     /// <summary>
     /// 角色查询参数
     /// </summary>
-    public class RoleQuery : TreeQueryParameter 
-	{
+    public class RoleQuery : TreeQueryParameter {
         /// <summary>
         /// 角色编号
         /// </summary>
@@ -99,7 +97,7 @@ namespace KissU.Service.Queries.Systems
         /// 结束创建时间
         /// </summary>
         [Display( Name = "结束创建时间" )]
-        public DateTime? EndCreationTime { get; set; }        
+        public DateTime? EndCreationTime { get; set; }
         /// <summary>
         /// 创建人编号
         /// </summary>
@@ -114,7 +112,7 @@ namespace KissU.Service.Queries.Systems
         /// 结束最后修改时间
         /// </summary>
         [Display( Name = "结束最后修改时间" )]
-        public DateTime? EndLastModificationTime { get; set; }        
+        public DateTime? EndLastModificationTime { get; set; }
         /// <summary>
         /// 最后修改人编号
         /// </summary>

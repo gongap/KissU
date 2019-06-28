@@ -1,17 +1,26 @@
 ﻿@page
 @model RoleDto
 @*标题*@
-<page-header title="查看角色"></page-header>
+<page-header title="角色详情"></page-header>
 @*表单*@
-<util-card show-border="false">
-    <util-form id="form" label-span="3" control-span="18" gutter="16">
-        <util-textbox for="Code"></util-textbox>
-        <util-textbox for="Name"></util-textbox>
-        <util-textbox for="NormalizedName"></util-textbox>
-        <util-textbox for="Type"></util-textbox>
-        <util-switch for="IsAdmin"></util-switch>
-        <util-textbox for="Comment"></util-textbox>
-        <util-textbox for="PinYin"></util-textbox>
-        <util-textbox for="Sign"></util-textbox>
-    </util-form>
+<util-card show-border="false" actions="[actionBack]">
+    <util-description title="详细信息" column="3" show-border="true" >
+        <util-description-item for="Code"></util-description-item>
+        <util-description-item for="Name"></util-description-item>
+        <util-description-item for="NormalizedName"></util-description-item>
+        <util-description-item for="Type"></util-description-item>
+        <util-description-item for="IsAdmin"></util-description-item>
+        <util-description-item for="ParentId"></util-description-item>
+        <util-description-item for="Path"></util-description-item>
+        <util-description-item for="Level"></util-description-item>
+        <util-description-item for="SortId"></util-description-item>
+        <util-description-item for="Enabled"></util-description-item>
+        <util-description-item for="Comment"></util-description-item>
+        <util-description-item for="PinYin"></util-description-item>
+        <util-description-item for="Sign"></util-description-item>
+        <util-description-item for="CreationTime"></util-description-item>
+    </util-description>
+    <util-template id="actionBack">
+        <util-button text="返回" on-click="back()"></util-button>
+    </util-template>
 </util-card>

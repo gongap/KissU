@@ -15,12 +15,12 @@ namespace KissU.Domain.Systems.Factories {
         /// <param name="description">描述</param>
         /// <param name="claimTypes">声明类型</param>
         /// <param name="enabled">是否启用</param>
-        /// <param name="version"></param>
         /// <param name="creationTime"></param>
         /// <param name="creatorId"></param>
         /// <param name="lastModificationTime"></param>
         /// <param name="lastModifierId"></param>
         /// <param name="isDeleted"></param>
+        /// <param name="version"></param>
         public static Api Create( 
             Guid apiId,
             string name,
@@ -28,12 +28,12 @@ namespace KissU.Domain.Systems.Factories {
             string description,
             string claimTypes,
             bool enabled,
-            Byte[] version,
             DateTime? creationTime,
             Guid? creatorId,
             DateTime? lastModificationTime,
             Guid? lastModifierId,
-            bool isDeleted
+            bool isDeleted,
+            Byte[] version
         ) {
             Api result;
             result = new Api( apiId );
@@ -41,12 +41,12 @@ namespace KissU.Domain.Systems.Factories {
             result.DisplayName = displayName;
             result.Description = description;
             result.ClaimTypes = claimTypes;
-            result.Version = version;
             result.CreationTime = creationTime;
             result.CreatorId = creatorId;
             result.LastModificationTime = lastModificationTime;
             result.LastModifierId = lastModifierId;
             result.IsDeleted = isDeleted;
+            result.Version = version;
             return result;
         }
     }

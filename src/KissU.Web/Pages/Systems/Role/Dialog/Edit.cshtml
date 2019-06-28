@@ -1,0 +1,28 @@
+﻿@page
+@model RoleDto
+@*标题*@
+<page-header title="编辑角色"></page-header>
+@*表单*@
+<util-card show-border="false">
+    <util-form id="form" label-span="4" control-span="20" gutter="16">
+        <util-textbox for="Code"></util-textbox>
+        <util-textbox for="Name"></util-textbox>
+        <util-textbox for="NormalizedName"></util-textbox>
+        <util-textbox for="Type"></util-textbox>
+        <util-switch for="IsAdmin"></util-switch>
+        <util-textbox for="ParentId"></util-textbox>
+        <util-textbox for="Path"></util-textbox>
+        <util-textbox for="Level"></util-textbox>
+        <util-textbox for="SortId"></util-textbox>
+        <util-switch for="Enabled"></util-switch>
+        <util-textbox for="Comment"></util-textbox>
+        <util-textbox for="PinYin"></util-textbox>
+        <util-textbox for="Sign"></util-textbox>
+        <util-form-item justify="End">
+            <util-form-control class="w-auto">
+                <util-button class="mr-sm" text="取消" on-click="close()"></util-button>
+                <util-button id="btnSubmit" validate-form="true" color="Primary" on-click="submit(form,btnSubmit)"></util-button>
+            </util-form-control>
+        </util-form-item>
+    </util-form>
+</util-card>

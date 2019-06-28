@@ -111,9 +111,5 @@ export class MenuViewModel extends TreeViewModel {
     /**
      * 
      */
-    isDeleted;
-    /**
-     * 
-     */
     version;
 }

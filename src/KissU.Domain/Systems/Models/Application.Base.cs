@@ -31,20 +31,20 @@ namespace KissU.Domain.Systems.Models {
         /// </summary>
         [DisplayName( "应用程序编码" )]
         [Required(ErrorMessage = "应用程序编码不能为空")]
-        [StringLength( 60, ErrorMessage = "应用程序编码输入过长，不能超过60位" )]
+        [StringLength( 60 )]
         public string Code { get; set; }
         /// <summary>
         /// 应用程序名称
         /// </summary>
         [DisplayName( "应用程序名称" )]
         [Required(ErrorMessage = "应用程序名称不能为空")]
-        [StringLength( 200, ErrorMessage = "应用程序名称输入过长，不能超过200位" )]
+        [StringLength( 200 )]
         public string Name { get; set; }
         /// <summary>
         /// 备注
         /// </summary>
         [DisplayName( "备注" )]
-        [StringLength( 500, ErrorMessage = "备注输入过长，不能超过500位" )]
+        [StringLength( 500 )]
         public string Comment { get; set; }
         /// <summary>
         /// 启用

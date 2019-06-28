@@ -4,21 +4,21 @@ import { EditComponentBase } from '../../../util';
 import { RoleViewModel } from './model/role-view-model';
 
 /**
- * 角色编辑
+ * 角色编辑页
  */
 @Component({
     selector: 'role-edit',
-    templateUrl: env.prod() ? './html/role-edit.component.html' : '/view/systems/role/edit'
+    templateUrl: !env.dev() ? './html/edit.component.html' : '/view/systems/role/edit'
 })
 export class RoleEditComponent extends EditComponentBase<RoleViewModel> {
     /**
-     * 初始化组件
+     * 初始化角色编辑页
      * @param injector 注入器
      */
     constructor(injector: Injector) {
         super(injector);
     }
-    
+
     /**
      * 创建视图模型
      */

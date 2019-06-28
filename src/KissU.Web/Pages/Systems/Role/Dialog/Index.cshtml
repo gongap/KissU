@@ -1,0 +1,37 @@
+﻿@page
+@model RoleDto
+<page-header title="角色"></page-header>
+<util-card show-border="false">
+    @*查询表单*@
+    @await Html.PartialAsync( "Index.Query" )
+    @*工具按钮*@
+    <util-button class="mr-sm" color="Primary" icon="Plus" text="新建" on-click="openCreateDialog()"></util-button>
+    <util-button id="btnDelete" color="Danger" icon="Delete" text="删除" on-click="delete(btnDelete)"></util-button>
+    @*提示语*@
+    <util-alert class="my-md" type="Info" show-icon="true">
+        已选择<strong class="text-primary mx-md">{{getCheckedLength()}}</strong>行
+    </util-alert>
+    @*表格*@
+    <util-table id="tableRole" query-param="queryParam" base-url="role" sort="CreationTime desc">
+        <util-table-column type="Checkbox"></util-table-column>
+        <util-table-column type="LineNumber"></util-table-column>
+        <util-table-column for="Code"></util-table-column>
+        <util-table-column for="Name"></util-table-column>
+        <util-table-column for="NormalizedName"></util-table-column>
+        <util-table-column for="Type"></util-table-column>
+        <util-table-column for="IsAdmin"></util-table-column>
+        <util-table-column for="ParentId"></util-table-column>
+        <util-table-column for="Path"></util-table-column>
+        <util-table-column for="Level"></util-table-column>
+        <util-table-column for="SortId"></util-table-column>
+        <util-table-column for="Enabled"></util-table-column>
+        <util-table-column for="Comment"></util-table-column>
+        <util-table-column for="PinYin"></util-table-column>
+        <util-table-column for="Sign"></util-table-column>
+        <util-table-column title="操作">
+            <util-button class="mr-sm" color="Primary" shape="Circle" icon="Edit" tooltip="编辑" on-click="openEditDialog(row.id)"></util-button>
+            <util-button class="mr-sm" color="Danger" shape="Circle" icon="Delete" tooltip="删除" on-click="delete(null,row.id)"></util-button>
+            <util-button shape="Circle" icon="Eye" tooltip="详情" on-click="openDetailDialog(row.id)"></util-button>
+        </util-table-column>
+    </util-table>
+</util-card>

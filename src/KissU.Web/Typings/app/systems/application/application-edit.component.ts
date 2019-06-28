@@ -4,21 +4,21 @@ import { EditComponentBase } from '../../../util';
 import { ApplicationViewModel } from './model/application-view-model';
 
 /**
- * 应用程序编辑
+ * 应用程序编辑页
  */
 @Component({
     selector: 'application-edit',
-    templateUrl: env.prod() ? './html/application-edit.component.html' : '/view/systems/application/edit'
+    templateUrl: !env.dev() ? './html/edit.component.html' : '/view/systems/application/edit'
 })
 export class ApplicationEditComponent extends EditComponentBase<ApplicationViewModel> {
     /**
-     * 初始化组件
+     * 初始化应用程序编辑页
      * @param injector 注入器
      */
     constructor(injector: Injector) {
         super(injector);
     }
-    
+
     /**
      * 创建视图模型
      */

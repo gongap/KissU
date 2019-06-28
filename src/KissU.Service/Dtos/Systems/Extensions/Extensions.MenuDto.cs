@@ -57,7 +57,6 @@ namespace KissU.Service.Dtos.Systems.Extensions
                 CreatorId = dto.CreatorId,
                 LastModificationTime = dto.LastModificationTime,
                 LastModifierId = dto.LastModifierId,
-                IsDeleted = dto.IsDeleted.SafeValue(),
                 Version = dto.Version
             };
         }
@@ -103,7 +102,6 @@ namespace KissU.Service.Dtos.Systems.Extensions
                 creatorId : dto.CreatorId,
                 lastModificationTime : dto.LastModificationTime,
                 lastModifierId : dto.LastModifierId,
-                isDeleted : dto.IsDeleted.SafeValue(),
                 version : dto.Version
             );
         }
@@ -160,7 +158,6 @@ namespace KissU.Service.Dtos.Systems.Extensions
                 CreatorId = entity.CreatorId,
                 LastModificationTime = entity.LastModificationTime,
                 LastModifierId = entity.LastModifierId,
-                IsDeleted = entity.IsDeleted,
                 Version = entity.Version
             };
         }

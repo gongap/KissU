@@ -1,0 +1,18 @@
+﻿@page
+@model EnterpriseDto
+@*标题*@
+<page-header title="企业详情"></page-header>
+@*表单*@
+<util-card show-border="false" actions="[actionBack]">
+    <util-description title="详细信息" column="3" show-border="true" >
+        <util-description-item for="Name"></util-description-item>
+        <util-description-item for="Enabled"></util-description-item>
+        <util-description-item for="PinYin"></util-description-item>
+        <util-description-item for="WcfAddress"></util-description-item>
+        <util-description-item for="Note"></util-description-item>
+        <util-description-item for="CreationTime"></util-description-item>
+    </util-description>
+    <util-template id="actionBack">
+        <util-button text="返回" on-click="back()"></util-button>
+    </util-template>
+</util-card>

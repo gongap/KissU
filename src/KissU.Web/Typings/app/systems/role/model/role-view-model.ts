@@ -53,10 +53,6 @@ export class RoleViewModel extends TreeViewModel {
      */
     lastModifierId;
     /**
-     * 是否删除
-     */
-    isDeleted;
-    /**
      * 版本号
      */
     version;

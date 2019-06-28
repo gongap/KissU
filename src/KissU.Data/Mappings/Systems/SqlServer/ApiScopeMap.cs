@@ -7,7 +7,7 @@ namespace KissU.Data.Mappings.Systems.SqlServer
     /// <summary>
     /// Api许可范围映射配置
     /// </summary>
-    public class ApiScopeMap : Util.Datas.Ef.SqlServer.EntityMap<ApiScope> 
+    public class ApiScopeMap : Util.Datas.Ef.SqlServer.AggregateRootMap<ApiScope> 
 	{
         /// <summary>
         /// 映射表
@@ -25,9 +25,6 @@ namespace KissU.Data.Mappings.Systems.SqlServer
             //
             builder.Property(t => t.Id)
                 .HasColumnName("ApiScopeId");
-            //builder.HasOne(p => p.Api)
-            //    .WithMany(b => b.ApiScopes)
-            //    .HasForeignKey(p => p.ApiId);
         }
     }
 }

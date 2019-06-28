@@ -4,26 +4,19 @@ import { EditComponentBase } from '../../../util';
 import { RoleViewModel } from './model/role-view-model';
 
 /**
- * 角色详细
+ * 角色详情页
  */
 @Component({
     selector: 'role-detail',
-    templateUrl: env.prod() ? './html/role-detail.component.html' : '/view/systems/role/detail'
+    templateUrl: !env.dev() ? './html/detail.component.html' : '/view/systems/role/detail'
 })
 export class RoleDetailComponent extends EditComponentBase<RoleViewModel> {
     /**
-     * 初始化组件
+     * 初始化角色详情页
      * @param injector 注入器
      */
     constructor(injector: Injector) {
         super(injector);
-    }
-    
-    /**
-     * 创建视图模型
-     */
-    protected createModel() {
-        return new RoleViewModel();
     }
 
     /**

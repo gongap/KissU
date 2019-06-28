@@ -4,26 +4,19 @@ import { EditComponentBase } from '../../../util';
 import { ApplicationViewModel } from './model/application-view-model';
 
 /**
- * 应用程序详细
+ * 应用程序详情页
  */
 @Component({
     selector: 'application-detail',
-    templateUrl: env.prod() ? './html/application-detail.component.html' : '/view/systems/application/detail'
+    templateUrl: !env.dev() ? './html/detail.component.html' : '/view/systems/application/detail'
 })
 export class ApplicationDetailComponent extends EditComponentBase<ApplicationViewModel> {
     /**
-     * 初始化组件
+     * 初始化应用程序详情页
      * @param injector 注入器
      */
     constructor(injector: Injector) {
         super(injector);
-    }
-    
-    /**
-     * 创建视图模型
-     */
-    protected createModel() {
-        return new ApplicationViewModel();
     }
 
     /**

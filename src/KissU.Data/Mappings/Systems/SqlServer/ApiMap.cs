@@ -26,7 +26,6 @@ namespace KissU.Data.Mappings.Systems.SqlServer
             builder.Property(t => t.Id)
                 .HasColumnName("ApiId");
             builder.HasQueryFilter( t => t.IsDeleted == false );
-            builder.HasMany(b => b.ApiScopes).WithOne();
         }
     }
 }

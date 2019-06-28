@@ -4,26 +4,19 @@ import { EditComponentBase } from '../../../util';
 import { MenuViewModel } from './model/menu-view-model';
 
 /**
- * 菜单详细
+ * 菜单详情页
  */
 @Component({
     selector: 'menu-detail',
-    templateUrl: env.prod() ? './html/menu-detail.component.html' : '/view/systems/menu/detail'
+    templateUrl: !env.dev() ? './html/detail.component.html' : '/view/systems/menu/detail'
 })
 export class MenuDetailComponent extends EditComponentBase<MenuViewModel> {
     /**
-     * 初始化组件
+     * 初始化菜单详情页
      * @param injector 注入器
      */
     constructor(injector: Injector) {
         super(injector);
-    }
-    
-    /**
-     * 创建视图模型
-     */
-    protected createModel() {
-        return new MenuViewModel();
     }
 
     /**

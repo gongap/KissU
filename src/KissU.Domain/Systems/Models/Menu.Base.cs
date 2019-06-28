@@ -26,7 +26,7 @@ namespace KissU.Domain.Systems.Models {
         /// </summary>
         /// <param name="id">菜单标识</param>
         /// <param name="path">路径</param>
-        /// <param name="level">级数</param>
+        /// <param name="level">层级</param>
         public Menu( Guid id, string path, int level )
             : base( id, path, level ) {
         }
@@ -35,24 +35,24 @@ namespace KissU.Domain.Systems.Models {
         /// 菜单编码
         /// </summary>
         [Required(ErrorMessage = "菜单编码不能为空")]
-        [StringLength( 256, ErrorMessage = "菜单编码输入过长，不能超过256位" )]
+        [StringLength( 256 )]
         public string Code { get; set; }
         /// <summary>
         /// 菜单名称
         /// </summary>
         [Required(ErrorMessage = "菜单名称不能为空")]
-        [StringLength( 256, ErrorMessage = "菜单名称输入过长，不能超过256位" )]
+        [StringLength( 256 )]
         public string Name { get; set; }
         /// <summary>
         /// 拼音
         /// </summary>
         [Required(ErrorMessage = "拼音不能为空")]
-        [StringLength( 200, ErrorMessage = "拼音输入过长，不能超过200位" )]
+        [StringLength( 200 )]
         public string PinYin { get; set; }
         /// <summary>
         /// i18n主键
         /// </summary>
-        [StringLength( 50, ErrorMessage = "i18n主键输入过长，不能超过50位" )]
+        [StringLength( 50 )]
         public string I18n { get; set; }
         /// <summary>
         /// 是否显示分组名
@@ -61,7 +61,7 @@ namespace KissU.Domain.Systems.Models {
         /// <summary>
         /// 路由
         /// </summary>
-        [StringLength( 256, ErrorMessage = "路由输入过长，不能超过256位" )]
+        [StringLength( 256 )]
         public string Link { get; set; }
         /// <summary>
         /// 路由是否精准匹配
@@ -70,17 +70,17 @@ namespace KissU.Domain.Systems.Models {
         /// <summary>
         /// 外部链接
         /// </summary>
-        [StringLength( 256, ErrorMessage = "外部链接输入过长，不能超过256位" )]
+        [StringLength( 256 )]
         public string ExternalLink { get; set; }
         /// <summary>
         /// 链接 target
         /// </summary>
-        [StringLength( 20, ErrorMessage = "链接 target输入过长，不能超过20位" )]
+        [StringLength( 20 )]
         public string Target { get; set; }
         /// <summary>
         /// 图标
         /// </summary>
-        [StringLength( 256, ErrorMessage = "图标输入过长，不能超过256位" )]
+        [StringLength( 256 )]
         public string Icon { get; set; }
         /// <summary>
         /// 徽标数，展示的数字
@@ -93,7 +93,7 @@ namespace KissU.Domain.Systems.Models {
         /// <summary>
         /// 徽标 Badge 颜色
         /// </summary>
-        [StringLength( 20, ErrorMessage = "徽标 Badge 颜色输入过长，不能超过20位" )]
+        [StringLength( 20 )]
         public string BadgeStatus { get; set; }
         /// <summary>
         /// 是否禁用
@@ -110,7 +110,7 @@ namespace KissU.Domain.Systems.Models {
         /// <summary>
         /// ACL配置
         /// </summary>
-        [StringLength( 50, ErrorMessage = "ACL配置输入过长，不能超过50位" )]
+        [StringLength( 50 )]
         public string Acl { get; set; }
         /// <summary>
         /// 是否快捷菜单项
@@ -131,7 +131,7 @@ namespace KissU.Domain.Systems.Models {
         /// <summary>
         /// 备注
         /// </summary>
-        [StringLength( 500, ErrorMessage = "备注输入过长，不能超过500位" )]
+        [StringLength( 500 )]
         public string Note { get; set; }
         /// <summary>
         /// 
