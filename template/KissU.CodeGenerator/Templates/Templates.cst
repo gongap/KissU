@@ -847,7 +847,7 @@
             string className = "Index";
             result.Entity = entity;
             result.Namespace = GetSchema(entity).ToLower();
-            result.RenderToFile(GetPath(className,string.Format("Web\\Pages\\{0}\\{1}\\Dialog\\", GetSchema(entity),entity.ClassName ), "cshtml" ), true);
+            result.RenderToFile(GetPath(className,string.Format("Web\\Pages\\Dialog\\{0}\\{1}\\", GetSchema(entity),entity.ClassName ), "cshtml" ), true);
         }
     }
     
@@ -892,7 +892,7 @@
             string className = "Edit";
             result.Entity = entity;
             result.Namespace = GetSchema(entity).ToLower();
-            result.RenderToFile(GetPath(className,string.Format("Web\\Pages\\{0}\\{1}\\Dialog\\", GetSchema(entity),entity.ClassName ), "cshtml" ), true);
+            result.RenderToFile(GetPath(className,string.Format("Web\\Pages\\Dialog\\{0}\\{1}\\", GetSchema(entity),entity.ClassName ), "cshtml" ), true);
         }
     }
     
@@ -922,7 +922,7 @@
             string className = "Detail";
             result.Entity = entity;
             result.Namespace = GetSchema(entity).ToLower();
-            result.RenderToFile(GetPath(className,string.Format("Web\\Pages\\{0}\\{1}\\Dialog\\", GetSchema(entity),entity.ClassName ), "cshtml" ), true);
+            result.RenderToFile(GetPath(className,string.Format("Web\\Pages\\Dialog\\{0}\\{1}\\", GetSchema(entity),entity.ClassName ), "cshtml" ), true);
         }
     }
     

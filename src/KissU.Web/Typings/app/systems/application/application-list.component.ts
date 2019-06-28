@@ -3,6 +3,8 @@ import { env } from '../../env';
 import { TableQueryComponentBase } from '../../../util';
 import { ApplicationQuery } from './model/application-query';
 import { ApplicationViewModel } from './model/application-view-model';
+import { ApplicationEditComponent } from './application-edit.component';
+import { ApplicationDetailComponent } from './application-detail.component';
 
 /**
  * 应用程序列表页
@@ -18,5 +20,19 @@ export class ApplicationListComponent extends TableQueryComponentBase<Applicatio
      */
     constructor(injector: Injector) {
         super(injector);
+    }
+    
+    /**
+     * 获取创建弹出框组件
+     */
+    getCreateDialogComponent() {
+        return ApplicationEditComponent;
+    }
+
+    /**
+     * 获取详情弹出框组件
+     */
+    getDetailDialogComponent() {
+        return ApplicationDetailComponent;
     }
 }

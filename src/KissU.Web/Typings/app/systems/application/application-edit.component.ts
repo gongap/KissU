@@ -1,6 +1,6 @@
 ﻿import { Component, Injector } from '@angular/core';
 import { env } from '../../env';
-import { EditComponentBase } from '../../../util';
+import { EditDialogComponentBase } from '../../../util';
 import { ApplicationViewModel } from './model/application-view-model';
 
 /**
@@ -10,21 +10,13 @@ import { ApplicationViewModel } from './model/application-view-model';
     selector: 'application-edit',
     templateUrl: !env.dev() ? './html/edit.component.html' : '/view/systems/application/edit'
 })
-export class ApplicationEditComponent extends EditComponentBase<ApplicationViewModel> {
+export class ApplicationEditComponent extends EditDialogComponentBase<ApplicationViewModel> {
     /**
      * 初始化应用程序编辑页
      * @param injector 注入器
      */
     constructor(injector: Injector) {
         super(injector);
-    }
-
-    /**
-     * 创建视图模型
-     */
-    protected createModel() {
-	    var model = new ApplicationViewModel();
-        return model;
     }
 
     /**
