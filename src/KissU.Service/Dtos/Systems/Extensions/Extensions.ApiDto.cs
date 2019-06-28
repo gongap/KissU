@@ -2,6 +2,7 @@
 using Util.Maps;
 using KissU.Domain.Systems.Models;
 using KissU.Domain.Systems.Factories;
+using System.Linq;
 
 namespace KissU.Service.Dtos.Systems.Extensions 
 {
@@ -39,7 +40,8 @@ namespace KissU.Service.Dtos.Systems.Extensions
                 CreatorId = dto.CreatorId,
                 LastModificationTime = dto.LastModificationTime,
                 LastModifierId = dto.LastModifierId,
-                Version = dto.Version
+                Version = dto.Version,
+                ApiScopes = dto.ApiScopes?.Select(x=>x.ToEntity2()).ToList()
             };
         }
         
@@ -96,7 +98,8 @@ namespace KissU.Service.Dtos.Systems.Extensions
                 CreatorId = entity.CreatorId,
                 LastModificationTime = entity.LastModificationTime,
                 LastModifierId = entity.LastModifierId,
-                Version = entity.Version
+                Version = entity.Version,
+                ApiScopes = entity.ApiScopes?.Select(x=>x.ToDto2()).ToList()
             };
         }
     }

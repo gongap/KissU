@@ -75,10 +75,5 @@ namespace KissU.Service.Dtos.Systems {
         /// </summary>
         [Display( Name = "" )]
         public Guid? LastModifierId { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        [Display( Name = "" )]
-        public Byte[] Version { get; set; }
     }
 }

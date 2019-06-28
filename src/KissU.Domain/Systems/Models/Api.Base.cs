@@ -23,7 +23,9 @@ namespace KissU.Domain.Systems.Models {
         /// 初始化Api资源
         /// </summary>
         /// <param name="id">Api资源标识</param>
-        public Api( Guid id ) : base( id ) {
+        public Api(Guid id) : base(id)
+        {
+            this.ApiScopes = new List<ApiScope>();
         }
 
         /// <summary>

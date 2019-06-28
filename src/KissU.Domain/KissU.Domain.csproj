@@ -28,11 +28,20 @@
     <Compile Update="Systems/Models/Application.Base.cs">
       <DependentUpon>Application.cs</DependentUpon>
     </Compile>
+    <Compile Update="Systems/Models/Enterprise.Base.cs">
+      <DependentUpon>Enterprise.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Systems/Models/Link.Base.cs">
+      <DependentUpon>Link.cs</DependentUpon>
+    </Compile>
     <Compile Update="Systems/Models/Menu.Base.cs">
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
     <Compile Update="Systems/Models/Role.Base.cs">
       <DependentUpon>Role.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Systems/Models/User.Base.cs">
+      <DependentUpon>User.cs</DependentUpon>
     </Compile>
   </ItemGroup>
 

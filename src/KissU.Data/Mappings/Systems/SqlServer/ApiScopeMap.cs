@@ -7,7 +7,7 @@ namespace KissU.Data.Mappings.Systems.SqlServer
     /// <summary>
     /// Api许可范围映射配置
     /// </summary>
-    public class ApiScopeMap : Util.Datas.Ef.SqlServer.AggregateRootMap<ApiScope> 
+    public class ApiScopeMap : Util.Datas.Ef.SqlServer.EntityMap<ApiScope> 
 	{
         /// <summary>
         /// 映射表

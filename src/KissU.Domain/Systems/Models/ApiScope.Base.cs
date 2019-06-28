@@ -12,7 +12,7 @@ namespace KissU.Domain.Systems.Models {
     /// Api许可范围
     /// </summary>
     [DisplayName( "Api许可范围" )]
-    public partial class ApiScope : AggregateRoot<ApiScope>,IAudited {
+    public partial class ApiScope : EntityBase<ApiScope>, IDelete, IAudited {
         /// <summary>
         /// 初始化Api许可范围
         /// </summary>
@@ -92,7 +92,12 @@ namespace KissU.Domain.Systems.Models {
         /// </summary>
         [DisplayName( "" )]
         public Guid? LastModifierId { get; set; }
-        
+        /// <summary>
+        /// 
+        /// </summary>
+        [DisplayName("")]
+        public bool IsDeleted { get; set; }
+
         /// <summary>
         /// 添加描述
         /// </summary>

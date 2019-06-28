@@ -19,7 +19,6 @@ namespace KissU.Domain.Systems.Factories {
         /// <param name="creatorId"></param>
         /// <param name="lastModificationTime"></param>
         /// <param name="lastModifierId"></param>
-        /// <param name="isDeleted"></param>
         /// <param name="version"></param>
         public static Api Create( 
             Guid apiId,
