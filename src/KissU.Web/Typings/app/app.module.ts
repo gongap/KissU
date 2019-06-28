@@ -70,7 +70,7 @@ export function startupServiceFactory( startupService: StartupService ) {
             multi: true,
         },
         { provide: NZ_ICONS, useValue: icons },
-        { provide: UploadService, useClass: TestUploadService }
+        //{ provide: UploadService, useClass: TestUploadService }
     ],
     bootstrap: [AppComponent],
 } )
