@@ -40,7 +40,8 @@ namespace KissU.Service.Dtos.Systems.Extensions
                 LastModificationTime = dto.LastModificationTime,
                 LastModifierId = dto.LastModifierId,
                 IsDeleted = dto.IsDeleted.SafeValue(),
-                Version = dto.Version
+                Version = dto.Version,
+                ApiScopes = dto.ApiScopes.MapToList<ApiScope>()
             };
         }
         
@@ -87,6 +88,7 @@ namespace KissU.Service.Dtos.Systems.Extensions
 		{
             if( entity == null )
                 return new ApiDto();
+            var apiScopes = entity.ApiScopes.MapToList<ApiScopeDto>();
             return new ApiDto {
                 Id = entity.Id.ToString(),
                 Name = entity.Name,
@@ -99,7 +101,8 @@ namespace KissU.Service.Dtos.Systems.Extensions
                 LastModificationTime = entity.LastModificationTime,
                 LastModifierId = entity.LastModifierId,
                 IsDeleted = entity.IsDeleted,
-                Version = entity.Version
+                Version = entity.Version,
+                ApiScopes = apiScopes
             };
         }
     }

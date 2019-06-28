@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MenuService, SettingsService, TitleService } from '@delon/theme';
-import { util } from '../../../util';
+import { util } from '../../util';
 
 /**
  * 启动服务

@@ -7,7 +7,7 @@ namespace KissU.Data.Mappings.Systems.PgSql
     /// <summary>
     /// Api许可范围映射配置
     /// </summary>
-    public class ApiScopeMap : Util.Datas.Ef.PgSql.AggregateRootMap<ApiScope> 
+    public class ApiScopeMap : Util.Datas.Ef.PgSql.EntityMap<ApiScope> 
 	{
         /// <summary>
         /// 映射表

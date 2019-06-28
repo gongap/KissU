@@ -11,3 +11,5 @@ BenchmarkDotNet.Artifacts/
 /src/KissU.Web/wwwroot/dist
 /src/KissU.Web/yarn.lock
 /src/KissU.Web/.vs
+/src/KissU.Web/Typings/app/**/*.html
+!/src/KissU.Web/Typings/app/layout/**/*.html

@@ -19,7 +19,7 @@ import { RoleDetailComponent } from './role/role-detail.component';
  */
 @NgModule({
     declarations: [
-        ApiIndexComponent,ApiEditComponent,ApiDetailComponent,
+        ApiIndexComponent, ApiEditComponent, ApiDetailComponent,
         ApplicationIndexComponent,ApplicationEditComponent,ApplicationDetailComponent,
         MenuIndexComponent,MenuEditComponent,MenuDetailComponent,
         RoleIndexComponent,RoleEditComponent,RoleDetailComponent,

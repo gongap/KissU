@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
+    <UserSecretsId>8fe260ca-ef4c-4fa3-9364-029146f8d339</UserSecretsId>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <!--阻止ts自动编译-->
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
@@ -20,19 +21,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="Pages\Home\Dashboard\Index.cshtml" />
-    <None Include="Pages\Home\Dashboard\Partial\AreaChart.cshtml" />
-    <None Include="Pages\Home\Dashboard\Partial\BarChart.cshtml" />
-    <None Include="Pages\Home\Dashboard\Partial\CardStats.cshtml" />
-    <None Include="Pages\Home\Dashboard\Partial\ColumnChart.cshtml" />
-    <None Include="Pages\Home\Dashboard\Partial\LineChart.cshtml" />
-    <None Include="Pages\Home\Dashboard\Partial\List.cshtml" />
-    <None Include="Pages\Home\Dashboard\Partial\PieChart.cshtml" />
     <None Include="Pages\NotFound.cshtml" />
     <None Include="Pages\Index.cshtml" />
-    <None Include="Pages\Systems\Application\Detail.cshtml" />
-    <None Include="Pages\Systems\Application\Edit.cshtml" />
-    <None Include="Pages\Systems\Application\Index.cshtml" />
     <None Include="Pages\_ViewImports.cshtml" />
   </ItemGroup>
 

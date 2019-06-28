@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using Util.Ui.Attributes;
 using Util.Applications.Dtos;
+using System.Collections.Generic;
 
 namespace KissU.Service.Dtos.Systems 
 {
@@ -11,6 +12,8 @@ namespace KissU.Service.Dtos.Systems
     /// </summary>
     public class ApiDto : DtoBase 
 	{
+        public List<ApiScopeDto> ApiScopes { get; set; }
+
         /// <summary>
         /// 名称
         /// </summary>

@@ -29,6 +29,9 @@ import { TestUploadService } from "../common/services/test-upload.service";
 //路由模块
 import { AppRoutingModule } from './app-routing.module';
 
+//布局模块
+import { LayoutModule } from "./layout/layout.module";
+
 //主界面模块
 import { HomeModule } from "./home/home.module";
 
@@ -36,7 +39,7 @@ import { HomeModule } from "./home/home.module";
 import { AppComponent } from './app.component';
 
 //启动服务
-import { StartupService } from "./home/startup/startup.service";
+import { StartupService } from "./startup/startup.service";
 
 //启动服务工厂
 export function startupServiceFactory( startupService: StartupService ) {
@@ -55,6 +58,7 @@ export function startupServiceFactory( startupService: StartupService ) {
         AlainThemeModule.forRoot(),
         FrameworkModule,
         HomeModule,
+        LayoutModule,
         AppRoutingModule
     ],
     providers: [

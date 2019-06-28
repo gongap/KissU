@@ -24,7 +24,7 @@ import { takeUntil } from 'rxjs/operators';
 import { updateHostClass } from '@delon/util';
 import { SettingsService } from '@delon/theme';
 
-import { env } from '../../../env';
+import { env } from '../../env';
 
 @Component({
   selector: 'layout-default',

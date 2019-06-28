@@ -1,7 +1,11 @@
-﻿namespace KissU.Domain.Systems.Models {
+﻿using System;
+
+namespace KissU.Domain.Systems.Models
+{
     /// <summary>
     /// Api许可范围
     /// </summary>
-    public partial class ApiScope {
+    public partial class ApiScope
+    {
     }
 }

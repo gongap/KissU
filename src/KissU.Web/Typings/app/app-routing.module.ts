@@ -1,6 +1,6 @@
 ﻿import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LayoutDefaultComponent } from './home/layout/default/default.component';
+import { LayoutDefaultComponent } from './layout/default/default.component';
 import { DashboardIndexComponent } from './home/dashboard/dashboard-index.component';
 
 //路由配置

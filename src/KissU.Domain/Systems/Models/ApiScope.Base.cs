@@ -12,7 +12,7 @@ namespace KissU.Domain.Systems.Models {
     /// Api许可范围
     /// </summary>
     [DisplayName( "Api许可范围" )]
-    public partial class ApiScope : AggregateRoot<ApiScope>,IAudited {
+    public partial class ApiScope : EntityBase<ApiScope>,IAudited {
         /// <summary>
         /// 初始化Api许可范围
         /// </summary>
