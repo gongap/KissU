@@ -30,12 +30,10 @@ using Util.Applications;
 using <%= string.Format("{0}.Service.Dtos.{1}",Namespace,Entity.TableSchema) %>;
 using <%= string.Format("{0}.Service.Queries.{1}",Namespace,Entity.TableSchema) %>;
 
-namespace <%= string.Format("{0}.Service.Abstractions.{1}",Namespace,Entity.TableSchema) %> 
-{
+namespace <%= string.Format("{0}.Service.Abstractions.{1}",Namespace,Entity.TableSchema) %> {
     /// <summary>
     /// <%= Description %>服务
     /// </summary>
-    public interface I<%= SafeClassName %>Service : ICrudService<<%= SafeClassName %>Dto, <%= SafeClassName %>Query> 
-	{
+    public interface I<%= SafeClassName %>Service : ICrudService<<%= SafeClassName %>Dto, <%= SafeClassName %>Query> {
     }
 }

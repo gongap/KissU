@@ -1,5 +1,4 @@
 ﻿<%@ Template Language="C#" TargetLanguage="C#" Debug="True" Encoding="UTF-8" %>
-<%@ Register Name="ITreeRepository" Template="ITreeRepository.cst" MergeProperties="False" ExcludeProperties="" %>
 
 <%@ Assembly Src="..\..\Common\Model.cs" %>
 <%@ Assembly Src="..\..\Common\Extensions.cs" %>
@@ -16,19 +15,19 @@
 <% string SafeClassName = Entity.ClassName.ToSafeName(); %>
 <%-- 描述 --%>
 <% string Description = Entity.Description; %>
-<%-- 如果是树型实体，则调用子模板 --%>
-<%
-if( Entity.IsTreeEntity() ){
-    CodeTemplate template = new ITreeRepository();
-    template.SetProperty("Namespace",Namespace);
-    template.SetProperty("Entity",Entity);
-    template.Render(this.Response);
-    return;
-}
-%>
 using Util.Domains.Repositories;
 using <%= Entity.GetNamespace(Namespace,"Domain","Models") %>;
 
+<%
+if( Entity.IsTreeEntity() ){ %>
+namespace <%= Entity.GetNamespace(Namespace,"Domain","Repositories") %> {
+    /// <summary>
+    /// <%= Description %>仓储
+    /// </summary>
+    public interface I<%= SafeClassName %>Repository : ITreeRepository<<%= SafeClassName %><%= Entity.GetKeyTypeNoContainsGuid() %>> {
+    }
+}
+<% return;}%>
 namespace <%= Entity.GetNamespace(Namespace,"Domain","Repositories") %> {
     /// <summary>
     /// <%= Description %>仓储

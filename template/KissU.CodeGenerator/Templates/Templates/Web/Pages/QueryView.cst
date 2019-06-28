@@ -18,6 +18,7 @@
 <%-- 驼峰形式类名 --%>
 <% string CamelClassName = SafeClassName.ToCamelCase(); %>
 @model <%=SafeClassName%>Query
+
 @*查询表单*@
 <util-form layout="Inline" class="search__form">
     <util-row gutter="32">

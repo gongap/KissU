@@ -20,19 +20,14 @@
 @page
 @model <%=SafeClassName%>Dto
 @*标题*@
-<page-header title="查看<%=Description%>"></page-header>
+<page-header title="<%=Description%>详情"></page-header>
 @*表单*@
 <util-card show-border="false">
-    <util-form id="form" label-span="3" control-span="18" gutter="16">
+    <util-description column="3" show-border="true" >
         <% foreach(Property p in Entity.Properties) { %>
         <% if( p.IsPrimaryKey.SafeValue() ) continue; %>
-        <% if( Entity.IsHidden(p) ) continue; %>
-		<% if( Entity.IgnoreTreeEntityProperty(p) ) continue;%>
-        <% if( p.DataType == DbType.Boolean ){%>
-        <util-switch for="<%= p.PropertyName.ToSafeName() %>"></util-switch>
-        <% }else{ %>
-        <util-textbox for="<%= p.PropertyName.ToSafeName() %>"></util-textbox>
+        <% if( Entity.IsDetailHidden(p) ) continue; %>
+        <util-description-item for="<%= p.PropertyName.ToSafeName() %>"></util-description-item>
         <% } %>
-        <% } %>
-    </util-form>
+    </util-description>
 </util-card>

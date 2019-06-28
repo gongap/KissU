@@ -25,8 +25,8 @@ if( Entity.IsTreeEntity() ){
     CodeTemplate template =new TreeIndexView();
     template.SetProperty("Namespace",Namespace);
     template.SetProperty("Entity",Entity);
-    template.Render(this.Response);
-    return;
+    //template.Render(this.Response);
+    //return;
 }
 %>
 @page
@@ -36,7 +36,7 @@ if( Entity.IsTreeEntity() ){
     @*查询表单*@
     @await Html.PartialAsync( "Index.Query" )
     @*工具按钮*@
-    <util-a class="mr-sm" color="Primary" icon="Plus" text="新建" link="create"></util-a>
+    <util-button class="mr-sm" color="Primary" icon="Plus" text="新建" on-click="openCreateDialog()"></util-button>
     <util-button id="btnDelete" color="Danger" icon="Delete" text="删除" on-click="delete(btnDelete)"></util-button>
     @*提示语*@
     <util-alert class="my-md" type="Info" show-icon="true">
@@ -52,8 +52,9 @@ if( Entity.IsTreeEntity() ){
         <util-table-column for="<%= p.PropertyName.ToSafeName() %>"></util-table-column>
         <% } %>
         <util-table-column title="操作">
-            <util-a class="mr-sm" color="Primary" shape="Circle" icon="Edit" tooltip="编辑" bind-link="['update',row.id]"></util-a>
-            <util-button color="Danger" shape="Circle" icon="Delete" tooltip="删除" on-click="delete(null,row.id)"></util-button>
+            <util-button class="mr-sm" color="Primary" shape="Circle" icon="Edit" tooltip="编辑" on-click="openEditDialog(row.id)"></util-button>
+            <util-button class="mr-sm" color="Danger" shape="Circle" icon="Delete" tooltip="删除" on-click="delete(null,row.id)"></util-button>
+            <util-button shape="Circle" icon="Eye" tooltip="详情" on-click="openDetailDialog(row.id)"></util-button>
         </util-table-column>
     </util-table>
 </util-card>

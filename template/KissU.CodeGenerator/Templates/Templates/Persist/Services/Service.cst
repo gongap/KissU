@@ -42,21 +42,18 @@ using <%= string.Format("{0}.Service.Abstractions.{1}",Namespace,Entity.TableSch
 using <%= Namespace %>.Data.Pos.<%= Entity.TableSchema %>;
 using <%= Namespace %>.Data.Stores.Abstractions.<%= Entity.TableSchema %>;
 
-namespace <%= string.Format("{0}.Service.Implements.{1}",Namespace,Entity.TableSchema) %> 
-{
+namespace <%= string.Format("{0}.Service.Implements.{1}",Namespace,Entity.TableSchema) %> {
     /// <summary>
     /// <%= Description %>服务
     /// </summary>
-    public class <%= SafeClassName %>Service : CrudServiceBase<<%= SafeClassName %>Po, <%= SafeClassName %>Dto, <%= SafeClassName %>Query<%= Entity.GetKeyTypeNoContainsGuid() %>>, I<%= SafeClassName %>Service 
-	{
+    public class <%= SafeClassName %>Service : CrudServiceBase<<%= SafeClassName %>Po, <%= SafeClassName %>Dto, <%= SafeClassName %>Query<%= Entity.GetKeyTypeNoContainsGuid() %>>, I<%= SafeClassName %>Service {
         /// <summary>
         /// 初始化<%= Description %>服务
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
         /// <param name="<%= SafeClassName.ToCamelCase() %>Store"><%= Description %>存储器</param>
         public <%= SafeClassName %>Service( I<%= UnitOfWork %> unitOfWork, I<%= SafeClassName %>PoStore <%= SafeClassName.ToCamelCase() %>Store )
-            : base( unitOfWork, <%= SafeClassName.ToCamelCase() %>Store ) 
-		{
+            : base( unitOfWork, <%= SafeClassName.ToCamelCase() %>Store ) {
             <%= SafeClassName %>Store = <%= SafeClassName.ToCamelCase() %>Store;
         }
         
@@ -69,8 +66,7 @@ namespace <%= string.Format("{0}.Service.Implements.{1}",Namespace,Entity.TableS
         /// 创建查询对象
         /// </summary>
         /// <param name="param">查询参数</param>
-        protected override IQueryBase<<%= SafeClassName %>Po> CreateQuery( <%= SafeClassName %>Query param ) 
-		{
+        protected override IQueryBase<<%= SafeClassName %>Po> CreateQuery( <%= SafeClassName %>Query param ) {
             return new Query<<%= SafeClassName %>Po<%= Entity.GetKeyTypeNoContainsGuid() %>>( param );
         }
     }

@@ -1,7 +1,7 @@
 ﻿<%@ Template Language="C#" TargetLanguage="C#" Debug="True" Encoding="UTF-8" %>
 
-<%@ Assembly Src="..\..\..\..\Common\Model.cs" %>
-<%@ Assembly Src="..\..\..\..\Common\Extensions.cs" %>
+<%@ Assembly Src="..\..\..\Common\Model.cs" %>
+<%@ Assembly Src="..\..\..\Common\Extensions.cs" %>
 
 <%@ Import Namespace="System.Collections.Generic" %>
 <%@ Import Namespace="System.Linq" %>
@@ -19,23 +19,29 @@
 <% string CamelClassName = SafeClassName.ToCamelCase(); %>
 import { Component, Injector } from '@angular/core';
 import { env } from '../../env';
-import { TreeTableQueryComponentBase } from '../../../util';
-import { <%=SafeClassName%>Query } from './model/<%=CamelClassName%>-query';
+import { EditDialogComponentBase } from '../../../util';
 import { <%=SafeClassName%>ViewModel } from './model/<%=CamelClassName%>-view-model';
 
 /**
- * <%=Description%>列表页
+ * <%=Description%>详情页
  */
 @Component({
-    selector: '<%=CamelClassName%>-list',
-    templateUrl: !env.dev() ? './html/index.component.html' : '/view/<%=Namespace.ToCamelCase()%>/<%=CamelClassName%>'
+    selector: '<%=CamelClassName%>-detail',
+    templateUrl: !env.dev() ? './html/detail.component.html' : '/view/<%=Namespace.ToCamelCase()%>/<%=CamelClassName%>/detail'
 })
-export class <%=SafeClassName%>ListComponent extends TreeTableQueryComponentBase<<%=SafeClassName%>ViewModel, <%=SafeClassName%>Query>  {
+export class <%=SafeClassName%>DetailComponent extends EditDialogComponentBase<<%=SafeClassName%>ViewModel> {
     /**
-     * 初始化<%=Description%>列表页
+     * 初始化<%=Description%>详情页
      * @param injector 注入器
      */
     constructor(injector: Injector) {
         super(injector);
+    }
+
+    /**
+     * 获取基地址
+     */
+    protected getBaseUrl() {
+        return "<%=CamelClassName%>";
     }
 }

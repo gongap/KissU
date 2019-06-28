@@ -15,24 +15,22 @@
 <% string SafeClassName = Entity.ClassName.ToSafeName(); %>
 <%-- 描述 --%>
 <% string Description = Entity.Description; %>
-using System;
-using Util.Domains;
-using Util.Domains.Auditing;
-using Util.Datas.Persistence;
-
-namespace <%= Namespace %>.Data.Pos.<%= Entity.TableSchema %>{
-    /// <summary>
-    /// <%= Description %>持久化对象
-    /// </summary>
-    public class <%= SafeClassName %>Po : TreePersistentObjectBase<%=Entity.GetInterfaces()%> {
+<%-- 驼峰形式类名 --%>
+<% string CamelClassName = SafeClassName.ToCamelCase(); %>
+@page
+@model <%=SafeClassName%>Dto
+@*标题*@
+<page-header title="<%=Description%>详情"></page-header>
+@*表单*@
+<util-card show-border="false" actions="[actionBack]">
+    <util-description title="详细信息" column="3" show-border="true" >
         <% foreach(Property p in Entity.Properties) { %>
         <% if( p.IsPrimaryKey.SafeValue() ) continue; %>
-        <% if( Entity.IgnoreTreeEntityProperty(p) ) continue;%>
-        <% if( p.ColumnName == "Version" && p.DataType == DbType.Binary ) continue;%>
-        /// <summary>
-        /// <%= p.Description %>
-        /// </summary>  
-        public <%= p.TypeName %> <%= p.PropertyName.ToSafeName() %> { get; set; }
-        <% }%>     
-    }
-}
+        <% if( Entity.IsDetailHidden(p) ) continue; %>
+        <util-description-item for="<%= p.PropertyName.ToSafeName() %>"></util-description-item>
+        <% } %>
+    </util-description>
+    <util-template id="actionBack">
+        <util-button text="返回" on-click="back()"></util-button>
+    </util-template>
+</util-card>

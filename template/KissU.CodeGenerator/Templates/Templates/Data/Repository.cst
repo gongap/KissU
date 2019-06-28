@@ -1,5 +1,4 @@
 ﻿<%@ Template Language="C#" TargetLanguage="C#" Debug="True" Encoding="UTF-8" %>
-<%@ Register Name="TreeRepository" Template="TreeRepository.cst" MergeProperties="False" ExcludeProperties="" %>
 
 <%@ Assembly Src="..\..\Common\Model.cs" %>
 <%@ Assembly Src="..\..\Common\Extensions.cs" %>
@@ -18,35 +17,36 @@
 <% string SafeClassName = Entity.ClassName.ToSafeName(); %>
 <%-- 描述 --%>
 <% string Description = Entity.Description; %>
-<%-- 如果是树型实体，则调用子模板 --%>
-<%
-if( Entity.IsTreeEntity() ){
-    CodeTemplate template = new TreeRepository();
-    template.SetProperty("Namespace",Namespace);
-    template.SetProperty("Entity",Entity);
-    template.SetProperty("UnitOfWork",UnitOfWork);
-    template.SetProperty("IUnitOfWorkNamespace",IUnitOfWorkNamespace);
-    template.Render(this.Response);
-    return;
-}
-%>
 using <%= Entity.GetNamespace(Namespace,"Domain","Models") %>;
 using <%= Entity.GetNamespace(Namespace,"Domain","Repositories") %>;
 using Util.Datas.Ef.Core;
 
-namespace <%= Namespace %>.Data.Repositories.<%= Entity.TableSchema %> 
-{
+<%
+if( Entity.IsTreeEntity() ){ %>
+namespace <%= Namespace %>.Data.Repositories.<%= Entity.TableSchema %> {
     /// <summary>
     /// <%= Description %>仓储
     /// </summary>
-    public class <%= SafeClassName %>Repository : RepositoryBase<<%= SafeClassName %><%= Entity.GetKeyTypeNoContainsGuid() %>>, I<%= SafeClassName %>Repository 
-	{
+    public class <%= SafeClassName %>Repository : TreeRepositoryBase<<%= SafeClassName %><%= Entity.GetKeyTypeNoContainsGuid() %>>, I<%= SafeClassName %>Repository {
         /// <summary>
         /// 初始化<%= Description %>仓储
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
-        public <%= SafeClassName %>Repository( I<%= UnitOfWork %> unitOfWork ) : base( unitOfWork ) 
-		{
+        public <%= SafeClassName %>Repository( I<%= UnitOfWork %> unitOfWork ) : base( unitOfWork ) {
+        }
+    }
+}
+<% return;}%>
+namespace <%= Namespace %>.Data.Repositories.<%= Entity.TableSchema %> {
+    /// <summary>
+    /// <%= Description %>仓储
+    /// </summary>
+    public class <%= SafeClassName %>Repository : RepositoryBase<<%= SafeClassName %><%= Entity.GetKeyTypeNoContainsGuid() %>>, I<%= SafeClassName %>Repository {
+        /// <summary>
+        /// 初始化<%= Description %>仓储
+        /// </summary>
+        /// <param name="unitOfWork">工作单元</param>
+        public <%= SafeClassName %>Repository( I<%= UnitOfWork %> unitOfWork ) : base( unitOfWork ) {
         }
     }
 }
