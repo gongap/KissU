@@ -72,11 +72,6 @@ namespace KissU.Web.Apis.Home {
                         Text = "角色管理",
                         Icon = "anticon anticon-team",
                         Link = "/system/role"
-                    },
-                    new MenuInfo {
-                        Text = "菜单管理",
-                        Icon = "anticon anticon-menu",
-                        Link = "/system/menu"
                     }
                 }
             };

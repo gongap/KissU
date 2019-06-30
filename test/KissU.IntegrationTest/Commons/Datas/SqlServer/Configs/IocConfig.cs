@@ -49,10 +49,10 @@ namespace KissU.IntegrationTest.Commons.Datas.SqlServer.Configs
         /// </summary>
         private void LoadRepositories( ContainerBuilder builder ) {
             builder.AddScoped<IApplicationRepository, ApplicationRepository>();
-            builder.AddScoped<IMenuRepository, MenuRepository>();
+            builder.AddScoped<IApiRepository, ApiRepository>();
             builder.AddScoped<IRoleRepository, RoleRepository>();
             builder.AddScoped<IApplicationService, ApplicationService>();
-            builder.AddScoped<IMenuService, MenuService>();
+            builder.AddScoped<IApiService, ApiService>();
             builder.AddScoped<IRoleService, RoleService>();
         }
     }

@@ -58,7 +58,6 @@ namespace KissU.IntegrationTest.Tests.Dtos.Systems
             Assert.Equal( ApplicationTest.CreatorId,dto.CreatorId );
             Assert.Equal( ApplicationTest.LastModificationTime,dto.LastModificationTime );
             Assert.Equal( ApplicationTest.LastModifierId,dto.LastModifierId );
-            Assert.Equal( ApplicationTest.IsDeleted,dto.IsDeleted );
             Assert.Equal( ApplicationTest.Version,dto.Version );
         }
         

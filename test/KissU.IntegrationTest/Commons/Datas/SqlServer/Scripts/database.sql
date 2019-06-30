@@ -1,9 +1,83 @@
-﻿USE [KissU]
+﻿﻿/*========================================================== 1. 创建数据库 ===========================================================*/
+USE [master]
 GO
-/****** Object:  Schema [Systems]    Script Date: 2019/6/23 15:25:08 ******/
-CREATE SCHEMA [Systems]
+
+--删除数据库
+EXEC msdb.dbo.sp_delete_database_backuphistory @database_name = N'KissU'
 GO
-/****** Object:  Table [Systems].[Application]    Script Date: 2019/6/23 15:25:08 ******/
+IF  EXISTS (SELECT name FROM sys.databases WHERE name = N'KissU')
+Begin
+DROP DATABASE [KissU]
+End
+GO
+
+--创建数据库
+CREATE DATABASE [KissU]
+GO
+
+/*========================================================== 2. 创建架构 ===========================================================*/
+USE [KissU]
+GO
+
+/* 1. 系统模块[Systems] */
+IF  EXISTS (SELECT * FROM sys.schemas WHERE name = N'KissU')
+DROP SCHEMA [Systems]
+GO
+CREATE SCHEMA [Systems] AUTHORIZATION [dbo]
+GO
+
+/*========================================================== 3. 创建表及索引 ===========================================================*/
+/****** Object:  Table [Systems].[Api]    Script Date: 2019/6/30 16:43:20 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Systems].[Api](
+	[ApiId] [uniqueidentifier] NOT NULL,
+	[Name] [nvarchar](200) NOT NULL,
+	[DisplayName] [nvarchar](200) NULL,
+	[Description] [nvarchar](1000) NULL,
+	[ClaimTypes] [nvarchar](2000) NULL,
+	[Enabled] [bit] NOT NULL,
+	[CreationTime] [datetime] NULL,
+	[CreatorId] [uniqueidentifier] NULL,
+	[LastModificationTime] [datetime] NULL,
+	[LastModifierId] [uniqueidentifier] NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[Version] [timestamp] NULL,
+ CONSTRAINT [PK_Api] PRIMARY KEY CLUSTERED 
+(
+	[ApiId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Systems].[ApiScope]    Script Date: 2019/6/30 16:43:20 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Systems].[ApiScope](
+	[ApiScopeId] [uniqueidentifier] NOT NULL,
+	[ApiId] [uniqueidentifier] NOT NULL,
+	[Name] [nvarchar](200) NOT NULL,
+	[DisplayName] [nvarchar](200) NULL,
+	[Description] [nvarchar](1000) NULL,
+	[ClaimTypes] [nvarchar](2000) NULL,
+	[Required] [bit] NOT NULL,
+	[Emphasize] [bit] NOT NULL,
+	[ShowInDiscoveryDocument] [bit] NOT NULL,
+	[CreationTime] [datetime] NULL,
+	[CreatorId] [uniqueidentifier] NULL,
+	[LastModificationTime] [datetime] NULL,
+	[LastModifierId] [uniqueidentifier] NULL,
+	[IsDeleted] [bit] NOT NULL,
+ CONSTRAINT [PK_ApiScope] PRIMARY KEY CLUSTERED 
+(
+	[ApiScopeId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Systems].[Application]    Script Date: 2019/6/30 16:43:20 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -27,53 +101,7 @@ CREATE TABLE [Systems].[Application](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [Systems].[Menu]    Script Date: 2019/6/23 15:25:08 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [Systems].[Menu](
-	[MenuId] [uniqueidentifier] NOT NULL,
-	[Code] [nvarchar](256) NOT NULL,
-	[Name] [nvarchar](256) NOT NULL,
-	[PinYin] [nvarchar](200) NOT NULL,
-	[Enabled] [bit] NOT NULL,
-	[SortId] [int] NULL,
-	[ParentId] [uniqueidentifier] NULL,
-	[Path] [nvarchar](800) NOT NULL,
-	[Level] [int] NOT NULL,
-	[I18n] [nvarchar](50) NULL,
-	[Group] [bit] NULL,
-	[Link] [nvarchar](256) NULL,
-	[LinkExact] [bit] NULL,
-	[ExternalLink] [nvarchar](256) NULL,
-	[Target] [nvarchar](20) NULL,
-	[Icon] [nvarchar](256) NULL,
-	[Badge] [int] NULL,
-	[BadgeDot] [bit] NULL,
-	[BadgeStatus] [nvarchar](20) NULL,
-	[Disabled] [bit] NULL,
-	[Hide] [bit] NULL,
-	[HideInBreadcrumb] [bit] NULL,
-	[ACL] [nvarchar](50) NULL,
-	[Shortcut] [bit] NULL,
-	[ShortcutRoot] [bit] NULL,
-	[Reuse] [bit] NULL,
-	[Open] [bit] NULL,
-	[Note] [nvarchar](500) NULL,
-	[CreationTime] [datetime] NULL,
-	[CreatorId] [uniqueidentifier] NULL,
-	[LastModificationTime] [datetime] NULL,
-	[LastModifierId] [uniqueidentifier] NULL,
-	[IsDeleted] [bit] NOT NULL,
-	[Version] [timestamp] NULL,
- CONSTRAINT [PK_Menu] PRIMARY KEY CLUSTERED 
-(
-	[MenuId] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [Systems].[Role]    Script Date: 2019/6/23 15:25:08 ******/
+/****** Object:  Table [Systems].[Role]    Script Date: 2019/6/30 16:43:20 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -105,6 +133,40 @@ CREATE TABLE [Systems].[Role](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Api', @level2type=N'COLUMN',@level2name=N'ApiId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'名称' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Api', @level2type=N'COLUMN',@level2name=N'Name'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'显示名' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Api', @level2type=N'COLUMN',@level2name=N'DisplayName'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'描述' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Api', @level2type=N'COLUMN',@level2name=N'Description'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'声明类型' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Api', @level2type=N'COLUMN',@level2name=N'ClaimTypes'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'是否启用' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Api', @level2type=N'COLUMN',@level2name=N'Enabled'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Api', @level2type=N'COLUMN',@level2name=N'Version'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Api资源' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Api'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Api资源标识' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'ApiScope', @level2type=N'COLUMN',@level2name=N'ApiId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'名称' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'ApiScope', @level2type=N'COLUMN',@level2name=N'Name'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'显示名' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'ApiScope', @level2type=N'COLUMN',@level2name=N'DisplayName'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'描述' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'ApiScope', @level2type=N'COLUMN',@level2name=N'Description'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'声明类型' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'ApiScope', @level2type=N'COLUMN',@level2name=N'ClaimTypes'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'是否必选' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'ApiScope', @level2type=N'COLUMN',@level2name=N'Required'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'是否强调' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'ApiScope', @level2type=N'COLUMN',@level2name=N'Emphasize'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'是否显示在发现文档中' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'ApiScope', @level2type=N'COLUMN',@level2name=N'ShowInDiscoveryDocument'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Api许可范围' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'ApiScope'
+GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'应用程序编号' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Application', @level2type=N'COLUMN',@level2name=N'ApplicationId'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'应用程序编码' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Application', @level2type=N'COLUMN',@level2name=N'Code'
@@ -130,60 +192,6 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'版本号' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Application', @level2type=N'COLUMN',@level2name=N'Version'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'应用程序' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Application'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'菜单编码' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Menu', @level2type=N'COLUMN',@level2name=N'Code'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'菜单名称' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Menu', @level2type=N'COLUMN',@level2name=N'Name'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'拼音' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Menu', @level2type=N'COLUMN',@level2name=N'PinYin'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'排序标识' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Menu', @level2type=N'COLUMN',@level2name=N'SortId'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'父节点标识' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Menu', @level2type=N'COLUMN',@level2name=N'ParentId'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'路径' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Menu', @level2type=N'COLUMN',@level2name=N'Path'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'层级' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Menu', @level2type=N'COLUMN',@level2name=N'Level'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'i18n主键' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Menu', @level2type=N'COLUMN',@level2name=N'I18n'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'是否显示分组名' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Menu', @level2type=N'COLUMN',@level2name=N'Group'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'路由' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Menu', @level2type=N'COLUMN',@level2name=N'Link'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'路由是否精准匹配' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Menu', @level2type=N'COLUMN',@level2name=N'LinkExact'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'外部链接' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Menu', @level2type=N'COLUMN',@level2name=N'ExternalLink'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'链接 target' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Menu', @level2type=N'COLUMN',@level2name=N'Target'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'图标' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Menu', @level2type=N'COLUMN',@level2name=N'Icon'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'徽标数，展示的数字' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Menu', @level2type=N'COLUMN',@level2name=N'Badge'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'徽标数，显示小红点' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Menu', @level2type=N'COLUMN',@level2name=N'BadgeDot'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'徽标 Badge 颜色' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Menu', @level2type=N'COLUMN',@level2name=N'BadgeStatus'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'是否禁用' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Menu', @level2type=N'COLUMN',@level2name=N'Disabled'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'是否隐藏菜单' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Menu', @level2type=N'COLUMN',@level2name=N'Hide'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'隐藏面包屑' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Menu', @level2type=N'COLUMN',@level2name=N'HideInBreadcrumb'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'ACL配置' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Menu', @level2type=N'COLUMN',@level2name=N'ACL'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'是否快捷菜单项' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Menu', @level2type=N'COLUMN',@level2name=N'Shortcut'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'快捷菜单根节点' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Menu', @level2type=N'COLUMN',@level2name=N'ShortcutRoot'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'是否允许复用' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Menu', @level2type=N'COLUMN',@level2name=N'Reuse'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'是否展开' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Menu', @level2type=N'COLUMN',@level2name=N'Open'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'备注' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Menu', @level2type=N'COLUMN',@level2name=N'Note'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'菜单' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Menu'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'角色编号' , @level0type=N'SCHEMA',@level0name=N'Systems', @level1type=N'TABLE',@level1name=N'Role', @level2type=N'COLUMN',@level2name=N'RoleId'
 GO

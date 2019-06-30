@@ -66,7 +66,6 @@ namespace KissU.IntegrationTest.Tests.Dtos.Systems
             Assert.Equal( RoleTest.CreatorId,dto.CreatorId );
             Assert.Equal( RoleTest.LastModificationTime,dto.LastModificationTime );
             Assert.Equal( RoleTest.LastModifierId,dto.LastModifierId );
-            Assert.Equal( RoleTest.IsDeleted,dto.IsDeleted );
             Assert.Equal( RoleTest.Version,dto.Version );
         }
         
