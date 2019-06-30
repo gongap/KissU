@@ -21,17 +21,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="%2a%2a\**" />
-    <Compile Remove="Typings\util\directives\**" />
-    <Content Remove="%2a%2a\**" />
-    <Content Remove="Typings\util\directives\**" />
-    <EmbeddedResource Remove="%2a%2a\**" />
-    <EmbeddedResource Remove="Typings\util\directives\**" />
-    <None Remove="%2a%2a\**" />
-    <None Remove="Typings\util\directives\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="Pages\NotFound.cshtml" />
     <None Include="Pages\Index.cshtml" />
     <None Include="Pages\_ViewImports.cshtml" />
@@ -49,15 +38,6 @@
   <ItemGroup>
     <Content Update="nlog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Update="Pages\Systems\Application\Detail.cshtml">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Update="Pages\Systems\Application\Edit.cshtml">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Update="Pages\Systems\Application\Index.cshtml">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
   </ItemGroup>
 

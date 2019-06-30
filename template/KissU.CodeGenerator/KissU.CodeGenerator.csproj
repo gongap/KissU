@@ -97,6 +97,7 @@
     <None Include="Templates\Templates\Web\Pages\DialogDetailView.cst" />
     <None Include="Templates\Templates\Web\Pages\DialogEditView.cst" />
     <None Include="Templates\Templates\Web\Pages\DialogIndexView.cst" />
+    <None Include="Templates\Templates\Web\Pages\DialogTreeIndexView.cst" />
     <None Include="Templates\Templates\Web\Typings\DialogDetailComponent.cst" />
     <None Include="Templates\Templates\Web\Typings\DialogEditComponent.cst" />
     <None Include="Templates\Templates\Web\Typings\DialogIndexComponent.cst" />
