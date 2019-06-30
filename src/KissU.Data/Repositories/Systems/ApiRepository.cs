@@ -34,31 +34,47 @@ namespace KissU.Data.Repositories.Systems
         {
             if (id.SafeString().IsEmpty())
                 return null;
-            return await Set.Include(x => x.ApiScopes).Where(x => x.Id.ToString() == id.SafeString()).SingleOrDefaultAsync<Api>(cancellationToken);
+            return await Find(t => t.Id.ToString() == id.SafeString()).Include(x => x.ApiScopes).SingleOrDefaultAsync(cancellationToken);
+        }
+
+        /// <summary>
+        /// 查找实体列表
+        /// </summary>
+        /// <param name="ids">标识列表</param>
+        /// <param name="cancellationToken">取消令牌</param>
+        public override async Task<List<Api>> FindByIdsAsync(IEnumerable<Guid> ids, CancellationToken cancellationToken = default)
+        {
+            if (ids == null)
+                return null;
+            return await Find(t => ids.Contains(t.Id)).Include(x => x.ApiScopes).ToListAsync(cancellationToken);
         }
 
         /// <summary>
         /// 修改实体
         /// </summary>
         /// <param name="entity">实体</param>
-        public override Task UpdateAsync(Api entity)
+        public override async Task UpdateAsync(Api entity)
         {
-            Update(entity);
-            SaveDetail(entity);
-            return Task.CompletedTask;
+            await base.UpdateAsync(entity);
+            var apiScopes = await UnitOfWork.Set<ApiScope>().Where(x => x.ApiId == entity.Id).ToListAsync();
+            var listCompare = entity.ApiScopes?.Compare(apiScopes);
+            listCompare?.CreateList.ForEach(x => AddDetail(x));
+            listCompare?.UpdateList.ForEach(x => UpdateDetail(x));
+            listCompare?.DeleteList.ForEach(x => DeleteDetail(x));
         }
 
         /// <summary>
-        /// 移除实体
+        /// 移除实体集合
         /// </summary>
-        /// <param name="id">实体标识</param>
-        public override void Remove(object id)
+        /// <param name="entities">实体集合</param>
+        /// <param name="cancellationToken">取消令牌</param>
+        public override async Task RemoveAsync(IEnumerable<Api> entities, CancellationToken cancellationToken = default)
         {
-            var entity = Find(id);
-            if (entity == null)
-                return;
-            entity.ApiScopes?.ToList().ForEach(x => DeleteDetail(x));
-            base.Remove(id);
+            await base.RemoveAsync(entities, cancellationToken);
+            foreach (var entity in entities)
+            {
+                entity.ApiScopes?.ToList().ForEach(x => DeleteDetail(x));
+            }
         }
 
         /// <summary>
@@ -66,38 +82,21 @@ namespace KissU.Data.Repositories.Systems
         /// </summary>
         /// <param name="entity">实体</param>
         /// <param name="cancellationToken">取消令牌</param>
-        public override Task AddAsync(Api entity, CancellationToken cancellationToken = default)
+        public override async Task AddAsync(Api entity, CancellationToken cancellationToken = default)
         {
-            base.Add(entity);
+            await base.AddAsync(entity);
             entity.ApiScopes?.ToList().ForEach(x => AddDetail(x));
-            return Task.CompletedTask;
-        }
-
-        /// <summary>
-        /// 保存实体
-        /// </summary>
-        /// <param name="entity">实体</param>
-        public Task SaveDetail(Api entity)
-        {
-            var old = Find(entity.Id);
-            if (old == null)
-                return null;
-            var listCompare = entity.ApiScopes?.Compare(old.ApiScopes);
-            listCompare?.CreateList.ForEach(x => AddDetail(x));
-            listCompare?.UpdateList.ForEach(x=> UpdateDetail(x));
-            listCompare?.DeleteList.ForEach(x => DeleteDetail(x));
-            return Task.CompletedTask;
         }
 
         /// <summary>
         /// 添加实体
         /// </summary>
         /// <param name="entity">实体</param>
-        public Task AddDetail(ApiScope entity)
+        private Task AddDetail(ApiScope entity)
         {
             if (entity == null)
                 return null;
-            UnitOfWork.Set<ApiScope>().Add(entity);
+            UnitOfWork.Set<ApiScope>().AddAsync(entity);
             return Task.CompletedTask;
         }
 
@@ -105,11 +104,12 @@ namespace KissU.Data.Repositories.Systems
         /// 删除实体
         /// </summary>
         /// <param name="entity">实体</param>
-        public Task DeleteDetail(ApiScope entity)
+        private Task DeleteDetail(ApiScope entity)
         {
             if (entity == null)
                 return null;
-            UnitOfWork.Set<ApiScope>().Remove(entity);
+            entity.IsDeleted = true;
+            //UnitOfWork.Set<ApiScope>().Remove(entity);
             return Task.CompletedTask;
         }
 
@@ -117,7 +117,7 @@ namespace KissU.Data.Repositories.Systems
         /// 修改实体
         /// </summary>
         /// <param name="entity">实体</param>
-        public Task UpdateDetail(ApiScope entity)
+        private Task UpdateDetail(ApiScope entity)
         {
             if (entity == null)
                 return null;
