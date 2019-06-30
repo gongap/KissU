@@ -1,6 +1,6 @@
 ﻿import { Component, Injector } from '@angular/core';
 import { env } from '../../env';
-import { DialogEditComponentBase } from '../../../util';
+import { DialogTreeEditComponentBase } from '../../../util';
 import { RoleViewModel } from './model/role-view-model';
 
 /**
@@ -10,7 +10,7 @@ import { RoleViewModel } from './model/role-view-model';
     selector: 'role-edit',
     templateUrl: !env.dev() ? './html/edit.component.html' : '/view/systems/role/edit'
 })
-export class RoleEditComponent extends DialogEditComponentBase<RoleViewModel> {
+export class RoleEditComponent extends DialogTreeEditComponentBase<RoleViewModel> {
     /**
      * 初始化角色编辑页
      * @param injector 注入器

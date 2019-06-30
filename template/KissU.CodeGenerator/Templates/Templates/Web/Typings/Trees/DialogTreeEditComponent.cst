@@ -19,39 +19,29 @@
 <% string CamelClassName = SafeClassName.ToCamelCase(); %>
 import { Component, Injector } from '@angular/core';
 import { env } from '../../env';
-import { TreeTableQueryComponentBase } from '../../../util';
-import { <%=SafeClassName%>Query } from './model/<%=CamelClassName%>-query';
+import { DialogTreeEditComponentBase } from '../../../util';
 import { <%=SafeClassName%>ViewModel } from './model/<%=CamelClassName%>-view-model';
-import { <%=SafeClassName%>EditComponent } from './<%=CamelClassName%>-edit.component';
-import { <%=SafeClassName%>DetailComponent } from './<%=CamelClassName%>-detail.component';
 
 /**
- * <%=Description%>列表页
+ * <%=Description%>编辑页
  */
 @Component({
-    selector: '<%=CamelClassName%>-list',
-    templateUrl: !env.dev() ? './html/index.component.html' : '/view/<%=Namespace.ToCamelCase()%>/<%=CamelClassName%>'
+    selector: '<%=CamelClassName%>-edit',
+    templateUrl: !env.dev() ? './html/edit.component.html' : '/view/<%=Namespace.ToCamelCase()%>/<%=CamelClassName%>/edit'
 })
-export class <%=SafeClassName%>ListComponent extends TreeTableQueryComponentBase<<%=SafeClassName%>ViewModel, <%=SafeClassName%>Query>  {
+export class <%=SafeClassName%>EditComponent extends DialogTreeEditComponentBase<<%=SafeClassName%>ViewModel> {
     /**
-     * 初始化<%=Description%>列表页
+     * 初始化<%=Description%>编辑页
      * @param injector 注入器
      */
     constructor(injector: Injector) {
         super(injector);
     }
-	    
-    /**
-     * 获取创建弹出框组件
-     */
-    getCreateDialogComponent() {
-        return <%=SafeClassName%>EditComponent;
-    }
 
     /**
-     * 获取详情弹出框组件
+     * 获取基地址
      */
-    getDetailDialogComponent() {
-        return <%=SafeClassName%>DetailComponent;
+    protected getBaseUrl() {
+        return "<%=CamelClassName%>";
     }
 }

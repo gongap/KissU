@@ -26,6 +26,7 @@
         <% foreach(Property p in Entity.Properties) { %>
         <% if( p.IsPrimaryKey.SafeValue() ) continue; %>
         <% if( Entity.IsHidden(p) ) continue; %>
+		<% if( Entity.IgnoreTreeEntityProperty(p) ) continue;%>
         <% if( p.DataType == DbType.Boolean ){%>
         <util-switch for="<%= p.PropertyName.ToSafeName() %>"></util-switch>
         <% }else{ %>

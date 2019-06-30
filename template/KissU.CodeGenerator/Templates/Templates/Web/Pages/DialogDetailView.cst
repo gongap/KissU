@@ -26,6 +26,7 @@
     <util-description column="3" show-border="true" >
         <% foreach(Property p in Entity.Properties) { %>
         <% if( p.IsPrimaryKey.SafeValue() ) continue; %>
+		<% if( Entity.IgnoreTreeEntityProperty(p) ) continue;%>
         <% if( Entity.IsDetailHidden(p) ) continue; %>
         <util-description-item for="<%= p.PropertyName.ToSafeName() %>"></util-description-item>
         <% } %>

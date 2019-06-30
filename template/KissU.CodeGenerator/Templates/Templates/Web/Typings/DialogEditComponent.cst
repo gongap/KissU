@@ -1,4 +1,5 @@
 ﻿<%@ Template Language="C#" TargetLanguage="C#" Debug="True" Encoding="UTF-8" %>
+<%@ Register Name="DialogTreeEditComponent" Template="Trees/DialogTreeEditComponent.cst" MergeProperties="False" ExcludeProperties="" %>
 
 <%@ Assembly Src="..\..\..\Common\Model.cs" %>
 <%@ Assembly Src="..\..\..\Common\Extensions.cs" %>
@@ -17,6 +18,16 @@
 <% string Description = Entity.Description; %>
 <%-- 驼峰形式类名 --%>
 <% string CamelClassName = SafeClassName.ToCamelCase(); %>
+<%-- 如果是树型实体，则调用子模板 --%>
+<%
+if( Entity.IsTreeEntity() ){
+    CodeTemplate template =new DialogTreeEditComponent();
+    template.SetProperty("Namespace",Namespace);
+    template.SetProperty("Entity",Entity);
+    template.Render(this.Response);
+    return;
+}
+%>
 import { Component, Injector } from '@angular/core';
 import { env } from '../../env';
 import { DialogEditComponentBase } from '../../../util';

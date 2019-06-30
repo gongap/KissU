@@ -107,6 +107,7 @@
     <None Include="Templates\Templates\Web\Typings\Module.cst" />
     <None Include="Templates\Templates\Web\Typings\Query.cst" />
     <None Include="Templates\Templates\Web\Typings\Routing.cst" />
+    <None Include="Templates\Templates\Web\Typings\Trees\DialogTreeEditComponent.cst" />
     <None Include="Templates\Templates\Web\Typings\Trees\DialogTreeIndexComponent.cst" />
     <None Include="Templates\Templates\Web\Typings\Trees\TreeIndexComponent.cst" />
     <None Include="Templates\Templates\Web\Typings\ViewModel.cst" />
