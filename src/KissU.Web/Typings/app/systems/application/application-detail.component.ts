@@ -1,6 +1,6 @@
 ﻿import { Component, Injector } from '@angular/core';
 import { env } from '../../env';
-import { EditDialogComponentBase } from '../../../util';
+import { DialogEditComponentBase } from '../../../util';
 import { ApplicationViewModel } from './model/application-view-model';
 
 /**
@@ -10,7 +10,7 @@ import { ApplicationViewModel } from './model/application-view-model';
     selector: 'application-detail',
     templateUrl: !env.dev() ? './html/detail.component.html' : '/view/systems/application/detail'
 })
-export class ApplicationDetailComponent extends EditDialogComponentBase<ApplicationViewModel> {
+export class ApplicationDetailComponent extends DialogEditComponentBase<ApplicationViewModel> {
     /**
      * 初始化应用程序详情页
      * @param injector 注入器
@@ -24,5 +24,12 @@ export class ApplicationDetailComponent extends EditDialogComponentBase<Applicat
      */
     protected getBaseUrl() {
         return "application";
+    }
+
+	/**
+     * 是否远程加载
+     */
+    isRequestLoad() {
+        return false;
     }
 }

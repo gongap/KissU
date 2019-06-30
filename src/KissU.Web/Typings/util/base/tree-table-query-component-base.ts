@@ -1,35 +1,31 @@
-﻿//================ 树形表格查询基类 ==================
-
-import { Injector, ViewChild, forwardRef, AfterViewInit } from '@angular/core';
-import { util, ViewModel, TreeQueryParameter, TreeTable } from '../index';
+﻿//=============== 树形表格查询基类================
+//Copyright 2019 何镇汐
+//Licensed under the MIT license
+//================================================
+import { Injector, ViewChild, Input, forwardRef, OnInit } from '@angular/core';
+import { MessageConfig } from '../config/message-config';
+import { util, TreeViewModel, TreeQueryParameter, TreeTable, PagerList } from '../index';
+import { QueryComponentBase } from "./query-component-base";
 
 /**
  * 树形表格查询基类
  */
-export abstract class TreeTableQueryComponentBase<TViewModel extends ViewModel, TQuery extends TreeQueryParameter> implements AfterViewInit {
-    /**
-     * 操作库
-     */
-    protected util = util;
+export abstract class TreeTableQueryComponentBase<TViewModel extends TreeViewModel, TQuery extends TreeQueryParameter> extends QueryComponentBase implements OnInit {
     /**
      * 查询参数
      */
     queryParam: TQuery;
     /**
-     * 是否展开
+     * 树形表格组件
      */
-    expand;
-    /**
-     * 表格组件
-     */
-    @ViewChild(forwardRef(() => TreeTable)) protected table: TreeTable<TViewModel>;
+    @ViewChild( forwardRef( () => TreeTable ) ) protected table: TreeTable<TViewModel>;
 
     /**
-     * 初始化组件
+     * 初始化树形表格查询基类
      * @param injector 注入器
      */
     constructor( injector: Injector ) {
-        util.ioc.componentInjector = injector;
+        super( injector );
         this.queryParam = this.createQuery();
     }
 
@@ -41,54 +37,45 @@ export abstract class TreeTableQueryComponentBase<TViewModel extends ViewModel, 
     }
 
     /**
-     * 视图加载完成
+     * 初始化
      */
-    ngAfterViewInit() {
-        if ( !this.table )
-            return;
-        this.table.loadAfter = result => {
-            this.loadAfter( result );
-        }
+    ngOnInit() {
+        this.queryParam = this.createQuery();
+        this.loadCheckedIds();
     }
 
     /**
-     * 数据加载完成操作
-     * @param result
+     * 加载勾选的复选框标识
      */
-    loadAfter( result ) {
+    protected loadCheckedIds() {
+        let selection = this.getSelection();
+        this.checkedIds = util.helper.getIds( selection );
+    }
+
+    /**
+     * 获取选中项标识列表
+     */
+    protected getSelection() {
+        return this.data;
     }
 
     /**
      * 查询
      * @param button 按钮
+     * @param handler 查询成功回调函数
      */
-    query( button ) {
-        this.table.query( button );
-    }
-
-    /**
-     * 延迟搜索
-     * @param button 按钮
-     */
-    search( button ) {
-        this.table.search( {
+    query( button?, handler?: ( data: PagerList<TViewModel> ) => void ) {
+        handler = handler || this.queryAfter;
+        this.table.query( {
             button: button,
-            delay: this.getDelay()
+            handler: handler
         } );
     }
 
     /**
-     * 获取查询延迟间隔，单位：毫秒，默认500
+     * 查询完成后操作
      */
-    protected getDelay() {
-        return 500;
-    }
-
-    /**
-     * 清空复选框
-     */
-    clearCheckboxs() {
-        this.table.clearChecked();
+    protected queryAfter = ( data: PagerList<TViewModel> ) => {
     }
 
     /**
@@ -96,7 +83,7 @@ export abstract class TreeTableQueryComponentBase<TViewModel extends ViewModel, 
      * @param button 按钮
      * @param id 标识
      */
-    delete( button?, id? ) {
+    delete( button?, id?) {
         this.table.delete( {
             button: button,
             ids: id
@@ -106,46 +93,166 @@ export abstract class TreeTableQueryComponentBase<TViewModel extends ViewModel, 
     /**
      * 刷新
      * @param button 按钮
+     * @param handler 刷新后回调函数
      */
-    refresh( button? ) {
+    refresh( button?, handler?: ( data: PagerList<TViewModel> ) => void ) {
+        handler = handler || this.refreshAfter;
         this.queryParam = this.createQuery();
-        this.table.refresh( this.queryParam, button );
+        this.table.refresh( this.queryParam, button, handler );
+        
     }
 
     /**
-     * 获取勾选的实体列表
+     * 刷新完成后操作
      */
-    getChecked() {
+    protected refreshAfter = ( data: PagerList<TViewModel> ) => {
+        this.table.checkIds( this.checkedIds );
+    }
+
+    /**
+     * 选中行
+     * @param node 节点
+     * @param event 事件
+     */
+    selectRow( node, event?) {
+        //this.table.selectRow( node );
+        //event && event.stopPropagation();
+    }
+
+    /**
+     * 是否首行
+     * @param node 节点
+     */
+    isFirst( node ) {
+        //return this.table.isFirst( node );
+    }
+
+    /**
+     * 是否尾行
+     * @param node 节点
+     */
+    isLast( node ) {
+        //return this.table.isLast( node );
+    }
+
+    /**
+     * 上移
+     * @param node 节点
+     * @param button 按钮
+     * @param event 事件
+     */
+    moveUp( node, button?, event?) {
+        //this.table.moveUp( node, button );
+        this.selectRow( node, event );
+    }
+
+    /**
+     * 下移
+     * @param node 节点
+     * @param button 按钮
+     * @param event 事件
+     */
+    moveDown( node, button?, event?) {
+        //this.table.moveDown( node, button );
+        this.selectRow( node, event );
+    }
+
+    /**
+     * 启用
+     * @param node 节点
+     * @param button 按钮
+     * @param url 启用服务端Url
+     */
+    enable( node?, button?, url?: string ) {
+        this.enableNode( true, node, button, url );
+    }
+
+    /**
+     * 禁用
+     * @param node 节点
+     * @param button 按钮
+     * @param url 禁用服务端Url
+     */
+    disable( node?, button?, url?: string ) {
+        this.enableNode( false, node, button, url );
+    }
+
+    /**
+     * 启用禁用
+     */
+    private enableNode( enabled: boolean, node?, btn?, url?: string ) {
+        let list = this.getSelectedNodes( node );
+        if ( !list || list.length === 0 ) {
+            util.message.warn( MessageConfig.notSelected );
+            return;
+        }
+        url = url || `/api/${this.table.baseUrl}/${enabled ? 'enable' : 'disable'}`;
+        //this.util.form.submit( {
+        //    url: url,
+        //    data: this.table.getCheckedIds( list ),
+        //    httpMethod: HttpMethod.Post,
+        //    button: btn,
+        //    confirm: this.getEnableConfirmMessage( enabled ),
+        //    ok: ( result: any[] ) => {
+        //        if ( !result || result.length === 0 )
+        //            return;
+        //        result.forEach( value => {
+        //            if ( !value )
+        //                return;
+        //            let item = list.find( t => t.data.id === value.id );
+        //            if ( !item )
+        //                return;
+        //            item.data.enabled = value.enabled;
+        //            item.data.version = value.version;
+        //        } );
+        //    }
+        //} );
+    }
+
+    /**
+     * 获取选中列表
+     */
+    private getSelectedNodes( node ): any[] {
+        let list = new Array();
+        if ( node && node.data ) {
+            list.push( node );
+            return list;
+        }
         return this.table.getChecked();
     }
 
     /**
-     * 获取勾选的实体列表长度
+     * 获取启用确认消息
      */
-    getCheckedLength(): number {
-        return this.table.getCheckedLength();
+    private getEnableConfirmMessage( enabled: boolean ) {
+        return enabled ? MessageConfig.enableConfirm : MessageConfig.disableConfirm;
     }
 
     /**
-     * 获取勾选的实体标识列表
+     * 获取选中列表
+     */
+    getCheckedNodes() {
+        return this.table.getChecked();
+    }
+
+    /**
+     * 获取选中标识列表
      */
     getCheckedIds() {
         return this.table.getCheckedIds();
     }
 
     /**
-     * 选中实体
+     * 获取勾选的单个节点
      */
-    select() {
-        let selection = this.getChecked();
-        if ( !selection || selection.length === 0 ) {
-            this.util.dialog.close( new ViewModel() );
-            return;
-        }
-        if ( selection.length === 1 ) {
-            this.util.dialog.close( selection[0] );
-            return;
-        }
-        this.util.dialog.close( selection );
+    getCheckedNode() {
+        return this.table.getCheckedNode();
+    }
+
+    /**
+     * 获取创建弹出框数据
+     */
+    protected getCreateDialogData( data?): any {
+        return { parent: data };
     }
 }

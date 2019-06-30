@@ -1044,7 +1044,7 @@
             result.EntityContext = entityContext;
             result.Entity = entity;
             result.Namespace = GetSchema(entity).ToLower();
-            result.RenderToFile(GetPath(className,string.Format("Web\\Typings\\app\\{0}\\dialog\\", GetSchema(entity).ToCamelCase() ), "ts" ), true);
+            result.RenderToFile(GetPath(className,string.Format("Web\\Typings\\app\\dialog\\{0}\\", GetSchema(entity).ToCamelCase() ), "ts" ), true);
         }
     }
     
@@ -1076,7 +1076,7 @@
             result.EntityContext = entityContext;
             result.Entity = entity;
             result.Namespace = GetSchema(entity).ToLower();            
-            result.RenderToFile(GetPath(className,string.Format("Web\\Typings\\app\\{0}\\dialog\\", GetSchema(entity).ToCamelCase() ), "ts" ), true);
+            result.RenderToFile(GetPath(className,string.Format("Web\\Typings\\app\\dialog\\{0}\\", GetSchema(entity).ToCamelCase() ), "ts" ), true);
         }
     }
     

@@ -10,7 +10,7 @@ import { EditComponentBase } from "./edit-component-base";
 /**
  * Crud弹出层编辑组件基类
  */
-export abstract class EditDialogComponentBase<TViewModel extends ViewModel> extends EditComponentBase<TViewModel> implements OnInit {
+export abstract class DialogEditComponentBase<TViewModel extends ViewModel> extends EditComponentBase<TViewModel> implements OnInit {
     /**
      * 初始化组件
      * @param injector 注入器
@@ -32,12 +32,5 @@ export abstract class EditDialogComponentBase<TViewModel extends ViewModel> exte
             button: button,
             closeDialog: true
         } );
-    }
-
-    /**
-     * 关闭弹出框
-     */
-    close() {
-        this.util.dialog.close();
     }
 }

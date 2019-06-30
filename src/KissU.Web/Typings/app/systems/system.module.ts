@@ -14,6 +14,9 @@ import { ApplicationDetailComponent } from './application/application-detail.com
     ],
     imports: [
         FrameworkModule,SystemRoutingModule
+    ],
+    entryComponents: [
+        ApplicationEditComponent,ApplicationDetailComponent,
     ]
 })
 export class SystemModule {

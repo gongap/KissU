@@ -22,9 +22,13 @@
 
   <ItemGroup>
     <Compile Remove="%2a%2a\**" />
+    <Compile Remove="Typings\util\directives\**" />
     <Content Remove="%2a%2a\**" />
+    <Content Remove="Typings\util\directives\**" />
     <EmbeddedResource Remove="%2a%2a\**" />
+    <EmbeddedResource Remove="Typings\util\directives\**" />
     <None Remove="%2a%2a\**" />
+    <None Remove="Typings\util\directives\**" />
   </ItemGroup>
 
   <ItemGroup>
