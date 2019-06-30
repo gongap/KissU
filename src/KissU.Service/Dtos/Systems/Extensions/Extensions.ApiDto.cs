@@ -21,17 +21,16 @@ namespace KissU.Service.Dtos.Systems.Extensions
                 return new Api();
 				return dto.MapTo( new Api( dto.Id.ToGuid() ) );
         }
-        
+
         /// <summary>
         /// 转换为Api资源实体
         /// </summary>
         /// <param name="dto">Api资源数据传输对象</param>
-        public static Api ToEntity2( this ApiDto dto ) 
-		{
-            if( dto == null )
+        public static Api ToEntity2(this ApiDto dto)
+        {
+            if (dto == null)
                 return new Api();
-            return 
-				new Api( dto.Id.ToGuid() ) {
+            var api = new Api(dto.Id.ToGuid()) {
                 Name = dto.Name,
                 DisplayName = dto.DisplayName,
                 Description = dto.Description,
@@ -40,9 +39,11 @@ namespace KissU.Service.Dtos.Systems.Extensions
                 CreatorId = dto.CreatorId,
                 LastModificationTime = dto.LastModificationTime,
                 LastModifierId = dto.LastModifierId,
-                Version = dto.Version,
-                ApiScopes = dto.ApiScopes?.Select(x=>x.ToEntity2()).ToList()
+                Version = dto.Version
             };
+            var apiScopes = dto.ApiScopes?.Select(x => x.ToEntity2()).ToList();
+            apiScopes.ForEach(x=> api.AddApiScope(x));
+            return api;
         }
         
         /// <summary>

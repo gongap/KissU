@@ -73,7 +73,7 @@ namespace KissU.Data.Repositories.Systems
             await base.RemoveAsync(entities, cancellationToken);
             foreach (var entity in entities)
             {
-                entity.ApiScopes?.ToList().ForEach(x => DeleteDetail(x));
+                entity.ApiScopes?.ForEach(x => DeleteDetail(x));
             }
         }
 
@@ -85,7 +85,7 @@ namespace KissU.Data.Repositories.Systems
         public override async Task AddAsync(Api entity, CancellationToken cancellationToken = default)
         {
             await base.AddAsync(entity);
-            entity.ApiScopes?.ToList().ForEach(x => AddDetail(x));
+            entity.ApiScopes?.ForEach(x => AddDetail(x));
         }
 
         /// <summary>
