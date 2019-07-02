@@ -1,7 +1,8 @@
 ﻿const pathPlugin = require('path');
 const webpack = require('webpack');
 var Extract = require("extract-text-webpack-plugin");
-const AngularCompiler = require('@ngtools/webpack').AngularCompilerPlugin;
+const AngularCompiler = require( '@ngtools/webpack' ).AngularCompilerPlugin;
+const OptimizeCssnano = require( '@intervolga/optimize-cssnano-plugin' );
 
 module.exports = (env) => {
     //环境
@@ -85,5 +86,54 @@ module.exports = (env) => {
             entryModule: "Typings/app/app.module#AppModule"
         }))
     }
-    return [jsConfig];
+
+    //打包css
+    let cssConfig = {
+        mode: mode,
+        entry: { app: getPath( "wwwroot/css/main.less" ) },
+        output: {
+            publicPath: './',
+            path: getPath( "wwwroot/dist" ),
+            filename: "[name].css"
+        },
+        resolve: {
+            modules: ['wwwroot']
+        },
+        devtool: "source-map",
+        module: {
+            rules: [
+                {
+                    test: /\.less$/, use: extractCss.extract( {
+                        use: [{
+                            loader: 'to-string-loader'
+                        }, {
+                            loader: "css-loader"
+                        }, {
+                            loader: "less-loader",
+                            options: {
+                                javascriptEnabled: true
+                            }
+                        }]
+                    } )
+                },
+                {
+                    test: /\.(png|jpg|gif|woff|woff2|eot|ttf|svg)(\?|$)/, use: {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 20000,
+                            name: "[name].[ext]",
+                            outputPath: "images/"
+                        }
+                    }
+                }
+            ]
+        },
+        plugins: [
+            extractCss
+        ].concat( isDev ? [] : new OptimizeCssnano( {
+            cssnanoOptions: { preset: ['default', { discardComments: { removeAll: true } }] }
+        } ) )
+    }
+
+    return [jsConfig, cssConfig];
 }

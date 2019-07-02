@@ -27,6 +27,7 @@ namespace <%= Entity.GetNamespace(Namespace,"Domain","Factories") %> {
         /// 创建<%= Description %>
         /// </summary>
         <% foreach(Property p in Entity.Properties) { %>
+		<% if( p.ColumnName == "IsDeleted" ) continue;%>
         /// <param name="<%= p.PropertyName.ToSafeName().ToCamelCase() %>"><%= p.Description %></param>
         <%} %>
         public static <%= SafeClassName %> Create( 

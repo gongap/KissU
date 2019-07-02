@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <codeSmith xmlns="http://www.codesmithtools.com/schema/csp.xsd">
   <variables>
-    <add key="DefaultConnectionString" value="Data Source=.;Initial Catalog=KissU;Integrated Security=True" />
+    <add key="DefaultConnectionString" value="Data Source=.;Initial Catalog=KFNETSDATABASE_V2030_VET;Integrated Security=True" />
   </variables>
   <propertySets>
     <propertySet name="Templates" template="Templates\Templates.cst">
@@ -24,8 +24,8 @@
         <connectionString>$(DefaultConnectionString)</connectionString>
         <providerType>SchemaExplorer.SqlSchemaProvider,SchemaExplorer.SqlSchemaProvider</providerType>
       </property>
-      <property name="Namespace">KissU</property>
-      <property name="DbName">KissU</property>
+      <property name="Namespace">KFNets.Veterinary</property>
+      <property name="DbName">KFNets</property>
     </propertySet>
   </propertySets>
 </codeSmith>

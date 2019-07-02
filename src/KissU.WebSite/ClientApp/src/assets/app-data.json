@@ -1,0 +1,39 @@
+{
+  "app": {
+    "name": "KissU",
+    "description": "KissU"
+  },
+  "user": {
+    "name": "Admin",
+    "email": "admin@qq.com"
+  },
+  "menu": [
+    {
+      "text": "主导航",
+      "hideInBreadcrumb": true,
+      "children": [
+        {
+          "text": "API",
+          "group": true,
+          "hideInBreadcrumb": false,
+          "icon": "anticon anticon-gateway",
+          "link": "/ocelot/reroute",
+          "acl": {
+            "ability": [],
+            "mode": "allOf"
+          },
+          "children": [
+            {
+              "text": "Api接口",
+              "link": "/ocelot/reroute",
+              "acl": {
+                "ability": ["" ],
+                "mode": "allOf"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

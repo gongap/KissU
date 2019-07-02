@@ -24,6 +24,9 @@
     <None Include="Pages\NotFound.cshtml" />
     <None Include="Pages\Index.cshtml" />
     <None Include="Pages\_ViewImports.cshtml" />
+    <None Include="wwwroot\css\main.less" />
+    <None Include="wwwroot\css\styles\index.less" />
+    <None Include="wwwroot\css\styles\theme.less" />
   </ItemGroup>
 
   <ItemGroup>
