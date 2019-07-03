@@ -94,8 +94,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.IntegrationTest", "te
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.UnitTest", "test\KissU.UnitTest\KissU.UnitTest.csproj", "{792F645F-D117-4F6D-8E56-B52493D1E198}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.WebSite", "src\KissU.WebSite\KissU.WebSite.csproj", "{54B11049-0AF2-4218-AC1B-7E24A93E37EE}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -222,10 +220,6 @@ Global
 		{792F645F-D117-4F6D-8E56-B52493D1E198}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{792F645F-D117-4F6D-8E56-B52493D1E198}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{792F645F-D117-4F6D-8E56-B52493D1E198}.Release|Any CPU.Build.0 = Release|Any CPU
-		{54B11049-0AF2-4218-AC1B-7E24A93E37EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{54B11049-0AF2-4218-AC1B-7E24A93E37EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{54B11049-0AF2-4218-AC1B-7E24A93E37EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{54B11049-0AF2-4218-AC1B-7E24A93E37EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -268,7 +262,6 @@ Global
 		{37A52E84-947C-4378-9E05-F58C003CF3C1} = {2646EC74-8E0E-4DD5-8E29-FEB9D767DAA1}
 		{BB695460-6CBA-4736-BAF0-3EDF3FE92A8E} = {CAB0FA02-9071-4D1F-A7E7-1E7C313E4A87}
 		{792F645F-D117-4F6D-8E56-B52493D1E198} = {CAB0FA02-9071-4D1F-A7E7-1E7C313E4A87}
-		{54B11049-0AF2-4218-AC1B-7E24A93E37EE} = {F1B4AAEF-9162-4DFA-8B62-4069FC914839}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}

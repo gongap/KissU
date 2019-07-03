@@ -7,9 +7,9 @@ using System.Collections.Generic;
 
 namespace KissU.Service.Dtos.Systems {
     /// <summary>
-    /// Api资源参数
+    /// Api资源创建参数
     /// </summary>
-    public class ApiDto : DtoBase
+    public class ApiCreateRequest : RequestBase
     {
         /// <summary>
         /// 许可范围
@@ -46,30 +46,5 @@ namespace KissU.Service.Dtos.Systems {
         /// </summary>
         [Display( Name = "是否启用" )]
         public bool? Enabled { get; set; }
-        /// <summary>
-        /// 创建时间
-        /// </summary>
-        [Display( Name = "创建时间" )]
-        public DateTime? CreationTime { get; set; }
-        /// <summary>
-        /// 创建人
-        /// </summary>
-        [Display( Name = "创建人" )]
-        public Guid? CreatorId { get; set; }
-        /// <summary>
-        /// 最后修改时间
-        /// </summary>
-        [Display( Name = "最后修改时间" )]
-        public DateTime? LastModificationTime { get; set; }
-        /// <summary>
-        /// 最后修改人
-        /// </summary>
-        [Display( Name = "最后修改人" )]
-        public Guid? LastModifierId { get; set; }
-        /// <summary>
-        /// 版本号
-        /// </summary>
-        [Display( Name = "版本号" )]
-        public Byte[] Version { get; set; }
     }
 }

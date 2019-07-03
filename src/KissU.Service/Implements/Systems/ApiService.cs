@@ -10,13 +10,14 @@ using KissU.Service.Dtos.Systems;
 using KissU.Service.Queries.Systems;
 using KissU.Service.Abstractions.Systems;
 using KissU.Service.Dtos.Systems.Extensions;
+using System;
 
 namespace KissU.Service.Implements.Systems
 {
     /// <summary>
     /// Api资源服务
     /// </summary>
-    public class ApiService : CrudServiceBase<Api, ApiDto, ApiQuery>, IApiService
+    public class ApiService : CrudServiceBase<Api, ApiDto, ApiUpdateRequest, ApiCreateRequest, ApiUpdateRequest, ApiQuery, Guid>, IApiService
     {
         /// <summary>
         /// 初始化Api资源服务
@@ -40,7 +41,9 @@ namespace KissU.Service.Implements.Systems
         /// <param name="param">查询参数</param>
         protected override IQueryBase<Api> CreateQuery(ApiQuery param)
         {
-            return new Query<Api>(param);
+            var query = new Query<Api>(param);
+            query.WhereIfNotEmpty(x => x.Name.Contains(param.Keyword));
+            return query;
         }
 
         /// <summary>
@@ -53,12 +56,25 @@ namespace KissU.Service.Implements.Systems
         }
 
         /// <summary>
-        /// 转换为实体
+        /// 创建参数转换为实体
         /// </summary>
-        /// <param name="request">参数</param>
-        protected override Api ToEntity(ApiDto request)
+        /// <param name="request">创建参数</param>
+        /// <returns></returns>
+        protected override Api ToEntityFromCreateRequest(ApiCreateRequest request)
         {
-            return request.ToEntity2();
+            //return base.ToEntityFromCreateRequest(request);
+            return request.ToEntityFromCreateRequest();
+        }
+
+        /// <summary>
+        /// 修改参数转换为实体
+        /// </summary>
+        /// <param name="request">修改参数</param>
+        /// <returns></returns>
+        protected override Api ToEntityFromUpdateRequest(ApiUpdateRequest request)
+        {
+            //return base.ToEntityFromUpdateRequest(request);
+            return request.ToEntityFromUpdateRequest();
         }
     }
 }
