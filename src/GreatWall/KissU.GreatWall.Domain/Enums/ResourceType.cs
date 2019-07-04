@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace GreatWall.Domain.Enums {
+namespace KissU.GreatWall.Domain.Enums {
     /// <summary>
     /// 资源类型
     /// </summary>

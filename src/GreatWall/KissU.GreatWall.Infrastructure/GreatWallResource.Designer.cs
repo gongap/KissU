@@ -8,7 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GreatWall {
+namespace KissU.GreatWall
+{
     using System;
     
     

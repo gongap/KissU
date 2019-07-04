@@ -1,8 +1,8 @@
 ﻿using Util;
 using Util.Maps;
-using GreatWall.Systems.Domain.Models;
+using KissU.GreatWall.Systems.Domain.Models;
 
-namespace GreatWall.Service.Dtos.Systems.Extensions {
+namespace KissU.GreatWall.Service.Dtos.Systems.Extensions {
     /// <summary>
     /// Api资源参数扩展
     /// </summary>

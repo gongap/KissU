@@ -1,4 +1,4 @@
-﻿namespace GreatWall.Menus {
+﻿namespace KissU.GreatWall.Menus {
     /// <summary>
     /// App信息
     /// </summary>

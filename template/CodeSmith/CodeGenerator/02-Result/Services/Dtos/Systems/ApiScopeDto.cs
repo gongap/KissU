@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 using Util.Ui.Attributes;
 using Util.Applications.Dtos;
 
-namespace GreatWall.Service.Dtos.Systems {
+namespace KissU.GreatWall.Service.Dtos.Systems {
     /// <summary>
     /// Api许可范围参数
     /// </summary>

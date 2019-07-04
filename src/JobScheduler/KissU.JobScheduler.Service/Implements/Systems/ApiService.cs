@@ -24,7 +24,7 @@ namespace KissU.JobScheduler.Service.Implements.Systems
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
         /// <param name="apiRepository">Api资源仓储</param>
-        public ApiService(IKissUUnitOfWork unitOfWork, IApiRepository apiRepository)
+        public ApiService(IJobSchedulerUnitOfWork unitOfWork, IApiRepository apiRepository)
             : base(unitOfWork, apiRepository)
         {
             ApiRepository = apiRepository;

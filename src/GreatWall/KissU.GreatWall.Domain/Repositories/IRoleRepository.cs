@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using GreatWall.Domain.Models;
+using KissU.GreatWall.Domain.Models;
 using Util.Domains.Trees;
 
-namespace GreatWall.Domain.Repositories {
+namespace KissU.GreatWall.Domain.Repositories {
     /// <summary>
     /// 角色仓储
     /// </summary>

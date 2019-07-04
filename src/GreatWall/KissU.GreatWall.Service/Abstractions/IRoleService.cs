@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Threading.Tasks;
-using GreatWall.Service.Dtos;
-using GreatWall.Service.Dtos.Requests;
-using GreatWall.Service.Queries;
+using KissU.GreatWall.Service.Dtos;
+using KissU.GreatWall.Service.Dtos.Requests;
+using KissU.GreatWall.Service.Queries;
 using Util.Applications;
 using Util.Aspects;
 using Util.Validations.Aspects;
 
-namespace GreatWall.Service.Abstractions {
+namespace KissU.GreatWall.Service.Abstractions {
     /// <summary>
     /// 角色服务
     /// </summary>

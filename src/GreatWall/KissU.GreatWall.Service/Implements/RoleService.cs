@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Threading.Tasks;
-using GreatWall.Data;
-using GreatWall.Domain.Models;
-using GreatWall.Domain.Repositories;
-using GreatWall.Domain.Services.Abstractions;
-using GreatWall.Service.Abstractions;
-using GreatWall.Service.Dtos;
-using GreatWall.Service.Dtos.Requests;
-using GreatWall.Service.Queries;
+using KissU.GreatWall.Data;
+using KissU.GreatWall.Domain.Models;
+using KissU.GreatWall.Domain.Repositories;
+using KissU.GreatWall.Domain.Services.Abstractions;
+using KissU.GreatWall.Service.Abstractions;
+using KissU.GreatWall.Service.Dtos;
+using KissU.GreatWall.Service.Dtos.Requests;
+using KissU.GreatWall.Service.Queries;
 using Util;
 using Util.Applications;
 using Util.Datas.Queries;
 using Util.Domains.Repositories;
 using Util.Maps;
 
-namespace GreatWall.Service.Implements {
+namespace KissU.GreatWall.Service.Implements {
     /// <summary>
     /// 角色服务
     /// </summary>

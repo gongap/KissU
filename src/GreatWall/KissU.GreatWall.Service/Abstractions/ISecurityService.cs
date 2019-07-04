@@ -1,11 +1,11 @@
 ﻿using System.Threading.Tasks;
-using GreatWall.Results;
-using GreatWall.Service.Dtos.Requests;
+using KissU.GreatWall.Results;
+using KissU.GreatWall.Service.Dtos.Requests;
 using Util.Applications;
 using Util.Aspects;
 using Util.Validations.Aspects;
 
-namespace GreatWall.Service.Abstractions {
+namespace KissU.GreatWall.Service.Abstractions {
     /// <summary>
     /// 安全服务
     /// </summary>

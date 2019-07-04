@@ -1,7 +1,7 @@
 ﻿using Xunit;
-using GreatWall.Systems.Domain.Models;
+using KissU.GreatWall.Systems.Domain.Models;
 
-namespace GreatWall.Test.Models.Systems {
+namespace KissU.GreatWall.Test.Models.Systems {
     /// <summary>
     /// Api资源测试
     /// </summary>

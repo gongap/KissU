@@ -2,7 +2,7 @@
 using Util.Ui.Viser.Data;
 using Util.Webs.Controllers;
 
-namespace GreatWall.Apis.Tests {
+namespace KissU.GreatWall.Apis.Tests {
     /// <summary>
     /// 柱状图控制器
     /// </summary>

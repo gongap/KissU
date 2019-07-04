@@ -1,6 +1,6 @@
 ﻿using Util.Datas.UnitOfWorks;
 
-namespace GreatWall.Data {
+namespace KissU.GreatWall.Data {
     /// <summary>
     /// GreatWall工作单元
     /// </summary>

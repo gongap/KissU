@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using KissU.JobScheduler.Data;
+using KissU.JobScheduler.Data.UnitOfWorks.SqlServer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -40,15 +42,12 @@ namespace KissU.JobScheduler.Api
             services.AddNLog();
 
             //添加EF工作单元
-            //services.AddUnitOfWork<IGreatWallUnitOfWork, GreatWallUnitOfWork>( Configuration.GetConnectionString( "DefaultConnection" ) );
-
-            //添加权限服务
-            //services.AddPermission( t => { t.Lockout.MaxFailedAccessAttempts = 2; } );
+            services.AddUnitOfWork<IJobSchedulerUnitOfWork, JobSchedulerUnitOfWork>(Configuration.GetConnectionString("DefaultConnection"));
 
             //添加Swagger
             services.AddSwaggerGen( options => {
-                options.SwaggerDoc( "v1", new Info { Title = "GreatWall Api", Version = "v1" } );
-                options.IncludeXmlComments( Path.Combine( AppContext.BaseDirectory, "GreatWall.Api.xml" ) );
+                options.SwaggerDoc( "v1", new Info { Title = "KissU.JobScheduler.Api", Version = "v1" } );
+                options.IncludeXmlComments( Path.Combine( AppContext.BaseDirectory, "KissU.JobScheduler.Api.xml") );
             } );
 
             //添加Util基础设施服务

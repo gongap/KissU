@@ -1,4 +1,4 @@
-﻿namespace GreatWall.Results {
+﻿namespace KissU.GreatWall.Results {
     /// <summary>
     /// 登录结果
     /// </summary>

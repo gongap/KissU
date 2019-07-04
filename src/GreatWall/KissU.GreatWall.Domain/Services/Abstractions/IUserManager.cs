@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using GreatWall.Domain.Models;
+using KissU.GreatWall.Domain.Models;
 using Util.Domains.Services;
 
-namespace GreatWall.Domain.Services.Abstractions {
+namespace KissU.GreatWall.Domain.Services.Abstractions {
     /// <summary>
     /// 用户服务
     /// </summary>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Util.Domains.Services;
 
-namespace GreatWall.Domain.Services.Abstractions {
+namespace KissU.GreatWall.Domain.Services.Abstractions {
     /// <summary>
     /// 权限服务
     /// </summary>

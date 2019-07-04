@@ -1,8 +1,8 @@
-﻿using GreatWall.Systems.Domain.Models;
-using GreatWall.Systems.Domain.Repositories;
+﻿using KissU.GreatWall.Systems.Domain.Models;
+using KissU.GreatWall.Systems.Domain.Repositories;
 using Util.Datas.Ef.Core;
 
-namespace GreatWall.Data.Repositories.Systems {
+namespace KissU.GreatWall.Data.Repositories.Systems {
     /// <summary>
     /// Api资源仓储
     /// </summary>

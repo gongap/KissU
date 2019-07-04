@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using Util.Ui.Data;
 
-namespace GreatWall.Service.Dtos.Systems {
+namespace KissU.GreatWall.Service.Dtos.Systems {
     /// <summary>
     /// 资源数据传输对象
     /// </summary>

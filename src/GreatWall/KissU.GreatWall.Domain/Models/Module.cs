@@ -1,6 +1,6 @@
 ﻿using Util.Helpers;
 
-namespace GreatWall.Domain.Models {
+namespace KissU.GreatWall.Domain.Models {
     /// <summary>
     /// 模块
     /// </summary>

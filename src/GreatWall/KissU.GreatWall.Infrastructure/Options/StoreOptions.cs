@@ -1,4 +1,4 @@
-﻿namespace GreatWall.Options {
+﻿namespace KissU.GreatWall.Options {
     /// <summary>
     /// 存储配置
     /// </summary>

@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Threading.Tasks;
-using GreatWall.Data.Pos;
-using GreatWall.Data.Pos.Extensions;
-using GreatWall.Data.Stores.Abstractions;
-using GreatWall.Domain.Models;
-using GreatWall.Domain.Repositories;
+using KissU.GreatWall.Data.Pos;
+using KissU.GreatWall.Data.Pos.Extensions;
+using KissU.GreatWall.Data.Stores.Abstractions;
+using KissU.GreatWall.Domain.Models;
+using KissU.GreatWall.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Util;
 using Util.Datas.Ef.Core;
 
-namespace GreatWall.Data.Repositories {
+namespace KissU.GreatWall.Data.Repositories {
     /// <summary>
     /// 模块仓储
     /// </summary>

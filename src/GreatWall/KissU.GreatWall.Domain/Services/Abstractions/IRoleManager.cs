@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using GreatWall.Domain.Models;
+using KissU.GreatWall.Domain.Models;
 using Util.Domains.Services;
 
-namespace GreatWall.Domain.Services.Abstractions {
+namespace KissU.GreatWall.Domain.Services.Abstractions {
     /// <summary>
     /// 角色服务
     /// </summary>

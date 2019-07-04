@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using GreatWall.Data.Pos.Systems;
+using KissU.GreatWall.Data.Pos.Systems;
 
-namespace GreatWall.Data.Mappings.Systems.PgSql {
+namespace KissU.GreatWall.Data.Mappings.Systems.PgSql {
     /// <summary>
     /// 资源持久化对象映射配置
     /// </summary>

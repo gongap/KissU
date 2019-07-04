@@ -1,11 +1,11 @@
 ﻿using Util.Datas.Ef.Core;
-using GreatWall.Systems.Domain.Models;
-using GreatWall.Systems.Domain.Repositories;
-using GreatWall.Data.Pos.Systems;
-using GreatWall.Data.Stores.Abstractions.Systems;
-using GreatWall.Data.Pos.Systems.Extensions;
+using KissU.GreatWall.Systems.Domain.Models;
+using KissU.GreatWall.Systems.Domain.Repositories;
+using KissU.GreatWall.Data.Pos.Systems;
+using KissU.GreatWall.Data.Stores.Abstractions.Systems;
+using KissU.GreatWall.Data.Pos.Systems.Extensions;
 
-namespace GreatWall.Data.Repositories.Systems {
+namespace KissU.GreatWall.Data.Repositories.Systems {
     /// <summary>
     /// 资源仓储
     /// </summary>

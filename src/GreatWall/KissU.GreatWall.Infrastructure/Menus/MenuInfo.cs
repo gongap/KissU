@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace GreatWall.Menus {
+namespace KissU.GreatWall.Menus {
     /// <summary>
     /// 菜单信息
     /// </summary>

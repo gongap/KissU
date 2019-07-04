@@ -33,6 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\KissU.JobScheduler.Data\KissU.JobScheduler.Data.csproj" />
     <ProjectReference Include="..\KissU.JobScheduler.Service\KissU.JobScheduler.Service.csproj" />
   </ItemGroup>
 

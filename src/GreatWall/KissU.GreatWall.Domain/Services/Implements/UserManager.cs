@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Threading.Tasks;
-using GreatWall.Domain.Models;
-using GreatWall.Domain.Repositories;
-using GreatWall.Domain.Services.Abstractions;
-using GreatWall.Extensions;
-using GreatWall.Options;
-using GreatWall.Purposes;
+using KissU.GreatWall.Domain.Models;
+using KissU.GreatWall.Domain.Repositories;
+using KissU.GreatWall.Domain.Services.Abstractions;
+using KissU.GreatWall.Extensions;
+using KissU.GreatWall.Options;
+using KissU.GreatWall.Purposes;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Util;
 using Util.Domains.Services;
 
-namespace GreatWall.Domain.Services.Implements {
+namespace KissU.GreatWall.Domain.Services.Implements {
     /// <summary>
     /// 用户服务
     /// </summary>

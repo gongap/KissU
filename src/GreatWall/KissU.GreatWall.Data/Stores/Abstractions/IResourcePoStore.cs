@@ -1,7 +1,7 @@
-﻿using GreatWall.Data.Pos;
+﻿using KissU.GreatWall.Data.Pos;
 using Util.Datas.Stores;
 
-namespace GreatWall.Data.Stores.Abstractions  {
+namespace KissU.GreatWall.Data.Stores.Abstractions  {
     /// <summary>
     /// 资源存储器
     /// </summary>

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
-using GreatWall.Data;
-using GreatWall.Data.UnitOfWorks.SqlServer;
-using GreatWall.Service.Extensions;
+using KissU.GreatWall.Data;
+using KissU.GreatWall.Data.UnitOfWorks.SqlServer;
+using KissU.GreatWall.Service.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -49,8 +49,8 @@ namespace GreatWall {
 
             //添加Swagger
             services.AddSwaggerGen( options => {
-                options.SwaggerDoc( "v1", new Info { Title = "GreatWall Api", Version = "v1" } );
-                options.IncludeXmlComments( Path.Combine( AppContext.BaseDirectory, "GreatWall.Api.xml" ) );
+                options.SwaggerDoc( "v1", new Info { Title = "KissU.GreatWall Api", Version = "v1" } );
+                options.IncludeXmlComments( Path.Combine( AppContext.BaseDirectory, "KissU.GreatWall.Api.xml" ) );
             } );
 
             //添加Util基础设施服务

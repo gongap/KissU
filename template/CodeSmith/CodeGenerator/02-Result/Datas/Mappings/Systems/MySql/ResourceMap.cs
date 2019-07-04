@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using GreatWall.Systems.Domain.Models;
+using KissU.GreatWall.Systems.Domain.Models;
 
-namespace GreatWall.Data.Mappings.Systems.MySql {
+namespace KissU.GreatWall.Data.Mappings.Systems.MySql {
     /// <summary>
     /// 资源映射配置
     /// </summary>

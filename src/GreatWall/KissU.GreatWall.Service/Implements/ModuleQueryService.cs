@@ -1,19 +1,19 @@
 ﻿using System.Linq;
-using GreatWall.Data;
-using GreatWall.Data.Pos;
-using GreatWall.Data.Stores.Abstractions;
-using GreatWall.Domain.Enums;
-using GreatWall.Domain.Repositories;
-using GreatWall.Service.Abstractions;
-using GreatWall.Service.Dtos;
-using GreatWall.Service.Dtos.Extensions;
-using GreatWall.Service.Queries;
+using KissU.GreatWall.Data;
+using KissU.GreatWall.Data.Pos;
+using KissU.GreatWall.Data.Stores.Abstractions;
+using KissU.GreatWall.Domain.Enums;
+using KissU.GreatWall.Domain.Repositories;
+using KissU.GreatWall.Service.Abstractions;
+using KissU.GreatWall.Service.Dtos;
+using KissU.GreatWall.Service.Dtos.Extensions;
+using KissU.GreatWall.Service.Queries;
 using Microsoft.EntityFrameworkCore;
 using Util.Applications.Trees;
 using Util.Datas.Queries;
 using Util.Domains.Repositories;
 
-namespace GreatWall.Service.Implements {
+namespace KissU.GreatWall.Service.Implements {
     /// <summary>
     /// 模块查询服务
     /// </summary>

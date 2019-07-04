@@ -1,12 +1,12 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
-using GreatWall.Domain.Enums;
-using GreatWall.Domain.Models;
+using KissU.GreatWall.Domain.Enums;
+using KissU.GreatWall.Domain.Models;
 using Util.Datas.Persistence;
 using Util.Domains;
 using Util.Domains.Auditing;
 
-namespace GreatWall.Data.Pos{
+namespace KissU.GreatWall.Data.Pos{
     /// <summary>
     /// 资源持久化对象
     /// </summary>

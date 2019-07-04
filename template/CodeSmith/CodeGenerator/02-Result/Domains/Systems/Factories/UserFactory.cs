@@ -1,7 +1,7 @@
 ﻿using System;
-using GreatWall.Systems.Domains.Models;
+using KissU.GreatWall.Systems.Domains.Models;
 
-namespace GreatWall.Systems.Domains.Factories {
+namespace KissU.GreatWall.Systems.Domains.Factories {
     /// <summary>
     /// 用户工厂
     /// </summary>

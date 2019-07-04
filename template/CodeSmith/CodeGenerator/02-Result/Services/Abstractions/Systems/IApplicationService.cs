@@ -1,8 +1,8 @@
 ﻿using Util.Applications;
-using GreatWall.Service.Dtos.Systems;
-using GreatWall.Service.Queries.Systems;
+using KissU.GreatWall.Service.Dtos.Systems;
+using KissU.GreatWall.Service.Queries.Systems;
 
-namespace GreatWall.Service.Abstractions.Systems {
+namespace KissU.GreatWall.Service.Abstractions.Systems {
     /// <summary>
     /// 应用程序服务
     /// </summary>

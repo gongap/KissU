@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using Util.Domains;
 using Util.Domains.Auditing;
 
-namespace GreatWall.Domain.Models {
+namespace KissU.GreatWall.Domain.Models {
     /// <summary>
     /// 权限
     /// </summary>

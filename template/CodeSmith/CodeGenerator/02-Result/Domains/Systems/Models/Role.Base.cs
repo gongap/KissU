@@ -8,7 +8,7 @@ using Util.Domains.Trees;
 using Util.Domains.Auditing;
 using Util.Domains.Tenants;
 
-namespace GreatWall.Systems.Domain.Models {
+namespace KissU.GreatWall.Systems.Domain.Models {
     /// <summary>
     /// 角色
     /// </summary>

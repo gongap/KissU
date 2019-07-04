@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using GreatWall.Menus;
+using KissU.GreatWall.Menus;
 using Microsoft.AspNetCore.Mvc;
 using Util.Webs.Controllers;
 
-namespace GreatWall.Apis.Tests {
+namespace KissU.GreatWall.Apis.Tests {
     /// <summary>
     /// 菜单控制器
     /// </summary>

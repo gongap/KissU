@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
-using GreatWall.Domain.Models;
+using KissU.GreatWall.Domain.Models;
 using Util.Domains.Repositories;
 
-namespace GreatWall.Domain.Repositories {
+namespace KissU.GreatWall.Domain.Repositories {
     /// <summary>
     /// 用户仓储
     /// </summary>

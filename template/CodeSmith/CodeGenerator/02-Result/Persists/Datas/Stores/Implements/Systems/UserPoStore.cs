@@ -1,8 +1,8 @@
 ﻿using Util.Datas.Ef.Core;
-using GreatWall.Data.Pos.Systems;
-using GreatWall.Data.Stores.Abstractions.Systems;
+using KissU.GreatWall.Data.Pos.Systems;
+using KissU.GreatWall.Data.Stores.Abstractions.Systems;
 
-namespace GreatWall.Data.Stores.Implements.Systems{
+namespace KissU.GreatWall.Data.Stores.Implements.Systems{
     /// <summary>
     /// 用户存储器
     /// </summary>

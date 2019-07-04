@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Util.Datas.UnitOfWorks;
 
-namespace GreatWall.Data.UnitOfWorks.MySql {
+namespace KissU.GreatWall.Data.UnitOfWorks.MySql {
     /// <summary>
     /// 工作单元
     /// </summary>

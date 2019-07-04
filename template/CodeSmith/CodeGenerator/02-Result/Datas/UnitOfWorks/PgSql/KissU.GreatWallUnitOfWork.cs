@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Util.Datas.UnitOfWorks;
 
-namespace GreatWall.Data.UnitOfWorks.PgSql {
+namespace KissU.GreatWall.Data.UnitOfWorks.PgSql {
     /// <summary>
     /// 工作单元
     /// </summary>

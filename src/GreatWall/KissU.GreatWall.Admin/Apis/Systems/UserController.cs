@@ -1,12 +1,12 @@
 ﻿using System.Threading.Tasks;
-using GreatWall.Service.Abstractions;
+using KissU.GreatWall.Service.Abstractions;
 using Util.Webs.Controllers;
-using GreatWall.Service.Dtos;
-using GreatWall.Service.Dtos.Requests;
-using GreatWall.Service.Queries;
+using KissU.GreatWall.Service.Dtos;
+using KissU.GreatWall.Service.Dtos.Requests;
+using KissU.GreatWall.Service.Queries;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GreatWall.Apis.Systems {
+namespace KissU.GreatWall.Apis.Systems {
     /// <summary>
     /// 用户控制器
     /// </summary>

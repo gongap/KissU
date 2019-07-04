@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Util.Datas.Queries;
 
-namespace GreatWall.Service.Queries {
+namespace KissU.GreatWall.Service.Queries {
     /// <summary>
     /// 权限查询参数
     /// </summary>

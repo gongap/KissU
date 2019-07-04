@@ -1,11 +1,11 @@
 ﻿using System.Threading.Tasks;
-using GreatWall.Service.Abstractions;
-using GreatWall.Service.Dtos.Requests;
-using GreatWall.Service.Queries;
+using KissU.GreatWall.Service.Abstractions;
+using KissU.GreatWall.Service.Dtos.Requests;
+using KissU.GreatWall.Service.Queries;
 using Microsoft.AspNetCore.Mvc;
 using Util.Webs.Controllers;
 
-namespace GreatWall.Apis.Systems {
+namespace KissU.GreatWall.Apis.Systems {
     /// <summary>
     /// 权限控制器
     /// </summary>

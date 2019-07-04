@@ -1,7 +1,7 @@
 using System;
-using GreatWall.Data;
-using GreatWall.Data.UnitOfWorks.SqlServer;
-using GreatWall.Service.Extensions;
+using KissU.GreatWall.Data;
+using KissU.GreatWall.Data.UnitOfWorks.SqlServer;
+using KissU.GreatWall.Service.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -16,53 +16,53 @@ using Util.Webs.Extensions;
 
 namespace GreatWall {
     /// <summary>
-    /// Æô¶¯ÅäÖÃ
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     public class Startup {
         /// <summary>
-        /// ³õÊ¼»¯Æô¶¯ÅäÖÃ
+        /// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         /// </summary>
-        /// <param name="configuration">ÅäÖÃ</param>
+        /// <param name="configuration">ï¿½ï¿½ï¿½ï¿½</param>
         public Startup( IConfiguration configuration ) {
             Configuration = configuration;
         }
 
         /// <summary>
-        /// ÅäÖÃ
+        /// ï¿½ï¿½ï¿½ï¿½
         /// </summary>
         public IConfiguration Configuration { get; }
 
         /// <summary>
-        /// ÅäÖÃ·þÎñ
+        /// ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½
         /// </summary>
         public IServiceProvider ConfigureServices( IServiceCollection services ) {
-            //ÅäÖÃCookie²ßÂÔ
+            //ï¿½ï¿½ï¿½ï¿½Cookieï¿½ï¿½ï¿½ï¿½
             services.Configure<CookiePolicyOptions>( options => {
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             } );
 
-            //×¢²áRazorÊÓÍ¼½âÎöÂ·¾¶
+            //×¢ï¿½ï¿½Razorï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½
             services.AddRazorViewLocationExpander();
 
-            //Ìí¼ÓMvc·þÎñ
+            //ï¿½ï¿½ï¿½ï¿½Mvcï¿½ï¿½ï¿½ï¿½
             services.AddMvc().SetCompatibilityVersion( CompatibilityVersion.Version_2_2 ).AddRazorPageConventions();
 
-            //Ìí¼ÓNLogÈÕÖ¾²Ù×÷
+            //ï¿½ï¿½ï¿½ï¿½NLogï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½
             services.AddNLog();
 
-            //Ìí¼ÓEF¹¤×÷µ¥Ôª
+            //ï¿½ï¿½ï¿½ï¿½EFï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôª
             services.AddUnitOfWork<IGreatWallUnitOfWork, GreatWallUnitOfWork>( Configuration.GetConnectionString( "DefaultConnection" ) );
 
-            //Ìí¼ÓÈ¨ÏÞ·þÎñ
+            //ï¿½ï¿½ï¿½ï¿½È¨ï¿½Þ·ï¿½ï¿½ï¿½
             services.AddPermission( t => { t.Lockout.MaxFailedAccessAttempts = 2; } );
 
-            //Ìí¼ÓUtil»ù´¡ÉèÊ©·þÎñ
+            //ï¿½ï¿½ï¿½ï¿½Utilï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê©ï¿½ï¿½ï¿½ï¿½
             return services.AddUtil();
         }
 
         /// <summary>
-        /// ÅäÖÃ¿ª·¢»·¾³ÇëÇó¹ÜµÀ
+        /// ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Üµï¿½
         /// </summary>
         public void ConfigureDevelopment( IApplicationBuilder app ) {
             app.UseDeveloperExceptionPage();
@@ -74,7 +74,7 @@ namespace GreatWall {
         }
 
         /// <summary>
-        /// ÅäÖÃÉú²ú»·¾³ÇëÇó¹ÜµÀ
+        /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Üµï¿½
         /// </summary>
         public void ConfigureProduction( IApplicationBuilder app ) {
             app.UseExceptionHandler( "/Home/Error" );
@@ -82,7 +82,7 @@ namespace GreatWall {
         }
 
         /// <summary>
-        /// ¹«¹²ÅäÖÃ
+        /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         /// </summary>
         private void CommonConfig( IApplicationBuilder app ) {
             app.UseErrorLog();
@@ -92,7 +92,7 @@ namespace GreatWall {
         }
 
         /// <summary>
-        /// Â·ÓÉÅäÖÃ,Ö§³ÖÇøÓò
+        /// Â·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,Ö§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         /// </summary>
         private void ConfigRoute( IApplicationBuilder app ) {
             app.UseMvc( routes => {

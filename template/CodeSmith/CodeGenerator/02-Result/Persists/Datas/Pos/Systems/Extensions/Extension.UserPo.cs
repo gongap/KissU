@@ -1,8 +1,8 @@
 ﻿using Util;
-using GreatWall.Systems.Domain.Models;
+using KissU.GreatWall.Systems.Domain.Models;
 using Util.Maps;
 
-namespace GreatWall.Data.Pos.Systems.Extensions {
+namespace KissU.GreatWall.Data.Pos.Systems.Extensions {
     /// <summary>
     /// 用户持久化对象扩展
     /// </summary>

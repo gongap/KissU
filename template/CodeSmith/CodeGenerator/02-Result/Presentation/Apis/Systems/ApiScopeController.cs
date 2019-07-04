@@ -1,9 +1,9 @@
 ﻿using Util.Webs.Controllers;
-using GreatWall.Service.Dtos.Systems;
-using GreatWall.Service.Queries.Systems;
-using GreatWall.Service.Abstractions.Systems;
+using KissU.GreatWall.Service.Dtos.Systems;
+using KissU.GreatWall.Service.Queries.Systems;
+using KissU.GreatWall.Service.Abstractions.Systems;
 
-namespace GreatWall.Apis.Systems {
+namespace KissU.GreatWall.Apis.Systems {
     /// <summary>
     /// Api许可范围控制器
     /// </summary>

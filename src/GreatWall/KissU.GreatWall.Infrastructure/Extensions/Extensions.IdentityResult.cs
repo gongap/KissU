@@ -3,7 +3,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Identity;
 using Util.Exceptions;
 
-namespace GreatWall.Extensions {
+namespace KissU.GreatWall.Extensions {
     /// <summary>
     /// Identity结果扩展
     /// </summary>

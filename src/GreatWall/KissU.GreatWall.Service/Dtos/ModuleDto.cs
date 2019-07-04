@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Util.Ui.Data;
 
-namespace GreatWall.Service.Dtos {
+namespace KissU.GreatWall.Service.Dtos {
     /// <summary>
     /// 模块参数
     /// </summary>

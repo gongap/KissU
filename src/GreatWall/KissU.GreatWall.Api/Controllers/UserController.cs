@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
-using GreatWall.Service.Abstractions;
-using GreatWall.Service.Dtos.Requests;
+using KissU.GreatWall.Service.Abstractions;
+using KissU.GreatWall.Service.Dtos.Requests;
 using Microsoft.AspNetCore.Mvc;
 using Util.Webs.Controllers;
 
-namespace GreatWall.Controllers {
+namespace KissU.GreatWall.Controllers {
     /// <summary>
     /// 用户控制器
     /// </summary>

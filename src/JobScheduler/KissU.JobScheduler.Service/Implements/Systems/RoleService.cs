@@ -24,7 +24,7 @@ namespace KissU.JobScheduler.Service.Implements.Systems
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
         /// <param name="roleRepository">角色仓储</param>
-        public RoleService( IKissUUnitOfWork unitOfWork, IRoleRepository roleRepository )
+        public RoleService( IJobSchedulerUnitOfWork unitOfWork, IRoleRepository roleRepository )
             : base( unitOfWork, roleRepository ) 
 		{
             RoleRepository = roleRepository;

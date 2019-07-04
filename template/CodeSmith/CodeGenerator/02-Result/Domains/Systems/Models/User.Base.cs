@@ -7,7 +7,7 @@ using Util.Domains;
 using Util.Domains.Auditing;
 using Util.Domains.Tenants;
 
-namespace GreatWall.Systems.Domain.Models {
+namespace KissU.GreatWall.Systems.Domain.Models {
     /// <summary>
     /// 用户
     /// </summary>

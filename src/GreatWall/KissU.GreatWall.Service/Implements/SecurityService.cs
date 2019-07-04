@@ -1,14 +1,14 @@
 ﻿using System.Threading.Tasks;
-using GreatWall.Data;
-using GreatWall.Domain.Models;
-using GreatWall.Domain.Services.Abstractions;
-using GreatWall.Results;
-using GreatWall.Service.Abstractions;
-using GreatWall.Service.Dtos.Requests;
+using KissU.GreatWall.Data;
+using KissU.GreatWall.Domain.Models;
+using KissU.GreatWall.Domain.Services.Abstractions;
+using KissU.GreatWall.Results;
+using KissU.GreatWall.Service.Abstractions;
+using KissU.GreatWall.Service.Dtos.Requests;
 using Util;
 using Util.Applications;
 
-namespace GreatWall.Service.Implements {
+namespace KissU.GreatWall.Service.Implements {
     /// <summary>
     /// 安全服务
     /// </summary>

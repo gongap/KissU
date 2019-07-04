@@ -4,7 +4,7 @@ using Util.Applications.Dtos;
 using Util.Exceptions;
 using Util.Validations;
 
-namespace GreatWall.Service.Dtos.Requests {
+namespace KissU.GreatWall.Service.Dtos.Requests {
     /// <summary>
     /// 登录参数
     /// </summary>

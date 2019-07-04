@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using GreatWall.Domain.Models;
-using GreatWall.Domain.Repositories;
-using GreatWall.Domain.Services.Abstractions;
+using KissU.GreatWall.Domain.Models;
+using KissU.GreatWall.Domain.Repositories;
+using KissU.GreatWall.Domain.Services.Abstractions;
 using Util;
 using Util.Domains.Services;
 
-namespace GreatWall.Domain.Services.Implements {
+namespace KissU.GreatWall.Domain.Services.Implements {
     /// <summary>
     /// 权限服务
     /// </summary>

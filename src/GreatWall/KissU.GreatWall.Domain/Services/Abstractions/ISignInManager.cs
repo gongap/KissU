@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
-using GreatWall.Domain.Models;
-using GreatWall.Results;
+using KissU.GreatWall.Domain.Models;
+using KissU.GreatWall.Results;
 using Util.Domains.Services;
 
-namespace GreatWall.Domain.Services.Abstractions {
+namespace KissU.GreatWall.Domain.Services.Abstractions {
     /// <summary>
     /// 登录服务
     /// </summary>

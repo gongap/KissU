@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using GreatWall.Domain.Models;
+using KissU.GreatWall.Domain.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace GreatWall.Domain.Services.Implements {
+namespace KissU.GreatWall.Domain.Services.Implements {
     /// <summary>
     /// Identity用户服务
     /// </summary>

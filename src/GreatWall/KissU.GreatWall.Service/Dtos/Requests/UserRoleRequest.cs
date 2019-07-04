@@ -1,7 +1,7 @@
 ﻿using System;
 using Util.Applications.Dtos;
 
-namespace GreatWall.Service.Dtos.Requests {
+namespace KissU.GreatWall.Service.Dtos.Requests {
     /// <summary>
     /// 用户角色参数
     /// </summary>

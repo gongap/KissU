@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Util.Datas.UnitOfWorks;
 
-namespace GreatWall.Data.UnitOfWorks.SqlServer {
+namespace KissU.GreatWall.Data.UnitOfWorks.SqlServer {
     /// <summary>
     /// 工作单元
     /// </summary>

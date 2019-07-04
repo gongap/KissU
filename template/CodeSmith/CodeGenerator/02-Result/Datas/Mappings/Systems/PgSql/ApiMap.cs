@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using GreatWall.Systems.Domain.Models;
+using KissU.GreatWall.Systems.Domain.Models;
 
-namespace GreatWall.Data.Mappings.Systems.PgSql {
+namespace KissU.GreatWall.Data.Mappings.Systems.PgSql {
     /// <summary>
     /// Api资源映射配置
     /// </summary>

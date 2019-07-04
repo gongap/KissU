@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using GreatWall.Data.Pos;
-using GreatWall.Domain.Models;
-using GreatWall.Domain.Repositories;
+using KissU.GreatWall.Data.Pos;
+using KissU.GreatWall.Domain.Models;
+using KissU.GreatWall.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Util.Datas.Ef.Core;
 
-namespace GreatWall.Data.Repositories {
+namespace KissU.GreatWall.Data.Repositories {
     /// <summary>
     /// 权限仓储
     /// </summary>

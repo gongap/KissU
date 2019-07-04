@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using Xunit;
-using GreatWall.Service.Dtos.Systems;
-using GreatWall.Test.Models.Systems;
+using KissU.GreatWall.Service.Dtos.Systems;
+using KissU.GreatWall.Test.Models.Systems;
 
-namespace GreatWall.Test.Integration.Dtos.Systems {
+namespace KissU.GreatWall.Test.Integration.Dtos.Systems {
     /// <summary>
     /// 资源数据传输对象测试
     /// </summary>

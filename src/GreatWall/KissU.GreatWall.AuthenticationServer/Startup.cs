@@ -10,7 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace GreatWall.AuthenticationServer {
+namespace KissU.GreatWall.AuthenticationServer {
     public class Startup {
         public Startup( IConfiguration configuration ) {
             Configuration = configuration;

@@ -4,13 +4,13 @@ using Xunit;
 using Util;
 using Util.Helpers;
 using Util.Dependency;
-using GreatWall.Systems.Domain.Models;
-using GreatWall.Systems.Domain.Repositories;
-using GreatWall.Service.Abstractions.Systems;
-using GreatWall.Service.Dtos.Systems;
-using GreatWall.Test.Integration.Dtos.Systems;
+using KissU.GreatWall.Systems.Domain.Models;
+using KissU.GreatWall.Systems.Domain.Repositories;
+using KissU.GreatWall.Service.Abstractions.Systems;
+using KissU.GreatWall.Service.Dtos.Systems;
+using KissU.GreatWall.Test.Integration.Dtos.Systems;
 
-namespace GreatWall.Test.Integration.Services.Systems {
+namespace KissU.GreatWall.Test.Integration.Services.Systems {
     /// <summary>
     /// Api许可范围服务测试
     /// </summary>

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 using Util.Applications.Dtos;
 
-namespace GreatWall.Service.Dtos.Requests {
+namespace KissU.GreatWall.Service.Dtos.Requests {
     /// <summary>
     /// 修改角色参数
     /// </summary>

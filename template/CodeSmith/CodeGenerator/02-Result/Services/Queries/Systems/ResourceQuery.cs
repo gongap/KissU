@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Util;
 using Util.Datas.Queries.Trees;
 
-namespace GreatWall.Service.Queries.Systems {
+namespace KissU.GreatWall.Service.Queries.Systems {
     /// <summary>
     /// 资源查询参数
     /// </summary>

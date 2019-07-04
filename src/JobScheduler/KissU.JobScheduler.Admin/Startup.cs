@@ -13,6 +13,7 @@ using Util.Ui.Extensions;
 using Util.Webs.Extensions;
 using Util;
 using Microsoft.AspNetCore.Hosting;
+using KissU.JobScheduler.Data.UnitOfWorks.SqlServer;
 
 namespace KissU.JobScheduler.Admin
 {
@@ -70,7 +71,7 @@ namespace KissU.JobScheduler.Admin
 
             //添加EF工作单元
             //====== 支持Sql Server 2012+ ==========
-            services.AddUnitOfWork<IKissUUnitOfWork, KissU.JobScheduler.Data.UnitOfWorks.SqlServer.KissUUnitOfWork>(Configuration.GetConnectionString("DefaultConnection"));
+            services.AddUnitOfWork<IJobSchedulerUnitOfWork, JobSchedulerUnitOfWork>(Configuration.GetConnectionString("DefaultConnection"));
             //======= 支持Sql Server 2005+ ==========
             //services.AddUnitOfWork<ISampleUnitOfWork, KissU.JobScheduler.Data.UnitOfWorks.SqlServer.SampleUnitOfWork>( builder => {
             //    builder.UseSqlServer( Configuration.GetConnectionString( "DefaultConnection" ), option => option.UseRowNumberForPaging() );

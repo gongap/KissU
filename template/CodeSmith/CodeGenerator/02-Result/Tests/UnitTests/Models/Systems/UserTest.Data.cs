@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Util;
-using GreatWall.Systems.Domain.Models;
+using KissU.GreatWall.Systems.Domain.Models;
 
-namespace GreatWall.Test.Models.Systems {
+namespace KissU.GreatWall.Test.Models.Systems {
     /// <summary>
     /// 用户测试数据
     /// </summary>

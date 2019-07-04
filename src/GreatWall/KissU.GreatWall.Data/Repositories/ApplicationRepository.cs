@@ -1,8 +1,8 @@
-﻿using GreatWall.Domain.Models;
-using GreatWall.Domain.Repositories;
+﻿using KissU.GreatWall.Domain.Models;
+using KissU.GreatWall.Domain.Repositories;
 using Util.Datas.Ef.Core;
 
-namespace GreatWall.Data.Repositories {
+namespace KissU.GreatWall.Data.Repositories {
     /// <summary>
     /// 应用程序仓储
     /// </summary>

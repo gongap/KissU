@@ -1,11 +1,11 @@
 ﻿using System;
-using GreatWall.Data.Pos.Models;
-using GreatWall.Domain.Enums;
-using GreatWall.Domain.Models;
+using KissU.GreatWall.Data.Pos.Models;
+using KissU.GreatWall.Domain.Enums;
+using KissU.GreatWall.Domain.Models;
 using Util.Helpers;
 using Util.Maps;
 
-namespace GreatWall.Data.Pos.Extensions {
+namespace KissU.GreatWall.Data.Pos.Extensions {
     /// <summary>
     /// 资源持久化对象扩展
     /// </summary>

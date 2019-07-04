@@ -3,14 +3,14 @@ using Util.Maps;
 using Util.Domains.Repositories;
 using Util.Datas.Queries;
 using Util.Applications.Trees;
-using GreatWall.Data;
-using GreatWall.Service.Dtos.Systems;
-using GreatWall.Service.Queries.Systems;
-using GreatWall.Service.Abstractions.Systems;
-using GreatWall.Data.Pos.Systems;
-using GreatWall.Data.Stores.Abstractions.Systems;
+using KissU.GreatWall.Data;
+using KissU.GreatWall.Service.Dtos.Systems;
+using KissU.GreatWall.Service.Queries.Systems;
+using KissU.GreatWall.Service.Abstractions.Systems;
+using KissU.GreatWall.Data.Pos.Systems;
+using KissU.GreatWall.Data.Stores.Abstractions.Systems;
 
-namespace GreatWall.Service.Implements.Systems {
+namespace KissU.GreatWall.Service.Implements.Systems {
     /// <summary>
     /// 角色服务
     /// </summary>

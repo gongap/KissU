@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 using Util.Ui.Attributes;
 using Util.Applications.Dtos;
 
-namespace GreatWall.Service.Dtos.Systems {
+namespace KissU.GreatWall.Service.Dtos.Systems {
     /// <summary>
     /// 应用程序参数
     /// </summary>

@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "GreatWall.Api": {
+    "KissU.GreatWall.Api": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",

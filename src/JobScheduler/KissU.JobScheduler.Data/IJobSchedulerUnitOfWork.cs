@@ -5,7 +5,7 @@ namespace KissU.JobScheduler.Data
     /// <summary>
     /// 工作单元
     /// </summary>
-    public interface IKissUUnitOfWork : IUnitOfWork 
+    public interface IJobSchedulerUnitOfWork : IUnitOfWork 
 	{
     }
 }

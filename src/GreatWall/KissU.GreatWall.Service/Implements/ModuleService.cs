@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Threading.Tasks;
-using GreatWall.Data;
-using GreatWall.Domain.Repositories;
-using GreatWall.Service.Abstractions;
-using GreatWall.Service.Dtos;
-using GreatWall.Service.Dtos.Extensions;
-using GreatWall.Service.Dtos.Requests;
+using KissU.GreatWall.Data;
+using KissU.GreatWall.Domain.Repositories;
+using KissU.GreatWall.Service.Abstractions;
+using KissU.GreatWall.Service.Dtos;
+using KissU.GreatWall.Service.Dtos.Extensions;
+using KissU.GreatWall.Service.Dtos.Requests;
 using Util;
 using Util.Applications;
 using Util.Maps;
 
-namespace GreatWall.Service.Implements {
+namespace KissU.GreatWall.Service.Implements {
     /// <summary>
     /// 模块服务
     /// </summary>

@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using GreatWall.Domain.Models;
-using GreatWall.Domain.Repositories;
-using GreatWall.Domain.Services.Abstractions;
-using GreatWall.Extensions;
+using KissU.GreatWall.Domain.Models;
+using KissU.GreatWall.Domain.Repositories;
+using KissU.GreatWall.Domain.Services.Abstractions;
+using KissU.GreatWall.Extensions;
 using Microsoft.AspNetCore.Identity;
 using Util;
 using Util.Domains.Services;
 using Util.Exceptions;
 
-namespace GreatWall.Domain.Services.Implements {
+namespace KissU.GreatWall.Domain.Services.Implements {
     /// <summary>
     /// 角色服务
     /// </summary>

@@ -1,4 +1,4 @@
-﻿namespace GreatWall.Systems.Domain.Models {
+﻿namespace KissU.GreatWall.Systems.Domain.Models {
     /// <summary>
     /// 应用程序
     /// </summary>

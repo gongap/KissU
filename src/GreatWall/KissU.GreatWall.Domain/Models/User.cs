@@ -1,11 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using GreatWall.Encryptors;
+using KissU.GreatWall.Encryptors;
 using Util;
 using Util.Exceptions;
 using Util.Security.Encryptors;
 using Util.Validations;
 
-namespace GreatWall.Domain.Models {
+namespace KissU.GreatWall.Domain.Models {
     /// <summary>
     /// 用户
     /// </summary>

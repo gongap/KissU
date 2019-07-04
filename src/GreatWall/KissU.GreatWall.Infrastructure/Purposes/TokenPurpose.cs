@@ -1,4 +1,4 @@
-﻿namespace GreatWall.Purposes {
+﻿namespace KissU.GreatWall.Purposes {
     /// <summary>
     /// 令牌用途
     /// </summary>

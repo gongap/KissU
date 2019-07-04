@@ -1,11 +1,11 @@
 ﻿using System.Threading.Tasks;
-using GreatWall.Domain.Models;
-using GreatWall.Domain.Services.Abstractions;
-using GreatWall.Results;
+using KissU.GreatWall.Domain.Models;
+using KissU.GreatWall.Domain.Services.Abstractions;
+using KissU.GreatWall.Results;
 using Util;
 using Util.Exceptions;
 
-namespace GreatWall.Domain.Services.Implements {
+namespace KissU.GreatWall.Domain.Services.Implements {
     /// <summary>
     /// 登录服务
     /// </summary>

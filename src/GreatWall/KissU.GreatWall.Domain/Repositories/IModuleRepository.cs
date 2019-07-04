@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
-using GreatWall.Domain.Models;
+using KissU.GreatWall.Domain.Models;
 using Util.Domains.Trees;
 
-namespace GreatWall.Domain.Repositories {
+namespace KissU.GreatWall.Domain.Repositories {
     /// <summary>
     /// 模块仓储
     /// </summary>

@@ -20,7 +20,7 @@ namespace KissU.JobScheduler.Service.Implements.Systems {
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
         /// <param name="applicationRepository">应用程序仓储</param>
-        public ApplicationService( IKissUUnitOfWork unitOfWork, IApplicationRepository applicationRepository )
+        public ApplicationService( IJobSchedulerUnitOfWork unitOfWork, IApplicationRepository applicationRepository )
             : base( unitOfWork, applicationRepository ) {
             ApplicationRepository = applicationRepository;
         }

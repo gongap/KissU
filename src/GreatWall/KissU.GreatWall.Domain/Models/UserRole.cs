@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GreatWall.Domain.Models {
+namespace KissU.GreatWall.Domain.Models {
     /// <summary>
     /// 用户角色
     /// </summary>

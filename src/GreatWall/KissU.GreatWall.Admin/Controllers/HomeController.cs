@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace GreatWall.Controllers {
+namespace KissU.GreatWall.Controllers {
     /// <summary>
     /// 主控制器
     /// </summary>

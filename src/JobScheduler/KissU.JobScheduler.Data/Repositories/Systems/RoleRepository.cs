@@ -11,7 +11,7 @@ namespace KissU.JobScheduler.Data.Repositories.Systems {
         /// 初始化角色仓储
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
-        public RoleRepository( IKissUUnitOfWork unitOfWork ) : base( unitOfWork ) {
+        public RoleRepository( IJobSchedulerUnitOfWork unitOfWork ) : base( unitOfWork ) {
         }
     }
 }

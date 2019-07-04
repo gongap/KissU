@@ -1,8 +1,8 @@
 ﻿using Autofac;
 using Util.Dependency;
-using GreatWall.Data;
+using KissU.GreatWall.Data;
 
-namespace GreatWall.Service.Configs {
+namespace KissU.GreatWall.Service.Configs {
     /// <summary>
     /// 依赖注入配置
     /// </summary>

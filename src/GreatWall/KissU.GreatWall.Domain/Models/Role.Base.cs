@@ -5,7 +5,7 @@ using Util.Domains;
 using Util.Domains.Auditing;
 using Util.Domains.Trees;
 
-namespace GreatWall.Domain.Models {
+namespace KissU.GreatWall.Domain.Models {
     /// <summary>
     /// 角色
     /// </summary>

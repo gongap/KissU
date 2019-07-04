@@ -2,19 +2,19 @@
 using Microsoft.EntityFrameworkCore;
 using Util.Datas.UnitOfWorks;
 
-namespace KissU.JobScheduler.Data.UnitOfWorks.MySql 
+namespace KissU.JobScheduler.Data.UnitOfWorks.SqlServer 
 {
     /// <summary>
     /// 工作单元
     /// </summary>
-    public class KissUUnitOfWork : Util.Datas.Ef.MySql.UnitOfWork,IKissUUnitOfWork 
+    public class JobSchedulerUnitOfWork : Util.Datas.Ef.SqlServer.UnitOfWork,IJobSchedulerUnitOfWork 
 	{
         /// <summary>
         /// 初始化工作单元
         /// </summary>
         /// <param name="options">配置项</param>
         /// <param name="serviceProvider">服务提供器</param>
-        public KissUUnitOfWork( DbContextOptions options, IServiceProvider serviceProvider) : base( options, serviceProvider ) 
+        public JobSchedulerUnitOfWork( DbContextOptions options, IServiceProvider serviceProvider ) : base( options, serviceProvider ) 
 		{
         }
     }

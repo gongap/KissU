@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "GreatWall.Admin": {
+    "KissU.GreatWall.Admin": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

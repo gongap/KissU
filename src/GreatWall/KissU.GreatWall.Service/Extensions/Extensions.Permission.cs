@@ -1,14 +1,14 @@
 ﻿using System;
-using GreatWall.Data.Repositories;
-using GreatWall.Describers;
-using GreatWall.Domain.Models;
-using GreatWall.Domain.Services.Implements;
-using GreatWall.Extensions;
-using GreatWall.Options;
+using KissU.GreatWall.Data.Repositories;
+using KissU.GreatWall.Describers;
+using KissU.GreatWall.Domain.Models;
+using KissU.GreatWall.Domain.Services.Implements;
+using KissU.GreatWall.Extensions;
+using KissU.GreatWall.Options;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace GreatWall.Service.Extensions {
+namespace KissU.GreatWall.Service.Extensions {
     /// <summary>
     /// 权限扩展
     /// </summary>

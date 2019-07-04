@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace GreatWall.Menus {
+namespace KissU.GreatWall.Menus {
     /// <summary>
     /// 应用程序数据
     /// </summary>

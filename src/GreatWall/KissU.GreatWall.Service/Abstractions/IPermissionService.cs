@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using GreatWall.Service.Dtos.Requests;
-using GreatWall.Service.Queries;
+using KissU.GreatWall.Service.Dtos.Requests;
+using KissU.GreatWall.Service.Queries;
 using Util.Applications;
 
-namespace GreatWall.Service.Abstractions {
+namespace KissU.GreatWall.Service.Abstractions {
     /// <summary>
     /// 权限服务
     /// </summary>
