@@ -12,23 +12,22 @@ BenchmarkDotNet.Artifacts/
 
 /src/GreatWall/KissU.GreatWall.Admin/obj
 /src/GreatWall/KissU.GreatWall.Admin/bin
-/src/GreatWall/KissU.GreatWall.AuthenticationServer/bin
-/src/GreatWall/KissU.GreatWall.AuthenticationServer/obj
-/src/GreatWall/KissU.GreatWall.Data/bin
-/src/GreatWall/KissU.GreatWall.Data/obj
-/src/GreatWall/KissU.GreatWall.Domain/bin
-/src/GreatWall/KissU.GreatWall.Domain/obj
-/src/GreatWall/KissU.GreatWall.Infrastructure/bin
-/src/GreatWall/KissU.GreatWall.Infrastructure/obj
-/src/GreatWall/KissU.GreatWall.Service/bin
-/src/GreatWall/KissU.GreatWall.Service/obj
-
 /src/GreatWall/KissU.GreatWall.Admin/node_modules
 /src/GreatWall/KissU.GreatWall.Admin/wwwroot/dist
 /src/GreatWall/KissU.GreatWall.Admin/Typings/app/home/dashboard/html
 /src/GreatWall/KissU.GreatWall.Admin/Typings/app/systems/**/html
 /src/GreatWall/KissU.GreatWall.Api/bin
 /src/GreatWall/KissU.GreatWall.Api/obj
+/src/GreatWall/KissU.GreatWall.AuthenticationServer/bin
+/src/GreatWall/KissU.GreatWall.AuthenticationServer/obj
+/src/GreatWall/KissU.GreatWall.Service/bin
+/src/GreatWall/KissU.GreatWall.Service/obj
+/src/GreatWall/KissU.GreatWall.Domain/bin
+/src/GreatWall/KissU.GreatWall.Domain/obj
+/src/GreatWall/KissU.GreatWall.Infrastructure/bin
+/src/GreatWall/KissU.GreatWall.Infrastructure/obj
+/src/GreatWall/KissU.GreatWall.Data/bin
+/src/GreatWall/KissU.GreatWall.Data/obj
 
 /src/JobScheduler/KissU.JobScheduler.Admin/node_modules
 /src/JobScheduler/KissU.JobScheduler.Admin/wwwroot/dist
