@@ -104,6 +104,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "思维导图", "思维导图", "{41
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "数据模型", "数据模型", "{A420BB89-526F-4175-A582-EA125C762DD4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGenerator", "util\template\CodeSmith\CodeGenerator\CodeGenerator.csproj", "{BE5F43C5-9327-4D94-9052-386724AEDEC2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -230,6 +232,10 @@ Global
 		{792F645F-D117-4F6D-8E56-B52493D1E198}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{792F645F-D117-4F6D-8E56-B52493D1E198}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{792F645F-D117-4F6D-8E56-B52493D1E198}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE5F43C5-9327-4D94-9052-386724AEDEC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE5F43C5-9327-4D94-9052-386724AEDEC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE5F43C5-9327-4D94-9052-386724AEDEC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE5F43C5-9327-4D94-9052-386724AEDEC2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -277,6 +283,7 @@ Global
 		{2F905E6E-B8D0-42AC-A48C-92CBDFB0D9F6} = {59E1F1F5-A38D-4753-96B7-62BB2114C9D4}
 		{410F1637-CDA1-416B-90FC-94A7FC067F47} = {59E1F1F5-A38D-4753-96B7-62BB2114C9D4}
 		{A420BB89-526F-4175-A582-EA125C762DD4} = {59E1F1F5-A38D-4753-96B7-62BB2114C9D4}
+		{BE5F43C5-9327-4D94-9052-386724AEDEC2} = {D3123AC2-105A-4ABC-8E9E-371DBF8CB509}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}
