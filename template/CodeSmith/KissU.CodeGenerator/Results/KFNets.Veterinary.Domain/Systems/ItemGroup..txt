@@ -1,0 +1,14 @@
+﻿<ItemGroup>
+    <Compile Update="Systems/Models/Api.Base.cs">
+      <DependentUpon>Api.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Systems/Models/ApiScope.Base.cs">
+      <DependentUpon>ApiScope.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Systems/Models/Application.Base.cs">
+      <DependentUpon>Application.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Systems/Models/Role.Base.cs">
+      <DependentUpon>Role.cs</DependentUpon>
+    </Compile>
+</ItemGroup>

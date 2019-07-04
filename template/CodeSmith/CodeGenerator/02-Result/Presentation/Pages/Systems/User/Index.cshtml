@@ -1,0 +1,49 @@
+﻿@page
+@model UserDto
+<page-header title="用户"></page-header>
+<util-card show-border="false">
+    @*查询表单*@
+    @await Html.PartialAsync( "Index.Query" )
+    @*工具按钮*@
+    <util-a class="mr-sm" color="Primary" icon="Plus" text="新建" link="create"></util-a>
+    <util-button id="btnDelete" color="Danger" icon="Delete" text="删除" on-click="delete(btnDelete)"></util-button>
+    @*提示语*@
+    <util-alert class="my-md" type="Info" show-icon="true">
+        已选择<strong class="text-primary mx-md">{{getCheckedLength()}}</strong>行
+    </util-alert>
+    @*表格*@
+    <util-table id="tableUser" query-param="queryParam" base-url="user" sort="CreationTime desc">
+        <util-table-column type="Checkbox"></util-table-column>
+        <util-table-column type="LineNumber"></util-table-column>
+        <util-table-column for="UserName"></util-table-column>
+        <util-table-column for="NormalizedUserName"></util-table-column>
+        <util-table-column for="Email"></util-table-column>
+        <util-table-column for="NormalizedEmail"></util-table-column>
+        <util-table-column for="EmailConfirmed"></util-table-column>
+        <util-table-column for="PhoneNumber"></util-table-column>
+        <util-table-column for="PhoneNumberConfirmed"></util-table-column>
+        <util-table-column for="Password"></util-table-column>
+        <util-table-column for="PasswordHash"></util-table-column>
+        <util-table-column for="SafePassword"></util-table-column>
+        <util-table-column for="SafePasswordHash"></util-table-column>
+        <util-table-column for="TwoFactorEnabled"></util-table-column>
+        <util-table-column for="Enabled"></util-table-column>
+        <util-table-column for="DisabledTime"></util-table-column>
+        <util-table-column for="LockoutEnabled"></util-table-column>
+        <util-table-column for="LockoutEnd"></util-table-column>
+        <util-table-column for="AccessFailedCount"></util-table-column>
+        <util-table-column for="LoginCount"></util-table-column>
+        <util-table-column for="RegisterIp"></util-table-column>
+        <util-table-column for="LastLoginTime"></util-table-column>
+        <util-table-column for="LastLoginIp"></util-table-column>
+        <util-table-column for="CurrentLoginTime"></util-table-column>
+        <util-table-column for="CurrentLoginIp"></util-table-column>
+        <util-table-column for="SecurityStamp"></util-table-column>
+        <util-table-column for="Remark"></util-table-column>
+        <util-table-column title="操作">
+            <util-a class="mr-sm" color="Primary" shape="Circle" icon="Edit" tooltip="编辑" bind-link="['edit',row.id]"></util-a>
+            <util-button class="mr-sm" color="Danger" shape="Circle" icon="Delete" tooltip="删除" on-click="delete(null,row.id)"></util-button>
+            <util-a shape="Circle" icon="Eye" tooltip="详情" bind-link="['detail',row.id]"></util-a>
+        </util-table-column>
+    </util-table>
+</util-card>

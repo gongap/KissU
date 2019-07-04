@@ -1,0 +1,40 @@
+﻿@page
+@model UserDto
+@*标题*@
+<page-header title="编辑用户"></page-header>
+@*表单*@
+<util-card show-border="false">
+    <util-form id="form" label-span="3" control-span="21" gutter="16">
+        <util-textbox for="UserName"></util-textbox>
+        <util-textbox for="NormalizedUserName"></util-textbox>
+        <util-textbox for="Email"></util-textbox>
+        <util-textbox for="NormalizedEmail"></util-textbox>
+        <util-switch for="EmailConfirmed"></util-switch>
+        <util-textbox for="PhoneNumber"></util-textbox>
+        <util-switch for="PhoneNumberConfirmed"></util-switch>
+        <util-textbox for="Password"></util-textbox>
+        <util-textbox for="PasswordHash"></util-textbox>
+        <util-textbox for="SafePassword"></util-textbox>
+        <util-textbox for="SafePasswordHash"></util-textbox>
+        <util-switch for="TwoFactorEnabled"></util-switch>
+        <util-switch for="Enabled"></util-switch>
+        <util-textbox for="DisabledTime"></util-textbox>
+        <util-switch for="LockoutEnabled"></util-switch>
+        <util-textbox for="LockoutEnd"></util-textbox>
+        <util-textbox for="AccessFailedCount"></util-textbox>
+        <util-textbox for="LoginCount"></util-textbox>
+        <util-textbox for="RegisterIp"></util-textbox>
+        <util-textbox for="LastLoginTime"></util-textbox>
+        <util-textbox for="LastLoginIp"></util-textbox>
+        <util-textbox for="CurrentLoginTime"></util-textbox>
+        <util-textbox for="CurrentLoginIp"></util-textbox>
+        <util-textbox for="SecurityStamp"></util-textbox>
+        <util-textbox for="Remark"></util-textbox>
+        <util-form-item>
+            <util-form-control offset="2">
+                <util-button class="mr-sm" id="btnSubmit" validate-form="true" color="Primary" on-click="submit(form,btnSubmit)"></util-button>
+                <util-button text="返回" on-click="back()"></util-button>
+            </util-form-control>
+        </util-form-item>
+    </util-form>
+</util-card>

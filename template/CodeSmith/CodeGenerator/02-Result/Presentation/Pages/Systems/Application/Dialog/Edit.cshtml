@@ -1,0 +1,21 @@
+﻿@page
+@model ApplicationDto
+@*标题*@
+<page-header title="编辑应用程序" [autoBreadcrumb]="false"></page-header>
+@*表单*@
+<util-card show-border="false">
+    <util-form id="form" label-span="4" control-span="20" gutter="16">
+        <util-textbox for="Code"></util-textbox>
+        <util-textbox for="Name"></util-textbox>
+        <util-switch for="Enabled"></util-switch>
+        <util-switch for="RegisterEnabled"></util-switch>
+        <util-textbox for="Remark"></util-textbox>
+        <util-textbox for="Extend"></util-textbox>
+        <util-form-item justify="End">
+            <util-form-control class="w-auto">
+                <util-button class="mr-sm" text="取消" on-click="close()"></util-button>
+                <util-button id="btnSubmit" validate-form="true" color="Primary" on-click="submit(form,btnSubmit)"></util-button>
+            </util-form-control>
+        </util-form-item>
+    </util-form>
+</util-card>
