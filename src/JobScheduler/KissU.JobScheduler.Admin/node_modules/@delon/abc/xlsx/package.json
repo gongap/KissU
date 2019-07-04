@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/xlsx.umd.js",
+  "module": "../fesm5/xlsx.js",
+  "es2015": "../fesm2015/xlsx.js",
+  "esm5": "../esm5/xlsx/xlsx.js",
+  "esm2015": "../esm2015/xlsx/xlsx.js",
+  "fesm5": "../fesm5/xlsx.js",
+  "fesm2015": "../fesm2015/xlsx.js",
+  "typings": "xlsx.d.ts",
+  "metadata": "xlsx.metadata.json",
+  "sideEffects": false,
+  "name": "@delon/abc/xlsx"
+}

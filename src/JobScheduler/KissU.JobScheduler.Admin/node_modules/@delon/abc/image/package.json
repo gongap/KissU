@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/image.umd.js",
+  "module": "../fesm5/image.js",
+  "es2015": "../fesm2015/image.js",
+  "esm5": "../esm5/image/image.js",
+  "esm2015": "../esm2015/image/image.js",
+  "fesm5": "../fesm5/image.js",
+  "fesm2015": "../fesm2015/image.js",
+  "typings": "image.d.ts",
+  "metadata": "image.metadata.json",
+  "sideEffects": false,
+  "name": "@delon/abc/image"
+}

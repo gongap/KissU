@@ -1,0 +1,12 @@
+
+<page-header title="Api资源详情" [autoBreadcrumb]="false"></page-header>
+<nz-card [nzBordered]="false">
+    <nz-descriptions [nzBordered]="true" [nzColumn]="3">
+        <nz-descriptions-item nzTitle="名称">{{model.name}}</nz-descriptions-item>
+        <nz-descriptions-item nzTitle="显示名">{{model.displayName}}</nz-descriptions-item>
+        <nz-descriptions-item nzTitle="描述">{{model.description}}</nz-descriptions-item>
+        <nz-descriptions-item nzTitle="声明类型">{{model.claimTypes}}</nz-descriptions-item>
+        <nz-descriptions-item nzTitle="是否启用"><i *ngIf="model.enabled" nz-icon="" nzType="check"></i><i *ngIf="!(model.enabled)" nz-icon="" nzType="close"></i></nz-descriptions-item>
+        <nz-descriptions-item nzTitle="CreationTime">{{ model.creationTime | date:"yyyy-MM-dd" }}</nz-descriptions-item>
+    </nz-descriptions>
+</nz-card>

@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/result.umd.js",
+  "module": "../fesm5/result.js",
+  "es2015": "../fesm2015/result.js",
+  "esm5": "../esm5/result/result.js",
+  "esm2015": "../esm2015/result/result.js",
+  "fesm5": "../fesm5/result.js",
+  "fesm2015": "../fesm2015/result.js",
+  "typings": "result.d.ts",
+  "metadata": "result.metadata.json",
+  "sideEffects": false,
+  "name": "@delon/abc/result"
+}

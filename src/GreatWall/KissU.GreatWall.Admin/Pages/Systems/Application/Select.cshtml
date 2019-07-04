@@ -1,0 +1,9 @@
+﻿@page
+@model ApplicationDto
+@*表单*@
+<util-card title="应用程序">
+    <nz-spin *ngIf="loading"></nz-spin>
+    <util-menu mode="Inline">
+        <util-menu-item ng-for="let item of list" selected="item==selected" on-click="click(item)">{{item.name}}</util-menu-item>
+    </util-menu>
+</util-card>

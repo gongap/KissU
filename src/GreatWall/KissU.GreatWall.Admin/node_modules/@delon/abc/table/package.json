@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/table.umd.js",
+  "module": "../fesm5/table.js",
+  "es2015": "../fesm2015/table.js",
+  "esm5": "../esm5/table/table.js",
+  "esm2015": "../esm2015/table/table.js",
+  "fesm5": "../fesm5/table.js",
+  "fesm2015": "../fesm2015/table.js",
+  "typings": "table.d.ts",
+  "metadata": "table.metadata.json",
+  "sideEffects": false,
+  "name": "@delon/abc/table"
+}

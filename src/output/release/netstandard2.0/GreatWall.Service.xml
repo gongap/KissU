@@ -1,0 +1,1218 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>KissU.GreatWall.Service</name>
+    </assembly>
+    <members>
+        <member name="T:GreatWall.Service.Abstractions.IApplicationService">
+            <summary>
+            应用程序服务
+            </summary>
+        </member>
+        <member name="T:GreatWall.Service.Abstractions.IModuleQueryService">
+            <summary>
+            模块查询服务
+            </summary>
+        </member>
+        <member name="T:GreatWall.Service.Abstractions.IModuleService">
+            <summary>
+            模块服务
+            </summary>
+        </member>
+        <member name="M:GreatWall.Service.Abstractions.IModuleService.CreateAsync(GreatWall.Service.Dtos.Requests.CreateModuleRequest)">
+            <summary>
+            创建模块
+            </summary>
+            <param name="request">创建模块参数</param>
+        </member>
+        <member name="M:GreatWall.Service.Abstractions.IModuleService.UpdateAsync(GreatWall.Service.Dtos.ModuleDto)">
+            <summary>
+            修改模块
+            </summary>
+            <param name="request">模块参数</param>
+        </member>
+        <member name="T:GreatWall.Service.Abstractions.IPermissionService">
+            <summary>
+            权限服务
+            </summary>
+        </member>
+        <member name="M:GreatWall.Service.Abstractions.IPermissionService.GetResourceIdsAsync(GreatWall.Service.Queries.PermissionQuery)">
+            <summary>
+            获取资源标识列表
+            </summary>
+            <param name="query">权限参数</param>
+        </member>
+        <member name="M:GreatWall.Service.Abstractions.IPermissionService.SaveAsync(GreatWall.Service.Dtos.Requests.SavePermissionRequest)">
+            <summary>
+            保存权限
+            </summary>
+            <param name="request">参数</param>
+        </member>
+        <member name="T:GreatWall.Service.Abstractions.IRoleService">
+            <summary>
+            角色服务
+            </summary>
+        </member>
+        <member name="M:GreatWall.Service.Abstractions.IRoleService.CreateAsync(GreatWall.Service.Dtos.Requests.CreateRoleRequest)">
+            <summary>
+            创建角色
+            </summary>
+            <param name="request">创建角色参数</param>
+        </member>
+        <member name="M:GreatWall.Service.Abstractions.IRoleService.UpdateAsync(GreatWall.Service.Dtos.Requests.UpdateRoleRequest)">
+            <summary>
+            修改角色
+            </summary>
+            <param name="request">修改角色参数</param>
+        </member>
+        <member name="M:GreatWall.Service.Abstractions.IRoleService.AddUsersToRoleAsync(GreatWall.Service.Dtos.Requests.UserRoleRequest)">
+            <summary>
+            添加用户到角色
+            </summary>
+            <param name="request">用户角色参数</param>
+        </member>
+        <member name="M:GreatWall.Service.Abstractions.IRoleService.RemoveUsersFromRoleAsync(GreatWall.Service.Dtos.Requests.UserRoleRequest)">
+            <summary>
+            从角色移除用户
+            </summary>
+            <param name="request">用户角色参数</param>
+        </member>
+        <member name="T:GreatWall.Service.Abstractions.ISecurityService">
+            <summary>
+            安全服务
+            </summary>
+        </member>
+        <member name="M:GreatWall.Service.Abstractions.ISecurityService.SignInAsync(GreatWall.Service.Dtos.Requests.LoginRequest)">
+            <summary>
+            登录
+            </summary>
+            <param name="request">登录参数</param>
+        </member>
+        <member name="M:GreatWall.Service.Abstractions.ISecurityService.SignOutAsync">
+            <summary>
+            退出登录
+            </summary>
+        </member>
+        <member name="T:GreatWall.Service.Abstractions.IUserService">
+            <summary>
+            用户服务
+            </summary>
+        </member>
+        <member name="M:GreatWall.Service.Abstractions.IUserService.CreateAsync(GreatWall.Service.Dtos.Requests.CreateUserRequest)">
+            <summary>
+            创建用户
+            </summary>
+            <param name="request">创建用户参数</param>
+        </member>
+        <member name="T:GreatWall.Service.Dtos.ApplicationDto">
+            <summary>
+            应用程序参数
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.ApplicationDto.Code">
+            <summary>
+            应用程序编码
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.ApplicationDto.Name">
+            <summary>
+            应用程序名称
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.ApplicationDto.Enabled">
+            <summary>
+            启用
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.ApplicationDto.RegisterEnabled">
+            <summary>
+            启用注册
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.ApplicationDto.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.ApplicationDto.CreationTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.ApplicationDto.CreatorId">
+            <summary>
+            创建人编号
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.ApplicationDto.LastModificationTime">
+            <summary>
+            最后修改时间
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.ApplicationDto.LastModifierId">
+            <summary>
+            最后修改人编号
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.ApplicationDto.Version">
+            <summary>
+            版本号
+            </summary>
+        </member>
+        <member name="T:GreatWall.Service.Dtos.Extensions.ResourceDtoExtension">
+            <summary>
+            资源参数扩展
+            </summary>
+        </member>
+        <member name="M:GreatWall.Service.Dtos.Extensions.ResourceDtoExtension.ToModuleDto(GreatWall.Data.Pos.ResourcePo)">
+            <summary>
+            转成模块参数
+            </summary>
+        </member>
+        <member name="M:GreatWall.Service.Dtos.Extensions.ResourceDtoExtension.ToModule(GreatWall.Service.Dtos.Requests.CreateModuleRequest)">
+            <summary>
+            转成模块
+            </summary> 
+        </member>
+        <member name="T:GreatWall.Service.Dtos.ModuleDto">
+            <summary>
+            模块参数
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.ModuleDto.ApplicationId">
+            <summary>
+            应用程序标识
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.ModuleDto.ApplicationName">
+            <summary>
+            应用程序
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.ModuleDto.Name">
+            <summary>
+            模块名称
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.ModuleDto.Url">
+            <summary>
+            模块地址
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.ModuleDto.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.ModuleDto.CreationTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.ModuleDto.CreatorId">
+            <summary>
+            创建人编号
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.ModuleDto.Version">
+            <summary>
+            版本号
+            </summary>
+        </member>
+        <member name="T:GreatWall.Service.Dtos.Requests.CreateModuleRequest">
+            <summary>
+            创建模块参数
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.Requests.CreateModuleRequest.ApplicationId">
+            <summary>
+            应用程序标识
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.Requests.CreateModuleRequest.ParentId">
+            <summary>
+            父标识
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.Requests.CreateModuleRequest.Name">
+            <summary>
+            模块名称
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.Requests.CreateModuleRequest.Url">
+            <summary>
+            模块地址
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.Requests.CreateModuleRequest.Icon">
+            <summary>
+            图标
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.Requests.CreateModuleRequest.Expanded">
+            <summary>
+            展开
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.Requests.CreateModuleRequest.Enabled">
+            <summary>
+            启用
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.Requests.CreateModuleRequest.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.Requests.CreateModuleRequest.SortId">
+            <summary>
+            排序号
+            </summary>
+        </member>
+        <member name="T:GreatWall.Service.Dtos.Requests.CreateRoleRequest">
+            <summary>
+            创建角色参数
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.Requests.CreateRoleRequest.Code">
+            <summary>
+            角色编码
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.Requests.CreateRoleRequest.Name">
+            <summary>
+            角色名称
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.Requests.CreateRoleRequest.ParentId">
+            <summary>
+            父角色标识
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.Requests.CreateRoleRequest.Enabled">
+            <summary>
+            启用
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.Requests.CreateRoleRequest.Type">
+            <summary>
+            角色类型
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.Requests.CreateRoleRequest.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="T:GreatWall.Service.Dtos.Requests.CreateUserRequest">
+            <summary>
+            创建用户参数
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.Requests.CreateUserRequest.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.Requests.CreateUserRequest.Email">
+            <summary>
+            安全邮箱
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.Requests.CreateUserRequest.PhoneNumber">
+            <summary>
+            安全手机
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.Requests.CreateUserRequest.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="T:GreatWall.Service.Dtos.Requests.LoginRequest">
+            <summary>
+            登录参数
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.Requests.LoginRequest.Account">
+            <summary>
+            帐号，可以是用户名，手机号或电子邮件
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.Requests.LoginRequest.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.Requests.LoginRequest.Email">
+            <summary>
+            电子邮件
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.Requests.LoginRequest.PhoneNumber">
+            <summary>
+            手机号
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.Requests.LoginRequest.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.Requests.LoginRequest.Remember">
+            <summary>
+            记住密码
+            </summary>
+        </member>
+        <member name="M:GreatWall.Service.Dtos.Requests.LoginRequest.Validate">
+            <summary>
+            验证
+            </summary>
+        </member>
+        <member name="T:GreatWall.Service.Dtos.Requests.SavePermissionRequest">
+            <summary>
+            保存权限参数
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.Requests.SavePermissionRequest.ApplicationId">
+            <summary>
+            应用程序标识
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.Requests.SavePermissionRequest.RoleId">
+            <summary>
+            角色标识
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.Requests.SavePermissionRequest.ResourceIds">
+            <summary>
+            资源标识
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.Requests.SavePermissionRequest.IsDeny">
+            <summary>
+            拒绝
+            </summary>
+        </member>
+        <member name="T:GreatWall.Service.Dtos.Requests.UpdateRoleRequest">
+            <summary>
+            修改角色参数
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.Requests.UpdateRoleRequest.Id">
+            <summary>
+            角色标识
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.Requests.UpdateRoleRequest.Code">
+            <summary>
+            角色编码
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.Requests.UpdateRoleRequest.Name">
+            <summary>
+            角色名称
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.Requests.UpdateRoleRequest.ParentId">
+            <summary>
+            父角色标识
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.Requests.UpdateRoleRequest.Enabled">
+            <summary>
+            启用
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.Requests.UpdateRoleRequest.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.Requests.UpdateRoleRequest.Version">
+            <summary>
+            版本号
+            </summary>
+        </member>
+        <member name="T:GreatWall.Service.Dtos.Requests.UserRoleRequest">
+            <summary>
+            用户角色参数
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.Requests.UserRoleRequest.RoleId">
+            <summary>
+            角色标识
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.Requests.UserRoleRequest.UserIds">
+            <summary>
+            用户标识列表
+            </summary>
+        </member>
+        <member name="T:GreatWall.Service.Dtos.RoleDto">
+            <summary>
+            角色参数
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.RoleDto.Code">
+            <summary>
+            角色编码
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.RoleDto.Name">
+            <summary>
+            角色名称
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.RoleDto.Type">
+            <summary>
+            角色类型
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.RoleDto.IsAdmin">
+            <summary>
+            管理员
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.RoleDto.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.RoleDto.PinYin">
+            <summary>
+            拼音简码
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.RoleDto.CreationTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.RoleDto.Version">
+            <summary>
+            版本号
+            </summary>
+        </member>
+        <member name="T:GreatWall.Service.Dtos.UserDto">
+            <summary>
+            用户参数
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.UserDto.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.UserDto.Email">
+            <summary>
+            电子邮箱
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.UserDto.EmailConfirmed">
+            <summary>
+            邮箱已确认
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.UserDto.PhoneNumber">
+            <summary>
+            手机号
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.UserDto.PhoneNumberConfirmed">
+            <summary>
+            手机已确认
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.UserDto.TwoFactorEnabled">
+            <summary>
+            启用两步认证
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.UserDto.Enabled">
+            <summary>
+            启用
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.UserDto.DisabledTime">
+            <summary>
+            冻结时间
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.UserDto.LockoutEnabled">
+            <summary>
+            启用锁定
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.UserDto.LockoutEnd">
+            <summary>
+            锁定截止
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.UserDto.AccessFailedCount">
+            <summary>
+            登录失败次数
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.UserDto.LoginCount">
+            <summary>
+            登录次数
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.UserDto.RegisterIp">
+            <summary>
+            注册Ip
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.UserDto.LastLoginTime">
+            <summary>
+            上次登陆时间
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.UserDto.LastLoginIp">
+            <summary>
+            上次登陆Ip
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.UserDto.CurrentLoginTime">
+            <summary>
+            本次登陆时间
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.UserDto.CurrentLoginIp">
+            <summary>
+            本次登陆Ip
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.UserDto.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.UserDto.CreationTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.UserDto.CreatorId">
+            <summary>
+            创建人
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.UserDto.LastModificationTime">
+            <summary>
+            最后修改时间
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.UserDto.LastModifierId">
+            <summary>
+            最后修改人
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Dtos.UserDto.Version">
+            <summary>
+            版本号
+            </summary>
+        </member>
+        <member name="T:GreatWall.Service.Extensions.Extensions">
+            <summary>
+            权限扩展
+            </summary>
+        </member>
+        <member name="M:GreatWall.Service.Extensions.Extensions.AddPermission(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{GreatWall.Options.PermissionOptions})">
+            <summary>
+            添加权限服务
+            </summary>
+            <param name="services">服务集合</param>
+            <param name="setupAction">配置操作</param>
+        </member>
+        <member name="T:GreatWall.Service.Implements.ApplicationService">
+            <summary>
+            应用程序服务
+            </summary>
+        </member>
+        <member name="M:GreatWall.Service.Implements.ApplicationService.#ctor(GreatWall.Data.IGreatWallUnitOfWork,GreatWall.Domain.Repositories.IApplicationRepository)">
+            <summary>
+            初始化应用程序服务
+            </summary>
+            <param name="unitOfWork">工作单元</param>
+            <param name="applicationRepository">应用程序仓储</param>
+        </member>
+        <member name="P:GreatWall.Service.Implements.ApplicationService.ApplicationRepository">
+            <summary>
+            应用程序仓储
+            </summary>
+        </member>
+        <member name="M:GreatWall.Service.Implements.ApplicationService.CreateQuery(GreatWall.Service.Queries.ApplicationQuery)">
+            <summary>
+            创建查询对象
+            </summary>
+            <param name="query">查询参数</param>
+        </member>
+        <member name="M:GreatWall.Service.Implements.ApplicationService.CreateBeforeAsync(GreatWall.Domain.Models.Application)">
+            <summary>
+            创建前操作
+            </summary>
+        </member>
+        <member name="M:GreatWall.Service.Implements.ApplicationService.ThrowCodeRepeatException(System.String)">
+            <summary>
+            抛出编码重复异常
+            </summary>
+        </member>
+        <member name="M:GreatWall.Service.Implements.ApplicationService.ThrowNameRepeatException(System.String)">
+            <summary>
+            抛出名称重复异常
+            </summary>
+        </member>
+        <member name="M:GreatWall.Service.Implements.ApplicationService.UpdateBeforeAsync(GreatWall.Domain.Models.Application)">
+            <summary>
+            修改前操作
+            </summary>
+        </member>
+        <member name="T:GreatWall.Service.Implements.ModuleQueryService">
+            <summary>
+            模块查询服务
+            </summary>
+        </member>
+        <member name="M:GreatWall.Service.Implements.ModuleQueryService.#ctor(GreatWall.Data.IGreatWallUnitOfWork,GreatWall.Data.Stores.Abstractions.IResourcePoStore,GreatWall.Domain.Repositories.IModuleRepository)">
+            <summary>
+            初始化资源服务
+            </summary>
+            <param name="unitOfWork">工作单元</param>
+            <param name="resourceStore">资源存储器</param>
+            <param name="moduleRepository">模块仓储</param>
+        </member>
+        <member name="P:GreatWall.Service.Implements.ModuleQueryService.UnitOfWork">
+            <summary>
+            工作单元
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Implements.ModuleQueryService.ResourceStore">
+            <summary>
+            资源存储器
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Implements.ModuleQueryService.ModuleRepository">
+            <summary>
+            模块仓储
+            </summary>
+        </member>
+        <member name="M:GreatWall.Service.Implements.ModuleQueryService.CreateQuery(GreatWall.Service.Queries.ResourceQuery)">
+            <summary>
+            创建查询对象
+            </summary>
+            <param name="param">查询参数</param>
+        </member>
+        <member name="M:GreatWall.Service.Implements.ModuleQueryService.Filter(System.Linq.IQueryable{GreatWall.Data.Pos.ResourcePo},GreatWall.Service.Queries.ResourceQuery)">
+            <summary>
+            过滤
+            </summary>
+        </member>
+        <member name="M:GreatWall.Service.Implements.ModuleQueryService.ToDto(GreatWall.Data.Pos.ResourcePo)">
+            <summary>
+            转成数据传输对象
+            </summary>
+        </member>
+        <member name="T:GreatWall.Service.Implements.ModuleService">
+            <summary>
+            模块服务
+            </summary>
+        </member>
+        <member name="M:GreatWall.Service.Implements.ModuleService.#ctor(GreatWall.Data.IGreatWallUnitOfWork,GreatWall.Domain.Repositories.IModuleRepository)">
+            <summary>
+            初始化模块服务
+            </summary>
+            <param name="unitOfWork">工作单元</param>
+            <param name="moduleRepository">模块仓储</param>
+        </member>
+        <member name="P:GreatWall.Service.Implements.ModuleService.UnitOfWork">
+            <summary>
+            工作单元
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Implements.ModuleService.ModuleRepository">
+            <summary>
+            模块仓储
+            </summary>
+        </member>
+        <member name="M:GreatWall.Service.Implements.ModuleService.CreateAsync(GreatWall.Service.Dtos.Requests.CreateModuleRequest)">
+            <summary>
+            创建模块
+            </summary>
+            <param name="request">创建模块参数</param>
+        </member>
+        <member name="M:GreatWall.Service.Implements.ModuleService.UpdateAsync(GreatWall.Service.Dtos.ModuleDto)">
+            <summary>
+            修改模块
+            </summary>
+            <param name="request">模块参数</param>
+        </member>
+        <member name="T:GreatWall.Service.Implements.PermissionService">
+            <summary>
+            权限服务
+            </summary>
+        </member>
+        <member name="M:GreatWall.Service.Implements.PermissionService.#ctor(GreatWall.Data.IGreatWallUnitOfWork,GreatWall.Domain.Services.Abstractions.IPermissionManager,GreatWall.Domain.Repositories.IPermissionRepository)">
+            <summary>
+            初始化权限服务
+            </summary>
+            <param name="unitOfWork">工作单元</param>
+            <param name="permissionManager">权限服务</param>
+            <param name="permissionRepository">权限仓储</param>
+        </member>
+        <member name="P:GreatWall.Service.Implements.PermissionService.GreatWallUnitOfWork">
+            <summary>
+            工作单元
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Implements.PermissionService.PermissionManager">
+            <summary>
+            权限服务
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Implements.PermissionService.PermissionRepository">
+            <summary>
+            权限仓储
+            </summary>
+        </member>
+        <member name="M:GreatWall.Service.Implements.PermissionService.GetResourceIdsAsync(GreatWall.Service.Queries.PermissionQuery)">
+            <summary>
+            获取资源标识列表
+            </summary>
+            <param name="query">权限参数</param>
+        </member>
+        <member name="M:GreatWall.Service.Implements.PermissionService.SaveAsync(GreatWall.Service.Dtos.Requests.SavePermissionRequest)">
+            <summary>
+            保存权限
+            </summary>
+            <param name="request">参数</param>
+        </member>
+        <member name="T:GreatWall.Service.Implements.RoleService">
+            <summary>
+            角色服务
+            </summary>
+        </member>
+        <member name="M:GreatWall.Service.Implements.RoleService.#ctor(GreatWall.Data.IGreatWallUnitOfWork,GreatWall.Domain.Repositories.IRoleRepository,GreatWall.Domain.Services.Abstractions.IRoleManager)">
+            <summary>
+            初始化角色服务
+            </summary>
+            <param name="unitOfWork">工作单元</param>
+            <param name="roleRepository">角色仓储</param>
+            <param name="roleManager">角色服务</param>
+        </member>
+        <member name="P:GreatWall.Service.Implements.RoleService.UnitOfWork">
+            <summary>
+            工作单元
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Implements.RoleService.RoleRepository">
+            <summary>
+            角色仓储
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Implements.RoleService.RoleManager">
+            <summary>
+            角色服务
+            </summary>
+        </member>
+        <member name="M:GreatWall.Service.Implements.RoleService.CreateQuery(GreatWall.Service.Queries.RoleQuery)">
+            <summary>
+            创建查询对象
+            </summary>
+            <param name="param">查询参数</param>
+        </member>
+        <member name="M:GreatWall.Service.Implements.RoleService.CreateAsync(GreatWall.Service.Dtos.Requests.CreateRoleRequest)">
+            <summary>
+            创建角色
+            </summary>
+            <param name="request">创建角色参数</param>
+        </member>
+        <member name="M:GreatWall.Service.Implements.RoleService.UpdateAsync(GreatWall.Service.Dtos.Requests.UpdateRoleRequest)">
+            <summary>
+            修改角色
+            </summary>
+            <param name="request">修改角色参数</param>
+        </member>
+        <member name="M:GreatWall.Service.Implements.RoleService.AddUsersToRoleAsync(GreatWall.Service.Dtos.Requests.UserRoleRequest)">
+            <summary>
+            添加用户到角色
+            </summary>
+            <param name="request">用户角色参数</param>
+        </member>
+        <member name="M:GreatWall.Service.Implements.RoleService.RemoveUsersFromRoleAsync(GreatWall.Service.Dtos.Requests.UserRoleRequest)">
+            <summary>
+            从角色移除用户
+            </summary>
+            <param name="request">用户角色参数</param>
+        </member>
+        <member name="T:GreatWall.Service.Implements.SecurityService">
+            <summary>
+            安全服务
+            </summary>
+        </member>
+        <member name="M:GreatWall.Service.Implements.SecurityService.#ctor(GreatWall.Data.IGreatWallUnitOfWork,GreatWall.Domain.Services.Abstractions.ISignInManager,GreatWall.Domain.Services.Abstractions.IUserManager)">
+            <summary>
+            初始化安全服务
+            </summary>
+            <param name="unitOfWork">工作单元</param>
+            <param name="signInManager">登录服务</param>
+            <param name="userManager">用户服务</param>
+        </member>
+        <member name="P:GreatWall.Service.Implements.SecurityService.UnitOfWork">
+            <summary>
+            工作单元
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Implements.SecurityService.SignInManager">
+            <summary>
+            登录服务
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Implements.SecurityService.UserManager">
+            <summary>
+            用户服务
+            </summary>
+        </member>
+        <member name="M:GreatWall.Service.Implements.SecurityService.SignInAsync(GreatWall.Service.Dtos.Requests.LoginRequest)">
+            <summary>
+            登录
+            </summary>
+            <param name="request">登录参数</param>
+        </member>
+        <member name="M:GreatWall.Service.Implements.SecurityService.GetUser(GreatWall.Service.Dtos.Requests.LoginRequest)">
+            <summary>
+            获取用户
+            </summary>
+        </member>
+        <member name="M:GreatWall.Service.Implements.SecurityService.SignOutAsync">
+            <summary>
+            退出登录
+            </summary>
+        </member>
+        <member name="T:GreatWall.Service.Implements.UserService">
+            <summary>
+            用户服务
+            </summary>
+        </member>
+        <member name="M:GreatWall.Service.Implements.UserService.#ctor(GreatWall.Data.IGreatWallUnitOfWork,GreatWall.Domain.Repositories.IUserRepository,GreatWall.Domain.Services.Abstractions.IUserManager)">
+            <summary>
+            初始化用户服务
+            </summary>
+            <param name="unitOfWork">工作单元</param>
+            <param name="userRepository">用户仓储</param>
+            <param name="userManager">用户服务</param>
+        </member>
+        <member name="P:GreatWall.Service.Implements.UserService.UnitOfWork">
+            <summary>
+            工作单元
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Implements.UserService.UserRepository">
+            <summary>
+            用户仓储
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Implements.UserService.UserManager">
+            <summary>
+            用户服务
+            </summary>
+        </member>
+        <member name="M:GreatWall.Service.Implements.UserService.CreateQuery(GreatWall.Service.Queries.UserQuery)">
+            <summary>
+            创建查询对象
+            </summary>
+            <param name="param">查询参数</param>
+        </member>
+        <member name="M:GreatWall.Service.Implements.UserService.Filter(System.Linq.IQueryable{GreatWall.Domain.Models.User},GreatWall.Service.Queries.UserQuery)">
+            <summary>
+            过滤查询
+            </summary>
+        </member>
+        <member name="M:GreatWall.Service.Implements.UserService.CreateAsync(GreatWall.Service.Dtos.Requests.CreateUserRequest)">
+            <summary>
+            创建用户
+            </summary>
+            <param name="request">创建用户参数</param>
+        </member>
+        <member name="T:GreatWall.Service.Queries.ApplicationQuery">
+            <summary>
+            应用程序查询参数
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.ApplicationQuery.ApplicationId">
+            <summary>
+            应用程序标识
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.ApplicationQuery.Code">
+            <summary>
+            应用程序编码
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.ApplicationQuery.Name">
+            <summary>
+            应用程序名称
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.ApplicationQuery.Enabled">
+            <summary>
+            启用
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.ApplicationQuery.RegisterEnabled">
+            <summary>
+            启用注册
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.ApplicationQuery.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.ApplicationQuery.BeginCreationTime">
+            <summary>
+            起始创建时间
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.ApplicationQuery.EndCreationTime">
+            <summary>
+            结束创建时间
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.ApplicationQuery.CreatorId">
+            <summary>
+            创建人编号
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.ApplicationQuery.BeginLastModificationTime">
+            <summary>
+            起始最后修改时间
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.ApplicationQuery.EndLastModificationTime">
+            <summary>
+            结束最后修改时间
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.ApplicationQuery.LastModifierId">
+            <summary>
+            最后修改人编号
+            </summary>
+        </member>
+        <member name="T:GreatWall.Service.Queries.PermissionQuery">
+            <summary>
+            权限查询参数
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.PermissionQuery.ApplicationId">
+            <summary>
+            应用程序标识
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.PermissionQuery.PermissionId">
+            <summary>
+            权限标识
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.PermissionQuery.RoleId">
+            <summary>
+            角色标识
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.PermissionQuery.ResourceId">
+            <summary>
+            资源标识
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.PermissionQuery.IsDeny">
+            <summary>
+            拒绝
+            </summary>
+        </member>
+        <member name="T:GreatWall.Service.Queries.ResourceQuery">
+            <summary>
+            资源查询参数
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.ResourceQuery.ResourceId">
+            <summary>
+            标识
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.ResourceQuery.ApplicationId">
+            <summary>
+            应用程序标识
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.ResourceQuery.RoleId">
+            <summary>
+            角色标识
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.ResourceQuery.Uri">
+            <summary>
+            资源标识
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.ResourceQuery.Name">
+            <summary>
+            资源名称
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.ResourceQuery.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.ResourceQuery.BeginCreationTime">
+            <summary>
+            起始创建时间
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.ResourceQuery.EndCreationTime">
+            <summary>
+            结束创建时间
+            </summary>
+        </member>
+        <member name="T:GreatWall.Service.Queries.RoleQuery">
+            <summary>
+            角色查询参数
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.RoleQuery.RoleId">
+            <summary>
+            角色标识
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.RoleQuery.Code">
+            <summary>
+            角色编码
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.RoleQuery.Name">
+            <summary>
+            角色名称
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.RoleQuery.Type">
+            <summary>
+            角色类型
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.RoleQuery.IsAdmin">
+            <summary>
+            管理员
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.RoleQuery.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.RoleQuery.PinYin">
+            <summary>
+            拼音简码
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.RoleQuery.BeginCreationTime">
+            <summary>
+            起始创建时间
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.RoleQuery.EndCreationTime">
+            <summary>
+            结束创建时间
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.RoleQuery.CreatorId">
+            <summary>
+            创建人编号
+            </summary>
+        </member>
+        <member name="T:GreatWall.Service.Queries.UserQuery">
+            <summary>
+            用户查询参数
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.UserQuery.UserId">
+            <summary>
+            用户标识
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.UserQuery.RoleId">
+            <summary>
+            角色标识
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.UserQuery.ExceptRoleId">
+            <summary>
+            排除的角色标识
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.UserQuery.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.UserQuery.Email">
+            <summary>
+            安全邮箱
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.UserQuery.EmailConfirmed">
+            <summary>
+            邮箱已确认
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.UserQuery.PhoneNumber">
+            <summary>
+            安全手机
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.UserQuery.PhoneNumberConfirmed">
+            <summary>
+            手机已确认
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.UserQuery.Enabled">
+            <summary>
+            启用
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.UserQuery.BeginDisabledTime">
+            <summary>
+            起始冻结时间
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.UserQuery.EndDisabledTime">
+            <summary>
+            结束冻结时间
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.UserQuery.RegisterIp">
+            <summary>
+            注册Ip
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.UserQuery.Remark">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.UserQuery.BeginCreationTime">
+            <summary>
+            起始创建时间
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.UserQuery.EndCreationTime">
+            <summary>
+            结束创建时间
+            </summary>
+        </member>
+        <member name="P:GreatWall.Service.Queries.UserQuery.CreatorId">
+            <summary>
+            创建人
+            </summary>
+        </member>
+    </members>
+</doc>

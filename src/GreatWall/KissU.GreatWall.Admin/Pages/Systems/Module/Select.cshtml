@@ -1,0 +1,18 @@
+﻿@page
+@model ModuleDto
+@*标题*@
+<page-header title="选择模块" [autoBreadcrumb]="false"></page-header>
+@*表单*@
+<util-card show-border="false">
+    @*查询表单*@
+    <partial name="Index.Query" />
+    @*表格*@
+    <util-tree-table id="tableModule" show-checkbox="true" multiple="false" query-param="queryParam" base-url="module"
+                     sort="CreationTime desc" expand-all="true" checked-keys="checkedIds" show-pagination="false"
+                     scroll-height="400">
+        <util-tree-table-column for="Name"></util-tree-table-column>
+        <util-tree-table-column for="ApplicationName"></util-tree-table-column>
+        <util-tree-table-column for="Url"></util-tree-table-column>
+        <util-tree-table-column for="Enabled"></util-tree-table-column>
+    </util-tree-table>
+</util-card>

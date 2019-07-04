@@ -1,0 +1,23 @@
+﻿@page
+@model UserDto
+<page-header title="已选用户列表" [autoBreadcrumb]="false"></page-header>
+<util-card show-border="false">
+    @*查询表单*@
+    <partial name="~/Pages/Systems/User/Index.Query.cshtml" />
+    @*工具按钮*@
+    <util-button class="mr-sm" color="Primary" icon="UserAdd" text="添加用户到角色" on-click="openSelectDialog()"></util-button>
+    <util-button id="btnDelete" color="Danger" icon="UserDelete" text="从角色移除用户" on-click="removeUsersFromRole(btnDelete)"></util-button>
+    @*提示语*@
+    <util-alert class="my-md" type="Info" show-icon="true">
+        当前角色: <strong class="text-primary mx-md">{{data.name}}</strong>
+    </util-alert>
+    @*表格*@
+    <util-table id="tableUser" query-param="queryParam" base-url="user" sort="CreationTime desc">
+        <util-table-column type="Checkbox"></util-table-column>
+        <util-table-column type="LineNumber"></util-table-column>
+        <util-table-column for="UserName"></util-table-column>
+        <util-table-column for="PhoneNumber"></util-table-column>
+        <util-table-column for="Email"></util-table-column>
+        <util-table-column for="Enabled"></util-table-column>
+    </util-table>
+</util-card>

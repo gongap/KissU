@@ -1,0 +1,20 @@
+﻿@model ResourceQuery
+
+@*查询表单*@
+<util-form layout="Inline" class="search__form">
+    <util-row gutter="32">
+        <util-column span="6">
+            <util-textbox for="Name" label-text="模块名称"></util-textbox>
+        </util-column>
+        <util-column span="6">
+            <util-textbox for="Uri" label-text="模块地址"></util-textbox>
+        </util-column>
+        <util-column span="6" >
+            <util-radio for="Enabled" show-label="true"></util-radio>
+        </util-column>
+        <util-column span="6">
+            <util-button id="btnQuery" text="查询" color="Primary" icon="Search" on-click="query(btnQuery)"></util-button>
+            <util-button class="mx-sm" id="btnRefresh" text="刷新" icon="Sync" on-click="refresh(btnRefresh)"></util-button>
+        </util-column>
+    </util-row>
+</util-form>

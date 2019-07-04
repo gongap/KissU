@@ -1,0 +1,24 @@
+
+    <nz-tree [nzData]="nodes" (nzClick)="activeNode($event)" (nzDblClick)="openFolder($event)">
+      <ng-template #contextTemplate>
+        <ul nz-menu nzInDropDown>
+          <li nz-menu-item (click)="selectDropdown()">Action 1</li>
+          <li nz-menu-item (click)="selectDropdown()">Action 2</li>
+        </ul>
+      </ng-template>
+      <ng-template #nzTreeTemplate let-node>
+        <span class="custom-node" [class.active]="activedNode?.key === node.key">
+          <span *ngIf="!node.isLeaf" (contextmenu)="contextMenu($event, contextTemplate)">
+            <i nz-icon [type]="node.isExpanded ? 'folder-open' : 'folder'" (click)="openFolder(node)"></i>
+            <span class="folder-name">{{ node.title }}</span>
+            <span class="folder-desc">created by {{ node?.origin?.author | lowercase }}</span>
+          </span>
+          <span *ngIf="node.isLeaf" (contextmenu)="contextMenu($event, contextTemplate)">
+            <i nz-icon type="file"></i>
+            <span class="file-name">{{ node.title }}</span>
+            <span class="file-desc">modified by {{ node?.origin?.author | lowercase }}</span>
+          </span>
+        </span>
+      </ng-template>
+    </nz-tree>
+  

@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/view.umd.js",
+  "module": "../fesm5/view.js",
+  "es2015": "../fesm2015/view.js",
+  "esm5": "../esm5/view/view.js",
+  "esm2015": "../esm2015/view/view.js",
+  "fesm5": "../fesm5/view.js",
+  "fesm2015": "../fesm2015/view.js",
+  "typings": "view.d.ts",
+  "metadata": "view.metadata.json",
+  "sideEffects": false,
+  "name": "@delon/abc/view"
+}

@@ -1,0 +1,43 @@
+<page-header title="Api资源"></page-header>
+<nz-card [nzBordered]="false">
+    
+<form autocomplete="off" class="search__form" nz-form="" nzLayout="inline">
+    <div nz-row="" [nzGutter]="32">
+        <div nz-col="" [nzSpan]="8">
+            <nz-form-item><nz-form-label>名称</nz-form-label><nz-form-control><x-textbox name="name" [(model)]="queryParam.name"></x-textbox></nz-form-control></nz-form-item>
+        </div>
+        <div nz-col="" [nzSpan]="8">
+            <nz-form-item><nz-form-label>显示名</nz-form-label><nz-form-control><x-textbox name="displayName" [(model)]="queryParam.displayName"></x-textbox></nz-form-control></nz-form-item>
+        </div>
+        <div *ngIf="expand" nz-col="" [nzSpan]="8">
+            <nz-form-item><nz-form-label>描述</nz-form-label><nz-form-control><x-textbox name="description" [(model)]="queryParam.description"></x-textbox></nz-form-control></nz-form-item>
+        </div>
+        <div nz-col="" [class.text-right]="expand" [nzSpan]="8">
+            <x-button #btnQuery="" (onClick)="query(btnQuery)" color="primary" text="查询"><ng-template><i nz-icon="" nzType="search"></i></ng-template></x-button>
+            <x-button #btnRefresh="" (onClick)="refresh(btnRefresh)" class="mx-sm" text="刷新"><ng-template><i nz-icon="" nzType="sync"></i></ng-template></x-button>
+            <a (click)="expand=!expand">
+                <i class="anticon" [class.anticon-down]="!expand" [class.anticon-up]="expand"></i>
+            </a>
+        </div>
+    </div>
+</form>
+    <x-button (onClick)="openCreateDialog()" class="mr-sm" color="primary" text="新建"><ng-template><i nz-icon="" nzType="plus"></i></ng-template></x-button>
+    <x-button #btnDelete="" (onClick)="delete(btnDelete)" color="danger" text="删除"><ng-template><i nz-icon="" nzType="delete"></i></ng-template></x-button>
+    <nz-alert class="my-md" nzType="info" [nzMessage]="m_d2ff4238c17b47ef9a1e1f1443bfac32" [nzShowIcon]="true"><ng-template #m_d2ff4238c17b47ef9a1e1f1443bfac32="">
+        已选择<strong class="text-primary mx-md">{{getCheckedLength()}}</strong>行
+    </ng-template></nz-alert>
+    <nz-table-wrapper #tableApi_wrapper="" baseUrl="api" sortKey="CreationTime desc" [(queryParam)]="queryParam"><nz-table #tableApi="" (nzPageIndexChange)="tableApi_wrapper.pageIndexChange($event)" (nzPageSizeChange)="tableApi_wrapper.pageSizeChange($event)" [(nzPageIndex)]="tableApi_wrapper.queryParam.page" [(nzPageSize)]="tableApi_wrapper.queryParam.pageSize" [nzData]="tableApi_wrapper.dataSource" [nzFrontPagination]="false" [nzLoading]="tableApi_wrapper.loading" [nzShowPagination]="tableApi_wrapper.showPagination" [nzShowQuickJumper]="true" [nzShowSizeChanger]="true" [nzShowTotal]="template_tableApi" [nzTotal]="tableApi_wrapper.totalCount"><thead><tr><th (nzCheckedChange)="tableApi_wrapper.masterToggle()" nzWidth="30px" [nzChecked]="tableApi_wrapper.isMasterChecked()" [nzDisabled]="!tableApi_wrapper.dataSource.length" [nzIndeterminate]="tableApi_wrapper.isMasterIndeterminate()" [nzShowCheckbox]="tableApi_wrapper.multiple">{{tableApi_wrapper.multiple?'':'单选'}}</th><th nzWidth="70px">序号</th><th>名称</th><th>显示名</th><th>描述</th><th>声明类型</th><th>是否启用</th><th>操作</th></tr></thead><tbody><tr *ngFor="let row of tableApi.data">
+        <td (click)="$event.stopPropagation()" (nzCheckedChange)="tableApi_wrapper.checkedSelection.toggle(row)" [nzChecked]="tableApi_wrapper.checkedSelection.isSelected(row)" [nzShowCheckbox]="tableApi_wrapper.multiple"><label (click)="$event.stopPropagation()" (ngModelChange)="tableApi_wrapper.checkRowOnly(row)" *ngIf="!tableApi_wrapper.multiple" name="radio_tableApi" nz-radio="" [ngModel]="tableApi_wrapper.checkedSelection.isSelected(row)"></label></td>
+        <td>{{row.lineNumber}}</td>
+        <td>{{row.name}}</td>
+        <td>{{row.displayName}}</td>
+        <td>{{row.description}}</td>
+        <td>{{row.claimTypes}}</td>
+        <td>{{row.enabled?'是':'否'}}</td>
+        <td>
+            <x-button (onClick)="openEditDialog(row)" class="mr-sm" color="primary" shape="circle" tooltip="编辑"><ng-template><i nz-icon="" nzType="edit"></i></ng-template></x-button>
+            <x-button (onClick)="delete(null,row.id)" class="mr-sm" color="danger" shape="circle" tooltip="删除"><ng-template><i nz-icon="" nzType="delete"></i></ng-template></x-button>
+            <x-button (onClick)="openDetailDialog(row)" shape="circle" tooltip="详情"><ng-template><i nz-icon="" nzType="eye"></i></ng-template></x-button>
+        </td>
+    </tr></tbody></nz-table><ng-template #template_tableApi="" let-range="range" let-total="">{{ range[0] }}-{{ range[1] }} 共 {{ total }} 条</ng-template></nz-table-wrapper>
+</nz-card>

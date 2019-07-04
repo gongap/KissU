@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/ellipsis.umd.js",
+  "module": "../fesm5/ellipsis.js",
+  "es2015": "../fesm2015/ellipsis.js",
+  "esm5": "../esm5/ellipsis/ellipsis.js",
+  "esm2015": "../esm2015/ellipsis/ellipsis.js",
+  "fesm5": "../fesm5/ellipsis.js",
+  "fesm2015": "../fesm2015/ellipsis.js",
+  "typings": "ellipsis.d.ts",
+  "metadata": "ellipsis.metadata.json",
+  "sideEffects": false,
+  "name": "@delon/abc/ellipsis"
+}

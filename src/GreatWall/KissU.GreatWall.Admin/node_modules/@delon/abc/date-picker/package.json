@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/datePicker.umd.js",
+  "module": "../fesm5/datePicker.js",
+  "es2015": "../fesm2015/datePicker.js",
+  "esm5": "../esm5/date-picker/datePicker.js",
+  "esm2015": "../esm2015/date-picker/datePicker.js",
+  "fesm5": "../fesm5/datePicker.js",
+  "fesm2015": "../fesm2015/datePicker.js",
+  "typings": "datePicker.d.ts",
+  "metadata": "datePicker.metadata.json",
+  "sideEffects": false,
+  "name": "@delon/abc/date-picker"
+}

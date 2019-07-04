@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/zip.umd.js",
+  "module": "../fesm5/zip.js",
+  "es2015": "../fesm2015/zip.js",
+  "esm5": "../esm5/zip/zip.js",
+  "esm2015": "../esm2015/zip/zip.js",
+  "fesm5": "../fesm5/zip.js",
+  "fesm2015": "../fesm2015/zip.js",
+  "typings": "zip.d.ts",
+  "metadata": "zip.metadata.json",
+  "sideEffects": false,
+  "name": "@delon/abc/zip"
+}

@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/fullContent.umd.js",
+  "module": "../fesm5/fullContent.js",
+  "es2015": "../fesm2015/fullContent.js",
+  "esm5": "../esm5/full-content/fullContent.js",
+  "esm2015": "../esm2015/full-content/fullContent.js",
+  "fesm5": "../fesm5/fullContent.js",
+  "fesm2015": "../fesm2015/fullContent.js",
+  "typings": "fullContent.d.ts",
+  "metadata": "fullContent.metadata.json",
+  "sideEffects": false,
+  "name": "@delon/abc/full-content"
+}

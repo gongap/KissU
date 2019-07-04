@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/count-down.umd.js",
+  "module": "../fesm5/count-down.js",
+  "es2015": "../fesm2015/count-down.js",
+  "esm5": "../esm5/count-down/count-down.js",
+  "esm2015": "../esm2015/count-down/count-down.js",
+  "fesm5": "../fesm5/count-down.js",
+  "fesm2015": "../fesm2015/count-down.js",
+  "typings": "count-down.d.ts",
+  "metadata": "count-down.metadata.json",
+  "sideEffects": false,
+  "name": "@delon/abc/count-down"
+}

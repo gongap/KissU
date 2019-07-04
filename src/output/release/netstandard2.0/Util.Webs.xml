@@ -1,0 +1,939 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Util.Webs</name>
+    </assembly>
+    <members>
+        <member name="T:Util.Webs.Commons.Result">
+            <summary>
+            返回结果
+            </summary>
+        </member>
+        <member name="P:Util.Webs.Commons.Result.Code">
+            <summary>
+            状态码
+            </summary>
+        </member>
+        <member name="P:Util.Webs.Commons.Result.Message">
+            <summary>
+            消息
+            </summary>
+        </member>
+        <member name="P:Util.Webs.Commons.Result.Data">
+            <summary>
+            数据
+            </summary>
+        </member>
+        <member name="M:Util.Webs.Commons.Result.#ctor(Util.Webs.Commons.StateCode,System.String,System.Object)">
+            <summary>
+            初始化返回结果
+            </summary>
+            <param name="code">状态码</param>
+            <param name="message">消息</param>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:Util.Webs.Commons.Result.ExecuteResultAsync(Microsoft.AspNetCore.Mvc.ActionContext)">
+            <summary>
+            执行结果
+            </summary>
+        </member>
+        <member name="T:Util.Webs.Commons.StateCode">
+            <summary>
+            状态码
+            </summary>
+        </member>
+        <member name="F:Util.Webs.Commons.StateCode.Ok">
+            <summary>
+            成功
+            </summary>
+        </member>
+        <member name="F:Util.Webs.Commons.StateCode.Fail">
+            <summary>
+            失败
+            </summary>
+        </member>
+        <member name="T:Util.Webs.Controllers.CrudControllerBase`2">
+            <summary>
+            Crud控制器
+            </summary>
+            <typeparam name="TDto">数据传输对象类型</typeparam>
+            <typeparam name="TQuery">查询参数类型</typeparam>
+        </member>
+        <member name="M:Util.Webs.Controllers.CrudControllerBase`2.#ctor(Util.Applications.ICrudService{`0,`1})">
+            <summary>
+            初始化Crud控制器
+            </summary>
+            <param name="service">Crud服务</param>
+        </member>
+        <member name="T:Util.Webs.Controllers.CrudControllerBase`3">
+            <summary>
+            Crud控制器
+            </summary>
+            <typeparam name="TDto">数据传输对象类型</typeparam>
+            <typeparam name="TRequest">参数类型</typeparam>
+            <typeparam name="TQuery">查询参数类型</typeparam>
+        </member>
+        <member name="M:Util.Webs.Controllers.CrudControllerBase`3.#ctor(Util.Applications.ICrudService{`0,`1,`2})">
+            <summary>
+            初始化Crud控制器
+            </summary>
+            <param name="service">Crud服务</param>
+        </member>
+        <member name="T:Util.Webs.Controllers.CrudControllerBase`4">
+            <summary>
+            Crud控制器
+            </summary>
+            <typeparam name="TDto">数据传输对象类型</typeparam>
+            <typeparam name="TCreateRequest">创建参数类型</typeparam>
+            <typeparam name="TUpdateRequest">修改参数类型</typeparam>
+            <typeparam name="TQuery">查询参数类型</typeparam>
+        </member>
+        <member name="F:Util.Webs.Controllers.CrudControllerBase`4._service">
+            <summary>
+            Crud服务
+            </summary>
+        </member>
+        <member name="M:Util.Webs.Controllers.CrudControllerBase`4.#ctor(Util.Applications.ICrudService{`0,`2,`1,`2,`3})">
+            <summary>
+            初始化Crud控制器
+            </summary>
+            <param name="service">Crud服务</param>
+        </member>
+        <member name="M:Util.Webs.Controllers.CrudControllerBase`4.CreateAsync(`1)">
+            <summary>
+            创建
+            </summary>
+            <remarks>
+            调用范例:
+            POST
+            /api/customer
+            </remarks>
+            <param name="request">创建参数</param>
+        </member>
+        <member name="M:Util.Webs.Controllers.CrudControllerBase`4.CreateBefore(`1)">
+            <summary>
+            创建前操作
+            </summary>
+            <param name="dto">创建参数</param>
+        </member>
+        <member name="M:Util.Webs.Controllers.CrudControllerBase`4.UpdateAsync(System.String,`2)">
+            <summary>
+            修改
+            </summary>
+            <remarks>
+            调用范例:
+            PUT
+            /api/customer/1
+            </remarks>
+            <param name="id">标识</param>
+            <param name="request">修改参数</param>
+        </member>
+        <member name="M:Util.Webs.Controllers.CrudControllerBase`4.UpdateBefore(`2)">
+            <summary>
+            修改前操作
+            </summary>
+            <param name="dto">修改参数</param>
+        </member>
+        <member name="M:Util.Webs.Controllers.CrudControllerBase`4.DeleteAsync(System.String)">
+            <summary>
+            删除，注意：该方法用于删除单个实体，批量删除请使用POST提交，否则可能失败
+            </summary>
+            <remarks>
+            调用范例:
+            DELETE
+            /api/customer/1
+            </remarks>
+            <param name="id">标识</param>
+        </member>
+        <member name="M:Util.Webs.Controllers.CrudControllerBase`4.BatchDeleteAsync(System.String)">
+            <summary>
+            批量删除，注意：body参数需要添加引号，"'1,2,3'"而不是"1,2,3"
+            </summary>
+            <remarks>
+            调用范例:
+            POST   
+            /api/customer/delete
+            body: "'1,2,3'"
+            </remarks>
+            <param name="ids">标识列表，多个Id用逗号分隔，范例：1,2,3</param>
+        </member>
+        <member name="T:Util.Webs.Controllers.QueryControllerBase`2">
+            <summary>
+            查询控制器
+            </summary>
+            <typeparam name="TDto">数据传输对象类型</typeparam>
+            <typeparam name="TQuery">查询参数类型</typeparam>    
+        </member>
+        <member name="F:Util.Webs.Controllers.QueryControllerBase`2._service">
+            <summary>
+            查询服务
+            </summary>
+        </member>
+        <member name="M:Util.Webs.Controllers.QueryControllerBase`2.#ctor(Util.Applications.IQueryService{`0,`1})">
+            <summary>
+            初始化查询控制器
+            </summary>
+            <param name="service">查询服务</param>
+        </member>
+        <member name="M:Util.Webs.Controllers.QueryControllerBase`2.GetAsync(System.String)">
+            <summary>
+            获取单个实例
+            </summary>
+            <remarks> 
+            调用范例: 
+            GET
+            /api/customer/1 
+            </remarks>
+            <param name="id">标识</param>
+        </member>
+        <member name="M:Util.Webs.Controllers.QueryControllerBase`2.PagerQueryAsync(`1)">
+            <summary>
+            分页查询
+            </summary>
+            <remarks> 
+            调用范例: 
+            GET
+            /api/customer?name=a
+            </remarks>
+            <param name="query">查询参数</param>
+        </member>
+        <member name="M:Util.Webs.Controllers.QueryControllerBase`2.PagerQueryBefore(`1)">
+            <summary>
+            分页查询前操作
+            </summary>
+            <param name="query">查询参数</param>
+        </member>
+        <member name="M:Util.Webs.Controllers.QueryControllerBase`2.ToPagerQueryResult(Util.Domains.Repositories.PagerList{`0})">
+            <summary>
+            转换分页查询结果
+            </summary>
+            <param name="result">分页查询结果</param>
+        </member>
+        <member name="M:Util.Webs.Controllers.QueryControllerBase`2.QueryAsync(`1)">
+            <summary>
+            查询
+            </summary>
+            <remarks> 
+            调用范例: 
+            GET
+            /api/customer/query?name=a
+            </remarks>
+            <param name="query">查询参数</param>
+        </member>
+        <member name="M:Util.Webs.Controllers.QueryControllerBase`2.QueryBefore(`1)">
+            <summary>
+            查询前操作
+            </summary>
+            <param name="query">查询参数</param>
+        </member>
+        <member name="M:Util.Webs.Controllers.QueryControllerBase`2.ToQueryResult(System.Collections.Generic.List{`0})">
+            <summary>
+            转换查询结果
+            </summary>
+            <param name="result">查询结果</param>
+        </member>
+        <member name="M:Util.Webs.Controllers.QueryControllerBase`2.GetItemsAsync(`1)">
+            <summary>
+            获取项列表
+            </summary>
+            <param name="query">查询参数</param>
+        </member>
+        <member name="M:Util.Webs.Controllers.QueryControllerBase`2.ToItem(`0)">
+            <summary>
+            将Dto转换为列表项
+            </summary>
+            <param name="dto">数据传输对象</param>
+        </member>
+        <member name="T:Util.Webs.Controllers.Trees.ControllerBase`3">
+            <summary>
+            树形控制器
+            </summary>
+            <typeparam name="TDto">数据传输对象类型</typeparam>
+            <typeparam name="TQuery">查询参数类型</typeparam>
+            <typeparam name="TParentId">父标识类型</typeparam>
+        </member>
+        <member name="F:Util.Webs.Controllers.Trees.ControllerBase`3._service">
+            <summary>
+            树型服务
+            </summary>
+        </member>
+        <member name="M:Util.Webs.Controllers.Trees.ControllerBase`3.#ctor(Util.Applications.Trees.ITreeService{`0,`1,`2})">
+            <summary>
+            初始化树型控制器
+            </summary>
+            <param name="service">树型服务</param>
+        </member>
+        <member name="M:Util.Webs.Controllers.Trees.ControllerBase`3.GetLoadMode">
+            <summary>
+            获取加载模式
+            </summary>
+        </member>
+        <member name="M:Util.Webs.Controllers.Trees.ControllerBase`3.GetAsync(System.String)">
+            <summary>
+            获取单个实例
+            </summary>
+            <remarks> 
+            调用范例: 
+            GET
+            /api/customer/1 
+            </remarks>
+            <param name="id">标识</param>
+        </member>
+        <member name="M:Util.Webs.Controllers.Trees.ControllerBase`3.DeleteAsync(System.String)">
+            <summary>
+            删除，注意：该方法用于删除单个实体，批量删除请使用POST提交，否则可能失败
+            </summary>
+            <remarks>
+            调用范例:
+            DELETE
+            /api/customer/1
+            </remarks>
+            <param name="id">标识</param>
+        </member>
+        <member name="M:Util.Webs.Controllers.Trees.ControllerBase`3.BatchDeleteAsync(System.String)">
+            <summary>
+            批量删除，注意：body参数需要添加引号，"'1,2,3'"而不是"1,2,3"
+            </summary>
+            <remarks>
+            调用范例:
+            POST   
+            /api/customer/delete
+            body: "'1,2,3'"
+            </remarks>
+            <param name="ids">标识列表，多个Id用逗号分隔，范例：1,2,3</param>
+        </member>
+        <member name="M:Util.Webs.Controllers.Trees.ControllerBase`3.Enable(System.String)">
+            <summary>
+            启用
+            </summary>
+            <param name="ids">标识列表</param>
+        </member>
+        <member name="M:Util.Webs.Controllers.Trees.ControllerBase`3.Disable(System.String)">
+            <summary>
+            冻结
+            </summary>
+            <param name="ids">标识列表</param>
+        </member>
+        <member name="M:Util.Webs.Controllers.Trees.ControllerBase`3.SwapSortAsync(System.String)">
+            <summary>
+            交换排序
+            </summary>
+            /// <remarks>
+            调用范例:
+            POST   
+            /api/customer/SwapSort
+            body: "'1,2'"
+            </remarks>
+            <param name="ids">两个Id的标识列表，用逗号分隔，范例：1,2</param>
+        </member>
+        <member name="M:Util.Webs.Controllers.Trees.ControllerBase`3.FixAsync(`1)">
+            <summary>
+            修正排序
+            </summary> 
+            <param name="parameter">查询参数</param>
+        </member>
+        <member name="T:Util.Webs.Controllers.WebApiControllerBase">
+            <summary>
+            WebApi控制器
+            </summary>
+        </member>
+        <member name="F:Util.Webs.Controllers.WebApiControllerBase._log">
+            <summary>
+            日志
+            </summary>
+        </member>
+        <member name="P:Util.Webs.Controllers.WebApiControllerBase.Log">
+            <summary>
+            日志
+            </summary>
+        </member>
+        <member name="M:Util.Webs.Controllers.WebApiControllerBase.GetLog">
+            <summary>
+            获取日志操作
+            </summary>
+        </member>
+        <member name="P:Util.Webs.Controllers.WebApiControllerBase.Session">
+            <summary>
+            会话
+            </summary>
+        </member>
+        <member name="M:Util.Webs.Controllers.WebApiControllerBase.Success(System.Object,System.String)">
+            <summary>
+            返回成功消息
+            </summary>
+            <param name="data">数据</param>
+            <param name="message">消息</param>
+        </member>
+        <member name="M:Util.Webs.Controllers.WebApiControllerBase.Fail(System.String)">
+            <summary>
+            返回失败消息
+            </summary>
+            <param name="message">消息</param>
+        </member>
+        <member name="T:Util.Webs.Extensions.Extensions">
+            <summary>
+            中间件扩展
+            </summary>
+            <summary>
+            服务扩展
+            </summary>
+            <summary>
+            Swagger扩展
+            </summary>
+            <summary>
+            服务扩展
+            </summary>
+        </member>
+        <member name="M:Util.Webs.Extensions.Extensions.UseErrorLog(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            注册错误日志管道
+            </summary>
+            <param name="builder">应用程序生成器</param>
+        </member>
+        <member name="M:Util.Webs.Extensions.Extensions.AddRazorHtml(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            注册Razor静态Html生成器
+            </summary>
+            <param name="services">服务集合</param>
+        </member>
+        <member name="M:Util.Webs.Extensions.Extensions.UseSwaggerX(Microsoft.AspNetCore.Builder.IApplicationBuilder,System.Action{Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIOptions})">
+            <summary>
+            配置自定义Swagger服务
+            </summary>
+            <param name="builder">应用程序生成器</param>
+            <param name="swaggerUiSetup">swaggerUI设置</param>
+        </member>
+        <member name="M:Util.Webs.Extensions.Extensions.AddXsrfToken(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            注册XSRF令牌服务
+            </summary>
+            <param name="services">服务集合</param>
+        </member>
+        <member name="M:Util.Webs.Extensions.Extensions.UseXsrfToken(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            配置XSRF令牌
+            </summary>
+            <param name="app">应用程序生成器</param>
+        </member>
+        <member name="T:Util.Webs.Filters.AntiDuplicateRequestAttribute">
+            <summary>
+            防止重复提交过滤器
+            </summary>
+        </member>
+        <member name="P:Util.Webs.Filters.AntiDuplicateRequestAttribute.Key">
+            <summary>
+            业务标识
+            </summary>
+        </member>
+        <member name="P:Util.Webs.Filters.AntiDuplicateRequestAttribute.Type">
+            <summary>
+            锁类型
+            </summary>
+        </member>
+        <member name="P:Util.Webs.Filters.AntiDuplicateRequestAttribute.Interval">
+            <summary>
+            再次提交时间间隔，单位：秒
+            </summary>
+        </member>
+        <member name="M:Util.Webs.Filters.AntiDuplicateRequestAttribute.OnActionExecutionAsync(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext,Microsoft.AspNetCore.Mvc.Filters.ActionExecutionDelegate)">
+            <summary>
+            执行
+            </summary>
+        </member>
+        <member name="M:Util.Webs.Filters.AntiDuplicateRequestAttribute.CreateLock">
+            <summary>
+            创建业务锁
+            </summary>
+        </member>
+        <member name="M:Util.Webs.Filters.AntiDuplicateRequestAttribute.GetKey(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)">
+            <summary>
+            获取锁定标识
+            </summary>
+        </member>
+        <member name="M:Util.Webs.Filters.AntiDuplicateRequestAttribute.GetExpiration">
+            <summary>
+            获取到期时间间隔
+            </summary>
+        </member>
+        <member name="M:Util.Webs.Filters.AntiDuplicateRequestAttribute.GetFailMessage">
+            <summary>
+            获取失败消息
+            </summary>
+        </member>
+        <member name="T:Util.Webs.Filters.LockType">
+            <summary>
+            锁类型
+            </summary>
+        </member>
+        <member name="F:Util.Webs.Filters.LockType.User">
+            <summary>
+            用户锁，当用户发出多个执行该操作的请求，只有第一个请求被执行，其它请求被抛弃，其它用户不受影响
+            </summary>
+        </member>
+        <member name="F:Util.Webs.Filters.LockType.Global">
+            <summary>
+            全局锁，该操作同时只有一个用户的请求被执行
+            </summary>
+        </member>
+        <member name="T:Util.Webs.Filters.ErrorLogAttribute">
+            <summary>
+            错误日志过滤器
+            </summary>
+        </member>
+        <member name="M:Util.Webs.Filters.ErrorLogAttribute.OnException(Microsoft.AspNetCore.Mvc.Filters.ExceptionContext)">
+            <summary>
+            异常处理
+            </summary>
+        </member>
+        <member name="T:Util.Webs.Filters.ExceptionHandlerAttribute">
+            <summary>
+            异常处理过滤器
+            </summary>
+        </member>
+        <member name="M:Util.Webs.Filters.ExceptionHandlerAttribute.OnException(Microsoft.AspNetCore.Mvc.Filters.ExceptionContext)">
+            <summary>
+            异常处理
+            </summary>
+        </member>
+        <member name="T:Util.Webs.Filters.HtmlAttribute">
+            <summary>
+            生成Html静态文件
+            </summary>
+        </member>
+        <member name="P:Util.Webs.Filters.HtmlAttribute.Path">
+            <summary>
+            生成路径，相对根路径，范例：/Typings/app/app.component.html
+            </summary>
+        </member>
+        <member name="P:Util.Webs.Filters.HtmlAttribute.Template">
+            <summary>
+            路径模板，范例：Typings/app/{area}/{controller}/{controller}-{action}.component.html
+            </summary>
+        </member>
+        <member name="P:Util.Webs.Filters.HtmlAttribute.ViewName">
+            <summary>
+            视图名称，范例：/Home/Index
+            </summary>
+        </member>
+        <member name="P:Util.Webs.Filters.HtmlAttribute.IsPartialView">
+            <summary>
+            是否部分视图，默认：true
+            </summary>
+        </member>
+        <member name="M:Util.Webs.Filters.HtmlAttribute.OnResultExecutionAsync(Microsoft.AspNetCore.Mvc.Filters.ResultExecutingContext,Microsoft.AspNetCore.Mvc.Filters.ResultExecutionDelegate)">
+            <summary>
+            执行生成
+            </summary>
+        </member>
+        <member name="M:Util.Webs.Filters.HtmlAttribute.WriteViewToFileAsync(Microsoft.AspNetCore.Mvc.Filters.ResultExecutingContext)">
+            <summary>
+            将视图写入html文件
+            </summary>
+        </member>
+        <member name="M:Util.Webs.Filters.HtmlAttribute.RenderToStringAsync(Microsoft.AspNetCore.Mvc.Filters.ResultExecutingContext)">
+            <summary>
+            渲染视图
+            </summary>
+        </member>
+        <member name="M:Util.Webs.Filters.HtmlAttribute.GetView(Microsoft.AspNetCore.Mvc.Razor.IRazorViewEngine,Microsoft.AspNetCore.Mvc.ActionContext,System.String)">
+            <summary>
+            获取视图
+            </summary>
+            <param name="razorViewEngine">Razor视图引擎</param>
+            <param name="actionContext">操作上下文</param>
+            <param name="viewName">视图名</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Webs.Filters.HtmlAttribute.GetView(Microsoft.AspNetCore.Mvc.ViewEngines.ICompositeViewEngine,System.String)">
+            <summary>
+            获取视图
+            </summary>
+            <param name="compositeViewEngine">复合视图引擎</param>
+            <param name="path">路径</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Webs.Filters.HtmlAttribute.GetPath(Microsoft.AspNetCore.Mvc.Filters.ResultExecutingContext)">
+            <summary>
+            获取Html默认生成路径
+            </summary>
+        </member>
+        <member name="M:Util.Webs.Filters.HtmlAttribute.JoinActionUrl(System.String[])">
+            <summary>
+            拼接Action地址
+            </summary>
+            <param name="paths">路径</param>
+            <returns></returns>
+        </member>
+        <member name="T:Util.Webs.Filters.TraceLogAttribute">
+            <summary>
+            跟踪日志过滤器
+            </summary>
+        </member>
+        <member name="F:Util.Webs.Filters.TraceLogAttribute.TraceLogName">
+            <summary>
+            日志名
+            </summary>
+        </member>
+        <member name="P:Util.Webs.Filters.TraceLogAttribute.Ignore">
+            <summary>
+            是否忽略,为true不记录日志
+            </summary>
+        </member>
+        <member name="M:Util.Webs.Filters.TraceLogAttribute.OnActionExecutionAsync(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext,Microsoft.AspNetCore.Mvc.Filters.ActionExecutionDelegate)">
+            <summary>
+            执行
+            </summary>
+        </member>
+        <member name="M:Util.Webs.Filters.TraceLogAttribute.GetLog">
+            <summary>
+            获取日志操作
+            </summary>
+        </member>
+        <member name="M:Util.Webs.Filters.TraceLogAttribute.OnActionExecutingAsync(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext,Util.Logs.ILog)">
+            <summary>
+            执行前
+            </summary>
+        </member>
+        <member name="M:Util.Webs.Filters.TraceLogAttribute.WriteLog(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext,Util.Logs.ILog)">
+            <summary>
+            执行前日志
+            </summary>
+        </member>
+        <member name="M:Util.Webs.Filters.TraceLogAttribute.AddRequestInfo(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext,Util.Logs.ILog)">
+            <summary>
+            添加请求信息参数
+            </summary>
+        </member>
+        <member name="M:Util.Webs.Filters.TraceLogAttribute.AddFormParams(Microsoft.AspNetCore.Http.HttpRequest,Util.Logs.ILog)">
+            <summary>
+            添加表单参数
+            </summary>
+        </member>
+        <member name="M:Util.Webs.Filters.TraceLogAttribute.IsMultipart(System.String)">
+            <summary>
+            是否multipart内容类型
+            </summary>
+            <param name="contentType">内容类型</param>
+        </member>
+        <member name="M:Util.Webs.Filters.TraceLogAttribute.AddCookie(Microsoft.AspNetCore.Http.HttpRequest,Util.Logs.ILog)">
+            <summary>
+            添加Cookie
+            </summary>
+        </member>
+        <member name="M:Util.Webs.Filters.TraceLogAttribute.OnActionExecuted(Microsoft.AspNetCore.Mvc.Filters.ActionExecutedContext,Util.Logs.ILog)">
+            <summary>
+            执行后
+            </summary>
+        </member>
+        <member name="M:Util.Webs.Filters.TraceLogAttribute.WriteLog(Microsoft.AspNetCore.Mvc.Filters.ActionExecutedContext,Util.Logs.ILog)">
+            <summary>
+            执行后日志
+            </summary>
+        </member>
+        <member name="M:Util.Webs.Filters.TraceLogAttribute.AddResponseInfo(Microsoft.AspNetCore.Mvc.Filters.ActionExecutedContext,Util.Logs.ILog)">
+            <summary>
+            添加响应信息参数
+            </summary>
+        </member>
+        <member name="M:Util.Webs.Filters.TraceLogAttribute.AddResult(Microsoft.AspNetCore.Mvc.Filters.ActionExecutedContext,Util.Logs.ILog)">
+            <summary>
+            记录响应结果
+            </summary>
+        </member>
+        <member name="T:Util.Webs.HtmlEscape">
+            <summary>
+            Html转义字符
+            </summary>
+        </member>
+        <member name="F:Util.Webs.HtmlEscape.Quote">
+            <summary>
+            双引号,值为 &amp;quot;
+            </summary>
+        </member>
+        <member name="F:Util.Webs.HtmlEscape.Quote34">
+            <summary>
+            双引号,值为 &amp;#34;
+            </summary>
+        </member>
+        <member name="F:Util.Webs.HtmlEscape.Quote22">
+            <summary>
+            双引号,值为 &amp;#x22;
+            </summary>
+        </member>
+        <member name="F:Util.Webs.HtmlEscape.SingleQuote">
+            <summary>
+            单引号,值为 &amp;apos;
+            </summary>
+        </member>
+        <member name="F:Util.Webs.HtmlEscape.SingleQuote27">
+            <summary>
+            单引号,值为 &amp;#x27;
+            </summary>
+        </member>
+        <member name="F:Util.Webs.HtmlEscape.SingleQuote39">
+            <summary>
+            单引号,值为 &amp;#39;
+            </summary>
+        </member>
+        <member name="T:Util.Webs.Middlewares.ErrorLogMiddleware">
+            <summary>
+            错误日志中间件
+            </summary>
+        </member>
+        <member name="F:Util.Webs.Middlewares.ErrorLogMiddleware._next">
+            <summary>
+            方法
+            </summary>
+        </member>
+        <member name="M:Util.Webs.Middlewares.ErrorLogMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate)">
+            <summary>
+            初始化错误日志中间件
+            </summary>
+            <param name="next">方法</param>
+        </member>
+        <member name="M:Util.Webs.Middlewares.ErrorLogMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            执行方法
+            </summary>
+            <param name="context">Http上下文</param>
+        </member>
+        <member name="M:Util.Webs.Middlewares.ErrorLogMiddleware.WriteLog(Microsoft.AspNetCore.Http.HttpContext,System.Exception)">
+            <summary>
+            记录错误日志
+            </summary>
+        </member>
+        <member name="T:Util.Webs.Properties.WebResource">
+            <summary>
+              一个强类型的资源类，用于查找本地化的字符串等。
+            </summary>
+        </member>
+        <member name="P:Util.Webs.Properties.WebResource.ResourceManager">
+            <summary>
+              返回此类使用的缓存的 ResourceManager 实例。
+            </summary>
+        </member>
+        <member name="P:Util.Webs.Properties.WebResource.Culture">
+            <summary>
+              重写当前线程的 CurrentUICulture 属性
+              重写当前线程的 CurrentUICulture 属性。
+            </summary>
+        </member>
+        <member name="P:Util.Webs.Properties.WebResource.CreateRequestIsEmpty">
+            <summary>
+              查找类似 创建参数不能为空 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:Util.Webs.Properties.WebResource.IdIsEmpty">
+            <summary>
+              查找类似 Id不能为空 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:Util.Webs.Properties.WebResource.QueryIsEmpty">
+            <summary>
+              查找类似 查询参数不能为空 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:Util.Webs.Properties.WebResource.UpdateRequestIsEmpty">
+            <summary>
+              查找类似 修改参数不能为空 的本地化字符串。
+            </summary>
+        </member>
+        <member name="T:Util.Webs.Razors.DefaultRazorHtmlGenerator">
+            <summary>
+            Razor静态Html生成器
+            </summary>
+        </member>
+        <member name="M:Util.Webs.Razors.DefaultRazorHtmlGenerator.#ctor(Util.Webs.Razors.IRouteAnalyzer)">
+            <summary>
+            初始化一个<see cref="T:Util.Webs.Razors.DefaultRazorHtmlGenerator"/>类型的实例
+            </summary>
+            <param name="routeAnalyzer">路由分析器</param>
+        </member>
+        <member name="M:Util.Webs.Razors.DefaultRazorHtmlGenerator.Generate">
+            <summary>
+            生成Html文件
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Webs.Razors.DefaultRazorHtmlGenerator.RenderActionViewToStringAsync(Util.Webs.Razors.RouteInformation)">
+            <summary>
+            渲染Action视图为字符串
+            </summary>
+            <param name="info">路由信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Webs.Razors.DefaultRazorHtmlGenerator.RenderPageViewToStringAsync(Util.Webs.Razors.RouteInformation)">
+            <summary>
+            渲染页面视图为字符串
+            </summary>
+            <param name="info">路由信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Webs.Razors.DefaultRazorHtmlGenerator.WriteViewToFileAsync(Util.Webs.Razors.RouteInformation)">
+            <summary>
+            将视图写入文件
+            </summary>
+            <param name="info">路由信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Webs.Razors.DefaultRazorHtmlGenerator.GetPath(Util.Webs.Razors.RouteInformation)">
+            <summary>
+            获取Html默认生成路径
+            </summary>
+            <param name="info">路由信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Webs.Razors.DefaultRazorHtmlGenerator.JoinActionUrl(System.String[])">
+            <summary>
+            拼接Action地址
+            </summary>
+            <param name="paths">路径</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Webs.Razors.DefaultRazorHtmlGenerator.GetView(Microsoft.AspNetCore.Mvc.Razor.IRazorViewEngine,Microsoft.AspNetCore.Mvc.ActionContext,Util.Webs.Razors.RouteInformation)">
+            <summary>
+            获取Razor视图
+            </summary>
+            <param name="razorViewEngine">Razor视图引擎</param>
+            <param name="actionContext">操作上下文</param>
+            <param name="info">路由信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Webs.Razors.DefaultRazorHtmlGenerator.GetView(Microsoft.AspNetCore.Mvc.ViewEngines.ICompositeViewEngine,Util.Webs.Razors.RouteInformation)">
+            <summary>
+            获取Razor视图
+            </summary>
+            <param name="engine">复合视图引擎</param>
+            <param name="info">路由信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Webs.Razors.DefaultRazorHtmlGenerator.GetRouteData(Util.Webs.Razors.RouteInformation)">
+            <summary>
+            获取路由数据
+            </summary>
+            <param name="info">路由信息</param>
+            <returns></returns>
+        </member>
+        <member name="T:Util.Webs.Razors.IRazorHtmlGenerator">
+            <summary>
+            Razor Html生成器
+            </summary>
+        </member>
+        <member name="M:Util.Webs.Razors.IRazorHtmlGenerator.Generate">
+            <summary>
+            生成Html文件
+            </summary>
+        </member>
+        <member name="T:Util.Webs.Razors.IRouteAnalyzer">
+            <summary>
+            路由分析器
+            </summary>
+        </member>
+        <member name="M:Util.Webs.Razors.IRouteAnalyzer.GetAllRouteInformations">
+            <summary>
+            获取所有路由信息
+            </summary>
+        </member>
+        <member name="T:Util.Webs.Razors.RouteAnalyzer">
+            <summary>
+            路由分析器
+            </summary>
+        </member>
+        <member name="F:Util.Webs.Razors.RouteAnalyzer._actionDescriptorCollectionProvider">
+            <summary>
+            操作描述集合提供程序
+            </summary>
+        </member>
+        <member name="F:Util.Webs.Razors.RouteAnalyzer._pageLoader">
+            <summary>
+            页面加载器
+            </summary>
+        </member>
+        <member name="M:Util.Webs.Razors.RouteAnalyzer.#ctor(Microsoft.AspNetCore.Mvc.Infrastructure.IActionDescriptorCollectionProvider,Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.IPageLoader)">
+            <summary>
+            初始化一个<see cref="T:Util.Webs.Razors.RouteAnalyzer"/>类型的实例
+            </summary>
+            <param name="actionDescriptorCollectionProvider">操作描述集合提供程序</param>
+            <param name="pageLoader">页面加载器</param>
+        </member>
+        <member name="M:Util.Webs.Razors.RouteAnalyzer.GetAllRouteInformations">
+            <summary>
+            获取所有路由信息
+            </summary>
+        </member>
+        <member name="M:Util.Webs.Razors.RouteAnalyzer.SetHtmlInfo(Util.Webs.Razors.RouteInformation,Microsoft.AspNetCore.Mvc.Controllers.ControllerActionDescriptor)">
+            <summary>
+            设置Html信息
+            </summary>
+            <param name="routeInformation">路由信息</param>
+            <param name="controllerActionDescriptor">控制器</param>
+        </member>
+        <member name="M:Util.Webs.Razors.RouteAnalyzer.SetHtmlInfo(Util.Webs.Razors.RouteInformation,Microsoft.AspNetCore.Mvc.RazorPages.CompiledPageActionDescriptor)">
+            <summary>
+            设置Html信息
+            </summary>
+            <param name="routeInformation">路由信息</param>
+            <param name="compiledPageActionDescriptor">编译后的页面</param>
+        </member>
+        <member name="T:Util.Webs.Razors.RouteInformation">
+            <summary>
+            路由信息
+            </summary>
+        </member>
+        <member name="P:Util.Webs.Razors.RouteInformation.AreaName">
+            <summary>
+            区域名称
+            </summary>
+        </member>
+        <member name="P:Util.Webs.Razors.RouteInformation.ControllerName">
+            <summary>
+            控制器名称
+            </summary>
+        </member>
+        <member name="P:Util.Webs.Razors.RouteInformation.ActionName">
+            <summary>
+            操作名称
+            </summary>
+        </member>
+        <member name="P:Util.Webs.Razors.RouteInformation.Path">
+            <summary>
+            Razor页面路径
+            </summary>
+        </member>
+        <member name="P:Util.Webs.Razors.RouteInformation.Invocation">
+            <summary>
+            调用方法
+            </summary>
+        </member>
+        <member name="P:Util.Webs.Razors.RouteInformation.FilePath">
+            <summary>
+            文件路径
+            </summary>
+        </member>
+        <member name="P:Util.Webs.Razors.RouteInformation.TemplatePath">
+            <summary>
+            模板路径
+            </summary>
+        </member>
+        <member name="P:Util.Webs.Razors.RouteInformation.ViewName">
+            <summary>
+            视图名称
+            </summary>
+        </member>
+        <member name="P:Util.Webs.Razors.RouteInformation.IsPartialView">
+            <summary>
+            是否部分视图
+            </summary>
+        </member>
+        <member name="P:Util.Webs.Razors.RouteInformation.IsPageRoute">
+            <summary>
+            是否页面路由
+            </summary>
+        </member>
+        <member name="P:Util.Webs.Razors.RouteInformation.Ignore">
+            <summary>
+            是否忽略生成
+            </summary>
+        </member>
+    </members>
+</doc>

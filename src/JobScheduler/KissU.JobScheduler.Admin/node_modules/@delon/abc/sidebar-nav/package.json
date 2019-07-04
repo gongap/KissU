@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/sidebarNav.umd.js",
+  "module": "../fesm5/sidebarNav.js",
+  "es2015": "../fesm2015/sidebarNav.js",
+  "esm5": "../esm5/sidebar-nav/sidebarNav.js",
+  "esm2015": "../esm2015/sidebar-nav/sidebarNav.js",
+  "fesm5": "../fesm5/sidebarNav.js",
+  "fesm2015": "../fesm2015/sidebarNav.js",
+  "typings": "sidebarNav.d.ts",
+  "metadata": "sidebarNav.metadata.json",
+  "sideEffects": false,
+  "name": "@delon/abc/sidebar-nav"
+}

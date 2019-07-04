@@ -1,0 +1,24 @@
+﻿@page
+@model ModuleDto
+<page-header title="权限设置" [autoBreadcrumb]="false"></page-header>
+<util-card show-border="false">
+    @*提示语*@
+    <util-alert class="mb-md" type="Info" show-icon="true">
+        当前应用程序：<strong class="text-primary mx-md"> {{model.applicationName}}</strong>
+        当前角色：<strong class="text-primary mx-md"> {{model.roleName}}</strong>
+    </util-alert>
+    <util-row gutter="24">
+        @*应用程序导航列表*@
+        <util-column span="6">
+            <application-select (onClick)="selectApplication($event)"></application-select>
+        </util-column>
+        @*表格*@
+        <util-column span="18">
+            <util-tree-table id="tableModule" show-checkbox="true" query-param="queryParam" base-url="module"
+                             sort="CreationTime desc" auto-load="false" expand-all="true" show-pagination="false"
+                             scroll-height="400">
+                <util-tree-table-column for="Name"></util-tree-table-column>
+            </util-tree-table>
+        </util-column>
+    </util-row>
+</util-card>

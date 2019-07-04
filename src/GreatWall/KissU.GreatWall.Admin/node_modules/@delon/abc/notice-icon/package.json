@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/noticeIcon.umd.js",
+  "module": "../fesm5/noticeIcon.js",
+  "es2015": "../fesm2015/noticeIcon.js",
+  "esm5": "../esm5/notice-icon/noticeIcon.js",
+  "esm2015": "../esm2015/notice-icon/noticeIcon.js",
+  "fesm5": "../fesm5/noticeIcon.js",
+  "fesm2015": "../fesm2015/noticeIcon.js",
+  "typings": "noticeIcon.d.ts",
+  "metadata": "noticeIcon.metadata.json",
+  "sideEffects": false,
+  "name": "@delon/abc/notice-icon"
+}

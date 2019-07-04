@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/pageHeader.umd.js",
+  "module": "../fesm5/pageHeader.js",
+  "es2015": "../fesm2015/pageHeader.js",
+  "esm5": "../esm5/page-header/pageHeader.js",
+  "esm2015": "../esm2015/page-header/pageHeader.js",
+  "fesm5": "../fesm5/pageHeader.js",
+  "fesm2015": "../fesm2015/pageHeader.js",
+  "typings": "pageHeader.d.ts",
+  "metadata": "pageHeader.metadata.json",
+  "sideEffects": false,
+  "name": "@delon/abc/page-header"
+}

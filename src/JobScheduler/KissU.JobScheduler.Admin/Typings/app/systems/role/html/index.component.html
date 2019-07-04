@@ -1,0 +1,54 @@
+<page-header title="角色"></page-header>
+<nz-card [nzBordered]="false">
+    
+<form autocomplete="off" class="search__form" nz-form="" nzLayout="inline">
+    <div nz-row="" [nzGutter]="32">
+        <div nz-col="" [nzSpan]="8">
+            <nz-form-item><nz-form-label>角色编码</nz-form-label><nz-form-control><x-textbox name="code" [(model)]="queryParam.code"></x-textbox></nz-form-control></nz-form-item>
+        </div>
+        <div nz-col="" [nzSpan]="8">
+            <nz-form-item><nz-form-label>角色名称</nz-form-label><nz-form-control><x-textbox name="name" [(model)]="queryParam.name"></x-textbox></nz-form-control></nz-form-item>
+        </div>
+        <div *ngIf="expand" nz-col="" [nzSpan]="8">
+            <nz-form-item><nz-form-label>标准化角色名称</nz-form-label><nz-form-control><x-textbox name="normalizedName" [(model)]="queryParam.normalizedName"></x-textbox></nz-form-control></nz-form-item>
+        </div>
+        <div nz-col="" [class.text-right]="expand" [nzSpan]="8">
+            <x-button #btnQuery="" (onClick)="query(btnQuery)" color="primary" text="查询"><ng-template><i nz-icon="" nzType="search"></i></ng-template></x-button>
+            <x-button #btnRefresh="" (onClick)="refresh(btnRefresh)" class="mx-sm" text="刷新"><ng-template><i nz-icon="" nzType="sync"></i></ng-template></x-button>
+            <a (click)="expand=!expand">
+                <i class="anticon" [class.anticon-down]="!expand" [class.anticon-up]="expand"></i>
+            </a>
+        </div>
+    </div>
+</form>
+    <x-button (onClick)="openCreateDialog()" class="mr-sm" color="primary" text="新建"><ng-template><i nz-icon="" nzType="plus"></i></ng-template></x-button>
+    <x-button #btnDelete="" (onClick)="delete(btnDelete)" color="danger" text="删除"><ng-template><i nz-icon="" nzType="delete"></i></ng-template></x-button>
+    <nz-alert class="my-md" nzType="info" [nzMessage]="m_281f6ba33f5a4bda8fbcd58ff0b897c8" [nzShowIcon]="true"><ng-template #m_281f6ba33f5a4bda8fbcd58ff0b897c8="">
+        已选择<strong class="text-primary mx-md">{{getCheckedNodes().length}}</strong>行
+    </ng-template></nz-alert>
+    <nz-tree-table-wrapper #treeTable_Role_wrapper="" baseUrl="role" [(queryParam)]="queryParam"><nz-table #treeTable_Role="" (nzPageIndexChange)="treeTable_Role_wrapper.pageIndexChange($event)" (nzPageSizeChange)="treeTable_Role_wrapper.pageSizeChange($event)" [(nzPageIndex)]="treeTable_Role_wrapper.queryParam.page" [(nzPageSize)]="treeTable_Role_wrapper.queryParam.pageSize" [nzData]="treeTable_Role_wrapper.dataSource" [nzFrontPagination]="false" [nzLoading]="treeTable_Role_wrapper.loading" [nzShowPagination]="treeTable_Role_wrapper.showPagination" [nzShowQuickJumper]="true" [nzShowSizeChanger]="true" [nzShowTotal]="template_treeTable_Role" [nzTotal]="treeTable_Role_wrapper.totalCount"><thead><tr><th><label (nzCheckedChange)="treeTable_Role_wrapper.masterToggle()" *ngIf="treeTable_Role_wrapper.isShowCheckbox()" nz-checkbox="" [nzChecked]="treeTable_Role_wrapper.isMasterChecked()" [nzIndeterminate]="treeTable_Role_wrapper.isMasterIndeterminate()">角色编码</label><span *ngIf="!treeTable_Role_wrapper.isShowCheckbox()">角色编码</span></th><th>角色名称</th><th>标准化角色名称</th><th>角色类型</th><th>管理员</th><th>备注</th><th>拼音简码</th><th>签名</th><th>操作</th></tr></thead><tbody><ng-container *ngFor="let row of treeTable_Role.data"><tr *ngIf="treeTable_Role_wrapper.isShow(row)">
+        <td (nzExpandChange)="treeTable_Role_wrapper.collapse(row,$event)" [nzExpand]="treeTable_Role_wrapper.isExpand(row)" [nzIndentSize]="row.level*20" [nzShowExpand]="!treeTable_Role_wrapper.isLeaf(row)"><label (nzCheckedChange)="treeTable_Role_wrapper.toggle(row)" *ngIf="treeTable_Role_wrapper.isShowCheckbox()" nz-checkbox="" [nzChecked]="treeTable_Role_wrapper.isChecked(row)" [nzIndeterminate]="treeTable_Role_wrapper.isIndeterminate(row)">{{row.code}}</label><label (click)="$event.stopPropagation()" (ngModelChange)="treeTable_Role_wrapper.checkRowOnly(row)" *ngIf="treeTable_Role_wrapper.isShowRadio(row)" name="radio_treeTable_Role_wrapper" nz-radio="" [ngModel]="treeTable_Role_wrapper.isChecked(row)">{{row.code}}</label><ng-container *ngIf="treeTable_Role_wrapper.isShowText(row)">{{row.code}}</ng-container></td>
+        <td>{{row.name}}</td>
+        <td>{{row.normalizedName}}</td>
+        <td>{{row.type}}</td>
+        <td>{{row.isAdmin?'是':'否'}}</td>
+        <td>{{row.comment}}</td>
+        <td>{{row.pinYin}}</td>
+        <td>{{row.sign}}</td>
+        <td>
+            <x-button (onClick)="openCreateDialog(row)" class="mr-sm" color="primary" shape="circle" tooltip="添加子级"><ng-template><i nz-icon="" nzType="plus"></i></ng-template></x-button>
+            <x-button #btnMoveUp="" (onClick)="moveUp(row,btnMoveUp,$event)" *ngIf="!isFirst(row)" class="mr-sm" shape="circle" tooltip="上移"><ng-template><i nz-icon="" nzType="arrow-up"></i></ng-template></x-button>
+            <x-button #btnMoveDown="" (onClick)="moveDown(row, btnMoveDown,$event)" *ngIf="!isLast(row)" class="mr-sm" shape="circle" tooltip="下移"><ng-template><i nz-icon="" nzType="arrow-down"></i></ng-template></x-button>
+            <nz-dropdown>
+                <x-button class="mr-sm" nz-dropdown="" shape="circle" tooltip="更多"><ng-template>
+                    <i nz-icon nzType="more"></i>
+                </ng-template></x-button>
+                <ul #menu="" nz-menu="">
+                    <li (click)="openEditDialog(row)" nz-menu-item="">编辑</li>
+                    <li (click)="delete(null,row.id)" nz-menu-item="">删除</li>
+                    <li (click)="openDetailDialog(row)" nz-menu-item="">详情</li>
+                </ul>
+            </nz-dropdown>
+        </td>
+    </tr></ng-container></tbody></nz-table><ng-template #template_treeTable_Role="" let-range="range" let-total="">{{ range[0] }}-{{ range[1] }} 共 {{ total }} 条</ng-template></nz-tree-table-wrapper>
+</nz-card>
