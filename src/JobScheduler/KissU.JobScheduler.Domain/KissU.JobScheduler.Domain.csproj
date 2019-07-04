@@ -5,13 +5,13 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>bin\Release\KissU.JobScheduler.Domain.xml</DocumentationFile>
+    <OutputPath>..\..\..\output\release</OutputPath>
+    <DocumentationFile>..\..\..\output\release\KissU.JobScheduler.Domain.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>bin\Debug\KissU.JobScheduler.Domain.xml</DocumentationFile>
+    <OutputPath>..\..\..\output\debug</OutputPath>
+    <DocumentationFile>..\..\..\output\debug\KissU.JobScheduler.Domain.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

@@ -5,20 +5,21 @@
     <Authors>何镇汐</Authors>
     <Company>何镇汐</Company>
     <Copyright>何镇汐</Copyright>
-    <Description>GreatWall是Util应用框架的权限管理系统，基础架构基于AspNetCore Identity和Identity Server。
-GreatWall.Domain是GreatWall权限管理系统的业务层。
-</Description>
+    <Description>
+      GreatWall是Util应用框架的权限管理系统，基础架构基于AspNetCore Identity和Identity Server。
+      KissU.GreatWall.Domain是GreatWall权限管理系统的业务层。
+    </Description>
     <PackageReleaseNotes>GreatWall权限管理系统以MIT开源发布，可随意使用</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>..\..\output\release</OutputPath>
-    <DocumentationFile>..\..\output\release\netstandard2.0\GreatWall.Domain.xml</DocumentationFile>
+    <OutputPath>..\..\..\output\release</OutputPath>
+    <DocumentationFile>..\..\..\output\release\netstandard2.0\KissU.GreatWall.Domain.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\output\release</OutputPath>
-    <DocumentationFile>..\..\output\release\netstandard2.0\GreatWall.Domain.xml</DocumentationFile>
+    <OutputPath>..\..\..\output\release</OutputPath>
+    <DocumentationFile>..\..\..\output\release\netstandard2.0\KissU.GreatWall.Domain.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

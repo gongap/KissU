@@ -22,7 +22,7 @@ BenchmarkDotNet.Artifacts/
 /src/GreatWall/KissU.GreatWall.Infrastructure/obj
 /src/GreatWall/KissU.GreatWall.Service/bin
 /src/GreatWall/KissU.GreatWall.Service/obj
-/*.user
+
 /src/GreatWall/KissU.GreatWall.Admin/node_modules
 /src/GreatWall/KissU.GreatWall.Admin/wwwroot/dist
 /src/GreatWall/KissU.GreatWall.Admin/Typings/app/home/dashboard/html
