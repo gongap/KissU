@@ -7,6 +7,7 @@ BenchmarkDotNet.Artifacts/
 *.user
 *.log
 /template/KissU.CodeGenerator/Results
+/util
 /src/KissU.Web/node_modules
 /src/KissU.Web/wwwroot/dist
 /src/KissU.Web/yarn.lock
