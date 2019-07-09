@@ -25,11 +25,12 @@ export class AuthorizeInterceptor implements HttpInterceptor {
      * @param request http请求
      * @param next Http处理器
      */
-    intercept(request: HttpRequest<any>, next: HttpHandler) {
+    intercept( request: HttpRequest<any>, next: HttpHandler ) {
         return from(this.auth.getUser()).pipe(
-            map(user => {
+            map( user => {
                 if (!user || !user.access_token)
                     return request;
+                 
                 return request.clone({
                     setHeaders: { Authorization: `${user.token_type} ${user.access_token}` }
                 });

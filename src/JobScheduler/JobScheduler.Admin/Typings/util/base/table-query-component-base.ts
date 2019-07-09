@@ -100,7 +100,7 @@ export abstract class TableQueryComponentBase<TViewModel extends ViewModel, TQue
      * @param button 按钮
      * @param handler 刷新后回调函数
      */
-    refresh( button?, handler?: ( data ) => void ) {
+    refresh( button?, handler?: ( data ) => void) {
         handler = handler || this.refreshAfter;
         this.queryParam = this.createQuery();
         this.table.refresh( this.queryParam, button, handler );
