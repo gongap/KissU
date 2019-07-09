@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\..\output\release</OutputPath>
+    <DocumentationFile>..\..\..\output\release\netstandard2.0\JobScheduler.Domain.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\..\..\output\release</OutputPath>
+    <DocumentationFile>..\..\..\output\release\netstandard2.0\JobScheduler.Domain.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\util\src\Util\01-Util.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Systems/Models/Api.Base.cs">
+      <DependentUpon>Api.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Systems/Models/ApiScope.Base.cs">
+      <DependentUpon>ApiScope.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Systems/Models/Application.Base.cs">
+      <DependentUpon>Application.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Systems/Models/Role.Base.cs">
+      <DependentUpon>Role.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+</Project>

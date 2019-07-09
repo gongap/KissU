@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>何镇汐</Authors>
+    <Company>何镇汐</Company>
+    <Description>GreatWall是Util应用框架的权限管理系统，基础架构基于AspNetCore Identity和Identity Server。
+GreatWall.Data是GreatWall权限管理系统的数据访问层。</Description>
+    <Copyright>何镇汐</Copyright>
+    <PackageReleaseNotes>GreatWall权限管理系统以MIT开源发布，可随意使用</PackageReleaseNotes>
+    <AssemblyName>GreatWall.Data</AssemblyName>
+    <RootNamespace>GreatWall.Data</RootNamespace>
+    <PackageId>GreatWall.Data</PackageId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\..\output\release</OutputPath>
+    <DocumentationFile>..\..\..\output\release\netstandard2.0\GreatWall.Data.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\..\..\output\release</OutputPath>
+    <DocumentationFile>..\..\..\output\release\netstandard2.0\GreatWall.Data.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Util.Datas" Version="1.9.0.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GreatWall.Domain\GreatWall.Domain.csproj" />
+    <ProjectReference Include="..\GreatWall.Infrastructure\01-GreatWall.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

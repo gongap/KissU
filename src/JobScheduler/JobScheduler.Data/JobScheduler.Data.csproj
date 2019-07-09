@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\..\output\release</OutputPath>
+    <DocumentationFile>..\..\..\output\release\netstandard2.0\JobScheduler.Data.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\..\..\output\release</OutputPath>
+    <DocumentationFile>..\..\..\output\release\netstandard2.0\JobScheduler.Data.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\util\src\Util.Datas\07-Util.Datas.csproj" />
+    <ProjectReference Include="..\JobScheduler.Domain\JobScheduler.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
