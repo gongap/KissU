@@ -126,6 +126,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobScheduler.Admin", "src\J
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobScheduler.Api", "src\JobScheduler\JobScheduler.Api\JobScheduler.Api.csproj", "{29E443CB-5270-441F-95B1-BB7B2548E7B7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SqlServer", "SqlServer", "{350F4A91-F4A4-4661-B2E8-0C84160FB1B2}"
+	ProjectSection(SolutionItems) = preProject
+		document\建库脚本\SqlServer\GreatWall.sql = document\建库脚本\SqlServer\GreatWall.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -318,6 +323,7 @@ Global
 		{6FA3437C-00D2-487D-B88B-233E1E909909} = {6C19306A-86A5-4EE3-B13F-9CB2A64CBFFB}
 		{A0508E28-DE13-4735-9E0F-D78087EF5A0D} = {C9A25159-C22B-41D8-B683-AD3B9D533A40}
 		{29E443CB-5270-441F-95B1-BB7B2548E7B7} = {C9A25159-C22B-41D8-B683-AD3B9D533A40}
+		{350F4A91-F4A4-4661-B2E8-0C84160FB1B2} = {2F905E6E-B8D0-42AC-A48C-92CBDFB0D9F6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}
