@@ -43,6 +43,10 @@
     <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.System\Surging.Core.System.csproj" />
     <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.Zookeeper\Surging.Core.Zookeeper.csproj" />
     <ProjectReference Include="..\..\..\surging\src\WebSocket\WebSocketCore\WebSocketCore.csproj" />
+    <ProjectReference Include="..\..\KissU.IModuleServices\KissU.IModuleServices.Common\KissU.IModuleServices.Common.csproj" />
+    <ProjectReference Include="..\..\KissU.IModuleServices\KissU.IModuleServices.Manger\KissU.IModuleServices.Manager.csproj" />
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Common\KissU.Modules.Common.csproj" />
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Manager\KissU.Modules.Manager.csproj" />
   </ItemGroup>
 
   <ItemGroup>

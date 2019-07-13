@@ -38,7 +38,7 @@
     "EnableChildrenMonitor": false
   },
   "Stage": {
-    "EnableHttps": true, // 不设置ports，默认httpsPort:443
+    "EnableHttps": false, // 不设置ports，默认httpsPort:443
     "CertificateFileName": "${CertificateFileName}|",
     "CertificateLocation": "${CertificateLocation}|pfxs",
     "CertificatePassword": "${CertificatePassword}|",
