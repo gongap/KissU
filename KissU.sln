@@ -212,6 +212,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Common", "src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Manager", "src\KissU.Modules\KissU.Modules.Manager\KissU.Modules.Manager.csproj", "{91C9218D-CECC-472B-B015-BF50F217D408}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Surging.Core.Util", "lib\Surging.Core.Util\Surging.Core.Util.csproj", "{9B7E8A17-1BEB-4D8A-B6D2-4D549617114B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -478,6 +480,10 @@ Global
 		{91C9218D-CECC-472B-B015-BF50F217D408}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91C9218D-CECC-472B-B015-BF50F217D408}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91C9218D-CECC-472B-B015-BF50F217D408}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B7E8A17-1BEB-4D8A-B6D2-4D549617114B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B7E8A17-1BEB-4D8A-B6D2-4D549617114B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B7E8A17-1BEB-4D8A-B6D2-4D549617114B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B7E8A17-1BEB-4D8A-B6D2-4D549617114B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -577,6 +583,7 @@ Global
 		{10872CA3-7965-450E-A889-32DF6B5A7F44} = {E6247BE3-5AEC-47C0-AF43-FE376E8F6221}
 		{32530AC5-FE0C-40ED-B2F5-B910D9A51DE1} = {CA4753DA-E579-4995-AEDA-498741B7B860}
 		{91C9218D-CECC-472B-B015-BF50F217D408} = {CA4753DA-E579-4995-AEDA-498741B7B860}
+		{9B7E8A17-1BEB-4D8A-B6D2-4D549617114B} = {E34A6862-02E9-4C37-B80B-CBB02BA2A37D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}
