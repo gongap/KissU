@@ -1,5 +1,6 @@
 /bin
 /.vs
+.vs/
 obj/
 bin/
 BenchmarkDotNet.Artifacts/
@@ -7,7 +8,6 @@ BenchmarkDotNet.Artifacts/
 *.user
 *.log
 /template/CodeGenerator/02-Result
-/util
 
 
 /src/GreatWall/GreatWall.Admin/node_modules
