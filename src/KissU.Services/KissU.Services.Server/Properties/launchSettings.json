@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "KissU.Services.Server": {
+      "commandName": "Project"
+    }
+  }
+}
