@@ -29,12 +29,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\JobScheduler.Data\JobScheduler.Data.csproj" />
     <ProjectReference Include="..\JobScheduler.Service\JobScheduler.Service.csproj" />
+    <ProjectReference Include="..\..\..\util\src\Util.Ui.Angular.AntDesign\05-Util.Ui.Angular.AntDesign.csproj" />
   </ItemGroup>
 
 </Project>
