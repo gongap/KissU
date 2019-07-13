@@ -4,3 +4,6 @@
 [submodule "surging"]
 	path = surging
 	url = https://github.com/gongap/surging.git
+[submodule "src/KissU.Web/AdminConsole"]
+	path = src/KissU.Web/AdminConsole
+	url = https://github.com/gongap/AdminConsole.git
