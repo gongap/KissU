@@ -3,4 +3,4 @@
 	url = https://github.com/gongap/util.git
 [submodule "surging"]
 	path = surging
-	url = https://github.com/gongap/Surging.git
+	url = https://github.com/gongap/surging.git
