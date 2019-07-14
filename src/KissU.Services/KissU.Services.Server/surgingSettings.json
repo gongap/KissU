@@ -64,8 +64,8 @@
   "Swagger": {
     "Info": {
       "Version": "${SwaggerVersion}|V1", // "127.0.0.1:8500",
-      "Title": "${SwaggerTitle}|Surging Demo",
-      "Description": "${SwaggerDes}|surging demo",
+      "Title": "${SwaggerTitle}|KissU Services",
+      "Description": "${SwaggerDes}|KissU Services",
       "Contact": {
         "Name": "API Support",
         "Url": "https://github.com/dotnetcore/surging",
@@ -138,5 +138,8 @@
     "LogLevel": {
       "Default": "${LogLevel}|Debug"
     }
+  },
+  "ConnectionStrings": {
+    "SqlServer_QuickStart": "${SqlServer_QuickStart}|Server=.;Database=Demo.IdentityAdmin;User ID=sa;Password=saP@ss123;MultipleActiveResultSets=true"
   }
 }
