@@ -95,7 +95,7 @@ namespace Surging.Core.Util.Dependency
         /// </summary>
         private void RegisterInfrastracture()
         {
-            //EnableAop();
+            EnableAop();
             RegisterFinder();
         }
 
@@ -104,7 +104,7 @@ namespace Surging.Core.Util.Dependency
         /// </summary>
         private void EnableAop()
         {
-            _builder.EnableAop(_aopConfigAction);
+            //_builder.EnableAop(_aopConfigAction);
         }
 
         /// <summary>

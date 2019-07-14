@@ -11,39 +11,15 @@
   <PropertyGroup>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
-  
-  <ItemGroup>
-    <Compile Remove="Application\**" />
-    <Compile Remove="DbScripts\**" />
-    <Compile Remove="Domain\**" />
-    <Compile Remove="EventHandlers\**" />
-    <Compile Remove="Infrastructure\**" />
-    <EmbeddedResource Remove="Application\**" />
-    <EmbeddedResource Remove="DbScripts\**" />
-    <EmbeddedResource Remove="Domain\**" />
-    <EmbeddedResource Remove="EventHandlers\**" />
-    <EmbeddedResource Remove="Infrastructure\**" />
-    <None Remove="Application\**" />
-    <None Remove="DbScripts\**" />
-    <None Remove="Domain\**" />
-    <None Remove="EventHandlers\**" />
-    <None Remove="Infrastructure\**" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <Compile Remove="QuickStartModule.cs" />
-  </ItemGroup>
+
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.EventBusRabbitMQ\Surging.Core.EventBusRabbitMQ.csproj" />
     <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.KestrelHttpServer\Surging.Core.KestrelHttpServer.csproj" />
     <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.ProxyGenerator\Surging.Core.ProxyGenerator.csproj" />
     <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.System\Surging.Core.System.csproj" />
+    <ProjectReference Include="..\..\..\util\src\Util.Datas\07-Util.Datas.csproj" />
     <ProjectReference Include="..\..\KissU.IModuleServices\KissU.IModuleServices.QuickStart\KissU.IModuleServices.QuickStart.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Properties\" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using Autofac;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Surging.Core.Caching.Configurations;
 using Surging.Core.CPlatform;
@@ -58,8 +59,7 @@ namespace KissU.Services.Server
                 //启用控制台生命周期
                 .UseConsoleLifetime()
                 //设置缓存配置文件
-                .Configure(build =>
-                    build.AddCacheFile("${cachepath}|cacheSettings.json", AppContext.BaseDirectory, false, true))
+                .Configure(build => build.AddCacheFile("${cachepath}|cacheSettings.json", AppContext.BaseDirectory, false, true))
                 //设置引擎配置文件
                 .Configure(build => build.AddCPlatformFile("${surgingpath}|surgingSettings.json", false, true))
                 //使用Startup启动

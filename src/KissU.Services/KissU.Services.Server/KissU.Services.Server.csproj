@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\lib\Surging.Core.Util\Surging.Core.Util.csproj" />
     <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.ApiGateWay\Surging.Core.ApiGateWay.csproj" />
     <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.Caching\Surging.Core.Caching.csproj" />
     <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.Codec.MessagePack\Surging.Core.Codec.MessagePack.csproj" />
@@ -43,8 +44,10 @@
     <ProjectReference Include="..\..\..\surging\src\WebSocket\WebSocketCore\WebSocketCore.csproj" />
     <ProjectReference Include="..\..\KissU.IModuleServices\KissU.IModuleServices.Common\KissU.IModuleServices.Common.csproj" />
     <ProjectReference Include="..\..\KissU.IModuleServices\KissU.IModuleServices.Manger\KissU.IModuleServices.Manager.csproj" />
+    <ProjectReference Include="..\..\KissU.IModuleServices\KissU.IModuleServices.QuickStart\KissU.IModuleServices.QuickStart.csproj" />
     <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Common\KissU.Modules.Common.csproj" />
     <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Manager\KissU.Modules.Manager.csproj" />
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.QuickStart\KissU.Modules.QuickStart.csproj" />
   </ItemGroup>
 
   <ItemGroup>

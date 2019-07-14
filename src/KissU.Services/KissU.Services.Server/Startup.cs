@@ -4,6 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Surging.Core.CPlatform.Utilities;
 using Surging.Core.EventBusRabbitMQ.Configurations;
+using Surging.Core.Util;
+using Util.Helpers;
 
 namespace KissU.Services.Server
 {
@@ -29,8 +31,11 @@ namespace KissU.Services.Server
         {
             var services = new ServiceCollection();
             ConfigureLogging(services);
+            services.AddUtil(builder);
             builder.Populate(services);
-            ServiceLocator.Current = builder.Build();
+            var container = builder.Build();
+            Ioc.Register(container);
+            ServiceLocator.Current = container;
             return ServiceLocator.Current;
         }
 
