@@ -7,20 +7,19 @@ using System.Text;
 
 namespace KissU.Services.Server
 {
-   public class SurgingServiceEngine: VirtualPathProviderServiceEngine
+    /// <summary>
+    /// 微服务引擎
+    /// </summary>
+    public class SurgingServiceEngine: VirtualPathProviderServiceEngine
     {
         public SurgingServiceEngine()
         {
-        
             ModuleServiceLocationFormats = new[] {
                 EnvironmentHelper.GetEnvironmentVariable("${ModulePath1}|Modules"),
             };
             ComponentServiceLocationFormats  = new[] {
                  EnvironmentHelper.GetEnvironmentVariable("${ComponentPath1}|Components"),
             };
-            //ModuleServiceLocationFormats = new[] {
-            //   ""
-            //};
         }
     }
 }
