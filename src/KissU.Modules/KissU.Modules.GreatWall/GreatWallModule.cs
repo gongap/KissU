@@ -27,9 +27,7 @@ namespace KissU.Modules.QuickStart
         {
             base.RegisterBuilder(builder);
             var services = new ServiceCollection();
-            //services.AddUnitOfWork<IQuickStartUnitOfWork, QuickStartUnitOfWork>(AppConfig.GetSection("ConnectionStrings").GetSection("DefaultConnection").Value);
             services.AddUnitOfWork<IGreatWallUnitOfWork, GreatWallUnitOfWork>(AppConfig.GetSection("ConnectionStrings").GetSection("DefaultConnection").Value);
-            //添加权限服务
             services.AddPermission(t => { t.Lockout.MaxFailedAccessAttempts = 2; });
             builder.ContainerBuilder.Populate(services);
             builder.AddClientIntercepted(typeof(CacheProviderInterceptor));
