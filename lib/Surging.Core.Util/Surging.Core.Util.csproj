@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\surging\src\Surging.Core\Surging.Core.KestrelHttpServer\Surging.Core.KestrelHttpServer.csproj" />
+    <ProjectReference Include="..\..\util\src\Util.Applications\08-Util.Applications.csproj" />
     <ProjectReference Include="..\..\util\src\Util\01-Util.csproj" />
   </ItemGroup>
 
