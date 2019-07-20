@@ -23,10 +23,10 @@
     <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="2.7.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-    <PackageReference Include="Util.Ui.Angular.AntDesign" Version="1.9.0.7" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\util\src\Util.Ui.Angular.AntDesign\05-Util.Ui.Angular.AntDesign.csproj" />
     <ProjectReference Include="..\GreatWall.Service\GreatWall.Service.csproj" />
   </ItemGroup>
 

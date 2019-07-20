@@ -24,10 +24,7 @@ GreatWall.Data是GreatWall权限管理系统的数据访问层。</Description>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Util.Datas" Version="1.9.0.7" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\..\..\util\src\Util.Datas\07-Util.Datas.csproj" />
     <ProjectReference Include="..\GreatWall.Domain\GreatWall.Domain.csproj" />
     <ProjectReference Include="..\GreatWall.Infrastructure\01-GreatWall.Infrastructure.csproj" />
   </ItemGroup>

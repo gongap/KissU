@@ -22,12 +22,13 @@ GreatWall.Service是GreatWall权限管理系统的服务层。</Description>
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\util\src\Util.Applications\08-Util.Applications.csproj" />
+    <ProjectReference Include="..\..\..\util\src\Util.Ui.Core\02-Util.Ui.Core.csproj" />
     <ProjectReference Include="..\GreatWall.Data\02-GreatWall.Data.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Util.Applications" Version="1.9.0.7" />
-    <PackageReference Include="Util.Ui.Core" Version="1.9.0.7" />
   </ItemGroup>
 
 </Project>
