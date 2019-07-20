@@ -10,15 +10,3 @@ BenchmarkDotNet.Artifacts/
 /template/CodeGenerator/02-Result
 
 
-/src/GreatWall/GreatWall.Admin/node_modules
-/src/GreatWall/GreatWall.Admin/wwwroot/dist
-/src/GreatWall/GreatWall.Admin/Typings/app/home/dashboard/html
-/src/GreatWall/GreatWall.Admin/Typings/app/systems/**/html
-
-/src/JobScheduler/JobScheduler.Admin/node_modules
-/src/JobScheduler/JobScheduler.Admin/wwwroot/dist
-/src/JobScheduler/JobScheduler.Admin/Typings/app/**/*.html
-!/src/JobScheduler/JobScheduler.Admin/Typings/app/layout/**/*.html
-
-
-
