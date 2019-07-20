@@ -1,0 +1,17 @@
+<page-header title="权限设置" [autoBreadcrumb]="false"></page-header>
+<nz-card [nzBordered]="false">
+    <nz-alert class="mb-md" nzType="info" [nzMessage]="m_cf66bf8bde6747699ad0622311336a7e" [nzShowIcon]="true"><ng-template #m_cf66bf8bde6747699ad0622311336a7e="">
+        当前应用程序：<strong class="text-primary mx-md"> {{model.applicationName}}</strong>
+        当前角色：<strong class="text-primary mx-md"> {{model.roleName}}</strong>
+    </ng-template></nz-alert>
+    <div nz-row="" [nzGutter]="24">
+        <div nz-col="" [nzSpan]="6">
+            <application-select (onClick)="selectApplication($event)"></application-select>
+        </div>
+        <div nz-col="" [nzSpan]="18">
+            <nz-tree-table-wrapper #tableModule_wrapper="" baseUrl="module" sortKey="CreationTime desc" [(queryParam)]="queryParam" [autoLoad]="false" [expandAll]="true" [showCheckbox]="true" [showPagination]="false"><nz-table #tableModule="" (nzPageIndexChange)="tableModule_wrapper.pageIndexChange($event)" (nzPageSizeChange)="tableModule_wrapper.pageSizeChange($event)" [(nzPageIndex)]="tableModule_wrapper.queryParam.page" [(nzPageSize)]="tableModule_wrapper.queryParam.pageSize" [nzData]="tableModule_wrapper.dataSource" [nzFrontPagination]="false" [nzLoading]="tableModule_wrapper.loading" [nzScroll]="{'y':'400px'}" [nzShowPagination]="tableModule_wrapper.showPagination" [nzShowQuickJumper]="true" [nzShowSizeChanger]="true" [nzShowTotal]="template_tableModule" [nzTotal]="tableModule_wrapper.totalCount"><thead><tr><th><label (nzCheckedChange)="tableModule_wrapper.masterToggle()" *ngIf="tableModule_wrapper.isShowCheckbox()" nz-checkbox="" [nzChecked]="tableModule_wrapper.isMasterChecked()" [nzIndeterminate]="tableModule_wrapper.isMasterIndeterminate()">模块名称</label><span *ngIf="!tableModule_wrapper.isShowCheckbox()">模块名称</span></th></tr></thead><tbody><ng-container *ngFor="let row of tableModule.data"><tr *ngIf="tableModule_wrapper.isShow(row)">
+                <td (nzExpandChange)="tableModule_wrapper.collapse(row,$event)" [nzExpand]="tableModule_wrapper.isExpand(row)" [nzIndentSize]="row.level*20" [nzShowExpand]="!tableModule_wrapper.isLeaf(row)"><label (nzCheckedChange)="tableModule_wrapper.toggle(row)" *ngIf="tableModule_wrapper.isShowCheckbox()" nz-checkbox="" [nzChecked]="tableModule_wrapper.isChecked(row)" [nzIndeterminate]="tableModule_wrapper.isIndeterminate(row)">{{row.name}}</label><label (click)="$event.stopPropagation()" (ngModelChange)="tableModule_wrapper.checkRowOnly(row)" *ngIf="tableModule_wrapper.isShowRadio(row)" name="radio_tableModule_wrapper" nz-radio="" [ngModel]="tableModule_wrapper.isChecked(row)">{{row.name}}</label><ng-container *ngIf="tableModule_wrapper.isShowText(row)">{{row.name}}</ng-container></td>
+            </tr></ng-container></tbody></nz-table><ng-template #template_tableModule="" let-range="range" let-total="">{{ range[0] }}-{{ range[1] }} 共 {{ total }} 条</ng-template></nz-tree-table-wrapper>
+        </div>
+    </div>
+</nz-card>

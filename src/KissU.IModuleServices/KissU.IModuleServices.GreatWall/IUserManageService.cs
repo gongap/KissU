@@ -9,13 +9,11 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Util.Domains.Repositories;
-using KissU.IModuleServices.QuickStart.Dtos;
-using KissU.IModuleServices.QuickStart.Queries;
 using GreatWall.Service.Dtos;
 using GreatWall.Service.Queries;
 using GreatWall.Service.Dtos.Requests;
 
-namespace KissU.IModuleServices.QuickStart
+namespace KissU.IModuleServices.GreatWall
 {
 
     [ServiceBundle("api/{Service}")]

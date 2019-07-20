@@ -8,11 +8,9 @@ using GreatWall.Data.UnitOfWorks.SqlServer;
 using GreatWall.Service.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using Util.Datas.Ef;
-using KissU.Modules.QuickStart.Infrastructure;
-using KissU.Modules.QuickStart.Infrastructure.UnitOfWorks.SqlServer;
 using Util;
 
-namespace KissU.Modules.QuickStart
+namespace KissU.Modules.GreatWall
 {
     /// <summary>
     /// 扩展系统模块

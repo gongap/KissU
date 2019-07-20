@@ -42,9 +42,9 @@ namespace GreatWall.Service.Dtos {
         [Display( Name = "创建时间" )]
         public DateTime? CreationTime { get; set; }
         /// <summary>
-        /// 创建人编号
+        /// 创建人
         /// </summary>
-        [Display( Name = "创建人编号" )]
+        [Display( Name = "创建人" )]
         public Guid? CreatorId { get; set; }
         /// <summary>
         /// 版本号

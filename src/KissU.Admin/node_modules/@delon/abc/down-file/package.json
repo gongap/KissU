@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/downFile.umd.js",
+  "module": "../fesm5/downFile.js",
+  "es2015": "../fesm2015/downFile.js",
+  "esm5": "../esm5/down-file/downFile.js",
+  "esm2015": "../esm2015/down-file/downFile.js",
+  "fesm5": "../fesm5/downFile.js",
+  "fesm2015": "../fesm2015/downFile.js",
+  "typings": "downFile.d.ts",
+  "metadata": "downFile.metadata.json",
+  "sideEffects": false,
+  "name": "@delon/abc/down-file"
+}

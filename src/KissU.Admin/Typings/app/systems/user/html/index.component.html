@@ -1,0 +1,43 @@
+<page-header title="用户"></page-header>
+<nz-card [nzBordered]="false">
+    
+<form autocomplete="off" class="search__form" nz-form="" nzLayout="inline">
+    <div nz-row="" [nzGutter]="32">
+        <div nz-col="" [nzSpan]="8">
+            <nz-form-item><nz-form-label>用户名</nz-form-label><nz-form-control><x-textbox name="userName" [(model)]="queryParam.userName"></x-textbox></nz-form-control></nz-form-item>
+        </div>
+        <div nz-col="" [nzSpan]="8">
+            <nz-form-item><nz-form-label>安全手机</nz-form-label><nz-form-control><x-textbox name="phoneNumber" [(model)]="queryParam.phoneNumber"></x-textbox></nz-form-control></nz-form-item>
+        </div>
+        <div *ngIf="expand" nz-col="" [nzSpan]="8">
+            <nz-form-item><nz-form-label>安全邮箱</nz-form-label><nz-form-control><x-textbox name="email" [(model)]="queryParam.email"></x-textbox></nz-form-control></nz-form-item>
+        </div>
+        <div nz-col="" [class.text-right]="expand" [nzSpan]="8">
+            <x-button #btnQuery="" (onClick)="query(btnQuery)" color="primary" text="查询"><ng-template><i nz-icon="" nzType="search"></i></ng-template></x-button>
+            <x-button #btnRefresh="" (onClick)="refresh(btnRefresh)" class="mx-sm" text="刷新"><ng-template><i nz-icon="" nzType="sync"></i></ng-template></x-button>
+            <a (click)="expand=!expand">
+                <i class="anticon" [class.anticon-down]="!expand" [class.anticon-up]="expand"></i>
+            </a>
+        </div>
+    </div>
+</form>
+    <x-button (onClick)="openCreateDialog()" class="mr-sm" color="primary" text="创建用户"><ng-template><i nz-icon="" nzType="plus"></i></ng-template></x-button>
+    <x-button #btnDelete="" (onClick)="delete(btnDelete)" color="danger" text="删除"><ng-template><i nz-icon="" nzType="delete"></i></ng-template></x-button>
+    <nz-alert class="my-md" nzType="info" [nzMessage]="m_f320190a893042628a3dd45f838707dc" [nzShowIcon]="true"><ng-template #m_f320190a893042628a3dd45f838707dc="">
+        已选择<strong class="text-primary mx-md">{{getCheckedLength()}}</strong>行
+    </ng-template></nz-alert>
+    <nz-table-wrapper #tableUser_wrapper="" baseUrl="user" sortKey="CreationTime desc" [(queryParam)]="queryParam"><nz-table #tableUser="" (nzPageIndexChange)="tableUser_wrapper.pageIndexChange($event)" (nzPageSizeChange)="tableUser_wrapper.pageSizeChange($event)" [(nzPageIndex)]="tableUser_wrapper.queryParam.page" [(nzPageSize)]="tableUser_wrapper.queryParam.pageSize" [nzData]="tableUser_wrapper.dataSource" [nzFrontPagination]="false" [nzLoading]="tableUser_wrapper.loading" [nzShowPagination]="tableUser_wrapper.showPagination" [nzShowQuickJumper]="true" [nzShowSizeChanger]="true" [nzShowTotal]="template_tableUser" [nzTotal]="tableUser_wrapper.totalCount"><thead><tr><th (nzCheckedChange)="tableUser_wrapper.masterToggle()" nzWidth="30px" [nzChecked]="tableUser_wrapper.isMasterChecked()" [nzDisabled]="!tableUser_wrapper.dataSource.length" [nzIndeterminate]="tableUser_wrapper.isMasterIndeterminate()" [nzShowCheckbox]="tableUser_wrapper.multiple">{{tableUser_wrapper.multiple?'':'单选'}}</th><th nzWidth="70px">序号</th><th>用户名</th><th>手机号</th><th>电子邮箱</th><th>启用</th><th>登录次数</th><th>创建时间</th><th>操作</th></tr></thead><tbody><tr *ngFor="let row of tableUser.data">
+        <td (click)="$event.stopPropagation()" (nzCheckedChange)="tableUser_wrapper.checkedSelection.toggle(row)" [nzChecked]="tableUser_wrapper.checkedSelection.isSelected(row)" [nzShowCheckbox]="tableUser_wrapper.multiple"><label (click)="$event.stopPropagation()" (ngModelChange)="tableUser_wrapper.checkRowOnly(row)" *ngIf="!tableUser_wrapper.multiple" name="radio_tableUser" nz-radio="" [ngModel]="tableUser_wrapper.checkedSelection.isSelected(row)"></label></td>
+        <td>{{row.lineNumber}}</td>
+        <td>{{row.userName}}</td>
+        <td>{{row.phoneNumber}}</td>
+        <td>{{row.email}}</td>
+        <td>{{row.enabled?'是':'否'}}</td>
+        <td>{{row.loginCount}}</td>
+        <td>{{ row.creationTime | date:"yyyy-MM-dd" }}</td>
+        <td>
+            <x-button (onClick)="delete(null,row.id)" class="mr-sm" color="danger" shape="circle" tooltip="删除"><ng-template><i nz-icon="" nzType="delete"></i></ng-template></x-button>
+            <x-button (onClick)="openDetailDialog(row)" shape="circle" tooltip="详情"><ng-template><i nz-icon="" nzType="eye"></i></ng-template></x-button>
+        </td>
+    </tr></tbody></nz-table><ng-template #template_tableUser="" let-range="range" let-total="">{{ range[0] }}-{{ range[1] }} 共 {{ total }} 条</ng-template></nz-table-wrapper>
+</nz-card>

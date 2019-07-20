@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/avatarList.umd.js",
+  "module": "../fesm5/avatarList.js",
+  "es2015": "../fesm2015/avatarList.js",
+  "esm5": "../esm5/avatar-list/avatarList.js",
+  "esm2015": "../esm2015/avatar-list/avatarList.js",
+  "fesm5": "../fesm5/avatarList.js",
+  "fesm2015": "../fesm2015/avatarList.js",
+  "typings": "avatarList.d.ts",
+  "metadata": "avatarList.metadata.json",
+  "sideEffects": false,
+  "name": "@delon/abc/avatar-list"
+}

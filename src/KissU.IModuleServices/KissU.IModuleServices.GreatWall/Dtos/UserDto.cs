@@ -115,16 +115,6 @@ namespace GreatWall.Service.Dtos {
         [Display( Name = "创建人" )]
         public Guid? CreatorId { get; set; }
         /// <summary>
-        /// 最后修改时间
-        /// </summary>
-        [Display( Name = "最后修改时间" )]
-        public DateTime? LastModificationTime { get; set; }
-        /// <summary>
-        /// 最后修改人
-        /// </summary>
-        [Display( Name = "最后修改人" )]
-        public Guid? LastModifierId { get; set; }
-        /// <summary>
         /// 版本号
         /// </summary>
         [Display( Name = "版本号" )]

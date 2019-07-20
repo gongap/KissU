@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/qr.umd.js",
+  "module": "../fesm5/qr.js",
+  "es2015": "../fesm2015/qr.js",
+  "esm5": "../esm5/qr/qr.js",
+  "esm2015": "../esm2015/qr/qr.js",
+  "fesm5": "../fesm5/qr.js",
+  "fesm2015": "../fesm2015/qr.js",
+  "typings": "qr.d.ts",
+  "metadata": "qr.metadata.json",
+  "sideEffects": false,
+  "name": "@delon/abc/qr"
+}

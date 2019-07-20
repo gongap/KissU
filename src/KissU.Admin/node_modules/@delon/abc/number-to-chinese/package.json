@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/numberToChinese.umd.js",
+  "module": "../fesm5/numberToChinese.js",
+  "es2015": "../fesm2015/numberToChinese.js",
+  "esm5": "../esm5/number-to-chinese/numberToChinese.js",
+  "esm2015": "../esm2015/number-to-chinese/numberToChinese.js",
+  "fesm5": "../fesm5/numberToChinese.js",
+  "fesm2015": "../fesm2015/numberToChinese.js",
+  "typings": "numberToChinese.d.ts",
+  "metadata": "numberToChinese.metadata.json",
+  "sideEffects": false,
+  "name": "@delon/abc/number-to-chinese"
+}

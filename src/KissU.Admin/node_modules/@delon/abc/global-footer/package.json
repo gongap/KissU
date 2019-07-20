@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/globalFooter.umd.js",
+  "module": "../fesm5/globalFooter.js",
+  "es2015": "../fesm2015/globalFooter.js",
+  "esm5": "../esm5/global-footer/globalFooter.js",
+  "esm2015": "../esm2015/global-footer/globalFooter.js",
+  "fesm5": "../fesm5/globalFooter.js",
+  "fesm2015": "../fesm2015/globalFooter.js",
+  "typings": "globalFooter.d.ts",
+  "metadata": "globalFooter.metadata.json",
+  "sideEffects": false,
+  "name": "@delon/abc/global-footer"
+}

@@ -76,7 +76,7 @@ namespace GreatWall.Domain.Models {
         /// </summary>
         public DateTime? CreationTime { get; set; }
         /// <summary>
-        /// 创建人编号
+        /// 创建人标识
         /// </summary>
         public Guid? CreatorId { get; set; }
         /// <summary>
@@ -84,7 +84,7 @@ namespace GreatWall.Domain.Models {
         /// </summary>
         public DateTime? LastModificationTime { get; set; }
         /// <summary>
-        /// 最后修改人编号
+        /// 最后修改人标识
         /// </summary>
         public Guid? LastModifierId { get; set; }
         /// <summary>

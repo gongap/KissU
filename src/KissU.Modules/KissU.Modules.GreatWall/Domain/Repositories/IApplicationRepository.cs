@@ -6,7 +6,7 @@ namespace GreatWall.Domain.Repositories {
     /// <summary>
     /// 应用程序仓储
     /// </summary>
-    public interface IApplicationRepository : IRepository<Application> {
+    public interface IApplicationRepository : ICompactRepository<Application> {
         /// <summary>
         /// 通过应用程序编码查找
         /// </summary>

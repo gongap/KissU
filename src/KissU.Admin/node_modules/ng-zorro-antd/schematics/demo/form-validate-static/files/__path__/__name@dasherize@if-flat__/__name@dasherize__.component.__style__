@@ -1,0 +1,8 @@
+
+      [nz-form] {
+        max-width: 600px;
+      }
+      nz-date-picker ::ng-deep .ant-calendar-picker {
+        width: 100%;
+      }
+    

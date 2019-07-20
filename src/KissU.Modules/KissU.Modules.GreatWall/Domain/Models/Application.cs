@@ -2,14 +2,13 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using Util.Domains;
-using Util.Domains.Auditing;
 
 namespace GreatWall.Domain.Models {
     /// <summary>
     /// 应用程序
     /// </summary>
     [DisplayName( "应用程序" )]
-    public class Application : AggregateRoot<Application>,IDelete,IAudited {
+    public class Application : AggregateRoot<Application> {
         /// <summary>
         /// 初始化应用程序
         /// </summary>
@@ -21,6 +20,7 @@ namespace GreatWall.Domain.Models {
         /// </summary>
         /// <param name="id">应用程序标识</param>
         public Application( Guid id ) : base( id ) {
+            Client = new Client();
         }
 
         /// <summary>
@@ -54,19 +54,14 @@ namespace GreatWall.Domain.Models {
         [StringLength( 500 )]
         public string Remark { get; set; }
         /// <summary>
-        /// 扩展
-        /// </summary>
-        [DisplayName( "扩展" )]
-        public string Extend { get; set; }
-        /// <summary>
         /// 创建时间
         /// </summary>
         [DisplayName( "创建时间" )]
         public DateTime? CreationTime { get; set; }
         /// <summary>
-        /// 创建人编号
+        /// 创建人标识
         /// </summary>
-        [DisplayName( "创建人编号" )]
+        [DisplayName( "创建人标识" )]
         public Guid? CreatorId { get; set; }
         /// <summary>
         /// 最后修改时间
@@ -74,16 +69,25 @@ namespace GreatWall.Domain.Models {
         [DisplayName( "最后修改时间" )]
         public DateTime? LastModificationTime { get; set; }
         /// <summary>
-        /// 最后修改人编号
+        /// 最后修改人标识
         /// </summary>
-        [DisplayName( "最后修改人编号" )]
+        [DisplayName( "最后修改人标识" )]
         public Guid? LastModifierId { get; set; }
         /// <summary>
         /// 是否删除
         /// </summary>
         [DisplayName( "是否删除" )]
         public bool IsDeleted { get; set; }
-        
+        /// <summary>
+        /// 是否客户端
+        /// </summary>
+        [DisplayName( "是否客户端" )]
+        public bool IsClient { get; set; }
+        /// <summary>
+        /// 客户端
+        /// </summary>
+        public Client Client { get; set; }
+
         /// <summary>
         /// 添加描述
         /// </summary>
@@ -94,7 +98,6 @@ namespace GreatWall.Domain.Models {
             AddDescription( t => t.Enabled );
             AddDescription( t => t.RegisterEnabled );
             AddDescription( t => t.Remark );
-            AddDescription( t => t.Extend );
             AddDescription( t => t.CreationTime );
             AddDescription( t => t.CreatorId );
             AddDescription( t => t.LastModificationTime );
@@ -111,7 +114,6 @@ namespace GreatWall.Domain.Models {
             AddChange( t => t.Enabled, other.Enabled );
             AddChange( t => t.RegisterEnabled, other.RegisterEnabled );
             AddChange( t => t.Remark, other.Remark );
-            AddChange( t => t.Extend, other.Extend );
             AddChange( t => t.CreationTime, other.CreationTime );
             AddChange( t => t.CreatorId, other.CreatorId );
             AddChange( t => t.LastModificationTime, other.LastModificationTime );

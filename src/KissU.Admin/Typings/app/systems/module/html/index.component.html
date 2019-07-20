@@ -1,0 +1,44 @@
+<page-header title="模块"></page-header>
+<nz-card [nzBordered]="false">
+    
+<form autocomplete="off" class="search__form" nz-form="" nzLayout="inline">
+    <div nz-row="" [nzGutter]="32">
+        <div nz-col="" [nzSpan]="6">
+            <nz-form-item><nz-form-label>模块名称</nz-form-label><nz-form-control><x-textbox name="name" [(model)]="queryParam.name"></x-textbox></nz-form-control></nz-form-item>
+        </div>
+        <div nz-col="" [nzSpan]="6">
+            <nz-form-item><nz-form-label>模块地址</nz-form-label><nz-form-control><x-textbox name="uri" [(model)]="queryParam.uri"></x-textbox></nz-form-control></nz-form-item>
+        </div>
+        <div nz-col="" [nzSpan]="6">
+            <nz-form-item><nz-form-label>启用</nz-form-label><nz-form-control><x-radio label="启用" name="enabled" [(model)]="queryParam.enabled" [dataSource]="[{'text':'是','value':true},{'text':'否','value':false}]"></x-radio></nz-form-control></nz-form-item>
+        </div>
+        <div nz-col="" [nzSpan]="6">
+            <x-button #btnQuery="" (onClick)="query(btnQuery)" color="primary" text="查询"><ng-template><i nz-icon="" nzType="search"></i></ng-template></x-button>
+            <x-button #btnRefresh="" (onClick)="refresh(btnRefresh)" class="mx-sm" text="刷新"><ng-template><i nz-icon="" nzType="sync"></i></ng-template></x-button>
+        </div>
+    </div>
+</form>
+    <x-button (onClick)="openCreateDialog()" class="mr-sm" color="primary" text="创建模块"><ng-template><i nz-icon="" nzType="plus"></i></ng-template></x-button>
+    <x-button #btnDelete="" (onClick)="delete(btnDelete)" color="danger" text="删除"><ng-template><i nz-icon="" nzType="delete"></i></ng-template></x-button>
+    <nz-alert class="my-md" nzType="info" [nzMessage]="m_28b0f254606c446cbb1803874de59e83" [nzShowIcon]="true"><ng-template #m_28b0f254606c446cbb1803874de59e83="">
+        当前应用程序：<strong class="text-primary mx-md"> {{selectedApplication.name}}</strong>
+    </ng-template></nz-alert>
+    <div nz-row="" [nzGutter]="24">
+        <div nz-col="" [nzSpan]="6">
+            <application-select (onClick)="selectApplication($event)"></application-select>
+        </div>
+        <div nz-col="" [nzSpan]="18">
+            <nz-tree-table-wrapper #tableModule_wrapper="" baseUrl="module" sortKey="CreationTime desc" [(queryParam)]="queryParam" [autoLoad]="false" [expandAll]="true" [showCheckbox]="true" [showPagination]="false"><nz-table #tableModule="" (nzPageIndexChange)="tableModule_wrapper.pageIndexChange($event)" (nzPageSizeChange)="tableModule_wrapper.pageSizeChange($event)" [(nzPageIndex)]="tableModule_wrapper.queryParam.page" [(nzPageSize)]="tableModule_wrapper.queryParam.pageSize" [nzData]="tableModule_wrapper.dataSource" [nzFrontPagination]="false" [nzLoading]="tableModule_wrapper.loading" [nzShowPagination]="tableModule_wrapper.showPagination" [nzShowQuickJumper]="true" [nzShowSizeChanger]="true" [nzShowTotal]="template_tableModule" [nzTotal]="tableModule_wrapper.totalCount"><thead><tr><th><label (nzCheckedChange)="tableModule_wrapper.masterToggle()" *ngIf="tableModule_wrapper.isShowCheckbox()" nz-checkbox="" [nzChecked]="tableModule_wrapper.isMasterChecked()" [nzIndeterminate]="tableModule_wrapper.isMasterIndeterminate()">模块名称</label><span *ngIf="!tableModule_wrapper.isShowCheckbox()">模块名称</span></th><th>模块地址</th><th>启用</th><th>操作</th></tr></thead><tbody><ng-container *ngFor="let row of tableModule.data"><tr *ngIf="tableModule_wrapper.isShow(row)">
+                <td (nzExpandChange)="tableModule_wrapper.collapse(row,$event)" [nzExpand]="tableModule_wrapper.isExpand(row)" [nzIndentSize]="row.level*20" [nzShowExpand]="!tableModule_wrapper.isLeaf(row)"><label (nzCheckedChange)="tableModule_wrapper.toggle(row)" *ngIf="tableModule_wrapper.isShowCheckbox()" nz-checkbox="" [nzChecked]="tableModule_wrapper.isChecked(row)" [nzIndeterminate]="tableModule_wrapper.isIndeterminate(row)">{{row.name}}</label><label (click)="$event.stopPropagation()" (ngModelChange)="tableModule_wrapper.checkRowOnly(row)" *ngIf="tableModule_wrapper.isShowRadio(row)" name="radio_tableModule_wrapper" nz-radio="" [ngModel]="tableModule_wrapper.isChecked(row)">{{row.name}}</label><ng-container *ngIf="tableModule_wrapper.isShowText(row)">{{row.name}}</ng-container></td>
+                <td>{{row.url}}</td>
+                <td>{{row.enabled?'是':'否'}}</td>
+                <td>
+                    <x-button (onClick)="openCreateDialog(row)" class="mr-sm" color="primary" shape="circle" tooltip="创建下级模块"><ng-template><i nz-icon="" nzType="plus"></i></ng-template></x-button>
+                    <x-button (onClick)="openEditDialog(row)" class="mr-sm" color="primary" shape="circle" tooltip="编辑"><ng-template><i nz-icon="" nzType="edit"></i></ng-template></x-button>
+                    <x-button (onClick)="delete(null,row.id)" class="mr-sm" color="danger" shape="circle" tooltip="删除"><ng-template><i nz-icon="" nzType="delete"></i></ng-template></x-button>
+                    <x-button (onClick)="openDetailDialog(row)" shape="circle" tooltip="详情"><ng-template><i nz-icon="" nzType="eye"></i></ng-template></x-button>
+                </td>
+            </tr></ng-container></tbody></nz-table><ng-template #template_tableModule="" let-range="range" let-total="">{{ range[0] }}-{{ range[1] }} 共 {{ total }} 条</ng-template></nz-tree-table-wrapper>
+        </div>
+    </div>
+</nz-card>

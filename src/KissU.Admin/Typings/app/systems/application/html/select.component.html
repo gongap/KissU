@@ -1,0 +1,7 @@
+
+<nz-card nzTitle="应用程序">
+    <nz-spin *ngIf="loading"></nz-spin>
+    <ul nz-menu="" nzMode="inline">
+        <li (click)="click(item)" *ngFor="let item of list" nz-menu-item="" [nzSelected]="item==selected">{{item.name}}</li>
+    </ul>
+</nz-card>

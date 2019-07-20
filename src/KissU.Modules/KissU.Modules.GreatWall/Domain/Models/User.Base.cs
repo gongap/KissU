@@ -168,9 +168,9 @@ namespace GreatWall.Domain.Models {
         [DisplayName( "创建时间" )]
         public DateTime? CreationTime { get; set; }
         /// <summary>
-        /// 创建人
+        /// 创建人标识
         /// </summary>
-        [DisplayName( "创建人" )]
+        [DisplayName( "创建人标识" )]
         public Guid? CreatorId { get; set; }
         /// <summary>
         /// 最后修改时间
@@ -178,9 +178,9 @@ namespace GreatWall.Domain.Models {
         [DisplayName( "最后修改时间" )]
         public DateTime? LastModificationTime { get; set; }
         /// <summary>
-        /// 最后修改人
+        /// 最后修改人标识
         /// </summary>
-        [DisplayName( "最后修改人" )]
+        [DisplayName( "最后修改人标识" )]
         public Guid? LastModifierId { get; set; }
         /// <summary>
         /// 是否删除

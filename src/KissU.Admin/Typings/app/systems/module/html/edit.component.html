@@ -1,0 +1,31 @@
+
+<page-header title="编辑模块" [autoBreadcrumb]="false"></page-header>
+<nz-card [nzBordered]="false">
+    <form #form="ngForm" autocomplete="off" nz-form="">
+        <nz-form-item [nzGutter]="16">
+            <nz-form-label [nzSpan]="3">应用程序</nz-form-label>
+            <nz-form-control [nzSpan]="21">
+                <span>{{applicationName}}</span>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item [nzGutter]="16">
+            <nz-form-label [nzSpan]="3">父模块</nz-form-label>
+            <nz-form-control [nzSpan]="21">
+                <span>{{model.parentName}}</span>
+                <x-button (onClick)="openSelectDialog()" class="ml-sm" color="primary" shape="circle" tooltip="请选择父模块"><ng-template><i nz-icon="" nzType="search"></i></ng-template></x-button>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzRequired]="true" [nzSpan]="3">模块名称</nz-form-label><nz-form-control [nzSpan]="21"><x-textbox name="name" requiredMessage="模块名称不能为空" [(model)]="model.name" [maxLength]="200" [required]="true"></x-textbox></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzSpan]="3">模块地址</nz-form-label><nz-form-control [nzSpan]="21"><x-textbox name="url" [(model)]="model.url" [maxLength]="300"></x-textbox></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzSpan]="3">图标</nz-form-label><nz-form-control [nzSpan]="21"><x-textbox name="icon" [(model)]="model.icon"></x-textbox></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzSpan]="3">启用</nz-form-label><nz-form-control [nzSpan]="21"><nz-switch name="enabled" [(ngModel)]="model.enabled">启用</nz-switch></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzSpan]="3">排序号</nz-form-label><nz-form-control [nzSpan]="21"><x-number-textbox name="sortId" [(model)]="model.sortId"></x-number-textbox></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzSpan]="3">备注</nz-form-label><nz-form-control [nzSpan]="21"><x-textarea name="remark" [(model)]="model.remark" [maxLength]="500"></x-textarea></nz-form-control></nz-form-item>
+        <nz-form-item nzJustify="end" nzType="flex" [nzGutter]="16">
+            <nz-form-control class="w-auto" [nzSpan]="21">
+                <x-button (onClick)="close()" class="mr-sm" text="取消"></x-button>
+                <x-button #btnSubmit="" (onClick)="submit(form,btnSubmit)" color="primary" [validateForm]="true"></x-button>
+            </nz-form-control>
+        </nz-form-item>
+    </form>
+</nz-card>

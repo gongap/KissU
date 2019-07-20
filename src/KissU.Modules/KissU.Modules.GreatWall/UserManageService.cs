@@ -12,14 +12,9 @@ using Util.Maps;
 using Util.Domains.Repositories;
 using Util.Datas.Queries;
 using Util.Datas.Ef;
-using KissU.IModuleServices.QuickStart;
-using KissU.IModuleServices.QuickStart.Dtos;
-using KissU.IModuleServices.QuickStart.Queries;
-using KissU.Modules.QuickStart.Infrastructure;
-using KissU.Modules.QuickStart.Domain.Models;
-using KissU.Modules.QuickStart.Domain.Repositories;
 using GreatWall.Service.Dtos.Requests;
 using GreatWall.Service.Queries;
+using KissU.IModuleServices.GreatWall;
 
 namespace KissU.Modules.QuickStart.Application.Implements.Systems
 {

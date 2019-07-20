@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/tagSelect.umd.js",
+  "module": "../fesm5/tagSelect.js",
+  "es2015": "../fesm2015/tagSelect.js",
+  "esm5": "../esm5/tag-select/tagSelect.js",
+  "esm2015": "../esm2015/tag-select/tagSelect.js",
+  "fesm5": "../fesm5/tagSelect.js",
+  "fesm2015": "../fesm2015/tagSelect.js",
+  "typings": "tagSelect.d.ts",
+  "metadata": "tagSelect.metadata.json",
+  "sideEffects": false,
+  "name": "@delon/abc/tag-select"
+}

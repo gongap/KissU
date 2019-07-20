@@ -1,5 +1,4 @@
-﻿using System;
-using GreatWall.Data.Pos.Models;
+﻿using GreatWall.Data.Pos.Models;
 using GreatWall.Domain.Enums;
 using GreatWall.Domain.Models;
 using Util.Helpers;
@@ -43,7 +42,6 @@ namespace GreatWall.Data.Pos.Extensions {
         /// <summary>
         /// 创建扩展
         /// </summary>
-        /// <param name="entity">模块</param>
         private static ModuleExtend CreateExtend( Module entity ) {
             return new ModuleExtend {
                 Icon = entity.Icon,

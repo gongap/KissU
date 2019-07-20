@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/footerToolbar.umd.js",
+  "module": "../fesm5/footerToolbar.js",
+  "es2015": "../fesm2015/footerToolbar.js",
+  "esm5": "../esm5/footer-toolbar/footerToolbar.js",
+  "esm2015": "../esm2015/footer-toolbar/footerToolbar.js",
+  "fesm5": "../fesm5/footerToolbar.js",
+  "fesm2015": "../fesm2015/footerToolbar.js",
+  "typings": "footerToolbar.d.ts",
+  "metadata": "footerToolbar.metadata.json",
+  "sideEffects": false,
+  "name": "@delon/abc/footer-toolbar"
+}

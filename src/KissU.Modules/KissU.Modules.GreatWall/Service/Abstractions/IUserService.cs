@@ -16,6 +16,6 @@ namespace GreatWall.Service.Abstractions {
         /// 创建用户
         /// </summary>
         /// <param name="request">创建用户参数</param>
-        Task<Guid> CreateAsync( CreateUserRequest request );
+        Task<Guid> CreateAsync( [NotNull] [Valid] CreateUserRequest request );
     }
 }

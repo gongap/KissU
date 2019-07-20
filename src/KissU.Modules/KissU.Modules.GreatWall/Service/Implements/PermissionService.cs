@@ -22,7 +22,7 @@ namespace GreatWall.Service.Implements {
         /// <param name="permissionManager">权限服务</param>
         /// <param name="permissionRepository">权限仓储</param>
         public PermissionService( IGreatWallUnitOfWork unitOfWork, IPermissionManager permissionManager, IPermissionRepository permissionRepository ) {
-            GreatWallUnitOfWork = unitOfWork;
+            UnitOfWork = unitOfWork;
             PermissionManager = permissionManager;
             PermissionRepository = permissionRepository;
         }
@@ -30,7 +30,7 @@ namespace GreatWall.Service.Implements {
         /// <summary>
         /// 工作单元
         /// </summary>
-        public IGreatWallUnitOfWork GreatWallUnitOfWork { get; set; }
+        public IGreatWallUnitOfWork UnitOfWork { get; set; }
         /// <summary>
         /// 权限服务
         /// </summary>
@@ -54,7 +54,7 @@ namespace GreatWall.Service.Implements {
         /// <param name="request">参数</param>
         public async Task SaveAsync( SavePermissionRequest request ) {
             await PermissionManager.SaveAsync( request.ApplicationId.SafeValue(), request.RoleId.SafeValue(),request.ResourceIds.ToGuidList(), request.IsDeny.SafeValue() );
-            await GreatWallUnitOfWork.CommitAsync();
+            await UnitOfWork.CommitAsync();
         }
     }
 }

@@ -1,0 +1,16 @@
+
+<page-header title="创建用户" [autoBreadcrumb]="false"></page-header>
+<nz-card [nzBordered]="false">
+    <form #form="ngForm" autocomplete="off" nz-form="">
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzSpan]="4">用户名</nz-form-label><nz-form-control [nzSpan]="20"><x-textbox name="userName" [(model)]="model.userName" [maxLength]="256"></x-textbox></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzSpan]="4">邮箱</nz-form-label><nz-form-control [nzSpan]="20"><x-textbox name="email" type="email" [(model)]="model.email" [maxLength]="256"></x-textbox></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzSpan]="4">手机号</nz-form-label><nz-form-control [nzSpan]="20"><x-textbox name="phoneNumber" patterMessage="手机号不正确" pattern="^1[0-9]{10}$" [(model)]="model.phoneNumber" [maxLength]="64"></x-textbox></nz-form-control></nz-form-item>
+        <nz-form-item [nzGutter]="16"><nz-form-label [nzRequired]="true" [nzSpan]="4">密码</nz-form-label><nz-form-control [nzSpan]="20"><x-textbox name="password" requiredMessage="密码不能为空" type="password" [(model)]="model.password" [maxLength]="256" [required]="true"></x-textbox></nz-form-control></nz-form-item>
+        <nz-form-item nzJustify="end" nzType="flex" [nzGutter]="16">
+            <nz-form-control class="w-auto" [nzSpan]="20">
+                <x-button (onClick)="close()" class="mr-sm" text="取消"></x-button>
+                <x-button #btnSubmit="" (onClick)="submit(form,btnSubmit)" color="primary" [validateForm]="true"></x-button>
+            </nz-form-control>
+        </nz-form-item>
+    </form>
+</nz-card>

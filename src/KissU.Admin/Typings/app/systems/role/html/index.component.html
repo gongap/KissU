@@ -1,0 +1,52 @@
+<page-header title="角色"></page-header>
+<nz-card [nzBordered]="false">
+    
+<form autocomplete="off" class="search__form" nz-form="" nzLayout="inline">
+    <div nz-row="" [nzGutter]="32">
+        <div nz-col="" [nzSpan]="8">
+            <nz-form-item><nz-form-label>角色编码</nz-form-label><nz-form-control><x-textbox name="code" [(model)]="queryParam.code"></x-textbox></nz-form-control></nz-form-item>
+        </div>
+        <div nz-col="" [nzSpan]="8">
+            <nz-form-item><nz-form-label>角色名称</nz-form-label><nz-form-control><x-textbox name="name" [(model)]="queryParam.name"></x-textbox></nz-form-control></nz-form-item>
+        </div>
+        <div *ngIf="expand" nz-col="" [nzSpan]="8">
+            <nz-form-item><nz-form-label>角色类型</nz-form-label><nz-form-control><x-textbox name="type" [(model)]="queryParam.type"></x-textbox></nz-form-control></nz-form-item>
+        </div>
+        <div *ngIf="expand" nz-col="" [nzSpan]="8">
+            <nz-form-item><nz-form-label>管理员</nz-form-label><nz-form-control><x-radio label="管理员" name="isAdmin" [(model)]="queryParam.isAdmin" [dataSource]="[{'text':'是','value':true},{'text':'否','value':false}]"></x-radio></nz-form-control></nz-form-item>
+        </div>
+        <div *ngIf="expand" nz-col="" [nzSpan]="8">
+            <nz-form-item><nz-form-label>启用</nz-form-label><nz-form-control><x-radio label="启用" name="enabled" [(model)]="queryParam.enabled" [dataSource]="[{'text':'是','value':true},{'text':'否','value':false}]"></x-radio></nz-form-control></nz-form-item>
+        </div>
+        <div nz-col="" [class.text-right]="expand" [nzSpan]="8">
+            <x-button #btnQuery="" (onClick)="query(btnQuery)" color="primary" text="查询"><ng-template><i nz-icon="" nzType="search"></i></ng-template></x-button>
+            <x-button #btnRefresh="" (onClick)="refresh(btnRefresh)" class="mx-sm" text="刷新"><ng-template><i nz-icon="" nzType="sync"></i></ng-template></x-button>
+            <a (click)="expand=!expand">
+                <i class="anticon" [class.anticon-down]="!expand" [class.anticon-up]="expand"></i>
+            </a>
+        </div>
+    </div>
+</form>
+    <x-button (onClick)="openCreateDialog()" class="mr-sm" color="primary" text="创建角色"><ng-template><i nz-icon="" nzType="plus"></i></ng-template></x-button>
+    <x-button #btnDelete="" (onClick)="delete(btnDelete)" color="danger" text="删除"><ng-template><i nz-icon="" nzType="delete"></i></ng-template></x-button>
+    <nz-alert class="my-md" nzType="info" [nzMessage]="m_a13b326d6ff14e4b98e07bda90cb5b17" [nzShowIcon]="true"><ng-template #m_a13b326d6ff14e4b98e07bda90cb5b17="">
+        已选择<strong class="text-primary mx-md">{{getCheckedLength()}}</strong>行
+    </ng-template></nz-alert>
+    <nz-table-wrapper #tableRole_wrapper="" baseUrl="role" sortKey="CreationTime desc" [(queryParam)]="queryParam"><nz-table #tableRole="" (nzPageIndexChange)="tableRole_wrapper.pageIndexChange($event)" (nzPageSizeChange)="tableRole_wrapper.pageSizeChange($event)" [(nzPageIndex)]="tableRole_wrapper.queryParam.page" [(nzPageSize)]="tableRole_wrapper.queryParam.pageSize" [nzData]="tableRole_wrapper.dataSource" [nzFrontPagination]="false" [nzLoading]="tableRole_wrapper.loading" [nzShowPagination]="tableRole_wrapper.showPagination" [nzShowQuickJumper]="true" [nzShowSizeChanger]="true" [nzShowTotal]="template_tableRole" [nzTotal]="tableRole_wrapper.totalCount"><thead><tr><th (nzCheckedChange)="tableRole_wrapper.masterToggle()" nzWidth="30px" [nzChecked]="tableRole_wrapper.isMasterChecked()" [nzDisabled]="!tableRole_wrapper.dataSource.length" [nzIndeterminate]="tableRole_wrapper.isMasterIndeterminate()" [nzShowCheckbox]="tableRole_wrapper.multiple">{{tableRole_wrapper.multiple?'':'单选'}}</th><th nzWidth="70px">序号</th><th>角色编码</th><th>角色名称</th><th>角色类型</th><th>管理员</th><th>启用</th><th>创建时间</th><th>操作</th></tr></thead><tbody><tr *ngFor="let row of tableRole.data">
+        <td (click)="$event.stopPropagation()" (nzCheckedChange)="tableRole_wrapper.checkedSelection.toggle(row)" [nzChecked]="tableRole_wrapper.checkedSelection.isSelected(row)" [nzShowCheckbox]="tableRole_wrapper.multiple"><label (click)="$event.stopPropagation()" (ngModelChange)="tableRole_wrapper.checkRowOnly(row)" *ngIf="!tableRole_wrapper.multiple" name="radio_tableRole" nz-radio="" [ngModel]="tableRole_wrapper.checkedSelection.isSelected(row)"></label></td>
+        <td>{{row.lineNumber}}</td>
+        <td>{{row.code}}</td>
+        <td>{{row.name}}</td>
+        <td>{{row.type}}</td>
+        <td>{{row.isAdmin?'是':'否'}}</td>
+        <td>{{row.enabled?'是':'否'}}</td>
+        <td>{{ row.creationTime | date:"yyyy-MM-dd" }}</td>
+        <td>
+            <x-button (onClick)="openPermissionDialog(row)" class="mr-sm" color="primary" shape="circle" tooltip="权限设置"><ng-template><i nz-icon="" nzType="safety-certificate"></i></ng-template></x-button>
+            <x-button (onClick)="openUserDialog(row)" class="mr-sm" color="primary" shape="circle" tooltip="用户设置"><ng-template><i nz-icon="" nzType="user"></i></ng-template></x-button>
+            <x-button (onClick)="openEditDialog(row)" class="mr-sm" color="primary" shape="circle" tooltip="编辑"><ng-template><i nz-icon="" nzType="edit"></i></ng-template></x-button>
+            <x-button (onClick)="delete(null,row.id)" class="mr-sm" color="danger" shape="circle" tooltip="删除"><ng-template><i nz-icon="" nzType="delete"></i></ng-template></x-button>
+            <x-button (onClick)="openDetailDialog(row)" shape="circle" tooltip="详情"><ng-template><i nz-icon="" nzType="eye"></i></ng-template></x-button>
+        </td>
+    </tr></tbody></nz-table><ng-template #template_tableRole="" let-range="range" let-total="">{{ range[0] }}-{{ range[1] }} 共 {{ total }} 条</ng-template></nz-table-wrapper>
+</nz-card>

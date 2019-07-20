@@ -1,0 +1,13 @@
+{
+  "main": "../bundles/errorCollect.umd.js",
+  "module": "../fesm5/errorCollect.js",
+  "es2015": "../fesm2015/errorCollect.js",
+  "esm5": "../esm5/error-collect/errorCollect.js",
+  "esm2015": "../esm2015/error-collect/errorCollect.js",
+  "fesm5": "../fesm5/errorCollect.js",
+  "fesm2015": "../fesm2015/errorCollect.js",
+  "typings": "errorCollect.d.ts",
+  "metadata": "errorCollect.metadata.json",
+  "sideEffects": false,
+  "name": "@delon/abc/error-collect"
+}
