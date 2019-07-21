@@ -4,6 +4,10 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile></DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Remove="ITenantManageService.cs" />
   </ItemGroup>
@@ -13,6 +17,21 @@
     <ProjectReference Include="..\..\..\util\src\Util.Applications\08-Util.Applications.csproj" />
     <ProjectReference Include="..\..\..\util\src\Util.Security\02-Util.Security.csproj" />
     <ProjectReference Include="..\..\..\util\src\Util.Ui.Core\02-Util.Ui.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="GreatWallResource.Designer.cs">
+      <DependentUpon>GreatWallResource.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="GreatWallResource.resx">
+      <LastGenOutput>GreatWallResource.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

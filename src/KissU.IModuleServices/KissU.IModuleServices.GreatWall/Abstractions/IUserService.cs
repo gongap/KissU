@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using GreatWall.Service.Dtos;
 using GreatWall.Service.Dtos.Requests;
@@ -6,6 +7,7 @@ using GreatWall.Service.Queries;
 using Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using Util.Applications;
 using Util.Aspects;
+using Util.Domains.Repositories;
 using Util.Validations.Aspects;
 
 namespace GreatWall.Service.Abstractions {
@@ -13,11 +15,45 @@ namespace GreatWall.Service.Abstractions {
     /// 用户服务
     /// </summary>
     [ServiceBundle("api/{Service}")]
-    public interface IUserService : IDeleteService<UserDto, UserQuery> {
+    public interface IUserService : IService
+    {
+        /// <summary>
+        /// 通过编号获取
+        /// </summary>
+        /// <param name="id">实体编号</param>
+        Task<UserDto> GetByIdAsync(object id);
+        /// <summary>
+        /// 通过编号列表获取
+        /// </summary>
+        /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
+        Task<List<UserDto>> GetByIdsAsync(string ids);
+
+        /// <summary>
+        /// 获取全部
+        /// </summary>
+        Task<List<UserDto>> GetAllAsync();
+
+        /// <summary>
+        /// 查询
+        /// </summary>
+        /// <param name="parameter">查询参数</param>
+        Task<List<UserDto>> QueryAsync(UserQuery parameter);
+        /// <summary>
+        /// 分页查询
+        /// </summary>
+        /// <param name="parameter">查询参数</param>
+        Task<PagerList<UserDto>> PagerQueryAsync(UserQuery parameter);
+
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
+        Task DeleteAsync(string ids);
+
         /// <summary>
         /// 创建用户
         /// </summary>
         /// <param name="request">创建用户参数</param>
-        Task<Guid> CreateAsync( [NotNull] [Valid] CreateUserRequest request );
+        Task<Guid> CreateAsync([NotNull] [Valid] CreateUserRequest request);
     }
 }
