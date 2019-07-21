@@ -4,8 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Surging.Core.CPlatform.Utilities;
 using Surging.Core.EventBusRabbitMQ.Configurations;
-using Surging.Core.Util;
 using Util.Helpers;
+using KissU;
 
 namespace KissU.Services.Server
 {

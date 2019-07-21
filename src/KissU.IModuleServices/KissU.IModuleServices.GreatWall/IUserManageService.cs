@@ -15,7 +15,9 @@ using GreatWall.Service.Dtos.Requests;
 
 namespace KissU.IModuleServices.GreatWall
 {
-
+    /// <summary>
+    /// 用户管理服务
+    /// </summary>
     [ServiceBundle("api/{Service}")]
     public interface IUserManageService : IServiceKey
     {

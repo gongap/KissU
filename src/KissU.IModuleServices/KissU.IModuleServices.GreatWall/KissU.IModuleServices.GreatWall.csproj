@@ -11,6 +11,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.CPlatform\Surging.Core.CPlatform.csproj" />
     <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.System\Surging.Core.System.csproj" />
+    <ProjectReference Include="..\..\..\util\src\Util.Applications\08-Util.Applications.csproj" />
+    <ProjectReference Include="..\..\..\util\src\Util.Security\02-Util.Security.csproj" />
     <ProjectReference Include="..\..\..\util\src\Util.Ui.Core\02-Util.Ui.Core.csproj" />
     <ProjectReference Include="..\..\..\util\src\Util\01-Util.csproj" />
   </ItemGroup>

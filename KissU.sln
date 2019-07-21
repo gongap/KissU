@@ -166,7 +166,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Common", "src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Manager", "src\KissU.Modules\KissU.Modules.Manager\KissU.Modules.Manager.csproj", "{91C9218D-CECC-472B-B015-BF50F217D408}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Surging.Core.Util", "lib\Surging.Core.Util\Surging.Core.Util.csproj", "{9B7E8A17-1BEB-4D8A-B6D2-4D549617114B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU", "lib\Surging.Core.Util\KissU.csproj", "{9B7E8A17-1BEB-4D8A-B6D2-4D549617114B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.IModuleServices.GreatWall", "src\KissU.IModuleServices\KissU.IModuleServices.GreatWall\KissU.IModuleServices.GreatWall.csproj", "{F571AAEA-720A-4C4F-BB02-7F41872B29B2}"
 EndProject

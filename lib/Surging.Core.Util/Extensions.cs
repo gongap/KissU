@@ -7,7 +7,7 @@ using Autofac.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using Util.Dependency;
 
-namespace Surging.Core.Util
+namespace KissU
 {
     /// <summary>
     /// 系统扩展 - 基础设施
