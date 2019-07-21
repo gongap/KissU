@@ -41,7 +41,7 @@
     <Compile Update="Domain\Models\User.Base.cs">
       <DependentUpon>User.cs</DependentUpon>
     </Compile>
-    <Compile Update="Infrastructure\GreatWallResource.Designer.cs">
+    <Compile Update="GreatWallResource.Designer.cs">
       <DependentUpon>GreatWallResource.resx</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -50,7 +50,7 @@
 
 
   <ItemGroup>
-    <EmbeddedResource Update="Infrastructure\GreatWallResource.resx">
+    <EmbeddedResource Update="GreatWallResource.resx">
       <LastGenOutput>GreatWallResource.Designer.cs</LastGenOutput>
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using GreatWall.Service.Dtos;
 using GreatWall.Service.Dtos.Requests;
 using GreatWall.Service.Queries;
+using Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using Util.Applications;
 using Util.Aspects;
 using Util.Validations.Aspects;
@@ -12,6 +13,7 @@ namespace GreatWall.Service.Abstractions {
     /// <summary>
     /// 角色服务
     /// </summary>
+    [ServiceBundle("api/{Service}")]
     public interface IRoleService : IDeleteService<RoleDto, RoleQuery> {
         /// <summary>
         /// 获取用户的角色列表

@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using GreatWall.Results;
 using GreatWall.Service.Dtos.Requests;
+using Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using Util.Applications;
 using Util.Aspects;
 using Util.Validations.Aspects;
@@ -9,6 +10,7 @@ namespace GreatWall.Service.Abstractions {
     /// <summary>
     /// 安全服务
     /// </summary>
+    [ServiceBundle("api/{Service}")]
     public interface ISecurityService : IService {
         /// <summary>
         /// 登录

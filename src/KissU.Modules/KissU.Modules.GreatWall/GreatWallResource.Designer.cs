@@ -39,7 +39,7 @@ namespace GreatWall {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("KissU.Modules.GreatWall.Infrastructure.GreatWallResource", typeof(GreatWallResource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("KissU.Modules.GreatWall.GreatWallResource", typeof(GreatWallResource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
