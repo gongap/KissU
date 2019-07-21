@@ -174,6 +174,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU", "lib\KissU\KissU.cs
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.AdminConsole", "src\KissU.AdminConsole\KissU.AdminConsole.csproj", "{4A91542B-D83D-4E64-B4BF-2BAD52FD35A3}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.AuthenticationServer", "src\KissU.AuthenticationServer\KissU.AuthenticationServer.csproj", "{CFA3CCAC-DEAC-4AD5-B477-8B1847434474}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -408,6 +410,10 @@ Global
 		{4A91542B-D83D-4E64-B4BF-2BAD52FD35A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A91542B-D83D-4E64-B4BF-2BAD52FD35A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A91542B-D83D-4E64-B4BF-2BAD52FD35A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFA3CCAC-DEAC-4AD5-B477-8B1847434474}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFA3CCAC-DEAC-4AD5-B477-8B1847434474}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFA3CCAC-DEAC-4AD5-B477-8B1847434474}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFA3CCAC-DEAC-4AD5-B477-8B1847434474}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -488,6 +494,7 @@ Global
 		{55019DBF-D444-4EDA-982F-AB2898883A2D} = {F1B4AAEF-9162-4DFA-8B62-4069FC914839}
 		{4F695731-556C-43A0-96A1-E2B6C0297037} = {E34A6862-02E9-4C37-B80B-CBB02BA2A37D}
 		{4A91542B-D83D-4E64-B4BF-2BAD52FD35A3} = {F1B4AAEF-9162-4DFA-8B62-4069FC914839}
+		{CFA3CCAC-DEAC-4AD5-B477-8B1847434474} = {F1B4AAEF-9162-4DFA-8B62-4069FC914839}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}
