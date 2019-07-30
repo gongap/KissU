@@ -2,11 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace GreatWall.Data.Mappings.SqlServer {
+namespace GreatWall.Data.Mappings.PgSql {
     /// <summary>
     /// 用户映射配置
     /// </summary>
-    public class UserMap : Util.Datas.Ef.SqlServer.AggregateRootMap<User> {
+    public class UserMap : Util.Datas.Ef.PgSql.AggregateRootMap<User> {
         /// <summary>
         /// 映射表
         /// </summary>

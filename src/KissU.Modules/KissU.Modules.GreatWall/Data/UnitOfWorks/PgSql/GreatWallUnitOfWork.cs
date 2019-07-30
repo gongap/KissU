@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace GreatWall.Data.UnitOfWorks.SqlServer {
+namespace GreatWall.Data.UnitOfWorks.PgSql {
     /// <summary>
-    /// SqlServer工作单元
+    /// PgSql工作单元
     /// </summary>
-    public class GreatWallUnitOfWork : Util.Datas.Ef.SqlServer.UnitOfWork, IGreatWallUnitOfWork {
+    public class GreatWallUnitOfWork : Util.Datas.Ef.PgSql.UnitOfWork,IGreatWallUnitOfWork {
         /// <summary>
         /// 初始化工作单元
         /// </summary>

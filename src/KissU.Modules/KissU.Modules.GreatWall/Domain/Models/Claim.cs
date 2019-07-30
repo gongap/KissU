@@ -31,6 +31,16 @@ namespace GreatWall.Domain.Models {
         [StringLength( 200 )]
         public string Name { get; set; }
         /// <summary>
+        /// 启用
+        /// </summary>
+        [DisplayName( "启用" )]
+        public bool Enabled { get; set; }
+        /// <summary>
+        /// 排序号
+        /// </summary>
+        [DisplayName( "排序号" )]
+        public int? SortId { get; set; }
+        /// <summary>
         /// 备注
         /// </summary>
         [DisplayName( "备注" )]
@@ -68,6 +78,8 @@ namespace GreatWall.Domain.Models {
         protected override void AddDescriptions() {
             AddDescription( t => t.Id );
             AddDescription( t => t.Name );
+            AddDescription( t => t.Enabled );
+            AddDescription( t => t.SortId );
             AddDescription( t => t.Remark );
             AddDescription( t => t.CreationTime );
             AddDescription( t => t.CreatorId );
@@ -81,6 +93,8 @@ namespace GreatWall.Domain.Models {
         protected override void AddChanges( Claim other ) {
             AddChange( t => t.Id, other.Id );
             AddChange( t => t.Name, other.Name );
+            AddChange( t => t.Enabled, other.Enabled );
+            AddChange( t => t.SortId, other.SortId );
             AddChange( t => t.Remark, other.Remark );
             AddChange( t => t.CreationTime, other.CreationTime );
             AddChange( t => t.CreatorId, other.CreatorId );

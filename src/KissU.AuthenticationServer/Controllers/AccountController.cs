@@ -6,7 +6,9 @@ using GreatWall.Configs;
 using GreatWall.Models;
 using GreatWall.Results;
 using GreatWall.Service.Abstractions;
+using IdentityModel;
 using IdentityServer4;
+using IdentityServer4.Extensions;
 using IdentityServer4.Models;
 using IdentityServer4.Services;
 using Microsoft.AspNetCore.Authentication;
@@ -165,6 +167,76 @@ namespace GreatWall.Controllers {
             if ( model.ReturnUrl.IsEmpty() )
                 return Redirect( "~/" );
             throw new Exception( "返回地址无效" );
+        }
+
+        /// <summary>
+        /// 显示登出页面
+        /// </summary>
+        [HttpGet]
+        public async Task<IActionResult> Logout( string logoutId ) {
+            var model = await BuildLogoutViewModelAsync( logoutId );
+            return await Logout( model );
+        }
+
+        /// <summary>
+        /// 创建登出参数
+        /// </summary>
+        private async Task<LogoutViewModel> BuildLogoutViewModelAsync( string logoutId ) {
+            var model = new LogoutViewModel { LogoutId = logoutId, ShowLogoutPrompt = AccountOptions.ShowLogoutPrompt };
+            if( User?.Identity.IsAuthenticated != true ) {
+                model.ShowLogoutPrompt = false;
+                return model;
+            }
+            var context = await InteractionService.GetLogoutContextAsync( logoutId );
+            if( context?.ShowSignoutPrompt == false ) {
+                model.ShowLogoutPrompt = false;
+                return model;
+            }
+            return model;
+        }
+
+        /// <summary>
+        /// 登出
+        /// </summary>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Logout( LogoutViewModel model ) {
+            var result = await BuildLoggedOutViewModelAsync( model.LogoutId );
+            if( User?.Identity.IsAuthenticated == true )
+                await SecurityService.SignOutAsync();
+            if( result.TriggerExternalSignout ) {
+                string url = Url.Action( "Logout", new { logoutId = result.LogoutId } );
+                return SignOut( new AuthenticationProperties { RedirectUri = url }, result.ExternalAuthenticationScheme );
+            }
+            if( result.PostLogoutRedirectUri.IsEmpty() )
+                return View();
+            return Redirect( result.PostLogoutRedirectUri );
+        }
+
+        /// <summary>
+        /// 创建登出参数
+        /// </summary>
+        private async Task<LoggedOutViewModel> BuildLoggedOutViewModelAsync( string logoutId ) {
+            var logout = await InteractionService.GetLogoutContextAsync( logoutId );
+            var result = new LoggedOutViewModel {
+                AutomaticRedirectAfterSignOut = AccountOptions.AutomaticRedirectAfterSignOut,
+                PostLogoutRedirectUri = logout?.PostLogoutRedirectUri,
+                ClientName = string.IsNullOrEmpty( logout?.ClientName ) ? logout?.ClientId : logout?.ClientName,
+                SignOutIframeUrl = logout?.SignOutIFrameUrl,
+                LogoutId = logoutId
+            };
+            if( User?.Identity.IsAuthenticated != true )
+                return result;
+            var idp = User.FindFirst( JwtClaimTypes.IdentityProvider )?.Value;
+            if ( idp == null || idp == IdentityServerConstants.LocalIdentityProvider )
+                return result;
+            var providerSupportsSignout = await HttpContext.GetSchemeSupportsSignOutAsync( idp );
+            if ( providerSupportsSignout == false )
+                return result;
+            if( result.LogoutId == null )
+                result.LogoutId = await InteractionService.CreateLogoutContextAsync();
+            result.ExternalAuthenticationScheme = idp;
+            return result;
         }
     }
 }
