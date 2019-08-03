@@ -13,6 +13,7 @@ namespace GreatWall.Service.Abstractions {
         /// <summary>
         /// 获取菜单
         /// </summary>
+        [HttpGet(true)]
         Task<List<MenuResponse>> GetMenusAsync();
     }
 }

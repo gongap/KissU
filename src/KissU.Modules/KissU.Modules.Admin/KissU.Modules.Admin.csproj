@@ -11,32 +11,17 @@
   <PropertyGroup>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
-  
+
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
   </ItemGroup>
-
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.EventBusRabbitMQ\Surging.Core.EventBusRabbitMQ.csproj" />
     <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.KestrelHttpServer\Surging.Core.KestrelHttpServer.csproj" />
     <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.ProxyGenerator\Surging.Core.ProxyGenerator.csproj" />
     <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.System\Surging.Core.System.csproj" />
-    <ProjectReference Include="..\..\..\util\src\Util.Datas\07-Util.Datas.csproj" />
-    <ProjectReference Include="..\..\KissU.IModuleServices\KissU.IModuleServices.GreatWall\KissU.IModuleServices.GreatWall.csproj" />
-  </ItemGroup>
-
-
-  <ItemGroup>
-    <Compile Update="Domain\Models\Module.Base.cs">
-      <DependentUpon>Module.cs</DependentUpon>
-    </Compile>
-    <Compile Update="Domain\Models\Role.Base.cs">
-      <DependentUpon>Role.cs</DependentUpon>
-    </Compile>
-    <Compile Update="Domain\Models\User.Base.cs">
-      <DependentUpon>User.cs</DependentUpon>
-    </Compile>
+    <ProjectReference Include="..\..\KissU.IModuleServices\KissU.IModuleServices.Admin\KissU.IModuleServices.Admin.csproj" />
   </ItemGroup>
 
 </Project>

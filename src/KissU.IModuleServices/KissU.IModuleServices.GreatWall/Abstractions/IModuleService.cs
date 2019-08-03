@@ -17,11 +17,13 @@ namespace GreatWall.Service.Abstractions {
         /// 创建模块
         /// </summary>
         /// <param name="request">创建模块参数</param>
+        [HttpPost(true)]
         Task<Guid> CreateAsync( [NotNull] [Valid] CreateModuleRequest request );
         /// <summary>
         /// 修改模块
         /// </summary>
         /// <param name="request">模块参数</param>
+        [HttpPut(true)]
         Task UpdateAsync( [NotNull] [Valid] ModuleDto request );
     }
 }

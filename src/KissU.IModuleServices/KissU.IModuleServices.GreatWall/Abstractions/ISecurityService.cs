@@ -16,10 +16,12 @@ namespace GreatWall.Service.Abstractions {
         /// 登录
         /// </summary>
         /// <param name="request">登录参数</param>
+        [HttpPost(true)]
         Task<SignInResult> SignInAsync( [NotNull] [Valid] LoginRequest request );
         /// <summary>
         /// 退出登录
         /// </summary>
+        [HttpGet(true)]
         Task SignOutAsync();
     }
 }

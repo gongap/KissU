@@ -176,6 +176,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.AuthenticationServer"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.AdminConsole", "src\KissU.AdminConsole\KissU.AdminConsole.csproj", "{31D2B1E8-8E3D-4F4B-9ED4-DDFD658223FE}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.IModuleServices.Admin", "src\KissU.IModuleServices\KissU.IModuleServices.Admin\KissU.IModuleServices.Admin.csproj", "{35604865-33D4-4755-97C5-82C9840F60AC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Admin", "src\KissU.Modules\KissU.Modules.Admin\KissU.Modules.Admin.csproj", "{70068751-20B4-492A-B484-43E1BD6A0776}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -414,6 +418,14 @@ Global
 		{31D2B1E8-8E3D-4F4B-9ED4-DDFD658223FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31D2B1E8-8E3D-4F4B-9ED4-DDFD658223FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31D2B1E8-8E3D-4F4B-9ED4-DDFD658223FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35604865-33D4-4755-97C5-82C9840F60AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35604865-33D4-4755-97C5-82C9840F60AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35604865-33D4-4755-97C5-82C9840F60AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35604865-33D4-4755-97C5-82C9840F60AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70068751-20B4-492A-B484-43E1BD6A0776}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70068751-20B4-492A-B484-43E1BD6A0776}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70068751-20B4-492A-B484-43E1BD6A0776}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70068751-20B4-492A-B484-43E1BD6A0776}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -495,6 +507,8 @@ Global
 		{4F695731-556C-43A0-96A1-E2B6C0297037} = {E34A6862-02E9-4C37-B80B-CBB02BA2A37D}
 		{CFA3CCAC-DEAC-4AD5-B477-8B1847434474} = {F1B4AAEF-9162-4DFA-8B62-4069FC914839}
 		{31D2B1E8-8E3D-4F4B-9ED4-DDFD658223FE} = {F1B4AAEF-9162-4DFA-8B62-4069FC914839}
+		{35604865-33D4-4755-97C5-82C9840F60AC} = {E6247BE3-5AEC-47C0-AF43-FE376E8F6221}
+		{70068751-20B4-492A-B484-43E1BD6A0776} = {CA4753DA-E579-4995-AEDA-498741B7B860}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}
