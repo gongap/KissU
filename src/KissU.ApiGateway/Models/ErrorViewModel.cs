@@ -1,6 +1,6 @@
 using System;
 
-namespace KissU.ApiGateway.Models
+namespace Surging.ApiGateway.Models
 {
     public class ErrorViewModel
     {

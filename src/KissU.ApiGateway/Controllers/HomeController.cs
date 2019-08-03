@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using KissU.ApiGateway.Models;
+using Surging.ApiGateway.Models;
 using System.Diagnostics;
 
-namespace KissU.ApiGateway.Controllers
+namespace Surging.ApiGateway.Controllers
 {
     public class HomeController : Controller
     {

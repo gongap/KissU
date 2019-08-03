@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace KissU.ApiGateway
+namespace Surging.ApiGateway
 {
     public class ServiceExceptionFilter: ExceptionFilterAttribute
     {

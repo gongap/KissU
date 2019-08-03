@@ -3,7 +3,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:1927/",
+      "applicationUrl": "http://localhost:1729/",
       "sslPort": 0
     }
   },
@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "KissU.ApiGateway": {
+    "Surging.ApiGateway": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

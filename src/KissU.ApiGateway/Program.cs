@@ -12,12 +12,11 @@ using Surging.Core.CPlatform.Utilities;
 using Surging.Core.DotNetty;
 using Surging.Core.ProxyGenerator;
 using Surging.Core.ServiceHosting;
-using Surging.Core.System.Intercept;
 using System;
 using System.IO;
 
 
-namespace KissU.ApiGateway
+namespace Surging.ApiGateway
 {
     public class Program
     {

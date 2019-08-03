@@ -19,7 +19,7 @@ using Newtonsoft.Json.Linq;
 using Surging.Core.CPlatform.Transport.Implementation;
 using Surging.Core.CPlatform.Routing.Template;
 
-namespace KissU.ApiGateway.Controllers
+namespace Surging.ApiGateway.Controllers
 {
     public class ServicesController : Controller
     {
@@ -49,10 +49,15 @@ namespace KissU.ApiGateway.Controllers
             {
                 model[n] = this.Request.Query[n].ToString();
             }
-            ServiceResult<object> result = ServiceResult<object>.Create(false, null);
-            var route = await _serviceRouteProvider.GetRouteByPathRegex(path);
-            path = String.Compare(route.ServiceDescriptor.RoutePath, GateWayAppConfig.TokenEndpointPath, true) == 0 ?
+            ServiceResult<object> result = ServiceResult<object>.Create(false, null); 
+          
+            path = String.Compare(path.ToLower(), GateWayAppConfig.TokenEndpointPath, true) == 0 ?
                 GateWayAppConfig.AuthorizationRoutePath : path.ToLower();
+            var route = await _serviceRouteProvider.GetRouteByPathRegex(path);
+            var httpMethods = route.ServiceDescriptor.HttpMethod();
+            if (!string.IsNullOrEmpty(httpMethods) &&
+                !httpMethods.Contains(Request.Method))
+                return new ServiceResult<object> { IsSucceed = false, StatusCode = (int)ServiceStatusCode.Http405Endpoint, Message = "405 HTTP Method Not Supported" };
             if (!GetAllowRequest(route)) return new ServiceResult<object> { IsSucceed = false, StatusCode = (int)ServiceStatusCode.RequestError, Message = "Request error" };
             if (servicePartProvider.IsPart(path))
             {

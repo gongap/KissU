@@ -18,7 +18,6 @@ using Surging.Core.CPlatform;
 using Surging.Core.CPlatform.Utilities;
 using Surging.Core.DotNetty;
 using Surging.Core.ProxyGenerator;
-using Surging.Core.System.Intercept;
 using Surging.Core.Zookeeper;
 //using Surging.Core.Zookeeper;
 using ZookeeperConfigInfo =  Surging.Core.Zookeeper.Configurations.ConfigInfo;
@@ -28,7 +27,7 @@ using Surging.Core.Caching;
 using Surging.Core.CPlatform.Cache;
 using System.Linq;
 
-namespace KissU.ApiGateway
+namespace Surging.ApiGateway
 {
     public class Startup
     {
@@ -104,7 +103,7 @@ namespace KissU.ApiGateway
             }
             app.UseCors(builder =>
             {
-                var policy = Surging.Core.ApiGateWay.AppConfig.Policy;
+                var policy = Core.ApiGateWay.AppConfig.Policy;
                 builder.WithOrigins(policy.Origins);
                 if (policy.AllowAnyHeader)
                     builder.AllowAnyHeader();

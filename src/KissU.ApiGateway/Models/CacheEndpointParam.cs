@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace KissU.ApiGateway.Models
+namespace Surging.ApiGateway.Models
 {
     public class CacheEndpointParam
     {

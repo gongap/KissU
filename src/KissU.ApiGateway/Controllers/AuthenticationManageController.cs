@@ -6,7 +6,7 @@ using Surging.Core.CPlatform.Utilities;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace KissU.ApiGateway.Controllers
+namespace Surging.ApiGateway.Controllers
 {
     public class AuthenticationManageController : Controller
     {
