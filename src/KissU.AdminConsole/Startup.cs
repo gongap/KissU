@@ -28,7 +28,7 @@ namespace KissU.AdminConsole
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            services.AddSpaStaticFiles(configuration => { configuration.RootPath = "NG-ALAIN-MS/dist"; });
+            services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

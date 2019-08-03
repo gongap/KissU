@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "admin-console": {
+    "kissu": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -75,15 +75,15 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "admin-console:build",
+            "browserTarget": "kissu:build",
             "proxyConfig": "proxy.conf.json"
           },
           "configurations": {
             "production": {
-              "browserTarget": "admin-console:build:production"
+              "browserTarget": "kissu:build:production"
             },
             "hmr": {
-              "browserTarget": "admin-console:build:hmr",
+              "browserTarget": "kissu:build:hmr",
               "hmr": true
             }
           }
@@ -91,7 +91,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "admin-console:build"
+            "browserTarget": "kissu:build"
           }
         },
         "test": {
@@ -133,18 +133,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "admin-console:serve"
+            "devServerTarget": "kissu:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "admin-console:serve:production"
+              "devServerTarget": "kissu:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "admin-console",
+  "defaultProject": "kissu",
   "schematics": {
     "ng-alain:module": {
       "routing": true,

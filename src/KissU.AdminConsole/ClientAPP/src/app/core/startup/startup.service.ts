@@ -87,13 +87,13 @@ export class StartupService {
     // }
     // mock
     const app: any = {
-      name: `ng-alain`,
-      description: `Ng-zorro admin panel front-end framework`
+      name: `KissU`,
+      description: `KissU是一个快速响应，移动优先的符合现代UI设计和SOLID架构的强力开发框架，它是您任何创意和专业网站的完美起点。`
     };
     const user: any = {
-      name: 'Admin',
+      name: 'Gongap',
       avatar: './assets/tmp/img/avatar.jpg',
-      email: 'cipchk@qq.com',
+      email: 'gonganping@qq.com',
       token: '123456789'
     };
     // Application information: including site name, description, year

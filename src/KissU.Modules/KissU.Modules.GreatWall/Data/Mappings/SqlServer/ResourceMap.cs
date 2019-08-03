@@ -1,4 +1,5 @@
-﻿using GreatWall.Data.Pos;
+﻿
+using GreatWall.Data.Pos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
