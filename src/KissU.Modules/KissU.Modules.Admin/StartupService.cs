@@ -37,7 +37,7 @@ namespace KissU.Modules.Admin
             var data = new AppData
             {
                 App = { Name = "GreatWall", Description = ".Net Core权限系统" },
-                User = { Name = "", Avatar = "/assets/img/avatar.jpg", Email = "xiadao521@qq.com" },
+                User = { Name = "", Avatar = "/assets/tmp/img/avatar.jpg", Email = "xiadao521@qq.com" },
                 Menu = await GetMenus()
             };
             return data;

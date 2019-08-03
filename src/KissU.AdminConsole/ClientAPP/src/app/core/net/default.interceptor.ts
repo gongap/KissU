@@ -74,14 +74,16 @@ export class DefaultInterceptor implements HttpInterceptor {
         // 则以下代码片断可直接适用
         if (ev instanceof HttpResponse) {
           const body: any = ev.body;
-          if (body && body.isSucceed !== undefined) {
-            // 重新修改 `body` 内容为 `response` 内容，对于绝大多数场景已经无须再关心业务状态码
-            return of(new HttpResponse(Object.assign(ev, { body: body.entity })));
-          } else {
-            this.notification.error(`请求错误 ${ev.status}: ${ev.url}`, body.message);
-            // 继续抛出错误中断后续所有 Pipe、subscribe 操作，因此：
-            // this.http.get('/').subscribe() 并不会触发
-            return throwError({});
+          if (body && body.isSucceed !== undefined && body.entity !== undefined && body.statusCode !== undefined) {
+            if (body && body.statusCode !== 200) {
+              this.notification.error(`请求错误 ${ev.status}: ${ev.url}`, body.message);
+              // 继续抛出错误中断后续所有 Pipe、subscribe 操作，因此：
+              // this.http.get('/').subscribe() 并不会触发
+              return throwError({});
+            } else {
+              // 重新修改 `body` 内容为 `response` 内容，对于绝大多数场景已经无须再关心业务状态码
+              return of(new HttpResponse(Object.assign(event, { body: body.entity })));
+            }
           }
           // 或者依然保持完整的格式
           return of(ev);
