@@ -52,7 +52,7 @@
       "CacheMode": "MemoryCache" //MemoryCache or  gateway.Redis save token
     },
     "AccessPolicy": {
-      "Origins": [ "http://127.0.0.1:1927", "http://localhost:927" ],
+      "Origins": [ "http://localhost:1927" ],
       "AllowAnyHeader": true,
       "AllowAnyMethod": true
     },

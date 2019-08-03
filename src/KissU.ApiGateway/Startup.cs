@@ -58,7 +58,10 @@ namespace Surging.ApiGateway
                 options.Filters.Add(typeof(CustomExceptionFilterAttribute));
             }).AddJsonOptions(options => {
                 options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
-                options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+                //驼峰样式序列化处理key
+                options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                //使用默认方式，不更改元数据的key的大小写
+                //options.SerializerSettings.ContractResolver = new DefaultContractResolver();
             });
             services.AddLogging();
             services.AddCors();

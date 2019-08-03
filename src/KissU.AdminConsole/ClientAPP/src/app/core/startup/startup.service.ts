@@ -133,8 +133,7 @@ export class StartupService {
       // http
       // this.viaHttp(resolve, reject);
       // mock：请勿在生产环境中这么使用，viaMock 单纯只是为了模拟一些数据使脚手架一开始能正常运行
-      this.httpClient.get('/api/startup/getappdataasync').subscribe((result: any) => {
-        console.log(result);
+      this.httpClient.get('/api/startup/getappdataasync', { headers: { "Content-Type": "application/json"} }).subscribe((result: any) => {
       });
       this.viaMockI18n(resolve, reject);
     });
