@@ -9,10 +9,10 @@ import { AlainThemeModule } from '@delon/theme';
 import { DelonACLModule } from '@delon/acl';
 
 // #region mock
-import { DelonMockModule } from '@delon/mock';
-import * as MOCKDATA from '../../_mock';
-import { environment } from '@env/environment';
-const MOCK_MODULES = true ? [DelonMockModule.forRoot({ data: MOCKDATA })] : [];
+//import { DelonMockModule } from '@delon/mock';
+//import * as MOCKDATA from '../../_mock';
+//import { environment } from '@env/environment';
+//const MOCK_MODULES = true ? [DelonMockModule.forRoot({ data: MOCKDATA })] : [];
 // #endregion
 
 // #region reuse-tab
@@ -75,7 +75,9 @@ const GLOBAL_CONFIG_PROVIDES = [
 // #endregion
 
 @NgModule({
-  imports: [AlainThemeModule.forRoot(), DelonACLModule.forRoot(), ...MOCK_MODULES],
+  imports: [AlainThemeModule.forRoot(), DelonACLModule.forRoot(),
+    //...MOCK_MODULES
+  ],
 })
 export class DelonModule {
   constructor(@Optional() @SkipSelf() parentModule: DelonModule) {

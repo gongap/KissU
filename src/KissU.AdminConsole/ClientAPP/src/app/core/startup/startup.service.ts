@@ -69,7 +69,7 @@ export class StartupService {
   
   private viaMockI18n(resolve: any, reject: any) {
     this.httpClient
-      .get(`assets/tmp/i18n/${this.i18n.defaultLang}.json`)
+      .get(`${window.location.origin}/assets/tmp/i18n/${this.i18n.defaultLang}.json`)
       .subscribe(langData => {
         this.translate.setTranslation(this.i18n.defaultLang, langData);
         this.translate.setDefaultLang(this.i18n.defaultLang);
@@ -123,7 +123,6 @@ export class StartupService {
     ]);
     // Can be set page suffix title, https://ng-alain.com/theme/title
     this.titleService.suffix = app.name;
-
     resolve({});
   }
 
@@ -134,8 +133,10 @@ export class StartupService {
       // http
       // this.viaHttp(resolve, reject);
       // mock：请勿在生产环境中这么使用，viaMock 单纯只是为了模拟一些数据使脚手架一开始能正常运行
+      this.httpClient.get('/api/startup/getappdataasync').subscribe((result: any) => {
+        console.log(result);
+      });
       this.viaMockI18n(resolve, reject);
-
     });
   }
 }
