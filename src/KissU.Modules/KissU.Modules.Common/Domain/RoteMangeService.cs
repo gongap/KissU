@@ -1,7 +1,7 @@
 ﻿using Surging.Core.ProxyGenerator;
 using Surging.Core.System.Ioc;
-using KissU.IModuleServices.Common;
-using KissU.IModuleServices.Common.Models;
+using Surging.IModuleServices.Common;
+using Surging.IModuleServices.Common.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;

@@ -1,11 +1,11 @@
 ﻿using Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
-using KissU.IModuleServices.Common.Models;
+using Surging.IModuleServices.Common.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KissU.IModuleServices.Common
+namespace Surging.IModuleServices.Common
 {
     [ServiceBundle("Api/{Service}")]
     public interface IRoteMangeService

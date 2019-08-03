@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace KissU.IModuleServices.Common
+namespace Surging.IModuleServices.Common
 {
     public class IntercepteModule : SystemModule
     {
@@ -23,7 +23,7 @@ namespace KissU.IModuleServices.Common
         {
             base.RegisterBuilder(builder);
             //builder.AddClientIntercepted(typeof(CacheProviderInterceptor));
-            builder.AddClientIntercepted(typeof(LogProviderInterceptor));
+            //builder.AddClientIntercepted(typeof(LogProviderInterceptor));
         }
     }
 }

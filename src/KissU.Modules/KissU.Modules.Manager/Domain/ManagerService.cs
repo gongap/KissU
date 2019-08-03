@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 using Surging.Core.ProxyGenerator;
-using KissU.IModuleServices.User;
+using Surging.IModuleServices.User;
 
-namespace KissU.Modules.Manager.Domain
+namespace Surging.Modules.Manager.Domain
 {
     public class ManagerService : ProxyServiceBase, IManagerService
     {

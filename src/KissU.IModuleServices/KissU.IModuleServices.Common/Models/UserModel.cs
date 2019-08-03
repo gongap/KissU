@@ -2,7 +2,7 @@
 using ProtoBuf;
 using Surging.Core.System.Intercept;
 
-namespace KissU.IModuleServices.Common.Models
+namespace Surging.IModuleServices.Common.Models
 {
     [ProtoContract]
     public class UserModel

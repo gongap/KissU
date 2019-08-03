@@ -3,13 +3,13 @@ using Surging.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Sel
 using Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using Surging.Core.CPlatform.Support.Attributes;
 using Surging.Core.Protocol.Mqtt.Internal.Enums;
-using KissU.IModuleServices.Common.Models;
+using Surging.IModuleServices.Common.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KissU.IModuleServices.Common
+namespace Surging.IModuleServices.Common
 {
     [ServiceBundle("Device/{Service}")] 
     public interface IControllerService : IServiceKey

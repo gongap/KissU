@@ -2,9 +2,9 @@
 using Surging.Core.CPlatform.Utilities;
 using Surging.Core.EventBusRabbitMQ;
 using Surging.Core.EventBusRabbitMQ.Attributes;
-using KissU.IModuleServices.Common;
-using KissU.IModuleServices.Common.Models;
-using KissU.IModuleServices.Common.Models.Events;
+using Surging.IModuleServices.Common;
+using Surging.IModuleServices.Common.Models;
+using Surging.IModuleServices.Common.Models.Events;
 using System;
 using System.Threading.Tasks;
 

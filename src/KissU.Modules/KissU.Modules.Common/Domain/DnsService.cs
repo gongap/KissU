@@ -1,5 +1,5 @@
 ﻿using Surging.Core.DNS.Runtime;
-using KissU.IModuleServices.Common;
+using Surging.IModuleServices.Common;
 using System;
 using System.Collections.Generic;
 using System.Net;

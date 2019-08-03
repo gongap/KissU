@@ -10,12 +10,12 @@ using Surging.Core.CPlatform.Support.Attributes;
 using Surging.Core.KestrelHttpServer;
 using Surging.Core.KestrelHttpServer.Internal;
 using Surging.Core.System.Intercept;
-using KissU.IModuleServices.Common.Models;
+using Surging.IModuleServices.Common.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace KissU.IModuleServices.Common
+namespace Surging.IModuleServices.Common
 {
     [ServiceBundle("api/{Service}/{Method}")]
     //[ServiceBundle("api/{Service}")]
@@ -44,7 +44,8 @@ namespace KissU.IModuleServices.Common
         /// <param name="id">用户编号</param>
         /// <returns></returns>
         [ServiceRoute("{id}")]
-       // [ServiceBundle("api/{Service}/{id}", false)]
+        [HttpPut(true), HttpDelete(true), HttpGet(true)]
+        // [ServiceBundle("api/{Service}/{id}", false)]
         Task<bool> Exists(int id);
 
         /// <summary>
@@ -53,7 +54,7 @@ namespace KissU.IModuleServices.Common
         /// <param name="requestData">请求参数</param>
         /// <returns></returns>
         [Authorization(AuthType = AuthorizationType.JWT)]
-       
+        [HttpPost(true),HttpPut(true)]
         Task<IdentityUser> Save(IdentityUser requestData);
 
         /// <summary>
@@ -82,11 +83,11 @@ namespace KissU.IModuleServices.Common
         /// <param name="user">用户模型</param>
         /// <returns></returns>
         [Command(Strategy = StrategyType.Injection, Injection = @"return
-new KissU.IModuleServices.Common.Models.UserModel
+new Surging.IModuleServices.Common.Models.UserModel
          {
             Name=""fanly"",
             Age=19
-         };", RequestCacheEnabled = true, InjectionNamespaces = new string[] { "KissU.IModuleServices.Common" })]
+         };", RequestCacheEnabled = true, InjectionNamespaces = new string[] { "Surging.IModuleServices.Common" })]
         [InterceptMethod(CachingMethod.Get, Key = "GetUser_id_{0}", CacheSectionType = SectionType.ddlCache, Mode = CacheTargetType.Redis, Time = 480)]
         Task<UserModel> GetUser(UserModel user);
 
@@ -97,7 +98,7 @@ new KissU.IModuleServices.Common.Models.UserModel
         /// <param name="model">用户模型</param>
         /// <returns></returns>
         [Authorization(AuthType = AuthorizationType.JWT)]
-        [Command(Strategy = StrategyType.FallBack,FallBackName = "UpdateFallBackName",  RequestCacheEnabled = true, InjectionNamespaces = new string[] { "KissU.IModuleServices.Common" })]
+        [Command(Strategy = StrategyType.FallBack,FallBackName = "UpdateFallBackName",  RequestCacheEnabled = true, InjectionNamespaces = new string[] { "Surging.IModuleServices.Common" })]
         [InterceptMethod(CachingMethod.Remove, "GetUser_id_{0}", "GetUserName_name_{0}", CacheSectionType = SectionType.ddlCache, Mode = CacheTargetType.Redis)]
         Task<bool> Update(int id, UserModel model);
 

@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace KissU.IModuleServices.Common
+namespace Surging.IModuleServices.Common
 {
     [ServiceBundle("Dns/{Service}")]
      public interface IDnsService : IServiceKey

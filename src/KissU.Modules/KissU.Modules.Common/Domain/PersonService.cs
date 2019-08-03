@@ -1,6 +1,6 @@
-﻿using KissU.IModuleServices.Common;
-using KissU.IModuleServices.Common.Models;
-using KissU.Modules.Common.Repositories;
+﻿using Surging.IModuleServices.Common;
+using Surging.IModuleServices.Common.Models;
+using Surging.Modules.Common.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,7 +15,7 @@ using System.IO;
 using Surging.Core.KestrelHttpServer;
 using Surging.Core.Common;
 
-namespace KissU.Modules.Common.Domain
+namespace Surging.Modules.Common.Domain
 {
     [ModuleName("Person")]
     public class PersonService : ProxyServiceBase, IUserService

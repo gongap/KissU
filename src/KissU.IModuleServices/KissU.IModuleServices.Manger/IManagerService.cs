@@ -7,7 +7,7 @@ using Surging.Core.CPlatform.Support;
 using Surging.Core.CPlatform.Support.Attributes;
 using System.Threading.Tasks;
 
-namespace KissU.IModuleServices.User
+namespace Surging.IModuleServices.User
 {
 
     [ServiceBundle("api/{Service}")]

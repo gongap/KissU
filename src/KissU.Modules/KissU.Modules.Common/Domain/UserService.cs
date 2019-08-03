@@ -7,16 +7,16 @@ using Surging.Core.CPlatform.Transport.Implementation;
 using Surging.Core.KestrelHttpServer;
 using Surging.Core.KestrelHttpServer.Internal;
 using Surging.Core.ProxyGenerator;
-using KissU.IModuleServices.Common;
-using KissU.IModuleServices.Common.Models;
-using KissU.IModuleServices.User;
-using KissU.Modules.Common.Repositories;
+using Surging.IModuleServices.Common;
+using Surging.IModuleServices.Common.Models;
+using Surging.IModuleServices.User;
+using Surging.Modules.Common.Repositories;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace KissU.Modules.Common.Domain
+namespace Surging.Modules.Common.Domain
 {
     [ModuleName("User")]
     public class UserService : ProxyServiceBase, IUserService

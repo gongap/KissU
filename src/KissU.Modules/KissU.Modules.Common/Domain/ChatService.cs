@@ -2,7 +2,7 @@
 using Surging.Core.Protocol.WS;
 using Surging.Core.Protocol.WS.Runtime;
 using Surging.Core.ProxyGenerator;
-using KissU.IModuleServices.Common;
+using Surging.IModuleServices.Common;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;

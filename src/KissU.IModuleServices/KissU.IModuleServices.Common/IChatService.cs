@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KissU.IModuleServices.Common
+namespace Surging.IModuleServices.Common
 {
     [ServiceBundle("Api/{Service}")]
     [BehaviorContract(IgnoreExtensions =true)]
