@@ -53,7 +53,7 @@
     "viser-ng": "2.4.4",
     "oidc-client": "1.7.0",
     "moment": "2.24.0",
-    "lodash": "4.17.11"
+    "lodash": "4.17.13"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.801.2",
