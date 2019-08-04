@@ -48,7 +48,12 @@
     "@ngx-translate/http-loader": "^4.0.0",
     "@antv/data-set": "^0.10.2",
     "@antv/g2": "^3.5.3",
-    "@antv/g2-plugin-slider": "^2.1.1"
+    "@antv/g2-plugin-slider": "^2.1.1",
+    "@angular/elements": "~8.1.2",
+    "viser-ng": "2.4.4",
+    "oidc-client": "1.7.0",
+    "moment": "2.24.0",
+    "lodash": "4.17.11"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.801.2",
