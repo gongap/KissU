@@ -51,7 +51,7 @@
       "TokenEndpointPath": "api/oauth2/token",
       "CacheMode": "MemoryCache" //MemoryCache or  gateway.Redis save token
     },
-    "Policy": {
+    "AccessPolicy": {
       "Origins": [ "http://localhost:1927" ],
       "AllowAnyHeader": true,
       "AllowAnyMethod": true
