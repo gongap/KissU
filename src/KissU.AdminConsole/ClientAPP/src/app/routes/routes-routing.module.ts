@@ -21,8 +21,8 @@ const routes: Routes = [
   {
     path: '',
     component: LayoutDefaultComponent,
-    //canActivate: [Authorize],
-    //canActivateChild: [Authorize],
+    canActivate: [Authorize],
+    canActivateChild: [Authorize],
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardComponent, data: { title: '仪表盘' } },
@@ -49,7 +49,7 @@ const routes: Routes = [
     ]
   },
   // 单页不包裹Layout
-  //{ path: 'callback/:type', component: CallbackComponent },
+  { path: 'callback/:type', component: CallbackComponent },
   { path: 'callback', component: LoginCallbackComponent },
   { path: '**', redirectTo: 'exception/404' },
 ];
