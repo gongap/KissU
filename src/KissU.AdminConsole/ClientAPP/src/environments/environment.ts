@@ -5,7 +5,7 @@
 export const environment = {
   SERVER_URL: `http://localhost:282`,
   production: false,
-  useHash: true,
+  useHash: false,
   hmr: false,
 };
 

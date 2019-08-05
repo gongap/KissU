@@ -3,7 +3,7 @@ import { NgModule, LOCALE_ID, APP_INITIALIZER, Injector } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { util } from "@core/util/index";
+import { util } from "@core/util";
 
 // #region default language
 // Reference: https://ng-alain.com/docs/i18n

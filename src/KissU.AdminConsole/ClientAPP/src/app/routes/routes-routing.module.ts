@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SimpleGuard } from '@delon/auth';
 import { environment } from '@env/environment';
+import { OidcAuthorize as Authorize } from "@core/util";
 // layout
 import { LayoutDefaultComponent } from '../layout/default/default.component';
 import { LayoutFullScreenComponent } from '../layout/fullscreen/fullscreen.component';
@@ -14,12 +15,14 @@ import { UserRegisterComponent } from './passport/register/register.component';
 import { UserRegisterResultComponent } from './passport/register-result/register-result.component';
 // single pages
 import { CallbackComponent } from './callback/callback.component';
+import { LoginCallbackComponent } from "src/app/routes/callback/login-callback.component";
 
 const routes: Routes = [
   {
     path: '',
     component: LayoutDefaultComponent,
-    canActivate: [SimpleGuard],
+    //canActivate: [Authorize],
+    //canActivateChild: [Authorize],
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardComponent, data: { title: '仪表盘' } },
@@ -46,7 +49,8 @@ const routes: Routes = [
     ]
   },
   // 单页不包裹Layout
-  { path: 'callback/:type', component: CallbackComponent },
+  //{ path: 'callback/:type', component: CallbackComponent },
+  { path: 'callback', component: LoginCallbackComponent },
   { path: '**', redirectTo: 'exception/404' },
 ];
 

@@ -1,5 +1,4 @@
 export { Util as util } from './util';
-export { UtilModule, createOidcProviders } from './util.module';
 export { HttpContentType, HttpMethod } from "./angular/http-helper";
 export { IKey, ViewModel, QueryParameter } from './core/model';
 export { TreeViewModel, TreeQueryParameter } from './core/tree-model';

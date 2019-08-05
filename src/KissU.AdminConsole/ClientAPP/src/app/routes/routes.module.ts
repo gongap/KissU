@@ -10,6 +10,7 @@ import { UserRegisterComponent } from './passport/register/register.component';
 import { UserRegisterResultComponent } from './passport/register-result/register-result.component';
 // single pages
 import { CallbackComponent } from './callback/callback.component';
+import { LoginCallbackComponent } from "src/app/routes/callback/login-callback.component";
 
 const COMPONENTS = [
   DashboardComponent,
@@ -19,6 +20,7 @@ const COMPONENTS = [
   UserRegisterResultComponent,
   // single pages
   CallbackComponent,
+  LoginCallbackComponent,
 ];
 const COMPONENTS_NOROUNT = [];
 

@@ -2,6 +2,7 @@ import { Component, Inject, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { SettingsService } from '@delon/theme';
 import { DA_SERVICE_TOKEN, ITokenService } from '@delon/auth';
+import { OidcAuthorizeService } from "@core/util";
 
 @Component({
   selector: 'header-user',
@@ -43,11 +44,12 @@ export class HeaderUserComponent {
   constructor(
     public settings: SettingsService,
     private router: Router,
-    @Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService,
+    @Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService, private authService: OidcAuthorizeService
   ) {}
 
   logout() {
-    this.tokenService.clear();
-    this.router.navigateByUrl(this.tokenService.login_url!);
+    this.authService.logout();
+    //this.tokenService.clear();
+    //this.router.navigateByUrl(this.tokenService.login_url!);
   }
 }

@@ -1,19 +1,25 @@
 import { NgModule, Optional, SkipSelf, Injector } from '@angular/core';
 import { throwIfAlreadyLoaded } from './module-import-guard';
+import { HTTP_INTERCEPTORS } from "@angular/common/http";
 
 import { I18NService } from './i18n/i18n.service';
-import { UtilModule, createOidcProviders, OidcAuthorizeConfig, UploadService } from "./util";
 import { LocalUploadService } from "./services/local-upload.service";
+import { UploadService } from "./util/services/upload.service";
+import { DicService } from './util/services/dic.service';
+import { Session } from './util/security/session';
+import { Authorize as OidcAuthorize } from './util/security/openid-connect/authorize';
+import { AuthorizeService as OidcAuthorizeService } from './util/security/openid-connect/authorize-service';
+import { AuthorizeConfig as OidcAuthorizeConfig } from './util/security/openid-connect/authorize-config';
+import { AuthorizeInterceptor } from "./util/security/openid-connect/authorize-interceptor";
 
 @NgModule({
-  imports: [
-    UtilModule
-  ],
   providers: [
-    I18NService,
+    I18NService, DicService, Session,
     { provide: OidcAuthorizeConfig, useFactory: getAuthorizeConfig },
-    ...createOidcProviders(),
-    { provide: UploadService, useClass: LocalUploadService }
+    { provide: UploadService, useClass: LocalUploadService },
+    { provide: OidcAuthorizeService, useClass: OidcAuthorizeService, deps: [OidcAuthorizeConfig] },
+    { provide: OidcAuthorize, useClass: OidcAuthorize, deps: [Injector, Session, OidcAuthorizeService] },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, deps: [OidcAuthorizeService], multi: true }
   ]
 })
 export class CoreModule {
@@ -22,13 +28,10 @@ export class CoreModule {
   }
 }
 
-/**
- * 获取授权配置
- */
 export function getAuthorizeConfig() {
   let result = new OidcAuthorizeConfig();
   result.authority = "http://localhost:10080",
-    result.clientId = "GreatWall-Admin";
+  result.clientId = "GreatWall-Admin";
   result.scope = "openid profile api";
   return result;
 }

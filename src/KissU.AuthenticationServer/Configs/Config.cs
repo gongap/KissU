@@ -34,7 +34,7 @@ namespace GreatWall.Configs {
 
         public const int AccessTokenLifetime = 90000000;
 
-        public const string AdminUrl = "http://localhost:10081";
+        public const string AdminUrl = "http://localhost:1927";
 
         public static IEnumerable<Client> GetClients() {
             return new List<Client>
