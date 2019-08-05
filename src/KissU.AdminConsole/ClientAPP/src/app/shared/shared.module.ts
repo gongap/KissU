@@ -22,12 +22,7 @@ const THIRDMODULES = [
 // #endregion
 
 // #region your componets & directives
-//管道
-import { SafeUrlPipe } from './pipes/safe-url.pipe';
-import { TruncatePipe } from "./pipes/truncate.pipe";
-import { IsTruncatePipe } from "./pipes/is-truncate.pipe";
-
-//图表组件
+//viser componets
 import { LineWrapperComponent } from "./viser/line-wrapper.component";
 import { ColumnWrapperComponent } from "./viser/column-wrapper.component";
 import { BarWrapperComponent } from "./viser/bar-wrapper.component";
@@ -35,7 +30,7 @@ import { AreaWrapperComponent } from "./viser/area-wrapper.component";
 import { PieWrapperComponent } from "./viser/pie-wrapper.component";
 import { RosePieWrapperComponent } from "./viser/rose-pie-wrapper.component";
 
-//组件
+//zorro componets
 import { Button } from "./zorro/button-wrapper.component";
 import { TextBox } from "./zorro/textbox-wrapper.component";
 import { DatePicker } from "./zorro/datepicker-wrapper.component";
@@ -51,10 +46,15 @@ import { Tree } from "./zorro/tree-wrapper.component";
 import { TreeSelect } from "./zorro/tree-select-wrapper.component";
 import { TreeTable } from "./zorro/tree-table-wrapper.component";
 
-//指令
+//directives
 import { EditTableDirective } from "./zorro/edit-table.directive";
 import { EditRowDirective } from "./zorro/edit-row.directive";
 import { EditControlDirective } from "./zorro/edit-control.directive";
+
+//pipes
+import { SafeUrlPipe } from './pipes/safe-url.pipe';
+import { TruncatePipe } from "./pipes/truncate.pipe";
+import { IsTruncatePipe } from "./pipes/is-truncate.pipe";
 
 const COMPONENTS = [
     SafeUrlPipe, TruncatePipe, IsTruncatePipe,
