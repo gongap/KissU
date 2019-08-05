@@ -3,6 +3,7 @@ import { NgModule, LOCALE_ID, APP_INITIALIZER, Injector } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { util } from "@core/util/index";
 
 // #region default language
 // Reference: https://ng-alain.com/docs/i18n
@@ -114,8 +115,16 @@ import { LayoutModule } from './layout/layout.module';
     ...LANG_PROVIDES,
     ...INTERCEPTOR_PROVIDES,
     ...I18NSERVICE_PROVIDES,
-    ...APPINIT_PROVIDES
+    ...APPINIT_PROVIDES,
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  /**
+ * 初始化应用根模块
+ * @param injector 注入器
+ */
+  constructor(injector: Injector) {
+    util.ioc.injector = injector;
+  }
+}

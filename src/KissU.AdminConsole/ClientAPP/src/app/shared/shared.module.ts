@@ -66,7 +66,7 @@ const COMPONENTS = [
     Tree, TreeSelect, TreeTable
   ];
 const DIRECTIVES = [
-    //EditTableDirective, EditRowDirective, EditControlDirective
+    EditTableDirective, EditRowDirective, EditControlDirective
 ];
 // #endregion
 
