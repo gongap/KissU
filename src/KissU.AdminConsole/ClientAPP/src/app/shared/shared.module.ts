@@ -13,22 +13,27 @@ import { TranslateModule } from '@ngx-translate/core';
 // #region third libs
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { CountdownModule } from 'ngx-countdown';
-import { ViserModule } from 'viser-ng';
+//import { ViserModule } from 'viser-ng';
 const THIRDMODULES = [
   NgZorroAntdModule,
   CountdownModule,
-  ViserModule
+  //ViserModule
 ];
 // #endregion
 
 // #region your componets & directives
+//pipes
+import { SafeUrlPipe } from './pipes/safe-url.pipe';
+import { TruncatePipe } from "./pipes/truncate.pipe";
+import { IsTruncatePipe } from "./pipes/is-truncate.pipe";
+
 //viser componets
-import { LineWrapperComponent } from "./viser/line-wrapper.component";
-import { ColumnWrapperComponent } from "./viser/column-wrapper.component";
-import { BarWrapperComponent } from "./viser/bar-wrapper.component";
-import { AreaWrapperComponent } from "./viser/area-wrapper.component";
-import { PieWrapperComponent } from "./viser/pie-wrapper.component";
-import { RosePieWrapperComponent } from "./viser/rose-pie-wrapper.component";
+//import { LineWrapperComponent } from "./viser/line-wrapper.component";
+//import { ColumnWrapperComponent } from "./viser/column-wrapper.component";
+//import { BarWrapperComponent } from "./viser/bar-wrapper.component";
+//import { AreaWrapperComponent } from "./viser/area-wrapper.component";
+//import { PieWrapperComponent } from "./viser/pie-wrapper.component";
+//import { RosePieWrapperComponent } from "./viser/rose-pie-wrapper.component";
 
 //zorro componets
 import { Button } from "./zorro/button-wrapper.component";
@@ -51,15 +56,10 @@ import { EditTableDirective } from "./zorro/edit-table.directive";
 import { EditRowDirective } from "./zorro/edit-row.directive";
 import { EditControlDirective } from "./zorro/edit-control.directive";
 
-//pipes
-import { SafeUrlPipe } from './pipes/safe-url.pipe';
-import { TruncatePipe } from "./pipes/truncate.pipe";
-import { IsTruncatePipe } from "./pipes/is-truncate.pipe";
-
 const COMPONENTS = [
     SafeUrlPipe, TruncatePipe, IsTruncatePipe,
-    LineWrapperComponent, ColumnWrapperComponent, BarWrapperComponent, AreaWrapperComponent,
-    PieWrapperComponent, RosePieWrapperComponent,
+    //LineWrapperComponent, ColumnWrapperComponent, BarWrapperComponent, AreaWrapperComponent,
+    //PieWrapperComponent, RosePieWrapperComponent,
     Button, TextBox, DatePicker, TextArea, NumberTextBox,
     Select, Radio, CheckboxGroup,
     Table, Upload, SingleUpload,
