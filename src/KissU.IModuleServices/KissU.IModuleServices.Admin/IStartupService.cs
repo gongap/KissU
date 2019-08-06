@@ -15,7 +15,7 @@ namespace Surging.IModuleServices.User
     {
         [Command(Strategy = StrategyType.Injection, ShuntStrategy = AddressSelectorMode.HashAlgorithm, ExecutionTimeoutInMilliseconds = 2500, BreakerRequestVolumeThreshold = 3, Injection = @"return 1;", RequestCacheEnabled = false)]
         [HttpGet(true)]
-        [Authorization(AuthType = AuthorizationType.JWT)]
+        //[Authorization(AuthType = AuthorizationType.JWT)]
         Task<AppData> GetAppDataAsync();
     }
 }
