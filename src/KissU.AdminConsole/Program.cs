@@ -1,14 +1,31 @@
+using System;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Util.Logs;
+using Util.Logs.Extensions;
 
 namespace KissU.AdminConsole
 {
+    /// <summary>
+    /// 应用程序
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// 应用程序入口点
+        /// </summary>
+        /// <param name="args">入口点参数</param>
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+            try
+            {
+                CreateWebHostBuilder(args).Build().Run();
+            }
+            catch (Exception ex)
+            {
+                ex.Log(Log.GetLog().Caption("应用程序启动失败"));
+            }
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args)
