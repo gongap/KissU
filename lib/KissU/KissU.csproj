@@ -5,12 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\surging\src\Surging.Core\Surging.Core.Stage\Surging.Core.Stage.csproj" />
     <ProjectReference Include="..\..\util\src\Util\01-Util.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Filters\" />
   </ItemGroup>
 
 </Project>
