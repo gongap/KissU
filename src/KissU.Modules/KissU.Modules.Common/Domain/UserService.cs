@@ -48,7 +48,7 @@ namespace Surging.Modules.Common.Domain
 
         public Task<int> GetUserId(string userName)
         {
-            var xid = RpcContext.GetContext().GetAttachment("xid");
+            var xid = RpcContext.GetContext().GetAttachment("payload");
             return Task.FromResult(1);
         }
 

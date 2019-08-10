@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Surging.Core.CPlatform.Utilities;
 using Surging.Core.EventBusRabbitMQ.Configurations;
+using Surging.Core.KestrelHttpServer.Extensions;
 using Util.Helpers;
 
 namespace KissU.MicroServiceHost
@@ -32,17 +33,7 @@ namespace KissU.MicroServiceHost
         {
             var services = new ServiceCollection();
             ConfigureLogging(services);
-
-            services.AddAuthentication("Bearer")
-                .AddIdentityServerAuthentication(options =>
-                {
-                    options.Authority = "http://localhost:10080";
-                    options.ApiName = "GreatWall-Admin";
-                    options.ApiSecret = "";
-                    options.RequireHttpsMetadata = false;
-                });
             services.AddUtil(builder);
-
             builder.Populate(services);
             var container = builder.Build();
             Ioc.Register(container);

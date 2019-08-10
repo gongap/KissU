@@ -7,8 +7,10 @@ using GreatWall.Domain.Repositories;
 using GreatWall.Service.Abstractions;
 using GreatWall.Service.Dtos.Extensions;
 using GreatWall.Service.Dtos.Responses;
+using Surging.Core.CPlatform.Transport.Implementation;
 using Util;
 using Util.Applications;
+using Util.Helpers;
 using Util.Security;
 
 namespace GreatWall.Service.Implements {
@@ -39,6 +41,7 @@ namespace GreatWall.Service.Implements {
         /// 获取菜单
         /// </summary>
         public async Task<List<MenuResponse>> GetMenusAsync() {
+            
             var userId = Session.UserId;
             if ( userId.IsEmpty() )
                 return new List<MenuResponse>();
