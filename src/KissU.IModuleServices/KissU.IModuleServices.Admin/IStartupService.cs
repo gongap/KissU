@@ -5,6 +5,7 @@ using Surging.Core.CPlatform.Support;
 using Surging.Core.CPlatform.Support.Attributes;
 using System.Threading.Tasks;
 using GreatWall.Service.Dtos.NgAlain;
+using Microsoft.AspNetCore.Authorization;
 using Surging.Core.CPlatform.Filters.Implementation;
 
 namespace Surging.IModuleServices.User
@@ -15,6 +16,7 @@ namespace Surging.IModuleServices.User
     {
         [Command(Strategy = StrategyType.Injection, ShuntStrategy = AddressSelectorMode.HashAlgorithm, ExecutionTimeoutInMilliseconds = 2500, BreakerRequestVolumeThreshold = 3, Injection = @"return 1;", RequestCacheEnabled = false)]
         [HttpGet(true)]
+        [Authorize]
         //[Authorization(AuthType = AuthorizationType.JWT)]
         Task<AppData> GetAppDataAsync();
     }

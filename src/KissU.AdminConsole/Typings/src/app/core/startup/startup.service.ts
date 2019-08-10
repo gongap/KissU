@@ -37,8 +37,8 @@ export class StartupService {
   private getAppData(resolve: any, reject: any) {
     zip(
       this.httpClient.get(`${window.location.origin}/assets/tmp/i18n/${this.i18n.defaultLang}.json`),
-      this.httpClient.get(`${window.location.origin}/assets/tmp/app-data.json`),
-      //this.httpClient.get('/api/startup/getappdataasync', { headers: { "Content-Type": "application/json" } })
+      //this.httpClient.get(`${window.location.origin}/assets/tmp/app-data.json`),
+      this.httpClient.get('http://localhost:280/api/startup/getappdataasync', { headers: { "Content-Type": "application/json" } })
     ).pipe(
       catchError(([langData, appData]) => {
           resolve(null);

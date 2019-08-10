@@ -5,6 +5,7 @@ using GreatWall.Domain.Models;
 using GreatWall.Domain.Services.Implements;
 using GreatWall.Extensions;
 using GreatWall.Options;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 
