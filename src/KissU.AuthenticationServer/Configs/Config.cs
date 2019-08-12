@@ -41,7 +41,7 @@ namespace GreatWall.Configs {
             {
                 new Client
                 {
-                    ClientId = "GreatWall-Admin",
+                    ClientId = "AdminConsole",
                     ClientName = "权限管理后台",
                     AllowedGrantTypes = GrantTypes.Implicit,
                     AllowAccessTokensViaBrowser = true,

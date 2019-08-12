@@ -1,6 +1,7 @@
 import { NgModule, Optional, SkipSelf, Injector } from '@angular/core';
 import { throwIfAlreadyLoaded } from './module-import-guard';
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
+import { environment } from '@env/environment';
 
 import { I18NService } from './i18n/i18n.service';
 import { LocalUploadService } from "./services/local-upload.service";
@@ -30,8 +31,8 @@ export class CoreModule {
 
 export function getAuthorizeConfig() {
   let result = new OidcAuthorizeConfig();
-  result.authority = "http://localhost:10080",
-  result.clientId = "GreatWall-Admin";
+  result.authority = environment.AUTH_URL,
+  result.clientId = "AdminConsole";
   result.scope = "openid profile api";
   return result;
 }
