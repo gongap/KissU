@@ -4,6 +4,7 @@ using GreatWall.Service.Abstractions;
 using GreatWall.Service.Dtos.Extensions;
 using GreatWall.Service.Dtos.NgAlain;
 using Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
+using Surging.Core.CPlatform.Transport.Implementation;
 using Surging.Core.ProxyGenerator;
 using Surging.IModuleServices.User;
 
@@ -34,10 +35,11 @@ namespace KissU.Modules.Admin
         [HttpGet(true)]
         public async Task<AppData> GetAppDataAsync()
         {
+            var payload = RpcContext.GetContext().GetAttachment("payload");
             var data = new AppData
             {
-                App = { Name = "GreatWall", Description = ".Net Core权限系统" },
-                User = { Name = "", Avatar = "/assets/tmp/img/avatar.jpg", Email = "xiadao521@qq.com" },
+                App = { Name = "KissU", Description = ".Net Core权限系统" },
+                User = { Name = payload?.ToString(), Avatar = "/assets/tmp/img/avatar.jpg", Email = "gongap@qq.com" },
                 Menu = await GetMenus()
             };
             return data;
