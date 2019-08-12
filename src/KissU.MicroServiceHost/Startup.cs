@@ -33,7 +33,6 @@ namespace KissU.MicroServiceHost
         {
             var services = new ServiceCollection();
             ConfigureLogging(services);
-            services.AddUtil(builder);
             builder.Populate(services);
             var container = builder.Build();
             Ioc.Register(container);

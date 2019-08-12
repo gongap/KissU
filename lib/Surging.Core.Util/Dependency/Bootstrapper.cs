@@ -1,26 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using AspectCore.Configuration;
 using Autofac;
-using Microsoft.Extensions.DependencyInjection;
 using Util.Dependency;
 using Util.Events.Handlers;
-using Util.Helpers;
 using Util.Reflections;
 
-namespace KissU.Dependency
+namespace Surging.Core.Util.Dependency
 {
     /// <summary>
     /// 依赖引导器
     /// </summary>
     public class Bootstrapper
     {
-        /// <summary>
-        /// 服务集合
-        /// </summary>
-        private readonly IServiceCollection _services;
         /// <summary>
         /// 依赖配置
         /// </summary>
@@ -49,9 +42,8 @@ namespace KissU.Dependency
         /// <param name="configs">依赖配置</param>
         /// <param name="aopConfigAction">Aop配置操作</param>
         /// <param name="finder">类型查找器</param>
-        public Bootstrapper(IServiceCollection services, IConfig[] configs, Action<IAspectConfiguration> aopConfigAction, IFind finder)
+        public Bootstrapper(IConfig[] configs, Action<IAspectConfiguration> aopConfigAction, IFind finder)
         {
-            _services = services ?? new ServiceCollection();
             _configs = configs;
             _aopConfigAction = aopConfigAction;
             _finder = finder ?? new Finder();
@@ -65,9 +57,9 @@ namespace KissU.Dependency
         /// <param name="configs">依赖配置</param>
         /// <param name="aopConfigAction">Aop配置操作</param>
         /// <param name="finder">类型查找器</param>
-        public static void Run(IServiceCollection services, ContainerBuilder builder, IConfig[] configs = null, Action<IAspectConfiguration> aopConfigAction = null, IFind finder = null)
+        public static void Run(ContainerBuilder builder, IConfig[] configs = null, Action<IAspectConfiguration> aopConfigAction = null, IFind finder = null)
         {
-            new Bootstrapper(services, configs, aopConfigAction, finder).Bootstrap(builder);
+            new Bootstrapper(configs, aopConfigAction, finder).Bootstrap(builder);
         }
 
         /// <summary>
@@ -154,7 +146,6 @@ namespace KissU.Dependency
             RegisterSingletonDependency();
             RegisterScopeDependency();
             RegisterTransientDependency();
-            ResolveDependencyRegistrar();
         }
 
         /// <summary>
@@ -187,15 +178,6 @@ namespace KissU.Dependency
         private void RegisterTransientDependency()
         {
             _builder.RegisterTypes(GetTypes<ITransientDependency>()).AsImplementedInterfaces().PropertiesAutowired().InstancePerDependency();
-        }
-
-        /// <summary>
-        /// 解析依赖注册器
-        /// </summary>
-        private void ResolveDependencyRegistrar()
-        {
-            var types = GetTypes<IDependencyRegistrar>();
-            types.Select(type => Reflection.CreateInstance<IDependencyRegistrar>(type)).ToList().ForEach(t => t.Register(_services));
         }
     }
 }

@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Text;
 using AspectCore.Configuration;
-using AspectCore.Extensions.Autofac;
 using Autofac;
-using Autofac.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection;
 using Util.Dependency;
 
-namespace KissU
+namespace Surging.Core.Util
 {
     /// <summary>
     /// 系统扩展 - 基础设施
@@ -20,9 +17,9 @@ namespace KissU
         /// <param name="services">服务集合</param>
         /// <param name="builder">容器生成器</param>
         /// <param name="configs">依赖配置</param>
-        public static void AddUtil(this IServiceCollection services, ContainerBuilder builder, params IConfig[] configs)
+        public static void AddUtil(this ContainerBuilder builder, params IConfig[] configs)
         {
-           AddUtil(services, builder, null, configs);
+           AddUtil(builder, null, configs);
         }
 
         /// <summary>
@@ -32,11 +29,10 @@ namespace KissU
         /// <param name="builder">容器生成器</param>
         /// <param name="aopConfigAction">Aop配置操作</param>
         /// <param name="configs">依赖配置</param>
-        public static void AddUtil(this IServiceCollection services, ContainerBuilder builder, Action<IAspectConfiguration> aopConfigAction = null, params IConfig[] configs)
+        public static void AddUtil(this ContainerBuilder builder, Action<IAspectConfiguration> aopConfigAction = null, params IConfig[] configs)
         {
-            services.AddHttpContextAccessor();
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-            Dependency.Bootstrapper.Run(services, builder, configs, aopConfigAction);
+            Dependency.Bootstrapper.Run(builder, configs, aopConfigAction);
         }
     }
 }
