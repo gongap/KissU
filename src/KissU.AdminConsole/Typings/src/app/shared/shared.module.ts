@@ -22,52 +22,10 @@ const THIRDMODULES = [
 // #endregion
 
 // #region your componets & directives
-//pipes
-import { SafeUrlPipe } from './pipes/safe-url.pipe';
-import { TruncatePipe } from "./pipes/truncate.pipe";
-import { IsTruncatePipe } from "./pipes/is-truncate.pipe";
+import { UTIL_SHARED_COMPONENTS, UTIL_SHARED_DIRECTIVES } from '@util';
 
-//viser componets
-//import { LineWrapperComponent } from "./viser/line-wrapper.component";
-//import { ColumnWrapperComponent } from "./viser/column-wrapper.component";
-//import { BarWrapperComponent } from "./viser/bar-wrapper.component";
-//import { AreaWrapperComponent } from "./viser/area-wrapper.component";
-//import { PieWrapperComponent } from "./viser/pie-wrapper.component";
-//import { RosePieWrapperComponent } from "./viser/rose-pie-wrapper.component";
-
-//zorro componets
-import { Button } from "./zorro/button-wrapper.component";
-import { TextBox } from "./zorro/textbox-wrapper.component";
-import { DatePicker } from "./zorro/datepicker-wrapper.component";
-import { TextArea } from "./zorro/textarea-wrapper.component";
-import { NumberTextBox } from "./zorro/number-textbox-wrapper.component";
-import { Select } from "./zorro/select-wrapper.component";
-import { Radio } from "./zorro/radio-wrapper.component";
-import { CheckboxGroup } from "./zorro/checkbox-group-wrapper.component";
-import { Table } from "./zorro/table-wrapper.component";
-import { Upload } from "./zorro/upload-wrapper.component";
-import { SingleUpload } from "./zorro/single-upload-wrapper.component";
-import { Tree } from "./zorro/tree-wrapper.component";
-import { TreeSelect } from "./zorro/tree-select-wrapper.component";
-import { TreeTable } from "./zorro/tree-table-wrapper.component";
-
-//directives
-import { EditTableDirective } from "./zorro/edit-table.directive";
-import { EditRowDirective } from "./zorro/edit-row.directive";
-import { EditControlDirective } from "./zorro/edit-control.directive";
-
-const COMPONENTS = [
-    SafeUrlPipe, TruncatePipe, IsTruncatePipe,
-    //LineWrapperComponent, ColumnWrapperComponent, BarWrapperComponent, AreaWrapperComponent,
-    //PieWrapperComponent, RosePieWrapperComponent,
-    Button, TextBox, DatePicker, TextArea, NumberTextBox,
-    Select, Radio, CheckboxGroup,
-    Table, Upload, SingleUpload,
-    Tree, TreeSelect, TreeTable
-  ];
-const DIRECTIVES = [
-    EditTableDirective, EditRowDirective, EditControlDirective
-];
+const COMPONENTS = [ ...UTIL_SHARED_COMPONENTS];
+const DIRECTIVES = [...UTIL_SHARED_DIRECTIVES];
 // #endregion
 
 @NgModule({
@@ -81,12 +39,12 @@ const DIRECTIVES = [
     DelonACLModule,
     DelonFormModule,
     // third libs
-    ...THIRDMODULES
+    ...THIRDMODULES,
   ],
   declarations: [
     // your components
     ...COMPONENTS,
-    ...DIRECTIVES
+    ...DIRECTIVES,
   ],
   exports: [
     CommonModule,
@@ -103,7 +61,7 @@ const DIRECTIVES = [
     ...THIRDMODULES,
     // your components
     ...COMPONENTS,
-    ...DIRECTIVES
-  ]
+    ...DIRECTIVES,
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}

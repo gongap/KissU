@@ -33,6 +33,12 @@
       ],
       "@env/*": [
         "src/environments/*"
+      ],
+      "@util": [
+        "src/app/core/util/index"
+      ],
+      "@util/*": [
+        "src/app/core/util/*"
       ]
     }
   },

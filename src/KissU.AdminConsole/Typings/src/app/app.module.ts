@@ -32,7 +32,7 @@ import { ALAIN_I18N_TOKEN } from '@delon/theme';
 import { I18NService } from '@core/i18n/i18n.service';
 
 export function I18nHttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, `assets/tmp/i18n/`, '.json');
+  return new TranslateHttpLoader(http, `${window.location.origin}/assets/tmp/i18n/`, '.json');
 }
 
 const I18NSERVICE_MODULES = [
