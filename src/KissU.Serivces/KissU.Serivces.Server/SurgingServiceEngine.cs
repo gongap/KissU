@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace KissU.MicroServiceHost
+namespace KissU.Services.Server
 {
     /// <summary>
     /// 微服务引擎

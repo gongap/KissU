@@ -9,7 +9,7 @@ using Surging.Core.EventBusRabbitMQ.Configurations;
 using Surging.Core.KestrelHttpServer.Extensions;
 using Util.Helpers;
 
-namespace KissU.MicroServiceHost
+namespace KissU.Services.Server
 {
     /// <summary>
     ///  启动配置
