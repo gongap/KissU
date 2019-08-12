@@ -46,7 +46,7 @@
     "IsCamelCaseResolver": "${IsCamelCaseResolver}|true",
     "ApiGetWay": {
       "AccessTokenExpireTimeSpan": "30",
-      "AuthorizationRoutePath": "api/user/authentication",
+      "AuthorizationRoutePath": "http://localhost:10080",
       "AuthorizationServiceKey": "User",
       "TokenEndpointPath": "api/oauth2/token",
       "CacheMode": "MemoryCache" //MemoryCache or  gateway.Redis save token

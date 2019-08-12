@@ -7,6 +7,7 @@ using Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attr
 using Surging.Core.CPlatform.Transport.Implementation;
 using Surging.Core.ProxyGenerator;
 using Surging.IModuleServices.User;
+using Util.Helpers;
 
 namespace KissU.Modules.Admin
 {
@@ -39,7 +40,7 @@ namespace KissU.Modules.Admin
             var data = new AppData
             {
                 App = { Name = "KissU", Description = ".Net Core权限系统" },
-                User = { Name = payload?.ToString(), Avatar = "/assets/tmp/img/avatar.jpg", Email = "gongap@qq.com" },
+                User = { Name = Web.Identity.Name, Avatar = "/assets/tmp/img/avatar.jpg", Email = "gongap@qq.com" },
                 Menu = await GetMenus()
             };
             return data;
