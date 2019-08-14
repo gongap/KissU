@@ -5,9 +5,9 @@
 import { Component, Input, Output, EventEmitter, OnInit, Optional } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { FormControlWrapperBase } from './base/form-control-wrapper-base';
-import { SelectList, SelectItem, SelectOption, SelectOptionGroup } from '../core/select-model';
-import { Util as util } from '../util';
-import { QueryParameter } from '../core/model';
+import { SelectList, SelectItem, SelectOption, SelectOptionGroup } from "../core/select-model";
+import { Util as util } from "../util";
+import { QueryParameter } from "../core/model";
 
 /**
  * NgZorro下拉列表包装器
@@ -15,60 +15,28 @@ import { QueryParameter } from '../core/model';
 @Component({
   selector: 'x-select',
   template: `
-    <nz-form-control
-      [nzValidateStatus]="
-        controlModel?.hasError('required') && (controlModel?.dirty || controlModel.touched) ? 'error' : 'success'
-      "
-    >
-      <nz-select
-        #controlModel="ngModel"
-        [name]="name"
-        [ngModel]="model"
-        (ngModelChange)="onModelChange($event)"
-        [nzPlaceHolder]="placeholder"
-        [ngStyle]="getStyle()"
-        [nzLoading]="loading"
-        [nzMode]="getMode()"
-        [nzMaxMultipleCount]="maxMultipleCount"
-        [nzShowSearch]="showSearch"
-        [nzAllowClear]="allowClear"
-        [nzShowArrow]="showArrow"
-        [nzDisabled]="disabled"
-        [required]="required"
-        [nzServerSearch]="isServerSearch"
-        (nzBlur)="handleBlur($event)"
-        (nzFocus)="handleFocus($event)"
-        (keyup)="handleKeyup($event)"
-        (keydown)="handleKeydown($event)"
-        (nzOnSearch)="search($event)"
-        (nzScrollToBottom)="scrollToBottom()"
-      >
-        <nz-option *ngIf="defaultOptionText" [nzLabel]="defaultOptionText"></nz-option>
-        <ng-container *ngIf="!isGroup">
-          <nz-option
-            *ngFor="let item of options"
-            [nzValue]="item.value"
-            [nzLabel]="item.text"
-            [nzDisabled]="item.disabled"
-          ></nz-option>
-        </ng-container>
-        <ng-container *ngIf="isGroup">
-          <nz-option-group *ngFor="let group of optionGroups" [nzLabel]="group.text">
-            <nz-option
-              *ngFor="let item of group.value"
-              [nzValue]="item.value"
-              [nzLabel]="item.text"
-              [nzDisabled]="item.disabled"
-            >
-            </nz-option>
-          </nz-option-group>
-        </ng-container>
-      </nz-select>
-      <nz-form-explain *ngIf="controlModel?.hasError('required') && (controlModel?.dirty || controlModel.touched)">{{
-        requiredMessage
-      }}</nz-form-explain>
-    </nz-form-control>
-  `,
+        <nz-form-control [nzValidateStatus]="(controlModel?.hasError( 'required' ) && (controlModel?.dirty || controlModel.touched))?'error':'success'">
+            <nz-select #controlModel="ngModel" [name]="name" [ngModel]="model" (ngModelChange)="onModelChange($event)" 
+                [nzPlaceHolder]="placeholder" [ngStyle]="getStyle()" [nzLoading]="loading"
+                [nzMode]="getMode()" [nzMaxMultipleCount]="maxMultipleCount"
+                [nzShowSearch]="showSearch" [nzAllowClear]="allowClear" [nzShowArrow]="showArrow"
+                [nzDisabled]="disabled" [required]="required" [nzServerSearch]="isServerSearch"
+                (nzBlur)="handleBlur($event)" (nzFocus)="handleFocus($event)" (keyup)="handleKeyup($event)" (keydown)="handleKeydown($event)"
+                (nzOnSearch)="search($event)" (nzScrollToBottom)="scrollToBottom()">
+                <nz-option *ngIf="defaultOptionText" [nzLabel]="defaultOptionText"></nz-option>
+                <ng-container *ngIf="!isGroup">
+                    <nz-option *ngFor="let item of options" [nzValue]="item.value" [nzLabel]="item.text" [nzDisabled]="item.disabled"></nz-option>
+                </ng-container>
+                <ng-container *ngIf="isGroup">
+                    <nz-option-group *ngFor="let group of optionGroups" [nzLabel]="group.text">
+                        <nz-option *ngFor="let item of group.value" [nzValue]="item.value" [nzLabel]="item.text" [nzDisabled]="item.disabled">
+                        </nz-option>
+                    </nz-option-group>
+                </ng-container>
+            </nz-select>
+            <nz-form-explain *ngIf="controlModel?.hasError( 'required' ) && (controlModel?.dirty || controlModel.touched)">{{requiredMessage}}</nz-form-explain>
+        </nz-form-control>
+    `
 })
 export class Select extends FormControlWrapperBase implements OnInit {
   /**
@@ -109,6 +77,10 @@ export class Select extends FormControlWrapperBase implements OnInit {
    * 查询参数
    */
   @Input() queryParam;
+  /**
+   * 初始化时是否自动加载数据，默认为true,设置成false则手工加载
+   */
+  @Input() autoLoad: boolean;
   /**
    * 排序列
    */
@@ -171,6 +143,7 @@ export class Select extends FormControlWrapperBase implements OnInit {
     this.allowClear = true;
     this.showSearch = true;
     this.showArrow = true;
+    this.autoLoad = true;
     this.loading = false;
     this.maxMultipleCount = 9999;
   }
@@ -182,15 +155,18 @@ export class Select extends FormControlWrapperBase implements OnInit {
     this.initPageSize();
     this.initOrder();
     this.loadData();
-    if (this.dataSource) return;
-    this.loadUrl();
+    if (this.dataSource)
+      return;
+    if (this.autoLoad)
+      this.loadUrl();
   }
 
   /**
    * 初始化分页大小
    */
   private initPageSize() {
-    if (this.isScrollLoad) return;
+    if (this.isScrollLoad)
+      return;
     this.queryParam.pageSize = 9999;
   }
 
@@ -198,7 +174,8 @@ export class Select extends FormControlWrapperBase implements OnInit {
    * 初始化排序
    */
   private initOrder() {
-    if (!this.order) return;
+    if (!this.order)
+      return;
     this.queryParam.order = this.order;
   }
 
@@ -208,7 +185,8 @@ export class Select extends FormControlWrapperBase implements OnInit {
    */
   loadData(data?: SelectItem[]) {
     this.data = data || this.data;
-    if (!this.data) return;
+    if (!this.data)
+      return;
     let select = new SelectList(this.data);
     if (select.isGroup()) {
       this.isGroup = true;
@@ -226,11 +204,11 @@ export class Select extends FormControlWrapperBase implements OnInit {
     /**
      * 请求地址
      */
-    url?: string;
+    url?: string,
     /**
      * 查询参数
      */
-    param?;
+    param?,
     /**
      * 成功加载回调函数
      */
@@ -238,25 +216,23 @@ export class Select extends FormControlWrapperBase implements OnInit {
   }) {
     options = options || {};
     let url = options.url || this.url;
-    if (!url) return;
+    if (!url)
+      return;
     let param = options.param || this.queryParam;
-    util.webapi
-      .get<SelectItem[]>(url)
-      .param(param)
-      .handle({
-        before: () => {
-          this.loading = true;
-          return true;
-        },
-        ok: result => {
-          if (options.handler) {
-            options.handler(result);
-            return;
-          }
-          this.loadData(result);
-        },
-        complete: () => (this.loading = false),
-      });
+    util.webapi.get<SelectItem[]>(url).param(param).handle({
+      before: () => {
+        this.loading = true;
+        return true;
+      },
+      ok: result => {
+        if (options.handler) {
+          options.handler(result);
+          return;
+        }
+        this.loadData(result);
+      },
+      complete: () => this.loading = false
+    });
   }
 
   /**
@@ -264,7 +240,7 @@ export class Select extends FormControlWrapperBase implements OnInit {
    */
   getStyle() {
     return {
-      width: this.width ? this.width : null,
+      'width': this.width ? this.width : null
     };
   }
 
@@ -272,7 +248,8 @@ export class Select extends FormControlWrapperBase implements OnInit {
    * 获取模式
    */
   getMode() {
-    if (this.tags) return 'tags';
+    if (this.tags)
+      return 'tags';
     return this.multiple ? 'multiple' : 'default';
   }
 
@@ -282,7 +259,8 @@ export class Select extends FormControlWrapperBase implements OnInit {
    */
   search(value: string) {
     this.onSearch.emit(value);
-    if (this.isServerSearch) this.serverSearch(value);
+    if (this.isServerSearch)
+      this.serverSearch(value);
   }
 
   /**
@@ -299,7 +277,8 @@ export class Select extends FormControlWrapperBase implements OnInit {
    */
   scrollToBottom() {
     this.onScrollToBottom.emit();
-    if (this.isScrollLoad) this.scrollLoad();
+    if (this.isScrollLoad)
+      this.scrollLoad();
   }
 
   /**
@@ -315,7 +294,7 @@ export class Select extends FormControlWrapperBase implements OnInit {
         }
         let data = [...this.data, ...result];
         this.loadData(data);
-      },
+      }
     });
   }
 

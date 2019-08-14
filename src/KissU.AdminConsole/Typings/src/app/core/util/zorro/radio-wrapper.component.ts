@@ -4,7 +4,7 @@
 //=======================================================
 import { Component, Input, Output, EventEmitter, OnInit, Optional, ViewChild, AfterViewInit } from '@angular/core';
 import { NgModel, NgForm } from '@angular/forms';
-import { SelectList, SelectItem, SelectOption } from '../core/select-model';
+import { SelectList, SelectItem, SelectOption } from "../core/select-model";
 import { WebApi as webapi } from '../common/webapi';
 
 /**
@@ -14,28 +14,17 @@ import { WebApi as webapi } from '../common/webapi';
   selector: 'x-radio',
   template: `
     <nz-form-control>
-      <nz-radio-group
-        #controlModel="ngModel"
-        [name]="name"
-        [nzName]="name"
-        [ngModel]="model"
-        (ngModelChange)="onModelChange($event)"
-        [nzDisabled]="disabled"
-        [required]="required"
-      >
-        <label
-          nz-radio
-          *ngFor="let item of dataSource"
-          [nzValue]="item.value"
-          [nzDisabled]="item.disabled"
-          [ngStyle]="vertical ? verticalStyle : ''"
-        >
-          {{ item.text }}
-        </label>
-      </nz-radio-group>
+        <nz-radio-group #controlModel="ngModel" [name]="name" [nzName]="name" [ngModel]="model" (ngModelChange)="onModelChange($event)" 
+            [nzDisabled]="disabled" [required]="required" [nzButtonStyle]="'solid'">
+            <label nz-radio *ngFor="let item of dataSource" [nzValue]="item.value" [nzDisabled]="item.disabled" 
+                   [ngStyle]="vertical?verticalStyle:''">
+            {{ item.text }}
+            </label>
+        </nz-radio-group>
     </nz-form-control>
-  `,
-  styles: [``],
+    `,
+  styles: [`
+    `]
 })
 export class Radio implements OnInit, AfterViewInit {
   /**
@@ -50,6 +39,10 @@ export class Radio implements OnInit, AfterViewInit {
    * 是否垂直布局
    */
   @Input() vertical: boolean;
+  /**
+   * 风格样式，可选值：'outline' | 'solid'
+   */
+  @Input() buttonStyle: string;
   /**
    * 是否显示标签
    */
@@ -96,6 +89,7 @@ export class Radio implements OnInit, AfterViewInit {
    */
   constructor(@Optional() private form: NgForm) {
     this.showLabel = true;
+    this.buttonStyle = 'outline';
   }
 
   /**
@@ -104,14 +98,15 @@ export class Radio implements OnInit, AfterViewInit {
   verticalStyle = {
     display: 'block',
     height: '30px',
-    lineHeight: '30px',
+    lineHeight: '30px'
   };
 
   /**
    * 组件初始化
    */
   ngOnInit() {
-    if (this.dataSource) return;
+    if (this.dataSource)
+      return;
     this.loadUrl();
   }
 
@@ -120,7 +115,8 @@ export class Radio implements OnInit, AfterViewInit {
    * @param data 列表项集合
    */
   loadData(data?: SelectItem[]) {
-    if (!data) return;
+    if (!data)
+      return;
     let select = new SelectList(data);
     this.dataSource = select.toOptions();
   }
@@ -131,11 +127,12 @@ export class Radio implements OnInit, AfterViewInit {
    */
   loadUrl(url?: string) {
     url = url || this.url;
-    if (!url) return;
+    if (!url)
+      return;
     webapi.get<SelectItem[]>(url).handle({
       ok: result => {
         this.loadData(result);
-      },
+      }
     });
   }
 

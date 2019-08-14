@@ -3,16 +3,14 @@
 //Licensed under the MIT license
 //================================================
 import { Injector, ViewChild, forwardRef, AfterViewInit } from '@angular/core';
-import { ViewModel, QueryParameter } from '../core/model';
-import { Table } from '../zorro/table-wrapper.component';
-import { QueryComponentBase } from './query-component-base';
+import { ViewModel, QueryParameter } from "../core/model";
+import { Table } from "../zorro/table-wrapper.component";
+import { QueryComponentBase } from "./query-component-base";
 
 /**
  * 表格查询基类
  */
-export abstract class TableQueryComponentBase<TViewModel extends ViewModel, TQuery extends QueryParameter>
-  extends QueryComponentBase
-  implements AfterViewInit {
+export abstract class TableQueryComponentBase<TViewModel extends ViewModel, TQuery extends QueryParameter> extends QueryComponentBase implements AfterViewInit {
   /**
    * 查询参数
    */
@@ -42,17 +40,19 @@ export abstract class TableQueryComponentBase<TViewModel extends ViewModel, TQue
    * 视图加载完成
    */
   ngAfterViewInit() {
-    if (!this.table) return;
+    if (!this.table)
+      return;
     this.table.loadAfter = result => {
       this.loadAfter(result);
-    };
+    }
   }
 
   /**
    * 数据加载完成操作
    * @param result
    */
-  loadAfter(result) {}
+  loadAfter(result) {
+  }
 
   /**
    * 查询
@@ -61,6 +61,7 @@ export abstract class TableQueryComponentBase<TViewModel extends ViewModel, TQue
   query(button?) {
     this.table.query({
       button: button,
+      pageIndex: 1
     });
   }
 
@@ -71,7 +72,7 @@ export abstract class TableQueryComponentBase<TViewModel extends ViewModel, TQue
   search(button?) {
     this.table.search({
       button: button,
-      delay: this.getDelay(),
+      delay: this.getDelay()
     });
   }
 
@@ -86,14 +87,15 @@ export abstract class TableQueryComponentBase<TViewModel extends ViewModel, TQue
       ids: id,
       handler: () => {
         this.deleteAfter();
-      },
+      }
     });
   }
 
   /**
    * 删除后操作
    */
-  protected deleteAfter = () => {};
+  protected deleteAfter = () => {
+  }
 
   /**
    * 刷新
@@ -109,7 +111,8 @@ export abstract class TableQueryComponentBase<TViewModel extends ViewModel, TQue
   /**
    * 刷新完成后操作
    */
-  protected refreshAfter = data => {};
+  protected refreshAfter = data => {
+  }
 
   /**
    * 清空复选框
