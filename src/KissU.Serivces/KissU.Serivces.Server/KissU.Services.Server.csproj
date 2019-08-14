@@ -17,6 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Surging.Apm\Surging.Apm.Skywalking\Surging.Apm.Skywalking.csproj" />
+    <ProjectReference Include="..\..\Surging.Apm\Surging.Apm.Skywalking\Surging.Apm.Skywalking.csproj" />
     <ProjectReference Include="..\..\..\lib\Surging.Core.Util\Surging.Core.Util.csproj" />
     <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.ApiGateWay\Surging.Core.ApiGateWay.csproj" />
     <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.Caching\Surging.Core.Caching.csproj" />
@@ -50,6 +52,12 @@
     <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Common\KissU.Modules.Common.csproj" />
     <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.GreatWall\KissU.Modules.GreatWall.csproj" />
     <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Manager\KissU.Modules.Manager.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="skyapm.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

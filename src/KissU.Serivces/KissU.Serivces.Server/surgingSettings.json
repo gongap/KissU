@@ -27,7 +27,7 @@
     "Packages": [
       {
         "TypeName": "EnginePartModule",
-        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;NLogModule;MessagePackModule;ConsulModule;WSProtocolModule;MqttProtocolModule;EventBusRabbitMQModule;CachingModule;KestrelHttpModule;DnsProtocolModule;SwaggerModule;ApiGeteWayModule;UtilModule;"
+        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;NLogModule;MessagePackModule;ConsulModule;WSProtocolModule;MqttProtocolModule;EventBusRabbitMQModule;CachingModule;KestrelHttpModule;DnsProtocolModule;SwaggerModule;ApiGeteWayModule;SkywalkingModule;"
       }
     ]
   }, //如果引用多个同类型的组件，需要配置Packages，如果是自定义按需引用，无需配置Packages
@@ -93,8 +93,13 @@
       }
     },
     "Options": {
-      "IgnoreFullyQualified": false
-      // "IngressName": "Notice"
+      "IgnoreFullyQualified": false,
+      "MapRoutePaths": [
+        {
+          "SourceRoutePath": "api/user/authentication",
+          "TargetRoutePath": "api/oauth2/token"
+        }
+      ]
     }
   },
   "EventBus_Kafka": {
