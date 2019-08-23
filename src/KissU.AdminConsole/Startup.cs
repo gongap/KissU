@@ -130,7 +130,7 @@ namespace KissU.AdminConsole
             app.UseSpa(spa =>
             {
                 spa.Options.SourcePath = "Typings";
-                if (Environment.IsDevelopment()) spa.UseAngularCliServer("start");
+                //if (Environment.IsDevelopment()) spa.UseAngularCliServer("start");
             });
         }
     }
