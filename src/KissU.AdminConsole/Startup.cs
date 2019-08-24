@@ -64,7 +64,7 @@ namespace KissU.AdminConsole
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddRazorPageConventions();
 
             //添加Spa单页服务
-            services.AddSpaStaticFiles(configuration => { configuration.RootPath = "Typings/dist"; });
+            //services.AddSpaStaticFiles(configuration => { configuration.RootPath = "Typings/dist"; });
 
             //添加NLog日志操作
             services.AddNLog();
@@ -114,7 +114,7 @@ namespace KissU.AdminConsole
         {
             app.UseErrorLog();
             app.UseStaticFiles();
-            app.UseSpaStaticFiles();
+            //app.UseSpaStaticFiles();
             app.UseAuthentication();
             ConfigRoute(app);
         }
@@ -127,11 +127,11 @@ namespace KissU.AdminConsole
             app.UseMvc(routes => {
                 routes.MapSpaFallbackRoute("spa-fallback", new { controller = "Home", action = "Index" });
             });
-            app.UseSpa(spa =>
-            {
-                spa.Options.SourcePath = "Typings";
-                //if (Environment.IsDevelopment()) spa.UseAngularCliServer("start");
-            });
+            //app.UseSpa(spa =>
+            //{
+            //    spa.Options.SourcePath = "Typings";
+            //    if (Environment.IsDevelopment()) spa.UseAngularCliServer("start");
+            //});
         }
     }
 }
