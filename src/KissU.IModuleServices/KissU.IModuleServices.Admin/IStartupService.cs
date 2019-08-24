@@ -10,7 +10,6 @@ using Surging.Core.CPlatform.Filters.Implementation;
 
 namespace Surging.IModuleServices.User
 {
-
     [ServiceBundle("api/{Service}")]
     public interface IStartupService : IServiceKey
     {

@@ -17,8 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Surging.Apm\Surging.Apm.Skywalking\Surging.Apm.Skywalking.csproj" />
-    <ProjectReference Include="..\..\Surging.Apm\Surging.Apm.Skywalking\Surging.Apm.Skywalking.csproj" />
+    <ProjectReference Include="..\..\..\surging\src\Surging.Apm\Surging.Apm.Skywalking\Surging.Apm.Skywalking.csproj" />
+    <ProjectReference Include="..\..\..\surging\src\Surging.Apm\Surging.Apm.Skywalking\Surging.Apm.Skywalking.csproj" />
     <ProjectReference Include="..\..\..\lib\Surging.Core.Util\Surging.Core.Util.csproj" />
     <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.ApiGateWay\Surging.Core.ApiGateWay.csproj" />
     <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.Caching\Surging.Core.Caching.csproj" />
