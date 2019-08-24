@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Util.Datas.UnitOfWorks;
 
-namespace KFNets.Veterinary.Data.UnitOfWorks.SqlServer 
+namespace KissU.Data.UnitOfWorks.SqlServer 
 {
     /// <summary>
     /// 工作单元

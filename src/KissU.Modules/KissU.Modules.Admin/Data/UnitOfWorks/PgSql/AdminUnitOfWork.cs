@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Util.Datas.UnitOfWorks;
 
-namespace KFNets.Veterinary.Data.UnitOfWorks.PgSql 
+namespace KissU.Data.UnitOfWorks.PgSql 
 {
     /// <summary>
     /// 工作单元

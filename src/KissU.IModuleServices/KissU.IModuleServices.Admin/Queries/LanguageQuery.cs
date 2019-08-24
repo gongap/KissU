@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Util;
 using Util.Datas.Queries;
 
-namespace KFNets.Veterinary.Service.Queries.Systems {
+namespace KissU.Service.Queries.Systems {
     /// <summary>
     /// 语言国际化查询参数
     /// </summary>

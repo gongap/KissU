@@ -1,7 +1,7 @@
 ﻿using Util.Domains.Repositories;
-using KFNets.Veterinary.Domain.Systems.Models;
+using KissU.Domain.Systems.Models;
 
-namespace KFNets.Veterinary.Domain.Systems.Repositories {
+namespace KissU.Domain.Systems.Repositories {
     /// <summary>
     /// 语言国际化仓储
     /// </summary>

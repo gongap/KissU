@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Util.Ui.Pages;
 using Util.Webs.Controllers;
 
-namespace KFNets.Veterinary.Web.Apis.Tools
+namespace KissU.Web.Apis.Tools
 {
     /// <summary>
     /// 初始化控制器

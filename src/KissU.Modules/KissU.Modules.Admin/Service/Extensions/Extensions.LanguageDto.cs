@@ -1,9 +1,9 @@
 ﻿using System.Linq;
 using Util;
 using Util.Maps;
-using KFNets.Veterinary.Domain.Systems.Models;
+using KissU.Domain.Systems.Models;
 
-namespace KFNets.Veterinary.Service.Dtos.Systems.Extensions
+namespace KissU.Service.Dtos.Systems.Extensions
 {
     /// <summary>
     /// 语言国际化参数扩展

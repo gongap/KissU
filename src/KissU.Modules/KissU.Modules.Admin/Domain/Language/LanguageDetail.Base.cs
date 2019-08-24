@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using KFNets.Veterinary.Domain.Base;
+using KissU.Domain.Base;
 using Util;
 using Util.Domains;
 using Util.Domains.Auditing;
 using Util.Domains.Tenants;
 
-namespace KFNets.Veterinary.Domain.Systems.Models
+namespace KissU.Domain.Systems.Models
 {
     /// <summary>
     /// 语言国际化配置

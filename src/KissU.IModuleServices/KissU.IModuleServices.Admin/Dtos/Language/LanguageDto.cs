@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using Util.Ui.Attributes;
 using Util.Applications.Dtos;
 
-namespace KFNets.Veterinary.Service.Dtos.Systems
+namespace KissU.Service.Dtos.Systems
 {
     /// <summary>
     /// 语言国际化参数

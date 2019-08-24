@@ -6,16 +6,16 @@ using Util.Maps;
 using Util.Domains.Repositories;
 using Util.Datas.Queries;
 using Util.Applications;
-using KFNets.Veterinary.Data;
-using KFNets.Veterinary.Domain.Systems.Models;
-using KFNets.Veterinary.Domain.Systems.Repositories;
-using KFNets.Veterinary.Service.Dtos.Systems;
-using KFNets.Veterinary.Service.Queries.Systems;
-using KFNets.Veterinary.Service.Abstractions.Systems;
-using KFNets.Veterinary.Service.Dtos.Systems.Extensions;
+using KissU.Data;
+using KissU.Domain.Systems.Models;
+using KissU.Domain.Systems.Repositories;
+using KissU.Service.Dtos.Systems;
+using KissU.Service.Queries.Systems;
+using KissU.Service.Abstractions.Systems;
+using KissU.Service.Dtos.Systems.Extensions;
 using Microsoft.EntityFrameworkCore;
 
-namespace KFNets.Veterinary.Service.Implements.Systems
+namespace KissU.Service.Implements.Systems
 {
     /// <summary>
     /// 语言国际化服务

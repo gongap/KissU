@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using KFNets.Veterinary.Domain.Systems.Models;
+using KissU.Domain.Systems.Models;
 
-namespace KFNets.Veterinary.Data.Mappings.Systems.MySql 
+namespace KissU.Data.Mappings.Systems.MySql 
 {
     /// <summary>
     /// 语言国际化映射配置

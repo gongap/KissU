@@ -4,7 +4,7 @@ using System.ComponentModel;
 using Util.Domains;
 using Util.Domains.Auditing;
 
-namespace KFNets.Veterinary.Domain.Base
+namespace KissU.Domain.Base
 {
     /// <summary>
     /// 主表

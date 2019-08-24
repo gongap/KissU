@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using KFNets.Veterinary.Domain.Base;
+using KissU.Domain.Base;
 
-namespace KFNets.Veterinary.Domain.Systems.Models
+namespace KissU.Domain.Systems.Models
 {
     /// <summary>
     /// 语言国际化

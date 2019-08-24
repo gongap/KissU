@@ -1,6 +1,6 @@
 ﻿using Util.Datas.UnitOfWorks;
 
-namespace KFNets.Veterinary.Data 
+namespace KissU.Data 
 {
     /// <summary>
     /// 工作单元

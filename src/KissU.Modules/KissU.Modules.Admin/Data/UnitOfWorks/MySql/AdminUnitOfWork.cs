@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Util.Datas.UnitOfWorks;
 
-namespace KFNets.Veterinary.Data.UnitOfWorks.MySql 
+namespace KissU.Data.UnitOfWorks.MySql 
 {
     /// <summary>
     /// 工作单元

@@ -1,9 +1,9 @@
-﻿using KFNets.Veterinary.Data.Repositories.Base;
-using KFNets.Veterinary.Domain.Systems.Models;
-using KFNets.Veterinary.Domain.Systems.Repositories;
+﻿using KissU.Data.Repositories.Base;
+using KissU.Domain.Systems.Models;
+using KissU.Domain.Systems.Repositories;
 using Util.Datas.Ef.Core;
 
-namespace KFNets.Veterinary.Data.Repositories.Systems
+namespace KissU.Data.Repositories.Systems
 {
     /// <summary>
     /// 语言国际化仓储

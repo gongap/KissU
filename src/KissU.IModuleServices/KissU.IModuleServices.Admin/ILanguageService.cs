@@ -3,15 +3,15 @@ using System.Threading.Tasks;
 using GreatWall.Service.Dtos;
 using GreatWall.Service.Queries;
 using Util.Applications;
-using KFNets.Veterinary.Service.Dtos.Systems;
-using KFNets.Veterinary.Service.Queries.Systems;
+using KissU.Service.Dtos.Systems;
+using KissU.Service.Queries.Systems;
 using Surging.Core.CPlatform.Ioc;
 using Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using Util.Applications.Aspects;
 using Util.Domains.Repositories;
 using Util.Validations.Aspects;
 
-namespace KFNets.Veterinary.Service.Abstractions.Systems
+namespace KissU.Service.Abstractions.Systems
 {
     /// <summary>
     /// 语言国际化服务

@@ -1,4 +1,4 @@
-﻿namespace KFNets.Veterinary.Domain.Systems.Models
+﻿namespace KissU.Domain.Systems.Models
 {
     /// <summary>
     /// 语言国际化配置
