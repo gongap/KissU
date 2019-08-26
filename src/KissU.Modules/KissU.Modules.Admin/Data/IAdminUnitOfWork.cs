@@ -1,6 +1,6 @@
 ﻿using Util.Datas.UnitOfWorks;
 
-namespace KissU.Data 
+namespace KissU.Modules.Admin.Data 
 {
     /// <summary>
     /// 工作单元

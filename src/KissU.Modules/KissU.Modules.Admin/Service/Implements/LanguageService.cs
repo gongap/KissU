@@ -4,12 +4,12 @@ using System.Threading.Tasks;
 using Util.Domains.Repositories;
 using Util.Datas.Queries;
 using Util.Applications;
-using KissU.Data;
 using KissU.Modules.Admin.Domain.Models;
 using KissU.Modules.Admin.Domain.Repositories;
 using KissU.IModuleServices.Admin.Abstractions;
 using KissU.IModuleServices.Admin.Dtos;
 using KissU.IModuleServices.Admin.Queries;
+using KissU.Modules.Admin.Data;
 using KissU.Modules.Admin.Service.Extensions;
 using Microsoft.EntityFrameworkCore;
 

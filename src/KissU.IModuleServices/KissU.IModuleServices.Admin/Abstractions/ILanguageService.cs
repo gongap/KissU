@@ -1,15 +1,9 @@
 ﻿using System.Collections.Generic;
-using Surging.Core.CPlatform.Ioc;
-using Surging.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
 using Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
-using Surging.Core.CPlatform.Support;
-using Surging.Core.CPlatform.Support.Attributes;
 using System.Threading.Tasks;
 using KissU.IModuleServices.Admin.Dtos;
-using KissU.IModuleServices.Admin.Dtos.NgAlain;
 using KissU.IModuleServices.Admin.Queries;
-using Microsoft.AspNetCore.Authorization;
-using Surging.Core.CPlatform.Filters.Implementation;
+using Util.Applications;
 using Util.Applications.Aspects;
 using Util.Domains.Repositories;
 using Util.Validations.Aspects;
@@ -20,7 +14,7 @@ namespace KissU.IModuleServices.Admin.Abstractions
     /// 语言国际化服务
     /// </summary>
     [ServiceBundle("api/{Service}")]
-    public interface ILanguageService : IServiceKey
+    public interface ILanguageService : IService
     {
         /// <summary>通过编码获取</summary>
         /// <param name="code">编码</param>

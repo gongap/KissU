@@ -1,5 +1,4 @@
-﻿using KissU.Data;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace KissU.Modules.Admin.Data.UnitOfWorks.SqlServer
 {

@@ -3,7 +3,7 @@ using Surging.Core.CPlatform.Module;
 using Surging.Core.System.Intercept;
 using Surging.Core.ProxyGenerator;
 using Autofac.Extensions.DependencyInjection;
-using KissU.Data;
+using KissU.Modules.Admin.Data;
 using KissU.Modules.Admin.Data.UnitOfWorks.SqlServer;
 using Microsoft.Extensions.DependencyInjection;
 using Util.Datas.Ef;
