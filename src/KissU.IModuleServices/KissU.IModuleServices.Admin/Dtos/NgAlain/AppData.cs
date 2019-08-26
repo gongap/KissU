@@ -21,10 +21,12 @@ namespace KissU.IModuleServices.Admin.Dtos.NgAlain
         /// 应用程序信息
         /// </summary>
         public AppInfo App { get; set; }
+
         /// <summary>
         /// 用户信息
         /// </summary>
         public UserInfo User { get; set; }
+
         /// <summary>
         /// 菜单信息
         /// </summary>

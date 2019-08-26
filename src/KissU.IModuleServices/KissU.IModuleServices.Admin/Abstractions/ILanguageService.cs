@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using System.Threading.Tasks;
 using KissU.IModuleServices.Admin.Dtos;
 using KissU.IModuleServices.Admin.Queries;
+using Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using Util.Applications;
 using Util.Applications.Aspects;
 using Util.Domains.Repositories;
@@ -26,6 +26,7 @@ namespace KissU.IModuleServices.Admin.Abstractions
         /// <param name="id">实体编号</param>
         [HttpGet(true)]
         Task<LanguageDto> GetByIdAsync(object id);
+
         /// <summary>
         /// 通过编号列表获取
         /// </summary>

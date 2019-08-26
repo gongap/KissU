@@ -1,11 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Util.Datas.Ef.SqlServer;
 
 namespace KissU.Modules.Admin.Data.UnitOfWorks.SqlServer
 {
     /// <summary>
     /// SqlServer工作单元
     /// </summary>
-    public class AdminUnitOfWork : Util.Datas.Ef.SqlServer.UnitOfWork, IAdminUnitOfWork
+    public class AdminUnitOfWork : UnitOfWork, IAdminUnitOfWork
     {
         /// <summary>
         /// 初始化工作单元

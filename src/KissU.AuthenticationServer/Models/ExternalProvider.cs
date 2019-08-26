@@ -1,12 +1,15 @@
-﻿namespace KissU.AuthenticationServer.Models {
+﻿namespace KissU.AuthenticationServer.Models
+{
     /// <summary>
     /// 外部认证提供器
     /// </summary>
-    public class ExternalProvider {
+    public class ExternalProvider
+    {
         /// <summary>
         /// 显示名称
         /// </summary>
         public string DisplayName { get; set; }
+
         /// <summary>
         /// 认证方案
         /// </summary>

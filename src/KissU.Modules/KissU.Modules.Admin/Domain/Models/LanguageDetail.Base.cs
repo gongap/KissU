@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using KissU.Modules.Admin.Domain.Base;
-using Util;
-using Util.Domains;
-using Util.Domains.Auditing;
-using Util.Domains.Tenants;
 
 namespace KissU.Modules.Admin.Domain.Models
 {
@@ -38,6 +33,7 @@ namespace KissU.Modules.Admin.Domain.Models
         [Required(ErrorMessage = "键不能为空")]
         [StringLength(256)]
         public string Key { get; set; }
+
         /// <summary>
         /// 值
         /// </summary>

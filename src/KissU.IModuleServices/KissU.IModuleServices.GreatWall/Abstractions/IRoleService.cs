@@ -10,7 +10,8 @@ using Util.Aspects;
 using Util.Domains.Repositories;
 using Util.Validations.Aspects;
 
-namespace KissU.IModuleServices.GreatWall.Abstractions {
+namespace KissU.IModuleServices.GreatWall.Abstractions
+{
     /// <summary>
     /// 角色服务
     /// </summary>
@@ -23,6 +24,7 @@ namespace KissU.IModuleServices.GreatWall.Abstractions {
         /// <param name="id">实体编号</param>
         [HttpGet(true)]
         Task<RoleDto> GetByIdAsync(object id);
+
         /// <summary>
         /// 通过编号列表获取
         /// </summary>
@@ -42,6 +44,7 @@ namespace KissU.IModuleServices.GreatWall.Abstractions {
         /// <param name="parameter">查询参数</param>
         [HttpGet(true)]
         Task<List<RoleDto>> QueryAsync(RoleQuery parameter);
+
         /// <summary>
         /// 分页查询
         /// </summary>
@@ -61,30 +64,34 @@ namespace KissU.IModuleServices.GreatWall.Abstractions {
         /// </summary>
         /// <param name="userId">用户标识</param>
         [HttpGet(true)]
-        Task<List<RoleDto>> GetRolesAsync( Guid userId );
+        Task<List<RoleDto>> GetRolesAsync(Guid userId);
+
         /// <summary>
         /// 创建角色
         /// </summary>
         /// <param name="request">创建角色参数</param>
         [HttpPost(true)]
-        Task<Guid> CreateAsync( [NotNull] [Valid] CreateRoleRequest request );
+        Task<Guid> CreateAsync([NotNull] [Valid] CreateRoleRequest request);
+
         /// <summary>
         /// 修改角色
         /// </summary>
         /// <param name="request">修改角色参数</param>
         [HttpPut(true)]
-        Task UpdateAsync( [NotNull] [Valid] UpdateRoleRequest request );
+        Task UpdateAsync([NotNull] [Valid] UpdateRoleRequest request);
+
         /// <summary>
         /// 添加用户到角色
         /// </summary>
         /// <param name="request">用户角色参数</param>
         [HttpPost(true)]
-        Task AddUsersToRoleAsync( UserRoleRequest request );
+        Task AddUsersToRoleAsync(UserRoleRequest request);
+
         /// <summary>
         /// 从角色移除用户
         /// </summary>
         /// <param name="request">用户角色参数</param>
         [HttpPost(true)]
-        Task RemoveUsersFromRoleAsync( UserRoleRequest request );
+        Task RemoveUsersFromRoleAsync(UserRoleRequest request);
     }
 }

@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using KissU.Modules.Admin.Domain.Base;
-using Util;
-using Util.Domains;
-using Util.Domains.Auditing;
-using Util.Domains.Tenants;
 
 namespace KissU.Modules.Admin.Domain.Models
 {
@@ -14,7 +10,7 @@ namespace KissU.Modules.Admin.Domain.Models
     /// 语言国际化
     /// </summary>
     [DisplayName("语言国际化")]
-    public partial class Language: MasterEntity<LanguageDetail>
+    public partial class Language : MasterEntity<LanguageDetail>
     {
         /// <summary>
         /// 初始化
@@ -39,6 +35,7 @@ namespace KissU.Modules.Admin.Domain.Models
         [StringLength(10)]
         [Display(Name = "编码")]
         public string Code { get; set; }
+
         /// <summary>
         /// 名称
         /// </summary>
@@ -46,12 +43,14 @@ namespace KissU.Modules.Admin.Domain.Models
         [StringLength(64)]
         [Display(Name = "名称")]
         public string Text { get; set; }
+
         /// <summary>
         /// 简称
         /// </summary>
         [StringLength(128)]
         [Display(Name = "简称")]
         public string Abbr { get; set; }
+
         /// <summary>
         /// 是否启用
         /// </summary>

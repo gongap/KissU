@@ -38,16 +38,19 @@ namespace KissU.Modules.Admin.Domain.Base
         /// </summary>
         [DisplayName("创建人")]
         public Guid? CreatorId { get; set; }
+
         /// <summary>
         /// 创建时间
         /// </summary>
         [DisplayName("创建时间")]
         public DateTime? CreationTime { get; set; }
+
         /// <summary>
         /// 修改人
         /// </summary>
         [DisplayName("修改人")]
         public Guid? LastModifierId { get; set; }
+
         /// <summary>
         /// 修改时间
         /// </summary>

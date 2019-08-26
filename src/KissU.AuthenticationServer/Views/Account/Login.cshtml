@@ -5,52 +5,58 @@
 <head>
     <meta charset="utf-8">
     <title>登录</title>
-    <link rel="stylesheet" href="/css/reset.css" />
-    <link rel="stylesheet" href="/css/common.css" />
+    <link rel="stylesheet" href="/css/reset.css"/>
+    <link rel="stylesheet" href="/css/common.css"/>
     <script src="/js/jquery.min.js"></script>
     <script src="/js/login.js"></script>
 </head>
 <body>
-    @if( Model.EnableLocalLogin ) {
-        <div class="wrap login_wrap">
-            <div class="content">
-                <div class="logo"></div>
-                <div class="login_box">
-                    <div class="login_form">
-                        <div class="login_title">
-                            登录
-                        </div>
-                        <form asp-route="Login" autocomplete="off">
-                            <input type="hidden" asp-for="ReturnUrl" />
-                            <div class="form_text_ipt">
-                                <input asp-for="UserName" class="name" placeholder="手机号/邮箱">
-                            </div>
-                            <div class="ececk_warning"><span>手机号/邮箱不允许为空</span></div>
-                            <div class="form_text_ipt">
-                                <input asp-for="Password" class="password" type="password" placeholder="密码">
-                            </div>
-                            <div class="ececk_warning"><span>密码不能为空</span></div>
-                            <div class="form_check_ipt">
-                                <div class="left check_left">
-                                    <label><input asp-for="Remember" type="checkbox"> 下次自动登录</label>
-                                </div>
-                                <div class="right check_right">
-                                    <a href="#">忘记密码</a>
-                                </div>
-                            </div>
-                            @if (Model.Message != null)
-                            {
-                                <div class="ececk_message"><span>!</span>@Model.Message</div>
-                            }
-                            <div class="form_btn">
-                                <button name="button" value="login">登录</button>
-                            </div>
-                        </form>
+@if (Model.EnableLocalLogin)
+{
+    <div class="wrap login_wrap">
+        <div class="content">
+            <div class="logo"></div>
+            <div class="login_box">
+                <div class="login_form">
+                    <div class="login_title">
+                        登录
                     </div>
+                    <form asp-route="Login" autocomplete="off">
+                        <input type="hidden" asp-for="ReturnUrl"/>
+                        <div class="form_text_ipt">
+                            <input asp-for="UserName" class="name" placeholder="手机号/邮箱">
+                        </div>
+                        <div class="ececk_warning">
+                            <span>手机号/邮箱不允许为空</span>
+                        </div>
+                        <div class="form_text_ipt">
+                            <input asp-for="Password" class="password" type="password" placeholder="密码">
+                        </div>
+                        <div class="ececk_warning">
+                            <span>密码不能为空</span>
+                        </div>
+                        <div class="form_check_ipt">
+                            <div class="left check_left">
+                                <label><input asp-for="Remember" type="checkbox"> 下次自动登录</label>
+                            </div>
+                            <div class="right check_right">
+                                <a href="#">忘记密码</a>
+                            </div>
+                        </div>
+                        @if (Model.Message != null)
+                        {
+                            <div class="ececk_message">
+                                <span>!</span>@Model.Message</div>
+                        }
+                        <div class="form_btn">
+                            <button name="button" value="login">登录</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-    }
+    </div>
+}
 </body>
 </html>
 

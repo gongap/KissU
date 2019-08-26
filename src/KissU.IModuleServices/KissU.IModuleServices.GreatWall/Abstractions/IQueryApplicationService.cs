@@ -6,19 +6,21 @@ using Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attr
 using Util.Applications;
 using Util.Domains.Repositories;
 
-namespace KissU.IModuleServices.GreatWall.Abstractions {
+namespace KissU.IModuleServices.GreatWall.Abstractions
+{
     /// <summary>
     /// 应用程序查询服务
     /// </summary>
     [ServiceBundle("api/{Service}")]
-    public interface IQueryApplicationService : IQueryService<ApplicationDto, ApplicationQuery> {
-
+    public interface IQueryApplicationService : IQueryService<ApplicationDto, ApplicationQuery>
+    {
         /// <summary>
         /// 通过编号获取
         /// </summary>
         /// <param name="id">实体编号</param>
         [HttpGet(true)]
         Task<ApplicationDto> GetByIdAsync(object id);
+
         /// <summary>
         /// 通过编号列表获取
         /// </summary>
@@ -51,6 +53,6 @@ namespace KissU.IModuleServices.GreatWall.Abstractions {
         /// </summary>
         /// <param name="code">应用程序编码</param>
         [HttpGet(true)]
-        Task<ApplicationDto> GetByCodeAsync( string code );
+        Task<ApplicationDto> GetByCodeAsync(string code);
     }
 }

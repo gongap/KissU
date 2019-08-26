@@ -1,14 +1,15 @@
-﻿using KissU.IModuleServices.GreatWall.Dtos;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using KissU.IModuleServices.GreatWall.Dtos;
 using KissU.IModuleServices.GreatWall.Service.Queries;
 using Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Util.Applications;
 using Util.Applications.Aspects;
 using Util.Domains.Repositories;
 using Util.Validations.Aspects;
 
-namespace KissU.IModuleServices.GreatWall.Abstractions {
+namespace KissU.IModuleServices.GreatWall.Abstractions
+{
     /// <summary>
     /// 声明服务
     /// </summary>
@@ -21,6 +22,7 @@ namespace KissU.IModuleServices.GreatWall.Abstractions {
         /// <param name="id">实体编号</param>
         [HttpGet(true)]
         Task<ClaimDto> GetByIdAsync(object id);
+
         /// <summary>
         /// 通过编号列表获取
         /// </summary>

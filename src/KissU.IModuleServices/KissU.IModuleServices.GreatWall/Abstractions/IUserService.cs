@@ -10,7 +10,8 @@ using Util.Aspects;
 using Util.Domains.Repositories;
 using Util.Validations.Aspects;
 
-namespace KissU.IModuleServices.GreatWall.Abstractions {
+namespace KissU.IModuleServices.GreatWall.Abstractions
+{
     /// <summary>
     /// 用户服务
     /// </summary>
@@ -23,6 +24,7 @@ namespace KissU.IModuleServices.GreatWall.Abstractions {
         /// <param name="id">实体编号</param>
         [HttpGet(true)]
         Task<UserDto> GetByIdAsync(object id);
+
         /// <summary>
         /// 通过编号列表获取
         /// </summary>
@@ -42,6 +44,7 @@ namespace KissU.IModuleServices.GreatWall.Abstractions {
         /// <param name="parameter">查询参数</param>
         [HttpGet(true)]
         Task<List<UserDto>> QueryAsync(UserQuery parameter);
+
         /// <summary>
         /// 分页查询
         /// </summary>

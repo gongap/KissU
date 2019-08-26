@@ -4,17 +4,20 @@ using KissU.AuthenticationServer.Attributes;
 using KissU.AuthenticationServer.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace KissU.AuthenticationServer.Controllers {
+namespace KissU.AuthenticationServer.Controllers
+{
     /// <summary>
     /// 主控制器
     /// </summary>
     [SecurityHeaders]
-    public class HomeController : Controller {
+    public class HomeController : Controller
+    {
         /// <summary>
         /// 初始化主控制器
         /// </summary>
         /// <param name="interaction">交互服务</param>
-        public HomeController( IIdentityServerInteractionService interaction ) {
+        public HomeController(IIdentityServerInteractionService interaction)
+        {
             InteractionService = interaction;
         }
 
@@ -26,19 +29,21 @@ namespace KissU.AuthenticationServer.Controllers {
         /// <summary>
         /// 首页
         /// </summary>
-        public IActionResult Index() {
+        public IActionResult Index()
+        {
             return View();
         }
 
         /// <summary>
         /// 错误页
         /// </summary>
-        public async Task<IActionResult> Error( string errorId ) {
+        public async Task<IActionResult> Error(string errorId)
+        {
             var model = new ErrorViewModel();
-            var message = await InteractionService.GetErrorContextAsync( errorId );
-            if( message != null )
+            var message = await InteractionService.GetErrorContextAsync(errorId);
+            if (message != null)
                 model.Error = message;
-            return View( "Error", model );
+            return View("Error", model);
         }
     }
 }

@@ -43,6 +43,7 @@ namespace KissU.Modules.Admin.Domain.Base
             {
                 return;
             }
+
             detail.Init();
             detail.MainId = this.Id;
             Details.Add(detail);

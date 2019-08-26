@@ -1,188 +1,202 @@
-header{
-	width: 100%;
-	height: 50px;
-	background: #1e1b29;
-	border-bottom: solid 4px red;
+header {
+    background: #1e1b29;
+    border-bottom: solid 4px red;
+    height: 50px;
+    width: 100%;
 }
-.member_wrap{
+
+.member_wrap { }
+
+.header_item { overflow: hidden; }
+
+.user_menu {
+    background: url(../img/banner_bg.jpg) repeat;
+    height: 170px;
+    padding: 20px 0;
+    width: 100%;
+}
+
+.header_item {
 	
+    margin: 0 auto;
+    width: 980px;
 }
-.header_item{
-	overflow: hidden;
+
+.menu_head {
+    border: solid 3px #fff;
+    border-radius: 100px;
+    height: 100px;
+    overflow: hidden;
+    width: 100px;
 }
-.user_menu{
-	width: 100%;
-	height: 170px;
-	padding: 20px 0;
-	background:url(../img/banner_bg.jpg) repeat;
+
+.menu_head img {
+    height: 100%;
+    width: 100%;
 }
-.header_item{
-	
-	width: 980px;
-	margin: 0 auto;
+
+.menu_info {
+    margin-left: 20px;
+    width: 840px;
 }
-.menu_head{
-	width: 100px;
-	height: 100px;
-	border-radius: 100px;
-	border: solid 3px #fff;
-	overflow: hidden;
+
+.info_name {
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 40px;
 }
-.menu_head img{
-	width: 100%;
-	height: 100%;
+
+.info_name_box { margin-top: 10px; }
+
+.level {
+    color: #f60;
+    font-size: 14px;
+    font-weight: bold;
 }
-.menu_info{
-	width:840px;
-	margin-left: 20px;	
+
+.info_desc {
+    color: #FFF;
+    font-size: 14px;
+    margin-top: 10px;
 }
-.info_name{
-	font-size: 18px;
-	line-height: 40px;
-	font-weight: bold;
-	color: #fff;
-}
-.info_name_box{
-	margin-top: 10px;
-}
-.level{
-	font-size: 14px;
-	color: #f60;
-	font-weight: bold;
-}
-.info_desc{
-	margin-top: 10px;
-	font-size: 14px;
-	color: #FFF;
-}
-.banner_menu{
-	width: 980px;
-	height: 50px;
-	margin: 20px auto;
-	background: #fff;
+
+.banner_menu {
+    background: #fff;
+    height: 50px;
+    margin: 20px auto;
+    width: 980px;
 }
 
 
-.nav_box{
-	margin-top: 50px;
+.nav_box { margin-top: 50px; }
+
+.nav_box ul { overflow: hidden; }
+
+.nav_box ul li {
+    display: block;
+    padding: 0 20px;
 }
-.nav_box ul {
-	overflow: hidden;
+
+.nav_box ul li a {
+    color: #fff;
+    font-size: 16px;
 }
-.nav_box ul li{
-	display: block;
-	padding: 0 20px;
-}
-.nav_box ul li a{
-	color: #fff;
-	font-size: 16px;
-}
-.nav_box ul li a:hover{
-	color: red;
-}
+
+.nav_box ul li a:hover { color: red; }
 
 
 
 
 
-.login_wrap{
-	/*background: url(../img/logo_bg.jpg) no-repeat center;*/
-	background-size: 100%;
-}
-.logo{
-	width: 500px;
-	height: 150px;
-	margin: 0px auto;
-	/* background: url(../img/logowz.png) no-repeat center; */
-}
-.login_box{
-	width: 360px;
-	background: #FFFFFF;
-	margin: 0px auto;
-    padding-bottom:30px;
-}
-.login_form{
-    width:100%;
-    position:relative;
-}
-.login_form form{
-    position:relative;
-    overflow:hidden;
-}
-.login_title{
-	font-size: 18px;
-	text-align: center;
-	color: #888888;
-	padding: 15px 0;
-	width: 300px;
-	margin: 0 auto;
-	border-bottom: solid 1px #CCCCCC;
-}
-.form_text_ipt{
-	width: 300px;
-	height: 40px;
-	border: solid 1px #CCCCCC;
-	margin: 20px auto 0 auto;
-	background: #FFFFFF;
-}
-.form_check_ipt{
-	width: 300px;
-	margin:  20px auto 10px auto;
-	overflow: hidden;
-}
-.form_text_ipt input{
-	width: 290px;
-	height: 30px;
-	margin: 5px;
-	border: none;
-	font-family: "微软雅黑";
-	font-size: 14px;
-	color: #666;
-}
-.check_left label{
-	cursor: pointer;
-}
-.check_left label input{
-	position: relative;
-	top: 2px;
-}
-.form_btn{
-	width: 300px;
-	height: 40px;
-	margin:  10px auto;
-    margin-top:20px;
-}
-    .form_btn button {
-        width: 100%;
-        height: 100%;
-        border: none;
-        color: #FFFFFF;
-        font-size: 14px;
-        background: #3f89ec;
-        cursor: pointer;
-        transition: background 0.3s;
-    }
-        .form_btn button:hover {
-            background: #1891ff;
-        }
-    .form_btn button[disabled] {
-        background: #cccccc;
-    }
-    .form_reg_btn {
-        width: 300px;
-        margin: 0 auto;
-        font-size: 14px;
-        color: #666;
-    }
-.other_login{
-	overflow: hidden;
-	width: 300px;
-	height: 80px;
-	line-height: 80px;
-	margin: 0px auto;
-}
-.other_left{
-	font-size: 14px;
-	color: #999;
+.login_wrap {
+    /*background: url(../img/logo_bg.jpg) no-repeat center;*/
+    background-size: 100%;
 }
 
+.logo {
+    height: 150px;
+    margin: 0px auto;
+    width: 500px;
+    /* background: url(../img/logowz.png) no-repeat center; */
+}
+
+.login_box {
+    background: #FFFFFF;
+    margin: 0px auto;
+    padding-bottom: 30px;
+    width: 360px;
+}
+
+.login_form {
+    position: relative;
+    width: 100%;
+}
+
+.login_form form {
+    overflow: hidden;
+    position: relative;
+}
+
+.login_title {
+    border-bottom: solid 1px #CCCCCC;
+    color: #888888;
+    font-size: 18px;
+    margin: 0 auto;
+    padding: 15px 0;
+    text-align: center;
+    width: 300px;
+}
+
+.form_text_ipt {
+    background: #FFFFFF;
+    border: solid 1px #CCCCCC;
+    height: 40px;
+    margin: 20px auto 0 auto;
+    width: 300px;
+}
+
+.form_check_ipt {
+    margin: 20px auto 10px auto;
+    overflow: hidden;
+    width: 300px;
+}
+
+.form_text_ipt input {
+    border: none;
+    color: #666;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    height: 30px;
+    margin: 5px;
+    width: 290px;
+}
+
+.check_left label { cursor: pointer; }
+
+.check_left label input {
+    position: relative;
+    top: 2px;
+}
+
+.form_btn {
+    height: 40px;
+    margin: 10px auto;
+    margin-top: 20px;
+    width: 300px;
+}
+
+.form_btn button {
+    background: #3f89ec;
+    border: none;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 14px;
+    height: 100%;
+    transition: background 0.3s;
+    width: 100%;
+}
+
+.form_btn button:hover { background: #1891ff; }
+
+.form_btn button[disabled] { background: #cccccc; }
+
+.form_reg_btn {
+    color: #666;
+    font-size: 14px;
+    margin: 0 auto;
+    width: 300px;
+}
+
+.other_login {
+    height: 80px;
+    line-height: 80px;
+    margin: 0px auto;
+    overflow: hidden;
+    width: 300px;
+}
+
+.other_left {
+    color: #999;
+    font-size: 14px;
+}

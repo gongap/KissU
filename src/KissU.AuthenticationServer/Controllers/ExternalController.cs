@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Security.Principal;
 using System.Threading.Tasks;
 using IdentityModel;
+using IdentityServer4;
 using IdentityServer4.Events;
 using IdentityServer4.Services;
 using IdentityServer4.Stores;
@@ -34,7 +35,7 @@ namespace KissU.AuthenticationServer.Controllers
         {
             // if the TestUserStore is not in DI, then we'll just use the global users collection
             // this is where you would plug in your own custom identity management library (e.g. ASP.NET Identity)
-            
+
 
             _interaction = interaction;
             _clientStore = clientStore;
@@ -69,8 +70,8 @@ namespace KissU.AuthenticationServer.Controllers
                     RedirectUri = Url.Action(nameof(Callback)),
                     Items =
                     {
-                        { "returnUrl", returnUrl },
-                        { "scheme", provider },
+                        {"returnUrl", returnUrl},
+                        {"scheme", provider},
                     }
                 };
 
@@ -85,7 +86,8 @@ namespace KissU.AuthenticationServer.Controllers
         public async Task<IActionResult> Callback()
         {
             // read external identity from the temporary cookie
-            var result = await HttpContext.AuthenticateAsync(IdentityServer4.IdentityServerConstants.ExternalCookieAuthenticationScheme);
+            var result =
+                await HttpContext.AuthenticateAsync(IdentityServerConstants.ExternalCookieAuthenticationScheme);
             if (result?.Succeeded != true)
             {
                 throw new Exception("External authentication error");
@@ -111,11 +113,13 @@ namespace KissU.AuthenticationServer.Controllers
             ProcessLoginCallbackForSaml2p(result, additionalLocalClaims, localSignInProps);
 
             // issue authentication cookie for user
-            await _events.RaiseAsync(new UserLoginSuccessEvent(provider, providerUserId, user.SubjectId, user.Username));
-            await HttpContext.SignInAsync(user.SubjectId, user.Username, provider, localSignInProps, additionalLocalClaims.ToArray());
+            await _events.RaiseAsync(new UserLoginSuccessEvent(provider, providerUserId, user.SubjectId,
+                user.Username));
+            await HttpContext.SignInAsync(user.SubjectId, user.Username, provider, localSignInProps,
+                additionalLocalClaims.ToArray());
 
             // delete temporary cookie used during external authentication
-            await HttpContext.SignOutAsync(IdentityServer4.IdentityServerConstants.ExternalCookieAuthenticationScheme);
+            await HttpContext.SignOutAsync(IdentityServerConstants.ExternalCookieAuthenticationScheme);
 
             // retrieve return URL
             var returnUrl = result.Properties.Items["returnUrl"] ?? "~/";
@@ -149,8 +153,8 @@ namespace KissU.AuthenticationServer.Controllers
                     RedirectUri = Url.Action("Callback"),
                     Items =
                     {
-                        { "returnUrl", returnUrl },
-                        { "scheme", AccountOptions.WindowsAuthenticationSchemeName },
+                        {"returnUrl", returnUrl},
+                        {"scheme", AccountOptions.WindowsAuthenticationSchemeName},
                     }
                 };
 
@@ -168,7 +172,7 @@ namespace KissU.AuthenticationServer.Controllers
                 }
 
                 await HttpContext.SignInAsync(
-                    IdentityServer4.IdentityServerConstants.ExternalCookieAuthenticationScheme,
+                    IdentityServerConstants.ExternalCookieAuthenticationScheme,
                     new ClaimsPrincipal(id),
                     props);
                 return Redirect(props.RedirectUri);
@@ -182,7 +186,8 @@ namespace KissU.AuthenticationServer.Controllers
             }
         }
 
-        private (TestUser user, string provider, string providerUserId, IEnumerable<Claim> claims) FindUserFromExternalProvider(AuthenticateResult result)
+        private (TestUser user, string provider, string providerUserId, IEnumerable<Claim> claims)
+            FindUserFromExternalProvider(AuthenticateResult result)
         {
             var externalUser = result.Principal;
 
@@ -212,7 +217,8 @@ namespace KissU.AuthenticationServer.Controllers
             return user;
         }
 
-        private void ProcessLoginCallbackForOidc(AuthenticateResult externalResult, List<Claim> localClaims, AuthenticationProperties localSignInProps)
+        private void ProcessLoginCallbackForOidc(AuthenticateResult externalResult, List<Claim> localClaims,
+            AuthenticationProperties localSignInProps)
         {
             // if the external system sent a session id claim, copy it over
             // so we can use it for single sign-out
@@ -226,15 +232,17 @@ namespace KissU.AuthenticationServer.Controllers
             var id_token = externalResult.Properties.GetTokenValue("id_token");
             if (id_token != null)
             {
-                localSignInProps.StoreTokens(new[] { new AuthenticationToken { Name = "id_token", Value = id_token } });
+                localSignInProps.StoreTokens(new[] {new AuthenticationToken {Name = "id_token", Value = id_token}});
             }
         }
 
-        private void ProcessLoginCallbackForWsFed(AuthenticateResult externalResult, List<Claim> localClaims, AuthenticationProperties localSignInProps)
+        private void ProcessLoginCallbackForWsFed(AuthenticateResult externalResult, List<Claim> localClaims,
+            AuthenticationProperties localSignInProps)
         {
         }
 
-        private void ProcessLoginCallbackForSaml2p(AuthenticateResult externalResult, List<Claim> localClaims, AuthenticationProperties localSignInProps)
+        private void ProcessLoginCallbackForSaml2p(AuthenticateResult externalResult, List<Claim> localClaims,
+            AuthenticationProperties localSignInProps)
         {
         }
     }

@@ -1,7 +1,7 @@
 ﻿using System;
 using KissU.Modules.GreatWall.Data.Repositories;
-using KissU.IModuleServices.GreatWall.Describers;
 using KissU.IModuleServices.GreatWall.Extensions;
+using KissU.IModuleServices.GreatWall.Infrastructure.Describers;
 using KissU.IModuleServices.GreatWall.Options;
 using KissU.Modules.GreatWall.Domain.Models;
 using KissU.Modules.GreatWall.Domain.Services.Implements;

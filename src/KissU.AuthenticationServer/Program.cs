@@ -9,20 +9,24 @@ namespace KissU.AuthenticationServer
     /// <summary>
     /// 应用程序
     /// </summary>
-    public class Program {
+    public class Program
+    {
         /// <summary>
         /// 应用程序入口点
         /// </summary>
         /// <param name="args">入口点参数</param>
-        public static void Main( string[] args ) {
-            try {
-                WebHost.CreateDefaultBuilder( args )
+        public static void Main(string[] args)
+        {
+            try
+            {
+                WebHost.CreateDefaultBuilder(args)
                     .UseStartup<Startup>()
                     .Build()
                     .Run();
             }
-            catch( Exception ex ) {
-                ex.Log( Log.GetLog().Caption( "应用程序启动失败" ) );
+            catch (Exception ex)
+            {
+                ex.Log(Log.GetLog().Caption("应用程序启动失败"));
             }
         }
     }

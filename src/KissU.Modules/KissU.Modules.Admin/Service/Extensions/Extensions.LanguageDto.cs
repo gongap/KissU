@@ -1,8 +1,7 @@
-﻿using System.Linq;
+﻿using KissU.IModuleServices.Admin.Dtos;
+using KissU.Modules.Admin.Domain.Models;
 using Util;
 using Util.Maps;
-using KissU.Modules.Admin.Domain.Models;
-using KissU.IModuleServices.Admin.Dtos;
 
 namespace KissU.Modules.Admin.Service.Extensions
 {
@@ -30,6 +29,7 @@ namespace KissU.Modules.Admin.Service.Extensions
             {
                 dto.Details.ForEach(x => entity.AddDetail(x.MapTo<LanguageDetail>()));
             }
+
             return entity;
         }
 

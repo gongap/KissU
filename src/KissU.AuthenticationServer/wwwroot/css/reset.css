@@ -1,52 +1,89 @@
 /*reset*/
-*{padding: 0;margin: 0;}
-html, body, body div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, menu, nav, section, time, mark, audio, video, details, summary {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font-weight: normal;
-	vertical-align: baseline;
-	background: transparent;
+* {
+    margin: 0;
+    padding: 0;
 }
-article, aside, figure, footer, header, nav, section, details, summary {display: block;}
-html, body { height: 100%;  color: #333; font-size: 12px; font-family: "微软雅黑",MicrosoftYaHei;}
-a { text-decoration: none; color: #1b66c7; -webkit-tap-highlight-color: transparent;}
-li{list-style: none;}
-table{border-collapse: collapse;}
-input {outline: medium none;font-family: "微软雅黑",MicrosoftYaHei;font-size: 14px;}
-button{font-family:"微软雅黑",MicrosoftYaHei;}
-em {font-style: normal;}
-.wrap{max-width: 100%;min-height: 100%;overflow: hidden;margin: 0 auto;background: #ccc;}
 
-.left{float: left;}
-.right{float: right;}
-.clear{clear:both;}
-.red{color: #f60;}
+html, body, body div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, menu, nav, section, time, mark, audio, video, details, summary {
+    background: transparent;
+    border: 0;
+    font-size: 100%;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+article, aside, figure, footer, header, nav, section, details, summary { display: block; }
+
+html, body {
+    color: #333;
+    font-family: "微软雅黑", MicrosoftYaHei;
+    font-size: 12px;
+    height: 100%;
+}
+
+a {
+    -webkit-tap-highlight-color: transparent;
+    color: #1b66c7;
+    text-decoration: none;
+}
+
+li { list-style: none; }
+
+table { border-collapse: collapse; }
+
+input {
+    font-family: "微软雅黑", MicrosoftYaHei;
+    font-size: 14px;
+    outline: medium none;
+}
+
+button { font-family: "微软雅黑", MicrosoftYaHei; }
+
+em { font-style: normal; }
+
+.wrap {
+    background: #ccc;
+    margin: 0 auto;
+    max-width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+}
+
+.left { float: left; }
+
+.right { float: right; }
+
+.clear { clear: both; }
+
+.red { color: #f60; }
 
 .ececk_message {
-    font-size: 13px;
     color: red;
-    width: 300px;
-    margin-left: calc((100% - 300px)/2);
+    font-size: 13px;
+    margin-left: calc((100% - 300px) / 2);
+    margin-top: 20px;
     text-align: center;
-    margin-top:20px;
+    width: 300px;
 }
-    .ececk_message span{
-        height:14px;
-        line-height:14px;
-        width:14px;
-        border-radius:50%;
-        background:red;
-        color:#ffffff;
-        display:inline-block;
-        margin-right:3px;
-    }
-    .ececk_warning {
-        font-size: 13px;
-        color: red;
-        width: 300px;
-        margin-left: calc((100% - 300px)/2);
-        display: none;
-        margin-top:5px;
-    }
+
+.ececk_message span {
+    background: red;
+    border-radius: 50%;
+    color: #ffffff;
+    display: inline-block;
+    height: 14px;
+    line-height: 14px;
+    margin-right: 3px;
+    width: 14px;
+}
+
+.ececk_warning {
+    color: red;
+    display: none;
+    font-size: 13px;
+    margin-left: calc((100% - 300px) / 2);
+    margin-top: 5px;
+    width: 300px;
+}

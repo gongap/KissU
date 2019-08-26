@@ -9,6 +9,7 @@ namespace KissU.IModuleServices.Admin.Queries
     public class LanguageQuery : QueryParameter
     {
         private string _code = string.Empty;
+
         /// <summary>
         /// 编码
         /// </summary>
@@ -20,6 +21,7 @@ namespace KissU.IModuleServices.Admin.Queries
         }
 
         private string _text = string.Empty;
+
         /// <summary>
         /// 名称
         /// </summary>
@@ -29,7 +31,9 @@ namespace KissU.IModuleServices.Admin.Queries
             get => _text == null ? string.Empty : _text.Trim();
             set => _text = value;
         }
+
         private string _abbr = string.Empty;
+
         /// <summary>
         /// 简称
         /// </summary>

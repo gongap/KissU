@@ -2,15 +2,17 @@
 using System.ComponentModel.DataAnnotations;
 using Util.Datas.Queries;
 
-namespace KissU.IModuleServices.GreatWall.Service.Queries {
+namespace KissU.IModuleServices.GreatWall.Service.Queries
+{
     /// <summary>
     /// 用户查询参数
     /// </summary>
-    public class UserQuery : QueryParameter {
+    public class UserQuery : QueryParameter
+    {
         /// <summary>
         /// 用户标识
         /// </summary>
-        [Display(Name="用户标识")]
+        [Display(Name = "用户标识")]
         public Guid? UserId { get; set; }
 
         /// <summary>
@@ -24,21 +26,25 @@ namespace KissU.IModuleServices.GreatWall.Service.Queries {
         public Guid? ExceptRoleId { get; set; }
 
         private string _userName = string.Empty;
+
         /// <summary>
         /// 用户名
         /// </summary>
-        [Display(Name="用户名")]
-        public string UserName {
+        [Display(Name = "用户名")]
+        public string UserName
+        {
             get => _userName == null ? string.Empty : _userName.Trim();
             set => _userName = value;
         }
-        
+
         private string _email = string.Empty;
+
         /// <summary>
         /// 安全邮箱
         /// </summary>
-        [Display(Name="安全邮箱")]
-        public string Email {
+        [Display(Name = "安全邮箱")]
+        public string Email
+        {
             get => _email == null ? string.Empty : _email.Trim();
             set => _email = value;
         }
@@ -46,15 +52,17 @@ namespace KissU.IModuleServices.GreatWall.Service.Queries {
         /// <summary>
         /// 邮箱已确认
         /// </summary>
-        [Display(Name="邮箱已确认")]
+        [Display(Name = "邮箱已确认")]
         public bool? EmailConfirmed { get; set; }
-        
+
         private string _phoneNumber = string.Empty;
+
         /// <summary>
         /// 安全手机
         /// </summary>
-        [Display(Name="安全手机")]
-        public string PhoneNumber {
+        [Display(Name = "安全手机")]
+        public string PhoneNumber
+        {
             get => _phoneNumber == null ? string.Empty : _phoneNumber.Trim();
             set => _phoneNumber = value;
         }
@@ -62,43 +70,47 @@ namespace KissU.IModuleServices.GreatWall.Service.Queries {
         /// <summary>
         /// 手机已确认
         /// </summary>
-        [Display(Name="手机已确认")]
+        [Display(Name = "手机已确认")]
         public bool? PhoneNumberConfirmed { get; set; }
 
         /// <summary>
         /// 启用
         /// </summary>
-        [Display(Name="启用")]
+        [Display(Name = "启用")]
         public bool? Enabled { get; set; }
 
         /// <summary>
         /// 起始冻结时间
         /// </summary>
-        [Display( Name = "起始冻结时间" )]
+        [Display(Name = "起始冻结时间")]
         public DateTime? BeginDisabledTime { get; set; }
 
         /// <summary>
         /// 结束冻结时间
         /// </summary>
-        [Display( Name = "结束冻结时间" )]
+        [Display(Name = "结束冻结时间")]
         public DateTime? EndDisabledTime { get; set; }
-        
+
         private string _registerIp = string.Empty;
+
         /// <summary>
         /// 注册Ip
         /// </summary>
-        [Display(Name="注册Ip")]
-        public string RegisterIp {
+        [Display(Name = "注册Ip")]
+        public string RegisterIp
+        {
             get => _registerIp == null ? string.Empty : _registerIp.Trim();
             set => _registerIp = value;
         }
-        
+
         private string _remark = string.Empty;
+
         /// <summary>
         /// 备注
         /// </summary>
-        [Display(Name="备注")]
-        public string Remark {
+        [Display(Name = "备注")]
+        public string Remark
+        {
             get => _remark == null ? string.Empty : _remark.Trim();
             set => _remark = value;
         }
@@ -106,19 +118,19 @@ namespace KissU.IModuleServices.GreatWall.Service.Queries {
         /// <summary>
         /// 起始创建时间
         /// </summary>
-        [Display( Name = "起始创建时间" )]
+        [Display(Name = "起始创建时间")]
         public DateTime? BeginCreationTime { get; set; }
 
         /// <summary>
         /// 结束创建时间
         /// </summary>
-        [Display( Name = "结束创建时间" )]
+        [Display(Name = "结束创建时间")]
         public DateTime? EndCreationTime { get; set; }
 
         /// <summary>
         /// 创建人
         /// </summary>
-        [Display(Name="创建人")]
+        [Display(Name = "创建人")]
         public Guid? CreatorId { get; set; }
     }
 }

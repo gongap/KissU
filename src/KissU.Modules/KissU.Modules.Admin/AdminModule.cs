@@ -1,11 +1,11 @@
-﻿using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Module;
-using Surging.Core.System.Intercept;
-using Surging.Core.ProxyGenerator;
-using Autofac.Extensions.DependencyInjection;
+﻿using Autofac.Extensions.DependencyInjection;
 using KissU.Modules.Admin.Data;
 using KissU.Modules.Admin.Data.UnitOfWorks.SqlServer;
 using Microsoft.Extensions.DependencyInjection;
+using Surging.Core.CPlatform;
+using Surging.Core.CPlatform.Module;
+using Surging.Core.ProxyGenerator;
+using Surging.Core.System.Intercept;
 using Util.Datas.Ef;
 
 namespace KissU.Modules.Admin
@@ -23,7 +23,8 @@ namespace KissU.Modules.Admin
         {
             base.RegisterBuilder(builder);
             var services = new ServiceCollection();
-            services.AddUnitOfWork<IAdminUnitOfWork, AdminUnitOfWork>(AppConfig.GetSection("ConnectionStrings").GetSection("DefaultConnection").Value);
+            services.AddUnitOfWork<IAdminUnitOfWork, AdminUnitOfWork>(AppConfig.GetSection("ConnectionStrings")
+                .GetSection("DefaultConnection").Value);
             builder.ContainerBuilder.Populate(services);
             builder.AddClientIntercepted(typeof(CacheProviderInterceptor));
         }

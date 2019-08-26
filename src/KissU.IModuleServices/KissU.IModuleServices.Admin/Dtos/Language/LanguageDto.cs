@@ -23,6 +23,7 @@ namespace KissU.IModuleServices.Admin.Dtos
         [StringLength(10)]
         [Display(Name = "编码")]
         public string Code { get; set; }
+
         /// <summary>
         /// 名称
         /// </summary>
@@ -30,17 +31,20 @@ namespace KissU.IModuleServices.Admin.Dtos
         [StringLength(64)]
         [Display(Name = "名称")]
         public string Text { get; set; }
+
         /// <summary>
         /// 简称
         /// </summary>
         [StringLength(128)]
         [Display(Name = "简称")]
         public string Abbr { get; set; }
+
         /// <summary>
         /// 是否启用
         /// </summary>
         [Display(Name = "是否启用")]
         public bool? IsEnabled { get; set; }
+
         /// <summary>
         /// 版本号
         /// </summary>

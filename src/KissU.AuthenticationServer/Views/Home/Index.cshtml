@@ -1,5 +1,6 @@
-﻿@{
-    var version = typeof(IdentityServer4.Hosting.IdentityServerMiddleware).Assembly.GetName().Version.ToString();
+﻿@using IdentityServer4.Hosting
+@{
+    var version = typeof(IdentityServerMiddleware).Assembly.GetName().Version.ToString();
 }
 
 <div class="welcome-page">
@@ -33,77 +34,77 @@
     <div class="row">
         <div class="col-sm-8">
             <p>
-                <b>client id: native.hybrid</b> <br />
-                grant type: hybrid with PKCE <br />
+                <b>client id: native.hybrid</b> <br/>
+                grant type: hybrid with PKCE <br/>
                 allowed scopes: openid profile email api offline_access
             </p>
 
             <p>
-                <b>client id: native.code</b> <br />
-                grant type: authorization code with PKCE <br />
+                <b>client id: native.code</b> <br/>
+                grant type: authorization code with PKCE <br/>
                 allowed scopes: openid profile email api offline_access
             </p>
 
             <p>
-                <b>client id: server.hybrid</b> <br />
-                client secret: secret <br />
-                grant type: hybrid <br />
-                allowed scopes: openid profile email api offline_access
-            </p>
-            
-            <p>
-                <b>client id: server.hybrid.short (access token lifetime of 70 seconds)</b> <br />
-                client secret: secret <br />
-                grant type: hybrid <br />
+                <b>client id: server.hybrid</b> <br/>
+                client secret: secret <br/>
+                grant type: hybrid <br/>
                 allowed scopes: openid profile email api offline_access
             </p>
 
             <p>
-                <b>client id: server.code</b> <br />
-                client secret: secret <br />
-                grant type: authorization code <br />
+                <b>client id: server.hybrid.short (access token lifetime of 70 seconds)</b> <br/>
+                client secret: secret <br/>
+                grant type: hybrid <br/>
                 allowed scopes: openid profile email api offline_access
             </p>
 
             <p>
-                <b>client id: spa</b> <br />
-                grant type: authorization code with PKCE <br />
-                allowed scopes: openid profile email api offline_access
-            </p>
-            <p>
-                <b>client id: spa.short (access token lifetime 70 seconds)</b> <br />
-                grant type: authorization code with PKCE<br />
+                <b>client id: server.code</b> <br/>
+                client secret: secret <br/>
+                grant type: authorization code <br/>
                 allowed scopes: openid profile email api offline_access
             </p>
 
             <p>
-                <b>client id: implicit</b> <br />
-                grant type: implicit <br />
+                <b>client id: spa</b> <br/>
+                grant type: authorization code with PKCE <br/>
+                allowed scopes: openid profile email api offline_access
+            </p>
+            <p>
+                <b>client id: spa.short (access token lifetime 70 seconds)</b> <br/>
+                grant type: authorization code with PKCE<br/>
+                allowed scopes: openid profile email api offline_access
+            </p>
+
+            <p>
+                <b>client id: implicit</b> <br/>
+                grant type: implicit <br/>
                 allowed scopes: openid profile email api
             </p>
 
             <p>
-                <b>client id: implicit.reference</b> <br />
-                grant type: implicit <br />
+                <b>client id: implicit.reference</b> <br/>
+                grant type: implicit <br/>
                 allowed scopes: openid profile email api
             </p>
 
             <p>
-                <b>client id: implicit.shortlived</b> <br />
-                grant type: implicit <br />
+                <b>client id: implicit.shortlived</b> <br/>
+                grant type: implicit <br/>
                 allowed scopes: openid profile email api
             </p>
 
             <p>
-                <b>client id: client</b> <br />
-                client secret: secret <br />
-                grant type: client credentials <br />
+                <b>client id: client</b> <br/>
+                client secret: secret <br/>
+                grant type: client credentials <br/>
                 allowed scopes: api
             </p>
 
             <p>
-                <b>client id: device</b> <br />
-                grant type: urn:ietf:params:oauth:grant-type:device_code <br />
+                <b>client id: device</b> <br/>
+                grant type: urn:ietf:params:oauth:grant-type:device_code <br/>
                 allowed scopes: openid profile email api
             </p>
 

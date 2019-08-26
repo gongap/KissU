@@ -19,12 +19,14 @@ namespace KissU.AuthenticationServer
     /// <summary>
     /// 启动配置
     /// </summary>
-    public class Startup {
+    public class Startup
+    {
         /// <summary>
         /// 初始化启动配置
         /// </summary>
         /// <param name="configuration">配置</param>
-        public Startup( IConfiguration configuration ) {
+        public Startup(IConfiguration configuration)
+        {
             Configuration = configuration;
         }
 
@@ -36,15 +38,17 @@ namespace KissU.AuthenticationServer
         /// <summary>
         /// 配置服务
         /// </summary>
-        public IServiceProvider ConfigureServices( IServiceCollection services ) {
+        public IServiceProvider ConfigureServices(IServiceCollection services)
+        {
             //添加Mvc服务
-            services.AddMvc().SetCompatibilityVersion( CompatibilityVersion.Version_2_2 );
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             //添加NLog日志操作
             services.AddNLog();
 
             //添加SqlServer工作单元
-            services.AddUnitOfWork<IGreatWallUnitOfWork, GreatWallUnitOfWork>( Configuration.GetConnectionString( "DefaultConnection" ) );
+            services.AddUnitOfWork<IGreatWallUnitOfWork, GreatWallUnitOfWork>(
+                Configuration.GetConnectionString("DefaultConnection"));
             //添加PgSql工作单元
             //services.AddUnitOfWork<IGreatWallUnitOfWork, Data.UnitOfWorks.PgSql.GreatWallUnitOfWork>( Configuration.GetConnectionString( "PgSqlConnection" ) );
 
@@ -54,38 +58,41 @@ namespace KissU.AuthenticationServer
             //配置Identity Server
             services.AddIdentityServer()
                 .AddDeveloperSigningCredential()
-                .AddInMemoryIdentityResources( Config.GetIdentityResources() )
-                .AddInMemoryApiResources( Config.GetApiResources() )
-                .AddInMemoryClients( Config.GetClients() )
+                .AddInMemoryIdentityResources(Config.GetIdentityResources())
+                .AddInMemoryApiResources(Config.GetApiResources())
+                .AddInMemoryClients(Config.GetClients())
                 .AddAspNetIdentity<User>()
                 .AddResourceOwnerValidator<ResourceValidator>()
                 .AddProfileService<ProfileService>();
 
             //添加Util基础设施服务
-            return services.AddUtil( );
+            return services.AddUtil();
         }
 
         /// <summary>
         /// 配置开发环境请求管道
         /// </summary>
-        public void ConfigureDevelopment( IApplicationBuilder app ) {
+        public void ConfigureDevelopment(IApplicationBuilder app)
+        {
             app.UseDeveloperExceptionPage();
             app.UseDatabaseErrorPage();
-            CommonConfig( app );
+            CommonConfig(app);
         }
 
         /// <summary>
         /// 配置生产环境请求管道
         /// </summary>
-        public void ConfigureProduction( IApplicationBuilder app ) {
-            app.UseExceptionHandler( "/Home/Error" );
-            CommonConfig( app );
+        public void ConfigureProduction(IApplicationBuilder app)
+        {
+            app.UseExceptionHandler("/Home/Error");
+            CommonConfig(app);
         }
 
         /// <summary>
         /// 公共配置
         /// </summary>
-        private void CommonConfig( IApplicationBuilder app ) {
+        private void CommonConfig(IApplicationBuilder app)
+        {
             app.UseErrorLog();
             app.UseStaticFiles();
             app.UseIdentityServer();

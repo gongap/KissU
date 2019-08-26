@@ -36,7 +36,8 @@ namespace KissU.Modules.Admin.Data.Repositories.Base
         {
             if (id.SafeString().IsEmpty())
                 return null;
-            return await Find(t => t.Id.ToString() == id.SafeString()).Include(x => x.Details).SingleOrDefaultAsync(cancellationToken);
+            return await Find(t => t.Id.ToString() == id.SafeString()).Include(x => x.Details)
+                .SingleOrDefaultAsync(cancellationToken);
         }
 
         /// <summary>
@@ -44,7 +45,8 @@ namespace KissU.Modules.Admin.Data.Repositories.Base
         /// </summary>
         /// <param name="ids">标识列表</param>
         /// <param name="cancellationToken">取消令牌</param>
-        public override async Task<List<TMaster>> FindByIdsAsync(IEnumerable<Guid> ids, CancellationToken cancellationToken = default)
+        public override async Task<List<TMaster>> FindByIdsAsync(IEnumerable<Guid> ids,
+            CancellationToken cancellationToken = default)
         {
             if (ids == null)
                 return null;
@@ -113,6 +115,7 @@ namespace KissU.Modules.Admin.Data.Repositories.Base
                 oldEntry = UnitOfWork.Attach(old);
                 oldEntry.CurrentValues.SetValues(entity);
             }
+
             return Task.CompletedTask;
         }
     }

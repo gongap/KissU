@@ -1,12 +1,15 @@
-﻿namespace KissU.IModuleServices.GreatWall.Results {
+﻿namespace KissU.IModuleServices.GreatWall.Results
+{
     /// <summary>
     /// 登录结果
     /// </summary>
-    public class SignInResult {
+    public class SignInResult
+    {
         /// <summary>
         /// 初始化
         /// </summary>
-        public SignInResult() {
+        public SignInResult()
+        {
             State = SignInState.Failed;
         }
 
@@ -16,7 +19,8 @@
         /// <param name="state">登录状态</param>
         /// <param name="userId">用户标识</param>
         /// <param name="message">消息</param>
-        public SignInResult( SignInState state, string userId, string message = null ) {
+        public SignInResult(SignInState state, string userId, string message = null)
+        {
             State = state;
             UserId = userId;
             Message = message;

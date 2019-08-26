@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Security.Claims;
 using IdentityModel;
 using IdentityServer4;
 using IdentityServer4.Models;
+using Util.Security.Claims;
 
 namespace KissU.AuthenticationServer.Configs
 {
@@ -13,7 +13,7 @@ namespace KissU.AuthenticationServer.Configs
             return new List<IdentityResource>
             {
                 new IdentityResources.OpenId(),
-                new IdentityResources.Profile ()
+                new IdentityResources.Profile()
             };
         }
 
@@ -21,16 +21,18 @@ namespace KissU.AuthenticationServer.Configs
         {
             return new List<ApiResource>
             {
-                new ApiResource("api", "API") {
-                    UserClaims = {
+                new ApiResource("api", "API")
+                {
+                    UserClaims =
+                    {
                         JwtClaimTypes.Name,
                         JwtClaimTypes.Email,
                         JwtClaimTypes.PhoneNumber,
-                        Util.Security.Claims.ClaimTypes.ApplicationId,
-                        Util.Security.Claims.ClaimTypes.ApplicationCode,
-                        Util.Security.Claims.ClaimTypes.ApplicationName,
-                        Util.Security.Claims.ClaimTypes.RoleIds,
-                        Util.Security.Claims.ClaimTypes.RoleName
+                        ClaimTypes.ApplicationId,
+                        ClaimTypes.ApplicationCode,
+                        ClaimTypes.ApplicationName,
+                        ClaimTypes.RoleIds,
+                        ClaimTypes.RoleName
                     }
                 }
             };
@@ -50,10 +52,10 @@ namespace KissU.AuthenticationServer.Configs
                     ClientName = "权限管理后台",
                     AllowedGrantTypes = GrantTypes.Implicit,
                     AllowAccessTokensViaBrowser = true,
-                    AllowedCorsOrigins = { AdminUrl },
+                    AllowedCorsOrigins = {AdminUrl},
                     RequireConsent = false,
-                    RedirectUris = { $"{AdminUrl}/callback" },
-                    PostLogoutRedirectUris = { AdminUrl },
+                    RedirectUris = {$"{AdminUrl}/callback"},
+                    PostLogoutRedirectUris = {AdminUrl},
                     AllowedScopes =
                     {
                         IdentityServerConstants.StandardScopes.OpenId,

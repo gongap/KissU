@@ -1,27 +1,28 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using KissU.Modules.Admin.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using KissU.Modules.Admin.Domain.Models;
+using Util.Datas.Ef.SqlServer;
 
-namespace KissU.Modules.Admin.Data.Mappings.SqlServer 
+namespace KissU.Modules.Admin.Data.Mappings.SqlServer
 {
     /// <summary>
     /// 语言国际化映射配置
     /// </summary>
-    public class LanguageMap : Util.Datas.Ef.SqlServer.AggregateRootMap<Language> 
-	{
+    public class LanguageMap : AggregateRootMap<Language>
+    {
         /// <summary>
         /// 映射表
         /// </summary>
-        protected override void MapTable( EntityTypeBuilder<Language> builder ) 
-		{
-            builder.ToTable( "Language", "Systems" );
+        protected override void MapTable(EntityTypeBuilder<Language> builder)
+        {
+            builder.ToTable("Language", "Systems");
         }
-        
+
         /// <summary>
         /// 映射属性
         /// </summary>
-        protected override void MapProperties( EntityTypeBuilder<Language> builder ) 
-		{
+        protected override void MapProperties(EntityTypeBuilder<Language> builder)
+        {
             builder.Property(t => t.Id).HasColumnName("Id");
             builder.HasMany(b => b.Details).WithOne().HasForeignKey(x => x.MainId);
         }

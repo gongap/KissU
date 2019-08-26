@@ -1,18 +1,20 @@
 ﻿using System;
 using System.Threading.Tasks;
-using KissU.IModuleServices.GreatWall.Results;
 using IdentityModel;
 using IdentityServer4.Models;
 using IdentityServer4.Validation;
 using KissU.IModuleServices.GreatWall.Abstractions;
 using KissU.IModuleServices.GreatWall.Dtos.Requests;
+using KissU.IModuleServices.GreatWall.Results;
 using Util;
 
-namespace KissU.AuthenticationServer.Authentications {
+namespace KissU.AuthenticationServer.Authentications
+{
     /// <summary>
     /// 资源密码验证器
     /// </summary>
-    public class ResourceValidator : IResourceOwnerPasswordValidator {
+    public class ResourceValidator : IResourceOwnerPasswordValidator
+    {
         /// <summary>
         /// 安全服务
         /// </summary>
@@ -22,29 +24,36 @@ namespace KissU.AuthenticationServer.Authentications {
         /// 初始化
         /// </summary>
         /// <param name="securityService">安全服务</param>
-        public ResourceValidator( ISecurityService securityService ) {
+        public ResourceValidator(ISecurityService securityService)
+        {
             _securityService = securityService;
         }
 
         /// <summary>
         /// 验证
         /// </summary>
-        public async Task ValidateAsync( ResourceOwnerPasswordValidationContext context ) {
+        public async Task ValidateAsync(ResourceOwnerPasswordValidationContext context)
+        {
             LoginRequest request = new LoginRequest();
             request.Account = context.UserName;
             request.Password = context.Password;
             //request.ApplicationCode = context.Request.Client.ClientId;
-            try {
-                var result = await _securityService.SignInAsync( request );
-                if( result.State == SignInState.Succeeded ) {
-                    context.Result = new GrantValidationResult( result.UserId, OidcConstants.AuthenticationMethods.Password );
+            try
+            {
+                var result = await _securityService.SignInAsync(request);
+                if (result.State == SignInState.Succeeded)
+                {
+                    context.Result =
+                        new GrantValidationResult(result.UserId, OidcConstants.AuthenticationMethods.Password);
                     return;
                 }
-                if( result.State == SignInState.Failed )
-                    context.Result = new GrantValidationResult( TokenRequestErrors.InvalidGrant );
+
+                if (result.State == SignInState.Failed)
+                    context.Result = new GrantValidationResult(TokenRequestErrors.InvalidGrant);
             }
-            catch( Exception ex ) {
-                context.Result = new GrantValidationResult( TokenRequestErrors.InvalidGrant,ex.GetPrompt() );
+            catch (Exception ex)
+            {
+                context.Result = new GrantValidationResult(TokenRequestErrors.InvalidGrant, ex.GetPrompt());
             }
         }
     }
