@@ -1,8 +1,10 @@
-﻿namespace GreatWall.Service.Dtos.NgAlain {
+﻿namespace KissU.IModuleServices.Admin.Dtos.NgAlain
+{
     /// <summary>
     /// NgAlain用户信息
     /// </summary>
-    public class UserInfo {
+    public class UserInfo
+    {
         /// <summary>
         /// 名称
         /// </summary>

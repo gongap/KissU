@@ -3,11 +3,13 @@ using Util.Datas.Persistence;
 using Util.Domains;
 using Util.Domains.Auditing;
 
-namespace GreatWall.Data.Pos {
+namespace KissU.Modules.GreatWall.Data.Pos
+{
     /// <summary>
     /// 应用程序持久化对象
     /// </summary>
-    public class ApplicationPo : PersistentObjectBase<Guid>, IDelete, IAudited {
+    public class ApplicationPo : PersistentObjectBase<Guid>, IDelete, IAudited
+    {
         /// <summary>
         /// 应用程序编码
         /// </summary>  

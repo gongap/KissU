@@ -1,21 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Util;
-using Util.Maps;
 using Util.Domains.Repositories;
 using Util.Datas.Queries;
 using Util.Applications;
 using KissU.Data;
-using KissU.Domain.Systems.Models;
-using KissU.Domain.Systems.Repositories;
-using KissU.Service.Dtos.Systems;
-using KissU.Service.Queries.Systems;
-using KissU.Service.Abstractions.Systems;
-using KissU.Service.Dtos.Systems.Extensions;
+using KissU.Modules.Admin.Domain.Models;
+using KissU.Modules.Admin.Domain.Repositories;
+using KissU.IModuleServices.Admin.Abstractions;
+using KissU.IModuleServices.Admin.Dtos;
+using KissU.IModuleServices.Admin.Queries;
+using KissU.Modules.Admin.Service.Extensions;
 using Microsoft.EntityFrameworkCore;
 
-namespace KissU.Service.Implements.Systems
+namespace KissU.Modules.Admin.Service.Implements
 {
     /// <summary>
     /// 语言国际化服务

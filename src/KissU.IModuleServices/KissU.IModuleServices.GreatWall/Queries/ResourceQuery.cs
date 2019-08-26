@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Util.Datas.Queries.Trees;
 
-namespace GreatWall.Service.Queries {
+namespace KissU.IModuleServices.GreatWall.Service.Queries {
     /// <summary>
     /// 资源查询参数
     /// </summary>

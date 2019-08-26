@@ -2,13 +2,13 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using GreatWall.Domain.Models;
-using GreatWall.Domain.Repositories;
+using KissU.Modules.GreatWall.Domain.Models;
+using KissU.Modules.GreatWall.Domain.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Util;
 using Util.Datas.Ef.Core;
 
-namespace GreatWall.Data.Repositories {
+namespace KissU.Modules.GreatWall.Data.Repositories {
     /// <summary>
     /// 用户仓储
     /// </summary>

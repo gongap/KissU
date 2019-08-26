@@ -1,22 +1,22 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using GreatWall.Attributes;
-using GreatWall.Configs;
-using GreatWall.Models;
-using GreatWall.Results;
-using GreatWall.Service.Abstractions;
+using KissU.IModuleServices.GreatWall.Results;
 using IdentityModel;
 using IdentityServer4;
 using IdentityServer4.Extensions;
 using IdentityServer4.Models;
 using IdentityServer4.Services;
+using KissU.AuthenticationServer.Attributes;
+using KissU.AuthenticationServer.Configs;
+using KissU.AuthenticationServer.Models;
+using KissU.IModuleServices.GreatWall.Abstractions;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Util;
 
-namespace GreatWall.Controllers {
+namespace KissU.AuthenticationServer.Controllers {
     /// <summary>
     /// 用户认证控制器
     /// </summary>

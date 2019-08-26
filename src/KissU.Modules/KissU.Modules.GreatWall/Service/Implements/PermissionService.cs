@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using GreatWall.Data;
-using GreatWall.Domain.Repositories;
-using GreatWall.Domain.Services.Abstractions;
-using GreatWall.Service.Abstractions;
-using GreatWall.Service.Dtos.Requests;
-using GreatWall.Service.Queries;
+using KissU.IModuleServices.GreatWall.Abstractions;
+using KissU.Modules.GreatWall.Data;
+using KissU.IModuleServices.GreatWall.Dtos.Requests;
+using KissU.IModuleServices.GreatWall.Service.Queries;
+using KissU.Modules.GreatWall.Domain.Repositories;
+using KissU.Modules.GreatWall.Domain.Services.Abstractions;
 using Util;
 using Util.Applications;
 
-namespace GreatWall.Service.Implements {
+    namespace KissU.Modules.GreatWall.Service.Implements {
     /// <summary>
     /// 权限服务
     /// </summary>

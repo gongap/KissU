@@ -1,9 +1,10 @@
 ﻿using System;
-using GreatWall.Authentications;
-using GreatWall.Configs;
-using GreatWall.Data;
-using GreatWall.Domain.Models;
-using GreatWall.Service.Extensions;
+using KissU.AuthenticationServer.Authentications;
+using KissU.AuthenticationServer.Configs;
+using KissU.Modules.GreatWall.Data;
+using KissU.Modules.GreatWall.Data.UnitOfWorks.SqlServer;
+using KissU.Modules.GreatWall.Domain.Models;
+using KissU.Modules.GreatWall.Service.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -13,7 +14,8 @@ using Util.Datas.Ef;
 using Util.Logs.Extensions;
 using Util.Webs.Extensions;
 
-namespace GreatWall {
+namespace KissU.AuthenticationServer
+{
     /// <summary>
     /// 启动配置
     /// </summary>
@@ -42,7 +44,7 @@ namespace GreatWall {
             services.AddNLog();
 
             //添加SqlServer工作单元
-            services.AddUnitOfWork<IGreatWallUnitOfWork, Data.UnitOfWorks.SqlServer.GreatWallUnitOfWork>( Configuration.GetConnectionString( "DefaultConnection" ) );
+            services.AddUnitOfWork<IGreatWallUnitOfWork, GreatWallUnitOfWork>( Configuration.GetConnectionString( "DefaultConnection" ) );
             //添加PgSql工作单元
             //services.AddUnitOfWork<IGreatWallUnitOfWork, Data.UnitOfWorks.PgSql.GreatWallUnitOfWork>( Configuration.GetConnectionString( "PgSqlConnection" ) );
 

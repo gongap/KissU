@@ -1,17 +1,20 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using GreatWall.Service.Dtos;
-using GreatWall.Service.Queries;
-using Util.Applications;
-using KissU.Service.Dtos.Systems;
-using KissU.Service.Queries.Systems;
 using Surging.Core.CPlatform.Ioc;
+using Surging.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
 using Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
+using Surging.Core.CPlatform.Support;
+using Surging.Core.CPlatform.Support.Attributes;
+using System.Threading.Tasks;
+using KissU.IModuleServices.Admin.Dtos;
+using KissU.IModuleServices.Admin.Dtos.NgAlain;
+using KissU.IModuleServices.Admin.Queries;
+using Microsoft.AspNetCore.Authorization;
+using Surging.Core.CPlatform.Filters.Implementation;
 using Util.Applications.Aspects;
 using Util.Domains.Repositories;
 using Util.Validations.Aspects;
 
-namespace KissU.Service.Abstractions.Systems
+namespace KissU.IModuleServices.Admin.Abstractions
 {
     /// <summary>
     /// 语言国际化服务

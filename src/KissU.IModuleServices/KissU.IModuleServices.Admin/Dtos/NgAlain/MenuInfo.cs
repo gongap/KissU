@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace GreatWall.Service.Dtos.NgAlain {
+namespace KissU.IModuleServices.Admin.Dtos.NgAlain {
     /// <summary>
     /// NgAlain菜单
     /// </summary>

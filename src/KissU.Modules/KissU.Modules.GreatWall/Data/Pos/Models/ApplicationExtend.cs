@@ -1,10 +1,12 @@
-﻿using GreatWall.Domain.Models;
+﻿using KissU.Modules.GreatWall.Domain.Models;
 
-namespace GreatWall.Data.Pos.Models {
+namespace KissU.Modules.GreatWall.Data.Pos.Models
+{
     /// <summary>
     /// 应用程序扩展信息
     /// </summary>
-    public class ApplicationExtend {
+    public class ApplicationExtend
+    {
         /// <summary>
         /// 是否客户端
         /// </summary>

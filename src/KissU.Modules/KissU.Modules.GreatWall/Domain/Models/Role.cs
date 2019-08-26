@@ -1,7 +1,7 @@
 ﻿using Util;
 using Util.Helpers;
 
-namespace GreatWall.Domain.Models {
+namespace KissU.Modules.GreatWall.Domain.Models {
     /// <summary>
     /// 角色
     /// </summary>

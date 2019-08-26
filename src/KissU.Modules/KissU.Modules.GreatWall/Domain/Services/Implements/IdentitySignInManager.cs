@@ -1,16 +1,18 @@
 ﻿using System.Threading.Tasks;
-using GreatWall.Domain.Models;
+using KissU.Modules.GreatWall.Domain.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace GreatWall.Domain.Services.Implements {
+namespace KissU.Modules.GreatWall.Domain.Services.Implements
+{
     /// <summary>
     /// Identity登录服务
     /// </summary>
-    public class IdentitySignInManager : SignInManager<User> {
+    public class IdentitySignInManager : SignInManager<User>
+    {
         /// <summary>
         /// 初始化Identity登录服务
         /// </summary>
@@ -20,20 +22,22 @@ namespace GreatWall.Domain.Services.Implements {
         /// <param name="optionsAccessor">Identity配置</param>
         /// <param name="logger">日志</param>
         /// <param name="schemes">认证架构提供程序</param>
-        public IdentitySignInManager( UserManager<User> userManager, IHttpContextAccessor contextAccessor,
+        public IdentitySignInManager(UserManager<User> userManager, IHttpContextAccessor contextAccessor,
             IUserClaimsPrincipalFactory<User> claimsFactory, IOptions<IdentityOptions> optionsAccessor,
-            ILogger<SignInManager<User>> logger, IAuthenticationSchemeProvider schemes )
-                : base( userManager, contextAccessor, claimsFactory, optionsAccessor, logger, schemes ) {
+            ILogger<SignInManager<User>> logger, IAuthenticationSchemeProvider schemes)
+            : base(userManager, contextAccessor, claimsFactory, optionsAccessor, logger, schemes)
+        {
         }
 
         /// <summary>
         /// 是否允许登录
         /// </summary>
         /// <param name="user">用户</param>
-        public override async Task<bool> CanSignInAsync( User user ) {
-            if( user.Enabled == false )
+        public override async Task<bool> CanSignInAsync(User user)
+        {
+            if (user.Enabled == false)
                 return false;
-            return await base.CanSignInAsync( user );
+            return await base.CanSignInAsync(user);
         }
     }
 }

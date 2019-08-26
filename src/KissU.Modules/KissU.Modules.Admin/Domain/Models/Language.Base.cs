@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using KissU.Domain.Base;
+using KissU.Modules.Admin.Domain.Base;
 using Util;
 using Util.Domains;
 using Util.Domains.Auditing;
 using Util.Domains.Tenants;
 
-namespace KissU.Domain.Systems.Models
+namespace KissU.Modules.Admin.Domain.Models
 {
     /// <summary>
     /// 语言国际化

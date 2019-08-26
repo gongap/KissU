@@ -1,4 +1,4 @@
-﻿namespace GreatWall.Options {
+﻿namespace KissU.IModuleServices.GreatWall.Options {
     /// <summary>
     /// 密码配置
     /// </summary>

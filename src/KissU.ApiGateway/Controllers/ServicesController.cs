@@ -27,8 +27,8 @@ namespace Surging.ApiGateway.Controllers
         private readonly IServiceRouteProvider _serviceRouteProvider;
         private readonly IAuthorizationServerProvider _authorizationServerProvider;
 
-     
-        public ServicesController(IServiceProxyProvider serviceProxyProvider, 
+
+        public ServicesController(IServiceProxyProvider serviceProxyProvider,
             IServiceRouteProvider serviceRouteProvider,
             IAuthorizationServerProvider authorizationServerProvider)
         {
@@ -49,10 +49,9 @@ namespace Surging.ApiGateway.Controllers
             {
                 model[n] = this.Request.Query[n].ToString();
             }
-            ServiceResult<object> result = ServiceResult<object>.Create(false, null); 
-          
+            ServiceResult<object> result = ServiceResult<object>.Create(false, null);
             path = String.Compare(path.ToLower(), GateWayAppConfig.TokenEndpointPath, true) == 0 ?
-                GateWayAppConfig.AuthorizationRoutePath : path.ToLower();
+              GateWayAppConfig.AuthorizationRoutePath : path.ToLower();
             var route = await _serviceRouteProvider.GetRouteByPathRegex(path);
             var httpMethods = route.ServiceDescriptor.HttpMethod();
             if (!string.IsNullOrEmpty(httpMethods) &&
@@ -66,7 +65,7 @@ namespace Surging.ApiGateway.Controllers
             }
             else
             {
-                var auth = OnAuthorization(route, model);
+                var auth = await OnAuthorization(route, model);
                 result = auth.Item2;
                 if (auth.Item1)
                 {
@@ -91,7 +90,7 @@ namespace Surging.ApiGateway.Controllers
                             var pamars = RouteTemplateSegmenter.Segment(route.ServiceDescriptor.RoutePath, path);
                             foreach (KeyValuePair<string, object> item in pamars)
                             {
-                                model.Add(item.Key,item.Value);
+                                model.Add(item.Key, item.Value);
                             }
                         }
                         if (!string.IsNullOrEmpty(serviceKey))
@@ -112,36 +111,39 @@ namespace Surging.ApiGateway.Controllers
         }
 
         private bool GetAllowRequest(ServiceRoute route)
-        {  
+        {
             return !route.ServiceDescriptor.DisableNetwork();
         }
 
-        private (bool, ServiceResult<object>) OnAuthorization(ServiceRoute route, Dictionary<string, object> model)
+        private async Task<(bool, ServiceResult<object>)> OnAuthorization(ServiceRoute route, Dictionary<string, object> model)
         {
-            bool isSuccess = true; 
+            bool isSuccess = true;
             var serviceResult = ServiceResult<object>.Create(false, null);
+            var result = (isSuccess, serviceResult);
             if (route.ServiceDescriptor.EnableAuthorization())
             {
-                if(route.ServiceDescriptor.AuthType()== AuthorizationType.JWT.ToString())
+                if (route.ServiceDescriptor.AuthType() == AuthorizationType.JWT.ToString())
                 {
-                    isSuccess= ValidateJwtAuthentication(route,model, ref serviceResult);
+                    result = await ValidateJwtAuthentication(route, model);
                 }
                 else
                 {
                     isSuccess = ValidateAppSecretAuthentication(route, model, ref serviceResult);
+                    result = (isSuccess, serviceResult);
                 }
 
             }
-            return new ValueTuple<bool, ServiceResult<object>>(isSuccess,serviceResult);
+            return result;
         }
 
-        public bool ValidateJwtAuthentication(ServiceRoute route, Dictionary<string, object> model, ref ServiceResult<object> result)
+        public async Task<(bool, ServiceResult<object>)> ValidateJwtAuthentication(ServiceRoute route, Dictionary<string, object> model)
         {
-            bool isSuccess = true; 
+            var result = ServiceResult<object>.Create(false, null);
+            bool isSuccess = true;
             var author = HttpContext.Request.Headers["Authorization"];
             if (author.Count > 0)
             {
-                isSuccess = _authorizationServerProvider.ValidateClientAuthentication(author).Result;
+                isSuccess = await _authorizationServerProvider.ValidateClientAuthentication(author);
                 if (!isSuccess)
                 {
                     result = new ServiceResult<object> { IsSucceed = false, StatusCode = (int)ServiceStatusCode.AuthorizationFailed, Message = "Invalid authentication credentials" };
@@ -150,7 +152,7 @@ namespace Surging.ApiGateway.Controllers
                 {
                     var payload = _authorizationServerProvider.GetPayloadString(author);
                     RpcContext.GetContext().SetAttachment("payload", payload);
-                    if (model.Count>0)
+                    if (model.Count > 0)
                     {
                         var keyValue = model.FirstOrDefault();
                         if (!(keyValue.Value is IConvertible) || !typeof(IConvertible).GetTypeInfo().IsAssignableFrom(keyValue.Value.GetType()))
@@ -168,8 +170,9 @@ namespace Surging.ApiGateway.Controllers
                 result = new ServiceResult<object> { IsSucceed = false, StatusCode = (int)ServiceStatusCode.RequestError, Message = "Request error" };
                 isSuccess = false;
             }
-            return isSuccess;
+            return (isSuccess, result);
         }
+
 
         private bool ValidateAppSecretAuthentication(ServiceRoute route,
             Dictionary<string, object> model, ref ServiceResult<object> result)

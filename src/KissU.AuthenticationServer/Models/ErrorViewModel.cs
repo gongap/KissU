@@ -1,6 +1,6 @@
 ﻿using IdentityServer4.Models;
 
-namespace GreatWall.Models {
+namespace KissU.AuthenticationServer.Models {
     /// <summary>
     /// 错误参数
     /// </summary>

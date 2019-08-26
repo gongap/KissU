@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using GreatWall.Service.Dtos;
-using GreatWall.Service.Dtos.Requests;
-using GreatWall.Service.Queries;
+using KissU.IModuleServices.GreatWall.Dtos;
+using KissU.IModuleServices.GreatWall.Dtos.Requests;
+using KissU.IModuleServices.GreatWall.Service.Queries;
 using Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using Util.Applications;
 using Util.Aspects;
 using Util.Domains.Repositories;
 using Util.Validations.Aspects;
 
-namespace GreatWall.Service.Abstractions {
+namespace KissU.IModuleServices.GreatWall.Abstractions {
     /// <summary>
     /// 用户服务
     /// </summary>

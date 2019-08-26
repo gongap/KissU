@@ -1,6 +1,6 @@
 ﻿using Util.Security.Encryptors;
 
-namespace GreatWall.Encryptors {
+namespace KissU.IModuleServices.GreatWall.Encryptors {
     /// <summary>
     /// 密码加密器
     /// </summary>

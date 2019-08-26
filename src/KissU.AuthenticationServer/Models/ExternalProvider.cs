@@ -1,4 +1,4 @@
-﻿namespace GreatWall.Models {
+﻿namespace KissU.AuthenticationServer.Models {
     /// <summary>
     /// 外部认证提供器
     /// </summary>

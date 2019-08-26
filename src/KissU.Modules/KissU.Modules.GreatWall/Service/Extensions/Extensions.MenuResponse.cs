@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-using GreatWall.Domain.Models;
-using GreatWall.Service.Dtos.Responses;
+﻿using KissU.IModuleServices.GreatWall.Dtos.Responses;
+using KissU.Modules.GreatWall.Domain.Models;
 using Util.Maps;
 
-namespace GreatWall.Service.Dtos.Extensions {
+namespace KissU.Modules.GreatWall.Dtos.Extensions {
     /// <summary>
     /// 菜单参数扩展
     /// </summary>

@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using GreatWall.Service.Dtos.Responses;
+using KissU.IModuleServices.GreatWall.Dtos.Responses;
 using Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using Util.Applications;
 
-namespace GreatWall.Service.Abstractions {
+namespace KissU.IModuleServices.GreatWall.Abstractions {
     /// <summary>
     /// 菜单服务
     /// </summary>

@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
-using GreatWall.Attributes;
-using GreatWall.Models;
 using IdentityServer4.Services;
+using KissU.AuthenticationServer.Attributes;
+using KissU.AuthenticationServer.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GreatWall.Controllers {
+namespace KissU.AuthenticationServer.Controllers {
     /// <summary>
     /// 主控制器
     /// </summary>

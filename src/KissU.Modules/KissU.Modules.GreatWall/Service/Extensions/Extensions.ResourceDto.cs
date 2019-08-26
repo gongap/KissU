@@ -1,11 +1,12 @@
-﻿using GreatWall.Data.Pos;
-using GreatWall.Data.Pos.Models;
-using GreatWall.Domain.Models;
-using GreatWall.Service.Dtos.Requests;
+﻿using KissU.IModuleServices.GreatWall.Dtos;
+using KissU.IModuleServices.GreatWall.Dtos.Requests;
+using KissU.Modules.GreatWall.Data.Pos;
+using KissU.Modules.GreatWall.Data.Pos.Models;
+using KissU.Modules.GreatWall.Domain.Models;
 using Util.Helpers;
 using Util.Maps;
 
-namespace GreatWall.Service.Dtos.Extensions {
+namespace KissU.Modules.GreatWall.Dtos.Extensions {
     /// <summary>
     /// 资源参数扩展
     /// </summary>

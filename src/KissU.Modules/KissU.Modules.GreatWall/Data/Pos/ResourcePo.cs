@@ -1,11 +1,11 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
-using GreatWall.Domain.Enums;
+using KissU.Modules.GreatWall.Domain.Enums;
 using Util.Datas.Persistence;
 using Util.Domains;
 using Util.Domains.Auditing;
 
-namespace GreatWall.Data.Pos{
+namespace KissU.Modules.GreatWall.Data.Pos{
     /// <summary>
     /// 资源持久化对象
     /// </summary>

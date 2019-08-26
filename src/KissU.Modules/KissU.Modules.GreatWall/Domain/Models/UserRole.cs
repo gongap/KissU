@@ -1,14 +1,17 @@
 ﻿using System;
 
-namespace GreatWall.Domain.Models {
+namespace KissU.Modules.GreatWall.Domain.Models
+{
     /// <summary>
     /// 用户角色
     /// </summary>
-    public class UserRole {
+    public class UserRole
+    {
         /// <summary>
         /// 初始化用户角色
         /// </summary>
-        public UserRole() {
+        public UserRole()
+        {
         }
 
         /// <summary>
@@ -16,7 +19,8 @@ namespace GreatWall.Domain.Models {
         /// </summary>
         /// <param name="userId">用户标识</param>
         /// <param name="roleId">角色标识</param>
-        public UserRole( Guid userId, Guid roleId ) {
+        public UserRole(Guid userId, Guid roleId)
+        {
             UserId = userId;
             RoleId = roleId;
         }

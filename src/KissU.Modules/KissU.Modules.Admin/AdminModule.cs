@@ -3,14 +3,12 @@ using Surging.Core.CPlatform.Module;
 using Surging.Core.System.Intercept;
 using Surging.Core.ProxyGenerator;
 using Autofac.Extensions.DependencyInjection;
-using GreatWall.Data;
-using GreatWall.Data.UnitOfWorks.SqlServer;
-using GreatWall.Service.Extensions;
+using KissU.Data;
+using KissU.Modules.Admin.Data.UnitOfWorks.SqlServer;
 using Microsoft.Extensions.DependencyInjection;
 using Util.Datas.Ef;
-using Util;
 
-namespace KissU.Modules.GreatWall
+namespace KissU.Modules.Admin
 {
     /// <summary>
     /// 扩展系统模块
@@ -25,8 +23,7 @@ namespace KissU.Modules.GreatWall
         {
             base.RegisterBuilder(builder);
             var services = new ServiceCollection();
-            services.AddUnitOfWork<IGreatWallUnitOfWork, GreatWallUnitOfWork>(AppConfig.GetSection("ConnectionStrings").GetSection("DefaultConnection").Value);
-            services.AddPermission(t => { t.Lockout.MaxFailedAccessAttempts = 2; });
+            services.AddUnitOfWork<IAdminUnitOfWork, AdminUnitOfWork>(AppConfig.GetSection("ConnectionStrings").GetSection("DefaultConnection").Value);
             builder.ContainerBuilder.Populate(services);
             builder.AddClientIntercepted(typeof(CacheProviderInterceptor));
         }

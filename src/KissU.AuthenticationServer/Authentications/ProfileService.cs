@@ -1,18 +1,18 @@
 ﻿using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using GreatWall.Domain.Models;
-using GreatWall.Domain.Services.Implements;
-using GreatWall.Service.Abstractions;
-using GreatWall.Service.Dtos;
 using IdentityServer4.AspNetIdentity;
 using IdentityServer4.Extensions;
 using IdentityServer4.Models;
+using KissU.IModuleServices.GreatWall.Abstractions;
+using KissU.IModuleServices.GreatWall.Dtos;
+using KissU.Modules.GreatWall.Domain.Models;
+using KissU.Modules.GreatWall.Domain.Services.Implements;
 using Microsoft.AspNetCore.Identity;
 using Util;
 using Claim = System.Security.Claims.Claim;
 
-namespace GreatWall.Authentications {
+namespace KissU.AuthenticationServer.Authentications {
     /// <summary>
     /// 用户身份配置服务
     /// </summary>

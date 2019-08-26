@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using GreatWall.Service.Dtos.Requests;
+using KissU.IModuleServices.GreatWall.Dtos.Requests;
 using Util;
 
-namespace GreatWall.Models {
+namespace KissU.AuthenticationServer.Models {
     /// <summary>
     /// µÇÂ¼²ÎÊý
     /// </summary>

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using GreatWall.Service.Dtos.Responses;
+using KissU.IModuleServices.GreatWall.Dtos.Responses;
 using Util;
 
-namespace GreatWall.Service.Dtos.NgAlain {
+namespace KissU.IModuleServices.Admin.Dtos.NgAlain {
     /// <summary>
     /// NgAlain菜单结果
     /// </summary>

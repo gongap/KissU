@@ -4,7 +4,8 @@ using Microsoft.AspNetCore.Hosting;
 using Util.Logs;
 using Util.Logs.Extensions;
 
-namespace GreatWall {
+namespace KissU.AuthenticationServer
+{
     /// <summary>
     /// 应用程序
     /// </summary>

@@ -1,4 +1,4 @@
-﻿namespace GreatWall.Options {
+﻿namespace KissU.IModuleServices.GreatWall.Options {
     /// <summary>
     /// 权限配置
     /// </summary>

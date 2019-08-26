@@ -1,4 +1,4 @@
-﻿namespace GreatWall.Models {
+﻿namespace KissU.AuthenticationServer.Models {
     /// <summary>
     /// 登出参数
     /// </summary>

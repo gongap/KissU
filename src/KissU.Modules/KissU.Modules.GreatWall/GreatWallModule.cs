@@ -3,12 +3,11 @@ using Surging.Core.CPlatform.Module;
 using Surging.Core.System.Intercept;
 using Surging.Core.ProxyGenerator;
 using Autofac.Extensions.DependencyInjection;
-using GreatWall.Data;
-using GreatWall.Data.UnitOfWorks.SqlServer;
-using GreatWall.Service.Extensions;
+using KissU.Modules.GreatWall.Data;
+using KissU.Modules.GreatWall.Data.UnitOfWorks.SqlServer;
+using KissU.Modules.GreatWall.Service.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using Util.Datas.Ef;
-using Util;
 
 namespace KissU.Modules.GreatWall
 {

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using Util.Domains;
 using Util.Domains.Auditing;
 
-namespace KissU.Domain.Base
+namespace KissU.Modules.Admin.Domain.Base
 {
     /// <summary>
     /// 从表

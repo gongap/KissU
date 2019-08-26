@@ -1,10 +1,7 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.Runtime.Serialization;
-using Util.Ui.Attributes;
+﻿using System.ComponentModel.DataAnnotations;
 using Util.Applications.Dtos;
 
-namespace KissU.Service.Dtos.Systems
+namespace KissU.IModuleServices.Admin.Dtos
 {
     /// <summary>
     /// 语言国际化配置参数

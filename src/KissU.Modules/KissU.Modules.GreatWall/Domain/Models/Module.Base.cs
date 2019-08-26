@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using Util.Domains.Trees;
 
-namespace GreatWall.Domain.Models {
+namespace KissU.Modules.GreatWall.Domain.Models {
     /// <summary>
     /// 模块
     /// </summary>

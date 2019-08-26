@@ -21,6 +21,7 @@
     <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.KestrelHttpServer\Surging.Core.KestrelHttpServer.csproj" />
     <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.ProxyGenerator\Surging.Core.ProxyGenerator.csproj" />
     <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.System\Surging.Core.System.csproj" />
+    <ProjectReference Include="..\..\..\util\src\Util.Datas\07-Util.Datas.csproj" />
     <ProjectReference Include="..\..\KissU.IModuleServices\KissU.IModuleServices.Admin\KissU.IModuleServices.Admin.csproj" />
   </ItemGroup>
 

@@ -27,7 +27,6 @@
     <ProjectReference Include="..\..\KissU.IModuleServices\KissU.IModuleServices.GreatWall\KissU.IModuleServices.GreatWall.csproj" />
   </ItemGroup>
 
-
   <ItemGroup>
     <Compile Update="Domain\Models\Module.Base.cs">
       <DependentUpon>Module.cs</DependentUpon>

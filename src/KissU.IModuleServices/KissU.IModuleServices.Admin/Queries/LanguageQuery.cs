@@ -1,19 +1,20 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using Util;
+﻿using System.ComponentModel.DataAnnotations;
 using Util.Datas.Queries;
 
-namespace KissU.Service.Queries.Systems {
+namespace KissU.IModuleServices.Admin.Queries
+{
     /// <summary>
     /// 语言国际化查询参数
     /// </summary>
-    public class LanguageQuery : QueryParameter {
+    public class LanguageQuery : QueryParameter
+    {
         private string _code = string.Empty;
         /// <summary>
         /// 编码
         /// </summary>
-        [Display(Name="编码")]
-        public string Code {
+        [Display(Name = "编码")]
+        public string Code
+        {
             get => _code == null ? string.Empty : _code.Trim();
             set => _code = value;
         }
@@ -42,7 +43,7 @@ namespace KissU.Service.Queries.Systems {
         /// <summary>
         /// 是否启用
         /// </summary>
-        [Display(Name="是否启用")]
+        [Display(Name = "是否启用")]
         public bool? IsEnabled { get; set; }
     }
 }

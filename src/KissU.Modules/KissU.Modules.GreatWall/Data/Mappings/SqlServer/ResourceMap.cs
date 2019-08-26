@@ -1,9 +1,9 @@
 ﻿
-using GreatWall.Data.Pos;
+using KissU.Modules.GreatWall.Data.Pos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace GreatWall.Data.Mappings.SqlServer {
+namespace KissU.Modules.GreatWall.Data.Mappings.SqlServer {
     /// <summary>
     /// 资源映射配置
     /// </summary>

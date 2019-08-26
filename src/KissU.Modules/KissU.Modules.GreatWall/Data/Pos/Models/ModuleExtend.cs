@@ -1,4 +1,4 @@
-﻿namespace GreatWall.Data.Pos.Models {
+﻿namespace KissU.Modules.GreatWall.Data.Pos.Models {
     /// <summary>
     /// 模块扩展信息
     /// </summary>

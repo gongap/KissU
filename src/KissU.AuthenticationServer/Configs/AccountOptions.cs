@@ -1,10 +1,12 @@
 ﻿using System;
 
-namespace GreatWall.Configs {
+namespace KissU.AuthenticationServer.Configs
+{
     /// <summary>
     /// 帐户配置
     /// </summary>
-    public class AccountOptions {
+    public class AccountOptions
+    {
         /// <summary>
         /// 允许本地登录
         /// </summary>
@@ -16,7 +18,7 @@ namespace GreatWall.Configs {
         /// <summary>
         /// 记住密码持续时间，默认值：30天
         /// </summary>
-        public static TimeSpan RememberDuration = TimeSpan.FromDays( 30 );
+        public static TimeSpan RememberDuration = TimeSpan.FromDays(30);
         /// <summary>
         /// 显示登出提示
         /// </summary>

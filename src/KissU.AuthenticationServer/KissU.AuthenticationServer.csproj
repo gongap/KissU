@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
-    <RootNamespace>GreatWall</RootNamespace>
+    <RootNamespace>KissU.AuthenticationServer</RootNamespace>
     <LangVersion>default</LangVersion>
   </PropertyGroup>
 

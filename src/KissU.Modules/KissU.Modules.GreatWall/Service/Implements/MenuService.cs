@@ -2,28 +2,29 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using GreatWall.Domain.Models;
-using GreatWall.Domain.Repositories;
-using GreatWall.Service.Abstractions;
-using GreatWall.Service.Dtos.Extensions;
-using GreatWall.Service.Dtos.Responses;
-using Surging.Core.CPlatform.Transport.Implementation;
+using KissU.IModuleServices.GreatWall.Abstractions;
+using KissU.IModuleServices.GreatWall.Dtos.Responses;
+using KissU.Modules.GreatWall.Domain.Models;
+using KissU.Modules.GreatWall.Domain.Repositories;
+using KissU.Modules.GreatWall.Dtos.Extensions;
 using Util;
 using Util.Applications;
-using Util.Helpers;
 using Util.Security;
 
-namespace GreatWall.Service.Implements {
+namespace KissU.Modules.GreatWall.Service.Implements
+{
     /// <summary>
     /// 菜单服务
     /// </summary>
-    public class MenuService : ServiceBase, IMenuService {
+    public class MenuService : ServiceBase, IMenuService
+    {
         /// <summary>
         /// 初始化菜单服务
         /// </summary>
         /// <param name="roleRepository">角色仓储</param>
         /// <param name="moduleRepository">模块仓储</param>
-        public MenuService( IRoleRepository roleRepository,IModuleRepository moduleRepository ) {
+        public MenuService(IRoleRepository roleRepository, IModuleRepository moduleRepository)
+        {
             RoleRepository = roleRepository;
             ModuleRepository = moduleRepository;
         }
@@ -40,24 +41,26 @@ namespace GreatWall.Service.Implements {
         /// <summary>
         /// 获取菜单
         /// </summary>
-        public async Task<List<MenuResponse>> GetMenusAsync() {
-            
+        public async Task<List<MenuResponse>> GetMenusAsync()
+        {
+
             var userId = Session.UserId;
-            if ( userId.IsEmpty() )
+            if (userId.IsEmpty())
                 return new List<MenuResponse>();
-            var roleIds = await RoleRepository.GetRoleIdsAsync( userId.ToGuid() );
-            var modules = await ModuleRepository.GetModulesAsync( Session.GetApplicationId(), roleIds );
-            await AddMissingParents( modules );
-            return modules.Select( t => t.ToMenuResponse() ).ToList();
+            var roleIds = await RoleRepository.GetRoleIdsAsync(userId.ToGuid());
+            var modules = await ModuleRepository.GetModulesAsync(Session.GetApplicationId(), roleIds);
+            await AddMissingParents(modules);
+            return modules.Select(t => t.ToMenuResponse()).ToList();
         }
 
         /// <summary>
         /// 添加缺失的父节点列表
         /// </summary>
-        private async Task AddMissingParents( List<Module> modules ) {
+        private async Task AddMissingParents(List<Module> modules)
+        {
             var parentIds = modules.GetMissingParentIds<Module, Guid, Guid?>();
-            var parents = await ModuleRepository.FindByIdsAsync( parentIds.Select( t => t.ToGuid() ) );
-            modules.AddRange( parents.Where( t => t.Enabled ) );
+            var parents = await ModuleRepository.FindByIdsAsync(parentIds.Select(t => t.ToGuid()));
+            modules.AddRange(parents.Where(t => t.Enabled));
         }
     }
 }

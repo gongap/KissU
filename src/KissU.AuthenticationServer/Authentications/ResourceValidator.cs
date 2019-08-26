@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Threading.Tasks;
-using GreatWall.Results;
-using GreatWall.Service.Abstractions;
-using GreatWall.Service.Dtos.Requests;
+using KissU.IModuleServices.GreatWall.Results;
 using IdentityModel;
 using IdentityServer4.Models;
 using IdentityServer4.Validation;
+using KissU.IModuleServices.GreatWall.Abstractions;
+using KissU.IModuleServices.GreatWall.Dtos.Requests;
 using Util;
 
-namespace GreatWall.Authentications {
+namespace KissU.AuthenticationServer.Authentications {
     /// <summary>
     /// 资源密码验证器
     /// </summary>

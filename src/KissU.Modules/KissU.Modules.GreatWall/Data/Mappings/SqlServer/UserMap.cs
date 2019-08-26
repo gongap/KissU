@@ -1,8 +1,8 @@
-﻿using GreatWall.Domain.Models;
+﻿using KissU.Modules.GreatWall.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace GreatWall.Data.Mappings.SqlServer {
+namespace KissU.Modules.GreatWall.Data.Mappings.SqlServer {
     /// <summary>
     /// 用户映射配置
     /// </summary>

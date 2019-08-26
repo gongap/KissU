@@ -1,12 +1,12 @@
 ﻿using System.Threading.Tasks;
-using GreatWall.Data.Pos;
-using GreatWall.Data.Pos.Extensions;
-using GreatWall.Data.Stores.Abstractions;
-using GreatWall.Domain.Models;
-using GreatWall.Domain.Repositories;
+using KissU.Modules.GreatWall.Data.Pos;
+using KissU.Modules.GreatWall.Data.Pos.Extensions;
+using KissU.Modules.GreatWall.Data.Stores.Abstractions;
+using KissU.Modules.GreatWall.Domain.Models;
+using KissU.Modules.GreatWall.Domain.Repositories;
 using Util.Datas.Ef.Core;
 
-namespace GreatWall.Data.Repositories {
+namespace KissU.Modules.GreatWall.Data.Repositories {
     /// <summary>
     /// 应用程序仓储
     /// </summary>

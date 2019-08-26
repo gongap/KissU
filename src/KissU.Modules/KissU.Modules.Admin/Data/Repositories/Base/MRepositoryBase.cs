@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using KissU.Domain.Base;
+using KissU.Modules.Admin.Domain.Base;
 using Microsoft.EntityFrameworkCore;
 using Util;
 using Util.Datas.Ef.Core;
 using Util.Datas.UnitOfWorks;
 using Util.Domains;
 
-namespace KissU.Data.Repositories.Base
+namespace KissU.Modules.Admin.Data.Repositories.Base
 {
     /// <summary>
     /// 主从仓储

@@ -1,4 +1,4 @@
-﻿namespace GreatWall.Service.Dtos.Responses {
+﻿namespace KissU.IModuleServices.GreatWall.Dtos.Responses {
     /// <summary>
     /// 菜单参数
     /// </summary>

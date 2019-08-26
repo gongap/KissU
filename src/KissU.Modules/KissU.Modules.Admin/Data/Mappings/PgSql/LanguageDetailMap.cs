@@ -1,20 +1,20 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using KissU.Domain.Systems.Models;
+using KissU.Modules.Admin.Domain.Models;
 
-namespace KissU.Data.Mappings.Systems.MySql 
+namespace KissU.Modules.Admin.Data.Mappings.PgSql 
 {
     /// <summary>
     /// 语言国际化配置映射配置
     /// </summary>
-    public class LanguageTextMap : Util.Datas.Ef.MySql.EntityMap<LanguageDetail> 
+    public class LanguageDetailMap : Util.Datas.Ef.PgSql.EntityMap<LanguageDetail> 
 	{
         /// <summary>
         /// 映射表
         /// </summary>
         protected override void MapTable( EntityTypeBuilder<LanguageDetail> builder ) 
 		{
-            builder.ToTable( "Systems.LanguageDetail" );
+            builder.ToTable( "LanguageDetail", "Systems" );
         }
         
         /// <summary>

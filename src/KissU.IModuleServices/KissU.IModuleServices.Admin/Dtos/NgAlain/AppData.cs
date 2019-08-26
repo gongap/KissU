@@ -1,14 +1,17 @@
 ﻿using System.Collections.Generic;
 
-namespace GreatWall.Service.Dtos.NgAlain {
+namespace KissU.IModuleServices.Admin.Dtos.NgAlain
+{
     /// <summary>
     /// NgAlain应用程序数据
     /// </summary>
-    public class AppData {
+    public class AppData
+    {
         /// <summary>
         /// 初始化NgAlain应用程序数据
         /// </summary>
-        public AppData() {
+        public AppData()
+        {
             App = new AppInfo();
             User = new UserInfo();
             Menu = new List<MenuInfo>();

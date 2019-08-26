@@ -4,19 +4,19 @@ using System.Linq;
 using System.Security.Claims;
 using System.Security.Principal;
 using System.Threading.Tasks;
-using GreatWall.Attributes;
-using GreatWall.Configs;
 using IdentityModel;
 using IdentityServer4.Events;
 using IdentityServer4.Services;
 using IdentityServer4.Stores;
 using IdentityServer4.Test;
+using KissU.AuthenticationServer.Attributes;
+using KissU.AuthenticationServer.Configs;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GreatWall.Controllers
+namespace KissU.AuthenticationServer.Controllers
 {
     [SecurityHeaders]
     [AllowAnonymous]

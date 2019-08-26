@@ -1,9 +1,10 @@
 ﻿using System.Linq;
 using Util;
 using Util.Maps;
-using KissU.Domain.Systems.Models;
+using KissU.Modules.Admin.Domain.Models;
+using KissU.IModuleServices.Admin.Dtos;
 
-namespace KissU.Service.Dtos.Systems.Extensions
+namespace KissU.Modules.Admin.Service.Extensions
 {
     /// <summary>
     /// 语言国际化参数扩展

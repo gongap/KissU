@@ -4,11 +4,11 @@ using Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attr
 using Surging.Core.CPlatform.Support;
 using Surging.Core.CPlatform.Support.Attributes;
 using System.Threading.Tasks;
-using GreatWall.Service.Dtos.NgAlain;
+using KissU.IModuleServices.Admin.Dtos.NgAlain;
 using Microsoft.AspNetCore.Authorization;
 using Surging.Core.CPlatform.Filters.Implementation;
 
-namespace Surging.IModuleServices.User
+namespace KissU.IModuleServices.Admin.Abstractions
 {
     [ServiceBundle("api/{Service}")]
     public interface IStartupService : IServiceKey

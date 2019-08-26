@@ -1,25 +1,28 @@
 ﻿using System.Threading.Tasks;
-using GreatWall.Data;
-using GreatWall.Domain.Models;
-using GreatWall.Domain.Services.Abstractions;
-using GreatWall.Results;
-using GreatWall.Service.Abstractions;
-using GreatWall.Service.Dtos.Requests;
+using KissU.IModuleServices.GreatWall.Abstractions;
+using KissU.Modules.GreatWall.Data;
+using KissU.IModuleServices.GreatWall.Dtos.Requests;
+using KissU.IModuleServices.GreatWall.Results;
+using KissU.Modules.GreatWall.Domain.Models;
+using KissU.Modules.GreatWall.Domain.Services.Abstractions;
 using Util;
 using Util.Applications;
 
-namespace GreatWall.Service.Implements {
+namespace KissU.Modules.GreatWall.Service.Implements
+{
     /// <summary>
     /// 安全服务
     /// </summary>
-    public class SecurityService : ServiceBase, ISecurityService {
+    public class SecurityService : ServiceBase, ISecurityService
+    {
         /// <summary>
         /// 初始化安全服务
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
         /// <param name="signInManager">登录服务</param>
         /// <param name="userManager">用户服务</param>
-        public SecurityService( IGreatWallUnitOfWork unitOfWork, ISignInManager signInManager, IUserManager userManager ) {
+        public SecurityService(IGreatWallUnitOfWork unitOfWork, ISignInManager signInManager, IUserManager userManager)
+        {
             UnitOfWork = unitOfWork;
             SignInManager = signInManager;
             UserManager = userManager;
@@ -42,9 +45,10 @@ namespace GreatWall.Service.Implements {
         /// 登录
         /// </summary>
         /// <param name="request">登录参数</param>
-        public async Task<SignInResult> SignInAsync( LoginRequest request ) {
-            var user = await GetUser( request );
-            var result = await SignInManager.SignInAsync( user, request.Password, request.Remember.SafeValue() );
+        public async Task<SignInResult> SignInAsync(LoginRequest request)
+        {
+            var user = await GetUser(request);
+            var result = await SignInManager.SignInAsync(user, request.Password, request.Remember.SafeValue());
             await UnitOfWork.CommitAsync();
             return result;
         }
@@ -52,27 +56,29 @@ namespace GreatWall.Service.Implements {
         /// <summary>
         /// 获取用户
         /// </summary>
-        private async Task<User> GetUser( LoginRequest request ) {
-            if( request.UserName.IsEmpty() == false )
-                return await UserManager.FindByNameAsync( request.UserName );
-            if( request.PhoneNumber.IsEmpty() == false )
-                return await UserManager.FindByPhoneAsync( request.PhoneNumber );
-            if( request.Email.IsEmpty() == false )
-                return await UserManager.FindByEmailAsync( request.Email );
-            if( request.Account.IsEmpty() )
+        private async Task<User> GetUser(LoginRequest request)
+        {
+            if (request.UserName.IsEmpty() == false)
+                return await UserManager.FindByNameAsync(request.UserName);
+            if (request.PhoneNumber.IsEmpty() == false)
+                return await UserManager.FindByPhoneAsync(request.PhoneNumber);
+            if (request.Email.IsEmpty() == false)
+                return await UserManager.FindByEmailAsync(request.Email);
+            if (request.Account.IsEmpty())
                 return null;
-            var user = await UserManager.FindByNameAsync( request.Account );
-            if( user == null )
-                user = await UserManager.FindByPhoneAsync( request.Account );
-            if( user == null )
-                user = await UserManager.FindByEmailAsync( request.Account );
+            var user = await UserManager.FindByNameAsync(request.Account);
+            if (user == null)
+                user = await UserManager.FindByPhoneAsync(request.Account);
+            if (user == null)
+                user = await UserManager.FindByEmailAsync(request.Account);
             return user;
         }
 
         /// <summary>
         /// 退出登录
         /// </summary>
-        public async Task SignOutAsync() {
+        public async Task SignOutAsync()
+        {
             await SignInManager.SignOutAsync();
         }
     }

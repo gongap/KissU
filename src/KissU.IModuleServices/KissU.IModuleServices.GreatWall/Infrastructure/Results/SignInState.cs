@@ -1,4 +1,4 @@
-﻿namespace GreatWall.Results {
+﻿namespace KissU.IModuleServices.GreatWall.Results {
     /// <summary>
     /// 登录状态
     /// </summary>

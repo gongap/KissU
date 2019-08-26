@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using KissU.Domain.Systems.Models;
+using KissU.Modules.Admin.Domain.Models;
 
-namespace KissU.Data.Mappings.Systems.SqlServer 
+namespace KissU.Modules.Admin.Data.Mappings.SqlServer 
 {
     /// <summary>
     /// 语言国际化配置映射配置

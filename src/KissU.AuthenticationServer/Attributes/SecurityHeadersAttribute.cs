@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace GreatWall.Attributes {
+namespace KissU.AuthenticationServer.Attributes {
     /// <summary>
     /// 安全头
     /// </summary>

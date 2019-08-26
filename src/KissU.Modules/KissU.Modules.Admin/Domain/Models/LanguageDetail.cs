@@ -1,4 +1,4 @@
-﻿namespace KissU.Domain.Systems.Models
+﻿namespace KissU.Modules.Admin.Domain.Models
 {
     /// <summary>
     /// 语言国际化配置

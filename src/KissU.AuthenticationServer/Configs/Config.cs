@@ -4,9 +4,12 @@ using IdentityModel;
 using IdentityServer4;
 using IdentityServer4.Models;
 
-namespace GreatWall.Configs {
-    public class Config {
-        public static IEnumerable<IdentityResource> GetIdentityResources() {
+namespace KissU.AuthenticationServer.Configs
+{
+    public class Config
+    {
+        public static IEnumerable<IdentityResource> GetIdentityResources()
+        {
             return new List<IdentityResource>
             {
                 new IdentityResources.OpenId(),
@@ -14,7 +17,8 @@ namespace GreatWall.Configs {
             };
         }
 
-        public static IEnumerable<ApiResource> GetApiResources() {
+        public static IEnumerable<ApiResource> GetApiResources()
+        {
             return new List<ApiResource>
             {
                 new ApiResource("api", "API") {
@@ -36,7 +40,8 @@ namespace GreatWall.Configs {
 
         public const string AdminUrl = "http://localhost:1927";
 
-        public static IEnumerable<Client> GetClients() {
+        public static IEnumerable<Client> GetClients()
+        {
             return new List<Client>
             {
                 new Client
