@@ -1,19 +1,15 @@
 using System;
-using System.IO;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Swashbuckle.AspNetCore.Swagger;
 using Util.Logs.Extensions;
 using Util.Ui.Extensions;
 using Util.Webs.Extensions;
 using Util;
-using Util.Helpers;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.SpaServices.AngularCli;
 
 namespace KissU.AdminConsole
 {
@@ -64,7 +60,7 @@ namespace KissU.AdminConsole
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddRazorPageConventions();
 
             //添加Spa单页服务
-            //services.AddSpaStaticFiles(configuration => { configuration.RootPath = "Typings/dist"; });
+            services.AddSpaStaticFiles(configuration => { configuration.RootPath = "Typings/dist"; });
 
             //添加NLog日志操作
             services.AddNLog();
@@ -114,7 +110,7 @@ namespace KissU.AdminConsole
         {
             app.UseErrorLog();
             app.UseStaticFiles();
-            //app.UseSpaStaticFiles();
+            app.UseSpaStaticFiles();
             app.UseAuthentication();
             ConfigRoute(app);
         }
@@ -127,11 +123,11 @@ namespace KissU.AdminConsole
             app.UseMvc(routes => {
                 routes.MapSpaFallbackRoute("spa-fallback", new { controller = "Home", action = "Index" });
             });
-            //app.UseSpa(spa =>
-            //{
-            //    spa.Options.SourcePath = "Typings";
-            //    if (Environment.IsDevelopment()) spa.UseAngularCliServer("start");
-            //});
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = "Typings";
+                if (Environment.IsDevelopment()) spa.UseAngularCliServer("start");
+            });
         }
     }
 }

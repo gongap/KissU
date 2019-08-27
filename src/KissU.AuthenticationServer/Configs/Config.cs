@@ -40,7 +40,7 @@ namespace KissU.AuthenticationServer.Configs
 
         public const int AccessTokenLifetime = 90000000;
 
-        public const string AdminUrl = "http://localhost:1927";
+        public const string AdminUrl = "http://localhost:4200";
 
         public static IEnumerable<Client> GetClients()
         {

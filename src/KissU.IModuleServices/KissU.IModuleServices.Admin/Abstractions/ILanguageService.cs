@@ -16,9 +16,11 @@ namespace KissU.IModuleServices.Admin.Abstractions
     [ServiceBundle("api/{Service}")]
     public interface ILanguageService : IService
     {
-        /// <summary>通过编码获取</summary>
-        /// <param name="code">编码</param>
-        Task<Dictionary<string, string>> GetByCodeAsync(string code);
+        /// <summary>
+        /// 获取语言国际化数据
+        /// </summary>
+        /// <param name="lang">语言编码</param>
+        Task<Dictionary<string, string>> GetLangDataAsync(string lang = "zh-CN");
 
         /// <summary>
         /// 通过编号获取

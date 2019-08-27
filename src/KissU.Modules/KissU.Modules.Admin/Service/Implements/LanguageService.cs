@@ -63,11 +63,13 @@ namespace KissU.Modules.Admin.Service.Implements
             return dto.ToEntity();
         }
 
-        /// <summary>通过编码获取</summary>
-        /// <param name="code">编码</param>
-        public async Task<Dictionary<string, string>> GetByCodeAsync(string code)
+        /// <summary>
+        /// 获取语言国际化数据
+        /// </summary>
+        /// <param name="lang">语言编码</param>
+        public async Task<Dictionary<string, string>> GetLangDataAsync(string lang)
         {
-            var language = await LanguageRepository.Find(x => x.Code == code).Include(x => x.Details)
+            var language = await LanguageRepository.Find(x => x.Code == lang).Include(x => x.Details)
                 .SingleOrDefaultAsync();
             if (language != null && language.Details?.Count > 0)
             {
