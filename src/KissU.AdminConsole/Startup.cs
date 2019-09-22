@@ -67,7 +67,7 @@ namespace KissU.AdminConsole
 
             //添加Swagger
             services.AddSwaggerGen(options => {
-                options.SwaggerDoc("v1", new Info { Title = "兽医系统接口文档", Version = "v1" });
+                options.SwaggerDoc("v1", new Info { Title = "接口文档", Version = "v1" });
             });
 
             //添加Util基础设施服务
