@@ -24,8 +24,6 @@
     <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.Protocol.Mqtt\Surging.Core.Protocol.Mqtt.csproj" />
     <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.Protocol.WS\Surging.Core.Protocol.WS.csproj" />
     <ProjectReference Include="..\..\..\surging\src\WebSocket\WebSocketCore\WebSocketCore.csproj" />
-    <ProjectReference Include="..\..\KissU.IModuleServices\KissU.IModuleServices.Common\KissU.IModuleServices.Common.csproj" />
-    <ProjectReference Include="..\..\KissU.IModuleServices\KissU.IModuleServices.Manger\KissU.IModuleServices.Manager.csproj" />
   </ItemGroup>
 
 </Project>

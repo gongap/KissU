@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.ProxyGenerator\Surging.Core.ProxyGenerator.csproj" />
-    <ProjectReference Include="..\..\KissU.IModuleServices\KissU.IModuleServices.Manger\KissU.IModuleServices.Manager.csproj" />
   </ItemGroup>
 
 </Project>
