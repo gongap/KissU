@@ -41,7 +41,7 @@
     <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.System\Surging.Core.System.csproj" />
     <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.Zookeeper\Surging.Core.Zookeeper.csproj" />
     <ProjectReference Include="..\..\..\surging\src\WebSocket\WebSocketCore\WebSocketCore.csproj" />
-  </ItemGroup>
+    <ProjectReference Include="..\..\..\lib\Surging.Core.Util\Surging.Core.Util.csproj" />  </ItemGroup>
 
   <ItemGroup>
     <None Update="cacheSettings.json">

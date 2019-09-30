@@ -21,7 +21,7 @@
     "Ports": {
       "HttpPort": "${HttpPort}|8002", //指定微服务对外提供的Http端口号,微服务组件必须依赖KestrelHttpModule才会对外提供Http服务，该配置项才有效
       "WSPort": "${WSPort}|9002", //指定微服务对外提供的Ws端口号,微服务组件必须依赖WSProtocolModule才会对外提供WS服务，该配置项才有效
-      "MQTTPort": "${MQTTPort}|9002" //指定微服务对外提供的Mqtt端口号,微服务组件必须依赖MqttProtocolModule才会对外提供Mqtt服务，该配置项才有效
+      "MQTTPort": "${MQTTPort}|7002" //指定微服务对外提供的Mqtt端口号,微服务组件必须依赖MqttProtocolModule才会对外提供Mqtt服务，该配置项才有效
     },
     "RequestCacheEnabled": false,
     "Packages": [
@@ -85,12 +85,12 @@
       "Description": "${SwaggerDes}|KissU Services",
       "Contact": {
         "Name": "API Support", //联系人	建议填写微服务组件的开发责任人
-        "Url": "https://github.com/dotnetcore/surging", //微服务组件的项目地址
-        "Email": "fanliang1@hotmail.com" //联系人的Email
+        "Url": "https://github.com/gongap/kissu", //微服务组件的项目地址
+        "Email": "gonganping@qq.com" //联系人的Email
       },
       "License": {
         "Name": "MIT",
-        "Url": "https://github.com/dotnetcore/surging/blob/master/LICENSE"
+        "Url": ""
       }
     },
     "Options": {

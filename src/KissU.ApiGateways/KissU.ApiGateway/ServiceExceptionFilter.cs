@@ -1,11 +1,8 @@
-﻿using Surging.Core.CPlatform.Exceptions;
+﻿using System;
+using Surging.Core.CPlatform.Exceptions;
 using Surging.Core.CPlatform.Filters.Implementation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Surging.ApiGateway
+namespace KissU.ApiGateway
 {
     public class ServiceExceptionFilter: ExceptionFilterAttribute
     {

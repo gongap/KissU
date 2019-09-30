@@ -16,7 +16,7 @@
  <PackageLicenseUrl>https://github.com/dotnetcore/surging/blob/master/LICENSE</PackageLicenseUrl>
  <PackageProjectUrl>https://github.com/dotnetcore/surging</PackageProjectUrl>
  <PackageTags>MicroService surging</PackageTags>
- <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>  </PropertyGroup>
+ <DockerComposeProjectPath>..\..\..\surging\src\docker-compose.dcproj</DockerComposeProjectPath>  </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.8.1" />
@@ -51,7 +51,6 @@
     <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.CPlatform\Surging.Core.CPlatform.csproj" />
     <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.DotNetty\Surging.Core.DotNetty.csproj" />
     <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.ProxyGenerator\Surging.Core.ProxyGenerator.csproj" />
-    <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.System\Surging.Core.System.csproj" />
     <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.Zookeeper\Surging.Core.Zookeeper.csproj" />
   </ItemGroup>
 

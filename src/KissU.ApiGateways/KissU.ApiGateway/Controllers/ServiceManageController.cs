@@ -1,20 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Surging.ApiGateway.Models;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using KissU.ApiGateway.Models;
+using Microsoft.AspNetCore.Mvc;
 using Surging.Core.ApiGateWay.ServiceDiscovery;
 using Surging.Core.ApiGateWay.ServiceDiscovery.Implementation;
 using Surging.Core.ApiGateWay.Utilities;
-using Surging.Core.Caching.HashAlgorithms;
 using Surging.Core.CPlatform;
 using Surging.Core.CPlatform.Cache;
 using Surging.Core.CPlatform.Support;
-using Surging.Core.CPlatform.Utilities;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace Surging.ApiGateway.Controllers
+namespace KissU.ApiGateway.Controllers
 {
     public class ServiceManageController : Controller
     {

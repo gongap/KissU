@@ -1,12 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Surging.Core.ApiGateWay.ServiceDiscovery;
 using Surging.Core.ApiGateWay.Utilities;
 using Surging.Core.CPlatform.Address;
-using Surging.Core.CPlatform.Utilities;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Surging.ApiGateway.Controllers
+namespace KissU.ApiGateway.Controllers
 {
     public class AuthenticationManageController : Controller
     {

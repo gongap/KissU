@@ -1,4 +1,6 @@
-﻿using Autofac;
+﻿using System;
+using System.Text;
+using Autofac;
 using Microsoft.Extensions.Logging;
 using Surging.Core.Caching.Configurations;
 using Surging.Core.CPlatform;
@@ -7,8 +9,7 @@ using Surging.Core.CPlatform.Utilities;
 using Surging.Core.ProxyGenerator;
 using Surging.Core.ServiceHosting;
 using Surging.Core.ServiceHosting.Internal.Implementation;
-using System;
-using System.Text;
+
 //using Surging.Core.EventBusKafka;
 //using Surging.Core.Zookeeper;
 //using Surging.Core.Zookeeper.Configurations;

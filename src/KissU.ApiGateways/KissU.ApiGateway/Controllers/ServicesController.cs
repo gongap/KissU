@@ -1,25 +1,23 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Surging.Core.ApiGateWay;
 using Surging.Core.ApiGateWay.OAuth;
 using Surging.Core.CPlatform;
 using Surging.Core.CPlatform.Filters.Implementation;
 using Surging.Core.CPlatform.Routing;
-using Surging.Core.ProxyGenerator;
-using Surging.Core.ProxyGenerator.Utilitys;
-using System;
-using System.Collections.Generic;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using System.Linq;
-using GateWayAppConfig = Surging.Core.ApiGateWay.AppConfig;
-using System.Reflection;
-using Surging.Core.CPlatform.Utilities;
-using Newtonsoft.Json.Linq;
-using Surging.Core.CPlatform.Transport.Implementation;
 using Surging.Core.CPlatform.Routing.Template;
+using Surging.Core.CPlatform.Transport.Implementation;
+using Surging.Core.CPlatform.Utilities;
+using Surging.Core.ProxyGenerator;
+using GateWayAppConfig = Surging.Core.ApiGateWay.AppConfig;
 
-namespace Surging.ApiGateway.Controllers
+namespace KissU.ApiGateway.Controllers
 {
     public class ServicesController : Controller
     {
@@ -27,8 +25,8 @@ namespace Surging.ApiGateway.Controllers
         private readonly IServiceRouteProvider _serviceRouteProvider;
         private readonly IAuthorizationServerProvider _authorizationServerProvider;
 
-
-        public ServicesController(IServiceProxyProvider serviceProxyProvider,
+     
+        public ServicesController(IServiceProxyProvider serviceProxyProvider, 
             IServiceRouteProvider serviceRouteProvider,
             IAuthorizationServerProvider authorizationServerProvider)
         {
@@ -111,7 +109,7 @@ namespace Surging.ApiGateway.Controllers
         }
 
         private bool GetAllowRequest(ServiceRoute route)
-        {
+        {  
             return !route.ServiceDescriptor.DisableNetwork();
         }
 
@@ -122,14 +120,14 @@ namespace Surging.ApiGateway.Controllers
             var result = (isSuccess, serviceResult);
             if (route.ServiceDescriptor.EnableAuthorization())
             {
-                if (route.ServiceDescriptor.AuthType() == AuthorizationType.JWT.ToString())
+                if(route.ServiceDescriptor.AuthType()== AuthorizationType.JWT.ToString())
                 {
-                    result = await ValidateJwtAuthentication(route, model);
+                    result =await ValidateJwtAuthentication(route,model);
                 }
                 else
                 {
                     isSuccess = ValidateAppSecretAuthentication(route, model, ref serviceResult);
-                    result = (isSuccess, serviceResult);
+                    result= (isSuccess,serviceResult);
                 }
 
             }
@@ -139,11 +137,11 @@ namespace Surging.ApiGateway.Controllers
         public async Task<(bool, ServiceResult<object>)> ValidateJwtAuthentication(ServiceRoute route, Dictionary<string, object> model)
         {
             var result = ServiceResult<object>.Create(false, null);
-            bool isSuccess = true;
+            bool isSuccess = true; 
             var author = HttpContext.Request.Headers["Authorization"];
             if (author.Count > 0)
             {
-                isSuccess = await _authorizationServerProvider.ValidateClientAuthentication(author);
+                isSuccess =await _authorizationServerProvider.ValidateClientAuthentication(author);
                 if (!isSuccess)
                 {
                     result = new ServiceResult<object> { IsSucceed = false, StatusCode = (int)ServiceStatusCode.AuthorizationFailed, Message = "Invalid authentication credentials" };
@@ -152,7 +150,7 @@ namespace Surging.ApiGateway.Controllers
                 {
                     var payload = _authorizationServerProvider.GetPayloadString(author);
                     RpcContext.GetContext().SetAttachment("payload", payload);
-                    if (model.Count > 0)
+                    if (model.Count>0)
                     {
                         var keyValue = model.FirstOrDefault();
                         if (!(keyValue.Value is IConvertible) || !typeof(IConvertible).GetTypeInfo().IsAssignableFrom(keyValue.Value.GetType()))
@@ -170,7 +168,7 @@ namespace Surging.ApiGateway.Controllers
                 result = new ServiceResult<object> { IsSucceed = false, StatusCode = (int)ServiceStatusCode.RequestError, Message = "Request error" };
                 isSuccess = false;
             }
-            return (isSuccess, result);
+            return  (isSuccess,result);
         }
 
 

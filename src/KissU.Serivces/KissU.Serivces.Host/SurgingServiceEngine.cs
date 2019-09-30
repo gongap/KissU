@@ -16,6 +16,9 @@ namespace KissU.Services.Host
             ComponentServiceLocationFormats  = new[] {
                  EnvironmentHelper.GetEnvironmentVariable("${ComponentPath1}|Components"),
             };
+            //ModuleServiceLocationFormats = new[] {
+            //   ""
+            //};
         }
     }
 }

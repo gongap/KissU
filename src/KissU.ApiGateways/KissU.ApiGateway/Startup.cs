@@ -1,4 +1,6 @@
-﻿using Autofac;
+﻿using System;
+using System.Linq;
+using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -10,24 +12,22 @@ using Newtonsoft.Json.Serialization;
 using Surging.Core.ApiGateWay;
 using Surging.Core.ApiGateWay.Configurations;
 using Surging.Core.ApiGateWay.OAuth.Implementation.Configurations;
+using Surging.Core.Caching;
 using Surging.Core.Caching.Configurations;
 using Surging.Core.Codec.MessagePack;
 using Surging.Core.Consul;
 using Surging.Core.Consul.Configurations;
 using Surging.Core.CPlatform;
+using Surging.Core.CPlatform.Cache;
 using Surging.Core.CPlatform.Utilities;
 using Surging.Core.DotNetty;
 using Surging.Core.ProxyGenerator;
 using Surging.Core.Zookeeper;
 //using Surging.Core.Zookeeper;
 using ZookeeperConfigInfo =  Surging.Core.Zookeeper.Configurations.ConfigInfo;
-using System;
 using ApiGateWayConfig = Surging.Core.ApiGateWay.AppConfig;
-using Surging.Core.Caching;
-using Surging.Core.CPlatform.Cache;
-using System.Linq;
 
-namespace Surging.ApiGateway
+namespace KissU.ApiGateway
 {
     public class Startup
     {
@@ -58,10 +58,7 @@ namespace Surging.ApiGateway
                 options.Filters.Add(typeof(CustomExceptionFilterAttribute));
             }).AddJsonOptions(options => {
                 options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
-                //驼峰样式序列化处理key
-                options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-                //使用默认方式，不更改元数据的key的大小写
-                //options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+                options.SerializerSettings.ContractResolver = new DefaultContractResolver();
             });
             services.AddLogging();
             services.AddCors();
@@ -93,6 +90,7 @@ namespace Surging.ApiGateway
             loggerFactory.AddConsole();
             var serviceCacheProvider = ServiceLocator.Current.Resolve<ICacheNodeProvider>();
             var addressDescriptors = serviceCacheProvider.GetServiceCaches().ToList();
+            ServiceLocator.Current.Resolve<IServiceProxyFactory>();
             ServiceLocator.Current.Resolve<IServiceCacheManager>().SetCachesAsync(addressDescriptors);
             ServiceLocator.Current.Resolve<IConfigurationWatchProvider>();
 
@@ -106,7 +104,7 @@ namespace Surging.ApiGateway
             }
             app.UseCors(builder =>
             {
-                var policy = Core.ApiGateWay.AppConfig.Policy;
+                var policy = Surging.Core.ApiGateWay.AppConfig.Policy;
                 builder.WithOrigins(policy.Origins);
                 if (policy.AllowAnyHeader)
                     builder.AllowAnyHeader();

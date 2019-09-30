@@ -3,12 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Surging.Core.ApiGateWay;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Surging.ApiGateway
+namespace KissU.ApiGateway
 {
     public class CustomExceptionFilterAttribute : ExceptionFilterAttribute
     {

@@ -4,6 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Surging.Core.Caching.Configurations;
 using Surging.Core.CPlatform.Utilities;
+using Surging.Core.EventBusKafka.Configurations;
+using Util.Helpers;
 
 namespace KissU.Services.Host
 {
@@ -30,6 +32,7 @@ namespace KissU.Services.Host
             ConfigureLogging(services);
             builder.Populate(services);
             var container = builder.Build();
+            Ioc.Register(container);
             ServiceLocator.Current = container;
             return ServiceLocator.Current;
         }
@@ -46,6 +49,7 @@ namespace KissU.Services.Host
         /// <summary>
         ///  配置日志服务
         /// </summary>
+        /// <param name="services">服务集合</param>
         private void ConfigureLogging(IServiceCollection services)
         {
             //services.AddLogging();
@@ -54,6 +58,7 @@ namespace KissU.Services.Host
         /// <summary>
         ///  配置事件总线
         /// </summary>
+        /// <param name="build">服务构建者</param>
         private static void ConfigureEventBus(IConfigurationBuilder build)
         {
             //build.AddEventBusFile("eventBusSettings.json", false);
