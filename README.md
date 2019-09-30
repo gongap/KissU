@@ -28,8 +28,8 @@ KissU 是一个分布式微服务应用框架,提供高性能RPC远程服务调�
 
 ### 架构图
 
-<img src="https://github.com/gongap/kissu/master/architecture.png" alt="架构图" />
+<img src="https://github.com/gongap/KissU/blob/master/architecture.png" alt="架构图" />
 
 ### 调用链
 
-<img src="https://github.com/gongap/kissu/master/call-chain.png" alt="链路图" />
+<img src="https://github.com/gongap/KissU/blob/master/call-chain.png" alt="链路图" />
