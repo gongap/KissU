@@ -20,11 +20,11 @@ KissU 是一个分布式微服务应用框架,提供高性能RPC远程服务调�
 
 4.分布式缓存中间件：通过哈希一致性算法来实现负载，并且有健康检查能够平滑的把不健康的服务从列表中删除
 
-5. 事件总线：通过对于事件总线的适配可以实现发布订阅交互模式
+5.事件总线：通过对于事件总线的适配可以实现发布订阅交互模式
 
 6.容器化持续集成与持续交付 ：通过构建一体化Devops平台,实现项目的自动化构建、部署、测试和发布，从而提高生产环境的可靠性、稳定性、弹性和安全性。
 
-7. 业务模块化驱动引擎，通过加载指定业务模块，能够更加灵活、高效的部署不同版本的业务功能模块
+7.业务模块化驱动引擎，通过加载指定业务模块，能够更加灵活、高效的部署不同版本的业务功能模块
 
 ### 架构图
 
@@ -33,3 +33,161 @@ KissU 是一个分布式微服务应用框架,提供高性能RPC远程服务调�
 ### 调用链
 
 <img src="https://github.com/gongap/KissU/blob/master/call-chain.png" alt="链路图" />
+
+
+### 文件配置：
+
+```c#
+{
+  "ConnectionString": "${Register_Conn}|127.0.0.1:8500", // ${环境变量名} |默认值,
+  "SessionTimeout": "${Register_SessionTimeout}|50",
+  "ReloadOnChange": true
+}
+
+```
+
+### 非容器环境文件配置
+
+```c#
+ {
+  "Ip": "${Server_IP}|127.0.0.1",
+  "WatchInterval": 30,
+  "Port": "${Server_port}",
+  "Token": "true",
+   "Protocol": "${Protocol}|Tcp", //支持Http,Tcp协议
+  "RootPath": "${RootPath}",
+  "RequestCacheEnabled": false
+}
+
+```
+
+
+### 容器环境文件配置
+
+```c#
+ {
+  "Ip": "${Server_IP}|0.0.0.0",//私有容器IP
+  "WatchInterval": 30,
+  "Port": "${Server_port}|98",//私有容器端口
+   "MappingIp": "${Mapping_ip}",//公开主机IP
+  "MappingPort": "${Mapping_Port}",//公开主机端口
+   "Protocol": "${Protocol}|Tcp", //支持Http,Tcp协议
+  "Token": "true",
+  "RootPath": "${RootPath}",
+  "RequestCacheEnabled": false
+}
+
+```
+
+
+服务路由访问配置：
+<br/>
+
+```c#
+[ServiceBundle("api/{Service}")]
+ ```    
+<br/>
+
+JWT验证，接口方法添加以下特性：
+<br/>
+
+```c#
+   [Authorization(AuthType = AuthorizationType.JWT)];
+ ```    
+<br/>
+
+AppSecret验证，接口方法添加以下特性：
+<br/>
+
+```c#
+ [Authorization(AuthType = AuthorizationType.AppSecret)];
+ ```    
+<br/>
+
+订阅功能：
+<br/>
+
+```c#
+ ServiceLocator.GetService< ISubscriptionAdapt >().SubscribeAt();
+ ```    
+ 
+ <br/>
+增加服务容错、服务容错降级、服务强制降级
+
+
+* 增加容错策略Injection，脚本注入：
+
+<br/>
+
+```c#
+[Command(Strategy= StrategyType.Injection ,Injection = @"return null;")]
+```    
+
+ <br/>
+ 
+```C#  
+[Command(Strategy= StrategyType.Injection ,Injection = @"return 
+Task.FromResult(new Surging.IModuleServices.Common.Models.UserModel
+         {
+            Name=""fanly"",
+            Age=18
+         });",InjectionNamespaces =new string[] { "Surging.IModuleServices.Common"})] 
+```
+
+
+* 增加容错策略Injection，本地模块注入：   
+
+<br/>
+
+```C#  
+[Command(Strategy= StrategyType.Injection ,Injection = @"return true;")] 
+```
+
+<br/>
+
+增加缓存降级，怎么使用？
+<br/>
+在业务接口方法上添加如下特性
+<br/>
+
+```C#  
+   [Command(Strategy= StrategyType.Failover,FailoverCluster =3,RequestCacheEnabled =true)]  //RequestCacheEnabled =true 就是启用缓存
+```
+
+<br/>
+怎么拦截获取缓存
+ <br/>
+在业务接口方法上添加如下特性
+ <br/>
+ 
+```C#  
+ [InterceptMethod(CachingMethod.Get, Key = "GetUser_id_{0}", Mode = CacheTargetType.Redis, Time = 480)]
+```
+    
+<br/>
+怎么拦截删除缓存
+ <br/>
+在业务接口方法上添加如下特性
+ <br/>
+ 
+```C#  
+  [InterceptMethod(CachingMethod.Remove, "GetUser_id_{0}", "GetUserName_name_{0}", Mode = CacheTargetType.Redis)]
+```
+      
+<br/>
+怎么添加缓存KEY
+   <br/>
+在业务模型属性上添加，如下特性，可以支持多个
+   <br/>
+   
+```C# 
+[CacheKey(1)]
+```
+        
+<br/>
+配置拦截器
+<br/>
+   
+```C# 
+ .AddClientIntercepted(typeof(CacheProviderInterceptor))
+``
