@@ -1,7 +1,7 @@
 # KissU应用框架介绍 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://mit-license.org/)
 
-### KissU 是一个分布式微服务应用框架,提供高性能RPC远程服务调用，采用Zookeeper、Consul作为surging服务的注册中心，集成了哈希，随机，轮询，压力最小优先作为负载均衡的算法，RPC集成采用的是netty框架，采用异步传输。
+KissU 是一个分布式微服务应用框架,提供高性能RPC远程服务调用，采用Zookeeper、Consul作为服务的注册中心，集成了哈希，随机，轮询，压力最小优先作为负载均衡的算法，RPC集成采用的是netty框架，采用异步传输。
 
 ### 微服务定义
 微服务应该是可以自由组合拆分，对于每个业务都是独立的，针对于业务模块的 CRUD 可以注册为服务，而每个服务都是高度自治的，从开发，部署都是独立，而每个服务只做单一功能，利用领域驱动设计去更好的拆分成粒度更小的模块
@@ -28,8 +28,8 @@
 
 ### 架构图
 
-<img src="https://github.com/dotnetcore/surging/blob/master/docs/Architecture.png" alt="架构图" />
+<img src="https://github.com/gongap/kissu/master/architecture.png" alt="架构图" />
 
 ### 调用链
 
-<img src="https://github.com/dotnetcore/surging/blob/master/docs/call-chain.png" alt="链路图" />
+<img src="https://github.com/gongap/kissu/master/call-chain.png" alt="链路图" />
