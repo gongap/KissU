@@ -1,7 +1,7 @@
 ﻿using Surging.Core.CPlatform.Engines.Implementation;
 using Surging.Core.CPlatform.Utilities;
 
-namespace KissU.Services.Host
+namespace KissU.Services.Server
 {
     /// <summary>
     /// 微服务引擎

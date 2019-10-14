@@ -4,10 +4,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Surging.Core.Caching.Configurations;
 using Surging.Core.CPlatform.Utilities;
-using Surging.Core.EventBusKafka.Configurations;
 using Util.Helpers;
 
-namespace KissU.Services.Theme.Host
+namespace KissU.Services.Theme.Server
 {
     /// <summary>
     ///  启动配置
