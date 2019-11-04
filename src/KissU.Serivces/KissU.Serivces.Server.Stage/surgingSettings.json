@@ -3,7 +3,7 @@
   "Surging": {
     "Ip": "${Surging_Server_IP}|127.0.0.1", //"配置微服务主机的Ip地址或域名": null,
     "WatchInterval": 30, //设置向服务注册中心更新路由数据的心跳值，缺省值为20s
-    "Port": "${Surging_Server_Port}|91", //微服务主机运行的端口号
+    "Port": "${Surging_Server_Port}|92", //微服务主机运行的端口号
     "MappingIp": "${Mapping_ip}", //映射的Ip地址，暂不需要配置
     "MappingPort": "${Mapping_Port}", //映射的端口号，	暂不需要配置
     "Token": "true", //是否验证Token	缺省值为True
@@ -19,9 +19,9 @@
     "IsModulePerLifetimeScope": false,
     "ReloadOnChange": false,
     "Ports": {
-      "HttpPort": "${HttpPort}|8001", //指定微服务对外提供的Http端口号,微服务组件必须依赖KestrelHttpModule才会对外提供Http服务，该配置项才有效
-      "WSPort": "${WSPort}|9001", //指定微服务对外提供的Ws端口号,微服务组件必须依赖WSProtocolModule才会对外提供WS服务，该配置项才有效
-      "MQTTPort": "${MQTTPort}|7001" //指定微服务对外提供的Mqtt端口号,微服务组件必须依赖MqttProtocolModule才会对外提供Mqtt服务，该配置项才有效
+      "HttpPort": "${HttpPort}|8002", //指定微服务对外提供的Http端口号,微服务组件必须依赖KestrelHttpModule才会对外提供Http服务，该配置项才有效
+      "WSPort": "${WSPort}|9002", //指定微服务对外提供的Ws端口号,微服务组件必须依赖WSProtocolModule才会对外提供WS服务，该配置项才有效
+      "MQTTPort": "${MQTTPort}|7002" //指定微服务对外提供的Mqtt端口号,微服务组件必须依赖MqttProtocolModule才会对外提供Mqtt服务，该配置项才有效
     },
     "RequestCacheEnabled": false,
     "Packages": [

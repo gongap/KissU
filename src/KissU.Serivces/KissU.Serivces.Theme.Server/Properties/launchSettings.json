@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "KissU.Services.Theme.Server": {
-      "commandName": "Project",
-      "nativeDebugging": false
-    }
-  }
-}
