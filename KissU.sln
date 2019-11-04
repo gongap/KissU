@@ -193,6 +193,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.ApiGateway", "src\Kis
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Services.Server.Stage", "src\KissU.Serivces\KissU.Serivces.Server.Stage\KissU.Services.Server.Stage.csproj", "{869A9A62-9E8C-4A16-B08C-EE844E8D0843}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Theme", "src\KissU.Modules\KissU.Modules.Theme\KissU.Modules.Theme.csproj", "{2130D6B7-BEFB-40BE-AC10-929E7E287EA8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -451,6 +453,10 @@ Global
 		{869A9A62-9E8C-4A16-B08C-EE844E8D0843}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{869A9A62-9E8C-4A16-B08C-EE844E8D0843}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{869A9A62-9E8C-4A16-B08C-EE844E8D0843}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2130D6B7-BEFB-40BE-AC10-929E7E287EA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2130D6B7-BEFB-40BE-AC10-929E7E287EA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2130D6B7-BEFB-40BE-AC10-929E7E287EA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2130D6B7-BEFB-40BE-AC10-929E7E287EA8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -539,6 +545,7 @@ Global
 		{6054A625-7D8B-4989-8C62-BCA6BED340B3} = {4ADD4E15-AA91-4C41-AE4B-CBF432762229}
 		{0F08D54D-23E4-4234-9ED5-C8BA4287796C} = {F1B4AAEF-9162-4DFA-8B62-4069FC914839}
 		{869A9A62-9E8C-4A16-B08C-EE844E8D0843} = {B4367C3C-5645-40C3-953C-466D82432072}
+		{2130D6B7-BEFB-40BE-AC10-929E7E287EA8} = {CA4753DA-E579-4995-AEDA-498741B7B860}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}

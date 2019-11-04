@@ -18,6 +18,7 @@
     <ProjectReference Include="..\..\..\util\src\Util.Security\02-Util.Security.csproj" />
     <ProjectReference Include="..\..\..\util\src\Util.Ui.Core\02-Util.Ui.Core.csproj" />
     <ProjectReference Include="..\KissU.IModuleServices.GreatWall\KissU.IModuleServices.GreatWall.csproj" />
+    <ProjectReference Include="..\KissU.IModuleServices.Theme\KissU.IModuleServices.Theme.csproj" />
   </ItemGroup>
 
   <ItemGroup>
