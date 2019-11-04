@@ -20,6 +20,7 @@ namespace KissU.IModuleServices.Theme.Abstractions
         /// 获取语言国际化数据
         /// </summary>
         /// <param name="lang">语言编码</param>
+        [HttpGet(true)]
         Task<Dictionary<string, string>> GetLangDataAsync(string lang = "zh-CN");
 
         /// <summary>

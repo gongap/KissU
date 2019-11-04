@@ -21,16 +21,9 @@ namespace KissU.Modules.Admin.Service.Implements
         /// <summary>
         /// 初始化主控制器
         /// </summary>
-        /// <param name="menuService">菜单服务</param>
-        public StartupService(IMenuService menuService)
+        public StartupService()
         {
-            MenuService = menuService;
         }
-
-        /// <summary>
-        /// 菜单服务
-        /// </summary>
-        public IMenuService MenuService { get; set; }
 
         /// <summary>
         /// 获取应用程序数据
@@ -53,7 +46,7 @@ namespace KissU.Modules.Admin.Service.Implements
         /// </summary>
         private async Task<List<MenuInfo>> GetMenus()
         {
-            var result = await MenuService.GetMenusAsync();
+            var result = await this.GetService<IMenuService>().GetMenusAsync();
             return result.ToNgAlainMenus();
         }
     }
