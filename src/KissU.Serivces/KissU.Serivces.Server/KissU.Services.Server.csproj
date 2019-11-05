@@ -1,4 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="../../../build/version.props" />
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -43,7 +44,8 @@
     <ProjectReference Include="..\..\..\surging\src\WebSocket\WebSocketCore\WebSocketCore.csproj" />
     <ProjectReference Include="..\..\..\lib\Surging.Core.Util\Surging.Core.Util.csproj" />
     <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.GreatWall\KissU.Modules.GreatWall.csproj" />
-    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Theme\KissU.Modules.Theme.csproj" />  </ItemGroup>
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Theme\KissU.Modules.Theme.csproj" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Update="cacheSettings.json">

@@ -1,4 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="../../../build/version.props" />
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -41,8 +42,8 @@
     <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.System\Surging.Core.System.csproj" />
     <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.Zookeeper\Surging.Core.Zookeeper.csproj" />
     <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.Stage\Surging.Core.Stage.csproj" />
-    <ProjectReference Include="..\..\..\surging\src\WebSocket\WebSocketCore\WebSocketCore.csproj" />    
-    <ProjectReference Include="..\..\..\lib\Surging.Core.Util\Surging.Core.Util.csproj" />    
+    <ProjectReference Include="..\..\..\surging\src\WebSocket\WebSocketCore\WebSocketCore.csproj" />
+    <ProjectReference Include="..\..\..\lib\Surging.Core.Util\Surging.Core.Util.csproj" />
     <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Admin\KissU.Modules.Admin.csproj" />
   </ItemGroup>
 

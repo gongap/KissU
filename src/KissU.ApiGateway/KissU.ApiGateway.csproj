@@ -1,4 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <Import Project="../../build/version.props" />
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -6,17 +7,18 @@
     <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
     <UserSecretsId>aspnet-Surging.ApiGateway-147A234E-A922-4E6A-89B8-DCC64AEA96EE</UserSecretsId>
     <ServerGarbageCollection>false</ServerGarbageCollection>
-     <TieredCompilation>true</TieredCompilation>
- <Version>1.0.0.0</Version>
- <Authors>fanly</Authors>
- <Product>surging Micro Service Framework</Product>
- <Company />
- <Description>surging is a distributed micro service framework that provides high-performance RPC remote service calls, using Zookeeper, Consul as the registration center for surging services, integrating hash, random, polling as a load balancing algorithm, RPC integration using the netty framework, Using asynchronous transmission. Use json.net, protobuf, messagepack for serialization Codec</Description>
- <Copyright>Copyright © fanly All Rights Reserved.</Copyright>
- <PackageLicenseUrl>https://github.com/dotnetcore/surging/blob/master/LICENSE</PackageLicenseUrl>
- <PackageProjectUrl>https://github.com/dotnetcore/surging</PackageProjectUrl>
- <PackageTags>MicroService surging</PackageTags>
- <DockerComposeProjectPath>..\..\surging\src\docker-compose.dcproj</DockerComposeProjectPath>  </PropertyGroup>
+    <TieredCompilation>true</TieredCompilation>
+    <Version>1.0.0.0</Version>
+    <Authors>fanly</Authors>
+    <Product>surging Micro Service Framework</Product>
+    <Company />
+    <Description>surging is a distributed micro service framework that provides high-performance RPC remote service calls, using Zookeeper, Consul as the registration center for surging services, integrating hash, random, polling as a load balancing algorithm, RPC integration using the netty framework, Using asynchronous transmission. Use json.net, protobuf, messagepack for serialization Codec</Description>
+    <Copyright>Copyright © fanly All Rights Reserved.</Copyright>
+    <PackageLicenseUrl>https://github.com/dotnetcore/surging/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/dotnetcore/surging</PackageProjectUrl>
+    <PackageTags>MicroService surging</PackageTags>
+    <DockerComposeProjectPath>..\..\surging\src\docker-compose.dcproj</DockerComposeProjectPath>
+  </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.8.1" />

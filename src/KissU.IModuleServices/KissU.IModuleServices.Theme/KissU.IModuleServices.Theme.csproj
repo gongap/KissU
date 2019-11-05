@@ -1,4 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+   <Import Project="../../../build/version.props" />
+   <Import Project="../../../build/version.props" />
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -12,5 +14,4 @@
     <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.CPlatform\Surging.Core.CPlatform.csproj" />
     <ProjectReference Include="..\..\..\util\src\Util.Applications\08-Util.Applications.csproj" />
   </ItemGroup>
-
 </Project>
