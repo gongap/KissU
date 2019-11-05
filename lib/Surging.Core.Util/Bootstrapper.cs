@@ -7,7 +7,7 @@ using Util.Dependency;
 using Util.Events.Handlers;
 using Util.Reflections;
 
-namespace Surging.Core.Util.Dependency
+namespace Surging.Core.Util
 {
     /// <summary>
     /// 依赖引导器
@@ -38,7 +38,6 @@ namespace Surging.Core.Util.Dependency
         /// <summary>
         /// 初始化依赖引导器
         /// </summary>
-        /// <param name="services">服务集合</param>
         /// <param name="configs">依赖配置</param>
         /// <param name="aopConfigAction">Aop配置操作</param>
         /// <param name="finder">类型查找器</param>
@@ -52,7 +51,6 @@ namespace Surging.Core.Util.Dependency
         /// <summary>
         /// 启动引导
         /// </summary>
-        /// <param name="services">服务集合</param>
         /// <param name="builder">容器生成器</param>
         /// <param name="configs">依赖配置</param>
         /// <param name="aopConfigAction">Aop配置操作</param>

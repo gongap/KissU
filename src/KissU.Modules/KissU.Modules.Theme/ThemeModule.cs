@@ -13,7 +13,7 @@ namespace KissU.Modules.Theme
     /// <summary>
     /// 扩展系统模块
     /// </summary>
-    public class ThemeModule : SystemModule
+    public class ThemeModule : BusinessModule
     {
         /// <summary>
         /// 注册第三方组件

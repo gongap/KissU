@@ -1,19 +1,18 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using System.Text;
+using Autofac;
 using Surging.Core.CPlatform.Module;
-using Surging.Core.KestrelHttpServer;
+using Util.Helpers;
 
 namespace Surging.Core.Util
 {
-    public class UtilModule : KestrelHttpModule
+    /// <inheritdoc />
+    public class UtilModule : SystemModule
     {
-        private ILogger<UtilModule> _logger;
+        /// <inheritdoc />
         public override void Initialize(AppModuleContext context)
         {
-            _logger = context.ServiceProvoider.GetInstances<ILogger<UtilModule>>();
-        }
-
-        public override void RegisterBuilder(ConfigurationContext context)
-        {
+            base.Initialize(context);
+            Ioc.Register(context.ServiceProvoider.Current as IContainer);
         }
 
         /// <summary>
@@ -22,7 +21,9 @@ namespace Surging.Core.Util
         /// <param name="builder"></param>
         protected override void RegisterBuilder(ContainerBuilderWrapper builder)
         {
-            builder.ContainerBuilder.AddUtil();
+            base.RegisterBuilder(builder);
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+            Bootstrapper.Run(builder.ContainerBuilder);
         }
     }
 }

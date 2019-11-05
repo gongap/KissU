@@ -14,7 +14,7 @@ namespace KissU.Modules.GreatWall
     /// <summary>
     /// 扩展系统模块
     /// </summary>
-    public class GreatWallModule : SystemModule
+    public class GreatWallModule : BusinessModule
     {
         /// <summary>
         /// 注册第三方组件
