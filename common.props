@@ -6,7 +6,7 @@
     <PackageProjectUrl>https://github.com/gongap/KissU</PackageProjectUrl>
     <RespositoryUrl>https://github.com/gongap/KissU.git</RespositoryUrl>
     <RespositoryType>git</RespositoryType>
-    <CodeAnalysisRuleSet>..\..\..\..\..\KissU.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>..\..\..\KissU.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <AdditionalFiles Include="..\..\..\..\..\stylecop.json" Link="stylecop.json"></AdditionalFiles>
-    <None Include="..\..\..\..\..\.editorconfig" Link=".editorconfig"></None>
+    <AdditionalFiles Include="..\..\..\stylecop.json" Link="stylecop.json"></AdditionalFiles>
+    <None Include="..\..\..\.editorconfig" Link=".editorconfig"></None>
   </ItemGroup>
 </Project>
