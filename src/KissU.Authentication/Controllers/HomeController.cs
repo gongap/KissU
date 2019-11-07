@@ -3,6 +3,9 @@ using IdentityServer4.Services;
 using KissU.Authentication.Attributes;
 using KissU.Authentication.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 
 namespace KissU.Authentication.Controllers
 {
@@ -29,9 +32,16 @@ namespace KissU.Authentication.Controllers
         /// <summary>
         /// 首页
         /// </summary>
-        public IActionResult Index()
+        [Authorize]
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var localAddresses = new string[] { "127.0.0.1", "::1", HttpContext.Connection.LocalIpAddress.ToString() };
+            if (!localAddresses.Contains(HttpContext.Connection.RemoteIpAddress.ToString()))
+            {
+                return Redirect("~/.well-known/openid-configuration");
+            }
+            var model = new DiagnosticsViewModel(await HttpContext.AuthenticateAsync());
+            return View(model);
         }
 
         /// <summary>

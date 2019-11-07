@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using IdentityModel;
 using IdentityServer4;
+using IdentityServer4.Events;
 using IdentityServer4.Extensions;
 using IdentityServer4.Models;
 using IdentityServer4.Services;
@@ -30,17 +31,25 @@ namespace KissU.Authentication.Controllers
         /// </summary>
         /// <param name="interaction">交互服务</param>
         /// <param name="schemeProvider">认证方案提供器</param>
+        /// <param name="eventService">事件服务</param>
         /// <param name="securityService">安全服务</param>
         /// <param name="userService">用户服务</param>
         public AccountController(IIdentityServerInteractionService interaction,
             IAuthenticationSchemeProvider schemeProvider,
+            IEventService eventService,
             ISecurityService securityService, IUserService userService)
         {
             InteractionService = interaction;
             AuthenticationSchemeProvider = schemeProvider;
+            EventService = eventService;
             SecurityService = securityService;
             UserService = userService;
         }
+
+        /// <summary>
+        /// 事件服务
+        /// </summary>
+        public IEventService EventService { get; set; }
 
         /// <summary>
         /// 交互服务
@@ -201,8 +210,16 @@ namespace KissU.Authentication.Controllers
         [HttpGet]
         public async Task<IActionResult> Logout(string logoutId)
         {
-            var model = await BuildLogoutViewModelAsync(logoutId);
-            return await Logout(model);
+            // 构建注销视图模型
+            var vm = await BuildLogoutViewModelAsync(logoutId);
+
+            if (!string.IsNullOrEmpty(vm.LogoutId) && vm.ShowLogoutPrompt == false)
+            {
+                // 如果对注销请求进行了适当的身份验证，则不需要显示提示，可以直接注销用户
+                return await Logout(vm);
+            }
+
+            return View(vm);
         }
 
         /// <summary>
@@ -234,18 +251,29 @@ namespace KissU.Authentication.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout(LogoutViewModel model)
         {
-            var result = await BuildLoggedOutViewModelAsync(model.LogoutId);
+            // 构建注销视图模型
+            var vm = await BuildLoggedOutViewModelAsync(model.LogoutId);
+
             if (User?.Identity.IsAuthenticated == true)
-                await SecurityService.SignOutAsync();
-            if (result.TriggerExternalSignout)
             {
-                string url = Url.Action("Logout", new {logoutId = result.LogoutId});
-                return SignOut(new AuthenticationProperties {RedirectUri = url}, result.ExternalAuthenticationScheme);
+                // 退出登录
+                await SecurityService.SignOutAsync();
+
+                // 发布注销事件
+                await EventService.RaiseAsync(new UserLogoutSuccessEvent(User.GetSubjectId(), User.GetDisplayName()));
             }
 
-            if (result.PostLogoutRedirectUri.IsEmpty())
-                return View();
-            return Redirect(result.PostLogoutRedirectUri);
+            // 检查是否需要在上游身份提供者登出
+            if (vm.TriggerExternalSignout)
+            {
+                // 构建返回URL，以便上游提供程序将重定向回来，完成单点退出
+                string url = Url.Action("Logout", new { logoutId = vm.LogoutId });
+
+                // 触发重定向到外部提供程序进行登出
+                return SignOut(new AuthenticationProperties { RedirectUri = url }, vm.ExternalAuthenticationScheme);
+            }
+
+            return View("LoggedOut", vm);
         }
 
         /// <summary>
