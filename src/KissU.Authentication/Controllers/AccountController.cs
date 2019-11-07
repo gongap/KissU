@@ -6,9 +6,9 @@ using IdentityServer4;
 using IdentityServer4.Extensions;
 using IdentityServer4.Models;
 using IdentityServer4.Services;
-using KissU.AuthenticationServer.Attributes;
-using KissU.AuthenticationServer.Configs;
-using KissU.AuthenticationServer.Models;
+using KissU.Authentication.Attributes;
+using KissU.Authentication.Configs;
+using KissU.Authentication.Models;
 using KissU.IModuleServices.GreatWall.Abstractions;
 using KissU.IModuleServices.GreatWall.Infrastructure.Results;
 using Microsoft.AspNetCore.Authentication;
@@ -16,7 +16,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Util;
 
-namespace KissU.AuthenticationServer.Controllers
+namespace KissU.Authentication.Controllers
 {
     /// <summary>
     /// 用户认证控制器

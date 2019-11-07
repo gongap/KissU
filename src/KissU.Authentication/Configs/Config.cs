@@ -4,7 +4,7 @@ using IdentityServer4;
 using IdentityServer4.Models;
 using Util.Security.Claims;
 
-namespace KissU.AuthenticationServer.Configs
+namespace KissU.Authentication.Configs
 {
     public class Config
     {

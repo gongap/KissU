@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace KissU.AuthenticationServer.Attributes
+namespace KissU.Authentication.Attributes
 {
     /// <summary>
     /// 安全头

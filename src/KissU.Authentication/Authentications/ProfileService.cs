@@ -13,7 +13,7 @@ using Util;
 using Claim = System.Security.Claims.Claim;
 using ClaimTypes = Util.Security.Claims.ClaimTypes;
 
-namespace KissU.AuthenticationServer.Authentications
+namespace KissU.Authentication.Authentications
 {
     /// <summary>
     /// 用户身份配置服务

@@ -1,6 +1,6 @@
 ﻿using IdentityServer4.Models;
 
-namespace KissU.AuthenticationServer.Models
+namespace KissU.Authentication.Models
 {
     /// <summary>
     /// 错误参数

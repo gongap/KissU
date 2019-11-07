@@ -4,7 +4,7 @@ using System.Linq;
 using KissU.IModuleServices.GreatWall.Dtos.Requests;
 using Util;
 
-namespace KissU.AuthenticationServer.Models
+namespace KissU.Authentication.Models
 {
     /// <summary>
     /// µÇÂ¼²ÎÊý

@@ -10,14 +10,14 @@ using IdentityServer4.Events;
 using IdentityServer4.Services;
 using IdentityServer4.Stores;
 using IdentityServer4.Test;
-using KissU.AuthenticationServer.Attributes;
-using KissU.AuthenticationServer.Configs;
+using KissU.Authentication.Attributes;
+using KissU.Authentication.Configs;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace KissU.AuthenticationServer.Controllers
+namespace KissU.Authentication.Controllers
 {
     [SecurityHeaders]
     [AllowAnonymous]

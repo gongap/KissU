@@ -1,6 +1,6 @@
 ﻿using System;
-using KissU.AuthenticationServer.Authentications;
-using KissU.AuthenticationServer.Configs;
+using KissU.Authentication.Authentications;
+using KissU.Authentication.Configs;
 using KissU.Modules.GreatWall.Data;
 using KissU.Modules.GreatWall.Data.UnitOfWorks.SqlServer;
 using KissU.Modules.GreatWall.Domain.Models;
@@ -14,7 +14,7 @@ using Util.Datas.Ef;
 using Util.Logs.Extensions;
 using Util.Webs.Extensions;
 
-namespace KissU.AuthenticationServer
+namespace KissU.Authentication
 {
     /// <summary>
     /// 启动配置

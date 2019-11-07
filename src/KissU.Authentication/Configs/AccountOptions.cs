@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Server.IISIntegration;
 
-namespace KissU.AuthenticationServer.Configs
+namespace KissU.Authentication.Configs
 {
     /// <summary>
     /// 帐户配置

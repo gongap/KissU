@@ -8,7 +8,7 @@ using KissU.IModuleServices.GreatWall.Dtos.Requests;
 using KissU.IModuleServices.GreatWall.Infrastructure.Results;
 using Util;
 
-namespace KissU.AuthenticationServer.Authentications
+namespace KissU.Authentication.Authentications
 {
     /// <summary>
     /// 资源密码验证器

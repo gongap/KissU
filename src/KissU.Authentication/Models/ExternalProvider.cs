@@ -1,4 +1,4 @@
-﻿namespace KissU.AuthenticationServer.Models
+﻿namespace KissU.Authentication.Models
 {
     /// <summary>
     /// 外部认证提供器

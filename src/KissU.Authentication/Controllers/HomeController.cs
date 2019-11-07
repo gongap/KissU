@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
 using IdentityServer4.Services;
-using KissU.AuthenticationServer.Attributes;
-using KissU.AuthenticationServer.Models;
+using KissU.Authentication.Attributes;
+using KissU.Authentication.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace KissU.AuthenticationServer.Controllers
+namespace KissU.Authentication.Controllers
 {
     /// <summary>
     /// 主控制器
