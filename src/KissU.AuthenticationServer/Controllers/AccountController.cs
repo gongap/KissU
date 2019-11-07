@@ -10,7 +10,7 @@ using KissU.AuthenticationServer.Attributes;
 using KissU.AuthenticationServer.Configs;
 using KissU.AuthenticationServer.Models;
 using KissU.IModuleServices.GreatWall.Abstractions;
-using KissU.IModuleServices.GreatWall.Results;
+using KissU.IModuleServices.GreatWall.Infrastructure.Results;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

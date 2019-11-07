@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
-using KissU.IModuleServices.GreatWall.Extensions;
-using KissU.IModuleServices.GreatWall.Options;
-using KissU.IModuleServices.GreatWall.Purposes;
+using KissU.IModuleServices.GreatWall.Infrastructure.Extensions;
+using KissU.IModuleServices.GreatWall.Infrastructure.Options;
+using KissU.IModuleServices.GreatWall.Infrastructure.Purposes;
 using KissU.Modules.GreatWall.Domain.Models;
 using KissU.Modules.GreatWall.Domain.Repositories;
 using KissU.Modules.GreatWall.Domain.Services.Abstractions;

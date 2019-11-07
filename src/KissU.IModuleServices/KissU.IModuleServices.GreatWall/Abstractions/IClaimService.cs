@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using KissU.IModuleServices.GreatWall.Dtos;
-using KissU.IModuleServices.GreatWall.Service.Queries;
+using KissU.IModuleServices.GreatWall.Queries;
 using Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using Util.Applications;
 using Util.Applications.Aspects;

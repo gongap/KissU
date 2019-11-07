@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Util.Datas.Queries.Trees;
 
-namespace KissU.IModuleServices.GreatWall.Service.Queries
+namespace KissU.IModuleServices.GreatWall.Queries
 {
     /// <summary>
     /// 角色查询参数

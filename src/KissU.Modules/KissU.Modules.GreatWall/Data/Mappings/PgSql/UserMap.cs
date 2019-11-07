@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace vKissU.Modules.GreatWall.Data.Mappings.PgSql
+namespace KissU.Modules.GreatWall.Data.Mappings.PgSql
 {
     /// <summary>
     /// 用户映射配置

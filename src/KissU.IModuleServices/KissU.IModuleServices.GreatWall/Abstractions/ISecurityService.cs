@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using KissU.IModuleServices.GreatWall.Dtos.Requests;
-using KissU.IModuleServices.GreatWall.Results;
+using KissU.IModuleServices.GreatWall.Infrastructure.Results;
 using Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using Util.Applications;
 using Util.Aspects;

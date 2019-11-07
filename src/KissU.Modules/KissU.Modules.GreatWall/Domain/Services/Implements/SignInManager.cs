@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using KissU.IModuleServices.GreatWall;
-using KissU.IModuleServices.GreatWall.Results;
+using KissU.IModuleServices.GreatWall.Infrastructure.Results;
 using KissU.Modules.GreatWall.Domain.Models;
 using KissU.Modules.GreatWall.Domain.Services.Abstractions;
 using Util;

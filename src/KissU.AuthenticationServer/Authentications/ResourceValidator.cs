@@ -5,7 +5,7 @@ using IdentityServer4.Models;
 using IdentityServer4.Validation;
 using KissU.IModuleServices.GreatWall.Abstractions;
 using KissU.IModuleServices.GreatWall.Dtos.Requests;
-using KissU.IModuleServices.GreatWall.Results;
+using KissU.IModuleServices.GreatWall.Infrastructure.Results;
 using Util;
 
 namespace KissU.AuthenticationServer.Authentications

@@ -1,7 +1,6 @@
-﻿using KissU.Data;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
-namespace KissU.Modules.Admin.Data.UnitOfWorks.SqlServer
+namespace KissU.Modules.GreatWall.Data.UnitOfWorks.SqlServer
 {
     /// <summary>
     /// SqlServer工作单元

@@ -2,7 +2,7 @@
 using KissU.IModuleServices.GreatWall.Abstractions;
 using KissU.Modules.GreatWall.Data;
 using KissU.IModuleServices.GreatWall.Dtos.Requests;
-using KissU.IModuleServices.GreatWall.Results;
+using KissU.IModuleServices.GreatWall.Infrastructure.Results;
 using KissU.Modules.GreatWall.Domain.Models;
 using KissU.Modules.GreatWall.Domain.Services.Abstractions;
 using Util;

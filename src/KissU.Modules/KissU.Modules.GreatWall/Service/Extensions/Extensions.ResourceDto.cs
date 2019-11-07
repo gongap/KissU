@@ -6,7 +6,7 @@ using KissU.Modules.GreatWall.Domain.Models;
 using Util.Helpers;
 using Util.Maps;
 
-namespace KissU.Modules.GreatWall.Dtos.Extensions {
+namespace KissU.Modules.GreatWall.Service.Extensions {
     /// <summary>
     /// 资源参数扩展
     /// </summary>

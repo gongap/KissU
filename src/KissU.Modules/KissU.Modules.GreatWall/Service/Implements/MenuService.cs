@@ -6,7 +6,7 @@ using KissU.IModuleServices.GreatWall.Abstractions;
 using KissU.IModuleServices.GreatWall.Dtos.Responses;
 using KissU.Modules.GreatWall.Domain.Models;
 using KissU.Modules.GreatWall.Domain.Repositories;
-using KissU.Modules.GreatWall.Dtos.Extensions;
+using KissU.Modules.GreatWall.Service.Extensions;
 using Util;
 using Util.Applications;
 using Util.Security;

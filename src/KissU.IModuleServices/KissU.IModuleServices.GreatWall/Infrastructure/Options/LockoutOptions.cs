@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KissU.IModuleServices.GreatWall.Options
+namespace KissU.IModuleServices.GreatWall.Infrastructure.Options
 {
     /// <summary>
     /// 登录锁定配置

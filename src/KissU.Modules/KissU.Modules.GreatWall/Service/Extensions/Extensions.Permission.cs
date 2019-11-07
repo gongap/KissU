@@ -1,8 +1,8 @@
 ﻿using System;
 using KissU.Modules.GreatWall.Data.Repositories;
-using KissU.IModuleServices.GreatWall.Extensions;
 using KissU.IModuleServices.GreatWall.Infrastructure.Describers;
-using KissU.IModuleServices.GreatWall.Options;
+using KissU.IModuleServices.GreatWall.Infrastructure.Extensions;
+using KissU.IModuleServices.GreatWall.Infrastructure.Options;
 using KissU.Modules.GreatWall.Domain.Models;
 using KissU.Modules.GreatWall.Domain.Services.Implements;
 using Microsoft.AspNetCore.Identity;

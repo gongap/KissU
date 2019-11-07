@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using KissU.IModuleServices.GreatWall.Abstractions;
 using KissU.IModuleServices.GreatWall.Dtos;
+using KissU.IModuleServices.GreatWall.Queries;
 using KissU.Modules.GreatWall.Data.Pos;
 using KissU.Modules.GreatWall.Data.Stores.Abstractions;
-using KissU.IModuleServices.GreatWall.Service.Queries;
 using KissU.Modules.GreatWall.Domain.Repositories;
 using Util.Applications;
 using Util.Datas.Queries;

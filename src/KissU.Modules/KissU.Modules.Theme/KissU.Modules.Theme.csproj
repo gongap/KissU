@@ -25,4 +25,13 @@
         <ProjectReference Include="..\..\..\util\src\Util.Datas\07-Util.Datas.csproj" />
         <ProjectReference Include="..\..\KissU.IModuleServices\KissU.IModuleServices.Theme\KissU.IModuleServices.Theme.csproj" />
     </ItemGroup>
+
+    <ItemGroup>
+        <Compile Update="Domain\Models\Language.Base.cs">
+            <DependentUpon>Language.cs</DependentUpon>
+        </Compile>
+        <Compile Update="Domain\Models\LanguageDetail.Base.cs">
+            <DependentUpon>LanguageDetail.cs</DependentUpon>
+        </Compile>
+    </ItemGroup>
 </Project>

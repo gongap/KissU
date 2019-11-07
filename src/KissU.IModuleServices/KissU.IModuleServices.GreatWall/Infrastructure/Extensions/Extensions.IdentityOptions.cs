@@ -1,7 +1,7 @@
-﻿using KissU.IModuleServices.GreatWall.Options;
+﻿using KissU.IModuleServices.GreatWall.Infrastructure.Options;
 using Microsoft.AspNetCore.Identity;
 
-namespace KissU.IModuleServices.GreatWall.Extensions
+namespace KissU.IModuleServices.GreatWall.Infrastructure.Extensions
 {
     /// <summary>
     /// Identity配置扩展
