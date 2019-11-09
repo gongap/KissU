@@ -29,15 +29,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Domain\Models\Module.Base.cs">
-      <DependentUpon>Module.cs</DependentUpon>
-    </Compile>
-    <Compile Update="Domain\Models\Role.Base.cs">
-      <DependentUpon>Role.cs</DependentUpon>
-    </Compile>
-    <Compile Update="Domain\Models\User.Base.cs">
-      <DependentUpon>User.cs</DependentUpon>
-    </Compile>
+      <Compile Update="Domain\Models\Module.Base.cs">
+          <DependentUpon>Module.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Domain\Models\Role.Base.cs">
+          <DependentUpon>Role.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Domain\Models\User.Base.cs">
+          <DependentUpon>User.cs</DependentUpon>
+      </Compile>
   </ItemGroup>
-
 </Project>

@@ -47,7 +47,7 @@ namespace KissU.Authentication
             services.AddNLog();
 
             //添加SqlServer工作单元
-            services.AddUnitOfWork<IGreatWallUnitOfWork, GreatWallUnitOfWork>(
+            services.AddUnitOfWork<Modules.GreatWall.Data.IGreatWallUnitOfWork, Modules.GreatWall.Data.UnitOfWorks.SqlServer.GreatWallUnitOfWork>(
                 Configuration.GetConnectionString("DefaultConnection"));
             //添加PgSql工作单元
             //services.AddUnitOfWork<IGreatWallUnitOfWork, Data.UnitOfWorks.PgSql.GreatWallUnitOfWork>( Configuration.GetConnectionString( "PgSqlConnection" ) );

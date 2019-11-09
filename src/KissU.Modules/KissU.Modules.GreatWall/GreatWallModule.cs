@@ -27,7 +27,6 @@ namespace KissU.Modules.GreatWall
             services.AddUnitOfWork<IGreatWallUnitOfWork, GreatWallUnitOfWork>(AppConfig.GetSection("ConnectionStrings").GetSection("DefaultConnection").Value);
             services.AddPermission(t => { t.Lockout.MaxFailedAccessAttempts = 2; });
             builder.ContainerBuilder.Populate(services);
-            builder.AddClientIntercepted(typeof(CacheProviderInterceptor));
         }
     }
 }

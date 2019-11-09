@@ -23,10 +23,8 @@ namespace KissU.Modules.Theme
         {
             base.RegisterBuilder(builder);
             var services = new ServiceCollection();
-            services.AddUnitOfWork<IThemeUnitOfWork, ThemeUnitOfWork>(AppConfig.GetSection("ConnectionStrings")
-                .GetSection("DefaultConnection").Value);
+            services.AddUnitOfWork<IThemeUnitOfWork, ThemeUnitOfWork>(AppConfig.GetSection("ConnectionStrings").GetSection("DefaultConnection").Value);
             builder.ContainerBuilder.Populate(services);
-            builder.AddClientIntercepted(typeof(CacheProviderInterceptor));
         }
     }
 }

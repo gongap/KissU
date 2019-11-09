@@ -5,7 +5,7 @@ namespace KissU.Modules.GreatWall.Data.UnitOfWorks.SqlServer
     /// <summary>
     /// SqlServer工作单元
     /// </summary>
-    public class GreatWallUnitOfWork : Util.Datas.Ef.SqlServer.UnitOfWork, IGreatWallUnitOfWork
+    public class GreatWallUnitOfWork : Util.Datas.Ef.SqlServer.UnitOfWork, Data.IGreatWallUnitOfWork
     {
         /// <summary>
         /// 初始化工作单元
