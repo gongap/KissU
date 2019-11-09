@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Util.Applications.Dtos;
 
-namespace KissU.IModuleServices.IdentityServer.Dtos
+namespace KissU.Modules.IdentityServer.Service.Contracts.Dtos
 {
     /// <summary>
     /// 应用克隆参数

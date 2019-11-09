@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Util.Applications.Dtos;
 
-namespace KissU.IModuleServices.IdentityServer.Commands
+namespace KissU.Modules.IdentityServer.Service.Contracts.Commands
 {
     /// <summary>
     /// 创建应用程序声明请求参数

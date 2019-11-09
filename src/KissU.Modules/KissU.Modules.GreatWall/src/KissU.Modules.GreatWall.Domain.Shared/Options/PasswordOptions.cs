@@ -1,4 +1,4 @@
-﻿namespace KissU.IModuleServices.GreatWall.Infrastructure.Options
+﻿namespace KissU.Modules.GreatWall.Domain.Shared.Options
 {
     /// <summary>
     /// 密码配置

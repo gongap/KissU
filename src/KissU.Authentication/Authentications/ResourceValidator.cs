@@ -3,9 +3,9 @@ using System.Threading.Tasks;
 using IdentityModel;
 using IdentityServer4.Models;
 using IdentityServer4.Validation;
-using KissU.IModuleServices.GreatWall.Abstractions;
-using KissU.IModuleServices.GreatWall.Dtos.Requests;
-using KissU.IModuleServices.GreatWall.Infrastructure.Results;
+using KissU.Modules.GreatWall.Domain.Shared.Results;
+using KissU.Modules.GreatWall.Service.Contracts.Abstractions;
+using KissU.Modules.GreatWall.Service.Contracts.Dtos.Requests;
 using Util;
 
 namespace KissU.Authentication.Authentications

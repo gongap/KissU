@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Util.Applications.Dtos;
 
-namespace KissU.IModuleServices.IdentityServer.Commands
+namespace KissU.Modules.IdentityServer.Service.Contracts.Commands
 {
     /// <summary>
     /// 创建Api资源请求参数

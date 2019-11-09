@@ -4,11 +4,9 @@ using KissU.Modules.Theme.Data.UnitOfWorks.SqlServer;
 using Microsoft.Extensions.DependencyInjection;
 using Surging.Core.CPlatform;
 using Surging.Core.CPlatform.Module;
-using Surging.Core.ProxyGenerator;
-using Surging.Core.System.Intercept;
 using Util.Datas.Ef;
 
-namespace KissU.Modules.Theme
+namespace KissU.Modules.Theme.Service
 {
     /// <summary>
     /// 扩展系统模块

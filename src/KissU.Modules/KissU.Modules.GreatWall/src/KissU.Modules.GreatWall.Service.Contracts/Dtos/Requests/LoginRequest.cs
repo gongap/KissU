@@ -4,7 +4,7 @@ using Util.Applications.Dtos;
 using Util.Exceptions;
 using Util.Validations;
 
-namespace KissU.IModuleServices.GreatWall.Dtos.Requests
+namespace KissU.Modules.GreatWall.Service.Contracts.Dtos.Requests
 {
     /// <summary>
     /// 登录参数

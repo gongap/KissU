@@ -1,6 +1,6 @@
 ﻿using Util.Datas.Queries;
 
-namespace KissU.IModuleServices.IdentityServer.Queries {
+namespace KissU.Modules.IdentityServer.Service.Contracts.Queries {
     /// <summary>
     /// 认证操作数据查询实体
     /// </summary>

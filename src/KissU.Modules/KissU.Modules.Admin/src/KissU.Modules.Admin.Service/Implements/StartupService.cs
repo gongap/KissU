@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using KissU.IModuleServices.Admin.Abstractions;
-using KissU.IModuleServices.Admin.Dtos.NgAlain;
-using KissU.IModuleServices.GreatWall.Abstractions;
+using KissU.Modules.Admin.Service.Contracts.Abstractions;
+using KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain;
 using KissU.Modules.Admin.Service.Extensions;
+using KissU.Modules.GreatWall.Service.Contracts.Abstractions;
 using Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using Surging.Core.CPlatform.Transport.Implementation;
 using Surging.Core.ProxyGenerator;

@@ -1,9 +1,8 @@
 ﻿using System.Threading.Tasks;
-using KissU.IModuleServices.GreatWall;
-using KissU.IModuleServices.GreatWall.Infrastructure.Results;
 using KissU.Modules.GreatWall.Domain.Models;
 using KissU.Modules.GreatWall.Domain.Services.Abstractions;
 using KissU.Modules.GreatWall.Domain.Shared;
+using KissU.Modules.GreatWall.Domain.Shared.Results;
 using Util;
 
 namespace KissU.Modules.GreatWall.Domain.Services.Implements

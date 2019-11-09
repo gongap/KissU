@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.IModuleServices.GreatWall.Abstractions;
 using KissU.Modules.GreatWall.Data;
-using KissU.IModuleServices.GreatWall.Dtos.Requests;
-using KissU.IModuleServices.GreatWall.Queries;
 using KissU.Modules.GreatWall.Domain.Repositories;
 using KissU.Modules.GreatWall.Domain.Services.Abstractions;
+using KissU.Modules.GreatWall.Service.Contracts.Abstractions;
+using KissU.Modules.GreatWall.Service.Contracts.Dtos.Requests;
+using KissU.Modules.GreatWall.Service.Contracts.Queries;
 using Util;
 using Util.Applications;
 

@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using KissU.IModuleServices.Theme.Abstractions;
-using KissU.IModuleServices.Theme.Dtos.Language;
-using KissU.IModuleServices.Theme.Queries;
 using KissU.Modules.Theme.Data;
 using KissU.Modules.Theme.Domain.Models;
 using KissU.Modules.Theme.Domain.Repositories;
+using KissU.Modules.Theme.Service.Contracts.Abstractions;
+using KissU.Modules.Theme.Service.Contracts.Dtos.Language;
+using KissU.Modules.Theme.Service.Contracts.Queries;
 using KissU.Modules.Theme.Service.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Util.Applications;

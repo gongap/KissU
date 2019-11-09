@@ -1,6 +1,6 @@
 ﻿using KissU.Modules.GreatWall.Data.Pos.Models;
-using KissU.Modules.GreatWall.Domain.Enums;
 using KissU.Modules.GreatWall.Domain.Models;
+using KissU.Modules.GreatWall.Domain.Shared.Enums;
 using Util.Helpers;
 using Util.Maps;
 

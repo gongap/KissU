@@ -1,4 +1,4 @@
-﻿namespace KissU.IModuleServices.IdentityServer.Enums
+﻿namespace KissU.Modules.IdentityServer.Domain.Shared.Enums
 {
     /// <summary>
     /// 自定义范围

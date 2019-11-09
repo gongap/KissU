@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Util.Applications.Dtos;
 
-namespace KissU.IModuleServices.Theme.Dtos.Language
+namespace KissU.Modules.Theme.Service.Contracts.Dtos.Language
 {
     /// <summary>
     /// 语言国际化配置参数

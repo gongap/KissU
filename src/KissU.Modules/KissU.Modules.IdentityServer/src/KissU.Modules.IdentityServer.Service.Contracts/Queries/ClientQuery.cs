@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Util.Datas.Queries;
 
-namespace KissU.IModuleServices.IdentityServer.Queries {
+namespace KissU.Modules.IdentityServer.Service.Contracts.Queries {
     /// <summary>
     /// 应用程序查询实体
     /// </summary>

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using KissU.IModuleServices.IdentityServer.Enums;
+using KissU.Modules.IdentityServer.Domain.Shared.Enums;
 using Util.Applications.Dtos;
 
-namespace KissU.IModuleServices.IdentityServer.Commands
+namespace KissU.Modules.IdentityServer.Service.Contracts.Commands
 {
     /// <summary>
     /// 创建应用程序密钥请求参数

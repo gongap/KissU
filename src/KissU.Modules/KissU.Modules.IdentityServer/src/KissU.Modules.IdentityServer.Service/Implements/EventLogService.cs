@@ -1,9 +1,9 @@
-﻿using KissU.IModuleServices.IdentityServer.Abstractions;
-using KissU.IModuleServices.IdentityServer.Dtos;
-using KissU.IModuleServices.IdentityServer.Queries;
-using KissU.Modules.IdentityServer.Data.UnitOfWorks;
+﻿using KissU.Modules.IdentityServer.Data.UnitOfWorks;
 using KissU.Modules.IdentityServer.Domain.Models.EventLog;
 using KissU.Modules.IdentityServer.Domain.Repositories;
+using KissU.Modules.IdentityServer.Service.Contracts.Abstractions;
+using KissU.Modules.IdentityServer.Service.Contracts.Dtos;
+using KissU.Modules.IdentityServer.Service.Contracts.Queries;
 using Util.Applications;
 using Util.Datas.Queries;
 using Util.Domains.Repositories;

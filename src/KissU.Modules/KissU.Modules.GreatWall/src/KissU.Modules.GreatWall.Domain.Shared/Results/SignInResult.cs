@@ -1,4 +1,4 @@
-﻿namespace KissU.IModuleServices.GreatWall.Infrastructure.Results
+﻿namespace KissU.Modules.GreatWall.Domain.Shared.Results
 {
     /// <summary>
     /// 登录结果

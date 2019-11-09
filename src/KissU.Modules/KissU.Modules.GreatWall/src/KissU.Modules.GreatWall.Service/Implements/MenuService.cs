@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using KissU.IModuleServices.GreatWall.Abstractions;
-using KissU.IModuleServices.GreatWall.Dtos.Responses;
 using KissU.Modules.GreatWall.Domain.Models;
 using KissU.Modules.GreatWall.Domain.Repositories;
+using KissU.Modules.GreatWall.Service.Contracts.Abstractions;
+using KissU.Modules.GreatWall.Service.Contracts.Dtos.Responses;
 using KissU.Modules.GreatWall.Service.Extensions;
 using Util;
 using Util.Applications;

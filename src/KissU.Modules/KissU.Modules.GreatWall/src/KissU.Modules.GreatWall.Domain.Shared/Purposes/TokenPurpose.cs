@@ -1,4 +1,4 @@
-﻿namespace KissU.IModuleServices.GreatWall.Infrastructure.Purposes
+﻿namespace KissU.Modules.GreatWall.Domain.Shared.Purposes
 {
     /// <summary>
     /// 令牌用途

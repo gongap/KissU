@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using KissU.IModuleServices.IdentityServer.Enums;
+using KissU.Modules.IdentityServer.Domain.Shared.Enums;
 using Util.Applications.Dtos;
 
-namespace KissU.IModuleServices.IdentityServer.Dtos
+namespace KissU.Modules.IdentityServer.Service.Contracts.Dtos
 {
     /// <summary>
     /// 应用程序密钥数据传输对象

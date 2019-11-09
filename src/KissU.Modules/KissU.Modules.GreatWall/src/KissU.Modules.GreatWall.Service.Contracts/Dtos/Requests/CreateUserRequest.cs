@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Util.Applications.Dtos;
 
-namespace KissU.IModuleServices.GreatWall.Dtos.Requests
+namespace KissU.Modules.GreatWall.Service.Contracts.Dtos.Requests
 {
     /// <summary>
     /// 创建用户参数

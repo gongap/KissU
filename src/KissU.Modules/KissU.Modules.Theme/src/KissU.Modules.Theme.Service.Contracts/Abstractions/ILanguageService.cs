@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.IModuleServices.Theme.Dtos.Language;
-using KissU.IModuleServices.Theme.Queries;
+using KissU.Modules.Theme.Service.Contracts.Dtos.Language;
+using KissU.Modules.Theme.Service.Contracts.Queries;
 using Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using Util.Applications;
 using Util.Applications.Aspects;
 using Util.Domains.Repositories;
 using Util.Validations.Aspects;
 
-namespace KissU.IModuleServices.Theme.Abstractions
+namespace KissU.Modules.Theme.Service.Contracts.Abstractions
 {
     /// <summary>
     /// 语言国际化服务

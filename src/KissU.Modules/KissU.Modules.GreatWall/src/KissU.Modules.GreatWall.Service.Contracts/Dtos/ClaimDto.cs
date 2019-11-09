@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Util.Applications.Dtos;
 
-namespace KissU.IModuleServices.GreatWall.Dtos
+namespace KissU.Modules.GreatWall.Service.Contracts.Dtos
 {
     /// <summary>
     /// 声明参数

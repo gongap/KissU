@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using KissU.IModuleServices.IdentityServer.Commands;
-using KissU.IModuleServices.IdentityServer.Dtos;
 using KissU.Modules.IdentityServer.Domain.Models.ApiResourceAggregate;
+using KissU.Modules.IdentityServer.Service.Contracts.Commands;
+using KissU.Modules.IdentityServer.Service.Contracts.Dtos;
 using ApiResource = KissU.Modules.IdentityServer.Domain.Models.ApiResourceAggregate.ApiResource;
 using Ids4 = IdentityServer4.Models;
 

@@ -1,8 +1,8 @@
-﻿using KissU.IModuleServices.GreatWall.Dtos;
-using KissU.IModuleServices.GreatWall.Dtos.Requests;
-using KissU.Modules.GreatWall.Data.Pos;
+﻿using KissU.Modules.GreatWall.Data.Pos;
 using KissU.Modules.GreatWall.Data.Pos.Models;
 using KissU.Modules.GreatWall.Domain.Models;
+using KissU.Modules.GreatWall.Service.Contracts.Dtos;
+using KissU.Modules.GreatWall.Service.Contracts.Dtos.Requests;
 using Util.Helpers;
 using Util.Maps;
 

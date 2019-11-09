@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using KissU.IModuleServices.GreatWall.Dtos.Requests;
+using KissU.Modules.GreatWall.Service.Contracts.Dtos.Requests;
 using Util;
 
 namespace KissU.Authentication.Models

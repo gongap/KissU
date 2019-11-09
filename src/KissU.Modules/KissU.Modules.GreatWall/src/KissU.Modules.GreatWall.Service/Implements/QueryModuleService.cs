@@ -1,12 +1,12 @@
 ﻿using System.Linq;
-using KissU.IModuleServices.GreatWall.Abstractions;
 using KissU.Modules.GreatWall.Data;
 using KissU.Modules.GreatWall.Data.Pos;
 using KissU.Modules.GreatWall.Data.Stores.Abstractions;
-using KissU.IModuleServices.GreatWall.Dtos;
-using KissU.IModuleServices.GreatWall.Queries;
-using KissU.Modules.GreatWall.Domain.Enums;
 using KissU.Modules.GreatWall.Domain.Repositories;
+using KissU.Modules.GreatWall.Domain.Shared.Enums;
+using KissU.Modules.GreatWall.Service.Contracts.Abstractions;
+using KissU.Modules.GreatWall.Service.Contracts.Dtos;
+using KissU.Modules.GreatWall.Service.Contracts.Queries;
 using KissU.Modules.GreatWall.Service.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Util.Applications.Trees;

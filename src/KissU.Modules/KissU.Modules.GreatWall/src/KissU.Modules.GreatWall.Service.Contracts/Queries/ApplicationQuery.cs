@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Util.Datas.Queries;
 
-namespace KissU.IModuleServices.GreatWall.Queries
+namespace KissU.Modules.GreatWall.Service.Contracts.Queries
 {
     /// <summary>
     /// 应用程序查询参数

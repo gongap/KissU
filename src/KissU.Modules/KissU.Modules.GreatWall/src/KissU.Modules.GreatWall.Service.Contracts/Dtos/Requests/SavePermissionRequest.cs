@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Util.Applications.Dtos;
 
-namespace KissU.IModuleServices.GreatWall.Dtos.Requests
+namespace KissU.Modules.GreatWall.Service.Contracts.Dtos.Requests
 {
     /// <summary>
     /// 保存权限参数

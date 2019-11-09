@@ -1,4 +1,4 @@
-﻿namespace KissU.Modules.IdentityServer
+﻿namespace KissU.Modules.IdentityServer.Domain.Shared
 {
     /// <summary>
     /// 常量

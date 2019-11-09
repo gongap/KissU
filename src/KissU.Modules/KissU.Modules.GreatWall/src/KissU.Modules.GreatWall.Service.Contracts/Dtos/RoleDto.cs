@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Util.Ui.Data;
 
-namespace KissU.IModuleServices.GreatWall.Dtos
+namespace KissU.Modules.GreatWall.Service.Contracts.Dtos
 {
     /// <summary>
     /// 角色参数

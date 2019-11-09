@@ -1,10 +1,10 @@
 ﻿using System;
 using KissU.Modules.GreatWall.Data.Repositories;
-using KissU.IModuleServices.GreatWall.Infrastructure.Describers;
-using KissU.IModuleServices.GreatWall.Infrastructure.Extensions;
-using KissU.IModuleServices.GreatWall.Infrastructure.Options;
 using KissU.Modules.GreatWall.Domain.Models;
 using KissU.Modules.GreatWall.Domain.Services.Implements;
+using KissU.Modules.GreatWall.Domain.Shared.Describers;
+using KissU.Modules.GreatWall.Domain.Shared.Extensions;
+using KissU.Modules.GreatWall.Domain.Shared.Options;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 

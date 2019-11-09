@@ -1,15 +1,13 @@
-﻿using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Module;
-using Surging.Core.System.Intercept;
-using Surging.Core.ProxyGenerator;
-using Autofac.Extensions.DependencyInjection;
+﻿using Autofac.Extensions.DependencyInjection;
 using KissU.Modules.GreatWall.Data;
 using KissU.Modules.GreatWall.Data.UnitOfWorks.SqlServer;
 using KissU.Modules.GreatWall.Service.Extensions;
 using Microsoft.Extensions.DependencyInjection;
+using Surging.Core.CPlatform;
+using Surging.Core.CPlatform.Module;
 using Util.Datas.Ef;
 
-namespace KissU.Modules.GreatWall
+namespace KissU.Modules.GreatWall.Service
 {
     /// <summary>
     /// 扩展系统模块

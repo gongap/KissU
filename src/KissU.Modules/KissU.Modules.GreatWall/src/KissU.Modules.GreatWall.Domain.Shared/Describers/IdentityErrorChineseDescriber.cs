@@ -1,7 +1,6 @@
-﻿using KissU.Modules.GreatWall.Domain.Shared;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 
-namespace KissU.IModuleServices.GreatWall.Infrastructure.Describers
+namespace KissU.Modules.GreatWall.Domain.Shared.Describers
 {
     /// <summary>
     /// Identity中文错误描述

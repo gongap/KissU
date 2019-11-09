@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Util.Datas.Queries;
 
-namespace KissU.IModuleServices.Theme.Queries
+namespace KissU.Modules.Theme.Service.Contracts.Queries
 {
     /// <summary>
     /// 语言国际化查询参数

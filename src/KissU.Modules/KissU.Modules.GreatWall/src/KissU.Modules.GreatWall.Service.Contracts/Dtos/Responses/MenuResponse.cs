@@ -1,4 +1,4 @@
-﻿namespace KissU.IModuleServices.GreatWall.Dtos.Responses
+﻿namespace KissU.Modules.GreatWall.Service.Contracts.Dtos.Responses
 {
     /// <summary>
     /// 菜单参数

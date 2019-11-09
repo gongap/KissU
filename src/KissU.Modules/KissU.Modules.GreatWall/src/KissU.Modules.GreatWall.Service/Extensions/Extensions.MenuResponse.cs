@@ -1,5 +1,5 @@
-﻿using KissU.IModuleServices.GreatWall.Dtos.Responses;
-using KissU.Modules.GreatWall.Domain.Models;
+﻿using KissU.Modules.GreatWall.Domain.Models;
+using KissU.Modules.GreatWall.Service.Contracts.Dtos.Responses;
 using Util.Maps;
 
 namespace KissU.Modules.GreatWall.Service.Extensions {

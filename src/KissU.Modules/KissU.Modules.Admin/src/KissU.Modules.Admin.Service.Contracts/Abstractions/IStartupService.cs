@@ -1,13 +1,12 @@
 ﻿using System.Threading.Tasks;
-using KissU.IModuleServices.Admin.Dtos.NgAlain;
-using Surging.Core.CPlatform.Filters.Implementation;
+using KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain;
 using Surging.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
 using Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using Surging.Core.CPlatform.Support;
 using Surging.Core.CPlatform.Support.Attributes;
 using Util.Applications;
 
-namespace KissU.IModuleServices.Admin.Abstractions
+namespace KissU.Modules.Admin.Service.Contracts.Abstractions
 {
     [ServiceBundle("api/{Service}")]
     public interface IStartupService : IService

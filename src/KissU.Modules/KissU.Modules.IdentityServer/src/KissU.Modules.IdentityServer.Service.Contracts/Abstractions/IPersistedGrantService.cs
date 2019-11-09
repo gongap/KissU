@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.IModuleServices.IdentityServer.Dtos;
-using KissU.IModuleServices.IdentityServer.Queries;
+using KissU.Modules.IdentityServer.Service.Contracts.Dtos;
+using KissU.Modules.IdentityServer.Service.Contracts.Queries;
 using Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using Util.Applications;
 using Util.Applications.Aspects;
 using Util.Domains.Repositories;
 using Util.Validations.Aspects;
 
-namespace KissU.IModuleServices.IdentityServer.Abstractions
+namespace KissU.Modules.IdentityServer.Service.Contracts.Abstractions
 {
     /// <summary>
     /// 认证操作数据服务
