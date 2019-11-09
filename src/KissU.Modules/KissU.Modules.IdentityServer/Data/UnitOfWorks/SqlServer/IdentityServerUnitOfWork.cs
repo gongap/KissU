@@ -23,9 +23,7 @@ namespace KissU.Modules.IdentityServer.Data.UnitOfWorks.SqlServer
         /// <param name="options">配置项</param>
         /// <param name="serviceProvider">服务提供器</param>
         /// <param name="finder">类型查找器</param>
-        /// <param name="tenantProvider">租户提供程序</param>
-        /// <param name="enterpriseProvider">企业提供程序</param>
-        public IdentityServerUnitOfWork(DbContextOptions<IdentityServerUnitOfWork> options, IServiceProvider serviceProvider, IFind finder) : base(options, serviceProvider)
+        public IdentityServerUnitOfWork(DbContextOptions<IdentityServerUnitOfWork> options, IServiceProvider serviceProvider=null, IFind finder = null) : base(options, serviceProvider)
         {
             _finder = finder ?? new Finder();
         }
@@ -54,8 +52,6 @@ namespace KissU.Modules.IdentityServer.Data.UnitOfWorks.SqlServer
         protected override void InterceptAddedOperation(EntityEntry entry)
         {
             base.InterceptAddedOperation(entry);
-            AddTenantIntercept(entry.Entity);
-            AddEnterpriseIntercept(entry.Entity);
         }
 
         /// <summary>
@@ -84,52 +80,6 @@ namespace KissU.Modules.IdentityServer.Data.UnitOfWorks.SqlServer
         /// </summary>
         protected virtual void AddStaticIntercept(object entity)
         {
-        }
-
-        /// <summary>
-        /// 添加租户拦截器
-        /// </summary>
-        protected virtual void AddTenantIntercept(object entity)
-        {
-            //var tenantId = _tenantProvider.GetTenantId();
-            //if (entity is IMayHaveTenant mayHaveTenant)
-            //{
-            //    mayHaveTenant.TenantId = tenantId;
-            //}
-            //if (entity is IMustHaveTenant mustHaveTenant)
-            //{
-            //    if (tenantId.HasValue && !tenantId.IsEmpty())
-            //    {
-            //        mustHaveTenant.TenantId = tenantId.Value;
-            //    }
-            //    else
-            //    {
-            //        throw new Warning("Can not set TenantId to null for ITenant entities!");
-            //    }
-            //}
-        }
-
-        /// <summary>
-        /// 添加企业拦截器
-        /// </summary>
-        protected virtual void AddEnterpriseIntercept(object entity)
-        {
-            //var enterpriseId = _enterpriseProvider.GetEnterpriseId();
-            //if (entity is IMayHaveEnterprise mayHaveEnterprise)
-            //{
-            //    mayHaveEnterprise.EnterpriseId = enterpriseId;
-            //}
-            //if (entity is IMustHaveEnterprise mustHaveEnterprise)
-            //{
-            //    if (enterpriseId.HasValue && !enterpriseId.IsEmpty())
-            //    {
-            //        mustHaveEnterprise.EnterpriseId = enterpriseId.Value;
-            //    }
-            //    else
-            //    {
-            //        throw new Warning("Can not set EnterpriseId to null for IEnterprise entities!");
-            //    }
-            //}
         }
 
         /// <summary>
