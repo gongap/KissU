@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="../../../../../build/version.props" />
+
+  <PropertyGroup>
+      <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+      <DocumentationFile></DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+      <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\surging\src\Surging.Core\Surging.Core.System\Surging.Core.System.csproj" />
+    <ProjectReference Include="..\KissU.Modules.Theme.Data\KissU.Modules.Theme.Data.csproj" />
+    <ProjectReference Include="..\KissU.Modules.Theme.Domain\KissU.Modules.Theme.Domain.csproj" />
+    <ProjectReference Include="..\KissU.Modules.Theme.Service.Contracts\KissU.Modules.Theme.Service.Contracts.csproj" />
+  </ItemGroup>
+</Project>

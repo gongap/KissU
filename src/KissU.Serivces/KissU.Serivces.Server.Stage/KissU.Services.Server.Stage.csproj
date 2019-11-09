@@ -42,7 +42,7 @@
     <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.Stage\Surging.Core.Stage.csproj" />
     <ProjectReference Include="..\..\..\surging\src\WebSocket\WebSocketCore\WebSocketCore.csproj" />
     <ProjectReference Include="..\..\..\lib\Surging.Core.Util\Surging.Core.Util.csproj" />
-    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Admin\KissU.Modules.Admin.csproj" />
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Admin\src\KissU.Modules.Admin.Service\KissU.Modules.Admin.Service.csproj" />
   </ItemGroup>
 
   <ItemGroup>

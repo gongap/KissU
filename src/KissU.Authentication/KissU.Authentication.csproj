@@ -26,7 +26,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\KissU.Modules\KissU.Modules.GreatWall\KissU.Modules.GreatWall.csproj" />
+      <ProjectReference Include="..\KissU.Modules\KissU.Modules.GreatWall\src\KissU.Modules.GreatWall.Service\KissU.Modules.GreatWall.Service.csproj" />
     </ItemGroup>
 
     <ItemGroup>
