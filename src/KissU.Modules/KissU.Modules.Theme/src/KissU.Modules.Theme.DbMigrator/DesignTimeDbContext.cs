@@ -2,7 +2,7 @@
 using KissU.Modules.Theme.Data.UnitOfWorks.SqlServer;
 using Microsoft.EntityFrameworkCore;
 
-namespace KissU.Modules.Theme.Data.DbMigrations
+namespace KissU.Modules.Theme.DbMigrator
 {
     /// <summary>
     /// 此DbContext仅用于数据库迁移。
