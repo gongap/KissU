@@ -15,7 +15,7 @@
     <PackageLicenseUrl>https://github.com/dotnetcore/surging/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/dotnetcore/surging</PackageProjectUrl>
     <PackageTags>MicroService surging</PackageTags>
-    <DockerComposeProjectPath>..\..\surging\src\docker-compose.dcproj</DockerComposeProjectPath>
+    <DockerComposeProjectPath>..\..\..\src\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -42,16 +42,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\surging\src\Surging.Core\Surging.Core.ApiGateWay\Surging.Core.ApiGateWay.csproj" />
-    <ProjectReference Include="..\..\surging\src\Surging.Core\Surging.Core.Caching\Surging.Core.Caching.csproj" />
-    <ProjectReference Include="..\..\surging\src\Surging.Core\Surging.Core.Codec.MessagePack\Surging.Core.Codec.MessagePack.csproj" />
-    <ProjectReference Include="..\..\surging\src\Surging.Core\Surging.Core.Codec.ProtoBuffer\Surging.Core.Codec.ProtoBuffer.csproj" />
-    <ProjectReference Include="..\..\surging\src\Surging.Core\Surging.Core.Common\Surging.Core.Common.csproj" />
-    <ProjectReference Include="..\..\surging\src\Surging.Core\Surging.Core.Consul\Surging.Core.Consul.csproj" />
-    <ProjectReference Include="..\..\surging\src\Surging.Core\Surging.Core.CPlatform\Surging.Core.CPlatform.csproj" />
-    <ProjectReference Include="..\..\surging\src\Surging.Core\Surging.Core.DotNetty\Surging.Core.DotNetty.csproj" />
-    <ProjectReference Include="..\..\surging\src\Surging.Core\Surging.Core.ProxyGenerator\Surging.Core.ProxyGenerator.csproj" />
-    <ProjectReference Include="..\..\surging\src\Surging.Core\Surging.Core.Zookeeper\Surging.Core.Zookeeper.csproj" />
+    <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.ApiGateWay\Surging.Core.ApiGateWay.csproj" />
+    <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.Caching\Surging.Core.Caching.csproj" />
+    <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.Codec.MessagePack\Surging.Core.Codec.MessagePack.csproj" />
+    <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.Codec.ProtoBuffer\Surging.Core.Codec.ProtoBuffer.csproj" />
+    <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.Common\Surging.Core.Common.csproj" />
+    <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.Consul\Surging.Core.Consul.csproj" />
+    <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.CPlatform\Surging.Core.CPlatform.csproj" />
+    <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.DotNetty\Surging.Core.DotNetty.csproj" />
+    <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.ProxyGenerator\Surging.Core.ProxyGenerator.csproj" />
+    <ProjectReference Include="..\..\..\surging\src\Surging.Core\Surging.Core.Zookeeper\Surging.Core.Zookeeper.csproj" />
   </ItemGroup>
 
   <ItemGroup>

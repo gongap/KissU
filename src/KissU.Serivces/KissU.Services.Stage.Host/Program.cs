@@ -14,7 +14,7 @@ using Surging.Core.ServiceHosting.Internal.Implementation;
 //using Surging.Core.Zookeeper;
 //using Surging.Core.Zookeeper.Configurations;
 
-namespace KissU.Services.Server.Stage
+namespace KissU.Services.Stage.Host
 {
     /// <summary>
     ///  应用程序

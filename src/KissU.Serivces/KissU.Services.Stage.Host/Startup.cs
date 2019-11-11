@@ -4,8 +4,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Surging.Core.Caching.Configurations;
 using Surging.Core.CPlatform.Utilities;
+using Util.Helpers;
 
-namespace KissU.Services.Server
+namespace KissU.Services.Stage.Host
 {
     /// <summary>
     ///  启动配置
@@ -29,7 +30,9 @@ namespace KissU.Services.Server
             var services = new ServiceCollection();
             ConfigureLogging(services);
             builder.Populate(services);
-            ServiceLocator.Current = builder.Build();
+            var container = builder.Build();
+            Ioc.Register(container);
+            ServiceLocator.Current = container;
             return ServiceLocator.Current;
         }
 
