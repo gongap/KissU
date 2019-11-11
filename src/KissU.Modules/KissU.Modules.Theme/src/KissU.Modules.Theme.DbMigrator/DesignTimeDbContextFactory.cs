@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using KissU.Modules.Theme.Data.UnitOfWorks.SqlServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
@@ -19,7 +20,7 @@ namespace KissU.Modules.Theme.DbMigrator
         {
             Ioc.Register();
             var configuration = DbMigrationHelpers.BuildConfiguration();
-            var builder = new DbContextOptionsBuilder<DesignTimeDbContext>().UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+            var builder = new DbContextOptionsBuilder<ThemeUnitOfWork>().UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
             return new DesignTimeDbContext(builder.Options);
         }
     }

@@ -15,7 +15,7 @@ namespace KissU.Modules.IdentityServer.Data.UnitOfWorks.SqlServer
         /// <summary>
         /// 类型查找器
         /// </summary>
-        private readonly IFind _finder;
+        protected readonly IFind Finder;
 
         /// <summary>
         /// 初始化工作单元
@@ -25,15 +25,7 @@ namespace KissU.Modules.IdentityServer.Data.UnitOfWorks.SqlServer
         /// <param name="finder">类型查找器</param>
         public IdentityServerUnitOfWork(DbContextOptions<IdentityServerUnitOfWork> options, IServiceProvider serviceProvider=null, IFind finder = null) : base(options, serviceProvider)
         {
-            _finder = finder ?? new Finder();
-        }
-
-        /// <summary>
-        /// 获取定义映射配置的程序集列表
-        /// </summary>
-        protected override Assembly[] GetAssemblies()
-        {
-            return _finder.GetAssemblies().ToArray();
+            Finder = finder ?? new Finder();
         }
 
         /// <summary>

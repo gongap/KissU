@@ -13,7 +13,7 @@ namespace KissU.Modules.Theme.DbMigrator
         /// <summary>
         ///  初始化DbContext的新实例。
         /// </summary>
-        public DesignTimeDbContext(DbContextOptions options) : base(options) { }
+        public DesignTimeDbContext(DbContextOptions<ThemeUnitOfWork> options) : base(options) { }
 
         /// <summary>
         /// 获取定义映射配置的程序集列表

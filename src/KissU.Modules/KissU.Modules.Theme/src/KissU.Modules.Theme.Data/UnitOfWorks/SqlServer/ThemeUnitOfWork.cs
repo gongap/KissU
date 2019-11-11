@@ -20,7 +20,7 @@ namespace KissU.Modules.Theme.Data.UnitOfWorks.SqlServer
         /// </summary>
         /// <param name="options">配置项</param>
         /// <param name="finder">类型查找器</param>
-        public ThemeUnitOfWork(DbContextOptions options, IFind finder = null) : base(options)
+        public ThemeUnitOfWork(DbContextOptions<ThemeUnitOfWork> options, IFind finder = null) : base(options)
         {
             Finder = finder ?? new Finder();
         }

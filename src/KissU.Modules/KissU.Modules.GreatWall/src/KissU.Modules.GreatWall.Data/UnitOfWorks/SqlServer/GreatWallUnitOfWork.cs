@@ -18,7 +18,7 @@ namespace KissU.Modules.GreatWall.Data.UnitOfWorks.SqlServer
         /// </summary>
         /// <param name="options">配置项</param>
         /// <param name="finder">类型查找器</param>
-        public GreatWallUnitOfWork(DbContextOptions options, IFind finder = null) : base(options)
+        public GreatWallUnitOfWork(DbContextOptions<GreatWallUnitOfWork> options, IFind finder = null) : base(options)
         {
             Finder = finder ?? new Finder();
         }

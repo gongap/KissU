@@ -1,11 +1,11 @@
 ﻿using System.IO;
-using KissU.Modules.GreatWall.Data.UnitOfWorks.SqlServer;
+using KissU.Modules.IdentityServer.Data.UnitOfWorks.SqlServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using Util.Helpers;
 
-namespace KissU.Modules.GreatWall.DbMigrator
+namespace KissU.Modules.IdentityServer.DbMigrator
 {
     /// <summary>
     /// EF Core控制台命令需要该类
@@ -20,7 +20,7 @@ namespace KissU.Modules.GreatWall.DbMigrator
         {
             Ioc.Register();
             var configuration = DbMigrationHelpers.BuildConfiguration();
-            var builder = new DbContextOptionsBuilder<GreatWallUnitOfWork>().UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+            var builder = new DbContextOptionsBuilder<IdentityServerUnitOfWork>().UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
             return new DesignTimeDbContext(builder.Options);
         }
     }
