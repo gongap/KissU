@@ -6,7 +6,7 @@
     <ProjectGuid>117d3803-8937-4a28-b296-46bbf945fd7b</ProjectGuid>
     <DockerLaunchBrowser>True</DockerLaunchBrowser>
     <DockerServiceUrl>http://localhost:{ServicePort}</DockerServiceUrl>
-    <DockerServiceName>surging.apigateway</DockerServiceName>
+    <DockerServiceName>kissu.gateways.host</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">

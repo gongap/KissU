@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  surging.apigateway:
+  kissu.gateways.host:
     image: ${DOCKER_REGISTRY}kissuapi
     ports:
       - 729:729
@@ -9,4 +9,4 @@ services:
       Register_Conn:"192.168.72.129:8500"
     build:
       context: .
-      dockerfile: Surging.ApiGateway/Dockerfile
+      dockerfile: src/KissU.Gateways/KissU.Gateways.Host/Dockerfile

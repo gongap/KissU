@@ -3,13 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.28917.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F1B4AAEF-9162-4DFA-8B62-4069FC914839}"
-	ProjectSection(SolutionItems) = preProject
-		src\.dockerignore = src\.dockerignore
-		src\docker-compose.ci.build.yml = src\docker-compose.ci.build.yml
-		src\docker-compose.dcproj = src\docker-compose.dcproj
-		src\docker-compose.override.yml = src\docker-compose.override.yml
-		src\docker-compose.yml = src\docker-compose.yml
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{245EE59A-3EDE-4FBD-BC25-A61655E476B5}"
 	ProjectSection(SolutionItems) = preProject
@@ -29,7 +22,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{17D88D07-C7C6-4782-91F0-B446A69564FE}"
 	ProjectSection(SolutionItems) = preProject
-		common.props = common.props
+		build\common.props = build\common.props
 		build\version.props = build\version.props
 	EndProjectSection
 EndProject
@@ -244,6 +237,15 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Services.Stage.Host", "src\KissU.Serivces\KissU.Services.Stage.Host\KissU.Services.Stage.Host.csproj", "{C4817234-55C5-44DF-A103-3F7FB64531BE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Services.Host", "src\KissU.Serivces\KissU.Serivces.Host\KissU.Services.Host.csproj", "{E551BFB9-26BD-4AC0-8D99-2EFA1F63858E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker", "docker", "{D4FB6141-F1A3-430B-B09D-0F8822BDBCC7}"
+	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
+		docker-compose.ci.build.yml = docker-compose.ci.build.yml
+		docker-compose.dcproj = docker-compose.dcproj
+		docker-compose.override.yml = docker-compose.override.yml
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -673,6 +675,7 @@ Global
 		{F9EAE152-152A-426F-AA97-09711C79527F} = {A378262D-FAD6-4268-B3AE-94EEB6565299}
 		{C4817234-55C5-44DF-A103-3F7FB64531BE} = {B4367C3C-5645-40C3-953C-466D82432072}
 		{E551BFB9-26BD-4AC0-8D99-2EFA1F63858E} = {B4367C3C-5645-40C3-953C-466D82432072}
+		{D4FB6141-F1A3-430B-B09D-0F8822BDBCC7} = {245EE59A-3EDE-4FBD-BC25-A61655E476B5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}

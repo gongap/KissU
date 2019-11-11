@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  surging.apigateway:
+  kissu.gateways.host:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
