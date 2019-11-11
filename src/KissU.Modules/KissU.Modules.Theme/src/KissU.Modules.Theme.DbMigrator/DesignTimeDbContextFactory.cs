@@ -17,22 +17,10 @@ namespace KissU.Modules.Theme.DbMigrator
         /// <returns> DbContext的实例。</returns>
         public DesignTimeDbContext CreateDbContext(string[] args)
         {
-            var configuration = BuildConfiguration();
-            var builder = new DbContextOptionsBuilder<DesignTimeDbContext>().UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
             Ioc.Register();
+            var configuration = DbMigrationHelpers.BuildConfiguration();
+            var builder = new DbContextOptionsBuilder<DesignTimeDbContext>().UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
             return new DesignTimeDbContext(builder.Options);
-        }
-
-        /// <summary>
-        /// 配置
-        /// </summary>
-        /// <returns></returns>
-        private static IConfigurationRoot BuildConfiguration()
-        {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", optional: false);
-            return builder.Build();
         }
     }
 }

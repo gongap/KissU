@@ -25,6 +25,9 @@ namespace KissU.Modules.Theme.DbMigrator.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnName("Id");
 
+                    b.Property<string>("Abbr")
+                        .HasMaxLength(128);
+
                     b.Property<string>("Code")
                         .IsRequired()
                         .HasMaxLength(10);

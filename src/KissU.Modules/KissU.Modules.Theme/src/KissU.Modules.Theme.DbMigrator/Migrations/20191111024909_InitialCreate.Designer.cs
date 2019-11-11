@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KissU.Modules.Theme.DbMigrator.Migrations
 {
     [DbContext(typeof(DesignTimeDbContext))]
-    [Migration("20191110163501_InitialCreate1")]
-    partial class InitialCreate1
+    [Migration("20191111024909_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,6 +26,9 @@ namespace KissU.Modules.Theme.DbMigrator.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("Id");
+
+                    b.Property<string>("Abbr")
+                        .HasMaxLength(128);
 
                     b.Property<string>("Code")
                         .IsRequired()
