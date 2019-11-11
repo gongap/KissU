@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using KissU.ApiGateway.Models;
+using KissU.Gateways.Host.Models;
 using Microsoft.AspNetCore.Mvc;
 using Surging.Core.ApiGateWay.ServiceDiscovery;
 using Surging.Core.ApiGateWay.ServiceDiscovery.Implementation;
@@ -12,7 +12,7 @@ using Surging.Core.CPlatform.Support;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace KissU.ApiGateway.Controllers
+namespace KissU.Gateways.Host.Controllers
 {
     public class ServiceManageController : Controller
     {

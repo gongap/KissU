@@ -1,4 +1,4 @@
-namespace KissU.ApiGateway.Models
+namespace KissU.Gateways.Host.Models
 {
     public class ErrorViewModel
     {
