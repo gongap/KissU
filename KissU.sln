@@ -247,6 +247,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker", "docker", "{D4FB61
 		docker-compose.yml = docker-compose.yml
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.GreatWall.DbMigrator", "src\KissU.Modules\KissU.Modules.GreatWall\src\KissU.Modules.GreatWall.DbMigrator\KissU.Modules.GreatWall.DbMigrator.csproj", "{ABA20CC6-EEE3-496F-816E-7643F5E1E511}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -565,6 +567,10 @@ Global
 		{E551BFB9-26BD-4AC0-8D99-2EFA1F63858E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E551BFB9-26BD-4AC0-8D99-2EFA1F63858E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E551BFB9-26BD-4AC0-8D99-2EFA1F63858E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABA20CC6-EEE3-496F-816E-7643F5E1E511}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABA20CC6-EEE3-496F-816E-7643F5E1E511}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABA20CC6-EEE3-496F-816E-7643F5E1E511}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABA20CC6-EEE3-496F-816E-7643F5E1E511}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -676,6 +682,7 @@ Global
 		{C4817234-55C5-44DF-A103-3F7FB64531BE} = {B4367C3C-5645-40C3-953C-466D82432072}
 		{E551BFB9-26BD-4AC0-8D99-2EFA1F63858E} = {B4367C3C-5645-40C3-953C-466D82432072}
 		{D4FB6141-F1A3-430B-B09D-0F8822BDBCC7} = {245EE59A-3EDE-4FBD-BC25-A61655E476B5}
+		{ABA20CC6-EEE3-496F-816E-7643F5E1E511} = {08A1DD8B-84CD-4C6C-BE74-E7304FB073BB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}
