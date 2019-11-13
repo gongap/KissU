@@ -3,10 +3,8 @@
 .vs/
 obj/
 bin/
-BenchmarkDotNet.Artifacts/
 /output
 *.user
 *.log
-/template/CodeGenerator/02-Result
 
 

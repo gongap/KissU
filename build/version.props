@@ -1,10 +1,5 @@
 <Project>
     <PropertyGroup>
-        <Company>KissU</Company>
-        <Copyright>Copyright（c）KissU. All rights reserved.</Copyright>
-        <PackageProjectUrl>https://github.com/gongap/KissU</PackageProjectUrl>
-        <RespositoryUrl>https://github.com/gongap/KissU.git</RespositoryUrl>
-        <RespositoryType>git</RespositoryType>
         <VersionMajor>1</VersionMajor>
         <VersionMinor>9</VersionMinor>
         <VersionPatch>3.2</VersionPatch>

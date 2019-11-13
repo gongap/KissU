@@ -1,13 +1,7 @@
 <Project>
-    <!--<ItemGroup>
-        <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
-    </ItemGroup>
-
-    <ItemGroup>
-        <None Include="..\..\..\stylecop.json" Link="stylecop.json"></None>
-        <None Include="..\..\..\.editorconfig" Link=".editorconfig"></None>
-    </ItemGroup>-->
+    <Company>KissU</Company>
+    <Copyright>Copyright（c）KissU. All rights reserved.</Copyright>
+    <PackageProjectUrl>https://github.com/gongap/KissU</PackageProjectUrl>
+    <RespositoryUrl>https://github.com/gongap/KissU.git</RespositoryUrl>
+    <RespositoryType>git</RespositoryType>
 </Project>
