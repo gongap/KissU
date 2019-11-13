@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
@@ -31,7 +31,8 @@ namespace KissU.Authentication.Controllers
         public ExternalController(
             IIdentityServerInteractionService interaction,
             IClientStore clientStore,
-            IEventService events)
+            IEventService events,
+            TestUserStore users)
         {
             // if the TestUserStore is not in DI, then we'll just use the global users collection
             // this is where you would plug in your own custom identity management library (e.g. ASP.NET Identity)
@@ -40,6 +41,7 @@ namespace KissU.Authentication.Controllers
             _interaction = interaction;
             _clientStore = clientStore;
             _events = events;
+            _users = users;
         }
 
         /// <summary>

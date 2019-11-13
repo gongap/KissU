@@ -1,23 +1,13 @@
 <Project>
-  <PropertyGroup>
-    <NoWarn>$(NoWarn);CS1591</NoWarn>
-    <Company>KissU</Company>
-    <Copyright>Copyright（c）KissU. All rights reserved.</Copyright>
-    <PackageProjectUrl>https://github.com/gongap/KissU</PackageProjectUrl>
-    <RespositoryUrl>https://github.com/gongap/KissU.git</RespositoryUrl>
-    <RespositoryType>git</RespositoryType>
-    <CodeAnalysisRuleSet>..\..\..\KissU.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
+    <!--<ItemGroup>
+        <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <AdditionalFiles Include="..\..\..\stylecop.json" Link="stylecop.json"></AdditionalFiles>
-    <None Include="..\..\..\.editorconfig" Link=".editorconfig"></None>
-  </ItemGroup>
+    <ItemGroup>
+        <None Include="..\..\..\stylecop.json" Link="stylecop.json"></None>
+        <None Include="..\..\..\.editorconfig" Link=".editorconfig"></None>
+    </ItemGroup>-->
 </Project>
