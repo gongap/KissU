@@ -28,8 +28,14 @@ namespace KissU.Modules.Theme.Service.Implements
         public LanguageService(IThemeUnitOfWork unitOfWork, ILanguageRepository languageRepository)
             : base(unitOfWork, languageRepository)
         {
+            UnitOfWork = unitOfWork;
             LanguageRepository = languageRepository;
         }
+
+        /// <summary>
+        /// 工作单元
+        /// </summary>
+        public IThemeUnitOfWork UnitOfWork { get; }
 
         /// <summary>
         /// 语言国际化仓储
@@ -77,6 +83,28 @@ namespace KissU.Modules.Theme.Service.Implements
             }
 
             return null;
+        }
+
+        /// <summary>
+        /// 创建
+        /// </summary>
+        /// <param name="request">创建参数</param>
+        public override async Task<string> CreateAsync(LanguageDto request)
+        {
+           var result = await  base.CreateAsync(request);
+           await UnitOfWork.CommitAsync();
+
+           return result;
+        }
+
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="request">修改参数</param>
+        public override async Task UpdateAsync(LanguageDto request)
+        {
+            await base.UpdateAsync(request);
+            await UnitOfWork.CommitAsync();
         }
     }
 }

@@ -1,7 +1,9 @@
 <Project>
-    <Company>KissU</Company>
-    <Copyright>Copyright（c）KissU. All rights reserved.</Copyright>
-    <PackageProjectUrl>https://github.com/gongap/KissU</PackageProjectUrl>
-    <RespositoryUrl>https://github.com/gongap/KissU.git</RespositoryUrl>
-    <RespositoryType>git</RespositoryType>
+    <PropertyGroup>
+        <Company>KissU</Company>
+        <Copyright>Copyright（c）KissU. All rights reserved.</Copyright>
+        <PackageProjectUrl>https://github.com/gongap/KissU</PackageProjectUrl>
+        <RespositoryUrl>https://github.com/gongap/KissU.git</RespositoryUrl>
+        <RespositoryType>git</RespositoryType>
+    </PropertyGroup>
 </Project>

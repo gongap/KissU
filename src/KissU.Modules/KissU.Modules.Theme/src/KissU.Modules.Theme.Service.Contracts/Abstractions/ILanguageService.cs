@@ -62,7 +62,6 @@ namespace KissU.Modules.Theme.Service.Contracts.Abstractions
         /// </summary>
         /// <param name="request">创建参数</param>
         [HttpPost(true)]
-        [UnitOfWork]
         Task<string> CreateAsync([Valid] LanguageDto request);
 
         /// <summary>
@@ -70,14 +69,13 @@ namespace KissU.Modules.Theme.Service.Contracts.Abstractions
         /// </summary>
         /// <param name="request">修改参数</param>
         [HttpPut(true)]
-        [UnitOfWork]
         Task UpdateAsync([Valid] LanguageDto request);
 
         /// <summary>
         /// 删除
         /// </summary>
         /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
-        [HttpPost(true)]
+        [HttpDelete(true)]
         Task DeleteAsync(string ids);
     }
 }
