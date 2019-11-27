@@ -239,6 +239,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.IdentityServe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Surging.Core.Abp", "surging\src\Surging.Core\Surging.Core.Abp\Surging.Core.Abp.csproj", "{6E1585E9-26E9-4123-BD46-0F210EF3468E}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Tests", "test\KissU.Tests\KissU.Tests.csproj", "{62C24A3A-464B-48CA-9443-7F78FEF1C221}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -561,6 +563,10 @@ Global
 		{6E1585E9-26E9-4123-BD46-0F210EF3468E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E1585E9-26E9-4123-BD46-0F210EF3468E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E1585E9-26E9-4123-BD46-0F210EF3468E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62C24A3A-464B-48CA-9443-7F78FEF1C221}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62C24A3A-464B-48CA-9443-7F78FEF1C221}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62C24A3A-464B-48CA-9443-7F78FEF1C221}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62C24A3A-464B-48CA-9443-7F78FEF1C221}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -672,6 +678,7 @@ Global
 		{ABA20CC6-EEE3-496F-816E-7643F5E1E511} = {08A1DD8B-84CD-4C6C-BE74-E7304FB073BB}
 		{8CF0F8AE-4436-4392-A9E7-799B61F2EFF1} = {145FA791-FBA2-4A29-8768-54F8732C3581}
 		{6E1585E9-26E9-4123-BD46-0F210EF3468E} = {4ADD4E15-AA91-4C41-AE4B-CBF432762229}
+		{62C24A3A-464B-48CA-9443-7F78FEF1C221} = {8C5BB6A1-6362-4935-9278-993935F43949}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}
