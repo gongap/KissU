@@ -5,7 +5,7 @@ using Surging.Core.ApiGateWay.ServiceDiscovery;
 using Surging.Core.ApiGateWay.Utilities;
 using Surging.Core.CPlatform.Address;
 
-namespace KissU.Gateways.Host.Controllers
+namespace KissU.Gateways.Default.Controllers
 {
     public class AuthenticationManageController : Controller
     {

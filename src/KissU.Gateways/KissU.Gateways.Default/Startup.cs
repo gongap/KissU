@@ -23,12 +23,11 @@ using Surging.Core.CPlatform.Utilities;
 using Surging.Core.DotNetty;
 using Surging.Core.ProxyGenerator;
 using Surging.Core.Zookeeper;
-
 //using Surging.Core.Zookeeper;
 using ZookeeperConfigInfo =  Surging.Core.Zookeeper.Configurations.ConfigInfo;
 using ApiGateWayConfig = Surging.Core.ApiGateWay.AppConfig;
 
-namespace KissU.Gateways.Host
+namespace KissU.Gateways.Default
 {
     public class Startup
     {

@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "KissU.Gateways.Host": {
+    "KissU.Gateways.Default": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

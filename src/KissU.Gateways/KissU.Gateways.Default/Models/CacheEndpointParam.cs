@@ -1,6 +1,6 @@
 ﻿using Surging.Core.Caching.HashAlgorithms;
 
-namespace KissU.Gateways.Host.Models
+namespace KissU.Gateways.Default.Models
 {
     public class CacheEndpointParam
     {

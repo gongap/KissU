@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using Microsoft.AspNetCore.Hosting;
 
-namespace KissU.Gateways.Host
+namespace KissU.Gateways.Default
 {
     public class Program
     {
