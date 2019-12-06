@@ -3,7 +3,7 @@ using Autofac;
 using Surging.Core.CPlatform.Module;
 using Util.Helpers;
 
-namespace Surging.Core.Util
+namespace KissU.Core.Util
 {
     /// <inheritdoc />
     public class UtilModule : SystemModule

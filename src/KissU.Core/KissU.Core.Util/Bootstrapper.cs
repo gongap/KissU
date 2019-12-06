@@ -7,7 +7,7 @@ using Util.Dependency;
 using Util.Events.Handlers;
 using Util.Reflections;
 
-namespace Surging.Core.Util
+namespace KissU.Core.Util
 {
     /// <summary>
     /// 依赖引导器

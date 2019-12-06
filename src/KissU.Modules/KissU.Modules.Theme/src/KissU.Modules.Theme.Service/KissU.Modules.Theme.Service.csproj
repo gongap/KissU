@@ -15,7 +15,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\lib\Surging.Core.Util\Surging.Core.Util.csproj" />
     <ProjectReference Include="..\..\..\..\..\surging\src\Surging.Core\Surging.Core.System\Surging.Core.System.csproj" />
     <ProjectReference Include="..\KissU.Modules.Theme.Data\KissU.Modules.Theme.Data.csproj" />
     <ProjectReference Include="..\KissU.Modules.Theme.Domain\KissU.Modules.Theme.Domain.csproj" />
