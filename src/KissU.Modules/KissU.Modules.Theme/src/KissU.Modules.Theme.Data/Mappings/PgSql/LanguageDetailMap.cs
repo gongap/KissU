@@ -15,7 +15,7 @@ namespace KissU.Modules.Theme.Data.Mappings.PgSql
         /// </summary>
         protected override void MapTable(EntityTypeBuilder<LanguageDetail> builder)
         {
-            builder.ToTable("LanguageDetail", "Systems");
+            builder.ToTable("LanguageDetail", "systems");
         }
 
         /// <summary>

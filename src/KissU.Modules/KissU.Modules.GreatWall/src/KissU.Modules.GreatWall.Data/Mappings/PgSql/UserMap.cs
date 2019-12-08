@@ -14,7 +14,7 @@ namespace KissU.Modules.GreatWall.Data.Mappings.PgSql
         /// </summary>
         protected override void MapTable(EntityTypeBuilder<User> builder)
         {
-            builder.ToTable("User", "Systems");
+            builder.ToTable("User", "systems");
         }
 
         /// <summary>

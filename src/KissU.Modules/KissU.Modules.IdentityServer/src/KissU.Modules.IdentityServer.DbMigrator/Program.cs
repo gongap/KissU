@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Linq;
 using System.Threading.Tasks;
-using KissU.Modules.IdentityServer.Data;
 using KissU.Modules.IdentityServer.Data.UnitOfWorks;
-using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Util;
@@ -22,6 +17,7 @@ namespace KissU.Modules.IdentityServer.DbMigrator
             services.AddUnitOfWork<IIdentityServerUnitOfWork, DesignTimeDbContext>(configuration.GetConnectionString("DefaultConnection"));
             var serviceProvider = services.AddUtil();
             await DbMigrationHelpers.MigrateAsync<DesignTimeDbContext>(serviceProvider);
+            Console.WriteLine("Press ENTER to stop application...");
             Console.ReadLine();
         }
     }

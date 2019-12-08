@@ -17,6 +17,7 @@ namespace KissU.Modules.Theme.DbMigrator
             services.AddUnitOfWork<IThemeUnitOfWork, DesignTimeDbContext>(configuration.GetConnectionString("DefaultConnection"));
             var serviceProvider = services.AddUtil();
             await DbMigrationHelpers.MigrateAsync<DesignTimeDbContext>(serviceProvider);
+            Console.WriteLine("Press ENTER to stop application...");
             Console.ReadLine();
         }
     }

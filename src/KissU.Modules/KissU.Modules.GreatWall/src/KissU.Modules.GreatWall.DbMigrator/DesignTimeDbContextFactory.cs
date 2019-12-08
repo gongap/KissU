@@ -20,7 +20,7 @@ namespace KissU.Modules.GreatWall.DbMigrator
         {
             Ioc.Register();
             var configuration = DbMigrationHelpers.BuildConfiguration();
-            var builder = new DbContextOptionsBuilder<GreatWallUnitOfWork>().UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+            var builder = new DbContextOptionsBuilder<DesignTimeDbContext>().UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
             return new DesignTimeDbContext(builder.Options);
         }
     }

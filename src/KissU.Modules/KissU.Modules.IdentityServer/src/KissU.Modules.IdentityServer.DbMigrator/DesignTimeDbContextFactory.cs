@@ -1,6 +1,4 @@
-﻿using System.IO;
-using KissU.Modules.IdentityServer.Data.UnitOfWorks.SqlServer;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using Util.Helpers;
@@ -20,7 +18,7 @@ namespace KissU.Modules.IdentityServer.DbMigrator
         {
             Ioc.Register();
             var configuration = DbMigrationHelpers.BuildConfiguration();
-            var builder = new DbContextOptionsBuilder<IdentityServerUnitOfWork>().UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+            var builder = new DbContextOptionsBuilder<DesignTimeDbContext>().UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
             return new DesignTimeDbContext(builder.Options);
         }
     }

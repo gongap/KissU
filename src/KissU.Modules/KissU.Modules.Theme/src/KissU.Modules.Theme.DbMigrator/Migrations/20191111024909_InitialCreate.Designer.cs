@@ -54,7 +54,7 @@ namespace KissU.Modules.Theme.DbMigrator.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Language","Systems");
+                    b.ToTable("Language","systems");
                 });
 
             modelBuilder.Entity("KissU.Modules.Theme.Domain.Models.LanguageDetail", b =>
@@ -84,7 +84,7 @@ namespace KissU.Modules.Theme.DbMigrator.Migrations
 
                     b.HasIndex("MainId");
 
-                    b.ToTable("LanguageDetail","Systems");
+                    b.ToTable("LanguageDetail","systems");
                 });
 
             modelBuilder.Entity("KissU.Modules.Theme.Domain.Models.LanguageDetail", b =>

@@ -53,7 +53,7 @@ namespace KissU.Modules.GreatWall.DbMigrator.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Application","Systems");
+                    b.ToTable("Application","systems");
                 });
 
             modelBuilder.Entity("KissU.Modules.GreatWall.Data.Pos.ResourcePo", b =>
@@ -108,7 +108,7 @@ namespace KissU.Modules.GreatWall.DbMigrator.Migrations
 
                     b.HasIndex("ParentId");
 
-                    b.ToTable("Resource","Systems");
+                    b.ToTable("Resource","systems");
                 });
 
             modelBuilder.Entity("KissU.Modules.GreatWall.Domain.Models.Claim", b =>
@@ -144,7 +144,7 @@ namespace KissU.Modules.GreatWall.DbMigrator.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Claim","Systems");
+                    b.ToTable("Claim","systems");
                 });
 
             modelBuilder.Entity("KissU.Modules.GreatWall.Domain.Models.Permission", b =>
@@ -178,7 +178,7 @@ namespace KissU.Modules.GreatWall.DbMigrator.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Permission","Systems");
+                    b.ToTable("Permission","systems");
                 });
 
             modelBuilder.Entity("KissU.Modules.GreatWall.Domain.Models.Role", b =>
@@ -243,7 +243,7 @@ namespace KissU.Modules.GreatWall.DbMigrator.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Role","Systems");
+                    b.ToTable("Role","systems");
                 });
 
             modelBuilder.Entity("KissU.Modules.GreatWall.Domain.Models.User", b =>
@@ -332,7 +332,7 @@ namespace KissU.Modules.GreatWall.DbMigrator.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("User","Systems");
+                    b.ToTable("User","systems");
                 });
 
             modelBuilder.Entity("KissU.Modules.GreatWall.Domain.Models.UserRole", b =>
@@ -343,7 +343,7 @@ namespace KissU.Modules.GreatWall.DbMigrator.Migrations
 
                     b.HasKey("UserId", "RoleId");
 
-                    b.ToTable("UserRole","Systems");
+                    b.ToTable("UserRole","systems");
                 });
 
             modelBuilder.Entity("KissU.Modules.GreatWall.Data.Pos.ResourcePo", b =>

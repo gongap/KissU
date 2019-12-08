@@ -20,7 +20,7 @@ namespace KissU.Modules.Theme.DbMigrator
         {
             Ioc.Register();
             var configuration = DbMigrationHelpers.BuildConfiguration();
-            var builder = new DbContextOptionsBuilder<ThemeUnitOfWork>().UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+            var builder = new DbContextOptionsBuilder<DesignTimeDbContext>().UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
             return new DesignTimeDbContext(builder.Options);
         }
     }

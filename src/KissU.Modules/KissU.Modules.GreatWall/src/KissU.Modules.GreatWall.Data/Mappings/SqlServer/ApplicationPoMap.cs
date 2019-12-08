@@ -14,7 +14,7 @@ namespace KissU.Modules.GreatWall.Data.Mappings.SqlServer
         /// </summary>
         protected override void MapTable(EntityTypeBuilder<ApplicationPo> builder)
         {
-            builder.ToTable("Application", "Systems");
+            builder.ToTable("Application", "systems");
         }
 
         /// <summary>

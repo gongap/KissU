@@ -11,7 +11,7 @@ namespace KissU.Modules.GreatWall.Data.Mappings.SqlServer {
         /// 映射表
         /// </summary>
         protected override void MapTable( EntityTypeBuilder<UserRole> builder ) {
-            builder.ToTable( "UserRole", "Systems" );
+            builder.ToTable( "UserRole", "systems" );
         }
 
         /// <summary>
