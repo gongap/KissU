@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <AdditionalFiles Include="..\..\stylecop.json" Link="stylecop.json" />
-    <None Include="..\..\.editorconfig" Link=".editorconfig" />
+    <AdditionalFiles Include="..\..\..\stylecop.json" Link="stylecop.json" />
+    <None Include="..\..\..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
 </Project>
