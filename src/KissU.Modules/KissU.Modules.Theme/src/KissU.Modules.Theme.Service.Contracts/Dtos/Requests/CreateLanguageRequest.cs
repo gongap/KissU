@@ -1,20 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Util.Applications.Dtos;
 
-namespace KissU.Modules.Theme.Service.Contracts.Dtos.Language
+namespace KissU.Modules.Theme.Service.Contracts.Dtos.Requests
 {
     /// <summary>
-    /// 语言国际化参数
+    /// 创建语言参数
     /// </summary>
-    public class LanguageDto : DtoBase
+    public class CreateLanguageRequest : RequestBase
     {
         /// <summary>
         /// 语言配置
         /// </summary>
         [Display(Name = "语言配置")]
-        public List<LanguageDetailDto> Details { get; set; }
+        public List<LanguageDetailRequest> Details { get; set; }
 
         /// <summary>
         /// 编码
@@ -46,9 +45,24 @@ namespace KissU.Modules.Theme.Service.Contracts.Dtos.Language
         public bool? IsEnabled { get; set; }
 
         /// <summary>
-        /// 版本号
+        /// 语言国际化配置参数
         /// </summary>
-        [Display(Name = "版本号")]
-        public Byte[] Version { get; set; }
+        public class LanguageDetailRequest : RequestBase
+        {
+            /// <summary>
+            /// 键
+            /// </summary>
+            [Required(ErrorMessage = "键不能为空")]
+            [StringLength(256)]
+            [Display(Name = "键")]
+            public string Key { get; set; }
+
+            /// <summary>
+            /// 值
+            /// </summary>
+            [Required(ErrorMessage = "值不能为空")]
+            [Display(Name = "值")]
+            public string Value { get; set; }
+        }
     }
 }
