@@ -22,7 +22,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{17D88D07-C7C6-4782-91F0-B446A69564FE}"
 	ProjectSection(SolutionItems) = preProject
 		build\common.props = build\common.props
-		build\version.props = build\version.props
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "util", "util", "{D7A0FD44-719A-4ACF-AC42-6BE3617C154C}"
@@ -135,7 +134,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebSocketCore", "surging\sr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "KissU.Modules", "KissU.Modules", "{CA4753DA-E579-4995-AEDA-498741B7B860}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "KissU.Hosts", "KissU.Hosts", "{B4367C3C-5645-40C3-953C-466D82432072}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "KissU.Microservices", "KissU.Microservices", "{B4367C3C-5645-40C3-953C-466D82432072}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Surging.Apm", "Surging.Apm", "{841048AC-6BD5-4FB6-A6CE-34A0E691A969}"
 EndProject
@@ -217,10 +216,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Admin.Service
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Theme.DbMigrator", "src\KissU.Modules\KissU.Modules.Theme\src\KissU.Modules.Theme.DbMigrator\KissU.Modules.Theme.DbMigrator.csproj", "{EF98F9E7-38C2-4CA4-99A2-B86D66603349}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sts", "sts", "{8E710B2A-18CA-4D6A-9EC9-2E1DE4B55A02}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Authentication", "sts\KissU.Authentication\KissU.Authentication.csproj", "{1028C162-7298-4A01-AA05-76268376B2BA}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "KissU.Gateways", "KissU.Gateways", "{A378262D-FAD6-4268-B3AE-94EEB6565299}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.GreatWall.DbMigrator", "src\KissU.Modules\KissU.Modules.GreatWall\src\KissU.Modules.GreatWall.DbMigrator\KissU.Modules.GreatWall.DbMigrator.csproj", "{ABA20CC6-EEE3-496F-816E-7643F5E1E511}"
@@ -231,17 +226,39 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Surging.Core.Abp", "surging
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Tests", "test\KissU.Tests\KissU.Tests.csproj", "{62C24A3A-464B-48CA-9443-7F78FEF1C221}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.STS.IdentityServer", "sts\KissU.STS.IdentityServer\KissU.STS.IdentityServer.csproj", "{D4E74EEC-F2C8-41A3-B48E-667378575698}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "KissU.BuildingBlocks", "KissU.BuildingBlocks", "{3CDD4019-FF31-4A47-80C7-EEA80337E642}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "KissU.Core", "KissU.Core", "{3CDD4019-FF31-4A47-80C7-EEA80337E642}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Gateways.Host", "src\KissU.Gateways\KissU.Gateways.Default\KissU.Gateways.Host.csproj", "{56994058-137E-4481-ACEF-067E9D2A8527}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Core.Util", "src\KissU.Core\KissU.Core.Util\KissU.Core.Util.csproj", "{F94F9D9C-1635-4561-A7CD-7B1ABAD3DA03}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "KissU.Applications", "KissU.Applications", "{F7F6CB7E-792F-496B-925A-BB5B0DB67DB6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Gateways.Default", "src\KissU.Gateways\KissU.Gateways.Default\KissU.Gateways.Default.csproj", "{56994058-137E-4481-ACEF-067E9D2A8527}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Core.Util", "src\KissU.BuildingBlocks\KissU.Core.Util\KissU.Core.Util.csproj", "{E3A55CFE-8523-4898-A9CD-0A1E63E685D5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Hosts.Default", "src\KissU.Hosts\KissU.Hosts.Default\KissU.Hosts.Default.csproj", "{D8A737AC-D88B-4B0D-B2C4-EEC9F3D97810}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.STS.IdentityServer", "src\KissU.Applications\KissU.STS.IdentityServer\KissU.STS.IdentityServer.csproj", "{6A9DA57B-8AFE-434A-A4C5-BB3F2D52690C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Hosts.Stage", "src\KissU.Hosts\KissU.Hosts.Stage\KissU.Hosts.Stage.csproj", "{7B4F8DAF-D716-4D7F-94D1-47835D668907}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Microservices.Host", "src\KissU.Microservices\KissU.Microservices.Host\KissU.Microservices.Host.csproj", "{AB2253F6-5F1B-4159-9990-E2C03CA75C52}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Microservices.Stage", "src\KissU.Microservices\KissU.Microservices.Stage\KissU.Microservices.Stage.csproj", "{64CC1651-E9C0-4062-90E3-6E5198BF1430}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{F330A18D-B1F0-4DE6-9CD7-2F6CD6100718}"
+	ProjectSection(SolutionItems) = preProject
+		src\KissU.Modules\KissU.Modules.Admin\build\common.props = src\KissU.Modules\KissU.Modules.Admin\build\common.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{B7B2A547-F048-4F39-A0A7-252440C1895D}"
+	ProjectSection(SolutionItems) = preProject
+		src\KissU.Modules\KissU.Modules.GreatWall\build\common.props = src\KissU.Modules\KissU.Modules.GreatWall\build\common.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{4B7990C1-B64A-4BEB-878A-33C6EA4EEC26}"
+	ProjectSection(SolutionItems) = preProject
+		src\KissU.Modules\KissU.Modules.IdentityServer\build\common.props = src\KissU.Modules\KissU.Modules.IdentityServer\build\common.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{84BF5174-471F-40EC-BA7A-EF55E13CA98E}"
+	ProjectSection(SolutionItems) = preProject
+		src\KissU.Modules\KissU.Modules.Theme\build\common.props = src\KissU.Modules\KissU.Modules.Theme\build\common.props
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -533,10 +550,6 @@ Global
 		{EF98F9E7-38C2-4CA4-99A2-B86D66603349}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF98F9E7-38C2-4CA4-99A2-B86D66603349}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF98F9E7-38C2-4CA4-99A2-B86D66603349}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1028C162-7298-4A01-AA05-76268376B2BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1028C162-7298-4A01-AA05-76268376B2BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1028C162-7298-4A01-AA05-76268376B2BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1028C162-7298-4A01-AA05-76268376B2BA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{ABA20CC6-EEE3-496F-816E-7643F5E1E511}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ABA20CC6-EEE3-496F-816E-7643F5E1E511}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABA20CC6-EEE3-496F-816E-7643F5E1E511}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -553,26 +566,26 @@ Global
 		{62C24A3A-464B-48CA-9443-7F78FEF1C221}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62C24A3A-464B-48CA-9443-7F78FEF1C221}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62C24A3A-464B-48CA-9443-7F78FEF1C221}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D4E74EEC-F2C8-41A3-B48E-667378575698}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D4E74EEC-F2C8-41A3-B48E-667378575698}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D4E74EEC-F2C8-41A3-B48E-667378575698}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D4E74EEC-F2C8-41A3-B48E-667378575698}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F94F9D9C-1635-4561-A7CD-7B1ABAD3DA03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F94F9D9C-1635-4561-A7CD-7B1ABAD3DA03}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F94F9D9C-1635-4561-A7CD-7B1ABAD3DA03}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F94F9D9C-1635-4561-A7CD-7B1ABAD3DA03}.Release|Any CPU.Build.0 = Release|Any CPU
 		{56994058-137E-4481-ACEF-067E9D2A8527}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{56994058-137E-4481-ACEF-067E9D2A8527}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56994058-137E-4481-ACEF-067E9D2A8527}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56994058-137E-4481-ACEF-067E9D2A8527}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D8A737AC-D88B-4B0D-B2C4-EEC9F3D97810}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D8A737AC-D88B-4B0D-B2C4-EEC9F3D97810}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D8A737AC-D88B-4B0D-B2C4-EEC9F3D97810}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D8A737AC-D88B-4B0D-B2C4-EEC9F3D97810}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7B4F8DAF-D716-4D7F-94D1-47835D668907}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7B4F8DAF-D716-4D7F-94D1-47835D668907}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7B4F8DAF-D716-4D7F-94D1-47835D668907}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7B4F8DAF-D716-4D7F-94D1-47835D668907}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3A55CFE-8523-4898-A9CD-0A1E63E685D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3A55CFE-8523-4898-A9CD-0A1E63E685D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3A55CFE-8523-4898-A9CD-0A1E63E685D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3A55CFE-8523-4898-A9CD-0A1E63E685D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A9DA57B-8AFE-434A-A4C5-BB3F2D52690C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A9DA57B-8AFE-434A-A4C5-BB3F2D52690C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A9DA57B-8AFE-434A-A4C5-BB3F2D52690C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A9DA57B-8AFE-434A-A4C5-BB3F2D52690C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB2253F6-5F1B-4159-9990-E2C03CA75C52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB2253F6-5F1B-4159-9990-E2C03CA75C52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB2253F6-5F1B-4159-9990-E2C03CA75C52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB2253F6-5F1B-4159-9990-E2C03CA75C52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64CC1651-E9C0-4062-90E3-6E5198BF1430}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64CC1651-E9C0-4062-90E3-6E5198BF1430}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64CC1651-E9C0-4062-90E3-6E5198BF1430}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64CC1651-E9C0-4062-90E3-6E5198BF1430}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -674,18 +687,22 @@ Global
 		{D02F33CE-9878-4F22-8161-1B4E204137A5} = {A86F1725-9196-44D3-9839-602D40BF97E8}
 		{F7587857-2C5C-4246-A0E2-B6209CEAA963} = {A86F1725-9196-44D3-9839-602D40BF97E8}
 		{EF98F9E7-38C2-4CA4-99A2-B86D66603349} = {A5103887-A90F-4B9B-A52D-03DDAD2EDB28}
-		{1028C162-7298-4A01-AA05-76268376B2BA} = {8E710B2A-18CA-4D6A-9EC9-2E1DE4B55A02}
 		{A378262D-FAD6-4268-B3AE-94EEB6565299} = {F1B4AAEF-9162-4DFA-8B62-4069FC914839}
 		{ABA20CC6-EEE3-496F-816E-7643F5E1E511} = {08A1DD8B-84CD-4C6C-BE74-E7304FB073BB}
 		{8CF0F8AE-4436-4392-A9E7-799B61F2EFF1} = {145FA791-FBA2-4A29-8768-54F8732C3581}
 		{6E1585E9-26E9-4123-BD46-0F210EF3468E} = {4ADD4E15-AA91-4C41-AE4B-CBF432762229}
 		{62C24A3A-464B-48CA-9443-7F78FEF1C221} = {8C5BB6A1-6362-4935-9278-993935F43949}
-		{D4E74EEC-F2C8-41A3-B48E-667378575698} = {8E710B2A-18CA-4D6A-9EC9-2E1DE4B55A02}
 		{3CDD4019-FF31-4A47-80C7-EEA80337E642} = {F1B4AAEF-9162-4DFA-8B62-4069FC914839}
-		{F94F9D9C-1635-4561-A7CD-7B1ABAD3DA03} = {3CDD4019-FF31-4A47-80C7-EEA80337E642}
 		{56994058-137E-4481-ACEF-067E9D2A8527} = {A378262D-FAD6-4268-B3AE-94EEB6565299}
-		{D8A737AC-D88B-4B0D-B2C4-EEC9F3D97810} = {B4367C3C-5645-40C3-953C-466D82432072}
-		{7B4F8DAF-D716-4D7F-94D1-47835D668907} = {B4367C3C-5645-40C3-953C-466D82432072}
+		{F7F6CB7E-792F-496B-925A-BB5B0DB67DB6} = {F1B4AAEF-9162-4DFA-8B62-4069FC914839}
+		{E3A55CFE-8523-4898-A9CD-0A1E63E685D5} = {3CDD4019-FF31-4A47-80C7-EEA80337E642}
+		{6A9DA57B-8AFE-434A-A4C5-BB3F2D52690C} = {F7F6CB7E-792F-496B-925A-BB5B0DB67DB6}
+		{AB2253F6-5F1B-4159-9990-E2C03CA75C52} = {B4367C3C-5645-40C3-953C-466D82432072}
+		{64CC1651-E9C0-4062-90E3-6E5198BF1430} = {B4367C3C-5645-40C3-953C-466D82432072}
+		{F330A18D-B1F0-4DE6-9CD7-2F6CD6100718} = {2E11D51E-59A2-4501-9658-7F44E5A35556}
+		{B7B2A547-F048-4F39-A0A7-252440C1895D} = {989E8619-53BE-48E2-B062-047940FBBCE2}
+		{4B7990C1-B64A-4BEB-878A-33C6EA4EEC26} = {8041CF7B-89DA-475F-92ED-0153EAEF6DC1}
+		{84BF5174-471F-40EC-BA7A-EF55E13CA98E} = {697B9208-7FE5-4AB1-92F8-BF64F12BA72E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}

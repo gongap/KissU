@@ -27,7 +27,7 @@ using Surging.Core.Zookeeper;
 using ZookeeperConfigInfo =  Surging.Core.Zookeeper.Configurations.ConfigInfo;
 using ApiGateWayConfig = Surging.Core.ApiGateWay.AppConfig;
 
-namespace KissU.Gateways.Default
+namespace KissU.Gateways.Host
 {
     public class Startup
     {

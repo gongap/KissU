@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Surging.Core.ApiGateWay;
 
-namespace KissU.Gateways.Default
+namespace KissU.Gateways.Host
 {
     public class CustomExceptionFilterAttribute : ExceptionFilterAttribute
     {

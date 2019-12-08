@@ -2,7 +2,7 @@
 using Surging.Core.CPlatform.Exceptions;
 using Surging.Core.CPlatform.Filters.Implementation;
 
-namespace KissU.Gateways.Default
+namespace KissU.Gateways.Host
 {
     public class ServiceExceptionFilter: ExceptionFilterAttribute
     {

@@ -17,7 +17,7 @@ using Surging.Core.CPlatform.Utilities;
 using Surging.Core.ProxyGenerator;
 using GateWayAppConfig = Surging.Core.ApiGateWay.AppConfig;
 
-namespace KissU.Gateways.Default.Controllers
+namespace KissU.Gateways.Host.Controllers
 {
     public class ServicesController : Controller
     {

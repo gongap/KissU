@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics;
-using KissU.Gateways.Default.Models;
+using KissU.Gateways.Host.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace KissU.Gateways.Default.Controllers
+namespace KissU.Gateways.Host.Controllers
 {
     public class HomeController : Controller
     {

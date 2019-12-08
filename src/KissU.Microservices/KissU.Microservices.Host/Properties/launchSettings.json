@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "KissU.Hosts.Stage": {
+    "KissU.Microservices.Host": {
       "commandName": "Project",
       "nativeDebugging": false
     }

@@ -1,20 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <Import Project="../../../../../build/version.props" />
-    <Import Project="../../../../../build/common.props" />
+  <Import Project="../../build/common.props" />
 
-    <PropertyGroup>
-        <TargetFramework>netcoreapp2.2</TargetFramework>
-    </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-        <DocumentationFile></DocumentationFile>
-    </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile></DocumentationFile>
+  </PropertyGroup>
 
-    <PropertyGroup>
-        <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    </PropertyGroup>
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
 
-    <ItemGroup>
-        <ProjectReference Include="..\KissU.Modules.GreatWall.Domain.Shared\KissU.Modules.GreatWall.Domain.Shared.csproj" />
-    </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KissU.Modules.GreatWall.Domain.Shared\KissU.Modules.GreatWall.Domain.Shared.csproj" />
+  </ItemGroup>
 </Project>
