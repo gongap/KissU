@@ -5,9 +5,9 @@
     <PackageProjectUrl>https://github.com/gongap/KissU</PackageProjectUrl>
     <RespositoryUrl>https://github.com/gongap/KissU.git</RespositoryUrl>
     <RespositoryType>git</RespositoryType>
-    <VersionMajor>1</VersionMajor>
-    <VersionMinor>9</VersionMinor>
-    <VersionPatch>3.2</VersionPatch>
+    <VersionMajor>2</VersionMajor>
+    <VersionMinor>0</VersionMinor>
+    <VersionPatch>0.0</VersionPatch>
     <VersionQuality></VersionQuality>
     <VersionPrefix>$(VersionMajor).$(VersionMinor).$(VersionPatch)</VersionPrefix>
     <VersionSuffix></VersionSuffix>
