@@ -13,24 +13,19 @@ using Util.Validations.Aspects;
 namespace KissU.Modules.IdentityServer.Service.Contracts.Abstractions
 {
     /// <summary>
-    /// Api资源服务
+    /// 资源服务
     /// </summary>
-    [ServiceBundle("api/{Service}")]
+    [ServiceBundle("api/{Service}/{Method}")]
     public interface IApiResourceService : IService
     {
+        #region 资源
         /// <summary>
         /// 通过编号获取
         /// </summary>
         /// <param name="id">实体编号</param>
+        [ServiceRoute("{id}")]
         [HttpGet(true)]
-        Task<ApiResourceDto> GetByIdAsync(object id);
-
-        /// <summary>
-        /// 通过编号列表获取
-        /// </summary>
-        /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
-        [HttpGet(true)]
-        Task<List<ApiResourceDto>> GetByIdsAsync(string ids);
+        Task<ApiResourceDto> GetByIdAsync(string id);
 
         /// <summary>
         /// 获取全部
@@ -42,14 +37,14 @@ namespace KissU.Modules.IdentityServer.Service.Contracts.Abstractions
         /// 查询
         /// </summary>
         /// <param name="parameter">查询参数</param>
-        [HttpGet(true)]
+        [HttpPost(true)]
         Task<List<ApiResourceDto>> QueryAsync(ApiResourceQuery parameter);
 
         /// <summary>
         /// 分页查询
         /// </summary>
         /// <param name="parameter">查询参数</param>
-        [HttpGet(true)]
+        [HttpPost(true)]
         Task<PagerList<ApiResourceDto>> PagerQueryAsync(ApiResourceQuery parameter);
 
         /// <summary>
@@ -57,7 +52,6 @@ namespace KissU.Modules.IdentityServer.Service.Contracts.Abstractions
         /// </summary>
         /// <param name="request">创建参数</param>
         [HttpPost(true)]
-        [UnitOfWork]
         Task<string> CreateAsync([Valid] ApiResourceCreateRequest request);
 
         /// <summary>
@@ -65,86 +59,96 @@ namespace KissU.Modules.IdentityServer.Service.Contracts.Abstractions
         /// </summary>
         /// <param name="request">修改参数</param>
         [HttpPut(true)]
-        [UnitOfWork]
         Task UpdateAsync([Valid] ApiResourceDto request);
 
         /// <summary>
         /// 删除
         /// </summary>
         /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
-        [HttpPost(true)]
+        [HttpDelete(true)]
         Task DeleteAsync(string ids);
-
-        #region Api许可范围
-        /// <summary>
-        /// 获取Api许可范围
-        /// </summary>
-        /// <param name="apiResourceId">Api资源编号</param>
-        /// <returns></returns>
-        Task<List<ApiResourceScopeDto>> GetApiResourceScopesAsync(Guid apiResourceId);
-
-        /// <summary>
-        /// 获取Api许可范围
-        /// </summary>
-        /// <param name="id">Api许可范围编号</param>
-        /// <returns></returns>
-        Task<ApiResourceScopeDto> GetApiResourceScopeAsync(Guid id);
-
-        /// <summary>
-        /// 创建Api许可范围
-        /// </summary>
-        /// <param name="request">创建Api许可范围参数</param>
-        /// <returns></returns>
-        [UnitOfWork]
-        Task<Guid> CreateApiResourceScopeAsync([Valid] ApiResourceScopeCreateRequest request);
-
-        /// <summary>
-        /// 更新Api许可范围
-        /// </summary>
-        /// <param name="dto">Api许可范围</param>
-        /// <returns></returns>
-        [UnitOfWork]
-        Task UpdateApiResourceScopeAsync([Valid] ApiResourceScopeDto dto);
-
-        /// <summary>
-        /// 删除Api许可范围
-        /// </summary>
-        /// <param name="id">Api许可范围编号</param>
-        /// <returns></returns>
-        [UnitOfWork]
-        Task DeleteApiResourceScopeAsync(Guid id);
         #endregion
 
-        #region Api密钥
+        #region 许可范围
         /// <summary>
-        /// 获取Api密钥
+        /// 获取许可范围
         /// </summary>
-        /// <param name="apiResourceId">Api资源编号</param>
+        /// <param name="id">资源编号</param>
         /// <returns></returns>
-        Task<List<ApiResourceSecretDto>> GetApiResourceSecretsAsync(Guid apiResourceId);
+        [ServiceRoute("{id}")]
+        [HttpGet(true)]
+        Task<List<ApiResourceScopeDto>> GetScopesAsync(string id);
 
         /// <summary>
-        /// 获取Api密钥
+        /// 获取许可范围
         /// </summary>
-        /// <param name="id">Api密钥编号</param>
+        /// <param name="scopeId">许可范围编号</param>
         /// <returns></returns>
-        Task<ApiResourceSecretDto> GetApiResourceSecretAsync(Guid id);
+        [ServiceRoute("{scopeId}")]
+        [HttpGet(true)]
+        Task<ApiResourceScopeDto> GetScopeAsync(string scopeId);
 
         /// <summary>
-        /// 创建Api密钥
+        /// 创建许可范围
         /// </summary>
-        /// <param name="request">创建Api密钥参数</param>
+        /// <param name="request">创建许可范围参数</param>
         /// <returns></returns>
-        [UnitOfWork]
-        Task<Guid> CreateApiResourceSecretAsync([Valid] ApiResourceSecretCreateRequest request);
+        [HttpPost(true)]
+        Task<Guid> CreateScopeAsync([Valid] ApiResourceScopeCreateRequest request);
 
         /// <summary>
-        /// 删除Api密钥
+        /// 更新许可范围
         /// </summary>
-        /// <param name="id">Api密钥编号</param>
+        /// <param name="request">许可范围</param>
         /// <returns></returns>
-        [UnitOfWork]
-        Task DeleteApiResourceSecretAsync(Guid id);
+        [HttpPut(true)]
+        Task UpdateScopeAsync([Valid] ApiResourceScopeDto request);
+
+        /// <summary>
+        /// 删除许可范围
+        /// </summary>
+        /// <param name="scopeId">许可范围编号</param>
+        /// <returns></returns>
+        [ServiceRoute("{scopeId}")]
+        [HttpDelete(true)]
+        Task DeleteScopeAsync(string scopeId);
+        #endregion
+
+        #region 密钥
+        /// <summary>
+        /// 获取密钥
+        /// </summary>
+        /// <param name="id">资源编号</param>
+        /// <returns></returns>
+        [ServiceRoute("{id}")]
+        [HttpGet(true)]
+        Task<List<ApiResourceSecretDto>> GetSecretsAsync(string id);
+
+        /// <summary>
+        /// 获取密钥
+        /// </summary>
+        /// <param name="secretId">密钥编号</param>
+        /// <returns></returns>
+        [ServiceRoute("{secretId}")]
+        [HttpGet(true)]
+        Task<ApiResourceSecretDto> GetSecretAsync(string secretId);
+
+        /// <summary>
+        /// 创建密钥
+        /// </summary>
+        /// <param name="request">创建密钥参数</param>
+        /// <returns></returns>
+        [HttpPost(true)]
+        Task<Guid> CreateSecretAsync([Valid] ApiResourceSecretCreateRequest request);
+
+        /// <summary>
+        /// 删除密钥
+        /// </summary>
+        /// <param name="secretId">密钥编号</param>
+        /// <returns></returns>
+        [ServiceRoute("{secretId}")]
+        [HttpDelete(true)]
+        Task DeleteSecretAsync(string secretId);
         #endregion
     }
 }
