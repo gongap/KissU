@@ -11,10 +11,10 @@ namespace KissU.Microservices.Host
         public ServiceEngine()
         {
             ModuleServiceLocationFormats = new[] {
-                EnvironmentHelper.GetEnvironmentVariable("${ModulePath1}|Modules"),
+                EnvironmentHelper.GetEnvironmentVariable("${ModulePath}|Modules"),
             };
             ComponentServiceLocationFormats  = new[] {
-                 EnvironmentHelper.GetEnvironmentVariable("${ComponentPath1}|Components"),
+                 EnvironmentHelper.GetEnvironmentVariable("${ComponentPath}|Components"),
             };
             //ModuleServiceLocationFormats = new[] {
             //   ""
