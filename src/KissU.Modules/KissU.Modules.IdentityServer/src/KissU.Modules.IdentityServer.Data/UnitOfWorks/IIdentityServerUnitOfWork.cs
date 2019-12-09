@@ -7,7 +7,7 @@ namespace KissU.Modules.IdentityServer.Data.UnitOfWorks
     using Util.Datas.UnitOfWorks;
 
     /// <summary>
-    ///     Identity工作单元
+    /// Identity工作单元
     /// </summary>
     public interface IIdentityServerUnitOfWork : IUnitOfWork
     {

@@ -16,7 +16,7 @@ namespace KissU.Modules.Admin.Service.Contracts.Abstractions
     public interface IStartupService : IService
     {
         /// <summary>
-        ///     获取应用程序数据
+        /// 获取应用程序数据
         /// </summary>
         /// <returns></returns>
         [Command(Strategy = StrategyType.Injection, ShuntStrategy = AddressSelectorMode.HashAlgorithm,

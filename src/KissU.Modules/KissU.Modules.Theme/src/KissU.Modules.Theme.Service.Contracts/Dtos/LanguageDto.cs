@@ -8,18 +8,18 @@ namespace KissU.Modules.Theme.Service.Contracts.Dtos
     using Util.Applications.Dtos;
 
     /// <summary>
-    ///     语言国际化参数
+    /// 语言国际化参数
     /// </summary>
     public class LanguageDto : DtoBase
     {
         /// <summary>
-        ///     语言配置
+        /// 语言配置
         /// </summary>
         [Display(Name = "语言配置")]
         public List<LanguageDetailDto> Details { get; set; }
 
         /// <summary>
-        ///     编码
+        /// 编码
         /// </summary>
         [Required(ErrorMessage = "编码不能为空")]
         [StringLength(10)]
@@ -27,7 +27,7 @@ namespace KissU.Modules.Theme.Service.Contracts.Dtos
         public string Code { get; set; }
 
         /// <summary>
-        ///     名称
+        /// 名称
         /// </summary>
         [Required(ErrorMessage = "名称不能为空")]
         [StringLength(64)]
@@ -35,32 +35,32 @@ namespace KissU.Modules.Theme.Service.Contracts.Dtos
         public string Text { get; set; }
 
         /// <summary>
-        ///     简称
+        /// 简称
         /// </summary>
         [StringLength(128)]
         [Display(Name = "简称")]
         public string Abbr { get; set; }
 
         /// <summary>
-        ///     是否启用
+        /// 是否启用
         /// </summary>
         [Display(Name = "是否启用")]
         public bool? IsEnabled { get; set; }
 
         /// <summary>
-        ///     版本号
+        /// 版本号
         /// </summary>
         [Display(Name = "版本号")]
         public byte[] Version { get; set; }
     }
 
     /// <summary>
-    ///     语言国际化配置参数
+    /// 语言国际化配置参数
     /// </summary>
     public class LanguageDetailDto : DtoBase
     {
         /// <summary>
-        ///     键
+        /// 键
         /// </summary>
         [Required(ErrorMessage = "键不能为空")]
         [StringLength(256)]
@@ -68,7 +68,7 @@ namespace KissU.Modules.Theme.Service.Contracts.Dtos
         public string Key { get; set; }
 
         /// <summary>
-        ///     值
+        /// 值
         /// </summary>
         [Required(ErrorMessage = "值不能为空")]
         [Display(Name = "值")]

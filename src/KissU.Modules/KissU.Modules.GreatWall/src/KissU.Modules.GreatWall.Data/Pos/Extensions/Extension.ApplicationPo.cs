@@ -10,12 +10,12 @@ namespace KissU.Modules.GreatWall.Data.Pos.Extensions
     using Util.Maps;
 
     /// <summary>
-    ///     应用程序持久化对象扩展
+    /// 应用程序持久化对象扩展
     /// </summary>
     public static partial class Extension
     {
         /// <summary>
-        ///     转换为应用程序实体
+        /// 转换为应用程序实体
         /// </summary>
         /// <param name="po">应用程序持久化对象</param>
         public static Application ToEntity(this ApplicationPo po)
@@ -32,7 +32,7 @@ namespace KissU.Modules.GreatWall.Data.Pos.Extensions
         }
 
         /// <summary>
-        ///     转换为应用程序持久化对象
+        /// 转换为应用程序持久化对象
         /// </summary>
         /// <param name="entity">应用程序实体</param>
         public static ApplicationPo ToPo(this Application entity)
@@ -48,7 +48,7 @@ namespace KissU.Modules.GreatWall.Data.Pos.Extensions
         }
 
         /// <summary>
-        ///     创建扩展
+        /// 创建扩展
         /// </summary>
         private static ApplicationExtend CreateExtend(Application entity)
         {

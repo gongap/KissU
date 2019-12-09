@@ -8,7 +8,7 @@ namespace KissU.Microservices.Host
     using Surging.Core.CPlatform.Utilities;
 
     /// <summary>
-    ///     微服务引擎
+    /// 微服务引擎
     /// </summary>
     public class ServiceEngine : VirtualPathProviderServiceEngine
     {

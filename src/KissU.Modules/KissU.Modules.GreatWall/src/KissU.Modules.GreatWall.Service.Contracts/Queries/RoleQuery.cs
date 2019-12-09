@@ -9,7 +9,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts.Queries
     using Util.Datas.Queries.Trees;
 
     /// <summary>
-    ///     角色查询参数
+    /// 角色查询参数
     /// </summary>
     public class RoleQuery : TreeQueryParameter
     {
@@ -24,13 +24,13 @@ namespace KissU.Modules.GreatWall.Service.Contracts.Queries
         private string _type = string.Empty;
 
         /// <summary>
-        ///     角色标识
+        /// 角色标识
         /// </summary>
         [Display(Name = "角色标识")]
         public Guid? RoleId { get; set; }
 
         /// <summary>
-        ///     角色编码
+        /// 角色编码
         /// </summary>
         [Display(Name = "角色编码")]
         public string Code
@@ -40,7 +40,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts.Queries
         }
 
         /// <summary>
-        ///     角色名称
+        /// 角色名称
         /// </summary>
         [Display(Name = "角色名称")]
         public string Name
@@ -50,7 +50,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts.Queries
         }
 
         /// <summary>
-        ///     角色类型
+        /// 角色类型
         /// </summary>
         [Display(Name = "角色类型")]
         public string Type
@@ -60,13 +60,13 @@ namespace KissU.Modules.GreatWall.Service.Contracts.Queries
         }
 
         /// <summary>
-        ///     管理员
+        /// 管理员
         /// </summary>
         [Display(Name = "管理员")]
         public bool? IsAdmin { get; set; }
 
         /// <summary>
-        ///     备注
+        /// 备注
         /// </summary>
         [Display(Name = "备注")]
         public string Remark
@@ -76,7 +76,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts.Queries
         }
 
         /// <summary>
-        ///     拼音简码
+        /// 拼音简码
         /// </summary>
         [Display(Name = "拼音简码")]
         public string PinYin
@@ -86,19 +86,19 @@ namespace KissU.Modules.GreatWall.Service.Contracts.Queries
         }
 
         /// <summary>
-        ///     起始创建时间
+        /// 起始创建时间
         /// </summary>
         [Display(Name = "起始创建时间")]
         public DateTime? BeginCreationTime { get; set; }
 
         /// <summary>
-        ///     结束创建时间
+        /// 结束创建时间
         /// </summary>
         [Display(Name = "结束创建时间")]
         public DateTime? EndCreationTime { get; set; }
 
         /// <summary>
-        ///     创建人编号
+        /// 创建人编号
         /// </summary>
         [Display(Name = "创建人编号")]
         public Guid? CreatorId { get; set; }

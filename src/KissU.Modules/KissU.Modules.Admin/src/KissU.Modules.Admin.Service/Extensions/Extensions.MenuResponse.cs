@@ -9,12 +9,12 @@ namespace KissU.Modules.Admin.Service.Extensions
     using KissU.Modules.GreatWall.Service.Contracts.Dtos.Responses;
 
     /// <summary>
-    ///     菜单参数扩展
+    /// 菜单参数扩展
     /// </summary>
     public static class Extension
     {
         /// <summary>
-        ///     转成NgAlain菜单
+        /// 转成NgAlain菜单
         /// </summary>
         public static List<MenuInfo> ToNgAlainMenus(this IEnumerable<MenuResponse> data)
         {

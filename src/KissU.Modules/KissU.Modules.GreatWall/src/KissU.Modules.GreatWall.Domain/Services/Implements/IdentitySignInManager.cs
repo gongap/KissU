@@ -12,12 +12,12 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
     using Microsoft.Extensions.Options;
 
     /// <summary>
-    ///     Identity登录服务
+    /// Identity登录服务
     /// </summary>
     public class IdentitySignInManager : SignInManager<User>
     {
         /// <summary>
-        ///     初始化Identity登录服务
+        /// 初始化Identity登录服务
         /// </summary>
         /// <param name="userManager">Identity用户服务</param>
         /// <param name="contextAccessor">HttpContext访问器</param>
@@ -33,7 +33,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         }
 
         /// <summary>
-        ///     是否允许登录
+        /// 是否允许登录
         /// </summary>
         /// <param name="user">用户</param>
         public override async Task<bool> CanSignInAsync(User user)

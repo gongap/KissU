@@ -11,12 +11,12 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
     using Util;
 
     /// <summary>
-    ///     登录服务
+    /// 登录服务
     /// </summary>
     public class SignInManager : ISignInManager
     {
         /// <summary>
-        ///     初始化登录服务
+        /// 初始化登录服务
         /// </summary>
         /// <param name="signInManager">Identity登录服务</param>
         /// <param name="userManager">用户服务</param>
@@ -27,17 +27,17 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         }
 
         /// <summary>
-        ///     Identity登录服务
+        /// Identity登录服务
         /// </summary>
         protected IdentitySignInManager IdentitySignInManager { get; }
 
         /// <summary>
-        ///     用户服务
+        /// 用户服务
         /// </summary>
         protected IUserManager UserManager { get; }
 
         /// <summary>
-        ///     登录
+        /// 登录
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="password">密码</param>
@@ -55,7 +55,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         }
 
         /// <summary>
-        ///     密码登录
+        /// 密码登录
         /// </summary>
         private async Task<SignInResult> PasswordSignIn(User user, string password, bool isPersistent,
             bool lockoutOnFailure)
@@ -86,7 +86,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         }
 
         /// <summary>
-        ///     退出登录
+        /// 退出登录
         /// </summary>
         public async Task SignOutAsync()
         {

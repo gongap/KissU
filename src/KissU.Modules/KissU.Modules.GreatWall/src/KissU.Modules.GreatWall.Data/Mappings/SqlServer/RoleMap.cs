@@ -10,12 +10,12 @@ namespace KissU.Modules.GreatWall.Data.Mappings.SqlServer
     using Util.Datas.Ef.SqlServer;
 
     /// <summary>
-    ///     角色映射配置
+    /// 角色映射配置
     /// </summary>
     public class RoleMap : AggregateRootMap<Role>
     {
         /// <summary>
-        ///     映射表
+        /// 映射表
         /// </summary>
         protected override void MapTable(EntityTypeBuilder<Role> builder)
         {
@@ -23,7 +23,7 @@ namespace KissU.Modules.GreatWall.Data.Mappings.SqlServer
         }
 
         /// <summary>
-        ///     映射属性
+        /// 映射属性
         /// </summary>
         protected override void MapProperties(EntityTypeBuilder<Role> builder)
         {

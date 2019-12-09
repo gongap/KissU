@@ -15,12 +15,12 @@ namespace KissU.Modules.GreatWall.Service.Extensions
     using Microsoft.Extensions.DependencyInjection;
 
     /// <summary>
-    ///     权限扩展
+    /// 权限扩展
     /// </summary>
     public static class Extensions
     {
         /// <summary>
-        ///     添加权限服务
+        /// 添加权限服务
         /// </summary>
         /// <param name="services">服务集合</param>
         /// <param name="setupAction">配置操作</param>

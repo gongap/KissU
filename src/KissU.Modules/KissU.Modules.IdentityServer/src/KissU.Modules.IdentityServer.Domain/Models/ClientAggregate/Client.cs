@@ -13,20 +13,20 @@ namespace KissU.Modules.IdentityServer.Domain.Models.ClientAggregate
     using Convert = Util.Helpers.Convert;
 
     /// <summary>
-    ///     应用程序
+    /// 应用程序
     /// </summary>
     [Description("应用程序")]
     public partial class Client
     {
         /// <summary>
-        ///     初始化应用程序
+        /// 初始化应用程序
         /// </summary>
         public Client() : this(Guid.Empty)
         {
         }
 
         /// <summary>
-        ///     初始化应用程序
+        /// 初始化应用程序
         /// </summary>
         /// <param name="id">应用程序标识</param>
         public Client(Guid id) : base(id)
@@ -36,17 +36,17 @@ namespace KissU.Modules.IdentityServer.Domain.Models.ClientAggregate
         }
 
         /// <summary>
-        ///     应用程序密钥
+        /// 应用程序密钥
         /// </summary>
         public List<ClientSecret> ClientSecrets { get; set; }
 
         /// <summary>
-        ///     应用程序声明
+        /// 应用程序声明
         /// </summary>
         public List<ClientClaim> Claims { get; set; }
 
         /// <summary>
-        ///     应用程序属性
+        /// 应用程序属性
         /// </summary>
         [NotMapped]
         public List<ClientProperty> Properties
@@ -56,7 +56,7 @@ namespace KissU.Modules.IdentityServer.Domain.Models.ClientAggregate
         }
 
         /// <summary>
-        ///     指定允许应用程序使用的授权类型。将该GrantTypes类用于常见组合。
+        /// 指定允许应用程序使用的授权类型。将该GrantTypes类用于常见组合。
         /// </summary>
         [NotMapped]
         public List<string> AllowedGrantTypes
@@ -66,7 +66,7 @@ namespace KissU.Modules.IdentityServer.Domain.Models.ClientAggregate
         }
 
         /// <summary>
-        ///     指定允许的URI以返回令牌或授权码
+        /// 指定允许的URI以返回令牌或授权码
         /// </summary>
         [NotMapped]
         public List<string> RedirectUris
@@ -76,7 +76,7 @@ namespace KissU.Modules.IdentityServer.Domain.Models.ClientAggregate
         }
 
         /// <summary>
-        ///     默认情况下，应用程序无权访问任何资源 - 通过添加相应的范围名称来指定允许的资源
+        /// 默认情况下，应用程序无权访问任何资源 - 通过添加相应的范围名称来指定允许的资源
         /// </summary>
         [NotMapped]
         public List<string> AllowedScopes
@@ -86,7 +86,7 @@ namespace KissU.Modules.IdentityServer.Domain.Models.ClientAggregate
         }
 
         /// <summary>
-        ///     指定在注销后重定向到的允许URI。有关更多详细信息，请参阅OIDC Connect会话管理规范。
+        /// 指定在注销后重定向到的允许URI。有关更多详细信息，请参阅OIDC Connect会话管理规范。
         /// </summary>
         [NotMapped]
         public List<string> PostLogoutRedirectUris
@@ -96,7 +96,7 @@ namespace KissU.Modules.IdentityServer.Domain.Models.ClientAggregate
         }
 
         /// <summary>
-        ///     指定可以与此应用程序一起使用的外部IdP（如果列表为空，则允许所有IdP）。默认为空。
+        /// 指定可以与此应用程序一起使用的外部IdP（如果列表为空，则允许所有IdP）。默认为空。
         /// </summary>
         [NotMapped]
         public List<string> IdentityProviderRestrictions
@@ -106,7 +106,7 @@ namespace KissU.Modules.IdentityServer.Domain.Models.ClientAggregate
         }
 
         /// <summary>
-        ///     如果指定，将由默认CORS策略服务实现（内存和EF）用于为JavaScript应用程序构建CORS策略。
+        /// 如果指定，将由默认CORS策略服务实现（内存和EF）用于为JavaScript应用程序构建CORS策略。
         /// </summary>
         [NotMapped]
         public List<string> AllowedCorsOrigins

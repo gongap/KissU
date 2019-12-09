@@ -7,12 +7,12 @@ namespace KissU.Modules.IdentityServer.Service.Contracts.Queries
     using Util.Datas.Queries;
 
     /// <summary>
-    ///     应用程序查询实体
+    /// 应用程序查询实体
     /// </summary>
     public class ClientQuery : QueryParameter
     {
         /// <summary>
-        ///     启用状态
+        /// 启用状态
         /// </summary>
         [Display(Name = "启用状态")]
         public bool? Enabled { get; set; }

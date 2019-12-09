@@ -12,18 +12,18 @@ namespace KissU.Modules.GreatWall.Domain.Models
     using Util.Validations;
 
     /// <summary>
-    ///     用户
+    /// 用户
     /// </summary>
     public partial class User
     {
         /// <summary>
-        ///     加密器
+        /// 加密器
         /// </summary>
         [NotMapped]
         public IEncryptor Encryptor { get; set; }
 
         /// <summary>
-        ///     初始化
+        /// 初始化
         /// </summary>
         public override void Init()
         {
@@ -32,7 +32,7 @@ namespace KissU.Modules.GreatWall.Domain.Models
         }
 
         /// <summary>
-        ///     初始化用户名
+        /// 初始化用户名
         /// </summary>
         private void InitUserName()
         {
@@ -54,7 +54,7 @@ namespace KissU.Modules.GreatWall.Domain.Models
         }
 
         /// <summary>
-        ///     验证
+        /// 验证
         /// </summary>
         public override ValidationResultCollection Validate()
         {
@@ -67,7 +67,7 @@ namespace KissU.Modules.GreatWall.Domain.Models
         }
 
         /// <summary>
-        ///     设置密码
+        /// 设置密码
         /// </summary>
         /// <param name="password">密码</param>
         /// <param name="storeOriginalPassword">是否存储原始密码</param>
@@ -83,7 +83,7 @@ namespace KissU.Modules.GreatWall.Domain.Models
         }
 
         /// <summary>
-        ///     获取加密器
+        /// 获取加密器
         /// </summary>
         protected virtual IEncryptor GetEncryptor()
         {
@@ -91,7 +91,7 @@ namespace KissU.Modules.GreatWall.Domain.Models
         }
 
         /// <summary>
-        ///     设置安全码
+        /// 设置安全码
         /// </summary>
         /// <param name="password">安全码</param>
         /// <param name="storeOriginalPassword">是否存储原始密码</param>
@@ -107,7 +107,7 @@ namespace KissU.Modules.GreatWall.Domain.Models
         }
 
         /// <summary>
-        ///     获取密码
+        /// 获取密码
         /// </summary>
         public string GetPassword()
         {
@@ -115,7 +115,7 @@ namespace KissU.Modules.GreatWall.Domain.Models
         }
 
         /// <summary>
-        ///     获取安全码
+        /// 获取安全码
         /// </summary>
         public string GetSafePassword()
         {

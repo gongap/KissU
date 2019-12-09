@@ -9,20 +9,20 @@ namespace KissU.Modules.GreatWall.Domain.Models
     using Util.Domains;
 
     /// <summary>
-    ///     应用程序
+    /// 应用程序
     /// </summary>
     [DisplayName("应用程序")]
     public class Application : AggregateRoot<Application>
     {
         /// <summary>
-        ///     初始化应用程序
+        /// 初始化应用程序
         /// </summary>
         public Application() : this(Guid.Empty)
         {
         }
 
         /// <summary>
-        ///     初始化应用程序
+        /// 初始化应用程序
         /// </summary>
         /// <param name="id">应用程序标识</param>
         public Application(Guid id) : base(id)
@@ -31,7 +31,7 @@ namespace KissU.Modules.GreatWall.Domain.Models
         }
 
         /// <summary>
-        ///     应用程序编码
+        /// 应用程序编码
         /// </summary>
         [DisplayName("应用程序编码")]
         [Required(ErrorMessage = "应用程序编码不能为空")]
@@ -39,7 +39,7 @@ namespace KissU.Modules.GreatWall.Domain.Models
         public string Code { get; set; }
 
         /// <summary>
-        ///     应用程序名称
+        /// 应用程序名称
         /// </summary>
         [DisplayName("应用程序名称")]
         [Required(ErrorMessage = "应用程序名称不能为空")]
@@ -47,67 +47,67 @@ namespace KissU.Modules.GreatWall.Domain.Models
         public string Name { get; set; }
 
         /// <summary>
-        ///     启用
+        /// 启用
         /// </summary>
         [DisplayName("启用")]
         public bool Enabled { get; set; }
 
         /// <summary>
-        ///     启用注册
+        /// 启用注册
         /// </summary>
         [DisplayName("启用注册")]
         public bool RegisterEnabled { get; set; }
 
         /// <summary>
-        ///     备注
+        /// 备注
         /// </summary>
         [DisplayName("备注")]
         [StringLength(500)]
         public string Remark { get; set; }
 
         /// <summary>
-        ///     创建时间
+        /// 创建时间
         /// </summary>
         [DisplayName("创建时间")]
         public DateTime? CreationTime { get; set; }
 
         /// <summary>
-        ///     创建人标识
+        /// 创建人标识
         /// </summary>
         [DisplayName("创建人标识")]
         public Guid? CreatorId { get; set; }
 
         /// <summary>
-        ///     最后修改时间
+        /// 最后修改时间
         /// </summary>
         [DisplayName("最后修改时间")]
         public DateTime? LastModificationTime { get; set; }
 
         /// <summary>
-        ///     最后修改人标识
+        /// 最后修改人标识
         /// </summary>
         [DisplayName("最后修改人标识")]
         public Guid? LastModifierId { get; set; }
 
         /// <summary>
-        ///     是否删除
+        /// 是否删除
         /// </summary>
         [DisplayName("是否删除")]
         public bool IsDeleted { get; set; }
 
         /// <summary>
-        ///     是否客户端
+        /// 是否客户端
         /// </summary>
         [DisplayName("是否客户端")]
         public bool IsClient { get; set; }
 
         /// <summary>
-        ///     客户端
+        /// 客户端
         /// </summary>
         public Client Client { get; set; }
 
         /// <summary>
-        ///     添加描述
+        /// 添加描述
         /// </summary>
         protected override void AddDescriptions()
         {
@@ -124,7 +124,7 @@ namespace KissU.Modules.GreatWall.Domain.Models
         }
 
         /// <summary>
-        ///     添加变更列表
+        /// 添加变更列表
         /// </summary>
         protected override void AddChanges(Application other)
         {

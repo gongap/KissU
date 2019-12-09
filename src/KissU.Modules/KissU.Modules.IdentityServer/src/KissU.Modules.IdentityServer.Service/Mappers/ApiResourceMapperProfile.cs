@@ -11,12 +11,12 @@ namespace KissU.Modules.IdentityServer.Service.Mappers
     using Ids4 = IdentityServer4.Models;
 
     /// <summary>
-    ///     Api资源AutoMapper映射配置
+    /// Api资源AutoMapper映射配置
     /// </summary>
     public class ApiResourceMapperProfile : Profile
     {
         /// <summary>
-        ///     初始化
+        /// 初始化
         /// </summary>
         public ApiResourceMapperProfile()
         {

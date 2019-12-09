@@ -17,12 +17,12 @@ namespace KissU.Modules.GreatWall.Service.Implements
     using Util.Maps;
 
     /// <summary>
-    ///     模块服务
+    /// 模块服务
     /// </summary>
     public class ModuleService : ServiceBase, IModuleService
     {
         /// <summary>
-        ///     初始化模块服务
+        /// 初始化模块服务
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
         /// <param name="moduleRepository">模块仓储</param>
@@ -33,17 +33,17 @@ namespace KissU.Modules.GreatWall.Service.Implements
         }
 
         /// <summary>
-        ///     工作单元
+        /// 工作单元
         /// </summary>
         public IGreatWallUnitOfWork UnitOfWork { get; set; }
 
         /// <summary>
-        ///     模块仓储
+        /// 模块仓储
         /// </summary>
         public IModuleRepository ModuleRepository { get; set; }
 
         /// <summary>
-        ///     创建模块
+        /// 创建模块
         /// </summary>
         /// <param name="request">创建模块参数</param>
         public async Task<Guid> CreateAsync(CreateModuleRequest request)
@@ -61,7 +61,7 @@ namespace KissU.Modules.GreatWall.Service.Implements
         }
 
         /// <summary>
-        ///     修改模块
+        /// 修改模块
         /// </summary>
         /// <param name="request">模块参数</param>
         public async Task UpdateAsync(ModuleDto request)

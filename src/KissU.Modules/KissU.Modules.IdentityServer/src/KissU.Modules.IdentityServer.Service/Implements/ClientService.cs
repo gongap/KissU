@@ -28,13 +28,13 @@ namespace KissU.Modules.IdentityServer.Service.Implements
     using Ids4 = IdentityServer4.Models;
 
     /// <summary>
-    ///     应用程序服务
+    /// 应用程序服务
     /// </summary>
     public class ClientService :
         CrudServiceBase<Client, ClientDto, ClientDto, ClientCreateRequest, ClientDto, ClientQuery, Guid>, IClientService
     {
         /// <summary>
-        ///     初始化应用程序服务
+        /// 初始化应用程序服务
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
         /// <param name="clientRepository">应用程序仓储</param>
@@ -46,17 +46,17 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     应用程序仓储
+        /// 应用程序仓储
         /// </summary>
         public IClientRepository ClientRepository { get; set; }
 
         /// <summary>
-        ///     工作单元
+        /// 工作单元
         /// </summary>
         public IIdentityServerUnitOfWork UnitOfWork { get; set; }
 
         /// <summary>
-        ///     克隆应用程序
+        /// 克隆应用程序
         /// </summary>
         /// <param name="request">克隆请求参数</param>
         /// <returns></returns>
@@ -116,7 +116,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     通过编码查找
+        /// 通过编码查找
         /// </summary>
         /// <param name="clientCode"></param>
         /// <returns></returns>
@@ -127,7 +127,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     创建查询对象
+        /// 创建查询对象
         /// </summary>
         /// <param name="param">应用程序查询实体</param>
         protected override IQueryBase<Client> CreateQuery(ClientQuery param)
@@ -149,7 +149,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     创建前操作
+        /// 创建前操作
         /// </summary>
         protected override void CreateBefore(Client entity)
         {
@@ -161,7 +161,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     创建参数转换为实体
+        /// 创建参数转换为实体
         /// </summary>
         /// <param name="request">创建参数</param>
         protected override Client ToEntityFromCreateRequest(ClientCreateRequest request)
@@ -172,7 +172,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     新增应用初始化
+        /// 新增应用初始化
         /// </summary>
         /// <param name="request"></param>
         /// <param name="client"></param>
@@ -205,7 +205,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     抛出重复异常
+        /// 抛出重复异常
         /// </summary>
         private void ThrowDuplicateCodeException(string code)
         {
@@ -213,7 +213,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     过滤
+        /// 过滤
         /// </summary>
         protected override IQueryable<Client> Filter(IQueryable<Client> queryable, ClientQuery parameter)
         {
@@ -221,7 +221,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     修改前操作
+        /// 修改前操作
         /// </summary>
         protected override void UpdateBefore(Client entity)
         {
@@ -235,7 +235,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         #region 应用程序声明
 
         /// <summary>
-        ///     获取应用程序声明
+        /// 获取应用程序声明
         /// </summary>
         /// <param name="clientId">应用程序编号</param>
         /// <returns></returns>
@@ -246,7 +246,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     更新应用程序声明
+        /// 更新应用程序声明
         /// </summary>
         /// <param name="dto">应用程序声明</param>
         /// <returns></returns>
@@ -260,7 +260,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     获取应用程序声明
+        /// 获取应用程序声明
         /// </summary>
         /// <param name="id">应用程序声明编号</param>
         /// <returns></returns>
@@ -271,7 +271,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     添加应用程序声明
+        /// 添加应用程序声明
         /// </summary>
         /// <param name="request">应用程序声明</param>
         /// <returns></returns>
@@ -287,7 +287,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     删除应用程序声明
+        /// 删除应用程序声明
         /// </summary>
         /// <param name="id">应用程序声明编号</param>
         /// <returns></returns>
@@ -301,7 +301,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         #region 应用程序密钥
 
         /// <summary>
-        ///     哈希应用程序密钥
+        /// 哈希应用程序密钥
         /// </summary>
         /// <param name="request">应用程序密钥</param>
         private void HashApiSharedSecret(ClientSecretCreateRequest request)
@@ -322,7 +322,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     获取应用程序密钥
+        /// 获取应用程序密钥
         /// </summary>
         /// <param name="clientId">应用程序编号</param>
         /// <returns></returns>
@@ -333,7 +333,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     获取应用程序密钥
+        /// 获取应用程序密钥
         /// </summary>
         /// <param name="id">应用程序密钥编号</param>
         /// <returns></returns>
@@ -344,7 +344,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     添加应用程序密钥
+        /// 添加应用程序密钥
         /// </summary>
         /// <param name="request">应用程序密钥</param>
         /// <returns></returns>
@@ -361,7 +361,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     删除应用程序密钥
+        /// 删除应用程序密钥
         /// </summary>
         /// <param name="id">应用程序密钥编号</param>
         /// <returns></returns>

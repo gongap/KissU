@@ -11,13 +11,13 @@ namespace KissU.Modules.GreatWall.Domain.Models
     using Util.Domains.Trees;
 
     /// <summary>
-    ///     角色
+    /// 角色
     /// </summary>
     [Description("角色")]
     public partial class Role : TreeEntityBase<Role>, IDelete, IAudited
     {
         /// <summary>
-        ///     初始化角色
+        /// 初始化角色
         /// </summary>
         public Role()
             : this(Guid.Empty, "", 0)
@@ -25,7 +25,7 @@ namespace KissU.Modules.GreatWall.Domain.Models
         }
 
         /// <summary>
-        ///     初始化角色
+        /// 初始化角色
         /// </summary>
         /// <param name="id">角色标识</param>
         /// <param name="path">路径</param>
@@ -36,83 +36,83 @@ namespace KissU.Modules.GreatWall.Domain.Models
         }
 
         /// <summary>
-        ///     角色编码
+        /// 角色编码
         /// </summary>
         [Required(ErrorMessage = "角色编码不能为空")]
         [StringLength(256)]
         public string Code { get; set; }
 
         /// <summary>
-        ///     角色名称
+        /// 角色名称
         /// </summary>
         [Required(ErrorMessage = "角色名称不能为空")]
         [StringLength(256)]
         public string Name { get; set; }
 
         /// <summary>
-        ///     标准化角色名称
+        /// 标准化角色名称
         /// </summary>
         [Required(ErrorMessage = "标准化角色名称不能为空")]
         [StringLength(256)]
         public string NormalizedName { get; set; }
 
         /// <summary>
-        ///     角色类型
+        /// 角色类型
         /// </summary>
         [Required(ErrorMessage = "角色类型不能为空")]
         [StringLength(80)]
         public string Type { get; set; }
 
         /// <summary>
-        ///     管理员
+        /// 管理员
         /// </summary>
         public bool IsAdmin { get; private set; }
 
         /// <summary>
-        ///     备注
+        /// 备注
         /// </summary>
         [StringLength(500)]
         public string Remark { get; set; }
 
         /// <summary>
-        ///     拼音简码
+        /// 拼音简码
         /// </summary>
         [StringLength(200)]
         public string PinYin { get; set; }
 
         /// <summary>
-        ///     签名
+        /// 签名
         /// </summary>
         [StringLength(256)]
         public string Sign { get; private set; }
 
         /// <summary>
-        ///     创建时间
+        /// 创建时间
         /// </summary>
         public DateTime? CreationTime { get; set; }
 
         /// <summary>
-        ///     创建人标识
+        /// 创建人标识
         /// </summary>
         public Guid? CreatorId { get; set; }
 
         /// <summary>
-        ///     最后修改时间
+        /// 最后修改时间
         /// </summary>
         public DateTime? LastModificationTime { get; set; }
 
         /// <summary>
-        ///     最后修改人标识
+        /// 最后修改人标识
         /// </summary>
         public Guid? LastModifierId { get; set; }
 
         /// <summary>
-        ///     是否删除
+        /// 是否删除
         /// </summary>
         public bool IsDeleted { get; set; }
 
         /// <summary>
-        ///     添加描述
+        /// 添加描述
         /// </summary>
         protected override void AddDescriptions()
         {
@@ -137,7 +137,7 @@ namespace KissU.Modules.GreatWall.Domain.Models
         }
 
         /// <summary>
-        ///     添加变更列表
+        /// 添加变更列表
         /// </summary>
         protected override void AddChanges(Role other)
         {

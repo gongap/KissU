@@ -11,17 +11,17 @@ namespace KissU.Modules.IdentityServer.DbMigrator
     using Util.Reflections;
 
     /// <summary>
-    ///     此DbContext仅用于数据库迁移。
+    /// 此DbContext仅用于数据库迁移。
     /// </summary>
     public class DesignTimeDbContext : UnitOfWork, IIdentityServerUnitOfWork
     {
         /// <summary>
-        ///     类型查找器
+        /// 类型查找器
         /// </summary>
         protected readonly IFind Finder;
 
         /// <summary>
-        ///     初始化工作单元
+        /// 初始化工作单元
         /// </summary>
         /// <param name="options">配置项</param>
         /// <param name="finder">类型查找器</param>
@@ -31,7 +31,7 @@ namespace KissU.Modules.IdentityServer.DbMigrator
         }
 
         /// <summary>
-        ///     获取定义映射配置的程序集列表
+        /// 获取定义映射配置的程序集列表
         /// </summary>
         protected override Assembly[] GetAssemblies()
         {

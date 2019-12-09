@@ -14,12 +14,12 @@ namespace KissU.Modules.IdentityServer.Data.Stores
     using Ids4 = IdentityServer4.Models;
 
     /// <summary>
-    ///     认证操作数据存储器
+    /// 认证操作数据存储器
     /// </summary>
     public class PersistedGrantStore : IPersistedGrantStore
     {
         /// <summary>
-        ///     令牌许可仓储
+        /// 令牌许可仓储
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
         /// <param name="persistedGrantRepository">认证操作数据仓储</param>
@@ -31,17 +31,17 @@ namespace KissU.Modules.IdentityServer.Data.Stores
         }
 
         /// <summary>
-        ///     令牌许可仓储
+        /// 令牌许可仓储
         /// </summary>
         public IPersistedGrantRepository _persistedGrantRepository { get; set; }
 
         /// <summary>
-        ///     工作单元
+        /// 工作单元
         /// </summary>
         public IIdentityServerUnitOfWork UnitOfWork { get; set; }
 
         /// <summary>
-        ///     持久化授权收据
+        /// 持久化授权收据
         /// </summary>
         /// <param name="token">令牌</param>
         /// <returns></returns>
@@ -64,7 +64,7 @@ namespace KissU.Modules.IdentityServer.Data.Stores
         }
 
         /// <summary>
-        ///     获取授权收据
+        /// 获取授权收据
         /// </summary>
         /// <param name="key">标识key</param>
         /// <returns></returns>
@@ -75,7 +75,7 @@ namespace KissU.Modules.IdentityServer.Data.Stores
         }
 
         /// <summary>
-        ///     获取用户所有授权收据
+        /// 获取用户所有授权收据
         /// </summary>
         /// <param name="subjectId">用户主体</param>
         /// <returns></returns>
@@ -86,7 +86,7 @@ namespace KissU.Modules.IdentityServer.Data.Stores
         }
 
         /// <summary>
-        ///     删除授权数据
+        /// 删除授权数据
         /// </summary>
         /// <param name="key">标识key</param>
         /// <returns></returns>
@@ -101,7 +101,7 @@ namespace KissU.Modules.IdentityServer.Data.Stores
         }
 
         /// <summary>
-        ///     删除授权数据
+        /// 删除授权数据
         /// </summary>
         /// <param name="subjectId">用户Id</param>
         /// <param name="clientId">应用Id</param>
@@ -118,7 +118,7 @@ namespace KissU.Modules.IdentityServer.Data.Stores
         }
 
         /// <summary>
-        ///     删除授权数据
+        /// 删除授权数据
         /// </summary>
         /// <param name="subjectId">用户Id</param>
         /// <param name="clientId">应用Id</param>

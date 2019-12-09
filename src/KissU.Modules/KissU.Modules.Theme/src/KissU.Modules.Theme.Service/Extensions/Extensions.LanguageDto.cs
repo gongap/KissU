@@ -10,12 +10,12 @@ namespace KissU.Modules.Theme.Service.Extensions
     using Util.Maps;
 
     /// <summary>
-    ///     语言国际化参数扩展
+    /// 语言国际化参数扩展
     /// </summary>
     public static class LanguageDtoExtension
     {
         /// <summary>
-        ///     转换为语言国际化实体
+        /// 转换为语言国际化实体
         /// </summary>
         /// <param name="dto">语言国际化参数</param>
         public static Language ToEntity(this LanguageDto dto)
@@ -42,7 +42,7 @@ namespace KissU.Modules.Theme.Service.Extensions
         }
 
         /// <summary>
-        ///     转换为语言国际化参数
+        /// 转换为语言国际化参数
         /// </summary>
         /// <param name="entity">语言国际化实体</param>
         public static LanguageDto ToDto(this Language entity)

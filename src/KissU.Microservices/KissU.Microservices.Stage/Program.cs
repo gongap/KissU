@@ -17,12 +17,12 @@ namespace KissU.Microservices.Stage
     using Surging.Core.ServiceHosting.Internal.Implementation;
 
     /// <summary>
-    ///     应用程序
+    /// 应用程序
     /// </summary>
     public class Program
     {
         /// <summary>
-        ///     应用程序入口点
+        /// 应用程序入口点
         /// </summary>
         /// <param name="args">入口点参数</param>
         private static void Main(string[] args)

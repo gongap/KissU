@@ -14,20 +14,20 @@ namespace KissU.Modules.GreatWall.Service.Contracts.Abstractions
     using Util.Validations.Aspects;
 
     /// <summary>
-    ///     模块服务
+    /// 模块服务
     /// </summary>
     [ServiceBundle("api/{Service}")]
     public interface IModuleService : IService
     {
         /// <summary>
-        ///     创建模块
+        /// 创建模块
         /// </summary>
         /// <param name="request">创建模块参数</param>
         [HttpPost(true)]
         Task<Guid> CreateAsync([NotNull] [Valid] CreateModuleRequest request);
 
         /// <summary>
-        ///     修改模块
+        /// 修改模块
         /// </summary>
         /// <param name="request">模块参数</param>
         [HttpPut(true)]

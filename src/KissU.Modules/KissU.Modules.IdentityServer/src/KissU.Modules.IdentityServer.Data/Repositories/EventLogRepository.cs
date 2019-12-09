@@ -10,12 +10,12 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
     using Util.Datas.Ef.Core;
 
     /// <summary>
-    ///     仓储
+    /// 仓储
     /// </summary>
     public class EventLogRepository : RepositoryBase<EventLog>, IEventLogRepository
     {
         /// <summary>
-        ///     初始化仓储
+        /// 初始化仓储
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
         public EventLogRepository(IIdentityServerUnitOfWork unitOfWork) : base(unitOfWork)

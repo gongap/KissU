@@ -12,7 +12,7 @@ namespace KissU.Modules.IdentityServer.Data.Stores
     using Util.Maps;
 
     /// <summary>
-    ///     资源存储
+    /// 资源存储
     /// </summary>
     public class ResourceStore : IResourceStore
     {
@@ -20,7 +20,7 @@ namespace KissU.Modules.IdentityServer.Data.Stores
         private readonly IIdentityResourceRepository _identityResourcesPoStore;
 
         /// <summary>
-        ///     初始化资源存储
+        /// 初始化资源存储
         /// </summary>
         /// <param name="apiResourceRepository">Api资源仓储</param>
         /// <param name="identityResourceRepository">身份资源仓储</param>
@@ -34,7 +34,7 @@ namespace KissU.Modules.IdentityServer.Data.Stores
         }
 
         /// <summary>
-        ///     获取Api资源
+        /// 获取Api资源
         /// </summary>
         /// <param name="name">api名称</param>
         /// <returns></returns>
@@ -50,7 +50,7 @@ namespace KissU.Modules.IdentityServer.Data.Stores
         }
 
         /// <summary>
-        ///     获取Api资源
+        /// 获取Api资源
         /// </summary>
         /// <param name="scopeNames">授权许可名称</param>
         /// <returns></returns>
@@ -70,7 +70,7 @@ namespace KissU.Modules.IdentityServer.Data.Stores
         }
 
         /// <summary>
-        ///     获取身份资源
+        /// 获取身份资源
         /// </summary>
         /// <param name="scopeNames">授权许可名称</param>
         /// <returns></returns>
@@ -87,7 +87,7 @@ namespace KissU.Modules.IdentityServer.Data.Stores
         }
 
         /// <summary>
-        ///     获取所有Api/身份资源
+        /// 获取所有Api/身份资源
         /// </summary>
         /// <returns></returns>
         public async Task<Resources> GetAllResourcesAsync()

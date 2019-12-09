@@ -10,22 +10,22 @@ namespace KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain
     using Util;
 
     /// <summary>
-    ///     NgAlain菜单结果
+    /// NgAlain菜单结果
     /// </summary>
     public class MenuResult
     {
         /// <summary>
-        ///     菜单数据
+        /// 菜单数据
         /// </summary>
         private readonly IEnumerable<MenuResponse> _data;
 
         /// <summary>
-        ///     NgAlain菜单结果
+        /// NgAlain菜单结果
         /// </summary>
         private readonly List<MenuInfo> _result;
 
         /// <summary>
-        ///     初始化NgAlain菜单结果
+        /// 初始化NgAlain菜单结果
         /// </summary>
         /// <param name="data">菜单数据</param>
         public MenuResult(IEnumerable<MenuResponse> data)
@@ -35,7 +35,7 @@ namespace KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain
         }
 
         /// <summary>
-        ///     获取树形结果
+        /// 获取树形结果
         /// </summary>
         public List<MenuInfo> GetResult()
         {
@@ -53,7 +53,7 @@ namespace KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain
         }
 
         /// <summary>
-        ///     是否根节点
+        /// 是否根节点
         /// </summary>
         protected virtual bool IsRoot(MenuResponse dto)
         {
@@ -66,7 +66,7 @@ namespace KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain
         }
 
         /// <summary>
-        ///     添加节点
+        /// 添加节点
         /// </summary>
         private void AddNodes(MenuResponse root)
         {
@@ -76,7 +76,7 @@ namespace KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain
         }
 
         /// <summary>
-        ///     转换为树节点
+        /// 转换为树节点
         /// </summary>
         private MenuInfo ToNode(MenuResponse dto)
         {
@@ -94,7 +94,7 @@ namespace KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain
         }
 
         /// <summary>
-        ///     添加子节点
+        /// 添加子节点
         /// </summary>
         private void AddChildren(MenuInfo node)
         {
@@ -111,7 +111,7 @@ namespace KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain
         }
 
         /// <summary>
-        ///     获取节点直接下级
+        /// 获取节点直接下级
         /// </summary>
         private List<MenuResponse> GetChildren(string parentId)
         {

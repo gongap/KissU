@@ -10,12 +10,12 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
     using Util.Datas.Ef.SqlServer;
 
     /// <summary>
-    ///     映射配置
+    /// 映射配置
     /// </summary>
     public class EventLogMap : AggregateRootMap<EventLog>
     {
         /// <summary>
-        ///     映射表
+        /// 映射表
         /// </summary>
         protected override void MapTable(EntityTypeBuilder<EventLog> builder)
         {
@@ -23,7 +23,7 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         }
 
         /// <summary>
-        ///     映射属性
+        /// 映射属性
         /// </summary>
         protected override void MapProperties(EntityTypeBuilder<EventLog> builder)
         {

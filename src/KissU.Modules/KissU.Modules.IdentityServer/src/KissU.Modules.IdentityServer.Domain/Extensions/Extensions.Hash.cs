@@ -9,12 +9,12 @@ namespace KissU.Modules.IdentityServer.Domain.Extensions
     using System.Text;
 
     /// <summary>
-    ///     Extension methods for hashing strings
+    /// Extension methods for hashing strings
     /// </summary>
     public static class Extensions
     {
         /// <summary>
-        ///     Creates a SHA256 hash of the specified input.
+        /// Creates a SHA256 hash of the specified input.
         /// </summary>
         /// <param name="input">The input.</param>
         /// <returns>A hash</returns>
@@ -35,7 +35,7 @@ namespace KissU.Modules.IdentityServer.Domain.Extensions
         }
 
         /// <summary>
-        ///     Creates a SHA256 hash of the specified input.
+        /// Creates a SHA256 hash of the specified input.
         /// </summary>
         /// <param name="input">The input.</param>
         /// <returns>A hash.</returns>
@@ -53,7 +53,7 @@ namespace KissU.Modules.IdentityServer.Domain.Extensions
         }
 
         /// <summary>
-        ///     Creates a SHA512 hash of the specified input.
+        /// Creates a SHA512 hash of the specified input.
         /// </summary>
         /// <param name="input">The input.</param>
         /// <returns>A hash</returns>

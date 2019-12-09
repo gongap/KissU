@@ -16,14 +16,14 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
     using Util.Domains.Services;
 
     /// <summary>
-    ///     用户服务
+    /// 用户服务
     /// </summary>
     public class UserManager : DomainServiceBase, IUserManager
     {
         #region 构造方法
 
         /// <summary>
-        ///     初始化用户服务
+        /// 初始化用户服务
         /// </summary>
         /// <param name="userManager">Identity用户服务</param>
         /// <param name="options">权限配置</param>
@@ -41,7 +41,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         #region 创建用户
 
         /// <summary>
-        ///     创建用户
+        /// 创建用户
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="password">密码</param>
@@ -64,17 +64,17 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         #region 属性
 
         /// <summary>
-        ///     Identity用户服务
+        /// Identity用户服务
         /// </summary>
         private IdentityUserManager Manager { get; }
 
         /// <summary>
-        ///     权限配置
+        /// 权限配置
         /// </summary>
         private IOptions<PermissionOptions> Options { get; }
 
         /// <summary>
-        ///     用户仓储
+        /// 用户仓储
         /// </summary>
         private IUserRepository UserRepository { get; }
 
@@ -83,7 +83,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         #region 生成令牌
 
         /// <summary>
-        ///     生成令牌
+        /// 生成令牌
         /// </summary>
         /// <param name="phone">手机号</param>
         /// <param name="purpose">用途</param>
@@ -97,7 +97,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         }
 
         /// <summary>
-        ///     获取用户
+        /// 获取用户
         /// </summary>
         private async Task<User> GetUserOrDefault(string phone)
         {
@@ -111,7 +111,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         }
 
         /// <summary>
-        ///     创建安全戳
+        /// 创建安全戳
         /// </summary>
         protected virtual string CreateSecurityStamp()
         {
@@ -119,7 +119,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         }
 
         /// <summary>
-        ///     生成令牌
+        /// 生成令牌
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="purpose">用途</param>
@@ -139,7 +139,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         }
 
         /// <summary>
-        ///     获取用途
+        /// 获取用途
         /// </summary>
         private string GetPurpose(string purpose, string application)
         {
@@ -151,7 +151,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         #region 验证令牌
 
         /// <summary>
-        ///     验证令牌
+        /// 验证令牌
         /// </summary>
         /// <param name="phone">手机号</param>
         /// <param name="purpose">用途</param>
@@ -166,7 +166,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         }
 
         /// <summary>
-        ///     验证令牌
+        /// 验证令牌
         /// </summary>
         /// <param name="user">手机号</param>
         /// <param name="purpose">用途</param>
@@ -191,7 +191,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         #region 生成和验证手机号注册令牌
 
         /// <summary>
-        ///     生成手机号注册令牌
+        /// 生成手机号注册令牌
         /// </summary>
         /// <param name="phone">手机号</param>
         /// <param name="application">应用程序</param>
@@ -201,7 +201,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         }
 
         /// <summary>
-        ///     验证手机号注册令牌
+        /// 验证手机号注册令牌
         /// </summary>
         /// <param name="phone">手机号</param>
         /// <param name="token">令牌</param>
@@ -216,7 +216,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         #region 激活电子邮件
 
         /// <summary>
-        ///     生成电子邮件确认令牌
+        /// 生成电子邮件确认令牌
         /// </summary>
         /// <param name="user">用户</param>
         public async Task<string> GenerateEmailConfirmationTokenAsync(User user)
@@ -225,7 +225,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         }
 
         /// <summary>
-        ///     激活电子邮件
+        /// 激活电子邮件
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="token">令牌</param>
@@ -240,7 +240,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         #region 电子邮件找回密码
 
         /// <summary>
-        ///     生成电子邮件重置密码令牌
+        /// 生成电子邮件重置密码令牌
         /// </summary>
         /// <param name="user">用户</param>
         public async Task<string> GenerateEmailPasswordResetTokenAsync(User user)
@@ -250,7 +250,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         }
 
         /// <summary>
-        ///     通过电子邮件重置密码
+        /// 通过电子邮件重置密码
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="token">令牌</param>
@@ -266,7 +266,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         #region 手机号找回密码
 
         /// <summary>
-        ///     生成手机号重置密码令牌
+        /// 生成手机号重置密码令牌
         /// </summary>
         /// <param name="user">用户</param>
         public async Task<string> GeneratePhonePasswordResetTokenAsync(User user)
@@ -276,7 +276,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         }
 
         /// <summary>
-        ///     通过手机号重置密码
+        /// 通过手机号重置密码
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="token">令牌</param>
@@ -292,7 +292,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         #region 修改密码
 
         /// <summary>
-        ///     修改密码
+        /// 修改密码
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="currentPassword">当前密码</param>
@@ -304,7 +304,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         }
 
         /// <summary>
-        ///     修改密码
+        /// 修改密码
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="newPassword">新密码</param>
@@ -319,7 +319,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         #region 查找用户
 
         /// <summary>
-        ///     通过用户名查找
+        /// 通过用户名查找
         /// </summary>
         /// <param name="userName">用户名</param>
         public async Task<User> FindByNameAsync(string userName)
@@ -328,7 +328,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         }
 
         /// <summary>
-        ///     通过电子邮件查找
+        /// 通过电子邮件查找
         /// </summary>
         /// <param name="email">电子邮件</param>
         public async Task<User> FindByEmailAsync(string email)
@@ -337,7 +337,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         }
 
         /// <summary>
-        ///     通过手机号查找
+        /// 通过手机号查找
         /// </summary>
         /// <param name="phoneNumber">手机号</param>
         public async Task<User> FindByPhoneAsync(string phoneNumber)

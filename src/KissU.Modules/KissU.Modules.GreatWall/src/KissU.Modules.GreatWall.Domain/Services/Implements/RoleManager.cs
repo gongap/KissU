@@ -20,12 +20,12 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
     using Extensions = Util.Extensions;
 
     /// <summary>
-    ///     角色服务
+    /// 角色服务
     /// </summary>
     public class RoleManager : DomainServiceBase, IRoleManager
     {
         /// <summary>
-        ///     初始化角色服务
+        /// 初始化角色服务
         /// </summary>
         /// <param name="roleManager">Identity角色服务</param>
         /// <param name="roleRepository">角色仓储</param>
@@ -36,17 +36,17 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         }
 
         /// <summary>
-        ///     Identity角色服务
+        /// Identity角色服务
         /// </summary>
         private RoleManager<Role> Manager { get; }
 
         /// <summary>
-        ///     角色仓储
+        /// 角色仓储
         /// </summary>
         private IRoleRepository RoleRepository { get; }
 
         /// <summary>
-        ///     创建角色
+        /// 创建角色
         /// </summary>
         /// <param name="role">角色</param>
         public virtual async Task CreateAsync(Role role)
@@ -61,7 +61,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         }
 
         /// <summary>
-        ///     创建角色验证
+        /// 创建角色验证
         /// </summary>
         /// <param name="role">角色</param>
         protected virtual async Task ValidateCreate(Role role)
@@ -74,7 +74,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         }
 
         /// <summary>
-        ///     抛出编码重复异常
+        /// 抛出编码重复异常
         /// </summary>
         protected void ThrowDuplicateCodeException(string code)
         {
@@ -82,7 +82,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         }
 
         /// <summary>
-        ///     修改角色
+        /// 修改角色
         /// </summary>
         public async Task UpdateAsync(Role role)
         {
@@ -95,7 +95,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         }
 
         /// <summary>
-        ///     修改角色验证
+        /// 修改角色验证
         /// </summary>
         /// <param name="role">角色</param>
         protected async Task ValidateUpdate(Role role)
@@ -107,7 +107,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         }
 
         /// <summary>
-        ///     添加用户到角色
+        /// 添加用户到角色
         /// </summary>
         /// <param name="roleId">角色标识</param>
         /// <param name="userIds">用户标识列表</param>
@@ -125,7 +125,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         }
 
         /// <summary>
-        ///     创建用户角色列表
+        /// 创建用户角色列表
         /// </summary>
         private List<UserRole> CreateUserRoles(Guid roleId, List<Guid> userIds)
         {
@@ -133,7 +133,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         }
 
         /// <summary>
-        ///     从角色移除用户
+        /// 从角色移除用户
         /// </summary>
         /// <param name="roleId">角色标识</param>
         /// <param name="userIds">用户标识列表</param>

@@ -8,12 +8,12 @@ namespace KissU.Modules.GreatWall.Domain.Models
     using Util.Helpers;
 
     /// <summary>
-    ///     角色
+    /// 角色
     /// </summary>
     public partial class Role
     {
         /// <summary>
-        ///     初始化
+        /// 初始化
         /// </summary>
         public override void Init()
         {
@@ -23,7 +23,7 @@ namespace KissU.Modules.GreatWall.Domain.Models
         }
 
         /// <summary>
-        ///     初始化类型
+        /// 初始化类型
         /// </summary>
         public void InitType()
         {
@@ -34,7 +34,7 @@ namespace KissU.Modules.GreatWall.Domain.Models
         }
 
         /// <summary>
-        ///     初始化拼音简码
+        /// 初始化拼音简码
         /// </summary>
         public void InitPinYin()
         {

@@ -17,7 +17,7 @@ namespace KissU.Modules.Theme.Data.Repositories.Base
     using Util.Domains;
 
     /// <summary>
-    ///     主从仓储
+    /// 主从仓储
     /// </summary>
     /// <typeparam name="TMaster"></typeparam>
     /// <typeparam name="TDetail"></typeparam>
@@ -32,7 +32,7 @@ namespace KissU.Modules.Theme.Data.Repositories.Base
         }
 
         /// <summary>
-        ///     查找实体
+        /// 查找实体
         /// </summary>
         /// <param name="id">标识</param>
         /// <param name="cancellationToken">取消令牌</param>
@@ -48,7 +48,7 @@ namespace KissU.Modules.Theme.Data.Repositories.Base
         }
 
         /// <summary>
-        ///     查找实体列表
+        /// 查找实体列表
         /// </summary>
         /// <param name="ids">标识列表</param>
         /// <param name="cancellationToken">取消令牌</param>
@@ -64,7 +64,7 @@ namespace KissU.Modules.Theme.Data.Repositories.Base
         }
 
         /// <summary>
-        ///     修改实体
+        /// 修改实体
         /// </summary>
         /// <param name="entity">实体</param>
         public override async Task UpdateAsync(TMaster entity)
@@ -78,7 +78,7 @@ namespace KissU.Modules.Theme.Data.Repositories.Base
         }
 
         /// <summary>
-        ///     添加实体
+        /// 添加实体
         /// </summary>
         /// <param name="entity">实体</param>
         protected virtual Task AddDetail(TDetail entity)
@@ -93,7 +93,7 @@ namespace KissU.Modules.Theme.Data.Repositories.Base
         }
 
         /// <summary>
-        ///     删除实体
+        /// 删除实体
         /// </summary>
         /// <param name="entity">实体</param>
         protected virtual Task DeleteDetail(TDetail entity)
@@ -108,7 +108,7 @@ namespace KissU.Modules.Theme.Data.Repositories.Base
         }
 
         /// <summary>
-        ///     修改实体
+        /// 修改实体
         /// </summary>
         /// <param name="entity">实体</param>
         protected virtual Task UpdateDetail(TDetail entity)

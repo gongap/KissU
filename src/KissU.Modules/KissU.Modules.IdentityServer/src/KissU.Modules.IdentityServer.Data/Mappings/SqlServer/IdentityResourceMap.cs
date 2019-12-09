@@ -10,12 +10,12 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
     using Util.Datas.Ef.SqlServer;
 
     /// <summary>
-    ///     身份资源映射配置
+    /// 身份资源映射配置
     /// </summary>
     public class IdentityResourceMap : AggregateRootMap<IdentityResource>
     {
         /// <summary>
-        ///     映射表
+        /// 映射表
         /// </summary>
         protected override void MapTable(EntityTypeBuilder<IdentityResource> builder)
         {
@@ -23,7 +23,7 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         }
 
         /// <summary>
-        ///     映射属性
+        /// 映射属性
         /// </summary>
         protected override void MapProperties(EntityTypeBuilder<IdentityResource> builder)
         {

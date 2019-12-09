@@ -8,12 +8,12 @@ namespace KissU.Modules.IdentityServer.Service.Contracts.Dtos
     using Util.Applications.Dtos;
 
     /// <summary>
-    ///     创建Api许可范围数据传输对象
+    /// 创建Api许可范围数据传输对象
     /// </summary>
     public class ApiResourceScopeDto : DtoBase
     {
         /// <summary>
-        ///     Api资源编号
+        /// Api资源编号
         /// </summary>
 
         [Required]
@@ -21,7 +21,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts.Dtos
         public Guid ApiResourceId { get; set; }
 
         /// <summary>
-        ///     名称
+        /// 名称
         /// </summary>
 
         [Required]
@@ -30,7 +30,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts.Dtos
         public string Name { get; set; }
 
         /// <summary>
-        ///     显示名称
+        /// 显示名称
         /// </summary>
 
         [Display(Name = "显示名称")]
@@ -38,7 +38,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts.Dtos
         public string DisplayName { get; set; }
 
         /// <summary>
-        ///     描述
+        /// 描述
         /// </summary>
 
         [Display(Name = "描述")]
@@ -46,7 +46,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts.Dtos
         public string Description { get; set; }
 
         /// <summary>
-        ///     指定用户是否可以在同意屏幕上取消选择范围（如果同意屏幕要实现此类功能）。默认为false。
+        /// 指定用户是否可以在同意屏幕上取消选择范围（如果同意屏幕要实现此类功能）。默认为false。
         /// </summary>
 
         [Required]
@@ -54,7 +54,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts.Dtos
         public bool Required { get; set; }
 
         /// <summary>
-        ///     指定同意屏幕是否会强调此范围（如果同意屏幕要实现此类功能）。将此设置用于敏感或重要范围。默认为false。
+        /// 指定同意屏幕是否会强调此范围（如果同意屏幕要实现此类功能）。将此设置用于敏感或重要范围。默认为false。
         /// </summary>
 
         [Required]
@@ -62,7 +62,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts.Dtos
         public bool Emphasize { get; set; }
 
         /// <summary>
-        ///     指定此范围是否显示在发现文档中。默认为true。
+        /// 指定此范围是否显示在发现文档中。默认为true。
         /// </summary>
 
         [Required]
@@ -70,7 +70,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts.Dtos
         public bool ShowInDiscoveryDocument { get; set; } = true;
 
         /// <summary>
-        ///     应包含在访问令牌中的关联用户声明类型列表
+        /// 应包含在访问令牌中的关联用户声明类型列表
         /// </summary>
 
         [Display(Name = "用户声明类型列表")]

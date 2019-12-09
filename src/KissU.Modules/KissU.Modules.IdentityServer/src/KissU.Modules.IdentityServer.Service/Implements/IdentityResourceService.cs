@@ -20,14 +20,14 @@ namespace KissU.Modules.IdentityServer.Service.Implements
     using Util.Exceptions;
 
     /// <summary>
-    ///     应用程序服务
+    /// 应用程序服务
     /// </summary>
     public class IdentityResourceService :
         CrudServiceBase<IdentityResource, IdentityResourceDto, IdentityResourceDto, IdentityResourceCreateRequest,
             IdentityResourceDto, IdentityResourceQuery, Guid>, IIdentityResourceService
     {
         /// <summary>
-        ///     初始化应用程序服务
+        /// 初始化应用程序服务
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
         /// <param name="identityResourceRepository">应用程序仓储</param>
@@ -40,17 +40,17 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     应用程序仓储
+        /// 应用程序仓储
         /// </summary>
         public IIdentityResourceRepository IdentityResourceRepository { get; set; }
 
         /// <summary>
-        ///     工作单元
+        /// 工作单元
         /// </summary>
         public IIdentityServerUnitOfWork UnitOfWork { get; set; }
 
         /// <summary>
-        ///     创建查询对象
+        /// 创建查询对象
         /// </summary>
         /// <param name="param">应用程序查询实体</param>
         protected override IQueryBase<IdentityResource> CreateQuery(IdentityResourceQuery param)
@@ -72,7 +72,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     创建前操作
+        /// 创建前操作
         /// </summary>
         protected override void CreateBefore(IdentityResource entity)
         {
@@ -84,7 +84,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     抛出Name重复异常
+        /// 抛出Name重复异常
         /// </summary>
         private void ThrowDuplicateNameException(string name)
         {
@@ -92,7 +92,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     修改前操作
+        /// 修改前操作
         /// </summary>
         protected override void UpdateBefore(IdentityResource entity)
         {
@@ -104,7 +104,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     过滤
+        /// 过滤
         /// </summary>
         protected override IQueryable<IdentityResource> Filter(IQueryable<IdentityResource> queryable,
             IdentityResourceQuery parameter)

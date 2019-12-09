@@ -20,7 +20,7 @@ namespace KissU.Core.Util
         }
 
         /// <summary>
-        ///     Inject dependent third-party components
+        /// Inject dependent third-party components
         /// </summary>
         /// <param name="builder"></param>
         protected override void RegisterBuilder(ContainerBuilderWrapper builder)

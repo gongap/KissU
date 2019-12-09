@@ -15,12 +15,12 @@ namespace KissU.Modules.Admin.Service.Implements
     using Surging.Core.ProxyGenerator;
 
     /// <summary>
-    ///     启动服务
+    /// 启动服务
     /// </summary>
     public class StartupService : ProxyServiceBase, IStartupService
     {
         /// <summary>
-        ///     获取应用程序数据
+        /// 获取应用程序数据
         /// </summary>
         [HttpGet(true)]
         public async Task<AppData> GetAppDataAsync()
@@ -36,7 +36,7 @@ namespace KissU.Modules.Admin.Service.Implements
         }
 
         /// <summary>
-        ///     获取菜单
+        /// 获取菜单
         /// </summary>
         private async Task<List<MenuInfo>> GetMenus()
         {

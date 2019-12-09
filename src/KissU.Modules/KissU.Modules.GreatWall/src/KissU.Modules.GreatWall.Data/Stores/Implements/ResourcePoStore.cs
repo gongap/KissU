@@ -14,12 +14,12 @@ namespace KissU.Modules.GreatWall.Data.Stores.Implements
     using Util.Datas.Ef.Core;
 
     /// <summary>
-    ///     资源存储器
+    /// 资源存储器
     /// </summary>
     public class ResourcePoStore : StoreBase<ResourcePo>, IResourcePoStore
     {
         /// <summary>
-        ///     初始化资源存储器
+        /// 初始化资源存储器
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
         public ResourcePoStore(IGreatWallUnitOfWork unitOfWork) : base(unitOfWork)
@@ -27,7 +27,7 @@ namespace KissU.Modules.GreatWall.Data.Stores.Implements
         }
 
         /// <summary>
-        ///     获取模块列表
+        /// 获取模块列表
         /// </summary>
         /// <param name="applicationId">应用程序标识</param>
         /// <param name="roleIds">角色标识列表</param>

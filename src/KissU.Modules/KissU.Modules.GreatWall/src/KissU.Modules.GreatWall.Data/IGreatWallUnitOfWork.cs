@@ -7,7 +7,7 @@ namespace KissU.Modules.GreatWall.Data
     using Util.Datas.UnitOfWorks;
 
     /// <summary>
-    ///     GreatWall工作单元
+    /// GreatWall工作单元
     /// </summary>
     public interface IGreatWallUnitOfWork : IUnitOfWork
     {

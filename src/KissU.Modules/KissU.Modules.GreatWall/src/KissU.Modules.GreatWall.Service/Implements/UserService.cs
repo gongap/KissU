@@ -22,12 +22,12 @@ namespace KissU.Modules.GreatWall.Service.Implements
     using Util.Maps;
 
     /// <summary>
-    ///     用户服务
+    /// 用户服务
     /// </summary>
     public class UserService : DeleteServiceBase<User, UserDto, UserQuery>, IUserService
     {
         /// <summary>
-        ///     初始化用户服务
+        /// 初始化用户服务
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
         /// <param name="userRepository">用户仓储</param>
@@ -41,22 +41,22 @@ namespace KissU.Modules.GreatWall.Service.Implements
         }
 
         /// <summary>
-        ///     工作单元
+        /// 工作单元
         /// </summary>
         public IGreatWallUnitOfWork UnitOfWork { get; set; }
 
         /// <summary>
-        ///     用户仓储
+        /// 用户仓储
         /// </summary>
         public IUserRepository UserRepository { get; set; }
 
         /// <summary>
-        ///     用户服务
+        /// 用户服务
         /// </summary>
         public IUserManager UserManager { get; set; }
 
         /// <summary>
-        ///     创建用户
+        /// 创建用户
         /// </summary>
         /// <param name="request">创建用户参数</param>
         public async Task<Guid> CreateAsync(CreateUserRequest request)
@@ -69,7 +69,7 @@ namespace KissU.Modules.GreatWall.Service.Implements
         }
 
         /// <summary>
-        ///     创建查询对象
+        /// 创建查询对象
         /// </summary>
         /// <param name="param">查询参数</param>
         protected override IQueryBase<User> CreateQuery(UserQuery param)
@@ -81,7 +81,7 @@ namespace KissU.Modules.GreatWall.Service.Implements
         }
 
         /// <summary>
-        ///     过滤查询
+        /// 过滤查询
         /// </summary>
         protected override IQueryable<User> Filter(IQueryable<User> queryable, UserQuery parameter)
         {

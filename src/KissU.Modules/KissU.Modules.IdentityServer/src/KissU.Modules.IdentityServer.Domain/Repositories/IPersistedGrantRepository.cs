@@ -8,7 +8,7 @@ namespace KissU.Modules.IdentityServer.Domain.Repositories
     using Util.Domains.Repositories;
 
     /// <summary>
-    ///     认证操作数据仓储
+    /// 认证操作数据仓储
     /// </summary>
     public interface IPersistedGrantRepository : IRepository<PersistedGrant>
     {

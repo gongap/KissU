@@ -11,20 +11,20 @@ namespace KissU.Modules.Theme.Domain.Models
     using KissU.Modules.Theme.Domain.Base;
 
     /// <summary>
-    ///     语言国际化
+    /// 语言国际化
     /// </summary>
     [DisplayName("语言国际化")]
     public partial class Language : MasterEntity<LanguageDetail>
     {
         /// <summary>
-        ///     初始化
+        /// 初始化
         /// </summary>
         public Language() : this(Guid.Empty)
         {
         }
 
         /// <summary>
-        ///     初始化
+        /// 初始化
         /// </summary>
         /// <param name="id">标识</param>
         public Language(Guid id) : base(id)
@@ -33,7 +33,7 @@ namespace KissU.Modules.Theme.Domain.Models
         }
 
         /// <summary>
-        ///     编码
+        /// 编码
         /// </summary>
         [Required(ErrorMessage = "编码不能为空")]
         [StringLength(10)]
@@ -41,7 +41,7 @@ namespace KissU.Modules.Theme.Domain.Models
         public string Code { get; set; }
 
         /// <summary>
-        ///     名称
+        /// 名称
         /// </summary>
         [Required(ErrorMessage = "名称不能为空")]
         [StringLength(64)]
@@ -49,14 +49,14 @@ namespace KissU.Modules.Theme.Domain.Models
         public string Text { get; set; }
 
         /// <summary>
-        ///     简称
+        /// 简称
         /// </summary>
         [StringLength(128)]
         [Display(Name = "简称")]
         public string Abbr { get; set; }
 
         /// <summary>
-        ///     是否启用
+        /// 是否启用
         /// </summary>
         [Display(Name = "是否启用")]
         public bool? IsEnabled { get; set; }

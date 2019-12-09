@@ -8,7 +8,7 @@ namespace KissU.Modules.IdentityServer.Domain.Repositories
     using Util.Domains.Repositories;
 
     /// <summary>
-    ///     仓储
+    /// 仓储
     /// </summary>
     public interface IEventLogRepository : IRepository<EventLog>
     {

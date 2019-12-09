@@ -12,12 +12,12 @@ namespace KissU.Modules.GreatWall.Data.Repositories
     using Util.Datas.Ef.Core;
 
     /// <summary>
-    ///     权限仓储
+    /// 权限仓储
     /// </summary>
     public class PermissionRepository : RepositoryBase<Permission>, IPermissionRepository
     {
         /// <summary>
-        ///     初始化权限仓储
+        /// 初始化权限仓储
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
         public PermissionRepository(IGreatWallUnitOfWork unitOfWork) : base(unitOfWork)
@@ -25,7 +25,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     获取资源标识列表
+        /// 获取资源标识列表
         /// </summary>
         /// <param name="applicationId">应用程序标识</param>
         /// <param name="roleId">角色标识</param>
@@ -41,7 +41,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     获取权限标识列表
+        /// 获取权限标识列表
         /// </summary>
         /// <param name="roleId">角色标识</param>
         /// <param name="resourceIds">资源标识列表</param>
@@ -52,7 +52,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     移除权限
+        /// 移除权限
         /// </summary>
         /// <param name="roleId">角色标识</param>
         /// <param name="resourceIds">资源标识列表</param>

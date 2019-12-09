@@ -8,12 +8,12 @@ namespace KissU.Modules.IdentityServer.Service.Contracts.Dtos
     using Util.Applications.Dtos;
 
     /// <summary>
-    ///     应用程序密钥数据传输对象
+    /// 应用程序密钥数据传输对象
     /// </summary>
     public class ClientSecretDto : DtoBase
     {
         /// <summary>
-        ///     应用程序编号
+        /// 应用程序编号
         /// </summary>
 
         [Required]
@@ -21,7 +21,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts.Dtos
         public Guid ClientId { get; set; }
 
         /// <summary>
-        ///     密钥值
+        /// 密钥值
         /// </summary>
 
         [Required]
@@ -30,7 +30,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts.Dtos
         public string Value { get; set; }
 
         /// <summary>
-        ///     密钥类型
+        /// 密钥类型
         /// </summary>
 
         [Required]
@@ -39,14 +39,14 @@ namespace KissU.Modules.IdentityServer.Service.Contracts.Dtos
         public string Type { get; set; }
 
         /// <summary>
-        ///     哈希类型
+        /// 哈希类型
         /// </summary>
 
         [Display(Name = "哈希类型")]
         public HashType HashType { get; set; }
 
         /// <summary>
-        ///     描述
+        /// 描述
         /// </summary>
 
         [StringLength(1000, ErrorMessage = "描述输入过长，不能超过1000位")]
@@ -54,7 +54,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts.Dtos
         public string Description { get; set; }
 
         /// <summary>
-        ///     过期时间
+        /// 过期时间
         /// </summary>
 
         [Display(Name = "过期时间")]

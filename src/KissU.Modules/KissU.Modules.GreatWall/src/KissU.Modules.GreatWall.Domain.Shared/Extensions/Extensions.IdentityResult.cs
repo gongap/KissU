@@ -9,12 +9,12 @@ namespace KissU.Modules.GreatWall.Domain.Shared.Extensions
     using Util.Exceptions;
 
     /// <summary>
-    ///     Identity结果扩展
+    /// Identity结果扩展
     /// </summary>
     public static partial class Extensions
     {
         /// <summary>
-        ///     失败抛出异常
+        /// 失败抛出异常
         /// </summary>
         /// <param name="result">Identity结果</param>
         public static void ThrowIfError(this IdentityResult result)

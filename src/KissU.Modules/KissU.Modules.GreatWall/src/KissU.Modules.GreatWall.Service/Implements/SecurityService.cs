@@ -15,12 +15,12 @@ namespace KissU.Modules.GreatWall.Service.Implements
     using Util.Applications;
 
     /// <summary>
-    ///     安全服务
+    /// 安全服务
     /// </summary>
     public class SecurityService : ServiceBase, ISecurityService
     {
         /// <summary>
-        ///     初始化安全服务
+        /// 初始化安全服务
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
         /// <param name="signInManager">登录服务</param>
@@ -33,22 +33,22 @@ namespace KissU.Modules.GreatWall.Service.Implements
         }
 
         /// <summary>
-        ///     工作单元
+        /// 工作单元
         /// </summary>
         public IGreatWallUnitOfWork UnitOfWork { get; set; }
 
         /// <summary>
-        ///     登录服务
+        /// 登录服务
         /// </summary>
         public ISignInManager SignInManager { get; set; }
 
         /// <summary>
-        ///     用户服务
+        /// 用户服务
         /// </summary>
         public IUserManager UserManager { get; set; }
 
         /// <summary>
-        ///     登录
+        /// 登录
         /// </summary>
         /// <param name="request">登录参数</param>
         public async Task<SignInResult> SignInAsync(LoginRequest request)
@@ -60,7 +60,7 @@ namespace KissU.Modules.GreatWall.Service.Implements
         }
 
         /// <summary>
-        ///     退出登录
+        /// 退出登录
         /// </summary>
         public async Task SignOutAsync()
         {
@@ -68,7 +68,7 @@ namespace KissU.Modules.GreatWall.Service.Implements
         }
 
         /// <summary>
-        ///     获取用户
+        /// 获取用户
         /// </summary>
         private async Task<User> GetUser(LoginRequest request)
         {

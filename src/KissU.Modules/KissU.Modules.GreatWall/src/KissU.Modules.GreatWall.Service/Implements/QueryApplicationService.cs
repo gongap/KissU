@@ -16,13 +16,13 @@ namespace KissU.Modules.GreatWall.Service.Implements
     using Util.Domains.Repositories;
 
     /// <summary>
-    ///     应用程序查询服务
+    /// 应用程序查询服务
     /// </summary>
     public class QueryApplicationService : QueryServiceBase<ApplicationPo, ApplicationDto, ApplicationQuery>,
         IQueryApplicationService
     {
         /// <summary>
-        ///     初始化应用程序查询服务
+        /// 初始化应用程序查询服务
         /// </summary>
         /// <param name="applicationPoStore">应用程序存储器</param>
         /// <param name="applicationRepository">应用程序仓储</param>
@@ -33,12 +33,12 @@ namespace KissU.Modules.GreatWall.Service.Implements
         }
 
         /// <summary>
-        ///     应用程序仓储
+        /// 应用程序仓储
         /// </summary>
         public IApplicationRepository ApplicationRepository { get; set; }
 
         /// <summary>
-        ///     通过应用程序编码查找
+        /// 通过应用程序编码查找
         /// </summary>
         /// <param name="code">应用程序编码</param>
         public async Task<ApplicationDto> GetByCodeAsync(string code)
@@ -48,7 +48,7 @@ namespace KissU.Modules.GreatWall.Service.Implements
         }
 
         /// <summary>
-        ///     创建查询对象
+        /// 创建查询对象
         /// </summary>
         /// <param name="query">查询参数</param>
         protected override IQueryBase<ApplicationPo> CreateQuery(ApplicationQuery query)

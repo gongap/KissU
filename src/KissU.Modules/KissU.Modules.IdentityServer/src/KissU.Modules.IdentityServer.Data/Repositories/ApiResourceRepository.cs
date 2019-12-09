@@ -15,12 +15,12 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
     using Util.Datas.Ef.Core;
 
     /// <summary>
-    ///     API资源仓储
+    /// API资源仓储
     /// </summary>
     public class ApiResourceRepository : RepositoryBase<ApiResource>, IApiResourceRepository
     {
         /// <summary>
-        ///     初始化API资源仓储
+        /// 初始化API资源仓储
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
         public ApiResourceRepository(IIdentityServerUnitOfWork unitOfWork) : base(unitOfWork)
@@ -30,7 +30,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         #region Api许可范围
 
         /// <summary>
-        ///     获取Api许可范围
+        /// 获取Api许可范围
         /// </summary>
         /// <param name="apiResourceId">Api资源编号</param>
         public async Task<List<ApiResourceScope>> GetApiResourceScopesAsync(Guid apiResourceId)
@@ -44,7 +44,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         }
 
         /// <summary>
-        ///     获取Api许可范围
+        /// 获取Api许可范围
         /// </summary>
         /// <param name="id">Api许可范围编号</param>
         /// <returns></returns>
@@ -59,7 +59,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         }
 
         /// <summary>
-        ///     添加Api许可范围
+        /// 添加Api许可范围
         /// </summary>
         /// <param name="entity">Api许可范围</param>
         /// <returns></returns>
@@ -69,7 +69,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         }
 
         /// <summary>
-        ///     更新Api许可范围
+        /// 更新Api许可范围
         /// </summary>
         /// <param name="entity">Api许可范围</param>
         /// <returns></returns>
@@ -80,7 +80,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         }
 
         /// <summary>
-        ///     删除Api许可范围
+        /// 删除Api许可范围
         /// </summary>
         /// <param name="id">Api许可范围</param>
         /// <returns></returns>
@@ -98,7 +98,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         #region Api密钥
 
         /// <summary>
-        ///     获取Api密钥
+        /// 获取Api密钥
         /// </summary>
         /// <param name="apiResourceId">Api资源编号</param>
         public async Task<List<ApiResourceSecret>> GetApiResourceSecretsAsync(Guid apiResourceId)
@@ -112,7 +112,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         }
 
         /// <summary>
-        ///     获取Api密钥
+        /// 获取Api密钥
         /// </summary>
         /// <param name="id">Api密钥编号</param>
         /// <returns></returns>
@@ -127,7 +127,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         }
 
         /// <summary>
-        ///     添加Api密钥
+        /// 添加Api密钥
         /// </summary>
         /// <param name="entity">Api密钥</param>
         /// <returns></returns>
@@ -137,7 +137,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         }
 
         /// <summary>
-        ///     删除Api密钥
+        /// 删除Api密钥
         /// </summary>
         /// <param name="id">Api密钥</param>
         /// <returns></returns>

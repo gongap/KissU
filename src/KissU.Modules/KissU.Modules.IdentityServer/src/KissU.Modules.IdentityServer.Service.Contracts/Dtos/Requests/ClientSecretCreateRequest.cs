@@ -8,19 +8,19 @@ namespace KissU.Modules.IdentityServer.Service.Contracts.Dtos.Requests
     using Util.Applications.Dtos;
 
     /// <summary>
-    ///     创建应用程序密钥请求参数
+    /// 创建应用程序密钥请求参数
     /// </summary>
     public class ClientSecretCreateRequest : RequestBase
     {
         /// <summary>
-        ///     应用程序
+        /// 应用程序
         /// </summary>
 
         [Required]
         public Guid ClientId { get; set; }
 
         /// <summary>
-        ///     密钥值
+        /// 密钥值
         /// </summary>
 
         [Required]
@@ -29,7 +29,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts.Dtos.Requests
         public string Value { get; set; }
 
         /// <summary>
-        ///     密钥类型
+        /// 密钥类型
         /// </summary>
 
         [Required]
@@ -38,14 +38,14 @@ namespace KissU.Modules.IdentityServer.Service.Contracts.Dtos.Requests
         public string Type { get; set; }
 
         /// <summary>
-        ///     哈希类型0:Sha256,1: Sha512(HashType只适用于SharedSecret型)
+        /// 哈希类型0:Sha256,1: Sha512(HashType只适用于SharedSecret型)
         /// </summary>
 
         [Display(Name = "哈希类型")]
         public HashType HashType { get; set; }
 
         /// <summary>
-        ///     描述
+        /// 描述
         /// </summary>
 
         [StringLength(1000, ErrorMessage = "描述输入过长，不能超过1000位")]
@@ -53,7 +53,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts.Dtos.Requests
         public string Description { get; set; }
 
         /// <summary>
-        ///     过期时间
+        /// 过期时间
         /// </summary>
 
         [Display(Name = "过期时间")]

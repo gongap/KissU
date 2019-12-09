@@ -9,12 +9,12 @@ namespace KissU.Modules.GreatWall.Service.Extensions
     using Util.Maps;
 
     /// <summary>
-    ///     菜单参数扩展
+    /// 菜单参数扩展
     /// </summary>
     public static partial class Extension
     {
         /// <summary>
-        ///     转成菜单参数
+        /// 转成菜单参数
         /// </summary>
         public static MenuResponse ToMenuResponse(this Module entity)
         {

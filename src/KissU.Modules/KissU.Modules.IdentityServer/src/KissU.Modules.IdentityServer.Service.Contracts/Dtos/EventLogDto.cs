@@ -7,7 +7,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts.Dtos
     using Util.Applications.Dtos;
 
     /// <summary>
-    ///     授权日志传输对象
+    /// 授权日志传输对象
     /// </summary>
     public class EventLogDto : DtoBase
     {

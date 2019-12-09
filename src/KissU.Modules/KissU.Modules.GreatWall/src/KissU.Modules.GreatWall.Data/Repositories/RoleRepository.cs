@@ -15,12 +15,12 @@ namespace KissU.Modules.GreatWall.Data.Repositories
     using Queryable = System.Linq.Queryable;
 
     /// <summary>
-    ///     角色仓储
+    /// 角色仓储
     /// </summary>
     public class RoleRepository : TreeRepositoryBase<Role>, IRoleRepository, IRoleStore<Role>
     {
         /// <summary>
-        ///     初始化角色仓储
+        /// 初始化角色仓储
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
         public RoleRepository(IGreatWallUnitOfWork unitOfWork) : base(unitOfWork)
@@ -28,7 +28,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     从角色移除用户
+        /// 从角色移除用户
         /// </summary>
         /// <param name="userRoles">用户角色列表</param>
         public void RemoveUserRoles(IEnumerable<UserRole> userRoles)
@@ -37,7 +37,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     清理
+        /// 清理
         /// </summary>
         public void Dispose()
         {
@@ -45,7 +45,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     创建角色
+        /// 创建角色
         /// </summary>
         /// <param name="role">角色</param>
         /// <param name="cancellationToken">取消令牌</param>
@@ -57,7 +57,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     更新角色
+        /// 更新角色
         /// </summary>
         /// <param name="role">角色</param>
         /// <param name="cancellationToken">取消令牌</param>
@@ -69,7 +69,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     删除角色
+        /// 删除角色
         /// </summary>
         /// <param name="role">角色</param>
         /// <param name="cancellationToken">取消令牌</param>
@@ -81,7 +81,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     获取角色编号
+        /// 获取角色编号
         /// </summary>
         /// <param name="role">角色</param>
         /// <param name="cancellationToken">取消令牌</param>
@@ -92,7 +92,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     获取角色名称
+        /// 获取角色名称
         /// </summary>
         /// <param name="role">角色</param>
         /// <param name="cancellationToken">取消令牌</param>
@@ -103,7 +103,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     设置角色名称
+        /// 设置角色名称
         /// </summary>
         /// <param name="role">角色</param>
         /// <param name="roleName">角色名</param>
@@ -116,7 +116,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     获取标准化角色名称
+        /// 获取标准化角色名称
         /// </summary>
         /// <param name="role">角色</param>
         /// <param name="cancellationToken">取消令牌</param>
@@ -127,7 +127,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     设置标准化角色名称
+        /// 设置标准化角色名称
         /// </summary>
         /// <param name="role">角色</param>
         /// <param name="normalizedName">标准化角色名称</param>
@@ -140,7 +140,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     通过编号获取角色
+        /// 通过编号获取角色
         /// </summary>
         /// <param name="roleId">角色编号</param>
         /// <param name="cancellationToken">取消令牌</param>
@@ -151,7 +151,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     通过名称获取角色
+        /// 通过名称获取角色
         /// </summary>
         /// <param name="normalizedRoleName">标准化角色名称</param>
         /// <param name="cancellationToken">取消令牌</param>
@@ -162,7 +162,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     验证用户
+        /// 验证用户
         /// </summary>
         private void ValidateRole(Role role, CancellationToken cancellationToken)
         {
@@ -171,7 +171,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     获取用户的角色列表
+        /// 获取用户的角色列表
         /// </summary>
         /// <param name="userId">用户标识</param>
         public async Task<List<Role>> GetRolesAsync(Guid userId)
@@ -180,7 +180,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     获取角色查询对象
+        /// 获取角色查询对象
         /// </summary>
         private System.Linq.IQueryable<Role> GetRoleQueryable(Guid userId)
         {
@@ -191,7 +191,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     获取用户的角色标识列表
+        /// 获取用户的角色标识列表
         /// </summary>
         /// <param name="userId">用户标识</param>
         public async Task<List<Guid>> GetRoleIdsAsync(Guid userId)
@@ -200,7 +200,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     获取已添加的用户标识列表
+        /// 获取已添加的用户标识列表
         /// </summary>
         /// <param name="roleId">角色标识</param>
         /// <param name="userIds">用户标识列表</param>
@@ -211,7 +211,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     添加用户角色列表
+        /// 添加用户角色列表
         /// </summary>
         /// <param name="userRoles">用户角色列表</param>
         public async Task AddUserRolesAsync(IEnumerable<UserRole> userRoles)

@@ -8,12 +8,12 @@ namespace KissU.Modules.GreatWall.Domain.Models
     using Util.Helpers;
 
     /// <summary>
-    ///     模块
+    /// 模块
     /// </summary>
     public partial class Module
     {
         /// <summary>
-        ///     初始化
+        /// 初始化
         /// </summary>
         public override void Init()
         {
@@ -22,7 +22,7 @@ namespace KissU.Modules.GreatWall.Domain.Models
         }
 
         /// <summary>
-        ///     初始化拼音简码
+        /// 初始化拼音简码
         /// </summary>
         public void InitPinYin()
         {
@@ -30,7 +30,7 @@ namespace KissU.Modules.GreatWall.Domain.Models
         }
 
         /// <summary>
-        ///     是否外部地址
+        /// 是否外部地址
         /// </summary>
         public bool IsExternalUrl()
         {

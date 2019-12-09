@@ -11,36 +11,36 @@ namespace KissU.Modules.GreatWall.Service.Contracts.Dtos.Requests
     using Util.Validations;
 
     /// <summary>
-    ///     登录参数
+    /// 登录参数
     /// </summary>
     public class LoginRequest : RequestBase
     {
         /// <summary>
-        ///     帐号，可以是用户名，手机号或电子邮件
+        /// 帐号，可以是用户名，手机号或电子邮件
         /// </summary>
         [Display(Name = "帐号")]
         public string Account { get; set; }
 
         /// <summary>
-        ///     用户名
+        /// 用户名
         /// </summary>
         [Display(Name = "用户名")]
         public string UserName { get; set; }
 
         /// <summary>
-        ///     电子邮件
+        /// 电子邮件
         /// </summary>
         [Display(Name = "电子邮件")]
         public string Email { get; set; }
 
         /// <summary>
-        ///     手机号
+        /// 手机号
         /// </summary>
         [Display(Name = "手机号")]
         public string PhoneNumber { get; set; }
 
         /// <summary>
-        ///     密码
+        /// 密码
         /// </summary>
         [Required(ErrorMessage = "密码不能为空")]
         [DataType(DataType.Password)]
@@ -48,13 +48,13 @@ namespace KissU.Modules.GreatWall.Service.Contracts.Dtos.Requests
         public string Password { get; set; }
 
         /// <summary>
-        ///     记住密码
+        /// 记住密码
         /// </summary>
         [Display(Name = "记住密码")]
         public bool? Remember { get; set; }
 
         /// <summary>
-        ///     验证
+        /// 验证
         /// </summary>
         public override ValidationResultCollection Validate()
         {

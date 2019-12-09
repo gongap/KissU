@@ -8,19 +8,19 @@ namespace KissU.Modules.GreatWall.Service.Contracts.Dtos.Requests
     using Util.Applications.Dtos;
 
     /// <summary>
-    ///     创建用户参数
+    /// 创建用户参数
     /// </summary>
     public class CreateUserRequest : RequestBase
     {
         /// <summary>
-        ///     用户名
+        /// 用户名
         /// </summary>
         [StringLength(256)]
         [Display(Name = "用户名")]
         public string UserName { get; set; }
 
         /// <summary>
-        ///     安全邮箱
+        /// 安全邮箱
         /// </summary>
         [StringLength(256)]
         [EmailAddress]
@@ -28,7 +28,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts.Dtos.Requests
         public string Email { get; set; }
 
         /// <summary>
-        ///     安全手机
+        /// 安全手机
         /// </summary>
         [StringLength(64)]
         [Phone]
@@ -36,7 +36,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts.Dtos.Requests
         public string PhoneNumber { get; set; }
 
         /// <summary>
-        ///     密码
+        /// 密码
         /// </summary>
         [Required(ErrorMessage = "密码不能为空")]
         [StringLength(256)]

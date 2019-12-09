@@ -10,8 +10,8 @@ namespace KissU.Modules.GreatWall.DbMigrator
     using Util.Helpers;
 
     /// <summary>
-    ///     EF Core控制台命令需要该类
-    ///     如Add-Migration和Update-Database命令
+    /// EF Core控制台命令需要该类
+    /// 如Add-Migration和Update-Database命令
     /// </summary>
     public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<DesignTimeDbContext>
     {

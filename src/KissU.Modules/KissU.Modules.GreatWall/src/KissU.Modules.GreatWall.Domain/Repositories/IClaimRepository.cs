@@ -8,7 +8,7 @@ namespace KissU.Modules.GreatWall.Domain.Repositories
     using Util.Domains.Repositories;
 
     /// <summary>
-    ///     声明仓储
+    /// 声明仓储
     /// </summary>
     public interface IClaimRepository : IRepository<Claim>
     {

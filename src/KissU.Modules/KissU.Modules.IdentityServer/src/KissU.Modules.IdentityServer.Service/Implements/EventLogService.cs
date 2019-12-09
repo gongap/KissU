@@ -15,12 +15,12 @@ namespace KissU.Modules.IdentityServer.Service.Implements
     using Util.Domains.Repositories;
 
     /// <summary>
-    ///     授权日志服务
+    /// 授权日志服务
     /// </summary>
     public class EventLogService : CrudServiceBase<EventLog, EventLogDto, EventLogQuery>, IEventLogService
     {
         /// <summary>
-        ///     初始化认证操作数据服务
+        /// 初始化认证操作数据服务
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
         /// <param name="eventLogRepository">授权日志仓储</param>
@@ -32,17 +32,17 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     认证操作数据仓储
+        /// 认证操作数据仓储
         /// </summary>
         public IEventLogRepository EventLogRepository { get; set; }
 
         /// <summary>
-        ///     工作单元
+        /// 工作单元
         /// </summary>
         public IIdentityServerUnitOfWork UnitOfWork { get; set; }
 
         /// <summary>
-        ///     创建查询对象
+        /// 创建查询对象
         /// </summary>
         /// <param name="param">认证操作数据查询实体</param>
         protected override IQueryBase<EventLog> CreateQuery(EventLogQuery param)

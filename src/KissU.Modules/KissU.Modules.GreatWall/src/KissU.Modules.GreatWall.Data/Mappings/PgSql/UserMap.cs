@@ -10,12 +10,12 @@ namespace KissU.Modules.GreatWall.Data.Mappings.PgSql
     using Util.Datas.Ef.PgSql;
 
     /// <summary>
-    ///     用户映射配置
+    /// 用户映射配置
     /// </summary>
     public class UserMap : AggregateRootMap<User>
     {
         /// <summary>
-        ///     映射表
+        /// 映射表
         /// </summary>
         protected override void MapTable(EntityTypeBuilder<User> builder)
         {
@@ -23,7 +23,7 @@ namespace KissU.Modules.GreatWall.Data.Mappings.PgSql
         }
 
         /// <summary>
-        ///     映射属性
+        /// 映射属性
         /// </summary>
         protected override void MapProperties(EntityTypeBuilder<User> builder)
         {

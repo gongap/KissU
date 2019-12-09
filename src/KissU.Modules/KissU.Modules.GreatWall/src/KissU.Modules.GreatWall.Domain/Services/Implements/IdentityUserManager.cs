@@ -11,12 +11,12 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
     using Microsoft.Extensions.Options;
 
     /// <summary>
-    ///     Identity用户服务
+    /// Identity用户服务
     /// </summary>
     public class IdentityUserManager : AspNetUserManager<User>
     {
         /// <summary>
-        ///     初始化Identity用户服务
+        /// 初始化Identity用户服务
         /// </summary>
         /// <param name="store">用户存储</param>
         /// <param name="optionsAccessor">配置</param>
@@ -38,7 +38,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         }
 
         /// <summary>
-        ///     重置密码
+        /// 重置密码
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="tokenProvidor">令牌提供程序</param>
@@ -68,7 +68,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         }
 
         /// <summary>
-        ///     修改密码
+        /// 修改密码
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="newPassword">新密码</param>

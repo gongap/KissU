@@ -12,12 +12,12 @@ namespace KissU.Microservices.Host
     using Surging.Core.CPlatform.Utilities;
 
     /// <summary>
-    ///     启动配置
+    /// 启动配置
     /// </summary>
     public class Startup
     {
         /// <summary>
-        ///     初始化启动配置
+        /// 初始化启动配置
         /// </summary>
         public Startup(IConfigurationBuilder build)
         {
@@ -26,7 +26,7 @@ namespace KissU.Microservices.Host
         }
 
         /// <summary>
-        ///     配置服务
+        /// 配置服务
         /// </summary>
         public IContainer ConfigureServices(ContainerBuilder builder)
         {
@@ -38,7 +38,7 @@ namespace KissU.Microservices.Host
         }
 
         /// <summary>
-        ///     配置应用
+        /// 配置应用
         /// </summary>
         public void Configure(IContainer app)
         {
@@ -47,7 +47,7 @@ namespace KissU.Microservices.Host
         #region 私有方法
 
         /// <summary>
-        ///     配置日志服务
+        /// 配置日志服务
         /// </summary>
         /// <param name="services">服务集合</param>
         private void ConfigureLogging(IServiceCollection services)
@@ -56,7 +56,7 @@ namespace KissU.Microservices.Host
         }
 
         /// <summary>
-        ///     配置事件总线
+        /// 配置事件总线
         /// </summary>
         /// <param name="build">服务构建者</param>
         private static void ConfigureEventBus(IConfigurationBuilder build)
@@ -65,7 +65,7 @@ namespace KissU.Microservices.Host
         }
 
         /// <summary>
-        ///     配置缓存服务
+        /// 配置缓存服务
         /// </summary>
         private void ConfigureCache(IConfigurationBuilder build)
         {

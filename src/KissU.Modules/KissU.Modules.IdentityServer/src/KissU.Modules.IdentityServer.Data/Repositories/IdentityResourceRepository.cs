@@ -10,12 +10,12 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
     using Util.Datas.Ef.Core;
 
     /// <summary>
-    ///     身份资源仓储
+    /// 身份资源仓储
     /// </summary>
     public class IdentityResourceRepository : RepositoryBase<IdentityResource>, IIdentityResourceRepository
     {
         /// <summary>
-        ///     初始化身份资源仓储
+        /// 初始化身份资源仓储
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
         public IdentityResourceRepository(IIdentityServerUnitOfWork unitOfWork) : base(unitOfWork)

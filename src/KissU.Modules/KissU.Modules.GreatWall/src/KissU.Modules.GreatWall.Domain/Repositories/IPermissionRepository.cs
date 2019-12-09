@@ -8,12 +8,12 @@ namespace KissU.Modules.GreatWall.Domain.Repositories
     using Util.Domains.Repositories;
 
     /// <summary>
-    ///     权限仓储
+    /// 权限仓储
     /// </summary>
     public interface IPermissionRepository : IRepository<Permission>
     {
         /// <summary>
-        ///     获取资源标识列表
+        /// 获取资源标识列表
         /// </summary>
         /// <param name="applicationId">应用程序标识</param>
         /// <param name="roleId">角色标识</param>
@@ -21,14 +21,14 @@ namespace KissU.Modules.GreatWall.Domain.Repositories
         Task<List<Guid>> GetResourceIdsAsync(Guid applicationId, Guid roleId, bool isDeny);
 
         /// <summary>
-        ///     获取权限标识列表
+        /// 获取权限标识列表
         /// </summary>
         /// <param name="roleId">角色标识</param>
         /// <param name="resourceIds">资源标识列表</param>
         Task<List<Guid>> GetPermissionIdsAsync(Guid roleId, List<Guid> resourceIds);
 
         /// <summary>
-        ///     移除权限
+        /// 移除权限
         /// </summary>
         /// <param name="roleId">角色标识</param>
         /// <param name="resourceIds">资源标识列表</param>

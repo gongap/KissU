@@ -13,12 +13,12 @@ namespace KissU.Modules.GreatWall.Service.Extensions
     using Util.Maps;
 
     /// <summary>
-    ///     资源参数扩展
+    /// 资源参数扩展
     /// </summary>
     public static partial class Extension
     {
         /// <summary>
-        ///     转成模块参数
+        /// 转成模块参数
         /// </summary>
         public static ModuleDto ToModuleDto(this ResourcePo po)
         {
@@ -35,7 +35,7 @@ namespace KissU.Modules.GreatWall.Service.Extensions
         }
 
         /// <summary>
-        ///     转成模块
+        /// 转成模块
         /// </summary>
         public static Module ToModule(this CreateModuleRequest request)
         {

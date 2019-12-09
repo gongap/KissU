@@ -9,12 +9,12 @@ namespace KissU.Modules.GreatWall.Domain.Services.Abstractions
     using Util.Domains.Services;
 
     /// <summary>
-    ///     登录服务
+    /// 登录服务
     /// </summary>
     public interface ISignInManager : IDomainService
     {
         /// <summary>
-        ///     登录
+        /// 登录
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="password">密码</param>
@@ -24,7 +24,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Abstractions
             bool lockoutOnFailure = true);
 
         /// <summary>
-        ///     退出登录
+        /// 退出登录
         /// </summary>
         Task SignOutAsync();
     }

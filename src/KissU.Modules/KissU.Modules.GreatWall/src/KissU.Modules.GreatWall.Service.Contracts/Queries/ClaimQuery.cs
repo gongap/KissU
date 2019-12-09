@@ -9,7 +9,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts.Queries
     using Util.Datas.Queries;
 
     /// <summary>
-    ///     声明查询参数
+    /// 声明查询参数
     /// </summary>
     public class ClaimQuery : QueryParameter
     {
@@ -18,13 +18,13 @@ namespace KissU.Modules.GreatWall.Service.Contracts.Queries
         private string _remark = string.Empty;
 
         /// <summary>
-        ///     声明标识
+        /// 声明标识
         /// </summary>
         [Display(Name = "声明标识")]
         public Guid? ClaimId { get; set; }
 
         /// <summary>
-        ///     声明名称
+        /// 声明名称
         /// </summary>
         [Display(Name = "声明名称")]
         public string Name
@@ -34,7 +34,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts.Queries
         }
 
         /// <summary>
-        ///     备注
+        /// 备注
         /// </summary>
         [Display(Name = "备注")]
         public string Remark

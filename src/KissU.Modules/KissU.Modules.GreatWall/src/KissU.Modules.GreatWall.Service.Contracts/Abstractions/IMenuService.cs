@@ -11,13 +11,13 @@ namespace KissU.Modules.GreatWall.Service.Contracts.Abstractions
     using Util.Applications;
 
     /// <summary>
-    ///     菜单服务
+    /// 菜单服务
     /// </summary>
     [ServiceBundle("api/{Service}")]
     public interface IMenuService : IService
     {
         /// <summary>
-        ///     获取菜单
+        /// 获取菜单
         /// </summary>
         [HttpGet(true)]
         Task<List<MenuResponse>> GetMenusAsync();

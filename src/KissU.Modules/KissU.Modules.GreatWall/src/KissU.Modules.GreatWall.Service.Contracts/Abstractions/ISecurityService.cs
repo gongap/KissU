@@ -13,20 +13,20 @@ namespace KissU.Modules.GreatWall.Service.Contracts.Abstractions
     using Util.Validations.Aspects;
 
     /// <summary>
-    ///     安全服务
+    /// 安全服务
     /// </summary>
     [ServiceBundle("api/{Service}")]
     public interface ISecurityService : IService
     {
         /// <summary>
-        ///     登录
+        /// 登录
         /// </summary>
         /// <param name="request">登录参数</param>
         [HttpPost(true)]
         Task<SignInResult> SignInAsync([NotNull] [Valid] LoginRequest request);
 
         /// <summary>
-        ///     退出登录
+        /// 退出登录
         /// </summary>
         [HttpGet(true)]
         Task SignOutAsync();

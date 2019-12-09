@@ -8,12 +8,12 @@ namespace KissU.Modules.GreatWall.Domain.Shared.Extensions
     using Microsoft.AspNetCore.Identity;
 
     /// <summary>
-    ///     Identity配置扩展
+    /// Identity配置扩展
     /// </summary>
     public static partial class Extensions
     {
         /// <summary>
-        ///     加载权限配置
+        /// 加载权限配置
         /// </summary>
         /// <param name="options">Identity配置</param>
         /// <param name="permissionOptions">权限配置</param>
@@ -32,7 +32,7 @@ namespace KissU.Modules.GreatWall.Domain.Shared.Extensions
         }
 
         /// <summary>
-        ///     加载密码配置
+        /// 加载密码配置
         /// </summary>
         private static void LoadPassword(IdentityOptions options, PermissionOptions permissionOptions)
         {
@@ -45,7 +45,7 @@ namespace KissU.Modules.GreatWall.Domain.Shared.Extensions
         }
 
         /// <summary>
-        ///     加载用户配置
+        /// 加载用户配置
         /// </summary>
         private static void LoadUser(IdentityOptions options, PermissionOptions permissionOptions)
         {
@@ -54,7 +54,7 @@ namespace KissU.Modules.GreatWall.Domain.Shared.Extensions
         }
 
         /// <summary>
-        ///     加载存储配置
+        /// 加载存储配置
         /// </summary>
         private static void LoadStore(IdentityOptions options, PermissionOptions permissionOptions)
         {
@@ -62,7 +62,7 @@ namespace KissU.Modules.GreatWall.Domain.Shared.Extensions
         }
 
         /// <summary>
-        ///     加载登录配置
+        /// 加载登录配置
         /// </summary>
         private static void LoadSignIn(IdentityOptions options, PermissionOptions permissionOptions)
         {
@@ -71,7 +71,7 @@ namespace KissU.Modules.GreatWall.Domain.Shared.Extensions
         }
 
         /// <summary>
-        ///     加载登录锁定配置
+        /// 加载登录锁定配置
         /// </summary>
         private static void LoadLockout(IdentityOptions options, PermissionOptions permissionOptions)
         {

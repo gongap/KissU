@@ -11,12 +11,12 @@ namespace KissU.Modules.GreatWall.Data.Pos.Extensions
     using Util.Maps;
 
     /// <summary>
-    ///     资源持久化对象扩展
+    /// 资源持久化对象扩展
     /// </summary>
     public static partial class Extension
     {
         /// <summary>
-        ///     转换为模块
+        /// 转换为模块
         /// </summary>
         /// <param name="po">资源持久化对象</param>
         public static Module ToModule(this ResourcePo po)
@@ -39,7 +39,7 @@ namespace KissU.Modules.GreatWall.Data.Pos.Extensions
         }
 
         /// <summary>
-        ///     转换为资源持久化对象
+        /// 转换为资源持久化对象
         /// </summary>
         /// <param name="entity">模块</param>
         public static ResourcePo ToPo(this Module entity)
@@ -57,7 +57,7 @@ namespace KissU.Modules.GreatWall.Data.Pos.Extensions
         }
 
         /// <summary>
-        ///     创建扩展
+        /// 创建扩展
         /// </summary>
         private static ModuleExtend CreateExtend(Module entity)
         {

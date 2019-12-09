@@ -9,7 +9,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts.Queries
     using Util.Datas.Queries.Trees;
 
     /// <summary>
-    ///     资源查询参数
+    /// 资源查询参数
     /// </summary>
     public class ResourceQuery : TreeQueryParameter
     {
@@ -20,22 +20,22 @@ namespace KissU.Modules.GreatWall.Service.Contracts.Queries
         private string _uri = string.Empty;
 
         /// <summary>
-        ///     标识
+        /// 标识
         /// </summary>
         public Guid? ResourceId { get; set; }
 
         /// <summary>
-        ///     应用程序标识
+        /// 应用程序标识
         /// </summary>
         public Guid? ApplicationId { get; set; }
 
         /// <summary>
-        ///     角色标识
+        /// 角色标识
         /// </summary>
         public Guid? RoleId { get; set; }
 
         /// <summary>
-        ///     资源标识
+        /// 资源标识
         /// </summary>
         [Display(Name = "资源标识")]
         public string Uri
@@ -45,7 +45,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts.Queries
         }
 
         /// <summary>
-        ///     资源名称
+        /// 资源名称
         /// </summary>
         [Display(Name = "资源名称")]
         public string Name
@@ -55,7 +55,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts.Queries
         }
 
         /// <summary>
-        ///     备注
+        /// 备注
         /// </summary>
         [Display(Name = "备注")]
         public string Remark
@@ -65,13 +65,13 @@ namespace KissU.Modules.GreatWall.Service.Contracts.Queries
         }
 
         /// <summary>
-        ///     起始创建时间
+        /// 起始创建时间
         /// </summary>
         [Display(Name = "起始创建时间")]
         public DateTime? BeginCreationTime { get; set; }
 
         /// <summary>
-        ///     结束创建时间
+        /// 结束创建时间
         /// </summary>
         [Display(Name = "结束创建时间")]
         public DateTime? EndCreationTime { get; set; }

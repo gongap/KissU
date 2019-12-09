@@ -10,20 +10,20 @@ namespace KissU.Modules.Theme.Domain.Models
     using KissU.Modules.Theme.Domain.Base;
 
     /// <summary>
-    ///     语言国际化配置
+    /// 语言国际化配置
     /// </summary>
     [DisplayName("语言国际化配置")]
     public partial class LanguageDetail : DetailEntity
     {
         /// <summary>
-        ///     初始化
+        /// 初始化
         /// </summary>
         public LanguageDetail() : this(Guid.Empty)
         {
         }
 
         /// <summary>
-        ///     初始化
+        /// 初始化
         /// </summary>
         /// <param name="id">标识</param>
         public LanguageDetail(Guid id) : base(id)
@@ -31,7 +31,7 @@ namespace KissU.Modules.Theme.Domain.Models
         }
 
         /// <summary>
-        ///     键
+        /// 键
         /// </summary>
         [DisplayName("键")]
         [Required(ErrorMessage = "键不能为空")]
@@ -39,7 +39,7 @@ namespace KissU.Modules.Theme.Domain.Models
         public string Key { get; set; }
 
         /// <summary>
-        ///     值
+        /// 值
         /// </summary>
         [DisplayName("值")]
         [Required(ErrorMessage = "值不能为空")]

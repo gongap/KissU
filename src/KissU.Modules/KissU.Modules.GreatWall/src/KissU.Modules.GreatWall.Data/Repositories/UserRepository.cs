@@ -15,13 +15,13 @@ namespace KissU.Modules.GreatWall.Data.Repositories
     using Queryable = System.Linq.Queryable;
 
     /// <summary>
-    ///     用户仓储
+    /// 用户仓储
     /// </summary>
     public class UserRepository : RepositoryBase<User>, IUserRepository, IUserPasswordStore<User>,
         IUserSecurityStampStore<User>, IUserLockoutStore<User>, IUserEmailStore<User>, IUserPhoneNumberStore<User>
     {
         /// <summary>
-        ///     初始化用户仓储
+        /// 初始化用户仓储
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
         public UserRepository(IGreatWallUnitOfWork unitOfWork) : base(unitOfWork)
@@ -29,7 +29,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     设置电子邮件
+        /// 设置电子邮件
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="email">电子邮件</param>
@@ -42,7 +42,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     获取电子邮件
+        /// 获取电子邮件
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="cancellationToken">取消令牌</param>
@@ -53,7 +53,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     获取电子邮件确认状态
+        /// 获取电子邮件确认状态
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="cancellationToken">取消令牌</param>
@@ -64,7 +64,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     确认电子邮件
+        /// 确认电子邮件
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="confirmed">是否确认</param>
@@ -77,7 +77,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     通过电子邮件查找
+        /// 通过电子邮件查找
         /// </summary>
         /// <param name="normalizedEmail">标准化电子邮件</param>
         /// <param name="cancellationToken">取消令牌</param>
@@ -88,7 +88,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     获取标准化电子邮件
+        /// 获取标准化电子邮件
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="cancellationToken">取消令牌</param>
@@ -99,7 +99,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     设置标准化电子邮件
+        /// 设置标准化电子邮件
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="normalizedEmail">标准化电子邮件</param>
@@ -112,7 +112,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     获取锁定结束日期
+        /// 获取锁定结束日期
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="cancellationToken">取消令牌</param>
@@ -123,7 +123,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     设置锁定结束日期
+        /// 设置锁定结束日期
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="lockoutEnd">锁定结束日期</param>
@@ -136,7 +136,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     增加访问失败次数
+        /// 增加访问失败次数
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="cancellationToken">取消令牌</param>
@@ -148,7 +148,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     重置访问失败次数
+        /// 重置访问失败次数
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="cancellationToken">取消令牌</param>
@@ -160,7 +160,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     获取登录失败次数
+        /// 获取登录失败次数
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="cancellationToken">取消令牌</param>
@@ -171,7 +171,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     获取锁定启用状态
+        /// 获取锁定启用状态
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="cancellationToken">取消令牌</param>
@@ -182,7 +182,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     设置锁定启用状态
+        /// 设置锁定启用状态
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="enabled">是否启用锁定</param>
@@ -195,7 +195,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     清理
+        /// 清理
         /// </summary>
         public void Dispose()
         {
@@ -203,7 +203,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     获取用户编号
+        /// 获取用户编号
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="cancellationToken">取消令牌</param>
@@ -214,7 +214,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     获取用户名
+        /// 获取用户名
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="cancellationToken">取消令牌</param>
@@ -225,7 +225,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     设置用户名
+        /// 设置用户名
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="userName">用户名</param>
@@ -238,7 +238,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     获取标准化用户名
+        /// 获取标准化用户名
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="cancellationToken">取消令牌</param>
@@ -249,7 +249,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     设置标准化用户名
+        /// 设置标准化用户名
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="normalizedName">标准化用户名</param>
@@ -262,7 +262,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     创建用户
+        /// 创建用户
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="cancellationToken">取消令牌</param>
@@ -274,7 +274,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     更新用户
+        /// 更新用户
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="cancellationToken">取消令牌</param>
@@ -286,7 +286,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     删除用户
+        /// 删除用户
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="cancellationToken">取消令牌</param>
@@ -297,7 +297,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     根据标识查找
+        /// 根据标识查找
         /// </summary>
         /// <param name="userId">用户编号</param>
         /// <param name="cancellationToken">取消令牌</param>
@@ -308,7 +308,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     通过用户名查找
+        /// 通过用户名查找
         /// </summary>
         /// <param name="normalizedUserName">标准化用户名</param>
         /// <param name="cancellationToken">取消令牌</param>
@@ -319,7 +319,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     设置密码散列
+        /// 设置密码散列
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="passwordHash">密码散列</param>
@@ -332,7 +332,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     获取密码散列
+        /// 获取密码散列
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="cancellationToken">取消令牌</param>
@@ -343,7 +343,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     是否设置密码
+        /// 是否设置密码
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="cancellationToken">取消令牌</param>
@@ -354,7 +354,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     设置手机号
+        /// 设置手机号
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="phoneNumber">手机号</param>
@@ -367,7 +367,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     获取手机号
+        /// 获取手机号
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="cancellationToken">取消令牌</param>
@@ -378,7 +378,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     获取手机号确认状态
+        /// 获取手机号确认状态
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="cancellationToken">取消令牌</param>
@@ -389,7 +389,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     设置手机号确认状态
+        /// 设置手机号确认状态
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="confirmed">是否确认</param>
@@ -402,7 +402,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     设置安全戳
+        /// 设置安全戳
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="stamp">安全戳</param>
@@ -420,7 +420,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     获取安全戳
+        /// 获取安全戳
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="cancellationToken">取消令牌</param>
@@ -431,7 +431,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     验证用户
+        /// 验证用户
         /// </summary>
         private void ValidateUser(User user, CancellationToken cancellationToken)
         {
@@ -440,7 +440,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        ///     过滤角色
+        /// 过滤角色
         /// </summary>
         /// <param name="queryable">查询对象</param>
         /// <param name="roleId">角色标识</param>

@@ -8,7 +8,7 @@ namespace KissU.Modules.IdentityServer.Domain.Repositories
     using Util.Domains.Repositories;
 
     /// <summary>
-    ///     身份资源仓储
+    /// 身份资源仓储
     /// </summary>
     public interface IIdentityResourceRepository : IRepository<IdentityResource>
     {

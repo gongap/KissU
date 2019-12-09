@@ -9,7 +9,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts.Queries
     using Util.Datas.Queries;
 
     /// <summary>
-    ///     应用程序查询参数
+    /// 应用程序查询参数
     /// </summary>
     public class ApplicationQuery : QueryParameter
     {
@@ -20,13 +20,13 @@ namespace KissU.Modules.GreatWall.Service.Contracts.Queries
         private string _remark = string.Empty;
 
         /// <summary>
-        ///     应用程序标识
+        /// 应用程序标识
         /// </summary>
         [Display(Name = "应用程序标识")]
         public Guid? ApplicationId { get; set; }
 
         /// <summary>
-        ///     应用程序编码
+        /// 应用程序编码
         /// </summary>
         [Display(Name = "应用程序编码")]
         public string Code
@@ -36,7 +36,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts.Queries
         }
 
         /// <summary>
-        ///     应用程序名称
+        /// 应用程序名称
         /// </summary>
         [Display(Name = "应用程序名称")]
         public string Name
@@ -46,19 +46,19 @@ namespace KissU.Modules.GreatWall.Service.Contracts.Queries
         }
 
         /// <summary>
-        ///     启用
+        /// 启用
         /// </summary>
         [Display(Name = "启用")]
         public bool? Enabled { get; set; }
 
         /// <summary>
-        ///     启用注册
+        /// 启用注册
         /// </summary>
         [Display(Name = "启用注册")]
         public bool? RegisterEnabled { get; set; }
 
         /// <summary>
-        ///     备注
+        /// 备注
         /// </summary>
         [Display(Name = "备注")]
         public string Remark
@@ -68,37 +68,37 @@ namespace KissU.Modules.GreatWall.Service.Contracts.Queries
         }
 
         /// <summary>
-        ///     起始创建时间
+        /// 起始创建时间
         /// </summary>
         [Display(Name = "起始创建时间")]
         public DateTime? BeginCreationTime { get; set; }
 
         /// <summary>
-        ///     结束创建时间
+        /// 结束创建时间
         /// </summary>
         [Display(Name = "结束创建时间")]
         public DateTime? EndCreationTime { get; set; }
 
         /// <summary>
-        ///     创建人编号
+        /// 创建人编号
         /// </summary>
         [Display(Name = "创建人编号")]
         public Guid? CreatorId { get; set; }
 
         /// <summary>
-        ///     起始最后修改时间
+        /// 起始最后修改时间
         /// </summary>
         [Display(Name = "起始最后修改时间")]
         public DateTime? BeginLastModificationTime { get; set; }
 
         /// <summary>
-        ///     结束最后修改时间
+        /// 结束最后修改时间
         /// </summary>
         [Display(Name = "结束最后修改时间")]
         public DateTime? EndLastModificationTime { get; set; }
 
         /// <summary>
-        ///     最后修改人编号
+        /// 最后修改人编号
         /// </summary>
         [Display(Name = "最后修改人编号")]
         public Guid? LastModifierId { get; set; }

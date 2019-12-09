@@ -27,14 +27,14 @@ namespace KissU.Modules.IdentityServer.Service.Implements
     using Extensions = KissU.Modules.IdentityServer.Domain.Extensions.Extensions;
 
     /// <summary>
-    ///     资源服务
+    /// 资源服务
     /// </summary>
     public class ApiResourceService :
         CrudServiceBase<ApiResource, ApiResourceDto, ApiResourceDto, ApiResourceCreateRequest, ApiResourceDto,
             ApiResourceQuery, Guid>, IApiResourceService
     {
         /// <summary>
-        ///     初始化资源服务
+        /// 初始化资源服务
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
         /// <param name="apiResourceRepository">资源仓储</param>
@@ -46,17 +46,17 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     资源仓储
+        /// 资源仓储
         /// </summary>
         public IApiResourceRepository ApiResourceRepository { get; set; }
 
         /// <summary>
-        ///     工作单元
+        /// 工作单元
         /// </summary>
         public IIdentityServerUnitOfWork UnitOfWork { get; set; }
 
         /// <summary>
-        ///     删除
+        /// 删除
         /// </summary>
         /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
         public override async Task DeleteAsync(string ids)
@@ -66,7 +66,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     通过编号获取
+        /// 通过编号获取
         /// </summary>
         /// <param name="id">实体编号</param>
         public Task<ApiResourceDto> GetByIdAsync(string id)
@@ -75,7 +75,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     创建
+        /// 创建
         /// </summary>
         /// <param name="request">创建参数</param>
         public override async Task<string> CreateAsync(ApiResourceCreateRequest request)
@@ -86,7 +86,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     修改
+        /// 修改
         /// </summary>
         /// <param name="request">修改参数</param>
         public override async Task UpdateAsync(ApiResourceDto request)
@@ -96,7 +96,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     创建查询对象
+        /// 创建查询对象
         /// </summary>
         /// <param name="param">应用程序查询实体</param>
         protected override IQueryBase<ApiResource> CreateQuery(ApiResourceQuery param)
@@ -118,7 +118,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     创建前操作
+        /// 创建前操作
         /// </summary>
         protected override void CreateBefore(ApiResource entity)
         {
@@ -130,7 +130,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     抛出Name重复异常
+        /// 抛出Name重复异常
         /// </summary>
         private void ThrowApiResourceNameRepeatException(string code)
         {
@@ -138,7 +138,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     修改前操作
+        /// 修改前操作
         /// </summary>
         protected override void UpdateBefore(ApiResource entity)
         {
@@ -150,7 +150,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     过滤
+        /// 过滤
         /// </summary>
         protected override IQueryable<ApiResource> Filter(IQueryable<ApiResource> queryable, ApiResourceQuery parameter)
         {
@@ -160,7 +160,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         #region 许可范围
 
         /// <summary>
-        ///     获取许可范围
+        /// 获取许可范围
         /// </summary>
         /// <param name="id">资源编号</param>
         /// <returns></returns>
@@ -171,7 +171,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     获取许可范围
+        /// 获取许可范围
         /// </summary>
         /// <param name="scopeId">许可范围编号</param>
         /// <returns></returns>
@@ -182,7 +182,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     添加许可范围
+        /// 添加许可范围
         /// </summary>
         /// <param name="request">许可范围</param>
         /// <returns></returns>
@@ -199,7 +199,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     更新许可范围
+        /// 更新许可范围
         /// </summary>
         /// <param name="dto">许可范围</param>
         /// <returns></returns>
@@ -214,7 +214,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     删除许可范围
+        /// 删除许可范围
         /// </summary>
         /// <param name="scopeId">许可范围编号</param>
         /// <returns></returns>
@@ -229,7 +229,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         #region 密钥
 
         /// <summary>
-        ///     哈希密钥
+        /// 哈希密钥
         /// </summary>
         /// <param name="request">密钥</param>
         private void HashApiSharedSecret(ApiResourceSecretCreateRequest request)
@@ -250,7 +250,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     获取密钥
+        /// 获取密钥
         /// </summary>
         /// <param name="id">资源编号</param>
         /// <returns></returns>
@@ -261,7 +261,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     获取密钥
+        /// 获取密钥
         /// </summary>
         /// <param name="secretId">密钥编号</param>
         /// <returns></returns>
@@ -272,7 +272,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     添加密钥
+        /// 添加密钥
         /// </summary>
         /// <param name="request">密钥</param>
         /// <returns></returns>
@@ -290,7 +290,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        ///     删除密钥
+        /// 删除密钥
         /// </summary>
         /// <param name="secretId">密钥编号</param>
         /// <returns></returns>

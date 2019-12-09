@@ -20,12 +20,12 @@ namespace KissU.Modules.GreatWall.Service.Implements
     using Util.Domains.Repositories;
 
     /// <summary>
-    ///     模块查询服务
+    /// 模块查询服务
     /// </summary>
     public class QueryModuleService : TreeServiceBase<ResourcePo, ModuleDto, ResourceQuery>, IQueryModuleService
     {
         /// <summary>
-        ///     初始化资源服务
+        /// 初始化资源服务
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
         /// <param name="resourceStore">资源存储器</param>
@@ -40,22 +40,22 @@ namespace KissU.Modules.GreatWall.Service.Implements
         }
 
         /// <summary>
-        ///     工作单元
+        /// 工作单元
         /// </summary>
         public IGreatWallUnitOfWork UnitOfWork { get; set; }
 
         /// <summary>
-        ///     资源存储器
+        /// 资源存储器
         /// </summary>
         public IResourcePoStore ResourceStore { get; set; }
 
         /// <summary>
-        ///     模块仓储
+        /// 模块仓储
         /// </summary>
         public IModuleRepository ModuleRepository { get; set; }
 
         /// <summary>
-        ///     创建查询对象
+        /// 创建查询对象
         /// </summary>
         /// <param name="param">查询参数</param>
         protected override IQueryBase<ResourcePo> CreateQuery(ResourceQuery param)
@@ -68,7 +68,7 @@ namespace KissU.Modules.GreatWall.Service.Implements
         }
 
         /// <summary>
-        ///     过滤
+        /// 过滤
         /// </summary>
         protected override IQueryable<ResourcePo> Filter(IQueryable<ResourcePo> queryable, ResourceQuery parameter)
         {
@@ -76,7 +76,7 @@ namespace KissU.Modules.GreatWall.Service.Implements
         }
 
         /// <summary>
-        ///     转成数据传输对象
+        /// 转成数据传输对象
         /// </summary>
         protected override ModuleDto ToDto(ResourcePo po)
         {

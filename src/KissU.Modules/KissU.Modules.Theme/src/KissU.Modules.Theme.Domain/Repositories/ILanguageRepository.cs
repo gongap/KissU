@@ -8,7 +8,7 @@ namespace KissU.Modules.Theme.Domain.Repositories
     using Util.Domains.Repositories;
 
     /// <summary>
-    ///     语言国际化仓储
+    /// 语言国际化仓储
     /// </summary>
     public interface ILanguageRepository : IRepository<Language>
     {

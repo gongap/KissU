@@ -15,12 +15,12 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
     using Util.Datas.Ef.Core;
 
     /// <summary>
-    ///     应用程序仓储
+    /// 应用程序仓储
     /// </summary>
     public class ClientRepository : RepositoryBase<Client>, IClientRepository
     {
         /// <summary>
-        ///     初始化应用程序仓储
+        /// 初始化应用程序仓储
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
         public ClientRepository(IIdentityServerUnitOfWork unitOfWork) : base(unitOfWork)
@@ -28,7 +28,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         }
 
         /// <summary>
-        ///     通过编码查找
+        /// 通过编码查找
         /// </summary>
         /// <param name="clientCode">应用编号</param>
         /// <returns></returns>
@@ -43,7 +43,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         #region 应用程序声明
 
         /// <summary>
-        ///     获取应用程序声明
+        /// 获取应用程序声明
         /// </summary>
         /// <param name="clientId">应用程序编号</param>
         public async Task<List<ClientClaim>> GetClientClaimsAsync(Guid clientId)
@@ -57,7 +57,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         }
 
         /// <summary>
-        ///     获取应用程序声明
+        /// 获取应用程序声明
         /// </summary>
         /// <param name="id">应用程序声明编号</param>
         /// <returns></returns>
@@ -72,7 +72,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         }
 
         /// <summary>
-        ///     添加应用程序声明
+        /// 添加应用程序声明
         /// </summary>
         /// <param name="entity">应用程序声明</param>
         /// <returns></returns>
@@ -82,7 +82,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         }
 
         /// <summary>
-        ///     更新应用程序声明
+        /// 更新应用程序声明
         /// </summary>
         /// <param name="entity">应用程序声明</param>
         /// <returns></returns>
@@ -93,7 +93,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         }
 
         /// <summary>
-        ///     删除应用程序声明
+        /// 删除应用程序声明
         /// </summary>
         /// <param name="id">应用程序声明</param>
         /// <returns></returns>
@@ -111,7 +111,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         #region 应用程序密钥
 
         /// <summary>
-        ///     获取应用程序密钥
+        /// 获取应用程序密钥
         /// </summary>
         /// <param name="clientId">应用程序编号</param>
         public async Task<List<ClientSecret>> GetClientSecretsAsync(Guid clientId)
@@ -125,7 +125,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         }
 
         /// <summary>
-        ///     获取应用程序密钥
+        /// 获取应用程序密钥
         /// </summary>
         /// <param name="id">应用程序密钥编号</param>
         /// <returns></returns>
@@ -140,7 +140,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         }
 
         /// <summary>
-        ///     添加应用程序密钥
+        /// 添加应用程序密钥
         /// </summary>
         /// <param name="entity">应用程序密钥</param>
         /// <returns></returns>
@@ -150,7 +150,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         }
 
         /// <summary>
-        ///     删除应用程序密钥
+        /// 删除应用程序密钥
         /// </summary>
         /// <param name="id">应用程序密钥</param>
         /// <returns></returns>

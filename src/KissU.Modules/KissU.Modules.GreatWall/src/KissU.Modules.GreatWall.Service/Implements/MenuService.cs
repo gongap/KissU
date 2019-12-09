@@ -17,12 +17,12 @@ namespace KissU.Modules.GreatWall.Service.Implements
     using Util.Security;
 
     /// <summary>
-    ///     菜单服务
+    /// 菜单服务
     /// </summary>
     public class MenuService : ServiceBase, IMenuService
     {
         /// <summary>
-        ///     初始化菜单服务
+        /// 初始化菜单服务
         /// </summary>
         /// <param name="roleRepository">角色仓储</param>
         /// <param name="moduleRepository">模块仓储</param>
@@ -33,17 +33,17 @@ namespace KissU.Modules.GreatWall.Service.Implements
         }
 
         /// <summary>
-        ///     角色仓储
+        /// 角色仓储
         /// </summary>
         public IRoleRepository RoleRepository { get; set; }
 
         /// <summary>
-        ///     模块仓储
+        /// 模块仓储
         /// </summary>
         public IModuleRepository ModuleRepository { get; set; }
 
         /// <summary>
-        ///     获取菜单
+        /// 获取菜单
         /// </summary>
         public async Task<List<MenuResponse>> GetMenusAsync()
         {
@@ -60,7 +60,7 @@ namespace KissU.Modules.GreatWall.Service.Implements
         }
 
         /// <summary>
-        ///     添加缺失的父节点列表
+        /// 添加缺失的父节点列表
         /// </summary>
         private async Task AddMissingParents(List<Module> modules)
         {

@@ -13,12 +13,12 @@ namespace KissU.Modules.IdentityServer.Service
     using Util.Datas.Ef;
 
     /// <summary>
-    ///     扩展系统模块
+    /// 扩展系统模块
     /// </summary>
     public class IdentityServerModule : BusinessModule
     {
         /// <summary>
-        ///     注册第三方组件
+        /// 注册第三方组件
         /// </summary>
         /// <param name="builder">容器构建器</param>
         protected override void RegisterBuilder(ContainerBuilderWrapper builder)
