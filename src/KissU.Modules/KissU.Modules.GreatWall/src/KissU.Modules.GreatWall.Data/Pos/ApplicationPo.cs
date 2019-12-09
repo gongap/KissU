@@ -4,6 +4,8 @@
 
 namespace KissU.Modules.GreatWall.Data.Pos
 {
+    using System;
+    using Util.Datas.Persistence;
     using Util.Domains;
     using Util.Domains.Auditing;
 

@@ -2,7 +2,7 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
-namespace KissU.Core.Util
+namespace KissU.Core
 {
     using System.Text;
     using Autofac;

@@ -4,6 +4,7 @@
 
 namespace KissU.Modules.Theme.Service.Contracts.Queries
 {
+    using System.ComponentModel.DataAnnotations;
     using Util.Datas.Queries;
 
     /// <summary>

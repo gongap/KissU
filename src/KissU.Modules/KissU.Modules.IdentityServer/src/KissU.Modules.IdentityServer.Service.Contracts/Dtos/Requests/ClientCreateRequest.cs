@@ -4,6 +4,7 @@
 
 namespace KissU.Modules.IdentityServer.Service.Contracts.Dtos.Requests
 {
+    using System.ComponentModel.DataAnnotations;
     using KissU.Modules.IdentityServer.Domain.Shared.Enums;
     using Util.Applications.Dtos;
 

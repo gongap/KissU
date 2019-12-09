@@ -4,7 +4,9 @@
 
 namespace KissU.Modules.IdentityServer.Service.Contracts.Dtos.Requests
 {
+    using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using Util.Applications.Dtos;
 
     /// <summary>

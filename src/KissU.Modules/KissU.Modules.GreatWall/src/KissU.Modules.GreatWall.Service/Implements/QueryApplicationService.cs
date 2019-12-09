@@ -14,6 +14,7 @@ namespace KissU.Modules.GreatWall.Service.Implements
     using Util.Applications;
     using Util.Datas.Queries;
     using Util.Domains.Repositories;
+    using Util.Maps;
 
     /// <summary>
     /// 应用程序查询服务

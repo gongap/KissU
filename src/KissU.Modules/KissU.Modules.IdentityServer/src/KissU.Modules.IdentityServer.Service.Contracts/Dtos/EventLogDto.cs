@@ -4,6 +4,7 @@
 
 namespace KissU.Modules.IdentityServer.Service.Contracts.Dtos
 {
+    using System;
     using Util.Applications.Dtos;
 
     /// <summary>

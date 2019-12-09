@@ -5,6 +5,7 @@
 namespace KissU.Modules.Theme.Service.Contracts.Abstractions
 {
     using System.Collections.Generic;
+    using System.Threading.Tasks;
     using KissU.Modules.Theme.Service.Contracts.Dtos;
     using KissU.Modules.Theme.Service.Contracts.Queries;
     using Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;

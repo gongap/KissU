@@ -4,6 +4,7 @@
 
 namespace KissU.Modules.GreatWall.Domain.Shared.Extensions
 {
+    using System;
     using System.Linq;
     using Microsoft.AspNetCore.Identity;
     using Util.Exceptions;

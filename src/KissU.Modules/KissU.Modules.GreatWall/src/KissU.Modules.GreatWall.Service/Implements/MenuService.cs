@@ -12,6 +12,7 @@ namespace KissU.Modules.GreatWall.Service.Implements
     using KissU.Modules.GreatWall.Domain.Repositories;
     using KissU.Modules.GreatWall.Service.Contracts.Abstractions;
     using KissU.Modules.GreatWall.Service.Contracts.Dtos.Responses;
+    using KissU.Modules.GreatWall.Service.Extensions;
     using Util;
     using Util.Applications;
     using Util.Security;

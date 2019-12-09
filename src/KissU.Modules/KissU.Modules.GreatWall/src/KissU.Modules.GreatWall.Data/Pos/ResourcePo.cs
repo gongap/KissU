@@ -4,6 +4,8 @@
 
 namespace KissU.Modules.GreatWall.Data.Pos
 {
+    using System;
+    using System.ComponentModel.DataAnnotations.Schema;
     using KissU.Modules.GreatWall.Domain.Shared.Enums;
     using Util.Datas.Persistence;
     using Util.Domains;

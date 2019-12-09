@@ -4,6 +4,7 @@
 
 namespace KissU.Modules.IdentityServer.Service.Contracts.Queries
 {
+    using System.ComponentModel.DataAnnotations;
     using Util.Datas.Queries;
 
     /// <summary>

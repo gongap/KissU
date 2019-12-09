@@ -4,6 +4,7 @@
 
 namespace KissU.Modules.GreatWall.Domain.Services.Implements
 {
+    using System.Threading.Tasks;
     using KissU.Modules.GreatWall.Domain.Models;
     using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Http;

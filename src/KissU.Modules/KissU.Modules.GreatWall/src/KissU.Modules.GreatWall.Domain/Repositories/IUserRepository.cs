@@ -4,6 +4,7 @@
 
 namespace KissU.Modules.GreatWall.Domain.Repositories
 {
+    using System;
     using System.Linq;
     using KissU.Modules.GreatWall.Domain.Models;
     using Util.Domains.Repositories;

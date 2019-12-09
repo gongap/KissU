@@ -4,6 +4,8 @@
 
 namespace KissU.Modules.GreatWall.Domain.Models
 {
+    using System;
+
     /// <summary>
     /// 用户角色
     /// </summary>

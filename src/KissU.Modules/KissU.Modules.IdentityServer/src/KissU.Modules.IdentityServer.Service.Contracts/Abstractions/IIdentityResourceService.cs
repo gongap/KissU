@@ -5,6 +5,7 @@
 namespace KissU.Modules.IdentityServer.Service.Contracts.Abstractions
 {
     using System.Collections.Generic;
+    using System.Threading.Tasks;
     using KissU.Modules.IdentityServer.Service.Contracts.Dtos;
     using KissU.Modules.IdentityServer.Service.Contracts.Dtos.Requests;
     using KissU.Modules.IdentityServer.Service.Contracts.Queries;

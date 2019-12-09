@@ -4,6 +4,7 @@
 
 namespace KissU.Modules.GreatWall.Domain.Services.Abstractions
 {
+    using System.Threading.Tasks;
     using KissU.Modules.GreatWall.Domain.Models;
     using Util.Domains.Services;
 

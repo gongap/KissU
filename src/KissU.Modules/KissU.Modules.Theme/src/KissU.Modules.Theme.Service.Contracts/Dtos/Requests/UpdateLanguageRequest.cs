@@ -5,6 +5,7 @@
 namespace KissU.Modules.Theme.Service.Contracts.Dtos.Requests
 {
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.Runtime.Serialization;
     using Util.Applications.Dtos;
 

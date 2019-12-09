@@ -4,6 +4,7 @@
 
 namespace KissU.Modules.GreatWall.Domain.Models
 {
+    using System.ComponentModel.DataAnnotations.Schema;
     using KissU.Modules.GreatWall.Domain.Shared;
     using KissU.Modules.GreatWall.Domain.Shared.Encryptors;
     using Util;
