@@ -1,8 +1,8 @@
 {
-  "profiles": {
-    "KissU.Microservices.Host": {
-      "commandName": "Project",
-      "nativeDebugging": false
+    "profiles": {
+        "KissU.Microservices.Host": {
+            "commandName": "Project",
+            "nativeDebugging": false
+        }
     }
-  }
 }

@@ -1,16 +1,21 @@
-﻿using KissU.Modules.GreatWall.Data.Pos;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿// <copyright file="ApplicationPoMap.cs" company="KissU">
+// Copyright (c) KissU. All Rights Reserved.
+// </copyright>
 
 namespace KissU.Modules.GreatWall.Data.Mappings.PgSql
 {
+    using KissU.Modules.GreatWall.Data.Pos;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.Metadata.Builders;
+    using Util.Datas.Ef.PgSql;
+
     /// <summary>
-    /// 应用程序持久化对象映射配置
+    ///     应用程序持久化对象映射配置
     /// </summary>
-    public class ApplicationPoMap : Util.Datas.Ef.PgSql.AggregateRootMap<ApplicationPo>
+    public class ApplicationPoMap : AggregateRootMap<ApplicationPo>
     {
         /// <summary>
-        /// 映射表
+        ///     映射表
         /// </summary>
         protected override void MapTable(EntityTypeBuilder<ApplicationPo> builder)
         {
@@ -18,7 +23,7 @@ namespace KissU.Modules.GreatWall.Data.Mappings.PgSql
         }
 
         /// <summary>
-        /// 映射属性
+        ///     映射属性
         /// </summary>
         protected override void MapProperties(EntityTypeBuilder<ApplicationPo> builder)
         {

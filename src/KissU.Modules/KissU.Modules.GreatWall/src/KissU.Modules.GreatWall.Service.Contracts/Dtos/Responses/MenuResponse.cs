@@ -1,52 +1,56 @@
-﻿namespace KissU.Modules.GreatWall.Service.Contracts.Dtos.Responses
+﻿// <copyright file="MenuResponse.cs" company="KissU">
+// Copyright (c) KissU. All Rights Reserved.
+// </copyright>
+
+namespace KissU.Modules.GreatWall.Service.Contracts.Dtos.Responses
 {
     /// <summary>
-    /// 菜单参数
+    ///     菜单参数
     /// </summary>
     public class MenuResponse
     {
         /// <summary>
-        /// 标识
+        ///     标识
         /// </summary>
         public string Id { get; set; }
 
         /// <summary>
-        /// 父标识
+        ///     父标识
         /// </summary>
         public string ParentId { get; set; }
 
         /// <summary>
-        /// 层级
+        ///     层级
         /// </summary>
         public int? Level { get; set; }
 
         /// <summary>
-        /// 名称
+        ///     名称
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// 地址
+        ///     地址
         /// </summary>
         public string Url { get; set; }
 
         /// <summary>
-        /// 是否外部地址
+        ///     是否外部地址
         /// </summary>
         public bool External { get; set; }
 
         /// <summary>
-        /// 图标
+        ///     图标
         /// </summary>
         public string Icon { get; set; }
 
         /// <summary>
-        /// 启用
+        ///     启用
         /// </summary>
         public bool Enabled { get; set; }
 
         /// <summary>
-        /// 排序号
+        ///     排序号
         /// </summary>
         public int? SortId { get; set; }
     }

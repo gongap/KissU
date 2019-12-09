@@ -1,27 +1,30 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using KissU.Modules.Theme.Data;
-using KissU.Modules.Theme.Domain.Models;
-using KissU.Modules.Theme.Domain.Repositories;
-using KissU.Modules.Theme.Service.Contracts.Abstractions;
-using KissU.Modules.Theme.Service.Contracts.Dtos;
-using KissU.Modules.Theme.Service.Contracts.Queries;
-using KissU.Modules.Theme.Service.Extensions;
-using Microsoft.EntityFrameworkCore;
-using Util.Applications;
-using Util.Datas.Queries;
-using Util.Domains.Repositories;
+﻿// <copyright file="LanguageService.cs" company="KissU">
+// Copyright (c) KissU. All Rights Reserved.
+// </copyright>
 
 namespace KissU.Modules.Theme.Service.Implements
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using KissU.Modules.Theme.Data;
+    using KissU.Modules.Theme.Domain.Models;
+    using KissU.Modules.Theme.Domain.Repositories;
+    using KissU.Modules.Theme.Service.Contracts.Abstractions;
+    using KissU.Modules.Theme.Service.Contracts.Dtos;
+    using KissU.Modules.Theme.Service.Contracts.Queries;
+    using KissU.Modules.Theme.Service.Extensions;
+    using Microsoft.EntityFrameworkCore;
+    using Util.Applications;
+    using Util.Datas.Queries;
+    using Util.Domains.Repositories;
+
     /// <summary>
-    /// 语言国际化服务
+    ///     语言国际化服务
     /// </summary>
     public class LanguageService : CrudServiceBase<Language, LanguageDto, LanguageQuery>, ILanguageService
     {
         /// <summary>
-        /// 初始化语言国际化服务
+        ///     初始化语言国际化服务
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
         /// <param name="languageRepository">语言国际化仓储</param>
@@ -33,17 +36,17 @@ namespace KissU.Modules.Theme.Service.Implements
         }
 
         /// <summary>
-        /// 工作单元
+        ///     工作单元
         /// </summary>
         public IThemeUnitOfWork UnitOfWork { get; }
 
         /// <summary>
-        /// 语言国际化仓储
+        ///     语言国际化仓储
         /// </summary>
         public ILanguageRepository LanguageRepository { get; set; }
 
         /// <summary>
-        /// 创建查询对象
+        ///     创建查询对象
         /// </summary>
         /// <param name="param">查询参数</param>
         protected override IQueryBase<Language> CreateQuery(LanguageQuery param)
@@ -52,7 +55,7 @@ namespace KissU.Modules.Theme.Service.Implements
         }
 
         /// <summary>
-        /// 转换为数据传输对象
+        ///     转换为数据传输对象
         /// </summary>
         /// <param name="entity">实体</param>
         protected override LanguageDto ToDto(Language entity)
@@ -61,7 +64,7 @@ namespace KissU.Modules.Theme.Service.Implements
         }
 
         /// <summary>
-        /// 转换为实体
+        ///     转换为实体
         /// </summary>
         /// <param name="dto">数据传输对象</param>
         protected override Language ToEntity(LanguageDto dto)
@@ -70,7 +73,7 @@ namespace KissU.Modules.Theme.Service.Implements
         }
 
         /// <summary>
-        /// 获取语言国际化数据
+        ///     获取语言国际化数据
         /// </summary>
         /// <param name="lang">语言编码</param>
         public async Task<Dictionary<string, string>> GetLangDataAsync(string lang)
@@ -86,19 +89,19 @@ namespace KissU.Modules.Theme.Service.Implements
         }
 
         /// <summary>
-        /// 创建
+        ///     创建
         /// </summary>
         /// <param name="request">创建参数</param>
         public override async Task<string> CreateAsync(LanguageDto request)
         {
-           var result = await  base.CreateAsync(request);
-           await UnitOfWork.CommitAsync();
+            var result = await base.CreateAsync(request);
+            await UnitOfWork.CommitAsync();
 
-           return result;
+            return result;
         }
 
         /// <summary>
-        /// 修改
+        ///     修改
         /// </summary>
         /// <param name="request">修改参数</param>
         public override async Task UpdateAsync(LanguageDto request)

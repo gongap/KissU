@@ -1,16 +1,21 @@
-﻿using KissU.Modules.GreatWall.Domain.Models;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿// <copyright file="RoleMap.cs" company="KissU">
+// Copyright (c) KissU. All Rights Reserved.
+// </copyright>
 
 namespace KissU.Modules.GreatWall.Data.Mappings.PgSql
 {
+    using KissU.Modules.GreatWall.Domain.Models;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.Metadata.Builders;
+    using Util.Datas.Ef.PgSql;
+
     /// <summary>
-    /// 角色映射配置
+    ///     角色映射配置
     /// </summary>
-    public class RoleMap : Util.Datas.Ef.PgSql.AggregateRootMap<Role>
+    public class RoleMap : AggregateRootMap<Role>
     {
         /// <summary>
-        /// 映射表
+        ///     映射表
         /// </summary>
         protected override void MapTable(EntityTypeBuilder<Role> builder)
         {
@@ -18,7 +23,7 @@ namespace KissU.Modules.GreatWall.Data.Mappings.PgSql
         }
 
         /// <summary>
-        /// 映射属性
+        ///     映射属性
         /// </summary>
         protected override void MapProperties(EntityTypeBuilder<Role> builder)
         {

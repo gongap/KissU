@@ -1,34 +1,46 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using Util.Datas.Queries;
+﻿// <copyright file="UserQuery.cs" company="KissU">
+// Copyright (c) KissU. All Rights Reserved.
+// </copyright>
 
 namespace KissU.Modules.GreatWall.Service.Contracts.Queries
 {
+    using System;
+    using System.ComponentModel.DataAnnotations;
+    using Util.Datas.Queries;
+
     /// <summary>
-    /// 用户查询参数
+    ///     用户查询参数
     /// </summary>
     public class UserQuery : QueryParameter
     {
+        private string _email = string.Empty;
+
+        private string _phoneNumber = string.Empty;
+
+        private string _registerIp = string.Empty;
+
+        private string _remark = string.Empty;
+
+        private string _userName = string.Empty;
+
         /// <summary>
-        /// 用户标识
+        ///     用户标识
         /// </summary>
         [Display(Name = "用户标识")]
         public Guid? UserId { get; set; }
 
         /// <summary>
-        /// 角色标识
+        ///     角色标识
         /// </summary>
         public Guid? RoleId { get; set; }
 
         /// <summary>
-        /// 排除的角色标识
+        ///     排除的角色标识
         /// </summary>
         public Guid? ExceptRoleId { get; set; }
 
-        private string _userName = string.Empty;
-
         /// <summary>
-        /// 用户名
+        ///     用户名
         /// </summary>
         [Display(Name = "用户名")]
         public string UserName
@@ -37,10 +49,8 @@ namespace KissU.Modules.GreatWall.Service.Contracts.Queries
             set => _userName = value;
         }
 
-        private string _email = string.Empty;
-
         /// <summary>
-        /// 安全邮箱
+        ///     安全邮箱
         /// </summary>
         [Display(Name = "安全邮箱")]
         public string Email
@@ -50,15 +60,13 @@ namespace KissU.Modules.GreatWall.Service.Contracts.Queries
         }
 
         /// <summary>
-        /// 邮箱已确认
+        ///     邮箱已确认
         /// </summary>
         [Display(Name = "邮箱已确认")]
         public bool? EmailConfirmed { get; set; }
 
-        private string _phoneNumber = string.Empty;
-
         /// <summary>
-        /// 安全手机
+        ///     安全手机
         /// </summary>
         [Display(Name = "安全手机")]
         public string PhoneNumber
@@ -68,33 +76,31 @@ namespace KissU.Modules.GreatWall.Service.Contracts.Queries
         }
 
         /// <summary>
-        /// 手机已确认
+        ///     手机已确认
         /// </summary>
         [Display(Name = "手机已确认")]
         public bool? PhoneNumberConfirmed { get; set; }
 
         /// <summary>
-        /// 启用
+        ///     启用
         /// </summary>
         [Display(Name = "启用")]
         public bool? Enabled { get; set; }
 
         /// <summary>
-        /// 起始冻结时间
+        ///     起始冻结时间
         /// </summary>
         [Display(Name = "起始冻结时间")]
         public DateTime? BeginDisabledTime { get; set; }
 
         /// <summary>
-        /// 结束冻结时间
+        ///     结束冻结时间
         /// </summary>
         [Display(Name = "结束冻结时间")]
         public DateTime? EndDisabledTime { get; set; }
 
-        private string _registerIp = string.Empty;
-
         /// <summary>
-        /// 注册Ip
+        ///     注册Ip
         /// </summary>
         [Display(Name = "注册Ip")]
         public string RegisterIp
@@ -103,10 +109,8 @@ namespace KissU.Modules.GreatWall.Service.Contracts.Queries
             set => _registerIp = value;
         }
 
-        private string _remark = string.Empty;
-
         /// <summary>
-        /// 备注
+        ///     备注
         /// </summary>
         [Display(Name = "备注")]
         public string Remark
@@ -116,19 +120,19 @@ namespace KissU.Modules.GreatWall.Service.Contracts.Queries
         }
 
         /// <summary>
-        /// 起始创建时间
+        ///     起始创建时间
         /// </summary>
         [Display(Name = "起始创建时间")]
         public DateTime? BeginCreationTime { get; set; }
 
         /// <summary>
-        /// 结束创建时间
+        ///     结束创建时间
         /// </summary>
         [Display(Name = "结束创建时间")]
         public DateTime? EndCreationTime { get; set; }
 
         /// <summary>
-        /// 创建人
+        ///     创建人
         /// </summary>
         [Display(Name = "创建人")]
         public Guid? CreatorId { get; set; }

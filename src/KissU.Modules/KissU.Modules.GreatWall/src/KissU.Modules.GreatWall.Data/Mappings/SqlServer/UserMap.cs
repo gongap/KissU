@@ -1,25 +1,34 @@
-﻿using KissU.Modules.GreatWall.Domain.Models;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿// <copyright file="UserMap.cs" company="KissU">
+// Copyright (c) KissU. All Rights Reserved.
+// </copyright>
 
-namespace KissU.Modules.GreatWall.Data.Mappings.SqlServer {
+namespace KissU.Modules.GreatWall.Data.Mappings.SqlServer
+{
+    using KissU.Modules.GreatWall.Domain.Models;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.Metadata.Builders;
+    using Util.Datas.Ef.SqlServer;
+
     /// <summary>
-    /// 用户映射配置
+    ///     用户映射配置
     /// </summary>
-    public class UserMap : Util.Datas.Ef.SqlServer.AggregateRootMap<User> {
+    public class UserMap : AggregateRootMap<User>
+    {
         /// <summary>
-        /// 映射表
+        ///     映射表
         /// </summary>
-        protected override void MapTable( EntityTypeBuilder<User> builder ) {
-            builder.ToTable( "User", "systems" );
+        protected override void MapTable(EntityTypeBuilder<User> builder)
+        {
+            builder.ToTable("User", "systems");
         }
 
         /// <summary>
-        /// 映射属性
+        ///     映射属性
         /// </summary>
-        protected override void MapProperties( EntityTypeBuilder<User> builder ) {
-            builder.Property( t => t.Id ).HasColumnName( "UserId" );
-            builder.HasQueryFilter( t => t.IsDeleted == false );
+        protected override void MapProperties(EntityTypeBuilder<User> builder)
+        {
+            builder.Property(t => t.Id).HasColumnName("UserId");
+            builder.HasQueryFilter(t => t.IsDeleted == false);
         }
     }
 }

@@ -1,17 +1,23 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Util.Datas.Queries;
+﻿// <copyright file="LanguageQuery.cs" company="KissU">
+// Copyright (c) KissU. All Rights Reserved.
+// </copyright>
 
 namespace KissU.Modules.Theme.Service.Contracts.Queries
 {
+    using Util.Datas.Queries;
+
     /// <summary>
-    /// 语言国际化查询参数
+    ///     语言国际化查询参数
     /// </summary>
     public class LanguageQuery : QueryParameter
     {
+        private string _abbr = string.Empty;
         private string _code = string.Empty;
 
+        private string _text = string.Empty;
+
         /// <summary>
-        /// 编码
+        ///     编码
         /// </summary>
         [Display(Name = "编码")]
         public string Code
@@ -20,10 +26,8 @@ namespace KissU.Modules.Theme.Service.Contracts.Queries
             set => _code = value;
         }
 
-        private string _text = string.Empty;
-
         /// <summary>
-        /// 名称
+        ///     名称
         /// </summary>
         [Display(Name = "名称")]
         public string Text
@@ -32,10 +36,8 @@ namespace KissU.Modules.Theme.Service.Contracts.Queries
             set => _text = value;
         }
 
-        private string _abbr = string.Empty;
-
         /// <summary>
-        /// 简称
+        ///     简称
         /// </summary>
         [Display(Name = "简称")]
         public string Abbr
@@ -45,7 +47,7 @@ namespace KissU.Modules.Theme.Service.Contracts.Queries
         }
 
         /// <summary>
-        /// 是否启用
+        ///     是否启用
         /// </summary>
         [Display(Name = "是否启用")]
         public bool? IsEnabled { get; set; }

@@ -1,43 +1,51 @@
-﻿using System.Linq;
-using KissU.Modules.IdentityServer.Data.UnitOfWorks;
-using KissU.Modules.IdentityServer.Domain.Models.PersistedGrantAggregate;
-using KissU.Modules.IdentityServer.Domain.Repositories;
-using KissU.Modules.IdentityServer.Service.Contracts.Abstractions;
-using KissU.Modules.IdentityServer.Service.Contracts.Dtos;
-using KissU.Modules.IdentityServer.Service.Contracts.Queries;
-using Util.Applications;
-using Util.Datas.Queries;
-using Util.Domains.Repositories;
+﻿// <copyright file="PersistedGrantService.cs" company="KissU">
+// Copyright (c) KissU. All Rights Reserved.
+// </copyright>
 
 namespace KissU.Modules.IdentityServer.Service.Implements
 {
+    using System.Linq;
+    using KissU.Modules.IdentityServer.Data.UnitOfWorks;
+    using KissU.Modules.IdentityServer.Domain.Models.PersistedGrantAggregate;
+    using KissU.Modules.IdentityServer.Domain.Repositories;
+    using KissU.Modules.IdentityServer.Service.Contracts.Abstractions;
+    using KissU.Modules.IdentityServer.Service.Contracts.Dtos;
+    using KissU.Modules.IdentityServer.Service.Contracts.Queries;
+    using Util.Applications;
+    using Util.Datas.Queries;
+    using Util.Domains.Repositories;
+
     /// <summary>
-    /// 认证操作数据服务
+    ///     认证操作数据服务
     /// </summary>
-    public class PersistedGrantService : CrudServiceBase<PersistedGrant, PersistedGrantDto, PersistedGrantQuery>, IPersistedGrantService
+    public class PersistedGrantService : CrudServiceBase<PersistedGrant, PersistedGrantDto, PersistedGrantQuery>,
+        IPersistedGrantService
     {
         /// <summary>
-        /// 初始化认证操作数据服务
+        ///     初始化认证操作数据服务
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
         /// <param name="persistedGrantRepository">认证操作数据仓储</param>
-        public PersistedGrantService(IIdentityServerUnitOfWork unitOfWork, IPersistedGrantRepository persistedGrantRepository)
+        public PersistedGrantService(IIdentityServerUnitOfWork unitOfWork,
+            IPersistedGrantRepository persistedGrantRepository)
             : base(unitOfWork, persistedGrantRepository)
         {
             PersistedGrantRepository = persistedGrantRepository;
             UnitOfWork = unitOfWork;
         }
+
         /// <summary>
-        /// 认证操作数据仓储
+        ///     认证操作数据仓储
         /// </summary>
         public IPersistedGrantRepository PersistedGrantRepository { get; set; }
+
         /// <summary>
-        /// 工作单元
+        ///     工作单元
         /// </summary>
         public IIdentityServerUnitOfWork UnitOfWork { get; set; }
 
         /// <summary>
-        /// 创建查询对象
+        ///     创建查询对象
         /// </summary>
         /// <param name="param">认证操作数据查询实体</param>
         protected override IQueryBase<PersistedGrant> CreateQuery(PersistedGrantQuery param)
@@ -53,11 +61,12 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        /// 过滤
+        ///     过滤
         /// </summary>
-        protected override IQueryable<PersistedGrant> Filter(IQueryable<PersistedGrant> queryable, PersistedGrantQuery parameter)
+        protected override IQueryable<PersistedGrant> Filter(IQueryable<PersistedGrant> queryable,
+            PersistedGrantQuery parameter)
         {
-            return base.Filter(queryable,parameter);
+            return base.Filter(queryable, parameter);
         }
     }
 }

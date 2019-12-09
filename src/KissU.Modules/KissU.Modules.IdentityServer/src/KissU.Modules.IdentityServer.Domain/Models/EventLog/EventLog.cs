@@ -1,14 +1,19 @@
-﻿using System;
-using IdentityServer4.Events;
-using Util.Domains;
+﻿// <copyright file="EventLog.cs" company="KissU">
+// Copyright (c) KissU. All Rights Reserved.
+// </copyright>
 
 namespace KissU.Modules.IdentityServer.Domain.Models.EventLog
 {
+    using System;
+    using IdentityServer4.Events;
+    using Util.Domains;
+
     public class EventLog : AggregateRoot<EventLog>
     {
         public EventLog() : base(Guid.Empty)
         {
         }
+
         public int EventId { get; set; }
         public int ProcessId { get; set; }
         public string ActivityId { get; set; }

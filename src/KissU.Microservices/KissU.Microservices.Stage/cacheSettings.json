@@ -1,1 +1,54 @@
-{"cachingSettings":[{"id":"ddlCache","class":"Surging.Core.Caching.RedisCache.RedisContext,Surging.Core.Caching","initMethod":"","maps":null,"properties":[{"name":"appRuleFile","ref":"rule","value":"","maps":null},{"name":"dataContextPool","ref":"ddls_sample","value":"","maps":[{"name":"Redis","properties":[{"name":null,"ref":null,"value":"127.0.0.1:6379::1","maps":null}]},{"name":"MemoryCache","properties":null}]},{"name":"defaultExpireTime","ref":"","value":"120","maps":null},{"name":"connectTimeout","ref":"","value":"120","maps":null},{"name":"minSize","ref":"","value":"1","maps":null},{"name":"maxSize","ref":"","value":"10","maps":null}]},{"id":"userCache","class":"Surging.Core.Caching.RedisCache.RedisContext,Surging.Core.Caching","initMethod":"","maps":null,"properties":[{"name":"appRuleFile","ref":"rule","value":"","maps":null},{"name":"dataContextPool","ref":"ddls_sample","value":"","maps":[{"name":"Redis","properties":[{"name":"","ref":"","value":"127.0.0.1:7000::1","maps":null},{"name":"","ref":"","value":"127.0.0.1:7005::1","maps":null},{"name":"","ref":"","value":"127.0.0.1:6379::1","maps":null}]},{"name":"MemoryCache","properties":null}]},{"name":"defaultExpireTime","ref":"","value":"120","maps":null},{"name":"connectTimeout","ref":"","value":"120","maps":null},{"name":"minSize","ref":"","value":"1","maps":null},{"name":"maxSize","ref":"","value":"10","maps":null}]}]}
+{
+    "cachingSettings": [
+        {
+            "id": "ddlCache",
+            "class": "Surging.Core.Caching.RedisCache.RedisContext,Surging.Core.Caching",
+            "initMethod": "",
+            "maps": null,
+            "properties": [
+                { "name": "appRuleFile", "ref": "rule", "value": "", "maps": null },
+                {
+                    "name": "dataContextPool",
+                    "ref": "ddls_sample",
+                    "value": "",
+                    "maps": [
+                        {
+                            "name": "Redis",
+                            "properties": [{ "name": null, "ref": null, "value": "127.0.0.1:6379::1", "maps": null }]
+                        }, { "name": "MemoryCache", "properties": null }
+                    ]
+                }, { "name": "defaultExpireTime", "ref": "", "value": "120", "maps": null },
+                { "name": "connectTimeout", "ref": "", "value": "120", "maps": null },
+                { "name": "minSize", "ref": "", "value": "1", "maps": null },
+                { "name": "maxSize", "ref": "", "value": "10", "maps": null }
+            ]
+        },
+        {
+            "id": "userCache",
+            "class": "Surging.Core.Caching.RedisCache.RedisContext,Surging.Core.Caching",
+            "initMethod": "",
+            "maps": null,
+            "properties": [
+                { "name": "appRuleFile", "ref": "rule", "value": "", "maps": null },
+                {
+                    "name": "dataContextPool",
+                    "ref": "ddls_sample",
+                    "value": "",
+                    "maps": [
+                        {
+                            "name": "Redis",
+                            "properties": [
+                                { "name": "", "ref": "", "value": "127.0.0.1:7000::1", "maps": null },
+                                { "name": "", "ref": "", "value": "127.0.0.1:7005::1", "maps": null },
+                                { "name": "", "ref": "", "value": "127.0.0.1:6379::1", "maps": null }
+                            ]
+                        }, { "name": "MemoryCache", "properties": null }
+                    ]
+                }, { "name": "defaultExpireTime", "ref": "", "value": "120", "maps": null },
+                { "name": "connectTimeout", "ref": "", "value": "120", "maps": null },
+                { "name": "minSize", "ref": "", "value": "1", "maps": null },
+                { "name": "maxSize", "ref": "", "value": "10", "maps": null }
+            ]
+        }
+    ]
+}

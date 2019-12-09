@@ -1,26 +1,29 @@
-﻿using System;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using Util.Domains;
-using Util.Domains.Auditing;
+﻿// <copyright file="Claim.cs" company="KissU">
+// Copyright (c) KissU. All Rights Reserved.
+// </copyright>
 
 namespace KissU.Modules.GreatWall.Domain.Models
 {
+    using System;
+    using System.ComponentModel;
+    using Util.Domains;
+    using Util.Domains.Auditing;
+
     /// <summary>
-    /// 声明
+    ///     声明
     /// </summary>
     [DisplayName("声明")]
     public class Claim : AggregateRoot<Claim>, IDelete, IAudited
     {
         /// <summary>
-        /// 初始化声明
+        ///     初始化声明
         /// </summary>
         public Claim() : this(Guid.Empty)
         {
         }
 
         /// <summary>
-        /// 初始化声明
+        ///     初始化声明
         /// </summary>
         /// <param name="id">声明标识</param>
         public Claim(Guid id) : base(id)
@@ -28,56 +31,64 @@ namespace KissU.Modules.GreatWall.Domain.Models
         }
 
         /// <summary>
-        /// 声明名称
+        ///     声明名称
         /// </summary>
         [DisplayName("声明名称")]
         [Required(ErrorMessage = "声明名称不能为空")]
         [StringLength(200)]
         public string Name { get; set; }
+
         /// <summary>
-        /// 启用
+        ///     启用
         /// </summary>
         [DisplayName("启用")]
         public bool Enabled { get; set; }
+
         /// <summary>
-        /// 排序号
+        ///     排序号
         /// </summary>
         [DisplayName("排序号")]
         public int? SortId { get; set; }
+
         /// <summary>
-        /// 备注
+        ///     备注
         /// </summary>
         [DisplayName("备注")]
         [StringLength(500)]
         public string Remark { get; set; }
+
         /// <summary>
-        /// 创建时间
+        ///     创建时间
         /// </summary>
         [DisplayName("创建时间")]
         public DateTime? CreationTime { get; set; }
+
         /// <summary>
-        /// 创建人标识
+        ///     创建人标识
         /// </summary>
         [DisplayName("创建人标识")]
         public Guid? CreatorId { get; set; }
+
         /// <summary>
-        /// 最后修改时间
+        ///     最后修改时间
         /// </summary>
         [DisplayName("最后修改时间")]
         public DateTime? LastModificationTime { get; set; }
+
         /// <summary>
-        /// 最后修改人标识
+        ///     最后修改人标识
         /// </summary>
         [DisplayName("最后修改人标识")]
         public Guid? LastModifierId { get; set; }
+
         /// <summary>
-        /// 是否删除
+        ///     是否删除
         /// </summary>
         [DisplayName("是否删除")]
         public bool IsDeleted { get; set; }
 
         /// <summary>
-        /// 添加描述
+        ///     添加描述
         /// </summary>
         protected override void AddDescriptions()
         {
@@ -93,7 +104,7 @@ namespace KissU.Modules.GreatWall.Domain.Models
         }
 
         /// <summary>
-        /// 添加变更列表
+        ///     添加变更列表
         /// </summary>
         protected override void AddChanges(Claim other)
         {

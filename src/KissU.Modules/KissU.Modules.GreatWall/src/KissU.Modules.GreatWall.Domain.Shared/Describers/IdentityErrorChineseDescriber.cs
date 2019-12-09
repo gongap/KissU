@@ -1,14 +1,18 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿// <copyright file="IdentityErrorChineseDescriber.cs" company="KissU">
+// Copyright (c) KissU. All Rights Reserved.
+// </copyright>
 
 namespace KissU.Modules.GreatWall.Domain.Shared.Describers
 {
+    using Microsoft.AspNetCore.Identity;
+
     /// <summary>
-    /// Identity中文错误描述
+    ///     Identity中文错误描述
     /// </summary>
     public class IdentityErrorChineseDescriber : IdentityErrorDescriber
     {
         /// <summary>
-        /// 密码太短
+        ///     密码太短
         /// </summary>
         public override IdentityError PasswordTooShort(int length)
         {
@@ -20,7 +24,7 @@ namespace KissU.Modules.GreatWall.Domain.Shared.Describers
         }
 
         /// <summary>
-        /// 密码应包含非字母和数字的特殊字符
+        ///     密码应包含非字母和数字的特殊字符
         /// </summary>
         public override IdentityError PasswordRequiresNonAlphanumeric()
         {
@@ -32,31 +36,29 @@ namespace KissU.Modules.GreatWall.Domain.Shared.Describers
         }
 
         /// <summary>
-        /// 密码应包含大写字母
+        ///     密码应包含大写字母
         /// </summary>
         public override IdentityError PasswordRequiresUpper()
         {
             return new IdentityError
             {
-                Code = nameof(PasswordRequiresUpper),
-                Description = GreatWallResource.PasswordRequiresUpper
+                Code = nameof(PasswordRequiresUpper), Description = GreatWallResource.PasswordRequiresUpper
             };
         }
 
         /// <summary>
-        /// 密码应包含数字
+        ///     密码应包含数字
         /// </summary>
         public override IdentityError PasswordRequiresDigit()
         {
             return new IdentityError
             {
-                Code = nameof(PasswordRequiresDigit),
-                Description = GreatWallResource.PasswordRequiresDigit
+                Code = nameof(PasswordRequiresDigit), Description = GreatWallResource.PasswordRequiresDigit
             };
         }
 
         /// <summary>
-        /// 密码应包含不重复的字符数
+        ///     密码应包含不重复的字符数
         /// </summary>
         public override IdentityError PasswordRequiresUniqueChars(int uniqueChars)
         {
@@ -68,7 +70,7 @@ namespace KissU.Modules.GreatWall.Domain.Shared.Describers
         }
 
         /// <summary>
-        /// 无效用户名
+        ///     无效用户名
         /// </summary>
         public override IdentityError InvalidUserName(string userName)
         {
@@ -80,7 +82,7 @@ namespace KissU.Modules.GreatWall.Domain.Shared.Describers
         }
 
         /// <summary>
-        /// 用户名重复
+        ///     用户名重复
         /// </summary>
         public override IdentityError DuplicateUserName(string userName)
         {
@@ -92,55 +94,48 @@ namespace KissU.Modules.GreatWall.Domain.Shared.Describers
         }
 
         /// <summary>
-        /// 电子邮件重复
+        ///     电子邮件重复
         /// </summary>
         public override IdentityError DuplicateEmail(string email)
         {
             return new IdentityError
             {
-                Code = nameof(DuplicateEmail),
-                Description = string.Format(GreatWallResource.DuplicateEmail, email)
+                Code = nameof(DuplicateEmail), Description = string.Format(GreatWallResource.DuplicateEmail, email)
             };
         }
 
         /// <summary>
-        /// 无效令牌
+        ///     无效令牌
         /// </summary>
         public override IdentityError InvalidToken()
         {
-            return new IdentityError
-            {
-                Code = nameof(InvalidToken),
-                Description = GreatWallResource.InvalidToken
-            };
+            return new IdentityError {Code = nameof(InvalidToken), Description = GreatWallResource.InvalidToken};
         }
 
         /// <summary>
-        /// 密码错误
+        ///     密码错误
         /// </summary>
         public override IdentityError PasswordMismatch()
         {
             return new IdentityError
             {
-                Code = nameof(PasswordMismatch),
-                Description = GreatWallResource.PasswordMismatch
+                Code = nameof(PasswordMismatch), Description = GreatWallResource.PasswordMismatch
             };
         }
 
         /// <summary>
-        /// 角色名无效
+        ///     角色名无效
         /// </summary>
         public override IdentityError InvalidRoleName(string role)
         {
             return new IdentityError
             {
-                Code = nameof(InvalidRoleName),
-                Description = string.Format(GreatWallResource.InvalidRoleName, role)
+                Code = nameof(InvalidRoleName), Description = string.Format(GreatWallResource.InvalidRoleName, role)
             };
         }
 
         /// <summary>
-        /// 角色名重复
+        ///     角色名重复
         /// </summary>
         public override IdentityError DuplicateRoleName(string role)
         {

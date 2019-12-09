@@ -1,15 +1,19 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
+﻿// <copyright file="MenuInfo.cs" company="KissU">
+// Copyright (c) KissU. All Rights Reserved.
+// </copyright>
 
 namespace KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain
 {
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+
     /// <summary>
-    /// NgAlain菜单
+    ///     NgAlain菜单
     /// </summary>
     public class MenuInfo
     {
         /// <summary>
-        /// 初始化NgAlain菜单
+        ///     初始化NgAlain菜单
         /// </summary>
         public MenuInfo()
         {
@@ -18,53 +22,53 @@ namespace KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain
         }
 
         /// <summary>
-        /// 标识
+        ///     标识
         /// </summary>
         public string Id { get; set; }
 
         /// <summary>
-        /// 文本
+        ///     文本
         /// </summary>
         public string Text { get; set; }
 
         /// <summary>
-        /// 图标
+        ///     图标
         /// </summary>
         public string Icon { get; set; }
 
         /// <summary>
-        /// 链接
+        ///     链接
         /// </summary>
         public string Link { get; set; }
 
         /// <summary>
-        /// 外部链接
+        ///     外部链接
         /// </summary>
         public string ExternalLink { get; set; }
 
         /// <summary>
-        /// 链接目标
+        ///     链接目标
         /// </summary>
         public string Target { get; set; }
 
         /// <summary>
-        /// 国际化
+        ///     国际化
         /// </summary>
         [JsonProperty("i18n")]
         public string I18N { get; set; }
 
         /// <summary>
-        /// 组
+        ///     组
         /// </summary>
         public bool Group { get; set; }
 
         /// <summary>
-        /// 不要在面包屑导航中显示
+        ///     不要在面包屑导航中显示
         /// </summary>
         public bool HideInBreadcrumb { get; set; }
 
         /// <summary>
-        /// 子菜单
+        ///     子菜单
         /// </summary>
         public List<MenuInfo> Children { get; set; }
     }

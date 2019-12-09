@@ -1,25 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using KissU.Modules.GreatWall.Domain.Models;
-using KissU.Modules.GreatWall.Domain.Repositories;
-using KissU.Modules.GreatWall.Service.Contracts.Abstractions;
-using KissU.Modules.GreatWall.Service.Contracts.Dtos.Responses;
-using KissU.Modules.GreatWall.Service.Extensions;
-using Util;
-using Util.Applications;
-using Util.Security;
+﻿// <copyright file="MenuService.cs" company="KissU">
+// Copyright (c) KissU. All Rights Reserved.
+// </copyright>
 
 namespace KissU.Modules.GreatWall.Service.Implements
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using KissU.Modules.GreatWall.Domain.Models;
+    using KissU.Modules.GreatWall.Domain.Repositories;
+    using KissU.Modules.GreatWall.Service.Contracts.Abstractions;
+    using KissU.Modules.GreatWall.Service.Contracts.Dtos.Responses;
+    using Util;
+    using Util.Applications;
+    using Util.Security;
+
     /// <summary>
-    /// 菜单服务
+    ///     菜单服务
     /// </summary>
     public class MenuService : ServiceBase, IMenuService
     {
         /// <summary>
-        /// 初始化菜单服务
+        ///     初始化菜单服务
         /// </summary>
         /// <param name="roleRepository">角色仓储</param>
         /// <param name="moduleRepository">模块仓储</param>
@@ -30,23 +33,26 @@ namespace KissU.Modules.GreatWall.Service.Implements
         }
 
         /// <summary>
-        /// 角色仓储
+        ///     角色仓储
         /// </summary>
         public IRoleRepository RoleRepository { get; set; }
+
         /// <summary>
-        /// 模块仓储
+        ///     模块仓储
         /// </summary>
         public IModuleRepository ModuleRepository { get; set; }
 
         /// <summary>
-        /// 获取菜单
+        ///     获取菜单
         /// </summary>
         public async Task<List<MenuResponse>> GetMenusAsync()
         {
-
             var userId = Session.UserId;
             if (userId.IsEmpty())
+            {
                 return new List<MenuResponse>();
+            }
+
             var roleIds = await RoleRepository.GetRoleIdsAsync(userId.ToGuid());
             var modules = await ModuleRepository.GetModulesAsync(Session.GetApplicationId(), roleIds);
             await AddMissingParents(modules);
@@ -54,7 +60,7 @@ namespace KissU.Modules.GreatWall.Service.Implements
         }
 
         /// <summary>
-        /// 添加缺失的父节点列表
+        ///     添加缺失的父节点列表
         /// </summary>
         private async Task AddMissingParents(List<Module> modules)
         {

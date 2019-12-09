@@ -1,12 +1,16 @@
-using System;
-using System.Linq;
-using System.Threading.Tasks;
+﻿// <copyright file="WeatherForecastService.cs" company="KissU">
+// Copyright (c) KissU. All Rights Reserved.
+// </copyright>
 
 namespace KissU.STS.IdentityServer.Data
 {
+    using System;
+    using System.Linq;
+    using System.Threading.Tasks;
+
     public class WeatherForecastService
     {
-        private static readonly string[] Summaries = new[]
+        private static readonly string[] Summaries =
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };

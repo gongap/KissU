@@ -1,7 +1,11 @@
-using System;
+﻿// <copyright file="WeatherForecast.cs" company="KissU">
+// Copyright (c) KissU. All Rights Reserved.
+// </copyright>
 
 namespace KissU.STS.IdentityServer.Data
 {
+    using System;
+
     public class WeatherForecast
     {
         public DateTime Date { get; set; }

@@ -1,52 +1,62 @@
-﻿using System;
-using System.Linq;
-using KissU.Modules.IdentityServer.Data.UnitOfWorks;
-using KissU.Modules.IdentityServer.Domain.Models.IdentityResourceAggregate;
-using KissU.Modules.IdentityServer.Domain.Repositories;
-using KissU.Modules.IdentityServer.Domain.Shared;
-using KissU.Modules.IdentityServer.Service.Contracts.Abstractions;
-using KissU.Modules.IdentityServer.Service.Contracts.Dtos;
-using KissU.Modules.IdentityServer.Service.Contracts.Dtos.Requests;
-using KissU.Modules.IdentityServer.Service.Contracts.Queries;
-using Util.Applications;
-using Util.Datas.Queries;
-using Util.Domains.Repositories;
-using Util.Exceptions;
+﻿// <copyright file="IdentityResourceService.cs" company="KissU">
+// Copyright (c) KissU. All Rights Reserved.
+// </copyright>
 
 namespace KissU.Modules.IdentityServer.Service.Implements
 {
+    using System;
+    using System.Linq;
+    using KissU.Modules.IdentityServer.Data.UnitOfWorks;
+    using KissU.Modules.IdentityServer.Domain.Models.IdentityResourceAggregate;
+    using KissU.Modules.IdentityServer.Domain.Repositories;
+    using KissU.Modules.IdentityServer.Domain.Shared;
+    using KissU.Modules.IdentityServer.Service.Contracts.Abstractions;
+    using KissU.Modules.IdentityServer.Service.Contracts.Dtos;
+    using KissU.Modules.IdentityServer.Service.Contracts.Dtos.Requests;
+    using KissU.Modules.IdentityServer.Service.Contracts.Queries;
+    using Util.Applications;
+    using Util.Datas.Queries;
+    using Util.Domains.Repositories;
+    using Util.Exceptions;
+
     /// <summary>
-    /// 应用程序服务
+    ///     应用程序服务
     /// </summary>
-    public class IdentityResourceService : CrudServiceBase<IdentityResource, IdentityResourceDto, IdentityResourceDto, IdentityResourceCreateRequest, IdentityResourceDto, IdentityResourceQuery, Guid>, IIdentityResourceService
+    public class IdentityResourceService :
+        CrudServiceBase<IdentityResource, IdentityResourceDto, IdentityResourceDto, IdentityResourceCreateRequest,
+            IdentityResourceDto, IdentityResourceQuery, Guid>, IIdentityResourceService
     {
         /// <summary>
-        /// 初始化应用程序服务
+        ///     初始化应用程序服务
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
         /// <param name="identityResourceRepository">应用程序仓储</param>
-        public IdentityResourceService(IIdentityServerUnitOfWork unitOfWork, IIdentityResourceRepository identityResourceRepository)
+        public IdentityResourceService(IIdentityServerUnitOfWork unitOfWork,
+            IIdentityResourceRepository identityResourceRepository)
             : base(unitOfWork, identityResourceRepository)
         {
             IdentityResourceRepository = identityResourceRepository;
             UnitOfWork = unitOfWork;
         }
+
         /// <summary>
-        /// 应用程序仓储
+        ///     应用程序仓储
         /// </summary>
         public IIdentityResourceRepository IdentityResourceRepository { get; set; }
+
         /// <summary>
-        /// 工作单元
+        ///     工作单元
         /// </summary>
         public IIdentityServerUnitOfWork UnitOfWork { get; set; }
 
         /// <summary>
-        /// 创建查询对象
+        ///     创建查询对象
         /// </summary>
         /// <param name="param">应用程序查询实体</param>
         protected override IQueryBase<IdentityResource> CreateQuery(IdentityResourceQuery param)
         {
-            var query = new Query<IdentityResource>(param).Or(t => t.Name.Contains(param.Keyword), t => t.DisplayName.Contains(param.Keyword));
+            var query = new Query<IdentityResource>(param).Or(t => t.Name.Contains(param.Keyword),
+                t => t.DisplayName.Contains(param.Keyword));
 
             if (param.Enabled.HasValue)
             {
@@ -62,17 +72,19 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        /// 创建前操作
+        ///     创建前操作
         /// </summary>
         protected override void CreateBefore(IdentityResource entity)
         {
             base.CreateBefore(entity);
             if (IdentityResourceRepository.Exists(t => t.Name == entity.Name))
+            {
                 ThrowDuplicateNameException(entity.Name);
+            }
         }
 
         /// <summary>
-        /// 抛出Name重复异常
+        ///     抛出Name重复异常
         /// </summary>
         private void ThrowDuplicateNameException(string name)
         {
@@ -80,19 +92,22 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         }
 
         /// <summary>
-        /// 修改前操作
+        ///     修改前操作
         /// </summary>
         protected override void UpdateBefore(IdentityResource entity)
         {
             base.UpdateBefore(entity);
             if (IdentityResourceRepository.Exists(t => t.Id != entity.Id && t.Name == entity.Name))
+            {
                 ThrowDuplicateNameException(entity.Name);
+            }
         }
 
         /// <summary>
-        /// 过滤
+        ///     过滤
         /// </summary>
-        protected override IQueryable<IdentityResource> Filter(IQueryable<IdentityResource> queryable, IdentityResourceQuery parameter)
+        protected override IQueryable<IdentityResource> Filter(IQueryable<IdentityResource> queryable,
+            IdentityResourceQuery parameter)
         {
             return base.Filter(queryable, parameter);
         }

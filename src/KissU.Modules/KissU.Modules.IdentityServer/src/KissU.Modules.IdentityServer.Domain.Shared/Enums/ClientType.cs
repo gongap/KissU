@@ -1,4 +1,8 @@
-﻿namespace KissU.Modules.IdentityServer.Domain.Shared.Enums
+﻿// <copyright file="ClientType.cs" company="KissU">
+// Copyright (c) KissU. All Rights Reserved.
+// </copyright>
+
+namespace KissU.Modules.IdentityServer.Domain.Shared.Enums
 {
     public enum ClientType
     {

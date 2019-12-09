@@ -1,20 +1,25 @@
-﻿using System;
-using System.Threading.Tasks;
-using KissU.Modules.GreatWall.Data;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Util;
-using Util.Datas.Ef;
+﻿// <copyright file="Program.cs" company="KissU">
+// Copyright (c) KissU. All Rights Reserved.
+// </copyright>
 
 namespace KissU.Modules.GreatWall.DbMigrator
 {
-    class Program
+    using System;
+    using System.Threading.Tasks;
+    using KissU.Modules.GreatWall.Data;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Util;
+    using Util.Datas.Ef;
+
+    internal class Program
     {
-        static async Task Main(string[] args)
+        private static async Task Main(string[] args)
         {
             var configuration = DbMigrationHelpers.BuildConfiguration();
             var services = new ServiceCollection();
-            services.AddUnitOfWork<IGreatWallUnitOfWork, DesignTimeDbContext>(configuration.GetConnectionString("DefaultConnection"));
+            services.AddUnitOfWork<IGreatWallUnitOfWork, DesignTimeDbContext>(
+                configuration.GetConnectionString("DefaultConnection"));
             var serviceProvider = services.AddUtil();
             await DbMigrationHelpers.MigrateAsync<DesignTimeDbContext>(serviceProvider);
             Console.WriteLine("Press ENTER to stop application...");

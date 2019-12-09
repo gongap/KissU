@@ -1,10 +1,14 @@
-﻿using System.Text;
-using Autofac;
-using Surging.Core.CPlatform.Module;
-using Util.Helpers;
+﻿// <copyright file="UtilModule.cs" company="KissU">
+// Copyright (c) KissU. All Rights Reserved.
+// </copyright>
 
 namespace KissU.Core.Util
 {
+    using System.Text;
+    using Autofac;
+    using Surging.Core.CPlatform.Module;
+    using Util.Helpers;
+
     /// <inheritdoc />
     public class UtilModule : SystemModule
     {
@@ -16,7 +20,7 @@ namespace KissU.Core.Util
         }
 
         /// <summary>
-        /// Inject dependent third-party components
+        ///     Inject dependent third-party components
         /// </summary>
         /// <param name="builder"></param>
         protected override void RegisterBuilder(ContainerBuilderWrapper builder)

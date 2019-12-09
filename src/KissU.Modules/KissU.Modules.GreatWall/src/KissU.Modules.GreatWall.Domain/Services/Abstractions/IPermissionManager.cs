@@ -1,17 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Util.Domains.Services;
+﻿// <copyright file="IPermissionManager.cs" company="KissU">
+// Copyright (c) KissU. All Rights Reserved.
+// </copyright>
 
 namespace KissU.Modules.GreatWall.Domain.Services.Abstractions
 {
+    using Util.Domains.Services;
+
     /// <summary>
-    /// 权限服务
+    ///     权限服务
     /// </summary>
     public interface IPermissionManager : IDomainService
     {
         /// <summary>
-        /// 保存权限
+        ///     保存权限
         /// </summary>
         /// <param name="applicationId">应用程序标识</param>
         /// <param name="roleId">角色标识</param>

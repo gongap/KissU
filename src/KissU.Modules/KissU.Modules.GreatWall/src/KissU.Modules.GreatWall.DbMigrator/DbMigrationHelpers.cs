@@ -1,20 +1,23 @@
-﻿using System;
-using System.IO;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+﻿// <copyright file="DbMigrationHelpers.cs" company="KissU">
+// Copyright (c) KissU. All Rights Reserved.
+// </copyright>
 
 namespace KissU.Modules.GreatWall.DbMigrator
 {
+    using System;
+    using System.IO;
+    using System.Threading.Tasks;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+
     internal static class DbMigrationHelpers
     {
         public static IConfigurationRoot BuildConfiguration()
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", optional: false);
+                .AddJsonFile("appsettings.json", false);
             return builder.Build();
         }
 
@@ -44,6 +47,7 @@ namespace KissU.Modules.GreatWall.DbMigrator
                 }
             }
         }
+
         public static async Task EnsureSeedData<TDbContext>(IServiceProvider serviceProvider)
             where TDbContext : DbContext
         {

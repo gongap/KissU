@@ -1,19 +1,22 @@
-﻿using System.Collections.Generic;
-using System.Security.Claims;
-using AutoMapper;
-using KissU.Modules.IdentityServer.Domain.Models.ClientAggregate;
-using Client = KissU.Modules.IdentityServer.Domain.Models.ClientAggregate.Client;
-using Ids4 = IdentityServer4.Models;
+﻿// <copyright file="ClientMapperProfile.cs" company="KissU">
+// Copyright (c) KissU. All Rights Reserved.
+// </copyright>
 
 namespace KissU.Modules.IdentityServer.Service.Mappers
 {
+    using System.Collections.Generic;
+    using System.Security.Claims;
+    using AutoMapper;
+    using KissU.Modules.IdentityServer.Domain.Models.ClientAggregate;
+    using Ids4 = IdentityServer4.Models;
+
     /// <summary>
-    /// 应用程序AutoMapper映射配置
+    ///     应用程序AutoMapper映射配置
     /// </summary>
     public class ClientMapperProfile : Profile
     {
         /// <summary>
-        /// 初始化
+        ///     初始化
         /// </summary>
         public ClientMapperProfile()
         {
@@ -28,7 +31,7 @@ namespace KissU.Modules.IdentityServer.Service.Mappers
                 .ReverseMap();
 
             CreateMap<ClientClaim, Claim>(MemberList.None)
-                 .ConstructUsing(src => new Claim(src.Type, src.Value))
+                .ConstructUsing(src => new Claim(src.Type, src.Value))
                 .ReverseMap();
         }
     }

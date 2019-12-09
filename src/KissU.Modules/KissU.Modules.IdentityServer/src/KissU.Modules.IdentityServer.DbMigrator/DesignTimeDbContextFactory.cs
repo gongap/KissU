@@ -1,13 +1,17 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.Extensions.Configuration;
-using Util.Helpers;
+﻿// <copyright file="DesignTimeDbContextFactory.cs" company="KissU">
+// Copyright (c) KissU. All Rights Reserved.
+// </copyright>
 
 namespace KissU.Modules.IdentityServer.DbMigrator
 {
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.Design;
+    using Microsoft.Extensions.Configuration;
+    using Util.Helpers;
+
     /// <summary>
-    /// EF Core控制台命令需要该类
-    /// 如Add-Migration和Update-Database命令
+    ///     EF Core控制台命令需要该类
+    ///     如Add-Migration和Update-Database命令
     /// </summary>
     public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<DesignTimeDbContext>
     {
@@ -18,7 +22,9 @@ namespace KissU.Modules.IdentityServer.DbMigrator
         {
             Ioc.Register();
             var configuration = DbMigrationHelpers.BuildConfiguration();
-            var builder = new DbContextOptionsBuilder<DesignTimeDbContext>().UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+            var builder =
+                new DbContextOptionsBuilder<DesignTimeDbContext>().UseSqlServer(
+                    configuration.GetConnectionString("DefaultConnection"));
             return new DesignTimeDbContext(builder.Options);
         }
     }

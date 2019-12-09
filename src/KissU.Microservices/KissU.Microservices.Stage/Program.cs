@@ -1,28 +1,28 @@
-﻿using System;
-using System.Text;
-using Autofac;
-using Microsoft.Extensions.Logging;
-using Surging.Core.Caching.Configurations;
-using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Configurations;
-using Surging.Core.CPlatform.Utilities;
-using Surging.Core.ProxyGenerator;
-using Surging.Core.ServiceHosting;
-using Surging.Core.ServiceHosting.Internal.Implementation;
-
-//using Surging.Core.EventBusKafka;
-//using Surging.Core.Zookeeper;
-//using Surging.Core.Zookeeper.Configurations;
+﻿// <copyright file="Program.cs" company="KissU">
+// Copyright (c) KissU. All Rights Reserved.
+// </copyright>
 
 namespace KissU.Microservices.Stage
 {
+    using System;
+    using System.Text;
+    using Autofac;
+    using Microsoft.Extensions.Logging;
+    using Surging.Core.Caching.Configurations;
+    using Surging.Core.CPlatform;
+    using Surging.Core.CPlatform.Configurations;
+    using Surging.Core.CPlatform.Utilities;
+    using Surging.Core.ProxyGenerator;
+    using Surging.Core.ServiceHosting;
+    using Surging.Core.ServiceHosting.Internal.Implementation;
+
     /// <summary>
-    ///  应用程序
+    ///     应用程序
     /// </summary>
     public class Program
     {
         /// <summary>
-        ///  应用程序入口点
+        ///     应用程序入口点
         /// </summary>
         /// <param name="args">入口点参数</param>
         private static void Main(string[] args)
@@ -58,7 +58,8 @@ namespace KissU.Microservices.Stage
                 //启用控制台生命周期
                 .UseConsoleLifetime()
                 //设置缓存配置文件
-                .Configure(build => build.AddCacheFile("${cachepath}|cachesettings.json", AppContext.BaseDirectory, false, true))
+                .Configure(build =>
+                    build.AddCacheFile("${cachepath}|cachesettings.json", AppContext.BaseDirectory, false, true))
                 //设置引擎配置文件
                 .Configure(build => build.AddCPlatformFile("${surgingpath}|servicesettings.json", false, true))
                 //使用Startup启动
