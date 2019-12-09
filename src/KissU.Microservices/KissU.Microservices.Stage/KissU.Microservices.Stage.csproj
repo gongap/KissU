@@ -4,7 +4,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <ServerGarbageCollection>false</ServerGarbageCollection>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <TieredCompilation>true</TieredCompilation>
   </PropertyGroup>
 
@@ -51,22 +51,22 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="cacheSettings.json">
+    <None Update="cachesettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Configs\consul.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="NLog.config">
+    <None Update="nlog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="eventBusSettings.json">
+    <None Update="eventbussettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="log4net.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="surgingSettings.json">
+    <None Update="servicesettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="skyapm.json">

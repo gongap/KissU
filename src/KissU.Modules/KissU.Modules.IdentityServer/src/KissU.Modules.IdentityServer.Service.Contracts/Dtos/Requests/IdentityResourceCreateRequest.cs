@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Util.Applications.Dtos;
 
-namespace KissU.Modules.IdentityServer.Service.Contracts.Commands
+namespace KissU.Modules.IdentityServer.Service.Contracts.Dtos.Requests
 {
     /// <summary>
     /// 创建身份资源请求参数

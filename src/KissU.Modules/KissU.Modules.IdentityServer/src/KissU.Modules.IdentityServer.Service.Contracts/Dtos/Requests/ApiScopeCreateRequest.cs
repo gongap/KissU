@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Util.Applications.Dtos;
 
-namespace KissU.Modules.IdentityServer.Service.Contracts.Commands
+namespace KissU.Modules.IdentityServer.Service.Contracts.Dtos.Requests
 {
     /// <summary>
     /// 创建Api许可范围请求参数

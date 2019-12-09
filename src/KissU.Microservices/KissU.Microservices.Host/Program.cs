@@ -14,7 +14,7 @@ using Surging.Core.ServiceHosting.Internal.Implementation;
 //using Surging.Core.Zookeeper;
 //using Surging.Core.Zookeeper.Configurations;
 
-namespace KissU.Hosts.Default
+namespace KissU.Microservices.Host
 {
     /// <summary>
     ///  应用程序
@@ -46,7 +46,7 @@ namespace KissU.Hosts.Default
                             //添加ZooKeeper服务命令管理者
                             //option.UseZooKeeperManager(new ConfigInfo("127.0.0.1:2181")); 
                             //添加服务引擎
-                            .AddServiceEngine(typeof(SurgingServiceEngine));
+                            .AddServiceEngine(typeof(ServiceEngine));
                         //注册平台容器
                         builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
                     });
@@ -58,9 +58,9 @@ namespace KissU.Hosts.Default
                 //启用控制台生命周期
                 .UseConsoleLifetime()
                 //设置缓存配置文件
-                .Configure(build => build.AddCacheFile("${cachepath}|cacheSettings.json", AppContext.BaseDirectory, false, true))
+                .Configure(build => build.AddCacheFile("${cachepath}|cachesettings.json", AppContext.BaseDirectory, false, true))
                 //设置引擎配置文件
-                .Configure(build => build.AddCPlatformFile("${surgingpath}|surgingSettings.json", false, true))
+                .Configure(build => build.AddCPlatformFile("${surgingpath}|servicesettings.json", false, true))
                 //使用Startup启动
                 .UseStartup<Startup>()
                 //构建主机

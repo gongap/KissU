@@ -1,14 +1,14 @@
 ﻿using Surging.Core.CPlatform.Engines.Implementation;
 using Surging.Core.CPlatform.Utilities;
 
-namespace KissU.Hosts.Stage
+namespace KissU.Microservices.Host
 {
     /// <summary>
     /// 微服务引擎
     /// </summary>
-    public class SurgingServiceEngine: VirtualPathProviderServiceEngine
+    public class ServiceEngine: VirtualPathProviderServiceEngine
     {
-        public SurgingServiceEngine()
+        public ServiceEngine()
         {
             ModuleServiceLocationFormats = new[] {
                 EnvironmentHelper.GetEnvironmentVariable("${ModulePath1}|Modules"),

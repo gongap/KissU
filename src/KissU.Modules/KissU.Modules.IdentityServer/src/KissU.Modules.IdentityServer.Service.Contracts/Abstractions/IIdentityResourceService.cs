@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.Modules.IdentityServer.Service.Contracts.Commands;
 using KissU.Modules.IdentityServer.Service.Contracts.Dtos;
+using KissU.Modules.IdentityServer.Service.Contracts.Dtos.Requests;
 using KissU.Modules.IdentityServer.Service.Contracts.Queries;
 using Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using Util.Applications;

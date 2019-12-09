@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using KissU.Modules.IdentityServer.Domain.Shared.Enums;
 using Util.Applications.Dtos;
 
-namespace KissU.Modules.IdentityServer.Service.Contracts.Commands
+namespace KissU.Modules.IdentityServer.Service.Contracts.Dtos.Requests
 {
     /// <summary>
     /// 创建Api密钥请求参数

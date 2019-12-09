@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Surging.Core.Caching.Configurations;
 using Surging.Core.CPlatform.Utilities;
 
-namespace KissU.Hosts.Default
+namespace KissU.Microservices.Host
 {
     /// <summary>
     ///  启动配置
@@ -57,7 +57,7 @@ namespace KissU.Hosts.Default
         /// <param name="build">服务构建者</param>
         private static void ConfigureEventBus(IConfigurationBuilder build)
         {
-            //build.AddEventBusFile("eventBusSettings.json", false);
+            //build.AddEventBusFile("eventbussettings.json", false);
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace KissU.Hosts.Default
         /// </summary>
         private void ConfigureCache(IConfigurationBuilder build)
         {
-            build.AddCacheFile("cacheSettings.json", false);
+            build.AddCacheFile("cachesettings.json", false);
         }
 
         #endregion
