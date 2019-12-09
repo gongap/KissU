@@ -1,5 +1,5 @@
 ﻿using KissU.Modules.Theme.Domain.Models;
-using KissU.Modules.Theme.Service.Contracts.Dtos.Language;
+using KissU.Modules.Theme.Service.Contracts.Dtos;
 using Util;
 using Util.Maps;
 
