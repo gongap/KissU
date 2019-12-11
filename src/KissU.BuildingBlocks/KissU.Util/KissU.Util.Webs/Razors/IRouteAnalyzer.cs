@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Util.Webs.Razors {
+namespace KissU.Util.Webs.Razors {
     /// <summary>
     /// 路由分析器
     /// </summary>

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq.Expressions;
-using Util.Datas.Sql.Builders.Core;
-using Util.Datas.Sql.Builders.Internal;
+using KissU.Util.Datas.Sql.Builders.Core;
+using KissU.Util.Datas.Sql.Builders.Internal;
 
-namespace Util.Datas.Sql.Builders.Clauses {
+namespace KissU.Util.Datas.Sql.Builders.Clauses {
     /// <summary>
     /// Select子句
     /// </summary>

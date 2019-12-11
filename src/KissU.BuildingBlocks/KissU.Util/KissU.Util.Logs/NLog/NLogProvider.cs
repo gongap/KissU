@@ -1,10 +1,10 @@
 ﻿using System;
-using Microsoft.Extensions.Logging;
+using KissU.Util.Logs.Abstractions;
+using KissU.Util.Logs.Formats;
+using LogLevel = Microsoft.Extensions.Logging.LogLevel;
 using NLogs = NLog;
-using Util.Logs.Abstractions;
-using Util.Logs.Formats;
 
-namespace Util.Logs.NLog {
+namespace KissU.Util.Logs.NLog {
     /// <summary>
     /// NLog日志提供程序
     /// </summary>

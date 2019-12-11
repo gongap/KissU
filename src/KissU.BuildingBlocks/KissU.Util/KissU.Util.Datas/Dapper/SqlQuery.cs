@@ -4,14 +4,14 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
-using Util.Datas.Sql;
-using Util.Datas.Sql.Configs;
-using Util.Domains.Repositories;
-using Util.Helpers;
-using Util.Logs;
-using Util.Logs.Extensions;
+using KissU.Util.Datas.Sql;
+using KissU.Util.Datas.Sql.Configs;
+using KissU.Util.Domains.Repositories;
+using KissU.Util.Helpers;
+using KissU.Util.Logs;
+using KissU.Util.Logs.Extensions;
 
-namespace Util.Datas.Dapper {
+namespace KissU.Util.Datas.Dapper {
     /// <summary>
     /// Dapper Sql查询对象
     /// </summary>

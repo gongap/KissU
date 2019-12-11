@@ -1,4 +1,4 @@
-﻿namespace Util.Domains {
+﻿namespace KissU.Util.Domains {
     /// <summary>
     /// 通过对象比较获取变更属性集
     /// </summary>

@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Util.Tools.Offices.Core;
+using KissU.Util.Tools.Offices.Core;
 
-namespace Util.Tools.Offices.Abstractions {
+namespace KissU.Util.Tools.Offices.Abstractions {
     /// <summary>
     /// Excel操作
     /// </summary>

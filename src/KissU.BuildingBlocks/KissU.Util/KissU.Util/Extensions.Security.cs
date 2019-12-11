@@ -1,8 +1,8 @@
 ﻿using System.Security.Claims;
+using KissU.Util.Security.Principals;
 using Microsoft.AspNetCore.Http;
-using Util.Security.Principals;
 
-namespace Util {
+namespace KissU.Util {
     /// <summary>
     /// 系统扩展 - 安全
     /// </summary>

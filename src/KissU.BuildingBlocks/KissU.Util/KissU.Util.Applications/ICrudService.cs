@@ -1,8 +1,8 @@
-﻿using Util.Applications.Dtos;
-using Util.Applications.Operations;
-using Util.Datas.Queries;
+﻿using KissU.Util.Applications.Dtos;
+using KissU.Util.Applications.Operations;
+using KissU.Util.Datas.Queries;
 
-namespace Util.Applications {
+namespace KissU.Util.Applications {
     /// <summary>
     /// 增删改查服务
     /// </summary>

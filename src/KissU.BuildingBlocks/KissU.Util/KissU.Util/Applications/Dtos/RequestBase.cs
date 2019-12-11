@@ -1,9 +1,9 @@
 ﻿using System.Linq;
-using Util.Exceptions;
-using Util.Ui.Attributes;
-using Util.Validations;
+using KissU.Util.Exceptions;
+using KissU.Util.Ui.Attributes;
+using KissU.Util.Validations;
 
-namespace Util.Applications.Dtos {
+namespace KissU.Util.Applications.Dtos {
     /// <summary>
     /// 请求参数
     /// </summary>

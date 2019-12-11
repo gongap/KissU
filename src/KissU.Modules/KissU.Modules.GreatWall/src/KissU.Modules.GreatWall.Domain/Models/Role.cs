@@ -2,11 +2,11 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Util;
+using KissU.Util.Helpers;
+
 namespace KissU.Modules.GreatWall.Domain.Models
 {
-    using Util;
-    using Util.Helpers;
-
     /// <summary>
     /// 角色
     /// </summary>

@@ -1,4 +1,4 @@
-﻿namespace Util.Logs.Contents {
+﻿namespace KissU.Util.Logs.Contents {
     /// <summary>
     /// 标题
     /// </summary>

@@ -1,4 +1,4 @@
-﻿namespace Util.Tools.Offices.Core {
+﻿namespace KissU.Util.Tools.Offices.Core {
     /// <summary>
     /// 填充模式
     /// </summary>

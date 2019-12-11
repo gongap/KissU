@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using AspectCore.DynamicProxy.Parameters;
-using Util.Aspects.Base;
-using Util.Helpers;
+using KissU.Util.Aspects.Base;
+using KissU.Util.Helpers;
 
-namespace Util.Validations.Aspects {
+namespace KissU.Util.Validations.Aspects {
     /// <summary>
     /// 验证拦截器
     /// </summary>

@@ -1,7 +1,7 @@
 ﻿using System.Text;
-using Util.Logs.Abstractions;
+using KissU.Util.Logs.Abstractions;
 
-namespace Util.Logs.Extensions {
+namespace KissU.Util.Logs.Extensions {
     /// <summary>
     /// 日志扩展
     /// </summary>

@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
-using Util.Aspects;
+using KissU.Util.Aspects;
 
-namespace Util.Logs.Abstractions {
+namespace KissU.Util.Logs.Abstractions {
     /// <summary>
     /// 日志上下文
     /// </summary>

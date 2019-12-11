@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using KissU.Util.Datas.Ef.Core;
+using KissU.Util.Datas.Ef.Internal;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Util.Datas.Ef.Core;
-using Util.Datas.Ef.Internal;
 
-namespace Util.Datas.Ef.PgSql {
+namespace KissU.Util.Datas.Ef.PgSql {
     /// <summary>
     /// PgSql工作单元
     /// </summary>

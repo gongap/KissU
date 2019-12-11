@@ -1,9 +1,9 @@
 ﻿using System.Linq;
 using System.Runtime.Serialization;
-using Util.Exceptions;
-using Util.Validations;
+using KissU.Util.Exceptions;
+using KissU.Util.Validations;
 
-namespace Util.Views {
+namespace KissU.Util.Views {
     /// <summary>
     /// 视图模型
     /// </summary>

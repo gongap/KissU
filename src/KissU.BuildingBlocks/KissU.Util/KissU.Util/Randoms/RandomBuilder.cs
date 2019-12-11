@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Text;
-using Util.Helpers;
+using KissU.Util.Helpers;
 
-namespace Util.Randoms {
+namespace KissU.Util.Randoms {
     /// <summary>
     /// 随机数生成器
     /// </summary>

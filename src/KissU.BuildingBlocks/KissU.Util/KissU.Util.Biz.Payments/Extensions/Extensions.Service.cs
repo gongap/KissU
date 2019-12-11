@@ -1,15 +1,15 @@
 ﻿using System;
+using KissU.Util.Biz.Payments.Alipay.Abstractions;
+using KissU.Util.Biz.Payments.Alipay.Configs;
+using KissU.Util.Biz.Payments.Alipay.Services;
+using KissU.Util.Biz.Payments.Factories;
+using KissU.Util.Biz.Payments.Wechatpay.Abstractions;
+using KissU.Util.Biz.Payments.Wechatpay.Configs;
+using KissU.Util.Biz.Payments.Wechatpay.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using Util.Biz.Payments.Alipay.Abstractions;
-using Util.Biz.Payments.Alipay.Configs;
-using Util.Biz.Payments.Alipay.Services;
-using Util.Biz.Payments.Factories;
-using Util.Biz.Payments.Wechatpay.Abstractions;
-using Util.Biz.Payments.Wechatpay.Configs;
-using Util.Biz.Payments.Wechatpay.Services;
 
-namespace Util.Biz.Payments.Extensions {
+namespace KissU.Util.Biz.Payments.Extensions {
     /// <summary>
     /// 支付扩展
     /// </summary>

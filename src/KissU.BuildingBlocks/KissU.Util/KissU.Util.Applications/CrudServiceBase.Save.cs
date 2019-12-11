@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Util.Domains;
-using Util.Logs.Extensions;
+using KissU.Util.Domains;
+using KissU.Util.Logs.Extensions;
 
-namespace Util.Applications {
+namespace KissU.Util.Applications {
     /// <summary>
     /// 增删改查服务 - Save
     /// </summary>

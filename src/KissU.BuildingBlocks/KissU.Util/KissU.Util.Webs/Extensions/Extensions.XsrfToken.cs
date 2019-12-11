@@ -1,11 +1,11 @@
 ﻿using System;
+using KissU.Util.Helpers;
 using Microsoft.AspNetCore.Antiforgery;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-using Util.Helpers;
 
-namespace Util.Webs.Extensions {
+namespace KissU.Util.Webs.Extensions {
     /// <summary>
     /// 服务扩展
     /// </summary>

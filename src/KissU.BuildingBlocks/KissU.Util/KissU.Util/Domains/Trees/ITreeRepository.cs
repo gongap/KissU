@@ -1,7 +1,7 @@
 ﻿using System;
-using Util.Domains.Repositories;
+using KissU.Util.Domains.Repositories;
 
-namespace Util.Domains.Trees {
+namespace KissU.Util.Domains.Trees {
     /// <summary>
     /// 树型仓储
     /// </summary>

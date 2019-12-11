@@ -1,8 +1,8 @@
-﻿using Util.Helpers;
-using Util.Parameters;
-using Util.Signatures;
+﻿using KissU.Util.Helpers;
+using KissU.Util.Parameters;
+using KissU.Util.Signatures;
 
-namespace Util.Biz.Payments.Wechatpay.Signatures {
+namespace KissU.Util.Biz.Payments.Wechatpay.Signatures {
     /// <summary>
     /// 微信支付HMACSha256签名服务
     /// </summary>

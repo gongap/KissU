@@ -1,6 +1,6 @@
-﻿using Util.Validations;
+﻿using KissU.Util.Validations;
 
-namespace Util.Applications.Dtos {
+namespace KissU.Util.Applications.Dtos {
     /// <summary>
     /// 请求参数
     /// </summary>

@@ -1,0 +1,208 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>KissU.Util.Schedulers</name>
+    </assembly>
+    <members>
+        <member name="T:KissU.Util.Schedulers.Quartz.JobBase">
+            <summary>
+            Quartz作业
+            </summary>
+        </member>
+        <member name="F:KissU.Util.Schedulers.Quartz.JobBase._jobName">
+            <summary>
+            作业名称
+            </summary>
+        </member>
+        <member name="F:KissU.Util.Schedulers.Quartz.JobBase._triggerName">
+            <summary>
+            触发器名称
+            </summary>
+        </member>
+        <member name="F:KissU.Util.Schedulers.Quartz.JobBase._groupName">
+            <summary>
+            组名称
+            </summary>
+        </member>
+        <member name="M:KissU.Util.Schedulers.Quartz.JobBase.#ctor">
+            <summary>
+            初始化
+            </summary>
+        </member>
+        <member name="M:KissU.Util.Schedulers.Quartz.JobBase.GetJobName">
+            <summary>
+            获取作业名称
+            </summary>
+        </member>
+        <member name="M:KissU.Util.Schedulers.Quartz.JobBase.GetTriggerName">
+            <summary>
+            获取触发器名称
+            </summary>
+        </member>
+        <member name="M:KissU.Util.Schedulers.Quartz.JobBase.GetGroupName">
+            <summary>
+            获取组名称
+            </summary>
+        </member>
+        <member name="M:KissU.Util.Schedulers.Quartz.JobBase.GetCron">
+            <summary>
+            获取Cron表达式
+            </summary>
+        </member>
+        <member name="M:KissU.Util.Schedulers.Quartz.JobBase.GetRepeatCount">
+            <summary>
+            获取重复执行次数，默认返回null，表示持续重复执行
+            </summary>
+        </member>
+        <member name="M:KissU.Util.Schedulers.Quartz.JobBase.GetStartTime">
+            <summary>
+            获取开始执行时间
+            </summary>
+        </member>
+        <member name="M:KissU.Util.Schedulers.Quartz.JobBase.GetEndTime">
+            <summary>
+            获取结束执行时间
+            </summary>
+        </member>
+        <member name="M:KissU.Util.Schedulers.Quartz.JobBase.GetInterval">
+            <summary>
+            获取重复执行间隔时间
+            </summary>
+        </member>
+        <member name="M:KissU.Util.Schedulers.Quartz.JobBase.GetIntervalInHours">
+            <summary>
+            获取重复执行间隔时间，单位：小时
+            </summary>
+        </member>
+        <member name="M:KissU.Util.Schedulers.Quartz.JobBase.GetIntervalInMinutes">
+            <summary>
+            获取重复执行间隔时间，单位：分
+            </summary>
+        </member>
+        <member name="M:KissU.Util.Schedulers.Quartz.JobBase.GetIntervalInSeconds">
+            <summary>
+            获取重复执行间隔时间，单位：秒
+            </summary>
+        </member>
+        <member name="M:KissU.Util.Schedulers.Quartz.JobBase.Execute(Quartz.IJobExecutionContext)">
+            <summary>
+            执行
+            </summary>
+            <param name="context">执行上下文</param>
+        </member>
+        <member name="M:KissU.Util.Schedulers.Quartz.JobBase.Execute(Quartz.IJobExecutionContext,KissU.Util.Dependency.IScope)">
+            <summary>
+            执行
+            </summary>
+            <param name="context">上下文</param>
+            <param name="scope">作用域</param>
+        </member>
+        <member name="T:KissU.Util.Schedulers.Quartz.Scheduler">
+            <summary>
+            Quartz调度器
+            </summary>
+        </member>
+        <member name="F:KissU.Util.Schedulers.Quartz.Scheduler._scheduler">
+            <summary>
+            Quartz调度器
+            </summary>
+        </member>
+        <member name="M:KissU.Util.Schedulers.Quartz.Scheduler.StartAsync">
+            <summary>
+            启动
+            </summary>
+        </member>
+        <member name="M:KissU.Util.Schedulers.Quartz.Scheduler.GetScheduler">
+            <summary>
+            获取调度器
+            </summary>
+        </member>
+        <member name="M:KissU.Util.Schedulers.Quartz.Scheduler.PauseAsync">
+            <summary>
+            暂停
+            </summary>
+        </member>
+        <member name="M:KissU.Util.Schedulers.Quartz.Scheduler.ResumeAsync">
+            <summary>
+            恢复
+            </summary>
+        </member>
+        <member name="M:KissU.Util.Schedulers.Quartz.Scheduler.StopAsync">
+            <summary>
+            停止
+            </summary>
+        </member>
+        <member name="M:KissU.Util.Schedulers.Quartz.Scheduler.ScanJobsAsync(System.Reflection.Assembly[])">
+            <summary>
+            扫描并添加作业
+            </summary>
+            <param name="assemblies">程序集列表</param>
+        </member>
+        <member name="M:KissU.Util.Schedulers.Quartz.Scheduler.GetAssemblies(System.Reflection.Assembly[])">
+            <summary>
+            获取程序集列表
+            </summary>
+        </member>
+        <member name="M:KissU.Util.Schedulers.Quartz.Scheduler.AddJobAsync``1">
+            <summary>
+            添加作业
+            </summary>
+        </member>
+        <member name="M:KissU.Util.Schedulers.Quartz.Scheduler.AddJobAsync(KissU.Util.Schedulers.IJob)">
+            <summary>
+            添加作业
+            </summary>
+            <param name="job">作业</param>
+        </member>
+        <member name="M:KissU.Util.Schedulers.Quartz.Scheduler.CreateJob(KissU.Util.Schedulers.Quartz.JobBase)">
+            <summary>
+            创建作业
+            </summary>
+        </member>
+        <member name="M:KissU.Util.Schedulers.Quartz.Scheduler.CreateTrigger(KissU.Util.Schedulers.Quartz.JobBase)">
+            <summary>
+            创建触发器
+            </summary>
+        </member>
+        <member name="M:KissU.Util.Schedulers.Quartz.Scheduler.Schedule(Quartz.SimpleScheduleBuilder,KissU.Util.Schedulers.Quartz.JobBase)">
+            <summary>
+            设置调度策略
+            </summary>
+        </member>
+        <member name="M:KissU.Util.Schedulers.Quartz.Scheduler.SetRepeatCount(Quartz.SimpleScheduleBuilder,KissU.Util.Schedulers.Quartz.JobBase)">
+            <summary>
+            设置重复执行次数
+            </summary>
+        </member>
+        <member name="M:KissU.Util.Schedulers.Quartz.Scheduler.SetStartTime(Quartz.TriggerBuilder,KissU.Util.Schedulers.Quartz.JobBase)">
+            <summary>
+            设置作业开始时间
+            </summary>
+        </member>
+        <member name="M:KissU.Util.Schedulers.Quartz.Scheduler.SetEndTime(Quartz.TriggerBuilder,KissU.Util.Schedulers.Quartz.JobBase)">
+            <summary>
+            设置作业结束时间
+            </summary>
+        </member>
+        <member name="M:KissU.Util.Schedulers.Quartz.Scheduler.SetCron(Quartz.TriggerBuilder,KissU.Util.Schedulers.Quartz.JobBase)">
+            <summary>
+            设置Cron表达式
+            </summary>
+        </member>
+        <member name="M:KissU.Util.Schedulers.Quartz.Scheduler.AddJobAsync``1(System.Action{Quartz.JobBuilder},System.Action{Quartz.TriggerBuilder})">
+            <summary>
+            添加作业
+            </summary>
+            <typeparam name="TJob">作业类型</typeparam>
+            <param name="configureJob">作业配置操作</param>
+            <param name="configureTrigger">触发器配置操作</param>
+        </member>
+        <member name="M:KissU.Util.Schedulers.Quartz.Scheduler.AddJobAsync(Quartz.IJobDetail,Quartz.ITrigger)">
+            <summary>
+            添加作业
+            </summary>
+            <param name="job">作业</param>
+            <param name="trigger">触发器</param>
+        </member>
+    </members>
+</doc>

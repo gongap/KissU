@@ -4,7 +4,7 @@ using EasyCaching.Core.Configurations;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace Util.Caches.EasyCaching {
+namespace KissU.Util.Caches.EasyCaching {
     /// <summary>
     /// EasyCaching缓存扩展
     /// </summary>

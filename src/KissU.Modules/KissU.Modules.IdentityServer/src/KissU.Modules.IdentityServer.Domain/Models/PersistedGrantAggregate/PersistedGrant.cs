@@ -2,13 +2,14 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Util.Domains;
+
 namespace KissU.Modules.IdentityServer.Domain.Models.PersistedGrantAggregate
 {
     using System;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using Util.Domains;
 
     /// <summary>
     /// 认证操作数据（令牌，代码和同意书）

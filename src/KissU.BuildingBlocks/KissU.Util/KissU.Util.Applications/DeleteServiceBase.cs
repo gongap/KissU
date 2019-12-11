@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Util.Applications.Dtos;
-using Util.Datas.Queries;
-using Util.Datas.Stores;
-using Util.Datas.UnitOfWorks;
-using Util.Domains;
-using Util.Helpers;
-using Util.Logs.Extensions;
+using KissU.Util.Applications.Dtos;
+using KissU.Util.Datas.Queries;
+using KissU.Util.Datas.Stores;
+using KissU.Util.Datas.UnitOfWorks;
+using KissU.Util.Domains;
+using KissU.Util.Helpers;
+using KissU.Util.Logs.Extensions;
 
-namespace Util.Applications {
+namespace KissU.Util.Applications {
     /// <summary>
     /// 删除服务
     /// </summary>

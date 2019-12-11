@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Util.Datas.Sql.Builders.Clauses;
-using Util.Datas.Sql.Builders.Filters;
-using Util.Datas.Sql.Matedatas;
-using Util.Domains.Repositories;
-using Util.Helpers;
+using KissU.Util.Datas.Sql.Builders.Clauses;
+using KissU.Util.Datas.Sql.Builders.Filters;
+using KissU.Util.Datas.Sql.Matedatas;
+using KissU.Util.Domains.Repositories;
+using KissU.Util.Helpers;
 
-namespace Util.Datas.Sql.Builders.Core {
+namespace KissU.Util.Datas.Sql.Builders.Core {
     /// <summary>
     /// Sql生成器
     /// </summary>

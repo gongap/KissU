@@ -1,10 +1,10 @@
 ﻿using System.Diagnostics;
-using Util.Contexts;
-using Util.Helpers;
-using Util.Logs.Abstractions;
-using Util.Logs.Internal;
+using KissU.Util.Contexts;
+using KissU.Util.Helpers;
+using KissU.Util.Logs.Abstractions;
+using KissU.Util.Logs.Internal;
 
-namespace Util.Logs.Core {
+namespace KissU.Util.Logs.Core {
     /// <summary>
     /// 日志上下文
     /// </summary>

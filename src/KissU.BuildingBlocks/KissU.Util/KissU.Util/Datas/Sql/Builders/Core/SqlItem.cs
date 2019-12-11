@@ -1,10 +1,10 @@
 ﻿using System.Linq;
 using System.Text;
-using Util.Datas.Sql.Builders.Extensions;
-using Util.Datas.Sql.Matedatas;
-using Util.Helpers;
+using KissU.Util.Datas.Sql.Builders.Extensions;
+using KissU.Util.Datas.Sql.Matedatas;
+using KissU.Util.Helpers;
 
-namespace Util.Datas.Sql.Builders.Core {
+namespace KissU.Util.Datas.Sql.Builders.Core {
     /// <summary>
     /// Sql项
     /// </summary>

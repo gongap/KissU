@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Text;
-using Util.Logs.Abstractions;
+using KissU.Util.Logs.Abstractions;
 
-namespace Util.Logs.Contents {
+namespace KissU.Util.Logs.Contents {
     /// <summary>
     /// 日志内容
     /// </summary>

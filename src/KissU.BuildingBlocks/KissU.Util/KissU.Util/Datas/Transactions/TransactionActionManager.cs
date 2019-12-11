@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
 
-namespace Util.Datas.Transactions {
+namespace KissU.Util.Datas.Transactions {
     /// <summary>
     /// 事务操作管理器
     /// </summary>

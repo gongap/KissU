@@ -1,9 +1,9 @@
-﻿using Util.Datas.Sql;
-using Util.Datas.Sql.Builders;
-using Util.Datas.Sql.Builders.Core;
-using Util.Datas.Sql.Matedatas;
+﻿using KissU.Util.Datas.Sql;
+using KissU.Util.Datas.Sql.Builders;
+using KissU.Util.Datas.Sql.Builders.Core;
+using KissU.Util.Datas.Sql.Matedatas;
 
-namespace Util.Datas.Dapper.PgSql {
+namespace KissU.Util.Datas.Dapper.PgSql {
     /// <summary>
     /// PgSql Sql生成器
     /// </summary>

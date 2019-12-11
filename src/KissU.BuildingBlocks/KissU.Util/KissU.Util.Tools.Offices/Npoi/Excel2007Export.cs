@@ -1,6 +1,6 @@
-﻿using Util.Tools.Offices.Core;
+﻿using KissU.Util.Tools.Offices.Core;
 
-namespace Util.Tools.Offices.Npoi {
+namespace KissU.Util.Tools.Offices.Npoi {
     /// <summary>
     /// Npoi Excel2007 导出操作
     /// </summary>

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using KissU.Util.Helpers;
+using KissU.Util.Properties;
 using Microsoft.AspNetCore.Hosting;
-using Util.Helpers;
-using Util.Properties;
 
-namespace Util.Exceptions.Prompts {
+namespace KissU.Util.Exceptions.Prompts {
     /// <summary>
     /// 异常提示
     /// </summary>

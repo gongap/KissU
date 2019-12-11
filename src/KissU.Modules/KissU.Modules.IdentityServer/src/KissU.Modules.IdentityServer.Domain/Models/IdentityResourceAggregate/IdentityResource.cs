@@ -2,6 +2,10 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Util;
+using KissU.Util.Domains;
+using KissU.Util.Domains.Auditing;
+
 namespace KissU.Modules.IdentityServer.Domain.Models.IdentityResourceAggregate
 {
     using System;
@@ -9,9 +13,6 @@ namespace KissU.Modules.IdentityServer.Domain.Models.IdentityResourceAggregate
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using Util;
-    using Util.Domains;
-    using Util.Domains.Auditing;
     using Convert = Util.Helpers.Convert;
 
     /// <summary>

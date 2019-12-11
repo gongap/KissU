@@ -1,4 +1,4 @@
-﻿namespace Util.Helpers {
+﻿namespace KissU.Util.Helpers {
     /// <summary>
     /// 常量
     /// </summary>

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Util.Tools.Offices {
+namespace KissU.Util.Tools.Offices {
     /// <summary>
     /// 导出格式
     /// </summary>

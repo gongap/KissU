@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
+using KissU.Util.Datas.Sql.Builders;
+using KissU.Util.Datas.Sql.Builders.Core;
+using KissU.Util.Datas.Sql.Configs;
+using KissU.Util.Domains.Repositories;
+using KissU.Util.Helpers;
 using Microsoft.Extensions.Options;
-using Util.Datas.Sql.Builders;
-using Util.Datas.Sql.Builders.Core;
-using Util.Datas.Sql.Configs;
-using Util.Domains.Repositories;
-using Util.Helpers;
 
-namespace Util.Datas.Sql.Queries {
+namespace KissU.Util.Datas.Sql.Queries {
     /// <summary>
     /// Sql查询对象
     /// </summary>

@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Util.Biz.Payments.Alipay.Configs;
-using Util.Logs;
-using Util.Logs.Extensions;
-using Util.Parameters;
-using Util.Signatures;
-using Util.Validations;
+using KissU.Util.Biz.Payments.Alipay.Configs;
+using KissU.Util.Logs;
+using KissU.Util.Logs.Extensions;
+using KissU.Util.Parameters;
+using KissU.Util.Signatures;
+using KissU.Util.Validations;
 
-namespace Util.Biz.Payments.Alipay.Services.Base {
+namespace KissU.Util.Biz.Payments.Alipay.Services.Base {
     /// <summary>
     /// 支付宝通知服务
     /// </summary>

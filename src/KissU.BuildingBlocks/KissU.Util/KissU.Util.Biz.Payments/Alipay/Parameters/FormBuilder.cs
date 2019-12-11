@@ -1,9 +1,9 @@
 ﻿using System.IO;
+using KissU.Util.Biz.Payments.Alipay.Configs;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using Util.Biz.Payments.Alipay.Configs;
 
-namespace Util.Biz.Payments.Alipay.Parameters {
+namespace KissU.Util.Biz.Payments.Alipay.Parameters {
     /// <summary>
     /// 支付宝表单生成器
     /// </summary>

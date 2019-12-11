@@ -1,4 +1,4 @@
-﻿namespace Util.Webs {
+﻿namespace KissU.Util.Webs {
     /// <summary>
     /// Html转义字符
     /// </summary>

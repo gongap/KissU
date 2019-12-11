@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Util.Datas.Stores;
-using Util.Domains;
-using Util.Domains.Repositories;
+using KissU.Util.Datas.Stores;
+using KissU.Util.Domains;
+using KissU.Util.Domains.Repositories;
 
-namespace Util.Datas.Ef.Core {
+namespace KissU.Util.Datas.Ef.Core {
     /// <summary>
     /// 仓储 - 配合持久化对象使用
     /// </summary>

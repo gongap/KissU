@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Util.Caches {
+namespace KissU.Util.Caches {
     /// <summary>
     /// 缓存
     /// </summary>

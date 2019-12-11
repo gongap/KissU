@@ -2,6 +2,9 @@
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using KissU.Util.Helpers;
+using KissU.Util.Logs;
+using KissU.Util.Logs.Extensions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Abstractions;
@@ -11,11 +14,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewEngines;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Routing;
-using Util.Helpers;
-using Util.Logs;
-using Util.Logs.Extensions;
 
-namespace Util.Webs.Razors {
+namespace KissU.Util.Webs.Razors {
     /// <summary>
     /// Razor静态Html生成器
     /// </summary>

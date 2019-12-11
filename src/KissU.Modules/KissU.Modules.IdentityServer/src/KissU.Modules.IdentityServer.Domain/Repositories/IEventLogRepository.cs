@@ -2,10 +2,11 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Util.Domains.Repositories;
+
 namespace KissU.Modules.IdentityServer.Domain.Repositories
 {
     using KissU.Modules.IdentityServer.Domain.Models.EventLog;
-    using Util.Domains.Repositories;
 
     /// <summary>
     /// 仓储

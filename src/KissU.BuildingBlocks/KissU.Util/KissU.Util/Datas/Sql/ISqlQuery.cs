@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
-using Util.Datas.Sql.Builders;
-using Util.Datas.Sql.Configs;
-using Util.Domains.Repositories;
+using KissU.Util.Datas.Sql.Builders;
+using KissU.Util.Datas.Sql.Configs;
+using KissU.Util.Domains.Repositories;
 
-namespace Util.Datas.Sql {
+namespace KissU.Util.Datas.Sql {
     /// <summary>
     /// Sql查询对象
     /// </summary>

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
+using KissU.Util.Biz.Payments.Alipay.Configs;
 using Newtonsoft.Json.Linq;
-using Util.Biz.Payments.Alipay.Configs;
 
-namespace Util.Biz.Payments.Alipay.Results {
+namespace KissU.Util.Biz.Payments.Alipay.Results {
     /// <summary>
     /// 支付宝结果
     /// </summary>

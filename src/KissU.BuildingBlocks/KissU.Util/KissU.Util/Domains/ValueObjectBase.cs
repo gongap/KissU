@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Reflection;
 
-namespace Util.Domains {
+namespace KissU.Util.Domains {
     /// <summary>
     /// 值对象
     /// </summary>

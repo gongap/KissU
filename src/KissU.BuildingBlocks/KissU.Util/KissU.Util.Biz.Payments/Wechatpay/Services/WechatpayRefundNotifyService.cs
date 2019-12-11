@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Util.Biz.Payments.Wechatpay.Abstractions;
-using Util.Biz.Payments.Wechatpay.Configs;
-using Util.Biz.Payments.Wechatpay.Results;
-using Util.Helpers;
+using KissU.Util.Biz.Payments.Wechatpay.Abstractions;
+using KissU.Util.Biz.Payments.Wechatpay.Configs;
+using KissU.Util.Biz.Payments.Wechatpay.Results;
+using KissU.Util.Helpers;
 
-namespace Util.Biz.Payments.Wechatpay.Services {
+namespace KissU.Util.Biz.Payments.Wechatpay.Services {
     /// <summary>
     /// 微信退款回调服务
     /// </summary>

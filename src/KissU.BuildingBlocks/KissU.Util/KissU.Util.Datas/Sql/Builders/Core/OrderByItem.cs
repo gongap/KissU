@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Util.Datas.Sql.Builders.Core {
+namespace KissU.Util.Datas.Sql.Builders.Core {
     /// <summary>
     /// 排序项
     /// </summary>

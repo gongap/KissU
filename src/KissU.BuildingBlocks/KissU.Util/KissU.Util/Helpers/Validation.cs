@@ -1,4 +1,4 @@
-﻿namespace Util.Helpers {
+﻿namespace KissU.Util.Helpers {
     /// <summary>
     /// 验证操作
     /// </summary>

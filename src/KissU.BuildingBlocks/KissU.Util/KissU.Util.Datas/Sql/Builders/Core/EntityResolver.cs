@@ -4,10 +4,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using Util.Datas.Sql.Matedatas;
-using Util.Helpers;
+using KissU.Util.Datas.Sql.Matedatas;
+using KissU.Util.Helpers;
 
-namespace Util.Datas.Sql.Builders.Core {
+namespace KissU.Util.Datas.Sql.Builders.Core {
     /// <summary>
     /// 实体解析器
     /// </summary>

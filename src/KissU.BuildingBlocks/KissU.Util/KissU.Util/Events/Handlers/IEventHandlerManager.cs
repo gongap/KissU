@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Util.Events.Handlers {
+namespace KissU.Util.Events.Handlers {
     /// <summary>
     /// 事件处理器服务
     /// </summary>

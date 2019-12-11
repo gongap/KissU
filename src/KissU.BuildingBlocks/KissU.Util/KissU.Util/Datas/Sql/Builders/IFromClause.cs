@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Util.Datas.Sql.Builders {
+namespace KissU.Util.Datas.Sql.Builders {
     /// <summary>
     /// From子句
     /// </summary>

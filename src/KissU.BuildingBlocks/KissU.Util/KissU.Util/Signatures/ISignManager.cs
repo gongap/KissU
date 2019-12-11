@@ -1,4 +1,4 @@
-﻿namespace Util.Signatures {
+﻿namespace KissU.Util.Signatures {
     /// <summary>
     /// 签名服务
     /// </summary>

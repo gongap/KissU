@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Util {
+namespace KissU.Util {
     /// <summary>
     /// 系统扩展 - 公共
     /// </summary>

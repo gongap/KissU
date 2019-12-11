@@ -1,7 +1,7 @@
 ﻿using System;
-using Util.Datas.Stores;
+using KissU.Util.Datas.Stores;
 
-namespace Util.Domains.Repositories {
+namespace KissU.Util.Domains.Repositories {
     /// <summary>
     /// 仓储
     /// </summary>

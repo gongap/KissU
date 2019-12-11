@@ -1,11 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using Util.Biz.Payments.Wechatpay.Enums;
-using Util.Exceptions;
-using Util.Helpers;
-using Util.Validations;
+using KissU.Util.Biz.Payments.Wechatpay.Enums;
+using KissU.Util.Exceptions;
+using KissU.Util.Helpers;
+using KissU.Util.Validations;
 
-namespace Util.Biz.Payments.Wechatpay.Configs {
+namespace KissU.Util.Biz.Payments.Wechatpay.Configs {
     /// <summary>
     /// 微信支付配置
     /// </summary>

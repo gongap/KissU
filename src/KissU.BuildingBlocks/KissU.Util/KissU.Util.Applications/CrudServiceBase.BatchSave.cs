@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Util.Logs.Extensions;
+using KissU.Util.Logs.Extensions;
 
-namespace Util.Applications {
+namespace KissU.Util.Applications {
     /// <summary>
     /// 增删改查服务 - 批量Save
     /// </summary>

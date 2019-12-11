@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Util.Ui.Attributes {
+namespace KissU.Util.Ui.Attributes {
     /// <summary>
     /// 模型绑定
     /// </summary>

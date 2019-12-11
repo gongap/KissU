@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using Util.Biz.Payments.Alipay.Configs;
-using Util.Biz.Payments.Core;
-using Util.Helpers;
-using Util.Parameters;
-using Util.Signatures;
+using KissU.Util.Biz.Payments.Alipay.Configs;
+using KissU.Util.Biz.Payments.Core;
+using KissU.Util.Helpers;
+using KissU.Util.Parameters;
+using KissU.Util.Signatures;
 
-namespace Util.Biz.Payments.Alipay.Parameters {
+namespace KissU.Util.Biz.Payments.Alipay.Parameters {
     /// <summary>
     /// 支付宝参数生成器
     /// </summary>

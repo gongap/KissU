@@ -1,4 +1,4 @@
-﻿namespace Util.Datas.Ef.Oracle {
+﻿namespace KissU.Util.Datas.Ef.Oracle {
     /// <summary>
     /// 映射
     /// </summary>

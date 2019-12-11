@@ -1,4 +1,4 @@
-﻿namespace Util.Applications.Operations {
+﻿namespace KissU.Util.Applications.Operations {
     /// <summary>
     /// 删除操作
     /// </summary>

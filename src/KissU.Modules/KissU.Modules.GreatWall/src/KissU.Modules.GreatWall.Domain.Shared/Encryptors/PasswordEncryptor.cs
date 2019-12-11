@@ -2,10 +2,10 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Util.Security.Encryptors;
+
 namespace KissU.Modules.GreatWall.Domain.Shared.Encryptors
 {
-    using Util.Security.Encryptors;
-
     /// <summary>
     /// 密码加密器
     /// </summary>

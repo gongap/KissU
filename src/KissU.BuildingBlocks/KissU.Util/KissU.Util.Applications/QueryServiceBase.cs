@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Util.Datas.Queries;
-using Util.Domains;
-using Util.Domains.Repositories;
 using System.Linq.Dynamic.Core;
+using System.Threading.Tasks;
+using KissU.Util.Datas.Ef;
+using KissU.Util.Datas.Queries;
+using KissU.Util.Datas.Stores;
+using KissU.Util.Domains;
+using KissU.Util.Domains.Repositories;
+using KissU.Util.Maps;
 using Microsoft.EntityFrameworkCore;
-using Util.Datas.Ef;
-using Util.Datas.Stores;
-using Util.Maps;
 
-namespace Util.Applications {
+namespace KissU.Util.Applications {
     /// <summary>
     /// 查询服务
     /// </summary>

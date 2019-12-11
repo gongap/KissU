@@ -1,4 +1,4 @@
-﻿namespace Util.Biz.Addresses {
+﻿namespace KissU.Util.Biz.Addresses {
     /// <summary>
     /// 地址信息扩展
     /// </summary>

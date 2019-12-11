@@ -1,4 +1,4 @@
-﻿namespace Util.Datas.Sql.Builders {
+﻿namespace KissU.Util.Datas.Sql.Builders {
     /// <summary>
     /// Sql子句访问器
     /// </summary>

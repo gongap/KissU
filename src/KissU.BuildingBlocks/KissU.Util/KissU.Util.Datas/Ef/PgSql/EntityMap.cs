@@ -1,6 +1,6 @@
-﻿using Util.Datas.Ef.Core;
+﻿using KissU.Util.Datas.Ef.Core;
 
-namespace Util.Datas.Ef.PgSql {
+namespace KissU.Util.Datas.Ef.PgSql {
     /// <summary>
     /// 实体映射配置
     /// </summary>

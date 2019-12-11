@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Util.Datas.Stores.Operations;
-using Util.Domains.Repositories;
+using KissU.Util.Datas.Stores.Operations;
+using KissU.Util.Domains.Repositories;
 
-namespace Util.Domains.Trees {
+namespace KissU.Util.Domains.Trees {
     /// <summary>
     /// 树型仓储
     /// </summary>

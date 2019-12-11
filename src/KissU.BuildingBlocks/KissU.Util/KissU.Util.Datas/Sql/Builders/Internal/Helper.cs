@@ -2,12 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using Util.Datas.Queries;
-using Util.Datas.Sql.Builders.Conditions;
-using Util.Datas.Sql.Builders.Core;
-using Util.Helpers;
+using KissU.Util.Datas.Queries;
+using KissU.Util.Datas.Sql.Builders.Conditions;
+using KissU.Util.Datas.Sql.Builders.Core;
+using KissU.Util.Helpers;
 
-namespace Util.Datas.Sql.Builders.Internal {
+namespace KissU.Util.Datas.Sql.Builders.Internal {
     /// <summary>
     /// Sql生成器辅助操作
     /// </summary>

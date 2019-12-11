@@ -1,4 +1,4 @@
-﻿namespace Util.Datas.Queries {
+﻿namespace KissU.Util.Datas.Queries {
     /// <summary>
     /// 查询边界
     /// </summary>

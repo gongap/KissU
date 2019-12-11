@@ -1,6 +1,6 @@
 ﻿using System.Net.Http;
 
-namespace Util.Webs.Clients {
+namespace KissU.Util.Webs.Clients {
     /// <summary>
     /// Web客户端
     /// </summary>

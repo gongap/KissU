@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using Util.Biz.Payments.Alipay.Parameters.Requests;
+using KissU.Util.Biz.Payments.Alipay.Parameters.Requests;
 
-namespace Util.Biz.Payments.Alipay.Abstractions {
+namespace KissU.Util.Biz.Payments.Alipay.Abstractions {
     /// <summary>
     /// 支付宝手机网站支付服务
     /// </summary>

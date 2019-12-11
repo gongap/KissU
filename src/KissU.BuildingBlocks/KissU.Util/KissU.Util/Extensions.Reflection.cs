@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace Util {
+namespace KissU.Util {
     /// <summary>
     /// 系统扩展 - 反射
     /// </summary>

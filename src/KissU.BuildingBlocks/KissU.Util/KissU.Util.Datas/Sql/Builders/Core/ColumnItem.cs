@@ -1,7 +1,7 @@
 ﻿using System;
-using Util.Datas.Sql.Builders.Extensions;
+using KissU.Util.Datas.Sql.Builders.Extensions;
 
-namespace Util.Datas.Sql.Builders.Core {
+namespace KissU.Util.Datas.Sql.Builders.Core {
     /// <summary>
     /// 列
     /// </summary>

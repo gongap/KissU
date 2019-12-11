@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using KissU.Util.Datas.Ef.Core;
 using Microsoft.EntityFrameworkCore;
-using Util.Datas.Ef.Core;
 
-namespace Util.Datas.Ef.SqlServer {
+namespace KissU.Util.Datas.Ef.SqlServer {
     /// <summary>
     /// SqlServer工作单元
     /// </summary>

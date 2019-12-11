@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Util.Biz.Payments.Wechatpay.Enums {
+namespace KissU.Util.Biz.Payments.Wechatpay.Enums {
     /// <summary>
     /// 微信支付签名类型
     /// </summary>

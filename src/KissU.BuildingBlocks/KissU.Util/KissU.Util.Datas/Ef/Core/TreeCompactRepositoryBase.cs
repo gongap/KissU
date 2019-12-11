@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using KissU.Util.Datas.Stores;
+using KissU.Util.Domains;
+using KissU.Util.Domains.Trees;
 using Microsoft.EntityFrameworkCore;
-using Util.Datas.Stores;
-using Util.Domains;
-using Util.Domains.Trees;
 
-namespace Util.Datas.Ef.Core {
+namespace KissU.Util.Datas.Ef.Core {
     /// <summary>
     /// 树型仓储
     /// </summary>

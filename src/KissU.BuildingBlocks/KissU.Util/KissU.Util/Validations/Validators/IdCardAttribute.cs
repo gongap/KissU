@@ -1,10 +1,11 @@
-﻿using System.Globalization;
-using Util;
-using Util.Helpers;
-using Util.Properties;
-using Util.Validations.Validators;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.Globalization;
+using KissU.Util.Helpers;
+using KissU.Util.Properties;
+using String = System.String;
 
-namespace System.ComponentModel.DataAnnotations {
+namespace KissU.Util.Validations.Validators {
     /// <summary>
     /// 身份证验证
     /// </summary>

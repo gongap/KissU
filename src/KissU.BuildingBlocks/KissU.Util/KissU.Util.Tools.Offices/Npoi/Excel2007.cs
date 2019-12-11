@@ -1,7 +1,7 @@
 ﻿using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 
-namespace Util.Tools.Offices.Npoi {
+namespace KissU.Util.Tools.Offices.Npoi {
     /// <summary>
     /// Npoi Excel2007操作
     /// </summary>

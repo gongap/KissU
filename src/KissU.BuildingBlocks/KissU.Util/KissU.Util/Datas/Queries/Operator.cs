@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Util.Datas.Queries {
+namespace KissU.Util.Datas.Queries {
     /// <summary>
     /// 查询操作符
     /// </summary>

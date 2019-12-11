@@ -1,4 +1,4 @@
-﻿namespace Util.Datas.Sql.Builders {
+﻿namespace KissU.Util.Datas.Sql.Builders {
     /// <summary>
     /// Select子句操作
     /// </summary>

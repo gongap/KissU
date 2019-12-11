@@ -1,8 +1,8 @@
 ﻿using System.Linq;
+using KissU.Util.Datas.UnitOfWorks;
 using Microsoft.EntityFrameworkCore;
-using Util.Datas.UnitOfWorks;
 
-namespace Util.Datas.Ef {
+namespace KissU.Util.Datas.Ef {
     /// <summary>
     /// Ef工作单元扩展
     /// </summary>

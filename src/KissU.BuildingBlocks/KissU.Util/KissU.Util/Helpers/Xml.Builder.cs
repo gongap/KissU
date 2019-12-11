@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Xml;
 
-namespace Util.Helpers {
+namespace KissU.Util.Helpers {
     /// <summary>
     /// Xml操作 - 生成器
     /// </summary>

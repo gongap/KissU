@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq.Expressions;
-using Util.Domains.Repositories;
-using Util.Domains.Trees;
+using KissU.Util.Domains.Repositories;
+using KissU.Util.Domains.Trees;
 
-namespace Util.Datas.Queries.Trees {
+namespace KissU.Util.Datas.Queries.Trees {
     /// <summary>
     /// 树型查询条件
     /// </summary>

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using KissU.Util.Datas.Ef.Core;
+using KissU.Util.Datas.Ef.Internal;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Util.Datas.Ef.Core;
-using Util.Datas.Ef.Internal;
 
-namespace Util.Datas.Ef.MySql {
+namespace KissU.Util.Datas.Ef.MySql {
     /// <summary>
     /// MySql工作单元
     /// </summary>

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web;
-using Util.Helpers;
-using Util.Parameters.Formats;
+using KissU.Util.Helpers;
+using KissU.Util.Parameters.Formats;
 
-namespace Util.Parameters {
+namespace KissU.Util.Parameters {
     /// <summary>
     /// Url参数生成器
     /// </summary>

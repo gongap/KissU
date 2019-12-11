@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Util.Applications.Trees {
+namespace KissU.Util.Applications.Trees {
     /// <summary>
     /// 树型扩展
     /// </summary>

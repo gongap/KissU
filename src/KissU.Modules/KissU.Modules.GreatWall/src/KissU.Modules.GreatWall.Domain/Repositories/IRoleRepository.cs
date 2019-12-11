@@ -2,13 +2,14 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Util.Domains.Trees;
+
 namespace KissU.Modules.GreatWall.Domain.Repositories
 {
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using KissU.Modules.GreatWall.Domain.Models;
-    using Util.Domains.Trees;
 
     /// <summary>
     /// 角色仓储

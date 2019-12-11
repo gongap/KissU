@@ -1,7 +1,7 @@
 ﻿using System;
 using EasyCaching.Core;
 
-namespace Util.Caches.EasyCaching {
+namespace KissU.Util.Caches.EasyCaching {
     /// <summary>
     /// EasyCaching缓存服务
     /// </summary>

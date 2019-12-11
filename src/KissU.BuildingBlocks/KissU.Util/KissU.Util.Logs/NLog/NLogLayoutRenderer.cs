@@ -1,10 +1,10 @@
 ﻿using System.Text;
+using KissU.Util.Exceptions;
+using KissU.Util.Logs.Contents;
 using NLog;
 using NLog.LayoutRenderers;
-using Util.Exceptions;
-using Util.Logs.Contents;
 
-namespace Util.Logs.NLog {
+namespace KissU.Util.Logs.NLog {
     /// <summary>
     /// NLog布局渲染器
     /// </summary>

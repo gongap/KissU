@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Util.Datas.Queries.Trees {
+namespace KissU.Util.Datas.Queries.Trees {
     /// <summary>
     /// 树形查询参数
     /// </summary>

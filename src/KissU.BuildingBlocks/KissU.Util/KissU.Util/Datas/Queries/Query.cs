@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Linq.Expressions;
-using Util.Datas.Queries.Criterias;
-using Util.Datas.Queries.Internal;
-using Util.Domains.Repositories;
-using Util.Helpers;
+using KissU.Util.Datas.Queries.Criterias;
+using KissU.Util.Datas.Queries.Internal;
+using KissU.Util.Domains.Repositories;
+using KissU.Util.Helpers;
 
-namespace Util.Datas.Queries {
+namespace KissU.Util.Datas.Queries {
     /// <summary>
     /// 查询对象
     /// </summary>

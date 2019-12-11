@@ -2,14 +2,15 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Util.Domains.Repositories;
+using KissU.Util.Validations.Aspects;
+
 namespace KissU.Modules.IdentityServer.Domain.Repositories
 {
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using KissU.Modules.IdentityServer.Domain.Models.ClientAggregate;
-    using Util.Domains.Repositories;
-    using Util.Validations.Aspects;
 
     /// <summary>
     /// 应用程序仓储

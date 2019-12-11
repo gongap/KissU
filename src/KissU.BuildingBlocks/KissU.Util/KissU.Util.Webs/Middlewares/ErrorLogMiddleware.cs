@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
+using KissU.Util.Logs;
+using KissU.Util.Logs.Extensions;
 using Microsoft.AspNetCore.Http;
-using Util.Logs;
-using Util.Logs.Extensions;
 
-namespace Util.Webs.Middlewares {
+namespace KissU.Util.Webs.Middlewares {
     /// <summary>
     /// 错误日志中间件
     /// </summary>

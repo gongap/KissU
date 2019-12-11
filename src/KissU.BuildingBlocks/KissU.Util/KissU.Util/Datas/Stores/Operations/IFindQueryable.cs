@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
-using Util.Domains;
-using Util.Domains.Repositories;
+using KissU.Util.Domains;
+using KissU.Util.Domains.Repositories;
 
-namespace Util.Datas.Stores.Operations {
+namespace KissU.Util.Datas.Stores.Operations {
     /// <summary>
     /// 获取查询对象
     /// </summary>

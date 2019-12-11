@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc.Filters;
-using Util.Webs.Commons;
+﻿using KissU.Util.Webs.Commons;
+using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Util.Webs.Filters {
+namespace KissU.Util.Webs.Filters {
     /// <summary>
     /// 异常处理过滤器
     /// </summary>

@@ -2,14 +2,15 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Util;
+using KissU.Util.Helpers;
+
 namespace KissU.Modules.IdentityServer.Domain.Models.ClientAggregate
 {
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations.Schema;
-    using Util;
-    using Util.Helpers;
     using Convert = Util.Helpers.Convert;
 
     /// <summary>

@@ -2,9 +2,9 @@
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using Util.Helpers.Internal;
+using KissU.Util.Helpers.Internal;
 
-namespace Util.Helpers {
+namespace KissU.Util.Helpers {
     /// <summary>
     /// 加密操作
     /// 说明：

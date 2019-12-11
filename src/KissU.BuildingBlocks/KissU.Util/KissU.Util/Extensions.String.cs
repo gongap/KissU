@@ -1,6 +1,6 @@
-﻿using Util.Helpers;
+﻿using KissU.Util.Helpers;
 
-namespace Util {
+namespace KissU.Util {
     /// <summary>
     /// 系统扩展 - 字符串
     /// </summary>

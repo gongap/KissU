@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
 using DotNetCore.CAP;
-using Util.Datas.Transactions;
-using Util.Logs;
-using Util.Logs.Extensions;
+using KissU.Util.Datas.Transactions;
+using KissU.Util.Logs;
+using KissU.Util.Logs.Extensions;
 
-namespace Util.Events.Cap {
+namespace KissU.Util.Events.Cap {
     /// <summary>
     /// Cap消息事件总线
     /// </summary>

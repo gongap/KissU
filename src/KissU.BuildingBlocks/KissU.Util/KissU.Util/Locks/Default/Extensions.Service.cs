@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace Util.Locks.Default {
+namespace KissU.Util.Locks.Default {
     /// <summary>
     /// 业务锁扩展
     /// </summary>

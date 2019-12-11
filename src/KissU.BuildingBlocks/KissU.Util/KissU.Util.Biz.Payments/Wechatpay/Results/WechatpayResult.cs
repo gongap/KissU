@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Util.Biz.Payments.Wechatpay.Configs;
-using Util.Biz.Payments.Wechatpay.Signatures;
-using Util.Helpers;
-using Util.Logs;
-using Util.Logs.Extensions;
-using Util.Parameters;
-using Util.Validations;
+using KissU.Util.Biz.Payments.Wechatpay.Configs;
+using KissU.Util.Biz.Payments.Wechatpay.Signatures;
+using KissU.Util.Helpers;
+using KissU.Util.Logs;
+using KissU.Util.Logs.Extensions;
+using KissU.Util.Parameters;
+using KissU.Util.Validations;
 
-namespace Util.Biz.Payments.Wechatpay.Results {
+namespace KissU.Util.Biz.Payments.Wechatpay.Results {
     /// <summary>
     /// 微信支付结果
     /// </summary>

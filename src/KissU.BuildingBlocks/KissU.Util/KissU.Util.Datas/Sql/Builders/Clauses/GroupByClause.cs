@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
-using Util.Datas.Sql.Builders.Core;
-using Util.Datas.Sql.Builders.Internal;
+using KissU.Util.Datas.Sql.Builders.Core;
+using KissU.Util.Datas.Sql.Builders.Internal;
 
-namespace Util.Datas.Sql.Builders.Clauses {
+namespace KissU.Util.Datas.Sql.Builders.Clauses {
     /// <summary>
     /// Group By子句
     /// </summary>

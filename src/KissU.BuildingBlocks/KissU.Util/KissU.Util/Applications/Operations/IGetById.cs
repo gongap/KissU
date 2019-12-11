@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Util.Applications.Operations {
+namespace KissU.Util.Applications.Operations {
     /// <summary>
     /// 获取指定标识实体
     /// </summary>

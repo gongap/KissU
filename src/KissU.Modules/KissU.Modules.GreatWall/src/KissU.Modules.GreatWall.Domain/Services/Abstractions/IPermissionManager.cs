@@ -2,12 +2,13 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Util.Domains.Services;
+
 namespace KissU.Modules.GreatWall.Domain.Services.Abstractions
 {
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using Util.Domains.Services;
 
     /// <summary>
     /// 权限服务

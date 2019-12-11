@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Util.Domains.Trees {
+namespace KissU.Util.Domains.Trees {
     /// <summary>
     /// 树型实体
     /// </summary>

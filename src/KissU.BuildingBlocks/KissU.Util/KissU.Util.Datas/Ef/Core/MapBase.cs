@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Util.Datas.Ef.Core {
+namespace KissU.Util.Datas.Ef.Core {
     /// <summary>
     /// 映射配置
     /// </summary>

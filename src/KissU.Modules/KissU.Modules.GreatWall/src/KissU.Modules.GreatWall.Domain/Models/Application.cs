@@ -2,12 +2,13 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Util.Domains;
+
 namespace KissU.Modules.GreatWall.Domain.Models
 {
     using System;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
-    using Util.Domains;
 
     /// <summary>
     /// 应用程序

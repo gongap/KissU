@@ -1,6 +1,6 @@
-﻿using Util.Datas.Ef.Core;
+﻿using KissU.Util.Datas.Ef.Core;
 
-namespace Util.Datas.Ef.Oracle {
+namespace KissU.Util.Datas.Ef.Oracle {
     /// <summary>
     /// 实体映射配置
     /// </summary>

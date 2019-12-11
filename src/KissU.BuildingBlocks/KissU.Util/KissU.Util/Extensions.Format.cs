@@ -1,4 +1,4 @@
-﻿namespace Util {
+﻿namespace KissU.Util {
     /// <summary>
     /// 系统扩展 - 格式化
     /// </summary>

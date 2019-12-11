@@ -1,6 +1,6 @@
-﻿namespace Util.Events {
-    using System;
+﻿using System;
 
+namespace KissU.Util.Events {
     /// <summary>
     /// 事件
     /// </summary>

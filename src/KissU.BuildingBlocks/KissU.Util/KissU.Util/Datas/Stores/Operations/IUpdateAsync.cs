@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Util.Domains;
-using Util.Validations.Aspects;
+using KissU.Util.Domains;
+using KissU.Util.Validations.Aspects;
 
-namespace Util.Datas.Stores.Operations {
+namespace KissU.Util.Datas.Stores.Operations {
     /// <summary>
     /// 修改实体
     /// </summary>

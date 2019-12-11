@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
+using KissU.Util.Applications.Trees;
+using KissU.Util.Datas.Queries.Trees;
 using Microsoft.AspNetCore.Mvc;
-using Util.Applications.Trees;
-using Util.Datas.Queries.Trees;
 
-namespace Util.Webs.Controllers.Trees {
+namespace KissU.Util.Webs.Controllers.Trees {
     /// <summary>
     /// 树形控制器
     /// </summary>

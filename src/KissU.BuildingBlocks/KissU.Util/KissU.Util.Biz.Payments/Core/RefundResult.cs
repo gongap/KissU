@@ -1,4 +1,4 @@
-﻿namespace Util.Biz.Payments.Core {
+﻿namespace KissU.Util.Biz.Payments.Core {
     /// <summary>
     /// 退款结果
     /// </summary>

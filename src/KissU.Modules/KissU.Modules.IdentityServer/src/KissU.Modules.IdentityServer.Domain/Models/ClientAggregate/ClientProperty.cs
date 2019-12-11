@@ -2,11 +2,12 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Util.Domains;
+
 namespace KissU.Modules.IdentityServer.Domain.Models.ClientAggregate
 {
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
-    using Util.Domains;
 
     /// <summary>
     /// 应用程序属性

@@ -13,9 +13,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\surging\src\Surging.Core\Surging.Core.CPlatform\Surging.Core.CPlatform.csproj" />
-    <ProjectReference Include="..\..\..\..\..\util\src\Util.Applications\08-Util.Applications.csproj" />
-    <ProjectReference Include="..\..\..\..\..\util\src\Util.Ui.Core\02-Util.Ui.Core.csproj" />
+    <ProjectReference Include="..\..\..\..\KissU.BuildingBlocks\KissU.Util\KissU.Util.Applications\KissU.Util.Applications.csproj" />
+    <ProjectReference Include="..\..\..\..\KissU.BuildingBlocks\KissU.Util\KissU.Util.Ui.Core\KissU.Util.Ui.Core.csproj" />
+    <ProjectReference Include="..\..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.CPlatform\KissU.Core.CPlatform.csproj" />
     <ProjectReference Include="..\..\..\KissU.Modules.GreatWall\src\KissU.Modules.GreatWall.Service.Contracts\KissU.Modules.GreatWall.Service.Contracts.csproj" />
   </ItemGroup>
 </Project>

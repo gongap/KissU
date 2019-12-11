@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Util.Datas.Queries {
+namespace KissU.Util.Datas.Queries {
     /// <summary>
     /// 排序生成器
     /// </summary>

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace Util.Datas.Ef.Core {
+namespace KissU.Util.Datas.Ef.Core {
     /// <summary>
     /// 映射
     /// </summary>

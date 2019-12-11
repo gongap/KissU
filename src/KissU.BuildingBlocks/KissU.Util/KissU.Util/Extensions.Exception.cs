@@ -1,7 +1,7 @@
 ﻿using System;
-using Util.Exceptions.Prompts;
+using KissU.Util.Exceptions.Prompts;
 
-namespace Util {
+namespace KissU.Util {
     /// <summary>
     /// 异常扩展
     /// </summary>

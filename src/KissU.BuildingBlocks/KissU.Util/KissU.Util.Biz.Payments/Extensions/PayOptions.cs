@@ -1,7 +1,7 @@
-﻿using Util.Biz.Payments.Alipay.Configs;
-using Util.Biz.Payments.Wechatpay.Configs;
+﻿using KissU.Util.Biz.Payments.Alipay.Configs;
+using KissU.Util.Biz.Payments.Wechatpay.Configs;
 
-namespace Util.Biz.Payments.Extensions {
+namespace KissU.Util.Biz.Payments.Extensions {
     /// <summary>
     /// 支付配置
     /// </summary>

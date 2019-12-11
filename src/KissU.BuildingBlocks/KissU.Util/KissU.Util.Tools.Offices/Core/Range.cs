@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Util.Tools.Offices.Core {
+namespace KissU.Util.Tools.Offices.Core {
     /// <summary>
     /// 区
     /// </summary>

@@ -8,10 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Util.Biz.Payments.Properties {
-    using System;
-    
-    
+namespace KissU.Util.Biz.Payments.Properties {
     /// <summary>
     ///   一个强类型的资源类，用于查找本地化的字符串等。
     /// </summary>

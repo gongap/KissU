@@ -1,4 +1,4 @@
-﻿namespace Util.Webs.Models {
+﻿namespace KissU.Util.Webs.Models {
     /// <summary>
     /// 保存参数
     /// </summary>

@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using Util.Exceptions;
-using Util.Validations;
+using KissU.Util.Exceptions;
+using KissU.Util.Validations;
 
-namespace Util.Biz.Payments.Alipay.Configs {
+namespace KissU.Util.Biz.Payments.Alipay.Configs {
     /// <summary>
     /// 支付宝配置
     /// </summary>

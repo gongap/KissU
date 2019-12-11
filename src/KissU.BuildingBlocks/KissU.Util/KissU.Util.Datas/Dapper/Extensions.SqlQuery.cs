@@ -4,10 +4,10 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
-using Util.Datas.Sql;
-using Util.Domains.Repositories;
+using KissU.Util.Datas.Sql;
+using KissU.Util.Domains.Repositories;
 
-namespace Util.Datas.Dapper {
+namespace KissU.Util.Datas.Dapper {
     /// <summary>
     /// 查询对象扩展
     /// </summary>

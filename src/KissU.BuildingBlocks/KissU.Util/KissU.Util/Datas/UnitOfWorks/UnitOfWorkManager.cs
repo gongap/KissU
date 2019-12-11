@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Util.Datas.UnitOfWorks {
+namespace KissU.Util.Datas.UnitOfWorks {
     /// <summary>
     /// 工作单元管理器
     /// </summary>

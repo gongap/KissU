@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Util.Validations;
+using KissU.Util.Validations;
 
-namespace Util.Biz.Payments.Alipay.Abstractions {
+namespace KissU.Util.Biz.Payments.Alipay.Abstractions {
     /// <summary>
     /// 支付宝返回服务
     /// </summary>

@@ -1,4 +1,4 @@
-﻿namespace Util.Datas.Ef.MySql {
+﻿namespace KissU.Util.Datas.Ef.MySql {
     /// <summary>
     /// 映射
     /// </summary>

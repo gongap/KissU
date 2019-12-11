@@ -1,4 +1,4 @@
-﻿namespace Util.Tools.Sms.LuoSiMao {
+﻿namespace KissU.Util.Tools.Sms.LuoSiMao {
     /// <summary>
     /// LuoSiMao短信配置
     /// </summary>

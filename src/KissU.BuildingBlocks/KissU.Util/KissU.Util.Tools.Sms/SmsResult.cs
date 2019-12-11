@@ -1,4 +1,4 @@
-﻿namespace Util.Tools.Sms {
+﻿namespace KissU.Util.Tools.Sms {
     /// <summary>
     /// 短信接口返回结果
     /// </summary>

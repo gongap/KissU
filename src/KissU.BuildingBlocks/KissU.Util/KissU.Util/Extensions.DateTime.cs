@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace Util {
+namespace KissU.Util {
     /// <summary>
     /// 系统扩展 - 日期
     /// </summary>

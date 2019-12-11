@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Util.Biz.Payments.Wechatpay.Abstractions {
+namespace KissU.Util.Biz.Payments.Wechatpay.Abstractions {
     /// <summary>
     /// 微信退款回调服务
     /// </summary>

@@ -1,9 +1,9 @@
 ﻿using System;
-using Util.Datas.UnitOfWorks;
-using Util.Domains;
-using Util.Domains.Repositories;
+using KissU.Util.Datas.UnitOfWorks;
+using KissU.Util.Domains;
+using KissU.Util.Domains.Repositories;
 
-namespace Util.Datas.Ef.Core {
+namespace KissU.Util.Datas.Ef.Core {
     /// <summary>
     /// 仓储
     /// </summary>

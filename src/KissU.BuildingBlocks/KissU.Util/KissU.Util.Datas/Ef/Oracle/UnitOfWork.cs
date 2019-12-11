@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using KissU.Util.Datas.Ef.Core;
+using KissU.Util.Datas.Ef.Internal;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Util.Datas.Ef.Core;
-using Util.Datas.Ef.Internal;
 
-namespace Util.Datas.Ef.Oracle {
+namespace KissU.Util.Datas.Ef.Oracle {
     /// <summary>
     /// Oracle工作单元
     /// </summary>

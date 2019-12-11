@@ -2,11 +2,11 @@
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Linq.Expressions;
-using Util.Domains.Repositories;
-using Util.Helpers;
-using Util.Properties;
+using KissU.Util.Domains.Repositories;
+using KissU.Util.Helpers;
+using KissU.Util.Properties;
 
-namespace Util.Datas.Queries.Internal {
+namespace KissU.Util.Datas.Queries.Internal {
     /// <summary>
     /// 查询工具类
     /// </summary>

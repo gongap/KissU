@@ -1,6 +1,6 @@
-﻿using Util.Biz.Payments.Core;
+﻿using KissU.Util.Biz.Payments.Core;
 
-namespace Util.Biz.Payments.Wechatpay.Parameters.Requests {
+namespace KissU.Util.Biz.Payments.Wechatpay.Parameters.Requests {
     /// <summary>
     /// 微信小程序支付参数
     /// </summary>

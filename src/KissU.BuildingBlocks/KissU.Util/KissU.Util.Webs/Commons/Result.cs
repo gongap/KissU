@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Util.Webs.Commons {
+namespace KissU.Util.Webs.Commons {
     /// <summary>
     /// 返回结果
     /// </summary>

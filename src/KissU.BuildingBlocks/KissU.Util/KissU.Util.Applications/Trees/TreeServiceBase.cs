@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Util.Datas.Queries.Trees;
-using Util.Datas.Stores;
-using Util.Datas.UnitOfWorks;
-using Util.Domains;
-using Util.Domains.Trees;
-using Convert = Util.Helpers.Convert;
+using KissU.Util.Datas.Queries.Trees;
+using KissU.Util.Datas.Stores;
+using KissU.Util.Datas.UnitOfWorks;
+using KissU.Util.Domains;
+using KissU.Util.Domains.Trees;
+using Convert = KissU.Util.Helpers.Convert;
 
-namespace Util.Applications.Trees {
+namespace KissU.Util.Applications.Trees {
     /// <summary>
     /// 树形服务
     /// </summary>

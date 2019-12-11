@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using Util.Dependency;
+using KissU.Util.Dependency;
 
-namespace Util.Datas.UnitOfWorks {
+namespace KissU.Util.Datas.UnitOfWorks {
     /// <summary>
     /// 工作单元管理器
     /// </summary>

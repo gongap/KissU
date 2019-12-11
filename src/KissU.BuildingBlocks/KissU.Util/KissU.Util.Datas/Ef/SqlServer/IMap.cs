@@ -1,4 +1,4 @@
-﻿namespace Util.Datas.Ef.SqlServer {
+﻿namespace KissU.Util.Datas.Ef.SqlServer {
     /// <summary>
     /// 映射
     /// </summary>

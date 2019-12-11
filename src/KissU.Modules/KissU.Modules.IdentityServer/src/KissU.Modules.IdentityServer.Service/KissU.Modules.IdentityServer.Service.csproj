@@ -13,7 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\surging\src\Surging.Core\Surging.Core.System\Surging.Core.System.csproj" />
+    <ProjectReference Include="..\..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.System\KissU.Core.System.csproj" />
     <ProjectReference Include="..\KissU.Modules.IdentityServer.Data\KissU.Modules.IdentityServer.Data.csproj" />
     <ProjectReference Include="..\KissU.Modules.IdentityServer.Domain\KissU.Modules.IdentityServer.Domain.csproj" />
     <ProjectReference Include="..\KissU.Modules.IdentityServer.Service.Contracts\KissU.Modules.IdentityServer.Service.Contracts.csproj" />

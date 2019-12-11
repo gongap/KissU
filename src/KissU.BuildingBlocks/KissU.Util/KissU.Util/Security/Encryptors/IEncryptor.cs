@@ -1,4 +1,4 @@
-﻿namespace Util.Security.Encryptors {
+﻿namespace KissU.Util.Security.Encryptors {
     /// <summary>
     /// 加密器
     /// </summary>

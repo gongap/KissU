@@ -4,12 +4,12 @@ using System.Linq;
 using System.Reflection;
 using AspectCore.Configuration;
 using Autofac;
+using KissU.Util.Events.Handlers;
+using KissU.Util.Helpers;
+using KissU.Util.Reflections;
 using Microsoft.Extensions.DependencyInjection;
-using Util.Events.Handlers;
-using Util.Helpers;
-using Util.Reflections;
 
-namespace Util.Dependency {
+namespace KissU.Util.Dependency {
     /// <summary>
     /// 依赖引导器
     /// </summary>

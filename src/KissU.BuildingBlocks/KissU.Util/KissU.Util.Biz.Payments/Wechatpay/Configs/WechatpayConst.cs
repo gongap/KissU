@@ -1,4 +1,4 @@
-﻿namespace Util.Biz.Payments.Wechatpay.Configs {
+﻿namespace KissU.Util.Biz.Payments.Wechatpay.Configs {
     /// <summary>
     /// 微信支付常量
     /// </summary>

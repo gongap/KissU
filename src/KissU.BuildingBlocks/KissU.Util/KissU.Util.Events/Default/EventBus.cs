@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Util.Events.Handlers;
+using KissU.Util.Events.Handlers;
 
-namespace Util.Events.Default {
+namespace KissU.Util.Events.Default {
     /// <summary>
     /// 基于内存的简单事件总线
     /// </summary>

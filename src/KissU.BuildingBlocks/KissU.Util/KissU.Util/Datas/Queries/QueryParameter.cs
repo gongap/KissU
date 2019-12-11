@@ -1,7 +1,7 @@
-﻿using Util.Domains.Repositories;
-using Util.Ui.Attributes;
+﻿using KissU.Util.Domains.Repositories;
+using KissU.Util.Ui.Attributes;
 
-namespace Util.Datas.Queries {
+namespace KissU.Util.Datas.Queries {
     /// <summary>
     /// 查询参数
     /// </summary>

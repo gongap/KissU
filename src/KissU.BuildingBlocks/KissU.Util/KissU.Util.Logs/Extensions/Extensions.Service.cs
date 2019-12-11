@@ -1,14 +1,14 @@
 ﻿using System;
 using Exceptionless;
+using KissU.Util.Logs.Abstractions;
+using KissU.Util.Logs.Core;
+using KissU.Util.Logs.Formats;
+using KissU.Util.Logs.NLog;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using NLog.LayoutRenderers;
-using Util.Logs.Abstractions;
-using Util.Logs.Core;
-using Util.Logs.Formats;
-using Util.Logs.NLog;
 
-namespace Util.Logs.Extensions {
+namespace KissU.Util.Logs.Extensions {
     /// <summary>
     /// 日志扩展
     /// </summary>

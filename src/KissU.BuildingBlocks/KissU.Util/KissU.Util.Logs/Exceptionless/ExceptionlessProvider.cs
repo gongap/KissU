@@ -1,13 +1,13 @@
 ﻿using System.Linq;
 using Exceptionless;
-using Microsoft.Extensions.Logging;
+using KissU.Util.Logs.Abstractions;
+using KissU.Util.Logs.Contents;
+using KissU.Util.Logs.NLog;
 using el = Exceptionless;
+using LogLevel = Microsoft.Extensions.Logging.LogLevel;
 using NLogs = NLog;
-using Util.Logs.Abstractions;
-using Util.Logs.Contents;
-using Util.Logs.NLog;
 
-namespace Util.Logs.Exceptionless {
+namespace KissU.Util.Logs.Exceptionless {
     /// <summary>
     /// Exceptionless日志提供程序
     /// </summary>

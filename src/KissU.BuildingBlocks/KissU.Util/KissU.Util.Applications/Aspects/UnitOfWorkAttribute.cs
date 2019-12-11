@@ -1,11 +1,11 @@
 ﻿using System.Threading.Tasks;
 using AspectCore.DynamicProxy;
 using AspectCore.Extensions.AspectScope;
+using KissU.Util.Aspects.Base;
+using KissU.Util.Datas.UnitOfWorks;
 using Microsoft.Extensions.DependencyInjection;
-using Util.Aspects.Base;
-using Util.Datas.UnitOfWorks;
 
-namespace Util.Applications.Aspects {
+namespace KissU.Util.Applications.Aspects {
     /// <summary>
     /// 工作单元拦截器
     /// </summary>

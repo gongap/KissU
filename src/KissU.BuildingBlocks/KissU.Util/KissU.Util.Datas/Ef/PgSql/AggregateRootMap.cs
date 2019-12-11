@@ -1,8 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Util.Datas.Ef.Core;
-using Util.Domains;
+﻿using KissU.Util.Datas.Ef.Core;
+using KissU.Util.Domains;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Util.Datas.Ef.PgSql {
+namespace KissU.Util.Datas.Ef.PgSql {
     /// <summary>
     /// 聚合根映射配置
     /// </summary>

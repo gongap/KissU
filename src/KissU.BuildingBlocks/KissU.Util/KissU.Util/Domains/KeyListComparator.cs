@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Util.Domains {
+namespace KissU.Util.Domains {
     /// <summary>
     /// 键列表比较器
     /// </summary>

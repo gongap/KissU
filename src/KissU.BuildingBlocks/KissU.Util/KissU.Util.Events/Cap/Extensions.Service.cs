@@ -1,11 +1,11 @@
 ﻿using System;
 using DotNetCore.CAP;
+using KissU.Util.Events.Default;
+using KissU.Util.Events.Handlers;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using Util.Events.Default;
-using Util.Events.Handlers;
 
-namespace Util.Events.Cap {
+namespace KissU.Util.Events.Cap {
     /// <summary>
     /// 事件总线扩展
     /// </summary>

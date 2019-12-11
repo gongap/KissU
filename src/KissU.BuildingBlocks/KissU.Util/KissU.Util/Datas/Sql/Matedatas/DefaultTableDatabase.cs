@@ -1,4 +1,4 @@
-﻿namespace Util.Datas.Sql.Matedatas {
+﻿namespace KissU.Util.Datas.Sql.Matedatas {
     /// <summary>
     /// 表数据库
     /// </summary>

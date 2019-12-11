@@ -1,8 +1,8 @@
 ﻿using System;
-using Util.Helpers;
-using Util.Logs.Internal;
+using KissU.Util.Helpers;
+using KissU.Util.Logs.Internal;
 
-namespace Util.Logs.Exceptionless {
+namespace KissU.Util.Logs.Exceptionless {
     /// <summary>
     /// Exceptionless日志上下文
     /// </summary>

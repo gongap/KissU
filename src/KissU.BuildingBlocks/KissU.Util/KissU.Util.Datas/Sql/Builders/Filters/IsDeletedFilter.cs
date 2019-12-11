@@ -1,9 +1,9 @@
 ﻿using System;
-using Util.Datas.Sql.Builders.Core;
-using Util.Datas.Sql.Matedatas;
-using Util.Domains;
+using KissU.Util.Datas.Sql.Builders.Core;
+using KissU.Util.Datas.Sql.Matedatas;
+using KissU.Util.Domains;
 
-namespace Util.Datas.Sql.Builders.Filters {
+namespace KissU.Util.Datas.Sql.Builders.Filters {
     /// <summary>
     /// 逻辑删除过滤器
     /// </summary>

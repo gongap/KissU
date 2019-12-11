@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Util.Domains.Repositories {
+namespace KissU.Util.Domains.Repositories {
     /// <summary>
     /// 分页集合
     /// </summary>

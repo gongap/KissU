@@ -1,8 +1,8 @@
 ﻿using System.Linq;
-using Util.Exceptions;
-using Util.Validations;
+using KissU.Util.Exceptions;
+using KissU.Util.Validations;
 
-namespace Util.Domains.Services {
+namespace KissU.Util.Domains.Services {
     /// <summary>
     /// 参数
     /// </summary>

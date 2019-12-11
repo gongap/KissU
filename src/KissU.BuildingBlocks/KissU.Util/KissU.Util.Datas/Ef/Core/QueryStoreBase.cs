@@ -6,14 +6,14 @@ using System.Linq.Dynamic.Core;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
+using KissU.Util.Datas.Stores;
+using KissU.Util.Datas.UnitOfWorks;
+using KissU.Util.Domains;
+using KissU.Util.Domains.Repositories;
+using KissU.Util.Helpers;
 using Microsoft.EntityFrameworkCore;
-using Util.Datas.Stores;
-using Util.Datas.UnitOfWorks;
-using Util.Domains;
-using Util.Domains.Repositories;
-using Util.Helpers;
 
-namespace Util.Datas.Ef.Core {
+namespace KissU.Util.Datas.Ef.Core {
     /// <summary>
     /// 查询存储器
     /// </summary>

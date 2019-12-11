@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using Util.Biz.Payments.Core;
-using Util.Biz.Payments.Wechatpay.Parameters.Requests;
+using KissU.Util.Biz.Payments.Core;
+using KissU.Util.Biz.Payments.Wechatpay.Parameters.Requests;
 
-namespace Util.Biz.Payments.Wechatpay.Abstractions {
+namespace KissU.Util.Biz.Payments.Wechatpay.Abstractions {
     /// <summary>
     /// 微信App支付服务
     /// </summary>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
-namespace Util.Domains.Trees {
+namespace KissU.Util.Domains.Trees {
     /// <summary>
     /// 树形实体
     /// </summary>

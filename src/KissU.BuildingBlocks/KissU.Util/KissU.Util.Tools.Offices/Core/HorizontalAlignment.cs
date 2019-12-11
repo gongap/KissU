@@ -1,4 +1,4 @@
-﻿namespace Util.Tools.Offices.Core {
+﻿namespace KissU.Util.Tools.Offices.Core {
     /// <summary>
     /// 水平对齐
     /// </summary>

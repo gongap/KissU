@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Util.Biz.Payments.Properties;
-using Util.Biz.Payments.Wechatpay.Abstractions;
-using Util.Biz.Payments.Wechatpay.Configs;
-using Util.Biz.Payments.Wechatpay.Results;
-using Util.Helpers;
-using Util.Validations;
+using KissU.Util.Biz.Payments.Properties;
+using KissU.Util.Biz.Payments.Wechatpay.Abstractions;
+using KissU.Util.Biz.Payments.Wechatpay.Configs;
+using KissU.Util.Biz.Payments.Wechatpay.Results;
+using KissU.Util.Helpers;
+using KissU.Util.Validations;
 
-namespace Util.Biz.Payments.Wechatpay.Services {
+namespace KissU.Util.Biz.Payments.Wechatpay.Services {
     /// <summary>
     /// 微信支付通知服务
     /// </summary>

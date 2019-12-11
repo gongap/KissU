@@ -1,6 +1,6 @@
-﻿using Util.Datas.Queries;
+﻿using KissU.Util.Datas.Queries;
 
-namespace Util.Datas.Sql.Builders.Conditions {
+namespace KissU.Util.Datas.Sql.Builders.Conditions {
     /// <summary>
     /// 范围过滤条件
     /// </summary>

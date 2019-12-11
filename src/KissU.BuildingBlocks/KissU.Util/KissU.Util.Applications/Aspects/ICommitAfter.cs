@@ -1,4 +1,4 @@
-﻿namespace Util.Applications.Aspects {
+﻿namespace KissU.Util.Applications.Aspects {
     /// <summary>
     /// 提交工作单元后操作
     /// </summary>

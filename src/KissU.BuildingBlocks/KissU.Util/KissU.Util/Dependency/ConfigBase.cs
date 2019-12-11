@@ -1,6 +1,6 @@
 ﻿using Autofac;
 
-namespace Util.Dependency {
+namespace KissU.Util.Dependency {
     /// <summary>
     /// 配置
     /// </summary>

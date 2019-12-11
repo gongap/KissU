@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using Util.Dependency;
+using KissU.Util.Dependency;
 
-namespace Util.Tools.Sms {
+namespace KissU.Util.Tools.Sms {
     /// <summary>
     /// 短信服务
     /// </summary>

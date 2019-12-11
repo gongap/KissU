@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Text;
 using AspectCore.Configuration;
+using KissU.Util.Dependency;
+using KissU.Util.Sessions;
 using Microsoft.Extensions.DependencyInjection;
-using Util.Dependency;
-using Util.Sessions;
 
-namespace Util {
+namespace KissU.Util {
     /// <summary>
     /// 系统扩展 - 基础设施
     /// </summary>

@@ -6,7 +6,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts.Dtos
 {
     using System;
     using System.ComponentModel.DataAnnotations;
-    using Util.Ui.Data;
+    using KissU.Util.Ui.Core.Data;
 
     /// <summary>
     /// 模块参数

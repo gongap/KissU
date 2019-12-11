@@ -1,4 +1,4 @@
-﻿namespace Util.Datas.Sql.Builders.Conditions {
+﻿namespace KissU.Util.Datas.Sql.Builders.Conditions {
     /// <summary>
     /// Is Not Null查询条件
     /// </summary>

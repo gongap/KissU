@@ -1,4 +1,4 @@
-﻿namespace Util.Domains.Repositories {
+﻿namespace KissU.Util.Domains.Repositories {
     /// <summary>
     /// 查询对象
     /// </summary>

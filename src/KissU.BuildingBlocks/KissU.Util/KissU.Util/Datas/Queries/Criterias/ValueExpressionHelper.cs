@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 
-namespace Util.Datas.Queries.Criterias {
+namespace KissU.Util.Datas.Queries.Criterias {
     /// <summary>
     /// 值表达式操作
     /// </summary>

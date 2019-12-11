@@ -1,4 +1,4 @@
-﻿namespace Util.Signatures {
+﻿namespace KissU.Util.Signatures {
     /// <summary>
     /// 签名密钥
     /// </summary>

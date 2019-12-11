@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using Util.Domains;
+using KissU.Util.Domains;
 
-namespace Util.Datas.Stores.Operations {
+namespace KissU.Util.Datas.Stores.Operations {
     /// <summary>
     /// 查找实体列表
     /// </summary>

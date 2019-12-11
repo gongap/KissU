@@ -1,15 +1,15 @@
 ﻿using System;
+using KissU.Util.Datas.Dapper;
+using KissU.Util.Datas.Ef.Configs;
+using KissU.Util.Datas.Ef.Core;
+using KissU.Util.Datas.Enums;
+using KissU.Util.Datas.UnitOfWorks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using Util.Datas.Dapper;
-using Util.Datas.Ef.Configs;
-using Util.Datas.Ef.Core;
-using Util.Datas.Enums;
-using Util.Datas.UnitOfWorks;
 
-namespace Util.Datas.Ef {
+namespace KissU.Util.Datas.Ef {
     /// <summary>
     /// 服务扩展
     /// </summary>

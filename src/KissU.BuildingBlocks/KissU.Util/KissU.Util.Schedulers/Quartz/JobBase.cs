@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Util.Helpers;
+using KissU.Util.Dependency;
+using KissU.Util.Helpers;
 using Quartz;
-using Util.Dependency;
 using Qz = Quartz;
 
-namespace Util.Schedulers.Quartz {
+namespace KissU.Util.Schedulers.Quartz {
     /// <summary>
     /// Quartz作业
     /// </summary>

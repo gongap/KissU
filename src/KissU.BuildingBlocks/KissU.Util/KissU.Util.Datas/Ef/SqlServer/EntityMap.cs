@@ -1,6 +1,6 @@
-﻿using Util.Datas.Ef.Core;
+﻿using KissU.Util.Datas.Ef.Core;
 
-namespace Util.Datas.Ef.SqlServer {
+namespace KissU.Util.Datas.Ef.SqlServer {
     /// <summary>
     /// 实体映射配置
     /// </summary>

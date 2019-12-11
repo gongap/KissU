@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Util.Logs.Properties;
+using KissU.Util.Logs.Properties;
 
-namespace Util.Logs.Exceptionless {
+namespace KissU.Util.Logs.Exceptionless {
     /// <summary>
     /// Exceptionless日志内容
     /// </summary>

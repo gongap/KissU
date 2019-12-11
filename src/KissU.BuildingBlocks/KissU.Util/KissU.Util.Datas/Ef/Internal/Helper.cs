@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Text;
+using KissU.Util.Domains;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Util.Domains;
 
-namespace Util.Datas.Ef.Internal {
+namespace KissU.Util.Datas.Ef.Internal {
     /// <summary>
     /// 工具操作
     /// </summary>

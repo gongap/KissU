@@ -1,4 +1,4 @@
-﻿namespace Util.Domains {
+﻿namespace KissU.Util.Domains {
     /// <summary>
     /// 逻辑删除
     /// </summary>

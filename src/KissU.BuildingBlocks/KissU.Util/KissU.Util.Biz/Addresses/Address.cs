@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Util.Domains;
+using KissU.Util.Domains;
 
-namespace Util.Biz.Addresses {
+namespace KissU.Util.Biz.Addresses {
     /// <summary>
     /// 地址 - 不可变
     /// </summary>

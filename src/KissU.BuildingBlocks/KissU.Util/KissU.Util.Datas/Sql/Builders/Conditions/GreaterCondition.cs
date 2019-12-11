@@ -1,4 +1,4 @@
-﻿namespace Util.Datas.Sql.Builders.Conditions {
+﻿namespace KissU.Util.Datas.Sql.Builders.Conditions {
     /// <summary>
     /// Sql大于查询条件
     /// </summary>

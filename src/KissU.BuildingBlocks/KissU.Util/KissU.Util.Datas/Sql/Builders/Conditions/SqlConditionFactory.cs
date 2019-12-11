@@ -1,7 +1,7 @@
 ﻿using System;
-using Util.Datas.Queries;
+using KissU.Util.Datas.Queries;
 
-namespace Util.Datas.Sql.Builders.Conditions {
+namespace KissU.Util.Datas.Sql.Builders.Conditions {
     /// <summary>
     /// Sql查询条件工厂
     /// </summary>

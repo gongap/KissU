@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using Util.Biz.Payments.Wechatpay.Configs;
-using Util.Helpers;
-using Util.Logs;
-using Util.Logs.Extensions;
-using Util.Parameters;
+using KissU.Util.Biz.Payments.Wechatpay.Configs;
+using KissU.Util.Helpers;
+using KissU.Util.Logs;
+using KissU.Util.Logs.Extensions;
+using KissU.Util.Parameters;
 
-namespace Util.Biz.Payments.Wechatpay.Results {
+namespace KissU.Util.Biz.Payments.Wechatpay.Results {
     /// <summary>
     /// 微信退款通知结果
     /// </summary>

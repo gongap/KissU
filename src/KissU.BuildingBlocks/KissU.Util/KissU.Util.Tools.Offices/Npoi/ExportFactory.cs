@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Util.Tools.Offices.Npoi {
+namespace KissU.Util.Tools.Offices.Npoi {
     /// <summary>
     /// 导出操作工厂
     /// </summary>

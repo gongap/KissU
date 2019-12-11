@@ -1,6 +1,6 @@
-﻿using Util.Randoms;
+﻿using KissU.Util.Randoms;
 
-namespace Util.Files.Paths {
+namespace KissU.Util.Files.Paths {
     /// <summary>
     /// 路径生成器
     /// </summary>

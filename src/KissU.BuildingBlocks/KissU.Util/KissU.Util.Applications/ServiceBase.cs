@@ -1,7 +1,7 @@
-﻿using Util.Logs;
-using Util.Sessions;
+﻿using KissU.Util.Logs;
+using KissU.Util.Sessions;
 
-namespace Util.Applications {
+namespace KissU.Util.Applications {
     /// <summary>
     /// 应用服务
     /// </summary>

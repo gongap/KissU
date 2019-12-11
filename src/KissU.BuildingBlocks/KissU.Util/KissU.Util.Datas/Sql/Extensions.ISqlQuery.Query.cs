@@ -2,7 +2,7 @@
 using System.Data;
 using System.Threading.Tasks;
 
-namespace Util.Datas.Sql {
+namespace KissU.Util.Datas.Sql {
     /// <summary>
     /// Sql查询对象扩展 - 查询相关
     /// </summary>

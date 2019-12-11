@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Util.Events {
+namespace KissU.Util.Events {
     /// <summary>
     /// 事件总线
     /// </summary>

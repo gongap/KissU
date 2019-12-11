@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq.Expressions;
-using Util.Domains.Repositories;
+using KissU.Util.Domains.Repositories;
 
-namespace Util.Datas.Queries.Criterias {
+namespace KissU.Util.Datas.Queries.Criterias {
     /// <summary>
     /// 或查询条件
     /// </summary>

@@ -1,6 +1,6 @@
 ﻿using DotNetCore.CAP.Abstractions;
 
-namespace Util.Events {
+namespace KissU.Util.Events {
     /// <summary>
     /// 事件处理器
     /// </summary>

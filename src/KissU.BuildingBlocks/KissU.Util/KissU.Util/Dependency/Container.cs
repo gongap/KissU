@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using KissU.Util.Helpers;
 using Microsoft.Extensions.DependencyInjection;
-using Util.Helpers;
 
-namespace Util.Dependency {
+namespace KissU.Util.Dependency {
     /// <summary>
     /// Autofac对象容器
     /// </summary>

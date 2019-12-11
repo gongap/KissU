@@ -1,7 +1,7 @@
-﻿using Util.Datas.Sql.Builders;
-using Util.Datas.Sql.Builders.Filters;
+﻿using KissU.Util.Datas.Sql.Builders;
+using KissU.Util.Datas.Sql.Builders.Filters;
 
-namespace Util.Datas.Sql {
+namespace KissU.Util.Datas.Sql {
     /// <summary>
     /// Sql查询对象扩展 - 杂项
     /// </summary>

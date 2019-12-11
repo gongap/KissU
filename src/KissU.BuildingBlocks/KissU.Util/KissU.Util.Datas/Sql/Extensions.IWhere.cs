@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Util.Datas.Queries;
-using Util.Datas.Sql.Builders;
+using KissU.Util.Datas.Queries;
+using KissU.Util.Datas.Sql.Builders;
 
-namespace Util.Datas.Sql {
+namespace KissU.Util.Datas.Sql {
     /// <summary>
     /// Where子句扩展
     /// </summary>

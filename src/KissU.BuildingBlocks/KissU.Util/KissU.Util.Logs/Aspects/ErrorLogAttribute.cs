@@ -2,10 +2,10 @@
 using System.Threading.Tasks;
 using AspectCore.DynamicProxy;
 using AspectCore.DynamicProxy.Parameters;
-using Util.Aspects.Base;
-using Util.Logs.Extensions;
+using KissU.Util.Aspects.Base;
+using KissU.Util.Logs.Extensions;
 
-namespace Util.Logs.Aspects {
+namespace KissU.Util.Logs.Aspects {
     /// <summary>
     /// 错误日志
     /// </summary>

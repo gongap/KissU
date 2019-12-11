@@ -1,4 +1,4 @@
-﻿namespace Util.Webs.Razors {
+﻿namespace KissU.Util.Webs.Razors {
     /// <summary>
     /// 路由信息
     /// </summary>

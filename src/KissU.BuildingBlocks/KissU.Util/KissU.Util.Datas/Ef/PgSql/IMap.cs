@@ -1,4 +1,4 @@
-﻿namespace Util.Datas.Ef.PgSql {
+﻿namespace KissU.Util.Datas.Ef.PgSql {
     /// <summary>
     /// 映射
     /// </summary>

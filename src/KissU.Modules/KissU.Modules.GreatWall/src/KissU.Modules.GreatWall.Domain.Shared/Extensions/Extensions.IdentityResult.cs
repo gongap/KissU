@@ -2,12 +2,13 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Util.Exceptions;
+
 namespace KissU.Modules.GreatWall.Domain.Shared.Extensions
 {
     using System;
     using System.Linq;
     using Microsoft.AspNetCore.Identity;
-    using Util.Exceptions;
 
     /// <summary>
     /// Identity结果扩展

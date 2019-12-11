@@ -1,10 +1,10 @@
-﻿using Util.Datas.Sql;
-using Util.Datas.Sql.Builders;
-using Util.Datas.Sql.Builders.Clauses;
-using Util.Datas.Sql.Builders.Core;
-using Util.Datas.Sql.Matedatas;
+﻿using KissU.Util.Datas.Sql;
+using KissU.Util.Datas.Sql.Builders;
+using KissU.Util.Datas.Sql.Builders.Clauses;
+using KissU.Util.Datas.Sql.Builders.Core;
+using KissU.Util.Datas.Sql.Matedatas;
 
-namespace Util.Datas.Dapper.MySql {
+namespace KissU.Util.Datas.Dapper.MySql {
     /// <summary>
     /// MySql From子句
     /// </summary>

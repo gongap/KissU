@@ -1,8 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using KissU.Util.Tools.Sms.LuoSiMao;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using Util.Tools.Sms.LuoSiMao;
 
-namespace Util.Tools.Sms.Extensions {
+namespace KissU.Util.Tools.Sms.Extensions {
     /// <summary>
     /// 短信服务扩展
     /// </summary>

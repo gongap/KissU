@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using IdentityModel;
-using Util.Helpers;
-using Util.Security.Claims;
-using Util.Sessions;
-using Convert = Util.Helpers.Convert;
+using KissU.Util.Helpers;
+using KissU.Util.Security.Claims;
+using KissU.Util.Sessions;
+using Convert = KissU.Util.Helpers.Convert;
 
-namespace Util.Security {
+namespace KissU.Util.Security {
     /// <summary>
     /// 用户会话扩展
     /// </summary>

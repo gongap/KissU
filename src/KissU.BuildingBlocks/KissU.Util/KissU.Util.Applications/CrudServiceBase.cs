@@ -1,13 +1,13 @@
 ﻿using System;
-using Util.Applications.Aspects;
-using Util.Applications.Dtos;
-using Util.Datas.Queries;
-using Util.Datas.UnitOfWorks;
-using Util.Domains;
-using Util.Domains.Repositories;
-using Util.Maps;
+using KissU.Util.Applications.Aspects;
+using KissU.Util.Applications.Dtos;
+using KissU.Util.Datas.Queries;
+using KissU.Util.Datas.UnitOfWorks;
+using KissU.Util.Domains;
+using KissU.Util.Domains.Repositories;
+using KissU.Util.Maps;
 
-namespace Util.Applications {
+namespace KissU.Util.Applications {
     /// <summary>
     /// 增删改查服务
     /// </summary>

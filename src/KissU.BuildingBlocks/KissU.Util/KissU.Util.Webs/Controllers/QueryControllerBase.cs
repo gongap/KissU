@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using KissU.Util.Applications;
+using KissU.Util.Applications.Dtos;
+using KissU.Util.Datas.Queries;
+using KissU.Util.Domains.Repositories;
+using KissU.Util.Webs.Properties;
 using Microsoft.AspNetCore.Mvc;
-using Util.Applications;
-using Util.Applications.Dtos;
-using Util.Datas.Queries;
-using Util.Domains.Repositories;
-using Util.Webs.Properties;
 
-namespace Util.Webs.Controllers {
+namespace KissU.Util.Webs.Controllers {
     /// <summary>
     /// 查询控制器
     /// </summary>

@@ -1,6 +1,6 @@
-﻿using Util.Datas.Sql.Builders.Core;
+﻿using KissU.Util.Datas.Sql.Builders.Core;
 
-namespace Util.Datas.Dapper.Oracle {
+namespace KissU.Util.Datas.Dapper.Oracle {
     /// <summary>
     /// Oracle方言
     /// </summary>

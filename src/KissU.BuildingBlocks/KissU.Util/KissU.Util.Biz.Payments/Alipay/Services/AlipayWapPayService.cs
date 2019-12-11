@@ -1,14 +1,14 @@
 ﻿using System.Threading.Tasks;
+using KissU.Util.Biz.Payments.Alipay.Abstractions;
+using KissU.Util.Biz.Payments.Alipay.Configs;
+using KissU.Util.Biz.Payments.Alipay.Parameters;
+using KissU.Util.Biz.Payments.Alipay.Parameters.Requests;
+using KissU.Util.Biz.Payments.Alipay.Services.Base;
+using KissU.Util.Biz.Payments.Core;
+using KissU.Util.Helpers;
 using Microsoft.AspNetCore.Http;
-using Util.Biz.Payments.Alipay.Abstractions;
-using Util.Biz.Payments.Alipay.Configs;
-using Util.Biz.Payments.Alipay.Parameters;
-using Util.Biz.Payments.Alipay.Parameters.Requests;
-using Util.Biz.Payments.Alipay.Services.Base;
-using Util.Biz.Payments.Core;
-using Util.Helpers;
 
-namespace Util.Biz.Payments.Alipay.Services {
+namespace KissU.Util.Biz.Payments.Alipay.Services {
     /// <summary>
     /// 支付宝手机网站支付服务
     /// </summary>

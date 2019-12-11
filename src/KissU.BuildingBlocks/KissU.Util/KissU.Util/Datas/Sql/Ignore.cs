@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Util.Datas.Sql {
+namespace KissU.Util.Datas.Sql {
     /// <summary>
     /// 忽略生成列
     /// </summary>

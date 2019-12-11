@@ -1,4 +1,4 @@
-﻿namespace Util.Webs.Commons {
+﻿namespace KissU.Util.Webs.Commons {
     /// <summary>
     /// 状态码
     /// </summary>

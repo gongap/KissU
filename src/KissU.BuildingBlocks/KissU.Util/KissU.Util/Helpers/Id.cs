@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Util.Helpers {
+namespace KissU.Util.Helpers {
     /// <summary>
     /// 标识生成器
     /// </summary>

@@ -1,7 +1,7 @@
 ﻿using System;
-using Util.Domains;
+using KissU.Util.Domains;
 
-namespace Util.Datas.Persistence {
+namespace KissU.Util.Datas.Persistence {
     /// <summary>
     /// 持久化对象
     /// </summary>

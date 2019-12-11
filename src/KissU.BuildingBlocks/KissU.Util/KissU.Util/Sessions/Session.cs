@@ -1,7 +1,7 @@
 ﻿using IdentityModel;
-using Util.Helpers;
+using KissU.Util.Helpers;
 
-namespace Util.Sessions {
+namespace KissU.Util.Sessions {
     /// <summary>
     /// 用户会话
     /// </summary>

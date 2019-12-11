@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Util.Tools.Offices.Core {
+namespace KissU.Util.Tools.Offices.Core {
     /// <summary>
     /// 表格
     /// </summary>

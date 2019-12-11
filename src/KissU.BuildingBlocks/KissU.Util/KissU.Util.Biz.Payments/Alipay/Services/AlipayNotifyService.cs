@@ -1,11 +1,11 @@
-﻿using Util.Biz.Payments.Alipay.Abstractions;
-using Util.Biz.Payments.Alipay.Configs;
-using Util.Biz.Payments.Alipay.Enums;
-using Util.Biz.Payments.Alipay.Services.Base;
-using Util.Parameters;
-using Util.Validations;
+﻿using KissU.Util.Biz.Payments.Alipay.Abstractions;
+using KissU.Util.Biz.Payments.Alipay.Configs;
+using KissU.Util.Biz.Payments.Alipay.Enums;
+using KissU.Util.Biz.Payments.Alipay.Services.Base;
+using KissU.Util.Parameters;
+using KissU.Util.Validations;
 
-namespace Util.Biz.Payments.Alipay.Services {
+namespace KissU.Util.Biz.Payments.Alipay.Services {
     /// <summary>
     /// 支付宝回调通知服务
     /// </summary>

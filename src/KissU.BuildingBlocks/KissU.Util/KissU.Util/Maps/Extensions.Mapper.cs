@@ -1,9 +1,9 @@
 ﻿using System;
-using AutoMapper;
 using System.Collections.Generic;
 using System.Reflection;
+using AutoMapper;
 
-namespace Util.Maps {
+namespace KissU.Util.Maps {
     /// <summary>
     /// 对象映射
     /// </summary>

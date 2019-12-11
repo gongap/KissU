@@ -1,4 +1,4 @@
-﻿namespace Util.Logs.Aspects {
+﻿namespace KissU.Util.Logs.Aspects {
     /// <summary>
     /// 调试日志
     /// </summary>

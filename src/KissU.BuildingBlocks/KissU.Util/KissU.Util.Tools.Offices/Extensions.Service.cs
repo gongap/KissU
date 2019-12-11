@@ -1,8 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using KissU.Util.Tools.Offices.Npoi;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using Util.Tools.Offices.Npoi;
 
-namespace Util.Tools.Offices {
+namespace KissU.Util.Tools.Offices {
     /// <summary>
     /// Office操作扩展
     /// </summary>

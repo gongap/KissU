@@ -1,4 +1,4 @@
-﻿namespace Util.Files.Paths {
+﻿namespace KissU.Util.Files.Paths {
     /// <summary>
     /// 基路径
     /// </summary>

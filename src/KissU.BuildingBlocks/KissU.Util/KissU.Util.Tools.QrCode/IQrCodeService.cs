@@ -1,6 +1,6 @@
-﻿using Util.Dependency;
+﻿using KissU.Util.Dependency;
 
-namespace Util.Tools.QrCode {
+namespace KissU.Util.Tools.QrCode {
     /// <summary>
     /// 二维码服务
     /// </summary>

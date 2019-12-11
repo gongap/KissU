@@ -2,10 +2,11 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Util.Domains.Repositories;
+
 namespace KissU.Modules.Theme.Domain.Repositories
 {
     using KissU.Modules.Theme.Domain.Models;
-    using Util.Domains.Repositories;
 
     /// <summary>
     /// 语言国际化仓储

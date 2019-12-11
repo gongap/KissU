@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using KissU.Util.Dependency;
 using Microsoft.Extensions.DependencyInjection;
-using Util.Dependency;
 
-namespace Util.Helpers {
+namespace KissU.Util.Helpers {
     /// <summary>
     /// 容器
     /// </summary>

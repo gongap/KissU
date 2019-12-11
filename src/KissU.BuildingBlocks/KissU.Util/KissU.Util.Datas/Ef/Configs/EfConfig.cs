@@ -1,6 +1,6 @@
-﻿using Util.Datas.Sql.Configs;
+﻿using KissU.Util.Datas.Sql.Configs;
 
-namespace Util.Datas.Ef.Configs {
+namespace KissU.Util.Datas.Ef.Configs {
     /// <summary>
     /// Ef配置
     /// </summary>

@@ -1,4 +1,4 @@
-﻿namespace Util.Randoms {
+﻿namespace KissU.Util.Randoms {
     /// <summary>
     /// 伪随机数生成器，用于单元测试，固定返回字符串"random"
     /// </summary>

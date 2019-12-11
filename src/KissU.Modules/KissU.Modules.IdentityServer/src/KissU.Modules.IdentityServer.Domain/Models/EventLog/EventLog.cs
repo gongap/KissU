@@ -2,11 +2,12 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Util.Domains;
+
 namespace KissU.Modules.IdentityServer.Domain.Models.EventLog
 {
     using System;
     using IdentityServer4.Events;
-    using Util.Domains;
 
     public class EventLog : AggregateRoot<EventLog>
     {

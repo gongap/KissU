@@ -1,7 +1,7 @@
 ﻿using System;
-using Util.Exceptions;
+using KissU.Util.Exceptions;
 
-namespace Util.Logs.Extensions {
+namespace KissU.Util.Logs.Extensions {
     /// <summary>
     /// 异常扩展
     /// </summary>

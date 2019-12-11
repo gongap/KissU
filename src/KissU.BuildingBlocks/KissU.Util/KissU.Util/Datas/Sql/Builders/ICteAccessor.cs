@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Util.Datas.Sql.Builders.Core;
+using KissU.Util.Datas.Sql.Builders.Core;
 
-namespace Util.Datas.Sql.Builders {
+namespace KissU.Util.Datas.Sql.Builders {
     /// <summary>
     /// 公用表表达式CTE操作访问器
     /// </summary>

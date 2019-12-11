@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
-using Util.Helpers;
-using Util.Validations;
+using KissU.Util.Helpers;
+using KissU.Util.Validations;
 
-namespace Util.Domains {
+namespace KissU.Util.Domains {
     /// <summary>
     /// 领域层顶级基类
     /// </summary>

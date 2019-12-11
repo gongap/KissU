@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using KissU.Util.Datas.Stores;
+using KissU.Util.Datas.UnitOfWorks;
+using KissU.Util.Domains;
 using Microsoft.EntityFrameworkCore;
-using Util.Datas.Stores;
-using Util.Datas.UnitOfWorks;
-using Util.Domains;
 
-namespace Util.Datas.Ef.Core {
+namespace KissU.Util.Datas.Ef.Core {
     /// <summary>
     /// 存储器
     /// </summary>

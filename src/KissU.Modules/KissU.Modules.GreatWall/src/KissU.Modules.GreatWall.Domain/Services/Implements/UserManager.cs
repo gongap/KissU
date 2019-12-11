@@ -2,6 +2,9 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Util;
+using KissU.Util.Domains.Services;
+
 namespace KissU.Modules.GreatWall.Domain.Services.Implements
 {
     using System;
@@ -14,8 +17,6 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
     using KissU.Modules.GreatWall.Domain.Shared.Purposes;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.Options;
-    using Util;
-    using Util.Domains.Services;
 
     /// <summary>
     /// 用户服务

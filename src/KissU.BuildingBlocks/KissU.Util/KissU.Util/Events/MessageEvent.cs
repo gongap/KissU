@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace Util.Events {
+namespace KissU.Util.Events {
     /// <summary>
     /// 消息事件
     /// </summary>

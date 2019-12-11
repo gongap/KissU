@@ -1,4 +1,4 @@
-﻿namespace Util.Validations {
+﻿namespace KissU.Util.Validations {
     /// <summary>
     /// 验证操作
     /// </summary>

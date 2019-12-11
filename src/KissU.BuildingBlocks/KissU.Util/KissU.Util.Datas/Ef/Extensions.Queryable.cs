@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using KissU.Util.Datas.Queries.Internal;
+using KissU.Util.Domains.Repositories;
 using Microsoft.EntityFrameworkCore;
-using Util.Datas.Queries.Internal;
-using Util.Domains.Repositories;
 
-namespace Util.Datas.Ef {
+namespace KissU.Util.Datas.Ef {
     /// <summary>
     /// 查询扩展
     /// </summary>

@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Util.Domains;
-using Util.Validations.Aspects;
+using KissU.Util.Domains;
+using KissU.Util.Validations.Aspects;
 
-namespace Util.Datas.Stores.Operations {
+namespace KissU.Util.Datas.Stores.Operations {
     /// <summary>
     /// 添加实体
     /// </summary>

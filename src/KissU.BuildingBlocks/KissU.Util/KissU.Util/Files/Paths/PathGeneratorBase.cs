@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
-using Util.Helpers;
-using Util.Randoms;
+using KissU.Util.Helpers;
+using KissU.Util.Randoms;
 
-namespace Util.Files.Paths {
+namespace KissU.Util.Files.Paths {
     /// <summary>
     /// 路径生成器
     /// </summary>

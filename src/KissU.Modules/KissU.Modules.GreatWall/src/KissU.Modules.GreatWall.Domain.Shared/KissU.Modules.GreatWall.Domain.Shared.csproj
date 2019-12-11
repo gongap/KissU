@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\util\src\Util\01-Util.csproj" />
+    <ProjectReference Include="..\..\..\..\KissU.BuildingBlocks\KissU.Util\KissU.Util\KissU.Util.csproj" />
   </ItemGroup>
 
   <ItemGroup>

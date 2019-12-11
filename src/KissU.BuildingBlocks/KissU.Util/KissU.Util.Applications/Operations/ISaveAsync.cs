@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
-using Util.Applications.Aspects;
-using Util.Applications.Dtos;
-using Util.Validations.Aspects;
+using KissU.Util.Applications.Aspects;
+using KissU.Util.Applications.Dtos;
+using KissU.Util.Validations.Aspects;
 
-namespace Util.Applications.Operations {
+namespace KissU.Util.Applications.Operations {
     /// <summary>
     /// 保存操作
     /// </summary>

@@ -1,11 +1,11 @@
 ﻿using System;
-using Util.Datas.Sql.Builders.Core;
-using Util.Datas.Sql.Builders.Extensions;
-using Util.Datas.Sql.Builders.Internal;
-using Util.Datas.Sql.Matedatas;
-using Util.Properties;
+using KissU.Util.Datas.Sql.Builders.Core;
+using KissU.Util.Datas.Sql.Builders.Extensions;
+using KissU.Util.Datas.Sql.Builders.Internal;
+using KissU.Util.Datas.Sql.Matedatas;
+using KissU.Util.Properties;
 
-namespace Util.Datas.Sql.Builders.Clauses {
+namespace KissU.Util.Datas.Sql.Builders.Clauses {
     /// <summary>
     /// From子句
     /// </summary>

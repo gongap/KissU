@@ -2,6 +2,8 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Util;
+
 namespace KissU.Modules.GreatWall.Domain.Services.Implements
 {
     using System.Threading.Tasks;
@@ -9,7 +11,6 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
     using KissU.Modules.GreatWall.Domain.Services.Abstractions;
     using KissU.Modules.GreatWall.Domain.Shared;
     using KissU.Modules.GreatWall.Domain.Shared.Results;
-    using Util;
 
     /// <summary>
     /// 登录服务

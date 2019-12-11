@@ -2,6 +2,9 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Util;
+using KissU.Util.Domains.Services;
+
 namespace KissU.Modules.GreatWall.Domain.Services.Implements
 {
     using System;
@@ -11,8 +14,6 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
     using KissU.Modules.GreatWall.Domain.Models;
     using KissU.Modules.GreatWall.Domain.Repositories;
     using KissU.Modules.GreatWall.Domain.Services.Abstractions;
-    using Util;
-    using Util.Domains.Services;
 
     /// <summary>
     /// 权限服务

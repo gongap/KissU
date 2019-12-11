@@ -1,4 +1,4 @@
-﻿namespace Util.Biz.Payments.Alipay.Parameters.Requests {
+﻿namespace KissU.Util.Biz.Payments.Alipay.Parameters.Requests {
     /// <summary>
     /// 条码支付参数
     /// </summary>

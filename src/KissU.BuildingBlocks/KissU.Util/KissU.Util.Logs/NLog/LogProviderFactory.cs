@@ -1,6 +1,6 @@
-﻿using Util.Logs.Abstractions;
+﻿using KissU.Util.Logs.Abstractions;
 
-namespace Util.Logs.NLog {
+namespace KissU.Util.Logs.NLog {
     /// <summary>
     /// NLog日志提供程序工厂
     /// </summary>

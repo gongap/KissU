@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace Util.Expressions {
+namespace KissU.Util.Expressions {
     /// <summary>
     /// 参数重绑定操作
     /// </summary>

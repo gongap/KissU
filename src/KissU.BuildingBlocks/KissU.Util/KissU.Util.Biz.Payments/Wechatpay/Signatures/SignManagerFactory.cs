@@ -1,10 +1,10 @@
 ﻿using System;
-using Util.Biz.Payments.Wechatpay.Configs;
-using Util.Biz.Payments.Wechatpay.Enums;
-using Util.Parameters;
-using Util.Signatures;
+using KissU.Util.Biz.Payments.Wechatpay.Configs;
+using KissU.Util.Biz.Payments.Wechatpay.Enums;
+using KissU.Util.Parameters;
+using KissU.Util.Signatures;
 
-namespace Util.Biz.Payments.Wechatpay.Signatures {
+namespace KissU.Util.Biz.Payments.Wechatpay.Signatures {
     /// <summary>
     /// 微信支付签名工厂
     /// </summary>

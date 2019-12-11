@@ -1,8 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using KissU.Util.Events.Handlers;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using Util.Events.Handlers;
 
-namespace Util.Events.Default {
+namespace KissU.Util.Events.Default {
     /// <summary>
     /// 事件总线扩展
     /// </summary>

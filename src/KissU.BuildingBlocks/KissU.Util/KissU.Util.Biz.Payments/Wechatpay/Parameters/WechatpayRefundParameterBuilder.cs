@@ -1,8 +1,8 @@
-﻿using Util.Biz.Payments.Wechatpay.Configs;
-using Util.Biz.Payments.Wechatpay.Parameters.Requests;
-using Util.Helpers;
+﻿using KissU.Util.Biz.Payments.Wechatpay.Configs;
+using KissU.Util.Biz.Payments.Wechatpay.Parameters.Requests;
+using KissU.Util.Helpers;
 
-namespace Util.Biz.Payments.Wechatpay.Parameters {
+namespace KissU.Util.Biz.Payments.Wechatpay.Parameters {
     /// <summary>
     /// 微信退款参数生成器
     /// </summary>

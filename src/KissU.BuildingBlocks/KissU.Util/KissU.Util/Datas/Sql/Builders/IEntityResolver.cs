@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 
-namespace Util.Datas.Sql.Builders {
+namespace KissU.Util.Datas.Sql.Builders {
     /// <summary>
     /// 实体解析器
     /// </summary>

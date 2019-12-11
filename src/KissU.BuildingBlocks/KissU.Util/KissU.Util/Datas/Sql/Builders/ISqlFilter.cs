@@ -1,6 +1,6 @@
-﻿using Util.Datas.Sql.Builders.Core;
+﻿using KissU.Util.Datas.Sql.Builders.Core;
 
-namespace Util.Datas.Sql.Builders {
+namespace KissU.Util.Datas.Sql.Builders {
     /// <summary>
     /// Sql过滤器
     /// </summary>

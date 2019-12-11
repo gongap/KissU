@@ -1,6 +1,6 @@
-﻿using Util.Datas.Ef.Core;
+﻿using KissU.Util.Datas.Ef.Core;
 
-namespace Util.Datas.Ef.MySql {
+namespace KissU.Util.Datas.Ef.MySql {
     /// <summary>
     /// 实体映射配置
     /// </summary>

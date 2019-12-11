@@ -2,13 +2,14 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Util.Domains;
+using KissU.Util.Domains.Auditing;
+
 namespace KissU.Modules.IdentityServer.Domain.Models.ClientAggregate
 {
     using System;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
-    using Util.Domains;
-    using Util.Domains.Auditing;
 
     /// <summary>
     /// 应用程序密钥

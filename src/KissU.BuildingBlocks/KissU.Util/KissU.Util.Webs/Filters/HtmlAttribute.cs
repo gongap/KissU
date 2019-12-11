@@ -2,6 +2,9 @@
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using KissU.Util.Helpers;
+using KissU.Util.Logs;
+using KissU.Util.Logs.Extensions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Abstractions;
@@ -12,11 +15,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewEngines;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Util.Helpers;
-using Util.Logs;
-using Util.Logs.Extensions;
 
-namespace Util.Webs.Filters {
+namespace KissU.Util.Webs.Filters {
     /// <summary>
     /// 生成Html静态文件
     /// </summary>

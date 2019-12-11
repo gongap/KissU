@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Util {
+namespace KissU.Util {
     /// <summary>
     /// 系统扩展 - 类型转换
     /// </summary>

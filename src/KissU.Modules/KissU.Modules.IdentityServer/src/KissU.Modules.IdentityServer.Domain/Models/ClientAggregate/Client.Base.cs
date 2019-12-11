@@ -2,6 +2,9 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Util.Domains;
+using KissU.Util.Domains.Auditing;
+
 namespace KissU.Modules.IdentityServer.Domain.Models.ClientAggregate
 {
     using System;
@@ -9,8 +12,6 @@ namespace KissU.Modules.IdentityServer.Domain.Models.ClientAggregate
     using System.ComponentModel.DataAnnotations;
     using IdentityServer4;
     using IdentityServer4.Models;
-    using Util.Domains;
-    using Util.Domains.Auditing;
 
     /// <summary>
     /// 应用程序

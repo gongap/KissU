@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Util.Domains;
+using KissU.Util.Domains;
 
-namespace Util {
+namespace KissU.Util {
     /// <summary>
     /// 实体扩展
     /// </summary>

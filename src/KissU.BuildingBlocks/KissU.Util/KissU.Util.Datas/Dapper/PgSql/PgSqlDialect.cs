@@ -1,6 +1,6 @@
-﻿using Util.Datas.Sql.Builders.Core;
+﻿using KissU.Util.Datas.Sql.Builders.Core;
 
-namespace Util.Datas.Dapper.PgSql {
+namespace KissU.Util.Datas.Dapper.PgSql {
     /// <summary>
     /// PgSql方言
     /// </summary>

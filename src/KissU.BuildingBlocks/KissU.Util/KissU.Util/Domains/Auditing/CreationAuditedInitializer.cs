@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Util.Domains.Auditing {
+namespace KissU.Util.Domains.Auditing {
     /// <summary>
     /// 创建操作审计初始化器
     /// </summary>

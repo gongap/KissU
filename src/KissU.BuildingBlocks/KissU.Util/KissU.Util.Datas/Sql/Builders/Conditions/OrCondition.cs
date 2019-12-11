@@ -1,4 +1,4 @@
-﻿namespace Util.Datas.Sql.Builders.Conditions {
+﻿namespace KissU.Util.Datas.Sql.Builders.Conditions {
     /// <summary>
     /// Or连接条件
     /// </summary>

@@ -1,6 +1,6 @@
 ﻿using IdentityModel;
 
-namespace Util.Security.Claims {
+namespace KissU.Util.Security.Claims {
     /// <summary>
     /// 声明类型
     /// </summary>

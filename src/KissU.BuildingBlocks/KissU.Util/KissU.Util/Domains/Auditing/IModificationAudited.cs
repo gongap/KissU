@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Util.Domains.Auditing {
+namespace KissU.Util.Domains.Auditing {
     /// <summary>
     /// 修改操作审计
     /// </summary>

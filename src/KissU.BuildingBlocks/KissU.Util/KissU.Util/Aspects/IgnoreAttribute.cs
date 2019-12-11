@@ -1,4 +1,4 @@
-﻿namespace Util.Aspects {
+﻿namespace KissU.Util.Aspects {
     /// <summary>
     /// 忽略拦截
     /// </summary>

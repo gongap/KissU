@@ -2,15 +2,16 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Util;
+using KissU.Util.Exceptions;
+using KissU.Util.Security.Encryptors;
+using KissU.Util.Validations;
+
 namespace KissU.Modules.GreatWall.Domain.Models
 {
     using System.ComponentModel.DataAnnotations.Schema;
     using KissU.Modules.GreatWall.Domain.Shared;
     using KissU.Modules.GreatWall.Domain.Shared.Encryptors;
-    using Util;
-    using Util.Exceptions;
-    using Util.Security.Encryptors;
-    using Util.Validations;
 
     /// <summary>
     /// 用户

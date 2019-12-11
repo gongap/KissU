@@ -1,7 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Util.Webs.Razors;
+﻿using KissU.Util.Webs.Razors;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace Util.Webs.Extensions {
+namespace KissU.Util.Webs.Extensions {
     /// <summary>
     /// 服务扩展
     /// </summary>

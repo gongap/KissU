@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace Util.Logs.Abstractions {
+namespace KissU.Util.Logs.Abstractions {
     /// <summary>
     /// 日志提供程序
     /// </summary>

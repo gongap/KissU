@@ -1,11 +1,11 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using Util.Helpers;
-using Util.Properties;
-using Util.Sessions;
-using Util.Validations;
+using KissU.Util.Helpers;
+using KissU.Util.Properties;
+using KissU.Util.Sessions;
+using KissU.Util.Validations;
 
-namespace Util.Domains {
+namespace KissU.Util.Domains {
     /// <summary>
     /// 领域实体
     /// </summary>

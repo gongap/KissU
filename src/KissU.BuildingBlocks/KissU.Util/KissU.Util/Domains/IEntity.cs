@@ -1,4 +1,4 @@
-﻿namespace Util.Domains {
+﻿namespace KissU.Util.Domains {
     /// <summary>
     /// 实体
     /// </summary>

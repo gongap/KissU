@@ -1,4 +1,4 @@
-﻿namespace Util.Tools.QrCode {
+﻿namespace KissU.Util.Tools.QrCode {
     /// <summary>
     /// 容错级别
     /// </summary>

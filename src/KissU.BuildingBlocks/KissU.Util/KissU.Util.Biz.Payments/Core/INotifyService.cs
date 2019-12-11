@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Util.Validations;
+using KissU.Util.Validations;
 
-namespace Util.Biz.Payments.Core {
+namespace KissU.Util.Biz.Payments.Core {
     /// <summary>
     /// 支付通知服务
     /// </summary>

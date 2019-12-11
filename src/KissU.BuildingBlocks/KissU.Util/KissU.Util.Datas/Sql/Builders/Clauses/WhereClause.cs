@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using Util.Datas.Queries;
-using Util.Datas.Sql.Builders.Conditions;
-using Util.Datas.Sql.Builders.Core;
-using Util.Datas.Sql.Builders.Internal;
-using Util.Helpers;
-using Util.Properties;
+using KissU.Util.Datas.Queries;
+using KissU.Util.Datas.Sql.Builders.Conditions;
+using KissU.Util.Datas.Sql.Builders.Core;
+using KissU.Util.Datas.Sql.Builders.Internal;
+using KissU.Util.Helpers;
+using KissU.Util.Properties;
 
-namespace Util.Datas.Sql.Builders.Clauses {
+namespace KissU.Util.Datas.Sql.Builders.Clauses {
     /// <summary>
     /// Where子句
     /// </summary>

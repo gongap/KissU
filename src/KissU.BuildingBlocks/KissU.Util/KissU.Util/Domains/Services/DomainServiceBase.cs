@@ -1,8 +1,8 @@
-﻿using Util.Logs;
-using Util.Logs.Core;
-using Util.Sessions;
+﻿using KissU.Util.Logs;
+using KissU.Util.Logs.Core;
+using KissU.Util.Sessions;
 
-namespace Util.Domains.Services {
+namespace KissU.Util.Domains.Services {
     /// <summary>
     /// 领域服务
     /// </summary>

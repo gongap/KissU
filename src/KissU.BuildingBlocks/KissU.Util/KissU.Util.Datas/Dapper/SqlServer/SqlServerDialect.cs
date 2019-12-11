@@ -1,6 +1,6 @@
-﻿using Util.Datas.Sql.Builders.Core;
+﻿using KissU.Util.Datas.Sql.Builders.Core;
 
-namespace Util.Datas.Dapper.SqlServer {
+namespace KissU.Util.Datas.Dapper.SqlServer {
     /// <summary>
     /// Sql Server方言
     /// </summary>

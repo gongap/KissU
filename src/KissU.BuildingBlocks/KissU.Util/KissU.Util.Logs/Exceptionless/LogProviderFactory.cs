@@ -1,6 +1,6 @@
-﻿using Util.Logs.Abstractions;
+﻿using KissU.Util.Logs.Abstractions;
 
-namespace Util.Logs.Exceptionless {
+namespace KissU.Util.Logs.Exceptionless {
     /// <summary>
     /// Exceptionless日志提供程序工厂
     /// </summary>

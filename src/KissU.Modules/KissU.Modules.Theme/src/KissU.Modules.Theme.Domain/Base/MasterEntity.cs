@@ -2,13 +2,14 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Util.Domains;
+using KissU.Util.Domains.Auditing;
+
 namespace KissU.Modules.Theme.Domain.Base
 {
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
-    using Util.Domains;
-    using Util.Domains.Auditing;
 
     /// <summary>
     /// 主表

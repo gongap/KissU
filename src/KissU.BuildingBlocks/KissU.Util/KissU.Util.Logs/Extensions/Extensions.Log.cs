@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Util.Exceptions;
-using Util.Helpers;
-using Util.Logs.Contents;
-using Util.Logs.Properties;
+using KissU.Util.Exceptions;
+using KissU.Util.Helpers;
+using KissU.Util.Logs.Contents;
+using KissU.Util.Logs.Properties;
 
-namespace Util.Logs.Extensions {
+namespace KissU.Util.Logs.Extensions {
     /// <summary>
     /// 日志扩展
     /// </summary>
