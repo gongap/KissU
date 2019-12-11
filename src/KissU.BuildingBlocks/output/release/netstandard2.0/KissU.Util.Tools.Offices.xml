@@ -1,0 +1,1325 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>KissU.Util.Tools.Offices</name>
+    </assembly>
+    <members>
+        <member name="T:Util.Tools.Offices.Abstractions.IExcel">
+            <summary>
+            Excel操作
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Abstractions.IExcel.CreateWorkbook">
+            <summary>
+            创建工作薄
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Abstractions.IExcel.CreateSheet(System.String)">
+            <summary>
+            创建工作表
+            </summary>
+            <param name="sheetName">工作表名称</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Abstractions.IExcel.CreateRow(System.Int32)">
+            <summary>
+            创建行
+            </summary>
+            <param name="rowIndex">行索引</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Abstractions.IExcel.CreateCell(Util.Tools.Offices.Cell)">
+            <summary>
+            创建单元格
+            </summary>
+            <param name="cell">单元格</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Abstractions.IExcel.Write(System.IO.Stream)">
+            <summary>
+            写入流
+            </summary>
+            <param name="stream">流</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Abstractions.IExcel.DateFormat(System.String)">
+            <summary>
+            设置日期格式
+            </summary>
+            <param name="format">日期格式，默认"yyyy-mm-dd"</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Abstractions.IExcel.MergeCell(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            合并单元格
+            </summary>
+            <param name="startRowIndex">起始行索引</param>
+            <param name="endRowIndex">结束行索引</param>
+            <param name="startColumnIndex">起始列索引</param>
+            <param name="endColumnIndex">结束列索引</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Abstractions.IExcel.MergeCell(Util.Tools.Offices.Cell)">
+            <summary>
+            合并单元格
+            </summary>
+            <param name="cell">单元格</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Abstractions.IExcel.HeadStyle(Util.Tools.Offices.Core.Table,Util.Tools.Offices.CellStyle)">
+            <summary>
+            设置表头样式
+            </summary>
+            <param name="table">表格</param>
+            <param name="style">单元格样式</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Abstractions.IExcel.BodyStyle(Util.Tools.Offices.Core.Table,Util.Tools.Offices.CellStyle)">
+            <summary>
+            设置正文样式
+            </summary>
+            <param name="table">表格</param>
+            <param name="style">单元格样式</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Abstractions.IExcel.FootStyle(Util.Tools.Offices.Core.Table,Util.Tools.Offices.CellStyle)">
+            <summary>
+            设置页脚样式
+            </summary>
+            <param name="table">表格</param>
+            <param name="style">单元格样式</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Abstractions.IExcel.ColumnWidth(System.Int32,System.Int32)">
+            <summary>
+            列宽
+            </summary>
+            <param name="columnIndex">列索引</param>
+            <param name="width">列宽度，设置字符数</param>
+        </member>
+        <member name="T:Util.Tools.Offices.Cell">
+            <summary>
+            单元格
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Cell.#ctor(System.Object,System.Int32,System.Int32)">
+            <summary>
+            初始化单元格
+            </summary>
+            <param name="value">值</param>
+            <param name="columnSpan">列跨度</param>
+            <param name="rowSpan">行跨度</param>
+        </member>
+        <member name="P:Util.Tools.Offices.Cell.Row">
+            <summary>
+            行
+            </summary>
+        </member>
+        <member name="P:Util.Tools.Offices.Cell.Value">
+            <summary>
+            值
+            </summary>
+        </member>
+        <member name="P:Util.Tools.Offices.Cell.ColumnSpan">
+            <summary>
+            列跨度
+            </summary>
+        </member>
+        <member name="P:Util.Tools.Offices.Cell.RowSpan">
+            <summary>
+            行跨度
+            </summary>
+        </member>
+        <member name="P:Util.Tools.Offices.Cell.RowIndex">
+            <summary>
+            行索引
+            </summary>
+        </member>
+        <member name="P:Util.Tools.Offices.Cell.ColumnIndex">
+            <summary>
+            列索引
+            </summary>
+        </member>
+        <member name="P:Util.Tools.Offices.Cell.EndRowIndex">
+            <summary>
+            结束行索引
+            </summary>
+        </member>
+        <member name="P:Util.Tools.Offices.Cell.EndColumnIndex">
+            <summary>
+            结束列索引
+            </summary>
+        </member>
+        <member name="P:Util.Tools.Offices.Cell.NeedMerge">
+            <summary>
+            是否需要合并单元格
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Cell.IsNull">
+            <summary>
+            是否为空单元格
+            </summary>
+        </member>
+        <member name="T:Util.Tools.Offices.CellStyle">
+            <summary>
+            单元格样式
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.CellStyle.#ctor">
+            <summary>
+            初始化单元格样式
+            </summary>
+        </member>
+        <member name="P:Util.Tools.Offices.CellStyle.Alignment">
+            <summary>
+            水平对齐
+            </summary>
+        </member>
+        <member name="P:Util.Tools.Offices.CellStyle.VerticalAlignment">
+            <summary>
+            垂直对齐
+            </summary>
+        </member>
+        <member name="P:Util.Tools.Offices.CellStyle.BackgroundColor">
+            <summary>
+            背景色
+            </summary>
+        </member>
+        <member name="P:Util.Tools.Offices.CellStyle.FillPattern">
+            <summary>
+            填充模式
+            </summary>
+        </member>
+        <member name="P:Util.Tools.Offices.CellStyle.BorderColor">
+            <summary>
+            边框色
+            </summary>
+        </member>
+        <member name="P:Util.Tools.Offices.CellStyle.FontSize">
+            <summary>
+            字号
+            </summary>
+        </member>
+        <member name="P:Util.Tools.Offices.CellStyle.FontColor">
+            <summary>
+            字体颜色
+            </summary>
+        </member>
+        <member name="P:Util.Tools.Offices.CellStyle.FontBoldWeight">
+            <summary>
+            字体加粗
+            </summary>
+        </member>
+        <member name="P:Util.Tools.Offices.CellStyle.IsWrap">
+            <summary>
+            内容是否自动换行
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.CellStyle.Head">
+            <summary>
+            创建表头样式
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.CellStyle.Body">
+            <summary>
+            创建正文样式
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.CellStyle.Foot">
+            <summary>
+            创建页脚样式
+            </summary>
+        </member>
+        <member name="T:Util.Tools.Offices.Core.Color">
+            <summary>
+            颜色
+            </summary>
+        </member>
+        <member name="T:Util.Tools.Offices.Core.ExcelExportBase">
+            <summary>
+            Excel导出
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.ExcelExportBase.#ctor(Util.Tools.Offices.ExportFormat,Util.Tools.Offices.Abstractions.IExcel)">
+            <summary>
+            初始化Excel导出
+            </summary>
+            <param name="format">导出格式</param>
+            <param name="excel">Excel操作</param>
+        </member>
+        <member name="F:Util.Tools.Offices.Core.ExcelExportBase._excel">
+            <summary>
+            Excel操作
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.ExcelExportBase.ColumnWidth(System.Int32,System.Int32)">
+            <summary>
+            列宽
+            </summary>
+            <param name="columnIndex">列索引</param>
+            <param name="width">宽度</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.ExcelExportBase.DateFormat(System.String)">
+            <summary>
+            设置日期格式
+            </summary>
+            <param name="format">日期格式，默认"yyyy-mm-dd"</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.ExcelExportBase.WriteStream(System.IO.Stream)">
+            <summary>
+            写入流
+            </summary>
+            <param name="stream">流</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.ExcelExportBase.AddHeader">
+            <summary>
+            添加表头
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.ExcelExportBase.CreateRows(System.Collections.Generic.IEnumerable{Util.Tools.Offices.Core.Row})">
+            <summary>
+            创建行
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.ExcelExportBase.AddBody">
+            <summary>
+            添加正文
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.ExcelExportBase.AddFoot">
+            <summary>
+            添加页脚
+            </summary>
+        </member>
+        <member name="T:Util.Tools.Offices.Core.ExportBase">
+            <summary>
+            导出器
+            </summary>
+        </member>
+        <member name="F:Util.Tools.Offices.Core.ExportBase.Table">
+            <summary>
+            表
+            </summary>
+        </member>
+        <member name="F:Util.Tools.Offices.Core.ExportBase._format">
+            <summary>
+            导出格式
+            </summary>
+        </member>
+        <member name="F:Util.Tools.Offices.Core.ExportBase._headStyle">
+            <summary>
+            表头样式
+            </summary>
+        </member>
+        <member name="F:Util.Tools.Offices.Core.ExportBase._bodyStyle">
+            <summary>
+            正文样式
+            </summary>
+        </member>
+        <member name="F:Util.Tools.Offices.Core.ExportBase._footStyle">
+            <summary>
+            页脚样式
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.ExportBase.#ctor(Util.Tools.Offices.ExportFormat)">
+            <summary>
+            初始化导出
+            </summary>
+            <param name="format">导出格式</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.ExportBase.ColumnWidth(System.Int32,System.Int32)">
+            <summary>
+            列宽
+            </summary>
+            <param name="columnIndex">列索引</param>
+            <param name="width">宽度</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.ExportBase.DateFormat(System.String)">
+            <summary>
+            设置日期格式
+            </summary>
+            <param name="format">日期格式，默认"yyyy-mm-dd"</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.ExportBase.HeadStyle(Util.Tools.Offices.CellStyle)">
+            <summary>
+            设置表头样式
+            </summary>
+            <param name="style">表头单元格样式</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.ExportBase.GetHeadStyle">
+            <summary>
+            获取表头样式
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.ExportBase.BodyStyle(Util.Tools.Offices.CellStyle)">
+            <summary>
+            设置正文样式
+            </summary>
+            <param name="style">单元格样式</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.ExportBase.GetBodyStyle">
+            <summary>
+            获取正文样式
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.ExportBase.FootStyle(Util.Tools.Offices.CellStyle)">
+            <summary>
+            设置页脚样式
+            </summary>
+            <param name="style">单元格样式</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.ExportBase.GetFootStyle">
+            <summary>
+            获取页脚样式
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.ExportBase.Head(System.String[])">
+            <summary>
+            添加表头
+            </summary>
+            <param name="titles">列标题</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.ExportBase.Head(Util.Tools.Offices.Cell[])">
+            <summary>
+            添加表头
+            </summary>
+            <param name="cells">表头</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.ExportBase.Body``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            添加正文
+            </summary>
+            <typeparam name="T">实体类型</typeparam>
+            <param name="list">实体集合</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.ExportBase.Body``1(System.Collections.Generic.IEnumerable{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Object[]}})">
+            <summary>
+            添加正文
+            </summary>
+            <typeparam name="T">实体类型</typeparam>
+            <param name="list">实体集合</param>
+            <param name="propertiesExpression">属性表达式</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.ExportBase.Body``1(System.Collections.Generic.IEnumerable{``0},System.String[])">
+            <summary>
+            添加正文
+            </summary>
+            <typeparam name="T">实体类型</typeparam>
+            <param name="data">数据</param>
+            <param name="propertyNames">属性列表</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.ExportBase.AddEntity``1(``0,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            添加实体
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.ExportBase.GetPropertyValues``1(``0,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            获取属性值集合
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.ExportBase.AdjustColumnWidth``1(``0,System.String[])">
+            <summary>
+            调整列宽
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.ExportBase.AdjustColumnWidth(System.Reflection.PropertyInfo,System.Int32)">
+            <summary>
+            调整列宽
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.ExportBase.Foot(System.String[])">
+            <summary>
+            添加页脚
+            </summary>
+            <param name="values">值</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.ExportBase.Foot(Util.Tools.Offices.Cell[])">
+            <summary>
+            添加页脚
+            </summary>
+            <param name="cells">单元格集合</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.ExportBase.Write(System.String,System.String)">
+            <summary>
+            写入文件
+            </summary>
+            <param name="directory">目录，不包括文件名</param>
+            <param name="fileName">文件名，不包括扩展名</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.ExportBase.GetFilePath(System.String,System.String)">
+            <summary>
+            获取文件路径
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.ExportBase.GetFileName(System.String)">
+            <summary>
+            获取文件名
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.ExportBase.WriteStream(System.IO.Stream)">
+            <summary>
+            写入流
+            </summary>
+            <param name="stream">流</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.ExportBase.DownloadAsync(System.String)">
+            <summary>
+            下载
+            </summary>
+            <param name="fileName">文件名，不包括扩展名</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.ExportBase.DownloadAsync(System.String,System.Text.Encoding)">
+            <summary>
+            下载
+            </summary>
+            <param name="fileName">文件名，不包括扩展名</param>
+            <param name="encoding">字符编码</param>
+        </member>
+        <member name="T:Util.Tools.Offices.Core.FillPattern">
+            <summary>
+            填充模式
+            </summary>
+        </member>
+        <member name="T:Util.Tools.Offices.Core.HorizontalAlignment">
+            <summary>
+            水平对齐
+            </summary>
+        </member>
+        <member name="F:Util.Tools.Offices.Core.HorizontalAlignment.Left">
+            <summary>
+            左对齐
+            </summary>
+        </member>
+        <member name="F:Util.Tools.Offices.Core.HorizontalAlignment.Right">
+            <summary>
+            右对齐
+            </summary>
+        </member>
+        <member name="F:Util.Tools.Offices.Core.HorizontalAlignment.Center">
+            <summary>
+            居中对齐
+            </summary>
+        </member>
+        <member name="T:Util.Tools.Offices.Core.IndexManager">
+            <summary>
+            索引管理器
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.IndexManager.#ctor">
+            <summary>
+            初始化索引管理器
+            </summary>
+        </member>
+        <member name="F:Util.Tools.Offices.Core.IndexManager._list">
+            <summary>
+            索引列表
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.IndexManager.GetIndex(System.Int32)">
+            <summary>
+            获取索引
+            </summary>
+            <param name="span">跨度</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.IndexManager.AddIndex(System.Int32,System.Int32)">
+            <summary>
+            添加索引
+            </summary>
+            <param name="index">索引</param>
+            <param name="span">跨度</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.IndexManager.AddIndex(Util.Tools.Offices.Core.IndexRange,System.Int32,System.Int32)">
+            <summary>
+            添加索引
+            </summary>
+        </member>
+        <member name="T:Util.Tools.Offices.Core.IndexRange">
+            <summary>
+            索引范围
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.IndexRange.#ctor(System.Int32,System.Int32)">
+            <summary>
+            初始化索引范围
+            </summary>
+            <param name="index">当前索引</param>
+            <param name="endIndex">结束索引</param>
+        </member>
+        <member name="P:Util.Tools.Offices.Core.IndexRange.Index">
+            <summary>
+            当前索引
+            </summary>
+        </member>
+        <member name="P:Util.Tools.Offices.Core.IndexRange.EndIndex">
+            <summary>
+            结束索引
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.IndexRange.GetIndex(System.Int32)">
+            <summary>
+            获取索引
+            </summary>
+            <param name="span">跨度</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.IndexRange.Contains(System.Int32)">
+            <summary>
+            判断是否包含该索引
+            </summary>
+            <param name="index">索引</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.IndexRange.Split(System.Int32,System.Int32)">
+            <summary>
+            分割索引范围
+            </summary>
+            <param name="index">索引</param>
+            <param name="span">跨度</param>
+        </member>
+        <member name="P:Util.Tools.Offices.Core.IndexRange.IsEnd">
+            <summary>
+            是否已结束
+            </summary>
+        </member>
+        <member name="T:Util.Tools.Offices.Core.NullCell">
+            <summary>
+            空单元格
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.NullCell.#ctor">
+            <summary>
+            初始化空单元格
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.NullCell.IsNull">
+            <summary>
+            是否为空
+            </summary>
+        </member>
+        <member name="T:Util.Tools.Offices.Core.Range">
+            <summary>
+            区
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.Range.#ctor(System.Int32)">
+            <summary>
+            初始化区
+            </summary>
+            <param name="startIndex">起始索引</param>
+        </member>
+        <member name="F:Util.Tools.Offices.Core.Range._rows">
+            <summary>
+            行集
+            </summary>
+        </member>
+        <member name="F:Util.Tools.Offices.Core.Range._startIndex">
+            <summary>
+            起始索引
+            </summary>
+        </member>
+        <member name="P:Util.Tools.Offices.Core.Range.Item(System.Int32)">
+            <summary>
+            获取行
+            </summary>
+            <param name="index">索引</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.Range.GetRow(System.Int32)">
+            <summary>
+            获取行
+            </summary>
+            <param name="index">外部索引</param>
+        </member>
+        <member name="P:Util.Tools.Offices.Core.Range.ColumnNumber">
+            <summary>
+            列数
+            </summary>
+        </member>
+        <member name="P:Util.Tools.Offices.Core.Range.Count">
+            <summary>
+            行数
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.Range.GetRows">
+            <summary>
+            获取行
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.Range.AddRow(System.Int32,System.Collections.Generic.IEnumerable{Util.Tools.Offices.Cell})">
+            <summary>
+            添加行
+            </summary>
+            <param name="rowIndex">行索引</param>
+            <param name="cells">单元格集合</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.Range.CreateRow(System.Int32)">
+            <summary>
+            创建行
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.Range.AddCell(Util.Tools.Offices.Core.Row,Util.Tools.Offices.Cell,System.Int32)">
+            <summary>
+            添加单元格
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.Range.AddPlaceholderCell(Util.Tools.Offices.Cell,System.Int32)">
+            <summary>
+            为下方受rowspan影响的行添加占位单元格
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.Range.Clear">
+            <summary>
+            清空
+            </summary>
+        </member>
+        <member name="T:Util.Tools.Offices.Core.Row">
+            <summary>
+            行
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.Row.#ctor(System.Int32)">
+            <summary>
+            初始化行
+            </summary>
+            <param name="rowIndex">行索引</param>
+        </member>
+        <member name="F:Util.Tools.Offices.Core.Row._indexManager">
+            <summary>
+            索引管理器
+            </summary>
+        </member>
+        <member name="P:Util.Tools.Offices.Core.Row.Cells">
+            <summary>
+            单元格列表
+            </summary>
+        </member>
+        <member name="P:Util.Tools.Offices.Core.Row.Item(System.Int32)">
+            <summary>
+            获取单元格
+            </summary>
+            <param name="index">索引</param>
+        </member>
+        <member name="P:Util.Tools.Offices.Core.Row.ColumnNumber">
+            <summary>
+            列数
+            </summary>
+        </member>
+        <member name="P:Util.Tools.Offices.Core.Row.RowIndex">
+            <summary>
+            行索引
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.Row.Add(System.Object,System.Int32,System.Int32)">
+            <summary>
+            添加单元格
+            </summary>
+            <param name="value">值</param>
+            <param name="columnSpan">列跨度</param>
+            <param name="rowSpan">行跨度</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.Row.Add(Util.Tools.Offices.Cell)">
+            <summary>
+            添加单元格
+            </summary>
+            <param name="cell">单元格</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.Row.SetColumnIndex(Util.Tools.Offices.Cell)">
+            <summary>
+            设置列索引
+            </summary>
+        </member>
+        <member name="T:Util.Tools.Offices.Core.Table">
+            <summary>
+            表格
+            </summary>
+        </member>
+        <member name="F:Util.Tools.Offices.Core.Table._header">
+            <summary>
+            头部
+            </summary>
+        </member>
+        <member name="F:Util.Tools.Offices.Core.Table._body">
+            <summary>
+            正文
+            </summary>
+        </member>
+        <member name="F:Util.Tools.Offices.Core.Table._footer">
+            <summary>
+            底部
+            </summary>
+        </member>
+        <member name="F:Util.Tools.Offices.Core.Table._rowIndex">
+            <summary>
+            当前行索引
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.Table.#ctor">
+            <summary>
+            初始化表格
+            </summary>
+        </member>
+        <member name="P:Util.Tools.Offices.Core.Table.Title">
+            <summary>
+            总标题
+            </summary>
+        </member>
+        <member name="P:Util.Tools.Offices.Core.Table.ColumnNumber">
+            <summary>
+            列数
+            </summary>
+        </member>
+        <member name="P:Util.Tools.Offices.Core.Table.HeadRowCount">
+            <summary>
+            表头行数
+            </summary>
+        </member>
+        <member name="P:Util.Tools.Offices.Core.Table.BodyRowCount">
+            <summary>
+            正文行数
+            </summary>
+        </member>
+        <member name="P:Util.Tools.Offices.Core.Table.FootRowCount">
+            <summary>
+            页脚行数
+            </summary>
+        </member>
+        <member name="P:Util.Tools.Offices.Core.Table.Count">
+            <summary>
+            总行数
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.Table.GetHeader">
+            <summary>
+            获取表头
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.Table.GetBody">
+            <summary>
+            获取表格正文
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.Table.GetFooter">
+            <summary>
+            获取页脚
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.Table.AddHeadRow(System.String[])">
+            <summary>
+            添加表头
+            </summary>
+            <param name="titles">标题</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.Table.AddHeadRow(Util.Tools.Offices.Cell[])">
+            <summary>
+            添加表头
+            </summary>
+            <param name="cells">表头</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.Table.AddRowToHeader(System.Collections.Generic.IEnumerable{Util.Tools.Offices.Cell})">
+            <summary>
+            添加表头行
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.Table.ResetFirstColumnSpan">
+            <summary>
+            重置第一行的列跨度，第一行可能为总标题
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.Table.AddBodyRow(System.Object[])">
+            <summary>
+            添加正文
+            </summary>
+            <param name="cellValues">值</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.Table.AddBodyRow(System.Collections.Generic.IEnumerable{Util.Tools.Offices.Cell})">
+            <summary>
+            添加正文
+            </summary>
+            <param name="cells">单元格集合</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.Table.GetBodyRange">
+            <summary>
+            获取正文区域
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.Table.AddFootRow(System.String[])">
+            <summary>
+            添加页脚
+            </summary>
+            <param name="cellValues">值</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.Table.AddFootRow(Util.Tools.Offices.Cell[])">
+            <summary>
+            添加页脚
+            </summary>
+            <param name="cells">单元格集合</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.Table.GetFootRange">
+            <summary>
+            获取页脚区域
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Core.Table.ClearHeader">
+            <summary>
+            清空表头
+            </summary>
+        </member>
+        <member name="T:Util.Tools.Offices.Core.VerticalAlignment">
+            <summary>
+            垂直对齐
+            </summary>
+        </member>
+        <member name="F:Util.Tools.Offices.Core.VerticalAlignment.Top">
+            <summary>
+            顶部对齐
+            </summary>
+        </member>
+        <member name="F:Util.Tools.Offices.Core.VerticalAlignment.Bottom">
+            <summary>
+            底部对齐
+            </summary>
+        </member>
+        <member name="F:Util.Tools.Offices.Core.VerticalAlignment.Center">
+            <summary>
+            居中对齐
+            </summary>
+        </member>
+        <member name="T:Util.Tools.Offices.ExportFormat">
+            <summary>
+            导出格式
+            </summary>
+        </member>
+        <member name="F:Util.Tools.Offices.ExportFormat.Xls">
+            <summary>
+            Excel 2003
+            </summary>
+        </member>
+        <member name="F:Util.Tools.Offices.ExportFormat.Xlsx">
+            <summary>
+            Excel 2007+
+            </summary>
+        </member>
+        <member name="T:Util.Tools.Offices.Extensions">
+            <summary>
+            Office操作扩展
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Extensions.AddNpoi(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            注册Npoi Office操作服务
+            </summary>
+            <param name="services">服务集合</param>
+        </member>
+        <member name="T:Util.Tools.Offices.IExport">
+            <summary>
+            文件导出器
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.IExport.DateFormat(System.String)">
+            <summary>
+            设置日期格式
+            </summary>
+            <param name="format">日期格式，默认"yyyy-mm-dd"</param>
+        </member>
+        <member name="M:Util.Tools.Offices.IExport.ColumnWidth(System.Int32,System.Int32)">
+            <summary>
+            列宽
+            </summary>
+            <param name="columnIndex">列索引</param>
+            <param name="width">宽度</param>
+        </member>
+        <member name="M:Util.Tools.Offices.IExport.HeadStyle(Util.Tools.Offices.CellStyle)">
+            <summary>
+            设置表头样式
+            </summary>
+            <param name="style">单元格样式</param>
+        </member>
+        <member name="M:Util.Tools.Offices.IExport.BodyStyle(Util.Tools.Offices.CellStyle)">
+            <summary>
+            设置正文样式
+            </summary>
+            <param name="style">单元格样式</param>
+        </member>
+        <member name="M:Util.Tools.Offices.IExport.FootStyle(Util.Tools.Offices.CellStyle)">
+            <summary>
+            设置页脚样式
+            </summary>
+            <param name="style">单元格样式</param>
+        </member>
+        <member name="M:Util.Tools.Offices.IExport.Head(System.String[])">
+            <summary>
+            添加表头
+            </summary>
+            <param name="titles">列标题</param>
+        </member>
+        <member name="M:Util.Tools.Offices.IExport.Head(Util.Tools.Offices.Cell[])">
+            <summary>
+            添加表头
+            </summary>
+            <param name="cells">单元格集合</param>
+        </member>
+        <member name="M:Util.Tools.Offices.IExport.Body``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            添加正文
+            </summary>
+            <typeparam name="T">实体类型</typeparam>
+            <param name="list">实体集合</param>
+        </member>
+        <member name="M:Util.Tools.Offices.IExport.Body``1(System.Collections.Generic.IEnumerable{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Object[]}})">
+            <summary>
+            添加正文
+            </summary>
+            <typeparam name="T">实体类型</typeparam>
+            <param name="list">实体集合</param>
+            <param name="propertiesExpression">属性列表表达式，范例：t => new object[]{t.A,t.B}</param>
+        </member>
+        <member name="M:Util.Tools.Offices.IExport.Body``1(System.Collections.Generic.IEnumerable{``0},System.String[])">
+            <summary>
+            添加正文
+            </summary>
+            <typeparam name="T">实体类型</typeparam>
+            <param name="list">实体集合</param>
+            <param name="propertyNames">属性列表,范例："A","B"</param>
+        </member>
+        <member name="M:Util.Tools.Offices.IExport.Foot(System.String[])">
+            <summary>
+            添加页脚
+            </summary>
+            <param name="values">值</param>
+        </member>
+        <member name="M:Util.Tools.Offices.IExport.Foot(Util.Tools.Offices.Cell[])">
+            <summary>
+            添加页脚
+            </summary>
+            <param name="cells">单元格集合</param>
+        </member>
+        <member name="M:Util.Tools.Offices.IExport.Write(System.String,System.String)">
+            <summary>
+            写入文件
+            </summary>
+            <param name="directory">目录，不包括文件名</param>
+            <param name="fileName">文件名，不包括扩展名</param>
+        </member>
+        <member name="M:Util.Tools.Offices.IExport.DownloadAsync(System.String)">
+            <summary>
+            下载
+            </summary>
+            <param name="fileName">文件名，不包括扩展名</param>
+        </member>
+        <member name="M:Util.Tools.Offices.IExport.DownloadAsync(System.String,System.Text.Encoding)">
+            <summary>
+            下载
+            </summary>
+            <param name="fileName">文件名，不包括扩展名</param>
+            <param name="encoding">字符编码</param>
+        </member>
+        <member name="T:Util.Tools.Offices.IExportFactory">
+            <summary>
+            文件导出工厂
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.IExportFactory.Create(Util.Tools.Offices.ExportFormat)">
+            <summary>
+            创建文件导出
+            </summary>
+            <param name="format">导出格式</param>
+        </member>
+        <member name="T:Util.Tools.Offices.Npoi.CellStyleResolver">
+            <summary>
+            单元格样式解析器
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Npoi.CellStyleResolver.#ctor(NPOI.SS.UserModel.IWorkbook,Util.Tools.Offices.CellStyle)">
+            <summary>
+            初始化单元格样式解析器
+            </summary>
+            <param name="workbook">工作薄</param>
+            <param name="style">单元格样式</param>
+        </member>
+        <member name="F:Util.Tools.Offices.Npoi.CellStyleResolver._workbook">
+            <summary>
+            工作薄
+            </summary>
+        </member>
+        <member name="F:Util.Tools.Offices.Npoi.CellStyleResolver._style">
+            <summary>
+            单元格样式
+            </summary>
+        </member>
+        <member name="F:Util.Tools.Offices.Npoi.CellStyleResolver._result">
+            <summary>
+            单元格样式
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Npoi.CellStyleResolver.Resolve">
+            <summary>
+            解析为Npoi单元格样式
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Npoi.CellStyleResolver.GetHorizontalAlignment">
+            <summary>
+            获取水平对齐
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Npoi.CellStyleResolver.GetVerticalAlignment">
+            <summary>
+            获取垂直对齐
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Npoi.CellStyleResolver.SetBackgroundColor">
+            <summary>
+            设置背景色
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Npoi.CellStyleResolver.SetFillPattern">
+            <summary>
+            设置填充模式
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Npoi.CellStyleResolver.SetBorderColor">
+            <summary>
+            设置边框颜色
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Npoi.CellStyleResolver.SetFont">
+            <summary>
+            设置字体
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Npoi.CellStyleResolver.Resolve(NPOI.SS.UserModel.IWorkbook,Util.Tools.Offices.CellStyle)">
+            <summary>
+            解析单元格样式
+            </summary>
+            <param name="workbook">工作薄</param>
+            <param name="style">单元格样式</param>
+        </member>
+        <member name="T:Util.Tools.Offices.Npoi.ColorResolver">
+            <summary>
+            颜色转换
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Npoi.ColorResolver.Resolve(Util.Tools.Offices.Core.Color)">
+            <summary>
+            转换
+            </summary>
+            <param name="color">颜色枚举</param>
+        </member>
+        <member name="T:Util.Tools.Offices.Npoi.Excel2003">
+            <summary>
+            Npoi Excel2003操作
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Npoi.Excel2003.GetWorkbook">
+            <summary>
+            创建工作薄
+            </summary>
+        </member>
+        <member name="T:Util.Tools.Offices.Npoi.Excel2003Export">
+            <summary>
+            Npoi Excel2003 导出操作
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Npoi.Excel2003Export.#ctor">
+            <summary>
+            初始化Npoi Excel2003 导出操作
+            </summary>
+        </member>
+        <member name="T:Util.Tools.Offices.Npoi.Excel2007">
+            <summary>
+            Npoi Excel2007操作
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Npoi.Excel2007.GetWorkbook">
+            <summary>
+            创建工作薄
+            </summary>
+        </member>
+        <member name="T:Util.Tools.Offices.Npoi.Excel2007Export">
+            <summary>
+            Npoi Excel2007 导出操作
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Npoi.Excel2007Export.#ctor">
+            <summary>
+            初始化Npoi Excel2003 导出操作
+            </summary>
+        </member>
+        <member name="T:Util.Tools.Offices.Npoi.ExcelBase">
+            <summary>
+            Npoi Excel操作
+            </summary>
+        </member>
+        <member name="F:Util.Tools.Offices.Npoi.ExcelBase._workbook">
+            <summary>
+            Excel工作薄
+            </summary>
+        </member>
+        <member name="F:Util.Tools.Offices.Npoi.ExcelBase._sheet">
+            <summary>
+            Excel工作表
+            </summary>
+        </member>
+        <member name="F:Util.Tools.Offices.Npoi.ExcelBase._row">
+            <summary>
+            当前行
+            </summary>
+        </member>
+        <member name="F:Util.Tools.Offices.Npoi.ExcelBase._cell">
+            <summary>
+            当前单元格
+            </summary>
+        </member>
+        <member name="F:Util.Tools.Offices.Npoi.ExcelBase._dateFormat">
+            <summary>
+            日期格式
+            </summary>
+        </member>
+        <member name="F:Util.Tools.Offices.Npoi.ExcelBase._headStyle">
+            <summary>
+            表头样式
+            </summary>
+        </member>
+        <member name="F:Util.Tools.Offices.Npoi.ExcelBase._bodyStyle">
+            <summary>
+            正文样式
+            </summary>
+        </member>
+        <member name="F:Util.Tools.Offices.Npoi.ExcelBase._footStyle">
+            <summary>
+            页脚样式
+            </summary>
+        </member>
+        <member name="F:Util.Tools.Offices.Npoi.ExcelBase._dateStyle">
+            <summary>
+            日期样式
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Npoi.ExcelBase.#ctor">
+            <summary>
+            初始化Npoi操作
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Npoi.ExcelBase.CreateWorkbook">
+            <summary>
+            创建工作薄
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Npoi.ExcelBase.GetWorkbook">
+            <summary>
+            创建工作薄
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Npoi.ExcelBase.CreateSheet(System.String)">
+            <summary>
+            创建工作表
+            </summary>
+            <param name="sheetName">工作表名称</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Npoi.ExcelBase.CreateRow(System.Int32)">
+            <summary>
+            创建行
+            </summary>
+            <param name="rowIndex">行索引</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Npoi.ExcelBase.GetOrCreateRow(System.Int32)">
+            <summary>
+            获取行，如果不存在则创建
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Npoi.ExcelBase.CreateCell(Util.Tools.Offices.Cell)">
+            <summary>
+            创建单元格
+            </summary>
+            <param name="cell">单元格</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Npoi.ExcelBase.GetOrCreateCell(NPOI.SS.UserModel.IRow,System.Int32)">
+            <summary>
+            获取单元格，如果不存在则创建
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Npoi.ExcelBase.SetCellValue(System.Object)">
+            <summary>
+            设置单元格的值
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Npoi.ExcelBase.MergeCell(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            合并单元格
+            </summary>
+            <param name="startRowIndex">起始行索引</param>
+            <param name="endRowIndex">结束行索引</param>
+            <param name="startColumnIndex">起始列索引</param>
+            <param name="endColumnIndex">结束列索引</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Npoi.ExcelBase.MergeCell(Util.Tools.Offices.Cell)">
+            <summary>
+            合并单元格
+            </summary>
+            <param name="cell">单元格</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Npoi.ExcelBase.Write(System.IO.Stream)">
+            <summary>
+            写入流
+            </summary>
+            <param name="stream">流</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Npoi.ExcelBase.CreateDateStyle">
+            <summary>
+            创建日期样式
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Npoi.ExcelBase.Style(System.Int32,System.Int32,System.Int32,System.Int32,NPOI.SS.UserModel.ICellStyle)">
+            <summary>
+            设置样式
+            </summary>
+            <param name="startRowIndex">起始行索引</param>
+            <param name="endRowIndex">结束行索引</param>
+            <param name="startColumnIndex">起始列索引</param>
+            <param name="endColumnIndex">结束列索引</param>
+            <param name="style">单元格样式</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Npoi.ExcelBase.HeadStyle(Util.Tools.Offices.Core.Table,Util.Tools.Offices.CellStyle)">
+            <summary>
+            设置表头样式
+            </summary>
+            <param name="table">表格</param>
+            <param name="style">单元格样式</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Npoi.ExcelBase.BodyStyle(Util.Tools.Offices.Core.Table,Util.Tools.Offices.CellStyle)">
+            <summary>
+            设置正文样式
+            </summary>
+            <param name="table">表格</param>
+            <param name="style">单元格样式</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Npoi.ExcelBase.FootStyle(Util.Tools.Offices.Core.Table,Util.Tools.Offices.CellStyle)">
+            <summary>
+            设置页脚样式
+            </summary>
+            <param name="table">表格</param>
+            <param name="style">单元格样式</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Npoi.ExcelBase.DateFormat(System.String)">
+            <summary>
+            设置日期格式
+            </summary>
+            <param name="format">日期格式，默认"yyyy-mm-dd"</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Npoi.ExcelBase.ColumnWidth(System.Int32,System.Int32)">
+            <summary>
+            列宽
+            </summary>
+            <param name="columnIndex">列索引</param>
+            <param name="width">列宽度，设置字符数</param>
+        </member>
+        <member name="T:Util.Tools.Offices.Npoi.ExportFactory">
+            <summary>
+            导出操作工厂
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Npoi.ExportFactory.Create(Util.Tools.Offices.ExportFormat)">
+            <summary>
+            创建导出器
+            </summary>
+            <param name="format">导出格式</param>
+        </member>
+        <member name="M:Util.Tools.Offices.Npoi.ExportFactory.CreateExcel2003Export">
+            <summary>
+            创建Npoi Excel 2003导出器
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Offices.Npoi.ExportFactory.CreateExcel2007Export">
+            <summary>
+            创建Npoi Excel 2007导出器
+            </summary>
+        </member>
+    </members>
+</doc>

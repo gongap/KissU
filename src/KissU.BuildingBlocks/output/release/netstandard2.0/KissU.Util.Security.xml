@@ -1,0 +1,254 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>KissU.Util.Security</name>
+    </assembly>
+    <members>
+        <member name="T:Util.Security.Claims.ClaimTypes">
+            <summary>
+            声明类型
+            </summary>
+        </member>
+        <member name="P:Util.Security.Claims.ClaimTypes.UserId">
+            <summary>
+            电子邮件
+            </summary>
+        </member>
+        <member name="P:Util.Security.Claims.ClaimTypes.Email">
+            <summary>
+            电子邮件
+            </summary>
+        </member>
+        <member name="P:Util.Security.Claims.ClaimTypes.Mobile">
+            <summary>
+            手机号
+            </summary>
+        </member>
+        <member name="P:Util.Security.Claims.ClaimTypes.FullName">
+            <summary>
+            姓名
+            </summary>
+        </member>
+        <member name="P:Util.Security.Claims.ClaimTypes.ApplicationId">
+            <summary>
+            应用程序标识
+            </summary>
+        </member>
+        <member name="P:Util.Security.Claims.ClaimTypes.ApplicationCode">
+            <summary>
+            应用程序编码
+            </summary>
+        </member>
+        <member name="P:Util.Security.Claims.ClaimTypes.ApplicationName">
+            <summary>
+            应用程序名称
+            </summary>
+        </member>
+        <member name="P:Util.Security.Claims.ClaimTypes.TenantId">
+            <summary>
+            租户标识
+            </summary>
+        </member>
+        <member name="P:Util.Security.Claims.ClaimTypes.TenantCode">
+            <summary>
+            租户编码
+            </summary>
+        </member>
+        <member name="P:Util.Security.Claims.ClaimTypes.TenantName">
+            <summary>
+            租户名称
+            </summary>
+        </member>
+        <member name="P:Util.Security.Claims.ClaimTypes.RoleIds">
+            <summary>
+            角色标识列表
+            </summary>
+        </member>
+        <member name="P:Util.Security.Claims.ClaimTypes.RoleName">
+            <summary>
+            角色名
+            </summary>
+        </member>
+        <member name="T:Util.Security.Extensions">
+            <summary>
+            用户会话扩展
+            </summary>
+        </member>
+        <member name="M:Util.Security.Extensions.GetUserId(Util.Sessions.ISession)">
+            <summary>
+            获取当前操作人标识
+            </summary>
+            <param name="session">用户会话</param>
+        </member>
+        <member name="M:Util.Security.Extensions.GetUserId``1(Util.Sessions.ISession)">
+            <summary>
+            获取当前操作人标识
+            </summary>
+            <param name="session">用户会话</param>
+        </member>
+        <member name="M:Util.Security.Extensions.GetUserName(Util.Sessions.ISession)">
+            <summary>
+            获取当前操作人用户名
+            </summary>
+            <param name="session">用户会话</param>
+        </member>
+        <member name="M:Util.Security.Extensions.GetFullName(Util.Sessions.ISession)">
+            <summary>
+            获取当前操作人姓名
+            </summary>
+            <param name="session">用户会话</param>
+        </member>
+        <member name="M:Util.Security.Extensions.GetEmail(Util.Sessions.ISession)">
+            <summary>
+            获取当前操作人电子邮件
+            </summary>
+            <param name="session">用户会话</param>
+        </member>
+        <member name="M:Util.Security.Extensions.GetMobile(Util.Sessions.ISession)">
+            <summary>
+            获取当前操作人手机号
+            </summary>
+            <param name="session">用户会话</param>
+        </member>
+        <member name="M:Util.Security.Extensions.GetApplicationId(Util.Sessions.ISession)">
+            <summary>
+            获取当前应用程序标识
+            </summary>
+            <param name="session">用户会话</param>
+        </member>
+        <member name="M:Util.Security.Extensions.GetApplicationId``1(Util.Sessions.ISession)">
+            <summary>
+            获取当前应用程序标识
+            </summary>
+            <param name="session">用户会话</param>
+        </member>
+        <member name="M:Util.Security.Extensions.GetApplicationCode(Util.Sessions.ISession)">
+            <summary>
+            获取当前应用程序编码
+            </summary>
+            <param name="session">用户会话</param>
+        </member>
+        <member name="M:Util.Security.Extensions.GetApplicationName(Util.Sessions.ISession)">
+            <summary>
+            获取当前应用程序名称
+            </summary>
+            <param name="session">用户会话</param>
+        </member>
+        <member name="M:Util.Security.Extensions.GetTenantId(Util.Sessions.ISession)">
+            <summary>
+            获取当前租户标识
+            </summary>
+            <param name="session">用户会话</param>
+        </member>
+        <member name="M:Util.Security.Extensions.GetTenantId``1(Util.Sessions.ISession)">
+            <summary>
+            获取当前租户标识
+            </summary>
+            <param name="session">用户会话</param>
+        </member>
+        <member name="M:Util.Security.Extensions.GetTenantCode(Util.Sessions.ISession)">
+            <summary>
+            获取当前租户编码
+            </summary>
+            <param name="session">用户会话</param>
+        </member>
+        <member name="M:Util.Security.Extensions.GetTenantName(Util.Sessions.ISession)">
+            <summary>
+            获取当前租户名称
+            </summary>
+            <param name="session">用户会话</param>
+        </member>
+        <member name="M:Util.Security.Extensions.GetRoleIds(Util.Sessions.ISession)">
+            <summary>
+            获取当前操作人角色标识列表
+            </summary>
+            <param name="session">用户会话</param>
+        </member>
+        <member name="M:Util.Security.Extensions.GetRoleIds``1(Util.Sessions.ISession)">
+            <summary>
+            获取当前操作人角色标识列表
+            </summary>
+            <param name="session">用户会话</param>
+        </member>
+        <member name="M:Util.Security.Extensions.GetRoleName(Util.Sessions.ISession)">
+            <summary>
+            获取当前操作人角色名
+            </summary>
+            <param name="session">用户会话</param>
+        </member>
+        <member name="T:Util.Security.Sessions.SessionMiddlewareBase">
+            <summary>
+            用户会话中间件
+            </summary>
+        </member>
+        <member name="F:Util.Security.Sessions.SessionMiddlewareBase._next">
+            <summary>
+            方法
+            </summary>
+        </member>
+        <member name="M:Util.Security.Sessions.SessionMiddlewareBase.#ctor(Microsoft.AspNetCore.Http.RequestDelegate)">
+            <summary>
+            初始化用户会话中间件
+            </summary>
+            <param name="next">方法</param>
+        </member>
+        <member name="M:Util.Security.Sessions.SessionMiddlewareBase.Invoke(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            执行方法
+            </summary>
+            <param name="context">Http上下文</param>
+        </member>
+        <member name="M:Util.Security.Sessions.SessionMiddlewareBase.Authenticate(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            认证
+            </summary>
+        </member>
+        <member name="M:Util.Security.Sessions.SessionMiddlewareBase.AuthenticateBefore(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            认证前操作
+            </summary>
+            <param name="context">Http上下文</param>
+        </member>
+        <member name="M:Util.Security.Sessions.SessionMiddlewareBase.IsAuthenticated(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            是否认证
+            </summary>
+        </member>
+        <member name="M:Util.Security.Sessions.SessionMiddlewareBase.LoadClaims(Microsoft.AspNetCore.Http.HttpContext,System.Security.Claims.ClaimsIdentity)">
+            <summary>
+            加载声明列表
+            </summary>
+            <param name="context">Http上下文</param>
+            <param name="identity">身份标识</param>
+        </member>
+        <member name="M:Util.Security.Sessions.SessionMiddlewareBase.AuthenticateAfter(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            认证后操作
+            </summary>
+            <param name="context">Http上下文</param>
+        </member>
+        <member name="M:Util.Security.Sessions.SessionMiddlewareBase.GetService``1(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            获取服务
+            </summary>
+            <param name="context">Http上下文</param>
+            <typeparam name="T">服务类型</typeparam>
+        </member>
+        <member name="T:KissU.Util.Security.Properties.SecurityResource">
+            <summary>
+              一个强类型的资源类，用于查找本地化的字符串等。
+            </summary>
+        </member>
+        <member name="P:KissU.Util.Security.Properties.SecurityResource.ResourceManager">
+            <summary>
+              返回此类使用的缓存的 ResourceManager 实例。
+            </summary>
+        </member>
+        <member name="P:KissU.Util.Security.Properties.SecurityResource.Culture">
+            <summary>
+              重写当前线程的 CurrentUICulture 属性
+              重写当前线程的 CurrentUICulture 属性。
+            </summary>
+        </member>
+    </members>
+</doc>

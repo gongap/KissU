@@ -1,0 +1,1013 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>KissU.Util.Applications</name>
+    </assembly>
+    <members>
+        <member name="T:Util.Applications.Aspects.ICommitAfter">
+            <summary>
+            提交工作单元后操作
+            </summary>
+        </member>
+        <member name="M:Util.Applications.Aspects.ICommitAfter.CommitAfter">
+            <summary>
+            提交后操作
+            </summary>
+        </member>
+        <member name="T:Util.Applications.Aspects.UnitOfWorkAttribute">
+            <summary>
+            工作单元拦截器
+            </summary>
+        </member>
+        <member name="P:Util.Applications.Aspects.UnitOfWorkAttribute.Scope">
+            <summary>
+            作用域，当嵌套使用工作单元拦截器时，设置为Scope.Aspect，只有最外层工作单元拦截器生效
+            </summary>
+        </member>
+        <member name="M:Util.Applications.Aspects.UnitOfWorkAttribute.Invoke(AspectCore.DynamicProxy.AspectContext,AspectCore.DynamicProxy.AspectDelegate)">
+            <summary>
+            执行
+            </summary>
+        </member>
+        <member name="T:Util.Applications.CrudServiceBase`7">
+            <summary>
+            增删改查服务 - 批量Save
+            </summary>
+            <summary>
+            增删改查服务
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <typeparam name="TDto">数据传输对象类型</typeparam>
+            <typeparam name="TRequest">参数类型</typeparam>
+            <typeparam name="TCreateRequest">创建参数类型</typeparam>
+            <typeparam name="TUpdateRequest">修改参数类型</typeparam>
+            <typeparam name="TQueryParameter">查询参数类型</typeparam>
+            <typeparam name="TKey">实体标识类型</typeparam>
+            <summary>
+            增删改查服务 - Save
+            </summary>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.SaveAsync(System.Collections.Generic.List{`1},System.Collections.Generic.List{`1},System.Collections.Generic.List{`1})">
+            <summary>
+            批量保存
+            </summary>
+            <param name="creationList">新增列表</param>
+            <param name="updateList">修改列表</param>
+            <param name="deleteList">删除列表</param>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.FilterList(System.Collections.Generic.List{`1},System.Collections.Generic.List{`1},System.Collections.Generic.List{`1})">
+            <summary>
+            过滤列表
+            </summary>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.FilterByDeleteList(System.Collections.Generic.List{`1},System.Collections.Generic.List{`1})">
+            <summary>
+            过滤需要删除的项
+            </summary>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.ToEntities(System.Collections.Generic.List{`1})">
+            <summary>
+            转换为实体集合
+            </summary>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.SaveBefore(System.Collections.Generic.List{`0},System.Collections.Generic.List{`0},System.Collections.Generic.List{`0})">
+            <summary>
+            保存前操作
+            </summary>
+            <param name="creationList">新增列表</param>
+            <param name="updateList">修改列表</param>
+            <param name="deleteList">删除列表</param>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.AddListAsync(System.Collections.Generic.List{`0})">
+            <summary>
+            添加列表
+            </summary>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.UpdateListAsync(System.Collections.Generic.List{`0})">
+            <summary>
+            更新列表
+            </summary>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.DeleteListAsync(System.Collections.Generic.List{`0})">
+            <summary>
+            删除列表
+            </summary>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.DeleteChildsAsync(`0)">
+            <summary>
+            删除子节点集合
+            </summary>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.DeleteEntityAsync(`0)">
+            <summary>
+            删除实体
+            </summary>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.CommitAsync">
+            <summary>
+            提交
+            </summary>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.SaveAfter(System.Collections.Generic.List{`0},System.Collections.Generic.List{`0},System.Collections.Generic.List{`0})">
+            <summary>
+            保存后操作
+            </summary>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.GetResult(System.Collections.Generic.List{`0},System.Collections.Generic.List{`0})">
+            <summary>
+            获取结果
+            </summary>
+        </member>
+        <member name="F:Util.Applications.CrudServiceBase`7._unitOfWork">
+            <summary>
+            工作单元
+            </summary>
+        </member>
+        <member name="F:Util.Applications.CrudServiceBase`7._repository">
+            <summary>
+            仓储
+            </summary>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.#ctor(Util.Datas.UnitOfWorks.IUnitOfWork,Util.Domains.Repositories.IRepository{`0,`6})">
+            <summary>
+            初始化增删改查服务
+            </summary>
+            <param name="unitOfWork">工作单元</param>
+            <param name="repository">仓储</param>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.ToEntity(`2)">
+            <summary>
+            转换为实体
+            </summary>
+            <param name="request">参数</param>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.ToEntityFromCreateRequest(`3)">
+            <summary>
+            创建参数转换为实体
+            </summary>
+            <param name="request">创建参数</param>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.ToEntityFromUpdateRequest(`4)">
+            <summary>
+            修改参数转换为实体
+            </summary>
+            <param name="request">修改参数</param>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.ToEntityFromDto(`1)">
+            <summary>
+            参数转换为实体
+            </summary>
+            <param name="request">创建参数</param>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.Create(`3)">
+            <summary>
+            创建
+            </summary>
+            <param name="request">创建参数</param>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.Create(`0)">
+            <summary>
+            创建实体
+            </summary>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.CreateBefore(`0)">
+            <summary>
+            创建前操作
+            </summary>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.CreateAfter(`0)">
+            <summary>
+            创建后操作
+            </summary>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.CreateAsync(`3)">
+            <summary>
+            创建
+            </summary>
+            <param name="request">创建参数</param>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.CreateAsync(`0)">
+            <summary>
+            创建实体
+            </summary>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.CreateBeforeAsync(`0)">
+            <summary>
+            创建前操作
+            </summary>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.CreateAfterAsync(`0)">
+            <summary>
+            创建后操作
+            </summary>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.Update(`4)">
+            <summary>
+            修改
+            </summary>
+            <param name="request">修改参数</param>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.Update(`0)">
+            <summary>
+            修改实体
+            </summary>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.FindOldEntity(`6)">
+            <summary>
+            查找旧实体
+            </summary>
+            <param name="id">标识</param>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.FindOldEntityAsync(`6)">
+            <summary>
+            查找旧实体
+            </summary>
+            <param name="id">标识</param>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.UpdateBefore(`0)">
+            <summary>
+            修改前操作
+            </summary>
+            <param name="entity">实体</param>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.UpdateAfter(`0,Util.Domains.ChangeValueCollection)">
+            <summary>
+            修改后操作
+            </summary>
+            <param name="entity">实体</param>
+            <param name="changeValues">变更值集合</param>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.UpdateAsync(`4)">
+            <summary>
+            修改
+            </summary>
+            <param name="request">修改参数</param>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.UpdateAsync(`0)">
+            <summary>
+            修改实体
+            </summary>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.UpdateBeforeAsync(`0)">
+            <summary>
+            修改前操作
+            </summary>
+            <param name="entity">实体</param>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.UpdateAfterAsync(`0,Util.Domains.ChangeValueCollection)">
+            <summary>
+            修改后操作
+            </summary>
+            <param name="entity">实体</param>
+            <param name="changeValues">变更值集合</param>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.SaveAsync(`2)">
+            <summary>
+            保存
+            </summary>
+            <param name="request">参数</param>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.SaveBefore(`2)">
+            <summary>
+            保存前操作
+            </summary>
+            <param name="request">参数</param>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.IsNew(`2,`0)">
+            <summary>
+            是否创建
+            </summary>
+            <param name="request">参数</param>
+            <param name="entity">实体</param>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.CommitAfter">
+            <summary>
+            提交后操作 - 该方法由工作单元拦截器调用
+            </summary>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`7.SaveAfter">
+            <summary>
+            保存后操作
+            </summary>
+        </member>
+        <member name="T:Util.Applications.CrudServiceBase`3">
+            <summary>
+            增删改查服务
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <typeparam name="TDto">数据传输对象类型</typeparam>
+            <typeparam name="TQueryParameter">查询参数类型</typeparam>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`3.#ctor(Util.Datas.UnitOfWorks.IUnitOfWork,Util.Domains.Repositories.IRepository{`0,System.Guid})">
+            <summary>
+            初始化增删改查服务
+            </summary>
+            <param name="unitOfWork">工作单元</param>
+            <param name="repository">仓储</param>
+        </member>
+        <member name="T:Util.Applications.CrudServiceBase`4">
+            <summary>
+            增删改查服务
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <typeparam name="TDto">数据传输对象类型</typeparam>
+            <typeparam name="TQueryParameter">查询参数类型</typeparam>
+            <typeparam name="TKey">实体标识类型</typeparam>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`4.#ctor(Util.Datas.UnitOfWorks.IUnitOfWork,Util.Domains.Repositories.IRepository{`0,`3})">
+            <summary>
+            初始化增删改查服务
+            </summary>
+            <param name="unitOfWork">工作单元</param>
+            <param name="repository">仓储</param>
+        </member>
+        <member name="T:Util.Applications.CrudServiceBase`5">
+            <summary>
+            增删改查服务
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <typeparam name="TDto">数据传输对象类型</typeparam>
+            <typeparam name="TRequest">参数类型</typeparam>
+            <typeparam name="TQueryParameter">查询参数类型</typeparam>
+            <typeparam name="TKey">实体标识类型</typeparam>
+        </member>
+        <member name="M:Util.Applications.CrudServiceBase`5.#ctor(Util.Datas.UnitOfWorks.IUnitOfWork,Util.Domains.Repositories.IRepository{`0,`4})">
+            <summary>
+            初始化增删改查服务
+            </summary>
+            <param name="unitOfWork">工作单元</param>
+            <param name="repository">仓储</param>
+        </member>
+        <member name="T:Util.Applications.DeleteServiceBase`3">
+            <summary>
+            删除服务
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <typeparam name="TDto">数据传输对象类型</typeparam>
+            <typeparam name="TQueryParameter">查询参数类型</typeparam>
+        </member>
+        <member name="M:Util.Applications.DeleteServiceBase`3.#ctor(Util.Datas.UnitOfWorks.IUnitOfWork,Util.Datas.Stores.IStore{`0,System.Guid})">
+            <summary>
+            初始化删除服务
+            </summary>
+            <param name="unitOfWork">工作单元</param>
+            <param name="store">存储器</param>
+        </member>
+        <member name="T:Util.Applications.DeleteServiceBase`4">
+            <summary>
+            删除服务
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <typeparam name="TDto">数据传输对象类型</typeparam>
+            <typeparam name="TQueryParameter">查询参数类型</typeparam>
+            <typeparam name="TKey">实体标识类型</typeparam>
+        </member>
+        <member name="F:Util.Applications.DeleteServiceBase`4._unitOfWork">
+            <summary>
+            工作单元
+            </summary>
+        </member>
+        <member name="F:Util.Applications.DeleteServiceBase`4._store">
+            <summary>
+            存储器
+            </summary>
+        </member>
+        <member name="M:Util.Applications.DeleteServiceBase`4.#ctor(Util.Datas.UnitOfWorks.IUnitOfWork,Util.Datas.Stores.IStore{`0,`3})">
+            <summary>
+            初始化删除服务
+            </summary>
+            <param name="unitOfWork">工作单元</param>
+            <param name="store">存储器</param>
+        </member>
+        <member name="P:Util.Applications.DeleteServiceBase`4.EntityDescription">
+            <summary>
+            实体描述
+            </summary>
+        </member>
+        <member name="M:Util.Applications.DeleteServiceBase`4.WriteLog(System.String)">
+            <summary>
+            写日志
+            </summary>
+            <param name="caption">标题</param>
+        </member>
+        <member name="M:Util.Applications.DeleteServiceBase`4.WriteLog(System.String,`0)">
+            <summary>
+            写日志
+            </summary>
+            <param name="caption">标题</param>
+            <param name="entity">实体</param>
+        </member>
+        <member name="M:Util.Applications.DeleteServiceBase`4.WriteLog(System.String,System.Collections.Generic.IList{`0})">
+            <summary>
+            写日志
+            </summary>
+            <param name="caption">标题</param>
+            <param name="entities">实体集合</param>
+        </member>
+        <member name="M:Util.Applications.DeleteServiceBase`4.AddLog(`0)">
+            <summary>
+            添加日志
+            </summary>
+            <param name="entity">实体</param>
+        </member>
+        <member name="M:Util.Applications.DeleteServiceBase`4.AddLog(System.Collections.Generic.IList{`0})">
+            <summary>
+            添加日志
+            </summary>
+            <param name="entities">实体集合</param>
+        </member>
+        <member name="M:Util.Applications.DeleteServiceBase`4.Delete(System.String)">
+            <summary>
+            删除
+            </summary>
+            <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
+        </member>
+        <member name="M:Util.Applications.DeleteServiceBase`4.DeleteBefore(System.Collections.Generic.List{`0})">
+            <summary>
+            删除前操作
+            </summary>
+            <param name="entities">实体集合</param>
+        </member>
+        <member name="M:Util.Applications.DeleteServiceBase`4.DeleteAfter(System.Collections.Generic.List{`0})">
+            <summary>
+            删除后操作
+            </summary>
+            <param name="entities">实体集合</param>
+        </member>
+        <member name="M:Util.Applications.DeleteServiceBase`4.DeleteAsync(System.String)">
+            <summary>
+            删除
+            </summary>
+            <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
+        </member>
+        <member name="T:Util.Applications.ICrudService`2">
+            <summary>
+            增删改查服务
+            </summary>
+            <typeparam name="TDto">数据传输对象类型</typeparam>
+            <typeparam name="TQueryParameter">查询参数类型</typeparam>
+        </member>
+        <member name="T:Util.Applications.ICrudService`3">
+            <summary>
+            增删改查服务
+            </summary>
+            <typeparam name="TDto">数据传输对象类型</typeparam>
+            <typeparam name="TRequest">参数类型</typeparam>
+            <typeparam name="TQueryParameter">查询参数类型</typeparam>
+        </member>
+        <member name="T:Util.Applications.ICrudService`5">
+            <summary>
+            增删改查服务
+            </summary>
+            <typeparam name="TDto">数据传输对象类型</typeparam>
+            <typeparam name="TRequest">参数类型</typeparam>
+            <typeparam name="TCreateRequest">创建参数类型</typeparam>
+            <typeparam name="TUpdateRequest">修改参数类型</typeparam>
+            <typeparam name="TQueryParameter">查询参数类型</typeparam>
+        </member>
+        <member name="T:Util.Applications.IDeleteService`2">
+            <summary>
+            删除服务
+            </summary>
+            <typeparam name="TDto">数据传输对象类型</typeparam>
+            <typeparam name="TQueryParameter">查询参数类型</typeparam>
+        </member>
+        <member name="T:Util.Applications.Operations.IBatchSaveAsync`1">
+            <summary>
+            批量保存操作
+            </summary>
+            <typeparam name="TDto">数据传输对象类型</typeparam>
+        </member>
+        <member name="M:Util.Applications.Operations.IBatchSaveAsync`1.SaveAsync(System.Collections.Generic.List{`0},System.Collections.Generic.List{`0},System.Collections.Generic.List{`0})">
+            <summary>
+            批量保存
+            </summary>
+            <param name="creationList">新增列表</param>
+            <param name="updateList">修改列表</param>
+            <param name="deleteList">删除列表</param>
+        </member>
+        <member name="T:Util.Applications.Operations.ICreate`1">
+            <summary>
+            创建操作
+            </summary>
+            <typeparam name="TCreateRequest">创建参数类型</typeparam>
+        </member>
+        <member name="M:Util.Applications.Operations.ICreate`1.Create(`0)">
+            <summary>
+            创建
+            </summary>
+            <param name="request">创建参数</param>
+        </member>
+        <member name="T:Util.Applications.Operations.ICreateAsync`1">
+            <summary>
+            创建操作
+            </summary>
+            <typeparam name="TCreateRequest">创建参数类型</typeparam>
+        </member>
+        <member name="M:Util.Applications.Operations.ICreateAsync`1.CreateAsync(`0)">
+            <summary>
+            创建
+            </summary>
+            <param name="request">创建参数</param>
+        </member>
+        <member name="T:Util.Applications.Operations.IDelete">
+            <summary>
+            删除操作
+            </summary>
+        </member>
+        <member name="M:Util.Applications.Operations.IDelete.Delete(System.String)">
+            <summary>
+            删除
+            </summary>
+            <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
+        </member>
+        <member name="T:Util.Applications.Operations.IDeleteAsync">
+            <summary>
+            删除操作
+            </summary>
+        </member>
+        <member name="M:Util.Applications.Operations.IDeleteAsync.DeleteAsync(System.String)">
+            <summary>
+            删除
+            </summary>
+            <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
+        </member>
+        <member name="T:Util.Applications.Operations.ISaveAsync`1">
+            <summary>
+            保存操作
+            </summary>
+            <typeparam name="TRequest">参数类型</typeparam>
+        </member>
+        <member name="M:Util.Applications.Operations.ISaveAsync`1.SaveAsync(`0)">
+            <summary>
+            保存
+            </summary>
+            <param name="request">参数</param>
+        </member>
+        <member name="T:Util.Applications.Operations.IUpdate`1">
+            <summary>
+            修改操作
+            </summary>
+            <typeparam name="TUpdateRequest">修改参数类型</typeparam>
+        </member>
+        <member name="M:Util.Applications.Operations.IUpdate`1.Update(`0)">
+            <summary>
+            修改
+            </summary>
+            <param name="request">修改参数</param>
+        </member>
+        <member name="T:Util.Applications.Operations.IUpdateAsync`1">
+            <summary>
+            修改操作
+            </summary>
+            <typeparam name="TUpdateRequest">修改参数类型</typeparam>
+        </member>
+        <member name="M:Util.Applications.Operations.IUpdateAsync`1.UpdateAsync(`0)">
+            <summary>
+            修改
+            </summary>
+            <param name="request">修改参数</param>
+        </member>
+        <member name="T:Util.Applications.QueryServiceBase`3">
+            <summary>
+            查询服务
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <typeparam name="TDto">数据传输对象类型</typeparam>
+            <typeparam name="TQueryParameter">查询参数类型</typeparam>
+        </member>
+        <member name="M:Util.Applications.QueryServiceBase`3.#ctor(Util.Datas.Stores.IQueryStore{`0,System.Guid})">
+            <summary>
+            初始化查询服务
+            </summary>
+            <param name="store">查询存储器</param>
+        </member>
+        <member name="T:Util.Applications.QueryServiceBase`4">
+            <summary>
+            查询服务
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <typeparam name="TDto">数据传输对象类型</typeparam>
+            <typeparam name="TQueryParameter">查询参数类型</typeparam>
+            <typeparam name="TKey">实体标识类型</typeparam>
+        </member>
+        <member name="F:Util.Applications.QueryServiceBase`4._store">
+            <summary>
+            查询存储器
+            </summary>
+        </member>
+        <member name="M:Util.Applications.QueryServiceBase`4.#ctor(Util.Datas.Stores.IQueryStore{`0,`3})">
+            <summary>
+            初始化查询服务
+            </summary>
+            <param name="store">查询存储器</param>
+        </member>
+        <member name="M:Util.Applications.QueryServiceBase`4.ToDto(`0)">
+            <summary>
+            转换为数据传输对象
+            </summary>
+            <param name="entity">实体</param>
+        </member>
+        <member name="M:Util.Applications.QueryServiceBase`4.GetAll">
+            <summary>
+            获取全部
+            </summary>
+        </member>
+        <member name="M:Util.Applications.QueryServiceBase`4.GetAllAsync">
+            <summary>
+            获取全部
+            </summary>
+        </member>
+        <member name="M:Util.Applications.QueryServiceBase`4.GetById(System.Object)">
+            <summary>
+            通过编号获取
+            </summary>
+            <param name="id">实体编号</param>
+        </member>
+        <member name="M:Util.Applications.QueryServiceBase`4.GetByIdAsync(System.Object)">
+            <summary>
+            通过编号获取
+            </summary>
+            <param name="id">实体编号</param>
+        </member>
+        <member name="M:Util.Applications.QueryServiceBase`4.GetByIds(System.String)">
+            <summary>
+            通过编号列表获取
+            </summary>
+            <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
+        </member>
+        <member name="M:Util.Applications.QueryServiceBase`4.GetByIdsAsync(System.String)">
+            <summary>
+            通过编号列表获取
+            </summary>
+            <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
+        </member>
+        <member name="M:Util.Applications.QueryServiceBase`4.QueryAsync(`2)">
+            <summary>
+            查询
+            </summary>
+            <param name="parameter">查询参数</param>
+        </member>
+        <member name="M:Util.Applications.QueryServiceBase`4.Query(`2)">
+            <summary>
+            查询
+            </summary>
+            <param name="parameter">查询参数</param>
+        </member>
+        <member name="M:Util.Applications.QueryServiceBase`4.ExecuteQuery(`2)">
+            <summary>
+            执行查询
+            </summary>
+        </member>
+        <member name="M:Util.Applications.QueryServiceBase`4.CreateQuery(`2)">
+            <summary>
+            创建查询对象
+            </summary>
+            <param name="parameter">查询参数</param>
+        </member>
+        <member name="M:Util.Applications.QueryServiceBase`4.Filter(Util.Domains.Repositories.IQueryBase{`0})">
+            <summary>
+            过滤
+            </summary>
+        </member>
+        <member name="P:Util.Applications.QueryServiceBase`4.IsTracking">
+            <summary>
+            查询时是否跟踪对象
+            </summary>
+        </member>
+        <member name="M:Util.Applications.QueryServiceBase`4.Filter(System.Linq.IQueryable{`0},`2)">
+            <summary>
+            过滤
+            </summary>
+        </member>
+        <member name="M:Util.Applications.QueryServiceBase`4.PagerQuery(`2)">
+            <summary>
+            分页查询
+            </summary>
+            <param name="parameter">查询参数</param>
+        </member>
+        <member name="M:Util.Applications.QueryServiceBase`4.PagerQueryAsync(`2)">
+            <summary>
+            分页查询
+            </summary>
+            <param name="parameter">查询参数</param>
+        </member>
+        <member name="T:Util.Applications.ServiceBase">
+            <summary>
+            应用服务
+            </summary>
+        </member>
+        <member name="F:Util.Applications.ServiceBase._log">
+            <summary>
+            日志
+            </summary>
+        </member>
+        <member name="P:Util.Applications.ServiceBase.Log">
+            <summary>
+            日志
+            </summary>
+        </member>
+        <member name="M:Util.Applications.ServiceBase.GetLog">
+            <summary>
+            获取日志操作
+            </summary>
+        </member>
+        <member name="P:Util.Applications.ServiceBase.Session">
+            <summary>
+            用户会话
+            </summary>
+        </member>
+        <member name="T:Util.Applications.Trees.Extensions">
+            <summary>
+            树型扩展
+            </summary>
+        </member>
+        <member name="M:Util.Applications.Trees.Extensions.GetParentIdsFromPath(Util.Applications.Trees.ITreeNode,System.Boolean)">
+            <summary>
+            从路径中获取所有上级节点编号
+            </summary>
+            <param name="node">树节点</param>
+            <param name="excludeSelf">是否排除当前节点,默认排除自身</param>
+        </member>
+        <member name="M:Util.Applications.Trees.Extensions.GetMissingParentIds``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            获取缺失的父标识列表
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <param name="entities">实体列表</param>
+        </member>
+        <member name="T:Util.Applications.Trees.ITreeNode">
+            <summary>
+            树节点
+            </summary>
+        </member>
+        <member name="P:Util.Applications.Trees.ITreeNode.ParentId">
+            <summary>
+            父标识
+            </summary>
+        </member>
+        <member name="P:Util.Applications.Trees.ITreeNode.Path">
+            <summary>
+            路径
+            </summary>
+        </member>
+        <member name="P:Util.Applications.Trees.ITreeNode.Level">
+            <summary>
+            层级
+            </summary>
+        </member>
+        <member name="P:Util.Applications.Trees.ITreeNode.Expanded">
+            <summary>
+            是否展开
+            </summary>
+        </member>
+        <member name="T:Util.Applications.Trees.ITreeService`2">
+            <summary>
+            树形服务
+            </summary>
+            <typeparam name="TDto">数据传输对象类型</typeparam>
+            <typeparam name="TQueryParameter">查询参数类型</typeparam>
+        </member>
+        <member name="T:Util.Applications.Trees.ITreeService`3">
+            <summary>
+            树形服务
+            </summary>
+            <typeparam name="TDto">数据传输对象类型</typeparam>
+            <typeparam name="TQueryParameter">查询参数类型</typeparam>
+            <typeparam name="TParentId">父标识类型</typeparam>
+        </member>
+        <member name="M:Util.Applications.Trees.ITreeService`3.FindByIdsAsync(System.String)">
+            <summary>
+            通过标识查找列表
+            </summary>
+            <param name="ids">标识列表</param>
+        </member>
+        <member name="M:Util.Applications.Trees.ITreeService`3.EnableAsync(System.String)">
+            <summary>
+            启用
+            </summary>
+            <param name="ids">标识列表</param>
+        </member>
+        <member name="M:Util.Applications.Trees.ITreeService`3.DisableAsync(System.String)">
+            <summary>
+            冻结
+            </summary>
+            <param name="ids">标识列表</param>
+        </member>
+        <member name="M:Util.Applications.Trees.ITreeService`3.SwapSortAsync(System.Guid,System.Guid)">
+            <summary>
+            交换排序
+            </summary>
+            <param name="id">标识</param>
+            <param name="swapId">目标标识</param>
+        </member>
+        <member name="M:Util.Applications.Trees.ITreeService`3.FixSortIdAsync(`1)">
+            <summary>
+            修正排序
+            </summary>
+            <param name="parameter">查询参数</param>
+        </member>
+        <member name="T:Util.Applications.Trees.LoadMode">
+            <summary>
+            加载模式
+            </summary>
+        </member>
+        <member name="F:Util.Applications.Trees.LoadMode.Sync">
+            <summary>
+            同步
+            </summary>
+        </member>
+        <member name="F:Util.Applications.Trees.LoadMode.Async">
+            <summary>
+            异步
+            </summary>
+        </member>
+        <member name="F:Util.Applications.Trees.LoadMode.OnlyRootAsync">
+            <summary>
+            根节点异步加载，下级节点一次性加载
+            </summary>
+        </member>
+        <member name="T:Util.Applications.Trees.LoadOperation">
+            <summary>
+            加载操作
+            </summary>
+        </member>
+        <member name="F:Util.Applications.Trees.LoadOperation.FirstLoad">
+            <summary>
+            初次加载
+            </summary>
+        </member>
+        <member name="F:Util.Applications.Trees.LoadOperation.LoadChild">
+            <summary>
+            加载子节点
+            </summary>
+        </member>
+        <member name="F:Util.Applications.Trees.LoadOperation.Search">
+            <summary>
+            搜索
+            </summary>
+        </member>
+        <member name="T:Util.Applications.Trees.TreeDtoBase">
+            <summary>
+            树型参数
+            </summary>
+        </member>
+        <member name="P:Util.Applications.Trees.TreeDtoBase.ParentId">
+            <summary>
+            父标识
+            </summary>
+        </member>
+        <member name="P:Util.Applications.Trees.TreeDtoBase.ParentName">
+            <summary>
+            父名称
+            </summary>
+        </member>
+        <member name="P:Util.Applications.Trees.TreeDtoBase.Path">
+            <summary>
+            路径
+            </summary>
+        </member>
+        <member name="P:Util.Applications.Trees.TreeDtoBase.Level">
+            <summary>
+            层级
+            </summary>
+        </member>
+        <member name="P:Util.Applications.Trees.TreeDtoBase.Enabled">
+            <summary>
+            启用
+            </summary>
+        </member>
+        <member name="P:Util.Applications.Trees.TreeDtoBase.SortId">
+            <summary>
+            排序号
+            </summary>
+        </member>
+        <member name="P:Util.Applications.Trees.TreeDtoBase.Expanded">
+            <summary>
+            是否展开
+            </summary>
+        </member>
+        <member name="T:Util.Applications.Trees.TreeServiceBase`3">
+            <summary>
+            树形服务
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <typeparam name="TDto">数据传输对象类型</typeparam>
+            <typeparam name="TQueryParameter">查询参数类型</typeparam>
+        </member>
+        <member name="F:Util.Applications.Trees.TreeServiceBase`3._store">
+            <summary>
+            存储器
+            </summary>
+        </member>
+        <member name="M:Util.Applications.Trees.TreeServiceBase`3.#ctor(Util.Datas.UnitOfWorks.IUnitOfWork,Util.Datas.Stores.IStore{`0,System.Guid})">
+            <summary>
+            初始化树形服务
+            </summary>
+            <param name="unitOfWork">工作单元</param>
+            <param name="store">存储器</param>
+        </member>
+        <member name="M:Util.Applications.Trees.TreeServiceBase`3.Filter(System.Linq.IQueryable{`0},`2)">
+            <summary>
+            过滤
+            </summary>
+        </member>
+        <member name="M:Util.Applications.Trees.TreeServiceBase`3.GetChildren(`2)">
+            <summary>
+            获取直接下级子节点列表
+            </summary>
+            <param name="parameter">查询参数</param>
+        </member>
+        <member name="T:Util.Applications.Trees.TreeServiceBase`5">
+            <summary>
+            树形服务
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <typeparam name="TDto">数据传输对象类型</typeparam>
+            <typeparam name="TQueryParameter">查询参数类型</typeparam>
+            <typeparam name="TKey">实体标识类型</typeparam>
+            <typeparam name="TParentId">父标识类型</typeparam>
+        </member>
+        <member name="F:Util.Applications.Trees.TreeServiceBase`5._unitOfWork">
+            <summary>
+            工作单元
+            </summary>
+        </member>
+        <member name="F:Util.Applications.Trees.TreeServiceBase`5._store">
+            <summary>
+            存储器
+            </summary>
+        </member>
+        <member name="M:Util.Applications.Trees.TreeServiceBase`5.#ctor(Util.Datas.UnitOfWorks.IUnitOfWork,Util.Datas.Stores.IStore{`0,`3})">
+            <summary>
+            初始化树形服务
+            </summary>
+            <param name="unitOfWork">工作单元</param>
+            <param name="store">存储器</param>
+        </member>
+        <member name="M:Util.Applications.Trees.TreeServiceBase`5.Filter(System.Linq.IQueryable{`0},`2)">
+            <summary>
+            过滤
+            </summary>
+        </member>
+        <member name="M:Util.Applications.Trees.TreeServiceBase`5.FindByIdsAsync(System.String)">
+            <summary>
+            查找实体列表
+            </summary>
+            <param name="ids">标识列表</param>
+        </member>
+        <member name="M:Util.Applications.Trees.TreeServiceBase`5.EnableAsync(System.String)">
+            <summary>
+            启用
+            </summary>
+            <param name="ids">标识列表</param>
+        </member>
+        <member name="M:Util.Applications.Trees.TreeServiceBase`5.Enable(System.Collections.Generic.List{`3},System.Boolean)">
+            <summary>
+            启用
+            </summary>
+        </member>
+        <member name="M:Util.Applications.Trees.TreeServiceBase`5.AllowEnable(`0)">
+            <summary>
+            允许启用
+            </summary>
+            <param name="entity">实体</param>
+        </member>
+        <member name="M:Util.Applications.Trees.TreeServiceBase`5.AllowDisable(`0)">
+            <summary>
+            允许禁用
+            </summary>
+            <param name="entity">实体</param>
+        </member>
+        <member name="M:Util.Applications.Trees.TreeServiceBase`5.WriteLog(System.Collections.Generic.List{`0},System.Boolean)">
+            <summary>
+            写日志
+            </summary>
+        </member>
+        <member name="M:Util.Applications.Trees.TreeServiceBase`5.DisableAsync(System.String)">
+            <summary>
+            冻结
+            </summary>
+            <param name="ids">标识列表</param>
+        </member>
+        <member name="M:Util.Applications.Trees.TreeServiceBase`5.SwapSortAsync(System.Guid,System.Guid)">
+            <summary>
+            交换排序
+            </summary>
+            <param name="id">标识</param>
+            <param name="swapId">目标标识</param>
+        </member>
+        <member name="M:Util.Applications.Trees.TreeServiceBase`5.FixSortIdAsync(`2)">
+            <summary>
+            修正排序
+            </summary>
+            <param name="parameter">查询参数</param>
+        </member>
+        <member name="M:Util.Applications.Trees.TreeServiceBase`5.GetChildren(`2)">
+            <summary>
+            获取直接下级子节点列表
+            </summary>
+            <param name="parameter">查询参数</param>
+        </member>
+    </members>
+</doc>

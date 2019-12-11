@@ -1,0 +1,16 @@
+<Project>
+  <Import Project="../../../build/common.props" />
+  <PropertyGroup>
+    <VersionMajor>1</VersionMajor>
+    <VersionMinor>9</VersionMinor>
+    <VersionPatch>3.2</VersionPatch>
+    <VersionQuality></VersionQuality>
+    <VersionPrefix>$(VersionMajor).$(VersionMinor).$(VersionPatch)</VersionPrefix>
+    <VersionSuffix></VersionSuffix>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\..\..\stylecop.json" Link="stylecop.json" />
+    <None Include="..\..\..\..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+</Project>

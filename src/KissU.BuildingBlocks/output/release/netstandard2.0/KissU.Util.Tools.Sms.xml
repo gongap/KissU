@@ -1,0 +1,175 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>KissU.Util.Tools.Sms</name>
+    </assembly>
+    <members>
+        <member name="T:Util.Tools.Sms.Extensions.Extensions">
+            <summary>
+            短信服务扩展
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Sms.Extensions.Extensions.AddLuoSiMao(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String)">
+            <summary>
+            注册LuoSiMao短信服务
+            </summary>
+            <param name="services">服务集合</param>
+            <param name="key">密钥</param>
+        </member>
+        <member name="T:Util.Tools.Sms.ISmsService">
+            <summary>
+            短信服务
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Sms.ISmsService.SendAsync(System.String,System.String)">
+            <summary>
+            发送短信
+            </summary>
+            <param name="mobile">手机号</param>
+            <param name="content">内容</param>
+        </member>
+        <member name="T:Util.Tools.Sms.LuoSiMao.ISmsConfigProvider">
+            <summary>
+            短信配置提供器
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Sms.LuoSiMao.ISmsConfigProvider.GetConfigAsync">
+            <summary>
+            获取配置
+            </summary>
+        </member>
+        <member name="T:Util.Tools.Sms.LuoSiMao.LuoSiMaoResult">
+            <summary>
+            LuoSiMao短信接口返回结果
+            </summary>
+        </member>
+        <member name="P:Util.Tools.Sms.LuoSiMao.LuoSiMaoResult.error">
+            <summary>
+            错误代码
+            </summary>
+        </member>
+        <member name="P:Util.Tools.Sms.LuoSiMao.LuoSiMaoResult.msg">
+            <summary>
+            返回信息
+            </summary>
+        </member>
+        <member name="T:Util.Tools.Sms.LuoSiMao.SmsConfig">
+            <summary>
+            LuoSiMao短信配置
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Sms.LuoSiMao.SmsConfig.#ctor(System.String)">
+            <summary>
+            初始化短信配置
+            </summary>
+            <param name="key">密钥</param>
+        </member>
+        <member name="P:Util.Tools.Sms.LuoSiMao.SmsConfig.Key">
+            <summary>
+            密钥
+            </summary>
+        </member>
+        <member name="T:Util.Tools.Sms.LuoSiMao.SmsConfigProvider">
+            <summary>
+            短信配置提供器
+            </summary>
+        </member>
+        <member name="F:Util.Tools.Sms.LuoSiMao.SmsConfigProvider._config">
+            <summary>
+            短信配置
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Sms.LuoSiMao.SmsConfigProvider.#ctor(System.String)">
+            <summary>
+            初始化短信配置提供器
+            </summary>
+            <param name="key">密钥</param>
+        </member>
+        <member name="M:Util.Tools.Sms.LuoSiMao.SmsConfigProvider.GetConfigAsync">
+            <summary>
+            获取配置
+            </summary>
+        </member>
+        <member name="T:Util.Tools.Sms.LuoSiMao.SmsService">
+            <summary>
+            短信服务
+            </summary>
+        </member>
+        <member name="F:Util.Tools.Sms.LuoSiMao.SmsService._configProvider">
+            <summary>
+            短信配置提供器
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Sms.LuoSiMao.SmsService.#ctor(Util.Tools.Sms.LuoSiMao.ISmsConfigProvider)">
+            <summary>
+            初始化短信服务
+            </summary>
+            <param name="configProvider">短信配置提供器</param>
+        </member>
+        <member name="M:Util.Tools.Sms.LuoSiMao.SmsService.SendAsync(System.String,System.String)">
+            <summary>
+            发送短信
+            </summary>
+            <param name="mobile">手机号</param>
+            <param name="content">内容</param>
+        </member>
+        <member name="M:Util.Tools.Sms.LuoSiMao.SmsService.GetAuthorization">
+            <summary>
+            获取授权头信息
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Sms.LuoSiMao.SmsService.CreateResult(System.String)">
+            <summary>
+            创建结果
+            </summary>
+        </member>
+        <member name="T:Util.Tools.Sms.SmsErrorCode">
+            <summary>
+            短信错误码
+            </summary>
+        </member>
+        <member name="F:Util.Tools.Sms.SmsErrorCode.Ok">
+            <summary>
+            发送成功
+            </summary>
+        </member>
+        <member name="F:Util.Tools.Sms.SmsErrorCode.MobileError">
+            <summary>
+            手机号错误
+            </summary>
+        </member>
+        <member name="T:Util.Tools.Sms.SmsResult">
+            <summary>
+            短信接口返回结果
+            </summary>
+        </member>
+        <member name="M:Util.Tools.Sms.SmsResult.#ctor(System.Boolean,System.String,Util.Tools.Sms.SmsErrorCode)">
+            <summary>
+            初始化短信接口返回结果
+            </summary>
+            <param name="success">是否发送成功</param>
+            <param name="raw">短信提供商返回的原始消息</param>
+            <param name="errorCode">短信错误码</param>
+        </member>
+        <member name="P:Util.Tools.Sms.SmsResult.Success">
+            <summary>
+            是否发送成功
+            </summary>
+        </member>
+        <member name="P:Util.Tools.Sms.SmsResult.ErrorCode">
+            <summary>
+            短信错误码
+            </summary>
+        </member>
+        <member name="P:Util.Tools.Sms.SmsResult.Raw">
+            <summary>
+            短信提供商返回的原始消息
+            </summary>
+        </member>
+        <member name="P:Util.Tools.Sms.SmsResult.Ok">
+            <summary>
+            成功消息
+            </summary>
+        </member>
+    </members>
+</doc>

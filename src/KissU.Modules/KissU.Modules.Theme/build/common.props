@@ -1,27 +1,16 @@
 <Project>
-    <PropertyGroup>
-        <Company>KissU</Company>
-        <Copyright>Copyright（c）KissU. All rights reserved.</Copyright>
-        <PackageProjectUrl>https://github.com/gongap/KissU</PackageProjectUrl>
-        <RespositoryUrl>https://github.com/gongap/KissU.git</RespositoryUrl>
-        <RespositoryType>git</RespositoryType>
-        <VersionMajor>1</VersionMajor>
-        <VersionMinor>9</VersionMinor>
-        <VersionPatch>3.2</VersionPatch>
-        <VersionQuality></VersionQuality>
-        <VersionPrefix>$(VersionMajor).$(VersionMinor).$(VersionPatch)</VersionPrefix>
-        <VersionSuffix></VersionSuffix>
-    </PropertyGroup>
+  <Import Project="../../../../build/common.props" />
+  <PropertyGroup>
+    <VersionMajor>1</VersionMajor>
+    <VersionMinor>9</VersionMinor>
+    <VersionPatch>3.2</VersionPatch>
+    <VersionQuality></VersionQuality>
+    <VersionPrefix>$(VersionMajor).$(VersionMinor).$(VersionPatch)</VersionPrefix>
+    <VersionSuffix></VersionSuffix>
+  </PropertyGroup>
 
-    <ItemGroup>
-        <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
-    </ItemGroup>
-
-    <ItemGroup>
-        <AdditionalFiles Include="..\..\..\..\..\stylecop.json" Link="stylecop.json" />
-        <None Include="..\..\..\..\..\.editorconfig" Link=".editorconfig" />
-    </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\..\..\..\stylecop.json" Link="stylecop.json" />
+    <None Include="..\..\..\..\..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
 </Project>

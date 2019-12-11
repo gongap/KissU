@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>KissU.Util.Tools.QrCode</name>
+    </assembly>
+    <members>
+        <member name="T:Util.Tools.QrCode.ErrorCorrectionLevel">
+            <summary>
+            容错级别
+            </summary>
+        </member>
+        <member name="F:Util.Tools.QrCode.ErrorCorrectionLevel.L">
+            <summary>
+            可以纠正最大7%的错误
+            </summary>
+        </member>
+        <member name="F:Util.Tools.QrCode.ErrorCorrectionLevel.M">
+            <summary>
+            可以纠正最大15%的错误
+            </summary>
+        </member>
+        <member name="F:Util.Tools.QrCode.ErrorCorrectionLevel.Q">
+            <summary>
+            可以纠正最大25%的错误
+            </summary>
+        </member>
+        <member name="F:Util.Tools.QrCode.ErrorCorrectionLevel.H">
+            <summary>
+            可以纠正最大30%的错误
+            </summary>
+        </member>
+        <member name="T:Util.Tools.QrCode.IQrCodeService">
+            <summary>
+            二维码服务
+            </summary>
+        </member>
+        <member name="M:Util.Tools.QrCode.IQrCodeService.Size(Util.Tools.QrCode.QrSize)">
+            <summary>
+            设置二维码尺寸
+            </summary>
+            <param name="size">二维码尺寸</param>
+        </member>
+        <member name="M:Util.Tools.QrCode.IQrCodeService.Size(System.Int32)">
+            <summary>
+            设置二维码尺寸
+            </summary>
+            <param name="size">二维码尺寸</param>
+        </member>
+        <member name="M:Util.Tools.QrCode.IQrCodeService.Correction(Util.Tools.QrCode.ErrorCorrectionLevel)">
+            <summary>
+            容错处理
+            </summary>
+            <param name="level">容错级别</param>
+        </member>
+        <member name="M:Util.Tools.QrCode.IQrCodeService.CreateQrCode(System.String)">
+            <summary>
+            创建二维码
+            </summary>
+            <param name="content">内容</param>
+        </member>
+        <member name="T:Util.Tools.QrCode.QrCoder.QrCoderService">
+            <summary>
+            QRCoder二维码服务
+            </summary>
+        </member>
+        <member name="F:Util.Tools.QrCode.QrCoder.QrCoderService._size">
+            <summary>
+            二维码尺寸
+            </summary>
+        </member>
+        <member name="F:Util.Tools.QrCode.QrCoder.QrCoderService._level">
+            <summary>
+            容错级别
+            </summary>
+        </member>
+        <member name="M:Util.Tools.QrCode.QrCoder.QrCoderService.#ctor">
+            <summary>
+            初始化QRCoder组件二维码服务
+            </summary>
+        </member>
+        <member name="M:Util.Tools.QrCode.QrCoder.QrCoderService.Size(Util.Tools.QrCode.QrSize)">
+            <summary>
+            设置二维码尺寸
+            </summary>
+            <param name="size">二维码尺寸</param>
+        </member>
+        <member name="M:Util.Tools.QrCode.QrCoder.QrCoderService.Size(System.Int32)">
+            <summary>
+            设置二维码尺寸
+            </summary>
+            <param name="size">二维码尺寸</param>
+        </member>
+        <member name="M:Util.Tools.QrCode.QrCoder.QrCoderService.Correction(Util.Tools.QrCode.ErrorCorrectionLevel)">
+            <summary>
+            容错处理
+            </summary>
+            <param name="level">容错级别</param>
+        </member>
+        <member name="M:Util.Tools.QrCode.QrCoder.QrCoderService.CreateQrCode(System.String)">
+            <summary>
+            创建二维码
+            </summary>
+            <param name="content">内容</param>
+        </member>
+        <member name="T:Util.Tools.QrCode.QrSize">
+            <summary>
+            二维码尺寸
+            </summary>
+        </member>
+        <member name="F:Util.Tools.QrCode.QrSize.Small">
+            <summary>
+            小
+            </summary>
+        </member>
+        <member name="F:Util.Tools.QrCode.QrSize.Middle">
+            <summary>
+            中
+            </summary>
+        </member>
+        <member name="F:Util.Tools.QrCode.QrSize.Large">
+            <summary>
+            大
+            </summary>
+        </member>
+    </members>
+</doc>

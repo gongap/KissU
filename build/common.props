@@ -1,16 +1,16 @@
 <Project>
   <PropertyGroup>
     <Company>KissU</Company>
+    <Product>KissU</Product>
+    <Authors>龚安平</Authors>
     <Copyright>Copyright（c）KissU. All rights reserved.</Copyright>
+    <PackageLicenseUrl>https://github.com/gongap/KissU/blob/master/LICENSE.txt</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/gongap/KissU</PackageProjectUrl>
-    <RespositoryUrl>https://github.com/gongap/KissU.git</RespositoryUrl>
-    <RespositoryType>git</RespositoryType>
-    <VersionMajor>2</VersionMajor>
-    <VersionMinor>0</VersionMinor>
-    <VersionPatch>0.0</VersionPatch>
-    <VersionQuality></VersionQuality>
-    <VersionPrefix>$(VersionMajor).$(VersionMinor).$(VersionPatch)</VersionPrefix>
-    <VersionSuffix></VersionSuffix>
+    <RepositoryUrl>https://github.com/gongap/KissU.git</RepositoryUrl>
+    <PackageIconUrl></PackageIconUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>kissu;applicationframework;dotnetcore;aspnetcore;</PackageTags>
+    <PackageReleaseNotes>KissU框架以MIT开源发布，可随意使用</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,10 +18,5 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <AdditionalFiles Include="..\..\..\stylecop.json" Link="stylecop.json" />
-    <None Include="..\..\..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
 </Project>
