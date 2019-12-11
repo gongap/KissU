@@ -2,9 +2,7 @@
   <Import Project="../../build/common.props" />
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>KissU.Util.Events</AssemblyName>
-    <RootNamespace>KissU.Util.Events</RootNamespace>
-    <Description>KissU.Util.Events是KissU应用框架的事件总线操作类库。</Description>
+    <Description>KissU应用框架的事件总线操作类库。</Description>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 

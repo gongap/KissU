@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="../../build/common.props" />
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <Description></Description>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KissU.Core.KestrelHttpServer\KissU.Core.KestrelHttpServer.csproj" />
+    <ProjectReference Include="..\KissU.Core.Log4net\KissU.Core.Log4net.csproj" />
+  </ItemGroup>
+</Project>

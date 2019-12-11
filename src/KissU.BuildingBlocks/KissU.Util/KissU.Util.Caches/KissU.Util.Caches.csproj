@@ -2,10 +2,8 @@
   <Import Project="../../build/common.props" />
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>KissU.Util.Caches</AssemblyName>
-    <RootNamespace>KissU.Util.Caches</RootNamespace>
-    <Product>KissU.Util.Caches</Product>
-    <Description>KissU.Util.Caches是KissU应用框架的缓存操作类库。</Description>
+    <Description>KissU应用框架的缓存操作类库。</Description>
+      <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

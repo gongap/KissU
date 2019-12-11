@@ -2,9 +2,7 @@
   <Import Project="../../build/common.props" />
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>KissU.Util.Security</AssemblyName>
-    <RootNamespace>KissU.Util.Security</RootNamespace>
-    <Description>KissU.Util.Security是KissU应用框架的权限类库。</Description>
+    <Description>KissU应用框架的权限类库。</Description>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 

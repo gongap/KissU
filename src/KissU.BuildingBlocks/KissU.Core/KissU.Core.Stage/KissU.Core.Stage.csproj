@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="../../build/common.props" />
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <Description></Description>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IPNetwork2" Version="2.4.0.124" />
+    <PackageReference Include="JWT" Version="5.2.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KissU.Core.ApiGateWay\KissU.Core.ApiGateWay.csproj" />
+    <ProjectReference Include="..\KissU.Core.KestrelHttpServer\KissU.Core.KestrelHttpServer.csproj" />
+  </ItemGroup>
+</Project>

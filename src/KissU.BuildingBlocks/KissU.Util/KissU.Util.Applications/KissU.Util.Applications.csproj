@@ -2,9 +2,7 @@
   <Import Project="../../build/common.props" />
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>KissU.Util.Applications</AssemblyName>
-    <RootNamespace>KissU.Util.Applications</RootNamespace>
-    <Description>KissU.Util.Applications是KissU应用框架的应用层基类库。</Description>
+    <Description>KissU应用框架的应用层基类库。</Description>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 

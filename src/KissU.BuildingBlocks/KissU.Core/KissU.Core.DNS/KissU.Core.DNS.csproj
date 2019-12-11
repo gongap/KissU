@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="../../build/common.props" />
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <Description></Description>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ARSoft.Tools.Net.Core" Version="2.3.0" />
+    <PackageReference Include="DotNetty.Transport.Libuv" Version="0.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\DotNetty.Codecs\DotNetty.Codecs.DNS\DotNetty.Codecs.DNS.csproj" />
+    <ProjectReference Include="..\KissU.Core.CPlatform\KissU.Core.CPlatform.csproj" />
+    <ProjectReference Include="..\KissU.Core.DotNetty\KissU.Core.DotNetty.csproj" />
+    <ProjectReference Include="..\KissU.Core.ProxyGenerator\KissU.Core.ProxyGenerator.csproj" />
+  </ItemGroup>
+</Project>

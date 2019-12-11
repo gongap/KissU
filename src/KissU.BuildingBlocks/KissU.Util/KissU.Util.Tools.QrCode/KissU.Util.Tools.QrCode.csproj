@@ -2,9 +2,7 @@
   <Import Project="../../build/common.props" />
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>KissU.Util.Tools.QrCode</AssemblyName>
-    <RootNamespace>KissU.Util.Tools.QrCode</RootNamespace>
-    <Description>KissU.Util.Tools.QrCode是KissU应用框架的二维码操作类库。</Description>
+    <Description>KissU应用框架的二维码操作类库。</Description>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 

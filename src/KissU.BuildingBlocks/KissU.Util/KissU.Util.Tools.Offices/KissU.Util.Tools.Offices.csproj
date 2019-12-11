@@ -2,9 +2,7 @@
   <Import Project="../../build/common.props" />
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>KissU.Util.Tools.Offices</AssemblyName>
-    <RootNamespace>KissU.Util.Tools.Offices</RootNamespace>
-    <Description>KissU.Util.Tools.Offices是KissU应用框架的Office操作类库，目前封装了NPOI导出操作。</Description>
+    <Description>KissU应用框架的Office操作类库，目前封装了NPOI导出操作。</Description>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 

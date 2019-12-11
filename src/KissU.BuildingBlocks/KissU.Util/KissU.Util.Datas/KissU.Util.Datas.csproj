@@ -2,10 +2,7 @@
   <Import Project="../../build/common.props" />
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>KissU.Util.Datas</AssemblyName>
-    <RootNamespace>KissU.Util.Datas</RootNamespace>
-    <Product>KissU.Util.Datas</Product>
-    <Description>KissU.Util.Datas是KissU应用框架的数据访问类库。</Description>
+    <Description>KissU应用框架的数据访问类库。</Description>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
