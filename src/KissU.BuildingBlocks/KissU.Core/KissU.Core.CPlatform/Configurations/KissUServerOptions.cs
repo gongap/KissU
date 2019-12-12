@@ -5,7 +5,7 @@ using KissU.Core.CPlatform.Support;
 
 namespace KissU.Core.CPlatform.Configurations
 {
-    public  partial class SurgingServerOptions: ServiceCommand
+    public  partial class KissUServerOptions: ServiceCommand
     {
         public string Ip { get; set; }
 

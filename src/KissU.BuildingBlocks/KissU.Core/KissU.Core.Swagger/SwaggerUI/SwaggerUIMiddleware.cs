@@ -20,7 +20,7 @@ namespace KissU.Core.Swagger.SwaggerUI
 {
    public class SwaggerUIMiddleware
     {
-        private const string EmbeddedFileNamespace = "Surging.Core.Swagger.SwaggerUI.node_modules.swagger_ui_dist";
+        private const string EmbeddedFileNamespace = "KissU.Core.Swagger.SwaggerUI.node_modules.swagger_ui_dist";
 
         private readonly SwaggerUIOptions _options;
         private readonly StaticFileMiddleware _staticFileMiddleware;

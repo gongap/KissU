@@ -108,7 +108,7 @@ namespace KissU.Core.ProxyGenerator.Implementation
                         SyntaxFactory.NamespaceDeclaration(
                             SyntaxFactory.QualifiedName(
                                 SyntaxFactory.QualifiedName(
-                                    SyntaxFactory.IdentifierName("Surging"),
+                                    SyntaxFactory.IdentifierName("KissU"),
                                     SyntaxFactory.IdentifierName("Cores")),
                                 SyntaxFactory.IdentifierName("ClientProxys")))
                 .WithMembers(

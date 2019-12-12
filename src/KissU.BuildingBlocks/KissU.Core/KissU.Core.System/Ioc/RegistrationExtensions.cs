@@ -25,7 +25,7 @@ namespace KissU.Core.System.Ioc
         private static readonly IEnumerable<Service> EmptyServices = new Service[0];
 
         private const string InterceptorsPropertyName =
-            "Surging.Core.System.Ioc.RegistrationExtensions.InterceptorsPropertyName";
+            "KissU.Core.System.Ioc.RegistrationExtensions.InterceptorsPropertyName";
 
         private static Dictionary<string, Assembly> _referenceAssembly = new Dictionary<string, Assembly>();
 

@@ -62,7 +62,7 @@ namespace KissU.Microservices.Host
                 .Configure(build =>
                     build.AddCacheFile("${cachepath}|cachesettings.json", AppContext.BaseDirectory, false, true))
                 //设置引擎配置文件
-                .Configure(build => build.AddCPlatformFile("${surgingpath}|servicesettings.json", false, true))
+                .Configure(build => build.AddCPlatformFile("${kissupath}|servicesettings.json", false, true))
                 //使用Startup启动
                 .UseStartup<Startup>()
                 //构建主机

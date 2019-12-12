@@ -42,7 +42,7 @@ namespace KissU.Core.ProxyGenerator.Utilitys
                 MetadataReference.CreateFromFile(typeof(IRemoteInvokeService).GetTypeInfo().Assembly.Location),
                 MetadataReference.CreateFromFile(typeof(IServiceProxyGenerater).GetTypeInfo().Assembly.Location)
             }.Concat(references);
-            return Compile(AssemblyInfo.Create("Surging.Cores.ClientProxys"), trees, references, logger);
+            return Compile(AssemblyInfo.Create("KissU.Cores.ClientProxys"), trees, references, logger);
         }
 
         public static MemoryStream Compile(AssemblyInfo assemblyInfo, IEnumerable<SyntaxTree> trees, IEnumerable<MetadataReference> references, ILogger logger = null)
@@ -240,7 +240,7 @@ namespace KissU.Core.ProxyGenerator.Utilitys
             public string FileVersion { get; set; }
             public bool ComVisible { get; set; }
 
-            public static AssemblyInfo Create(string name, string copyright = "Copyright ©  Surging", string version = "0.0.0.1")
+            public static AssemblyInfo Create(string name, string copyright = "Copyright ©  KissU", string version = "0.0.0.1")
             {
                 return new AssemblyInfo
                 {

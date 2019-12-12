@@ -624,7 +624,7 @@ namespace KissU.Core.CPlatform
             var services = builder.Services;
             var referenceAssemblies = GetAssemblies(virtualPaths);
             if (builder == null) throw new ArgumentNullException("builder");
-            //从surgingSettings.json取到packages
+            //从kissUSettings.json取到packages
             var packages = ConvertDictionary(AppConfig.ServerOptions.Packages);
             foreach (var moduleAssembly in referenceAssemblies)
             {

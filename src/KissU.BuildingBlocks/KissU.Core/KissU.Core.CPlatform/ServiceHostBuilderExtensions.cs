@@ -50,9 +50,9 @@ namespace KissU.Core.CPlatform
             });
         }
 
-        public static IServiceHostBuilder UseServer(this IServiceHostBuilder hostBuilder, Action<SurgingServerOptions> options)
+        public static IServiceHostBuilder UseServer(this IServiceHostBuilder hostBuilder, Action<KissUServerOptions> options)
         {
-            var serverOptions = new SurgingServerOptions();
+            var serverOptions = new KissUServerOptions();
             options.Invoke(serverOptions);
             AppConfig.ServerOptions = serverOptions;
             return hostBuilder.UseServer(serverOptions.Ip, serverOptions.Port, serverOptions.Token);

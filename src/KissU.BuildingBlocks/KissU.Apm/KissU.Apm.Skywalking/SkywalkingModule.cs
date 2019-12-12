@@ -18,7 +18,7 @@ using KissU.Apm.Skywalking.Transport.Grpc.V6;
 using KissU.Core.CPlatform.Diagnostics;
 using KissU.Core.CPlatform.Module;
 
-namespace Surging.Apm.Skywalking
+namespace KissU.Apm.Skywalking
 {
    public class SkywalkingModule : EnginePartModule
     {

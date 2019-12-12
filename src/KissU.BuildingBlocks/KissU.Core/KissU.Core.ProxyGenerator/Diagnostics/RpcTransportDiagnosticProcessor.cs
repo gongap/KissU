@@ -5,14 +5,14 @@ using KissU.Core.CPlatform.Diagnostics;
 using KissU.Core.CPlatform.Messages;
 using KissU.Core.CPlatform.Serialization;
 using KissU.Core.CPlatform.Utilities;
-using SurgingEvents = KissU.Core.CPlatform.Diagnostics.DiagnosticListenerExtensions;
+using KissUEvents = KissU.Core.CPlatform.Diagnostics.DiagnosticListenerExtensions;
 
 namespace KissU.Core.ProxyGenerator.Diagnostics
 {
     public class RpcTransportDiagnosticProcessor : ITracingDiagnosticProcessor
     {
         private Func<TransportEventData, string> _transportOperationNameResolver;
-        public string ListenerName => SurgingEvents.DiagnosticListenerName;
+        public string ListenerName => KissUEvents.DiagnosticListenerName;
 
 
         private readonly ConcurrentDictionary<string, SegmentContext> _resultDictionary =
@@ -38,7 +38,7 @@ namespace KissU.Core.ProxyGenerator.Diagnostics
             _serializer = serializer;
         }
 
-        [DiagnosticName(SurgingEvents.SurgingBeforeTransport, TransportType.Rpc)]
+        [DiagnosticName(KissUEvents.KissUBeforeTransport, TransportType.Rpc)]
         public void TransportBefore([Object] TransportEventData eventData)
         {
             var message = eventData.Message.GetContent<RemoteInvokeMessage>();
@@ -56,7 +56,7 @@ namespace KissU.Core.ProxyGenerator.Diagnostics
             _resultDictionary.TryAdd(eventData.OperationId.ToString(), context);
         }
 
-        [DiagnosticName(SurgingEvents.SurgingAfterTransport, TransportType.Rpc)]
+        [DiagnosticName(KissUEvents.KissUAfterTransport, TransportType.Rpc)]
         public void TransportAfter([Object] ReceiveEventData eventData)
         {
             _resultDictionary.TryRemove(eventData.OperationId.ToString(), out SegmentContext context);
@@ -66,7 +66,7 @@ namespace KissU.Core.ProxyGenerator.Diagnostics
             }
         }
 
-        [DiagnosticName(SurgingEvents.SurgingErrorTransport, TransportType.Rpc)]
+        [DiagnosticName(KissUEvents.KissUErrorTransport, TransportType.Rpc)]
         public void TransportError([Object] TransportErrorEventData eventData)
         {
               _resultDictionary.TryRemove(eventData.OperationId.ToString(),out SegmentContext context);

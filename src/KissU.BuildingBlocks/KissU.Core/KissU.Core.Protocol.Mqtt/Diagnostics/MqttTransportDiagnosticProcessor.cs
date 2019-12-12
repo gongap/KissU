@@ -4,14 +4,14 @@ using KissU.Core.CPlatform.Diagnostics;
 using KissU.Core.CPlatform.Messages;
 using KissU.Core.CPlatform.Serialization;
 using KissU.Core.CPlatform.Utilities;
-using SurgingEvents = KissU.Core.CPlatform.Diagnostics.DiagnosticListenerExtensions;
+using KissUEvents = KissU.Core.CPlatform.Diagnostics.DiagnosticListenerExtensions;
 
 namespace KissU.Core.Protocol.Mqtt.Diagnostics
 {
      public class MqttTransportDiagnosticProcessor: ITracingDiagnosticProcessor
     {
         private Func<TransportEventData, string> _transportOperationNameResolver;
-        public string ListenerName => SurgingEvents.DiagnosticListenerName;
+        public string ListenerName => KissUEvents.DiagnosticListenerName;
 
 
         private readonly ISerializer<string> _serializer;
@@ -36,7 +36,7 @@ namespace KissU.Core.Protocol.Mqtt.Diagnostics
             _segmentContextAccessor = contextAccessor;
         }
 
-        [DiagnosticName(SurgingEvents.SurgingBeforeTransport, TransportType.Mqtt)]
+        [DiagnosticName(KissUEvents.KissUBeforeTransport, TransportType.Mqtt)]
         public void TransportBefore([Object] TransportEventData eventData)
         {
             var message = eventData.Message.GetContent<RemoteInvokeMessage>();
@@ -52,7 +52,7 @@ namespace KissU.Core.Protocol.Mqtt.Diagnostics
             context.Span.AddTag(Tags.MQTT_BROKER_ADDRESS, NetUtils.GetHostAddress().ToString());
         }
 
-        [DiagnosticName(SurgingEvents.SurgingAfterTransport, TransportType.Mqtt)]
+        [DiagnosticName(KissUEvents.KissUAfterTransport, TransportType.Mqtt)]
         public void TransportAfter([Object] ReceiveEventData eventData)
         {
             var context = _segmentContextAccessor.Context;
@@ -62,7 +62,7 @@ namespace KissU.Core.Protocol.Mqtt.Diagnostics
             }
         }
 
-        [DiagnosticName(SurgingEvents.SurgingErrorTransport, TransportType.Mqtt)]
+        [DiagnosticName(KissUEvents.KissUErrorTransport, TransportType.Mqtt)]
         public void TransportError([Object] TransportErrorEventData eventData)
         {
             var context = _segmentContextAccessor.Context;

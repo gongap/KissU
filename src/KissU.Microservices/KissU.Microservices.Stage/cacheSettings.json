@@ -2,7 +2,7 @@
     "cachingSettings": [
         {
             "id": "ddlCache",
-            "class": "Surging.Core.Caching.RedisCache.RedisContext,KissU.Core.Caching",
+            "class": "KissU.Core.Caching.RedisCache.RedisContext,KissU.Core.Caching",
             "initMethod": "",
             "maps": null,
             "properties": [
@@ -25,7 +25,7 @@
         },
         {
             "id": "userCache",
-            "class": "Surging.Core.Caching.RedisCache.RedisContext,KissU.Core.Caching",
+            "class": "KissU.Core.Caching.RedisCache.RedisContext,KissU.Core.Caching",
             "initMethod": "",
             "maps": null,
             "properties": [

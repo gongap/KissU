@@ -12,7 +12,7 @@
 
         public string Port { get; set; } = "5672";
 
-        public string BrokerName { get; set; } = "surging";
+        public string BrokerName { get; set; } = "kissu";
 
         public int RetryCount { get; set; } = 3;
 
