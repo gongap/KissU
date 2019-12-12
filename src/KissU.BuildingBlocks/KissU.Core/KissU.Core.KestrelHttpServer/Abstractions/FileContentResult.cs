@@ -1,13 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic; 
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Net.Http.Headers;
+﻿using System;
 using System.IO;
-using Surging.Core.KestrelHttpServer.Internal;
+using System.Threading.Tasks;
+using KissU.Core.KestrelHttpServer.Internal;
+using Microsoft.Net.Http.Headers;
 
-namespace Surging.Core.KestrelHttpServer
+namespace KissU.Core.KestrelHttpServer.Abstractions
 {
    public class FileContentResult : FileResult
     {

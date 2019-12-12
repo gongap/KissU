@@ -1,7 +1,8 @@
-﻿using Surging.Core.Swagger;
-using System;
+﻿using System;
 using System.Collections.Generic;
-namespace Surging.Core.SwaggerGen
+using KissU.Core.Swagger.Swagger.Model;
+
+namespace KissU.Core.Swagger.SwaggerGen.Generator
 {
     public interface ISchemaRegistry
     {

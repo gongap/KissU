@@ -1,9 +1,6 @@
-﻿using Surging.Core.CPlatform.Address;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using KissU.Core.CPlatform.Address;
 
-namespace Surging.Core.ApiGateWay.ServiceDiscovery.Implementation
+namespace KissU.Core.ApiGateWay.ServiceDiscovery.Implementation
 {
     public class ServiceAddressModel 
     {

@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Net.Http.Headers;
-using System.Text;
+using KissU.Core.KestrelHttpServer.Abstractions;
 
-namespace Surging.Core.KestrelHttpServer.Internal
+namespace KissU.Core.KestrelHttpServer.Internal
 {
     public class FileStreamResult : FileResult
     {

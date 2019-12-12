@@ -1,11 +1,9 @@
-﻿using Microsoft.Extensions.Logging;
-using Surging.Core.ProxyGenerator.Interceptors.Implementation;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
+using KissU.Core.ProxyGenerator.Interceptors.Implementation;
 
-namespace Surging.Core.ProxyGenerator.Interceptors
+namespace KissU.Core.ProxyGenerator.Interceptors
 {
     public  class InvocationMethods
     {

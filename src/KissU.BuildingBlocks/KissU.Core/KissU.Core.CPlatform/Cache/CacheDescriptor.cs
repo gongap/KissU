@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
-namespace Surging.Core.CPlatform.Cache
+namespace KissU.Core.CPlatform.Cache
 {
 
     /// <summary>

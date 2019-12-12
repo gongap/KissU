@@ -1,13 +1,13 @@
 ﻿using Autofac;
+using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Module;
+using KissU.Core.CPlatform.Runtime.Server;
+using KissU.Core.CPlatform.Runtime.Server.Implementation;
+using KissU.Core.Grpc.Runtime;
+using KissU.Core.Grpc.Runtime.Implementation;
 using Microsoft.Extensions.Logging;
-using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Module;
-using Surging.Core.CPlatform.Runtime.Server;
-using Surging.Core.CPlatform.Runtime.Server.Implementation;
-using Surging.Core.Grpc.Runtime;
-using Surging.Core.Grpc.Runtime.Implementation;
 
-namespace Surging.Core.Grpc
+namespace KissU.Core.Grpc
 {
     public  class GrpcModule : EnginePartModule
     { 

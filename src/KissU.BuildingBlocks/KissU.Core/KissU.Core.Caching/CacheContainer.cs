@@ -1,9 +1,7 @@
-﻿using Surging.Core.CPlatform.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using KissU.Core.CPlatform.Utilities;
 
-namespace Surging.Core.Caching
+namespace KissU.Core.Caching
 {
    public class CacheContainer
     {

@@ -1,9 +1,4 @@
-﻿using Surging.Core.ApiGateWay.Configurations;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Surging.Core.ApiGateWay
+﻿namespace KissU.Core.ApiGateWay.Configurations
 {
    public  class Register
     {

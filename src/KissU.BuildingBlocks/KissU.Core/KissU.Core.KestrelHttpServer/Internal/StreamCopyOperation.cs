@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Buffers;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.IO;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Surging.Core.KestrelHttpServer.Internal
+namespace KissU.Core.KestrelHttpServer.Internal
 {
    internal class StreamCopyOperation
     {

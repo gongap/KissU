@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using KissU.Core.Consul.WatcherProvider.Implementation;
 
-namespace Surging.Core.Consul.WatcherProvider
+namespace KissU.Core.Consul.WatcherProvider
 {
     public interface IClientWatchManager
     {

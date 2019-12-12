@@ -1,6 +1,6 @@
-﻿using Surging.Core.CPlatform.Messages;
+﻿using KissU.Core.CPlatform.Messages;
 
-namespace Surging.Core.CPlatform.Runtime.Client
+namespace KissU.Core.CPlatform.Runtime.Client
 {
     /// <summary>
     /// 远程调用上下文。

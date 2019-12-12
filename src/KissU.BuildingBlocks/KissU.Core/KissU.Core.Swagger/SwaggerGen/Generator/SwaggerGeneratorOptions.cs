@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using KissU.Core.CPlatform.Runtime.Server;
+using KissU.Core.Swagger.Swagger.Model;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
-using Surging.Core.CPlatform.Runtime.Server;
-using Surging.Core.Swagger;
 
-namespace Surging.Core.SwaggerGen
+namespace KissU.Core.Swagger.SwaggerGen.Generator
 {
     public class SwaggerGeneratorOptions
     {

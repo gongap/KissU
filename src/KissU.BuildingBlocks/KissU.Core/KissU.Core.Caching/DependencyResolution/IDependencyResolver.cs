@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace Surging.Core.Caching.DependencyResolution
+namespace KissU.Core.Caching.DependencyResolution
 {
     /// <summary>
     /// 注入IOC容器接口

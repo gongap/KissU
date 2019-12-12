@@ -1,11 +1,8 @@
-﻿using Microsoft.Extensions.Configuration;
-using Surging.Core.EventBusKafka.Configurations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
+using KissU.Core.EventBusKafka.Configurations;
+using Microsoft.Extensions.Configuration;
 
-namespace Surging.Core.EventBusKafka
+namespace KissU.Core.EventBusKafka
 {
     public  class AppConfig
     {

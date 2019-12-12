@@ -1,12 +1,11 @@
-﻿using Surging.Core.CPlatform.Routing;
-using Surging.Core.CPlatform.Serialization;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform.Routing;
+using KissU.Core.CPlatform.Serialization;
 
-namespace Surging.Core.CPlatform.Runtime.Client.Implementation
+namespace KissU.Core.CPlatform.Runtime.Client.Implementation
 {
     public abstract  class ServiceSubscribeManagerBase : IServiceSubscribeManager
     { 

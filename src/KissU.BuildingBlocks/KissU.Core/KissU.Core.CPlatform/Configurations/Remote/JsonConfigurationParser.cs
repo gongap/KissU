@@ -1,15 +1,14 @@
-﻿using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Surging.Core.CPlatform.Utilities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Utilities;
+using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
-namespace Surging.Core.CPlatform.Configurations.Remote
+namespace KissU.Core.CPlatform.Configurations.Remote
 {
    public  class JsonConfigurationParser : IConfigurationParser
     {

@@ -1,8 +1,7 @@
-﻿using Surging.Core.Caching.Interfaces;
-using Surging.Core.CPlatform.Cache;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using KissU.Core.CPlatform.Cache;
 
-namespace Surging.Core.Caching.HealthChecks
+namespace KissU.Core.Caching.HealthChecks
 {
     public interface IHealthCheckService
     {

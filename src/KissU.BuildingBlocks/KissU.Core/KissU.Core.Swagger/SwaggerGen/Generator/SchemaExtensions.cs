@@ -1,10 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Collections.Generic;
-using Surging.Core.Swagger;
+using KissU.Core.Swagger.Swagger.Model;
 
-namespace Surging.Core.SwaggerGen
+namespace KissU.Core.Swagger.SwaggerGen.Generator
 {
     internal static class SchemaExtensions
     {

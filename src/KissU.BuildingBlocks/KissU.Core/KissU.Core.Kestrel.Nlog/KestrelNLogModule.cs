@@ -1,14 +1,12 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Module;
+using KissU.Core.CPlatform.Utilities;
+using KissU.Core.KestrelHttpServer;
+using KissU.Core.Nlog;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Module;
-using Surging.Core.CPlatform.Utilities;
-using Surging.Core.KestrelHttpServer;
-using Surging.Core.Nlog;
 
-
-
-namespace Surging.Core.Kestrel.Nlog
+namespace KissU.Core.Kestrel.Nlog
 {
    public class KestrelNLogModule : KestrelHttpModule
     {

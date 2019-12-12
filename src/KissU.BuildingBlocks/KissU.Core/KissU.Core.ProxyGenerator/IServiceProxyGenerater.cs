@@ -1,8 +1,8 @@
-﻿using Microsoft.CodeAnalysis;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Microsoft.CodeAnalysis;
 
-namespace Surging.Core.ProxyGenerator
+namespace KissU.Core.ProxyGenerator
 {
     /// <summary>
     /// 一个抽象的服务代理生成器。

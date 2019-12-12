@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Surging.Core.Swagger
+namespace KissU.Core.Swagger.Swagger.Model
 {
     public interface ISwaggerProvider
     {

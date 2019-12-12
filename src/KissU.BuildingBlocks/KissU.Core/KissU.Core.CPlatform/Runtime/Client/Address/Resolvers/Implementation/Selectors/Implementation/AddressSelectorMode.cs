@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Surging.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation
+﻿namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation
 {
     /// <summary>
     /// 负载均衡模式

@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using Surging.Core.CPlatform.Support;
+﻿using System.Collections.Generic;
 using System.Linq;
-using Surging.Core.CPlatform.Utilities;
+using System.Threading.Tasks;
+using KissU.Core.CPlatform.Support;
+using KissU.Core.CPlatform.Utilities;
 
-namespace Surging.Core.ApiGateWay.ServiceDiscovery.Implementation
+namespace KissU.Core.ApiGateWay.ServiceDiscovery.Implementation
 {
     /// <summary>
     /// 容错机制提供者

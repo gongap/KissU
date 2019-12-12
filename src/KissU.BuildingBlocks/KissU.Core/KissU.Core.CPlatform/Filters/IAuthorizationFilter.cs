@@ -1,12 +1,7 @@
-﻿using Surging.Core.CPlatform.Routing;
-using Surging.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Threading;
+using KissU.Core.CPlatform.Routing;
 
-namespace Surging.Core.CPlatform.Filters
+namespace KissU.Core.CPlatform.Filters
 {
     public interface IAuthorizationFilter: IFilter
     {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Surging.Core.Protocol.Http
+﻿namespace KissU.Core.Protocol.Http
 {
    public enum StatusCode
     {

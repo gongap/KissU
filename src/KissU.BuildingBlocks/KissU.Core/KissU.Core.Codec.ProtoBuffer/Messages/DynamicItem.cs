@@ -1,12 +1,10 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using System;
+using KissU.Core.Codec.ProtoBuffer.Utilities;
+using KissU.Core.CPlatform.Utilities;
+using Newtonsoft.Json;
 using ProtoBuf;
-using Surging.Core.Codec.ProtoBuffer.Utilities;
-using Surging.Core.CPlatform.Utilities;
-using System;
-using System.Reflection;
 
-namespace Surging.Core.Codec.ProtoBuffer.Messages
+namespace KissU.Core.Codec.ProtoBuffer.Messages
 {
     [ProtoContract]
     public class DynamicItem

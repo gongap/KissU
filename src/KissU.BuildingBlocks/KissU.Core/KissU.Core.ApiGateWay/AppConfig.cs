@@ -1,12 +1,8 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Options;
-using Surging.Core.ApiGateWay.Configurations;
-using Surging.Core.CPlatform.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using KissU.Core.ApiGateWay.Configurations;
+using Microsoft.Extensions.Configuration;
 
-namespace Surging.Core.ApiGateWay
+namespace KissU.Core.ApiGateWay
 {
     public static class AppConfig
     {

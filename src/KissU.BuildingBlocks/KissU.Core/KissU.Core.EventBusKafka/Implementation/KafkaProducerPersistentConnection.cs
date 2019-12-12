@@ -6,7 +6,7 @@ using Confluent.Kafka;
 using Confluent.Kafka.Serialization;
 using Microsoft.Extensions.Logging;
 
-namespace Surging.Core.EventBusKafka.Implementation
+namespace KissU.Core.EventBusKafka.Implementation
 {
     public class KafkaProducerPersistentConnection : KafkaPersistentConnectionBase
     {

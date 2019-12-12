@@ -1,13 +1,10 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Surging.Core.CPlatform.Runtime.Client;
-using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Utilities;
+using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Runtime.Client;
+using KissU.Core.CPlatform.Utilities;
 
-namespace Surging.Core.ApiGateWay.ServiceDiscovery.Implementation
+namespace KissU.Core.ApiGateWay.ServiceDiscovery.Implementation
 {
     /// <summary>
     /// 服务订阅提供者

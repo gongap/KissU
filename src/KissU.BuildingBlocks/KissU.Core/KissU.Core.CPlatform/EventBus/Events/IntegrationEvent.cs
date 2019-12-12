@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Surging.Core.CPlatform.EventBus.Events
+namespace KissU.Core.CPlatform.EventBus.Events
 {
     public class IntegrationEvent
     {

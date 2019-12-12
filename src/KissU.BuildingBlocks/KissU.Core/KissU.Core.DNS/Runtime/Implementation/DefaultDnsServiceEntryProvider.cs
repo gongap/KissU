@@ -1,15 +1,14 @@
-﻿using Microsoft.Extensions.Logging;
-using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Routing.Template;
-using Surging.Core.CPlatform.Runtime.Server;
-using Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
+using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Routing.Template;
+using KissU.Core.CPlatform.Runtime.Server;
+using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
+using Microsoft.Extensions.Logging;
 
-namespace Surging.Core.DNS.Runtime.Implementation
+namespace KissU.Core.DNS.Runtime.Implementation
 {
    public class DefaultDnsServiceEntryProvider:IDnsServiceEntryProvider
     {

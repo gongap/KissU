@@ -1,11 +1,9 @@
-﻿using Newtonsoft.Json;
-using Surging.Core.CPlatform.Filters.Implementation;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
+using KissU.Core.CPlatform.Filters.Implementation;
 
-namespace Surging.Core.CPlatform
+namespace KissU.Core.CPlatform
 {
     /// <summary>
     /// 服务描述符扩展方法。

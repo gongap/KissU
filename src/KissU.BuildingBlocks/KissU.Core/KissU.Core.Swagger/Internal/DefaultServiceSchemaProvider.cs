@@ -1,12 +1,10 @@
-﻿using Surging.Core.CPlatform.Engines;
-using Surging.Core.CPlatform.Runtime.Server;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
+using KissU.Core.CPlatform.Runtime.Server;
 
-namespace Surging.Core.Swagger.Internal
+namespace KissU.Core.Swagger.Internal
 {
    public class DefaultServiceSchemaProvider : IServiceSchemaProvider
     {

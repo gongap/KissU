@@ -1,14 +1,12 @@
-﻿using Surging.Core.Caching.Utilities;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Text;
-using System.Threading;
 using System.Linq;
-using System.Collections;
 using System.Text.RegularExpressions;
+using System.Threading;
+using KissU.Core.Caching.Utilities;
 
-namespace Surging.Core.Caching.NetCache
+namespace KissU.Core.Caching.NetCache
 {
     public class MemoryCache
     {

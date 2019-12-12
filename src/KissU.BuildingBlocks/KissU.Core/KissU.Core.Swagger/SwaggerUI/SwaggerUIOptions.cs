@@ -1,12 +1,11 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
+using Newtonsoft.Json;
 
-namespace Surging.Core.Swagger.SwaggerUI
+namespace KissU.Core.Swagger.SwaggerUI
 {
     public class SwaggerUIOptions
     {
@@ -19,7 +18,7 @@ namespace Surging.Core.Swagger.SwaggerUI
         /// Gets or sets a Stream function for retrieving the swagger-ui page
         /// </summary>
         public Func<Stream> IndexStream { get; set; } = () => typeof(SwaggerUIOptions).GetTypeInfo().Assembly
-            .GetManifestResourceStream("Surging.Core.Swagger.SwaggerUI.index.html");
+            .GetManifestResourceStream("KissU.Core.Swagger.SwaggerUI.index.html");
 
         /// <summary>
         /// Gets or sets a title for the swagger-ui page

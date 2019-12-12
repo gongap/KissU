@@ -1,9 +1,7 @@
-﻿using Microsoft.AspNetCore.Server.Kestrel.Core;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 
-namespace Surging.Core.Stage.Configurations
+namespace KissU.Core.Stage.Configurations
 {
    public class StageOption
     {

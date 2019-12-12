@@ -1,15 +1,15 @@
-﻿using Surging.Core.CPlatform.Address;
-using Surging.Core.CPlatform.Routing;
-using Surging.Core.CPlatform.Routing.Implementation;
-using Surging.Core.CPlatform.Runtime.Client.HealthChecks;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform.Address;
+using KissU.Core.CPlatform.Routing;
+using KissU.Core.CPlatform.Routing.Implementation;
+using KissU.Core.CPlatform.Runtime.Client.HealthChecks;
 
-namespace Surging.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation
+namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation
 {
     /// <summary>
     /// 轮询的地址选择器。

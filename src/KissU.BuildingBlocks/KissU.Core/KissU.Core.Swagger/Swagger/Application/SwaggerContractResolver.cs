@@ -3,7 +3,7 @@ using System.Reflection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace Surging.Core.Swagger
+namespace KissU.Core.Swagger.Swagger.Application
 {
     public class SwaggerContractResolver : DefaultContractResolver
     {

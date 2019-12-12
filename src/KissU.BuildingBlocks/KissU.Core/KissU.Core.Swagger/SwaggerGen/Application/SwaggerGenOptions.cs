@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using KissU.Core.Swagger.SwaggerGen.Generator;
 
-namespace Surging.Core.SwaggerGen
+namespace KissU.Core.Swagger.SwaggerGen.Application
 {
     public class SwaggerGenOptions
     {

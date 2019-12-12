@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Xml.XPath;
+using KissU.Core.CPlatform.Runtime.Server;
+using KissU.Core.Swagger.Swagger.Model;
+using KissU.Core.Swagger.SwaggerGen.Generator;
+using KissU.Core.Swagger.SwaggerGen.XmlComments;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
-using Surging.Core.CPlatform.Runtime.Server;
-using Surging.Core.Swagger;
-using Surging.Core.SwaggerGen;
 
-namespace Microsoft.Extensions.DependencyInjection
+namespace KissU.Core.Swagger.SwaggerGen.Application
 {
     public static class SwaggerGenOptionsExtensions
     {

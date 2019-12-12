@@ -1,14 +1,11 @@
-﻿using Surging.Core.CPlatform.Ioc;
-using Surging.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
-using Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
-using Surging.Core.CPlatform.Support.Attributes;
-using Surging.Core.Protocol.Mqtt.Internal.Messages;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using KissU.Core.CPlatform.Ioc;
+using KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
+using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
+using KissU.Core.CPlatform.Support.Attributes;
+using KissU.Core.Protocol.Mqtt.Internal.Messages;
 
-namespace Surging.Core.Protocol.Mqtt.Internal.Runtime
+namespace KissU.Core.Protocol.Mqtt.Internal.Runtime
 {
     [ServiceBundle("Device")]
     public interface IMqttRomtePublishService : IServiceKey

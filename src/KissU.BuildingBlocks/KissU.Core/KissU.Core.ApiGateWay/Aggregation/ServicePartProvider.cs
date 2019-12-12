@@ -1,14 +1,12 @@
-﻿using Surging.Core.ProxyGenerator;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using System.Linq;
+﻿using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using KissU.Core.ProxyGenerator;
 using Newtonsoft.Json.Linq;
-using Surging.Core.ApiGateWay.Configurations;
 
-namespace Surging.Core.ApiGateWay.Aggregation
+namespace KissU.Core.ApiGateWay.Aggregation
 {
     /// <summary>
     /// 服务部件提供者

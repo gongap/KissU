@@ -17,9 +17,9 @@
  */
 
 using AspectCore.Extensions.Reflection;
-using Surging.Core.CPlatform.Diagnostics;
+using KissU.Core.CPlatform.Diagnostics;
 
-namespace Surging.Apm.Skywalking.Core.Diagnostics
+namespace KissU.Apm.Skywalking.Core.Diagnostics
 {
     public class PropertyAttribute : ParameterBinder
     {

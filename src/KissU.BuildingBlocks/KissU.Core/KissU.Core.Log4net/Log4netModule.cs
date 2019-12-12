@@ -1,9 +1,8 @@
-﻿using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Module;
-using Surging.Core.CPlatform.Utilities;
+﻿using KissU.Core.CPlatform.Module;
+using KissU.Core.CPlatform.Utilities;
 using Microsoft.Extensions.Logging;
 
-namespace Surging.Core.Log4net
+namespace KissU.Core.Log4net
 {
    public class Log4netModule : EnginePartModule
     {

@@ -16,7 +16,7 @@
  *
  */
 
-namespace Surging.Apm.Skywalking.Abstractions.Config
+namespace KissU.Apm.Skywalking.Abstractions.Config
 {
     public interface IConfigAccessor
     {

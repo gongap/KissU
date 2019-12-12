@@ -1,12 +1,9 @@
 ﻿using DotNetty.Buffers;
 using DotNetty.Common.Utilities;
 using DotNetty.Transport.Channels;
-using Surging.Core.CPlatform.Transport.Codec;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using KissU.Core.CPlatform.Transport.Codec;
 
-namespace Surging.Core.DotNetty.Adapter
+namespace KissU.Core.DotNetty.Adapter
 {
     class TransportMessageChannelHandlerAdapter : ChannelHandlerAdapter
     {

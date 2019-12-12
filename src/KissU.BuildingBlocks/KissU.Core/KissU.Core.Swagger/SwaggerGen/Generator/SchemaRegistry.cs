@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
+using KissU.Core.Swagger.Swagger.Model;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json.Converters;
-using Surging.Core.Swagger;
+using Newtonsoft.Json.Serialization;
 
-namespace Surging.Core.SwaggerGen
+namespace KissU.Core.Swagger.SwaggerGen.Generator
 {
     public class SchemaRegistry : ISchemaRegistry
     {

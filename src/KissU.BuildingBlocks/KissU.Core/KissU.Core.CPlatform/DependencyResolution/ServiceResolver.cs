@@ -1,11 +1,10 @@
-﻿using Surging.Core.CPlatform.Utilities;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
+using KissU.Core.CPlatform.Utilities;
 
-namespace Surging.Core.CPlatform.DependencyResolution
+namespace KissU.Core.CPlatform.DependencyResolution
 {
     /// <summary>
     /// IOC容器对象

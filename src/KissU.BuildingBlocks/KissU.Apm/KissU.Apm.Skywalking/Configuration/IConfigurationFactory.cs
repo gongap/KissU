@@ -18,7 +18,7 @@
 
 using Microsoft.Extensions.Configuration;
 
-namespace Surging.Apm.Skywalking.Configuration
+namespace KissU.Apm.Skywalking.Configuration
 {
     public interface IConfigurationFactory
     {

@@ -1,25 +1,20 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
+using DotNetty.Codecs.Mqtt.Packets;
 using DotNetty.Common.Utilities;
 using DotNetty.Transport.Channels;
-using Surging.Core.Protocol.Mqtt.Internal.Channel;
-using Surging.Core.Protocol.Mqtt.Internal.Enums;
-using Surging.Core.Protocol.Mqtt.Internal.Messages;
-using System.Collections;
-using System.Linq;
-using DotNetty.Codecs.Mqtt.Packets;
-using System.Threading.Tasks;
-using Surging.Core.Protocol.Mqtt.Internal.Runtime;
-using System.Net;
-using Surging.Core.CPlatform.Address;
-using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Utilities;
-using Surging.Core.CPlatform.Messages;
-using Surging.Core.CPlatform.Ids;
+using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Ids;
+using KissU.Core.CPlatform.Messages;
+using KissU.Core.CPlatform.Utilities;
+using KissU.Core.Protocol.Mqtt.Internal.Channel;
+using KissU.Core.Protocol.Mqtt.Internal.Messages;
+using KissU.Core.Protocol.Mqtt.Internal.Runtime;
 
-namespace Surging.Core.Protocol.Mqtt.Internal.Services
+namespace KissU.Core.Protocol.Mqtt.Internal.Services
 {
     public abstract class AbstractChannelService : IChannelService
     {

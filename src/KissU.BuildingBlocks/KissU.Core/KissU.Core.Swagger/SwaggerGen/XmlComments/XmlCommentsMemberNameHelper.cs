@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace Surging.Core.SwaggerGen
+namespace KissU.Core.Swagger.SwaggerGen.XmlComments
 {
     public class XmlCommentsMemberNameHelper
     {

@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes
+namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes
 {
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true, Inherited = true)]
     public abstract class HttpMethodAttribute : Attribute

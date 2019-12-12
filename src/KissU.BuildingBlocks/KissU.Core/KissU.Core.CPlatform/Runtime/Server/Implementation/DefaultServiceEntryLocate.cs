@@ -1,9 +1,9 @@
-﻿using Surging.Core.CPlatform.Messages;
-using System;
+﻿using System;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using KissU.Core.CPlatform.Messages;
 
-namespace Surging.Core.CPlatform.Runtime.Server.Implementation
+namespace KissU.Core.CPlatform.Runtime.Server.Implementation
 {
     /// <summary>
     /// 默认的服务条目定位器。

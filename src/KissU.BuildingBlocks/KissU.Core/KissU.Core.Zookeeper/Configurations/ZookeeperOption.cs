@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Surging.Core.Zookeeper.Configurations
+﻿namespace KissU.Core.Zookeeper.Configurations
 {
     public class ZookeeperOption
     {

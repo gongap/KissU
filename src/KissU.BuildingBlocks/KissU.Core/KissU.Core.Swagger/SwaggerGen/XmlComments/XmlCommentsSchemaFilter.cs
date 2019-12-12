@@ -1,9 +1,10 @@
-﻿using System.Xml.XPath;
-using System.Reflection;
+﻿using System.Reflection;
+using System.Xml.XPath;
+using KissU.Core.Swagger.Swagger.Model;
+using KissU.Core.Swagger.SwaggerGen.Generator;
 using Newtonsoft.Json.Serialization;
-using Surging.Core.Swagger;
 
-namespace Surging.Core.SwaggerGen
+namespace KissU.Core.Swagger.SwaggerGen.XmlComments
 {
     public class XmlCommentsSchemaFilter : ISchemaFilter
     {

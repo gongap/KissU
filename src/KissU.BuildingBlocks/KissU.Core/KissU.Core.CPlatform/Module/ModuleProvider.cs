@@ -1,10 +1,9 @@
-﻿using Microsoft.Extensions.Logging;
-using Surging.Core.CPlatform.Engines;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Extensions.Logging;
 
-namespace Surging.Core.CPlatform.Module
+namespace KissU.Core.CPlatform.Module
 {
     public class ModuleProvider: IModuleProvider
     {

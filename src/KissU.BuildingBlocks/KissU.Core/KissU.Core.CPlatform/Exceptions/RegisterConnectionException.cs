@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Surging.Core.CPlatform.Exceptions
+namespace KissU.Core.CPlatform.Exceptions
 {
     public class RegisterConnectionException : CPlatformException
     {

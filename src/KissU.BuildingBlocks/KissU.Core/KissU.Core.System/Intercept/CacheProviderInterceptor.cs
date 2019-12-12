@@ -1,10 +1,10 @@
-﻿using Surging.Core.Caching;
-using Surging.Core.CPlatform.Cache;
-using Surging.Core.ProxyGenerator.Interceptors;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
+using KissU.Core.Caching;
+using KissU.Core.CPlatform.Cache;
+using KissU.Core.ProxyGenerator.Interceptors;
 
-namespace Surging.Core.System.Intercept
+namespace KissU.Core.System.Intercept
 {
     /// <summary>
     /// 缓存拦截器

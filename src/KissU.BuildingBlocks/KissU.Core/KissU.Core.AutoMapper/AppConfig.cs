@@ -1,17 +1,17 @@
-﻿using AutoMapper;
-using Microsoft.Extensions.Logging;
-using Surging.Core.CPlatform.Engines;
-using Surging.Core.CPlatform.Engines.Implementation;
-using Surging.Core.CPlatform.Utilities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using CPlatformAppConfig = Surging.Core.CPlatform.AppConfig;
+using AutoMapper;
+using KissU.Core.CPlatform.Engines;
+using KissU.Core.CPlatform.Engines.Implementation;
+using KissU.Core.CPlatform.Utilities;
+using Microsoft.Extensions.Logging;
+using CPlatformAppConfig = KissU.Core.CPlatform.AppConfig;
 
-namespace Surging.Core.AutoMapper
+namespace KissU.Core.AutoMapper
 {
     public class AppConfig
     {

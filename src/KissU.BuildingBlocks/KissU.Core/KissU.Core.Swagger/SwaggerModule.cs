@@ -1,21 +1,17 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Module;
-using Surging.Core.CPlatform.Runtime.Server;
-using Surging.Core.KestrelHttpServer;
-using Surging.Core.Swagger.Builder;
-using Surging.Core.Swagger.Internal;
-using Surging.Core.Swagger.Swagger.Filters;
-using Surging.Core.Swagger.SwaggerUI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Reflection;
-using System.Text;
+using KissU.Core.CPlatform.Module;
+using KissU.Core.CPlatform.Runtime.Server;
+using KissU.Core.KestrelHttpServer;
+using KissU.Core.Swagger.Internal;
+using KissU.Core.Swagger.Swagger.Application;
+using KissU.Core.Swagger.Swagger.Filters;
+using KissU.Core.Swagger.Swagger.Model;
+using KissU.Core.Swagger.SwaggerGen.Application;
+using KissU.Core.Swagger.SwaggerUI;
+using Microsoft.Extensions.Configuration;
 
-namespace Surging.Core.Swagger
+namespace KissU.Core.Swagger
 {
     public class SwaggerModule: KestrelHttpModule
     {

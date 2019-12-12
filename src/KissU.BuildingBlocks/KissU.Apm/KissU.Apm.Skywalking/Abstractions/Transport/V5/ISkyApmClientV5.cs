@@ -19,9 +19,9 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Surging.Apm.Skywalking.Abstractions.Common;
+using KissU.Apm.Skywalking.Abstractions.Common;
 
-namespace Surging.Apm.Skywalking.Abstractions.Transport
+namespace KissU.Apm.Skywalking.Abstractions.Transport.V5
 {
     public interface ISkyApmClientV5
     {

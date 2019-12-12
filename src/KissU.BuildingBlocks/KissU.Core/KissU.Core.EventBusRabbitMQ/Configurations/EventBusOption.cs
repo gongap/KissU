@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Surging.Core.EventBusRabbitMQ.Configurations
+﻿namespace KissU.Core.EventBusRabbitMQ.Configurations
 {
     public class EventBusOption
     {

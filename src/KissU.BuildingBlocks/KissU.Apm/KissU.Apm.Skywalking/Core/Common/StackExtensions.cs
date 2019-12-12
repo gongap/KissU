@@ -18,7 +18,7 @@
 
 using System.Collections.Generic;
 
-namespace Surging.Apm.Skywalking.Core.Common
+namespace KissU.Apm.Skywalking.Core.Common
 {
     public static class StackExtensions
     {

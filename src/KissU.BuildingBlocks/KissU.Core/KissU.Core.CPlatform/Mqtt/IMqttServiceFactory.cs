@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Surging.Core.CPlatform.Mqtt
+namespace KissU.Core.CPlatform.Mqtt
 {
    public interface IMqttServiceFactory
     {

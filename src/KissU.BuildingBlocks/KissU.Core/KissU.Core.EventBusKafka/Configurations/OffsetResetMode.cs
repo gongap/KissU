@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Surging.Core.EventBusKafka.Configurations
+﻿namespace KissU.Core.EventBusKafka.Configurations
 {
    public enum OffsetResetMode
     {

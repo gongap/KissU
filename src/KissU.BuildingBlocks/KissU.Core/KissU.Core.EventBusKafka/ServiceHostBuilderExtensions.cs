@@ -1,11 +1,8 @@
 ﻿using Autofac;
-using Surging.Core.CPlatform.EventBus;
-using Surging.Core.ServiceHosting.Internal;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using KissU.Core.CPlatform.EventBus;
+using KissU.Core.ServiceHosting.Internal;
 
-namespace Surging.Core.EventBusKafka
+namespace KissU.Core.EventBusKafka
 {
    public static  class ServiceHostBuilderExtensions
     {

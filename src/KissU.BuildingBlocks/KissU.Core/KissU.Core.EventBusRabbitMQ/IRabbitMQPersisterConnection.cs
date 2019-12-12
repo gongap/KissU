@@ -1,9 +1,7 @@
-﻿using RabbitMQ.Client;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using RabbitMQ.Client;
 
-namespace Surging.Core.EventBusRabbitMQ
+namespace KissU.Core.EventBusRabbitMQ
 {
     public interface IRabbitMQPersistentConnection
          : IDisposable

@@ -1,9 +1,6 @@
-﻿using Surging.Core.Protocol.Mqtt.Internal.Services;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using KissU.Core.Protocol.Mqtt.Internal.Services;
 
-namespace Surging.Core.Protocol.Mqtt.Internal.Runtime
+namespace KissU.Core.Protocol.Mqtt.Internal.Runtime
 {
    public interface IMqttBehaviorProvider
     {

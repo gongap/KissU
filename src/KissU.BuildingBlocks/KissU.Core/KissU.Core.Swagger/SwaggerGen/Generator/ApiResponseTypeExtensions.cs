@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.ApiExplorer;
-using System;
-using System.Reflection;
 
-namespace Surging.Core.SwaggerGen
+namespace KissU.Core.Swagger.SwaggerGen.Generator
 {
     public static class ApiResponseTypeExtensions
     {

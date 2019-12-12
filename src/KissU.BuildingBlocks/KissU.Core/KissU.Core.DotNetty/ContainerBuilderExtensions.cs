@@ -1,14 +1,14 @@
-﻿using Autofac;
+﻿using System;
+using Autofac;
+using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Runtime.Client.HealthChecks;
+using KissU.Core.CPlatform.Runtime.Server;
+using KissU.Core.CPlatform.Runtime.Server.Implementation;
+using KissU.Core.CPlatform.Transport;
+using KissU.Core.CPlatform.Transport.Codec;
 using Microsoft.Extensions.Logging;
-using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Runtime.Client.HealthChecks;
-using Surging.Core.CPlatform.Runtime.Server;
-using Surging.Core.CPlatform.Runtime.Server.Implementation;
-using Surging.Core.CPlatform.Transport;
-using Surging.Core.CPlatform.Transport.Codec;
-using System;
 
-namespace Surging.Core.DotNetty
+namespace KissU.Core.DotNetty
 {
     public static class ContainerBuilderExtensions
     {

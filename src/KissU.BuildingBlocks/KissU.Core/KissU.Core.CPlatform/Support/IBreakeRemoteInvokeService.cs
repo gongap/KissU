@@ -1,8 +1,8 @@
-﻿using Surging.Core.CPlatform.Messages;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform.Messages;
 
-namespace Surging.Core.CPlatform.Support
+namespace KissU.Core.CPlatform.Support
 {
     public interface IBreakeRemoteInvokeService
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Surging.Core.CPlatform.Messages
+namespace KissU.Core.CPlatform.Messages
 {
     /// <summary>
     /// 远程调用消息。

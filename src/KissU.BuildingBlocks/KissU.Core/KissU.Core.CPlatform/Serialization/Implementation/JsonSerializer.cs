@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
+using Newtonsoft.Json;
 
-namespace Surging.Core.CPlatform.Serialization.Implementation
+namespace KissU.Core.CPlatform.Serialization.Implementation
 {
     /// <summary>
     /// Json序列化器。

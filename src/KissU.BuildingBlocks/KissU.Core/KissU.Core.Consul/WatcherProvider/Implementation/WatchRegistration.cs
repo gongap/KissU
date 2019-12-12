@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Surging.Core.Consul.WatcherProvider.Implementation
+namespace KissU.Core.Consul.WatcherProvider.Implementation
 {
    public  abstract class WatchRegistration
     {

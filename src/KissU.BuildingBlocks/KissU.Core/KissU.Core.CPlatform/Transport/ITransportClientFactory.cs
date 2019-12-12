@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using System.Threading.Tasks;
 
-namespace Surging.Core.CPlatform.Transport
+namespace KissU.Core.CPlatform.Transport
 {
     /// <summary>
     /// 一个抽象的传输客户端工厂。

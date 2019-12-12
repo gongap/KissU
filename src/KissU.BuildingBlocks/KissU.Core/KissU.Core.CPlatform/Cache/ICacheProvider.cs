@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Surging.Core.CPlatform.Cache
+namespace KissU.Core.CPlatform.Cache
 {
     public interface ICacheProvider
     {

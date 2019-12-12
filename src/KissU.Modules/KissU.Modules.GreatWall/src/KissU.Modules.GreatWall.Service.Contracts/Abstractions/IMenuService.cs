@@ -2,12 +2,13 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
+
 namespace KissU.Modules.GreatWall.Service.Contracts.Abstractions
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using KissU.Modules.GreatWall.Service.Contracts.Dtos.Responses;
-    using Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
     using Util.Applications;
 
     /// <summary>

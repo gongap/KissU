@@ -1,9 +1,6 @@
-﻿using Surging.Core.CPlatform.Messages;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using KissU.Core.CPlatform.Messages;
 
-namespace Surging.Core.CPlatform.Diagnostics
+namespace KissU.Core.CPlatform.Diagnostics
 {
     public class DiagnosticMessage: TransportMessage
     {

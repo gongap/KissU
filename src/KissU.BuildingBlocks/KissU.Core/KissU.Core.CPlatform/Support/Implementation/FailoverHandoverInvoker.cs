@@ -1,10 +1,10 @@
-﻿using Surging.Core.CPlatform.Convertibles;
-using Surging.Core.CPlatform.Messages;
-using Surging.Core.CPlatform.Runtime.Client;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform.Convertibles;
+using KissU.Core.CPlatform.Messages;
+using KissU.Core.CPlatform.Runtime.Client;
 
-namespace Surging.Core.CPlatform.Support.Implementation
+namespace KissU.Core.CPlatform.Support.Implementation
 {
     public class FailoverHandoverInvoker: IClusterInvoker
     {

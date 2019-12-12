@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
-namespace Surging.Core.CPlatform.Configurations.Watch
+namespace KissU.Core.CPlatform.Configurations.Watch
 {
     public abstract class ConfigurationWatch
     {

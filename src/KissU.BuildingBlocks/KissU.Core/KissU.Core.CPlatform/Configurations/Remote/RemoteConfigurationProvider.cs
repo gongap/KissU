@@ -1,13 +1,10 @@
-﻿using Microsoft.Extensions.Configuration;
-using Surging.Core.CPlatform.Utilities;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
-using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Utilities;
+using Microsoft.Extensions.Configuration;
 
-namespace Surging.Core.CPlatform.Configurations.Remote
+namespace KissU.Core.CPlatform.Configurations.Remote
 {
     class RemoteConfigurationProvider : ConfigurationProvider
     {

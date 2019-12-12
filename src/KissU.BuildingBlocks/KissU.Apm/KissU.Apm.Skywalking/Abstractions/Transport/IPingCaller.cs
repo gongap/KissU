@@ -18,9 +18,8 @@
 
 using System.Threading;
 using System.Threading.Tasks;
-using Surging.Apm.Skywalking.Abstractions.Transport;
 
-namespace Surging.Apm.Skywalking.Abstractions.Transport
+namespace KissU.Apm.Skywalking.Abstractions.Transport
 {
     public interface IPingCaller
     {

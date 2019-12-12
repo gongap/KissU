@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
-namespace Surging.Core.DotNettyWSServer.Runtime
+namespace KissU.Core.DotNettyWSServer.Runtime
 {
    public interface IWSServiceEntryProvider
     {

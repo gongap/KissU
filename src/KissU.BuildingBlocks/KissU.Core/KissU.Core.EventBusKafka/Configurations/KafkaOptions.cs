@@ -1,9 +1,6 @@
-﻿using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
-namespace Surging.Core.EventBusKafka.Configurations
+namespace KissU.Core.EventBusKafka.Configurations
 {
     public class KafkaOptions
     {

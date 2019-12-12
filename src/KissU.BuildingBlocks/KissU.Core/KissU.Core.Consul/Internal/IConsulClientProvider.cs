@@ -1,11 +1,8 @@
-﻿using Consul;
-using Surging.Core.Consul.Internal.Cluster.Implementation.Selectors.Implementation;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Consul;
 
-namespace Surging.Core.Consul.Internal
+namespace KissU.Core.Consul.Internal
 {
     public  interface IConsulClientProvider
     {

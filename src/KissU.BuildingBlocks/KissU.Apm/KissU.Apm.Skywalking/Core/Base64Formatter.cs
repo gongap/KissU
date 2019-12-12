@@ -16,11 +16,11 @@
  *
  */
 
-using Surging.Apm.Skywalking.Abstractions;
 using System;
 using System.Text;
+using KissU.Apm.Skywalking.Abstractions;
 
-namespace Surging.Apm.Skywalking.Core
+namespace KissU.Apm.Skywalking.Core
 {
     public class Base64Formatter : IBase64Formatter
     {

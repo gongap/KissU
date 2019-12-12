@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace Surging.Core.CPlatform.Utilities
+namespace KissU.Core.CPlatform.Utilities
 {
     public static class StringExtensions
     {

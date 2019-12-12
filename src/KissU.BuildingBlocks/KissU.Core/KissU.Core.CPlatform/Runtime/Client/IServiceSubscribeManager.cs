@@ -1,12 +1,10 @@
-﻿using Surging.Core.CPlatform.Address;
-using Surging.Core.CPlatform.Utilities;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform.Address;
+using KissU.Core.CPlatform.Utilities;
 
-namespace Surging.Core.CPlatform.Runtime.Client
+namespace KissU.Core.CPlatform.Runtime.Client
 {
    public interface IServiceSubscribeManager
     {

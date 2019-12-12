@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Surging.Core.ProxyGenerator
+namespace KissU.Core.ProxyGenerator
 {
     /// <summary>
     /// 一个抽象的服务代理工厂。

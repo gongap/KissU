@@ -19,14 +19,13 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using KissU.Apm.Skywalking.Abstractions;
+using KissU.Apm.Skywalking.Core.Diagnostics;
 using Microsoft.Extensions.Logging;
-using Surging.Apm.Skywalking.Abstractions;
-using Surging.Apm.Skywalking.Core.Diagnostics;
 
-namespace Surging.Apm.Skywalking.Core
+namespace KissU.Apm.Skywalking.Core
 {
     public class InstrumentStartup : IInstrumentStartup
     {

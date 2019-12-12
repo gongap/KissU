@@ -1,9 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Surging.Core.DNS.Configurations
+namespace KissU.Core.DNS.Configurations
 {
    public class EventBusConfigurationSource : FileConfigurationSource
     {

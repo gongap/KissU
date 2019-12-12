@@ -1,9 +1,9 @@
-﻿using Microsoft.Extensions.Logging;
-using System;
+﻿using System;
 using System.Linq;
 using System.Reflection;
+using Microsoft.Extensions.Logging;
 
-namespace Surging.Core.CPlatform.Ids.Implementation
+namespace KissU.Core.CPlatform.Ids.Implementation
 {
     /// <summary>
     /// 一个默认的服务Id生成器。

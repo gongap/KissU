@@ -1,15 +1,12 @@
-﻿using Microsoft.Extensions.Logging;
-using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Ioc;
-using Surging.Core.CPlatform.Runtime.Server;
-using Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using System.Text;
+using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Ioc;
+using KissU.Core.CPlatform.Runtime.Server;
+using Microsoft.Extensions.Logging;
 
-namespace Surging.Core.Grpc.Runtime.Implementation
+namespace KissU.Core.Grpc.Runtime.Implementation
 {
     public class DefaultGrpcServiceEntryProvider: IGrpcServiceEntryProvider
     { 

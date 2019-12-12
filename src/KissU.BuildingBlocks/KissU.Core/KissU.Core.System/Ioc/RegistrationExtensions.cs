@@ -1,21 +1,20 @@
-﻿using Autofac.Core;
-using Autofac.Features.Scanning;
-using Surging.Core.System.Module;
-using Surging.Core.System.Module.Attributes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using Autofac;
 using Autofac.Builder;
-using System.Linq;
-using System.Reflection;
+using Autofac.Core;
 using Autofac.Core.Registration;
-using Surging.Core.Common.ServicesException;
-using Surging.Core.System.Intercept;
-using Surging.Core.CPlatform.EventBus.Events;
+using Autofac.Features.Scanning;
+using KissU.Core.Common.ServicesException;
+using KissU.Core.CPlatform.EventBus.Events;
+using KissU.Core.System.Module;
+using KissU.Core.System.Module.Attributes;
 
-namespace Surging.Core.System.Ioc
+namespace KissU.Core.System.Ioc
 {
     /// <summary>
     /// 注册扩展程序

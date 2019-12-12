@@ -16,16 +16,17 @@
  *
  */
 
-using Microsoft.Extensions.Logging;
-using Surging.Apm.Skywalking.Abstractions.Config;
-using Surging.Apm.Skywalking.Abstractions.Transport;
-using Surging.Core.CPlatform.Diagnostics;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using KissU.Apm.Skywalking.Abstractions;
+using KissU.Apm.Skywalking.Abstractions.Config;
+using KissU.Apm.Skywalking.Abstractions.Transport;
+using KissU.Core.CPlatform.Diagnostics;
+using Microsoft.Extensions.Logging;
 
-namespace Surging.Apm.Skywalking.Abstractions.Common.Transport
+namespace KissU.Apm.Skywalking.Core.Transport
 {
     public class AsyncQueueSegmentDispatcher : ISegmentDispatcher
     {

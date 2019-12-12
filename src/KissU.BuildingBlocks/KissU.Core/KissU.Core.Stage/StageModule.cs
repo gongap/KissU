@@ -1,25 +1,19 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
+﻿using System;
+using KissU.Core.CPlatform.Module;
+using KissU.Core.KestrelHttpServer;
+using KissU.Core.KestrelHttpServer.Extensions;
+using KissU.Core.Stage.Configurations;
+using KissU.Core.Stage.Filters;
+using KissU.Core.Stage.Internal;
+using KissU.Core.Stage.Internal.Implementation;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using Surging.Core.CPlatform.Module;
-using Surging.Core.KestrelHttpServer;
-using Surging.Core.KestrelHttpServer.Extensions;
-using Surging.Core.KestrelHttpServer.Filters;
-using Surging.Core.Stage.Configurations;
-using Surging.Core.Stage.Filters;
-using Surging.Core.Stage.Internal;
-using Surging.Core.Stage.Internal.Implementation;
-using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Text;
 
-namespace Surging.Core.Stage
+namespace KissU.Core.Stage
 {
     public class StageModule : KestrelHttpModule
     {

@@ -1,10 +1,9 @@
-﻿using Surging.Core.CPlatform.EventBus;
-using Surging.Core.CPlatform.EventBus.Events;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using KissU.Core.CPlatform.EventBus;
+using KissU.Core.CPlatform.EventBus.Events;
 
-namespace Surging.Core.EventBusKafka.Implementation
+namespace KissU.Core.EventBusKafka.Implementation
 {
     public  class KafkaSubscriptionAdapt : ISubscriptionAdapt
     {

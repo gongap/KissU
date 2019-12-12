@@ -1,13 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.Xml.XPath;
 using System.Reflection;
-using System.Collections.Generic; 
+using System.Xml.XPath;
+using KissU.Core.CPlatform.Runtime.Server;
+using KissU.Core.Swagger.Swagger.Model;
+using KissU.Core.Swagger.SwaggerGen.Generator;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
-using Surging.Core.Swagger;
-using Surging.Core.CPlatform.Runtime.Server;
 
-namespace Surging.Core.SwaggerGen
+namespace KissU.Core.Swagger.SwaggerGen.XmlComments
 {
     public class XmlCommentsOperationFilter : IOperationFilter
     {

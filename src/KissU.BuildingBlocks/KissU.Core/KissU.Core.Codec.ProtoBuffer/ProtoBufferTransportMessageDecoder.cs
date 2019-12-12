@@ -1,12 +1,9 @@
-﻿using Surging.Core.Codec.ProtoBuffer.Messages;
-using Surging.Core.Codec.ProtoBuffer.Utilities;
-using Surging.Core.CPlatform.Messages;
-using Surging.Core.CPlatform.Transport.Codec;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using KissU.Core.Codec.ProtoBuffer.Messages;
+using KissU.Core.Codec.ProtoBuffer.Utilities;
+using KissU.Core.CPlatform.Messages;
+using KissU.Core.CPlatform.Transport.Codec;
 
-namespace Surging.Core.Codec.ProtoBuffer
+namespace KissU.Core.Codec.ProtoBuffer
 {
    public sealed class ProtoBufferTransportMessageDecoder : ITransportMessageDecoder
     {

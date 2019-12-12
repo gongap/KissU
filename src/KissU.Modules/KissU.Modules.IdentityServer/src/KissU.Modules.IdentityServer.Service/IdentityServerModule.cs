@@ -2,14 +2,15 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Module;
+
 namespace KissU.Modules.IdentityServer.Service
 {
     using Autofac.Extensions.DependencyInjection;
     using KissU.Modules.IdentityServer.Data.UnitOfWorks;
     using KissU.Modules.IdentityServer.Data.UnitOfWorks.SqlServer;
     using Microsoft.Extensions.DependencyInjection;
-    using Surging.Core.CPlatform;
-    using Surging.Core.CPlatform.Module;
     using Util.Datas.Ef;
 
     /// <summary>

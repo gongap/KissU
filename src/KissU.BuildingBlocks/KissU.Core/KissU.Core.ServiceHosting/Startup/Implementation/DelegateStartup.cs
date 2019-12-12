@@ -1,10 +1,7 @@
-﻿using Autofac;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using Autofac;
 
-namespace Surging.Core.ServiceHosting.Startup.Implementation
+namespace KissU.Core.ServiceHosting.Startup.Implementation
 {
     public  class DelegateStartup : StartupBase<ContainerBuilder>
     {

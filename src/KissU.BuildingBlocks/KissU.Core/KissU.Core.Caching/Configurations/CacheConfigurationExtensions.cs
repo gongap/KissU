@@ -1,12 +1,9 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System.IO;
+using KissU.Core.Caching.Utilities;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.FileProviders;
-using Surging.Core.Caching.Utilities;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
 
-namespace Surging.Core.Caching.Configurations
+namespace KissU.Core.Caching.Configurations
 {
     public static class CacheConfigurationExtensionsstatic
     {

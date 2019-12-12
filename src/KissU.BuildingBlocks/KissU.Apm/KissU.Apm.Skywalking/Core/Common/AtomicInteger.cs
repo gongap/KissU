@@ -18,7 +18,7 @@
 
 using System.Threading;
 
-namespace Surging.Apm.Skywalking.Core.Common
+namespace KissU.Apm.Skywalking.Core.Common
 {
     public class AtomicInteger
     {

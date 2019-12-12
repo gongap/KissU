@@ -1,12 +1,9 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System.IO;
+using KissU.Core.CPlatform.Utilities;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.FileProviders;
-using Surging.Core.CPlatform.Utilities;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
 
-namespace Surging.Core.EventBusRabbitMQ.Configurations
+namespace KissU.Core.EventBusRabbitMQ.Configurations
 {
     public static class EventBusConfigurationExtensions
     {

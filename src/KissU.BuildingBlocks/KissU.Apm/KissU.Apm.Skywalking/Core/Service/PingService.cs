@@ -19,12 +19,12 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using KissU.Apm.Skywalking.Abstractions;
+using KissU.Apm.Skywalking.Abstractions.Config;
+using KissU.Apm.Skywalking.Abstractions.Transport;
 using Microsoft.Extensions.Logging;
-using Surging.Apm.Skywalking.Abstractions;
-using Surging.Apm.Skywalking.Abstractions.Config;
-using Surging.Apm.Skywalking.Abstractions.Transport;
 
-namespace Surging.Apm.Skywalking.Core.Service
+namespace KissU.Apm.Skywalking.Core.Service
 {
     public class PingService : ExecutionService
     {

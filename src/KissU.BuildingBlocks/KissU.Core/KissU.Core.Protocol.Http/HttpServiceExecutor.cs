@@ -1,22 +1,21 @@
-﻿using Microsoft.Extensions.Logging;
-using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Convertibles;
-using Surging.Core.CPlatform.Filters;
-using Surging.Core.CPlatform.Messages;
-using Surging.Core.CPlatform.Routing;
-using Surging.Core.CPlatform.Runtime.Server;
-using Surging.Core.CPlatform.Transport;
-using Surging.Core.CPlatform.Utilities;
-using Surging.Core.ProxyGenerator;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using static Surging.Core.CPlatform.Utilities.FastInvoke;
+using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Convertibles;
+using KissU.Core.CPlatform.Filters;
+using KissU.Core.CPlatform.Messages;
+using KissU.Core.CPlatform.Routing;
+using KissU.Core.CPlatform.Runtime.Server;
+using KissU.Core.CPlatform.Transport;
+using KissU.Core.CPlatform.Utilities;
+using KissU.Core.ProxyGenerator;
+using Microsoft.Extensions.Logging;
 
-namespace Surging.Core.Protocol.Http
+namespace KissU.Core.Protocol.Http
 {
     public class HttpServiceExecutor : IServiceExecutor
     {
@@ -28,8 +27,8 @@ namespace Surging.Core.Protocol.Http
         private readonly IAuthorizationFilter _authorizationFilter;
         private readonly CPlatformContainer _serviceProvider;
         private readonly ITypeConvertibleService _typeConvertibleService;
-        private readonly ConcurrentDictionary<string,ValueTuple< FastInvokeHandler,object, MethodInfo>> _concurrent =
- new ConcurrentDictionary<string, ValueTuple<FastInvokeHandler, object, MethodInfo>>();
+        private readonly ConcurrentDictionary<string,ValueTuple< FastInvoke.FastInvokeHandler,object, MethodInfo>> _concurrent =
+ new ConcurrentDictionary<string, ValueTuple<FastInvoke.FastInvokeHandler, object, MethodInfo>>();
         #endregion Field
 
         #region Constructor
@@ -109,7 +108,7 @@ namespace Surging.Core.Protocol.Http
                     provider.Item2 = ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy(httpMessage.ServiceKey, entry.Type);
                     provider.Item3 = provider.Item2.GetType().GetTypeInfo().DeclaredMethods.Where(p => p.Name == entry.MethodName).FirstOrDefault(); ;
                     provider.Item1 = FastInvoke.GetMethodInvoker(provider.Item3);
-                    _concurrent.GetOrAdd(httpMessage.RoutePath, ValueTuple.Create<FastInvokeHandler, object, MethodInfo>(provider.Item1, provider.Item2, provider.Item3));
+                    _concurrent.GetOrAdd(httpMessage.RoutePath, ValueTuple.Create<FastInvoke.FastInvokeHandler, object, MethodInfo>(provider.Item1, provider.Item2, provider.Item3));
                 }
                 foreach (var parameterInfo in provider.Item3.GetParameters())
                 {

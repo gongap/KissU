@@ -1,10 +1,8 @@
-﻿using Surging.Core.CPlatform.Cache;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform.Cache;
 
-namespace Surging.Core.ApiGateWay.ServiceDiscovery
+namespace KissU.Core.ApiGateWay.ServiceDiscovery
 {
     public interface IServiceCacheProvider
     {

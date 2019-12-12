@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Surging.Core.CPlatform.Runtime.Client
+namespace KissU.Core.CPlatform.Runtime.Client
 {
     /// <summary>
     /// 服务订阅者工厂接口

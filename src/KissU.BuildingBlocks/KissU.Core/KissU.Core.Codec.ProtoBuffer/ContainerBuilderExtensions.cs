@@ -1,9 +1,6 @@
-﻿using Surging.Core.CPlatform;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using KissU.Core.CPlatform;
 
-namespace Surging.Core.Codec.ProtoBuffer
+namespace KissU.Core.Codec.ProtoBuffer
 {
    public static class ContainerBuilderExtensions
     {

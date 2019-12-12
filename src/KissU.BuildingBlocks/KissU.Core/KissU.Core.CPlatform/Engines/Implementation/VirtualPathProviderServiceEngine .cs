@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Surging.Core.CPlatform.Engines.Implementation
+﻿namespace KissU.Core.CPlatform.Engines.Implementation
 {
    public abstract class VirtualPathProviderServiceEngine: IServiceEngine
     {

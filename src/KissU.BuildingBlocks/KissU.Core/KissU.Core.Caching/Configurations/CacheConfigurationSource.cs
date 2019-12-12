@@ -1,9 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Surging.Core.Caching.Configurations
+namespace KissU.Core.Caching.Configurations
 {
     public class CacheConfigurationSource : FileConfigurationSource
     {

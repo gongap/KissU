@@ -1,11 +1,10 @@
-﻿using Consul;
-using System;
-using System.Threading.Tasks;
-using Surging.Core.Consul.Utilitys;
+﻿using System;
 using System.Linq;
-using Surging.Core.Consul.WatcherProvider.Implementation;
+using System.Threading.Tasks;
+using Consul;
+using KissU.Core.Consul.Utilitys;
 
-namespace Surging.Core.Consul.WatcherProvider
+namespace KissU.Core.Consul.WatcherProvider.Implementation
 {
     public class ChildrenMonitorWatcher : WatcherBase
     {

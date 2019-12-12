@@ -1,18 +1,15 @@
-﻿using Org.BouncyCastle.Asn1.Ocsp;
-using Surging.Core.CPlatform.Ioc;
-using Surging.Core.ProxyGenerator;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Net;
-using Surging.Core.CPlatform.Utilities;
-using ServiceLocator = Surging.Core.CPlatform.Utilities.ServiceLocator;
-using Autofac;
-using Surging.Core.CPlatform.EventBus.Implementation;
-using Surging.Core.CPlatform.EventBus.Events;
-using Surging.Core.CPlatform.Module;
 using System.Threading.Tasks;
+using Autofac;
+using KissU.Core.CPlatform.EventBus.Events;
+using KissU.Core.CPlatform.EventBus.Implementation;
+using KissU.Core.CPlatform.Ioc;
+using KissU.Core.CPlatform.Module;
+using KissU.Core.ProxyGenerator;
+using ServiceLocator = KissU.Core.CPlatform.Utilities.ServiceLocator;
 
-namespace Surging.Core.DNS.Runtime
+namespace KissU.Core.DNS.Runtime
 {
     public abstract class DnsBehavior : IServiceBehavior
     {

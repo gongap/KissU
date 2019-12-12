@@ -1,13 +1,11 @@
-﻿using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Runtime.Server.Implementation;
-using Surging.Core.CPlatform.Transport;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Runtime.Server.Implementation;
+using KissU.Core.CPlatform.Transport;
 
-namespace Surging.Core.Grpc
+namespace KissU.Core.Grpc
 {
    public  class GrpcServiceHost : ServiceHostAbstract
     {

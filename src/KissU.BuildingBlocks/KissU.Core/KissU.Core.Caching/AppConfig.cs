@@ -1,15 +1,14 @@
-﻿using Microsoft.Extensions.Configuration;
-using Surging.Core.Caching.DependencyResolution;
-using Surging.Core.Caching.HashAlgorithms;
-using Surging.Core.Caching.Models;
-using Surging.Core.Caching.Utilities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
+using KissU.Core.Caching.DependencyResolution;
+using KissU.Core.Caching.HashAlgorithms;
+using KissU.Core.Caching.Models;
+using KissU.Core.Caching.Utilities;
+using Microsoft.Extensions.Configuration;
 
-namespace Surging.Core.Caching
+namespace KissU.Core.Caching
 {
     public class AppConfig
     {

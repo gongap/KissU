@@ -1,8 +1,8 @@
-﻿using Surging.Core.CPlatform.Messages;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform.Messages;
 
-namespace Surging.Core.CPlatform.Runtime.Client
+namespace KissU.Core.CPlatform.Runtime.Client
 {
     /// <summary>
     /// 一个抽象的远程调用服务。

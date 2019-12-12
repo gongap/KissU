@@ -1,11 +1,10 @@
-using MessagePack;
-using Surging.Core.CPlatform.Messages;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using KissU.Core.CPlatform.Messages;
+using MessagePack;
 
-namespace Surging.Core.Codec.MessagePack.Messages
+namespace KissU.Core.Codec.MessagePack.Messages
 {
     [MessagePackObject]
     public class ParameterItem

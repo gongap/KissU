@@ -1,6 +1,6 @@
-﻿using Surging.Core.CPlatform.Messages;
+﻿using KissU.Core.CPlatform.Messages;
 
-namespace Surging.Core.CPlatform.Transport.Codec
+namespace KissU.Core.CPlatform.Transport.Codec
 {
     public interface ITransportMessageEncoder
     {

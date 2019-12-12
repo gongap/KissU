@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Surging.Core.Consul.Configurations
+﻿namespace KissU.Core.Consul.Configurations
 {
    public class ConsulOption
     {

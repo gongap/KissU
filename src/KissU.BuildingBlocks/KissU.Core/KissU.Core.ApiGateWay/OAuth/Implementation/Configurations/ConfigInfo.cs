@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Surging.Core.ApiGateWay.OAuth
+namespace KissU.Core.ApiGateWay.OAuth.Implementation.Configurations
 {
     public class ConfigInfo
     {

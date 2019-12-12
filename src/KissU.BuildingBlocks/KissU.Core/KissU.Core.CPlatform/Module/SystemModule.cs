@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Surging.Core.CPlatform.Module
+﻿namespace KissU.Core.CPlatform.Module
 {
     /// <summary>
     /// 系统模块基类

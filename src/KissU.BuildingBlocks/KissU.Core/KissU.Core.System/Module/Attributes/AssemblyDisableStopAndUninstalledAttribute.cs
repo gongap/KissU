@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace Surging.Core.System.Module.Attributes
+namespace KissU.Core.System.Module.Attributes
 {
     /// <summary>
     /// AssemblyDisableStopAndUninstalled 自定义特性类。

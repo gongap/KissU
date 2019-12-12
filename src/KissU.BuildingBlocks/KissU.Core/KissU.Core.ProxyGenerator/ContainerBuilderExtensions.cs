@@ -1,15 +1,15 @@
-﻿using Surging.Core.CPlatform;
-using Surging.Core.ProxyGenerator.Implementation;
+﻿using System;
 using Autofac;
-using System;
-using Surging.Core.ProxyGenerator.Interceptors;
-using Surging.Core.ProxyGenerator.Interceptors.Implementation; 
-using Surging.Core.CPlatform.Runtime.Client;
-using Surging.Core.CPlatform.Convertibles;
-using Surging.Core.ProxyGenerator.Diagnostics;
-using Surging.Core.CPlatform.Diagnostics;
+using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Convertibles;
+using KissU.Core.CPlatform.Diagnostics;
+using KissU.Core.CPlatform.Runtime.Client;
+using KissU.Core.ProxyGenerator.Diagnostics;
+using KissU.Core.ProxyGenerator.Implementation;
+using KissU.Core.ProxyGenerator.Interceptors;
+using KissU.Core.ProxyGenerator.Interceptors.Implementation;
 
-namespace Surging.Core.ProxyGenerator
+namespace KissU.Core.ProxyGenerator
 {
     public static class ContainerBuilderExtensions
     {

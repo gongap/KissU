@@ -16,7 +16,7 @@
  *
  */
 
-namespace Surging.Apm.Skywalking.Abstractions.Common
+namespace KissU.Apm.Skywalking.Abstractions.Common
 {
     public struct NullableValue
     {

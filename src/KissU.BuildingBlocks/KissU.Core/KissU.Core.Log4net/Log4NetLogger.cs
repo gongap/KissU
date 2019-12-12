@@ -1,15 +1,12 @@
-﻿using log4net;
-using log4net.Core;
-using log4net.Repository;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Xml;
+using log4net;
+using log4net.Repository;
+using Microsoft.Extensions.Logging;
 
-namespace Surging.Core.Log4net
+namespace KissU.Core.Log4net
 {
     public class Log4NetLogger : Microsoft.Extensions.Logging.ILogger
     {

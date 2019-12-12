@@ -1,12 +1,10 @@
-﻿using Consul;
-using System;
-using System.Threading.Tasks;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using System.Net.Http;
-using System.Net.Http.Headers;
+using System.Text;
+using System.Threading.Tasks;
+using Consul;
 
-namespace Surging.Core.Consul.Utilitys
+namespace KissU.Core.Consul.Utilitys
 {
     public static class ConsulClientExtensions
     {

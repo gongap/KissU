@@ -1,9 +1,6 @@
-﻿using Surging.Core.CPlatform.Transport.Codec;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using KissU.Core.CPlatform.Transport.Codec;
 
-namespace Surging.Core.Codec.ProtoBuffer
+namespace KissU.Core.Codec.ProtoBuffer
 {
    public sealed  class ProtoBufferTransportMessageCodecFactory : ITransportMessageCodecFactory
     {

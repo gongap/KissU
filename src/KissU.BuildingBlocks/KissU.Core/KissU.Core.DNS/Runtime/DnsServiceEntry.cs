@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Surging.Core.DNS.Runtime
+namespace KissU.Core.DNS.Runtime
 {
    public class DnsServiceEntry
     {

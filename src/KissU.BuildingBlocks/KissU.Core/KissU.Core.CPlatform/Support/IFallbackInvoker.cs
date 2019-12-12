@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Surging.Core.CPlatform.Support
+namespace KissU.Core.CPlatform.Support
 {
     public interface IFallbackInvoker
     {

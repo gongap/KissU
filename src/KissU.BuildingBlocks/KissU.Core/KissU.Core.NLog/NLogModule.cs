@@ -1,12 +1,9 @@
-﻿using Microsoft.Extensions.Logging;
-using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Module;
-using Surging.Core.CPlatform.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Module;
+using KissU.Core.CPlatform.Utilities;
+using Microsoft.Extensions.Logging;
 
-namespace Surging.Core.Nlog
+namespace KissU.Core.Nlog
 {
     public class NLogModule : EnginePartModule
     {

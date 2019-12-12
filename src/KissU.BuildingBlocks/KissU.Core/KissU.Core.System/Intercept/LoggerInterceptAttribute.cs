@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Surging.Core.System.Intercept
+namespace KissU.Core.System.Intercept
 { /// <summary>
   /// 设置判断日志拦截方法的特性类
   /// </summary>

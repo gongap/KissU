@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
-namespace Surging.Core.Consul.WatcherProvider.Implementation
+namespace KissU.Core.Consul.WatcherProvider.Implementation
 {
   public  class ChildWatchRegistration : WatchRegistration
     {

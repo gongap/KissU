@@ -1,4 +1,4 @@
-﻿namespace Surging.Core.CPlatform.Support
+﻿namespace KissU.Core.CPlatform.Support
 {
     /// <summary>
     /// 容错策略

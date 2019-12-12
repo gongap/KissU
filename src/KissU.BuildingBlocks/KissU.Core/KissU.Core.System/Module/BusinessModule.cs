@@ -1,11 +1,6 @@
-﻿using Surging.Core.System.Module.Attributes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using KissU.Core.System.Module.Attributes;
 
-namespace Surging.Core.System.Module
+namespace KissU.Core.System.Module
 {
     /// <summary>
     ///  业务模块基类

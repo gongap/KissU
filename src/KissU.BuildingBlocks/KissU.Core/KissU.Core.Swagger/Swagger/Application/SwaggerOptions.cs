@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using KissU.Core.Swagger.Swagger.Model;
 using Microsoft.AspNetCore.Http;
 
-namespace Surging.Core.Swagger
+namespace KissU.Core.Swagger.Swagger.Application
 {
     public class SwaggerOptions
     {

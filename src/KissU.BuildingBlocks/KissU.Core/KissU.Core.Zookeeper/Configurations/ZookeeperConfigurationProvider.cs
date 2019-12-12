@@ -1,8 +1,8 @@
-﻿using Microsoft.Extensions.Configuration;
-using Surging.Core.CPlatform.Configurations.Remote;
-using System.IO;
+﻿using System.IO;
+using KissU.Core.CPlatform.Configurations.Remote;
+using Microsoft.Extensions.Configuration;
 
-namespace Surging.Core.Zookeeper.Configurations
+namespace KissU.Core.Zookeeper.Configurations
 {
     public class ZookeeperConfigurationProvider : FileConfigurationProvider
     {

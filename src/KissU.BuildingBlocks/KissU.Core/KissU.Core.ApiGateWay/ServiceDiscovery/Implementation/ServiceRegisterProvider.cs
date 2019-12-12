@@ -1,13 +1,10 @@
-﻿using Surging.Core.CPlatform.Address;
-using Surging.Core.CPlatform.Runtime.Client.HealthChecks;
-using Surging.Core.CPlatform.Utilities; 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform.Address;
+using KissU.Core.CPlatform.Runtime.Client.HealthChecks;
+using KissU.Core.CPlatform.Utilities;
 
-namespace Surging.Core.ApiGateWay.ServiceDiscovery.Implementation
+namespace KissU.Core.ApiGateWay.ServiceDiscovery.Implementation
 {
     /// <summary>
     /// 服务注册

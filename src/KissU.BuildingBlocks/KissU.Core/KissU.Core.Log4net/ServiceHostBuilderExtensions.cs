@@ -1,11 +1,10 @@
-﻿using Autofac;
-using Microsoft.Extensions.Configuration;
+﻿using System;
+using Autofac;
+using KissU.Core.CPlatform.Utilities;
+using KissU.Core.ServiceHosting.Internal;
 using Microsoft.Extensions.Logging;
-using Surging.Core.CPlatform.Utilities;
-using Surging.Core.ServiceHosting.Internal;
-using System;
 
-namespace Surging.Core.Log4net
+namespace KissU.Core.Log4net
 {
    public static class ServiceHostBuilderExtensions
     {

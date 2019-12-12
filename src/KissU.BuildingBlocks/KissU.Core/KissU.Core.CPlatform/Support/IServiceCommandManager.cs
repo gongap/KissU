@@ -1,11 +1,10 @@
-﻿using Surging.Core.CPlatform.Support;
-using Surging.Core.CPlatform.Support.Implementation;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform.Support.Implementation;
 
-namespace Surging.Core.CPlatform.Support
+namespace KissU.Core.CPlatform.Support
 {
     public interface IServiceCommandManager
     {
@@ -45,21 +44,21 @@ namespace Surging.Core.CPlatform.Support
         /// <returns>一个任务。</returns>
         Task ClearAsync();
     }
-}
 
-/// <summary>
-/// 服务命令管理者扩展方法。
-/// </summary>
-public static class ServiceCommandManagerExtensions
-{
     /// <summary>
-    /// 获取所有可用的服务命令信息。
+    /// 服务命令管理者扩展方法。
     /// </summary>
-    /// <returns>服务命令集合。</returns>
-    public static async Task<IEnumerable<ServiceCommandDescriptor>> GetServiceCommandsAsync
-        (this IServiceCommandManager serviceCommandManager, params string[] serviceIds)
+    public static class ServiceCommandManagerExtensions
     {
-        var result = (await serviceCommandManager.GetServiceCommandsAsync());
-        return result.Where(p => serviceIds.Contains(p.ServiceId));
+        /// <summary>
+        /// 获取所有可用的服务命令信息。
+        /// </summary>
+        /// <returns>服务命令集合。</returns>
+        public static async Task<IEnumerable<ServiceCommandDescriptor>> GetServiceCommandsAsync
+            (this IServiceCommandManager serviceCommandManager, params string[] serviceIds)
+        {
+            var result = (await serviceCommandManager.GetServiceCommandsAsync());
+            return result.Where(p => serviceIds.Contains(p.ServiceId));
+        }
     }
 }

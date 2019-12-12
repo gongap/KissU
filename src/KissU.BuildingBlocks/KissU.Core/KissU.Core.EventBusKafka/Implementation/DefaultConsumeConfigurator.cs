@@ -1,14 +1,13 @@
-﻿using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.EventBus.Events;
-using Surging.Core.CPlatform.EventBus.Implementation;
-using Surging.Core.EventBusKafka.Utilities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
+using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.EventBus.Events;
+using KissU.Core.CPlatform.EventBus.Implementation;
+using KissU.Core.EventBusKafka.Utilities;
 
-namespace Surging.Core.EventBusKafka.Implementation
+namespace KissU.Core.EventBusKafka.Implementation
 {
    public class DefaultConsumeConfigurator : IConsumeConfigurator
     {

@@ -1,15 +1,14 @@
-﻿using Autofac;
-using Surging.Core.CPlatform.EventBus.Events;
-using Surging.Core.CPlatform.EventBus.Implementation;
-using Surging.Core.CPlatform.Ioc;
-using Surging.Core.CPlatform.Utilities;
-using Surging.Core.ProxyGenerator;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
+using Autofac;
+using KissU.Core.CPlatform.EventBus.Events;
+using KissU.Core.CPlatform.EventBus.Implementation;
+using KissU.Core.CPlatform.Ioc;
+using KissU.Core.CPlatform.Utilities;
+using KissU.Core.ProxyGenerator;
 
-namespace Surging.Core.Protocol.Udp.Runtime
+namespace KissU.Core.Protocol.Udp.Runtime
 {
     public abstract class UdpBehavior : IServiceBehavior
     {

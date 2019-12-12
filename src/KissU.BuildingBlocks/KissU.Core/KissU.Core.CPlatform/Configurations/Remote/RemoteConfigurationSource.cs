@@ -1,8 +1,8 @@
-﻿using Microsoft.Extensions.Configuration;
-using System;
+﻿using System;
 using System.Net.Http;
+using Microsoft.Extensions.Configuration;
 
-namespace Surging.Core.CPlatform.Configurations.Remote
+namespace KissU.Core.CPlatform.Configurations.Remote
 {
    public class RemoteConfigurationSource : IConfigurationSource
     {

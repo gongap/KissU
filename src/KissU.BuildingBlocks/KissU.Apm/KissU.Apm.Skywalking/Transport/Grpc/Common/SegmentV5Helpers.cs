@@ -19,10 +19,14 @@
 using System;
 using System.Linq;
 using Google.Protobuf;
+using KissU.Apm.Skywalking.Abstractions.Transport;
+using KissU.Core.CPlatform.Diagnostics;
 using SkyWalking.NetworkProtocol;
-using Surging.Apm.Skywalking.Abstractions.Transport;
+using SpanLayer = SkyWalking.NetworkProtocol.SpanLayer;
+using SpanType = SkyWalking.NetworkProtocol.SpanType;
+using UniqueId = SkyWalking.NetworkProtocol.UniqueId;
 
-namespace Surging.Apm.Skywalking.Transport.Grpc.Common
+namespace KissU.Apm.Skywalking.Transport.Grpc.Common
 {
     internal static class SegmentV5Helpers
     {
@@ -104,7 +108,7 @@ namespace Surging.Apm.Skywalking.Transport.Grpc.Common
             return logMessage;
         }
 
-        private static void ReadStringOrIntValue<T>(T instance, Surging.Core.CPlatform.Diagnostics.StringOrIntValue stringOrIntValue, Action<T, string> stringValueReader, Action<T, int> intValueReader)
+        private static void ReadStringOrIntValue<T>(T instance, StringOrIntValue stringOrIntValue, Action<T, string> stringValueReader, Action<T, int> intValueReader)
         {
             if (stringOrIntValue.HasStringValue)
             {

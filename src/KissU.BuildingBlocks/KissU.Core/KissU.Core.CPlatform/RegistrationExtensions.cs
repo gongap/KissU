@@ -1,10 +1,8 @@
-﻿using Surging.Core.CPlatform.Filters;
-using Surging.Core.CPlatform.Module;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using KissU.Core.CPlatform.Filters;
+using KissU.Core.CPlatform.Module;
 
-namespace Surging.Core.CPlatform
+namespace KissU.Core.CPlatform
 {
     public static class RegistrationExtensions
     { 

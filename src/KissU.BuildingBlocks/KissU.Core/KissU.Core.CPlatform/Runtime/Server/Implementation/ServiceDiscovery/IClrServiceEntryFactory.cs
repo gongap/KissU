@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery
+namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery
 {
     /// <summary>
     /// 一个抽象的Clr服务条目工厂。

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Surging.Core.DotNettyWSServer.Runtime
+namespace KissU.Core.DotNettyWSServer.Runtime
 {
     public class WSServiceEntry
     {

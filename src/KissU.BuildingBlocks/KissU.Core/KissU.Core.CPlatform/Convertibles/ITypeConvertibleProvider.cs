@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Surging.Core.CPlatform.Convertibles
+namespace KissU.Core.CPlatform.Convertibles
 {
     /// <summary>
     /// 类型转换。

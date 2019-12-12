@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Surging.Core.CPlatform.Runtime.Server
+namespace KissU.Core.CPlatform.Runtime.Server
 {
     /// <summary>
     /// 一个抽象的服务条目管理者。

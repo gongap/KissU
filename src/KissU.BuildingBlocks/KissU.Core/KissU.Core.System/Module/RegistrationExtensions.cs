@@ -1,15 +1,15 @@
-﻿using Autofac;
+﻿using System;
+using System.Collections.Generic;
+using System.Reflection;
+using Autofac;
 using Autofac.Builder;
 using Autofac.Core;
 using Autofac.Features.GeneratedFactories;
 using Autofac.Features.LightweightAdapters;
 using Autofac.Features.OpenGenerics;
 using Autofac.Features.Scanning;
-using System;
-using System.Collections.Generic;
-using System.Reflection;
 
-namespace Surging.Core.System.Module
+namespace KissU.Core.System.Module
 {
    public static class RegistrationExtensions
     {

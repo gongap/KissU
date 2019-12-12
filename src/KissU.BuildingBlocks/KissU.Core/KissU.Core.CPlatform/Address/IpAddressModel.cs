@@ -1,9 +1,7 @@
-using Newtonsoft.Json;
-using System;
 using System.Net;
-using System.Text;
+using Newtonsoft.Json;
 
-namespace Surging.Core.CPlatform.Address
+namespace KissU.Core.CPlatform.Address
 {
     /// <summary>
     /// ipµØÖ·Ä£ÐÍ¡£

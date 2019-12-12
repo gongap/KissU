@@ -1,7 +1,7 @@
-﻿using Surging.Core.CPlatform.Messages;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using KissU.Core.CPlatform.Messages;
 
-namespace Surging.Core.CPlatform.Transport
+namespace KissU.Core.CPlatform.Transport
 {
     /// <summary>
     /// 接受到消息的委托。

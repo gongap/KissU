@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Surging.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
 
-namespace Surging.Core.CPlatform.Support
+namespace KissU.Core.CPlatform.Support
 {
     public class ServiceCommand
     {

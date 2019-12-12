@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
+﻿using System.Threading;
 
-namespace Surging.Core.ServiceHosting.Internal
+namespace KissU.Core.ServiceHosting.Internal
 {
    public  interface IApplicationLifetime
     {

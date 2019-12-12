@@ -1,13 +1,11 @@
-﻿using Surging.Core.Caching.Interfaces;
-using Surging.Core.Caching.RedisCache;
-using Surging.Core.CPlatform.Cache;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using KissU.Core.Caching.RedisCache;
+using KissU.Core.CPlatform.Cache;
 
-namespace Surging.Core.Caching.NetCache
+namespace KissU.Core.Caching.NetCache
 {
     [IdentifyCache(name: CacheTargetType.MemoryCache)]
     public sealed class MemoryCacheProvider : ICacheProvider

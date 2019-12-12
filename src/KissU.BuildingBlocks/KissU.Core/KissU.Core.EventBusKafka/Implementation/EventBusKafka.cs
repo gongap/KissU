@@ -1,19 +1,16 @@
-﻿using Confluent.Kafka;
+﻿using System;
+using System.Threading.Tasks;
+using Confluent.Kafka;
+using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.EventBus;
+using KissU.Core.CPlatform.EventBus.Events;
+using KissU.Core.CPlatform.EventBus.Implementation;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Polly;
 using Polly.Retry;
-using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.EventBus;
-using Surging.Core.CPlatform.EventBus.Events;
-using Surging.Core.CPlatform.EventBus.Implementation;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
-namespace Surging.Core.EventBusKafka.Implementation
+namespace KissU.Core.EventBusKafka.Implementation
 {
     public class EventBusKafka : IEventBus, IDisposable
     {

@@ -1,11 +1,11 @@
-﻿using Surging.Core.CPlatform.Address;
-using Surging.Core.CPlatform.Ioc;
-using Surging.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
-using Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
-using Surging.Core.CPlatform.Support.Attributes;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using KissU.Core.CPlatform.Address;
+using KissU.Core.CPlatform.Ioc;
+using KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
+using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
+using KissU.Core.CPlatform.Support.Attributes;
 
-namespace Surging.Core.CPlatform.Module
+namespace KissU.Core.CPlatform.Module
 {
     [ServiceBundle("")]
     public interface IEchoService: IServiceKey

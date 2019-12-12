@@ -16,10 +16,10 @@
  *
  */
 
-using Surging.Apm.Skywalking.Abstractions.Config;
 using System.Linq;
+using KissU.Apm.Skywalking.Abstractions.Config;
 
-namespace Surging.Apm.Skywalking.Configuration
+namespace KissU.Apm.Skywalking.Configuration
 {
     public static class ConfigSectionExtensions
     {

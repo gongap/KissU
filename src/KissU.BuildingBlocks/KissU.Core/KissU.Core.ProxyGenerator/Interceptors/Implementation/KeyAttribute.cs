@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Surging.Core.ProxyGenerator.Interceptors.Implementation
+namespace KissU.Core.ProxyGenerator.Interceptors.Implementation
 {
     /// <summary>
     /// CacheKeyAttribute 自定义特性类

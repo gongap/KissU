@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reflection;
 using System.ComponentModel.DataAnnotations;
+using System.Reflection;
 
-namespace Surging.Core.Common.Extensions
+namespace KissU.Core.Common.Extensions
 {
     /// <summary>
     /// 枚举扩展类

@@ -1,13 +1,12 @@
-﻿using StackExchange.Redis;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Threading.Tasks;
+using StackExchange.Redis;
 
-namespace Surging.Core.Caching.RedisCache
+namespace KissU.Core.Caching.RedisCache
 {
     public static class StackExchangeRedisExtensions
     {

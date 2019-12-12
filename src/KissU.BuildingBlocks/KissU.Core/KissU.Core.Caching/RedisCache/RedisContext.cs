@@ -1,14 +1,11 @@
-﻿using Surging.Core.Caching.DependencyResolution;
-using Surging.Core.Caching.HashAlgorithms;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Reflection;
-using System.Text;
 using System.Linq;
+using System.Reflection;
+using KissU.Core.Caching.HashAlgorithms;
 
-namespace Surging.Core.Caching.RedisCache
+namespace KissU.Core.Caching.RedisCache
 {
     /// <summary>
     /// redis数据上下文

@@ -1,10 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Surging.Core.KestrelHttpServer.Filters;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using KissU.Core.KestrelHttpServer.Filters;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace Surging.Core.KestrelHttpServer.Extensions
+namespace KissU.Core.KestrelHttpServer.Extensions
 {
     public static class ServiceCollectionExtensions
     {

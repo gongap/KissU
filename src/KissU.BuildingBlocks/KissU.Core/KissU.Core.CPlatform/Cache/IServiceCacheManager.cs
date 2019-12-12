@@ -1,12 +1,10 @@
-﻿using Surging.Core.CPlatform.Cache.Implementation;
-using Surging.Core.CPlatform.Routing.Implementation;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform.Cache.Implementation;
 
-namespace Surging.Core.CPlatform.Cache
+namespace KissU.Core.CPlatform.Cache
 {
     public interface IServiceCacheManager
     {

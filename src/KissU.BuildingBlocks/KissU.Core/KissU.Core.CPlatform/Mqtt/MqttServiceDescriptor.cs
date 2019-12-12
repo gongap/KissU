@@ -1,11 +1,9 @@
-﻿using Newtonsoft.Json;
-using Surging.Core.CPlatform.Address;
-using Surging.Core.CPlatform.Serialization;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using KissU.Core.CPlatform.Address;
+using KissU.Core.CPlatform.Serialization;
+using Newtonsoft.Json;
 
-namespace Surging.Core.CPlatform.Mqtt
+namespace KissU.Core.CPlatform.Mqtt
 {
     /// <summary>
     /// Mqtt地址描述符。

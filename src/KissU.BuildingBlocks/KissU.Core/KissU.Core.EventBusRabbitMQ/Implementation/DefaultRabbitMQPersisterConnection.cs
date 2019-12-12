@@ -1,17 +1,14 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using System;
+using System.IO;
+using System.Net.Sockets;
+using Microsoft.Extensions.Logging;
 using Polly;
 using Polly.Retry;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using RabbitMQ.Client.Exceptions;
-using Surging.Core.CPlatform.EventBus;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Net.Sockets;
-using System.Text;
 
-namespace Surging.Core.EventBusRabbitMQ.Implementation
+namespace KissU.Core.EventBusRabbitMQ.Implementation
 {
    public class DefaultRabbitMQPersistentConnection
        : IRabbitMQPersistentConnection

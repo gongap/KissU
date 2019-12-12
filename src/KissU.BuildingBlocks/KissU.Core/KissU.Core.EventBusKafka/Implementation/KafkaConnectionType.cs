@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Surging.Core.EventBusKafka.Implementation
+﻿namespace KissU.Core.EventBusKafka.Implementation
 {
    public enum KafkaConnectionType
     {

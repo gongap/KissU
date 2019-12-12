@@ -1,13 +1,11 @@
-﻿using Microsoft.Extensions.Configuration;
-using Surging.Core.Caching.Models;
-using Surging.Core.Caching.RedisCache;
-using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Cache;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using KissU.Core.Caching.Models;
+using KissU.Core.Caching.RedisCache;
+using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Cache;
+using Microsoft.Extensions.Configuration;
 
-namespace Surging.Core.Caching.Internal.Implementation
+namespace KissU.Core.Caching.Internal.Implementation
 {
     /// <summary>
     /// 默认缓存节点提供者

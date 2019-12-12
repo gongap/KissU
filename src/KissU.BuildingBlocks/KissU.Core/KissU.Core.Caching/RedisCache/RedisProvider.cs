@@ -1,15 +1,13 @@
-﻿using StackExchange.Redis;
-using Surging.Core.Caching.AddressResolvers;
-using Surging.Core.Caching.HashAlgorithms;
-using Surging.Core.Caching.Interfaces;
-using Surging.Core.CPlatform.Cache;
-using System;
-using System.Collections.Concurrent;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
+using KissU.Core.Caching.AddressResolvers;
+using KissU.Core.Caching.HashAlgorithms;
+using KissU.Core.Caching.Interfaces;
+using KissU.Core.CPlatform.Cache;
+using StackExchange.Redis;
 
-namespace Surging.Core.Caching.RedisCache
+namespace KissU.Core.Caching.RedisCache
 {
     [IdentifyCache(name: CacheTargetType.Redis)]
     public class RedisProvider : ICacheProvider

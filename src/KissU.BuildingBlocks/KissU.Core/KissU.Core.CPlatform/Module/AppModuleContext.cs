@@ -1,9 +1,7 @@
-﻿using Surging.Core.CPlatform.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using KissU.Core.CPlatform.Utilities;
 
-namespace Surging.Core.CPlatform.Module
+namespace KissU.Core.CPlatform.Module
 {
    public class AppModuleContext
     {

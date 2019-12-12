@@ -1,10 +1,7 @@
-﻿using Surging.Core.CPlatform.Messages;
-using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Text;
+﻿using System.Runtime.CompilerServices;
+using KissU.Core.CPlatform.Messages;
 
-namespace Surging.Core.Protocol.Udp.Extensions
+namespace KissU.Core.Protocol.Udp.Extensions
 {
     public static class TransportMessageExtensions
     {

@@ -1,9 +1,8 @@
+using System;
 using MessagePack;
 using MessagePack.Resolvers;
-using System;
-using System.IO;
 
-namespace Surging.Core.Codec.MessagePack.Utilities
+namespace KissU.Core.Codec.MessagePack.Utilities
 {
     public class SerializerUtilitys
     {

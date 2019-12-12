@@ -1,8 +1,8 @@
 ﻿using Autofac;
-using Surging.Core.CPlatform.Engines;
-using Surging.Core.ServiceHosting.Internal;
+using KissU.Core.CPlatform.Engines;
+using KissU.Core.ServiceHosting.Internal;
 
-namespace Surging.Core.ProxyGenerator
+namespace KissU.Core.ProxyGenerator
 {
     public static class ServiceHostBuilderExtensions
     {

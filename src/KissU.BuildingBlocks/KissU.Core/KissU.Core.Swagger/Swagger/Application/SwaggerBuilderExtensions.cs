@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Builder;
 
-namespace Surging.Core.Swagger.Builder
+namespace KissU.Core.Swagger.Swagger.Application
 {
     public static class SwaggerBuilderExtensions
     {

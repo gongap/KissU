@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
- 
 
-namespace Surging.Core.Zookeeper.Configurations
+namespace KissU.Core.Zookeeper.Configurations
 {
     public class ZookeeperConfigurationSource : FileConfigurationSource
     {

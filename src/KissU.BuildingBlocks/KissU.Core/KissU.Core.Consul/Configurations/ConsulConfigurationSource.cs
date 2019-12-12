@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
- 
 
-namespace Surging.Core.Consul.Configurations
+namespace KissU.Core.Consul.Configurations
 {
     public class ConsulConfigurationSource : FileConfigurationSource
     {

@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
+﻿using System.Threading;
 
-namespace Surging.Core.Protocol.Mqtt.Util
+namespace KissU.Core.Protocol.Mqtt.Util
 {
    public class MessageIdGenerater
     {

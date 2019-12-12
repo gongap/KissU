@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Surging.Core.CPlatform.Cache
+﻿namespace KissU.Core.CPlatform.Cache
 {
     public abstract class CacheEndpoint
     {

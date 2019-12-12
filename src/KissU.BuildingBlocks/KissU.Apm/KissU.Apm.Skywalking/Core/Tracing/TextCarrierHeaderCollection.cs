@@ -16,12 +16,11 @@
  *
  */
 
-using Surging.Apm.Skywalking.Abstractions.Tracing;
-using Surging.Core.CPlatform.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
+using KissU.Core.CPlatform.Diagnostics;
 
-namespace Surging.Apm.Skywalking.Abstractions.Common.Tracing
+namespace KissU.Apm.Skywalking.Core.Tracing
 {
     public class TextCarrierHeaderCollection : ICarrierHeaderCollection
     {

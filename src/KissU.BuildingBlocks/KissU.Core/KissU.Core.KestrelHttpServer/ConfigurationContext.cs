@@ -1,12 +1,10 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System.Collections.Generic;
+using KissU.Core.CPlatform.Module;
+using KissU.Core.CPlatform.Utilities;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Surging.Core.CPlatform.Module;
-using Surging.Core.CPlatform.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Surging.Core.KestrelHttpServer
+namespace KissU.Core.KestrelHttpServer
 {
     public class ConfigurationContext
     {

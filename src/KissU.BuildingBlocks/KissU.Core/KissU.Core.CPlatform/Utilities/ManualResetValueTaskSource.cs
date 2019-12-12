@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Sources;
 
-namespace Surging.Core.CPlatform.Utilities
+namespace KissU.Core.CPlatform.Utilities
 {
     internal interface IStrongBox<T>
     {

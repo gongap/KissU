@@ -1,9 +1,7 @@
-﻿using Surging.Core.CPlatform.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using KissU.Core.CPlatform.Utilities;
 
-namespace Surging.Core.CPlatform.Ioc
+namespace KissU.Core.CPlatform.Ioc
 {
     public abstract class ServiceBase: IServiceBehavior
     {

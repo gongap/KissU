@@ -16,9 +16,9 @@
  *
  */
 
-using Surging.Core.CPlatform.Diagnostics;
+using KissU.Core.CPlatform.Diagnostics;
 
-namespace Surging.Apm.Skywalking.Abstractions.Transport
+namespace KissU.Apm.Skywalking.Abstractions.Transport
 {
     public interface ISegmentContextMapper
     {

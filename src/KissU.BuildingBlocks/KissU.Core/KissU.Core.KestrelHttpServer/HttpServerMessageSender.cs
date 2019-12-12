@@ -1,16 +1,15 @@
-﻿using Microsoft.AspNetCore.Http;
-using Surging.Core.CPlatform.Diagnostics;
-using Surging.Core.CPlatform.Messages;
-using Surging.Core.CPlatform.Serialization;
-using Surging.Core.CPlatform.Transport;
-using Surging.Core.CPlatform.Transport.Implementation;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform.Diagnostics;
+using KissU.Core.CPlatform.Messages;
+using KissU.Core.CPlatform.Serialization;
+using KissU.Core.CPlatform.Transport;
+using KissU.Core.KestrelHttpServer.Abstractions;
+using Microsoft.AspNetCore.Http;
 
-namespace Surging.Core.KestrelHttpServer
+namespace KissU.Core.KestrelHttpServer
 {
     public class HttpServerMessageSender : IMessageSender
     {

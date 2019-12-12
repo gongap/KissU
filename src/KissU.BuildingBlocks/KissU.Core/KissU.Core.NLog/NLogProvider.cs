@@ -1,10 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Concurrent;
+using Microsoft.Extensions.Logging;
 
-namespace Surging.Core.Nlog
+namespace KissU.Core.Nlog
 {
     public class NLogProvider : ILoggerProvider
     {

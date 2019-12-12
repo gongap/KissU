@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Surging.Core.CPlatform.Configurations
+﻿namespace KissU.Core.CPlatform.Configurations
 {
     public enum RuntimeEnvironment
     {

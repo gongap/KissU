@@ -1,4 +1,4 @@
-﻿namespace Surging.Core.CPlatform.Support
+﻿namespace KissU.Core.CPlatform.Support
 {
     public class ServiceCommandDescriptor:ServiceCommand
     {

@@ -1,10 +1,8 @@
-﻿using Surging.Core.CPlatform.Address;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform.Address;
 
-namespace Surging.Core.Protocol.Mqtt.Internal.Runtime
+namespace KissU.Core.Protocol.Mqtt.Internal.Runtime
 {
    public interface IMqttBrokerEntryManger
     {

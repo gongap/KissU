@@ -18,7 +18,7 @@
 
 using System;
 
-namespace Surging.Apm.Skywalking.Abstractions.Logging
+namespace KissU.Apm.Skywalking.Abstractions.Logging
 {
     public interface ILogger
     {

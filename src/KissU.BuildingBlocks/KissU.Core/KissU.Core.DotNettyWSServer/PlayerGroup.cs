@@ -1,13 +1,10 @@
-﻿using DotNetty.Buffers;
+﻿using System.Threading.Tasks;
+using DotNetty.Buffers;
 using DotNetty.Codecs.Http.WebSockets;
 using DotNetty.Transport.Channels;
 using DotNetty.Transport.Channels.Groups;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Surging.Core.DotNettyWSServer
+namespace KissU.Core.DotNettyWSServer
 {
     public class PlayerGroup
     {

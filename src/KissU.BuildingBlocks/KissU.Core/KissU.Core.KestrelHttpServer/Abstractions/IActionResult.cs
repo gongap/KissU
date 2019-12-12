@@ -1,10 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
-namespace Surging.Core.KestrelHttpServer
+namespace KissU.Core.KestrelHttpServer.Abstractions
 {
    public interface IActionResult
     {

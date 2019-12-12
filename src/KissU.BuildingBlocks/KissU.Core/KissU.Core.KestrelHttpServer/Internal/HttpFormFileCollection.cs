@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace Surging.Core.KestrelHttpServer.Internal
+namespace KissU.Core.KestrelHttpServer.Internal
 {
     public class HttpFormFileCollection : List<HttpFormFile>
     {

@@ -1,14 +1,12 @@
-﻿using Autofac;
-using Surging.Core.Common.ServicesException;
-using System.Reflection;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+using Autofac;
+using KissU.Core.Common.ServicesException;
 
-namespace Surging.Core.System.Module
+namespace KissU.Core.System.Module
 {
     /// <summary>
     /// 抽象模块业务模块和系统模块的基类。

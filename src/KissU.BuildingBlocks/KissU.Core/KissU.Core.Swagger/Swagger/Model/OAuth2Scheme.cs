@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Surging.Core.Swagger
+namespace KissU.Core.Swagger.Swagger.Model
 {
     public class OAuth2Scheme : SecurityScheme
     {

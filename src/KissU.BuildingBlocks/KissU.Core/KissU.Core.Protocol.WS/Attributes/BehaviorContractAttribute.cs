@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Surging.Core.Protocol.WS.Attributes
+namespace KissU.Core.Protocol.WS.Attributes
 {
     public class BehaviorContractAttribute : Attribute
     {

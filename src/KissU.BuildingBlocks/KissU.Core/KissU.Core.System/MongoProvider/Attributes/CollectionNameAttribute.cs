@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Surging.Core.System.MongoProvider.Attributes
+namespace KissU.Core.System.MongoProvider.Attributes
 {
     [AttributeUsage(AttributeTargets.Class, Inherited = true)]
     public class CollectionNameAttribute : Attribute

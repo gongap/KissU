@@ -6,15 +6,14 @@ using DotNetty.Codecs.DNS;
 using DotNetty.Codecs.DNS.Messages;
 using DotNetty.Codecs.DNS.Records;
 using DotNetty.Transport.Channels;
-using Surging.Core.CPlatform.Messages;
-using Surging.Core.CPlatform.Serialization;
-using Surging.Core.CPlatform.Transport;
-using Surging.Core.CPlatform.Transport.Codec;
-using Surging.Core.DNS.Extensions;
-using Surging.Core.DNS.Utilities;
-using Surging.Core.DotNetty;
+using KissU.Core.CPlatform.Messages;
+using KissU.Core.CPlatform.Transport;
+using KissU.Core.CPlatform.Transport.Codec;
+using KissU.Core.DNS.Extensions;
+using KissU.Core.DNS.Utilities;
+using KissU.Core.DotNetty;
 
-namespace Surging.Core.DNS
+namespace KissU.Core.DNS
 {
     class DotNettyDnsServerMessageSender : DotNettyMessageSender, IMessageSender
     {

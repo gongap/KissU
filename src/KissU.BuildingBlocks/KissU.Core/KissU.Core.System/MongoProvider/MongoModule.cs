@@ -1,12 +1,7 @@
-﻿using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Module;
-using Surging.Core.CPlatform.Utilities;
-using Surging.Core.System.MongoProvider.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using KissU.Core.CPlatform.Module;
+using KissU.Core.System.MongoProvider.Repositories;
 
-namespace Surging.Core.System.MongoProvider
+namespace KissU.Core.System.MongoProvider
 {
     public class MongoModule : SystemModule
     {

@@ -1,12 +1,9 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using System.Net;
+using KissU.Core.CPlatform.Utilities;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
-using Surging.Core.CPlatform.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Text;
 
-namespace Surging.Core.KestrelHttpServer
+namespace KissU.Core.KestrelHttpServer
 {
     public class WebHostContext
     {

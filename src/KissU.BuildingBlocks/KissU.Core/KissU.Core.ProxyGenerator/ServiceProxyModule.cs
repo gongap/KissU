@@ -1,20 +1,14 @@
-﻿using Autofac;
-using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Convertibles;
-using Surging.Core.CPlatform.Engines;
-using Surging.Core.CPlatform.Module;
-using Surging.Core.CPlatform.Routing;
-using Surging.Core.CPlatform.Runtime.Client;
-using Surging.Core.ProxyGenerator.Implementation;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Linq;
-using Surging.Core.CPlatform.Runtime.Server;
-using Surging.Core.ProxyGenerator.Diagnostics;
-using Surging.Core.CPlatform.Diagnostics;
+﻿using System.Collections.Generic;
+using Autofac;
+using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Diagnostics;
+using KissU.Core.CPlatform.Engines;
+using KissU.Core.CPlatform.Module;
+using KissU.Core.CPlatform.Routing;
+using KissU.Core.CPlatform.Runtime.Server;
+using KissU.Core.ProxyGenerator.Diagnostics;
 
-namespace Surging.Core.ProxyGenerator
+namespace KissU.Core.ProxyGenerator
 {
    public class ServiceProxyModule: EnginePartModule
     {

@@ -1,11 +1,9 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System;
+using KissU.Core.System.MongoProvider.Attributes;
+using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
-using Surging.Core.System.MongoProvider.Attributes;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Surging.Core.System.MongoProvider
+namespace KissU.Core.System.MongoProvider
 {
     internal static class Util
     {

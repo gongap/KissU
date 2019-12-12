@@ -1,25 +1,22 @@
-﻿using Surging.Apm.Skywalking.Abstractions;
-using Surging.Apm.Skywalking.Abstractions.Tracing;
-using Surging.Apm.Skywalking.Abstractions.Transport;
-using Surging.Apm.Skywalking.Core.Sampling;
-using Surging.Apm.Skywalking.Transport.Grpc;
-using Surging.Apm.Skywalking.Transport.Grpc.V6;
-using Surging.Core.CPlatform.Module;
-using Autofac;
-using Surging.Apm.Skywalking.Abstractions.Common.Tracing;
-using Surging.Apm.Skywalking.Core.Tracing;
-using Surging.Apm.Skywalking.Abstractions.Common.Transport;
-using Surging.Apm.Skywalking.Core;
-using Surging.Apm.Skywalking.Core.Service;
-using Surging.Apm.Skywalking.Core.Diagnostics;
-using Surging.Apm.Skywalking.Abstractions.Config;
-using Surging.Apm.Skywalking.Configuration;
-using Surging.Apm.Skywalking.Core.Common;
-using System.Collections.Generic;
-using System;
-using Surging.Apm.Skywalking.Transport.Grpc.V5;
-using System.Threading.Tasks;
-using Surging.Core.CPlatform.Diagnostics;
+﻿using Autofac;
+using KissU.Apm.Skywalking.Abstractions;
+using KissU.Apm.Skywalking.Abstractions.Config;
+using KissU.Apm.Skywalking.Abstractions.Tracing;
+using KissU.Apm.Skywalking.Abstractions.Transport;
+using KissU.Apm.Skywalking.Abstractions.Transport.V5;
+using KissU.Apm.Skywalking.Configuration;
+using KissU.Apm.Skywalking.Core;
+using KissU.Apm.Skywalking.Core.Common;
+using KissU.Apm.Skywalking.Core.Diagnostics;
+using KissU.Apm.Skywalking.Core.Sampling;
+using KissU.Apm.Skywalking.Core.Service;
+using KissU.Apm.Skywalking.Core.Tracing;
+using KissU.Apm.Skywalking.Core.Transport;
+using KissU.Apm.Skywalking.Transport.Grpc;
+using KissU.Apm.Skywalking.Transport.Grpc.V5;
+using KissU.Apm.Skywalking.Transport.Grpc.V6;
+using KissU.Core.CPlatform.Diagnostics;
+using KissU.Core.CPlatform.Module;
 
 namespace Surging.Apm.Skywalking
 {
@@ -82,7 +79,7 @@ namespace Surging.Apm.Skywalking
         private SkywalkingModule AddGrpcTransport(ContainerBuilderWrapper builder)
         {
             builder.RegisterType<SkyApmClientV5>().As<ISkyApmClientV5>().SingleInstance();
-            builder.RegisterType<Transport.Grpc.SegmentReporter>().As<ISegmentReporter>().SingleInstance();
+            builder.RegisterType<KissU.Apm.Skywalking.Transport.Grpc.SegmentReporter>().As<ISegmentReporter>().SingleInstance();
             builder.RegisterType<ConnectionManager>().SingleInstance();
             builder.RegisterType<PingCaller>().As<IPingCaller>().SingleInstance();
             builder.RegisterType<ServiceRegister>().As<IServiceRegister>().SingleInstance();

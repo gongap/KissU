@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
-namespace Surging.Core.CPlatform.Module
+namespace KissU.Core.CPlatform.Module
 {
     public interface IModuleProvider
     {

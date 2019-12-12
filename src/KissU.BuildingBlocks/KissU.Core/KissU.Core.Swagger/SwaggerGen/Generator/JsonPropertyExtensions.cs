@@ -1,11 +1,11 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.Reflection;
 using System.Linq;
+using System.Reflection;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Serialization;
 
-namespace Surging.Core.SwaggerGen
+namespace KissU.Core.Swagger.SwaggerGen.Generator
 {
     internal static class JsonPropertyExtensions
     {

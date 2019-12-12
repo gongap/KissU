@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Surging.Core.System.Module.Attributes
+namespace KissU.Core.System.Module.Attributes
 {
     /// <summary>
     /// ModelBinderTypeAttribute 自定义特性类

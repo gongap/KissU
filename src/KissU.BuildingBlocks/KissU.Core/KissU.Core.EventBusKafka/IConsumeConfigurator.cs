@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace Surging.Core.EventBusKafka
+namespace KissU.Core.EventBusKafka
 {
    public interface IConsumeConfigurator
     {

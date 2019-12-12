@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
- 
 
-namespace Surging.Core.Zookeeper
+namespace KissU.Core.Zookeeper
 {
    public class AppConfig
     {

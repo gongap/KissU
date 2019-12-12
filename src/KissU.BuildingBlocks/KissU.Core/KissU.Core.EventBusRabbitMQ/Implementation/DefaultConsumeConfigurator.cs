@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Linq;
-using Surging.Core.CPlatform.EventBus.Events;
-using Surging.Core.CPlatform.EventBus.Implementation;
-using Surging.Core.CPlatform;
-using Surging.Core.EventBusRabbitMQ.Utilities;
+using System.Reflection;
+using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.EventBus.Events;
+using KissU.Core.CPlatform.EventBus.Implementation;
+using KissU.Core.EventBusRabbitMQ.Utilities;
 
-namespace Surging.Core.EventBusRabbitMQ.Implementation
+namespace KissU.Core.EventBusRabbitMQ.Implementation
 {
   public  class DefaultConsumeConfigurator: IConsumeConfigurator
     {

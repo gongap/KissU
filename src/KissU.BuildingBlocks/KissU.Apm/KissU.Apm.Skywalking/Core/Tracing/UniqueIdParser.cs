@@ -16,11 +16,10 @@
  *
  */
 
-using Surging.Apm.Skywalking.Abstractions.Tracing;
-using Surging.Core.CPlatform.Diagnostics;
-using System;
+using KissU.Apm.Skywalking.Abstractions.Tracing;
+using KissU.Core.CPlatform.Diagnostics;
 
-namespace Surging.Apm.Skywalking.Abstractions.Common.Tracing
+namespace KissU.Apm.Skywalking.Core.Tracing
 {
     public class UniqueIdParser : IUniqueIdParser
     {

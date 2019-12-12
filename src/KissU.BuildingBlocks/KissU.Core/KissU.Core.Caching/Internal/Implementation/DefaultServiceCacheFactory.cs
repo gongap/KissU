@@ -1,13 +1,12 @@
-﻿using Surging.Core.CPlatform.Cache;
-using Surging.Core.CPlatform.Serialization;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform.Cache;
+using KissU.Core.CPlatform.Serialization;
 
-namespace Surging.Core.Caching.Internal.Implementation
+namespace KissU.Core.Caching.Internal.Implementation
 {
     /// <summary>
     /// 默认的服务缓存工程

@@ -1,6 +1,6 @@
-﻿using Surging.Core.CPlatform;
+﻿using KissU.Core.CPlatform;
 
-namespace Surging.Core.Codec.MessagePack
+namespace KissU.Core.Codec.MessagePack
 {
     public static class ContainerBuilderExtensions
     {

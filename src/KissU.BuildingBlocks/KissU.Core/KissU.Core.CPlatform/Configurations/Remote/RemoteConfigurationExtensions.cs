@@ -1,9 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using Microsoft.Extensions.Configuration;
 
-namespace Surging.Core.CPlatform.Configurations.Remote
+namespace KissU.Core.CPlatform.Configurations.Remote
 {
     /// <summary>
     /// Extension methods for adding <see cref="RemoteConfigurationProvider"/>.

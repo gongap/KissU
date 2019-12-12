@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace Surging.Core.CPlatform.Ids
+namespace KissU.Core.CPlatform.Ids
 {
     /// <summary>
     /// 一个抽象的服务Id生成器。

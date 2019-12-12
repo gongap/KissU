@@ -1,7 +1,7 @@
-﻿using Surging.Core.CPlatform.Routing;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using KissU.Core.CPlatform.Routing;
 
-namespace Surging.Core.CPlatform.Runtime.Client
+namespace KissU.Core.CPlatform.Runtime.Client
 {
     public class ServiceSubscriberDescriptor
     {

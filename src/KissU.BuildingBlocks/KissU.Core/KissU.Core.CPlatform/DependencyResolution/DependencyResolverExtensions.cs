@@ -1,10 +1,9 @@
-﻿using Surging.Core.CPlatform.Utilities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using KissU.Core.CPlatform.Utilities;
 
-namespace Surging.Core.CPlatform.DependencyResolution
+namespace KissU.Core.CPlatform.DependencyResolution
 {
     /// <summary>
     /// 扩展依赖注入IOC容器

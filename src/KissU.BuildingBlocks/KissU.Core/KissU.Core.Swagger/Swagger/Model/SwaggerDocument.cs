@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace Surging.Core.Swagger
+namespace KissU.Core.Swagger.Swagger.Model
 {
     public class SwaggerDocument
     {

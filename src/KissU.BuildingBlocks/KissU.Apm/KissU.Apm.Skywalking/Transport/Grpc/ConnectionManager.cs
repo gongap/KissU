@@ -20,11 +20,11 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Grpc.Core;
+using KissU.Apm.Skywalking.Abstractions.Config;
+using KissU.Apm.Skywalking.Transport.Grpc.Common;
 using Microsoft.Extensions.Logging;
-using Surging.Apm.Skywalking.Abstractions.Config;
-using Surging.Apm.Skywalking.Transport.Grpc.Common;
 
-namespace Surging.Apm.Skywalking.Transport.Grpc
+namespace KissU.Apm.Skywalking.Transport.Grpc
 {
     public class ConnectionManager
     {

@@ -1,11 +1,10 @@
-﻿using Surging.Core.ProxyGenerator.FastReflection;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
+using KissU.Core.ProxyGenerator.FastReflection;
 
-namespace Surging.Core.ProxyGenerator.Utilitys
+namespace KissU.Core.ProxyGenerator.Utilitys
 {
     class AttributeFactory
     {

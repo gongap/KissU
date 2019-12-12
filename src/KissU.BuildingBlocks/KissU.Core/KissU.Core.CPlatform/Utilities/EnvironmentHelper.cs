@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Surging.Core.CPlatform.Utilities
+namespace KissU.Core.CPlatform.Utilities
 {
     public class EnvironmentHelper
     {

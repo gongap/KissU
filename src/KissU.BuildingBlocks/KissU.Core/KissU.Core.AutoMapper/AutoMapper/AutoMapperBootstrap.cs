@@ -1,10 +1,10 @@
-﻿using AutoMapper;
+﻿using System.Linq;
+using AutoMapper;
 using AutoMapper.Attributes;
+using KissU.Core.CPlatform.Utilities;
 using Microsoft.Extensions.Logging;
-using Surging.Core.CPlatform.Utilities;
-using System.Linq;
 
-namespace Surging.Core.AutoMapper
+namespace KissU.Core.AutoMapper.AutoMapper
 {
     public class AutoMapperBootstrap : IAutoMapperBootstrap
     {

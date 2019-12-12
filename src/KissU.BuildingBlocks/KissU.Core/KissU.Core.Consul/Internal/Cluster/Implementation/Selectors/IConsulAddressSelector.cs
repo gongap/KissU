@@ -1,11 +1,6 @@
-﻿using Surging.Core.CPlatform.Address;
-using Surging.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors;
 
-namespace Surging.Core.Consul.Internal.Cluster.Implementation.Selectors
+namespace KissU.Core.Consul.Internal.Cluster.Implementation.Selectors
 {
     public interface IConsulAddressSelector : IAddressSelector
     { 

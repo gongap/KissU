@@ -1,7 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
-using System;
+﻿using System;
+using Microsoft.Extensions.Logging;
 
-namespace Surging.Core.CPlatform.Logging
+namespace KissU.Core.CPlatform.Logging
 {
     /// <summary>
     /// 一个空的日志记录器。

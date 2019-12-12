@@ -1,19 +1,17 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Surging.Core.ApiGateWay;
-using Surging.Core.ApiGateWay.OAuth;
-using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.DependencyResolution;
-using Surging.Core.CPlatform.Filters.Implementation;
-using Surging.Core.CPlatform.Messages;
-using Surging.Core.CPlatform.Transport.Implementation;
-using Surging.Core.CPlatform.Utilities;
-using Surging.Core.KestrelHttpServer.Filters;
-using Surging.Core.KestrelHttpServer.Filters.Implementation;
+﻿using System;
 using System.Threading.Tasks;
 using Autofac;
-using System;
+using KissU.Core.ApiGateWay;
+using KissU.Core.ApiGateWay.OAuth;
+using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Filters.Implementation;
+using KissU.Core.CPlatform.Messages;
+using KissU.Core.CPlatform.Transport.Implementation;
+using KissU.Core.CPlatform.Utilities;
+using KissU.Core.KestrelHttpServer.Filters;
+using KissU.Core.KestrelHttpServer.Filters.Implementation;
 
-namespace Surging.Core.Stage.Filters
+namespace KissU.Core.Stage.Filters
 {
     public class AuthorizationFilterAttribute : IAuthorizationFilter
     {

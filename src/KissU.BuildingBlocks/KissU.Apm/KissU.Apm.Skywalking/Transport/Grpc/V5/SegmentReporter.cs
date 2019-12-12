@@ -21,13 +21,13 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
-using SkyWalking.NetworkProtocol;
-using Surging.Apm.Skywalking.Abstractions.Transport;
+using KissU.Apm.Skywalking.Abstractions.Config;
+using KissU.Apm.Skywalking.Abstractions.Transport;
+using KissU.Apm.Skywalking.Transport.Grpc.Common;
 using Microsoft.Extensions.Logging;
-using Surging.Apm.Skywalking.Abstractions.Config;
-using Surging.Apm.Skywalking.Transport.Grpc.Common;
+using SkyWalking.NetworkProtocol;
 
-namespace Surging.Apm.Skywalking.Transport.Grpc.V5
+namespace KissU.Apm.Skywalking.Transport.Grpc.V5
 {
     internal class SegmentReporter : ISegmentReporter
     {

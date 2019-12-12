@@ -1,9 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Surging.Core.ApiGateWay.OAuth.Implementation.Configurations
+namespace KissU.Core.ApiGateWay.OAuth.Implementation.Configurations
 {
    public class GatewayConfigurationSource : FileConfigurationSource
     {

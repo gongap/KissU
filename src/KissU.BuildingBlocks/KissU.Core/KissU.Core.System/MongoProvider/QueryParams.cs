@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Surging.Core.System.MongoProvider
+﻿namespace KissU.Core.System.MongoProvider
 {
     public class QueryParams
     {

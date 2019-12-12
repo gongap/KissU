@@ -19,12 +19,12 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using KissU.Apm.Skywalking.Abstractions;
+using KissU.Core.CPlatform;
 using Microsoft.Extensions.Configuration;
-using Surging.Apm.Skywalking.Abstractions;
-using Surging.Core.CPlatform;
 
 // ReSharper disable StringLiteralTypo
-namespace Surging.Apm.Skywalking.Configuration
+namespace KissU.Apm.Skywalking.Configuration
 {
     public class ConfigurationFactory : IConfigurationFactory
     {

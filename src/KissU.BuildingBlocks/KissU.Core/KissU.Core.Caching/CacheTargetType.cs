@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Surging.Core.Caching
+﻿namespace KissU.Core.Caching
 {
     public enum CacheTargetType
     {

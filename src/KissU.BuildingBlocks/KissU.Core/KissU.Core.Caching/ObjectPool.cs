@@ -1,10 +1,9 @@
-﻿using Surging.Core.Caching.Utilities;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading;
+using KissU.Core.Caching.Utilities;
 
-namespace Surging.Core.Caching
+namespace KissU.Core.Caching
 {
     public class ObjectPool<T>
     {

@@ -1,8 +1,8 @@
-﻿using Surging.Core.CPlatform.Address;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform.Address;
 
-namespace Surging.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors
+namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors
 {
     /// <summary>
     /// 地址选择上下文。

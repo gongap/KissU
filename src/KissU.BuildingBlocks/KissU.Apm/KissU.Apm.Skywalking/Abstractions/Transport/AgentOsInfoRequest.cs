@@ -16,9 +16,7 @@
  *
  */
 
-using System;
-
-namespace Surging.Apm.Skywalking.Abstractions.Transport
+namespace KissU.Apm.Skywalking.Abstractions.Transport
 {
     public class AgentOsInfoRequest
     {

@@ -1,25 +1,18 @@
-﻿using ARSoft.Tools.Net;
-using ARSoft.Tools.Net.Dns;
-using DotNetty.Buffers;
-using DotNetty.Codecs;
+﻿using System;
+using System.Net;
+using System.Threading.Tasks;
 using DotNetty.Codecs.DNS;
 using DotNetty.Codecs.DNS.Messages;
 using DotNetty.Codecs.DNS.Records;
 using DotNetty.Transport.Bootstrapping;
 using DotNetty.Transport.Channels;
 using DotNetty.Transport.Channels.Sockets;
+using KissU.Core.CPlatform.Messages;
+using KissU.Core.CPlatform.Transport;
+using KissU.Core.CPlatform.Transport.Codec;
 using Microsoft.Extensions.Logging;
-using Surging.Core.CPlatform.Messages;
-using Surging.Core.CPlatform.Serialization;
-using Surging.Core.CPlatform.Transport;
-using Surging.Core.CPlatform.Transport.Codec;
-using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Surging.Core.DNS
+namespace KissU.Core.DNS
 {
     class DotNettyDnsServerMessageListener : IMessageListener, IDisposable
     {

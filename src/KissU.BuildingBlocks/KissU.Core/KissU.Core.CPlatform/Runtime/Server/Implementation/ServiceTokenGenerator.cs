@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Surging.Core.CPlatform.Runtime.Server.Implementation
+namespace KissU.Core.CPlatform.Runtime.Server.Implementation
 {
     public class ServiceTokenGenerator : IServiceTokenGenerator
     {

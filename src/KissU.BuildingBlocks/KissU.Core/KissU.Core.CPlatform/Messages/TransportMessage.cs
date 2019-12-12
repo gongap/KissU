@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 
-namespace Surging.Core.CPlatform.Messages
+namespace KissU.Core.CPlatform.Messages
 {
     /// <summary>
     /// 传输消息模型。

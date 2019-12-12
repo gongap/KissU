@@ -1,8 +1,8 @@
-﻿using Autofac;
-using Surging.Core.CPlatform.DependencyResolution;
-using System;
+﻿using System;
+using Autofac;
+using KissU.Core.CPlatform.DependencyResolution;
 
-namespace Surging.Core.CPlatform
+namespace KissU.Core.CPlatform
 {
     /// <summary>
     /// 平台容器

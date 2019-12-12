@@ -1,4 +1,4 @@
-#region License
+﻿#region License
 /*
  * MessageEventArgs.cs
  *
@@ -27,6 +27,8 @@
 #endregion
 
 using System;
+using System.Net.Mime;
+using System.Net.NetworkInformation;
 
 namespace WebSocketCore
 {
@@ -80,8 +82,8 @@ namespace WebSocketCore
     /// Gets the opcode for the message.
     /// </summary>
     /// <value>
-    /// <see cref="Opcode.Text"/>, <see cref="Opcode.Binary"/>,
-    /// or <see cref="Opcode.Ping"/>.
+    /// <see cref="MediaTypeNames.Text"/>, <see cref="Opcode.Binary"/>,
+    /// or <see cref="Ping"/>.
     /// </value>
     internal Opcode Opcode {
       get {

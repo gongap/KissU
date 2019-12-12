@@ -1,21 +1,18 @@
-﻿using Autofac;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
+﻿using System.Net;
+using Autofac;
+using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Diagnostics;
+using KissU.Core.CPlatform.Engines;
+using KissU.Core.CPlatform.Module;
+using KissU.Core.CPlatform.Routing;
+using KissU.Core.CPlatform.Runtime.Server;
+using KissU.Core.CPlatform.Serialization;
+using KissU.Core.KestrelHttpServer.Diagnostics;
+using KissU.Core.KestrelHttpServer.Extensions;
+using KissU.Core.KestrelHttpServer.Filters.Implementation;
 using Microsoft.Extensions.Logging;
-using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Diagnostics;
-using Surging.Core.CPlatform.Engines;
-using Surging.Core.CPlatform.Module;
-using Surging.Core.CPlatform.Routing;
-using Surging.Core.CPlatform.Runtime.Server;
-using Surging.Core.CPlatform.Serialization;
-using Surging.Core.KestrelHttpServer.Diagnostics;
-using Surging.Core.KestrelHttpServer.Extensions;
-using Surging.Core.KestrelHttpServer.Filters;
-using Surging.Core.KestrelHttpServer.Filters.Implementation;
-using System.Net;
 
-namespace Surging.Core.KestrelHttpServer
+namespace KissU.Core.KestrelHttpServer
 {
     public class KestrelHttpModule : EnginePartModule
     {

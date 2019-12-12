@@ -5,7 +5,7 @@ using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 
-namespace Surging.Core.CPlatform.Module
+namespace KissU.Core.CPlatform.Module
 {
     [XmlRoot("Assembly")]
     public class AssemblyEntry : IXmlSerializable

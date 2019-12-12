@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Surging.Core.CPlatform.Support
+namespace KissU.Core.CPlatform.Support
 {
     public class ServiceInvokeListenInfo
     {

@@ -1,9 +1,6 @@
-﻿using Surging.Core.CPlatform.Address;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using KissU.Core.CPlatform.Address;
 
-namespace Surging.Core.CPlatform.Runtime.Client.HealthChecks.Implementation
+namespace KissU.Core.CPlatform.Runtime.Client.HealthChecks.Implementation
 {
    public class HealthCheckEventArgs
     {

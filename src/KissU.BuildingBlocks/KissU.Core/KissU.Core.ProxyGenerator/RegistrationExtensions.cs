@@ -1,11 +1,9 @@
-﻿using Surging.Core.CPlatform.Module;
-using Surging.Core.ProxyGenerator.Interceptors;
-using Surging.Core.ProxyGenerator.Interceptors.Implementation;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using KissU.Core.CPlatform.Module;
+using KissU.Core.ProxyGenerator.Interceptors;
+using KissU.Core.ProxyGenerator.Interceptors.Implementation;
 
-namespace Surging.Core.ProxyGenerator
+namespace KissU.Core.ProxyGenerator
 {
     public static class  RegistrationExtensions
     {

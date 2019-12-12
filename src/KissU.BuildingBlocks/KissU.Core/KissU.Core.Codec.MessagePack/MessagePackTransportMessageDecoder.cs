@@ -1,10 +1,10 @@
-﻿using Surging.Core.Codec.MessagePack.Messages;
-using Surging.Core.Codec.MessagePack.Utilities;
-using Surging.Core.CPlatform.Messages;
-using Surging.Core.CPlatform.Transport.Codec;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
+using KissU.Core.Codec.MessagePack.Messages;
+using KissU.Core.Codec.MessagePack.Utilities;
+using KissU.Core.CPlatform.Messages;
+using KissU.Core.CPlatform.Transport.Codec;
 
-namespace Surging.Core.Codec.MessagePack
+namespace KissU.Core.Codec.MessagePack
 {
     public sealed class MessagePackTransportMessageDecoder : ITransportMessageDecoder
     {

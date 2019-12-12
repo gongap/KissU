@@ -1,11 +1,8 @@
-﻿using DotNetty.Codecs.DNS.Messages;
+﻿using System.Net;
+using DotNetty.Codecs.DNS.Messages;
 using DotNetty.Codecs.DNS.Records;
-using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Text;
 
-namespace Surging.Core.DNS
+namespace KissU.Core.DNS
 {
    public class DnsTransportMessage
     {

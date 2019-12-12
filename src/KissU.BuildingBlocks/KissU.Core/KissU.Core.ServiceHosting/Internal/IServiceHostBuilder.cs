@@ -1,12 +1,10 @@
-﻿using Autofac;
+﻿using System;
+using Autofac;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Surging.Core.ServiceHosting.Internal
+namespace KissU.Core.ServiceHosting.Internal
 {
     public  interface IServiceHostBuilder
     {

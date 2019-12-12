@@ -1,25 +1,24 @@
-﻿using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Support.Implementation;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using Surging.Core.CPlatform.Support;
-using System.Threading.Tasks;
-using Surging.Core.CPlatform.Serialization;
-using Microsoft.Extensions.Logging;
-using Surging.Core.CPlatform.Runtime.Server;
-using Surging.Core.Consul.Configurations;
-using Consul;
 using System.Linq;
-using Surging.Core.Consul.WatcherProvider;
-using Surging.Core.Consul.Utilitys;
-using Surging.Core.Consul.WatcherProvider.Implementation;
-using Surging.Core.CPlatform.Routing;
-using Surging.Core.CPlatform.Routing.Implementation;
-using Surging.Core.CPlatform.Runtime.Client;
-using Surging.Core.Consul.Internal;
+using System.Text;
+using System.Threading.Tasks;
+using Consul;
+using KissU.Core.Consul.Configurations;
+using KissU.Core.Consul.Internal;
+using KissU.Core.Consul.Utilitys;
+using KissU.Core.Consul.WatcherProvider;
+using KissU.Core.Consul.WatcherProvider.Implementation;
+using KissU.Core.CPlatform.Routing;
+using KissU.Core.CPlatform.Routing.Implementation;
+using KissU.Core.CPlatform.Runtime.Client;
+using KissU.Core.CPlatform.Runtime.Server;
+using KissU.Core.CPlatform.Serialization;
+using KissU.Core.CPlatform.Support;
+using KissU.Core.CPlatform.Support.Implementation;
+using Microsoft.Extensions.Logging;
 
-namespace Surging.Core.Consul
+namespace KissU.Core.Consul
 {
     public class ConsulServiceCommandManager : ServiceCommandManagerBase, IDisposable
     {

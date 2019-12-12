@@ -2,14 +2,11 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Surging.Core.Caching.Interfaces;
-using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Cache;
+using KissU.Core.CPlatform.Cache;
 
-namespace Surging.Core.Caching.HealthChecks.Implementation
+namespace KissU.Core.Caching.HealthChecks.Implementation
 {
     /// <summary>
     /// 默认的健康检查服务

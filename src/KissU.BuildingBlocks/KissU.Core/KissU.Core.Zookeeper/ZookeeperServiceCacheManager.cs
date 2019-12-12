@@ -1,19 +1,19 @@
-﻿using Microsoft.Extensions.Logging;
-using org.apache.zookeeper;
-using Surging.Core.CPlatform.Cache;
-using Surging.Core.CPlatform.Cache.Implementation;
-using Surging.Core.CPlatform.Serialization;
-using Surging.Core.Zookeeper.Configurations;
-using Surging.Core.Zookeeper.Internal;
-using Surging.Core.Zookeeper.WatcherProvider;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform.Cache;
+using KissU.Core.CPlatform.Cache.Implementation;
+using KissU.Core.CPlatform.Serialization;
+using KissU.Core.Zookeeper.Configurations;
+using KissU.Core.Zookeeper.Internal;
+using KissU.Core.Zookeeper.WatcherProvider;
+using Microsoft.Extensions.Logging;
+using org.apache.zookeeper;
 
-namespace Surging.Core.Zookeeper
+namespace KissU.Core.Zookeeper
 {
     public class ZookeeperServiceCacheManager : ServiceCacheManagerBase, IDisposable
     { 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Surging.Core.CPlatform.Runtime.Server
+namespace KissU.Core.CPlatform.Runtime.Server
 {
     /// <summary>
     /// 服务条目。

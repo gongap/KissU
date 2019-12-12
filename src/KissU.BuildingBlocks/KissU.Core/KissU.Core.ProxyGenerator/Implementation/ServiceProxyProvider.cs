@@ -1,10 +1,10 @@
-﻿using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.DependencyResolution;
-using Surging.Core.CPlatform.Routing;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.DependencyResolution;
+using KissU.Core.CPlatform.Routing;
 
-namespace Surging.Core.ProxyGenerator.Implementation
+namespace KissU.Core.ProxyGenerator.Implementation
 {
     public class ServiceProxyProvider : IServiceProxyProvider
     {

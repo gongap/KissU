@@ -1,13 +1,9 @@
-﻿
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
+﻿using System.Collections.Concurrent;
 using System.IO;
-using System.Text;
 using System.Xml;
+using Microsoft.Extensions.Logging;
 
-namespace Surging.Core.Log4net
+namespace KissU.Core.Log4net
 {
     public class Log4NetProvider : ILoggerProvider
     {

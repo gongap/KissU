@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace Surging.Core.ProxyGenerator.Interceptors
+namespace KissU.Core.ProxyGenerator.Interceptors
 {
     public interface IInterceptorProvider
     {

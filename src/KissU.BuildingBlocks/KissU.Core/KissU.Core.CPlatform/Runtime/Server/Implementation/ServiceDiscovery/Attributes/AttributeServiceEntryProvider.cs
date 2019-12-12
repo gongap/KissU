@@ -1,11 +1,11 @@
-﻿using Microsoft.Extensions.Logging;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Autofac;
+using Microsoft.Extensions.Logging;
 
-namespace Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes
+namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes
 {
     /// <summary>
     /// Service标记类型的服务条目提供程序。

@@ -1,9 +1,6 @@
-﻿using Confluent.Kafka;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 
-namespace Surging.Core.EventBusKafka
+namespace KissU.Core.EventBusKafka
 {
    public interface IKafkaPersisterConnection : IDisposable
     {

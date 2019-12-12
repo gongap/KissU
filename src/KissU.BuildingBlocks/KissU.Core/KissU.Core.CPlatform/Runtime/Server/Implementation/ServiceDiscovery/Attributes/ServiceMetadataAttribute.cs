@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes
+namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes
 {
     /// <summary>
     /// 服务元数据标记。

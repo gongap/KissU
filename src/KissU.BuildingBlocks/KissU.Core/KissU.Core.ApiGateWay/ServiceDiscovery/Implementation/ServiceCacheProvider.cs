@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Surging.Core.CPlatform.Cache;
-using Surging.Core.CPlatform.Serialization;
-using Surging.Core.CPlatform.Utilities;
+using KissU.Core.CPlatform.Cache;
+using KissU.Core.CPlatform.Serialization;
+using KissU.Core.CPlatform.Utilities;
 
-namespace Surging.Core.ApiGateWay.ServiceDiscovery.Implementation
+namespace KissU.Core.ApiGateWay.ServiceDiscovery.Implementation
 {
     /// <summary>
     /// 服务缓存提供者

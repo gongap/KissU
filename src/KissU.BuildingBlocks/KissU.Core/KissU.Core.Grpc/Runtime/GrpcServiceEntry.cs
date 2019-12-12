@@ -1,9 +1,7 @@
-﻿using Surging.Core.CPlatform.Ioc;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using KissU.Core.CPlatform.Ioc;
 
-namespace Surging.Core.Grpc.Runtime
+namespace KissU.Core.Grpc.Runtime
 {
    public class GrpcServiceEntry
     { 

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Surging.Core.CPlatform.Convertibles
+namespace KissU.Core.CPlatform.Convertibles
 {
     /// <summary>
     /// 一个抽象的类型转换服务。

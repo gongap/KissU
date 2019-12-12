@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Surging.Core.Protocol.Udp.Runtime
+﻿namespace KissU.Core.Protocol.Udp.Runtime
 {
     public interface IUdpServiceEntryProvider
     {

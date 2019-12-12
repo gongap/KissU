@@ -17,9 +17,9 @@
  */
 
 using System;
-using Surging.Apm.Skywalking.Abstractions.Common;
+using KissU.Apm.Skywalking.Abstractions.Common;
 
-namespace Surging.Apm.Skywalking.Abstractions
+namespace KissU.Apm.Skywalking.Abstractions
 {
     public interface IRuntimeEnvironment
     {

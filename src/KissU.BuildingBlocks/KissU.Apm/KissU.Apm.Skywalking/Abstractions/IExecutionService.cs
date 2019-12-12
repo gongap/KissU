@@ -19,7 +19,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Surging.Apm.Skywalking.Abstractions
+namespace KissU.Apm.Skywalking.Abstractions
 {
     public interface IExecutionService
     {

@@ -20,11 +20,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using AspectCore.Extensions.Reflection;
-using Surging.Apm.Skywalking.Abstractions;
-using Surging.Apm.Skywalking.Core.Diagnostics;
-using Surging.Core.CPlatform.Diagnostics;
+using KissU.Core.CPlatform.Diagnostics;
 
-namespace Surging.Apm.Skywalking.Core.Diagnostics
+namespace KissU.Apm.Skywalking.Core.Diagnostics
 {
     internal class TracingDiagnosticMethod
     {

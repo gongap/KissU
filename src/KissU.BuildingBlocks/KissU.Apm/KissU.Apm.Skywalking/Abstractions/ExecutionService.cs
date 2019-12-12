@@ -16,12 +16,12 @@
  *
  */
 
-using Microsoft.Extensions.Logging;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
-namespace Surging.Apm.Skywalking.Abstractions
+namespace KissU.Apm.Skywalking.Abstractions
 {
     public abstract class ExecutionService : IExecutionService, IDisposable
     {

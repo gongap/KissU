@@ -1,28 +1,26 @@
-﻿using Autofac;
+﻿using System;
+using Autofac;
+using KissU.Core.Consul.Configurations;
+using KissU.Core.Consul.Internal;
+using KissU.Core.Consul.Internal.Cluster.HealthChecks;
+using KissU.Core.Consul.Internal.Cluster.HealthChecks.Implementation;
+using KissU.Core.Consul.Internal.Cluster.Implementation.Selectors;
+using KissU.Core.Consul.Internal.Cluster.Implementation.Selectors.Implementation;
+using KissU.Core.Consul.Internal.Implementation;
+using KissU.Core.Consul.WatcherProvider;
+using KissU.Core.Consul.WatcherProvider.Implementation;
+using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Cache;
+using KissU.Core.CPlatform.Mqtt;
+using KissU.Core.CPlatform.Routing;
+using KissU.Core.CPlatform.Runtime.Client;
+using KissU.Core.CPlatform.Runtime.Server;
+using KissU.Core.CPlatform.Serialization;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Surging.Core.Consul.Configurations;
-using Surging.Core.Consul.WatcherProvider;
-using Surging.Core.Consul.WatcherProvider.Implementation;
-using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Cache;
-using Surging.Core.CPlatform.Routing;
-using Surging.Core.CPlatform.Runtime.Client;
-using Surging.Core.CPlatform.Runtime.Server;
-using Surging.Core.CPlatform.Serialization;
-using System;
-using Microsoft.Extensions.Configuration;
-using Surging.Core.CPlatform.Mqtt;
-using Surging.Core.Consul.Internal;
-using Surging.Core.Consul.Internal.Cluster.Implementation.Selectors.Implementation;
-using Surging.Core.CPlatform.Module;
-using Surging.Core.Consul.Internal.Implementation;
-using Surging.Core.Consul.Internal.Cluster.HealthChecks;
-using Surging.Core.Consul.Internal.Cluster.Implementation.Selectors;
-using Autofac;
-using Surging.Core.Consul.Internal.Cluster.HealthChecks.Implementation;
 
-namespace Surging.Core.Consul
+namespace KissU.Core.Consul
 {
     public static class ContainerBuilderExtensions
     {

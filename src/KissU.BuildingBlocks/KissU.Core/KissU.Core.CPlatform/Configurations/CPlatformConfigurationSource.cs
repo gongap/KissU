@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace Surging.Core.CPlatform.Configurations
+namespace KissU.Core.CPlatform.Configurations
 {
     public class CPlatformConfigurationSource : FileConfigurationSource
     {

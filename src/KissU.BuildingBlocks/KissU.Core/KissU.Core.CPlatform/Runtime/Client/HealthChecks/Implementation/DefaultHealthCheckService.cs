@@ -1,6 +1,4 @@
-﻿using Surging.Core.CPlatform.Address;
-using Surging.Core.CPlatform.Routing;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +6,10 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform.Address;
+using KissU.Core.CPlatform.Routing;
 
-namespace Surging.Core.CPlatform.Runtime.Client.HealthChecks.Implementation
+namespace KissU.Core.CPlatform.Runtime.Client.HealthChecks.Implementation
 {
     /// <summary>
     /// 默认健康检查服务(每10秒会检查一次服务状态，在构造函数中添加服务管理事件) 

@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace Surging.Core.CPlatform.Utilities
+namespace KissU.Core.CPlatform.Utilities
 {
     public sealed class DebugCheck
     {

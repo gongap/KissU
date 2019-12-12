@@ -1,14 +1,13 @@
-﻿
-using System.Collections.Generic;
-using Surging.Core.CPlatform.Routing;
-using System.Threading.Tasks;
-using Surging.Core.CPlatform.Runtime.Client.HealthChecks;
-using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Address;
+﻿using System.Collections.Generic;
 using System.Linq;
-using Surging.Core.CPlatform.Utilities;
+using System.Threading.Tasks;
+using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Address;
+using KissU.Core.CPlatform.Routing;
+using KissU.Core.CPlatform.Runtime.Client.HealthChecks;
+using KissU.Core.CPlatform.Utilities;
 
-namespace Surging.Core.ApiGateWay.ServiceDiscovery.Implementation
+namespace KissU.Core.ApiGateWay.ServiceDiscovery.Implementation
 {
     /// <summary>
     /// 服务发现提供者

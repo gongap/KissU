@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
-namespace Surging.Core.CPlatform.Diagnostics
+namespace KissU.Core.CPlatform.Diagnostics
 {
     public class TracingHeaders : IEnumerable<KeyValuePair<string, string>>
     {

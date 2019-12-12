@@ -1,11 +1,6 @@
-﻿using Surging.Core.CPlatform.Messages;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
-using System.Text;
+﻿using System.Diagnostics;
 
-namespace Surging.Core.CPlatform.Diagnostics
+namespace KissU.Core.CPlatform.Diagnostics
 {
     public static class DiagnosticListenerExtensions
     {

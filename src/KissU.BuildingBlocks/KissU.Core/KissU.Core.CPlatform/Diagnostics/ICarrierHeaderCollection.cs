@@ -18,8 +18,7 @@
 
 using System.Collections.Generic;
 
-
-namespace Surging.Core.CPlatform.Diagnostics
+namespace KissU.Core.CPlatform.Diagnostics
 {
     public interface ICarrierHeaderCollection : IEnumerable<KeyValuePair<string, string>>
     {

@@ -1,12 +1,8 @@
-﻿using Microsoft.Extensions.Configuration; 
-using Surging.Core.CPlatform.Configurations.Remote;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
+using KissU.Core.CPlatform.Configurations.Remote;
+using Microsoft.Extensions.Configuration;
 
-namespace Surging.Core.Caching.Configurations
+namespace KissU.Core.Caching.Configurations
 {
     class CacheConfigurationProvider : FileConfigurationProvider
     {

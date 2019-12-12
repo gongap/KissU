@@ -1,21 +1,21 @@
-﻿using Microsoft.Extensions.Logging;
-using Surging.Core.CPlatform.Messages;
-using Surging.Core.CPlatform.Runtime.Client;
-using Surging.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Linq;
-using Surging.Core.CPlatform.HashAlgorithms;
-using Surging.Core.CPlatform.Transport.Implementation;
-using Surging.Core.CPlatform.Filters;
-using Autofac;
-using System.Threading;
-using Surging.Core.CPlatform.Filters.Implementation;
 using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Threading.Tasks;
+using Autofac;
+using KissU.Core.CPlatform.Filters;
+using KissU.Core.CPlatform.Filters.Implementation;
+using KissU.Core.CPlatform.HashAlgorithms;
+using KissU.Core.CPlatform.Messages;
+using KissU.Core.CPlatform.Runtime.Client;
+using KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
+using KissU.Core.CPlatform.Transport.Implementation;
+using Microsoft.Extensions.Logging;
 
-namespace Surging.Core.CPlatform.Support.Implementation
+namespace KissU.Core.CPlatform.Support.Implementation
 {
     public class BreakeRemoteInvokeService : IBreakeRemoteInvokeService
     {

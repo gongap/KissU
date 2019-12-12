@@ -1,8 +1,8 @@
 ﻿using System;
+using KissU.Core.Swagger.Swagger.Model;
 using Newtonsoft.Json.Serialization;
-using Surging.Core.Swagger;
 
-namespace Surging.Core.SwaggerGen
+namespace KissU.Core.Swagger.SwaggerGen.Generator
 {
     public interface ISchemaFilter
     {

@@ -1,7 +1,7 @@
-﻿using Autofac;
-using System;
+﻿using System;
+using Autofac;
 
-namespace Surging.Core.CPlatform.Utilities
+namespace KissU.Core.CPlatform.Utilities
 {
     public class ServiceLocator
     {

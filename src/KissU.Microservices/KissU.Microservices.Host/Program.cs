@@ -2,19 +2,20 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Core.Caching.Configurations;
+using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Configurations;
+using KissU.Core.CPlatform.Utilities;
+using KissU.Core.ProxyGenerator;
+using KissU.Core.ServiceHosting;
+using KissU.Core.ServiceHosting.Internal.Implementation;
+
 namespace KissU.Microservices.Host
 {
     using System;
     using System.Text;
     using Autofac;
     using Microsoft.Extensions.Logging;
-    using Surging.Core.Caching.Configurations;
-    using Surging.Core.CPlatform;
-    using Surging.Core.CPlatform.Configurations;
-    using Surging.Core.CPlatform.Utilities;
-    using Surging.Core.ProxyGenerator;
-    using Surging.Core.ServiceHosting;
-    using Surging.Core.ServiceHosting.Internal.Implementation;
 
     /// <summary>
     /// 应用程序

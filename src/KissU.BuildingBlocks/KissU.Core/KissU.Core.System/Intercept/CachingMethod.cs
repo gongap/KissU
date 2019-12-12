@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Surging.Core.System.Intercept
+﻿namespace KissU.Core.System.Intercept
 {
     /// <summary>
     /// 表示用于Caching特性的缓存方式。

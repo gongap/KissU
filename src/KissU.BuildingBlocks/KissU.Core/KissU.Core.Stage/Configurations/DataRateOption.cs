@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Surging.Core.Stage.Configurations
+namespace KissU.Core.Stage.Configurations
 {
     public class DataRateOption
     { 

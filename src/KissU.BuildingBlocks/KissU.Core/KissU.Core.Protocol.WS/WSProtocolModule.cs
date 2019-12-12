@@ -1,20 +1,15 @@
 ﻿using Autofac;
+using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Module;
+using KissU.Core.CPlatform.Runtime.Server;
+using KissU.Core.CPlatform.Runtime.Server.Implementation;
+using KissU.Core.Protocol.WS.Configurations;
+using KissU.Core.Protocol.WS.Runtime;
+using KissU.Core.Protocol.WS.Runtime.Implementation;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Module;
-using Surging.Core.CPlatform.Runtime.Server;
-using Surging.Core.CPlatform.Runtime.Server.Implementation;
-using Surging.Core.CPlatform.Serialization;
-using Surging.Core.CPlatform.Transport.Codec;
-using Surging.Core.Protocol.WS.Configurations;
-using Surging.Core.Protocol.WS.Runtime;
-using Surging.Core.Protocol.WS.Runtime.Implementation;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Surging.Core.Protocol.WS
+namespace KissU.Core.Protocol.WS
 {
     public class WSProtocolModule : EnginePartModule
     {

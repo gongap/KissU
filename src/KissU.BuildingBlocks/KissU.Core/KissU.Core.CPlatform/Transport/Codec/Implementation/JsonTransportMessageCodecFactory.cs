@@ -1,6 +1,4 @@
-﻿using Surging.Core.CPlatform.Runtime.Server;
-
-namespace Surging.Core.CPlatform.Transport.Codec.Implementation
+﻿namespace KissU.Core.CPlatform.Transport.Codec.Implementation
 {
     public class JsonTransportMessageCodecFactory : ITransportMessageCodecFactory
     {

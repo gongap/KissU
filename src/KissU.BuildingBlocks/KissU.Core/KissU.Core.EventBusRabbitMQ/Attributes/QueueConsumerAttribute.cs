@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
-namespace Surging.Core.EventBusRabbitMQ.Attributes
+namespace KissU.Core.EventBusRabbitMQ.Attributes
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface)]
     public class QueueConsumerAttribute : Attribute

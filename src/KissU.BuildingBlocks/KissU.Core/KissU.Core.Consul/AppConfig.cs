@@ -1,9 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Surging.Core.Consul
+namespace KissU.Core.Consul
 {
    public class AppConfig
     {

@@ -1,10 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
-using Surging.Core.DNS.Configurations;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using KissU.Core.DNS.Configurations;
+using Microsoft.Extensions.Configuration;
 
-namespace Surging.Core.DNS
+namespace KissU.Core.DNS
 {
     public static  class AppConfig
     {

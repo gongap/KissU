@@ -1,12 +1,9 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System.IO;
+using KissU.Core.CPlatform.Utilities;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.FileProviders;
-using Surging.Core.CPlatform.Utilities;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
 
-namespace Surging.Core.Consul.Configurations
+namespace KissU.Core.Consul.Configurations
 {
     public static class ConsulConfigurationExtensions
     {

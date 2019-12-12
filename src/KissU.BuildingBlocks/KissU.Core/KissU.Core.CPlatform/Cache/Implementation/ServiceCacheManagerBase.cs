@@ -1,11 +1,10 @@
-﻿using Surging.Core.CPlatform.Serialization;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform.Serialization;
 
-namespace Surging.Core.CPlatform.Cache.Implementation
+namespace KissU.Core.CPlatform.Cache.Implementation
 {
     public class ServiceCacheEventArgs
     {

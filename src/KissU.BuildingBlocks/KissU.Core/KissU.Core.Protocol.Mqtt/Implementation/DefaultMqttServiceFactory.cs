@@ -1,14 +1,13 @@
-﻿using Surging.Core.CPlatform.Address;
-using Surging.Core.CPlatform.Mqtt;
-using Surging.Core.CPlatform.Serialization;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform.Address;
+using KissU.Core.CPlatform.Mqtt;
+using KissU.Core.CPlatform.Serialization;
 
-namespace Surging.Core.Protocol.Mqtt.Implementation
+namespace KissU.Core.Protocol.Mqtt.Implementation
 {
     public class DefaultMqttServiceFactory : IMqttServiceFactory
     {

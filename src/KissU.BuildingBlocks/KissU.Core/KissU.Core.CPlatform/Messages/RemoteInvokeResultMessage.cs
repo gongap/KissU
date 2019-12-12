@@ -1,4 +1,4 @@
-﻿namespace Surging.Core.CPlatform.Messages
+﻿namespace KissU.Core.CPlatform.Messages
 {
     /// <summary>
     /// 远程调用结果消息。

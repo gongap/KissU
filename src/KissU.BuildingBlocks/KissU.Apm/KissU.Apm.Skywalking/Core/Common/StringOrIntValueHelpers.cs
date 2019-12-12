@@ -16,11 +16,10 @@
  *
  */
 
-using Surging.Apm.Skywalking.Abstractions.Common;
-using Surging.Core.CPlatform.Diagnostics;
 using System;
+using KissU.Core.CPlatform.Diagnostics;
 
-namespace Surging.Apm.Skywalking.Core.Common
+namespace KissU.Apm.Skywalking.Core.Common
 {
     public static class StringOrIntValueHelpers
     {

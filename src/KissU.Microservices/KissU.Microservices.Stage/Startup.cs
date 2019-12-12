@@ -2,14 +2,15 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Core.Caching.Configurations;
+using KissU.Core.CPlatform.Utilities;
+
 namespace KissU.Microservices.Stage
 {
     using Autofac;
     using Autofac.Extensions.DependencyInjection;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
-    using Surging.Core.Caching.Configurations;
-    using Surging.Core.CPlatform.Utilities;
     using Util.Helpers;
 
     /// <summary>

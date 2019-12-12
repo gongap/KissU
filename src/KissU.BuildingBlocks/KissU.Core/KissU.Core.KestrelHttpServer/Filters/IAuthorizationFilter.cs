@@ -1,8 +1,7 @@
-﻿
-using Surging.Core.KestrelHttpServer.Filters.Implementation;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using KissU.Core.KestrelHttpServer.Filters.Implementation;
 
-namespace Surging.Core.KestrelHttpServer.Filters
+namespace KissU.Core.KestrelHttpServer.Filters
 {
     public interface IAuthorizationFilter : IFilter
     {

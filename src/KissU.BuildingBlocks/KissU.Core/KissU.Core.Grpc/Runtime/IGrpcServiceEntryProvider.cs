@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
-namespace Surging.Core.Grpc.Runtime
+namespace KissU.Core.Grpc.Runtime
 {
     public interface IGrpcServiceEntryProvider
     {

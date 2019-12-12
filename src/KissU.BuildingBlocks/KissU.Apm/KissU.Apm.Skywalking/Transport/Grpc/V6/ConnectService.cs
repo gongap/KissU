@@ -16,13 +16,13 @@
  *
  */
 
-using Microsoft.Extensions.Logging;
-using Surging.Apm.Skywalking.Abstractions;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using KissU.Apm.Skywalking.Abstractions;
+using Microsoft.Extensions.Logging;
 
-namespace Surging.Apm.Skywalking.Transport.Grpc.V6
+namespace KissU.Apm.Skywalking.Transport.Grpc.V6
 {
     public class ConnectService: ExecutionService
     {

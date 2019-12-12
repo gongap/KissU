@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Text;
 
-namespace Surging.Core.ProxyGenerator.FastReflection
+namespace KissU.Core.ProxyGenerator.FastReflection
 {
     public interface IMethodInvoker
     {

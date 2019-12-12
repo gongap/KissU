@@ -16,10 +16,10 @@
  *
  */
 
-using Surging.Apm.Skywalking.Abstractions.Logging;
 using System;
+using KissU.Apm.Skywalking.Abstractions.Logging;
 
-namespace Surging.Apm.Skywalking.Core.Logging
+namespace KissU.Apm.Skywalking.Core.Logging
 {
     public class NullLoggerFactory : ILoggerFactory
     {

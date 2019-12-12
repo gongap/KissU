@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Autofac;
+using KissU.Core.ServiceHosting.Startup;
 using Microsoft.Extensions.DependencyInjection;
-using Surging.Core.ServiceHosting.Startup;
 
-namespace Surging.Core.ServiceHosting.Internal.Implementation
+namespace KissU.Core.ServiceHosting.Internal.Implementation
 {
     public class ServiceHost : IServiceHost
     {

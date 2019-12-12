@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 
-namespace Surging.Core.CPlatform.Configurations.Remote
+namespace KissU.Core.CPlatform.Configurations.Remote
 {
     public  class RemoteConfigurationEvents
     {

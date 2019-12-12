@@ -1,14 +1,12 @@
-﻿using Autofac;
-using Autofac.Core.Lifetime;
-using Surging.Core.CPlatform.Exceptions;
-using Surging.Core.CPlatform.Utilities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
+using Autofac;
+using KissU.Core.CPlatform.Exceptions;
 
-namespace Surging.Core.CPlatform.Module
+namespace KissU.Core.CPlatform.Module
 {
     public abstract class AbstractModule : Autofac.Module,IDisposable
     {

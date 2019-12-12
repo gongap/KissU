@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Surging.Core.ProxyGenerator.Interceptors.Implementation
+namespace KissU.Core.ProxyGenerator.Interceptors.Implementation
 {
     public abstract class AbstractInvocation : IInvocation,ICacheInvocation
     {

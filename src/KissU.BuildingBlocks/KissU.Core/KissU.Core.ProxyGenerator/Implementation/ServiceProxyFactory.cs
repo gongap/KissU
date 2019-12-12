@@ -1,16 +1,15 @@
-﻿using Surging.Core.CPlatform.Convertibles;
-using Surging.Core.CPlatform.Runtime.Client;
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Microsoft.Extensions.DependencyInjection;
-using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Support;
-using System.Collections.Generic;
-using Surging.Core.CPlatform.DependencyResolution;
 using System.Runtime.CompilerServices;
+using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Convertibles;
+using KissU.Core.CPlatform.DependencyResolution;
+using KissU.Core.CPlatform.Runtime.Client;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace Surging.Core.ProxyGenerator.Implementation
+namespace KissU.Core.ProxyGenerator.Implementation
 {
     /// <summary>
     /// 默认的服务代理工厂实现。

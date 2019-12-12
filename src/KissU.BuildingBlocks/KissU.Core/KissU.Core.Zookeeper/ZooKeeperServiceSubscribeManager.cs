@@ -1,19 +1,18 @@
-﻿using Surging.Core.CPlatform.Runtime.Client.Implementation;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using Surging.Core.CPlatform.Runtime.Client;
-using System.Threading.Tasks;
-using Surging.Core.Zookeeper.Configurations;
-using org.apache.zookeeper;
-using Surging.Core.CPlatform.Serialization;
-using System.Threading;
-using Microsoft.Extensions.Logging;
 using System.Linq;
-using Surging.Core.Zookeeper.WatcherProvider;
-using Surging.Core.Zookeeper.Internal;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using KissU.Core.CPlatform.Runtime.Client;
+using KissU.Core.CPlatform.Runtime.Client.Implementation;
+using KissU.Core.CPlatform.Serialization;
+using KissU.Core.Zookeeper.Configurations;
+using KissU.Core.Zookeeper.Internal;
+using Microsoft.Extensions.Logging;
+using org.apache.zookeeper;
 
-namespace Surging.Core.Zookeeper
+namespace KissU.Core.Zookeeper
 {
     public class ZooKeeperServiceSubscribeManager : ServiceSubscribeManagerBase, IDisposable
     { 

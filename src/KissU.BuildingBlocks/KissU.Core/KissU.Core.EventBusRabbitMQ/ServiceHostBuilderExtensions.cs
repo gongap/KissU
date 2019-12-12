@@ -1,12 +1,12 @@
-﻿using Surging.Core.CPlatform.EventBus;
-using Surging.Core.ServiceHosting.Internal;
-using Autofac;
-using Surging.Core.CPlatform.Engines;
-using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Routing;
-using Surging.Core.CPlatform.EventBus.Implementation;
+﻿using Autofac;
+using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Engines;
+using KissU.Core.CPlatform.EventBus;
+using KissU.Core.CPlatform.EventBus.Implementation;
+using KissU.Core.CPlatform.Routing;
+using KissU.Core.ServiceHosting.Internal;
 
-namespace Surging.Core.EventBusRabbitMQ
+namespace KissU.Core.EventBusRabbitMQ
 {
     public static class ServiceHostBuilderExtensions
     {

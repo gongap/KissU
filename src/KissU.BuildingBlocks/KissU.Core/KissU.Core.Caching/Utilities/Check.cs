@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using KissU.Core.Caching;
 
-namespace Surging.Core.Caching.Utilities
+namespace KissU.Core.Caching.Utilities
 {
     public sealed class Check
     {

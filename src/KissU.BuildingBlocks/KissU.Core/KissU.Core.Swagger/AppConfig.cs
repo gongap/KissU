@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using KissU.Core.Swagger.Swagger.Model;
 
-namespace Surging.Core.Swagger
+namespace KissU.Core.Swagger
 {
    public  class AppConfig
     {

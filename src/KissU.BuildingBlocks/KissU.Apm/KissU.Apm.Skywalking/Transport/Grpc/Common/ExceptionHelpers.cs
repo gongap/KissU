@@ -16,7 +16,7 @@
  *
  */
 
-namespace Surging.Apm.Skywalking.Transport.Grpc.Common
+namespace KissU.Apm.Skywalking.Transport.Grpc.Common
 {
     internal static class ExceptionHelpers
     {

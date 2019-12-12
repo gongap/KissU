@@ -1,18 +1,17 @@
-﻿using Microsoft.Extensions.Logging;
-using Surging.Core.CPlatform.Diagnostics;
-using Surging.Core.CPlatform.Exceptions;
-using Surging.Core.CPlatform.Messages;
-using Surging.Core.CPlatform.Runtime.Client;
-using Surging.Core.CPlatform.Runtime.Server;
-using Surging.Core.CPlatform.Utilities;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform.Diagnostics;
+using KissU.Core.CPlatform.Exceptions;
+using KissU.Core.CPlatform.Messages;
+using KissU.Core.CPlatform.Runtime.Server;
+using KissU.Core.CPlatform.Utilities;
+using Microsoft.Extensions.Logging;
 
-namespace Surging.Core.CPlatform.Transport.Implementation
+namespace KissU.Core.CPlatform.Transport.Implementation
 {
     /// <summary>
     /// 一个默认的传输客户端实现。

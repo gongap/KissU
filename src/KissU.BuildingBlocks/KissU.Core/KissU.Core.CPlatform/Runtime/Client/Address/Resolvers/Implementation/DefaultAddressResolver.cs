@@ -1,18 +1,18 @@
-﻿using Microsoft.Extensions.Logging;
-using Surging.Core.CPlatform.Address;
-using Surging.Core.CPlatform.Routing;
-using Surging.Core.CPlatform.Routing.Implementation;
-using Surging.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors;
-using Surging.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
-using Surging.Core.CPlatform.Runtime.Client.HealthChecks;
-using Surging.Core.CPlatform.Support;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform.Address;
+using KissU.Core.CPlatform.Routing;
+using KissU.Core.CPlatform.Routing.Implementation;
+using KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors;
+using KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
+using KissU.Core.CPlatform.Runtime.Client.HealthChecks;
+using KissU.Core.CPlatform.Support;
+using Microsoft.Extensions.Logging;
 
-namespace Surging.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation
+namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation
 {
     /// <summary>
     /// 默认的服务地址解析器。

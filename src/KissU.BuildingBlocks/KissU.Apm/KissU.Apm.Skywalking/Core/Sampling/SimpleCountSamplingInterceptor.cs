@@ -19,13 +19,13 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using KissU.Apm.Skywalking.Abstractions;
+using KissU.Apm.Skywalking.Abstractions.Config;
+using KissU.Apm.Skywalking.Abstractions.Tracing;
+using KissU.Apm.Skywalking.Core.Common;
 using Microsoft.Extensions.Logging;
-using Surging.Apm.Skywalking.Abstractions;
-using Surging.Apm.Skywalking.Abstractions.Config;
-using Surging.Apm.Skywalking.Abstractions.Tracing;
-using Surging.Apm.Skywalking.Core.Common;
 
-namespace Surging.Apm.Skywalking.Core.Sampling
+namespace KissU.Apm.Skywalking.Core.Sampling
 {
     public class SimpleCountSamplingInterceptor : ExecutionService, ISamplingInterceptor
     {

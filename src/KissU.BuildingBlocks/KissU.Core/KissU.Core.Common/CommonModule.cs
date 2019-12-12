@@ -1,9 +1,6 @@
-﻿using Surging.Core.CPlatform.Module;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using KissU.Core.CPlatform.Module;
 
-namespace Surging.Core.Common
+namespace KissU.Core.Common
 {
     public  class CommonModule:SystemModule
     {

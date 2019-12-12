@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Surging.Core.CPlatform.Messages
+﻿namespace KissU.Core.CPlatform.Messages
 {
     public class HttpResultMessage<T> : HttpResultMessage
     {

@@ -1,18 +1,18 @@
-﻿using Microsoft.Extensions.Logging;
-using Surging.Core.CPlatform.Address;
-using Surging.Core.CPlatform.Exceptions;
-using Surging.Core.CPlatform.HashAlgorithms;
-using Surging.Core.CPlatform.Messages;
-using Surging.Core.CPlatform.Runtime.Client.Address.Resolvers;
-using Surging.Core.CPlatform.Runtime.Client.HealthChecks;
-using Surging.Core.CPlatform.Transport;
-using Surging.Core.CPlatform.Transport.Implementation;
-using Surging.Core.CPlatform.Utilities;
-using System;
+﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform.Address;
+using KissU.Core.CPlatform.Exceptions;
+using KissU.Core.CPlatform.HashAlgorithms;
+using KissU.Core.CPlatform.Messages;
+using KissU.Core.CPlatform.Runtime.Client.Address.Resolvers;
+using KissU.Core.CPlatform.Runtime.Client.HealthChecks;
+using KissU.Core.CPlatform.Transport;
+using KissU.Core.CPlatform.Transport.Implementation;
+using KissU.Core.CPlatform.Utilities;
+using Microsoft.Extensions.Logging;
 
-namespace Surging.Core.CPlatform.Runtime.Client.Implementation
+namespace KissU.Core.CPlatform.Runtime.Client.Implementation
 {
     /// <summary>
     /// 远程调用服务

@@ -1,9 +1,8 @@
-﻿using Autofac;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using Autofac;
 
-namespace Surging.Core.CPlatform.Engines
+namespace KissU.Core.CPlatform.Engines
 {
    public interface IServiceEngineBuilder
     {

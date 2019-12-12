@@ -1,4 +1,4 @@
-﻿namespace Surging.Core.AutoMapper
+﻿namespace KissU.Core.AutoMapper.AutoMapper
 {
     public interface IAutoMapperBootstrap
     {

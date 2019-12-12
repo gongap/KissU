@@ -1,8 +1,7 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Net;
+﻿using System.Net;
+using Newtonsoft.Json;
 
-namespace Surging.Core.CPlatform.Address
+namespace KissU.Core.CPlatform.Address
 {
     /// <summary>
     /// 一个抽象的地址模型。

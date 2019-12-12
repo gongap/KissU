@@ -1,22 +1,21 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Address;
+using KissU.Core.CPlatform.Exceptions;
+using KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors;
+using KissU.Core.Zookeeper.Configurations;
+using KissU.Core.Zookeeper.Internal.Cluster.HealthChecks;
+using KissU.Core.Zookeeper.Internal.Cluster.Implementation.Selectors;
+using KissU.Core.Zookeeper.WatcherProvider;
 using Microsoft.Extensions.Logging;
 using org.apache.zookeeper;
-using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Address;
-using Surging.Core.CPlatform.Exceptions;
-using Surging.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors;
-using Surging.Core.Zookeeper.Configurations;
-using Surging.Core.Zookeeper.Internal.Cluster.HealthChecks;
-using Surging.Core.Zookeeper.Internal.Cluster.Implementation.Selectors;
-using Surging.Core.Zookeeper.WatcherProvider;
 using Level = Microsoft.Extensions.Logging.LogLevel;
 
-namespace Surging.Core.Zookeeper.Internal.Implementation
+namespace KissU.Core.Zookeeper.Internal.Implementation
 {
     public class DefaultZookeeperClientProvider : IZookeeperClientProvider
     {

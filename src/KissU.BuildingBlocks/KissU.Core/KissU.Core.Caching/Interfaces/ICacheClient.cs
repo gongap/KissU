@@ -1,11 +1,7 @@
-﻿using StackExchange.Redis;
-using Surging.Core.CPlatform.Cache;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using KissU.Core.CPlatform.Cache;
 
-namespace Surging.Core.Caching.Interfaces
+namespace KissU.Core.Caching.Interfaces
 {
     public interface ICacheClient<T>
     {

@@ -1,4 +1,17 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Sockets;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
+using KissU.Core.CPlatform.DependencyResolution;
+using KissU.Core.CPlatform.EventBus;
+using KissU.Core.CPlatform.EventBus.Events;
+using KissU.Core.CPlatform.EventBus.Implementation;
+using KissU.Core.CPlatform.Utilities;
+using KissU.Core.EventBusRabbitMQ.Attributes;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Polly;
 using Polly.Retry;
@@ -6,22 +19,8 @@ using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using RabbitMQ.Client.Exceptions;
 using RabbitMQ.Client.Framing;
-using Surging.Core.CPlatform.DependencyResolution;
-using Surging.Core.CPlatform.EventBus;
-using Surging.Core.CPlatform.EventBus.Events;
-using Surging.Core.CPlatform.EventBus.Implementation;
-using Surging.Core.CPlatform.Utilities;
-using Surging.Core.EventBusRabbitMQ.Attributes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Sockets;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using static Surging.Core.CPlatform.Utilities.FastInvoke;
 
-namespace Surging.Core.EventBusRabbitMQ.Implementation
+namespace KissU.Core.EventBusRabbitMQ.Implementation
 {
     public class EventBusRabbitMQ : IEventBus, IDisposable
     {
@@ -501,7 +500,7 @@ namespace Surging.Core.EventBusRabbitMQ.Implementation
             return retryCount;
         }
 
-        private FastInvokeHandler GetHandler(string key, MethodInfo method)
+        private FastInvoke.FastInvokeHandler GetHandler(string key, MethodInfo method)
         {
             var objInstance = ServiceResolver.Current.GetService(null, key);
             if (objInstance == null)
@@ -509,7 +508,7 @@ namespace Surging.Core.EventBusRabbitMQ.Implementation
                 objInstance = FastInvoke.GetMethodInvoker(method);
                 ServiceResolver.Current.Register(key, objInstance, null);
             }
-            return objInstance as FastInvokeHandler;
+            return objInstance as FastInvoke.FastInvokeHandler;
         }
 
         private void PersistentConnection_OnEventShutDown(object sender, ShutdownEventArgs reason)

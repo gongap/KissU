@@ -1,10 +1,11 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
+using KissU.Core.Swagger.Swagger.Model;
+using KissU.Core.Swagger.SwaggerGen.Generator;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using Surging.Core.Swagger;
 
-namespace Surging.Core.SwaggerGen
+namespace KissU.Core.Swagger.SwaggerGen.Application
 {
     internal class ConfigureSchemaRegistryOptions : IConfigureOptions<SchemaRegistryOptions>
     {

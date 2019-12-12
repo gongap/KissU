@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Concurrent;
+﻿using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform.Address;
+using KissU.Core.CPlatform.Mqtt;
+using KissU.Core.CPlatform.Mqtt.Implementation;
+using KissU.Core.CPlatform.Runtime.Client.HealthChecks;
+using KissU.Core.CPlatform.Runtime.Client.HealthChecks.Implementation;
 using Microsoft.Extensions.Logging;
-using Surging.Core.CPlatform.Address;
-using Surging.Core.CPlatform.Mqtt;
-using Surging.Core.CPlatform.Mqtt.Implementation;
-using Surging.Core.CPlatform.Runtime.Client.HealthChecks;
-using Surging.Core.CPlatform.Runtime.Client.HealthChecks.Implementation;
 
-namespace Surging.Core.Protocol.Mqtt.Internal.Runtime.Implementation
+namespace KissU.Core.Protocol.Mqtt.Internal.Runtime.Implementation
 {
     public class DefaultMqttBrokerEntryManager : IMqttBrokerEntryManger
     {

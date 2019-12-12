@@ -1,11 +1,8 @@
-﻿using Surging.Core.CPlatform.Runtime.Client;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform.Runtime.Client;
 
-namespace Surging.Core.Protocol.Mqtt.Internal.Runtime
+namespace KissU.Core.Protocol.Mqtt.Internal.Runtime
 {
     public interface IMqttRemoteInvokeService
     {

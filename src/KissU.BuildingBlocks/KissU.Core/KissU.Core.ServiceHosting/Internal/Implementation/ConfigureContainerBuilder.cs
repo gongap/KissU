@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
 
-namespace Surging.Core.ServiceHosting.Internal.Implementation
+namespace KissU.Core.ServiceHosting.Internal.Implementation
 {
     public class ConfigureContainerBuilder
     {

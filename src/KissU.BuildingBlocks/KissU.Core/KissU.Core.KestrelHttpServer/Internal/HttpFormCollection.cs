@@ -1,10 +1,9 @@
-﻿using Microsoft.Extensions.Primitives;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text;
+using Microsoft.Extensions.Primitives;
 
-namespace Surging.Core.KestrelHttpServer.Internal
+namespace KissU.Core.KestrelHttpServer.Internal
 {
     public class HttpFormCollection : IEnumerable<KeyValuePair<string, StringValues>>, IEnumerable
     {

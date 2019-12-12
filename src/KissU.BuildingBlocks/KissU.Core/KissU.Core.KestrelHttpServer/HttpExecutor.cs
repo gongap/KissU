@@ -1,27 +1,22 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
-using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Convertibles;
-using Surging.Core.CPlatform.Filters;
-using Surging.Core.CPlatform.Messages;
-using Surging.Core.CPlatform.Routing;
-using Surging.Core.CPlatform.Runtime.Server;
-using Surging.Core.CPlatform.Transport;
-using Surging.Core.CPlatform.Utilities;
-using Surging.Core.ProxyGenerator;
-using System;
-using System.Linq;
+﻿using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using static Surging.Core.CPlatform.Utilities.FastInvoke;
 using System.Diagnostics;
-using Surging.Core.CPlatform.Diagnostics;
-using Surging.Core.CPlatform.Transport.Implementation;
+using System.Reflection;
+using System.Threading.Tasks;
+using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Convertibles;
+using KissU.Core.CPlatform.Diagnostics;
+using KissU.Core.CPlatform.Filters;
+using KissU.Core.CPlatform.Messages;
+using KissU.Core.CPlatform.Routing;
+using KissU.Core.CPlatform.Runtime.Server;
+using KissU.Core.CPlatform.Transport;
+using KissU.Core.CPlatform.Transport.Implementation;
+using KissU.Core.CPlatform.Utilities;
+using KissU.Core.ProxyGenerator;
+using Microsoft.Extensions.Logging;
 
-namespace Surging.Core.KestrelHttpServer
+namespace KissU.Core.KestrelHttpServer
 {
     public  class HttpExecutor : IServiceExecutor
     {
@@ -33,8 +28,8 @@ namespace Surging.Core.KestrelHttpServer
         private readonly CPlatformContainer _serviceProvider;
         private readonly ITypeConvertibleService _typeConvertibleService;
         private readonly IServiceProxyProvider _serviceProxyProvider;
-        private readonly ConcurrentDictionary<string, ValueTuple<FastInvokeHandler, object, MethodInfo>> _concurrent =
-        new ConcurrentDictionary<string, ValueTuple<FastInvokeHandler, object, MethodInfo>>();
+        private readonly ConcurrentDictionary<string, ValueTuple<FastInvoke.FastInvokeHandler, object, MethodInfo>> _concurrent =
+        new ConcurrentDictionary<string, ValueTuple<FastInvoke.FastInvokeHandler, object, MethodInfo>>();
         #endregion Field
 
         #region Constructor

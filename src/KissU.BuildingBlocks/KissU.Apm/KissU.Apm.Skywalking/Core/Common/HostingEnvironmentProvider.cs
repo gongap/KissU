@@ -1,8 +1,6 @@
-﻿using Surging.Apm.Skywalking.Abstractions;
-using Microsoft.AspNetCore.Hosting;
-using Surging.Core.CPlatform.Utilities;
+﻿using KissU.Apm.Skywalking.Abstractions;
 
-namespace Surging.Apm.Skywalking.Core.Common
+namespace KissU.Apm.Skywalking.Core.Common
 {
     internal class HostingEnvironmentProvider : IEnvironmentProvider
     {

@@ -1,7 +1,6 @@
 ﻿using System;
-using KissU.Core.CPlatform;
 
-namespace Surging.Core.CPlatform.Utilities
+namespace KissU.Core.CPlatform.Utilities
 {
 
     public sealed class Check

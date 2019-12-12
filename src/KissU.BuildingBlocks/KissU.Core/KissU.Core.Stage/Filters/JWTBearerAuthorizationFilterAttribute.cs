@@ -11,19 +11,18 @@ using Autofac;
 using JWT;
 using JWT.Algorithms;
 using JWT.Serializers;
+using KissU.Core.ApiGateWay;
+using KissU.Core.ApiGateWay.OAuth;
+using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Filters.Implementation;
+using KissU.Core.CPlatform.Messages;
+using KissU.Core.CPlatform.Transport.Implementation;
+using KissU.Core.CPlatform.Utilities;
+using KissU.Core.KestrelHttpServer.Filters.Implementation;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Surging.Core.ApiGateWay;
-using Surging.Core.ApiGateWay.OAuth;
-using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Filters.Implementation;
-using Surging.Core.CPlatform.Messages;
-using Surging.Core.CPlatform.Transport.Implementation;
-using Surging.Core.CPlatform.Utilities;
-using Surging.Core.KestrelHttpServer.Filters;
-using Surging.Core.KestrelHttpServer.Filters.Implementation;
 
-namespace Surging.Core.Stage.Filters
+namespace KissU.Core.Stage.Filters
 {
     public class JWTBearerAuthorizationFilterAttribute : AuthorizationFilterAttribute
     {

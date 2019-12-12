@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using KissU.Core.Protocol.Mqtt.Internal.Enums;
 
-namespace Surging.Core.Protocol.Mqtt.Internal.Enums
+namespace KissU.Core.Protocol.Mqtt.Internal.Messages
 {
     public  class ConnectMessage:MqttMessage
     {

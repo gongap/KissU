@@ -1,17 +1,13 @@
-﻿using Microsoft.AspNetCore.Http;
-using Surging.Core.ApiGateWay;
-using Surging.Core.CPlatform.Messages;
-using Surging.Core.CPlatform.Transport.Implementation;
-using Surging.Core.KestrelHttpServer.Filters;
-using Surging.Core.KestrelHttpServer.Filters.Implementation;
-using Surging.Core.Stage.Internal;
-using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using KissU.Core.ApiGateWay;
+using KissU.Core.CPlatform.Messages;
+using KissU.Core.CPlatform.Transport.Implementation;
+using KissU.Core.KestrelHttpServer.Filters;
+using KissU.Core.KestrelHttpServer.Filters.Implementation;
+using KissU.Core.Stage.Internal;
+using Microsoft.AspNetCore.Http;
 
-namespace Surging.Core.Stage.Filters
+namespace KissU.Core.Stage.Filters
 {
     public class IPFilterAttribute : IActionFilter
     {

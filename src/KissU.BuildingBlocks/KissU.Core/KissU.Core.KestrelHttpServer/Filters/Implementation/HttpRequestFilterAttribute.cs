@@ -1,17 +1,14 @@
-﻿using Surging.Core.CPlatform.Routing;
-using Surging.Core.CPlatform.Runtime.Server;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Linq;
-using Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
-using Surging.Core.CPlatform.Messages;
-using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Utilities;
+using System.Threading.Tasks;
 using Autofac;
+using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Messages;
+using KissU.Core.CPlatform.Routing;
+using KissU.Core.CPlatform.Runtime.Server;
+using KissU.Core.CPlatform.Utilities;
 
-namespace Surging.Core.KestrelHttpServer.Filters.Implementation
+namespace KissU.Core.KestrelHttpServer.Filters.Implementation
 {
    public class HttpRequestFilterAttribute : IActionFilter
     {

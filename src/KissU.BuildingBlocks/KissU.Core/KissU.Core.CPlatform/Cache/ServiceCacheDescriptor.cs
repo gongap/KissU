@@ -1,9 +1,7 @@
-﻿using Surging.Core.CPlatform.Serialization;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using KissU.Core.CPlatform.Serialization;
 
-namespace Surging.Core.CPlatform.Cache
+namespace KissU.Core.CPlatform.Cache
 {
     /// <summary>
     /// 服务地址描述符。

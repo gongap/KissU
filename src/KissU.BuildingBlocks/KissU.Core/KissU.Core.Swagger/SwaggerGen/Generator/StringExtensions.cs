@@ -1,4 +1,4 @@
-﻿namespace Surging.Core.SwaggerGen
+﻿namespace KissU.Core.Swagger.SwaggerGen.Generator
 {
     internal static class StringExtensions
     {

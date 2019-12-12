@@ -2,7 +2,7 @@
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Extensions.Logging;
-using Surging.Core.CPlatform.Runtime.Client;
+using KissU.Core.CPlatform.Runtime.Client;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,7 +17,7 @@ using Microsoft.Extensions.DependencyModel;
 
 #endif
 
-namespace Surging.Core.ProxyGenerator.Utilitys
+namespace KissU.Core.ProxyGenerator.Utilitys
 {
     public static class CompilationUtilitys
     {
@@ -74,153 +74,153 @@ namespace Surging.Core.ProxyGenerator.Utilitys
 
         private static SyntaxTree GetAssemblyInfo(AssemblyInfo info)
         {
-            return CompilationUnit()
+            return SyntaxFactory.CompilationUnit()
                 .WithUsings(
-                    List(
+                    SyntaxFactory.List(
                         new[]
                         {
-                            UsingDirective(
-                                QualifiedName(
-                                    IdentifierName("System"),
-                                    IdentifierName("Reflection"))),
-                            UsingDirective(
-                                QualifiedName(
-                                    QualifiedName(
-                                        IdentifierName("System"),
-                                        IdentifierName("Runtime")),
-                                    IdentifierName("InteropServices"))),
-                            UsingDirective(
-                                QualifiedName(
-                                    QualifiedName(
-                                        IdentifierName("System"),
-                                        IdentifierName("Runtime")),
-                                    IdentifierName("Versioning")))
+                            SyntaxFactory.UsingDirective(
+                                SyntaxFactory.QualifiedName(
+                                    SyntaxFactory.IdentifierName("System"),
+                                    SyntaxFactory.IdentifierName("Reflection"))),
+                            SyntaxFactory.UsingDirective(
+                                SyntaxFactory.QualifiedName(
+                                    SyntaxFactory.QualifiedName(
+                                        SyntaxFactory.IdentifierName("System"),
+                                        SyntaxFactory.IdentifierName("Runtime")),
+                                    SyntaxFactory.IdentifierName("InteropServices"))),
+                            SyntaxFactory.UsingDirective(
+                                SyntaxFactory.QualifiedName(
+                                    SyntaxFactory.QualifiedName(
+                                        SyntaxFactory.IdentifierName("System"),
+                                        SyntaxFactory.IdentifierName("Runtime")),
+                                    SyntaxFactory.IdentifierName("Versioning")))
                         }))
                 .WithAttributeLists(
-                    List(
+                    SyntaxFactory.List(
                         new[]
                         {
-                            AttributeList(
-            SingletonSeparatedList(
-                Attribute(
-                    IdentifierName("TargetFramework"))
+                            SyntaxFactory.AttributeList(
+            SyntaxFactory.SingletonSeparatedList(
+                SyntaxFactory.Attribute(
+                    SyntaxFactory.IdentifierName("TargetFramework"))
                 .WithArgumentList(
-                    AttributeArgumentList(
-                        SeparatedList<AttributeArgumentSyntax>(
+                    SyntaxFactory.AttributeArgumentList(
+                        SyntaxFactory.SeparatedList<AttributeArgumentSyntax>(
                             new SyntaxNodeOrToken[]{
-                                AttributeArgument(
-                                    LiteralExpression(
+                                SyntaxFactory.AttributeArgument(
+                                    SyntaxFactory.LiteralExpression(
                                         SyntaxKind.StringLiteralExpression,
-                                        Literal(".NETFramework,Version=v4.5"))),
-                                Token(SyntaxKind.CommaToken),
-                                AttributeArgument(
-                                    LiteralExpression(
+                                        SyntaxFactory.Literal(".NETFramework,Version=v4.5"))),
+                                SyntaxFactory.Token(SyntaxKind.CommaToken),
+                                SyntaxFactory.AttributeArgument(
+                                    SyntaxFactory.LiteralExpression(
                                         SyntaxKind.StringLiteralExpression,
-                                        Literal(".NET Framework 4.5")))
+                                        SyntaxFactory.Literal(".NET Framework 4.5")))
                                 .WithNameEquals(
-                                    NameEquals(
-                                        IdentifierName("FrameworkDisplayName")))})))))
+                                    SyntaxFactory.NameEquals(
+                                        SyntaxFactory.IdentifierName("FrameworkDisplayName")))})))))
         .WithTarget(
-            AttributeTargetSpecifier(
-                Token(SyntaxKind.AssemblyKeyword))),
-                            AttributeList(
-                                SingletonSeparatedList(
-                                    Attribute(
-                                        IdentifierName("AssemblyTitle"))
+            SyntaxFactory.AttributeTargetSpecifier(
+                SyntaxFactory.Token(SyntaxKind.AssemblyKeyword))),
+                            SyntaxFactory.AttributeList(
+                                SyntaxFactory.SingletonSeparatedList(
+                                    SyntaxFactory.Attribute(
+                                        SyntaxFactory.IdentifierName("AssemblyTitle"))
                                         .WithArgumentList(
-                                            AttributeArgumentList(
-                                                SingletonSeparatedList(
-                                                    AttributeArgument(
-                                                        LiteralExpression(
+                                            SyntaxFactory.AttributeArgumentList(
+                                                SyntaxFactory.SingletonSeparatedList(
+                                                    SyntaxFactory.AttributeArgument(
+                                                        SyntaxFactory.LiteralExpression(
                                                             SyntaxKind.StringLiteralExpression,
                                                             Literal(info.Title))))))))
                                 .WithTarget(
-                                    AttributeTargetSpecifier(
-                                        Token(SyntaxKind.AssemblyKeyword))),
-                            AttributeList(
-                                SingletonSeparatedList(
-                                    Attribute(
-                                        IdentifierName("AssemblyProduct"))
+                                    SyntaxFactory.AttributeTargetSpecifier(
+                                        SyntaxFactory.Token(SyntaxKind.AssemblyKeyword))),
+                            SyntaxFactory.AttributeList(
+                                SyntaxFactory.SingletonSeparatedList(
+                                    SyntaxFactory.Attribute(
+                                        SyntaxFactory.IdentifierName("AssemblyProduct"))
                                         .WithArgumentList(
-                                            AttributeArgumentList(
-                                                SingletonSeparatedList(
-                                                    AttributeArgument(
-                                                        LiteralExpression(
+                                            SyntaxFactory.AttributeArgumentList(
+                                                SyntaxFactory.SingletonSeparatedList(
+                                                    SyntaxFactory.AttributeArgument(
+                                                        SyntaxFactory.LiteralExpression(
                                                             SyntaxKind.StringLiteralExpression,
                                                             Literal(info.Product))))))))
                                 .WithTarget(
-                                    AttributeTargetSpecifier(
-                                        Token(SyntaxKind.AssemblyKeyword))),
-                            AttributeList(
-                                SingletonSeparatedList(
-                                    Attribute(
-                                        IdentifierName("AssemblyCopyright"))
+                                    SyntaxFactory.AttributeTargetSpecifier(
+                                        SyntaxFactory.Token(SyntaxKind.AssemblyKeyword))),
+                            SyntaxFactory.AttributeList(
+                                SyntaxFactory.SingletonSeparatedList(
+                                    SyntaxFactory.Attribute(
+                                        SyntaxFactory.IdentifierName("AssemblyCopyright"))
                                         .WithArgumentList(
-                                            AttributeArgumentList(
-                                                SingletonSeparatedList(
-                                                    AttributeArgument(
-                                                        LiteralExpression(
+                                            SyntaxFactory.AttributeArgumentList(
+                                                SyntaxFactory.SingletonSeparatedList(
+                                                    SyntaxFactory.AttributeArgument(
+                                                        SyntaxFactory.LiteralExpression(
                                                             SyntaxKind.StringLiteralExpression,
                                                             Literal(info.Copyright))))))))
                                 .WithTarget(
-                                    AttributeTargetSpecifier(
-                                        Token(SyntaxKind.AssemblyKeyword))),
-                            AttributeList(
-                                SingletonSeparatedList(
-                                    Attribute(
-                                        IdentifierName("ComVisible"))
+                                    SyntaxFactory.AttributeTargetSpecifier(
+                                        SyntaxFactory.Token(SyntaxKind.AssemblyKeyword))),
+                            SyntaxFactory.AttributeList(
+                                SyntaxFactory.SingletonSeparatedList(
+                                    SyntaxFactory.Attribute(
+                                        SyntaxFactory.IdentifierName("ComVisible"))
                                         .WithArgumentList(
-                                            AttributeArgumentList(
-                                                SingletonSeparatedList(
-                                                    AttributeArgument(
-                                                        LiteralExpression(info.ComVisible
+                                            SyntaxFactory.AttributeArgumentList(
+                                                SyntaxFactory.SingletonSeparatedList(
+                                                    SyntaxFactory.AttributeArgument(
+                                                        SyntaxFactory.LiteralExpression(info.ComVisible
                                                             ? SyntaxKind.TrueLiteralExpression
                                                             : SyntaxKind.FalseLiteralExpression)))))))
                                 .WithTarget(
-                                    AttributeTargetSpecifier(
-                                        Token(SyntaxKind.AssemblyKeyword))),
-                            AttributeList(
-                                SingletonSeparatedList(
-                                    Attribute(
-                                        IdentifierName("Guid"))
+                                    SyntaxFactory.AttributeTargetSpecifier(
+                                        SyntaxFactory.Token(SyntaxKind.AssemblyKeyword))),
+                            SyntaxFactory.AttributeList(
+                                SyntaxFactory.SingletonSeparatedList(
+                                    SyntaxFactory.Attribute(
+                                        SyntaxFactory.IdentifierName("Guid"))
                                         .WithArgumentList(
-                                            AttributeArgumentList(
-                                                SingletonSeparatedList(
-                                                    AttributeArgument(
-                                                        LiteralExpression(
+                                            SyntaxFactory.AttributeArgumentList(
+                                                SyntaxFactory.SingletonSeparatedList(
+                                                    SyntaxFactory.AttributeArgument(
+                                                        SyntaxFactory.LiteralExpression(
                                                             SyntaxKind.StringLiteralExpression,
                                                             Literal(info.Guid))))))))
                                 .WithTarget(
-                                    AttributeTargetSpecifier(
-                                        Token(SyntaxKind.AssemblyKeyword))),
-                            AttributeList(
-                                SingletonSeparatedList(
-                                    Attribute(
-                                        IdentifierName("AssemblyVersion"))
+                                    SyntaxFactory.AttributeTargetSpecifier(
+                                        SyntaxFactory.Token(SyntaxKind.AssemblyKeyword))),
+                            SyntaxFactory.AttributeList(
+                                SyntaxFactory.SingletonSeparatedList(
+                                    SyntaxFactory.Attribute(
+                                        SyntaxFactory.IdentifierName("AssemblyVersion"))
                                         .WithArgumentList(
-                                            AttributeArgumentList(
-                                                SingletonSeparatedList(
-                                                    AttributeArgument(
-                                                        LiteralExpression(
+                                            SyntaxFactory.AttributeArgumentList(
+                                                SyntaxFactory.SingletonSeparatedList(
+                                                    SyntaxFactory.AttributeArgument(
+                                                        SyntaxFactory.LiteralExpression(
                                                             SyntaxKind.StringLiteralExpression,
                                                             Literal(info.Version))))))))
                                 .WithTarget(
-                                    AttributeTargetSpecifier(
-                                        Token(SyntaxKind.AssemblyKeyword))),
-                            AttributeList(
-                                SingletonSeparatedList(
-                                    Attribute(
-                                        IdentifierName("AssemblyFileVersion"))
+                                    SyntaxFactory.AttributeTargetSpecifier(
+                                        SyntaxFactory.Token(SyntaxKind.AssemblyKeyword))),
+                            SyntaxFactory.AttributeList(
+                                SyntaxFactory.SingletonSeparatedList(
+                                    SyntaxFactory.Attribute(
+                                        SyntaxFactory.IdentifierName("AssemblyFileVersion"))
                                         .WithArgumentList(
-                                            AttributeArgumentList(
-                                                SingletonSeparatedList(
-                                                    AttributeArgument(
-                                                        LiteralExpression(
+                                            SyntaxFactory.AttributeArgumentList(
+                                                SyntaxFactory.SingletonSeparatedList(
+                                                    SyntaxFactory.AttributeArgument(
+                                                        SyntaxFactory.LiteralExpression(
                                                             SyntaxKind.StringLiteralExpression,
                                                             Literal(info.FileVersion))))))))
                                 .WithTarget(
-                                    AttributeTargetSpecifier(
-                                        Token(SyntaxKind.AssemblyKeyword)))
+                                    SyntaxFactory.AttributeTargetSpecifier(
+                                        SyntaxFactory.Token(SyntaxKind.AssemblyKeyword)))
                         }))
                 .NormalizeWhitespace()
                 .SyntaxTree;

@@ -1,26 +1,25 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.Features;
-using Microsoft.AspNetCore.WebUtilities;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Primitives;
-using Surging.Core.CPlatform.Messages;
-using Surging.Core.CPlatform.Routing;
-using Surging.Core.CPlatform.Routing.Template;
-using Surging.Core.CPlatform.Serialization;
-using Surging.Core.CPlatform.Transport;
-using Surging.Core.CPlatform.Transport.Implementation;
-using Surging.Core.KestrelHttpServer.Filters;
-using Surging.Core.KestrelHttpServer.Filters.Implementation;
-using Surging.Core.KestrelHttpServer.Internal;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using KissU.Core.CPlatform.Messages;
+using KissU.Core.CPlatform.Routing;
+using KissU.Core.CPlatform.Routing.Template;
+using KissU.Core.CPlatform.Serialization;
+using KissU.Core.CPlatform.Transport;
+using KissU.Core.CPlatform.Transport.Implementation;
+using KissU.Core.KestrelHttpServer.Filters;
+using KissU.Core.KestrelHttpServer.Filters.Implementation;
+using KissU.Core.KestrelHttpServer.Internal;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Primitives;
 
-namespace Surging.Core.KestrelHttpServer
+namespace KissU.Core.KestrelHttpServer
 {
     public abstract class HttpMessageListener : IMessageListener
     {

@@ -18,8 +18,7 @@
 
 using System;
 
-
-namespace Surging.Core.CPlatform.Diagnostics
+namespace KissU.Core.CPlatform.Diagnostics
 {
    public struct UniqueId : IEquatable<UniqueId>
     {

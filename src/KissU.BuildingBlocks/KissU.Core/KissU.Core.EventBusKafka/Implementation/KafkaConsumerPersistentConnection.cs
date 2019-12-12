@@ -1,14 +1,13 @@
-﻿using Confluent.Kafka;
-using Confluent.Kafka.Serialization;
-using Microsoft.Extensions.Logging;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using System.Threading;
+using Confluent.Kafka;
+using Confluent.Kafka.Serialization;
+using Microsoft.Extensions.Logging;
 
-namespace Surging.Core.EventBusKafka.Implementation
+namespace KissU.Core.EventBusKafka.Implementation
 {
     public class KafkaConsumerPersistentConnection : KafkaPersistentConnectionBase
     {

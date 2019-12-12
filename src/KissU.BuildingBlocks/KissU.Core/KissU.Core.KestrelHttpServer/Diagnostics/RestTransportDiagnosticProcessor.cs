@@ -1,13 +1,13 @@
-﻿using Surging.Core.CPlatform.Diagnostics;
-using Surging.Core.CPlatform.Messages;
-using Surging.Core.CPlatform.Serialization;
-using Surging.Core.CPlatform.Utilities;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Text;
-using SurgingEvents = Surging.Core.CPlatform.Diagnostics.DiagnosticListenerExtensions;
+using KissU.Core.CPlatform.Diagnostics;
+using KissU.Core.CPlatform.Messages;
+using KissU.Core.CPlatform.Serialization;
+using KissU.Core.CPlatform.Utilities;
+using SurgingEvents = KissU.Core.CPlatform.Diagnostics.DiagnosticListenerExtensions;
 
-namespace Surging.Core.KestrelHttpServer.Diagnostics
+namespace KissU.Core.KestrelHttpServer.Diagnostics
 {
    public class RestTransportDiagnosticProcessor : ITracingDiagnosticProcessor
     {

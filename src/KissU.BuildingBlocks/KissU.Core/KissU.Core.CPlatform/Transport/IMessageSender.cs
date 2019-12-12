@@ -1,7 +1,7 @@
-﻿using Surging.Core.CPlatform.Messages;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using KissU.Core.CPlatform.Messages;
 
-namespace Surging.Core.CPlatform.Transport
+namespace KissU.Core.CPlatform.Transport
 {
     /// <summary>
     /// 一个抽象的发送者。

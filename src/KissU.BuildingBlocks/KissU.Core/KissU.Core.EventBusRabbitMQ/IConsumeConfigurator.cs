@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace Surging.Core.EventBusRabbitMQ
+namespace KissU.Core.EventBusRabbitMQ
 {
    public  interface IConsumeConfigurator
     {

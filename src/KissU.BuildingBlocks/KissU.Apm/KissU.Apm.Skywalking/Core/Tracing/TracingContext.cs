@@ -17,11 +17,11 @@
  */
 
 using System;
-using Surging.Apm.Skywalking.Abstractions.Tracing;
-using Surging.Apm.Skywalking.Abstractions.Transport;
-using Surging.Core.CPlatform.Diagnostics;
+using KissU.Apm.Skywalking.Abstractions.Tracing;
+using KissU.Apm.Skywalking.Abstractions.Transport;
+using KissU.Core.CPlatform.Diagnostics;
 
-namespace Surging.Apm.Skywalking.Abstractions.Common.Tracing
+namespace KissU.Apm.Skywalking.Core.Tracing
 {
     public class TracingContext : ITracingContext
     {

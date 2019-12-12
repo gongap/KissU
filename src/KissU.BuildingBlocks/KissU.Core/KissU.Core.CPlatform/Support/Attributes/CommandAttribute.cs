@@ -1,9 +1,7 @@
-﻿using Surging.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
 
-namespace Surging.Core.CPlatform.Support.Attributes
+namespace KissU.Core.CPlatform.Support.Attributes
 {
 
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true, Inherited = false)]

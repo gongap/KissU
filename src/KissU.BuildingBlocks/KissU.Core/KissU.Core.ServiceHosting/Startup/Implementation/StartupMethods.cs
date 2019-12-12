@@ -1,8 +1,8 @@
-﻿using Autofac;
-using System;
+﻿using System;
 using System.Diagnostics;
+using Autofac;
 
-namespace Surging.Core.ServiceHosting.Startup.Implementation
+namespace KissU.Core.ServiceHosting.Startup.Implementation
 {
     public class StartupMethods
     {

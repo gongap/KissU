@@ -1,13 +1,12 @@
-﻿using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Convertibles;
-using Surging.Core.CPlatform.Routing;
-using Surging.Core.CPlatform.Runtime.Client;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Convertibles;
+using KissU.Core.CPlatform.Routing;
+using KissU.Core.CPlatform.Runtime.Client;
 
-namespace Surging.Core.ProxyGenerator.Implementation
+namespace KissU.Core.ProxyGenerator.Implementation
 {
    public class RemoteServiceProxy: ServiceProxyBase
     {

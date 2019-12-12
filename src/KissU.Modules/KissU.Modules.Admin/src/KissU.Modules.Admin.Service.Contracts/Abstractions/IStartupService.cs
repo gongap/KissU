@@ -2,14 +2,15 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
+using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
+using KissU.Core.CPlatform.Support;
+using KissU.Core.CPlatform.Support.Attributes;
+
 namespace KissU.Modules.Admin.Service.Contracts.Abstractions
 {
     using System.Threading.Tasks;
     using KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain;
-    using Surging.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
-    using Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
-    using Surging.Core.CPlatform.Support;
-    using Surging.Core.CPlatform.Support.Attributes;
     using Util.Applications;
 
     [ServiceBundle("api/{Service}")]

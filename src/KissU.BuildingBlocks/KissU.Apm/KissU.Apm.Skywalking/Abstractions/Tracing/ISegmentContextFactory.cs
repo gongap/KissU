@@ -15,9 +15,10 @@
  * limitations under the License.
  *
  */
-using Surging.Core.CPlatform.Diagnostics;
 
-namespace Surging.Apm.Skywalking.Abstractions.Tracing
+using KissU.Core.CPlatform.Diagnostics;
+
+namespace KissU.Apm.Skywalking.Abstractions.Tracing
 {
     public interface ISegmentContextFactory
     {

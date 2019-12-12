@@ -1,11 +1,8 @@
-﻿using Microsoft.Extensions.Configuration;
-using Surging.Core.CPlatform.Configurations.Remote;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
+﻿using System.IO;
+using KissU.Core.CPlatform.Configurations.Remote;
+using Microsoft.Extensions.Configuration;
 
-namespace Surging.Core.Consul.Configurations
+namespace KissU.Core.Consul.Configurations
 {
    public class ConsulConfigurationProvider : FileConfigurationProvider
     {

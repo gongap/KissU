@@ -1,19 +1,19 @@
-﻿using Consul;
-using Microsoft.Extensions.Logging;
-using Surging.Core.Consul.Configurations;
-using Surging.Core.Consul.Internal;
-using Surging.Core.Consul.Utilitys;
-using Surging.Core.Consul.WatcherProvider;
-using Surging.Core.CPlatform.Runtime.Client;
-using Surging.Core.CPlatform.Runtime.Client.Implementation;
-using Surging.Core.CPlatform.Serialization;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Consul;
+using KissU.Core.Consul.Configurations;
+using KissU.Core.Consul.Internal;
+using KissU.Core.Consul.Utilitys;
+using KissU.Core.Consul.WatcherProvider;
+using KissU.Core.CPlatform.Runtime.Client;
+using KissU.Core.CPlatform.Runtime.Client.Implementation;
+using KissU.Core.CPlatform.Serialization;
+using Microsoft.Extensions.Logging;
 
-namespace Surging.Core.Consul
+namespace KissU.Core.Consul
 {
     public class ConsulServiceSubscribeManager : ServiceSubscribeManagerBase, IDisposable
     {

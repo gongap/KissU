@@ -1,12 +1,12 @@
-﻿using Surging.Core.CPlatform.Ioc;
-using Surging.Core.CPlatform.Utilities;
-using System;
+﻿using System;
 using Autofac;
-using Surging.Core.CPlatform.EventBus.Events;
-using Surging.Core.CPlatform.EventBus.Implementation;
-using Surging.Core.CPlatform.DependencyResolution;
+using KissU.Core.CPlatform.DependencyResolution;
+using KissU.Core.CPlatform.EventBus.Events;
+using KissU.Core.CPlatform.EventBus.Implementation;
+using KissU.Core.CPlatform.Ioc;
+using KissU.Core.CPlatform.Utilities;
 
-namespace Surging.Core.ProxyGenerator
+namespace KissU.Core.ProxyGenerator
 {
     public abstract class ProxyServiceBase:  ServiceBase
     {

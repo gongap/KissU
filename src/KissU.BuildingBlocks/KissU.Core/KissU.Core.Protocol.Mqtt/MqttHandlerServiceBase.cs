@@ -1,12 +1,8 @@
-﻿using DotNetty.Codecs.Mqtt.Packets;
+﻿using System;
+using DotNetty.Codecs.Mqtt.Packets;
 using DotNetty.Transport.Channels;
-using Surging.Core.CPlatform.Messages;
-using Surging.Core.Protocol.Mqtt.Internal.Enums;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Surging.Core.Protocol.Mqtt
+namespace KissU.Core.Protocol.Mqtt
 {
    public abstract class MqttHandlerServiceBase
     {

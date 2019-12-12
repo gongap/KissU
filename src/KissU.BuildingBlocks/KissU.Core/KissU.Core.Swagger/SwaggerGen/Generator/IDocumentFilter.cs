@@ -1,10 +1,9 @@
-﻿
-using Microsoft.AspNetCore.Mvc.ApiExplorer;
-using Surging.Core.Swagger;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using KissU.Core.Swagger.Swagger.Model;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 
-namespace Surging.Core.SwaggerGen
+namespace KissU.Core.Swagger.SwaggerGen.Generator
 {
     public interface IDocumentFilter
     {

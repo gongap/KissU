@@ -1,9 +1,9 @@
-﻿using Surging.Core.CPlatform.Support;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Net;
+using KissU.Core.CPlatform.Support;
 
-namespace Surging.Core.CPlatform.Configurations
+namespace KissU.Core.CPlatform.Configurations
 {
     public  partial class SurgingServerOptions: ServiceCommand
     {

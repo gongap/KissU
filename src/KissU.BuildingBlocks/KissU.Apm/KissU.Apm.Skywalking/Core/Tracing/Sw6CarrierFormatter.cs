@@ -16,14 +16,14 @@
  *
  */
 
-using Surging.Apm.Skywalking.Abstractions.Config;
-using Surging.Apm.Skywalking.Abstractions.Tracing;
-using Surging.Apm.Skywalking.Core.Common;
-using Surging.Apm.Skywalking.Core.Tracing;
-using Surging.Core.CPlatform.Diagnostics;
 using System.Linq;
+using KissU.Apm.Skywalking.Abstractions;
+using KissU.Apm.Skywalking.Abstractions.Config;
+using KissU.Apm.Skywalking.Abstractions.Tracing;
+using KissU.Apm.Skywalking.Core.Common;
+using KissU.Core.CPlatform.Diagnostics;
 
-namespace Surging.Apm.Skywalking.Abstractions.Common.Tracing
+namespace KissU.Apm.Skywalking.Core.Tracing
 {
     public class Sw6CarrierFormatter : ICarrierFormatter
     {

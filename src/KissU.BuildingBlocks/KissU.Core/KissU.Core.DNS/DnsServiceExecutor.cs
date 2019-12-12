@@ -1,17 +1,13 @@
-﻿using DotNetty.Codecs.DNS;
-using DotNetty.Codecs.DNS.Records;
-using Microsoft.Extensions.Logging;
-using Surging.Core.CPlatform.Messages;
-using Surging.Core.CPlatform.Runtime.Server;
-using Surging.Core.CPlatform.Transport;
-using Surging.Core.DNS.Extensions;
-using Surging.Core.DNS.Runtime;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform.Messages;
+using KissU.Core.CPlatform.Runtime.Server;
+using KissU.Core.CPlatform.Transport;
+using KissU.Core.DNS.Extensions;
+using KissU.Core.DNS.Runtime;
+using Microsoft.Extensions.Logging;
 
-namespace Surging.Core.DNS
+namespace KissU.Core.DNS
 {
    public class DnsServiceExecutor : IServiceExecutor
     {

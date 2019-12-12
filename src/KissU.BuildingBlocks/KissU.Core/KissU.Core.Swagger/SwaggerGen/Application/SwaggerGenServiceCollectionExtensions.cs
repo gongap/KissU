@@ -1,10 +1,11 @@
 ﻿using System;
+using KissU.Core.Swagger.Swagger.Model;
+using KissU.Core.Swagger.SwaggerGen.Generator;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using Surging.Core.Swagger;
-using Surging.Core.SwaggerGen;
 
-namespace Microsoft.Extensions.DependencyInjection
+namespace KissU.Core.Swagger.SwaggerGen.Application
 {
     public static class SwaggerGenServiceCollectionExtensions
     {

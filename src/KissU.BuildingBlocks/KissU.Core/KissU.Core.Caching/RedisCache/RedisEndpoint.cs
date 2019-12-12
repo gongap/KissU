@@ -1,11 +1,6 @@
-﻿using Surging.Core.Caching.Interfaces;
-using Surging.Core.CPlatform.Cache;
-using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Text;
+﻿using KissU.Core.CPlatform.Cache;
 
-namespace Surging.Core.Caching.RedisCache
+namespace KissU.Core.Caching.RedisCache
 {
     /// <summary>
     /// redis 终端

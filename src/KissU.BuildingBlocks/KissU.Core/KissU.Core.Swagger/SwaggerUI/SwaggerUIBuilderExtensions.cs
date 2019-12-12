@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Builder;
-using System;
+﻿using System;
+using Microsoft.AspNetCore.Builder;
 
-namespace Surging.Core.Swagger.SwaggerUI
+namespace KissU.Core.Swagger.SwaggerUI
 {
     public static  class SwaggerUIBuilderExtensions
     {

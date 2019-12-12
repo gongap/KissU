@@ -1,14 +1,11 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using KissU.Core.CPlatform.Module;
+using KissU.Core.CPlatform.Utilities;
+using KissU.Core.KestrelHttpServer;
+using KissU.Core.Log4net;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Surging.Core.CPlatform.Module;
-using Surging.Core.CPlatform.Utilities;
-using Surging.Core.KestrelHttpServer;
-using Surging.Core.Log4net;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Surging.Core.Kestrel.Log4net
+namespace KissU.Core.Kestrel.Log4net
 {
     
     public class KestrelLog4netModule : KestrelHttpModule

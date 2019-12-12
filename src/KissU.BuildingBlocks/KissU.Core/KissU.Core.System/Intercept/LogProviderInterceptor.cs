@@ -1,12 +1,8 @@
-﻿using Surging.Core.CPlatform.Messages;
-using Surging.Core.ProxyGenerator.Interceptors;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
+﻿using System.Diagnostics;
 using System.Threading.Tasks;
+using KissU.Core.ProxyGenerator.Interceptors;
 
-namespace Surging.Core.System.Intercept
+namespace KissU.Core.System.Intercept
 {
     public class LogProviderInterceptor : IInterceptor
     {

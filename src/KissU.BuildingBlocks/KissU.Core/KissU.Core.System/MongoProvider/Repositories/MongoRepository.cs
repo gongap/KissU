@@ -1,13 +1,12 @@
-﻿using MongoDB.Bson;
-using MongoDB.Driver;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Threading.Tasks; 
+using System.Threading.Tasks;
+using MongoDB.Bson;
+using MongoDB.Driver;
 
-
-namespace Surging.Core.System.MongoProvider.Repositories
+namespace KissU.Core.System.MongoProvider.Repositories
 {
     public class MongoRepository<T> : IMongoRepository<T>
             where T : IEntity

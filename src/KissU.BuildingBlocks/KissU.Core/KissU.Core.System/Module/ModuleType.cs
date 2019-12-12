@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Surging.Core.System.Module
+﻿namespace KissU.Core.System.Module
 {
     /// <summary>
     /// 模块类型

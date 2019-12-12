@@ -1,11 +1,11 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Surging.Core.CPlatform.Convertibles;
-using Surging.Core.CPlatform.Ids;
-using Surging.Core.ProxyGenerator.Utilitys;
-using Surging.Core.CPlatform.Runtime.Client;
-using Surging.Core.CPlatform.Serialization;
+using KissU.Core.CPlatform.Convertibles;
+using KissU.Core.CPlatform.Ids;
+using KissU.Core.ProxyGenerator.Utilitys;
+using KissU.Core.CPlatform.Runtime.Client;
+using KissU.Core.CPlatform.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +21,9 @@ using Microsoft.Extensions.DependencyModel;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
-using Surging.Core.CPlatform;
+using KissU.Core.CPlatform;
 
-namespace Surging.Core.ProxyGenerator.Implementation
+namespace KissU.Core.ProxyGenerator.Implementation
 {
     public class ServiceProxyGenerater : IServiceProxyGenerater,IDisposable
     {
@@ -101,30 +101,30 @@ namespace Surging.Core.ProxyGenerator.Implementation
             };
 
             members.AddRange(GenerateMethodDeclarations(interfaceType.GetMethods()));
-            return CompilationUnit()
+            return SyntaxFactory.CompilationUnit()
                 .WithUsings(GetUsings(namespaces))
                 .WithMembers(
-                    SingletonList<MemberDeclarationSyntax>(
-                        NamespaceDeclaration(
-                            QualifiedName(
-                                QualifiedName(
-                                    IdentifierName("Surging"),
-                                    IdentifierName("Cores")),
-                                IdentifierName("ClientProxys")))
+                    SyntaxFactory.SingletonList<MemberDeclarationSyntax>(
+                        SyntaxFactory.NamespaceDeclaration(
+                            SyntaxFactory.QualifiedName(
+                                SyntaxFactory.QualifiedName(
+                                    SyntaxFactory.IdentifierName("Surging"),
+                                    SyntaxFactory.IdentifierName("Cores")),
+                                SyntaxFactory.IdentifierName("ClientProxys")))
                 .WithMembers(
-                    SingletonList<MemberDeclarationSyntax>(
-                        ClassDeclaration(className)
-                            .WithModifiers(TokenList(Token(SyntaxKind.PublicKeyword)))
+                    SyntaxFactory.SingletonList<MemberDeclarationSyntax>(
+                        SyntaxFactory.ClassDeclaration(className)
+                            .WithModifiers(SyntaxFactory.TokenList(SyntaxFactory.Token(SyntaxKind.PublicKeyword)))
                             .WithBaseList(
-                                BaseList(
-                                    SeparatedList<BaseTypeSyntax>(
+                                SyntaxFactory.BaseList(
+                                    SyntaxFactory.SeparatedList<BaseTypeSyntax>(
                                         new SyntaxNodeOrToken[]
                                         {
-                                            SimpleBaseType(IdentifierName("ServiceProxyBase")),
-                                            Token(SyntaxKind.CommaToken),
-                                            SimpleBaseType(GetQualifiedNameSyntax(interfaceType))
+                                            SyntaxFactory.SimpleBaseType(SyntaxFactory.IdentifierName("ServiceProxyBase")),
+                                            SyntaxFactory.Token(SyntaxKind.CommaToken),
+                                            SyntaxFactory.SimpleBaseType(GetQualifiedNameSyntax(interfaceType))
                                         })))
-                            .WithMembers(List(members))))))
+                            .WithMembers(SyntaxFactory.List(members))))))
                 .NormalizeWhitespace().SyntaxTree;
         }
 
@@ -145,13 +145,13 @@ namespace Surging.Core.ProxyGenerator.Implementation
 
         private static QualifiedNameSyntax GetQualifiedNameSyntax(IReadOnlyCollection<string> names)
         {
-            var ids = names.Select(IdentifierName).ToArray();
+            var ids = names.Select(SyntaxFactory.IdentifierName).ToArray();
 
             var index = 0;
             QualifiedNameSyntax left = null;
             while (index + 1 < names.Count)
             {
-                left = left == null ? QualifiedName(ids[index], ids[index + 1]) : QualifiedName(left, ids[index + 1]);
+                left = left == null ? SyntaxFactory.QualifiedName(ids[index], ids[index + 1]) : SyntaxFactory.QualifiedName(left, ids[index + 1]);
                 index++;
             }
             return left;
@@ -162,72 +162,72 @@ namespace Surging.Core.ProxyGenerator.Implementation
             var directives = new List<UsingDirectiveSyntax>();
            foreach(var name in namespaces)
             {
-                directives.Add(UsingDirective(GetQualifiedNameSyntax(name)));
+                directives.Add(SyntaxFactory.UsingDirective(GetQualifiedNameSyntax(name)));
             }
-            return List(
+            return SyntaxFactory.List(
                 new[]
                 {
-                    UsingDirective(IdentifierName("System")),
-                    UsingDirective(GetQualifiedNameSyntax("System.Threading.Tasks")),
-                    UsingDirective(GetQualifiedNameSyntax("System.Collections.Generic")),
-                    UsingDirective(GetQualifiedNameSyntax(typeof(ITypeConvertibleService).Namespace)),
-                    UsingDirective(GetQualifiedNameSyntax(typeof(IRemoteInvokeService).Namespace)),
-                    UsingDirective(GetQualifiedNameSyntax(typeof(CPlatformContainer).Namespace)),
-                    UsingDirective(GetQualifiedNameSyntax(typeof(ISerializer<>).Namespace)),
-                    UsingDirective(GetQualifiedNameSyntax(typeof(ServiceProxyBase).Namespace))
+                    SyntaxFactory.UsingDirective(SyntaxFactory.IdentifierName("System")),
+                    SyntaxFactory.UsingDirective(GetQualifiedNameSyntax("System.Threading.Tasks")),
+                    SyntaxFactory.UsingDirective(GetQualifiedNameSyntax("System.Collections.Generic")),
+                    SyntaxFactory.UsingDirective(GetQualifiedNameSyntax(typeof(ITypeConvertibleService).Namespace)),
+                    SyntaxFactory.UsingDirective(GetQualifiedNameSyntax(typeof(IRemoteInvokeService).Namespace)),
+                    SyntaxFactory.UsingDirective(GetQualifiedNameSyntax(typeof(CPlatformContainer).Namespace)),
+                    SyntaxFactory.UsingDirective(GetQualifiedNameSyntax(typeof(ISerializer<>).Namespace)),
+                    SyntaxFactory.UsingDirective(GetQualifiedNameSyntax(typeof(ServiceProxyBase).Namespace))
                 }.Concat(directives));
         }
 
         private static ConstructorDeclarationSyntax GetConstructorDeclaration(string className)
         {
-            return ConstructorDeclaration(Identifier(className))
+            return SyntaxFactory.ConstructorDeclaration(SyntaxFactory.Identifier(className))
                 .WithModifiers(
-                    TokenList(
-                        Token(SyntaxKind.PublicKeyword)))
+                    SyntaxFactory.TokenList(
+                        SyntaxFactory.Token(SyntaxKind.PublicKeyword)))
                 .WithParameterList(
-                    ParameterList(
-                        SeparatedList<ParameterSyntax>(
+                    SyntaxFactory.ParameterList(
+                        SyntaxFactory.SeparatedList<ParameterSyntax>(
                             new SyntaxNodeOrToken[]
                             {
-                                Parameter(
-                                    Identifier("remoteInvokeService"))
+                                SyntaxFactory.Parameter(
+                                    SyntaxFactory.Identifier("remoteInvokeService"))
                                     .WithType(
-                                        IdentifierName("IRemoteInvokeService")),
-                                Token(SyntaxKind.CommaToken),
-                                Parameter(
-                                    Identifier("typeConvertibleService"))
+                                        SyntaxFactory.IdentifierName("IRemoteInvokeService")),
+                                SyntaxFactory.Token(SyntaxKind.CommaToken),
+                                SyntaxFactory.Parameter(
+                                    SyntaxFactory.Identifier("typeConvertibleService"))
                                     .WithType(
-                                        IdentifierName("ITypeConvertibleService")),
-                                Token(SyntaxKind.CommaToken),
-                                Parameter(
-                                    Identifier("serviceKey"))
+                                        SyntaxFactory.IdentifierName("ITypeConvertibleService")),
+                                SyntaxFactory.Token(SyntaxKind.CommaToken),
+                                SyntaxFactory.Parameter(
+                                    SyntaxFactory.Identifier("serviceKey"))
                                     .WithType(
-                                        IdentifierName("String")),
-                                 Token(SyntaxKind.CommaToken),
-                                Parameter(
-                                    Identifier("serviceProvider"))
+                                        SyntaxFactory.IdentifierName("String")),
+                                 SyntaxFactory.Token(SyntaxKind.CommaToken),
+                                SyntaxFactory.Parameter(
+                                    SyntaxFactory.Identifier("serviceProvider"))
                                     .WithType(
-                                        IdentifierName("CPlatformContainer"))
+                                        SyntaxFactory.IdentifierName("CPlatformContainer"))
                             })))
                 .WithInitializer(
-                        ConstructorInitializer(
+                        SyntaxFactory.ConstructorInitializer(
                             SyntaxKind.BaseConstructorInitializer,
-                            ArgumentList(
-                                SeparatedList<ArgumentSyntax>(
+                            SyntaxFactory.ArgumentList(
+                                SyntaxFactory.SeparatedList<ArgumentSyntax>(
                                     new SyntaxNodeOrToken[]{
-                                        Argument(
-                                            IdentifierName("remoteInvokeService")),
-                                        Token(SyntaxKind.CommaToken),
-                                        Argument(
-                                            IdentifierName("typeConvertibleService")),
-                                          Token(SyntaxKind.CommaToken),
-                                        Argument(
-                                            IdentifierName("serviceKey")),
-                                           Token(SyntaxKind.CommaToken),
-                                        Argument(
-                                            IdentifierName("serviceProvider"))
+                                        SyntaxFactory.Argument(
+                                            SyntaxFactory.IdentifierName("remoteInvokeService")),
+                                        SyntaxFactory.Token(SyntaxKind.CommaToken),
+                                        SyntaxFactory.Argument(
+                                            SyntaxFactory.IdentifierName("typeConvertibleService")),
+                                          SyntaxFactory.Token(SyntaxKind.CommaToken),
+                                        SyntaxFactory.Argument(
+                                            SyntaxFactory.IdentifierName("serviceKey")),
+                                           SyntaxFactory.Token(SyntaxKind.CommaToken),
+                                        SyntaxFactory.Argument(
+                                            SyntaxFactory.IdentifierName("serviceProvider"))
                                     }))))
-                .WithBody(Block());
+                .WithBody(SyntaxFactory.Block());
         }
 
         private IEnumerable<MemberDeclarationSyntax> GenerateMethodDeclarations(IEnumerable<MethodInfo> methods)
@@ -253,12 +253,12 @@ namespace Surging.Core.ProxyGenerator.Implementation
                 list.Add(genericTypeArgument.GetTypeInfo().IsGenericType
                     ? GetTypeSyntax(genericTypeArgument)
                     : GetQualifiedNameSyntax(genericTypeArgument.FullName));
-                list.Add(Token(SyntaxKind.CommaToken));
+                list.Add(SyntaxFactory.Token(SyntaxKind.CommaToken));
             }
 
             var array = list.Take(list.Count - 1).ToArray();
-            var typeArgumentListSyntax = TypeArgumentList(SeparatedList<TypeSyntax>(array));
-            return GenericName(type.Name.Substring(0, type.Name.IndexOf('`')))
+            var typeArgumentListSyntax = SyntaxFactory.TypeArgumentList(SyntaxFactory.SeparatedList<TypeSyntax>(array));
+            return SyntaxFactory.GenericName(type.Name.Substring(0, type.Name.IndexOf('`')))
                 .WithTypeArgumentList(typeArgumentListSyntax);
         }
 
@@ -274,29 +274,29 @@ namespace Surging.Core.ProxyGenerator.Implementation
             {
                 if (parameter.ParameterType.IsGenericType)
                 {
-                    parameterDeclarationList.Add(Parameter(
-                                     Identifier(parameter.Name))
+                    parameterDeclarationList.Add(SyntaxFactory.Parameter(
+                                     SyntaxFactory.Identifier(parameter.Name))
                                      .WithType(GetTypeSyntax(parameter.ParameterType)));
                 }
                 else
                 {
-                    parameterDeclarationList.Add(Parameter(
-                                        Identifier(parameter.Name))
+                    parameterDeclarationList.Add(SyntaxFactory.Parameter(
+                                        SyntaxFactory.Identifier(parameter.Name))
                                         .WithType(GetQualifiedNameSyntax(parameter.ParameterType)));
 
                 }
-                parameterDeclarationList.Add(Token(SyntaxKind.CommaToken));
+                parameterDeclarationList.Add(SyntaxFactory.Token(SyntaxKind.CommaToken));
                
-                parameterList.Add(InitializerExpression(
+                parameterList.Add(SyntaxFactory.InitializerExpression(
                     SyntaxKind.ComplexElementInitializerExpression,
-                    SeparatedList<ExpressionSyntax>(
+                    SyntaxFactory.SeparatedList<ExpressionSyntax>(
                         new SyntaxNodeOrToken[]{
-                            LiteralExpression(
+                            SyntaxFactory.LiteralExpression(
                                 SyntaxKind.StringLiteralExpression,
-                                Literal(parameter.Name)),
-                            Token(SyntaxKind.CommaToken),
-                            IdentifierName(parameter.Name)})));
-                parameterList.Add(Token(SyntaxKind.CommaToken));
+                                SyntaxFactory.Literal(parameter.Name)),
+                            SyntaxFactory.Token(SyntaxKind.CommaToken),
+                            SyntaxFactory.IdentifierName(parameter.Name)})));
+                parameterList.Add(SyntaxFactory.Token(SyntaxKind.CommaToken));
             }
             if (parameterList.Any())
             {
@@ -304,71 +304,71 @@ namespace Surging.Core.ProxyGenerator.Implementation
                 parameterDeclarationList.RemoveAt(parameterDeclarationList.Count - 1);
             }
 
-            var declaration = MethodDeclaration(
+            var declaration = SyntaxFactory.MethodDeclaration(
                 returnDeclaration,
-                Identifier(method.Name))
-                .WithModifiers(TokenList(Token(SyntaxKind.PublicKeyword), Token(SyntaxKind.AsyncKeyword)))
-                .WithParameterList(ParameterList(SeparatedList<ParameterSyntax>(parameterDeclarationList)));
+                SyntaxFactory.Identifier(method.Name))
+                .WithModifiers(SyntaxFactory.TokenList(SyntaxFactory.Token(SyntaxKind.PublicKeyword), SyntaxFactory.Token(SyntaxKind.AsyncKeyword)))
+                .WithParameterList(SyntaxFactory.ParameterList(SyntaxFactory.SeparatedList<ParameterSyntax>(parameterDeclarationList)));
 
             ExpressionSyntax expressionSyntax;
             StatementSyntax statementSyntax;
 
             if (method.ReturnType != typeof(Task))
             {
-                expressionSyntax = GenericName(
-                Identifier("Invoke")).WithTypeArgumentList(((GenericNameSyntax)returnDeclaration).TypeArgumentList);
+                expressionSyntax = SyntaxFactory.GenericName(
+                SyntaxFactory.Identifier("Invoke")).WithTypeArgumentList(((GenericNameSyntax)returnDeclaration).TypeArgumentList);
 
             }
             else
             {
-                expressionSyntax = IdentifierName("Invoke");
+                expressionSyntax = SyntaxFactory.IdentifierName("Invoke");
             }
-            expressionSyntax = AwaitExpression(
-                InvocationExpression(expressionSyntax)
+            expressionSyntax = SyntaxFactory.AwaitExpression(
+                SyntaxFactory.InvocationExpression(expressionSyntax)
                     .WithArgumentList(
-                        ArgumentList(
-                            SeparatedList<ArgumentSyntax>(
+                        SyntaxFactory.ArgumentList(
+                            SyntaxFactory.SeparatedList<ArgumentSyntax>(
                                 new SyntaxNodeOrToken[]
                                 {
-                                        Argument(
-                                            ObjectCreationExpression(
-                                                GenericName(
-                                                    Identifier("Dictionary"))
+                                        SyntaxFactory.Argument(
+                                            SyntaxFactory.ObjectCreationExpression(
+                                                SyntaxFactory.GenericName(
+                                                    SyntaxFactory.Identifier("Dictionary"))
                                                     .WithTypeArgumentList(
-                                                        TypeArgumentList(
-                                                            SeparatedList<TypeSyntax>(
+                                                        SyntaxFactory.TypeArgumentList(
+                                                            SyntaxFactory.SeparatedList<TypeSyntax>(
                                                                 new SyntaxNodeOrToken[]
                                                                 {
-                                                                    PredefinedType(
-                                                                        Token(SyntaxKind.StringKeyword)),
-                                                                    Token(SyntaxKind.CommaToken),
-                                                                    PredefinedType(
-                                                                        Token(SyntaxKind.ObjectKeyword))
+                                                                    SyntaxFactory.PredefinedType(
+                                                                        SyntaxFactory.Token(SyntaxKind.StringKeyword)),
+                                                                    SyntaxFactory.Token(SyntaxKind.CommaToken),
+                                                                    SyntaxFactory.PredefinedType(
+                                                                        SyntaxFactory.Token(SyntaxKind.ObjectKeyword))
                                                                 }))))
                                                 .WithInitializer(
-                                                    InitializerExpression(
+                                                    SyntaxFactory.InitializerExpression(
                                                         SyntaxKind.CollectionInitializerExpression,
-                                                        SeparatedList<ExpressionSyntax>(
+                                                        SyntaxFactory.SeparatedList<ExpressionSyntax>(
                                                             parameterList)))),
-                                        Token(SyntaxKind.CommaToken),
-                                        Argument(
-                                            LiteralExpression(
+                                        SyntaxFactory.Token(SyntaxKind.CommaToken),
+                                        SyntaxFactory.Argument(
+                                            SyntaxFactory.LiteralExpression(
                                                 SyntaxKind.StringLiteralExpression,
                                                 Literal(serviceId)))
                                 }))));
 
             if (method.ReturnType != typeof(Task))
             {
-                statementSyntax = ReturnStatement(expressionSyntax);
+                statementSyntax = SyntaxFactory.ReturnStatement(expressionSyntax);
             }
             else
             {
-                statementSyntax = ExpressionStatement(expressionSyntax);
+                statementSyntax = SyntaxFactory.ExpressionStatement(expressionSyntax);
             }
 
             declaration = declaration.WithBody(
-                        Block(
-                            SingletonList(statementSyntax)));
+                        SyntaxFactory.Block(
+                            SyntaxFactory.SingletonList(statementSyntax)));
 
             return declaration;
         }

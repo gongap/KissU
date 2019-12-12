@@ -1,13 +1,9 @@
-﻿using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.EventBus;
-using Surging.Core.CPlatform.EventBus.Events;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Reflection;
-using Surging.Core.EventBusRabbitMQ.Attributes;
-using System.Linq;
+using KissU.Core.CPlatform.EventBus;
+using KissU.Core.CPlatform.EventBus.Events;
 
-namespace Surging.Core.EventBusRabbitMQ.Implementation
+namespace KissU.Core.EventBusRabbitMQ.Implementation
 {
     public class RabbitMqSubscriptionAdapt : ISubscriptionAdapt
     {

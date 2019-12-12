@@ -1,18 +1,16 @@
-﻿using Newtonsoft.Json;
-using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Routing;
-using Surging.Core.ProxyGenerator;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using System.Linq;
-using Surging.Core.Caching;
-using System.Text.RegularExpressions;
-using Surging.Core.CPlatform.Cache;
+using KissU.Core.Caching;
+using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Cache;
+using KissU.Core.CPlatform.Routing;
+using KissU.Core.ProxyGenerator;
+using Newtonsoft.Json;
 
-namespace Surging.Core.ApiGateWay.OAuth
+namespace KissU.Core.ApiGateWay.OAuth.Implementation
 {
     /// <summary>
     /// 授权服务提供者

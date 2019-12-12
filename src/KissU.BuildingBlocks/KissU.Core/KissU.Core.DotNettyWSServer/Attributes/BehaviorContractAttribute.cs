@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Surging.Core.DotNettyWSServer.Attributes
+namespace KissU.Core.DotNettyWSServer.Attributes
 {
     public class BehaviorContractAttribute: Attribute
     {

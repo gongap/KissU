@@ -1,11 +1,10 @@
-﻿using Surging.Core.Caching.Utilities;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
+using KissU.Core.Caching.Utilities;
 
-namespace Surging.Core.Caching.DependencyResolution
+namespace KissU.Core.Caching.DependencyResolution
 {
     /// <summary>
     /// IOC容器对象

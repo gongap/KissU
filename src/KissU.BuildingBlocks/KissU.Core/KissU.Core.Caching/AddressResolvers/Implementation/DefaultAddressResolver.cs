@@ -1,18 +1,15 @@
-﻿using Microsoft.Extensions.Logging;
-using Surging.Core.Caching.HashAlgorithms;
-using Surging.Core.Caching.HealthChecks;
-using Surging.Core.Caching.RedisCache;
-using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Cache;
-using Surging.Core.CPlatform.Cache.Implementation;
-using System;
-using System.Collections.Concurrent;
+﻿using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using KissU.Core.Caching.HashAlgorithms;
+using KissU.Core.Caching.HealthChecks;
+using KissU.Core.Caching.RedisCache;
+using KissU.Core.CPlatform.Cache;
+using KissU.Core.CPlatform.Cache.Implementation;
+using Microsoft.Extensions.Logging;
 
-namespace Surging.Core.Caching.AddressResolvers.Implementation
+namespace KissU.Core.Caching.AddressResolvers.Implementation
 {
     /// <summary>
     /// 默认地址解析程序

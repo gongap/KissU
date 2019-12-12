@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 
-namespace Surging.Core.Protocol.Mqtt.Internal.Messages
+namespace KissU.Core.Protocol.Mqtt.Internal.Messages
 {
    public  class RetainMessage
     {

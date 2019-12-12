@@ -1,13 +1,13 @@
-﻿using Surging.Core.CPlatform.Address;
-using Surging.Core.CPlatform.HashAlgorithms;
-using Surging.Core.CPlatform.Ioc;
-using Surging.Core.CPlatform.Routing;
-using Surging.Core.CPlatform.Runtime.Client;
-using Surging.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors;
-using Surging.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using KissU.Core.CPlatform.Address;
+using KissU.Core.CPlatform.HashAlgorithms;
+using KissU.Core.CPlatform.Ioc;
+using KissU.Core.CPlatform.Routing;
+using KissU.Core.CPlatform.Runtime.Client;
+using KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors;
+using KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
 
-namespace Surging.Core.CPlatform.Module
+namespace KissU.Core.CPlatform.Module
 {
     public class EchoService : ServiceBase, IEchoService
     {

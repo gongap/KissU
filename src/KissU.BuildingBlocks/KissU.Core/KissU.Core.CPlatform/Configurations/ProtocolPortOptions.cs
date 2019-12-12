@@ -1,4 +1,4 @@
-﻿namespace Surging.Core.CPlatform.Configurations
+﻿namespace KissU.Core.CPlatform.Configurations
 {
     public class ProtocolPortOptions
     {

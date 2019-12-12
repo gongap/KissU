@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
-namespace Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes
+namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes
 {
     public class HttpPostAttribute : HttpMethodAttribute
     {

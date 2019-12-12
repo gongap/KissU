@@ -1,14 +1,15 @@
 ﻿using System.IO;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Options;
-using Microsoft.AspNetCore.Routing;
-using Microsoft.AspNetCore.Routing.Template;
+using KissU.Core.Swagger.Swagger.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
+using Microsoft.AspNetCore.Routing.Template;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 
-namespace Surging.Core.Swagger
+namespace KissU.Core.Swagger.Swagger.Application
 {
     public class SwaggerMiddleware
     {

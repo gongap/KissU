@@ -1,14 +1,11 @@
-﻿using Confluent.Kafka;
+﻿using System;
+using System.Collections.Generic;
+using Confluent.Kafka;
 using Microsoft.Extensions.Logging;
 using Polly;
 using Polly.Retry;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Net.Sockets;
-using System.Text;
 
-namespace Surging.Core.EventBusKafka.Implementation
+namespace KissU.Core.EventBusKafka.Implementation
 {
     public abstract class KafkaPersistentConnectionBase : IKafkaPersisterConnection
     {

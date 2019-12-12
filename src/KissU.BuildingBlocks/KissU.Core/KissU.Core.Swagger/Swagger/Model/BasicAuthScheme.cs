@@ -1,4 +1,4 @@
-﻿namespace Surging.Core.Swagger
+﻿namespace KissU.Core.Swagger.Swagger.Model
 {
     public class BasicAuthScheme : SecurityScheme
     {

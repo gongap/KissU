@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace Surging.Core.CPlatform.Routing.Template
+namespace KissU.Core.CPlatform.Routing.Template
 {
    public class RouteTemplateSegmenter
     {

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Surging.Core.Caching.Utilities
+namespace KissU.Core.Caching.Utilities
 {
     internal class CacheException : Exception
     {

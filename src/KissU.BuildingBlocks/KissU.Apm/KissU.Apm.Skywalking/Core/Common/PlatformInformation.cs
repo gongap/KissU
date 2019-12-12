@@ -18,7 +18,7 @@
 
 using System.Runtime.InteropServices;
 
-namespace Surging.Apm.Skywalking.Core.Common
+namespace KissU.Apm.Skywalking.Core.Common
 {
     internal static class PlatformInformation
     {

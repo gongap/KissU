@@ -1,9 +1,7 @@
-﻿using Surging.Core.CPlatform.EventBus.Events;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using KissU.Core.CPlatform.EventBus.Events;
 
-namespace Surging.Core.CPlatform.EventBus.Implementation
+namespace KissU.Core.CPlatform.EventBus.Implementation
 {
    public interface IEventBus
     {

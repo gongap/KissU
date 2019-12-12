@@ -1,11 +1,9 @@
-﻿using org.apache.zookeeper;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using org.apache.zookeeper;
 
-namespace Surging.Core.Zookeeper.Internal
+namespace KissU.Core.Zookeeper.Internal
 {
    public interface IZookeeperClientProvider
     {

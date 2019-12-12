@@ -1,9 +1,8 @@
-﻿using Microsoft.Extensions.Logging;
-
-using System;
+﻿using System;
 using System.Runtime.CompilerServices;
+using Microsoft.Extensions.Logging;
 
-namespace Surging.Core.Nlog
+namespace KissU.Core.Nlog
 {
     public class NLogger : Microsoft.Extensions.Logging.ILogger
     {

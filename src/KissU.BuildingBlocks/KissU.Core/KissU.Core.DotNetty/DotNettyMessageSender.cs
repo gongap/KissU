@@ -1,12 +1,12 @@
-﻿using DotNetty.Buffers;
-using DotNetty.Transport.Channels;
-using Surging.Core.CPlatform.Messages;
-using Surging.Core.CPlatform.Transport;
-using Surging.Core.CPlatform.Transport.Codec;
-using System;
+﻿using System;
 using System.Threading.Tasks;
+using DotNetty.Buffers;
+using DotNetty.Transport.Channels;
+using KissU.Core.CPlatform.Messages;
+using KissU.Core.CPlatform.Transport;
+using KissU.Core.CPlatform.Transport.Codec;
 
-namespace Surging.Core.DotNetty
+namespace KissU.Core.DotNetty
 {
     /// <summary>
     /// 基于DotNetty的消息发送者基类。

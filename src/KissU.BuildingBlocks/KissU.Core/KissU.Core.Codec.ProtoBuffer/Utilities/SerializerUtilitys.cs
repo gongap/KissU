@@ -1,10 +1,8 @@
-﻿using ProtoBuf;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
-using System.Text;
+using ProtoBuf;
 
-namespace Surging.Core.Codec.ProtoBuffer.Utilities
+namespace KissU.Core.Codec.ProtoBuffer.Utilities
 {
     public static class SerializerUtilitys
     {

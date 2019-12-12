@@ -1,18 +1,18 @@
-﻿using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.EventBus;
-using System;
-using Autofac;
-using Surging.Core.EventBusRabbitMQ.Implementation;
-using Microsoft.Extensions.DependencyInjection;
+﻿using System;
 using System.Collections.Generic;
-using Surging.Core.CPlatform.EventBus.Events;
-using Surging.Core.CPlatform.EventBus.Implementation;
+using Autofac;
+using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.EventBus;
+using KissU.Core.CPlatform.EventBus.Events;
+using KissU.Core.CPlatform.EventBus.Implementation;
+using KissU.Core.EventBusRabbitMQ.Configurations;
+using KissU.Core.EventBusRabbitMQ.Implementation;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using RabbitMQ.Client;
-using Surging.Core.EventBusRabbitMQ.Configurations;
-using Microsoft.Extensions.Configuration;
 
-namespace Surging.Core.EventBusRabbitMQ
+namespace KissU.Core.EventBusRabbitMQ
 {
     public static class ContainerBuilderExtensions
     {

@@ -1,10 +1,8 @@
-﻿using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 using System.Threading;
+using Microsoft.Extensions.Logging;
 
-namespace Surging.Core.ServiceHosting.Internal.Implementation
+namespace KissU.Core.ServiceHosting.Internal.Implementation
 {
     public class ApplicationLifetime : IApplicationLifetime
     {

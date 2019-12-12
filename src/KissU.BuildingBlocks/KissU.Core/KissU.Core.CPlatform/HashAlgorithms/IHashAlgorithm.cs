@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Surging.Core.CPlatform.HashAlgorithms
+﻿namespace KissU.Core.CPlatform.HashAlgorithms
 {
     /// <summary>
     /// 一致性哈希的抽象接口

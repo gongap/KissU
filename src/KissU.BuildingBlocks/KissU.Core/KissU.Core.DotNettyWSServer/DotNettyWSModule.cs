@@ -1,16 +1,13 @@
 ﻿using Autofac;
+using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Module;
+using KissU.Core.CPlatform.Runtime.Server;
+using KissU.Core.CPlatform.Runtime.Server.Implementation;
+using KissU.Core.DotNettyWSServer.Runtime;
+using KissU.Core.DotNettyWSServer.Runtime.Implementation;
 using Microsoft.Extensions.Logging;
-using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Module;
-using Surging.Core.CPlatform.Runtime.Server;
-using Surging.Core.CPlatform.Runtime.Server.Implementation;
-using Surging.Core.DotNettyWSServer.Runtime;
-using Surging.Core.DotNettyWSServer.Runtime.Implementation;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Surging.Core.DotNettyWSServer
+namespace KissU.Core.DotNettyWSServer
 {
     public class DotNettyWSModule : EnginePartModule
     {

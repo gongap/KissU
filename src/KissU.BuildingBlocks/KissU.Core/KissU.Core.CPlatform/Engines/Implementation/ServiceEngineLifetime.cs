@@ -1,10 +1,8 @@
-﻿using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 using System.Threading;
+using Microsoft.Extensions.Logging;
 
-namespace Surging.Core.CPlatform.Engines.Implementation
+namespace KissU.Core.CPlatform.Engines.Implementation
 {
    public  class ServiceEngineLifetime: IServiceEngineLifetime
     {

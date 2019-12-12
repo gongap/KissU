@@ -1,7 +1,6 @@
-﻿using System;
-using MongoDB.Bson.Serialization.Attributes;
+﻿using MongoDB.Bson.Serialization.Attributes;
 
-namespace Surging.Core.System.MongoProvider
+namespace KissU.Core.System.MongoProvider
 {
     public interface IEntity
     {

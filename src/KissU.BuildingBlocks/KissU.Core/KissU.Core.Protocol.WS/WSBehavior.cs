@@ -1,15 +1,15 @@
-﻿using Autofac;
-using Surging.Core.CPlatform.EventBus.Events;
-using Surging.Core.CPlatform.EventBus.Implementation;
-using Surging.Core.CPlatform.Ioc;
-using Surging.Core.CPlatform.Utilities;
-using Surging.Core.Protocol.WS.Runtime;
-using Surging.Core.ProxyGenerator;
-using System;
-using WebSocketCore.Server;
+﻿using System;
 using System.Linq;
+using Autofac;
+using KissU.Core.CPlatform.EventBus.Events;
+using KissU.Core.CPlatform.EventBus.Implementation;
+using KissU.Core.CPlatform.Ioc;
+using KissU.Core.CPlatform.Utilities;
+using KissU.Core.Protocol.WS.Runtime;
+using KissU.Core.ProxyGenerator;
+using WebSocketCore.Server;
 
-namespace Surging.Core.Protocol.WS
+namespace KissU.Core.Protocol.WS
 {
    public abstract class WSBehavior : WebSocketBehavior, IServiceBehavior
     { 

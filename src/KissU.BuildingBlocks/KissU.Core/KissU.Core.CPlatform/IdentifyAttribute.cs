@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Surging.Core.CPlatform
+namespace KissU.Core.CPlatform
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface)]
     public class IdentifyAttribute : Attribute

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Surging.Core.ApiGateWay
+﻿namespace KissU.Core.ApiGateWay
 {
     /// <summary>
     /// 自定义结果对象

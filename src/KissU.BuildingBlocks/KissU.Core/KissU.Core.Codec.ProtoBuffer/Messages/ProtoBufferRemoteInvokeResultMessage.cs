@@ -1,10 +1,7 @@
-﻿using ProtoBuf;
-using Surging.Core.CPlatform.Messages;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using KissU.Core.CPlatform.Messages;
+using ProtoBuf;
 
-namespace Surging.Core.Codec.ProtoBuffer.Messages
+namespace KissU.Core.Codec.ProtoBuffer.Messages
 {
     [ProtoContract]
    public class ProtoBufferRemoteInvokeResultMessage

@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 
-namespace Surging.Core.SwaggerGen
+namespace KissU.Core.Swagger.SwaggerGen.Generator
 {
     public class SchemaRegistryFactory : ISchemaRegistryFactory
     {

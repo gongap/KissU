@@ -16,11 +16,11 @@
  *
  */
 
-using Surging.Apm.Skywalking.Abstractions;
-using Surging.Apm.Skywalking.Abstractions.Common;
 using System;
+using KissU.Apm.Skywalking.Abstractions;
+using KissU.Apm.Skywalking.Abstractions.Common;
 
-namespace Surging.Apm.Skywalking.Core
+namespace KissU.Apm.Skywalking.Core
 {
     public class RuntimeEnvironment : IRuntimeEnvironment
     {

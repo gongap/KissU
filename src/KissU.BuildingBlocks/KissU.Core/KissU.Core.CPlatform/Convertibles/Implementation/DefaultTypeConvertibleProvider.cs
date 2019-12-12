@@ -1,10 +1,10 @@
-﻿using Surging.Core.CPlatform.Serialization;
-using Surging.Core.CPlatform.Utilities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using KissU.Core.CPlatform.Serialization;
+using KissU.Core.CPlatform.Utilities;
 
-namespace Surging.Core.CPlatform.Convertibles.Implementation
+namespace KissU.Core.CPlatform.Convertibles.Implementation
 {
     /// <summary>
     /// 一个默认的类型转换提供程序。

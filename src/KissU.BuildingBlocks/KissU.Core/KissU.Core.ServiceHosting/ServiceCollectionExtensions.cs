@@ -1,9 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Surging.Core.ServiceHosting
+namespace KissU.Core.ServiceHosting
 {
     internal static class ServiceCollectionExtensions
     {

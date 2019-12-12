@@ -1,11 +1,12 @@
-﻿using Surging.Core.CPlatform.Runtime.Server;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using KissU.Core.CPlatform.Runtime.Server;
+using KissU.Core.Swagger.Swagger.Model;
 
-namespace Surging.Core.Swagger.SwaggerUI
+namespace KissU.Core.Swagger.SwaggerUI
 {
    public static class SwaggerUIOptionsExtensions
     {

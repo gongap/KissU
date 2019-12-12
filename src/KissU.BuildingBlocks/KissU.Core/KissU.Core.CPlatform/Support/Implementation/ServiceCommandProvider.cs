@@ -1,13 +1,13 @@
-﻿using Surging.Core.CPlatform.Runtime.Server;
-using Surging.Core.CPlatform.Support.Attributes;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Extensions.DependencyInjection;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform.Runtime.Server;
+using KissU.Core.CPlatform.Support.Attributes;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace Surging.Core.CPlatform.Support.Implementation
+namespace KissU.Core.CPlatform.Support.Implementation
 {
     public class ServiceCommandProvider : ServiceCommandBase
     {

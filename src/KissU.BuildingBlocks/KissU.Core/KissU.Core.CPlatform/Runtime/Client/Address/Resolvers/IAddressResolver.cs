@@ -1,7 +1,7 @@
-﻿using Surging.Core.CPlatform.Address;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using KissU.Core.CPlatform.Address;
 
-namespace Surging.Core.CPlatform.Runtime.Client.Address.Resolvers
+namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers
 {
     /// <summary>
     /// 一个抽象的服务地址解析器。

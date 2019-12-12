@@ -2,6 +2,9 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Module;
+
 namespace KissU.Modules.GreatWall.Service
 {
     using Autofac.Extensions.DependencyInjection;
@@ -9,8 +12,6 @@ namespace KissU.Modules.GreatWall.Service
     using KissU.Modules.GreatWall.Data.UnitOfWorks.SqlServer;
     using KissU.Modules.GreatWall.Service.Extensions;
     using Microsoft.Extensions.DependencyInjection;
-    using Surging.Core.CPlatform;
-    using Surging.Core.CPlatform.Module;
     using Util.Datas.Ef;
 
     /// <summary>

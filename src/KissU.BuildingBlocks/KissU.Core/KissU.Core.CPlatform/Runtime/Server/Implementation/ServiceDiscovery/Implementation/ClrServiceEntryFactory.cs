@@ -1,19 +1,18 @@
-using Surging.Core.CPlatform.Convertibles;
-using Surging.Core.CPlatform.DependencyResolution;
-using Surging.Core.CPlatform.Filters.Implementation;
-using Surging.Core.CPlatform.Ids;
-using Surging.Core.CPlatform.Routing.Template;
-using Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
-using Surging.Core.CPlatform.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using static Surging.Core.CPlatform.Utilities.FastInvoke;
+using KissU.Core.CPlatform.Convertibles;
+using KissU.Core.CPlatform.DependencyResolution;
+using KissU.Core.CPlatform.Filters.Implementation;
+using KissU.Core.CPlatform.Ids;
+using KissU.Core.CPlatform.Routing.Template;
+using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
+using KissU.Core.CPlatform.Utilities;
 
-namespace Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Implementation
+namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Implementation
 {
     /// <summary>
     /// Clr服务条目工厂。
@@ -135,7 +134,7 @@ namespace Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.
             };
         }
         
-        private FastInvokeHandler GetHandler(string key, MethodInfo method)
+        private FastInvoke.FastInvokeHandler GetHandler(string key, MethodInfo method)
         {
             var objInstance = ServiceResolver.Current.GetService(null, key);
             if (objInstance == null)
@@ -143,7 +142,7 @@ namespace Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.
                 objInstance = FastInvoke.GetMethodInvoker(method);
                 ServiceResolver.Current.Register(key, objInstance, null);
             }
-            return objInstance as FastInvokeHandler;
+            return objInstance as FastInvoke.FastInvokeHandler;
         }
         #endregion Private Method
     }

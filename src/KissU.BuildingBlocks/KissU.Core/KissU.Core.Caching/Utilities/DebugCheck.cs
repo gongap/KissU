@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace Surging.Core.Caching.Utilities
+namespace KissU.Core.Caching.Utilities
 {
     public sealed class DebugCheck
     {

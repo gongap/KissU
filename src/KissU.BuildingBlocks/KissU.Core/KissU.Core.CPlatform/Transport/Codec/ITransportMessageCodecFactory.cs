@@ -1,4 +1,4 @@
-﻿namespace Surging.Core.CPlatform.Transport.Codec
+﻿namespace KissU.Core.CPlatform.Transport.Codec
 {
     /// <summary>
     /// 一个抽象的传输消息编解码器工厂。

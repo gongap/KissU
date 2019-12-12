@@ -1,10 +1,8 @@
-﻿using Surging.Core.CPlatform.Exceptions;
-using Surging.Core.CPlatform.Filters.Implementation;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using KissU.Core.CPlatform.Exceptions;
+using KissU.Core.CPlatform.Filters.Implementation;
 
-namespace Surging.Core.KestrelHttpServer.Filters.Implementation
+namespace KissU.Core.KestrelHttpServer.Filters.Implementation
 {
     public class ServiceExceptionFilter : ExceptionFilterAttribute
     {

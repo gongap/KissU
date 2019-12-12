@@ -1,13 +1,11 @@
-﻿using Microsoft.Extensions.Logging;
-using Surging.Core.CPlatform;
-using Surging.Core.Protocol.Mqtt.Internal.Messages;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform;
+using KissU.Core.Protocol.Mqtt.Internal.Messages;
+using Microsoft.Extensions.Logging;
 
-namespace Surging.Core.Protocol.Mqtt.Internal.Services.Implementation
+namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
 {
    public class WillService: IWillService
     {

@@ -3,7 +3,7 @@ using System.Collections.Concurrent;
 using System.Runtime.CompilerServices;
 using System.Threading;
 
-namespace Surging.Core.CPlatform.Transport.Implementation
+namespace KissU.Core.CPlatform.Transport.Implementation
 {
     public class RpcContext
     {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Surging.Core.CPlatform.Ioc
+﻿namespace KissU.Core.CPlatform.Ioc
 {
    public interface IServiceBehavior
     {

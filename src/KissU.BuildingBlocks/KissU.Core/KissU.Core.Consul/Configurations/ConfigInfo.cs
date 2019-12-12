@@ -1,9 +1,9 @@
-﻿using Surging.Core.CPlatform.Address;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using KissU.Core.CPlatform.Address;
 
-namespace Surging.Core.Consul.Configurations
+namespace KissU.Core.Consul.Configurations
 {
     public class ConfigInfo
     {

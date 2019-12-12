@@ -1,15 +1,13 @@
-﻿using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Surging.Core.Caching.Utilities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using KissU.Core.Caching;
+using KissU.Core.Caching.Utilities;
+using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
-namespace Surging.Core.Caching.Configurations.Remote
+namespace KissU.Core.Caching.Configurations.Remote
 {
    public  class JsonConfigurationParser : IConfigurationParser
     {

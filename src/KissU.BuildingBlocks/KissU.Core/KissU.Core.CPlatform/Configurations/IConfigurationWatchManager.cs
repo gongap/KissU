@@ -1,6 +1,6 @@
-﻿using Surging.Core.CPlatform.Configurations.Watch;
+﻿using KissU.Core.CPlatform.Configurations.Watch;
 
-namespace Surging.Core.CPlatform.Configurations
+namespace KissU.Core.CPlatform.Configurations
 {
     public  interface IConfigurationWatchManager
     {

@@ -18,12 +18,11 @@
 
 using System;
 using System.Linq;
-using Surging.Apm.Skywalking.Abstractions;
-using Surging.Apm.Skywalking.Abstractions.Common;
-using Surging.Apm.Skywalking.Abstractions.Tracing;
-using Surging.Core.CPlatform.Diagnostics;
+using KissU.Apm.Skywalking.Abstractions;
+using KissU.Apm.Skywalking.Abstractions.Tracing;
+using KissU.Core.CPlatform.Diagnostics;
 
-namespace Surging.Apm.Skywalking.Core.Tracing
+namespace KissU.Apm.Skywalking.Core.Tracing
 {
     public class SegmentContextFactory : ISegmentContextFactory
     {

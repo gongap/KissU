@@ -1,16 +1,16 @@
-﻿using DotNetty.Buffers;
+﻿using System.Text;
+using System.Threading.Tasks;
+using DotNetty.Buffers;
 using DotNetty.Codecs.Http;
 using DotNetty.Common.Utilities;
 using DotNetty.Transport.Channels;
-using Surging.Core.CPlatform.Messages;
-using Surging.Core.CPlatform.Serialization;
-using Surging.Core.CPlatform.Transport;
-using Surging.Core.CPlatform.Transport.Codec;
-using Surging.Core.DotNetty;
-using System.Text;
-using System.Threading.Tasks;
+using KissU.Core.CPlatform.Messages;
+using KissU.Core.CPlatform.Serialization;
+using KissU.Core.CPlatform.Transport;
+using KissU.Core.CPlatform.Transport.Codec;
+using KissU.Core.DotNetty;
 
-namespace Surging.Core.Protocol.Http
+namespace KissU.Core.Protocol.Http
 {
     public class DotNettyHttpServerMessageSender: DotNettyMessageSender, IMessageSender
     {

@@ -1,8 +1,8 @@
 ﻿using System.Reflection;
+using KissU.Core.Swagger.Swagger.Model;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
-using Surging.Core.Swagger;
 
-namespace Surging.Core.SwaggerGen
+namespace KissU.Core.Swagger.SwaggerGen.Generator
 {
     public interface IParameterFilter
     {

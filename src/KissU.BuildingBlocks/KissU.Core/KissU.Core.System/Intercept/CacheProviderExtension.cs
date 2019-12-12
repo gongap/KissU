@@ -1,10 +1,9 @@
-﻿using Newtonsoft.Json;
-using Surging.Core.Caching;
-using Surging.Core.CPlatform.Cache;
-using System;
+﻿using System;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform.Cache;
+using Newtonsoft.Json;
 
-namespace Surging.Core.System.Intercept
+namespace KissU.Core.System.Intercept
 {
     public static class CacheProviderExtension
     {

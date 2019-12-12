@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Surging.Core.CPlatform.Routing
+namespace KissU.Core.CPlatform.Routing
 {
     /// <summary>
     /// 一个抽象的服务路由工厂。

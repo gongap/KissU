@@ -1,17 +1,13 @@
-﻿using Surging.Core.ServiceHosting.Internal;
-using Surging.Core.ServiceHosting.Startup;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Reflection;
-using System.Text;
-using Autofac;
-using Surging.Core.ServiceHosting.Startup.Implementation;
-using Autofac.Extensions.DependencyInjection;
-using Surging.Core.ServiceHosting.Internal.Implementation;
-using Microsoft.Extensions.DependencyInjection;
+using KissU.Core.ServiceHosting.Internal;
+using KissU.Core.ServiceHosting.Internal.Implementation;
+using KissU.Core.ServiceHosting.Startup;
+using KissU.Core.ServiceHosting.Startup.Implementation;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace Surging.Core.ServiceHosting
+namespace KissU.Core.ServiceHosting
 {
    public static   class ServiceHostBuilderExtensions
     {

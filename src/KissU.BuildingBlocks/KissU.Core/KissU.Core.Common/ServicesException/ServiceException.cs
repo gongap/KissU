@@ -1,7 +1,7 @@
 ﻿using System;
-using Surging.Core.Common.Extensions;
+using KissU.Core.Common.Extensions;
 
-namespace Surging.Core.Common.ServicesException
+namespace KissU.Core.Common.ServicesException
 {
         public sealed class ServiceException : Exception
         {

@@ -1,10 +1,7 @@
-﻿using Newtonsoft.Json;
-using Surging.Core.CPlatform.Address;
-using Surging.Core.CPlatform.Serialization;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
-namespace Surging.Core.CPlatform.Routing
+namespace KissU.Core.CPlatform.Routing
 {
     /// <summary>
     /// 服务地址描述符。

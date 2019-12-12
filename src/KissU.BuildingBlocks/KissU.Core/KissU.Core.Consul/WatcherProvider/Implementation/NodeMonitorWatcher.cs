@@ -1,11 +1,9 @@
-﻿using Consul;
-using Surging.Core.Consul.Utilitys;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 using System.Threading.Tasks;
+using Consul;
+using KissU.Core.Consul.Utilitys;
 
-namespace Surging.Core.Consul.WatcherProvider.Implementation
+namespace KissU.Core.Consul.WatcherProvider.Implementation
 {
     class NodeMonitorWatcher : WatcherBase
     {

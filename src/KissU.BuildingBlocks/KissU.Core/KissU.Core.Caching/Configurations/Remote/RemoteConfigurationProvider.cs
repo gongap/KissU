@@ -1,13 +1,10 @@
-﻿using Microsoft.Extensions.Configuration;
-using Surging.Core.Caching.Utilities;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
-using KissU.Core.Caching;
+using KissU.Core.Caching.Utilities;
+using Microsoft.Extensions.Configuration;
 
-namespace Surging.Core.Caching.Configurations.Remote
+namespace KissU.Core.Caching.Configurations.Remote
 {
     class RemoteConfigurationProvider : ConfigurationProvider
     {

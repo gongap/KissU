@@ -1,11 +1,8 @@
-﻿using Surging.Core.CPlatform.Filters.Implementation;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform.Filters.Implementation;
 
-namespace Surging.Core.CPlatform.Filters
+namespace KissU.Core.CPlatform.Filters
 {
    public interface IExceptionFilter: IFilter
     {

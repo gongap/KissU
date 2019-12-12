@@ -1,12 +1,9 @@
-﻿using Autofac;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
 using System.Reflection;
-using System.Text;
+using Autofac;
 
-namespace Surging.Core.ServiceHosting.Internal.Implementation
+namespace KissU.Core.ServiceHosting.Internal.Implementation
 {
    public  class ConfigureServicesBuilder
     {

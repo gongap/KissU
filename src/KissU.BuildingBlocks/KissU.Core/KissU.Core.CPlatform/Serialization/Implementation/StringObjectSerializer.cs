@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Surging.Core.CPlatform.Serialization.Implementation
+namespace KissU.Core.CPlatform.Serialization.Implementation
 {
     /// <summary>
     /// 基于string类型的object序列化器。

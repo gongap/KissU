@@ -1,10 +1,11 @@
-﻿using System.Xml.XPath;
+﻿using System.Collections.Generic;
 using System.Linq;
+using System.Xml.XPath;
+using KissU.Core.Swagger.Swagger.Model;
+using KissU.Core.Swagger.SwaggerGen.Generator;
 using Microsoft.AspNetCore.Mvc.Controllers;
-using System.Collections.Generic;
-using Surging.Core.Swagger;
 
-namespace Surging.Core.SwaggerGen
+namespace KissU.Core.Swagger.SwaggerGen.XmlComments
 {
     public class XmlCommentsDocumentFilter : IDocumentFilter
     {

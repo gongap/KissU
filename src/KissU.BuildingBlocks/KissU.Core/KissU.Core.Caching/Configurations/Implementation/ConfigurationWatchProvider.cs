@@ -1,21 +1,18 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
-using Surging.Core.Caching.Models;
-using Surging.Core.CPlatform.Cache;
-using Surging.Core.CPlatform.Cache.Implementation;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Linq;
-using Surging.Core.Caching.HashAlgorithms;
-using Microsoft.Extensions.Options;
-using Surging.Core.CPlatform.Configurations.Watch;
-using Surging.Core.CPlatform.Configurations;
-using Surging.Core.CPlatform;
+using System.Threading.Tasks;
+using KissU.Core.Caching.HashAlgorithms;
+using KissU.Core.Caching.Models;
+using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Cache;
+using KissU.Core.CPlatform.Cache.Implementation;
+using KissU.Core.CPlatform.Configurations;
+using KissU.Core.CPlatform.Configurations.Watch;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
-namespace Surging.Core.Caching.Configurations.Implementation
+namespace KissU.Core.Caching.Configurations.Implementation
 {
     /// <summary>
     /// 配置watch提供者

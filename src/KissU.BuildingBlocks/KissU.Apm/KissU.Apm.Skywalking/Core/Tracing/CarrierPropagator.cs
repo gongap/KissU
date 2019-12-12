@@ -16,12 +16,12 @@
  *
  */
 
-using Surging.Apm.Skywalking.Abstractions.Tracing;
-using Surging.Core.CPlatform.Diagnostics;
 using System.Collections.Generic;
-using System.Linq; 
+using System.Linq;
+using KissU.Apm.Skywalking.Abstractions.Tracing;
+using KissU.Core.CPlatform.Diagnostics;
 
-namespace Surging.Apm.Skywalking.Core.Tracing
+namespace KissU.Apm.Skywalking.Core.Tracing
 {
     public class CarrierPropagator : ICarrierPropagator
     {

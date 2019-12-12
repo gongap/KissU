@@ -22,7 +22,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Surging.Core.CPlatform.Diagnostics
+namespace KissU.Core.CPlatform.Diagnostics
 {
    public class SegmentSpan
     {

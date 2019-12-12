@@ -1,18 +1,16 @@
-﻿using Microsoft.Extensions.Configuration;
-using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.EventBus;
-using Surging.Core.CPlatform.EventBus.Events;
-using Surging.Core.CPlatform.Module;
-using Surging.Core.EventBusKafka.Configurations;
-using Surging.Core.EventBusKafka.Implementation;
-using System;
-using System.Collections.Generic; 
+﻿using System;
+using System.Collections.Generic;
+using KissU.Core.CPlatform.Engines;
+using KissU.Core.CPlatform.EventBus;
+using KissU.Core.CPlatform.EventBus.Events;
+using KissU.Core.CPlatform.EventBus.Implementation;
+using KissU.Core.CPlatform.Module;
+using KissU.Core.EventBusKafka.Configurations;
+using KissU.Core.EventBusKafka.Implementation;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Surging.Core.CPlatform.EventBus.Implementation;
-using Surging.Core.CPlatform.Engines;
-using System.Threading.Tasks;
 
-namespace Surging.Core.EventBusKafka
+namespace KissU.Core.EventBusKafka
 {
     public class EventBusKafkaModule : EnginePartModule
     {

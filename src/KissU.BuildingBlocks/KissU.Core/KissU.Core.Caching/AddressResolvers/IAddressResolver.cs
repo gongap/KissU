@@ -1,11 +1,7 @@
-﻿using Surging.Core.Caching.HashAlgorithms;
-using Surging.Core.CPlatform.Cache;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using KissU.Core.Caching.HashAlgorithms;
 
-namespace Surging.Core.Caching.AddressResolvers
+namespace KissU.Core.Caching.AddressResolvers
 {
     public interface IAddressResolver
     {

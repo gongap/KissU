@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
-namespace Surging.Core.CPlatform.Runtime.Server.Implementation
+namespace KissU.Core.CPlatform.Runtime.Server.Implementation
 {
     /// <summary>
     /// 默认的服务条目管理者。

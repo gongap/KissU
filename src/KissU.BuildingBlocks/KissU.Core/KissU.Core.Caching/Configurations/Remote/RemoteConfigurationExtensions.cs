@@ -1,9 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using Microsoft.Extensions.Configuration;
 
-namespace Surging.Core.Caching.Configurations.Remote
+namespace KissU.Core.Caching.Configurations.Remote
 {
     /// <summary>
     /// 添加 <see cref="RemoteConfigurationProvider"/>扩展方法

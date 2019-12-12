@@ -16,13 +16,13 @@
  *
  */
 
-using Surging.Apm.Skywalking.Abstractions.Tracing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using KissU.Apm.Skywalking.Abstractions.Tracing;
 
-namespace Surging.Apm.Skywalking.Core.Tracing
+namespace KissU.Apm.Skywalking.Core.Tracing
 {
     public class SamplerChainBuilder : ISamplerChainBuilder
     {

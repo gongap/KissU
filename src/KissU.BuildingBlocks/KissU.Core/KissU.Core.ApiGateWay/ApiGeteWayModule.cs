@@ -1,19 +1,17 @@
 ﻿using Autofac;
-using Surging.Core.ApiGateWay.Aggregation;
-using Surging.Core.ApiGateWay.OAuth;
-using Surging.Core.ApiGateWay.ServiceDiscovery;
-using Surging.Core.ApiGateWay.ServiceDiscovery.Implementation;
-using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Module;
-using Surging.Core.CPlatform.Routing;
-using Surging.Core.CPlatform.Runtime.Client.HealthChecks;
-using Surging.Core.CPlatform.Runtime.Client.HealthChecks.Implementation;
-using Surging.Core.ProxyGenerator;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using KissU.Core.ApiGateWay.Aggregation;
+using KissU.Core.ApiGateWay.OAuth;
+using KissU.Core.ApiGateWay.OAuth.Implementation;
+using KissU.Core.ApiGateWay.ServiceDiscovery;
+using KissU.Core.ApiGateWay.ServiceDiscovery.Implementation;
+using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Module;
+using KissU.Core.CPlatform.Routing;
+using KissU.Core.CPlatform.Runtime.Client.HealthChecks;
+using KissU.Core.CPlatform.Runtime.Client.HealthChecks.Implementation;
+using KissU.Core.ProxyGenerator;
 
-namespace Surging.Core.ApiGateWay
+namespace KissU.Core.ApiGateWay
 {
     public class ApiGeteWayModule : EnginePartModule
     {

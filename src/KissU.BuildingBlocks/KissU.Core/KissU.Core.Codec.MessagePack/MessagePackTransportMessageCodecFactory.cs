@@ -1,7 +1,7 @@
-﻿using Surging.Core.CPlatform.Transport.Codec;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
+using KissU.Core.CPlatform.Transport.Codec;
 
-namespace Surging.Core.Codec.MessagePack
+namespace KissU.Core.Codec.MessagePack
 {
     public sealed class MessagePackTransportMessageCodecFactory : ITransportMessageCodecFactory
     {

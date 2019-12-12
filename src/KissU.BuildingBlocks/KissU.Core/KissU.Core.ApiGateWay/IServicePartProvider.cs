@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Surging.Core.ApiGateWay
+namespace KissU.Core.ApiGateWay
 {
    public interface IServicePartProvider
     {

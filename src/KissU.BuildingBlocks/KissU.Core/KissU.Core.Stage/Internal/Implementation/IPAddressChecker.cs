@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Net;
 using System.Linq;
+using System.Net;
 
-namespace Surging.Core.Stage.Internal.Implementation
+namespace KissU.Core.Stage.Internal.Implementation
 {
     public class IPAddressChecker : IIPChecker
     {

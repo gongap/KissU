@@ -1,26 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
-using System.Reflection;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Reflection;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using Autofac;
+using KissU.Core.CPlatform.Messages;
+using KissU.Core.CPlatform.Runtime.Server;
+using KissU.Core.CPlatform.Utilities;
+using KissU.Core.Swagger.Swagger.Model;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Options;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
-using Surging.Core.Swagger;
-using Surging.Core.CPlatform.Runtime.Server;
-using Microsoft.Extensions.DependencyInjection;
-using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Utilities;
-using Autofac;
 using Microsoft.Extensions.Primitives;
-using System.Threading.Tasks;
-using Surging.Core.CPlatform.Messages;
-using Surging.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 
-namespace Surging.Core.SwaggerGen
+namespace KissU.Core.Swagger.SwaggerGen.Generator
 {
     public class SwaggerGenerator : ISwaggerProvider
     {
@@ -57,7 +54,7 @@ namespace Surging.Core.SwaggerGen
                 throw new UnknownSwaggerDocument(documentName);
 
 
-            var mapRoutePaths = Swagger.AppConfig.SwaggerConfig.Options?.MapRoutePaths;
+            var mapRoutePaths = AppConfig.SwaggerConfig.Options?.MapRoutePaths;
             var entries = _serviceEntryProvider.GetALLEntries();
             if (mapRoutePaths != null)
             {

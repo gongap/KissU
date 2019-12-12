@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
-namespace Surging.Core.CPlatform.Mqtt
+namespace KissU.Core.CPlatform.Mqtt
 {
     /// <summary>
     /// 服务描述符扩展方法。

@@ -1,9 +1,9 @@
-﻿using Microsoft.Extensions.Configuration;
-using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Module;
-using CPlatformAppConfig = Surging.Core.CPlatform.AppConfig;
+﻿using KissU.Core.AutoMapper.AutoMapper;
+using KissU.Core.CPlatform.Module;
+using Microsoft.Extensions.Configuration;
+using CPlatformAppConfig = KissU.Core.CPlatform.AppConfig;
 
-namespace Surging.Core.AutoMapper
+namespace KissU.Core.AutoMapper
 {
     public class AutoMapperModule : EnginePartModule
     {

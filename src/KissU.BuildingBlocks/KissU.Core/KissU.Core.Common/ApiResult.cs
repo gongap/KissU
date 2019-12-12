@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
-using System.Text;
+﻿using System.Runtime.Serialization;
 
-namespace Surging.Core.Common
+namespace KissU.Core.Common
 {
     [DataContract]
     public class ApiResult<T>

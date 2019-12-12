@@ -1,7 +1,8 @@
 ﻿using Autofac;
-using Surging.Core.ServiceHosting.Internal;
+using KissU.Core.AutoMapper.AutoMapper;
+using KissU.Core.ServiceHosting.Internal;
 
-namespace Surging.Core.AutoMapper
+namespace KissU.Core.AutoMapper
 {
     public static class ServiceHostBuilderExtensions
     {

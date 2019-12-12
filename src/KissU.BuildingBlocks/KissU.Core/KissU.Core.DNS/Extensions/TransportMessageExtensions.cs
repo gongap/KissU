@@ -1,8 +1,7 @@
-﻿using Surging.Core.CPlatform.Messages;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
+using KissU.Core.CPlatform.Messages;
 
-
-namespace Surging.Core.DNS.Extensions
+namespace KissU.Core.DNS.Extensions
 {
     public static class TransportMessageExtensions
     {

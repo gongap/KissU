@@ -1,11 +1,10 @@
-﻿using Surging.Core.CPlatform.Filters.Implementation;
-using Surging.Core.SwaggerGen;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using KissU.Core.CPlatform.Filters.Implementation;
+using KissU.Core.Swagger.Swagger.Model;
+using KissU.Core.Swagger.SwaggerGen.Generator;
 
-namespace Surging.Core.Swagger.Swagger.Filters
+namespace KissU.Core.Swagger.Swagger.Filters
 {
    public class AddAuthorizationOperationFilter : IOperationFilter
     {

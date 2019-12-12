@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Surging.Core.Consul.Internal.Cluster.Implementation.Selectors.Implementation
+﻿namespace KissU.Core.Consul.Internal.Cluster.Implementation.Selectors.Implementation
 {
     public enum AddressSelectorMode
     { 

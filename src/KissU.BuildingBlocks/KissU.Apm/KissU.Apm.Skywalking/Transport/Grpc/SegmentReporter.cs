@@ -19,13 +19,11 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using KissU.Apm.Skywalking.Abstractions.Config;
+using KissU.Apm.Skywalking.Abstractions.Transport;
 using Microsoft.Extensions.Logging;
-using Surging.Apm.Skywalking.Abstractions.Config;
-using Surging.Apm.Skywalking.Abstractions.Transport;
-using SegmentReporterV5 = Surging.Apm.Skywalking.Transport.Grpc.V5.SegmentReporter;
-using SegmentReporterV6 = Surging.Apm.Skywalking.Transport.Grpc.V6.SegmentReporter;
 
-namespace Surging.Apm.Skywalking.Transport.Grpc
+namespace KissU.Apm.Skywalking.Transport.Grpc
 {
     public class SegmentReporter : ISegmentReporter
     {

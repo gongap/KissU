@@ -1,16 +1,13 @@
 ﻿using Autofac;
+using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Module;
+using KissU.Core.CPlatform.Runtime.Server;
+using KissU.Core.CPlatform.Transport.Codec;
+using KissU.Core.Protocol.Udp.Runtime;
+using KissU.Core.Protocol.Udp.Runtime.Implementation;
 using Microsoft.Extensions.Logging;
-using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Module;
-using Surging.Core.CPlatform.Runtime.Server;
-using Surging.Core.CPlatform.Transport.Codec;
-using Surging.Core.Protocol.Udp.Runtime;
-using Surging.Core.Protocol.Udp.Runtime.Implementation;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Surging.Core.Protocol.Udp
+namespace KissU.Core.Protocol.Udp
 {
     public class DnsProtocolModule : EnginePartModule
     {

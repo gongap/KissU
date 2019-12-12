@@ -1,9 +1,6 @@
-﻿using Surging.Core.Stage.Configurations;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using KissU.Core.Stage.Configurations;
 
-namespace Surging.Core.Stage
+namespace KissU.Core.Stage
 {
     public class AppConfig
     {

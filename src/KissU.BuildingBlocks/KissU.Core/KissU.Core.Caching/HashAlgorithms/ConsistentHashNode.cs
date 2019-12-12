@@ -1,9 +1,6 @@
-﻿using Surging.Core.CPlatform.Cache;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using KissU.Core.CPlatform.Cache;
 
-namespace Surging.Core.Caching.HashAlgorithms
+namespace KissU.Core.Caching.HashAlgorithms
 {
     /// <summary>
     /// 哈希节点对象

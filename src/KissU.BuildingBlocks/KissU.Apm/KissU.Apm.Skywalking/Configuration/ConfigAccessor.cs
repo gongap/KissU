@@ -19,10 +19,10 @@
 using System;
 using System.Linq.Expressions;
 using System.Reflection;
+using KissU.Apm.Skywalking.Abstractions.Config;
 using Microsoft.Extensions.Configuration;
-using Surging.Apm.Skywalking.Abstractions.Config;
 
-namespace Surging.Apm.Skywalking.Configuration
+namespace KissU.Apm.Skywalking.Configuration
 {
     public class ConfigAccessor : IConfigAccessor
     {

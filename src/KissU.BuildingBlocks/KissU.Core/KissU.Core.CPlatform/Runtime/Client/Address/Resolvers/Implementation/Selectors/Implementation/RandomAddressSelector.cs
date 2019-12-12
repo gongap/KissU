@@ -1,9 +1,9 @@
-﻿using Surging.Core.CPlatform.Address;
-using System;
+﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform.Address;
 
-namespace Surging.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation
+namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation
 {
     /// <summary>
     /// 一个随机的地址选择器。

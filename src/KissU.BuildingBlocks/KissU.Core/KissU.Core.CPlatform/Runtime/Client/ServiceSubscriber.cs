@@ -1,10 +1,8 @@
-﻿using Surging.Core.CPlatform.Address;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using KissU.Core.CPlatform.Address;
 
-namespace Surging.Core.CPlatform.Runtime.Client
+namespace KissU.Core.CPlatform.Runtime.Client
 {
     /// <summary>
     /// 服务订阅者

@@ -1,20 +1,20 @@
-﻿using Autofac;
+﻿using System;
+using System.Collections.Generic;
+using Autofac;
+using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.EventBus;
+using KissU.Core.CPlatform.EventBus.Events;
+using KissU.Core.CPlatform.EventBus.Implementation;
+using KissU.Core.CPlatform.Module;
+using KissU.Core.CPlatform.Routing;
+using KissU.Core.EventBusRabbitMQ.Configurations;
+using KissU.Core.EventBusRabbitMQ.Implementation;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using RabbitMQ.Client;
-using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.EventBus;
-using Surging.Core.CPlatform.EventBus.Events;
-using Surging.Core.CPlatform.Module;
-using Surging.Core.EventBusRabbitMQ.Configurations;
-using Surging.Core.EventBusRabbitMQ.Implementation;
-using System;
-using System.Collections.Generic;
-using Microsoft.Extensions.DependencyInjection;
-using Surging.Core.CPlatform.EventBus.Implementation;
-using Surging.Core.CPlatform.Routing;
 
-namespace Surging.Core.EventBusRabbitMQ
+namespace KissU.Core.EventBusRabbitMQ
 {
     public class EventBusRabbitMQModule : EnginePartModule
     {

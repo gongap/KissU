@@ -17,7 +17,7 @@
  */
 
 
-namespace Surging.Apm.Skywalking.Abstractions.Tracing
+namespace KissU.Apm.Skywalking.Abstractions.Tracing
 {
     public interface ISamplingInterceptor
     {

@@ -1,16 +1,9 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Surging.Core.CPlatform.Configurations;
-using Surging.Core.CPlatform.DependencyResolution;
-using Surging.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
-using Surging.Core.CPlatform.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
+﻿using System;
+using KissU.Core.CPlatform.Configurations;
+using KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
+using Microsoft.Extensions.Configuration;
 
-namespace Surging.Core.CPlatform
+namespace KissU.Core.CPlatform
 {
    public class AppConfig
     {

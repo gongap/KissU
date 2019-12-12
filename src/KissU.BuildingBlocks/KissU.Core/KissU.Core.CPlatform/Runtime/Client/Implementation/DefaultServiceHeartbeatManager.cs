@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Concurrent;
+﻿using System.Collections.Concurrent;
 using System.Linq;
 
-namespace Surging.Core.CPlatform.Runtime.Client.Implementation
+namespace KissU.Core.CPlatform.Runtime.Client.Implementation
 {
     public class DefaultServiceHeartbeatManager : IServiceHeartbeatManager
     {

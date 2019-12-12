@@ -1,8 +1,7 @@
-﻿
-using System;
+﻿using System;
 using System.Runtime.InteropServices;
 
-namespace Surging.Core.System.Module.Attributes
+namespace KissU.Core.System.Module.Attributes
 {
     [AttributeUsage(AttributeTargets.Assembly, Inherited = false), ComVisible(true)]
     public sealed class  AssemblyModuleTypeAttribute:Attribute

@@ -1,10 +1,8 @@
-﻿using Surging.Core.CPlatform.Address;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Net.NetworkInformation;
-using System.Text;
+using KissU.Core.CPlatform.Address;
 
-namespace Surging.Core.CPlatform.Utilities
+namespace KissU.Core.CPlatform.Utilities
 {
     public class NetUtils
     {

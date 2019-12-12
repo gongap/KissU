@@ -1,10 +1,8 @@
-﻿using Surging.Core.CPlatform.Diagnostics;
-using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Text;
+using KissU.Core.CPlatform.Diagnostics;
 
-namespace Surging.Core.Protocol.Mqtt.Diagnostics
+namespace KissU.Core.Protocol.Mqtt.Diagnostics
 {
     public class MqttTransportCarrierHeaderCollection : ICarrierHeaderCollection
     {

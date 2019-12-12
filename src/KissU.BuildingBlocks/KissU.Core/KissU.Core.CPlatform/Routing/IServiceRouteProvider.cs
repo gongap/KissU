@@ -1,8 +1,6 @@
-﻿using Surging.Core.CPlatform.Routing;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
-namespace Surging.Core.CPlatform.Routing
+namespace KissU.Core.CPlatform.Routing
 {
     /// <summary>
     /// 服务路由接口

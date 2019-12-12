@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Surging.Core.CPlatform.Ioc
+namespace KissU.Core.CPlatform.Ioc
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
     public class ModuleNameAttribute : Attribute

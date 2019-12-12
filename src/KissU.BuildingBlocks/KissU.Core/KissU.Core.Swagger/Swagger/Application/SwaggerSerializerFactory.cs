@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 
-namespace Surging.Core.Swagger
+namespace KissU.Core.Swagger.Swagger.Application
 {
     public class SwaggerSerializerFactory
     {

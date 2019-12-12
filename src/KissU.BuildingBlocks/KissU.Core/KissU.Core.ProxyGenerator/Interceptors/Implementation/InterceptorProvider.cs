@@ -1,15 +1,12 @@
-﻿using Surging.Core.CPlatform.Runtime.Server;
+﻿using System;
+using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using Surging.Core.CPlatform;
 using System.Reflection;
-using System.Collections;
-using Surging.Core.ProxyGenerator.Utilitys;
-using System.Collections.Concurrent;
-using System;
-using Microsoft.Extensions.Logging;
+using KissU.Core.CPlatform.Runtime.Server;
 
-namespace Surging.Core.ProxyGenerator.Interceptors.Implementation
+namespace KissU.Core.ProxyGenerator.Interceptors.Implementation
 {
     public class InterceptorProvider : IInterceptorProvider
     {

@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Linq;
 
-namespace Surging.Core.Caching.HashAlgorithms
+namespace KissU.Core.Caching.HashAlgorithms
 {
     /// <summary>
     /// 针对<see cref="T"/>哈希算法实现

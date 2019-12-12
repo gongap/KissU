@@ -1,10 +1,7 @@
-﻿using Surging.Core.CPlatform.Address;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using KissU.Core.CPlatform.Address;
 
-namespace Surging.Core.Zookeeper.Internal.Cluster.HealthChecks
+namespace KissU.Core.Zookeeper.Internal.Cluster.HealthChecks
 {
    public interface IHealthCheckService
     {

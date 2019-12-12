@@ -2,11 +2,12 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Core.CPlatform.Module;
+
 namespace KissU.Core
 {
     using System.Text;
     using Autofac;
-    using Surging.Core.CPlatform.Module;
     using Util.Helpers;
 
     /// <inheritdoc />

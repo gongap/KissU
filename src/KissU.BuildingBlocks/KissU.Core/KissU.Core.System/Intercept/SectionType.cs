@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Surging.Core.System.Intercept
+﻿namespace KissU.Core.System.Intercept
 {
     public enum SectionType
     {

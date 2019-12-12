@@ -1,18 +1,17 @@
-﻿using Newtonsoft.Json.Linq;
-using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Convertibles;
-using Surging.Core.CPlatform.Messages;
-using Surging.Core.CPlatform.Runtime.Client;
-using Surging.Core.CPlatform.Support;
-using Surging.Core.ProxyGenerator.Interceptors;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Autofac;
-using Surging.Core.CPlatform.Utilities;
-using System.Linq;
+using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Convertibles;
+using KissU.Core.CPlatform.Messages;
+using KissU.Core.CPlatform.Runtime.Client;
+using KissU.Core.CPlatform.Support;
+using KissU.Core.CPlatform.Utilities;
+using KissU.Core.ProxyGenerator.Interceptors;
 
-namespace Surging.Core.ProxyGenerator.Implementation
+namespace KissU.Core.ProxyGenerator.Implementation
 {
     /// <summary>
     /// 一个抽象的服务代理基类。

@@ -19,12 +19,10 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using KissU.Core.CPlatform.Diagnostics;
 using Microsoft.Extensions.Logging;
-using Surging.Apm.Skywalking.Abstractions;
-using Surging.Apm.Skywalking.Core.Common;
-using Surging.Core.CPlatform.Diagnostics;
 
-namespace Surging.Apm.Skywalking.Core.Diagnostics
+namespace KissU.Apm.Skywalking.Core.Diagnostics
 {
     public class TracingDiagnosticProcessorObserver : IObserver<DiagnosticListener>
     {

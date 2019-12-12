@@ -16,11 +16,10 @@
  *
  */
 
-using Surging.Apm.Skywalking.Abstractions.Tracing;
-using Surging.Core.CPlatform.Diagnostics;
 using System.Threading;
+using KissU.Core.CPlatform.Diagnostics;
 
-namespace Surging.Apm.Skywalking.Core.Tracing
+namespace KissU.Apm.Skywalking.Core.Tracing
 {
     public class EntrySegmentContextAccessor : IEntrySegmentContextAccessor
     {

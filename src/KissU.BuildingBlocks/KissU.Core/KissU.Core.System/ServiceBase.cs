@@ -1,12 +1,8 @@
-﻿using Autofac;
-using Surging.Core.CPlatform.Utilities;
-using Surging.Core.ProxyGenerator;
-using Surging.Core.ProxyGenerator.Utilitys;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using KissU.Core.CPlatform.Utilities;
+using KissU.Core.ProxyGenerator;
 
-namespace Surging.Core.System
+namespace KissU.Core.System
 {
     public  abstract class ServiceBase
     {

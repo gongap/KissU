@@ -1,11 +1,7 @@
-﻿using Surging.Core.CPlatform;
-using Surging.Core.CPlatform.Module;
-using Surging.Core.CPlatform.Transport.Codec;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using KissU.Core.CPlatform.Module;
+using KissU.Core.CPlatform.Transport.Codec;
 
-namespace Surging.Core.Codec.MessagePack
+namespace KissU.Core.Codec.MessagePack
 {
    public class MessagePackModule : EnginePartModule
     {

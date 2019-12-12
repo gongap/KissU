@@ -1,12 +1,11 @@
-using MessagePack;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Surging.Core.Codec.MessagePack.Utilities;
-using Surging.Core.CPlatform.Utilities;
 using System;
 using System.Runtime.CompilerServices;
+using KissU.Core.Codec.MessagePack.Utilities;
+using KissU.Core.CPlatform.Utilities;
+using MessagePack;
+using Newtonsoft.Json;
 
-namespace Surging.Core.Codec.MessagePack.Messages
+namespace KissU.Core.Codec.MessagePack.Messages
 {
     [MessagePackObject]
     public class DynamicItem

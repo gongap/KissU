@@ -1,9 +1,7 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using Newtonsoft.Json.Linq;
 
-namespace Surging.Core.CPlatform.Utilities
+namespace KissU.Core.CPlatform.Utilities
 {
     public static class UtilityType
     {

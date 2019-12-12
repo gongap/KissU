@@ -1,11 +1,9 @@
-﻿using Surging.Core.ApiGateWay.ServiceDiscovery.Implementation;
-using Surging.Core.CPlatform;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using KissU.Core.ApiGateWay.ServiceDiscovery.Implementation;
+using KissU.Core.CPlatform;
 
-namespace Surging.Core.ApiGateWay.ServiceDiscovery
+namespace KissU.Core.ApiGateWay.ServiceDiscovery
 {
     public interface IServiceSubscribeProvider
     {

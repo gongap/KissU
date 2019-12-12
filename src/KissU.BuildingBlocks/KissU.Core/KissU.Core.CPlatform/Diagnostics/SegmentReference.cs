@@ -20,7 +20,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Surging.Core.CPlatform.Diagnostics
+namespace KissU.Core.CPlatform.Diagnostics
 {
     public class SegmentReference
     {

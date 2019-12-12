@@ -17,7 +17,7 @@
  */
 
 
-namespace Surging.Core.CPlatform.Diagnostics
+namespace KissU.Core.CPlatform.Diagnostics
 {
     public interface ITracingDiagnosticProcessor
     {

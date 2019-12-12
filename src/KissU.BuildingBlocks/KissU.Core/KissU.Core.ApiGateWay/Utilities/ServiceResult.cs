@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Surging.Core.ApiGateWay.Utilities
+﻿namespace KissU.Core.ApiGateWay.Utilities
 {
     /// <summary>
     /// 自定义错误结果对象

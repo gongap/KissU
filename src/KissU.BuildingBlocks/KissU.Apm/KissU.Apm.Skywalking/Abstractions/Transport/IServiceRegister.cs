@@ -16,13 +16,11 @@
  *
  */
 
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Surging.Apm.Skywalking.Abstractions.Common;
-using Surging.Apm.Skywalking.Abstractions.Transport;
+using KissU.Apm.Skywalking.Abstractions.Common;
 
-namespace Surging.Apm.Skywalking.Abstractions.Transport
+namespace KissU.Apm.Skywalking.Abstractions.Transport
 {
     public interface IServiceRegister
     {
