@@ -2,10 +2,7 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
-using KissU.Core.CPlatform.Engines.Implementation;
-using KissU.Core.CPlatform.Utilities;
-
-namespace KissU.Microservices.Host
+namespace KissU.Services.Stage
 {
     /// <summary>
     /// 微服务引擎

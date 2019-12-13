@@ -2,17 +2,8 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
-using KissU.Core.Caching.Configurations;
-using KissU.Core.CPlatform.Utilities;
-
-namespace KissU.Microservices.Stage
+namespace KissU.Services.Stage
 {
-    using Autofac;
-    using Autofac.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.DependencyInjection;
-    using Util.Helpers;
-
     /// <summary>
     /// 启动配置
     /// </summary>

@@ -5,7 +5,7 @@
 using KissU.Core.CPlatform.Engines.Implementation;
 using KissU.Core.CPlatform.Utilities;
 
-namespace KissU.Microservices.Stage
+namespace KissU.Services.Host
 {
     /// <summary>
     /// 微服务引擎

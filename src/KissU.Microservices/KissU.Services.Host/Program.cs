@@ -2,6 +2,9 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System;
+using System.Text;
+using Autofac;
 using KissU.Core.Caching.Configurations;
 using KissU.Core.CPlatform;
 using KissU.Core.CPlatform.Configurations;
@@ -9,14 +12,10 @@ using KissU.Core.CPlatform.Utilities;
 using KissU.Core.ProxyGenerator;
 using KissU.Core.ServiceHosting;
 using KissU.Core.ServiceHosting.Internal.Implementation;
+using Microsoft.Extensions.Logging;
 
-namespace KissU.Microservices.Host
+namespace KissU.Services.Host
 {
-    using System;
-    using System.Text;
-    using Autofac;
-    using Microsoft.Extensions.Logging;
-
     /// <summary>
     /// 应用程序
     /// </summary>

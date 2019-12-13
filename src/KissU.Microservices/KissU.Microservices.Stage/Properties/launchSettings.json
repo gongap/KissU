@@ -1,8 +1,0 @@
-{
-    "profiles": {
-        "KissU.Microservices.Stage": {
-            "commandName": "Project",
-            "nativeDebugging": false
-        }
-    }
-}
