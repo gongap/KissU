@@ -6,6 +6,16 @@
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+      <DocumentationFile>..\..\..\..\output\core\netcoreapp2.2\KissU.Core.Stage.xml</DocumentationFile>
+      <OutputPath>..\..\..\..\output\core\netcoreapp2.2</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+      <OutputPath>..\..\..\..\output\core\netcoreapp2.2</OutputPath>
+      <DocumentationFile>..\..\..\..\output\core\netcoreapp2.2\KissU.Core.Stage.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="IPNetwork2" Version="2.4.0.124" />
     <PackageReference Include="JWT" Version="5.2.2" />

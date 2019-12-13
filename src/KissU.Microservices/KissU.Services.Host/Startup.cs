@@ -6,6 +6,7 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using KissU.Core.Caching.Configurations;
 using KissU.Core.CPlatform.Utilities;
+using KissU.Core.EventBusKafka.Configurations;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -52,7 +53,7 @@ namespace KissU.Services.Host
         /// <param name="services">服务集合</param>
         private void ConfigureLogging(IServiceCollection services)
         {
-            //services.AddLogging();
+            services.AddLogging();
         }
 
         /// <summary>
@@ -61,7 +62,7 @@ namespace KissU.Services.Host
         /// <param name="build">服务构建者</param>
         private static void ConfigureEventBus(IConfigurationBuilder build)
         {
-            //build.AddEventBusFile("eventbussettings.json", false);
+            build.AddEventBusFile("eventbussettings.json", false);
         }
 
         /// <summary>

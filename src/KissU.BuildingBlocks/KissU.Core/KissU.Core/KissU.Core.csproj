@@ -5,6 +5,17 @@
     <Description></Description>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>..\..\..\..\output\core\netcoreapp2.2\KissU.Core.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\output\core\netcoreapp2.2</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\..\..\output\core\netcoreapp2.2</OutputPath>
+    <DocumentationFile>..\..\..\..\output\core\netcoreapp2.2\KissU.Core.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\..\KissU.Util\KissU.Util\KissU.Util.csproj" />
     <ProjectReference Include="..\KissU.Core.CPlatform\KissU.Core.CPlatform.csproj" />

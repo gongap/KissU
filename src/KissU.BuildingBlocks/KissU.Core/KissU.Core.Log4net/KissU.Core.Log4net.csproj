@@ -1,9 +1,19 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="../../build/common.props" />
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <Description></Description>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+      <DocumentationFile>..\..\..\..\output\core\netcoreapp2.2\KissU.Core.xml</DocumentationFile>
+      <OutputPath>..\..\..\..\output\core\netcoreapp2.2</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+      <OutputPath>..\..\..\..\output\core\netcoreapp2.2</OutputPath>
+      <DocumentationFile>..\..\..\..\output\core\netcoreapp2.2\KissU.Core.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

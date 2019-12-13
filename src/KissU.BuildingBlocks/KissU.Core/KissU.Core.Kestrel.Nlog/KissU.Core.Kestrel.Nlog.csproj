@@ -6,6 +6,16 @@
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+      <DocumentationFile>..\..\..\..\output\core\netcoreapp2.2\KissU.Core.Kestrel.Nlog.xml</DocumentationFile>
+      <OutputPath>..\..\..\..\output\core\netcoreapp2.2</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+      <OutputPath>..\..\..\..\output\core\netcoreapp2.2</OutputPath>
+      <DocumentationFile>..\..\..\..\output\core\netcoreapp2.2\KissU.Core.Kestrel.Nlog.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\KissU.Core.KestrelHttpServer\KissU.Core.KestrelHttpServer.csproj" />
     <ProjectReference Include="..\KissU.Core.NLog\KissU.Core.Nlog.csproj" />

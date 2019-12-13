@@ -6,6 +6,16 @@
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+      <DocumentationFile>..\..\..\..\output\core\netcoreapp2.2\KissU.Core.EventBusRabbitMQ.Grpc.Kestrel.Log4net.xml</DocumentationFile>
+      <OutputPath>..\..\..\..\output\core\netcoreapp2.2</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+      <OutputPath>..\..\..\..\output\core\netcoreapp2.2</OutputPath>
+      <DocumentationFile>..\..\..\..\output\core\netcoreapp2.2\KissU.Core.EventBusRabbitMQ.Grpc.Kestrel.Log4net.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\KissU.Core.KestrelHttpServer\KissU.Core.KestrelHttpServer.csproj" />
     <ProjectReference Include="..\KissU.Core.Log4net\KissU.Core.Log4net.csproj" />

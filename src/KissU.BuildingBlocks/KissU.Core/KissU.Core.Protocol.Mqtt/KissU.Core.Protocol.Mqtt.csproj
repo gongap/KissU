@@ -6,6 +6,16 @@
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+      <DocumentationFile>..\..\..\..\output\core\netcoreapp2.2\KissU.Core.Protocol.Mqtt.xml</DocumentationFile>
+      <OutputPath>..\..\..\..\output\core\netcoreapp2.2</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+      <OutputPath>..\..\..\..\output\core\netcoreapp2.2</OutputPath>
+      <DocumentationFile>..\..\..\..\output\core\netcoreapp2.2\KissU.Core.Protocol.Mqtt.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="DotNetty.Codecs" Version="0.6.0" />
     <PackageReference Include="DotNetty.Codecs.Mqtt" Version="0.6.0" />

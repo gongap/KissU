@@ -6,6 +6,16 @@
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\..\..\..\output\core\netcoreapp2.2</OutputPath>
+    <DocumentationFile>..\..\..\..\output\core\netcoreapp2.2\KissU.Core.ApiGateWay.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\..\..\output\core\netcoreapp2.2</OutputPath>
+    <DocumentationFile>..\..\..\..\output\core\netcoreapp2.2\KissU.Core.ApiGateWay.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\KissU.Core.Caching\KissU.Core.Caching.csproj" />
     <ProjectReference Include="..\KissU.Core.CPlatform\KissU.Core.CPlatform.csproj" />

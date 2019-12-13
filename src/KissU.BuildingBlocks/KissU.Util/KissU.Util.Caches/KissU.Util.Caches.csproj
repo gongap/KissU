@@ -7,13 +7,13 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\output\release</OutputPath>
-    <DocumentationFile>..\..\output\release\netstandard2.0\KissU.Util.Caches.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\output\release</OutputPath>
+    <DocumentationFile>..\..\..\..\output\util\netstandard2.0\KissU.Util.Caches.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>..\..\output\release</OutputPath>
-    <DocumentationFile>..\..\output\release\netstandard2.0\KissU.Util.Caches.xml</DocumentationFile>
+    <OutputPath>..\..\..\..\output\release</OutputPath>
+    <DocumentationFile>..\..\..\..\output\util\netstandard2.0\KissU.Util.Caches.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
