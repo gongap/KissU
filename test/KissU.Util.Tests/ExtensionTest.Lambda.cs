@@ -11,7 +11,8 @@ namespace KissU.Util.Tests {
         /// <summary>
         /// 测试初始化
         /// </summary>
-        public ExtensionTest() {
+        public ExtensionTest()
+        {
             _parameterExpression = Expression.Parameter( typeof( Sample ), "t" );
             _expression1 = _parameterExpression.Property( "StringValue" ).Call( "Contains", Expression.Constant( "A" ) );
             _expression2 = _parameterExpression.Property( "NullableDateValue" )

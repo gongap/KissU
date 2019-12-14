@@ -19,7 +19,8 @@ namespace KissU.Util {
         /// </summary>
         /// <param name="expression">表达式</param>
         /// <param name="propertyName">属性名,支持多级属性名，与句点分隔，范例：Customer.Name</param>
-        public static Expression Property( this Expression expression, string propertyName ) {
+        public static Expression Property( this Expression expression, string propertyName )
+        {
             if( propertyName.All( t => t != '.' ) )
                 return Expression.Property( expression, propertyName );
             var propertyNameList = propertyName.Split( '.' );
