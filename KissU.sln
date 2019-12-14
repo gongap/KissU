@@ -98,26 +98,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "KissU.Applications", "KissU
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.STS.IdentityServer", "src\KissU.Applications\KissU.STS.IdentityServer\KissU.STS.IdentityServer.csproj", "{6A9DA57B-8AFE-434A-A4C5-BB3F2D52690C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{F330A18D-B1F0-4DE6-9CD7-2F6CD6100718}"
-	ProjectSection(SolutionItems) = preProject
-		src\KissU.Modules\KissU.Modules.Admin\build\common.props = src\KissU.Modules\KissU.Modules.Admin\build\common.props
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{B7B2A547-F048-4F39-A0A7-252440C1895D}"
-	ProjectSection(SolutionItems) = preProject
-		src\KissU.Modules\KissU.Modules.GreatWall\build\common.props = src\KissU.Modules\KissU.Modules.GreatWall\build\common.props
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{4B7990C1-B64A-4BEB-878A-33C6EA4EEC26}"
-	ProjectSection(SolutionItems) = preProject
-		src\KissU.Modules\KissU.Modules.IdentityServer\build\common.props = src\KissU.Modules\KissU.Modules.IdentityServer\build\common.props
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{84BF5174-471F-40EC-BA7A-EF55E13CA98E}"
-	ProjectSection(SolutionItems) = preProject
-		src\KissU.Modules\KissU.Modules.Theme\build\common.props = src\KissU.Modules\KissU.Modules.Theme\build\common.props
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.Applications", "src\KissU.BuildingBlocks\KissU.Util\KissU.Util.Applications\KissU.Util.Applications.csproj", "{94E3E2DE-707D-40DC-B058-200DD1D7CA56}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.Biz", "src\KissU.BuildingBlocks\KissU.Util\KissU.Util.Biz\KissU.Util.Biz.csproj", "{45CA1070-72A1-441E-82FF-FCE5774EB7C6}"
@@ -596,10 +576,6 @@ Global
 		{3CDD4019-FF31-4A47-80C7-EEA80337E642} = {F1B4AAEF-9162-4DFA-8B62-4069FC914839}
 		{F7F6CB7E-792F-496B-925A-BB5B0DB67DB6} = {F1B4AAEF-9162-4DFA-8B62-4069FC914839}
 		{6A9DA57B-8AFE-434A-A4C5-BB3F2D52690C} = {F7F6CB7E-792F-496B-925A-BB5B0DB67DB6}
-		{F330A18D-B1F0-4DE6-9CD7-2F6CD6100718} = {2E11D51E-59A2-4501-9658-7F44E5A35556}
-		{B7B2A547-F048-4F39-A0A7-252440C1895D} = {989E8619-53BE-48E2-B062-047940FBBCE2}
-		{4B7990C1-B64A-4BEB-878A-33C6EA4EEC26} = {8041CF7B-89DA-475F-92ED-0153EAEF6DC1}
-		{84BF5174-471F-40EC-BA7A-EF55E13CA98E} = {697B9208-7FE5-4AB1-92F8-BF64F12BA72E}
 		{94E3E2DE-707D-40DC-B058-200DD1D7CA56} = {D4F921B5-1BBD-4F36-A1D0-DE934C035713}
 		{45CA1070-72A1-441E-82FF-FCE5774EB7C6} = {D4F921B5-1BBD-4F36-A1D0-DE934C035713}
 		{72C99BE0-30EA-48FF-856A-E41CD50DDD8C} = {D4F921B5-1BBD-4F36-A1D0-DE934C035713}
