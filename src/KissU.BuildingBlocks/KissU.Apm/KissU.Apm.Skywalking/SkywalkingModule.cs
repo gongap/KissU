@@ -49,7 +49,7 @@ namespace KissU.Apm.Skywalking
             AddTracing(builder).AddSampling(builder).AddGrpcTransport(builder);
         }
 
-        private   SkywalkingModule AddTracing(ContainerBuilderWrapper builder)
+        private SkywalkingModule AddTracing(ContainerBuilderWrapper builder)
         {
             builder.RegisterType<TracingContext>().As<ITracingContext>().SingleInstance();
             builder.RegisterType<CarrierPropagator>().As<ICarrierPropagator>().SingleInstance();
