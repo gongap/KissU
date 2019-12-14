@@ -1,6 +1,6 @@
 <Project>
   <PropertyGroup>
-    <CodeAnalysisRuleSet>..\..\..\..\KissU.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>..\..\..\..\code.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <ItemGroup>
