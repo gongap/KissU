@@ -153,6 +153,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{66351B56-2CF9-411D-9D8C-2925AB080E24}"
 	ProjectSection(SolutionItems) = preProject
 		src\KissU.BuildingBlocks\build\common.props = src\KissU.BuildingBlocks\build\common.props
+		src\KissU.BuildingBlocks\build\KissU.Core.CodeMap.dgml = src\KissU.BuildingBlocks\build\KissU.Core.CodeMap.dgml
+		src\KissU.BuildingBlocks\build\KissU.Util.CodeMap.dgml = src\KissU.BuildingBlocks\build\KissU.Util.CodeMap.dgml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DotNetty.Codecs", "DotNetty.Codecs", "{C31914B5-EBD1-47B7-8FD2-8A8288E54399}"
