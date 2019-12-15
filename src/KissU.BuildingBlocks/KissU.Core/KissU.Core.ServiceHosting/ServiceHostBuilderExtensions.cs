@@ -15,10 +15,10 @@ namespace KissU.Core.ServiceHosting
     public static class ServiceHostBuilderExtensions
     {
         /// <summary>
-        /// 
+        /// 使用启动类
         /// </summary>
-        /// <param name="hostBuilder"></param>
-        /// <param name="startupType"></param>
+        /// <param name="hostBuilder">主机构建器</param>
+        /// <param name="startupType">启动类型</param>
         /// <returns></returns>
         public static IServiceHostBuilder UseStartup(this IServiceHostBuilder hostBuilder, Type startupType)
         {
@@ -40,12 +40,23 @@ namespace KissU.Core.ServiceHosting
                 });
         }
 
+        /// <summary>
+        /// 使用启动类
+        /// </summary>
+        /// <typeparam name="TStartup">启动类型</typeparam>
+        /// <param name="hostBuilder">主机构建器</param>
+        /// <returns>主机构建器</returns>
         public static IServiceHostBuilder UseStartup<TStartup>(this IServiceHostBuilder hostBuilder)
             where TStartup : class
         {
             return hostBuilder.UseStartup(typeof(TStartup));
         }
 
+        /// <summary>
+        /// 使用控制台生命周期
+        /// </summary>
+        /// <param name="hostBuilder"></param>
+        /// <returns></returns>
         public static IServiceHostBuilder UseConsoleLifetime(this IServiceHostBuilder hostBuilder)
         {
             return hostBuilder.ConfigureServices(collection =>
