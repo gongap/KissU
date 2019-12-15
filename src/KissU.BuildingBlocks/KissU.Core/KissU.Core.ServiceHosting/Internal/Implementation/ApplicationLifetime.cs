@@ -4,24 +4,43 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.ServiceHosting.Internal.Implementation
 {
+    /// <summary>
+    /// 应用生命周期
+    /// </summary>
     public class ApplicationLifetime : IApplicationLifetime
     {
-        private readonly CancellationTokenSource _startedSource = new CancellationTokenSource();
-        private readonly CancellationTokenSource _stoppingSource = new CancellationTokenSource();
-        private readonly CancellationTokenSource _stoppedSource = new CancellationTokenSource();
         private readonly ILogger<ApplicationLifetime> _logger;
+        private readonly CancellationTokenSource _startedSource = new CancellationTokenSource();
+        private readonly CancellationTokenSource _stoppedSource = new CancellationTokenSource();
+        private readonly CancellationTokenSource _stoppingSource = new CancellationTokenSource();
 
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        /// <param name="logger">日志记录器</param>
         public ApplicationLifetime(ILogger<ApplicationLifetime> logger)
         {
             _logger = logger;
         }
 
+        /// <summary>
+        /// 应用已启动
+        /// </summary>
         public CancellationToken ApplicationStarted => _startedSource.Token;
 
+        /// <summary>
+        /// 应用停止中
+        /// </summary>
         public CancellationToken ApplicationStopping => _stoppingSource.Token;
 
+        /// <summary>
+        /// 应用已停止
+        /// </summary>
         public CancellationToken ApplicationStopped => _stoppedSource.Token;
 
+        /// <summary>
+        /// 通知已启动
+        /// </summary>
         public void NotifyStarted()
         {
             try
@@ -30,12 +49,14 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
             }
             catch (Exception ex)
             {
-                _logger.LogError( "An error occurred starting the application",
-                                         ex);
+                _logger.LogError("An error occurred starting the application",
+                    ex);
             }
         }
 
-
+        /// <summary>
+        /// 通知已停止
+        /// </summary>
         public void NotifyStopped()
         {
             try
@@ -45,10 +66,13 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
             catch (Exception ex)
             {
                 _logger.LogError("An error occurred stopping the application",
-                                         ex);
+                    ex);
             }
         }
 
+        /// <summary>
+        /// 停止应用
+        /// </summary>
         public void StopApplication()
         {
             lock (_stoppingSource)
@@ -60,18 +84,19 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
                 catch (Exception ex)
                 {
                     _logger.LogError("An error occurred stopping the application",
-                                             ex);
+                        ex);
                 }
             }
         }
 
         private void ExecuteHandlers(CancellationTokenSource cancel)
-        { 
+        {
             if (cancel.IsCancellationRequested)
             {
                 return;
-            } 
-            cancel.Cancel(throwOnFirstException: false);
+            }
+
+            cancel.Cancel(false);
         }
     }
 }

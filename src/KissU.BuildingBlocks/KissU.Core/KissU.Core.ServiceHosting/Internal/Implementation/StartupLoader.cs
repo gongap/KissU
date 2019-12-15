@@ -1,7 +1,4 @@
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
-
-using System;
+ï»¿using System;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
@@ -12,18 +9,30 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace KissU.Core.ServiceHosting.Internal.Implementation
 {
+    /// <summary>
+    /// å¯åŠ¨åŠ è½½å™¨
+    /// </summary>
     public class StartupLoader
     {
-        public static StartupMethods LoadMethods(IServiceProvider hostingServiceProvider, IConfigurationBuilder config, Type startupType, string environmentName)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="hostingServiceProvider">æœåŠ¡æä¾›ç¨‹åº</param>
+        /// <param name="config">é…ç½®æ„å»ºå™¨</param>
+        /// <param name="startupType">å¯åŠ¨ç±»å‹</param>
+        /// <param name="environmentName">ç¯å¢ƒå</param>
+        /// <returns>å¯åŠ¨æ–¹æ³•</returns>
+        public static StartupMethods LoadMethods(IServiceProvider hostingServiceProvider, IConfigurationBuilder config,
+            Type startupType, string environmentName)
         {
             var configureMethod = FindConfigureDelegate(startupType, environmentName);
             var servicesMethod = FindConfigureServicesDelegate(startupType, environmentName);
             var configureContainerMethod = FindConfigureContainerDelegate(startupType, environmentName);
 
             object instance = null;
-            if (!configureMethod.MethodInfo.IsStatic || (servicesMethod != null && !servicesMethod.MethodInfo.IsStatic))
+            if (!configureMethod.MethodInfo.IsStatic || servicesMethod != null && !servicesMethod.MethodInfo.IsStatic)
             {
-                instance = ActivatorUtilities.CreateInstance(hostingServiceProvider, startupType,config);
+                instance = ActivatorUtilities.CreateInstance(hostingServiceProvider, startupType, config);
             }
 
             var configureServicesCallback = servicesMethod.Build(instance);
@@ -31,18 +40,24 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
 
             Func<ContainerBuilder, IContainer> configureServices = services =>
             {
-                IContainer applicationServiceProvider = configureServicesCallback.Invoke(services);
+                var applicationServiceProvider = configureServicesCallback.Invoke(services);
                 if (applicationServiceProvider != null)
                 {
                     return applicationServiceProvider;
                 }
+
                 if (configureContainerMethod.MethodInfo != null)
                 {
-                    var serviceProviderFactoryType = typeof(IServiceProviderFactory<>).MakeGenericType(configureContainerMethod.GetContainerType());
+                    var serviceProviderFactoryType =
+                        typeof(IServiceProviderFactory<>).MakeGenericType(configureContainerMethod.GetContainerType());
                     var serviceProviderFactory = hostingServiceProvider.GetRequiredService(serviceProviderFactoryType);
-                    var builder = serviceProviderFactoryType.GetMethod(nameof(DefaultServiceProviderFactory.CreateBuilder)).Invoke(serviceProviderFactory, new object[] { services });
+                    var builder = serviceProviderFactoryType
+                        .GetMethod(nameof(DefaultServiceProviderFactory.CreateBuilder))
+                        .Invoke(serviceProviderFactory, new object[] {services });
                     configureContainerCallback.Invoke(builder);
-                    applicationServiceProvider = (IContainer)serviceProviderFactoryType.GetMethod(nameof(DefaultServiceProviderFactory.CreateServiceProvider)).Invoke(serviceProviderFactory, new object[] { builder });
+                    applicationServiceProvider = (IContainer)serviceProviderFactoryType
+                        .GetMethod(nameof(DefaultServiceProviderFactory.CreateServiceProvider))
+                        .Invoke(serviceProviderFactory, new[] { builder });
                 }
 
                 return applicationServiceProvider;
@@ -51,20 +66,26 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
             return new StartupMethods(instance, configureMethod.Build(instance), configureServices);
         }
 
+        /// <summary>
+        /// æŸ¥æ‰¾å¯åŠ¨ç±»å‹
+        /// </summary>
+        /// <param name="startupAssemblyName">å¯åŠ¨ç±»å‹ç¨‹åºé›†</param>
+        /// <param name="environmentName">ç¯å¢ƒå</param>
+        /// <returns>å¯åŠ¨ç±»å‹</returns>
         public static Type FindStartupType(string startupAssemblyName, string environmentName)
         {
             if (string.IsNullOrEmpty(startupAssemblyName))
             {
                 throw new ArgumentException(
-                    string.Format("'{0}' ²»ÄÜÎª¿Õ.",
-                    nameof(startupAssemblyName)),
+                    string.Format("'{0}' ä¸èƒ½ä¸ºç©º.",
+                        nameof(startupAssemblyName)),
                     nameof(startupAssemblyName));
             }
 
             var assembly = Assembly.Load(new AssemblyName(startupAssemblyName));
             if (assembly == null)
             {
-                throw new InvalidOperationException(String.Format("³ÌĞò¼¯ '{0}' ´íÎó²»ÄÜ¼ÓÔØ", startupAssemblyName));
+                throw new InvalidOperationException(string.Format("ç¨‹åºé›† '{0}' é”™è¯¯ä¸èƒ½åŠ è½½", startupAssemblyName));
             }
 
             var startupNameWithEnv = "Startup" + environmentName;
@@ -78,8 +99,10 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
             if (type == null)
             {
                 var definedTypes = assembly.DefinedTypes.ToList();
-                var startupType1 = definedTypes.Where(info => info.Name.Equals(startupNameWithEnv, StringComparison.OrdinalIgnoreCase));
-                var startupType2 = definedTypes.Where(info => info.Name.Equals(startupNameWithoutEnv, StringComparison.OrdinalIgnoreCase));
+                var startupType1 = definedTypes.Where(info =>
+                    info.Name.Equals(startupNameWithEnv, StringComparison.OrdinalIgnoreCase));
+                var startupType2 = definedTypes.Where(info =>
+                    info.Name.Equals(startupNameWithoutEnv, StringComparison.OrdinalIgnoreCase));
                 var typeInfo = startupType1.Concat(startupType2).FirstOrDefault();
                 if (typeInfo != null)
                 {
@@ -89,7 +112,7 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
 
             if (type == null)
             {
-                throw new InvalidOperationException(String.Format("ÀàĞÍ '{0}' »òÕß '{1}' ²»ÄÜ´Ó³ÌĞò¼¯ '{2}'ÕÒµ½.",
+                throw new InvalidOperationException(string.Format("ç±»å‹ '{0}' æˆ–è€… '{1}' ä¸èƒ½ä»ç¨‹åºé›† '{2}'æ‰¾åˆ°.",
                     startupNameWithEnv,
                     startupNameWithoutEnv,
                     startupAssemblyName));
@@ -100,40 +123,47 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
 
         private static ConfigureBuilder FindConfigureDelegate(Type startupType, string environmentName)
         {
-            var configureMethod = FindMethod(startupType, "Configure{0}", environmentName, typeof(void), required: true);
+            var configureMethod = FindMethod(startupType, "Configure{0}", environmentName, typeof(void));
             return new ConfigureBuilder(configureMethod);
         }
 
-        private static ConfigureContainerBuilder FindConfigureContainerDelegate(Type startupType, string environmentName)
+        private static ConfigureContainerBuilder FindConfigureContainerDelegate(Type startupType,
+            string environmentName)
         {
-            var configureMethod = FindMethod(startupType, "Configure{0}Container", environmentName, typeof(void), required: false);
+            var configureMethod =
+                FindMethod(startupType, "Configure{0}Container", environmentName, typeof(void), false);
             return new ConfigureContainerBuilder(configureMethod);
         }
 
         private static ConfigureServicesBuilder FindConfigureServicesDelegate(Type startupType, string environmentName)
         {
-            var servicesMethod = FindMethod(startupType, "Configure{0}Services", environmentName, typeof(IContainer), required: false)
-                ?? FindMethod(startupType, "Configure{0}Services", environmentName, typeof(void), required: false);
+            var servicesMethod =
+                FindMethod(startupType, "Configure{0}Services", environmentName, typeof(IContainer), false)
+                ?? FindMethod(startupType, "Configure{0}Services", environmentName, typeof(void), false);
             return new ConfigureServicesBuilder(servicesMethod);
         }
 
-        private static MethodInfo FindMethod(Type startupType, string methodName, string environmentName, Type returnType = null, bool required = true)
+        private static MethodInfo FindMethod(Type startupType, string methodName, string environmentName,
+            Type returnType = null, bool required = true)
         {
             var methodNameWithEnv = string.Format(CultureInfo.InvariantCulture, methodName, environmentName);
             var methodNameWithNoEnv = string.Format(CultureInfo.InvariantCulture, methodName, "");
 
             var methods = startupType.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
-            var selectedMethods = methods.Where(method => method.Name.Equals(methodNameWithEnv, StringComparison.OrdinalIgnoreCase)).ToList();
+            var selectedMethods = methods
+                .Where(method => method.Name.Equals(methodNameWithEnv, StringComparison.OrdinalIgnoreCase)).ToList();
             if (selectedMethods.Count > 1)
             {
-                throw new InvalidOperationException(string.Format("¶à¸öÖØÔØ·½·¨  '{0}' ²»Ö§³Ö.", methodNameWithEnv));
+                throw new InvalidOperationException(string.Format("å¤šä¸ªé‡è½½æ–¹æ³•  '{0}' ä¸æ”¯æŒ.", methodNameWithEnv));
             }
+
             if (selectedMethods.Count == 0)
             {
-                selectedMethods = methods.Where(method => method.Name.Equals(methodNameWithNoEnv, StringComparison.OrdinalIgnoreCase)).ToList();
+                selectedMethods = methods.Where(method =>
+                    method.Name.Equals(methodNameWithNoEnv, StringComparison.OrdinalIgnoreCase)).ToList();
                 if (selectedMethods.Count > 1)
                 {
-                    throw new InvalidOperationException(string.Format("¶à¸öÖØÔØ·½·¨  '{0}' ²»Ö§³Ö.", methodNameWithNoEnv));
+                    throw new InvalidOperationException(string.Format("å¤šä¸ªé‡è½½æ–¹æ³•  '{0}' ä¸æ”¯æŒ.", methodNameWithNoEnv));
                 }
             }
 
@@ -142,25 +172,28 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
             {
                 if (required)
                 {
-                    throw new InvalidOperationException(string.Format("¹«¹²·½·¨Ãû³Æ±ØĞëÎª'{0}' »òÕß '{1}' ÕÒ²»µ½ '{2}' ÀàĞÍ.",
+                    throw new InvalidOperationException(string.Format("å…¬å…±æ–¹æ³•åç§°å¿…é¡»ä¸º'{0}' æˆ–è€… '{1}' æ‰¾ä¸åˆ° '{2}' ç±»å‹.",
                         methodNameWithEnv,
                         methodNameWithNoEnv,
                         startupType.FullName));
-
                 }
+
                 return null;
             }
+
             if (returnType != null && methodInfo.ReturnType != returnType)
             {
                 if (required)
                 {
-                    throw new InvalidOperationException(string.Format(" '{0}'µÄ·½·¨ÔÚÀàĞÍ '{1}' ±ØĞëÓĞ·µ»ØÀàĞÍ '{2}'.",
+                    throw new InvalidOperationException(string.Format(" '{0}'çš„æ–¹æ³•åœ¨ç±»å‹ '{1}' å¿…é¡»æœ‰è¿”å›ç±»å‹ '{2}'.",
                         methodInfo.Name,
                         startupType.FullName,
                         returnType.Name));
                 }
+
                 return null;
             }
+
             return methodInfo;
         }
     }

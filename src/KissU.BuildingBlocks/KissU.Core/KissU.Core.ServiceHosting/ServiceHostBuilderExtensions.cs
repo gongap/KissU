@@ -9,8 +9,17 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace KissU.Core.ServiceHosting
 {
-   public static   class ServiceHostBuilderExtensions
+    /// <summary>
+    /// 服务主机生成器扩展
+    /// </summary>
+    public static class ServiceHostBuilderExtensions
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="hostBuilder"></param>
+        /// <param name="startupType"></param>
+        /// <returns></returns>
         public static IServiceHostBuilder UseStartup(this IServiceHostBuilder hostBuilder, Type startupType)
         {
             return hostBuilder
@@ -24,22 +33,22 @@ namespace KissU.Core.ServiceHosting
                     {
                         services.AddSingleton(typeof(IStartup), sp =>
                         {
-                            var config= sp.GetService<IConfigurationBuilder>();
+                            var config = sp.GetService<IConfigurationBuilder>();
                             return new ConventionBasedStartup(StartupLoader.LoadMethods(sp, config, startupType, ""));
                         });
-                       
                     }
                 });
         }
 
-        public static IServiceHostBuilder UseStartup<TStartup>(this IServiceHostBuilder hostBuilder) where TStartup : class
+        public static IServiceHostBuilder UseStartup<TStartup>(this IServiceHostBuilder hostBuilder)
+            where TStartup : class
         {
             return hostBuilder.UseStartup(typeof(TStartup));
         }
 
         public static IServiceHostBuilder UseConsoleLifetime(this IServiceHostBuilder hostBuilder)
         {
-            return hostBuilder.ConfigureServices((collection) =>
+            return hostBuilder.ConfigureServices(collection =>
             {
                 collection.AddSingleton<IApplicationLifetime, ApplicationLifetime>();
                 collection.AddSingleton<IHostLifetime, ConsoleLifetime>();

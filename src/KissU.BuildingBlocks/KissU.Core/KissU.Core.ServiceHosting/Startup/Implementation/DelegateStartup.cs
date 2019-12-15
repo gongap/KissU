@@ -3,15 +3,29 @@ using Autofac;
 
 namespace KissU.Core.ServiceHosting.Startup.Implementation
 {
-    public  class DelegateStartup : StartupBase<ContainerBuilder>
+    /// <summary>
+    /// 委托启动
+    /// </summary>
+    public class DelegateStartup : StartupBase<ContainerBuilder>
     {
-        private Action<IContainer> _configureApp;
+        private readonly Action<IContainer> _configureApp;
 
-        public DelegateStartup(Action<IContainer> configureApp) : base()
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        /// <param name="configureApp">配置容器的委托</param>
+        public DelegateStartup(Action<IContainer> configureApp)
         {
             _configureApp = configureApp;
         }
 
-        public override void Configure(IContainer app) => _configureApp(app);
+        /// <summary>
+        /// 配置应用
+        /// </summary>
+        /// <param name="app">容器</param>
+        public override void Configure(IContainer app)
+        {
+            _configureApp(app);
+        }
     }
 }

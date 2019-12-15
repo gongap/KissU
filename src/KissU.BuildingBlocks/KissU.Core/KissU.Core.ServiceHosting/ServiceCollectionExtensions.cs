@@ -11,6 +11,7 @@ namespace KissU.Core.ServiceHosting
             {
                 clone.Add(service);
             }
+
             return clone;
         }
     }

@@ -8,81 +8,134 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.ServiceHosting.Internal.Implementation
 {
+    /// <summary>
+    /// 服务主机构建器
+    /// </summary>
     public class ServiceHostBuilder : IServiceHostBuilder
     {
-        private readonly List<Action<IServiceCollection>> _configureServicesDelegates;
-        private readonly List<Action<ContainerBuilder>> _registerServicesDelegates;
         private readonly List<Action<IConfigurationBuilder>> _configureDelegates;
+        private readonly List<Action<IServiceCollection>> _configureServicesDelegates;
         private readonly List<Action<IContainer>> _mapServicesDelegates;
-        private  Action<ILoggingBuilder> _loggingDelegate;
+        private readonly List<Action<ContainerBuilder>> _registerServicesDelegates;
+        private Action<ILoggingBuilder> _loggingDelegate;
 
+        /// <summary>
+        /// 初始化
+        /// </summary>
         public ServiceHostBuilder()
         {
             _configureServicesDelegates = new List<Action<IServiceCollection>>();
             _registerServicesDelegates = new List<Action<ContainerBuilder>>();
             _configureDelegates = new List<Action<IConfigurationBuilder>>();
             _mapServicesDelegates = new List<Action<IContainer>>();
-
         }
 
+        /// <summary>
+        /// 构建服务主机
+        /// </summary>
+        /// <returns></returns>
         public IServiceHost Build()
         {
-           
             var services = BuildCommonServices();
             var config = Configure();
-            if(_loggingDelegate!=null)
-            services.AddLogging(_loggingDelegate);
+            if (_loggingDelegate != null)
+            {
+                services.AddLogging(_loggingDelegate);
+            }
             else
+            {
                 services.AddLogging();
+            }
+
             services.AddSingleton(typeof(IConfigurationBuilder), config);
             var hostingServices = RegisterServices();
             var applicationServices = services.Clone();
             var hostingServiceProvider = services.BuildServiceProvider();
             hostingServices.Populate(services);
             var hostLifetime = hostingServiceProvider.GetService<IHostLifetime>();
-            var host = new ServiceHost(hostingServices,hostingServiceProvider, hostLifetime,_mapServicesDelegates);
-            var container= host.Initialize();
+            var host = new ServiceHost(hostingServices, hostingServiceProvider, hostLifetime, _mapServicesDelegates);
+            var container = host.Initialize();
             return host;
         }
 
+        /// <summary>
+        /// 映射服务
+        /// </summary>
+        /// <param name="mapper">映射器</param>
+        /// <returns>服务主机构建器</returns>
         public IServiceHostBuilder MapServices(Action<IContainer> mapper)
         {
             if (mapper == null)
             {
                 throw new ArgumentNullException(nameof(mapper));
             }
+
             _mapServicesDelegates.Add(mapper);
             return this;
         }
 
+        /// <summary>
+        /// 注册服务
+        /// </summary>
+        /// <param name="builder">构建器</param>
+        /// <returns>服务主机构建器</returns>
         public IServiceHostBuilder RegisterServices(Action<ContainerBuilder> builder)
         {
             if (builder == null)
             {
                 throw new ArgumentNullException(nameof(builder));
             }
+
             _registerServicesDelegates.Add(builder);
             return this;
         }
-        
+
+        /// <summary>
+        /// 配置服务集合
+        /// </summary>
+        /// <param name="configureServices">用于服务集合的委托 </param>
+        /// <returns>服务主机构建器</returns>
         public IServiceHostBuilder ConfigureServices(Action<IServiceCollection> configureServices)
         {
             if (configureServices == null)
             {
                 throw new ArgumentNullException(nameof(configureServices));
             }
+
             _configureServicesDelegates.Add(configureServices);
             return this;
         }
 
+        /// <summary>
+        /// 配置应用程序
+        /// </summary>
+        /// <param name="builder">配置构建器</param>
+        /// <returns>服务主机构建器</returns>
         public IServiceHostBuilder Configure(Action<IConfigurationBuilder> builder)
         {
             if (builder == null)
             {
                 throw new ArgumentNullException(nameof(builder));
             }
+
             _configureDelegates.Add(builder);
-            return this; 
+            return this;
+        }
+
+        /// <summary>
+        /// 配置日志记录提供程序
+        /// </summary>
+        /// <param name="configure">用于配置日志记录提供程序的委托 </param>
+        /// <returns>服务主机构建器</returns>
+        public IServiceHostBuilder ConfigureLogging(Action<ILoggingBuilder> configure)
+        {
+            if (configure == null)
+            {
+                throw new ArgumentNullException(nameof(configure));
+            }
+
+            _loggingDelegate = configure;
+            return this;
         }
 
         private IServiceCollection BuildCommonServices()
@@ -92,19 +145,21 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
             {
                 configureServices(services);
             }
+
             return services;
         }
 
         private IConfigurationBuilder Configure()
         {
-            var config = new ConfigurationBuilder().SetBasePath(AppContext.BaseDirectory); 
+            var config = new ConfigurationBuilder().SetBasePath(AppContext.BaseDirectory);
             foreach (var configure in _configureDelegates)
             {
                 configure(config);
             }
+
             return config;
         }
-        
+
         private ContainerBuilder RegisterServices()
         {
             var hostingServices = new ContainerBuilder();
@@ -112,17 +167,8 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
             {
                 registerServices(hostingServices);
             }
-            return hostingServices;
-        }
 
-        public IServiceHostBuilder ConfigureLogging(Action<ILoggingBuilder> configure)
-        {
-            if (configure == null)
-            {
-                throw new ArgumentNullException(nameof(configure));
-            }
-            _loggingDelegate=configure;
-            return this;
+            return hostingServices;
         }
     }
 }
