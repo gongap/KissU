@@ -1,10 +1,11 @@
 /bin
 /.vs
 .vs/
-obj/
 bin/
-/output
+obj/
+output/
 *.user
 *.log
+generated/
 
 

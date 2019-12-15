@@ -42,9 +42,9 @@
     <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.Swagger\KissU.Core.Swagger.csproj" />
     <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.System\KissU.Core.System.csproj" />
     <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.Zookeeper\KissU.Core.Zookeeper.csproj" />
-    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.GreatWall\src\KissU.Modules.GreatWall.Service\KissU.Modules.GreatWall.Service.csproj" />
-    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.IdentityServer\src\KissU.Modules.IdentityServer.Service\KissU.Modules.IdentityServer.Service.csproj" />
-    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Theme\src\KissU.Modules.Theme.Service\KissU.Modules.Theme.Service.csproj" />
+    <ProjectReference Include="..\..\src\KissU.Modules\KissU.Modules.GreatWall\KissU.Modules.GreatWall.Service\KissU.Modules.GreatWall.Service.csproj" />
+    <ProjectReference Include="..\..\src\KissU.Modules\KissU.Modules.IdentityServer\KissU.Modules.IdentityServer.Service\KissU.Modules.IdentityServer.Service.csproj" />
+    <ProjectReference Include="..\..\src\KissU.Modules\KissU.Modules.Theme\KissU.Modules.Theme.Service\KissU.Modules.Theme.Service.csproj" />
   </ItemGroup>
 
   <ItemGroup>
