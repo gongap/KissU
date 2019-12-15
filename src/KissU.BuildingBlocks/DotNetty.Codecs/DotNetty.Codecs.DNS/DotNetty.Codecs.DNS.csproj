@@ -1,6 +1,4 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="../../../../common.props" />
-
   <PropertyGroup Label="NuGet">
     <TargetFrameworks>netstandard1.3;net45</TargetFrameworks>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>

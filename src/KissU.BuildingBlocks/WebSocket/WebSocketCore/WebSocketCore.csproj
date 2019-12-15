@@ -1,9 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="../../../../common.props" />
-
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <Description>.NET CORE version based on websocket-sharp</Description>
   </PropertyGroup>
-
 </Project>

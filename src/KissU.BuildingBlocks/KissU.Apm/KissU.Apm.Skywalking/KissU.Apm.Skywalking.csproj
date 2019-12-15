@@ -11,11 +11,23 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\KissU.Core\KissU.Core.CPlatform\KissU.Core.CPlatform.csproj" />
-    <ProjectReference Include="..\SkyApm.Transport.Grpc.Protocol\SkyApm.Transport.Grpc.Protocol.csproj" />
+      <PackageReference Include="Google.Protobuf" Version="3.10.1" />
+      <PackageReference Include="Grpc" Version="2.24.0" />
+      <PackageReference Include="Grpc.Tools" Version="2.24.0">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Configuration\" />
+    <ProjectReference Include="..\..\KissU.Core\KissU.Core.CPlatform\KissU.Core.CPlatform.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Protocol/**/*.proto" ProtoRoot="Protocol" OutputDir="%(RelativePath)Generated" CompileOutputs="false" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Generated\" />
   </ItemGroup>
 </Project>
