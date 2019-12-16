@@ -1,10 +1,12 @@
 ﻿using IdentityModel;
 
-namespace KissU.Util.Security.Claims {
+namespace KissU.Util.Security.Claims
+{
     /// <summary>
     /// 声明类型
     /// </summary>
-    public static class ClaimTypes {
+    public static class ClaimTypes
+    {
         /// <summary>
         /// 电子邮件
         /// </summary>
