@@ -8,11 +8,11 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using KissU.Modules.Theme.Domain.Base;
-using Microsoft.EntityFrameworkCore;
 using KissU.Util;
 using KissU.Util.Datas.Ef.Core;
 using KissU.Util.Datas.UnitOfWorks;
 using KissU.Util.Domains;
+using Microsoft.EntityFrameworkCore;
 
 namespace KissU.Modules.Theme.Data.Repositories.Base
 {
@@ -25,7 +25,9 @@ namespace KissU.Modules.Theme.Data.Repositories.Base
         where TMaster : MasterEntity<TDetail>
         where TDetail : DetailEntity
     {
-        /// <summary>初始化主从仓储</summary>
+        /// <summary>
+        /// 初始化主从仓储
+        /// </summary>
         /// <param name="unitOfWork">工作单元</param>
         protected MRepositoryBase(IUnitOfWork unitOfWork) : base(unitOfWork)
         {

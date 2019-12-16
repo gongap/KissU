@@ -1,11 +1,11 @@
-﻿// <copyright file="LanguageDetailMap.cs" company="KissU">
+﻿// <copyright file="LanguageTextMap.cs" company="KissU">
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
 using KissU.Modules.Theme.Domain.Models;
+using KissU.Util.Datas.Ef.SqlServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using KissU.Util.Datas.Ef.SqlServer;
 
 namespace KissU.Modules.Theme.Data.Mappings.SqlServer
 {
