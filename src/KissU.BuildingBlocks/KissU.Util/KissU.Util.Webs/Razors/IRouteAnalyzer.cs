@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 
-namespace KissU.Util.Webs.Razors {
+namespace KissU.Util.Webs.Razors
+{
     /// <summary>
     /// 路由分析器
     /// </summary>
-    public interface IRouteAnalyzer {
+    public interface IRouteAnalyzer
+    {
         /// <summary>
         /// 获取所有路由信息
         /// </summary>

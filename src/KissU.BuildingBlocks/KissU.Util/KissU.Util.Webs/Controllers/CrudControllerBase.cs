@@ -7,7 +7,8 @@ using KissU.Util.Webs.Models;
 using KissU.Util.Webs.Properties;
 using Microsoft.AspNetCore.Mvc;
 
-namespace KissU.Util.Webs.Controllers {
+namespace KissU.Util.Webs.Controllers
+{
     /// <summary>
     /// Crud控制器
     /// </summary>
@@ -15,13 +16,15 @@ namespace KissU.Util.Webs.Controllers {
     /// <typeparam name="TQuery">查询参数类型</typeparam>
     public abstract class CrudControllerBase<TDto, TQuery> : CrudControllerBase<TDto, TDto, TDto, TQuery>
         where TQuery : IQueryParameter
-        where TDto : IDto, new() {
+        where TDto : IDto, new()
+    {
         /// <summary>
         /// 初始化Crud控制器
         /// </summary>
         /// <param name="service">Crud服务</param>
-        protected CrudControllerBase( ICrudService<TDto, TQuery> service )
-            : base( service ) {
+        protected CrudControllerBase(ICrudService<TDto, TQuery> service)
+            : base(service)
+        {
         }
     }
 
@@ -34,13 +37,15 @@ namespace KissU.Util.Webs.Controllers {
     public abstract class CrudControllerBase<TDto, TRequest, TQuery> : CrudControllerBase<TDto, TRequest, TRequest, TQuery>
         where TQuery : IQueryParameter
         where TRequest : IRequest, IKey, new()
-        where TDto : IDto, new() {
+        where TDto : IDto, new()
+    {
         /// <summary>
         /// 初始化Crud控制器
         /// </summary>
         /// <param name="service">Crud服务</param>
-        protected CrudControllerBase( ICrudService<TDto, TRequest, TQuery> service )
-            : base( service ) {
+        protected CrudControllerBase(ICrudService<TDto, TRequest, TQuery> service)
+            : base(service)
+        {
         }
     }
 
@@ -55,7 +60,8 @@ namespace KissU.Util.Webs.Controllers {
         where TQuery : IQueryParameter
         where TCreateRequest : IRequest, new()
         where TUpdateRequest : IRequest, IKey, new()
-        where TDto : IDto, new() {
+        where TDto : IDto, new()
+    {
         /// <summary>
         /// Crud服务
         /// </summary>
@@ -65,8 +71,9 @@ namespace KissU.Util.Webs.Controllers {
         /// 初始化Crud控制器
         /// </summary>
         /// <param name="service">Crud服务</param>
-        protected CrudControllerBase( ICrudService<TDto, TUpdateRequest, TCreateRequest, TUpdateRequest, TQuery> service )
-            : base( service ) {
+        protected CrudControllerBase(ICrudService<TDto, TUpdateRequest, TCreateRequest, TUpdateRequest, TQuery> service)
+            : base(service)
+        {
             _service = service;
         }
 
@@ -80,20 +87,22 @@ namespace KissU.Util.Webs.Controllers {
         /// </remarks>
         /// <param name="request">创建参数</param>
         [HttpPost]
-        public virtual async Task<IActionResult> CreateAsync( [FromBody] TCreateRequest request ) {
-            if( request == null )
-                return Fail( WebResource.CreateRequestIsEmpty );
-            CreateBefore( request );
-            var id = await _service.CreateAsync( request );
-            var result = await _service.GetByIdAsync( id );
-            return Success( result );
+        public virtual async Task<IActionResult> CreateAsync([FromBody] TCreateRequest request)
+        {
+            if (request == null)
+                return Fail(WebResource.CreateRequestIsEmpty);
+            CreateBefore(request);
+            var id = await _service.CreateAsync(request);
+            var result = await _service.GetByIdAsync(id);
+            return Success(result);
         }
 
         /// <summary>
         /// 创建前操作
         /// </summary>
         /// <param name="dto">创建参数</param>
-        protected virtual void CreateBefore( TCreateRequest dto ) {
+        protected virtual void CreateBefore(TCreateRequest dto)
+        {
         }
 
         /// <summary>
@@ -106,25 +115,27 @@ namespace KissU.Util.Webs.Controllers {
         /// </remarks>
         /// <param name="id">标识</param>
         /// <param name="request">修改参数</param>
-        [HttpPut( "{id?}" )]
-        public virtual async Task<IActionResult> UpdateAsync( string id, [FromBody] TUpdateRequest request ) {
-            if( request == null )
-                return Fail( WebResource.UpdateRequestIsEmpty );
-            if( id.IsEmpty() && request.Id.IsEmpty() )
-                return Fail( WebResource.IdIsEmpty );
-            if( request.Id.IsEmpty() )
+        [HttpPut("{id?}")]
+        public virtual async Task<IActionResult> UpdateAsync(string id, [FromBody] TUpdateRequest request)
+        {
+            if (request == null)
+                return Fail(WebResource.UpdateRequestIsEmpty);
+            if (id.IsEmpty() && request.Id.IsEmpty())
+                return Fail(WebResource.IdIsEmpty);
+            if (request.Id.IsEmpty())
                 request.Id = id;
-            UpdateBefore( request );
-            await _service.UpdateAsync( request );
-            var result = await _service.GetByIdAsync( request.Id );
-            return Success( result );
+            UpdateBefore(request);
+            await _service.UpdateAsync(request);
+            var result = await _service.GetByIdAsync(request.Id);
+            return Success(result);
         }
 
         /// <summary>
         /// 修改前操作
         /// </summary>
         /// <param name="dto">修改参数</param>
-        protected virtual void UpdateBefore( TUpdateRequest dto ) {
+        protected virtual void UpdateBefore(TUpdateRequest dto)
+        {
         }
 
         /// <summary>
@@ -136,9 +147,10 @@ namespace KissU.Util.Webs.Controllers {
         /// /api/customer/1
         /// </remarks>
         /// <param name="id">标识</param>
-        [HttpDelete( "{id}" )]
-        public virtual async Task<IActionResult> DeleteAsync( string id ) {
-            await _service.DeleteAsync( id );
+        [HttpDelete("{id}")]
+        public virtual async Task<IActionResult> DeleteAsync(string id)
+        {
+            await _service.DeleteAsync(id);
             return Success();
         }
 
@@ -152,9 +164,10 @@ namespace KissU.Util.Webs.Controllers {
         /// body: "'1,2,3'"
         /// </remarks>
         /// <param name="ids">标识列表，多个Id用逗号分隔，范例：1,2,3</param>
-        [HttpPost( "delete" )]
-        public virtual async Task<IActionResult> BatchDeleteAsync( [FromBody] string ids ) {
-            await _service.DeleteAsync( ids );
+        [HttpPost("delete")]
+        public virtual async Task<IActionResult> BatchDeleteAsync([FromBody] string ids)
+        {
+            await _service.DeleteAsync(ids);
             return Success();
         }
 
@@ -162,14 +175,15 @@ namespace KissU.Util.Webs.Controllers {
         /// 批量保存
         /// </summary>
         /// <param name="request">保存参数</param>
-        [HttpPost( "save" )]
-        public virtual async Task<IActionResult> SaveAsync( [FromBody] SaveModel request ) {
-            if( request == null )
-                return Fail( WebResource.RequestIsEmpty );
-            var creationList = Util.Helpers.Json.ToObject<List<TDto>>( request.CreationList );
-            var updateList = Util.Helpers.Json.ToObject<List<TDto>>( request.UpdateList );
-            var deleteList = Util.Helpers.Json.ToObject<List<TDto>>( request.DeleteList );
-            await _service.SaveAsync( creationList, updateList, deleteList );
+        [HttpPost("save")]
+        public virtual async Task<IActionResult> SaveAsync([FromBody] SaveModel request)
+        {
+            if (request == null)
+                return Fail(WebResource.RequestIsEmpty);
+            var creationList = Util.Helpers.Json.ToObject<List<TDto>>(request.CreationList);
+            var updateList = Util.Helpers.Json.ToObject<List<TDto>>(request.UpdateList);
+            var deleteList = Util.Helpers.Json.ToObject<List<TDto>>(request.DeleteList);
+            await _service.SaveAsync(creationList, updateList, deleteList);
             return Success();
         }
     }

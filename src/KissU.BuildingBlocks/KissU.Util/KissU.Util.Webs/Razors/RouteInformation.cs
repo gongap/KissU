@@ -1,8 +1,10 @@
-﻿namespace KissU.Util.Webs.Razors {
+﻿namespace KissU.Util.Webs.Razors
+{
     /// <summary>
     /// 路由信息
     /// </summary>
-    public class RouteInformation {
+    public class RouteInformation
+    {
         /// <summary>
         /// 区域名称
         /// </summary>

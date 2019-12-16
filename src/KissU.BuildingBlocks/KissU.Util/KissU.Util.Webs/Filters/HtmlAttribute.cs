@@ -16,11 +16,13 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewEngines;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
-namespace KissU.Util.Webs.Filters {
+namespace KissU.Util.Webs.Filters
+{
     /// <summary>
     /// 生成Html静态文件
     /// </summary>
-    public class HtmlAttribute : ActionFilterAttribute {
+    public class HtmlAttribute : ActionFilterAttribute
+    {
         /// <summary>
         /// 生成路径，相对根路径，范例：/Typings/app/app.component.html
         /// </summary>
@@ -44,47 +46,55 @@ namespace KissU.Util.Webs.Filters {
         /// <summary>
         /// 执行生成
         /// </summary>
-        public override async Task OnResultExecutionAsync( ResultExecutingContext context, ResultExecutionDelegate next ) {
-            await WriteViewToFileAsync( context );
-            await base.OnResultExecutionAsync( context, next );
+        public override async Task OnResultExecutionAsync(ResultExecutingContext context, ResultExecutionDelegate next)
+        {
+            await WriteViewToFileAsync(context);
+            await base.OnResultExecutionAsync(context, next);
         }
 
         /// <summary>
         /// 将视图写入html文件
         /// </summary>
-        private async Task WriteViewToFileAsync( ResultExecutingContext context ) {
-            try {
-                var html = await RenderToStringAsync( context );
-                if( string.IsNullOrWhiteSpace( html ) )
+        private async Task WriteViewToFileAsync(ResultExecutingContext context)
+        {
+            try
+            {
+                var html = await RenderToStringAsync(context);
+                if (string.IsNullOrWhiteSpace(html))
                     return;
-                var path = Util.Helpers.Common.GetPhysicalPath( string.IsNullOrWhiteSpace( Path ) ? GetPath( context ) : Path );
-                var directory = System.IO.Path.GetDirectoryName( path );
-                if( string.IsNullOrWhiteSpace( directory ) )
+                var path = Util.Helpers.Common.GetPhysicalPath(string.IsNullOrWhiteSpace(Path) ? GetPath(context) : Path);
+                var directory = System.IO.Path.GetDirectoryName(path);
+                if (string.IsNullOrWhiteSpace(directory))
                     return;
-                if( Directory.Exists( directory ) == false )
-                    Directory.CreateDirectory( directory );
-                System.IO.File.WriteAllText( path, html );
+                if (Directory.Exists(directory) == false)
+                    Directory.CreateDirectory(directory);
+                System.IO.File.WriteAllText(path, html);
             }
-            catch( Exception ex ) {
-                ex.Log( Log.GetLog().Caption( "生成html静态文件失败" ) );
+            catch (Exception ex)
+            {
+                ex.Log(Log.GetLog().Caption("生成html静态文件失败"));
             }
         }
 
         /// <summary>
         /// 渲染视图
         /// </summary>
-        protected async Task<string> RenderToStringAsync( ResultExecutingContext context ) {
+        protected async Task<string> RenderToStringAsync(ResultExecutingContext context)
+        {
             string viewName = "";
             object model = null;
             bool isPage = false;
-            if( context.Result is ViewResult result ) {
+            if (context.Result is ViewResult result)
+            {
                 viewName = result.ViewName;
-                viewName = string.IsNullOrWhiteSpace( viewName ) ? context.RouteData.Values["action"].SafeString() : viewName;
+                viewName = string.IsNullOrWhiteSpace(viewName) ? context.RouteData.Values["action"].SafeString() : viewName;
                 model = result.Model;
             }
 
-            if (context.Result is PageResult pageResult) {
-                if (context.ActionDescriptor is PageActionDescriptor pageActionDescriptor) {
+            if (context.Result is PageResult pageResult)
+            {
+                if (context.ActionDescriptor is PageActionDescriptor pageActionDescriptor)
+                {
                     isPage = true;
                     model = pageResult.Model;
                     viewName = pageActionDescriptor.RelativePath;
@@ -95,17 +105,17 @@ namespace KissU.Util.Webs.Filters {
             var tempDataProvider = Ioc.Create<ITempDataProvider>();
             var serviceProvider = Ioc.Create<IServiceProvider>();
             var httpContext = new DefaultHttpContext { RequestServices = serviceProvider };
-            var actionContext = new ActionContext( httpContext, context.RouteData, new ActionDescriptor() );
-            using( var stringWriter = new StringWriter() )
+            var actionContext = new ActionContext(httpContext, context.RouteData, new ActionDescriptor());
+            using (var stringWriter = new StringWriter())
             {
                 var viewResult = isPage
                     ? GetView(compositeViewEngine, viewName)
                     : GetView(razorViewEngine, actionContext, viewName);
-                if( viewResult.View == null )
-                    throw new ArgumentNullException( $"未找到视图： {viewName}" );
-                var viewDictionary = new ViewDataDictionary( new EmptyModelMetadataProvider(), new ModelStateDictionary() ) { Model = model };
-                var viewContext = new ViewContext( actionContext, viewResult.View, viewDictionary, new TempDataDictionary( actionContext.HttpContext, tempDataProvider ), stringWriter, new HtmlHelperOptions() );
-                await viewResult.View.RenderAsync( viewContext );
+                if (viewResult.View == null)
+                    throw new ArgumentNullException($"未找到视图： {viewName}");
+                var viewDictionary = new ViewDataDictionary(new EmptyModelMetadataProvider(), new ModelStateDictionary()) { Model = model };
+                var viewContext = new ViewContext(actionContext, viewResult.View, viewDictionary, new TempDataDictionary(actionContext.HttpContext, tempDataProvider), stringWriter, new HtmlHelperOptions());
+                await viewResult.View.RenderAsync(viewContext);
                 return stringWriter.ToString();
             }
         }
@@ -117,7 +127,8 @@ namespace KissU.Util.Webs.Filters {
         /// <param name="actionContext">操作上下文</param>
         /// <param name="viewName">视图名</param>
         /// <returns></returns>
-        private ViewEngineResult GetView(IRazorViewEngine razorViewEngine,ActionContext actionContext,string viewName) {
+        private ViewEngineResult GetView(IRazorViewEngine razorViewEngine, ActionContext actionContext, string viewName)
+        {
             return razorViewEngine.FindView(actionContext, viewName, true);
         }
 
@@ -127,17 +138,21 @@ namespace KissU.Util.Webs.Filters {
         /// <param name="compositeViewEngine">复合视图引擎</param>
         /// <param name="path">路径</param>
         /// <returns></returns>
-        private ViewEngineResult GetView(ICompositeViewEngine compositeViewEngine, string path) {
+        private ViewEngineResult GetView(ICompositeViewEngine compositeViewEngine, string path)
+        {
             return compositeViewEngine.GetView("~/", $"~{path}", true);
         }
 
         /// <summary>
         /// 获取Html默认生成路径
         /// </summary>
-        protected virtual string GetPath( ResultExecutingContext context ) {
-            if (context.ActionDescriptor is PageActionDescriptor pageActionDescriptor) {
+        protected virtual string GetPath(ResultExecutingContext context)
+        {
+            if (context.ActionDescriptor is PageActionDescriptor pageActionDescriptor)
+            {
                 var paths = pageActionDescriptor.ViewEnginePath.TrimStart('/').Split('/');
-                if (paths.Length >= 3) {
+                if (paths.Length >= 3)
+                {
                     return Template.Replace("{area}", paths[0])
                         .Replace("{controller}", paths[1])
                         .Replace("{action}", JoinActionUrl(paths));
@@ -147,7 +162,7 @@ namespace KissU.Util.Webs.Filters {
             var area = context.RouteData.Values["area"].SafeString();
             var controller = context.RouteData.Values["controller"].SafeString();
             var action = context.RouteData.Values["action"].SafeString();
-            var path = Template.Replace( "{area}", area ).Replace( "{controller}", controller ).Replace( "{action}", action );
+            var path = Template.Replace("{area}", area).Replace("{controller}", controller).Replace("{action}", action);
             return path.ToLower();
         }
 
@@ -156,9 +171,11 @@ namespace KissU.Util.Webs.Filters {
         /// </summary>
         /// <param name="paths">路径</param>
         /// <returns></returns>
-        private string JoinActionUrl(string[] paths) {
+        private string JoinActionUrl(string[] paths)
+        {
             var result = new StringBuilder();
-            for (var i = 2; i < paths.Length; i++) {
+            for (var i = 2; i < paths.Length; i++)
+            {
                 result.Append(paths[i]);
                 result.Append("/");
             }

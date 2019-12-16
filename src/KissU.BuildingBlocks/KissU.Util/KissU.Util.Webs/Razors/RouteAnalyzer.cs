@@ -6,11 +6,13 @@ using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure;
 
-namespace KissU.Util.Webs.Razors {
+namespace KissU.Util.Webs.Razors
+{
     /// <summary>
     /// 路由分析器
     /// </summary>
-    public class RouteAnalyzer : IRouteAnalyzer {
+    public class RouteAnalyzer : IRouteAnalyzer
+    {
         /// <summary>
         /// 操作描述集合提供程序
         /// </summary>
@@ -26,7 +28,8 @@ namespace KissU.Util.Webs.Razors {
         /// </summary>
         /// <param name="actionDescriptorCollectionProvider">操作描述集合提供程序</param>
         /// <param name="pageLoader">页面加载器</param>
-        public RouteAnalyzer( IActionDescriptorCollectionProvider actionDescriptorCollectionProvider , IPageLoader pageLoader ) {
+        public RouteAnalyzer(IActionDescriptorCollectionProvider actionDescriptorCollectionProvider, IPageLoader pageLoader)
+        {
             _actionDescriptorCollectionProvider = actionDescriptorCollectionProvider;
             _pageLoader = pageLoader;
         }
@@ -34,17 +37,20 @@ namespace KissU.Util.Webs.Razors {
         /// <summary>
         /// 获取所有路由信息
         /// </summary>
-        public IEnumerable<RouteInformation> GetAllRouteInformations() {
+        public IEnumerable<RouteInformation> GetAllRouteInformations()
+        {
             List<RouteInformation> list = new List<RouteInformation>();
 
             var actionDescriptors = this._actionDescriptorCollectionProvider.ActionDescriptors.Items;
-            foreach( var actionDescriptor in actionDescriptors ) {
+            foreach (var actionDescriptor in actionDescriptors)
+            {
                 RouteInformation info = new RouteInformation();
-                if( actionDescriptor.RouteValues.ContainsKey( "area" ) ) {
+                if (actionDescriptor.RouteValues.ContainsKey("area"))
+                {
                     info.AreaName = actionDescriptor.RouteValues["area"];
                 }
                 // Razor页面路径以及调用
-                if( actionDescriptor is PageActionDescriptor pageActionDescriptor )
+                if (actionDescriptor is PageActionDescriptor pageActionDescriptor)
                 {
                     var compiledPage = _pageLoader.Load(pageActionDescriptor);
                     info.Path = pageActionDescriptor.ViewEnginePath;
@@ -57,21 +63,24 @@ namespace KissU.Util.Webs.Razors {
                     continue;
                 }
                 // 路由属性路径
-                if( actionDescriptor.AttributeRouteInfo != null ) {
+                if (actionDescriptor.AttributeRouteInfo != null)
+                {
                     info.Path = $"/{actionDescriptor.AttributeRouteInfo.Template}";
                 }
                 // Controller/Action 的路径以及调用
-                if( actionDescriptor is ControllerActionDescriptor controllerActionDescriptor ) {
-                    if( info.Path.IsEmpty() ) {
+                if (actionDescriptor is ControllerActionDescriptor controllerActionDescriptor)
+                {
+                    if (info.Path.IsEmpty())
+                    {
                         info.Path = $"/{controllerActionDescriptor.ControllerName}/{controllerActionDescriptor.ActionName}";
                     }
-                    SetHtmlInfo( info, controllerActionDescriptor );
+                    SetHtmlInfo(info, controllerActionDescriptor);
                     info.ControllerName = controllerActionDescriptor.ControllerName;
                     info.ActionName = controllerActionDescriptor.ActionName;
                     info.Invocation = $"{controllerActionDescriptor.ControllerName}Controller.{controllerActionDescriptor.ActionName}";
                 }
                 info.Invocation += $"({actionDescriptor.DisplayName})";
-                list.Add( info );
+                list.Add(info);
             }
 
             return list;
@@ -82,11 +91,12 @@ namespace KissU.Util.Webs.Razors {
         /// </summary>
         /// <param name="routeInformation">路由信息</param>
         /// <param name="controllerActionDescriptor">控制器</param>
-        private void SetHtmlInfo( RouteInformation routeInformation,
-            ControllerActionDescriptor controllerActionDescriptor ) {
+        private void SetHtmlInfo(RouteInformation routeInformation,
+            ControllerActionDescriptor controllerActionDescriptor)
+        {
             var htmlAttribute = controllerActionDescriptor.MethodInfo.GetCustomAttribute<HtmlAttribute>() ??
                                 controllerActionDescriptor.ControllerTypeInfo.GetCustomAttribute<HtmlAttribute>();
-            if( htmlAttribute == null )
+            if (htmlAttribute == null)
                 return;
             routeInformation.FilePath = htmlAttribute.Path;
             routeInformation.TemplatePath = htmlAttribute.Template;

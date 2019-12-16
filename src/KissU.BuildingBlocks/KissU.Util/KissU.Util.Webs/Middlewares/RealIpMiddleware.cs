@@ -10,7 +10,8 @@ namespace KissU.Util.Webs.Middlewares
     /// <summary>
     /// 真实Ip中间件
     /// </summary>
-    public class RealIpMiddleware {
+    public class RealIpMiddleware
+    {
         /// <summary>
         /// 方法
         /// </summary>
@@ -26,7 +27,8 @@ namespace KissU.Util.Webs.Middlewares
         /// </summary>
         /// <param name="next">方法</param>
         /// <param name="options">真实Ip选项</param>
-        public RealIpMiddleware(RequestDelegate next, IOptions<RealIpOptions> options) {
+        public RealIpMiddleware(RequestDelegate next, IOptions<RealIpOptions> options)
+        {
             _next = next;
             _options = options.Value;
         }
@@ -35,10 +37,13 @@ namespace KissU.Util.Webs.Middlewares
         /// 执行方法
         /// </summary>
         /// <param name="context">Http上下文</param>
-        public async Task Invoke(HttpContext context) {
+        public async Task Invoke(HttpContext context)
+        {
             var headers = context.Request.Headers;
-            try {
-                if (headers.ContainsKey(_options.HeaderKey)) {
+            try
+            {
+                if (headers.ContainsKey(_options.HeaderKey))
+                {
                     context.Connection.RemoteIpAddress = IPAddress.Parse(
                         _options.HeaderKey.ToLower() == "x-forwarded-for"
                             ? headers["X-Forwarded-For"].ToString().Split(',')[0]
@@ -46,7 +51,8 @@ namespace KissU.Util.Webs.Middlewares
                     WriteLog(context, context.Connection.RemoteIpAddress);
                 }
             }
-            finally {
+            finally
+            {
                 await _next(context);
             }
         }
@@ -56,8 +62,9 @@ namespace KissU.Util.Webs.Middlewares
         /// </summary>
         /// <param name="context">Http上下文</param>
         /// <param name="address">Ip地址</param>
-        private void WriteLog(HttpContext context, IPAddress address) {
-            if(context==null)
+        private void WriteLog(HttpContext context, IPAddress address)
+        {
+            if (context == null)
                 return;
             var log = Log.GetLog(this);
             if (!log.IsDebugEnabled)
@@ -71,7 +78,8 @@ namespace KissU.Util.Webs.Middlewares
     /// <summary>
     /// 真实Ip选项
     /// </summary>
-    public class RealIpOptions {
+    public class RealIpOptions
+    {
         /// <summary>
         /// 请求头键名
         /// </summary>

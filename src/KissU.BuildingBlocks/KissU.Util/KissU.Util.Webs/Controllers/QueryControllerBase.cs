@@ -9,7 +9,8 @@ using KissU.Util.Domains.Repositories;
 using KissU.Util.Webs.Properties;
 using Microsoft.AspNetCore.Mvc;
 
-namespace KissU.Util.Webs.Controllers {
+namespace KissU.Util.Webs.Controllers
+{
     /// <summary>
     /// 查询控制器
     /// </summary>
@@ -17,7 +18,8 @@ namespace KissU.Util.Webs.Controllers {
     /// <typeparam name="TQuery">查询参数类型</typeparam>    
     public abstract class QueryControllerBase<TDto, TQuery> : WebApiControllerBase
         where TQuery : IQueryParameter
-        where TDto : IDto, new() {
+        where TDto : IDto, new()
+    {
         /// <summary>
         /// 查询服务
         /// </summary>
@@ -27,7 +29,8 @@ namespace KissU.Util.Webs.Controllers {
         /// 初始化查询控制器
         /// </summary>
         /// <param name="service">查询服务</param>
-        protected QueryControllerBase( IQueryService<TDto, TQuery> service ) {
+        protected QueryControllerBase(IQueryService<TDto, TQuery> service)
+        {
             _service = service;
         }
 
@@ -40,10 +43,11 @@ namespace KissU.Util.Webs.Controllers {
         /// /api/customer/1 
         /// </remarks>
         /// <param name="id">标识</param>
-        [HttpGet( "{id}" )]
-        public virtual async Task<IActionResult> GetAsync( string id ) {
-            var result = await _service.GetByIdAsync( id );
-            return Success( result );
+        [HttpGet("{id}")]
+        public virtual async Task<IActionResult> GetAsync(string id)
+        {
+            var result = await _service.GetByIdAsync(id);
+            return Success(result);
         }
 
         /// <summary>
@@ -56,24 +60,27 @@ namespace KissU.Util.Webs.Controllers {
         /// </remarks>
         /// <param name="query">查询参数</param>
         [HttpGet]
-        public virtual async Task<IActionResult> PagerQueryAsync( TQuery query ) {
-            PagerQueryBefore( query );
-            var result = await _service.PagerQueryAsync( query );
-            return Success( ToPagerQueryResult( result ) );
+        public virtual async Task<IActionResult> PagerQueryAsync(TQuery query)
+        {
+            PagerQueryBefore(query);
+            var result = await _service.PagerQueryAsync(query);
+            return Success(ToPagerQueryResult(result));
         }
 
         /// <summary>
         /// 分页查询前操作
         /// </summary>
         /// <param name="query">查询参数</param>
-        protected virtual void PagerQueryBefore( TQuery query ) {
+        protected virtual void PagerQueryBefore(TQuery query)
+        {
         }
 
         /// <summary>
         /// 转换分页查询结果
         /// </summary>
         /// <param name="result">分页查询结果</param>
-        protected virtual dynamic ToPagerQueryResult( PagerList<TDto> result ) {
+        protected virtual dynamic ToPagerQueryResult(PagerList<TDto> result)
+        {
             return result;
         }
 
@@ -86,25 +93,28 @@ namespace KissU.Util.Webs.Controllers {
         /// /api/customer/query?name=a
         /// </remarks>
         /// <param name="query">查询参数</param>
-        [HttpGet( "Query" )]
-        public virtual async Task<IActionResult> QueryAsync( TQuery query ) {
-            QueryBefore( query );
-            var result = await _service.QueryAsync( query );
-            return Success( ToQueryResult( result ) );
+        [HttpGet("Query")]
+        public virtual async Task<IActionResult> QueryAsync(TQuery query)
+        {
+            QueryBefore(query);
+            var result = await _service.QueryAsync(query);
+            return Success(ToQueryResult(result));
         }
 
         /// <summary>
         /// 查询前操作
         /// </summary>
         /// <param name="query">查询参数</param>
-        protected virtual void QueryBefore( TQuery query ) {
+        protected virtual void QueryBefore(TQuery query)
+        {
         }
 
         /// <summary>
         /// 转换查询结果
         /// </summary>
         /// <param name="result">查询结果</param>
-        protected virtual dynamic ToQueryResult( List<TDto> result ) {
+        protected virtual dynamic ToQueryResult(List<TDto> result)
+        {
             return result;
         }
 
@@ -112,23 +122,25 @@ namespace KissU.Util.Webs.Controllers {
         /// 获取项列表
         /// </summary>
         /// <param name="query">查询参数</param>
-        [HttpGet( "Items" )]
-        public virtual async Task<IActionResult> GetItemsAsync( TQuery query ) {
-            if( query == null )
-                return Fail( WebResource.QueryIsEmpty );
-            if( query.Order.IsEmpty() )
+        [HttpGet("Items")]
+        public virtual async Task<IActionResult> GetItemsAsync(TQuery query)
+        {
+            if (query == null)
+                return Fail(WebResource.QueryIsEmpty);
+            if (query.Order.IsEmpty())
                 query.Order = "CreationTime Desc";
-            var list = await _service.PagerQueryAsync( query );
-            var result = list.Data.Select( ToItem );
-            return Success( result );
+            var list = await _service.PagerQueryAsync(query);
+            var result = list.Data.Select(ToItem);
+            return Success(result);
         }
 
         /// <summary>
         /// 将Dto转换为列表项
         /// </summary>
         /// <param name="dto">数据传输对象</param>
-        protected virtual Item ToItem( TDto dto ) {
-            throw new NotImplementedException( "ToItem方法未实现,请重写控制器 ToItem 方法" );
+        protected virtual Item ToItem(TDto dto)
+        {
+            throw new NotImplementedException("ToItem方法未实现,请重写控制器 ToItem 方法");
         }
     }
 }
