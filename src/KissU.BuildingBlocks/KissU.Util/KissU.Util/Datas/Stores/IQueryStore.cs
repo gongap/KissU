@@ -3,13 +3,15 @@ using KissU.Util.Datas.Stores.Operations;
 using KissU.Util.Dependency;
 using KissU.Util.Domains;
 
-namespace KissU.Util.Datas.Stores {
+namespace KissU.Util.Datas.Stores
+{
     /// <summary>
     /// 查询存储器
     /// </summary>
     /// <typeparam name="TEntity">对象类型</typeparam>
     public interface IQueryStore<TEntity> : IQueryStore<TEntity, Guid>
-        where TEntity : class, IKey<Guid> {
+        where TEntity : class, IKey<Guid>
+        {
     }
 
     /// <summary>
@@ -41,6 +43,7 @@ namespace KissU.Util.Datas.Stores {
         ICountAsync<TEntity, TKey>,
         IPageQuery<TEntity, TKey>, 
         IPageQueryAsync<TEntity, TKey>
-        where TEntity : class, IKey<TKey> {
+        where TEntity : class, IKey<TKey>
+        {
     }
 }

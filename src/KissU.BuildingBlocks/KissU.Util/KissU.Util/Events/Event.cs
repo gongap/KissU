@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Text;
 
-namespace KissU.Util.Events {
+namespace KissU.Util.Events
+{
     /// <summary>
     /// 事件
     /// </summary>
-    public class Event : IEvent {
+    public class Event : IEvent
+    {
         /// <summary>
         /// 初始化事件
         /// </summary>
-        public Event() {
+        public Event()
+        {
             Id = Util.Helpers.Id.Guid();
             Time = DateTime.Now;
         }
@@ -18,6 +21,7 @@ namespace KissU.Util.Events {
         /// 事件标识
         /// </summary>
         public string Id { get; set; }
+
         /// <summary>
         /// 事件时间
         /// </summary>
@@ -26,7 +30,8 @@ namespace KissU.Util.Events {
         /// <summary>
         /// 输出日志
         /// </summary>
-        public override string ToString() {
+        public override string ToString()
+        {
             var result = new StringBuilder();
             result.AppendLine( $"事件标识: {Id}" );
             result.AppendLine( $"事件时间:{Time.ToMillisecondString()}" );

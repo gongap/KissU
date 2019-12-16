@@ -1,10 +1,12 @@
 ﻿using System;
 
-namespace KissU.Util.Exceptions.Prompts {
+namespace KissU.Util.Exceptions.Prompts
+{
     /// <summary>
     /// 异常提示
     /// </summary>
-    public interface IExceptionPrompt {
+    public interface IExceptionPrompt
+    {
         /// <summary>
         /// 获取异常提示
         /// </summary>

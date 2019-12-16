@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace KissU.Util.Datas.Queries {
+namespace KissU.Util.Datas.Queries
+{
     /// <summary>
     /// 排序生成器
     /// </summary>
-    public class OrderByBuilder {
+    public class OrderByBuilder
+    {
         /// <summary>
         /// 排序项列表
         /// </summary>
@@ -14,7 +16,8 @@ namespace KissU.Util.Datas.Queries {
         /// <summary>
         /// 初始化排序生成器
         /// </summary>
-        public OrderByBuilder() {
+        public OrderByBuilder()
+        {
             _items = new List<OrderByItem>();
         }
 
@@ -23,7 +26,8 @@ namespace KissU.Util.Datas.Queries {
         /// </summary>
         /// <param name="name">排序属性</param>
         /// <param name="desc">是否降序</param>
-        public void Add( string name, bool desc = false ) {
+        public void Add( string name, bool desc = false )
+        {
             if( string.IsNullOrWhiteSpace( name ) )
                 return;
             _items.Add( new OrderByItem( name, desc ) );
@@ -32,7 +36,8 @@ namespace KissU.Util.Datas.Queries {
         /// <summary>
         /// 生成排序字符串
         /// </summary>
-        public string Generate() {
+        public string Generate()
+        {
             return _items.Select( t => t.Generate() ).ToList().Join();
         }
     }

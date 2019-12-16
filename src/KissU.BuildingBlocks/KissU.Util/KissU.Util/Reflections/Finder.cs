@@ -8,11 +8,13 @@ using KissU.Util.Helpers;
 using Microsoft.Extensions.PlatformAbstractions;
 using Regex = System.Text.RegularExpressions.Regex;
 
-namespace KissU.Util.Reflections {
+namespace KissU.Util.Reflections
+{
     /// <summary>
     /// 类型查找器
     /// </summary>
-    public class Finder : IFind {
+    public class Finder : IFind
+    {
         /// <summary>
         /// 跳过的程序集
         /// </summary>
@@ -21,7 +23,8 @@ namespace KissU.Util.Reflections {
         /// <summary>
         /// 获取程序集列表
         /// </summary>
-        public virtual List<Assembly> GetAssemblies() {
+        public virtual List<Assembly> GetAssemblies()
+        {
             LoadAssemblies( PlatformServices.Default.Application.ApplicationBasePath );
             return GetAssembliesFromCurrentAppDomain();
         }
@@ -30,8 +33,10 @@ namespace KissU.Util.Reflections {
         /// 加载程序集到当前应用程序域
         /// </summary>
         /// <param name="path">目录绝对路径</param>
-        protected void LoadAssemblies( string path ) {
-            foreach( string file in Directory.GetFiles( path, "*.dll" ) ) {
+        protected void LoadAssemblies( string path )
+        {
+            foreach( string file in Directory.GetFiles( path, "*.dll" ) )
+            {
                 if( Match( Path.GetFileName( file ) ) == false )
                     continue;
                 LoadAssemblyToAppDomain( file );
@@ -41,7 +46,8 @@ namespace KissU.Util.Reflections {
         /// <summary>
         /// 程序集是否匹配
         /// </summary>
-        protected virtual bool Match( string assemblyName ) {
+        protected virtual bool Match( string assemblyName )
+        {
             if( assemblyName.StartsWith( $"{PlatformServices.Default.Application.ApplicationName}.Views" ) )
                 return false;
             if( assemblyName.StartsWith( $"{PlatformServices.Default.Application.ApplicationName}.PrecompiledViews" ) )
@@ -52,21 +58,26 @@ namespace KissU.Util.Reflections {
         /// <summary>
         /// 将程序集添加当前应用程序域
         /// </summary>
-        private void LoadAssemblyToAppDomain( string file ) {
-            try {
+        private void LoadAssemblyToAppDomain( string file )
+        {
+            try
+            {
                 var assemblyName = AssemblyName.GetAssemblyName( file );
                 AppDomain.CurrentDomain.Load( assemblyName );
             }
-            catch ( BadImageFormatException ) {
+            catch ( BadImageFormatException )
+            {
             }
         }
 
         /// <summary>
         /// 从当前应用程序域获取程序集列表
         /// </summary>
-        private List<Assembly> GetAssembliesFromCurrentAppDomain() {
+        private List<Assembly> GetAssembliesFromCurrentAppDomain()
+        {
             var result = new List<Assembly>();
-            foreach( var assembly in AppDomain.CurrentDomain.GetAssemblies() ) {
+            foreach( var assembly in AppDomain.CurrentDomain.GetAssemblies() )
+            {
                 if( Match( assembly ) )
                     result.Add( assembly );
             }
@@ -76,7 +87,8 @@ namespace KissU.Util.Reflections {
         /// <summary>
         /// 程序集是否匹配
         /// </summary>
-        private bool Match( Assembly assembly ) {
+        private bool Match( Assembly assembly )
+        {
             return !Regex.IsMatch( assembly.FullName, SkipAssemblies, RegexOptions.IgnoreCase | RegexOptions.Compiled );
         }
 
@@ -85,7 +97,8 @@ namespace KissU.Util.Reflections {
         /// </summary>
         /// <typeparam name="T">查找类型</typeparam>
         /// <param name="assemblies">在指定的程序集列表中查找</param>
-        public List<Type> Find<T>( List<Assembly> assemblies = null ) {
+        public List<Type> Find<T>( List<Assembly> assemblies = null )
+        {
             return Find( typeof( T ), assemblies );
         }
 
@@ -94,7 +107,8 @@ namespace KissU.Util.Reflections {
         /// </summary>
         /// <param name="findType">查找类型</param>
         /// <param name="assemblies">在指定的程序集列表中查找</param>
-        public List<Type> Find( Type findType, List<Assembly> assemblies = null ) {
+        public List<Type> Find( Type findType, List<Assembly> assemblies = null )
+        {
             assemblies = assemblies ?? GetAssemblies();
             return Reflection.FindTypes( findType, assemblies.ToArray() );
         }

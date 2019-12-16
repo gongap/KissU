@@ -3,11 +3,13 @@ using System.IO;
 using KissU.Util.Helpers;
 using KissU.Util.Randoms;
 
-namespace KissU.Util.Files.Paths {
+namespace KissU.Util.Files.Paths
+{
     /// <summary>
     /// 路径生成器
     /// </summary>
-    public abstract class PathGeneratorBase : IPathGenerator {
+    public abstract class PathGeneratorBase : IPathGenerator
+    {
         /// <summary>
         /// 随机数生成器
         /// </summary>
@@ -17,7 +19,8 @@ namespace KissU.Util.Files.Paths {
         /// 初始化路径生成器
         /// </summary>
         /// <param name="randomGenerator">随机数生成器</param>
-        protected PathGeneratorBase( IRandomGenerator randomGenerator ) {
+        protected PathGeneratorBase( IRandomGenerator randomGenerator )
+        {
             _randomGenerator = randomGenerator ?? GuidRandomGenerator.Instance;
         }
 
@@ -25,7 +28,8 @@ namespace KissU.Util.Files.Paths {
         /// 生成完整路径
         /// </summary>
         /// <param name="fileName">文件名，必须包含扩展名，如果仅传入扩展名则生成随机文件名</param>
-        public string Generate( string fileName ) {
+        public string Generate( string fileName )
+        {
             if( string.IsNullOrWhiteSpace( fileName ) )
                 throw new ArgumentNullException( nameof( fileName ) );
             return GeneratePath( GetFileName( fileName ) );
@@ -40,10 +44,12 @@ namespace KissU.Util.Files.Paths {
         /// <summary>
         /// 获取文件名
         /// </summary>
-        private string GetFileName( string fileName ) {
+        private string GetFileName( string fileName )
+        {
             var name = Path.GetFileNameWithoutExtension( fileName );
             var extension = Path.GetExtension( fileName )?.TrimStart( '.' );
-            if( string.IsNullOrWhiteSpace( extension ) ) {
+            if( string.IsNullOrWhiteSpace( extension ) )
+            {
                 extension = fileName;
                 name = string.Empty;
             }
@@ -56,7 +62,8 @@ namespace KissU.Util.Files.Paths {
         /// <summary>
         /// 过滤文件名
         /// </summary>
-        private static string FilterFileName( string fileName ) {
+        private static string FilterFileName( string fileName )
+        {
             fileName = Regex.Replace( fileName, "\\W", "" );
             return Util.Helpers.String.PinYin( fileName );
         }

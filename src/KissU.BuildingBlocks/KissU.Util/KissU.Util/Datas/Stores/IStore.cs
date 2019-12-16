@@ -2,13 +2,15 @@
 using KissU.Util.Datas.Stores.Operations;
 using KissU.Util.Domains;
 
-namespace KissU.Util.Datas.Stores {
+namespace KissU.Util.Datas.Stores
+{
     /// <summary>
     /// 存储器
     /// </summary>
     /// <typeparam name="TEntity">对象类型</typeparam>
     public interface IStore<TEntity> : IStore<TEntity, Guid>
-        where TEntity : class, IKey<Guid>, IVersion {
+        where TEntity : class, IKey<Guid>, IVersion
+        {
     }
 
     /// <summary>
@@ -23,6 +25,7 @@ namespace KissU.Util.Datas.Stores {
         IUpdateAsync<TEntity, TKey>,
         IRemove<TEntity, TKey>, 
         IRemoveAsync<TEntity, TKey>
-        where TEntity : class, IKey<TKey> {
+        where TEntity : class, IKey<TKey>
+        {
     }
 }

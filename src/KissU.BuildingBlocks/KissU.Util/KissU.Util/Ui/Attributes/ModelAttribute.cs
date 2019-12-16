@@ -1,16 +1,19 @@
 ﻿using System;
 
-namespace KissU.Util.Ui.Attributes {
+namespace KissU.Util.Ui.Attributes
+{
     /// <summary>
     /// 模型绑定
     /// </summary>
     [AttributeUsage( AttributeTargets.Class | AttributeTargets.Property )]
-    public class ModelAttribute : Attribute {
+    public class ModelAttribute : Attribute
+    {
         /// <summary>
         /// 初始化模型绑定
         /// </summary>
         /// <param name="model">模型</param>
-        public ModelAttribute( string model = "model" ) {
+        public ModelAttribute( string model = "model" )
+        {
             Model = model;
         }
 

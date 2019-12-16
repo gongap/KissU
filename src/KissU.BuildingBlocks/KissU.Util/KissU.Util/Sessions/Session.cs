@@ -1,11 +1,13 @@
 ﻿using IdentityModel;
 using KissU.Util.Helpers;
 
-namespace KissU.Util.Sessions {
+namespace KissU.Util.Sessions
+{
     /// <summary>
     /// 用户会话
     /// </summary>
-    public class Session : ISession {
+    public class Session : ISession
+    {
         /// <summary>
         /// 空用户会话
         /// </summary>
@@ -24,8 +26,10 @@ namespace KissU.Util.Sessions {
         /// <summary>
         /// 用户标识
         /// </summary>
-        public string UserId {
-            get {
+        public string UserId
+        {
+            get
+            {
                 var result = Web.Identity.GetValue( JwtClaimTypes.Subject );
                 return string.IsNullOrWhiteSpace( result ) ? Web.Identity.GetValue( System.Security.Claims.ClaimTypes.NameIdentifier ) : result;
             }

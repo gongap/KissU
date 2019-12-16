@@ -5,15 +5,18 @@ using KissU.Util.Logs.Exceptionless;
 using KissU.Util.Security;
 using KissU.Util.Sessions;
 
-namespace KissU.Util.Logs {
+namespace KissU.Util.Logs
+{
     /// <summary>
     /// 日志操作
     /// </summary>
-    public class Log : LogBase<LogContent> {
+    public class Log : LogBase<LogContent>
+    {
         /// <summary>
         /// 类名
         /// </summary>
         private readonly string _class;
+
         /// <summary>
         /// 空日志操作
         /// </summary>
@@ -26,7 +29,8 @@ namespace KissU.Util.Logs {
         /// <param name="context">日志上下文</param>
         /// <param name="format">日志格式器</param>
         /// <param name="session">用户会话</param>
-        public Log( ILogProviderFactory providerFactory, ILogContext context, ILogFormat format, ISession session ) : base( providerFactory.Create( "", format ), context, session ) {
+        public Log( ILogProviderFactory providerFactory, ILogContext context, ILogFormat format, ISession session ) : base( providerFactory.Create( "", format ), context, session )
+        {
         }
 
         /// <summary>
@@ -36,21 +40,24 @@ namespace KissU.Util.Logs {
         /// <param name="context">日志上下文</param>
         /// <param name="session">用户会话</param>
         /// <param name="class">类名</param>
-        private Log( ILogProvider provider, ILogContext context, ISession session, string @class ) : base( provider, context, session ) {
+        private Log( ILogProvider provider, ILogContext context, ISession session, string @class ) : base( provider, context, session )
+        {
             _class = @class;
         }
 
         /// <summary>
         /// 获取日志内容
         /// </summary>
-        protected override LogContent GetContent() {
+        protected override LogContent GetContent()
+        {
             return new LogContent { Class = _class };
         }
 
         /// <summary>
         /// 初始化
         /// </summary>
-        protected override void Init( LogContent content ) {
+        protected override void Init( LogContent content )
+        {
             base.Init( content );
             content.Tenant = Session.GetTenantName();
             content.Application = Session.GetApplicationName();
@@ -61,7 +68,8 @@ namespace KissU.Util.Logs {
         /// <summary>
         /// 获取日志操作实例
         /// </summary>
-        public static ILog GetLog() {
+        public static ILog GetLog()
+        {
             return GetLog( string.Empty );
         }
 
@@ -69,7 +77,8 @@ namespace KissU.Util.Logs {
         /// 获取日志操作实例
         /// </summary>
         /// <param name="instance">实例</param>
-        public static ILog GetLog( object instance ) {
+        public static ILog GetLog( object instance )
+        {
             if( instance == null )
                 return GetLog();
             var className = instance.GetType().ToString();
@@ -80,14 +89,16 @@ namespace KissU.Util.Logs {
         /// 获取日志操作实例
         /// </summary>
         /// <param name="logName">日志名称</param>
-        public static ILog GetLog( string logName ) {
+        public static ILog GetLog( string logName )
+        {
             return GetLog( logName, string.Empty );
         }
 
         /// <summary>
         /// 获取日志操作实例
         /// </summary>
-        private static ILog GetLog( string logName, string @class ) {
+        private static ILog GetLog( string logName, string @class )
+        {
             var providerFactory = GetLogProviderFactory();
             var format = GetLogFormat();
             var context = GetLogContext();
@@ -98,11 +109,14 @@ namespace KissU.Util.Logs {
         /// <summary>
         /// 获取日志提供程序工厂
         /// </summary>
-        private static ILogProviderFactory GetLogProviderFactory() {
-            try {
+        private static ILogProviderFactory GetLogProviderFactory()
+        {
+            try
+            {
                 return Ioc.Create<ILogProviderFactory>();
             }
-            catch {
+            catch
+            {
                 return new Util.Logs.NLog.LogProviderFactory();
             }
         }
@@ -110,11 +124,14 @@ namespace KissU.Util.Logs {
         /// <summary>
         /// 获取日志格式器
         /// </summary>
-        private static ILogFormat GetLogFormat() {
-            try {
+        private static ILogFormat GetLogFormat()
+        {
+            try
+            {
                 return Ioc.Create<ILogFormat>();
             }
-            catch {
+            catch
+            {
                 return Util.Logs.Formats.ContentFormat.Instance;
             }
         }
@@ -122,11 +139,14 @@ namespace KissU.Util.Logs {
         /// <summary>
         /// 获取日志上下文
         /// </summary>
-        private static ILogContext GetLogContext() {
-            try {
+        private static ILogContext GetLogContext()
+        {
+            try
+            {
                 return Ioc.Create<ILogContext>();
             }
-            catch {
+            catch
+            {
                 return NullLogContext.Instance;
             }
         }
@@ -134,11 +154,14 @@ namespace KissU.Util.Logs {
         /// <summary>
         /// 获取用户会话
         /// </summary>
-        private static ISession GetSession() {
-            try {
+        private static ISession GetSession()
+        {
+            try
+            {
                 return Ioc.Create<ISession>();
             }
-            catch {
+            catch
+            {
                 return Sessions.Session.Instance;
             }
         }

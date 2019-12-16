@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
-namespace KissU.Util.Validations {
+namespace KissU.Util.Validations
+{
     /// <summary>
     /// 验证结果集合
     /// </summary>
-    public class ValidationResultCollection : IEnumerable<ValidationResult> {
+    public class ValidationResultCollection : IEnumerable<ValidationResult>
+    {
         /// <summary>
         /// 验证结果
         /// </summary>
@@ -16,14 +18,16 @@ namespace KissU.Util.Validations {
         /// <summary>
         /// 初始化验证结果集合
         /// </summary>
-        public ValidationResultCollection() : this( "" ) {
+        public ValidationResultCollection() : this( "" )
+        {
         }
 
         /// <summary>
         /// 初始化验证结果集合
         /// </summary>
         /// <param name="result">验证结果</param>
-        public ValidationResultCollection( string result ) {
+        public ValidationResultCollection( string result )
+        {
             _results = new List<ValidationResult>();
             if( string.IsNullOrWhiteSpace( result ) )
                 return;
@@ -49,7 +53,8 @@ namespace KissU.Util.Validations {
         /// 添加验证结果
         /// </summary>
         /// <param name="result">验证结果</param>
-        public void Add( ValidationResult result ) {
+        public void Add( ValidationResult result )
+        {
             if( result == null )
                 return;
             _results.Add( result );
@@ -59,7 +64,8 @@ namespace KissU.Util.Validations {
         /// 添加验证结果集合
         /// </summary>
         /// <param name="results">验证结果集合</param>
-        public void AddList( IEnumerable<ValidationResult> results ) {
+        public void AddList( IEnumerable<ValidationResult> results )
+        {
             if( results == null )
                 return;
             foreach( var result in results )
@@ -69,21 +75,24 @@ namespace KissU.Util.Validations {
         /// <summary>
         /// 获取迭代器
         /// </summary>
-        IEnumerator<ValidationResult> IEnumerable<ValidationResult>.GetEnumerator() {
+        IEnumerator<ValidationResult> IEnumerable<ValidationResult>.GetEnumerator()
+        {
             return _results.GetEnumerator();
         }
 
         /// <summary>
         /// 获取迭代器
         /// </summary>
-        IEnumerator IEnumerable.GetEnumerator() {
+        IEnumerator IEnumerable.GetEnumerator()
+        {
             return _results.GetEnumerator();
         }
 
         /// <summary>
         /// 输出验证消息
         /// </summary>
-        public override string ToString() {
+        public override string ToString()
+        {
             if( IsValid )
                 return string.Empty;
             return _results.First().ErrorMessage;

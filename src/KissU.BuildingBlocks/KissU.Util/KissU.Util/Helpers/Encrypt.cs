@@ -4,14 +4,16 @@ using System.Security.Cryptography;
 using System.Text;
 using KissU.Util.Helpers.Internal;
 
-namespace KissU.Util.Helpers {
+namespace KissU.Util.Helpers
+{
     /// <summary>
     /// 加密操作
     /// 说明：
     /// 1. AES加密整理自支付宝SDK
     /// 2. RSA加密采用 https://github.com/stulzq/DotnetCore.RSA/blob/master/DotnetCore.RSA/RSAHelper.cs
     /// </summary>
-    public static class Encrypt {
+    public static class Encrypt
+    {
 
         #region Md5加密
 
@@ -19,7 +21,8 @@ namespace KissU.Util.Helpers {
         /// Md5加密，返回16位结果
         /// </summary>
         /// <param name="value">值</param>
-        public static string Md5By16( string value ) {
+        public static string Md5By16( string value )
+        {
             return Md5By16( value, Encoding.UTF8 );
         }
 
@@ -28,23 +31,27 @@ namespace KissU.Util.Helpers {
         /// </summary>
         /// <param name="value">值</param>
         /// <param name="encoding">字符编码</param>
-        public static string Md5By16( string value, Encoding encoding ) {
+        public static string Md5By16( string value, Encoding encoding )
+        {
             return Md5( value, encoding, 4, 8 );
         }
 
         /// <summary>
         /// Md5加密
         /// </summary>
-        private static string Md5( string value, Encoding encoding, int? startIndex, int? length ) {
+        private static string Md5( string value, Encoding encoding, int? startIndex, int? length )
+        {
             if( string.IsNullOrWhiteSpace( value ) )
                 return string.Empty;
             var md5 = new MD5CryptoServiceProvider();
             string result;
-            try {
+            try
+            {
                 var hash = md5.ComputeHash( encoding.GetBytes( value ) );
                 result = startIndex == null ? BitConverter.ToString( hash ) : BitConverter.ToString( hash, startIndex.SafeValue(), length.SafeValue() );
             }
-            finally {
+            finally
+            {
                 md5.Clear();
             }
             return result.Replace( "-", "" );
@@ -54,7 +61,8 @@ namespace KissU.Util.Helpers {
         /// Md5加密，返回32位结果
         /// </summary>
         /// <param name="value">值</param>
-        public static string Md5By32( string value ) {
+        public static string Md5By32( string value )
+        {
             return Md5By32( value, Encoding.UTF8 );
         }
 
@@ -63,7 +71,8 @@ namespace KissU.Util.Helpers {
         /// </summary>
         /// <param name="value">值</param>
         /// <param name="encoding">字符编码</param>
-        public static string Md5By32( string value, Encoding encoding ) {
+        public static string Md5By32( string value, Encoding encoding )
+        {
             return Md5( value, encoding, null, null );
         }
 
@@ -80,7 +89,8 @@ namespace KissU.Util.Helpers {
         /// DES加密
         /// </summary>
         /// <param name="value">待加密的值</param>
-        public static string DesEncrypt( object value ) {
+        public static string DesEncrypt( object value )
+        {
             return DesEncrypt( value, DesKey );
         }
 
@@ -89,7 +99,8 @@ namespace KissU.Util.Helpers {
         /// </summary>
         /// <param name="value">待加密的值</param>
         /// <param name="key">密钥,24位</param>
-        public static string DesEncrypt( object value, string key ) {
+        public static string DesEncrypt( object value, string key )
+        {
             return DesEncrypt( value, key, Encoding.UTF8 );
         }
 
@@ -99,11 +110,13 @@ namespace KissU.Util.Helpers {
         /// <param name="value">待加密的值</param>
         /// <param name="key">密钥,24位</param>
         /// <param name="encoding">编码</param>
-        public static string DesEncrypt( object value, string key, Encoding encoding ) {
+        public static string DesEncrypt( object value, string key, Encoding encoding )
+        {
             string text = value.SafeString();
             if( ValidateDes( text, key ) == false )
                 return string.Empty;
-            using( var transform = CreateDesProvider( key ).CreateEncryptor() ) {
+            using( var transform = CreateDesProvider( key ).CreateEncryptor() )
+            {
                 return GetEncryptResult( text, encoding, transform );
             }
         }
@@ -111,7 +124,8 @@ namespace KissU.Util.Helpers {
         /// <summary>
         /// 验证Des加密参数
         /// </summary>
-        private static bool ValidateDes( string text, string key ) {
+        private static bool ValidateDes( string text, string key )
+        {
             if( string.IsNullOrWhiteSpace( text ) || string.IsNullOrWhiteSpace( key ) )
                 return false;
             return key.Length == 24;
@@ -120,14 +134,16 @@ namespace KissU.Util.Helpers {
         /// <summary>
         /// 创建Des加密服务提供程序
         /// </summary>
-        private static TripleDESCryptoServiceProvider CreateDesProvider( string key ) {
+        private static TripleDESCryptoServiceProvider CreateDesProvider( string key )
+        {
             return new TripleDESCryptoServiceProvider { Key = Encoding.ASCII.GetBytes( key ), Mode = CipherMode.ECB, Padding = PaddingMode.PKCS7 };
         }
 
         /// <summary>
         /// 获取加密结果
         /// </summary>
-        private static string GetEncryptResult( string value, Encoding encoding, ICryptoTransform transform ) {
+        private static string GetEncryptResult( string value, Encoding encoding, ICryptoTransform transform )
+        {
             var bytes = encoding.GetBytes( value );
             var result = transform.TransformFinalBlock( bytes, 0, bytes.Length );
             return System.Convert.ToBase64String( result );
@@ -137,7 +153,8 @@ namespace KissU.Util.Helpers {
         /// DES解密
         /// </summary>
         /// <param name="value">加密后的值</param>
-        public static string DesDecrypt( object value ) {
+        public static string DesDecrypt( object value )
+        {
             return DesDecrypt( value, DesKey );
         }
 
@@ -146,7 +163,8 @@ namespace KissU.Util.Helpers {
         /// </summary>
         /// <param name="value">加密后的值</param>
         /// <param name="key">密钥,24位</param>
-        public static string DesDecrypt( object value, string key ) {
+        public static string DesDecrypt( object value, string key )
+        {
             return DesDecrypt( value, key, Encoding.UTF8 );
         }
 
@@ -156,11 +174,13 @@ namespace KissU.Util.Helpers {
         /// <param name="value">加密后的值</param>
         /// <param name="key">密钥,24位</param>
         /// <param name="encoding">编码</param>
-        public static string DesDecrypt( object value, string key, Encoding encoding ) {
+        public static string DesDecrypt( object value, string key, Encoding encoding )
+        {
             string text = value.SafeString();
             if( !ValidateDes( text, key ) )
                 return string.Empty;
-            using( var transform = CreateDesProvider( key ).CreateDecryptor() ) {
+            using( var transform = CreateDesProvider( key ).CreateDecryptor() )
+            {
                 return GetDecryptResult( text, encoding, transform );
             }
         }
@@ -168,7 +188,8 @@ namespace KissU.Util.Helpers {
         /// <summary>
         /// 获取解密结果
         /// </summary>
-        private static string GetDecryptResult( string value, Encoding encoding, ICryptoTransform transform ) {
+        private static string GetDecryptResult( string value, Encoding encoding, ICryptoTransform transform )
+        {
             var bytes = System.Convert.FromBase64String( value );
             var result = transform.TransformFinalBlock( bytes, 0, bytes.Length );
             return encoding.GetString( result );
@@ -182,12 +203,16 @@ namespace KissU.Util.Helpers {
         /// 128位0向量
         /// </summary>
         private static byte[] _iv;
+
         /// <summary>
         /// 128位0向量
         /// </summary>
-        private static byte[] Iv {
-            get {
-                if( _iv == null ) {
+        private static byte[] Iv
+        {
+            get
+            {
+                if( _iv == null )
+                {
                     var size = 16;
                     _iv = new byte[size];
                     for( int i = 0; i < size; i++ )
@@ -206,7 +231,8 @@ namespace KissU.Util.Helpers {
         /// AES加密
         /// </summary>
         /// <param name="value">待加密的值</param>
-        public static string AesEncrypt( string value ) {
+        public static string AesEncrypt( string value )
+        {
             return AesEncrypt( value, AesKey );
         }
 
@@ -215,7 +241,8 @@ namespace KissU.Util.Helpers {
         /// </summary>
         /// <param name="value">待加密的值</param>
         /// <param name="key">密钥</param>
-        public static string AesEncrypt( string value, string key ) {
+        public static string AesEncrypt( string value, string key )
+        {
             return AesEncrypt( value, key, Encoding.UTF8 );
         }
 
@@ -225,11 +252,13 @@ namespace KissU.Util.Helpers {
         /// <param name="value">待加密的值</param>
         /// <param name="key">密钥</param>
         /// <param name="encoding">编码</param>
-        public static string AesEncrypt( string value, string key, Encoding encoding ) {
+        public static string AesEncrypt( string value, string key, Encoding encoding )
+        {
             if( string.IsNullOrWhiteSpace( value ) || string.IsNullOrWhiteSpace( key ) )
                 return string.Empty;
             var rijndaelManaged = CreateRijndaelManaged( key, encoding );
-            using( var transform = rijndaelManaged.CreateEncryptor( rijndaelManaged.Key, rijndaelManaged.IV ) ) {
+            using( var transform = rijndaelManaged.CreateEncryptor( rijndaelManaged.Key, rijndaelManaged.IV ) )
+            {
                 return GetEncryptResult( value, encoding, transform );
             }
         }
@@ -237,8 +266,10 @@ namespace KissU.Util.Helpers {
         /// <summary>
         /// 创建RijndaelManaged
         /// </summary>
-        private static RijndaelManaged CreateRijndaelManaged( string key, Encoding encoding, CipherMode cipherMode = CipherMode.CBC ) {
-            return new RijndaelManaged {
+        private static RijndaelManaged CreateRijndaelManaged( string key, Encoding encoding, CipherMode cipherMode = CipherMode.CBC )
+        {
+            return new RijndaelManaged
+            {
                 Key = encoding.GetBytes( key ),
                 Mode = cipherMode,
                 Padding = PaddingMode.PKCS7,
@@ -250,7 +281,8 @@ namespace KissU.Util.Helpers {
         /// AES解密
         /// </summary>
         /// <param name="value">加密后的值</param>
-        public static string AesDecrypt( string value ) {
+        public static string AesDecrypt( string value )
+        {
             return AesDecrypt( value, AesKey );
         }
 
@@ -259,7 +291,8 @@ namespace KissU.Util.Helpers {
         /// </summary>
         /// <param name="value">加密后的值</param>
         /// <param name="key">密钥</param>
-        public static string AesDecrypt( string value, string key ) {
+        public static string AesDecrypt( string value, string key )
+        {
             return AesDecrypt( value, key, Encoding.UTF8 );
         }
 
@@ -270,11 +303,13 @@ namespace KissU.Util.Helpers {
         /// <param name="key">密钥</param>
         /// <param name="encoding">编码</param>
         /// <param name="cipherMode">密码模式</param>
-        public static string AesDecrypt( string value, string key, Encoding encoding, CipherMode cipherMode = CipherMode.CBC ) {
+        public static string AesDecrypt( string value, string key, Encoding encoding, CipherMode cipherMode = CipherMode.CBC )
+        {
             if( string.IsNullOrWhiteSpace( value ) || string.IsNullOrWhiteSpace( key ) )
                 return string.Empty;
             var rijndaelManaged = CreateRijndaelManaged( key, encoding, cipherMode );
-            using( var transform = rijndaelManaged.CreateDecryptor( rijndaelManaged.Key, rijndaelManaged.IV ) ) {
+            using( var transform = rijndaelManaged.CreateDecryptor( rijndaelManaged.Key, rijndaelManaged.IV ) )
+            {
                 return GetDecryptResult( value, encoding, transform );
             }
         }
@@ -288,7 +323,8 @@ namespace KissU.Util.Helpers {
         /// </summary>
         /// <param name="value">待加密的值</param>
         /// <param name="key">密钥</param>
-        public static string RsaSign( string value, string key ) {
+        public static string RsaSign( string value, string key )
+        {
             return RsaSign( value, key, Encoding.UTF8 );
         }
 
@@ -298,7 +334,8 @@ namespace KissU.Util.Helpers {
         /// <param name="value">待加密的值</param>
         /// <param name="key">密钥</param>
         /// <param name="encoding">编码</param>
-        public static string RsaSign( string value, string key, Encoding encoding ) {
+        public static string RsaSign( string value, string key, Encoding encoding )
+        {
             return RsaSign( value, key, encoding, RSAType.RSA );
         }
 
@@ -307,7 +344,8 @@ namespace KissU.Util.Helpers {
         /// </summary>
         /// <param name="value">待加密的值</param>
         /// <param name="key">密钥</param>
-        public static string Rsa2Sign( string value, string key ) {
+        public static string Rsa2Sign( string value, string key )
+        {
             return Rsa2Sign( value, key, Encoding.UTF8 );
         }
 
@@ -317,14 +355,16 @@ namespace KissU.Util.Helpers {
         /// <param name="value">待加密的值</param>
         /// <param name="key">密钥</param>
         /// <param name="encoding">编码</param>
-        public static string Rsa2Sign( string value, string key, Encoding encoding ) {
+        public static string Rsa2Sign( string value, string key, Encoding encoding )
+        {
             return RsaSign( value, key, encoding, RSAType.RSA2 );
         }
 
         /// <summary>
         /// Rsa加密
         /// </summary>
-        private static string RsaSign( string value, string key, Encoding encoding, RSAType type ) {
+        private static string RsaSign( string value, string key, Encoding encoding, RSAType type )
+        {
             if( string.IsNullOrWhiteSpace( value ) || string.IsNullOrWhiteSpace( key ) )
                 return string.Empty;
             var rsa = new RsaHelper( type, encoding, key );
@@ -337,7 +377,8 @@ namespace KissU.Util.Helpers {
         /// <param name="value">待验签的值</param>
         /// <param name="publicKey">公钥</param>
         /// <param name="sign">签名</param>
-        public static bool RsaVerify( string value, string publicKey, string sign ) {
+        public static bool RsaVerify( string value, string publicKey, string sign )
+        {
             return RsaVerify( value, publicKey, sign, Encoding.UTF8 );
         }
 
@@ -348,7 +389,8 @@ namespace KissU.Util.Helpers {
         /// <param name="publicKey">公钥</param>
         /// <param name="sign">签名</param>
         /// <param name="encoding">编码</param>
-        public static bool RsaVerify( string value, string publicKey, string sign, Encoding encoding ) {
+        public static bool RsaVerify( string value, string publicKey, string sign, Encoding encoding )
+        {
             return RsaVerify( value, publicKey, sign, encoding, RSAType.RSA );
         }
 
@@ -358,7 +400,8 @@ namespace KissU.Util.Helpers {
         /// <param name="value">待验签的值</param>
         /// <param name="publicKey">公钥</param>
         /// <param name="sign">签名</param>
-        public static bool Rsa2Verify( string value, string publicKey, string sign ) {
+        public static bool Rsa2Verify( string value, string publicKey, string sign )
+        {
             return Rsa2Verify( value, publicKey, sign, Encoding.UTF8 );
         }
 
@@ -369,14 +412,16 @@ namespace KissU.Util.Helpers {
         /// <param name="publicKey">公钥</param>
         /// <param name="sign">签名</param>
         /// <param name="encoding">编码</param>
-        public static bool Rsa2Verify( string value, string publicKey, string sign, Encoding encoding ) {
+        public static bool Rsa2Verify( string value, string publicKey, string sign, Encoding encoding )
+        {
             return RsaVerify( value, publicKey, sign, encoding, RSAType.RSA2 );
         }
 
         /// <summary>
         /// Rsa验签
         /// </summary>
-        private static bool RsaVerify( string value, string publicKey, string sign, Encoding encoding, RSAType type ) {
+        private static bool RsaVerify( string value, string publicKey, string sign, Encoding encoding, RSAType type )
+        {
             if( string.IsNullOrWhiteSpace( value ) || string.IsNullOrWhiteSpace( publicKey ) || string.IsNullOrWhiteSpace( sign ) )
                 return false;
             var rsa = new RsaHelper( type, encoding, publicKey: publicKey );
@@ -392,7 +437,8 @@ namespace KissU.Util.Helpers {
         /// </summary>
         /// <param name="value">值</param>
         /// <param name="key">密钥</param>
-        public static string HmacSha256( string value, string key ) {
+        public static string HmacSha256( string value, string key )
+        {
             return HmacSha256( value, key,Encoding.UTF8 );
         }
 
@@ -402,7 +448,8 @@ namespace KissU.Util.Helpers {
         /// <param name="value">值</param>
         /// <param name="key">密钥</param>
         /// <param name="encoding">字符编码</param>
-        public static string HmacSha256( string value,string key, Encoding encoding ) {
+        public static string HmacSha256( string value,string key, Encoding encoding )
+        {
             if( string.IsNullOrWhiteSpace( value ) || string.IsNullOrWhiteSpace( key ) )
                 return string.Empty;
             var sha256 = new HMACSHA256( encoding.GetBytes( key ) );

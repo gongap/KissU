@@ -1,14 +1,17 @@
 ﻿using KissU.Util.Datas.Enums;
 
-namespace KissU.Util.Datas.Sql.Configs {
+namespace KissU.Util.Datas.Sql.Configs
+{
     /// <summary>
     /// Sql配置
     /// </summary>
-    public class SqlOptions {
+    public class SqlOptions
+    {
         /// <summary>
         /// 数据库类型，默认为Sql Server
         /// </summary>
         public DatabaseType DatabaseType { get; set; } = DatabaseType.SqlServer;
+
         /// <summary>
         /// 是否在执行之后清空Sql和参数，默认为 true
         /// </summary>

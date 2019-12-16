@@ -2,13 +2,15 @@
 using KissU.Util.Datas.Stores.Operations;
 using KissU.Util.Dependency;
 
-namespace KissU.Util.Domains.Repositories {
+namespace KissU.Util.Domains.Repositories
+{
     /// <summary>
     /// 仓储
     /// </summary>
     /// <typeparam name="TEntity">实体类型</typeparam>
     public interface ICompactRepository<TEntity> : ICompactRepository<TEntity, Guid>
-        where TEntity : class, IAggregateRoot, IKey<Guid>, IVersion {
+        where TEntity : class, IAggregateRoot, IKey<Guid>, IVersion
+        {
     }
 
     /// <summary>
@@ -23,6 +25,7 @@ namespace KissU.Util.Domains.Repositories {
         IAdd<TEntity, TKey>, IAddAsync<TEntity, TKey>,
         IUpdate<TEntity, TKey>, IUpdateAsync<TEntity, TKey>,
         IRemove<TEntity, TKey>, IRemoveAsync<TEntity, TKey>
-        where TEntity : class, IAggregateRoot, IKey<TKey>,IVersion {
+        where TEntity : class, IAggregateRoot, IKey<TKey>,IVersion
+        {
     }
 }

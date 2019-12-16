@@ -1,7 +1,8 @@
 ﻿using KissU.Util.Applications.Operations;
 using KissU.Util.Datas.Queries;
 
-namespace KissU.Util.Applications {
+namespace KissU.Util.Applications
+{
     /// <summary>
     /// 查询服务
     /// </summary>
@@ -12,6 +13,7 @@ namespace KissU.Util.Applications {
         IGetAll<TDto>, IGetAllAsync<TDto>,
         IPageQuery<TDto, TQueryParameter>, IPageQueryAsync<TDto, TQueryParameter>
         where TDto : new()
-        where TQueryParameter : IQueryParameter {
+        where TQueryParameter : IQueryParameter
+        {
     }
 }

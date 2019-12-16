@@ -1,7 +1,9 @@
-﻿namespace KissU.Util.Datas.Sql.Builders {
+﻿namespace KissU.Util.Datas.Sql.Builders
+{
     /// <summary>
     /// GroupBy子句操作
     /// </summary>
-    public interface IGroupBy {
+    public interface IGroupBy
+    {
     }
 }

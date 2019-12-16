@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace KissU.Util.Dependency {
+namespace KissU.Util.Dependency
+{
     /// <summary>
     /// 容器
     /// </summary>
-    public interface IContainer : IDisposable {
+    public interface IContainer : IDisposable
+    {
         /// <summary>
         /// 创建集合
         /// </summary>

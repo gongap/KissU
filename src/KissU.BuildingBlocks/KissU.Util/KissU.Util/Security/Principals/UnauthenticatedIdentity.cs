@@ -1,10 +1,12 @@
 ﻿using System.Security.Claims;
 
-namespace KissU.Util.Security.Principals {
+namespace KissU.Util.Security.Principals
+{
     /// <summary>
     /// 未认证的身份标识
     /// </summary>
-    public class UnauthenticatedIdentity : ClaimsIdentity {
+    public class UnauthenticatedIdentity : ClaimsIdentity
+    {
         /// <summary>
         /// 是否认证
         /// </summary>

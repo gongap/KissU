@@ -1,11 +1,13 @@
 ﻿using System;
 using KissU.Util.Datas.Sql.Matedatas;
 
-namespace KissU.Util.Datas.Sql.Builders.Core {
+namespace KissU.Util.Datas.Sql.Builders.Core
+{
     /// <summary>
     /// Sql执行上下文
     /// </summary>
-    public class SqlContext {
+    public class SqlContext
+    {
         /// <summary>
         /// 初始化Sql执行上下文
         /// </summary>
@@ -14,7 +16,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <param name="matedata">实体元数据解析器</param>
         /// <param name="parameterManager">参数管理器</param>
         /// <param name="clause">Sql子句访问器</param>
-        public SqlContext( IDialect dialect, IEntityAliasRegister entityAliasRegister, IEntityMatedata matedata, IParameterManager parameterManager, IClauseAccessor clause ) {
+        public SqlContext( IDialect dialect, IEntityAliasRegister entityAliasRegister, IEntityMatedata matedata, IParameterManager parameterManager, IClauseAccessor clause )
+        {
             EntityAliasRegister = entityAliasRegister ?? new EntityAliasRegister();
             Matedata = matedata ?? new DefaultEntityMatedata();
             Dialect = dialect;

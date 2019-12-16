@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace KissU.Util.Helpers {
+namespace KissU.Util.Helpers
+{
     /// <summary>
     /// 类型转换
     /// </summary>
-    public static class Convert {
+    public static class Convert
+    {
         /// <summary>
         /// 转换为32位整型
         /// </summary>
         /// <param name="input">输入值</param>
-        public static int ToInt( object input ) {
+        public static int ToInt( object input )
+        {
             return ToIntOrNull( input ) ?? 0;
         }
 
@@ -20,17 +23,20 @@ namespace KissU.Util.Helpers {
         /// 转换为32位可空整型
         /// </summary>
         /// <param name="input">输入值</param>
-        public static int? ToIntOrNull( object input ) {
+        public static int? ToIntOrNull( object input )
+        {
             var success = int.TryParse( input.SafeString(), out var result );
             if( success )
                 return result;
-            try {
+            try
+            {
                 var temp = ToDoubleOrNull( input, 0 );
                 if( temp == null )
                     return null;
                 return System.Convert.ToInt32( temp );
             }
-            catch {
+            catch
+            {
                 return null;
             }
         }
@@ -39,7 +45,8 @@ namespace KissU.Util.Helpers {
         /// 转换为64位整型
         /// </summary>
         /// <param name="input">输入值</param>
-        public static long ToLong( object input ) {
+        public static long ToLong( object input )
+        {
             return ToLongOrNull( input ) ?? 0;
         }
 
@@ -47,17 +54,20 @@ namespace KissU.Util.Helpers {
         /// 转换为64位可空整型
         /// </summary>
         /// <param name="input">输入值</param>
-        public static long? ToLongOrNull( object input ) {
+        public static long? ToLongOrNull( object input )
+        {
             var success = long.TryParse( input.SafeString(), out var result );
             if( success )
                 return result;
-            try {
+            try
+            {
                 var temp = ToDecimalOrNull( input, 0 );
                 if( temp == null )
                     return null;
                 return System.Convert.ToInt64( temp );
             }
-            catch {
+            catch
+            {
                 return null;
             }
         }
@@ -67,7 +77,8 @@ namespace KissU.Util.Helpers {
         /// </summary>
         /// <param name="input">输入值</param>
         /// <param name="digits">小数位数</param>
-        public static float ToFloat( object input, int? digits = null ) {
+        public static float ToFloat( object input, int? digits = null )
+        {
             return ToFloatOrNull( input, digits ) ?? 0;
         }
 
@@ -76,7 +87,8 @@ namespace KissU.Util.Helpers {
         /// </summary>
         /// <param name="input">输入值</param>
         /// <param name="digits">小数位数</param>
-        public static float? ToFloatOrNull( object input, int? digits = null ) {
+        public static float? ToFloatOrNull( object input, int? digits = null )
+        {
             var success = float.TryParse( input.SafeString(), out var result );
             if( !success )
                 return null;
@@ -90,7 +102,8 @@ namespace KissU.Util.Helpers {
         /// </summary>
         /// <param name="input">输入值</param>
         /// <param name="digits">小数位数</param>
-        public static double ToDouble( object input, int? digits = null ) {
+        public static double ToDouble( object input, int? digits = null )
+        {
             return ToDoubleOrNull( input, digits ) ?? 0;
         }
 
@@ -99,7 +112,8 @@ namespace KissU.Util.Helpers {
         /// </summary>
         /// <param name="input">输入值</param>
         /// <param name="digits">小数位数</param>
-        public static double? ToDoubleOrNull( object input, int? digits = null ) {
+        public static double? ToDoubleOrNull( object input, int? digits = null )
+        {
             var success = double.TryParse( input.SafeString(), out var result );
             if( !success )
                 return null;
@@ -113,7 +127,8 @@ namespace KissU.Util.Helpers {
         /// </summary>
         /// <param name="input">输入值</param>
         /// <param name="digits">小数位数</param>
-        public static decimal ToDecimal( object input, int? digits = null ) {
+        public static decimal ToDecimal( object input, int? digits = null )
+        {
             return ToDecimalOrNull( input, digits ) ?? 0;
         }
 
@@ -122,7 +137,8 @@ namespace KissU.Util.Helpers {
         /// </summary>
         /// <param name="input">输入值</param>
         /// <param name="digits">小数位数</param>
-        public static decimal? ToDecimalOrNull( object input, int? digits = null ) {
+        public static decimal? ToDecimalOrNull( object input, int? digits = null )
+        {
             var success = decimal.TryParse( input.SafeString(), out var result );
             if( !success )
                 return null;
@@ -135,7 +151,8 @@ namespace KissU.Util.Helpers {
         /// 转换为布尔值
         /// </summary>
         /// <param name="input">输入值</param>
-        public static bool ToBool( object input ) {
+        public static bool ToBool( object input )
+        {
             return ToBoolOrNull( input ) ?? false;
         }
 
@@ -143,7 +160,8 @@ namespace KissU.Util.Helpers {
         /// 转换为可空布尔值
         /// </summary>
         /// <param name="input">输入值</param>
-        public static bool? ToBoolOrNull( object input ) {
+        public static bool? ToBoolOrNull( object input )
+        {
             bool? value = GetBool( input );
             if( value != null )
                 return value.Value;
@@ -153,8 +171,10 @@ namespace KissU.Util.Helpers {
         /// <summary>
         /// 获取布尔值
         /// </summary>
-        private static bool? GetBool( object input ) {
-            switch( input.SafeString().ToLower() ) {
+        private static bool? GetBool( object input )
+        {
+            switch( input.SafeString().ToLower() )
+            {
                 case "0":
                     return false;
                 case "否":
@@ -182,7 +202,8 @@ namespace KissU.Util.Helpers {
         /// 转换为日期
         /// </summary>
         /// <param name="input">输入值</param>
-        public static DateTime ToDate( object input ) {
+        public static DateTime ToDate( object input )
+        {
             return ToDateOrNull( input ) ?? DateTime.MinValue;
         }
 
@@ -190,7 +211,8 @@ namespace KissU.Util.Helpers {
         /// 转换为可空日期
         /// </summary>
         /// <param name="input">输入值</param>
-        public static DateTime? ToDateOrNull( object input ) {
+        public static DateTime? ToDateOrNull( object input )
+        {
             return DateTime.TryParse( input.SafeString(), out var result ) ? (DateTime?)result : null;
         }
 
@@ -198,7 +220,8 @@ namespace KissU.Util.Helpers {
         /// 转换为Guid
         /// </summary>
         /// <param name="input">输入值</param>
-        public static Guid ToGuid( object input ) {
+        public static Guid ToGuid( object input )
+        {
             return ToGuidOrNull( input ) ?? Guid.Empty;
         }
 
@@ -206,7 +229,8 @@ namespace KissU.Util.Helpers {
         /// 转换为可空Guid
         /// </summary>
         /// <param name="input">输入值</param>
-        public static Guid? ToGuidOrNull( object input ) {
+        public static Guid? ToGuidOrNull( object input )
+        {
             return Guid.TryParse( input.SafeString(), out var result ) ? (Guid?)result : null;
         }
 
@@ -214,7 +238,8 @@ namespace KissU.Util.Helpers {
         /// 转换为Guid集合
         /// </summary>
         /// <param name="input">以逗号分隔的Guid集合字符串，范例:83B0233C-A24F-49FD-8083-1337209EBC9A,EAB523C6-2FE7-47BE-89D5-C6D440C3033A</param>
-        public static List<Guid> ToGuidList( string input ) {
+        public static List<Guid> ToGuidList( string input )
+        {
             return ToList<Guid>( input );
         }
 
@@ -223,7 +248,8 @@ namespace KissU.Util.Helpers {
         /// </summary>
         /// <typeparam name="T">目标元素类型</typeparam>
         /// <param name="input">以逗号分隔的元素集合字符串，范例:83B0233C-A24F-49FD-8083-1337209EBC9A,EAB523C6-2FE7-47BE-89D5-C6D440C3033A</param>
-        public static List<T> ToList<T>( string input ) {
+        public static List<T> ToList<T>( string input )
+        {
             var result = new List<T>();
             if( string.IsNullOrWhiteSpace( input ) )
                 return result;
@@ -237,14 +263,16 @@ namespace KissU.Util.Helpers {
         /// </summary>
         /// <typeparam name="T">目标类型</typeparam>
         /// <param name="input">输入值</param>
-        public static T To<T>( object input ) {
+        public static T To<T>( object input )
+        {
             if( input == null )
                 return default( T );
             if( input is string && string.IsNullOrWhiteSpace( input.ToString() ) )
                 return default( T );
             Type type = Common.GetType<T>();
             var typeName = type.Name.ToLower();
-            try {
+            try
+            {
                 if( typeName == "string" )
                     return (T)(object)input.ToString();
                 if( typeName == "guid" )
@@ -255,7 +283,8 @@ namespace KissU.Util.Helpers {
                     return (T)System.Convert.ChangeType( input, type );
                 return (T)input;
             }
-            catch {
+            catch
+            {
                 return default( T );
             }
         }
@@ -264,7 +293,8 @@ namespace KissU.Util.Helpers {
         /// 转换为字节数组
         /// </summary>
         /// <param name="input">输入值</param>        
-        public static byte[] ToBytes( string input ) {
+        public static byte[] ToBytes( string input )
+        {
             return ToBytes( input, Encoding.UTF8 );
         }
 
@@ -273,7 +303,8 @@ namespace KissU.Util.Helpers {
         /// </summary>
         /// <param name="input">输入值</param>
         /// <param name="encoding">字符编码</param>
-        public static byte[] ToBytes( string input, Encoding encoding ) {
+        public static byte[] ToBytes( string input, Encoding encoding )
+        {
             return string.IsNullOrWhiteSpace( input ) ? new byte[] { } : encoding.GetBytes( input );
         }
     }

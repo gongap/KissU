@@ -4,11 +4,13 @@ using System.Web;
 using KissU.Util.Helpers;
 using KissU.Util.Parameters.Formats;
 
-namespace KissU.Util.Parameters {
+namespace KissU.Util.Parameters
+{
     /// <summary>
     /// Url参数生成器
     /// </summary>
-    public class UrlParameterBuilder {
+    public class UrlParameterBuilder
+    {
         /// <summary>
         /// 参数生成器
         /// </summary>
@@ -17,14 +19,16 @@ namespace KissU.Util.Parameters {
         /// <summary>
         /// 初始化Url参数生成器
         /// </summary>
-        public UrlParameterBuilder() : this( "" ) {
+        public UrlParameterBuilder() : this( "" )
+        {
         }
 
         /// <summary>
         /// 初始化Url参数生成器
         /// </summary>
         /// <param name="builder">参数生成器</param>
-        public UrlParameterBuilder( ParameterBuilder builder ) {
+        public UrlParameterBuilder( ParameterBuilder builder )
+        {
             ParameterBuilder = builder == null ? new ParameterBuilder() : new ParameterBuilder( builder );
         }
 
@@ -32,7 +36,8 @@ namespace KissU.Util.Parameters {
         /// 初始化Url参数生成器
         /// </summary>
         /// <param name="builder">Url参数生成器</param>
-        public UrlParameterBuilder( UrlParameterBuilder builder ) : this( "", builder ) {
+        public UrlParameterBuilder( UrlParameterBuilder builder ) : this( "", builder )
+        {
         }
 
         /// <summary>
@@ -40,7 +45,8 @@ namespace KissU.Util.Parameters {
         /// </summary>
         /// <param name="url">Url</param>
         /// <param name="builder">Url参数生成器</param>
-        public UrlParameterBuilder( string url, UrlParameterBuilder builder = null ) {
+        public UrlParameterBuilder( string url, UrlParameterBuilder builder = null )
+        {
             ParameterBuilder = builder == null ? new ParameterBuilder() : new ParameterBuilder( builder.ParameterBuilder );
             LoadUrl( url );
         }
@@ -48,7 +54,8 @@ namespace KissU.Util.Parameters {
         /// <summary>
         /// 加载Url
         /// </summary>
-        public void LoadUrl( string url ) {
+        public void LoadUrl( string url )
+        {
             if( string.IsNullOrWhiteSpace( url ) )
                 return;
             if( url.Contains( "?" ) )
@@ -61,11 +68,13 @@ namespace KissU.Util.Parameters {
         /// <summary>
         /// 从Request加载表单参数
         /// </summary>
-        public void LoadForm() {
+        public void LoadForm()
+        {
             var form = Web.Request?.Form;
             if( form == null )
                 return;
-            foreach( var key in form.Keys ) {
+            foreach( var key in form.Keys )
+            {
                 if( form.ContainsKey( key ) )
                     Add( key, form[key] );
             }
@@ -74,11 +83,13 @@ namespace KissU.Util.Parameters {
         /// <summary>
         /// 从Request加载查询参数
         /// </summary>
-        public void LoadQuery() {
+        public void LoadQuery()
+        {
             var query = Web.Request?.Query;
             if( query == null )
                 return;
-            foreach( var key in query.Keys ) {
+            foreach( var key in query.Keys )
+            {
                 if( query.ContainsKey( key ) )
                     Add( key, query[key] );
             }
@@ -89,7 +100,8 @@ namespace KissU.Util.Parameters {
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="value">值</param>
-        public UrlParameterBuilder Add( string key, object value ) {
+        public UrlParameterBuilder Add( string key, object value )
+        {
             ParameterBuilder.Add( key, value );
             return this;
         }
@@ -98,7 +110,8 @@ namespace KissU.Util.Parameters {
         /// 获取值
         /// </summary>
         /// <param name="name">参数名</param>
-        public object GetValue( string name ) {
+        public object GetValue( string name )
+        {
             return ParameterBuilder.GetValue( name );
         }
 
@@ -106,7 +119,8 @@ namespace KissU.Util.Parameters {
         /// 索引器
         /// </summary>
         /// <param name="name">参数名</param>
-        public object this[string name] {
+        public object this[string name]
+        {
             get => GetValue( name );
             set => Add( name, value );
         }
@@ -117,14 +131,16 @@ namespace KissU.Util.Parameters {
         /// <param name="isSort">是否按参数名排序</param>
         /// <param name="isUrlEncode">是否Url编码</param>
         /// <param name="encoding">字符编码，默认值：UTF-8</param>
-        public IDictionary<string, object> GetDictionary( bool isSort = true, bool isUrlEncode = false, string encoding = "UTF-8" ) {
+        public IDictionary<string, object> GetDictionary( bool isSort = true, bool isUrlEncode = false, string encoding = "UTF-8" )
+        {
             return ParameterBuilder.GetDictionary( isSort, isUrlEncode, encoding );
         }
 
         /// <summary>
         /// 获取键值对集合
         /// </summary>
-        public IEnumerable<KeyValuePair<string, object>> GetKeyValuePairs() {
+        public IEnumerable<KeyValuePair<string, object>> GetKeyValuePairs()
+        {
             return ParameterBuilder.GetKeyValuePairs();
         }
 
@@ -134,7 +150,8 @@ namespace KissU.Util.Parameters {
         /// <param name="isSort">是否按参数名排序</param>
         /// <param name="isUrlEncode">是否Url编码</param>
         /// <param name="encoding">字符编码，默认值：UTF-8</param>
-        public string Result( bool isSort = false, bool isUrlEncode = false, string encoding = "UTF-8" ) {
+        public string Result( bool isSort = false, bool isUrlEncode = false, string encoding = "UTF-8" )
+        {
             return ParameterBuilder.Result( UrlParameterFormat.Instance, isSort, isUrlEncode, encoding );
         }
 
@@ -142,14 +159,16 @@ namespace KissU.Util.Parameters {
         /// 连接Url
         /// </summary>
         /// <param name="url">地址</param>
-        public string JoinUrl( string url ) {
+        public string JoinUrl( string url )
+        {
             return Url.Join( url, Result() );
         }
 
         /// <summary>
         /// 清空
         /// </summary>
-        public void Clear() {
+        public void Clear()
+        {
             ParameterBuilder.Clear();
         }
 
@@ -157,7 +176,8 @@ namespace KissU.Util.Parameters {
         /// 移除参数
         /// </summary>
         /// <param name="key">键</param>
-        public bool Remove( string key ) {
+        public bool Remove( string key )
+        {
             return ParameterBuilder.Remove( key );
         }
     }

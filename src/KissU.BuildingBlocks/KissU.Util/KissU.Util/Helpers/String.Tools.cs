@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace KissU.Util.Helpers {
+namespace KissU.Util.Helpers
+{
     /// <summary>
     /// 字符串操作 - 工具
     /// </summary>
-    public partial class String {
+    public partial class String
+    {
 
         #region Join(将集合连接为带分隔符的字符串)
 
@@ -17,7 +19,8 @@ namespace KissU.Util.Helpers {
         /// <param name="list">集合</param>
         /// <param name="quotes">引号，默认不带引号，范例：单引号 "'"</param>
         /// <param name="separator">分隔符，默认使用逗号分隔</param>
-        public static string Join<T>( IEnumerable<T> list, string quotes = "", string separator = "," ) {
+        public static string Join<T>( IEnumerable<T> list, string quotes = "", string separator = "," )
+        {
             if( list == null )
                 return string.Empty;
             var result = new StringBuilder();
@@ -36,7 +39,8 @@ namespace KissU.Util.Helpers {
         /// 获取汉字的拼音简码，即首字母缩写,范例：中国,返回zg
         /// </summary>
         /// <param name="chineseText">汉字文本,范例： 中国</param>
-        public static string PinYin( string chineseText ) {
+        public static string PinYin( string chineseText )
+        {
             if( string.IsNullOrWhiteSpace( chineseText ) )
                 return string.Empty;
             var result = new StringBuilder();
@@ -48,7 +52,8 @@ namespace KissU.Util.Helpers {
         /// <summary>
         /// 解析单个汉字的拼音简码
         /// </summary>
-        private static string ResolvePinYin( char text ) {
+        private static string ResolvePinYin( char text )
+        {
             byte[] charBytes = Encoding.UTF8.GetBytes( text.ToString() );
             if( charBytes[0] <= 127 )
                 return text.ToString();
@@ -62,7 +67,8 @@ namespace KissU.Util.Helpers {
         /// <summary>
         /// 使用字符编码方式获取拼音简码
         /// </summary>
-        private static string ResolveByCode( ushort unicode ) {
+        private static string ResolveByCode( ushort unicode )
+        {
             if( unicode >= '\uB0A1' && unicode <= '\uB0C4' )
                 return "A";
             if( unicode >= '\uB0C5' && unicode <= '\uB2C0' && unicode != 45464 )
@@ -115,7 +121,8 @@ namespace KissU.Util.Helpers {
         /// <summary>
         /// 通过拼音简码常量获取
         /// </summary>
-        private static string ResolveByConst( string text ) {
+        private static string ResolveByConst( string text )
+        {
             int index = Const.ChinesePinYin.IndexOf( text, StringComparison.Ordinal );
             if( index < 0 )
                 return string.Empty;
@@ -130,7 +137,8 @@ namespace KissU.Util.Helpers {
         /// 首字母小写
         /// </summary>
         /// <param name="value">值</param>
-        public static string FirstLowerCase( string value ) {
+        public static string FirstLowerCase( string value )
+        {
             if( string.IsNullOrWhiteSpace( value ) )
                 return string.Empty;
             return $"{value.Substring( 0, 1 ).ToLower()}{value.Substring( 1 )}";
@@ -144,7 +152,8 @@ namespace KissU.Util.Helpers {
         /// 首字母大写
         /// </summary>
         /// <param name="value">值</param>
-        public static string FirstUpperCase( string value ) {
+        public static string FirstUpperCase( string value )
+        {
             if( string.IsNullOrWhiteSpace( value ) )
                 return string.Empty;
             return $"{value.Substring( 0, 1 ).ToUpper()}{value.Substring( 1 )}";
@@ -159,7 +168,8 @@ namespace KissU.Util.Helpers {
         /// </summary>
         /// <param name="value">值</param>
         /// <param name="removeValue">要移除的值</param>
-        public static string RemoveEnd( string value, string removeValue ) {
+        public static string RemoveEnd( string value, string removeValue )
+        {
             if( string.IsNullOrWhiteSpace( value ) )
                 return string.Empty;
             if( string.IsNullOrWhiteSpace( removeValue ) )
@@ -178,7 +188,8 @@ namespace KissU.Util.Helpers {
         /// </summary>
         /// <param name="value">值</param>
         /// <param name="separator">分隔符，默认使用"-"分隔</param>
-        public static string SplitWordGroup( string value, char separator = '-' ) {
+        public static string SplitWordGroup( string value, char separator = '-' )
+        {
             var pattern = @"([A-Z])(?=[a-z])|(?<=[a-z])([A-Z]|[0-9]+)";
             return string.IsNullOrWhiteSpace( value ) ? string.Empty : System.Text.RegularExpressions.Regex.Replace( value, pattern, $"{separator}$1$2" ).TrimStart( separator ).ToLower();
         }

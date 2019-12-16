@@ -1,10 +1,12 @@
 ﻿using System;
 
-namespace KissU.Util.Locks {
+namespace KissU.Util.Locks
+{
     /// <summary>
     /// 空业务锁
     /// </summary>
-    public class NullLock : ILock {
+    public class NullLock : ILock
+    {
         /// <summary>
         /// 空业务锁
         /// </summary>
@@ -15,14 +17,16 @@ namespace KissU.Util.Locks {
         /// </summary>
         /// <param name="key">锁定标识</param>
         /// <param name="expiration">锁定时间间隔</param>
-        public bool Lock( string key, TimeSpan? expiration = null ) {
+        public bool Lock( string key, TimeSpan? expiration = null )
+        {
             return true;
         }
 
         /// <summary>
         /// 解除锁定
         /// </summary>
-        public void UnLock() {
+        public void UnLock()
+        {
         }
     }
 }

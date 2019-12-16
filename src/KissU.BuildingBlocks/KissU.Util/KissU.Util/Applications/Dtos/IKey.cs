@@ -1,8 +1,10 @@
-﻿namespace KissU.Util.Applications.Dtos {
+﻿namespace KissU.Util.Applications.Dtos
+{
     /// <summary>
     /// 标识
     /// </summary>
-    public interface IKey {
+    public interface IKey
+    {
         /// <summary>
         /// 标识
         /// </summary>

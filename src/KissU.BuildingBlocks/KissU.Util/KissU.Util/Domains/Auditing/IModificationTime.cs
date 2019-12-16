@@ -1,10 +1,12 @@
 ﻿using System;
 
-namespace KissU.Util.Domains.Auditing {
+namespace KissU.Util.Domains.Auditing
+{
     /// <summary>
     /// 修改时间审计
     /// </summary>
-    public interface IModificationTime {
+    public interface IModificationTime
+    {
         /// <summary>
         /// 最后修改时间
         /// </summary>

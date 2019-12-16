@@ -1,8 +1,10 @@
-﻿namespace KissU.Util.Parameters {
+﻿namespace KissU.Util.Parameters
+{
     /// <summary>
     /// 参数服务
     /// </summary>
-    public interface IParameterManager {
+    public interface IParameterManager
+    {
         /// <summary>
         /// 获取值
         /// </summary>

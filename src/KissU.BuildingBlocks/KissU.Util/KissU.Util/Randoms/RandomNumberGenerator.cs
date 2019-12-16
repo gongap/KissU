@@ -1,8 +1,10 @@
-﻿namespace KissU.Util.Randoms {
+﻿namespace KissU.Util.Randoms
+{
     /// <summary>
     /// 随机数字生成器
     /// </summary>
-    public class RandomNumberGenerator : IRandomNumberGenerator {
+    public class RandomNumberGenerator : IRandomNumberGenerator
+    {
         /// <summary>
         /// 随机数
         /// </summary>
@@ -11,7 +13,8 @@
         /// <summary>
         /// 初始化随机数字生成器
         /// </summary>
-        public RandomNumberGenerator() {
+        public RandomNumberGenerator()
+        {
             _random = new System.Random();
         }
 
@@ -20,7 +23,8 @@
         /// </summary>
         /// <param name="min">最小值</param>
         /// <param name="max">最大值</param>
-        public int Generate( int min, int max ) {
+        public int Generate( int min, int max )
+        {
             return _random.Next( min, max );
         }
     }

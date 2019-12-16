@@ -6,18 +6,21 @@ using KissU.Util.Datas.Queries.Criterias;
 using KissU.Util.Datas.Queries.Internal;
 using KissU.Util.Domains.Repositories;
 
-namespace KissU.Util {
+namespace KissU.Util
+{
     /// <summary>
     /// 查询扩展
     /// </summary>
-    public static partial class Extensions {
+    public static partial class Extensions
+    {
         /// <summary>
         /// 添加查询条件
         /// </summary>
         /// <typeparam name="TEntity">实体类型</typeparam>
         /// <param name="source">数据源</param>
         /// <param name="criteria">查询条件对象</param>
-        public static IQueryable<TEntity> Where<TEntity>( this IQueryable<TEntity> source, ICriteria<TEntity> criteria ) where TEntity : class {
+        public static IQueryable<TEntity> Where<TEntity>( this IQueryable<TEntity> source, ICriteria<TEntity> criteria ) where TEntity : class
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( criteria == null )
@@ -35,7 +38,8 @@ namespace KissU.Util {
         /// <param name="source">数据源</param>
         /// <param name="predicate">查询条件</param>
         /// <param name="condition">该值为true时添加查询条件，否则忽略</param>
-        public static IQueryable<TEntity> WhereIf<TEntity>( this IQueryable<TEntity> source, Expression<Func<TEntity, bool>> predicate, bool condition ) where TEntity : class {
+        public static IQueryable<TEntity> WhereIf<TEntity>( this IQueryable<TEntity> source, Expression<Func<TEntity, bool>> predicate, bool condition ) where TEntity : class
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( condition == false )
@@ -50,7 +54,8 @@ namespace KissU.Util {
         /// <param name="source">数据源</param>
         /// <param name="predicate">查询条件,如果参数值为空，则忽略该查询条件，范例：t => t.Name == ""，该查询条件被忽略。
         /// 注意：一次仅能添加一个条件，范例：t => t.Name == "a" &amp;&amp; t.Mobile == "123"，不支持，将抛出异常</param>
-        public static IQueryable<TEntity> WhereIfNotEmpty<TEntity>( this IQueryable<TEntity> source, Expression<Func<TEntity, bool>> predicate ) where TEntity : class {
+        public static IQueryable<TEntity> WhereIfNotEmpty<TEntity>( this IQueryable<TEntity> source, Expression<Func<TEntity, bool>> predicate ) where TEntity : class
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             predicate = Helper.GetWhereIfNotEmptyExpression( predicate );
@@ -69,7 +74,8 @@ namespace KissU.Util {
         /// <param name="min">最小值</param>
         /// <param name="max">最大值</param>
         /// <param name="boundary">包含边界</param>
-        public static IQueryable<TEntity> Between<TEntity, TProperty>( this IQueryable<TEntity> source, Expression<Func<TEntity, TProperty>> propertyExpression, int? min, int? max, Boundary boundary = Boundary.Both ) where TEntity : class {
+        public static IQueryable<TEntity> Between<TEntity, TProperty>( this IQueryable<TEntity> source, Expression<Func<TEntity, TProperty>> propertyExpression, int? min, int? max, Boundary boundary = Boundary.Both ) where TEntity : class
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             return source.Where( new IntSegmentCriteria<TEntity, TProperty>( propertyExpression, min, max, boundary ) );
@@ -85,7 +91,8 @@ namespace KissU.Util {
         /// <param name="min">最小值</param>
         /// <param name="max">最大值</param>
         /// <param name="boundary">包含边界</param>
-        public static IQueryable<TEntity> Between<TEntity, TProperty>( this IQueryable<TEntity> source, Expression<Func<TEntity, TProperty>> propertyExpression, double? min, double? max, Boundary boundary = Boundary.Both ) where TEntity : class {
+        public static IQueryable<TEntity> Between<TEntity, TProperty>( this IQueryable<TEntity> source, Expression<Func<TEntity, TProperty>> propertyExpression, double? min, double? max, Boundary boundary = Boundary.Both ) where TEntity : class
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             return source.Where( new DoubleSegmentCriteria<TEntity, TProperty>( propertyExpression, min, max, boundary ) );
@@ -101,7 +108,8 @@ namespace KissU.Util {
         /// <param name="min">最小值</param>
         /// <param name="max">最大值</param>
         /// <param name="boundary">包含边界</param>
-        public static IQueryable<TEntity> Between<TEntity, TProperty>( this IQueryable<TEntity> source, Expression<Func<TEntity, TProperty>> propertyExpression, decimal? min, decimal? max, Boundary boundary = Boundary.Both ) where TEntity : class {
+        public static IQueryable<TEntity> Between<TEntity, TProperty>( this IQueryable<TEntity> source, Expression<Func<TEntity, TProperty>> propertyExpression, decimal? min, decimal? max, Boundary boundary = Boundary.Both ) where TEntity : class
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             return source.Where( new DecimalSegmentCriteria<TEntity, TProperty>( propertyExpression, min, max, boundary ) );
@@ -118,7 +126,8 @@ namespace KissU.Util {
         /// <param name="max">最大值</param>
         /// <param name="includeTime">是否包含时间</param>
         /// <param name="boundary">包含边界</param>
-        public static IQueryable<TEntity> Between<TEntity, TProperty>( this IQueryable<TEntity> source, Expression<Func<TEntity, TProperty>> propertyExpression, DateTime? min, DateTime? max, bool includeTime = true, Boundary? boundary = null ) where TEntity : class {
+        public static IQueryable<TEntity> Between<TEntity, TProperty>( this IQueryable<TEntity> source, Expression<Func<TEntity, TProperty>> propertyExpression, DateTime? min, DateTime? max, bool includeTime = true, Boundary? boundary = null ) where TEntity : class
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( includeTime )
@@ -132,7 +141,8 @@ namespace KissU.Util {
         /// <typeparam name="TEntity">实体类型</typeparam>
         /// <param name="source">数据源</param>
         /// <param name="pager">分页对象</param>
-        public static IQueryable<TEntity> Page<TEntity>( this IQueryable<TEntity> source, IPager pager ) {
+        public static IQueryable<TEntity> Page<TEntity>( this IQueryable<TEntity> source, IPager pager )
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( pager == null )
@@ -152,7 +162,8 @@ namespace KissU.Util {
         /// <typeparam name="TEntity">实体类型</typeparam>
         /// <param name="source">数据源</param>
         /// <param name="pager">分页对象</param>
-        public static PagerList<TEntity> ToPagerList<TEntity>( this IQueryable<TEntity> source, IPager pager ) {
+        public static PagerList<TEntity> ToPagerList<TEntity>( this IQueryable<TEntity> source, IPager pager )
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( pager == null )

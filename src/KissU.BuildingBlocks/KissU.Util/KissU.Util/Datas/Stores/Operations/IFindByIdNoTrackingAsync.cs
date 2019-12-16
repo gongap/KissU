@@ -2,13 +2,15 @@
 using System.Threading.Tasks;
 using KissU.Util.Domains;
 
-namespace KissU.Util.Datas.Stores.Operations {
+namespace KissU.Util.Datas.Stores.Operations
+{
     /// <summary>
     /// 通过标识查找
     /// </summary>
     /// <typeparam name="TEntity">对象类型</typeparam>
     /// <typeparam name="TKey">对象标识类型</typeparam>
-    public interface IFindByIdNoTrackingAsync<TEntity, in TKey> where TEntity : class, IKey<TKey> {
+    public interface IFindByIdNoTrackingAsync<TEntity, in TKey> where TEntity : class, IKey<TKey>
+    {
         /// <summary>
         /// 查找未跟踪单个实体
         /// </summary>

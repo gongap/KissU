@@ -1,8 +1,10 @@
-﻿namespace KissU.Util.Datas.Sql.Matedatas {
+﻿namespace KissU.Util.Datas.Sql.Matedatas
+{
     /// <summary>
     /// 表数据库
     /// </summary>
-    public interface ITableDatabase {
+    public interface ITableDatabase
+    {
         /// <summary>
         /// 获取数据库
         /// </summary>

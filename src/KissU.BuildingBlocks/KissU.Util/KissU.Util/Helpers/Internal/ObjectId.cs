@@ -6,11 +6,13 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 
-namespace KissU.Util.Helpers.Internal {
+namespace KissU.Util.Helpers.Internal
+{
     /// <summary>
     /// Id生成器，代码出自：https://github.com/tangxuehua/ecommon/blob/master/src/ECommon/Utilities/ObjectId.cs
     /// </summary>
-    internal struct ObjectId : IComparable<ObjectId>, IEquatable<ObjectId>{
+    internal struct ObjectId : IComparable<ObjectId>, IEquatable<ObjectId>
+    {
         // private static fields
         private static readonly DateTime __unixEpoch;
         private static readonly long __dateTimeMaxValueMillisecondsSinceEpoch;
@@ -19,7 +21,8 @@ namespace KissU.Util.Helpers.Internal {
         private static int __staticMachine;
         private static short __staticPid;
         private static int __staticIncrement; // high byte will be masked out when generating new ObjectId
-        private static uint[] _lookup32 = Enumerable.Range( 0, 256 ).Select( i => {
+        private static uint[] _lookup32 = Enumerable.Range( 0, 256 ).Select( i =>
+        {
             string s = i.ToString( "x2" );
             return ( (uint)s[0] ) + ( (uint)s[1] << 16 );
         } ).ToArray();
@@ -33,7 +36,8 @@ namespace KissU.Util.Helpers.Internal {
         private int _increment;
 
         // static constructor
-        static ObjectId() {
+        static ObjectId()
+        {
             __unixEpoch = new DateTime( 1970, 1, 1, 0, 0, 0, DateTimeKind.Utc );
             __dateTimeMaxValueMillisecondsSinceEpoch = ( DateTime.MaxValue - __unixEpoch ).Ticks / 10000;
             __dateTimeMinValueMillisecondsSinceEpoch = ( DateTime.MinValue - __unixEpoch ).Ticks / 10000;
@@ -43,12 +47,15 @@ namespace KissU.Util.Helpers.Internal {
         }
 
         // constructors
+
         /// <summary>
         /// Initializes a new instance of the ObjectId class.
         /// </summary>
         /// <param name="bytes">The bytes.</param>
-        public ObjectId( byte[] bytes ) {
-            if( bytes == null ) {
+        public ObjectId( byte[] bytes )
+        {
+            if( bytes == null )
+            {
                 throw new ArgumentNullException( "bytes" );
             }
             Unpack( bytes, out _timestamp, out _machine, out _pid, out _increment );
@@ -62,7 +69,8 @@ namespace KissU.Util.Helpers.Internal {
         /// <param name="pid">The PID.</param>
         /// <param name="increment">The increment.</param>
         public ObjectId( DateTime timestamp, int machine, short pid, int increment )
-            : this( GetTimestampFromDateTime( timestamp ), machine, pid, increment ) {
+            : this( GetTimestampFromDateTime( timestamp ), machine, pid, increment )
+            {
         }
 
         /// <summary>
@@ -72,11 +80,14 @@ namespace KissU.Util.Helpers.Internal {
         /// <param name="machine">The machine hash.</param>
         /// <param name="pid">The PID.</param>
         /// <param name="increment">The increment.</param>
-        public ObjectId( int timestamp, int machine, short pid, int increment ) {
-            if( ( machine & 0xff000000 ) != 0 ) {
+        public ObjectId( int timestamp, int machine, short pid, int increment )
+        {
+            if( ( machine & 0xff000000 ) != 0 )
+            {
                 throw new ArgumentOutOfRangeException( "machine", "The machine value must be between 0 and 16777215 (it must fit in 3 bytes)." );
             }
-            if( ( increment & 0xff000000 ) != 0 ) {
+            if( ( increment & 0xff000000 ) != 0 )
+            {
                 throw new ArgumentOutOfRangeException( "increment", "The increment value must be between 0 and 16777215 (it must fit in 3 bytes)." );
             }
 
@@ -90,65 +101,77 @@ namespace KissU.Util.Helpers.Internal {
         /// Initializes a new instance of the ObjectId class.
         /// </summary>
         /// <param name="value">The value.</param>
-        public ObjectId( string value ) {
-            if( value == null ) {
+        public ObjectId( string value )
+        {
+            if( value == null )
+            {
                 throw new ArgumentNullException( "value" );
             }
             Unpack( ParseHexString( value ), out _timestamp, out _machine, out _pid, out _increment );
         }
 
         // public static properties
+
         /// <summary>
         /// Gets an instance of ObjectId where the value is empty.
         /// </summary>
-        public static ObjectId Empty {
+        public static ObjectId Empty
+        {
             get { return __emptyInstance; }
         }
 
         // public properties
+
         /// <summary>
         /// Gets the timestamp.
         /// </summary>
-        public int Timestamp {
+        public int Timestamp
+        {
             get { return _timestamp; }
         }
 
         /// <summary>
         /// Gets the machine.
         /// </summary>
-        public int Machine {
+        public int Machine
+        {
             get { return _machine; }
         }
 
         /// <summary>
         /// Gets the PID.
         /// </summary>
-        public short Pid {
+        public short Pid
+        {
             get { return _pid; }
         }
 
         /// <summary>
         /// Gets the increment.
         /// </summary>
-        public int Increment {
+        public int Increment
+        {
             get { return _increment; }
         }
 
         /// <summary>
         /// Gets the creation time (derived from the timestamp).
         /// </summary>
-        public DateTime CreationTime {
+        public DateTime CreationTime
+        {
             get { return __unixEpoch.AddSeconds( _timestamp ); }
         }
 
         // public operators
+
         /// <summary>
         /// Compares two ObjectIds.
         /// </summary>
         /// <param name="lhs">The first ObjectId.</param>
         /// <param name="rhs">The other ObjectId</param>
         /// <returns>True if the first ObjectId is less than the second ObjectId.</returns>
-        public static bool operator <( ObjectId lhs, ObjectId rhs ) {
+        public static bool operator <( ObjectId lhs, ObjectId rhs )
+        {
             return lhs.CompareTo( rhs ) < 0;
         }
 
@@ -158,7 +181,8 @@ namespace KissU.Util.Helpers.Internal {
         /// <param name="lhs">The first ObjectId.</param>
         /// <param name="rhs">The other ObjectId</param>
         /// <returns>True if the first ObjectId is less than or equal to the second ObjectId.</returns>
-        public static bool operator <=( ObjectId lhs, ObjectId rhs ) {
+        public static bool operator <=( ObjectId lhs, ObjectId rhs )
+        {
             return lhs.CompareTo( rhs ) <= 0;
         }
 
@@ -168,7 +192,8 @@ namespace KissU.Util.Helpers.Internal {
         /// <param name="lhs">The first ObjectId.</param>
         /// <param name="rhs">The other ObjectId.</param>
         /// <returns>True if the two ObjectIds are equal.</returns>
-        public static bool operator ==( ObjectId lhs, ObjectId rhs ) {
+        public static bool operator ==( ObjectId lhs, ObjectId rhs )
+        {
             return lhs.Equals( rhs );
         }
 
@@ -178,7 +203,8 @@ namespace KissU.Util.Helpers.Internal {
         /// <param name="lhs">The first ObjectId.</param>
         /// <param name="rhs">The other ObjectId.</param>
         /// <returns>True if the two ObjectIds are not equal.</returns>
-        public static bool operator !=( ObjectId lhs, ObjectId rhs ) {
+        public static bool operator !=( ObjectId lhs, ObjectId rhs )
+        {
             return !( lhs == rhs );
         }
 
@@ -188,7 +214,8 @@ namespace KissU.Util.Helpers.Internal {
         /// <param name="lhs">The first ObjectId.</param>
         /// <param name="rhs">The other ObjectId</param>
         /// <returns>True if the first ObjectId is greather than or equal to the second ObjectId.</returns>
-        public static bool operator >=( ObjectId lhs, ObjectId rhs ) {
+        public static bool operator >=( ObjectId lhs, ObjectId rhs )
+        {
             return lhs.CompareTo( rhs ) >= 0;
         }
 
@@ -198,16 +225,19 @@ namespace KissU.Util.Helpers.Internal {
         /// <param name="lhs">The first ObjectId.</param>
         /// <param name="rhs">The other ObjectId</param>
         /// <returns>True if the first ObjectId is greather than the second ObjectId.</returns>
-        public static bool operator >( ObjectId lhs, ObjectId rhs ) {
+        public static bool operator >( ObjectId lhs, ObjectId rhs )
+        {
             return lhs.CompareTo( rhs ) > 0;
         }
 
         // public static methods
+
         /// <summary>
         /// Generates a new ObjectId with a unique value.
         /// </summary>
         /// <returns>An ObjectId.</returns>
-        public static ObjectId GenerateNewId() {
+        public static ObjectId GenerateNewId()
+        {
             return GenerateNewId( GetTimestampFromDateTime( DateTime.UtcNow ) );
         }
 
@@ -216,7 +246,8 @@ namespace KissU.Util.Helpers.Internal {
         /// </summary>
         /// <param name="timestamp">The timestamp component (expressed as a DateTime).</param>
         /// <returns>An ObjectId.</returns>
-        public static ObjectId GenerateNewId( DateTime timestamp ) {
+        public static ObjectId GenerateNewId( DateTime timestamp )
+        {
             return GenerateNewId( GetTimestampFromDateTime( timestamp ) );
         }
 
@@ -225,7 +256,8 @@ namespace KissU.Util.Helpers.Internal {
         /// </summary>
         /// <param name="timestamp">The timestamp component.</param>
         /// <returns>An ObjectId.</returns>
-        public static ObjectId GenerateNewId( int timestamp ) {
+        public static ObjectId GenerateNewId( int timestamp )
+        {
             int increment = Interlocked.Increment( ref __staticIncrement ) & 0x00ffffff; // only use low order 3 bytes
             return new ObjectId( timestamp, __staticMachine, __staticPid, increment );
         }
@@ -234,7 +266,8 @@ namespace KissU.Util.Helpers.Internal {
         /// Generates a new ObjectId string with a unique value.
         /// </summary>
         /// <returns>The string value of the new generated ObjectId.</returns>
-        public static string GenerateNewStringId() {
+        public static string GenerateNewStringId()
+        {
             return GenerateNewId().ToString();
         }
 
@@ -246,11 +279,14 @@ namespace KissU.Util.Helpers.Internal {
         /// <param name="pid">The PID.</param>
         /// <param name="increment">The increment.</param>
         /// <returns>A byte array.</returns>
-        public static byte[] Pack( int timestamp, int machine, short pid, int increment ) {
-            if( ( machine & 0xff000000 ) != 0 ) {
+        public static byte[] Pack( int timestamp, int machine, short pid, int increment )
+        {
+            if( ( machine & 0xff000000 ) != 0 )
+            {
                 throw new ArgumentOutOfRangeException( "machine", "The machine value must be between 0 and 16777215 (it must fit in 3 bytes)." );
             }
-            if( ( increment & 0xff000000 ) != 0 ) {
+            if( ( increment & 0xff000000 ) != 0 )
+            {
                 throw new ArgumentOutOfRangeException( "increment", "The increment value must be between 0 and 16777215 (it must fit in 3 bytes)." );
             }
 
@@ -275,11 +311,14 @@ namespace KissU.Util.Helpers.Internal {
         /// </summary>
         /// <param name="s">The string value.</param>
         /// <returns>A ObjectId.</returns>
-        public static ObjectId Parse( string s ) {
-            if( s == null ) {
+        public static ObjectId Parse( string s )
+        {
+            if( s == null )
+            {
                 throw new ArgumentNullException( "s" );
             }
-            if( s.Length != 24 ) {
+            if( s.Length != 24 )
+            {
                 throw new ArgumentOutOfRangeException( "s", "ObjectId string value must be 24 characters." );
             }
             return new ObjectId( ParseHexString( s ) );
@@ -293,11 +332,14 @@ namespace KissU.Util.Helpers.Internal {
         /// <param name="machine">The machine hash.</param>
         /// <param name="pid">The PID.</param>
         /// <param name="increment">The increment.</param>
-        public static void Unpack( byte[] bytes, out int timestamp, out int machine, out short pid, out int increment ) {
-            if( bytes == null ) {
+        public static void Unpack( byte[] bytes, out int timestamp, out int machine, out short pid, out int increment )
+        {
+            if( bytes == null )
+            {
                 throw new ArgumentNullException( "bytes" );
             }
-            if( bytes.Length != 12 ) {
+            if( bytes.Length != 12 )
+            {
                 throw new ArgumentOutOfRangeException( "bytes", "Byte array must be 12 bytes long." );
             }
             timestamp = ( bytes[0] << 24 ) + ( bytes[1] << 16 ) + ( bytes[2] << 8 ) + bytes[3];
@@ -307,34 +349,40 @@ namespace KissU.Util.Helpers.Internal {
         }
 
         // private static methods
+
         /// <summary>
         /// Gets the current process id.  This method exists because of how CAS operates on the call stack, checking
         /// for permissions before executing the method.  Hence, if we inlined this call, the calling method would not execute
         /// before throwing an exception requiring the try/catch at an even higher level that we don't necessarily control.
         /// </summary>
         [MethodImpl( MethodImplOptions.NoInlining )]
-        private static int GetCurrentProcessId() {
+        private static int GetCurrentProcessId()
+        {
             return Process.GetCurrentProcess().Id;
         }
 
-        private static int GetMachineHash() {
+        private static int GetMachineHash()
+        {
             var hostName = Environment.MachineName; // use instead of Dns.HostName so it will work offline
             var md5 = MD5.Create();
             var hash = md5.ComputeHash( Encoding.UTF8.GetBytes( hostName ) );
             return ( hash[0] << 16 ) + ( hash[1] << 8 ) + hash[2]; // use first 3 bytes of hash
         }
 
-        private static int GetTimestampFromDateTime( DateTime timestamp ) {
+        private static int GetTimestampFromDateTime( DateTime timestamp )
+        {
             return (int)Math.Floor( ( ToUniversalTime( timestamp ) - __unixEpoch ).TotalSeconds );
         }
 
         // public methods
+
         /// <summary>
         /// Compares this ObjectId to another ObjectId.
         /// </summary>
         /// <param name="other">The other ObjectId.</param>
         /// <returns>A 32-bit signed integer that indicates whether this ObjectId is less than, equal to, or greather than the other.</returns>
-        public int CompareTo( ObjectId other ) {
+        public int CompareTo( ObjectId other )
+        {
             int r = _timestamp.CompareTo( other._timestamp );
             if( r != 0 ) { return r; }
             r = _machine.CompareTo( other._machine );
@@ -349,7 +397,8 @@ namespace KissU.Util.Helpers.Internal {
         /// </summary>
         /// <param name="rhs">The other ObjectId.</param>
         /// <returns>True if the two ObjectIds are equal.</returns>
-        public bool Equals( ObjectId rhs ) {
+        public bool Equals( ObjectId rhs )
+        {
             return
                 _timestamp == rhs._timestamp &&
                 _machine == rhs._machine &&
@@ -362,11 +411,14 @@ namespace KissU.Util.Helpers.Internal {
         /// </summary>
         /// <param name="obj">The other object.</param>
         /// <returns>True if the other object is an ObjectId and equal to this one.</returns>
-        public override bool Equals( object obj ) {
-            if( obj is ObjectId ) {
+        public override bool Equals( object obj )
+        {
+            if( obj is ObjectId )
+            {
                 return Equals( (ObjectId)obj );
             }
-            else {
+            else
+            {
                 return false;
             }
         }
@@ -375,7 +427,8 @@ namespace KissU.Util.Helpers.Internal {
         /// Gets the hash code.
         /// </summary>
         /// <returns>The hash code.</returns>
-        public override int GetHashCode() {
+        public override int GetHashCode()
+        {
             int hash = 17;
             hash = 37 * hash + _timestamp.GetHashCode();
             hash = 37 * hash + _machine.GetHashCode();
@@ -388,7 +441,8 @@ namespace KissU.Util.Helpers.Internal {
         /// Converts the ObjectId to a byte array.
         /// </summary>
         /// <returns>A byte array.</returns>
-        public byte[] ToByteArray() {
+        public byte[] ToByteArray()
+        {
             return Pack( _timestamp, _machine, _pid, _increment );
         }
 
@@ -396,7 +450,8 @@ namespace KissU.Util.Helpers.Internal {
         /// Returns a string representation of the value.
         /// </summary>
         /// <returns>A string representation of the value.</returns>
-        public override string ToString() {
+        public override string ToString()
+        {
             return ToHexString( ToByteArray() );
         }
 
@@ -405,67 +460,83 @@ namespace KissU.Util.Helpers.Internal {
         /// </summary>
         /// <param name="s">The hex string to parse.</param>
         /// <returns>The byte equivalent of the hex string.</returns>
-        public static byte[] ParseHexString( string s ) {
-            if( s == null ) {
+        public static byte[] ParseHexString( string s )
+        {
+            if( s == null )
+            {
                 throw new ArgumentNullException( "s" );
             }
 
-            if( s.Length % 2 == 1 ) {
+            if( s.Length % 2 == 1 )
+            {
                 throw new Exception( "The binary key cannot have an odd number of digits" );
             }
 
             byte[] arr = new byte[s.Length >> 1];
 
-            for( int i = 0; i < s.Length >> 1; ++i ) {
+            for( int i = 0; i < s.Length >> 1; ++i )
+            {
                 arr[i] = (byte)( ( GetHexVal( s[i << 1] ) << 4 ) + ( GetHexVal( s[( i << 1 ) + 1] ) ) );
             }
 
             return arr;
         }
+
         /// <summary>
         /// Converts a byte array to a hex string.
         /// </summary>
         /// <param name="bytes">The byte array.</param>
         /// <returns>A hex string.</returns>
-        public static string ToHexString( byte[] bytes ) {
-            if( bytes == null ) {
+        public static string ToHexString( byte[] bytes )
+        {
+            if( bytes == null )
+            {
                 throw new ArgumentNullException( "bytes" );
             }
             var result = new char[bytes.Length * 2];
-            for( int i = 0; i < bytes.Length; i++ ) {
+            for( int i = 0; i < bytes.Length; i++ )
+            {
                 var val = _lookup32[bytes[i]];
                 result[2 * i] = (char)val;
                 result[2 * i + 1] = (char)( val >> 16 );
             }
             return new string( result );
         }
+
         /// <summary>
         /// Converts a DateTime to number of milliseconds since Unix epoch.
         /// </summary>
         /// <param name="dateTime">A DateTime.</param>
         /// <returns>Number of seconds since Unix epoch.</returns>
-        public static long ToMillisecondsSinceEpoch( DateTime dateTime ) {
+        public static long ToMillisecondsSinceEpoch( DateTime dateTime )
+        {
             var utcDateTime = ToUniversalTime( dateTime );
             return ( utcDateTime - __unixEpoch ).Ticks / 10000;
         }
+
         /// <summary>
         /// Converts a DateTime to UTC (with special handling for MinValue and MaxValue).
         /// </summary>
         /// <param name="dateTime">A DateTime.</param>
         /// <returns>The DateTime in UTC.</returns>
-        public static DateTime ToUniversalTime( DateTime dateTime ) {
-            if( dateTime == DateTime.MinValue ) {
+        public static DateTime ToUniversalTime( DateTime dateTime )
+        {
+            if( dateTime == DateTime.MinValue )
+            {
                 return DateTime.SpecifyKind( DateTime.MinValue, DateTimeKind.Utc );
             }
-            else if( dateTime == DateTime.MaxValue ) {
+            else if( dateTime == DateTime.MaxValue )
+            {
                 return DateTime.SpecifyKind( DateTime.MaxValue, DateTimeKind.Utc );
             }
-            else {
+            else
+            {
                 return dateTime.ToUniversalTime();
             }
         }
 
-        private static int GetHexVal( char hex ) {
+        private static int GetHexVal( char hex )
+        {
             int val = (int)hex;
             //For uppercase A-F letters:
             //return val - (val < 58 ? 48 : 55);

@@ -1,11 +1,13 @@
 ﻿using System;
 using KissU.Util.Domains.Trees;
 
-namespace KissU.Util.Datas.Persistence {
+namespace KissU.Util.Datas.Persistence
+{
     /// <summary>
     /// 树型持久化对象
     /// </summary>
-    public abstract class TreePersistentObjectBase : TreePersistentObjectBase<Guid, Guid?> {
+    public abstract class TreePersistentObjectBase : TreePersistentObjectBase<Guid, Guid?>
+    {
     }
 
     /// <summary>
@@ -13,7 +15,8 @@ namespace KissU.Util.Datas.Persistence {
     /// </summary>
     /// <typeparam name="TKey">标识类型</typeparam>
     /// <typeparam name="TParentId">父标识类型</typeparam>
-    public abstract class TreePersistentObjectBase<TKey, TParentId> : PersistentObjectBase<TKey>, IParentId<TParentId>, IPath, IEnabled, ISortId {
+    public abstract class TreePersistentObjectBase<TKey, TParentId> : PersistentObjectBase<TKey>, IParentId<TParentId>, IPath, IEnabled, ISortId
+    {
         /// <summary>
         /// 父标识
         /// </summary>

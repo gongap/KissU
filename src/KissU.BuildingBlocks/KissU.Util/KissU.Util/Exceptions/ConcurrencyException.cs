@@ -1,11 +1,13 @@
 ﻿using System;
 using KissU.Util.Properties;
 
-namespace KissU.Util.Exceptions {
+namespace KissU.Util.Exceptions
+{
     /// <summary>
     /// 并发异常
     /// </summary>
-    public class ConcurrencyException : Warning {
+    public class ConcurrencyException : Warning
+    {
         /// <summary>
         /// 消息
         /// </summary>
@@ -15,7 +17,8 @@ namespace KissU.Util.Exceptions {
         /// 初始化并发异常
         /// </summary>
         public ConcurrencyException()
-            : this( "" ) {
+            : this( "" )
+            {
         }
 
         /// <summary>
@@ -23,7 +26,8 @@ namespace KissU.Util.Exceptions {
         /// </summary>
         /// <param name="message">错误消息</param>
         public ConcurrencyException( string message )
-            : this( message, null ) {
+            : this( message, null )
+            {
         }
 
         /// <summary>
@@ -31,7 +35,8 @@ namespace KissU.Util.Exceptions {
         /// </summary>
         /// <param name="exception">异常</param>
         public ConcurrencyException( Exception exception )
-            : this( "", exception ) {
+            : this( "", exception )
+            {
         }
 
         /// <summary>
@@ -40,7 +45,8 @@ namespace KissU.Util.Exceptions {
         /// <param name="message">错误消息</param>
         /// <param name="exception">异常</param>
         public ConcurrencyException( string message, Exception exception )
-            : this( message, exception, "" ) {
+            : this( message, exception, "" )
+            {
         }
 
         /// <summary>
@@ -50,7 +56,8 @@ namespace KissU.Util.Exceptions {
         /// <param name="exception">异常</param>
         /// <param name="code">错误码</param>
         public ConcurrencyException( string message, Exception exception, string code )
-            : base( message, code, exception ) {
+            : base( message, code, exception )
+            {
             _message = message;
         }
 

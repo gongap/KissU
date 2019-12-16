@@ -1,8 +1,10 @@
-﻿namespace KissU.Util.Files.Paths {
+﻿namespace KissU.Util.Files.Paths
+{
     /// <summary>
     /// 路径生成器
     /// </summary>
-    public interface IPathGenerator {
+    public interface IPathGenerator
+    {
         /// <summary>
         /// 生成路径
         /// </summary>

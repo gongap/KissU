@@ -1,11 +1,13 @@
 ﻿using System;
 using KissU.Util.Logs.Abstractions;
 
-namespace KissU.Util.Logs.Core {
+namespace KissU.Util.Logs.Core
+{
     /// <summary>
     /// 空日志操作
     /// </summary>
-    public class NullLog : ILog {
+    public class NullLog : ILog
+    {
         /// <summary>
         /// 空日志操作实例
         /// </summary>
@@ -16,7 +18,8 @@ namespace KissU.Util.Logs.Core {
         /// </summary>
         /// <typeparam name="TContent">日志内容类型</typeparam>
         /// <param name="action">设置内容操作</param>
-        public ILog Set<TContent>( Action<TContent> action ) where TContent : ILogContent {
+        public ILog Set<TContent>( Action<TContent> action ) where TContent : ILogContent
+        {
             return this;
         }
 
@@ -33,79 +36,91 @@ namespace KissU.Util.Logs.Core {
         /// <summary>
         /// 跟踪
         /// </summary>
-        public void Trace() {
+        public void Trace()
+        {
         }
 
         /// <summary>
         /// 跟踪
         /// </summary>
         /// <param name="message">日志消息</param>
-        public void Trace( string message ) {
+        public void Trace( string message )
+        {
         }
 
         /// <summary>
         /// 调试
         /// </summary>
-        public void Debug() {
+        public void Debug()
+        {
         }
 
         /// <summary>
         /// 调试
         /// </summary>
         /// <param name="message">日志消息</param>
-        public void Debug( string message ) {
+        public void Debug( string message )
+        {
         }
 
         /// <summary>
         /// 信息
         /// </summary>
-        public void Info() {
+        public void Info()
+        {
         }
 
         /// <summary>
         /// 信息
         /// </summary>
         /// <param name="message">日志消息</param>
-        public void Info( string message ) {
+        public void Info( string message )
+        {
         }
 
         /// <summary>
         /// 警告
         /// </summary>
-        public void Warn() {
+        public void Warn()
+        {
         }
 
         /// <summary>
         /// 警告
         /// </summary>
         /// <param name="message">日志消息</param>
-        public void Warn( string message ) {
+        public void Warn( string message )
+        {
         }
 
         /// <summary>
         /// 错误
         /// </summary>
-        public void Error() {
+        public void Error()
+        {
         }
 
         /// <summary>
         /// 错误
         /// </summary>
         /// <param name="message">日志消息</param>
-        public void Error( string message ) {
+        public void Error( string message )
+        {
         }
 
         /// <summary>
         /// 致命错误
         /// </summary>
-        public void Fatal() {
+        public void Fatal()
+        {
         }
 
         /// <summary>
         /// 致命错误
         /// </summary>
         /// <param name="message">日志消息</param>
-        public void Fatal( string message ) {
+        public void Fatal( string message )
+        {
         }
     }
 }

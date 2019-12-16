@@ -1,16 +1,19 @@
 ﻿using System.Threading.Tasks;
 
-namespace KissU.Util.Events {
+namespace KissU.Util.Events
+{
     /// <summary>
     /// 基于消息的事件总线
     /// </summary>
-    public interface IMessageEventBus {
+    public interface IMessageEventBus
+    {
         /// <summary>
         /// 发布事件
         /// </summary>
         /// <typeparam name="TEvent">事件类型</typeparam>
         /// <param name="event">事件</param>
         Task PublishAsync<TEvent>( TEvent @event ) where TEvent : IMessageEvent;
+
         /// <summary>
         /// 发布事件
         /// </summary>

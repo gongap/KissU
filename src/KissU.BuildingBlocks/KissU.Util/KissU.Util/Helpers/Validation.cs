@@ -1,13 +1,16 @@
-﻿namespace KissU.Util.Helpers {
+﻿namespace KissU.Util.Helpers
+{
     /// <summary>
     /// 验证操作
     /// </summary>
-    public class Validation {
+    public class Validation
+    {
         /// <summary>
         /// 是否数字
         /// </summary>
         /// <param name="input">输入值</param>        
-        public static bool IsNumber( string input ) {
+        public static bool IsNumber( string input )
+        {
             if( input.IsEmpty() )
                 return false;
             const string pattern = @"^(-?\d*)(\.\d+)?$";

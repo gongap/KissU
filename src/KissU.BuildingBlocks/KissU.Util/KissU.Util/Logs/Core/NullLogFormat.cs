@@ -1,10 +1,12 @@
 ﻿using KissU.Util.Logs.Abstractions;
 
-namespace KissU.Util.Logs.Core {
+namespace KissU.Util.Logs.Core
+{
     /// <summary>
     /// 空日志格式器
     /// </summary>
-    public class NullLogFormat : ILogFormat {
+    public class NullLogFormat : ILogFormat
+    {
         /// <summary>
         /// 空日志格式器实例
         /// </summary>
@@ -14,7 +16,8 @@ namespace KissU.Util.Logs.Core {
         /// 格式化
         /// </summary>
         /// <param name="content">日志内容</param>
-        public string Format( ILogContent content ) {
+        public string Format( ILogContent content )
+        {
             return "";
         }
     }

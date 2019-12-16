@@ -1,8 +1,10 @@
-﻿namespace KissU.Util.Domains.Tenants {
+﻿namespace KissU.Util.Domains.Tenants
+{
     /// <summary>
     /// 租户
     /// </summary>
-    public interface ITenant {
+    public interface ITenant
+    {
         /// <summary>
         /// 租户编号
         /// </summary>

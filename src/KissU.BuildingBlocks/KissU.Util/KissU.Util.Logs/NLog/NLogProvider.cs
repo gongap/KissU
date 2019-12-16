@@ -4,15 +4,18 @@ using KissU.Util.Logs.Formats;
 using LogLevel = Microsoft.Extensions.Logging.LogLevel;
 using NLogs = NLog;
 
-namespace KissU.Util.Logs.NLog {
+namespace KissU.Util.Logs.NLog
+{
     /// <summary>
     /// NLog日志提供程序
     /// </summary>
-    public class NLogProvider : ILogProvider {
+    public class NLogProvider : ILogProvider
+    {
         /// <summary>
         /// NLog日志操作
         /// </summary>
         private readonly NLogs.ILogger _logger;
+
         /// <summary>
         /// 日志格式化器
         /// </summary>
@@ -23,7 +26,8 @@ namespace KissU.Util.Logs.NLog {
         /// </summary>
         /// <param name="logName">日志名称</param>
         /// <param name="format">日志格式化器</param>
-        public NLogProvider( string logName, ILogFormat format = null ) {
+        public NLogProvider( string logName, ILogFormat format = null )
+        {
             _logger = GetLogger( logName );
             _format = format;
         }
@@ -32,7 +36,8 @@ namespace KissU.Util.Logs.NLog {
         /// 获取NLog日志操作
         /// </summary>
         /// <param name="logName">日志名称</param>
-        public static NLogs.ILogger GetLogger( string logName ) {
+        public static NLogs.ILogger GetLogger( string logName )
+        {
             return NLogs.LogManager.GetLogger( logName );
         }
 
@@ -56,9 +61,11 @@ namespace KissU.Util.Logs.NLog {
         /// </summary>
         /// <param name="level">日志等级</param>
         /// <param name="content">日志内容</param>
-        public void WriteLog( LogLevel level, ILogContent content ) {
+        public void WriteLog( LogLevel level, ILogContent content )
+        {
             var provider = GetFormatProvider();
-            if( provider == null ) {
+            if( provider == null )
+            {
                 _logger.Log( ConvertTo( level ), content );
                 return;
             }
@@ -68,8 +75,10 @@ namespace KissU.Util.Logs.NLog {
         /// <summary>
         /// 转换日志等级
         /// </summary>
-        private NLogs.LogLevel ConvertTo( LogLevel level ) {
-            switch( level ) {
+        private NLogs.LogLevel ConvertTo( LogLevel level )
+        {
+            switch( level )
+            {
                 case LogLevel.Trace:
                     return NLogs.LogLevel.Trace;
                 case LogLevel.Debug:
@@ -90,7 +99,8 @@ namespace KissU.Util.Logs.NLog {
         /// <summary>
         /// 获取格式化提供程序
         /// </summary>
-        private IFormatProvider GetFormatProvider() {
+        private IFormatProvider GetFormatProvider()
+        {
             if( _format == null )
                 return null;
             return new FormatProvider( _format );

@@ -1,8 +1,10 @@
-﻿namespace KissU.Util.Contexts {
+﻿namespace KissU.Util.Contexts
+{
     /// <summary>
     /// 空上下文
     /// </summary>
-    public class NullContext : IContext {
+    public class NullContext : IContext
+    {
         /// <summary>
         /// 空上下文实例
         /// </summary>
@@ -19,7 +21,8 @@
         /// <typeparam name="T">对象类型</typeparam>
         /// <param name="key">键名</param>
         /// <param name="value">对象</param>
-        public void Add<T>( string key, T value ) {
+        public void Add<T>( string key, T value )
+        {
         }
 
         /// <summary>
@@ -27,7 +30,8 @@
         /// </summary>
         /// <typeparam name="T">对象类型</typeparam>
         /// <param name="key">键名</param>
-        public T Get<T>( string key ) {
+        public T Get<T>( string key )
+        {
             return default( T );
         }
 
@@ -35,7 +39,8 @@
         /// 移除对象
         /// </summary>
         /// <param name="key">键名</param>
-        public void Remove( string key ) {
+        public void Remove( string key )
+        {
         }
     }
 }

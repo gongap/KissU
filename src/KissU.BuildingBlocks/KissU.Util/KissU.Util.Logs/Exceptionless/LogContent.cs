@@ -1,16 +1,20 @@
 ﻿using System.Collections.Generic;
 using KissU.Util.Logs.Properties;
 
-namespace KissU.Util.Logs.Exceptionless {
+namespace KissU.Util.Logs.Exceptionless
+{
     /// <summary>
     /// Exceptionless日志内容
     /// </summary>
-    public class LogContent : Util.Logs.Contents.LogContent, ILogConvert {
+    public class LogContent : Util.Logs.Contents.LogContent, ILogConvert
+    {
         /// <summary>
         /// 转换
         /// </summary>
-        public List<Item> To() {
-            return new List<Item> {
+        public List<Item> To()
+        {
+            return new List<Item>
+            {
                 { new Item( LogResource.LogId, LogId,0) },
                 { new Item( LogResource.LogName, LogName,1) },
                 { new Item(LogResource.TraceId, TraceId,2) },

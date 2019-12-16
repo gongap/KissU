@@ -4,19 +4,23 @@ using KissU.Util.Datas.Sql.Builders.Extensions;
 using KissU.Util.Datas.Sql.Matedatas;
 using KissU.Util.Helpers;
 
-namespace KissU.Util.Datas.Sql.Builders.Core {
+namespace KissU.Util.Datas.Sql.Builders.Core
+{
     /// <summary>
     /// Sql项
     /// </summary>
-    public class SqlItem {
+    public class SqlItem
+    {
         /// <summary>
         /// 名称
         /// </summary>
         private string _name;
+
         /// <summary>
         /// 前缀
         /// </summary>
         private string _prefix;
+
         /// <summary>
         /// 别名
         /// </summary>
@@ -31,13 +35,15 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <param name="raw">使用原始值</param>
         /// <param name="isSplit">是否用句点分割名称</param>
         /// <param name="isResolve">是否解析名称</param>
-        public SqlItem( string name, string prefix = null, string alias = null, bool raw = false, bool isSplit = true, bool isResolve = true ) {
+        public SqlItem( string name, string prefix = null, string alias = null, bool raw = false, bool isSplit = true, bool isResolve = true )
+        {
             if( string.IsNullOrWhiteSpace( name ) )
                 return;
             _prefix = prefix;
             _alias = alias;
             Raw = raw;
-            if( raw ) {
+            if( raw )
+            {
                 _name = name;
                 return;
             }
@@ -47,15 +53,18 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 解析名称
         /// </summary>
-        private void Resolve( string name, bool isSplit, bool isResolve ) {
+        private void Resolve( string name, bool isSplit, bool isResolve )
+        {
             name = name.Trim();
-            if( isResolve == false ) {
+            if( isResolve == false )
+            {
                 _name = name;
                 return;
             }
             var pattern = @"\s+[aA][sS]\s+";
             name = Regex.Replace( name, pattern, " " );
-            if( name.Contains( "." ) ) {
+            if( name.Contains( "." ) )
+            {
                 pattern = @"\s+.\s+";
                 name = Regex.Replace( name, pattern, "." );
             }
@@ -64,7 +73,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
                 return;
             if( list.Count == 2 )
                 _alias = list[1].Trim();
-            if( isSplit ) {
+            if( isSplit )
+            {
                 SplitName( list[0] );
                 return;
             }
@@ -74,7 +84,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 分割名称
         /// </summary>
-        private void SplitName( string name ) {
+        private void SplitName( string name )
+        {
             var result = new NameItem( name );
             if( string.IsNullOrWhiteSpace( result.Name ) == false )
                 _name = result.Name;
@@ -112,14 +123,16 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 复制副本
         /// </summary>
-        public SqlItem Clone() {
+        public SqlItem Clone()
+        {
             return new SqlItem( Name, Prefix, Alias, Raw, false );
         }
 
         /// <summary>
         /// 获取Sql
         /// </summary>
-        public virtual string ToSql( IDialect dialect = null, ITableDatabase tableDatabase = null ) {
+        public virtual string ToSql( IDialect dialect = null, ITableDatabase tableDatabase = null )
+        {
             if( string.IsNullOrWhiteSpace( Name ) )
                 return null;
             if( Raw )
@@ -132,7 +145,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 获取列
         /// </summary>
-        protected string GetColumn( IDialect dialect, ITableDatabase tableDatabase ) {
+        protected string GetColumn( IDialect dialect, ITableDatabase tableDatabase )
+        {
             var result = new StringBuilder();
             var database = DatabaseName;
             if( string.IsNullOrWhiteSpace( DatabaseName ) && tableDatabase != null )
@@ -148,7 +162,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 获取名称
         /// </summary>
-        protected string GetName() {
+        protected string GetName()
+        {
             if( string.IsNullOrWhiteSpace( Prefix ) )
                 return Name;
             return $"{Prefix}.{Name}";
@@ -157,7 +172,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 获取安全名称
         /// </summary>
-        protected string GetSafeName( IDialect dialect, string name ) {
+        protected string GetSafeName( IDialect dialect, string name )
+        {
             return dialect.GetSafeName( name );
         }
     }

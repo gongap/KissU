@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
-namespace KissU.Util.Domains.Trees {
+namespace KissU.Util.Domains.Trees
+{
     /// <summary>
     /// 树形实体
     /// </summary>
     /// <typeparam name="TEntity">树形实体类型</typeparam>
-    public abstract class TreeEntityBase<TEntity> : TreeEntityBase<TEntity, Guid, Guid?> where TEntity : ITreeEntity<TEntity, Guid, Guid?> {
+    public abstract class TreeEntityBase<TEntity> : TreeEntityBase<TEntity, Guid, Guid?> where TEntity : ITreeEntity<TEntity, Guid, Guid?>
+    {
         /// <summary>
         /// 初始化树形实体
         /// </summary>
@@ -16,7 +18,8 @@ namespace KissU.Util.Domains.Trees {
         /// <param name="path">路径</param>
         /// <param name="level">级数</param>
         protected TreeEntityBase( Guid id, string path, int level )
-            : base( id, path, level ) {
+            : base( id, path, level )
+            {
         }
     }
 
@@ -26,7 +29,8 @@ namespace KissU.Util.Domains.Trees {
     /// <typeparam name="TEntity">树形实体类型</typeparam>
     /// <typeparam name="TKey">标识类型</typeparam>
     /// <typeparam name="TParentId">父标识类型</typeparam>
-    public abstract class TreeEntityBase<TEntity, TKey, TParentId> : AggregateRoot<TEntity, TKey>, ITreeEntity<TEntity, TKey, TParentId> where TEntity : ITreeEntity<TEntity, TKey, TParentId> {
+    public abstract class TreeEntityBase<TEntity, TKey, TParentId> : AggregateRoot<TEntity, TKey>, ITreeEntity<TEntity, TKey, TParentId> where TEntity : ITreeEntity<TEntity, TKey, TParentId>
+    {
         /// <summary>
         /// 初始化树形实体
         /// </summary>
@@ -34,7 +38,8 @@ namespace KissU.Util.Domains.Trees {
         /// <param name="path">路径</param>
         /// <param name="level">级数</param>
         protected TreeEntityBase( TKey id, string path, int level )
-            : base( id ) {
+            : base( id )
+            {
             Path = path;
             Level = level;
         }
@@ -68,7 +73,8 @@ namespace KissU.Util.Domains.Trees {
         /// <summary>
         /// 初始化路径
         /// </summary>
-        public virtual void InitPath() {
+        public virtual void InitPath()
+        {
             InitPath( default(TEntity) );
         }
 
@@ -76,8 +82,10 @@ namespace KissU.Util.Domains.Trees {
         /// 初始化路径
         /// </summary>
         /// <param name="parent">父节点</param>
-        public virtual void InitPath( TEntity parent ) {
-            if( Equals( parent, null ) ) {
+        public virtual void InitPath( TEntity parent )
+        {
+            if( Equals( parent, null ) )
+            {
                 Level = 1;
                 Path = $"{Id},";
                 return;
@@ -90,7 +98,8 @@ namespace KissU.Util.Domains.Trees {
         /// 从路径中获取所有上级节点编号
         /// </summary>
         /// <param name="excludeSelf">是否排除当前节点,默认排除自身</param>
-        public List<TKey> GetParentIdsFromPath( bool excludeSelf = true ) {
+        public List<TKey> GetParentIdsFromPath( bool excludeSelf = true )
+        {
             if( string.IsNullOrWhiteSpace( Path ) )
                 return new List<TKey>();
             var result = Path.Split( ',' ).Where( id => !string.IsNullOrWhiteSpace( id ) && id != "," ).ToList();

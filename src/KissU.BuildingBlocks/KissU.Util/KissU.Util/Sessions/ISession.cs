@@ -1,12 +1,15 @@
-﻿namespace KissU.Util.Sessions {
+﻿namespace KissU.Util.Sessions
+{
     /// <summary>
     /// 用户会话
     /// </summary>
-    public interface ISession {
+    public interface ISession
+    {
         /// <summary>
         /// 是否认证
         /// </summary>
         bool IsAuthenticated { get; }
+
         /// <summary>
         /// 用户标识
         /// </summary>

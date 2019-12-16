@@ -1,7 +1,9 @@
-﻿namespace KissU.Util.Datas.Sql.Builders {
+﻿namespace KissU.Util.Datas.Sql.Builders
+{
     /// <summary>
     /// OrderBy子句操作
     /// </summary>
-    public interface IOrderBy {
+    public interface IOrderBy
+    {
     }
 }

@@ -1,22 +1,27 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace KissU.Util.Logs.Abstractions {
+namespace KissU.Util.Logs.Abstractions
+{
     /// <summary>
     /// 日志提供程序
     /// </summary>
-    public interface ILogProvider {
+    public interface ILogProvider
+    {
         /// <summary>
         /// 日志名称
         /// </summary>
         string LogName { get; }
+
         /// <summary>
         /// 调试级别是否启用
         /// </summary>
         bool IsDebugEnabled { get; }
+
         /// <summary>
         /// 跟踪级别是否启用
         /// </summary>
         bool IsTraceEnabled { get; }
+
         /// <summary>
         /// 写日志
         /// </summary>

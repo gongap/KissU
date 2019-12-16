@@ -1,8 +1,10 @@
-﻿namespace KissU.Util.Datas.Sql.Builders {
+﻿namespace KissU.Util.Datas.Sql.Builders
+{
     /// <summary>
     /// 参数字面值解析器
     /// </summary>
-    public interface IParamLiteralsResolver {
+    public interface IParamLiteralsResolver
+    {
         /// <summary>
         /// 获取参数字面值
         /// </summary>

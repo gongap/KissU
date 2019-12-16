@@ -4,17 +4,20 @@ using System.Text;
 using KissU.Util.Properties;
 using Microsoft.Extensions.Logging;
 
-namespace KissU.Util.Exceptions {
+namespace KissU.Util.Exceptions
+{
     /// <summary>
     /// 应用程序异常
     /// </summary>
-    public class Warning : Exception {
+    public class Warning : Exception
+    {
         /// <summary>
         /// 初始化应用程序异常
         /// </summary>
         /// <param name="message">错误消息</param>
         public Warning( string message )
-            : this( message, null ) {
+            : this( message, null )
+            {
         }
 
         /// <summary>
@@ -22,7 +25,8 @@ namespace KissU.Util.Exceptions {
         /// </summary>
         /// <param name="exception">异常</param>
         public Warning( Exception exception )
-            : this( null, null, exception ) {
+            : this( null, null, exception )
+            {
         }
 
         /// <summary>
@@ -31,7 +35,8 @@ namespace KissU.Util.Exceptions {
         /// <param name="message">错误消息</param>
         /// <param name="code">错误码</param>
         public Warning( string message, string code )
-            : this( message, code, null ) {
+            : this( message, code, null )
+            {
         }
 
         /// <summary>
@@ -41,7 +46,8 @@ namespace KissU.Util.Exceptions {
         /// <param name="code">错误码</param>
         /// <param name="exception">异常</param>
         public Warning( string message, string code, Exception exception )
-            : base( message ?? "", exception ) {
+            : base( message ?? "", exception )
+            {
             Code = code;
         }
 
@@ -53,14 +59,16 @@ namespace KissU.Util.Exceptions {
         /// <summary>
         /// 获取错误消息
         /// </summary>
-        public string GetMessage() {
+        public string GetMessage()
+        {
             return GetMessage( this );
         }
 
         /// <summary>
         /// 获取错误消息
         /// </summary>
-        public static string GetMessage( Exception ex ) {
+        public static string GetMessage( Exception ex )
+        {
             var result = new StringBuilder();
             var list = GetExceptions( ex );
             foreach( var exception in list )
@@ -71,7 +79,8 @@ namespace KissU.Util.Exceptions {
         /// <summary>
         /// 添加异常消息
         /// </summary>
-        private static void AppendMessage( StringBuilder result, Exception exception ) {
+        private static void AppendMessage( StringBuilder result, Exception exception )
+        {
             if( exception == null )
                 return;
             result.AppendLine( exception.Message );
@@ -80,7 +89,8 @@ namespace KissU.Util.Exceptions {
         /// <summary>
         /// 获取异常列表
         /// </summary>
-        public IList<Exception> GetExceptions() {
+        public IList<Exception> GetExceptions()
+        {
             return GetExceptions( this );
         }
 
@@ -88,7 +98,8 @@ namespace KissU.Util.Exceptions {
         /// 获取异常列表
         /// </summary>
         /// <param name="ex">异常</param>
-        public static IList<Exception> GetExceptions( Exception ex ) {
+        public static IList<Exception> GetExceptions( Exception ex )
+        {
             var result = new List<Exception>();
             AddException( result, ex );
             return result;
@@ -97,7 +108,8 @@ namespace KissU.Util.Exceptions {
         /// <summary>
         /// 添加内部异常
         /// </summary>
-        private static void AddException( List<Exception> result, Exception exception ) {
+        private static void AddException( List<Exception> result, Exception exception )
+        {
             if( exception == null )
                 return;
             result.Add( exception );
@@ -108,7 +120,8 @@ namespace KissU.Util.Exceptions {
         /// 获取友情提示
         /// </summary>
         /// <param name="level">日志级别</param>
-        public string GetPrompt( LogLevel level ) {
+        public string GetPrompt( LogLevel level )
+        {
             if( level == LogLevel.Error )
                 return R.SystemError;
             return Message;

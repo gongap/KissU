@@ -1,12 +1,14 @@
 ﻿using System;
 using KissU.Util.Datas.Stores;
 
-namespace KissU.Util.Domains.Repositories {
+namespace KissU.Util.Domains.Repositories
+{
     /// <summary>
     /// 查询仓储
     /// </summary>
     /// <typeparam name="TEntity">实体类型</typeparam>
-    public interface IQueryRepository<TEntity> : IQueryRepository<TEntity, Guid> where TEntity : class, IAggregateRoot,IKey<Guid> {
+    public interface IQueryRepository<TEntity> : IQueryRepository<TEntity, Guid> where TEntity : class, IAggregateRoot,IKey<Guid>
+    {
     }
 
     /// <summary>
@@ -14,6 +16,7 @@ namespace KissU.Util.Domains.Repositories {
     /// </summary>
     /// <typeparam name="TEntity">实体类型</typeparam>
     /// <typeparam name="TKey">实体标识类型</typeparam>
-    public interface IQueryRepository<TEntity, in TKey> : IQueryStore<TEntity,TKey> where TEntity : class, IAggregateRoot,IKey<TKey> {
+    public interface IQueryRepository<TEntity, in TKey> : IQueryStore<TEntity,TKey> where TEntity : class, IAggregateRoot,IKey<TKey>
+    {
     }
 }

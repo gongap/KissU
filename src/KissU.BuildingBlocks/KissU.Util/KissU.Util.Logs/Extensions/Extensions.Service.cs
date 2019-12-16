@@ -8,16 +8,19 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using NLog.LayoutRenderers;
 
-namespace KissU.Util.Logs.Extensions {
+namespace KissU.Util.Logs.Extensions
+{
     /// <summary>
     /// 日志扩展
     /// </summary>
-    public static partial class Extensions {
+    public static partial class Extensions
+    {
         /// <summary>
         /// 注册NLog日志操作
         /// </summary>
         /// <param name="services">服务集合</param>
-        public static void AddNLog( this IServiceCollection services ) {
+        public static void AddNLog( this IServiceCollection services )
+        {
             LayoutRenderer.Register<NLogLayoutRenderer>( "log" );
             services.TryAddScoped<ILogProviderFactory, Util.Logs.NLog.LogProviderFactory>();
             services.TryAddSingleton<ILogFormat, ContentFormat>();
@@ -30,7 +33,8 @@ namespace KissU.Util.Logs.Extensions {
         /// </summary>
         /// <param name="services">服务集合</param>
         /// <param name="configAction">配置操作</param>
-        public static void AddExceptionless( this IServiceCollection services, Action<ExceptionlessConfiguration> configAction ) {
+        public static void AddExceptionless( this IServiceCollection services, Action<ExceptionlessConfiguration> configAction )
+        {
             services.TryAddScoped<ILogProviderFactory, Util.Logs.Exceptionless.LogProviderFactory>();
             services.TryAddSingleton( typeof( ILogFormat ), t => NullLogFormat.Instance );
             services.TryAddScoped<ILogContext, Util.Logs.Exceptionless.LogContext>();

@@ -1,10 +1,12 @@
 ﻿using KissU.Util.Helpers;
 
-namespace KissU.Util.Contexts {
+namespace KissU.Util.Contexts
+{
     /// <summary>
     /// Web上下文
     /// </summary>
-    public class WebContext : IContext {
+    public class WebContext : IContext
+    {
         /// <summary>
         /// 跟踪号
         /// </summary>
@@ -16,7 +18,8 @@ namespace KissU.Util.Contexts {
         /// <typeparam name="T">对象类型</typeparam>
         /// <param name="key">键名</param>
         /// <param name="value">对象</param>
-        public void Add<T>( string key, T value ) {
+        public void Add<T>( string key, T value )
+        {
             if( Web.HttpContext == null )
                 return;
             Web.HttpContext.Items[key] = value;
@@ -27,7 +30,8 @@ namespace KissU.Util.Contexts {
         /// </summary>
         /// <typeparam name="T">对象类型</typeparam>
         /// <param name="key">键名</param>
-        public T Get<T>( string key ) {
+        public T Get<T>( string key )
+        {
             if( Web.HttpContext == null )
                 return default( T );
             return Util.Helpers.Convert.To<T>( Web.HttpContext.Items[key] );
@@ -37,7 +41,8 @@ namespace KissU.Util.Contexts {
         /// 移除对象
         /// </summary>
         /// <param name="key">键名</param>
-        public void Remove( string key ) {
+        public void Remove( string key )
+        {
             Web.HttpContext?.Items.Remove( key );
         }
     }

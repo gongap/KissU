@@ -1,10 +1,12 @@
 ﻿using KissU.Util.Datas.Sql.Builders.Core;
 
-namespace KissU.Util.Datas.Sql.Builders {
+namespace KissU.Util.Datas.Sql.Builders
+{
     /// <summary>
     /// Sql过滤器
     /// </summary>
-    public interface ISqlFilter {
+    public interface ISqlFilter
+    {
         /// <summary>
         /// 过滤
         /// </summary>

@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 
-namespace KissU.Util.Domains {
+namespace KissU.Util.Domains
+{
     /// <summary>
     /// 变更值集合
     /// </summary>
-    public class ChangeValueCollection : List<ChangeValue> {
+    public class ChangeValueCollection : List<ChangeValue>
+    {
         /// <summary>
         /// 添加
         /// </summary>
@@ -13,7 +15,8 @@ namespace KissU.Util.Domains {
         /// <param name="description">描述</param>
         /// <param name="oldValue">旧值</param>
         /// <param name="newValue">新值</param>
-        public void Add( string propertyName, string description, string oldValue, string newValue ) {
+        public void Add( string propertyName, string description, string oldValue, string newValue )
+        {
             if( string.IsNullOrWhiteSpace( propertyName ) )
                 return;
             Add( new ChangeValue( propertyName, description, oldValue, newValue ) );
@@ -22,7 +25,8 @@ namespace KissU.Util.Domains {
         /// <summary>
         /// 输出变更信息
         /// </summary>
-        public override string ToString() {
+        public override string ToString()
+        {
             var result = new StringBuilder();
             foreach( var item in this )
                 result.Append( $"{item}," );

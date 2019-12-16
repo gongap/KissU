@@ -14,23 +14,28 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Http.Internal;
 
-namespace KissU.Util.Helpers {
+namespace KissU.Util.Helpers
+{
     /// <summary>
     /// Web操作
     /// </summary>
-    public static class Web {
+    public static class Web
+    {
 
         #region 静态构造方法
 
         /// <summary>
         /// 初始化Web操作
         /// </summary>
-        static Web() {
-            try {
+        static Web()
+        {
+            try
+            {
                 HttpContextAccessor = Ioc.Create<IHttpContextAccessor>();
                 Environment = Ioc.Create<IHostingEnvironment>();
             }
-            catch {
+            catch
+            {
             }
         }
 
@@ -70,8 +75,10 @@ namespace KissU.Util.Helpers {
         /// <summary>
         /// 当前用户安全主体
         /// </summary>
-        public static ClaimsPrincipal User {
-            get {
+        public static ClaimsPrincipal User
+        {
+            get
+            {
                 if( HttpContext == null )
                     return UnauthenticatedPrincipal.Instance;
                 if( HttpContext.User is ClaimsPrincipal principal )
@@ -87,8 +94,10 @@ namespace KissU.Util.Helpers {
         /// <summary>
         /// 当前用户身份
         /// </summary>
-        public static ClaimsIdentity Identity {
-            get {
+        public static ClaimsIdentity Identity
+        {
+            get
+            {
                 if( User.Identity is ClaimsIdentity identity )
                     return identity;
                 return UnauthenticatedIdentity.Instance;
@@ -102,8 +111,10 @@ namespace KissU.Util.Helpers {
         /// <summary>
         /// 获取访问令牌
         /// </summary>
-        public static string AccessToken {
-            get {
+        public static string AccessToken
+        {
+            get
+            {
                 var authorization = Request?.Headers["Authorization"].SafeString();
                 if ( string.IsNullOrWhiteSpace( authorization ) )
                     return null;
@@ -121,8 +132,10 @@ namespace KissU.Util.Helpers {
         /// <summary>
         /// 请求正文
         /// </summary>
-        public static string Body {
-            get {
+        public static string Body
+        {
+            get
+            {
                 Request.EnableRewind();
                 return File.ToString( Request.Body, isCloseStream: false );
             }
@@ -135,7 +148,8 @@ namespace KissU.Util.Helpers {
         /// <summary>
         /// 获取请求正文
         /// </summary>
-        public static async Task<string> GetBodyAsync() {
+        public static async Task<string> GetBodyAsync()
+        {
             Request.EnableRewind();
             return await File.ToStringAsync( Request.Body, isCloseStream: false );
         }
@@ -147,7 +161,8 @@ namespace KissU.Util.Helpers {
         /// <summary>
         /// Web客户端，用于发送Http请求
         /// </summary>
-        public static Util.Webs.Clients.WebClient Client() {
+        public static Util.Webs.Clients.WebClient Client()
+        {
             return new Util.Webs.Clients.WebClient();
         }
 
@@ -155,7 +170,8 @@ namespace KissU.Util.Helpers {
         /// Web客户端，用于发送Http请求
         /// </summary>
         /// <typeparam name="TResult">返回结果类型</typeparam>
-        public static Util.Webs.Clients.WebClient<TResult> Client<TResult>() where TResult : class {
+        public static Util.Webs.Clients.WebClient<TResult> Client<TResult>() where TResult : class
+        {
             return new Util.Webs.Clients.WebClient<TResult>();
         }
 
@@ -181,22 +197,26 @@ namespace KissU.Util.Helpers {
         /// 设置Ip地址
         /// </summary>
         /// <param name="ip">Ip地址</param>
-        public static void SetIp( string ip ) {
+        public static void SetIp( string ip )
+        {
             _ip = ip;
         }
 
         /// <summary>
         /// 重置Ip地址
         /// </summary>
-        public static void ResetIp() {
+        public static void ResetIp()
+        {
             _ip = null;
         }
 
         /// <summary>
         /// 客户端Ip地址
         /// </summary>
-        public static string Ip {
-            get {
+        public static string Ip
+        {
+            get
+            {
                 if( string.IsNullOrWhiteSpace( _ip ) == false )
                     return _ip;
                 var list = new[] { "127.0.0.1", "::1" };
@@ -210,8 +230,10 @@ namespace KissU.Util.Helpers {
         /// <summary>
         /// 获取局域网IP
         /// </summary>
-        private static string GetLanIp() {
-            foreach( var hostAddress in Dns.GetHostAddresses( Dns.GetHostName() ) ) {
+        private static string GetLanIp()
+        {
+            foreach( var hostAddress in Dns.GetHostAddresses( Dns.GetHostName() ) )
+            {
                 if( hostAddress.AddressFamily == AddressFamily.InterNetwork )
                     return hostAddress.ToString();
             }
@@ -222,21 +244,26 @@ namespace KissU.Util.Helpers {
         /// 获取局域网IP
         /// </summary>
         /// <param name="type">网络接口类型</param>
-        private static string GetLanIp(NetworkInterfaceType type) {
-            try {
-                foreach (var item in NetworkInterface.GetAllNetworkInterfaces()) {
+        private static string GetLanIp(NetworkInterfaceType type)
+        {
+            try
+            {
+                foreach (var item in NetworkInterface.GetAllNetworkInterfaces())
+                {
                     if(item.NetworkInterfaceType!=type || item.OperationalStatus!=OperationalStatus.Up)
                         continue;
                     var ipProperties = item.GetIPProperties();
                     if(ipProperties.GatewayAddresses.FirstOrDefault() == null)
                         continue;
-                    foreach (var ip in ipProperties.UnicastAddresses) {
+                    foreach (var ip in ipProperties.UnicastAddresses)
+                    {
                         if (ip.Address.AddressFamily == AddressFamily.InterNetwork)
                             return ip.Address.ToString();
                     }
                 }
             }
-            catch {
+            catch
+            {
                 return string.Empty;
             }
 
@@ -255,7 +282,8 @@ namespace KissU.Util.Helpers {
         /// <summary>
         /// 获取Web客户端主机名
         /// </summary>
-        private static string GetClientHostName() {
+        private static string GetClientHostName()
+        {
             var address = GetRemoteAddress();
             if( string.IsNullOrWhiteSpace( address ) )
                 return Dns.GetHostName();
@@ -268,7 +296,8 @@ namespace KissU.Util.Helpers {
         /// <summary>
         /// 获取远程地址
         /// </summary>
-        private static string GetRemoteAddress() {
+        private static string GetRemoteAddress()
+        {
             return Request?.Headers["HTTP_X_FORWARDED_FOR"] ?? Request?.Headers["REMOTE_ADDR"];
         }
 
@@ -306,7 +335,8 @@ namespace KissU.Util.Helpers {
         /// <summary>
         /// 获取客户端文件集合
         /// </summary>
-        public static List<IFormFile> GetFiles() {
+        public static List<IFormFile> GetFiles()
+        {
             var result = new List<IFormFile>();
             var files = Request.Form.Files;
             if( files == null || files.Count == 0 )
@@ -322,7 +352,8 @@ namespace KissU.Util.Helpers {
         /// <summary>
         /// 获取客户端文件
         /// </summary>
-        public static IFormFile GetFile() {
+        public static IFormFile GetFile()
+        {
             var files = GetFiles();
             return files.Count == 0 ? null : files[0];
         }
@@ -335,7 +366,8 @@ namespace KissU.Util.Helpers {
         /// 获取请求参数，搜索路径：查询参数->表单参数->请求头
         /// </summary>
         /// <param name="name">参数名</param>
-        public static string GetParam( string name ) {
+        public static string GetParam( string name )
+        {
             if ( string.IsNullOrWhiteSpace( name ) )
                 return string.Empty;
             if ( Request == null )
@@ -363,7 +395,8 @@ namespace KissU.Util.Helpers {
         /// </summary>
         /// <param name="url">url</param>
         /// <param name="isUpper">编码字符是否转成大写,范例,"http://"转成"http%3A%2F%2F"</param>
-        public static string UrlEncode( string url, bool isUpper = false ) {
+        public static string UrlEncode( string url, bool isUpper = false )
+        {
             return UrlEncode( url, Encoding.UTF8, isUpper );
         }
 
@@ -373,7 +406,8 @@ namespace KissU.Util.Helpers {
         /// <param name="url">url</param>
         /// <param name="encoding">字符编码</param>
         /// <param name="isUpper">编码字符是否转成大写,范例,"http://"转成"http%3A%2F%2F"</param>
-        public static string UrlEncode( string url, string encoding, bool isUpper = false ) {
+        public static string UrlEncode( string url, string encoding, bool isUpper = false )
+        {
             encoding = string.IsNullOrWhiteSpace( encoding ) ? "UTF-8" : encoding;
             return UrlEncode( url, Encoding.GetEncoding( encoding ), isUpper );
         }
@@ -384,7 +418,8 @@ namespace KissU.Util.Helpers {
         /// <param name="url">url</param>
         /// <param name="encoding">字符编码</param>
         /// <param name="isUpper">编码字符是否转成大写,范例,"http://"转成"http%3A%2F%2F"</param>
-        public static string UrlEncode( string url, Encoding encoding, bool isUpper = false ) {
+        public static string UrlEncode( string url, Encoding encoding, bool isUpper = false )
+        {
             var result = HttpUtility.UrlEncode( url, encoding );
             if( isUpper == false )
                 return result;
@@ -394,10 +429,12 @@ namespace KissU.Util.Helpers {
         /// <summary>
         /// 获取大写编码字符串
         /// </summary>
-        private static string GetUpperEncode( string encode ) {
+        private static string GetUpperEncode( string encode )
+        {
             var result = new StringBuilder();
             int index = int.MinValue;
-            for( int i = 0; i < encode.Length; i++ ) {
+            for( int i = 0; i < encode.Length; i++ )
+            {
                 string character = encode[i].ToString();
                 if( character == "%" )
                     index = i;
@@ -416,7 +453,8 @@ namespace KissU.Util.Helpers {
         /// Url解码
         /// </summary>
         /// <param name="url">url</param>
-        public static string UrlDecode( string url ) {
+        public static string UrlDecode( string url )
+        {
             return HttpUtility.UrlDecode( url );
         }
 
@@ -425,7 +463,8 @@ namespace KissU.Util.Helpers {
         /// </summary>
         /// <param name="url">url</param>
         /// <param name="encoding">字符编码</param>
-        public static string UrlDecode( string url, Encoding encoding ) {
+        public static string UrlDecode( string url, Encoding encoding )
+        {
             return HttpUtility.UrlDecode( url, encoding );
         }
 
@@ -438,7 +477,8 @@ namespace KissU.Util.Helpers {
         /// </summary>
         /// <param name="filePath">文件绝对路径</param>
         /// <param name="fileName">文件名,包含扩展名</param>
-        public static async Task DownloadFileAsync( string filePath, string fileName ) {
+        public static async Task DownloadFileAsync( string filePath, string fileName )
+        {
             await DownloadFileAsync( filePath, fileName, Encoding.UTF8 );
         }
 
@@ -448,7 +488,8 @@ namespace KissU.Util.Helpers {
         /// <param name="filePath">文件绝对路径</param>
         /// <param name="fileName">文件名,包含扩展名</param>
         /// <param name="encoding">字符编码</param>
-        public static async Task DownloadFileAsync( string filePath, string fileName, Encoding encoding ) {
+        public static async Task DownloadFileAsync( string filePath, string fileName, Encoding encoding )
+        {
             var bytes = File.Read( filePath );
             await DownloadAsync( bytes, fileName, encoding );
         }
@@ -458,7 +499,8 @@ namespace KissU.Util.Helpers {
         /// </summary>
         /// <param name="stream">流</param>
         /// <param name="fileName">文件名,包含扩展名</param>
-        public static async Task DownloadAsync( Stream stream, string fileName ) {
+        public static async Task DownloadAsync( Stream stream, string fileName )
+        {
             await DownloadAsync( stream, fileName, Encoding.UTF8 );
         }
 
@@ -468,7 +510,8 @@ namespace KissU.Util.Helpers {
         /// <param name="stream">流</param>
         /// <param name="fileName">文件名,包含扩展名</param>
         /// <param name="encoding">字符编码</param>
-        public static async Task DownloadAsync( Stream stream, string fileName, Encoding encoding ) {
+        public static async Task DownloadAsync( Stream stream, string fileName, Encoding encoding )
+        {
             await DownloadAsync( File.ToBytes( stream ), fileName, encoding );
         }
 
@@ -477,7 +520,8 @@ namespace KissU.Util.Helpers {
         /// </summary>
         /// <param name="bytes">字节流</param>
         /// <param name="fileName">文件名,包含扩展名</param>
-        public static async Task DownloadAsync( byte[] bytes, string fileName ) {
+        public static async Task DownloadAsync( byte[] bytes, string fileName )
+        {
             await DownloadAsync( bytes, fileName, Encoding.UTF8 );
         }
 
@@ -487,7 +531,8 @@ namespace KissU.Util.Helpers {
         /// <param name="bytes">字节流</param>
         /// <param name="fileName">文件名,包含扩展名</param>
         /// <param name="encoding">字符编码</param>
-        public static async Task DownloadAsync( byte[] bytes, string fileName, Encoding encoding ) {
+        public static async Task DownloadAsync( byte[] bytes, string fileName, Encoding encoding )
+        {
             if( bytes == null || bytes.Length == 0 )
                 return;
             fileName = fileName.Replace( " ", "" );

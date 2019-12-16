@@ -2,15 +2,18 @@
 using KissU.Util.Logs.Core;
 using KissU.Util.Sessions;
 
-namespace KissU.Util.Domains.Services {
+namespace KissU.Util.Domains.Services
+{
     /// <summary>
     /// 领域服务
     /// </summary>
-    public abstract class DomainServiceBase : IDomainService {
+    public abstract class DomainServiceBase : IDomainService
+    {
         /// <summary>
         /// 初始化领域服务
         /// </summary>
-        protected DomainServiceBase() {
+        protected DomainServiceBase()
+        {
             Log = NullLog.Instance;
         }
 

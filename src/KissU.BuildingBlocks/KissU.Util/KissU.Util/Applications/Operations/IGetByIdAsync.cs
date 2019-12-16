@@ -1,16 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace KissU.Util.Applications.Operations {
+namespace KissU.Util.Applications.Operations
+{
     /// <summary>
     /// 获取指定标识实体
     /// </summary>
-    public interface IGetByIdAsync<TDto> where TDto : new() {
+    public interface IGetByIdAsync<TDto> where TDto : new()
+    {
         /// <summary>
         /// 通过编号获取
         /// </summary>
         /// <param name="id">实体编号</param>
         Task<TDto> GetByIdAsync( object id );
+
         /// <summary>
         /// 通过编号列表获取
         /// </summary>

@@ -1,9 +1,11 @@
 ﻿using Autofac.Core;
 
-namespace KissU.Util.Dependency {
+namespace KissU.Util.Dependency
+{
     /// <summary>
     /// 依赖配置
     /// </summary>
-    public interface IConfig : IModule {
+    public interface IConfig : IModule
+    {
     }
 }

@@ -1,22 +1,27 @@
 ﻿using System.Text;
 
-namespace KissU.Util.Events {
+namespace KissU.Util.Events
+{
     /// <summary>
     /// 消息事件
     /// </summary>
-    public class MessageEvent : Event, IMessageEvent {
+    public class MessageEvent : Event, IMessageEvent
+    {
         /// <summary>
         /// 消息名称
         /// </summary>
         public string Name { get; set; }
+
         /// <summary>
         /// 事件数据
         /// </summary>
         public object Data { get; set; }
+
         /// <summary>
         /// 回调名称
         /// </summary>
         public string Callback { get; set; }
+
         /// <summary>
         /// 是否立即发送消息
         /// </summary>
@@ -25,7 +30,8 @@ namespace KissU.Util.Events {
         /// <summary>
         /// 输出日志
         /// </summary>
-        public override string ToString() {
+        public override string ToString()
+        {
             var result = new StringBuilder();
             result.AppendLine( $"事件标识: {Id}" );
             result.AppendLine( $"事件时间:{Time.ToMillisecondString()}" );

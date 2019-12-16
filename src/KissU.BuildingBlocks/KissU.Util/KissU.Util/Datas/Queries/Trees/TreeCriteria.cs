@@ -3,16 +3,19 @@ using System.Linq.Expressions;
 using KissU.Util.Domains.Repositories;
 using KissU.Util.Domains.Trees;
 
-namespace KissU.Util.Datas.Queries.Trees {
+namespace KissU.Util.Datas.Queries.Trees
+{
     /// <summary>
     /// 树型查询条件
     /// </summary>
-    public class TreeCriteria<TEntity> : TreeCriteria<TEntity, Guid?> where TEntity : IPath, IEnabled, IParentId<Guid?> {
+    public class TreeCriteria<TEntity> : TreeCriteria<TEntity, Guid?> where TEntity : IPath, IEnabled, IParentId<Guid?>
+    {
         /// <summary>
         /// 初始化树型查询条件
         /// </summary>
         /// <param name="parameter">查询参数</param>
-        public TreeCriteria( ITreeQueryParameter parameter ) : base( parameter ) {
+        public TreeCriteria( ITreeQueryParameter parameter ) : base( parameter )
+        {
             if( parameter.ParentId != null )
                 Predicate = Predicate.And( t => t.ParentId == parameter.ParentId );
         }
@@ -21,12 +24,14 @@ namespace KissU.Util.Datas.Queries.Trees {
     /// <summary>
     /// 树型查询条件
     /// </summary>
-    public class TreeCriteria<TEntity, TParentId> : ICriteria<TEntity> where TEntity : IPath, IEnabled {
+    public class TreeCriteria<TEntity, TParentId> : ICriteria<TEntity> where TEntity : IPath, IEnabled
+    {
         /// <summary>
         /// 初始化树型查询条件
         /// </summary>
         /// <param name="parameter">查询参数</param>
-        public TreeCriteria( ITreeQueryParameter<TParentId> parameter ) {
+        public TreeCriteria( ITreeQueryParameter<TParentId> parameter )
+        {
             if( !string.IsNullOrWhiteSpace( parameter.Path ) )
                 Predicate = Predicate.And( t => t.Path.StartsWith( parameter.Path ) );
             if( parameter.Level != null )
@@ -43,7 +48,8 @@ namespace KissU.Util.Datas.Queries.Trees {
         /// <summary>
         /// 获取查询条件
         /// </summary>
-        public Expression<Func<TEntity, bool>> GetPredicate() {
+        public Expression<Func<TEntity, bool>> GetPredicate()
+        {
             return Predicate;
         }
     }

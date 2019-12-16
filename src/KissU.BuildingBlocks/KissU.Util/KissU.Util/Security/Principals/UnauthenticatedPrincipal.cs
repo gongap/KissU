@@ -1,15 +1,18 @@
 ﻿using System.Security.Claims;
 using System.Security.Principal;
 
-namespace KissU.Util.Security.Principals {
+namespace KissU.Util.Security.Principals
+{
     /// <summary>
     /// 未认证安全主体
     /// </summary>
-    public class UnauthenticatedPrincipal : ClaimsPrincipal {
+    public class UnauthenticatedPrincipal : ClaimsPrincipal
+    {
         /// <summary>
         /// 初始化未认证安全主体
         /// </summary>
-        private UnauthenticatedPrincipal(){
+        private UnauthenticatedPrincipal()
+        {
         }
 
         /// <summary>

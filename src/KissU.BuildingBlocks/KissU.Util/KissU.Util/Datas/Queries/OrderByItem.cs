@@ -1,14 +1,17 @@
-﻿namespace KissU.Util.Datas.Queries {
+﻿namespace KissU.Util.Datas.Queries
+{
     /// <summary>
     /// 排序项
     /// </summary>
-    public class OrderByItem {
+    public class OrderByItem
+    {
         /// <summary>
         /// 初始化排序项
         /// </summary>
         /// <param name="name">排序属性</param>
         /// <param name="desc">是否降序</param>
-        public OrderByItem( string name, bool desc ) {
+        public OrderByItem( string name, bool desc )
+        {
             Name = name;
             Desc = desc;
         }
@@ -26,7 +29,8 @@
         /// <summary>
         /// 创建排序字符串
         /// </summary>
-        public string Generate() {
+        public string Generate()
+        {
             if( Desc )
                 return $"{Name} desc";
             return Name;

@@ -5,11 +5,13 @@ using System.Linq.Expressions;
 using System.Reflection;
 using KissU.Util.Datas.Queries;
 
-namespace KissU.Util.Helpers {
+namespace KissU.Util.Helpers
+{
     /// <summary>
     /// Lambda表达式操作
     /// </summary>
-    public static class Lambda {
+    public static class Lambda
+    {
 
         #region GetType(获取类型)
 
@@ -17,7 +19,8 @@ namespace KissU.Util.Helpers {
         /// 获取类型
         /// </summary>
         /// <param name="expression">表达式,范例：t => t.Name</param>
-        public static Type GetType( Expression expression ) {
+        public static Type GetType( Expression expression )
+        {
             var memberExpression = GetMemberExpression( expression );
             return memberExpression?.Type;
         }
@@ -30,7 +33,8 @@ namespace KissU.Util.Helpers {
         /// 获取成员
         /// </summary>
         /// <param name="expression">表达式,范例：t => t.Name</param>
-        public static MemberInfo GetMember( Expression expression ) {
+        public static MemberInfo GetMember( Expression expression )
+        {
             var memberExpression = GetMemberExpression( expression );
             return memberExpression?.Member;
         }
@@ -40,10 +44,12 @@ namespace KissU.Util.Helpers {
         /// </summary>
         /// <param name="expression">表达式</param>
         /// <param name="right">取表达式右侧,(l,r) => l.id == r.id，设置为true,返回r.id表达式</param>
-        public static MemberExpression GetMemberExpression( Expression expression, bool right = false ) {
+        public static MemberExpression GetMemberExpression( Expression expression, bool right = false )
+        {
             if( expression == null )
                 return null;
-            switch( expression.NodeType ) {
+            switch( expression.NodeType )
+            {
                 case ExpressionType.Lambda:
                     return GetMemberExpression( ( (LambdaExpression)expression ).Body, right );
                 case ExpressionType.Convert:
@@ -67,10 +73,12 @@ namespace KissU.Util.Helpers {
         /// <summary>
         /// 获取方法调用表达式的成员名称
         /// </summary>
-        private static MemberExpression GetMethodCallExpressionName( Expression expression ) {
+        private static MemberExpression GetMethodCallExpressionName( Expression expression )
+        {
             var methodCallExpression = (MethodCallExpression)expression;
             var left = (MemberExpression)methodCallExpression.Object;
-            if( Reflection.IsGenericCollection( left?.Type ) ) {
+            if( Reflection.IsGenericCollection( left?.Type ) )
+            {
                 var argumentExpression = methodCallExpression.Arguments.FirstOrDefault();
                 if( argumentExpression != null && argumentExpression.NodeType == ExpressionType.MemberAccess )
                     return (MemberExpression)argumentExpression;
@@ -86,7 +94,8 @@ namespace KissU.Util.Helpers {
         /// 获取成员名称，范例：t => t.A.Name,返回 A.Name
         /// </summary>
         /// <param name="expression">表达式,范例：t => t.Name</param>
-        public static string GetName( Expression expression ) {
+        public static string GetName( Expression expression )
+        {
             var memberExpression = GetMemberExpression( expression );
             return GetMemberName( memberExpression );
         }
@@ -94,7 +103,8 @@ namespace KissU.Util.Helpers {
         /// <summary>
         /// 获取成员名称
         /// </summary>
-        public static string GetMemberName( MemberExpression memberExpression ) {
+        public static string GetMemberName( MemberExpression memberExpression )
+        {
             if( memberExpression == null )
                 return string.Empty;
             string result = memberExpression.ToString();
@@ -110,13 +120,15 @@ namespace KissU.Util.Helpers {
         /// </summary>
         /// <typeparam name="T">实体类型</typeparam>
         /// <param name="expression">属性集合表达式,范例：t => new object[]{t.A,t.B}</param>
-        public static List<string> GetNames<T>( Expression<Func<T, object[]>> expression ) {
+        public static List<string> GetNames<T>( Expression<Func<T, object[]>> expression )
+        {
             var result = new List<string>();
             if( expression == null )
                 return result;
             if( !( expression.Body is NewArrayExpression arrayExpression ) )
                 return result;
-            foreach( var each in arrayExpression.Expressions ) {
+            foreach( var each in arrayExpression.Expressions )
+            {
                 var name = GetName( each );
                 if( string.IsNullOrWhiteSpace( name ) == false )
                     result.Add( name );
@@ -133,7 +145,8 @@ namespace KissU.Util.Helpers {
         /// </summary>
         /// <param name="expression">表达式,范例：t => t.Name</param>
         /// <param name="right">取表达式右侧,(l,r) => l.LId == r.RId，设置为true,返回RId</param>
-        public static string GetLastName( Expression expression, bool right = false ) {
+        public static string GetLastName( Expression expression, bool right = false )
+        {
             var memberExpression = GetMemberExpression( expression, right );
             if( memberExpression == null )
                 return string.Empty;
@@ -147,10 +160,12 @@ namespace KissU.Util.Helpers {
         /// 是否值表达式
         /// </summary>
         /// <param name="expression">表达式</param>
-        private static bool IsValueExpression( Expression expression ) {
+        private static bool IsValueExpression( Expression expression )
+        {
             if( expression == null )
                 return false;
-            switch( expression.NodeType ) {
+            switch( expression.NodeType )
+            {
                 case ExpressionType.MemberAccess:
                     return IsValueExpression( ( (MemberExpression)expression ).Expression );
                 case ExpressionType.Constant:
@@ -168,13 +183,15 @@ namespace KissU.Util.Helpers {
         /// </summary>
         /// <typeparam name="T">实体类型</typeparam>
         /// <param name="expression">属性集合表达式,范例：t => new object[]{t.A,t.B}</param>
-        public static List<string> GetLastNames<T>( Expression<Func<T, object[]>> expression ) {
+        public static List<string> GetLastNames<T>( Expression<Func<T, object[]>> expression )
+        {
             var result = new List<string>();
             if( expression == null )
                 return result;
             if( !( expression.Body is NewArrayExpression arrayExpression ) )
                 return result;
-            foreach( var each in arrayExpression.Expressions ) {
+            foreach( var each in arrayExpression.Expressions )
+            {
                 var name = GetLastName( each );
                 if( string.IsNullOrWhiteSpace( name ) == false )
                     result.Add( name );
@@ -190,10 +207,12 @@ namespace KissU.Util.Helpers {
         /// 获取值,范例：t => t.Name == "A",返回 A
         /// </summary>
         /// <param name="expression">表达式,范例：t => t.Name == "A"</param>
-        public static object GetValue( Expression expression ) {
+        public static object GetValue( Expression expression )
+        {
             if( expression == null )
                 return null;
-            switch( expression.NodeType ) {
+            switch( expression.NodeType )
+            {
                 case ExpressionType.Lambda:
                     return GetValue( ( (LambdaExpression)expression ).Body );
                 case ExpressionType.Convert:
@@ -225,10 +244,12 @@ namespace KissU.Util.Helpers {
         /// <summary>
         /// 是否包含参数，用于检测是属性，而不是值
         /// </summary>
-        private static bool HasParameter( Expression expression ) {
+        private static bool HasParameter( Expression expression )
+        {
             if( expression == null )
                 return false;
-            switch( expression.NodeType ) {
+            switch( expression.NodeType )
+            {
                 case ExpressionType.Convert:
                     return HasParameter( ( (UnaryExpression)expression ).Operand );
                 case ExpressionType.MemberAccess:
@@ -242,7 +263,8 @@ namespace KissU.Util.Helpers {
         /// <summary>
         /// 获取方法调用表达式的值
         /// </summary>
-        private static object GetMethodCallExpressionValue( Expression expression ) {
+        private static object GetMethodCallExpressionValue( Expression expression )
+        {
             var methodCallExpression = (MethodCallExpression)expression;
             var value = GetValue( methodCallExpression.Arguments.FirstOrDefault() );
             if( value != null )
@@ -255,11 +277,13 @@ namespace KissU.Util.Helpers {
         /// <summary>
         /// 获取属性表达式的值
         /// </summary>
-        private static object GetMemberValue( MemberExpression expression ) {
+        private static object GetMemberValue( MemberExpression expression )
+        {
             if( expression == null )
                 return null;
             var field = expression.Member as FieldInfo;
-            if( field != null ) {
+            if( field != null )
+            {
                 var constValue = GetConstantExpressionValue( expression.Expression );
                 return field.GetValue( constValue );
             }
@@ -269,7 +293,8 @@ namespace KissU.Util.Helpers {
             if( expression.Expression == null )
                 return property.GetValue( null );
             var value = GetMemberValue( expression.Expression as MemberExpression );
-            if( value == null ) {
+            if( value == null )
+            {
                 if( property.PropertyType == typeof( bool ) )
                     return true;
                 return null;
@@ -280,7 +305,8 @@ namespace KissU.Util.Helpers {
         /// <summary>
         /// 获取常量表达式的值
         /// </summary>
-        private static object GetConstantExpressionValue( Expression expression ) {
+        private static object GetConstantExpressionValue( Expression expression )
+        {
             var constantExpression = (ConstantExpression)expression;
             return constantExpression.Value;
         }
@@ -293,10 +319,12 @@ namespace KissU.Util.Helpers {
         /// 获取查询操作符,范例：t => t.Name == "A",返回 Operator.Equal
         /// </summary>
         /// <param name="expression">表达式,范例：t => t.Name == "A"</param>
-        public static Operator? GetOperator( Expression expression ) {
+        public static Operator? GetOperator( Expression expression )
+        {
             if( expression == null )
                 return null;
-            switch( expression.NodeType ) {
+            switch( expression.NodeType )
+            {
                 case ExpressionType.Lambda:
                     return GetOperator( ( (LambdaExpression)expression ).Body );
                 case ExpressionType.Convert:
@@ -322,9 +350,11 @@ namespace KissU.Util.Helpers {
         /// <summary>
         /// 获取方法调用表达式的值
         /// </summary>
-        private static Operator? GetMethodCallExpressionOperator( Expression expression ) {
+        private static Operator? GetMethodCallExpressionOperator( Expression expression )
+        {
             var methodCallExpression = (MethodCallExpression)expression;
-            switch( methodCallExpression?.Method?.Name?.ToLower() ) {
+            switch( methodCallExpression?.Method?.Name?.ToLower() )
+            {
                 case "contains":
                     return Operator.Contains;
                 case "endswith":
@@ -343,10 +373,12 @@ namespace KissU.Util.Helpers {
         /// 获取参数，范例：t.Name,返回 t
         /// </summary>
         /// <param name="expression">表达式，范例：t.Name</param>
-        public static ParameterExpression GetParameter( Expression expression ) {
+        public static ParameterExpression GetParameter( Expression expression )
+        {
             if( expression == null )
                 return null;
-            switch( expression.NodeType ) {
+            switch( expression.NodeType )
+            {
                 case ExpressionType.Lambda:
                     return GetParameter( ( (LambdaExpression)expression ).Body );
                 case ExpressionType.Convert:
@@ -376,7 +408,8 @@ namespace KissU.Util.Helpers {
         /// 获取分组的谓词表达式，通过Or进行分组
         /// </summary>
         /// <param name="expression">谓词表达式</param>
-        public static List<List<Expression>> GetGroupPredicates( Expression expression ) {
+        public static List<List<Expression>> GetGroupPredicates( Expression expression )
+        {
             var result = new List<List<Expression>>();
             if( expression == null )
                 return result;
@@ -387,7 +420,8 @@ namespace KissU.Util.Helpers {
         /// <summary>
         /// 创建分组
         /// </summary>
-        private static List<Expression> CreateGroup( List<List<Expression>> result ) {
+        private static List<Expression> CreateGroup( List<List<Expression>> result )
+        {
             var gourp = new List<Expression>();
             result.Add( gourp );
             return gourp;
@@ -396,8 +430,10 @@ namespace KissU.Util.Helpers {
         /// <summary>
         /// 添加通过Or分割的谓词表达式
         /// </summary>
-        private static void AddPredicates( Expression expression, List<List<Expression>> result, List<Expression> group ) {
-            switch( expression.NodeType ) {
+        private static void AddPredicates( Expression expression, List<List<Expression>> result, List<Expression> group )
+        {
+            switch( expression.NodeType )
+            {
                 case ExpressionType.Lambda:
                     AddPredicates( ( (LambdaExpression)expression ).Body, result, group );
                     break;
@@ -424,7 +460,8 @@ namespace KissU.Util.Helpers {
         /// </summary>
         /// <param name="expression">谓词表达式,范例1：t => t.Name == "A" ，结果1。
         /// 范例2：t => t.Name == "A" &amp;&amp; t.Age =1 ，结果2。</param>
-        public static int GetConditionCount( LambdaExpression expression ) {
+        public static int GetConditionCount( LambdaExpression expression )
+        {
             if( expression == null )
                 return 0;
             var result = expression.ToString().Replace( "AndAlso", "|" ).Replace( "OrElse", "|" );
@@ -440,7 +477,8 @@ namespace KissU.Util.Helpers {
         /// </summary>
         /// <typeparam name="TAttribute">特性类型</typeparam>
         /// <param name="expression">属性表达式</param>
-        public static TAttribute GetAttribute<TAttribute>( Expression expression ) where TAttribute : Attribute {
+        public static TAttribute GetAttribute<TAttribute>( Expression expression ) where TAttribute : Attribute
+        {
             var memberInfo = GetMember( expression );
             return memberInfo.GetCustomAttribute<TAttribute>();
         }
@@ -452,7 +490,8 @@ namespace KissU.Util.Helpers {
         /// <typeparam name="TProperty">属性类型</typeparam>
         /// <typeparam name="TAttribute">特性类型</typeparam>
         /// <param name="propertyExpression">属性表达式</param>
-        public static TAttribute GetAttribute<TEntity, TProperty, TAttribute>( Expression<Func<TEntity, TProperty>> propertyExpression ) where TAttribute : Attribute {
+        public static TAttribute GetAttribute<TEntity, TProperty, TAttribute>( Expression<Func<TEntity, TProperty>> propertyExpression ) where TAttribute : Attribute
+        {
             return GetAttribute<TAttribute>( propertyExpression );
         }
 
@@ -462,7 +501,8 @@ namespace KissU.Util.Helpers {
         /// <typeparam name="TProperty">属性类型</typeparam>
         /// <typeparam name="TAttribute">特性类型</typeparam>
         /// <param name="propertyExpression">属性表达式</param>
-        public static TAttribute GetAttribute<TProperty, TAttribute>( Expression<Func<TProperty>> propertyExpression ) where TAttribute : Attribute {
+        public static TAttribute GetAttribute<TProperty, TAttribute>( Expression<Func<TProperty>> propertyExpression ) where TAttribute : Attribute
+        {
             return GetAttribute<TAttribute>( propertyExpression );
         }
 
@@ -477,7 +517,8 @@ namespace KissU.Util.Helpers {
         /// <typeparam name="TProperty">属性类型</typeparam>
         /// <typeparam name="TAttribute">特性类型</typeparam>
         /// <param name="propertyExpression">属性表达式</param>
-        public static IEnumerable<TAttribute> GetAttributes<TEntity, TProperty, TAttribute>( Expression<Func<TEntity, TProperty>> propertyExpression ) where TAttribute : Attribute {
+        public static IEnumerable<TAttribute> GetAttributes<TEntity, TProperty, TAttribute>( Expression<Func<TEntity, TProperty>> propertyExpression ) where TAttribute : Attribute
+        {
             var memberInfo = GetMember( propertyExpression );
             return memberInfo.GetCustomAttributes<TAttribute>();
         }
@@ -491,7 +532,8 @@ namespace KissU.Util.Helpers {
         /// </summary>
         /// <param name="value">值</param>
         /// <param name="expression">表达式</param>
-        public static ConstantExpression Constant( object value, Expression expression = null ) {
+        public static ConstantExpression Constant( object value, Expression expression = null )
+        {
             var type = GetType( expression );
             if( type == null )
                 return Expression.Constant( value );
@@ -506,7 +548,8 @@ namespace KissU.Util.Helpers {
         /// 创建参数表达式
         /// </summary>
         /// <typeparam name="T">参数类型</typeparam>
-        public static ParameterExpression CreateParameter<T>() {
+        public static ParameterExpression CreateParameter<T>()
+        {
             return Expression.Parameter( typeof( T ), "t" );
         }
 
@@ -520,7 +563,8 @@ namespace KissU.Util.Helpers {
         /// <typeparam name="T">对象类型</typeparam>
         /// <param name="propertyName">属性名</param>
         /// <param name="value">值</param>
-        public static Expression<Func<T, bool>> Equal<T>( string propertyName, object value ) {
+        public static Expression<Func<T, bool>> Equal<T>( string propertyName, object value )
+        {
             var parameter = CreateParameter<T>();
             return parameter.Property( propertyName ).Equal( value ).ToPredicate<T>( parameter );
         }
@@ -535,7 +579,8 @@ namespace KissU.Util.Helpers {
         /// <typeparam name="T">对象类型</typeparam>
         /// <param name="propertyName">属性名</param>
         /// <param name="value">值</param>
-        public static Expression<Func<T, bool>> NotEqual<T>( string propertyName, object value ) {
+        public static Expression<Func<T, bool>> NotEqual<T>( string propertyName, object value )
+        {
             var parameter = CreateParameter<T>();
             return parameter.Property( propertyName ).NotEqual( value ).ToPredicate<T>( parameter );
         }
@@ -550,7 +595,8 @@ namespace KissU.Util.Helpers {
         /// <typeparam name="T">对象类型</typeparam>
         /// <param name="propertyName">属性名</param>
         /// <param name="value">值</param>
-        public static Expression<Func<T, bool>> Greater<T>( string propertyName, object value ) {
+        public static Expression<Func<T, bool>> Greater<T>( string propertyName, object value )
+        {
             var parameter = CreateParameter<T>();
             return parameter.Property( propertyName ).Greater( value ).ToPredicate<T>( parameter );
         }
@@ -565,7 +611,8 @@ namespace KissU.Util.Helpers {
         /// <typeparam name="T">对象类型</typeparam>
         /// <param name="propertyName">属性名</param>
         /// <param name="value">值</param>
-        public static Expression<Func<T, bool>> GreaterEqual<T>( string propertyName, object value ) {
+        public static Expression<Func<T, bool>> GreaterEqual<T>( string propertyName, object value )
+        {
             var parameter = CreateParameter<T>();
             return parameter.Property( propertyName ).GreaterEqual( value ).ToPredicate<T>( parameter );
         }
@@ -580,7 +627,8 @@ namespace KissU.Util.Helpers {
         /// <typeparam name="T">对象类型</typeparam>
         /// <param name="propertyName">属性名</param>
         /// <param name="value">值</param>
-        public static Expression<Func<T, bool>> Less<T>( string propertyName, object value ) {
+        public static Expression<Func<T, bool>> Less<T>( string propertyName, object value )
+        {
             var parameter = CreateParameter<T>();
             return parameter.Property( propertyName ).Less( value ).ToPredicate<T>( parameter );
         }
@@ -595,7 +643,8 @@ namespace KissU.Util.Helpers {
         /// <typeparam name="T">对象类型</typeparam>
         /// <param name="propertyName">属性名</param>
         /// <param name="value">值</param>
-        public static Expression<Func<T, bool>> LessEqual<T>( string propertyName, object value ) {
+        public static Expression<Func<T, bool>> LessEqual<T>( string propertyName, object value )
+        {
             var parameter = CreateParameter<T>();
             return parameter.Property( propertyName ).LessEqual( value ).ToPredicate<T>( parameter );
         }
@@ -610,7 +659,8 @@ namespace KissU.Util.Helpers {
         /// <typeparam name="T">对象类型</typeparam>
         /// <param name="propertyName">属性名</param>
         /// <param name="value">值</param>
-        public static Expression<Func<T, bool>> Starts<T>( string propertyName, object value ) {
+        public static Expression<Func<T, bool>> Starts<T>( string propertyName, object value )
+        {
             var parameter = CreateParameter<T>();
             return parameter.Property( propertyName ).StartsWith( value ).ToPredicate<T>( parameter );
         }
@@ -625,7 +675,8 @@ namespace KissU.Util.Helpers {
         /// <typeparam name="T">对象类型</typeparam>
         /// <param name="propertyName">属性名</param>
         /// <param name="value">值</param>
-        public static Expression<Func<T, bool>> Ends<T>( string propertyName, object value ) {
+        public static Expression<Func<T, bool>> Ends<T>( string propertyName, object value )
+        {
             var parameter = CreateParameter<T>();
             return parameter.Property( propertyName ).EndsWith( value ).ToPredicate<T>( parameter );
         }
@@ -640,7 +691,8 @@ namespace KissU.Util.Helpers {
         /// <typeparam name="T">对象类型</typeparam>
         /// <param name="propertyName">属性名</param>
         /// <param name="value">值</param>
-        public static Expression<Func<T, bool>> Contains<T>( string propertyName, object value ) {
+        public static Expression<Func<T, bool>> Contains<T>( string propertyName, object value )
+        {
             var parameter = CreateParameter<T>();
             return parameter.Property( propertyName ).Contains( value ).ToPredicate<T>( parameter );
         }
@@ -656,7 +708,8 @@ namespace KissU.Util.Helpers {
         /// <param name="propertyName">属性名</param>
         /// <param name="value">值</param>
         /// <param name="operator">运算符</param>
-        public static Expression<Func<T, bool>> ParsePredicate<T>( string propertyName, object value, Operator @operator ) {
+        public static Expression<Func<T, bool>> ParsePredicate<T>( string propertyName, object value, Operator @operator )
+        {
             var parameter = CreateParameter<T>();
             return parameter.Property( propertyName ).Operation( @operator, value ).ToPredicate<T>( parameter );
         }

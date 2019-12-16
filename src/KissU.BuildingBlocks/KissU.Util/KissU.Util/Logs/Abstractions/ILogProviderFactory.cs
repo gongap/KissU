@@ -1,8 +1,10 @@
-﻿namespace KissU.Util.Logs.Abstractions {
+﻿namespace KissU.Util.Logs.Abstractions
+{
     /// <summary>
     /// 日志提供程序工厂
     /// </summary>
-    public interface ILogProviderFactory {
+    public interface ILogProviderFactory
+    {
         /// <summary>
         /// 创建日志提供程序
         /// </summary>

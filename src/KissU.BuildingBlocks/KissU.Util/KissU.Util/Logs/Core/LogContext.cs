@@ -4,19 +4,23 @@ using KissU.Util.Helpers;
 using KissU.Util.Logs.Abstractions;
 using KissU.Util.Logs.Internal;
 
-namespace KissU.Util.Logs.Core {
+namespace KissU.Util.Logs.Core
+{
     /// <summary>
     /// 日志上下文
     /// </summary>
-    public class LogContext : ILogContext {
+    public class LogContext : ILogContext
+    {
         /// <summary>
         /// 日志上下文信息
         /// </summary>
         private LogContextInfo _info;
+
         /// <summary>
         /// 序号
         /// </summary>
         private int _orderId;
+
         /// <summary>
         /// 上下文
         /// </summary>
@@ -25,7 +29,8 @@ namespace KissU.Util.Logs.Core {
         /// <summary>
         /// 初始化日志上下文
         /// </summary>
-        public LogContext() {
+        public LogContext()
+        {
             _orderId = 0;
         }
 
@@ -53,14 +58,17 @@ namespace KissU.Util.Logs.Core {
         /// IP
         /// </summary>
         public string Ip => GetInfo().Ip;
+
         /// <summary>
         /// 主机
         /// </summary>
         public string Host => GetInfo().Host;
+
         /// <summary>
         /// 浏览器
         /// </summary>
         public string Browser => GetInfo().Browser;
+
         /// <summary>
         /// 请求地址
         /// </summary>
@@ -69,7 +77,8 @@ namespace KissU.Util.Logs.Core {
         /// <summary>
         /// 获取日志上下文信息
         /// </summary>
-        private LogContextInfo GetInfo() {
+        private LogContextInfo GetInfo()
+        {
             if ( _info != null )
                 return _info;
             var key = "Util.Logs.LogContext";
@@ -84,8 +93,10 @@ namespace KissU.Util.Logs.Core {
         /// <summary>
         /// 创建日志上下文信息
         /// </summary>
-        protected virtual LogContextInfo CreateInfo() {
-            return new LogContextInfo {
+        protected virtual LogContextInfo CreateInfo()
+        {
+            return new LogContextInfo
+            {
                 TraceId = GetTraceId(),
                 Stopwatch = GetStopwatch(),
                 Ip = Web.Ip,
@@ -98,7 +109,8 @@ namespace KissU.Util.Logs.Core {
         /// <summary>
         /// 获取跟踪号
         /// </summary>
-        protected string GetTraceId() {
+        protected string GetTraceId()
+        {
             var traceId = Context.TraceId;
             return string.IsNullOrWhiteSpace( traceId ) ? Id.Guid() : traceId;
         }
@@ -106,7 +118,8 @@ namespace KissU.Util.Logs.Core {
         /// <summary>
         /// 获取计时器
         /// </summary>
-        protected Stopwatch GetStopwatch() {
+        protected Stopwatch GetStopwatch()
+        {
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
             return stopwatch;

@@ -1,14 +1,17 @@
-﻿namespace KissU.Util.Parameters.Formats {
+﻿namespace KissU.Util.Parameters.Formats
+{
     /// <summary>
     /// 参数格式化器
     /// </summary>
-    public interface IParameterFormat {
+    public interface IParameterFormat
+    {
         /// <summary>
         /// 格式化
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="value">值</param>
         string Format( string key, object value );
+
         /// <summary>
         /// 连接参数
         /// </summary>

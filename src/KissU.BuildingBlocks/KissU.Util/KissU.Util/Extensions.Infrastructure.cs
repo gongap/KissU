@@ -5,17 +5,20 @@ using KissU.Util.Dependency;
 using KissU.Util.Sessions;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace KissU.Util {
+namespace KissU.Util
+{
     /// <summary>
     /// 系统扩展 - 基础设施
     /// </summary>
-    public static partial class Extensions {
+    public static partial class Extensions
+    {
         /// <summary>
         /// 注册Util基础设施服务
         /// </summary>
         /// <param name="services">服务集合</param>
         /// <param name="configs">依赖配置</param>
-        public static IServiceProvider AddUtil( this IServiceCollection services, params IConfig[] configs ) {
+        public static IServiceProvider AddUtil( this IServiceCollection services, params IConfig[] configs )
+        {
             return AddUtil( services, null, configs );
         }
 
@@ -25,7 +28,8 @@ namespace KissU.Util {
         /// <param name="services">服务集合</param>
         /// <param name="aopConfigAction">Aop配置操作</param>
         /// <param name="configs">依赖配置</param>
-        public static IServiceProvider AddUtil( this IServiceCollection services, Action<IAspectConfiguration> aopConfigAction, params IConfig[] configs ) {
+        public static IServiceProvider AddUtil( this IServiceCollection services, Action<IAspectConfiguration> aopConfigAction, params IConfig[] configs )
+        {
             services.AddHttpContextAccessor();
             Encoding.RegisterProvider( CodePagesEncodingProvider.Instance );
             services.AddSingleton<ISession, Session>();

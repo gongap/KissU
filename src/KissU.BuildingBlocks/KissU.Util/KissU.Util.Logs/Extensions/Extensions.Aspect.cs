@@ -3,24 +3,28 @@ using System.Linq;
 using AspectCore.DynamicProxy.Parameters;
 using KissU.Util.Helpers;
 
-namespace KissU.Util.Logs.Extensions {
+namespace KissU.Util.Logs.Extensions
+{
     /// <summary>
     /// AOP扩展
     /// </summary>
-    public static partial class Extensions {
+    public static partial class Extensions
+    {
         /// <summary>
         /// 添加日志参数
         /// </summary>
         /// <param name="parameter">参数</param>
         /// <param name="log">参数</param>
-        public static void AppendTo( this Parameter parameter, ILog log ) {
+        public static void AppendTo( this Parameter parameter, ILog log )
+        {
             log.Params( parameter.Name, GetParameterValue( parameter ), parameter.ParameterInfo.ParameterType.FullName );
         }
 
         /// <summary>
         /// 获取参数值
         /// </summary>
-        private static string GetParameterValue( Parameter parameter ) {
+        private static string GetParameterValue( Parameter parameter )
+        {
             if( Reflection.IsGenericCollection( parameter.RawType ) == false )
                 return parameter.Value.SafeString();
             if ( !( parameter.Value is IEnumerable<object> list ) )

@@ -1,10 +1,12 @@
 ﻿using System.Threading.Tasks;
 
-namespace KissU.Util.Events {
+namespace KissU.Util.Events
+{
     /// <summary>
     /// 事件总线
     /// </summary>
-    public interface IEventBus {
+    public interface IEventBus
+    {
         /// <summary>
         /// 发布事件
         /// </summary>

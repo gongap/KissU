@@ -1,15 +1,18 @@
 ﻿using KissU.Util.Datas.Queries;
 
-namespace KissU.Util.Datas.Sql.Builders {
+namespace KissU.Util.Datas.Sql.Builders
+{
     /// <summary>
     /// 连接条件
     /// </summary>
-    public interface IJoinOn {
+    public interface IJoinOn
+    {
         /// <summary>
         /// 设置连接条件
         /// </summary>
         /// <param name="condition">连接条件</param>
         void On( ICondition condition );
+
         /// <summary>
         /// 设置连接条件
         /// </summary>

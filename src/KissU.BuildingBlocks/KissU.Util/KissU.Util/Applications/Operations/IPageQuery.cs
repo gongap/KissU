@@ -2,7 +2,8 @@
 using KissU.Util.Datas.Queries;
 using KissU.Util.Domains.Repositories;
 
-namespace KissU.Util.Applications.Operations {
+namespace KissU.Util.Applications.Operations
+{
     /// <summary>
     /// 分页查询
     /// </summary>
@@ -10,12 +11,14 @@ namespace KissU.Util.Applications.Operations {
     /// <typeparam name="TQueryParameter">查询参数类型</typeparam>
     public interface IPageQuery<TDto, in TQueryParameter>
         where TDto : new()
-        where TQueryParameter : IQueryParameter {
+        where TQueryParameter : IQueryParameter
+        {
         /// <summary>
         /// 查询
         /// </summary>
         /// <param name="parameter">查询参数</param>
         List<TDto> Query( TQueryParameter parameter );
+
         /// <summary>
         /// 分页查询
         /// </summary>

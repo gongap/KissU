@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using KissU.Util.Domains;
 
-namespace KissU.Util.Datas.Stores.Operations {
+namespace KissU.Util.Datas.Stores.Operations
+{
     /// <summary>
     /// 查找实体列表
     /// </summary>
     /// <typeparam name="TEntity">对象类型</typeparam>
     /// <typeparam name="TKey">对象标识类型</typeparam>
-    public interface IFindAll<TEntity, in TKey> where TEntity : class, IKey<TKey> {
+    public interface IFindAll<TEntity, in TKey> where TEntity : class, IKey<TKey>
+    {
         /// <summary>
         /// 查找实体列表
         /// </summary>

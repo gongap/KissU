@@ -1,8 +1,10 @@
-﻿namespace KissU.Util.Domains.Auditing {
+﻿namespace KissU.Util.Domains.Auditing
+{
     /// <summary>
     /// 修改人审计
     /// </summary>
-    public interface IModifier {
+    public interface IModifier
+    {
         /// <summary>
         /// 最后修改人
         /// </summary>

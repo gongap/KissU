@@ -3,7 +3,8 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace KissU.Util.Helpers.Internal {
+namespace KissU.Util.Helpers.Internal
+{
     /// <summary>
     /// RSA加解密 使用OpenSSL的公钥加密/私钥解密
     /// 
@@ -13,7 +14,8 @@ namespace KissU.Util.Helpers.Internal {
     /// 时间：2017年10月30日15:50:14
     /// QQ:501232752
     /// </summary>
-    internal class RsaHelper {
+    internal class RsaHelper
+    {
         private readonly RSA _privateKeyRsaProvider;
         private readonly RSA _publicKeyRsaProvider;
         private readonly HashAlgorithmName _hashAlgorithmName;
@@ -26,13 +28,16 @@ namespace KissU.Util.Helpers.Internal {
         /// <param name="encoding">编码类型</param>
         /// <param name="privateKey">私钥</param>
         /// <param name="publicKey">公钥</param>
-        public RsaHelper( RSAType rsaType, Encoding encoding, string privateKey = null, string publicKey = null ) {
+        public RsaHelper( RSAType rsaType, Encoding encoding, string privateKey = null, string publicKey = null )
+        {
             _encoding = encoding;
-            if( !string.IsNullOrEmpty( privateKey ) ) {
+            if( !string.IsNullOrEmpty( privateKey ) )
+            {
                 _privateKeyRsaProvider = CreateRsaProviderFromPrivateKey( privateKey );
             }
 
-            if( !string.IsNullOrEmpty( publicKey ) ) {
+            if( !string.IsNullOrEmpty( publicKey ) )
+            {
                 _publicKeyRsaProvider = CreateRsaProviderFromPublicKey( publicKey );
             }
 
@@ -46,7 +51,8 @@ namespace KissU.Util.Helpers.Internal {
         /// </summary>
         /// <param name="data">原始数据</param>
         /// <returns></returns>
-        public string Sign( string data ) {
+        public string Sign( string data )
+        {
             byte[] dataBytes = _encoding.GetBytes( data );
 
             var signatureBytes = _privateKeyRsaProvider.SignData( dataBytes, _hashAlgorithmName, RSASignaturePadding.Pkcs1 );
@@ -64,7 +70,8 @@ namespace KissU.Util.Helpers.Internal {
         /// <param name="data">原始数据</param>
         /// <param name="sign">签名</param>
         /// <returns></returns>
-        public bool Verify( string data, string sign ) {
+        public bool Verify( string data, string sign )
+        {
             byte[] dataBytes = _encoding.GetBytes( data );
             byte[] signBytes = System.Convert.FromBase64String( sign );
 
@@ -77,8 +84,10 @@ namespace KissU.Util.Helpers.Internal {
 
         #region 解密
 
-        public string Decrypt( string cipherText ) {
-            if( _privateKeyRsaProvider == null ) {
+        public string Decrypt( string cipherText )
+        {
+            if( _privateKeyRsaProvider == null )
+            {
                 throw new Exception( "_privateKeyRsaProvider is null" );
             }
             return Encoding.UTF8.GetString( _privateKeyRsaProvider.Decrypt( System.Convert.FromBase64String( cipherText ), RSAEncryptionPadding.Pkcs1 ) );
@@ -88,8 +97,10 @@ namespace KissU.Util.Helpers.Internal {
 
         #region 加密
 
-        public string Encrypt( string text ) {
-            if( _publicKeyRsaProvider == null ) {
+        public string Encrypt( string text )
+        {
+            if( _publicKeyRsaProvider == null )
+            {
                 throw new Exception( "_publicKeyRsaProvider is null" );
             }
             return System.Convert.ToBase64String( _publicKeyRsaProvider.Encrypt( Encoding.UTF8.GetBytes( text ), RSAEncryptionPadding.Pkcs1 ) );
@@ -99,13 +110,15 @@ namespace KissU.Util.Helpers.Internal {
 
         #region 使用私钥创建RSA实例
 
-        public RSA CreateRsaProviderFromPrivateKey( string privateKey ) {
+        public RSA CreateRsaProviderFromPrivateKey( string privateKey )
+        {
             var privateKeyBits = System.Convert.FromBase64String( privateKey );
 
             var rsa = RSA.Create();
             var rsaParameters = new RSAParameters();
 
-            using( BinaryReader binr = new BinaryReader( new MemoryStream( privateKeyBits ) ) ) {
+            using( BinaryReader binr = new BinaryReader( new MemoryStream( privateKeyBits ) ) )
+            {
                 byte bt = 0;
                 ushort twobytes = 0;
                 twobytes = binr.ReadUInt16();
@@ -142,7 +155,8 @@ namespace KissU.Util.Helpers.Internal {
 
         #region 使用公钥创建RSA实例
 
-        public RSA CreateRsaProviderFromPublicKey( string publicKeyString ) {
+        public RSA CreateRsaProviderFromPublicKey( string publicKeyString )
+        {
             // encoded OID sequence for  PKCS #1 rsaEncryption szOID_RSA_RSA = "1.2.840.113549.1.1.1"
             byte[] seqOid = { 0x30, 0x0D, 0x06, 0x09, 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01, 0x01, 0x01, 0x05, 0x00 };
             byte[] seq = new byte[15];
@@ -150,7 +164,8 @@ namespace KissU.Util.Helpers.Internal {
             var x509Key = System.Convert.FromBase64String( publicKeyString );
 
             // ---------  Set up stream to read the asn.1 encoded SubjectPublicKeyInfo blob  ------
-            using( MemoryStream mem = new MemoryStream( x509Key ) ) {
+            using( MemoryStream mem = new MemoryStream( x509Key ) )
+            {
                 using( BinaryReader binr = new BinaryReader( mem ) )  //wrap Memory Stream with BinaryReader for easy reading
                 {
                     byte bt = 0;
@@ -194,7 +209,8 @@ namespace KissU.Util.Helpers.Internal {
 
                     if( twobytes == 0x8102 ) //data read as little endian order (actual data order for Integer is 02 81)
                         lowbyte = binr.ReadByte();  // read next bytes which is bytes in modulus
-                    else if( twobytes == 0x8202 ) {
+                    else if( twobytes == 0x8202 )
+                    {
                         highbyte = binr.ReadByte(); //advance 2 bytes
                         lowbyte = binr.ReadByte();
                     }
@@ -204,7 +220,8 @@ namespace KissU.Util.Helpers.Internal {
                     int modsize = BitConverter.ToInt32( modint, 0 );
 
                     int firstbyte = binr.PeekChar();
-                    if( firstbyte == 0x00 ) {   //if first byte (highest order) of modulus is zero, don't include it
+                    if( firstbyte == 0x00 )
+                    {   //if first byte (highest order) of modulus is zero, don't include it
                         binr.ReadByte();    //skip this null byte
                         modsize -= 1;   //reduce modulus buffer size by 1
                     }
@@ -218,7 +235,8 @@ namespace KissU.Util.Helpers.Internal {
 
                     // ------- create RSACryptoServiceProvider instance and initialize with public key -----
                     var rsa = RSA.Create();
-                    RSAParameters rsaKeyInfo = new RSAParameters {
+                    RSAParameters rsaKeyInfo = new RSAParameters
+                    {
                         Modulus = modulus,
                         Exponent = exponent
                     };
@@ -234,7 +252,8 @@ namespace KissU.Util.Helpers.Internal {
 
         #region 导入密钥算法
 
-        private int GetIntegerSize( BinaryReader binr ) {
+        private int GetIntegerSize( BinaryReader binr )
+        {
             byte bt = 0;
             int count = 0;
             bt = binr.ReadByte();
@@ -245,28 +264,33 @@ namespace KissU.Util.Helpers.Internal {
             if( bt == 0x81 )
                 count = binr.ReadByte();
             else
-            if( bt == 0x82 ) {
+            if( bt == 0x82 )
+            {
                 var highbyte = binr.ReadByte();
                 var lowbyte = binr.ReadByte();
                 byte[] modint = { lowbyte, highbyte, 0x00, 0x00 };
                 count = BitConverter.ToInt32( modint, 0 );
             }
-            else {
+            else
+            {
                 count = bt;
             }
 
-            while( binr.ReadByte() == 0x00 ) {
+            while( binr.ReadByte() == 0x00 )
+            {
                 count -= 1;
             }
             binr.BaseStream.Seek( -1, SeekOrigin.Current );
             return count;
         }
 
-        private bool CompareBytearrays( byte[] a, byte[] b ) {
+        private bool CompareBytearrays( byte[] a, byte[] b )
+        {
             if( a.Length != b.Length )
                 return false;
             int i = 0;
-            foreach( byte c in a ) {
+            foreach( byte c in a )
+            {
                 if( c != b[i] )
                     return false;
                 i++;
@@ -281,11 +305,13 @@ namespace KissU.Util.Helpers.Internal {
     /// <summary>
     /// RSA算法类型
     /// </summary>
-    public enum RSAType {
+    public enum RSAType
+    {
         /// <summary>
         /// SHA1
         /// </summary>
         RSA = 0,
+
         /// <summary>
         /// RSA2 密钥长度至少为2048
         /// SHA256

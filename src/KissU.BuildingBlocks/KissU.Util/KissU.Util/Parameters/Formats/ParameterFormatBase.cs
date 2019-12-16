@@ -1,14 +1,17 @@
-﻿namespace KissU.Util.Parameters.Formats {
+﻿namespace KissU.Util.Parameters.Formats
+{
     /// <summary>
     /// 参数格式化器
     /// </summary>
-    public abstract class ParameterFormatBase : IParameterFormat {
+    public abstract class ParameterFormatBase : IParameterFormat
+    {
         /// <summary>
         /// 格式化
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="value">值</param>
-        public string Format( string key, object value ) {
+        public string Format( string key, object value )
+        {
             return $"{key}{FormatSeparator}{value}";
         }
 
@@ -22,7 +25,8 @@
         /// </summary>
         /// <param name="left">左操作数</param>
         /// <param name="right">右操作数</param>
-        public string Join( string left, string right ) {
+        public string Join( string left, string right )
+        {
             if ( string.IsNullOrWhiteSpace( left ) )
                 return right;
             if ( string.IsNullOrWhiteSpace( right ) )

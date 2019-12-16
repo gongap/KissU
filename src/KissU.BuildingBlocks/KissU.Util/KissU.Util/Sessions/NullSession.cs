@@ -1,8 +1,10 @@
-﻿namespace KissU.Util.Sessions {
+﻿namespace KissU.Util.Sessions
+{
     /// <summary>
     /// 空用户会话
     /// </summary>
-    public class NullSession : ISession {
+    public class NullSession : ISession
+    {
         /// <summary>
         /// 是否认证
         /// </summary>
