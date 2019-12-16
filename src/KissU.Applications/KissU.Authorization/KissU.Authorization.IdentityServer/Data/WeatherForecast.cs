@@ -2,10 +2,10 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
-namespace KissU.STS.IdentityServer.Data
-{
-    using System;
+using System;
 
+namespace KissU.Authorization.IdentityServer.Data
+{
     public class WeatherForecast
     {
         public DateTime Date { get; set; }

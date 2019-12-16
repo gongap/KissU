@@ -2,11 +2,11 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
-namespace KissU.STS.IdentityServer
-{
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 
+namespace KissU.Authorization.IdentityServer
+{
     public class Program
     {
         public static void Main(string[] args)

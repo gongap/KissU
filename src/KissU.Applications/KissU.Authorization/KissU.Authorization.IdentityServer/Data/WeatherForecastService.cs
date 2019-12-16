@@ -2,12 +2,12 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
-namespace KissU.STS.IdentityServer.Data
-{
-    using System;
-    using System.Linq;
-    using System.Threading.Tasks;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
+namespace KissU.Authorization.IdentityServer.Data
+{
     public class WeatherForecastService
     {
         private static readonly string[] Summaries =

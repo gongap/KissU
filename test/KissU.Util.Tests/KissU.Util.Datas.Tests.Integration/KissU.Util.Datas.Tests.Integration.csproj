@@ -5,14 +5,16 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\output\test</OutputPath>
-    <DocumentationFile></DocumentationFile>
+    <OutputPath>..\..\..\output\test</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>..\..\output\test</OutputPath>
-    <DocumentationFile></DocumentationFile>
+    <OutputPath>..\..\..\output\test</OutputPath>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Commons\Datas\SqlServer\Scripts\Pd\Samples.pdb" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
@@ -24,7 +26,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\KissU.BuildingBlocks\KissU.Util\KissU.Util.Biz.Payments\KissU.Util.Biz.Payments.csproj" />
-    <ProjectReference Include="..\..\src\KissU.BuildingBlocks\KissU.Util\KissU.Util.Biz\KissU.Util.Biz.csproj" />
+    <ProjectReference Include="..\..\..\src\KissU.BuildingBlocks\KissU.Util\KissU.Util.Datas\KissU.Util.Datas.csproj" />
+    <ProjectReference Include="..\..\..\src\KissU.BuildingBlocks\KissU.Util\KissU.Util\KissU.Util.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Commons\Datas\SqlServer\Scripts\database.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>

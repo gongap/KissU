@@ -8,6 +8,9 @@ using KissU.Core.CPlatform.Exceptions;
 
 namespace KissU.Core.CPlatform.Module
 {
+    /// <summary>
+    /// 抽象模块
+    /// </summary>
     public abstract class AbstractModule : Autofac.Module,IDisposable
     {
         #region 实例属性
@@ -30,12 +33,12 @@ namespace KissU.Core.CPlatform.Module
         /// 类型名
         /// </summary>
         public string TypeName { get; set; }
-
     
         /// <summary>
         /// 标题
         /// </summary>
         public string Title { get; set; }
+
         /// <summary>
         /// 是否可用（控制模块是否加载）
         /// </summary>
@@ -54,31 +57,41 @@ namespace KissU.Core.CPlatform.Module
         #endregion
 
         #region 构造函数
+        /// <summary>
+        /// 初始化
+        /// </summary>
         public AbstractModule()
         {
             ModuleName = this.GetType().Name;
-            TypeName = this.GetType().BaseType.Name;
+            TypeName = this.GetType().BaseType?.Name;
         }
         #endregion
 
         #region 实例方法
 
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        /// <param name="serviceProvider"></param>
         public virtual void Initialize(AppModuleContext serviceProvider)
         {
             Dispose();
         }
+
         /// <summary>
-        /// 重写autofac load方法 
+        /// 重写将注册添加到容器
         /// 判断组件是否可用，并注册模块组件
         /// </summary>
         /// <param name="builder"></param>
-        protected override  void Load(ContainerBuilder builder)
+        protected override void Load(ContainerBuilder builder)
         {
             try
             {
                 base.Load(builder);
                 Builder = new ContainerBuilderWrapper(builder);
-                if (Enable)//如果可用 
+
+                //如果可用 
+                if (Enable)
                 {
                     //注册创建容器
                     RegisterBuilder(Builder);
@@ -94,62 +107,67 @@ namespace KissU.Core.CPlatform.Module
         }
 
        
+        /// <summary>
+        /// 注册服务
+        /// </summary>
+        /// <param name="builder">构建器包装</param>
         protected virtual void RegisterBuilder(ContainerBuilderWrapper builder)
         {
         }
-         
 
+        /// <summary>
+        /// 注册组件
+        /// </summary>
+        /// <param name="builder">构建器包装</param>
         internal virtual void RegisterComponents(ContainerBuilderWrapper builder)
         {
-            if (Components != null)
+            Components?.ForEach(component =>
             {
-                Components.ForEach(component =>
+                //服务类型
+                Type serviceType = Type.GetType(component.ServiceType, true);
+                //实现类型
+                Type implementType = Type.GetType(component.ImplementType, true);
+                //组件生命周期
+                switch (component.LifetimeScope)
                 {
-                    //服务类型
-                    Type serviceType = Type.GetType(component.ServiceType, true);
-                    //实现类型
-                    Type implementType = Type.GetType(component.ImplementType, true);
-                    //组件生命周期
-                    switch (component.LifetimeScope)
-                    {
-                        //依赖创建
-                        case LifetimeScope.InstancePerDependency:
-                            //如果是泛型
-                            if (serviceType.GetTypeInfo().IsGenericType || implementType.GetTypeInfo().IsGenericType)
-                            {
-                                //注册泛型
-                                builder.RegisterGeneric(implementType).As(serviceType).InstancePerDependency();
-                            }
-                            else
-                            {
-                                builder.RegisterType(implementType).As(serviceType).InstancePerDependency();
-                            }
-                            break;
-                        case LifetimeScope.SingleInstance://单例
-                            if (serviceType.GetTypeInfo().IsGenericType || implementType.GetTypeInfo().IsGenericType)
-                            {
-                                builder.RegisterGeneric(implementType).As(serviceType).SingleInstance();
-                            }
-                            else
-                            {
-                                builder.RegisterType(implementType).As(serviceType).SingleInstance();
-                            }
-                            break;
-                        default://默认依赖创建
-                            if (serviceType.GetTypeInfo().IsGenericType || implementType.GetTypeInfo().IsGenericType)
-                            {
-                                builder.RegisterGeneric(implementType).As(serviceType).InstancePerDependency();
-                            }
-                            else
-                            {
-                                builder.RegisterType(implementType).As(serviceType).InstancePerDependency();
-                            }
-                            break;
-                    }
+                    //依赖创建
+                    case LifetimeScope.InstancePerDependency:
+                        //如果是泛型
+                        if (serviceType.GetTypeInfo().IsGenericType || implementType.GetTypeInfo().IsGenericType)
+                        {
+                            //注册泛型
+                            builder.RegisterGeneric(implementType).As(serviceType).InstancePerDependency();
+                        }
+                        else
+                        {
+                            builder.RegisterType(implementType).As(serviceType).InstancePerDependency();
+                        }
+                        break;
+                    case LifetimeScope.SingleInstance://单例
+                        if (serviceType.GetTypeInfo().IsGenericType || implementType.GetTypeInfo().IsGenericType)
+                        {
+                            builder.RegisterGeneric(implementType).As(serviceType).SingleInstance();
+                        }
+                        else
+                        {
+                            builder.RegisterType(implementType).As(serviceType).SingleInstance();
+                        }
+                        break;
+                    default://默认依赖创建
+                        if (serviceType.GetTypeInfo().IsGenericType || implementType.GetTypeInfo().IsGenericType)
+                        {
+                            builder.RegisterGeneric(implementType).As(serviceType).InstancePerDependency();
+                        }
+                        else
+                        {
+                            builder.RegisterType(implementType).As(serviceType).InstancePerDependency();
+                        }
+                        break;
+                }
 
-                });
-            }
+            });
         }
+
         /// <summary>
         /// 验证模块
         /// </summary>
@@ -168,6 +186,10 @@ namespace KissU.Core.CPlatform.Module
             }
         }
 
+        /// <summary>
+        /// 重写ToString
+        /// </summary>
+        /// <returns>字符串</returns>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
@@ -190,6 +212,9 @@ namespace KissU.Core.CPlatform.Module
             return sb.ToString();
         }
 
+        /// <summary>
+        /// 释放资源
+        /// </summary>
         public virtual void Dispose()
         {
         }

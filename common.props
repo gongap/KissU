@@ -18,4 +18,6 @@
     <VersionPrefix>$(VersionMajor).$(VersionMinor).$(VersionPatch)</VersionPrefix>
     <VersionSuffix></VersionSuffix>
   </PropertyGroup>
+
+  <Import Project="analysis.props" />
 </Project>

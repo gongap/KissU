@@ -11,6 +11,9 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.ServiceHosting.Extensions
 {
+    /// <summary>
+    /// 服务主机模块
+    /// </summary>
     public class ServiceHostModule : EnginePartModule
     {
         public override void Initialize(AppModuleContext context)

@@ -14,10 +14,10 @@ namespace KissU.Modules.Theme.Service.Implements
     using KissU.Modules.Theme.Service.Contracts.Dtos;
     using KissU.Modules.Theme.Service.Contracts.Queries;
     using KissU.Modules.Theme.Service.Extensions;
+    using KissU.Util.Domains.Repositories;
     using Microsoft.EntityFrameworkCore;
-    using Util.Applications;
+    using KissU.Util.Applications;
     using Util.Datas.Queries;
-    using Util.Domains.Repositories;
 
     /// <summary>
     /// 语言国际化服务

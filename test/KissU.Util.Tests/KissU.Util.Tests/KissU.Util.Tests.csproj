@@ -5,12 +5,12 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\output\test</OutputPath>
+    <OutputPath>..\..\..\output\test</OutputPath>
     <DocumentationFile></DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>..\..\output\test</OutputPath>
+    <OutputPath>..\..\..\output\test</OutputPath>
     <DocumentationFile></DocumentationFile>
   </PropertyGroup>
 
@@ -27,13 +27,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\KissU.BuildingBlocks\KissU.Util\KissU.Util.Applications\KissU.Util.Applications.csproj" />
-    <ProjectReference Include="..\..\src\KissU.BuildingBlocks\KissU.Util\KissU.Util.Caches\KissU.Util.Caches.csproj" />
-    <ProjectReference Include="..\..\src\KissU.BuildingBlocks\KissU.Util\KissU.Util.Datas\KissU.Util.Datas.csproj" />
-    <ProjectReference Include="..\..\src\KissU.BuildingBlocks\KissU.Util\KissU.Util.Events\KissU.Util.Events.csproj" />
-    <ProjectReference Include="..\..\src\KissU.BuildingBlocks\KissU.Util\KissU.Util.Logs\KissU.Util.Logs.csproj" />
-    <ProjectReference Include="..\..\src\KissU.BuildingBlocks\KissU.Util\KissU.Util.Security\KissU.Util.Security.csproj" />
-    <ProjectReference Include="..\..\src\KissU.BuildingBlocks\KissU.Util\KissU.Util\KissU.Util.csproj" />
+    <ProjectReference Include="..\..\..\src\KissU.BuildingBlocks\KissU.Util\KissU.Util.Applications\KissU.Util.Applications.csproj" />
+    <ProjectReference Include="..\..\..\src\KissU.BuildingBlocks\KissU.Util\KissU.Util.Caches\KissU.Util.Caches.csproj" />
+    <ProjectReference Include="..\..\..\src\KissU.BuildingBlocks\KissU.Util\KissU.Util.Datas\KissU.Util.Datas.csproj" />
+    <ProjectReference Include="..\..\..\src\KissU.BuildingBlocks\KissU.Util\KissU.Util.Events\KissU.Util.Events.csproj" />
+    <ProjectReference Include="..\..\..\src\KissU.BuildingBlocks\KissU.Util\KissU.Util.Logs\KissU.Util.Logs.csproj" />
+    <ProjectReference Include="..\..\..\src\KissU.BuildingBlocks\KissU.Util\KissU.Util.Security\KissU.Util.Security.csproj" />
+    <ProjectReference Include="..\..\..\src\KissU.BuildingBlocks\KissU.Util\KissU.Util\KissU.Util.csproj" />
   </ItemGroup>
 
   <ItemGroup>

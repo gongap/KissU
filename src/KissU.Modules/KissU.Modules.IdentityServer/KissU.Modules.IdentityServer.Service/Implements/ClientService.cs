@@ -2,6 +2,8 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Modules.IdentityServer.Domain.Extensions;
+
 namespace KissU.Modules.IdentityServer.Service.Implements
 {
     using System;
@@ -24,7 +26,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
     using Util.Domains.Repositories;
     using Util.Exceptions;
     using Util.Maps;
-    using Extensions = KissU.Modules.IdentityServer.Domain.Extensions.Extensions;
+    using Extensions = Extensions;
     using Ids4 = IdentityServer4.Models;
 
     /// <summary>

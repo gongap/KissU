@@ -2,15 +2,15 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
-namespace KissU.STS.IdentityServer
-{
-    using KissU.STS.IdentityServer.Data;
-    using Microsoft.AspNetCore.Builder;
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Hosting;
+using KissU.Authorization.IdentityServer.Data;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
+namespace KissU.Authorization.IdentityServer
+{
     public class Startup
     {
         public Startup(IConfiguration configuration)

@@ -1,17 +1,13 @@
-﻿// <copyright file="Extensions.Hash.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
+﻿using System;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace KissU.Modules.IdentityServer.Domain.Extensions
 {
-    using System;
-    using System.Security.Cryptography;
-    using System.Text;
-
     /// <summary>
     /// Extension methods for hashing strings
     /// </summary>
-    public static class Extensions
+    public static partial class Extensions
     {
         /// <summary>
         /// Creates a SHA256 hash of the specified input.
