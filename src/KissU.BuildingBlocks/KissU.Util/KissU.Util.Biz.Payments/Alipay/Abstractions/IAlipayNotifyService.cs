@@ -1,10 +1,12 @@
 ﻿using KissU.Util.Biz.Payments.Core;
 
-namespace KissU.Util.Biz.Payments.Alipay.Abstractions {
+namespace KissU.Util.Biz.Payments.Alipay.Abstractions
+{
     /// <summary>
     /// 支付宝通知服务
     /// </summary>
-    public interface IAlipayNotifyService : INotifyService {
+    public interface IAlipayNotifyService : INotifyService
+    {
         /// <summary>
         /// 买家支付宝用户号
         /// </summary>

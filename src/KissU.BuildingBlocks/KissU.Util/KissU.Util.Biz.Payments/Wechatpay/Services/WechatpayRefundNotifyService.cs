@@ -6,19 +6,23 @@ using KissU.Util.Biz.Payments.Wechatpay.Configs;
 using KissU.Util.Biz.Payments.Wechatpay.Results;
 using KissU.Util.Helpers;
 
-namespace KissU.Util.Biz.Payments.Wechatpay.Services {
+namespace KissU.Util.Biz.Payments.Wechatpay.Services
+{
     /// <summary>
     /// 微信退款回调服务
     /// </summary>
-    public class WechatpayRefundNotifyService : IWechatpayRefundNotifyService {
+    public class WechatpayRefundNotifyService : IWechatpayRefundNotifyService
+    {
         /// <summary>
         /// 配置提供器
         /// </summary>
         private readonly IWechatpayConfigProvider _configProvider;
+
         /// <summary>
         /// 微信退款通知结果
         /// </summary>
         private WechatpayRefundNotifyResult _result;
+
         /// <summary>
         /// 是否已加载
         /// </summary>
@@ -28,7 +32,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services {
         /// 初始化微信退款回调服务
         /// </summary>
         /// <param name="configProvider">配置提供器</param>
-        public WechatpayRefundNotifyService( IWechatpayConfigProvider configProvider ) {
+        public WechatpayRefundNotifyService( IWechatpayConfigProvider configProvider )
+        {
             configProvider.CheckNull( nameof( configProvider ) );
             _configProvider = configProvider;
             _isLoad = false;
@@ -37,7 +42,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services {
         /// <summary>
         /// 退款是否成功
         /// </summary>
-        public async Task<bool> IsSuccessAsync() {
+        public async Task<bool> IsSuccessAsync()
+        {
             var status = await GetRefundStatusAsync();
             return status == "SUCCESS";
         }
@@ -45,7 +51,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services {
         /// <summary>
         /// 获取参数集合
         /// </summary>
-        public async Task<IDictionary<string, string>> GetParamsAsync() {
+        public async Task<IDictionary<string, string>> GetParamsAsync()
+        {
             await Init();
             return _result.GetParams();
         }
@@ -54,7 +61,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services {
         /// 获取参数
         /// </summary>
         /// <param name="name">参数名</param>
-        public async Task<T> GetParamAsync<T>( string name ) {
+        public async Task<T> GetParamAsync<T>( string name )
+        {
             return Util.Helpers.Convert.To<T>( await GetParamAsync( name ) );
         }
 
@@ -62,7 +70,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services {
         /// 获取参数
         /// </summary>
         /// <param name="name">参数名</param>
-        public async Task<string> GetParamAsync( string name ) {
+        public async Task<string> GetParamAsync( string name )
+        {
             await Init();
             return _result.GetParam( name );
         }
@@ -70,7 +79,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services {
         /// <summary>
         /// 初始化
         /// </summary>
-        private async Task Init() {
+        private async Task Init()
+        {
             if( _isLoad )
                 return;
             var config = await _configProvider.GetConfigAsync();
@@ -81,14 +91,16 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services {
         /// <summary>
         /// 返回成功消息
         /// </summary>
-        public string Success() {
+        public string Success()
+        {
             return Return( WechatpayConst.Success, WechatpayConst.Ok );
         }
 
         /// <summary>
         /// 返回消息
         /// </summary>
-        private string Return( string code, string message ) {
+        private string Return( string code, string message )
+        {
             var xml = new Xml();
             xml.AddCDataNode( code, WechatpayConst.ReturnCode );
             xml.AddCDataNode( message, WechatpayConst.ReturnMessage );
@@ -98,14 +110,16 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services {
         /// <summary>
         /// 返回失败消息
         /// </summary>
-        public string Fail() {
+        public string Fail()
+        {
             return Return( WechatpayConst.Fail, WechatpayConst.Fail );
         }
 
         /// <summary>
         /// 获取返回状态码
         /// </summary>
-        public async Task<string> GetReturnCodeAsync() {
+        public async Task<string> GetReturnCodeAsync()
+        {
             await Init();
             return _result.GetReturnCode();
         }
@@ -113,7 +127,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services {
         /// <summary>
         /// 获取返回消息
         /// </summary>
-        public async Task<string> GetReturnMessageAsync() {
+        public async Task<string> GetReturnMessageAsync()
+        {
             await Init();
             return _result.GetReturnMessage();
         }
@@ -121,7 +136,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services {
         /// <summary>
         /// 获取应用标识
         /// </summary>
-        public async Task<string> GetAppIdAsync() {
+        public async Task<string> GetAppIdAsync()
+        {
             await Init();
             return _result.GetAppId();
         }
@@ -129,7 +145,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services {
         /// <summary>
         /// 获取商户号
         /// </summary>
-        public async Task<string> GetMerchantIdAsync() {
+        public async Task<string> GetMerchantIdAsync()
+        {
             await Init();
             return _result.GetMerchantId();
         }
@@ -137,7 +154,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services {
         /// <summary>
         /// 获取随机字符串
         /// </summary>
-        public async Task<string> GetNonceAsync() {
+        public async Task<string> GetNonceAsync()
+        {
             await Init();
             return _result.GetNonce();
         }
@@ -145,7 +163,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services {
         /// <summary>
         /// 获取微信订单号
         /// </summary>
-        public async Task<string> GetTransactionIdAsync() {
+        public async Task<string> GetTransactionIdAsync()
+        {
             await Init();
             return _result.GetTransactionId();
         }
@@ -153,7 +172,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services {
         /// <summary>
         /// 商户订单号
         /// </summary>
-        public async Task<string> GetOrderIdAsync() {
+        public async Task<string> GetOrderIdAsync()
+        {
             await Init();
             return _result.GetOrderId();
         }
@@ -161,7 +181,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services {
         /// <summary>
         /// 获取微信退款单号
         /// </summary>
-        public async Task<string> GetRefundIdAsync() {
+        public async Task<string> GetRefundIdAsync()
+        {
             await Init();
             return _result.GetRefundId();
         }
@@ -169,7 +190,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services {
         /// <summary>
         /// 获取商户退款单号
         /// </summary>
-        public async Task<string> GetRefundNo() {
+        public async Task<string> GetRefundNo()
+        {
             await Init();
             return _result.GetRefundNo();
         }
@@ -177,7 +199,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services {
         /// <summary>
         /// 获取订单金额
         /// </summary>
-        public async Task<decimal> GetTotalFeeAsync() {
+        public async Task<decimal> GetTotalFeeAsync()
+        {
             await Init();
             return _result.GetTotalFee().ToDecimal() / 100M;
         }
@@ -185,7 +208,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services {
         /// <summary>
         /// 获取应结订单金额
         /// </summary>
-        public async Task<decimal> GetSettlementTotalFeeAsync() {
+        public async Task<decimal> GetSettlementTotalFeeAsync()
+        {
             await Init();
             return _result.GetSettlementTotalFee().ToDecimal() / 100M;
         }
@@ -193,7 +217,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services {
         /// <summary>
         /// 获取申请退款金额
         /// </summary>
-        public async Task<decimal> GetRefundFeeAsync() {
+        public async Task<decimal> GetRefundFeeAsync()
+        {
             await Init();
             return _result.GetRefundFee().ToDecimal() / 100M;
         }
@@ -201,7 +226,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services {
         /// <summary>
         /// 获取退款金额
         /// </summary>
-        public async Task<decimal> GetSettlementRefundFeeAsync() {
+        public async Task<decimal> GetSettlementRefundFeeAsync()
+        {
             await Init();
             return _result.GetSettlementRefundFee().ToDecimal() / 100M;
         }
@@ -209,7 +235,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services {
         /// <summary>
         /// 获取退款状态
         /// </summary>
-        public async Task<string> GetRefundStatusAsync() {
+        public async Task<string> GetRefundStatusAsync()
+        {
             await Init();
             return _result.GetRefundStatus();
         }
@@ -217,7 +244,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services {
         /// <summary>
         /// 获取退款成功时间
         /// </summary>
-        public async Task<DateTime> GetSuccessTimeAsync() {
+        public async Task<DateTime> GetSuccessTimeAsync()
+        {
             await Init();
             return _result.GetSuccessTime().ToDate();
         }
@@ -225,7 +253,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services {
         /// <summary>
         /// 获取退款入账账户
         /// </summary>
-        public async Task<string> GetRefundReceiveAccoutAsync() {
+        public async Task<string> GetRefundReceiveAccoutAsync()
+        {
             await Init();
             return _result.GetRefundReceiveAccout();
         }
@@ -233,7 +262,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services {
         /// <summary>
         /// 获取退款来源账户
         /// </summary>
-        public async Task<string> GetRefundAccountAsync() {
+        public async Task<string> GetRefundAccountAsync()
+        {
             await Init();
             return _result.GetRefundAccount();
         }
@@ -241,7 +271,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services {
         /// <summary>
         /// 获取退款发起来源
         /// </summary>
-        public async Task<string> GetRefundRequestSourceAsync() {
+        public async Task<string> GetRefundRequestSourceAsync()
+        {
             await Init();
             return _result.GetRefundRequestSource();
         }

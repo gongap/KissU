@@ -1,11 +1,13 @@
 ﻿using System.Threading.Tasks;
 using KissU.Util.Biz.Payments.Alipay.Parameters.Requests;
 
-namespace KissU.Util.Biz.Payments.Alipay.Abstractions {
+namespace KissU.Util.Biz.Payments.Alipay.Abstractions
+{
     /// <summary>
     /// 支付宝二维码支付
     /// </summary>
-    public interface IAlipayQrCodePayService {
+    public interface IAlipayQrCodePayService
+    {
         /// <summary>
         /// 支付
         /// </summary>

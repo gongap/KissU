@@ -3,11 +3,13 @@ using System.Linq;
 using KissU.Util.Exceptions;
 using KissU.Util.Validations;
 
-namespace KissU.Util.Biz.Payments.Alipay.Configs {
+namespace KissU.Util.Biz.Payments.Alipay.Configs
+{
     /// <summary>
     /// 支付宝配置
     /// </summary>
-    public class AlipayConfig {
+    public class AlipayConfig
+    {
         /// <summary>
         /// 支付网关地址,默认为正式地址： https://openapi.alipay.com/gateway.do ,如果进行测试，则设置为 https://openapi.alipaydev.com/gateway.do
         /// </summary>
@@ -45,14 +47,16 @@ namespace KissU.Util.Biz.Payments.Alipay.Configs {
         /// <summary>
         /// 获取支付网关地址
         /// </summary>
-        public string GetGatewayUrl() {
+        public string GetGatewayUrl()
+        {
             return $"{GatewayUrl}?charset={Charset}";
         }
 
         /// <summary>
         /// 验证
         /// </summary>
-        public void Validate() {
+        public void Validate()
+        {
             var result = DataAnnotationValidation.Validate( this );
             if( result.IsValid == false )
                 throw new Warning( result.First().ErrorMessage );

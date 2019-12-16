@@ -1,12 +1,15 @@
-﻿namespace KissU.Util.Biz.Payments.Core {
+﻿namespace KissU.Util.Biz.Payments.Core
+{
     /// <summary>
     /// 支付结果
     /// </summary>
-    public class PayResult {
+    public class PayResult
+    {
         /// <summary>
         /// 初始化支付结果
         /// </summary>
-        public PayResult() {
+        public PayResult()
+        {
         }
 
         /// <summary>
@@ -15,7 +18,8 @@
         /// <param name="success">是否成功</param>
         /// <param name="tradeId">交易编号</param>
         /// <param name="raw">支付接口返回的原始消息</param>
-        public PayResult( bool success,string tradeId, string raw ) {
+        public PayResult( bool success,string tradeId, string raw )
+        {
             Success = success;
             TradeId = tradeId;
             Raw = raw;

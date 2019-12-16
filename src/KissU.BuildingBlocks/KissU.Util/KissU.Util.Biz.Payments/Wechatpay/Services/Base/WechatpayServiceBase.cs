@@ -7,11 +7,13 @@ using KissU.Util.Helpers;
 using KissU.Util.Logs;
 using KissU.Util.Logs.Extensions;
 
-namespace KissU.Util.Biz.Payments.Wechatpay.Services.Base {
+namespace KissU.Util.Biz.Payments.Wechatpay.Services.Base
+{
     /// <summary>
     /// 微信支付服务
     /// </summary>
-    public abstract class WechatpayServiceBase : IPayService {
+    public abstract class WechatpayServiceBase : IPayService
+    {
         /// <summary>
         /// 配置提供器
         /// </summary>
@@ -21,7 +23,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services.Base {
         /// 初始化微信支付服务
         /// </summary>
         /// <param name="configProvider">微信支付配置提供器</param>
-        protected WechatpayServiceBase( IWechatpayConfigProvider configProvider ) {
+        protected WechatpayServiceBase( IWechatpayConfigProvider configProvider )
+        {
             configProvider.CheckNull( nameof( configProvider ) );
             ConfigProvider = configProvider;
         }
@@ -30,7 +33,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services.Base {
         /// 支付
         /// </summary>
         /// <param name="param">支付参数</param>
-        public virtual async Task<PayResult> PayAsync( PayParam param ) {
+        public virtual async Task<PayResult> PayAsync( PayParam param )
+        {
             var config = await ConfigProvider.GetConfigAsync();
             Validate( config, param );
             var builder = new WechatpayParameterBuilder( config );
@@ -41,7 +45,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services.Base {
         /// <summary>
         /// 验证
         /// </summary>
-        protected void Validate( WechatpayConfig config, PayParam param ) {
+        protected void Validate( WechatpayConfig config, PayParam param )
+        {
             config.CheckNull( nameof( config ) );
             param.CheckNull( nameof( param ) );
             config.Validate();
@@ -53,7 +58,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services.Base {
         /// 验证参数
         /// </summary>
         /// <param name="param">支付参数</param>
-        protected virtual void ValidateParam( PayParam param ) {
+        protected virtual void ValidateParam( PayParam param )
+        {
         }
 
         /// <summary>
@@ -61,7 +67,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services.Base {
         /// </summary>
         /// <param name="builder">参数生成器</param>
         /// <param name="param">支付参数</param>
-        protected void Config( WechatpayParameterBuilder builder, PayParam param ) {
+        protected void Config( WechatpayParameterBuilder builder, PayParam param )
+        {
             builder.Init( param );
             builder.TradeType( GetTradeType() );
             InitBuilder( builder, param );
@@ -77,13 +84,15 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services.Base {
         /// </summary>
         /// <param name="builder">参数生成器</param>
         /// <param name="param">支付参数</param>
-        protected virtual void InitBuilder( WechatpayParameterBuilder builder, PayParam param ) {
+        protected virtual void InitBuilder( WechatpayParameterBuilder builder, PayParam param )
+        {
         }
 
         /// <summary>
         /// 请求结果
         /// </summary>
-        protected virtual async Task<PayResult> RequstResult( WechatpayConfig config, WechatpayParameterBuilder builder ) {
+        protected virtual async Task<PayResult> RequstResult( WechatpayConfig config, WechatpayParameterBuilder builder )
+        {
             var result = new WechatpayResult( ConfigProvider, await Request( config, builder ) );
             WriteLog( config, builder, result );
             return await CreateResult( config, builder, result );
@@ -92,7 +101,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services.Base {
         /// <summary>
         /// 发送请求
         /// </summary>
-        protected virtual async Task<string> Request( WechatpayConfig config, WechatpayParameterBuilder builder ) {
+        protected virtual async Task<string> Request( WechatpayConfig config, WechatpayParameterBuilder builder )
+        {
             if( IsSend == false )
                 return string.Empty;
             return await Web.Client()
@@ -109,7 +119,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services.Base {
         /// <summary>
         /// 写日志
         /// </summary>
-        protected void WriteLog( WechatpayConfig config, WechatpayParameterBuilder builder, WechatpayResult result ) {
+        protected void WriteLog( WechatpayConfig config, WechatpayParameterBuilder builder, WechatpayResult result )
+        {
             var log = GetLog();
             if( log.IsTraceEnabled == false )
                 return;
@@ -131,11 +142,14 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services.Base {
         /// <summary>
         /// 获取日志操作
         /// </summary>
-        private ILog GetLog() {
-            try {
+        private ILog GetLog()
+        {
+            try
+            {
                 return Log.GetLog( WechatpayConst.TraceLogName );
             }
-            catch {
+            catch
+            {
                 return Log.Null;
             }
         }
@@ -151,9 +165,11 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services.Base {
         /// <param name="config">支付配置</param>
         /// <param name="builder">参数生成器</param>
         /// <param name="result">支付结果</param>
-        protected virtual async Task<PayResult> CreateResult( WechatpayConfig config, WechatpayParameterBuilder builder, WechatpayResult result ) {
+        protected virtual async Task<PayResult> CreateResult( WechatpayConfig config, WechatpayParameterBuilder builder, WechatpayResult result )
+        {
             var success = ( await result.ValidateAsync() ).IsValid;
-            return new PayResult( success, result.GetPrepayId(), result.Raw ) {
+            return new PayResult( success, result.GetPrepayId(), result.Raw )
+            {
                 Parameter = builder.ToString(),
                 Message = result.GetReturnMessage(),
                 Result = success ? GetResult( config, builder, result ) : null
@@ -166,7 +182,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services.Base {
         /// <param name="config">支付配置</param>
         /// <param name="builder">参数生成器</param>
         /// <param name="result">支付结果</param>
-        protected virtual string GetResult( WechatpayConfig config, WechatpayParameterBuilder builder, WechatpayResult result ) {
+        protected virtual string GetResult( WechatpayConfig config, WechatpayParameterBuilder builder, WechatpayResult result )
+        {
             return result.GetPrepayId();
         }
     }

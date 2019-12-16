@@ -2,15 +2,18 @@
 using KissU.Util.Parameters;
 using KissU.Util.Signatures;
 
-namespace KissU.Util.Biz.Payments.Wechatpay.Signatures {
+namespace KissU.Util.Biz.Payments.Wechatpay.Signatures
+{
     /// <summary>
     /// 微信支付HMACSha256签名服务
     /// </summary>
-    public class HmacSha256SignManager : ISignManager {
+    public class HmacSha256SignManager : ISignManager
+    {
         /// <summary>
         /// 签名密钥
         /// </summary>
         private readonly ISignKey _key;
+
         /// <summary>
         /// Url参数生成器
         /// </summary>
@@ -21,7 +24,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Signatures {
         /// </summary>
         /// <param name="key">签名密钥</param>
         /// <param name="builder">参数生成器</param>
-        public HmacSha256SignManager( ISignKey key, ParameterBuilder builder = null ) {
+        public HmacSha256SignManager( ISignKey key, ParameterBuilder builder = null )
+        {
             key.CheckNull( nameof( key ) );
             _key = key;
             _builder = builder == null ? new UrlParameterBuilder() : new UrlParameterBuilder( builder );
@@ -32,7 +36,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Signatures {
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="value">值</param>
-        public ISignManager Add( string key, object value ) {
+        public ISignManager Add( string key, object value )
+        {
             _builder.Add( key, value );
             return this;
         }
@@ -40,7 +45,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Signatures {
         /// <summary>
         /// 签名
         /// </summary>
-        public string Sign() {
+        public string Sign()
+        {
             var value = $"{_builder.Result( true )}&key={_key.GetKey()}";
             return Encrypt.HmacSha256( value, _key.GetKey() ).ToUpper();
         }
@@ -49,7 +55,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Signatures {
         /// 验证签名
         /// </summary>
         /// <param name="sign">签名</param>
-        public bool Verify( string sign ) {
+        public bool Verify( string sign )
+        {
             if( sign.IsEmpty() )
                 return false;
             return sign == Sign();

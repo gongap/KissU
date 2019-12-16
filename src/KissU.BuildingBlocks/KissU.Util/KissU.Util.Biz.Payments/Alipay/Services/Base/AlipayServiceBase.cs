@@ -7,11 +7,13 @@ using KissU.Util.Helpers;
 using KissU.Util.Logs;
 using KissU.Util.Logs.Extensions;
 
-namespace KissU.Util.Biz.Payments.Alipay.Services.Base {
+namespace KissU.Util.Biz.Payments.Alipay.Services.Base
+{
     /// <summary>
     /// 支付宝支付服务
     /// </summary>
-    public abstract class AlipayServiceBase : IPayService {
+    public abstract class AlipayServiceBase : IPayService
+    {
         /// <summary>
         /// 配置提供器
         /// </summary>
@@ -21,7 +23,8 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base {
         /// 初始化支付宝支付服务
         /// </summary>
         /// <param name="provider">支付宝配置提供器</param>
-        protected AlipayServiceBase( IAlipayConfigProvider provider ) {
+        protected AlipayServiceBase( IAlipayConfigProvider provider )
+        {
             provider.CheckNull( nameof( provider ) );
             ConfigProvider = provider;
         }
@@ -30,7 +33,8 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base {
         /// 支付
         /// </summary>
         /// <param name="param">支付参数</param>
-        public virtual async Task<PayResult> PayAsync( PayParam param ) {
+        public virtual async Task<PayResult> PayAsync( PayParam param )
+        {
             var config = await ConfigProvider.GetConfigAsync();
             Validate( config, param );
             var builder = new AlipayParameterBuilder( config );
@@ -41,7 +45,8 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base {
         /// <summary>
         /// 验证
         /// </summary>
-        protected void Validate( AlipayConfig config, PayParam param ) {
+        protected void Validate( AlipayConfig config, PayParam param )
+        {
             config.CheckNull( nameof( config ) );
             param.CheckNull( nameof( param ) );
             config.Validate();
@@ -53,7 +58,8 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base {
         /// 验证参数
         /// </summary>
         /// <param name="param">支付参数</param>
-        protected virtual void ValidateParam( PayParam param ) {
+        protected virtual void ValidateParam( PayParam param )
+        {
         }
 
         /// <summary>
@@ -61,7 +67,8 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base {
         /// </summary>
         /// <param name="builder">支付宝参数生成器</param>
         /// <param name="param">支付参数</param>
-        protected void Config( AlipayParameterBuilder builder, PayParam param ) {
+        protected void Config( AlipayParameterBuilder builder, PayParam param )
+        {
             builder.Init( param );
             builder.Method( GetMethod() );
             builder.Content.Scene( GetScene() );
@@ -76,7 +83,8 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base {
         /// <summary>
         /// 获取场景
         /// </summary>
-        protected virtual string GetScene() {
+        protected virtual string GetScene()
+        {
             return string.Empty;
         }
 
@@ -85,13 +93,15 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base {
         /// </summary>
         /// <param name="builder">内容参数生成器</param>
         /// <param name="param">支付参数</param>
-        protected virtual void InitContentBuilder( AlipayContentBuilder builder, PayParam param ) {
+        protected virtual void InitContentBuilder( AlipayContentBuilder builder, PayParam param )
+        {
         }
 
         /// <summary>
         /// 请求结果
         /// </summary>
-        protected virtual async Task<PayResult> RequstResult( AlipayConfig config, AlipayParameterBuilder builder ) {
+        protected virtual async Task<PayResult> RequstResult( AlipayConfig config, AlipayParameterBuilder builder )
+        {
             var result = new AlipayResult( await Request( config, builder ) );
             WriteLog( config, builder, result );
             return CreateResult( builder, result );
@@ -100,7 +110,8 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base {
         /// <summary>
         /// 发送请求
         /// </summary>
-        protected virtual async Task<string> Request( AlipayConfig config, AlipayParameterBuilder builder ) {
+        protected virtual async Task<string> Request( AlipayConfig config, AlipayParameterBuilder builder )
+        {
             if( IsSend == false )
                 return string.Empty;
             return await Web.Client()
@@ -117,7 +128,8 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base {
         /// <summary>
         /// 写日志
         /// </summary>
-        protected void WriteLog( AlipayConfig config, AlipayParameterBuilder builder, AlipayResult result ) {
+        protected void WriteLog( AlipayConfig config, AlipayParameterBuilder builder, AlipayResult result )
+        {
             var log = GetLog();
             if( log.IsTraceEnabled == false )
                 return;
@@ -142,7 +154,8 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base {
         /// <summary>
         /// 写日志
         /// </summary>
-        protected void WriteLog( AlipayConfig config, AlipayParameterBuilder builder, string content ) {
+        protected void WriteLog( AlipayConfig config, AlipayParameterBuilder builder, string content )
+        {
             var log = GetLog();
             if( log.IsTraceEnabled == false )
                 return;
@@ -164,11 +177,14 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base {
         /// <summary>
         /// 获取日志操作
         /// </summary>
-        private ILog GetLog() {
-            try {
+        private ILog GetLog()
+        {
+            try
+            {
                 return Log.GetLog( AlipayConst.TraceLogName );
             }
-            catch {
+            catch
+            {
                 return Log.Null;
             }
         }
@@ -181,8 +197,10 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base {
         /// <summary>
         /// 创建结果
         /// </summary>
-        protected virtual PayResult CreateResult( AlipayParameterBuilder builder, AlipayResult result ) {
-            return new PayResult( result.Success, result.GetTradeNo(), result.Raw ) {
+        protected virtual PayResult CreateResult( AlipayParameterBuilder builder, AlipayResult result )
+        {
+            return new PayResult( result.Success, result.GetTradeNo(), result.Raw )
+            {
                 Parameter = builder.ToString(),
                 Message = result.GetMessage()
             };

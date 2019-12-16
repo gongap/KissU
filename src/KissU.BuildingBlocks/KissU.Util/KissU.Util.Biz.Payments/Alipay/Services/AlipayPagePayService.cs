@@ -8,23 +8,27 @@ using KissU.Util.Biz.Payments.Core;
 using KissU.Util.Helpers;
 using Microsoft.AspNetCore.Http;
 
-namespace KissU.Util.Biz.Payments.Alipay.Services {
+namespace KissU.Util.Biz.Payments.Alipay.Services
+{
     /// <summary>
     /// 支付宝电脑网站支付服务
     /// </summary>
-    public class AlipayPagePayService : AlipayServiceBase, IAlipayPagePayService {
+    public class AlipayPagePayService : AlipayServiceBase, IAlipayPagePayService
+    {
         /// <summary>
         /// 初始化支付宝电脑网站支付服务
         /// </summary>
         /// <param name="provider">支付宝配置提供器</param>
-        public AlipayPagePayService( IAlipayConfigProvider provider ) : base( provider ) {
+        public AlipayPagePayService( IAlipayConfigProvider provider ) : base( provider )
+        {
         }
 
         /// <summary>
         /// 支付
         /// </summary>
         /// <param name="param">支付参数</param>
-        public override async Task<PayResult> PayAsync( PayParam param ) {
+        public override async Task<PayResult> PayAsync( PayParam param )
+        {
             var config = await ConfigProvider.GetConfigAsync();
             Validate( config, param );
             var builder = new AlipayParameterBuilder( config );
@@ -37,7 +41,8 @@ namespace KissU.Util.Biz.Payments.Alipay.Services {
         /// <summary>
         /// 获取表单
         /// </summary>
-        private string GetForm( AlipayParameterBuilder builder ) {
+        private string GetForm( AlipayParameterBuilder builder )
+        {
             FormBuilder formBuilder = new FormBuilder();
             formBuilder.AddParam( builder );
             return formBuilder.ToString();
@@ -47,7 +52,8 @@ namespace KissU.Util.Biz.Payments.Alipay.Services {
         /// 支付
         /// </summary>
         /// <param name="request">电脑网站支付参数</param>
-        public async Task<string> PayAsync( AlipayPagePayRequest request ) {
+        public async Task<string> PayAsync( AlipayPagePayRequest request )
+        {
             var result = await PayAsync( request.ToParam() );
             return result.Result;
         }
@@ -56,7 +62,8 @@ namespace KissU.Util.Biz.Payments.Alipay.Services {
         /// 跳转到支付宝收银台
         /// </summary>
         /// <param name="request">电脑网站支付参数</param>
-        public async Task RedirectAsync( AlipayPagePayRequest request ) {
+        public async Task RedirectAsync( AlipayPagePayRequest request )
+        {
             var result = await PayAsync( request );
             var response = Web.Response;
             response.ContentType = "text/html; charset=utf-8";
@@ -66,14 +73,16 @@ namespace KissU.Util.Biz.Payments.Alipay.Services {
         /// <summary>
         /// 获取请求方法
         /// </summary>
-        protected override string GetMethod() {
+        protected override string GetMethod()
+        {
             return "alipay.trade.page.pay";
         }
 
         /// <summary>
         /// 获取支付方式
         /// </summary>
-        protected override PayWay GetPayWay() {
+        protected override PayWay GetPayWay()
+        {
             return PayWay.AlipayPagePay;
         }
     }

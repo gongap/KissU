@@ -10,11 +10,13 @@ using KissU.Util.Helpers;
 using KissU.Util.Logs;
 using KissU.Util.Logs.Extensions;
 
-namespace KissU.Util.Biz.Payments.Wechatpay.Services {
+namespace KissU.Util.Biz.Payments.Wechatpay.Services
+{
     /// <summary>
     /// 微信退款服务
     /// </summary>
-    public class WechatpayRefundService : IWechatpayRefundService {
+    public class WechatpayRefundService : IWechatpayRefundService
+    {
         /// <summary>
         /// 微信配置提供器
         /// </summary>
@@ -29,7 +31,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services {
         /// 初始化微信支付退款服务
         /// </summary>
         /// <param name="provider">微信支付配置提供器</param>
-        public WechatpayRefundService( IWechatpayConfigProvider provider ) {
+        public WechatpayRefundService( IWechatpayConfigProvider provider )
+        {
             ConfigProvider = provider;
         }
 
@@ -37,7 +40,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services {
         /// 退款
         /// </summary>
         /// <param name="request">退款参数</param>
-        public async Task<RefundResult> RefundAsync( WechatRefundRequest request ) {
+        public async Task<RefundResult> RefundAsync( WechatRefundRequest request )
+        {
             var config = await ConfigProvider.GetConfigAsync();
             Validate( config, request );
             var builder = new WechatpayRefundParameterBuilder( config );
@@ -48,7 +52,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services {
         /// <summary>
         /// 验证
         /// </summary>
-        protected void Validate( WechatpayConfig config, WechatRefundRequest param ) {
+        protected void Validate( WechatpayConfig config, WechatRefundRequest param )
+        {
             config.CheckNull( nameof( config ) );
             param.CheckNull( nameof( param ) );
             config.Validate();
@@ -61,7 +66,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services {
         /// 验证配置
         /// </summary>
         /// <param name="config">配置参数</param>
-        protected void ValidateConfig( WechatpayConfig config ) {
+        protected void ValidateConfig( WechatpayConfig config )
+        {
             if( config.Certificate.IsEmpty() )
                 throw new Warning( "必须设置证书" );
         }
@@ -70,7 +76,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services {
         /// 验证参数
         /// </summary>
         /// <param name="param">支付参数</param>
-        protected void ValidateParam( WechatRefundRequest param ) {
+        protected void ValidateParam( WechatRefundRequest param )
+        {
             if( param.TransactionId.IsEmpty() && param.OrderId.IsEmpty() )
                 throw new Warning( "商户订单号和微信订单号只能设置一个" );
             if( param.RefundFee > param.Money )
@@ -82,14 +89,16 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services {
         /// </summary>
         /// <param name="builder">参数生成器</param>
         /// <param name="param">支付参数</param>
-        protected void Config( WechatpayRefundParameterBuilder builder, WechatRefundRequest param ) {
+        protected void Config( WechatpayRefundParameterBuilder builder, WechatRefundRequest param )
+        {
             builder.Init( param );
         }
 
         /// <summary>
         /// 请求结果
         /// </summary>
-        protected virtual async Task<RefundResult> RequstResult( WechatpayConfig config, WechatpayRefundParameterBuilder builder ) {
+        protected virtual async Task<RefundResult> RequstResult( WechatpayConfig config, WechatpayRefundParameterBuilder builder )
+        {
             var response = await Request( config, builder );
             var result = new WechatpayResult( ConfigProvider, response );
             WriteLog( config, builder, result );
@@ -99,7 +108,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services {
         /// <summary>
         /// 发送请求
         /// </summary>
-        protected virtual async Task<string> Request( WechatpayConfig config, WechatpayRefundParameterBuilder builder ) {
+        protected virtual async Task<string> Request( WechatpayConfig config, WechatpayRefundParameterBuilder builder )
+        {
             if( IsSend == false )
                 return string.Empty;
             return await Web.Client()
@@ -115,9 +125,11 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services {
         /// <param name="config">支付配置</param>
         /// <param name="builder">参数生成器</param>
         /// <param name="result">支付结果</param>
-        protected virtual async Task<RefundResult> CreateResult( WechatpayConfig config, WechatpayRefundParameterBuilder builder, WechatpayResult result ) {
+        protected virtual async Task<RefundResult> CreateResult( WechatpayConfig config, WechatpayRefundParameterBuilder builder, WechatpayResult result )
+        {
             var success = ( await result.ValidateAsync() ).IsValid;
-            return new RefundResult( success, result.GetRefundId(), result.Raw ) {
+            return new RefundResult( success, result.GetRefundId(), result.Raw )
+            {
                 Parameter = builder.ToString(),
                 Message = result.GetReturnMessage(),
                 Result = success ? GetResult( config, builder, result ) : null
@@ -130,7 +142,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services {
         /// <param name="config">支付配置</param>
         /// <param name="builder">参数生成器</param>
         /// <param name="result">支付结果</param>
-        protected string GetResult( WechatpayConfig config, WechatpayRefundParameterBuilder builder, WechatpayResult result ) {
+        protected string GetResult( WechatpayConfig config, WechatpayRefundParameterBuilder builder, WechatpayResult result )
+        {
             return new WechatpayParameterBuilder( config )
                 .Add( "appId", config.AppId )
                 .Add( "timeStamp", Time.GetUnixTimestamp().SafeString() )
@@ -143,7 +156,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services {
         /// <summary>
         /// 写日志
         /// </summary>
-        protected void WriteLog( WechatpayConfig config, WechatpayRefundParameterBuilder builder, WechatpayResult result ) {
+        protected void WriteLog( WechatpayConfig config, WechatpayRefundParameterBuilder builder, WechatpayResult result )
+        {
             var log = GetLog();
             if( log.IsTraceEnabled == false )
                 return;
@@ -164,11 +178,14 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services {
         /// <summary>
         /// 获取日志操作
         /// </summary>
-        private ILog GetLog() {
-            try {
+        private ILog GetLog()
+        {
+            try
+            {
                 return Log.GetLog( WechatpayConst.TraceLogName );
             }
-            catch {
+            catch
+            {
                 return Log.Null;
             }
         }

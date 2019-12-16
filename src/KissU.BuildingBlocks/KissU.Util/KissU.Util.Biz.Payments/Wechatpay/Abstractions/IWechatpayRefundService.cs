@@ -2,11 +2,13 @@
 using KissU.Util.Biz.Payments.Core;
 using KissU.Util.Biz.Payments.Wechatpay.Parameters.Requests;
 
-namespace KissU.Util.Biz.Payments.Wechatpay.Abstractions {
+namespace KissU.Util.Biz.Payments.Wechatpay.Abstractions
+{
     /// <summary>
     /// 微信退款
     /// </summary>
-    public interface IWechatpayRefundService {
+    public interface IWechatpayRefundService
+    {
         /// <summary>
         /// 退款
         /// </summary>

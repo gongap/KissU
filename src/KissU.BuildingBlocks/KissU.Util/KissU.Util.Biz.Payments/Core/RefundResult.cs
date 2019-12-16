@@ -1,12 +1,15 @@
-﻿namespace KissU.Util.Biz.Payments.Core {
+﻿namespace KissU.Util.Biz.Payments.Core
+{
     /// <summary>
     /// 退款结果
     /// </summary>
-    public class RefundResult {
+    public class RefundResult
+    {
         /// <summary>
         /// 初始化退款结果
         /// </summary>
-        public RefundResult() {
+        public RefundResult()
+        {
         }
 
         /// <summary>
@@ -15,7 +18,8 @@
         /// <param name="success">是否成功</param>
         /// <param name="tradeId">交易编号</param>
         /// <param name="raw">支付接口返回的原始消息</param>
-        public RefundResult( bool success, string tradeId, string raw ) {
+        public RefundResult( bool success, string tradeId, string raw )
+        {
             Success = success;
             TradeId = tradeId;
             Raw = raw;
