@@ -1,14 +1,17 @@
 ﻿using QRCoder;
 
-namespace KissU.Util.Tools.QrCode.QrCoder {
+namespace KissU.Util.Tools.QrCode.QrCoder
+{
     /// <summary>
     /// QRCoder二维码服务
     /// </summary>
-    public class QrCoderService : IQrCodeService {
+    public class QrCoderService : IQrCodeService
+    {
         /// <summary>
         /// 二维码尺寸
         /// </summary>
         private int _size;
+
         /// <summary>
         /// 容错级别
         /// </summary>
@@ -17,7 +20,8 @@ namespace KissU.Util.Tools.QrCode.QrCoder {
         /// <summary>
         /// 初始化QRCoder组件二维码服务
         /// </summary>
-        public QrCoderService() {
+        public QrCoderService()
+        {
             _size = 10;
             _level = QRCodeGenerator.ECCLevel.L;
         }
@@ -26,15 +30,17 @@ namespace KissU.Util.Tools.QrCode.QrCoder {
         /// 设置二维码尺寸
         /// </summary>
         /// <param name="size">二维码尺寸</param>
-        public IQrCodeService Size( QrSize size ) {
-            return Size( size.Value() );
+        public IQrCodeService Size(QrSize size)
+        {
+            return Size(size.Value());
         }
 
         /// <summary>
         /// 设置二维码尺寸
         /// </summary>
         /// <param name="size">二维码尺寸</param>
-        public IQrCodeService Size( int size ) {
+        public IQrCodeService Size(int size)
+        {
             _size = size;
             return this;
         }
@@ -43,8 +49,10 @@ namespace KissU.Util.Tools.QrCode.QrCoder {
         /// 容错处理
         /// </summary>
         /// <param name="level">容错级别</param>
-        public IQrCodeService Correction( ErrorCorrectionLevel level ) {
-            switch( level ) {
+        public IQrCodeService Correction(ErrorCorrectionLevel level)
+        {
+            switch (level)
+            {
                 case ErrorCorrectionLevel.L:
                     _level = QRCodeGenerator.ECCLevel.L;
                     break;
@@ -65,11 +73,12 @@ namespace KissU.Util.Tools.QrCode.QrCoder {
         /// 创建二维码
         /// </summary>
         /// <param name="content">内容</param>
-        public byte[] CreateQrCode( string content ) {
+        public byte[] CreateQrCode(string content)
+        {
             QRCodeGenerator generator = new QRCodeGenerator();
-            QRCodeData data = generator.CreateQrCode( content, _level );
-            BitmapByteQRCode qrCode = new BitmapByteQRCode( data );
-            return qrCode.GetGraphic( _size );
+            QRCodeData data = generator.CreateQrCode(content, _level);
+            BitmapByteQRCode qrCode = new BitmapByteQRCode(data);
+            return qrCode.GetGraphic(_size);
         }
     }
 }
