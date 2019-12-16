@@ -30,8 +30,8 @@ namespace KissU.Util.Sessions
         {
             get
             {
-                var result = Web.Identity.GetValue( JwtClaimTypes.Subject );
-                return string.IsNullOrWhiteSpace( result ) ? Web.Identity.GetValue( System.Security.Claims.ClaimTypes.NameIdentifier ) : result;
+                var result = Web.Identity.GetValue(JwtClaimTypes.Subject);
+                return string.IsNullOrWhiteSpace(result) ? Web.Identity.GetValue(System.Security.Claims.ClaimTypes.NameIdentifier) : result;
             }
         }
     }

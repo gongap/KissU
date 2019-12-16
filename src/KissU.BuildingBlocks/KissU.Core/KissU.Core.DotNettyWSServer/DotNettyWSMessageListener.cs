@@ -127,7 +127,8 @@ namespace KissU.Core.DotNettyWSServer
 
         #endregion
 
-        public class WebSocketFrameDecoder : MessageToMessageDecoder<WebSocketFrame> {
+        public class WebSocketFrameDecoder : MessageToMessageDecoder<WebSocketFrame>
+        {
 
             protected override void Decode(IChannelHandlerContext ctx, WebSocketFrame msg, List<Object> output)
             {

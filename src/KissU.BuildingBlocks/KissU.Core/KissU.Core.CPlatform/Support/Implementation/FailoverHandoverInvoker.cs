@@ -40,7 +40,8 @@ namespace KissU.Core.CPlatform.Support.Implementation
                 message = await _breakeRemoteInvokeService.InvokeAsync(parameters, serviceId, _serviceKey, decodeJOject);
                 if (message != null && message.Result != null)
                     result = (T)_typeConvertibleService.Convert(message.Result, typeof(T));
-            } while (message == null && ++time < command.FailoverCluster);
+            }
+            while (message == null && ++time < command.FailoverCluster);
             return result;
         }
 

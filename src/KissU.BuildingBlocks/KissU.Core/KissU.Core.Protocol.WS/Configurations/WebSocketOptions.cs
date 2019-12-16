@@ -29,7 +29,8 @@ namespace KissU.Core.Protocol.WS.Configurations
         {
             get;
             set;
-        } = false;
+        }
+        = false;
 
         public BehaviorOption Behavior { get; set; }
     }

@@ -14,7 +14,7 @@ namespace KissU.Util.Domains
         /// <param name="description">描述</param>
         /// <param name="oldValue">旧值</param>
         /// <param name="newValue">新值</param>
-        public ChangeValue( string propertyName, string description, string oldValue, string newValue )
+        public ChangeValue(string propertyName, string description, string oldValue, string newValue)
         {
             PropertyName = propertyName;
             Description = description;
@@ -48,8 +48,8 @@ namespace KissU.Util.Domains
         public override string ToString()
         {
             var result = new StringBuilder();
-            result.AppendFormat( "{0}({1}),", PropertyName, Description );
-            result.AppendFormat( "旧值:{0},新值:{1}", OldValue, NewValue );
+            result.AppendFormat("{0}({1}),", PropertyName, Description);
+            result.AppendFormat("旧值:{0},新值:{1}", OldValue, NewValue);
             return result.ToString();
         }
     }

@@ -87,7 +87,8 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
 
         public async Task SendPubBack(IChannel channel, int messageId)
         {
-            var mqttPubAckMessage = new PubAckPacket() {
+            var mqttPubAckMessage = new PubAckPacket()
+            {
                 PacketId = messageId
             };
            await channel.WriteAndFlushAsync(mqttPubAckMessage);

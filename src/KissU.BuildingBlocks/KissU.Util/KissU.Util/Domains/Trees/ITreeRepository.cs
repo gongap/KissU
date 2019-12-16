@@ -19,6 +19,6 @@ namespace KissU.Util.Domains.Trees
     /// <typeparam name="TParentId">父标识类型</typeparam>
     public interface ITreeRepository<TEntity, in TKey, in TParentId> : IRepository<TEntity, TKey>, ITreeCompactRepository<TEntity, TKey, TParentId>
         where TEntity : class, ITreeEntity<TEntity, TKey, TParentId>
-        {
+    {
     }
 }

@@ -136,7 +136,8 @@ namespace KissU.Core.Caching.Configurations.Remote
             {
                 line = streamReader.ReadLine();
                 yield return line;
-            } while (line != null);
+            }
+            while (line != null);
         }
 
         private static string RetrieveErrorContext(JsonReaderException e, IEnumerable<string> fileContent)

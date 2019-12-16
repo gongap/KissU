@@ -51,11 +51,16 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Runtime.Implementation
 
         public async Task Register(string topic, AddressModel addressModel)
         {
-            await _mqttServiceRouteManager.SetRoutesAsync(new MqttServiceRoute[] { new MqttServiceRoute {
-                 MqttDescriptor=new MqttDescriptor{
+            await _mqttServiceRouteManager.SetRoutesAsync(new MqttServiceRoute[]
+            {
+                new MqttServiceRoute
+            {
+                 MqttDescriptor=new MqttDescriptor
+                {
                       Topic=topic
                  },
-                  MqttEndpoint=new AddressModel[]{
+                  MqttEndpoint=new AddressModel[]
+                    {
                       addressModel
                   }
             }

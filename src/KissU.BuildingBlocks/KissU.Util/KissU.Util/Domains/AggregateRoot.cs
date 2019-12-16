@@ -13,9 +13,9 @@ namespace KissU.Util.Domains
         /// 初始化聚合根
         /// </summary>
         /// <param name="id">标识</param>
-        protected AggregateRoot( TKey id )
-            : base( id )
-            {
+        protected AggregateRoot(TKey id)
+            : base(id)
+        {
         }
 
         /// <summary>
@@ -34,9 +34,9 @@ namespace KissU.Util.Domains
         /// 初始化聚合根
         /// </summary>
         /// <param name="id">标识</param>
-        protected AggregateRoot( Guid id )
-            : base( id )
-            {
+        protected AggregateRoot(Guid id)
+            : base(id)
+        {
         }
     }
 }

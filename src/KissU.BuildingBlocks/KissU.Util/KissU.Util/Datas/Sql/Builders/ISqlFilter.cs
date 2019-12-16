@@ -11,6 +11,6 @@ namespace KissU.Util.Datas.Sql.Builders
         /// 过滤
         /// </summary>
         /// <param name="context">Sql执行上下文</param>
-        void Filter( SqlContext context );
+        void Filter(SqlContext context);
     }
 }

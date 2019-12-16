@@ -26,7 +26,7 @@ namespace KissU.Util.Datas.Persistence
         /// <summary>
         /// 相等运算
         /// </summary>
-        public override bool Equals( object other )
+        public override bool Equals(object other)
         {
             return this == (PersistentEntityBase<TKey>)other;
         }
@@ -36,33 +36,33 @@ namespace KissU.Util.Datas.Persistence
         /// </summary>
         public override int GetHashCode()
         {
-            return ReferenceEquals( Id, null ) ? 0 : Id.GetHashCode();
+            return ReferenceEquals(Id, null) ? 0 : Id.GetHashCode();
         }
 
         /// <summary>
         /// 相等比较
         /// </summary>
-        public static bool operator ==( PersistentEntityBase<TKey> left, PersistentEntityBase<TKey> right )
+        public static bool operator ==(PersistentEntityBase<TKey> left, PersistentEntityBase<TKey> right)
         {
-            if( (object)left == null && (object)right == null )
+            if ((object)left == null && (object)right == null)
                 return true;
-            if( (object)left == null || (object)right == null )
+            if ((object)left == null || (object)right == null)
                 return false;
-            if( left.GetType() != right.GetType() )
+            if (left.GetType() != right.GetType())
                 return false;
-            if( Equals( left.Id, null ) )
+            if (Equals(left.Id, null))
                 return false;
-            if( left.Id.Equals( default( TKey ) ) )
+            if (left.Id.Equals(default(TKey)))
                 return false;
-            return left.Id.Equals( right.Id );
+            return left.Id.Equals(right.Id);
         }
 
         /// <summary>
         /// 不相等比较
         /// </summary>
-        public static bool operator !=( PersistentEntityBase<TKey> left, PersistentEntityBase<TKey> right )
+        public static bool operator !=(PersistentEntityBase<TKey> left, PersistentEntityBase<TKey> right)
         {
-            return !( left == right );
+            return !(left == right);
         }
     }
 }

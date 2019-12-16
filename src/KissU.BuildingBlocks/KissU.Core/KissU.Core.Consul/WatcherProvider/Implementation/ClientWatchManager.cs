@@ -25,7 +25,9 @@ namespace KissU.Core.Consul.WatcherProvider.Implementation
             }, null, timeSpan, timeSpan);
         }
 
-        public Dictionary<string, HashSet<Watcher>> DataWatches { get
+        public Dictionary<string, HashSet<Watcher>> DataWatches
+        {
+            get
             {
                 return dataWatches;
             }

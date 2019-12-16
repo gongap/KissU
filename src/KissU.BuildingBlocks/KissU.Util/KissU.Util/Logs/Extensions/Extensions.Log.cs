@@ -13,9 +13,9 @@ namespace KissU.Util.Logs.Extensions
         /// 设置内容
         /// </summary>
         /// <param name="log">日志操作</param>
-        public static ILog Content( this ILog log )
+        public static ILog Content(this ILog log)
         {
-            return log.Set<ILogContent>( content => content.Content( "" ) );
+            return log.Set<ILogContent>(content => content.Content(""));
         }
 
         /// <summary>
@@ -23,9 +23,9 @@ namespace KissU.Util.Logs.Extensions
         /// </summary>
         /// <param name="log">日志操作</param>
         /// <param name="value">值</param>
-        public static ILog Content( this ILog log, string value )
+        public static ILog Content(this ILog log, string value)
         {
-            return log.Set<ILogContent>( content => content.Content( value ) );
+            return log.Set<ILogContent>(content => content.Content(value));
         }
 
         /// <summary>
@@ -33,11 +33,11 @@ namespace KissU.Util.Logs.Extensions
         /// </summary>
         /// <param name="log">日志操作</param>
         /// <param name="dictionary">字典</param>
-        public static ILog Content( this ILog log, IDictionary<string, object> dictionary )
+        public static ILog Content(this ILog log, IDictionary<string, object> dictionary)
         {
-            if( dictionary == null )
+            if (dictionary == null)
                 return log;
-            return Content( log, dictionary.ToDictionary( t => t.Key, t => t.Value.SafeString() ) );
+            return Content(log, dictionary.ToDictionary(t => t.Key, t => t.Value.SafeString()));
         }
 
         /// <summary>
@@ -45,12 +45,12 @@ namespace KissU.Util.Logs.Extensions
         /// </summary>
         /// <param name="log">日志操作</param>
         /// <param name="dictionary">字典</param>
-        public static ILog Content( this ILog log, IDictionary<string, string> dictionary )
+        public static ILog Content(this ILog log, IDictionary<string, string> dictionary)
         {
-            if( dictionary == null )
+            if (dictionary == null)
                 return log;
-            foreach( var keyValue in dictionary )
-                log.Set<ILogContent>( content => content.Content( $"{keyValue.Key} : {keyValue.Value}" ) );
+            foreach (var keyValue in dictionary)
+                log.Set<ILogContent>(content => content.Content($"{keyValue.Key} : {keyValue.Value}"));
             return log;
         }
     }

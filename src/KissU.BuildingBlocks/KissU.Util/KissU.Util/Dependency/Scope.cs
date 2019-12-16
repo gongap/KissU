@@ -17,7 +17,7 @@ namespace KissU.Util.Dependency
         /// 初始化作用域
         /// </summary>
         /// <param name="scope">autofac作用域</param>
-        public Scope( ILifetimeScope scope )
+        public Scope(ILifetimeScope scope)
         {
             _scope = scope;
         }
@@ -35,9 +35,9 @@ namespace KissU.Util.Dependency
         /// 创建对象
         /// </summary>
         /// <param name="type">对象类型</param>
-        public object Create( Type type )
+        public object Create(Type type)
         {
-            return _scope.Resolve( type );
+            return _scope.Resolve(type);
         }
 
         /// <summary>

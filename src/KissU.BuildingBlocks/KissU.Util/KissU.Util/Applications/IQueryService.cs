@@ -14,6 +14,6 @@ namespace KissU.Util.Applications
         IPageQuery<TDto, TQueryParameter>, IPageQueryAsync<TDto, TQueryParameter>
         where TDto : new()
         where TQueryParameter : IQueryParameter
-        {
+    {
     }
 }

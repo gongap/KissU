@@ -10,7 +10,7 @@ namespace KissU.Util.Datas.Stores
     /// <typeparam name="TEntity">对象类型</typeparam>
     public interface IStore<TEntity> : IStore<TEntity, Guid>
         where TEntity : class, IKey<Guid>, IVersion
-        {
+    {
     }
 
     /// <summary>
@@ -21,11 +21,11 @@ namespace KissU.Util.Datas.Stores
     public interface IStore<TEntity, in TKey> : IQueryStore<TEntity, TKey>,
         IAdd<TEntity, TKey>,
         IAddAsync<TEntity, TKey>,
-        IUpdate<TEntity, TKey>, 
+        IUpdate<TEntity, TKey>,
         IUpdateAsync<TEntity, TKey>,
-        IRemove<TEntity, TKey>, 
+        IRemove<TEntity, TKey>,
         IRemoveAsync<TEntity, TKey>
         where TEntity : class, IKey<TKey>
-        {
+    {
     }
 }

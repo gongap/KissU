@@ -18,7 +18,7 @@ namespace KissU.Util.Validations
         /// <summary>
         /// 初始化验证结果集合
         /// </summary>
-        public ValidationResultCollection() : this( "" )
+        public ValidationResultCollection() : this("")
         {
         }
 
@@ -26,12 +26,12 @@ namespace KissU.Util.Validations
         /// 初始化验证结果集合
         /// </summary>
         /// <param name="result">验证结果</param>
-        public ValidationResultCollection( string result )
+        public ValidationResultCollection(string result)
         {
             _results = new List<ValidationResult>();
-            if( string.IsNullOrWhiteSpace( result ) )
+            if (string.IsNullOrWhiteSpace(result))
                 return;
-            _results.Add( new ValidationResult( result ) );
+            _results.Add(new ValidationResult(result));
         }
 
         /// <summary>
@@ -53,23 +53,23 @@ namespace KissU.Util.Validations
         /// 添加验证结果
         /// </summary>
         /// <param name="result">验证结果</param>
-        public void Add( ValidationResult result )
+        public void Add(ValidationResult result)
         {
-            if( result == null )
+            if (result == null)
                 return;
-            _results.Add( result );
+            _results.Add(result);
         }
 
         /// <summary>
         /// 添加验证结果集合
         /// </summary>
         /// <param name="results">验证结果集合</param>
-        public void AddList( IEnumerable<ValidationResult> results )
+        public void AddList(IEnumerable<ValidationResult> results)
         {
-            if( results == null )
+            if (results == null)
                 return;
-            foreach( var result in results )
-                Add( result );
+            foreach (var result in results)
+                Add(result);
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace KissU.Util.Validations
         /// </summary>
         public override string ToString()
         {
-            if( IsValid )
+            if (IsValid)
                 return string.Empty;
             return _results.First().ErrorMessage;
         }

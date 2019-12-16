@@ -26,7 +26,8 @@ namespace KissU.Core.Caching.RedisCache
 
         public RedisProvider(string appName)
         {
-            _context = new Lazy<RedisContext>(() => {
+            _context = new Lazy<RedisContext>(() =>
+            {
                 if (CacheContainer.IsRegistered<RedisContext>(appName))
                     return CacheContainer.GetService<RedisContext>(appName);
                 else

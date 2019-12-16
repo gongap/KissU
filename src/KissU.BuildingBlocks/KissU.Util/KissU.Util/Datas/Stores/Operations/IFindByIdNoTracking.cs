@@ -13,6 +13,6 @@ namespace KissU.Util.Datas.Stores.Operations
         /// 查找未跟踪单个实体
         /// </summary>
         /// <param name="id">标识</param>
-        TEntity FindByIdNoTracking( TKey id );
+        TEntity FindByIdNoTracking(TKey id);
     }
 }

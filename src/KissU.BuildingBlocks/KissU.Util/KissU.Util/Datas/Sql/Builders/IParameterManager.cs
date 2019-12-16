@@ -24,7 +24,7 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <param name="name">参数名</param>
         /// <param name="value">参数值</param>
         /// <param name="operator">运算符</param>
-        void Add( string name, object value, Operator? @operator = null );
+        void Add(string name, object value, Operator? @operator = null);
 
         /// <summary>
         /// 复制副本

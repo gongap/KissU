@@ -20,19 +20,19 @@ namespace KissU.Util.Domains.Trees
     /// <typeparam name="TEntity">实体类型</typeparam>
     /// <typeparam name="TKey">实体标识类型</typeparam>
     /// <typeparam name="TParentId">父标识类型</typeparam>
-    public interface ITreeCompactRepository<TEntity, in TKey, in TParentId> : ICompactRepository<TEntity, TKey>,IFindByIdNoTrackingAsync<TEntity,TKey>
+    public interface ITreeCompactRepository<TEntity, in TKey, in TParentId> : ICompactRepository<TEntity, TKey>, IFindByIdNoTrackingAsync<TEntity, TKey>
         where TEntity : class, ITreeEntity<TEntity, TKey, TParentId>
-        {
+    {
         /// <summary>
         /// 生成排序号
         /// </summary>
         /// <param name="parentId">父标识</param>
-        Task<int> GenerateSortIdAsync( TParentId parentId );
+        Task<int> GenerateSortIdAsync(TParentId parentId);
 
         /// <summary>
         /// 获取全部下级实体
         /// </summary>
         /// <param name="parent">父实体</param>
-        Task<List<TEntity>> GetAllChildrenAsync( TEntity parent );
+        Task<List<TEntity>> GetAllChildrenAsync(TEntity parent);
     }
 }

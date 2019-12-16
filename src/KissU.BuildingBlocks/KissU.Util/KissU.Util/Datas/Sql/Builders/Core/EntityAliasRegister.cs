@@ -12,7 +12,7 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// 初始化实体别名注册器
         /// </summary>
         /// <param name="data">实体别名列表</param>
-        public EntityAliasRegister( IDictionary<Type, string> data = null )
+        public EntityAliasRegister(IDictionary<Type, string> data = null)
         {
             Data = data ?? new Dictionary<Type, string>();
         }
@@ -32,7 +32,7 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// </summary>
         /// <param name="entity">实体类型</param>
         /// <param name="alias">别名</param>
-        public void Register( Type entity, string alias )
+        public void Register(Type entity, string alias)
         {
             Data[entity] = alias;
         }
@@ -41,22 +41,22 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// 是否包含实体
         /// </summary>
         /// <param name="entity">实体类型</param>
-        public bool Contains( Type entity )
+        public bool Contains(Type entity)
         {
-            if ( entity == null )
+            if (entity == null)
                 return false;
-            return Data.ContainsKey( entity );
+            return Data.ContainsKey(entity);
         }
 
         /// <summary>
         /// 获取实体别名
         /// </summary>
         /// <param name="entity">实体类型</param>
-        public string GetAlias( Type entity )
+        public string GetAlias(Type entity)
         {
-            if ( entity == null )
+            if (entity == null)
                 return null;
-            if ( Data.ContainsKey( entity ) )
+            if (Data.ContainsKey(entity))
                 return Data[entity];
             return null;
         }
@@ -66,7 +66,7 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// </summary>
         public IEntityAliasRegister Clone()
         {
-            return new EntityAliasRegister( new Dictionary<Type, string>( Data ) );
+            return new EntityAliasRegister(new Dictionary<Type, string>(Data));
         }
     }
 }

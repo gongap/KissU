@@ -19,21 +19,21 @@ namespace KissU.Util.Dependency
         /// </summary>
         /// <param name="builder">容器生成器</param>
         /// <param name="configAction">Aop配置</param>
-        public static void EnableAop( this ContainerBuilder builder,Action<IAspectConfiguration> configAction = null )
+        public static void EnableAop(this ContainerBuilder builder, Action<IAspectConfiguration> configAction = null)
         {
-            builder.RegisterDynamicProxy( config =>
-            {
-                config.EnableParameterAspect();
-                config.NonAspectPredicates.Add( t => Reflection.GetTopBaseType( t.DeclaringType ).SafeString() == "Microsoft.EntityFrameworkCore.DbContext" );
-                configAction?.Invoke( config );
-            } );
+            builder.RegisterDynamicProxy(config =>
+           {
+               config.EnableParameterAspect();
+               config.NonAspectPredicates.Add(t => Reflection.GetTopBaseType(t.DeclaringType).SafeString() == "Microsoft.EntityFrameworkCore.DbContext");
+               configAction?.Invoke(config);
+           });
             builder.EnableAspectScoped();
         }
 
         /// <summary>
         /// 启用Aop作用域
         /// </summary>
-	    public static void EnableAspectScoped( this ContainerBuilder builder )
+	    public static void EnableAspectScoped(this ContainerBuilder builder)
         {
             builder.AddScoped<IAspectScheduler, ScopeAspectScheduler>();
             builder.AddScoped<IAspectBuilderFactory, ScopeAspectBuilderFactory>();

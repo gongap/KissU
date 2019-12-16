@@ -68,7 +68,8 @@ namespace KissU.Core.Consul.Configurations
                         Host = ipAddress.Ip;
                         Port = ipAddress.Port;
                     }
-                    Addresses = new IpAddressModel[] {
+                    Addresses = new IpAddressModel[]
+                    {
                         new IpAddressModel(Host,Port)
                     };
                 }

@@ -14,20 +14,20 @@ namespace KissU.Util.Validations.Aspects
         /// <summary>
         /// 执行
         /// </summary>
-        public override async Task Invoke( ParameterAspectContext context, ParameterAspectDelegate next )
+        public override async Task Invoke(ParameterAspectContext context, ParameterAspectDelegate next)
         {
-            Validate( context.Parameter );
-            await next( context );
+            Validate(context.Parameter);
+            await next(context);
         }
 
         /// <summary>
         /// 验证
         /// </summary>
-        private void Validate( Parameter parameter )
+        private void Validate(Parameter parameter)
         {
-            if ( Reflection.IsGenericCollection( parameter.RawType ) )
+            if (Reflection.IsGenericCollection(parameter.RawType))
             {
-                ValidateCollection( parameter );
+                ValidateCollection(parameter);
                 return;
             }
             IValidation validation = parameter.Value as IValidation;
@@ -37,11 +37,11 @@ namespace KissU.Util.Validations.Aspects
         /// <summary>
         /// 验证集合
         /// </summary>
-        private void ValidateCollection( Parameter parameter )
+        private void ValidateCollection(Parameter parameter)
         {
-            if ( !( parameter.Value is IEnumerable<IValidation> validations ) )
+            if (!(parameter.Value is IEnumerable<IValidation> validations))
                 return;
-            foreach ( var validation in validations )
+            foreach (var validation in validations)
                 validation.Validate();
         }
     }

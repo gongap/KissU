@@ -26,7 +26,7 @@ namespace KissU.Util.Webs.Clients
         /// </summary>
         /// <param name="httpMethod">Http动词</param>
         /// <param name="url">地址</param>
-        public HttpRequest( HttpMethod httpMethod, string url ) : base( httpMethod, url )
+        public HttpRequest(HttpMethod httpMethod, string url) : base(httpMethod, url)
         {
         }
 
@@ -34,7 +34,7 @@ namespace KissU.Util.Webs.Clients
         /// 请求成功回调函数
         /// </summary>
         /// <param name="action">执行成功的回调函数,参数为响应结果</param>
-        public IHttpRequest OnSuccess( Action<string> action )
+        public IHttpRequest OnSuccess(Action<string> action)
         {
             _successAction = action;
             return this;
@@ -44,7 +44,7 @@ namespace KissU.Util.Webs.Clients
         /// 请求成功回调函数
         /// </summary>
         /// <param name="action">执行成功的回调函数,第一个参数为响应结果，第二个参数为状态码</param>
-        public IHttpRequest OnSuccess( Action<string, HttpStatusCode> action )
+        public IHttpRequest OnSuccess(Action<string, HttpStatusCode> action)
         {
             _successStatusCodeAction = action;
             return this;
@@ -53,10 +53,10 @@ namespace KissU.Util.Webs.Clients
         /// <summary>
         /// 成功处理操作
         /// </summary>
-        protected override void SuccessHandler( string result, HttpStatusCode statusCode, string contentType )
+        protected override void SuccessHandler(string result, HttpStatusCode statusCode, string contentType)
         {
-            _successAction?.Invoke( result );
-            _successStatusCodeAction?.Invoke( result, statusCode );
+            _successAction?.Invoke(result);
+            _successStatusCodeAction?.Invoke(result, statusCode);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace KissU.Util.Webs.Clients
         /// </summary>
         public async Task<TResult> ResultFromJsonAsync<TResult>()
         {
-            return Util.Helpers.Json.ToObject<TResult>( await ResultAsync() );
+            return Util.Helpers.Json.ToObject<TResult>(await ResultAsync());
         }
     }
 
@@ -93,7 +93,7 @@ namespace KissU.Util.Webs.Clients
         /// </summary>
         /// <param name="httpMethod">Http动词</param>
         /// <param name="url">地址</param>
-        public HttpRequest( HttpMethod httpMethod, string url ) : base( httpMethod,url )
+        public HttpRequest(HttpMethod httpMethod, string url) : base(httpMethod, url)
         {
         }
 
@@ -102,7 +102,7 @@ namespace KissU.Util.Webs.Clients
         /// </summary>
         /// <param name="action">执行成功的回调函数,参数为响应结果</param>
         /// <param name="convertAction">将结果字符串转换为指定类型，当默认转换实现无法转换时使用</param>
-        public IHttpRequest<TResult> OnSuccess( Action<TResult> action, Func<string, TResult> convertAction = null )
+        public IHttpRequest<TResult> OnSuccess(Action<TResult> action, Func<string, TResult> convertAction = null)
         {
             _successAction = action;
             _convertAction = convertAction;
@@ -114,7 +114,7 @@ namespace KissU.Util.Webs.Clients
         /// </summary>
         /// <param name="action">执行成功的回调函数,第一个参数为响应结果，第二个参数为状态码</param>
         /// <param name="convertAction">将结果字符串转换为指定类型，当默认转换实现无法转换时使用</param>
-        public IHttpRequest<TResult> OnSuccess( Action<TResult, HttpStatusCode> action, Func<string, TResult> convertAction = null )
+        public IHttpRequest<TResult> OnSuccess(Action<TResult, HttpStatusCode> action, Func<string, TResult> convertAction = null)
         {
             _successStatusCodeAction = action;
             _convertAction = convertAction;
@@ -124,24 +124,24 @@ namespace KissU.Util.Webs.Clients
         /// <summary>
         /// 成功处理操作
         /// </summary>
-        protected override void SuccessHandler( string result, HttpStatusCode statusCode, string contentType )
+        protected override void SuccessHandler(string result, HttpStatusCode statusCode, string contentType)
         {
-            TResult successResult = ConvertTo( result, contentType );
-            _successAction?.Invoke( successResult );
-            _successStatusCodeAction?.Invoke( successResult, statusCode );
+            TResult successResult = ConvertTo(result, contentType);
+            _successAction?.Invoke(successResult);
+            _successStatusCodeAction?.Invoke(successResult, statusCode);
         }
 
         /// <summary>
         /// 将结果字符串转换为指定类型
         /// </summary>
-        private TResult ConvertTo( string result, string contentType )
+        private TResult ConvertTo(string result, string contentType)
         {
-            if( typeof( TResult ) == typeof( string ) )
-                return Util.Helpers.Convert.To<TResult>( result );
-            if( _convertAction != null )
-                return _convertAction( result );
-            if( contentType.SafeString().ToLower() == "application/json" )
-                return Json.ToObject<TResult>( result );
+            if (typeof(TResult) == typeof(string))
+                return Util.Helpers.Convert.To<TResult>(result);
+            if (_convertAction != null)
+                return _convertAction(result);
+            if (contentType.SafeString().ToLower() == "application/json")
+                return Json.ToObject<TResult>(result);
             return null;
         }
 
@@ -150,7 +150,7 @@ namespace KissU.Util.Webs.Clients
         /// </summary>
         public async Task<TResult> ResultFromJsonAsync()
         {
-            return Util.Helpers.Json.ToObject<TResult>( await ResultAsync() );
+            return Util.Helpers.Json.ToObject<TResult>(await ResultAsync());
         }
     }
 }

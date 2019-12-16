@@ -38,6 +38,6 @@ namespace KissU.Util.Schedulers
         /// 扫描并添加作业
         /// </summary>
         /// <param name="assemblies">程序集列表</param>
-        Task ScanJobsAsync( params Assembly[] assemblies );
+        Task ScanJobsAsync(params Assembly[] assemblies);
     }
 }

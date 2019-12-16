@@ -11,9 +11,9 @@ namespace KissU.Util.Helpers
         /// 合并Url
         /// </summary>
         /// <param name="urls">url片断，范例：Url.Combine( "http://a.com","b" ),返回 "http://a.com/b"</param>
-        public static string Combine( params string[] urls )
+        public static string Combine(params string[] urls)
         {
-            return Path.Combine( urls ).Replace( @"\", "/" );
+            return Path.Combine(urls).Replace(@"\", "/");
         }
 
         /// <summary>
@@ -21,21 +21,21 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <param name="url">Url，范例：http://a.com</param>
         /// <param name="param">参数，范例：b=1</param>
-        public static string Join( string url, string param )
+        public static string Join(string url, string param)
         {
-            return $"{GetUrl( url )}{param}";
+            return $"{GetUrl(url)}{param}";
         }
 
         /// <summary>
         /// 获取Url
         /// </summary>
-        private static string GetUrl( string url )
+        private static string GetUrl(string url)
         {
-            if( !url.Contains( "?" ) )
+            if (!url.Contains("?"))
                 return $"{url}?";
-            if( url.EndsWith( "?" ) )
+            if (url.EndsWith("?"))
                 return url;
-            if( url.EndsWith( "&" ) )
+            if (url.EndsWith("&"))
                 return url;
             return $"{url}&";
         }

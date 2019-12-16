@@ -199,8 +199,13 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
                 return new Schema
                 {
                     Type = "object",
-                    Properties = new Dictionary<string, Schema> { {paramName,
-                       CreateSchema(valueType, referencedTypes) } }
+                    Properties = new Dictionary<string, Schema>
+                    {
+                    {
+                        paramName,
+                       CreateSchema(valueType, referencedTypes)
+                    }
+                    }
                 
                 };
             }

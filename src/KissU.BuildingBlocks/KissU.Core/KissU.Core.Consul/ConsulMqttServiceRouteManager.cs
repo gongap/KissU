@@ -234,7 +234,8 @@ namespace KissU.Core.Consul
             MqttServiceRoute result = null;
             var client = await GetConsulClient();
             var watcher = new NodeMonitorWatcher(GetConsulClient, _manager, path,
-                async (oldData, newData) => await NodeChange(oldData, newData),tmpPath=> {
+                async (oldData, newData) => await NodeChange(oldData, newData),tmpPath=>
+                {
                     var index = tmpPath.LastIndexOf("/");
                     return _serviceHeartbeatManager.ExistsWhitelist(tmpPath.Substring(index + 1));
                 }); 

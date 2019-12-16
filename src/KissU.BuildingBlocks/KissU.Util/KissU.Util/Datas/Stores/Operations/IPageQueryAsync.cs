@@ -16,24 +16,24 @@ namespace KissU.Util.Datas.Stores.Operations
         /// 查询
         /// </summary>
         /// <param name="query">查询对象</param>
-        Task<List<TEntity>> QueryAsync( IQueryBase<TEntity> query );
+        Task<List<TEntity>> QueryAsync(IQueryBase<TEntity> query);
 
         /// <summary>
         /// 查询，不跟踪实体
         /// </summary>
         /// <param name="query">查询对象</param>
-        Task<List<TEntity>> QueryAsNoTrackingAsync( IQueryBase<TEntity> query );
+        Task<List<TEntity>> QueryAsNoTrackingAsync(IQueryBase<TEntity> query);
 
         /// <summary>
         /// 分页查询
         /// </summary>
         /// <param name="query">查询对象</param>
-        Task<PagerList<TEntity>> PagerQueryAsync( IQueryBase<TEntity> query );
+        Task<PagerList<TEntity>> PagerQueryAsync(IQueryBase<TEntity> query);
 
         /// <summary>
         /// 分页查询，不跟踪实体
         /// </summary>
         /// <param name="query">查询对象</param>
-        Task<PagerList<TEntity>> PagerQueryAsNoTrackingAsync( IQueryBase<TEntity> query );
+        Task<PagerList<TEntity>> PagerQueryAsNoTrackingAsync(IQueryBase<TEntity> query);
     }
 }

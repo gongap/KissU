@@ -6,7 +6,7 @@ namespace KissU.Util.Datas.Queries
     /// <summary>
     /// 查询参数
     /// </summary>
-    [Model( "queryParam" )]
+    [Model("queryParam")]
     public class QueryParameter : Pager, IQueryParameter
     {
         /// <summary>

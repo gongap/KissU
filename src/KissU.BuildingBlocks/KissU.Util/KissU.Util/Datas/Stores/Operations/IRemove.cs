@@ -14,24 +14,24 @@ namespace KissU.Util.Datas.Stores.Operations
         /// 移除实体
         /// </summary>
         /// <param name="id">标识</param>
-        void Remove( object id );
+        void Remove(object id);
 
         /// <summary>
         /// 移除实体
         /// </summary>
         /// <param name="entity">实体</param>
-        void Remove( TEntity entity );
+        void Remove(TEntity entity);
 
         /// <summary>
         /// 移除实体集合
         /// </summary>
         /// <param name="ids">标识集合</param>
-        void Remove( IEnumerable<TKey> ids );
+        void Remove(IEnumerable<TKey> ids);
 
         /// <summary>
         /// 移除实体集合
         /// </summary>
         /// <param name="entities">实体集合</param>
-        void Remove( IEnumerable<TEntity> entities );
+        void Remove(IEnumerable<TEntity> entities);
     }
 }

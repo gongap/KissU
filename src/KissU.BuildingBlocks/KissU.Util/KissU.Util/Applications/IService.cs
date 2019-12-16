@@ -5,7 +5,7 @@ namespace KissU.Util.Applications
     /// <summary>
     /// 应用服务
     /// </summary>
-    public interface IService: IScopeDependency
+    public interface IService : IScopeDependency
     {
     }
 }

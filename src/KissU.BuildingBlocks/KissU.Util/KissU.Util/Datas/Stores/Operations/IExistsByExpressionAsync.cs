@@ -16,6 +16,6 @@ namespace KissU.Util.Datas.Stores.Operations
         /// 判断是否存在
         /// </summary>
         /// <param name="predicate">条件</param>
-        Task<bool> ExistsAsync( Expression<Func<TEntity, bool>> predicate );
+        Task<bool> ExistsAsync(Expression<Func<TEntity, bool>> predicate);
     }
 }

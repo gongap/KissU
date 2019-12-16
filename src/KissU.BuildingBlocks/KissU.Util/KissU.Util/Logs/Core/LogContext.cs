@@ -37,7 +37,7 @@ namespace KissU.Util.Logs.Core
         /// <summary>
         /// 上下文
         /// </summary>
-        public virtual IContext Context => _context ?? ( _context = ContextFactory.Create() );
+        public virtual IContext Context => _context ?? (_context = ContextFactory.Create());
 
         /// <summary>
         /// 日志标识
@@ -79,14 +79,14 @@ namespace KissU.Util.Logs.Core
         /// </summary>
         private LogContextInfo GetInfo()
         {
-            if ( _info != null )
+            if (_info != null)
                 return _info;
             var key = "Util.Logs.LogContext";
-            _info = Context.Get<LogContextInfo>( key );
-            if( _info != null )
+            _info = Context.Get<LogContextInfo>(key);
+            if (_info != null)
                 return _info;
             _info = CreateInfo();
-            Context.Add( key, _info );
+            Context.Add(key, _info);
             return _info;
         }
 
@@ -112,7 +112,7 @@ namespace KissU.Util.Logs.Core
         protected string GetTraceId()
         {
             var traceId = Context.TraceId;
-            return string.IsNullOrWhiteSpace( traceId ) ? Id.Guid() : traceId;
+            return string.IsNullOrWhiteSpace(traceId) ? Id.Guid() : traceId;
         }
 
         /// <summary>

@@ -9,7 +9,7 @@
         /// 处理验证错误
         /// </summary>
         /// <param name="results">验证结果集合</param>
-        public void Handle( ValidationResultCollection results )
+        public void Handle(ValidationResultCollection results)
         {
         }
     }

@@ -15,18 +15,18 @@ namespace KissU.Util.Exceptions
         /// 初始化应用程序异常
         /// </summary>
         /// <param name="message">错误消息</param>
-        public Warning( string message )
-            : this( message, null )
-            {
+        public Warning(string message)
+            : this(message, null)
+        {
         }
 
         /// <summary>
         /// 初始化应用程序异常
         /// </summary>
         /// <param name="exception">异常</param>
-        public Warning( Exception exception )
-            : this( null, null, exception )
-            {
+        public Warning(Exception exception)
+            : this(null, null, exception)
+        {
         }
 
         /// <summary>
@@ -34,9 +34,9 @@ namespace KissU.Util.Exceptions
         /// </summary>
         /// <param name="message">错误消息</param>
         /// <param name="code">错误码</param>
-        public Warning( string message, string code )
-            : this( message, code, null )
-            {
+        public Warning(string message, string code)
+            : this(message, code, null)
+        {
         }
 
         /// <summary>
@@ -45,9 +45,9 @@ namespace KissU.Util.Exceptions
         /// <param name="message">错误消息</param>
         /// <param name="code">错误码</param>
         /// <param name="exception">异常</param>
-        public Warning( string message, string code, Exception exception )
-            : base( message ?? "", exception )
-            {
+        public Warning(string message, string code, Exception exception)
+            : base(message ?? "", exception)
+        {
             Code = code;
         }
 
@@ -61,29 +61,29 @@ namespace KissU.Util.Exceptions
         /// </summary>
         public string GetMessage()
         {
-            return GetMessage( this );
+            return GetMessage(this);
         }
 
         /// <summary>
         /// 获取错误消息
         /// </summary>
-        public static string GetMessage( Exception ex )
+        public static string GetMessage(Exception ex)
         {
             var result = new StringBuilder();
-            var list = GetExceptions( ex );
-            foreach( var exception in list )
-                AppendMessage( result, exception );
-            return result.ToString().RemoveEnd( Environment.NewLine );
+            var list = GetExceptions(ex);
+            foreach (var exception in list)
+                AppendMessage(result, exception);
+            return result.ToString().RemoveEnd(Environment.NewLine);
         }
 
         /// <summary>
         /// 添加异常消息
         /// </summary>
-        private static void AppendMessage( StringBuilder result, Exception exception )
+        private static void AppendMessage(StringBuilder result, Exception exception)
         {
-            if( exception == null )
+            if (exception == null)
                 return;
-            result.AppendLine( exception.Message );
+            result.AppendLine(exception.Message);
         }
 
         /// <summary>
@@ -91,38 +91,38 @@ namespace KissU.Util.Exceptions
         /// </summary>
         public IList<Exception> GetExceptions()
         {
-            return GetExceptions( this );
+            return GetExceptions(this);
         }
 
         /// <summary>
         /// 获取异常列表
         /// </summary>
         /// <param name="ex">异常</param>
-        public static IList<Exception> GetExceptions( Exception ex )
+        public static IList<Exception> GetExceptions(Exception ex)
         {
             var result = new List<Exception>();
-            AddException( result, ex );
+            AddException(result, ex);
             return result;
         }
 
         /// <summary>
         /// 添加内部异常
         /// </summary>
-        private static void AddException( List<Exception> result, Exception exception )
+        private static void AddException(List<Exception> result, Exception exception)
         {
-            if( exception == null )
+            if (exception == null)
                 return;
-            result.Add( exception );
-            AddException( result, exception.InnerException );
+            result.Add(exception);
+            AddException(result, exception.InnerException);
         }
 
         /// <summary>
         /// 获取友情提示
         /// </summary>
         /// <param name="level">日志级别</param>
-        public string GetPrompt( LogLevel level )
+        public string GetPrompt(LogLevel level)
         {
-            if( level == LogLevel.Error )
+            if (level == LogLevel.Error)
                 return R.SystemError;
             return Message;
         }

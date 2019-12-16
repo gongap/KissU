@@ -17,9 +17,9 @@ namespace KissU.Util.Domains.Trees
         /// <param name="id">标识</param>
         /// <param name="path">路径</param>
         /// <param name="level">级数</param>
-        protected TreeEntityBase( Guid id, string path, int level )
-            : base( id, path, level )
-            {
+        protected TreeEntityBase(Guid id, string path, int level)
+            : base(id, path, level)
+        {
         }
     }
 
@@ -37,9 +37,9 @@ namespace KissU.Util.Domains.Trees
         /// <param name="id">标识</param>
         /// <param name="path">路径</param>
         /// <param name="level">级数</param>
-        protected TreeEntityBase( TKey id, string path, int level )
-            : base( id )
-            {
+        protected TreeEntityBase(TKey id, string path, int level)
+            : base(id)
+        {
             Path = path;
             Level = level;
         }
@@ -53,7 +53,7 @@ namespace KissU.Util.Domains.Trees
         /// 路径
         /// </summary>
         [Required]
-        public virtual string Path { get;private set; }
+        public virtual string Path { get; private set; }
 
         /// <summary>
         /// 层级
@@ -75,16 +75,16 @@ namespace KissU.Util.Domains.Trees
         /// </summary>
         public virtual void InitPath()
         {
-            InitPath( default(TEntity) );
+            InitPath(default);
         }
 
         /// <summary>
         /// 初始化路径
         /// </summary>
         /// <param name="parent">父节点</param>
-        public virtual void InitPath( TEntity parent )
+        public virtual void InitPath(TEntity parent)
         {
-            if( Equals( parent, null ) )
+            if (Equals(parent, null))
             {
                 Level = 1;
                 Path = $"{Id},";
@@ -98,14 +98,14 @@ namespace KissU.Util.Domains.Trees
         /// 从路径中获取所有上级节点编号
         /// </summary>
         /// <param name="excludeSelf">是否排除当前节点,默认排除自身</param>
-        public List<TKey> GetParentIdsFromPath( bool excludeSelf = true )
+        public List<TKey> GetParentIdsFromPath(bool excludeSelf = true)
         {
-            if( string.IsNullOrWhiteSpace( Path ) )
+            if (string.IsNullOrWhiteSpace(Path))
                 return new List<TKey>();
-            var result = Path.Split( ',' ).Where( id => !string.IsNullOrWhiteSpace( id ) && id != "," ).ToList();
-            if( excludeSelf )
-                result = result.Where( id => id.SafeString().ToLower() != Id.SafeString().ToLower() ).ToList();
-            return result.Select( Util.Helpers.Convert.To<TKey> ).ToList();
+            var result = Path.Split(',').Where(id => !string.IsNullOrWhiteSpace(id) && id != ",").ToList();
+            if (excludeSelf)
+                result = result.Where(id => id.SafeString().ToLower() != Id.SafeString().ToLower()).ToList();
+            return result.Select(Util.Helpers.Convert.To<TKey>).ToList();
         }
     }
 }

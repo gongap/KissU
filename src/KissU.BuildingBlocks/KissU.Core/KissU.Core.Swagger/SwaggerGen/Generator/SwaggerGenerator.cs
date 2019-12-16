@@ -576,7 +576,8 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
     MethodInfo methodInfo,
     ISchemaRegistry schemaRegistry)
         {
-            return  new Dictionary<string, Response> {
+            return  new Dictionary<string, Response>
+            {
                 { "200", CreateResponse(apiDescription,methodInfo, schemaRegistry) }
             };
         }

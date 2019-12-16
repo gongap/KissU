@@ -35,47 +35,47 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// <param name="raw">使用原始值</param>
         /// <param name="isSplit">是否用句点分割名称</param>
         /// <param name="isResolve">是否解析名称</param>
-        public SqlItem( string name, string prefix = null, string alias = null, bool raw = false, bool isSplit = true, bool isResolve = true )
+        public SqlItem(string name, string prefix = null, string alias = null, bool raw = false, bool isSplit = true, bool isResolve = true)
         {
-            if( string.IsNullOrWhiteSpace( name ) )
+            if (string.IsNullOrWhiteSpace(name))
                 return;
             _prefix = prefix;
             _alias = alias;
             Raw = raw;
-            if( raw )
+            if (raw)
             {
                 _name = name;
                 return;
             }
-            Resolve( name, isSplit, isResolve );
+            Resolve(name, isSplit, isResolve);
         }
 
         /// <summary>
         /// 解析名称
         /// </summary>
-        private void Resolve( string name, bool isSplit, bool isResolve )
+        private void Resolve(string name, bool isSplit, bool isResolve)
         {
             name = name.Trim();
-            if( isResolve == false )
+            if (isResolve == false)
             {
                 _name = name;
                 return;
             }
             var pattern = @"\s+[aA][sS]\s+";
-            name = Regex.Replace( name, pattern, " " );
-            if( name.Contains( "." ) )
+            name = Regex.Replace(name, pattern, " ");
+            if (name.Contains("."))
             {
                 pattern = @"\s+.\s+";
-                name = Regex.Replace( name, pattern, "." );
+                name = Regex.Replace(name, pattern, ".");
             }
-            var list = name.Split( ' ' ).Where( t => t.IsEmpty() == false ).ToList();
-            if( list.Count == 0 )
+            var list = name.Split(' ').Where(t => t.IsEmpty() == false).ToList();
+            if (list.Count == 0)
                 return;
-            if( list.Count == 2 )
+            if (list.Count == 2)
                 _alias = list[1].Trim();
-            if( isSplit )
+            if (isSplit)
             {
-                SplitName( list[0] );
+                SplitName(list[0]);
                 return;
             }
             _name = name;
@@ -84,14 +84,14 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// <summary>
         /// 分割名称
         /// </summary>
-        private void SplitName( string name )
+        private void SplitName(string name)
         {
-            var result = new NameItem( name );
-            if( string.IsNullOrWhiteSpace( result.Name ) == false )
+            var result = new NameItem(name);
+            if (string.IsNullOrWhiteSpace(result.Name) == false)
                 _name = result.Name;
-            if( string.IsNullOrWhiteSpace( result.Prefix ) == false )
+            if (string.IsNullOrWhiteSpace(result.Prefix) == false)
                 _prefix = result.Prefix;
-            if( string.IsNullOrWhiteSpace( result.DatabaseName ) == false )
+            if (string.IsNullOrWhiteSpace(result.DatabaseName) == false)
                 DatabaseName = result.DatabaseName;
         }
 
@@ -125,37 +125,37 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// </summary>
         public SqlItem Clone()
         {
-            return new SqlItem( Name, Prefix, Alias, Raw, false );
+            return new SqlItem(Name, Prefix, Alias, Raw, false);
         }
 
         /// <summary>
         /// 获取Sql
         /// </summary>
-        public virtual string ToSql( IDialect dialect = null, ITableDatabase tableDatabase = null )
+        public virtual string ToSql(IDialect dialect = null, ITableDatabase tableDatabase = null)
         {
-            if( string.IsNullOrWhiteSpace( Name ) )
+            if (string.IsNullOrWhiteSpace(Name))
                 return null;
-            if( Raw )
+            if (Raw)
                 return Name;
-            var column = GetColumn( dialect, tableDatabase );
-            var columnAlias = GetSafeName( dialect, Alias );
-            return dialect.GetColumn( column, columnAlias );
+            var column = GetColumn(dialect, tableDatabase);
+            var columnAlias = GetSafeName(dialect, Alias);
+            return dialect.GetColumn(column, columnAlias);
         }
 
         /// <summary>
         /// 获取列
         /// </summary>
-        protected string GetColumn( IDialect dialect, ITableDatabase tableDatabase )
+        protected string GetColumn(IDialect dialect, ITableDatabase tableDatabase)
         {
             var result = new StringBuilder();
             var database = DatabaseName;
-            if( string.IsNullOrWhiteSpace( DatabaseName ) && tableDatabase != null )
-                database = tableDatabase.GetDatabase( GetName() );
-            if( string.IsNullOrWhiteSpace( database ) == false )
-                result.Append( $"{GetSafeName( dialect, database )}." );
-            if( string.IsNullOrWhiteSpace( Prefix ) == false )
-                result.Append( $"{GetSafeName( dialect, Prefix )}." );
-            result.Append( GetSafeName( dialect, Name ) );
+            if (string.IsNullOrWhiteSpace(DatabaseName) && tableDatabase != null)
+                database = tableDatabase.GetDatabase(GetName());
+            if (string.IsNullOrWhiteSpace(database) == false)
+                result.Append($"{GetSafeName(dialect, database)}.");
+            if (string.IsNullOrWhiteSpace(Prefix) == false)
+                result.Append($"{GetSafeName(dialect, Prefix)}.");
+            result.Append(GetSafeName(dialect, Name));
             return result.ToString();
         }
 
@@ -164,7 +164,7 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// </summary>
         protected string GetName()
         {
-            if( string.IsNullOrWhiteSpace( Prefix ) )
+            if (string.IsNullOrWhiteSpace(Prefix))
                 return Name;
             return $"{Prefix}.{Name}";
         }
@@ -172,9 +172,9 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// <summary>
         /// 获取安全名称
         /// </summary>
-        protected string GetSafeName( IDialect dialect, string name )
+        protected string GetSafeName(IDialect dialect, string name)
         {
-            return dialect.GetSafeName( name );
+            return dialect.GetSafeName(name);
         }
     }
 }

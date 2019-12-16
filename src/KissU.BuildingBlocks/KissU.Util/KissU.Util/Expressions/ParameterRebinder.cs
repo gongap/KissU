@@ -17,7 +17,7 @@ namespace KissU.Util.Expressions
         /// 初始化参数重绑定操作
         /// </summary>
         /// <param name="map">参数字典</param>
-        public ParameterRebinder( Dictionary<ParameterExpression, ParameterExpression> map )
+        public ParameterRebinder(Dictionary<ParameterExpression, ParameterExpression> map)
         {
             _map = map ?? new Dictionary<ParameterExpression, ParameterExpression>();
         }
@@ -27,20 +27,20 @@ namespace KissU.Util.Expressions
         /// </summary>
         /// <param name="map">参数字典</param>
         /// <param name="exp">表达式</param>
-        public static Expression ReplaceParameters( Dictionary<ParameterExpression, ParameterExpression> map, Expression exp )
+        public static Expression ReplaceParameters(Dictionary<ParameterExpression, ParameterExpression> map, Expression exp)
         {
-            return new ParameterRebinder( map ).Visit( exp );
+            return new ParameterRebinder(map).Visit(exp);
         }
 
         /// <summary>
         /// 访问参数
         /// </summary>
         /// <param name="parameterExpression">参数</param>
-        protected override Expression VisitParameter( ParameterExpression parameterExpression )
+        protected override Expression VisitParameter(ParameterExpression parameterExpression)
         {
-            if( _map.TryGetValue( parameterExpression, out var replacement ) )
+            if (_map.TryGetValue(parameterExpression, out var replacement))
                 parameterExpression = replacement;
-            return base.VisitParameter( parameterExpression );
+            return base.VisitParameter(parameterExpression);
         }
     }
 }

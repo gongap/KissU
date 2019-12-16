@@ -12,9 +12,9 @@ namespace KissU.Util
         /// </summary>
         /// <param name="value">值</param>
         /// <param name="removeValue">要移除的值</param>
-        public static string RemoveEnd( this string value,string removeValue )
+        public static string RemoveEnd(this string value, string removeValue)
         {
-            return String.RemoveEnd( value,removeValue );
+            return String.RemoveEnd(value, removeValue);
         }
     }
 }

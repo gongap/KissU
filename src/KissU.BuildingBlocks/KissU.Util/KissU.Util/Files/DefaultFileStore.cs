@@ -20,7 +20,7 @@ namespace KissU.Util.Files
         /// 初始化本地文件存储服务
         /// </summary>
         /// <param name="pathGenerator">路径生成器</param>
-        public DefaultFileStore( IPathGenerator pathGenerator )
+        public DefaultFileStore(IPathGenerator pathGenerator)
         {
             _generator = pathGenerator;
         }
@@ -31,16 +31,16 @@ namespace KissU.Util.Files
         public async Task<string> SaveAsync()
         {
             var fileControl = Web.GetFile();
-            var path = _generator.Generate( fileControl.FileName );
-            var physicalPath = Common.GetWebRootPath( path );
-            var directory = Path.GetDirectoryName( physicalPath );
-            if( string.IsNullOrEmpty( directory ) )
-                throw new Warning( "上传失败" );
-            if( Directory.Exists( directory ) == false )
-                Directory.CreateDirectory( directory );
-            using( var stream = new FileStream( physicalPath, FileMode.Create ) )
+            var path = _generator.Generate(fileControl.FileName);
+            var physicalPath = Common.GetWebRootPath(path);
+            var directory = Path.GetDirectoryName(physicalPath);
+            if (string.IsNullOrEmpty(directory))
+                throw new Warning("上传失败");
+            if (Directory.Exists(directory) == false)
+                Directory.CreateDirectory(directory);
+            using (var stream = new FileStream(physicalPath, FileMode.Create))
             {
-                await fileControl.CopyToAsync( stream );
+                await fileControl.CopyToAsync(stream);
             }
             return path;
         }

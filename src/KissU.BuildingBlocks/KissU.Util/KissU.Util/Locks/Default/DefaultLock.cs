@@ -27,7 +27,7 @@ namespace KissU.Util.Locks.Default
         /// 初始化业务锁
         /// </summary>
         /// <param name="cache">缓存</param>
-        public DefaultLock( ICache cache )
+        public DefaultLock(ICache cache)
         {
             _cache = cache;
         }
@@ -37,13 +37,13 @@ namespace KissU.Util.Locks.Default
         /// </summary>
         /// <param name="key">锁定标识</param>
         /// <param name="expiration">锁定时间间隔</param>
-        public bool Lock( string key, TimeSpan? expiration = null )
+        public bool Lock(string key, TimeSpan? expiration = null)
         {
             _key = key;
             _expiration = expiration;
-            if ( _cache.Exists( key ) )
+            if (_cache.Exists(key))
                 return false;
-            return _cache.TryAdd( key, 1, expiration );
+            return _cache.TryAdd(key, 1, expiration);
         }
 
         /// <summary>
@@ -51,11 +51,11 @@ namespace KissU.Util.Locks.Default
         /// </summary>
         public void UnLock()
         {
-            if ( _expiration != null )
+            if (_expiration != null)
                 return;
-            if( _cache.Exists( _key ) == false )
+            if (_cache.Exists(_key) == false)
                 return;
-            _cache.Remove( _key );
+            _cache.Remove(_key);
         }
     }
 }

@@ -11,7 +11,8 @@ namespace KissU.Core.AutoMapper.AutoMapper
         public void Initialize()
         {
             var logger = ServiceLocator.GetService<ILogger<AutoMapperBootstrap>>();
-            Mapper.Initialize(config => {
+            Mapper.Initialize(config =>
+            {
                 if (AppConfig.Assemblies.Any())
                 {
                     foreach (var assembly in AppConfig.Assemblies)

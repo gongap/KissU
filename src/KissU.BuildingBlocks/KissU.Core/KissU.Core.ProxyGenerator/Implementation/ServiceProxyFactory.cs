@@ -55,8 +55,11 @@ namespace KissU.Core.ProxyGenerator.Implementation
             if (instance == null)
             {
                 var proxyType = _serviceTypes.Single(type.GetTypeInfo().IsAssignableFrom);
-                instance = proxyType.GetTypeInfo().GetConstructors().First().Invoke(new object[] { _remoteInvokeService, _typeConvertibleService, null,
-             _serviceProvider.GetService<CPlatformContainer>()});
+                instance = proxyType.GetTypeInfo().GetConstructors().First().Invoke(new object[]
+                {
+                    _remoteInvokeService, _typeConvertibleService, null,
+             _serviceProvider.GetService<CPlatformContainer>()
+                });
                 ServiceResolver.Current.Register(null, instance, type);
             }
             return instance;
@@ -69,8 +72,11 @@ namespace KissU.Core.ProxyGenerator.Implementation
             if (instance == null)
             {
                 var proxyType = _serviceTypes.Single(type.GetTypeInfo().IsAssignableFrom);
-                 instance = proxyType.GetTypeInfo().GetConstructors().First().Invoke(new object[] { _remoteInvokeService, _typeConvertibleService, key,
-             _serviceProvider.GetService<CPlatformContainer>()});
+                 instance = proxyType.GetTypeInfo().GetConstructors().First().Invoke(new object[]
+                {
+                    _remoteInvokeService, _typeConvertibleService, key,
+             _serviceProvider.GetService<CPlatformContainer>()
+                });
                 ServiceResolver.Current.Register(key, instance, type);
             }
             return instance;
@@ -84,8 +90,11 @@ namespace KissU.Core.ProxyGenerator.Implementation
             if (instance == null)
             {
                 var proxyType = _serviceTypes.Single(typeof(T).GetTypeInfo().IsAssignableFrom);
-                 instance = proxyType.GetTypeInfo().GetConstructors().First().Invoke(new object[] { _remoteInvokeService, _typeConvertibleService,key,
-                _serviceProvider.GetService<CPlatformContainer>() });
+                 instance = proxyType.GetTypeInfo().GetConstructors().First().Invoke(new object[]
+                {
+                    _remoteInvokeService, _typeConvertibleService,key,
+                _serviceProvider.GetService<CPlatformContainer>()
+                });
                 ServiceResolver.Current.Register(key, instance, instanceType);
             }
             return instance as T;

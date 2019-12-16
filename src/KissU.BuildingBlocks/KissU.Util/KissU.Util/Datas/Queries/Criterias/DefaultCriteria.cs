@@ -14,7 +14,7 @@ namespace KissU.Util.Datas.Queries.Criterias
         /// 初始化查询条件
         /// </summary>
         /// <param name="predicate">查询条件</param>
-        public DefaultCriteria( Expression<Func<TEntity, bool>> predicate )
+        public DefaultCriteria(Expression<Func<TEntity, bool>> predicate)
         {
             Predicate = predicate;
         }

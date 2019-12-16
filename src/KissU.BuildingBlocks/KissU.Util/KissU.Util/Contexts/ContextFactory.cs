@@ -12,7 +12,7 @@ namespace KissU.Util.Contexts
         /// </summary>
         public static IContext Create()
         {
-            if ( Web.HttpContext == null )
+            if (Web.HttpContext == null)
                 return NullContext.Instance;
             return new WebContext();
         }

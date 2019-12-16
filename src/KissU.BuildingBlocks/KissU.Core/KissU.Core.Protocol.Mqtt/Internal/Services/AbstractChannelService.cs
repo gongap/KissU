@@ -40,7 +40,10 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services
             _publishServiceId= serviceIdGenerator.GenerateServiceId(typeof(IMqttRomtePublishService).GetMethod("Publish"));
         }
 
-        public ConcurrentDictionary<string, MqttChannel> MqttChannels { get {
+        public ConcurrentDictionary<string, MqttChannel> MqttChannels
+        {
+            get
+        {
                 return _mqttChannels;
             }
         }
@@ -158,7 +161,8 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services
                 InvokeMessage = new RemoteInvokeMessage
                 {
                     ServiceId = _publishServiceId,
-                    Parameters = new Dictionary<string, object>() {
+                    Parameters = new Dictionary<string, object>()
+                    {
                            {"deviceId",deviceId},
                            { "message",willMessage}
                        }

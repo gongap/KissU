@@ -22,7 +22,8 @@ namespace KissU.Util.Schedulers.Quartz
         /// <summary>
         /// 启动
         /// </summary>
-        public async Task StartAsync() {
+        public async Task StartAsync()
+        {
             _scheduler = await GetScheduler();
             if( _scheduler.IsStarted )
                 return;
@@ -32,7 +33,8 @@ namespace KissU.Util.Schedulers.Quartz
         /// <summary>
         /// 获取调度器
         /// </summary>
-        private async Task<Qz.IScheduler> GetScheduler() {
+        private async Task<Qz.IScheduler> GetScheduler()
+        {
             if( _scheduler != null )
                 return _scheduler;
             var factory = new StdSchedulerFactory();
@@ -42,7 +44,8 @@ namespace KissU.Util.Schedulers.Quartz
         /// <summary>
         /// 暂停
         /// </summary>
-        public async Task PauseAsync() {
+        public async Task PauseAsync()
+        {
             if( _scheduler == null )
                 return;
             await _scheduler.PauseAll();
@@ -51,7 +54,8 @@ namespace KissU.Util.Schedulers.Quartz
         /// <summary>
         /// 恢复
         /// </summary>
-        public async Task ResumeAsync() {
+        public async Task ResumeAsync()
+        {
             if( _scheduler == null )
                 return;
             await _scheduler.ResumeAll();
@@ -60,7 +64,8 @@ namespace KissU.Util.Schedulers.Quartz
         /// <summary>
         /// 停止
         /// </summary>
-        public async Task StopAsync() {
+        public async Task StopAsync()
+        {
             if( _scheduler == null )
                 return;
             if( _scheduler.IsShutdown )
@@ -72,7 +77,8 @@ namespace KissU.Util.Schedulers.Quartz
         /// 扫描并添加作业
         /// </summary>
         /// <param name="assemblies">程序集列表</param>
-        public async Task ScanJobsAsync( params Assembly[] assemblies ) {
+        public async Task ScanJobsAsync( params Assembly[] assemblies )
+        {
             assemblies = GetAssemblies( assemblies );
             var jobs = Reflection.GetInstancesByInterface<IJob>( assemblies );
             if ( jobs == null )
@@ -84,7 +90,8 @@ namespace KissU.Util.Schedulers.Quartz
         /// <summary>
         /// 获取程序集列表
         /// </summary>
-        private Assembly[] GetAssemblies( Assembly[] assemblies ) {
+        private Assembly[] GetAssemblies( Assembly[] assemblies )
+        {
             if ( assemblies != null && assemblies.Length > 0 )
                 return assemblies;
             var finder = Ioc.Create<IFind>();
@@ -94,7 +101,8 @@ namespace KissU.Util.Schedulers.Quartz
         /// <summary>
         /// 添加作业
         /// </summary>
-        public async Task AddJobAsync<TJob>() where TJob : IJob, new() {
+        public async Task AddJobAsync<TJob>() where TJob : IJob, new()
+        {
             await AddJobAsync( new TJob() );
         }
 
@@ -102,7 +110,8 @@ namespace KissU.Util.Schedulers.Quartz
         /// 添加作业
         /// </summary>
         /// <param name="job">作业</param>
-        public async Task AddJobAsync( IJob job ) {
+        public async Task AddJobAsync( IJob job )
+        {
             if( !( job is JobBase quartzJob ) )
                 throw new InvalidOperationException( "Quartz调度器必须从Util.Schedulers.Quartz.JobBase派生" );
             var jobDetail = CreateJob( quartzJob );
@@ -113,7 +122,8 @@ namespace KissU.Util.Schedulers.Quartz
         /// <summary>
         /// 创建作业
         /// </summary>
-        private IJobDetail CreateJob( JobBase job ) {
+        private IJobDetail CreateJob( JobBase job )
+        {
             return JobBuilder.Create( job.GetType() )
                 .WithIdentity( job.GetJobName(), job.GetGroupName() )
                 .Build();
@@ -122,7 +132,8 @@ namespace KissU.Util.Schedulers.Quartz
         /// <summary>
         /// 创建触发器
         /// </summary>
-        private ITrigger CreateTrigger( JobBase job ) {
+        private ITrigger CreateTrigger( JobBase job )
+        {
             var builder = TriggerBuilder.Create()
                 .WithIdentity( job.GetTriggerName(), job.GetGroupName() )
                 .WithSimpleSchedule( scheduleBuilder => Schedule( scheduleBuilder, job ) );
@@ -135,7 +146,8 @@ namespace KissU.Util.Schedulers.Quartz
         /// <summary>
         /// 设置调度策略
         /// </summary>
-        private void Schedule( SimpleScheduleBuilder builder, JobBase job ) {
+        private void Schedule( SimpleScheduleBuilder builder, JobBase job )
+        {
             SetRepeatCount( builder, job );
             if( job.GetInterval() != null )
                 builder.WithInterval( job.GetInterval().SafeValue() );
@@ -150,8 +162,10 @@ namespace KissU.Util.Schedulers.Quartz
         /// <summary>
         /// 设置重复执行次数
         /// </summary>
-        private void SetRepeatCount( SimpleScheduleBuilder builder, JobBase job ) {
-            if ( job.GetRepeatCount() == null ) {
+        private void SetRepeatCount( SimpleScheduleBuilder builder, JobBase job )
+        {
+            if ( job.GetRepeatCount() == null )
+            {
                 builder.RepeatForever();
                 return;
             }
@@ -161,8 +175,10 @@ namespace KissU.Util.Schedulers.Quartz
         /// <summary>
         /// 设置作业开始时间
         /// </summary>
-        private void SetStartTime( TriggerBuilder builder, JobBase job ) {
-            if ( job.GetStartTime() == null ) {
+        private void SetStartTime( TriggerBuilder builder, JobBase job )
+        {
+            if ( job.GetStartTime() == null )
+            {
                 builder.StartNow();
                 return;
             }
@@ -172,7 +188,8 @@ namespace KissU.Util.Schedulers.Quartz
         /// <summary>
         /// 设置作业结束时间
         /// </summary>
-        private void SetEndTime( TriggerBuilder builder, JobBase job ) {
+        private void SetEndTime( TriggerBuilder builder, JobBase job )
+        {
             if( job.GetEndTime() == null )
                 return;
             builder.EndAt( job.GetEndTime().SafeValue() );
@@ -181,7 +198,8 @@ namespace KissU.Util.Schedulers.Quartz
         /// <summary>
         /// 设置Cron表达式
         /// </summary>
-        private void SetCron( TriggerBuilder builder, JobBase job ) {
+        private void SetCron( TriggerBuilder builder, JobBase job )
+        {
             if( job.GetCron() == null )
                 return;
             builder.WithCronSchedule( job.GetCron() );
@@ -193,7 +211,8 @@ namespace KissU.Util.Schedulers.Quartz
         /// <typeparam name="TJob">作业类型</typeparam>
         /// <param name="configureJob">作业配置操作</param>
         /// <param name="configureTrigger">触发器配置操作</param>
-        public async Task AddJobAsync<TJob>( Action<JobBuilder> configureJob, Action<TriggerBuilder> configureTrigger ) where TJob : Qz.IScheduler {
+        public async Task AddJobAsync<TJob>( Action<JobBuilder> configureJob, Action<TriggerBuilder> configureTrigger ) where TJob : Qz.IScheduler
+        {
             var jobBuilder = JobBuilder.Create( typeof( TJob ) );
             configureJob( jobBuilder );
             var job = jobBuilder.Build();
@@ -208,7 +227,8 @@ namespace KissU.Util.Schedulers.Quartz
         /// </summary>
         /// <param name="job">作业</param>
         /// <param name="trigger">触发器</param>
-        public async Task AddJobAsync( IJobDetail job, ITrigger trigger ) {
+        public async Task AddJobAsync( IJobDetail job, ITrigger trigger )
+        {
             _scheduler = await GetScheduler();
             await _scheduler.ScheduleJob( job, trigger );
         }

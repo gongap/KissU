@@ -60,7 +60,8 @@ namespace KissU.Core.Stage
                 ApiGateWay.AppConfig.AuthorizationRoutePath = apiConfig.AuthorizationRoutePath;
                 ApiGateWay.AppConfig.TokenEndpointPath = apiConfig.TokenEndpointPath;
             }
-            context.Services.AddMvc().AddJsonOptions(options => {
+            context.Services.AddMvc().AddJsonOptions(options =>
+            {
                 options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
                 if (AppConfig.Options.IsCamelCaseResolver)
                 {

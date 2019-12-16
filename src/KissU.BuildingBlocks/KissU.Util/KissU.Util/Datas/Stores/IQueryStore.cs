@@ -11,7 +11,7 @@ namespace KissU.Util.Datas.Stores
     /// <typeparam name="TEntity">对象类型</typeparam>
     public interface IQueryStore<TEntity> : IQueryStore<TEntity, Guid>
         where TEntity : class, IKey<Guid>
-        {
+    {
     }
 
     /// <summary>
@@ -21,29 +21,29 @@ namespace KissU.Util.Datas.Stores
     /// <typeparam name="TKey">对象标识类型</typeparam>
     public interface IQueryStore<TEntity, in TKey> : IScopeDependency,
         IFindQueryable<TEntity, TKey>,
-        IFindById<TEntity, TKey>, 
+        IFindById<TEntity, TKey>,
         IFindByIdAsync<TEntity, TKey>,
-        IFindByIds<TEntity, TKey>, 
+        IFindByIds<TEntity, TKey>,
         IFindByIdsAsync<TEntity, TKey>,
-        IFindByIdNoTracking<TEntity, TKey>, 
+        IFindByIdNoTracking<TEntity, TKey>,
         IFindByIdNoTrackingAsync<TEntity, TKey>,
-        IFindByIdsNoTracking<TEntity, TKey>, 
+        IFindByIdsNoTracking<TEntity, TKey>,
         IFindByIdsNoTrackingAsync<TEntity, TKey>,
-        ISingle<TEntity, TKey>, 
+        ISingle<TEntity, TKey>,
         ISingleAsync<TEntity, TKey>,
-        IFindAll<TEntity, TKey>, 
+        IFindAll<TEntity, TKey>,
         IFindAllAsync<TEntity, TKey>,
-        IFindAllNoTracking<TEntity, TKey>, 
+        IFindAllNoTracking<TEntity, TKey>,
         IFindAllNoTrackingAsync<TEntity, TKey>,
-        IExists<TEntity, TKey>, 
+        IExists<TEntity, TKey>,
         IExistsAsync<TEntity, TKey>,
-        IExistsByExpression<TEntity, TKey>, 
+        IExistsByExpression<TEntity, TKey>,
         IExistsByExpressionAsync<TEntity, TKey>,
-        ICount<TEntity, TKey>, 
+        ICount<TEntity, TKey>,
         ICountAsync<TEntity, TKey>,
-        IPageQuery<TEntity, TKey>, 
+        IPageQuery<TEntity, TKey>,
         IPageQueryAsync<TEntity, TKey>
         where TEntity : class, IKey<TKey>
-        {
+    {
     }
 }

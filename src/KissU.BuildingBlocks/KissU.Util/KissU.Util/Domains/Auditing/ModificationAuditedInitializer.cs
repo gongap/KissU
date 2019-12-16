@@ -28,7 +28,7 @@ namespace KissU.Util.Domains.Auditing
         /// <param name="entity">实体</param>
         /// <param name="userId">用户标识</param>
         /// <param name="userName">用户名称</param>
-        private ModificationAuditedInitializer( object entity, string userId, string userName )
+        private ModificationAuditedInitializer(object entity, string userId, string userName)
         {
             _entity = entity;
             _userId = userId;
@@ -41,9 +41,9 @@ namespace KissU.Util.Domains.Auditing
         /// <param name="entity">实体</param>
         /// <param name="userId">用户标识</param>
         /// <param name="userName">用户名称</param>
-        public static void Init( object entity, string userId, string userName )
+        public static void Init(object entity, string userId, string userName)
         {
-            new ModificationAuditedInitializer( entity, userId, userName ).Init();
+            new ModificationAuditedInitializer(entity, userId, userName).Init();
         }
 
         /// <summary>
@@ -51,43 +51,43 @@ namespace KissU.Util.Domains.Auditing
         /// </summary>
         public void Init()
         {
-            if ( _entity == null )
+            if (_entity == null)
                 return;
             InitLastModificationTime();
             InitModifier();
-            if ( string.IsNullOrWhiteSpace( _userId ) )
+            if (string.IsNullOrWhiteSpace(_userId))
                 return;
-            if( _entity is IModificationAudited<Guid>)
+            if (_entity is IModificationAudited<Guid>)
             {
                 InitGuid();
                 return;
             }
-            if ( _entity is IModificationAudited<Guid?> )
+            if (_entity is IModificationAudited<Guid?>)
             {
                 InitNullableGuid();
                 return;
             }
-            if ( _entity is IModificationAudited<int> )
+            if (_entity is IModificationAudited<int>)
             {
                 InitInt();
                 return;
             }
-            if ( _entity is IModificationAudited<int?> )
+            if (_entity is IModificationAudited<int?>)
             {
                 InitNullableInt();
                 return;
             }
-            if ( _entity is IModificationAudited<string> )
+            if (_entity is IModificationAudited<string>)
             {
                 InitString();
                 return;
             }
-            if ( _entity is IModificationAudited<long> )
+            if (_entity is IModificationAudited<long>)
             {
                 InitLong();
                 return;
             }
-            if ( _entity is IModificationAudited<long?> )
+            if (_entity is IModificationAudited<long?>)
             {
                 InitNullableLong();
                 return;
@@ -99,7 +99,7 @@ namespace KissU.Util.Domains.Auditing
         /// </summary>
         private void InitLastModificationTime()
         {
-            if( _entity is IModificationTime result )
+            if (_entity is IModificationTime result)
                 result.LastModificationTime = DateTime.Now;
         }
 
@@ -108,9 +108,9 @@ namespace KissU.Util.Domains.Auditing
         /// </summary>
         private void InitModifier()
         {
-            if ( string.IsNullOrWhiteSpace( _userName ) )
+            if (string.IsNullOrWhiteSpace(_userName))
                 return;
-            if( _entity is IModifier result )
+            if (_entity is IModifier result)
                 result.Modifier = _userName;
         }
 

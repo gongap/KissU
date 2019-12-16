@@ -10,7 +10,7 @@
         /// </summary>
         /// <param name="name">操作名称</param>
         /// <param name="builder">Sql生成器</param>
-        public BuilderItem( string name, ISqlBuilder builder )
+        public BuilderItem(string name, ISqlBuilder builder)
         {
             Name = name;
             Builder = builder;

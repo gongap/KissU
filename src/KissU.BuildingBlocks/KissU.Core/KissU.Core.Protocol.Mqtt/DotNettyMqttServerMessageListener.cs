@@ -176,7 +176,8 @@ namespace KissU.Core.Protocol.Mqtt
                 base.ChannelInactive(context);
             }
 
-            public override void ExceptionCaught(IChannelHandlerContext context, Exception exception) {
+            public override void ExceptionCaught(IChannelHandlerContext context, Exception exception)
+            {
                 _readAction.Invoke(context,PacketType.DISCONNECT,DisconnectPacket.Instance);
                 this.SetException(exception);
             }

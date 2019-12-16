@@ -27,12 +27,12 @@ namespace KissU.Util.Datas.Stores.Operations
         /// 查询
         /// </summary>
         /// <param name="criteria">条件</param>
-        IQueryable<TEntity> Find( ICriteria<TEntity> criteria );
+        IQueryable<TEntity> Find(ICriteria<TEntity> criteria);
 
         /// <summary>
         /// 查询
         /// </summary>
         /// <param name="predicate">条件</param>
-        IQueryable<TEntity> Find( Expression<Func<TEntity, bool>> predicate );
+        IQueryable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
     }
 }

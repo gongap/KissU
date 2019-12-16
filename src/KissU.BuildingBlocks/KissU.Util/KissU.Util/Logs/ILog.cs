@@ -13,7 +13,7 @@ namespace KissU.Util.Logs
         /// </summary>
         /// <typeparam name="TContent">日志内容类型</typeparam>
         /// <param name="action">设置内容操作</param>
-        ILog Set<TContent>( Action<TContent> action ) where TContent : ILogContent;
+        ILog Set<TContent>(Action<TContent> action) where TContent : ILogContent;
 
         /// <summary>
         /// 调试级别是否启用
@@ -34,7 +34,7 @@ namespace KissU.Util.Logs
         /// 跟踪
         /// </summary>
         /// <param name="message">日志消息</param>
-        void Trace( string message );
+        void Trace(string message);
 
         /// <summary>
         /// 调试
@@ -45,7 +45,7 @@ namespace KissU.Util.Logs
         /// 调试
         /// </summary>
         /// <param name="message">日志消息</param>
-        void Debug( string message );
+        void Debug(string message);
 
         /// <summary>
         /// 信息
@@ -56,7 +56,7 @@ namespace KissU.Util.Logs
         /// 信息
         /// </summary>
         /// <param name="message">日志消息</param>
-        void Info( string message );
+        void Info(string message);
 
         /// <summary>
         /// 警告
@@ -67,7 +67,7 @@ namespace KissU.Util.Logs
         /// 警告
         /// </summary>
         /// <param name="message">日志消息</param>
-        void Warn( string message );
+        void Warn(string message);
 
         /// <summary>
         /// 错误
@@ -78,7 +78,7 @@ namespace KissU.Util.Logs
         /// 错误
         /// </summary>
         /// <param name="message">日志消息</param>
-        void Error( string message );
+        void Error(string message);
 
         /// <summary>
         /// 致命错误
@@ -89,6 +89,6 @@ namespace KissU.Util.Logs
         /// 致命错误
         /// </summary>
         /// <param name="message">日志消息</param>
-        void Fatal( string message );
+        void Fatal(string message);
     }
 }

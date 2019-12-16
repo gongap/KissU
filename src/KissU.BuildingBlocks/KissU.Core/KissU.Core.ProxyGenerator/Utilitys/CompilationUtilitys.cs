@@ -107,7 +107,8 @@ namespace KissU.Core.ProxyGenerator.Utilitys
                 .WithArgumentList(
                     SyntaxFactory.AttributeArgumentList(
                         SyntaxFactory.SeparatedList<AttributeArgumentSyntax>(
-                            new SyntaxNodeOrToken[]{
+                            new SyntaxNodeOrToken[]
+                            {
                                 SyntaxFactory.AttributeArgument(
                                     SyntaxFactory.LiteralExpression(
                                         SyntaxKind.StringLiteralExpression,
@@ -119,7 +120,8 @@ namespace KissU.Core.ProxyGenerator.Utilitys
                                         SyntaxFactory.Literal(".NET Framework 4.5")))
                                 .WithNameEquals(
                                     SyntaxFactory.NameEquals(
-                                        SyntaxFactory.IdentifierName("FrameworkDisplayName")))})))))
+                                        SyntaxFactory.IdentifierName("FrameworkDisplayName")))
+                            })))))
         .WithTarget(
             SyntaxFactory.AttributeTargetSpecifier(
                 SyntaxFactory.Token(SyntaxKind.AssemblyKeyword))),

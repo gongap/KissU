@@ -12,21 +12,21 @@ namespace KissU.Util.Datas.Sql.Builders
         /// 复制Group By子句
         /// </summary>
         /// <param name="register">实体别名注册器</param>
-        IGroupByClause Clone( IEntityAliasRegister register );
+        IGroupByClause Clone(IEntityAliasRegister register);
 
         /// <summary>
         /// 分组
         /// </summary>
         /// <param name="columns">分组字段</param>
         /// <param name="having">分组条件</param>
-        void GroupBy( string columns, string having = null );
+        void GroupBy(string columns, string having = null);
 
         /// <summary>
         /// 分组
         /// </summary>
         /// <typeparam name="TEntity">实体类型</typeparam>
         /// <param name="columns">分组字段</param>
-        void GroupBy<TEntity>( params Expression<Func<TEntity, object>>[] columns );
+        void GroupBy<TEntity>(params Expression<Func<TEntity, object>>[] columns);
 
         /// <summary>
         /// 分组
@@ -34,13 +34,13 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <typeparam name="TEntity">实体类型</typeparam>
         /// <param name="column">分组字段</param>
         /// <param name="having">分组条件</param>
-        void GroupBy<TEntity>( Expression<Func<TEntity, object>> column, string having = null );
+        void GroupBy<TEntity>(Expression<Func<TEntity, object>> column, string having = null);
 
         /// <summary>
         /// 添加到GroupBy子句
         /// </summary>
         /// <param name="sql">Sql语句</param>
-        void AppendSql( string sql );
+        void AppendSql(string sql);
 
         /// <summary>
         /// 是否分组

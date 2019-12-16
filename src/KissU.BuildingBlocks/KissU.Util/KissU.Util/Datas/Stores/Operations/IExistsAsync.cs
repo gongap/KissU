@@ -14,6 +14,6 @@ namespace KissU.Util.Datas.Stores.Operations
         /// 判断是否存在
         /// </summary>
         /// <param name="ids">标识列表</param>
-        Task<bool> ExistsAsync( params TKey[] ids );
+        Task<bool> ExistsAsync(params TKey[] ids);
     }
 }

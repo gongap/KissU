@@ -20,7 +20,7 @@
         /// </summary>
         /// <param name="key">私钥</param>
         /// <param name="publicKey">公钥</param>
-        public SignKey( string key, string publicKey = "" )
+        public SignKey(string key, string publicKey = "")
         {
             _key = key;
             _publicKey = publicKey;

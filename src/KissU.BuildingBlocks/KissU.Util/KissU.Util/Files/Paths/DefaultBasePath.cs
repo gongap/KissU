@@ -14,7 +14,7 @@
         /// 初始化基路径
         /// </summary>
         /// <param name="path">基路径</param>
-        public DefaultBasePath( string path )
+        public DefaultBasePath(string path)
         {
             _path = path;
         }

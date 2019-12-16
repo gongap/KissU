@@ -17,15 +17,15 @@ namespace KissU.Util.Datas.Queries.Criterias
         /// <param name="min">最小值</param>
         /// <param name="max">最大值</param>
         /// <param name="boundary">包含边界</param>
-        public DoubleSegmentCriteria( Expression<Func<TEntity, TProperty>> propertyExpression, double? min, double? max, Boundary boundary = Boundary.Both )
-            : base( propertyExpression, min, max, boundary )
-            {
+        public DoubleSegmentCriteria(Expression<Func<TEntity, TProperty>> propertyExpression, double? min, double? max, Boundary boundary = Boundary.Both)
+            : base(propertyExpression, min, max, boundary)
+        {
         }
 
         /// <summary>
         /// 最小值是否大于最大值
         /// </summary>
-        protected override bool IsMinGreaterMax( double? min, double? max )
+        protected override bool IsMinGreaterMax(double? min, double? max)
         {
             return min > max;
         }

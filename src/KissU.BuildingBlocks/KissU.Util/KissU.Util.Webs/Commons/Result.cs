@@ -44,8 +44,8 @@ namespace KissU.Util.Webs.Commons
             this.Value = new
             {
                 Code = Code.Value(),
-                Message = Message,
-                Data = Data
+                Message,
+                Data
             };
             return base.ExecuteResultAsync(context);
         }

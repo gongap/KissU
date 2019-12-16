@@ -17,6 +17,6 @@ namespace KissU.Util.Dependency
         /// 创建对象
         /// </summary>
         /// <param name="type">对象类型</param>
-        object Create( Type type );
+        object Create(Type type);
     }
 }

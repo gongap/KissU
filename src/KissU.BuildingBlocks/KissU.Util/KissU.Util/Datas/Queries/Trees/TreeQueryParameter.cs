@@ -49,7 +49,7 @@ namespace KissU.Util.Datas.Queries.Trees
         /// <summary>
         /// 启用
         /// </summary>
-        [Display( Name = "启用" )]
+        [Display(Name = "启用")]
         public bool? Enabled { get; set; }
 
         /// <summary>
@@ -57,18 +57,18 @@ namespace KissU.Util.Datas.Queries.Trees
         /// </summary>
         public virtual bool IsSearch()
         {
-            var items = Reflection.GetPublicProperties( this );
-            return items.Any( t => IsSearchProperty( t.Text, t.Value ) );
+            var items = Reflection.GetPublicProperties(this);
+            return items.Any(t => IsSearchProperty(t.Text, t.Value));
         }
 
         /// <summary>
         /// 是否搜索属性
         /// </summary>
-        protected virtual bool IsSearchProperty( string name, object value )
+        protected virtual bool IsSearchProperty(string name, object value)
         {
-            if ( value.SafeString().IsEmpty() )
+            if (value.SafeString().IsEmpty())
                 return false;
-            switch ( name.SafeString().ToLower() )
+            switch (name.SafeString().ToLower())
             {
                 case "order":
                 case "pagesize":

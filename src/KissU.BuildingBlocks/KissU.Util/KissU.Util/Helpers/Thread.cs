@@ -13,23 +13,23 @@ namespace KissU.Util.Helpers
         /// 执行多个操作，等待所有操作完成
         /// </summary>
         /// <param name="actions">操作集合</param>
-        public static void WaitAll( params Action[] actions )
+        public static void WaitAll(params Action[] actions)
         {
-            if( actions == null )
+            if (actions == null)
                 return;
             List<Task> tasks = new List<Task>();
-            foreach( var action in actions )
-                tasks.Add( Task.Factory.StartNew( action, TaskCreationOptions.None ) );
-            Task.WaitAll( tasks.ToArray() );
+            foreach (var action in actions)
+                tasks.Add(Task.Factory.StartNew(action, TaskCreationOptions.None));
+            Task.WaitAll(tasks.ToArray());
         }
 
         /// <summary>
         /// 并发执行多个操作
         /// </summary>
         /// <param name="actions">操作集合</param>
-        public static void ParallelExecute( params Action[] actions )
+        public static void ParallelExecute(params Action[] actions)
         {
-            Parallel.Invoke( actions );
+            Parallel.Invoke(actions);
         }
 
         /// <summary>
@@ -38,14 +38,14 @@ namespace KissU.Util.Helpers
         /// <param name="action">操作</param>
         /// <param name="count">执行次数</param>
         /// <param name="options">并发执行配置</param>
-        public static void ParallelExecute( Action action, int count = 1,ParallelOptions options = null )
+        public static void ParallelExecute(Action action, int count = 1, ParallelOptions options = null)
         {
-            if ( options == null )
+            if (options == null)
             {
-                Parallel.For( 0, count, i => action() );
+                Parallel.For(0, count, i => action());
                 return;
             }
-            Parallel.For( 0, count, options, i => action() );
+            Parallel.For(0, count, options, i => action());
         }
     }
 }

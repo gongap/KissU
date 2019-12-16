@@ -9,12 +9,12 @@
         /// 是否数字
         /// </summary>
         /// <param name="input">输入值</param>        
-        public static bool IsNumber( string input )
+        public static bool IsNumber(string input)
         {
-            if( input.IsEmpty() )
+            if (input.IsEmpty())
                 return false;
             const string pattern = @"^(-?\d*)(\.\d+)?$";
-            return Regex.IsMatch( input, pattern );
+            return Regex.IsMatch(input, pattern);
         }
     }
 }

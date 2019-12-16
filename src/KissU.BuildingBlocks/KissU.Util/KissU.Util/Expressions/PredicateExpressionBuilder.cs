@@ -42,9 +42,9 @@ namespace KissU.Util.Expressions
         /// <param name="property">属性表达式</param>
         /// <param name="operator">运算符</param>
         /// <param name="value">值</param>
-        public void Append<TProperty>( Expression<Func<TEntity, TProperty>> property, Operator @operator, object value )
+        public void Append<TProperty>(Expression<Func<TEntity, TProperty>> property, Operator @operator, object value)
         {
-            _result = _result.And( _parameter.Property( Lambda.GetMember( property ) ).Operation( @operator, value ) );
+            _result = _result.And(_parameter.Property(Lambda.GetMember(property)).Operation(@operator, value));
         }
 
         /// <summary>
@@ -53,9 +53,9 @@ namespace KissU.Util.Expressions
         /// <param name="property">属性表达式</param>
         /// <param name="operator">运算符</param>
         /// <param name="value">值</param>
-        public void Append<TProperty>( Expression<Func<TEntity, TProperty>> property, Operator @operator, Expression value )
+        public void Append<TProperty>(Expression<Func<TEntity, TProperty>> property, Operator @operator, Expression value)
         {
-            _result = _result.And( _parameter.Property( Lambda.GetMember( property ) ).Operation( @operator, value ) );
+            _result = _result.And(_parameter.Property(Lambda.GetMember(property)).Operation(@operator, value));
         }
 
         /// <summary>
@@ -64,9 +64,9 @@ namespace KissU.Util.Expressions
         /// <param name="property">属性名</param>
         /// <param name="operator">运算符</param>
         /// <param name="value">值</param>
-        public void Append( string property, Operator @operator, object value )
+        public void Append(string property, Operator @operator, object value)
         {
-            _result = _result.And( _parameter.Property( property ).Operation( @operator, value ) );
+            _result = _result.And(_parameter.Property(property).Operation(@operator, value));
         }
 
         /// <summary>
@@ -75,9 +75,9 @@ namespace KissU.Util.Expressions
         /// <param name="property">属性名</param>
         /// <param name="operator">运算符</param>
         /// <param name="value">值</param>
-        public void Append( string property, Operator @operator, Expression value )
+        public void Append(string property, Operator @operator, Expression value)
         {
-            _result = _result.And( _parameter.Property( property ).Operation( @operator, value ) );
+            _result = _result.And(_parameter.Property(property).Operation(@operator, value));
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace KissU.Util.Expressions
         /// </summary>
         public Expression<Func<TEntity, bool>> ToLambda()
         {
-            return _result.ToLambda<Func<TEntity, bool>>( _parameter );
+            return _result.ToLambda<Func<TEntity, bool>>(_parameter);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace KissU.Util.Domains
         /// <summary>
         /// 相等性比较
         /// </summary>
-        public bool Equals( TValueObject other )
+        public bool Equals(TValueObject other)
         {
             return this == other;
         }
@@ -21,30 +21,30 @@ namespace KissU.Util.Domains
         /// <summary>
         /// 相等性比较
         /// </summary>
-        public override bool Equals( object other )
+        public override bool Equals(object other)
         {
-            return Equals( other as TValueObject );
+            return Equals(other as TValueObject);
         }
 
         /// <summary>
         /// 相等性比较
         /// </summary>
-        public static bool operator ==( ValueObjectBase<TValueObject> left, ValueObjectBase<TValueObject> right )
+        public static bool operator ==(ValueObjectBase<TValueObject> left, ValueObjectBase<TValueObject> right)
         {
-            if( (object)left == null && (object)right == null )
+            if ((object)left == null && (object)right == null)
                 return true;
-            if( !( left is TValueObject ) || !( right is TValueObject ) )
+            if (!(left is TValueObject) || !(right is TValueObject))
                 return false;
             var properties = left.GetType().GetTypeInfo().GetProperties();
-            return properties.All( property => property.GetValue( left ) == property.GetValue( right ) );
+            return properties.All(property => property.GetValue(left) == property.GetValue(right));
         }
 
         /// <summary>
         /// 不相等比较
         /// </summary>
-        public static bool operator !=( ValueObjectBase<TValueObject> left, ValueObjectBase<TValueObject> right )
+        public static bool operator !=(ValueObjectBase<TValueObject> left, ValueObjectBase<TValueObject> right)
         {
-            return !( left == right );
+            return !(left == right);
         }
 
         /// <summary>
@@ -53,9 +53,9 @@ namespace KissU.Util.Domains
         public override int GetHashCode()
         {
             var properties = GetType().GetTypeInfo().GetProperties();
-            return properties.Select( property => property.GetValue( this ) )
-                    .Where( value => value != null )
-                    .Aggregate( 0, ( current, value ) => current ^ value.GetHashCode() );
+            return properties.Select(property => property.GetValue(this))
+                    .Where(value => value != null)
+                    .Aggregate(0, (current, value) => current ^ value.GetHashCode());
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace KissU.Util.Domains
         /// </summary>
         public virtual TValueObject Clone()
         {
-            return Util.Helpers.Convert.To<TValueObject>( MemberwiseClone() );
+            return Util.Helpers.Convert.To<TValueObject>(MemberwiseClone());
         }
     }
 }

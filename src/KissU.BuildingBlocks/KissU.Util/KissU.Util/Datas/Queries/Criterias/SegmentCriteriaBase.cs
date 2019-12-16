@@ -15,7 +15,7 @@ namespace KissU.Util.Datas.Queries.Criterias
     public abstract class SegmentCriteriaBase<TEntity, TProperty, TValue> : ICriteria<TEntity>
         where TEntity : class
         where TValue : struct
-        {
+    {
         /// <summary>
         /// 属性表达式
         /// </summary>
@@ -48,7 +48,7 @@ namespace KissU.Util.Datas.Queries.Criterias
         /// <param name="min">最小值</param>
         /// <param name="max">最大值</param>
         /// <param name="boundary">包含边界</param>
-        protected SegmentCriteriaBase( Expression<Func<TEntity, TProperty>> propertyExpression, TValue? min, TValue? max, Boundary boundary )
+        protected SegmentCriteriaBase(Expression<Func<TEntity, TProperty>> propertyExpression, TValue? min, TValue? max, Boundary boundary)
         {
             _builder = new PredicateExpressionBuilder<TEntity>();
             _propertyExpression = propertyExpression;
@@ -62,7 +62,7 @@ namespace KissU.Util.Datas.Queries.Criterias
         /// </summary>
         protected Type GetPropertyType()
         {
-            return Lambda.GetType( _propertyExpression );
+            return Lambda.GetType(_propertyExpression);
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace KissU.Util.Datas.Queries.Criterias
         public Expression<Func<TEntity, bool>> GetPredicate()
         {
             _builder.Clear();
-            Adjust( _min, _max );
+            Adjust(_min, _max);
             CreateLeftExpression();
             CreateRightExpression();
             return _builder.ToLambda();
@@ -80,9 +80,9 @@ namespace KissU.Util.Datas.Queries.Criterias
         /// <summary>
         /// 当最小值大于最大值时进行校正
         /// </summary>
-        private void Adjust( TValue? min, TValue? max )
+        private void Adjust(TValue? min, TValue? max)
         {
-            if( IsMinGreaterMax( min, max ) == false )
+            if (IsMinGreaterMax(min, max) == false)
                 return;
             _min = max;
             _max = min;
@@ -93,24 +93,24 @@ namespace KissU.Util.Datas.Queries.Criterias
         /// </summary>
         /// <param name="min">最小值</param>
         /// <param name="max">最大值</param>
-        protected abstract bool IsMinGreaterMax( TValue? min, TValue? max );
+        protected abstract bool IsMinGreaterMax(TValue? min, TValue? max);
 
         /// <summary>
         /// 创建左操作数，即 t => t.Property >= Min
         /// </summary>
         private void CreateLeftExpression()
         {
-            if( _min == null )
+            if (_min == null)
                 return;
-            _builder.Append( _propertyExpression, CreateLeftOperator( _boundary ), GetMinValueExpression() );
+            _builder.Append(_propertyExpression, CreateLeftOperator(_boundary), GetMinValueExpression());
         }
 
         /// <summary>
         /// 创建左操作符
         /// </summary>
-        protected virtual Operator CreateLeftOperator( Boundary? boundary )
+        protected virtual Operator CreateLeftOperator(Boundary? boundary)
         {
-            switch( boundary )
+            switch (boundary)
             {
                 case Boundary.Left:
                     return Operator.GreaterEqual;
@@ -134,7 +134,7 @@ namespace KissU.Util.Datas.Queries.Criterias
         /// </summary>
         protected virtual Expression GetMinValueExpression()
         {
-            return Lambda.Constant( _min, _propertyExpression );
+            return Lambda.Constant(_min, _propertyExpression);
         }
 
         /// <summary>
@@ -142,17 +142,17 @@ namespace KissU.Util.Datas.Queries.Criterias
         /// </summary>
         private void CreateRightExpression()
         {
-            if( _max == null )
+            if (_max == null)
                 return;
-            _builder.Append( _propertyExpression, CreateRightOperator( _boundary ), GetMaxValueExpression() );
+            _builder.Append(_propertyExpression, CreateRightOperator(_boundary), GetMaxValueExpression());
         }
 
         /// <summary>
         /// 创建右操作符
         /// </summary>
-        protected virtual Operator CreateRightOperator( Boundary? boundary )
+        protected virtual Operator CreateRightOperator(Boundary? boundary)
         {
-            switch( boundary )
+            switch (boundary)
             {
                 case Boundary.Right:
                     return Operator.LessEqual;
@@ -176,7 +176,7 @@ namespace KissU.Util.Datas.Queries.Criterias
         /// </summary>
         protected virtual Expression GetMaxValueExpression()
         {
-            return Lambda.Constant( _max, _propertyExpression );
+            return Lambda.Constant(_max, _propertyExpression);
         }
     }
 }

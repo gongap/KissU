@@ -12,17 +12,17 @@ namespace KissU.Util.Applications.Operations
     public interface IPageQuery<TDto, in TQueryParameter>
         where TDto : new()
         where TQueryParameter : IQueryParameter
-        {
+    {
         /// <summary>
         /// 查询
         /// </summary>
         /// <param name="parameter">查询参数</param>
-        List<TDto> Query( TQueryParameter parameter );
+        List<TDto> Query(TQueryParameter parameter);
 
         /// <summary>
         /// 分页查询
         /// </summary>
         /// <param name="parameter">查询参数</param>
-        PagerList<TDto> PagerQuery( TQueryParameter parameter );
+        PagerList<TDto> PagerQuery(TQueryParameter parameter);
     }
 }

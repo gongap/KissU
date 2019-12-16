@@ -19,12 +19,12 @@ namespace KissU.Util.Domains.Trees
         /// 初始化路径
         /// </summary>
         /// <param name="parent">父节点</param>
-        void InitPath( TEntity parent );
+        void InitPath(TEntity parent);
 
         /// <summary>
         /// 从路径中获取所有上级节点编号
         /// </summary>
         /// <param name="excludeSelf">是否排除当前节点,默认排除自身</param>
-        List<TKey> GetParentIdsFromPath( bool excludeSelf = true );
+        List<TKey> GetParentIdsFromPath(bool excludeSelf = true);
     }
 }

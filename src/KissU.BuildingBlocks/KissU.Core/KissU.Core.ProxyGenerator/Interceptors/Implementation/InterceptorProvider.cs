@@ -20,7 +20,8 @@ namespace KissU.Core.ProxyGenerator.Interceptors.Implementation
             string serviceId,Type returnType)
         {
             var constructor = InvocationMethods.CompositionInvocationConstructor;
-            return constructor.Invoke(new object[]{
+            return constructor.Invoke(new object[]
+            {
                     parameters,
                     serviceId,
                     null,
@@ -38,7 +39,8 @@ namespace KissU.Core.ProxyGenerator.Interceptors.Implementation
                          where q.Descriptor.Id == serviceId
                          select q).FirstOrDefault();
             var constructor = InvocationMethods.CompositionInvocationConstructor;
-            return constructor.Invoke(new object[]{
+            return constructor.Invoke(new object[]
+            {
                     parameters,
                     serviceId,
                     GetKey(parameters),

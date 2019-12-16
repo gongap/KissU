@@ -103,17 +103,17 @@ namespace KissU.Util.Webs.Clients
         /// </summary>
         /// <param name="httpMethod">Http动词</param>
         /// <param name="url">地址</param>
-        protected HttpRequestBase( HttpMethod httpMethod, string url )
+        protected HttpRequestBase(HttpMethod httpMethod, string url)
         {
-            if( string.IsNullOrWhiteSpace( url ) )
-                throw new ArgumentNullException( nameof( url ) );
-            System.Text.Encoding.RegisterProvider( CodePagesEncodingProvider.Instance );
+            if (string.IsNullOrWhiteSpace(url))
+                throw new ArgumentNullException(nameof(url));
+            System.Text.Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             _url = url;
             _httpMethod = httpMethod;
             _params = new Dictionary<string, object>();
             _contentType = HttpContentType.FormUrlEncoded.Description();
             _cookieContainer = new CookieContainer();
-            _timeout = new TimeSpan( 0, 0, 30 );
+            _timeout = new TimeSpan(0, 0, 30);
             _headers = new Dictionary<string, string>();
             _encoding = System.Text.Encoding.UTF8;
         }
@@ -126,7 +126,7 @@ namespace KissU.Util.Webs.Clients
         /// 设置字符编码
         /// </summary>
         /// <param name="encoding">字符编码</param>
-        public TRequest Encoding( Encoding encoding )
+        public TRequest Encoding(Encoding encoding)
         {
             _encoding = encoding;
             return This();
@@ -136,25 +136,25 @@ namespace KissU.Util.Webs.Clients
         /// 设置字符编码
         /// </summary>
         /// <param name="encoding">字符编码</param>
-        public TRequest Encoding( string encoding )
+        public TRequest Encoding(string encoding)
         {
-            return Encoding( System.Text.Encoding.GetEncoding( encoding ) );
+            return Encoding(System.Text.Encoding.GetEncoding(encoding));
         }
 
         /// <summary>
         /// 设置内容类型
         /// </summary>
         /// <param name="contentType">内容类型</param>
-        public TRequest ContentType( HttpContentType contentType )
+        public TRequest ContentType(HttpContentType contentType)
         {
-            return ContentType( contentType.Description() );
+            return ContentType(contentType.Description());
         }
 
         /// <summary>
         /// 设置内容类型
         /// </summary>
         /// <param name="contentType">内容类型</param>
-        public TRequest ContentType( string contentType )
+        public TRequest ContentType(string contentType)
         {
             _contentType = contentType;
             return This();
@@ -174,9 +174,9 @@ namespace KissU.Util.Webs.Clients
         /// <param name="name">名称</param>
         /// <param name="value">值</param>
         /// <param name="expiresDate">有效时间，单位：天</param>
-        public TRequest Cookie( string name, string value, double expiresDate )
+        public TRequest Cookie(string name, string value, double expiresDate)
         {
-            return Cookie( name, value, null, null, DateTime.Now.AddDays( expiresDate ) );
+            return Cookie(name, value, null, null, DateTime.Now.AddDays(expiresDate));
         }
 
         /// <summary>
@@ -185,9 +185,9 @@ namespace KissU.Util.Webs.Clients
         /// <param name="name">名称</param>
         /// <param name="value">值</param>
         /// <param name="expiresDate">到期时间</param>
-        public TRequest Cookie( string name, string value, DateTime expiresDate )
+        public TRequest Cookie(string name, string value, DateTime expiresDate)
         {
-            return Cookie( name, value, null, null, expiresDate );
+            return Cookie(name, value, null, null, expiresDate);
         }
 
         /// <summary>
@@ -198,21 +198,21 @@ namespace KissU.Util.Webs.Clients
         /// <param name="path">源服务器URL子集</param>
         /// <param name="domain">所属域</param>
         /// <param name="expiresDate">到期时间</param>
-        public TRequest Cookie( string name, string value, string path = "/", string domain = null, DateTime? expiresDate = null )
+        public TRequest Cookie(string name, string value, string path = "/", string domain = null, DateTime? expiresDate = null)
         {
-            return Cookie( new Cookie( name, value, path, domain )
+            return Cookie(new Cookie(name, value, path, domain)
             {
-                Expires = expiresDate ?? DateTime.Now.AddYears( 1 )
-            } );
+                Expires = expiresDate ?? DateTime.Now.AddYears(1)
+            });
         }
 
         /// <summary>
         /// 设置Cookie
         /// </summary>
         /// <param name="cookie">cookie</param>
-        public TRequest Cookie( Cookie cookie )
+        public TRequest Cookie(Cookie cookie)
         {
-            _cookieContainer.Add( new Uri( _url ), cookie );
+            _cookieContainer.Add(new Uri(_url), cookie);
             return This();
         }
 
@@ -220,9 +220,9 @@ namespace KissU.Util.Webs.Clients
         /// 超时时间
         /// </summary>
         /// <param name="timeout">超时时间</param>
-        public TRequest Timeout( int timeout )
+        public TRequest Timeout(int timeout)
         {
-            _timeout = new TimeSpan( 0, 0, timeout );
+            _timeout = new TimeSpan(0, 0, timeout);
             return This();
         }
 
@@ -231,9 +231,9 @@ namespace KissU.Util.Webs.Clients
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="value">值</param>
-        public TRequest Header<T>( string key, T value )
+        public TRequest Header<T>(string key, T value)
         {
-            _headers.Add( key, value.SafeString() );
+            _headers.Add(key, value.SafeString());
             return This();
         }
 
@@ -241,9 +241,9 @@ namespace KissU.Util.Webs.Clients
         /// 添加参数字典
         /// </summary>
         /// <param name="parameters">参数字典</param>
-        public TRequest Data( IDictionary<string, object> parameters )
+        public TRequest Data(IDictionary<string, object> parameters)
         {
-            _params = parameters ?? throw new ArgumentNullException( nameof( parameters ) );
+            _params = parameters ?? throw new ArgumentNullException(nameof(parameters));
             return This();
         }
 
@@ -252,13 +252,13 @@ namespace KissU.Util.Webs.Clients
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="value">值</param>
-        public TRequest Data( string key, object value )
+        public TRequest Data(string key, object value)
         {
-            if( string.IsNullOrWhiteSpace( key ) )
-                throw new ArgumentNullException( nameof( key ) );
-            if( string.IsNullOrWhiteSpace( value.SafeString() ) )
+            if (string.IsNullOrWhiteSpace(key))
+                throw new ArgumentNullException(nameof(key));
+            if (string.IsNullOrWhiteSpace(value.SafeString()))
                 return This();
-            _params.Add( key, value );
+            _params.Add(key, value);
             return This();
         }
 
@@ -266,10 +266,10 @@ namespace KissU.Util.Webs.Clients
         /// 添加Json参数
         /// </summary>
         /// <param name="value">值</param>
-        public TRequest JsonData<T>( T value )
+        public TRequest JsonData<T>(T value)
         {
-            ContentType( HttpContentType.Json );
-            _data = Json.ToJson( value );
+            ContentType(HttpContentType.Json);
+            _data = Json.ToJson(value);
             return This();
         }
 
@@ -277,9 +277,9 @@ namespace KissU.Util.Webs.Clients
         /// 添加Xml参数
         /// </summary>
         /// <param name="value">值</param>
-        public TRequest XmlData( string value )
+        public TRequest XmlData(string value)
         {
-            ContentType( HttpContentType.Xml );
+            ContentType(HttpContentType.Xml);
             _data = value;
             return This();
         }
@@ -288,7 +288,7 @@ namespace KissU.Util.Webs.Clients
         /// 请求失败回调函数
         /// </summary>
         /// <param name="action">执行失败的回调函数,参数为响应结果</param>
-        public TRequest OnFail( Action<string> action )
+        public TRequest OnFail(Action<string> action)
         {
             _failAction = action;
             return This();
@@ -298,7 +298,7 @@ namespace KissU.Util.Webs.Clients
         /// 请求失败回调函数
         /// </summary>
         /// <param name="action">执行失败的回调函数,第一个参数为响应结果，第二个参数为状态码</param>
-        public TRequest OnFail( Action<string, HttpStatusCode> action )
+        public TRequest OnFail(Action<string, HttpStatusCode> action)
         {
             _failStatusCodeAction = action;
             return This();
@@ -309,7 +309,7 @@ namespace KissU.Util.Webs.Clients
         /// </summary>
         public TRequest IgnoreSsl()
         {
-            _serverCertificateCustomValidationCallback = ( a, b, c, d ) => true;
+            _serverCertificateCustomValidationCallback = (a, b, c, d) => true;
             return This();
         }
 
@@ -317,7 +317,7 @@ namespace KissU.Util.Webs.Clients
         /// 设置Bearer令牌
         /// </summary>
         /// <param name="token">令牌</param>
-        public TRequest BearerToken( string token )
+        public TRequest BearerToken(string token)
         {
             _token = token;
             return This();
@@ -328,7 +328,7 @@ namespace KissU.Util.Webs.Clients
         /// </summary>
         /// <param name="path">证书路径</param>
         /// <param name="password">证书密码</param>
-        public TRequest Certificate( string path, string password )
+        public TRequest Certificate(string path, string password)
         {
             _certificatePath = path;
             _certificatePassword = password;
@@ -347,7 +347,7 @@ namespace KissU.Util.Webs.Clients
             SendBefore();
             var response = await SendAsync();
             var result = await response.Content.ReadAsStringAsync();
-            SendAfter( result, response );
+            SendAfter(result, response);
             return result;
         }
 
@@ -372,8 +372,8 @@ namespace KissU.Util.Webs.Clients
         protected async Task<HttpResponseMessage> SendAsync()
         {
             var client = CreateHttpClient();
-            InitHttpClient( client );
-            return await client.SendAsync( CreateRequestMessage() );
+            InitHttpClient(client);
+            return await client.SendAsync(CreateRequestMessage());
         }
 
         /// <summary>
@@ -381,7 +381,7 @@ namespace KissU.Util.Webs.Clients
         /// </summary>
         protected virtual HttpClient CreateHttpClient()
         {
-            return new HttpClient( CreateHttpClientHandler() ) { Timeout = _timeout };
+            return new HttpClient(CreateHttpClientHandler()) { Timeout = _timeout };
         }
 
         /// <summary>
@@ -394,10 +394,10 @@ namespace KissU.Util.Webs.Clients
                 CookieContainer = _cookieContainer,
                 ServerCertificateCustomValidationCallback = _serverCertificateCustomValidationCallback
             };
-            if ( string.IsNullOrWhiteSpace( _certificatePath ) )
+            if (string.IsNullOrWhiteSpace(_certificatePath))
                 return handler;
-            var certificate = new X509Certificate2( _certificatePath, _certificatePassword, X509KeyStorageFlags.PersistKeySet | X509KeyStorageFlags.MachineKeySet );
-            handler.ClientCertificates.Add( certificate );
+            var certificate = new X509Certificate2(_certificatePath, _certificatePassword, X509KeyStorageFlags.PersistKeySet | X509KeyStorageFlags.MachineKeySet);
+            handler.ClientCertificates.Add(certificate);
             return handler;
         }
 
@@ -405,12 +405,12 @@ namespace KissU.Util.Webs.Clients
         /// 初始化Http客户端
         /// </summary>
         /// <param name="client">Http客户端</param>
-        protected virtual void InitHttpClient( HttpClient client )
+        protected virtual void InitHttpClient(HttpClient client)
         {
             InitToken();
-            if ( string.IsNullOrWhiteSpace( _token ) )
+            if (string.IsNullOrWhiteSpace(_token))
                 return;
-            client.SetBearerToken( _token );
+            client.SetBearerToken(_token);
         }
 
         /// <summary>
@@ -418,7 +418,7 @@ namespace KissU.Util.Webs.Clients
         /// </summary>
         protected virtual void InitToken()
         {
-            if( string.IsNullOrWhiteSpace( _token ) == false )
+            if (string.IsNullOrWhiteSpace(_token) == false)
                 return;
             _token = Web.AccessToken;
         }
@@ -431,11 +431,11 @@ namespace KissU.Util.Webs.Clients
             var message = new HttpRequestMessage
             {
                 Method = _httpMethod,
-                RequestUri = new Uri( _url ),
+                RequestUri = new Uri(_url),
                 Content = CreateHttpContent()
             };
-            foreach( var header in _headers )
-                message.Headers.Add( header.Key, header.Value );
+            foreach (var header in _headers)
+                message.Headers.Add(header.Key, header.Value);
             return message;
         }
 
@@ -445,16 +445,16 @@ namespace KissU.Util.Webs.Clients
         private HttpContent CreateHttpContent()
         {
             var contentType = _contentType.SafeString().ToLower();
-            switch( contentType )
+            switch (contentType)
             {
                 case "application/x-www-form-urlencoded":
-                    return new FormUrlEncodedContent( _params.ToDictionary( t => t.Key, t => t.Value.SafeString() ) );
+                    return new FormUrlEncodedContent(_params.ToDictionary(t => t.Key, t => t.Value.SafeString()));
                 case "application/json":
                     return CreateJsonContent();
                 case "text/xml":
                     return CreateXmlContent();
             }
-            throw new NotImplementedException( "未实现该ContentType" );
+            throw new NotImplementedException("未实现该ContentType");
         }
 
         /// <summary>
@@ -462,9 +462,9 @@ namespace KissU.Util.Webs.Clients
         /// </summary>
         private HttpContent CreateJsonContent()
         {
-            if( string.IsNullOrWhiteSpace( _data ) )
-                _data = Json.ToJson( _params );
-            return new StringContent( _data, _encoding, "application/json" );
+            if (string.IsNullOrWhiteSpace(_data))
+                _data = Json.ToJson(_params);
+            return new StringContent(_data, _encoding, "application/json");
         }
 
         /// <summary>
@@ -472,7 +472,7 @@ namespace KissU.Util.Webs.Clients
         /// </summary>
         private HttpContent CreateXmlContent()
         {
-            return new StringContent( _data, _encoding, "text/xml" );
+            return new StringContent(_data, _encoding, "text/xml");
         }
 
         #endregion
@@ -482,21 +482,21 @@ namespace KissU.Util.Webs.Clients
         /// <summary>
         /// 发送后操作
         /// </summary>
-        protected virtual void SendAfter( string result, HttpResponseMessage response )
+        protected virtual void SendAfter(string result, HttpResponseMessage response)
         {
-            var contentType = GetContentType( response );
-            if( response.IsSuccessStatusCode )
+            var contentType = GetContentType(response);
+            if (response.IsSuccessStatusCode)
             {
-                SuccessHandler( result, response.StatusCode, contentType );
+                SuccessHandler(result, response.StatusCode, contentType);
                 return;
             }
-            FailHandler( result, response.StatusCode, contentType );
+            FailHandler(result, response.StatusCode, contentType);
         }
 
         /// <summary>
         /// 获取内容类型
         /// </summary>
-        private string GetContentType( HttpResponseMessage response )
+        private string GetContentType(HttpResponseMessage response)
         {
             return response?.Content?.Headers?.ContentType == null ? string.Empty : response.Content.Headers.ContentType.MediaType;
         }
@@ -504,17 +504,17 @@ namespace KissU.Util.Webs.Clients
         /// <summary>
         /// 成功处理操作
         /// </summary>
-        protected virtual void SuccessHandler( string result, HttpStatusCode statusCode, string contentType )
+        protected virtual void SuccessHandler(string result, HttpStatusCode statusCode, string contentType)
         {
         }
 
         /// <summary>
         /// 失败处理操作
         /// </summary>
-        protected virtual void FailHandler( string result, HttpStatusCode statusCode, string contentType )
+        protected virtual void FailHandler(string result, HttpStatusCode statusCode, string contentType)
         {
-            _failAction?.Invoke( result );
-            _failStatusCodeAction?.Invoke( result, statusCode );
+            _failAction?.Invoke(result);
+            _failStatusCodeAction?.Invoke(result, statusCode);
         }
 
         #endregion

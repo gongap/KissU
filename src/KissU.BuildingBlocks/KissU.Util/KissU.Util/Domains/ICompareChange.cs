@@ -10,6 +10,6 @@
         /// 获取变更属性
         /// </summary>
         /// <param name="other">其它领域对象</param>
-        ChangeValueCollection GetChanges( T other );
+        ChangeValueCollection GetChanges(T other);
     }
 }

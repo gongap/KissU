@@ -27,7 +27,7 @@ namespace KissU.Util.Datas.UnitOfWorks
         /// </summary>
         public void Commit()
         {
-            foreach( var unitOfWork in _unitOfWorks )
+            foreach (var unitOfWork in _unitOfWorks)
                 unitOfWork.Commit();
         }
 
@@ -36,7 +36,7 @@ namespace KissU.Util.Datas.UnitOfWorks
         /// </summary>
         public async Task CommitAsync()
         {
-            foreach ( var unitOfWork in _unitOfWorks )
+            foreach (var unitOfWork in _unitOfWorks)
                 await unitOfWork.CommitAsync();
         }
 
@@ -44,12 +44,12 @@ namespace KissU.Util.Datas.UnitOfWorks
         /// 注册工作单元
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
-        public void Register( IUnitOfWork unitOfWork )
+        public void Register(IUnitOfWork unitOfWork)
         {
-            if( unitOfWork == null )
-                throw new ArgumentNullException( nameof( unitOfWork ) );
-            if( _unitOfWorks.Contains( unitOfWork ) == false )
-                _unitOfWorks.Add( unitOfWork );
+            if (unitOfWork == null)
+                throw new ArgumentNullException(nameof(unitOfWork));
+            if (_unitOfWorks.Contains(unitOfWork) == false)
+                _unitOfWorks.Add(unitOfWork);
         }
     }
 }

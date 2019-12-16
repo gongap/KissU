@@ -11,7 +11,7 @@ namespace KissU.Util.Datas.Sql.Matedatas
         /// 获取表名
         /// </summary>
         /// <param name="type">实体类型</param>
-        public string GetTable( Type type )
+        public string GetTable(Type type)
         {
             return type?.Name;
         }
@@ -20,7 +20,7 @@ namespace KissU.Util.Datas.Sql.Matedatas
         /// 获取架构
         /// </summary>
         /// <param name="type">实体类型</param>
-        public string GetSchema( Type type )
+        public string GetSchema(Type type)
         {
             return string.Empty;
         }
@@ -30,7 +30,7 @@ namespace KissU.Util.Datas.Sql.Matedatas
         /// </summary>
         /// <param name="type">实体类型</param>
         /// <param name="property">属性名</param>
-        public string GetColumn( Type type, string property )
+        public string GetColumn(Type type, string property)
         {
             return property;
         }

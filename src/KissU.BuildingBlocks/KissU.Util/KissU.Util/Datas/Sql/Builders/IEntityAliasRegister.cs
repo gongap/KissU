@@ -23,19 +23,19 @@ namespace KissU.Util.Datas.Sql.Builders
         /// </summary>
         /// <param name="type">实体类型</param>
         /// <param name="alias">别名</param>
-        void Register( Type type, string alias );
+        void Register(Type type, string alias);
 
         /// <summary>
         /// 是否包含实体类型
         /// </summary>
         /// <param name="type">实体类型</param>
-        bool Contains( Type type );
+        bool Contains(Type type);
 
         /// <summary>
         /// 获取实体别名
         /// </summary>
         /// <param name="type">实体类型</param>
-        string GetAlias( Type type );
+        string GetAlias(Type type);
 
         /// <summary>
         /// 复制实体别名注册器

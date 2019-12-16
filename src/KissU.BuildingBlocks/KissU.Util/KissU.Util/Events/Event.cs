@@ -33,9 +33,9 @@ namespace KissU.Util.Events
         public override string ToString()
         {
             var result = new StringBuilder();
-            result.AppendLine( $"事件标识: {Id}" );
-            result.AppendLine( $"事件时间:{Time.ToMillisecondString()}" );
-            result.Append( $"事件数据：{this}" );
+            result.AppendLine($"事件标识: {Id}");
+            result.AppendLine($"事件时间:{Time.ToMillisecondString()}");
+            result.Append($"事件数据：{this}");
             return result.ToString();
         }
     }

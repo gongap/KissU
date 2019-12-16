@@ -10,7 +10,7 @@
         /// </summary>
         /// <param name="name">排序属性</param>
         /// <param name="desc">是否降序</param>
-        public OrderByItem( string name, bool desc )
+        public OrderByItem(string name, bool desc)
         {
             Name = name;
             Desc = desc;
@@ -31,7 +31,7 @@
         /// </summary>
         public string Generate()
         {
-            if( Desc )
+            if (Desc)
                 return $"{Name} desc";
             return Name;
         }

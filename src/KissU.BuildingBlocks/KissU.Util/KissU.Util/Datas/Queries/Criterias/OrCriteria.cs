@@ -15,9 +15,9 @@ namespace KissU.Util.Datas.Queries.Criterias
         /// </summary>
         /// <param name="left">查询条件1</param>
         /// <param name="right">查询条件2</param>
-        public OrCriteria( Expression<Func<TEntity, bool>> left, Expression<Func<TEntity, bool>> right )
+        public OrCriteria(Expression<Func<TEntity, bool>> left, Expression<Func<TEntity, bool>> right)
         {
-            Predicate = left.Or( right );
+            Predicate = left.Or(right);
         }
 
         /// <summary>

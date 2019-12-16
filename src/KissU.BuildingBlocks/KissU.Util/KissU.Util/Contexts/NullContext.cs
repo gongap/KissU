@@ -21,7 +21,7 @@
         /// <typeparam name="T">对象类型</typeparam>
         /// <param name="key">键名</param>
         /// <param name="value">对象</param>
-        public void Add<T>( string key, T value )
+        public void Add<T>(string key, T value)
         {
         }
 
@@ -30,16 +30,16 @@
         /// </summary>
         /// <typeparam name="T">对象类型</typeparam>
         /// <param name="key">键名</param>
-        public T Get<T>( string key )
+        public T Get<T>(string key)
         {
-            return default( T );
+            return default;
         }
 
         /// <summary>
         /// 移除对象
         /// </summary>
         /// <param name="key">键名</param>
-        public void Remove( string key )
+        public void Remove(string key)
         {
         }
     }

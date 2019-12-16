@@ -27,9 +27,9 @@ namespace KissU.Util.Maps
         /// <typeparam name="TDestination">目标类型</typeparam>
         /// <param name="source">源对象</param>
         /// <param name="destination">目标对象</param>
-        public static TDestination MapTo<TSource, TDestination>( this TSource source, TDestination destination )
+        public static TDestination MapTo<TSource, TDestination>(this TSource source, TDestination destination)
         {
-            return MapTo<TDestination>( source, destination );
+            return MapTo<TDestination>(source, destination);
         }
 
         /// <summary>
@@ -37,79 +37,79 @@ namespace KissU.Util.Maps
         /// </summary>
         /// <typeparam name="TDestination">目标类型</typeparam>
         /// <param name="source">源对象</param>
-        public static TDestination MapTo<TDestination>( this object source ) where TDestination : new()
+        public static TDestination MapTo<TDestination>(this object source) where TDestination : new()
         {
-            return MapTo( source, new TDestination() );
+            return MapTo(source, new TDestination());
         }
 
         /// <summary>
         /// 将源对象映射到目标对象
         /// </summary>
-        private static TDestination MapTo<TDestination>( object source, TDestination destination )
+        private static TDestination MapTo<TDestination>(object source, TDestination destination)
         {
-            if( source == null )
-                return default( TDestination );
-            if( destination == null )
-                return default( TDestination );
-            var sourceType = GetType( source );
-            var destinationType = GetType( destination );
-            if( Exists( sourceType, destinationType ) )
-                return GetResult( source, destination );
-            lock( Sync )
+            if (source == null)
+                return default;
+            if (destination == null)
+                return default;
+            var sourceType = GetType(source);
+            var destinationType = GetType(destination);
+            if (Exists(sourceType, destinationType))
+                return GetResult(source, destination);
+            lock (Sync)
             {
-                if( Exists( sourceType, destinationType ) )
-                    return GetResult( source, destination );
-                Init( sourceType, destinationType );
+                if (Exists(sourceType, destinationType))
+                    return GetResult(source, destination);
+                Init(sourceType, destinationType);
             }
-            return GetResult( source, destination );
+            return GetResult(source, destination);
         }
 
         /// <summary>
         /// 获取类型
         /// </summary>
-        private static Type GetType( object obj )
+        private static Type GetType(object obj)
         {
             var type = obj.GetType();
-            if( ( obj is System.Collections.IEnumerable ) == false )
+            if ((obj is System.Collections.IEnumerable) == false)
                 return type;
-            if( type.IsArray )
+            if (type.IsArray)
                 return type.GetElementType();
             var genericArgumentsTypes = type.GetTypeInfo().GetGenericArguments();
-            if( genericArgumentsTypes == null || genericArgumentsTypes.Length == 0 )
-                throw new ArgumentException( "泛型类型参数不能为空" );
+            if (genericArgumentsTypes == null || genericArgumentsTypes.Length == 0)
+                throw new ArgumentException("泛型类型参数不能为空");
             return genericArgumentsTypes[0];
         }
 
         /// <summary>
         /// 是否已存在映射配置
         /// </summary>
-        private static bool Exists( Type sourceType, Type destinationType )
+        private static bool Exists(Type sourceType, Type destinationType)
         {
-            return _config?.FindTypeMapFor( sourceType, destinationType ) != null;
+            return _config?.FindTypeMapFor(sourceType, destinationType) != null;
         }
 
         /// <summary>
         /// 初始化映射配置
         /// </summary>
-        private static void Init( Type sourceType, Type destinationType )
+        private static void Init(Type sourceType, Type destinationType)
         {
-            if( _config == null )
+            if (_config == null)
             {
-                _config = new MapperConfiguration( t => t.CreateMap( sourceType, destinationType ) );
+                _config = new MapperConfiguration(t => t.CreateMap(sourceType, destinationType));
                 return;
             }
             var maps = _config.GetAllTypeMaps();
-            _config = new MapperConfiguration( t => t.CreateMap( sourceType, destinationType ) );
-            foreach( var map in maps )
-                _config.RegisterTypeMap( map );
+            _config = new MapperConfiguration(t => t.CreateMap(sourceType, destinationType));
+            foreach (var map in maps)
+                _config.RegisterTypeMap(map);
         }
 
         /// <summary>
         /// 获取映射结果
         /// </summary>
-        private static TDestination GetResult<TDestination>( object source, TDestination destination )
+        private static TDestination GetResult<TDestination>(object source, TDestination destination)
         {
-            return new Mapper( _config ).Map( source, destination );
+            return new Mapper(_config).Map(source, destination);
         }
 
         /// <summary>
@@ -117,9 +117,9 @@ namespace KissU.Util.Maps
         /// </summary>
         /// <typeparam name="TDestination">目标元素类型,范例：Sample,不要加List</typeparam>
         /// <param name="source">源集合</param>
-        public static List<TDestination> MapToList<TDestination>( this System.Collections.IEnumerable source )
+        public static List<TDestination> MapToList<TDestination>(this System.Collections.IEnumerable source)
         {
-            return MapTo<List<TDestination>>( source );
+            return MapTo<List<TDestination>>(source);
         }
     }
 }

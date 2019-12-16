@@ -15,6 +15,6 @@ namespace KissU.Util.Datas.Stores.Operations
         /// 查找单个实体
         /// </summary>
         /// <param name="predicate">条件</param>
-        TEntity Single( Expression<Func<TEntity, bool>> predicate );
+        TEntity Single(Expression<Func<TEntity, bool>> predicate);
     }
 }

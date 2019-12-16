@@ -17,7 +17,7 @@ namespace KissU.Util.Locks
         /// </summary>
         /// <param name="key">锁定标识</param>
         /// <param name="expiration">锁定时间间隔</param>
-        public bool Lock( string key, TimeSpan? expiration = null )
+        public bool Lock(string key, TimeSpan? expiration = null)
         {
             return true;
         }

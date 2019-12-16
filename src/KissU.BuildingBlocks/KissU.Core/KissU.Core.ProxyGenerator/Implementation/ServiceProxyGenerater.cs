@@ -214,7 +214,8 @@ namespace KissU.Core.ProxyGenerator.Implementation
                             SyntaxKind.BaseConstructorInitializer,
                             SyntaxFactory.ArgumentList(
                                 SyntaxFactory.SeparatedList<ArgumentSyntax>(
-                                    new SyntaxNodeOrToken[]{
+                                    new SyntaxNodeOrToken[]
+                                    {
                                         SyntaxFactory.Argument(
                                             SyntaxFactory.IdentifierName("remoteInvokeService")),
                                         SyntaxFactory.Token(SyntaxKind.CommaToken),
@@ -290,12 +291,14 @@ namespace KissU.Core.ProxyGenerator.Implementation
                 parameterList.Add(SyntaxFactory.InitializerExpression(
                     SyntaxKind.ComplexElementInitializerExpression,
                     SyntaxFactory.SeparatedList<ExpressionSyntax>(
-                        new SyntaxNodeOrToken[]{
+                        new SyntaxNodeOrToken[]
+                        {
                             SyntaxFactory.LiteralExpression(
                                 SyntaxKind.StringLiteralExpression,
                                 SyntaxFactory.Literal(parameter.Name)),
                             SyntaxFactory.Token(SyntaxKind.CommaToken),
-                            SyntaxFactory.IdentifierName(parameter.Name)})));
+                            SyntaxFactory.IdentifierName(parameter.Name)
+                        })));
                 parameterList.Add(SyntaxFactory.Token(SyntaxKind.CommaToken));
             }
             if (parameterList.Any())

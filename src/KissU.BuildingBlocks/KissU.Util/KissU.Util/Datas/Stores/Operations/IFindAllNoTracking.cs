@@ -16,6 +16,6 @@ namespace KissU.Util.Datas.Stores.Operations
         /// 查找实体列表,不跟踪
         /// </summary>
         /// <param name="predicate">条件</param>
-        List<TEntity> FindAllNoTracking( Expression<Func<TEntity, bool>> predicate = null );
+        List<TEntity> FindAllNoTracking(Expression<Func<TEntity, bool>> predicate = null);
     }
 }

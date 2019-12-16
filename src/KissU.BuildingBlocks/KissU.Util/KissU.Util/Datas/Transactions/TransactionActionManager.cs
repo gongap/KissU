@@ -32,21 +32,21 @@ namespace KissU.Util.Datas.Transactions
         /// 注册事务操作
         /// </summary>
         /// <param name="action">事务操作</param>
-        public void Register( Func<IDbTransaction, Task> action )
+        public void Register(Func<IDbTransaction, Task> action)
         {
-            if( action == null )
+            if (action == null)
                 return;
-            _actions.Add( action );
+            _actions.Add(action);
         }
 
         /// <summary>
         /// 提交
         /// </summary>
         /// <param name="transaction">事务</param>
-        public async Task CommitAsync( IDbTransaction transaction )
+        public async Task CommitAsync(IDbTransaction transaction)
         {
-            foreach( var action in _actions )
-                await action( transaction );
+            foreach (var action in _actions)
+                await action(transaction);
             _actions.Clear();
         }
     }

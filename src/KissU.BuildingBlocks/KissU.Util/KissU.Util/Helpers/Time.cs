@@ -16,7 +16,7 @@ namespace KissU.Util.Helpers
         /// 设置时间
         /// </summary>
         /// <param name="dateTime">时间</param>
-        public static void SetTime( DateTime? dateTime )
+        public static void SetTime(DateTime? dateTime)
         {
             _dateTime = dateTime;
         }
@@ -25,9 +25,9 @@ namespace KissU.Util.Helpers
         /// 设置时间
         /// </summary>
         /// <param name="dateTime">时间</param>
-        public static void SetTime( string dateTime )
+        public static void SetTime(string dateTime)
         {
-            _dateTime = Util.Helpers.Convert.ToDateOrNull( dateTime );
+            _dateTime = Util.Helpers.Convert.ToDateOrNull(dateTime);
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace KissU.Util.Helpers
         /// </summary>
         public static DateTime GetDateTime()
         {
-            if( _dateTime == null )
+            if (_dateTime == null)
                 return DateTime.Now;
             return _dateTime.Value;
         }
@@ -61,29 +61,29 @@ namespace KissU.Util.Helpers
         /// </summary>
         public static long GetUnixTimestamp()
         {
-            return GetUnixTimestamp( DateTime.Now );
+            return GetUnixTimestamp(DateTime.Now);
         }
 
         /// <summary>
         /// 获取Unix时间戳
         /// </summary>
         /// <param name="time">时间</param>
-        public static long GetUnixTimestamp( DateTime time )
+        public static long GetUnixTimestamp(DateTime time)
         {
-            var start = TimeZoneInfo.ConvertTime( new DateTime( 1970, 1, 1 ), TimeZoneInfo.Local );
-            long ticks = ( time - start.Add( new TimeSpan( 8, 0, 0 ) ) ).Ticks;
-            return Util.Helpers.Convert.ToLong( ticks / TimeSpan.TicksPerSecond );
+            var start = TimeZoneInfo.ConvertTime(new DateTime(1970, 1, 1), TimeZoneInfo.Local);
+            long ticks = (time - start.Add(new TimeSpan(8, 0, 0))).Ticks;
+            return Util.Helpers.Convert.ToLong(ticks / TimeSpan.TicksPerSecond);
         }
 
         /// <summary>
         /// 从Unix时间戳获取时间
         /// </summary>
         /// <param name="timestamp">Unix时间戳</param>
-        public static DateTime GetTimeFromUnixTimestamp( long timestamp )
+        public static DateTime GetTimeFromUnixTimestamp(long timestamp)
         {
-            var start = TimeZoneInfo.ConvertTime( new DateTime( 1970, 1, 1 ), TimeZoneInfo.Local );
-            TimeSpan span = new TimeSpan( long.Parse( timestamp + "0000000" ) );
-            return start.Add( span ).Add( new TimeSpan( 8, 0, 0 ) );
+            var start = TimeZoneInfo.ConvertTime(new DateTime(1970, 1, 1), TimeZoneInfo.Local);
+            TimeSpan span = new TimeSpan(long.Parse(timestamp + "0000000"));
+            return start.Add(span).Add(new TimeSpan(8, 0, 0));
         }
     }
 }

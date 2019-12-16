@@ -120,7 +120,8 @@ namespace KissU.Core.Caching.HealthChecks.Implementation
             {
                 var addresses = monitorEntry.Select(p => p.EndPoint).ToList();
                 _serviceCacheManager.RemveAddressAsync(addresses).Wait();
-                addresses.ForEach(p => {
+                addresses.ForEach(p =>
+                {
 
                     _dictionary.TryRemove(new ValueTuple<string, int>(p.Host, p.Port), out MonitorEntry value);
                 });

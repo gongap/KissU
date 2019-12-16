@@ -12,7 +12,7 @@ namespace KissU.Util.Locks.Default
         /// 注册业务锁
         /// </summary>
         /// <param name="services">服务集合</param>
-        public static void AddLock( this IServiceCollection services )
+        public static void AddLock(this IServiceCollection services)
         {
             services.TryAddScoped<ILock, DefaultLock>();
         }

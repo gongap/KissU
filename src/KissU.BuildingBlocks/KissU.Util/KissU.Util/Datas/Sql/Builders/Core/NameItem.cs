@@ -14,23 +14,23 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// 初始化名称项
         /// </summary>
         /// <param name="name">名称</param>
-        public NameItem( string name )
+        public NameItem(string name)
         {
-            if( string.IsNullOrWhiteSpace( name ) )
+            if (string.IsNullOrWhiteSpace(name))
                 return;
-            var list = IsComplex( name ) ? ResolveByPattern( name ) : ResolveBySplit( name );
-            if( list.Count == 1 )
+            var list = IsComplex(name) ? ResolveByPattern(name) : ResolveBySplit(name);
+            if (list.Count == 1)
             {
                 Name = list[0];
                 return;
             }
-            if( list.Count == 2 )
+            if (list.Count == 2)
             {
                 Prefix = list[0];
                 Name = list[1];
                 return;
             }
-            if( list.Count == 3 )
+            if (list.Count == 3)
             {
                 DatabaseName = list[0];
                 Prefix = list[1];
@@ -41,27 +41,27 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// <summary>
         /// 是否复杂名称
         /// </summary>
-        private bool IsComplex( string name )
+        private bool IsComplex(string name)
         {
-            return name.Contains( "[" ) || name.Contains( "`" ) || name.Contains( "\"" );
+            return name.Contains("[") || name.Contains("`") || name.Contains("\"");
         }
 
         /// <summary>
         /// 分割句点
         /// </summary>
-        private List<string> ResolveBySplit( string name )
+        private List<string> ResolveBySplit(string name)
         {
-            return name.Split( '.' ).ToList();
+            return name.Split('.').ToList();
         }
 
         /// <summary>
         /// 通过正则进行解析
         /// </summary>
-        private List<string> ResolveByPattern( string name )
+        private List<string> ResolveByPattern(string name)
         {
             var pattern = "^(([\\[`\"]\\S+?[\\]`\"]).)?(([\\[`\"]\\S+[\\]`\"]).)?([\\[`\"]\\S+[\\]`\"])$";
-            var list = Regex.GetValues( name, pattern, new[] { "$1", "$2", "$3", "$4", "$5" } ).Select( t => t.Value ).ToList();
-            return list.Where( t => string.IsNullOrWhiteSpace( t ) == false && t.EndsWith( "." ) == false ).ToList();
+            var list = Regex.GetValues(name, pattern, new[] { "$1", "$2", "$3", "$4", "$5" }).Select(t => t.Value).ToList();
+            return list.Where(t => string.IsNullOrWhiteSpace(t) == false && t.EndsWith(".") == false).ToList();
         }
 
         /// <summary>
@@ -103,30 +103,30 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// <param name="dialect">Sql方言</param>
         /// <param name="prefix">前缀</param>
         /// <param name="tableDatabase">表数据库</param>
-        public string ToSql( IDialect dialect, string prefix = null, ITableDatabase tableDatabase = null )
+        public string ToSql(IDialect dialect, string prefix = null, ITableDatabase tableDatabase = null)
         {
-            var name = GetName( dialect, prefix );
-            var database = GetDatabase( dialect, tableDatabase, prefix );
-            return string.IsNullOrWhiteSpace( database ) ? name : $"{database}.{name}";
+            var name = GetName(dialect, prefix);
+            var database = GetDatabase(dialect, tableDatabase, prefix);
+            return string.IsNullOrWhiteSpace(database) ? name : $"{database}.{name}";
         }
 
         /// <summary>
         /// 获取名称
         /// </summary>
-        private string GetName( IDialect dialect, string prefix )
+        private string GetName(IDialect dialect, string prefix)
         {
-            prefix = GetPrefix( prefix );
-            if( string.IsNullOrWhiteSpace( prefix ) )
-                return dialect.SafeName( Name );
-            return $"{dialect.SafeName( prefix )}.{dialect.SafeName( Name )}";
+            prefix = GetPrefix(prefix);
+            if (string.IsNullOrWhiteSpace(prefix))
+                return dialect.SafeName(Name);
+            return $"{dialect.SafeName(prefix)}.{dialect.SafeName(Name)}";
         }
 
         /// <summary>
         /// 获取前缀
         /// </summary>
-        private string GetPrefix( string prefix )
+        private string GetPrefix(string prefix)
         {
-            if( string.IsNullOrWhiteSpace( Prefix ) )
+            if (string.IsNullOrWhiteSpace(Prefix))
                 return prefix;
             return Prefix;
         }
@@ -134,20 +134,20 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// <summary>
         /// 获取前缀
         /// </summary>
-        private string GetDatabase( IDialect dialect, ITableDatabase tableDatabase, string prefix )
+        private string GetDatabase(IDialect dialect, ITableDatabase tableDatabase, string prefix)
         {
-            if ( string.IsNullOrWhiteSpace( DatabaseName ) == false )
-                return dialect.SafeName( DatabaseName );
-            return tableDatabase == null ? null : dialect.SafeName( tableDatabase.GetDatabase( GetName( prefix ) ) );
+            if (string.IsNullOrWhiteSpace(DatabaseName) == false)
+                return dialect.SafeName(DatabaseName);
+            return tableDatabase == null ? null : dialect.SafeName(tableDatabase.GetDatabase(GetName(prefix)));
         }
 
         /// <summary>
         /// 获取名称
         /// </summary>
-        private string GetName( string prefix )
+        private string GetName(string prefix)
         {
-            prefix = GetPrefix( prefix );
-            if( string.IsNullOrWhiteSpace( prefix ) )
+            prefix = GetPrefix(prefix);
+            if (string.IsNullOrWhiteSpace(prefix))
                 return Name;
             return $"{prefix}.{Name}";
         }

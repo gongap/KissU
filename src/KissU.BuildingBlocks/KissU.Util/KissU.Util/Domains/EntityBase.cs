@@ -17,7 +17,7 @@ namespace KissU.Util.Domains
         /// 初始化领域实体
         /// </summary>
         /// <param name="id">标识</param>
-        protected EntityBase( Guid id ) : base( id )
+        protected EntityBase(Guid id) : base(id)
         {
         }
     }
@@ -33,7 +33,7 @@ namespace KissU.Util.Domains
         /// 初始化领域实体
         /// </summary>
         /// <param name="id">标识</param>
-        protected EntityBase( TKey id )
+        protected EntityBase(TKey id)
         {
             Id = id;
         }
@@ -47,9 +47,9 @@ namespace KissU.Util.Domains
         /// <summary>
         /// 相等运算
         /// </summary>
-        public override bool Equals( object other )
+        public override bool Equals(object other)
         {
-            return this == ( other as EntityBase<TEntity, TKey> );
+            return this == (other as EntityBase<TEntity, TKey>);
         }
 
         /// <summary>
@@ -57,31 +57,31 @@ namespace KissU.Util.Domains
         /// </summary>
         public override int GetHashCode()
         {
-            return ReferenceEquals( Id, null ) ? 0 : Id.GetHashCode();
+            return ReferenceEquals(Id, null) ? 0 : Id.GetHashCode();
         }
 
         /// <summary>
         /// 相等比较
         /// </summary>
-        public static bool operator ==( EntityBase<TEntity, TKey> left, EntityBase<TEntity, TKey> right )
+        public static bool operator ==(EntityBase<TEntity, TKey> left, EntityBase<TEntity, TKey> right)
         {
-            if( (object)left == null && (object)right == null )
+            if ((object)left == null && (object)right == null)
                 return true;
-            if( !( left is TEntity ) || !( right is TEntity ) )
+            if (!(left is TEntity) || !(right is TEntity))
                 return false;
-            if( Equals( left.Id, null ) )
+            if (Equals(left.Id, null))
                 return false;
-            if( left.Id.Equals( default( TKey ) ) )
+            if (left.Id.Equals(default(TKey)))
                 return false;
-            return left.Id.Equals( right.Id );
+            return left.Id.Equals(right.Id);
         }
 
         /// <summary>
         /// 不相等比较
         /// </summary>
-        public static bool operator !=( EntityBase<TEntity, TKey> left, EntityBase<TEntity, TKey> right )
+        public static bool operator !=(EntityBase<TEntity, TKey> left, EntityBase<TEntity, TKey> right)
         {
-            return !( left == right );
+            return !(left == right);
         }
 
         /// <summary>
@@ -97,9 +97,9 @@ namespace KissU.Util.Domains
         /// </summary>
         protected virtual void InitId()
         {
-            if( typeof( TKey ) == typeof( int ) || typeof( TKey ) == typeof( long ) )
+            if (typeof(TKey) == typeof(int) || typeof(TKey) == typeof(long))
                 return;
-            if( string.IsNullOrWhiteSpace( Id.SafeString() ) || Id.Equals( default( TKey ) ) )
+            if (string.IsNullOrWhiteSpace(Id.SafeString()) || Id.Equals(default(TKey)))
                 Id = CreateId();
         }
 
@@ -108,7 +108,7 @@ namespace KissU.Util.Domains
         /// </summary>
         protected virtual TKey CreateId()
         {
-            return Util.Helpers.Convert.To<TKey>( Guid.NewGuid() );
+            return Util.Helpers.Convert.To<TKey>(Guid.NewGuid());
         }
 
         /// <summary>
@@ -119,20 +119,20 @@ namespace KissU.Util.Domains
         /// <summary>
         /// 验证
         /// </summary>
-        protected override void Validate( ValidationResultCollection results )
+        protected override void Validate(ValidationResultCollection results)
         {
-            ValidateId( results );
+            ValidateId(results);
         }
 
         /// <summary>
         /// 验证标识
         /// </summary>
-        protected virtual void ValidateId( ValidationResultCollection results )
+        protected virtual void ValidateId(ValidationResultCollection results)
         {
-            if( typeof( TKey ) == typeof( int ) || typeof( TKey ) == typeof( long ) )
+            if (typeof(TKey) == typeof(int) || typeof(TKey) == typeof(long))
                 return;
-            if( string.IsNullOrWhiteSpace( Id.SafeString() ) || Id.Equals( default( TKey ) ) )
-                results.Add( new ValidationResult( R.IdIsEmpty ) );
+            if (string.IsNullOrWhiteSpace(Id.SafeString()) || Id.Equals(default(TKey)))
+                results.Add(new ValidationResult(R.IdIsEmpty));
         }
     }
 }

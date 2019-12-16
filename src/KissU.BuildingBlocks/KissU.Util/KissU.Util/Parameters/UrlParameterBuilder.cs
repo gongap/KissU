@@ -19,7 +19,7 @@ namespace KissU.Util.Parameters
         /// <summary>
         /// 初始化Url参数生成器
         /// </summary>
-        public UrlParameterBuilder() : this( "" )
+        public UrlParameterBuilder() : this("")
         {
         }
 
@@ -27,16 +27,16 @@ namespace KissU.Util.Parameters
         /// 初始化Url参数生成器
         /// </summary>
         /// <param name="builder">参数生成器</param>
-        public UrlParameterBuilder( ParameterBuilder builder )
+        public UrlParameterBuilder(ParameterBuilder builder)
         {
-            ParameterBuilder = builder == null ? new ParameterBuilder() : new ParameterBuilder( builder );
+            ParameterBuilder = builder == null ? new ParameterBuilder() : new ParameterBuilder(builder);
         }
 
         /// <summary>
         /// 初始化Url参数生成器
         /// </summary>
         /// <param name="builder">Url参数生成器</param>
-        public UrlParameterBuilder( UrlParameterBuilder builder ) : this( "", builder )
+        public UrlParameterBuilder(UrlParameterBuilder builder) : this("", builder)
         {
         }
 
@@ -45,24 +45,24 @@ namespace KissU.Util.Parameters
         /// </summary>
         /// <param name="url">Url</param>
         /// <param name="builder">Url参数生成器</param>
-        public UrlParameterBuilder( string url, UrlParameterBuilder builder = null )
+        public UrlParameterBuilder(string url, UrlParameterBuilder builder = null)
         {
-            ParameterBuilder = builder == null ? new ParameterBuilder() : new ParameterBuilder( builder.ParameterBuilder );
-            LoadUrl( url );
+            ParameterBuilder = builder == null ? new ParameterBuilder() : new ParameterBuilder(builder.ParameterBuilder);
+            LoadUrl(url);
         }
 
         /// <summary>
         /// 加载Url
         /// </summary>
-        public void LoadUrl( string url )
+        public void LoadUrl(string url)
         {
-            if( string.IsNullOrWhiteSpace( url ) )
+            if (string.IsNullOrWhiteSpace(url))
                 return;
-            if( url.Contains( "?" ) )
-                url = url.Substring( url.IndexOf( "?", StringComparison.Ordinal ) + 1 );
-            var parameters = HttpUtility.ParseQueryString( url );
-            foreach( var key in parameters.AllKeys )
-                Add( key, parameters.Get( key ) );
+            if (url.Contains("?"))
+                url = url.Substring(url.IndexOf("?", StringComparison.Ordinal) + 1);
+            var parameters = HttpUtility.ParseQueryString(url);
+            foreach (var key in parameters.AllKeys)
+                Add(key, parameters.Get(key));
         }
 
         /// <summary>
@@ -71,12 +71,12 @@ namespace KissU.Util.Parameters
         public void LoadForm()
         {
             var form = Web.Request?.Form;
-            if( form == null )
+            if (form == null)
                 return;
-            foreach( var key in form.Keys )
+            foreach (var key in form.Keys)
             {
-                if( form.ContainsKey( key ) )
-                    Add( key, form[key] );
+                if (form.ContainsKey(key))
+                    Add(key, form[key]);
             }
         }
 
@@ -86,12 +86,12 @@ namespace KissU.Util.Parameters
         public void LoadQuery()
         {
             var query = Web.Request?.Query;
-            if( query == null )
+            if (query == null)
                 return;
-            foreach( var key in query.Keys )
+            foreach (var key in query.Keys)
             {
-                if( query.ContainsKey( key ) )
-                    Add( key, query[key] );
+                if (query.ContainsKey(key))
+                    Add(key, query[key]);
             }
         }
 
@@ -100,9 +100,9 @@ namespace KissU.Util.Parameters
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="value">值</param>
-        public UrlParameterBuilder Add( string key, object value )
+        public UrlParameterBuilder Add(string key, object value)
         {
-            ParameterBuilder.Add( key, value );
+            ParameterBuilder.Add(key, value);
             return this;
         }
 
@@ -110,9 +110,9 @@ namespace KissU.Util.Parameters
         /// 获取值
         /// </summary>
         /// <param name="name">参数名</param>
-        public object GetValue( string name )
+        public object GetValue(string name)
         {
-            return ParameterBuilder.GetValue( name );
+            return ParameterBuilder.GetValue(name);
         }
 
         /// <summary>
@@ -121,8 +121,8 @@ namespace KissU.Util.Parameters
         /// <param name="name">参数名</param>
         public object this[string name]
         {
-            get => GetValue( name );
-            set => Add( name, value );
+            get => GetValue(name);
+            set => Add(name, value);
         }
 
         /// <summary>
@@ -131,9 +131,9 @@ namespace KissU.Util.Parameters
         /// <param name="isSort">是否按参数名排序</param>
         /// <param name="isUrlEncode">是否Url编码</param>
         /// <param name="encoding">字符编码，默认值：UTF-8</param>
-        public IDictionary<string, object> GetDictionary( bool isSort = true, bool isUrlEncode = false, string encoding = "UTF-8" )
+        public IDictionary<string, object> GetDictionary(bool isSort = true, bool isUrlEncode = false, string encoding = "UTF-8")
         {
-            return ParameterBuilder.GetDictionary( isSort, isUrlEncode, encoding );
+            return ParameterBuilder.GetDictionary(isSort, isUrlEncode, encoding);
         }
 
         /// <summary>
@@ -150,18 +150,18 @@ namespace KissU.Util.Parameters
         /// <param name="isSort">是否按参数名排序</param>
         /// <param name="isUrlEncode">是否Url编码</param>
         /// <param name="encoding">字符编码，默认值：UTF-8</param>
-        public string Result( bool isSort = false, bool isUrlEncode = false, string encoding = "UTF-8" )
+        public string Result(bool isSort = false, bool isUrlEncode = false, string encoding = "UTF-8")
         {
-            return ParameterBuilder.Result( UrlParameterFormat.Instance, isSort, isUrlEncode, encoding );
+            return ParameterBuilder.Result(UrlParameterFormat.Instance, isSort, isUrlEncode, encoding);
         }
 
         /// <summary>
         /// 连接Url
         /// </summary>
         /// <param name="url">地址</param>
-        public string JoinUrl( string url )
+        public string JoinUrl(string url)
         {
-            return Url.Join( url, Result() );
+            return Url.Join(url, Result());
         }
 
         /// <summary>
@@ -176,9 +176,9 @@ namespace KissU.Util.Parameters
         /// 移除参数
         /// </summary>
         /// <param name="key">键</param>
-        public bool Remove( string key )
+        public bool Remove(string key)
         {
-            return ParameterBuilder.Remove( key );
+            return ParameterBuilder.Remove(key);
         }
     }
 }

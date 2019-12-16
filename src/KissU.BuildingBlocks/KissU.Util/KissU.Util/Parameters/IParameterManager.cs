@@ -9,6 +9,6 @@
         /// 获取值
         /// </summary>
         /// <param name="name">参数名</param>
-        object GetValue( string name );
+        object GetValue(string name);
     }
 }

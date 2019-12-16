@@ -19,12 +19,12 @@ namespace KissU.Util.Datas.Transactions
         /// 注册事务操作
         /// </summary>
         /// <param name="action">事务操作</param>
-        void Register( Func<IDbTransaction, Task> action );
+        void Register(Func<IDbTransaction, Task> action);
 
         /// <summary>
         /// 提交
         /// </summary>
         /// <param name="transaction">事务</param>
-        Task CommitAsync( IDbTransaction transaction );
+        Task CommitAsync(IDbTransaction transaction);
     }
 }

@@ -23,11 +23,11 @@ namespace KissU.Util.Signatures
         /// </summary>
         /// <param name="key">签名密钥</param>
         /// <param name="builder">Url参数生成器</param>
-        public SignManager( ISignKey key, UrlParameterBuilder builder = null )
+        public SignManager(ISignKey key, UrlParameterBuilder builder = null)
         {
-            key.CheckNull( nameof( key ) );
+            key.CheckNull(nameof(key));
             _key = key;
-            _builder = builder == null ? new UrlParameterBuilder() : new UrlParameterBuilder( builder );
+            _builder = builder == null ? new UrlParameterBuilder() : new UrlParameterBuilder(builder);
         }
 
         /// <summary>
@@ -35,9 +35,9 @@ namespace KissU.Util.Signatures
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="value">值</param>
-        public ISignManager Add( string key, object value )
+        public ISignManager Add(string key, object value)
         {
-            _builder.Add( key, value );
+            _builder.Add(key, value);
             return this;
         }
 
@@ -46,16 +46,16 @@ namespace KissU.Util.Signatures
         /// </summary>
         public string Sign()
         {
-            return Encrypt.Rsa2Sign( _builder.Result( true ), _key.GetKey() );
+            return Encrypt.Rsa2Sign(_builder.Result(true), _key.GetKey());
         }
 
         /// <summary>
         /// 验证签名
         /// </summary>
         /// <param name="sign">签名</param>
-        public bool Verify( string sign )
+        public bool Verify(string sign)
         {
-            return Encrypt.Rsa2Verify( _builder.Result( true ), _key.GetPublicKey(), sign );
+            return Encrypt.Rsa2Verify(_builder.Result(true), _key.GetPublicKey(), sign);
         }
     }
 }

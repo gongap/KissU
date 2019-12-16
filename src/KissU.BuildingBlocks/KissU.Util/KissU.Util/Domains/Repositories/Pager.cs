@@ -9,8 +9,8 @@
         /// 初始化分页参数
         /// </summary>
         public Pager()
-            : this( 1 )
-            {
+            : this(1)
+        {
         }
 
         /// <summary>
@@ -19,9 +19,9 @@
         /// <param name="page">页索引</param>
         /// <param name="pageSize">每页显示行数,默认20</param> 
         /// <param name="order">排序条件</param>
-        public Pager( int page, int pageSize, string order )
-            : this( page, pageSize, 0, order )
-            {
+        public Pager(int page, int pageSize, string order)
+            : this(page, pageSize, 0, order)
+        {
         }
 
         /// <summary>
@@ -31,7 +31,7 @@
         /// <param name="pageSize">每页显示行数,默认20</param> 
         /// <param name="totalCount">总行数</param>
         /// <param name="order">排序条件</param>
-        public Pager( int page, int pageSize = 20, int totalCount = 0, string order = "" )
+        public Pager(int page, int pageSize = 20, int totalCount = 0, string order = "")
         {
             Page = page;
             PageSize = pageSize;
@@ -48,7 +48,7 @@
         {
             get
             {
-                if( _pageIndex <= 0 )
+                if (_pageIndex <= 0)
                     _pageIndex = 1;
                 return _pageIndex;
             }
@@ -70,9 +70,9 @@
         /// </summary>
         public int GetPageCount()
         {
-            if ( ( TotalCount % PageSize ) == 0 )
+            if ((TotalCount % PageSize) == 0)
                 return TotalCount / PageSize;
-            return ( TotalCount / PageSize ) + 1;
+            return (TotalCount / PageSize) + 1;
         }
 
         /// <summary>
@@ -80,7 +80,7 @@
         /// </summary>
         public int GetSkipCount()
         {
-            return PageSize * ( Page - 1 );
+            return PageSize * (Page - 1);
         }
 
         /// <summary>
@@ -93,7 +93,7 @@
         /// </summary>
         public int GetStartNumber()
         {
-            return ( Page - 1 ) * PageSize + 1;
+            return (Page - 1) * PageSize + 1;
         }
 
         /// <summary>

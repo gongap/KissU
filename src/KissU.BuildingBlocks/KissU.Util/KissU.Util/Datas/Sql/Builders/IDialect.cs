@@ -19,7 +19,7 @@
         /// 安全名称
         /// </summary>
         /// <param name="name">名称</param>
-        string SafeName( string name );
+        string SafeName(string name);
 
         /// <summary>
         /// 获取参数前缀
@@ -35,18 +35,18 @@
         /// 创建参数名
         /// </summary>
         /// <param name="paramIndex">参数索引</param>
-        string GenerateName( int paramIndex );
+        string GenerateName(int paramIndex);
 
         /// <summary>
         /// 获取参数名
         /// </summary>
         /// <param name="paramName">参数名</param>
-        string GetParamName( string paramName );
+        string GetParamName(string paramName);
 
         /// <summary>
         /// 获取参数值
         /// </summary>
         /// <param name="paramValue">参数值</param>
-        object GetParamValue( object paramValue );
+        object GetParamValue(object paramValue);
     }
 }

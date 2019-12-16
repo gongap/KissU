@@ -19,6 +19,6 @@ namespace KissU.Util.Events.Handlers
         /// 处理事件
         /// </summary>
         /// <param name="event">事件</param>
-        Task HandleAsync( TEvent @event ) ;
+        Task HandleAsync(TEvent @event);
     }
 }

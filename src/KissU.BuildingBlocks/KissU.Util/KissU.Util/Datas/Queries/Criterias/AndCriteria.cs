@@ -15,9 +15,9 @@ namespace KissU.Util.Datas.Queries.Criterias
         /// </summary>
         /// <param name="left">查询条件1</param>
         /// <param name="right">查询条件2</param>
-        public AndCriteria( Expression<Func<TEntity, bool>> left, Expression<Func<TEntity, bool>> right )
+        public AndCriteria(Expression<Func<TEntity, bool>> left, Expression<Func<TEntity, bool>> right)
         {
-            Predicate = left.And( right );
+            Predicate = left.And(right);
         }
 
         /// <summary>

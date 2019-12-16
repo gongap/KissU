@@ -10,25 +10,25 @@ namespace KissU.Util.Files
         /// <summary>
         /// 字节
         /// </summary>
-        [Description( "B" )]
+        [Description("B")]
         Byte,
 
         /// <summary>
         /// K字节
         /// </summary>
-        [Description( "KB" )]
+        [Description("KB")]
         K,
 
         /// <summary>
         /// M字节
         /// </summary>
-        [Description( "MB" )]
+        [Description("MB")]
         M,
 
         /// <summary>
         /// G字节
         /// </summary>
-        [Description( "GB" )]
+        [Description("GB")]
         G
     }
 
@@ -40,7 +40,7 @@ namespace KissU.Util.Files
         /// <summary>
         /// 获取描述
         /// </summary>
-        public static string Description( this FileSizeUnit? unit )
+        public static string Description(this FileSizeUnit? unit)
         {
             return unit == null ? string.Empty : unit.Value.Description();
         }
@@ -48,7 +48,7 @@ namespace KissU.Util.Files
         /// <summary>
         /// 获取值
         /// </summary>
-        public static int? Value( this FileSizeUnit? unit )
+        public static int? Value(this FileSizeUnit? unit)
         {
             return unit?.Value();
         }

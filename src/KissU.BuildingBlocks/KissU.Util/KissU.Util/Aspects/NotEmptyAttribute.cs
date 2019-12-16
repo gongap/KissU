@@ -13,11 +13,11 @@ namespace KissU.Util.Aspects
         /// <summary>
         /// 执行
         /// </summary>
-        public override Task Invoke( ParameterAspectContext context, ParameterAspectDelegate next )
+        public override Task Invoke(ParameterAspectContext context, ParameterAspectDelegate next)
         {
-            if( string.IsNullOrWhiteSpace( context.Parameter.Value.SafeString() ) )
-                throw new ArgumentNullException( context.Parameter.Name );
-            return next( context );
+            if (string.IsNullOrWhiteSpace(context.Parameter.Value.SafeString()))
+                throw new ArgumentNullException(context.Parameter.Name);
+            return next(context);
         }
     }
 }

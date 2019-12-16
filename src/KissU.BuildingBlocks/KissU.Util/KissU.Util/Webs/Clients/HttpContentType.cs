@@ -10,19 +10,19 @@ namespace KissU.Util.Webs.Clients
         /// <summary>
         /// application/x-www-form-urlencoded
         /// </summary>
-        [Description( "application/x-www-form-urlencoded" )]
+        [Description("application/x-www-form-urlencoded")]
         FormUrlEncoded,
 
         /// <summary>
         /// application/json
         /// </summary>
-        [Description( "application/json" )]
+        [Description("application/json")]
         Json,
 
         /// <summary>
         /// text/xml
         /// </summary>
-        [Description( "text/xml" )]
+        [Description("text/xml")]
         Xml
     }
 }

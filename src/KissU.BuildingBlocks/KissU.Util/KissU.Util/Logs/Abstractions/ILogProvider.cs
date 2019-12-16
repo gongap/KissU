@@ -27,6 +27,6 @@ namespace KissU.Util.Logs.Abstractions
         /// </summary>
         /// <param name="level">日志等级</param>
         /// <param name="content">日志内容</param>
-        void WriteLog( LogLevel level, ILogContent content );
+        void WriteLog(LogLevel level, ILogContent content);
     }
 }

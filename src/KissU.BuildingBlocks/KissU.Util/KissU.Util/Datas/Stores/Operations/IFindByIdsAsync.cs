@@ -16,19 +16,19 @@ namespace KissU.Util.Datas.Stores.Operations
         /// 查找实体列表
         /// </summary>
         /// <param name="ids">标识列表</param>
-        Task<List<TEntity>> FindByIdsAsync( params TKey[] ids );
+        Task<List<TEntity>> FindByIdsAsync(params TKey[] ids);
 
         /// <summary>
         /// 查找实体列表
         /// </summary>
         /// <param name="ids">标识列表</param>
         /// <param name="cancellationToken">取消令牌</param>
-        Task<List<TEntity>> FindByIdsAsync( IEnumerable<TKey> ids, CancellationToken cancellationToken = default( CancellationToken ) );
+        Task<List<TEntity>> FindByIdsAsync(IEnumerable<TKey> ids, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 查找实体列表
         /// </summary>
         /// <param name="ids">逗号分隔的标识列表，范例："1,2"</param>
-        Task<List<TEntity>> FindByIdsAsync( string ids );
+        Task<List<TEntity>> FindByIdsAsync(string ids);
     }
 }

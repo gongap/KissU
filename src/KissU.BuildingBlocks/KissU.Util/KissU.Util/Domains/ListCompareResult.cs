@@ -13,7 +13,7 @@ namespace KissU.Util.Domains
         /// <param name="createList">创建列表</param>
         /// <param name="updateList">更新列表</param>
         /// <param name="deleteList">删除列表</param>
-        public ListCompareResult( List<TEntity> createList, List<TEntity> updateList, List<TEntity> deleteList )
+        public ListCompareResult(List<TEntity> createList, List<TEntity> updateList, List<TEntity> deleteList)
         {
             CreateList = createList;
             UpdateList = updateList;

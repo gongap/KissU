@@ -25,9 +25,9 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <typeparam name="T">值的类型</typeparam>
         /// <param name="value">值</param>
-        public String Append<T>( T value )
+        public String Append<T>(T value)
         {
-            Builder.Append( value );
+            Builder.Append(value);
             return this;
         }
 
@@ -36,14 +36,14 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <param name="value">值</param>
         /// <param name="args">参数</param>
-        public String Append( string value, params object[] args )
+        public String Append(string value, params object[] args)
         {
-            if( args == null )
+            if (args == null)
                 args = new object[] { string.Empty };
-            if( args.Length == 0 )
-                Builder.Append( value );
+            if (args.Length == 0)
+                Builder.Append(value);
             else
-                Builder.AppendFormat( value, args );
+                Builder.AppendFormat(value, args);
             return this;
         }
 
@@ -61,9 +61,9 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <typeparam name="T">值的类型</typeparam>
         /// <param name="value">值</param>
-        public String AppendLine<T>( T value )
+        public String AppendLine<T>(T value)
         {
-            Append( value );
+            Append(value);
             Builder.AppendLine();
             return this;
         }
@@ -73,9 +73,9 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <param name="value">值</param>
         /// <param name="args">参数</param>
-        public String AppendLine( string value, params object[] args )
+        public String AppendLine(string value, params object[] args)
         {
-            Append( value, args );
+            Append(value, args);
             Builder.AppendLine();
             return this;
         }
@@ -84,10 +84,10 @@ namespace KissU.Util.Helpers
         /// 替换内容
         /// </summary>
         /// <param name="value">值</param>
-        public String Replace( string value )
+        public String Replace(string value)
         {
             Builder.Clear();
-            Builder.Append( value );
+            Builder.Append(value);
             return this;
         }
 
@@ -95,12 +95,12 @@ namespace KissU.Util.Helpers
         /// 移除末尾字符串
         /// </summary>
         /// <param name="end">末尾字符串</param>
-        public String RemoveEnd( string end )
+        public String RemoveEnd(string end)
         {
             string result = Builder.ToString();
-            if( !result.EndsWith( end ) )
+            if (!result.EndsWith(end))
                 return this;
-            Builder = new StringBuilder( result.TrimEnd( end.ToCharArray() ) );
+            Builder = new StringBuilder(result.TrimEnd(end.ToCharArray()));
             return this;
         }
 

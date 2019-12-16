@@ -56,7 +56,8 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
                 }
                 index++;
                 vt = _healthCheckService.IsHealth(addressModel);
-            } while (!(vt.IsCompletedSuccessfully ? vt.Result : await vt));
+            }
+            while (!(vt.IsCompletedSuccessfully ? vt.Result : await vt));
             return addressModel;
         }
 

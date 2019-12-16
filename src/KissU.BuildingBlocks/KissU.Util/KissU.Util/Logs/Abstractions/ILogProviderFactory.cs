@@ -10,6 +10,6 @@
         /// </summary>
         /// <param name="logName">日志名称</param>
         /// <param name="format">日志格式化器</param>
-        ILogProvider Create( string logName, ILogFormat format = null );
+        ILogProvider Create(string logName, ILogFormat format = null);
     }
 }

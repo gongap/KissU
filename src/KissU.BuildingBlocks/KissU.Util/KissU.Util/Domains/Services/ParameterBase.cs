@@ -14,10 +14,10 @@ namespace KissU.Util.Domains.Services
         /// </summary>
         public virtual ValidationResultCollection Validate()
         {
-            var result = DataAnnotationValidation.Validate( this );
-            if( result.IsValid )
+            var result = DataAnnotationValidation.Validate(this);
+            if (result.IsValid)
                 return ValidationResultCollection.Success;
-            throw new Warning( result.First().ErrorMessage );
+            throw new Warning(result.First().ErrorMessage);
         }
     }
 }

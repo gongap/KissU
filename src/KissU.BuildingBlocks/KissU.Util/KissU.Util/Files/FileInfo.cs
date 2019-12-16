@@ -12,12 +12,12 @@
         /// <param name="size">文件大小</param>
         /// <param name="fileName">文件名</param>
         /// <param name="id">文件标识</param>
-        public FileInfo( string path, long? size, string fileName = null, string id = null )
+        public FileInfo(string path, long? size, string fileName = null, string id = null)
         {
             Path = path;
-            Size = new FileSize( size.SafeValue() );
-            Extension = System.IO.Path.GetExtension( path )?.TrimStart( '.' );
-            FileName = string.IsNullOrWhiteSpace( fileName ) ? System.IO.Path.GetFileName( path ) : fileName;
+            Size = new FileSize(size.SafeValue());
+            Extension = System.IO.Path.GetExtension(path)?.TrimStart('.');
+            FileName = string.IsNullOrWhiteSpace(fileName) ? System.IO.Path.GetFileName(path) : fileName;
             Id = id;
         }
 

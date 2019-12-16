@@ -17,26 +17,26 @@ namespace KissU.Util.Exceptions
         /// 初始化并发异常
         /// </summary>
         public ConcurrencyException()
-            : this( "" )
-            {
+            : this("")
+        {
         }
 
         /// <summary>
         /// 初始化并发异常
         /// </summary>
         /// <param name="message">错误消息</param>
-        public ConcurrencyException( string message )
-            : this( message, null )
-            {
+        public ConcurrencyException(string message)
+            : this(message, null)
+        {
         }
 
         /// <summary>
         /// 初始化并发异常
         /// </summary>
         /// <param name="exception">异常</param>
-        public ConcurrencyException( Exception exception )
-            : this( "", exception )
-            {
+        public ConcurrencyException(Exception exception)
+            : this("", exception)
+        {
         }
 
         /// <summary>
@@ -44,9 +44,9 @@ namespace KissU.Util.Exceptions
         /// </summary>
         /// <param name="message">错误消息</param>
         /// <param name="exception">异常</param>
-        public ConcurrencyException( string message, Exception exception )
-            : this( message, exception, "" )
-            {
+        public ConcurrencyException(string message, Exception exception)
+            : this(message, exception, "")
+        {
         }
 
         /// <summary>
@@ -55,9 +55,9 @@ namespace KissU.Util.Exceptions
         /// <param name="message">错误消息</param>
         /// <param name="exception">异常</param>
         /// <param name="code">错误码</param>
-        public ConcurrencyException( string message, Exception exception, string code )
-            : base( message, code, exception )
-            {
+        public ConcurrencyException(string message, Exception exception, string code)
+            : base(message, code, exception)
+        {
             _message = message;
         }
 

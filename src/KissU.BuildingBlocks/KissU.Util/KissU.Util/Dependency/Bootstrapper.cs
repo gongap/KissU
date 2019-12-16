@@ -53,7 +53,7 @@ namespace KissU.Util.Dependency
         /// <param name="configs">依赖配置</param>
         /// <param name="aopConfigAction">Aop配置操作</param>
         /// <param name="finder">类型查找器</param>
-        public Bootstrapper( IServiceCollection services, IConfig[] configs, Action<IAspectConfiguration> aopConfigAction, IFind finder )
+        public Bootstrapper(IServiceCollection services, IConfig[] configs, Action<IAspectConfiguration> aopConfigAction, IFind finder)
         {
             _services = services ?? new ServiceCollection();
             _configs = configs;
@@ -68,10 +68,10 @@ namespace KissU.Util.Dependency
         /// <param name="configs">依赖配置</param>
         /// <param name="aopConfigAction">Aop配置操作</param>
         /// <param name="finder">类型查找器</param>
-        public static IServiceProvider Run( IServiceCollection services = null, IConfig[] configs = null, 
-                Action<IAspectConfiguration> aopConfigAction=null, IFind finder = null )
-                {
-            return new Bootstrapper( services, configs, aopConfigAction, finder ).Bootstrap();
+        public static IServiceProvider Run(IServiceCollection services = null, IConfig[] configs = null,
+                Action<IAspectConfiguration> aopConfigAction = null, IFind finder = null)
+        {
+            return new Bootstrapper(services, configs, aopConfigAction, finder).Bootstrap();
         }
 
         /// <summary>
@@ -79,9 +79,9 @@ namespace KissU.Util.Dependency
         /// </summary>
         /// <param name="services">服务集合</param>
         /// <param name="configs">依赖配置</param>
-        public static IServiceProvider Run( IServiceCollection services, params IConfig[] configs )
+        public static IServiceProvider Run(IServiceCollection services, params IConfig[] configs)
         {
-            return Run( services, configs, null );
+            return Run(services, configs, null);
         }
 
         /// <summary>
@@ -90,13 +90,13 @@ namespace KissU.Util.Dependency
         public IServiceProvider Bootstrap()
         {
             _assemblies = _finder.GetAssemblies();
-            return Ioc.DefaultContainer.Register( _services, RegisterServices, _configs );
+            return Ioc.DefaultContainer.Register(_services, RegisterServices, _configs);
         }
 
         /// <summary>
         /// 注册服务集合
         /// </summary>
-        private void RegisterServices( ContainerBuilder builder )
+        private void RegisterServices(ContainerBuilder builder)
         {
             _builder = builder;
             RegisterInfrastracture();
@@ -118,7 +118,7 @@ namespace KissU.Util.Dependency
         /// </summary>
         private void EnableAop()
         {
-            _builder.EnableAop( _aopConfigAction );
+            _builder.EnableAop(_aopConfigAction);
         }
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace KissU.Util.Dependency
         /// </summary>
         private void RegisterFinder()
         {
-            _builder.AddSingleton( _finder );
+            _builder.AddSingleton(_finder);
         }
 
         /// <summary>
@@ -134,30 +134,30 @@ namespace KissU.Util.Dependency
         /// </summary>
         private void RegisterEventHandlers()
         {
-            RegisterEventHandlers( typeof( IEventHandler<> ) );
+            RegisterEventHandlers(typeof(IEventHandler<>));
         }
 
         /// <summary>
         /// 注册事件处理器
         /// </summary>
-        private void RegisterEventHandlers( Type handlerType )
+        private void RegisterEventHandlers(Type handlerType)
         {
-            var handlerTypes = GetTypes( handlerType );
-            foreach( var handler in handlerTypes )
+            var handlerTypes = GetTypes(handlerType);
+            foreach (var handler in handlerTypes)
             {
-                _builder.RegisterType( handler ).As( handler.FindInterfaces(
-                    ( filter, criteria ) => filter.IsGenericType && ( (Type)criteria ).IsAssignableFrom( filter.GetGenericTypeDefinition() )
+                _builder.RegisterType(handler).As(handler.FindInterfaces(
+                    (filter, criteria) => filter.IsGenericType && ((Type)criteria).IsAssignableFrom(filter.GetGenericTypeDefinition())
                     , handlerType
-                ) ).InstancePerLifetimeScope();
+                )).InstancePerLifetimeScope();
             }
         }
 
         /// <summary>
         /// 获取类型集合
         /// </summary>
-        private Type[] GetTypes( Type type )
+        private Type[] GetTypes(Type type)
         {
-            return _finder.Find( type, _assemblies ).ToArray();
+            return _finder.Find(type, _assemblies).ToArray();
         }
 
         /// <summary>
@@ -176,7 +176,7 @@ namespace KissU.Util.Dependency
         /// </summary>
         private void RegisterSingletonDependency()
         {
-            _builder.RegisterTypes( GetTypes<ISingletonDependency>() ).AsImplementedInterfaces().PropertiesAutowired().SingleInstance();
+            _builder.RegisterTypes(GetTypes<ISingletonDependency>()).AsImplementedInterfaces().PropertiesAutowired().SingleInstance();
         }
 
         /// <summary>
@@ -184,7 +184,7 @@ namespace KissU.Util.Dependency
         /// </summary>
         private Type[] GetTypes<T>()
         {
-            return _finder.Find<T>( _assemblies ).ToArray();
+            return _finder.Find<T>(_assemblies).ToArray();
         }
 
         /// <summary>
@@ -192,7 +192,7 @@ namespace KissU.Util.Dependency
         /// </summary>
         private void RegisterScopeDependency()
         {
-            _builder.RegisterTypes( GetTypes<IScopeDependency>() ).AsImplementedInterfaces().PropertiesAutowired().InstancePerLifetimeScope();
+            _builder.RegisterTypes(GetTypes<IScopeDependency>()).AsImplementedInterfaces().PropertiesAutowired().InstancePerLifetimeScope();
         }
 
         /// <summary>
@@ -200,7 +200,7 @@ namespace KissU.Util.Dependency
         /// </summary>
         private void RegisterTransientDependency()
         {
-            _builder.RegisterTypes( GetTypes<ITransientDependency>() ).AsImplementedInterfaces().PropertiesAutowired().InstancePerDependency();
+            _builder.RegisterTypes(GetTypes<ITransientDependency>()).AsImplementedInterfaces().PropertiesAutowired().InstancePerDependency();
         }
 
         /// <summary>
@@ -209,7 +209,7 @@ namespace KissU.Util.Dependency
         private void ResolveDependencyRegistrar()
         {
             var types = GetTypes<IDependencyRegistrar>();
-            types.Select( type => Reflection.CreateInstance<IDependencyRegistrar>( type ) ).ToList().ForEach( t => t.Register( _services ) );
+            types.Select(type => Reflection.CreateInstance<IDependencyRegistrar>(type)).ToList().ForEach(t => t.Register(_services));
         }
     }
 }

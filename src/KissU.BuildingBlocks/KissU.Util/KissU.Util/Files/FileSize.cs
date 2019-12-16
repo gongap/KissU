@@ -10,17 +10,17 @@
         /// </summary>
         /// <param name="size">文件大小</param>
         /// <param name="unit">文件大小单位</param>
-        public FileSize( long size, FileSizeUnit unit = FileSizeUnit.Byte )
+        public FileSize(long size, FileSizeUnit unit = FileSizeUnit.Byte)
         {
-            _size = GetSize( size, unit );
+            _size = GetSize(size, unit);
         }
 
         /// <summary>
         /// 获取文件大小
         /// </summary>
-        private static long GetSize( long size, FileSizeUnit unit )
+        private static long GetSize(long size, FileSizeUnit unit)
         {
-            switch( unit )
+            switch (unit)
             {
                 case FileSizeUnit.K:
                     return size * 1024;
@@ -53,7 +53,7 @@
         /// </summary>
         public double GetSizeByK()
         {
-            return Util.Helpers.Convert.ToDouble( _size / 1024.0, 2 );
+            return Util.Helpers.Convert.ToDouble(_size / 1024.0, 2);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@
         /// </summary>
         public double GetSizeByM()
         {
-            return Util.Helpers.Convert.ToDouble( _size / 1024.0 / 1024.0, 2 );
+            return Util.Helpers.Convert.ToDouble(_size / 1024.0 / 1024.0, 2);
         }
 
         /// <summary>
@@ -69,7 +69,7 @@
         /// </summary>
         public double GetSizeByG()
         {
-            return Util.Helpers.Convert.ToDouble( _size / 1024.0 / 1024.0 / 1024.0, 2 );
+            return Util.Helpers.Convert.ToDouble(_size / 1024.0 / 1024.0 / 1024.0, 2);
         }
 
         /// <summary>
@@ -77,11 +77,11 @@
         /// </summary>
         public override string ToString()
         {
-            if( _size >= 1024 * 1024 * 1024 )
+            if (_size >= 1024 * 1024 * 1024)
                 return $"{GetSizeByG()} {FileSizeUnit.G.Description()}";
-            if( _size >= 1024 * 1024 )
+            if (_size >= 1024 * 1024)
                 return $"{GetSizeByM()} {FileSizeUnit.M.Description()}";
-            if( _size >= 1024 )
+            if (_size >= 1024)
                 return $"{GetSizeByK()} {FileSizeUnit.K.Description()}";
             return $"{_size} {FileSizeUnit.Byte.Description()}";
         }

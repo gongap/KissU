@@ -9,6 +9,6 @@
         /// 获取数据库
         /// </summary>
         /// <param name="table">表</param>
-        string GetDatabase( string table );
+        string GetDatabase(string table);
     }
 }

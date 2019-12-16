@@ -14,26 +14,26 @@ namespace KissU.Util
         /// </summary>
         /// <param name="obj">对象</param>
         /// <param name="parameterName">参数名</param>
-        public static void CheckNull( this object obj, string parameterName )
+        public static void CheckNull(this object obj, string parameterName)
         {
-            if( obj == null )
-                throw new ArgumentNullException( parameterName );
+            if (obj == null)
+                throw new ArgumentNullException(parameterName);
         }
 
         /// <summary>
         /// 是否为空
         /// </summary>
         /// <param name="value">值</param>
-        public static bool IsEmpty( this string value )
+        public static bool IsEmpty(this string value)
         {
-            return string.IsNullOrWhiteSpace( value );
+            return string.IsNullOrWhiteSpace(value);
         }
 
         /// <summary>
         /// 是否为空
         /// </summary>
         /// <param name="value">值</param>
-        public static bool IsEmpty( this Guid value )
+        public static bool IsEmpty(this Guid value)
         {
             return value == Guid.Empty;
         }
@@ -42,9 +42,9 @@ namespace KissU.Util
         /// 是否为空
         /// </summary>
         /// <param name="value">值</param>
-        public static bool IsEmpty( this Guid? value )
+        public static bool IsEmpty(this Guid? value)
         {
-            if ( value == null )
+            if (value == null)
                 return true;
             return value == Guid.Empty;
         }
@@ -53,9 +53,9 @@ namespace KissU.Util
         /// 是否为空
         /// </summary>
         /// <param name="value">值</param>
-        public static bool IsEmpty<T>( this IEnumerable<T> value )
+        public static bool IsEmpty<T>(this IEnumerable<T> value)
         {
-            if ( value == null )
+            if (value == null)
                 return true;
             return !value.Any();
         }

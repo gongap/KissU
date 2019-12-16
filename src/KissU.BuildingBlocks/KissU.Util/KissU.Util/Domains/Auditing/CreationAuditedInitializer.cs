@@ -28,7 +28,7 @@ namespace KissU.Util.Domains.Auditing
         /// <param name="entity">实体</param>
         /// <param name="userId">用户标识</param>
         /// <param name="userName">用户名称</param>
-        private CreationAuditedInitializer( object entity, string userId, string userName )
+        private CreationAuditedInitializer(object entity, string userId, string userName)
         {
             _entity = entity;
             _userId = userId;
@@ -41,9 +41,9 @@ namespace KissU.Util.Domains.Auditing
         /// <param name="entity">实体</param>
         /// <param name="userId">用户标识</param>
         /// <param name="userName">用户名称</param>
-        public static void Init( object entity, string userId, string userName )
+        public static void Init(object entity, string userId, string userName)
         {
-            new CreationAuditedInitializer( entity, userId, userName ).Init();
+            new CreationAuditedInitializer(entity, userId, userName).Init();
         }
 
         /// <summary>
@@ -51,43 +51,43 @@ namespace KissU.Util.Domains.Auditing
         /// </summary>
         public void Init()
         {
-            if ( _entity == null )
+            if (_entity == null)
                 return;
             InitCreationTime();
             InitCreator();
-            if ( string.IsNullOrWhiteSpace( _userId ) )
+            if (string.IsNullOrWhiteSpace(_userId))
                 return;
-            if( _entity is ICreationAudited<Guid> )
+            if (_entity is ICreationAudited<Guid>)
             {
                 InitGuid();
                 return;
             }
-            if( _entity is ICreationAudited<Guid?> )
+            if (_entity is ICreationAudited<Guid?>)
             {
                 InitNullableGuid();
                 return;
             }
-            if( _entity is ICreationAudited<int> )
+            if (_entity is ICreationAudited<int>)
             {
                 InitInt();
                 return;
             }
-            if( _entity is ICreationAudited<int?> )
+            if (_entity is ICreationAudited<int?>)
             {
                 InitNullableInt();
                 return;
             }
-            if( _entity is ICreationAudited<string> )
+            if (_entity is ICreationAudited<string>)
             {
                 InitString();
                 return;
             }
-            if( _entity is ICreationAudited<long> )
+            if (_entity is ICreationAudited<long>)
             {
                 InitLong();
                 return;
             }
-            if( _entity is ICreationAudited<long?> )
+            if (_entity is ICreationAudited<long?>)
             {
                 InitNullableLong();
                 return;
@@ -99,7 +99,7 @@ namespace KissU.Util.Domains.Auditing
         /// </summary>
         private void InitCreationTime()
         {
-            if( _entity is ICreationTime result )
+            if (_entity is ICreationTime result)
                 result.CreationTime = DateTime.Now;
         }
 
@@ -108,9 +108,9 @@ namespace KissU.Util.Domains.Auditing
         /// </summary>
         private void InitCreator()
         {
-            if ( string.IsNullOrWhiteSpace( _userName ) )
+            if (string.IsNullOrWhiteSpace(_userName))
                 return;
-            if( _entity is ICreator result )
+            if (_entity is ICreator result)
                 result.Creator = _userName;
         }
 

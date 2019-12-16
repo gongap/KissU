@@ -38,7 +38,8 @@ namespace KissU.Core.Caching.NetCache
 
         public MemoryCacheProvider(string appName)
         {
-            _context = new Lazy<RedisContext>(() => {
+            _context = new Lazy<RedisContext>(() =>
+            {
                 if (CacheContainer.IsRegistered<RedisContext>(CacheTargetType.Redis.ToString()))
                     return CacheContainer.GetService<RedisContext>(appName);
                 else

@@ -15,11 +15,11 @@ namespace KissU.Util.Domains
         /// <param name="description">描述</param>
         /// <param name="oldValue">旧值</param>
         /// <param name="newValue">新值</param>
-        public void Add( string propertyName, string description, string oldValue, string newValue )
+        public void Add(string propertyName, string description, string oldValue, string newValue)
         {
-            if( string.IsNullOrWhiteSpace( propertyName ) )
+            if (string.IsNullOrWhiteSpace(propertyName))
                 return;
-            Add( new ChangeValue( propertyName, description, oldValue, newValue ) );
+            Add(new ChangeValue(propertyName, description, oldValue, newValue));
         }
 
         /// <summary>
@@ -28,8 +28,8 @@ namespace KissU.Util.Domains
         public override string ToString()
         {
             var result = new StringBuilder();
-            foreach( var item in this )
-                result.Append( $"{item}," );
+            foreach (var item in this)
+                result.Append($"{item},");
             return result.ToString();
         }
     }

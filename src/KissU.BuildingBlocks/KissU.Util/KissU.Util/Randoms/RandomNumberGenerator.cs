@@ -23,9 +23,9 @@
         /// </summary>
         /// <param name="min">最小值</param>
         /// <param name="max">最大值</param>
-        public int Generate( int min, int max )
+        public int Generate(int min, int max)
         {
-            return _random.Next( min, max );
+            return _random.Next(min, max);
         }
     }
 }

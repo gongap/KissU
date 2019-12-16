@@ -69,7 +69,8 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
                     _unHealths.Add(new ValueTuple<string, AddressModel>(key,addressModel));
                     _healthCheckService.Changed += ItemNode_Changed;
                 }
-            } while (!IsHealth); 
+            }
+            while (!IsHealth); 
             return addressModel;
         }
         #endregion Overrides of AddressSelectorBase

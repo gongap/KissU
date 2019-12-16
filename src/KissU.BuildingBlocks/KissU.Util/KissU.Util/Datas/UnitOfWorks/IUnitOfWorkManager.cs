@@ -22,6 +22,6 @@ namespace KissU.Util.Datas.UnitOfWorks
         /// 注册工作单元
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
-        void Register( IUnitOfWork unitOfWork );
+        void Register(IUnitOfWork unitOfWork);
     }
 }

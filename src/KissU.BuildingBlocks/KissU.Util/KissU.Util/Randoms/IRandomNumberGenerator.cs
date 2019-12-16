@@ -10,6 +10,6 @@
         /// </summary>
         /// <param name="min">最小值</param>
         /// <param name="max">最大值</param>
-        int Generate( int min, int max );
+        int Generate(int min, int max);
     }
 }

@@ -9,6 +9,6 @@
         /// 处理验证错误
         /// </summary>
         /// <param name="results">验证结果集合</param>
-        void Handle( ValidationResultCollection results );
+        void Handle(ValidationResultCollection results);
     }
 }

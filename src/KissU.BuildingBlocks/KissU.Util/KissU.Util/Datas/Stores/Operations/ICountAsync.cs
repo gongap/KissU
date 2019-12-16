@@ -16,6 +16,6 @@ namespace KissU.Util.Datas.Stores.Operations
         /// 查找数量
         /// </summary>
         /// <param name="predicate">查询条件</param>
-        Task<int> CountAsync( Expression<Func<TEntity, bool>> predicate = null );
+        Task<int> CountAsync(Expression<Func<TEntity, bool>> predicate = null);
     }
 }
