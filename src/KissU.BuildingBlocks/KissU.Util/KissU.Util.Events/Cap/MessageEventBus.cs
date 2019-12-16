@@ -5,17 +5,20 @@ using KissU.Util.Datas.Transactions;
 using KissU.Util.Logs;
 using KissU.Util.Logs.Extensions;
 
-namespace KissU.Util.Events.Cap {
+namespace KissU.Util.Events.Cap
+{
     /// <summary>
     /// Cap消息事件总线
     /// </summary>
-    public class MessageEventBus : IMessageEventBus {
+    public class MessageEventBus : IMessageEventBus
+    {
         /// <summary>
         /// 初始化Cap消息事件总线
         /// </summary>
         /// <param name="publisher">事件发布器</param>
         /// <param name="transactionActionManager">事务操作管理器</param>
-        public MessageEventBus( ICapPublisher publisher, ITransactionActionManager transactionActionManager ) {
+        public MessageEventBus( ICapPublisher publisher, ITransactionActionManager transactionActionManager )
+        {
             Publisher = publisher ?? throw new ArgumentNullException( nameof( publisher ) );
             TransactionActionManager = transactionActionManager ?? throw new ArgumentNullException( nameof( transactionActionManager ) );
         }
@@ -24,6 +27,7 @@ namespace KissU.Util.Events.Cap {
         /// 事件发布器
         /// </summary>
         public ICapPublisher Publisher { get; set; }
+
         /// <summary>
         /// 事务操作管理器
         /// </summary>
@@ -34,7 +38,8 @@ namespace KissU.Util.Events.Cap {
         /// </summary>
         /// <typeparam name="TEvent">事件类型</typeparam>
         /// <param name="event">事件</param>
-        public async Task PublishAsync<TEvent>( TEvent @event ) where TEvent : IMessageEvent {
+        public async Task PublishAsync<TEvent>( TEvent @event ) where TEvent : IMessageEvent
+        {
             await PublishAsync( @event.Name, @event.Data, @event.Callback, @event.Send );
         }
 
@@ -45,15 +50,18 @@ namespace KissU.Util.Events.Cap {
         /// <param name="data">事件数据</param>
         /// <param name="callback">回调名称</param>
         /// <param name="send">是否立即发送消息</param>
-        public async Task PublishAsync( string name, object data, string callback = null, bool send = false ) {
+        public async Task PublishAsync( string name, object data, string callback = null, bool send = false )
+        {
             var capTransaction = GetCapTransaction();
-            if( send ) {
+            if( send )
+            {
                 capTransaction.AutoCommit = true;
                 Publisher.Transaction.Value = capTransaction;
                 await Publish( name, data, callback );
                 return;
             }
-            TransactionActionManager.Register( async transaction => {
+            TransactionActionManager.Register( async transaction =>
+            {
                 capTransaction.DbTransaction = transaction;
                 capTransaction.AutoCommit = false;
                 Publisher.Transaction.Value = capTransaction;
@@ -64,14 +72,16 @@ namespace KissU.Util.Events.Cap {
         /// <summary>
         /// 获取Cap事务
         /// </summary>
-        private CapTransactionBase GetCapTransaction() {
+        private CapTransactionBase GetCapTransaction()
+        {
             return (CapTransactionBase)Publisher.ServiceProvider.GetService(typeof( CapTransactionBase ) );
         }
 
         /// <summary>
         /// 发布事件
         /// </summary>
-        private async Task Publish( string name, object data, string callback ) {
+        private async Task Publish( string name, object data, string callback )
+        {
             await Publisher.PublishAsync( name, data, callback );
             WriteLog( name );
         }
@@ -79,7 +89,8 @@ namespace KissU.Util.Events.Cap {
         /// <summary>
         /// 写日志
         /// </summary>
-        private void WriteLog( string name ) {
+        private void WriteLog( string name )
+        {
             var log = GetLog();
             if( log.IsDebugEnabled == false )
                 return;
@@ -91,11 +102,14 @@ namespace KissU.Util.Events.Cap {
         /// <summary>
         /// 获取日志
         /// </summary>
-        private ILog GetLog() {
-            try {
+        private ILog GetLog()
+        {
+            try
+            {
                 return Log.GetLog( this );
             }
-            catch {
+            catch
+            {
                 return Log.Null;
             }
         }
