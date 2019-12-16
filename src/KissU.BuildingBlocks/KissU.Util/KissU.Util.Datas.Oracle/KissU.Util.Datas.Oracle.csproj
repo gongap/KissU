@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="../../../../common.props" />
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>KissU应用框架的数据访问类库。</Description>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\..\..\output\util\</OutputPath>
+    <DocumentationFile>..\..\..\..\output\util\netstandard2.0\KissU.Util.Datas.Oracle.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\..\..\..\output\util\</OutputPath>
+    <DocumentationFile>..\..\..\..\output\util\netstandard2.0\KissU.Util.Datas.Oracle.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Oracle.EntityFrameworkCore" Version="2.19.30" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KissU.Util.Datas\KissU.Util.Datas.csproj" />
+  </ItemGroup>
+</Project>

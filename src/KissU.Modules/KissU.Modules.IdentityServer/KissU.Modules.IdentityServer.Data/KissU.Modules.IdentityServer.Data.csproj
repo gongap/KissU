@@ -13,7 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Util\KissU.Util.Datas\KissU.Util.Datas.csproj" />
+    <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Util\KissU.Util.Datas.SqlServer\KissU.Util.Datas.SqlServer.csproj" />
     <ProjectReference Include="..\KissU.Modules.IdentityServer.Domain\KissU.Modules.IdentityServer.Domain.csproj" />
   </ItemGroup>
 </Project>

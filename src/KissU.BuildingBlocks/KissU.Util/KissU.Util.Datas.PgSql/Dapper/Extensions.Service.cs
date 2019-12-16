@@ -1,10 +1,7 @@
 ﻿using System;
 using Dapper;
 using KissU.Util.Datas.Dapper.Handlers;
-using KissU.Util.Datas.Dapper.MySql;
-using KissU.Util.Datas.Dapper.Oracle;
 using KissU.Util.Datas.Dapper.PgSql;
-using KissU.Util.Datas.Dapper.SqlServer;
 using KissU.Util.Datas.Enums;
 using KissU.Util.Datas.Sql;
 using KissU.Util.Datas.Sql.Configs;
@@ -75,23 +72,9 @@ namespace KissU.Util.Datas.Dapper {
         /// <summary>
         /// 配置Sql生成器
         /// </summary>
-        private static void AddSqlBuilder( IServiceCollection services, SqlOptions config ) {
-            switch( config.DatabaseType ) {
-                case DatabaseType.SqlServer:
-                    services.TryAddTransient<ISqlBuilder, SqlServerBuilder>();
-                    return;
-                case DatabaseType.PgSql:
-                    services.TryAddTransient<ISqlBuilder, PgSqlBuilder>();
-                    return;
-                case DatabaseType.MySql:
-                    services.TryAddTransient<ISqlBuilder, MySqlBuilder>();
-                    return;
-                case DatabaseType.Oracle:
-                    services.TryAddTransient<ISqlBuilder, OracleBuilder>();
-                    return;
-                default:
-                    throw new NotImplementedException( $"Sql生成器未实现 {config.DatabaseType.Description()} 数据库" );
-            }
+        private static void AddSqlBuilder(IServiceCollection services, SqlOptions config)
+        {
+            services.TryAddTransient<ISqlBuilder, PgSqlBuilder>();
         }
 
         /// <summary>

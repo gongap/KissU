@@ -48,16 +48,7 @@ namespace KissU.Util.Datas.Ef {
         /// 获取数据库类型
         /// </summary>
         private static DatabaseType GetDbType<TUnitOfWork>() {
-            var type = typeof( TUnitOfWork ).BaseType;
-            if( type == typeof( Util.Datas.Ef.SqlServer.UnitOfWork ) )
-                return DatabaseType.SqlServer;
-            if( type == typeof( Util.Datas.Ef.MySql.UnitOfWork ) )
-                return DatabaseType.MySql;
-            if( type == typeof( Util.Datas.Ef.PgSql.UnitOfWork ) )
-                return DatabaseType.PgSql;
-            if( type == typeof( Util.Datas.Ef.Oracle.UnitOfWork ) )
-                return DatabaseType.Oracle;
-            return DatabaseType.SqlServer;
+            return DatabaseType.MySql;
         }
 
         /// <summary>
@@ -80,20 +71,7 @@ namespace KissU.Util.Datas.Ef {
         /// 配置连接字符串
         /// </summary>
         private static void ConfigConnection<TImplementation>( DbContextOptionsBuilder builder, string connection ) where TImplementation : UnitOfWorkBase {
-            switch( GetDbType<TImplementation>() ) {
-                case DatabaseType.SqlServer:
-                    builder.UseSqlServer( connection );
-                    return;
-                case DatabaseType.MySql:
-                    builder.UseMySql( connection );
-                    return;
-                case DatabaseType.PgSql:
-                    builder.UseNpgsql( connection );
-                    return;
-                case DatabaseType.Oracle:
-                    //builder.UseOracle( connection );
-                    return;
-            }
+            builder.UseMySql(connection);
         }
 
         /// <summary>
