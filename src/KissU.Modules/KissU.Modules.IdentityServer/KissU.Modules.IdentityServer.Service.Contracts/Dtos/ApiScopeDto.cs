@@ -2,13 +2,13 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using KissU.Util.Applications.Dtos;
+
 namespace KissU.Modules.IdentityServer.Service.Contracts.Dtos
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using Util.Applications.Dtos;
-
     /// <summary>
     /// 创建Api许可范围数据传输对象
     /// </summary>

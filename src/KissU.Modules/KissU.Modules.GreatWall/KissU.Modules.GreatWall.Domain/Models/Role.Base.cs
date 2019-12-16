@@ -5,13 +5,12 @@
 using KissU.Util.Domains;
 using KissU.Util.Domains.Auditing;
 using KissU.Util.Domains.Trees;
+using System;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace KissU.Modules.GreatWall.Domain.Models
 {
-    using System;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-
     /// <summary>
     /// 角色
     /// </summary>

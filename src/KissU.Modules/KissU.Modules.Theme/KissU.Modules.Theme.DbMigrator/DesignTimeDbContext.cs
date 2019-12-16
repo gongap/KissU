@@ -2,14 +2,14 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System.Reflection;
+using KissU.Modules.Theme.Data;
+using Microsoft.EntityFrameworkCore;
+using KissU.Util.Datas.Ef.SqlServer;
+using KissU.Util.Reflections;
+
 namespace KissU.Modules.Theme.DbMigrator
 {
-    using System.Reflection;
-    using KissU.Modules.Theme.Data;
-    using Microsoft.EntityFrameworkCore;
-    using Util.Datas.Ef.SqlServer;
-    using Util.Reflections;
-
     /// <summary>
     /// 此DbContext仅用于数据库迁移。
     /// </summary>

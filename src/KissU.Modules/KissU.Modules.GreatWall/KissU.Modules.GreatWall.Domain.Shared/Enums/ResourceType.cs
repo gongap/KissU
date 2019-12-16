@@ -2,10 +2,10 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System.ComponentModel;
+
 namespace KissU.Modules.GreatWall.Domain.Shared.Enums
 {
-    using System.ComponentModel;
-
     /// <summary>
     /// 资源类型
     /// </summary>

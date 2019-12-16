@@ -2,10 +2,10 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System;
+
 namespace KissU.Modules.GreatWall.Domain.Shared.Options
 {
-    using System;
-
     /// <summary>
     /// 登录锁定配置
     /// </summary>

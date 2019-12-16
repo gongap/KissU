@@ -2,10 +2,10 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using Microsoft.AspNetCore.Identity;
+
 namespace KissU.Modules.GreatWall.Domain.Shared.Describers
 {
-    using Microsoft.AspNetCore.Identity;
-
     /// <summary>
     /// Identity中文错误描述
     /// </summary>

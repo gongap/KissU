@@ -3,13 +3,12 @@
 // </copyright>
 
 using KissU.Util.Domains.Repositories;
+using System;
+using System.Linq;
+using KissU.Modules.GreatWall.Domain.Models;
 
 namespace KissU.Modules.GreatWall.Domain.Repositories
 {
-    using System;
-    using System.Linq;
-    using KissU.Modules.GreatWall.Domain.Models;
-
     /// <summary>
     /// 用户仓储
     /// </summary>

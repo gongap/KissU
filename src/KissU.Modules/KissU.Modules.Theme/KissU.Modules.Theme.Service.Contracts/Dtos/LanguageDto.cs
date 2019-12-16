@@ -2,12 +2,12 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using KissU.Util.Applications.Dtos;
+
 namespace KissU.Modules.Theme.Service.Contracts.Dtos
 {
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using Util.Applications.Dtos;
-
     /// <summary>
     /// 语言国际化参数
     /// </summary>

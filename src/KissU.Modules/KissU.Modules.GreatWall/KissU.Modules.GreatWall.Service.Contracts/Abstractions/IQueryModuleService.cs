@@ -3,17 +3,16 @@
 // </copyright>
 
 using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using KissU.Modules.GreatWall.Service.Contracts.Dtos;
+using KissU.Modules.GreatWall.Service.Contracts.Queries;
+using KissU.Util.Applications;
+using KissU.Util.Domains.Repositories;
 
 namespace KissU.Modules.GreatWall.Service.Contracts.Abstractions
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-    using KissU.Modules.GreatWall.Service.Contracts.Dtos;
-    using KissU.Modules.GreatWall.Service.Contracts.Queries;
-    using Util.Applications;
-    using Util.Domains.Repositories;
-
     /// <summary>
     /// 模块查询服务
     /// </summary>

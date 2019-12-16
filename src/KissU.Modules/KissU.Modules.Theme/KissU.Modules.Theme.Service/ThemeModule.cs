@@ -4,15 +4,14 @@
 
 using KissU.Core.CPlatform;
 using KissU.Core.CPlatform.Module;
+using Autofac.Extensions.DependencyInjection;
+using KissU.Modules.Theme.Data;
+using KissU.Modules.Theme.Data.UnitOfWorks.SqlServer;
+using Microsoft.Extensions.DependencyInjection;
+using KissU.Util.Datas.Ef;
 
 namespace KissU.Modules.Theme.Service
 {
-    using Autofac.Extensions.DependencyInjection;
-    using KissU.Modules.Theme.Data;
-    using KissU.Modules.Theme.Data.UnitOfWorks.SqlServer;
-    using Microsoft.Extensions.DependencyInjection;
-    using Util.Datas.Ef;
-
     /// <summary>
     /// 扩展系统模块
     /// </summary>

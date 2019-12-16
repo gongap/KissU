@@ -2,13 +2,13 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Modules.Theme.Domain.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using KissU.Util.Datas.Ef.PgSql;
+
 namespace KissU.Modules.Theme.Data.Mappings.PgSql
 {
-    using KissU.Modules.Theme.Domain.Models;
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.EntityFrameworkCore.Metadata.Builders;
-    using Util.Datas.Ef.PgSql;
-
     /// <summary>
     /// 语言国际化映射配置
     /// </summary>

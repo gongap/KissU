@@ -2,21 +2,21 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using KissU.Modules.GreatWall.Data.Pos;
+using KissU.Modules.GreatWall.Data.Pos.Extensions;
+using KissU.Modules.GreatWall.Data.Stores.Abstractions;
+using KissU.Modules.GreatWall.Domain.Models;
+using KissU.Modules.GreatWall.Domain.Repositories;
+using Microsoft.EntityFrameworkCore;
+using KissU.Util;
+using KissU.Util.Datas.Ef.Core;
+
 namespace KissU.Modules.GreatWall.Data.Repositories
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
-    using KissU.Modules.GreatWall.Data.Pos;
-    using KissU.Modules.GreatWall.Data.Pos.Extensions;
-    using KissU.Modules.GreatWall.Data.Stores.Abstractions;
-    using KissU.Modules.GreatWall.Domain.Models;
-    using KissU.Modules.GreatWall.Domain.Repositories;
-    using Microsoft.EntityFrameworkCore;
-    using Util;
-    using Util.Datas.Ef.Core;
-
     /// <summary>
     /// 模块仓储
     /// </summary>

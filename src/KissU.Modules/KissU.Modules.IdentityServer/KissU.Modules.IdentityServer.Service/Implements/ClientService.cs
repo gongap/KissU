@@ -3,32 +3,31 @@
 // </copyright>
 
 using KissU.Modules.IdentityServer.Domain.Extensions;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using IdentityServer4;
+using KissU.Modules.IdentityServer.Data.UnitOfWorks;
+using KissU.Modules.IdentityServer.Domain.Models.ClientAggregate;
+using KissU.Modules.IdentityServer.Domain.Repositories;
+using KissU.Modules.IdentityServer.Domain.Shared;
+using KissU.Modules.IdentityServer.Domain.Shared.Enums;
+using KissU.Modules.IdentityServer.Service.Contracts.Abstractions;
+using KissU.Modules.IdentityServer.Service.Contracts.Dtos;
+using KissU.Modules.IdentityServer.Service.Contracts.Dtos.Requests;
+using KissU.Modules.IdentityServer.Service.Contracts.Queries;
+using KissU.Util;
+using KissU.Util.Applications;
+using KissU.Util.Datas.Queries;
+using KissU.Util.Domains.Repositories;
+using KissU.Util.Exceptions;
+using KissU.Util.Maps;
+using Extensions = KissU.Modules.IdentityServer.Domain.Extensions.Extensions;
+using Ids4 = IdentityServer4.Models;
 
 namespace KissU.Modules.IdentityServer.Service.Implements
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
-    using IdentityServer4;
-    using KissU.Modules.IdentityServer.Data.UnitOfWorks;
-    using KissU.Modules.IdentityServer.Domain.Models.ClientAggregate;
-    using KissU.Modules.IdentityServer.Domain.Repositories;
-    using KissU.Modules.IdentityServer.Domain.Shared;
-    using KissU.Modules.IdentityServer.Domain.Shared.Enums;
-    using KissU.Modules.IdentityServer.Service.Contracts.Abstractions;
-    using KissU.Modules.IdentityServer.Service.Contracts.Dtos;
-    using KissU.Modules.IdentityServer.Service.Contracts.Dtos.Requests;
-    using KissU.Modules.IdentityServer.Service.Contracts.Queries;
-    using Util;
-    using Util.Applications;
-    using Util.Datas.Queries;
-    using Util.Domains.Repositories;
-    using Util.Exceptions;
-    using Util.Maps;
-    using Extensions = Extensions;
-    using Ids4 = IdentityServer4.Models;
-
     /// <summary>
     /// 应用程序服务
     /// </summary>

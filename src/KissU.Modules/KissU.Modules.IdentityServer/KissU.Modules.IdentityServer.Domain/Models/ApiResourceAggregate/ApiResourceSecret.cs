@@ -4,13 +4,12 @@
 
 using KissU.Util.Domains;
 using KissU.Util.Domains.Auditing;
+using System;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace KissU.Modules.IdentityServer.Domain.Models.ApiResourceAggregate
 {
-    using System;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-
     /// <summary>
     /// Api资源密钥
     /// </summary>

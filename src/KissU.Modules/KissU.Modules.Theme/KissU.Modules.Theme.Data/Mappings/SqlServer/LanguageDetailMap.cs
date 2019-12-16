@@ -2,13 +2,13 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Modules.Theme.Domain.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using KissU.Util.Datas.Ef.SqlServer;
+
 namespace KissU.Modules.Theme.Data.Mappings.SqlServer
 {
-    using KissU.Modules.Theme.Domain.Models;
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.EntityFrameworkCore.Metadata.Builders;
-    using Util.Datas.Ef.SqlServer;
-
     /// <summary>
     /// 语言国际化配置映射配置
     /// </summary>

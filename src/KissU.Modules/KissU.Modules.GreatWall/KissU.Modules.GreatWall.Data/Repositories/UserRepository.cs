@@ -2,19 +2,19 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using KissU.Modules.GreatWall.Domain.Models;
+using KissU.Modules.GreatWall.Domain.Repositories;
+using Microsoft.AspNetCore.Identity;
+using KissU.Util;
+using KissU.Util.Datas.Ef.Core;
+using Queryable = System.Linq.Queryable;
+
 namespace KissU.Modules.GreatWall.Data.Repositories
 {
-    using System;
-    using System.Linq;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using KissU.Modules.GreatWall.Domain.Models;
-    using KissU.Modules.GreatWall.Domain.Repositories;
-    using Microsoft.AspNetCore.Identity;
-    using Util;
-    using Util.Datas.Ef.Core;
-    using Queryable = System.Linq.Queryable;
-
     /// <summary>
     /// 用户仓储
     /// </summary>

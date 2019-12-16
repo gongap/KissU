@@ -3,20 +3,19 @@
 // </copyright>
 
 using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using KissU.Modules.IdentityServer.Service.Contracts.Dtos;
+using KissU.Modules.IdentityServer.Service.Contracts.Dtos.Requests;
+using KissU.Modules.IdentityServer.Service.Contracts.Queries;
+using KissU.Util.Applications;
+using KissU.Util.Applications.Aspects;
+using KissU.Util.Domains.Repositories;
+using KissU.Util.Validations.Aspects;
 
 namespace KissU.Modules.IdentityServer.Service.Contracts.Abstractions
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-    using KissU.Modules.IdentityServer.Service.Contracts.Dtos;
-    using KissU.Modules.IdentityServer.Service.Contracts.Dtos.Requests;
-    using KissU.Modules.IdentityServer.Service.Contracts.Queries;
-    using Util.Applications;
-    using Util.Applications.Aspects;
-    using Util.Domains.Repositories;
-    using Util.Validations.Aspects;
-
     /// <summary>
     /// 应用程序服务
     /// </summary>

@@ -2,12 +2,12 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Modules.GreatWall.Domain.Models;
+using KissU.Modules.GreatWall.Service.Contracts.Dtos.Responses;
+using KissU.Util.Maps;
+
 namespace KissU.Modules.GreatWall.Service.Extensions
 {
-    using KissU.Modules.GreatWall.Domain.Models;
-    using KissU.Modules.GreatWall.Service.Contracts.Dtos.Responses;
-    using Util.Maps;
-
     /// <summary>
     /// 菜单参数扩展
     /// </summary>

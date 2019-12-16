@@ -2,15 +2,15 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
+using KissU.Util.Datas.Ef.SqlServer;
+using KissU.Util.Domains;
+using KissU.Util.Reflections;
+
 namespace KissU.Modules.IdentityServer.Data.UnitOfWorks.SqlServer
 {
-    using System;
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.EntityFrameworkCore.ChangeTracking;
-    using Util.Datas.Ef.SqlServer;
-    using Util.Domains;
-    using Util.Reflections;
-
     /// <summary>
     /// 工作单元
     /// </summary>

@@ -4,13 +4,12 @@
 
 using KissU.Util.Domains;
 using KissU.Util.Domains.Auditing;
+using System;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace KissU.Modules.IdentityServer.Domain.Models.ClientAggregate
 {
-    using System;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-
     /// <summary>
     /// 应用程序密钥
     /// </summary>

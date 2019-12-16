@@ -4,15 +4,14 @@
 
 using KissU.Util.Domains;
 using KissU.Util.Domains.Auditing;
+using System;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using IdentityServer4;
+using IdentityServer4.Models;
 
 namespace KissU.Modules.IdentityServer.Domain.Models.ClientAggregate
 {
-    using System;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-    using IdentityServer4;
-    using IdentityServer4.Models;
-
     /// <summary>
     /// 应用程序
     /// </summary>

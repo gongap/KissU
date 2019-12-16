@@ -3,12 +3,11 @@
 // </copyright>
 
 using KissU.Util.Domains;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace KissU.Modules.IdentityServer.Domain.Models.ClientAggregate
 {
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-
     /// <summary>
     /// 应用程序属性
     /// </summary>

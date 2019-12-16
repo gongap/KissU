@@ -2,11 +2,11 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System;
+using KissU.Util.Applications.Dtos;
+
 namespace KissU.Modules.IdentityServer.Service.Contracts.Dtos
 {
-    using System;
-    using Util.Applications.Dtos;
-
     /// <summary>
     /// 授权日志传输对象
     /// </summary>

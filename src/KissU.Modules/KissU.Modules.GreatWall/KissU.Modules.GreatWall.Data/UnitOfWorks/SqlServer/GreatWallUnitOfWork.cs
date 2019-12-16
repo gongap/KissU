@@ -2,12 +2,12 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using Microsoft.EntityFrameworkCore;
+using KissU.Util.Datas.Ef.SqlServer;
+using KissU.Util.Reflections;
+
 namespace KissU.Modules.GreatWall.Data.UnitOfWorks.SqlServer
 {
-    using Microsoft.EntityFrameworkCore;
-    using Util.Datas.Ef.SqlServer;
-    using Util.Reflections;
-
     /// <summary>
     /// SqlServer工作单元
     /// </summary>

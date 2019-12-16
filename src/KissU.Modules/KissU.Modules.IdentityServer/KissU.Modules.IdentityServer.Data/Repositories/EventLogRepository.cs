@@ -2,13 +2,13 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Modules.IdentityServer.Data.UnitOfWorks;
+using KissU.Modules.IdentityServer.Domain.Models.EventLog;
+using KissU.Modules.IdentityServer.Domain.Repositories;
+using KissU.Util.Datas.Ef.Core;
+
 namespace KissU.Modules.IdentityServer.Data.Repositories
 {
-    using KissU.Modules.IdentityServer.Data.UnitOfWorks;
-    using KissU.Modules.IdentityServer.Domain.Models.EventLog;
-    using KissU.Modules.IdentityServer.Domain.Repositories;
-    using Util.Datas.Ef.Core;
-
     /// <summary>
     /// 仓储
     /// </summary>

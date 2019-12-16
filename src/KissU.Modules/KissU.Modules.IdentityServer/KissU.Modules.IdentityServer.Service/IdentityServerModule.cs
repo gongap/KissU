@@ -4,15 +4,14 @@
 
 using KissU.Core.CPlatform;
 using KissU.Core.CPlatform.Module;
+using Autofac.Extensions.DependencyInjection;
+using KissU.Modules.IdentityServer.Data.UnitOfWorks;
+using KissU.Modules.IdentityServer.Data.UnitOfWorks.SqlServer;
+using Microsoft.Extensions.DependencyInjection;
+using KissU.Util.Datas.Ef;
 
 namespace KissU.Modules.IdentityServer.Service
 {
-    using Autofac.Extensions.DependencyInjection;
-    using KissU.Modules.IdentityServer.Data.UnitOfWorks;
-    using KissU.Modules.IdentityServer.Data.UnitOfWorks.SqlServer;
-    using Microsoft.Extensions.DependencyInjection;
-    using Util.Datas.Ef;
-
     /// <summary>
     /// 扩展系统模块
     /// </summary>

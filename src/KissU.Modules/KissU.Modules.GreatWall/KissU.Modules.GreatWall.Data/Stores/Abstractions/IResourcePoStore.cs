@@ -2,14 +2,14 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using KissU.Modules.GreatWall.Data.Pos;
+using KissU.Util.Datas.Stores;
+
 namespace KissU.Modules.GreatWall.Data.Stores.Abstractions
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-    using KissU.Modules.GreatWall.Data.Pos;
-    using Util.Datas.Stores;
-
     /// <summary>
     /// 资源存储器
     /// </summary>

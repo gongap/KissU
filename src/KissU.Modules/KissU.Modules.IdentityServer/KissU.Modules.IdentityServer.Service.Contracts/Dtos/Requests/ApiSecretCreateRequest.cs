@@ -2,13 +2,13 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System;
+using System.ComponentModel.DataAnnotations;
+using KissU.Modules.IdentityServer.Domain.Shared.Enums;
+using KissU.Util.Applications.Dtos;
+
 namespace KissU.Modules.IdentityServer.Service.Contracts.Dtos.Requests
 {
-    using System;
-    using System.ComponentModel.DataAnnotations;
-    using KissU.Modules.IdentityServer.Domain.Shared.Enums;
-    using Util.Applications.Dtos;
-
     /// <summary>
     /// 创建Api密钥请求参数
     /// </summary>

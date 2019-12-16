@@ -2,20 +2,20 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System.Threading.Tasks;
+using KissU.Modules.GreatWall.Data.Pos;
+using KissU.Modules.GreatWall.Data.Stores.Abstractions;
+using KissU.Modules.GreatWall.Domain.Repositories;
+using KissU.Modules.GreatWall.Service.Contracts.Abstractions;
+using KissU.Modules.GreatWall.Service.Contracts.Dtos;
+using KissU.Modules.GreatWall.Service.Contracts.Queries;
+using KissU.Util.Applications;
+using KissU.Util.Datas.Queries;
+using KissU.Util.Domains.Repositories;
+using KissU.Util.Maps;
+
 namespace KissU.Modules.GreatWall.Service.Implements
 {
-    using System.Threading.Tasks;
-    using KissU.Modules.GreatWall.Data.Pos;
-    using KissU.Modules.GreatWall.Data.Stores.Abstractions;
-    using KissU.Modules.GreatWall.Domain.Repositories;
-    using KissU.Modules.GreatWall.Service.Contracts.Abstractions;
-    using KissU.Modules.GreatWall.Service.Contracts.Dtos;
-    using KissU.Modules.GreatWall.Service.Contracts.Queries;
-    using Util.Applications;
-    using Util.Datas.Queries;
-    using Util.Domains.Repositories;
-    using Util.Maps;
-
     /// <summary>
     /// 应用程序查询服务
     /// </summary>

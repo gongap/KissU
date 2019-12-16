@@ -2,10 +2,10 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System;
+
 namespace KissU.Modules.GreatWall.Domain.Models
 {
-    using System;
-
     /// <summary>
     /// 用户角色
     /// </summary>

@@ -4,14 +4,13 @@
 
 using KissU.Util.Domains.Repositories;
 using KissU.Util.Validations.Aspects;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using KissU.Modules.IdentityServer.Domain.Models.ApiResourceAggregate;
 
 namespace KissU.Modules.IdentityServer.Domain.Repositories
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-    using KissU.Modules.IdentityServer.Domain.Models.ApiResourceAggregate;
-
     /// <summary>
     /// API资源仓储
     /// </summary>

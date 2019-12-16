@@ -4,15 +4,14 @@
 
 using KissU.Util;
 using KissU.Util.Helpers;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
+using Convert = KissU.Util.Helpers.Convert;
 
 namespace KissU.Modules.IdentityServer.Domain.Models.ClientAggregate
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using Convert = Util.Helpers.Convert;
-
     /// <summary>
     /// 应用程序
     /// </summary>

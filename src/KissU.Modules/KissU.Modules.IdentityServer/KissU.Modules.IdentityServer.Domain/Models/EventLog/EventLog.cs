@@ -3,12 +3,11 @@
 // </copyright>
 
 using KissU.Util.Domains;
+using System;
+using IdentityServer4.Events;
 
 namespace KissU.Modules.IdentityServer.Domain.Models.EventLog
 {
-    using System;
-    using IdentityServer4.Events;
-
     public class EventLog : AggregateRoot<EventLog>
     {
         public EventLog() : base(Guid.Empty)

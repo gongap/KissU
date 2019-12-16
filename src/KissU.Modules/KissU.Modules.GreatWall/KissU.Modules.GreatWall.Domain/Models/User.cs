@@ -6,13 +6,12 @@ using KissU.Util;
 using KissU.Util.Exceptions;
 using KissU.Util.Security.Encryptors;
 using KissU.Util.Validations;
+using System.ComponentModel.DataAnnotations.Schema;
+using KissU.Modules.GreatWall.Domain.Shared;
+using KissU.Modules.GreatWall.Domain.Shared.Encryptors;
 
 namespace KissU.Modules.GreatWall.Domain.Models
 {
-    using System.ComponentModel.DataAnnotations.Schema;
-    using KissU.Modules.GreatWall.Domain.Shared;
-    using KissU.Modules.GreatWall.Domain.Shared.Encryptors;
-
     /// <summary>
     /// 用户
     /// </summary>

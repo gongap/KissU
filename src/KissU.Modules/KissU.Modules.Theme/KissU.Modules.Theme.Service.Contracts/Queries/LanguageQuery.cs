@@ -2,11 +2,11 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System.ComponentModel.DataAnnotations;
+using KissU.Util.Datas.Queries;
+
 namespace KissU.Modules.Theme.Service.Contracts.Queries
 {
-    using System.ComponentModel.DataAnnotations;
-    using Util.Datas.Queries;
-
     /// <summary>
     /// 语言国际化查询参数
     /// </summary>

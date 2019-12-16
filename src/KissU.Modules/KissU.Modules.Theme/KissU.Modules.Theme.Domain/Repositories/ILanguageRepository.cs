@@ -3,11 +3,10 @@
 // </copyright>
 
 using KissU.Util.Domains.Repositories;
+using KissU.Modules.Theme.Domain.Models;
 
 namespace KissU.Modules.Theme.Domain.Repositories
 {
-    using KissU.Modules.Theme.Domain.Models;
-
     /// <summary>
     /// 语言国际化仓储
     /// </summary>

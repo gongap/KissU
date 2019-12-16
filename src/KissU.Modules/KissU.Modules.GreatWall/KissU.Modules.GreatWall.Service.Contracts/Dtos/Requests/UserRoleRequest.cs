@@ -2,11 +2,11 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System;
+using KissU.Util.Applications.Dtos;
+
 namespace KissU.Modules.GreatWall.Service.Contracts.Dtos.Requests
 {
-    using System;
-    using Util.Applications.Dtos;
-
     /// <summary>
     /// 用户角色参数
     /// </summary>

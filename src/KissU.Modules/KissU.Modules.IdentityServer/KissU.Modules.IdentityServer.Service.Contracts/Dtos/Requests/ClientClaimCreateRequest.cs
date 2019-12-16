@@ -2,12 +2,12 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System;
+using System.ComponentModel.DataAnnotations;
+using KissU.Util.Applications.Dtos;
+
 namespace KissU.Modules.IdentityServer.Service.Contracts.Dtos.Requests
 {
-    using System;
-    using System.ComponentModel.DataAnnotations;
-    using Util.Applications.Dtos;
-
     /// <summary>
     /// 创建应用程序声明请求参数
     /// </summary>

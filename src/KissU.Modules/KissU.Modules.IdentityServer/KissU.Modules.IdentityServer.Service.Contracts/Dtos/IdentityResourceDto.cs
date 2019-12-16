@@ -2,12 +2,12 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using KissU.Util.Applications.Dtos;
+
 namespace KissU.Modules.IdentityServer.Service.Contracts.Dtos
 {
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using Util.Applications.Dtos;
-
     /// <summary>
     /// 身份资源数据传输对象
     /// </summary>

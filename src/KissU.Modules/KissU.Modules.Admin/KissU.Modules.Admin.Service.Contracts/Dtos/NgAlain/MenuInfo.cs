@@ -2,11 +2,11 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System.Collections.Generic;
+using Newtonsoft.Json;
+
 namespace KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain
 {
-    using System.Collections.Generic;
-    using Newtonsoft.Json;
-
     /// <summary>
     /// NgAlain菜单
     /// </summary>

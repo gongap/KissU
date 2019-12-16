@@ -2,17 +2,17 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System;
+using System.Collections.Generic;
+using System.Reflection;
+using AspectCore.Configuration;
+using Autofac;
+using KissU.Util.Dependency;
+using KissU.Util.Events.Handlers;
+using KissU.Util.Reflections;
+
 namespace KissU.Core
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Reflection;
-    using AspectCore.Configuration;
-    using Autofac;
-    using Util.Dependency;
-    using Util.Events.Handlers;
-    using Util.Reflections;
-
     /// <summary>
     /// 依赖引导器
     /// </summary>

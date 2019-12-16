@@ -3,14 +3,13 @@
 // </copyright>
 
 using KissU.Util.Domains;
+using System;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace KissU.Modules.IdentityServer.Domain.Models.PersistedGrantAggregate
 {
-    using System;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-
     /// <summary>
     /// 认证操作数据（令牌，代码和同意书）
     /// </summary>

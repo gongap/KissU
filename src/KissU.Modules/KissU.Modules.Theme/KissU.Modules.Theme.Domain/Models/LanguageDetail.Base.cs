@@ -2,13 +2,13 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using KissU.Modules.Theme.Domain.Base;
+
 namespace KissU.Modules.Theme.Domain.Models
 {
-    using System;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-    using KissU.Modules.Theme.Domain.Base;
-
     /// <summary>
     /// 语言国际化配置
     /// </summary>

@@ -5,16 +5,15 @@
 using KissU.Util;
 using KissU.Util.Domains;
 using KissU.Util.Domains.Auditing;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Convert = KissU.Util.Helpers.Convert;
 
 namespace KissU.Modules.IdentityServer.Domain.Models.ApiResourceAggregate
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using Convert = Util.Helpers.Convert;
-
     /// <summary>
     /// Api资源许可范围
     /// </summary>

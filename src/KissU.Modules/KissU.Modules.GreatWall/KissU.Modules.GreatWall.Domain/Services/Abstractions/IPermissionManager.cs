@@ -3,13 +3,12 @@
 // </copyright>
 
 using KissU.Util.Domains.Services;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace KissU.Modules.GreatWall.Domain.Services.Abstractions
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-
     /// <summary>
     /// 权限服务
     /// </summary>

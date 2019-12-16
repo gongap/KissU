@@ -2,12 +2,12 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System;
+using System.ComponentModel.DataAnnotations;
+using KissU.Util.Datas.Queries;
+
 namespace KissU.Modules.GreatWall.Service.Contracts.Queries
 {
-    using System;
-    using System.ComponentModel.DataAnnotations;
-    using Util.Datas.Queries;
-
     /// <summary>
     /// 应用程序查询参数
     /// </summary>

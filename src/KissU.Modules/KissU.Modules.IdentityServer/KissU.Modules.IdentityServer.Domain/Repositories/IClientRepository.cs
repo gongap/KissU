@@ -4,14 +4,13 @@
 
 using KissU.Util.Domains.Repositories;
 using KissU.Util.Validations.Aspects;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using KissU.Modules.IdentityServer.Domain.Models.ClientAggregate;
 
 namespace KissU.Modules.IdentityServer.Domain.Repositories
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-    using KissU.Modules.IdentityServer.Domain.Models.ClientAggregate;
-
     /// <summary>
     /// 应用程序仓储
     /// </summary>

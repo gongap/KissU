@@ -2,11 +2,11 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Modules.GreatWall.Data.Pos;
+using KissU.Util.Datas.Stores;
+
 namespace KissU.Modules.GreatWall.Data.Stores.Abstractions
 {
-    using KissU.Modules.GreatWall.Data.Pos;
-    using Util.Datas.Stores;
-
     /// <summary>
     /// 应用程序存储器
     /// </summary>

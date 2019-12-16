@@ -3,11 +3,10 @@
 // </copyright>
 
 using KissU.Util.Domains.Repositories;
+using KissU.Modules.IdentityServer.Domain.Models.EventLog;
 
 namespace KissU.Modules.IdentityServer.Domain.Repositories
 {
-    using KissU.Modules.IdentityServer.Domain.Models.EventLog;
-
     /// <summary>
     /// 仓储
     /// </summary>

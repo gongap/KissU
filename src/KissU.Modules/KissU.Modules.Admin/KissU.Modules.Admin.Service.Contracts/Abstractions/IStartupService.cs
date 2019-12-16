@@ -6,13 +6,12 @@ using KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selec
 using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Core.CPlatform.Support;
 using KissU.Core.CPlatform.Support.Attributes;
+using System.Threading.Tasks;
+using KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain;
+using KissU.Util.Applications;
 
 namespace KissU.Modules.Admin.Service.Contracts.Abstractions
 {
-    using System.Threading.Tasks;
-    using KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain;
-    using Util.Applications;
-
     [ServiceBundle("api/{Service}")]
     public interface IStartupService : IService
     {

@@ -2,10 +2,10 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Util.Datas.UnitOfWorks;
+
 namespace KissU.Modules.GreatWall.Data
 {
-    using Util.Datas.UnitOfWorks;
-
     /// <summary>
     /// GreatWall工作单元
     /// </summary>

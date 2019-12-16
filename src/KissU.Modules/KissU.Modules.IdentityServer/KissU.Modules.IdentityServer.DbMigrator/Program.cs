@@ -2,16 +2,16 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System;
+using System.Threading.Tasks;
+using KissU.Modules.IdentityServer.Data.UnitOfWorks;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using KissU.Util;
+using KissU.Util.Datas.Ef;
+
 namespace KissU.Modules.IdentityServer.DbMigrator
 {
-    using System;
-    using System.Threading.Tasks;
-    using KissU.Modules.IdentityServer.Data.UnitOfWorks;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.DependencyInjection;
-    using Util;
-    using Util.Datas.Ef;
-
     internal class Program
     {
         private static async Task Main(string[] args)

@@ -4,20 +4,19 @@
 
 using KissU.Util;
 using KissU.Util.Domains.Services;
+using System;
+using System.Threading.Tasks;
+using KissU.Modules.GreatWall.Domain.Models;
+using KissU.Modules.GreatWall.Domain.Repositories;
+using KissU.Modules.GreatWall.Domain.Services.Abstractions;
+using KissU.Modules.GreatWall.Domain.Shared.Extensions;
+using KissU.Modules.GreatWall.Domain.Shared.Options;
+using KissU.Modules.GreatWall.Domain.Shared.Purposes;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
 
 namespace KissU.Modules.GreatWall.Domain.Services.Implements
 {
-    using System;
-    using System.Threading.Tasks;
-    using KissU.Modules.GreatWall.Domain.Models;
-    using KissU.Modules.GreatWall.Domain.Repositories;
-    using KissU.Modules.GreatWall.Domain.Services.Abstractions;
-    using KissU.Modules.GreatWall.Domain.Shared.Extensions;
-    using KissU.Modules.GreatWall.Domain.Shared.Options;
-    using KissU.Modules.GreatWall.Domain.Shared.Purposes;
-    using Microsoft.AspNetCore.Identity;
-    using Microsoft.Extensions.Options;
-
     /// <summary>
     /// 用户服务
     /// </summary>

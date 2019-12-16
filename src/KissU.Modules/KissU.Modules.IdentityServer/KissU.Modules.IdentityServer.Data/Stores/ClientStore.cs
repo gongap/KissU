@@ -2,17 +2,17 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System.Linq;
+using System.Threading.Tasks;
+using IdentityServer4.Stores;
+using KissU.Modules.IdentityServer.Domain.Models.ClientAggregate;
+using KissU.Modules.IdentityServer.Domain.Repositories;
+using Microsoft.EntityFrameworkCore;
+using KissU.Util.Maps;
+using Client = IdentityServer4.Models.Client;
+
 namespace KissU.Modules.IdentityServer.Data.Stores
 {
-    using System.Linq;
-    using System.Threading.Tasks;
-    using IdentityServer4.Stores;
-    using KissU.Modules.IdentityServer.Domain.Models.ClientAggregate;
-    using KissU.Modules.IdentityServer.Domain.Repositories;
-    using Microsoft.EntityFrameworkCore;
-    using Util.Maps;
-    using Client = IdentityServer4.Models.Client;
-
     /// <summary>
     /// 应用程序存储器
     /// </summary>

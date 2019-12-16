@@ -3,15 +3,14 @@
 // </copyright>
 
 using KissU.Util;
+using System.Threading.Tasks;
+using KissU.Modules.GreatWall.Domain.Models;
+using KissU.Modules.GreatWall.Domain.Services.Abstractions;
+using KissU.Modules.GreatWall.Domain.Shared;
+using KissU.Modules.GreatWall.Domain.Shared.Results;
 
 namespace KissU.Modules.GreatWall.Domain.Services.Implements
 {
-    using System.Threading.Tasks;
-    using KissU.Modules.GreatWall.Domain.Models;
-    using KissU.Modules.GreatWall.Domain.Services.Abstractions;
-    using KissU.Modules.GreatWall.Domain.Shared;
-    using KissU.Modules.GreatWall.Domain.Shared.Results;
-
     /// <summary>
     /// 登录服务
     /// </summary>

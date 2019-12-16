@@ -2,20 +2,20 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using KissU.Modules.Theme.Domain.Base;
+using Microsoft.EntityFrameworkCore;
+using KissU.Util;
+using KissU.Util.Datas.Ef.Core;
+using KissU.Util.Datas.UnitOfWorks;
+using KissU.Util.Domains;
+
 namespace KissU.Modules.Theme.Data.Repositories.Base
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using KissU.Modules.Theme.Domain.Base;
-    using Microsoft.EntityFrameworkCore;
-    using Util;
-    using Util.Datas.Ef.Core;
-    using Util.Datas.UnitOfWorks;
-    using Util.Domains;
-
     /// <summary>
     /// 主从仓储
     /// </summary>

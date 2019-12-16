@@ -2,25 +2,25 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+using KissU.Modules.GreatWall.Data;
+using KissU.Modules.GreatWall.Domain.Models;
+using KissU.Modules.GreatWall.Domain.Repositories;
+using KissU.Modules.GreatWall.Domain.Services.Abstractions;
+using KissU.Modules.GreatWall.Service.Contracts.Abstractions;
+using KissU.Modules.GreatWall.Service.Contracts.Dtos;
+using KissU.Modules.GreatWall.Service.Contracts.Dtos.Requests;
+using KissU.Modules.GreatWall.Service.Contracts.Queries;
+using KissU.Util;
+using KissU.Util.Applications;
+using KissU.Util.Datas.Queries;
+using KissU.Util.Domains.Repositories;
+using KissU.Util.Maps;
+
 namespace KissU.Modules.GreatWall.Service.Implements
 {
-    using System;
-    using System.Linq;
-    using System.Threading.Tasks;
-    using KissU.Modules.GreatWall.Data;
-    using KissU.Modules.GreatWall.Domain.Models;
-    using KissU.Modules.GreatWall.Domain.Repositories;
-    using KissU.Modules.GreatWall.Domain.Services.Abstractions;
-    using KissU.Modules.GreatWall.Service.Contracts.Abstractions;
-    using KissU.Modules.GreatWall.Service.Contracts.Dtos;
-    using KissU.Modules.GreatWall.Service.Contracts.Dtos.Requests;
-    using KissU.Modules.GreatWall.Service.Contracts.Queries;
-    using Util;
-    using Util.Applications;
-    using Util.Datas.Queries;
-    using Util.Domains.Repositories;
-    using Util.Maps;
-
     /// <summary>
     /// 用户服务
     /// </summary>

@@ -2,13 +2,13 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
+using KissU.Util.Applications.Dtos;
+
 namespace KissU.Modules.GreatWall.Service.Contracts.Dtos.Requests
 {
-    using System;
-    using System.ComponentModel.DataAnnotations;
-    using System.Runtime.Serialization;
-    using Util.Applications.Dtos;
-
     /// <summary>
     /// 修改角色参数
     /// </summary>

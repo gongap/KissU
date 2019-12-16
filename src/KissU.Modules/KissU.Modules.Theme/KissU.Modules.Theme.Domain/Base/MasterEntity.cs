@@ -4,13 +4,12 @@
 
 using KissU.Util.Domains;
 using KissU.Util.Domains.Auditing;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace KissU.Modules.Theme.Domain.Base
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-
     /// <summary>
     /// 主表
     /// </summary>

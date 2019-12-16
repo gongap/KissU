@@ -3,11 +3,10 @@
 // </copyright>
 
 using KissU.Util.Domains.Repositories;
+using KissU.Modules.IdentityServer.Domain.Models.IdentityResourceAggregate;
 
 namespace KissU.Modules.IdentityServer.Domain.Repositories
 {
-    using KissU.Modules.IdentityServer.Domain.Models.IdentityResourceAggregate;
-
     /// <summary>
     /// 身份资源仓储
     /// </summary>

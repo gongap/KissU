@@ -3,13 +3,12 @@
 // </copyright>
 
 using KissU.Util.Domains;
+using System;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace KissU.Modules.GreatWall.Domain.Models
 {
-    using System;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-
     /// <summary>
     /// 应用程序
     /// </summary>

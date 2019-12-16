@@ -2,15 +2,15 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System;
+using System.IO;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+
 namespace KissU.Modules.Theme.DbMigrator
 {
-    using System;
-    using System.IO;
-    using System.Threading.Tasks;
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.DependencyInjection;
-
     internal static class DbMigrationHelpers
     {
         public static IConfigurationRoot BuildConfiguration()

@@ -2,18 +2,18 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using IdentityServer4.Models;
+using IdentityServer4.Stores;
+using KissU.Modules.IdentityServer.Domain.Repositories;
+using Microsoft.EntityFrameworkCore;
+using KissU.Util.Maps;
+
 namespace KissU.Modules.IdentityServer.Data.Stores
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
-    using IdentityServer4.Models;
-    using IdentityServer4.Stores;
-    using KissU.Modules.IdentityServer.Domain.Repositories;
-    using Microsoft.EntityFrameworkCore;
-    using Util.Maps;
-
     /// <summary>
     /// 资源存储
     /// </summary>

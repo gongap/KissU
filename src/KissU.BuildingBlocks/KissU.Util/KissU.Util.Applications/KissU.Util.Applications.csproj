@@ -17,11 +17,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="CrudServiceBase.BatchSave.cs" />
-    <None Include="CrudServiceBase.Save.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\KissU.Util.Datas\KissU.Util.Datas.csproj" />
   </ItemGroup>
 </Project>

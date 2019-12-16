@@ -2,10 +2,10 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System.Collections.Generic;
+
 namespace KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain
 {
-    using System.Collections.Generic;
-
     /// <summary>
     /// NgAlain应用程序数据
     /// </summary>

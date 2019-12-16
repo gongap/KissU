@@ -3,14 +3,13 @@
 // </copyright>
 
 using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using KissU.Modules.GreatWall.Service.Contracts.Dtos.Responses;
+using KissU.Util.Applications;
 
 namespace KissU.Modules.GreatWall.Service.Contracts.Abstractions
 {
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-    using KissU.Modules.GreatWall.Service.Contracts.Dtos.Responses;
-    using Util.Applications;
-
     /// <summary>
     /// 菜单服务
     /// </summary>

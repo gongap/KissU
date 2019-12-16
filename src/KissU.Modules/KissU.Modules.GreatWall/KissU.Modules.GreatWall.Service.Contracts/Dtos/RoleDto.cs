@@ -2,12 +2,12 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System;
+using System.ComponentModel.DataAnnotations;
+using KissU.Util.Applications.Trees;
+
 namespace KissU.Modules.GreatWall.Service.Contracts.Dtos
 {
-    using System;
-    using System.ComponentModel.DataAnnotations;
-    using KissU.Util.Applications.Trees;
-
     /// <summary>
     /// 角色参数
     /// </summary>

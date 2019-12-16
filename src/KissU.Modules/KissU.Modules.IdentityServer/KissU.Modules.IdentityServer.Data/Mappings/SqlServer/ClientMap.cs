@@ -2,13 +2,13 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Modules.IdentityServer.Domain.Models.ClientAggregate;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using KissU.Util.Datas.Ef.SqlServer;
+
 namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
 {
-    using KissU.Modules.IdentityServer.Domain.Models.ClientAggregate;
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.EntityFrameworkCore.Metadata.Builders;
-    using Util.Datas.Ef.SqlServer;
-
     /// <summary>
     /// 应用程序映射配置
     /// </summary>

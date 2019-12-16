@@ -3,13 +3,12 @@
 // </copyright>
 
 using KissU.Core.CPlatform.Module;
+using System.Text;
+using Autofac;
+using KissU.Util.Helpers;
 
 namespace KissU.Core
 {
-    using System.Text;
-    using Autofac;
-    using Util.Helpers;
-
     /// <inheritdoc />
     public class UtilModule : SystemModule
     {

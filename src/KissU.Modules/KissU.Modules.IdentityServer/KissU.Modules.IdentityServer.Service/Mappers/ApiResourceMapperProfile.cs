@@ -2,14 +2,14 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using AutoMapper;
+using KissU.Modules.IdentityServer.Domain.Models.ApiResourceAggregate;
+using KissU.Modules.IdentityServer.Service.Contracts.Dtos;
+using KissU.Modules.IdentityServer.Service.Contracts.Dtos.Requests;
+using Ids4 = IdentityServer4.Models;
+
 namespace KissU.Modules.IdentityServer.Service.Mappers
 {
-    using AutoMapper;
-    using KissU.Modules.IdentityServer.Domain.Models.ApiResourceAggregate;
-    using KissU.Modules.IdentityServer.Service.Contracts.Dtos;
-    using KissU.Modules.IdentityServer.Service.Contracts.Dtos.Requests;
-    using Ids4 = IdentityServer4.Models;
-
     /// <summary>
     /// Api资源AutoMapper映射配置
     /// </summary>

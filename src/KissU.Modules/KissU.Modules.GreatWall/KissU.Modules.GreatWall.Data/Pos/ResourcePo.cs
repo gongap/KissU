@@ -2,15 +2,15 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System;
+using System.ComponentModel.DataAnnotations.Schema;
+using KissU.Modules.GreatWall.Domain.Shared.Enums;
+using KissU.Util.Datas.Persistence;
+using KissU.Util.Domains;
+using KissU.Util.Domains.Auditing;
+
 namespace KissU.Modules.GreatWall.Data.Pos
 {
-    using System;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using KissU.Modules.GreatWall.Domain.Shared.Enums;
-    using Util.Datas.Persistence;
-    using Util.Domains;
-    using Util.Domains.Auditing;
-
     /// <summary>
     /// 资源持久化对象
     /// </summary>

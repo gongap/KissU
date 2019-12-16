@@ -3,13 +3,12 @@
 // </copyright>
 
 using KissU.Util.Exceptions;
+using System;
+using System.Linq;
+using Microsoft.AspNetCore.Identity;
 
 namespace KissU.Modules.GreatWall.Domain.Shared.Extensions
 {
-    using System;
-    using System.Linq;
-    using Microsoft.AspNetCore.Identity;
-
     /// <summary>
     /// Identity结果扩展
     /// </summary>

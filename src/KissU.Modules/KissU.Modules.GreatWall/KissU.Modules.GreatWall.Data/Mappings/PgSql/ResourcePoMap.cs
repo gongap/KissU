@@ -2,13 +2,13 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Modules.GreatWall.Data.Pos;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using KissU.Util.Datas.Ef.PgSql;
+
 namespace KissU.Modules.GreatWall.Data.Mappings.PgSql
 {
-    using KissU.Modules.GreatWall.Data.Pos;
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.EntityFrameworkCore.Metadata.Builders;
-    using Util.Datas.Ef.PgSql;
-
     /// <summary>
     /// 资源映射配置
     /// </summary>

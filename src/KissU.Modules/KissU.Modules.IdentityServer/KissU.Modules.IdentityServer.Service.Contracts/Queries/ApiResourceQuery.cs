@@ -2,11 +2,11 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System.ComponentModel.DataAnnotations;
+using KissU.Util.Datas.Queries;
+
 namespace KissU.Modules.IdentityServer.Service.Contracts.Queries
 {
-    using System.ComponentModel.DataAnnotations;
-    using Util.Datas.Queries;
-
     /// <summary>
     /// Api资源查询实体
     /// </summary>

@@ -2,14 +2,14 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System.ComponentModel.DataAnnotations;
+using KissU.Util;
+using KissU.Util.Applications.Dtos;
+using KissU.Util.Exceptions;
+using KissU.Util.Validations;
+
 namespace KissU.Modules.GreatWall.Service.Contracts.Dtos.Requests
 {
-    using System.ComponentModel.DataAnnotations;
-    using Util;
-    using Util.Applications.Dtos;
-    using Util.Exceptions;
-    using Util.Validations;
-
     /// <summary>
     /// 登录参数
     /// </summary>

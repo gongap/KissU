@@ -2,12 +2,12 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Modules.GreatWall.Domain.Models;
+using KissU.Modules.GreatWall.Domain.Repositories;
+using KissU.Util.Datas.Ef.Core;
+
 namespace KissU.Modules.GreatWall.Data.Repositories
 {
-    using KissU.Modules.GreatWall.Domain.Models;
-    using KissU.Modules.GreatWall.Domain.Repositories;
-    using Util.Datas.Ef.Core;
-
     /// <summary>
     /// 声明仓储
     /// </summary>

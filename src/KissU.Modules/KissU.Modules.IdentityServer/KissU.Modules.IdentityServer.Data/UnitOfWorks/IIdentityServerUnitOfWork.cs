@@ -2,10 +2,10 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Util.Datas.UnitOfWorks;
+
 namespace KissU.Modules.IdentityServer.Data.UnitOfWorks
 {
-    using Util.Datas.UnitOfWorks;
-
     /// <summary>
     /// Identity工作单元
     /// </summary>

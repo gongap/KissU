@@ -2,23 +2,23 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System;
+using System.Linq;
+using KissU.Modules.IdentityServer.Data.UnitOfWorks;
+using KissU.Modules.IdentityServer.Domain.Models.IdentityResourceAggregate;
+using KissU.Modules.IdentityServer.Domain.Repositories;
+using KissU.Modules.IdentityServer.Domain.Shared;
+using KissU.Modules.IdentityServer.Service.Contracts.Abstractions;
+using KissU.Modules.IdentityServer.Service.Contracts.Dtos;
+using KissU.Modules.IdentityServer.Service.Contracts.Dtos.Requests;
+using KissU.Modules.IdentityServer.Service.Contracts.Queries;
+using KissU.Util.Applications;
+using KissU.Util.Datas.Queries;
+using KissU.Util.Domains.Repositories;
+using KissU.Util.Exceptions;
+
 namespace KissU.Modules.IdentityServer.Service.Implements
 {
-    using System;
-    using System.Linq;
-    using KissU.Modules.IdentityServer.Data.UnitOfWorks;
-    using KissU.Modules.IdentityServer.Domain.Models.IdentityResourceAggregate;
-    using KissU.Modules.IdentityServer.Domain.Repositories;
-    using KissU.Modules.IdentityServer.Domain.Shared;
-    using KissU.Modules.IdentityServer.Service.Contracts.Abstractions;
-    using KissU.Modules.IdentityServer.Service.Contracts.Dtos;
-    using KissU.Modules.IdentityServer.Service.Contracts.Dtos.Requests;
-    using KissU.Modules.IdentityServer.Service.Contracts.Queries;
-    using Util.Applications;
-    using Util.Datas.Queries;
-    using Util.Domains.Repositories;
-    using Util.Exceptions;
-
     /// <summary>
     /// 应用程序服务
     /// </summary>

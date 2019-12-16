@@ -2,18 +2,18 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System;
+using KissU.Modules.GreatWall.Data.Repositories;
+using KissU.Modules.GreatWall.Domain.Models;
+using KissU.Modules.GreatWall.Domain.Services.Implements;
+using KissU.Modules.GreatWall.Domain.Shared.Describers;
+using KissU.Modules.GreatWall.Domain.Shared.Extensions;
+using KissU.Modules.GreatWall.Domain.Shared.Options;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
+
 namespace KissU.Modules.GreatWall.Service.Extensions
 {
-    using System;
-    using KissU.Modules.GreatWall.Data.Repositories;
-    using KissU.Modules.GreatWall.Domain.Models;
-    using KissU.Modules.GreatWall.Domain.Services.Implements;
-    using KissU.Modules.GreatWall.Domain.Shared.Describers;
-    using KissU.Modules.GreatWall.Domain.Shared.Extensions;
-    using KissU.Modules.GreatWall.Domain.Shared.Options;
-    using Microsoft.AspNetCore.Identity;
-    using Microsoft.Extensions.DependencyInjection;
-
     /// <summary>
     /// 权限扩展
     /// </summary>

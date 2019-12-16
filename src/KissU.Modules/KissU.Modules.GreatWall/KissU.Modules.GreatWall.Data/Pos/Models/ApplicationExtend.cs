@@ -2,10 +2,10 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Modules.GreatWall.Domain.Models;
+
 namespace KissU.Modules.GreatWall.Data.Pos.Models
 {
-    using KissU.Modules.GreatWall.Domain.Models;
-
     /// <summary>
     /// 应用程序扩展信息
     /// </summary>

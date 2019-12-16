@@ -2,19 +2,19 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using KissU.Modules.IdentityServer.Data.UnitOfWorks;
+using KissU.Modules.IdentityServer.Domain.Models.ClientAggregate;
+using KissU.Modules.IdentityServer.Domain.Repositories;
+using Microsoft.EntityFrameworkCore;
+using KissU.Util;
+using KissU.Util.Datas.Ef.Core;
+
 namespace KissU.Modules.IdentityServer.Data.Repositories
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
-    using KissU.Modules.IdentityServer.Data.UnitOfWorks;
-    using KissU.Modules.IdentityServer.Domain.Models.ClientAggregate;
-    using KissU.Modules.IdentityServer.Domain.Repositories;
-    using Microsoft.EntityFrameworkCore;
-    using Util;
-    using Util.Datas.Ef.Core;
-
     /// <summary>
     /// 应用程序仓储
     /// </summary>

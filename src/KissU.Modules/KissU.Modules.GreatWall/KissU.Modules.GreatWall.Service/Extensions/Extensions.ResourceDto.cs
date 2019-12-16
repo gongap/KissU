@@ -2,16 +2,16 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Modules.GreatWall.Data.Pos;
+using KissU.Modules.GreatWall.Data.Pos.Models;
+using KissU.Modules.GreatWall.Domain.Models;
+using KissU.Modules.GreatWall.Service.Contracts.Dtos;
+using KissU.Modules.GreatWall.Service.Contracts.Dtos.Requests;
+using KissU.Util.Helpers;
+using KissU.Util.Maps;
+
 namespace KissU.Modules.GreatWall.Service.Extensions
 {
-    using KissU.Modules.GreatWall.Data.Pos;
-    using KissU.Modules.GreatWall.Data.Pos.Models;
-    using KissU.Modules.GreatWall.Domain.Models;
-    using KissU.Modules.GreatWall.Service.Contracts.Dtos;
-    using KissU.Modules.GreatWall.Service.Contracts.Dtos.Requests;
-    using Util.Helpers;
-    using Util.Maps;
-
     /// <summary>
     /// 资源参数扩展
     /// </summary>

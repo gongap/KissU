@@ -2,16 +2,16 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using KissU.Modules.GreatWall.Domain.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+
 namespace KissU.Modules.GreatWall.Domain.Services.Implements
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-    using KissU.Modules.GreatWall.Domain.Models;
-    using Microsoft.AspNetCore.Identity;
-    using Microsoft.Extensions.Logging;
-    using Microsoft.Extensions.Options;
-
     /// <summary>
     /// Identity用户服务
     /// </summary>

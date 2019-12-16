@@ -2,14 +2,14 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System.Collections.Generic;
+using System.Security.Claims;
+using AutoMapper;
+using KissU.Modules.IdentityServer.Domain.Models.ClientAggregate;
+using Ids4 = IdentityServer4.Models;
+
 namespace KissU.Modules.IdentityServer.Service.Mappers
 {
-    using System.Collections.Generic;
-    using System.Security.Claims;
-    using AutoMapper;
-    using KissU.Modules.IdentityServer.Domain.Models.ClientAggregate;
-    using Ids4 = IdentityServer4.Models;
-
     /// <summary>
     /// 应用程序AutoMapper映射配置
     /// </summary>

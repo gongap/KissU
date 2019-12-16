@@ -2,11 +2,11 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Modules.GreatWall.Domain.Shared.Options;
+using Microsoft.AspNetCore.Identity;
+
 namespace KissU.Modules.GreatWall.Domain.Shared.Extensions
 {
-    using KissU.Modules.GreatWall.Domain.Shared.Options;
-    using Microsoft.AspNetCore.Identity;
-
     /// <summary>
     /// Identity配置扩展
     /// </summary>
