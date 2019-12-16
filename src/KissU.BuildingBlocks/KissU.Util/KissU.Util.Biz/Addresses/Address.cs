@@ -3,15 +3,18 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using KissU.Util.Domains;
 
-namespace KissU.Util.Biz.Addresses {
+namespace KissU.Util.Biz.Addresses
+{
     /// <summary>
     /// 地址 - 不可变
     /// </summary>
-    public class Address : ValueObjectBase<Address> {
+    public class Address : ValueObjectBase<Address>
+    {
         /// <summary>
         /// 初始化地址
         /// </summary>
-        protected Address() {
+        protected Address()
+        {
         }
 
         /// <summary>
@@ -25,7 +28,8 @@ namespace KissU.Util.Biz.Addresses {
         /// <param name="county">区县</param>
         /// <param name="street">街道</param>
         /// <param name="zip">邮政编码</param>
-        public Address( Guid? provinceId, Guid? cityId, Guid? countyId, string province, string city, string county, string street, string zip = "" ) {
+        public Address( Guid? provinceId, Guid? cityId, Guid? countyId, string province, string city, string county, string street, string zip = "" )
+        {
             ProvinceId = provinceId;
             CityId = cityId;
             CountyId = countyId;
@@ -90,7 +94,8 @@ namespace KissU.Util.Biz.Addresses {
         /// <summary>
         /// 添加描述
         /// </summary>
-        protected override void AddDescriptions() {
+        protected override void AddDescriptions()
+        {
             AddDescription( "省份编号", ProvinceId );
             AddDescription( "城市编号", CityId );
             AddDescription( "区县编号", CountyId );

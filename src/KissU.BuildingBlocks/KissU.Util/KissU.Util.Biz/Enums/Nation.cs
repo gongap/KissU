@@ -1,10 +1,12 @@
 ﻿using System.ComponentModel;
 
-namespace KissU.Util.Biz.Enums {
+namespace KissU.Util.Biz.Enums
+{
     /// <summary>
     /// 民族
     /// </summary>
-    public enum Nation {
+    public enum Nation
+    {
         /// <summary>
         /// 汉族        
         /// </summary>
@@ -290,18 +292,21 @@ namespace KissU.Util.Biz.Enums {
     /// <summary>
     /// 民族枚举扩展
     /// </summary>
-    public static class NationExtensions {
+    public static class NationExtensions
+    {
         /// <summary>
         /// 获取描述
         /// </summary>
-        public static string Description( this Nation? nation ) {
+        public static string Description( this Nation? nation )
+        {
             return nation == null ? string.Empty : nation.Value.Description();
         }
 
         /// <summary>
         /// 获取值
         /// </summary>
-        public static int? Value( this Nation? nation ) {
+        public static int? Value( this Nation? nation )
+        {
             return nation?.Value();
         }
     }

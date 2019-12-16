@@ -2,12 +2,14 @@
 using System.Runtime.Serialization;
 using KissU.Util.Domains;
 
-namespace KissU.Util.Biz.Addresses {
+namespace KissU.Util.Biz.Addresses
+{
     /// <summary>
     /// 地址信息 - 可变
     /// </summary>
     [DataContract]
-    public class AddressInfo : ValueObjectBase<AddressInfo> {
+    public class AddressInfo : ValueObjectBase<AddressInfo>
+    {
         /// <summary>
         /// 省份编号
         /// </summary>
