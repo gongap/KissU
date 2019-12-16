@@ -1,8 +1,10 @@
-﻿namespace KissU.Util.Tools.Offices {
+﻿namespace KissU.Util.Tools.Offices
+{
     /// <summary>
     /// 文件导出工厂
     /// </summary>
-    public interface IExportFactory {
+    public interface IExportFactory
+    {
         /// <summary>
         /// 创建文件导出
         /// </summary>

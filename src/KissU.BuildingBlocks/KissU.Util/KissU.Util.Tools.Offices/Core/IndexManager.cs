@@ -1,15 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace KissU.Util.Tools.Offices.Core {
+namespace KissU.Util.Tools.Offices.Core
+{
     /// <summary>
     /// 索引管理器
     /// </summary>
-    public class IndexManager {
+    public class IndexManager
+    {
         /// <summary>
         /// 初始化索引管理器
         /// </summary>
-        public IndexManager() {
+        public IndexManager()
+        {
             _list = new List<IndexRange> { new IndexRange( 0, 10000 ) };
         }
 
@@ -22,7 +25,8 @@ namespace KissU.Util.Tools.Offices.Core {
         /// 获取索引
         /// </summary>
         /// <param name="span">跨度</param>
-        public int GetIndex( int span = 1 ) {
+        public int GetIndex( int span = 1 )
+        {
             var range = _list.First();
             var index = range.GetIndex( span );
             if ( range.IsEnd )
@@ -35,9 +39,12 @@ namespace KissU.Util.Tools.Offices.Core {
         /// </summary>
         /// <param name="index">索引</param>
         /// <param name="span">跨度</param>
-        public void AddIndex( int index, int span = 1 ) {
-            foreach ( var range in _list ) {
-                if ( range.Contains( index ) ) {
+        public void AddIndex( int index, int span = 1 )
+        {
+            foreach ( var range in _list )
+            {
+                if ( range.Contains( index ) )
+                {
                     AddIndex( range, index, span );
                     return;
                 }
@@ -47,7 +54,8 @@ namespace KissU.Util.Tools.Offices.Core {
         /// <summary>
         /// 添加索引
         /// </summary>
-        private void AddIndex( IndexRange range, int index, int span ) {
+        private void AddIndex( IndexRange range, int index, int span )
+        {
             var newRange = range.Split( index, span );
             if ( newRange == null )
                 return;

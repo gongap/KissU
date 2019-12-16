@@ -9,27 +9,33 @@ using System.Threading.Tasks;
 using KissU.Util.Helpers;
 using Convert = KissU.Util.Helpers.Convert;
 
-namespace KissU.Util.Tools.Offices.Core {
+namespace KissU.Util.Tools.Offices.Core
+{
     /// <summary>
     /// 导出器
     /// </summary>
-    public abstract class ExportBase : IExport {
+    public abstract class ExportBase : IExport
+    {
         /// <summary>
         /// 表
         /// </summary>
         protected readonly Table Table;
+
         /// <summary>
         /// 导出格式
         /// </summary>
         private readonly ExportFormat _format;
+
         /// <summary>
         /// 表头样式
         /// </summary>
         private CellStyle _headStyle;
+
         /// <summary>
         /// 正文样式
         /// </summary>
         private CellStyle _bodyStyle;
+
         /// <summary>
         /// 页脚样式
         /// </summary>
@@ -39,7 +45,8 @@ namespace KissU.Util.Tools.Offices.Core {
         /// 初始化导出
         /// </summary>
         /// <param name="format">导出格式</param>
-        protected ExportBase( ExportFormat format ) {
+        protected ExportBase( ExportFormat format )
+        {
             Table = new Table();
             _format = format;
             _headStyle = CellStyle.Head();
@@ -64,7 +71,8 @@ namespace KissU.Util.Tools.Offices.Core {
         /// 设置表头样式
         /// </summary>
         /// <param name="style">表头单元格样式</param>
-        public IExport HeadStyle( CellStyle style ) {
+        public IExport HeadStyle( CellStyle style )
+        {
             _headStyle = style;
             return this;
         }
@@ -72,7 +80,8 @@ namespace KissU.Util.Tools.Offices.Core {
         /// <summary>
         /// 获取表头样式
         /// </summary>
-        protected CellStyle GetHeadStyle() {
+        protected CellStyle GetHeadStyle()
+        {
             return _headStyle;
         }
 
@@ -80,7 +89,8 @@ namespace KissU.Util.Tools.Offices.Core {
         /// 设置正文样式
         /// </summary>
         /// <param name="style">单元格样式</param>
-        public IExport BodyStyle( CellStyle style ) {
+        public IExport BodyStyle( CellStyle style )
+        {
             _bodyStyle = style;
             return this;
         }
@@ -88,7 +98,8 @@ namespace KissU.Util.Tools.Offices.Core {
         /// <summary>
         /// 获取正文样式
         /// </summary>
-        protected CellStyle GetBodyStyle() {
+        protected CellStyle GetBodyStyle()
+        {
             return _bodyStyle;
         }
 
@@ -96,7 +107,8 @@ namespace KissU.Util.Tools.Offices.Core {
         /// 设置页脚样式
         /// </summary>
         /// <param name="style">单元格样式</param>
-        public IExport FootStyle( CellStyle style ) {
+        public IExport FootStyle( CellStyle style )
+        {
             _footStyle = style;
             return this;
         }
@@ -104,7 +116,8 @@ namespace KissU.Util.Tools.Offices.Core {
         /// <summary>
         /// 获取页脚样式
         /// </summary>
-        protected CellStyle GetFootStyle() {
+        protected CellStyle GetFootStyle()
+        {
             return _footStyle;
         }
 
@@ -112,7 +125,8 @@ namespace KissU.Util.Tools.Offices.Core {
         /// 添加表头
         /// </summary>
         /// <param name="titles">列标题</param>
-        public IExport Head( params string[] titles ) {
+        public IExport Head( params string[] titles )
+        {
             Table.AddHeadRow( titles );
             return this;
         }
@@ -121,7 +135,8 @@ namespace KissU.Util.Tools.Offices.Core {
         /// 添加表头
         /// </summary>
         /// <param name="cells">表头</param>
-        public IExport Head( params Cell[] cells ) {
+        public IExport Head( params Cell[] cells )
+        {
             Table.AddHeadRow( cells );
             return this;
         }
@@ -131,7 +146,8 @@ namespace KissU.Util.Tools.Offices.Core {
         /// </summary>
         /// <typeparam name="T">实体类型</typeparam>
         /// <param name="list">实体集合</param>
-        public IExport Body<T>( IEnumerable<T> list ) where T : class {
+        public IExport Body<T>( IEnumerable<T> list ) where T : class
+        {
             return Body( list, typeof( T ).GetProperties().Select( t => t.Name ).ToArray() );
         }
 
@@ -142,7 +158,8 @@ namespace KissU.Util.Tools.Offices.Core {
         /// <param name="list">实体集合</param>
         /// <param name="propertiesExpression">属性表达式</param>
         public IExport Body<T>( IEnumerable<T> list, Expression<Func<T, object[]>> propertiesExpression )
-            where T : class {
+            where T : class
+            {
             return Body( list, Lambda.GetNames( propertiesExpression ).ToArray() );
         }
 
@@ -152,7 +169,8 @@ namespace KissU.Util.Tools.Offices.Core {
         /// <typeparam name="T">实体类型</typeparam>
         /// <param name="data">数据</param>
         /// <param name="propertyNames">属性列表</param>
-        public IExport Body<T>( IEnumerable<T> data, params string[] propertyNames ) where T : class {
+        public IExport Body<T>( IEnumerable<T> data, params string[] propertyNames ) where T : class
+        {
             data.CheckNull( nameof( data ) );
             propertyNames.CheckNull( nameof( propertyNames ) );
             var list = data.ToList();
@@ -165,7 +183,8 @@ namespace KissU.Util.Tools.Offices.Core {
         /// <summary>
         /// 添加实体
         /// </summary>
-        private void AddEntity<T>( T entity, IEnumerable<string> propertyNames ) where T : class {
+        private void AddEntity<T>( T entity, IEnumerable<string> propertyNames ) where T : class
+        {
             var values = GetPropertyValues( entity, propertyNames );
             Table.AddBodyRow( values.ToArray() );
         }
@@ -173,9 +192,11 @@ namespace KissU.Util.Tools.Offices.Core {
         /// <summary>
         /// 获取属性值集合
         /// </summary>
-        private List<object> GetPropertyValues<T>( T entity, IEnumerable<string> propertyNames ) where T : class {
+        private List<object> GetPropertyValues<T>( T entity, IEnumerable<string> propertyNames ) where T : class
+        {
             var type = entity.GetType();
-            return propertyNames.Select( type.GetProperty ).Select( property => {
+            return propertyNames.Select( type.GetProperty ).Select( property =>
+            {
                 if ( property == null )
                     return "";
                 object result = property.GetValue( entity );
@@ -188,7 +209,8 @@ namespace KissU.Util.Tools.Offices.Core {
         /// <summary>
         /// 调整列宽
         /// </summary>
-        private void AdjustColumnWidth<T>( T entity, string[] propertyNames ) where T : class {
+        private void AdjustColumnWidth<T>( T entity, string[] propertyNames ) where T : class
+        {
             if ( entity == null )
                 return;
             var type = entity.GetType();
@@ -199,7 +221,8 @@ namespace KissU.Util.Tools.Offices.Core {
         /// <summary>
         /// 调整列宽
         /// </summary>
-        private void AdjustColumnWidth( PropertyInfo property, int index ) {
+        private void AdjustColumnWidth( PropertyInfo property, int index )
+        {
             if ( property == null )
                 return;
             if ( Reflection.IsDate( property ) )
@@ -210,7 +233,8 @@ namespace KissU.Util.Tools.Offices.Core {
         /// 添加页脚
         /// </summary>
         /// <param name="values">值</param>
-        public IExport Foot( params string[] values ) {
+        public IExport Foot( params string[] values )
+        {
             Table.AddFootRow( values );
             return this;
         }
@@ -219,7 +243,8 @@ namespace KissU.Util.Tools.Offices.Core {
         /// 添加页脚
         /// </summary>
         /// <param name="cells">单元格集合</param>
-        public IExport Foot( params Cell[] cells ) {
+        public IExport Foot( params Cell[] cells )
+        {
             Table.AddFootRow( cells );
             return this;
         }
@@ -229,8 +254,10 @@ namespace KissU.Util.Tools.Offices.Core {
         /// </summary>
         /// <param name="directory">目录，不包括文件名</param>
         /// <param name="fileName">文件名，不包括扩展名</param>
-        public IExport Write( string directory, string fileName = "" ) {
-            using ( var stream = new FileStream( GetFilePath( directory, fileName ), FileMode.Create ) ) {
+        public IExport Write( string directory, string fileName = "" )
+        {
+            using ( var stream = new FileStream( GetFilePath( directory, fileName ), FileMode.Create ) )
+            {
                 WriteStream( stream );
             }
             return this;
@@ -239,14 +266,16 @@ namespace KissU.Util.Tools.Offices.Core {
         /// <summary>
         /// 获取文件路径
         /// </summary>
-        private string GetFilePath( string directory, string fileName ) {
+        private string GetFilePath( string directory, string fileName )
+        {
             return Path.Combine( directory, GetFileName( fileName ) );
         }
 
         /// <summary>
         /// 获取文件名
         /// </summary>
-        private string GetFileName( string fileName ) {
+        private string GetFileName( string fileName )
+        {
             if ( fileName.IsEmpty() )
                 fileName = Table.Title;
             if ( fileName.IsEmpty() )
@@ -264,7 +293,8 @@ namespace KissU.Util.Tools.Offices.Core {
         /// 下载
         /// </summary>
         /// <param name="fileName">文件名，不包括扩展名</param>
-        public async Task DownloadAsync( string fileName = "" ) {
+        public async Task DownloadAsync( string fileName = "" )
+        {
              await DownloadAsync( fileName, Encoding.UTF8 );
         }
 
@@ -273,8 +303,10 @@ namespace KissU.Util.Tools.Offices.Core {
         /// </summary>
         /// <param name="fileName">文件名，不包括扩展名</param>
         /// <param name="encoding">字符编码</param>
-        public async Task DownloadAsync( string fileName, Encoding encoding ) {
-            using( var stream = new MemoryStream() ) {
+        public async Task DownloadAsync( string fileName, Encoding encoding )
+        {
+            using( var stream = new MemoryStream() )
+            {
                 WriteStream( stream );
                 await Web.DownloadAsync( stream.ToArray(), GetFileName( fileName ) );
             }

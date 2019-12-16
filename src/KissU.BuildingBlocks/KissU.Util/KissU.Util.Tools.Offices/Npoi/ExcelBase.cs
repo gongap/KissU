@@ -5,43 +5,53 @@ using KissU.Util.Tools.Offices.Core;
 using NPOI.SS.UserModel;
 using NPOI.SS.Util;
 
-namespace KissU.Util.Tools.Offices.Npoi {
+namespace KissU.Util.Tools.Offices.Npoi
+{
     /// <summary>
     /// Npoi Excel操作
     /// </summary>
-    public abstract class ExcelBase : IExcel {
+    public abstract class ExcelBase : IExcel
+    {
         /// <summary>
         /// Excel工作薄
         /// </summary>
         private IWorkbook _workbook;
+
         /// <summary>
         /// Excel工作表
         /// </summary>
         private ISheet _sheet;
+
         /// <summary>
         /// 当前行
         /// </summary>
         private IRow _row;
+
         /// <summary>
         /// 当前单元格
         /// </summary>
         private ICell _cell;
+
         /// <summary>
         /// 日期格式
         /// </summary>
         private string _dateFormat;
+
         /// <summary>
         /// 表头样式
         /// </summary>
         private ICellStyle _headStyle;
+
         /// <summary>
         /// 正文样式
         /// </summary>
         private ICellStyle _bodyStyle;
+
         /// <summary>
         /// 页脚样式
         /// </summary>
         private ICellStyle _footStyle;
+
         /// <summary>
         /// 日期样式
         /// </summary>
@@ -50,7 +60,8 @@ namespace KissU.Util.Tools.Offices.Npoi {
         /// <summary>
         /// 初始化Npoi操作
         /// </summary>
-        protected ExcelBase() {
+        protected ExcelBase()
+        {
             _dateFormat = "yyyy-mm-dd";
             CreateWorkbook().CreateSheet();
         }
@@ -58,7 +69,8 @@ namespace KissU.Util.Tools.Offices.Npoi {
         /// <summary>
         /// 创建工作薄
         /// </summary>
-        public IExcel CreateWorkbook() {
+        public IExcel CreateWorkbook()
+        {
             _workbook = GetWorkbook();
             return this;
         }
@@ -72,7 +84,8 @@ namespace KissU.Util.Tools.Offices.Npoi {
         /// 创建工作表
         /// </summary>
         /// <param name="sheetName">工作表名称</param>
-        public IExcel CreateSheet( string sheetName = "" ) {
+        public IExcel CreateSheet( string sheetName = "" )
+        {
             _sheet = sheetName.IsEmpty() ? _workbook.CreateSheet() : _workbook.CreateSheet( sheetName );
             return this;
         }
@@ -81,7 +94,8 @@ namespace KissU.Util.Tools.Offices.Npoi {
         /// 创建行
         /// </summary>
         /// <param name="rowIndex">行索引</param>
-        public IExcel CreateRow( int rowIndex ) {
+        public IExcel CreateRow( int rowIndex )
+        {
             _row = GetOrCreateRow( rowIndex );
             return this;
         }
@@ -89,7 +103,8 @@ namespace KissU.Util.Tools.Offices.Npoi {
         /// <summary>
         /// 获取行，如果不存在则创建
         /// </summary>
-        private IRow GetOrCreateRow( int rowIndex ) {
+        private IRow GetOrCreateRow( int rowIndex )
+        {
             return _sheet.GetRow( rowIndex ) ?? _sheet.CreateRow( rowIndex );
         }
 
@@ -97,7 +112,8 @@ namespace KissU.Util.Tools.Offices.Npoi {
         /// 创建单元格
         /// </summary>
         /// <param name="cell">单元格</param>
-        public IExcel CreateCell( Cell cell ) {
+        public IExcel CreateCell( Cell cell )
+        {
             if ( cell.IsNull() )
                 return this;
             _cell = GetOrCreateCell( _row, cell.ColumnIndex );
@@ -109,17 +125,20 @@ namespace KissU.Util.Tools.Offices.Npoi {
         /// <summary>
         /// 获取单元格，如果不存在则创建
         /// </summary>
-        private ICell GetOrCreateCell( IRow row, int columnIndex ) {
+        private ICell GetOrCreateCell( IRow row, int columnIndex )
+        {
             return row.GetCell( columnIndex ) ?? row.CreateCell( columnIndex );
         }
 
         /// <summary>
         /// 设置单元格的值
         /// </summary>
-        private void SetCellValue( object value ) {
+        private void SetCellValue( object value )
+        {
             if ( value == null )
                 return;
-            switch ( value.GetType().ToString() ) {
+            switch ( value.GetType().ToString() )
+            {
                 case "System.String":
                     _cell.SetCellValue( value.ToString() );
                     break;
@@ -153,7 +172,8 @@ namespace KissU.Util.Tools.Offices.Npoi {
         /// <param name="endRowIndex">结束行索引</param>
         /// <param name="startColumnIndex">起始列索引</param>
         /// <param name="endColumnIndex">结束列索引</param>
-        public IExcel MergeCell( int startRowIndex, int endRowIndex, int startColumnIndex, int endColumnIndex ) {
+        public IExcel MergeCell( int startRowIndex, int endRowIndex, int startColumnIndex, int endColumnIndex )
+        {
             var region = new CellRangeAddress( startRowIndex, endRowIndex, startColumnIndex, endColumnIndex );
             _sheet.AddMergedRegion( region );
             return this;
@@ -163,7 +183,8 @@ namespace KissU.Util.Tools.Offices.Npoi {
         /// 合并单元格
         /// </summary>
         /// <param name="cell">单元格</param>
-        public IExcel MergeCell( Cell cell ) {
+        public IExcel MergeCell( Cell cell )
+        {
             if ( cell.NeedMerge )
                 MergeCell( cell.RowIndex, cell.EndRowIndex, cell.ColumnIndex, cell.EndColumnIndex );
             return this;
@@ -173,7 +194,8 @@ namespace KissU.Util.Tools.Offices.Npoi {
         /// 写入流
         /// </summary>
         /// <param name="stream">流</param>
-        public IExcel Write( Stream stream ) {
+        public IExcel Write( Stream stream )
+        {
             _workbook.Write( stream );
             return this;
         }
@@ -181,7 +203,8 @@ namespace KissU.Util.Tools.Offices.Npoi {
         /// <summary>
         /// 创建日期样式
         /// </summary>
-        private ICellStyle CreateDateStyle() {
+        private ICellStyle CreateDateStyle()
+        {
             if ( _dateStyle != null )
                 return _dateStyle;
             _dateStyle = CellStyleResolver.Resolve( _workbook, CellStyle.Body() );
@@ -198,8 +221,10 @@ namespace KissU.Util.Tools.Offices.Npoi {
         /// <param name="startColumnIndex">起始列索引</param>
         /// <param name="endColumnIndex">结束列索引</param>
         /// <param name="style">单元格样式</param>
-        protected IExcel Style( int startRowIndex, int endRowIndex, int startColumnIndex, int endColumnIndex, ICellStyle style ) {
-            for ( var i = startRowIndex; i <= endRowIndex; i++ ) {
+        protected IExcel Style( int startRowIndex, int endRowIndex, int startColumnIndex, int endColumnIndex, ICellStyle style )
+        {
+            for ( var i = startRowIndex; i <= endRowIndex; i++ )
+            {
                 var row = GetOrCreateRow( i );
                 for( var j = startColumnIndex; j <= endColumnIndex; j++ )
                     GetOrCreateCell( row, j ).CellStyle = style;
@@ -212,7 +237,8 @@ namespace KissU.Util.Tools.Offices.Npoi {
         /// </summary>
         /// <param name="table">表格</param>
         /// <param name="style">单元格样式</param>
-        public IExcel HeadStyle( Table table, CellStyle style ) {
+        public IExcel HeadStyle( Table table, CellStyle style )
+        {
             if( _headStyle == null )
                 _headStyle = CellStyleResolver.Resolve( _workbook, style );
             Style( 0, table.HeadRowCount - 1, 0, table.ColumnNumber - 1, _headStyle );
@@ -224,7 +250,8 @@ namespace KissU.Util.Tools.Offices.Npoi {
         /// </summary>
         /// <param name="table">表格</param>
         /// <param name="style">单元格样式</param>
-        public IExcel BodyStyle( Table table, CellStyle style ) {
+        public IExcel BodyStyle( Table table, CellStyle style )
+        {
             if ( _bodyStyle == null )
                 _bodyStyle = CellStyleResolver.Resolve( _workbook, style );
             Style( table.HeadRowCount, table.HeadRowCount + table.BodyRowCount - 1, 0, table.ColumnNumber - 1, _bodyStyle );
@@ -236,7 +263,8 @@ namespace KissU.Util.Tools.Offices.Npoi {
         /// </summary>
         /// <param name="table">表格</param>
         /// <param name="style">单元格样式</param>
-        public IExcel FootStyle( Table table, CellStyle style ) {
+        public IExcel FootStyle( Table table, CellStyle style )
+        {
             if ( _footStyle == null )
                 _footStyle = CellStyleResolver.Resolve( _workbook, style );
             Style( table.HeadRowCount + table.BodyRowCount, table.Count - 1, 0, table.ColumnNumber - 1, _footStyle );
@@ -247,7 +275,8 @@ namespace KissU.Util.Tools.Offices.Npoi {
         /// 设置日期格式
         /// </summary>
         /// <param name="format">日期格式，默认"yyyy-mm-dd"</param>
-        public IExcel DateFormat( string format = "yyyy-mm-dd" ) {
+        public IExcel DateFormat( string format = "yyyy-mm-dd" )
+        {
             _dateFormat = format;
             return this;
         }
@@ -257,7 +286,8 @@ namespace KissU.Util.Tools.Offices.Npoi {
         /// </summary>
         /// <param name="columnIndex">列索引</param>
         /// <param name="width">列宽度，设置字符数</param>
-        public IExcel ColumnWidth( int columnIndex, int width ) {
+        public IExcel ColumnWidth( int columnIndex, int width )
+        {
             _sheet.SetColumnWidth( columnIndex,width * 256 );
             return this;
         }

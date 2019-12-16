@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace KissU.Util.Tools.Offices.Core {
+namespace KissU.Util.Tools.Offices.Core
+{
     /// <summary>
     /// 表格
     /// </summary>
-    public class Table {
+    public class Table
+    {
         /// <summary>
         /// 头部
         /// </summary>
@@ -29,7 +31,8 @@ namespace KissU.Util.Tools.Offices.Core {
         /// <summary>
         /// 初始化表格
         /// </summary>
-        public Table() {
+        public Table()
+        {
             _header = new Range();
             _rowIndex = 0;
         }
@@ -37,8 +40,10 @@ namespace KissU.Util.Tools.Offices.Core {
         /// <summary>
         /// 总标题
         /// </summary>
-        public string Title {
-            get {
+        public string Title
+        {
+            get
+            {
                 if ( _header.Count == 0 )
                     return string.Empty;
                 if ( _header[0].Cells.Count > 1 )
@@ -75,21 +80,24 @@ namespace KissU.Util.Tools.Offices.Core {
         /// <summary>
         /// 获取表头
         /// </summary>
-        public List<Row> GetHeader() {
+        public List<Row> GetHeader()
+        {
             return _header.GetRows();
         }
 
         /// <summary>
         /// 获取表格正文
         /// </summary>
-        public List<Row> GetBody() {
+        public List<Row> GetBody()
+        {
             return _body == null ? new List<Row>() : _body.GetRows();
         }
 
         /// <summary>
         /// 获取页脚
         /// </summary>
-        public List<Row> GetFooter() {
+        public List<Row> GetFooter()
+        {
             return _footer == null ? new List<Row>() : _footer.GetRows();
         }
 
@@ -97,7 +105,8 @@ namespace KissU.Util.Tools.Offices.Core {
         /// 添加表头
         /// </summary>
         /// <param name="titles">标题</param>
-        public void AddHeadRow( params string[] titles ) {
+        public void AddHeadRow( params string[] titles )
+        {
             if ( titles == null )
                 return;
             AddHeadRow( titles.Select( title => new Cell( title ) ).ToArray() );
@@ -107,7 +116,8 @@ namespace KissU.Util.Tools.Offices.Core {
         /// 添加表头
         /// </summary>
         /// <param name="cells">表头</param>
-        public void AddHeadRow( params Cell[] cells ) {
+        public void AddHeadRow( params Cell[] cells )
+        {
             if ( cells == null )
                 return;
             AddRowToHeader( cells );
@@ -117,7 +127,8 @@ namespace KissU.Util.Tools.Offices.Core {
         /// <summary>
         /// 添加表头行
         /// </summary>
-        private void AddRowToHeader( IEnumerable<Cell> cells ) {
+        private void AddRowToHeader( IEnumerable<Cell> cells )
+        {
             _header.AddRow(_rowIndex, cells );
             _rowIndex++;
         }
@@ -125,14 +136,16 @@ namespace KissU.Util.Tools.Offices.Core {
         /// <summary>
         /// 重置第一行的列跨度，第一行可能为总标题
         /// </summary>
-        private void ResetFirstColumnSpan() {
+        private void ResetFirstColumnSpan()
+        {
             if ( _rowIndex < 2 )
                 return;
             if ( _header.Count == 0 )
                 return;
             if ( _header[0].ColumnNumber > 1 )
                 return;
-            if ( _header.Count > 1 ) {
+            if ( _header.Count > 1 )
+            {
                 _header[0][0].ColumnSpan = _header[1].ColumnNumber;
                 return;
             }
@@ -145,7 +158,8 @@ namespace KissU.Util.Tools.Offices.Core {
         /// 添加正文
         /// </summary>
         /// <param name="cellValues">值</param>
-        public void AddBodyRow( params object[] cellValues ) {
+        public void AddBodyRow( params object[] cellValues )
+        {
             if ( cellValues == null )
                 return;
             AddBodyRow( cellValues.Select( t => new Cell( t ) ) );
@@ -155,7 +169,8 @@ namespace KissU.Util.Tools.Offices.Core {
         /// 添加正文
         /// </summary>
         /// <param name="cells">单元格集合</param>
-        public void AddBodyRow( IEnumerable<Cell> cells ) {
+        public void AddBodyRow( IEnumerable<Cell> cells )
+        {
             if ( cells == null )
                 return;
             GetBodyRange().AddRow( _rowIndex,cells );
@@ -166,7 +181,8 @@ namespace KissU.Util.Tools.Offices.Core {
         /// <summary>
         /// 获取正文区域
         /// </summary>
-        private Range GetBodyRange() {
+        private Range GetBodyRange()
+        {
             if ( _body != null )
                 return _body;
             _body = new Range( _rowIndex );
@@ -177,7 +193,8 @@ namespace KissU.Util.Tools.Offices.Core {
         /// 添加页脚
         /// </summary>
         /// <param name="cellValues">值</param>
-        public void AddFootRow( params string[] cellValues ) {
+        public void AddFootRow( params string[] cellValues )
+        {
             if ( cellValues == null )
                 return;
             AddFootRow( cellValues.Select( t => new Cell( t ) ).ToArray() );
@@ -187,7 +204,8 @@ namespace KissU.Util.Tools.Offices.Core {
         /// 添加页脚
         /// </summary>
         /// <param name="cells">单元格集合</param>
-        public void AddFootRow( params Cell[] cells ) {
+        public void AddFootRow( params Cell[] cells )
+        {
             if ( cells == null )
                 return;
             GetFootRange().AddRow( _rowIndex, cells );
@@ -197,7 +215,8 @@ namespace KissU.Util.Tools.Offices.Core {
         /// <summary>
         /// 获取页脚区域
         /// </summary>
-        private Range GetFootRange() {
+        private Range GetFootRange()
+        {
             if ( _footer != null )
                 return _footer;
             _footer = new Range( _rowIndex );
@@ -207,7 +226,8 @@ namespace KissU.Util.Tools.Offices.Core {
         /// <summary>
         /// 清空表头
         /// </summary>
-        public void ClearHeader() {
+        public void ClearHeader()
+        {
             _header.Clear();
         }
     }

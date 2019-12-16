@@ -1,8 +1,10 @@
-﻿namespace KissU.Util.Tools.Offices.Core {
+﻿namespace KissU.Util.Tools.Offices.Core
+{
     /// <summary>
     /// 填充模式
     /// </summary>
-    public enum FillPattern {
+    public enum FillPattern
+    {
         NoFill = 0,
         SolidForeground = 1,
         FineDots = 2,

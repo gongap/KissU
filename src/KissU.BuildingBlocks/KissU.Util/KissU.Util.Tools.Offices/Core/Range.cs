@@ -1,15 +1,18 @@
 ﻿using System.Collections.Generic;
 
-namespace KissU.Util.Tools.Offices.Core {
+namespace KissU.Util.Tools.Offices.Core
+{
     /// <summary>
     /// 区
     /// </summary>
-    public class Range {
+    public class Range
+    {
         /// <summary>
         /// 初始化区
         /// </summary>
         /// <param name="startIndex">起始索引</param>
-        public Range( int startIndex = 0 ) {
+        public Range( int startIndex = 0 )
+        {
             _rows = new List<Row>();
             _startIndex = startIndex;
         }
@@ -18,6 +21,7 @@ namespace KissU.Util.Tools.Offices.Core {
         /// 行集
         /// </summary>
         private readonly List<Row> _rows;
+
         /// <summary>
         /// 起始索引
         /// </summary>
@@ -33,7 +37,8 @@ namespace KissU.Util.Tools.Offices.Core {
         /// 获取行
         /// </summary>
         /// <param name="index">外部索引</param>
-        public Row GetRow( int index ) {
+        public Row GetRow( int index )
+        {
             var realIndex = index - _startIndex;
             if ( realIndex < 0 )
                 return null;
@@ -55,7 +60,8 @@ namespace KissU.Util.Tools.Offices.Core {
         /// <summary>
         /// 获取行
         /// </summary>
-        public List<Row> GetRows() {
+        public List<Row> GetRows()
+        {
             return _rows;
         }
 
@@ -64,7 +70,8 @@ namespace KissU.Util.Tools.Offices.Core {
         /// </summary>
         /// <param name="rowIndex">行索引</param>
         /// <param name="cells">单元格集合</param>
-        public void AddRow( int rowIndex, IEnumerable<Cell> cells ) {
+        public void AddRow( int rowIndex, IEnumerable<Cell> cells )
+        {
             if ( cells == null )
                 return;
             var row = CreateRow( rowIndex );
@@ -75,7 +82,8 @@ namespace KissU.Util.Tools.Offices.Core {
         /// <summary>
         /// 创建行
         /// </summary>
-        private Row CreateRow( int index ) {
+        private Row CreateRow( int index )
+        {
             var row = GetRow( index );
             if ( row != null )
                 return row;
@@ -87,7 +95,8 @@ namespace KissU.Util.Tools.Offices.Core {
         /// <summary>
         /// 添加单元格
         /// </summary>
-        private void AddCell( Row row, Cell cell, int rowIndex ) {
+        private void AddCell( Row row, Cell cell, int rowIndex )
+        {
             row.Add( cell );
             if ( cell.RowSpan <= 1 )
                 return;
@@ -98,7 +107,8 @@ namespace KissU.Util.Tools.Offices.Core {
         /// <summary>
         /// 为下方受rowspan影响的行添加占位单元格
         /// </summary>
-        private void AddPlaceholderCell( Cell cell, int rowIndex ) {
+        private void AddPlaceholderCell( Cell cell, int rowIndex )
+        {
             var row = CreateRow( rowIndex );
             row.Add( new NullCell { ColumnIndex = cell.ColumnIndex, ColumnSpan = cell.ColumnSpan } );
         }
@@ -106,7 +116,8 @@ namespace KissU.Util.Tools.Offices.Core {
         /// <summary>
         /// 清空
         /// </summary>
-        public void Clear() {
+        public void Clear()
+        {
             _rows.Clear();
         }
     }

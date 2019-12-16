@@ -1,17 +1,20 @@
 ﻿using KissU.Util.Tools.Offices.Core;
 
-namespace KissU.Util.Tools.Offices {
+namespace KissU.Util.Tools.Offices
+{
     /// <summary>
     /// 单元格
     /// </summary>
-    public class Cell {
+    public class Cell
+    {
         /// <summary>
         /// 初始化单元格
         /// </summary>
         /// <param name="value">值</param>
         /// <param name="columnSpan">列跨度</param>
         /// <param name="rowSpan">行跨度</param>
-        public Cell( object value,int columnSpan = 1,int rowSpan = 1 ) {
+        public Cell( object value,int columnSpan = 1,int rowSpan = 1 )
+        {
             Value = value;
             ColumnSpan = columnSpan;
             RowSpan = rowSpan;
@@ -28,12 +31,15 @@ namespace KissU.Util.Tools.Offices {
         public object Value { get; set; }
 
         private int _columnSpan;
+
         /// <summary>
         /// 列跨度
         /// </summary>
-        public int ColumnSpan {
+        public int ColumnSpan
+        {
             get => _columnSpan;
-            set {
+            set
+            {
                 if ( value < 1 )
                     value = 1;
                 _columnSpan = value;
@@ -41,12 +47,15 @@ namespace KissU.Util.Tools.Offices {
         }
 
         private int _rowSpan;
+
         /// <summary>
         /// 行跨度
         /// </summary>
-        public int RowSpan {
+        public int RowSpan
+        {
             get => _rowSpan;
-            set {
+            set
+            {
                 if ( value < 1 )
                     value = 1;
                 _rowSpan = value;
@@ -56,8 +65,10 @@ namespace KissU.Util.Tools.Offices {
         /// <summary>
         /// 行索引
         /// </summary>
-        public int RowIndex {
-            get {
+        public int RowIndex
+        {
+            get
+            {
                 Row.CheckNull( "Row" );
                 return Row.RowIndex;
             }
@@ -86,7 +97,8 @@ namespace KissU.Util.Tools.Offices {
         /// <summary>
         /// 是否为空单元格
         /// </summary>
-        public virtual bool IsNull() {
+        public virtual bool IsNull()
+        {
             return false;
         }
     }
