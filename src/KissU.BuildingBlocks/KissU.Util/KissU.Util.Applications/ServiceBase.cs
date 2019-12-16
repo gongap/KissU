@@ -1,11 +1,13 @@
 ﻿using KissU.Util.Logs;
 using KissU.Util.Sessions;
 
-namespace KissU.Util.Applications {
+namespace KissU.Util.Applications
+{
     /// <summary>
     /// 应用服务
     /// </summary>
-    public abstract class ServiceBase : IService {
+    public abstract class ServiceBase : IService
+    {
         /// <summary>
         /// 日志
         /// </summary>
@@ -14,16 +16,19 @@ namespace KissU.Util.Applications {
         /// <summary>
         /// 日志
         /// </summary>
-        public ILog Log => _log ?? (_log = GetLog() );
+        public ILog Log => _log ?? (_log = GetLog());
 
         /// <summary>
         /// 获取日志操作
         /// </summary>
-        protected virtual ILog GetLog() {
-            try {
-                return Util.Logs.Log.GetLog( this );
+        protected virtual ILog GetLog()
+        {
+            try
+            {
+                return Util.Logs.Log.GetLog(this);
             }
-            catch {
+            catch
+            {
                 return Util.Logs.Log.Null;
             }
         }

@@ -2,7 +2,8 @@
 using KissU.Util.Applications.Operations;
 using KissU.Util.Datas.Queries;
 
-namespace KissU.Util.Applications {
+namespace KissU.Util.Applications
+{
     /// <summary>
     /// 增删改查服务
     /// </summary>
@@ -10,7 +11,8 @@ namespace KissU.Util.Applications {
     /// <typeparam name="TQueryParameter">查询参数类型</typeparam>
     public interface ICrudService<TDto, in TQueryParameter> : ICrudService<TDto, TDto, TQueryParameter>
         where TDto : IDto, new()
-        where TQueryParameter : IQueryParameter {
+        where TQueryParameter : IQueryParameter
+    {
     }
 
     /// <summary>
@@ -22,7 +24,8 @@ namespace KissU.Util.Applications {
     public interface ICrudService<TDto, in TRequest, in TQueryParameter> : ICrudService<TDto, TRequest, TRequest, TRequest, TQueryParameter>
         where TDto : IDto, new()
         where TRequest : IRequest, IKey, new()
-        where TQueryParameter : IQueryParameter {
+        where TQueryParameter : IQueryParameter
+    {
     }
 
     /// <summary>
@@ -40,6 +43,7 @@ namespace KissU.Util.Applications {
         where TRequest : IRequest, IKey, new()
         where TCreateRequest : IRequest, new()
         where TUpdateRequest : IRequest, new()
-        where TQueryParameter : IQueryParameter {
+        where TQueryParameter : IQueryParameter
+    {
     }
 }

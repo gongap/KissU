@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using KissU.Util.Datas.Queries.Trees;
 
-namespace KissU.Util.Applications.Trees {
+namespace KissU.Util.Applications.Trees
+{
     /// <summary>
     /// 树形服务
     /// </summary>
@@ -11,7 +12,8 @@ namespace KissU.Util.Applications.Trees {
     /// <typeparam name="TQueryParameter">查询参数类型</typeparam>
     public interface ITreeService<TDto, in TQueryParameter> : ITreeService<TDto, TQueryParameter, Guid?>
         where TDto : class, ITreeNode, new()
-        where TQueryParameter : class, ITreeQueryParameter {
+        where TQueryParameter : class, ITreeQueryParameter
+    {
     }
 
     /// <summary>
@@ -22,32 +24,37 @@ namespace KissU.Util.Applications.Trees {
     /// <typeparam name="TParentId">父标识类型</typeparam>
     public interface ITreeService<TDto, in TQueryParameter, TParentId> : IDeleteService<TDto, TQueryParameter>
         where TDto : class, ITreeNode, new()
-        where TQueryParameter : class, ITreeQueryParameter<TParentId> {
+        where TQueryParameter : class, ITreeQueryParameter<TParentId>
+    {
         /// <summary>
         /// 通过标识查找列表
         /// </summary>
         /// <param name="ids">标识列表</param>
-        Task<List<TDto>> FindByIdsAsync( string ids );
+        Task<List<TDto>> FindByIdsAsync(string ids);
+
         /// <summary>
         /// 启用
         /// </summary>
         /// <param name="ids">标识列表</param>
-        Task EnableAsync( string ids );
+        Task EnableAsync(string ids);
+
         /// <summary>
         /// 冻结
         /// </summary>
         /// <param name="ids">标识列表</param>
-        Task DisableAsync( string ids );
+        Task DisableAsync(string ids);
+
         /// <summary>
         /// 交换排序
         /// </summary>
         /// <param name="id">标识</param>
         /// <param name="swapId">目标标识</param>
-        Task SwapSortAsync( Guid id, Guid swapId );
+        Task SwapSortAsync(Guid id, Guid swapId);
+
         /// <summary>
         /// 修正排序
         /// </summary>
         /// <param name="parameter">查询参数</param>
-        Task FixSortIdAsync( TQueryParameter parameter );
+        Task FixSortIdAsync(TQueryParameter parameter);
     }
 }

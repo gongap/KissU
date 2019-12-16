@@ -2,17 +2,19 @@
 using KissU.Util.Applications.Dtos;
 using KissU.Util.Validations.Aspects;
 
-namespace KissU.Util.Applications.Operations {
+namespace KissU.Util.Applications.Operations
+{
     /// <summary>
     /// 创建操作
     /// </summary>
     /// <typeparam name="TCreateRequest">创建参数类型</typeparam>
-    public interface ICreate<in TCreateRequest> where TCreateRequest : IRequest, new() {
+    public interface ICreate<in TCreateRequest> where TCreateRequest : IRequest, new()
+    {
         /// <summary>
         /// 创建
         /// </summary>
         /// <param name="request">创建参数</param>
         [UnitOfWork]
-        string Create( [Valid] TCreateRequest request );
+        string Create([Valid] TCreateRequest request);
     }
 }
