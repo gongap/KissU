@@ -1,10 +1,12 @@
 ﻿using System.Threading.Tasks;
 
-namespace KissU.Util.Tools.Sms.LuoSiMao {
+namespace KissU.Util.Tools.Sms.LuoSiMao
+{
     /// <summary>
     /// 短信配置提供器
     /// </summary>
-    public class SmsConfigProvider : ISmsConfigProvider {
+    public class SmsConfigProvider : ISmsConfigProvider
+    {
         /// <summary>
         /// 短信配置
         /// </summary>
@@ -14,14 +16,16 @@ namespace KissU.Util.Tools.Sms.LuoSiMao {
         /// 初始化短信配置提供器
         /// </summary>
         /// <param name="key">密钥</param>
-        public SmsConfigProvider( string key ) {
+        public SmsConfigProvider( string key )
+        {
             _config = new SmsConfig( key );
         }
 
         /// <summary>
         /// 获取配置
         /// </summary>
-        public Task<SmsConfig> GetConfigAsync() {
+        public Task<SmsConfig> GetConfigAsync()
+        {
             return Task.FromResult( _config );
         }
     }

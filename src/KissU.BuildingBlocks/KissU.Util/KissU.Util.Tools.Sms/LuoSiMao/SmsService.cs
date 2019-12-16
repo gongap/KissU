@@ -2,11 +2,13 @@
 using System.Threading.Tasks;
 using KissU.Util.Helpers;
 
-namespace KissU.Util.Tools.Sms.LuoSiMao {
+namespace KissU.Util.Tools.Sms.LuoSiMao
+{
     /// <summary>
     /// 短信服务
     /// </summary>
-    public class SmsService : ISmsService {
+    public class SmsService : ISmsService
+    {
         /// <summary>
         /// 短信配置提供器
         /// </summary>
@@ -16,7 +18,8 @@ namespace KissU.Util.Tools.Sms.LuoSiMao {
         /// 初始化短信服务
         /// </summary>
         /// <param name="configProvider">短信配置提供器</param>
-        public SmsService( ISmsConfigProvider configProvider ) {
+        public SmsService( ISmsConfigProvider configProvider )
+        {
             configProvider.CheckNull( nameof( configProvider ) );
             _configProvider = configProvider;
         }
@@ -26,7 +29,8 @@ namespace KissU.Util.Tools.Sms.LuoSiMao {
         /// </summary>
         /// <param name="mobile">手机号</param>
         /// <param name="content">内容</param>
-        public async Task<SmsResult> SendAsync( string mobile, string content ) {
+        public async Task<SmsResult> SendAsync( string mobile, string content )
+        {
             var result = await Web.Client().Post( "https://sms-api.luosimao.com/v1/send.json" )
                 .Header( "Authorization", await GetAuthorization() )
                 .Data( "mobile", mobile )
@@ -38,7 +42,8 @@ namespace KissU.Util.Tools.Sms.LuoSiMao {
         /// <summary>
         /// 获取授权头信息
         /// </summary>
-        private async Task<string> GetAuthorization() {
+        private async Task<string> GetAuthorization()
+        {
             var config = await _configProvider.GetConfigAsync();
             return $"Basic {System.Convert.ToBase64String( Encoding.UTF8.GetBytes( $"api:{config.Key}" ) )}";
         }
@@ -46,7 +51,8 @@ namespace KissU.Util.Tools.Sms.LuoSiMao {
         /// <summary>
         /// 创建结果
         /// </summary>
-        private SmsResult CreateResult( string message ) {
+        private SmsResult CreateResult( string message )
+        {
             var result = Json.ToObject<LuoSiMaoResult>( message );
             result.CheckNull( nameof( result ) );
             if( result.error == "0" )

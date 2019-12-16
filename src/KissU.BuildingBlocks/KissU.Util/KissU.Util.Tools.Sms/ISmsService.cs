@@ -1,11 +1,13 @@
 ﻿using System.Threading.Tasks;
 using KissU.Util.Dependency;
 
-namespace KissU.Util.Tools.Sms {
+namespace KissU.Util.Tools.Sms
+{
     /// <summary>
     /// 短信服务
     /// </summary>
-    public interface ISmsService : IScopeDependency {
+    public interface ISmsService : IScopeDependency
+    {
         /// <summary>
         /// 发送短信
         /// </summary>
