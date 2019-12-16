@@ -3,9 +3,9 @@
 // </copyright>
 
 using KissU.Modules.GreatWall.Domain.Models;
+using KissU.Util.Datas.PgSql.Ef;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using KissU.Util.Datas.Ef.PgSql;
 
 namespace KissU.Modules.GreatWall.Data.Mappings.PgSql
 {

@@ -3,9 +3,9 @@
 // </copyright>
 
 using KissU.Modules.GreatWall.Data.Pos;
+using KissU.Util.Datas.SqlServer.Ef;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using KissU.Util.Datas.Ef.SqlServer;
 
 namespace KissU.Modules.GreatWall.Data.Mappings.SqlServer
 {

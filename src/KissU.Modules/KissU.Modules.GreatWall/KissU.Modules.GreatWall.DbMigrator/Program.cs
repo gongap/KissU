@@ -8,7 +8,7 @@ using KissU.Modules.GreatWall.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using KissU.Util;
-using KissU.Util.Datas.Ef;
+using KissU.Util.Datas.SqlServer;
 
 namespace KissU.Modules.GreatWall.DbMigrator
 {

@@ -9,7 +9,7 @@ using KissU.Modules.GreatWall.Data;
 using KissU.Modules.GreatWall.Data.UnitOfWorks.SqlServer;
 using KissU.Modules.GreatWall.Service.Extensions;
 using Microsoft.Extensions.DependencyInjection;
-using KissU.Util.Datas.Ef;
+using KissU.Util.Datas.SqlServer;
 
 namespace KissU.Modules.GreatWall.Service
 {

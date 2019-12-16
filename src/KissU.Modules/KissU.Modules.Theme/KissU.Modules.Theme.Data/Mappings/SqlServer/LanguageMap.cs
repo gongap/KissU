@@ -3,9 +3,9 @@
 // </copyright>
 
 using KissU.Modules.Theme.Domain.Models;
+using KissU.Util.Datas.SqlServer.Ef;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using KissU.Util.Datas.Ef.SqlServer;
 
 namespace KissU.Modules.Theme.Data.Mappings.SqlServer
 {

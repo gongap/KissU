@@ -3,7 +3,7 @@
 // </copyright>
 
 using KissU.Modules.Theme.Domain.Models;
-using KissU.Util.Datas.Ef.SqlServer;
+using KissU.Util.Datas.SqlServer.Ef;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

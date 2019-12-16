@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using KissU.Modules.Theme.Data;
 using KissU.Util;
 using KissU.Util.Datas.Ef;
+using KissU.Util.Datas.SqlServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

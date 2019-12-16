@@ -3,9 +3,9 @@
 // </copyright>
 
 using KissU.Modules.IdentityServer.Domain.Models.IdentityResourceAggregate;
+using KissU.Util.Datas.SqlServer.Ef;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using KissU.Util.Datas.Ef.SqlServer;
 
 namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
 {

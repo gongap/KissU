@@ -3,9 +3,9 @@
 // </copyright>
 
 using System;
+using KissU.Util.Datas.SqlServer.Ef;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using KissU.Util.Datas.Ef.SqlServer;
 using KissU.Util.Domains;
 using KissU.Util.Reflections;
 

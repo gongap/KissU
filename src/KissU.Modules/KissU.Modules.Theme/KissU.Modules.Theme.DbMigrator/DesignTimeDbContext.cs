@@ -4,7 +4,7 @@
 
 using System.Reflection;
 using KissU.Modules.Theme.Data;
-using KissU.Util.Datas.Ef.SqlServer;
+using KissU.Util.Datas.SqlServer.Ef;
 using KissU.Util.Reflections;
 using Microsoft.EntityFrameworkCore;
 
