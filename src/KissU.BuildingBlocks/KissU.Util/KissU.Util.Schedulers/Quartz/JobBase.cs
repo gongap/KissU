@@ -5,7 +5,8 @@ using KissU.Util.Helpers;
 using Quartz;
 using Qz = Quartz;
 
-namespace KissU.Util.Schedulers.Quartz {
+namespace KissU.Util.Schedulers.Quartz
+{
     /// <summary>
     /// Quartz作业
     /// </summary>

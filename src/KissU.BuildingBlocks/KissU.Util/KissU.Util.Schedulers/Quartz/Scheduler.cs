@@ -7,11 +7,13 @@ using Quartz;
 using Quartz.Impl;
 using Qz = Quartz;
 
-namespace KissU.Util.Schedulers.Quartz {
+namespace KissU.Util.Schedulers.Quartz
+{
     /// <summary>
     /// Quartz调度器
     /// </summary>
-    public class Scheduler : IScheduler {
+    public class Scheduler : IScheduler
+    {
         /// <summary>
         /// Quartz调度器
         /// </summary>
