@@ -1,10 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace KissU.Util.Datas.Ef.Core {
+namespace KissU.Util.Datas.Ef.Core
+{
     /// <summary>
     /// 映射
     /// </summary>
-    public interface IMap {
+    public interface IMap
+    {
         /// <summary>
         /// 映射配置
         /// </summary>

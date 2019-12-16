@@ -1,8 +1,10 @@
-﻿namespace KissU.Util.Datas.Sql.Builders.Conditions {
+﻿namespace KissU.Util.Datas.Sql.Builders.Conditions
+{
     /// <summary>
     /// Is Null查询条件
     /// </summary>
-    public class IsNullCondition : ICondition {
+    public class IsNullCondition : ICondition
+    {
         /// <summary>
         /// 列名
         /// </summary>
@@ -12,14 +14,16 @@
         /// 初始化Is Null查询条件
         /// </summary>
         /// <param name="name">列名</param>
-        public IsNullCondition( string name ) {
+        public IsNullCondition( string name )
+        {
             _name = name;
         }
 
         /// <summary>
         /// 获取查询条件
         /// </summary>
-        public string GetCondition() {
+        public string GetCondition()
+        {
             return string.IsNullOrWhiteSpace( _name ) ? null : $"{_name} Is Null";
         }
     }

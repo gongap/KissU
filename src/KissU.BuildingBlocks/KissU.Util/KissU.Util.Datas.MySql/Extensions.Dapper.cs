@@ -10,17 +10,20 @@ using KissU.Util.Datas.Sql.Matedatas;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace KissU.Util.Datas.MySql {
+namespace KissU.Util.Datas.MySql
+{
     /// <summary>
     /// 服务扩展
     /// </summary>
-    public static partial class Extensions {
+    public static partial class Extensions
+    {
         /// <summary>
         /// 注册Sql查询服务
         /// </summary>
         /// <param name="services">服务集合</param>
         /// <param name="action">Sql查询配置</param>
-        public static IServiceCollection AddSqlQuery( this IServiceCollection services, Action<SqlOptions> action = null ) {
+        public static IServiceCollection AddSqlQuery( this IServiceCollection services, Action<SqlOptions> action = null )
+        {
             return AddSqlQuery( services, action, null, null );
         }
 
@@ -31,7 +34,8 @@ namespace KissU.Util.Datas.MySql {
         /// <param name="services">服务集合</param>
         /// <param name="action">Sql查询配置</param>
         public static IServiceCollection AddSqlQuery<TDatabase>( this IServiceCollection services, Action<SqlOptions> action = null )
-            where TDatabase : class, IDatabase {
+            where TDatabase : class, IDatabase
+            {
             return AddSqlQuery( services, action, typeof( TDatabase ), null );
         }
 
@@ -44,22 +48,26 @@ namespace KissU.Util.Datas.MySql {
         /// <param name="action">Sql查询配置</param>
         public static IServiceCollection AddSqlQuery<TDatabase, TEntityMatedata>( this IServiceCollection services, Action<SqlOptions> action = null )
             where TDatabase : class, IDatabase
-            where TEntityMatedata : class, IEntityMatedata {
+            where TEntityMatedata : class, IEntityMatedata
+            {
             return AddSqlQuery( services, action, typeof( TDatabase ), typeof( TEntityMatedata ) );
         }
 
         /// <summary>
         /// 注册Sql查询服务
         /// </summary>
-        private static IServiceCollection AddSqlQuery( IServiceCollection services, Action<SqlOptions> action, Type database, Type entityMatedata ) {
+        private static IServiceCollection AddSqlQuery( IServiceCollection services, Action<SqlOptions> action, Type database, Type entityMatedata )
+        {
             var config = new SqlOptions();
-            if( action != null ) {
+            if( action != null )
+            {
                 action.Invoke( config );
                 services.Configure( action );
             }
             if( entityMatedata != null )
                 services.TryAddScoped( typeof( IEntityMatedata ), t => t.GetService( entityMatedata ) );
-            if( database != null ) {
+            if( database != null )
+            {
                 services.TryAddScoped( database );
                 services.TryAddScoped( typeof( IDatabase ), t => t.GetService( database ) );
             }
@@ -81,7 +89,8 @@ namespace KissU.Util.Datas.MySql {
         /// <summary>
         /// 注册类型处理器
         /// </summary>
-        private static void RegisterTypeHandlers( SqlOptions config ) {
+        private static void RegisterTypeHandlers( SqlOptions config )
+        {
             SqlMapper.AddTypeHandler( typeof( string ), new StringTypeHandler() );
             if( config.DatabaseType == DatabaseType.Oracle )
                 SqlMapper.AddTypeHandler( new GuidTypeHandler() );

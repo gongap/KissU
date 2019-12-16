@@ -3,15 +3,18 @@ using System.Text;
 using KissU.Util.Domains;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-namespace KissU.Util.Datas.Ef.Internal {
+namespace KissU.Util.Datas.Ef.Internal
+{
     /// <summary>
     /// 工具操作
     /// </summary>
-    public static class Helper {
+    public static class Helper
+    {
         /// <summary>
         /// 初始化版本号
         /// </summary>
-        public static void InitVersion( EntityEntry entry ) {
+        public static void InitVersion( EntityEntry entry )
+        {
             if( !( entry.Entity is IVersion entity ) )
                 return;
             entity.Version = Encoding.UTF8.GetBytes( Guid.NewGuid().ToString() );

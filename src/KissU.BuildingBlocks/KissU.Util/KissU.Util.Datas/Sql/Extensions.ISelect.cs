@@ -1,16 +1,19 @@
 ﻿using System;
 using KissU.Util.Datas.Sql.Builders;
 
-namespace KissU.Util.Datas.Sql {
+namespace KissU.Util.Datas.Sql
+{
     /// <summary>
     /// Select子句扩展
     /// </summary>
-    public static partial class Extensions {
+    public static partial class Extensions
+    {
         /// <summary>
         /// 过滤重复记录
         /// </summary>
         /// <param name="source">源</param>
-        public static T Distinct<T>( this T source ) where T : ISelect {
+        public static T Distinct<T>( this T source ) where T : ISelect
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -23,7 +26,8 @@ namespace KissU.Util.Datas.Sql {
         /// </summary>
         /// <param name="source">源</param>
         /// <param name="columnAlias">列别名</param>
-        public static T Count<T>( this T source, string columnAlias = null ) where T : ISelect {
+        public static T Count<T>( this T source, string columnAlias = null ) where T : ISelect
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -37,7 +41,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="source">源</param>
         /// <param name="column">列</param>
         /// <param name="columnAlias">列别名</param>
-        public static T Count<T>( this T source, string column, string columnAlias ) where T : ISelect {
+        public static T Count<T>( this T source, string column, string columnAlias ) where T : ISelect
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -51,7 +56,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="source">源</param>
         /// <param name="column">列</param>
         /// <param name="columnAlias">列别名</param>
-        public static T Sum<T>( this T source, string column, string columnAlias = null ) where T : ISelect {
+        public static T Sum<T>( this T source, string column, string columnAlias = null ) where T : ISelect
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -65,7 +71,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="source">源</param>
         /// <param name="column">列</param>
         /// <param name="columnAlias">列别名</param>
-        public static T Avg<T>( this T source, string column, string columnAlias = null ) where T : ISelect {
+        public static T Avg<T>( this T source, string column, string columnAlias = null ) where T : ISelect
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -79,7 +86,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="source">源</param>
         /// <param name="column">列</param>
         /// <param name="columnAlias">列别名</param>
-        public static T Max<T>( this T source, string column, string columnAlias = null ) where T : ISelect {
+        public static T Max<T>( this T source, string column, string columnAlias = null ) where T : ISelect
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -93,7 +101,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="source">源</param>
         /// <param name="column">列</param>
         /// <param name="columnAlias">列别名</param>
-        public static T Min<T>( this T source, string column, string columnAlias = null ) where T : ISelect {
+        public static T Min<T>( this T source, string column, string columnAlias = null ) where T : ISelect
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -107,7 +116,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="source">源</param>
         /// <param name="columns">列名,范例：a.AppId As Id,a.Name</param>
         /// <param name="tableAlias">表别名</param>
-        public static T Select<T>( this T source, string columns, string tableAlias = null ) where T : ISelect {
+        public static T Select<T>( this T source, string columns, string tableAlias = null ) where T : ISelect
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -121,7 +131,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="source">源</param>
         /// <param name="builder">Sql生成器</param>
         /// <param name="columnAlias">列别名</param>
-        public static T Select<T>( this T source, ISqlBuilder builder, string columnAlias ) where T : ISelect {
+        public static T Select<T>( this T source, ISqlBuilder builder, string columnAlias ) where T : ISelect
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -135,7 +146,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="source">源</param>
         /// <param name="action">子查询操作</param>
         /// <param name="columnAlias">列别名</param>
-        public static T Select<T>( this T source, Action<ISqlBuilder> action, string columnAlias ) where T : ISelect {
+        public static T Select<T>( this T source, Action<ISqlBuilder> action, string columnAlias ) where T : ISelect
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -148,7 +160,8 @@ namespace KissU.Util.Datas.Sql {
         /// </summary>
         /// <param name="source">源</param>
         /// <param name="sql">Sql语句，说明：原样添加到Sql中，不会进行任何处理</param>
-        public static T AppendSelect<T>( this T source, string sql ) where T : ISelect {
+        public static T AppendSelect<T>( this T source, string sql ) where T : ISelect
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -162,7 +175,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="source">源</param>
         /// <param name="sql">Sql语句，说明：原样添加到Sql中，不会进行任何处理</param>
         /// <param name="condition">该值为true时添加Sql，否则忽略</param>
-        public static T AppendSelect<T>( this T source, string sql, bool condition ) where T : ISelect {
+        public static T AppendSelect<T>( this T source, string sql, bool condition ) where T : ISelect
+        {
             return condition ? AppendSelect( source, sql ) : source;
         }
 
@@ -172,7 +186,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="source">源</param>
         /// <param name="columns">列名,范例：a.AppId,a.Name</param>
         /// <param name="tableAlias">表别名</param>
-        public static T RemoveSelect<T>( this T source, string columns, string tableAlias = null ) where T : ISelect {
+        public static T RemoveSelect<T>( this T source, string columns, string tableAlias = null ) where T : ISelect
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )

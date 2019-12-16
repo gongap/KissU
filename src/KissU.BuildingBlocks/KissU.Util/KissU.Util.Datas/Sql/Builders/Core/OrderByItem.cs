@@ -1,10 +1,12 @@
 ﻿using System;
 
-namespace KissU.Util.Datas.Sql.Builders.Core {
+namespace KissU.Util.Datas.Sql.Builders.Core
+{
     /// <summary>
     /// 排序项
     /// </summary>
-    public class OrderByItem {
+    public class OrderByItem
+    {
         /// <summary>
         /// 初始化排序项
         /// </summary>
@@ -13,7 +15,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <param name="type">实体类型</param>
         /// <param name="raw">使用原始值</param>
         /// <param name="prefix">前缀</param>
-        public OrderByItem( string order, bool desc = false, Type type = null, bool raw = false, string prefix = null ) {
+        public OrderByItem( string order, bool desc = false, Type type = null, bool raw = false, string prefix = null )
+        {
             Order = order.SafeString();
             Desc = desc;
             Type = type;
@@ -21,7 +24,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
             if( raw )
                 return;
             Order = Order.RemoveEnd( "asc" );
-            if( Order.ToLower().EndsWith( "desc" ) ) {
+            if( Order.ToLower().EndsWith( "desc" ) )
+            {
                 Desc = true;
                 Order = Order.RemoveEnd( "desc" );
             }
@@ -65,7 +69,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// </summary>
         /// <param name="dialect">Sql方言</param>
         /// <param name="register">实体别名注册器</param>
-        public string ToSql( IDialect dialect, IEntityAliasRegister register ) {
+        public string ToSql( IDialect dialect, IEntityAliasRegister register )
+        {
             if( Raw )
                 return Order;
             var name = new NameItem( Order );
@@ -75,7 +80,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 获取前缀
         /// </summary>
-        private string GetPrefix( IEntityAliasRegister register ) {
+        private string GetPrefix( IEntityAliasRegister register )
+        {
             if( string.IsNullOrWhiteSpace( Prefix ) == false )
                 return Prefix;
             return register.GetAlias( Type );

@@ -1,12 +1,15 @@
-﻿namespace KissU.Util.Datas.Sql.Builders.Conditions {
+﻿namespace KissU.Util.Datas.Sql.Builders.Conditions
+{
     /// <summary>
     /// 空查询条件
     /// </summary>
-    public class NullCondition : ICondition {
+    public class NullCondition : ICondition
+    {
         /// <summary>
         /// 封闭构造方法
         /// </summary>
-        private NullCondition() {
+        private NullCondition()
+        {
         }
 
         /// <summary>
@@ -17,7 +20,8 @@
         /// <summary>
         /// 获取查询条件
         /// </summary>
-        public string GetCondition() {
+        public string GetCondition()
+        {
             return null;
         }
     }

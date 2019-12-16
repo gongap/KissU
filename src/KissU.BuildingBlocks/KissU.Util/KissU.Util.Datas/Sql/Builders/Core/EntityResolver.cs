@@ -7,11 +7,13 @@ using System.Reflection;
 using KissU.Util.Datas.Sql.Matedatas;
 using KissU.Util.Helpers;
 
-namespace KissU.Util.Datas.Sql.Builders.Core {
+namespace KissU.Util.Datas.Sql.Builders.Core
+{
     /// <summary>
     /// 实体解析器
     /// </summary>
-    public class EntityResolver : IEntityResolver {
+    public class EntityResolver : IEntityResolver
+    {
         /// <summary>
         /// 实体元数据
         /// </summary>
@@ -21,7 +23,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// 初始化实体解析器
         /// </summary>
         /// <param name="matedata">实体元数据</param>
-        public EntityResolver( IEntityMatedata matedata = null ) {
+        public EntityResolver( IEntityMatedata matedata = null )
+        {
             _matedata = matedata;
         }
 
@@ -29,7 +32,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// 获取表
         /// </summary>
         /// <param name="entity">实体类型</param>
-        public string GetTable( Type entity ) {
+        public string GetTable( Type entity )
+        {
             if( _matedata == null )
                 return entity.Name;
             var result = _matedata.GetTable( entity );
@@ -40,7 +44,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// 获取架构
         /// </summary>
         /// <param name="entity">实体类型</param>
-        public string GetSchema( Type entity ) {
+        public string GetSchema( Type entity )
+        {
             return _matedata?.GetSchema( entity );
         }
 
@@ -49,7 +54,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// </summary>
         /// <typeparam name="TEntity">实体类型</typeparam>
         /// <param name="propertyAsAlias">是否将属性名映射为列别名</param>
-        public string GetColumns<TEntity>( bool propertyAsAlias ) {
+        public string GetColumns<TEntity>( bool propertyAsAlias )
+        {
             var type = typeof( TEntity );
             var names = GetProperties( type ).Select( t => t.Name ).ToList();
             return GetColumns<TEntity>( names, propertyAsAlias );
@@ -58,10 +64,12 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 获取属性列表
         /// </summary>
-        private List<PropertyInfo> GetProperties( Type type ) {
+        private List<PropertyInfo> GetProperties( Type type )
+        {
             var result = new List<PropertyInfo>();
             var properties = type.GetProperties();
-            foreach ( var property in properties ) {
+            foreach ( var property in properties )
+            {
                 if ( property.GetCustomAttribute<IgnoreAttribute>() != null )
                     continue;
                 if( property.GetCustomAttribute<NotMappedAttribute>() != null )
@@ -77,7 +85,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <typeparam name="TEntity">实体类型</typeparam>
         /// <param name="columns">列名表达式</param>
         /// <param name="propertyAsAlias">是否将属性名映射为列别名</param>
-        public string GetColumns<TEntity>( Expression<Func<TEntity, object[]>> columns, bool propertyAsAlias ) {
+        public string GetColumns<TEntity>( Expression<Func<TEntity, object[]>> columns, bool propertyAsAlias )
+        {
             var names = Lambda.GetLastNames( columns );
             if( _matedata == null )
                 return names.Join();
@@ -87,10 +96,12 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 获取列名
         /// </summary>
-        private string GetColumns<TEntity>( List<string> names, bool propertyAsAlias ) {
+        private string GetColumns<TEntity>( List<string> names, bool propertyAsAlias )
+        {
             if( propertyAsAlias == false )
                 return names.Select( name => _matedata.GetColumn( typeof( TEntity ), name ) ).Join();
-            return names.Select( name => {
+            return names.Select( name =>
+            {
                 var column = _matedata.GetColumn( typeof( TEntity ), name );
                 return column == name ? column : $"{column} As {name}";
             } ).Join();
@@ -101,17 +112,20 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// </summary>
         /// <typeparam name="TEntity">实体类型</typeparam>
         /// <param name="expression">列名表达式</param>
-        public string GetColumn<TEntity>( Expression<Func<TEntity, object>> expression ) {
+        public string GetColumn<TEntity>( Expression<Func<TEntity, object>> expression )
+        {
             return GetExpressionColumn<TEntity>( expression );
         }
 
         /// <summary>
         /// 获取表达式列名
         /// </summary>
-        private string GetExpressionColumn<TEntity>( Expression expression ) {
+        private string GetExpressionColumn<TEntity>( Expression expression )
+        {
             if( expression == null )
                 return null;
-            switch( expression.NodeType ) {
+            switch( expression.NodeType )
+            {
                 case ExpressionType.Lambda:
                     return GetExpressionColumn<TEntity>( ( (LambdaExpression)expression ).Body );
                 case ExpressionType.Convert:
@@ -127,7 +141,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 获取单列
         /// </summary>
-        private string GetSingleColumn<TEntity>( Expression expression ) {
+        private string GetSingleColumn<TEntity>( Expression expression )
+        {
             var name = Lambda.GetLastName( expression );
             if( _matedata == null )
                 return name;
@@ -137,7 +152,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 获取字典多列
         /// </summary>
-        private string GetDictionaryColumns<TEntity>( ListInitExpression expression ) {
+        private string GetDictionaryColumns<TEntity>( ListInitExpression expression )
+        {
             var dictionary = GetDictionaryByListInitExpression( expression );
             if( _matedata == null )
                 return GetColumns( dictionary );
@@ -147,9 +163,11 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 获取字典
         /// </summary>
-        private IDictionary<object, string> GetDictionaryByListInitExpression( ListInitExpression expression ) {
+        private IDictionary<object, string> GetDictionaryByListInitExpression( ListInitExpression expression )
+        {
             var result = new Dictionary<object, string>();
-            foreach( var elementInit in expression.Initializers ) {
+            foreach( var elementInit in expression.Initializers )
+            {
                 var keyValue = GetKeyValue( elementInit.Arguments );
                 if( keyValue == null )
                     continue;
@@ -162,7 +180,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 获取键值对
         /// </summary>
-        private KeyValuePair<object, string>? GetKeyValue( IEnumerable<Expression> arguments ) {
+        private KeyValuePair<object, string>? GetKeyValue( IEnumerable<Expression> arguments )
+        {
             if( arguments == null )
                 return null;
             var list = arguments.ToList();
@@ -174,7 +193,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 通过元数据解析创建列
         /// </summary>
-        private string GetColumnsByMatedata<TEntity>( IDictionary<object, string> dictionary ) {
+        private string GetColumnsByMatedata<TEntity>( IDictionary<object, string> dictionary )
+        {
             string result = null;
             foreach( var item in dictionary )
                 result += $"{_matedata.GetColumn( typeof( TEntity ), item.Key.SafeString() )} As {item.Value},";
@@ -184,7 +204,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 通过字典创建列
         /// </summary>
-        private string GetColumns( IDictionary<object, string> dictionary ) {
+        private string GetColumns( IDictionary<object, string> dictionary )
+        {
             string result = null;
             foreach( var item in dictionary )
                 result += $"{item.Key} As {item.Value},";
@@ -197,7 +218,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <param name="expression">表达式</param>
         /// <param name="entity">实体类型</param>
         /// <param name="right">是否取右侧操作数</param>
-        public string GetColumn( Expression expression, Type entity, bool right = false ) {
+        public string GetColumn( Expression expression, Type entity, bool right = false )
+        {
             var column = Lambda.GetLastName( expression, right );
             if( _matedata == null )
                 return column;
@@ -209,7 +231,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// </summary>
         /// <param name="expression">表达式</param>
         /// <param name="right">是否取右侧操作数</param>
-        public Type GetType( Expression expression, bool right = false ) {
+        public Type GetType( Expression expression, bool right = false )
+        {
             var memberExpression = Lambda.GetMemberExpression( expression, right );
             return memberExpression?.Expression?.Type;
         }

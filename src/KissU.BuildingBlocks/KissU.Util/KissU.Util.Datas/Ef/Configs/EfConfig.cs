@@ -1,14 +1,17 @@
 ﻿using KissU.Util.Datas.Sql.Configs;
 
-namespace KissU.Util.Datas.Ef.Configs {
+namespace KissU.Util.Datas.Ef.Configs
+{
     /// <summary>
     /// Ef配置
     /// </summary>
-    public class EfConfig {
+    public class EfConfig
+    {
         /// <summary>
         /// 初始化Ef配置
         /// </summary>
-        public EfConfig() {
+        public EfConfig()
+        {
             SqlQuery = new SqlOptions();
         }
 

@@ -1,16 +1,19 @@
 ﻿using System;
 using Dapper;
 
-namespace KissU.Util.Datas.Dapper.Handlers {
+namespace KissU.Util.Datas.Dapper.Handlers
+{
     /// <summary>
     /// 字符串类型处理器
     /// </summary>
-    public class GuidTypeHandler : SqlMapper.TypeHandler<Guid> {
+    public class GuidTypeHandler : SqlMapper.TypeHandler<Guid>
+    {
         /// <summary>
         /// 转换值
         /// </summary>
         /// <param name="value">值</param>
-        public override Guid Parse( object value ) {
+        public override Guid Parse( object value )
+        {
             if( value == null )
                 return Guid.Empty;
             var values = (byte[])value;
@@ -23,7 +26,8 @@ namespace KissU.Util.Datas.Dapper.Handlers {
         /// </summary>
         /// <param name="parameter">参数</param>
         /// <param name="value">值</param>
-        public override void SetValue( System.Data.IDbDataParameter parameter, Guid value ) {
+        public override void SetValue( System.Data.IDbDataParameter parameter, Guid value )
+        {
             if( parameter == null || value == Guid.Empty )
                 return;
             var values = value.ToByteArray();

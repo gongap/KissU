@@ -10,11 +10,13 @@ using KissU.Util.Logs.Extensions;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace KissU.Util.Datas.Ef.Logs {
+namespace KissU.Util.Datas.Ef.Logs
+{
     /// <summary>
     /// Ef日志记录器
     /// </summary>
-    public class EfLog : ILogger {
+    public class EfLog : ILogger
+    {
         /// <summary>
         /// Ef跟踪日志名
         /// </summary>
@@ -29,7 +31,8 @@ namespace KissU.Util.Datas.Ef.Logs {
         /// <param name="state">状态</param>
         /// <param name="exception">异常</param>
         /// <param name="formatter">日志内容</param>
-        public void Log<TState>( LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter ) {
+        public void Log<TState>( LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter )
+        {
             var config = GetConfig();
             var log = GetLog();
             if( IsEnabled( eventId, config ) == false )
@@ -45,12 +48,15 @@ namespace KissU.Util.Datas.Ef.Logs {
         /// <summary>
         /// 获取配置
         /// </summary>
-        private EfConfig GetConfig() {
-            try {
+        private EfConfig GetConfig()
+        {
+            try
+            {
                 var options = Ioc.Create<IOptionsSnapshot<EfConfig>>();
                 return options.Value;
             }
-            catch {
+            catch
+            {
                 return new EfConfig { EfLogLevel = EfLogLevel.Sql };
             }
         }
@@ -58,11 +64,14 @@ namespace KissU.Util.Datas.Ef.Logs {
         /// <summary>
         /// 获取日志操作
         /// </summary>
-        protected virtual ILog GetLog() {
-            try {
+        protected virtual ILog GetLog()
+        {
+            try
+            {
                 return Util.Logs.Log.GetLog( TraceLogName );
             }
-            catch {
+            catch
+            {
                 return Util.Logs.Log.Null;
             }
         }
@@ -70,12 +79,15 @@ namespace KissU.Util.Datas.Ef.Logs {
         /// <summary>
         /// 工作单元
         /// </summary>
-        protected virtual UnitOfWorkBase GetUnitOfWork() {
-            try {
+        protected virtual UnitOfWorkBase GetUnitOfWork()
+        {
+            try
+            {
                 var unitOfWork = Ioc.Create<IUnitOfWork>();
                 return unitOfWork as UnitOfWorkBase;
             }
-            catch {
+            catch
+            {
                 return null;
             }
         }
@@ -83,8 +95,9 @@ namespace KissU.Util.Datas.Ef.Logs {
         /// <summary>
         /// 是否启用Ef日志
         /// </summary>
-        private bool IsEnabled( EventId eventId, EfConfig config ) {
-            if( config.EfLogLevel == EfLogLevel.Off )
+        private bool IsEnabled( EventId eventId, EfConfig config )
+        {
+            if ( config.EfLogLevel == EfLogLevel.Off )
                 return false;
             if( config.EfLogLevel == EfLogLevel.All )
                 return true;
@@ -96,7 +109,8 @@ namespace KissU.Util.Datas.Ef.Logs {
         /// <summary>
         /// 添加日志内容
         /// </summary>
-        private void AddContent<TState>( TState state, EfConfig config, ILog log ) {
+        private void AddContent<TState>( TState state, EfConfig config, ILog log )
+        {
             if( config.EfLogLevel == EfLogLevel.All )
                 log.Content( "事件内容：" ).Content( state.SafeString() );
             if( !( state is IEnumerable list ) )
@@ -110,7 +124,8 @@ namespace KissU.Util.Datas.Ef.Logs {
         /// <summary>
         /// 添加字典内容
         /// </summary>
-        private void AddDictionary( IDictionary<string, string> dictionary, ILog log ) {
+        private void AddDictionary( IDictionary<string, string> dictionary, ILog log )
+        {
             AddElapsed( GetValue( dictionary, "elapsed" ), log );
             var sqlParams = GetValue( dictionary, "parameters" );
             AddSql( GetValue( dictionary, "commandText" ), log );
@@ -120,7 +135,8 @@ namespace KissU.Util.Datas.Ef.Logs {
         /// <summary>
         /// 获取值
         /// </summary>
-        private string GetValue( IDictionary<string, string> dictionary, string key ) {
+        private string GetValue( IDictionary<string, string> dictionary, string key )
+        {
             if( dictionary.ContainsKey( key ) )
                 return dictionary[key];
             return string.Empty;
@@ -129,7 +145,8 @@ namespace KissU.Util.Datas.Ef.Logs {
         /// <summary>
         /// 添加执行时间
         /// </summary>
-        private void AddElapsed( string value, ILog log ) {
+        private void AddElapsed( string value, ILog log )
+        {
             if( string.IsNullOrWhiteSpace( value ) )
                 return;
             log.Content( $"执行时间: {value} 毫秒" );
@@ -138,7 +155,8 @@ namespace KissU.Util.Datas.Ef.Logs {
         /// <summary>
         /// 添加Sql
         /// </summary>
-        private void AddSql( string sql, ILog log ) {
+        private void AddSql( string sql, ILog log )
+        {
             if( string.IsNullOrWhiteSpace( sql ) )
                 return;
             log.Sql( $"{sql}{Common.Line}" );
@@ -147,7 +165,8 @@ namespace KissU.Util.Datas.Ef.Logs {
         /// <summary>
         /// 添加Sql参数
         /// </summary>
-        private void AddSqlParams( string value, ILog log ) {
+        private void AddSqlParams( string value, ILog log )
+        {
             if( string.IsNullOrWhiteSpace( value ) )
                 return;
             log.SqlParams( value );
@@ -157,14 +176,16 @@ namespace KissU.Util.Datas.Ef.Logs {
         /// 是否启用
         /// </summary>
         /// <param name="logLevel">日志级别</param>
-        public bool IsEnabled( LogLevel logLevel ) {
+        public bool IsEnabled( LogLevel logLevel )
+        {
             return true;
         }
 
         /// <summary>
         /// 起始范围
         /// </summary>
-        public IDisposable BeginScope<TState>( TState state ) {
+        public IDisposable BeginScope<TState>( TState state )
+        {
             return null;
         }
     }

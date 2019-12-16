@@ -5,11 +5,13 @@ using KissU.Util.Datas.Sql.Builders.Conditions;
 using KissU.Util.Datas.Sql.Builders.Internal;
 using KissU.Util.Datas.Sql.Matedatas;
 
-namespace KissU.Util.Datas.Sql.Builders.Core {
+namespace KissU.Util.Datas.Sql.Builders.Core
+{
     /// <summary>
     /// 表连接项
     /// </summary>
-    public class JoinItem : IJoinOn {
+    public class JoinItem : IJoinOn
+    {
         /// <summary>
         /// 辅助操作
         /// </summary>
@@ -25,7 +27,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <param name="raw">使用原始值</param>
         /// <param name="isSplit">是否用句点分割表名</param>
         /// <param name="type">表实体类型</param>
-        public JoinItem( string joinType, string table, string schema = null, string alias = null, bool raw = false, bool isSplit = true, Type type = null ) {
+        public JoinItem( string joinType, string table, string schema = null, string alias = null, bool raw = false, bool isSplit = true, Type type = null )
+        {
             JoinType = joinType;
             Table = new SqlItem( table, schema, alias, raw, isSplit );
             Type = type;
@@ -38,7 +41,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <param name="table">表</param>
         /// <param name="type">表实体类型</param>
         /// <param name="condition">连接条件</param>
-        public JoinItem( string joinType, SqlItem table, Type type, ICondition condition ) {
+        public JoinItem( string joinType, SqlItem table, Type type, ICondition condition )
+        {
             JoinType = joinType;
             Table = table;
             Type = type;
@@ -48,7 +52,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 设置依赖项
         /// </summary>
-        public void SetDependency( Helper helper ) {
+        public void SetDependency( Helper helper )
+        {
             _helper = helper;
         }
 
@@ -76,7 +81,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// 设置连接条件
         /// </summary>
         /// <param name="condition">连接条件</param>
-        public void On( ICondition condition ) {
+        public void On( ICondition condition )
+        {
             if( condition == null )
                 return;
             Condition = new AndCondition( Condition, condition );
@@ -88,7 +94,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <param name="column">列名</param>
         /// <param name="value">值</param>
         /// <param name="operator">运算符</param>
-        public void On( string column, object value, Operator @operator = Operator.Equal ) {
+        public void On( string column, object value, Operator @operator = Operator.Equal )
+        {
             if ( _helper == null )
                 return;
             var condition = _helper.CreateCondition( column, value, @operator );
@@ -98,13 +105,16 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 设置连接条件
         /// </summary>
-        public void On( List<List<OnItem>> items, IDialect dialect ) {
+        public void On( List<List<OnItem>> items, IDialect dialect )
+        {
             if( items == null )
                 return;
             ICondition orCondition = null;
-            foreach( var onItems in items ) {
+            foreach( var onItems in items )
+            {
                 ICondition condition = null;
-                foreach( var item in onItems ) {
+                foreach( var item in onItems )
+                {
                     condition = new AndCondition( condition, SqlConditionFactory.Create( item.Left.ToSql( dialect ), item.Right.ToSql( dialect ), item.Operator ) );
                 }
                 orCondition = new OrCondition( orCondition, condition );
@@ -115,7 +125,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 添加到On子句
         /// </summary>
-        public void AppendOn( string sql, IDialect dialect ) {
+        public void AppendOn( string sql, IDialect dialect )
+        {
             if( string.IsNullOrWhiteSpace( sql ) )
                 return;
             sql = Helper.ResolveSql( sql, dialect );
@@ -125,7 +136,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 复制副本
         /// </summary>
-        public JoinItem Clone( Helper helper ) {
+        public JoinItem Clone( Helper helper )
+        {
             var result = new JoinItem( JoinType, Table, Type, new SqlCondition( Condition?.GetCondition() ) );
             result.SetDependency( helper );
             return result;
@@ -134,7 +146,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 获取Join语句
         /// </summary>
-        public string ToSql( IDialect dialect = null, ITableDatabase tableDatabase=null ) {
+        public string ToSql( IDialect dialect = null, ITableDatabase tableDatabase=null )
+        {
             var table = Table.ToSql( dialect, tableDatabase );
             return $"{JoinType} {table}{GetOn()}";
         }
@@ -142,7 +155,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 获取On语句
         /// </summary>
-        private string GetOn() {
+        private string GetOn()
+        {
             return Condition == null ? null : $" On {Condition.GetCondition()}";
         }
     }

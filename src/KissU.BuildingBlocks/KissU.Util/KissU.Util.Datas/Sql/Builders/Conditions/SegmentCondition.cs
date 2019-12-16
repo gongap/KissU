@@ -1,10 +1,12 @@
 ﻿using KissU.Util.Datas.Queries;
 
-namespace KissU.Util.Datas.Sql.Builders.Conditions {
+namespace KissU.Util.Datas.Sql.Builders.Conditions
+{
     /// <summary>
     /// 范围过滤条件
     /// </summary>
-    public class SegmentCondition : ICondition {
+    public class SegmentCondition : ICondition
+    {
         /// <summary>
         /// 列名
         /// </summary>
@@ -29,7 +31,8 @@ namespace KissU.Util.Datas.Sql.Builders.Conditions {
         /// <param name="min">最小值</param>
         /// <param name="max">最大值</param>
         /// <param name="boundary">包含边界</param>
-        public SegmentCondition( string name, string min, string max, Boundary boundary ) {
+        public SegmentCondition( string name, string min, string max, Boundary boundary )
+        {
             _name = name;
             _min = min;
             _max = max;
@@ -39,7 +42,8 @@ namespace KissU.Util.Datas.Sql.Builders.Conditions {
         /// <summary>
         /// 获取查询条件
         /// </summary>
-        public string GetCondition() {
+        public string GetCondition()
+        {
             if ( string.IsNullOrWhiteSpace( _name ) )
                 return null;
             var condition = new AndCondition( CreateLeftCondition(), CreateRightCondition() );
@@ -49,7 +53,8 @@ namespace KissU.Util.Datas.Sql.Builders.Conditions {
         /// <summary>
         /// 创建左条件
         /// </summary>
-        private ICondition CreateLeftCondition() {
+        private ICondition CreateLeftCondition()
+        {
             if ( string.IsNullOrWhiteSpace( _min ) )
                 return NullCondition.Instance;
             return SqlConditionFactory.Create( _name, _min, CreateLeftOperator() );
@@ -58,8 +63,10 @@ namespace KissU.Util.Datas.Sql.Builders.Conditions {
         /// <summary>
         /// 创建左操作符
         /// </summary>
-        private Operator CreateLeftOperator() {
-            switch( _boundary ) {
+        private Operator CreateLeftOperator()
+        {
+            switch( _boundary )
+            {
                 case Boundary.Left:
                     return Operator.GreaterEqual;
                 case Boundary.Both:
@@ -72,7 +79,8 @@ namespace KissU.Util.Datas.Sql.Builders.Conditions {
         /// <summary>
         /// 创建右条件
         /// </summary>
-        private ICondition CreateRightCondition() {
+        private ICondition CreateRightCondition()
+        {
             if( string.IsNullOrWhiteSpace( _max ) )
                 return NullCondition.Instance;
             return SqlConditionFactory.Create( _name, _max, CreateRightOperator() );
@@ -81,8 +89,10 @@ namespace KissU.Util.Datas.Sql.Builders.Conditions {
         /// <summary>
         /// 创建右操作符
         /// </summary>
-        private Operator CreateRightOperator() {
-            switch( _boundary ) {
+        private Operator CreateRightOperator()
+        {
+            switch( _boundary )
+            {
                 case Boundary.Right:
                     return Operator.LessEqual;
                 case Boundary.Both:

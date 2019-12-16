@@ -1,18 +1,21 @@
 ﻿using System;
 using KissU.Util.Datas.Sql.Builders;
 
-namespace KissU.Util.Datas.Sql {
+namespace KissU.Util.Datas.Sql
+{
     /// <summary>
     /// OrderBy子句扩展
     /// </summary>
-    public static partial class Extensions {
+    public static partial class Extensions
+    {
         /// <summary>
         /// 排序
         /// </summary>
         /// <param name="source">源</param>
         /// <param name="order">排序列表,范例：a.Id,b.Name desc</param>
         /// <param name="tableAlias">表别名</param>
-        public static T OrderBy<T>( this T source, string order, string tableAlias = null ) where T : IOrderBy {
+        public static T OrderBy<T>( this T source, string order, string tableAlias = null ) where T : IOrderBy
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -25,7 +28,8 @@ namespace KissU.Util.Datas.Sql {
         /// </summary>
         /// <param name="source">源</param>
         /// <param name="sql">Sql语句，说明：原样添加到Sql中，不会进行任何处理</param>
-        public static T AppendOrderBy<T>( this T source, string sql ) where T : IOrderBy {
+        public static T AppendOrderBy<T>( this T source, string sql ) where T : IOrderBy
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -39,7 +43,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="source">源</param>
         /// <param name="sql">Sql语句，说明：原样添加到Sql中，不会进行任何处理</param>
         /// <param name="condition">该值为true时添加Sql，否则忽略</param>
-        public static T AppendOrderBy<T>( this T source, string sql, bool condition ) where T : IOrderBy {
+        public static T AppendOrderBy<T>( this T source, string sql, bool condition ) where T : IOrderBy
+        {
             return condition ? AppendOrderBy( source, sql ) : source;
         }
     }

@@ -5,11 +5,13 @@ using KissU.Util.Datas.Sql.Builders.Internal;
 using KissU.Util.Datas.Sql.Matedatas;
 using KissU.Util.Properties;
 
-namespace KissU.Util.Datas.Sql.Builders.Clauses {
+namespace KissU.Util.Datas.Sql.Builders.Clauses
+{
     /// <summary>
     /// From子句
     /// </summary>
-    public class FromClause : IFromClause {
+    public class FromClause : IFromClause
+    {
         /// <summary>
         /// Sql生成器
         /// </summary>
@@ -44,7 +46,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// <param name="register">实体别名注册器</param>
         /// <param name="tableDatabase">表数据库</param>
         /// <param name="table">表</param>
-        public FromClause( ISqlBuilder builder, IDialect dialect, IEntityResolver resolver, IEntityAliasRegister register, ITableDatabase tableDatabase, SqlItem table = null ) {
+        public FromClause( ISqlBuilder builder, IDialect dialect, IEntityResolver resolver, IEntityAliasRegister register, ITableDatabase tableDatabase, SqlItem table = null )
+        {
             Builder = builder;
             Dialect = dialect;
             Resolver = resolver;
@@ -58,7 +61,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// </summary>
         /// <param name="builder">Sql生成器</param>
         /// <param name="register">实体别名注册器</param>
-        public virtual IFromClause Clone( ISqlBuilder builder, IEntityAliasRegister register ) {
+        public virtual IFromClause Clone( ISqlBuilder builder, IEntityAliasRegister register )
+        {
             if( register != null )
                 register.FromType = Register.FromType;
             return new FromClause( builder, Dialect, Resolver, register, TableDatabase, Table );
@@ -69,7 +73,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// </summary>
         /// <param name="table">表名</param>
         /// <param name="alias">别名</param>
-        public void From( string table, string alias = null ) {
+        public void From( string table, string alias = null )
+        {
             Table = CreateSqlItem( table, null, alias );
         }
 
@@ -79,7 +84,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// <param name="table">表名</param>
         /// <param name="schema">架构名</param>
         /// <param name="alias">别名</param>
-        protected virtual SqlItem CreateSqlItem( string table, string schema, string alias ) {
+        protected virtual SqlItem CreateSqlItem( string table, string schema, string alias )
+        {
             return new SqlItem( table, schema, alias );
         }
 
@@ -88,7 +94,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// </summary>
         /// <param name="alias">别名</param>
         /// <param name="schema">架构名</param>
-        public void From<TEntity>( string alias = null, string schema = null ) where TEntity : class {
+        public void From<TEntity>( string alias = null, string schema = null ) where TEntity : class
+        {
             var type = typeof( TEntity );
             var table = Resolver.GetTableAndSchema( type );
             Table = CreateSqlItem( table, schema, alias );
@@ -101,7 +108,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// </summary>
         /// <param name="builder">Sql生成器</param>
         /// <param name="alias">表别名</param>
-        public void From( ISqlBuilder builder, string alias ) {
+        public void From( ISqlBuilder builder, string alias )
+        {
             if( builder == null )
                 return;
             var result = builder.ToSql();
@@ -115,7 +123,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// </summary>
         /// <param name="action">子查询操作</param>
         /// <param name="alias">表别名</param>
-        public void From( Action<ISqlBuilder> action, string alias ) {
+        public void From( Action<ISqlBuilder> action, string alias )
+        {
             if( action == null )
                 return;
             var builder = Builder.New();
@@ -127,11 +136,13 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// 添加到From子句
         /// </summary>
         /// <param name="sql">Sql语句</param>
-        public void AppendSql( string sql ) {
+        public void AppendSql( string sql )
+        {
             if( string.IsNullOrWhiteSpace( sql ) )
                 return;
             sql = Helper.ResolveSql( sql, Dialect );
-            if( Table != null && Table.Raw ) {
+            if( Table != null && Table.Raw )
+            {
                 Table = new SqlItem( $"{Table.Name}{sql}", raw: true );
                 return;
             }
@@ -141,7 +152,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// <summary>
         /// 验证
         /// </summary>
-        public void Validate() {
+        public void Validate()
+        {
             if( string.IsNullOrWhiteSpace( Table?.Name ) )
                 throw new InvalidOperationException( LibraryResource.TableIsEmpty );
         }
@@ -149,7 +161,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// <summary>
         /// 输出Sql
         /// </summary>
-        public string ToSql() {
+        public string ToSql()
+        {
             var table = Table?.ToSql( Dialect, TableDatabase );
             if( string.IsNullOrWhiteSpace( table ) )
                 return null;

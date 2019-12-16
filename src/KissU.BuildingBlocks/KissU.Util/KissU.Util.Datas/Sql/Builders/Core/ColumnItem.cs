@@ -1,11 +1,13 @@
 ﻿using System;
 using KissU.Util.Datas.Sql.Builders.Extensions;
 
-namespace KissU.Util.Datas.Sql.Builders.Core {
+namespace KissU.Util.Datas.Sql.Builders.Core
+{
     /// <summary>
     /// 列
     /// </summary>
-    public class ColumnItem {
+    public class ColumnItem
+    {
         /// <summary>
         /// 初始化列
         /// </summary>
@@ -15,7 +17,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <param name="tableType">表实体类型</param>
         /// <param name="raw">使用原始值</param>
         /// <param name="isAggregation">是否聚合函数</param>
-        public ColumnItem( string name, string tableAlias = null, string columnAlias = null, Type tableType = null, bool raw = false, bool isAggregation = false ) {
+        public ColumnItem( string name, string tableAlias = null, string columnAlias = null, Type tableType = null, bool raw = false, bool isAggregation = false )
+        {
             Name = name;
             TableAlias = tableAlias;
             ColumnAlias = columnAlias;
@@ -54,7 +57,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// </summary>
         /// <param name="dialect">Sql方言</param>
         /// <param name="register">实体别名注册器</param>
-        public string ToSql( IDialect dialect, IEntityAliasRegister register ) {
+        public string ToSql( IDialect dialect, IEntityAliasRegister register )
+        {
             if ( Raw || IsAggregation )
                 return dialect.GetColumn( Name,dialect.GetSafeName( ColumnAlias ) );
             var result = new SqlItem( Name, GetTableAlias( register ), ColumnAlias, isResolve: false );
@@ -64,7 +68,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 获取表别名
         /// </summary>
-        private string GetTableAlias( IEntityAliasRegister register ) {
+        private string GetTableAlias( IEntityAliasRegister register )
+        {
             if( register != null && register.Contains( TableType ) )
                 return register.GetAlias( TableType );
             return TableAlias;
@@ -73,7 +78,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 复制
         /// </summary>
-        public ColumnItem Clone() {
+        public ColumnItem Clone()
+        {
             return new ColumnItem( Name,TableAlias,ColumnAlias,TableType,Raw,IsAggregation );
         }
     }

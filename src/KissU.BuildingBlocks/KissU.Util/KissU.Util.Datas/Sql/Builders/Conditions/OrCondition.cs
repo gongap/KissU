@@ -1,8 +1,10 @@
-﻿namespace KissU.Util.Datas.Sql.Builders.Conditions {
+﻿namespace KissU.Util.Datas.Sql.Builders.Conditions
+{
     /// <summary>
     /// Or连接条件
     /// </summary>
-    public class OrCondition : ICondition {
+    public class OrCondition : ICondition
+    {
         /// <summary>
         /// 左操作数
         /// </summary>
@@ -17,7 +19,8 @@
         /// </summary>
         /// <param name="left">左操作数</param>
         /// <param name="right">右操作数</param>
-        public OrCondition( string left, string right ) {
+        public OrCondition( string left, string right )
+        {
             _left = left;
             _right = right;
         }
@@ -27,7 +30,8 @@
         /// </summary>
         /// <param name="left">左操作数</param>
         /// <param name="right">右操作数</param>
-        public OrCondition( ICondition left, ICondition right ) {
+        public OrCondition( ICondition left, ICondition right )
+        {
             _left = left?.GetCondition();
             _right = right?.GetCondition();
         }
@@ -35,7 +39,8 @@
         /// <summary>
         /// 获取查询条件
         /// </summary>
-        public string GetCondition() {
+        public string GetCondition()
+        {
             if( string.IsNullOrWhiteSpace( _left ) )
                 return _right;
             if( string.IsNullOrWhiteSpace( _right ) )

@@ -11,11 +11,13 @@ using KissU.Util.Datas.Sql.Builders.Internal;
 using KissU.Util.Datas.Sql.Matedatas;
 using KissU.Util.Helpers;
 
-namespace KissU.Util.Datas.Sql.Builders.Clauses {
+namespace KissU.Util.Datas.Sql.Builders.Clauses
+{
     /// <summary>
     /// 表连接子句
     /// </summary>
-    public class JoinClause : IJoinClause {
+    public class JoinClause : IJoinClause
+    {
         /// <summary>
         /// Join关键字
         /// </summary>
@@ -72,7 +74,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// <param name="tableDatabase">表数据库</param>
         /// <param name="joinItems">连接参数列表</param>
         public JoinClause( ISqlBuilder sqlBuilder, IDialect dialect, IEntityResolver resolver, IEntityAliasRegister register, 
-            IParameterManager parameterManager, ITableDatabase tableDatabase, List<JoinItem> joinItems = null ) {
+            IParameterManager parameterManager, ITableDatabase tableDatabase, List<JoinItem> joinItems = null )
+            {
             _sqlBuilder = sqlBuilder;
             _dialect = dialect;
             _resolver = resolver;
@@ -89,7 +92,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// <param name="sqlBuilder">Sql生成器</param>
         /// <param name="register">实体别名注册器</param>
         /// <param name="parameterManager">参数管理器</param>
-        public virtual IJoinClause Clone( ISqlBuilder sqlBuilder, IEntityAliasRegister register, IParameterManager parameterManager ) {
+        public virtual IJoinClause Clone( ISqlBuilder sqlBuilder, IEntityAliasRegister register, IParameterManager parameterManager )
+        {
             var helper = new Helper( _dialect, _resolver, register, parameterManager );
             return new JoinClause( sqlBuilder, _dialect, _resolver, register, parameterManager, TableDatabase, _params.Select( t => t.Clone( helper ) ).ToList() );
         }
@@ -98,7 +102,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// 查找连接项
         /// </summary>
         /// <param name="type">表实体类型</param>
-        public IJoinOn Find( Type type ) {
+        public IJoinOn Find( Type type )
+        {
             return _params.Find( t => t.Type == type );
         }
 
@@ -107,14 +112,16 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// </summary>
         /// <param name="table">表名</param>
         /// <param name="alias">别名</param>
-        public void Join( string table, string alias = null ) {
+        public void Join( string table, string alias = null )
+        {
             Join( JoinKey, table, alias );
         }
 
         /// <summary>
         /// 表连接
         /// </summary>
-        private void Join( string joinType, string table, string alias ) {
+        private void Join( string joinType, string table, string alias )
+        {
             var item = CreateJoinItem( joinType, table, null, alias );
             AddItem( item );
         }
@@ -127,14 +134,16 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// <param name="schema">架构名</param>
         /// <param name="alias">别名</param>
         /// <param name="type">类型</param>
-        protected virtual JoinItem CreateJoinItem( string joinType, string table, string schema, string alias, Type type = null ) {
+        protected virtual JoinItem CreateJoinItem( string joinType, string table, string schema, string alias, Type type = null )
+        {
             return new JoinItem( joinType, table, schema, alias, type: type );
         }
 
         /// <summary>
         /// 添加连接项
         /// </summary>
-        private void AddItem( JoinItem item ) {
+        private void AddItem( JoinItem item )
+        {
             item.SetDependency( _helper );
             _params.Add( item );
         }
@@ -144,14 +153,16 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// </summary>
         /// <param name="alias">别名</param>
         /// <param name="schema">架构名</param>
-        public void Join<TEntity>( string alias = null, string schema = null ) where TEntity : class {
+        public void Join<TEntity>( string alias = null, string schema = null ) where TEntity : class
+        {
             Join<TEntity>( JoinKey, alias, schema );
         }
 
         /// <summary>
         /// 表连接
         /// </summary>
-        private void Join<TEntity>( string joinType, string alias, string schema ) {
+        private void Join<TEntity>( string joinType, string alias, string schema )
+        {
             var type = typeof( TEntity );
             var table = _resolver.GetTableAndSchema( type );
             var item = CreateJoinItem( joinType, table, schema, alias, type );
@@ -164,14 +175,16 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// </summary>
         /// <param name="builder">Sql生成器</param>
         /// <param name="alias">表别名</param>
-        public void Join( ISqlBuilder builder, string alias ) {
+        public void Join( ISqlBuilder builder, string alias )
+        {
             AppendJoin( JoinKey, builder, alias );
         }
 
         /// <summary>
         /// 添加到连接子句
         /// </summary>
-        private void AppendJoin( string joinType, ISqlBuilder builder, string alias ) {
+        private void AppendJoin( string joinType, ISqlBuilder builder, string alias )
+        {
             AppendJoin( joinType, $"({builder.ToSql()}) As {_dialect.SafeName( alias )}" );
         }
 
@@ -180,14 +193,16 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// </summary>
         /// <param name="action">子查询操作</param>
         /// <param name="alias">表别名</param>
-        public void Join( Action<ISqlBuilder> action, string alias ) {
+        public void Join( Action<ISqlBuilder> action, string alias )
+        {
             AppendJoin( JoinKey, action, alias );
         }
 
         /// <summary>
         /// 添加到连接子句
         /// </summary>
-        private void AppendJoin( string joinType, Action<ISqlBuilder> action, string alias ) {
+        private void AppendJoin( string joinType, Action<ISqlBuilder> action, string alias )
+        {
             if( action == null )
                 return;
             var builder = _sqlBuilder.New();
@@ -199,14 +214,16 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// 添加到内连接子句
         /// </summary>
         /// <param name="sql">Sql语句</param>
-        public void AppendJoin( string sql ) {
+        public void AppendJoin( string sql )
+        {
             AppendJoin( JoinKey, sql );
         }
 
         /// <summary>
         /// 添加到连接子句
         /// </summary>
-        private void AppendJoin( string joinType, string sql ) {
+        private void AppendJoin( string joinType, string sql )
+        {
             if( string.IsNullOrWhiteSpace( sql ) )
                 return;
             sql = Helper.ResolveSql( sql, _dialect );
@@ -219,7 +236,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// </summary>
         /// <param name="table">表名</param>
         /// <param name="alias">别名</param>
-        public void LeftJoin( string table, string alias = null ) {
+        public void LeftJoin( string table, string alias = null )
+        {
             Join( LeftJoinKey, table, alias );
         }
 
@@ -228,7 +246,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// </summary>
         /// <param name="alias">别名</param>
         /// <param name="schema">架构名</param>
-        public void LeftJoin<TEntity>( string alias = null, string schema = null ) where TEntity : class {
+        public void LeftJoin<TEntity>( string alias = null, string schema = null ) where TEntity : class
+        {
             Join<TEntity>( LeftJoinKey, alias, schema );
         }
 
@@ -237,7 +256,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// </summary>
         /// <param name="builder">Sql生成器</param>
         /// <param name="alias">表别名</param>
-        public void LeftJoin( ISqlBuilder builder, string alias ) {
+        public void LeftJoin( ISqlBuilder builder, string alias )
+        {
             AppendJoin( LeftJoinKey, builder, alias );
         }
 
@@ -246,7 +266,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// </summary>
         /// <param name="action">子查询操作</param>
         /// <param name="alias">表别名</param>
-        public void LeftJoin( Action<ISqlBuilder> action, string alias ) {
+        public void LeftJoin( Action<ISqlBuilder> action, string alias )
+        {
             AppendJoin( LeftJoinKey, action, alias );
         }
 
@@ -254,7 +275,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// 添加到左外连接子句
         /// </summary>
         /// <param name="sql">Sql语句</param>
-        public void AppendLeftJoin( string sql ) {
+        public void AppendLeftJoin( string sql )
+        {
             AppendJoin( LeftJoinKey, sql );
         }
 
@@ -263,7 +285,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// </summary>
         /// <param name="table">表名</param>
         /// <param name="alias">别名</param>
-        public void RightJoin( string table, string alias = null ) {
+        public void RightJoin( string table, string alias = null )
+        {
             Join( RightJoinKey, table, alias );
         }
 
@@ -272,7 +295,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// </summary>
         /// <param name="alias">别名</param>
         /// <param name="schema">架构名</param>
-        public void RightJoin<TEntity>( string alias = null, string schema = null ) where TEntity : class {
+        public void RightJoin<TEntity>( string alias = null, string schema = null ) where TEntity : class
+        {
             Join<TEntity>( RightJoinKey, alias, schema );
         }
 
@@ -281,7 +305,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// </summary>
         /// <param name="builder">Sql生成器</param>
         /// <param name="alias">表别名</param>
-        public void RightJoin( ISqlBuilder builder, string alias ) {
+        public void RightJoin( ISqlBuilder builder, string alias )
+        {
             AppendJoin( RightJoinKey, builder, alias );
         }
 
@@ -290,7 +315,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// </summary>
         /// <param name="action">子查询操作</param>
         /// <param name="alias">表别名</param>
-        public void RightJoin( Action<ISqlBuilder> action, string alias ) {
+        public void RightJoin( Action<ISqlBuilder> action, string alias )
+        {
             AppendJoin( RightJoinKey, action, alias );
         }
 
@@ -298,7 +324,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// 添加到右外连接子句
         /// </summary>
         /// <param name="sql">Sql语句</param>
-        public void AppendRightJoin( string sql ) {
+        public void AppendRightJoin( string sql )
+        {
             AppendJoin( RightJoinKey, sql );
         }
 
@@ -306,7 +333,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// 设置连接条件
         /// </summary>
         /// <param name="condition">连接条件</param>
-        public void On( ICondition condition ) {
+        public void On( ICondition condition )
+        {
             _params.LastOrDefault()?.On( condition );
         }
 
@@ -316,7 +344,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// <param name="column">列名</param>
         /// <param name="value">值</param>
         /// <param name="operator">运算符</param>
-        public void On( string column, object value, Operator @operator = Operator.Equal ) {
+        public void On( string column, object value, Operator @operator = Operator.Equal )
+        {
             _params.LastOrDefault()?.On( column, value, @operator );
         }
 
@@ -328,7 +357,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// <param name="operator">条件运算符</param>
         public void On<TLeft, TRight>( Expression<Func<TLeft, object>> left, Expression<Func<TRight, object>> right, Operator @operator = Operator.Equal )
             where TLeft : class
-            where TRight : class {
+            where TRight : class
+            {
             var leftColumn = new SqlItem( GetColumn( left ) ).ToSql( _dialect );
             var rightColumn = new SqlItem( GetColumn( right ) ).ToSql( _dialect );
             var condition = SqlConditionFactory.Create( leftColumn, rightColumn, @operator );
@@ -338,14 +368,16 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// <summary>
         /// 获取列
         /// </summary>
-        private string GetColumn<TEntity>( Expression<Func<TEntity, object>> column ) {
+        private string GetColumn<TEntity>( Expression<Func<TEntity, object>> column )
+        {
             return GetColumn( typeof( TEntity ), _resolver.GetColumn( column ) );
         }
 
         /// <summary>
         /// 获取列
         /// </summary>
-        private string GetColumn( Type entity, string column ) {
+        private string GetColumn( Type entity, string column )
+        {
             return $"{_register.GetAlias( entity )}.{column}";
         }
 
@@ -353,7 +385,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// 设置连接条件
         /// </summary>
         /// <param name="expression">条件表达式</param>
-        public void On<TLeft, TRight>( Expression<Func<TLeft, TRight, bool>> expression ) where TLeft : class where TRight : class {
+        public void On<TLeft, TRight>( Expression<Func<TLeft, TRight, bool>> expression ) where TLeft : class where TRight : class
+        {
             if( expression == null )
                 throw new ArgumentNullException( nameof( expression ) );
             var expressions = Lambda.GetGroupPredicates( expression );
@@ -364,7 +397,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// <summary>
         /// 设置连接条件组
         /// </summary>
-        private List<OnItem> GetOnItems( List<Expression> group ) {
+        private List<OnItem> GetOnItems( List<Expression> group )
+        {
             return group.Select( expression => new OnItem(
                 GetColumn( expression, false ), GetColumn( expression, true ), Lambda.GetOperator( expression ).SafeValue()
             ) ).ToList();
@@ -373,10 +407,12 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// <summary>
         /// 获取列
         /// </summary>
-        private SqlItem GetColumn( Expression expression, bool right ) {
+        private SqlItem GetColumn( Expression expression, bool right )
+        {
             var type = _resolver.GetType( expression, right );
             var column = _resolver.GetColumn( expression, type, right );
-            if( string.IsNullOrWhiteSpace( column ) ) {
+            if( string.IsNullOrWhiteSpace( column ) )
+            {
                 var name = _parameterManager.GenerateName();
                 _parameterManager.Add( name, Lambda.GetValue( expression ) );
                 return new SqlItem( name, raw: true );
@@ -388,16 +424,19 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// 添加到On子句
         /// </summary>
         /// <param name="sql">Sql语句</param>
-        public void AppendOn( string sql ) {
+        public void AppendOn( string sql )
+        {
             _params.LastOrDefault()?.AppendOn( sql, _dialect );
         }
 
         /// <summary>
         /// 输出Sql
         /// </summary>
-        public string ToSql() {
+        public string ToSql()
+        {
             var result = new StringBuilder();
-            _params.ForEach( item => {
+            _params.ForEach( item =>
+            {
                 result.AppendLine( $"{item.ToSql( _dialect, TableDatabase )} " );
             } );
             return result.ToString().Trim();

@@ -1,8 +1,10 @@
-﻿namespace KissU.Util.Datas.Sql.Builders.Conditions {
+﻿namespace KissU.Util.Datas.Sql.Builders.Conditions
+{
     /// <summary>
     /// Sql查询条件
     /// </summary>
-    public class SqlCondition : ICondition {
+    public class SqlCondition : ICondition
+    {
         /// <summary>
         /// Sql查询条件
         /// </summary>
@@ -12,14 +14,16 @@
         /// 初始化Sql查询条件
         /// </summary>
         /// <param name="condition">查询条件</param>
-        public SqlCondition( string condition ) {
+        public SqlCondition( string condition )
+        {
             _condition = condition;
         }
 
         /// <summary>
         /// 获取查询条件
         /// </summary>
-        public string GetCondition() {
+        public string GetCondition()
+        {
             return _condition;
         }
     }

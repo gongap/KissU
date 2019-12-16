@@ -1,17 +1,20 @@
 ﻿using KissU.Util.Datas.Sql.Builders;
 using KissU.Util.Datas.Sql.Builders.Filters;
 
-namespace KissU.Util.Datas.Sql {
+namespace KissU.Util.Datas.Sql
+{
     /// <summary>
     /// Sql查询对象扩展 - 杂项
     /// </summary>
-    public static partial class Extensions {
+    public static partial class Extensions
+    {
         /// <summary>
         /// 在执行之后清空Sql和参数，默认为 true
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
         /// <param name="value">是否在执行之后清空Sql和参数，默认为 true</param>
-        public static ISqlQuery ClearAfterExecution( this ISqlQuery sqlQuery, bool value = true ) {
+        public static ISqlQuery ClearAfterExecution( this ISqlQuery sqlQuery, bool value = true )
+        {
             sqlQuery.Config( t => t.IsClearAfterExecution = value );
             return sqlQuery;
         }
@@ -20,7 +23,8 @@ namespace KissU.Util.Datas.Sql {
         /// 复制Sql生成器
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
-        public static ISqlBuilder CloneBuilder( this ISqlQuery sqlQuery ) {
+        public static ISqlBuilder CloneBuilder( this ISqlQuery sqlQuery )
+        {
             var builder = sqlQuery.GetBuilder();
             return builder.Clone();
         }
@@ -29,7 +33,8 @@ namespace KissU.Util.Datas.Sql {
         /// 创建一个新的Sql生成器
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
-        public static ISqlBuilder NewBuilder( this ISqlQuery sqlQuery ) {
+        public static ISqlBuilder NewBuilder( this ISqlQuery sqlQuery )
+        {
             var builder = sqlQuery.GetBuilder();
             return builder.New();
         }
@@ -38,7 +43,8 @@ namespace KissU.Util.Datas.Sql {
         /// 获取调试Sql语句
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
-        public static string GetDebugSql( this ISqlQuery sqlQuery ) {
+        public static string GetDebugSql( this ISqlQuery sqlQuery )
+        {
             var builder = sqlQuery.GetBuilder();
             return builder.ToDebugSql();
         }
@@ -47,7 +53,8 @@ namespace KissU.Util.Datas.Sql {
         /// 清空
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
-        public static ISqlQuery Clear( this ISqlQuery sqlQuery ) {
+        public static ISqlQuery Clear( this ISqlQuery sqlQuery )
+        {
             var builder = sqlQuery.GetBuilder();
             builder.Clear();
             return sqlQuery;
@@ -57,7 +64,8 @@ namespace KissU.Util.Datas.Sql {
         /// 清空Select子句
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
-        public static ISqlQuery ClearSelect( this ISqlQuery sqlQuery ) {
+        public static ISqlQuery ClearSelect( this ISqlQuery sqlQuery )
+        {
             var builder = sqlQuery.GetBuilder();
             builder.ClearSelect();
             return sqlQuery;
@@ -67,7 +75,8 @@ namespace KissU.Util.Datas.Sql {
         /// 清空From子句
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
-        public static ISqlQuery ClearFrom( this ISqlQuery sqlQuery ) {
+        public static ISqlQuery ClearFrom( this ISqlQuery sqlQuery )
+        {
             var builder = sqlQuery.GetBuilder();
             builder.ClearFrom();
             return sqlQuery;
@@ -77,7 +86,8 @@ namespace KissU.Util.Datas.Sql {
         /// 清空Join子句
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
-        public static ISqlQuery ClearJoin( this ISqlQuery sqlQuery ) {
+        public static ISqlQuery ClearJoin( this ISqlQuery sqlQuery )
+        {
             var builder = sqlQuery.GetBuilder();
             builder.ClearJoin();
             return sqlQuery;
@@ -87,7 +97,8 @@ namespace KissU.Util.Datas.Sql {
         /// 清空Where子句
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
-        public static ISqlQuery ClearWhere( this ISqlQuery sqlQuery ) {
+        public static ISqlQuery ClearWhere( this ISqlQuery sqlQuery )
+        {
             var builder = sqlQuery.GetBuilder();
             builder.ClearWhere();
             return sqlQuery;
@@ -97,7 +108,8 @@ namespace KissU.Util.Datas.Sql {
         /// 清空GroupBy子句
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
-        public static ISqlQuery ClearGroupBy( this ISqlQuery sqlQuery ) {
+        public static ISqlQuery ClearGroupBy( this ISqlQuery sqlQuery )
+        {
             var builder = sqlQuery.GetBuilder();
             builder.ClearGroupBy();
             return sqlQuery;
@@ -107,7 +119,8 @@ namespace KissU.Util.Datas.Sql {
         /// 清空OrderBy子句
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
-        public static ISqlQuery ClearOrderBy( this ISqlQuery sqlQuery ) {
+        public static ISqlQuery ClearOrderBy( this ISqlQuery sqlQuery )
+        {
             var builder = sqlQuery.GetBuilder();
             builder.ClearOrderBy();
             return sqlQuery;
@@ -119,7 +132,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="sqlQuery">Sql查询对象</param>
         /// <param name="name">参数名</param>
         /// <param name="value">参数值</param>
-        public static ISqlQuery AddParam( this ISqlQuery sqlQuery, string name, object value ) {
+        public static ISqlQuery AddParam( this ISqlQuery sqlQuery, string name, object value )
+        {
             var builder = sqlQuery.GetBuilder();
             builder.AddParam( name, value );
             return sqlQuery;
@@ -129,7 +143,8 @@ namespace KissU.Util.Datas.Sql {
         /// 清空Sql参数
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
-        public static ISqlQuery ClearSqlParams( this ISqlQuery sqlQuery ) {
+        public static ISqlQuery ClearSqlParams( this ISqlQuery sqlQuery )
+        {
             var builder = sqlQuery.GetBuilder();
             builder.ClearSqlParams();
             return sqlQuery;
@@ -139,7 +154,8 @@ namespace KissU.Util.Datas.Sql {
         /// 清空分页参数
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
-        public static ISqlQuery ClearPageParams( this ISqlQuery sqlQuery ) {
+        public static ISqlQuery ClearPageParams( this ISqlQuery sqlQuery )
+        {
             var builder = sqlQuery.GetBuilder();
             builder.ClearPageParams();
             return sqlQuery;
@@ -150,7 +166,8 @@ namespace KissU.Util.Datas.Sql {
         /// </summary>
         /// <typeparam name="TSqlFilter">Sql过滤器类型</typeparam>
         /// <param name="sqlQuery">Sql查询对象</param>
-        public static ISqlQuery IgnoreFilter<TSqlFilter>(this ISqlQuery sqlQuery) where TSqlFilter : ISqlFilter {
+        public static ISqlQuery IgnoreFilter<TSqlFilter>(this ISqlQuery sqlQuery) where TSqlFilter : ISqlFilter
+        {
             var builder = sqlQuery.GetBuilder();
             builder.IgnoreFilter<TSqlFilter>();
             return sqlQuery;

@@ -2,11 +2,13 @@
 using System.Collections.ObjectModel;
 using KissU.Util.Datas.Queries;
 
-namespace KissU.Util.Datas.Sql.Builders.Core {
+namespace KissU.Util.Datas.Sql.Builders.Core
+{
     /// <summary>
     /// 参数管理器
     /// </summary>
-    public class ParameterManager : IParameterManager {
+    public class ParameterManager : IParameterManager
+    {
         /// <summary>
         /// Sql方言
         /// </summary>
@@ -26,7 +28,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <param name="dialect">Sql方言</param>
         /// <param name="data">参数集合</param>
         /// <param name="index">参数索引</param>
-        public ParameterManager( IDialect dialect, IDictionary<string, object> data = null, int? index = null ) {
+        public ParameterManager( IDialect dialect, IDictionary<string, object> data = null, int? index = null )
+        {
             _dialect = dialect;
             _params = data ?? new Dictionary<string, object>();
             _paramIndex = index.SafeValue();
@@ -35,7 +38,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 创建参数名
         /// </summary>
-        public string GenerateName() {
+        public string GenerateName()
+        {
             var result =_dialect.GenerateName( _paramIndex );
             _paramIndex += 1;
             return result;
@@ -44,7 +48,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 获取参数列表
         /// </summary>
-        public IReadOnlyDictionary<string, object> GetParams() {
+        public IReadOnlyDictionary<string, object> GetParams()
+        {
             return new ReadOnlyDictionary<string, object>( _params );
         }
 
@@ -54,7 +59,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <param name="name">参数名</param>
         /// <param name="value">参数值</param>
         /// <param name="operator">运算符</param>
-        public void Add( string name, object value, Operator? @operator = null ) {
+        public void Add( string name, object value, Operator? @operator = null )
+        {
             if( string.IsNullOrWhiteSpace( name ) )
                 return;
             name = _dialect.GetParamName( name );
@@ -67,10 +73,12 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 获取值
         /// </summary>
-        private object GetValue( object value, Operator? @operator ) {
+        private object GetValue( object value, Operator? @operator )
+        {
             if( string.IsNullOrWhiteSpace( value.SafeString() ) )
                 return value;
-            switch( @operator ) {
+            switch( @operator )
+            {
                 case Operator.Contains:
                     return $"%{value}%";
                 case Operator.Starts:
@@ -85,14 +93,16 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 复制副本
         /// </summary>
-        public IParameterManager Clone() {
+        public IParameterManager Clone()
+        {
             return new ParameterManager( _dialect, new Dictionary<string, object>( _params ), _paramIndex );
         }
 
         /// <summary>
         /// 清空参数
         /// </summary>
-        public void Clear() {
+        public void Clear()
+        {
             _paramIndex = 0;
             _params.Clear();
         }

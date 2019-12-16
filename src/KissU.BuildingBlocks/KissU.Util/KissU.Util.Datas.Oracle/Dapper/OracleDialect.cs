@@ -1,10 +1,12 @@
 ﻿using KissU.Util.Datas.Sql.Builders.Core;
 
-namespace KissU.Util.Datas.Oracle.Dapper {
+namespace KissU.Util.Datas.Oracle.Dapper
+{
     /// <summary>
     /// Oracle方言
     /// </summary>
-    public class OracleDialect : DialectBase {
+    public class OracleDialect : DialectBase
+    {
         /// <summary>
         /// 起始转义标识符
         /// </summary>
@@ -19,21 +21,24 @@ namespace KissU.Util.Datas.Oracle.Dapper {
         /// 获取安全名称
         /// </summary>
         /// <param name="name">名称</param>
-        protected override string GetSafeName( string name ) {
+        protected override string GetSafeName( string name )
+        {
             return $"\"{name}\"";
         }
 
         /// <summary>
         /// 获取参数前缀
         /// </summary>
-        public override string GetPrefix() {
+        public override string GetPrefix()
+        {
             return ":";
         }
 
         /// <summary>
         /// Select子句是否支持As关键字
         /// </summary>
-        public override bool SupportSelectAs() {
+        public override bool SupportSelectAs()
+        {
             return false;
         }
 
@@ -41,7 +46,8 @@ namespace KissU.Util.Datas.Oracle.Dapper {
         /// 创建参数名
         /// </summary>
         /// <param name="paramIndex">参数索引</param>
-        public override string GenerateName( int paramIndex ) {
+        public override string GenerateName( int paramIndex )
+        {
             return $"{GetPrefix()}p_{paramIndex}";
         }
 
@@ -49,7 +55,8 @@ namespace KissU.Util.Datas.Oracle.Dapper {
         /// 获取参数名
         /// </summary>
         /// <param name="paramName">参数名</param>
-        public override string GetParamName( string paramName ) {
+        public override string GetParamName( string paramName )
+        {
             if ( paramName.StartsWith( ":" ) )
                 return paramName.TrimStart( ':' );
             return paramName;
@@ -59,10 +66,12 @@ namespace KissU.Util.Datas.Oracle.Dapper {
         /// 获取参数值
         /// </summary>
         /// <param name="paramValue">参数值</param>
-        public override object GetParamValue( object paramValue ) {
+        public override object GetParamValue( object paramValue )
+        {
             if( paramValue == null )
                 return "";
-            switch( paramValue.GetType().Name.ToLower() ) {
+            switch( paramValue.GetType().Name.ToLower() )
+            {
                 case "boolean":
                     return Helpers.Convert.ToBool( paramValue ) ? 1 : 0;
                 case "int16":

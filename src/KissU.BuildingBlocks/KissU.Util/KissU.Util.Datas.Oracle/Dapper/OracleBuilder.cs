@@ -3,11 +3,13 @@ using KissU.Util.Datas.Sql.Builders;
 using KissU.Util.Datas.Sql.Builders.Core;
 using KissU.Util.Datas.Sql.Matedatas;
 
-namespace KissU.Util.Datas.Oracle.Dapper {
+namespace KissU.Util.Datas.Oracle.Dapper
+{
     /// <summary>
     /// Oracle Sql生成器
     /// </summary>
-    public class OracleBuilder : SqlBuilderBase {
+    public class OracleBuilder : SqlBuilderBase
+    {
         /// <summary>
         /// 初始化Sql生成器
         /// </summary>
@@ -15,13 +17,15 @@ namespace KissU.Util.Datas.Oracle.Dapper {
         /// <param name="tableDatabase">表数据库</param>
         /// <param name="parameterManager">参数管理器</param>
         public OracleBuilder( IEntityMatedata matedata = null, ITableDatabase tableDatabase = null, IParameterManager parameterManager = null ) 
-            : base( matedata, tableDatabase, parameterManager ) {
+            : base( matedata, tableDatabase, parameterManager )
+            {
         }
 
         /// <summary>
         /// 复制Sql生成器
         /// </summary>
-        public override ISqlBuilder Clone() {
+        public override ISqlBuilder Clone()
+        {
             var sqlBuilder = new OracleBuilder();
             sqlBuilder.Clone( this );
             return sqlBuilder;
@@ -30,35 +34,40 @@ namespace KissU.Util.Datas.Oracle.Dapper {
         /// <summary>
         /// 获取Sql方言
         /// </summary>
-        protected override IDialect GetDialect() {
+        protected override IDialect GetDialect()
+        {
             return new OracleDialect();
         }
 
         /// <summary>
         /// 创建Sql生成器
         /// </summary>
-        public override ISqlBuilder New() {
+        public override ISqlBuilder New()
+        {
             return new OracleBuilder( EntityMatedata, TableDatabase, ParameterManager );
         }
 
         /// <summary>
         /// 创建From子句
         /// </summary>
-        protected override IFromClause CreateFromClause() {
+        protected override IFromClause CreateFromClause()
+        {
             return new OracleFromClause( this, GetDialect(), EntityResolver, AliasRegister,TableDatabase );
         }
 
         /// <summary>
         /// 创建Join子句
         /// </summary>
-        protected override IJoinClause CreateJoinClause() {
+        protected override IJoinClause CreateJoinClause()
+        {
             return new OracleJoinClause( this, GetDialect(), EntityResolver, AliasRegister, ParameterManager, TableDatabase );
         }
 
         /// <summary>
         /// 创建分页Sql
         /// </summary>
-        protected override string CreateLimitSql() {
+        protected override string CreateLimitSql()
+        {
             return $"OFFSET {GetOffsetParam()} ROWS FETCH NEXT {GetLimitParam()} ROWS ONLY";
         }
     }

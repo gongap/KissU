@@ -2,18 +2,21 @@
 using KissU.Util.Datas.Queries;
 using KissU.Util.Datas.Sql.Builders;
 
-namespace KissU.Util.Datas.Sql {
+namespace KissU.Util.Datas.Sql
+{
     /// <summary>
     /// From子句扩展
     /// </summary>
-    public static partial class Extensions {
+    public static partial class Extensions
+    {
         /// <summary>
         /// 内连接
         /// </summary>
         /// <param name="source">源</param>
         /// <param name="table">表名</param>
         /// <param name="alias">别名</param>
-        public static T Join<T>( this T source, string table, string alias = null ) where T : IJoin {
+        public static T Join<T>( this T source, string table, string alias = null ) where T : IJoin
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -27,7 +30,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="source">源</param>
         /// <param name="builder">Sql生成器</param>
         /// <param name="alias">表别名</param>
-        public static T Join<T>( this T source, ISqlBuilder builder, string alias ) where T : IJoin {
+        public static T Join<T>( this T source, ISqlBuilder builder, string alias ) where T : IJoin
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -41,7 +45,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="source">源</param>
         /// <param name="action">子查询操作</param>
         /// <param name="alias">表别名</param>
-        public static T Join<T>( this T source, Action<ISqlBuilder> action, string alias ) where T : IJoin {
+        public static T Join<T>( this T source, Action<ISqlBuilder> action, string alias ) where T : IJoin
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -54,7 +59,8 @@ namespace KissU.Util.Datas.Sql {
         /// </summary>
         /// <param name="source">源</param>
         /// <param name="sql">Sql语句，说明：原样添加到Sql中，不会进行任何处理</param>
-        public static T AppendJoin<T>( this T source, string sql ) where T : IJoin {
+        public static T AppendJoin<T>( this T source, string sql ) where T : IJoin
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -68,7 +74,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="source">源</param>
         /// <param name="sql">Sql语句，说明：原样添加到Sql中，不会进行任何处理</param>
         /// <param name="condition">该值为true时添加Sql，否则忽略</param>
-        public static T AppendJoin<T>( this T source, string sql, bool condition ) where T : IJoin {
+        public static T AppendJoin<T>( this T source, string sql, bool condition ) where T : IJoin
+        {
             return condition ? AppendJoin( source, sql ) : source;
         }
 
@@ -78,7 +85,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="source">源</param>
         /// <param name="table">表名</param>
         /// <param name="alias">别名</param>
-        public static T LeftJoin<T>( this T source, string table, string alias = null ) where T : IJoin {
+        public static T LeftJoin<T>( this T source, string table, string alias = null ) where T : IJoin
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -92,7 +100,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="source">源</param>
         /// <param name="builder">Sql生成器</param>
         /// <param name="alias">表别名</param>
-        public static T LeftJoin<T>( this T source, ISqlBuilder builder, string alias ) where T : IJoin {
+        public static T LeftJoin<T>( this T source, ISqlBuilder builder, string alias ) where T : IJoin
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -106,7 +115,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="source">源</param>
         /// <param name="action">子查询操作</param>
         /// <param name="alias">表别名</param>
-        public static T LeftJoin<T>( this T source, Action<ISqlBuilder> action, string alias ) where T : IJoin {
+        public static T LeftJoin<T>( this T source, Action<ISqlBuilder> action, string alias ) where T : IJoin
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -119,7 +129,8 @@ namespace KissU.Util.Datas.Sql {
         /// </summary>
         /// <param name="source">源</param>
         /// <param name="sql">Sql语句，说明：原样添加到Sql中，不会进行任何处理</param>
-        public static T AppendLeftJoin<T>( this T source, string sql ) where T : IJoin {
+        public static T AppendLeftJoin<T>( this T source, string sql ) where T : IJoin
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -133,7 +144,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="source">源</param>
         /// <param name="sql">Sql语句，说明：原样添加到Sql中，不会进行任何处理</param>
         /// <param name="condition">该值为true时添加Sql，否则忽略</param>
-        public static T AppendLeftJoin<T>( this T source, string sql, bool condition ) where T : IJoin {
+        public static T AppendLeftJoin<T>( this T source, string sql, bool condition ) where T : IJoin
+        {
             return condition ? AppendLeftJoin( source, sql ) : source;
         }
 
@@ -143,7 +155,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="source">源</param>
         /// <param name="table">表名</param>
         /// <param name="alias">别名</param>
-        public static T RightJoin<T>( this T source, string table, string alias = null ) where T : IJoin {
+        public static T RightJoin<T>( this T source, string table, string alias = null ) where T : IJoin
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -157,7 +170,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="source">源</param>
         /// <param name="builder">Sql生成器</param>
         /// <param name="alias">表别名</param>
-        public static T RightJoin<T>( this T source, ISqlBuilder builder, string alias ) where T : IJoin {
+        public static T RightJoin<T>( this T source, ISqlBuilder builder, string alias ) where T : IJoin
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -171,7 +185,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="source">源</param>
         /// <param name="action">子查询操作</param>
         /// <param name="alias">表别名</param>
-        public static T RightJoin<T>( this T source, Action<ISqlBuilder> action, string alias ) where T : IJoin {
+        public static T RightJoin<T>( this T source, Action<ISqlBuilder> action, string alias ) where T : IJoin
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -184,7 +199,8 @@ namespace KissU.Util.Datas.Sql {
         /// </summary>
         /// <param name="source">源</param>
         /// <param name="sql">Sql语句，说明：原样添加到Sql中，不会进行任何处理</param>
-        public static T AppendRightJoin<T>( this T source, string sql ) where T : IJoin {
+        public static T AppendRightJoin<T>( this T source, string sql ) where T : IJoin
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -198,7 +214,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="source">源</param>
         /// <param name="sql">Sql语句，说明：原样添加到Sql中，不会进行任何处理</param>
         /// <param name="condition">该值为true时添加Sql，否则忽略</param>
-        public static T AppendRightJoin<T>( this T source, string sql, bool condition ) where T : IJoin {
+        public static T AppendRightJoin<T>( this T source, string sql, bool condition ) where T : IJoin
+        {
             return condition ? AppendRightJoin( source, sql ) : source;
         }
 
@@ -207,7 +224,8 @@ namespace KissU.Util.Datas.Sql {
         /// </summary>
         /// <param name="source">源</param>
         /// <param name="condition">连接条件</param>
-        public static T On<T>( this T source, ICondition condition ) where T : IJoin {
+        public static T On<T>( this T source, ICondition condition ) where T : IJoin
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -222,7 +240,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="column">列名</param>
         /// <param name="value">值</param>
         /// <param name="operator">运算符</param>
-        public static T On<T>( this T source, string column, object value, Operator @operator = Operator.Equal ) where T : IJoin {
+        public static T On<T>( this T source, string column, object value, Operator @operator = Operator.Equal ) where T : IJoin
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -235,7 +254,8 @@ namespace KissU.Util.Datas.Sql {
         /// </summary>
         /// <param name="source">源</param>
         /// <param name="sql">Sql语句</param>
-        public static T AppendOn<T>( this T source, string sql ) where T : IJoin {
+        public static T AppendOn<T>( this T source, string sql ) where T : IJoin
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )

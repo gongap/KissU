@@ -6,11 +6,13 @@ using KissU.Util.Datas.Sql.Builders.Core;
 using KissU.Util.Datas.Sql.Builders.Internal;
 using KissU.Util.Properties;
 
-namespace KissU.Util.Datas.Sql.Builders.Clauses {
+namespace KissU.Util.Datas.Sql.Builders.Clauses
+{
     /// <summary>
     /// Order By子句
     /// </summary>
-    public class OrderByClause : IOrderByClause {
+    public class OrderByClause : IOrderByClause
+    {
         /// <summary>
         /// Sql方言
         /// </summary>
@@ -35,7 +37,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// <param name="resolver">实体解析器</param>
         /// <param name="register">实体别名注册器</param>
         /// <param name="items">排序项列表</param>
-        public OrderByClause( IDialect dialect, IEntityResolver resolver, IEntityAliasRegister register, List<OrderByItem> items = null ) {
+        public OrderByClause( IDialect dialect, IEntityResolver resolver, IEntityAliasRegister register, List<OrderByItem> items = null )
+        {
             _dialect = dialect;
             _resolver = resolver;
             _register = register;
@@ -46,7 +49,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// 复制Order By子句
         /// </summary>
         /// <param name="register">实体别名注册器</param>
-        public virtual IOrderByClause Clone( IEntityAliasRegister register ) {
+        public virtual IOrderByClause Clone( IEntityAliasRegister register )
+        {
             return new OrderByClause( _dialect, _resolver, register, new List<OrderByItem>( _items ) );
         }
 
@@ -55,7 +59,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// </summary>
         /// <param name="order">排序列表</param>
         /// <param name="tableAlias">表别名</param>
-        public void OrderBy( string order, string tableAlias = null ) {
+        public void OrderBy( string order, string tableAlias = null )
+        {
             if( string.IsNullOrWhiteSpace( order ) )
                 return;
             order.Split( ',' ).ToList().ForEach( column => AddItem( column, tableAlias: tableAlias ) );
@@ -64,7 +69,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// <summary>
         /// 添加排序项
         /// </summary>
-        protected void AddItem( string column, bool desc = false, Type type = null, string tableAlias = null ) {
+        protected void AddItem( string column, bool desc = false, Type type = null, string tableAlias = null )
+        {
             if( column.IsEmpty() )
                 return;
             if( Exists( column, tableAlias ) )
@@ -77,7 +83,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// </summary>
         /// <param name="column">排序列</param>
         /// <param name="tableAlias">表别名</param>
-        protected bool Exists( string column, string tableAlias ) {
+        protected bool Exists( string column, string tableAlias )
+        {
             var item = new OrderByItem( column, prefix: tableAlias );
             return _items.Exists( t => t.Column.ToLower() == item.Column.ToLower()
                                        && ( item.Prefix.IsEmpty()
@@ -90,7 +97,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// <typeparam name="TEntity">实体类型</typeparam>
         /// <param name="column">排序列</param>
         /// <param name="desc">是否倒排</param>
-        public void OrderBy<TEntity>( Expression<Func<TEntity, object>> column, bool desc = false ) {
+        public void OrderBy<TEntity>( Expression<Func<TEntity, object>> column, bool desc = false )
+        {
             if( column == null )
                 return;
             AddItem( _resolver.GetColumn( column ), desc, typeof( TEntity ) );
@@ -100,7 +108,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// 添加到OrderBy子句
         /// </summary>
         /// <param name="sql">Sql语句</param>
-        public void AppendSql( string sql ) {
+        public void AppendSql( string sql )
+        {
             if( string.IsNullOrWhiteSpace( sql ) )
                 return;
             sql = Helper.ResolveSql( sql, _dialect );
@@ -111,7 +120,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// 验证
         /// </summary>
         /// <param name="isPage">是否分页</param>
-        public void Validate( bool isPage ) {
+        public void Validate( bool isPage )
+        {
             if( isPage == false )
                 return;
             if( _items.Count == 0 )
@@ -121,7 +131,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// <summary>
         /// 获取Sql
         /// </summary>
-        public string ToSql() {
+        public string ToSql()
+        {
             if( _items.Count == 0 )
                 return null;
             return $"Order By {_items.Select( t => t.ToSql( _dialect, _register ) ).Join()}";

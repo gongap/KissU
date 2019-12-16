@@ -8,11 +8,13 @@ using KissU.Util.Datas.Sql.Matedatas;
 using KissU.Util.Domains.Repositories;
 using KissU.Util.Helpers;
 
-namespace KissU.Util.Datas.Sql.Builders.Core {
+namespace KissU.Util.Datas.Sql.Builders.Core
+{
     /// <summary>
     /// Sql生成器
     /// </summary>
-    public abstract class SqlBuilderBase : ISqlBuilder, IClauseAccessor, IUnionAccessor, ICteAccessor {
+    public abstract class SqlBuilderBase : ISqlBuilder, IClauseAccessor, IUnionAccessor, ICteAccessor
+    {
 
         #region 字段
 
@@ -70,7 +72,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <param name="matedata">实体元数据解析器</param>
         /// <param name="tableDatabase">表数据库</param>
         /// <param name="parameterManager">参数管理器</param>
-        protected SqlBuilderBase( IEntityMatedata matedata = null,ITableDatabase tableDatabase = null, IParameterManager parameterManager = null ) {
+        protected SqlBuilderBase( IEntityMatedata matedata = null,ITableDatabase tableDatabase = null, IParameterManager parameterManager = null )
+        {
             EntityMatedata = matedata;
             TableDatabase = tableDatabase;
             _parameterManager = parameterManager;
@@ -174,7 +177,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 创建参数管理器
         /// </summary>
-        protected virtual IParameterManager CreateParameterManager() {
+        protected virtual IParameterManager CreateParameterManager()
+        {
             return new ParameterManager( Dialect );
         }
 
@@ -186,49 +190,56 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 创建Select子句
         /// </summary>
-        protected virtual ISelectClause CreateSelectClause() {
+        protected virtual ISelectClause CreateSelectClause()
+        {
             return new SelectClause( this, Dialect, EntityResolver, AliasRegister );
         }
 
         /// <summary>
         /// 创建From子句
         /// </summary>
-        protected virtual IFromClause CreateFromClause() {
+        protected virtual IFromClause CreateFromClause()
+        {
             return new FromClause( this, Dialect, EntityResolver, AliasRegister, TableDatabase );
         }
 
         /// <summary>
         /// 创建Join子句
         /// </summary>
-        protected virtual IJoinClause CreateJoinClause() {
+        protected virtual IJoinClause CreateJoinClause()
+        {
             return new JoinClause( this, Dialect, EntityResolver, AliasRegister, ParameterManager,TableDatabase );
         }
 
         /// <summary>
         /// 创建Where子句
         /// </summary>
-        protected virtual IWhereClause CreatewWhereClause() {
+        protected virtual IWhereClause CreatewWhereClause()
+        {
             return new WhereClause( this, Dialect, EntityResolver, AliasRegister, ParameterManager );
         }
 
         /// <summary>
         /// 创建分组子句
         /// </summary>
-        protected virtual IGroupByClause CreateGroupByClause() {
+        protected virtual IGroupByClause CreateGroupByClause()
+        {
             return new GroupByClause( Dialect, EntityResolver, AliasRegister );
         }
 
         /// <summary>
         /// 创建排序子句
         /// </summary>
-        protected virtual IOrderByClause CreateOrderByClause() {
+        protected virtual IOrderByClause CreateOrderByClause()
+        {
             return new OrderByClause( Dialect, EntityResolver, AliasRegister );
         }
 
         /// <summary>
         /// 获取参数字面值解析器
         /// </summary>
-        protected virtual IParamLiteralsResolver GetParamLiteralsResolver() {
+        protected virtual IParamLiteralsResolver GetParamLiteralsResolver()
+        {
             return new ParamLiteralsResolver();
         }
 
@@ -245,7 +256,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// 复制Sql生成器
         /// </summary>
         /// <param name="sqlBuilder">源生成器</param>
-        protected void Clone( SqlBuilderBase sqlBuilder ) {
+        protected void Clone( SqlBuilderBase sqlBuilder )
+        {
             EntityMatedata = sqlBuilder.EntityMatedata;
             _parameterManager = sqlBuilder._parameterManager?.Clone();
             EntityResolver = sqlBuilder.EntityResolver ?? new EntityResolver( EntityMatedata );
@@ -271,7 +283,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 清空
         /// </summary>
-        public ISqlBuilder Clear() {
+        public ISqlBuilder Clear()
+        {
             AliasRegister = new EntityAliasRegister();
             ClearSelect();
             ClearFrom();
@@ -289,7 +302,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 清空Select子句
         /// </summary>
-        public ISqlBuilder ClearSelect() {
+        public ISqlBuilder ClearSelect()
+        {
             _selectClause = CreateSelectClause();
             return this;
         }
@@ -297,7 +311,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 清空From子句
         /// </summary>
-        public ISqlBuilder ClearFrom() {
+        public ISqlBuilder ClearFrom()
+        {
             _fromClause = CreateFromClause();
             return this;
         }
@@ -305,7 +320,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 清空Join子句
         /// </summary>
-        public ISqlBuilder ClearJoin() {
+        public ISqlBuilder ClearJoin()
+        {
             _joinClause = CreateJoinClause();
             return this;
         }
@@ -313,7 +329,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 清空Where子句
         /// </summary>
-        public ISqlBuilder ClearWhere() {
+        public ISqlBuilder ClearWhere()
+        {
             _isAddFilters = false;
             _whereClause = CreatewWhereClause();
             return this;
@@ -322,7 +339,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 清空GroupBy子句
         /// </summary>
-        public ISqlBuilder ClearGroupBy() {
+        public ISqlBuilder ClearGroupBy()
+        {
             _groupByClause = CreateGroupByClause();
             return this;
         }
@@ -330,7 +348,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 清空OrderBy子句
         /// </summary>
-        public ISqlBuilder ClearOrderBy() {
+        public ISqlBuilder ClearOrderBy()
+        {
             _orderByClause = CreateOrderByClause();
             return this;
         }
@@ -338,7 +357,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 清空Sql参数
         /// </summary>
-        public ISqlBuilder ClearSqlParams() {
+        public ISqlBuilder ClearSqlParams()
+        {
             _parameterManager.Clear();
             return this;
         }
@@ -346,7 +366,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 清空分页参数
         /// </summary>
-        public ISqlBuilder ClearPageParams() {
+        public ISqlBuilder ClearPageParams()
+        {
             Pager = null;
             OffsetParam = null;
             LimitParam = null;
@@ -356,7 +377,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 清空联合操作项
         /// </summary>
-        public ISqlBuilder ClearUnionBuilders() {
+        public ISqlBuilder ClearUnionBuilders()
+        {
             UnionItems = new List<BuilderItem>();
             return this;
         }
@@ -364,7 +386,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 清空公用表表达式
         /// </summary>
-        public ISqlBuilder ClearCte() {
+        public ISqlBuilder ClearCte()
+        {
             CteItems = new List<BuilderItem>();
             return this;
         }
@@ -385,14 +408,16 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 生成调试Sql语句
         /// </summary>
-        public virtual string ToDebugSql() {
+        public virtual string ToDebugSql()
+        {
             return GetDebugSql( ToSql() );
         }
 
         /// <summary>
         /// 获取调试Sql
         /// </summary>
-        private string GetDebugSql( string sql ) {
+        private string GetDebugSql( string sql )
+        {
             var parameters = GetParams();
             foreach( var parameter in parameters )
                 sql = Regex.Replace( sql, $@"{parameter.Key}\b", ParamLiteralsResolver.GetParamLiterals( parameter.Value ) );
@@ -406,7 +431,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 生成Sql语句
         /// </summary>
-        public virtual string ToSql() {
+        public virtual string ToSql()
+        {
             Init();
             Validate();
             var result = new StringBuilder();
@@ -417,14 +443,16 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 初始化
         /// </summary>
-        public virtual void Init() {
+        public virtual void Init()
+        {
             OrderByClause.OrderBy( Pager?.Order );
         }
 
         /// <summary>
         /// 验证
         /// </summary>
-        public virtual void Validate() {
+        public virtual void Validate()
+        {
             FromClause.Validate();
             OrderByClause.Validate( IsLimit );
         }
@@ -437,11 +465,13 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 创建Sql语句
         /// </summary>
-        protected virtual void CreateSql( StringBuilder result ) {
+        protected virtual void CreateSql( StringBuilder result )
+        {
             CreateCte( result );
             if( _isAddFilters == false )
                 AddFilters();
-            if( IsUnion ) {
+            if( IsUnion )
+            {
                 CreateSqlByUnion( result );
                 return;
             }
@@ -451,12 +481,14 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 创建CTE
         /// </summary>
-        protected virtual void CreateCte( StringBuilder result ) {
+        protected virtual void CreateCte( StringBuilder result )
+        {
             if( CteItems.Count == 0 )
                 return;
             var cte = new StringBuilder();
             cte.Append( $"{GetCteKeyWord()} " );
-            foreach( var item in CteItems ) {
+            foreach( var item in CteItems )
+            {
                 cte.AppendLine( $"{Dialect.SafeName( item.Name )} " );
                 cte.AppendLine( $"As ({item.Builder.ToSql()})," );
             }
@@ -466,14 +498,16 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 获取CTE关键字
         /// </summary>
-        protected virtual string GetCteKeyWord() {
+        protected virtual string GetCteKeyWord()
+        {
             return "With";
         }
 
         /// <summary>
         /// 创建Sql语句 - 联合
         /// </summary>
-        protected void CreateSqlByUnion( StringBuilder result ) {
+        protected void CreateSqlByUnion( StringBuilder result )
+        {
             result.Append( "(" );
             AppendSelect( result );
             AppendFrom( result );
@@ -481,7 +515,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
             AppendSql( result, WhereClause.ToSql() );
             AppendSql( result, GroupByClause.ToSql() );
             AppendSql( result, ")" );
-            foreach( var operation in UnionItems ) {
+            foreach( var operation in UnionItems )
+            {
                 AppendSql( result, operation.Name );
                 AppendSql( result, $"({operation.Builder.ToSql()}" );
                 AppendSql( result, ")" );
@@ -493,7 +528,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 创建Sql语句
         /// </summary>
-        protected void CreateSqlByNoUnion( StringBuilder result ) {
+        protected void CreateSqlByNoUnion( StringBuilder result )
+        {
             AppendSelect( result );
             AppendFrom( result );
             AppendSql( result, JoinClause.ToSql() );
@@ -506,7 +542,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 添加Sql
         /// </summary>
-        protected void AppendSql( StringBuilder result, string sql ) {
+        protected void AppendSql( StringBuilder result, string sql )
+        {
             if( string.IsNullOrWhiteSpace( sql ) )
                 return;
             result.AppendLine( $"{sql} " );
@@ -515,7 +552,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 添加Select子句
         /// </summary>
-        protected virtual void AppendSelect( StringBuilder result ) {
+        protected virtual void AppendSelect( StringBuilder result )
+        {
             var sql = SelectClause.ToSql();
             if( string.IsNullOrWhiteSpace( sql ) )
                 throw new InvalidOperationException( "必须设置Select子句" );
@@ -525,7 +563,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 添加From子句
         /// </summary>
-        protected virtual void AppendFrom( StringBuilder result ) {
+        protected virtual void AppendFrom( StringBuilder result )
+        {
             var sql = FromClause.ToSql();
             if( string.IsNullOrWhiteSpace( sql ) )
                 throw new InvalidOperationException( "必须设置From子句" );
@@ -535,10 +574,12 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 添加过滤器列表
         /// </summary>
-        protected void AddFilters() {
+        protected void AddFilters()
+        {
             _isAddFilters = true;
             var context = new SqlContext( Dialect, AliasRegister, EntityMatedata, ParameterManager, this );
-            SqlFilterCollection.Filters.ForEach(filter => {
+            SqlFilterCollection.Filters.ForEach(filter =>
+            {
                 if (_excludedFilters.Count > 0 && _excludedFilters.Exists(x => x == filter.GetType()))
                     return;
                 filter.Filter(context);
@@ -548,7 +589,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 添加分页Sql
         /// </summary>
-        private void AppendLimit( StringBuilder result ) {
+        private void AppendLimit( StringBuilder result )
+        {
             if( IsLimit )
                 AppendSql( result, CreateLimitSql() );
         }
@@ -567,7 +609,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// </summary>
         /// <param name="name">参数名</param>
         /// <param name="value">参数值</param>
-        public ISqlBuilder AddParam( string name, object value ) {
+        public ISqlBuilder AddParam( string name, object value )
+        {
             ParameterManager.Add( name, value );
             return this;
         }
@@ -579,7 +622,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 获取参数
         /// </summary>
-        public IReadOnlyDictionary<string, object> GetParams() {
+        public IReadOnlyDictionary<string, object> GetParams()
+        {
             return ParameterManager.GetParams();
         }
 
@@ -590,7 +634,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 获取查询条件
         /// </summary>
-        public string GetCondition() {
+        public string GetCondition()
+        {
             return WhereClause.GetCondition();
         }
 
@@ -602,7 +647,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// 设置跳过行数
         /// </summary>
         /// <param name="count">跳过的行数</param>
-        public ISqlBuilder Skip( int count ) {
+        public ISqlBuilder Skip( int count )
+        {
             var param = GetOffsetParam();
             ParameterManager.Add( param, count );
             return this;
@@ -611,7 +657,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 获取跳过行数的参数名
         /// </summary>
-        protected string GetOffsetParam() {
+        protected string GetOffsetParam()
+        {
             if( string.IsNullOrWhiteSpace( OffsetParam ) == false )
                 return OffsetParam;
             OffsetParam = ParameterManager.GenerateName();
@@ -623,7 +670,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// 设置获取行数
         /// </summary>
         /// <param name="count">获取的行数</param>
-        public ISqlBuilder Take( int count ) {
+        public ISqlBuilder Take( int count )
+        {
             var param = GetLimitParam();
             ParameterManager.Add( param, count );
             Pager.PageSize = count;
@@ -633,7 +681,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <summary>
         /// 获取限制行数的参数名
         /// </summary>
-        protected string GetLimitParam() {
+        protected string GetLimitParam()
+        {
             if( string.IsNullOrWhiteSpace( LimitParam ) == false )
                 return LimitParam;
             LimitParam = ParameterManager.GenerateName();
@@ -644,7 +693,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// 设置分页
         /// </summary>
         /// <param name="pager">分页参数</param>
-        public ISqlBuilder Page( IPager pager ) {
+        public ISqlBuilder Page( IPager pager )
+        {
             if( pager == null )
                 return this;
             Pager = pager;
@@ -660,7 +710,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// 忽略过滤器
         /// </summary>
         /// <typeparam name="TSqlFilter">Sql过滤器类型</typeparam>
-        public virtual ISqlBuilder IgnoreFilter<TSqlFilter>() where TSqlFilter : ISqlFilter {
+        public virtual ISqlBuilder IgnoreFilter<TSqlFilter>() where TSqlFilter : ISqlFilter
+        {
             if (_excludedFilters.Exists(x => x == typeof(TSqlFilter)))
                 return this;
             _excludedFilters.Add(typeof(TSqlFilter));

@@ -3,11 +3,13 @@ using KissU.Util.Datas.Sql.Builders;
 using KissU.Util.Datas.Sql.Builders.Core;
 using KissU.Util.Datas.Sql.Matedatas;
 
-namespace KissU.Util.Datas.SqlServer.Dapper {
+namespace KissU.Util.Datas.SqlServer.Dapper
+{
     /// <summary>
     /// Sql Server Sql生成器
     /// </summary>
-    public class SqlServerBuilder : SqlBuilderBase {
+    public class SqlServerBuilder : SqlBuilderBase
+    {
         /// <summary>
         /// 初始化Sql生成器
         /// </summary>
@@ -15,13 +17,15 @@ namespace KissU.Util.Datas.SqlServer.Dapper {
         /// <param name="tableDatabase">表数据库</param>
         /// <param name="parameterManager">参数管理器</param>
         public SqlServerBuilder( IEntityMatedata matedata = null, ITableDatabase tableDatabase = null, IParameterManager parameterManager = null )
-            : base( matedata, tableDatabase, parameterManager ) {
+            : base( matedata, tableDatabase, parameterManager )
+            {
         }
 
         /// <summary>
         /// 复制Sql生成器
         /// </summary>
-        public override ISqlBuilder Clone() {
+        public override ISqlBuilder Clone()
+        {
             var sqlBuilder = new SqlServerBuilder();
             sqlBuilder.Clone( this );
             return sqlBuilder;
@@ -30,21 +34,24 @@ namespace KissU.Util.Datas.SqlServer.Dapper {
         /// <summary>
         /// 获取Sql方言
         /// </summary>
-        protected override IDialect GetDialect() {
+        protected override IDialect GetDialect()
+        {
             return new SqlServerDialect();
         }
 
         /// <summary>
         /// 创建Sql生成器
         /// </summary>
-        public override ISqlBuilder New() {
+        public override ISqlBuilder New()
+        {
             return new SqlServerBuilder( EntityMatedata, TableDatabase, ParameterManager );
         }
 
         /// <summary>
         /// 创建分页Sql
         /// </summary>
-        protected override string CreateLimitSql() {
+        protected override string CreateLimitSql()
+        {
             return $"Offset {GetOffsetParam()} Rows Fetch Next {GetLimitParam()} Rows Only";
         }
     }

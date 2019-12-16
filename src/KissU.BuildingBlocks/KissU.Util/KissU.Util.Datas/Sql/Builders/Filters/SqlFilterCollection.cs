@@ -1,14 +1,17 @@
 ﻿using System.Collections.Generic;
 
-namespace KissU.Util.Datas.Sql.Builders.Filters {
+namespace KissU.Util.Datas.Sql.Builders.Filters
+{
     /// <summary>
     /// Sql过滤器集合
     /// </summary>
-    public static class SqlFilterCollection {
+    public static class SqlFilterCollection
+    {
         /// <summary>
         /// 初始化Sql过滤器集合
         /// </summary>
-        static SqlFilterCollection() {
+        static SqlFilterCollection()
+        {
             Filters = new List<ISqlFilter> { new IsDeletedFilter() };
         }
 
@@ -21,7 +24,8 @@ namespace KissU.Util.Datas.Sql.Builders.Filters {
         /// 添加Sql过滤器
         /// </summary>
         /// <param name="filter">Sql查询过滤器</param>
-        public static void Add( ISqlFilter filter ) {
+        public static void Add( ISqlFilter filter )
+        {
             if( filter == null )
                 return;
             Filters.Add( filter );

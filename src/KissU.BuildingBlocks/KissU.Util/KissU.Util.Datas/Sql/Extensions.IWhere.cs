@@ -3,17 +3,20 @@ using System.Collections.Generic;
 using KissU.Util.Datas.Queries;
 using KissU.Util.Datas.Sql.Builders;
 
-namespace KissU.Util.Datas.Sql {
+namespace KissU.Util.Datas.Sql
+{
     /// <summary>
     /// Where子句扩展
     /// </summary>
-    public static partial class Extensions {
+    public static partial class Extensions
+    {
         /// <summary>
         /// And连接条件
         /// </summary>
         /// <param name="source">源</param>
         /// <param name="condition">查询条件</param>
-        public static T And<T>( this T source, ICondition condition ) where T : IWhere {
+        public static T And<T>( this T source, ICondition condition ) where T : IWhere
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -26,7 +29,8 @@ namespace KissU.Util.Datas.Sql {
         /// </summary>
         /// <param name="source">源</param>
         /// <param name="condition">查询条件</param>
-        public static T Or<T>( this T source, ICondition condition ) where T : IWhere {
+        public static T Or<T>( this T source, ICondition condition ) where T : IWhere
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -40,7 +44,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="source">源</param>
         /// <param name="predicate">查询条件</param>
         /// <param name="condition">该值为true时添加查询条件，否则忽略</param>
-        public static T OrIf<T>( this T source, ICondition predicate, bool condition ) where T : IWhere {
+        public static T OrIf<T>( this T source, ICondition predicate, bool condition ) where T : IWhere
+        {
             return condition ? Or( source, predicate ) : source;
         }
 
@@ -49,7 +54,8 @@ namespace KissU.Util.Datas.Sql {
         /// </summary>
         /// <param name="source">源</param>
         /// <param name="condition">查询条件</param>
-        public static T Where<T>( this T source, ICondition condition ) where T : IWhere {
+        public static T Where<T>( this T source, ICondition condition ) where T : IWhere
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -64,7 +70,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="column">列名</param>
         /// <param name="value">值</param>
         /// <param name="operator">运算符</param>
-        public static T Where<T>( this T source, string column, object value, Operator @operator = Operator.Equal ) where T : IWhere {
+        public static T Where<T>( this T source, string column, object value, Operator @operator = Operator.Equal ) where T : IWhere
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -79,7 +86,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="column">列名</param>
         /// <param name="builder">子查询Sql生成器</param>
         /// <param name="operator">运算符</param>
-        public static T Where<T>( this T source, string column, ISqlBuilder builder, Operator @operator = Operator.Equal ) where T : IWhere {
+        public static T Where<T>( this T source, string column, ISqlBuilder builder, Operator @operator = Operator.Equal ) where T : IWhere
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -94,7 +102,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="column">列名</param>
         /// <param name="action">子查询操作</param>
         /// <param name="operator">运算符</param>
-        public static T Where<T>( this T source, string column, Action<ISqlBuilder> action, Operator @operator = Operator.Equal ) where T : IWhere {
+        public static T Where<T>( this T source, string column, Action<ISqlBuilder> action, Operator @operator = Operator.Equal ) where T : IWhere
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -110,7 +119,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="value">值</param>
         /// <param name="condition">该值为true时添加查询条件，否则忽略</param>
         /// <param name="operator">运算符</param>
-        public static T WhereIf<T>( this T source, string column, object value, bool condition, Operator @operator = Operator.Equal ) where T : IWhere {
+        public static T WhereIf<T>( this T source, string column, object value, bool condition, Operator @operator = Operator.Equal ) where T : IWhere
+        {
             return condition ? Where( source, column, value, @operator ) : source;
         }
 
@@ -122,7 +132,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="builder">子查询Sql生成器</param>
         /// <param name="condition">该值为true时添加查询条件，否则忽略</param>
         /// <param name="operator">运算符</param>
-        public static T WhereIf<T>( this T source, string column, ISqlBuilder builder, bool condition, Operator @operator = Operator.Equal ) where T : IWhere {
+        public static T WhereIf<T>( this T source, string column, ISqlBuilder builder, bool condition, Operator @operator = Operator.Equal ) where T : IWhere
+        {
             return condition ? Where( source, column, builder, @operator ) : source;
         }
 
@@ -134,7 +145,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="action">子查询操作</param>
         /// <param name="condition">该值为true时添加查询条件，否则忽略</param>
         /// <param name="operator">运算符</param>
-        public static T WhereIf<T>( this T source, string column, Action<ISqlBuilder> action, bool condition, Operator @operator = Operator.Equal ) where T : IWhere {
+        public static T WhereIf<T>( this T source, string column, Action<ISqlBuilder> action, bool condition, Operator @operator = Operator.Equal ) where T : IWhere
+        {
             return condition ? Where( source, column, action, @operator ) : source;
         }
 
@@ -145,7 +157,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="column">列名</param>
         /// <param name="value">值,如果值为空，则忽略该查询条件</param>
         /// <param name="operator">运算符</param>
-        public static T WhereIfNotEmpty<T>( this T source, string column, object value, Operator @operator = Operator.Equal ) where T : IWhere {
+        public static T WhereIfNotEmpty<T>( this T source, string column, object value, Operator @operator = Operator.Equal ) where T : IWhere
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -159,7 +172,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="source">源</param>
         /// <param name="column">列名</param>
         /// <param name="value">值</param>
-        public static T Equal<T>( this T source, string column, object value ) where T : IWhere {
+        public static T Equal<T>( this T source, string column, object value ) where T : IWhere
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             return source.Where( column, value );
@@ -171,7 +185,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="source">源</param>
         /// <param name="column">列名</param>
         /// <param name="value">值</param>
-        public static T NotEqual<T>( this T source, string column, object value ) where T : IWhere {
+        public static T NotEqual<T>( this T source, string column, object value ) where T : IWhere
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             return source.Where( column, value, Operator.NotEqual );
@@ -183,7 +198,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="source">源</param>
         /// <param name="column">列名</param>
         /// <param name="value">值</param>
-        public static T Greater<T>( this T source, string column, object value ) where T : IWhere {
+        public static T Greater<T>( this T source, string column, object value ) where T : IWhere
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             return source.Where( column, value, Operator.Greater );
@@ -195,7 +211,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="source">源</param>
         /// <param name="column">列名</param>
         /// <param name="value">值</param>
-        public static T Less<T>( this T source, string column, object value ) where T : IWhere {
+        public static T Less<T>( this T source, string column, object value ) where T : IWhere
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             return source.Where( column, value, Operator.Less );
@@ -207,7 +224,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="source">源</param>
         /// <param name="column">列名</param>
         /// <param name="value">值</param>
-        public static T GreaterEqual<T>( this T source, string column, object value ) where T : IWhere {
+        public static T GreaterEqual<T>( this T source, string column, object value ) where T : IWhere
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             return source.Where( column, value, Operator.GreaterEqual );
@@ -219,7 +237,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="source">源</param>
         /// <param name="column">列名</param>
         /// <param name="value">值</param>
-        public static T LessEqual<T>( this T source, string column, object value ) where T : IWhere {
+        public static T LessEqual<T>( this T source, string column, object value ) where T : IWhere
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             return source.Where( column, value, Operator.LessEqual );
@@ -231,7 +250,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="source">源</param>
         /// <param name="column">列名</param>
         /// <param name="value">值</param>
-        public static T Contains<T>( this T source, string column, object value ) where T : IWhere {
+        public static T Contains<T>( this T source, string column, object value ) where T : IWhere
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             return source.Where( column, value, Operator.Contains );
@@ -243,7 +263,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="source">源</param>
         /// <param name="column">列名</param>
         /// <param name="value">值</param>
-        public static T Starts<T>( this T source, string column, object value ) where T : IWhere {
+        public static T Starts<T>( this T source, string column, object value ) where T : IWhere
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             return source.Where( column, value, Operator.Starts );
@@ -255,7 +276,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="source">源</param>
         /// <param name="column">列名</param>
         /// <param name="value">值</param>
-        public static T Ends<T>( this T source, string column, object value ) where T : IWhere {
+        public static T Ends<T>( this T source, string column, object value ) where T : IWhere
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             return source.Where( column, value, Operator.Ends );
@@ -266,7 +288,8 @@ namespace KissU.Util.Datas.Sql {
         /// </summary>
         /// <param name="source">源</param>
         /// <param name="column">列名</param>
-        public static T IsNull<T>( this T source, string column ) where T : IWhere {
+        public static T IsNull<T>( this T source, string column ) where T : IWhere
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -279,7 +302,8 @@ namespace KissU.Util.Datas.Sql {
         /// </summary>
         /// <param name="source">源</param>
         /// <param name="column">列名</param>
-        public static T IsNotNull<T>( this T source, string column ) where T : IWhere {
+        public static T IsNotNull<T>( this T source, string column ) where T : IWhere
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -292,7 +316,8 @@ namespace KissU.Util.Datas.Sql {
         /// </summary>
         /// <param name="source">源</param>
         /// <param name="column">列名</param>
-        public static T IsEmpty<T>( this T source, string column ) where T : IWhere {
+        public static T IsEmpty<T>( this T source, string column ) where T : IWhere
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -305,7 +330,8 @@ namespace KissU.Util.Datas.Sql {
         /// </summary>
         /// <param name="source">源</param>
         /// <param name="column">列名</param>
-        public static T IsNotEmpty<T>( this T source, string column ) where T : IWhere {
+        public static T IsNotEmpty<T>( this T source, string column ) where T : IWhere
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -319,7 +345,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="source">源</param>
         /// <param name="column">列名</param>
         /// <param name="values">值集合</param>
-        public static T In<T>( this T source, string column, IEnumerable<object> values ) where T : IWhere {
+        public static T In<T>( this T source, string column, IEnumerable<object> values ) where T : IWhere
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -333,7 +360,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="source">源</param>
         /// <param name="column">列名</param>
         /// <param name="builder">Sql生成器</param>
-        public static T In<T>( this T source, string column, ISqlBuilder builder ) where T : IWhere {
+        public static T In<T>( this T source, string column, ISqlBuilder builder ) where T : IWhere
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -347,7 +375,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="source">源</param>
         /// <param name="column">列名</param>
         /// <param name="action">子查询操作</param>
-        public static T In<T>( this T source, string column, Action<ISqlBuilder> action ) where T : IWhere {
+        public static T In<T>( this T source, string column, Action<ISqlBuilder> action ) where T : IWhere
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -361,7 +390,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="source">源</param>
         /// <param name="column">列名</param>
         /// <param name="values">值集合</param>
-        public static T NotIn<T>( this T source, string column, IEnumerable<object> values ) where T : IWhere {
+        public static T NotIn<T>( this T source, string column, IEnumerable<object> values ) where T : IWhere
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -375,7 +405,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="source">源</param>
         /// <param name="column">列名</param>
         /// <param name="builder">Sql生成器</param>
-        public static T NotIn<T>( this T source, string column, ISqlBuilder builder ) where T : IWhere {
+        public static T NotIn<T>( this T source, string column, ISqlBuilder builder ) where T : IWhere
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -389,7 +420,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="source">源</param>
         /// <param name="column">列名</param>
         /// <param name="action">子查询操作</param>
-        public static T NotIn<T>( this T source, string column, Action<ISqlBuilder> action ) where T : IWhere {
+        public static T NotIn<T>( this T source, string column, Action<ISqlBuilder> action ) where T : IWhere
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -402,7 +434,8 @@ namespace KissU.Util.Datas.Sql {
         /// </summary>
         /// <param name="source">源</param>
         /// <param name="builder">Sql生成器</param>
-        public static T Exists<T>( this T source, ISqlBuilder builder ) where T : IWhere {
+        public static T Exists<T>( this T source, ISqlBuilder builder ) where T : IWhere
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -415,7 +448,8 @@ namespace KissU.Util.Datas.Sql {
         /// </summary>
         /// <param name="source">源</param>
         /// <param name="action">子查询操作</param>
-        public static T Exists<T>( this T source, Action<ISqlBuilder> action ) where T : IWhere {
+        public static T Exists<T>( this T source, Action<ISqlBuilder> action ) where T : IWhere
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -428,7 +462,8 @@ namespace KissU.Util.Datas.Sql {
         /// </summary>
         /// <param name="source">源</param>
         /// <param name="builder">Sql生成器</param>
-        public static T NotExists<T>( this T source, ISqlBuilder builder ) where T : IWhere {
+        public static T NotExists<T>( this T source, ISqlBuilder builder ) where T : IWhere
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -441,7 +476,8 @@ namespace KissU.Util.Datas.Sql {
         /// </summary>
         /// <param name="source">源</param>
         /// <param name="action">子查询操作</param>
-        public static T NotExists<T>( this T source, Action<ISqlBuilder> action ) where T : IWhere {
+        public static T NotExists<T>( this T source, Action<ISqlBuilder> action ) where T : IWhere
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -457,7 +493,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="min">最小值</param>
         /// <param name="max">最大值</param>
         /// <param name="boundary">包含边界</param>
-        public static T Between<T>( this T source, string column, int? min, int? max, Boundary boundary = Boundary.Both ) where T : IWhere {
+        public static T Between<T>( this T source, string column, int? min, int? max, Boundary boundary = Boundary.Both ) where T : IWhere
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -473,7 +510,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="min">最小值</param>
         /// <param name="max">最大值</param>
         /// <param name="boundary">包含边界</param>
-        public static T Between<T>( this T source, string column, double? min, double? max, Boundary boundary = Boundary.Both ) where T : IWhere {
+        public static T Between<T>( this T source, string column, double? min, double? max, Boundary boundary = Boundary.Both ) where T : IWhere
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -489,7 +527,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="min">最小值</param>
         /// <param name="max">最大值</param>
         /// <param name="boundary">包含边界</param>
-        public static T Between<T>( this T source, string column, decimal? min, decimal? max, Boundary boundary = Boundary.Both ) where T : IWhere {
+        public static T Between<T>( this T source, string column, decimal? min, decimal? max, Boundary boundary = Boundary.Both ) where T : IWhere
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -506,7 +545,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="max">最大值</param>
         /// <param name="includeTime">是否包含时间</param>
         /// <param name="boundary">包含边界</param>
-        public static T Between<T>( this T source, string column, DateTime? min, DateTime? max, bool includeTime = true, Boundary? boundary = null ) where T : IWhere {
+        public static T Between<T>( this T source, string column, DateTime? min, DateTime? max, bool includeTime = true, Boundary? boundary = null ) where T : IWhere
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -519,7 +559,8 @@ namespace KissU.Util.Datas.Sql {
         /// </summary>
         /// <param name="source">源</param>
         /// <param name="sql">Sql语句，说明：原样添加到Sql中，不会进行任何处理</param>
-        public static T AppendWhere<T>( this T source, string sql ) where T : IWhere {
+        public static T AppendWhere<T>( this T source, string sql ) where T : IWhere
+        {
             if( source == null )
                 throw new ArgumentNullException( nameof( source ) );
             if( source is IClauseAccessor accessor )
@@ -533,7 +574,8 @@ namespace KissU.Util.Datas.Sql {
         /// <param name="source">源</param>
         /// <param name="sql">Sql语句，说明：原样添加到Sql中，不会进行任何处理</param>
         /// <param name="condition">该值为true时添加Sql，否则忽略</param>
-        public static T AppendWhere<T>( this T source, string sql, bool condition ) where T : IWhere {
+        public static T AppendWhere<T>( this T source, string sql, bool condition ) where T : IWhere
+        {
             return condition ? AppendWhere( source, sql ) : source;
         }
     }

@@ -1,17 +1,20 @@
 ﻿using KissU.Util.Datas.Queries;
 
-namespace KissU.Util.Datas.Sql.Builders.Core {
+namespace KissU.Util.Datas.Sql.Builders.Core
+{
     /// <summary>
     /// 连接条件项
     /// </summary>
-    public class OnItem {
+    public class OnItem
+    {
         /// <summary>
         /// 初始化连接条件项
         /// </summary>
         /// <param name="left">左表列名</param>
         /// <param name="right">右表列名</param>
         /// <param name="operator">条件运算符</param>
-        public OnItem( string left,string right, Operator @operator ) {
+        public OnItem( string left,string right, Operator @operator )
+        {
             Left = new SqlItem( left );
             Right = new SqlItem( right );
             Operator = @operator;
@@ -23,7 +26,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core {
         /// <param name="left">左表列名</param>
         /// <param name="right">右表列名</param>
         /// <param name="operator">条件运算符</param>
-        public OnItem( SqlItem left, SqlItem right, Operator @operator ) {
+        public OnItem( SqlItem left, SqlItem right, Operator @operator )
+        {
             Left = left;
             Right = right;
             Operator = @operator;

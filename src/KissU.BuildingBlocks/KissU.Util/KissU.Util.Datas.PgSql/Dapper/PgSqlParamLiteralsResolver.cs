@@ -1,20 +1,24 @@
 ﻿using KissU.Util.Datas.Sql.Builders;
 
-namespace KissU.Util.Datas.PgSql.Dapper {
+namespace KissU.Util.Datas.PgSql.Dapper
+{
     /// <summary>
     /// PgSql参数字面值解析器
     /// </summary>
-    public class PgSqlParamLiteralsResolver : IParamLiteralsResolver {
+    public class PgSqlParamLiteralsResolver : IParamLiteralsResolver
+    {
         /// <summary>
         /// 获取参数字面值
         /// </summary>
         /// <param name="value">参数值</param>
-        public string GetParamLiterals( object value ) {
-            if( value == null )
+        public string GetParamLiterals(object value)
+        {
+            if (value == null)
                 return "''";
-            switch( value.GetType().Name.ToLower() ) {
+            switch (value.GetType().Name.ToLower())
+            {
                 case "boolean":
-                    return Helpers.Convert.ToBool( value ) ? "true" : "false";
+                    return Helpers.Convert.ToBool(value) ? "true" : "false";
                 case "int16":
                 case "int32":
                 case "int64":

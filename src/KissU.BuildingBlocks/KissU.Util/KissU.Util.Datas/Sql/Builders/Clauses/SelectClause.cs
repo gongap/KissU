@@ -3,11 +3,13 @@ using System.Linq.Expressions;
 using KissU.Util.Datas.Sql.Builders.Core;
 using KissU.Util.Datas.Sql.Builders.Internal;
 
-namespace KissU.Util.Datas.Sql.Builders.Clauses {
+namespace KissU.Util.Datas.Sql.Builders.Clauses
+{
     /// <summary>
     /// Select子句
     /// </summary>
-    public class SelectClause : ISelectClause {
+    public class SelectClause : ISelectClause
+    {
         /// <summary>
         /// Sql生成器
         /// </summary>
@@ -41,7 +43,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// <param name="resolver">实体解析器</param>
         /// <param name="register">实体注册器</param>
         /// <param name="columns">列集合</param>
-        public SelectClause( ISqlBuilder sqlBuilder, IDialect dialect, IEntityResolver resolver, IEntityAliasRegister register, ColumnCollection columns = null ) {
+        public SelectClause( ISqlBuilder sqlBuilder, IDialect dialect, IEntityResolver resolver, IEntityAliasRegister register, ColumnCollection columns = null )
+        {
             _sqlBuilder = sqlBuilder;
             _dialect = dialect;
             _resolver = resolver;
@@ -54,14 +57,16 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// </summary>
         /// <param name="builder">Sql生成器</param>
         /// <param name="register">实体别名注册器</param>
-        public virtual ISelectClause Clone( ISqlBuilder builder, IEntityAliasRegister register ) {
+        public virtual ISelectClause Clone( ISqlBuilder builder, IEntityAliasRegister register )
+        {
             return new SelectClause( builder, _dialect, _resolver, register, _columns.Clone() );
         }
 
         /// <summary>
         /// 过滤重复记录
         /// </summary>
-        public void Distinct() {
+        public void Distinct()
+        {
             _distinct = true;
         }
 
@@ -69,7 +74,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// 求总行数
         /// </summary>
         /// <param name="columnAlias">列别名</param>
-        public void Count( string columnAlias = null ) {
+        public void Count( string columnAlias = null )
+        {
             Aggregate( "Count(*)", columnAlias );
         }
 
@@ -78,7 +84,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// </summary>
         /// <param name="column">列</param>
         /// <param name="columnAlias">列别名</param>
-        public void Count( string column, string columnAlias ) {
+        public void Count( string column, string columnAlias )
+        {
             Aggregate( "Count", column, columnAlias );
         }
 
@@ -87,7 +94,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// </summary>
         /// <param name="expression">列名表达式</param>
         /// <param name="columnAlias">列别名</param>
-        public void Count<TEntity>( Expression<Func<TEntity, object>> expression, string columnAlias = null ) where TEntity : class {
+        public void Count<TEntity>( Expression<Func<TEntity, object>> expression, string columnAlias = null ) where TEntity : class
+        {
             var column = _resolver.GetColumn( expression );
             Count( column, columnAlias );
         }
@@ -95,7 +103,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// <summary>
         /// 聚合
         /// </summary>
-        private void Aggregate( string sql, string columnAlias ) {
+        private void Aggregate( string sql, string columnAlias )
+        {
             _columns.AddAggregationColumn( sql, columnAlias );
         }
 
@@ -104,14 +113,16 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// </summary>
         /// <param name="column">列</param>
         /// <param name="columnAlias">列别名</param>
-        public void Sum( string column, string columnAlias = null ) {
+        public void Sum( string column, string columnAlias = null )
+        {
             Aggregate( "Sum", column, columnAlias );
         }
 
         /// <summary>
         /// 聚合
         /// </summary>
-        private void Aggregate( string fun, string column, string columnAlias ) {
+        private void Aggregate( string fun, string column, string columnAlias )
+        {
             Aggregate( $"{fun}({_dialect.SafeName( column )})", columnAlias );
         }
 
@@ -120,7 +131,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// </summary>
         /// <param name="expression">列名表达式</param>
         /// <param name="columnAlias">列别名</param>
-        public void Sum<TEntity>( Expression<Func<TEntity, object>> expression, string columnAlias = null ) where TEntity : class {
+        public void Sum<TEntity>( Expression<Func<TEntity, object>> expression, string columnAlias = null ) where TEntity : class
+        {
             var column = _resolver.GetColumn( expression );
             Sum( column, columnAlias );
         }
@@ -130,7 +142,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// </summary>
         /// <param name="column">列</param>
         /// <param name="columnAlias">列别名</param>
-        public void Avg( string column, string columnAlias = null ) {
+        public void Avg( string column, string columnAlias = null )
+        {
             Aggregate( "Avg", column, columnAlias );
         }
 
@@ -139,7 +152,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// </summary>
         /// <param name="expression">列名表达式</param>
         /// <param name="columnAlias">列别名</param>
-        public void Avg<TEntity>( Expression<Func<TEntity, object>> expression, string columnAlias = null ) where TEntity : class {
+        public void Avg<TEntity>( Expression<Func<TEntity, object>> expression, string columnAlias = null ) where TEntity : class
+        {
             var column = _resolver.GetColumn( expression );
             Avg( column, columnAlias );
         }
@@ -149,7 +163,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// </summary>
         /// <param name="column">列</param>
         /// <param name="columnAlias">列别名</param>
-        public void Max( string column, string columnAlias = null ) {
+        public void Max( string column, string columnAlias = null )
+        {
             Aggregate( "Max", column, columnAlias );
         }
 
@@ -158,7 +173,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// </summary>
         /// <param name="expression">列名表达式</param>
         /// <param name="columnAlias">列别名</param>
-        public void Max<TEntity>( Expression<Func<TEntity, object>> expression, string columnAlias = null ) where TEntity : class {
+        public void Max<TEntity>( Expression<Func<TEntity, object>> expression, string columnAlias = null ) where TEntity : class
+        {
             var column = _resolver.GetColumn( expression );
             Max( column, columnAlias );
         }
@@ -168,7 +184,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// </summary>
         /// <param name="column">列</param>
         /// <param name="columnAlias">列别名</param>
-        public void Min( string column, string columnAlias = null ) {
+        public void Min( string column, string columnAlias = null )
+        {
             Aggregate( "Min", column, columnAlias );
         }
 
@@ -177,7 +194,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// </summary>
         /// <param name="expression">列名表达式</param>
         /// <param name="columnAlias">列别名</param>
-        public void Min<TEntity>( Expression<Func<TEntity, object>> expression, string columnAlias = null ) where TEntity : class {
+        public void Min<TEntity>( Expression<Func<TEntity, object>> expression, string columnAlias = null ) where TEntity : class
+        {
             var column = _resolver.GetColumn( expression );
             Min( column, columnAlias );
         }
@@ -187,7 +205,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// </summary>
         /// <param name="columns">列名</param>
         /// <param name="tableAlias">表别名</param>
-        public void Select( string columns, string tableAlias = null ) {
+        public void Select( string columns, string tableAlias = null )
+        {
             _columns.AddColumns( columns, tableAlias );
         }
 
@@ -195,7 +214,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// 设置列名
         /// </summary>
         /// <param name="propertyAsAlias">是否将属性名映射为列别名</param>
-        public void Select<TEntity>( bool propertyAsAlias = false ) {
+        public void Select<TEntity>( bool propertyAsAlias = false )
+        {
             _columns.AddColumns( _resolver.GetColumns<TEntity>( propertyAsAlias ), typeof( TEntity ) );
         }
 
@@ -204,7 +224,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// </summary>
         /// <param name="expression">列名表达式</param>
         /// <param name="propertyAsAlias">是否将属性名映射为列别名</param>
-        public void Select<TEntity>( Expression<Func<TEntity, object[]>> expression, bool propertyAsAlias = false ) where TEntity : class {
+        public void Select<TEntity>( Expression<Func<TEntity, object[]>> expression, bool propertyAsAlias = false ) where TEntity : class
+        {
             if( expression == null )
                 return;
             _columns.AddColumns( _resolver.GetColumns( expression, propertyAsAlias ), typeof( TEntity ) );
@@ -215,7 +236,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// </summary>
         /// <param name="expression">列名表达式</param>
         /// <param name="columnAlias">列别名</param>
-        public void Select<TEntity>( Expression<Func<TEntity, object>> expression, string columnAlias = null ) where TEntity : class {
+        public void Select<TEntity>( Expression<Func<TEntity, object>> expression, string columnAlias = null ) where TEntity : class
+        {
             if( expression == null )
                 return;
             _columns.AddColumns( _resolver.GetColumn( expression ), typeof( TEntity ), columnAlias );
@@ -226,7 +248,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// </summary>
         /// <param name="builder">Sql生成器</param>
         /// <param name="columnAlias">列别名</param>
-        public void Select( ISqlBuilder builder, string columnAlias ) {
+        public void Select( ISqlBuilder builder, string columnAlias )
+        {
             if( builder == null )
                 return;
             var sql = builder.ToSql();
@@ -240,7 +263,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// </summary>
         /// <param name="action">子查询操作</param>
         /// <param name="columnAlias">列别名</param>
-        public void Select( Action<ISqlBuilder> action, string columnAlias ) {
+        public void Select( Action<ISqlBuilder> action, string columnAlias )
+        {
             if( action == null )
                 return;
             var builder = _sqlBuilder.New();
@@ -253,7 +277,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// </summary>
         /// <param name="sql">Sql语句</param>
         /// <param name="columnAlias">列别名</param>
-        public void AppendSql( string sql, string columnAlias = null ) {
+        public void AppendSql( string sql, string columnAlias = null )
+        {
             if( string.IsNullOrWhiteSpace( sql ) )
                 return;
             sql = Helper.ResolveSql( sql, _dialect );
@@ -265,7 +290,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// </summary>
         /// <param name="columns">列名</param>
         /// <param name="tableAlias">表别名</param>
-        public void RemoveSelect( string columns, string tableAlias = null ) {
+        public void RemoveSelect( string columns, string tableAlias = null )
+        {
             _columns.RemoveColumns( columns, tableAlias );
         }
 
@@ -273,7 +299,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// 移除列名
         /// </summary>
         /// <param name="expression">列名表达式</param>
-        public void RemoveSelect<TEntity>( Expression<Func<TEntity, object[]>> expression ) where TEntity : class {
+        public void RemoveSelect<TEntity>( Expression<Func<TEntity, object[]>> expression ) where TEntity : class
+        {
             if( expression == null )
                 return;
             _columns.RemoveColumns( _resolver.GetColumns( expression, false ), typeof( TEntity ) );
@@ -283,7 +310,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// 移除列名
         /// </summary>
         /// <param name="expression">列名表达式</param>
-        public void RemoveSelect<TEntity>( Expression<Func<TEntity, object>> expression ) where TEntity : class {
+        public void RemoveSelect<TEntity>( Expression<Func<TEntity, object>> expression ) where TEntity : class
+        {
             if( expression == null )
                 return;
             _columns.RemoveColumns( _resolver.GetColumn( expression ), typeof( TEntity ) );
@@ -292,14 +320,16 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// <summary>
         /// 输出Sql
         /// </summary>
-        public string ToSql() {
+        public string ToSql()
+        {
             return $"Select {GetDistinct()}{GetColumns()}";
         }
 
         /// <summary>
         /// 获取Distinct
         /// </summary>
-        private string GetDistinct() {
+        private string GetDistinct()
+        {
             if( _distinct )
                 return "Distinct ";
             return null;
@@ -308,7 +338,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses {
         /// <summary>
         /// 获取列名
         /// </summary>
-        protected virtual string GetColumns() {
+        protected virtual string GetColumns()
+        {
             if( _columns.Count == 0 )
                 return "*";
             return _columns.ToSql( _dialect, _register );

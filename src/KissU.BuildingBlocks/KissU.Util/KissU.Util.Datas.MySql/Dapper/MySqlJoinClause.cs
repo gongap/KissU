@@ -5,11 +5,13 @@ using KissU.Util.Datas.Sql.Builders.Clauses;
 using KissU.Util.Datas.Sql.Builders.Core;
 using KissU.Util.Datas.Sql.Matedatas;
 
-namespace KissU.Util.Datas.MySql.Dapper {
+namespace KissU.Util.Datas.MySql.Dapper
+{
     /// <summary>
     /// MySql 表连接子句
     /// </summary>
-    public class MySqlJoinClause : JoinClause {
+    public class MySqlJoinClause : JoinClause
+    {
         /// <summary>
         /// 初始化MySql 表连接子句
         /// </summary>
@@ -21,7 +23,8 @@ namespace KissU.Util.Datas.MySql.Dapper {
         /// <param name="tableDatabase">表数据库</param>
         public MySqlJoinClause( ISqlBuilder sqlBuilder, IDialect dialect, IEntityResolver resolver, IEntityAliasRegister register, 
             IParameterManager parameterManager, ITableDatabase tableDatabase )
-            : base( sqlBuilder, dialect, resolver, register, parameterManager, tableDatabase ) {
+            : base( sqlBuilder, dialect, resolver, register, parameterManager, tableDatabase )
+            {
         }
 
         /// <summary>
@@ -32,7 +35,8 @@ namespace KissU.Util.Datas.MySql.Dapper {
         /// <param name="schema">架构名</param>
         /// <param name="alias">别名</param>
         /// <param name="type">实体类型</param>
-        protected override JoinItem CreateJoinItem( string joinType, string table, string schema, string alias, Type type = null ) {
+        protected override JoinItem CreateJoinItem( string joinType, string table, string schema, string alias, Type type = null )
+        {
             return new JoinItem( joinType, table, schema, alias, false, false, type );
         }
     }

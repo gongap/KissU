@@ -9,18 +9,21 @@ using KissU.Util.Domains.Repositories;
 using KissU.Util.Helpers;
 using Microsoft.Extensions.Options;
 
-namespace KissU.Util.Datas.Sql.Queries {
+namespace KissU.Util.Datas.Sql.Queries
+{
     /// <summary>
     /// Sql查询对象
     /// </summary>
-    public abstract class SqlQueryBase : ISqlQuery, IClauseAccessor, IUnionAccessor, ICteAccessor {
+    public abstract class SqlQueryBase : ISqlQuery, IClauseAccessor, IUnionAccessor, ICteAccessor
+    {
         /// <summary>
         /// 初始化Sql查询对象
         /// </summary>
         /// <param name="sqlBuilder">Sql生成器</param>
         /// <param name="database">数据库</param>
         /// <param name="sqlOptions">Sql配置</param>
-        protected SqlQueryBase( ISqlBuilder sqlBuilder, IDatabase database = null, SqlOptions sqlOptions = null ) {
+        protected SqlQueryBase( ISqlBuilder sqlBuilder, IDatabase database = null, SqlOptions sqlOptions = null )
+        {
             Builder = sqlBuilder ?? throw new ArgumentNullException( nameof( sqlBuilder ) );
             Database = database;
             Connection = database?.GetConnection();
@@ -30,12 +33,15 @@ namespace KissU.Util.Datas.Sql.Queries {
         /// <summary>
         /// 获取配置
         /// </summary>
-        private SqlOptions GetOptions() {
-            try {
+        private SqlOptions GetOptions()
+        {
+            try
+            {
                 var options = Ioc.Create<IOptionsSnapshot<SqlOptions>>();
                 return options == null ? new SqlOptions() : options.Value;
             }
-            catch {
+            catch
+            {
                 return new SqlOptions();
             }
         }
@@ -101,7 +107,8 @@ namespace KissU.Util.Datas.Sql.Queries {
         /// 设置数据库连接
         /// </summary>
         /// <param name="connection">数据库连接</param>
-        public ISqlQuery SetConnection( IDbConnection connection ) {
+        public ISqlQuery SetConnection( IDbConnection connection )
+        {
             Connection = connection;
             return this;
         }
@@ -110,7 +117,8 @@ namespace KissU.Util.Datas.Sql.Queries {
         /// 获取数据库连接
         /// </summary>
         /// <param name="connection">数据库连接</param>
-        protected IDbConnection GetConnection( IDbConnection connection ) {
+        protected IDbConnection GetConnection( IDbConnection connection )
+        {
             if( connection != null )
                 return connection;
             if( Connection == null )
@@ -127,14 +135,16 @@ namespace KissU.Util.Datas.Sql.Queries {
         /// 配置
         /// </summary>
         /// <param name="configAction">配置操作</param>
-        public void Config( Action<SqlOptions> configAction ) {
+        public void Config( Action<SqlOptions> configAction )
+        {
             configAction?.Invoke( SqlOptions );
         }
 
         /// <summary>
         /// 在执行之后清空Sql和参数
         /// </summary>
-        protected void ClearAfterExecution() {
+        protected void ClearAfterExecution()
+        {
             if( SqlOptions.IsClearAfterExecution == false )
                 return;
             Builder.Clear();
@@ -143,21 +153,24 @@ namespace KissU.Util.Datas.Sql.Queries {
         /// <summary>
         /// 获取调试Sql语句
         /// </summary>
-        public string GetDebugSql() {
+        public string GetDebugSql()
+        {
             return Builder.ToDebugSql();
         }
 
         /// <summary>
         /// Sql语句
         /// </summary>
-        protected string GetSql() {
+        protected string GetSql()
+        {
             return Builder.ToSql();
         }
 
         /// <summary>
         /// 获取Sql生成器
         /// </summary>
-        public ISqlBuilder GetBuilder() {
+        public ISqlBuilder GetBuilder()
+        {
             return Builder;
         }
 
@@ -264,7 +277,8 @@ namespace KissU.Util.Datas.Sql.Queries {
         /// <typeparam name="TResult">实体类型</typeparam>
         /// <param name="func">查询操作</param>
         /// <param name="connection">数据库连接</param>
-        public TResult Query<TResult>( Func<IDbConnection, string, IReadOnlyDictionary<string, object>, TResult> func, IDbConnection connection = null ) {
+        public TResult Query<TResult>( Func<IDbConnection, string, IReadOnlyDictionary<string, object>, TResult> func, IDbConnection connection = null )
+        {
             var sql = GetSql();
             WriteTraceLog( sql, Params, GetDebugSql() );
             var result = func( GetConnection( connection ), sql, Params );
@@ -278,7 +292,8 @@ namespace KissU.Util.Datas.Sql.Queries {
         /// <typeparam name="TResult">实体类型</typeparam>
         /// <param name="func">查询操作</param>
         /// <param name="connection">数据库连接</param>
-        public async Task<TResult> QueryAsync<TResult>( Func<IDbConnection, string, IReadOnlyDictionary<string, object>, Task<TResult>> func, IDbConnection connection = null ) {
+        public async Task<TResult> QueryAsync<TResult>( Func<IDbConnection, string, IReadOnlyDictionary<string, object>, Task<TResult>> func, IDbConnection connection = null )
+        {
             var sql = GetSql();
             WriteTraceLog( sql, Params, GetDebugSql() );
             var result = await func( GetConnection( connection ), sql, Params );
@@ -298,7 +313,8 @@ namespace KissU.Util.Datas.Sql.Queries {
         /// 获取分页参数
         /// </summary>
         /// <param name="parameter">分页参数</param>
-        protected IPager GetPage( IPager parameter ) {
+        protected IPager GetPage( IPager parameter )
+        {
             if( parameter != null )
                 return parameter;
             return Builder.Pager;
@@ -307,7 +323,8 @@ namespace KissU.Util.Datas.Sql.Queries {
         /// <summary>
         /// 获取行数Sql生成器
         /// </summary>
-        protected ISqlBuilder GetCountBuilder() {
+        protected ISqlBuilder GetCountBuilder()
+        {
             var builder = Builder.Clone();
             ClearCountBuilder( builder );
             if( IsUnion )
@@ -320,7 +337,8 @@ namespace KissU.Util.Datas.Sql.Queries {
         /// <summary>
         /// 清理行数Sql生成器
         /// </summary>
-        private void ClearCountBuilder( ISqlBuilder builder ) {
+        private void ClearCountBuilder( ISqlBuilder builder )
+        {
             builder.ClearOrderBy();
             builder.ClearPageParams();
         }
@@ -328,14 +346,16 @@ namespace KissU.Util.Datas.Sql.Queries {
         /// <summary>
         /// 获取行数Sql生成器 - 联合
         /// </summary>
-        private ISqlBuilder GetCountBuilderByUnion( ISqlBuilder countBuilder ) {
+        private ISqlBuilder GetCountBuilderByUnion( ISqlBuilder countBuilder )
+        {
             return countBuilder.New().Count().From( countBuilder, "t" );
         }
 
         /// <summary>
         /// 是否分组
         /// </summary>
-        private bool IsGroup( ISqlBuilder builder ) {
+        private bool IsGroup( ISqlBuilder builder )
+        {
             if( builder is IClauseAccessor accessor )
                 return accessor.GroupByClause.IsGroup;
             return false;
@@ -344,7 +364,8 @@ namespace KissU.Util.Datas.Sql.Queries {
         /// <summary>
         /// 获取行数Sql生成器 - 分组
         /// </summary>
-        private ISqlBuilder GetCountBuilderByGroup( ISqlBuilder countBuilder ) {
+        private ISqlBuilder GetCountBuilderByGroup( ISqlBuilder countBuilder )
+        {
             countBuilder.ClearSelect();
             return countBuilder.New().Count().From( countBuilder.AppendSelect( "1 As c" ), "t" );
         }
@@ -352,7 +373,8 @@ namespace KissU.Util.Datas.Sql.Queries {
         /// <summary>
         /// 获取行数Sql生成器
         /// </summary>
-        private ISqlBuilder GetCountBuilder( ISqlBuilder countBuilder ) {
+        private ISqlBuilder GetCountBuilder( ISqlBuilder countBuilder )
+        {
             countBuilder.ClearSelect();
             return countBuilder.Count();
         }
