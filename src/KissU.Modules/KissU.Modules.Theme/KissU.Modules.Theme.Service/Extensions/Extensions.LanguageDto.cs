@@ -18,6 +18,7 @@ namespace KissU.Modules.Theme.Service.Extensions
         /// 转换为语言国际化实体
         /// </summary>
         /// <param name="dto">语言国际化参数</param>
+        /// <returns>结果</returns>
         public static Language ToEntity(this LanguageDto dto)
         {
             if (dto == null)
@@ -31,7 +32,6 @@ namespace KissU.Modules.Theme.Service.Extensions
                 Text = dto.Text,
                 Abbr = dto.Abbr,
                 IsEnabled = dto.IsEnabled.SafeValue(),
-                Version = dto.Version
             };
             if (dto.Details?.Count > 0)
             {
@@ -45,6 +45,7 @@ namespace KissU.Modules.Theme.Service.Extensions
         /// 转换为语言国际化参数
         /// </summary>
         /// <param name="entity">语言国际化实体</param>
+        /// <returns>结果</returns>
         public static LanguageDto ToDto(this Language entity)
         {
             if (entity == null)

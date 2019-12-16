@@ -4,9 +4,9 @@
 
 using System.Reflection;
 using KissU.Modules.Theme.Data;
-using Microsoft.EntityFrameworkCore;
 using KissU.Util.Datas.Ef.SqlServer;
 using KissU.Util.Reflections;
+using Microsoft.EntityFrameworkCore;
 
 namespace KissU.Modules.Theme.DbMigrator
 {

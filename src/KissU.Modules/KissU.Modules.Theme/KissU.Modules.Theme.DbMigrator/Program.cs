@@ -5,10 +5,10 @@
 using System;
 using System.Threading.Tasks;
 using KissU.Modules.Theme.Data;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using KissU.Util;
 using KissU.Util.Datas.Ef;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace KissU.Modules.Theme.DbMigrator
 {
