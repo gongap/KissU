@@ -30,6 +30,7 @@ namespace KissU.Core.CPlatform.Mqtt
         /// Topic。
         /// </summary>
         public string Topic { get; set; }
+
         /// <summary>
         /// 元数据。
         /// </summary>

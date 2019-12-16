@@ -18,6 +18,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
         /// 哈希参数
         /// </summary>
         public string Item { get; set; }
+
         /// <summary>
         /// 服务可用地址。
         /// </summary>

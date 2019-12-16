@@ -8,6 +8,7 @@
         #endregion Field
 
         #region Implementation of ITransportMessageCodecFactory
+
         /// <summary>
         /// 获取编码器。
         /// </summary>

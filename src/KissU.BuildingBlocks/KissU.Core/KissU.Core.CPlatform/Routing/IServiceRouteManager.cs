@@ -48,6 +48,7 @@ namespace KissU.Core.CPlatform.Routing
         /// <param name="routes">地址列表。</param>
         /// <returns>一个任务。</returns>
         Task RemveAddressAsync(IEnumerable<AddressModel> Address);
+
         /// <summary>
         /// 清空所有的服务路由。
         /// </summary>

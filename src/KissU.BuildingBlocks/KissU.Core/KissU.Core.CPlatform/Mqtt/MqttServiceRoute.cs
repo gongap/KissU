@@ -10,6 +10,7 @@ namespace KissU.Core.CPlatform.Mqtt
         /// Mqtt服务可用地址。
         /// </summary>
         public IEnumerable<AddressModel> MqttEndpoint { get; set; }
+
         /// <summary>
         /// Mqtt服务描述符。
         /// </summary>

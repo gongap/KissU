@@ -9,14 +9,17 @@
         /// Hash算法
         /// </summary>
         HashAlgorithm,
+
         /// <summary>
         /// 轮训
         /// </summary>
         Polling,
+
         /// <summary>
         /// 随机
         /// </summary>
         Random,
+
         /// <summary>
         /// 压力最小优先
         /// </summary>

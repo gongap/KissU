@@ -35,10 +35,12 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
         /// 是否授权
         /// </summary>
         public bool EnableAuthorization { get; set; }
+
         /// <summary>
         /// 名称
         /// </summary>
         public string Name { get; set; }
+
         /// <summary>
         /// 日期
         /// </summary>

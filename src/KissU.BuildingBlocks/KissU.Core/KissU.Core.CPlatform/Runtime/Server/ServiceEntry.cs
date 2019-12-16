@@ -18,6 +18,7 @@ namespace KissU.Core.CPlatform.Runtime.Server
         public Type Type { get; set; }
         public string MethodName { get; set; }
         public List<Attribute> Attributes { get; set; }
+
         /// <summary>
         /// 服务描述符。
         /// </summary>

@@ -14,6 +14,7 @@ namespace KissU.Core.CPlatform.Module
     public abstract class AbstractModule : Autofac.Module,IDisposable
     {
         #region 实例属性
+
         /// <summary>
         /// 容器创建包装属性
         /// </summary>
@@ -57,6 +58,7 @@ namespace KissU.Core.CPlatform.Module
         #endregion
 
         #region 构造函数
+
         /// <summary>
         /// 初始化
         /// </summary>

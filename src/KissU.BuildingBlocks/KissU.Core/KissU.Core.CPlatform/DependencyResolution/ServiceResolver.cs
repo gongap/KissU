@@ -22,6 +22,7 @@ namespace KissU.Core.CPlatform.DependencyResolution
         #endregion
 
         #region 公共方法
+
         /// <summary>
         /// 注册对象添加到IOC容器
         /// </summary>

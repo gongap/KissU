@@ -3,8 +3,16 @@ using System.Text.RegularExpressions;
 
 namespace KissU.Core.CPlatform.Address
 {
+    /// <summary>
+    /// 地址帮助类
+    /// </summary>
     public class AddressHelper
     {
+        /// <summary>
+        /// 获取Ip地址
+        /// </summary>
+        /// <param name="address">地址</param>
+        /// <returns>Ip地址</returns>
         public static string GetIpFromAddress(string address)
         {
             if (IsValidIp(address))
@@ -15,6 +23,11 @@ namespace KissU.Core.CPlatform.Address
             return ips[0].ToString();
         }
 
+        /// <summary>
+        /// 校验是否为Ip地址
+        /// </summary>
+        /// <param name="address">地址</param>
+        /// <returns>是否为Ip地址</returns>
         public static bool IsValidIp(string address)
         {
             if (Regex.IsMatch(address, "[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}"))

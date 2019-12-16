@@ -6,6 +6,9 @@ using KissU.Core.CPlatform.Serialization;
 
 namespace KissU.Core.CPlatform.Cache.Implementation
 {
+    /// <summary>
+    /// 服务缓存事件参数
+    /// </summary>
     public class ServiceCacheEventArgs
     {
         public ServiceCacheEventArgs(ServiceCache cache)

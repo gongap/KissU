@@ -5,10 +5,6 @@
         /// <summary>
         /// 主机
         /// </summary>
-        /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2016/4/2</para>
-        /// </remarks>
         public string Host
         {
             get;
@@ -18,10 +14,6 @@
         /// <summary>
         /// 端口
         /// </summary>
-        /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2016/4/2</para>
-        /// </remarks>
         public int Port
         {
             get;

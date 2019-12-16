@@ -1,6 +1,9 @@
 ﻿namespace KissU.Core.CPlatform.Ioc
 {
-   public interface IServiceBehavior
+    /// <summary>
+    /// 服务行为
+    /// </summary>
+    public interface IServiceBehavior
     {
     }
 }

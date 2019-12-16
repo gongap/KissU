@@ -30,6 +30,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
         }
 
         #region Overrides of AddressSelectorBase
+
         /// <summary>
         /// 选择一个地址。
         /// </summary>

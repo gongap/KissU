@@ -4,7 +4,6 @@ using System.Linq;
 
 namespace KissU.Core.CPlatform.Cache
 {
-
     /// <summary>
     /// 服务描述符扩展方法。
     /// </summary>

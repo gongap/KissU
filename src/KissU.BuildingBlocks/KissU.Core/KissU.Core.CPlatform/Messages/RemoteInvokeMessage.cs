@@ -15,6 +15,7 @@ namespace KissU.Core.CPlatform.Messages
         public bool DecodeJOject { get; set; }
 
         public string ServiceKey { get; set; }
+
         /// <summary>
         /// 服务参数。
         /// </summary>

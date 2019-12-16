@@ -9,6 +9,7 @@ namespace KissU.Core.CPlatform.Cache
         /// 服务可用地址。
         /// </summary>
         public IEnumerable<CacheEndpoint> CacheEndpoint { get; set; }
+
         /// <summary>
         /// 服务描述符。
         /// </summary>

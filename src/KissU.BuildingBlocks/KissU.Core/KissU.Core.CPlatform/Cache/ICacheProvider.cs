@@ -4,9 +4,18 @@ using System.Threading.Tasks;
 
 namespace KissU.Core.CPlatform.Cache
 {
+    /// <summary>
+    /// 缓存提供程序
+    /// </summary>
     public interface ICacheProvider
     {
+        /// <summary>
+        /// 连接缓存终结点
+        /// </summary>
+        /// <param name="endpoint">终结点</param>
+        /// <returns>是否连接成功</returns>
         Task<bool> ConnectionAsync(CacheEndpoint endpoint);
+
         void Add(string key, object value);
         void AddAsync(string key, object value);
         void Add(string key, object value, bool defaultExpire);

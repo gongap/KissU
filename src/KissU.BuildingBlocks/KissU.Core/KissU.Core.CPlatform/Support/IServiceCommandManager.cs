@@ -38,6 +38,7 @@ namespace KissU.Core.CPlatform.Support
 
 
         Task SetServiceCommandsAsync();
+
         /// <summary>
         /// 清空所有的服务命令。
         /// </summary>

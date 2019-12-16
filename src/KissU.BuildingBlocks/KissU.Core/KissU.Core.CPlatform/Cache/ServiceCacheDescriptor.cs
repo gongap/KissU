@@ -34,6 +34,9 @@ namespace KissU.Core.CPlatform.Cache
             };
         }
     }
+    /// <summary>
+    /// 服务缓存描述
+    /// </summary>
     public class ServiceCacheDescriptor
     {
         /// <summary>

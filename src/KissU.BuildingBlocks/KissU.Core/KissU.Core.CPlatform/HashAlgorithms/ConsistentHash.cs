@@ -33,6 +33,7 @@ namespace KissU.Core.CPlatform.HashAlgorithms
         }
 
         #region 属性
+
         /// <summary>
         /// 复制哈希节点数
         /// </summary>

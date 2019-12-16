@@ -14,8 +14,12 @@ namespace KissU.Core.CPlatform.Address
         /// <returns></returns>
         public abstract EndPoint CreateEndPoint();
 
+        /// <summary>
+        /// 
+        /// </summary>
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public decimal ProcessorTime { get; set; }
+
         /// <summary>
         /// 重写后的标识。
         /// </summary>

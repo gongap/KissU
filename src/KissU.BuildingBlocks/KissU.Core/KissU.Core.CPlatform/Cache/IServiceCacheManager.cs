@@ -6,6 +6,9 @@ using KissU.Core.CPlatform.Cache.Implementation;
 
 namespace KissU.Core.CPlatform.Cache
 {
+    /// <summary>
+    /// 服务缓存管理
+    /// </summary>
     public interface IServiceCacheManager
     {
         event EventHandler<ServiceCacheEventArgs> Created;

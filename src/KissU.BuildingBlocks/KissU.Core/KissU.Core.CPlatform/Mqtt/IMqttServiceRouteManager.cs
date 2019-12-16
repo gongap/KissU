@@ -27,6 +27,7 @@ namespace KissU.Core.CPlatform.Mqtt
 
 
         Task RemveAddressAsync(IEnumerable<AddressModel> addresses);
+
         /// <summary>
         /// 清空所有的服务路由。
         /// </summary>
