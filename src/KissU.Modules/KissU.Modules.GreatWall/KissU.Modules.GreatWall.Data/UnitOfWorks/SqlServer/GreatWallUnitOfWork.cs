@@ -14,18 +14,12 @@ namespace KissU.Modules.GreatWall.Data.UnitOfWorks.SqlServer
     public class GreatWallUnitOfWork : UnitOfWork, IGreatWallUnitOfWork
     {
         /// <summary>
-        /// 类型查找器
-        /// </summary>
-        protected readonly IFind Finder;
-
-        /// <summary>
         /// 初始化工作单元
         /// </summary>
         /// <param name="options">配置项</param>
         /// <param name="finder">类型查找器</param>
-        public GreatWallUnitOfWork(DbContextOptions<GreatWallUnitOfWork> options, IFind finder = null) : base(options)
+        public GreatWallUnitOfWork(DbContextOptions<GreatWallUnitOfWork> options) : base(options)
         {
-            Finder = finder ?? new Finder();
         }
     }
 }
