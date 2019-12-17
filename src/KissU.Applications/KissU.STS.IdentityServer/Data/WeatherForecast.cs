@@ -4,7 +4,7 @@
 
 using System;
 
-namespace KissU.Authorization.IdentityServer.Data
+namespace KissU.STS.IdentityServer.Data
 {
     public class WeatherForecast
     {

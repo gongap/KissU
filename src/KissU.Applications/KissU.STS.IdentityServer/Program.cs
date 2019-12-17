@@ -5,7 +5,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace KissU.Authorization.IdentityServer
+namespace KissU.STS.IdentityServer
 {
     public class Program
     {

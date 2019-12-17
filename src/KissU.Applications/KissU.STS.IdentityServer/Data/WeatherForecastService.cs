@@ -6,7 +6,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace KissU.Authorization.IdentityServer.Data
+namespace KissU.STS.IdentityServer.Data
 {
     public class WeatherForecastService
     {

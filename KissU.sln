@@ -17,6 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		NuGet.config = NuGet.config
 		README.md = README.md
 		stylecop.json = stylecop.json
+		version.props = version.props
 	EndProjectSection
 	ProjectSection(FolderGlobals) = preProject
 		E_5_4GAP_4KissU_4stylecop_1json__JsonSchema = 
@@ -190,10 +191,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "KissU.Services.Stages", "Ki
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "KissU.Util.Tests", "KissU.Util.Tests", "{CB057367-A90D-4ABE-B056-D1AAAE40CB79}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "KissU.Authorization", "KissU.Authorization", "{08EB9D5D-A9BA-4D34-910E-8F33600E3AE0}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Authorization.IdentityServer", "src\KissU.Applications\KissU.Authorization\KissU.Authorization.IdentityServer\KissU.Authorization.IdentityServer.csproj", "{6F292E4A-B481-4E9A-BAA9-6DCCC316B6B0}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.Biz.Tests.Integration", "test\KissU.Util.Tests\KissU.Util.Biz.Tests.Integration\KissU.Util.Biz.Tests.Integration.csproj", "{39741403-0CA0-4EA6-92B4-2D1C907A6963}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.Tests", "test\KissU.Util.Tests\KissU.Util.Tests\KissU.Util.Tests.csproj", "{DA7F7E0C-805F-43B0-9B73-9F4B682880DD}"
@@ -213,6 +210,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.Datas.Oracle", "src\KissU.BuildingBlocks\KissU.Util\KissU.Util.Datas.Oracle\KissU.Util.Datas.Oracle.csproj", "{43989AA0-F5CC-4DF5-9C81-9F52084E6F40}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.Datas.Tests.Integration", "test\KissU.Util.Tests\KissU.Util.Datas.Tests.Integration\KissU.Util.Datas.Tests.Integration.csproj", "{BF84EE47-D459-41CE-B11F-BAAE0E559035}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.STS.IdentityServer", "src\KissU.Applications\KissU.STS.IdentityServer\KissU.STS.IdentityServer.csproj", "{09BBD5FA-1081-4DB6-AA0A-78B619BC8376}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -488,10 +487,6 @@ Global
 		{13B9099E-1878-4379-AC0C-2458F62BCE69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13B9099E-1878-4379-AC0C-2458F62BCE69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13B9099E-1878-4379-AC0C-2458F62BCE69}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6F292E4A-B481-4E9A-BAA9-6DCCC316B6B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6F292E4A-B481-4E9A-BAA9-6DCCC316B6B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6F292E4A-B481-4E9A-BAA9-6DCCC316B6B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6F292E4A-B481-4E9A-BAA9-6DCCC316B6B0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{39741403-0CA0-4EA6-92B4-2D1C907A6963}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{39741403-0CA0-4EA6-92B4-2D1C907A6963}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39741403-0CA0-4EA6-92B4-2D1C907A6963}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -532,6 +527,10 @@ Global
 		{BF84EE47-D459-41CE-B11F-BAAE0E559035}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF84EE47-D459-41CE-B11F-BAAE0E559035}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF84EE47-D459-41CE-B11F-BAAE0E559035}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09BBD5FA-1081-4DB6-AA0A-78B619BC8376}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09BBD5FA-1081-4DB6-AA0A-78B619BC8376}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09BBD5FA-1081-4DB6-AA0A-78B619BC8376}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09BBD5FA-1081-4DB6-AA0A-78B619BC8376}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -620,8 +619,6 @@ Global
 		{0A04FA06-BE43-4BB1-A619-31BAAD599F65} = {B4367C3C-5645-40C3-953C-466D82432072}
 		{3B133FCF-3E3F-4B60-8D47-3C20EFAA7C77} = {B4367C3C-5645-40C3-953C-466D82432072}
 		{CB057367-A90D-4ABE-B056-D1AAAE40CB79} = {8C5BB6A1-6362-4935-9278-993935F43949}
-		{08EB9D5D-A9BA-4D34-910E-8F33600E3AE0} = {F7F6CB7E-792F-496B-925A-BB5B0DB67DB6}
-		{6F292E4A-B481-4E9A-BAA9-6DCCC316B6B0} = {08EB9D5D-A9BA-4D34-910E-8F33600E3AE0}
 		{39741403-0CA0-4EA6-92B4-2D1C907A6963} = {CB057367-A90D-4ABE-B056-D1AAAE40CB79}
 		{DA7F7E0C-805F-43B0-9B73-9F4B682880DD} = {CB057367-A90D-4ABE-B056-D1AAAE40CB79}
 		{99146FF2-05A4-4E27-B230-CFCCD3057613} = {CB057367-A90D-4ABE-B056-D1AAAE40CB79}
@@ -632,6 +629,7 @@ Global
 		{A565CA91-F0A2-4F01-80D1-E1CDD5A031AF} = {D4F921B5-1BBD-4F36-A1D0-DE934C035713}
 		{43989AA0-F5CC-4DF5-9C81-9F52084E6F40} = {D4F921B5-1BBD-4F36-A1D0-DE934C035713}
 		{BF84EE47-D459-41CE-B11F-BAAE0E559035} = {CB057367-A90D-4ABE-B056-D1AAAE40CB79}
+		{09BBD5FA-1081-4DB6-AA0A-78B619BC8376} = {F7F6CB7E-792F-496B-925A-BB5B0DB67DB6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}
