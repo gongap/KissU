@@ -17,7 +17,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Oracle.EntityFrameworkCore" Version="2.19.30" />
+    <PackageReference Include="Oracle.EntityFrameworkCore" Version="2.19.60" />
   </ItemGroup>
 
   <ItemGroup>
