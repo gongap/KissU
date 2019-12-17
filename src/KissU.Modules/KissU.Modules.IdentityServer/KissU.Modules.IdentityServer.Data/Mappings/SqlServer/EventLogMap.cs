@@ -19,7 +19,7 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         /// </summary>
         protected override void MapTable(EntityTypeBuilder<EventLog> builder)
         {
-            builder.ToTable("EventLogs", "ids");
+            builder.ToTable(Consts.DbTablePrefix + "EventLogs", Consts.DbSchema);
         }
 
         /// <summary>
@@ -27,7 +27,6 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         /// </summary>
         protected override void MapProperties(EntityTypeBuilder<EventLog> builder)
         {
-            builder.Property(t => t.Id).HasColumnName("Id");
         }
     }
 }

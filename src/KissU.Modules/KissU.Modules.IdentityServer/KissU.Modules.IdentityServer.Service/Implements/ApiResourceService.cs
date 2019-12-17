@@ -22,7 +22,7 @@ using KissU.Util.Datas.Queries;
 using KissU.Util.Domains.Repositories;
 using KissU.Util.Exceptions;
 using KissU.Util.Maps;
-using Extensions = KissU.Modules.IdentityServer.Domain.Extensions.Extensions;
+using Extensions = KissU.Modules.IdentityServer.Domain.Shared.Extensions;
 
 namespace KissU.Modules.IdentityServer.Service.Implements
 {
@@ -134,7 +134,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         /// </summary>
         private void ThrowApiResourceNameRepeatException(string code)
         {
-            throw new Warning(string.Format(IdentityServerConsts.DuplicateName, code));
+            throw new Warning(string.Format("名称{0} 重复", code));
         }
 
         /// <summary>

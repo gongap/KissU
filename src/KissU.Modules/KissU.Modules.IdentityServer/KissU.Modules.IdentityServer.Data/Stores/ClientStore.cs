@@ -38,7 +38,7 @@ namespace KissU.Modules.IdentityServer.Data.Stores
         /// <param name="clientId">The client id</param>
         public Task<Client> FindClientByIdAsync(string clientId)
         {
-            var queryable = _clientRepository.Find(p => p.ClientCode == clientId)
+            var queryable = _clientRepository.Find(p => p.ClientId == clientId)
                 .Include(x => x.ClientSecrets)
                 .Include(x => x.Claims);
 
@@ -52,8 +52,6 @@ namespace KissU.Modules.IdentityServer.Data.Stores
             }
 
             var model = client?.MapTo<Client>();
-
-            model.ClientId = clientId;
 
             return Task.FromResult(model);
         }

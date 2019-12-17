@@ -88,7 +88,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         /// </summary>
         private void ThrowDuplicateNameException(string name)
         {
-            throw new Warning(string.Format(IdentityServerConsts.DuplicateName, name));
+            throw new Warning(string.Format("名称{0} 重复", name));
         }
 
         /// <summary>

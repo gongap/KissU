@@ -19,7 +19,7 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         /// </summary>
         protected override void MapTable(EntityTypeBuilder<PersistedGrant> builder)
         {
-            builder.ToTable("PersistedGrants", "ids");
+            builder.ToTable(Consts.DbTablePrefix + "PersistedGrants", Consts.DbSchema);
         }
 
         /// <summary>

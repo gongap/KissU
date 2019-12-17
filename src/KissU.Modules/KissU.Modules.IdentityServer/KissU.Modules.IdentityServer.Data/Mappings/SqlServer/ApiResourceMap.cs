@@ -19,7 +19,7 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         /// </summary>
         protected override void MapTable(EntityTypeBuilder<ApiResource> builder)
         {
-            builder.ToTable("ApiResources", "ids");
+            builder.ToTable(Consts.DbTablePrefix + "ApiResources", Consts.DbSchema);
         }
 
         /// <summary>
@@ -27,7 +27,6 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         /// </summary>
         protected override void MapProperties(EntityTypeBuilder<ApiResource> builder)
         {
-            builder.Property(t => t.Id).HasColumnName("ApiResourceId");
             builder.HasQueryFilter(t => t.IsDeleted == false);
         }
     }

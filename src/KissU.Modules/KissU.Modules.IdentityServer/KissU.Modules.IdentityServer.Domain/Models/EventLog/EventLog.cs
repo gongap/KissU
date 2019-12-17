@@ -2,9 +2,9 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
-using KissU.Util.Domains;
 using System;
-using IdentityServer4.Events;
+using KissU.Modules.IdentityServer.Domain.Shared.Enums;
+using KissU.Util.Domains;
 
 namespace KissU.Modules.IdentityServer.Domain.Models.EventLog
 {

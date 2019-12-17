@@ -23,7 +23,6 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("ApiResourceId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ClaimTypes")
@@ -174,7 +173,6 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("ClientId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("AbsoluteRefreshTokenLifetime")
@@ -214,44 +212,18 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                         .HasColumnType("nvarchar(2000)")
                         .HasMaxLength(2000);
 
-                    b.Property<string>("ClientAllowedCorsOrigins")
-                        .HasColumnType("nvarchar(2000)")
-                        .HasMaxLength(2000);
-
-                    b.Property<string>("ClientAllowedGrantTypes")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ClientAllowedScopes")
-                        .HasColumnType("nvarchar(2000)")
-                        .HasMaxLength(2000);
-
                     b.Property<string>("ClientClaimsPrefix")
                         .HasColumnType("nvarchar(200)")
                         .HasMaxLength(200);
 
-                    b.Property<string>("ClientCode")
+                    b.Property<string>("ClientId")
                         .IsRequired()
                         .HasColumnType("nvarchar(60)")
                         .HasMaxLength(60);
 
-                    b.Property<string>("ClientIdentityProviderRestrictions")
-                        .HasColumnType("nvarchar(2000)")
-                        .HasMaxLength(2000);
-
                     b.Property<string>("ClientName")
                         .HasColumnType("nvarchar(200)")
                         .HasMaxLength(200);
-
-                    b.Property<string>("ClientPostLogoutRedirectUris")
-                        .HasColumnType("nvarchar(2000)")
-                        .HasMaxLength(2000);
-
-                    b.Property<string>("ClientProperties")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ClientRedirectUris")
-                        .HasColumnType("nvarchar(2000)")
-                        .HasMaxLength(2000);
 
                     b.Property<string>("ClientUri")
                         .HasColumnType("nvarchar(2000)")
@@ -429,7 +401,6 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("Id")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ActivityId")
@@ -545,7 +516,6 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("IdentityResourceId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ClaimTypes")
@@ -655,6 +625,161 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                     b.HasOne("KissU.Modules.IdentityServer.Domain.Models.ApiResourceAggregate.ApiResource", "ApiResource")
                         .WithMany("Secrets")
                         .HasForeignKey("ApiResourceId");
+                });
+
+            modelBuilder.Entity("KissU.Modules.IdentityServer.Domain.Models.ClientAggregate.Client", b =>
+                {
+                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.ClientAggregate.ClientCorsOrigin", "AllowedCorsOrigins", b1 =>
+                        {
+                            b1.Property<Guid>("ClientId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int")
+                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                            b1.Property<string>("Origin")
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.HasKey("ClientId", "Id");
+
+                            b1.ToTable("ClientCorsOrigins","ids");
+
+                            b1.WithOwner()
+                                .HasForeignKey("ClientId");
+                        });
+
+                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.ClientAggregate.ClientGrantType", "AllowedGrantTypes", b1 =>
+                        {
+                            b1.Property<Guid>("ClientId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int")
+                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                            b1.Property<string>("GrantType")
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.HasKey("ClientId", "Id");
+
+                            b1.ToTable("ClientGrantTypes","ids");
+
+                            b1.WithOwner()
+                                .HasForeignKey("ClientId");
+                        });
+
+                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.ClientAggregate.ClientIdPRestriction", "IdentityProviderRestrictions", b1 =>
+                        {
+                            b1.Property<Guid>("ClientId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int")
+                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                            b1.Property<string>("Provider")
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.HasKey("ClientId", "Id");
+
+                            b1.ToTable("ClientIdPRestrictions","ids");
+
+                            b1.WithOwner()
+                                .HasForeignKey("ClientId");
+                        });
+
+                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.ClientAggregate.ClientPostLogoutRedirectUri", "PostLogoutRedirectUris", b1 =>
+                        {
+                            b1.Property<Guid>("ClientId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int")
+                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                            b1.Property<string>("PostLogoutRedirectUri")
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.HasKey("ClientId", "Id");
+
+                            b1.ToTable("ClientPostLogoutRedirectUris","ids");
+
+                            b1.WithOwner()
+                                .HasForeignKey("ClientId");
+                        });
+
+                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.ClientAggregate.ClientProperty", "Properties", b1 =>
+                        {
+                            b1.Property<Guid>("ClientId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int")
+                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                            b1.Property<string>("Key")
+                                .HasColumnType("nvarchar(250)")
+                                .HasMaxLength(250);
+
+                            b1.Property<string>("Value")
+                                .HasColumnType("nvarchar(2000)")
+                                .HasMaxLength(2000);
+
+                            b1.HasKey("ClientId", "Id");
+
+                            b1.ToTable("ClientPropertys","ids");
+
+                            b1.WithOwner()
+                                .HasForeignKey("ClientId");
+                        });
+
+                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.ClientAggregate.ClientRedirectUri", "RedirectUris", b1 =>
+                        {
+                            b1.Property<Guid>("ClientId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int")
+                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                            b1.Property<string>("RedirectUri")
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.HasKey("ClientId", "Id");
+
+                            b1.ToTable("ClientRedirectUris","ids");
+
+                            b1.WithOwner()
+                                .HasForeignKey("ClientId");
+                        });
+
+                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.ClientAggregate.ClientScope", "AllowedScopes", b1 =>
+                        {
+                            b1.Property<Guid>("ClientId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int")
+                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                            b1.Property<string>("Scope")
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.HasKey("ClientId", "Id");
+
+                            b1.ToTable("ClientScopes","ids");
+
+                            b1.WithOwner()
+                                .HasForeignKey("ClientId");
+                        });
                 });
 
             modelBuilder.Entity("KissU.Modules.IdentityServer.Domain.Models.ClientAggregate.ClientClaim", b =>

@@ -2,16 +2,14 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
-using KissU.Modules.IdentityServer.Domain.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using IdentityServer4;
 using KissU.Modules.IdentityServer.Data.UnitOfWorks;
+using KissU.Modules.IdentityServer.Domain;
 using KissU.Modules.IdentityServer.Domain.Models.ClientAggregate;
 using KissU.Modules.IdentityServer.Domain.Repositories;
-using KissU.Modules.IdentityServer.Domain.Shared;
 using KissU.Modules.IdentityServer.Domain.Shared.Enums;
 using KissU.Modules.IdentityServer.Service.Contracts.Abstractions;
 using KissU.Modules.IdentityServer.Service.Contracts.Dtos;
@@ -23,8 +21,9 @@ using KissU.Util.Datas.Queries;
 using KissU.Util.Domains.Repositories;
 using KissU.Util.Exceptions;
 using KissU.Util.Maps;
-using Extensions = KissU.Modules.IdentityServer.Domain.Extensions.Extensions;
-using Ids4 = IdentityServer4.Models;
+using Client = KissU.Modules.IdentityServer.Domain.Models.ClientAggregate.Client;
+using Extensions = KissU.Modules.IdentityServer.Domain.Shared.Extensions;
+using GrantTypes = KissU.Modules.IdentityServer.Domain.Shared.GrantTypes;
 
 namespace KissU.Modules.IdentityServer.Service.Implements
 {
@@ -66,7 +65,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
             var client = await ClientRepository.FindByIdNoTrackingAsync(request.ClientId);
             client.CheckNull(nameof(client));
 
-            var exist = await ClientRepository.ExistsAsync(x => x.ClientCode == request.ClientCodeOriginal);
+            var exist = await ClientRepository.ExistsAsync(x => x.ClientId == request.ClientCodeOriginal);
             if (exist)
             {
                 ThrowDuplicateCodeException(request.ClientCodeOriginal);
@@ -76,39 +75,39 @@ namespace KissU.Modules.IdentityServer.Service.Implements
             clientDto.Id = Guid.NewGuid().ToString();
             var clientToClone = clientDto.MapTo<Client>();
 
-            clientToClone.ClientCode = request.ClientCodeOriginal;
+            clientToClone.ClientId = request.ClientCodeOriginal;
             clientToClone.ClientName = request.ClientNameOriginal;
 
             clientToClone.ClientSecrets.Clear();
 
             if (!request.CloneClientCorsOrigins)
             {
-                clientToClone.ClientAllowedCorsOrigins = string.Empty;
+                clientToClone.AllowedCorsOrigins.Clear();
             }
 
             if (!request.CloneClientGrantTypes)
             {
-                clientToClone.ClientAllowedGrantTypes = string.Empty;
+                clientToClone.AllowedGrantTypes.Clear();
             }
 
             if (!request.CloneClientIdPRestrictions)
             {
-                clientToClone.ClientIdentityProviderRestrictions = string.Empty;
+                clientToClone.IdentityProviderRestrictions.Clear();
             }
 
             if (!request.CloneClientPostLogoutRedirectUris)
             {
-                clientToClone.ClientPostLogoutRedirectUris = string.Empty;
+                clientToClone.PostLogoutRedirectUris.Clear();
             }
 
             if (!request.CloneClientScopes)
             {
-                clientToClone.ClientAllowedScopes = string.Empty;
+                clientToClone.AllowedScopes.Clear();
             }
 
             if (!request.CloneClientRedirectUris)
             {
-                clientToClone.ClientRedirectUris = string.Empty;
+                clientToClone.RedirectUris.Clear();
             }
 
             await ClientRepository.AddAsync(clientToClone);
@@ -133,7 +132,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         /// <param name="param">应用程序查询实体</param>
         protected override IQueryBase<Client> CreateQuery(ClientQuery param)
         {
-            var query = new Query<Client>(param).Or(t => t.ClientCode.Contains(param.Keyword),
+            var query = new Query<Client>(param).Or(t => t.ClientId.Contains(param.Keyword),
                 t => t.ClientName.Contains(param.Keyword));
 
             if (param.Enabled.HasValue)
@@ -155,9 +154,9 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         protected override void CreateBefore(Client entity)
         {
             base.CreateBefore(entity);
-            if (ClientRepository.Exists(t => t.ClientCode == entity.ClientCode))
+            if (ClientRepository.Exists(t => t.ClientId == entity.ClientId))
             {
-                ThrowDuplicateCodeException(entity.ClientCode);
+                ThrowDuplicateCodeException(entity.ClientId);
             }
         }
 
@@ -184,21 +183,21 @@ namespace KissU.Modules.IdentityServer.Service.Implements
                 case ClientType.Empty:
                     break;
                 case ClientType.WebImplicit:
-                    client.AllowedGrantTypes = Ids4.GrantTypes.Implicit.ToList();
+                    client.AllowedGrantTypes = GrantTypes.Implicit.Select(x => new ClientGrantType(x)).ToList();
                     client.AllowAccessTokensViaBrowser = true;
                     break;
                 case ClientType.WebHybrid:
-                    client.AllowedGrantTypes = Ids4.GrantTypes.Hybrid.ToList();
+                    client.AllowedGrantTypes = GrantTypes.Hybrid.Select(x => new ClientGrantType(x)).ToList();
                     break;
                 case ClientType.Spa:
-                    client.AllowedGrantTypes = Ids4.GrantTypes.Implicit.ToList();
+                    client.AllowedGrantTypes = GrantTypes.Implicit.Select(x => new ClientGrantType(x)).ToList();
                     client.AllowAccessTokensViaBrowser = true;
                     break;
                 case ClientType.Native:
-                    client.AllowedGrantTypes = Ids4.GrantTypes.Hybrid.ToList();
+                    client.AllowedGrantTypes = GrantTypes.Hybrid.Select(x => new ClientGrantType(x)).ToList();
                     break;
                 case ClientType.Machine:
-                    client.AllowedGrantTypes = Ids4.GrantTypes.ResourceOwnerPasswordAndClientCredentials.ToList();
+                    client.AllowedGrantTypes = GrantTypes.ResourceOwnerPasswordAndClientCredentials.Select(x => new ClientGrantType(x)).ToList();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -210,7 +209,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         /// </summary>
         private void ThrowDuplicateCodeException(string code)
         {
-            throw new Warning(string.Format(IdentityServerConsts.DuplicateCode, code));
+            throw new Warning(string.Format("编码 {0} 重复", code));
         }
 
         /// <summary>
@@ -227,9 +226,9 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         protected override void UpdateBefore(Client entity)
         {
             base.UpdateBefore(entity);
-            if (ClientRepository.Exists(t => t.Id != entity.Id && t.ClientCode == entity.ClientCode))
+            if (ClientRepository.Exists(t => t.Id != entity.Id && t.ClientId == entity.ClientId))
             {
-                ThrowDuplicateCodeException(entity.ClientCode);
+                ThrowDuplicateCodeException(entity.ClientId);
             }
         }
 
@@ -307,7 +306,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         /// <param name="request">应用程序密钥</param>
         private void HashApiSharedSecret(ClientSecretCreateRequest request)
         {
-            if (request.Type != IdentityServerConstants.SecretTypes.SharedSecret)
+            if (request.Type != Constants.SecretTypes.SharedSecret)
             {
                 return;
             }

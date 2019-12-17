@@ -35,7 +35,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         /// <returns></returns>
         public async Task<Client> FindEnabledClientByCodeAsync(string clientCode)
         {
-            var queryable = Find(p => p.ClientCode == clientCode && p.Enabled)
+            var queryable = Find(p => p.ClientId == clientCode && p.Enabled)
                 .Include(x => x.ClientSecrets)
                 .Include(x => x.Claims);
             return await queryable.SingleAsync();
