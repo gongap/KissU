@@ -142,7 +142,7 @@ namespace KissU.Util.Dependency
         /// </summary>
         private void RegisterInfrastracture()
         {
-            //EnableAop();
+            EnableAop();
             RegisterFinder();
         }
 

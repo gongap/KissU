@@ -21,12 +21,12 @@ namespace KissU.Util.Dependency
         /// <param name="configAction">Aop配置</param>
         public static void EnableAop(this ContainerBuilder builder, Action<IAspectConfiguration> configAction = null)
         {
-            builder.RegisterDynamicProxy(config =>
-           {
-               config.EnableParameterAspect();
-               config.NonAspectPredicates.Add(t => Reflection.GetTopBaseType(t.DeclaringType).SafeString() == "Microsoft.EntityFrameworkCore.DbContext");
-               configAction?.Invoke(config);
-           });
+            //builder.RegisterDynamicProxy(config =>
+            //{
+            //   config.EnableParameterAspect();
+            //   config.NonAspectPredicates.Add(t => Reflection.GetTopBaseType(t.DeclaringType).SafeString() == "Microsoft.EntityFrameworkCore.DbContext");
+            //   configAction?.Invoke(config);
+            //});
             builder.EnableAspectScoped();
         }
 
