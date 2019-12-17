@@ -2,9 +2,9 @@
 using KissU.Util.Datas.Tests.Integration.Commons.Datas.Pos;
 using KissU.Util.Datas.Tests.Integration.Commons.Domains.Models;
 using KissU.Util.Datas.Tests.Integration.Commons.Domains.Repositories;
-using KissU.Util.Datas.Tests.Integration.Ef.SqlServer.Stores;
+using KissU.Util.Datas.Tests.Integration.SqlServer.Ef.Stores;
 
-namespace KissU.Util.Datas.Tests.Integration.Ef.SqlServer.Repositories {
+namespace KissU.Util.Datas.Tests.Integration.SqlServer.Ef.Repositories {
     /// <summary>
     /// 商品仓储
     /// </summary>

@@ -2,11 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace KissU.Util.Datas.Tests.Integration.Ef.SqlServer.Mappings {
+namespace KissU.Util.Datas.Tests.Integration.SqlServer.Ef.Mappings {
     /// <summary>
     /// 客户映射配置
     /// </summary>
-    public class CustomerMap : Util.Datas.Ef.SqlServer.AggregateRootMap<Customer> {
+    public class CustomerMap : Util.Datas.SqlServer.Ef.AggregateRootMap<Customer> {
         /// <summary>
         /// 映射表
         /// </summary>

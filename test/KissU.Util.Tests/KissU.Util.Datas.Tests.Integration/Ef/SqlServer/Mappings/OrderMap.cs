@@ -2,11 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace KissU.Util.Datas.Tests.Integration.Ef.SqlServer.Mappings {
+namespace KissU.Util.Datas.Tests.Integration.SqlServer.Ef.Mappings {
     /// <summary>
     /// 订单映射配置
     /// </summary>
-    public class OrderMap : Util.Datas.Ef.SqlServer.AggregateRootMap<Order> {
+    public class OrderMap : Util.Datas.SqlServer.Ef.AggregateRootMap<Order> {
         /// <summary>
         /// 映射表
         /// </summary>

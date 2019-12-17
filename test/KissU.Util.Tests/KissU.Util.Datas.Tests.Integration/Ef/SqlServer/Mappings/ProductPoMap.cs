@@ -2,11 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace KissU.Util.Datas.Tests.Integration.Ef.SqlServer.Mappings {
+namespace KissU.Util.Datas.Tests.Integration.SqlServer.Ef.Mappings {
     /// <summary>
     /// 商品持久化对象映射配置
     /// </summary>
-    public class ProductPoMap : Util.Datas.Ef.SqlServer.AggregateRootMap<ProductPo> {
+    public class ProductPoMap : Util.Datas.SqlServer.Ef.AggregateRootMap<ProductPo> {
         /// <summary>
         /// 映射表
         /// </summary>

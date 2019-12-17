@@ -2,11 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace KissU.Util.Datas.Tests.Integration.Ef.PgSql.Mappings {
+namespace KissU.Util.Datas.Tests.Integration.PgSql.Ef.Mappings {
     /// <summary>
     /// 客户映射配置
     /// </summary>
-    public class CustomerMap : Util.Datas.Ef.PgSql.AggregateRootMap<Customer> {
+    public class CustomerMap : Util.Datas.PgSql.Ef.AggregateRootMap<Customer> {
         /// <summary>
         /// 映射表
         /// </summary>

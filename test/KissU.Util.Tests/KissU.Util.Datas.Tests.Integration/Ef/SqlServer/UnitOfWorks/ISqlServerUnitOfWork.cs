@@ -1,6 +1,6 @@
 ﻿using KissU.Util.Datas.UnitOfWorks;
 
-namespace KissU.Util.Datas.Tests.Integration.Ef.SqlServer.UnitOfWorks {
+namespace KissU.Util.Datas.Tests.Integration.SqlServer.Ef.UnitOfWorks {
     /// <summary>
     /// SqlServer工作单元
     /// </summary>

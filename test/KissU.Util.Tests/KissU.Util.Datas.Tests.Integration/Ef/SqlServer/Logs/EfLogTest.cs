@@ -2,7 +2,7 @@
 //using Util.Datas.Ef.Logs;
 //using Xunit;
 
-//namespace Util.Datas.Tests.Ef.SqlServer.Logs {
+//namespace Util.Datas.Tests.SqlServer.Ef.Logs {
 //    /// <summary>
 //    /// Ef日志测试
 //    /// </summary>

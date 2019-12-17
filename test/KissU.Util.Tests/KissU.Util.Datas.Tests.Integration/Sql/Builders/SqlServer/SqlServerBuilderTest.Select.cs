@@ -1,4 +1,4 @@
-﻿using KissU.Util.Datas.Dapper.SqlServer;
+﻿using KissU.Util.Datas.SqlServer.Dapper;
 using KissU.Util.Datas.Sql;
 using KissU.Util.Datas.Sql.Matedatas;
 using KissU.Util.Datas.Tests.Integration.Samples;

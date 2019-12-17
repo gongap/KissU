@@ -2,12 +2,12 @@
 using KissU.Util.Datas.Tests.Integration.Commons.Datas.SqlServer.Configs;
 using Microsoft.EntityFrameworkCore;
 
-namespace KissU.Util.Datas.Tests.Integration.Ef.SqlServer.UnitOfWorks {
+namespace KissU.Util.Datas.Tests.Integration.SqlServer.Ef.UnitOfWorks {
     /// <summary>
     /// SqlServer工作单元
     /// </summary>
     [Ignore]
-    public class SqlServerUnitOfWork : Util.Datas.Ef.SqlServer.UnitOfWork, ISqlServerUnitOfWork {
+    public class SqlServerUnitOfWork : Util.Datas.SqlServer.Ef.UnitOfWork, ISqlServerUnitOfWork {
         /// <summary>
         /// 初始化SqlServer工作单元
         /// </summary>
@@ -18,7 +18,7 @@ namespace KissU.Util.Datas.Tests.Integration.Ef.SqlServer.UnitOfWorks {
     /// <summary>
     /// SqlServer工作单元
     /// </summary>
-    public class SqlServerUnitOfWork2 : Util.Datas.Ef.SqlServer.UnitOfWork, ISqlServerUnitOfWork {
+    public class SqlServerUnitOfWork2 : Util.Datas.SqlServer.Ef.UnitOfWork, ISqlServerUnitOfWork {
         /// <summary>
         /// 初始化
         /// </summary>

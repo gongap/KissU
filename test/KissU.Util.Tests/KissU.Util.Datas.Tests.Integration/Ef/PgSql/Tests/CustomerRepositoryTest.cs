@@ -8,12 +8,12 @@ using KissU.Util.Datas.Tests.Integration.Commons.Datas.Criterias;
 using KissU.Util.Datas.Tests.Integration.Commons.Datas.PgSql.Configs;
 using KissU.Util.Datas.Tests.Integration.Commons.Domains.Models;
 using KissU.Util.Datas.Tests.Integration.Commons.Domains.Repositories;
-using KissU.Util.Datas.Tests.Integration.Ef.PgSql.UnitOfWorks;
+using KissU.Util.Datas.Tests.Integration.PgSql.Ef.UnitOfWorks;
 using KissU.Util.Dependency;
 using KissU.Util.Helpers;
 using Xunit;
 
-namespace KissU.Util.Datas.Tests.Integration.Ef.PgSql.Tests {
+namespace KissU.Util.Datas.Tests.Integration.PgSql.Ef.Tests {
     /// <summary>
     /// 客户仓储测试 - 主要测试审计和查询操作
     /// </summary>

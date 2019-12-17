@@ -1,9 +1,9 @@
 ﻿using KissU.Util.Datas.Ef.Core;
 using KissU.Util.Datas.Tests.Integration.Commons.Domains.Models;
 using KissU.Util.Datas.Tests.Integration.Commons.Domains.Repositories;
-using KissU.Util.Datas.Tests.Integration.Ef.SqlServer.UnitOfWorks;
+using KissU.Util.Datas.Tests.Integration.SqlServer.Ef.UnitOfWorks;
 
-namespace KissU.Util.Datas.Tests.Integration.Ef.SqlServer.Repositories {
+namespace KissU.Util.Datas.Tests.Integration.SqlServer.Ef.Repositories {
     /// <summary>
     /// 订单仓储
     /// </summary>

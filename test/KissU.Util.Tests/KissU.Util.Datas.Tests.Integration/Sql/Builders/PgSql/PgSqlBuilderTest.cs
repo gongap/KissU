@@ -1,4 +1,4 @@
-﻿using KissU.Util.Datas.Dapper.PgSql;
+﻿using KissU.Util.Datas.PgSql.Dapper;
 using KissU.Util.Datas.Sql;
 using KissU.Util.Helpers;
 using Xunit;

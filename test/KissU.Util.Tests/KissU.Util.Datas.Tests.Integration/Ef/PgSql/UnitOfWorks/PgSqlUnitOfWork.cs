@@ -1,11 +1,11 @@
 ﻿using KissU.Util.Datas.Tests.Integration.Commons.Datas.PgSql.Configs;
 using Microsoft.EntityFrameworkCore;
 
-namespace KissU.Util.Datas.Tests.Integration.Ef.PgSql.UnitOfWorks {
+namespace KissU.Util.Datas.Tests.Integration.PgSql.Ef.UnitOfWorks {
     /// <summary>
     /// PgSql工作单元
     /// </summary>
-    public class PgSqlUnitOfWork : Util.Datas.Ef.PgSql.UnitOfWork, IPgSqlUnitOfWork {
+    public class PgSqlUnitOfWork : Util.Datas.PgSql.Ef.UnitOfWork, IPgSqlUnitOfWork {
         /// <summary>
         /// 初始化PgSql工作单元
         /// </summary>

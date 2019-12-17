@@ -1,4 +1,4 @@
-﻿using KissU.Util.Datas.Dapper.MySql;
+﻿using KissU.Util.Datas.MySql.Dapper;
 using KissU.Util.Datas.Sql;
 using KissU.Util.Helpers;
 using Xunit;

@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 using KissU.Util.Datas.Ef;
 using KissU.Util.Datas.Tests.Integration.Commons.Domains.Models;
 using KissU.Util.Datas.Tests.Integration.Commons.Domains.Repositories;
-using KissU.Util.Datas.Tests.Integration.Ef.SqlServer.UnitOfWorks;
+using KissU.Util.Datas.Tests.Integration.SqlServer.Ef.UnitOfWorks;
 using KissU.Util.Dependency;
 using KissU.Util.Helpers;
 using Xunit;
 
-namespace KissU.Util.Datas.Tests.Integration.Ef.SqlServer.Tests {
+namespace KissU.Util.Datas.Tests.Integration.SqlServer.Ef.Tests {
     /// <summary>
     /// 商品仓储测试
     /// </summary>
