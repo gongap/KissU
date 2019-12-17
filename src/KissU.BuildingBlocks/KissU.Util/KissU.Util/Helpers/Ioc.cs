@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using KissU.Util.Dependency;
 using Microsoft.Extensions.DependencyInjection;
+using KissU.Util.Dependency;
 
 namespace KissU.Util.Helpers
 {
@@ -97,20 +98,22 @@ namespace KissU.Util.Helpers
         }
 
         /// <summary>
+        /// 注册依赖
+        /// </summary>
+        /// <param name="builder">容器生成器</param>
+        /// <param name="services">服务集合</param>
+        /// <param name="configs">依赖配置</param>
+        public static Autofac.IContainer Register(Autofac.ContainerBuilder builder, IServiceCollection services, params IConfig[] configs)
+        {
+            return DefaultContainer.Register(builder, services, b => b.EnableAop(), configs);
+        }
+
+        /// <summary>
         /// 释放容器
         /// </summary>
         public static void Dispose()
         {
             DefaultContainer.Dispose();
-        }
-
-        /// <summary>
-        /// 注册依赖
-        /// </summary>
-        /// <param name="container">容器</param>
-        public static void Register(Autofac.IContainer container)
-        {
-            DefaultContainer.Register(container);
         }
     }
 }

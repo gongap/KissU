@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using AspectCore.Configuration;
+using Autofac;
 using KissU.Util.Dependency;
 using KissU.Util.Sessions;
 using Microsoft.Extensions.DependencyInjection;
@@ -34,6 +35,32 @@ namespace KissU.Util
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             services.AddSingleton<ISession, Session>();
             return Bootstrapper.Run(services, configs, aopConfigAction);
+        }
+
+        /// <summary>
+        /// 注册Util基础设施服务
+        /// </summary>
+        /// <param name="builder">容器生成器</param>
+        /// <param name="services">服务集合</param>
+        /// <param name="configs">依赖配置</param>
+        public static Autofac.IContainer AddUtil(this ContainerBuilder builder, IServiceCollection services, params IConfig[] configs)
+        {
+            return AddUtil(builder, services, null, configs);
+        }
+
+        /// <summary>
+        /// 注册Util基础设施服务
+        /// </summary>
+        /// <param name="builder">容器生成器</param>
+        /// <param name="services">服务集合</param>
+        /// <param name="aopConfigAction">Aop配置操作</param>
+        /// <param name="configs">依赖配置</param>
+        public static Autofac.IContainer AddUtil(this ContainerBuilder builder, IServiceCollection services, Action<IAspectConfiguration> aopConfigAction, params IConfig[] configs)
+        {
+            services.AddHttpContextAccessor();
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+            services.AddSingleton<ISession, Session>();
+            return Bootstrapper.Run(builder, services, configs, aopConfigAction);
         }
     }
 }

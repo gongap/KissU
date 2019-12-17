@@ -12,10 +12,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-
-    <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core\KissU.Core.csproj" />
-    <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Apm\KissU.Apm.Skywalking\KissU.Apm.Skywalking.csproj" />
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\WebSocket\WebSocketCore\WebSocketCore.csproj" />
+    <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Apm\KissU.Apm.Skywalking\KissU.Apm.Skywalking.csproj" />
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.ApiGateWay\KissU.Core.ApiGateWay.csproj" />
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.Caching\KissU.Core.Caching.csproj" />
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.Codec.MessagePack\KissU.Core.Codec.MessagePack.csproj" />
@@ -44,6 +42,7 @@
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.System\KissU.Core.System.csproj" />
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.Zookeeper\KissU.Core.Zookeeper.csproj" />
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.Stage\KissU.Core.Stage.csproj" />
+    <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Util\KissU.Util\KissU.Util.csproj" />
     <ProjectReference Include="..\..\..\KissU.Modules\KissU.Modules.Admin\KissU.Modules.Admin.Service.Contracts\KissU.Modules.Admin.Service.Contracts.csproj" />
     <ProjectReference Include="..\..\..\KissU.Modules\KissU.Modules.GreatWall\KissU.Modules.GreatWall.Service.Contracts\KissU.Modules.GreatWall.Service.Contracts.csproj" />
     <ProjectReference Include="..\..\..\KissU.Modules\KissU.Modules.IdentityServer\KissU.Modules.IdentityServer.Service.Contracts\KissU.Modules.IdentityServer.Service.Contracts.csproj" />

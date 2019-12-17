@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Autofac;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace KissU.Util.Dependency
@@ -51,8 +52,23 @@ namespace KissU.Util.Dependency
         /// <summary>
         /// 注册依赖
         /// </summary>
+        /// <param name="builder">容器生成器</param>
+        /// <param name="configs">依赖配置</param>
+        void Register(ContainerBuilder builder, params IConfig[] configs);
+
+        /// <summary>
+        /// 注册依赖
+        /// </summary>
         /// <param name="services">服务集合</param>
         /// <param name="configs">依赖配置</param>
         IServiceProvider Register(IServiceCollection services, params IConfig[] configs);
+
+        /// <summary>
+        /// 注册依赖
+        /// </summary>
+        /// <param name="builder">容器生成器</param>
+        /// <param name="services">服务集合</param>
+        /// <param name="configs">依赖配置</param>
+        Autofac.IContainer Register(ContainerBuilder builder, IServiceCollection services, params IConfig[] configs);
     }
 }

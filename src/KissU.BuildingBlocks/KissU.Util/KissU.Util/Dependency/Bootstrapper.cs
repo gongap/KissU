@@ -68,10 +68,22 @@ namespace KissU.Util.Dependency
         /// <param name="configs">依赖配置</param>
         /// <param name="aopConfigAction">Aop配置操作</param>
         /// <param name="finder">类型查找器</param>
-        public static IServiceProvider Run(IServiceCollection services = null, IConfig[] configs = null,
-                Action<IAspectConfiguration> aopConfigAction = null, IFind finder = null)
+        public static IServiceProvider Run(IServiceCollection services = null, IConfig[] configs = null, Action<IAspectConfiguration> aopConfigAction = null, IFind finder = null)
         {
             return new Bootstrapper(services, configs, aopConfigAction, finder).Bootstrap();
+        }
+
+        /// <summary>
+        /// 启动引导
+        /// </summary>
+        /// <param name="builder">容器生成器</param>
+        /// <param name="services">服务集合</param>
+        /// <param name="configs">依赖配置</param>
+        /// <param name="aopConfigAction">Aop配置操作</param>
+        /// <param name="finder">类型查找器</param>
+        public static Autofac.IContainer Run(ContainerBuilder builder, IServiceCollection services = null, IConfig[] configs = null, Action<IAspectConfiguration> aopConfigAction = null, IFind finder = null)
+        {
+            return new Bootstrapper(services, configs, aopConfigAction, finder).Bootstrap(builder);
         }
 
         /// <summary>
@@ -85,12 +97,33 @@ namespace KissU.Util.Dependency
         }
 
         /// <summary>
+        /// 启动引导
+        /// </summary>
+        /// <param name="builder">容器生成器</param>
+        /// <param name="services">服务集合</param>
+        /// <param name="configs">依赖配置</param>
+        public static Autofac.IContainer Run(ContainerBuilder builder, IServiceCollection services, params IConfig[] configs)
+        {
+            return Run(builder, services, configs, null);
+        }
+
+        /// <summary>
         /// 引导
         /// </summary>
         public IServiceProvider Bootstrap()
         {
             _assemblies = _finder.GetAssemblies();
             return Ioc.DefaultContainer.Register(_services, RegisterServices, _configs);
+        }
+
+        /// <summary>
+        /// 引导
+        /// </summary>
+        /// <param name="builder">容器生成器</param>
+        public Autofac.IContainer Bootstrap(ContainerBuilder builder)
+        {
+            _assemblies = _finder.GetAssemblies();
+            return Ioc.DefaultContainer.Register(builder, _services, RegisterServices, _configs);
         }
 
         /// <summary>
@@ -109,7 +142,7 @@ namespace KissU.Util.Dependency
         /// </summary>
         private void RegisterInfrastracture()
         {
-            EnableAop();
+            //EnableAop();
             RegisterFinder();
         }
 

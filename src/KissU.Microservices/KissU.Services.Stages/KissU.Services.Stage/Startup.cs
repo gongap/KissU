@@ -3,10 +3,10 @@
 // </copyright>
 
 using Autofac;
-using Autofac.Extensions.DependencyInjection;
 using KissU.Core.Caching.Configurations;
 using KissU.Core.CPlatform.Utilities;
 using KissU.Core.EventBusKafka.Configurations;
+using KissU.Util;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -32,10 +32,8 @@ namespace KissU.Services.Stage
         public IContainer ConfigureServices(ContainerBuilder builder)
         {
             var services = new ServiceCollection();
-            ConfigureLogging(services);
-            builder.Populate(services);
-            ServiceLocator.Current = builder.Build();
-            return ServiceLocator.Current;
+            services.AddLogging();
+            return builder.AddUtil(services);
         }
 
         /// <summary>
@@ -43,18 +41,10 @@ namespace KissU.Services.Stage
         /// </summary>
         public void Configure(IContainer app)
         {
+            ServiceLocator.Current = app;
         }
 
         #region 私有方法
-
-        /// <summary>
-        /// 配置日志服务
-        /// </summary>
-        /// <param name="services">服务集合</param>
-        private void ConfigureLogging(IServiceCollection services)
-        {
-            services.AddLogging();
-        }
 
         /// <summary>
         /// 配置事件总线
