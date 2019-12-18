@@ -9,7 +9,6 @@ using KissU.Modules.IdentityServer.Domain.Models.ClientAggregate;
 using KissU.Modules.IdentityServer.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 using KissU.Util.Maps;
-using Client = IdentityServer4.Models.Client;
 
 namespace KissU.Modules.IdentityServer.Data.Stores
 {
@@ -36,22 +35,15 @@ namespace KissU.Modules.IdentityServer.Data.Stores
         /// 通过ClientId查找应用
         /// </summary>
         /// <param name="clientId">The client id</param>
-        public Task<Client> FindClientByIdAsync(string clientId)
+        public Task<IdentityServer4.Models.Client> FindClientByIdAsync(string clientId)
         {
             var queryable = _clientRepository.Find(p => p.ClientId == clientId)
                 .Include(x => x.ClientSecrets)
                 .Include(x => x.Claims);
 
             var client = queryable.SingleOrDefault();
-            if (client != null)
-            {
-                if (!client.Claims.Any(x => x.Type == "id"))
-                {
-                    client.Claims.Add(new ClientClaim {Type = "id", Value = client.Id.ToString()});
-                }
-            }
 
-            var model = client?.MapTo<Client>();
+            var model = client?.MapTo<IdentityServer4.Models.Client>();
 
             return Task.FromResult(model);
         }

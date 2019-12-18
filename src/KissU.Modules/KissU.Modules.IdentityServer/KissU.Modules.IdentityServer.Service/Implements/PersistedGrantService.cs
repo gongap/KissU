@@ -18,7 +18,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
     /// <summary>
     /// 认证操作数据服务
     /// </summary>
-    public class PersistedGrantService : CrudServiceBase<PersistedGrant, PersistedGrantDto, PersistedGrantQuery>,
+    public class PersistedGrantService : DeleteServiceBase<PersistedGrant, PersistedGrantDto, PersistedGrantQuery>,
         IPersistedGrantService
     {
         /// <summary>
@@ -58,15 +58,6 @@ namespace KissU.Modules.IdentityServer.Service.Implements
             }
 
             return query;
-        }
-
-        /// <summary>
-        /// 过滤
-        /// </summary>
-        protected override IQueryable<PersistedGrant> Filter(IQueryable<PersistedGrant> queryable,
-            PersistedGrantQuery parameter)
-        {
-            return base.Filter(queryable, parameter);
         }
     }
 }

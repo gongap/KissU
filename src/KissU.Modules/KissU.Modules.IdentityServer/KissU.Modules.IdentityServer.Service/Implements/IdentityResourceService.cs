@@ -7,7 +7,6 @@ using System.Linq;
 using KissU.Modules.IdentityServer.Data.UnitOfWorks;
 using KissU.Modules.IdentityServer.Domain.Models.IdentityResourceAggregate;
 using KissU.Modules.IdentityServer.Domain.Repositories;
-using KissU.Modules.IdentityServer.Domain.Shared;
 using KissU.Modules.IdentityServer.Service.Contracts.Abstractions;
 using KissU.Modules.IdentityServer.Service.Contracts.Dtos;
 using KissU.Modules.IdentityServer.Service.Contracts.Dtos.Requests;
