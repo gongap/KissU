@@ -2,8 +2,11 @@
 using System.Text;
 using AspectCore.Configuration;
 using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using KissU.Util.Dependency;
+using KissU.Util.Helpers;
 using KissU.Util.Sessions;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace KissU.Util
@@ -13,6 +16,15 @@ namespace KissU.Util
     /// </summary>
     public static partial class Extensions
     {
+        /// <summary>
+        /// 注册容器
+        /// </summary>
+        /// <param name="builder">应用生成器</param>
+        public static void UseUtil(this IApplicationBuilder builder)
+        {
+            Ioc.Register(builder.ApplicationServices.GetAutofacRoot());
+        }
+
         /// <summary>
         /// 注册Util基础设施服务
         /// </summary>
@@ -45,6 +57,7 @@ namespace KissU.Util
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             services.AddHttpContextAccessor();
+            services.AddLogging();
             services.AddSingleton<ISession, Session>();
             Bootstrapper.Run(builder, services, configs, aopConfigAction);
         }

@@ -3,14 +3,12 @@
 // </copyright>
 
 using Autofac;
-using Autofac.Extensions.DependencyInjection;
 using KissU.Core.Caching.Configurations;
 using KissU.Core.CPlatform.Utilities;
 using KissU.Core.EventBusKafka.Configurations;
 using KissU.Util;
 using KissU.Util.Helpers;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace KissU.Services.Host
 {
@@ -33,9 +31,7 @@ namespace KissU.Services.Host
         /// </summary>
         public IContainer ConfigureServices(ContainerBuilder builder)
         {
-            var services = new ServiceCollection();
-            services.AddLogging();
-            builder.AddUtil(services);
+            builder.AddUtil();
             return builder.Build();
         }
 

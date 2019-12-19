@@ -9,7 +9,6 @@ using KissU.Core.EventBusKafka.Configurations;
 using KissU.Util;
 using KissU.Util.Helpers;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace KissU.Services.Stage
 {
@@ -32,9 +31,7 @@ namespace KissU.Services.Stage
         /// </summary>
         public IContainer ConfigureServices(ContainerBuilder builder)
         {
-            var services = new ServiceCollection();
-            services.AddLogging();
-            builder.AddUtil(services);
+            builder.AddUtil();
             return builder.Build();
         }
 

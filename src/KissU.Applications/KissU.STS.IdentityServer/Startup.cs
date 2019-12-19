@@ -2,8 +2,9 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
-using System;
 using Autofac;
+using KissU.Modules.GreatWall.Data;
+using KissU.Modules.GreatWall.Data.UnitOfWorks.SqlServer;
 using KissU.Modules.IdentityServer.Data.UnitOfWorks;
 using KissU.Modules.IdentityServer.Data.UnitOfWorks.SqlServer;
 using KissU.STS.IdentityServer.Data;
@@ -12,12 +13,9 @@ using KissU.Util.Datas.SqlServer;
 using KissU.Util.Logs.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Autofac.Extensions.DependencyInjection;
-using KissU.Util.Helpers;
 
 namespace KissU.STS.IdentityServer
 {
@@ -51,10 +49,8 @@ namespace KissU.STS.IdentityServer
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
 
-            // 添加NLog日志操作
             services.AddNLog();
-
-            // 添加工作单元
+            services.AddUnitOfWork<IGreatWallUnitOfWork, GreatWallUnitOfWork>(Configuration.GetConnectionString("DefaultConnection"));
             services.AddUnitOfWork<IIdentityServerUnitOfWork, IdentityServerUnitOfWork>(Configuration.GetConnectionString("DefaultConnection"));
         }
 
@@ -64,7 +60,6 @@ namespace KissU.STS.IdentityServer
         /// <param name="builder"></param>
         public void ConfigureContainer(ContainerBuilder builder)
         {
-            // 注册Util基础设施服务
             builder.AddUtil();
         }
 
@@ -75,9 +70,6 @@ namespace KissU.STS.IdentityServer
         /// <param name="env">web主机环境</param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            var container = app.ApplicationServices.GetAutofacRoot();
-            Ioc.Register(container);
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -87,6 +79,8 @@ namespace KissU.STS.IdentityServer
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
+
+            app.UseUtil();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

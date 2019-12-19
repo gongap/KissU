@@ -8,7 +8,6 @@ using Autofac.Extensions.DependencyInjection;
 using KissU.Util.Logs;
 using KissU.Util.Logs.Extensions;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 
 namespace KissU.STS.IdentityServer

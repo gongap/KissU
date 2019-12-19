@@ -13,9 +13,6 @@
     <None Remove="Extensions\**" />
     <None Remove="Services\**" />
   </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="5.0.0" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.GreatWall\KissU.Modules.GreatWall.Service\KissU.Modules.GreatWall.Service.csproj" />
