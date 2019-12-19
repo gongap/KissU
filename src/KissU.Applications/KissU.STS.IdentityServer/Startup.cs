@@ -2,36 +2,82 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System;
+using Autofac;
+using KissU.Modules.IdentityServer.Data.UnitOfWorks;
+using KissU.Modules.IdentityServer.Data.UnitOfWorks.SqlServer;
 using KissU.STS.IdentityServer.Data;
+using KissU.Util;
+using KissU.Util.Datas.SqlServer;
+using KissU.Util.Logs.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Autofac.Extensions.DependencyInjection;
+using KissU.Util.Helpers;
 
 namespace KissU.STS.IdentityServer
 {
+    /// <summary>
+    /// 启动配置
+    /// </summary>
     public class Startup
     {
+        /// <summary>
+        /// 配置
+        /// </summary>
+        public IConfiguration Configuration { get; }
+
+        /// <summary>
+        /// 初始化启动配置
+        /// </summary>
+        /// <param name="configuration">配置</param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+        /// <summary>
+        /// 配置服务
+        /// </summary>
+        /// <param name="services">服务集合</param>
+        /// <returns></returns>
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
+
+            // 添加NLog日志操作
+            services.AddNLog();
+
+            // 添加工作单元
+            services.AddUnitOfWork<IIdentityServerUnitOfWork, IdentityServerUnitOfWork>(Configuration.GetConnectionString("DefaultConnection"));
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// <summary>
+        /// 配置容器
+        /// </summary>
+        /// <param name="builder"></param>
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            // 注册Util基础设施服务
+            builder.AddUtil();
+        }
+
+        /// <summary>
+        /// 配置请求管道
+        /// </summary>
+        /// <param name="app">应用生成器</param>
+        /// <param name="env">web主机环境</param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            var container = app.ApplicationServices.GetAutofacRoot();
+            Ioc.Register(container);
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -39,7 +85,6 @@ namespace KissU.STS.IdentityServer
             else
             {
                 app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 

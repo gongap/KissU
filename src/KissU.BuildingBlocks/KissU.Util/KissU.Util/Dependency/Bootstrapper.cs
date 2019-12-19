@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using AspectCore.Configuration;
 using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using KissU.Util.Events.Handlers;
 using KissU.Util.Helpers;
 using KissU.Util.Reflections;
@@ -49,12 +50,14 @@ namespace KissU.Util.Dependency
         /// <summary>
         /// 初始化依赖引导器
         /// </summary>
+        /// <param name="builder">容器生成器</param>
         /// <param name="services">服务集合</param>
         /// <param name="configs">依赖配置</param>
         /// <param name="aopConfigAction">Aop配置操作</param>
         /// <param name="finder">类型查找器</param>
-        public Bootstrapper(IServiceCollection services, IConfig[] configs, Action<IAspectConfiguration> aopConfigAction, IFind finder)
+        public Bootstrapper(ContainerBuilder builder, IServiceCollection services, IConfig[] configs, Action<IAspectConfiguration> aopConfigAction, IFind finder)
         {
+            _builder = builder ?? new ContainerBuilder();
             _services = services ?? new ServiceCollection();
             _configs = configs;
             _aopConfigAction = aopConfigAction;
@@ -64,74 +67,42 @@ namespace KissU.Util.Dependency
         /// <summary>
         /// 启动引导
         /// </summary>
-        /// <param name="services">服务集合</param>
-        /// <param name="configs">依赖配置</param>
-        /// <param name="aopConfigAction">Aop配置操作</param>
-        /// <param name="finder">类型查找器</param>
-        public static IServiceProvider Run(IServiceCollection services = null, IConfig[] configs = null, Action<IAspectConfiguration> aopConfigAction = null, IFind finder = null)
-        {
-            return new Bootstrapper(services, configs, aopConfigAction, finder).Bootstrap();
-        }
-
-        /// <summary>
-        /// 启动引导
-        /// </summary>
         /// <param name="builder">容器生成器</param>
         /// <param name="services">服务集合</param>
         /// <param name="configs">依赖配置</param>
         /// <param name="aopConfigAction">Aop配置操作</param>
         /// <param name="finder">类型查找器</param>
-        public static Autofac.IContainer Run(ContainerBuilder builder, IServiceCollection services = null, IConfig[] configs = null, Action<IAspectConfiguration> aopConfigAction = null, IFind finder = null)
+        public static void Run(ContainerBuilder builder, IServiceCollection services = null, IConfig[] configs = null, Action<IAspectConfiguration> aopConfigAction = null, IFind finder = null)
         {
-            return new Bootstrapper(services, configs, aopConfigAction, finder).Bootstrap(builder);
-        }
-
-        /// <summary>
-        /// 启动引导
-        /// </summary>
-        /// <param name="services">服务集合</param>
-        /// <param name="configs">依赖配置</param>
-        public static IServiceProvider Run(IServiceCollection services, params IConfig[] configs)
-        {
-            return Run(services, configs, null);
-        }
-
-        /// <summary>
-        /// 启动引导
-        /// </summary>
-        /// <param name="builder">容器生成器</param>
-        /// <param name="services">服务集合</param>
-        /// <param name="configs">依赖配置</param>
-        public static Autofac.IContainer Run(ContainerBuilder builder, IServiceCollection services, params IConfig[] configs)
-        {
-            return Run(builder, services, configs, null);
+            new Bootstrapper(builder, services, configs, aopConfigAction, finder).Bootstrap();
         }
 
         /// <summary>
         /// 引导
         /// </summary>
-        public IServiceProvider Bootstrap()
+        public void Bootstrap()
         {
             _assemblies = _finder.GetAssemblies();
-            return Ioc.DefaultContainer.Register(_services, RegisterServices, _configs);
-        }
 
-        /// <summary>
-        /// 引导
-        /// </summary>
-        /// <param name="builder">容器生成器</param>
-        public Autofac.IContainer Bootstrap(ContainerBuilder builder)
-        {
-            _assemblies = _finder.GetAssemblies();
-            return Ioc.DefaultContainer.Register(builder, _services, RegisterServices, _configs);
+            if (_configs != null)
+            {
+                foreach (var config in _configs)
+                    _builder.RegisterModule(config);
+            }
+
+            if (_services != null)
+            {
+                _builder.Populate(_services);
+            }
+
+            RegisterServices();
         }
 
         /// <summary>
         /// 注册服务集合
         /// </summary>
-        private void RegisterServices(ContainerBuilder builder)
+        private void RegisterServices()
         {
-            _builder = builder;
             RegisterInfrastracture();
             RegisterEventHandlers();
             RegisterDependency();

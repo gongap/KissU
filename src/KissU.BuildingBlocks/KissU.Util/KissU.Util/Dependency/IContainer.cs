@@ -44,31 +44,9 @@ namespace KissU.Util.Dependency
         IScope BeginScope();
 
         /// <summary>
-        /// 注册依赖
+        /// 注册容器
         /// </summary>
-        /// <param name="configs">依赖配置</param>
-        void Register(params IConfig[] configs);
-
-        /// <summary>
-        /// 注册依赖
-        /// </summary>
-        /// <param name="builder">容器生成器</param>
-        /// <param name="configs">依赖配置</param>
-        void Register(ContainerBuilder builder, params IConfig[] configs);
-
-        /// <summary>
-        /// 注册依赖
-        /// </summary>
-        /// <param name="services">服务集合</param>
-        /// <param name="configs">依赖配置</param>
-        IServiceProvider Register(IServiceCollection services, params IConfig[] configs);
-
-        /// <summary>
-        /// 注册依赖
-        /// </summary>
-        /// <param name="builder">容器生成器</param>
-        /// <param name="services">服务集合</param>
-        /// <param name="configs">依赖配置</param>
-        Autofac.IContainer Register(ContainerBuilder builder, IServiceCollection services, params IConfig[] configs);
+        /// <param name="container">容器</param>
+        void Register(ILifetimeScope container);
     }
 }

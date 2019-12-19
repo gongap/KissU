@@ -16,25 +16,11 @@ namespace KissU.Util
         /// <summary>
         /// 注册Util基础设施服务
         /// </summary>
-        /// <param name="services">服务集合</param>
+        /// <param name="builder">容器生成器</param>
         /// <param name="configs">依赖配置</param>
-        public static IServiceProvider AddUtil(this IServiceCollection services, params IConfig[] configs)
+        public static void AddUtil(this ContainerBuilder builder, params IConfig[] configs)
         {
-            return AddUtil(services, null, configs);
-        }
-
-        /// <summary>
-        /// 注册Util基础设施服务
-        /// </summary>
-        /// <param name="services">服务集合</param>
-        /// <param name="aopConfigAction">Aop配置操作</param>
-        /// <param name="configs">依赖配置</param>
-        public static IServiceProvider AddUtil(this IServiceCollection services, Action<IAspectConfiguration> aopConfigAction, params IConfig[] configs)
-        {
-            services.AddHttpContextAccessor();
-            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-            services.AddSingleton<ISession, Session>();
-            return Bootstrapper.Run(services, configs, aopConfigAction);
+            AddUtil(builder, new ServiceCollection(), configs);
         }
 
         /// <summary>
@@ -43,9 +29,9 @@ namespace KissU.Util
         /// <param name="builder">容器生成器</param>
         /// <param name="services">服务集合</param>
         /// <param name="configs">依赖配置</param>
-        public static Autofac.IContainer AddUtil(this ContainerBuilder builder, IServiceCollection services, params IConfig[] configs)
+        public static void AddUtil(this ContainerBuilder builder, IServiceCollection services, params IConfig[] configs)
         {
-            return AddUtil(builder, services, null, configs);
+            AddUtil(builder, services, null, configs);
         }
 
         /// <summary>
@@ -55,12 +41,12 @@ namespace KissU.Util
         /// <param name="services">服务集合</param>
         /// <param name="aopConfigAction">Aop配置操作</param>
         /// <param name="configs">依赖配置</param>
-        public static Autofac.IContainer AddUtil(this ContainerBuilder builder, IServiceCollection services, Action<IAspectConfiguration> aopConfigAction, params IConfig[] configs)
+        public static void AddUtil(this ContainerBuilder builder, IServiceCollection services, Action<IAspectConfiguration> aopConfigAction, params IConfig[] configs)
         {
-            services.AddHttpContextAccessor();
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+            services.AddHttpContextAccessor();
             services.AddSingleton<ISession, Session>();
-            return Bootstrapper.Run(builder, services, configs, aopConfigAction);
+            Bootstrapper.Run(builder, services, configs, aopConfigAction);
         }
     }
 }

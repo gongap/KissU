@@ -3,10 +3,12 @@
 // </copyright>
 
 using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using KissU.Core.Caching.Configurations;
 using KissU.Core.CPlatform.Utilities;
 using KissU.Core.EventBusKafka.Configurations;
 using KissU.Util;
+using KissU.Util.Helpers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -33,7 +35,8 @@ namespace KissU.Services.Host
         {
             var services = new ServiceCollection();
             services.AddLogging();
-            return builder.AddUtil(services);
+            builder.AddUtil(services);
+            return builder.Build();
         }
 
         /// <summary>
@@ -42,6 +45,7 @@ namespace KissU.Services.Host
         public void Configure(IContainer app)
         {
             ServiceLocator.Current = app;
+            Ioc.Register(app);
         }
 
         #region 私有方法
