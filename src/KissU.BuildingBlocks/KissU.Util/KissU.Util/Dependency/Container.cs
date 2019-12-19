@@ -93,6 +93,65 @@ namespace KissU.Util.Dependency
         }
 
         /// <summary>
+        /// 注册依赖
+        /// </summary>
+        /// <param name="configs">依赖配置</param>
+        public IServiceProvider Register(params IConfig[] configs)
+        {
+            var services = new ServiceCollection();
+           return Register(services, null, configs);
+        }
+
+        /// <summary>
+        /// 注册依赖
+        /// </summary>
+        /// <param name="services">服务集合</param>
+        /// <param name="configs">依赖配置</param>
+        public IServiceProvider Register(IServiceCollection services, params IConfig[] configs)
+        {
+            return Register(services, null, configs);
+        }
+
+        /// <summary>
+        /// 注册依赖
+        /// </summary>
+        /// <param name="services">服务集合</param>
+        /// <param name="actionBefore">注册前操作</param>
+        /// <param name="configs">依赖配置</param>
+        public IServiceProvider Register(IServiceCollection services, Action<ContainerBuilder> actionBefore, params IConfig[] configs)
+        {
+            var builder = CreateBuilder(services, actionBefore, configs);
+            _container = builder.Build();
+            return new AutofacServiceProvider(_container);
+        }
+
+        /// <summary>
+        /// 创建容器生成器
+        /// </summary>
+        /// <param name="services">服务集合</param>
+        /// <param name="actionBefore">注册前执行的操作</param>
+        /// <param name="configs">依赖配置</param>
+        public ContainerBuilder CreateBuilder(IServiceCollection services, Action<ContainerBuilder> actionBefore, params IConfig[] configs)
+        {
+            var builder = new ContainerBuilder();
+            actionBefore?.Invoke(builder);
+            if (configs != null)
+            {
+                foreach (var config in configs)
+                    builder.RegisterModule(config);
+            }
+
+            if (services == null)
+            {
+                services = new ServiceCollection();
+                builder.AddSingleton(services);
+            }
+
+            builder.Populate(services);
+            return builder;
+        }
+
+        /// <summary>
         /// 注册容器
         /// </summary>
         /// <param name="container">容器</param>

@@ -50,18 +50,28 @@ namespace KissU.Util.Dependency
         /// <summary>
         /// 初始化依赖引导器
         /// </summary>
-        /// <param name="builder">容器生成器</param>
         /// <param name="services">服务集合</param>
         /// <param name="configs">依赖配置</param>
         /// <param name="aopConfigAction">Aop配置操作</param>
         /// <param name="finder">类型查找器</param>
-        public Bootstrapper(ContainerBuilder builder, IServiceCollection services, IConfig[] configs, Action<IAspectConfiguration> aopConfigAction, IFind finder)
+        public Bootstrapper(IServiceCollection services, IConfig[] configs, Action<IAspectConfiguration> aopConfigAction, IFind finder)
         {
-            _builder = builder ?? new ContainerBuilder();
             _services = services ?? new ServiceCollection();
             _configs = configs;
             _aopConfigAction = aopConfigAction;
             _finder = finder ?? new Finder();
+        }
+
+        /// <summary>
+        /// 启动引导
+        /// </summary>
+        /// <param name="services">服务集合</param>
+        /// <param name="configs">依赖配置</param>
+        /// <param name="aopConfigAction">Aop配置操作</param>
+        /// <param name="finder">类型查找器</param>
+        public static IServiceProvider Run(IServiceCollection services = null, IConfig[] configs = null, Action<IAspectConfiguration> aopConfigAction = null, IFind finder = null)
+        {
+            return new Bootstrapper(services, configs, aopConfigAction, finder).Bootstrap();
         }
 
         /// <summary>
@@ -74,13 +84,23 @@ namespace KissU.Util.Dependency
         /// <param name="finder">类型查找器</param>
         public static void Run(ContainerBuilder builder, IServiceCollection services = null, IConfig[] configs = null, Action<IAspectConfiguration> aopConfigAction = null, IFind finder = null)
         {
-            new Bootstrapper(builder, services, configs, aopConfigAction, finder).Bootstrap();
+            new Bootstrapper(services, configs, aopConfigAction, finder).Bootstrap(builder);
         }
 
         /// <summary>
         /// 引导
         /// </summary>
-        public void Bootstrap()
+        public IServiceProvider Bootstrap()
+        {
+            _assemblies = _finder.GetAssemblies();
+            return Ioc.DefaultContainer.Register(_services, RegisterServices, _configs);
+        }
+
+        /// <summary>
+        /// 引导
+        /// </summary>
+        /// <param name="builder">容器生成器</param>
+        public void Bootstrap(ContainerBuilder builder)
         {
             _assemblies = _finder.GetAssemblies();
 
@@ -95,14 +115,15 @@ namespace KissU.Util.Dependency
                 _builder.Populate(_services);
             }
 
-            RegisterServices();
+            RegisterServices(builder);
         }
 
         /// <summary>
         /// 注册服务集合
         /// </summary>
-        private void RegisterServices()
+        private void RegisterServices(ContainerBuilder builder)
         {
+            _builder = builder;
             RegisterInfrastracture();
             RegisterEventHandlers();
             RegisterDependency();

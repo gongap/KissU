@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Autofac;
 using KissU.Util.Dependency;
 using Microsoft.Extensions.DependencyInjection;
 using KissU.Util.Dependency;
@@ -17,6 +16,17 @@ namespace KissU.Util.Helpers
         /// 默认容器
         /// </summary>
         internal static readonly Container DefaultContainer = new Container();
+
+        /// <summary>
+        /// 创建容器
+        /// </summary>
+        /// <param name="configs">依赖配置</param>
+        public static IContainer CreateContainer(params IConfig[] configs)
+        {
+            var container = new Container();
+            container.Register(null, builder => builder.EnableAop(), configs);
+            return container;
+        }
 
         /// <summary>
         /// 创建集合
@@ -69,10 +79,29 @@ namespace KissU.Util.Helpers
         }
 
         /// <summary>
+        /// 注册依赖
+        /// </summary>
+        /// <param name="configs">依赖配置</param>
+        public static void Register(params IConfig[] configs)
+        {
+            DefaultContainer.Register(null, builder => builder.EnableAop(), configs);
+        }
+
+        /// <summary>
+        /// 注册依赖
+        /// </summary>
+        /// <param name="services">服务集合</param>
+        /// <param name="configs">依赖配置</param>
+        public static IServiceProvider Register(IServiceCollection services, params IConfig[] configs)
+        {
+            return DefaultContainer.Register(services, builder => builder.EnableAop(), configs);
+        }
+
+        /// <summary>
         /// 注册容器
         /// </summary>
         /// <param name="container">容器</param>
-        public static void Register(ILifetimeScope container)
+        public static void Register(Autofac.ILifetimeScope container)
         {
             DefaultContainer.Register(container);
         }

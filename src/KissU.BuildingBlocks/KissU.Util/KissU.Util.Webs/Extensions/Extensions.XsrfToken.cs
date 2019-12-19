@@ -30,15 +30,17 @@ namespace KissU.Util.Webs.Extensions
         {
             var antiforgery = Ioc.Create<IAntiforgery>();
             app.Use(next => context =>
-           {
-               if (string.Equals(context.Request.Path.Value, "/", StringComparison.OrdinalIgnoreCase) ||
-                   string.Equals(context.Request.Path.Value, "/index.html", StringComparison.OrdinalIgnoreCase))
-               {
-                   var tokens = antiforgery.GetAndStoreTokens(context);
-                   context.Response.Cookies.Append("XSRF-TOKEN", tokens.RequestToken, new CookieOptions() { HttpOnly = false });
-               }
-               return next(context);
-           });
+            {
+                if (string.Equals(context.Request.Path.Value, "/", StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(context.Request.Path.Value, "/index.html", StringComparison.OrdinalIgnoreCase))
+                {
+                    var tokens = antiforgery.GetAndStoreTokens(context);
+                    context.Response.Cookies.Append("XSRF-TOKEN", tokens.RequestToken,
+                        new CookieOptions() {HttpOnly = false});
+                }
+
+                return next(context);
+            });
             return app;
         }
     }
