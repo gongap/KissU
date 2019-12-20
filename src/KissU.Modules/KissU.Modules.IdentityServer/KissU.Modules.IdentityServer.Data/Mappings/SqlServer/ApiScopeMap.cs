@@ -1,4 +1,4 @@
-﻿// <copyright file="IdentityResourceMap.cs" company="KissU">
+﻿// <copyright file="ApiResourceScopeMap.cs" company="KissU">
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
@@ -10,22 +10,22 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
 {
     /// <summary>
-    /// 身份资源映射配置
+    /// Api许可范围映射配置
     /// </summary>
-    public class IdentityResourceMap : AggregateRootMap<IdentityResource>
+    public class ApiScopeMap : EntityMap<ApiScope>
     {
         /// <summary>
         /// 映射表
         /// </summary>
-        protected override void MapTable(EntityTypeBuilder<IdentityResource> builder)
+        protected override void MapTable(EntityTypeBuilder<ApiScope> builder)
         {
-            builder.ToTable(Consts.DbTablePrefix + "IdentityResources", Consts.DbSchema);
+            builder.ToTable(Consts.DbTablePrefix + "ApiScopes", Consts.DbSchema);
         }
 
         /// <summary>
         /// 映射属性
         /// </summary>
-        protected override void MapProperties(EntityTypeBuilder<IdentityResource> builder)
+        protected override void MapProperties(EntityTypeBuilder<ApiScope> builder)
         {
             builder.HasKey(x => x.Id);
 
@@ -37,15 +37,8 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
 
             builder.OwnsMany(t => t.UserClaims, ob =>
             {
-                ob.ToTable(Consts.DbTablePrefix + "IdentityClaims", Consts.DbSchema);
+                ob.ToTable(Consts.DbTablePrefix + "ApiScopeClaims", Consts.DbSchema);
                 ob.Property(x => x.Type);
-            });
-
-            builder.OwnsMany(t => t.Properties, ob =>
-            {
-                ob.ToTable(Consts.DbTablePrefix + "IdentityProperties", Consts.DbSchema);
-                ob.Property(x => x.Key);
-                ob.Property(x => x.Value);
             });
         }
     }

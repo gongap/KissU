@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
 {
     [DbContext(typeof(DesignTimeDbContext))]
-    [Migration("20191220084339_InitialCreate")]
+    [Migration("20191220092532_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -455,16 +455,6 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("ClaimTypes")
-                        .HasColumnType("nvarchar(2000)")
-                        .HasMaxLength(2000);
-
-                    b.Property<DateTime?>("CreationTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("CreatorId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(1000)")
                         .HasMaxLength(1000);
@@ -478,15 +468,6 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
 
                     b.Property<bool>("Enabled")
                         .HasColumnType("bit");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("LastModifierId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -505,6 +486,9 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                         .HasColumnType("rowversion");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.ToTable("IdentityResources","ids");
                 });
@@ -738,6 +722,57 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                     b.HasOne("KissU.Modules.IdentityServer.Domain.Models.Client", "Client")
                         .WithMany("ClientSecrets")
                         .HasForeignKey("ClientId");
+                });
+
+            modelBuilder.Entity("KissU.Modules.IdentityServer.Domain.Models.IdentityResource", b =>
+                {
+                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.Property", "Properties", b1 =>
+                        {
+                            b1.Property<Guid>("IdentityResourceId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int")
+                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                            b1.Property<string>("Key")
+                                .HasColumnType("nvarchar(250)")
+                                .HasMaxLength(250);
+
+                            b1.Property<string>("Value")
+                                .HasColumnType("nvarchar(2000)")
+                                .HasMaxLength(2000);
+
+                            b1.HasKey("IdentityResourceId", "Id");
+
+                            b1.ToTable("IdentityProperties","ids");
+
+                            b1.WithOwner()
+                                .HasForeignKey("IdentityResourceId");
+                        });
+
+                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.UserClaim", "UserClaims", b1 =>
+                        {
+                            b1.Property<Guid>("IdentityResourceId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int")
+                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                            b1.Property<string>("Type")
+                                .HasColumnType("nvarchar(200)")
+                                .HasMaxLength(200);
+
+                            b1.HasKey("IdentityResourceId", "Id");
+
+                            b1.ToTable("IdentityClaims","ids");
+
+                            b1.WithOwner()
+                                .HasForeignKey("IdentityResourceId");
+                        });
                 });
 #pragma warning restore 612, 618
         }

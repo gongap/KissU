@@ -1,54 +1,37 @@
-﻿// <copyright file="ApiResource.cs" company="KissU">
+﻿// <copyright file="ApiResourceScope.cs" company="KissU">
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using KissU.Util;
 using KissU.Util.Domains;
-using KissU.Util.Domains.Auditing;
-using Convert = KissU.Util.Helpers.Convert;
 
 namespace KissU.Modules.IdentityServer.Domain.Models
 {
     /// <summary>
-    /// Api资源
+    /// Api许可范围
     /// </summary>
-    public class ApiResource : AggregateRoot<ApiResource, Guid>
+    public class ApiScope : EntityBase<ApiScope, Guid>
     {
         /// <summary>
-        /// 初始Api资源
+        /// 初始化Api许可范围
         /// </summary>
-        public ApiResource() : base(Guid.Empty)
+        public ApiScope() : base(Guid.Empty)
         {
-            Secrets = new List<ApiSecret>();
-            Scopes = new List<ApiScope>();
-            UserClaims = new List<UserClaim>();
-            Properties = new List<Property>();
         }
 
         /// <summary>
-        /// API密钥列表
+        /// Api资源
         /// </summary>
-        public List<ApiSecret> Secrets { get; set; }
-
-        /// <summary>
-        /// API必须至少有一个范围。每个范围可以有不同的设置。
-        /// </summary>
-        public List<ApiScope> Scopes { get; set; }
+        public ApiResource ApiResource { get; set; }
 
         /// <summary>
         /// 应包含在身份令牌中的关联用户声明类型的列表。
         /// </summary>
+        [NotMapped]
         public List<UserClaim> UserClaims { get; set; }
-
-        /// <summary>
-        /// 指示此资源是否已启用且可以请求。默认为true。
-        /// </summary>
-        public bool Enabled { get; set; } = true;
 
         /// <summary>
         /// API的唯一名称。此值用于内省身份验证，并将添加到传出访问令牌的受众。
@@ -70,8 +53,18 @@ namespace KissU.Modules.IdentityServer.Domain.Models
         public string Description { get; set; }
 
         /// <summary>
-        /// 属性
+        /// 指定用户是否可以在同意屏幕上取消选择范围（如果同意屏幕要实现此类功能）。默认为false。
         /// </summary>
-        public List<Property> Properties { get; set; }
+        public bool Required { get; set; }
+
+        /// <summary>
+        /// 指定同意屏幕是否会强调此范围（如果同意屏幕要实现此类功能）。将此设置用于敏感或重要范围。默认为false。
+        /// </summary>
+        public bool Emphasize { get; set; }
+
+        /// <summary>
+        /// 指定此范围是否显示在发现文档中。默认为true。
+        /// </summary>
+        public bool ShowInDiscoveryDocument { get; set; } = true;
     }
 }

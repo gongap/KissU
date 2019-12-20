@@ -27,7 +27,29 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         /// </summary>
         protected override void MapProperties(EntityTypeBuilder<ApiResource> builder)
         {
-            builder.HasQueryFilter(t => t.IsDeleted == false);
+            builder.HasKey(x => x.Id);
+
+            builder.Property(x => x.Name).HasMaxLength(200).IsRequired();
+            builder.Property(x => x.DisplayName).HasMaxLength(200);
+            builder.Property(x => x.Description).HasMaxLength(1000);
+
+            builder.HasIndex(x => x.Name).IsUnique();
+
+            builder.OwnsMany(t => t.UserClaims, ob =>
+            {
+                ob.ToTable(Consts.DbTablePrefix + "IdentityClaims", Consts.DbSchema);
+                ob.Property(x => x.Type);
+            });
+
+            builder.OwnsMany(t => t.Properties, ob =>
+            {
+                ob.ToTable(Consts.DbTablePrefix + "IdentityProperties", Consts.DbSchema);
+                ob.Property(x => x.Key);
+                ob.Property(x => x.Value);
+            });
+
+            builder.HasMany(x => x.Secrets).WithOne(x => x.ApiResource).IsRequired().OnDelete(DeleteBehavior.Cascade);
+            builder.HasMany(x => x.Scopes).WithOne(x => x.ApiResource).IsRequired().OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

@@ -19,24 +19,24 @@ namespace KissU.Modules.IdentityServer.Service.Mappers
         /// </summary>
         public ApiResourceMapperProfile()
         {
-            CreateMap<ApiResourceScope, ApiResourceScopeDto>(MemberList.Destination)
+            CreateMap<ApiScope, ApiResourceScopeDto>(MemberList.Destination)
                 .ForMember(x => x.ApiResourceId, opt => opt.MapFrom(x => x.ApiResource.Id));
-            CreateMap<ApiResourceScopeDto, ApiResourceScope>(MemberList.Source)
+            CreateMap<ApiResourceScopeDto, ApiScope>(MemberList.Source)
                 .ForMember(x => x.ApiResource, opts => opts.MapFrom(src => new ApiResource(src.ApiResourceId)));
 
-            CreateMap<ApiResourceScope, ApiResourceScopeCreateRequest>(MemberList.Destination)
+            CreateMap<ApiScope, ApiResourceScopeCreateRequest>(MemberList.Destination)
                 .ForMember(x => x.ApiResourceId, opt => opt.MapFrom(x => x.ApiResource.Id));
-            CreateMap<ApiResourceScopeCreateRequest, ApiResourceScope>(MemberList.Source)
+            CreateMap<ApiResourceScopeCreateRequest, ApiScope>(MemberList.Source)
                 .ForMember(x => x.ApiResource, opts => opts.MapFrom(src => new ApiResource(src.ApiResourceId)));
 
-            CreateMap<ApiResourceSecret, ApiResourceSecretDto>(MemberList.Destination)
+            CreateMap<ApiSecret, ApiResourceSecretDto>(MemberList.Destination)
                 .ForMember(x => x.ApiResourceId, opt => opt.MapFrom(x => x.ApiResource.Id));
-            CreateMap<ApiResourceSecretDto, ApiResourceSecret>(MemberList.Source)
+            CreateMap<ApiResourceSecretDto, ApiSecret>(MemberList.Source)
                 .ForMember(x => x.ApiResource, opts => opts.MapFrom(src => new ApiResource(src.ApiResourceId)));
 
-            CreateMap<ApiResourceSecret, ApiResourceSecretCreateRequest>(MemberList.Destination)
+            CreateMap<ApiSecret, ApiResourceSecretCreateRequest>(MemberList.Destination)
                 .ForMember(x => x.ApiResourceId, opt => opt.MapFrom(x => x.ApiResource.Id));
-            CreateMap<ApiResourceSecretCreateRequest, ApiResourceSecret>(MemberList.Source)
+            CreateMap<ApiResourceSecretCreateRequest, ApiSecret>(MemberList.Source)
                 .ForMember(x => x.ApiResource, opts => opts.MapFrom(src => new ApiResource(src.ApiResourceId)));
         }
     }

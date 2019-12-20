@@ -18,7 +18,7 @@ namespace KissU.Modules.IdentityServer.Mappers
         /// </summary>
         public ApiResourceMapperProfile()
         {
-            CreateMap<ApiResourceSecret, Ids4.Secret>(MemberList.Destination)
+            CreateMap<ApiSecret, Ids4.Secret>(MemberList.Destination)
                 .ForMember(dest => dest.Type, opt => opt.Condition(srs => srs != null));
         }
     }

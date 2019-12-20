@@ -189,7 +189,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         {
             var apiResource = await ApiResourceRepository.FindAsync(request.ApiResourceId);
             apiResource.CheckNull(nameof(apiResource));
-            var entity = request.MapTo<ApiResourceScope>();
+            var entity = request.MapTo<ApiScope>();
             entity.Init();
             entity.ApiResource = apiResource;
             await ApiResourceRepository.CreateApiResourceScopeAsync(entity);
@@ -206,7 +206,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         {
             var apiResource = await ApiResourceRepository.FindAsync(dto.ApiResourceId);
             apiResource.CheckNull(nameof(apiResource));
-            var entity = dto.MapTo<ApiResourceScope>();
+            var entity = dto.MapTo<ApiScope>();
             entity.ApiResource = apiResource;
             await ApiResourceRepository.UpdateApiResourceScopeAsync(entity);
             await UnitOfWork.CommitAsync();
@@ -280,7 +280,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
             var apiResource = await ApiResourceRepository.FindAsync(request.ApiResourceId);
             apiResource.CheckNull(nameof(apiResource));
             HashApiSharedSecret(request);
-            var entity = request.MapTo<ApiResourceSecret>();
+            var entity = request.MapTo<ApiSecret>();
             entity.Init();
             entity.ApiResource = apiResource;
             await ApiResourceRepository.CreateApiResourceSecretAsync(entity);

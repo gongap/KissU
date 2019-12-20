@@ -22,6 +22,7 @@ namespace KissU.Modules.IdentityServer.Domain.Models
         /// <value>
         /// The device code.
         /// </value>
+        [Required]
         [StringLength(200)]
         public string DeviceCode { get; set; }
 
@@ -31,6 +32,7 @@ namespace KissU.Modules.IdentityServer.Domain.Models
         /// <value>
         /// The user code.
         /// </value>
+        [Required]
         [StringLength(200)]
         public string UserCode { get; set; }
 
@@ -49,6 +51,7 @@ namespace KissU.Modules.IdentityServer.Domain.Models
         /// <value>
         /// The client identifier.
         /// </value>
+        [Required]
         [StringLength(200)]
         public string ClientId { get; set; }
 
@@ -58,6 +61,7 @@ namespace KissU.Modules.IdentityServer.Domain.Models
         /// <value>
         /// The creation time.
         /// </value>
+        [Required]
         public DateTime CreationTime { get; set; }
 
         /// <summary>
@@ -66,6 +70,7 @@ namespace KissU.Modules.IdentityServer.Domain.Models
         /// <value>
         /// The expiration.
         /// </value>
+        [Required]
         public DateTime? Expiration { get; set; }
 
         /// <summary>
@@ -74,6 +79,7 @@ namespace KissU.Modules.IdentityServer.Domain.Models
         /// <value>
         /// The data.
         /// </value>
+        [Required]
         [StringLength(50000)]
         public string Data { get; set; }
     }

@@ -115,16 +115,10 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                     Required = table.Column<bool>(nullable: false),
                     Emphasize = table.Column<bool>(nullable: false),
                     ShowInDiscoveryDocument = table.Column<bool>(nullable: false),
-                    ClaimTypes = table.Column<string>(maxLength: 2000, nullable: true),
                     Enabled = table.Column<bool>(nullable: false),
                     Name = table.Column<string>(maxLength: 200, nullable: false),
                     DisplayName = table.Column<string>(maxLength: 200, nullable: true),
-                    Description = table.Column<string>(maxLength: 1000, nullable: true),
-                    CreationTime = table.Column<DateTime>(nullable: true),
-                    CreatorId = table.Column<Guid>(nullable: true),
-                    LastModificationTime = table.Column<DateTime>(nullable: true),
-                    LastModifierId = table.Column<Guid>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false)
+                    Description = table.Column<string>(maxLength: 1000, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -419,6 +413,51 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "IdentityClaims",
+                schema: "ids",
+                columns: table => new
+                {
+                    IdentityResourceId = table.Column<Guid>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Type = table.Column<string>(maxLength: 200, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_IdentityClaims", x => new { x.IdentityResourceId, x.Id });
+                    table.ForeignKey(
+                        name: "FK_IdentityClaims_IdentityResources_IdentityResourceId",
+                        column: x => x.IdentityResourceId,
+                        principalSchema: "ids",
+                        principalTable: "IdentityResources",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "IdentityProperties",
+                schema: "ids",
+                columns: table => new
+                {
+                    IdentityResourceId = table.Column<Guid>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Key = table.Column<string>(maxLength: 250, nullable: true),
+                    Value = table.Column<string>(maxLength: 2000, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_IdentityProperties", x => new { x.IdentityResourceId, x.Id });
+                    table.ForeignKey(
+                        name: "FK_IdentityProperties_IdentityResources_IdentityResourceId",
+                        column: x => x.IdentityResourceId,
+                        principalSchema: "ids",
+                        principalTable: "IdentityResources",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_ApiResourceScopes_ApiResourceId",
                 schema: "ids",
@@ -455,6 +494,13 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                 schema: "ids",
                 table: "DeviceFlowCodes",
                 column: "Expiration");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_IdentityResources_Name",
+                schema: "ids",
+                table: "IdentityResources",
+                column: "Name",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_PersistedGrants_Expiration",
@@ -520,7 +566,11 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                 schema: "ids");
 
             migrationBuilder.DropTable(
-                name: "IdentityResources",
+                name: "IdentityClaims",
+                schema: "ids");
+
+            migrationBuilder.DropTable(
+                name: "IdentityProperties",
                 schema: "ids");
 
             migrationBuilder.DropTable(
@@ -533,6 +583,10 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
 
             migrationBuilder.DropTable(
                 name: "Clients",
+                schema: "ids");
+
+            migrationBuilder.DropTable(
+                name: "IdentityResources",
                 schema: "ids");
         }
     }

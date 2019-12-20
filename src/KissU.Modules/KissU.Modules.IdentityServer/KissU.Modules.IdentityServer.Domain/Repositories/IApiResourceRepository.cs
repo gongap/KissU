@@ -23,28 +23,28 @@ namespace KissU.Modules.IdentityServer.Domain.Repositories
         /// </summary>
         /// <param name="apiResourceId">Api资源编号</param>
         /// <returns></returns>
-        Task<List<ApiResourceScope>> GetApiResourceScopesAsync(Guid apiResourceId);
+        Task<List<ApiScope>> GetApiResourceScopesAsync(Guid apiResourceId);
 
         /// <summary>
         /// 获取Api许可范围
         /// </summary>
         /// <param name="id">Api许可范围编号</param>
         /// <returns></returns>
-        Task<ApiResourceScope> GetApiResourceScopeAsync(Guid id);
+        Task<ApiScope> GetApiResourceScopeAsync(Guid id);
 
         /// <summary>
         /// 创建Api许可范围
         /// </summary>
         /// <param name="entity">api许可范围</param>
         /// <returns></returns>
-        Task CreateApiResourceScopeAsync([Valid] ApiResourceScope entity);
+        Task CreateApiResourceScopeAsync([Valid] ApiScope entity);
 
         /// <summary>
         /// 更新Api许可范围
         /// </summary>
         /// <param name="entity">api许可范围</param>
         /// <returns></returns>
-        Task UpdateApiResourceScopeAsync([Valid] ApiResourceScope entity);
+        Task UpdateApiResourceScopeAsync([Valid] ApiScope entity);
 
         /// <summary>
         /// 删除Api许可范围
@@ -62,21 +62,21 @@ namespace KissU.Modules.IdentityServer.Domain.Repositories
         /// </summary>
         /// <param name="apiResourceId">Api资源编号</param>
         /// <returns></returns>
-        Task<List<ApiResourceSecret>> GetApiResourceSecretsAsync(Guid apiResourceId);
+        Task<List<ApiSecret>> GetApiResourceSecretsAsync(Guid apiResourceId);
 
         /// <summary>
         /// 获取Api密钥
         /// </summary>
         /// <param name="id">Api密钥编号</param>
         /// <returns></returns>
-        Task<ApiResourceSecret> GetApiResourceSecretAsync(Guid id);
+        Task<ApiSecret> GetApiResourceSecretAsync(Guid id);
 
         /// <summary>
         /// 创建Api密钥
         /// </summary>
         /// <param name="entity">api密钥</param>
         /// <returns></returns>
-        Task CreateApiResourceSecretAsync([Valid] ApiResourceSecret entity);
+        Task CreateApiResourceSecretAsync([Valid] ApiSecret entity);
 
         /// <summary>
         /// 删除Api密钥
