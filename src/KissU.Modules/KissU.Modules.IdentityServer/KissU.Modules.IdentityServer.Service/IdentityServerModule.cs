@@ -8,7 +8,6 @@ using Autofac.Extensions.DependencyInjection;
 using KissU.Modules.IdentityServer.Data.UnitOfWorks;
 using KissU.Modules.IdentityServer.Data.UnitOfWorks.SqlServer;
 using Microsoft.Extensions.DependencyInjection;
-using KissU.Util.Datas.Ef;
 using KissU.Util.Datas.SqlServer;
 
 namespace KissU.Modules.IdentityServer.Service

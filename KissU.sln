@@ -214,6 +214,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.Datas.Tests.Inte
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.STS.IdentityServer", "src\KissU.Applications\KissU.STS.IdentityServer\KissU.STS.IdentityServer.csproj", "{09BBD5FA-1081-4DB6-AA0A-78B619BC8376}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.IdentityServer", "src\KissU.Modules\KissU.Modules.IdentityServer\KissU.Modules.IdentityServer\KissU.Modules.IdentityServer.csproj", "{05637D4C-8E4D-4966-9840-3D0E738CA412}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -532,6 +534,10 @@ Global
 		{09BBD5FA-1081-4DB6-AA0A-78B619BC8376}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09BBD5FA-1081-4DB6-AA0A-78B619BC8376}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09BBD5FA-1081-4DB6-AA0A-78B619BC8376}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05637D4C-8E4D-4966-9840-3D0E738CA412}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05637D4C-8E4D-4966-9840-3D0E738CA412}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05637D4C-8E4D-4966-9840-3D0E738CA412}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05637D4C-8E4D-4966-9840-3D0E738CA412}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -631,6 +637,7 @@ Global
 		{43989AA0-F5CC-4DF5-9C81-9F52084E6F40} = {D4F921B5-1BBD-4F36-A1D0-DE934C035713}
 		{BF84EE47-D459-41CE-B11F-BAAE0E559035} = {CB057367-A90D-4ABE-B056-D1AAAE40CB79}
 		{09BBD5FA-1081-4DB6-AA0A-78B619BC8376} = {F7F6CB7E-792F-496B-925A-BB5B0DB67DB6}
+		{05637D4C-8E4D-4966-9840-3D0E738CA412} = {8041CF7B-89DA-475F-92ED-0153EAEF6DC1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}

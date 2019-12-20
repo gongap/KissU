@@ -7,9 +7,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using KissU.Modules.IdentityServer.Data.UnitOfWorks;
-using KissU.Modules.IdentityServer.Domain;
 using KissU.Modules.IdentityServer.Domain.Models.ClientAggregate;
 using KissU.Modules.IdentityServer.Domain.Repositories;
+using KissU.Modules.IdentityServer.Domain.Shared;
 using KissU.Modules.IdentityServer.Domain.Shared.Enums;
 using KissU.Modules.IdentityServer.Service.Contracts.Abstractions;
 using KissU.Modules.IdentityServer.Service.Contracts.Dtos;
@@ -306,7 +306,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         /// <param name="request">应用程序密钥</param>
         private void HashApiSharedSecret(ClientSecretCreateRequest request)
         {
-            if (request.Type != Constants.SecretTypes.SharedSecret)
+            if (request.Type != IdentityServerConstants.SecretTypes.SharedSecret)
             {
                 return;
             }

@@ -1,6 +1,6 @@
-﻿namespace KissU.Modules.IdentityServer.Domain
+﻿namespace KissU.Modules.IdentityServer.Domain.Shared
 {
-    public class Constants
+    public class IdentityServerConstants
     {
         public const string LocalIdentityProvider = "local";
         public const string DefaultCookieAuthenticationScheme = "idsrv";

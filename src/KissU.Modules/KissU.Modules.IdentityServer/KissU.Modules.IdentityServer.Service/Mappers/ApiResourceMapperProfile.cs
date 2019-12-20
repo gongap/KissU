@@ -6,7 +6,6 @@ using AutoMapper;
 using KissU.Modules.IdentityServer.Domain.Models.ApiResourceAggregate;
 using KissU.Modules.IdentityServer.Service.Contracts.Dtos;
 using KissU.Modules.IdentityServer.Service.Contracts.Dtos.Requests;
-using Ids4 = IdentityServer4.Models;
 
 namespace KissU.Modules.IdentityServer.Service.Mappers
 {
@@ -39,9 +38,6 @@ namespace KissU.Modules.IdentityServer.Service.Mappers
                 .ForMember(x => x.ApiResourceId, opt => opt.MapFrom(x => x.ApiResource.Id));
             CreateMap<ApiResourceSecretCreateRequest, ApiResourceSecret>(MemberList.Source)
                 .ForMember(x => x.ApiResource, opts => opts.MapFrom(src => new ApiResource(src.ApiResourceId)));
-
-            CreateMap<ApiResourceSecret, Ids4.Secret>(MemberList.Destination)
-                .ForMember(dest => dest.Type, opt => opt.Condition(srs => srs != null));
         }
     }
 }

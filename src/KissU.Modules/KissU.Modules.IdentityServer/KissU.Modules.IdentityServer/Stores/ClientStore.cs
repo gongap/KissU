@@ -5,12 +5,11 @@
 using System.Linq;
 using System.Threading.Tasks;
 using IdentityServer4.Stores;
-using KissU.Modules.IdentityServer.Domain.Models.ClientAggregate;
 using KissU.Modules.IdentityServer.Domain.Repositories;
-using Microsoft.EntityFrameworkCore;
 using KissU.Util.Maps;
+using Microsoft.EntityFrameworkCore;
 
-namespace KissU.Modules.IdentityServer.Data.Stores
+namespace KissU.Modules.IdentityServer.Stores
 {
     /// <summary>
     /// 应用程序存储器

@@ -2,7 +2,6 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
-using System.Linq;
 using KissU.Modules.IdentityServer.Data.UnitOfWorks;
 using KissU.Modules.IdentityServer.Domain.Models.PersistedGrantAggregate;
 using KissU.Modules.IdentityServer.Domain.Repositories;

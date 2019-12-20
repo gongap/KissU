@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 using IdentityServer4.Models;
 using IdentityServer4.Stores;
 using KissU.Modules.IdentityServer.Domain.Repositories;
-using Microsoft.EntityFrameworkCore;
 using KissU.Util.Maps;
+using Microsoft.EntityFrameworkCore;
 
-namespace KissU.Modules.IdentityServer.Data.Stores
+namespace KissU.Modules.IdentityServer.Stores
 {
     /// <summary>
     /// 资源存储
@@ -30,10 +30,8 @@ namespace KissU.Modules.IdentityServer.Data.Stores
         public ResourceStore(IApiResourceRepository apiResourceRepository,
             IIdentityResourceRepository identityResourceRepository)
         {
-            _apiResourcePoStore =
-                apiResourceRepository ?? throw new ArgumentNullException(nameof(apiResourceRepository));
-            _identityResourcesPoStore = identityResourceRepository ??
-                                        throw new ArgumentNullException(nameof(identityResourceRepository));
+            _apiResourcePoStore = apiResourceRepository ?? throw new ArgumentNullException(nameof(apiResourceRepository));
+            _identityResourcesPoStore = identityResourceRepository ?? throw new ArgumentNullException(nameof(identityResourceRepository));
         }
 
         /// <summary>

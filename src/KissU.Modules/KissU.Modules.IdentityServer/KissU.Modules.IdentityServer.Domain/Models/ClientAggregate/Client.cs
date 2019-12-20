@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using KissU.Modules.IdentityServer.Domain.Shared.Enums;
+using KissU.Modules.IdentityServer.Domain.Shared;
 
 namespace KissU.Modules.IdentityServer.Domain.Models.ClientAggregate
 {
@@ -86,7 +87,7 @@ namespace KissU.Modules.IdentityServer.Domain.Models.ClientAggregate
         [Required]
         [StringLength(200, ErrorMessage = "协议类型输入过长，不能超过200位")]
         [DisplayName("协议类型")]
-        public string ProtocolType { get; set; } = Constants.ProtocolTypes.OpenIdConnect;
+        public string ProtocolType { get; set; } = IdentityServerConstants.ProtocolTypes.OpenIdConnect;
 
         /// <summary>
         /// 指定此应用程序是否需要密钥才能从令牌端点请求令牌（默认为true）
