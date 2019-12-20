@@ -86,49 +86,23 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "EventLogs",
+                name: "DeviceFlowCodes",
                 schema: "ids",
                 columns: table => new
                 {
+                    UserCode = table.Column<string>(maxLength: 200, nullable: false),
                     Id = table.Column<Guid>(nullable: false),
                     Version = table.Column<byte[]>(rowVersion: true, nullable: true),
-                    EventId = table.Column<int>(nullable: false),
-                    ProcessId = table.Column<int>(nullable: false),
-                    ActivityId = table.Column<string>(nullable: true),
-                    Category = table.Column<string>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
-                    EventType = table.Column<int>(nullable: false),
-                    Message = table.Column<string>(nullable: true),
-                    Username = table.Column<string>(nullable: true),
-                    Provider = table.Column<string>(nullable: true),
-                    ProviderUserId = table.Column<string>(nullable: true),
-                    SubjectId = table.Column<string>(nullable: true),
-                    DisplayName = table.Column<string>(nullable: true),
-                    ClientId = table.Column<string>(nullable: true),
-                    ClientName = table.Column<string>(nullable: true),
-                    TokenType = table.Column<string>(nullable: true),
-                    Token = table.Column<string>(nullable: true),
-                    RedirectUri = table.Column<string>(nullable: true),
-                    Endpoint = table.Column<string>(nullable: true),
-                    Scopes = table.Column<string>(nullable: true),
-                    GrantType = table.Column<string>(nullable: true),
-                    AuthenticationMethod = table.Column<string>(nullable: true),
-                    ApiName = table.Column<string>(nullable: true),
-                    IsActive = table.Column<bool>(nullable: false),
-                    ConsentRemembered = table.Column<bool>(nullable: false),
-                    Error = table.Column<string>(nullable: true),
-                    ErrorDescription = table.Column<string>(nullable: true),
-                    Details = table.Column<string>(nullable: true),
-                    LocalIpAddress = table.Column<string>(nullable: true),
-                    RemoteIpAddress = table.Column<string>(nullable: true),
-                    Host = table.Column<string>(nullable: true),
-                    Url = table.Column<string>(nullable: true),
-                    Browser = table.Column<string>(nullable: true),
-                    TimeStamp = table.Column<DateTime>(nullable: false)
+                    DeviceCode = table.Column<string>(maxLength: 200, nullable: false),
+                    SubjectId = table.Column<string>(maxLength: 200, nullable: true),
+                    ClientId = table.Column<string>(maxLength: 200, nullable: false),
+                    CreationTime = table.Column<DateTime>(nullable: false),
+                    Expiration = table.Column<DateTime>(nullable: false),
+                    Data = table.Column<string>(maxLength: 50000, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EventLogs", x => x.Id);
+                    table.PrimaryKey("PK_DeviceFlowCodes", x => x.UserCode);
                 });
 
             migrationBuilder.CreateTable(
@@ -162,19 +136,19 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                 schema: "ids",
                 columns: table => new
                 {
+                    Key = table.Column<string>(maxLength: 200, nullable: false),
                     Id = table.Column<Guid>(nullable: false),
                     Version = table.Column<byte[]>(rowVersion: true, nullable: true),
-                    Key = table.Column<string>(maxLength: 200, nullable: true),
+                    Type = table.Column<string>(maxLength: 50, nullable: false),
                     SubjectId = table.Column<string>(maxLength: 200, nullable: true),
-                    Type = table.Column<string>(maxLength: 50, nullable: true),
-                    ClientId = table.Column<string>(maxLength: 200, nullable: true),
-                    Data = table.Column<string>(nullable: true),
+                    ClientId = table.Column<string>(maxLength: 200, nullable: false),
+                    Data = table.Column<string>(maxLength: 50000, nullable: false),
                     CreationTime = table.Column<DateTime>(nullable: false),
                     Expiration = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PersistedGrants", x => x.Id);
+                    table.PrimaryKey("PK_PersistedGrants", x => x.Key);
                 });
 
             migrationBuilder.CreateTable(
@@ -468,6 +442,31 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                 schema: "ids",
                 table: "ClientSecrets",
                 column: "ClientId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DeviceFlowCodes_DeviceCode",
+                schema: "ids",
+                table: "DeviceFlowCodes",
+                column: "DeviceCode",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DeviceFlowCodes_Expiration",
+                schema: "ids",
+                table: "DeviceFlowCodes",
+                column: "Expiration");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PersistedGrants_Expiration",
+                schema: "ids",
+                table: "PersistedGrants",
+                column: "Expiration");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PersistedGrants_SubjectId_ClientId_Type",
+                schema: "ids",
+                table: "PersistedGrants",
+                columns: new[] { "SubjectId", "ClientId", "Type" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -517,7 +516,7 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                 schema: "ids");
 
             migrationBuilder.DropTable(
-                name: "EventLogs",
+                name: "DeviceFlowCodes",
                 schema: "ids");
 
             migrationBuilder.DropTable(
