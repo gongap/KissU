@@ -3,7 +3,7 @@
 // </copyright>
 
 using AutoMapper;
-using KissU.Modules.IdentityServer.Domain.Models.ApiResourceAggregate;
+using KissU.Modules.IdentityServer.Domain.Models;
 using Ids4 = IdentityServer4.Models;
 
 namespace KissU.Modules.IdentityServer.Mappers

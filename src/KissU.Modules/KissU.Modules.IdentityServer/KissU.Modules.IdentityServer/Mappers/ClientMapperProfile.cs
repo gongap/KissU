@@ -5,8 +5,8 @@
 using System.Collections.Generic;
 using System.Security.Claims;
 using AutoMapper;
-using KissU.Modules.IdentityServer.Domain.Models.ClientAggregate;
-using Client = KissU.Modules.IdentityServer.Domain.Models.ClientAggregate.Client;
+using KissU.Modules.IdentityServer.Domain.Models;
+using Client = KissU.Modules.IdentityServer.Domain.Models.Client;
 using Ids4 = IdentityServer4.Models;
 
 namespace KissU.Modules.IdentityServer.Mappers

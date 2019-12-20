@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using KissU.Util.Domains;
+﻿using KissU.Util.Domains;
 
-namespace KissU.Modules.IdentityServer.Domain.Models.ClientAggregate
+namespace KissU.Modules.IdentityServer.Domain.Models
 {
     /// <summary>
     /// 令牌或授权码的URI

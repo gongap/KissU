@@ -2,13 +2,13 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
-using KissU.Util.Domains;
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using KissU.Util.Domains;
 
-namespace KissU.Modules.IdentityServer.Domain.Models.PersistedGrantAggregate
+namespace KissU.Modules.IdentityServer.Domain.Models
 {
     /// <summary>
     /// 认证操作数据（令牌，代码和同意书）

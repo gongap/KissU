@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace KissU.Modules.IdentityServer.Domain.Models.ClientAggregate
+﻿namespace KissU.Modules.IdentityServer.Domain.Models
 {
     public class ClientScope
     {

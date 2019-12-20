@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using KissU.Modules.IdentityServer.Data.UnitOfWorks;
-using KissU.Modules.IdentityServer.Domain.Models.ApiResourceAggregate;
+using KissU.Modules.IdentityServer.Domain.Models;
 using KissU.Modules.IdentityServer.Domain.Repositories;
 using KissU.Modules.IdentityServer.Domain.Shared;
 using KissU.Modules.IdentityServer.Domain.Shared.Enums;

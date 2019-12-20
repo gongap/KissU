@@ -2,17 +2,17 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
-using KissU.Util;
-using KissU.Util.Domains;
-using KissU.Util.Domains.Auditing;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using KissU.Util;
+using KissU.Util.Domains;
+using KissU.Util.Domains.Auditing;
 using Convert = KissU.Util.Helpers.Convert;
 
-namespace KissU.Modules.IdentityServer.Domain.Models.ApiResourceAggregate
+namespace KissU.Modules.IdentityServer.Domain.Models
 {
     /// <summary>
     /// Api资源

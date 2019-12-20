@@ -5,7 +5,7 @@
 using System.Collections.Generic;
 using System.Security.Claims;
 using AutoMapper;
-using KissU.Modules.IdentityServer.Domain.Models.ClientAggregate;
+using KissU.Modules.IdentityServer.Domain.Models;
 
 namespace KissU.Modules.IdentityServer.Service.Mappers
 {

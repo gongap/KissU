@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.Modules.IdentityServer.Domain.Models.PersistedGrantAggregate;
+using KissU.Modules.IdentityServer.Domain.Models;
 
 namespace KissU.Modules.IdentityServer.Services
 {

@@ -2,7 +2,7 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
-using KissU.Modules.IdentityServer.Domain.Models.ApiResourceAggregate;
+using KissU.Modules.IdentityServer.Domain.Models;
 using KissU.Util.Datas.SqlServer.Ef;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;

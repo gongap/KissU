@@ -11,7 +11,7 @@ using KissU.Modules.IdentityServer.Domain.Repositories;
 using KissU.Util.Maps;
 using Microsoft.EntityFrameworkCore;
 using Ids4 = IdentityServer4.Models;
-using PersistedGrant = KissU.Modules.IdentityServer.Domain.Models.PersistedGrantAggregate.PersistedGrant;
+using PersistedGrant = KissU.Modules.IdentityServer.Domain.Models.PersistedGrant;
 
 namespace KissU.Modules.IdentityServer.Stores
 {

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using KissU.Modules.IdentityServer.Data.UnitOfWorks;
-using KissU.Modules.IdentityServer.Domain.Models.ClientAggregate;
+using KissU.Modules.IdentityServer.Domain.Models;
 using KissU.Modules.IdentityServer.Domain.Repositories;
 using KissU.Modules.IdentityServer.Domain.Shared;
 using KissU.Modules.IdentityServer.Domain.Shared.Enums;
@@ -21,7 +21,7 @@ using KissU.Util.Datas.Queries;
 using KissU.Util.Domains.Repositories;
 using KissU.Util.Exceptions;
 using KissU.Util.Maps;
-using Client = KissU.Modules.IdentityServer.Domain.Models.ClientAggregate.Client;
+using Client = KissU.Modules.IdentityServer.Domain.Models.Client;
 using Extensions = KissU.Modules.IdentityServer.Domain.Shared.Extensions;
 using GrantTypes = KissU.Modules.IdentityServer.Domain.Shared.GrantTypes;
 

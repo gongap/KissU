@@ -2,8 +2,8 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using KissU.Modules.IdentityServer.Domain.Models;
 using KissU.Util.Domains.Repositories;
-using KissU.Modules.IdentityServer.Domain.Models.IdentityResourceAggregate;
 
 namespace KissU.Modules.IdentityServer.Domain.Repositories
 {

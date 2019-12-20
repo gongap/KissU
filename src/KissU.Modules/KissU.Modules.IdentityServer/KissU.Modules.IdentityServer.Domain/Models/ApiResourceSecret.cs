@@ -2,13 +2,13 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
-using KissU.Util.Domains;
-using KissU.Util.Domains.Auditing;
 using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using KissU.Util.Domains;
+using KissU.Util.Domains.Auditing;
 
-namespace KissU.Modules.IdentityServer.Domain.Models.ApiResourceAggregate
+namespace KissU.Modules.IdentityServer.Domain.Models
 {
     /// <summary>
     /// Api资源密钥

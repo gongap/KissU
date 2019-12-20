@@ -7,7 +7,7 @@ using KissU.Util.Validations.Aspects;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.Modules.IdentityServer.Domain.Models.ApiResourceAggregate;
+using KissU.Modules.IdentityServer.Domain.Models;
 
 namespace KissU.Modules.IdentityServer.Domain.Repositories
 {
