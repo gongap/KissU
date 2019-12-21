@@ -13,7 +13,7 @@ namespace KissU.Modules.IdentityServer.Domain.Models
     /// <summary>
     /// Api许可范围
     /// </summary>
-    public class ApiScope : EntityBase<ApiScope, Guid>
+    public class ApiScope : EntityBase<ApiScope>
     {
         /// <summary>
         /// 初始化Api许可范围
@@ -30,7 +30,6 @@ namespace KissU.Modules.IdentityServer.Domain.Models
         /// <summary>
         /// 应包含在身份令牌中的关联用户声明类型的列表。
         /// </summary>
-        [NotMapped]
         public List<UserClaim> UserClaims { get; set; }
 
         /// <summary>

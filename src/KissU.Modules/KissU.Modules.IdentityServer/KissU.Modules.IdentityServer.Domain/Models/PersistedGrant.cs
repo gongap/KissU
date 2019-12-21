@@ -3,7 +3,6 @@
 // </copyright>
 
 using System;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using KissU.Util.Domains;
 
@@ -12,12 +11,12 @@ namespace KissU.Modules.IdentityServer.Domain.Models
     /// <summary>
     /// 认证操作数据（令牌，代码和同意书）
     /// </summary>
-    public class PersistedGrant : AggregateRoot<PersistedGrant>
+    public class PersistedGrant : AggregateRoot<PersistedGrant, int>
     {
         /// <summary>
         /// 初始化认证操作数据
         /// </summary>
-        public PersistedGrant() : base(Guid.Empty)
+        public PersistedGrant() : base(default)
         {
         }
 

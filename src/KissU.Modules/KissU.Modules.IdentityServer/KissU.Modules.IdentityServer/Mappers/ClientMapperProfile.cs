@@ -31,7 +31,7 @@ namespace KissU.Modules.IdentityServer.Mappers
                 .ConstructUsing(src => new Claim(src.Type, src.Value))
                 .ReverseMap();
 
-            CreateMap<ClientProperty, KeyValuePair<string, string>>()
+            CreateMap<Property, KeyValuePair<string, string>>()
                 .ReverseMap();
 
             CreateMap<ClientGrantType, string>()

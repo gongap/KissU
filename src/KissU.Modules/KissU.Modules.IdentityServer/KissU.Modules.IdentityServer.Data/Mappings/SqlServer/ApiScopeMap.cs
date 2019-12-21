@@ -34,11 +34,17 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
             builder.Property(x => x.Description).HasMaxLength(1000);
 
             builder.HasIndex(x => x.Name).IsUnique();
+        }
 
-            builder.OwnsMany(t => t.UserClaims, ob =>
+        /// <summary>
+        /// 映射导航属性
+        /// </summary>
+        protected override void MapAssociations(EntityTypeBuilder<ApiScope> builder)
+        {
+            builder.OwnsMany(t => t.UserClaims, p =>
             {
-                ob.ToTable(Consts.DbTablePrefix + "ApiScopeClaims", Consts.DbSchema);
-                ob.Property(x => x.Type);
+                p.ToTable(Consts.DbTablePrefix + "ApiScopeClaims", Consts.DbSchema);
+                p.Property(x => x.Type).HasMaxLength(200).IsRequired();
             });
         }
     }

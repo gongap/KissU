@@ -25,16 +25,6 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("ClaimTypes")
-                        .HasColumnType("nvarchar(2000)")
-                        .HasMaxLength(2000);
-
-                    b.Property<DateTime?>("CreationTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("CreatorId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(1000)")
                         .HasMaxLength(1000);
@@ -45,15 +35,6 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
 
                     b.Property<bool>("Enabled")
                         .HasColumnType("bit");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("LastModifierId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -67,26 +48,19 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Name")
+                        .IsUnique();
+
                     b.ToTable("ApiResources","ids");
                 });
 
-            modelBuilder.Entity("KissU.Modules.IdentityServer.Domain.Models.ApiResourceScope", b =>
+            modelBuilder.Entity("KissU.Modules.IdentityServer.Domain.Models.ApiScope", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("ApiResourceId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("ClaimTypes")
-                        .HasColumnType("nvarchar(2000)")
-                        .HasMaxLength(2000);
-
-                    b.Property<DateTime?>("CreationTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("CreatorId")
+                    b.Property<Guid>("ApiResourceId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Description")
@@ -99,12 +73,6 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
 
                     b.Property<bool>("Emphasize")
                         .HasColumnType("bit");
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("LastModifierId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -121,22 +89,19 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
 
                     b.HasIndex("ApiResourceId");
 
-                    b.ToTable("ApiResourceScopes","ids");
+                    b.HasIndex("Name")
+                        .IsUnique();
+
+                    b.ToTable("ApiScopes","ids");
                 });
 
-            modelBuilder.Entity("KissU.Modules.IdentityServer.Domain.Models.ApiResourceSecret", b =>
+            modelBuilder.Entity("KissU.Modules.IdentityServer.Domain.Models.ApiSecret", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("ApiResourceId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("CreationTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("CreatorId")
+                    b.Property<Guid>("ApiResourceId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Description")
@@ -146,12 +111,6 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                     b.Property<DateTime?>("Expiration")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("LastModifierId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Type")
                         .IsRequired()
                         .HasColumnType("nvarchar(250)")
@@ -159,14 +118,14 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
 
                     b.Property<string>("Value")
                         .IsRequired()
-                        .HasColumnType("nvarchar(2000)")
-                        .HasMaxLength(2000);
+                        .HasColumnType("nvarchar(4000)")
+                        .HasMaxLength(4000);
 
                     b.HasKey("Id");
 
                     b.HasIndex("ApiResourceId");
 
-                    b.ToTable("ApiResourceSecrets","ids");
+                    b.ToTable("ApiSecrets","ids");
                 });
 
             modelBuilder.Entity("KissU.Modules.IdentityServer.Domain.Models.Client", b =>
@@ -218,8 +177,8 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
 
                     b.Property<string>("ClientId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(60)")
-                        .HasMaxLength(60);
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
 
                     b.Property<string>("ClientName")
                         .HasColumnType("nvarchar(200)")
@@ -231,12 +190,6 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
 
                     b.Property<int?>("ConsentLifetime")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("CreationTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("CreatorId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(1000)")
@@ -260,15 +213,6 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
 
                     b.Property<bool>("IncludeJwtId")
                         .HasColumnType("bit");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("LastModifierId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("LogoUri")
                         .HasColumnType("nvarchar(2000)")
@@ -304,12 +248,19 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                     b.Property<bool>("UpdateAccessTokenClaimsOnRefresh")
                         .HasColumnType("bit");
 
+                    b.Property<string>("UserCodeType")
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
+
                     b.Property<byte[]>("Version")
                         .IsConcurrencyToken()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ClientId")
+                        .IsUnique();
 
                     b.ToTable("Clients","ids");
                 });
@@ -320,19 +271,7 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("ClientId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("CreationTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("CreatorId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("LastModifierId")
+                    b.Property<Guid>("ClientId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Type")
@@ -342,8 +281,8 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
 
                     b.Property<string>("Value")
                         .IsRequired()
-                        .HasColumnType("nvarchar(2000)")
-                        .HasMaxLength(2000);
+                        .HasColumnType("nvarchar(250)")
+                        .HasMaxLength(250);
 
                     b.HasKey("Id");
 
@@ -358,27 +297,15 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("ClientId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("CreationTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("CreatorId")
+                    b.Property<Guid>("ClientId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(1000)")
-                        .HasMaxLength(1000);
+                        .HasColumnType("nvarchar(2000)")
+                        .HasMaxLength(2000);
 
                     b.Property<DateTime?>("Expiration")
                         .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("LastModifierId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Type")
                         .IsRequired()
@@ -387,8 +314,8 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
 
                     b.Property<string>("Value")
                         .IsRequired()
-                        .HasColumnType("nvarchar(2000)")
-                        .HasMaxLength(2000);
+                        .HasColumnType("nvarchar(4000)")
+                        .HasMaxLength(4000);
 
                     b.HasKey("Id");
 
@@ -425,8 +352,8 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                         .IsRequired()
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
 
                     b.Property<string>("SubjectId")
                         .HasColumnType("nvarchar(200)")
@@ -513,8 +440,8 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                     b.Property<DateTime?>("Expiration")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
 
                     b.Property<string>("SubjectId")
                         .HasColumnType("nvarchar(200)")
@@ -539,18 +466,98 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                     b.ToTable("PersistedGrants","ids");
                 });
 
-            modelBuilder.Entity("KissU.Modules.IdentityServer.Domain.Models.ApiResourceScope", b =>
+            modelBuilder.Entity("KissU.Modules.IdentityServer.Domain.Models.ApiResource", b =>
+                {
+                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.Property", "Properties", b1 =>
+                        {
+                            b1.Property<Guid>("ApiResourceId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int")
+                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                            b1.Property<string>("Key")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(250)")
+                                .HasMaxLength(250);
+
+                            b1.Property<string>("Value")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(2000)")
+                                .HasMaxLength(2000);
+
+                            b1.HasKey("ApiResourceId", "Id");
+
+                            b1.ToTable("ApiProperties","ids");
+
+                            b1.WithOwner()
+                                .HasForeignKey("ApiResourceId");
+                        });
+
+                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.UserClaim", "UserClaims", b1 =>
+                        {
+                            b1.Property<Guid>("ApiResourceId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int")
+                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                            b1.Property<string>("Type")
+                                .HasColumnType("nvarchar(200)")
+                                .HasMaxLength(200);
+
+                            b1.HasKey("ApiResourceId", "Id");
+
+                            b1.ToTable("ApiClaims","ids");
+
+                            b1.WithOwner()
+                                .HasForeignKey("ApiResourceId");
+                        });
+                });
+
+            modelBuilder.Entity("KissU.Modules.IdentityServer.Domain.Models.ApiScope", b =>
                 {
                     b.HasOne("KissU.Modules.IdentityServer.Domain.Models.ApiResource", "ApiResource")
                         .WithMany("Scopes")
-                        .HasForeignKey("ApiResourceId");
+                        .HasForeignKey("ApiResourceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.UserClaim", "UserClaims", b1 =>
+                        {
+                            b1.Property<Guid>("ApiScopeId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int")
+                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                            b1.Property<string>("Type")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(200)")
+                                .HasMaxLength(200);
+
+                            b1.HasKey("ApiScopeId", "Id");
+
+                            b1.ToTable("ApiScopeClaims","ids");
+
+                            b1.WithOwner()
+                                .HasForeignKey("ApiScopeId");
+                        });
                 });
 
-            modelBuilder.Entity("KissU.Modules.IdentityServer.Domain.Models.ApiResourceSecret", b =>
+            modelBuilder.Entity("KissU.Modules.IdentityServer.Domain.Models.ApiSecret", b =>
                 {
                     b.HasOne("KissU.Modules.IdentityServer.Domain.Models.ApiResource", "ApiResource")
                         .WithMany("Secrets")
-                        .HasForeignKey("ApiResourceId");
+                        .HasForeignKey("ApiResourceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("KissU.Modules.IdentityServer.Domain.Models.Client", b =>
@@ -566,7 +573,9 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                             b1.Property<string>("Origin")
-                                .HasColumnType("nvarchar(max)");
+                                .IsRequired()
+                                .HasColumnType("nvarchar(150)")
+                                .HasMaxLength(150);
 
                             b1.HasKey("ClientId", "Id");
 
@@ -587,7 +596,9 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                             b1.Property<string>("GrantType")
-                                .HasColumnType("nvarchar(max)");
+                                .IsRequired()
+                                .HasColumnType("nvarchar(250)")
+                                .HasMaxLength(250);
 
                             b1.HasKey("ClientId", "Id");
 
@@ -608,7 +619,9 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                             b1.Property<string>("Provider")
-                                .HasColumnType("nvarchar(max)");
+                                .IsRequired()
+                                .HasColumnType("nvarchar(200)")
+                                .HasMaxLength(200);
 
                             b1.HasKey("ClientId", "Id");
 
@@ -629,37 +642,13 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                             b1.Property<string>("PostLogoutRedirectUri")
-                                .HasColumnType("nvarchar(max)");
-
-                            b1.HasKey("ClientId", "Id");
-
-                            b1.ToTable("ClientPostLogoutRedirectUris","ids");
-
-                            b1.WithOwner()
-                                .HasForeignKey("ClientId");
-                        });
-
-                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.ClientProperty", "Properties", b1 =>
-                        {
-                            b1.Property<Guid>("ClientId")
-                                .HasColumnType("uniqueidentifier");
-
-                            b1.Property<int>("Id")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                            b1.Property<string>("Key")
-                                .HasColumnType("nvarchar(250)")
-                                .HasMaxLength(250);
-
-                            b1.Property<string>("Value")
+                                .IsRequired()
                                 .HasColumnType("nvarchar(2000)")
                                 .HasMaxLength(2000);
 
                             b1.HasKey("ClientId", "Id");
 
-                            b1.ToTable("ClientPropertys","ids");
+                            b1.ToTable("ClientPostLogoutRedirectUris","ids");
 
                             b1.WithOwner()
                                 .HasForeignKey("ClientId");
@@ -676,7 +665,9 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                             b1.Property<string>("RedirectUri")
-                                .HasColumnType("nvarchar(max)");
+                                .IsRequired()
+                                .HasColumnType("nvarchar(2000)")
+                                .HasMaxLength(2000);
 
                             b1.HasKey("ClientId", "Id");
 
@@ -697,11 +688,41 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                             b1.Property<string>("Scope")
-                                .HasColumnType("nvarchar(max)");
+                                .IsRequired()
+                                .HasColumnType("nvarchar(200)")
+                                .HasMaxLength(200);
 
                             b1.HasKey("ClientId", "Id");
 
                             b1.ToTable("ClientScopes","ids");
+
+                            b1.WithOwner()
+                                .HasForeignKey("ClientId");
+                        });
+
+                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.Property", "Properties", b1 =>
+                        {
+                            b1.Property<Guid>("ClientId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int")
+                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                            b1.Property<string>("Key")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(250)")
+                                .HasMaxLength(250);
+
+                            b1.Property<string>("Value")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(2000)")
+                                .HasMaxLength(2000);
+
+                            b1.HasKey("ClientId", "Id");
+
+                            b1.ToTable("ClientPropertys","ids");
 
                             b1.WithOwner()
                                 .HasForeignKey("ClientId");
@@ -712,14 +733,18 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                 {
                     b.HasOne("KissU.Modules.IdentityServer.Domain.Models.Client", "Client")
                         .WithMany("Claims")
-                        .HasForeignKey("ClientId");
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("KissU.Modules.IdentityServer.Domain.Models.ClientSecret", b =>
                 {
                     b.HasOne("KissU.Modules.IdentityServer.Domain.Models.Client", "Client")
                         .WithMany("ClientSecrets")
-                        .HasForeignKey("ClientId");
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("KissU.Modules.IdentityServer.Domain.Models.IdentityResource", b =>
@@ -730,15 +755,15 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                                 .HasColumnType("uniqueidentifier");
 
                             b1.Property<int>("Id")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                                .HasColumnType("int");
 
                             b1.Property<string>("Key")
+                                .IsRequired()
                                 .HasColumnType("nvarchar(250)")
                                 .HasMaxLength(250);
 
                             b1.Property<string>("Value")
+                                .IsRequired()
                                 .HasColumnType("nvarchar(2000)")
                                 .HasMaxLength(2000);
 
@@ -756,11 +781,10 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                                 .HasColumnType("uniqueidentifier");
 
                             b1.Property<int>("Id")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                                .HasColumnType("int");
 
                             b1.Property<string>("Type")
+                                .IsRequired()
                                 .HasColumnType("nvarchar(200)")
                                 .HasMaxLength(200);
 

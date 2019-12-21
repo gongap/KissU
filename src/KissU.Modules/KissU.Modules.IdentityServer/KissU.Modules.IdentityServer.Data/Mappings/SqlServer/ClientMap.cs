@@ -27,43 +27,69 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         /// </summary>
         protected override void MapProperties(EntityTypeBuilder<Client> builder)
         {
-            builder.HasQueryFilter(t => t.IsDeleted == false);
-            builder.OwnsMany(t => t.RedirectUris, ob =>
-            {
-                ob.ToTable(Consts.DbTablePrefix + "ClientRedirectUris", Consts.DbSchema);
-                ob.Property(x => x.RedirectUri);
-            });
-            builder.OwnsMany(t => t.AllowedGrantTypes, ob =>
-            {
-                ob.ToTable(Consts.DbTablePrefix + "ClientGrantTypes", Consts.DbSchema);
-                ob.Property(x => x.GrantType);
-            });
-            builder.OwnsMany(t => t.PostLogoutRedirectUris, ob =>
-            {
-                ob.ToTable(Consts.DbTablePrefix + "ClientPostLogoutRedirectUris", Consts.DbSchema);
-                ob.Property(x => x.PostLogoutRedirectUri);
-            });
-            builder.OwnsMany(t => t.AllowedScopes, ob =>
-            {
-                ob.ToTable(Consts.DbTablePrefix + "ClientScopes", Consts.DbSchema);
-                ob.Property(x => x.Scope);
-            });
-            builder.OwnsMany(t => t.IdentityProviderRestrictions, ob =>
-            {
-                ob.ToTable(Consts.DbTablePrefix + "ClientIdPRestrictions", Consts.DbSchema);
-                ob.Property(x => x.Provider);
-            });
-            builder.OwnsMany(t => t.AllowedCorsOrigins, ob =>
-            {
-                ob.ToTable(Consts.DbTablePrefix + "ClientCorsOrigins", Consts.DbSchema);
-                ob.Property(x => x.Origin);
-            });
-            builder.OwnsMany(t => t.Properties, ob =>
-            {
-                ob.ToTable(Consts.DbTablePrefix + "ClientPropertys", Consts.DbSchema);
-                ob.Property(x => x.Key);
-                ob.Property(x => x.Value);
-            });
+            builder.HasKey(x => x.Id);
+
+            builder.Property(x => x.ClientId).HasMaxLength(200).IsRequired();
+            builder.Property(x => x.ProtocolType).HasMaxLength(200).IsRequired();
+            builder.Property(x => x.ClientName).HasMaxLength(200);
+            builder.Property(x => x.ClientUri).HasMaxLength(2000);
+            builder.Property(x => x.LogoUri).HasMaxLength(2000);
+            builder.Property(x => x.Description).HasMaxLength(1000);
+            builder.Property(x => x.FrontChannelLogoutUri).HasMaxLength(2000);
+            builder.Property(x => x.BackChannelLogoutUri).HasMaxLength(2000);
+            builder.Property(x => x.ClientClaimsPrefix).HasMaxLength(200);
+            builder.Property(x => x.PairWiseSubjectSalt).HasMaxLength(200);
+            builder.Property(x => x.UserCodeType).HasMaxLength(100);
+
+            builder.HasIndex(x => x.ClientId).IsUnique();
+
         }
+
+        /// <summary>
+        /// 映射导航属性
+        /// </summary>
+        protected override void MapAssociations(EntityTypeBuilder<Client> builder)
+        {
+            builder.OwnsMany(t => t.RedirectUris, p =>
+            {
+                p.ToTable(Consts.DbTablePrefix + "ClientRedirectUris", Consts.DbSchema);
+                p.Property(x => x.RedirectUri).HasMaxLength(2000).IsRequired();
+            });
+            builder.OwnsMany(t => t.AllowedGrantTypes, p =>
+            {
+                p.ToTable(Consts.DbTablePrefix + "ClientGrantTypes", Consts.DbSchema);
+                p.Property(x => x.GrantType).HasMaxLength(250).IsRequired();
+            });
+            builder.OwnsMany(t => t.PostLogoutRedirectUris, p =>
+            {
+                p.ToTable(Consts.DbTablePrefix + "ClientPostLogoutRedirectUris", Consts.DbSchema);
+                p.Property(x => x.PostLogoutRedirectUri).HasMaxLength(2000).IsRequired();
+            });
+            builder.OwnsMany(t => t.AllowedScopes, p =>
+            {
+                p.ToTable(Consts.DbTablePrefix + "ClientScopes", Consts.DbSchema);
+                p.Property(x => x.Scope).HasMaxLength(200).IsRequired();
+            });
+            builder.OwnsMany(t => t.IdentityProviderRestrictions, p =>
+            {
+                p.ToTable(Consts.DbTablePrefix + "ClientIdPRestrictions", Consts.DbSchema);
+                p.Property(x => x.Provider).HasMaxLength(200).IsRequired();
+            });
+            builder.OwnsMany(t => t.AllowedCorsOrigins, p =>
+            {
+                p.ToTable(Consts.DbTablePrefix + "ClientCorsOrigins", Consts.DbSchema);
+                p.Property(x => x.Origin).HasMaxLength(150).IsRequired();
+            });
+            builder.OwnsMany(t => t.Properties, p =>
+            {
+                p.ToTable(Consts.DbTablePrefix + "ClientPropertys", Consts.DbSchema);
+                p.Property(x => x.Key).HasMaxLength(250).IsRequired();
+                p.Property(x => x.Value).HasMaxLength(2000).IsRequired();
+            });
+
+            builder.HasMany(x => x.ClientSecrets).WithOne(x => x.Client).IsRequired().OnDelete(DeleteBehavior.Cascade);
+            builder.HasMany(x => x.Claims).WithOne(x => x.Client).IsRequired().OnDelete(DeleteBehavior.Cascade);
+        }
+
     }
 }

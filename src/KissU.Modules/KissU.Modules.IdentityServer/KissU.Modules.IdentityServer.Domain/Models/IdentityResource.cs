@@ -4,19 +4,15 @@
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using KissU.Util;
 using KissU.Util.Domains;
-using KissU.Util.Domains.Auditing;
 
 namespace KissU.Modules.IdentityServer.Domain.Models
 {
     /// <summary>
     /// 身份资源
     /// </summary>
-    public class IdentityResource : AggregateRoot<IdentityResource, Guid>
+    public class IdentityResource : AggregateRoot<IdentityResource>
     {
         /// <summary>
         /// 初始化身份资源

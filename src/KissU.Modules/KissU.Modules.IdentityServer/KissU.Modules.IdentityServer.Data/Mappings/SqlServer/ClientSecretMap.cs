@@ -27,6 +27,9 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         /// </summary>
         protected override void MapProperties(EntityTypeBuilder<ClientSecret> builder)
         {
+            builder.Property(x => x.Value).HasMaxLength(4000).IsRequired();
+            builder.Property(x => x.Type).HasMaxLength(250).IsRequired();
+            builder.Property(x => x.Description).HasMaxLength(2000);
         }
     }
 }

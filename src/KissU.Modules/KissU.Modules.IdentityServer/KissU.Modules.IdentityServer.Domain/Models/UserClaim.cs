@@ -1,4 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿// <copyright file="UserClaim.cs" company="KissU">
+// Copyright (c) KissU. All Rights Reserved.
+// </copyright>
+
+using System.ComponentModel.DataAnnotations;
 using KissU.Util.Domains;
 
 namespace KissU.Modules.IdentityServer.Domain.Models

@@ -1,4 +1,4 @@
-﻿// <copyright file="PersistedGrantService.cs" company="KissU">
+﻿// <copyright file="DeviceFlowCodeService.cs" company="KissU">
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
@@ -15,28 +15,28 @@ using KissU.Util.Domains.Repositories;
 namespace KissU.Modules.IdentityServer.Service.Implements
 {
     /// <summary>
-    /// 认证操作数据服务
+    /// 设备流代码服务
     /// </summary>
-    public class PersistedGrantService : DeleteServiceBase<PersistedGrant, PersistedGrantDto, PersistedGrantQuery, int>,
-        IPersistedGrantService
+    public class DeviceFlowCodeService : DeleteServiceBase<DeviceFlowCode, DeviceFlowCodeDto, DeviceFlowCodeQuery, int>,
+        IDeviceFlowCodeService
     {
         /// <summary>
-        /// 初始化认证操作数据服务
+        /// 初始化设备流代码服务服务
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
-        /// <param name="persistedGrantRepository">认证操作数据仓储</param>
-        public PersistedGrantService(IIdentityServerUnitOfWork unitOfWork,
-            IPersistedGrantRepository persistedGrantRepository)
-            : base(unitOfWork, persistedGrantRepository)
+        /// <param name="deviceFlowCodeRepository">设备流代码服务仓储</param>
+        public DeviceFlowCodeService(IIdentityServerUnitOfWork unitOfWork,
+            IDeviceFlowCodeRepository deviceFlowCodeRepository)
+            : base(unitOfWork, deviceFlowCodeRepository)
         {
-            PersistedGrantRepository = persistedGrantRepository;
+            DeviceFlowCodeRepository = deviceFlowCodeRepository;
             UnitOfWork = unitOfWork;
         }
 
         /// <summary>
-        /// 认证操作数据仓储
+        /// 数据仓储
         /// </summary>
-        public IPersistedGrantRepository PersistedGrantRepository { get; set; }
+        public IDeviceFlowCodeRepository DeviceFlowCodeRepository { get; set; }
 
         /// <summary>
         /// 工作单元
@@ -46,10 +46,10 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         /// <summary>
         /// 创建查询对象
         /// </summary>
-        /// <param name="param">认证操作数据查询实体</param>
-        protected override IQueryBase<PersistedGrant> CreateQuery(PersistedGrantQuery param)
+        /// <param name="param">查询实体</param>
+        protected override IQueryBase<DeviceFlowCode> CreateQuery(DeviceFlowCodeQuery param)
         {
-            var query = new Query<PersistedGrant>(param);
+            var query = new Query<DeviceFlowCode>(param);
 
             if (string.IsNullOrWhiteSpace(param.Order))
             {

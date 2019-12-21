@@ -1,26 +1,18 @@
-﻿// <copyright file="DeviceFlowCode.cs" company="KissU">
+﻿// <copyright file="PersistedGrantDto.cs" company="KissU">
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
 using System;
 using System.ComponentModel.DataAnnotations;
-using KissU.Util.Domains;
+using KissU.Util.Applications.Dtos;
 
-namespace KissU.Modules.IdentityServer.Domain.Models
+namespace KissU.Modules.IdentityServer.Service.Contracts.Dtos
 {
     /// <summary>
-    /// 设备流代码
+    /// 设备流代码数据传输对象
     /// </summary>
-    public class DeviceFlowCode : AggregateRoot<DeviceFlowCode, int>
+    public class DeviceFlowCodeDto : DtoBase
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DeviceFlowCode"/> class.
-        /// 初始化
-        /// </summary>
-        public DeviceFlowCode() : base(default)
-        {
-        }
-
         /// <summary>
         /// 设备编号
         /// </summary>

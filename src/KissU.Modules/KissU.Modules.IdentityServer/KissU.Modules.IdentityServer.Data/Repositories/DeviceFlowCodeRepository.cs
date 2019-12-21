@@ -10,15 +10,15 @@ using KissU.Util.Datas.Ef.Core;
 namespace KissU.Modules.IdentityServer.Data.Repositories
 {
     /// <summary>
-    /// 认证操作数据仓储
+    /// 设备流代码仓储
     /// </summary>
-    public class PersistedGrantRepository : RepositoryBase<PersistedGrant, int>, IPersistedGrantRepository
+    public class DeviceFlowCodeRepository : RepositoryBase<DeviceFlowCode, int>, IDeviceFlowCodeRepository
     {
         /// <summary>
-        /// 初始化认证操作数据仓储
+        /// 初始化设备流代码仓储
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
-        public PersistedGrantRepository(IIdentityServerUnitOfWork unitOfWork) : base(unitOfWork)
+        public DeviceFlowCodeRepository(IIdentityServerUnitOfWork unitOfWork) : base(unitOfWork)
         {
         }
     }
