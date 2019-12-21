@@ -152,7 +152,6 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// </summary>
         protected override void CreateBefore(Client entity)
         {
-            base.CreateBefore(entity);
             if (ClientRepository.Exists(t => t.ClientId == entity.ClientId))
             {
                 ThrowDuplicateCodeException(entity.ClientId);
@@ -209,14 +208,6 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         private void ThrowDuplicateCodeException(string code)
         {
             throw new Warning(string.Format("编码 {0} 重复", code));
-        }
-
-        /// <summary>
-        /// 过滤
-        /// </summary>
-        protected override IQueryable<Client> Filter(IQueryable<Client> queryable, ClientQuery parameter)
-        {
-            return base.Filter(queryable, parameter);
         }
 
         /// <summary>

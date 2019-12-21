@@ -18,9 +18,9 @@ namespace KissU.Modules.IdentityServer.Application.Dtos.Requests
         /// </summary>
 
         [Required]
-        [StringLength(60, ErrorMessage = "应用程序唯一编码输入过长，不能超过60位")]
+        [StringLength(200, ErrorMessage = "应用程序唯一编码输入过长，不能超过60位")]
         [Display(Name = "应用程序唯一编码")]
-        public string ClientCode { get; set; }
+        public string ClientId { get; set; }
 
         /// <summary>
         /// 应用程序显示名称
