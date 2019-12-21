@@ -18,7 +18,7 @@ namespace KissU.Modules.IdentityServer.Application.Dtos.Requests
         /// </summary>
 
         [Required]
-        public Guid ClientId { get; set; }
+        public string ClientId { get; set; }
 
         /// <summary>
         /// 类型

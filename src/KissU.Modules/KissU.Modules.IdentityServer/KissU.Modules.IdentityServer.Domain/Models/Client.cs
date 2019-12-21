@@ -15,12 +15,12 @@ namespace KissU.Modules.IdentityServer.Domain.Models
     /// <summary>
     /// 应用程序
     /// </summary>
-    public class Client : AggregateRoot<Client>
+    public class Client : AggregateRoot<Client, int>
     {
         /// <summary>
         /// 初始化应用程序
         /// </summary>
-        public Client() : base(Guid.Empty)
+        public Client() : base(default)
         {
             ClientSecrets = new List<ClientSecret>();
             Claims = new List<ClientClaim>();

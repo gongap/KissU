@@ -18,13 +18,13 @@ namespace KissU.Modules.IdentityServer.Application.Dtos
         /// </summary>
 
         [Required]
-        public Guid ClientId { get; set; }
+        public string ClientId { get; set; }
 
         /// <summary>
         /// 编号
         /// </summary>
 
-        public string ClientCodeOriginal { get; set; }
+        public string ClientIdOriginal { get; set; }
 
         /// <summary>
         /// 名称

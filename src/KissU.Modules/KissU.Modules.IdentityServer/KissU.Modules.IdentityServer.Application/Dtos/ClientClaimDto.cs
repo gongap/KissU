@@ -14,13 +14,6 @@ namespace KissU.Modules.IdentityServer.Application.Dtos
     public class ClientClaimDto : DtoBase
     {
         /// <summary>
-        /// 应用程序
-        /// </summary>
-
-        [Required]
-        public Guid ClientId { get; set; }
-
-        /// <summary>
         /// 类型
         /// </summary>
         [Required]

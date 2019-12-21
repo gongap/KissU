@@ -15,14 +15,6 @@ namespace KissU.Modules.IdentityServer.Application.Dtos
     public class ClientSecretDto : DtoBase
     {
         /// <summary>
-        /// 应用程序编号
-        /// </summary>
-
-        [Required]
-        [Display(Name = "应用程序编号")]
-        public Guid ClientId { get; set; }
-
-        /// <summary>
         /// 密钥值
         /// </summary>
 

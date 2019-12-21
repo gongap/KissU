@@ -130,9 +130,10 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
 
             modelBuilder.Entity("KissU.Modules.IdentityServer.Domain.Models.Client", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("AbsoluteRefreshTokenLifetime")
                         .HasColumnType("int");
@@ -267,12 +268,13 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
 
             modelBuilder.Entity("KissU.Modules.IdentityServer.Domain.Models.ClientClaim", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<Guid>("ClientId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("ClientId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Type")
                         .IsRequired()
@@ -293,12 +295,13 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
 
             modelBuilder.Entity("KissU.Modules.IdentityServer.Domain.Models.ClientSecret", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<Guid>("ClientId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("ClientId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(2000)")
@@ -564,8 +567,8 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                 {
                     b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.ClientCorsOrigin", "AllowedCorsOrigins", b1 =>
                         {
-                            b1.Property<Guid>("ClientId")
-                                .HasColumnType("uniqueidentifier");
+                            b1.Property<int>("ClientId")
+                                .HasColumnType("int");
 
                             b1.Property<int>("Id")
                                 .ValueGeneratedOnAdd()
@@ -587,8 +590,8 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
 
                     b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.ClientGrantType", "AllowedGrantTypes", b1 =>
                         {
-                            b1.Property<Guid>("ClientId")
-                                .HasColumnType("uniqueidentifier");
+                            b1.Property<int>("ClientId")
+                                .HasColumnType("int");
 
                             b1.Property<int>("Id")
                                 .ValueGeneratedOnAdd()
@@ -610,8 +613,8 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
 
                     b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.ClientIdPRestriction", "IdentityProviderRestrictions", b1 =>
                         {
-                            b1.Property<Guid>("ClientId")
-                                .HasColumnType("uniqueidentifier");
+                            b1.Property<int>("ClientId")
+                                .HasColumnType("int");
 
                             b1.Property<int>("Id")
                                 .ValueGeneratedOnAdd()
@@ -633,8 +636,8 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
 
                     b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.ClientPostLogoutRedirectUri", "PostLogoutRedirectUris", b1 =>
                         {
-                            b1.Property<Guid>("ClientId")
-                                .HasColumnType("uniqueidentifier");
+                            b1.Property<int>("ClientId")
+                                .HasColumnType("int");
 
                             b1.Property<int>("Id")
                                 .ValueGeneratedOnAdd()
@@ -656,8 +659,8 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
 
                     b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.ClientRedirectUri", "RedirectUris", b1 =>
                         {
-                            b1.Property<Guid>("ClientId")
-                                .HasColumnType("uniqueidentifier");
+                            b1.Property<int>("ClientId")
+                                .HasColumnType("int");
 
                             b1.Property<int>("Id")
                                 .ValueGeneratedOnAdd()
@@ -679,8 +682,8 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
 
                     b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.ClientScope", "AllowedScopes", b1 =>
                         {
-                            b1.Property<Guid>("ClientId")
-                                .HasColumnType("uniqueidentifier");
+                            b1.Property<int>("ClientId")
+                                .HasColumnType("int");
 
                             b1.Property<int>("Id")
                                 .ValueGeneratedOnAdd()
@@ -702,8 +705,8 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
 
                     b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.Property", "Properties", b1 =>
                         {
-                            b1.Property<Guid>("ClientId")
-                                .HasColumnType("uniqueidentifier");
+                            b1.Property<int>("ClientId")
+                                .HasColumnType("int");
 
                             b1.Property<int>("Id")
                                 .ValueGeneratedOnAdd()

@@ -34,7 +34,7 @@ namespace KissU.Modules.IdentityServer.Service
         /// 通过编号获取
         /// </summary>
         /// <param name="id">实体编号</param>
-        public async Task<ClientDto> GetByIdAsync(Guid id)
+        public async Task<ClientDto> GetByIdAsync(int id)
         {
             return await _appService.GetByIdAsync(id);
         }
@@ -106,7 +106,7 @@ namespace KissU.Modules.IdentityServer.Service
         /// </summary>
         /// <param name="request">克隆请求参数</param>
         /// <returns></returns>
-        public async Task<Guid> CloneAsync(ClientCloneRequest request)
+        public async Task<int> CloneAsync(ClientCloneRequest request)
         {
             return await _appService.CloneAsync(request);
         }
@@ -114,11 +114,11 @@ namespace KissU.Modules.IdentityServer.Service
         /// <summary>
         /// 通过编码查找
         /// </summary>
-        /// <param name="clientCode"></param>
+        /// <param name="clientId"></param>
         /// <returns></returns>
-        public async Task<ClientDto> FindEnabledByCodeAsync(string clientCode)
+        public async Task<ClientDto> FindEnabledByIdAsync(string clientId)
         {
-            return await _appService.FindEnabledByCodeAsync(clientCode);
+            return await _appService.FindEnabledByIdAsync(clientId);
         }
 
         #region 应用程序声明
@@ -128,7 +128,7 @@ namespace KissU.Modules.IdentityServer.Service
         /// </summary>
         /// <param name="clientId">应用程序编号</param>
         /// <returns></returns>
-        public async Task<List<ClientClaimDto>> GetClaimsAsync(Guid clientId)
+        public async Task<List<ClientClaimDto>> GetClaimsAsync(int clientId)
         {
             return await _appService.GetClaimsAsync(clientId);
         }
@@ -136,11 +136,12 @@ namespace KissU.Modules.IdentityServer.Service
         /// <summary>
         /// 更新应用程序声明
         /// </summary>
+        /// <param name="clientId">应用标识</param>
         /// <param name="dto">应用程序声明</param>
         /// <returns></returns>
-        public async Task UpdateClaimAsync(ClientClaimDto dto)
+        public async Task UpdateClaimAsync(int clientId, ClientClaimDto dto)
         {
-            await _appService.UpdateClaimAsync(dto);
+            await _appService.UpdateClaimAsync(clientId, dto);
         }
 
         /// <summary>
@@ -148,7 +149,7 @@ namespace KissU.Modules.IdentityServer.Service
         /// </summary>
         /// <param name="id">应用程序声明编号</param>
         /// <returns></returns>
-        public async Task<ClientClaimDto> GetClaimAsync(Guid id)
+        public async Task<ClientClaimDto> GetClaimAsync(int id)
         {
             return await _appService.GetClaimAsync(id);
         }
@@ -156,11 +157,12 @@ namespace KissU.Modules.IdentityServer.Service
         /// <summary>
         /// 添加应用程序声明
         /// </summary>
+        /// <param name="clientId">应用标识</param>
         /// <param name="request">应用程序声明</param>
         /// <returns></returns>
-        public async Task<Guid> CreateClaimAsync(ClientClaimCreateRequest request)
+        public async Task<int> CreateClaimAsync(int clientId, ClientClaimCreateRequest request)
         {
-            return await _appService.CreateClaimAsync(request);
+            return await _appService.CreateClaimAsync(clientId, request);
         }
 
         /// <summary>
@@ -168,7 +170,7 @@ namespace KissU.Modules.IdentityServer.Service
         /// </summary>
         /// <param name="id">应用程序声明编号</param>
         /// <returns></returns>
-        public async Task DeleteClaimAsync(Guid id)
+        public async Task DeleteClaimAsync(int id)
         {
             await _appService.DeleteClaimAsync(id);
         }
@@ -182,7 +184,7 @@ namespace KissU.Modules.IdentityServer.Service
         /// </summary>
         /// <param name="clientId">应用程序编号</param>
         /// <returns></returns>
-        public async Task<List<ClientSecretDto>> GetSecretsAsync(Guid clientId)
+        public async Task<List<ClientSecretDto>> GetSecretsAsync(int clientId)
         {
             return await _appService.GetSecretsAsync(clientId);
         }
@@ -192,7 +194,7 @@ namespace KissU.Modules.IdentityServer.Service
         /// </summary>
         /// <param name="id">应用程序密钥编号</param>
         /// <returns></returns>
-        public async Task<ClientSecretDto> GetSecretAsync(Guid id)
+        public async Task<ClientSecretDto> GetSecretAsync(int id)
         {
             return await _appService.GetSecretAsync(id);
         }
@@ -200,11 +202,12 @@ namespace KissU.Modules.IdentityServer.Service
         /// <summary>
         /// 添加应用程序密钥
         /// </summary>
+        /// <param name="clientId">应用标识</param>
         /// <param name="request">应用程序密钥</param>
         /// <returns></returns>
-        public async Task<Guid> CreateSecretAsync(ClientSecretCreateRequest request)
+        public async Task<int> CreateSecretAsync(int clientId, ClientSecretCreateRequest request)
         {
-            return await _appService.CreateSecretAsync(request);
+            return await _appService.CreateSecretAsync(clientId, request);
         }
 
         /// <summary>
@@ -212,7 +215,7 @@ namespace KissU.Modules.IdentityServer.Service
         /// </summary>
         /// <param name="id">应用程序密钥编号</param>
         /// <returns></returns>
-        public async Task DeleteSecretAsync(Guid id)
+        public async Task DeleteSecretAsync(int id)
         {
             await _appService.DeleteSecretAsync(id);
         }

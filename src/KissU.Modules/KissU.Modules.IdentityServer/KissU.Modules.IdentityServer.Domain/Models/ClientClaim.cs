@@ -11,12 +11,12 @@ namespace KissU.Modules.IdentityServer.Domain.Models
     /// <summary>
     /// 应用程序声明
     /// </summary>
-    public class ClientClaim : EntityBase<ClientClaim>
+    public class ClientClaim : EntityBase<ClientClaim, int>
     {
         /// <summary>
         /// 初始化应用程序声明
         /// </summary>
-        public ClientClaim() : base(Guid.Empty)
+        public ClientClaim() : base(default)
         {
         }
 

@@ -11,12 +11,12 @@ namespace KissU.Modules.IdentityServer.Domain.Models
     /// <summary>
     /// 应用程序密钥
     /// </summary>
-    public class ClientSecret : EntityBase<ClientSecret>
+    public class ClientSecret : EntityBase<ClientSecret,int>
     {
         /// <summary>
         /// 初始化应用程序密钥
         /// </summary>
-        public ClientSecret() : base(Guid.Empty)
+        public ClientSecret() : base(default)
         {
         }
 

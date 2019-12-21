@@ -29,8 +29,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
     /// <summary>
     /// 应用程序服务
     /// </summary>
-    public class ClientAppService :
-        CrudServiceBase<Client, ClientDto, ClientDto, ClientCreateRequest, ClientDto, ClientQuery, Guid>, IClientAppService
+    public class ClientAppService : CrudServiceBase<Client, ClientDto, ClientDto, ClientCreateRequest, ClientDto, ClientQuery, int>, IClientAppService
     {
         /// <summary>
         /// 初始化应用程序服务
@@ -59,22 +58,21 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// </summary>
         /// <param name="request">克隆请求参数</param>
         /// <returns></returns>
-        public async Task<Guid> CloneAsync(ClientCloneRequest request)
+        public async Task<int> CloneAsync(ClientCloneRequest request)
         {
-            var client = await ClientRepository.FindByIdNoTrackingAsync(request.ClientId);
+            var client = await ClientRepository.FindEnabledClientByIdAsync(request.ClientId);
             client.CheckNull(nameof(client));
 
-            var exist = await ClientRepository.ExistsAsync(x => x.ClientId == request.ClientCodeOriginal);
+            var exist = await ClientRepository.ExistsAsync(x => x.ClientId == request.ClientIdOriginal);
             if (exist)
             {
-                ThrowDuplicateCodeException(request.ClientCodeOriginal);
+                ThrowDuplicateCodeException(request.ClientIdOriginal);
             }
 
             var clientDto = client.MapTo<ClientDto>();
-            clientDto.Id = Guid.NewGuid().ToString();
             var clientToClone = clientDto.MapTo<Client>();
 
-            clientToClone.ClientId = request.ClientCodeOriginal;
+            clientToClone.ClientId = request.ClientIdOriginal;
             clientToClone.ClientName = request.ClientNameOriginal;
 
             clientToClone.ClientSecrets.Clear();
@@ -117,11 +115,11 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// <summary>
         /// 通过编码查找
         /// </summary>
-        /// <param name="clientCode"></param>
+        /// <param name="clientId"></param>
         /// <returns></returns>
-        public async Task<ClientDto> FindEnabledByCodeAsync(string clientCode)
+        public async Task<ClientDto> FindEnabledByIdAsync(string clientId)
         {
-            var client = await ClientRepository.FindEnabledClientByCodeAsync(clientCode);
+            var client = await ClientRepository.FindEnabledClientByIdAsync(clientId);
             return client.MapTo<ClientDto>();
         }
 
@@ -156,6 +154,14 @@ namespace KissU.Modules.IdentityServer.Application.Implements
             {
                 ThrowDuplicateCodeException(entity.ClientId);
             }
+        }
+
+        /// <summary>
+        /// 创建后操作
+        /// </summary>
+        protected override async Task CreateAfterAsync(Client entity)
+        {
+            await UnitOfWork.CommitAsync();
         }
 
         /// <summary>
@@ -229,7 +235,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// </summary>
         /// <param name="clientId">应用程序编号</param>
         /// <returns></returns>
-        public async Task<List<ClientClaimDto>> GetClaimsAsync(Guid clientId)
+        public async Task<List<ClientClaimDto>> GetClaimsAsync(int clientId)
         {
             var entities = await ClientRepository.GetClientClaimsAsync(clientId);
             return entities?.MapToList<ClientClaimDto>();
@@ -238,11 +244,12 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// <summary>
         /// 更新应用程序声明
         /// </summary>
+        /// <param name="clientId">应用标识</param>
         /// <param name="dto">应用程序声明</param>
         /// <returns></returns>
-        public async Task UpdateClaimAsync(ClientClaimDto dto)
+        public async Task UpdateClaimAsync(int clientId, ClientClaimDto dto)
         {
-            var client = await ClientRepository.FindAsync(dto.ClientId);
+            var client = await ClientRepository.FindAsync(clientId);
             client.CheckNull(nameof(client));
             var entity = dto.MapTo<ClientClaim>();
             entity.Client = client;
@@ -254,7 +261,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// </summary>
         /// <param name="id">应用程序声明编号</param>
         /// <returns></returns>
-        public async Task<ClientClaimDto> GetClaimAsync(Guid id)
+        public async Task<ClientClaimDto> GetClaimAsync(int id)
         {
             var entity = await ClientRepository.GetClientClaimAsync(id);
             return entity?.MapTo<ClientClaimDto>();
@@ -263,11 +270,12 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// <summary>
         /// 添加应用程序声明
         /// </summary>
+        /// <param name="clientId">应用标识</param>
         /// <param name="request">应用程序声明</param>
         /// <returns></returns>
-        public async Task<Guid> CreateClaimAsync(ClientClaimCreateRequest request)
+        public async Task<int> CreateClaimAsync(int clientId, ClientClaimCreateRequest request)
         {
-            var client = await ClientRepository.FindAsync(request.ClientId);
+            var client = await ClientRepository.FindAsync(clientId);
             client.CheckNull(nameof(client));
             var entity = request.MapTo<ClientClaim>();
             entity.Init();
@@ -281,7 +289,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// </summary>
         /// <param name="id">应用程序声明编号</param>
         /// <returns></returns>
-        public async Task DeleteClaimAsync(Guid id)
+        public async Task DeleteClaimAsync(int id)
         {
             await ClientRepository.DeleteClientClaimAsync(id);
         }
@@ -316,7 +324,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// </summary>
         /// <param name="clientId">应用程序编号</param>
         /// <returns></returns>
-        public async Task<List<ClientSecretDto>> GetSecretsAsync(Guid clientId)
+        public async Task<List<ClientSecretDto>> GetSecretsAsync(int clientId)
         {
             var entities = await ClientRepository.GetClientSecretsAsync(clientId);
             return entities?.MapToList<ClientSecretDto>();
@@ -327,7 +335,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// </summary>
         /// <param name="id">应用程序密钥编号</param>
         /// <returns></returns>
-        public async Task<ClientSecretDto> GetSecretAsync(Guid id)
+        public async Task<ClientSecretDto> GetSecretAsync(int id)
         {
             var entity = await ClientRepository.GetClientSecretAsync(id);
             return entity?.MapTo<ClientSecretDto>();
@@ -336,11 +344,12 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// <summary>
         /// 添加应用程序密钥
         /// </summary>
+        /// <param name="clientId">应用标识</param>
         /// <param name="request">应用程序密钥</param>
         /// <returns></returns>
-        public async Task<Guid> CreateSecretAsync(ClientSecretCreateRequest request)
+        public async Task<int> CreateSecretAsync(int clientId, ClientSecretCreateRequest request)
         {
-            var client = await ClientRepository.FindAsync(request.ClientId);
+            var client = await ClientRepository.FindAsync(clientId);
             client.CheckNull(nameof(client));
             HashApiSharedSecret(request);
             var entity = request.MapTo<ClientSecret>();
@@ -355,7 +364,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// </summary>
         /// <param name="id">应用程序密钥编号</param>
         /// <returns></returns>
-        public async Task DeleteSecretAsync(Guid id)
+        public async Task DeleteSecretAsync(int id)
         {
             await ClientRepository.DeleteClientSecretAsync(id);
         }

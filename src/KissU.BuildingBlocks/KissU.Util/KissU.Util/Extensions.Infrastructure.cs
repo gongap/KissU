@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using AspectCore.Configuration;
+using AutoMapper;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using KissU.Util.Dependency;
@@ -92,6 +93,7 @@ namespace KissU.Util
             services.AddHttpContextAccessor();
             services.AddLogging();
             services.AddSingleton<ISession, Session>();
+            services.AddMapper();
             Bootstrapper.Run(builder, services, configs, aopConfigAction);
         }
     }

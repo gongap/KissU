@@ -15,13 +15,6 @@ namespace KissU.Modules.IdentityServer.Application.Dtos.Requests
     public class ClientSecretCreateRequest : RequestBase
     {
         /// <summary>
-        /// 应用程序
-        /// </summary>
-
-        [Required]
-        public Guid ClientId { get; set; }
-
-        /// <summary>
         /// 密钥值
         /// </summary>
 

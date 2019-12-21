@@ -14,14 +14,14 @@ namespace KissU.Modules.IdentityServer.Domain.Repositories
     /// <summary>
     /// 应用程序仓储
     /// </summary>
-    public interface IClientRepository : IRepository<Client>
+    public interface IClientRepository : IRepository<Client, int>
     {
         /// <summary>
         /// 通过编码查找
         /// </summary>
-        /// <param name="clientCode">应用编号</param>
+        /// <param name="clientId">应用编号</param>
         /// <returns></returns>
-        Task<Client> FindEnabledClientByCodeAsync(string clientCode);
+        Task<Client> FindEnabledClientByIdAsync(string clientId);
 
         #region 应用程序声明
 
@@ -30,14 +30,14 @@ namespace KissU.Modules.IdentityServer.Domain.Repositories
         /// </summary>
         /// <param name="clientId">应用程序编号</param>
         /// <returns></returns>
-        Task<List<ClientClaim>> GetClientClaimsAsync(Guid clientId);
+        Task<List<ClientClaim>> GetClientClaimsAsync(int clientId);
 
         /// <summary>
         /// 获取应用程序声明
         /// </summary>
         /// <param name="id">应用程序声明编号</param>
         /// <returns></returns>
-        Task<ClientClaim> GetClientClaimAsync(Guid id);
+        Task<ClientClaim> GetClientClaimAsync(int id);
 
         /// <summary>
         /// 创建应用程序声明
@@ -58,7 +58,7 @@ namespace KissU.Modules.IdentityServer.Domain.Repositories
         /// </summary>
         /// <param name="id">应用程序声明</param>
         /// <returns></returns>
-        Task DeleteClientClaimAsync(Guid id);
+        Task DeleteClientClaimAsync(int id);
 
         #endregion
 
@@ -69,14 +69,14 @@ namespace KissU.Modules.IdentityServer.Domain.Repositories
         /// </summary>
         /// <param name="clientId">应用程序编号</param>
         /// <returns></returns>
-        Task<List<ClientSecret>> GetClientSecretsAsync(Guid clientId);
+        Task<List<ClientSecret>> GetClientSecretsAsync(int clientId);
 
         /// <summary>
         /// 获取应用程序密钥
         /// </summary>
         /// <param name="id">应用程序密钥编号</param>
         /// <returns></returns>
-        Task<ClientSecret> GetClientSecretAsync(Guid id);
+        Task<ClientSecret> GetClientSecretAsync(int id);
 
         /// <summary>
         /// 创建应用程序密钥
@@ -90,7 +90,7 @@ namespace KissU.Modules.IdentityServer.Domain.Repositories
         /// </summary>
         /// <param name="id">应用程序密钥</param>
         /// <returns></returns>
-        Task DeleteClientSecretAsync(Guid id);
+        Task DeleteClientSecretAsync(int id);
 
         #endregion
     }

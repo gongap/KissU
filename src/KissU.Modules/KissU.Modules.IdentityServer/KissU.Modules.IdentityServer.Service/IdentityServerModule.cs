@@ -5,6 +5,7 @@
 using KissU.Core.CPlatform;
 using KissU.Core.CPlatform.Module;
 using Autofac.Extensions.DependencyInjection;
+using AutoMapper;
 using KissU.Modules.IdentityServer.Data;
 using KissU.Modules.IdentityServer.Data.UnitOfWorks.SqlServer;
 using KissU.Modules.IdentityServer.Domain;
