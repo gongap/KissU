@@ -13,7 +13,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		analysis.props = analysis.props
 		code.ruleset = code.ruleset
 		common.props = common.props
-		glossary.md = glossary.md
 		LICENSE.txt = LICENSE.txt
 		NuGet.config = NuGet.config
 		README.md = README.md
@@ -217,6 +216,11 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.IdentityServer.Application", "src\KissU.Modules\KissU.Modules.IdentityServer\KissU.Modules.IdentityServer.Application\KissU.Modules.IdentityServer.Application.csproj", "{8B967C6E-D981-4335-B51A-84200184BF73}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.IdentityServer", "src\KissU.Modules\KissU.Modules.IdentityServer\KissU.Modules.IdentityServer\KissU.Modules.IdentityServer.csproj", "{55323E7F-CDB7-4F3E-993C-162763A04333}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{DEA7C862-C648-46FF-9902-A0FFEE7EB452}"
+	ProjectSection(SolutionItems) = preProject
+		doc\glossary.md = doc\glossary.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -645,6 +649,7 @@ Global
 		{09BBD5FA-1081-4DB6-AA0A-78B619BC8376} = {F7F6CB7E-792F-496B-925A-BB5B0DB67DB6}
 		{8B967C6E-D981-4335-B51A-84200184BF73} = {8041CF7B-89DA-475F-92ED-0153EAEF6DC1}
 		{55323E7F-CDB7-4F3E-993C-162763A04333} = {8041CF7B-89DA-475F-92ED-0153EAEF6DC1}
+		{DEA7C862-C648-46FF-9902-A0FFEE7EB452} = {245EE59A-3EDE-4FBD-BC25-A61655E476B5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}
