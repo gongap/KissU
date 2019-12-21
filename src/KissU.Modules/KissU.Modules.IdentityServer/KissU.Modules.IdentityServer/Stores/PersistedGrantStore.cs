@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using IdentityServer4.Stores;
 using KissU.Modules.IdentityServer.Data.UnitOfWorks;
+using KissU.Modules.IdentityServer.Domain;
 using KissU.Modules.IdentityServer.Domain.Repositories;
 using KissU.Util.Maps;
 using Microsoft.EntityFrameworkCore;

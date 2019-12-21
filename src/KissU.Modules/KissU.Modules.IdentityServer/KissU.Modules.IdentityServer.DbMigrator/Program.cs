@@ -5,6 +5,7 @@
 using System;
 using System.Threading.Tasks;
 using KissU.Modules.IdentityServer.Data.UnitOfWorks;
+using KissU.Modules.IdentityServer.Domain;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using KissU.Util;
