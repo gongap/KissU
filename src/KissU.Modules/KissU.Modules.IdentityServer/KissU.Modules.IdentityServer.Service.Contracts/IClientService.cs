@@ -5,7 +5,6 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.Core.CPlatform.Ioc;
 using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Modules.IdentityServer.Application.Dtos;
 using KissU.Modules.IdentityServer.Application.Dtos.Requests;
@@ -21,7 +20,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
     /// 应用程序服务
     /// </summary>
     [ServiceBundle("api/{Service}")]
-    public interface IClientService : IServiceKey
+    public interface IClientService : IService
     {
         /// <summary>
         /// 通过编号获取
