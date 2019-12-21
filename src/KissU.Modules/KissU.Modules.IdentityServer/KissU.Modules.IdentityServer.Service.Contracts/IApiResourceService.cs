@@ -29,7 +29,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// <param name="id">实体编号</param>
         [ServiceRoute("{id}")]
         [HttpGet(true)]
-        Task<ApiResourceDto> GetByIdAsync(string id);
+        Task<ApiResourceDto> GetByIdAsync(Guid id);
 
         /// <summary>
         /// 获取全部

@@ -2,6 +2,7 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
@@ -26,7 +27,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// </summary>
         /// <param name="id">实体编号</param>
         [HttpGet(true)]
-        Task<IdentityResourceDto> GetByIdAsync(object id);
+        Task<IdentityResourceDto> GetByIdAsync(Guid id);
 
         /// <summary>
         /// 通过编号列表获取

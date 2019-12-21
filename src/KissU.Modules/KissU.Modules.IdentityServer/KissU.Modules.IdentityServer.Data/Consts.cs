@@ -20,6 +20,11 @@ namespace KissU.Modules.IdentityServer.Data
         public const string DbSchema = "ids";
 
         /// <summary>
+        /// 连接字符串配置节点
+        /// </summary>
+        public const string ConnectionStringSection = "ConnectionStrings";
+
+        /// <summary>
         /// 连接字符串名称
         /// </summary>
         public const string ConnectionStringName = "DefaultConnection";

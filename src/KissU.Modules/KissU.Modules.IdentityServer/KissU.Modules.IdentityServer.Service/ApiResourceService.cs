@@ -44,7 +44,7 @@ namespace KissU.Modules.IdentityServer.Service
         /// 通过编号获取
         /// </summary>
         /// <param name="id">实体编号</param>
-        public Task<ApiResourceDto> GetByIdAsync(string id)
+        public Task<ApiResourceDto> GetByIdAsync(Guid id)
         {
             return _appService.GetByIdAsync(id);
         }

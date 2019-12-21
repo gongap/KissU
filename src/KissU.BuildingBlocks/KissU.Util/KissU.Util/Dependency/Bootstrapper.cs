@@ -107,12 +107,12 @@ namespace KissU.Util.Dependency
             if (_configs != null)
             {
                 foreach (var config in _configs)
-                    _builder.RegisterModule(config);
+                    builder.RegisterModule(config);
             }
 
             if (_services != null)
             {
-                _builder.Populate(_services);
+                builder.Populate(_services);
             }
 
             RegisterServices(builder);

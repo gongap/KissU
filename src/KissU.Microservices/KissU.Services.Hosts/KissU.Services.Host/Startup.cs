@@ -32,10 +32,7 @@ namespace KissU.Services.Host
         public IContainer ConfigureServices(ContainerBuilder builder)
         {
             builder.AddUtil();
-            var container = builder.Build();
-            ServiceLocator.Current = container;
-            Ioc.Register(container);
-            return container;
+            return builder.Build();
         }
 
         /// <summary>
@@ -43,6 +40,8 @@ namespace KissU.Services.Host
         /// </summary>
         public void Configure(IContainer app)
         {
+            ServiceLocator.Current = app;
+            Ioc.Register(app);
         }
 
         #region 私有方法

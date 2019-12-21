@@ -4,27 +4,13 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using KissU.Modules.IdentityServer.Application.Abstractions;
 using KissU.Modules.IdentityServer.Application.Dtos;
 using KissU.Modules.IdentityServer.Application.Dtos.Requests;
 using KissU.Modules.IdentityServer.Application.Queries;
-using KissU.Modules.IdentityServer.Data.Repositories;
-using KissU.Modules.IdentityServer.Domain;
-using KissU.Modules.IdentityServer.Domain.Models;
-using KissU.Modules.IdentityServer.Domain.Repositories;
-using KissU.Modules.IdentityServer.Domain.Shared;
-using KissU.Modules.IdentityServer.Domain.Shared.Enums;
 using KissU.Modules.IdentityServer.Service.Contracts;
-using KissU.Util;
-using KissU.Util.Datas.Queries;
 using KissU.Util.Domains.Repositories;
-using KissU.Util.Exceptions;
-using KissU.Util.Maps;
-using Client = KissU.Modules.IdentityServer.Domain.Models.Client;
-using Extensions = KissU.Modules.IdentityServer.Domain.Shared.Extensions;
-using GrantTypes = KissU.Modules.IdentityServer.Domain.Shared.GrantTypes;
 
 namespace KissU.Modules.IdentityServer.Service
 {
@@ -48,7 +34,7 @@ namespace KissU.Modules.IdentityServer.Service
         /// 通过编号获取
         /// </summary>
         /// <param name="id">实体编号</param>
-        public async Task<ClientDto> GetByIdAsync(object id)
+        public async Task<ClientDto> GetByIdAsync(Guid id)
         {
             return await _appService.GetByIdAsync(id);
         }

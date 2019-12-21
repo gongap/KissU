@@ -2,20 +2,15 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using KissU.Modules.IdentityServer.Application.Abstractions;
 using KissU.Modules.IdentityServer.Application.Dtos;
 using KissU.Modules.IdentityServer.Application.Dtos.Requests;
 using KissU.Modules.IdentityServer.Application.Queries;
-using KissU.Modules.IdentityServer.Domain;
-using KissU.Modules.IdentityServer.Domain.Models;
-using KissU.Modules.IdentityServer.Domain.Repositories;
 using KissU.Modules.IdentityServer.Service.Contracts;
-using KissU.Util.Datas.Queries;
 using KissU.Util.Domains.Repositories;
-using KissU.Util.Exceptions;
 
 namespace KissU.Modules.IdentityServer.Service
 {
@@ -39,7 +34,7 @@ namespace KissU.Modules.IdentityServer.Service
         /// 通过编号获取
         /// </summary>
         /// <param name="id">实体编号</param>
-        public async Task<IdentityResourceDto> GetByIdAsync(object id)
+        public async Task<IdentityResourceDto> GetByIdAsync(Guid id)
         {
             return await _appService.GetByIdAsync(id);
         }

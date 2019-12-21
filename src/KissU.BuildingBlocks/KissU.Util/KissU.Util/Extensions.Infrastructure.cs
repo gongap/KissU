@@ -19,10 +19,19 @@ namespace KissU.Util
         /// <summary>
         /// 注册容器
         /// </summary>
-        /// <param name="builder">应用程序生成器</param>
+        /// <param name="builder">应用生成器</param>
         public static void UseUtil(this IApplicationBuilder builder)
         {
             Ioc.Register(builder.ApplicationServices.GetAutofacRoot());
+        }
+
+        /// <summary>
+        /// 注册容器
+        /// </summary>
+        /// <param name="container">容器</param>
+        public static void UseUtil(this Autofac.IContainer container)
+        {
+            Ioc.Register(container);
         }
 
         /// <summary>
