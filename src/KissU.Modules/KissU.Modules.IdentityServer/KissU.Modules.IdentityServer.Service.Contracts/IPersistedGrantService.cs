@@ -2,13 +2,12 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform.Ioc;
 using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Modules.IdentityServer.Application.Dtos;
 using KissU.Modules.IdentityServer.Application.Queries;
-using KissU.Util.Applications;
 using KissU.Util.Domains.Repositories;
 
 namespace KissU.Modules.IdentityServer.Service.Contracts
@@ -17,7 +16,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
     /// 认证操作数据服务
     /// </summary>
     [ServiceBundle("api/{Service}")]
-    public interface IPersistedGrantService : IService
+    public interface IPersistedGrantService : IServiceKey
     {
         /// <summary>
         /// 通过编号获取
