@@ -2,61 +2,87 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
-using KissU.Modules.IdentityServer.Data.UnitOfWorks;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using KissU.Modules.IdentityServer.Application.Abstractions;
+using KissU.Modules.IdentityServer.Application.Dtos;
+using KissU.Modules.IdentityServer.Application.Queries;
+using KissU.Modules.IdentityServer.Domain;
 using KissU.Modules.IdentityServer.Domain.Models;
 using KissU.Modules.IdentityServer.Domain.Repositories;
-using KissU.Modules.IdentityServer.Service.Contracts.Abstractions;
-using KissU.Modules.IdentityServer.Service.Contracts.Dtos;
-using KissU.Modules.IdentityServer.Service.Contracts.Queries;
-using KissU.Util.Applications;
+using KissU.Modules.IdentityServer.Service.Contracts;
 using KissU.Util.Datas.Queries;
 using KissU.Util.Domains.Repositories;
 
-namespace KissU.Modules.IdentityServer.Service.Implements
+namespace KissU.Modules.IdentityServer.Service
 {
     /// <summary>
     /// 认证操作数据服务
     /// </summary>
-    public class PersistedGrantService : DeleteServiceBase<PersistedGrant, PersistedGrantDto, PersistedGrantQuery, int>,
-        IPersistedGrantService
+    public class PersistedGrantService : IPersistedGrantService
     {
+        private readonly IPersistedGrantAppService _appService;
+
         /// <summary>
-        /// 初始化认证操作数据服务
+        /// 初始化应用服务
         /// </summary>
-        /// <param name="unitOfWork">工作单元</param>
-        /// <param name="persistedGrantRepository">认证操作数据仓储</param>
-        public PersistedGrantService(IIdentityServerUnitOfWork unitOfWork,
-            IPersistedGrantRepository persistedGrantRepository)
-            : base(unitOfWork, persistedGrantRepository)
+        /// <param name="appService">应用服务</param>
+        public PersistedGrantService(IPersistedGrantAppService appService)
         {
-            PersistedGrantRepository = persistedGrantRepository;
-            UnitOfWork = unitOfWork;
+            _appService = appService;
         }
 
         /// <summary>
-        /// 认证操作数据仓储
+        /// 通过编号获取
         /// </summary>
-        public IPersistedGrantRepository PersistedGrantRepository { get; set; }
-
-        /// <summary>
-        /// 工作单元
-        /// </summary>
-        public IIdentityServerUnitOfWork UnitOfWork { get; set; }
-
-        /// <summary>
-        /// 创建查询对象
-        /// </summary>
-        /// <param name="param">认证操作数据查询实体</param>
-        protected override IQueryBase<PersistedGrant> CreateQuery(PersistedGrantQuery param)
+        /// <param name="id">实体编号</param>
+        public async Task<PersistedGrantDto> GetByIdAsync(object id)
         {
-            var query = new Query<PersistedGrant>(param);
+            return await _appService.GetByIdAsync(id);
+        }
 
-            if (string.IsNullOrWhiteSpace(param.Order))
-            {
-                query.OrderBy(x => x.CreationTime, true);
-            }
+        /// <summary>
+        /// 通过编号列表获取
+        /// </summary>
+        /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
+        public async Task<List<PersistedGrantDto>> GetByIdsAsync(string ids)
+        {
+            return await _appService.GetByIdsAsync(ids);
+        }
 
-            return query;
+        /// <summary>
+        /// 获取全部
+        /// </summary>
+        public async Task<List<PersistedGrantDto>> GetAllAsync()
+        {
+            return await _appService.GetAllAsync();
+        }
+
+        /// <summary>
+        /// 查询
+        /// </summary>
+        /// <param name="parameter">查询参数</param>
+        public async Task<List<PersistedGrantDto>> QueryAsync(PersistedGrantQuery parameter)
+        {
+            return await _appService.QueryAsync(parameter);
+        }
+
+        /// <summary>
+        /// 分页查询
+        /// </summary>
+        /// <param name="parameter">查询参数</param>
+        public async Task<PagerList<PersistedGrantDto>> PagerQueryAsync(PersistedGrantQuery parameter)
+        {
+            return await _appService.PagerQueryAsync(parameter);
+        }
+
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
+        public async Task DeleteAsync(string ids)
+        {
+            await _appService.DeleteAsync(ids);
         }
     }
 }

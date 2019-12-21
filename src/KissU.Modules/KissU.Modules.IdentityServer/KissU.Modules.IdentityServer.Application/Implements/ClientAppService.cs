@@ -263,7 +263,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// </summary>
         /// <param name="id">应用程序声明编号</param>
         /// <returns></returns>
-        public async Task<ClientClaimDto> GetClientAsync(Guid id)
+        public async Task<ClientClaimDto> GetClaimAsync(Guid id)
         {
             var entity = await ClientRepository.GetClientClaimAsync(id);
             return entity?.MapTo<ClientClaimDto>();

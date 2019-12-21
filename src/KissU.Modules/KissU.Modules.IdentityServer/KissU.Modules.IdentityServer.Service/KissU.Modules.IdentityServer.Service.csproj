@@ -13,15 +13,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="ApiResourceService.cs" />
-    <Compile Remove="ClientService.cs" />
-    <Compile Remove="DeviceFlowCodeService.cs" />
-    <Compile Remove="IdentityResourceService.cs" />
-    <Compile Remove="IdentityServerModule.cs" />
-    <Compile Remove="PersistedGrantService.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.System\KissU.Core.System.csproj" />
     <ProjectReference Include="..\KissU.Modules.IdentityServer.Data\KissU.Modules.IdentityServer.Data.csproj" />
     <ProjectReference Include="..\KissU.Modules.IdentityServer.Service.Contracts\KissU.Modules.IdentityServer.Service.Contracts.csproj" />

@@ -108,7 +108,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// </summary>
         /// <param name="id">应用程序声明编号</param>
         /// <returns></returns>
-        Task<ClientClaimDto> GetClientAsync(Guid id);
+        Task<ClientClaimDto> GetClaimAsync(Guid id);
 
         /// <summary>
         /// 创建应用程序声明

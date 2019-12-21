@@ -2,113 +2,108 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
-using System;
+using System.Collections.Generic;
 using System.Linq;
-using KissU.Modules.IdentityServer.Data.UnitOfWorks;
+using System.Threading.Tasks;
+using KissU.Modules.IdentityServer.Application.Abstractions;
+using KissU.Modules.IdentityServer.Application.Dtos;
+using KissU.Modules.IdentityServer.Application.Dtos.Requests;
+using KissU.Modules.IdentityServer.Application.Queries;
+using KissU.Modules.IdentityServer.Domain;
 using KissU.Modules.IdentityServer.Domain.Models;
 using KissU.Modules.IdentityServer.Domain.Repositories;
-using KissU.Modules.IdentityServer.Service.Contracts.Abstractions;
-using KissU.Modules.IdentityServer.Service.Contracts.Dtos;
-using KissU.Modules.IdentityServer.Service.Contracts.Dtos.Requests;
-using KissU.Modules.IdentityServer.Service.Contracts.Queries;
-using KissU.Util.Applications;
+using KissU.Modules.IdentityServer.Service.Contracts;
 using KissU.Util.Datas.Queries;
 using KissU.Util.Domains.Repositories;
 using KissU.Util.Exceptions;
 
-namespace KissU.Modules.IdentityServer.Service.Implements
+namespace KissU.Modules.IdentityServer.Service
 {
     /// <summary>
     /// 应用程序服务
     /// </summary>
-    public class IdentityResourceService :
-        CrudServiceBase<IdentityResource, IdentityResourceDto, IdentityResourceDto, IdentityResourceCreateRequest,
-            IdentityResourceDto, IdentityResourceQuery, Guid>, IIdentityResourceService
+    public class IdentityResourceService : IIdentityResourceService
     {
+        private readonly IIdentityResourceAppService _appService;
+
         /// <summary>
-        /// 初始化应用程序服务
+        /// 初始化应用服务
         /// </summary>
-        /// <param name="unitOfWork">工作单元</param>
-        /// <param name="identityResourceRepository">应用程序仓储</param>
-        public IdentityResourceService(IIdentityServerUnitOfWork unitOfWork,
-            IIdentityResourceRepository identityResourceRepository)
-            : base(unitOfWork, identityResourceRepository)
+        /// <param name="appService">应用服务</param>
+        public IdentityResourceService(IIdentityResourceAppService appService)
         {
-            IdentityResourceRepository = identityResourceRepository;
-            UnitOfWork = unitOfWork;
+            _appService = appService;
         }
 
         /// <summary>
-        /// 应用程序仓储
+        /// 通过编号获取
         /// </summary>
-        public IIdentityResourceRepository IdentityResourceRepository { get; set; }
-
-        /// <summary>
-        /// 工作单元
-        /// </summary>
-        public IIdentityServerUnitOfWork UnitOfWork { get; set; }
-
-        /// <summary>
-        /// 创建查询对象
-        /// </summary>
-        /// <param name="param">应用程序查询实体</param>
-        protected override IQueryBase<IdentityResource> CreateQuery(IdentityResourceQuery param)
+        /// <param name="id">实体编号</param>
+        public async Task<IdentityResourceDto> GetByIdAsync(object id)
         {
-            var query = new Query<IdentityResource>(param).Or(t => t.Name.Contains(param.Keyword),
-                t => t.DisplayName.Contains(param.Keyword));
-
-            if (param.Enabled.HasValue)
-            {
-                query.And(t => t.Enabled == param.Enabled.Value);
-            }
-
-            if (string.IsNullOrWhiteSpace(param.Order))
-            {
-                query.OrderBy(x => x.CreationTime, true);
-            }
-
-            return query;
+            return await _appService.GetByIdAsync(id);
         }
 
         /// <summary>
-        /// 创建前操作
+        /// 通过编号列表获取
         /// </summary>
-        protected override void CreateBefore(IdentityResource entity)
+        /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
+        public async Task<List<IdentityResourceDto>> GetByIdsAsync(string ids)
         {
-            base.CreateBefore(entity);
-            if (IdentityResourceRepository.Exists(t => t.Name == entity.Name))
-            {
-                ThrowDuplicateNameException(entity.Name);
-            }
+            return await _appService.GetByIdsAsync(ids);
         }
 
         /// <summary>
-        /// 抛出Name重复异常
+        /// 获取全部
         /// </summary>
-        private void ThrowDuplicateNameException(string name)
+        public async Task<List<IdentityResourceDto>> GetAllAsync()
         {
-            throw new Warning(string.Format("名称{0} 重复", name));
+            return await _appService.GetAllAsync();
         }
 
         /// <summary>
-        /// 修改前操作
+        /// 查询
         /// </summary>
-        protected override void UpdateBefore(IdentityResource entity)
+        /// <param name="parameter">查询参数</param>
+        public async Task<List<IdentityResourceDto>> QueryAsync(IdentityResourceQuery parameter)
         {
-            base.UpdateBefore(entity);
-            if (IdentityResourceRepository.Exists(t => t.Id != entity.Id && t.Name == entity.Name))
-            {
-                ThrowDuplicateNameException(entity.Name);
-            }
+            return await _appService.QueryAsync(parameter);
         }
 
         /// <summary>
-        /// 过滤
+        /// 分页查询
         /// </summary>
-        protected override IQueryable<IdentityResource> Filter(IQueryable<IdentityResource> queryable,
-            IdentityResourceQuery parameter)
+        /// <param name="parameter">查询参数</param>
+        public async Task<PagerList<IdentityResourceDto>> PagerQueryAsync(IdentityResourceQuery parameter)
         {
-            return base.Filter(queryable, parameter);
+            return await _appService.PagerQueryAsync(parameter);
+        }
+
+        /// <summary>
+        /// 创建
+        /// </summary>
+        /// <param name="request">创建参数</param>
+        public async Task<string> CreateAsync(IdentityResourceCreateRequest request)
+        {
+            return await _appService.CreateAsync(request);
+        }
+
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="request">修改参数</param>
+        public async Task UpdateAsync(IdentityResourceDto request)
+        {
+            await _appService.UpdateAsync(request);
+        }
+
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
+        public async Task DeleteAsync(string ids)
+        {
+            await _appService.DeleteAsync(ids);
         }
     }
 }
