@@ -22,14 +22,14 @@ namespace KissU.Modules.IdentityServer.Domain.Models
         /// </summary>
         public Client() : base(default)
         {
-            ClientSecrets = new List<ClientSecret>();
-            Claims = new List<ClientClaim>();
-            AllowedGrantTypes = new List<ClientGrantType>();
-            AllowedCorsOrigins = new List<ClientCorsOrigin>();
-            AllowedScopes = new List<ClientScope>();
-            RedirectUris = new List<ClientRedirectUri>();
-            PostLogoutRedirectUris = new List<ClientPostLogoutRedirectUri>();
-            IdentityProviderRestrictions = new List<ClientIdPRestriction>();
+            ClientSecrets ??= new List<ClientSecret>();
+            Claims ??= new List<ClientClaim>();
+            AllowedGrantTypes ??= new List<ClientGrantType>();
+            AllowedCorsOrigins ??= new List<ClientCorsOrigin>();
+            AllowedScopes ??= new List<ClientScope>();
+            RedirectUris ??= new List<ClientRedirectUri>();
+            PostLogoutRedirectUris ??= new List<ClientPostLogoutRedirectUri>();
+            IdentityProviderRestrictions ??= new List<ClientIdPRestriction>();
         }
 
         /// <summary>

@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using AutoMapper;
+using KissU.Util.Helpers;
+using KissU.Util.Reflections;
 
 namespace KissU.Util.Maps
 {
@@ -95,9 +98,19 @@ namespace KissU.Util.Maps
         {
             if (_config == null)
             {
-                _config = new MapperConfiguration(t => t.CreateMap(sourceType, destinationType));
+                _config = new MapperConfiguration(t =>
+                {
+                    t.CreateMap(sourceType, destinationType);
+
+                    var finder = new Finder();
+                    var assemblies = new Finder().GetAssemblies();
+                    var types = finder.Find<Profile>(assemblies).ToArray();
+                    types.Select(type => Reflection.CreateInstance<Profile>(type)).ToList().ForEach(t.AddProfile);
+                }); 
+
                 return;
             }
+
             var maps = _config.GetAllTypeMaps();
             _config = new MapperConfiguration(t => t.CreateMap(sourceType, destinationType));
             foreach (var map in maps)

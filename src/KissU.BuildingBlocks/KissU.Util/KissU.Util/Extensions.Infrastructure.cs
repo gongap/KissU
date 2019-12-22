@@ -93,7 +93,6 @@ namespace KissU.Util
             services.AddHttpContextAccessor();
             services.AddLogging();
             services.AddSingleton<ISession, Session>();
-            services.AddMapper();
             Bootstrapper.Run(builder, services, configs, aopConfigAction);
         }
     }
