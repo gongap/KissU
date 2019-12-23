@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using KissU.Modules.IdentityServer.Domain.Models;
 
-namespace KissU.Modules.IdentityServer.Services
+namespace KissU.Modules.IdentityServer
 {
     /// <summary>
     /// Interface to model notifications from the TokenCleanup feature.

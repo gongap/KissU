@@ -19,7 +19,7 @@ namespace KissU.Modules.IdentityServer
     public class TokenCleanupHost : IHostedService
     {
         private readonly IServiceProvider _serviceProvider;
-        private readonly TokenCleanupOptions _options;
+        private readonly OperationalStoreOptions _options;
         private readonly ILogger<TokenCleanupHost> _logger;
 
         private TimeSpan CleanupInterval => TimeSpan.FromSeconds(_options.TokenCleanupInterval);
@@ -32,7 +32,7 @@ namespace KissU.Modules.IdentityServer
         /// <param name="serviceProvider"></param>
         /// <param name="options"></param>
         /// <param name="logger"></param>
-        public TokenCleanupHost(IServiceProvider serviceProvider, TokenCleanupOptions options, ILogger<TokenCleanupHost> logger)
+        public TokenCleanupHost(IServiceProvider serviceProvider, OperationalStoreOptions options, ILogger<TokenCleanupHost> logger)
         {
             _serviceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
             _options = options ?? throw new ArgumentNullException(nameof(options));

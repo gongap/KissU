@@ -14,7 +14,7 @@ namespace KissU.Modules.IdentityServer.Services
     /// </summary>
     public class TokenCleanupService
     {
-        private readonly TokenCleanupOptions _options;
+        private readonly OperationalStoreOptions _options;
         private readonly IPersistedGrantRepository _persistedGrantRepository;
         private readonly IDeviceFlowCodeRepository _deviceFlowCodeRepository;
         private readonly IOperationalStoreNotification _operationalStoreNotification;
@@ -31,7 +31,7 @@ namespace KissU.Modules.IdentityServer.Services
         /// <param name="deviceFlowCodeRepository"></param>
         /// <param name="logger"></param>
         public TokenCleanupService(
-            TokenCleanupOptions options,
+            OperationalStoreOptions options,
             IIdentityServerUnitOfWork unitOfWork,
             IPersistedGrantRepository persistedGrantRepository,
             IDeviceFlowCodeRepository deviceFlowCodeRepository,

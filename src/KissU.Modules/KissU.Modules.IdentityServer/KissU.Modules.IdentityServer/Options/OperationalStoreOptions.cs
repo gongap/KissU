@@ -3,7 +3,7 @@
     /// <summary>
     /// 令牌清理的配置
     /// </summary>
-    public class TokenCleanupOptions
+    public class OperationalStoreOptions
     {
         /// <summary>
         /// 是否将从数据库自动清除陈旧的条目
