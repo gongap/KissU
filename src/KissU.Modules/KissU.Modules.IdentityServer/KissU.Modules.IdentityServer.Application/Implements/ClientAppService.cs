@@ -11,18 +11,15 @@ using KissU.Modules.IdentityServer.Application.Dtos;
 using KissU.Modules.IdentityServer.Application.Dtos.Requests;
 using KissU.Modules.IdentityServer.Application.Queries;
 using KissU.Modules.IdentityServer.Domain;
+using KissU.Modules.IdentityServer.Domain.Enums;
 using KissU.Modules.IdentityServer.Domain.Models;
 using KissU.Modules.IdentityServer.Domain.Repositories;
-using KissU.Modules.IdentityServer.Domain.Shared;
-using KissU.Modules.IdentityServer.Domain.Shared.Enums;
 using KissU.Util;
 using KissU.Util.Applications;
 using KissU.Util.Datas.Queries;
 using KissU.Util.Domains.Repositories;
 using KissU.Util.Exceptions;
 using KissU.Util.Maps;
-using Client = KissU.Modules.IdentityServer.Domain.Models.Client;
-using GrantTypes = KissU.Modules.IdentityServer.Domain.Shared.GrantTypes;
 
 namespace KissU.Modules.IdentityServer.Application.Implements
 {
@@ -187,21 +184,21 @@ namespace KissU.Modules.IdentityServer.Application.Implements
                 case ClientType.Empty:
                     break;
                 case ClientType.WebImplicit:
-                    client.AllowedGrantTypes = GrantTypes.Implicit.Select(x => new ClientGrantType(x)).ToList();
+                    client.AllowedGrantTypes = IdentityServerConstants.GrantTypes.Implicit.Select(x => new ClientGrantType(x)).ToList();
                     client.AllowAccessTokensViaBrowser = true;
                     break;
                 case ClientType.WebHybrid:
-                    client.AllowedGrantTypes = GrantTypes.Hybrid.Select(x => new ClientGrantType(x)).ToList();
+                    client.AllowedGrantTypes = IdentityServerConstants.GrantTypes.Hybrid.Select(x => new ClientGrantType(x)).ToList();
                     break;
                 case ClientType.Spa:
-                    client.AllowedGrantTypes = GrantTypes.Implicit.Select(x => new ClientGrantType(x)).ToList();
+                    client.AllowedGrantTypes = IdentityServerConstants.GrantTypes.Implicit.Select(x => new ClientGrantType(x)).ToList();
                     client.AllowAccessTokensViaBrowser = true;
                     break;
                 case ClientType.Native:
-                    client.AllowedGrantTypes = GrantTypes.Hybrid.Select(x => new ClientGrantType(x)).ToList();
+                    client.AllowedGrantTypes = IdentityServerConstants.GrantTypes.Hybrid.Select(x => new ClientGrantType(x)).ToList();
                     break;
                 case ClientType.Machine:
-                    client.AllowedGrantTypes = GrantTypes.ResourceOwnerPasswordAndClientCredentials.Select(x => new ClientGrantType(x)).ToList();
+                    client.AllowedGrantTypes = IdentityServerConstants.GrantTypes.ResourceOwnerPasswordAndClientCredentials.Select(x => new ClientGrantType(x)).ToList();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

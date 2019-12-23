@@ -37,8 +37,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "KissU.Modules.IdentityServe
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{8C5BB6A1-6362-4935-9278-993935F43949}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.IdentityServer.Domain.Shared", "src\KissU.Modules\KissU.Modules.IdentityServer\KissU.Modules.IdentityServer.Domain.Shared\KissU.Modules.IdentityServer.Domain.Shared.csproj", "{C826BE54-83C9-4E28-A6F9-0E05383D44CA}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.IdentityServer.Domain", "src\KissU.Modules\KissU.Modules.IdentityServer\KissU.Modules.IdentityServer.Domain\KissU.Modules.IdentityServer.Domain.csproj", "{C98D9E46-19B2-408A-8EF9-772017F68F16}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.IdentityServer.Data", "src\KissU.Modules\KissU.Modules.IdentityServer\KissU.Modules.IdentityServer.Data\KissU.Modules.IdentityServer.Data.csproj", "{FA4B55C3-CE53-42D3-B939-537DCE17015E}"
@@ -228,10 +226,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C826BE54-83C9-4E28-A6F9-0E05383D44CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C826BE54-83C9-4E28-A6F9-0E05383D44CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C826BE54-83C9-4E28-A6F9-0E05383D44CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C826BE54-83C9-4E28-A6F9-0E05383D44CA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C98D9E46-19B2-408A-8EF9-772017F68F16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C98D9E46-19B2-408A-8EF9-772017F68F16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C98D9E46-19B2-408A-8EF9-772017F68F16}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -559,7 +553,6 @@ Global
 		{989E8619-53BE-48E2-B062-047940FBBCE2} = {CA4753DA-E579-4995-AEDA-498741B7B860}
 		{697B9208-7FE5-4AB1-92F8-BF64F12BA72E} = {CA4753DA-E579-4995-AEDA-498741B7B860}
 		{8041CF7B-89DA-475F-92ED-0153EAEF6DC1} = {CA4753DA-E579-4995-AEDA-498741B7B860}
-		{C826BE54-83C9-4E28-A6F9-0E05383D44CA} = {8041CF7B-89DA-475F-92ED-0153EAEF6DC1}
 		{C98D9E46-19B2-408A-8EF9-772017F68F16} = {8041CF7B-89DA-475F-92ED-0153EAEF6DC1}
 		{FA4B55C3-CE53-42D3-B939-537DCE17015E} = {8041CF7B-89DA-475F-92ED-0153EAEF6DC1}
 		{2A011273-FB82-4734-8C57-385B7A29A798} = {8041CF7B-89DA-475F-92ED-0153EAEF6DC1}

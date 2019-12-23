@@ -2,7 +2,7 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
-namespace KissU.Modules.IdentityServer.Domain.Shared.Enums
+namespace KissU.Modules.IdentityServer.Domain.Enums
 {
     public enum ClientType
     {

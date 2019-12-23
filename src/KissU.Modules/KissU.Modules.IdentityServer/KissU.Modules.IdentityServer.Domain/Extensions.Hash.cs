@@ -2,7 +2,7 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace KissU.Modules.IdentityServer.Domain.Shared
+namespace KissU.Modules.IdentityServer.Domain
 {
     /// <summary>
     /// Extension methods for hashing strings

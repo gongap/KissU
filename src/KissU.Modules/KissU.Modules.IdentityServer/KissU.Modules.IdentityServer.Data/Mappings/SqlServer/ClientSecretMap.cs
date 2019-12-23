@@ -19,7 +19,7 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         /// </summary>
         protected override void MapTable(EntityTypeBuilder<ClientSecret> builder)
         {
-            builder.ToTable(Consts.DbTablePrefix + "ClientSecrets", Consts.DbSchema);
+            builder.ToTable(IdentityServerDataConstants.DbTablePrefix + "ClientSecrets", IdentityServerDataConstants.DbSchema);
         }
 
         /// <summary>

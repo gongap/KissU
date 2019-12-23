@@ -3,7 +3,7 @@
 // </copyright>
 
 using System.ComponentModel.DataAnnotations;
-using KissU.Modules.IdentityServer.Domain.Shared.Enums;
+using KissU.Modules.IdentityServer.Domain.Enums;
 using KissU.Util.Applications.Dtos;
 
 namespace KissU.Modules.IdentityServer.Application.Dtos.Requests

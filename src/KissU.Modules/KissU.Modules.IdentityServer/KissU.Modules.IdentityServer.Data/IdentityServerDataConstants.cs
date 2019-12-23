@@ -1,4 +1,4 @@
-﻿// <copyright file="Consts.cs" company="KissU">
+﻿// <copyright file="IdentityServerDataConstants.cs" company="KissU">
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
@@ -7,7 +7,7 @@ namespace KissU.Modules.IdentityServer.Data
     /// <summary>
     /// 常量
     /// </summary>
-    public static class Consts
+    public static class IdentityServerDataConstants
     {
         /// <summary>
         /// 数据库表前缀

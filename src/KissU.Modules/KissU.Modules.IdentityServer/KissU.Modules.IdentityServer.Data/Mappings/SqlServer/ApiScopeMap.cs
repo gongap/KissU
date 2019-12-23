@@ -19,7 +19,7 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         /// </summary>
         protected override void MapTable(EntityTypeBuilder<ApiScope> builder)
         {
-            builder.ToTable(Consts.DbTablePrefix + "ApiScopes", Consts.DbSchema);
+            builder.ToTable(IdentityServerDataConstants.DbTablePrefix + "ApiScopes", IdentityServerDataConstants.DbSchema);
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         {
             builder.OwnsMany(t => t.UserClaims, p =>
             {
-                p.ToTable(Consts.DbTablePrefix + "ApiScopeClaims", Consts.DbSchema);
+                p.ToTable(IdentityServerDataConstants.DbTablePrefix + "ApiScopeClaims", IdentityServerDataConstants.DbSchema);
                 p.Property(x => x.Type).HasMaxLength(200).IsRequired();
             });
         }

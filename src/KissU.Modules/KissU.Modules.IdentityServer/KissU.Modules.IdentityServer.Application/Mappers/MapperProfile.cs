@@ -1,4 +1,4 @@
-﻿// <copyright file="ClientMapperProfile.cs" company="KissU">
+﻿// <copyright file="MapperProfile.cs" company="KissU">
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
@@ -10,20 +10,17 @@ using KissU.Modules.IdentityServer.Domain.Models;
 namespace KissU.Modules.IdentityServer.Application.Mappers
 {
     /// <summary>
-    /// 应用程序AutoMapper映射配置
+    /// 映射配置
     /// </summary>
-    public class ClientMapperProfile : Profile
+    public class MapperProfile : Profile
     {
         /// <summary>
         /// 初始化
         /// </summary>
-        public ClientMapperProfile()
+        public MapperProfile()
         {
             CreateMap<ClientClaim, Claim>(MemberList.None)
                 .ConstructUsing(src => new Claim(src.Type, src.Value))
-                .ReverseMap();
-
-            CreateMap<Property, KeyValuePair<string, string>>()
                 .ReverseMap();
 
             CreateMap<ClientGrantType, string>()
@@ -55,6 +52,14 @@ namespace KissU.Modules.IdentityServer.Application.Mappers
                 .ConstructUsing(src => src.Origin)
                 .ReverseMap()
                 .ForMember(dest => dest.Origin, opt => opt.MapFrom(src => src));
+
+            CreateMap<Property, KeyValuePair<string, string>>()
+                .ReverseMap();
+
+            CreateMap<UserClaim, string>()
+                .ConstructUsing(x => x.Type)
+                .ReverseMap()
+                .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src));
         }
     }
 }

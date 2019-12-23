@@ -1,4 +1,8 @@
-﻿using System;
+﻿// <copyright file="TokenCleanupHost.cs" company="KissU">
+// Copyright (c) KissU. All Rights Reserved.
+// </copyright>
+
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using KissU.Modules.IdentityServer.Options;

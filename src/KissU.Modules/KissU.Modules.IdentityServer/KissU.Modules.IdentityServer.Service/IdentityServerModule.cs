@@ -28,7 +28,7 @@ namespace KissU.Modules.IdentityServer.Service
             base.RegisterBuilder(builder);
             var services = new ServiceCollection();
             services.AddUnitOfWork<IIdentityServerUnitOfWork, IdentityServerUnitOfWork>(AppConfig
-                .GetSection(Consts.ConnectionStringSection).GetSection(Consts.ConnectionStringName).Value);
+                .GetSection(IdentityServerDataConstants.ConnectionStringSection).GetSection(IdentityServerDataConstants.ConnectionStringName).Value);
             builder.ContainerBuilder.Populate(services);
         }
     }

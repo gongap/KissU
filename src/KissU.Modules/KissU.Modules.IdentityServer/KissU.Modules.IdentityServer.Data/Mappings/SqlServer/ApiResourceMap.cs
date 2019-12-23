@@ -19,7 +19,7 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         /// </summary>
         protected override void MapTable(EntityTypeBuilder<ApiResource> builder)
         {
-            builder.ToTable(Consts.DbTablePrefix + "ApiResources", Consts.DbSchema);
+            builder.ToTable(IdentityServerDataConstants.DbTablePrefix + "ApiResources", IdentityServerDataConstants.DbSchema);
         }
 
         /// <summary>
@@ -43,13 +43,13 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         {
             builder.OwnsMany(t => t.UserClaims, p =>
             {
-                p.ToTable(Consts.DbTablePrefix + "ApiClaims", Consts.DbSchema);
+                p.ToTable(IdentityServerDataConstants.DbTablePrefix + "ApiClaims", IdentityServerDataConstants.DbSchema);
                 p.Property(x => x.Type);
             });
 
             builder.OwnsMany(t => t.Properties, p =>
             {
-                p.ToTable(Consts.DbTablePrefix + "ApiProperties", Consts.DbSchema);
+                p.ToTable(IdentityServerDataConstants.DbTablePrefix + "ApiProperties", IdentityServerDataConstants.DbSchema);
                 p.Property(x => x.Key).HasMaxLength(250).IsRequired();
                 p.Property(x => x.Value).HasMaxLength(2000).IsRequired();
             });

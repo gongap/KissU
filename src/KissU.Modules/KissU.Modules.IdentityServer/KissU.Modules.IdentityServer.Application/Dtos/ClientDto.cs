@@ -84,7 +84,7 @@ namespace KissU.Modules.IdentityServer.Application.Dtos
         public bool RequireClientSecret { get; set; } = true;
 
         /// <summary>
-        /// 指定允许应用程序使用的授权类型。将该GrantTypes类用于常见组合。
+        /// 指定允许应用程序使用的授权类型。将该IdentityServerConstants.GrantTypes类用于常见组合。
         /// </summary>
 
         [Display(Name = "允许应用程序使用的授权类型")]

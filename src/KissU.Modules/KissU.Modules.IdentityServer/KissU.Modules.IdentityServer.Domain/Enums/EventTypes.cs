@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿// <copyright file="EventTypes.cs" company="KissU">
+// Copyright (c) KissU. All Rights Reserved.
+// </copyright>
 
-namespace KissU.Modules.IdentityServer.Domain.Shared.Enums
+namespace KissU.Modules.IdentityServer.Domain.Enums
 {
     /// <summary>
     /// Indicates if the event is a success or fail event.

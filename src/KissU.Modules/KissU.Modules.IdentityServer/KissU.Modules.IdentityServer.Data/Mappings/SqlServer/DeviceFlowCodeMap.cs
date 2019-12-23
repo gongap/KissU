@@ -15,7 +15,7 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         /// </summary>
         protected override void MapTable(EntityTypeBuilder<DeviceFlowCode> builder)
         {
-            builder.ToTable(Consts.DbTablePrefix + "DeviceFlowCodes", Consts.DbSchema);
+            builder.ToTable(IdentityServerDataConstants.DbTablePrefix + "DeviceFlowCodes", IdentityServerDataConstants.DbSchema);
         }
 
         /// <summary>
