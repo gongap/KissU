@@ -43,7 +43,7 @@ namespace KissU.Modules.IdentityServer.Stores
         {
             var apiResource = await _apiResourcePoStore.Find(p => p.Name == name)
                 .Include(x => x.Scopes)
-                .Include(x => x.Secrets).ToListAsync();
+                .Include(x => x.ApiSecrets).ToListAsync();
 
             var model = apiResource?.MapTo<ApiResource>();
 
@@ -61,7 +61,7 @@ namespace KissU.Modules.IdentityServer.Stores
 
             var queryable = _apiResourcePoStore.Find(x => x.Scopes.Any(p => names.Contains(p.Name)))
                 .Include(x => x.Scopes)
-                .Include(x => x.Secrets);
+                .Include(x => x.ApiSecrets);
 
             var apiResources = await queryable.ToListAsync();
 
@@ -96,7 +96,7 @@ namespace KissU.Modules.IdentityServer.Stores
             var identitys = await _identityResourcesPoStore.FindAllAsync();
             var apis = await _apiResourcePoStore.Find()
                 .Include(x => x.Scopes)
-                .Include(x => x.Secrets).ToListAsync();
+                .Include(x => x.ApiSecrets).ToListAsync();
             var result = new Resources(identitys?.MapToList<IdentityResource>(), apis?.MapToList<ApiResource>());
             return result;
         }

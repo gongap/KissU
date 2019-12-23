@@ -19,7 +19,7 @@ namespace KissU.Modules.IdentityServer.Domain.Models
         /// </summary>
         public ApiResource() : base(Guid.Empty)
         {
-            Secrets = new List<ApiSecret>();
+            ApiSecrets = new List<ApiSecret>();
             Scopes = new List<ApiScope>();
             UserClaims = new List<UserClaim>();
             Properties = new List<Property>();
@@ -28,7 +28,7 @@ namespace KissU.Modules.IdentityServer.Domain.Models
         /// <summary>
         /// API密钥列表
         /// </summary>
-        public List<ApiSecret> Secrets { get; set; }
+        public List<ApiSecret> ApiSecrets { get; set; }
 
         /// <summary>
         /// API必须至少有一个范围。每个范围可以有不同的设置。

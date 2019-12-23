@@ -30,17 +30,8 @@ namespace KissU.Modules.IdentityServer.Mappers
                 .ConstructUsing(src => new Claim(src.Type, src.Value))
                 .ReverseMap();
 
-            CreateMap<ApiResource, Ids4.ApiResource>(MemberList.Destination)
-                .ConstructUsing(src => new Ids4.ApiResource())
-                .ForMember(x => x.ApiSecrets, opts => opts.MapFrom(x => x.Secrets))
-                .ReverseMap();
-
             CreateMap<ApiSecret, Ids4.Secret>(MemberList.Destination)
                 .ForMember(dest => dest.Type, opt => opt.Condition(srs => srs != null));
-
-            CreateMap<ApiSecret, Ids4.Secret>(MemberList.Destination)
-                .ForMember(dest => dest.Type, opt => opt.Condition(srs => srs != null))
-                .ReverseMap();
 
             CreateMap<ApiScope, Ids4.Scope>(MemberList.Destination)
                 .ConstructUsing(src => new Ids4.Scope())

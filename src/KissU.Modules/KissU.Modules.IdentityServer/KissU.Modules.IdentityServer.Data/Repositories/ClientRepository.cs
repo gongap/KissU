@@ -54,8 +54,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
                 join client in Set on clientClaim.Client.Id equals client.Id
                 where clientClaim.Client.Id == clientId
                 select clientClaim;
-            return await EntityFrameworkQueryableExtensions.Include<ClientClaim, Client>(queryable, x => x.Client)
-                .ToListAsync();
+            return await queryable.Include(x=>x.Client).ToListAsync();
         }
 
         /// <summary>
@@ -69,8 +68,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
                 join client in Set on clientClaim.Client.Id equals client.Id
                 where clientClaim.Id == id
                 select clientClaim;
-            return await EntityFrameworkQueryableExtensions.Include<ClientClaim, Client>(queryable, x => x.Client)
-                .SingleAsync();
+            return await queryable.Include(x => x.Client).SingleAsync();
         }
 
         /// <summary>
@@ -122,8 +120,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
                 join client in Set on clientSecret.Client.Id equals client.Id
                 where clientSecret.Client.Id == clientId
                 select clientSecret;
-            return await EntityFrameworkQueryableExtensions.Include<ClientSecret, Client>(queryable, x => x.Client)
-                .ToListAsync();
+            return await queryable.Include(x => x.Client).ToListAsync();
         }
 
         /// <summary>
@@ -137,8 +134,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
                 join client in Set on clientSecret.Client.Id equals client.Id
                 where clientSecret.Id == id
                 select clientSecret;
-            return await EntityFrameworkQueryableExtensions.Include<ClientSecret, Client>(queryable, x => x.Client)
-                .SingleAsync();
+            return await queryable.Include(x => x.Client).SingleAsync();
         }
 
         /// <summary>

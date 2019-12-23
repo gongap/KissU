@@ -41,8 +41,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
                 join apiResource in Set on apiScope.ApiResource.Id equals apiResource.Id
                 where apiScope.ApiResource.Id == apiResourceId
                 select apiScope;
-            return await EntityFrameworkQueryableExtensions
-                .Include<ApiScope, ApiResource>(queryable, x => x.ApiResource).ToListAsync();
+            return await queryable.Include(x => x.ApiResource).ToListAsync();
         }
 
         /// <summary>
@@ -56,8 +55,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
                 join apiResource in Set on apiScope.ApiResource.Id equals apiResource.Id
                 where apiScope.Id == id
                 select apiScope;
-            return await EntityFrameworkQueryableExtensions
-                .Include<ApiScope, ApiResource>(queryable, x => x.ApiResource).SingleAsync();
+            return await queryable.Include(x => x.ApiResource).SingleAsync();
         }
 
         /// <summary>
@@ -109,8 +107,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
                 join apiResource in Set on apiSecret.ApiResource.Id equals apiResource.Id
                 where apiSecret.ApiResource.Id == apiResourceId
                 select apiSecret;
-            return await EntityFrameworkQueryableExtensions
-                .Include<ApiSecret, ApiResource>(queryable, x => x.ApiResource).ToListAsync();
+            return await queryable.Include(x => x.ApiResource).ToListAsync();
         }
 
         /// <summary>
@@ -124,8 +121,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
                 join apiResource in Set on apiSecret.ApiResource.Id equals apiResource.Id
                 where apiSecret.Id == id
                 select apiSecret;
-            return await EntityFrameworkQueryableExtensions
-                .Include<ApiSecret, ApiResource>(queryable, x => x.ApiResource).SingleAsync();
+            return await queryable.Include(x => x.ApiResource).SingleAsync();
         }
 
         /// <summary>

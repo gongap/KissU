@@ -54,7 +54,7 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
                 p.Property(x => x.Value).HasMaxLength(2000).IsRequired();
             });
 
-            builder.HasMany(x => x.Secrets).WithOne(x => x.ApiResource).IsRequired().OnDelete(DeleteBehavior.Cascade);
+            builder.HasMany(x => x.ApiSecrets).WithOne(x => x.ApiResource).IsRequired().OnDelete(DeleteBehavior.Cascade);
             builder.HasMany(x => x.Scopes).WithOne(x => x.ApiResource).IsRequired().OnDelete(DeleteBehavior.Cascade);
         }
     }
