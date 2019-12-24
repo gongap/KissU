@@ -3,16 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Remove="Extensions\**" />
-    <Compile Remove="Services\**" />
-    <Content Remove="Extensions\**" />
-    <Content Remove="Services\**" />
-    <EmbeddedResource Remove="Extensions\**" />
-    <EmbeddedResource Remove="Services\**" />
-    <None Remove="Extensions\**" />
-    <None Remove="Services\**" />
-  </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.IdentityServer\KissU.Modules.IdentityServer\KissU.Modules.IdentityServer.csproj" />
   </ItemGroup>
