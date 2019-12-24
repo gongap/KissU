@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Reflection;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+using System.Reflection;
+using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using Autofac;
+using Microsoft.Extensions.Primitives;
+using System.Threading.Tasks;
 using KissU.Core.CPlatform.Messages;
 using KissU.Core.CPlatform.Runtime.Server;
 using KissU.Core.CPlatform.Utilities;
 using KissU.Core.Swagger.Swagger.Model;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ApiExplorer;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.Extensions.Options;
-using Microsoft.Extensions.Primitives;
 
 namespace KissU.Core.Swagger.SwaggerGen.Generator
 {
@@ -30,7 +30,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
             IApiDescriptionGroupCollectionProvider apiDescriptionsProvider,
             ISchemaRegistryFactory schemaRegistryFactory,
             IOptions<SwaggerGeneratorOptions> optionsAccessor)
-            : this (apiDescriptionsProvider, schemaRegistryFactory, optionsAccessor.Value)
+            : this(apiDescriptionsProvider, schemaRegistryFactory, optionsAccessor.Value)
         { }
 
         public SwaggerGenerator(
@@ -139,7 +139,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
                         group.First().RelativePathSansQueryString(),
                         string.Join(",", group.Select(apiDesc => apiDesc.ActionDescriptor.DisplayName))));
 
-                var apiDescription = (group.Count() > 1) ? _options.ConflictingActionsResolver(group) : group.Single();
+                var apiDescription = group.Count() > 1 ? _options.ConflictingActionsResolver(group) : group.Single();
 
                 switch (httpMethod)
                 {
@@ -177,9 +177,9 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
             foreach (var entry in serviceEntries)
             {
                 var methodInfo = entry.Type.GetTypeInfo().DeclaredMethods.Where(p => p.Name == entry.MethodName).FirstOrDefault();
-                var parameterInfo = methodInfo.GetParameters(); 
+                var parameterInfo = methodInfo.GetParameters();
 
-                if (entry.Methods.Count() ==0)
+                if (entry.Methods.Count() == 0)
                 {
                     if (parameterInfo != null && parameterInfo.Any(p =>
                   !UtilityType.ConvertibleType.GetTypeInfo().IsAssignableFrom(p.ParameterType)))
@@ -222,9 +222,9 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
         }
 
         private Operation CreateOperation(ServiceEntry serviceEntry, MethodInfo methodInfo, ISchemaRegistry schemaRegistry)
-        { 
-            var customAttributes = Enumerable.Empty<object>(); 
-            if (methodInfo !=null)
+        {
+            var customAttributes = Enumerable.Empty<object>();
+            if (methodInfo != null)
             {
                 customAttributes = methodInfo.GetCustomAttributes(true)
                     .Union(methodInfo.DeclaringType.GetTypeInfo().GetCustomAttributes(true));
@@ -234,17 +234,17 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
             var operation = new Operation
             {
                 Tags = new[] { serviceEntry.Type.Name },
-                OperationId = serviceEntry.Descriptor.Id, 
-                Parameters= CreateParameters(serviceEntry, methodInfo,schemaRegistry),
+                OperationId = serviceEntry.Descriptor.Id,
+                Parameters = CreateParameters(serviceEntry, methodInfo, schemaRegistry),
                 Deprecated = isDeprecated ? true : (bool?)null,
-                Responses = CreateResponses(serviceEntry,methodInfo, schemaRegistry),
+                Responses = CreateResponses(serviceEntry, methodInfo, schemaRegistry),
 
             };
 
             var filterContext = new OperationFilterContext(
              null,
              schemaRegistry,
-             methodInfo,serviceEntry);
+             methodInfo, serviceEntry);
 
             foreach (var filter in _options.OperationFilters)
             {
@@ -253,9 +253,9 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
             return operation;
         }
 
-            private Operation CreateOperation(
-            ApiDescription apiDescription,
-            ISchemaRegistry schemaRegistry)
+        private Operation CreateOperation(
+        ApiDescription apiDescription,
+        ISchemaRegistry schemaRegistry)
         {
             // Try to retrieve additional metadata that's not provided by ApiExplorer
             MethodInfo methodInfo;
@@ -303,7 +303,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
         {
             var consumesAttribute = customAttributes.OfType<ConsumesAttribute>().FirstOrDefault();
 
-            var mediaTypes = (consumesAttribute != null)
+            var mediaTypes = consumesAttribute != null
                 ? consumesAttribute.ContentTypes
                 : apiDescription.SupportedRequestFormats
                     .Select(apiRequestFormat => apiRequestFormat.MediaType);
@@ -315,7 +315,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
         {
             var producesAttribute = customAttributes.OfType<ProducesAttribute>().FirstOrDefault();
 
-            var mediaTypes = (producesAttribute != null)
+            var mediaTypes = producesAttribute != null
                 ? producesAttribute.ContentTypes
                 : apiDescription.SupportedResponseTypes
                     .SelectMany(apiResponseType => apiResponseType.ApiResponseFormats)
@@ -341,25 +341,43 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
                 .ToList();
         }
 
-        private IList<IParameter> CreateParameters( ServiceEntry serviceEntry, MethodInfo methodInfo, ISchemaRegistry schemaRegistry)
-        { 
-            ParameterInfo [] parameterInfo = null; 
+        private IList<IParameter> CreateParameters(ServiceEntry serviceEntry, MethodInfo methodInfo, ISchemaRegistry schemaRegistry)
+        {
+            ParameterInfo[] parameterInfo = null;
             if (methodInfo != null)
             {
                 parameterInfo = methodInfo.GetParameters();
 
             };
-             return parameterInfo !=null && parameterInfo.Any(p =>
-             ! UtilityType.ConvertibleType.GetTypeInfo().IsAssignableFrom(p.ParameterType) && p.ParameterType.Name != "HttpFormCollection") 
-             ? new List<IParameter> { CreateServiceKeyParameter() }.Union(parameterInfo.Select(p=> CreateBodyParameter(p,schemaRegistry))).ToList():
-            new List<IParameter> { CreateServiceKeyParameter() }.Union(parameterInfo.Select(p => CreateNonBodyParameter(serviceEntry, p, schemaRegistry))).ToList();
+            if (parameterInfo.Count() > 1)
+            {
+                return parameterInfo != null && parameterInfo.Any(p =>
+                !UtilityType.ConvertibleType.GetTypeInfo().IsAssignableFrom(p.ParameterType) && p.ParameterType.Name != "HttpFormCollection")
+               ? new List<IParameter> { CreateServiceKeyParameter() }.Union(new List<IParameter> { CreateBodyParameter(parameterInfo, schemaRegistry) }).ToList() :
+              new List<IParameter> { CreateServiceKeyParameter() }.Union(parameterInfo.Select(p => CreateNonBodyParameter(serviceEntry, p, schemaRegistry))).ToList();
+            }
+            else
+            {
+                return parameterInfo != null && parameterInfo.Any(p =>
+                 !UtilityType.ConvertibleType.GetTypeInfo().IsAssignableFrom(p.ParameterType) && p.ParameterType.Name != "HttpFormCollection")
+                ? new List<IParameter> { CreateServiceKeyParameter() }.Union(parameterInfo.Select(p => CreateBodyParameter(p, schemaRegistry))).ToList() :
+               new List<IParameter> { CreateServiceKeyParameter() }.Union(parameterInfo.Select(p => CreateNonBodyParameter(serviceEntry, p, schemaRegistry))).ToList();
+            }
         }
 
-        private IParameter CreateBodyParameter(ParameterInfo  parameterInfo, ISchemaRegistry schemaRegistry)
+        private IParameter CreateBodyParameter(ParameterInfo parameterInfo, ISchemaRegistry schemaRegistry)
         {
-            
-            var schema = schemaRegistry.GetOrRegister(parameterInfo.Name,typeof(IDictionary<,>).MakeGenericType(typeof(string), parameterInfo.ParameterType));
-            return  new BodyParameter { Name = parameterInfo.Name,Schema=schema, Required = true };
+
+            var schema = schemaRegistry.GetOrRegister(parameterInfo.Name, typeof(IDictionary<,>).MakeGenericType(typeof(string), parameterInfo.ParameterType));
+            return new BodyParameter { Name = parameterInfo.Name, Schema = schema, Required = true };
+        }
+
+        private IParameter CreateBodyParameter(ParameterInfo[] parameterInfo, ISchemaRegistry schemaRegistry)
+        {
+            var schema = schemaRegistry.GetOrRegister(parameterInfo[0].Name, typeof(IDictionary<,>).MakeGenericType(typeof(string), parameterInfo[0].ParameterType));
+            for (int i = 1; i < parameterInfo.Length; i++)
+                schema.Properties.Add(parameterInfo[i].Name, schemaRegistry.GetOrRegister(null, parameterInfo[i].ParameterType));
+            return new BodyParameter { Name = "parameters", Schema = schema, Required = true };
         }
 
         private IParameter CreateServiceKeyParameter()
@@ -395,7 +413,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
                 nonBodyParam.Type = "string";
             }
             else if (typeof(IEnumerable<KeyValuePair<string, StringValues>>).IsAssignableFrom(parameterInfo.ParameterType) &&
-                parameterInfo.ParameterType.Name== "HttpFormCollection")
+                parameterInfo.ParameterType.Name == "HttpFormCollection")
             {
                 nonBodyParam.Type = "file";
                 nonBodyParam.In = "formData";
@@ -418,7 +436,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
                 {
                     // It's a value Schema. This means it's exclusive to this parameter and so, we can assign
                     // parameter specific attributes and metadata. Yep - it's hacky! 
-                    schema.Default = (parameterInfo != null && parameterInfo.IsOptional)
+                    schema.Default = parameterInfo != null && parameterInfo.IsOptional
                         ? parameterInfo.DefaultValue
                         : null;
                 }
@@ -462,7 +480,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
             var isRequired = customAttributes.Any(attr =>
                 new[] { typeof(RequiredAttribute), typeof(BindRequiredAttribute) }.Contains(attr.GetType()));
 
-            var parameter = (apiParameterDescription.Source == BindingSource.Body)
+            var parameter = apiParameterDescription.Source == BindingSource.Body
                 ? CreateBodyParameter(
                     apiParameterDescription,
                     name,
@@ -517,7 +535,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
             {
                 Name = name,
                 In = location,
-                Required = (location == "path") ? true : isRequired,
+                Required = location == "path" ? true : isRequired,
             };
 
             if (apiParameterDescription.Type == null)
@@ -547,7 +565,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
                     // It's a value Schema. This means it's exclusive to this parameter and so, we can assign
                     // parameter specific attributes and metadata. Yep - it's hacky!
                     schema.AssignAttributeMetadata(customAttributes);
-                    schema.Default = (parameterInfo != null && parameterInfo.IsOptional)
+                    schema.Default = parameterInfo != null && parameterInfo.IsOptional
                         ? parameterInfo.DefaultValue
                         : null;
                 }
@@ -576,13 +594,12 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
     MethodInfo methodInfo,
     ISchemaRegistry schemaRegistry)
         {
-            return  new Dictionary<string, Response>
-            {
+            return new Dictionary<string, Response> {
                 { "200", CreateResponse(apiDescription,methodInfo, schemaRegistry) }
             };
         }
 
-        private Response CreateResponse(ServiceEntry apiResponseType,MethodInfo methodInfo, ISchemaRegistry schemaRegistry)
+        private Response CreateResponse(ServiceEntry apiResponseType, MethodInfo methodInfo, ISchemaRegistry schemaRegistry)
         {
             var description = ResponseDescriptionMap
                 .FirstOrDefault((entry) => Regex.IsMatch("200", entry.Key))
@@ -591,7 +608,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
             return new Response
             {
                 Description = description,
-                Schema = (methodInfo.ReturnType != typeof(Task) && methodInfo.ReturnType != typeof(void))
+                Schema = methodInfo.ReturnType != typeof(Task) && methodInfo.ReturnType != typeof(void)
                     ? schemaRegistry.GetOrRegister(typeof(HttpResultMessage<>).MakeGenericType(methodInfo.ReturnType.GenericTypeArguments))
                     : null
             };
@@ -606,7 +623,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
             return new Response
             {
                 Description = description,
-                Schema = (apiResponseType.Type != null && apiResponseType.Type != typeof(void))
+                Schema = apiResponseType.Type != null && apiResponseType.Type != typeof(void)
                     ? schemaRegistry.GetOrRegister(apiResponseType.Type)
                     : null
             };

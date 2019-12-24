@@ -8,7 +8,7 @@ namespace KissU.Util.Helpers
     /// <summary>
     /// 类型转换
     /// </summary>
-    public static class Convert
+    public static partial class Convert
     {
         /// <summary>
         /// 转换为32位整型

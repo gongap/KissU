@@ -12,7 +12,7 @@ namespace KissU.Util.Datas.Ef.Core
     /// 树型仓储
     /// </summary>
     /// <typeparam name="TEntity">实体类型</typeparam>
-    public abstract class TreeRepositoryBase<TEntity> : TreeRepositoryBase<TEntity, Guid, Guid?>, ITreeRepository<TEntity>
+    public abstract partial class TreeRepositoryBase<TEntity> : TreeRepositoryBase<TEntity, Guid, Guid?>, ITreeRepository<TEntity>
         where TEntity : class, ITreeEntity<TEntity, Guid, Guid?>
         {
         /// <summary>
@@ -40,7 +40,7 @@ namespace KissU.Util.Datas.Ef.Core
     /// <typeparam name="TEntity">实体类型</typeparam>
     /// <typeparam name="TKey">实体标识类型</typeparam>
     /// <typeparam name="TParentId">父标识类型</typeparam>
-    public abstract class TreeRepositoryBase<TEntity, TKey, TParentId> : RepositoryBase<TEntity, TKey>, ITreeRepository<TEntity, TKey, TParentId>
+    public abstract partial class TreeRepositoryBase<TEntity, TKey, TParentId> : RepositoryBase<TEntity, TKey>, ITreeRepository<TEntity, TKey, TParentId>
         where TEntity : class, ITreeEntity<TEntity, TKey, TParentId>
         {
         /// <summary>

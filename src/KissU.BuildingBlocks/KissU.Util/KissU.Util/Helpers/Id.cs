@@ -5,7 +5,7 @@ namespace KissU.Util.Helpers
     /// <summary>
     /// 标识生成器
     /// </summary>
-    public static class Id
+    public static partial class Id
     {
         /// <summary>
         /// 标识

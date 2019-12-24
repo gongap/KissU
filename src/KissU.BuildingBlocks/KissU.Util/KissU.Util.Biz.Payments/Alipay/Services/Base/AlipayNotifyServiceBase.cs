@@ -8,23 +8,19 @@ using KissU.Util.Parameters;
 using KissU.Util.Signatures;
 using KissU.Util.Validations;
 
-namespace KissU.Util.Biz.Payments.Alipay.Services.Base
-{
+namespace KissU.Util.Biz.Payments.Alipay.Services.Base {
     /// <summary>
     /// 支付宝通知服务
     /// </summary>
-    public abstract class AlipayNotifyServiceBase
-    {
+    public abstract class AlipayNotifyServiceBase {
         /// <summary>
         /// 参数生成器
         /// </summary>
         private readonly UrlParameterBuilder _builder;
-
         /// <summary>
         /// 配置提供器
         /// </summary>
         private readonly IAlipayConfigProvider _configProvider;
-
         /// <summary>
         /// 是否已加载
         /// </summary>
@@ -34,8 +30,7 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base
         /// 初始化支付宝通知服务
         /// </summary>
         /// <param name="configProvider">配置提供器</param>
-        protected AlipayNotifyServiceBase( IAlipayConfigProvider configProvider )
-        {
+        protected AlipayNotifyServiceBase( IAlipayConfigProvider configProvider ) {
             configProvider.CheckNull( nameof( configProvider ) );
             _configProvider = configProvider;
             _builder = new UrlParameterBuilder();
@@ -46,8 +41,7 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base
         /// 获取参数
         /// </summary>
         /// <param name="name">参数名</param>
-        public T GetParam<T>( string name )
-        {
+        public T GetParam<T>( string name ) {
             return Util.Helpers.Convert.To<T>( GetParam( name ) );
         }
 
@@ -55,8 +49,7 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base
         /// 获取参数
         /// </summary>
         /// <param name="name">参数名</param>
-        public string GetParam( string name )
-        {
+        public string GetParam( string name ) {
             Init();
             return _builder.GetValue( name ).SafeString();
         }
@@ -64,8 +57,7 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base
         /// <summary>
         /// 初始化
         /// </summary>
-        private void Init()
-        {
+        private void Init() {
             if( _isLoad )
                 return;
             Load( _builder );
@@ -82,8 +74,7 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base
         /// <summary>
         /// 写日志
         /// </summary>
-        protected void WriteLog()
-        {
+        protected void WriteLog() {
             var log = GetLog();
             if( log.IsTraceEnabled == false )
                 return;
@@ -97,14 +88,11 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base
         /// <summary>
         /// 获取日志操作
         /// </summary>
-        private ILog GetLog()
-        {
-            try
-            {
+        private ILog GetLog() {
+            try {
                 return Log.GetLog( AlipayConst.TraceLogName );
             }
-            catch
-            {
+            catch {
                 return Log.Null;
             }
         }
@@ -112,16 +100,14 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base
         /// <summary>
         /// 获取日志标题
         /// </summary>
-        protected virtual string GetCaption()
-        {
+        protected virtual string GetCaption() {
             return string.Empty;
         }
 
         /// <summary>
         /// 获取参数集合
         /// </summary>
-        public IDictionary<string, string> GetParams()
-        {
+        public IDictionary<string, string> GetParams() {
             Init();
             return _builder.GetDictionary().ToDictionary( t => t.Key, t => t.Value.SafeString() );
         }
@@ -129,8 +115,7 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base
         /// <summary>
         /// 验证
         /// </summary>
-        public async Task<ValidationResultCollection> ValidateAsync()
-        {
+        public async Task<ValidationResultCollection> ValidateAsync() {
             Init();
             var isValid = await VerifySign();
             if( isValid == false )
@@ -141,8 +126,7 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base
         /// <summary>
         /// 验证签名
         /// </summary>
-        private async Task<bool> VerifySign()
-        {
+        private async Task<bool> VerifySign() {
             var config = await _configProvider.GetConfigAsync();
             var signManager = new SignManager( new SignKey( config.PrivateKey, config.PublicKey ), CreateVerifyBuilder() );
             return signManager.Verify( Sign );
@@ -151,8 +135,7 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base
         /// <summary>
         /// 创建验签生成器
         /// </summary>
-        private UrlParameterBuilder CreateVerifyBuilder()
-        {
+        private UrlParameterBuilder CreateVerifyBuilder() {
             var builder = new UrlParameterBuilder( _builder );
             builder.Remove( AlipayConst.Sign );
             builder.Remove( AlipayConst.SignType );
@@ -162,8 +145,7 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base
         /// <summary>
         /// 验证
         /// </summary>
-        protected virtual ValidationResultCollection Validate()
-        {
+        protected virtual ValidationResultCollection Validate() {
             return ValidationResultCollection.Success;
         }
 

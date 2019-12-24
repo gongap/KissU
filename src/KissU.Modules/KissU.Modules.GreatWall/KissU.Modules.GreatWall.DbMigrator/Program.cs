@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using KissU.Util;
 using KissU.Util.Datas.SqlServer;
+using KissU.Util.Dependency;
 
 namespace KissU.Modules.GreatWall.DbMigrator
 {
@@ -16,11 +17,12 @@ namespace KissU.Modules.GreatWall.DbMigrator
     {
         private static async Task Main(string[] args)
         {
+            var serviceProviderFactory = new ServiceProviderFactory();
             var configuration = DbMigrationHelpers.BuildConfiguration();
             var services = new ServiceCollection();
-            services.AddUnitOfWork<IGreatWallUnitOfWork, DesignTimeDbContext>(
-                configuration.GetConnectionString("DefaultConnection"));
-            var serviceProvider = services.AddUtil();
+            services.AddUnitOfWork<IGreatWallUnitOfWork, DesignTimeDbContext>(configuration.GetConnectionString("DefaultConnection"));
+            var containerBuilder = serviceProviderFactory.CreateBuilder(services);
+            var serviceProvider = serviceProviderFactory.CreateServiceProvider(containerBuilder);
             await DbMigrationHelpers.MigrateAsync<DesignTimeDbContext>(serviceProvider);
             Console.WriteLine("Press ENTER to stop application...");
             Console.ReadLine();

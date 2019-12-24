@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using KissU.Util.Biz.Payments.Wechatpay.Configs;
+using KissU.Util.Biz.Payments.Wechatpay.Parameters;
 using KissU.Util.Biz.Payments.Wechatpay.Signatures;
 using KissU.Util.Helpers;
 using KissU.Util.Logs;
@@ -9,59 +10,63 @@ using KissU.Util.Logs.Extensions;
 using KissU.Util.Parameters;
 using KissU.Util.Validations;
 
-namespace KissU.Util.Biz.Payments.Wechatpay.Results
-{
+namespace KissU.Util.Biz.Payments.Wechatpay.Results {
     /// <summary>
     /// 微信支付结果
     /// </summary>
-    public class WechatpayResult
-    {
-        /// <summary>
-        /// 配置提供器
-        /// </summary>
-        private readonly IWechatpayConfigProvider _configProvider;
-
+    public class WechatpayResult {
         /// <summary>
         /// 响应结果
         /// </summary>
         private readonly ParameterBuilder _builder;
-
         /// <summary>
         /// 签名
         /// </summary>
         private string _sign;
 
         /// <summary>
-        /// 微信支付原始响应
-        /// </summary>
-        public string Raw { get; }
-
-        /// <summary>
         /// 初始化微信支付结果
         /// </summary>
         /// <param name="configProvider">配置提供器</param>
         /// <param name="response">xml响应消息</param>
-        public WechatpayResult( IWechatpayConfigProvider configProvider, string response )
-        {
+        /// <param name="config">配置</param>
+        /// <param name="parameterBuilder">参数生成器</param>
+        public WechatpayResult( IWechatpayConfigProvider configProvider, string response, WechatpayConfig config = null, WechatpayParameterBuilder parameterBuilder = null ) {
             configProvider.CheckNull( nameof( configProvider ) );
-            _configProvider = configProvider;
+            ConfigProvider = configProvider;
             Raw = response;
+            Config = config;
+            Builder = parameterBuilder;
             _builder = new ParameterBuilder();
             Resolve( response );
         }
 
         /// <summary>
+        /// 微信支付原始响应
+        /// </summary>
+        public string Raw { get; }
+        /// <summary>
+        /// 配置提供器
+        /// </summary>
+        public IWechatpayConfigProvider ConfigProvider { get; }
+        /// <summary>
+        /// 配置
+        /// </summary>
+        public WechatpayConfig Config { get; }
+        /// <summary>
+        /// 参数生成器
+        /// </summary>
+        public WechatpayParameterBuilder Builder { get; }
+
+        /// <summary>
         /// 解析响应
         /// </summary>
-        private void Resolve( string response )
-        {
+        private void Resolve( string response ) {
             if( response.IsEmpty() )
                 return;
             var elements = Xml.ToElements( response );
-            elements.ForEach( node =>
-            {
-                if( node.Name == WechatpayConst.Sign )
-                {
+            elements.ForEach( node => {
+                if( node.Name == WechatpayConst.Sign ) {
                     _sign = node.Value;
                     return;
                 }
@@ -73,8 +78,7 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// <summary>
         /// 写日志
         /// </summary>
-        protected virtual void WriteLog()
-        {
+        protected virtual void WriteLog() {
             var log = GetLog();
             if( log.IsTraceEnabled == false )
                 return;
@@ -91,14 +95,11 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// <summary>
         /// 获取日志操作
         /// </summary>
-        protected ILog GetLog()
-        {
-            try
-            {
+        protected ILog GetLog() {
+            try {
                 return Log.GetLog( WechatpayConst.TraceLogName );
             }
-            catch
-            {
+            catch {
                 return Log.Null;
             }
         }
@@ -107,112 +108,98 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// 获取参数
         /// </summary>
         /// <param name="name">xml节点名称</param>
-        public string GetParam( string name )
-        {
+        public string GetParam( string name ) {
             return _builder.GetValue( name ).SafeString();
         }
 
         /// <summary>
         /// 获取返回状态码
         /// </summary>
-        public string GetReturnCode()
-        {
+        public string GetReturnCode() {
             return GetParam( WechatpayConst.ReturnCode );
         }
 
         /// <summary>
         /// 获取业务结果代码
         /// </summary>
-        public string GetResultCode()
-        {
+        public string GetResultCode() {
             return GetParam( WechatpayConst.ResultCode );
         }
 
         /// <summary>
         /// 获取返回消息
         /// </summary>
-        public string GetReturnMessage()
-        {
+        public string GetReturnMessage() {
             return GetParam( WechatpayConst.ReturnMessage );
         }
 
         /// <summary>
         /// 获取应用标识
         /// </summary>
-        public string GetAppId()
-        {
+        public string GetAppId() {
             return GetParam( WechatpayConst.AppId );
         }
 
         /// <summary>
         /// 获取商户号
         /// </summary>
-        public string GetMerchantId()
-        {
+        public string GetMerchantId() {
             return GetParam( WechatpayConst.MerchantId );
         }
 
         /// <summary>
         /// 获取随机字符串
         /// </summary>
-        public string GetNonce()
-        {
+        public string GetNonce() {
             return GetParam( "nonce_str" );
         }
 
         /// <summary>
         /// 获取预支付标识
         /// </summary>
-        public string GetPrepayId()
-        {
+        public string GetPrepayId() {
             return GetParam( "prepay_id" );
         }
 
         /// <summary>
         /// 获取微信退款单号
         /// </summary>
-        public string GetRefundId()
-        {
+        public string GetRefundId() {
             return GetParam( "refund_id" );
         }
 
         /// <summary>
         /// 获取交易类型
         /// </summary>
-        public string GetTradeType()
-        {
+        public string GetTradeType() {
             return GetParam( WechatpayConst.TradeType );
         }
 
         /// <summary>
         /// 获取错误码
         /// </summary>
-        public string GetErrorCode()
-        {
+        public string GetErrorCode() {
             return GetParam( WechatpayConst.ErrorCode );
         }
 
         /// <summary>
         /// 获取错误码和描述
         /// </summary>
-        public string GetErrorCodeDescription()
-        {
+        public string GetErrorCodeDescription() {
             return GetParam( WechatpayConst.ErrorCodeDescription );
         }
 
         /// <summary>
         /// 获取签名
         /// </summary>
-        public string GetSign()
-        {
+        public string GetSign() {
             return _sign;
         }
 
         /// <summary>
         /// 获取参数列表
         /// </summary>
-        public IDictionary<string, string> GetParams()
-        {
+        public IDictionary<string, string> GetParams() {
             var builder = new ParameterBuilder( _builder );
             builder.Add( WechatpayConst.Sign, _sign );
             return builder.GetDictionary().ToDictionary( t => t.Key, t => t.Value.SafeString() );
@@ -221,8 +208,7 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// <summary>
         /// 验证
         /// </summary>
-        public async Task<ValidationResultCollection> ValidateAsync()
-        {
+        public async Task<ValidationResultCollection> ValidateAsync() {
             if( GetReturnCode() != WechatpayConst.Success || GetResultCode() != WechatpayConst.Success )
                 return new ValidationResultCollection( GetErrorCodeDescription() );
             var isValid = await VerifySign();
@@ -234,9 +220,8 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// <summary>
         /// 验证签名
         /// </summary>
-        public async Task<bool> VerifySign()
-        {
-            var config = await _configProvider.GetConfigAsync( _builder );
+        public async Task<bool> VerifySign() {
+            var config = await ConfigProvider.GetConfigAsync( _builder );
             return SignManagerFactory.Create( config, _builder ).Verify( GetSign() );
         }
     }

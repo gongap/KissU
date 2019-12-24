@@ -8,7 +8,7 @@ namespace KissU.Util.Helpers
     /// <summary>
     /// 枚举操作
     /// </summary>
-    public static class Enum
+    public static partial class Enum
     {
         /// <summary>
         /// 获取实例

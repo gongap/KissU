@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
 using KissU.Util.Biz.Payments.Alipay.Configs;
+using KissU.Util.Biz.Payments.Alipay.Parameters;
 using Newtonsoft.Json.Linq;
 
-namespace KissU.Util.Biz.Payments.Alipay.Results
-{
+namespace KissU.Util.Biz.Payments.Alipay.Results {
     /// <summary>
     /// 支付宝结果
     /// </summary>
-    public class AlipayResult
-    {
+    public class AlipayResult {
         /// <summary>
         /// 结果
         /// </summary>
@@ -17,10 +16,17 @@ namespace KissU.Util.Biz.Payments.Alipay.Results
         /// <summary>
         /// 初始化支付宝结果
         /// </summary>
+        public AlipayResult() {
+        }
+
+        /// <summary>
+        /// 初始化支付宝结果
+        /// </summary>
         /// <param name="response">json响应消息</param>
-        public AlipayResult( string response )
-        {
+        /// <param name="builder">支付宝参数生成器</param>
+        public AlipayResult( string response, AlipayParameterBuilder builder = null ) {
             Raw = response;
+            Builder = builder;
             _result = new Dictionary<string, string>();
             LoadJson( response );
         }
@@ -29,12 +35,19 @@ namespace KissU.Util.Biz.Payments.Alipay.Results
         /// 支付宝原始响应
         /// </summary>
         public string Raw { get; }
+        /// <summary>
+        /// 支付宝参数生成器
+        /// </summary>
+        public AlipayParameterBuilder Builder { get; }
+        /// <summary>
+        /// 结果
+        /// </summary>
+        public string Result { get; set; }
 
         /// <summary>
         /// 加载json
         /// </summary>
-        private void LoadJson( string json )
-        {
+        private void LoadJson( string json ) {
             if( json.IsEmpty() )
                 return;
             var jObject = JObject.Parse( json );
@@ -45,8 +58,7 @@ namespace KissU.Util.Biz.Payments.Alipay.Results
         /// <summary>
         /// 添加节点
         /// </summary>
-        private void AddNodes( JToken token )
-        {
+        private void AddNodes( JToken token ) {
             if( !( token is JProperty item ) )
                 return;
             foreach( var value in item.Value )
@@ -59,19 +71,17 @@ namespace KissU.Util.Biz.Payments.Alipay.Results
         /// <summary>
         /// 获取忽略项
         /// </summary>
-        private List<string> GetIgnoreItems()
-        {
-            return new List<string>
-            {
-                "alipay_trade_pay_response"
+        private List<string> GetIgnoreItems() {
+            return new List<string> {
+                "alipay_trade_pay_response",
+                "alipay_trade_cancel_response"
             };
         }
 
         /// <summary>
         /// 获取字典
         /// </summary>
-        public IDictionary<string, string> GetDictionary()
-        {
+        public IDictionary<string, string> GetDictionary() {
             return _result;
         }
 
@@ -79,8 +89,7 @@ namespace KissU.Util.Biz.Payments.Alipay.Results
         /// 获取值
         /// </summary>
         /// <param name="key">键</param>
-        public string GetValue( string key )
-        {
+        public string GetValue( string key ) {
             if( key.IsEmpty() )
                 return string.Empty;
             return _result.ContainsKey( key ) ? _result[key].SafeString() : string.Empty;
@@ -90,8 +99,7 @@ namespace KissU.Util.Biz.Payments.Alipay.Results
         /// 是否包含指定键
         /// </summary>
         /// <param name="key">键</param>
-        public bool HasKey( string key )
-        {
+        public bool HasKey( string key ) {
             if( key.IsEmpty() )
                 return false;
             return _result.ContainsKey( key );
@@ -100,25 +108,29 @@ namespace KissU.Util.Biz.Payments.Alipay.Results
         /// <summary>
         /// 获取状态码
         /// </summary>
-        public string GetCode()
-        {
+        public string GetCode() {
             return GetValue( "code" );
         }
 
         /// <summary>
         /// 获取消息
         /// </summary>
-        public string GetMessage()
-        {
+        public string GetMessage() {
             return GetValue( "msg" );
         }
 
         /// <summary>
-        /// 获取支付订单号
+        /// 获取支付交易号
         /// </summary>
-        public string GetTradeNo()
-        {
+        public string GetTradeNo() {
             return GetValue( AlipayConst.TradeNo );
+        }
+
+        /// <summary>
+        /// 获取商户订单号
+        /// </summary>
+        public string GetOutTradeNo() {
+            return GetValue( AlipayConst.OutTradeNo );
         }
 
         /// <summary>

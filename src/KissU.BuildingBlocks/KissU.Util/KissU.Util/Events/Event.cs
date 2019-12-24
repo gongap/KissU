@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using KissU.Util.Helpers;
 
 namespace KissU.Util.Events
 {
@@ -35,7 +36,7 @@ namespace KissU.Util.Events
             var result = new StringBuilder();
             result.AppendLine($"事件标识: {Id}");
             result.AppendLine($"事件时间:{Time.ToMillisecondString()}");
-            result.Append($"事件数据：{this}");
+            result.Append($"事件数据：{Json.ToJson(this)}");
             return result.ToString();
         }
     }

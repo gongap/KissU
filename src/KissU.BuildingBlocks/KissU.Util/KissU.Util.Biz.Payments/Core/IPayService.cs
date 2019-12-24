@@ -1,12 +1,10 @@
 ﻿using System.Threading.Tasks;
 
-namespace KissU.Util.Biz.Payments.Core
-{
+namespace KissU.Util.Biz.Payments.Core {
     /// <summary>
     /// 支付服务
     /// </summary>
-    public interface IPayService
-    {
+    public interface IPayService {
         /// <summary>
         /// 支付
         /// </summary>

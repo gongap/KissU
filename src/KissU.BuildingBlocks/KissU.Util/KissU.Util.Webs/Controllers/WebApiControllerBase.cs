@@ -14,7 +14,7 @@ namespace KissU.Util.Webs.Controllers
     [ExceptionHandler]
     [ErrorLog]
     [TraceLog]
-    public abstract class WebApiControllerBase : Controller
+    public abstract partial class WebApiControllerBase : Controller
     {
         /// <summary>
         /// 日志

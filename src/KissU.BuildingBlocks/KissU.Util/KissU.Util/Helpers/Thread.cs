@@ -7,7 +7,7 @@ namespace KissU.Util.Helpers
     /// <summary>
     /// 线程操作
     /// </summary>
-    public static class Thread
+    public static partial class Thread
     {
         /// <summary>
         /// 执行多个操作，等待所有操作完成

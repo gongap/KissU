@@ -16,7 +16,7 @@ namespace KissU.Util.Biz.Payments.Properties {
     // 类通过类似于 ResGen 或 Visual Studio 的工具自动生成的。
     // 若要添加或移除成员，请编辑 .ResX 文件，然后重新运行 ResGen
     // (以 /str 作为命令选项)，或重新生成 VS 项目。
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class PayResource {
@@ -36,7 +36,7 @@ namespace KissU.Util.Biz.Payments.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("KissU.Util.Biz.Payments.Properties.PayResource", typeof(PayResource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Util.Biz.Payments.Properties.PayResource", typeof(PayResource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -54,6 +54,15 @@ namespace KissU.Util.Biz.Payments.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 支付宝交易号和商户订单号不能同时为空 的本地化字符串。
+        /// </summary>
+        public static string AlipayCancelParamIsEmpty {
+            get {
+                return ResourceManager.GetString("AlipayCancelParamIsEmpty", resourceCulture);
             }
         }
         

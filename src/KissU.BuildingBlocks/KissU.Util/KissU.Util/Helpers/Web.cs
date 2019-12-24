@@ -19,7 +19,7 @@ namespace KissU.Util.Helpers
     /// <summary>
     /// Web操作
     /// </summary>
-    public static class Web
+    public static partial class Web
     {
 
         #region 静态构造方法

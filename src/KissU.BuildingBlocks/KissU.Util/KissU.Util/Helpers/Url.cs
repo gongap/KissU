@@ -5,7 +5,7 @@ namespace KissU.Util.Helpers
     /// <summary>
     /// Url操作
     /// </summary>
-    public static class Url
+    public static partial class Url
     {
         /// <summary>
         /// 合并Url

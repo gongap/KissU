@@ -2,13 +2,11 @@
 using KissU.Util.Biz.Payments.Core;
 using KissU.Util.Biz.Payments.Wechatpay.Parameters.Requests;
 
-namespace KissU.Util.Biz.Payments.Wechatpay.Abstractions
-{
+namespace KissU.Util.Biz.Payments.Wechatpay.Abstractions {
     /// <summary>
     /// 微信JsApi支付服务
     /// </summary>
-    public interface IWechatpayJsApiPayService
-    {
+    public interface IWechatpayJsApiPayService {
         /// <summary>
         /// 支付
         /// </summary>

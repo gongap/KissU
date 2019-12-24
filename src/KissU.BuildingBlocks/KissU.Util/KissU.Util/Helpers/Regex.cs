@@ -6,7 +6,7 @@ namespace KissU.Util.Helpers
     /// <summary>
     /// 正则操作
     /// </summary>
-    public static class Regex
+    public static partial class Regex
     {
         /// <summary>
         /// 获取匹配值集合

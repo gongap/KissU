@@ -5,29 +5,24 @@ using KissU.Util.Exceptions;
 using KissU.Util.Maps;
 using KissU.Util.Validations;
 
-namespace KissU.Util.Biz.Payments.Core
-{
+namespace KissU.Util.Biz.Payments.Core {
     /// <summary>
     /// 支付参数
     /// </summary>
-    public class PayParamBase : IValidation
-    {
+    public class PayParamBase : IValidation {
         /// <summary>
         /// 订单标题
         /// </summary>
         public string Subject { get; set; }
-
         /// <summary>
         /// 商户订单号
         /// </summary>
         [Required( ErrorMessageResourceType = typeof( PayResource ), ErrorMessageResourceName = "OrderIdIsEmpty" )]
         public string OrderId { get; set; }
-
         /// <summary>
         /// 支付金额，单位：元
         /// </summary>
         public decimal Money { get; set; }
-
         /// <summary>
         /// 回调通知地址
         /// </summary>
@@ -36,16 +31,14 @@ namespace KissU.Util.Biz.Payments.Core
         /// <summary>
         /// 初始化
         /// </summary>
-        public virtual void Init()
-        {
+        public virtual void Init() {
             InitSubject();
         }
 
         /// <summary>
         /// 初始化订单标题
         /// </summary>
-        private void InitSubject()
-        {
+        private void InitSubject() {
             if( Subject.IsEmpty() )
                 Subject = OrderId;
         }
@@ -53,8 +46,7 @@ namespace KissU.Util.Biz.Payments.Core
         /// <summary>
         /// 验证
         /// </summary>
-        public virtual ValidationResultCollection Validate()
-        {
+        public virtual ValidationResultCollection Validate() {
             ValidateMoney();
             var result = DataAnnotationValidation.Validate( this );
             if( result.IsValid )
@@ -65,8 +57,7 @@ namespace KissU.Util.Biz.Payments.Core
         /// <summary>
         /// 验证金额
         /// </summary>
-        private void ValidateMoney()
-        {
+        private void ValidateMoney() {
             if( Money <= 0 )
                 throw new Warning( PayResource.InvalidMoney );
         }
@@ -74,8 +65,7 @@ namespace KissU.Util.Biz.Payments.Core
         /// <summary>
         /// 转换为支付参数
         /// </summary>
-        public virtual PayParam ToParam()
-        {
+        public virtual PayParam ToParam() {
             return this.MapTo<PayParam>();
         }
     }

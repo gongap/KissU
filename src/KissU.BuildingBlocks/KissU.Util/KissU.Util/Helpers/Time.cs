@@ -5,7 +5,7 @@ namespace KissU.Util.Helpers
     /// <summary>
     /// 时间操作
     /// </summary>
-    public static class Time
+    public static partial class Time
     {
         /// <summary>
         /// 日期

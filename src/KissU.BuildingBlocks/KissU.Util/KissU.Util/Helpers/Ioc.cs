@@ -1,23 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Autofac;
 using KissU.Util.Dependency;
 using Microsoft.Extensions.DependencyInjection;
-using KissU.Util.Dependency;
-using IContainer = KissU.Util.Dependency.IContainer;
 
 namespace KissU.Util.Helpers
 {
     /// <summary>
     /// 容器
     /// </summary>
-    public static class Ioc
+    public static partial class Ioc
     {
         /// <summary>
         /// 默认容器
         /// </summary>
         internal static readonly Container DefaultContainer = new Container();
+
+        /// <summary>
+        /// 创建容器
+        /// </summary>
+        /// <param name="configs">依赖配置</param>
+        public static IContainer CreateContainer(params IConfig[] configs)
+        {
+            var container = new Container();
+            container.Register(null, null, builder => builder.EnableAop(), configs);
+            return container;
+        }
 
         /// <summary>
         /// 创建集合
@@ -83,7 +91,7 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <param name="builder">容器生成器</param>
         /// <param name="configs">依赖配置</param>
-        public static Autofac.IContainer Register(ContainerBuilder builder, params IConfig[] configs)
+        public static Autofac.IContainer Register(Autofac.ContainerBuilder builder, params IConfig[] configs)
         {
             return DefaultContainer.Register(builder, null, b => b.EnableAop(), configs);
         }
@@ -94,7 +102,7 @@ namespace KissU.Util.Helpers
         /// <param name="builder">容器生成器</param>
         /// <param name="services">服务集合</param>
         /// <param name="configs">依赖配置</param>
-        public static Autofac.IContainer Register(ContainerBuilder builder, IServiceCollection services, params IConfig[] configs)
+        public static Autofac.IContainer Register(Autofac.ContainerBuilder builder, IServiceCollection services, params IConfig[] configs)
         {
             return DefaultContainer.Register(builder, services, b => b.EnableAop(), configs);
         }

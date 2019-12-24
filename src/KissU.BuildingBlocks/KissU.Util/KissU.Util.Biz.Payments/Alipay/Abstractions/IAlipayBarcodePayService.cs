@@ -2,13 +2,11 @@
 using KissU.Util.Biz.Payments.Alipay.Parameters.Requests;
 using KissU.Util.Biz.Payments.Core;
 
-namespace KissU.Util.Biz.Payments.Alipay.Abstractions
-{
+namespace KissU.Util.Biz.Payments.Alipay.Abstractions {
     /// <summary>
     /// 支付宝条码支付服务
     /// </summary>
-    public interface IAlipayBarcodePayService
-    {
+    public interface IAlipayBarcodePayService {
         /// <summary>
         /// 支付
         /// </summary>

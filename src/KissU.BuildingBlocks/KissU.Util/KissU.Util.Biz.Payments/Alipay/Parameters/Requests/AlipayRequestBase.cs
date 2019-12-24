@@ -1,12 +1,10 @@
 ﻿using KissU.Util.Biz.Payments.Core;
 
-namespace KissU.Util.Biz.Payments.Alipay.Parameters.Requests
-{
+namespace KissU.Util.Biz.Payments.Alipay.Parameters.Requests {
     /// <summary>
     /// 支付宝支付参数
     /// </summary>
-    public class AlipayRequestBase : PayParamBase
-    {
+    public class AlipayRequestBase : PayParamBase {
         /// <summary>
         /// 支付订单付款超时时间，单位：分钟，默认为90分钟
         /// </summary>

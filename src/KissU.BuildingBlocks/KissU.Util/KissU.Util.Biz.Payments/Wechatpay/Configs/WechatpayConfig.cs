@@ -5,13 +5,11 @@ using KissU.Util.Exceptions;
 using KissU.Util.Helpers;
 using KissU.Util.Validations;
 
-namespace KissU.Util.Biz.Payments.Wechatpay.Configs
-{
+namespace KissU.Util.Biz.Payments.Wechatpay.Configs {
     /// <summary>
     /// 微信支付配置
     /// </summary>
-    public class WechatpayConfig
-    {
+    public class WechatpayConfig {
         /// <summary>
         /// 支付网关地址,默认为正式地址： https://api.mch.weixin.qq.com
         /// </summary>
@@ -59,8 +57,7 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Configs
         /// <summary>
         /// 验证
         /// </summary>
-        public void Validate()
-        {
+        public void Validate() {
             var result = DataAnnotationValidation.Validate( this );
             if( result.IsValid == false )
                 throw new Warning( result.First().ErrorMessage );
@@ -69,16 +66,21 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Configs
         /// <summary>
         /// 获取统一下单地址
         /// </summary>
-        public string GetOrderUrl()
-        {
+        public string GetOrderUrl() {
             return Url.Combine( GatewayUrl, "pay/unifiedorder" );
+        }
+
+        /// <summary>
+        /// 获取关闭订单地址
+        /// </summary>
+        public string GetCloseOrderUrl() {
+            return Url.Combine( GatewayUrl, "pay/closeorder" );
         }
 
         /// <summary>
         /// 获取退款地址
         /// </summary>
-        public string GetRefundUrl()
-        {
+        public string GetRefundUrl() {
             return Url.Combine( GatewayUrl, "secapi/pay/refund" );
         }
     }
