@@ -390,7 +390,14 @@ namespace KissU.Util
         {
             if (instance == null)
                 throw new ArgumentNullException(nameof(instance));
-            var methodInfo = instance.Type.GetMethod(methodName);
+
+            MethodInfo methodInfo = null;
+
+            if (instance.Type == typeof(string) && methodName == "Contains")
+                methodInfo = typeof(string).GetMethod(methodName, new[] {typeof(string)});
+            else
+                methodInfo = instance.Type.GetMethod(methodName);
+
             if (methodInfo == null)
                 return null;
             return Expression.Call(instance, methodInfo, values);
