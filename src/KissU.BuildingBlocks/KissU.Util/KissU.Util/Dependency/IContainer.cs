@@ -47,19 +47,36 @@ namespace KissU.Util.Dependency
         /// 注册依赖
         /// </summary>
         /// <param name="configs">依赖配置</param>
-        IServiceProvider Register(params IConfig[] configs);
+        Autofac.IContainer Register(params IConfig[] configs);
 
         /// <summary>
         /// 注册依赖
         /// </summary>
-        /// <param name="services">服务集合</param>
+        /// <param name="builder">容器生成器</param>
         /// <param name="configs">依赖配置</param>
-        IServiceProvider Register(IServiceCollection services, params IConfig[] configs);
+        Autofac.IContainer Register(ContainerBuilder builder, params IConfig[] configs);
 
         /// <summary>
-        /// 注册容器
+        /// 注册依赖
+        /// </summary>
+        /// <param name="builder">容器生成器</param>
+        /// <param name="services">服务集合</param>
+        /// <param name="configs">依赖配置</param>
+        Autofac.IContainer Register(ContainerBuilder builder, IServiceCollection services, params IConfig[] configs);
+
+        /// <summary>
+        /// 注册依赖
+        /// </summary>
+        /// <param name="builder">容器生成器</param>
+        /// <param name="services">服务集合</param>
+        /// <param name="actionBefore">注册前操作</param>
+        /// <param name="configs">依赖配置</param>
+        Autofac.IContainer Register(ContainerBuilder builder, IServiceCollection services, Action<ContainerBuilder> actionBefore, params IConfig[] configs);
+
+        /// <summary>
+        /// 注册依赖
         /// </summary>
         /// <param name="container">容器</param>
-        void Register(ILifetimeScope container);
+        void Register(Autofac.IContainer container);
     }
 }

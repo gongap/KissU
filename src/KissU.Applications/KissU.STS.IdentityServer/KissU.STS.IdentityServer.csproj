@@ -13,9 +13,7 @@
     <None Remove="Extensions\**" />
     <None Remove="Services\**" />
   </ItemGroup>
-
   <ItemGroup>
-    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.GreatWall\KissU.Modules.GreatWall.Service\KissU.Modules.GreatWall.Service.csproj" />
-    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.IdentityServer\KissU.Modules.IdentityServer.Service\KissU.Modules.IdentityServer.Service.csproj" />
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.IdentityServer\KissU.Modules.IdentityServer\KissU.Modules.IdentityServer.csproj" />
   </ItemGroup>
 </Project>

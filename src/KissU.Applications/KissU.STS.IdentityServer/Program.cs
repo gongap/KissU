@@ -4,7 +4,7 @@
 
 using System;
 using System.IO;
-using Autofac.Extensions.DependencyInjection;
+using KissU.Util.Dependency;
 using KissU.Util.Logs;
 using KissU.Util.Logs.Extensions;
 using Microsoft.AspNetCore.Hosting;
@@ -41,7 +41,7 @@ namespace KissU.STS.IdentityServer
         public static IHostBuilder CreateHostBuilder(string[] args)
         {
             return Host.CreateDefaultBuilder(args)
-                  .UseServiceProviderFactory(new AutofacServiceProviderFactory())
+                  .UseServiceProviderFactory(new ServiceProviderFactory())
                   .ConfigureWebHostDefaults(webHostBuilder =>
                   {
                       webHostBuilder

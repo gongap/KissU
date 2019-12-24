@@ -9,6 +9,7 @@ using KissU.Core.EventBusKafka.Configurations;
 using KissU.Util;
 using KissU.Util.Helpers;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace KissU.Services.Stage
 {
@@ -31,8 +32,9 @@ namespace KissU.Services.Stage
         /// </summary>
         public IContainer ConfigureServices(ContainerBuilder builder)
         {
-            builder.AddUtil();
-            return builder.Build();
+            var serivces = new ServiceCollection();
+            ServiceLocator.Current = builder.AddUtil(serivces);
+            return ServiceLocator.Current;
         }
 
         /// <summary>
@@ -40,8 +42,6 @@ namespace KissU.Services.Stage
         /// </summary>
         public void Configure(IContainer app)
         {
-            ServiceLocator.Current = app;
-            Ioc.Register(app);
         }
 
         #region 私有方法

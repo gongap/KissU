@@ -3,8 +3,7 @@
 // </copyright>
 
 using Autofac;
-using KissU.Modules.GreatWall.Data;
-using KissU.Modules.GreatWall.Data.UnitOfWorks.SqlServer;
+using KissU.Modules.IdentityServer;
 using KissU.Modules.IdentityServer.Data.UnitOfWorks.SqlServer;
 using KissU.Modules.IdentityServer.Domain;
 using KissU.STS.IdentityServer.Data;
@@ -50,7 +49,7 @@ namespace KissU.STS.IdentityServer
             services.AddSingleton<WeatherForecastService>();
 
             services.AddNLog();
-            services.AddUnitOfWork<IGreatWallUnitOfWork, GreatWallUnitOfWork>(Configuration.GetConnectionString("DefaultConnection"));
+            services.AddIdentityServer4();
             services.AddUnitOfWork<IIdentityServerUnitOfWork, IdentityServerUnitOfWork>(Configuration.GetConnectionString("DefaultConnection"));
         }
 
@@ -60,7 +59,6 @@ namespace KissU.STS.IdentityServer
         /// <param name="builder"></param>
         public void ConfigureContainer(ContainerBuilder builder)
         {
-            builder.AddUtil();
         }
 
         /// <summary>
@@ -80,7 +78,7 @@ namespace KissU.STS.IdentityServer
                 app.UseHsts();
             }
 
-            app.UseUtil();
+            app.UseIdentityServer();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

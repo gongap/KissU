@@ -39,6 +39,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces">
+      <HintPath>C:\Users\Gongap\.nuget\packages\microsoft.bcl.asyncinterfaces\1.1.0\ref\netstandard2.0\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Properties\LibraryResource.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
