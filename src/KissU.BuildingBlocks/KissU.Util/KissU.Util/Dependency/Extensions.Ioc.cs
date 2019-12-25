@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Builder;
+using Microsoft.Extensions.Hosting;
 
 namespace KissU.Util.Dependency
 {
@@ -74,6 +75,16 @@ namespace KissU.Util.Dependency
             AddSingleton<TService>(this ContainerBuilder builder, TService instance) where TService : class
         {
             return builder.RegisterInstance(instance).As<TService>().SingleInstance();
+        }
+
+        /// <summary>
+        /// 启用Autofac
+        /// </summary>
+        /// <param name="hostBuilder">主机生成器</param>
+        /// <returns>主机生成器</returns>
+        public static IHostBuilder UseAutofac(this IHostBuilder hostBuilder)
+        {
+            return hostBuilder.UseServiceProviderFactory(new ServiceProviderFactory());
         }
     }
 }

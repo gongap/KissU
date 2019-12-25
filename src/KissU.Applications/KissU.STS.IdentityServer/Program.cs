@@ -41,14 +41,14 @@ namespace KissU.STS.IdentityServer
         public static IHostBuilder CreateHostBuilder(string[] args)
         {
             return Host.CreateDefaultBuilder(args)
-                  .UseServiceProviderFactory(new ServiceProviderFactory())
-                  .ConfigureWebHostDefaults(webHostBuilder =>
-                  {
-                      webHostBuilder
-                          .UseContentRoot(Directory.GetCurrentDirectory())
-                          .UseIISIntegration()
-                          .UseStartup<Startup>();
-                  });
+                .ConfigureWebHostDefaults(webHostBuilder =>
+                {
+                    webHostBuilder
+                        .UseContentRoot(Directory.GetCurrentDirectory())
+                        .UseIISIntegration()
+                        .UseStartup<Startup>();
+                })
+                .UseAutofac();
         }
     }
 }
