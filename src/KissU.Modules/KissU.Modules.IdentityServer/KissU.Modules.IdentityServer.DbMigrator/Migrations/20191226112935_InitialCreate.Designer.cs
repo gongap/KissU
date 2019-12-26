@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
 {
     [DbContext(typeof(DesignTimeDbContext))]
-    [Migration("20191221150251_InitialCreate")]
+    [Migration("20191226112935_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -559,7 +559,7 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
             modelBuilder.Entity("KissU.Modules.IdentityServer.Domain.Models.ApiSecret", b =>
                 {
                     b.HasOne("KissU.Modules.IdentityServer.Domain.Models.ApiResource", "ApiResource")
-                        .WithMany("Secrets")
+                        .WithMany("ApiSecrets")
                         .HasForeignKey("ApiResourceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
