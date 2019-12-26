@@ -1,22 +1,15 @@
-﻿// <copyright file="Module.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using KissU.Util;
+﻿using KissU.Util;
 using KissU.Util.Helpers;
 
-namespace KissU.Modules.GreatWall.Domain.Models
-{
+namespace KissU.Modules.GreatWall.Domain.Models {
     /// <summary>
     /// 模块
     /// </summary>
-    public partial class Module
-    {
+    public partial class Module {
         /// <summary>
         /// 初始化
         /// </summary>
-        public override void Init()
-        {
+        public override void Init() {
             base.Init();
             InitPinYin();
         }
@@ -24,26 +17,18 @@ namespace KissU.Modules.GreatWall.Domain.Models
         /// <summary>
         /// 初始化拼音简码
         /// </summary>
-        public void InitPinYin()
-        {
-            PinYin = String.PinYin(Name);
+        public void InitPinYin() {
+            PinYin = String.PinYin( Name );
         }
 
         /// <summary>
         /// 是否外部地址
         /// </summary>
-        public bool IsExternalUrl()
-        {
-            if (Url.IsEmpty())
-            {
+        public bool IsExternalUrl() {
+            if ( Url.IsEmpty() )
                 return false;
-            }
-
-            if (Url.StartsWith("http"))
-            {
+            if ( Url.StartsWith( "http" ) )
                 return true;
-            }
-
             return false;
         }
     }

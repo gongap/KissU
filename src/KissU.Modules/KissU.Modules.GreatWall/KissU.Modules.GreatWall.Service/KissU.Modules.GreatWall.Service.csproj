@@ -15,7 +15,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.System\KissU.Core.System.csproj" />
     <ProjectReference Include="..\KissU.Modules.GreatWall.Data\KissU.Modules.GreatWall.Data.csproj" />
-    <ProjectReference Include="..\KissU.Modules.GreatWall.Domain\KissU.Modules.GreatWall.Domain.csproj" />
     <ProjectReference Include="..\KissU.Modules.GreatWall.Service.Contracts\KissU.Modules.GreatWall.Service.Contracts.csproj" />
   </ItemGroup>
 </Project>

@@ -106,6 +106,15 @@ namespace KissU.Modules.GreatWall.Domain.Shared {
         }
         
         /// <summary>
+        ///   查找类似 资源标识 {0} 已存在 的本地化字符串。
+        /// </summary>
+        public static string DuplicateUri {
+            get {
+                return ResourceManager.GetString("DuplicateUri", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 用户名 {0} 已存在 的本地化字符串。
         /// </summary>
         public static string DuplicateUserName {

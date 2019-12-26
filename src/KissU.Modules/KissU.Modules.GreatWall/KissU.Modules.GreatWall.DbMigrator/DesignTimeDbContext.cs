@@ -4,6 +4,7 @@
 
 using System.Reflection;
 using KissU.Modules.GreatWall.Data;
+using KissU.Modules.GreatWall.Data.UnitOfWorks;
 using KissU.Util.Datas.SqlServer.Ef;
 using Microsoft.EntityFrameworkCore;
 using KissU.Util.Reflections;

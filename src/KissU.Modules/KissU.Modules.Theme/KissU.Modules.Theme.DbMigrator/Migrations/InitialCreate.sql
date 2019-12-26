@@ -49,7 +49,7 @@ CREATE INDEX [IX_LanguageDetail_MainId] ON [systems].[LanguageDetail] ([MainId])
 GO
 
 INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-VALUES (N'20191226113013_InitialCreate', N'3.1.0');
+VALUES (N'20191226124800_InitialCreate', N'3.1.0');
 
 GO
 

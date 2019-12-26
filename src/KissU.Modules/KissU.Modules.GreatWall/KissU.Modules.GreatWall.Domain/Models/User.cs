@@ -1,22 +1,16 @@
-﻿// <copyright file="User.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using KissU.Modules.GreatWall.Domain.Shared;
+using KissU.Modules.GreatWall.Domain.Shared.Encryptors;
 using KissU.Util;
 using KissU.Util.Exceptions;
 using KissU.Util.Security.Encryptors;
 using KissU.Util.Validations;
-using System.ComponentModel.DataAnnotations.Schema;
-using KissU.Modules.GreatWall.Domain.Shared;
-using KissU.Modules.GreatWall.Domain.Shared.Encryptors;
 
-namespace KissU.Modules.GreatWall.Domain.Models
-{
+namespace KissU.Modules.GreatWall.Domain.Models {
     /// <summary>
     /// 用户
     /// </summary>
-    public partial class User
-    {
+    public partial class User {
         /// <summary>
         /// 加密器
         /// </summary>
@@ -26,8 +20,7 @@ namespace KissU.Modules.GreatWall.Domain.Models
         /// <summary>
         /// 初始化
         /// </summary>
-        public override void Init()
-        {
+        public override void Init() {
             base.Init();
             InitUserName();
         }
@@ -35,35 +28,23 @@ namespace KissU.Modules.GreatWall.Domain.Models
         /// <summary>
         /// 初始化用户名
         /// </summary>
-        private void InitUserName()
-        {
-            if (UserName.IsEmpty() == false)
-            {
+        private void InitUserName() {
+            if( UserName.IsEmpty() == false )
                 return;
-            }
-
-            if (PhoneNumber.IsEmpty() == false)
-            {
+            if ( PhoneNumber.IsEmpty() == false ) {
                 UserName = PhoneNumber;
                 return;
             }
-
-            if (Email.IsEmpty() == false)
-            {
+            if( Email.IsEmpty() == false )
                 UserName = Email;
-            }
         }
 
         /// <summary>
         /// 验证
         /// </summary>
-        public override ValidationResultCollection Validate()
-        {
-            if (UserName.IsEmpty())
-            {
-                throw new Warning(GreatWallResource.UserNameIsEmpty);
-            }
-
+        public override ValidationResultCollection Validate() {
+            if( UserName.IsEmpty() )
+                throw new Warning( GreatWallResource.UserNameIsEmpty );
             return base.Validate();
         }
 
@@ -72,22 +53,18 @@ namespace KissU.Modules.GreatWall.Domain.Models
         /// </summary>
         /// <param name="password">密码</param>
         /// <param name="storeOriginalPassword">是否存储原始密码</param>
-        public void SetPassword(string password, bool? storeOriginalPassword)
-        {
-            if (storeOriginalPassword.SafeValue())
-            {
-                Password = GetEncryptor().Encrypt(password);
+        public void SetPassword( string password, bool? storeOriginalPassword ) {
+            if( storeOriginalPassword.SafeValue() ) {
+                Password = GetEncryptor().Encrypt( password );
                 return;
             }
-
             Password = null;
         }
 
         /// <summary>
         /// 获取加密器
         /// </summary>
-        protected virtual IEncryptor GetEncryptor()
-        {
+        protected virtual IEncryptor GetEncryptor() {
             return Encryptor ?? new PasswordEncryptor();
         }
 
@@ -96,31 +73,26 @@ namespace KissU.Modules.GreatWall.Domain.Models
         /// </summary>
         /// <param name="password">安全码</param>
         /// <param name="storeOriginalPassword">是否存储原始密码</param>
-        public void SetSafePassword(string password, bool? storeOriginalPassword)
-        {
-            if (storeOriginalPassword.SafeValue())
-            {
-                SafePassword = GetEncryptor().Encrypt(password);
+        public void SetSafePassword( string password, bool? storeOriginalPassword ) {
+            if( storeOriginalPassword.SafeValue() ) {
+                SafePassword = GetEncryptor().Encrypt( password );
                 return;
             }
-
             SafePassword = null;
         }
 
         /// <summary>
         /// 获取密码
         /// </summary>
-        public string GetPassword()
-        {
-            return GetEncryptor().Decrypt(Password);
+        public string GetPassword() {
+            return GetEncryptor().Decrypt( Password );
         }
 
         /// <summary>
         /// 获取安全码
         /// </summary>
-        public string GetSafePassword()
-        {
-            return GetEncryptor().Decrypt(SafePassword);
+        public string GetSafePassword() {
+            return GetEncryptor().Decrypt( SafePassword );
         }
     }
 }

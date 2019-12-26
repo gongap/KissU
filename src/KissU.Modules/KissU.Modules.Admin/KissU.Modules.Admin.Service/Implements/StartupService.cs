@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using KissU.Modules.Admin.Service.Contracts.Abstractions;
 using KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain;
 using KissU.Modules.Admin.Service.Extensions;
-using KissU.Modules.GreatWall.Service.Contracts.Abstractions;
+using KissU.Modules.GreatWall.Service.Contracts;
 
 namespace KissU.Modules.Admin.Service.Implements
 {

@@ -13,8 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Util\KissU.Util.Applications\KissU.Util.Applications.csproj" />
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.CPlatform\KissU.Core.CPlatform.csproj" />
-    <ProjectReference Include="..\KissU.Modules.GreatWall.Domain.Shared\KissU.Modules.GreatWall.Domain.Shared.csproj" />
+    <ProjectReference Include="..\KissU.Modules.GreatWall.Application\KissU.Modules.GreatWall.Application.csproj" />
   </ItemGroup>
 </Project>

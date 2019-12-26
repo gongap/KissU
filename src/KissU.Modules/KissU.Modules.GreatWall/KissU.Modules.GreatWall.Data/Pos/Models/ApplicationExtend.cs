@@ -1,21 +1,19 @@
-﻿// <copyright file="ApplicationExtend.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
+﻿using KissU.Modules.GreatWall.Domain.Models;
+using KissU.Modules.GreatWall.Domain.Shared.Enums;
 
-using KissU.Modules.GreatWall.Domain.Models;
-
-namespace KissU.Modules.GreatWall.Data.Pos.Models
-{
+namespace KissU.Modules.GreatWall.Data.Pos.Models {
     /// <summary>
     /// 应用程序扩展信息
     /// </summary>
-    public class ApplicationExtend
-    {
+    public class ApplicationExtend {
+        /// <summary>
+        /// 应用程序类型
+        /// </summary>
+        public ApplicationType ApplicationType { get; set; }
         /// <summary>
         /// 是否客户端
         /// </summary>
         public bool IsClient { get; set; }
-
         /// <summary>
         /// 客户端
         /// </summary>

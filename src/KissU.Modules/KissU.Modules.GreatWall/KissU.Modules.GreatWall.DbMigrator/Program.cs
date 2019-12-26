@@ -5,6 +5,7 @@
 using System;
 using System.Threading.Tasks;
 using KissU.Modules.GreatWall.Data;
+using KissU.Modules.GreatWall.Data.UnitOfWorks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using KissU.Util;
