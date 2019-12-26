@@ -11,6 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 		.gitmodules = .gitmodules
 		analysis.props = analysis.props
+		build.cmd = build.cmd
+		build.ps1 = build.ps1
+		build.sh = build.sh
 		code.ruleset = code.ruleset
 		common.props = common.props
 		LICENSE.txt = LICENSE.txt
@@ -222,8 +225,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{DEA7C862-C64
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "script", "script", "{0BAC2644-ACA6-4198-8D3B-519E68624A16}"
 	ProjectSection(SolutionItems) = preProject
+		script\dropdb.bat = script\dropdb.bat
 		script\migrations.bat = script\migrations.bat
+		script\updatedb.bat = script\updatedb.bat
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{2DB60F47-6E14-4E4B-A99D-C0ADE56CB26D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -649,6 +656,7 @@ Global
 		{55323E7F-CDB7-4F3E-993C-162763A04333} = {8041CF7B-89DA-475F-92ED-0153EAEF6DC1}
 		{DEA7C862-C648-46FF-9902-A0FFEE7EB452} = {245EE59A-3EDE-4FBD-BC25-A61655E476B5}
 		{0BAC2644-ACA6-4198-8D3B-519E68624A16} = {245EE59A-3EDE-4FBD-BC25-A61655E476B5}
+		{2DB60F47-6E14-4E4B-A99D-C0ADE56CB26D} = {245EE59A-3EDE-4FBD-BC25-A61655E476B5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}
