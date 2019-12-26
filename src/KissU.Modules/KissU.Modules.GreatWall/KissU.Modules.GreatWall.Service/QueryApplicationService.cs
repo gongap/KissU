@@ -1,106 +1,91 @@
-﻿// <copyright file="QueryApplicationService.cs" company="KissU">
+﻿// <copyright file="IQueryApplicationService.cs" company="KissU">
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Modules.GreatWall.Application.Dtos;
 using KissU.Modules.GreatWall.Application.Queries;
-using KissU.Modules.GreatWall.Data.Pos;
-using KissU.Modules.GreatWall.Data.Stores.Abstractions;
-using KissU.Modules.GreatWall.Domain.Repositories;
 using KissU.Modules.GreatWall.Service.Contracts;
-using KissU.Util.Applications;
-using KissU.Util.Applications.Operations;
-using KissU.Util.Datas.Queries;
+using KissU.Util;
 using KissU.Util.Domains.Repositories;
-using KissU.Util.Maps;
 
 namespace KissU.Modules.GreatWall.Service
 {
     /// <summary>
     /// 应用程序查询服务
     /// </summary>
-    public class QueryApplicationService : IQueryApplicationService
+    public class QueryApplicationService: IQueryApplicationService
     {
-        public ApplicationDto GetById(object id)
+        /// <summary>
+        /// 通过编号获取
+        /// </summary>
+        /// <param name="id">实体编号</param>
+        public async Task<ApplicationDto> GetByIdAsync(object id)
         {
-            throw new System.NotImplementedException();
+            return null;
         }
 
-        public List<ApplicationDto> GetByIds(string ids)
+        /// <summary>
+        /// 通过编号列表获取
+        /// </summary>
+        /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
+        public async Task<List<ApplicationDto>> GetByIdsAsync(string ids)
         {
-            throw new System.NotImplementedException();
+            return null;
         }
 
-        async Task<ApplicationDto> IGetByIdAsync<ApplicationDto>.GetByIdAsync(object id)
+        /// <summary>
+        /// 获取全部
+        /// </summary>
+        public async Task<List<ApplicationDto>> GetAllAsync()
         {
-            throw new System.NotImplementedException();
+            return null;
         }
 
-        async Task<List<ApplicationDto>> IQueryApplicationService.GetByIdsAsync(string ids)
+        /// <summary>
+        /// 查询
+        /// </summary>
+        /// <param name="parameter">查询参数</param>
+        public async Task<List<ApplicationDto>> QueryAsync(ApplicationQuery parameter)
         {
-            throw new System.NotImplementedException();
+            return null;
         }
 
-        async Task<List<ApplicationDto>> IQueryApplicationService.GetAllAsync()
+        /// <summary>
+        /// 分页查询
+        /// </summary>
+        /// <param name="parameter">查询参数</param>
+        public async Task<PagerList<ApplicationDto>> PagerQueryAsync(ApplicationQuery parameter)
         {
-            throw new System.NotImplementedException();
+            return null;
         }
 
-        async Task<List<ApplicationDto>> IQueryApplicationService.QueryAsync(ApplicationQuery parameter)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        async Task<PagerList<ApplicationDto>> IQueryApplicationService.PagerQueryAsync(ApplicationQuery parameter)
-        {
-            throw new System.NotImplementedException();
-        }
-
+        /// <summary>
+        /// 通过应用程序编码查找
+        /// </summary>
+        /// <param name="code">应用程序编码</param>
         public async Task<ApplicationDto> GetByCodeAsync(string code)
         {
-            throw new System.NotImplementedException();
+            return null;
         }
 
-        async Task<ApplicationDto> IQueryApplicationService.GetByIdAsync(object id)
+        /// <summary>
+        /// 是否允许跨域访问
+        /// </summary>
+        /// <param name="origin">来源</param>
+        public async Task<bool> IsOriginAllowedAsync(string origin)
         {
-            throw new System.NotImplementedException();
+            return false;
         }
 
-        async Task<List<ApplicationDto>> IGetByIdAsync<ApplicationDto>.GetByIdsAsync(string ids)
+        /// <summary>
+        /// 获取作用域
+        /// </summary>
+        public async Task<List<Item>> GetScopes()
         {
-            throw new System.NotImplementedException();
-        }
-
-        public List<ApplicationDto> GetAll()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        async Task<List<ApplicationDto>> IGetAllAsync<ApplicationDto>.GetAllAsync()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public List<ApplicationDto> Query(ApplicationQuery parameter)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public PagerList<ApplicationDto> PagerQuery(ApplicationQuery parameter)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        async Task<List<ApplicationDto>> IPageQueryAsync<ApplicationDto, ApplicationQuery>.QueryAsync(ApplicationQuery parameter)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        async Task<PagerList<ApplicationDto>> IPageQueryAsync<ApplicationDto, ApplicationQuery>.PagerQueryAsync(ApplicationQuery parameter)
-        {
-            throw new System.NotImplementedException();
+            return null;
         }
     }
 }

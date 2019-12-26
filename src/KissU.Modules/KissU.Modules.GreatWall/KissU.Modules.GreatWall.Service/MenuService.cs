@@ -1,18 +1,13 @@
-﻿// <copyright file="MenuService.cs" company="KissU">
+﻿// <copyright file="IMenuService.cs" company="KissU">
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Modules.GreatWall.Application.Dtos.Responses;
-using KissU.Modules.GreatWall.Domain.Models;
-using KissU.Modules.GreatWall.Domain.Repositories;
 using KissU.Modules.GreatWall.Service.Contracts;
-using KissU.Util;
 using KissU.Util.Applications;
-using KissU.Util.Security;
 
 namespace KissU.Modules.GreatWall.Service
 {
@@ -21,9 +16,12 @@ namespace KissU.Modules.GreatWall.Service
     /// </summary>
     public class MenuService : IMenuService
     {
+        /// <summary>
+        /// 获取菜单
+        /// </summary>
         public async Task<List<MenuResponse>> GetMenusAsync()
         {
-            throw new NotImplementedException();
+            return null;
         }
     }
 }

@@ -60,7 +60,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts
         /// <param name="request">创建参数</param>
         [HttpPost(true)]
         [UnitOfWork]
-        Task<string> CreateAsync([Valid] ClaimDto request);
+        Task<string> CreateAsync(ClaimDto request);
 
         /// <summary>
         /// 修改
@@ -68,7 +68,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts
         /// <param name="request">修改参数</param>
         [HttpPut(true)]
         [UnitOfWork]
-        Task UpdateAsync([Valid] ClaimDto request);
+        Task UpdateAsync(ClaimDto request);
 
         /// <summary>
         /// 删除
@@ -76,5 +76,10 @@ namespace KissU.Modules.GreatWall.Service.Contracts
         /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
         [HttpPost(true)]
         Task DeleteAsync(string ids);
+
+        /// <summary>
+        /// 获取已启用的声明列表
+        /// </summary>
+        Task<List<ClaimDto>> GetEnabledClaimsAsync();
     }
 }

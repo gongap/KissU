@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Modules.GreatWall.Application.Dtos;
 using KissU.Modules.GreatWall.Application.Queries;
+using KissU.Util;
 using KissU.Util.Applications;
 using KissU.Util.Domains.Repositories;
 
@@ -16,7 +17,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts
     /// 应用程序查询服务
     /// </summary>
     [ServiceBundle("api/{Service}")]
-    public interface IQueryApplicationService : IQueryService<ApplicationDto, ApplicationQuery>
+    public interface IQueryApplicationService : IService
     {
         /// <summary>
         /// 通过编号获取
@@ -56,7 +57,15 @@ namespace KissU.Modules.GreatWall.Service.Contracts
         /// 通过应用程序编码查找
         /// </summary>
         /// <param name="code">应用程序编码</param>
-        [HttpGet(true)]
         Task<ApplicationDto> GetByCodeAsync(string code);
+        /// <summary>
+        /// 是否允许跨域访问
+        /// </summary>
+        /// <param name="origin">来源</param>
+        Task<bool> IsOriginAllowedAsync(string origin);
+        /// <summary>
+        /// 获取作用域
+        /// </summary>
+        Task<List<Item>> GetScopes();
     }
 }
