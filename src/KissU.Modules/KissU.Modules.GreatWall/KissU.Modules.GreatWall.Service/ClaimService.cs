@@ -2,9 +2,11 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
+using KissU.Modules.GreatWall.Application.Abstractions;
 using KissU.Modules.GreatWall.Application.Dtos;
 using KissU.Modules.GreatWall.Application.Queries;
 using KissU.Modules.GreatWall.Service.Contracts;
@@ -20,13 +22,24 @@ namespace KissU.Modules.GreatWall.Service
     /// </summary>
     public class ClaimService : IClaimService
     {
+        private readonly IClaimAppService _appService;
+
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        /// <param name="appService">应用服务</param>
+        public ClaimService(IClaimAppService appService)
+        {
+            _appService = appService ?? throw new ArgumentNullException(nameof(appService));
+        }
+
         /// <summary>
         /// 通过编号获取
         /// </summary>
         /// <param name="id">实体编号</param>
-        public async Task<ClaimDto> GetByIdAsync(object id)
+        public async Task<ClaimDto> GetByIdAsync(string id)
         {
-            return null;
+            return await _appService.GetByIdAsync(id);
         }
 
         /// <summary>
@@ -35,7 +48,7 @@ namespace KissU.Modules.GreatWall.Service
         /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
         public async Task<List<ClaimDto>> GetByIdsAsync(string ids)
         {
-            return null;
+            return await _appService.GetByIdsAsync(ids);
         }
 
         /// <summary>
@@ -43,7 +56,7 @@ namespace KissU.Modules.GreatWall.Service
         /// </summary>
         public async Task<List<ClaimDto>> GetAllAsync()
         {
-            return null;
+            return await _appService.GetAllAsync();
         }
 
         /// <summary>
@@ -52,7 +65,7 @@ namespace KissU.Modules.GreatWall.Service
         /// <param name="parameter">查询参数</param>
         public async Task<List<ClaimDto>> QueryAsync(ClaimQuery parameter)
         {
-            return null;
+            return await _appService.QueryAsync(parameter);
         }
 
         /// <summary>
@@ -61,7 +74,7 @@ namespace KissU.Modules.GreatWall.Service
         /// <param name="parameter">查询参数</param>
         public async Task<PagerList<ClaimDto>> PagerQueryAsync(ClaimQuery parameter)
         {
-            return null;
+            return await _appService.PagerQueryAsync(parameter);
         }
 
         /// <summary>
@@ -70,7 +83,7 @@ namespace KissU.Modules.GreatWall.Service
         /// <param name="request">创建参数</param>
         public async Task<string> CreateAsync(ClaimDto request)
         {
-            return null;
+            return await _appService.CreateAsync(request);
         }
 
         /// <summary>
@@ -79,6 +92,7 @@ namespace KissU.Modules.GreatWall.Service
         /// <param name="request">修改参数</param>
         public async Task UpdateAsync(ClaimDto request)
         {
+            await _appService.UpdateAsync(request);
         }
 
         /// <summary>
@@ -87,6 +101,7 @@ namespace KissU.Modules.GreatWall.Service
         /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
         public async Task DeleteAsync(string ids)
         {
+            await _appService.DeleteAsync(ids);
         }
 
         /// <summary>
@@ -94,7 +109,7 @@ namespace KissU.Modules.GreatWall.Service
         /// </summary>
         public async Task<List<ClaimDto>> GetEnabledClaimsAsync()
         {
-            return null;
+            return await _appService.GetEnabledClaimsAsync();
         }
     }
 }

@@ -6,25 +6,37 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
+using KissU.Modules.GreatWall.Application.Abstractions;
 using KissU.Modules.GreatWall.Application.Dtos.Requests;
 using KissU.Modules.GreatWall.Application.Queries;
 using KissU.Modules.GreatWall.Service.Contracts;
 using KissU.Util.Applications;
 
-namespace KissU.Modules.GreatWall.Service
+namespace KissU.Permissions.GreatWall.Service
 {
     /// <summary>
     /// 权限服务
     /// </summary>
     public class PermissionService : IPermissionService
     {
+        private readonly IPermissionAppService _appService;
+
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        /// <param name="appService">应用服务</param>
+        public PermissionService(IPermissionAppService appService)
+        {
+            _appService = appService ?? throw new ArgumentNullException(nameof(appService));
+        }
+
         /// <summary>
         /// 获取资源标识列表
         /// </summary>
         /// <param name="query">权限参数</param>
         public async Task<List<Guid>> GetResourceIdsAsync(PermissionQuery query)
         {
-            return null;
+            return await _appService.GetResourceIdsAsync(query);
         }
 
         /// <summary>
@@ -33,6 +45,7 @@ namespace KissU.Modules.GreatWall.Service
         /// <param name="request">参数</param>
         public async Task SaveAsync(SavePermissionRequest request)
         {
+            await _appService.SaveAsync(request);
         }
     }
 }

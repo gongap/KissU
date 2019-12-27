@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
+using KissU.Modules.GreatWall.Application.Abstractions;
 using KissU.Modules.GreatWall.Application.Dtos;
 using KissU.Modules.GreatWall.Application.Dtos.Requests;
 using KissU.Modules.GreatWall.Application.Queries;
@@ -22,13 +23,24 @@ namespace KissU.Modules.GreatWall.Service
     /// </summary>
     public class UserService : IUserService
     {
+        private readonly IUserAppService _appService;
+
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        /// <param name="appService">应用服务</param>
+        public UserService(IUserAppService appService)
+        {
+            _appService = appService ?? throw new ArgumentNullException(nameof(appService));
+        }
+
         /// <summary>
         /// 通过编号获取
         /// </summary>
         /// <param name="id">实体编号</param>
-        public async Task<UserDto> GetByIdAsync(object id)
+        public async Task<UserDto> GetByIdAsync(string id)
         {
-            return null;
+            return await _appService.GetByIdAsync(id);
         }
 
         /// <summary>
@@ -37,7 +49,7 @@ namespace KissU.Modules.GreatWall.Service
         /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
         public async Task<List<UserDto>> GetByIdsAsync(string ids)
         {
-            return null;
+            return await _appService.GetByIdsAsync(ids);
         }
 
         /// <summary>
@@ -45,7 +57,7 @@ namespace KissU.Modules.GreatWall.Service
         /// </summary>
         public async Task<List<UserDto>> GetAllAsync()
         {
-            return null;
+            return await _appService.GetAllAsync();
         }
 
         /// <summary>
@@ -54,7 +66,7 @@ namespace KissU.Modules.GreatWall.Service
         /// <param name="parameter">查询参数</param>
         public async Task<List<UserDto>> QueryAsync(UserQuery parameter)
         {
-            return null;
+            return await _appService.QueryAsync(parameter);
         }
 
         /// <summary>
@@ -63,7 +75,7 @@ namespace KissU.Modules.GreatWall.Service
         /// <param name="parameter">查询参数</param>
         public async Task<PagerList<UserDto>> PagerQueryAsync(UserQuery parameter)
         {
-            return null;
+            return await _appService.PagerQueryAsync(parameter);
         }
 
         /// <summary>
@@ -72,6 +84,7 @@ namespace KissU.Modules.GreatWall.Service
         /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
         public async Task DeleteAsync(string ids)
         {
+            await _appService.DeleteAsync(ids);
         }
 
         /// <summary>
@@ -80,7 +93,7 @@ namespace KissU.Modules.GreatWall.Service
         /// <param name="request">创建用户参数</param>
         public async Task<Guid> CreateAsync(CreateUserRequest request)
         {
-            return default;
+            return await _appService.CreateAsync(request);
         }
     }
 }

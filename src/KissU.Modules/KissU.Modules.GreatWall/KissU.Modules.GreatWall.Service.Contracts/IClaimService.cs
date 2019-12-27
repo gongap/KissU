@@ -25,7 +25,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts
         /// </summary>
         /// <param name="id">实体编号</param>
         [HttpGet(true)]
-        Task<ClaimDto> GetByIdAsync(object id);
+        Task<ClaimDto> GetByIdAsync(string id);
 
         /// <summary>
         /// 通过编号列表获取

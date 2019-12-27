@@ -2,8 +2,10 @@
 // Copyright (c) KissU. All Rights Reserved.
 // </copyright>
 
+using System;
 using System.Threading.Tasks;
 using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
+using KissU.Modules.GreatWall.Application.Abstractions;
 using KissU.Modules.GreatWall.Application.Dtos.Requests;
 using KissU.Modules.GreatWall.Domain.Shared.Results;
 using KissU.Modules.GreatWall.Service.Contracts;
@@ -18,13 +20,24 @@ namespace KissU.Modules.GreatWall.Service
     /// </summary>
     public class SecurityService : ISecurityService
     {
+        private readonly ISecurityAppService _appService;
+
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        /// <param name="appService">应用服务</param>
+        public SecurityService(ISecurityAppService appService)
+        {
+            _appService = appService ?? throw new ArgumentNullException(nameof(appService));
+        }
+
         /// <summary>
         /// 登录
         /// </summary>
         /// <param name="request">登录参数</param>
         public async Task<SignInResult> SignInAsync(LoginRequest request)
         {
-            return null;
+            return await _appService.SignInAsync(request);
         }
 
         /// <summary>
@@ -32,6 +45,7 @@ namespace KissU.Modules.GreatWall.Service
         /// </summary>
         public async Task SignOutAsync()
         {
+            await _appService.SignOutAsync();
         }
     }
 }
