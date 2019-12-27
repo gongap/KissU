@@ -1,27 +1,32 @@
 ﻿using KissU.Modules.GreatWall.Data.Pos;
+using KissU.Util.Datas.PgSql.Ef;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace KissU.Modules.GreatWall.Data.Mappings.PgSql {
+namespace KissU.Modules.GreatWall.Data.Mappings.PgSql
+{
     /// <summary>
     /// 资源映射配置
     /// </summary>
-    public class ResourcePoMap : Util.Datas.PgSql.Ef.AggregateRootMap<ResourcePo> {
+    public class ResourcePoMap : AggregateRootMap<ResourcePo>
+    {
         /// <summary>
         /// 映射表
         /// </summary>
-        protected override void MapTable( EntityTypeBuilder<ResourcePo> builder ) {
-            builder.ToTable( "Resource", "Systems" );
+        protected override void MapTable(EntityTypeBuilder<ResourcePo> builder)
+        {
+            builder.ToTable("Resource", "Systems");
         }
-        
+
         /// <summary>
         /// 映射属性
         /// </summary>
-        protected override void MapProperties( EntityTypeBuilder<ResourcePo> builder ) {
+        protected override void MapProperties(EntityTypeBuilder<ResourcePo> builder)
+        {
             builder.Property(t => t.Id).HasColumnName("ResourceId");
-            builder.Property( t => t.Path ).HasColumnName( "Path" );
-            builder.Property( t => t.Level ).HasColumnName( "Level" );
-            builder.HasQueryFilter( t => t.IsDeleted == false );
+            builder.Property(t => t.Path).HasColumnName("Path");
+            builder.Property(t => t.Level).HasColumnName("Level");
+            builder.HasQueryFilter(t => t.IsDeleted == false);
         }
     }
 }

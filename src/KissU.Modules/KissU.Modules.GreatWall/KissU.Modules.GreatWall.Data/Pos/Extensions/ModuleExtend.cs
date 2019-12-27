@@ -1,12 +1,15 @@
-﻿namespace KissU.Modules.GreatWall.Data.Pos.Extensions {
+﻿namespace KissU.Modules.GreatWall.Data.Pos.Extensions
+{
     /// <summary>
     /// 模块扩展信息
     /// </summary>
-    public class ModuleExtend {
+    public class ModuleExtend
+    {
         /// <summary>
         /// 图标
         /// </summary>
         public string Icon { get; set; }
+
         /// <summary>
         /// 是否展开
         /// </summary>

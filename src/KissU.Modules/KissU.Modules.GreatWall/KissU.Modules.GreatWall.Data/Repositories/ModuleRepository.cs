@@ -11,11 +11,13 @@ using KissU.Util;
 using KissU.Util.Datas.Ef.Core;
 using Microsoft.EntityFrameworkCore;
 
-namespace KissU.Modules.GreatWall.Data.Repositories {
+namespace KissU.Modules.GreatWall.Data.Repositories
+{
     /// <summary>
     /// 模块仓储
     /// </summary>
-    public class ModuleRepository : TreeCompactRepositoryBase<Module, ResourcePo>, IModuleRepository {
+    public class ModuleRepository : TreeCompactRepositoryBase<Module, ResourcePo>, IModuleRepository
+    {
         /// <summary>
         /// 资源存储器
         /// </summary>
@@ -25,24 +27,9 @@ namespace KissU.Modules.GreatWall.Data.Repositories {
         /// 初始化模块仓储
         /// </summary>
         /// <param name="store">资源存储器</param>
-        public ModuleRepository( IResourcePoStore store ) : base( store ) {
+        public ModuleRepository(IResourcePoStore store) : base(store)
+        {
             _store = store;
-        }
-
-        /// <summary>
-        /// 转成实体
-        /// </summary>
-        /// <param name="po">持久化对象</param>
-        protected override Module ToEntity( ResourcePo po ) {
-            return po.ToModule();
-        }
-
-        /// <summary>
-        /// 转成持久化对象
-        /// </summary>
-        /// <param name="entity">实体</param>
-        protected override ResourcePo ToPo( Module entity ) {
-            return entity.ToPo();
         }
 
         /// <summary>
@@ -50,8 +37,10 @@ namespace KissU.Modules.GreatWall.Data.Repositories {
         /// </summary>
         /// <param name="applicationId">应用程序标识</param>
         /// <param name="parentId">父标识</param>
-        public async Task<int> GenerateSortIdAsync( Guid applicationId, Guid? parentId ) {
-            var maxSortId = await _store.Find( t => t.ApplicationId == applicationId && t.ParentId == parentId ).MaxAsync( t => t.SortId );
+        public async Task<int> GenerateSortIdAsync(Guid applicationId, Guid? parentId)
+        {
+            var maxSortId = await _store.Find(t => t.ApplicationId == applicationId && t.ParentId == parentId)
+                .MaxAsync(t => t.SortId);
             return maxSortId.SafeValue() + 1;
         }
 
@@ -60,9 +49,28 @@ namespace KissU.Modules.GreatWall.Data.Repositories {
         /// </summary>
         /// <param name="applicationId">应用程序标识</param>
         /// <param name="roleIds">角色标识列表</param>
-        public async Task<List<Module>> GetModulesAsync( Guid applicationId, List<Guid> roleIds ) {
-            var pos = await _store.GetModulesAsync( applicationId, roleIds );
-            return pos.Select( ToEntity ).ToList();
+        public async Task<List<Module>> GetModulesAsync(Guid applicationId, List<Guid> roleIds)
+        {
+            var pos = await _store.GetModulesAsync(applicationId, roleIds);
+            return pos.Select(ToEntity).ToList();
+        }
+
+        /// <summary>
+        /// 转成实体
+        /// </summary>
+        /// <param name="po">持久化对象</param>
+        protected override Module ToEntity(ResourcePo po)
+        {
+            return po.ToModule();
+        }
+
+        /// <summary>
+        /// 转成持久化对象
+        /// </summary>
+        /// <param name="entity">实体</param>
+        protected override ResourcePo ToPo(Module entity)
+        {
+            return entity.ToPo();
         }
     }
 }

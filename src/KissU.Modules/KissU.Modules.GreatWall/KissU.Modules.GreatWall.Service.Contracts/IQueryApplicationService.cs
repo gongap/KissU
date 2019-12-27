@@ -1,8 +1,4 @@
-﻿// <copyright file="IQueryApplicationService.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Modules.GreatWall.Application.Dtos;
@@ -58,11 +54,13 @@ namespace KissU.Modules.GreatWall.Service.Contracts
         /// </summary>
         /// <param name="code">应用程序编码</param>
         Task<ApplicationDto> GetByCodeAsync(string code);
+
         /// <summary>
         /// 是否允许跨域访问
         /// </summary>
         /// <param name="origin">来源</param>
         Task<bool> IsOriginAllowedAsync(string origin);
+
         /// <summary>
         /// 获取作用域
         /// </summary>

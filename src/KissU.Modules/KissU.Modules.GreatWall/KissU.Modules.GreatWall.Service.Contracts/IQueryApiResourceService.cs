@@ -6,7 +6,8 @@ using KissU.Modules.GreatWall.Application.Queries;
 using KissU.Util.Applications;
 using KissU.Util.Domains.Repositories;
 
-namespace KissU.Modules.GreatWall.Service.Contracts {
+namespace KissU.Modules.GreatWall.Service.Contracts
+{
     /// <summary>
     /// Api资源查询服务
     /// </summary>
@@ -50,11 +51,12 @@ namespace KissU.Modules.GreatWall.Service.Contracts {
         /// 获取资源列表
         /// </summary>
         /// <param name="uri">资源标识列表</param>
-        Task<List<ApiResourceDto>> GetResources( List<string> uri );
+        Task<List<ApiResourceDto>> GetResources(List<string> uri);
+
         /// <summary>
         /// 获取资源
         /// </summary>
         /// <param name="uri">资源标识</param>
-        Task<ApiResourceDto> GetResource( string uri );
+        Task<ApiResourceDto> GetResource(string uri);
     }
 }

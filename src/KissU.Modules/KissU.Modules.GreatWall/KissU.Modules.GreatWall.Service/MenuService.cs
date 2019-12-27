@@ -1,15 +1,9 @@
-﻿// <copyright file="IMenuService.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Modules.GreatWall.Application.Abstractions;
 using KissU.Modules.GreatWall.Application.Dtos.Responses;
 using KissU.Modules.GreatWall.Service.Contracts;
-using KissU.Util.Applications;
 
 namespace KissU.Modules.GreatWall.Service
 {
@@ -34,7 +28,7 @@ namespace KissU.Modules.GreatWall.Service
         /// </summary>
         public async Task<List<MenuResponse>> GetMenusAsync()
         {
-           return await _appService.GetMenusAsync();
+            return await _appService.GetMenusAsync();
         }
     }
 }

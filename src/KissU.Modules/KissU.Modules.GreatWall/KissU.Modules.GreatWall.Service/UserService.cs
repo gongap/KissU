@@ -1,20 +1,12 @@
-﻿// <copyright file="IUserService.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Modules.GreatWall.Application.Abstractions;
 using KissU.Modules.GreatWall.Application.Dtos;
 using KissU.Modules.GreatWall.Application.Dtos.Requests;
 using KissU.Modules.GreatWall.Application.Queries;
 using KissU.Modules.GreatWall.Service.Contracts;
-using KissU.Util.Applications;
-using KissU.Util.Aspects;
 using KissU.Util.Domains.Repositories;
-using KissU.Util.Validations.Aspects;
 
 namespace KissU.Modules.GreatWall.Service
 {

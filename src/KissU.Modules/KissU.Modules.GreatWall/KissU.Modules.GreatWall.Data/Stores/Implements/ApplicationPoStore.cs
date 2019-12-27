@@ -2,16 +2,19 @@
 using KissU.Modules.GreatWall.Data.Stores.Abstractions;
 using KissU.Util.Datas.Ef.Core;
 
-namespace KissU.Modules.GreatWall.Data.Stores.Implements{
+namespace KissU.Modules.GreatWall.Data.Stores.Implements
+{
     /// <summary>
     /// 应用程序存储器
     /// </summary>
-    public class ApplicationPoStore : StoreBase<ApplicationPo>, IApplicationPoStore {
+    public class ApplicationPoStore : StoreBase<ApplicationPo>, IApplicationPoStore
+    {
         /// <summary>
         /// 初始化应用程序存储器
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
-        public ApplicationPoStore( IGreatWallUnitOfWork unitOfWork ) : base( unitOfWork ) {
+        public ApplicationPoStore(IGreatWallUnitOfWork unitOfWork) : base(unitOfWork)
+        {
         }
     }
 }

@@ -1,10 +1,12 @@
 ﻿using System;
 
-namespace KissU.Modules.GreatWall.Domain.Shared.Options {
+namespace KissU.Modules.GreatWall.Domain.Shared.Options
+{
     /// <summary>
     /// 登录锁定配置
     /// </summary>
-    public class LockoutOptions {
+    public class LockoutOptions
+    {
         /// <summary>
         /// 是否锁定新创建的用户，默认锁定
         /// </summary>
@@ -18,6 +20,6 @@ namespace KissU.Modules.GreatWall.Domain.Shared.Options {
         /// <summary>
         /// 锁定时间间隔，默认5分钟
         /// </summary>
-        public TimeSpan LockoutTimeSpan { get; set; } = TimeSpan.FromMinutes( 5 );
+        public TimeSpan LockoutTimeSpan { get; set; } = TimeSpan.FromMinutes(5);
     }
 }

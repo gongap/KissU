@@ -47,6 +47,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts
         /// <param name="parameter">查询参数</param>
         [HttpGet(true)]
         Task<PagerList<IdentityResourceDto>> PagerQueryAsync(ResourceQuery parameter);
+
         /// <summary>
         /// 获取资源列表
         /// </summary>

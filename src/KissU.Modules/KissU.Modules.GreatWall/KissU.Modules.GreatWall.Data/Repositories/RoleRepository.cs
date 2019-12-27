@@ -10,22 +10,73 @@ using KissU.Util.Datas.Ef.Core;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-namespace KissU.Modules.GreatWall.Data.Repositories {
+namespace KissU.Modules.GreatWall.Data.Repositories
+{
     /// <summary>
     /// 角色仓储
     /// </summary>
-    public class RoleRepository : TreeRepositoryBase<Role>, IRoleRepository, IRoleStore<Role> {
+    public class RoleRepository : TreeRepositoryBase<Role>, IRoleRepository, IRoleStore<Role>
+    {
         /// <summary>
         /// 初始化角色仓储
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
-        public RoleRepository( IGreatWallUnitOfWork unitOfWork ) : base( unitOfWork ) {
+        public RoleRepository(IGreatWallUnitOfWork unitOfWork) : base(unitOfWork)
+        {
+        }
+
+        /// <summary>
+        /// 获取用户的角色列表
+        /// </summary>
+        /// <param name="userId">用户标识</param>
+        public async Task<List<Role>> GetRolesAsync(Guid userId)
+        {
+            return await GetRoleQueryable(userId).ToListAsync();
+        }
+
+        /// <summary>
+        /// 获取用户的角色标识列表
+        /// </summary>
+        /// <param name="userId">用户标识</param>
+        public async Task<List<Guid>> GetRoleIdsAsync(Guid userId)
+        {
+            return await GetRoleQueryable(userId).Select(t => t.Id).ToListAsync();
+        }
+
+        /// <summary>
+        /// 获取已添加的用户标识列表
+        /// </summary>
+        /// <param name="roleId">角色标识</param>
+        /// <param name="userIds">用户标识列表</param>
+        public async Task<List<Guid>> GetExistsUserIdsAsync(Guid roleId, List<Guid> userIds)
+        {
+            return await UnitOfWork.Set<UserRole>().Where(t => t.RoleId == roleId && userIds.Contains(t.UserId))
+                .Select(t => t.UserId).ToListAsync();
+        }
+
+        /// <summary>
+        /// 添加用户角色列表
+        /// </summary>
+        /// <param name="userRoles">用户角色列表</param>
+        public async Task AddUserRolesAsync(IEnumerable<UserRole> userRoles)
+        {
+            await UnitOfWork.Set<UserRole>().AddRangeAsync(userRoles);
+        }
+
+        /// <summary>
+        /// 从角色移除用户
+        /// </summary>
+        /// <param name="userRoles">用户角色列表</param>
+        public void RemoveUserRoles(IEnumerable<UserRole> userRoles)
+        {
+            UnitOfWork.Set<UserRole>().RemoveRange(userRoles);
         }
 
         /// <summary>
         /// 清理
         /// </summary>
-        public void Dispose() {
+        public void Dispose()
+        {
             UnitOfWork.Dispose();
         }
 
@@ -34,18 +85,11 @@ namespace KissU.Modules.GreatWall.Data.Repositories {
         /// </summary>
         /// <param name="role">角色</param>
         /// <param name="cancellationToken">取消令牌</param>
-        public async Task<IdentityResult> CreateAsync( Role role, CancellationToken cancellationToken ) {
-            ValidateRole( role, cancellationToken );
-            await AddAsync( role, cancellationToken );
+        public async Task<IdentityResult> CreateAsync(Role role, CancellationToken cancellationToken)
+        {
+            ValidateRole(role, cancellationToken);
+            await AddAsync(role, cancellationToken);
             return IdentityResult.Success;
-        }
-
-        /// <summary>
-        /// 验证用户
-        /// </summary>
-        private void ValidateRole( Role role, CancellationToken cancellationToken ) {
-            role.CheckNull( nameof( role ) );
-            cancellationToken.ThrowIfCancellationRequested();
         }
 
         /// <summary>
@@ -53,9 +97,10 @@ namespace KissU.Modules.GreatWall.Data.Repositories {
         /// </summary>
         /// <param name="role">角色</param>
         /// <param name="cancellationToken">取消令牌</param>
-        public async Task<IdentityResult> UpdateAsync( Role role, CancellationToken cancellationToken ) {
-            ValidateRole( role, cancellationToken );
-            await UpdateAsync( role );
+        public async Task<IdentityResult> UpdateAsync(Role role, CancellationToken cancellationToken)
+        {
+            ValidateRole(role, cancellationToken);
+            await UpdateAsync(role);
             return IdentityResult.Success;
         }
 
@@ -64,9 +109,10 @@ namespace KissU.Modules.GreatWall.Data.Repositories {
         /// </summary>
         /// <param name="role">角色</param>
         /// <param name="cancellationToken">取消令牌</param>
-        public async Task<IdentityResult> DeleteAsync( Role role, CancellationToken cancellationToken ) {
-            ValidateRole( role, cancellationToken );
-            await RemoveAsync( role, cancellationToken );
+        public async Task<IdentityResult> DeleteAsync(Role role, CancellationToken cancellationToken)
+        {
+            ValidateRole(role, cancellationToken);
+            await RemoveAsync(role, cancellationToken);
             return IdentityResult.Success;
         }
 
@@ -75,9 +121,10 @@ namespace KissU.Modules.GreatWall.Data.Repositories {
         /// </summary>
         /// <param name="role">角色</param>
         /// <param name="cancellationToken">取消令牌</param>
-        public Task<string> GetRoleIdAsync( Role role, CancellationToken cancellationToken ) {
-            ValidateRole( role, cancellationToken );
-            return Task.FromResult( role.Id.SafeString() );
+        public Task<string> GetRoleIdAsync(Role role, CancellationToken cancellationToken)
+        {
+            ValidateRole(role, cancellationToken);
+            return Task.FromResult(role.Id.SafeString());
         }
 
         /// <summary>
@@ -85,9 +132,10 @@ namespace KissU.Modules.GreatWall.Data.Repositories {
         /// </summary>
         /// <param name="role">角色</param>
         /// <param name="cancellationToken">取消令牌</param>
-        public Task<string> GetRoleNameAsync( Role role, CancellationToken cancellationToken ) {
-            ValidateRole( role, cancellationToken );
-            return Task.FromResult( role.Name );
+        public Task<string> GetRoleNameAsync(Role role, CancellationToken cancellationToken)
+        {
+            ValidateRole(role, cancellationToken);
+            return Task.FromResult(role.Name);
         }
 
         /// <summary>
@@ -96,8 +144,9 @@ namespace KissU.Modules.GreatWall.Data.Repositories {
         /// <param name="role">角色</param>
         /// <param name="roleName">角色名</param>
         /// <param name="cancellationToken">取消令牌</param>
-        public Task SetRoleNameAsync( Role role, string roleName, CancellationToken cancellationToken ) {
-            ValidateRole( role, cancellationToken );
+        public Task SetRoleNameAsync(Role role, string roleName, CancellationToken cancellationToken)
+        {
+            ValidateRole(role, cancellationToken);
             role.Name = roleName;
             return Task.CompletedTask;
         }
@@ -107,9 +156,10 @@ namespace KissU.Modules.GreatWall.Data.Repositories {
         /// </summary>
         /// <param name="role">角色</param>
         /// <param name="cancellationToken">取消令牌</param>
-        public Task<string> GetNormalizedRoleNameAsync( Role role, CancellationToken cancellationToken ) {
-            ValidateRole( role, cancellationToken );
-            return Task.FromResult( role.NormalizedName );
+        public Task<string> GetNormalizedRoleNameAsync(Role role, CancellationToken cancellationToken)
+        {
+            ValidateRole(role, cancellationToken);
+            return Task.FromResult(role.NormalizedName);
         }
 
         /// <summary>
@@ -118,8 +168,9 @@ namespace KissU.Modules.GreatWall.Data.Repositories {
         /// <param name="role">角色</param>
         /// <param name="normalizedName">标准化角色名称</param>
         /// <param name="cancellationToken">取消令牌</param>
-        public Task SetNormalizedRoleNameAsync( Role role, string normalizedName, CancellationToken cancellationToken ) {
-            ValidateRole( role, cancellationToken );
+        public Task SetNormalizedRoleNameAsync(Role role, string normalizedName, CancellationToken cancellationToken)
+        {
+            ValidateRole(role, cancellationToken);
             role.NormalizedName = normalizedName;
             return Task.CompletedTask;
         }
@@ -129,9 +180,10 @@ namespace KissU.Modules.GreatWall.Data.Repositories {
         /// </summary>
         /// <param name="roleId">角色编号</param>
         /// <param name="cancellationToken">取消令牌</param>
-        public async Task<Role> FindByIdAsync( string roleId, CancellationToken cancellationToken ) {
+        public async Task<Role> FindByIdAsync(string roleId, CancellationToken cancellationToken)
+        {
             cancellationToken.ThrowIfCancellationRequested();
-            return await FindAsync( roleId.ToGuid(), cancellationToken );
+            return await FindAsync(roleId.ToGuid(), cancellationToken);
         }
 
         /// <summary>
@@ -139,60 +191,30 @@ namespace KissU.Modules.GreatWall.Data.Repositories {
         /// </summary>
         /// <param name="normalizedRoleName">标准化角色名称</param>
         /// <param name="cancellationToken">取消令牌</param>
-        public async Task<Role> FindByNameAsync( string normalizedRoleName, CancellationToken cancellationToken ) {
+        public async Task<Role> FindByNameAsync(string normalizedRoleName, CancellationToken cancellationToken)
+        {
             cancellationToken.ThrowIfCancellationRequested();
-            return await SingleAsync( r => r.NormalizedName == normalizedRoleName, cancellationToken );
+            return await SingleAsync(r => r.NormalizedName == normalizedRoleName, cancellationToken);
         }
 
         /// <summary>
-        /// 获取用户的角色列表
+        /// 验证用户
         /// </summary>
-        /// <param name="userId">用户标识</param>
-        public async Task<List<Role>> GetRolesAsync( Guid userId ) {
-            return await GetRoleQueryable( userId ).ToListAsync();
+        private void ValidateRole(Role role, CancellationToken cancellationToken)
+        {
+            role.CheckNull(nameof(role));
+            cancellationToken.ThrowIfCancellationRequested();
         }
 
         /// <summary>
         /// 获取角色查询对象
         /// </summary>
-        private IQueryable<Role> GetRoleQueryable( Guid userId ) {
+        private IQueryable<Role> GetRoleQueryable(Guid userId)
+        {
             return from role in Set
-                   join userRole in UnitOfWork.Set<UserRole>() on role.Id equals userRole.RoleId
-                   where userRole.UserId == userId
-                   select role;
-        }
-
-        /// <summary>
-        /// 获取用户的角色标识列表
-        /// </summary>
-        /// <param name="userId">用户标识</param>
-        public async Task<List<Guid>> GetRoleIdsAsync( Guid userId ) {
-            return await GetRoleQueryable( userId ).Select( t => t.Id ).ToListAsync();
-        }
-
-        /// <summary>
-        /// 获取已添加的用户标识列表
-        /// </summary>
-        /// <param name="roleId">角色标识</param>
-        /// <param name="userIds">用户标识列表</param>
-        public async Task<List<Guid>> GetExistsUserIdsAsync( Guid roleId, List<Guid> userIds ) {
-            return await UnitOfWork.Set<UserRole>().Where( t => t.RoleId == roleId && userIds.Contains( t.UserId ) ).Select( t => t.UserId ).ToListAsync();
-        }
-
-        /// <summary>
-        /// 添加用户角色列表
-        /// </summary>
-        /// <param name="userRoles">用户角色列表</param>
-        public async Task AddUserRolesAsync( IEnumerable<UserRole> userRoles ) {
-            await UnitOfWork.Set<UserRole>().AddRangeAsync( userRoles );
-        }
-
-        /// <summary>
-        /// 从角色移除用户
-        /// </summary>
-        /// <param name="userRoles">用户角色列表</param>
-        public void RemoveUserRoles( IEnumerable<UserRole> userRoles ) {
-            UnitOfWork.Set<UserRole>().RemoveRange( userRoles );
+                join userRole in UnitOfWork.Set<UserRole>() on role.Id equals userRole.RoleId
+                where userRole.UserId == userId
+                select role;
         }
     }
 }

@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
-using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Modules.GreatWall.Application.Abstractions;
 using KissU.Modules.GreatWall.Application.Dtos;
 using KissU.Modules.GreatWall.Service.Contracts;
-using KissU.Util.Applications;
-using KissU.Util.Aspects;
-using KissU.Util.Validations.Aspects;
 
-namespace KissU.Modules.GreatWall.Service {
+namespace KissU.Modules.GreatWall.Service
+{
     /// <summary>
     /// 身份资源服务
     /// </summary>

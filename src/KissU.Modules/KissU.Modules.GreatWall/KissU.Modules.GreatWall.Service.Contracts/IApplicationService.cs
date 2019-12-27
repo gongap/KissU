@@ -3,8 +3,6 @@ using System.Threading.Tasks;
 using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Modules.GreatWall.Application.Dtos;
 using KissU.Util.Applications;
-using KissU.Util.Aspects;
-using KissU.Util.Validations.Aspects;
 
 namespace KissU.Modules.GreatWall.Service.Contracts
 {
@@ -25,6 +23,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts
         /// </summary>
         /// <param name="dto">应用程序参数</param>
         Task UpdateAsync(ApplicationDto dto);
+
         /// <summary>
         /// 删除
         /// </summary>

@@ -1,8 +1,10 @@
-﻿namespace KissU.Modules.GreatWall.Domain.Shared.Options {
+﻿namespace KissU.Modules.GreatWall.Domain.Shared.Options
+{
     /// <summary>
     /// 密码配置
     /// </summary>
-    public class PasswordOptions {
+    public class PasswordOptions
+    {
         /// <summary>
         /// 密码最小长度，默认值为 1
         /// </summary>

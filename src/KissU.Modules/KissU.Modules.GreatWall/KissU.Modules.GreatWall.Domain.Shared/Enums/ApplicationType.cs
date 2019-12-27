@@ -1,24 +1,25 @@
 ﻿using System.ComponentModel;
 
-namespace KissU.Modules.GreatWall.Domain.Shared.Enums {
+namespace KissU.Modules.GreatWall.Domain.Shared.Enums
+{
     /// <summary>
     /// 应用类型
     /// </summary>
-    public enum ApplicationType {
+    public enum ApplicationType
+    {
         /// <summary>
         /// 常规应用
         /// </summary>
-        [Description( "常规应用" )]
-        General = 1,
+        [Description("常规应用")] General = 1,
+
         /// <summary>
         /// Api
         /// </summary>
-        [Description( "Api" )]
-        Api = 2,
+        [Description("Api")] Api = 2,
+
         /// <summary>
         /// 客户端
         /// </summary>
-        [Description( "客户端" )]
-        Client = 3
+        [Description("客户端")] Client = 3
     }
 }

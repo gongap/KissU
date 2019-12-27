@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 
-namespace KissU.Modules.GreatWall.Data.Pos.Extensions {
+namespace KissU.Modules.GreatWall.Data.Pos.Extensions
+{
     /// <summary>
     /// Api资源扩展信息
     /// </summary>
-    public class ApiResourceExtend {
+    public class ApiResourceExtend
+    {
         /// <summary>
         /// 用户声明
         /// </summary>

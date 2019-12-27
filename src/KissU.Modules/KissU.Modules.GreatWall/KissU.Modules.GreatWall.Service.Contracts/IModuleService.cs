@@ -1,15 +1,9 @@
-﻿// <copyright file="IModuleService.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using System;
+﻿using System;
 using System.Threading.Tasks;
 using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Modules.GreatWall.Application.Dtos;
 using KissU.Modules.GreatWall.Application.Dtos.Requests;
 using KissU.Util.Applications;
-using KissU.Util.Aspects;
-using KissU.Util.Validations.Aspects;
 
 namespace KissU.Modules.GreatWall.Service.Contracts
 {

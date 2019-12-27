@@ -39,15 +39,9 @@ namespace KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain
         /// </summary>
         public List<MenuInfo> GetResult()
         {
-            if (_data == null)
-            {
-                return _result;
-            }
+            if (_data == null) return _result;
 
-            foreach (var root in _data.Where(IsRoot))
-            {
-                AddNodes(root);
-            }
+            foreach (var root in _data.Where(IsRoot)) AddNodes(root);
 
             return _result;
         }
@@ -57,10 +51,7 @@ namespace KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain
         /// </summary>
         protected virtual bool IsRoot(MenuResponse dto)
         {
-            if (_data.Any(t => t.ParentId.IsEmpty()))
-            {
-                return dto.ParentId.IsEmpty();
-            }
+            if (_data.Any(t => t.ParentId.IsEmpty())) return dto.ParentId.IsEmpty();
 
             return dto.Level == _data.Min(t => t.Level);
         }
@@ -82,13 +73,9 @@ namespace KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain
         {
             var result = new MenuInfo {Id = dto.Id, Text = dto.Name, Icon = dto.Icon};
             if (dto.External)
-            {
                 result.ExternalLink = dto.Url;
-            }
             else
-            {
                 result.Link = dto.Url;
-            }
 
             return result;
         }
@@ -98,16 +85,10 @@ namespace KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain
         /// </summary>
         private void AddChildren(MenuInfo node)
         {
-            if (node == null)
-            {
-                return;
-            }
+            if (node == null) return;
 
             node.Children = GetChildren(node.Id).Select(ToNode).ToList();
-            foreach (var child in node.Children)
-            {
-                AddChildren(child);
-            }
+            foreach (var child in node.Children) AddChildren(child);
         }
 
         /// <summary>

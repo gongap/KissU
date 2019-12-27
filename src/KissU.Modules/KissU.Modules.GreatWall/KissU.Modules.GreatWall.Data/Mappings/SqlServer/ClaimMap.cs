@@ -1,25 +1,30 @@
 ﻿using KissU.Modules.GreatWall.Domain.Models;
+using KissU.Util.Datas.SqlServer.Ef;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace KissU.Modules.GreatWall.Data.Mappings.SqlServer {
+namespace KissU.Modules.GreatWall.Data.Mappings.SqlServer
+{
     /// <summary>
     /// 声明映射配置
     /// </summary>
-    public class ClaimMap : Util.Datas.SqlServer.Ef.AggregateRootMap<Claim> {
+    public class ClaimMap : AggregateRootMap<Claim>
+    {
         /// <summary>
         /// 映射表
         /// </summary>
-        protected override void MapTable( EntityTypeBuilder<Claim> builder ) {
-            builder.ToTable( "Claim", "Systems" );
+        protected override void MapTable(EntityTypeBuilder<Claim> builder)
+        {
+            builder.ToTable("Claim", "Systems");
         }
 
         /// <summary>
         /// 映射属性
         /// </summary>
-        protected override void MapProperties( EntityTypeBuilder<Claim> builder ) {
-            builder.Property( t => t.Id ).HasColumnName( "ClaimId" );
-            builder.HasQueryFilter( t => t.IsDeleted == false );
+        protected override void MapProperties(EntityTypeBuilder<Claim> builder)
+        {
+            builder.Property(t => t.Id).HasColumnName("ClaimId");
+            builder.HasQueryFilter(t => t.IsDeleted == false);
         }
     }
 }

@@ -1,14 +1,17 @@
 ﻿using KissU.Util;
 
-namespace KissU.Modules.GreatWall.Domain.Models {
+namespace KissU.Modules.GreatWall.Domain.Models
+{
     /// <summary>
     /// Api资源
     /// </summary>
-    public partial class ApiResource {
+    public partial class ApiResource
+    {
         /// <summary>
         /// 初始化
         /// </summary>
-        public override void Init() {
+        public override void Init()
+        {
             base.Init();
             InitName();
         }
@@ -16,8 +19,9 @@ namespace KissU.Modules.GreatWall.Domain.Models {
         /// <summary>
         /// 初始化显示名称
         /// </summary>
-        public void InitName() {
-            if( Name.IsEmpty() )
+        public void InitName()
+        {
+            if (Name.IsEmpty())
                 Name = Uri;
         }
     }

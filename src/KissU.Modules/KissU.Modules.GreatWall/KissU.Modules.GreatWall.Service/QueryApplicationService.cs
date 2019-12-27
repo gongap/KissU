@@ -1,11 +1,6 @@
-﻿// <copyright file="IQueryApplicationService.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Modules.GreatWall.Application.Abstractions;
 using KissU.Modules.GreatWall.Application.Dtos;
 using KissU.Modules.GreatWall.Application.Queries;
@@ -18,7 +13,7 @@ namespace KissU.Modules.GreatWall.Service
     /// <summary>
     /// 应用程序查询服务
     /// </summary>
-    public class QueryApplicationService: IQueryApplicationService
+    public class QueryApplicationService : IQueryApplicationService
     {
         private readonly IQueryApplicationAppService _appService;
 

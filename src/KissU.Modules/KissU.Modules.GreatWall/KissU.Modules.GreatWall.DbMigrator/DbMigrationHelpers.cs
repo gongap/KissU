@@ -1,8 +1,4 @@
-﻿// <copyright file="DbMigrationHelpers.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using System;
+﻿using System;
 using System.IO;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;

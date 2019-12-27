@@ -6,17 +6,20 @@ using KissU.Modules.GreatWall.Domain.Shared.Purposes;
 using KissU.Modules.GreatWall.Domain.Shared.Results;
 using KissU.Util;
 
-namespace KissU.Modules.GreatWall.Domain.Services.Implements {
+namespace KissU.Modules.GreatWall.Domain.Services.Implements
+{
     /// <summary>
     /// 登录服务
     /// </summary>
-    public class SignInManager : ISignInManager {
+    public class SignInManager : ISignInManager
+    {
         /// <summary>
         /// 初始化登录服务
         /// </summary>
         /// <param name="signInManager">Identity登录服务</param>
         /// <param name="userManager">用户服务</param>
-        public SignInManager( IdentitySignInManager signInManager, IUserManager userManager ) {
+        public SignInManager(IdentitySignInManager signInManager, IUserManager userManager)
+        {
             IdentitySignInManager = signInManager;
             UserManager = userManager;
         }
@@ -25,6 +28,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements {
         /// Identity登录服务
         /// </summary>
         protected IdentitySignInManager IdentitySignInManager { get; }
+
         /// <summary>
         /// 用户服务
         /// </summary>
@@ -37,26 +41,14 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements {
         /// <param name="password">密码</param>
         /// <param name="isPersistent">cookie是否持久保留,设置为false,当关闭浏览器则cookie失效</param>
         /// <param name="lockoutOnFailure">达到登录失败次数是否锁定</param>
-        public async Task<SignInResult> SignInAsync( User user, string password, bool isPersistent, bool lockoutOnFailure ) {
-            if( user == null )
-                return new SignInResult( SignInState.Failed, null, GreatWallResource.InvalidAccountOrPassword );
-            var signInResult = await IdentitySignInManager.PasswordSignInAsync( user, password, isPersistent, lockoutOnFailure );
-            return GetSignInResult( user, signInResult );
-        }
-
-        /// <summary>
-        /// 获取登录结果
-        /// </summary>
-        private SignInResult GetSignInResult( User user, Microsoft.AspNetCore.Identity.SignInResult signInResult ) {
-            if( signInResult.IsNotAllowed )
-                return new SignInResult( SignInState.Failed, null, GreatWallResource.UserIsDisabled );
-            if( signInResult.IsLockedOut )
-                return new SignInResult( SignInState.Failed, null, GreatWallResource.LoginFailLock );
-            if( signInResult.Succeeded )
-                return new SignInResult( SignInState.Succeeded, user.Id.SafeString() );
-            if( signInResult.RequiresTwoFactor )
-                return new SignInResult( SignInState.TwoFactor, user.Id.SafeString() );
-            return new SignInResult( SignInState.Failed, null, GreatWallResource.InvalidAccountOrPassword );
+        public async Task<SignInResult> SignInAsync(User user, string password, bool isPersistent,
+            bool lockoutOnFailure)
+        {
+            if (user == null)
+                return new SignInResult(SignInState.Failed, null, GreatWallResource.InvalidAccountOrPassword);
+            var signInResult =
+                await IdentitySignInManager.PasswordSignInAsync(user, password, isPersistent, lockoutOnFailure);
+            return GetSignInResult(user, signInResult);
         }
 
         /// <summary>
@@ -64,8 +56,9 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements {
         /// </summary>
         /// <param name="phone">手机号</param>
         /// <param name="application">应用程序</param>
-        public async Task<string> GenerateSignInTokenAsync( string phone, string application = "" ) {
-            return await UserManager.GenerateTokenAsync( phone, TokenPurpose.SignIn, application );
+        public async Task<string> GenerateSignInTokenAsync(string phone, string application = "")
+        {
+            return await UserManager.GenerateTokenAsync(phone, TokenPurpose.SignIn, application);
         }
 
         /// <summary>
@@ -76,20 +69,40 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements {
         /// <param name="isPersistent">cookie是否持久保留,设置为false,当关闭浏览器则cookie失效</param>
         /// <param name="lockoutOnFailure">达到登录失败次数是否锁定</param>
         /// <param name="application">应用程序</param>
-        public async Task<SignInResult> TokenSignInAsync( string phone, string token,bool isPersistent, bool lockoutOnFailure, string application = "" ) {
-            var user = await UserManager.FindByPhoneAsync( phone );
-            if( user == null )
-                return new SignInResult( SignInState.Failed, null, GreatWallResource.InvalidAccountOrPassword );
-            var success = await UserManager.VerifyTokenAsync( user, TokenPurpose.SignIn, token, application );
-            var signInResult = await IdentitySignInManager.TokenSignInAsync( user, success, isPersistent, lockoutOnFailure );
-            return GetSignInResult( user, signInResult );
+        public async Task<SignInResult> TokenSignInAsync(string phone, string token, bool isPersistent,
+            bool lockoutOnFailure, string application = "")
+        {
+            var user = await UserManager.FindByPhoneAsync(phone);
+            if (user == null)
+                return new SignInResult(SignInState.Failed, null, GreatWallResource.InvalidAccountOrPassword);
+            var success = await UserManager.VerifyTokenAsync(user, TokenPurpose.SignIn, token, application);
+            var signInResult =
+                await IdentitySignInManager.TokenSignInAsync(user, success, isPersistent, lockoutOnFailure);
+            return GetSignInResult(user, signInResult);
         }
 
         /// <summary>
         /// 退出登录
         /// </summary>
-        public async Task SignOutAsync() {
+        public async Task SignOutAsync()
+        {
             await IdentitySignInManager.SignOutAsync();
+        }
+
+        /// <summary>
+        /// 获取登录结果
+        /// </summary>
+        private SignInResult GetSignInResult(User user, Microsoft.AspNetCore.Identity.SignInResult signInResult)
+        {
+            if (signInResult.IsNotAllowed)
+                return new SignInResult(SignInState.Failed, null, GreatWallResource.UserIsDisabled);
+            if (signInResult.IsLockedOut)
+                return new SignInResult(SignInState.Failed, null, GreatWallResource.LoginFailLock);
+            if (signInResult.Succeeded)
+                return new SignInResult(SignInState.Succeeded, user.Id.SafeString());
+            if (signInResult.RequiresTwoFactor)
+                return new SignInResult(SignInState.TwoFactor, user.Id.SafeString());
+            return new SignInResult(SignInState.Failed, null, GreatWallResource.InvalidAccountOrPassword);
         }
     }
 }

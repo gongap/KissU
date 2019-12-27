@@ -7,15 +7,17 @@ using KissU.Util.Applications;
 using KissU.Util.Aspects;
 using KissU.Util.Validations.Aspects;
 
-namespace KissU.Modules.GreatWall.Application.Abstractions {
+namespace KissU.Modules.GreatWall.Application.Abstractions
+{
     /// <summary>
     /// 用户服务
     /// </summary>
-    public interface IUserAppService : IDeleteService<UserDto, UserQuery> {
+    public interface IUserAppService : IDeleteService<UserDto, UserQuery>
+    {
         /// <summary>
         /// 创建用户
         /// </summary>
         /// <param name="request">创建用户参数</param>
-        Task<Guid> CreateAsync( [NotNull] [Valid] CreateUserRequest request );
+        Task<Guid> CreateAsync([NotNull] [Valid] CreateUserRequest request);
     }
 }
