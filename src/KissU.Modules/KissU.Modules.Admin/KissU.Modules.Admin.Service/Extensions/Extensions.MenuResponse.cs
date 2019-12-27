@@ -4,7 +4,7 @@
 
 using System.Collections.Generic;
 using KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain;
-using KissU.Modules.GreatWall.Service.Contracts.Dtos.Responses;
+using KissU.Modules.GreatWall.Application.Dtos.Responses;
 
 namespace KissU.Modules.Admin.Service.Extensions
 {

@@ -4,7 +4,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using KissU.Modules.GreatWall.Service.Contracts.Dtos.Responses;
+using KissU.Modules.GreatWall.Application.Dtos.Responses;
 using KissU.Util;
 
 namespace KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain

@@ -4,11 +4,8 @@ cd src/KissU.Modules/KissU.Modules.IdentityServer/KissU.Modules.IdentityServer.D
 dotnet ef database update -c DesignTimeDbContext
 
 cd ../../../../
-cd src/KissU.Modules/KissU.Modules.GreatWall/KissU.Modules.GreatWall.DbMigrator
-dotnet ef database update -c DesignTimeDbContext
 
-cd ../../../../
-cd src/KissU.Modules/KissU.Modules.Theme/KissU.Modules.Theme.DbMigrator
+cd src/KissU.Modules/KissU.Modules.GreatWall/KissU.Modules.GreatWall.DbMigrator
 dotnet ef database update -c DesignTimeDbContext
 
 cd ../../../../
