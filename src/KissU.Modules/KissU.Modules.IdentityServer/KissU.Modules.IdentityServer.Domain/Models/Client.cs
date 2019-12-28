@@ -1,10 +1,4 @@
-﻿// <copyright file="Client.Base.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using KissU.Modules.IdentityServer.Domain.Enums;
 using KissU.Util.Domains;
@@ -203,13 +197,13 @@ namespace KissU.Modules.IdentityServer.Domain.Models
         /// ReUse 刷新令牌时刷新令牌句柄将保持不变
         /// OneTime刷新令牌时将更新刷新令牌句柄。这是默认值。
         /// </summary>
-        public int RefreshTokenUsage { get; set; } = (int)TokenUsage.OneTimeOnly;
+        public int RefreshTokenUsage { get; set; } = (int) TokenUsage.OneTimeOnly;
 
         /// <summary>
         /// Absolute 刷新令牌将在固定时间点到期（由AbsoluteRefreshTokenLifetime指定）
         /// Sliding刷新令牌时，将刷新刷新令牌的生命周期（按SlidingRefreshTokenLifetime中指定的数量）。生命周期不会超过AbsoluteRefreshTokenLifetime。
         /// </summary>
-        public int RefreshTokenExpiration { get; set; } = (int)TokenExpiration.Absolute;
+        public int RefreshTokenExpiration { get; set; } = (int) TokenExpiration.Absolute;
 
         /// <summary>
         /// 获取或设置一个值，该值指示是否应在刷新令牌请求上更新访问令牌（及其声明）。

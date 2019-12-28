@@ -1,6 +1,6 @@
 ﻿using KissU.Util.Datas.UnitOfWorks;
 
-namespace KissU.Modules.GreatWall.Data
+namespace KissU.Modules.GreatWall.Domain.UnitOfWorks
 {
     /// <summary>
     /// GreatWall工作单元

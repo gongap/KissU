@@ -1,8 +1,4 @@
-﻿// <copyright file="DeviceFlowCode.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using KissU.Util.Domains;
 
@@ -14,7 +10,7 @@ namespace KissU.Modules.IdentityServer.Domain.Models
     public class DeviceFlowCode : AggregateRoot<DeviceFlowCode, int>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DeviceFlowCode"/> class.
+        /// Initializes a new instance of the <see cref="DeviceFlowCode" /> class.
         /// 初始化
         /// </summary>
         public DeviceFlowCode() : base(default)

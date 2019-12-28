@@ -10,6 +10,7 @@ using IdentityServer4.Stores.Serialization;
 using KissU.Modules.IdentityServer.Domain;
 using KissU.Modules.IdentityServer.Domain.Models;
 using KissU.Modules.IdentityServer.Domain.Repositories;
+using KissU.Modules.IdentityServer.Domain.UnitOfWorks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 

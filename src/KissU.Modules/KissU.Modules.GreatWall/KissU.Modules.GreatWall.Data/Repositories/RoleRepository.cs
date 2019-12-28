@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using KissU.Modules.GreatWall.Domain.Models;
 using KissU.Modules.GreatWall.Domain.Repositories;
+using KissU.Modules.GreatWall.Domain.UnitOfWorks;
 using KissU.Util;
 using KissU.Util.Datas.Ef.Core;
 using Microsoft.AspNetCore.Identity;

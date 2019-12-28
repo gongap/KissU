@@ -4,6 +4,8 @@ using KissU.Core.CPlatform.Module;
 using KissU.Modules.IdentityServer.Data;
 using KissU.Modules.IdentityServer.Data.UnitOfWorks.SqlServer;
 using KissU.Modules.IdentityServer.Domain;
+using KissU.Modules.IdentityServer.Domain.UnitOfWorks;
+using KissU.Util.Datas.SqlServer;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace KissU.Modules.IdentityServer.Service

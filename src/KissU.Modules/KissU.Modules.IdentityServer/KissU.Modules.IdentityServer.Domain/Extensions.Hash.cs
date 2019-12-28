@@ -7,7 +7,7 @@ namespace KissU.Modules.IdentityServer.Domain
     /// <summary>
     /// Extension methods for hashing strings
     /// </summary>
-    public static partial class Extensions
+    public static class Extensions
     {
         /// <summary>
         /// Creates a SHA256 hash of the specified input.
@@ -16,10 +16,7 @@ namespace KissU.Modules.IdentityServer.Domain
         /// <returns>A hash</returns>
         public static string Sha256(this string input)
         {
-            if (string.IsNullOrWhiteSpace(input))
-            {
-                return string.Empty;
-            }
+            if (string.IsNullOrWhiteSpace(input)) return string.Empty;
 
             using (var sha = SHA256.Create())
             {
@@ -37,10 +34,7 @@ namespace KissU.Modules.IdentityServer.Domain
         /// <returns>A hash.</returns>
         public static byte[] Sha256(this byte[] input)
         {
-            if (input == null)
-            {
-                return null;
-            }
+            if (input == null) return null;
 
             using (var sha = SHA256.Create())
             {
@@ -55,10 +49,7 @@ namespace KissU.Modules.IdentityServer.Domain
         /// <returns>A hash</returns>
         public static string Sha512(this string input)
         {
-            if (string.IsNullOrWhiteSpace(input))
-            {
-                return string.Empty;
-            }
+            if (string.IsNullOrWhiteSpace(input)) return string.Empty;
 
             using (var sha = SHA512.Create())
             {

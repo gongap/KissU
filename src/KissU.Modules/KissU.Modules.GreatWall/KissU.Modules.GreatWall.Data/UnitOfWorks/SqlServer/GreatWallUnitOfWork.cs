@@ -1,4 +1,5 @@
-﻿using KissU.Util.Datas.SqlServer.Ef;
+﻿using KissU.Modules.GreatWall.Domain.UnitOfWorks;
+using KissU.Util.Datas.SqlServer.Ef;
 using Microsoft.EntityFrameworkCore;
 
 namespace KissU.Modules.GreatWall.Data.UnitOfWorks.SqlServer

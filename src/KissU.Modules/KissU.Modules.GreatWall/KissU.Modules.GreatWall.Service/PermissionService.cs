@@ -6,7 +6,7 @@ using KissU.Modules.GreatWall.Application.Dtos.Requests;
 using KissU.Modules.GreatWall.Application.Queries;
 using KissU.Modules.GreatWall.Service.Contracts;
 
-namespace KissU.Permissions.GreatWall.Service
+namespace KissU.Modules.GreatWall.Service
 {
     /// <summary>
     /// 权限服务

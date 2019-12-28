@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using KissU.Modules.GreatWall.Data.Pos;
 using KissU.Modules.GreatWall.Domain.Models;
 using KissU.Modules.GreatWall.Domain.Repositories;
+using KissU.Modules.GreatWall.Domain.UnitOfWorks;
 using KissU.Util.Datas.Ef.Core;
 using Microsoft.EntityFrameworkCore;
 

@@ -1,8 +1,4 @@
-﻿// <copyright file="ClientSecret.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using KissU.Util.Domains;
 
@@ -11,7 +7,7 @@ namespace KissU.Modules.IdentityServer.Domain.Models
     /// <summary>
     /// 应用程序密钥
     /// </summary>
-    public class ClientSecret : EntityBase<ClientSecret,int>
+    public class ClientSecret : EntityBase<ClientSecret, int>
     {
         /// <summary>
         /// 初始化应用程序密钥

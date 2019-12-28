@@ -1,9 +1,4 @@
-﻿// <copyright file="ClientClaim.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using KissU.Util.Domains;
 
 namespace KissU.Modules.IdentityServer.Domain.Models

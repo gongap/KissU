@@ -6,6 +6,7 @@ using KissU.Modules.GreatWall.Data.Pos;
 using KissU.Modules.GreatWall.Data.Stores.Abstractions;
 using KissU.Modules.GreatWall.Domain.Models;
 using KissU.Modules.GreatWall.Domain.Shared.Enums;
+using KissU.Modules.GreatWall.Domain.UnitOfWorks;
 using KissU.Util.Datas.Ef.Core;
 using Microsoft.EntityFrameworkCore;
 

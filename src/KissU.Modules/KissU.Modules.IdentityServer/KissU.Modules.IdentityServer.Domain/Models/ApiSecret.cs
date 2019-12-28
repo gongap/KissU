@@ -1,8 +1,4 @@
-﻿// <copyright file="ApiResourceSecret.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using KissU.Util.Domains;
 

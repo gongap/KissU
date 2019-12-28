@@ -1,5 +1,6 @@
 ﻿using KissU.Modules.GreatWall.Domain.Models;
 using KissU.Modules.GreatWall.Domain.Repositories;
+using KissU.Modules.GreatWall.Domain.UnitOfWorks;
 using KissU.Util.Datas.Ef.Core;
 
 namespace KissU.Modules.GreatWall.Data.Repositories

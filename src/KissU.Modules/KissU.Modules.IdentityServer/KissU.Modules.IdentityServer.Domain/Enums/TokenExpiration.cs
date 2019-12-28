@@ -1,8 +1,4 @@
-﻿// <copyright file="TokenExpiration.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-namespace KissU.Modules.IdentityServer.Domain.Enums
+﻿namespace KissU.Modules.IdentityServer.Domain.Enums
 {
     /// <summary>
     /// Token expiration types.

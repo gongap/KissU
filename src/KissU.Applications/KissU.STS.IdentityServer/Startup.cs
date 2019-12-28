@@ -6,6 +6,7 @@ using Autofac;
 using KissU.Modules.IdentityServer;
 using KissU.Modules.IdentityServer.Data.UnitOfWorks.SqlServer;
 using KissU.Modules.IdentityServer.Domain;
+using KissU.Modules.IdentityServer.Domain.UnitOfWorks;
 using KissU.STS.IdentityServer.Data;
 using KissU.Util;
 using KissU.Util.Datas.SqlServer;

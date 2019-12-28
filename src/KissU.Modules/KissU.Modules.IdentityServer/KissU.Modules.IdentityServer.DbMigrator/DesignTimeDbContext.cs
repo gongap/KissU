@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using KissU.Modules.IdentityServer.Domain;
+using KissU.Modules.IdentityServer.Domain.UnitOfWorks;
 using KissU.Util.Datas.SqlServer.Ef;
 using KissU.Util.Reflections;
 using Microsoft.EntityFrameworkCore;

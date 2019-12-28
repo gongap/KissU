@@ -1,13 +1,8 @@
-﻿// <copyright file="IClientRepository.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using KissU.Util.Domains.Repositories;
-using KissU.Util.Validations.Aspects;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using KissU.Modules.IdentityServer.Domain.Models;
+using KissU.Util.Domains.Repositories;
+using KissU.Util.Validations.Aspects;
 
 namespace KissU.Modules.IdentityServer.Domain.Repositories
 {

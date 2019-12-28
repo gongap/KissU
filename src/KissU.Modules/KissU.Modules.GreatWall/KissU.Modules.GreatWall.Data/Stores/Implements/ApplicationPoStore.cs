@@ -1,5 +1,6 @@
 ﻿using KissU.Modules.GreatWall.Data.Pos;
 using KissU.Modules.GreatWall.Data.Stores.Abstractions;
+using KissU.Modules.GreatWall.Domain.UnitOfWorks;
 using KissU.Util.Datas.Ef.Core;
 
 namespace KissU.Modules.GreatWall.Data.Stores.Implements

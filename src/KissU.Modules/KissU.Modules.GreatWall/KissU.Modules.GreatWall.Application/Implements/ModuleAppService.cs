@@ -6,6 +6,7 @@ using KissU.Modules.GreatWall.Application.Dtos.Extensions;
 using KissU.Modules.GreatWall.Application.Dtos.Requests;
 using KissU.Modules.GreatWall.Data;
 using KissU.Modules.GreatWall.Domain.Repositories;
+using KissU.Modules.GreatWall.Domain.UnitOfWorks;
 using KissU.Util;
 using KissU.Util.Applications;
 using KissU.Util.Maps;
