@@ -1,8 +1,4 @@
-﻿// <copyright file="ClientMap.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using KissU.Modules.IdentityServer.Domain.Models;
+﻿using KissU.Modules.IdentityServer.Domain.Models;
 using KissU.Util.Datas.SqlServer.Ef;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -19,7 +15,8 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         /// </summary>
         protected override void MapTable(EntityTypeBuilder<Client> builder)
         {
-            builder.ToTable(IdentityServerDataConstants.DbTablePrefix + "Clients", IdentityServerDataConstants.DbSchema);
+            builder.ToTable(IdentityServerDataConstants.DbTablePrefix + "Clients",
+                IdentityServerDataConstants.DbSchema);
         }
 
         /// <summary>
@@ -42,7 +39,6 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
             builder.Property(x => x.UserCodeType).HasMaxLength(100);
 
             builder.HasIndex(x => x.ClientId).IsUnique();
-
         }
 
         /// <summary>
@@ -52,37 +48,44 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         {
             builder.OwnsMany(t => t.RedirectUris, p =>
             {
-                p.ToTable(IdentityServerDataConstants.DbTablePrefix + "ClientRedirectUris", IdentityServerDataConstants.DbSchema);
+                p.ToTable(IdentityServerDataConstants.DbTablePrefix + "ClientRedirectUris",
+                    IdentityServerDataConstants.DbSchema);
                 p.Property(x => x.RedirectUri).HasMaxLength(2000).IsRequired();
             });
             builder.OwnsMany(t => t.AllowedGrantTypes, p =>
             {
-                p.ToTable(IdentityServerDataConstants.DbTablePrefix + "ClientGrantTypes", IdentityServerDataConstants.DbSchema);
+                p.ToTable(IdentityServerDataConstants.DbTablePrefix + "ClientGrantTypes",
+                    IdentityServerDataConstants.DbSchema);
                 p.Property(x => x.GrantType).HasMaxLength(250).IsRequired();
             });
             builder.OwnsMany(t => t.PostLogoutRedirectUris, p =>
             {
-                p.ToTable(IdentityServerDataConstants.DbTablePrefix + "ClientPostLogoutRedirectUris", IdentityServerDataConstants.DbSchema);
+                p.ToTable(IdentityServerDataConstants.DbTablePrefix + "ClientPostLogoutRedirectUris",
+                    IdentityServerDataConstants.DbSchema);
                 p.Property(x => x.PostLogoutRedirectUri).HasMaxLength(2000).IsRequired();
             });
             builder.OwnsMany(t => t.AllowedScopes, p =>
             {
-                p.ToTable(IdentityServerDataConstants.DbTablePrefix + "ClientScopes", IdentityServerDataConstants.DbSchema);
+                p.ToTable(IdentityServerDataConstants.DbTablePrefix + "ClientScopes",
+                    IdentityServerDataConstants.DbSchema);
                 p.Property(x => x.Scope).HasMaxLength(200).IsRequired();
             });
             builder.OwnsMany(t => t.IdentityProviderRestrictions, p =>
             {
-                p.ToTable(IdentityServerDataConstants.DbTablePrefix + "ClientIdPRestrictions", IdentityServerDataConstants.DbSchema);
+                p.ToTable(IdentityServerDataConstants.DbTablePrefix + "ClientIdPRestrictions",
+                    IdentityServerDataConstants.DbSchema);
                 p.Property(x => x.Provider).HasMaxLength(200).IsRequired();
             });
             builder.OwnsMany(t => t.AllowedCorsOrigins, p =>
             {
-                p.ToTable(IdentityServerDataConstants.DbTablePrefix + "ClientCorsOrigins", IdentityServerDataConstants.DbSchema);
+                p.ToTable(IdentityServerDataConstants.DbTablePrefix + "ClientCorsOrigins",
+                    IdentityServerDataConstants.DbSchema);
                 p.Property(x => x.Origin).HasMaxLength(150).IsRequired();
             });
             builder.OwnsMany(t => t.Properties, p =>
             {
-                p.ToTable(IdentityServerDataConstants.DbTablePrefix + "ClientPropertys", IdentityServerDataConstants.DbSchema);
+                p.ToTable(IdentityServerDataConstants.DbTablePrefix + "ClientPropertys",
+                    IdentityServerDataConstants.DbSchema);
                 p.Property(x => x.Key).HasMaxLength(250).IsRequired();
                 p.Property(x => x.Value).HasMaxLength(2000).IsRequired();
             });
@@ -90,6 +93,5 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
             builder.HasMany(x => x.ClientSecrets).WithOne(x => x.Client).IsRequired().OnDelete(DeleteBehavior.Cascade);
             builder.HasMany(x => x.Claims).WithOne(x => x.Client).IsRequired().OnDelete(DeleteBehavior.Cascade);
         }
-
     }
 }

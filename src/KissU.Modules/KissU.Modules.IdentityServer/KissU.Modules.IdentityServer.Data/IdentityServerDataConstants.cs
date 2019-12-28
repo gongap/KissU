@@ -1,8 +1,4 @@
-﻿// <copyright file="IdentityServerDataConstants.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-namespace KissU.Modules.IdentityServer.Data
+﻿namespace KissU.Modules.IdentityServer.Data
 {
     /// <summary>
     /// 常量

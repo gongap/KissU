@@ -1,16 +1,10 @@
-﻿// <copyright file="IdentityServerModule.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
+﻿using Autofac.Extensions.DependencyInjection;
 using KissU.Core.CPlatform;
 using KissU.Core.CPlatform.Module;
-using Autofac.Extensions.DependencyInjection;
-using AutoMapper;
 using KissU.Modules.IdentityServer.Data;
 using KissU.Modules.IdentityServer.Data.UnitOfWorks.SqlServer;
 using KissU.Modules.IdentityServer.Domain;
 using Microsoft.Extensions.DependencyInjection;
-using KissU.Util.Datas.SqlServer;
 
 namespace KissU.Modules.IdentityServer.Service
 {
@@ -28,7 +22,8 @@ namespace KissU.Modules.IdentityServer.Service
             base.RegisterBuilder(builder);
             var services = new ServiceCollection();
             services.AddUnitOfWork<IIdentityServerUnitOfWork, IdentityServerUnitOfWork>(AppConfig
-                .GetSection(IdentityServerDataConstants.ConnectionStringSection).GetSection(IdentityServerDataConstants.ConnectionStringName).Value);
+                .GetSection(IdentityServerDataConstants.ConnectionStringSection)
+                .GetSection(IdentityServerDataConstants.ConnectionStringName).Value);
             builder.ContainerBuilder.Populate(services);
         }
     }

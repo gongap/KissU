@@ -1,18 +1,13 @@
-﻿// <copyright file="ApiResourceRepository.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using KissU.Modules.IdentityServer.Data.UnitOfWorks;
 using KissU.Modules.IdentityServer.Domain;
 using KissU.Modules.IdentityServer.Domain.Models;
 using KissU.Modules.IdentityServer.Domain.Repositories;
-using Microsoft.EntityFrameworkCore;
 using KissU.Util;
 using KissU.Util.Datas.Ef.Core;
+using Microsoft.EntityFrameworkCore;
 
 namespace KissU.Modules.IdentityServer.Data.Repositories
 {
@@ -86,7 +81,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         /// <returns></returns>
         public async Task DeleteApiResourceScopeAsync(Guid id)
         {
-            var entity = await Queryable.Where(UnitOfWork.Set<ApiScope>(), x => x.Id == id).SingleAsync();
+            var entity = await UnitOfWork.Set<ApiScope>().Where(x => x.Id == id).SingleAsync();
 
             entity.CheckNull(nameof(entity));
 
@@ -141,7 +136,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         /// <returns></returns>
         public async Task DeleteApiResourceSecretAsync(Guid id)
         {
-            var entity = await Queryable.Where(UnitOfWork.Set<ApiSecret>(), x => x.Id == id).SingleAsync();
+            var entity = await UnitOfWork.Set<ApiSecret>().Where(x => x.Id == id).SingleAsync();
 
             entity.CheckNull(nameof(entity));
 

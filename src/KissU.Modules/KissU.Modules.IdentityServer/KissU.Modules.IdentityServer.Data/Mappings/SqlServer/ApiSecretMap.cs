@@ -1,8 +1,4 @@
-﻿// <copyright file="ApiResourceSecretMap.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using KissU.Modules.IdentityServer.Domain.Models;
+﻿using KissU.Modules.IdentityServer.Domain.Models;
 using KissU.Util.Datas.SqlServer.Ef;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -19,7 +15,8 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         /// </summary>
         protected override void MapTable(EntityTypeBuilder<ApiSecret> builder)
         {
-            builder.ToTable(IdentityServerDataConstants.DbTablePrefix + "ApiSecrets", IdentityServerDataConstants.DbSchema);
+            builder.ToTable(IdentityServerDataConstants.DbTablePrefix + "ApiSecrets",
+                IdentityServerDataConstants.DbSchema);
         }
 
         /// <summary>

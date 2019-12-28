@@ -1,8 +1,4 @@
-﻿// <copyright file="ApiResourceService.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using KissU.Modules.IdentityServer.Application.Abstractions;

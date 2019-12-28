@@ -1,8 +1,4 @@
-﻿// <copyright file="ApiResourceMap.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using KissU.Modules.IdentityServer.Domain.Models;
+﻿using KissU.Modules.IdentityServer.Domain.Models;
 using KissU.Util.Datas.SqlServer.Ef;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -19,7 +15,8 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         /// </summary>
         protected override void MapTable(EntityTypeBuilder<ApiResource> builder)
         {
-            builder.ToTable(IdentityServerDataConstants.DbTablePrefix + "ApiResources", IdentityServerDataConstants.DbSchema);
+            builder.ToTable(IdentityServerDataConstants.DbTablePrefix + "ApiResources",
+                IdentityServerDataConstants.DbSchema);
         }
 
         /// <summary>
@@ -43,18 +40,21 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         {
             builder.OwnsMany(t => t.UserClaims, p =>
             {
-                p.ToTable(IdentityServerDataConstants.DbTablePrefix + "ApiClaims", IdentityServerDataConstants.DbSchema);
+                p.ToTable(IdentityServerDataConstants.DbTablePrefix + "ApiClaims",
+                    IdentityServerDataConstants.DbSchema);
                 p.Property(x => x.Type);
             });
 
             builder.OwnsMany(t => t.Properties, p =>
             {
-                p.ToTable(IdentityServerDataConstants.DbTablePrefix + "ApiProperties", IdentityServerDataConstants.DbSchema);
+                p.ToTable(IdentityServerDataConstants.DbTablePrefix + "ApiProperties",
+                    IdentityServerDataConstants.DbSchema);
                 p.Property(x => x.Key).HasMaxLength(250).IsRequired();
                 p.Property(x => x.Value).HasMaxLength(2000).IsRequired();
             });
 
-            builder.HasMany(x => x.ApiSecrets).WithOne(x => x.ApiResource).IsRequired().OnDelete(DeleteBehavior.Cascade);
+            builder.HasMany(x => x.ApiSecrets).WithOne(x => x.ApiResource).IsRequired()
+                .OnDelete(DeleteBehavior.Cascade);
             builder.HasMany(x => x.Scopes).WithOne(x => x.ApiResource).IsRequired().OnDelete(DeleteBehavior.Cascade);
         }
     }

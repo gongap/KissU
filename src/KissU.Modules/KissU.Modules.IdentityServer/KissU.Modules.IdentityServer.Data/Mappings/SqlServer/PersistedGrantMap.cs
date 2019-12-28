@@ -1,8 +1,4 @@
-﻿// <copyright file="PersistedGrantMap.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using KissU.Modules.IdentityServer.Domain.Models;
+﻿using KissU.Modules.IdentityServer.Domain.Models;
 using KissU.Util.Datas.SqlServer.Ef;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -19,7 +15,8 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         /// </summary>
         protected override void MapTable(EntityTypeBuilder<PersistedGrant> builder)
         {
-            builder.ToTable(IdentityServerDataConstants.DbTablePrefix + "PersistedGrants", IdentityServerDataConstants.DbSchema);
+            builder.ToTable(IdentityServerDataConstants.DbTablePrefix + "PersistedGrants",
+                IdentityServerDataConstants.DbSchema);
         }
 
         /// <summary>
@@ -38,7 +35,7 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
 
             builder.HasKey(x => x.Key);
 
-            builder.HasIndex(x => new { x.SubjectId, x.ClientId, x.Type });
+            builder.HasIndex(x => new {x.SubjectId, x.ClientId, x.Type});
             builder.HasIndex(x => x.Expiration);
         }
     }

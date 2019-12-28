@@ -15,7 +15,8 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         /// </summary>
         protected override void MapTable(EntityTypeBuilder<DeviceFlowCode> builder)
         {
-            builder.ToTable(IdentityServerDataConstants.DbTablePrefix + "DeviceFlowCodes", IdentityServerDataConstants.DbSchema);
+            builder.ToTable(IdentityServerDataConstants.DbTablePrefix + "DeviceFlowCodes",
+                IdentityServerDataConstants.DbSchema);
         }
 
         /// <summary>
@@ -33,7 +34,7 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
             // apparently anything over 4K converts to nvarchar(max) on SqlServer
             builder.Property(x => x.Data).HasMaxLength(50000).IsRequired();
 
-            builder.HasKey(x => new { x.UserCode });
+            builder.HasKey(x => new {x.UserCode});
 
             builder.HasIndex(x => x.DeviceCode).IsUnique();
             builder.HasIndex(x => x.Expiration);

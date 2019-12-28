@@ -1,8 +1,4 @@
-﻿// <copyright file="ClientClaimMap.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using KissU.Modules.IdentityServer.Domain.Models;
+﻿using KissU.Modules.IdentityServer.Domain.Models;
 using KissU.Util.Datas.SqlServer.Ef;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -19,7 +15,8 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         /// </summary>
         protected override void MapTable(EntityTypeBuilder<ClientClaim> builder)
         {
-            builder.ToTable(IdentityServerDataConstants.DbTablePrefix + "ClientClaims", IdentityServerDataConstants.DbSchema);
+            builder.ToTable(IdentityServerDataConstants.DbTablePrefix + "ClientClaims",
+                IdentityServerDataConstants.DbSchema);
         }
 
         /// <summary>

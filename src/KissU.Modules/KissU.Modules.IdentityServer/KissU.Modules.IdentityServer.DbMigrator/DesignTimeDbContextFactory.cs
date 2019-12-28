@@ -1,11 +1,7 @@
-﻿// <copyright file="DesignTimeDbContextFactory.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
+﻿using KissU.Util.Helpers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
-using KissU.Util.Helpers;
 
 namespace KissU.Modules.IdentityServer.DbMigrator
 {

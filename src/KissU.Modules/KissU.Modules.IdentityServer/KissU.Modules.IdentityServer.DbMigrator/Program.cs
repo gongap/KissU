@@ -1,18 +1,10 @@
-﻿// <copyright file="Program.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using System;
+﻿using System;
 using System.Threading.Tasks;
-using Autofac;
-using KissU.Modules.IdentityServer.Data.UnitOfWorks;
 using KissU.Modules.IdentityServer.Domain;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using KissU.Util;
-using KissU.Util.Datas.Ef;
 using KissU.Util.Datas.SqlServer;
 using KissU.Util.Dependency;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace KissU.Modules.IdentityServer.DbMigrator
 {
@@ -23,7 +15,8 @@ namespace KissU.Modules.IdentityServer.DbMigrator
             var serviceProviderFactory = new ServiceProviderFactory();
             var configuration = DbMigrationHelpers.BuildConfiguration();
             var services = new ServiceCollection();
-            services.AddUnitOfWork<IIdentityServerUnitOfWork, DesignTimeDbContext>(configuration.GetConnectionString("DefaultConnection"));
+            services.AddUnitOfWork<IIdentityServerUnitOfWork, DesignTimeDbContext>(
+                configuration.GetConnectionString("DefaultConnection"));
             var containerBuilder = serviceProviderFactory.CreateBuilder(services);
             var serviceProvider = serviceProviderFactory.CreateServiceProvider(containerBuilder);
             await DbMigrationHelpers.MigrateAsync<DesignTimeDbContext>(serviceProvider);

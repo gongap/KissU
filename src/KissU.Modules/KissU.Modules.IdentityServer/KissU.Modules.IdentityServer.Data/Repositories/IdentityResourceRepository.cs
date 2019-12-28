@@ -1,9 +1,4 @@
-﻿// <copyright file="IdentityResourceRepository.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using KissU.Modules.IdentityServer.Data.UnitOfWorks;
-using KissU.Modules.IdentityServer.Domain;
+﻿using KissU.Modules.IdentityServer.Domain;
 using KissU.Modules.IdentityServer.Domain.Models;
 using KissU.Modules.IdentityServer.Domain.Repositories;
 using KissU.Util.Datas.Ef.Core;

@@ -1,25 +1,19 @@
-﻿// <copyright file="ClientRepository.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using KissU.Modules.IdentityServer.Data.UnitOfWorks;
 using KissU.Modules.IdentityServer.Domain;
 using KissU.Modules.IdentityServer.Domain.Models;
 using KissU.Modules.IdentityServer.Domain.Repositories;
-using Microsoft.EntityFrameworkCore;
 using KissU.Util;
 using KissU.Util.Datas.Ef.Core;
+using Microsoft.EntityFrameworkCore;
 
 namespace KissU.Modules.IdentityServer.Data.Repositories
 {
     /// <summary>
     /// 应用程序仓储
     /// </summary>
-    public class ClientRepository : RepositoryBase<Client,int>, IClientRepository
+    public class ClientRepository : RepositoryBase<Client, int>, IClientRepository
     {
         /// <summary>
         /// 初始化应用程序仓储
@@ -54,7 +48,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
                 join client in Set on clientClaim.Client.Id equals client.Id
                 where clientClaim.Client.Id == clientId
                 select clientClaim;
-            return await queryable.Include(x=>x.Client).ToListAsync();
+            return await queryable.Include(x => x.Client).ToListAsync();
         }
 
         /// <summary>
@@ -99,7 +93,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         /// <returns></returns>
         public async Task DeleteClientClaimAsync(int id)
         {
-            var entity = await Queryable.Where(UnitOfWork.Set<ClientClaim>(), x => x.Id == id).SingleAsync();
+            var entity = await UnitOfWork.Set<ClientClaim>().Where(x => x.Id == id).SingleAsync();
 
             entity.CheckNull(nameof(entity));
 
@@ -154,7 +148,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         /// <returns></returns>
         public async Task DeleteClientSecretAsync(int id)
         {
-            var entity = await Queryable.Where(UnitOfWork.Set<ClientSecret>(), x => x.Id == id).SingleAsync();
+            var entity = await UnitOfWork.Set<ClientSecret>().Where(x => x.Id == id).SingleAsync();
 
             entity.CheckNull(nameof(entity));
 

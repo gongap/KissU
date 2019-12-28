@@ -1,14 +1,6 @@
-﻿// <copyright file="IdentityServerUnitOfWork.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using System;
-using KissU.Modules.IdentityServer.Domain;
+﻿using KissU.Modules.IdentityServer.Domain;
 using KissU.Util.Datas.SqlServer.Ef;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-using KissU.Util.Domains;
-using KissU.Util.Reflections;
 
 namespace KissU.Modules.IdentityServer.Data.UnitOfWorks.SqlServer
 {

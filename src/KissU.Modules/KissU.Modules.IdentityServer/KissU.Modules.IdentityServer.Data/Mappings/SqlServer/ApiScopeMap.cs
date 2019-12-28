@@ -1,8 +1,4 @@
-﻿// <copyright file="ApiResourceScopeMap.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using KissU.Modules.IdentityServer.Domain.Models;
+﻿using KissU.Modules.IdentityServer.Domain.Models;
 using KissU.Util.Datas.SqlServer.Ef;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -19,7 +15,8 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         /// </summary>
         protected override void MapTable(EntityTypeBuilder<ApiScope> builder)
         {
-            builder.ToTable(IdentityServerDataConstants.DbTablePrefix + "ApiScopes", IdentityServerDataConstants.DbSchema);
+            builder.ToTable(IdentityServerDataConstants.DbTablePrefix + "ApiScopes",
+                IdentityServerDataConstants.DbSchema);
         }
 
         /// <summary>
@@ -43,7 +40,8 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         {
             builder.OwnsMany(t => t.UserClaims, p =>
             {
-                p.ToTable(IdentityServerDataConstants.DbTablePrefix + "ApiScopeClaims", IdentityServerDataConstants.DbSchema);
+                p.ToTable(IdentityServerDataConstants.DbTablePrefix + "ApiScopeClaims",
+                    IdentityServerDataConstants.DbSchema);
                 p.Property(x => x.Type).HasMaxLength(200).IsRequired();
             });
         }
