@@ -1,8 +1,4 @@
-﻿// <copyright file="MenuResult.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using KissU.Modules.GreatWall.Application.Dtos.Responses;
 using KissU.Util;

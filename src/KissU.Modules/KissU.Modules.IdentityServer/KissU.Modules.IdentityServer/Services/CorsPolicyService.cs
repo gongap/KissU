@@ -29,7 +29,7 @@ namespace KissU.Modules.IdentityServer.Services
         }
 
         /// <summary>
-        ///是否允许跨域
+        /// 是否允许跨域
         /// </summary>
         /// <param name="origin">跨域源</param>
         /// <returns></returns>

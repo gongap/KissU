@@ -1,8 +1,4 @@
-﻿// <copyright file="AppData.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain
 {

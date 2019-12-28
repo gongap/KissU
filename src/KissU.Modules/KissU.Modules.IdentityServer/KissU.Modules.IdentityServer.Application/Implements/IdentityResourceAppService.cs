@@ -1,14 +1,9 @@
-﻿// <copyright file="IdentityResourceService.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using System;
+﻿using System;
 using System.Linq;
 using KissU.Modules.IdentityServer.Application.Abstractions;
 using KissU.Modules.IdentityServer.Application.Dtos;
 using KissU.Modules.IdentityServer.Application.Dtos.Requests;
 using KissU.Modules.IdentityServer.Application.Queries;
-using KissU.Modules.IdentityServer.Domain;
 using KissU.Modules.IdentityServer.Domain.Models;
 using KissU.Modules.IdentityServer.Domain.Repositories;
 using KissU.Modules.IdentityServer.Domain.UnitOfWorks;
@@ -55,7 +50,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// <param name="param">应用程序查询实体</param>
         protected override IQueryBase<IdentityResource> CreateQuery(IdentityResourceQuery param)
         {
-            var query = new Query<IdentityResource>(param).Or(t => t.Name.Contains(param.Keyword),
+            IQuery<IdentityResource, Guid> query = new Query<IdentityResource>(param).Or(t => t.Name.Contains(param.Keyword),
                 t => t.DisplayName.Contains(param.Keyword));
 
             if (param.Enabled.HasValue)

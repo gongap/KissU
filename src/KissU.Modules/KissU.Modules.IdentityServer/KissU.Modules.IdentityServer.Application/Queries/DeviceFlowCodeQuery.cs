@@ -1,8 +1,4 @@
-﻿// <copyright file="PersistedGrantQuery.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using KissU.Util.Datas.Queries;
+﻿using KissU.Util.Datas.Queries;
 
 namespace KissU.Modules.IdentityServer.Application.Queries
 {

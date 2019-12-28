@@ -1,13 +1,9 @@
-﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
-
-using System;
+﻿using System;
 using System.Threading.Tasks;
 using IdentityModel;
 using IdentityServer4.Models;
 using IdentityServer4.Stores;
 using IdentityServer4.Stores.Serialization;
-using KissU.Modules.IdentityServer.Domain;
 using KissU.Modules.IdentityServer.Domain.Models;
 using KissU.Modules.IdentityServer.Domain.Repositories;
 using KissU.Modules.IdentityServer.Domain.UnitOfWorks;
@@ -23,9 +19,9 @@ namespace KissU.Modules.IdentityServer.Stores
     public class DeviceFlowStore : IDeviceFlowStore
     {
         /// <summary>
-        /// The UnitOfWork.
+        /// The logger.
         /// </summary>
-        public IIdentityServerUnitOfWork UnitOfWork { get; }
+        protected readonly ILogger Logger;
 
         /// <summary>
         /// The Repository.
@@ -33,17 +29,12 @@ namespace KissU.Modules.IdentityServer.Stores
         protected readonly IDeviceFlowCodeRepository Repository;
 
         /// <summary>
-        ///  The serializer.
+        /// The serializer.
         /// </summary>
         protected readonly IPersistentGrantSerializer Serializer;
 
         /// <summary>
-        /// The logger.
-        /// </summary>
-        protected readonly ILogger Logger;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DeviceFlowStore"/> class.
+        /// Initializes a new instance of the <see cref="DeviceFlowStore" /> class.
         /// </summary>
         /// <param name="unitOfWork">The unitOfWork.</param>
         /// <param name="repository">The context.</param>
@@ -60,6 +51,11 @@ namespace KissU.Modules.IdentityServer.Stores
             Serializer = serializer;
             Logger = logger;
         }
+
+        /// <summary>
+        /// The UnitOfWork.
+        /// </summary>
+        public IIdentityServerUnitOfWork UnitOfWork { get; }
 
         /// <summary>
         /// Stores the device authorization request.
@@ -157,7 +153,8 @@ namespace KissU.Modules.IdentityServer.Stores
                 }
                 catch (DbUpdateConcurrencyException ex)
                 {
-                    Logger.LogInformation("exception removing {deviceCode} device code from database: {error}", deviceCode, ex.Message);
+                    Logger.LogInformation("exception removing {deviceCode} device code from database: {error}",
+                        deviceCode, ex.Message);
                 }
             }
             else

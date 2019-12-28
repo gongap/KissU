@@ -1,9 +1,6 @@
-﻿// <copyright file="ClientStore.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
+using IdentityServer4.Models;
 using IdentityServer4.Stores;
 using KissU.Modules.IdentityServer.Domain.Repositories;
 using KissU.Util.Maps;
@@ -34,7 +31,7 @@ namespace KissU.Modules.IdentityServer.Stores
         /// 通过ClientId查找应用
         /// </summary>
         /// <param name="clientId">The client id</param>
-        public Task<IdentityServer4.Models.Client> FindClientByIdAsync(string clientId)
+        public Task<Client> FindClientByIdAsync(string clientId)
         {
             var queryable = _clientRepository.Find(p => p.ClientId == clientId)
                 .Include(x => x.ClientSecrets)
@@ -42,7 +39,7 @@ namespace KissU.Modules.IdentityServer.Stores
 
             var client = queryable.SingleOrDefault();
 
-            var model = client?.MapTo<IdentityServer4.Models.Client>();
+            var model = client?.MapTo<Client>();
 
             return Task.FromResult(model);
         }

@@ -1,10 +1,10 @@
-﻿using IdentityServer4.Stores;
-using System;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.DependencyInjection;
+﻿using System;
+using IdentityServer4.Stores;
 using KissU.Modules.IdentityServer.Options;
 using KissU.Modules.IdentityServer.Services;
 using KissU.Modules.IdentityServer.Stores;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace KissU.Modules.IdentityServer
 {
@@ -38,7 +38,8 @@ namespace KissU.Modules.IdentityServer
         /// <param name="builder">The builder.</param>
         /// <param name="storeOptionsAction">The storeOptionsAction.</param>
         /// <returns></returns>
-        public static IIdentityServerBuilder AddConfigurationStore(this IIdentityServerBuilder builder, Action<OperationalStoreOptions> storeOptionsAction = null)
+        public static IIdentityServerBuilder AddConfigurationStore(this IIdentityServerBuilder builder,
+            Action<OperationalStoreOptions> storeOptionsAction = null)
         {
             builder.AddClientStore<ClientStore>();
             builder.AddResourceStore<ResourceStore>();
@@ -69,7 +70,8 @@ namespace KissU.Modules.IdentityServer
         /// <param name="builder">The builder.</param>
         /// <param name="storeOptionsAction">The store options action.</param>
         /// <returns></returns>
-        public static IIdentityServerBuilder AddOperationalStore(this IIdentityServerBuilder builder, Action<OperationalStoreOptions> storeOptionsAction = null)
+        public static IIdentityServerBuilder AddOperationalStore(this IIdentityServerBuilder builder,
+            Action<OperationalStoreOptions> storeOptionsAction = null)
         {
             var options = new OperationalStoreOptions();
             builder.Services.AddSingleton(options);
@@ -90,7 +92,7 @@ namespace KissU.Modules.IdentityServer
         /// <param name="builder"></param>
         /// <returns></returns>
         public static IIdentityServerBuilder AddOperationalStoreNotification<T>(this IIdentityServerBuilder builder)
-           where T : class, IOperationalStoreNotification
+            where T : class, IOperationalStoreNotification
         {
             builder.Services.AddTransient<IOperationalStoreNotification, T>();
             return builder;

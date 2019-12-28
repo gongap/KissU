@@ -1,8 +1,4 @@
-﻿// <copyright file="TokenCleanupHost.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using System;
+﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
 using KissU.Modules.IdentityServer.Options;
@@ -18,11 +14,9 @@ namespace KissU.Modules.IdentityServer
     /// </summary>
     public class TokenCleanupHost : IHostedService
     {
-        private readonly IServiceProvider _serviceProvider;
-        private readonly OperationalStoreOptions _options;
         private readonly ILogger<TokenCleanupHost> _logger;
-
-        private TimeSpan CleanupInterval => TimeSpan.FromSeconds(_options.TokenCleanupInterval);
+        private readonly OperationalStoreOptions _options;
+        private readonly IServiceProvider _serviceProvider;
 
         private CancellationTokenSource _source;
 
@@ -32,12 +26,15 @@ namespace KissU.Modules.IdentityServer
         /// <param name="serviceProvider"></param>
         /// <param name="options"></param>
         /// <param name="logger"></param>
-        public TokenCleanupHost(IServiceProvider serviceProvider, OperationalStoreOptions options, ILogger<TokenCleanupHost> logger)
+        public TokenCleanupHost(IServiceProvider serviceProvider, OperationalStoreOptions options,
+            ILogger<TokenCleanupHost> logger)
         {
             _serviceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
             _options = options ?? throw new ArgumentNullException(nameof(options));
             _logger = logger;
         }
+
+        private TimeSpan CleanupInterval => TimeSpan.FromSeconds(_options.TokenCleanupInterval);
 
         /// <summary>
         /// Starts the token cleanup polling.
@@ -111,7 +108,7 @@ namespace KissU.Modules.IdentityServer
             }
         }
 
-        async Task RemoveExpiredGrantsAsync()
+        private async Task RemoveExpiredGrantsAsync()
         {
             try
             {

@@ -1,18 +1,13 @@
-﻿// <copyright file="PersistedGrantStore.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using IdentityServer4.Stores;
-using KissU.Modules.IdentityServer.Domain;
+using KissU.Modules.IdentityServer.Domain.Models;
 using KissU.Modules.IdentityServer.Domain.Repositories;
 using KissU.Modules.IdentityServer.Domain.UnitOfWorks;
 using KissU.Util.Maps;
 using Microsoft.EntityFrameworkCore;
 using Ids4 = IdentityServer4.Models;
-using PersistedGrant = KissU.Modules.IdentityServer.Domain.Models.PersistedGrant;
 
 namespace KissU.Modules.IdentityServer.Stores
 {

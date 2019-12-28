@@ -17,10 +17,7 @@ namespace KissU.Modules.IdentityServer
         /// <returns></returns>
         public Task PersistedGrantsRemovedAsync(IEnumerable<PersistedGrant> persistedGrants)
         {
-            foreach (var grant in persistedGrants)
-            {
-                Console.WriteLine("cleaned: " + grant.Type);
-            }
+            foreach (var grant in persistedGrants) Console.WriteLine("cleaned: " + grant.Type);
             return Task.CompletedTask;
         }
     }

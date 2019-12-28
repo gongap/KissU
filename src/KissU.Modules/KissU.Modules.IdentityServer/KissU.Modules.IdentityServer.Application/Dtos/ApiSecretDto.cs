@@ -1,8 +1,4 @@
-﻿// <copyright file="ApiSecretDto.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using KissU.Modules.IdentityServer.Domain.Enums;
 using KissU.Util.Applications.Dtos;

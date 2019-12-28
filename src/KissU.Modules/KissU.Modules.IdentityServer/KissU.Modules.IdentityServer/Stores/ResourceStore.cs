@@ -1,8 +1,4 @@
-﻿// <copyright file="ResourceStore.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -30,8 +26,10 @@ namespace KissU.Modules.IdentityServer.Stores
         public ResourceStore(IApiResourceRepository apiResourceRepository,
             IIdentityResourceRepository identityResourceRepository)
         {
-            _apiResourcePoStore = apiResourceRepository ?? throw new ArgumentNullException(nameof(apiResourceRepository));
-            _identityResourcesPoStore = identityResourceRepository ?? throw new ArgumentNullException(nameof(identityResourceRepository));
+            _apiResourcePoStore =
+                apiResourceRepository ?? throw new ArgumentNullException(nameof(apiResourceRepository));
+            _identityResourcesPoStore = identityResourceRepository ??
+                                        throw new ArgumentNullException(nameof(identityResourceRepository));
         }
 
         /// <summary>
@@ -57,7 +55,7 @@ namespace KissU.Modules.IdentityServer.Stores
         /// <returns></returns>
         public async Task<IEnumerable<ApiResource>> FindApiResourcesByScopeAsync(IEnumerable<string> scopeNames)
         {
-            var names = Enumerable.ToArray<string>(scopeNames);
+            var names = scopeNames.ToArray();
 
             var queryable = _apiResourcePoStore.Find(x => x.Scopes.Any(p => names.Contains(p.Name)))
                 .Include(x => x.Scopes)
@@ -78,7 +76,7 @@ namespace KissU.Modules.IdentityServer.Stores
         public async Task<IEnumerable<IdentityResource>> FindIdentityResourcesByScopeAsync(
             IEnumerable<string> scopeNames)
         {
-            var scopes = Enumerable.ToArray<string>(scopeNames);
+            var scopes = scopeNames.ToArray();
 
             var identityResources = await _identityResourcesPoStore.Find(x => scopes.Contains(x.Name)).ToListAsync();
 

@@ -1,8 +1,4 @@
-﻿// <copyright file="ClientQuery.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using KissU.Util.Datas.Queries;
 
 namespace KissU.Modules.IdentityServer.Application.Queries

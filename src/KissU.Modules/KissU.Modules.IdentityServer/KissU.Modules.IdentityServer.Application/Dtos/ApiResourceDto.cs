@@ -1,8 +1,4 @@
-﻿// <copyright file="ApiResourceDto.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using KissU.Util.Applications.Dtos;
 

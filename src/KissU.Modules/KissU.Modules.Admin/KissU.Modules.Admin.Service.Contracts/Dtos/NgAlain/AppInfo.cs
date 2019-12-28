@@ -1,8 +1,4 @@
-﻿// <copyright file="AppInfo.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-namespace KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain
+﻿namespace KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain
 {
     /// <summary>
     /// NgAlain应用程序信息

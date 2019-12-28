@@ -1,11 +1,6 @@
-﻿// <copyright file="DeviceFlowCodeService.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using KissU.Modules.IdentityServer.Application.Abstractions;
+﻿using KissU.Modules.IdentityServer.Application.Abstractions;
 using KissU.Modules.IdentityServer.Application.Dtos;
 using KissU.Modules.IdentityServer.Application.Queries;
-using KissU.Modules.IdentityServer.Domain;
 using KissU.Modules.IdentityServer.Domain.Models;
 using KissU.Modules.IdentityServer.Domain.Repositories;
 using KissU.Modules.IdentityServer.Domain.UnitOfWorks;
@@ -50,7 +45,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// <param name="param">查询实体</param>
         protected override IQueryBase<DeviceFlowCode> CreateQuery(DeviceFlowCodeQuery param)
         {
-            var query = new Query<DeviceFlowCode>(param);
+            Query<DeviceFlowCode> query = new Query<DeviceFlowCode>(param);
 
             if (string.IsNullOrWhiteSpace(param.Order))
             {

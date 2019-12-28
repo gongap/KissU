@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using KissU.Modules.IdentityServer.Domain;
 using KissU.Modules.IdentityServer.Domain.Repositories;
 using KissU.Modules.IdentityServer.Domain.UnitOfWorks;
 using KissU.Modules.IdentityServer.Options;
@@ -15,12 +14,12 @@ namespace KissU.Modules.IdentityServer.Services
     /// </summary>
     public class TokenCleanupService
     {
+        private readonly IDeviceFlowCodeRepository _deviceFlowCodeRepository;
+        private readonly ILogger<TokenCleanupService> _logger;
+        private readonly IOperationalStoreNotification _operationalStoreNotification;
         private readonly OperationalStoreOptions _options;
         private readonly IPersistedGrantRepository _persistedGrantRepository;
-        private readonly IDeviceFlowCodeRepository _deviceFlowCodeRepository;
-        private readonly IOperationalStoreNotification _operationalStoreNotification;
         private readonly IIdentityServerUnitOfWork _unitOfWork;
-        private readonly ILogger<TokenCleanupService> _logger;
 
         /// <summary>
         /// Constructor for TokenCleanupService.
@@ -41,14 +40,15 @@ namespace KissU.Modules.IdentityServer.Services
         {
             _options = options ?? throw new ArgumentNullException(nameof(options));
             _unitOfWork = unitOfWork;
-            if (_options.TokenCleanupBatchSize < 1) throw new ArgumentException("Token cleanup batch size interval must be at least 1");
+            if (_options.TokenCleanupBatchSize < 1)
+                throw new ArgumentException("Token cleanup batch size interval must be at least 1");
 
-            _persistedGrantRepository = persistedGrantRepository ?? throw new ArgumentNullException(nameof(persistedGrantRepository));
+            _persistedGrantRepository = persistedGrantRepository ??
+                                        throw new ArgumentNullException(nameof(persistedGrantRepository));
             _deviceFlowCodeRepository = deviceFlowCodeRepository;
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
 
             _operationalStoreNotification = operationalStoreNotification;
-
         }
 
         /// <summary>
@@ -96,9 +96,7 @@ namespace KissU.Modules.IdentityServer.Services
                         await _unitOfWork.CommitAsync();
 
                         if (_operationalStoreNotification != null)
-                        {
                             await _operationalStoreNotification.PersistedGrantsRemovedAsync(expiredGrants);
-                        }
                     }
                     catch (DbUpdateConcurrencyException ex)
                     {
@@ -116,7 +114,7 @@ namespace KissU.Modules.IdentityServer.Services
         /// <returns></returns>
         protected virtual async Task RemoveDeviceCodesAsync()
         {
-            var found = Int32.MaxValue;
+            var found = int.MaxValue;
 
             while (found >= _options.TokenCleanupBatchSize)
             {

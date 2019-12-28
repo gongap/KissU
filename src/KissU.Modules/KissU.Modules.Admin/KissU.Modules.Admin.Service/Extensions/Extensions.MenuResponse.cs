@@ -1,8 +1,4 @@
-﻿// <copyright file="Extensions.MenuResponse.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain;
 using KissU.Modules.GreatWall.Application.Dtos.Responses;
 

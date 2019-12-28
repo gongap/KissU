@@ -1,12 +1,7 @@
-﻿// <copyright file="MapperProfile.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using System.Collections.Generic;
-using System.Security.Claims;
+﻿using System.Security.Claims;
 using AutoMapper;
 using KissU.Modules.IdentityServer.Domain.Models;
-using Ids4=IdentityServer4.Models;
+using Ids4 = IdentityServer4.Models;
 
 namespace KissU.Modules.IdentityServer.Mappers
 {

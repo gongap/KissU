@@ -1,8 +1,4 @@
-﻿// <copyright file="IPersistedGrantService.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using KissU.Modules.IdentityServer.Application.Dtos;
+﻿using KissU.Modules.IdentityServer.Application.Dtos;
 using KissU.Modules.IdentityServer.Application.Queries;
 using KissU.Util.Applications;
 

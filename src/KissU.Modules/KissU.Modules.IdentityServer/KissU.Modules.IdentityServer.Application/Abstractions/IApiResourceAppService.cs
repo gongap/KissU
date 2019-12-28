@@ -1,8 +1,4 @@
-﻿// <copyright file="IApiResourceService.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using KissU.Modules.IdentityServer.Application.Dtos;
@@ -17,9 +13,11 @@ namespace KissU.Modules.IdentityServer.Application.Abstractions
     /// <summary>
     /// Api资源服务
     /// </summary>
-    public interface IApiResourceAppService : ICrudService<ApiResourceDto, ApiResourceDto, ApiResourceCreateRequest, ApiResourceDto, ApiResourceQuery>
+    public interface IApiResourceAppService : ICrudService<ApiResourceDto, ApiResourceDto, ApiResourceCreateRequest,
+        ApiResourceDto, ApiResourceQuery>
     {
         #region Api许可范围
+
         /// <summary>
         /// 获取Api许可范围
         /// </summary>
@@ -57,9 +55,11 @@ namespace KissU.Modules.IdentityServer.Application.Abstractions
         /// <returns></returns>
         [UnitOfWork]
         Task DeleteApiScopeAsync(Guid id);
+
         #endregion
 
         #region Api密钥
+
         /// <summary>
         /// 获取Api密钥
         /// </summary>
@@ -89,6 +89,7 @@ namespace KissU.Modules.IdentityServer.Application.Abstractions
         /// <returns></returns>
         [UnitOfWork]
         Task DeleteApiSecretAsync(Guid id);
+
         #endregion
     }
 }

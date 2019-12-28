@@ -1,8 +1,4 @@
-﻿// <copyright file="IStartupService.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
 using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Core.CPlatform.Support;
