@@ -1,19 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="../../../../common.props" />
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <Description></Description>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-      <DocumentationFile>..\..\..\..\output\core\netcoreapp2.2\KissU.Core.Codec.ProtoBuffer.xml</DocumentationFile>
-      <OutputPath>..\..\..\..\output\core\netcoreapp2.2</OutputPath>
+      <DocumentationFile>..\..\..\..\output\core\netcoreapp3.1\KissU.Core.Codec.ProtoBuffer.xml</DocumentationFile>
+      <OutputPath>..\..\..\..\output\core\netcoreapp3.1</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-      <OutputPath>..\..\..\..\output\core\netcoreapp2.2</OutputPath>
-      <DocumentationFile>..\..\..\..\output\core\netcoreapp2.2\KissU.Core.Codec.ProtoBuffer.xml</DocumentationFile>
+      <OutputPath>..\..\..\..\output\core\netcoreapp3.1</OutputPath>
+      <DocumentationFile>..\..\..\..\output\core\netcoreapp3.1\KissU.Core.Codec.ProtoBuffer.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
