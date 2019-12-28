@@ -1,8 +1,4 @@
-﻿// <copyright file="ServiceEngine.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using KissU.Core.CPlatform.Engines.Implementation;
+﻿using KissU.Core.CPlatform.Engines.Implementation;
 using KissU.Core.CPlatform.Utilities;
 
 namespace KissU.Services.Stage
@@ -14,9 +10,9 @@ namespace KissU.Services.Stage
     {
         public ServiceEngine()
         {
-            ModuleServiceLocationFormats = new[] { EnvironmentHelper.GetEnvironmentVariable("${ModulePath}|Modules") };
+            ModuleServiceLocationFormats = new[] {EnvironmentHelper.GetEnvironmentVariable("${ModulePath}|Modules")};
             ComponentServiceLocationFormats =
-                new[] { EnvironmentHelper.GetEnvironmentVariable("${ComponentPath}|Components") };
+                new[] {EnvironmentHelper.GetEnvironmentVariable("${ComponentPath}|Components")};
             //ModuleServiceLocationFormats = new[] {
             //   ""
             //};

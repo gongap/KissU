@@ -1,8 +1,4 @@
-﻿// <copyright file="ServiceEngine.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using KissU.Core.CPlatform.Engines.Implementation;
+﻿using KissU.Core.CPlatform.Engines.Implementation;
 using KissU.Core.CPlatform.Utilities;
 
 namespace KissU.Services.Host

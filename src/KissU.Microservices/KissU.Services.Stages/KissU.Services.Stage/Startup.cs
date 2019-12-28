@@ -1,13 +1,8 @@
-﻿// <copyright file="Startup.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using Autofac;
+﻿using Autofac;
 using KissU.Core.Caching.Configurations;
 using KissU.Core.CPlatform.Utilities;
 using KissU.Core.EventBusKafka.Configurations;
 using KissU.Util;
-using KissU.Util.Helpers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
