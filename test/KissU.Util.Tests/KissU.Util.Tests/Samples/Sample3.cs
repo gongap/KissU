@@ -1,11 +1,13 @@
 ﻿using System.ComponentModel;
 
-namespace KissU.Util.Tests.Samples {
+namespace KissU.Util.Tests.Samples
+{
     /// <summary>
     /// 测试样例3
     /// </summary>
-    [DisplayName( "测试样例3" )]
-    public class Sample3 {
+    [DisplayName("测试样例3")]
+    public class Sample3
+    {
         /// <summary>
         /// string值
         /// </summary>

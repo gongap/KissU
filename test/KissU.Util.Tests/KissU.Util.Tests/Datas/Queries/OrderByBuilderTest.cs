@@ -1,15 +1,18 @@
 ﻿using KissU.Util.Datas.Queries;
 using Xunit;
 
-namespace KissU.Util.Tests.Datas.Queries {
+namespace KissU.Util.Tests.Datas.Queries
+{
     /// <summary>
     /// 测试排序生成器
     /// </summary>
-    public class OrderByBuilderTest {
+    public class OrderByBuilderTest
+    {
         /// <summary>
         /// 测试初始化
         /// </summary>
-        public OrderByBuilderTest() {
+        public OrderByBuilderTest()
+        {
             _builder = new OrderByBuilder();
         }
 
@@ -22,13 +25,14 @@ namespace KissU.Util.Tests.Datas.Queries {
         /// 测试生成排序
         /// </summary>
         [Fact]
-        public void TestGenerate() {
-            Assert.Equal( "", _builder.Generate() );
-            _builder.Add( "" );
-            _builder.Add( "A" );
-            _builder.Add( "B", true );
-            _builder.Add( "C.D", true );
-            Assert.Equal( "A,B desc,C.D desc", _builder.Generate() );
+        public void TestGenerate()
+        {
+            Assert.Equal("", _builder.Generate());
+            _builder.Add("");
+            _builder.Add("A");
+            _builder.Add("B", true);
+            _builder.Add("C.D", true);
+            Assert.Equal("A,B desc,C.D desc", _builder.Generate());
         }
     }
 }

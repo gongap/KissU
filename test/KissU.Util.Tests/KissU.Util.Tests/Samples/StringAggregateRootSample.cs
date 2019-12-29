@@ -1,24 +1,28 @@
 ﻿using System;
 using KissU.Util.Domains;
 
-namespace KissU.Util.Tests.Samples {
+namespace KissU.Util.Tests.Samples
+{
     /// <summary>
     /// string聚合根测试样例
     /// </summary>
-    public class StringAggregateRootSample : AggregateRoot<StringAggregateRootSample, string> {
+    public class StringAggregateRootSample : AggregateRoot<StringAggregateRootSample, string>
+    {
         /// <summary>
         /// 初始化string聚合根测试样例
         /// </summary>
         public StringAggregateRootSample()
-            : this( Guid.NewGuid().ToString() ) {
+            : this(Guid.NewGuid().ToString())
+        {
         }
 
         /// <summary>
         /// 初始化string聚合根测试样例
         /// </summary>
         /// <param name="id">标识</param>
-        public StringAggregateRootSample( string id )
-            : base( id ) {
+        public StringAggregateRootSample(string id)
+            : base(id)
+        {
         }
 
         /// <summary>
@@ -29,16 +33,18 @@ namespace KissU.Util.Tests.Samples {
         /// <summary>
         /// 添加描述
         /// </summary>
-        protected override void AddDescriptions() {
-            AddDescription( "Id:" + Id + "," );
-            AddDescription( "姓名", Name );
+        protected override void AddDescriptions()
+        {
+            AddDescription("Id:" + Id + ",");
+            AddDescription("姓名", Name);
         }
 
         /// <summary>
         /// 添加变更列表
         /// </summary>
-        protected override void AddChanges( StringAggregateRootSample other ) {
-            AddChange( "Name", "StringSampleName", Name, other.Name );
+        protected override void AddChanges(StringAggregateRootSample other)
+        {
+            AddChange("Name", "StringSampleName", Name, other.Name);
         }
     }
 }

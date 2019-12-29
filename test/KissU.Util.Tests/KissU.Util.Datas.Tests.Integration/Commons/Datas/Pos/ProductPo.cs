@@ -1,30 +1,36 @@
 ﻿using KissU.Util.Datas.Persistence;
 using KissU.Util.Domains;
 
-namespace KissU.Util.Datas.Tests.Integration.Commons.Datas.Pos {
+namespace KissU.Util.Datas.Tests.Integration.Commons.Datas.Pos
+{
     /// <summary>
     /// 商品持久化对象
     /// </summary>
-    public class ProductPo : PersistentObjectBase<int>, IDelete {
+    public class ProductPo : PersistentObjectBase<int>, IDelete
+    {
         /// <summary>
         /// 商品编码
-        /// </summary>  
+        /// </summary>
         public string Code { get; set; }
+
         /// <summary>
         /// 商品名称
-        /// </summary>  
+        /// </summary>
         public string Name { get; set; }
+
         /// <summary>
         /// 扩展属性
-        /// </summary>  
+        /// </summary>
         public string Extends { get; set; }
+
         /// <summary>
         /// 价格
-        /// </summary>  
+        /// </summary>
         public decimal? Price { get; set; }
+
         /// <summary>
         /// 是否删除
-        /// </summary>  
+        /// </summary>
         public bool IsDeleted { get; set; }
     }
 }

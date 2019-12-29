@@ -1,9 +1,11 @@
 ﻿using KissU.Util.Datas.UnitOfWorks;
 
-namespace KissU.Util.Datas.Tests.Integration.SqlServer.Ef.UnitOfWorks {
+namespace KissU.Util.Datas.Tests.Integration.SqlServer.Ef.UnitOfWorks
+{
     /// <summary>
     /// SqlServer工作单元
     /// </summary>
-    public interface ISqlServerUnitOfWork : IUnitOfWork {
+    public interface ISqlServerUnitOfWork : IUnitOfWork
+    {
     }
 }

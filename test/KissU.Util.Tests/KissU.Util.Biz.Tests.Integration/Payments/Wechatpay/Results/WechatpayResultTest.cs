@@ -5,16 +5,19 @@ using KissU.Util.Biz.Payments.Wechatpay.Results;
 using KissU.Util.Parameters;
 using Xunit;
 
-namespace KissU.Util.Biz.Tests.Integration.Payments.Wechatpay.Results {
+namespace KissU.Util.Biz.Tests.Integration.Payments.Wechatpay.Results
+{
     /// <summary>
     /// 微信支付结果测试
     /// </summary>
-    public class WechatpayResultTest {
+    public class WechatpayResultTest
+    {
         /// <summary>
         /// 测试
         /// </summary>
         [Fact]
-        public async Task Test() {
+        public async Task Test()
+        {
             //设置返回响应
             var response = @"<xml>
                                 <return_code><![CDATA[SUCCESS]]></return_code>
@@ -29,36 +32,39 @@ namespace KissU.Util.Biz.Tests.Integration.Payments.Wechatpay.Results {
                             </xml>";
 
             //操作
-            var result = new WechatpayResult( new TestConfigProvider(), response );
+            var result = new WechatpayResult(new TestConfigProvider(), response);
 
             //验证
-            Assert.Equal( "SUCCESS", result.GetReturnCode() );
-            Assert.Equal( "OK", result.GetReturnMessage() );
-            Assert.Equal( "wx9b90e1788b39fec6", result.GetAppId() );
-            Assert.Equal( "1985518532", result.GetMerchantId() );
-            Assert.Equal( "wrKodsjUFk34qYno", result.GetNonce() );
-            Assert.Equal( "5F721ADF22DD2C60B4E171228F8DA36E", result.GetSign() );
-            Assert.Equal( "SUCCESS", result.GetResultCode() );
-            Assert.Equal( "wx141217433636466fe2c3b2a10139084028", result.GetPrepayId() );
-            Assert.Equal( "APP", result.GetTradeType() );
-            var isValid = ( await result.ValidateAsync() ).IsValid;
-            Assert.True( isValid );
+            Assert.Equal("SUCCESS", result.GetReturnCode());
+            Assert.Equal("OK", result.GetReturnMessage());
+            Assert.Equal("wx9b90e1788b39fec6", result.GetAppId());
+            Assert.Equal("1985518532", result.GetMerchantId());
+            Assert.Equal("wrKodsjUFk34qYno", result.GetNonce());
+            Assert.Equal("5F721ADF22DD2C60B4E171228F8DA36E", result.GetSign());
+            Assert.Equal("SUCCESS", result.GetResultCode());
+            Assert.Equal("wx141217433636466fe2c3b2a10139084028", result.GetPrepayId());
+            Assert.Equal("APP", result.GetTradeType());
+            var isValid = (await result.ValidateAsync()).IsValid;
+            Assert.True(isValid);
         }
     }
 
     /// <summary>
     /// 微信支付测试配置提供器
     /// </summary>
-    public class TestConfigProvider : IWechatpayConfigProvider {
+    public class TestConfigProvider : IWechatpayConfigProvider
+    {
         /// <summary>
         /// 获取配置
         /// </summary>
-        public Task<WechatpayConfig> GetConfigAsync( IParameterManager parameters = null ) {
-            var config = new WechatpayConfig {
+        public Task<WechatpayConfig> GetConfigAsync(IParameterManager parameters = null)
+        {
+            var config = new WechatpayConfig
+            {
                 SignType = WechatpaySignType.Md5,
-                PrivateKey = "VVHZOaJEj44WbX0f3Lj7DHkfwEqvlURA",
+                PrivateKey = "VVHZOaJEj44WbX0f3Lj7DHkfwEqvlURA"
             };
-            return Task.FromResult( config );
+            return Task.FromResult(config);
         }
     }
 }

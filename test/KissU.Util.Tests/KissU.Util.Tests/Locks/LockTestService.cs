@@ -5,15 +5,18 @@ using KissU.Util.Caches.EasyCaching;
 using KissU.Util.Locks.Default;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace KissU.Util.Tests.Locks {
+namespace KissU.Util.Tests.Locks
+{
     /// <summary>
     /// 业务锁测试服务
     /// </summary>
-    public class LockTestService {
+    public class LockTestService
+    {
         /// <summary>
         /// 缓存
         /// </summary>
         private static readonly ICache Cache;
+
         /// <summary>
         /// 业务锁
         /// </summary>
@@ -22,9 +25,10 @@ namespace KissU.Util.Tests.Locks {
         /// <summary>
         /// 初始化业务锁测试服务
         /// </summary>
-        static LockTestService() {
+        static LockTestService()
+        {
             var services = new ServiceCollection();
-            services.AddCache( options => options.UseInMemory() );
+            services.AddCache(options => options.UseInMemory());
             var serviceProvider = services.BuildServiceProvider();
             Cache = serviceProvider.GetService<ICache>();
         }
@@ -32,22 +36,25 @@ namespace KissU.Util.Tests.Locks {
         /// <summary>
         /// 初始化业务锁测试服务
         /// </summary>
-        public LockTestService() {
-            _lock = new DefaultLock( Cache );
+        public LockTestService()
+        {
+            _lock = new DefaultLock(Cache);
         }
 
         /// <summary>
         /// 执行
         /// </summary>
-        public string Execute( string key, TimeSpan? expiration = null ) {
-            var result = _lock.Lock( key, expiration );
+        public string Execute(string key, TimeSpan? expiration = null)
+        {
+            var result = _lock.Lock(key, expiration);
             return result ? "ok" : "fail";
         }
 
         /// <summary>
         /// 解锁
         /// </summary>
-        public void UnLock() {
+        public void UnLock()
+        {
             _lock.UnLock();
         }
     }

@@ -1,10 +1,12 @@
 ﻿using KissU.Util.Parameters.Formats;
 
-namespace KissU.Util.Tests.Samples {
+namespace KissU.Util.Tests.Samples
+{
     /// <summary>
     /// 参数格式化器样例
     /// </summary>
-    public class ParameterFormatterSample : ParameterFormatBase {
+    public class ParameterFormatterSample : ParameterFormatBase
+    {
         /// <summary>
         /// 格式化分割符
         /// </summary>

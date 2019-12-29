@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace KissU.Util.Tools.Offices.Tests.Integration.Exports {
-    public class OfficeTest {
+namespace KissU.Util.Tools.Offices.Tests.Integration.Exports
+{
+    public class OfficeTest
+    {
         public bool Test1 { get; set; }
         public int Test2 { get; set; }
         public DateTime Test3 { get; set; }
@@ -20,9 +22,12 @@ namespace KissU.Util.Tools.Offices.Tests.Integration.Exports {
         public string Test15 { get; set; }
         public string Test16 { get; set; }
 
-        public static List<OfficeTest> CreateList() {
-            return new List<OfficeTest> {
-                new OfficeTest {
+        public static List<OfficeTest> CreateList()
+        {
+            return new List<OfficeTest>
+            {
+                new OfficeTest
+                {
                     Test1 = true,
                     Test2 = 2,
                     Test3 = DateTime.Now,
@@ -40,7 +45,8 @@ namespace KissU.Util.Tools.Offices.Tests.Integration.Exports {
                     Test15 = "a15",
                     Test16 = "a16"
                 },
-                new OfficeTest {
+                new OfficeTest
+                {
                     Test1 = false,
                     Test2 = 2,
                     Test3 = DateTime.Now,
@@ -61,11 +67,10 @@ namespace KissU.Util.Tools.Offices.Tests.Integration.Exports {
             };
         }
 
-        public static List<OfficeTest> CreateList2() {
+        public static List<OfficeTest> CreateList2()
+        {
             var list = new List<OfficeTest>();
-            for( int i = 0; i < 50000; i++ ) {
-                list.AddRange(CreateList());
-            }
+            for (var i = 0; i < 50000; i++) list.AddRange(CreateList());
             return list;
         }
     }

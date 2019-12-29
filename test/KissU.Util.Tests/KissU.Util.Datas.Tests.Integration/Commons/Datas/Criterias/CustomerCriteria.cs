@@ -3,15 +3,18 @@ using System.Linq.Expressions;
 using KissU.Util.Datas.Tests.Integration.Commons.Domains.Models;
 using KissU.Util.Domains.Repositories;
 
-namespace KissU.Util.Datas.Tests.Integration.Commons.Datas.Criterias {
+namespace KissU.Util.Datas.Tests.Integration.Commons.Datas.Criterias
+{
     /// <summary>
     /// 客户查询条件
     /// </summary>
-    public class CustomerCriteria : ICriteria<Customer> {
+    public class CustomerCriteria : ICriteria<Customer>
+    {
         /// <summary>
         /// 姓名
         /// </summary>
         private readonly string _name;
+
         /// <summary>
         /// 昵称
         /// </summary>
@@ -22,7 +25,8 @@ namespace KissU.Util.Datas.Tests.Integration.Commons.Datas.Criterias {
         /// </summary>
         /// <param name="name">姓名</param>
         /// <param name="nickname">昵称</param>
-        public CustomerCriteria( string name, string nickname ) {
+        public CustomerCriteria(string name, string nickname)
+        {
             _name = name;
             _nickname = nickname;
         }
@@ -30,7 +34,8 @@ namespace KissU.Util.Datas.Tests.Integration.Commons.Datas.Criterias {
         /// <summary>
         /// 获取过滤条件
         /// </summary>
-        public Expression<Func<Customer, bool>> GetPredicate() {
+        public Expression<Func<Customer, bool>> GetPredicate()
+        {
             return customer => customer.Name == _name && customer.Nickname == _nickname;
         }
     }

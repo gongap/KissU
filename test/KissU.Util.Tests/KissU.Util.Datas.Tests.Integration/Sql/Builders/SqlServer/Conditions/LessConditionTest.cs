@@ -1,18 +1,21 @@
 ﻿using KissU.Util.Datas.Sql.Builders.Conditions;
 using Xunit;
 
-namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Conditions {
+namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Conditions
+{
     /// <summary>
     /// Sql小于查询条件测试
     /// </summary>
-    public class LessConditionTest {
+    public class LessConditionTest
+    {
         /// <summary>
         /// 获取条件
         /// </summary>
         [Fact]
-        public void Test() {
-            var condition = new LessCondition( "Age", "@Age" );
-            Assert.Equal( "Age<@Age", condition.GetCondition() );
+        public void Test()
+        {
+            var condition = new LessCondition("Age", "@Age");
+            Assert.Equal("Age<@Age", condition.GetCondition());
         }
     }
 }

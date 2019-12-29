@@ -1,10 +1,13 @@
 ﻿using System.Collections.Generic;
+using KissU.Util.Domains;
 
-namespace KissU.Util.Datas.Tests.Integration.Commons.Domains.Models {
+namespace KissU.Util.Datas.Tests.Integration.Commons.Domains.Models
+{
     /// <summary>
     /// 商品类型
     /// </summary>
-    public class ProductType : Util.Domains.ValueObjectBase<ProductType> {
+    public class ProductType : ValueObjectBase<ProductType>
+    {
         /// <summary>
         /// 商品属性集合
         /// </summary>
@@ -15,7 +18,8 @@ namespace KissU.Util.Datas.Tests.Integration.Commons.Domains.Models {
         /// </summary>
         /// <param name="name">商品类型名称</param>
         /// <param name="properties">商品属性集合</param>
-        public ProductType( string name,List<ProductProperty> properties ) {
+        public ProductType(string name, List<ProductProperty> properties)
+        {
             Name = name;
             _properties = properties;
         }

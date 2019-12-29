@@ -1,8 +1,10 @@
-﻿namespace KissU.Util.Biz.Tests.Integration.Payments {
+﻿namespace KissU.Util.Biz.Tests.Integration.Payments
+{
     /// <summary>
     /// 测试常量
     /// </summary>
-    public class TestConst {
+    public class TestConst
+    {
         /// <summary>
         /// 测试时间
         /// </summary>
