@@ -1,18 +1,19 @@
 ﻿using Autofac.Extensions.DependencyInjection;
 using KissU.Core.CPlatform;
 using KissU.Core.CPlatform.Module;
-using KissU.Modules.IdentityServer.Data;
-using KissU.Modules.IdentityServer.Data.UnitOfWorks.SqlServer;
-using KissU.Modules.IdentityServer.Domain.UnitOfWorks;
+using KissU.Modules.GreatWall.Application.Extensions;
+using KissU.Modules.GreatWall.Data;
+using KissU.Modules.GreatWall.Data.UnitOfWorks.SqlServer;
+using KissU.Modules.GreatWall.Domain.UnitOfWorks;
 using KissU.Util.Datas.SqlServer;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace KissU.Modules.IdentityServer.Service
+namespace KissU.Modules.GreatWall.Service
 {
     /// <summary>
     /// 扩展系统模块
     /// </summary>
-    public class IdentityServerModule : BusinessModule
+    public class GreatWallModule : BusinessModule
     {
         /// <summary>
         /// 注册第三方组件
@@ -22,7 +23,8 @@ namespace KissU.Modules.IdentityServer.Service
         {
             base.RegisterBuilder(builder);
             var services = new ServiceCollection();
-            services.AddUnitOfWork<IIdentityServerUnitOfWork, IdentityServerUnitOfWork>(AppConfig.GetSection(IdentityServerDataConstants.ConnectionStringSection).GetSection(IdentityServerDataConstants.ConnectionStringName).Value);
+            services.AddUnitOfWork<IGreatWallUnitOfWork, GreatWallUnitOfWork>(AppConfig.GetSection(GreatWallDataConstants.ConnectionStringSection).GetSection(GreatWallDataConstants.ConnectionStringName).Value);
+            services.AddPermission();
             builder.ContainerBuilder.Populate(services);
         }
     }

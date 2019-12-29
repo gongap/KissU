@@ -28,8 +28,7 @@ namespace KissU.Services.Stage
         public IContainer ConfigureServices(ContainerBuilder builder)
         {
             var serivces = new ServiceCollection();
-            ServiceLocator.Current = builder.AddUtil(serivces);
-            return ServiceLocator.Current;
+            return builder.AddUtil(serivces);
         }
 
         /// <summary>
@@ -37,6 +36,7 @@ namespace KissU.Services.Stage
         /// </summary>
         public void Configure(IContainer app)
         {
+            ServiceLocator.Current = app;
         }
 
         #region 私有方法
