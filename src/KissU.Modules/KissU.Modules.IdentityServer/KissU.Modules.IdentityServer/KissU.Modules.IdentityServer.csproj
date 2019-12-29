@@ -18,6 +18,5 @@
 
   <ItemGroup>
     <ProjectReference Include="..\KissU.Modules.IdentityServer.Application\KissU.Modules.IdentityServer.Application.csproj" />
-    <ProjectReference Include="..\KissU.Modules.IdentityServer.Data\KissU.Modules.IdentityServer.Data.csproj" />
   </ItemGroup>
 </Project>
