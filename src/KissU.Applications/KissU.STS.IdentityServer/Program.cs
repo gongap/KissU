@@ -1,8 +1,4 @@
-﻿// <copyright file="Program.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using System;
+﻿using System;
 using System.IO;
 using KissU.Util.Dependency;
 using KissU.Util.Logs;

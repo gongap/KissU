@@ -1,14 +1,8 @@
-﻿// <copyright file="Startup.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using Autofac;
+﻿using Autofac;
 using KissU.Modules.IdentityServer;
 using KissU.Modules.IdentityServer.Data.UnitOfWorks.SqlServer;
-using KissU.Modules.IdentityServer.Domain;
 using KissU.Modules.IdentityServer.Domain.UnitOfWorks;
 using KissU.STS.IdentityServer.Data;
-using KissU.Util;
 using KissU.Util.Datas.SqlServer;
 using KissU.Util.Logs.Extensions;
 using Microsoft.AspNetCore.Builder;
@@ -25,11 +19,6 @@ namespace KissU.STS.IdentityServer
     public class Startup
     {
         /// <summary>
-        /// 配置
-        /// </summary>
-        public IConfiguration Configuration { get; }
-
-        /// <summary>
         /// 初始化启动配置
         /// </summary>
         /// <param name="configuration">配置</param>
@@ -37,6 +26,11 @@ namespace KissU.STS.IdentityServer
         {
             Configuration = configuration;
         }
+
+        /// <summary>
+        /// 配置
+        /// </summary>
+        public IConfiguration Configuration { get; }
 
         /// <summary>
         /// 配置服务
@@ -51,7 +45,8 @@ namespace KissU.STS.IdentityServer
 
             services.AddNLog();
             services.AddIdentityServer4();
-            services.AddUnitOfWork<IIdentityServerUnitOfWork, IdentityServerUnitOfWork>(Configuration.GetConnectionString("DefaultConnection"));
+            services.AddUnitOfWork<IIdentityServerUnitOfWork, IdentityServerUnitOfWork>(
+                Configuration.GetConnectionString("DefaultConnection"));
         }
 
         /// <summary>

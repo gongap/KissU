@@ -1,8 +1,4 @@
-﻿// <copyright file="WeatherForecastService.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using System;
+﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
 
