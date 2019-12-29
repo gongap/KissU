@@ -9,7 +9,7 @@ using KissU.Modules.IdentityServer.Service.Contracts;
 using KissU.Util;
 using KissU.Util.Domains.Repositories;
 
-namespace KissU.Modules.IdentityServer.Service
+namespace KissU.Modules.IdentityServer.Service.Implements
 {
     /// <summary>
     /// 资源服务

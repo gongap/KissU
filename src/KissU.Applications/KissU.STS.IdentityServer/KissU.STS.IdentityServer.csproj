@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.GreatWall\KissU.Modules.GreatWall.Application\KissU.Modules.GreatWall.Application.csproj" />
     <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.IdentityServer\KissU.Modules.IdentityServer\KissU.Modules.IdentityServer.csproj" />
   </ItemGroup>
 </Project>

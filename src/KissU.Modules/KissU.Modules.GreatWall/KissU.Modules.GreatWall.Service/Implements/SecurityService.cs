@@ -5,7 +5,7 @@ using KissU.Modules.GreatWall.Application.Dtos.Requests;
 using KissU.Modules.GreatWall.Domain.Shared.Results;
 using KissU.Modules.GreatWall.Service.Contracts;
 
-namespace KissU.Modules.GreatWall.Service
+namespace KissU.Modules.GreatWall.Service.Implements
 {
     /// <summary>
     /// 安全服务

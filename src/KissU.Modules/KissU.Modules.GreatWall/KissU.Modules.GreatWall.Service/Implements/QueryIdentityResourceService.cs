@@ -7,7 +7,7 @@ using KissU.Modules.GreatWall.Application.Queries;
 using KissU.Modules.GreatWall.Service.Contracts;
 using KissU.Util.Domains.Repositories;
 
-namespace KissU.Modules.GreatWall.Service
+namespace KissU.Modules.GreatWall.Service.Implements
 {
     /// <summary>
     /// 身份资源查询服务

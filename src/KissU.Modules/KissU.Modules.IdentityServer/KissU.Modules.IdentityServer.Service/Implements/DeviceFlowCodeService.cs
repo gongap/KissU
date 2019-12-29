@@ -6,7 +6,7 @@ using KissU.Modules.IdentityServer.Application.Queries;
 using KissU.Modules.IdentityServer.Service.Contracts;
 using KissU.Util.Domains.Repositories;
 
-namespace KissU.Modules.IdentityServer.Service
+namespace KissU.Modules.IdentityServer.Service.Implements
 {
     /// <summary>
     /// 设备流代码服务

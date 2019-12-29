@@ -4,7 +4,7 @@ using KissU.Modules.GreatWall.Application.Abstractions;
 using KissU.Modules.GreatWall.Application.Dtos;
 using KissU.Modules.GreatWall.Service.Contracts;
 
-namespace KissU.Modules.GreatWall.Service
+namespace KissU.Modules.GreatWall.Service.Implements
 {
     /// <summary>
     /// 身份资源服务

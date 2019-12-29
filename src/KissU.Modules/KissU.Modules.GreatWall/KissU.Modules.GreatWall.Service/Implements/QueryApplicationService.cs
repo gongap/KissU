@@ -8,7 +8,7 @@ using KissU.Modules.GreatWall.Service.Contracts;
 using KissU.Util;
 using KissU.Util.Domains.Repositories;
 
-namespace KissU.Modules.GreatWall.Service
+namespace KissU.Modules.GreatWall.Service.Implements
 {
     /// <summary>
     /// 应用程序查询服务

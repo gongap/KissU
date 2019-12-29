@@ -26,10 +26,8 @@ namespace KissU.Modules.IdentityServer.Stores
         public ResourceStore(IApiResourceRepository apiResourceRepository,
             IIdentityResourceRepository identityResourceRepository)
         {
-            _apiResourcePoStore =
-                apiResourceRepository ?? throw new ArgumentNullException(nameof(apiResourceRepository));
-            _identityResourcesPoStore = identityResourceRepository ??
-                                        throw new ArgumentNullException(nameof(identityResourceRepository));
+            _apiResourcePoStore = apiResourceRepository ?? throw new ArgumentNullException(nameof(apiResourceRepository));
+            _identityResourcesPoStore = identityResourceRepository ?? throw new ArgumentNullException(nameof(identityResourceRepository));
         }
 
         /// <summary>
@@ -73,8 +71,7 @@ namespace KissU.Modules.IdentityServer.Stores
         /// </summary>
         /// <param name="scopeNames">授权许可名称</param>
         /// <returns></returns>
-        public async Task<IEnumerable<IdentityResource>> FindIdentityResourcesByScopeAsync(
-            IEnumerable<string> scopeNames)
+        public async Task<IEnumerable<IdentityResource>> FindIdentityResourcesByScopeAsync(IEnumerable<string> scopeNames)
         {
             var scopes = scopeNames.ToArray();
 
