@@ -24,7 +24,13 @@ namespace KissU.Modules.GreatWall.Service
             base.RegisterBuilder(builder);
             var services = new ServiceCollection();
             services.AddUnitOfWork<IGreatWallUnitOfWork, GreatWallUnitOfWork>(AppConfig.GetSection(GreatWallDataConstants.ConnectionStringSection).GetSection(GreatWallDataConstants.ConnectionStringName).Value);
-            services.AddPermission();
+            services.AddPermission(options =>
+            {
+                options.Password.MinLength = 6;
+                options.Password.NonAlphanumeric = true;
+                options.Password.Uppercase = true;
+                options.Password.Digit = true;
+            });
             builder.ContainerBuilder.Populate(services);
         }
     }

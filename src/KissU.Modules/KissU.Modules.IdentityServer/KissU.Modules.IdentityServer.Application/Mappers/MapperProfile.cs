@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using AutoMapper;
 using KissU.Modules.IdentityServer.Domain.Models;
+using Ids4 = IdentityServer4.Models;
 
 namespace KissU.Modules.IdentityServer.Application.Mappers
 {
@@ -60,6 +61,19 @@ namespace KissU.Modules.IdentityServer.Application.Mappers
                 .ConstructUsing(x => x.Type)
                 .ReverseMap()
                 .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src));
+
+            CreateMap<Ids4.Client, Ids4.Client>()
+                .ForMember(dest => dest.ProtocolType, opt => opt.Condition(srs => srs != null));
+
+            CreateMap<ClientSecret, Ids4.Secret>(MemberList.Destination)
+                .ForMember(dest => dest.Type, opt => opt.Condition(srs => srs != null));
+
+            CreateMap<ApiSecret, Ids4.Secret>(MemberList.Destination)
+                .ForMember(dest => dest.Type, opt => opt.Condition(srs => srs != null));
+
+            CreateMap<ApiScope, Ids4.Scope>(MemberList.Destination)
+                .ConstructUsing(src => new Ids4.Scope())
+                .ReverseMap();
         }
     }
 }

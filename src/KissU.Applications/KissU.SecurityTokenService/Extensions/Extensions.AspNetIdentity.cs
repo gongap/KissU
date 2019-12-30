@@ -8,24 +8,23 @@ using KissU.Modules.GreatWall.Domain.Shared.Options;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace KissU.Modules.GreatWall.Application.Extensions
+namespace KissU.SecurityTokenService.Extensions
 {
     /// <summary>
-    /// 权限扩展
+    /// AspNetIdentity扩展
     /// </summary>
-    public static class Extensions
+    public static partial class Extensions
     {
         /// <summary>
-        /// 添加权限服务
+        /// 添加AspNetIdentity服务
         /// </summary>
         /// <param name="services">服务集合</param>
         /// <param name="setupAction">配置操作</param>
-        public static IServiceCollection AddPermission(this IServiceCollection services, Action<PermissionOptions> setupAction = null)
+        public static IServiceCollection AspNetIdentity(this IServiceCollection services, Action<PermissionOptions> setupAction = null)
         {
             var permissionOptions = new PermissionOptions();
             setupAction?.Invoke(permissionOptions);
-            services.AddIdentityCore<User>(options => options.Load(permissionOptions))
-                .AddRoles<Role>()
+            services.AddIdentity<User, Role>(options => options.Load(permissionOptions))
                 .AddUserStore<UserRepository>().AddRoleStore<RoleRepository>()
                 .AddUserManager<IdentityUserManager>().AddSignInManager<IdentitySignInManager>()
                 .AddDefaultTokenProviders();
