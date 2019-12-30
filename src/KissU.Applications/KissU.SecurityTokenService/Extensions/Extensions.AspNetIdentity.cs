@@ -25,8 +25,11 @@ namespace KissU.SecurityTokenService.Extensions
             var permissionOptions = new PermissionOptions();
             setupAction?.Invoke(permissionOptions);
             services.AddIdentity<User, Role>(options => options.Load(permissionOptions))
-                .AddUserStore<UserRepository>().AddRoleStore<RoleRepository>()
-                .AddUserManager<IdentityUserManager>().AddSignInManager<IdentitySignInManager>()
+                .AddUserStore<UserRepository>()
+                .AddRoleStore<RoleRepository>()
+                .AddUserManager<IdentityUserManager>()
+                .AddRoleManager<IdentityRoleManager>()
+                .AddSignInManager<IdentitySignInManager>()
                 .AddDefaultTokenProviders();
             services.AddScoped<IdentityErrorDescriber, IdentityErrorChineseDescriber>();
             return services;

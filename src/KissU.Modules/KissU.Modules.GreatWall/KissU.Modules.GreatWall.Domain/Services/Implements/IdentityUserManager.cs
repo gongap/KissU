@@ -29,7 +29,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
             IPasswordHasher<User> passwordHasher,
             IEnumerable<IUserValidator<User>> userValidators, IEnumerable<IPasswordValidator<User>> passwordValidators,
             ILookupNormalizer keyNormalizer, IdentityErrorDescriber errors, IServiceProvider services,
-            ILogger<UserManager<User>> logger)
+            ILogger<IdentityUserManager> logger)
             : base(store, optionsAccessor, passwordHasher, userValidators, passwordValidators, keyNormalizer, errors,
                 services, logger)
         {

@@ -1,5 +1,6 @@
 ﻿using System;
 using IdentityServer4.Stores;
+using KissU.Modules.GreatWall.Domain.Models;
 using KissU.Modules.IdentityServer.Application.Services;
 using KissU.Modules.IdentityServer.Application.Services.Options;
 using KissU.Modules.IdentityServer.Data.Stores;
@@ -15,12 +16,28 @@ namespace KissU.SecurityTokenService.Extensions
     public static partial class Extensions
     {
         /// <summary>
+        /// 添加IdentityServer4服务
+        /// </summary>
+        /// <param name="services">服务集合</param>
+        /// <param name="storeOptionsAction">操作配置</param>
+        public static IIdentityServerBuilder AddIdentityServer4(this IServiceCollection services, Action<OperationalStoreOptions> storeOptionsAction = null)
+        {
+            var builder = services.AddIdentityServer()
+                .AddDeveloperSigningCredential()
+                .AddAspNetIdentity<User>()
+                .AddResourceOwnerValidator<ResourceOwnerPasswordValidator>()
+                .AddProfileService<ProfileService>()
+                .AddConfigurationStore()
+                .AddOperationalStore(storeOptionsAction);
+            return builder;
+        }
+
+        /// <summary>
         /// 使用IdentityServer配置IClientStore、IResourceStore和ICorsPolicyService的EF实现。
         /// </summary>
         /// <param name="builder">The builder.</param>
-        /// <param name="storeOptionsAction">The storeOptionsAction.</param>
         /// <returns></returns>
-        public static IIdentityServerBuilder AddConfigurationStore(this IIdentityServerBuilder builder, Action<OperationalStoreOptions> storeOptionsAction = null)
+        public static IIdentityServerBuilder AddConfigurationStore(this IIdentityServerBuilder builder)
         {
             builder.AddClientStore<ClientStore>();
             builder.AddResourceStore<ResourceStore>();
@@ -51,8 +68,7 @@ namespace KissU.SecurityTokenService.Extensions
         /// <param name="builder">The builder.</param>
         /// <param name="storeOptionsAction">The store options action.</param>
         /// <returns></returns>
-        public static IIdentityServerBuilder AddOperationalStore(this IIdentityServerBuilder builder,
-            Action<OperationalStoreOptions> storeOptionsAction = null)
+        public static IIdentityServerBuilder AddOperationalStore(this IIdentityServerBuilder builder, Action<OperationalStoreOptions> storeOptionsAction = null)
         {
             var options = new OperationalStoreOptions();
             builder.Services.AddSingleton(options);

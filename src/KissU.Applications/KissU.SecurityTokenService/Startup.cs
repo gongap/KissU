@@ -56,18 +56,12 @@ namespace KissU.SecurityTokenService
                 options.Password.Digit = true;
             });
 
-            // 配置IdentityServer
-            services.AddIdentityServer()
-                .AddDeveloperSigningCredential()
-                .AddAspNetIdentity<User>()
-                .AddProfileService<ProfileService>()
-                .AddResourceOwnerValidator<ResourceOwnerPasswordValidator>()
-                .AddConfigurationStore()
-                .AddOperationalStore(options =>
-                {
-                    options.EnableTokenCleanup = true;
-                    options.TokenCleanupInterval = 600;
-                });
+            // 添加IdentityServer4
+            services.AddIdentityServer4(options =>
+            {
+                options.EnableTokenCleanup = true;
+                options.TokenCleanupInterval = 600;
+            });
 
             // 添加SqlServer工作单元
             services.AddUnitOfWork<IIdentityServerUnitOfWork, IdentityServerUnitOfWork>(Configuration.GetConnectionString(IdentityServerDataConstants.ConnectionStringName));
@@ -103,6 +97,7 @@ namespace KissU.SecurityTokenService
             }
 
             app.UseIdentityServer();
+            app.UseAuthorization();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
