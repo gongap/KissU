@@ -6,7 +6,6 @@ using KissU.Modules.GreatWall.Domain.UnitOfWorks;
 using KissU.Modules.IdentityServer.Data;
 using KissU.Modules.IdentityServer.Data.UnitOfWorks.SqlServer;
 using KissU.Modules.IdentityServer.Domain.UnitOfWorks;
-using KissU.SecurityTokenService.Data;
 using KissU.SecurityTokenService.Extensions;
 using KissU.SecurityTokenService.Services;
 using KissU.Util.Datas.SqlServer;
@@ -47,18 +46,17 @@ namespace KissU.SecurityTokenService
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
 
-            //添加NLog日志操作
-            services.AddNLog();
+            // 添加AspNetIdentity
+            services.AspNetIdentity(options =>
+            {
+                options.Password.MinLength = 6;
+                options.Password.NonAlphanumeric = true;
+                options.Password.Uppercase = true;
+                options.Password.Digit = true;
+            });
 
-            //添加SqlServer工作单元
-            services.AddUnitOfWork<IIdentityServerUnitOfWork, IdentityServerUnitOfWork>(
-                Configuration.GetConnectionString(IdentityServerDataConstants.ConnectionStringName));
-            services.AddUnitOfWork<IGreatWallUnitOfWork, GreatWallUnitOfWork>(
-                Configuration.GetConnectionString(GreatWallDataConstants.ConnectionStringName));
-
-            //配置Identity Server
+            // 配置IdentityServer
             services.AddIdentityServer()
                 .AddDeveloperSigningCredential()
                 .AddAspNetIdentity<User>()
@@ -71,14 +69,12 @@ namespace KissU.SecurityTokenService
                     options.TokenCleanupInterval = 600;
                 });
 
-            //添加权限服务
-            services.AspNetIdentity(options =>
-            {
-                options.Password.MinLength = 6;
-                options.Password.NonAlphanumeric = true;
-                options.Password.Uppercase = true;
-                options.Password.Digit = true;
-            });
+            // 添加SqlServer工作单元
+            services.AddUnitOfWork<IIdentityServerUnitOfWork, IdentityServerUnitOfWork>(Configuration.GetConnectionString(IdentityServerDataConstants.ConnectionStringName));
+            services.AddUnitOfWork<IGreatWallUnitOfWork, GreatWallUnitOfWork>(Configuration.GetConnectionString(GreatWallDataConstants.ConnectionStringName));
+
+            //添加NLog日志操作
+            services.AddNLog();
         }
 
         /// <summary>
