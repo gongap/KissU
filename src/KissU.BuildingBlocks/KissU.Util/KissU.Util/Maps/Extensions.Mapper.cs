@@ -50,12 +50,43 @@ namespace KissU.Util.Maps
         /// </summary>
         private static TDestination MapTo<TDestination>(object source, TDestination destination)
         {
-            if (source == null)
-                return default;
-            if (destination == null)
-                return default;
-            var sourceType = GetType(source);
-            var destinationType = GetType(destination);
+            try
+            {
+                if (source == null)
+                    return default(TDestination);
+                if (destination == null)
+                    return default(TDestination);
+                var sourceType = GetType(source);
+                var destinationType = GetType(destination);
+                return GetResult(sourceType, destinationType, source, destination);
+            }
+            catch (AutoMapperMappingException ex)
+            {
+                return GetResult(GetType(ex.MemberMap.SourceType), GetType(ex.MemberMap.DestinationType), source, destination);
+            }
+        }
+
+        /// <summary>
+        /// 获取类型
+        /// </summary>
+        private static Type GetType(object obj)
+        {
+            return GetType(obj.GetType());
+        }
+
+        /// <summary>
+        /// 获取类型
+        /// </summary>
+        private static Type GetType(Type type)
+        {
+            return Reflection.GetElementType(type);
+        }
+
+        /// <summary>
+        /// 获取结果
+        /// </summary>
+        private static TDestination GetResult<TDestination>(Type sourceType, Type destinationType, object source, TDestination destination)
+        {
             if (Exists(sourceType, destinationType))
                 return GetResult(source, destination);
             lock (Sync)
@@ -65,22 +96,6 @@ namespace KissU.Util.Maps
                 Init(sourceType, destinationType);
             }
             return GetResult(source, destination);
-        }
-
-        /// <summary>
-        /// 获取类型
-        /// </summary>
-        private static Type GetType(object obj)
-        {
-            var type = obj.GetType();
-            if ((obj is System.Collections.IEnumerable) == false)
-                return type;
-            if (type.IsArray)
-                return type.GetElementType();
-            var genericArgumentsTypes = type.GetTypeInfo().GetGenericArguments();
-            if (genericArgumentsTypes == null || genericArgumentsTypes.Length == 0)
-                throw new ArgumentException("泛型类型参数不能为空");
-            return genericArgumentsTypes[0];
         }
 
         /// <summary>

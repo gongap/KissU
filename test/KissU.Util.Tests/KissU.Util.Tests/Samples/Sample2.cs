@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace KissU.Util.Tests.Samples
@@ -51,5 +52,10 @@ namespace KissU.Util.Tests.Samples
         /// 导航属性
         /// </summary>
         public Sample3 Test3 { get; set; }
+
+        /// <summary>
+        /// 导航属性
+        /// </summary>
+        public List<Sample3> TestList { get; set; }
     }
 }
