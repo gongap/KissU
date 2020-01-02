@@ -37,14 +37,13 @@ namespace KissU.SecurityTokenService.Services
             var request = new LoginRequest();
             request.Account = context.UserName;
             request.Password = context.Password;
-            //request.ApplicationCode = context.Request.Client.ClientId;
+            //request.ClientId = context.Request.Client.ClientId;
             try
             {
                 var result = await _securityService.SignInAsync(request);
                 if (result.State == SignInState.Succeeded)
                 {
-                    context.Result =
-                        new GrantValidationResult(result.UserId, OidcConstants.AuthenticationMethods.Password);
+                    context.Result = new GrantValidationResult(result.UserId, OidcConstants.AuthenticationMethods.Password);
                     return;
                 }
 

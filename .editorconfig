@@ -1,8 +1,5 @@
 [*.cs]
 
-# IDE0051: 删除未使用的私有成员
-dotnet_diagnostic.IDE0051.severity = suggestion
-
 # SA1124: Do not use regions
 dotnet_diagnostic.SA1124.severity = none
 
@@ -11,12 +8,6 @@ dotnet_diagnostic.SA1309.severity = none
 
 # SA1402: File may only contain a single type
 dotnet_diagnostic.SA1402.severity = none
-
-# IDE0059: 不需要赋值
-csharp_style_unused_value_assignment_preference = discard_variable:suggestion
-
-# IDE0052: 删除未读的私有成员
-dotnet_diagnostic.IDE0052.severity = suggestion
 
 # SA1202: Elements should be ordered by access
 dotnet_diagnostic.SA1202.severity = none

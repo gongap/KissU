@@ -1,13 +1,11 @@
 ﻿using Autofac;
 using KissU.Modules.GreatWall.Data;
 using KissU.Modules.GreatWall.Data.UnitOfWorks.SqlServer;
-using KissU.Modules.GreatWall.Domain.Models;
 using KissU.Modules.GreatWall.Domain.UnitOfWorks;
 using KissU.Modules.IdentityServer.Data;
 using KissU.Modules.IdentityServer.Data.UnitOfWorks.SqlServer;
 using KissU.Modules.IdentityServer.Domain.UnitOfWorks;
 using KissU.SecurityTokenService.Extensions;
-using KissU.SecurityTokenService.Services;
 using KissU.Util.Datas.SqlServer;
 using KissU.Util.Logs.Extensions;
 using Microsoft.AspNetCore.Builder;
@@ -43,9 +41,13 @@ namespace KissU.SecurityTokenService
         /// <param name="services">服务集合</param>
         /// <returns></returns>
         public void ConfigureServices(IServiceCollection services)
-        {
+        {            
             services.AddRazorPages();
             services.AddServerSideBlazor();
+
+            // 添加SqlServer工作单元
+            services.AddUnitOfWork<IIdentityServerUnitOfWork, IdentityServerUnitOfWork>(Configuration.GetConnectionString(IdentityServerDataConstants.ConnectionStringName));
+            services.AddUnitOfWork<IGreatWallUnitOfWork, GreatWallUnitOfWork>(Configuration.GetConnectionString(GreatWallDataConstants.ConnectionStringName));
 
             // 添加AspNetIdentity
             services.AspNetIdentity(options =>
@@ -62,10 +64,6 @@ namespace KissU.SecurityTokenService
                 options.EnableTokenCleanup = true;
                 options.TokenCleanupInterval = 600;
             });
-
-            // 添加SqlServer工作单元
-            services.AddUnitOfWork<IIdentityServerUnitOfWork, IdentityServerUnitOfWork>(Configuration.GetConnectionString(IdentityServerDataConstants.ConnectionStringName));
-            services.AddUnitOfWork<IGreatWallUnitOfWork, GreatWallUnitOfWork>(Configuration.GetConnectionString(GreatWallDataConstants.ConnectionStringName));
 
             //添加NLog日志操作
             services.AddNLog();
@@ -96,14 +94,12 @@ namespace KissU.SecurityTokenService
                 app.UseHsts();
             }
 
-            app.UseIdentityServer();
-            app.UseAuthorization();
-
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthorization();
+            app.UseIdentityServer();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapBlazorHub();

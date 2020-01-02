@@ -3,7 +3,6 @@ using KissU.Modules.GreatWall.Data.Repositories;
 using KissU.Modules.GreatWall.Domain.Models;
 using KissU.Modules.GreatWall.Domain.Services.Implements;
 using KissU.Modules.GreatWall.Domain.Shared.Describers;
-using KissU.Modules.GreatWall.Domain.Shared.Extensions;
 using KissU.Modules.GreatWall.Domain.Shared.Options;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,12 +23,9 @@ namespace KissU.SecurityTokenService.Extensions
         {
             var permissionOptions = new PermissionOptions();
             setupAction?.Invoke(permissionOptions);
-            services.AddIdentity<User, Role>(options => options.Load(permissionOptions))
-                .AddUserStore<UserRepository>()
-                .AddRoleStore<RoleRepository>()
-                .AddUserManager<IdentityUserManager>()
-                .AddRoleManager<IdentityRoleManager>()
-                .AddSignInManager<IdentitySignInManager>()
+            services.AddIdentity<User, Role>()
+                .AddUserStore<UserRepository>().AddRoleStore<RoleRepository>()
+                .AddUserManager<IdentityUserManager>().AddRoleManager<IdentityRoleManager>().AddSignInManager<IdentitySignInManager>()
                 .AddDefaultTokenProviders();
             services.AddScoped<IdentityErrorDescriber, IdentityErrorChineseDescriber>();
             return services;
