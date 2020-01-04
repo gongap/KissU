@@ -213,6 +213,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.GreatWall.App
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.SecurityTokenService", "src\KissU.Applications\KissU.SecurityTokenService\KissU.SecurityTokenService.csproj", "{E7E07400-1FB6-4512-9179-A3A416BE5FBC}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.IdentityServer", "src\KissU.Applications\KissU.IdentityServer\KissU.IdentityServer.csproj", "{A5ECD17D-3F5F-4FCF-8824-894C0E345026}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -511,6 +513,10 @@ Global
 		{E7E07400-1FB6-4512-9179-A3A416BE5FBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7E07400-1FB6-4512-9179-A3A416BE5FBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7E07400-1FB6-4512-9179-A3A416BE5FBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5ECD17D-3F5F-4FCF-8824-894C0E345026}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5ECD17D-3F5F-4FCF-8824-894C0E345026}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5ECD17D-3F5F-4FCF-8824-894C0E345026}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5ECD17D-3F5F-4FCF-8824-894C0E345026}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -606,6 +612,7 @@ Global
 		{0BAC2644-ACA6-4198-8D3B-519E68624A16} = {245EE59A-3EDE-4FBD-BC25-A61655E476B5}
 		{875CEEFC-D1F4-48DA-8C3E-036C26877EB9} = {989E8619-53BE-48E2-B062-047940FBBCE2}
 		{E7E07400-1FB6-4512-9179-A3A416BE5FBC} = {F7F6CB7E-792F-496B-925A-BB5B0DB67DB6}
+		{A5ECD17D-3F5F-4FCF-8824-894C0E345026} = {F7F6CB7E-792F-496B-925A-BB5B0DB67DB6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}

@@ -26,11 +26,8 @@ namespace KissU.Modules.GreatWall.Application.Extensions
             setupAction?.Invoke(permissionOptions);
             services.AddIdentityCore<User>(options => options.Load(permissionOptions))
                 .AddRoles<Role>()
-                .AddUserStore<UserRepository>()
-                .AddRoleStore<RoleRepository>()
-                .AddUserManager<IdentityUserManager>()
-                .AddRoleManager<IdentityRoleManager>()
-                .AddSignInManager<IdentitySignInManager>()
+                .AddUserStore<UserRepository>().AddRoleStore<RoleRepository>()
+                .AddUserManager<IdentityUserManager>().AddRoleManager<IdentityRoleManager>().AddSignInManager<IdentitySignInManager>()
                 .AddDefaultTokenProviders();
             services.AddScoped<IdentityErrorDescriber, IdentityErrorChineseDescriber>();
             return services;

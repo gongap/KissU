@@ -8,7 +8,7 @@ using KissU.Modules.GreatWall.Domain.Shared.Options;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace KissU.SecurityTokenService.Extensions
+namespace KissU.IdentityServer.Extensions
 {
     /// <summary>
     /// AspNetIdentity扩展

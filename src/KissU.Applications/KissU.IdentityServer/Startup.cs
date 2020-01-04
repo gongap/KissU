@@ -1,24 +1,20 @@
 ﻿using Autofac;
+using KissU.IdentityServer.Extensions;
 using KissU.Modules.GreatWall.Data;
 using KissU.Modules.GreatWall.Data.UnitOfWorks.SqlServer;
-using KissU.Modules.GreatWall.Domain.Models;
-using KissU.Modules.GreatWall.Domain.Services.Implements;
 using KissU.Modules.GreatWall.Domain.UnitOfWorks;
 using KissU.Modules.IdentityServer.Data;
 using KissU.Modules.IdentityServer.Data.UnitOfWorks.SqlServer;
 using KissU.Modules.IdentityServer.Domain.UnitOfWorks;
-using KissU.SecurityTokenService.Extensions;
 using KissU.Util.Datas.SqlServer;
 using KissU.Util.Logs.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace KissU.SecurityTokenService
+namespace KissU.IdentityServer
 {
     /// <summary>
     /// 启动配置
@@ -46,8 +42,7 @@ namespace KissU.SecurityTokenService
         /// <returns></returns>
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages();
-            services.AddServerSideBlazor();
+            services.AddControllersWithViews();
 
             // 添加SqlServer工作单元
             services.AddUnitOfWork<IIdentityServerUnitOfWork, IdentityServerUnitOfWork>(Configuration.GetConnectionString(IdentityServerDataConstants.ConnectionStringName));
@@ -94,21 +89,16 @@ namespace KissU.SecurityTokenService
             }
             else
             {
-                app.UseExceptionHandler("/Error");
-                app.UseHsts();
+                app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseIdentityServer();
-
             app.UseRouting();
-
+            app.UseIdentityServer();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapBlazorHub();
-                endpoints.MapFallbackToPage("/_Host");
+                endpoints.MapDefaultControllerRoute();
             });
         }
     }
