@@ -13,6 +13,25 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KissU.Modules.GreatWall.Domain.Shared\KissU.Modules.GreatWall.Domain.Shared.csproj" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Util\KissU.Util\KissU.Util.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="GreatWallResource.Designer.cs">
+      <DependentUpon>GreatWallResource.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="GreatWallResource.resx">
+      <LastGenOutput>GreatWallResource.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
