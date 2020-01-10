@@ -24,7 +24,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         /// </summary>
         /// <param name="roleManager">Identity角色服务</param>
         /// <param name="roleRepository">角色仓储</param>
-        public RoleManager(RoleManager<Role> roleManager, IRoleRepository roleRepository)
+        public RoleManager(IdentityRoleManager roleManager, IRoleRepository roleRepository)
         {
             Manager = roleManager;
             RoleRepository = roleRepository;
@@ -33,7 +33,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         /// <summary>
         /// Identity角色服务
         /// </summary>
-        private RoleManager<Role> Manager { get; }
+        private IdentityRoleManager Manager { get; }
 
         /// <summary>
         /// 角色仓储

@@ -11,7 +11,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
     /// <summary>
     /// Identity用户服务
     /// </summary>
-    public class IdentityUserManager : AspNetUserManager<User>
+    public class IdentityUserManager : UserManager<User>
     {
         /// <summary>
         /// 初始化Identity用户服务

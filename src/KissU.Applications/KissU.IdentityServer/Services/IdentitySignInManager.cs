@@ -23,10 +23,11 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         /// <param name="optionsAccessor">Identity配置</param>
         /// <param name="logger">日志</param>
         /// <param name="schemes">认证架构提供程序</param>
+        /// <param name="confirmation">检查是否确认了用户帐户</param>
         public IdentitySignInManager(IdentityUserManager userManager, IHttpContextAccessor contextAccessor,
             IUserClaimsPrincipalFactory<User> claimsFactory, IOptions<IdentityOptions> optionsAccessor,
-            ILogger<IdentitySignInManager> logger, IAuthenticationSchemeProvider schemes)
-            : base(userManager, contextAccessor, claimsFactory, optionsAccessor, logger, schemes)
+            ILogger<IdentitySignInManager> logger, IAuthenticationSchemeProvider schemes, IUserConfirmation<User> confirmation)
+            : base(userManager, contextAccessor, claimsFactory, optionsAccessor, logger, schemes, confirmation)
         {
         }
 
