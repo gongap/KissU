@@ -1,6 +1,6 @@
 {
   //微服务框架配置
-  "KissU": {
+  "ServerEngine": {
     "Ip": "${KissU_Server_IP}|127.0.0.1", //"配置微服务主机的Ip地址或域名": null,
     "WatchInterval": 30, //设置向服务注册中心更新路由数据的心跳值，缺省值为20s
     "Port": "${KissU_Server_Port}|91", //微服务主机运行的端口号

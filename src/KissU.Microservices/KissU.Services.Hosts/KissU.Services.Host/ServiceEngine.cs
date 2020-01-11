@@ -8,14 +8,13 @@ namespace KissU.Services.Host
     /// </summary>
     public class ServiceEngine : VirtualPathProviderServiceEngine
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ServiceEngine"/> class.
+        /// </summary>
         public ServiceEngine()
         {
-            ModuleServiceLocationFormats = new[] {EnvironmentHelper.GetEnvironmentVariable("${ModulePath}|Modules")};
-            ComponentServiceLocationFormats =
-                new[] {EnvironmentHelper.GetEnvironmentVariable("${ComponentPath}|Components")};
-            //ModuleServiceLocationFormats = new[] {
-            //   ""
-            //};
+            ModuleServiceLocationFormats = new[] { EnvironmentHelper.GetEnvironmentVariable("${ModulePath}|Modules") };
+            ComponentServiceLocationFormats = new[] { EnvironmentHelper.GetEnvironmentVariable("${ComponentPath}|Components") };
         }
     }
 }

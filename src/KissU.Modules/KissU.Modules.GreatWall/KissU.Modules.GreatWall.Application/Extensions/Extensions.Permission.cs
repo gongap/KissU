@@ -22,14 +22,14 @@ namespace KissU.Modules.GreatWall.Application.Extensions
         /// <param name="setupAction">配置操作</param>
         public static IServiceCollection AddPermission(this IServiceCollection services, Action<PermissionOptions> setupAction = null)
         {
-            //var permissionOptions = new PermissionOptions();
-            //setupAction?.Invoke(permissionOptions);
-            //services.AddIdentityCore<User>(options => options.Load(permissionOptions))
-            //    .AddRoles<Role>()
-            //    .AddUserStore<UserRepository>().AddRoleStore<RoleRepository>()
-            //    .AddUserManager<IdentityUserManager>().AddRoleManager<IdentityRoleManager>().AddSignInManager<IdentitySignInManager>()
-            //    .AddDefaultTokenProviders();
-            //services.AddScoped<IdentityErrorDescriber, IdentityErrorChineseDescriber>();
+            var permissionOptions = new PermissionOptions();
+            setupAction?.Invoke(permissionOptions);
+            services.AddIdentityCore<User>(options => options.Load(permissionOptions))
+                .AddRoles<Role>()
+                .AddUserStore<UserRepository>().AddRoleStore<RoleRepository>()
+                .AddUserManager<IdentityUserManager>().AddRoleManager<IdentityRoleManager>().AddSignInManager<IdentitySignInManager>()
+                .AddDefaultTokenProviders();
+            services.AddScoped<IdentityErrorDescriber, IdentityErrorChineseDescriber>();
             return services;
         }
     }

@@ -9,7 +9,7 @@ namespace KissU.Core.CPlatform
     {
         #region 字段
         private static AddressSelectorMode _loadBalanceMode=AddressSelectorMode.Polling;
-        private static KissUServerOptions _serverOptions=new KissUServerOptions();
+        private static ServerEngineOptions _serverOptions=new ServerEngineOptions();
         #endregion
 
         public static IConfigurationRoot Configuration { get; internal set; }
@@ -41,7 +41,7 @@ namespace KissU.Core.CPlatform
             return Configuration?.GetSection(name);
         }
 
-        public static KissUServerOptions ServerOptions
+        public static ServerEngineOptions ServerOptions
         {
             get
             {

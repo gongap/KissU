@@ -51,10 +51,10 @@ namespace KissU.Core.CPlatform.Configurations
                 if (!string.IsNullOrEmpty(basePath))
                     builder.SetBasePath(basePath);
                 AppConfig.Configuration = builder.Build();
-                AppConfig.ServerOptions = AppConfig.Configuration.Get<KissUServerOptions>();
-                var section = AppConfig.Configuration.GetSection("KissU");
+                AppConfig.ServerOptions = AppConfig.Configuration.Get<ServerEngineOptions>();
+                var section = AppConfig.Configuration.GetSection("ServerEngine");
                 if (section.Exists())
-                    AppConfig.ServerOptions = AppConfig.Configuration.GetSection("KissU").Get<KissUServerOptions>();
+                    AppConfig.ServerOptions = AppConfig.Configuration.GetSection("ServerEngine").Get<ServerEngineOptions>();
             }
             return builder;
         }
