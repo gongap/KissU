@@ -43,7 +43,6 @@ namespace KissU.Modules.IdentityServer.DbMigrator
                 }
             }
         }
-
         public static async Task EnsureSeedData<TDbContext>(IServiceProvider serviceProvider)
             where TDbContext : DbContext
         {

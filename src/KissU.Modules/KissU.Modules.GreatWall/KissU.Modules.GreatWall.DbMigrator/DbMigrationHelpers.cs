@@ -50,6 +50,7 @@ namespace KissU.Modules.GreatWall.DbMigrator
             using (var scope = serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
                 var context = scope.ServiceProvider.GetRequiredService<TDbContext>();
+
                 await context.SaveChangesAsync();
             }
         }
