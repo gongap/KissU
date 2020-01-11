@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Configurations;
 using KissU.Core.CPlatform.Diagnostics;
 using KissU.Core.CPlatform.Engines;
 using KissU.Core.CPlatform.Module;
@@ -51,6 +52,11 @@ namespace KissU.Core.KestrelHttpServer
         { 
             try
             {
+                if (AppConfig.ServerOptions.DockerDeployMode == DockerDeployMode.Swarm)
+                {
+                    address = IPAddress.Any;
+                }
+
                 var hostBuilder = new WebHostBuilder()
                   .UseContentRoot(Directory.GetCurrentDirectory())
                   .UseKestrel((context,options) =>

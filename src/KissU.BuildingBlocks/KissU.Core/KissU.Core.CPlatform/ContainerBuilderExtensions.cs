@@ -44,6 +44,8 @@ using KissU.Core.CPlatform.Support.Implementation;
 using KissU.Core.CPlatform.Transport.Codec;
 using KissU.Core.CPlatform.Transport.Codec.Implementation;
 using KissU.Core.CPlatform.Utilities;
+using KissU.Core.CPlatform.Validation;
+using KissU.Core.CPlatform.Validation.Implementation;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyModel;
 using Microsoft.Extensions.Logging;
@@ -446,6 +448,8 @@ namespace KissU.Core.CPlatform
             services.RegisterType(typeof(AuthorizationAttribute)).As(typeof(IAuthorizationFilter)).SingleInstance();
             //注册基本过滤 
             services.RegisterType(typeof(AuthorizationAttribute)).As(typeof(IFilter)).SingleInstance();
+            //注册默认校验处理器
+            services.RegisterType(typeof(DefaultValidationProcessor)).As(typeof(IValidationProcessor)).SingleInstance();
             //注册服务器路由接口 
             services.RegisterType(typeof(DefaultServiceRouteProvider)).As(typeof(IServiceRouteProvider)).SingleInstance();
             //注册服务路由工厂 

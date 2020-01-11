@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
+﻿using Microsoft.Extensions.Logging;
 using KissU.Core.CPlatform;
 using KissU.Core.CPlatform.Convertibles;
 using KissU.Core.CPlatform.Filters;
@@ -13,7 +8,14 @@ using KissU.Core.CPlatform.Runtime.Server;
 using KissU.Core.CPlatform.Transport;
 using KissU.Core.CPlatform.Utilities;
 using KissU.Core.ProxyGenerator;
-using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Threading.Tasks;
+using KissU.Core.CPlatform.Exceptions;
+using static KissU.Core.CPlatform.Utilities.FastInvoke;
 
 namespace KissU.Core.Protocol.Http
 {
@@ -27,8 +29,8 @@ namespace KissU.Core.Protocol.Http
         private readonly IAuthorizationFilter _authorizationFilter;
         private readonly CPlatformContainer _serviceProvider;
         private readonly ITypeConvertibleService _typeConvertibleService;
-        private readonly ConcurrentDictionary<string,ValueTuple< FastInvoke.FastInvokeHandler,object, MethodInfo>> _concurrent =
- new ConcurrentDictionary<string, ValueTuple<FastInvoke.FastInvokeHandler, object, MethodInfo>>();
+        private readonly ConcurrentDictionary<string, ValueTuple<FastInvokeHandler, object, MethodInfo>> _concurrent =
+ new ConcurrentDictionary<string, ValueTuple<FastInvokeHandler, object, MethodInfo>>();
         #endregion Field
 
         #region Constructor
@@ -101,22 +103,22 @@ namespace KissU.Core.Protocol.Http
         private async Task<HttpResultMessage<object>> RemoteExecuteAsync(ServiceEntry entry, HttpMessage httpMessage)
         {
             HttpResultMessage<object> resultMessage = new HttpResultMessage<object>();
-                var provider = _concurrent.GetValueOrDefault(httpMessage.RoutePath);
-                var list = new List<object>();
-                if (provider.Item1 == null)
-                {
-                    provider.Item2 = ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy(httpMessage.ServiceKey, entry.Type);
-                    provider.Item3 = provider.Item2.GetType().GetTypeInfo().DeclaredMethods.Where(p => p.Name == entry.MethodName).FirstOrDefault(); ;
-                    provider.Item1 = FastInvoke.GetMethodInvoker(provider.Item3);
-                    _concurrent.GetOrAdd(httpMessage.RoutePath, ValueTuple.Create<FastInvoke.FastInvokeHandler, object, MethodInfo>(provider.Item1, provider.Item2, provider.Item3));
-                }
-                foreach (var parameterInfo in provider.Item3.GetParameters())
-                {
-                    var value = httpMessage.Parameters[parameterInfo.Name];
-                    var parameterType = parameterInfo.ParameterType;
-                    var parameter = _typeConvertibleService.Convert(value, parameterType);
-                    list.Add(parameter);
-                }
+            var provider = _concurrent.GetValueOrDefault(httpMessage.RoutePath);
+            var list = new List<object>();
+            if (provider.Item1 == null)
+            {
+                provider.Item2 = ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy(httpMessage.ServiceKey, entry.Type);
+                provider.Item3 = provider.Item2.GetType().GetTypeInfo().DeclaredMethods.Where(p => p.Name == entry.MethodName).FirstOrDefault(); ;
+                provider.Item1 = FastInvoke.GetMethodInvoker(provider.Item3);
+                _concurrent.GetOrAdd(httpMessage.RoutePath, ValueTuple.Create<FastInvokeHandler, object, MethodInfo>(provider.Item1, provider.Item2, provider.Item3));
+            }
+            foreach (var parameterInfo in provider.Item3.GetParameters())
+            {
+                var value = httpMessage.Parameters[parameterInfo.Name];
+                var parameterType = parameterInfo.ParameterType;
+                var parameter = _typeConvertibleService.Convert(value, parameterType);
+                list.Add(parameter);
+            }
             try
             {
                 var methodResult = provider.Item1(provider.Item2, list.ToArray());
@@ -135,6 +137,14 @@ namespace KissU.Core.Protocol.Http
                 }
                 resultMessage.IsSucceed = resultMessage.Entity != null;
                 resultMessage.StatusCode = resultMessage.IsSucceed ? (int)StatusCode.Success : (int)StatusCode.RequestError;
+            }
+            catch (ValidateException validateException)
+            {
+                if (_logger.IsEnabled(LogLevel.Error))
+                    _logger.LogError(validateException, "执行本地逻辑时候发生了错误。", validateException);
+
+                resultMessage.Message = validateException.Message;
+                resultMessage.StatusCode = validateException.HResult;
             }
             catch (Exception ex)
             {
@@ -166,6 +176,14 @@ namespace KissU.Core.Protocol.Http
                 }
                 resultMessage.IsSucceed = resultMessage.Entity != null;
                 resultMessage.StatusCode = resultMessage.IsSucceed ? (int)StatusCode.Success : (int)StatusCode.RequestError;
+            }
+            catch (ValidateException validateException)
+            {
+                if (_logger.IsEnabled(LogLevel.Error))
+                    _logger.LogError(validateException, "执行本地逻辑时候发生了错误。", validateException);
+
+                resultMessage.Message = validateException.Message;
+                resultMessage.StatusCode = validateException.HResult;
             }
             catch (Exception exception)
             {

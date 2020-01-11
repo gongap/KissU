@@ -1,24 +1,30 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Diagnostics;
-using System.Reflection;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 using KissU.Core.CPlatform;
 using KissU.Core.CPlatform.Convertibles;
-using KissU.Core.CPlatform.Diagnostics;
 using KissU.Core.CPlatform.Filters;
 using KissU.Core.CPlatform.Messages;
 using KissU.Core.CPlatform.Routing;
 using KissU.Core.CPlatform.Runtime.Server;
 using KissU.Core.CPlatform.Transport;
-using KissU.Core.CPlatform.Transport.Implementation;
 using KissU.Core.CPlatform.Utilities;
 using KissU.Core.ProxyGenerator;
-using Microsoft.Extensions.Logging;
+using System;
+using System.Linq;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
+using static KissU.Core.CPlatform.Utilities.FastInvoke;
+using System.Diagnostics;
+using KissU.Core.CPlatform.Diagnostics;
+using KissU.Core.CPlatform.Exceptions;
+using KissU.Core.CPlatform.Transport.Implementation;
 
 namespace KissU.Core.KestrelHttpServer
 {
-    public  class HttpExecutor : IServiceExecutor
+    public class HttpExecutor : IServiceExecutor
     {
         #region Field
         private readonly IServiceEntryLocate _serviceEntryLocate;
@@ -28,8 +34,8 @@ namespace KissU.Core.KestrelHttpServer
         private readonly CPlatformContainer _serviceProvider;
         private readonly ITypeConvertibleService _typeConvertibleService;
         private readonly IServiceProxyProvider _serviceProxyProvider;
-        private readonly ConcurrentDictionary<string, ValueTuple<FastInvoke.FastInvokeHandler, object, MethodInfo>> _concurrent =
-        new ConcurrentDictionary<string, ValueTuple<FastInvoke.FastInvokeHandler, object, MethodInfo>>();
+        private readonly ConcurrentDictionary<string, ValueTuple<FastInvokeHandler, object, MethodInfo>> _concurrent =
+        new ConcurrentDictionary<string, ValueTuple<FastInvokeHandler, object, MethodInfo>>();
         #endregion Field
 
         #region Constructor
@@ -77,7 +83,7 @@ namespace KissU.Core.KestrelHttpServer
 
             HttpResultMessage<object> httpResultMessage = new HttpResultMessage<object>() { };
 
-            if (entry!=null && _serviceProvider.IsRegisteredWithKey(httpMessage.ServiceKey, entry.Type))
+            if (entry != null && _serviceProvider.IsRegisteredWithKey(httpMessage.ServiceKey, entry.Type))
             {
                 //执行本地代码。
                 httpResultMessage = await LocalExecuteAsync(entry, httpMessage);
@@ -86,9 +92,9 @@ namespace KissU.Core.KestrelHttpServer
             {
                 httpResultMessage = await RemoteExecuteAsync(httpMessage);
             }
-            await SendRemoteInvokeResult(sender,message.Id, httpResultMessage);
+            await SendRemoteInvokeResult(sender, message.Id, httpResultMessage);
         }
-        
+
 
         #endregion Implementation of IServiceExecutor
 
@@ -99,7 +105,7 @@ namespace KissU.Core.KestrelHttpServer
             HttpResultMessage<object> resultMessage = new HttpResultMessage<object>();
             try
             {
-                resultMessage.Entity=await _serviceProxyProvider.Invoke<object>(httpMessage.Parameters, httpMessage.RoutePath, httpMessage.ServiceKey);
+                resultMessage.Entity = await _serviceProxyProvider.Invoke<object>(httpMessage.Parameters, httpMessage.RoutePath, httpMessage.ServiceKey);
                 resultMessage.IsSucceed = resultMessage.Entity != default;
                 resultMessage.StatusCode = resultMessage.IsSucceed ? (int)StatusCode.Success : (int)StatusCode.RequestError;
             }
@@ -131,8 +137,18 @@ namespace KissU.Core.KestrelHttpServer
                     if (taskType.IsGenericType)
                         resultMessage.Entity = taskType.GetProperty("Result").GetValue(task);
                 }
+
                 resultMessage.IsSucceed = resultMessage.Entity != null;
-                resultMessage.StatusCode = resultMessage.IsSucceed ? (int)StatusCode.Success : (int)StatusCode.RequestError;
+                resultMessage.StatusCode =
+                    resultMessage.IsSucceed ? (int)StatusCode.Success : (int)StatusCode.RequestError;
+            }
+            catch (ValidateException validateException)
+            {
+                if (_logger.IsEnabled(LogLevel.Error))
+                    _logger.LogError(validateException, "执行本地逻辑时候发生了错误。", validateException);
+
+                resultMessage.Message = validateException.Message;
+                resultMessage.StatusCode = validateException.HResult;
             }
             catch (Exception exception)
             {
@@ -144,14 +160,14 @@ namespace KissU.Core.KestrelHttpServer
             return resultMessage;
         }
 
-        private async Task SendRemoteInvokeResult(IMessageSender sender,string messageId, HttpResultMessage resultMessage)
+        private async Task SendRemoteInvokeResult(IMessageSender sender, string messageId, HttpResultMessage resultMessage)
         {
             try
             {
                 if (_logger.IsEnabled(LogLevel.Debug))
                     _logger.LogDebug("准备发送响应消息。");
 
-                await sender.SendAndFlushAsync(new TransportMessage(messageId,resultMessage));
+                await sender.SendAndFlushAsync(new TransportMessage(messageId, resultMessage));
                 if (_logger.IsEnabled(LogLevel.Debug))
                     _logger.LogDebug("响应消息发送成功。");
             }
@@ -205,4 +221,3 @@ namespace KissU.Core.KestrelHttpServer
 
     }
 }
-

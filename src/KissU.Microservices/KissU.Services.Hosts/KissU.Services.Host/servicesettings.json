@@ -1,170 +1,170 @@
 {
-    //微服务框架配置
-    "KissU": {
-        "Ip": "${KissU_Server_IP}|127.0.0.1", //"配置微服务主机的Ip地址或域名": null,
-        "WatchInterval": 30, //设置向服务注册中心更新路由数据的心跳值，缺省值为20s
-        "Port": "${KissU_Server_Port}|91", //微服务主机运行的端口号
-        "MappingIp": "${Mapping_ip}", //映射的Ip地址，暂不需要配置
-        "MappingPort": "${Mapping_Port}", //映射的端口号，	暂不需要配置
-        "Token": "true", //是否验证Token	缺省值为True
-        "WanIp": "${WanIp}",
-        "Libuv": true, //是否开启Libuv	缺省值为false
-        "SoBacklog": 100,
-        "MaxConcurrentRequests": 20,
-        "DisconnTimeInterval": 30,
-        "ExecutionTimeoutInMilliseconds": 1000,
-        "Protocol": "${Protocol}|None", //配置微服务组件支持的协议 缺省值为: None; 可选的值: None Tcp Http Ws
-        "RootPath": "${RootPath}|D:\\userapp", //指定服务引擎解析的业务模块路径
-        "WebRootPath": "${WebRootPath}|D:\\UserApp\\wwwroot",
-        "IsModulePerLifetimeScope": false,
-        "ReloadOnChange": false,
-        "Ports": {
-            "HttpPort": "${HttpPort}|8001", //指定微服务对外提供的Http端口号,微服务组件必须依赖KestrelHttpModule才会对外提供Http服务，该配置项才有效
-            "WSPort": "${WSPort}|9001", //指定微服务对外提供的Ws端口号,微服务组件必须依赖WSProtocolModule才会对外提供WS服务，该配置项才有效
-            "MQTTPort": "${MQTTPort}|7001" //指定微服务对外提供的Mqtt端口号,微服务组件必须依赖MqttProtocolModule才会对外提供Mqtt服务，该配置项才有效
-        },
-        "RequestCacheEnabled": false,
-        "Packages": [
-            {
-                "TypeName": "EnginePartModule",
-                "Using":
-                    "${UseEngineParts}|ServiceProxyModule;DotNettyModule;NLogModule;MessagePackModule;ConsulModule;WSProtocolModule;MqttProtocolModule;EventBusRabbitMQModule;CachingModule;KestrelHttpModule;DnsProtocolModule;SwaggerModule;ApiGeteWayModule;SkywalkingModule;KestrelNLogModule;KestrelNLogModule;ServiceHostModule;GrpcModule"
-            }
-        ]
-    }, //如果引用多个同类型的组件，需要配置Packages，如果是自定义按需引用，无需配置Packages
-    "Consul": {
-        "ConnectionString": "${Register_Conn}|127.0.0.1:8500", // "127.0.0.1:8500,127.0.0.1:9500",
-        "SessionTimeout": "${Register_SessionTimeout}|50",
-        "RoutePath": "${Register_RoutePath}",
-        "ReloadOnChange": true,
-        "EnableChildrenMonitor": false
+  //微服务框架配置
+  "KissU": {
+    "Ip": "${KissU_Server_IP}|127.0.0.1", //"配置微服务主机的Ip地址或域名": null,
+    "WatchInterval": 30, //设置向服务注册中心更新路由数据的心跳值，缺省值为20s
+    "Port": "${KissU_Server_Port}|91", //微服务主机运行的端口号
+    "MappingIp": "${Mapping_ip}", //映射的Ip地址，暂不需要配置
+    "MappingPort": "${Mapping_Port}", //映射的端口号，	暂不需要配置
+    "Token": "true", //是否验证Token	缺省值为True
+    "WanIp": "${WanIp}",
+    "DockerDeployMode": "${DockerDeployMode}|Standard",
+    "Libuv": true, //是否开启Libuv	缺省值为false
+    "SoBacklog": 100,
+    "MaxConcurrentRequests": 20,
+    "DisconnTimeInterval": 30,
+    "ExecutionTimeoutInMilliseconds": 1000,
+    "Protocol": "${Protocol}|None", //配置微服务组件支持的协议 缺省值为: None; 可选的值: None Tcp Http Ws
+    "RootPath": "${RootPath}|D:\\userapp", //指定服务引擎解析的业务模块路径
+    "WebRootPath": "${WebRootPath}|D:\\UserApp\\wwwroot",
+    "IsModulePerLifetimeScope": false,
+    "ReloadOnChange": false,
+    "Ports": {
+      "HttpPort": "${HttpPort}|8001", //指定微服务对外提供的Http端口号,微服务组件必须依赖KestrelHttpModule才会对外提供Http服务，该配置项才有效
+      "WSPort": "${WSPort}|9001", //指定微服务对外提供的Ws端口号,微服务组件必须依赖WSProtocolModule才会对外提供WS服务，该配置项才有效
+      "MQTTPort": "${MQTTPort}|7001" //指定微服务对外提供的Mqtt端口号,微服务组件必须依赖MqttProtocolModule才会对外提供Mqtt服务，该配置项才有效
     },
-    "Stage": {
-        "EnableHttps": true, // 不设置ports，默认httpsPort:443
-        "CertificateFileName": "${CertificateFileName}|",
-        "CertificateLocation": "${CertificateLocation}|pfxs",
-        "CertificatePassword": "${CertificatePassword}|",
-        "IsCamelCaseResolver": "${IsCamelCaseResolver}|true",
-        "Protocols": "Http1AndHttp2",
-        "ApiGetWay": {
-            "AccessTokenExpireTimeSpan": "30",
-            "AuthorizationRoutePath": "api/user/authentication",
-            "AuthorizationServiceKey": "User",
-            "TokenEndpointPath": "api/oauth2/token",
-            "CacheMode": "MemoryCache" //MemoryCache or  gateway.Redis save token
-        },
-        "AccessPolicy": {
-            "Origins": ["http://localhost:4200"],
-            "AllowAnyHeader": true,
-            "AllowAnyMethod": true
-        },
-        "AccessSetting": [
-            {
-                "BlackList": "${blacklist}|127.0.0.1",
-                "Enable": false
-            },
-            {
-                "WhiteList": "${whitelist}|192.168.10.50,192.168.43.0/24,127.0.0.1",
-                "BlackList": "${blacklist}|192.168.2.50,192.168.1.0/16",
-                "RoutePath": "api/user/exists",
-                "Enable": true
-            }
-        ],
-        "HttpsPort": "${StageHttpsPorts}|449,446",
-        "HttpPorts": "${StageHttpPorts}|285,282,283"
+    "RequestCacheEnabled": false,
+    "Packages": [
+      {
+        "TypeName": "EnginePartModule",
+        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;NLogModule;MessagePackModule;ConsulModule;WSProtocolModule;MqttProtocolModule;EventBusRabbitMQModule;CachingModule;KestrelHttpModule;DnsProtocolModule;SwaggerModule;ApiGeteWayModule;SkywalkingModule;KestrelNLogModule;KestrelNLogModule;ServiceHostModule;GrpcModule"
+      }
+    ]
+  }, //如果引用多个同类型的组件，需要配置Packages，如果是自定义按需引用，无需配置Packages
+  "Consul": {
+    "ConnectionString": "${Register_Conn}|127.0.0.1:8500", // "127.0.0.1:8500,127.0.0.1:9500",
+    "SessionTimeout": "${Register_SessionTimeout}|50",
+    "RoutePath": "${Register_RoutePath}",
+    "ReloadOnChange": true,
+    "EnableChildrenMonitor": false
+  },
+  "Stage": {
+    "EnableHttps": true, // 不设置ports，默认httpsPort:443
+    "CertificateFileName": "${CertificateFileName}|",
+    "CertificateLocation": "${CertificateLocation}|pfxs",
+    "CertificatePassword": "${CertificatePassword}|",
+    "IsCamelCaseResolver": "${IsCamelCaseResolver}|true",
+    "Protocols": "Http1AndHttp2",
+    "ApiGetWay": {
+      "AccessTokenExpireTimeSpan": "30",
+      "AuthorizationRoutePath": "api/user/authentication",
+      "AuthorizationServiceKey": "User",
+      "TokenEndpointPath": "api/oauth2/token",
+      "CacheMode": "MemoryCache" //MemoryCache or  gateway.Redis save token
     },
-    "Dns": {
-        "RootDnsAddress": "192.168.1.1",
-        "QueryTimeout": 1000
+    "AccessPolicy": {
+      "Origins": [ "http://localhost:4200" ],
+      "AllowAnyHeader": true,
+      "AllowAnyMethod": true
     },
-    //Swagger配置
-    //只有微服务组件对外提供了Http服务，才可能生成Swagger文档。微服务必须依赖KestrelHttpModule和安装了KissU.Core.Swagger组件包，并且配置了Swagger相关参数，才可能生成SwaggerApi文档。
-    "Swagger": {
-        "Info": {
-            "Version": "${SwaggerVersion}|V1", // Api文档的版本号,
-            "Title": "${SwaggerTitle}|KissU Services", //Api文档标题	建议填写微服务组件的名称
-            "Description": "${SwaggerDes}|KissU Services",
-            "Contact": {
-                "Name": "API Support", //联系人	建议填写微服务组件的开发责任人
-                "Url": "https://github.com/gongap/kissu", //微服务组件的项目地址
-                "Email": "gonganping@qq.com" //联系人的Email
-            },
-            "License": {
-                "Name": "MIT",
-                "Url": ""
-            }
-        },
-        "Options": {
-            "IgnoreFullyQualified": false,
-            "MapRoutePaths": [
-                {
-                    "SourceRoutePath": "api/user/authentication",
-                    "TargetRoutePath": "api/oauth2/token"
-                }
-            ]
+    "AccessSetting": [
+      {
+        "BlackList": "${blacklist}|127.0.0.1",
+        "Enable": false
+      },
+      {
+        "WhiteList": "${whitelist}|192.168.10.50,192.168.43.0/24,127.0.0.1",
+        "BlackList": "${blacklist}|192.168.2.50,192.168.1.0/16",
+        "RoutePath": "api/user/exists",
+        "Enable": true
+      }
+    ],
+    "HttpsPort": "${StageHttpsPorts}|449,446",
+    "HttpPorts": "${StageHttpPorts}|285,282,283"
+  },
+  "Dns": {
+    "RootDnsAddress": "192.168.1.1",
+    "QueryTimeout": 1000
+  },
+  //Swagger配置
+  //只有微服务组件对外提供了Http服务，才可能生成Swagger文档。微服务必须依赖KestrelHttpModule和安装了KissU.Core.Swagger组件包，并且配置了Swagger相关参数，才可能生成SwaggerApi文档。
+  "Swagger": {
+    "Info": {
+      "Version": "${SwaggerVersion}|V1", // Api文档的版本号,
+      "Title": "${SwaggerTitle}|KissU Services", //Api文档标题	建议填写微服务组件的名称
+      "Description": "${SwaggerDes}|KissU Services",
+      "Contact": {
+        "Name": "API Support", //联系人	建议填写微服务组件的开发责任人
+        "Url": "https://github.com/gongap/kissu", //微服务组件的项目地址
+        "Email": "gonganping@qq.com" //联系人的Email
+      },
+      "License": {
+        "Name": "MIT",
+        "Url": ""
+      }
+    },
+    "Options": {
+      "IgnoreFullyQualified": false,
+      "MapRoutePaths": [
+        {
+          "SourceRoutePath": "api/user/authentication",
+          "TargetRoutePath": "api/oauth2/token"
         }
-    },
-    "EventBus_Kafka": {
-        "Servers": "${EventBusConnection}|localhost:9092",
-        "MaxQueueBuffering": "${MaxQueueBuffering}|10",
-        "MaxSocketBlocking": "${MaxSocketBlocking}|10",
-        "EnableAutoCommit": "${EnableAutoCommit}|false",
-        "LogConnectionClose": "${LogConnectionClose}|false",
-        "OffsetReset": "${OffsetReset}|earliest",
-        "GroupID": "${EventBusGroupID}|kissUdemo"
-    },
-    "WebSocket": {
-        "WaitTime": 2,
-        "KeepClean": false,
-        "Behavior": {
-            "IgnoreExtensions": true,
-            "EmitOnPing": false
-        }
-    },
-    "EventBus": {
-        "EventBusConnection": "${EventBusConnection}|localhost",
-        "EventBusUserName": "${EventBusUserName}|guest",
-        "EventBusPassword": "${EventBusPassword}|guest",
-        "VirtualHost": "${VirtualHost}|/",
-        "MessageTTL": "${MessageTTL}|30000",
-        "RetryCount": "${RetryCount}|1",
-        "FailCount": "${FailCount}|3",
-        "prefetchCount": "${PrefetchCount}|0",
-        "BrokerName": "${BrokerName}|kissu_demo",
-        "Port": "${EventBusPort}|5672"
-    },
-    "Zookeeper": {
-        "ConnectionString": "${Zookeeper_ConnectionString}|127.0.0.1:2181", // "127.0.0.1:2181,127.0.0.1:2281",
-        "SessionTimeout": 50,
-        "ReloadOnChange": true
-    },
-    "RabbitMQ": {
-        "EventBus": {
-            "ConnectionName": "",
-            "ClientName": "",
-            "ExchangeName": ""
-        }
-
-    },
-    //日志级别配置
-    //该节点主要配置日志组件输出日志的级别。日志组件的输出级别除了受该节点本身的影响之外，还受日志组件本身的配置文件影响。 日志级别的配置与 Asp.Net Core 的配置一致
-    "Logging": {
-        "Debug": {
-            "LogLevel": {
-                "Default": "Information"
-            }
-        },
-        "Console": {
-            "IncludeScopes": true,
-            "LogLevel": {
-                "Default": "${LogLevel}|Debug"
-            }
-        },
-        "LogLevel": {
-            "Default": "${LogLevel}|Debug"
-        }
-    },
-    "ConnectionStrings": {
-        "DefaultConnection": "Server=.;Database=KissU;uid=sa;pwd=saP@ss123;MultipleActiveResultSets=true"
+      ]
     }
+  },
+  "EventBus_Kafka": {
+    "Servers": "${EventBusConnection}|localhost:9092",
+    "MaxQueueBuffering": "${MaxQueueBuffering}|10",
+    "MaxSocketBlocking": "${MaxSocketBlocking}|10",
+    "EnableAutoCommit": "${EnableAutoCommit}|false",
+    "LogConnectionClose": "${LogConnectionClose}|false",
+    "OffsetReset": "${OffsetReset}|earliest",
+    "GroupID": "${EventBusGroupID}|kissUdemo"
+  },
+  "WebSocket": {
+    "WaitTime": 2,
+    "KeepClean": false,
+    "Behavior": {
+      "IgnoreExtensions": true,
+      "EmitOnPing": false
+    }
+  },
+  "EventBus": {
+    "EventBusConnection": "${EventBusConnection}|localhost",
+    "EventBusUserName": "${EventBusUserName}|guest",
+    "EventBusPassword": "${EventBusPassword}|guest",
+    "VirtualHost": "${VirtualHost}|/",
+    "MessageTTL": "${MessageTTL}|30000",
+    "RetryCount": "${RetryCount}|1",
+    "FailCount": "${FailCount}|3",
+    "prefetchCount": "${PrefetchCount}|0",
+    "BrokerName": "${BrokerName}|kissu_demo",
+    "Port": "${EventBusPort}|5672"
+  },
+  "Zookeeper": {
+    "ConnectionString": "${Zookeeper_ConnectionString}|127.0.0.1:2181", // "127.0.0.1:2181,127.0.0.1:2281",
+    "SessionTimeout": 50,
+    "ReloadOnChange": true
+  },
+  "RabbitMQ": {
+    "EventBus": {
+      "ConnectionName": "",
+      "ClientName": "",
+      "ExchangeName": ""
+    }
+
+  },
+  //日志级别配置
+  //该节点主要配置日志组件输出日志的级别。日志组件的输出级别除了受该节点本身的影响之外，还受日志组件本身的配置文件影响。 日志级别的配置与 Asp.Net Core 的配置一致
+  "Logging": {
+    "Debug": {
+      "LogLevel": {
+        "Default": "Information"
+      }
+    },
+    "Console": {
+      "IncludeScopes": true,
+      "LogLevel": {
+        "Default": "${LogLevel}|Debug"
+      }
+    },
+    "LogLevel": {
+      "Default": "${LogLevel}|Debug"
+    }
+  },
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=.;Database=KissU;uid=sa;pwd=saP@ss123;MultipleActiveResultSets=true"
+  }
 }
