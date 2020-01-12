@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using KissU.Modules.GreatWall.Domain.Encryptors;
-using KissU.Modules.GreatWall.Domain.Shared;
 using KissU.Util;
 using KissU.Util.Exceptions;
 using KissU.Util.Security.Encryptors;
