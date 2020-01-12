@@ -1,4 +1,4 @@
-﻿namespace KissU.Modules.GreatWall.Domain.Shared.Options
+﻿namespace KissU.Modules.GreatWall.Domain.Options
 {
     /// <summary>
     /// 权限配置

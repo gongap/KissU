@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using KissU.Modules.GreatWall.Domain.Extensions;
 using KissU.Modules.GreatWall.Domain.Models;
 using KissU.Modules.GreatWall.Domain.Repositories;
 using KissU.Modules.GreatWall.Domain.Services.Abstractions;
 using KissU.Modules.GreatWall.Domain.Shared;
-using KissU.Modules.GreatWall.Domain.Shared.Extensions;
 using KissU.Util;
 using KissU.Util.Domains.Services;
 using KissU.Util.Exceptions;

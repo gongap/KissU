@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using KissU.IdentityServer.Extensions;
+using KissU.Modules.GreatWall.Application.Extensions;
 using KissU.Modules.GreatWall.Data;
 using KissU.Modules.GreatWall.Data.UnitOfWorks.SqlServer;
 using KissU.Modules.GreatWall.Domain.UnitOfWorks;

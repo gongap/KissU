@@ -1,4 +1,4 @@
-﻿namespace KissU.Modules.GreatWall.Domain.Shared.Enums
+﻿namespace KissU.Modules.GreatWall.Domain.Enums
 {
     /// <summary>
     /// 客户端密钥类型

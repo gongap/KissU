@@ -1,10 +1,10 @@
 ﻿using Autofac.Extensions.DependencyInjection;
 using KissU.Core.CPlatform;
 using KissU.Core.CPlatform.Module;
+using KissU.Modules.GreatWall.Application.Extensions;
 using KissU.Modules.GreatWall.Data;
 using KissU.Modules.GreatWall.Data.UnitOfWorks.SqlServer;
 using KissU.Modules.GreatWall.Domain.UnitOfWorks;
-using KissU.Modules.GreatWall.Service.Extensions;
 using KissU.Util.Datas.SqlServer;
 using Microsoft.Extensions.DependencyInjection;
 

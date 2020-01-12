@@ -7,7 +7,7 @@ using KissU.Modules.GreatWall.Application.Dtos.Extensions;
 using KissU.Modules.GreatWall.Application.Queries;
 using KissU.Modules.GreatWall.Data.Pos;
 using KissU.Modules.GreatWall.Data.Stores.Abstractions;
-using KissU.Modules.GreatWall.Domain.Shared.Enums;
+using KissU.Modules.GreatWall.Domain.Enums;
 using KissU.Util.Applications;
 using KissU.Util.Datas.Queries;
 using KissU.Util.Domains.Repositories;

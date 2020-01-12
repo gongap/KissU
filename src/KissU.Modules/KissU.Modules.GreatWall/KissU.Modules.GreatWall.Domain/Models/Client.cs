@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using KissU.Modules.GreatWall.Domain.Shared.Enums;
+using KissU.Modules.GreatWall.Domain.Enums;
 
 namespace KissU.Modules.GreatWall.Domain.Models
 {

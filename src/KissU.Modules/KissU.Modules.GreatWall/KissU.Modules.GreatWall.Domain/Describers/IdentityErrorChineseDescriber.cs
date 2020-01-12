@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace KissU.Modules.GreatWall.Domain.Shared.Describers
+namespace KissU.Modules.GreatWall.Domain.Describers
 {
     /// <summary>
     /// Identity中文错误描述

@@ -1,6 +1,6 @@
 ﻿using KissU.Util.Security.Encryptors;
 
-namespace KissU.Modules.GreatWall.Domain.Shared.Encryptors
+namespace KissU.Modules.GreatWall.Domain.Encryptors
 {
     /// <summary>
     /// 密码加密器

@@ -1,7 +1,7 @@
-﻿using KissU.Modules.GreatWall.Domain.Shared.Options;
+﻿using KissU.Modules.GreatWall.Domain.Options;
 using Microsoft.AspNetCore.Identity;
 
-namespace KissU.Modules.GreatWall.Domain.Shared.Extensions
+namespace KissU.Modules.GreatWall.Domain.Extensions
 {
     /// <summary>
     /// Identity配置扩展

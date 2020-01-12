@@ -1,5 +1,5 @@
-﻿using KissU.Modules.GreatWall.Domain.Models;
-using KissU.Modules.GreatWall.Domain.Shared.Enums;
+﻿using KissU.Modules.GreatWall.Domain.Enums;
+using KissU.Modules.GreatWall.Domain.Models;
 using KissU.Util.Helpers;
 using KissU.Util.Maps;
 

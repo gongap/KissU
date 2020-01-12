@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
-using KissU.Modules.GreatWall.Domain.Shared.Enums;
+using KissU.Modules.GreatWall.Domain.Enums;
 using KissU.Util.Datas.Persistence;
 using KissU.Util.Domains;
 using KissU.Util.Domains.Auditing;

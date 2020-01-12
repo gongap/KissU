@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KissU.Modules.GreatWall.Domain.Shared.Options
+namespace KissU.Modules.GreatWall.Domain.Options
 {
     /// <summary>
     /// 登录锁定配置

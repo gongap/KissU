@@ -1,4 +1,4 @@
-﻿namespace KissU.Modules.GreatWall.Domain.Shared.Results
+﻿namespace KissU.Modules.GreatWall.Domain.Results
 {
     /// <summary>
     /// 登录状态

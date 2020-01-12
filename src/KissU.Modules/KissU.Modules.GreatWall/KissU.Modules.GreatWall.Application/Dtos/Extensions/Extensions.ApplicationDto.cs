@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using KissU.Modules.GreatWall.Data.Pos;
 using KissU.Modules.GreatWall.Data.Pos.Models;
-using KissU.Modules.GreatWall.Domain.Shared.Enums;
+using KissU.Modules.GreatWall.Domain.Enums;
 using KissU.Util.Helpers;
 using KissU.Util.Maps;
 

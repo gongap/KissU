@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using KissU.Modules.GreatWall.Application.Dtos.Requests;
-using KissU.Modules.GreatWall.Domain.Shared.Results;
+using KissU.Modules.GreatWall.Domain.Results;
 using KissU.Util.Applications;
 using KissU.Util.Aspects;
 using KissU.Util.Validations.Aspects;

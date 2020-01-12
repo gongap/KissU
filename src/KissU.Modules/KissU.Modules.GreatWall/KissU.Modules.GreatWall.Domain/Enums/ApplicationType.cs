@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace KissU.Modules.GreatWall.Domain.Shared.Enums
+namespace KissU.Modules.GreatWall.Domain.Enums
 {
     /// <summary>
     /// 应用类型

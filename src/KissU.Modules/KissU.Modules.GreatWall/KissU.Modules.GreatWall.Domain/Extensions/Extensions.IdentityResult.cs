@@ -3,7 +3,7 @@ using System.Linq;
 using KissU.Util.Exceptions;
 using Microsoft.AspNetCore.Identity;
 
-namespace KissU.Modules.GreatWall.Domain.Shared.Extensions
+namespace KissU.Modules.GreatWall.Domain.Extensions
 {
     /// <summary>
     /// Identity结果扩展
