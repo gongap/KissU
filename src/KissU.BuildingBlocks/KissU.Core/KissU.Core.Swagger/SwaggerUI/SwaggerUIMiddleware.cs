@@ -27,7 +27,7 @@ namespace KissU.Core.Swagger.SwaggerUI
 
         public SwaggerUIMiddleware(
             RequestDelegate next,
-            IHostingEnvironment hostingEnv,
+            IWebHostEnvironment hostingEnv,
             ILoggerFactory loggerFactory,
             IOptions<SwaggerUIOptions> optionsAccessor)
             : this(next, hostingEnv, loggerFactory, optionsAccessor.Value)
@@ -35,7 +35,7 @@ namespace KissU.Core.Swagger.SwaggerUI
 
         public SwaggerUIMiddleware(
             RequestDelegate next,
-            IHostingEnvironment hostingEnv,
+            IWebHostEnvironment hostingEnv,
             ILoggerFactory loggerFactory,
             SwaggerUIOptions options)
         {
@@ -118,7 +118,7 @@ namespace KissU.Core.Swagger.SwaggerUI
 
         private StaticFileMiddleware CreateStaticFileMiddleware(
             RequestDelegate next,
-            IHostingEnvironment hostingEnv,
+            IWebHostEnvironment hostingEnv,
             ILoggerFactory loggerFactory,
             SwaggerUIOptions options)
         {

@@ -44,7 +44,6 @@ namespace KissU.Util
         public static Autofac.IContainer AddUtil(this ContainerBuilder builder, IServiceCollection services, Action<IAspectConfiguration> aopConfigAction, params IConfig[] configs)
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-            services.AddHttpContextAccessor();
             services.AddLogging();
             services.AddSingleton<ISession, Session>();
            return Bootstrapper.Run(builder, services, configs, aopConfigAction);

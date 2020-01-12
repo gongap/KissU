@@ -26,7 +26,7 @@ namespace KissU.IdentityServer.Extensions
             setupAction?.Invoke(permissionOptions);
             services.AddIdentity<User, Role>(options => options.Load(permissionOptions))
                 .AddUserStore<UserRepository>().AddRoleStore<RoleRepository>()
-                .AddUserManager<IdentityUserManager>().AddRoleManager<IdentityRoleManager>().AddSignInManager<IdentitySignInManager>()
+                .AddUserManager<IdentityUserManager>().AddSignInManager<IdentitySignInManager>()
                 .AddDefaultTokenProviders();
             services.AddScoped<IdentityErrorDescriber, IdentityErrorChineseDescriber>();
             return services;

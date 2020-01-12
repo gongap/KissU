@@ -6,7 +6,7 @@ namespace KissU.Core.Swagger.Swagger.Application
 {
     public class SwaggerSerializerFactory
     {
-        public static JsonSerializer Create(IOptions<MvcJsonOptions> applicationJsonOptions)
+        public static JsonSerializer Create(IOptions<MvcNewtonsoftJsonOptions> applicationJsonOptions)
         {
             // TODO: Should this handle case where mvcJsonOptions.Value == null?
             return new JsonSerializer

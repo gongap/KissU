@@ -10,7 +10,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
         private readonly SchemaRegistryOptions _schemaRegistryOptions;
 
         public SchemaRegistryFactory(
-            IOptions<MvcJsonOptions> mvcJsonOptionsAccessor,
+            IOptions<MvcNewtonsoftJsonOptions> mvcJsonOptionsAccessor,
             IOptions<SchemaRegistryOptions> schemaRegistryOptionsAccessor)
             : this(mvcJsonOptionsAccessor.Value.SerializerSettings, schemaRegistryOptionsAccessor.Value)
         { }

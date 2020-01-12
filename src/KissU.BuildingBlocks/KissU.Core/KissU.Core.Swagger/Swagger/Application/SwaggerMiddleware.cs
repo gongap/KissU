@@ -20,14 +20,14 @@ namespace KissU.Core.Swagger.Swagger.Application
 
         public SwaggerMiddleware(
             RequestDelegate next,
-            IOptions<MvcJsonOptions> mvcJsonOptionsAccessor,
+            IOptions<MvcNewtonsoftJsonOptions> mvcJsonOptionsAccessor,
             IOptions<SwaggerOptions> optionsAccessor)
             : this(next, mvcJsonOptionsAccessor, optionsAccessor.Value)
         { }
 
         public SwaggerMiddleware(
             RequestDelegate next,
-            IOptions<MvcJsonOptions> mvcJsonOptions,
+            IOptions<MvcNewtonsoftJsonOptions> mvcJsonOptions,
             SwaggerOptions options)
         {
             _next = next;

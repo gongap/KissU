@@ -1,10 +1,10 @@
 ﻿using Autofac.Extensions.DependencyInjection;
 using KissU.Core.CPlatform;
 using KissU.Core.CPlatform.Module;
-using KissU.Modules.GreatWall.Application.Extensions;
 using KissU.Modules.GreatWall.Data;
 using KissU.Modules.GreatWall.Data.UnitOfWorks.SqlServer;
 using KissU.Modules.GreatWall.Domain.UnitOfWorks;
+using KissU.Modules.GreatWall.Service.Extensions;
 using KissU.Util.Datas.SqlServer;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -24,6 +24,7 @@ namespace KissU.Modules.GreatWall.Service
             base.RegisterBuilder(builder);
             var services = new ServiceCollection();
             services.AddUnitOfWork<IGreatWallUnitOfWork, GreatWallUnitOfWork>(AppConfig.GetSection(GreatWallDataConstants.ConnectionStringSection).GetSection(GreatWallDataConstants.ConnectionStringName).Value);
+            services.AddAuthentication();
             services.AddPermission(options =>
             {
                 options.Password.MinLength = 6;

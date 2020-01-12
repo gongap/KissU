@@ -105,7 +105,8 @@ namespace KissU.Core.KestrelHttpServer
         public void ConfigureServices(IServiceCollection services)
         { 
             var builder = new ContainerBuilder();
-            services.AddMvc();
+            services.AddMvc()
+                .AddNewtonsoftJson();
             _moduleProvider.ConfigureServices(new ConfigurationContext(services,
                 _moduleProvider.Modules,
                 _moduleProvider.VirtualPaths,
@@ -117,7 +118,11 @@ namespace KissU.Core.KestrelHttpServer
         private void AppResolve(IApplicationBuilder app)
         { 
             app.UseStaticFiles();
-            app.UseMvc();
+            app.UseRouting();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapDefaultControllerRoute();
+            });
             _moduleProvider.Initialize(new ApplicationInitializationContext(app, _moduleProvider.Modules,
                 _moduleProvider.VirtualPaths,
                 AppConfig.Configuration));
