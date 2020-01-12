@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "Microsoft.AspNetCore.Identity": {
-      "commandName": "Project",
-      "nativeDebugging": true
-    }
-  }
-}

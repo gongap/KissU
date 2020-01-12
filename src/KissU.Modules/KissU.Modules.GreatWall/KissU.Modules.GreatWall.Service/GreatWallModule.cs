@@ -24,8 +24,7 @@ namespace KissU.Modules.GreatWall.Service
             base.RegisterBuilder(builder);
             var services = new ServiceCollection();
             services.AddUnitOfWork<IGreatWallUnitOfWork, GreatWallUnitOfWork>(AppConfig.GetSection(GreatWallDataConstants.ConnectionStringSection).GetSection(GreatWallDataConstants.ConnectionStringName).Value);
-            services.AddAuthentication();
-            services.AddPermission(options =>
+            services.AddAspNetIdentityCore(options =>
             {
                 options.Password.MinLength = 6;
                 options.Password.NonAlphanumeric = true;
