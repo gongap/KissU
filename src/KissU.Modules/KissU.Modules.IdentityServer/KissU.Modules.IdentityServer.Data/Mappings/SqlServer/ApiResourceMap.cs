@@ -40,8 +40,8 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         {
             builder.OwnsMany(t => t.UserClaims, p =>
             {
-                p.ToTable(IdentityServerDataConstants.DbTablePrefix + "ApiClaims",
-                    IdentityServerDataConstants.DbSchema);
+                p.ToTable(IdentityServerDataConstants.DbTablePrefix + "ApiClaims",IdentityServerDataConstants.DbSchema);
+                p.WithOwner(x => x.Owner);
                 p.Property(x => x.Type);
             });
 

@@ -499,9 +499,9 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                                 .HasForeignKey("ApiResourceId");
                         });
 
-                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.UserClaim", "UserClaims", b1 =>
+                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.UserClaim<KissU.Modules.IdentityServer.Domain.Models.ApiResource>", "UserClaims", b1 =>
                         {
-                            b1.Property<Guid>("ApiResourceId")
+                            b1.Property<Guid>("OwnerId")
                                 .HasColumnType("uniqueidentifier");
 
                             b1.Property<int>("Id")
@@ -513,12 +513,12 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                                 .HasColumnType("nvarchar(200)")
                                 .HasMaxLength(200);
 
-                            b1.HasKey("ApiResourceId", "Id");
+                            b1.HasKey("OwnerId", "Id");
 
                             b1.ToTable("ApiClaims","ids");
 
-                            b1.WithOwner()
-                                .HasForeignKey("ApiResourceId");
+                            b1.WithOwner("Owner")
+                                .HasForeignKey("OwnerId");
                         });
                 });
 
@@ -530,9 +530,9 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.UserClaim", "UserClaims", b1 =>
+                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.UserClaim<KissU.Modules.IdentityServer.Domain.Models.ApiScope>", "UserClaims", b1 =>
                         {
-                            b1.Property<Guid>("ApiScopeId")
+                            b1.Property<Guid>("OwnerId")
                                 .HasColumnType("uniqueidentifier");
 
                             b1.Property<int>("Id")
@@ -545,12 +545,12 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                                 .HasColumnType("nvarchar(200)")
                                 .HasMaxLength(200);
 
-                            b1.HasKey("ApiScopeId", "Id");
+                            b1.HasKey("OwnerId", "Id");
 
                             b1.ToTable("ApiScopeClaims","ids");
 
-                            b1.WithOwner()
-                                .HasForeignKey("ApiScopeId");
+                            b1.WithOwner("Owner")
+                                .HasForeignKey("OwnerId");
                         });
                 });
 
@@ -778,25 +778,27 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                                 .HasForeignKey("IdentityResourceId");
                         });
 
-                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.UserClaim", "UserClaims", b1 =>
+                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.UserClaim<KissU.Modules.IdentityServer.Domain.Models.IdentityResource>", "UserClaims", b1 =>
                         {
-                            b1.Property<Guid>("IdentityResourceId")
+                            b1.Property<Guid>("OwnerId")
                                 .HasColumnType("uniqueidentifier");
 
                             b1.Property<int>("Id")
-                                .HasColumnType("int");
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int")
+                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                             b1.Property<string>("Type")
                                 .IsRequired()
                                 .HasColumnType("nvarchar(200)")
                                 .HasMaxLength(200);
 
-                            b1.HasKey("IdentityResourceId", "Id");
+                            b1.HasKey("OwnerId", "Id");
 
                             b1.ToTable("IdentityClaims","ids");
 
-                            b1.WithOwner()
-                                .HasForeignKey("IdentityResourceId");
+                            b1.WithOwner("Owner")
+                                .HasForeignKey("OwnerId");
                         });
                 });
 #pragma warning restore 612, 618

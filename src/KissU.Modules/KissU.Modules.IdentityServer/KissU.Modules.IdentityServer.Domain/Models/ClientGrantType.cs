@@ -11,6 +11,13 @@ namespace KissU.Modules.IdentityServer.Domain.Models
         /// <summary>
         /// 初始化
         /// </summary>
+        protected ClientGrantType()
+        {
+        }
+
+        /// <summary>
+        /// 初始化
+        /// </summary>
         /// <param name="grantType"></param>
         public ClientGrantType(string grantType)
         {
