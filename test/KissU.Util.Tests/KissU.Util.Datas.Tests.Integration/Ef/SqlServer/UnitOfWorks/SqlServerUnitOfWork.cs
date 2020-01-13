@@ -3,7 +3,7 @@ using KissU.Util.Datas.SqlServer.Ef;
 using KissU.Util.Datas.Tests.Integration.Commons.Datas.SqlServer.Configs;
 using Microsoft.EntityFrameworkCore;
 
-namespace KissU.Util.Datas.Tests.Integration.SqlServer.Ef.UnitOfWorks
+namespace KissU.Util.Datas.Tests.Integration.Ef.SqlServer.UnitOfWorks
 {
     /// <summary>
     /// SqlServer工作单元

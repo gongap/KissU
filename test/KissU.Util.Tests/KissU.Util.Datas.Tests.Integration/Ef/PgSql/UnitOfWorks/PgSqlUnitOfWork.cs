@@ -2,7 +2,7 @@
 using KissU.Util.Datas.Tests.Integration.Commons.Datas.PgSql.Configs;
 using Microsoft.EntityFrameworkCore;
 
-namespace KissU.Util.Datas.Tests.Integration.PgSql.Ef.UnitOfWorks
+namespace KissU.Util.Datas.Tests.Integration.Ef.PgSql.UnitOfWorks
 {
     /// <summary>
     /// PgSql工作单元

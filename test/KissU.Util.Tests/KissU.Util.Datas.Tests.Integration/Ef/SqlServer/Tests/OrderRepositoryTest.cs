@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using KissU.Util.Datas.Ef;
 using KissU.Util.Datas.Tests.Integration.Commons.Domains.Models;
 using KissU.Util.Datas.Tests.Integration.Commons.Domains.Repositories;
-using KissU.Util.Datas.Tests.Integration.SqlServer.Ef.UnitOfWorks;
+using KissU.Util.Datas.Tests.Integration.Ef.SqlServer.UnitOfWorks;
 using KissU.Util.Dependency;
 using KissU.Util.Exceptions;
 using KissU.Util.Helpers;
@@ -13,7 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Xunit;
 using Random = KissU.Util.Helpers.Random;
 
-namespace KissU.Util.Datas.Tests.Integration.SqlServer.Ef.Tests
+namespace KissU.Util.Datas.Tests.Integration.Ef.SqlServer.Tests
 {
     /// <summary>
     /// 订单仓储测试

@@ -3,7 +3,7 @@ using KissU.Util.Datas.Tests.Integration.Commons.Domains.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace KissU.Util.Datas.Tests.Integration.PgSql.Ef.Mappings
+namespace KissU.Util.Datas.Tests.Integration.Ef.PgSql.Mappings
 {
     /// <summary>
     /// 客户映射配置

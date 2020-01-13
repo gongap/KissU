@@ -1,7 +1,7 @@
 ﻿using Autofac;
 using KissU.Util.Datas.Tests.Integration.Commons.Domains.Repositories;
-using KissU.Util.Datas.Tests.Integration.PgSql.Ef.Repositories;
-using KissU.Util.Datas.Tests.Integration.PgSql.Ef.UnitOfWorks;
+using KissU.Util.Datas.Tests.Integration.Ef.PgSql.Repositories;
+using KissU.Util.Datas.Tests.Integration.Ef.PgSql.UnitOfWorks;
 using KissU.Util.Datas.Transactions;
 using KissU.Util.Datas.UnitOfWorks;
 using KissU.Util.Dependency;

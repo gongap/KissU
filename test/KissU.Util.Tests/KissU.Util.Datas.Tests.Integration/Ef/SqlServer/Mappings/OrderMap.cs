@@ -3,7 +3,7 @@ using KissU.Util.Datas.Tests.Integration.Commons.Domains.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace KissU.Util.Datas.Tests.Integration.SqlServer.Ef.Mappings
+namespace KissU.Util.Datas.Tests.Integration.Ef.SqlServer.Mappings
 {
     /// <summary>
     /// 订单映射配置

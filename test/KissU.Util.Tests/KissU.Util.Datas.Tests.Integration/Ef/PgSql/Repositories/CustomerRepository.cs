@@ -1,9 +1,9 @@
 ﻿using KissU.Util.Datas.Ef.Core;
 using KissU.Util.Datas.Tests.Integration.Commons.Domains.Models;
 using KissU.Util.Datas.Tests.Integration.Commons.Domains.Repositories;
-using KissU.Util.Datas.Tests.Integration.PgSql.Ef.UnitOfWorks;
+using KissU.Util.Datas.Tests.Integration.Ef.PgSql.UnitOfWorks;
 
-namespace KissU.Util.Datas.Tests.Integration.PgSql.Ef.Repositories
+namespace KissU.Util.Datas.Tests.Integration.Ef.PgSql.Repositories
 {
     /// <summary>
     /// 客户仓储

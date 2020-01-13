@@ -1,6 +1,6 @@
 ﻿using KissU.Util.Datas.UnitOfWorks;
 
-namespace KissU.Util.Datas.Tests.Integration.PgSql.Ef.UnitOfWorks
+namespace KissU.Util.Datas.Tests.Integration.Ef.PgSql.UnitOfWorks
 {
     /// <summary>
     /// PgSql工作单元

@@ -87,6 +87,9 @@ namespace KissU.Modules.IdentityServer.Application.Mappers
 
             CreateMap<IdentityResource, Ids4.IdentityResource>()
                 .ReverseMap();
+
+            CreateMap<ApiResource, Ids4.ApiResource>()
+                .ReverseMap();
         }
     }
 }
