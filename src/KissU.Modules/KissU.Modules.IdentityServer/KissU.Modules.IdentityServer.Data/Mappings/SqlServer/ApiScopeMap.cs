@@ -40,7 +40,8 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         {
             builder.OwnsMany(t => t.UserClaims, p =>
             {
-                p.ToTable(IdentityServerDataConstants.DbTablePrefix + "ApiScopeClaims",IdentityServerDataConstants.DbSchema);
+                p.ToTable(IdentityServerDataConstants.DbTablePrefix + "ApiScopeClaims", IdentityServerDataConstants.DbSchema);
+                p.WithOwner(x => x.Owner).HasForeignKey($"{nameof(ApiScope)}Id");
                 p.Property(x => x.Type).HasMaxLength(200).IsRequired();
             });
         }

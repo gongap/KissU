@@ -40,7 +40,8 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         {
             builder.OwnsMany(t => t.UserClaims, p =>
             {
-                p.ToTable(IdentityServerDataConstants.DbTablePrefix + "ApiClaims",IdentityServerDataConstants.DbSchema);
+                p.ToTable(IdentityServerDataConstants.DbTablePrefix + "ApiClaims", IdentityServerDataConstants.DbSchema);
+                p.WithOwner(x => x.Owner).HasForeignKey($"{nameof(ApiResource)}Id");
                 p.Property(x => x.Type);
             });
 

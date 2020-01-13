@@ -259,7 +259,7 @@ GO
 
 CREATE TABLE [ids].[IdentityClaims] (
     [IdentityResourceId] uniqueidentifier NOT NULL,
-    [Id] int NOT NULL,
+    [Id] int NOT NULL IDENTITY,
     [Type] nvarchar(200) NOT NULL,
     CONSTRAINT [PK_IdentityClaims] PRIMARY KEY ([IdentityResourceId], [Id]),
     CONSTRAINT [FK_IdentityClaims_IdentityResources_IdentityResourceId] FOREIGN KEY ([IdentityResourceId]) REFERENCES [ids].[IdentityResources] ([Id]) ON DELETE CASCADE
@@ -337,7 +337,7 @@ CREATE INDEX [IX_PersistedGrants_SubjectId_ClientId_Type] ON [ids].[PersistedGra
 GO
 
 INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-VALUES (N'20200113144626_InitialCreate', N'3.1.0');
+VALUES (N'20200113150321_InitialCreate', N'3.1.0');
 
 GO
 

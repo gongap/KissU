@@ -17,7 +17,7 @@ namespace KissU.Modules.IdentityServer.Domain.Models
         {
             ApiSecrets = new List<ApiSecret>();
             Scopes = new List<ApiScope>();
-            UserClaims = new List<UserClaim>();
+            UserClaims = new List<UserClaim<ApiResource>>();
             Properties = new List<Property>();
         }
 
@@ -34,7 +34,7 @@ namespace KissU.Modules.IdentityServer.Domain.Models
         /// <summary>
         /// 应包含在身份令牌中的关联用户声明类型的列表。
         /// </summary>
-        public List<UserClaim> UserClaims { get; set; }
+        public List<UserClaim<ApiResource>> UserClaims { get; set; }
 
         /// <summary>
         /// 指示此资源是否已启用且可以请求。默认为true。

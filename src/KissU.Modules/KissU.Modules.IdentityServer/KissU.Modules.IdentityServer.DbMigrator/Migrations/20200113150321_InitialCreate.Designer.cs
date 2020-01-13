@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
 {
     [DbContext(typeof(DesignTimeDbContext))]
-    [Migration("20200113144626_InitialCreate")]
+    [Migration("20200113150321_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -501,7 +501,7 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                                 .HasForeignKey("ApiResourceId");
                         });
 
-                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.UserClaim", "UserClaims", b1 =>
+                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.UserClaim<KissU.Modules.IdentityServer.Domain.Models.ApiResource>", "UserClaims", b1 =>
                         {
                             b1.Property<Guid>("ApiResourceId")
                                 .HasColumnType("uniqueidentifier");
@@ -519,7 +519,7 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
 
                             b1.ToTable("ApiClaims","ids");
 
-                            b1.WithOwner()
+                            b1.WithOwner("Owner")
                                 .HasForeignKey("ApiResourceId");
                         });
                 });
@@ -532,7 +532,7 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.UserClaim", "UserClaims", b1 =>
+                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.UserClaim<KissU.Modules.IdentityServer.Domain.Models.ApiScope>", "UserClaims", b1 =>
                         {
                             b1.Property<Guid>("ApiScopeId")
                                 .HasColumnType("uniqueidentifier");
@@ -551,7 +551,7 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
 
                             b1.ToTable("ApiScopeClaims","ids");
 
-                            b1.WithOwner()
+                            b1.WithOwner("Owner")
                                 .HasForeignKey("ApiScopeId");
                         });
                 });
@@ -780,13 +780,15 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                                 .HasForeignKey("IdentityResourceId");
                         });
 
-                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.UserClaim", "UserClaims", b1 =>
+                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.UserClaim<KissU.Modules.IdentityServer.Domain.Models.IdentityResource>", "UserClaims", b1 =>
                         {
                             b1.Property<Guid>("IdentityResourceId")
                                 .HasColumnType("uniqueidentifier");
 
                             b1.Property<int>("Id")
-                                .HasColumnType("int");
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int")
+                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                             b1.Property<string>("Type")
                                 .IsRequired()
@@ -797,7 +799,7 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
 
                             b1.ToTable("IdentityClaims","ids");
 
-                            b1.WithOwner()
+                            b1.WithOwner("Owner")
                                 .HasForeignKey("IdentityResourceId");
                         });
                 });
