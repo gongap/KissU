@@ -40,7 +40,6 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
             builder.OwnsMany(t => t.UserClaims, p =>
             {
                 p.ToTable(IdentityServerDataConstants.DbTablePrefix + "IdentityClaims", IdentityServerDataConstants.DbSchema);
-                p.WithOwner(x => x.Owner);
                 p.Property(x => x.Type).HasMaxLength(200).IsRequired();
             });
 

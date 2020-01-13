@@ -15,7 +15,7 @@ namespace KissU.Modules.IdentityServer.Domain.Models
         /// </summary>
         public IdentityResource() : base(Guid.Empty)
         {
-            UserClaims = new List<UserClaim<IdentityResource>>();
+            UserClaims = new List<UserClaim>();
             Properties = new List<Property>();
         }
 
@@ -37,7 +37,7 @@ namespace KissU.Modules.IdentityServer.Domain.Models
         /// <summary>
         /// 应包含在身份资源中的关联用户声明类型的列表。
         /// </summary>
-        public List<UserClaim<IdentityResource>> UserClaims { get; set; }
+        public List<UserClaim> UserClaims { get; set; }
 
         /// <summary>
         /// 指示此资源是否已启用且可以请求。默认为true。

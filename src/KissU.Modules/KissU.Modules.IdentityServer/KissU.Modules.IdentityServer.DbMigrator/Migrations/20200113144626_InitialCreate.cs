@@ -141,17 +141,17 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                 schema: "ids",
                 columns: table => new
                 {
-                    OwnerId = table.Column<Guid>(nullable: false),
+                    ApiResourceId = table.Column<Guid>(nullable: false),
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Type = table.Column<string>(maxLength: 200, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ApiClaims", x => new { x.OwnerId, x.Id });
+                    table.PrimaryKey("PK_ApiClaims", x => new { x.ApiResourceId, x.Id });
                     table.ForeignKey(
-                        name: "FK_ApiClaims_ApiResources_OwnerId",
-                        column: x => x.OwnerId,
+                        name: "FK_ApiClaims_ApiResources_ApiResourceId",
+                        column: x => x.ApiResourceId,
                         principalSchema: "ids",
                         principalTable: "ApiResources",
                         principalColumn: "Id",
@@ -439,17 +439,16 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                 schema: "ids",
                 columns: table => new
                 {
-                    OwnerId = table.Column<Guid>(nullable: false),
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IdentityResourceId = table.Column<Guid>(nullable: false),
+                    Id = table.Column<int>(nullable: false),
                     Type = table.Column<string>(maxLength: 200, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_IdentityClaims", x => new { x.OwnerId, x.Id });
+                    table.PrimaryKey("PK_IdentityClaims", x => new { x.IdentityResourceId, x.Id });
                     table.ForeignKey(
-                        name: "FK_IdentityClaims_IdentityResources_OwnerId",
-                        column: x => x.OwnerId,
+                        name: "FK_IdentityClaims_IdentityResources_IdentityResourceId",
+                        column: x => x.IdentityResourceId,
                         principalSchema: "ids",
                         principalTable: "IdentityResources",
                         principalColumn: "Id",
@@ -483,17 +482,17 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                 schema: "ids",
                 columns: table => new
                 {
-                    OwnerId = table.Column<Guid>(nullable: false),
+                    ApiScopeId = table.Column<Guid>(nullable: false),
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Type = table.Column<string>(maxLength: 200, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ApiScopeClaims", x => new { x.OwnerId, x.Id });
+                    table.PrimaryKey("PK_ApiScopeClaims", x => new { x.ApiScopeId, x.Id });
                     table.ForeignKey(
-                        name: "FK_ApiScopeClaims_ApiScopes_OwnerId",
-                        column: x => x.OwnerId,
+                        name: "FK_ApiScopeClaims_ApiScopes_ApiScopeId",
+                        column: x => x.ApiScopeId,
                         principalSchema: "ids",
                         principalTable: "ApiScopes",
                         principalColumn: "Id",

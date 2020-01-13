@@ -114,11 +114,11 @@ CREATE TABLE [ids].[PersistedGrants] (
 GO
 
 CREATE TABLE [ids].[ApiClaims] (
-    [OwnerId] uniqueidentifier NOT NULL,
+    [ApiResourceId] uniqueidentifier NOT NULL,
     [Id] int NOT NULL IDENTITY,
     [Type] nvarchar(200) NULL,
-    CONSTRAINT [PK_ApiClaims] PRIMARY KEY ([OwnerId], [Id]),
-    CONSTRAINT [FK_ApiClaims_ApiResources_OwnerId] FOREIGN KEY ([OwnerId]) REFERENCES [ids].[ApiResources] ([Id]) ON DELETE CASCADE
+    CONSTRAINT [PK_ApiClaims] PRIMARY KEY ([ApiResourceId], [Id]),
+    CONSTRAINT [FK_ApiClaims_ApiResources_ApiResourceId] FOREIGN KEY ([ApiResourceId]) REFERENCES [ids].[ApiResources] ([Id]) ON DELETE CASCADE
 );
 
 GO
@@ -258,11 +258,11 @@ CREATE TABLE [ids].[ClientSecrets] (
 GO
 
 CREATE TABLE [ids].[IdentityClaims] (
-    [OwnerId] uniqueidentifier NOT NULL,
-    [Id] int NOT NULL IDENTITY,
+    [IdentityResourceId] uniqueidentifier NOT NULL,
+    [Id] int NOT NULL,
     [Type] nvarchar(200) NOT NULL,
-    CONSTRAINT [PK_IdentityClaims] PRIMARY KEY ([OwnerId], [Id]),
-    CONSTRAINT [FK_IdentityClaims_IdentityResources_OwnerId] FOREIGN KEY ([OwnerId]) REFERENCES [ids].[IdentityResources] ([Id]) ON DELETE CASCADE
+    CONSTRAINT [PK_IdentityClaims] PRIMARY KEY ([IdentityResourceId], [Id]),
+    CONSTRAINT [FK_IdentityClaims_IdentityResources_IdentityResourceId] FOREIGN KEY ([IdentityResourceId]) REFERENCES [ids].[IdentityResources] ([Id]) ON DELETE CASCADE
 );
 
 GO
@@ -279,11 +279,11 @@ CREATE TABLE [ids].[IdentityProperties] (
 GO
 
 CREATE TABLE [ids].[ApiScopeClaims] (
-    [OwnerId] uniqueidentifier NOT NULL,
+    [ApiScopeId] uniqueidentifier NOT NULL,
     [Id] int NOT NULL IDENTITY,
     [Type] nvarchar(200) NOT NULL,
-    CONSTRAINT [PK_ApiScopeClaims] PRIMARY KEY ([OwnerId], [Id]),
-    CONSTRAINT [FK_ApiScopeClaims_ApiScopes_OwnerId] FOREIGN KEY ([OwnerId]) REFERENCES [ids].[ApiScopes] ([Id]) ON DELETE CASCADE
+    CONSTRAINT [PK_ApiScopeClaims] PRIMARY KEY ([ApiScopeId], [Id]),
+    CONSTRAINT [FK_ApiScopeClaims_ApiScopes_ApiScopeId] FOREIGN KEY ([ApiScopeId]) REFERENCES [ids].[ApiScopes] ([Id]) ON DELETE CASCADE
 );
 
 GO
@@ -337,7 +337,7 @@ CREATE INDEX [IX_PersistedGrants_SubjectId_ClientId_Type] ON [ids].[PersistedGra
 GO
 
 INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-VALUES (N'20200113050252_InitialCreate', N'3.1.0');
+VALUES (N'20200113144626_InitialCreate', N'3.1.0');
 
 GO
 

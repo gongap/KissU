@@ -57,17 +57,7 @@ namespace KissU.Modules.IdentityServer.Data.Mappers
             CreateMap<Property, KeyValuePair<string, string>>()
                 .ReverseMap();
 
-            CreateMap<UserClaim<IdentityResource>, string>()
-                .ConstructUsing(x => x.Type)
-                .ReverseMap()
-                .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src));
-
-            CreateMap<UserClaim<ApiResource>, string>()
-                .ConstructUsing(x => x.Type)
-                .ReverseMap()
-                .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src));
-
-            CreateMap<UserClaim<ApiScope>, string>()
+            CreateMap<UserClaim, string>()
                 .ConstructUsing(x => x.Type)
                 .ReverseMap()
                 .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src));
