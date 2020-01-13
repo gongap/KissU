@@ -1,9 +1,15 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using IdentityModel;
+using KissU.Modules.GreatWall.Domain.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Claim = System.Security.Claims.Claim;
 
 namespace KissU.Modules.GreatWall.DbMigrator
 {
@@ -49,9 +55,84 @@ namespace KissU.Modules.GreatWall.DbMigrator
         {
             using (var scope = serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
-                var context = scope.ServiceProvider.GetRequiredService<TDbContext>();
+                using (var context = scope.ServiceProvider.GetRequiredService<TDbContext>())
+                {
+                    await EnsureSeedData(scope.ServiceProvider);
+                    await context.SaveChangesAsync();
+                }
+            }
+        }
 
-                await context.SaveChangesAsync();
+        public static async Task EnsureSeedData(IServiceProvider serviceProvider)
+        {
+            var userMgr = serviceProvider.GetRequiredService<UserManager<User>>();
+            var alice = await userMgr.FindByNameAsync("alice").ConfigureAwait(false);
+            if (alice == null)
+            {
+                alice = new User
+                {
+                    UserName = "alice",
+                    Enabled = true,
+                };
+                var result = await userMgr.CreateAsync(alice, "Pass123$").ConfigureAwait(false);
+                if (!result.Succeeded)
+                {
+                    throw new Exception(result.Errors.First().Description);
+                }
+
+                //result = await userMgr.AddClaimsAsync(alice, new Claim[]{
+                //        new Claim(JwtClaimTypes.Name, "Alice Smith"),
+                //        new Claim(JwtClaimTypes.GivenName, "Alice"),
+                //        new Claim(JwtClaimTypes.FamilyName, "Smith"),
+                //        new Claim(JwtClaimTypes.Email, "AliceSmith@email.com"),
+                //        new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
+                //        new Claim(JwtClaimTypes.WebSite, "http://alice.com"),
+                //        new Claim(JwtClaimTypes.Address, @"{ 'street_address': 'One Hacker Way', 'locality': 'Heidelberg', 'postal_code': 69118, 'country': 'Germany' }", "json")
+                //    }).ConfigureAwait(false);
+                //if (!result.Succeeded)
+                //{
+                //    throw new Exception(result.Errors.First().Description);
+                //}
+                Console.WriteLine("alice created");
+            }
+            else
+            {
+                Console.WriteLine("alice already exists");
+            }
+
+            var bob = await userMgr.FindByNameAsync("bob").ConfigureAwait(false);
+            if (bob == null)
+            {
+                bob = new User
+                {
+                    UserName = "bob",
+                    Enabled = true,
+                };
+                var result = await userMgr.CreateAsync(bob, "Pass123$").ConfigureAwait(false);
+                if (!result.Succeeded)
+                {
+                    throw new Exception(result.Errors.First().Description);
+                }
+
+                //result = await userMgr.AddClaimsAsync(bob, new Claim[]{
+                //        new Claim(JwtClaimTypes.Name, "Bob Smith"),
+                //        new Claim(JwtClaimTypes.GivenName, "Bob"),
+                //        new Claim(JwtClaimTypes.FamilyName, "Smith"),
+                //        new Claim(JwtClaimTypes.Email, "BobSmith@email.com"),
+                //        new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
+                //        new Claim(JwtClaimTypes.WebSite, "http://bob.com"),
+                //        new Claim(JwtClaimTypes.Address, @"{ 'street_address': 'One Hacker Way', 'locality': 'Heidelberg', 'postal_code': 69118, 'country': 'Germany' }", "json"),
+                //        new Claim("location", "somewhere")
+                //    }).ConfigureAwait(false);
+                //if (!result.Succeeded)
+                //{
+                //    throw new Exception(result.Errors.First().Description);
+                //}
+                Console.WriteLine("bob created");
+            }
+            else
+            {
+                Console.WriteLine("bob already exists");
             }
         }
     }

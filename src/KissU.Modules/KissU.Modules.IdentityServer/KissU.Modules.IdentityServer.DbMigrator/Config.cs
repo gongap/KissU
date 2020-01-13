@@ -21,10 +21,10 @@ namespace KissU.Modules.IdentityServer.DbMigrator
                 },
 
                 AllowedGrantTypes = GrantTypes.ClientCredentials,
-                AllowedScopes = { "api1", "api2.read_only" },
+                AllowedScopes = {"api1", "api2.read_only"},
                 Properties =
                 {
-                    { "foo", "bar" }
+                    {"foo", "bar"}
                 }
             },
 
@@ -39,12 +39,13 @@ namespace KissU.Modules.IdentityServer.DbMigrator
                     new Secret
                     {
                         Type = IdentityServerConstants.SecretTypes.X509CertificateBase64,
-                        Value = "MIIDATCCAe2gAwIBAgIQoHUYAquk9rBJcq8W+F0FAzAJBgUrDgMCHQUAMBIxEDAOBgNVBAMTB0RldlJvb3QwHhcNMTAwMTIwMjMwMDAwWhcNMjAwMTIwMjMwMDAwWjARMQ8wDQYDVQQDEwZDbGllbnQwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDSaY4x1eXqjHF1iXQcF3pbFrIbmNw19w/IdOQxbavmuPbhY7jX0IORu/GQiHjmhqWt8F4G7KGLhXLC1j7rXdDmxXRyVJBZBTEaSYukuX7zGeUXscdpgODLQVay/0hUGz54aDZPAhtBHaYbog+yH10sCXgV1Mxtzx3dGelA6pPwiAmXwFxjJ1HGsS/hdbt+vgXhdlzud3ZSfyI/TJAnFeKxsmbJUyqMfoBl1zFKG4MOvgHhBjekp+r8gYNGknMYu9JDFr1ue0wylaw9UwG8ZXAkYmYbn2wN/CpJl3gJgX42/9g87uLvtVAmz5L+rZQTlS1ibv54ScR2lcRpGQiQav/LAgMBAAGjXDBaMBMGA1UdJQQMMAoGCCsGAQUFBwMCMEMGA1UdAQQ8MDqAENIWANpX5DZ3bX3WvoDfy0GhFDASMRAwDgYDVQQDEwdEZXZSb290ghAsWTt7E82DjU1E1p427Qj2MAkGBSsOAwIdBQADggEBADLje0qbqGVPaZHINLn+WSM2czZk0b5NG80btp7arjgDYoWBIe2TSOkkApTRhLPfmZTsaiI3Ro/64q+Dk3z3Kt7w+grHqu5nYhsn7xQFAQUf3y2KcJnRdIEk0jrLM4vgIzYdXsoC6YO+9QnlkNqcN36Y8IpSVSTda6gRKvGXiAhu42e2Qey/WNMFOL+YzMXGt/nDHL/qRKsuXBOarIb++43DV3YnxGTx22llhOnPpuZ9/gnNY7KLjODaiEciKhaKqt/b57mTEz4jTF4kIg6BP03MUfDXeVlM1Qf1jB43G2QQ19n5lUiqTpmQkcfLfyci2uBZ8BkOhXr3Vk9HIk/xBXQ="
+                        Value =
+                            "MIIDATCCAe2gAwIBAgIQoHUYAquk9rBJcq8W+F0FAzAJBgUrDgMCHQUAMBIxEDAOBgNVBAMTB0RldlJvb3QwHhcNMTAwMTIwMjMwMDAwWhcNMjAwMTIwMjMwMDAwWjARMQ8wDQYDVQQDEwZDbGllbnQwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDSaY4x1eXqjHF1iXQcF3pbFrIbmNw19w/IdOQxbavmuPbhY7jX0IORu/GQiHjmhqWt8F4G7KGLhXLC1j7rXdDmxXRyVJBZBTEaSYukuX7zGeUXscdpgODLQVay/0hUGz54aDZPAhtBHaYbog+yH10sCXgV1Mxtzx3dGelA6pPwiAmXwFxjJ1HGsS/hdbt+vgXhdlzud3ZSfyI/TJAnFeKxsmbJUyqMfoBl1zFKG4MOvgHhBjekp+r8gYNGknMYu9JDFr1ue0wylaw9UwG8ZXAkYmYbn2wN/CpJl3gJgX42/9g87uLvtVAmz5L+rZQTlS1ibv54ScR2lcRpGQiQav/LAgMBAAGjXDBaMBMGA1UdJQQMMAoGCCsGAQUFBwMCMEMGA1UdAQQ8MDqAENIWANpX5DZ3bX3WvoDfy0GhFDASMRAwDgYDVQQDEwdEZXZSb290ghAsWTt7E82DjU1E1p427Qj2MAkGBSsOAwIdBQADggEBADLje0qbqGVPaZHINLn+WSM2czZk0b5NG80btp7arjgDYoWBIe2TSOkkApTRhLPfmZTsaiI3Ro/64q+Dk3z3Kt7w+grHqu5nYhsn7xQFAQUf3y2KcJnRdIEk0jrLM4vgIzYdXsoC6YO+9QnlkNqcN36Y8IpSVSTda6gRKvGXiAhu42e2Qey/WNMFOL+YzMXGt/nDHL/qRKsuXBOarIb++43DV3YnxGTx22llhOnPpuZ9/gnNY7KLjODaiEciKhaKqt/b57mTEz4jTF4kIg6BP03MUfDXeVlM1Qf1jB43G2QQ19n5lUiqTpmQkcfLfyci2uBZ8BkOhXr3Vk9HIk/xBXQ="
                     }
                 },
 
                 AllowedGrantTypes = GrantTypes.ClientCredentials,
-                AllowedScopes = { "api1", "api2.read_only" }
+                AllowedScopes = {"api1", "api2.read_only"}
             },
 
             ///////////////////////////////////////////
@@ -58,8 +59,8 @@ namespace KissU.Modules.IdentityServer.DbMigrator
                     new Secret("secret".Sha256())
                 },
 
-                AllowedGrantTypes = { "custom", "custom.nosubject" },
-                AllowedScopes = { "api1", "api2.read_only" }
+                AllowedGrantTypes = {"custom", "custom.nosubject"},
+                AllowedScopes = {"api1", "api2.read_only"}
             },
 
             ///////////////////////////////////////////
@@ -115,7 +116,7 @@ namespace KissU.Modules.IdentityServer.DbMigrator
                 AllowedGrantTypes = GrantTypes.Hybrid,
                 RequirePkce = true,
 
-                RedirectUris = { "http://127.0.0.1" },
+                RedirectUris = {"http://127.0.0.1"},
 
                 AllowOfflineAccess = true,
 
@@ -140,7 +141,7 @@ namespace KissU.Modules.IdentityServer.DbMigrator
                 },
 
                 AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
-                AllowedScopes = { "api1", "api2.read_only" },
+                AllowedScopes = {"api1", "api2.read_only"},
 
                 AccessTokenType = AccessTokenType.Reference
             },
@@ -157,9 +158,9 @@ namespace KissU.Modules.IdentityServer.DbMigrator
                 AllowedGrantTypes = GrantTypes.Implicit,
                 AllowAccessTokensViaBrowser = true,
 
-                RedirectUris =  { "http://localhost:44077/signin-oidc" },
+                RedirectUris = {"http://localhost:44077/signin-oidc"},
                 FrontChannelLogoutUri = "http://localhost:44077/signout-oidc",
-                PostLogoutRedirectUris = { "http://localhost:44077/signout-callback-oidc" },
+                PostLogoutRedirectUris = {"http://localhost:44077/signout-callback-oidc"},
 
                 AllowedScopes =
                 {
@@ -181,11 +182,11 @@ namespace KissU.Modules.IdentityServer.DbMigrator
 
                 AllowedGrantTypes = GrantTypes.Implicit,
 
-                RedirectUris = { "http://localhost:44078/home/callback" },
+                RedirectUris = {"http://localhost:44078/home/callback"},
                 FrontChannelLogoutUri = "http://localhost:44078/signout-oidc",
-                PostLogoutRedirectUris = { "http://localhost:44078/" },
+                PostLogoutRedirectUris = {"http://localhost:44078/"},
 
-                AllowedScopes = { IdentityServerConstants.StandardScopes.OpenId }
+                AllowedScopes = {IdentityServerConstants.StandardScopes.OpenId}
             },
 
             ///////////////////////////////////////////
@@ -206,9 +207,9 @@ namespace KissU.Modules.IdentityServer.DbMigrator
                 AllowedGrantTypes = GrantTypes.Hybrid,
                 AllowAccessTokensViaBrowser = false,
 
-                RedirectUris = { "http://localhost:21402/signin-oidc" },
+                RedirectUris = {"http://localhost:21402/signin-oidc"},
                 FrontChannelLogoutUri = "http://localhost:21402/signout-oidc",
-                PostLogoutRedirectUris = { "http://localhost:21402/signout-callback-oidc" },
+                PostLogoutRedirectUris = {"http://localhost:21402/signout-callback-oidc"},
 
                 AllowOfflineAccess = true,
 
@@ -234,10 +235,10 @@ namespace KissU.Modules.IdentityServer.DbMigrator
                 AllowedGrantTypes = GrantTypes.Implicit,
                 AllowAccessTokensViaBrowser = true,
 
-                RedirectUris = { "http://localhost:28895/index.html" },
-                AllowedScopes = { "api1", "api2.read_only" }
+                RedirectUris = {"http://localhost:28895/index.html"},
+                AllowedScopes = {"api1", "api2.read_only"}
             },
-                
+
             ///////////////////////////////////////////
             // JS OIDC Sample
             //////////////////////////////////////////
@@ -261,8 +262,32 @@ namespace KissU.Modules.IdentityServer.DbMigrator
                     "http://localhost:7017/popup.html"
                 },
 
-                PostLogoutRedirectUris = { "http://localhost:7017/index.html" },
-                AllowedCorsOrigins = { "http://localhost:7017" },
+                PostLogoutRedirectUris = {"http://localhost:7017/index.html"},
+                AllowedCorsOrigins = {"http://localhost:7017"},
+
+                AllowedScopes =
+                {
+                    IdentityServerConstants.StandardScopes.OpenId,
+                    IdentityServerConstants.StandardScopes.Profile,
+                    IdentityServerConstants.StandardScopes.Email,
+                    "api1", "api2.read_only", "api2.full_access"
+                }
+            },
+
+            ///////////////////////////////////////////
+            // Device Flow Sample
+            //////////////////////////////////////////
+            new Client
+            {
+                ClientId = "device",
+                ClientName = "Device Flow Client",
+
+                AllowedGrantTypes = GrantTypes.DeviceFlow,
+                RequireClientSecret = false,
+
+                AllowOfflineAccess = true,
+
+                AllowedCorsOrigins = {"http://localhost:5001"}, // JS test client only
 
                 AllowedScopes =
                 {
@@ -276,88 +301,87 @@ namespace KissU.Modules.IdentityServer.DbMigrator
 
         public static IEnumerable<IdentityResource> IdentityResources = new IdentityResource[]
         {
-                // some standard scopes from the OIDC spec
-                new IdentityResource(IdentityServerConstants.StandardScopes.OpenId,"Your user identifier",new[]
-                {
-                    JwtClaimTypes.Subject
-                })
-                {
-                   Required = true
-                },
+            // some standard scopes from the OIDC spec
+            new IdentityResource(IdentityServerConstants.StandardScopes.OpenId, "Your user identifier", new[]
+            {
+                JwtClaimTypes.Subject
+            })
+            {
+                Required = true
+            },
 
-                new IdentityResource(IdentityServerConstants.StandardScopes.Profile,"User profile",new[]
-                {
-                    JwtClaimTypes.Name,
-                    JwtClaimTypes.FamilyName,
-                    JwtClaimTypes.GivenName,
-                    JwtClaimTypes.MiddleName,
-                    JwtClaimTypes.NickName,
-                    JwtClaimTypes.PreferredUserName,
-                    JwtClaimTypes.Profile,
-                    JwtClaimTypes.Picture,
-                    JwtClaimTypes.WebSite,
-                    JwtClaimTypes.Gender,
-                    JwtClaimTypes.BirthDate,
-                    JwtClaimTypes.ZoneInfo,
-                    JwtClaimTypes.Locale,
-                    JwtClaimTypes.UpdatedAt
-                })
-                {
-                        Description = "Your user profile information (first name, last name, etc.)",
-                        Emphasize = true,
+            new IdentityResource(IdentityServerConstants.StandardScopes.Profile, "User profile", new[]
+            {
+                JwtClaimTypes.Name,
+                JwtClaimTypes.FamilyName,
+                JwtClaimTypes.GivenName,
+                JwtClaimTypes.MiddleName,
+                JwtClaimTypes.NickName,
+                JwtClaimTypes.PreferredUserName,
+                JwtClaimTypes.Profile,
+                JwtClaimTypes.Picture,
+                JwtClaimTypes.WebSite,
+                JwtClaimTypes.Gender,
+                JwtClaimTypes.BirthDate,
+                JwtClaimTypes.ZoneInfo,
+                JwtClaimTypes.Locale,
+                JwtClaimTypes.UpdatedAt
+            })
+            {
+                Description = "Your user profile information (first name, last name, etc.)",
+                Emphasize = true,
+            },
 
-                },
+            new IdentityResource(IdentityServerConstants.StandardScopes.Email, "Your email address", new[]
+            {
+                JwtClaimTypes.Email,
+                JwtClaimTypes.EmailVerified
+            })
+            {
+                Emphasize = true,
+            },
 
-                new IdentityResource(IdentityServerConstants.StandardScopes.Email,"Your email address",new[]
-                {
-                    JwtClaimTypes.Email,
-                    JwtClaimTypes.EmailVerified
-                })
-                {
-                        Emphasize = true,
-                },
-
-                // custom identity resource with some consolidated claims
-                new IdentityResource("custom.profile", new[] { JwtClaimTypes.Name, JwtClaimTypes.Email, "location" })
+            // custom identity resource with some consolidated claims
+            new IdentityResource("custom.profile", new[] {JwtClaimTypes.Name, JwtClaimTypes.Email, "location"})
         };
 
         public static IEnumerable<ApiResource> ApiResources = new ApiResource[]
         {
-                // simple version with ctor
-                new ApiResource("api1", "Some API 1")
+            // simple version with ctor
+            new ApiResource("api1", "Some API 1")
+            {
+                // this is needed for introspection when using reference tokens
+                ApiSecrets = {new Secret("secret".Sha256())}
+            },
+
+            // expanded version if more control is needed
+            new ApiResource
+            {
+                Name = "api2",
+
+                ApiSecrets =
                 {
-                    // this is needed for introspection when using reference tokens
-                    ApiSecrets = { new Secret("secret".Sha256()) }
+                    new Secret("secret".Sha256())
                 },
-                
-                // expanded version if more control is needed
-                new ApiResource
+
+                UserClaims =
                 {
-                    Name = "api2",
+                    JwtClaimTypes.Name,
+                    JwtClaimTypes.Email
+                },
 
-                    ApiSecrets =
+                Scopes =
+                {
+                    new Scope()
                     {
-                        new Secret("secret".Sha256())
+                        Name = "api2.full_access",
+                        DisplayName = "Full access to API 2"
                     },
-
-                    UserClaims =
+                    new Scope
                     {
-                        JwtClaimTypes.Name,
-                        JwtClaimTypes.Email
-                    },
-
-                    Scopes =
-                    {
-                        new Scope()
-                        {
-                            Name = "api2.full_access",
-                            DisplayName = "Full access to API 2"
-                        },
-                        new Scope
-                        {
-                            Name = "api2.read_only",
-                            DisplayName = "Read only access to API 2"
-                        }
+                        Name = "api2.read_only",
+                        DisplayName = "Read only access to API 2"
+                    }
                 }
             }
         };

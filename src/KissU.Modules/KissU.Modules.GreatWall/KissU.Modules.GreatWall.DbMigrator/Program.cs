@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using KissU.Modules.GreatWall.Application.Extensions;
 using KissU.Modules.GreatWall.Data;
 using KissU.Modules.GreatWall.Domain.UnitOfWorks;
 using KissU.Util.Datas.SqlServer;
@@ -16,8 +17,14 @@ namespace KissU.Modules.GreatWall.DbMigrator
             var serviceProviderFactory = new ServiceProviderFactory();
             var configuration = DbMigrationHelpers.BuildConfiguration();
             var services = new ServiceCollection();
-            services.AddUnitOfWork<IGreatWallUnitOfWork, DesignTimeDbContext>(
-                configuration.GetConnectionString("DefaultConnection"));
+            services.AddUnitOfWork<IGreatWallUnitOfWork, DesignTimeDbContext>(configuration.GetConnectionString("DefaultConnection"));
+            services.AddAspNetIdentityCore(options =>
+            {
+                options.Password.MinLength = 6;
+                options.Password.NonAlphanumeric = true;
+                options.Password.Uppercase = true;
+                options.Password.Digit = true;
+            });
             var containerBuilder = serviceProviderFactory.CreateBuilder(services);
             var serviceProvider = serviceProviderFactory.CreateServiceProvider(containerBuilder);
             await DbMigrationHelpers.MigrateAsync<DesignTimeDbContext>(serviceProvider);
