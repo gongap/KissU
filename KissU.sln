@@ -204,6 +204,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.GreatWall.App
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.IdentityServer", "src\KissU.Applications\KissU.IdentityServer\KissU.IdentityServer.csproj", "{6A0AE2D8-C3CE-4329-A200-3026D1B45C57}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Core.Serilog", "src\KissU.BuildingBlocks\KissU.Core\KissU.Core.Serilog\KissU.Core.Serilog.csproj", "{5EEDC170-07E8-47D1-AAFE-4FC72AF5E2EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -498,6 +500,10 @@ Global
 		{6A0AE2D8-C3CE-4329-A200-3026D1B45C57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A0AE2D8-C3CE-4329-A200-3026D1B45C57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A0AE2D8-C3CE-4329-A200-3026D1B45C57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EEDC170-07E8-47D1-AAFE-4FC72AF5E2EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EEDC170-07E8-47D1-AAFE-4FC72AF5E2EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EEDC170-07E8-47D1-AAFE-4FC72AF5E2EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EEDC170-07E8-47D1-AAFE-4FC72AF5E2EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -591,6 +597,7 @@ Global
 		{DEA7C862-C648-46FF-9902-A0FFEE7EB452} = {245EE59A-3EDE-4FBD-BC25-A61655E476B5}
 		{875CEEFC-D1F4-48DA-8C3E-036C26877EB9} = {989E8619-53BE-48E2-B062-047940FBBCE2}
 		{6A0AE2D8-C3CE-4329-A200-3026D1B45C57} = {F7F6CB7E-792F-496B-925A-BB5B0DB67DB6}
+		{5EEDC170-07E8-47D1-AAFE-4FC72AF5E2EF} = {C5FD25F4-7CA0-43AE-BC79-BF1132CE4C69}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}

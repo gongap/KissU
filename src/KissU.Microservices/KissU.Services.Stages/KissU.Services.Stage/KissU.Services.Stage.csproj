@@ -36,6 +36,7 @@
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.Protocol.Udp\KissU.Core.Protocol.Udp.csproj" />
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.Protocol.WS\KissU.Core.Protocol.WS.csproj" />
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.ProxyGenerator\KissU.Core.ProxyGenerator.csproj" />
+    <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.Serilog\KissU.Core.Serilog.csproj" />
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.ServiceHosting.Extensions\KissU.Core.ServiceHosting.Extensions.csproj" />
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.ServiceHosting\KissU.Core.ServiceHosting.csproj" />
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.Swagger\KissU.Core.Swagger.csproj" />
