@@ -23,6 +23,6 @@
         /// <summary>
         /// 连接字符串名称
         /// </summary>
-        public const string ConnectionStringName = "DefaultConnection";
+        public const string ConnectionStringName = "IdentityServerConnection";
     }
 }
