@@ -26,17 +26,12 @@ namespace KissU.Modules.GreatWall.Application.Implements
         /// </summary>
         /// <param name="applicationPoStore">应用程序存储器</param>
         /// <param name="applicationRepository">应用程序仓储</param>
-        /// <param name="identityResourceRepository">身份资源仓储</param>
-        /// <param name="apiResourceRepository">Api资源仓储</param>
         public QueryApplicationAppService(IApplicationPoStore applicationPoStore,
-            IApplicationRepository applicationRepository,
-            IIdentityResourceRepository identityResourceRepository, IApiResourceRepository apiResourceRepository) :
+            IApplicationRepository applicationRepository) :
             base(applicationPoStore)
         {
             ApplicationStore = applicationPoStore;
             ApplicationRepository = applicationRepository;
-            IdentityResourceRepository = identityResourceRepository;
-            ApiResourceRepository = apiResourceRepository;
         }
 
         /// <summary>
@@ -50,16 +45,6 @@ namespace KissU.Modules.GreatWall.Application.Implements
         public IApplicationRepository ApplicationRepository { get; set; }
 
         /// <summary>
-        /// 身份资源仓储
-        /// </summary>
-        public IIdentityResourceRepository IdentityResourceRepository { get; set; }
-
-        /// <summary>
-        /// Api资源仓储
-        /// </summary>
-        public IApiResourceRepository ApiResourceRepository { get; set; }
-
-        /// <summary>
         /// 通过应用程序编码查找
         /// </summary>
         /// <param name="code">应用程序编码</param>
@@ -67,30 +52,6 @@ namespace KissU.Modules.GreatWall.Application.Implements
         {
             var application = await ApplicationStore.SingleAsync(t => t.Code == code);
             return application.ToDto();
-        }
-
-        /// <summary>
-        /// 是否允许跨域访问
-        /// </summary>
-        /// <param name="origin">来源</param>
-        public async Task<bool> IsOriginAllowedAsync(string origin)
-        {
-            return await ApplicationRepository.IsOriginAllowedAsync(origin);
-        }
-
-        /// <summary>
-        /// 获取作用域
-        /// </summary>
-        public async Task<List<Item>> GetScopes()
-        {
-            var result = new List<Item>();
-            var identityResources = await IdentityResourceRepository.GetEnabledResources();
-            if (identityResources != null)
-                result.AddRange(identityResources.Select(t => new Item(t.Name, t.Uri)));
-            var apiResources = await ApiResourceRepository.GetEnabledResources();
-            if (apiResources != null)
-                result.AddRange(apiResources.Select(t => new Item(t.Name, t.Uri)));
-            return result;
         }
 
         /// <summary>

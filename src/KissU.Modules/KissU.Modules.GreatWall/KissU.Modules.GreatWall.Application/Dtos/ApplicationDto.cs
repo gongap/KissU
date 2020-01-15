@@ -54,65 +54,6 @@ namespace KissU.Modules.GreatWall.Application.Dtos
         public bool? RegisterEnabled { get; set; }
 
         /// <summary>
-        /// 允许的授权类型
-        /// </summary>
-        [Display(Name = "允许的授权类型")]
-        public GrantType AllowedGrantType { get; set; }
-
-        /// <summary>
-        /// 允许通过浏览器访问令牌
-        /// </summary>
-        [Display(Name = "允许通过浏览器访问令牌")]
-        public bool? AllowAccessTokensViaBrowser { get; set; }
-
-        /// <summary>
-        /// 允许的跨域来源
-        /// </summary>
-        [Display(Name = "允许的跨域来源")]
-        public List<string> AllowedCorsOrigins { get; set; }
-
-        /// <summary>
-        /// 需要同意
-        /// </summary>
-        [Display(Name = "需要同意")]
-        public bool? RequireConsent { get; set; }
-
-        /// <summary>
-        /// 需要客户端密钥
-        /// </summary>
-        [Display(Name = "需要客户端密钥")]
-        public bool? RequireClientSecret { get; set; }
-
-        /// <summary>
-        /// 客户端密钥列表
-        /// </summary>
-        public List<ClientSecret> ClientSecrets { get; set; }
-
-        /// <summary>
-        /// 认证重定向地址
-        /// </summary>
-        [Display(Name = "认证重定向地址")]
-        public string RedirectUri { get; set; }
-
-        /// <summary>
-        /// 注销重定向地址
-        /// </summary>
-        [Display(Name = "注销重定向地址")]
-        public string PostLogoutRedirectUri { get; set; }
-
-        /// <summary>
-        /// 允许的作用域
-        /// </summary>
-        [Display(Name = "允许的作用域")]
-        public List<string> AllowedScopes { get; set; }
-
-        /// <summary>
-        /// 访问令牌生命周期
-        /// </summary>
-        [Display(Name = "访问令牌生命周期")]
-        public int AccessTokenLifetime { get; set; }
-
-        /// <summary>
         /// 备注
         /// </summary>
         [StringLength(500)]

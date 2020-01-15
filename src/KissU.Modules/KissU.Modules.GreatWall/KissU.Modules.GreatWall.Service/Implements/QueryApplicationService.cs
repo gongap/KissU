@@ -78,22 +78,5 @@ namespace KissU.Modules.GreatWall.Service.Implements
         {
             return await _appService.GetByCodeAsync(code);
         }
-
-        /// <summary>
-        /// 是否允许跨域访问
-        /// </summary>
-        /// <param name="origin">来源</param>
-        public async Task<bool> IsOriginAllowedAsync(string origin)
-        {
-            return await _appService.IsOriginAllowedAsync(origin);
-        }
-
-        /// <summary>
-        /// 获取作用域
-        /// </summary>
-        public async Task<List<Item>> GetScopes()
-        {
-            return await _appService.GetScopes();
-        }
     }
 }

@@ -24,13 +24,6 @@ namespace KissU.Modules.GreatWall.Application.Dtos.Extensions
             if (extend == null)
                 return result;
             extend.MapTo(result);
-            if (extend.IsClient)
-            {
-                extend.Client.MapTo(result);
-                result.RedirectUri = extend.Client.RedirectUris.FirstOrDefault();
-                result.PostLogoutRedirectUri = extend.Client.PostLogoutRedirectUris.FirstOrDefault();
-            }
-
             return result;
         }
 
@@ -42,10 +35,7 @@ namespace KissU.Modules.GreatWall.Application.Dtos.Extensions
             if (dto == null)
                 return null;
             var result = dto.MapTo<Domain.Models.Application>();
-            dto.MapTo(result.Client);
             result.IsClient = dto.ApplicationType == ApplicationType.Client;
-            result.Client.RedirectUris.Add(dto.RedirectUri);
-            result.Client.PostLogoutRedirectUris.Add(dto.PostLogoutRedirectUri);
             return result;
         }
     }

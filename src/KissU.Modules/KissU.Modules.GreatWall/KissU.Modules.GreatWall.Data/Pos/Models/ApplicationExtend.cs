@@ -21,6 +21,6 @@ namespace KissU.Modules.GreatWall.Data.Pos.Models
         /// <summary>
         /// 客户端
         /// </summary>
-        public Client Client { get; set; }
+        public string ClientId { get; set; }
     }
 }

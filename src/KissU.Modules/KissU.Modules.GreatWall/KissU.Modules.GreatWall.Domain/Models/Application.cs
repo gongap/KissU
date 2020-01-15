@@ -25,7 +25,6 @@ namespace KissU.Modules.GreatWall.Domain.Models
         /// <param name="id">应用程序标识</param>
         public Application(Guid id) : base(id)
         {
-            Client = new Client();
         }
 
         /// <summary>
@@ -108,7 +107,7 @@ namespace KissU.Modules.GreatWall.Domain.Models
         /// <summary>
         /// 客户端
         /// </summary>
-        public Client Client { get; set; }
+        public string ClientId { get; set; }
 
         /// <summary>
         /// 添加描述
