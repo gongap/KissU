@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
 {
     [DbContext(typeof(DesignTimeDbContext))]
-    [Migration("20200113150321_InitialCreate")]
+    [Migration("20200115054609_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KissU.Modules.GreatWall.DbMigrator.Migrations
 {
     [DbContext(typeof(DesignTimeDbContext))]
-    [Migration("20200113144320_InitialCreate")]
+    [Migration("20200115055013_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +25,6 @@ namespace KissU.Modules.GreatWall.DbMigrator.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("ApplicationId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Code")
@@ -68,14 +67,13 @@ namespace KissU.Modules.GreatWall.DbMigrator.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Application","Systems");
+                    b.ToTable("Applications","iam");
                 });
 
             modelBuilder.Entity("KissU.Modules.GreatWall.Data.Pos.ResourcePo", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("ResourceId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("ApplicationId")
@@ -103,7 +101,6 @@ namespace KissU.Modules.GreatWall.DbMigrator.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Level")
-                        .HasColumnName("Level")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -113,7 +110,6 @@ namespace KissU.Modules.GreatWall.DbMigrator.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Path")
-                        .HasColumnName("Path")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PinYin")
@@ -142,61 +138,13 @@ namespace KissU.Modules.GreatWall.DbMigrator.Migrations
 
                     b.HasIndex("ParentId");
 
-                    b.ToTable("Resource","Systems");
-                });
-
-            modelBuilder.Entity("KissU.Modules.GreatWall.Domain.Models.Claim", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("ClaimId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("CreationTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("CreatorId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("Enabled")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("LastModifierId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
-
-                    b.Property<string>("Remark")
-                        .HasColumnType("nvarchar(500)")
-                        .HasMaxLength(500);
-
-                    b.Property<int?>("SortId")
-                        .HasColumnType("int");
-
-                    b.Property<byte[]>("Version")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("rowversion");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Claim","Systems");
+                    b.ToTable("Resources","iam");
                 });
 
             modelBuilder.Entity("KissU.Modules.GreatWall.Domain.Models.Permission", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("PermissionId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("CreationTime")
@@ -234,14 +182,13 @@ namespace KissU.Modules.GreatWall.DbMigrator.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Permission","Systems");
+                    b.ToTable("Permissions","iam");
                 });
 
             modelBuilder.Entity("KissU.Modules.GreatWall.Domain.Models.Role", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("RoleId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Code")
@@ -271,7 +218,6 @@ namespace KissU.Modules.GreatWall.DbMigrator.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Level")
-                        .HasColumnName("Level")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -289,7 +235,6 @@ namespace KissU.Modules.GreatWall.DbMigrator.Migrations
 
                     b.Property<string>("Path")
                         .IsRequired()
-                        .HasColumnName("Path")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PinYin")
@@ -319,14 +264,13 @@ namespace KissU.Modules.GreatWall.DbMigrator.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Role","Systems");
+                    b.ToTable("Roles","iam");
                 });
 
             modelBuilder.Entity("KissU.Modules.GreatWall.Domain.Models.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("UserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int?>("AccessFailedCount")
@@ -440,7 +384,7 @@ namespace KissU.Modules.GreatWall.DbMigrator.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("User","Systems");
+                    b.ToTable("Users","iam");
                 });
 
             modelBuilder.Entity("KissU.Modules.GreatWall.Domain.Models.UserRole", b =>
@@ -453,7 +397,7 @@ namespace KissU.Modules.GreatWall.DbMigrator.Migrations
 
                     b.HasKey("UserId", "RoleId");
 
-                    b.ToTable("UserRole","Systems");
+                    b.ToTable("UserRoles","iam");
                 });
 
             modelBuilder.Entity("KissU.Modules.GreatWall.Data.Pos.ResourcePo", b =>

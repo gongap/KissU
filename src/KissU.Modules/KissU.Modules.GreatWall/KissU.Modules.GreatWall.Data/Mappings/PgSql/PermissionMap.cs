@@ -15,7 +15,7 @@ namespace KissU.Modules.GreatWall.Data.Mappings.PgSql
         /// </summary>
         protected override void MapTable(EntityTypeBuilder<Permission> builder)
         {
-            builder.ToTable("Permission", "Systems");
+            builder.ToTable(GreatWallDataConstants.DbTablePrefix + "Permissions", GreatWallDataConstants.DbSchema);
         }
 
         /// <summary>
@@ -23,7 +23,6 @@ namespace KissU.Modules.GreatWall.Data.Mappings.PgSql
         /// </summary>
         protected override void MapProperties(EntityTypeBuilder<Permission> builder)
         {
-            builder.Property(t => t.Id).HasColumnName("PermissionId");
             builder.HasQueryFilter(t => t.IsDeleted == false);
         }
     }

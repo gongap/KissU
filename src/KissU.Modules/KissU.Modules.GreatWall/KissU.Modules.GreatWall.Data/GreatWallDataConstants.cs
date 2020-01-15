@@ -13,7 +13,7 @@
         /// <summary>
         /// 数据库架构
         /// </summary>
-        public const string DbSchema = "ids";
+        public const string DbSchema = "iam";
 
         /// <summary>
         /// 连接字符串配置节点

@@ -15,7 +15,7 @@ namespace KissU.Modules.GreatWall.Data.Mappings.PgSql
         /// </summary>
         protected override void MapTable(EntityTypeBuilder<ApplicationPo> builder)
         {
-            builder.ToTable("Application", "Systems");
+            builder.ToTable(GreatWallDataConstants.DbTablePrefix + "Applications", GreatWallDataConstants.DbSchema);
         }
 
         /// <summary>
@@ -23,7 +23,6 @@ namespace KissU.Modules.GreatWall.Data.Mappings.PgSql
         /// </summary>
         protected override void MapProperties(EntityTypeBuilder<ApplicationPo> builder)
         {
-            builder.Property(t => t.Id).HasColumnName("ApplicationId");
             builder.HasQueryFilter(t => t.IsDeleted == false);
         }
     }

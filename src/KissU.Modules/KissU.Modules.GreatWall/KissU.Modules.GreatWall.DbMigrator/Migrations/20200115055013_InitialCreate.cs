@@ -8,14 +8,14 @@ namespace KissU.Modules.GreatWall.DbMigrator.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.EnsureSchema(
-                name: "Systems");
+                name: "iam");
 
             migrationBuilder.CreateTable(
-                name: "Application",
-                schema: "Systems",
+                name: "Applications",
+                schema: "iam",
                 columns: table => new
                 {
-                    ApplicationId = table.Column<Guid>(nullable: false),
+                    Id = table.Column<Guid>(nullable: false),
                     Version = table.Column<byte[]>(rowVersion: true, nullable: true),
                     Code = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
@@ -31,37 +31,15 @@ namespace KissU.Modules.GreatWall.DbMigrator.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Application", x => x.ApplicationId);
+                    table.PrimaryKey("PK_Applications", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Claim",
-                schema: "Systems",
+                name: "Permissions",
+                schema: "iam",
                 columns: table => new
                 {
-                    ClaimId = table.Column<Guid>(nullable: false),
-                    Version = table.Column<byte[]>(rowVersion: true, nullable: true),
-                    Name = table.Column<string>(maxLength: 200, nullable: false),
-                    Enabled = table.Column<bool>(nullable: false),
-                    SortId = table.Column<int>(nullable: true),
-                    Remark = table.Column<string>(maxLength: 500, nullable: true),
-                    CreationTime = table.Column<DateTime>(nullable: true),
-                    CreatorId = table.Column<Guid>(nullable: true),
-                    LastModificationTime = table.Column<DateTime>(nullable: true),
-                    LastModifierId = table.Column<Guid>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Claim", x => x.ClaimId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Permission",
-                schema: "Systems",
-                columns: table => new
-                {
-                    PermissionId = table.Column<Guid>(nullable: false),
+                    Id = table.Column<Guid>(nullable: false),
                     Version = table.Column<byte[]>(rowVersion: true, nullable: true),
                     RoleId = table.Column<Guid>(nullable: false),
                     ResourceId = table.Column<Guid>(nullable: false),
@@ -75,15 +53,15 @@ namespace KissU.Modules.GreatWall.DbMigrator.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Permission", x => x.PermissionId);
+                    table.PrimaryKey("PK_Permissions", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Role",
-                schema: "Systems",
+                name: "Roles",
+                schema: "iam",
                 columns: table => new
                 {
-                    RoleId = table.Column<Guid>(nullable: false),
+                    Id = table.Column<Guid>(nullable: false),
                     Version = table.Column<byte[]>(rowVersion: true, nullable: true),
                     ParentId = table.Column<Guid>(nullable: true),
                     Path = table.Column<string>(nullable: false),
@@ -106,15 +84,28 @@ namespace KissU.Modules.GreatWall.DbMigrator.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Role", x => x.RoleId);
+                    table.PrimaryKey("PK_Roles", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "User",
-                schema: "Systems",
+                name: "UserRoles",
+                schema: "iam",
                 columns: table => new
                 {
                     UserId = table.Column<Guid>(nullable: false),
+                    RoleId = table.Column<Guid>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserRoles", x => new { x.UserId, x.RoleId });
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                schema: "iam",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
                     Version = table.Column<byte[]>(rowVersion: true, nullable: true),
                     UserName = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
@@ -149,28 +140,15 @@ namespace KissU.Modules.GreatWall.DbMigrator.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_User", x => x.UserId);
+                    table.PrimaryKey("PK_Users", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserRole",
-                schema: "Systems",
+                name: "Resources",
+                schema: "iam",
                 columns: table => new
                 {
-                    UserId = table.Column<Guid>(nullable: false),
-                    RoleId = table.Column<Guid>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UserRole", x => new { x.UserId, x.RoleId });
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Resource",
-                schema: "Systems",
-                columns: table => new
-                {
-                    ResourceId = table.Column<Guid>(nullable: false),
+                    Id = table.Column<Guid>(nullable: false),
                     Version = table.Column<byte[]>(rowVersion: true, nullable: true),
                     ParentId = table.Column<Guid>(nullable: true),
                     Path = table.Column<string>(nullable: true),
@@ -192,65 +170,61 @@ namespace KissU.Modules.GreatWall.DbMigrator.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Resource", x => x.ResourceId);
+                    table.PrimaryKey("PK_Resources", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Resource_Application_ApplicationId",
+                        name: "FK_Resources_Applications_ApplicationId",
                         column: x => x.ApplicationId,
-                        principalSchema: "Systems",
-                        principalTable: "Application",
-                        principalColumn: "ApplicationId",
+                        principalSchema: "iam",
+                        principalTable: "Applications",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Resource_Resource_ParentId",
+                        name: "FK_Resources_Resources_ParentId",
                         column: x => x.ParentId,
-                        principalSchema: "Systems",
-                        principalTable: "Resource",
-                        principalColumn: "ResourceId",
+                        principalSchema: "iam",
+                        principalTable: "Resources",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Resource_ApplicationId",
-                schema: "Systems",
-                table: "Resource",
+                name: "IX_Resources_ApplicationId",
+                schema: "iam",
+                table: "Resources",
                 column: "ApplicationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Resource_ParentId",
-                schema: "Systems",
-                table: "Resource",
+                name: "IX_Resources_ParentId",
+                schema: "iam",
+                table: "Resources",
                 column: "ParentId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Claim",
-                schema: "Systems");
+                name: "Permissions",
+                schema: "iam");
 
             migrationBuilder.DropTable(
-                name: "Permission",
-                schema: "Systems");
+                name: "Resources",
+                schema: "iam");
 
             migrationBuilder.DropTable(
-                name: "Resource",
-                schema: "Systems");
+                name: "Roles",
+                schema: "iam");
 
             migrationBuilder.DropTable(
-                name: "Role",
-                schema: "Systems");
+                name: "UserRoles",
+                schema: "iam");
 
             migrationBuilder.DropTable(
-                name: "User",
-                schema: "Systems");
+                name: "Users",
+                schema: "iam");
 
             migrationBuilder.DropTable(
-                name: "UserRole",
-                schema: "Systems");
-
-            migrationBuilder.DropTable(
-                name: "Application",
-                schema: "Systems");
+                name: "Applications",
+                schema: "iam");
         }
     }
 }

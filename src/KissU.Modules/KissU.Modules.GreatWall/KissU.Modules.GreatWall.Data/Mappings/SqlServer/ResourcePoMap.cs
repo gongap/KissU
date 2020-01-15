@@ -15,7 +15,7 @@ namespace KissU.Modules.GreatWall.Data.Mappings.SqlServer
         /// </summary>
         protected override void MapTable(EntityTypeBuilder<ResourcePo> builder)
         {
-            builder.ToTable("Resource", "Systems");
+            builder.ToTable(GreatWallDataConstants.DbTablePrefix + "Resources", GreatWallDataConstants.DbSchema);
         }
 
         /// <summary>
@@ -23,9 +23,6 @@ namespace KissU.Modules.GreatWall.Data.Mappings.SqlServer
         /// </summary>
         protected override void MapProperties(EntityTypeBuilder<ResourcePo> builder)
         {
-            builder.Property(t => t.Id).HasColumnName("ResourceId");
-            builder.Property(t => t.Path).HasColumnName("Path");
-            builder.Property(t => t.Level).HasColumnName("Level");
             builder.HasQueryFilter(t => t.IsDeleted == false);
         }
     }

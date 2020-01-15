@@ -15,7 +15,7 @@ namespace KissU.Modules.GreatWall.Data.Mappings.PgSql
         /// </summary>
         protected override void MapTable(EntityTypeBuilder<Role> builder)
         {
-            builder.ToTable("Role", "Systems");
+            builder.ToTable(GreatWallDataConstants.DbTablePrefix + "Roles", GreatWallDataConstants.DbSchema);
         }
 
         /// <summary>
@@ -23,9 +23,6 @@ namespace KissU.Modules.GreatWall.Data.Mappings.PgSql
         /// </summary>
         protected override void MapProperties(EntityTypeBuilder<Role> builder)
         {
-            builder.Property(t => t.Id).HasColumnName("RoleId");
-            builder.Property(t => t.Path).HasColumnName("Path");
-            builder.Property(t => t.Level).HasColumnName("Level");
             builder.HasQueryFilter(t => t.IsDeleted == false);
         }
     }

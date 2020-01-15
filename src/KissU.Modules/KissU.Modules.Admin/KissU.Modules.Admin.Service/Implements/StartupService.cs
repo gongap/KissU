@@ -7,6 +7,7 @@ using KissU.Modules.Admin.Service.Contracts.Abstractions;
 using KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain;
 using KissU.Modules.Admin.Service.Extensions;
 using KissU.Modules.GreatWall.Service.Contracts;
+using KissU.Util.Helpers;
 
 namespace KissU.Modules.Admin.Service.Implements
 {
@@ -24,9 +25,9 @@ namespace KissU.Modules.Admin.Service.Implements
             var payload = RpcContext.GetContext().GetAttachment("payload");
             var data = new AppData
             {
-                App = {Name = "KissU", Description = ".Net Core权限系统"}
-                //User = { Name = Web.Identity.Name, Avatar = "/assets/tmp/img/avatar.jpg", Email = "gongap@qq.com" },
-                //Menu = await GetMenus()
+                App = { Name = "KissU", Description = ".Net Core权限系统" },
+                User = { Name = Web.Identity.Name, Avatar = "/assets/tmp/img/avatar.jpg", Email = "gongap@qq.com" },
+                Menu = await GetMenus()
             };
             return data;
         }
@@ -36,7 +37,7 @@ namespace KissU.Modules.Admin.Service.Implements
         /// </summary>
         private async Task<List<MenuInfo>> GetMenus()
         {
-            var result = await GetService<IMenuService>().GetMenusAsync();
+            var result = await GetService<IMenuService>().GetMenusAsync().ConfigureAwait(false);
             return result.ToNgAlainMenus();
         }
     }

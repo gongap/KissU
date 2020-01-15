@@ -15,7 +15,7 @@ namespace KissU.Modules.GreatWall.Data.Mappings.SqlServer
         /// </summary>
         protected override void MapTable(EntityTypeBuilder<User> builder)
         {
-            builder.ToTable("User", "Systems");
+            builder.ToTable(GreatWallDataConstants.DbTablePrefix + "Users", GreatWallDataConstants.DbSchema);
         }
 
         /// <summary>
@@ -23,7 +23,6 @@ namespace KissU.Modules.GreatWall.Data.Mappings.SqlServer
         /// </summary>
         protected override void MapProperties(EntityTypeBuilder<User> builder)
         {
-            builder.Property(t => t.Id).HasColumnName("UserId");
             builder.HasQueryFilter(t => t.IsDeleted == false);
         }
     }

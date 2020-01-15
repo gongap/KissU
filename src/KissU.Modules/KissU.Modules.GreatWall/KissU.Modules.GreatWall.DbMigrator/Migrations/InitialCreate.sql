@@ -9,12 +9,12 @@ END;
 
 GO
 
-IF SCHEMA_ID(N'Systems') IS NULL EXEC(N'CREATE SCHEMA [Systems];');
+IF SCHEMA_ID(N'iam') IS NULL EXEC(N'CREATE SCHEMA [iam];');
 
 GO
 
-CREATE TABLE [Systems].[Application] (
-    [ApplicationId] uniqueidentifier NOT NULL,
+CREATE TABLE [iam].[Applications] (
+    [Id] uniqueidentifier NOT NULL,
     [Version] rowversion NULL,
     [Code] nvarchar(max) NULL,
     [Name] nvarchar(max) NULL,
@@ -27,30 +27,13 @@ CREATE TABLE [Systems].[Application] (
     [LastModificationTime] datetime2 NULL,
     [LastModifierId] uniqueidentifier NULL,
     [IsDeleted] bit NOT NULL,
-    CONSTRAINT [PK_Application] PRIMARY KEY ([ApplicationId])
+    CONSTRAINT [PK_Applications] PRIMARY KEY ([Id])
 );
 
 GO
 
-CREATE TABLE [Systems].[Claim] (
-    [ClaimId] uniqueidentifier NOT NULL,
-    [Version] rowversion NULL,
-    [Name] nvarchar(200) NOT NULL,
-    [Enabled] bit NOT NULL,
-    [SortId] int NULL,
-    [Remark] nvarchar(500) NULL,
-    [CreationTime] datetime2 NULL,
-    [CreatorId] uniqueidentifier NULL,
-    [LastModificationTime] datetime2 NULL,
-    [LastModifierId] uniqueidentifier NULL,
-    [IsDeleted] bit NOT NULL,
-    CONSTRAINT [PK_Claim] PRIMARY KEY ([ClaimId])
-);
-
-GO
-
-CREATE TABLE [Systems].[Permission] (
-    [PermissionId] uniqueidentifier NOT NULL,
+CREATE TABLE [iam].[Permissions] (
+    [Id] uniqueidentifier NOT NULL,
     [Version] rowversion NULL,
     [RoleId] uniqueidentifier NOT NULL,
     [ResourceId] uniqueidentifier NOT NULL,
@@ -61,13 +44,13 @@ CREATE TABLE [Systems].[Permission] (
     [LastModificationTime] datetime2 NULL,
     [LastModifierId] uniqueidentifier NULL,
     [IsDeleted] bit NOT NULL,
-    CONSTRAINT [PK_Permission] PRIMARY KEY ([PermissionId])
+    CONSTRAINT [PK_Permissions] PRIMARY KEY ([Id])
 );
 
 GO
 
-CREATE TABLE [Systems].[Role] (
-    [RoleId] uniqueidentifier NOT NULL,
+CREATE TABLE [iam].[Roles] (
+    [Id] uniqueidentifier NOT NULL,
     [Version] rowversion NULL,
     [ParentId] uniqueidentifier NULL,
     [Path] nvarchar(max) NOT NULL,
@@ -87,13 +70,21 @@ CREATE TABLE [Systems].[Role] (
     [LastModificationTime] datetime2 NULL,
     [LastModifierId] uniqueidentifier NULL,
     [IsDeleted] bit NOT NULL,
-    CONSTRAINT [PK_Role] PRIMARY KEY ([RoleId])
+    CONSTRAINT [PK_Roles] PRIMARY KEY ([Id])
 );
 
 GO
 
-CREATE TABLE [Systems].[User] (
+CREATE TABLE [iam].[UserRoles] (
     [UserId] uniqueidentifier NOT NULL,
+    [RoleId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_UserRoles] PRIMARY KEY ([UserId], [RoleId])
+);
+
+GO
+
+CREATE TABLE [iam].[Users] (
+    [Id] uniqueidentifier NOT NULL,
     [Version] rowversion NULL,
     [UserName] nvarchar(256) NULL,
     [NormalizedUserName] nvarchar(256) NULL,
@@ -125,21 +116,13 @@ CREATE TABLE [Systems].[User] (
     [LastModificationTime] datetime2 NULL,
     [LastModifierId] uniqueidentifier NULL,
     [IsDeleted] bit NOT NULL,
-    CONSTRAINT [PK_User] PRIMARY KEY ([UserId])
+    CONSTRAINT [PK_Users] PRIMARY KEY ([Id])
 );
 
 GO
 
-CREATE TABLE [Systems].[UserRole] (
-    [UserId] uniqueidentifier NOT NULL,
-    [RoleId] uniqueidentifier NOT NULL,
-    CONSTRAINT [PK_UserRole] PRIMARY KEY ([UserId], [RoleId])
-);
-
-GO
-
-CREATE TABLE [Systems].[Resource] (
-    [ResourceId] uniqueidentifier NOT NULL,
+CREATE TABLE [iam].[Resources] (
+    [Id] uniqueidentifier NOT NULL,
     [Version] rowversion NULL,
     [ParentId] uniqueidentifier NULL,
     [Path] nvarchar(max) NULL,
@@ -158,23 +141,23 @@ CREATE TABLE [Systems].[Resource] (
     [LastModificationTime] datetime2 NULL,
     [LastModifierId] uniqueidentifier NULL,
     [IsDeleted] bit NOT NULL,
-    CONSTRAINT [PK_Resource] PRIMARY KEY ([ResourceId]),
-    CONSTRAINT [FK_Resource_Application_ApplicationId] FOREIGN KEY ([ApplicationId]) REFERENCES [Systems].[Application] ([ApplicationId]) ON DELETE NO ACTION,
-    CONSTRAINT [FK_Resource_Resource_ParentId] FOREIGN KEY ([ParentId]) REFERENCES [Systems].[Resource] ([ResourceId]) ON DELETE NO ACTION
+    CONSTRAINT [PK_Resources] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Resources_Applications_ApplicationId] FOREIGN KEY ([ApplicationId]) REFERENCES [iam].[Applications] ([Id]) ON DELETE NO ACTION,
+    CONSTRAINT [FK_Resources_Resources_ParentId] FOREIGN KEY ([ParentId]) REFERENCES [iam].[Resources] ([Id]) ON DELETE NO ACTION
 );
 
 GO
 
-CREATE INDEX [IX_Resource_ApplicationId] ON [Systems].[Resource] ([ApplicationId]);
+CREATE INDEX [IX_Resources_ApplicationId] ON [iam].[Resources] ([ApplicationId]);
 
 GO
 
-CREATE INDEX [IX_Resource_ParentId] ON [Systems].[Resource] ([ParentId]);
+CREATE INDEX [IX_Resources_ParentId] ON [iam].[Resources] ([ParentId]);
 
 GO
 
 INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-VALUES (N'20200113144320_InitialCreate', N'3.1.0');
+VALUES (N'20200115055013_InitialCreate', N'3.1.0');
 
 GO
 
