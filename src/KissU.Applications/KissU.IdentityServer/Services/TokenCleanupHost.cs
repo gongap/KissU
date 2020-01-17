@@ -14,18 +14,31 @@ namespace KissU.IdentityServer.Services
     /// </summary>
     public class TokenCleanupHost : IHostedService
     {
+        /// <summary>
+        /// The logger
+        /// </summary>
         private readonly ILogger<TokenCleanupHost> _logger;
+        /// <summary>
+        /// The options
+        /// </summary>
         private readonly OperationalStoreOptions _options;
+        /// <summary>
+        /// The service provider
+        /// </summary>
         private readonly IServiceProvider _serviceProvider;
-
+        /// <summary>
+        /// The source
+        /// </summary>
         private CancellationTokenSource _source;
 
         /// <summary>
         /// 初始化
         /// </summary>
-        /// <param name="serviceProvider"></param>
-        /// <param name="options"></param>
-        /// <param name="logger"></param>
+        /// <param name="serviceProvider">The service provider.</param>
+        /// <param name="options">The options.</param>
+        /// <param name="logger">The logger.</param>
+        /// <exception cref="ArgumentNullException">serviceProvider</exception>
+        /// <exception cref="ArgumentNullException">options</exception>
         public TokenCleanupHost(IServiceProvider serviceProvider, OperationalStoreOptions options,
             ILogger<TokenCleanupHost> logger)
         {
@@ -34,11 +47,18 @@ namespace KissU.IdentityServer.Services
             _logger = logger;
         }
 
+        /// <summary>
+        /// Gets the cleanup interval.
+        /// </summary>
+        /// <value>The cleanup interval.</value>
         private TimeSpan CleanupInterval => TimeSpan.FromSeconds(_options.TokenCleanupInterval);
 
         /// <summary>
         /// 启动令牌清理轮询
         /// </summary>
+        /// <param name="cancellationToken">Indicates that the start process has been aborted.</param>
+        /// <returns>Task.</returns>
+        /// <exception cref="InvalidOperationException">Already started. Call Stop first.</exception>
         public Task StartAsync(CancellationToken cancellationToken)
         {
             if (_options.EnableTokenCleanup)
@@ -58,6 +78,9 @@ namespace KissU.IdentityServer.Services
         /// <summary>
         /// 停止令牌清理轮询
         /// </summary>
+        /// <param name="cancellationToken">Indicates that the shutdown process should no longer be graceful.</param>
+        /// <returns>Task.</returns>
+        /// <exception cref="InvalidOperationException">Not started. Call Start first.</exception>
         public Task StopAsync(CancellationToken cancellationToken)
         {
             if (_options.EnableTokenCleanup)
@@ -73,6 +96,10 @@ namespace KissU.IdentityServer.Services
             return Task.CompletedTask;
         }
 
+        /// <summary>
+        /// start internal as an asynchronous operation.
+        /// </summary>
+        /// <param name="cancellationToken">The cancellation token.</param>
         private async Task StartInternalAsync(CancellationToken cancellationToken)
         {
             while (true)
@@ -108,6 +135,9 @@ namespace KissU.IdentityServer.Services
             }
         }
 
+        /// <summary>
+        /// remove expired grants as an asynchronous operation.
+        /// </summary>
         private async Task RemoveExpiredGrantsAsync()
         {
             try

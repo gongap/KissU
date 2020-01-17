@@ -58,6 +58,7 @@ namespace KissU.IdentityServer.Services
         /// <summary>
         /// 获取用户配置
         /// </summary>
+        /// <param name="context">The context.</param>
         public override async Task GetProfileDataAsync(ProfileDataRequestContext context)
         {
             if (context == null) return;
@@ -77,6 +78,8 @@ namespace KissU.IdentityServer.Services
         /// <summary>
         /// 获取用户
         /// </summary>
+        /// <param name="context">The context.</param>
+        /// <returns>Task&lt;User&gt;.</returns>
         private async Task<User> GetUser(ProfileDataRequestContext context)
         {
             var userId = context.Subject?.GetSubjectId();
@@ -88,6 +91,8 @@ namespace KissU.IdentityServer.Services
         /// <summary>
         /// 添加应用程序声明
         /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="identity">The identity.</param>
         protected virtual async Task AddApplicationClaims(ProfileDataRequestContext context, ClaimsIdentity identity)
         {
             var application = await GetApplication(context);
@@ -101,6 +106,8 @@ namespace KissU.IdentityServer.Services
         /// <summary>
         /// 获取应用程序
         /// </summary>
+        /// <param name="context">The context.</param>
+        /// <returns>Task&lt;ApplicationDto&gt;.</returns>
         private async Task<ApplicationDto> GetApplication(ProfileDataRequestContext context)
         {
             var applicationCode = context.Client?.ClientId;
@@ -112,6 +119,8 @@ namespace KissU.IdentityServer.Services
         /// <summary>
         /// 添加角色声明
         /// </summary>
+        /// <param name="user">The user.</param>
+        /// <param name="identity">The identity.</param>
         protected virtual async Task AddRoleClaims(User user, ClaimsIdentity identity)
         {
             var roles = await _roleService.GetRolesAsync(user.Id);

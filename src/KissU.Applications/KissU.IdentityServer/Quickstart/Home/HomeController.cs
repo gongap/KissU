@@ -1,7 +1,3 @@
-// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
-
-
 using System.Threading.Tasks;
 using IdentityServer4.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -12,14 +8,34 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.IdentityServer.Quickstart.Home
 {
+    /// <summary>
+    /// HomeController.
+    /// Implements the <see cref="Microsoft.AspNetCore.Mvc.Controller" />
+    /// </summary>
+    /// <seealso cref="Microsoft.AspNetCore.Mvc.Controller" />
     [SecurityHeaders]
     [AllowAnonymous]
     public class HomeController : Controller
     {
+        /// <summary>
+        /// The interaction
+        /// </summary>
         private readonly IIdentityServerInteractionService _interaction;
+        /// <summary>
+        /// The environment
+        /// </summary>
         private readonly IWebHostEnvironment _environment;
+        /// <summary>
+        /// The logger
+        /// </summary>
         private readonly ILogger _logger;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HomeController"/> class.
+        /// </summary>
+        /// <param name="interaction">The interaction.</param>
+        /// <param name="environment">The environment.</param>
+        /// <param name="logger">The logger.</param>
         public HomeController(IIdentityServerInteractionService interaction, IWebHostEnvironment environment, ILogger<HomeController> logger)
         {
             _interaction = interaction;
@@ -27,6 +43,10 @@ namespace KissU.IdentityServer.Quickstart.Home
             _logger = logger;
         }
 
+        /// <summary>
+        /// Indexes this instance.
+        /// </summary>
+        /// <returns>IActionResult.</returns>
         public IActionResult Index()
         {
             if (_environment.IsDevelopment())
@@ -42,6 +62,8 @@ namespace KissU.IdentityServer.Quickstart.Home
         /// <summary>
         /// Shows the error page
         /// </summary>
+        /// <param name="errorId">The error identifier.</param>
+        /// <returns>Task&lt;IActionResult&gt;.</returns>
         public async Task<IActionResult> Error(string errorId)
         {
             var vm = new ErrorViewModel();

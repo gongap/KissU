@@ -1,7 +1,3 @@
-// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
-
-
 using System.Collections.Generic;
 using System.Text;
 using IdentityModel;
@@ -10,8 +6,15 @@ using Newtonsoft.Json;
 
 namespace KissU.IdentityServer.Quickstart.Diagnostics
 {
+    /// <summary>
+    /// DiagnosticsViewModel.
+    /// </summary>
     public class DiagnosticsViewModel
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DiagnosticsViewModel" /> class.
+        /// </summary>
+        /// <param name="result">The result.</param>
         public DiagnosticsViewModel(AuthenticateResult result)
         {
             AuthenticateResult = result;
@@ -26,7 +29,15 @@ namespace KissU.IdentityServer.Quickstart.Diagnostics
             }
         }
 
+        /// <summary>
+        /// Gets the authenticate result.
+        /// </summary>
+        /// <value>The authenticate result.</value>
         public AuthenticateResult AuthenticateResult { get; }
+        /// <summary>
+        /// Gets the clients.
+        /// </summary>
+        /// <value>The clients.</value>
         public IEnumerable<string> Clients { get; } = new List<string>();
     }
 }

@@ -1,7 +1,3 @@
-// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
-
-
 using System.Linq;
 using System.Threading.Tasks;
 using IdentityServer4.Events;
@@ -23,12 +19,35 @@ namespace KissU.IdentityServer.Quickstart.Consent
     [Authorize]
     public class ConsentController : Controller
     {
+        /// <summary>
+        /// The interaction
+        /// </summary>
         private readonly IIdentityServerInteractionService _interaction;
+        /// <summary>
+        /// The client store
+        /// </summary>
         private readonly IClientStore _clientStore;
+        /// <summary>
+        /// The resource store
+        /// </summary>
         private readonly IResourceStore _resourceStore;
+        /// <summary>
+        /// The events
+        /// </summary>
         private readonly IEventService _events;
+        /// <summary>
+        /// The logger
+        /// </summary>
         private readonly ILogger<ConsentController> _logger;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ConsentController"/> class.
+        /// </summary>
+        /// <param name="interaction">The interaction.</param>
+        /// <param name="clientStore">The client store.</param>
+        /// <param name="resourceStore">The resource store.</param>
+        /// <param name="events">The events.</param>
+        /// <param name="logger">The logger.</param>
         public ConsentController(
             IIdentityServerInteractionService interaction,
             IClientStore clientStore,
@@ -46,8 +65,8 @@ namespace KissU.IdentityServer.Quickstart.Consent
         /// <summary>
         /// Shows the consent screen
         /// </summary>
-        /// <param name="returnUrl"></param>
-        /// <returns></returns>
+        /// <param name="returnUrl">The return URL.</param>
+        /// <returns>Task&lt;IActionResult&gt;.</returns>
         [HttpGet]
         public async Task<IActionResult> Index(string returnUrl)
         {
@@ -63,6 +82,8 @@ namespace KissU.IdentityServer.Quickstart.Consent
         /// <summary>
         /// Handles the consent screen postback
         /// </summary>
+        /// <param name="model">The model.</param>
+        /// <returns>Task&lt;IActionResult&gt;.</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index(ConsentInputModel model)
@@ -97,6 +118,11 @@ namespace KissU.IdentityServer.Quickstart.Consent
         /*****************************************/
         /* helper APIs for the ConsentController */
         /*****************************************/
+        /// <summary>
+        /// Processes the consent.
+        /// </summary>
+        /// <param name="model">The model.</param>
+        /// <returns>Task&lt;ProcessConsentResult&gt;.</returns>
         private async Task<ProcessConsentResult> ProcessConsent(ConsentInputModel model)
         {
             var result = new ProcessConsentResult();
@@ -164,6 +190,12 @@ namespace KissU.IdentityServer.Quickstart.Consent
             return result;
         }
 
+        /// <summary>
+        /// build view model as an asynchronous operation.
+        /// </summary>
+        /// <param name="returnUrl">The return URL.</param>
+        /// <param name="model">The model.</param>
+        /// <returns>Task&lt;ConsentViewModel&gt;.</returns>
         private async Task<ConsentViewModel> BuildViewModelAsync(string returnUrl, ConsentInputModel model = null)
         {
             var request = await _interaction.GetAuthorizationContextAsync(returnUrl);
@@ -195,6 +227,15 @@ namespace KissU.IdentityServer.Quickstart.Consent
             return null;
         }
 
+        /// <summary>
+        /// Creates the consent view model.
+        /// </summary>
+        /// <param name="model">The model.</param>
+        /// <param name="returnUrl">The return URL.</param>
+        /// <param name="request">The request.</param>
+        /// <param name="client">The client.</param>
+        /// <param name="resources">The resources.</param>
+        /// <returns>ConsentViewModel.</returns>
         private ConsentViewModel CreateConsentViewModel(
             ConsentInputModel model, string returnUrl,
             AuthorizationRequest request,
@@ -225,6 +266,12 @@ namespace KissU.IdentityServer.Quickstart.Consent
             return vm;
         }
 
+        /// <summary>
+        /// Creates the scope view model.
+        /// </summary>
+        /// <param name="identity">The identity.</param>
+        /// <param name="check">if set to <c>true</c> [check].</param>
+        /// <returns>ScopeViewModel.</returns>
         private ScopeViewModel CreateScopeViewModel(IdentityResource identity, bool check)
         {
             return new ScopeViewModel
@@ -238,6 +285,12 @@ namespace KissU.IdentityServer.Quickstart.Consent
             };
         }
 
+        /// <summary>
+        /// Creates the scope view model.
+        /// </summary>
+        /// <param name="scope">The scope.</param>
+        /// <param name="check">if set to <c>true</c> [check].</param>
+        /// <returns>ScopeViewModel.</returns>
         public ScopeViewModel CreateScopeViewModel(Scope scope, bool check)
         {
             return new ScopeViewModel
@@ -251,6 +304,11 @@ namespace KissU.IdentityServer.Quickstart.Consent
             };
         }
 
+        /// <summary>
+        /// Gets the offline access scope.
+        /// </summary>
+        /// <param name="check">if set to <c>true</c> [check].</param>
+        /// <returns>ScopeViewModel.</returns>
         private ScopeViewModel GetOfflineAccessScope(bool check)
         {
             return new ScopeViewModel

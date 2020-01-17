@@ -3,6 +3,9 @@ using IdentityServer4.Stores;
 
 namespace KissU.IdentityServer.Quickstart
 {
+    /// <summary>
+    /// Extensions.
+    /// </summary>
     public static class Extensions
     {
         /// <summary>
@@ -10,7 +13,7 @@ namespace KissU.IdentityServer.Quickstart
         /// </summary>
         /// <param name="store">The store.</param>
         /// <param name="client_id">The client identifier.</param>
-        /// <returns></returns>
+        /// <returns>Task&lt;System.Boolean&gt;.</returns>
         public static async Task<bool> IsPkceClientAsync(this IClientStore store, string client_id)
         {
             if (!string.IsNullOrWhiteSpace(client_id))

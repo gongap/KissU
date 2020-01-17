@@ -1,12 +1,19 @@
-﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
-
-
-namespace KissU.IdentityServer.Quickstart.Account
+﻿namespace KissU.IdentityServer.Quickstart.Account
 {
+    /// <summary>
+    /// ExternalProvider.
+    /// </summary>
     public class ExternalProvider
     {
+        /// <summary>
+        /// Gets or sets the display name.
+        /// </summary>
+        /// <value>The display name.</value>
         public string DisplayName { get; set; }
+        /// <summary>
+        /// Gets or sets the authentication scheme.
+        /// </summary>
+        /// <value>The authentication scheme.</value>
         public string AuthenticationScheme { get; set; }
     }
 }

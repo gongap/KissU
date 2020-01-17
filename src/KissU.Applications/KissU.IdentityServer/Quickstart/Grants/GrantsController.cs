@@ -1,7 +1,3 @@
-// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
-
-
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,11 +17,30 @@ namespace KissU.IdentityServer.Quickstart.Grants
     [Authorize]
     public class GrantsController : Controller
     {
+        /// <summary>
+        /// The interaction
+        /// </summary>
         private readonly IIdentityServerInteractionService _interaction;
+        /// <summary>
+        /// The clients
+        /// </summary>
         private readonly IClientStore _clients;
+        /// <summary>
+        /// The resources
+        /// </summary>
         private readonly IResourceStore _resources;
+        /// <summary>
+        /// The events
+        /// </summary>
         private readonly IEventService _events;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GrantsController" /> class.
+        /// </summary>
+        /// <param name="interaction">The interaction.</param>
+        /// <param name="clients">The clients.</param>
+        /// <param name="resources">The resources.</param>
+        /// <param name="events">The events.</param>
         public GrantsController(IIdentityServerInteractionService interaction,
             IClientStore clients,
             IResourceStore resources,
@@ -40,15 +55,19 @@ namespace KissU.IdentityServer.Quickstart.Grants
         /// <summary>
         /// Show list of grants
         /// </summary>
+        /// <returns>Task&lt;IActionResult&gt;.</returns>
         [HttpGet]
         public async Task<IActionResult> Index()
         {
             return View("Index", await BuildViewModelAsync());
         }
 
+
         /// <summary>
         /// Handle postback to revoke a client
         /// </summary>
+        /// <param name="clientId">The client identifier.</param>
+        /// <returns>Task&lt;IActionResult&gt;.</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Revoke(string clientId)
@@ -59,6 +78,10 @@ namespace KissU.IdentityServer.Quickstart.Grants
             return RedirectToAction("Index");
         }
 
+        /// <summary>
+        /// build view model as an asynchronous operation.
+        /// </summary>
+        /// <returns>Task&lt;GrantsViewModel&gt;.</returns>
         private async Task<GrantsViewModel> BuildViewModelAsync()
         {
             var grants = await _interaction.GetAllUserConsentsAsync();

@@ -8,7 +8,6 @@ using IdentityModel;
 using IdentityServer4.Events;
 using IdentityServer4.Services;
 using IdentityServer4.Stores;
-using KissU.IdentityServer.Models;
 using KissU.Modules.GreatWall.Domain.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
@@ -20,17 +19,49 @@ using Claim = System.Security.Claims.Claim;
 
 namespace KissU.IdentityServer.Quickstart.Account
 {
+    /// <summary>
+    /// ExternalController.
+    /// Implements the <see cref="Microsoft.AspNetCore.Mvc.Controller" />
+    /// </summary>
+    /// <seealso cref="Microsoft.AspNetCore.Mvc.Controller" />
     [SecurityHeaders]
     [AllowAnonymous]
     public class ExternalController : Controller
     {
+        /// <summary>
+        /// The user manager
+        /// </summary>
         private readonly UserManager<User> _userManager;
+        /// <summary>
+        /// The sign in manager
+        /// </summary>
         private readonly SignInManager<User> _signInManager;
+        /// <summary>
+        /// The interaction
+        /// </summary>
         private readonly IIdentityServerInteractionService _interaction;
+        /// <summary>
+        /// The client store
+        /// </summary>
         private readonly IClientStore _clientStore;
+        /// <summary>
+        /// The events
+        /// </summary>
         private readonly IEventService _events;
+        /// <summary>
+        /// The logger
+        /// </summary>
         private readonly ILogger<ExternalController> _logger;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ExternalController"/> class.
+        /// </summary>
+        /// <param name="userManager">The user manager.</param>
+        /// <param name="signInManager">The sign in manager.</param>
+        /// <param name="interaction">The interaction.</param>
+        /// <param name="clientStore">The client store.</param>
+        /// <param name="events">The events.</param>
+        /// <param name="logger">The logger.</param>
         public ExternalController(
             UserManager<User> userManager,
             SignInManager<User> signInManager,
@@ -50,6 +81,10 @@ namespace KissU.IdentityServer.Quickstart.Account
         /// <summary>
         /// initiate roundtrip to external authentication provider
         /// </summary>
+        /// <param name="provider">The provider.</param>
+        /// <param name="returnUrl">The return URL.</param>
+        /// <returns>Task&lt;IActionResult&gt;.</returns>
+        /// <exception cref="Exception">invalid return URL</exception>
         [HttpGet]
         public async Task<IActionResult> Challenge(string provider, string returnUrl)
         {
@@ -87,6 +122,8 @@ namespace KissU.IdentityServer.Quickstart.Account
         /// <summary>
         /// Post processing of external authentication
         /// </summary>
+        /// <returns>Task&lt;IActionResult&gt;.</returns>
+        /// <exception cref="Exception">External authentication error</exception>
         [HttpGet]
         public async Task<IActionResult> Callback()
         {
@@ -153,6 +190,11 @@ namespace KissU.IdentityServer.Quickstart.Account
             return Redirect(returnUrl);
         }
 
+        /// <summary>
+        /// process windows login as an asynchronous operation.
+        /// </summary>
+        /// <param name="returnUrl">The return URL.</param>
+        /// <returns>Task&lt;IActionResult&gt;.</returns>
         private async Task<IActionResult> ProcessWindowsLoginAsync(string returnUrl)
         {
             // see if windows auth has already been requested and succeeded
@@ -200,6 +242,12 @@ namespace KissU.IdentityServer.Quickstart.Account
             }
         }
 
+        /// <summary>
+        /// find user from external provider as an asynchronous operation.
+        /// </summary>
+        /// <param name="result">The result.</param>
+        /// <returns>Task&lt;System.ValueTuple&lt;User, System.String, System.String, IEnumerable&lt;Claim&gt;&gt;&gt;.</returns>
+        /// <exception cref="Exception">Unknown userid</exception>
         private async Task<(User user, string provider, string providerUserId, IEnumerable<Claim> claims)>
             FindUserFromExternalProviderAsync(AuthenticateResult result)
         {
@@ -225,6 +273,16 @@ namespace KissU.IdentityServer.Quickstart.Account
             return (user, provider, providerUserId, claims);
         }
 
+        /// <summary>
+        /// automatic provision user as an asynchronous operation.
+        /// </summary>
+        /// <param name="provider">The provider.</param>
+        /// <param name="providerUserId">The provider user identifier.</param>
+        /// <param name="claims">The claims.</param>
+        /// <returns>Task&lt;User&gt;.</returns>
+        /// <exception cref="Exception"></exception>
+        /// <exception cref="Exception"></exception>
+        /// <exception cref="Exception"></exception>
         private async Task<User> AutoProvisionUserAsync(string provider, string providerUserId, IEnumerable<Claim> claims)
         {
             // create a list of claims that we want to transfer into our store
@@ -285,6 +343,12 @@ namespace KissU.IdentityServer.Quickstart.Account
         }
 
 
+        /// <summary>
+        /// Processes the login callback for oidc.
+        /// </summary>
+        /// <param name="externalResult">The external result.</param>
+        /// <param name="localClaims">The local claims.</param>
+        /// <param name="localSignInProps">The local sign in props.</param>
         private void ProcessLoginCallbackForOidc(AuthenticateResult externalResult, List<Claim> localClaims, AuthenticationProperties localSignInProps)
         {
             // if the external system sent a session id claim, copy it over
@@ -303,10 +367,22 @@ namespace KissU.IdentityServer.Quickstart.Account
             }
         }
 
+        /// <summary>
+        /// Processes the login callback for ws fed.
+        /// </summary>
+        /// <param name="externalResult">The external result.</param>
+        /// <param name="localClaims">The local claims.</param>
+        /// <param name="localSignInProps">The local sign in props.</param>
         private void ProcessLoginCallbackForWsFed(AuthenticateResult externalResult, List<Claim> localClaims, AuthenticationProperties localSignInProps)
         {
         }
 
+        /// <summary>
+        /// Processes the login callback for saml2p.
+        /// </summary>
+        /// <param name="externalResult">The external result.</param>
+        /// <param name="localClaims">The local claims.</param>
+        /// <param name="localSignInProps">The local sign in props.</param>
         private void ProcessLoginCallbackForSaml2p(AuthenticateResult externalResult, List<Claim> localClaims, AuthenticationProperties localSignInProps)
         {
         }

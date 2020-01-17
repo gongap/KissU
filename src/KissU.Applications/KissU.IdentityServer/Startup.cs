@@ -34,13 +34,13 @@ namespace KissU.IdentityServer
         /// <summary>
         /// 配置
         /// </summary>
+        /// <value>The configuration.</value>
         public IConfiguration Configuration { get; }
 
         /// <summary>
         /// 配置服务
         /// </summary>
         /// <param name="services">服务集合</param>
-        /// <returns></returns>
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
@@ -72,7 +72,7 @@ namespace KissU.IdentityServer
         /// <summary>
         /// 配置容器
         /// </summary>
-        /// <param name="builder"></param>
+        /// <param name="builder">The builder.</param>
         public void ConfigureContainer(ContainerBuilder builder)
         {
         }

@@ -32,12 +32,12 @@ namespace KissU.IdentityServer.Services
         /// <summary>
         /// 验证
         /// </summary>
+        /// <param name="context">The context.</param>
         public async Task ValidateAsync(ResourceOwnerPasswordValidationContext context)
         {
             var request = new LoginRequest();
             request.Account = context.UserName;
             request.Password = context.Password;
-            //request.ClientId = context.Request.Client.ClientId;
             try
             {
                 var result = await _securityService.SignInAsync(request);

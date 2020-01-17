@@ -1,12 +1,14 @@
-// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
-
-
-
 namespace KissU.IdentityServer.Quickstart.Account
 {
+    /// <summary>
+    /// RedirectViewModel.
+    /// </summary>
     public class RedirectViewModel
     {
+        /// <summary>
+        /// Gets or sets the redirect URL.
+        /// </summary>
+        /// <value>The redirect URL.</value>
         public string RedirectUrl { get; set; }
     }
 }

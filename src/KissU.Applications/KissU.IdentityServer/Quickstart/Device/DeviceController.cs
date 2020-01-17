@@ -1,7 +1,3 @@
-// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
-
-
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,16 +13,44 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.IdentityServer.Quickstart.Device
 {
+    /// <summary>
+    /// DeviceController.
+    /// Implements the <see cref="Microsoft.AspNetCore.Mvc.Controller" />
+    /// </summary>
+    /// <seealso cref="Microsoft.AspNetCore.Mvc.Controller" />
     [Authorize]
     [SecurityHeaders]
     public class DeviceController : Controller
     {
+        /// <summary>
+        /// The interaction
+        /// </summary>
         private readonly IDeviceFlowInteractionService _interaction;
+        /// <summary>
+        /// The client store
+        /// </summary>
         private readonly IClientStore _clientStore;
+        /// <summary>
+        /// The resource store
+        /// </summary>
         private readonly IResourceStore _resourceStore;
+        /// <summary>
+        /// The events
+        /// </summary>
         private readonly IEventService _events;
+        /// <summary>
+        /// The logger
+        /// </summary>
         private readonly ILogger<DeviceController> _logger;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DeviceController"/> class.
+        /// </summary>
+        /// <param name="interaction">The interaction.</param>
+        /// <param name="clientStore">The client store.</param>
+        /// <param name="resourceStore">The resource store.</param>
+        /// <param name="eventService">The event service.</param>
+        /// <param name="logger">The logger.</param>
         public DeviceController(
             IDeviceFlowInteractionService interaction,
             IClientStore clientStore,
@@ -41,6 +65,11 @@ namespace KissU.IdentityServer.Quickstart.Device
             _logger = logger;
         }
 
+        /// <summary>
+        /// Indexes the specified user code.
+        /// </summary>
+        /// <param name="userCode">The user code.</param>
+        /// <returns>Task&lt;IActionResult&gt;.</returns>
         [HttpGet]
         public async Task<IActionResult> Index([FromQuery(Name = "user_code")] string userCode)
         {
@@ -53,6 +82,11 @@ namespace KissU.IdentityServer.Quickstart.Device
             return View("UserCodeConfirmation", vm);
         }
 
+        /// <summary>
+        /// Users the code capture.
+        /// </summary>
+        /// <param name="userCode">The user code.</param>
+        /// <returns>Task&lt;IActionResult&gt;.</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> UserCodeCapture(string userCode)
@@ -63,6 +97,12 @@ namespace KissU.IdentityServer.Quickstart.Device
             return View("UserCodeConfirmation", vm);
         }
 
+        /// <summary>
+        /// Callbacks the specified model.
+        /// </summary>
+        /// <param name="model">The model.</param>
+        /// <returns>Task&lt;IActionResult&gt;.</returns>
+        /// <exception cref="ArgumentNullException">model</exception>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Callback(DeviceAuthorizationInputModel model)
@@ -75,6 +115,11 @@ namespace KissU.IdentityServer.Quickstart.Device
             return View("Success");
         }
 
+        /// <summary>
+        /// Processes the consent.
+        /// </summary>
+        /// <param name="model">The model.</param>
+        /// <returns>Task&lt;ProcessConsentResult&gt;.</returns>
         private async Task<ProcessConsentResult> ProcessConsent(DeviceAuthorizationInputModel model)
         {
             var result = new ProcessConsentResult();
@@ -141,6 +186,12 @@ namespace KissU.IdentityServer.Quickstart.Device
             return result;
         }
 
+        /// <summary>
+        /// build view model as an asynchronous operation.
+        /// </summary>
+        /// <param name="userCode">The user code.</param>
+        /// <param name="model">The model.</param>
+        /// <returns>Task&lt;DeviceAuthorizationViewModel&gt;.</returns>
         private async Task<DeviceAuthorizationViewModel> BuildViewModelAsync(string userCode, DeviceAuthorizationInputModel model = null)
         {
             var request = await _interaction.GetAuthorizationContextAsync(userCode);
@@ -168,6 +219,14 @@ namespace KissU.IdentityServer.Quickstart.Device
             return null;
         }
 
+        /// <summary>
+        /// Creates the consent view model.
+        /// </summary>
+        /// <param name="userCode">The user code.</param>
+        /// <param name="model">The model.</param>
+        /// <param name="client">The client.</param>
+        /// <param name="resources">The resources.</param>
+        /// <returns>DeviceAuthorizationViewModel.</returns>
         private DeviceAuthorizationViewModel CreateConsentViewModel(string userCode, DeviceAuthorizationInputModel model, Client client, Resources resources)
         {
             var vm = new DeviceAuthorizationViewModel
@@ -196,6 +255,12 @@ namespace KissU.IdentityServer.Quickstart.Device
             return vm;
         }
 
+        /// <summary>
+        /// Creates the scope view model.
+        /// </summary>
+        /// <param name="identity">The identity.</param>
+        /// <param name="check">if set to <c>true</c> [check].</param>
+        /// <returns>ScopeViewModel.</returns>
         private ScopeViewModel CreateScopeViewModel(IdentityResource identity, bool check)
         {
             return new ScopeViewModel
@@ -209,6 +274,12 @@ namespace KissU.IdentityServer.Quickstart.Device
             };
         }
 
+        /// <summary>
+        /// Creates the scope view model.
+        /// </summary>
+        /// <param name="scope">The scope.</param>
+        /// <param name="check">if set to <c>true</c> [check].</param>
+        /// <returns>ScopeViewModel.</returns>
         public ScopeViewModel CreateScopeViewModel(Scope scope, bool check)
         {
             return new ScopeViewModel
@@ -221,6 +292,11 @@ namespace KissU.IdentityServer.Quickstart.Device
                 Checked = check || scope.Required
             };
         }
+        /// <summary>
+        /// Gets the offline access scope.
+        /// </summary>
+        /// <param name="check">if set to <c>true</c> [check].</param>
+        /// <returns>ScopeViewModel.</returns>
         private ScopeViewModel GetOfflineAccessScope(bool check)
         {
             return new ScopeViewModel

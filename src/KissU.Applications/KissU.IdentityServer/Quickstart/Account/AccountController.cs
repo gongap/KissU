@@ -1,8 +1,4 @@
-﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
-
-
-using System;
+﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
 using IdentityModel;
@@ -11,7 +7,6 @@ using IdentityServer4.Extensions;
 using IdentityServer4.Models;
 using IdentityServer4.Services;
 using IdentityServer4.Stores;
-using KissU.IdentityServer.Models;
 using KissU.Modules.GreatWall.Domain.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
@@ -20,17 +15,49 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace KissU.IdentityServer.Quickstart.Account
 {
+    /// <summary>
+    /// AccountController.
+    /// Implements the <see cref="Microsoft.AspNetCore.Mvc.Controller" />
+    /// </summary>
+    /// <seealso cref="Microsoft.AspNetCore.Mvc.Controller" />
     [SecurityHeaders]
     [AllowAnonymous]
     public class AccountController : Controller
     {
+        /// <summary>
+        /// The user manager
+        /// </summary>
         private readonly UserManager<User> _userManager;
+        /// <summary>
+        /// The sign in manager
+        /// </summary>
         private readonly SignInManager<User> _signInManager;
+        /// <summary>
+        /// The interaction
+        /// </summary>
         private readonly IIdentityServerInteractionService _interaction;
+        /// <summary>
+        /// The client store
+        /// </summary>
         private readonly IClientStore _clientStore;
+        /// <summary>
+        /// The scheme provider
+        /// </summary>
         private readonly IAuthenticationSchemeProvider _schemeProvider;
+        /// <summary>
+        /// The events
+        /// </summary>
         private readonly IEventService _events;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AccountController"/> class.
+        /// </summary>
+        /// <param name="userManager">The user manager.</param>
+        /// <param name="signInManager">The sign in manager.</param>
+        /// <param name="interaction">The interaction.</param>
+        /// <param name="clientStore">The client store.</param>
+        /// <param name="schemeProvider">The scheme provider.</param>
+        /// <param name="events">The events.</param>
         public AccountController(
             UserManager<User> userManager,
             SignInManager<User> signInManager,
@@ -50,6 +77,8 @@ namespace KissU.IdentityServer.Quickstart.Account
         /// <summary>
         /// Entry point into the login workflow
         /// </summary>
+        /// <param name="returnUrl">The return URL.</param>
+        /// <returns>Task&lt;IActionResult&gt;.</returns>
         [HttpGet]
         public async Task<IActionResult> Login(string returnUrl)
         {
@@ -68,6 +97,10 @@ namespace KissU.IdentityServer.Quickstart.Account
         /// <summary>
         /// Handle postback from username/password login
         /// </summary>
+        /// <param name="model">The model.</param>
+        /// <param name="button">The button.</param>
+        /// <returns>Task&lt;IActionResult&gt;.</returns>
+        /// <exception cref="Exception">invalid return URL</exception>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginInputModel model, string button)
@@ -148,10 +181,12 @@ namespace KissU.IdentityServer.Quickstart.Account
             return View(vm);
         }
 
-        
+
         /// <summary>
         /// Show logout page
         /// </summary>
+        /// <param name="logoutId">The logout identifier.</param>
+        /// <returns>Task&lt;IActionResult&gt;.</returns>
         [HttpGet]
         public async Task<IActionResult> Logout(string logoutId)
         {
@@ -171,6 +206,8 @@ namespace KissU.IdentityServer.Quickstart.Account
         /// <summary>
         /// Handle logout page postback
         /// </summary>
+        /// <param name="model">The model.</param>
+        /// <returns>Task&lt;IActionResult&gt;.</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout(LogoutInputModel model)
@@ -202,6 +239,10 @@ namespace KissU.IdentityServer.Quickstart.Account
             return View("LoggedOut", vm);
         }
 
+        /// <summary>
+        /// Accesses the denied.
+        /// </summary>
+        /// <returns>IActionResult.</returns>
         [HttpGet]
         public IActionResult AccessDenied()
         {
@@ -212,6 +253,11 @@ namespace KissU.IdentityServer.Quickstart.Account
         /*****************************************/
         /* helper APIs for the AccountController */
         /*****************************************/
+        /// <summary>
+        /// build login view model as an asynchronous operation.
+        /// </summary>
+        /// <param name="returnUrl">The return URL.</param>
+        /// <returns>Task&lt;LoginViewModel&gt;.</returns>
         private async Task<LoginViewModel> BuildLoginViewModelAsync(string returnUrl)
         {
             var context = await _interaction.GetAuthorizationContextAsync(returnUrl);
@@ -272,6 +318,11 @@ namespace KissU.IdentityServer.Quickstart.Account
             };
         }
 
+        /// <summary>
+        /// build login view model as an asynchronous operation.
+        /// </summary>
+        /// <param name="model">The model.</param>
+        /// <returns>Task&lt;LoginViewModel&gt;.</returns>
         private async Task<LoginViewModel> BuildLoginViewModelAsync(LoginInputModel model)
         {
             var vm = await BuildLoginViewModelAsync(model.ReturnUrl);
@@ -280,6 +331,11 @@ namespace KissU.IdentityServer.Quickstart.Account
             return vm;
         }
 
+        /// <summary>
+        /// build logout view model as an asynchronous operation.
+        /// </summary>
+        /// <param name="logoutId">The logout identifier.</param>
+        /// <returns>Task&lt;LogoutViewModel&gt;.</returns>
         private async Task<LogoutViewModel> BuildLogoutViewModelAsync(string logoutId)
         {
             var vm = new LogoutViewModel { LogoutId = logoutId, ShowLogoutPrompt = AccountOptions.ShowLogoutPrompt };
@@ -304,6 +360,11 @@ namespace KissU.IdentityServer.Quickstart.Account
             return vm;
         }
 
+        /// <summary>
+        /// build logged out view model as an asynchronous operation.
+        /// </summary>
+        /// <param name="logoutId">The logout identifier.</param>
+        /// <returns>Task&lt;LoggedOutViewModel&gt;.</returns>
         private async Task<LoggedOutViewModel> BuildLoggedOutViewModelAsync(string logoutId)
         {
             // get context information (client name, post logout redirect URI and iframe for federated signout)

@@ -33,7 +33,7 @@ namespace KissU.IdentityServer
         /// 创建主机生成器
         /// </summary>
         /// <param name="args">入口点参数</param>
-        /// <returns></returns>
+        /// <returns>IHostBuilder.</returns>
         public static IHostBuilder CreateHostBuilder(string[] args)
         {
             return Host.CreateDefaultBuilder(args)
