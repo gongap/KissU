@@ -4,7 +4,6 @@ using KissU.Util.Helpers;
 using KissU.Util.Logs;
 using KissU.Util.Logs.Extensions;
 using KissU.Util.Webs.Commons;
-using Microsoft.AspNetCore.Http.Internal;
 using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace KissU.Util.Webs.Filters
@@ -103,7 +102,7 @@ namespace KissU.Util.Webs.Filters
         {
             if (IsMultipart(request.ContentType))
                 return;
-            request.EnableRewind();
+            //request.EnableRewind();
             var result = await File.ToStringAsync(request.Body, isCloseStream: false);
             if (string.IsNullOrWhiteSpace(result))
                 return;

@@ -36,6 +36,7 @@ namespace KissU.Util.Helpers
             }
             catch
             {
+                // ignored
             }
         }
 
