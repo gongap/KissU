@@ -13,14 +13,14 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
         /// <summary>
         /// 初始化
         /// </summary>
-        /// <param name="configureServices">方法信息</param>
+        /// <param name="configureServices">服务配置方法</param>
         public ConfigureServicesBuilder(MethodInfo configureServices)
         {
             MethodInfo = configureServices;
         }
 
         /// <summary>
-        /// 方法信息
+        /// 方法
         /// </summary>
         public MethodInfo MethodInfo { get; }
 
@@ -52,7 +52,7 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
             if (parameters.Length > 1 ||
                 parameters.Any(p => p.ParameterType != typeof(ContainerBuilder)))
             {
-                throw new InvalidOperationException("configureservices方法必须是无参数或只有一个参数为ContainerBuilder类型");
+                throw new InvalidOperationException("ConfigureServices方法必须是无参数或只有一个参数为ContainerBuilder类型");
             }
 
             var arguments = new object[MethodInfo.GetParameters().Length];

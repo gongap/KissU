@@ -15,18 +15,22 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
         /// 初始化
         /// </summary>
         /// <param name="applicationLifetime">应用生命周期</param>
+        /// <exception cref="ArgumentNullException">应用生命周期</exception>
         public ConsoleLifetime(IApplicationLifetime applicationLifetime)
         {
             ApplicationLifetime = applicationLifetime ?? throw new ArgumentNullException(nameof(applicationLifetime));
         }
 
+        /// <summary>
+        /// 应用生命周期
+        /// </summary>
         private IApplicationLifetime ApplicationLifetime { get; }
 
         /// <summary>
         /// 等待启动
         /// </summary>
         /// <param name="cancellationToken">取消令牌</param>
-        /// <returns><placeholder>A <see cref="Task"/> representing the asynchronous operation.</placeholder></returns>
+        /// <returns>A <see cref="Task" /> representing the asynchronous operation.</returns>
         public Task WaitForStartAsync(CancellationToken cancellationToken)
         {
             ApplicationLifetime.ApplicationStarted.Register(() =>
@@ -48,6 +52,7 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
                 _shutdownBlock.Set();
                 ApplicationLifetime.StopApplication();
             };
+
             return Task.CompletedTask;
         }
 
@@ -55,7 +60,7 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
         /// 停止
         /// </summary>
         /// <param name="cancellationToken">取消令牌</param>
-        /// <returns><placeholder>A <see cref="Task"/> representing the asynchronous operation.</placeholder></returns>
+        /// <returns>A <see cref="Task" /> representing the asynchronous operation.</returns>
         public Task StopAsync(CancellationToken cancellationToken)
         {
             return Task.CompletedTask;

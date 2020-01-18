@@ -28,10 +28,7 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
         /// <param name="hostingServiceProvider">服务提供程序</param>
         /// <param name="hostLifetime">主机生命周期</param>
         /// <param name="mapServicesDelegate">容器服务映射委托</param>
-        public ServiceHost(ContainerBuilder builder,
-            IServiceProvider hostingServiceProvider,
-            IHostLifetime hostLifetime,
-            List<Action<IContainer>> mapServicesDelegate)
+        public ServiceHost(ContainerBuilder builder, IServiceProvider hostingServiceProvider, IHostLifetime hostLifetime, List<Action<IContainer>> mapServicesDelegate)
         {
             _builder = builder;
             _hostingServiceProvider = hostingServiceProvider;
@@ -50,7 +47,7 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
         /// <summary>
         /// 启动
         /// </summary>
-        /// <returns></returns>
+        /// <returns>IDisposable.</returns>
         public IDisposable Run()
         {
             RunAsync().GetAwaiter().GetResult();
@@ -75,7 +72,7 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
         /// 运行
         /// </summary>
         /// <param name="cancellationToken">取消令牌</param>
-        /// <returns><placeholder>A <see cref="Task"/> representing the asynchronous operation.</placeholder></returns>
+        /// <returns>A <see cref="Task" /> representing the asynchronous operation.</returns>
         public async Task RunAsync(CancellationToken cancellationToken = default)
         {
             if (_applicationServices != null)
@@ -86,7 +83,7 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
             if (_hostLifetime != null)
             {
                 _applicationLifetime = _hostingServiceProvider.GetService<IApplicationLifetime>();
-                await _hostLifetime.WaitForStartAsync(cancellationToken);
+                await _hostLifetime.WaitForStartAsync(cancellationToken).ConfigureAwait(true);
                 cancellationToken.ThrowIfCancellationRequested();
                 _applicationLifetime?.NotifyStarted();
             }
@@ -96,20 +93,21 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
         /// 停止
         /// </summary>
         /// <param name="cancellationToken">取消令牌</param>
-        /// <returns><placeholder>A <see cref="Task"/> representing the asynchronous operation.</placeholder></returns>
+        /// <returns>A <see cref="Task" /> representing the asynchronous operation.</returns>
         public async Task StopAsync(CancellationToken cancellationToken = default)
         {
-            using (var cts = new CancellationTokenSource(2000))
-            using (var linkedCts = CancellationTokenSource.CreateLinkedTokenSource(cts.Token, cancellationToken))
-            {
-                var token = linkedCts.Token;
-                _applicationLifetime?.StopApplication();
-                token.ThrowIfCancellationRequested();
-                await _hostLifetime.StopAsync(token);
-                _applicationLifetime?.NotifyStopped();
-            }
+            using var cts = new CancellationTokenSource(2000);
+            using var linkedCts = CancellationTokenSource.CreateLinkedTokenSource(cts.Token, cancellationToken);
+            var token = linkedCts.Token;
+            _applicationLifetime?.StopApplication();
+            token.ThrowIfCancellationRequested();
+            await _hostLifetime.StopAsync(token).ConfigureAwait(true);
+            _applicationLifetime?.NotifyStopped();
         }
 
+        /// <summary>
+        /// 确保应用程序服务.
+        /// </summary>
         private void EnsureApplicationServices()
         {
             if (_applicationServices == null)
@@ -119,6 +117,9 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
             }
         }
 
+        /// <summary>
+        /// 确保启动.
+        /// </summary>
         private void EnsureStartup()
         {
             if (_startup != null)
@@ -129,6 +130,10 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
             _startup = _hostingServiceProvider.GetRequiredService<IStartup>();
         }
 
+        /// <summary>
+        /// 构建应用程序.
+        /// </summary>
+        /// <returns>容器.</returns>
         private IContainer BuildApplication()
         {
             try
@@ -150,9 +155,13 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
             }
         }
 
+        /// <summary>
+        /// 映射服务.
+        /// </summary>
+        /// <param name="mapper">映射器</param>
         private void MapperServices(IContainer mapper)
         {
-            foreach (var mapServices in _mapServicesDelegates)
+            foreach (Action<IContainer> mapServices in _mapServicesDelegates)
             {
                 mapServices(mapper);
             }

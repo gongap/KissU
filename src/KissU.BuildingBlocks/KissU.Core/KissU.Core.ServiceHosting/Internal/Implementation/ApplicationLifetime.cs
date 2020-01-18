@@ -83,12 +83,15 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
                 }
                 catch (Exception ex)
                 {
-                    _logger.LogError("An error occurred stopping the application",
-                        ex);
+                    _logger.LogError("An error occurred stopping the application", ex);
                 }
             }
         }
 
+        /// <summary>
+        /// 执行处理程序.
+        /// </summary>
+        /// <param name="cancel">取消令牌源</param>
         private void ExecuteHandlers(CancellationTokenSource cancel)
         {
             if (cancel.IsCancellationRequested)

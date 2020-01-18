@@ -11,21 +11,21 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
         /// <summary>
         /// 初始化
         /// </summary>
-        /// <param name="configureContainerMethod">方法信息</param>
+        /// <param name="configureContainerMethod">配置容器方法</param>
         public ConfigureContainerBuilder(MethodInfo configureContainerMethod)
         {
             MethodInfo = configureContainerMethod;
         }
 
         /// <summary>
-        /// 方法信息
+        /// 方法
         /// </summary>
         public MethodInfo MethodInfo { get; }
 
         /// <summary>
         /// 构建
         /// </summary>
-        /// <param name="instance"></param>
+        /// <param name="instance">实例</param>
         /// <returns>实例委托</returns>
         public Action<object> Build(object instance)
         {

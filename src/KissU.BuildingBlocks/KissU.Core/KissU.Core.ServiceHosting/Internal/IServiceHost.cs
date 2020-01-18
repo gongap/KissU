@@ -11,7 +11,7 @@ namespace KissU.Core.ServiceHosting.Internal
         /// <summary>
         /// 运行
         /// </summary>
-        /// <returns></returns>
+        /// <returns>IDisposable.</returns>
         IDisposable Run();
 
         /// <summary>

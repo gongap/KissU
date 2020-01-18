@@ -33,11 +33,11 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
         /// <summary>
         /// 构建服务主机
         /// </summary>
-        /// <returns></returns>
+        /// <returns>服务主机</returns>
         public IServiceHost Build()
         {
-            var services = BuildCommonServices();
-            var config = Configure();
+            IServiceCollection services = BuildCommonServices();
+            IConfigurationBuilder config = Configure();
             if (_loggingDelegate != null)
             {
                 services.AddLogging(_loggingDelegate);
@@ -48,13 +48,13 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
             }
 
             services.AddSingleton(typeof(IConfigurationBuilder), config);
-            var hostingServices = RegisterServices();
-            var applicationServices = services.Clone();
-            var hostingServiceProvider = services.BuildServiceProvider();
+            ContainerBuilder hostingServices = RegisterServices();
+            IServiceCollection applicationServices = services.Clone();
+            ServiceProvider hostingServiceProvider = services.BuildServiceProvider();
             hostingServices.Populate(services);
-            var hostLifetime = hostingServiceProvider.GetService<IHostLifetime>();
-            var host = new ServiceHost(hostingServices, hostingServiceProvider, hostLifetime, _mapServicesDelegates);
-            var container = host.Initialize();
+            IHostLifetime hostLifetime = hostingServiceProvider.GetService<IHostLifetime>();
+            ServiceHost host = new ServiceHost(hostingServices, hostingServiceProvider, hostLifetime, _mapServicesDelegates);
+            IContainer container = host.Initialize();
             return host;
         }
 
@@ -63,6 +63,7 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
         /// </summary>
         /// <param name="mapper">映射器</param>
         /// <returns>服务主机构建器</returns>
+        /// <exception cref="ArgumentNullException">映射器</exception>
         public IServiceHostBuilder MapServices(Action<IContainer> mapper)
         {
             if (mapper == null)
@@ -79,6 +80,7 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
         /// </summary>
         /// <param name="builder">构建器</param>
         /// <returns>服务主机构建器</returns>
+        /// <exception cref="ArgumentNullException">builder</exception>
         public IServiceHostBuilder RegisterServices(Action<ContainerBuilder> builder)
         {
             if (builder == null)
@@ -93,8 +95,9 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
         /// <summary>
         /// 配置服务集合
         /// </summary>
-        /// <param name="configureServices">用于服务集合的委托 </param>
+        /// <param name="configureServices">用于服务集合的委托</param>
         /// <returns>服务主机构建器</returns>
+        /// <exception cref="ArgumentNullException">configureServices</exception>
         public IServiceHostBuilder ConfigureServices(Action<IServiceCollection> configureServices)
         {
             if (configureServices == null)
@@ -111,6 +114,7 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
         /// </summary>
         /// <param name="builder">配置构建器</param>
         /// <returns>服务主机构建器</returns>
+        /// <exception cref="ArgumentNullException">builder</exception>
         public IServiceHostBuilder Configure(Action<IConfigurationBuilder> builder)
         {
             if (builder == null)
@@ -125,23 +129,23 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
         /// <summary>
         /// 配置日志记录提供程序
         /// </summary>
-        /// <param name="configure">用于配置日志记录提供程序的委托 </param>
+        /// <param name="configure">用于配置日志记录提供程序的委托</param>
         /// <returns>服务主机构建器</returns>
+        /// <exception cref="ArgumentNullException">configure</exception>
         public IServiceHostBuilder ConfigureLogging(Action<ILoggingBuilder> configure)
         {
-            if (configure == null)
-            {
-                throw new ArgumentNullException(nameof(configure));
-            }
-
-            _loggingDelegate = configure;
+            _loggingDelegate = configure ?? throw new ArgumentNullException(nameof(configure));
             return this;
         }
 
+        /// <summary>
+        /// Builds the common services.
+        /// </summary>
+        /// <returns>IServiceCollection.</returns>
         private IServiceCollection BuildCommonServices()
         {
-            var services = new ServiceCollection();
-            foreach (var configureServices in _configureServicesDelegates)
+            ServiceCollection services = new ServiceCollection();
+            foreach (Action<IServiceCollection> configureServices in _configureServicesDelegates)
             {
                 configureServices(services);
             }
@@ -149,10 +153,14 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
             return services;
         }
 
+        /// <summary>
+        /// Configures this instance.
+        /// </summary>
+        /// <returns>IConfigurationBuilder.</returns>
         private IConfigurationBuilder Configure()
         {
-            var config = new ConfigurationBuilder().SetBasePath(AppContext.BaseDirectory);
-            foreach (var configure in _configureDelegates)
+            IConfigurationBuilder config = new ConfigurationBuilder().SetBasePath(AppContext.BaseDirectory);
+            foreach (Action<IConfigurationBuilder> configure in _configureDelegates)
             {
                 configure(config);
             }
@@ -160,10 +168,14 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
             return config;
         }
 
+        /// <summary>
+        /// 注册服务
+        /// </summary>
+        /// <returns>容器构建器</returns>
         private ContainerBuilder RegisterServices()
         {
             var hostingServices = new ContainerBuilder();
-            foreach (var registerServices in _registerServicesDelegates)
+            foreach (Action<ContainerBuilder> registerServices in _registerServicesDelegates)
             {
                 registerServices(hostingServices);
             }

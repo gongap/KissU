@@ -10,7 +10,7 @@ namespace KissU.Core.ServiceHosting.Startup.Implementation
         /// <summary>
         /// 配置容器
         /// </summary>
-        /// <param name="app"></param>
+        /// <param name="app">容器</param>
         public abstract void Configure(IContainer app);
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace KissU.Core.ServiceHosting.Startup.Implementation
     }
 
     /// <summary>
-    /// 容器基类
+    /// 启动基类
     /// </summary>
     /// <typeparam name="TBuilder">构建器类型</typeparam>
     public abstract class StartupBase<TBuilder> : StartupBase
@@ -62,7 +62,7 @@ namespace KissU.Core.ServiceHosting.Startup.Implementation
         /// <summary>
         /// 配置容器
         /// </summary>
-        /// <param name="builder"></param>
+        /// <param name="builder">构建器类型</param>
         public virtual void ConfigureContainer(TBuilder builder)
         {
         }

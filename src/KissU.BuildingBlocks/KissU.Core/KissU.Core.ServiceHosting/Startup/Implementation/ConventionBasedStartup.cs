@@ -10,6 +10,9 @@ namespace KissU.Core.ServiceHosting.Startup.Implementation
     /// </summary>
     public class ConventionBasedStartup : IStartup
     {
+        /// <summary>
+        /// The methods
+        /// </summary>
         private readonly StartupMethods _methods;
 
         /// <summary>

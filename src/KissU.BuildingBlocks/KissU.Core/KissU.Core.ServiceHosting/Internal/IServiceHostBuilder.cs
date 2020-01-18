@@ -14,7 +14,7 @@ namespace KissU.Core.ServiceHosting.Internal
         /// <summary>
         /// 构建服务主机
         /// </summary>
-        /// <returns></returns>
+        /// <returns>IServiceHost.</returns>
         IServiceHost Build();
 
         /// <summary>
@@ -27,23 +27,23 @@ namespace KissU.Core.ServiceHosting.Internal
         /// <summary>
         /// 配置日志记录提供程序
         /// </summary>
-        /// <param name="configure">用于配置日志记录提供程序的委托 </param>
+        /// <param name="logger">日志记录提供程序</param>
         /// <returns>服务主机构建器</returns>
-        IServiceHostBuilder ConfigureLogging(Action<ILoggingBuilder> configure);
+        IServiceHostBuilder ConfigureLogging(Action<ILoggingBuilder> logger);
 
         /// <summary>
         /// 配置服务集合
         /// </summary>
-        /// <param name="configureServices">用于服务集合的委托 </param>
+        /// <param name="services">服务集合</param>
         /// <returns>服务主机构建器</returns>
-        IServiceHostBuilder ConfigureServices(Action<IServiceCollection> configureServices);
+        IServiceHostBuilder ConfigureServices(Action<IServiceCollection> services);
 
         /// <summary>
         /// 配置应用程序
         /// </summary>
-        /// <param name="builder">配置构建器</param>
+        /// <param name="config">应用程序配置</param>
         /// <returns>服务主机构建器</returns>
-        IServiceHostBuilder Configure(Action<IConfigurationBuilder> builder);
+        IServiceHostBuilder Configure(Action<IConfigurationBuilder> config);
 
         /// <summary>
         /// 映射服务

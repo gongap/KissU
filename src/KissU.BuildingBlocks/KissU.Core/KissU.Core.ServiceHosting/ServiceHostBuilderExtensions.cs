@@ -10,7 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace KissU.Core.ServiceHosting
 {
     /// <summary>
-    /// 服务主机生成器扩展
+    /// 服务主机生成器扩展.
     /// </summary>
     public static class ServiceHostBuilderExtensions
     {
@@ -19,7 +19,7 @@ namespace KissU.Core.ServiceHosting
         /// </summary>
         /// <param name="hostBuilder">主机构建器</param>
         /// <param name="startupType">启动类型</param>
-        /// <returns></returns>
+        /// <returns>服务主机生成器.</returns>
         public static IServiceHostBuilder UseStartup(this IServiceHostBuilder hostBuilder, Type startupType)
         {
             return hostBuilder
@@ -33,7 +33,7 @@ namespace KissU.Core.ServiceHosting
                     {
                         services.AddSingleton(typeof(IStartup), sp =>
                         {
-                            var config = sp.GetService<IConfigurationBuilder>();
+                            IConfigurationBuilder config = sp.GetService<IConfigurationBuilder>();
                             return new ConventionBasedStartup(StartupLoader.LoadMethods(sp, config, startupType, ""));
                         });
                     }
@@ -55,8 +55,8 @@ namespace KissU.Core.ServiceHosting
         /// <summary>
         /// 使用控制台生命周期
         /// </summary>
-        /// <param name="hostBuilder"></param>
-        /// <returns></returns>
+        /// <param name="hostBuilder">The host builder.</param>
+        /// <returns>IServiceHostBuilder.</returns>
         public static IServiceHostBuilder UseConsoleLifetime(this IServiceHostBuilder hostBuilder)
         {
             return hostBuilder.ConfigureServices(collection =>

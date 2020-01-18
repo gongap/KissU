@@ -8,6 +8,9 @@ namespace KissU.Core.ServiceHosting.Startup.Implementation
     /// </summary>
     public class DelegateStartup : StartupBase<ContainerBuilder>
     {
+        /// <summary>
+        /// 配置应用
+        /// </summary>
         private readonly Action<IContainer> _configureApp;
 
         /// <summary>

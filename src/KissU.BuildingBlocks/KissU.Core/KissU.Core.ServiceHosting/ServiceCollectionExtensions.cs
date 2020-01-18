@@ -2,6 +2,9 @@
 
 namespace KissU.Core.ServiceHosting
 {
+    /// <summary>
+    /// 服务集合扩展.
+    /// </summary>
     internal static class ServiceCollectionExtensions
     {
         /// <summary>
