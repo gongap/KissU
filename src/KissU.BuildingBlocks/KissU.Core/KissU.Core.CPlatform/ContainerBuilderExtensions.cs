@@ -53,64 +53,76 @@ using Microsoft.Extensions.Logging;
 namespace KissU.Core.CPlatform
 {
     /// <summary>
-    /// 服务构建者。
+    /// 服务构建器
     /// </summary>
     public interface IServiceBuilder
     {
         /// <summary>
-        /// 服务集合。
+        /// 服务集合
         /// </summary>
         ContainerBuilder Services { get; set; }
     }
 
     /// <summary>
-    /// 默认服务构建者。
+    /// 默认服务构建器
     /// </summary>
     internal sealed class ServiceBuilder : IServiceBuilder
     {
-        public ServiceBuilder(ContainerBuilder services)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ServiceBuilder" /> class.
+        /// </summary>
+        /// <param name="builder">容器构建器.</param>
+        /// <exception cref="ArgumentNullException">builder</exception>
+        public ServiceBuilder(ContainerBuilder builder)
         {
-            if (services == null)
-                throw new ArgumentNullException(nameof(services));
-            Services = services;
+            if (builder == null)
+            {
+                throw new ArgumentNullException(nameof(builder));
+            }
+
+            Services = builder;
         }
 
         #region Implementation of IServiceBuilder
 
         /// <summary>
-        /// 服务集合。
+        /// 容器构建器
         /// </summary>
         public ContainerBuilder Services { get; set; }
 
         #endregion Implementation of IServiceBuilder
     }
 
+    /// <summary>
+    /// 容器构建器扩展.
+    /// </summary>
     public static class ContainerBuilderExtensions
     {
-        private static List<Assembly> _referenceAssembly = new List<Assembly>();
-        private static List<AbstractModule> _modules = new List<AbstractModule>();
+        private static readonly List<Assembly> _referenceAssembly = new List<Assembly>();
+        private static readonly List<AbstractModule> _modules = new List<AbstractModule>();
 
         /// <summary>
-        /// 添加Json序列化支持。
+        /// 添加Json序列化支持
         /// </summary>
-        /// <param name="builder">服务构建者。</param>
-        /// <returns>服务构建者。</returns>
+        /// <param name="builder">服务构建器</param>
+        /// <returns>服务构建器</returns>
         public static IServiceBuilder AddJsonSerialization(this IServiceBuilder builder)
         {
-            var services = builder.Services;
+            ContainerBuilder services = builder.Services;
             services.RegisterType(typeof(JsonSerializer)).As(typeof(ISerializer<string>)).SingleInstance();
             services.RegisterType(typeof(StringByteArraySerializer)).As(typeof(ISerializer<byte[]>)).SingleInstance();
             services.RegisterType(typeof(StringObjectSerializer)).As(typeof(ISerializer<object>)).SingleInstance();
             return builder;
         }
+
         #region RouteManager
 
         /// <summary>
-        /// 设置服务路由管理者。
+        /// 设置服务路由管理者
         /// </summary>
-        /// <typeparam name="T">服务路由管理者实现。</typeparam>
-        /// <param name="builder">服务构建者。</param>
-        /// <returns>服务构建者。</returns>
+        /// <typeparam name="T">服务路由管理者实现</typeparam>
+        /// <param name="builder">服务构建器</param>
+        /// <returns>服务构建器</returns>
         public static IServiceBuilder UseRouteManager<T>(this IServiceBuilder builder) where T : class, IServiceRouteManager
         {
             builder.Services.RegisterType(typeof(T)).As(typeof(IServiceRouteManager)).SingleInstance();
@@ -118,11 +130,11 @@ namespace KissU.Core.CPlatform
         }
 
         /// <summary>
-        /// 设置服务路由管理者。
+        /// 设置服务路由管理者
         /// </summary>
-        /// <param name="builder">服务构建者。</param>
-        /// <param name="factory">服务路由管理者实例工厂。</param>
-        /// <returns>服务构建者。</returns>
+        /// <param name="builder">服务构建器</param>
+        /// <param name="factory">服务路由管理者实例工厂</param>
+        /// <returns>服务构建器</returns>
         public static IServiceBuilder UseRouteManager(this IServiceBuilder builder, Func<IServiceProvider, IServiceRouteManager> factory)
         {
             builder.Services.RegisterAdapter(factory).InstancePerLifetimeScope();
@@ -130,11 +142,11 @@ namespace KissU.Core.CPlatform
         }
 
         /// <summary>
-        /// 设置服务订阅管理者。
+        /// 设置服务订阅管理者
         /// </summary>
-        /// <param name="builder">服务构建者。</param>
-        /// <param name="factory">服务订阅管理者实例工厂。</param>
-        /// <returns>服务构建者。</returns>
+        /// <param name="builder">服务构建器</param>
+        /// <param name="factory">服务订阅管理者实例工厂</param>
+        /// <returns>服务构建器</returns>
         public static IServiceBuilder UseSubscribeManager(this IServiceBuilder builder, Func<IServiceProvider, IServiceSubscribeManager> factory)
         {
             builder.Services.RegisterAdapter(factory).InstancePerLifetimeScope();
@@ -142,11 +154,11 @@ namespace KissU.Core.CPlatform
         }
 
         /// <summary>
-        /// 设置服务命令管理者。
+        /// 设置服务命令管理者
         /// </summary>
-        /// <param name="builder">服务构建者。</param>
-        /// <param name="factory">服务命令管理者实例工厂。</param>
-        /// <returns>服务构建者。</returns>
+        /// <param name="builder">服务构建器</param>
+        /// <param name="factory">服务命令管理者实例工厂</param>
+        /// <returns>服务构建器</returns>
         public static IServiceBuilder UseCommandManager(this IServiceBuilder builder, Func<IServiceProvider, IServiceCommandManager> factory)
         {
             builder.Services.RegisterAdapter(factory).InstancePerLifetimeScope();
@@ -154,11 +166,11 @@ namespace KissU.Core.CPlatform
         }
 
         /// <summary>
-        /// 设置缓存管理者。
+        /// 设置缓存管理者
         /// </summary>
-        /// <param name="builder">服务构建者。</param>
-        /// <param name="factory">缓存管理者实例工厂。</param>
-        /// <returns>服务构建者。</returns>
+        /// <param name="builder">服务构建器</param>
+        /// <param name="factory">缓存管理者实例工厂</param>
+        /// <returns>服务构建器</returns>
         public static IServiceBuilder UseCacheManager(this IServiceBuilder builder, Func<IServiceProvider, IServiceCacheManager> factory)
         {
             builder.Services.RegisterAdapter(factory).InstancePerLifetimeScope();
@@ -166,11 +178,11 @@ namespace KissU.Core.CPlatform
         }
 
         /// <summary>
-        /// 设置服务路由管理者。
+        /// 设置服务路由管理者
         /// </summary>
-        /// <param name="builder">服务构建者。</param>
-        /// <param name="instance">服务路由管理者实例。</param>
-        /// <returns>服务构建者。</returns>
+        /// <param name="builder">服务构建器</param>
+        /// <param name="instance">服务路由管理者实例</param>
+        /// <returns>服务构建器</returns>
         public static IServiceBuilder UseRouteManager(this IServiceBuilder builder, IServiceRouteManager instance)
         {
             builder.Services.RegisterInstance(instance);
@@ -178,11 +190,11 @@ namespace KissU.Core.CPlatform
         }
 
         /// <summary>
-        /// 设置mqtt服务路由管理者。
+        /// 设置mqtt服务路由管理者
         /// </summary>
-        /// <param name="builder">mqtt服务构建者。</param>
-        /// <param name="factory">mqtt服务路由管理者实例工厂。</param>
-        /// <returns>服务构建者。</returns>
+        /// <param name="builder">mqtt服务构建器</param>
+        /// <param name="factory">mqtt服务路由管理者实例工厂</param>
+        /// <returns>服务构建器</returns>
         public static IServiceBuilder UseMqttRouteManager(this IServiceBuilder builder, Func<IServiceProvider, IMqttServiceRouteManager> factory)
         {
             builder.Services.RegisterAdapter(factory).InstancePerLifetimeScope();
@@ -192,11 +204,11 @@ namespace KissU.Core.CPlatform
         #endregion RouteManager
 
         /// <summary>
-        /// 设置共享文件路由管理者。
+        /// 设置共享文件路由管理者
         /// </summary>
-        /// <param name="builder">服务构建者。</param>
-        /// <param name="filePath">文件路径。</param>
-        /// <returns>服务构建者。</returns>
+        /// <param name="builder">服务构建器</param>
+        /// <param name="filePath">文件路径</param>
+        /// <returns>服务构建器</returns>
         public static IServiceBuilder UseSharedFileRouteManager(this IServiceBuilder builder, string filePath)
         {
             return builder.UseRouteManager(provider =>
@@ -207,6 +219,13 @@ namespace KissU.Core.CPlatform
                 provider.GetRequiredService<ILogger<SharedFileServiceRouteManager>>()));
         }
 
+        /// <summary>
+        /// Uses the shared file route manager.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="ip">The ip.</param>
+        /// <param name="port">The port.</param>
+        /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder UseSharedFileRouteManager(this IServiceBuilder builder, string ip, string port)
         {
             return builder.UseRouteManager(provider =>
@@ -220,10 +239,10 @@ namespace KissU.Core.CPlatform
         #region AddressSelector
 
         /// <summary>
-        /// 使用轮询的地址选择器。
+        /// 使用轮询的地址选择器
         /// </summary>
-        /// <param name="builder">服务构建者。</param>
-        /// <returns>服务构建者。</returns>
+        /// <param name="builder">服务构建器</param>
+        /// <returns>服务构建器</returns>
         public static IServiceBuilder UsePollingAddressSelector(this IServiceBuilder builder)
         {
             builder.Services.RegisterType(typeof(PollingAddressSelector))
@@ -232,10 +251,10 @@ namespace KissU.Core.CPlatform
         }
 
         /// <summary>
-        /// 使用压力最小优先分配轮询的地址选择器。
+        /// 使用压力最小优先分配轮询的地址选择器
         /// </summary>
-        /// <param name="builder">服务构建者。</param>
-        /// <returns>服务构建者。</returns>
+        /// <param name="builder">服务构建器</param>
+        /// <returns>服务构建器</returns>
         public static IServiceBuilder UseFairPollingAddressSelector(this IServiceBuilder builder)
         {
             builder.Services.RegisterType(typeof(FairPollingAdrSelector))
@@ -244,10 +263,10 @@ namespace KissU.Core.CPlatform
         }
 
         /// <summary>
-        /// 使用哈希的地址选择器。
+        /// 使用哈希的地址选择器
         /// </summary>
-        /// <param name="builder">服务构建者。</param>
-        /// <returns>服务构建者。</returns>
+        /// <param name="builder">服务构建器</param>
+        /// <returns>服务构建器</returns>
         public static IServiceBuilder UseHashAlgorithmAddressSelector(this IServiceBuilder builder)
         {
             builder.Services.RegisterType(typeof(HashAlgorithmAdrSelector))
@@ -256,10 +275,10 @@ namespace KissU.Core.CPlatform
         }
 
         /// <summary>
-        /// 使用随机的地址选择器。
+        /// 使用随机的地址选择器
         /// </summary>
-        /// <param name="builder">服务构建者。</param>
-        /// <returns>服务构建者。</returns>
+        /// <param name="builder">服务构建器</param>
+        /// <returns>服务构建器</returns>
         public static IServiceBuilder UseRandomAddressSelector(this IServiceBuilder builder)
         {
             builder.Services.RegisterType(typeof(RandomAddressSelector))
@@ -268,11 +287,10 @@ namespace KissU.Core.CPlatform
         }
 
         /// <summary>
-        /// 设置服务地址选择器。
+        /// 设置服务地址选择器
         /// </summary>
-        /// <param name="builder">服务构建者。</param>
-        /// <param name="instance">地址选择器实例。</param>
-        /// <returns>服务构建者。</returns>
+        /// <param name="builder">服务构建器</param>
+        /// <returns>服务构建器</returns>
         public static IServiceBuilder UseAddressSelector(this IServiceBuilder builder)
         {
             return builder.UseRandomAddressSelector().UsePollingAddressSelector().UseFairPollingAddressSelector().UseHashAlgorithmAddressSelector();
@@ -285,11 +303,11 @@ namespace KissU.Core.CPlatform
         /// <summary>
         /// Configuration Watch
         /// </summary>
-        /// <param name="builder"></param>
-        /// <returns>服务构建者</returns>
+        /// <param name="builder">The builder.</param>
+        /// <returns>服务构建器</returns>
         public static IServiceBuilder AddConfigurationWatch(this IServiceBuilder builder)
         {
-            var services = builder.Services;
+            ContainerBuilder services = builder.Services;
             services.RegisterType(typeof(ConfigurationWatchManager)).As(typeof(IConfigurationWatchManager)).SingleInstance();
             return builder;
         }
@@ -298,11 +316,11 @@ namespace KissU.Core.CPlatform
         #region Codec Factory
 
         /// <summary>
-        /// 使用编解码器。
+        /// 使用编解码器
         /// </summary>
-        /// <param name="builder">服务构建者。</param>
-        /// <param name="codecFactory"></param>
-        /// <returns>服务构建者。</returns>
+        /// <param name="builder">服务构建器</param>
+        /// <param name="codecFactory">The codec factory.</param>
+        /// <returns>服务构建器</returns>
         public static IServiceBuilder UseCodec(this IServiceBuilder builder, ITransportMessageCodecFactory codecFactory)
         {
             builder.Services.RegisterInstance(codecFactory).SingleInstance();
@@ -310,11 +328,11 @@ namespace KissU.Core.CPlatform
         }
 
         /// <summary>
-        /// 使用编解码器。
+        /// 使用编解码器
         /// </summary>
-        /// <typeparam name="T">编解码器工厂实现类型。</typeparam>
-        /// <param name="builder">服务构建者。</param>
-        /// <returns>服务构建者。</returns>
+        /// <typeparam name="T">编解码器工厂实现类型</typeparam>
+        /// <param name="builder">服务构建器</param>
+        /// <returns>服务构建器</returns>
         public static IServiceBuilder UseCodec<T>(this IServiceBuilder builder) where T : class, ITransportMessageCodecFactory
         {
             builder.Services.RegisterType(typeof(T)).As(typeof(ITransportMessageCodecFactory)).SingleInstance();
@@ -322,11 +340,11 @@ namespace KissU.Core.CPlatform
         }
 
         /// <summary>
-        /// 使用编解码器。
+        /// 使用编解码器
         /// </summary>
-        /// <param name="builder">服务构建者。</param>
-        /// <param name="codecFactory">编解码器工厂创建委托。</param>
-        /// <returns>服务构建者。</returns>
+        /// <param name="builder">服务构建器</param>
+        /// <param name="codecFactory">编解码器工厂创建委托</param>
+        /// <returns>服务构建器</returns>
         public static IServiceBuilder UseCodec(this IServiceBuilder builder, Func<IServiceProvider, ITransportMessageCodecFactory> codecFactory)
         {
             builder.Services.RegisterAdapter(codecFactory).SingleInstance();
@@ -336,23 +354,23 @@ namespace KissU.Core.CPlatform
         #endregion Codec Factory
 
         /// <summary>
-        /// 使用Json编解码器。
+        /// 使用Json编解码器
         /// </summary>
-        /// <param name="builder">服务构建者。</param>
-        /// <returns>服务构建者。</returns>
+        /// <param name="builder">服务构建器</param>
+        /// <returns>服务构建器</returns>
         public static IServiceBuilder UseJsonCodec(this IServiceBuilder builder)
         {
             return builder.UseCodec<JsonTransportMessageCodecFactory>();
         }
 
         /// <summary>
-        /// 添加客户端运行时服务。
+        /// 添加客户端运行时服务
         /// </summary>
-        /// <param name="builder">服务构建者。</param>
-        /// <returns>服务构建者。</returns>
+        /// <param name="builder">服务构建器</param>
+        /// <returns>服务构建器</returns>
         public static IServiceBuilder AddClientRuntime(this IServiceBuilder builder)
         {
-            var services = builder.Services;
+            ContainerBuilder services = builder.Services;
             services.RegisterType(typeof(DefaultHealthCheckService)).As(typeof(IHealthCheckService)).SingleInstance();
             services.RegisterType(typeof(DefaultAddressResolver)).As(typeof(IAddressResolver)).SingleInstance();
             services.RegisterType(typeof(RemoteInvokeService)).As(typeof(IRemoteInvokeService)).SingleInstance();
@@ -362,11 +380,11 @@ namespace KissU.Core.CPlatform
         /// <summary>
         /// 添加集群支持
         /// </summary>
-        /// <param name="builder">服务构建者</param>
-        /// <returns>服务构建者。</returns>
+        /// <param name="builder">服务构建器</param>
+        /// <returns>服务构建器</returns>
         public static IServiceBuilder AddClusterSupport(this IServiceBuilder builder)
         {
-            var services = builder.Services;
+            ContainerBuilder services = builder.Services;
             services.RegisterType(typeof(ServiceCommandProvider)).As(typeof(IServiceCommandProvider)).SingleInstance();
             services.RegisterType(typeof(BreakeRemoteInvokeService)).As(typeof(IBreakeRemoteInvokeService)).SingleInstance();
             services.RegisterType(typeof(FailoverInjectionInvoker)).AsImplementedInterfaces()
@@ -376,36 +394,47 @@ namespace KissU.Core.CPlatform
             return builder;
         }
 
+        /// <summary>
+        /// 添加过滤器.
+        /// </summary>
+        /// <param name="builder">服务构建器.</param>
+        /// <param name="filter">过滤器.</param>
+        /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder AddFilter(this IServiceBuilder builder, IFilter filter)
         {
-            var services = builder.Services;
+            ContainerBuilder services = builder.Services;
             services.Register(p => filter).As(typeof(IFilter)).SingleInstance();
-            if (typeof(IExceptionFilter).IsAssignableFrom(filter.GetType()))
+            switch (filter)
             {
-                var exceptionFilter = filter as IExceptionFilter;
-                services.Register(p => exceptionFilter).As(typeof(IExceptionFilter)).SingleInstance();
-            }
-            else if (typeof(IAuthorizationFilter).IsAssignableFrom(filter.GetType()))
-            {
-                var authorizationFilter = filter as IAuthorizationFilter;
-                services.Register(p => authorizationFilter).As(typeof(IAuthorizationFilter)).SingleInstance();
+                case IExceptionFilter exceptionFilter:
+                    services.Register(p => exceptionFilter).As(typeof(IExceptionFilter)).SingleInstance();
+                    break;
+                case IAuthorizationFilter authorizationFilter:
+                    services.Register(p => authorizationFilter).As(typeof(IAuthorizationFilter)).SingleInstance();
+                    break;
             }
             return builder;
         }
 
+        /// <summary>
+        /// 添加服务引擎.
+        /// </summary>
+        /// <param name="builder">服务构建器.</param>
+        /// <param name="engine">引擎类型</param>
+        /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder AddServiceEngine(this IServiceBuilder builder, Type engine)
         {
-            var services = builder.Services;
+            ContainerBuilder services = builder.Services;
             services.RegisterType(engine).As(typeof(IServiceEngine)).SingleInstance();
             builder.Services.RegisterType(typeof(DefaultServiceEngineBuilder)).As(typeof(IServiceEngineBuilder)).SingleInstance();
             return builder;
         }
 
         /// <summary>
-        /// 添加服务运行时服务。
+        /// 添加服务运行时服务
         /// </summary>
-        /// <param name="builder">服务构建者。</param>
-        /// <returns>服务构建者。</returns>
+        /// <param name="builder">服务构建器</param>
+        /// <returns>服务构建器</returns>
         public static IServiceBuilder AddServiceRuntime(this IServiceBuilder builder)
         {
             builder.Services.RegisterType(typeof(DefaultServiceEntryLocate)).As(typeof(IServiceEntryLocate)).SingleInstance();
@@ -416,13 +445,13 @@ namespace KissU.Core.CPlatform
         }
 
         /// <summary>
-        /// 添加关联服务运行时 
+        /// 添加关联服务运行时
         /// </summary>
-        /// <param name="builder">服务构建者。</param>
-        /// <returns>服务构建者。</returns>
+        /// <param name="builder">服务构建器</param>
+        /// <returns>服务构建器</returns>
         public static IServiceBuilder AddRelateServiceRuntime(this IServiceBuilder builder)
         {
-            var services = builder.Services;
+            ContainerBuilder services = builder.Services;
             services.RegisterType(typeof(DefaultHealthCheckService)).As(typeof(IHealthCheckService)).SingleInstance();
             services.RegisterType(typeof(DefaultAddressResolver)).As(typeof(IAddressResolver)).SingleInstance();
             services.RegisterType(typeof(RemoteInvokeService)).As(typeof(IRemoteInvokeService)).SingleInstance();
@@ -430,10 +459,10 @@ namespace KissU.Core.CPlatform
         }
 
         /// <summary>
-        /// 添加核心服务。
+        /// 添加核心服务
         /// </summary>
-        /// <param name="services">服务集合。</param>
-        /// <returns>服务构建者。</returns>
+        /// <param name="services">服务集合</param>
+        /// <returns>服务构建器</returns>
         public static IServiceBuilder AddCoreService(this ContainerBuilder services)
         {
             Check.NotNull(services, "services");
@@ -470,12 +499,18 @@ namespace KissU.Core.CPlatform
 
         }
 
+        /// <summary>
+        /// 通过约束注册实例.
+        /// </summary>
+        /// <param name="builder">服务构建器.</param>
+        /// <param name="virtualPaths">虚拟路径.</param>
+        /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder RegisterInstanceByConstraint(this IServiceBuilder builder, params string[] virtualPaths)
         {
-            var services = builder.Services;
-            var referenceAssemblies = GetReferenceAssembly(virtualPaths);
+            ContainerBuilder services = builder.Services;
+            List<Assembly> referenceAssemblies = GetReferenceAssembly(virtualPaths);
 
-            foreach (var assembly in referenceAssemblies)
+            foreach (Assembly assembly in referenceAssemblies)
             {
                 services.RegisterAssemblyTypes(assembly)
                  .Where(t => typeof(ISingletonDependency).GetTypeInfo().IsAssignableFrom(t)).AsImplementedInterfaces().AsSelf().SingleInstance();
@@ -487,9 +522,14 @@ namespace KissU.Core.CPlatform
 
         }
 
+        /// <summary>
+        /// 添加运行时.
+        /// </summary>
+        /// <param name="builder">服务构建器.</param>
+        /// <returns>IServiceBuilder.</returns>
         private static IServiceBuilder AddRuntime(this IServiceBuilder builder)
         {
-            var services = builder.Services;
+            ContainerBuilder services = builder.Services;
 
             services.RegisterType(typeof(ClrServiceEntryFactory)).As(typeof(IClrServiceEntryFactory)).SingleInstance();
 
@@ -497,8 +537,8 @@ namespace KissU.Core.CPlatform
             {
                 try
                 {
-                    var assemblys = GetReferenceAssembly();
-                    var types = assemblys.SelectMany(i => i.ExportedTypes).ToArray();
+                    List<Assembly> assemblys = GetReferenceAssembly();
+                    Type[] types = assemblys.SelectMany(i => i.ExportedTypes).ToArray();
                     return new AttributeServiceEntryProvider(types, provider.Resolve<IClrServiceEntryFactory>(),
                          provider.Resolve<ILogger<AttributeServiceEntryProvider>>(), provider.Resolve<CPlatformContainer>());
                 }
@@ -511,31 +551,32 @@ namespace KissU.Core.CPlatform
             return builder;
         }
 
-       /// <summary>
-       /// 添加微服务
-       /// </summary>
-       /// <param name="builder"></param>
-       /// <param name="option"></param>
+        /// <summary>
+        /// 添加微服务
+        /// </summary>
+        /// <param name="builder">服务构建器.</param>
+        /// <param name="option">选项.</param>
         public static void AddMicroService(this ContainerBuilder builder, Action<IServiceBuilder> option)
         {
             option.Invoke(builder.AddCoreService());
         }
 
-        /// <summary>.
+        /// <summary>
         /// 依赖注入业务模块程序集
         /// </summary>
         /// <param name="builder">ioc容器</param>
-        /// <returns>返回注册模块信息</returns>
+        /// <param name="virtualPaths">虚拟路径.</param>
+        /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder RegisterServices(this IServiceBuilder builder, params string[] virtualPaths)
         {
             try
             {
-                var services = builder.Services;
-                var referenceAssemblies = GetAssemblies(virtualPaths);
-                foreach (var assembly in referenceAssemblies)
+                ContainerBuilder services = builder.Services;
+                List<Assembly> referenceAssemblies = GetAssemblies(virtualPaths);
+                foreach (Assembly assembly in referenceAssemblies)
                 {
                     services.RegisterAssemblyTypes(assembly)
-                        //注入继承IServiceKey接口的所有接口
+                       //注入继承IServiceKey接口的所有接口
                        .Where(t => typeof(IServiceKey).GetTypeInfo().IsAssignableFrom(t) && t.IsInterface)
                        .AsImplementedInterfaces();
                     services.RegisterAssemblyTypes(assembly)
@@ -548,12 +589,12 @@ namespace KissU.Core.CPlatform
              .Where(t => typeof(ISingleInstance).GetTypeInfo().IsAssignableFrom(t) &&
              typeof(IServiceBehavior).GetTypeInfo().IsAssignableFrom(t) && t.GetTypeInfo().GetCustomAttribute<ModuleNameAttribute>() == null).SingleInstance().AsImplementedInterfaces();
 
-                    var types = assembly.GetTypes().Where(t => typeof(IServiceBehavior).GetTypeInfo().IsAssignableFrom(t) && t.GetTypeInfo().GetCustomAttribute<ModuleNameAttribute>() != null);
-                    foreach (var type in types)
+                    IEnumerable<Type> types = assembly.GetTypes().Where(t => typeof(IServiceBehavior).GetTypeInfo().IsAssignableFrom(t) && t.GetTypeInfo().GetCustomAttribute<ModuleNameAttribute>() != null);
+                    foreach (Type type in types)
                     {
-                        var module = type.GetTypeInfo().GetCustomAttribute<ModuleNameAttribute>();
+                        ModuleNameAttribute module = type.GetTypeInfo().GetCustomAttribute<ModuleNameAttribute>();
                         //对ModuleName不为空的对象，找到第一个继承IServiceKey的接口并注入接口及实现
-                        var interfaceObj = type.GetInterfaces()
+                        Type interfaceObj = type.GetInterfaces()
                             .FirstOrDefault(t => typeof(IServiceKey).GetTypeInfo().IsAssignableFrom(t));
                         if (interfaceObj != null)
                         {
@@ -567,29 +608,29 @@ namespace KissU.Core.CPlatform
             }
             catch (Exception ex)
             {
-                if (ex is System.Reflection.ReflectionTypeLoadException)
+                if (!(ex is ReflectionTypeLoadException typeLoadException))
                 {
-                    var typeLoadException = ex as ReflectionTypeLoadException;
-                    var loaderExceptions = typeLoadException.LoaderExceptions;
-                    throw loaderExceptions[0];
+                    throw;
                 }
-                throw ex;
+
+                Exception[] loaderExceptions = typeLoadException.LoaderExceptions;
+                throw loaderExceptions[0];
             }
         }
 
         /// <summary>
-        /// 依赖注入事件总线模块程序集 
+        /// 依赖注入事件总线模块程序集
         /// </summary>
-        /// <param name="builder"></param>
-        /// <param name="virtualPaths"></param>
-        /// <returns>返回注册模块信息</returns>
+        /// <param name="builder">服务构建器.</param>
+        /// <param name="virtualPaths">虚拟路径.</param>
+        /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder RegisterServiceBus
             (this IServiceBuilder builder, params string[] virtualPaths)
         {
-            var services = builder.Services;
-            var referenceAssemblies = GetAssemblies(virtualPaths);
+            ContainerBuilder services = builder.Services;
+            List<Assembly> referenceAssemblies = GetAssemblies(virtualPaths);
 
-            foreach (var assembly in referenceAssemblies)
+            foreach (Assembly assembly in referenceAssemblies)
             {
                 services.RegisterAssemblyTypes(assembly)
                  .Where(t => typeof(IIntegrationEventHandler).GetTypeInfo().IsAssignableFrom(t)).AsImplementedInterfaces().SingleInstance();
@@ -599,18 +640,18 @@ namespace KissU.Core.CPlatform
             return builder;
         }
 
-        ///  <summary>
+        /// <summary>
         /// 依赖注入仓储模块程序集
-        ///  </summary>
-        ///  <param name="builder">IOC容器</param>
+        /// </summary>
+        /// <param name="builder">IOC容器</param>
         /// <param name="virtualPaths">虚拟路径</param>
-        /// <returns>返回注册模块信息</returns>
+        /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder RegisterRepositories(this IServiceBuilder builder, params string[] virtualPaths)
         {
-            var services = builder.Services;
-            var referenceAssemblies = GetAssemblies(virtualPaths);
+            ContainerBuilder services = builder.Services;
+            List<Assembly> referenceAssemblies = GetAssemblies(virtualPaths);
 
-            foreach (var assembly in referenceAssemblies)
+            foreach (Assembly assembly in referenceAssemblies)
             {
                 services.RegisterAssemblyTypes(assembly)
                     .Where(t => typeof(BaseRepository).GetTypeInfo().IsAssignableFrom(t));
@@ -618,31 +659,39 @@ namespace KissU.Core.CPlatform
             return builder;
         }
 
-		/// <summary>
+        /// <summary>
         /// 依赖注入组件模块程序集
         /// </summary>
-        /// <param name="builder"></param>
-        /// <param name="virtualPaths"></param>
-        /// <returns>返回注册模块信息</returns>
+        /// <param name="builder">服务构建器.</param>
+        /// <param name="virtualPaths">虚拟路径.</param>
+        /// <returns>IServiceBuilder.</returns>
+        /// <exception cref="ArgumentNullException">builder</exception>
         public static IServiceBuilder RegisterModules(this IServiceBuilder builder, params string[] virtualPaths)
         {
-            var services = builder.Services;
-            var referenceAssemblies = GetAssemblies(virtualPaths);
-            if (builder == null) throw new ArgumentNullException("builder");
-            //从kissUSettings.json取到packages
-            var packages = ConvertDictionary(AppConfig.ServerOptions.Packages);
-            foreach (var moduleAssembly in referenceAssemblies)
+            ContainerBuilder services = builder.Services;
+            List<Assembly> referenceAssemblies = GetAssemblies(virtualPaths);
+            if (builder == null)
+            {
+                throw new ArgumentNullException("builder");
+            }
+            //从servicesettings.json取到packages
+            IDictionary<string, string> packages = ConvertDictionary(AppConfig.ServerOptions.Packages);
+            foreach (Assembly moduleAssembly in referenceAssemblies)
             {
                 GetAbstractModules(moduleAssembly).ForEach(p =>
                 {
                     services.RegisterModule(p);
                     if (packages.ContainsKey(p.TypeName))
                     {
-                        var useModules = packages[p.TypeName];
+                        string useModules = packages[p.TypeName];
                         if (useModules.AsSpan().IndexOf(p.ModuleName) >= 0)
+                        {
                             p.Enable = true;
+                        }
                         else
+                        {
                             p.Enable = false;
+                        }
                     }
                     _modules.Add(p);
                 });
@@ -653,10 +702,16 @@ namespace KissU.Core.CPlatform
             return builder;
         }
 
+        /// <summary>
+        /// 获取接口服务.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="virtualPaths">The virtual paths.</param>
+        /// <returns>List&lt;Type&gt;.</returns>
         public static List<Type> GetInterfaceService(this IServiceBuilder builder, params string[] virtualPaths)
         {
-            var types = new List<Type>();
-            var referenceAssemblies = GetReferenceAssembly(virtualPaths);
+            List<Type> types = new List<Type>();
+            List<Assembly> referenceAssemblies = GetReferenceAssembly(virtualPaths);
             referenceAssemblies.ForEach(p =>
             {
                 types.AddRange(p.GetTypes().Where(t => typeof(IServiceKey).GetTypeInfo().IsAssignableFrom(t) && t.IsInterface));
@@ -664,10 +719,16 @@ namespace KissU.Core.CPlatform
             return types;
         }
 
+        /// <summary>
+        /// 获取数据合约的名称.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="virtualPaths">The virtual paths.</param>
+        /// <returns>IEnumerable&lt;System.String&gt;.</returns>
         public static IEnumerable<string> GetDataContractName(this IServiceBuilder builder, params string[] virtualPaths)
         {
-            var namespaces = new List<string>();
-            var assemblies = builder.GetInterfaceService(virtualPaths)
+            List<string> namespaces = new List<string>();
+            List<Assembly> assemblies = builder.GetInterfaceService(virtualPaths)
                 .Select(p => p.Assembly)
                 .Union(GetSystemModules())
                 .Distinct()
@@ -680,9 +741,14 @@ namespace KissU.Core.CPlatform
             return namespaces;
         }
 
+        /// <summary>
+        /// 转换字典.
+        /// </summary>
+        /// <param name="list">The list.</param>
+        /// <returns>IDictionary&lt;System.String, System.String&gt;.</returns>
         private static IDictionary<string, string> ConvertDictionary(List<ModulePackage> list)
         {
-            var result = new Dictionary<string, string>();
+            Dictionary<string, string> result = new Dictionary<string, string>();
             list.ForEach(p =>
             {
                 result.Add(p.TypeName, p.Using);
@@ -690,27 +756,42 @@ namespace KissU.Core.CPlatform
             return result;
         }
 
+        /// <summary>
+        /// 获取引用程序集.
+        /// </summary>
+        /// <param name="virtualPaths">The virtual paths.</param>
+        /// <returns>List&lt;Assembly&gt;.</returns>
         private static List<Assembly> GetReferenceAssembly(params string[] virtualPaths)
         {
-            var refAssemblies = new List<Assembly>();
-            var rootPath = AppContext.BaseDirectory;
-            var existsPath = virtualPaths.Any();
+            List<Assembly> refAssemblies = new List<Assembly>();
+            string rootPath = AppContext.BaseDirectory;
+            bool existsPath = virtualPaths.Any();
             if (existsPath && !string.IsNullOrEmpty(AppConfig.ServerOptions.RootPath))
+            {
                 rootPath = AppConfig.ServerOptions.RootPath;
-            var result = _referenceAssembly;
+            }
+
+            List<Assembly> result = _referenceAssembly;
             if (!result.Any() || existsPath)
             {
-                var paths = virtualPaths.Select(m => Path.Combine(rootPath, m)).ToList();
-                if (!existsPath) paths.Add(rootPath);
+                List<string> paths = virtualPaths.Select(m => Path.Combine(rootPath, m)).ToList();
+                if (!existsPath)
+                {
+                    paths.Add(rootPath);
+                }
+
                 paths.ForEach(path =>
                 {
-                    var assemblyFiles = GetAllAssemblyFiles(path);
+                    List<string> assemblyFiles = GetAllAssemblyFiles(path);
 
-                    foreach (var referencedAssemblyFile in assemblyFiles)
+                    foreach (string referencedAssemblyFile in assemblyFiles)
                     {
-                        var referencedAssembly = Assembly.LoadFrom(referencedAssemblyFile);
+                        Assembly referencedAssembly = Assembly.LoadFrom(referencedAssemblyFile);
                         if (!_referenceAssembly.Contains(referencedAssembly))
+                        {
                             _referenceAssembly.Add(referencedAssembly);
+                        }
+
                         refAssemblies.Add(referencedAssembly);
                     }
                     result = existsPath ? refAssemblies : _referenceAssembly;
@@ -719,13 +800,17 @@ namespace KissU.Core.CPlatform
             return result;
         }
 
+        /// <summary>
+        /// 获取系统模块.
+        /// </summary>
+        /// <returns>List&lt;Assembly&gt;.</returns>
         private static List<Assembly> GetSystemModules()
         {
-            var assemblies = new List<Assembly>();
-            var referenceAssemblies = GetReferenceAssembly();
-            foreach (var referenceAssembly in referenceAssemblies)
+            List<Assembly> assemblies = new List<Assembly>();
+            List<Assembly> referenceAssemblies = GetReferenceAssembly();
+            foreach (Assembly referenceAssembly in referenceAssemblies)
             {
-                var abstractModules = GetAbstractModules(referenceAssembly);
+                List<AbstractModule> abstractModules = GetAbstractModules(referenceAssembly);
                 if (abstractModules.Any(p => p.GetType().IsSubclassOf(typeof(SystemModule))))
                 {
                     assemblies.Add(referenceAssembly);
@@ -734,9 +819,14 @@ namespace KissU.Core.CPlatform
             return assemblies;
         }
 
+        /// <summary>
+        /// 获取程序集.
+        /// </summary>
+        /// <param name="virtualPaths">The virtual paths.</param>
+        /// <returns>List&lt;Assembly&gt;.</returns>
         private static List<Assembly> GetAssemblies(params string[] virtualPaths)
         {
-            var referenceAssemblies = new List<Assembly>();
+            List<Assembly> referenceAssemblies = new List<Assembly>();
             if (virtualPaths.Any())
             {
                 referenceAssemblies = GetReferenceAssembly(virtualPaths);
@@ -746,8 +836,11 @@ namespace KissU.Core.CPlatform
                 string[] assemblyNames = DependencyContext
                     .Default.GetDefaultAssemblyNames().Select(p => p.Name).ToArray();
                 assemblyNames = GetFilterAssemblies(assemblyNames);
-                foreach (var name in assemblyNames)
+                foreach (string name in assemblyNames)
+                {
                     referenceAssemblies.Add(Assembly.Load(name));
+                }
+
                 _referenceAssembly.AddRange(referenceAssemblies.Except(_referenceAssembly));
             }
             return referenceAssemblies;
@@ -756,27 +849,32 @@ namespace KissU.Core.CPlatform
         /// <summary>
         /// 获取抽象模块（查找继承AbstractModule类的对象并创建实例）
         /// </summary>
-        /// <param name="assembly"></param>
-        /// <returns></returns>
+        /// <param name="assembly">The assembly.</param>
+        /// <returns>List&lt;AbstractModule&gt;.</returns>
         private static List<AbstractModule> GetAbstractModules(Assembly assembly)
         {
-            var abstractModules = new List<AbstractModule>();
+            List<AbstractModule> abstractModules = new List<AbstractModule>();
             Type[] arrayModule =
                 assembly.GetTypes().Where(
                     t => t.IsSubclassOf(typeof(AbstractModule))).ToArray();
-            foreach (var moduleType in arrayModule)
+            foreach (Type moduleType in arrayModule)
             {
-                var abstractModule = (AbstractModule)Activator.CreateInstance(moduleType);
+                AbstractModule abstractModule = (AbstractModule)Activator.CreateInstance(moduleType);
                 abstractModules.Add(abstractModule);
             }
             return abstractModules;
         }
 
+        /// <summary>
+        /// 获取过滤器程序集.
+        /// </summary>
+        /// <param name="assemblyNames">The assembly names.</param>
+        /// <returns>System.String[].</returns>
         private static string[] GetFilterAssemblies(string[] assemblyNames)
         {
-            var notRelatedFile = AppConfig.ServerOptions.NotRelatedAssemblyFiles;
-            var relatedFile = AppConfig.ServerOptions.RelatedAssemblyFiles;
-            var pattern = string.Format("^Microsoft.\\w*|^System.\\w*|^DotNetty.\\w*|^runtime.\\w*|^ZooKeeperNetEx\\w*|^StackExchange.Redis\\w*|^Consul\\w*|^Newtonsoft.Json.\\w*|^Autofac.\\w*{0}",
+            string notRelatedFile = AppConfig.ServerOptions.NotRelatedAssemblyFiles;
+            string relatedFile = AppConfig.ServerOptions.RelatedAssemblyFiles;
+            string pattern = string.Format("^Microsoft.\\w*|^System.\\w*|^DotNetty.\\w*|^runtime.\\w*|^ZooKeeperNetEx\\w*|^StackExchange.Redis\\w*|^Consul\\w*|^Newtonsoft.Json.\\w*|^Autofac.\\w*{0}",
                string.IsNullOrEmpty(notRelatedFile) ? "" : $"|{notRelatedFile}");
             Regex notRelatedRegex = new Regex(pattern, RegexOptions.Singleline | RegexOptions.Compiled | RegexOptions.IgnoreCase);
             Regex relatedRegex = new Regex(relatedFile, RegexOptions.Singleline | RegexOptions.Compiled | RegexOptions.IgnoreCase);
@@ -794,25 +892,25 @@ namespace KissU.Core.CPlatform
             }
         }
 
+        /// <summary>
+        /// 获取所有程序集.
+        /// </summary>
+        /// <param name="parentDir">The parent dir.</param>
+        /// <returns>List&lt;System.String&gt;.</returns>
         private static List<string> GetAllAssemblyFiles(string parentDir)
         {
-            var notRelatedFile = AppConfig.ServerOptions.NotRelatedAssemblyFiles;
-            var relatedFile = AppConfig.ServerOptions.RelatedAssemblyFiles;
-            var pattern = string.Format("^Microsoft.\\w*|^System.\\w*|^Netty.\\w*|^Autofac.\\w*{0}",
-               string.IsNullOrEmpty(notRelatedFile) ? "" : $"|{notRelatedFile}");
-            Regex notRelatedRegex = new Regex(pattern, RegexOptions.Singleline | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-            Regex relatedRegex = new Regex(relatedFile, RegexOptions.Singleline | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+            string notRelatedFile = AppConfig.ServerOptions.NotRelatedAssemblyFiles;
+            string relatedFile = AppConfig.ServerOptions.RelatedAssemblyFiles;
+            string pattern = $"^Microsoft.\\w*|^System.\\w*|^Netty.\\w*|^Autofac.\\w*{(string.IsNullOrEmpty(notRelatedFile) ? "" : $"|{notRelatedFile}")}";
+            var notRelatedRegex = new Regex(pattern, RegexOptions.Singleline | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+            var relatedRegex = new Regex(relatedFile, RegexOptions.Singleline | RegexOptions.Compiled | RegexOptions.IgnoreCase);
             if (!string.IsNullOrEmpty(relatedFile))
             {
-                return
-                    Directory.GetFiles(parentDir, "*.dll").Select(Path.GetFullPath).Where(
-                        a => !notRelatedRegex.IsMatch(a) && relatedRegex.IsMatch(a)).ToList();
+                return Directory.GetFiles(parentDir, "*.dll").Select(Path.GetFullPath).Where( a => !notRelatedRegex.IsMatch(a) && relatedRegex.IsMatch(a)).ToList();
             }
             else
             {
-                return
-                    Directory.GetFiles(parentDir, "*.dll").Select(Path.GetFullPath).Where(
-                        a => !notRelatedRegex.IsMatch(Path.GetFileName(a))).ToList();
+                return Directory.GetFiles(parentDir, "*.dll").Select(Path.GetFullPath).Where( a => !notRelatedRegex.IsMatch(Path.GetFileName(a))).ToList();
             }
         }
     }

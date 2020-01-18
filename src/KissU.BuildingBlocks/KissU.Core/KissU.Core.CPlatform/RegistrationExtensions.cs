@@ -4,11 +4,18 @@ using KissU.Core.CPlatform.Module;
 
 namespace KissU.Core.CPlatform
 {
+    /// <summary>
+    /// 注册扩展
+    /// </summary>
     public static class RegistrationExtensions
-    { 
+    {
+        /// <summary>
+        /// 添加过滤器.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="filter">The filter.</param>
         public static void AddFilter(this ContainerBuilderWrapper builder, Type filter)
         {
-           
             if (typeof(IExceptionFilter).IsAssignableFrom(filter))
             {
                 builder.RegisterType(filter).As<IExceptionFilter>().SingleInstance();
@@ -18,7 +25,5 @@ namespace KissU.Core.CPlatform
                 builder.RegisterType(filter).As<IAuthorizationFilter>().SingleInstance();
             }
         }
-
-       
     }
 }

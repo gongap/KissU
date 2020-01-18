@@ -5,13 +5,25 @@ using Microsoft.Extensions.Configuration;
 
 namespace KissU.Core.CPlatform
 {
-   public class AppConfig
+    /// <summary>
+    /// 应用配置.
+    /// </summary>
+    public class AppConfig
     {
         #region 字段
+        /// <summary>
+        /// 负载均衡模式
+        /// </summary>
         private static AddressSelectorMode _loadBalanceMode=AddressSelectorMode.Polling;
+        /// <summary>
+        /// 服务器选项
+        /// </summary>
         private static ServerEngineOptions _serverOptions=new ServerEngineOptions();
         #endregion
 
+        /// <summary>
+        /// 配置
+        /// </summary>
         public static IConfigurationRoot Configuration { get; internal set; }
 
         /// <summary>
@@ -22,35 +34,32 @@ namespace KissU.Core.CPlatform
             get
             {
                 AddressSelectorMode mode = _loadBalanceMode; ;
-                if(Configuration !=null 
-                    && Configuration["AccessTokenExpireTimeSpan"]!=null
-                    && !Enum.TryParse(Configuration["AccessTokenExpireTimeSpan"], out mode))
+                if(Configuration?["AccessTokenExpireTimeSpan"] != null && !Enum.TryParse(Configuration["AccessTokenExpireTimeSpan"], out mode))
                 {
                     mode = _loadBalanceMode;
                 }
                 return mode;
             }
-            internal set
-            {
-                _loadBalanceMode = value;
-            }
+            internal set => _loadBalanceMode = value;
         }
 
+        /// <summary>
+        /// 获取配置节点.
+        /// </summary>
+        /// <param name="name">名称</param>
+        /// <returns>配置节点.</returns>
         public static IConfigurationSection GetSection(string name)
         {
             return Configuration?.GetSection(name);
         }
 
+        /// <summary>
+        /// 服务器选项.
+        /// </summary>
         public static ServerEngineOptions ServerOptions
         {
-            get
-            {
-                return _serverOptions;
-            }
-            internal set
-            {
-                _serverOptions = value;
-            }
+            get => _serverOptions;
+            internal set => _serverOptions = value;
         }
     }
 }

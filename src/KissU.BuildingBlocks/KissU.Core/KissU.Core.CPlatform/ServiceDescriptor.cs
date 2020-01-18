@@ -19,7 +19,7 @@ namespace KissU.Core.CPlatform
         {
             return descriptor.GetMetadata<string>("GroupName");
         }
-        
+
         /// <summary>
         /// 设置组名称。
         /// </summary>
@@ -48,7 +48,7 @@ namespace KissU.Core.CPlatform
         /// 获取负责人
         /// </summary>
         /// <param name="descriptor">服务描述符。</param>
-        /// <param name="waitExecution">负责人名字</param>
+        /// <param name="director">The director.</param>
         /// <returns>服务描述符。</returns>
         public static ServiceDescriptor Director(this ServiceDescriptor descriptor, string director)
         {
@@ -78,12 +78,23 @@ namespace KissU.Core.CPlatform
             return descriptor.GetMetadata("EnableAuthorization", false);
         }
 
+        /// <summary>
+        /// HTTPs the method.
+        /// </summary>
+        /// <param name="descriptor">The descriptor.</param>
+        /// <param name="httpMethod">The HTTP method.</param>
+        /// <returns>ServiceDescriptor.</returns>
         public static ServiceDescriptor HttpMethod(this ServiceDescriptor descriptor, string httpMethod)
         {
             descriptor.Metadatas["HttpMethod"] = httpMethod;
             return descriptor;
         }
-         
+
+        /// <summary>
+        /// HTTPs the method.
+        /// </summary>
+        /// <param name="descriptor">The descriptor.</param>
+        /// <returns>System.String.</returns>
         public static string HttpMethod(this ServiceDescriptor descriptor)
         {
             return descriptor.GetMetadata("httpMethod", "");
@@ -120,7 +131,7 @@ namespace KissU.Core.CPlatform
         {
             return descriptor.GetMetadata("AuthType", "");
         }
-        
+
 
         /// <summary>
         /// 设置授权类型
@@ -138,12 +149,12 @@ namespace KissU.Core.CPlatform
         /// 获取负责人
         /// </summary>
         /// <param name="descriptor">服务描述符。</param>
-        /// <returns></returns>
+        /// <returns>System.String.</returns>
         public static string Director(this ServiceDescriptor descriptor)
         {
             return descriptor.GetMetadata<string>("Director");
         }
-        
+
         /// <summary>
         /// 获取日期
         /// </summary>
@@ -155,7 +166,7 @@ namespace KissU.Core.CPlatform
             descriptor.Metadatas["Date"] = date;
             return descriptor;
         }
-        
+
         /// <summary>
         /// 获取日期
         /// </summary>
@@ -194,21 +205,25 @@ namespace KissU.Core.CPlatform
         /// <summary>
         /// 服务Id。
         /// </summary>
+        /// <value>The identifier.</value>
         public string Id { get; set; }
 
         /// <summary>
         /// 访问的令牌
         /// </summary>
+        /// <value>The token.</value>
         public string Token { get; set; }
 
         /// <summary>
         /// 路由
         /// </summary>
+        /// <value>The route path.</value>
         public string RoutePath { get; set; }
 
         /// <summary>
         /// 元数据。
-        /// </summary> 
+        /// </summary>
+        /// <value>The metadatas.</value>
         public IDictionary<string, object> Metadatas { get; set; }
 
         /// <summary>
@@ -228,9 +243,11 @@ namespace KissU.Core.CPlatform
 
         #region Equality members
 
-        /// <summary>Determines whether the specified object is equal to the current object.</summary>
-        /// <returns>true if the specified object  is equal to the current object; otherwise, false.</returns>
-        /// <param name="obj">The object to compare with the current object. </param>
+        /// <summary>
+        /// 确定指定对象是否等于当前对象.
+        /// </summary>
+        /// <param name="obj">与当前对象进行比较的对象.</param>
+        /// <returns>如果指定对象等于当前对象，则返回true；否则返回true。否则为假。</returns>
         public override bool Equals(object obj)
         {
             var model = obj as ServiceDescriptor;
@@ -258,18 +275,32 @@ namespace KissU.Core.CPlatform
                    });
         }
 
-        /// <summary>Serves as the default hash function. </summary>
-        /// <returns>A hash code for the current object.</returns>
+        /// <summary>
+        /// 用作默认哈希函数。
+        /// </summary>
+        /// <returns>当前对象的哈希码.</returns>
         public override int GetHashCode()
         {
             return ToString().GetHashCode();
         }
 
+        /// <summary>
+        /// Implements the == operator.
+        /// </summary>
+        /// <param name="model1">The model1.</param>
+        /// <param name="model2">The model2.</param>
+        /// <returns>The result of the operator.</returns>
         public static bool operator ==(ServiceDescriptor model1, ServiceDescriptor model2)
         {
             return Equals(model1, model2);
         }
 
+        /// <summary>
+        /// Implements the != operator.
+        /// </summary>
+        /// <param name="model1">The model1.</param>
+        /// <param name="model2">The model2.</param>
+        /// <returns>The result of the operator.</returns>
         public static bool operator !=(ServiceDescriptor model1, ServiceDescriptor model2)
         {
             return !Equals(model1, model2);

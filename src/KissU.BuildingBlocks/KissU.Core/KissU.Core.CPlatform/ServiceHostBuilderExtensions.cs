@@ -20,8 +20,19 @@ using Microsoft.Extensions.Configuration;
 
 namespace KissU.Core.CPlatform
 {
+    /// <summary>
+    /// 服务构建器扩展.
+    /// </summary>
     public static class ServiceHostBuilderExtensions
     {
+        /// <summary>
+        /// 使用服务器
+        /// </summary>
+        /// <param name="hostBuilder">The host builder.</param>
+        /// <param name="ip">The ip.</param>
+        /// <param name="port">The port.</param>
+        /// <param name="token">The token.</param>
+        /// <returns>IServiceHostBuilder.</returns>
         public static IServiceHostBuilder UseServer(this IServiceHostBuilder hostBuilder, string ip, int port, string token = "True")
         {
             return hostBuilder.MapServices(async mapper =>
@@ -38,15 +49,15 @@ namespace KissU.Core.CPlatform
                 if (!AppConfig.ServerOptions.DisableServiceRegistration)
                 {
                     await mapper.Resolve<IServiceCommandManager>().SetServiceCommandsAsync();
-                    await ConfigureRoute(mapper);
+                    await ConfigureRoute(mapper).ConfigureAwait(false);
                 }
                 var serviceHosts = mapper.Resolve<IList<Runtime.Server.IServiceHost>>();
-                Task.Factory.StartNew(async () =>
+                await Task.Factory.StartNew(async () =>
                 {
                     foreach (var serviceHost in serviceHosts)
-                        await serviceHost.StartAsync(_ip, _port);
+                        await serviceHost.StartAsync(_ip, _port).ConfigureAwait(false);
                     mapper.Resolve<IServiceEngineLifetime>().NotifyStarted();
-                }).Wait();
+                }).ConfigureAwait(false);
             });
         }
 
@@ -74,7 +85,8 @@ namespace KissU.Core.CPlatform
                         {
                              Ip = Dns.GetHostEntry(Dns.GetHostName())
                              .AddressList.FirstOrDefault<IPAddress>
-                             (a => a.AddressFamily.ToString().Equals("InterNetwork")).ToString()
+                             (a => a.AddressFamily.ToString().Equals("InterNetwork"))
+                             ?.ToString()
                         }
                         },
                         ServiceDescriptor = i.Descriptor
