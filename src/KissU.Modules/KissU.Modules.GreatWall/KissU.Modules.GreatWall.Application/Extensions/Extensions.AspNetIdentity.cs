@@ -5,6 +5,8 @@ using KissU.Modules.GreatWall.Domain.Extensions;
 using KissU.Modules.GreatWall.Domain.Models;
 using KissU.Modules.GreatWall.Domain.Options;
 using KissU.Modules.GreatWall.Domain.Services.Implements;
+using KissU.Util.AspNetCore.Sessions;
+using KissU.Util.Sessions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -29,6 +31,7 @@ namespace KissU.Modules.GreatWall.Application.Extensions
                 .AddUserManager<IdentityUserManager>().AddSignInManager<IdentitySignInManager>()
                 .AddDefaultTokenProviders();
             services.AddScoped<IdentityErrorDescriber, IdentityErrorChineseDescriber>();
+            services.AddSingleton<ISession, Session>();
             return services;
         }
 
@@ -48,6 +51,7 @@ namespace KissU.Modules.GreatWall.Application.Extensions
                 .AddUserManager<IdentityUserManager>().AddSignInManager<IdentitySignInManager>()
                 .AddDefaultTokenProviders();
             services.AddScoped<IdentityErrorDescriber, IdentityErrorChineseDescriber>();
+            services.AddSingleton<ISession, Session>();
             return services;
         }
     }

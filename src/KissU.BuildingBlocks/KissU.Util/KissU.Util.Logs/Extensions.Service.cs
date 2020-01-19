@@ -9,7 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using NLog.LayoutRenderers;
 
-namespace KissU.Util.Logs.Extensions
+namespace KissU.Util.Logs
 {
     /// <summary>
     /// 日志扩展

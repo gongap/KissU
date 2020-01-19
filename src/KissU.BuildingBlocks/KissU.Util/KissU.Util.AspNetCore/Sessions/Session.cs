@@ -35,5 +35,10 @@ namespace KissU.Util.AspNetCore.Sessions
                 return string.IsNullOrWhiteSpace(result) ? Web.Identity.GetValue(System.Security.Claims.ClaimTypes.NameIdentifier) : result;
             }
         }
+
+        /// <summary>
+        /// 用户名称
+        /// </summary>
+        public string UserName => Web.Identity.GetValue(System.Security.Claims.ClaimTypes.NameIdentifier);
     }
 }

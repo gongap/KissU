@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KissU.Util.Logs\KissU.Util.Logs.csproj" />
+    <ProjectReference Include="..\KissU.Util.AspNetCore\KissU.Util.AspNetCore.csproj" />
   </ItemGroup>
 
   <ItemGroup>

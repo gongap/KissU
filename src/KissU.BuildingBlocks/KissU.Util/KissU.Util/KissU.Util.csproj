@@ -33,6 +33,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>LibraryResource.resx</DependentUpon>
     </Compile>
+    <Compile Update="Properties\LogResource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>LogResource.resx</DependentUpon>
+    </Compile>
     <Compile Update="Properties\R.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -44,6 +49,10 @@
     <EmbeddedResource Update="Properties\LibraryResource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>LibraryResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\LogResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LogResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Properties\R.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

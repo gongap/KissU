@@ -10,7 +10,8 @@ using KissU.Util.Parameters;
 using KissU.Util.Signatures;
 using KissU.Util.Validations;
 
-namespace KissU.Util.Biz.Payments.Alipay.Services.Base {
+namespace KissU.Util.Biz.Payments.Alipay.Services.Base
+{
     /// <summary>
     /// 支付宝通知服务
     /// </summary>

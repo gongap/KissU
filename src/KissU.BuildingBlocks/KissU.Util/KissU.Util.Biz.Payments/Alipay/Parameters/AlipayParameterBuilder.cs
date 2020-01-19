@@ -7,7 +7,8 @@ using KissU.Util.Helpers;
 using KissU.Util.Parameters;
 using KissU.Util.Signatures;
 
-namespace KissU.Util.Biz.Payments.Alipay.Parameters {
+namespace KissU.Util.Biz.Payments.Alipay.Parameters
+{
     /// <summary>
     /// 支付宝参数生成器
     /// </summary>

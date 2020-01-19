@@ -14,5 +14,10 @@
         /// 用户标识
         /// </summary>
         string UserId { get; }
+
+        /// <summary>
+        /// 用户名称
+        /// </summary>
+        string UserName { get; }
     }
 }

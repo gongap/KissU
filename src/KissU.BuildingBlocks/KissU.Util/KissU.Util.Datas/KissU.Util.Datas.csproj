@@ -14,6 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KissU.Util.Logs\KissU.Util.Logs.csproj" />
+    <ProjectReference Include="..\KissU.Util\KissU.Util.csproj" />
   </ItemGroup>
 </Project>

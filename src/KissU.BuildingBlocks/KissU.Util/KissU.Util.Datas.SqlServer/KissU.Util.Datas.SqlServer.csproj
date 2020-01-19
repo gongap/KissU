@@ -2,7 +2,7 @@
   <Import Project="../../../../common.props" />
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Description>KissU应用框架的数据访问类库。</Description>
+    <Description>KissU应用框架的SqlServer数据访问类库。</Description>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 

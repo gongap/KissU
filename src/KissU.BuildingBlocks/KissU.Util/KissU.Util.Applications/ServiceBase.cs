@@ -16,7 +16,7 @@ namespace KissU.Util.Applications
         /// <summary>
         /// 日志
         /// </summary>
-        public ILog Log => _log ?? (_log = GetLog());
+        public ILog Log => _log ??= GetLog();
 
         /// <summary>
         /// 获取日志操作
@@ -36,6 +36,6 @@ namespace KissU.Util.Applications
         /// <summary>
         /// 用户会话
         /// </summary>
-        public virtual ISession Session => AspNetCore.Sessions.Session.Instance;
+        public virtual ISession Session => NullSession.Instance;
     }
 }

@@ -16,6 +16,11 @@
         public string UserId => string.Empty;
 
         /// <summary>
+        /// 用户名称
+        /// </summary>
+        public string UserName => string.Empty;
+
+        /// <summary>
         /// 空用户会话实例
         /// </summary>
         public static readonly ISession Instance = new NullSession();

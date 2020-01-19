@@ -4,7 +4,7 @@ using System.Text;
 using KissU.Util.Exceptions;
 using KissU.Util.Logs.Abstractions;
 using KissU.Util.Logs.Contents;
-using KissU.Util.Logs.Properties;
+using KissU.Util.Properties;
 
 namespace KissU.Util.Logs.Formats
 {

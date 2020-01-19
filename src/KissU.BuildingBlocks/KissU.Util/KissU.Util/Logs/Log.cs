@@ -1,8 +1,7 @@
 ﻿using KissU.Util.Helpers;
 using KissU.Util.Logs.Abstractions;
+using KissU.Util.Logs.Contents;
 using KissU.Util.Logs.Core;
-using KissU.Util.Logs.Exceptionless;
-using KissU.Util.Security;
 using KissU.Util.Sessions;
 
 namespace KissU.Util.Logs
@@ -51,18 +50,6 @@ namespace KissU.Util.Logs
         protected override LogContent GetContent()
         {
             return new LogContent { Class = _class };
-        }
-
-        /// <summary>
-        /// 初始化
-        /// </summary>
-        protected override void Init( LogContent content )
-        {
-            base.Init( content );
-            content.Tenant = Session.GetTenantName();
-            content.Application = Session.GetApplicationName();
-            content.Operator = Session.GetFullName();
-            content.Role = Session.GetRoleName();
         }
 
         /// <summary>
@@ -117,7 +104,7 @@ namespace KissU.Util.Logs
             }
             catch
             {
-                return new Util.Logs.NLog.LogProviderFactory();
+                return new NullLogProviderFactory();
             }
         }
 
@@ -162,7 +149,7 @@ namespace KissU.Util.Logs
             }
             catch
             {
-                return AspNetCore.Sessions.Session.Instance;
+                return NullSession.Instance;
             }
         }
     }

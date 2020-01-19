@@ -8,7 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KissU.Util.Webs.Properties {
+namespace KissU.Util.AspNetCore.Webs.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   一个强类型的资源类，用于查找本地化的字符串等。
     /// </summary>
@@ -36,7 +39,7 @@ namespace KissU.Util.Webs.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("KissU.Util.Webs.Properties.WebResource", typeof(WebResource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("KissU.Util.AspNetCore.Webs.Properties.WebResource", typeof(WebResource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

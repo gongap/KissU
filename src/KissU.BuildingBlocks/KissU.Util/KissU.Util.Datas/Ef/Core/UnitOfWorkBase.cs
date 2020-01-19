@@ -72,7 +72,7 @@ namespace KissU.Util.Datas.Ef.Core
             : base( options )
             {
             TraceId = Guid.NewGuid().ToString();
-            Session = AspNetCore.Sessions.Session.Instance;
+            Session = NullSession.Instance;
             _serviceProvider = serviceProvider ?? Ioc.Create<IServiceProvider>();
             RegisterToManager();
         }
@@ -355,8 +355,7 @@ namespace KissU.Util.Datas.Ef.Core
         /// </summary>
         protected virtual string GetUserName()
         {
-            var name = GetSession().GetFullName();
-            return string.IsNullOrEmpty( name ) ? GetSession().GetUserName() : name;
+            return GetSession().UserName;
         }
 
         /// <summary>
