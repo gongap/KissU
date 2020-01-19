@@ -8,13 +8,14 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using KissU.Util;
+using KissU.Util.Helpers;
 using KissU.Util.Security.Principals;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
-using Microsoft.AspNetCore.Http.Internal;
 
-namespace KissU.Util.Helpers
+namespace KissU.Util.Webs
 {
     /// <summary>
     /// Web操作
@@ -32,7 +33,7 @@ namespace KissU.Util.Helpers
             try
             {
                 HttpContextAccessor = Ioc.Create<IHttpContextAccessor>();
-                Environment = Ioc.Create<IHostingEnvironment>();
+                Environment = Ioc.Create<IWebHostEnvironment>();
             }
             catch
             {
@@ -67,7 +68,7 @@ namespace KissU.Util.Helpers
         /// <summary>
         /// 宿主环境
         /// </summary>
-        public static IHostingEnvironment Environment { get; set; }
+        public static IWebHostEnvironment Environment { get; set; }
 
         #endregion
 
@@ -80,11 +81,8 @@ namespace KissU.Util.Helpers
         {
             get
             {
-                if (HttpContext == null)
-                    return UnauthenticatedPrincipal.Instance;
-                if (HttpContext.User is ClaimsPrincipal principal)
-                    return principal;
-                return UnauthenticatedPrincipal.Instance;
+                var principal = HttpContext?.User;
+                return principal ?? UnauthenticatedPrincipal.Instance;
             }
         }
 
@@ -138,7 +136,7 @@ namespace KissU.Util.Helpers
             get
             {
                 Request.EnableBuffering();
-                return File.ToString(Request.Body, isCloseStream: false);
+                return Helpers.File.ToString(Request.Body, isCloseStream: false);
             }
         }
 
@@ -152,7 +150,7 @@ namespace KissU.Util.Helpers
         public static async Task<string> GetBodyAsync()
         {
             Request.EnableBuffering();
-            return await File.ToStringAsync(Request.Body, isCloseStream: false);
+            return await Helpers.File.ToStringAsync(Request.Body, isCloseStream: false);
         }
 
         #endregion
@@ -162,18 +160,18 @@ namespace KissU.Util.Helpers
         /// <summary>
         /// Web客户端，用于发送Http请求
         /// </summary>
-        public static Util.Webs.Clients.WebClient Client()
+        public static Clients.WebClient Client()
         {
-            return new Util.Webs.Clients.WebClient();
+            return new Clients.WebClient();
         }
 
         /// <summary>
         /// Web客户端，用于发送Http请求
         /// </summary>
         /// <typeparam name="TResult">返回结果类型</typeparam>
-        public static Util.Webs.Clients.WebClient<TResult> Client<TResult>() where TResult : class
+        public static Clients.WebClient<TResult> Client<TResult>() where TResult : class
         {
-            return new Util.Webs.Clients.WebClient<TResult>();
+            return new Clients.WebClient<TResult>();
         }
 
         #endregion
@@ -491,7 +489,7 @@ namespace KissU.Util.Helpers
         /// <param name="encoding">字符编码</param>
         public static async Task DownloadFileAsync(string filePath, string fileName, Encoding encoding)
         {
-            var bytes = File.Read(filePath);
+            var bytes = Helpers.File.Read(filePath);
             await DownloadAsync(bytes, fileName, encoding);
         }
 
@@ -513,7 +511,7 @@ namespace KissU.Util.Helpers
         /// <param name="encoding">字符编码</param>
         public static async Task DownloadAsync(Stream stream, string fileName, Encoding encoding)
         {
-            await DownloadAsync(File.ToBytes(stream), fileName, encoding);
+            await DownloadAsync(Helpers.File.ToBytes(stream), fileName, encoding);
         }
 
         /// <summary>
