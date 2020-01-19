@@ -9,7 +9,6 @@ using KissU.Util.Datas.Sql.Configs;
 using KissU.Util.Domains.Repositories;
 using KissU.Util.Helpers;
 using KissU.Util.Logs;
-using KissU.Util.Logs.Extensions;
 
 namespace KissU.Util.Datas.Dapper
 {

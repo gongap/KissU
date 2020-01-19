@@ -5,7 +5,6 @@ using KissU.Util.Biz.Payments.Alipay.Parameters;
 using KissU.Util.Biz.Payments.Alipay.Results;
 using KissU.Util.Helpers;
 using KissU.Util.Logs;
-using KissU.Util.Logs.Extensions;
 using KissU.Util.Validations;
 
 namespace KissU.Util.Biz.Payments.Alipay.Services.Base {

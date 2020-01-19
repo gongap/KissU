@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using AspectCore.DynamicProxy;
 using AspectCore.DynamicProxy.Parameters;
 using KissU.Util.Aspects.Base;
-using KissU.Util.Logs.Extensions;
 
 namespace KissU.Util.Logs.Aspects
 {

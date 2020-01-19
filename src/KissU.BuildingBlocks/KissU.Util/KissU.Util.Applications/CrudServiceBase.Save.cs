@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using KissU.Util.Domains;
-using KissU.Util.Logs.Extensions;
+using KissU.Util.Logs;
 
 namespace KissU.Util.Applications
 {

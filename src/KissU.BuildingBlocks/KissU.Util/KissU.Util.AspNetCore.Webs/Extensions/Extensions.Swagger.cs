@@ -3,7 +3,7 @@ using System.Reflection;
 using Microsoft.AspNetCore.Builder;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
-namespace KissU.Util.Webs.Extensions
+namespace KissU.Util.AspNetCore.Webs.Extensions
 {
     /// <summary>
     /// Swagger扩展

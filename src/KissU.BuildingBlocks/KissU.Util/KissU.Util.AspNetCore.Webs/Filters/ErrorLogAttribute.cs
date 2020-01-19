@@ -1,8 +1,7 @@
 ﻿using KissU.Util.Logs;
-using KissU.Util.Logs.Extensions;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace KissU.Util.Webs.Filters
+namespace KissU.Util.AspNetCore.Webs.Filters
 {
     /// <summary>
     /// 错误日志过滤器

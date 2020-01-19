@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace KissU.Util.Webs.Razors
+namespace KissU.Util.AspNetCore.Webs.Razors
 {
     /// <summary>
     /// Razor Html生成器

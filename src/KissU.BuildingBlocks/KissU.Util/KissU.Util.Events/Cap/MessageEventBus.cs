@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using DotNetCore.CAP;
 using KissU.Util.Datas.Transactions;
 using KissU.Util.Logs;
-using KissU.Util.Logs.Extensions;
 
 namespace KissU.Util.Events.Cap
 {

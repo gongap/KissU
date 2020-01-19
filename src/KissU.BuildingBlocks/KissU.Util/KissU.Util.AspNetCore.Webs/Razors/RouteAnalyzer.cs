@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
-using KissU.Util.Webs.Filters;
+using KissU.Util.AspNetCore.Webs.Filters;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure;
 
-namespace KissU.Util.Webs.Razors
+namespace KissU.Util.AspNetCore.Webs.Razors
 {
     /// <summary>
     /// 路由分析器

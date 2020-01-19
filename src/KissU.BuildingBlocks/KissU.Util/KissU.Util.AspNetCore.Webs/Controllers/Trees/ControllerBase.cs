@@ -3,7 +3,7 @@ using KissU.Util.Applications.Trees;
 using KissU.Util.Datas.Queries.Trees;
 using Microsoft.AspNetCore.Mvc;
 
-namespace KissU.Util.Webs.Controllers.Trees
+namespace KissU.Util.AspNetCore.Webs.Controllers.Trees
 {
     /// <summary>
     /// 树形控制器

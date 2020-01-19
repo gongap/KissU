@@ -6,7 +6,6 @@ using System.Text;
 using KissU.Util.Biz.Payments.Wechatpay.Configs;
 using KissU.Util.Helpers;
 using KissU.Util.Logs;
-using KissU.Util.Logs.Extensions;
 using KissU.Util.Parameters;
 
 namespace KissU.Util.Biz.Payments.Wechatpay.Results {

@@ -3,7 +3,7 @@ using System.Linq;
 using AspectCore.DynamicProxy.Parameters;
 using KissU.Util.Helpers;
 
-namespace KissU.Util.Logs.Extensions
+namespace KissU.Util.Logs
 {
     /// <summary>
     /// AOP扩展

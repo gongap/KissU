@@ -6,7 +6,6 @@ using KissU.Util.Biz.Payments.Wechatpay.Parameters;
 using KissU.Util.Biz.Payments.Wechatpay.Signatures;
 using KissU.Util.Helpers;
 using KissU.Util.Logs;
-using KissU.Util.Logs.Extensions;
 using KissU.Util.Parameters;
 using KissU.Util.Validations;
 

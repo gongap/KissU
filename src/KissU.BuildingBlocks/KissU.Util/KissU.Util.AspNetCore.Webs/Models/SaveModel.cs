@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.Webs.Models
+﻿namespace KissU.Util.AspNetCore.Webs.Models
 {
     /// <summary>
     /// 保存参数

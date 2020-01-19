@@ -1,6 +1,5 @@
 ﻿using System;
 using KissU.Util.Logs.Abstractions;
-using KissU.Util.Logs.Extensions;
 using KissU.Util.Sessions;
 using Microsoft.Extensions.Logging;
 

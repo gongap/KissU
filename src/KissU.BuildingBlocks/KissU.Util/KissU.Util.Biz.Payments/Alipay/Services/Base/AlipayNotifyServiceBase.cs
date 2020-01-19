@@ -5,7 +5,6 @@ using KissU.Util.AspNetCore.Parameters;
 using KissU.Util.AspNetCore.Signatures;
 using KissU.Util.Biz.Payments.Alipay.Configs;
 using KissU.Util.Logs;
-using KissU.Util.Logs.Extensions;
 using KissU.Util.Parameters;
 using KissU.Util.Signatures;
 using KissU.Util.Validations;

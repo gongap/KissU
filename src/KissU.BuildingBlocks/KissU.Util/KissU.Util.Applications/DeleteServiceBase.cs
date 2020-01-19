@@ -8,7 +8,7 @@ using KissU.Util.Datas.Stores;
 using KissU.Util.Datas.UnitOfWorks;
 using KissU.Util.Domains;
 using KissU.Util.Helpers;
-using KissU.Util.Logs.Extensions;
+using KissU.Util.Logs;
 
 namespace KissU.Util.Applications
 {

@@ -8,7 +8,7 @@ using KissU.Util.Logs.Abstractions;
 using KissU.Util.Logs.Contents;
 using KissU.Util.Properties;
 
-namespace KissU.Util.Logs.Extensions
+namespace KissU.Util.Logs
 {
     /// <summary>
     /// 日志扩展

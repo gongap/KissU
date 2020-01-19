@@ -1,11 +1,10 @@
 ﻿using System.Net;
 using System.Threading.Tasks;
 using KissU.Util.Logs;
-using KissU.Util.Logs.Extensions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 
-namespace KissU.Util.Webs.Middlewares
+namespace KissU.Util.AspNetCore.Webs.Middlewares
 {
     /// <summary>
     /// 真实Ip中间件

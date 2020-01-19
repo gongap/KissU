@@ -2,12 +2,12 @@
 using System.Threading.Tasks;
 using KissU.Util.Applications;
 using KissU.Util.Applications.Dtos;
+using KissU.Util.AspNetCore.Webs.Models;
+using KissU.Util.AspNetCore.Webs.Properties;
 using KissU.Util.Datas.Queries;
-using KissU.Util.Webs.Models;
-using KissU.Util.Webs.Properties;
 using Microsoft.AspNetCore.Mvc;
 
-namespace KissU.Util.Webs.Controllers
+namespace KissU.Util.AspNetCore.Webs.Controllers
 {
     /// <summary>
     /// Crud控制器

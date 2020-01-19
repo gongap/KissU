@@ -9,7 +9,6 @@ using KissU.Util.Biz.Payments.Wechatpay.Results;
 using KissU.Util.Exceptions;
 using KissU.Util.Helpers;
 using KissU.Util.Logs;
-using KissU.Util.Logs.Extensions;
 
 namespace KissU.Util.Biz.Payments.Wechatpay.Services {
     /// <summary>

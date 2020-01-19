@@ -1,7 +1,7 @@
-﻿using KissU.Util.Webs.Middlewares;
+﻿using KissU.Util.AspNetCore.Webs.Middlewares;
 using Microsoft.AspNetCore.Builder;
 
-namespace KissU.Util.Webs.Extensions
+namespace KissU.Util.AspNetCore.Webs.Extensions
 {
     /// <summary>
     /// 中间件扩展

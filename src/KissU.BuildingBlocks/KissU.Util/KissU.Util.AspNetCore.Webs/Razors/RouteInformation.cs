@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.Webs.Razors
+﻿namespace KissU.Util.AspNetCore.Webs.Razors
 {
     /// <summary>
     /// 路由信息

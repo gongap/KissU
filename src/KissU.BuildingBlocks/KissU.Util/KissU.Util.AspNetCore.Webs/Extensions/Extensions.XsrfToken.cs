@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace KissU.Util.Webs.Extensions
+namespace KissU.Util.AspNetCore.Webs.Extensions
 {
     /// <summary>
     /// 服务扩展

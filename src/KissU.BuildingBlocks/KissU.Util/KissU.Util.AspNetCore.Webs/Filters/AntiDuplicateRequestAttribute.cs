@@ -2,13 +2,13 @@
 using System.Threading.Tasks;
 using KissU.Util.AspNetCore.Helpers;
 using KissU.Util.AspNetCore.Sessions;
+using KissU.Util.AspNetCore.Webs.Commons;
 using KissU.Util.Helpers;
 using KissU.Util.Locks;
 using KissU.Util.Properties;
-using KissU.Util.Webs.Commons;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace KissU.Util.Webs.Filters
+namespace KissU.Util.AspNetCore.Webs.Filters
 {
     /// <summary>
     /// 防止重复提交过滤器

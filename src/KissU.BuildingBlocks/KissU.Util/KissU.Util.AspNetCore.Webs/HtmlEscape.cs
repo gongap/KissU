@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.Webs
+﻿namespace KissU.Util.AspNetCore.Webs
 {
     /// <summary>
     /// Html转义字符

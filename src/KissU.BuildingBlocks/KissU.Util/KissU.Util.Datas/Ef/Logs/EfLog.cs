@@ -6,7 +6,6 @@ using KissU.Util.Datas.Ef.Core;
 using KissU.Util.Datas.UnitOfWorks;
 using KissU.Util.Helpers;
 using KissU.Util.Logs;
-using KissU.Util.Logs.Extensions;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 

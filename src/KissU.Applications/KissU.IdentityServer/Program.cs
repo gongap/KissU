@@ -2,7 +2,6 @@
 using System.IO;
 using KissU.Util.Dependency;
 using KissU.Util.Logs;
-using KissU.Util.Logs.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 

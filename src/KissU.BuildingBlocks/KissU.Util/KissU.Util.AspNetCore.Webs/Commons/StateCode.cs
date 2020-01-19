@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.Webs.Commons
+﻿namespace KissU.Util.AspNetCore.Webs.Commons
 {
     /// <summary>
     /// 状态码
