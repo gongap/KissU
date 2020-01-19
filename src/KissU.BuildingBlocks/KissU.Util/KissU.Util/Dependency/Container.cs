@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using KissU.Util.Helpers;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace KissU.Util.Dependency
@@ -59,19 +58,7 @@ namespace KissU.Util.Dependency
         /// <param name="name">服务名称</param>
         public object Create(Type type, string name = null)
         {
-            return Web.HttpContext?.RequestServices != null ? GetServiceFromHttpContext(type, name) : GetService(type, name);
-        }
-
-        /// <summary>
-        /// 从HttpContext获取服务
-        /// </summary>
-        private object GetServiceFromHttpContext(Type type, string name)
-        {
-            var serviceProvider = Web.HttpContext.RequestServices;
-            if (name == null)
-                return serviceProvider.GetService(type);
-            var context = serviceProvider.GetService<IComponentContext>();
-            return context.ResolveNamed(name, type);
+            return GetService(type, name);
         }
 
         /// <summary>

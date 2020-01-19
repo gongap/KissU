@@ -1,23 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="../../../../common.props" />
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Description> KissU应用框架的Asp.Net Core操作类库。</Description>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Description> KissU应用框架的Asp.Net Core Web操作类库。</Description>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <FrameworkReference Include="Microsoft.AspNetCore.App" />
-  </ItemGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\..\..\output\release</OutputPath>
-    <DocumentationFile>..\..\..\..\output\util\netstandard2.0\KissU.Util.Webs.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>..\..\..\..\output\release</OutputPath>
-    <DocumentationFile>..\..\..\..\output\util\netstandard2.0\KissU.Util.Webs.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -38,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\KissU.Util.Applications\KissU.Util.Applications.csproj" />
+    <ProjectReference Include="..\KissU.Util.AspNetCore\KissU.Util.AspNetCore.csproj" />
   </ItemGroup>
 
   <ItemGroup>

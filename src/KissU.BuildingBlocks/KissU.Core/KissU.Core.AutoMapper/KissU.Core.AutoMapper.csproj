@@ -6,16 +6,6 @@
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>..\..\..\..\output\core\netcoreapp3.1</OutputPath>
-    <DocumentationFile>..\..\..\..\output\core\netcoreapp3.1\KissU.Core.AutoMapper.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-      <OutputPath>..\..\..\..\output\core\netcoreapp3.1</OutputPath>
-    <DocumentationFile>..\..\..\..\output\core\netcoreapp3.1\KissU.Core.AutoMapper.xml</DocumentationFile>
-  </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="AutoMapper.Attributes" Version="6.0.1" />
   </ItemGroup>

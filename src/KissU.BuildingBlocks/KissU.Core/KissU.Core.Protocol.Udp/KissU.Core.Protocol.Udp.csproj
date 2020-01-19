@@ -6,16 +6,6 @@
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-      <DocumentationFile>..\..\..\..\output\core\netcoreapp3.1\KissU.Core.Protocol.Udp.xml</DocumentationFile>
-      <OutputPath>..\..\..\..\output\core\netcoreapp3.1</OutputPath>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-      <OutputPath>..\..\..\..\output\core\netcoreapp3.1</OutputPath>
-      <DocumentationFile>..\..\..\..\output\core\netcoreapp3.1\KissU.Core.Protocol.Udp.xml</DocumentationFile>
-  </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="DotNetty.Codecs" Version="0.6.0" />
   </ItemGroup>

@@ -8,14 +8,13 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
-using KissU.Util;
 using KissU.Util.Helpers;
 using KissU.Util.Security.Principals;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 
-namespace KissU.Util.Webs
+namespace KissU.Util.AspNetCore.Helpers
 {
     /// <summary>
     /// Web操作

@@ -1,23 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="../../../../common.props" />
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <Description>KissU应用框架的权限类库。</Description>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\..\..\output\util\</OutputPath>
-    <DocumentationFile>..\..\..\..\output\util\netstandard2.0\KissU.Util.Security.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>..\..\..\..\output\util\</OutputPath>
-    <DocumentationFile>..\..\..\..\output\util\netstandard2.0\KissU.Util.Security.xml</DocumentationFile>
-  </PropertyGroup>
-
   <ItemGroup>
-    <ProjectReference Include="..\KissU.Util\KissU.Util.csproj" />
+    <ProjectReference Include="..\KissU.Util.AspNetCore\KissU.Util.AspNetCore.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,14 +23,5 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SecurityResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Identity/Models/Role.*.cs">
-      <DependentUpon>Role.cs</DependentUpon>
-    </Compile>
-    <Compile Update="Identity/Models/User.*.cs">
-      <DependentUpon>User.cs</DependentUpon>
-    </Compile>
   </ItemGroup>
 </Project>

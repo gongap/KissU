@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using KissU.Util.Helpers;
 using KissU.Util.Properties;
-using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 
 namespace KissU.Util.Exceptions.Prompts
 {

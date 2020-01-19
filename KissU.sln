@@ -206,6 +206,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.IdentityServer", "src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Core.Serilog", "src\KissU.BuildingBlocks\KissU.Core\KissU.Core.Serilog\KissU.Core.Serilog.csproj", "{5EEDC170-07E8-47D1-AAFE-4FC72AF5E2EF}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.AspNetCore", "src\KissU.BuildingBlocks\KissU.Util\KissU.Util.AspNetCore\KissU.Util.AspNetCore.csproj", "{59B75A5C-DF10-489D-9429-03941039A2FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -504,6 +506,10 @@ Global
 		{5EEDC170-07E8-47D1-AAFE-4FC72AF5E2EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EEDC170-07E8-47D1-AAFE-4FC72AF5E2EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EEDC170-07E8-47D1-AAFE-4FC72AF5E2EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59B75A5C-DF10-489D-9429-03941039A2FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59B75A5C-DF10-489D-9429-03941039A2FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59B75A5C-DF10-489D-9429-03941039A2FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59B75A5C-DF10-489D-9429-03941039A2FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -598,6 +604,7 @@ Global
 		{875CEEFC-D1F4-48DA-8C3E-036C26877EB9} = {989E8619-53BE-48E2-B062-047940FBBCE2}
 		{6A0AE2D8-C3CE-4329-A200-3026D1B45C57} = {F7F6CB7E-792F-496B-925A-BB5B0DB67DB6}
 		{5EEDC170-07E8-47D1-AAFE-4FC72AF5E2EF} = {C5FD25F4-7CA0-43AE-BC79-BF1132CE4C69}
+		{59B75A5C-DF10-489D-9429-03941039A2FA} = {D4F921B5-1BBD-4F36-A1D0-DE934C035713}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}

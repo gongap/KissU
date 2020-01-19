@@ -6,16 +6,6 @@
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-      <DocumentationFile>..\..\..\..\output\core\netcoreapp3.1\KissU.Core.EventBusKafka.xml</DocumentationFile>
-      <OutputPath>..\..\..\..\output\core\netcoreapp3.1</OutputPath>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-      <OutputPath>..\..\..\..\output\core\netcoreapp3.1</OutputPath>
-      <DocumentationFile>..\..\..\..\output\core\netcoreapp3.1\KissU.Core.EventBusKafka.xml</DocumentationFile>
-  </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="Confluent.Kafka" Version="0.11.5" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />

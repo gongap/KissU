@@ -6,16 +6,6 @@
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-      <DocumentationFile>..\..\..\..\output\core\netcoreapp3.1\KissU.Core.xml</DocumentationFile>
-      <OutputPath>..\..\..\..\output\core\netcoreapp3.1</OutputPath>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-      <OutputPath>..\..\..\..\output\core\netcoreapp3.1</OutputPath>
-      <DocumentationFile>..\..\..\..\output\core\netcoreapp3.1\KissU.Core.xml</DocumentationFile>
-  </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="Google.Protobuf" Version="3.10.0" />
     <PackageReference Include="Grpc.Core" Version="2.24.0" />

@@ -10,16 +10,6 @@
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-      <DocumentationFile>..\..\..\..\output\core\netcoreapp3.1\KissU.Core.xml</DocumentationFile>
-      <OutputPath>..\..\..\..\output\core\netcoreapp3.1</OutputPath>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-      <OutputPath>..\..\..\..\output\core\netcoreapp3.1</OutputPath>
-      <DocumentationFile>..\..\..\..\output\core\netcoreapp3.1\KissU.Core.xml</DocumentationFile>
-  </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.2.7" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />

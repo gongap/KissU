@@ -1,21 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="../../../version.props" />
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\..\output\test</OutputPath>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>..\..\..\output\test</OutputPath>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="Commons\Datas\SqlServer\Scripts\Pd\Samples.pdb" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />

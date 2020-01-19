@@ -6,16 +6,6 @@
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-      <DocumentationFile>..\..\..\..\output\core\netcoreapp3.1\KissU.Core.Protocol.WS.xml</DocumentationFile>
-      <OutputPath>..\..\..\..\output\core\netcoreapp3.1</OutputPath>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-      <OutputPath>..\..\..\..\output\core\netcoreapp3.1</OutputPath>
-      <DocumentationFile>..\..\..\..\output\core\netcoreapp3.1\KissU.Core.Protocol.WS.xml</DocumentationFile>
-  </PropertyGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\WebSocket\WebSocketCore\WebSocketCore.csproj" />
     <ProjectReference Include="..\KissU.Core.CPlatform\KissU.Core.CPlatform.csproj" />

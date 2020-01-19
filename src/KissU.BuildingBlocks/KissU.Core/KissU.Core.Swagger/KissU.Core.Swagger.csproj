@@ -6,42 +6,9 @@
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-      <DocumentationFile>..\..\..\..\output\core\netcoreapp3.1\KissU.Core.Swagger.xml</DocumentationFile>
-      <OutputPath>..\..\..\..\output\core\netcoreapp3.1</OutputPath>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-      <OutputPath>..\..\..\..\output\core\netcoreapp3.1</OutputPath>
-      <DocumentationFile>..\..\..\..\output\core\netcoreapp3.1\KissU.Core.Swagger.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="SwaggerUI\index.html" />
-    <None Remove="SwaggerUI\node_modules\swagger-ui-dist\absolute-path.js" />
-    <None Remove="SwaggerUI\node_modules\swagger-ui-dist\favicon-16x16.png" />
-    <None Remove="SwaggerUI\node_modules\swagger-ui-dist\favicon-32x32.png" />
-    <None Remove="SwaggerUI\node_modules\swagger-ui-dist\index.html" />
-    <None Remove="SwaggerUI\node_modules\swagger-ui-dist\index.js" />
-    <None Remove="SwaggerUI\node_modules\swagger-ui-dist\oauth2-redirect.html" />
-    <None Remove="SwaggerUI\node_modules\swagger-ui-dist\package.json" />
-    <None Remove="SwaggerUI\node_modules\swagger-ui-dist\swagger-ui-bundle.js" />
-    <None Remove="SwaggerUI\node_modules\swagger-ui-dist\swagger-ui-bundle.js.map" />
-    <None Remove="SwaggerUI\node_modules\swagger-ui-dist\swagger-ui-dist-3.17.5.tgz" />
-    <None Remove="SwaggerUI\node_modules\swagger-ui-dist\swagger-ui-standalone-preset.js" />
-    <None Remove="SwaggerUI\node_modules\swagger-ui-dist\swagger-ui-standalone-preset.js.map" />
-    <None Remove="SwaggerUI\node_modules\swagger-ui-dist\swagger-ui.css" />
-    <None Remove="SwaggerUI\node_modules\swagger-ui-dist\swagger-ui.css.map" />
-    <None Remove="SwaggerUI\node_modules\swagger-ui-dist\swagger-ui.js" />
-    <None Remove="SwaggerUI\node_modules\swagger-ui-dist\swagger-ui.js.map" />
-  </ItemGroup>
-
   <ItemGroup>
     <EmbeddedResource Include="SwaggerUI\index.html" />
     <EmbeddedResource Include="SwaggerUI\node_modules\swagger-ui-dist\index.js" />
-  </ItemGroup>
-
-  <ItemGroup>
     <EmbeddedResource Include="SwaggerUI\node_modules\swagger-ui-dist\absolute-path.js" />
     <EmbeddedResource Include="SwaggerUI\node_modules\swagger-ui-dist\favicon-16x16.png" />
     <EmbeddedResource Include="SwaggerUI\node_modules\swagger-ui-dist\favicon-32x32.png" />

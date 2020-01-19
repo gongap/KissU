@@ -1,19 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <Import Project="../../../../common.props" />
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <Description>KissU应用框架的事件总线操作类库。</Description>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\..\..\output\release</OutputPath>
-    <DocumentationFile>..\..\..\..\output\util\netstandard2.0\KissU.Util.Events.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>..\..\..\..\output\release</OutputPath>
-    <DocumentationFile>..\..\..\..\output\util\netstandard2.0\KissU.Util.Events.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
