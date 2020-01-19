@@ -132,7 +132,7 @@ namespace KissU.Util.Dependency
         /// <param name="configs">依赖配置</param>
         public ContainerBuilder CreateBuilder(ContainerBuilder builder, IServiceCollection services, Action<ContainerBuilder> actionBefore, params IConfig[] configs)
         {
-            builder = builder ?? new ContainerBuilder();
+            builder ??= new ContainerBuilder();
             actionBefore?.Invoke(builder);
             if (configs != null)
             {
