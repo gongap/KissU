@@ -13,6 +13,7 @@ using KissU.Util.Security.Principals;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
+using File = KissU.Util.Helpers.File;
 
 namespace KissU.Util.AspNetCore.Helpers
 {
@@ -135,7 +136,7 @@ namespace KissU.Util.AspNetCore.Helpers
             get
             {
                 Request.EnableBuffering();
-                return Helpers.File.ToString(Request.Body, isCloseStream: false);
+                return File.ToString(Request.Body, isCloseStream: false);
             }
         }
 
@@ -149,7 +150,7 @@ namespace KissU.Util.AspNetCore.Helpers
         public static async Task<string> GetBodyAsync()
         {
             Request.EnableBuffering();
-            return await Helpers.File.ToStringAsync(Request.Body, isCloseStream: false);
+            return await File.ToStringAsync(Request.Body, isCloseStream: false);
         }
 
         #endregion
@@ -326,7 +327,21 @@ namespace KissU.Util.AspNetCore.Helpers
         /// </summary>
         public static string WebRootPath => Environment?.WebRootPath;
 
-        #endregion 
+        /// <summary>
+        /// 获取wwwroot路径
+        /// </summary>
+        /// <param name="relativePath">相对路径</param>
+        public static string GetWebRootPath(string relativePath)
+        {
+            if (string.IsNullOrWhiteSpace(relativePath))
+                return string.Empty;
+            var rootPath = Web.WebRootPath;
+            if (string.IsNullOrWhiteSpace(rootPath))
+                return Path.GetFullPath(relativePath);
+            return $"{Web.WebRootPath}\\{relativePath.Replace("/", "\\").TrimStart('\\')}";
+        }
+
+        #endregion
 
         #region GetFiles(获取客户端文件集合)
 
@@ -488,7 +503,7 @@ namespace KissU.Util.AspNetCore.Helpers
         /// <param name="encoding">字符编码</param>
         public static async Task DownloadFileAsync(string filePath, string fileName, Encoding encoding)
         {
-            var bytes = Helpers.File.Read(filePath);
+            var bytes = File.Read(filePath);
             await DownloadAsync(bytes, fileName, encoding);
         }
 
@@ -510,7 +525,7 @@ namespace KissU.Util.AspNetCore.Helpers
         /// <param name="encoding">字符编码</param>
         public static async Task DownloadAsync(Stream stream, string fileName, Encoding encoding)
         {
-            await DownloadAsync(Helpers.File.ToBytes(stream), fileName, encoding);
+            await DownloadAsync(File.ToBytes(stream), fileName, encoding);
         }
 
         /// <summary>

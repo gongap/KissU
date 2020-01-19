@@ -2,9 +2,10 @@
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using KissU.Util.Clients;
 using KissU.Util.Helpers;
 
-namespace KissU.Util.Webs.Clients
+namespace KissU.Util.AspNetCore.Clients
 {
     /// <summary>
     /// Http请求

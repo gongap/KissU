@@ -1,7 +1,8 @@
-﻿using KissU.Util.Helpers;
-using KissU.Util.Parameters;
+﻿using KissU.Util.AspNetCore.Parameters;
+using KissU.Util.Helpers;
+using KissU.Util.Signatures;
 
-namespace KissU.Util.Signatures
+namespace KissU.Util.AspNetCore.Signatures
 {
     /// <summary>
     /// 签名服务

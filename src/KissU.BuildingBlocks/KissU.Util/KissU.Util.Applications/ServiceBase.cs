@@ -36,6 +36,6 @@ namespace KissU.Util.Applications
         /// <summary>
         /// 用户会话
         /// </summary>
-        public virtual ISession Session => Sessions.Session.Instance;
+        public virtual ISession Session => AspNetCore.Sessions.Session.Instance;
     }
 }

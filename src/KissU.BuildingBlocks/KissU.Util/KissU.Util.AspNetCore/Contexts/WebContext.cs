@@ -1,6 +1,7 @@
 ﻿using KissU.Util.AspNetCore.Helpers;
+using KissU.Util.Contexts;
 
-namespace KissU.Util.Contexts
+namespace KissU.Util.AspNetCore.Contexts
 {
     /// <summary>
     /// Web上下文

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using IdentityModel;
+using KissU.Util.AspNetCore;
+using KissU.Util.AspNetCore.Helpers;
 using KissU.Util.Helpers;
 using KissU.Util.Security.Claims;
 using KissU.Util.Sessions;

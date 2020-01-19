@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="../../../../common.props" />
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <Description>KissU应用框架的Office操作类库，目前封装了NPOI导出操作。</Description>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
@@ -11,6 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KissU.Util\KissU.Util.csproj" />
+    <ProjectReference Include="..\KissU.Util.AspNetCore\KissU.Util.AspNetCore.csproj" />
   </ItemGroup>
 </Project>

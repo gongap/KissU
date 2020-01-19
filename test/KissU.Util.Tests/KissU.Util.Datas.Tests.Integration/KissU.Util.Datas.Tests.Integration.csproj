@@ -18,7 +18,6 @@
     <ProjectReference Include="..\..\..\src\KissU.BuildingBlocks\KissU.Util\KissU.Util.Datas.MySql\KissU.Util.Datas.MySql.csproj" />
     <ProjectReference Include="..\..\..\src\KissU.BuildingBlocks\KissU.Util\KissU.Util.Datas.PgSql\KissU.Util.Datas.PgSql.csproj" />
     <ProjectReference Include="..\..\..\src\KissU.BuildingBlocks\KissU.Util\KissU.Util.Datas.SqlServer\KissU.Util.Datas.SqlServer.csproj" />
-    <ProjectReference Include="..\..\..\src\KissU.BuildingBlocks\KissU.Util\KissU.Util\KissU.Util.csproj" />
   </ItemGroup>
 
   <ItemGroup>

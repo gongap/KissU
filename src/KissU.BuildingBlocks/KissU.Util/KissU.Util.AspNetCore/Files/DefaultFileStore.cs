@@ -1,10 +1,11 @@
 ﻿using System.IO;
 using System.Threading.Tasks;
+using KissU.Util.AspNetCore.Helpers;
 using KissU.Util.Exceptions;
+using KissU.Util.Files;
 using KissU.Util.Files.Paths;
-using KissU.Util.Helpers;
 
-namespace KissU.Util.Files
+namespace KissU.Util.AspNetCore.Files
 {
     /// <summary>
     /// 本地文件存储服务
@@ -32,7 +33,7 @@ namespace KissU.Util.Files
         {
             var fileControl = Web.GetFile();
             var path = _generator.Generate(fileControl.FileName);
-            var physicalPath = Common.GetWebRootPath(path);
+            var physicalPath = Web.GetWebRootPath(path);
             var directory = Path.GetDirectoryName(physicalPath);
             if (string.IsNullOrEmpty(directory))
                 throw new Warning("上传失败");

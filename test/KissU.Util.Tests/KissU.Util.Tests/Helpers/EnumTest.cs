@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using KissU.Util.AspNetCore.Helpers;
 using KissU.Util.Helpers;
 using KissU.Util.Tests.Samples;
 using KissU.Util.Tests.XUnitHelpers;

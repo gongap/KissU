@@ -1,4 +1,6 @@
-﻿namespace KissU.Util.Parameters.Formats
+﻿using KissU.Util.Parameters.Formats;
+
+namespace KissU.Util.AspNetCore.Parameters.Formats
 {
     /// <summary>
     /// Url参数格式化器

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web;
-using KissU.Util.Helpers;
-using KissU.Util.Parameters.Formats;
+using KissU.Util.AspNetCore.Helpers;
+using KissU.Util.AspNetCore.Parameters.Formats;
+using KissU.Util.Parameters;
+using Url = KissU.Util.Helpers.Url;
 
-namespace KissU.Util.Parameters
+namespace KissU.Util.AspNetCore.Parameters
 {
     /// <summary>
     /// Url参数生成器

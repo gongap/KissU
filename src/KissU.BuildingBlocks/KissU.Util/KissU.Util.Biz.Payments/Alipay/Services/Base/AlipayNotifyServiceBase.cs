@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using KissU.Util.AspNetCore.Parameters;
+using KissU.Util.AspNetCore.Signatures;
 using KissU.Util.Biz.Payments.Alipay.Configs;
 using KissU.Util.Logs;
 using KissU.Util.Logs.Extensions;

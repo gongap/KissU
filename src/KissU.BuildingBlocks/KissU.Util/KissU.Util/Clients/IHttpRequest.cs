@@ -2,7 +2,7 @@
 using System.Net;
 using System.Threading.Tasks;
 
-namespace KissU.Util.Webs.Clients
+namespace KissU.Util.Clients
 {
     /// <summary>
     /// Http请求

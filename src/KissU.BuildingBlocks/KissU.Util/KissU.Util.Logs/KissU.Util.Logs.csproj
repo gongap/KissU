@@ -1,15 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="../../../../common.props" />
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <Description>KissU应用框架的日志操作类库。</Description>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Include="Extensions\Extensions.Aspect.cs" />
-    <None Include="Extensions\Extensions.Log.cs" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Exceptionless" Version="4.3.2027" />

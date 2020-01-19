@@ -45,7 +45,6 @@ namespace KissU.Util
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             services.AddLogging();
-            services.AddSingleton<ISession, Session>();
            return Bootstrapper.Run(builder, services, configs, aopConfigAction);
         }
     }

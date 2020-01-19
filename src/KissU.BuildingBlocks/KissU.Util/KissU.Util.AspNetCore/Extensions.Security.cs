@@ -2,7 +2,7 @@
 using KissU.Util.Security.Principals;
 using Microsoft.AspNetCore.Http;
 
-namespace KissU.Util
+namespace KissU.Util.AspNetCore
 {
     /// <summary>
     /// 系统扩展 - 安全
@@ -28,9 +28,8 @@ namespace KissU.Util
         /// <param name="context">Http上下文</param>
         public static ClaimsIdentity GetIdentity(this HttpContext context)
         {
-            if (context == null)
-                return UnauthenticatedIdentity.Instance;
-            if (!(context.User is ClaimsPrincipal principal))
+            var principal = context?.User;
+            if (principal == null)
                 return UnauthenticatedIdentity.Instance;
             if (principal.Identity is ClaimsIdentity identity)
                 return identity;

@@ -72,7 +72,7 @@ namespace KissU.Util.Datas.Ef.Core
             : base( options )
             {
             TraceId = Guid.NewGuid().ToString();
-            Session = Sessions.Session.Instance;
+            Session = AspNetCore.Sessions.Session.Instance;
             _serviceProvider = serviceProvider ?? Ioc.Create<IServiceProvider>();
             RegisterToManager();
         }

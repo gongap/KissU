@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using KissU.Util.AspNetCore.Parameters;
+using KissU.Util.AspNetCore.Signatures;
 using KissU.Util.Biz.Payments.Alipay.Configs;
 using KissU.Util.Biz.Payments.Core;
 using KissU.Util.Helpers;

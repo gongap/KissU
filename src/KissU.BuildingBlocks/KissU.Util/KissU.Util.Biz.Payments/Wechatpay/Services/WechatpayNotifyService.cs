@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using KissU.Util.AspNetCore.Helpers;
 using KissU.Util.Biz.Payments.Properties;
 using KissU.Util.Biz.Payments.Wechatpay.Abstractions;
 using KissU.Util.Biz.Payments.Wechatpay.Configs;

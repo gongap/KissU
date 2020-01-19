@@ -1,5 +1,6 @@
 ﻿using System;
 using Exceptionless;
+using KissU.Util.AspNetCore.Logs.Core;
 using KissU.Util.Logs.Abstractions;
 using KissU.Util.Logs.Core;
 using KissU.Util.Logs.Formats;

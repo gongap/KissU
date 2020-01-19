@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using System.Threading.Tasks;
+using KissU.Util.AspNetCore.Helpers;
 using KissU.Util.Helpers;
 
 namespace KissU.Util.Tools.Sms.LuoSiMao

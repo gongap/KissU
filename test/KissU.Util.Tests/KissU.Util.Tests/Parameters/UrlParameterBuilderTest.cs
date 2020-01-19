@@ -1,4 +1,4 @@
-﻿using KissU.Util.Parameters;
+﻿using KissU.Util.AspNetCore.Parameters;
 using Xunit;
 
 namespace KissU.Util.Tests.Parameters

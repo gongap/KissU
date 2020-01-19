@@ -162,7 +162,7 @@ namespace KissU.Util.Logs
             }
             catch
             {
-                return Sessions.Session.Instance;
+                return AspNetCore.Sessions.Session.Instance;
             }
         }
     }

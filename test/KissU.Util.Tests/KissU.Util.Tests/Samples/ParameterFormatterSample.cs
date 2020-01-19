@@ -1,4 +1,5 @@
-﻿using KissU.Util.Parameters.Formats;
+﻿using KissU.Util.AspNetCore.Parameters.Formats;
+using KissU.Util.Parameters.Formats;
 
 namespace KissU.Util.Tests.Samples
 {

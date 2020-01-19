@@ -1,10 +1,12 @@
 ﻿using System.Diagnostics;
+using KissU.Util.AspNetCore.Contexts;
+using KissU.Util.AspNetCore.Helpers;
 using KissU.Util.Contexts;
 using KissU.Util.Helpers;
 using KissU.Util.Logs.Abstractions;
 using KissU.Util.Logs.Internal;
 
-namespace KissU.Util.Logs.Core
+namespace KissU.Util.AspNetCore.Logs.Core
 {
     /// <summary>
     /// 日志上下文

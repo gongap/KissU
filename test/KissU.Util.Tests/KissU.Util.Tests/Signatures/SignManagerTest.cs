@@ -1,4 +1,4 @@
-﻿using KissU.Util.Signatures;
+﻿using KissU.Util.AspNetCore.Signatures;
 using KissU.Util.Tests.Helpers;
 using Xunit;
 using Xunit.Abstractions;

@@ -48,7 +48,7 @@ namespace KissU.Util.Exceptions.Prompts
                 return prompt;
             if (exception is Warning warning)
                 return warning.Message;
-            if (Web.Environment.IsDevelopment() || IsShowSystemException)
+            if (Host.Environment.IsDevelopment() || IsShowSystemException)
                 return exception.Message;
             return R.SystemError;
         }

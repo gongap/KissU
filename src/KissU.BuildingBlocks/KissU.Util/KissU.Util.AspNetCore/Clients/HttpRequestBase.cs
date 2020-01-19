@@ -7,9 +7,11 @@ using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using KissU.Util.AspNetCore.Helpers;
+using KissU.Util.Clients;
 using KissU.Util.Helpers;
 
-namespace KissU.Util.Webs.Clients
+namespace KissU.Util.AspNetCore.Clients
 {
     /// <summary>
     /// Http请求

@@ -24,7 +24,6 @@
     <ProjectReference Include="..\..\..\src\KissU.BuildingBlocks\KissU.Util\KissU.Util.Events\KissU.Util.Events.csproj" />
     <ProjectReference Include="..\..\..\src\KissU.BuildingBlocks\KissU.Util\KissU.Util.Logs\KissU.Util.Logs.csproj" />
     <ProjectReference Include="..\..\..\src\KissU.BuildingBlocks\KissU.Util\KissU.Util.Security\KissU.Util.Security.csproj" />
-    <ProjectReference Include="..\..\..\src\KissU.BuildingBlocks\KissU.Util\KissU.Util\KissU.Util.csproj" />
   </ItemGroup>
 
   <ItemGroup>

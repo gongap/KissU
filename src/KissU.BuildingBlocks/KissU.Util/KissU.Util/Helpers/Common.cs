@@ -40,24 +40,10 @@ namespace KissU.Util.Helpers
         {
             if (string.IsNullOrWhiteSpace(relativePath))
                 return string.Empty;
-            var rootPath = Web.RootPath;
+            var rootPath = Host.RootPath;
             if (string.IsNullOrWhiteSpace(rootPath))
                 return Path.GetFullPath(relativePath);
-            return $"{Web.RootPath}\\{relativePath.Replace("/", "\\").TrimStart('\\')}";
-        }
-
-        /// <summary>
-        /// 获取wwwroot路径
-        /// </summary>
-        /// <param name="relativePath">相对路径</param>
-        public static string GetWebRootPath(string relativePath)
-        {
-            if (string.IsNullOrWhiteSpace(relativePath))
-                return string.Empty;
-            var rootPath = Web.WebRootPath;
-            if (string.IsNullOrWhiteSpace(rootPath))
-                return Path.GetFullPath(relativePath);
-            return $"{Web.WebRootPath}\\{relativePath.Replace("/", "\\").TrimStart('\\')}";
+            return $"{Host.RootPath}\\{relativePath.Replace("/", "\\").TrimStart('\\')}";
         }
 
         /// <summary>

@@ -1,5 +1,5 @@
 ﻿using System;
-using KissU.Util.Helpers;
+using KissU.Util.AspNetCore.Helpers;
 using KissU.Util.Logs.Internal;
 
 namespace KissU.Util.Logs.Exceptionless
@@ -7,7 +7,7 @@ namespace KissU.Util.Logs.Exceptionless
     /// <summary>
     /// Exceptionless日志上下文
     /// </summary>
-    public class LogContext : Util.Logs.Core.LogContext
+    public class LogContext : AspNetCore.Logs.Core.LogContext
     {
         /// <summary>
         /// 创建日志上下文信息

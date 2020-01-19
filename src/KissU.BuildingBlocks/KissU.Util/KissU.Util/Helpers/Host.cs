@@ -15,16 +15,16 @@ using Microsoft.Extensions.Hosting;
 namespace KissU.Util.Helpers
 {
     /// <summary>
-    /// Web操作
+    /// Host操作
     /// </summary>
-    public static partial class Web
+    public static partial class Host
     {
         #region 静态构造方法
 
         /// <summary>
         /// 初始化Web操作
         /// </summary>
-        static Web()
+        static Host()
         {
             try
             {
@@ -47,26 +47,14 @@ namespace KissU.Util.Helpers
 
         #endregion
 
-        #region Client( Web客户端 )
+        #region RootPath(根路径)
 
         /// <summary>
-        /// Web客户端，用于发送Http请求
+        /// 根路径
         /// </summary>
-        public static Util.Webs.Clients.WebClient Client()
-        {
-            return new Util.Webs.Clients.WebClient();
-        }
+        public static string RootPath => Environment?.ContentRootPath;
 
-        /// <summary>
-        /// Web客户端，用于发送Http请求
-        /// </summary>
-        /// <typeparam name="TResult">返回结果类型</typeparam>
-        public static Util.Webs.Clients.WebClient<TResult> Client<TResult>() where TResult : class
-        {
-            return new Util.Webs.Clients.WebClient<TResult>();
-        }
-
-        #endregion
+        #endregion 
 
         #region UrlEncode(Url编码)
 

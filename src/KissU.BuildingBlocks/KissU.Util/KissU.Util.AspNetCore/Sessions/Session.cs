@@ -1,7 +1,8 @@
 ﻿using IdentityModel;
-using KissU.Util.Helpers;
+using KissU.Util.AspNetCore.Helpers;
+using KissU.Util.Sessions;
 
-namespace KissU.Util.Sessions
+namespace KissU.Util.AspNetCore.Sessions
 {
     /// <summary>
     /// 用户会话

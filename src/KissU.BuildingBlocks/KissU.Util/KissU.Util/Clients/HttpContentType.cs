@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace KissU.Util.Webs.Clients
+namespace KissU.Util.Clients
 {
     /// <summary>
     /// 内容类型
