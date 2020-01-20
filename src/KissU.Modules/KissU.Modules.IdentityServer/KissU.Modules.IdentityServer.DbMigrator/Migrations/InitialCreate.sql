@@ -14,7 +14,7 @@ IF SCHEMA_ID(N'ids') IS NULL EXEC(N'CREATE SCHEMA [ids];');
 GO
 
 CREATE TABLE [ids].[ApiResources] (
-    [Id] uniqueidentifier NOT NULL,
+    [Id] int NOT NULL IDENTITY,
     [Version] rowversion NULL,
     [Enabled] bit NOT NULL,
     [Name] nvarchar(200) NOT NULL,
@@ -84,7 +84,7 @@ CREATE TABLE [ids].[DeviceFlowCodes] (
 GO
 
 CREATE TABLE [ids].[IdentityResources] (
-    [Id] uniqueidentifier NOT NULL,
+    [Id] int NOT NULL IDENTITY,
     [Version] rowversion NULL,
     [Required] bit NOT NULL,
     [Emphasize] bit NOT NULL,
@@ -114,7 +114,7 @@ CREATE TABLE [ids].[PersistedGrants] (
 GO
 
 CREATE TABLE [ids].[ApiClaims] (
-    [ApiResourceId] uniqueidentifier NOT NULL,
+    [ApiResourceId] int NOT NULL,
     [Id] int NOT NULL IDENTITY,
     [Type] nvarchar(200) NULL,
     CONSTRAINT [PK_ApiClaims] PRIMARY KEY ([ApiResourceId], [Id]),
@@ -124,7 +124,7 @@ CREATE TABLE [ids].[ApiClaims] (
 GO
 
 CREATE TABLE [ids].[ApiProperties] (
-    [ApiResourceId] uniqueidentifier NOT NULL,
+    [ApiResourceId] int NOT NULL,
     [Id] int NOT NULL IDENTITY,
     [Key] nvarchar(250) NOT NULL,
     [Value] nvarchar(2000) NOT NULL,
@@ -135,8 +135,8 @@ CREATE TABLE [ids].[ApiProperties] (
 GO
 
 CREATE TABLE [ids].[ApiScopes] (
-    [Id] uniqueidentifier NOT NULL,
-    [ApiResourceId] uniqueidentifier NOT NULL,
+    [Id] int NOT NULL IDENTITY,
+    [ApiResourceId] int NOT NULL,
     [Name] nvarchar(200) NOT NULL,
     [DisplayName] nvarchar(200) NULL,
     [Description] nvarchar(1000) NULL,
@@ -150,8 +150,8 @@ CREATE TABLE [ids].[ApiScopes] (
 GO
 
 CREATE TABLE [ids].[ApiSecrets] (
-    [Id] uniqueidentifier NOT NULL,
-    [ApiResourceId] uniqueidentifier NOT NULL,
+    [Id] int NOT NULL IDENTITY,
+    [ApiResourceId] int NOT NULL,
     [Type] nvarchar(250) NOT NULL,
     [Value] nvarchar(4000) NOT NULL,
     [Description] nvarchar(1000) NULL,
@@ -258,7 +258,7 @@ CREATE TABLE [ids].[ClientSecrets] (
 GO
 
 CREATE TABLE [ids].[IdentityClaims] (
-    [IdentityResourceId] uniqueidentifier NOT NULL,
+    [IdentityResourceId] int NOT NULL,
     [Id] int NOT NULL IDENTITY,
     [Type] nvarchar(200) NOT NULL,
     CONSTRAINT [PK_IdentityClaims] PRIMARY KEY ([IdentityResourceId], [Id]),
@@ -268,7 +268,7 @@ CREATE TABLE [ids].[IdentityClaims] (
 GO
 
 CREATE TABLE [ids].[IdentityProperties] (
-    [IdentityResourceId] uniqueidentifier NOT NULL,
+    [IdentityResourceId] int NOT NULL,
     [Id] int NOT NULL IDENTITY,
     [Key] nvarchar(250) NOT NULL,
     [Value] nvarchar(2000) NOT NULL,
@@ -279,7 +279,7 @@ CREATE TABLE [ids].[IdentityProperties] (
 GO
 
 CREATE TABLE [ids].[ApiScopeClaims] (
-    [ApiScopeId] uniqueidentifier NOT NULL,
+    [ApiScopeId] int NOT NULL,
     [Id] int NOT NULL IDENTITY,
     [Type] nvarchar(200) NOT NULL,
     CONSTRAINT [PK_ApiScopeClaims] PRIMARY KEY ([ApiScopeId], [Id]),
@@ -337,7 +337,7 @@ CREATE INDEX [IX_PersistedGrants_SubjectId_ClientId_Type] ON [ids].[PersistedGra
 GO
 
 INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-VALUES (N'20200120060327_InitialCreate', N'3.1.0');
+VALUES (N'20200120065004_InitialCreate', N'3.1.0');
 
 GO
 

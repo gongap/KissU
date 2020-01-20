@@ -6,5 +6,6 @@ obj/
 output/
 *.user
 *.log
+Migrations/*.cs
 
 
