@@ -14,6 +14,7 @@ using KissU.Modules.IdentityServer.Domain.UnitOfWorks;
 using KissU.Util;
 using KissU.Util.Applications;
 using KissU.Util.Datas.Queries;
+using KissU.Util.Domains;
 using KissU.Util.Domains.Repositories;
 using KissU.Util.Exceptions;
 using KissU.Util.Maps;
@@ -58,14 +59,12 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         }
 
         /// <summary>
-        /// 创建
+        /// 创建后操作
         /// </summary>
-        /// <param name="request">创建参数</param>
-        public override async Task<string> CreateAsync(ApiResourceCreateRequest request)
+        protected override async Task CreateAfterAsync(ApiResource entity)
         {
-            string result = await base.CreateAsync(request);
+            await base.CreateAfterAsync(entity);
             await UnitOfWork.CommitAsync();
-            return result;
         }
 
         /// <summary>

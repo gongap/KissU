@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using KissU.Modules.IdentityServer.Application.Abstractions;
 using KissU.Modules.IdentityServer.Application.Dtos;
 using KissU.Modules.IdentityServer.Application.Dtos.Requests;
@@ -73,6 +74,25 @@ namespace KissU.Modules.IdentityServer.Application.Implements
             {
                 ThrowDuplicateNameException(entity.Name);
             }
+        }
+
+        /// <summary>
+        /// 创建后操作
+        /// </summary>
+        protected override async Task CreateAfterAsync(IdentityResource entity)
+        {
+            await base.CreateAfterAsync(entity);
+            await UnitOfWork.CommitAsync();
+        }
+
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="request">修改参数</param>
+        public override async Task UpdateAsync(IdentityResourceDto request)
+        {
+            await base.UpdateAsync(request);
+            await UnitOfWork.CommitAsync();
         }
 
         /// <summary>

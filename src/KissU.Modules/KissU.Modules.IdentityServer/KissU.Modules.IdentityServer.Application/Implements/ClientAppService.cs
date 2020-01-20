@@ -156,6 +156,17 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// </summary>
         protected override async Task CreateAfterAsync(Client entity)
         {
+            await base.CreateAfterAsync(entity);
+            await UnitOfWork.CommitAsync();
+        }
+
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="request">修改参数</param>
+        public override async Task UpdateAsync(ClientDto request)
+        {
+            await base.UpdateAsync(request);
             await UnitOfWork.CommitAsync();
         }
 
