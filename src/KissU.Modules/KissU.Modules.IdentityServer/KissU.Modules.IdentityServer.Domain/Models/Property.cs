@@ -6,7 +6,7 @@ namespace KissU.Modules.IdentityServer.Domain.Models
     /// <summary>
     /// 属性
     /// </summary>
-    public class Property : ValueObjectBase<Property>
+    public abstract class Property : ValueObjectBase<Property>
     {
         /// <summary>
         /// 键

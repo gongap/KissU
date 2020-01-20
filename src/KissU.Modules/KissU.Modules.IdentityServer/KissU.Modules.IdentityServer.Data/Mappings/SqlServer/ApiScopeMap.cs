@@ -15,8 +15,7 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         /// </summary>
         protected override void MapTable(EntityTypeBuilder<ApiScope> builder)
         {
-            builder.ToTable(IdentityServerDataConstants.DbTablePrefix + "ApiScopes",
-                IdentityServerDataConstants.DbSchema);
+            builder.ToTable(DbConstants.DbTablePrefix + "ApiScopes", DbConstants.DbSchema);
         }
 
         /// <summary>
@@ -25,11 +24,9 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         protected override void MapProperties(EntityTypeBuilder<ApiScope> builder)
         {
             builder.HasKey(x => x.Id);
-
             builder.Property(x => x.Name).HasMaxLength(200).IsRequired();
             builder.Property(x => x.DisplayName).HasMaxLength(200);
             builder.Property(x => x.Description).HasMaxLength(1000);
-
             builder.HasIndex(x => x.Name).IsUnique();
         }
 
@@ -40,8 +37,8 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         {
             builder.OwnsMany(t => t.UserClaims, p =>
             {
-                p.ToTable(IdentityServerDataConstants.DbTablePrefix + "ApiScopeClaims", IdentityServerDataConstants.DbSchema);
-                p.WithOwner(x => x.Owner).HasForeignKey($"{nameof(ApiScope)}Id");
+                p.WithOwner(x => x.ApiScope);
+                p.ToTable(DbConstants.DbTablePrefix + "ApiScopeClaims", DbConstants.DbSchema);
                 p.Property(x => x.Type).HasMaxLength(200).IsRequired();
             });
         }

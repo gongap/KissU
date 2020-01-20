@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using IdentityServer4;
 using KissU.Modules.IdentityServer.Domain.Enums;
 using KissU.Util.Domains;
 
@@ -23,6 +24,7 @@ namespace KissU.Modules.IdentityServer.Domain.Models
             RedirectUris ??= new List<ClientRedirectUri>();
             PostLogoutRedirectUris ??= new List<ClientPostLogoutRedirectUri>();
             IdentityProviderRestrictions ??= new List<ClientIdPRestriction>();
+            Properties ??= new List<ClientProperty>();
         }
 
         /// <summary>
@@ -121,7 +123,7 @@ namespace KissU.Modules.IdentityServer.Domain.Models
         /// <summary>
         /// 应用程序属性
         /// </summary>
-        public List<Property> Properties { get; set; }
+        public List<ClientProperty> Properties { get; set; }
 
         #endregion
 

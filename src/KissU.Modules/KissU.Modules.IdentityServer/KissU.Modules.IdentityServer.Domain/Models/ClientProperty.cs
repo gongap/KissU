@@ -4,20 +4,13 @@ using KissU.Util.Domains;
 namespace KissU.Modules.IdentityServer.Domain.Models
 {
     /// <summary>
-    /// 外部IdP
+    /// 应用程序属性
     /// </summary>
-    public class ClientIdPRestriction : ValueObjectBase<ClientIdPRestriction>
+    public class ClientProperty : Property
     {
         /// <summary>
         /// 应用程序
         /// </summary>
         public Client Client { get; set; }
-
-        /// <summary>
-        /// 提供程序
-        /// </summary>
-        [Required]
-        [StringLength(200)]
-        public string Provider { get; set; }
     }
 }

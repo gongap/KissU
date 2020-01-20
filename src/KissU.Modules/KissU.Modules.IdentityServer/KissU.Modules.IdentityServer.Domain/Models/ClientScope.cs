@@ -9,6 +9,11 @@ namespace KissU.Modules.IdentityServer.Domain.Models
     public class ClientScope : ValueObjectBase<ClientScope>
     {
         /// <summary>
+        /// 应用程序
+        /// </summary>
+        public Client Client { get; set; }
+
+        /// <summary>
         /// 范围
         /// </summary>
         [Required]

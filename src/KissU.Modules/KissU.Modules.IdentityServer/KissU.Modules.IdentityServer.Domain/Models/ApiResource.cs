@@ -8,17 +8,17 @@ namespace KissU.Modules.IdentityServer.Domain.Models
     /// <summary>
     /// Api资源
     /// </summary>
-    public class ApiResource : AggregateRoot<ApiResource>
+    public class ApiResource : AggregateRoot<ApiResource, int>
     {
         /// <summary>
         /// 初始Api资源
         /// </summary>
-        public ApiResource() : base(Guid.Empty)
+        public ApiResource() : base(default)
         {
             ApiSecrets = new List<ApiSecret>();
             Scopes = new List<ApiScope>();
-            UserClaims = new List<UserClaim<ApiResource>>();
-            Properties = new List<Property>();
+            UserClaims = new List<ApiResourceClaim>();
+            Properties = new List<ApiResourceProperty>();
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace KissU.Modules.IdentityServer.Domain.Models
         /// <summary>
         /// 应包含在身份令牌中的关联用户声明类型的列表。
         /// </summary>
-        public List<UserClaim<ApiResource>> UserClaims { get; set; }
+        public List<ApiResourceClaim> UserClaims { get; set; }
 
         /// <summary>
         /// 指示此资源是否已启用且可以请求。默认为true。
@@ -63,6 +63,6 @@ namespace KissU.Modules.IdentityServer.Domain.Models
         /// <summary>
         /// 属性
         /// </summary>
-        public List<Property> Properties { get; set; }
+        public List<ApiResourceProperty> Properties { get; set; }
     }
 }

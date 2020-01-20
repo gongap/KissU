@@ -4,14 +4,13 @@ using KissU.Util.Domains;
 namespace KissU.Modules.IdentityServer.Domain.Models
 {
     /// <summary>
-    /// 用户声明
+    /// Api资源属性
     /// </summary>
-    public abstract class UserClaim : ValueObjectBase<UserClaim>
+    public class ApiResourceProperty : Property
     {
         /// <summary>
-        /// 声明类型
+        /// Api资源
         /// </summary>
-        [StringLength(200)]
-        public string Type { get; set; }
+        public ApiResource ApiResource { get; set; }
     }
 }

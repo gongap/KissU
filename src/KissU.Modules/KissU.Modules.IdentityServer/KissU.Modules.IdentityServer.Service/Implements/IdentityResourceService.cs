@@ -30,7 +30,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         /// 通过编号获取
         /// </summary>
         /// <param name="id">实体编号</param>
-        public async Task<IdentityResourceDto> GetByIdAsync(Guid id)
+        public async Task<IdentityResourceDto> GetByIdAsync(int id)
         {
             return await _appService.GetByIdAsync(id);
         }

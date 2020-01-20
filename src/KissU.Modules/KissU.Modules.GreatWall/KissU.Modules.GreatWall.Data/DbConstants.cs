@@ -1,9 +1,9 @@
-﻿namespace KissU.Modules.IdentityServer.Data
+﻿namespace KissU.Modules.GreatWall.Data
 {
     /// <summary>
     /// 常量
     /// </summary>
-    public static class IdentityServerDataConstants
+    public static class DbConstants
     {
         /// <summary>
         /// 数据库表前缀
@@ -13,7 +13,7 @@
         /// <summary>
         /// 数据库架构
         /// </summary>
-        public const string DbSchema = "ids";
+        public const string DbSchema = "iam";
 
         /// <summary>
         /// 连接字符串配置节点
@@ -23,6 +23,6 @@
         /// <summary>
         /// 连接字符串名称
         /// </summary>
-        public const string ConnectionStringName = "IdentityServerConnection";
+        public const string ConnectionStringName = "GreatWallConnection";
     }
 }

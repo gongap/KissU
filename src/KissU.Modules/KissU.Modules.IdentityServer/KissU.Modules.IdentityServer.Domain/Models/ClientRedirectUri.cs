@@ -9,6 +9,11 @@ namespace KissU.Modules.IdentityServer.Domain.Models
     public class ClientRedirectUri : ValueObjectBase<ClientRedirectUri>
     {
         /// <summary>
+        /// 应用程序
+        /// </summary>
+        public Client Client { get; set; }
+
+        /// <summary>
         /// 令牌或授权码的URI
         /// </summary>
         [Required]

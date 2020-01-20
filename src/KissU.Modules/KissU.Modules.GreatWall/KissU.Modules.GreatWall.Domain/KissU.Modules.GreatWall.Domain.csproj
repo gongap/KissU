@@ -34,4 +34,16 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Models/User.*.cs">
+      <DependentUpon>User.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Models/Role.*.cs">
+      <DependentUpon>Role.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Models/Module.*.cs">
+      <DependentUpon>Module.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>

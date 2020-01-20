@@ -22,6 +22,11 @@ namespace KissU.Util.Datas.Tests.Integration.Commons
         public string UserId { get; }
 
         /// <summary>
+        /// 用户名称
+        /// </summary>
+        public string UserName { get; }
+
+        /// <summary>
         /// 是否认证
         /// </summary>
         public bool IsAuthenticated => throw new NotImplementedException();

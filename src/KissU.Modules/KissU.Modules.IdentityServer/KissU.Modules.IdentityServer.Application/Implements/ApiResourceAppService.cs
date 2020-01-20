@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using IdentityServer4;
 using KissU.Modules.IdentityServer.Application.Abstractions;
 using KissU.Modules.IdentityServer.Application.Dtos;
 using KissU.Modules.IdentityServer.Application.Dtos.Requests;
@@ -22,7 +23,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
     /// <summary>
     /// 资源服务
     /// </summary>
-    public class ApiResourceAppService : CrudServiceBase<ApiResource, ApiResourceDto, ApiResourceDto, ApiResourceCreateRequest, ApiResourceDto, ApiResourceQuery, Guid>, IApiResourceAppService
+    public class ApiResourceAppService : CrudServiceBase<ApiResource, ApiResourceDto, ApiResourceDto, ApiResourceCreateRequest, ApiResourceDto, ApiResourceQuery, int>, IApiResourceAppService
     {
         /// <summary>
         /// 初始化资源服务
@@ -83,8 +84,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// <param name="param">应用程序查询实体</param>
         protected override IQueryBase<ApiResource> CreateQuery(ApiResourceQuery param)
         {
-            IQuery<ApiResource, Guid> query = new Query<ApiResource>(param).Or(t => t.Name.Contains(param.Keyword),
-                t => t.DisplayName.Contains(param.Keyword));
+            var query = new Query<ApiResource>(param).Or(t => t.Name.Contains(param.Keyword), t => t.DisplayName.Contains(param.Keyword));
 
             if (param.Enabled.HasValue)
             {
@@ -138,7 +138,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// </summary>
         /// <param name="apiResourceId">资源编号</param>
         /// <returns></returns>
-        public async Task<List<ApiScopeDto>> GetApiScopesAsync(Guid apiResourceId)
+        public async Task<List<ApiScopeDto>> GetApiScopesAsync(int apiResourceId)
         {
             List<ApiScope> entities = await ApiResourceRepository.GetApiResourceScopesAsync(apiResourceId);
             return entities?.MapToList<ApiScopeDto>();
@@ -149,7 +149,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// </summary>
         /// <param name="scopeId">许可范围编号</param>
         /// <returns></returns>
-        public async Task<ApiScopeDto> GetApiScopeAsync(Guid scopeId)
+        public async Task<ApiScopeDto> GetApiScopeAsync(int scopeId)
         {
             ApiScope entity = await ApiResourceRepository.GetApiResourceScopeAsync(scopeId);
             return entity?.MapTo<ApiScopeDto>();
@@ -160,12 +160,11 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// </summary>
         /// <param name="request">许可范围</param>
         /// <returns></returns>
-        public async Task<Guid> CreateApiScopeAsync(ApiScopeCreateRequest request)
+        public async Task<int> CreateApiScopeAsync(ApiScopeCreateRequest request)
         {
             ApiResource apiResource = await ApiResourceRepository.FindAsync(request.ApiResourceId);
             apiResource.CheckNull(nameof(apiResource));
             ApiScope entity = request.MapTo<ApiScope>();
-            entity.Init();
             entity.ApiResource = apiResource;
             await ApiResourceRepository.CreateApiResourceScopeAsync(entity);
             await UnitOfWork.CommitAsync();
@@ -192,7 +191,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// </summary>
         /// <param name="scopeId">许可范围编号</param>
         /// <returns></returns>
-        public async Task DeleteApiScopeAsync(Guid scopeId)
+        public async Task DeleteApiScopeAsync(int scopeId)
         {
             await ApiResourceRepository.DeleteApiResourceScopeAsync(scopeId);
             await UnitOfWork.CommitAsync();
@@ -228,7 +227,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// </summary>
         /// <param name="apiResourceId">资源编号</param>
         /// <returns></returns>
-        public async Task<List<ApiSecretDto>> GetApiSecretsAsync(Guid apiResourceId)
+        public async Task<List<ApiSecretDto>> GetApiSecretsAsync(int apiResourceId)
         {
             List<ApiSecret> entities = await ApiResourceRepository.GetApiResourceSecretsAsync(apiResourceId);
             return entities?.MapToList<ApiSecretDto>();
@@ -239,7 +238,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// </summary>
         /// <param name="secretId">密钥编号</param>
         /// <returns></returns>
-        public async Task<ApiSecretDto> GetApiSecretAsync(Guid secretId)
+        public async Task<ApiSecretDto> GetApiSecretAsync(int secretId)
         {
             ApiSecret entity = await ApiResourceRepository.GetApiResourceSecretAsync(secretId);
             return entity?.MapTo<ApiSecretDto>();
@@ -250,13 +249,12 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// </summary>
         /// <param name="request">密钥</param>
         /// <returns></returns>
-        public async Task<Guid> CreateApiSecretAsync(ApiSecretCreateRequest request)
+        public async Task<int> CreateApiSecretAsync(ApiSecretCreateRequest request)
         {
             ApiResource apiResource = await ApiResourceRepository.FindAsync(request.ApiResourceId);
             apiResource.CheckNull(nameof(apiResource));
             HashApiSharedSecret(request);
             ApiSecret entity = request.MapTo<ApiSecret>();
-            entity.Init();
             entity.ApiResource = apiResource;
             await ApiResourceRepository.CreateApiResourceSecretAsync(entity);
             await UnitOfWork.CommitAsync();
@@ -268,7 +266,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// </summary>
         /// <param name="secretId">密钥编号</param>
         /// <returns></returns>
-        public async Task DeleteApiSecretAsync(Guid secretId)
+        public async Task DeleteApiSecretAsync(int secretId)
         {
             await ApiResourceRepository.DeleteApiResourceSecretAsync(secretId);
             await UnitOfWork.CommitAsync();

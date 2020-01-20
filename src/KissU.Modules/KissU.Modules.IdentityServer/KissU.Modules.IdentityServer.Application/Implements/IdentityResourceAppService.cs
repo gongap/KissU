@@ -17,9 +17,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
     /// <summary>
     /// 应用程序服务
     /// </summary>
-    public class IdentityResourceAppService :
-        CrudServiceBase<IdentityResource, IdentityResourceDto, IdentityResourceDto, IdentityResourceCreateRequest,
-            IdentityResourceDto, IdentityResourceQuery, Guid>, IIdentityResourceAppService
+    public class IdentityResourceAppService : CrudServiceBase<IdentityResource, IdentityResourceDto, IdentityResourceDto, IdentityResourceCreateRequest, IdentityResourceDto, IdentityResourceQuery, int>, IIdentityResourceAppService
     {
         /// <summary>
         /// 初始化应用程序服务
@@ -50,8 +48,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// <param name="param">应用程序查询实体</param>
         protected override IQueryBase<IdentityResource> CreateQuery(IdentityResourceQuery param)
         {
-            IQuery<IdentityResource, Guid> query = new Query<IdentityResource>(param).Or(t => t.Name.Contains(param.Keyword),
-                t => t.DisplayName.Contains(param.Keyword));
+            var query = new Query<IdentityResource>(param).Or(t => t.Name.Contains(param.Keyword), t => t.DisplayName.Contains(param.Keyword));
 
             if (param.Enabled.HasValue)
             {

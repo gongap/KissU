@@ -7,12 +7,12 @@ namespace KissU.Modules.IdentityServer.Domain.Models
     /// <summary>
     /// Api密钥
     /// </summary>
-    public class ApiSecret : EntityBase<ApiSecret>
+    public class ApiSecret : EntityBase<ApiSecret, int>
     {
         /// <summary>
         /// 初始化Api密钥
         /// </summary>
-        public ApiSecret() : base(Guid.Empty)
+        public ApiSecret() : base(default)
         {
         }
 

@@ -25,6 +25,11 @@ namespace KissU.Modules.IdentityServer.Domain.Models
         }
 
         /// <summary>
+        /// 应用程序
+        /// </summary>
+        public Client Client { get; set; }
+
+        /// <summary>
         /// 授权类型
         /// </summary>
         [Required]

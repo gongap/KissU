@@ -462,7 +462,8 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                 columns: table => new
                 {
                     IdentityResourceId = table.Column<Guid>(nullable: false),
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Key = table.Column<string>(maxLength: 250, nullable: false),
                     Value = table.Column<string>(maxLength: 2000, nullable: false)
                 },

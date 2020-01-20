@@ -15,7 +15,7 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         /// </summary>
         protected override void MapTable(EntityTypeBuilder<IdentityResource> builder)
         {
-            builder.ToTable(IdentityServerDataConstants.DbTablePrefix + "IdentityResources", IdentityServerDataConstants.DbSchema);
+            builder.ToTable(DbConstants.DbTablePrefix + "IdentityResources", DbConstants.DbSchema);
         }
 
         /// <summary>
@@ -24,11 +24,9 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         protected override void MapProperties(EntityTypeBuilder<IdentityResource> builder)
         {
             builder.HasKey(x => x.Id);
-
             builder.Property(x => x.Name).HasMaxLength(200).IsRequired();
             builder.Property(x => x.DisplayName).HasMaxLength(200);
             builder.Property(x => x.Description).HasMaxLength(1000);
-
             builder.HasIndex(x => x.Name).IsUnique();
         }
 
@@ -39,14 +37,14 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         {
             builder.OwnsMany(t => t.UserClaims, p =>
             {
-                p.ToTable(IdentityServerDataConstants.DbTablePrefix + "IdentityClaims", IdentityServerDataConstants.DbSchema);
-                p.WithOwner(x => x.Owner).HasForeignKey($"{nameof(IdentityResource)}Id");
+                p.WithOwner(x => x.IdentityResource);
+                p.ToTable(DbConstants.DbTablePrefix + "IdentityClaims", DbConstants.DbSchema);
                 p.Property(x => x.Type).HasMaxLength(200).IsRequired();
             });
-
             builder.OwnsMany(t => t.Properties, p =>
             {
-                p.ToTable(IdentityServerDataConstants.DbTablePrefix + "IdentityProperties", IdentityServerDataConstants.DbSchema);
+                p.WithOwner(x => x.IdentityResource);
+                p.ToTable(DbConstants.DbTablePrefix + "IdentityProperties", DbConstants.DbSchema);
                 p.Property(x => x.Key).HasMaxLength(250).IsRequired();
                 p.Property(x => x.Value).HasMaxLength(2000).IsRequired();
             });

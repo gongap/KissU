@@ -10,7 +10,7 @@ namespace KissU.Modules.IdentityServer.Domain.Repositories
     /// <summary>
     /// API资源仓储
     /// </summary>
-    public interface IApiResourceRepository : IRepository<ApiResource>
+    public interface IApiResourceRepository : IRepository<ApiResource, int>
     {
         #region Api许可范围
 
@@ -19,14 +19,14 @@ namespace KissU.Modules.IdentityServer.Domain.Repositories
         /// </summary>
         /// <param name="apiResourceId">Api资源编号</param>
         /// <returns></returns>
-        Task<List<ApiScope>> GetApiResourceScopesAsync(Guid apiResourceId);
+        Task<List<ApiScope>> GetApiResourceScopesAsync(int apiResourceId);
 
         /// <summary>
         /// 获取Api许可范围
         /// </summary>
         /// <param name="id">Api许可范围编号</param>
         /// <returns></returns>
-        Task<ApiScope> GetApiResourceScopeAsync(Guid id);
+        Task<ApiScope> GetApiResourceScopeAsync(int id);
 
         /// <summary>
         /// 创建Api许可范围
@@ -47,7 +47,7 @@ namespace KissU.Modules.IdentityServer.Domain.Repositories
         /// </summary>
         /// <param name="id">Api许可范围编号</param>
         /// <returns></returns>
-        Task DeleteApiResourceScopeAsync(Guid id);
+        Task DeleteApiResourceScopeAsync(int id);
 
         #endregion
 
@@ -58,14 +58,14 @@ namespace KissU.Modules.IdentityServer.Domain.Repositories
         /// </summary>
         /// <param name="apiResourceId">Api资源编号</param>
         /// <returns></returns>
-        Task<List<ApiSecret>> GetApiResourceSecretsAsync(Guid apiResourceId);
+        Task<List<ApiSecret>> GetApiResourceSecretsAsync(int apiResourceId);
 
         /// <summary>
         /// 获取Api密钥
         /// </summary>
         /// <param name="id">Api密钥编号</param>
         /// <returns></returns>
-        Task<ApiSecret> GetApiResourceSecretAsync(Guid id);
+        Task<ApiSecret> GetApiResourceSecretAsync(int id);
 
         /// <summary>
         /// 创建Api密钥
@@ -79,7 +79,7 @@ namespace KissU.Modules.IdentityServer.Domain.Repositories
         /// </summary>
         /// <param name="id">Api密钥编号</param>
         /// <returns></returns>
-        Task DeleteApiResourceSecretAsync(Guid id);
+        Task DeleteApiResourceSecretAsync(int id);
 
         #endregion
     }

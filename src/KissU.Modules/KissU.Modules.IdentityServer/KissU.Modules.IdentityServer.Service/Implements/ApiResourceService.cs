@@ -40,7 +40,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         /// 通过编号获取
         /// </summary>
         /// <param name="id">实体编号</param>
-        public Task<ApiResourceDto> GetByIdAsync(Guid id)
+        public Task<ApiResourceDto> GetByIdAsync(int id)
         {
             return _appService.GetByIdAsync(id);
         }
@@ -98,7 +98,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         /// <returns></returns>
         public async Task<List<ApiScopeDto>> GetScopesAsync(string id)
         {
-            return await _appService.GetApiScopesAsync(id.ToGuid());
+            return await _appService.GetApiScopesAsync(id.ToInt());
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         /// <returns></returns>
         public async Task<ApiScopeDto> GetScopeAsync(string scopeId)
         {
-            return await _appService.GetApiScopeAsync(scopeId.ToGuid());
+            return await _appService.GetApiScopeAsync(scopeId.ToInt());
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         /// </summary>
         /// <param name="request">许可范围</param>
         /// <returns></returns>
-        public async Task<Guid> CreateScopeAsync(ApiScopeCreateRequest request)
+        public async Task<int> CreateScopeAsync(ApiScopeCreateRequest request)
         {
             return await _appService.CreateApiScopeAsync(request);
         }
@@ -138,7 +138,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         /// <returns></returns>
         public async Task DeleteScopeAsync(string scopeId)
         {
-            await _appService.DeleteApiScopeAsync(scopeId.ToGuid());
+            await _appService.DeleteApiScopeAsync(scopeId.ToInt());
         }
 
         #endregion
@@ -152,7 +152,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         /// <returns></returns>
         public async Task<List<ApiSecretDto>> GetSecretsAsync(string id)
         {
-            return await _appService.GetApiSecretsAsync(id.ToGuid());
+            return await _appService.GetApiSecretsAsync(id.ToInt());
         }
 
         /// <summary>
@@ -162,7 +162,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         /// <returns></returns>
         public async Task<ApiSecretDto> GetSecretAsync(string secretId)
         {
-            return await _appService.GetApiSecretAsync(secretId.ToGuid());
+            return await _appService.GetApiSecretAsync(secretId.ToInt());
         }
 
         /// <summary>
@@ -170,7 +170,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         /// </summary>
         /// <param name="request">密钥</param>
         /// <returns></returns>
-        public async Task<Guid> CreateSecretAsync(ApiSecretCreateRequest request)
+        public async Task<int> CreateSecretAsync(ApiSecretCreateRequest request)
         {
             return await _appService.CreateApiSecretAsync(request);
         }
@@ -182,7 +182,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         /// <returns></returns>
         public async Task DeleteSecretAsync(string secretId)
         {
-            await _appService.DeleteApiSecretAsync(secretId.ToGuid());
+            await _appService.DeleteApiSecretAsync(secretId.ToInt());
         }
 
         #endregion

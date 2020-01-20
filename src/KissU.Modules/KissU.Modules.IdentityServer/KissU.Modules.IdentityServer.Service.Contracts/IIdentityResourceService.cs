@@ -23,7 +23,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// </summary>
         /// <param name="id">实体编号</param>
         [HttpGet(true)]
-        Task<IdentityResourceDto> GetByIdAsync(Guid id);
+        Task<IdentityResourceDto> GetByIdAsync(int id);
 
         /// <summary>
         /// 通过编号列表获取

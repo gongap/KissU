@@ -16,7 +16,7 @@ namespace KissU.Modules.IdentityServer.Application.Dtos.Requests
 
         [Required]
         [Display(Name = "Api资源编号")]
-        public Guid ApiResourceId { get; set; }
+        public int ApiResourceId { get; set; }
 
         /// <summary>
         /// 密钥值

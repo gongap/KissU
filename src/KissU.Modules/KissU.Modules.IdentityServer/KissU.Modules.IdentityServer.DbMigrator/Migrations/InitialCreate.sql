@@ -269,7 +269,7 @@ GO
 
 CREATE TABLE [ids].[IdentityProperties] (
     [IdentityResourceId] uniqueidentifier NOT NULL,
-    [Id] int NOT NULL,
+    [Id] int NOT NULL IDENTITY,
     [Key] nvarchar(250) NOT NULL,
     [Value] nvarchar(2000) NOT NULL,
     CONSTRAINT [PK_IdentityProperties] PRIMARY KEY ([IdentityResourceId], [Id]),
@@ -337,7 +337,7 @@ CREATE INDEX [IX_PersistedGrants_SubjectId_ClientId_Type] ON [ids].[PersistedGra
 GO
 
 INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-VALUES (N'20200115054609_InitialCreate', N'3.1.0');
+VALUES (N'20200120060327_InitialCreate', N'3.1.0');
 
 GO
 

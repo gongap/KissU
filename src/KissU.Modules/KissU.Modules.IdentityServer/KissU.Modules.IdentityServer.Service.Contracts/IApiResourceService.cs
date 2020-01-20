@@ -25,7 +25,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// <param name="id">实体编号</param>
         [ServiceRoute("{id}")]
         [HttpGet(true)]
-        Task<ApiResourceDto> GetByIdAsync(Guid id);
+        Task<ApiResourceDto> GetByIdAsync(int id);
 
         /// <summary>
         /// 获取全部
@@ -96,7 +96,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// <param name="request">创建许可范围参数</param>
         /// <returns></returns>
         [HttpPost(true)]
-        Task<Guid> CreateScopeAsync([Valid] ApiScopeCreateRequest request);
+        Task<int> CreateScopeAsync([Valid] ApiScopeCreateRequest request);
 
         /// <summary>
         /// 更新许可范围
@@ -143,7 +143,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// <param name="request">创建密钥参数</param>
         /// <returns></returns>
         [HttpPost(true)]
-        Task<Guid> CreateSecretAsync([Valid] ApiSecretCreateRequest request);
+        Task<int> CreateSecretAsync([Valid] ApiSecretCreateRequest request);
 
         /// <summary>
         /// 删除密钥

@@ -1,4 +1,5 @@
-﻿using KissU.Util.Helpers;
+﻿using KissU.Modules.GreatWall.Data;
+using KissU.Util.Helpers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
@@ -20,7 +21,7 @@ namespace KissU.Modules.GreatWall.DbMigrator
             var configuration = DbMigrationHelpers.BuildConfiguration();
             var builder =
                 new DbContextOptionsBuilder<DesignTimeDbContext>().UseSqlServer(
-                    configuration.GetConnectionString("DefaultConnection"));
+                    configuration.GetConnectionString(DbConstants.ConnectionStringName));
             return new DesignTimeDbContext(builder.Options);
         }
     }

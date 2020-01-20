@@ -1,5 +1,4 @@
-﻿using KissU.Modules.IdentityServer.Domain;
-using KissU.Modules.IdentityServer.Domain.Models;
+﻿using KissU.Modules.IdentityServer.Domain.Models;
 using KissU.Modules.IdentityServer.Domain.Repositories;
 using KissU.Modules.IdentityServer.Domain.UnitOfWorks;
 using KissU.Util.Datas.Ef.Core;
@@ -9,7 +8,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
     /// <summary>
     /// 身份资源仓储
     /// </summary>
-    public class IdentityResourceRepository : RepositoryBase<IdentityResource>, IIdentityResourceRepository
+    public class IdentityResourceRepository : RepositoryBase<IdentityResource, int>, IIdentityResourceRepository
     {
         /// <summary>
         /// 初始化身份资源仓储

@@ -15,7 +15,7 @@ namespace KissU.Modules.GreatWall.Data.Mappings.SqlServer
         /// </summary>
         protected override void MapTable(EntityTypeBuilder<User> builder)
         {
-            builder.ToTable(GreatWallDataConstants.DbTablePrefix + "Users", GreatWallDataConstants.DbSchema);
+            builder.ToTable(DbConstants.DbTablePrefix + "Users", DbConstants.DbSchema);
         }
 
         /// <summary>

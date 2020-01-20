@@ -65,5 +65,7 @@ namespace KissU.Util.Domains
         {
             return Util.Helpers.Convert.To<TValueObject>(MemberwiseClone());
         }
+
+
     }
 }

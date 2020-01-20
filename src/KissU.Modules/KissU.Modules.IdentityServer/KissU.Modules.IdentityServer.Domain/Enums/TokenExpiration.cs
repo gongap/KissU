@@ -1,18 +1,18 @@
 ﻿namespace KissU.Modules.IdentityServer.Domain.Enums
 {
     /// <summary>
-    /// Token expiration types.
+    /// 令牌到期类型
     /// </summary>
     public enum TokenExpiration
     {
         /// <summary>
-        /// Sliding token expiration
+        /// 滑动令牌到期
         /// </summary>
         Sliding = 0,
 
         /// <summary>
-        /// Absolute token expiration
+        /// 绝对令牌到期
         /// </summary>
-        Absolute = 1
+        Absolute = 1,
     }
 }

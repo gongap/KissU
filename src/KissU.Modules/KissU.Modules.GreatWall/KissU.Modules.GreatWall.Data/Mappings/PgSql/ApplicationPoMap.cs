@@ -15,7 +15,7 @@ namespace KissU.Modules.GreatWall.Data.Mappings.PgSql
         /// </summary>
         protected override void MapTable(EntityTypeBuilder<ApplicationPo> builder)
         {
-            builder.ToTable(GreatWallDataConstants.DbTablePrefix + "Applications", GreatWallDataConstants.DbSchema);
+            builder.ToTable(DbConstants.DbTablePrefix + "Applications", DbConstants.DbSchema);
         }
 
         /// <summary>

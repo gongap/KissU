@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using KissU.Modules.IdentityServer.Data;
 using KissU.Modules.IdentityServer.Domain;
 using KissU.Modules.IdentityServer.Domain.UnitOfWorks;
 using KissU.Util.Datas.SqlServer;
@@ -17,7 +18,7 @@ namespace KissU.Modules.IdentityServer.DbMigrator
             var configuration = DbMigrationHelpers.BuildConfiguration();
             var services = new ServiceCollection();
             services.AddUnitOfWork<IIdentityServerUnitOfWork, DesignTimeDbContext>(
-                configuration.GetConnectionString("DefaultConnection"));
+                configuration.GetConnectionString(DbConstants.ConnectionStringName));
             var containerBuilder = serviceProviderFactory.CreateBuilder(services);
             var serviceProvider = serviceProviderFactory.CreateServiceProvider(containerBuilder);
             await DbMigrationHelpers.MigrateAsync<DesignTimeDbContext>(serviceProvider);

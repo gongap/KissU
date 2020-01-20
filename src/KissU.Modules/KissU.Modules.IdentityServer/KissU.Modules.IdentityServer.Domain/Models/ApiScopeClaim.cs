@@ -4,14 +4,13 @@ using KissU.Util.Domains;
 namespace KissU.Modules.IdentityServer.Domain.Models
 {
     /// <summary>
-    /// 用户声明
+    /// Api许可范围用户声明
     /// </summary>
-    public abstract class UserClaim : ValueObjectBase<UserClaim>
+    public class ApiScopeClaim : UserClaim
     {
         /// <summary>
-        /// 声明类型
+        /// Api许可范围
         /// </summary>
-        [StringLength(200)]
-        public string Type { get; set; }
+        public ApiScope ApiScope { get; set; }
     }
 }

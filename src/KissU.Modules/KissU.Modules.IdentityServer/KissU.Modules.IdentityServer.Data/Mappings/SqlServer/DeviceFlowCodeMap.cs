@@ -15,15 +15,12 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         /// </summary>
         protected override void MapTable(EntityTypeBuilder<DeviceFlowCode> builder)
         {
-            builder.ToTable(IdentityServerDataConstants.DbTablePrefix + "DeviceFlowCodes",
-                IdentityServerDataConstants.DbSchema);
+            builder.ToTable(DbConstants.DbTablePrefix + "DeviceFlowCodes", DbConstants.DbSchema);
         }
 
-        /// <summary>
-        /// 映射属性
-        /// </summary>
         protected override void MapProperties(EntityTypeBuilder<DeviceFlowCode> builder)
         {
+            builder.HasKey(x => new { x.UserCode });
             builder.Property(x => x.DeviceCode).HasMaxLength(200).IsRequired();
             builder.Property(x => x.UserCode).HasMaxLength(200).IsRequired();
             builder.Property(x => x.SubjectId).HasMaxLength(200);
@@ -33,9 +30,6 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
             // 50000 chosen to be explicit to allow enough size to avoid truncation, yet stay beneath the MySql row size limit of ~65K
             // apparently anything over 4K converts to nvarchar(max) on SqlServer
             builder.Property(x => x.Data).HasMaxLength(50000).IsRequired();
-
-            builder.HasKey(x => new {x.UserCode});
-
             builder.HasIndex(x => x.DeviceCode).IsUnique();
             builder.HasIndex(x => x.Expiration);
         }

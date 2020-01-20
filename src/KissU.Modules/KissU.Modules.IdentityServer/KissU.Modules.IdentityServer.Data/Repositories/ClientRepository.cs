@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using KissU.Modules.IdentityServer.Domain;
 using KissU.Modules.IdentityServer.Domain.Models;
 using KissU.Modules.IdentityServer.Domain.Repositories;
 using KissU.Modules.IdentityServer.Domain.UnitOfWorks;
@@ -61,7 +60,6 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         {
             var queryable = from clientClaim in UnitOfWork.Set<ClientClaim>()
                 join client in Set on clientClaim.Client.Id equals client.Id
-                where clientClaim.Id == id
                 select clientClaim;
             return await queryable.Include(x => x.Client).SingleAsync();
         }

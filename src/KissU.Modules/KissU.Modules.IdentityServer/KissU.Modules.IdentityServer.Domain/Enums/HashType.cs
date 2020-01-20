@@ -1,9 +1,8 @@
-﻿// <copyright file="HashType.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-namespace KissU.Modules.IdentityServer.Domain.Enums
+﻿namespace KissU.Modules.IdentityServer.Domain.Enums
 {
+    /// <summary>
+    /// 哈希类型
+    /// </summary>
     public enum HashType
     {
         /// <summary>
@@ -14,6 +13,6 @@ namespace KissU.Modules.IdentityServer.Domain.Enums
         /// <summary>
         /// SHA512
         /// </summary>
-        Sha512
+        Sha512,
     }
 }

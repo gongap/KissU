@@ -8,13 +8,14 @@ namespace KissU.Modules.IdentityServer.Domain.Models
     /// <summary>
     /// Api许可范围
     /// </summary>
-    public class ApiScope : EntityBase<ApiScope>
+    public class ApiScope : EntityBase<ApiScope, int>
     {
         /// <summary>
         /// 初始化Api许可范围
         /// </summary>
-        public ApiScope() : base(Guid.Empty)
+        public ApiScope() : base(default)
         {
+            UserClaims = new List<ApiScopeClaim>();
         }
 
         /// <summary>
@@ -25,7 +26,7 @@ namespace KissU.Modules.IdentityServer.Domain.Models
         /// <summary>
         /// 应包含在身份令牌中的关联用户声明类型的列表。
         /// </summary>
-        public List<UserClaim<ApiScope>> UserClaims { get; set; }
+        public List<ApiScopeClaim> UserClaims { get; set; }
 
         /// <summary>
         /// API的唯一名称。此值用于内省身份验证，并将添加到传出访问令牌的受众。

@@ -9,13 +9,6 @@ namespace KissU.Modules.IdentityServer.Application.Dtos
     /// </summary>
     public class ClientDto : DtoBase
     {
-        /// <summary>
-        /// 版本号
-        /// </summary>
-
-        [Display(Name = "版本号")]
-        public byte[] Version { get; set; }
-
         #region 名称
 
         /// <summary>
@@ -367,5 +360,12 @@ namespace KissU.Modules.IdentityServer.Application.Dtos
         public string LogoUri { get; set; }
 
         #endregion
+
+        /// <summary>
+        /// 版本号
+        /// </summary>
+
+        [Display(Name = "版本号")]
+        public byte[] Version { get; set; }
     }
 }

@@ -17,6 +17,8 @@ using KissU.Util.Datas.Queries;
 using KissU.Util.Domains.Repositories;
 using KissU.Util.Exceptions;
 using KissU.Util.Maps;
+using IdentityServer4;
+using Ids4 = IdentityServer4.Models;
 
 namespace KissU.Modules.IdentityServer.Application.Implements
 {
@@ -123,8 +125,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// <param name="param">应用程序查询实体</param>
         protected override IQueryBase<Client> CreateQuery(ClientQuery param)
         {
-            IQuery<Client, Guid> query = new Query<Client>(param).Or(t => t.ClientId.Contains(param.Keyword),
-                t => t.ClientName.Contains(param.Keyword));
+            var query = new Query<Client>(param).Or(t => t.ClientId.Contains(param.Keyword), t => t.ClientName.Contains(param.Keyword));
 
             if (param.Enabled.HasValue)
             {
@@ -181,21 +182,21 @@ namespace KissU.Modules.IdentityServer.Application.Implements
                 case ClientType.Empty:
                     break;
                 case ClientType.WebImplicit:
-                    client.AllowedGrantTypes = IdentityServerConstants.GrantTypes.Implicit.Select(x => new ClientGrantType(x)).ToList();
+                    client.AllowedGrantTypes = Ids4.GrantTypes.Implicit.Select(x => new ClientGrantType(x)).ToList();
                     client.AllowAccessTokensViaBrowser = true;
                     break;
                 case ClientType.WebHybrid:
-                    client.AllowedGrantTypes = IdentityServerConstants.GrantTypes.Hybrid.Select(x => new ClientGrantType(x)).ToList();
+                    client.AllowedGrantTypes = Ids4.GrantTypes.Hybrid.Select(x => new ClientGrantType(x)).ToList();
                     break;
                 case ClientType.Spa:
-                    client.AllowedGrantTypes = IdentityServerConstants.GrantTypes.Implicit.Select(x => new ClientGrantType(x)).ToList();
+                    client.AllowedGrantTypes = Ids4.GrantTypes.Implicit.Select(x => new ClientGrantType(x)).ToList();
                     client.AllowAccessTokensViaBrowser = true;
                     break;
                 case ClientType.Native:
-                    client.AllowedGrantTypes = IdentityServerConstants.GrantTypes.Hybrid.Select(x => new ClientGrantType(x)).ToList();
+                    client.AllowedGrantTypes = Ids4.GrantTypes.Hybrid.Select(x => new ClientGrantType(x)).ToList();
                     break;
                 case ClientType.Machine:
-                    client.AllowedGrantTypes = IdentityServerConstants.GrantTypes.ResourceOwnerPasswordAndClientCredentials.Select(x => new ClientGrantType(x)).ToList();
+                    client.AllowedGrantTypes = Ids4.GrantTypes.ResourceOwnerPasswordAndClientCredentials.Select(x => new ClientGrantType(x)).ToList();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -272,7 +273,6 @@ namespace KissU.Modules.IdentityServer.Application.Implements
             Client client = await ClientRepository.FindAsync(clientId);
             client.CheckNull(nameof(client));
             ClientClaim entity = request.MapTo<ClientClaim>();
-            entity.Init();
             entity.Client = client;
             await ClientRepository.CreateClientClaimAsync(entity);
             return entity.Id;
@@ -347,7 +347,6 @@ namespace KissU.Modules.IdentityServer.Application.Implements
             client.CheckNull(nameof(client));
             HashApiSharedSecret(request);
             ClientSecret entity = request.MapTo<ClientSecret>();
-            entity.Init();
             entity.Client = client;
             await ClientRepository.CreateClientSecretAsync(entity);
             return entity.Id;

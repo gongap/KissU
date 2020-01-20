@@ -15,8 +15,8 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         /// </summary>
         protected override void MapTable(EntityTypeBuilder<ApiResource> builder)
         {
-            builder.ToTable(IdentityServerDataConstants.DbTablePrefix + "ApiResources",
-                IdentityServerDataConstants.DbSchema);
+            builder.ToTable(DbConstants.DbTablePrefix + "ApiResources",
+                DbConstants.DbSchema);
         }
 
         /// <summary>
@@ -40,21 +40,20 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         {
             builder.OwnsMany(t => t.UserClaims, p =>
             {
-                p.ToTable(IdentityServerDataConstants.DbTablePrefix + "ApiClaims", IdentityServerDataConstants.DbSchema);
-                p.WithOwner(x => x.Owner).HasForeignKey($"{nameof(ApiResource)}Id");
+                p.WithOwner(x => x.ApiResource);
+                p.ToTable(DbConstants.DbTablePrefix + "ApiClaims", DbConstants.DbSchema);
                 p.Property(x => x.Type);
             });
 
             builder.OwnsMany(t => t.Properties, p =>
             {
-                p.ToTable(IdentityServerDataConstants.DbTablePrefix + "ApiProperties",
-                    IdentityServerDataConstants.DbSchema);
+                p.WithOwner(x => x.ApiResource);
+                p.ToTable(DbConstants.DbTablePrefix + "ApiProperties", DbConstants.DbSchema);
                 p.Property(x => x.Key).HasMaxLength(250).IsRequired();
                 p.Property(x => x.Value).HasMaxLength(2000).IsRequired();
             });
 
-            builder.HasMany(x => x.ApiSecrets).WithOne(x => x.ApiResource).IsRequired()
-                .OnDelete(DeleteBehavior.Cascade);
+            builder.HasMany(x => x.ApiSecrets).WithOne(x => x.ApiResource).IsRequired().OnDelete(DeleteBehavior.Cascade);
             builder.HasMany(x => x.Scopes).WithOne(x => x.ApiResource).IsRequired().OnDelete(DeleteBehavior.Cascade);
         }
     }

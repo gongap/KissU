@@ -9,6 +9,11 @@ namespace KissU.Modules.IdentityServer.Domain.Models
     public class ClientPostLogoutRedirectUri : ValueObjectBase<ClientPostLogoutRedirectUri>
     {
         /// <summary>
+        /// 应用程序
+        /// </summary>
+        public Client Client { get; set; }
+
+        /// <summary>
         /// 注销重定向Uri
         /// </summary>
         [Required]

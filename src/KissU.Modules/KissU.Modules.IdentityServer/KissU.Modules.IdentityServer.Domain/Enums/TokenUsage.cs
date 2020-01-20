@@ -1,18 +1,18 @@
 ﻿namespace KissU.Modules.IdentityServer.Domain.Enums
 {
     /// <summary>
-    /// Token usage types.
+    ///令牌使用类型
     /// </summary>
     public enum TokenUsage
     {
         /// <summary>
-        /// Re-use the refresh token handle
+        /// 重新使用刷新令牌句柄
         /// </summary>
         ReUse = 0,
 
         /// <summary>
-        /// Issue a new refresh token handle every time
+        /// 每次发出新的刷新令牌句柄
         /// </summary>
-        OneTimeOnly = 1
+        OneTimeOnly = 1,
     }
 }

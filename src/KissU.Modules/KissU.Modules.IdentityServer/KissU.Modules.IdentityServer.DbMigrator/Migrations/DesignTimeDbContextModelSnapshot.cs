@@ -471,7 +471,29 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
 
             modelBuilder.Entity("KissU.Modules.IdentityServer.Domain.Models.ApiResource", b =>
                 {
-                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.Property", "Properties", b1 =>
+                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.ApiResourceClaim", "UserClaims", b1 =>
+                        {
+                            b1.Property<Guid>("ApiResourceId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int")
+                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                            b1.Property<string>("Type")
+                                .HasColumnType("nvarchar(200)")
+                                .HasMaxLength(200);
+
+                            b1.HasKey("ApiResourceId", "Id");
+
+                            b1.ToTable("ApiClaims","ids");
+
+                            b1.WithOwner("ApiResource")
+                                .HasForeignKey("ApiResourceId");
+                        });
+
+                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.ApiResourceProperty", "Properties", b1 =>
                         {
                             b1.Property<Guid>("ApiResourceId")
                                 .HasColumnType("uniqueidentifier");
@@ -495,29 +517,7 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
 
                             b1.ToTable("ApiProperties","ids");
 
-                            b1.WithOwner()
-                                .HasForeignKey("ApiResourceId");
-                        });
-
-                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.UserClaim<KissU.Modules.IdentityServer.Domain.Models.ApiResource>", "UserClaims", b1 =>
-                        {
-                            b1.Property<Guid>("ApiResourceId")
-                                .HasColumnType("uniqueidentifier");
-
-                            b1.Property<int>("Id")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                            b1.Property<string>("Type")
-                                .HasColumnType("nvarchar(200)")
-                                .HasMaxLength(200);
-
-                            b1.HasKey("ApiResourceId", "Id");
-
-                            b1.ToTable("ApiClaims","ids");
-
-                            b1.WithOwner("Owner")
+                            b1.WithOwner("ApiResource")
                                 .HasForeignKey("ApiResourceId");
                         });
                 });
@@ -530,7 +530,7 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.UserClaim<KissU.Modules.IdentityServer.Domain.Models.ApiScope>", "UserClaims", b1 =>
+                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.ApiScopeClaim", "UserClaims", b1 =>
                         {
                             b1.Property<Guid>("ApiScopeId")
                                 .HasColumnType("uniqueidentifier");
@@ -549,7 +549,7 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
 
                             b1.ToTable("ApiScopeClaims","ids");
 
-                            b1.WithOwner("Owner")
+                            b1.WithOwner("ApiScope")
                                 .HasForeignKey("ApiScopeId");
                         });
                 });
@@ -584,7 +584,7 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
 
                             b1.ToTable("ClientCorsOrigins","ids");
 
-                            b1.WithOwner()
+                            b1.WithOwner("Client")
                                 .HasForeignKey("ClientId");
                         });
 
@@ -607,7 +607,7 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
 
                             b1.ToTable("ClientGrantTypes","ids");
 
-                            b1.WithOwner()
+                            b1.WithOwner("Client")
                                 .HasForeignKey("ClientId");
                         });
 
@@ -630,7 +630,7 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
 
                             b1.ToTable("ClientIdPRestrictions","ids");
 
-                            b1.WithOwner()
+                            b1.WithOwner("Client")
                                 .HasForeignKey("ClientId");
                         });
 
@@ -653,57 +653,11 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
 
                             b1.ToTable("ClientPostLogoutRedirectUris","ids");
 
-                            b1.WithOwner()
+                            b1.WithOwner("Client")
                                 .HasForeignKey("ClientId");
                         });
 
-                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.ClientRedirectUri", "RedirectUris", b1 =>
-                        {
-                            b1.Property<int>("ClientId")
-                                .HasColumnType("int");
-
-                            b1.Property<int>("Id")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                            b1.Property<string>("RedirectUri")
-                                .IsRequired()
-                                .HasColumnType("nvarchar(2000)")
-                                .HasMaxLength(2000);
-
-                            b1.HasKey("ClientId", "Id");
-
-                            b1.ToTable("ClientRedirectUris","ids");
-
-                            b1.WithOwner()
-                                .HasForeignKey("ClientId");
-                        });
-
-                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.ClientScope", "AllowedScopes", b1 =>
-                        {
-                            b1.Property<int>("ClientId")
-                                .HasColumnType("int");
-
-                            b1.Property<int>("Id")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("int")
-                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                            b1.Property<string>("Scope")
-                                .IsRequired()
-                                .HasColumnType("nvarchar(200)")
-                                .HasMaxLength(200);
-
-                            b1.HasKey("ClientId", "Id");
-
-                            b1.ToTable("ClientScopes","ids");
-
-                            b1.WithOwner()
-                                .HasForeignKey("ClientId");
-                        });
-
-                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.Property", "Properties", b1 =>
+                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.ClientProperty", "Properties", b1 =>
                         {
                             b1.Property<int>("ClientId")
                                 .HasColumnType("int");
@@ -727,7 +681,53 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
 
                             b1.ToTable("ClientPropertys","ids");
 
-                            b1.WithOwner()
+                            b1.WithOwner("Client")
+                                .HasForeignKey("ClientId");
+                        });
+
+                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.ClientRedirectUri", "RedirectUris", b1 =>
+                        {
+                            b1.Property<int>("ClientId")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int")
+                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                            b1.Property<string>("RedirectUri")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(2000)")
+                                .HasMaxLength(2000);
+
+                            b1.HasKey("ClientId", "Id");
+
+                            b1.ToTable("ClientRedirectUris","ids");
+
+                            b1.WithOwner("Client")
+                                .HasForeignKey("ClientId");
+                        });
+
+                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.ClientScope", "AllowedScopes", b1 =>
+                        {
+                            b1.Property<int>("ClientId")
+                                .HasColumnType("int");
+
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int")
+                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                            b1.Property<string>("Scope")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(200)")
+                                .HasMaxLength(200);
+
+                            b1.HasKey("ClientId", "Id");
+
+                            b1.ToTable("ClientScopes","ids");
+
+                            b1.WithOwner("Client")
                                 .HasForeignKey("ClientId");
                         });
                 });
@@ -752,33 +752,7 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
 
             modelBuilder.Entity("KissU.Modules.IdentityServer.Domain.Models.IdentityResource", b =>
                 {
-                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.Property", "Properties", b1 =>
-                        {
-                            b1.Property<Guid>("IdentityResourceId")
-                                .HasColumnType("uniqueidentifier");
-
-                            b1.Property<int>("Id")
-                                .HasColumnType("int");
-
-                            b1.Property<string>("Key")
-                                .IsRequired()
-                                .HasColumnType("nvarchar(250)")
-                                .HasMaxLength(250);
-
-                            b1.Property<string>("Value")
-                                .IsRequired()
-                                .HasColumnType("nvarchar(2000)")
-                                .HasMaxLength(2000);
-
-                            b1.HasKey("IdentityResourceId", "Id");
-
-                            b1.ToTable("IdentityProperties","ids");
-
-                            b1.WithOwner()
-                                .HasForeignKey("IdentityResourceId");
-                        });
-
-                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.UserClaim<KissU.Modules.IdentityServer.Domain.Models.IdentityResource>", "UserClaims", b1 =>
+                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.IdentityResourceClaim", "UserClaims", b1 =>
                         {
                             b1.Property<Guid>("IdentityResourceId")
                                 .HasColumnType("uniqueidentifier");
@@ -797,7 +771,35 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
 
                             b1.ToTable("IdentityClaims","ids");
 
-                            b1.WithOwner("Owner")
+                            b1.WithOwner("IdentityResource")
+                                .HasForeignKey("IdentityResourceId");
+                        });
+
+                    b.OwnsMany("KissU.Modules.IdentityServer.Domain.Models.IdentityResourceProperty", "Properties", b1 =>
+                        {
+                            b1.Property<Guid>("IdentityResourceId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<int>("Id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int")
+                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                            b1.Property<string>("Key")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(250)")
+                                .HasMaxLength(250);
+
+                            b1.Property<string>("Value")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(2000)")
+                                .HasMaxLength(2000);
+
+                            b1.HasKey("IdentityResourceId", "Id");
+
+                            b1.ToTable("IdentityProperties","ids");
+
+                            b1.WithOwner("IdentityResource")
                                 .HasForeignKey("IdentityResourceId");
                         });
                 });

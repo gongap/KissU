@@ -23,14 +23,14 @@ namespace KissU.Modules.IdentityServer.Application.Abstractions
         /// </summary>
         /// <param name="apiResourceId">Api资源编号</param>
         /// <returns></returns>
-        Task<List<ApiScopeDto>> GetApiScopesAsync(Guid apiResourceId);
+        Task<List<ApiScopeDto>> GetApiScopesAsync(int apiResourceId);
 
         /// <summary>
         /// 获取Api许可范围
         /// </summary>
         /// <param name="id">Api许可范围编号</param>
         /// <returns></returns>
-        Task<ApiScopeDto> GetApiScopeAsync(Guid id);
+        Task<ApiScopeDto> GetApiScopeAsync(int id);
 
         /// <summary>
         /// 创建Api许可范围
@@ -38,7 +38,7 @@ namespace KissU.Modules.IdentityServer.Application.Abstractions
         /// <param name="request">创建Api许可范围参数</param>
         /// <returns></returns>
         [UnitOfWork]
-        Task<Guid> CreateApiScopeAsync([Valid] ApiScopeCreateRequest request);
+        Task<int> CreateApiScopeAsync([Valid] ApiScopeCreateRequest request);
 
         /// <summary>
         /// 更新Api许可范围
@@ -54,7 +54,7 @@ namespace KissU.Modules.IdentityServer.Application.Abstractions
         /// <param name="id">Api许可范围编号</param>
         /// <returns></returns>
         [UnitOfWork]
-        Task DeleteApiScopeAsync(Guid id);
+        Task DeleteApiScopeAsync(int id);
 
         #endregion
 
@@ -65,14 +65,14 @@ namespace KissU.Modules.IdentityServer.Application.Abstractions
         /// </summary>
         /// <param name="apiResourceId">Api资源编号</param>
         /// <returns></returns>
-        Task<List<ApiSecretDto>> GetApiSecretsAsync(Guid apiResourceId);
+        Task<List<ApiSecretDto>> GetApiSecretsAsync(int apiResourceId);
 
         /// <summary>
         /// 获取Api密钥
         /// </summary>
         /// <param name="id">Api密钥编号</param>
         /// <returns></returns>
-        Task<ApiSecretDto> GetApiSecretAsync(Guid id);
+        Task<ApiSecretDto> GetApiSecretAsync(int id);
 
         /// <summary>
         /// 创建Api密钥
@@ -80,7 +80,7 @@ namespace KissU.Modules.IdentityServer.Application.Abstractions
         /// <param name="request">创建Api密钥参数</param>
         /// <returns></returns>
         [UnitOfWork]
-        Task<Guid> CreateApiSecretAsync([Valid] ApiSecretCreateRequest request);
+        Task<int> CreateApiSecretAsync([Valid] ApiSecretCreateRequest request);
 
         /// <summary>
         /// 删除Api密钥
@@ -88,7 +88,7 @@ namespace KissU.Modules.IdentityServer.Application.Abstractions
         /// <param name="id">Api密钥编号</param>
         /// <returns></returns>
         [UnitOfWork]
-        Task DeleteApiSecretAsync(Guid id);
+        Task DeleteApiSecretAsync(int id);
 
         #endregion
     }

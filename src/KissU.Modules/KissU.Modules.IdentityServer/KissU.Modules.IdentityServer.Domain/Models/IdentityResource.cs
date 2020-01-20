@@ -8,15 +8,15 @@ namespace KissU.Modules.IdentityServer.Domain.Models
     /// <summary>
     /// 身份资源
     /// </summary>
-    public class IdentityResource : AggregateRoot<IdentityResource>
+    public class IdentityResource : AggregateRoot<IdentityResource, int>
     {
         /// <summary>
         /// 初始化身份资源
         /// </summary>
-        public IdentityResource() : base(Guid.Empty)
+        public IdentityResource() : base(default)
         {
-            UserClaims = new List<UserClaim<IdentityResource>>();
-            Properties = new List<Property>();
+            UserClaims = new List<IdentityResourceClaim>();
+            Properties = new List<IdentityResourceProperty>();
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace KissU.Modules.IdentityServer.Domain.Models
         /// <summary>
         /// 应包含在身份资源中的关联用户声明类型的列表。
         /// </summary>
-        public List<UserClaim<IdentityResource>> UserClaims { get; set; }
+        public List<IdentityResourceClaim> UserClaims { get; set; }
 
         /// <summary>
         /// 指示此资源是否已启用且可以请求。默认为true。
@@ -66,6 +66,6 @@ namespace KissU.Modules.IdentityServer.Domain.Models
         /// <summary>
         /// 属性
         /// </summary>
-        public List<Property> Properties { get; set; }
+        public List<IdentityResourceProperty> Properties { get; set; }
     }
 }

@@ -23,7 +23,7 @@ namespace KissU.Modules.GreatWall.Service
         {
             base.RegisterBuilder(builder);
             var services = new ServiceCollection();
-            services.AddUnitOfWork<IGreatWallUnitOfWork, GreatWallUnitOfWork>(AppConfig.GetSection(GreatWallDataConstants.ConnectionStringSection).GetSection(GreatWallDataConstants.ConnectionStringName).Value);
+            services.AddUnitOfWork<IGreatWallUnitOfWork, GreatWallUnitOfWork>(AppConfig.GetSection(DbConstants.ConnectionStringSection).GetSection(DbConstants.ConnectionStringName).Value);
             services.AddAspNetIdentityCore(options =>
             {
                 options.Password.MinLength = 6;

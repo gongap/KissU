@@ -1,5 +1,4 @@
-﻿using KissU.Modules.IdentityServer.Domain;
-using KissU.Modules.IdentityServer.Domain.UnitOfWorks;
+﻿using KissU.Modules.IdentityServer.Domain.UnitOfWorks;
 using KissU.Util.Datas.SqlServer.Ef;
 using Microsoft.EntityFrameworkCore;
 

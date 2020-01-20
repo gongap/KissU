@@ -15,7 +15,7 @@ namespace KissU.Modules.GreatWall.Data.Mappings.PgSql
         /// </summary>
         protected override void MapTable(EntityTypeBuilder<ResourcePo> builder)
         {
-            builder.ToTable(GreatWallDataConstants.DbTablePrefix + "Resources", GreatWallDataConstants.DbSchema);
+            builder.ToTable(DbConstants.DbTablePrefix + "Resources", DbConstants.DbSchema);
         }
 
         /// <summary>

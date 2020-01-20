@@ -9,6 +9,11 @@ namespace KissU.Modules.IdentityServer.Domain.Models
     public class ClientCorsOrigin : ValueObjectBase<ClientCorsOrigin>
     {
         /// <summary>
+        /// 应用程序
+        /// </summary>
+        public Client Client { get; set; }
+
+        /// <summary>
         /// 源
         /// </summary>
         [Required]

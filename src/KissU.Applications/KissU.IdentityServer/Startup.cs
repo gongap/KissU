@@ -46,8 +46,8 @@ namespace KissU.IdentityServer
             services.AddControllersWithViews();
 
             // 添加SqlServer工作单元
-            services.AddUnitOfWork<IIdentityServerUnitOfWork, IdentityServerUnitOfWork>(Configuration.GetConnectionString(IdentityServerDataConstants.ConnectionStringName));
-            services.AddUnitOfWork<IGreatWallUnitOfWork, GreatWallUnitOfWork>(Configuration.GetConnectionString(GreatWallDataConstants.ConnectionStringName));
+            services.AddUnitOfWork<IIdentityServerUnitOfWork, IdentityServerUnitOfWork>(Configuration.GetConnectionString(Modules.IdentityServer.Data.DbConstants.ConnectionStringName));
+            services.AddUnitOfWork<IGreatWallUnitOfWork, GreatWallUnitOfWork>(Configuration.GetConnectionString(Modules.GreatWall.Data.DbConstants.ConnectionStringName));
 
             // 添加AspNetIdentity
             services.AspNetIdentity(options =>
