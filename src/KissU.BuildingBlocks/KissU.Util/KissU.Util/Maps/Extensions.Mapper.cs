@@ -113,17 +113,8 @@ namespace KissU.Util.Maps
         {
             if (_config == null)
             {
-                _config = new MapperConfiguration(t =>
-                {
-                    t.CreateMap(sourceType, destinationType);
-
-                    var finder = new Finder();
-                    var assemblies = new Finder().GetAssemblies();
-                    var types = finder.Find<Profile>(assemblies).ToArray();
-                    types.Select(type => Reflection.CreateInstance<Profile>(type)).ToList().ForEach(t.AddProfile);
-                }); 
-
-                return;
+                var assemblies = new Finder().GetAssemblies();
+                _config = new MapperConfiguration(cfg => cfg.AddMaps(assemblies));
             }
 
             var maps = _config.GetAllTypeMaps();
