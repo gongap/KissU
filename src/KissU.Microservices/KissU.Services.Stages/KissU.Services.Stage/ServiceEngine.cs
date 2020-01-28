@@ -4,7 +4,7 @@ using KissU.Core.CPlatform.Utilities;
 namespace KissU.Services.Stage
 {
     /// <summary>
-    /// 微服务引擎
+    /// 微服务引擎虚拟路径提供程序
     /// </summary>
     public class ServiceEngine : VirtualPathProviderServiceEngine
     {

@@ -14,6 +14,7 @@ namespace KissU.Services.Host
     public class Startup
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="Startup"/> class.
         /// 初始化启动配置
         /// </summary>
         public Startup(IConfigurationBuilder build)
@@ -39,8 +40,6 @@ namespace KissU.Services.Host
             ServiceLocator.Current = app;
         }
 
-        #region 私有方法
-
         /// <summary>
         /// 配置事件总线
         /// </summary>
@@ -57,7 +56,5 @@ namespace KissU.Services.Host
         {
             build.AddCacheFile("cachesettings.json", false);
         }
-
-        #endregion
     }
 }

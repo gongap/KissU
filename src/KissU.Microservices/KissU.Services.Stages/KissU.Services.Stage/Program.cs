@@ -33,8 +33,8 @@ namespace KissU.Services.Stage
                         .AddRelateService()
                         .AddConfigurationWatch()
                         .AddServiceEngine(typeof(ServiceEngine));
-                        builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
                     });
+                    builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
                 })
                 .ConfigureLogging(logger => { logger.AddConfiguration(AppConfig.GetSection("Logging")); })
                 .UseServer(options => { })
