@@ -10,16 +10,15 @@ namespace KissU.Core.CPlatform
     /// </summary>
     public class AppConfig
     {
-        #region 字段
         /// <summary>
         /// 负载均衡模式
         /// </summary>
-        private static AddressSelectorMode _loadBalanceMode=AddressSelectorMode.Polling;
+        private static AddressSelectorMode _loadBalanceMode = AddressSelectorMode.Polling;
+
         /// <summary>
         /// 服务器选项
         /// </summary>
-        private static ServerEngineOptions _serverOptions=new ServerEngineOptions();
-        #endregion
+        private static ServerEngineOptions _serverOptions = new ServerEngineOptions();
 
         /// <summary>
         /// 配置
@@ -33,11 +32,12 @@ namespace KissU.Core.CPlatform
         {
             get
             {
-                AddressSelectorMode mode = _loadBalanceMode; ;
-                if(Configuration?["AccessTokenExpireTimeSpan"] != null && !Enum.TryParse(Configuration["AccessTokenExpireTimeSpan"], out mode))
+                AddressSelectorMode mode = _loadBalanceMode;
+                if (Configuration?["AccessTokenExpireTimeSpan"] != null && !Enum.TryParse(Configuration["AccessTokenExpireTimeSpan"], out mode))
                 {
                     mode = _loadBalanceMode;
                 }
+
                 return mode;
             }
             internal set => _loadBalanceMode = value;

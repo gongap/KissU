@@ -53,47 +53,6 @@ using Microsoft.Extensions.Logging;
 namespace KissU.Core.CPlatform
 {
     /// <summary>
-    /// 服务构建器
-    /// </summary>
-    public interface IServiceBuilder
-    {
-        /// <summary>
-        /// 服务集合
-        /// </summary>
-        ContainerBuilder Services { get; set; }
-    }
-
-    /// <summary>
-    /// 默认服务构建器
-    /// </summary>
-    internal sealed class ServiceBuilder : IServiceBuilder
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ServiceBuilder" /> class.
-        /// </summary>
-        /// <param name="builder">容器构建器.</param>
-        /// <exception cref="ArgumentNullException">builder</exception>
-        public ServiceBuilder(ContainerBuilder builder)
-        {
-            if (builder == null)
-            {
-                throw new ArgumentNullException(nameof(builder));
-            }
-
-            Services = builder;
-        }
-
-        #region Implementation of IServiceBuilder
-
-        /// <summary>
-        /// 容器构建器
-        /// </summary>
-        public ContainerBuilder Services { get; set; }
-
-        #endregion Implementation of IServiceBuilder
-    }
-
-    /// <summary>
     /// 容器构建器扩展.
     /// </summary>
     public static class ContainerBuilderExtensions

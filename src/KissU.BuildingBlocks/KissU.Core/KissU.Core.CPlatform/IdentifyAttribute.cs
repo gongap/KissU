@@ -24,4 +24,3 @@ namespace KissU.Core.CPlatform
         public CommunicationProtocol Name { get; set; }
     }
 }
-

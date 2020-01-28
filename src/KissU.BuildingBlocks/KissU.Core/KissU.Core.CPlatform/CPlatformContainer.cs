@@ -19,14 +19,8 @@ namespace KissU.Core.CPlatform
         /// </summary>
         public IComponentContext Current
         {
-            get
-            {
-                return _container;
-            }
-           internal set
-            {
-                _container = value;
-            }
+            get => _container;
+            internal set => _container = value;
         }
 
         /// <summary>
@@ -35,7 +29,7 @@ namespace KissU.Core.CPlatform
         /// <param name="container">The container.</param>
         public CPlatformContainer(IComponentContext container)
         {
-            this._container = container;
+            _container = container;
         }
 
         /// <summary>
@@ -54,12 +48,16 @@ namespace KissU.Core.CPlatform
         /// <param name="serviceKey">The service key.</param>
         /// <param name="serviceType">Type of the service.</param>
         /// <returns><c>true</c> if [is registered with key] [the specified service key]; otherwise, <c>false</c>.</returns>
-        public bool IsRegisteredWithKey(string serviceKey,Type serviceType)
+        public bool IsRegisteredWithKey(string serviceKey, Type serviceType)
         {
-            if(!string.IsNullOrEmpty(serviceKey))
-            return _container.IsRegisteredWithKey(serviceKey, serviceType);
+            if (!string.IsNullOrEmpty(serviceKey))
+            {
+                return _container.IsRegisteredWithKey(serviceKey, serviceType);
+            }
             else
+            {
                 return _container.IsRegistered(serviceType);
+            }
         }
 
         /// <summary>
@@ -81,7 +79,6 @@ namespace KissU.Core.CPlatform
         /// <returns>T.</returns>
         public T GetInstances<T>(string name) where T : class
         {
-     
             return _container.ResolveKeyed<T>(name);
         }
 
@@ -100,7 +97,7 @@ namespace KissU.Core.CPlatform
         /// </summary>
         /// <param name="type">The type.</param>
         /// <returns>System.Object.</returns>
-        public object GetInstances(Type type)  
+        public object GetInstances(Type type)
         {
             return _container.Resolve(type);
         }
@@ -124,7 +121,7 @@ namespace KissU.Core.CPlatform
         /// <returns>System.Object.</returns>
         public object GetInstancePerLifetimeScope(string name, Type type)
         {
-           return string.IsNullOrEmpty(name) ? GetInstances(type) : _container.ResolveKeyed(name, type);
+            return string.IsNullOrEmpty(name) ? GetInstances(type) : _container.ResolveKeyed(name, type);
         }
 
         /// <summary>
@@ -133,15 +130,16 @@ namespace KissU.Core.CPlatform
         /// <param name="name">The name.</param>
         /// <param name="type">The type.</param>
         /// <returns>System.Object.</returns>
-        public object GetInstances(string name,Type type)  
+        public object GetInstances(string name, Type type)
         {
             // var appConfig = AppConfig.DefaultInstance;
-            var objInstance = ServiceResolver.Current.GetService(type, name);
+            object objInstance = ServiceResolver.Current.GetService(type, name);
             if (objInstance == null)
             {
                 objInstance = string.IsNullOrEmpty(name) ? GetInstances(type) : _container.ResolveKeyed(name, type);
                 ServiceResolver.Current.Register(name, objInstance, type);
             }
+
             return objInstance;
         }
     }

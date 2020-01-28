@@ -3,7 +3,7 @@
     /// <summary>
     /// 请求数据.
     /// </summary>
-    public class RequestData 
+    public class RequestData
     {
         /// <summary>
         /// 有效载荷
