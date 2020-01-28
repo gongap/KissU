@@ -3,12 +3,11 @@ using System.Threading.Tasks;
 
 namespace KissU.Core.CPlatform.Cache
 {
-   /// <summary>
-   /// 服务缓存工厂
-   /// </summary>
-   public  interface IServiceCacheFactory
+    /// <summary>
+    /// 服务缓存工厂
+    /// </summary>
+    public interface IServiceCacheFactory
     {
-
         /// <summary>
         /// 根据服务路由描述符创建服务路由。
         /// </summary>

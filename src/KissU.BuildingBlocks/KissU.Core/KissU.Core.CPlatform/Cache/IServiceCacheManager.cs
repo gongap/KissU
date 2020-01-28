@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using KissU.Core.CPlatform.Cache.Implementation;
 
@@ -11,52 +10,52 @@ namespace KissU.Core.CPlatform.Cache
     /// </summary>
     public interface IServiceCacheManager
     {
+        /// <summary>
+        /// Occurs when [created].
+        /// </summary>
         event EventHandler<ServiceCacheEventArgs> Created;
 
+        /// <summary>
+        /// Occurs when [removed].
+        /// </summary>
         event EventHandler<ServiceCacheEventArgs> Removed;
 
+        /// <summary>
+        /// Occurs when [changed].
+        /// </summary>
         event EventHandler<ServiceCacheChangedEventArgs> Changed;
 
+        /// <summary>
+        /// Gets the caches asynchronous.
+        /// </summary>
+        /// <returns>Task&lt;IEnumerable&lt;ServiceCache&gt;&gt;.</returns>
         Task<IEnumerable<ServiceCache>> GetCachesAsync();
 
+        /// <summary>
+        /// Sets the caches asynchronous.
+        /// </summary>
+        /// <param name="caches">The caches.</param>
+        /// <returns>Task.</returns>
         Task SetCachesAsync(IEnumerable<ServiceCache> caches);
 
+        /// <summary>
+        /// Sets the caches asynchronous.
+        /// </summary>
+        /// <param name="cacheDescriptors">The cache descriptors.</param>
+        /// <returns>Task.</returns>
         Task SetCachesAsync(IEnumerable<ServiceCacheDescriptor> cacheDescriptors);
 
+        /// <summary>
+        /// Remves the address asynchronous.
+        /// </summary>
+        /// <param name="endpoints">The endpoints.</param>
+        /// <returns>Task.</returns>
         Task RemveAddressAsync(IEnumerable<CacheEndpoint> endpoints);
 
+        /// <summary>
+        /// Clears the asynchronous.
+        /// </summary>
+        /// <returns>Task.</returns>
         Task ClearAsync();
     }
-
-    /// <summary>
-    /// 服务命令管理者扩展方法。
-    /// </summary>
-    public static class ServiceRouteManagerExtensions
-    {
-        public static async Task<ServiceCache> GetAsync(this IServiceCacheManager serviceCacheManager, string cacheId)
-        {
-            return (await serviceCacheManager.GetCachesAsync()).SingleOrDefault(i => i.CacheDescriptor.Id == cacheId);
-        }
-
-        public static async Task<IEnumerable<CacheDescriptor>> GetCacheDescriptorAsync(this IServiceCacheManager serviceCacheManager)
-        {
-            var caches = await serviceCacheManager.GetCachesAsync();
-            return caches.Select(p => p.CacheDescriptor);
-        }
-
-        public static async Task<IEnumerable<CacheEndpoint>> GetCacheEndpointAsync(this IServiceCacheManager serviceCacheManager, string cacheId)
-        {
-            var caches = await serviceCacheManager.GetCachesAsync();
-            return caches.Where(p => p.CacheDescriptor.Id == cacheId).Select(p => p.CacheEndpoint).FirstOrDefault();
-        }
-
-
-        public static async Task<CacheEndpoint> GetCacheEndpointAsync(this IServiceCacheManager serviceCacheManager, string cacheId,string endpoint)
-        {
-            var caches = await serviceCacheManager.GetCachesAsync();
-            var cache= caches.Where(p => p.CacheDescriptor.Id == cacheId).Select(p => p.CacheEndpoint).FirstOrDefault();
-            return cache.Where(p => p.ToString() == endpoint).FirstOrDefault();
-        }
-    }
 }
-
