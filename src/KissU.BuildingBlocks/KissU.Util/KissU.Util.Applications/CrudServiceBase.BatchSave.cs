@@ -16,10 +16,14 @@ namespace KissU.Util.Applications
         /// <param name="creationList">新增列表</param>
         /// <param name="updateList">修改列表</param>
         /// <param name="deleteList">删除列表</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         public virtual async Task<List<TDto>> SaveAsync(List<TDto> creationList, List<TDto> updateList, List<TDto> deleteList)
         {
             if (creationList == null && updateList == null && deleteList == null)
+            {
                 return new List<TDto>();
+            }
+
             creationList = creationList ?? new List<TDto>();
             updateList = updateList ?? new List<TDto>();
             deleteList = deleteList ?? new List<TDto>();
@@ -54,7 +58,9 @@ namespace KissU.Util.Applications
             {
                 var item = list[i];
                 if (deleteList.Any(d => d.Id == item.Id))
+                {
                     list.Remove(item);
+                }
             }
         }
 
@@ -82,10 +88,15 @@ namespace KissU.Util.Applications
         private async Task AddListAsync(List<TEntity> list)
         {
             if (list.Count == 0)
+            {
                 return;
+            }
+
             Log.Content("创建实体：");
             foreach (var entity in list)
+            {
                 await CreateAsync(entity);
+            }
         }
 
         /// <summary>
@@ -94,10 +105,15 @@ namespace KissU.Util.Applications
         private async Task UpdateListAsync(List<TEntity> list)
         {
             if (list.Count == 0)
+            {
                 return;
+            }
+
             Log.Content("修改实体：");
             foreach (var entity in list)
+            {
                 await UpdateAsync(entity);
+            }
         }
 
         /// <summary>
@@ -106,15 +122,21 @@ namespace KissU.Util.Applications
         private async Task DeleteListAsync(List<TEntity> list)
         {
             if (list.Count == 0)
+            {
                 return;
+            }
+
             Log.Content("删除实体：");
             foreach (var entity in list)
+            {
                 await DeleteChildsAsync(entity);
+            }
         }
 
         /// <summary>
         /// 删除子节点集合
         /// </summary>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         protected virtual async Task DeleteChildsAsync(TEntity parent)
         {
             await DeleteEntityAsync(parent);
@@ -123,6 +145,7 @@ namespace KissU.Util.Applications
         /// <summary>
         /// 删除实体
         /// </summary>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         protected async Task DeleteEntityAsync(TEntity entity)
         {
             await _repository.RemoveAsync(entity.Id);
@@ -148,6 +171,7 @@ namespace KissU.Util.Applications
         /// <summary>
         /// 获取结果
         /// </summary>
+        /// <returns>连接结果</returns>
         protected virtual List<TDto> GetResult(List<TEntity> creationList, List<TEntity> updateList)
         {
             return creationList.Concat(updateList).Select(ToDto).ToList();

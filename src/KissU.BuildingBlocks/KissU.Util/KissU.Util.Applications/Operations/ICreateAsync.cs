@@ -15,6 +15,7 @@ namespace KissU.Util.Applications.Operations
         /// 创建
         /// </summary>
         /// <param name="request">创建参数</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         [UnitOfWork]
         Task<string> CreateAsync([Valid] TCreateRequest request);
     }

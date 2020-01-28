@@ -20,15 +20,21 @@ namespace KissU.Util.Applications.Aspects
         /// <summary>
         /// 执行
         /// </summary>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         public override async Task Invoke(AspectContext context, AspectDelegate next)
         {
             await next(context);
             var manager = context.ServiceProvider.GetService<IUnitOfWorkManager>();
             if (manager == null)
+            {
                 return;
+            }
+
             await manager.CommitAsync();
             if (context.Implementation is ICommitAfter service)
+            {
                 service.CommitAfter();
+            }
         }
     }
 }

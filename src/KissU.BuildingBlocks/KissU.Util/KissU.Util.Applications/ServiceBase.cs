@@ -21,6 +21,7 @@ namespace KissU.Util.Applications
         /// <summary>
         /// 获取日志操作
         /// </summary>
+        /// <returns>结果</returns>
         protected virtual ILog GetLog()
         {
             try

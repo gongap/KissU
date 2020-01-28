@@ -14,13 +14,20 @@ namespace KissU.Util.Applications
         /// 创建
         /// </summary>
         /// <param name="request">创建参数</param>
+        /// <returns>结果</returns>
         public virtual string Create(TCreateRequest request)
         {
             if (request == null)
+            {
                 throw new ArgumentNullException(nameof(request));
+            }
+
             var entity = ToEntityFromCreateRequest(request);
             if (entity == null)
+            {
                 throw new ArgumentNullException(nameof(entity));
+            }
+
             Create(entity);
             return entity.Id.ToString();
         }
@@ -55,13 +62,20 @@ namespace KissU.Util.Applications
         /// 创建
         /// </summary>
         /// <param name="request">创建参数</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         public virtual async Task<string> CreateAsync(TCreateRequest request)
         {
             if (request == null)
+            {
                 throw new ArgumentNullException(nameof(request));
+            }
+
             var entity = ToEntityFromCreateRequest(request);
             if (entity == null)
+            {
                 throw new ArgumentNullException(nameof(entity));
+            }
+
             await CreateAsync(entity);
             return entity.Id.ToString();
         }
@@ -69,6 +83,7 @@ namespace KissU.Util.Applications
         /// <summary>
         /// 创建实体
         /// </summary>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         protected async Task CreateAsync(TEntity entity)
         {
             CreateBefore(entity);
@@ -82,6 +97,7 @@ namespace KissU.Util.Applications
         /// <summary>
         /// 创建前操作
         /// </summary>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         protected virtual Task CreateBeforeAsync(TEntity entity)
         {
             return Task.CompletedTask;
@@ -90,6 +106,7 @@ namespace KissU.Util.Applications
         /// <summary>
         /// 创建后操作
         /// </summary>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         protected virtual Task CreateAfterAsync(TEntity entity)
         {
             return Task.CompletedTask;
@@ -102,10 +119,16 @@ namespace KissU.Util.Applications
         public virtual void Update(TUpdateRequest request)
         {
             if (request == null)
+            {
                 throw new ArgumentNullException(nameof(request));
+            }
+
             var entity = ToEntityFromUpdateRequest(request);
             if (entity == null)
+            {
                 throw new ArgumentNullException(nameof(entity));
+            }
+
             Update(entity);
         }
 
@@ -116,7 +139,10 @@ namespace KissU.Util.Applications
         {
             var oldEntity = FindOldEntity(entity.Id);
             if (oldEntity == null)
+            {
                 throw new ArgumentNullException(nameof(oldEntity));
+            }
+
             var changes = oldEntity.GetChanges(entity);
             UpdateBefore(entity);
             _repository.Update(entity);
@@ -127,6 +153,7 @@ namespace KissU.Util.Applications
         /// 查找旧实体
         /// </summary>
         /// <param name="id">标识</param>
+        /// <returns>结果</returns>
         protected virtual TEntity FindOldEntity(TKey id)
         {
             return _repository.Find(id);
@@ -136,6 +163,7 @@ namespace KissU.Util.Applications
         /// 查找旧实体
         /// </summary>
         /// <param name="id">标识</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         protected virtual async Task<TEntity> FindOldEntityAsync(TKey id)
         {
             return await _repository.FindAsync(id);
@@ -163,24 +191,35 @@ namespace KissU.Util.Applications
         /// 修改
         /// </summary>
         /// <param name="request">修改参数</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         public virtual async Task UpdateAsync(TUpdateRequest request)
         {
             if (request == null)
+            {
                 throw new ArgumentNullException(nameof(request));
+            }
+
             var entity = ToEntityFromUpdateRequest(request);
             if (entity == null)
+            {
                 throw new ArgumentNullException(nameof(entity));
+            }
+
             await UpdateAsync(entity);
         }
 
         /// <summary>
         /// 修改实体
         /// </summary>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         protected async Task UpdateAsync(TEntity entity)
         {
             var oldEntity = await FindOldEntityAsync(entity.Id);
             if (oldEntity == null)
+            {
                 throw new ArgumentNullException(nameof(oldEntity));
+            }
+
             var changes = oldEntity.GetChanges(entity);
             UpdateBefore(entity);
             await UpdateBeforeAsync(entity);
@@ -193,6 +232,7 @@ namespace KissU.Util.Applications
         /// 修改前操作
         /// </summary>
         /// <param name="entity">实体</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         protected virtual Task UpdateBeforeAsync(TEntity entity)
         {
             return Task.CompletedTask;
@@ -203,6 +243,7 @@ namespace KissU.Util.Applications
         /// </summary>
         /// <param name="entity">实体</param>
         /// <param name="changeValues">变更值集合</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         protected virtual Task UpdateAfterAsync(TEntity entity, ChangeValueCollection changeValues)
         {
             return Task.CompletedTask;
@@ -212,14 +253,21 @@ namespace KissU.Util.Applications
         /// 保存
         /// </summary>
         /// <param name="request">参数</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         public virtual async Task SaveAsync(TRequest request)
         {
             if (request == null)
+            {
                 throw new ArgumentNullException(nameof(request));
+            }
+
             SaveBefore(request);
             var entity = ToEntity(request);
             if (entity == null)
+            {
                 throw new ArgumentNullException(nameof(entity));
+            }
+
             if (IsNew(request, entity))
             {
                 await CreateAsync(entity);
@@ -242,6 +290,7 @@ namespace KissU.Util.Applications
         /// </summary>
         /// <param name="request">参数</param>
         /// <param name="entity">实体</param>
+        /// <returns>结果</returns>
         protected virtual bool IsNew(TRequest request, TEntity entity)
         {
             return string.IsNullOrWhiteSpace(request.Id) || entity.Id.Equals(default(TKey));

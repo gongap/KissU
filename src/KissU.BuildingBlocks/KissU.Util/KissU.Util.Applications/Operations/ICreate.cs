@@ -14,6 +14,7 @@ namespace KissU.Util.Applications.Operations
         /// 创建
         /// </summary>
         /// <param name="request">创建参数</param>
+        /// <returns>结果</returns>
         [UnitOfWork]
         string Create([Valid] TCreateRequest request);
     }

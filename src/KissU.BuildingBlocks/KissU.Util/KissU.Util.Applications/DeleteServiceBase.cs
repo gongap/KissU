@@ -24,11 +24,13 @@ namespace KissU.Util.Applications
         where TQueryParameter : IQueryParameter
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="DeleteServiceBase{TEntity, TDto, TQueryParameter}"/> class.
         /// 初始化删除服务
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
         /// <param name="store">存储器</param>
-        protected DeleteServiceBase(IUnitOfWork unitOfWork, IStore<TEntity, Guid> store) : base(unitOfWork, store)
+        protected DeleteServiceBase(IUnitOfWork unitOfWork, IStore<TEntity, Guid> store)
+            : base(unitOfWork, store)
         {
         }
     }
@@ -57,11 +59,13 @@ namespace KissU.Util.Applications
         private readonly IStore<TEntity, TKey> _store;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="DeleteServiceBase{TEntity, TDto, TQueryParameter, TKey}"/> class.
         /// 初始化删除服务
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
         /// <param name="store">存储器</param>
-        protected DeleteServiceBase(IUnitOfWork unitOfWork, IStore<TEntity, TKey> store) : base(store)
+        protected DeleteServiceBase(IUnitOfWork unitOfWork, IStore<TEntity, TKey> store)
+            : base(store)
         {
             _unitOfWork = unitOfWork;
             _store = store;
@@ -124,7 +128,9 @@ namespace KissU.Util.Applications
         {
             Log.BusinessId(entities.Select(t => t.Id).Join());
             foreach (var entity in entities)
+            {
                 Log.Content(entity.ToString());
+            }
         }
 
         /// <summary>
@@ -134,10 +140,16 @@ namespace KissU.Util.Applications
         public virtual void Delete(string ids)
         {
             if (string.IsNullOrWhiteSpace(ids))
+            {
                 return;
+            }
+
             var entities = _store.FindByIds(ids);
             if (entities?.Count == 0)
+            {
                 return;
+            }
+
             DeleteBefore(entities);
             _store.Remove(entities);
             _unitOfWork.Commit();
@@ -166,13 +178,20 @@ namespace KissU.Util.Applications
         /// 删除
         /// </summary>
         /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         public virtual async Task DeleteAsync(string ids)
         {
             if (string.IsNullOrWhiteSpace(ids))
+            {
                 return;
+            }
+
             var entities = await _store.FindByIdsAsync(ids);
             if (entities?.Count == 0)
+            {
                 return;
+            }
+
             DeleteBefore(entities);
             await _store.RemoveAsync(entities);
             await _unitOfWork.CommitAsync();

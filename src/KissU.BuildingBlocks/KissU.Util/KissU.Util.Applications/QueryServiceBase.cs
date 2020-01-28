@@ -25,10 +25,12 @@ namespace KissU.Util.Applications
         where TQueryParameter : IQueryParameter
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="QueryServiceBase{TEntity, TDto, TQueryParameter}"/> class.
         /// 初始化查询服务
         /// </summary>
         /// <param name="store">查询存储器</param>
-        protected QueryServiceBase(IQueryStore<TEntity, Guid> store) : base(store)
+        protected QueryServiceBase(IQueryStore<TEntity, Guid> store)
+            : base(store)
         {
         }
     }
@@ -51,6 +53,7 @@ namespace KissU.Util.Applications
         private readonly IQueryStore<TEntity, TKey> _store;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="QueryServiceBase{TEntity, TDto, TQueryParameter, TKey}"/> class.
         /// 初始化查询服务
         /// </summary>
         /// <param name="store">查询存储器</param>
@@ -63,6 +66,7 @@ namespace KissU.Util.Applications
         /// 转换为数据传输对象
         /// </summary>
         /// <param name="entity">实体</param>
+        /// <returns>结果</returns>
         protected virtual TDto ToDto(TEntity entity)
         {
             return entity.MapTo<TDto>();
@@ -71,6 +75,7 @@ namespace KissU.Util.Applications
         /// <summary>
         /// 获取全部
         /// </summary>
+        /// <returns>结果</returns>
         public virtual List<TDto> GetAll()
         {
             return _store.FindAll().Select(ToDto).ToList();
@@ -79,6 +84,7 @@ namespace KissU.Util.Applications
         /// <summary>
         /// 获取全部
         /// </summary>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         public virtual async Task<List<TDto>> GetAllAsync()
         {
             var entities = await _store.FindAllAsync();
@@ -89,6 +95,7 @@ namespace KissU.Util.Applications
         /// 通过编号获取
         /// </summary>
         /// <param name="id">实体编号</param>
+        /// <returns>结果</returns>
         public virtual TDto GetById(object id)
         {
             var key = Util.Helpers.Convert.To<TKey>(id);
@@ -99,6 +106,7 @@ namespace KissU.Util.Applications
         /// 通过编号获取
         /// </summary>
         /// <param name="id">实体编号</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         public virtual async Task<TDto> GetByIdAsync(object id)
         {
             var key = Util.Helpers.Convert.To<TKey>(id);
@@ -109,6 +117,7 @@ namespace KissU.Util.Applications
         /// 通过编号列表获取
         /// </summary>
         /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
+        /// <returns>结果</returns>
         public virtual List<TDto> GetByIds(string ids)
         {
             return _store.FindByIds(ids).Select(ToDto).ToList();
@@ -118,6 +127,7 @@ namespace KissU.Util.Applications
         /// 通过编号列表获取
         /// </summary>
         /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         public virtual async Task<List<TDto>> GetByIdsAsync(string ids)
         {
             var entities = await _store.FindByIdsAsync(ids);
@@ -128,10 +138,14 @@ namespace KissU.Util.Applications
         /// 查询
         /// </summary>
         /// <param name="parameter">查询参数</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         public virtual async Task<List<TDto>> QueryAsync(TQueryParameter parameter)
         {
             if (parameter == null)
+            {
                 return new List<TDto>();
+            }
+
             return (await ExecuteQuery(parameter).ToListAsync()).Select(ToDto).ToList();
         }
 
@@ -139,10 +153,14 @@ namespace KissU.Util.Applications
         /// 查询
         /// </summary>
         /// <param name="parameter">查询参数</param>
+        /// <returns>结果</returns>
         public virtual List<TDto> Query(TQueryParameter parameter)
         {
             if (parameter == null)
+            {
                 return new List<TDto>();
+            }
+
             return ExecuteQuery(parameter).ToList().Select(ToDto).ToList();
         }
 
@@ -162,6 +180,7 @@ namespace KissU.Util.Applications
         /// 创建查询对象
         /// </summary>
         /// <param name="parameter">查询参数</param>
+        /// <returns>结果</returns>
         protected virtual IQueryBase<TEntity> CreateQuery(TQueryParameter parameter)
         {
             return new Query<TEntity, TKey>(parameter);
@@ -183,6 +202,7 @@ namespace KissU.Util.Applications
         /// <summary>
         /// 过滤
         /// </summary>
+        /// <returns>结果</returns>
         protected virtual IQueryable<TEntity> Filter(IQueryable<TEntity> queryable, TQueryParameter parameter)
         {
             return queryable;
@@ -192,10 +212,14 @@ namespace KissU.Util.Applications
         /// 分页查询
         /// </summary>
         /// <param name="parameter">查询参数</param>
+        /// <returns>结果</returns>
         public virtual PagerList<TDto> PagerQuery(TQueryParameter parameter)
         {
             if (parameter == null)
+            {
                 return new PagerList<TDto>();
+            }
+
             var query = CreateQuery(parameter);
             var queryable = Filter(query);
             queryable = Filter(queryable, parameter);
@@ -206,10 +230,14 @@ namespace KissU.Util.Applications
         /// 分页查询
         /// </summary>
         /// <param name="parameter">查询参数</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         public virtual async Task<PagerList<TDto>> PagerQueryAsync(TQueryParameter parameter)
         {
             if (parameter == null)
+            {
                 return new PagerList<TDto>();
+            }
+
             var query = CreateQuery(parameter);
             var queryable = Filter(query);
             queryable = Filter(queryable, parameter);

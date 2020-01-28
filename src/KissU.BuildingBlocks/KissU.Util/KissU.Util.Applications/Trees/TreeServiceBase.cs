@@ -29,11 +29,13 @@ namespace KissU.Util.Applications.Trees
         private readonly IStore<TEntity, Guid> _store;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="TreeServiceBase{TEntity, TDto, TQueryParameter}"/> class.
         /// 初始化树形服务
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
         /// <param name="store">存储器</param>
-        protected TreeServiceBase(IUnitOfWork unitOfWork, IStore<TEntity, Guid> store) : base(unitOfWork, store)
+        protected TreeServiceBase(IUnitOfWork unitOfWork, IStore<TEntity, Guid> store)
+            : base(unitOfWork, store)
         {
             _store = store;
         }
@@ -41,6 +43,7 @@ namespace KissU.Util.Applications.Trees
         /// <summary>
         /// 过滤
         /// </summary>
+        /// <returns>结果</returns>
         protected override IQueryable<TEntity> Filter(IQueryable<TEntity> queryable, TQueryParameter parameter)
         {
             return queryable.Where(new TreeCriteria<TEntity>(parameter));
@@ -50,6 +53,7 @@ namespace KissU.Util.Applications.Trees
         /// 获取直接下级子节点列表
         /// </summary>
         /// <param name="parameter">查询参数</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         protected override async Task<List<TEntity>> GetChildren(TQueryParameter parameter)
         {
             return await _store.FindAllAsync(t => t.ParentId == parameter.ParentId);
@@ -81,11 +85,13 @@ namespace KissU.Util.Applications.Trees
         private readonly IStore<TEntity, TKey> _store;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="TreeServiceBase{TEntity, TDto, TQueryParameter, TKey, TParentId}"/> class.
         /// 初始化树形服务
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
         /// <param name="store">存储器</param>
-        protected TreeServiceBase(IUnitOfWork unitOfWork, IStore<TEntity, TKey> store) : base(unitOfWork, store)
+        protected TreeServiceBase(IUnitOfWork unitOfWork, IStore<TEntity, TKey> store)
+            : base(unitOfWork, store)
         {
             _unitOfWork = unitOfWork;
             _store = store;
@@ -94,6 +100,7 @@ namespace KissU.Util.Applications.Trees
         /// <summary>
         /// 过滤
         /// </summary>
+        /// <returns>结果</returns>
         protected override IQueryable<TEntity> Filter(IQueryable<TEntity> queryable, TQueryParameter parameter)
         {
             return queryable.Where(new TreeCriteria<TEntity, TParentId>(parameter));
@@ -103,6 +110,7 @@ namespace KissU.Util.Applications.Trees
         /// 查找实体列表
         /// </summary>
         /// <param name="ids">标识列表</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         public virtual async Task<List<TDto>> FindByIdsAsync(string ids)
         {
             var entities = await _store.FindByIdsNoTrackingAsync(ids);
@@ -113,6 +121,7 @@ namespace KissU.Util.Applications.Trees
         /// 启用
         /// </summary>
         /// <param name="ids">标识列表</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         public virtual async Task EnableAsync(string ids)
         {
             await Enable(Convert.ToList<TKey>(ids), true);
@@ -124,16 +133,28 @@ namespace KissU.Util.Applications.Trees
         private async Task Enable(List<TKey> ids, bool enabled)
         {
             if (ids == null || ids.Count == 0)
+            {
                 return;
+            }
+
             var entities = await _store.FindByIdsAsync(ids);
             if (entities == null)
+            {
                 return;
+            }
+
             foreach (var entity in entities)
             {
                 if (enabled && await AllowEnable(entity) == false)
+                {
                     return;
+                }
+
                 if (enabled == false && await AllowDisable(entity) == false)
+                {
                     return;
+                }
+
                 entity.Enabled = enabled;
                 await _store.UpdateAsync(entity);
             }
@@ -145,6 +166,7 @@ namespace KissU.Util.Applications.Trees
         /// 允许启用
         /// </summary>
         /// <param name="entity">实体</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         protected virtual Task<bool> AllowEnable(TEntity entity)
         {
             return Task.FromResult(true);
@@ -154,6 +176,7 @@ namespace KissU.Util.Applications.Trees
         /// 允许禁用
         /// </summary>
         /// <param name="entity">实体</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         protected virtual Task<bool> AllowDisable(TEntity entity)
         {
             return Task.FromResult(true);
@@ -172,6 +195,7 @@ namespace KissU.Util.Applications.Trees
         /// 冻结
         /// </summary>
         /// <param name="ids">标识列表</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         public virtual Task DisableAsync(string ids)
         {
             return Enable(Convert.ToList<TKey>(ids), false);
@@ -182,12 +206,16 @@ namespace KissU.Util.Applications.Trees
         /// </summary>
         /// <param name="id">标识</param>
         /// <param name="swapId">目标标识</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         public virtual async Task SwapSortAsync(Guid id, Guid swapId)
         {
             var entity = await _store.FindAsync(id);
             var swapEntity = await _store.FindAsync(swapId);
             if (entity == null || swapEntity == null)
+            {
                 return;
+            }
+
             entity.SwapSort(swapEntity);
             await _store.UpdateAsync(entity);
             await _store.UpdateAsync(swapEntity);
@@ -198,14 +226,21 @@ namespace KissU.Util.Applications.Trees
         /// 修正排序
         /// </summary>
         /// <param name="parameter">查询参数</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         public virtual async Task FixSortIdAsync(TQueryParameter parameter)
         {
             var children = await GetChildren(parameter);
             if (children == null)
+            {
                 return;
+            }
+
             var list = children.OrderBy(t => t.SortId).ToList();
             for (int i = 0; i < children.Count; i++)
+            {
                 children[i].SortId = i + 1;
+            }
+
             await _store.UpdateAsync(list);
             await _unitOfWork.CommitAsync();
         }
@@ -214,6 +249,7 @@ namespace KissU.Util.Applications.Trees
         /// 获取直接下级子节点列表
         /// </summary>
         /// <param name="parameter">查询参数</param>
+        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
         protected abstract Task<List<TEntity>> GetChildren(TQueryParameter parameter);
     }
 }

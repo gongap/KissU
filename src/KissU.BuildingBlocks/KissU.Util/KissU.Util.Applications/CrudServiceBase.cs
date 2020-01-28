@@ -22,11 +22,13 @@ namespace KissU.Util.Applications
         where TQueryParameter : IQueryParameter
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="CrudServiceBase{TEntity, TDto, TQueryParameter}"/> class.
         /// 初始化增删改查服务
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
         /// <param name="repository">仓储</param>
-        protected CrudServiceBase(IUnitOfWork unitOfWork, IRepository<TEntity, Guid> repository) : base(unitOfWork, repository)
+        protected CrudServiceBase(IUnitOfWork unitOfWork, IRepository<TEntity, Guid> repository)
+            : base(unitOfWork, repository)
         {
         }
     }
@@ -45,11 +47,13 @@ namespace KissU.Util.Applications
         where TQueryParameter : IQueryParameter
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="CrudServiceBase{TEntity, TDto, TQueryParameter, TKey}"/> class.
         /// 初始化增删改查服务
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
         /// <param name="repository">仓储</param>
-        protected CrudServiceBase(IUnitOfWork unitOfWork, IRepository<TEntity, TKey> repository) : base(unitOfWork, repository)
+        protected CrudServiceBase(IUnitOfWork unitOfWork, IRepository<TEntity, TKey> repository)
+            : base(unitOfWork, repository)
         {
         }
     }
@@ -70,11 +74,13 @@ namespace KissU.Util.Applications
         where TQueryParameter : IQueryParameter
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="CrudServiceBase{TEntity, TDto, TRequest, TQueryParameter, TKey}"/> class.
         /// 初始化增删改查服务
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
         /// <param name="repository">仓储</param>
-        protected CrudServiceBase(IUnitOfWork unitOfWork, IRepository<TEntity, TKey> repository) : base(unitOfWork, repository)
+        protected CrudServiceBase(IUnitOfWork unitOfWork, IRepository<TEntity, TKey> repository)
+            : base(unitOfWork, repository)
         {
         }
     }
@@ -110,11 +116,13 @@ namespace KissU.Util.Applications
         private readonly IRepository<TEntity, TKey> _repository;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="CrudServiceBase{TEntity, TDto, TRequest, TCreateRequest, TUpdateRequest, TQueryParameter, TKey}"/> class.
         /// 初始化增删改查服务
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
         /// <param name="repository">仓储</param>
-        protected CrudServiceBase(IUnitOfWork unitOfWork, IRepository<TEntity, TKey> repository) : base(unitOfWork, repository)
+        protected CrudServiceBase(IUnitOfWork unitOfWork, IRepository<TEntity, TKey> repository)
+            : base(unitOfWork, repository)
         {
             _unitOfWork = unitOfWork;
             _repository = repository;
@@ -124,6 +132,7 @@ namespace KissU.Util.Applications
         /// 转换为实体
         /// </summary>
         /// <param name="request">参数</param>
+        /// <returns>结果</returns>
         protected virtual TEntity ToEntity(TRequest request)
         {
             return request.MapTo<TEntity>();
@@ -133,10 +142,14 @@ namespace KissU.Util.Applications
         /// 创建参数转换为实体
         /// </summary>
         /// <param name="request">创建参数</param>
+        /// <returns>结果</returns>
         protected virtual TEntity ToEntityFromCreateRequest(TCreateRequest request)
         {
             if (typeof(TCreateRequest) == typeof(TRequest))
+            {
                 return ToEntity(Util.Helpers.Convert.To<TRequest>(request));
+            }
+
             return request.MapTo<TEntity>();
         }
 
@@ -144,10 +157,14 @@ namespace KissU.Util.Applications
         /// 修改参数转换为实体
         /// </summary>
         /// <param name="request">修改参数</param>
+        /// <returns>结果</returns>
         protected virtual TEntity ToEntityFromUpdateRequest(TUpdateRequest request)
         {
             if (typeof(TUpdateRequest) == typeof(TRequest))
+            {
                 return ToEntity(Util.Helpers.Convert.To<TRequest>(request));
+            }
+
             return request.MapTo<TEntity>();
         }
 
@@ -155,10 +172,14 @@ namespace KissU.Util.Applications
         /// 参数转换为实体
         /// </summary>
         /// <param name="request">创建参数</param>
+        /// <returns>结果</returns>
         protected virtual TEntity ToEntityFromDto(TDto request)
         {
             if (typeof(TDto) == typeof(TRequest))
+            {
                 return ToEntity(Util.Helpers.Convert.To<TRequest>(request));
+            }
+
             return request.MapTo<TEntity>();
         }
     }
