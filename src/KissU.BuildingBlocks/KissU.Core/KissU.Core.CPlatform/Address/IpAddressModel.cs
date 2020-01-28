@@ -8,9 +8,8 @@ namespace KissU.Core.CPlatform.Address
     /// </summary>
     public sealed class IpAddressModel : AddressModel
     {
-        #region Constructor
-
         /// <summary>
+        /// Initializes a new instance of the <see cref="IpAddressModel"/> class.
         /// 初始化一个新的ip地址模型实例。
         /// </summary>
         public IpAddressModel()
@@ -18,6 +17,7 @@ namespace KissU.Core.CPlatform.Address
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="IpAddressModel"/> class.
         /// 初始化一个新的ip地址模型实例。
         /// </summary>
         /// <param name="ip">ip地址。</param>
@@ -27,10 +27,6 @@ namespace KissU.Core.CPlatform.Address
             Ip = ip;
             Port = port;
         }
-
-        #endregion Constructor
-
-        #region Property
 
         /// <summary>
         /// ip地址。
@@ -42,37 +38,50 @@ namespace KissU.Core.CPlatform.Address
         /// </summary>
         public int Port { get; set; }
 
+        /// <summary>
+        /// 外网ip地址
+        /// </summary>
+        /// <value>The wan ip.</value>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string WanIp { get; set; }
 
+        /// <summary>
+        /// Gets or sets the WS port.
+        /// </summary>
+        /// <value>The ws port.</value>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public int? WsPort { get; set; }
 
+        /// <summary>
+        /// Gets or sets the MQTT port.
+        /// </summary>
+        /// <value>The MQTT port.</value>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public int? MqttPort { get; set; }
 
+        /// <summary>
+        /// Gets or sets the HTTP port.
+        /// </summary>
+        /// <value>The HTTP port.</value>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public int? HttpPort { get; set; }
-
-        #endregion Property
-
-        #region Overrides of AddressModel
 
         /// <summary>
         /// 创建终结点。
         /// </summary>
-        /// <returns></returns>
+        /// <returns>终结点</returns>
         public override EndPoint CreateEndPoint()
         {
             return new IPEndPoint(IPAddress.Parse(Ip), Port);
         }
 
-
+        /// <summary>
+        /// Returns a <see cref="string" /> that represents this instance.
+        /// </summary>
+        /// <returns>A <see cref="string" /> that represents this instance.</returns>
         public override string ToString()
         {
             return string.Concat(new string[] { Ip, ":", Port.ToString() });
         }
-
-        #endregion Overrides of AddressModel
     }
 }

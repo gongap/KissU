@@ -19,6 +19,7 @@ namespace KissU.Core.CPlatform.Address
             {
                 return address;
             }
+
             var ips = Dns.GetHostAddresses(address);
             return ips[0].ToString();
         }
@@ -40,8 +41,10 @@ namespace KissU.Core.CPlatform.Address
                         return true;
                     }
                 }
+
                 return false;
             }
+
             return false;
         }
     }
