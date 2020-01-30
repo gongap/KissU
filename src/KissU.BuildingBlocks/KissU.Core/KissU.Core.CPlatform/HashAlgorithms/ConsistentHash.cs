@@ -5,60 +5,52 @@ using System.Linq;
 namespace KissU.Core.CPlatform.HashAlgorithms
 {
     /// <summary>
-    /// 针对<see cref="T"/>哈希算法实现
+    /// 针对<see cref="T" />哈希算法实现
     /// </summary>
     /// <typeparam name="T">类型</typeparam>
-    /// <remarks>
-    /// 	<para>创建：范亮</para>
-    /// 	<para>日期：2016/4/2</para>
-    /// </remarks>
     public class ConsistentHash<T>
     {
-        #region 字段
         private readonly SortedDictionary<int, T> _ring = new SortedDictionary<int, T>();
         private int[] _nodeKeysInRing = null;
         private readonly IHashAlgorithm _hashAlgorithm;
         private readonly int _virtualNodeReplicationFactor = 1000;
-        #endregion
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ConsistentHash{T}"/> class.
+        /// </summary>
+        /// <param name="hashAlgorithm">The hash algorithm.</param>
         public ConsistentHash(IHashAlgorithm hashAlgorithm)
         {
             _hashAlgorithm = hashAlgorithm;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ConsistentHash{T}"/> class.
+        /// </summary>
+        /// <param name="hashAlgorithm">The hash algorithm.</param>
+        /// <param name="virtualNodeReplicationFactor">The virtual node replication factor.</param>
         public ConsistentHash(IHashAlgorithm hashAlgorithm, int virtualNodeReplicationFactor)
             : this(hashAlgorithm)
         {
             _virtualNodeReplicationFactor = virtualNodeReplicationFactor;
         }
 
-        #region 属性
-
         /// <summary>
         /// 复制哈希节点数
         /// </summary>
-        /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2016/4/2</para>
-        /// </remarks>
         public int VirtualNodeReplicationFactor
         {
             get { return _virtualNodeReplicationFactor; }
         }
-        #endregion
-        
 
         /// <summary>
         /// 添加节点
         /// </summary>
         /// <param name="node">节点</param>
-        /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2016/4/2</para>
-        /// </remarks>
-        public void Add(T node,string value)
+        /// <param name="value">The value.</param>
+        public void Add(T node, string value)
         {
-            AddNode(node,value);
+            AddNode(node, value);
             _nodeKeysInRing = _ring.Keys.ToArray();
         }
 
@@ -66,10 +58,6 @@ namespace KissU.Core.CPlatform.HashAlgorithms
         /// 删除节点
         /// </summary>
         /// <param name="node">节点</param>
-        /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2016/4/2</para>
-        /// </remarks>
         public void Remove(string node)
         {
             RemoveNode(node);
@@ -81,10 +69,6 @@ namespace KissU.Core.CPlatform.HashAlgorithms
         /// </summary>
         /// <param name="item">值</param>
         /// <returns>返回节点</returns>
-        /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2016/4/2</para>
-        /// </remarks>
         public T GetItemNode(string item)
         {
             var hashOfItem = _hashAlgorithm.Hash(item);
@@ -96,11 +80,7 @@ namespace KissU.Core.CPlatform.HashAlgorithms
         /// 添加节点
         /// </summary>
         /// <param name="node">节点</param>
-        /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2016/4/2</para>
-        /// </remarks>
-        private void AddNode(T node,string value)
+        private void AddNode(T node, string value)
         {
             for (var i = 0; i < _virtualNodeReplicationFactor; i++)
             {
@@ -112,11 +92,7 @@ namespace KissU.Core.CPlatform.HashAlgorithms
         /// <summary>
         /// 删除节点
         /// </summary>
-        /// <param name="node">节点</param>
-        /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2016/4/2</para>
-        /// </remarks>
+        /// <param name="value">节点.</param>
         private void RemoveNode(string value)
         {
             for (var i = 0; i < _virtualNodeReplicationFactor; i++)
@@ -126,17 +102,12 @@ namespace KissU.Core.CPlatform.HashAlgorithms
             }
         }
 
-
         /// <summary>
         /// 顺时针查找对应哈希的位置
         /// </summary>
         /// <param name="keys">键集合数</param>
         /// <param name="hashOfItem">哈希值</param>
         /// <returns>返回哈希的位置</returns>
-        /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2016/4/2</para>
-        /// </remarks>
         private int GetClockwiseNearestNode(int[] keys, int hashOfItem)
         {
             var begin = 0;
@@ -145,13 +116,21 @@ namespace KissU.Core.CPlatform.HashAlgorithms
             {
                 return 0;
             }
+
             var mid = begin;
             while ((end - begin) > 1)
             {
                 mid = (end + begin) / 2;
-                if (keys[mid] >= hashOfItem) end = mid;
-                else begin = mid;
+                if (keys[mid] >= hashOfItem)
+                {
+                    end = mid;
+                }
+                else
+                {
+                    begin = mid;
+                }
             }
+
             return end;
         }
     }

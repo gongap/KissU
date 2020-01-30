@@ -3,12 +3,12 @@
 namespace KissU.Core.CPlatform.Exceptions
 {
     /// <summary>
-    /// Model、DTO等对象校验异常
+    /// 对象校验异常
     /// </summary>
     public class ValidateException : CPlatformException
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ValidateException"/> class.
+        /// Initializes a new instance of the <see cref="ValidateException" /> class.
         /// 初始构造函数
         /// </summary>
         /// <param name="message">异常信息</param>

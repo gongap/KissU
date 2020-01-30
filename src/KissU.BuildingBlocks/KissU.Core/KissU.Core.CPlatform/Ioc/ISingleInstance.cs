@@ -1,6 +1,9 @@
 ﻿namespace KissU.Core.CPlatform.Ioc
 {
-   public interface ISingleInstance
+    /// <summary>
+    /// 单实例
+    /// </summary>
+    public interface ISingleInstance
     {
     }
 }

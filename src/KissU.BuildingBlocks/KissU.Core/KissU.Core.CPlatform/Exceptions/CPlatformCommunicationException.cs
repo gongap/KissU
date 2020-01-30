@@ -8,14 +8,15 @@ namespace KissU.Core.CPlatform.Exceptions
     public class CPlatformCommunicationException : CPlatformException
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="CPlatformCommunicationException"/> class.
         /// 初始化构造函数
         /// </summary>
         /// <param name="message">异常消息。</param>
         /// <param name="innerException">内部异常。</param>
-        public CPlatformCommunicationException(string message,int StatusCode=0, Exception innerException = null) : base(message, innerException)
+        public CPlatformCommunicationException(string message,int StatusCode=0, Exception innerException = null)
+            : base(message, innerException)
         {
-            base.HResult = StatusCode;
+            HResult = StatusCode;
         }
-
     }
 }

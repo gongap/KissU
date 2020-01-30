@@ -2,21 +2,27 @@
 
 namespace KissU.Core.CPlatform.EventBus.Events
 {
+    /// <summary>
+    /// 集成事件处理程序
+    /// Implements the <see cref="IIntegrationEventHandler" />
+    /// </summary>
+    /// <typeparam name="TIntegrationEvent">The type of the t integration event.</typeparam>
+    /// <seealso cref="IIntegrationEventHandler" />
     public interface IIntegrationEventHandler<in TIntegrationEvent> : IIntegrationEventHandler
     {
+        /// <summary>
+        /// 处理.
+        /// </summary>
+        /// <param name="event">The event.</param>
+        /// <returns>Task.</returns>
         Task Handle(TIntegrationEvent @event);
     }
 
-    public abstract class BaseIntegrationEventHandler<TIntegrationEvent> : IIntegrationEventHandler<TIntegrationEvent>
-    {
-        public abstract Task Handle(TIntegrationEvent @event);
-
-        public virtual  async  Task Handled(EventContext context)
-        {
-            await Task.CompletedTask;
-        }
-    }
-
+    /// <summary>
+    /// 集成事件处理程序
+    /// Implements the <see cref="IIntegrationEventHandler" />
+    /// </summary>
+    /// <seealso cref="IIntegrationEventHandler" />
     public interface IIntegrationEventHandler
     {
     }

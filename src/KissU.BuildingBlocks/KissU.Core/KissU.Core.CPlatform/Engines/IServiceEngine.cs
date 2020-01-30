@@ -1,6 +1,9 @@
 ﻿namespace KissU.Core.CPlatform.Engines
 {
-   public interface IServiceEngine
+    /// <summary>
+    /// 服务引擎
+    /// </summary>
+    public interface IServiceEngine
     {
     }
 }

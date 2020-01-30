@@ -5,12 +5,31 @@ using KissU.Core.CPlatform.Utilities;
 
 namespace KissU.Core.CPlatform.Filters.Implementation
 {
+    /// <summary>
+    /// 异常过滤器属性.
+    /// Implements the <see cref="FilterAttribute" />
+    /// Implements the <see cref="IExceptionFilter" />
+    /// Implements the <see cref="IFilter" />
+    /// </summary>
+    /// <seealso cref="FilterAttribute" />
+    /// <seealso cref="IExceptionFilter" />
+    /// <seealso cref="IFilter" />
     public abstract class ExceptionFilterAttribute : FilterAttribute, IExceptionFilter, IFilter
     {
+        /// <summary>
+        /// Called when [exception].
+        /// </summary>
+        /// <param name="actionExecutedContext">The action executed context.</param>
         public virtual void OnException(RpcActionExecutedContext actionExecutedContext)
         {
-
         }
+
+        /// <summary>
+        /// Called when [exception asynchronous].
+        /// </summary>
+        /// <param name="actionExecutedContext">The action executed context.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>Task.</returns>
         public virtual Task OnExceptionAsync(RpcActionExecutedContext actionExecutedContext, CancellationToken cancellationToken)
         {
             try
@@ -25,6 +44,12 @@ namespace KissU.Core.CPlatform.Filters.Implementation
             return TaskHelpers.Completed();
         }
 
+        /// <summary>
+        /// 异步执行异常过滤器.
+        /// </summary>
+        /// <param name="actionExecutedContext">The action executed context.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>Task.</returns>
         Task IExceptionFilter.ExecuteExceptionFilterAsync(RpcActionExecutedContext actionExecutedContext, CancellationToken cancellationToken)
         {
             Check.NotNull(actionExecutedContext, "actionExecutedContext");
