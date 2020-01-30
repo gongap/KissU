@@ -4,51 +4,65 @@ using Microsoft.Extensions.Configuration;
 
 namespace KissU.Core.CPlatform.Configurations.Remote
 {
-   public class RemoteConfigurationSource : IConfigurationSource
+    /// <summary>
+    /// 远程配置源.
+    /// Implements the <see cref="IConfigurationSource" />
+    /// </summary>
+    /// <seealso cref="IConfigurationSource" />
+    public class RemoteConfigurationSource : IConfigurationSource
     {
         /// <summary>
-        /// The uri to call to fetch 
+        /// The uri to call to fetch
         /// </summary>
+        /// <value>The configuration URI.</value>
         public Uri ConfigurationUri { get; set; }
 
         /// <summary>
-        /// Determines if the remote source is optional 
+        /// Determines if the remote source is optional
         /// </summary>
+        /// <value><c>true</c> if optional; otherwise, <c>false</c>.</value>
         public bool Optional { get; set; }
 
         /// <summary>
-        /// The HttpMessageHandler used to communicate with remote configuration provider.
+        /// 用于与远程配置提供程序通信的HttpMessageHandler.
         /// </summary>
+        /// <value>The backchannel HTTP handler.</value>
         public HttpMessageHandler BackchannelHttpHandler { get; set; }
 
         /// <summary>
-        /// Gets or sets timeout value in milliseconds for back channel communications with the remote identity provider.
+        /// 与远程标识提供者的反向通道通信的超时值（以毫秒为单位）.
         /// </summary>
-        /// <value>
-        /// The back channel timeout.
-        /// </value>
         public TimeSpan BackchannelTimeout { get; set; } = TimeSpan.FromSeconds(60);
 
         /// <summary>
         /// Parser for parsing the returned data into the required configuration source
         /// </summary>
+        /// <value>The parser.</value>
         public IConfigurationParser Parser { get; set; }
 
         /// <summary>
         /// The accept header used to create a MediaTypeWithQualityHeaderValue
         /// </summary>
+        /// <value>The type of the media.</value>
         public string MediaType { get; set; } = "application/json";
 
         /// <summary>
         /// Events providing hooks into the remote call
         /// </summary>
+        /// <value>The events.</value>
         public RemoteConfigurationEvents Events { get; set; } = new RemoteConfigurationEvents();
 
         /// <summary>
         /// If provided, keys loaded from endpoint will be prefixed with the provided value
         /// </summary>
+        /// <value>The configuration key prefix.</value>
         public string ConfigurationKeyPrefix { get; set; }
 
+        /// <summary>
+        /// Build the <see cref="T:Microsoft.Extensions.Configuration.IConfigurationProvider" /> for this source.
+        /// </summary>
+        /// <param name="builder">The <see cref="T:Microsoft.Extensions.Configuration.IConfigurationBuilder" />.</param>
+        /// <returns>An <see cref="T:Microsoft.Extensions.Configuration.IConfigurationProvider" /></returns>
         public IConfigurationProvider Build(IConfigurationBuilder builder)
         {
             return new RemoteConfigurationProvider(this);

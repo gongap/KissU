@@ -4,28 +4,30 @@ using Microsoft.Extensions.Configuration;
 namespace KissU.Core.CPlatform.Configurations.Remote
 {
     /// <summary>
-    /// Extension methods for adding <see cref="RemoteConfigurationProvider"/>.
+    /// 远程配置扩展.
     /// </summary>
     public static class RemoteConfigurationExtensions
     {
         /// <summary>
-        /// Adds a remote configuration source to <paramref name="builder"/>.
+        /// Adds a remote configuration source to <paramref name="builder" />.
         /// </summary>
-        /// <param name="builder">The <see cref="IConfigurationBuilder"/> to add to.</param>
-        /// <param name="configurationUri">The remote uri to </param>
-        /// <returns>The <see cref="IConfigurationBuilder"/>.</returns>
+        /// <param name="builder">The <see cref="IConfigurationBuilder" /> to add to.</param>
+        /// <param name="configurationUri">The remote uri to</param>
+        /// <returns>The <see cref="IConfigurationBuilder" />.</returns>
         public static IConfigurationBuilder AddRemoteSource(this IConfigurationBuilder builder, Uri configurationUri)
         {
             return builder.AddRemoteSource(configurationUri, optional: false);
         }
 
         /// <summary>
-        /// Adds a remote configuration source to <paramref name="builder"/>.
+        /// Adds a remote configuration source to <paramref name="builder" />.
         /// </summary>
-        /// <param name="builder">The <see cref="IConfigurationBuilder"/> to add to.</param>
-        /// <param name="configurationUri">The remote uri to </param>
+        /// <param name="builder">The <see cref="IConfigurationBuilder" /> to add to.</param>
+        /// <param name="configurationUri">The remote uri to</param>
         /// <param name="optional">Whether the remote configuration source is optional.</param>
-        /// <returns>The <see cref="IConfigurationBuilder"/>.</returns>
+        /// <returns>The <see cref="IConfigurationBuilder" />.</returns>
+        /// <exception cref="ArgumentNullException">builder</exception>
+        /// <exception cref="ArgumentNullException">configurationUri</exception>
         public static IConfigurationBuilder AddRemoteSource(this IConfigurationBuilder builder, Uri configurationUri, bool optional)
         {
             if (builder == null)
@@ -48,13 +50,16 @@ namespace KissU.Core.CPlatform.Configurations.Remote
         }
 
         /// <summary>
-        /// Adds a remote configuration source to <paramref name="builder"/>.
+        /// Adds a remote configuration source to <paramref name="builder" />.
         /// </summary>
-        /// <param name="builder">The <see cref="IConfigurationBuilder"/> to add to.</param>
-        /// <param name="configurationUri">The remote uri to </param>
-        /// <param name="optional">Whether the remote configuration source is optional.</param> 
-        /// <param name="events">Events that get add </param>
-        /// <returns>The <see cref="IConfigurationBuilder"/>.</returns>
+        /// <param name="builder">The <see cref="IConfigurationBuilder" /> to add to.</param>
+        /// <param name="configurationUri">The remote uri to</param>
+        /// <param name="optional">Whether the remote configuration source is optional.</param>
+        /// <param name="events">Events that get add</param>
+        /// <returns>The <see cref="IConfigurationBuilder" />.</returns>
+        /// <exception cref="ArgumentNullException">builder</exception>
+        /// <exception cref="ArgumentNullException">configurationUri</exception>
+        /// <exception cref="ArgumentNullException">events</exception>
         public static IConfigurationBuilder AddRemoteSource(this IConfigurationBuilder builder, Uri configurationUri, bool optional, RemoteConfigurationEvents events)
         {
             if (builder == null)
@@ -81,7 +86,15 @@ namespace KissU.Core.CPlatform.Configurations.Remote
 
             return builder.AddRemoteSource(source);
         }
-        
+
+        /// <summary>
+        /// Adds the remote source.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="source">The source.</param>
+        /// <returns>IConfigurationBuilder.</returns>
+        /// <exception cref="ArgumentNullException">builder</exception>
+        /// <exception cref="ArgumentNullException">source</exception>
         public static IConfigurationBuilder AddRemoteSource(this IConfigurationBuilder builder, RemoteConfigurationSource source)
         {
             if (builder == null)

@@ -13,6 +13,6 @@
         /// <summary>
         /// Swarm集群模式
         /// </summary>
-        Swarm
+        Swarm,
     }
 }

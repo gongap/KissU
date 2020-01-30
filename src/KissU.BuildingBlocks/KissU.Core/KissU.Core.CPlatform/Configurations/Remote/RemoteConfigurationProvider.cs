@@ -6,8 +6,17 @@ using Microsoft.Extensions.Configuration;
 
 namespace KissU.Core.CPlatform.Configurations.Remote
 {
-    class RemoteConfigurationProvider : ConfigurationProvider
+    /// <summary>
+    /// 远程配置提供者.
+    /// Implements the <see cref="ConfigurationProvider" />
+    /// </summary>
+    /// <seealso cref="ConfigurationProvider" />
+    internal class RemoteConfigurationProvider : ConfigurationProvider
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RemoteConfigurationProvider"/> class.
+        /// </summary>
+        /// <param name="source"></param>
         public RemoteConfigurationProvider(RemoteConfigurationSource source)
         {
             Check.NotNull(source, "source");
@@ -16,11 +25,12 @@ namespace KissU.Core.CPlatform.Configurations.Remote
                 Check.CheckCondition(() => source.ConfigurationKeyPrefix.Trim().StartsWith(":"), CPlatformResource.InvalidStartCharacter, "source.ConfigurationKeyPrefix", ":");
                 Check.CheckCondition(() => source.ConfigurationKeyPrefix.Trim().EndsWith(":"), CPlatformResource.InvalidEndCharacter, "source.ConfigurationKeyPrefix",":");
             }
+
             Source = source;
             Backchannel = new HttpClient(source.BackchannelHttpHandler ?? new HttpClientHandler());
             Backchannel.DefaultRequestHeaders.UserAgent.ParseAdd("获取CacheConfiugration信息");
             Backchannel.Timeout = source.BackchannelTimeout;
-            Backchannel.MaxResponseContentBufferSize = 1024 * 1024 * 10; 
+            Backchannel.MaxResponseContentBufferSize = 1024 * 1024 * 10;
             Parser = source.Parser ?? new JsonConfigurationParser();
         }
 
@@ -29,7 +39,11 @@ namespace KissU.Core.CPlatform.Configurations.Remote
         public IConfigurationParser Parser { get; }
 
         public HttpClient Backchannel { get; }
-        
+
+        /// <summary>
+        /// Loads (or reloads) the data for this provider.
+        /// </summary>
+        /// <exception cref="Exception">调用远程配置终结点发生错误</exception>
         public override void Load()
         {
             var requestMessage = new HttpRequestMessage(HttpMethod.Get, Source.ConfigurationUri);

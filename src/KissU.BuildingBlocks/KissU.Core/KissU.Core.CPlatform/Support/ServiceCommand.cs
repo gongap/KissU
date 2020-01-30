@@ -4,8 +4,14 @@ using Newtonsoft.Json.Converters;
 
 namespace KissU.Core.CPlatform.Support
 {
+    /// <summary>
+    /// 服务指令.
+    /// </summary>
     public class ServiceCommand
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ServiceCommand" /> class.
+        /// </summary>
         public ServiceCommand()
         {
             if (AppConfig.ServerOptions != null)
@@ -56,7 +62,7 @@ namespace KissU.Core.CPlatform.Support
         /// 注入
         /// </summary>
         public string Injection { get; set; } = "return null";
-        
+
         /// <summary>
         /// IFallbackInvoker 实例名称
         /// </summary>

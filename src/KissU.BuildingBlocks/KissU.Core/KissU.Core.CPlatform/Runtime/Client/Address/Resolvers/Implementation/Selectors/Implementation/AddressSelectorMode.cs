@@ -6,12 +6,12 @@
     public enum AddressSelectorMode
     {
         /// <summary>
-        /// Hash算法
+        /// 哈希算法
         /// </summary>
         HashAlgorithm,
 
         /// <summary>
-        /// 轮训
+        /// 轮询
         /// </summary>
         Polling,
 

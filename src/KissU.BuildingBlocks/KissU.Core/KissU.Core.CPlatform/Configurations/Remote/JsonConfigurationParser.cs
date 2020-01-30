@@ -10,25 +10,45 @@ using Newtonsoft.Json.Linq;
 
 namespace KissU.Core.CPlatform.Configurations.Remote
 {
-   public  class JsonConfigurationParser : IConfigurationParser
+    /// <summary>
+    /// Json配置解析器.
+    /// Implements the <see cref="IConfigurationParser" />
+    /// </summary>
+    /// <seealso cref="IConfigurationParser" />
+    public class JsonConfigurationParser : IConfigurationParser
     {
         private readonly IDictionary<string, string> _data = new SortedDictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         private readonly Stack<string> _context = new Stack<string>();
         private string _currentPath;
-
         private JsonTextReader _reader;
-        
+
+        /// <summary>
+        /// 解析.
+        /// </summary>
+        /// <param name="input">The input.</param>
+        /// <param name="initialContext">The initial context.</param>
+        /// <returns>IDictionary&lt;System.String, System.String&gt;.</returns>
+        /// <exception cref="FormatException">格式异常</exception>
         public IDictionary<string, string> Parse(Stream input, string initialContext)
         {
             try
             {
                 _data.Clear();
-                _reader = new JsonTextReader(new StreamReader(input));
-                _reader.DateParseHandling = DateParseHandling.None;
-                var jsonConfig = JObject.Load(_reader);
-                if (!string.IsNullOrEmpty(initialContext)) { EnterContext(initialContext); }
+                _reader = new JsonTextReader(new StreamReader(input))
+                {
+                    DateParseHandling = DateParseHandling.None,
+                };
+                JObject jsonConfig = JObject.Load(_reader);
+                if (!string.IsNullOrEmpty(initialContext))
+                {
+                    EnterContext(initialContext);
+                }
+
                 VisitJObject(jsonConfig);
-                if (!string.IsNullOrEmpty(initialContext)) { ExitContext(); }
+                if (!string.IsNullOrEmpty(initialContext))
+                {
+                    ExitContext();
+                }
 
                 return _data;
             }
@@ -40,25 +60,29 @@ namespace KissU.Core.CPlatform.Configurations.Remote
                     input.Seek(0, SeekOrigin.Begin);
 
                     IEnumerable<string> fileContent;
-                    using (var streamReader = new StreamReader(input))
+                    using (StreamReader streamReader = new StreamReader(input))
                     {
                         fileContent = ReadLines(streamReader);
                         errorLine = RetrieveErrorContext(e, fileContent);
                     }
                 }
 
-                throw new FormatException(string.Format(
+                throw new FormatException(
+                    string.Format(
                         CPlatformResource.JSONParseException,
                         e.LineNumber,
                         errorLine),
                     e);
             }
-
         }
 
+        /// <summary>
+        /// Visit the jobject.
+        /// </summary>
+        /// <param name="jObject">The j object.</param>
         private void VisitJObject(JObject jObject)
         {
-            foreach (var property in jObject.Properties())
+            foreach (JProperty property in jObject.Properties())
             {
                 EnterContext(property.Name);
                 VisitProperty(property);
@@ -66,11 +90,20 @@ namespace KissU.Core.CPlatform.Configurations.Remote
             }
         }
 
+        /// <summary>
+        /// Visits the property.
+        /// </summary>
+        /// <param name="property">The property.</param>
         private void VisitProperty(JProperty property)
         {
             VisitToken(property.Value);
         }
 
+        /// <summary>
+        /// Visits the token.
+        /// </summary>
+        /// <param name="token">The token.</param>
+        /// <exception cref="FormatException">格式异常</exception>
         private void VisitToken(JToken token)
         {
             switch (token.Type)
@@ -96,13 +129,17 @@ namespace KissU.Core.CPlatform.Configurations.Remote
                 default:
                     throw new FormatException(string.Format(
                        CPlatformResource.UnsupportedJSONToken,
-                        _reader.TokenType,
-                        _reader.Path,
-                        _reader.LineNumber,
-                        _reader.LinePosition));
+                       _reader.TokenType,
+                       _reader.Path,
+                       _reader.LineNumber,
+                       _reader.LinePosition));
             }
         }
 
+        /// <summary>
+        /// Visit the array.
+        /// </summary>
+        /// <param name="array">The array.</param>
         private void VisitArray(JArray array)
         {
             for (int index = 0; index < array.Count; index++)
@@ -113,25 +150,41 @@ namespace KissU.Core.CPlatform.Configurations.Remote
             }
         }
 
+        /// <summary>
+        /// Visit the primitive.
+        /// </summary>
+        /// <param name="data">The data.</param>
         private void VisitPrimitive(JToken data)
         {
-            var key = _currentPath;
+            string key = _currentPath;
             Check.CheckCondition(() => _data.ContainsKey(key), "key");
             _data[key] = EnvironmentHelper.GetEnvironmentVariable(data.ToString());
         }
 
+        /// <summary>
+        /// Enter the context.
+        /// </summary>
+        /// <param name="context">The context.</param>
         private void EnterContext(string context)
         {
             _context.Push(context);
             _currentPath = ConfigurationPath.Combine(_context.Reverse());
         }
 
+        /// <summary>
+        /// Exit the context.
+        /// </summary>
         private void ExitContext()
         {
             _context.Pop();
             _currentPath = ConfigurationPath.Combine(_context.Reverse());
         }
 
+        /// <summary>
+        /// Read the lines.
+        /// </summary>
+        /// <param name="streamReader">The stream reader.</param>
+        /// <returns>IEnumerable&lt;System.String&gt;.</returns>
         private static IEnumerable<string> ReadLines(StreamReader streamReader)
         {
             string line;
@@ -143,32 +196,43 @@ namespace KissU.Core.CPlatform.Configurations.Remote
             while (line != null);
         }
 
+        /// <summary>
+        /// Retrieves the error context.
+        /// </summary>
+        /// <param name="e">The e.</param>
+        /// <param name="fileContent">Content of the file.</param>
+        /// <returns>System.String.</returns>
         private static string RetrieveErrorContext(JsonReaderException e, IEnumerable<string> fileContent)
         {
             string errorLine;
             if (e.LineNumber >= 2)
             {
-                var errorContext = fileContent.Skip(e.LineNumber - 2).Take(2).ToList();
+                List<string> errorContext = fileContent.Skip(e.LineNumber - 2).Take(2).ToList();
                 errorLine = errorContext[0].Trim() + Environment.NewLine + errorContext[1].Trim();
             }
             else
             {
-                var possibleLineContent = fileContent.Skip(e.LineNumber - 1).FirstOrDefault();
+                string possibleLineContent = fileContent.Skip(e.LineNumber - 1).FirstOrDefault();
                 errorLine = possibleLineContent ?? string.Empty;
             }
 
             return errorLine;
         }
 
+        /// <summary>
+        /// Gets the parameters.
+        /// </summary>
+        /// <param name="text">The text.</param>
+        /// <returns>List&lt;System.String&gt;.</returns>
         private static List<string> GetParameters(string text)
         {
             var matchVale = new List<string>();
-            string Reg = @"(?<=\${)[^\${}]*(?=})";
-            string key = string.Empty;
-            foreach (Match m in Regex.Matches(text, Reg))
+            var reg = @"(?<=\${)[^\${}]*(?=})";
+            foreach (Match m in Regex.Matches(text, reg))
             {
                 matchVale.Add(m.Value);
             }
+
             return matchVale;
         }
     }
