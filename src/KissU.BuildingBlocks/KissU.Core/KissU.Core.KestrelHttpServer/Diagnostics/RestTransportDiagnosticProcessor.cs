@@ -41,7 +41,7 @@ namespace KissU.Core.KestrelHttpServer.Diagnostics
         [DiagnosticName(KissUEvents.KissUBeforeTransport, TransportType.Rest)]
         public void TransportBefore([Object] TransportEventData eventData)
         {
-            var message = eventData.Message.GetContent<HttpMessage>();
+            var message = eventData.Message.GetContent<HttpRequestMessage>();
             var operationName = TransportOperationNameResolver(eventData);
             var context = _tracingContext.CreateEntrySegmentContext(operationName,
                 new RestTransportCarrierHeaderCollection(eventData.Headers));

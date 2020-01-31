@@ -8,38 +8,49 @@ namespace KissU.Core.CPlatform.Messages
     /// </summary>
     public class TransportMessage
     {
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TransportMessage"/> class.
+        /// </summary>
         public TransportMessage()
         {
         }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TransportMessage"/> class.
+        /// </summary>
+        /// <param name="content">The content.</param>
+        /// <exception cref="ArgumentNullException">content</exception>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public TransportMessage(object content)
         {
-            if (content == null)
-                throw new ArgumentNullException(nameof(content));
-
-            Content = content;
+            Content = content ?? throw new ArgumentNullException(nameof(content));
             ContentType = content.GetType().FullName;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TransportMessage"/> class.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="content">The content.</param>
+        /// <exception cref="ArgumentNullException">content</exception>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public TransportMessage(string id, object content)
         {
-            if (content == null)
-                throw new ArgumentNullException(nameof(content));
-
-            Id = id; 
-            Content = content;
+            Id = id;
+            Content = content ?? throw new ArgumentNullException(nameof(content));
             ContentType = content.GetType().FullName;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TransportMessage"/> class.
+        /// </summary>
+        /// <param name="content">The content.</param>
+        /// <param name="fullName">The full name.</param>
+        /// <exception cref="ArgumentNullException">content</exception>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public TransportMessage(object content, string fullName)
         {
-            if (content == null)
-                throw new ArgumentNullException(nameof(content));
-
-            Content = content;
+            Content = content ?? throw new ArgumentNullException(nameof(content));
             ContentType = fullName;
         }
 
@@ -78,12 +89,20 @@ namespace KissU.Core.CPlatform.Messages
             return ContentType == MessagePackTransportMessageType.remoteInvokeResultMessageTypeName;
         }
 
+        /// <summary>
+        /// Determines whether [is HTTP message].
+        /// </summary>
+        /// <returns><c>true</c> if [is HTTP message]; otherwise, <c>false</c>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool IsHttpMessage()
         {
             return ContentType == MessagePackTransportMessageType.httpMessageTypeName;
         }
 
+        /// <summary>
+        /// Determines whether [is HTTP result message].
+        /// </summary>
+        /// <returns><c>true</c> if [is HTTP result message]; otherwise, <c>false</c>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool IsHttpResultMessage()
         {
@@ -94,7 +113,7 @@ namespace KissU.Core.CPlatform.Messages
         /// 获取内容。
         /// </summary>
         /// <typeparam name="T">内容类型。</typeparam>
-        /// <returns>内容实例。</returns> 
+        /// <returns>内容实例。</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public T GetContent<T>()
         {
@@ -105,12 +124,12 @@ namespace KissU.Core.CPlatform.Messages
         /// 创建一个调用传输消息。
         /// </summary>
         /// <param name="invokeMessage">调用实例。</param>
-        /// <returns>调用传输消息。</returns>  
+        /// <returns>调用传输消息。</returns>
         public static TransportMessage CreateInvokeMessage(RemoteInvokeMessage invokeMessage)
         {
             return new TransportMessage(invokeMessage, MessagePackTransportMessageType.remoteInvokeMessageTypeName)
             {
-                Id = Guid.NewGuid().ToString("N")
+                Id = Guid.NewGuid().ToString("N"),
             };
         }
 
@@ -119,12 +138,12 @@ namespace KissU.Core.CPlatform.Messages
         /// </summary>
         /// <param name="id">消息Id。</param>
         /// <param name="invokeResultMessage">调用结果实例。</param>
-        /// <returns>调用结果传输消息。</returns>  
+        /// <returns>调用结果传输消息。</returns>
         public static TransportMessage CreateInvokeResultMessage(string id, RemoteInvokeResultMessage invokeResultMessage)
         {
             return new TransportMessage(invokeResultMessage, MessagePackTransportMessageType.remoteInvokeResultMessageTypeName)
             {
-                Id = id
+                Id = id,
             };
         }
     }

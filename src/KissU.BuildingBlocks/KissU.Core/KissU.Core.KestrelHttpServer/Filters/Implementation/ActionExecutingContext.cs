@@ -6,7 +6,7 @@ namespace KissU.Core.KestrelHttpServer.Filters.Implementation
 {
    public  class ActionExecutingContext
     {
-        public HttpMessage Message { get; internal set; }
+        public HttpRequestMessage Message { get; internal set; }
 
         public ServiceRoute Route { get; internal set; }
 

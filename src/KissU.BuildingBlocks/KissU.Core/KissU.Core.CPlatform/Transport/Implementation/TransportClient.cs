@@ -174,7 +174,7 @@ namespace KissU.Core.CPlatform.Transport.Implementation
                     ContentType = message.ContentType,
                     Id = message.Id,
                     MessageName = remoteInvokeMessage.ServiceId
-                }, remoteInvokeMessage.DecodeJOject ? RpcMethod.Json_Rpc.ToString() : RpcMethod.Proxy_Rpc.ToString(),
+                }, remoteInvokeMessage.DecodeJObject ? RpcMethod.Json_Rpc.ToString() : RpcMethod.Proxy_Rpc.ToString(),
                  traceId?.ToString(),
                 RpcContext.GetContext().GetAttachment("RemoteAddress")?.ToString()));
             }

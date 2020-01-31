@@ -63,10 +63,10 @@ namespace KissU.Core.KestrelHttpServer
 
             if (!message.IsHttpMessage())
                 return;
-            HttpMessage httpMessage;
+            HttpRequestMessage httpMessage;
             try
             {
-                httpMessage = message.GetContent<HttpMessage>();
+                httpMessage = message.GetContent<HttpRequestMessage>();
             }
             catch (Exception exception)
             {
@@ -100,25 +100,25 @@ namespace KissU.Core.KestrelHttpServer
 
         #region Private Method
 
-        private async Task<HttpResultMessage<object>> RemoteExecuteAsync(HttpMessage httpMessage)
+        private async Task<HttpResultMessage<object>> RemoteExecuteAsync(HttpRequestMessage httpMessage)
         {
             HttpResultMessage<object> resultMessage = new HttpResultMessage<object>();
             try
             {
-                resultMessage.Entity = await _serviceProxyProvider.Invoke<object>(httpMessage.Parameters, httpMessage.RoutePath, httpMessage.ServiceKey);
-                resultMessage.IsSucceed = resultMessage.Entity != default;
+                resultMessage.Data = await _serviceProxyProvider.Invoke<object>(httpMessage.Parameters, httpMessage.RoutePath, httpMessage.ServiceKey);
+                resultMessage.IsSucceed = resultMessage.Data != default;
                 resultMessage.StatusCode = resultMessage.IsSucceed ? (int)StatusCode.Success : (int)StatusCode.RequestError;
             }
             catch (Exception ex)
             {
                 if (_logger.IsEnabled(LogLevel.Error))
                     _logger.LogError(ex, "执行远程调用逻辑时候发生了错误。");
-                resultMessage = new HttpResultMessage<object> { Entity = null, Message = "执行发生了错误。", StatusCode = (int)StatusCode.RequestError };
+                resultMessage = new HttpResultMessage<object> { Data = null, Message = "执行发生了错误。", StatusCode = (int)StatusCode.RequestError };
             }
             return resultMessage;
         }
 
-        private async Task<HttpResultMessage<object>> LocalExecuteAsync(ServiceEntry entry, HttpMessage httpMessage)
+        private async Task<HttpResultMessage<object>> LocalExecuteAsync(ServiceEntry entry, HttpRequestMessage httpMessage)
         {
             HttpResultMessage<object> resultMessage = new HttpResultMessage<object>();
             try
@@ -128,17 +128,17 @@ namespace KissU.Core.KestrelHttpServer
 
                 if (task == null)
                 {
-                    resultMessage.Entity = result;
+                    resultMessage.Data = result;
                 }
                 else
                 {
                     task.Wait();
                     var taskType = task.GetType().GetTypeInfo();
                     if (taskType.IsGenericType)
-                        resultMessage.Entity = taskType.GetProperty("Result").GetValue(task);
+                        resultMessage.Data = taskType.GetProperty("Result").GetValue(task);
                 }
 
-                resultMessage.IsSucceed = resultMessage.Entity != null;
+                resultMessage.IsSucceed = resultMessage.Data != null;
                 resultMessage.StatusCode =
                     resultMessage.IsSucceed ? (int)StatusCode.Success : (int)StatusCode.RequestError;
             }
@@ -197,7 +197,7 @@ namespace KissU.Core.KestrelHttpServer
             {
                 RpcContext.GetContext().SetAttachment("TraceId", message.Id);
                 var diagnosticListener = new DiagnosticListener(DiagnosticListenerExtensions.DiagnosticListenerName);
-                var remoteInvokeMessage = message.GetContent<HttpMessage>();
+                var remoteInvokeMessage = message.GetContent<HttpRequestMessage>();
                 diagnosticListener.WriteTransportBefore(TransportType.Rest, new TransportEventData(new DiagnosticMessage
                 {
                     Content = message.Content,

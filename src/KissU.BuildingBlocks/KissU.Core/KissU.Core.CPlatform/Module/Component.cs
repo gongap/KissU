@@ -2,35 +2,30 @@
 
 namespace KissU.Core.CPlatform.Module
 {
-    #region 组件生命周期枚举类
-    
-    public enum LifetimeScope
-    {
-        InstancePerDependency,
-        
-        InstancePerHttpRequest,
-        
-        SingleInstance
-    }
-
-    #endregion
-
-    #region 组件类
-    
+    /// <summary>
+    /// 组件类
+    /// </summary>
     public class Component
     {
-        #region 实例属性
-        
+        /// <summary>
+        /// 服务类型.
+        /// </summary>
         public string ServiceType { get; set; }
 
+        /// <summary>
+        /// 实现的类型.
+        /// </summary>
         public string ImplementType { get; set; }
 
+        /// <summary>
+        /// 生命周期范围
+        /// </summary>
         public LifetimeScope LifetimeScope { get; set; }
 
-        #endregion
-
-        #region 实例方法
-        
+        /// <summary>
+        /// Returns a <see cref="string" /> that represents this instance.
+        /// </summary>
+        /// <returns>A <see cref="string" /> that represents this instance.</returns>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
@@ -41,9 +36,5 @@ namespace KissU.Core.CPlatform.Module
             sb.AppendFormat("生命周期：{0}", LifetimeScope);
             return sb.ToString();
         }
-
-        #endregion
     }
-
-    #endregion
 }

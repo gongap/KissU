@@ -5,7 +5,12 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.CPlatform.Module
 {
-    public class ModuleProvider: IModuleProvider
+    /// <summary>
+    /// 模块提供器.
+    /// Implements the <see cref="KissU.Core.CPlatform.Module.IModuleProvider" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Module.IModuleProvider" />
+    public class ModuleProvider : IModuleProvider
     {
         private readonly List<AbstractModule> _modules;
         private readonly string[] _virtualPaths;
@@ -13,15 +18,13 @@ namespace KissU.Core.CPlatform.Module
         private readonly ILogger<ModuleProvider> _logger;
 
         /// <summary>
-        /// 模块提供器 
+        /// Initializes a new instance of the <see cref="ModuleProvider"/> class.
         /// </summary>
-        /// <param name="modules"></param>
-        /// <param name="logger"></param>
-        /// <param name="serviceProvoider"></param>
-        public ModuleProvider(List<AbstractModule> modules,
-            string[] virtualPaths,
-            ILogger<ModuleProvider> logger,
-            CPlatformContainer serviceProvoider)
+        /// <param name="modules">The modules.</param>
+        /// <param name="virtualPaths">The virtual paths.</param>
+        /// <param name="logger">The logger.</param>
+        /// <param name="serviceProvoider">The service provoider.</param>
+        public ModuleProvider(List<AbstractModule> modules, string[] virtualPaths, ILogger<ModuleProvider> logger, CPlatformContainer serviceProvoider)
         {
             _modules = modules;
             _virtualPaths = virtualPaths;
@@ -29,24 +32,38 @@ namespace KissU.Core.CPlatform.Module
             _logger = logger;
         }
 
+        /// <summary>
+        /// 模块集合.
+        /// </summary>
         public List<AbstractModule> Modules { get => _modules; }
 
+        /// <summary>
+        /// 虚拟路径.
+        /// </summary>
         public string[] VirtualPaths { get => _virtualPaths; }
 
+        /// <summary>
+        /// 初始化.
+        /// </summary>
         public virtual void Initialize()
         {
             _modules.ForEach(p =>
             {
                 try
                 {
-                    Type[] types = { typeof(SystemModule), typeof(BusinessModule), typeof(EnginePartModule), typeof(AbstractModule) }; 
+                    Type[] types = { typeof(SystemModule), typeof(BusinessModule), typeof(EnginePartModule), typeof(AbstractModule) };
                     if (p.Enable)
-                            p.Initialize(new AppModuleContext(_modules, _virtualPaths, _serviceProvoider));
+                    {
+                        p.Initialize(new AppModuleContext(_modules, _virtualPaths, _serviceProvoider));
+                    }
+
                     var type = p.GetType().BaseType;
                     if (types.Any(ty => ty == type))
+                    {
                         p.Dispose();
+                    }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     throw ex;
                 }
@@ -54,6 +71,9 @@ namespace KissU.Core.CPlatform.Module
             WriteLog();
         }
 
+        /// <summary>
+        /// 写日志.
+        /// </summary>
         public void WriteLog()
         {
             if (_logger.IsEnabled(LogLevel.Debug))
@@ -61,7 +81,9 @@ namespace KissU.Core.CPlatform.Module
                 _modules.ForEach(p =>
                 {
                     if (p.Enable)
+                    {
                         _logger.LogDebug($"已初始化加载模块，类型：{p.TypeName}模块名：{p.ModuleName}。");
+                    }
                 });
             }
         }

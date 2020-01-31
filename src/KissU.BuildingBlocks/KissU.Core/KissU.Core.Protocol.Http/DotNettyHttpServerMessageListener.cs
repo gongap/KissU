@@ -179,7 +179,7 @@ namespace KissU.Core.Protocol.Http
                     }
                     if (msg.Method.Name == "POST")
                     {
-                        _readAction(ctx, new TransportMessage(new HttpMessage
+                        _readAction(ctx, new TransportMessage(new HttpRequestMessage
                         {
                             Parameters = parameters,
                             RoutePath = serviceRoute.ServiceDescriptor.RoutePath,
@@ -188,7 +188,7 @@ namespace KissU.Core.Protocol.Http
                     }
                     else
                     {
-                        _readAction(ctx, new TransportMessage(new HttpMessage
+                        _readAction(ctx, new TransportMessage(new HttpRequestMessage
                         {
                             Parameters = parameters,
                             RoutePath = serviceRoute.ServiceDescriptor.RoutePath,

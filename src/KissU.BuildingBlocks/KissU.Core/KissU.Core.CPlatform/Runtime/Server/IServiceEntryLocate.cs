@@ -14,6 +14,6 @@ namespace KissU.Core.CPlatform.Runtime.Server
         /// <returns>服务条目。</returns>
         ServiceEntry Locate(RemoteInvokeMessage invokeMessage);
 
-        ServiceEntry Locate(HttpMessage httpMessage);
+        ServiceEntry Locate(HttpRequestMessage httpMessage);
     }
 }

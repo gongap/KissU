@@ -9,7 +9,7 @@ namespace KissU.Core.KestrelHttpServer.Filters.Implementation
         {
             context.Result = new HttpResultMessage<object>
             {
-                Entity = null,
+                Data = null,
                 StatusCode = 400,
                 IsSucceed = false,
                 Message = context.Exception.Message

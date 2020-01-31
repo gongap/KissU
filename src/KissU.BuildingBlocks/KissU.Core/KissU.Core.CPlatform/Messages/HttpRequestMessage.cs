@@ -3,19 +3,14 @@
 namespace KissU.Core.CPlatform.Messages
 {
     /// <summary>
-    /// 远程调用消息.
+    /// Http请求消息.
     /// </summary>
-    public class RemoteInvokeMessage
+    public class HttpRequestMessage
     {
         /// <summary>
-        /// 服务Id.
+        /// 路由路径.
         /// </summary>
-        public string ServiceId { get; set; }
-
-        /// <summary>
-        /// 解码对象.
-        /// </summary>
-        public bool DecodeJObject { get; set; }
+        public string RoutePath { get; set; }
 
         /// <summary>
         /// 服务键.

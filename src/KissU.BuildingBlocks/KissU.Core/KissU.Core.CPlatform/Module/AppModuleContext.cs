@@ -9,7 +9,7 @@ namespace KissU.Core.CPlatform.Module
     public class AppModuleContext
     {
         /// <summary>
-        /// 初始化
+        /// Initializes a new instance of the <see cref="AppModuleContext"/> class.
         /// </summary>
         /// <param name="modules">模块集合</param>
         /// <param name="virtualPaths">虚拟目录集合</param>

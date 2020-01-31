@@ -74,7 +74,7 @@ namespace KissU.Core.KestrelHttpServer
                     parameters.Add(param.Key, param.Value);
                 }
             }
-            var httpMessage = new HttpMessage
+            var httpMessage = new HttpRequestMessage
             {
                 Parameters = parameters,
                 RoutePath = serviceRoute.ServiceDescriptor.RoutePath,
@@ -130,7 +130,7 @@ namespace KissU.Core.KestrelHttpServer
             return true;
         }
 
-        public async Task OnActionExecuted(HttpContext context, HttpMessage message, IEnumerable<IActionFilter> filters)
+        public async Task OnActionExecuted(HttpContext context, HttpRequestMessage message, IEnumerable<IActionFilter> filters)
         {
             foreach (var fiter in filters)
             {

@@ -24,7 +24,7 @@ namespace KissU.Core.KestrelHttpServer
         public async Task SendAndFlushAsync(TransportMessage message)
         { 
             var httpMessage = message.GetContent<HttpResultMessage<Object>>();
-            var actionResult= httpMessage.Entity as IActionResult;
+            var actionResult= httpMessage.Data as IActionResult;
             WirteDiagnostic(message);
             if (actionResult == null)
             {

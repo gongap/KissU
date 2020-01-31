@@ -36,7 +36,7 @@ namespace KissU.Core.Codec.MessagePack.Messages
         public MessagePackRemoteInvokeMessage(RemoteInvokeMessage message)
         {
             ServiceId = message.ServiceId;
-            DecodeJOject = message.DecodeJOject;
+            DecodeJOject = message.DecodeJObject;
             ServiceKey = message.ServiceKey;
             Parameters = message.Parameters?.Select(i => new ParameterItem(i)).ToArray();
             Attachments = message.Attachments?.Select(i => new ParameterItem(i)).ToArray();
@@ -72,7 +72,7 @@ namespace KissU.Core.Codec.MessagePack.Messages
                 Parameters = Parameters?.ToDictionary(i => i.Key, i => i.Value?.Get()),
                 Attachments = Attachments?.ToDictionary(i => i.Key, i => i.Value?.Get()),
                 ServiceId = ServiceId,
-                DecodeJOject = DecodeJOject,
+                DecodeJObject = DecodeJOject,
                 ServiceKey = ServiceKey,
             };
         }

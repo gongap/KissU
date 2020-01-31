@@ -4,18 +4,36 @@ using System.Reflection.Emit;
 
 namespace KissU.Core.CPlatform.Utilities
 {
+    /// <summary>
+    /// FastInvoke.
+    /// </summary>
     public class FastInvoke
     {
+        /// <summary>
+        /// Delegate FastInvokeHandler
+        /// </summary>
+        /// <param name="target">The target.</param>
+        /// <param name="paramters">The paramters.</param>
+        /// <returns>System.Object.</returns>
         public delegate object FastInvokeHandler(object target, object[] paramters);
 
-
+        /// <summary>
+        /// Invokes the method.
+        /// </summary>
+        /// <param name="invoke">The invoke.</param>
+        /// <param name="target">The target.</param>
+        /// <param name="paramters">The paramters.</param>
+        /// <returns>System.Object.</returns>
         static object InvokeMethod(FastInvokeHandler invoke, object target, params object[] paramters)
         {
-
             return invoke(null, paramters);
-
         }
 
+        /// <summary>
+        /// Gets the method invoker.
+        /// </summary>
+        /// <param name="methodInfo">The method information.</param>
+        /// <returns>FastInvokeHandler.</returns>
         public static FastInvokeHandler GetMethodInvoker(MethodInfo methodInfo)
         {
             DynamicMethod dynamicMethod = new DynamicMethod(string.Empty, typeof(object), new Type[] { typeof(object), typeof(object[]) }, methodInfo.DeclaringType.Module);
@@ -25,16 +43,22 @@ namespace KissU.Core.CPlatform.Utilities
             for (int i = 0; i < paramTypes.Length; i++)
             {
                 if (ps[i].ParameterType.IsByRef)
+                {
                     paramTypes[i] = ps[i].ParameterType.GetElementType();
+                }
                 else
+                {
                     paramTypes[i] = ps[i].ParameterType;
+                }
             }
+
             LocalBuilder[] locals = new LocalBuilder[paramTypes.Length];
 
             for (int i = 0; i < paramTypes.Length; i++)
             {
                 locals[i] = il.DeclareLocal(paramTypes[i], true);
             }
+
             for (int i = 0; i < paramTypes.Length; i++)
             {
                 il.Emit(OpCodes.Ldarg_1);
@@ -43,25 +67,41 @@ namespace KissU.Core.CPlatform.Utilities
                 EmitCastToReference(il, paramTypes[i]);
                 il.Emit(OpCodes.Stloc, locals[i]);
             }
+
             if (!methodInfo.IsStatic)
             {
                 il.Emit(OpCodes.Ldarg_0);
             }
+
             for (int i = 0; i < paramTypes.Length; i++)
             {
                 if (ps[i].ParameterType.IsByRef)
+                {
                     il.Emit(OpCodes.Ldloca_S, locals[i]);
+                }
                 else
+                {
                     il.Emit(OpCodes.Ldloc, locals[i]);
+                }
             }
+
             if (methodInfo.IsStatic)
+            {
                 il.EmitCall(OpCodes.Call, methodInfo, null);
+            }
             else
+            {
                 il.EmitCall(OpCodes.Callvirt, methodInfo, null);
+            }
+
             if (methodInfo.ReturnType == typeof(void))
+            {
                 il.Emit(OpCodes.Ldnull);
+            }
             else
+            {
                 EmitBoxIfNeeded(il, methodInfo.ReturnType);
+            }
 
             for (int i = 0; i < paramTypes.Length; i++)
             {
@@ -71,7 +111,10 @@ namespace KissU.Core.CPlatform.Utilities
                     EmitFastInt(il, i);
                     il.Emit(OpCodes.Ldloc, locals[i]);
                     if (locals[i].LocalType.IsValueType)
+                    {
                         il.Emit(OpCodes.Box, locals[i].LocalType);
+                    }
+
                     il.Emit(OpCodes.Stelem_Ref);
                 }
             }
@@ -139,7 +182,7 @@ namespace KissU.Core.CPlatform.Utilities
 
             if (value > -129 && value < 128)
             {
-                il.Emit(OpCodes.Ldc_I4_S, (SByte)value);
+                il.Emit(OpCodes.Ldc_I4_S, (sbyte)value);
             }
             else
             {

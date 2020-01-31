@@ -6,6 +6,7 @@ namespace KissU.Core.CPlatform.Logging
     /// <summary>
     /// 一个空的日志记录器。
     /// </summary>
+    /// <typeparam name="T">The type who's name is used for the logger category name</typeparam>
     public sealed class NullLogger<T> : NullLogger, ILogger<T>
     {
     }
@@ -15,11 +16,15 @@ namespace KissU.Core.CPlatform.Logging
     /// </summary>
     public class NullLogger : ILogger
     {
+        /// <summary>
+        /// Gets the instance.
+        /// </summary>
         public static NullLogger Instance { get; } = new NullLogger();
 
-        #region Implementation of ILogger
-
-        /// <summary>Writes a log entry.</summary>
+        /// <summary>
+        /// Writes a log entry.
+        /// </summary>
+        /// <typeparam name="TState">The type of the t state.</typeparam>
         /// <param name="logLevel">Entry will be written on this level.</param>
         /// <param name="eventId">Id of the event.</param>
         /// <param name="state">The entry to be written. Can be also an object.</param>
@@ -39,14 +44,16 @@ namespace KissU.Core.CPlatform.Logging
             return false;
         }
 
-        /// <summary>Begins a logical operation scope.</summary>
+        /// <summary>
+        /// Begins a logical operation scope.
+        /// </summary>
+        /// <typeparam name="TState">The type of the t state.</typeparam>
         /// <param name="state">The identifier for the scope.</param>
         /// <returns>An IDisposable that ends the logical operation scope on dispose.</returns>
+        /// <exception cref="NotImplementedException">The exception that is thrown when a requested method or operation is not implemented.</exception>
         public IDisposable BeginScope<TState>(TState state)
         {
             throw new NotImplementedException();
         }
-
-        #endregion Implementation of ILogger
     }
 }

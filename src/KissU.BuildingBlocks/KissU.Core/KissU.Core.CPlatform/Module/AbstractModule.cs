@@ -11,15 +11,13 @@ namespace KissU.Core.CPlatform.Module
     /// <summary>
     /// 抽象模块
     /// </summary>
-    public abstract class AbstractModule : Autofac.Module,IDisposable
+    public abstract class AbstractModule : Autofac.Module, IDisposable
     {
-        #region 实例属性
-
         /// <summary>
         /// 容器创建包装属性
         /// </summary>
         public ContainerBuilderWrapper Builder { get; set; }
-   
+
         /// <summary>
         /// 唯一标识guid
         /// </summary>
@@ -34,7 +32,7 @@ namespace KissU.Core.CPlatform.Module
         /// 类型名
         /// </summary>
         public string TypeName { get; set; }
-    
+
         /// <summary>
         /// 标题
         /// </summary>
@@ -49,17 +47,14 @@ namespace KissU.Core.CPlatform.Module
         /// 描述
         /// </summary>
         public string Description { get; set; }
-        
+
         /// <summary>
         /// 组件
         /// </summary>
         public List<Component> Components { get; set; }
 
-        #endregion
-
-        #region 构造函数
-
         /// <summary>
+        /// Initializes a new instance of the <see cref="AbstractModule"/> class.
         /// 初始化
         /// </summary>
         public AbstractModule()
@@ -67,24 +62,22 @@ namespace KissU.Core.CPlatform.Module
             ModuleName = this.GetType().Name;
             TypeName = this.GetType().BaseType?.Name;
         }
-        #endregion
-
-        #region 实例方法
 
         /// <summary>
         /// 初始化
         /// </summary>
-        /// <param name="serviceProvider"></param>
+        /// <param name="serviceProvider">The service provider.</param>
         public virtual void Initialize(AppModuleContext serviceProvider)
         {
             Dispose();
         }
 
         /// <summary>
-        /// 重写将注册添加到容器
-        /// 判断组件是否可用，并注册模块组件
+        /// 重写将注册添加到容器，判断组件是否可用，并注册模块组件
         /// </summary>
-        /// <param name="builder"></param>
+        /// <param name="builder">The builder through which components can be registered.</param>
+        /// <exception cref="CPlatformException">基础异常类</exception>
+        /// <remarks>Note that the ContainerBuilder parameter is unique to this module.</remarks>
         protected override void Load(ContainerBuilder builder)
         {
             try
@@ -92,14 +85,14 @@ namespace KissU.Core.CPlatform.Module
                 base.Load(builder);
                 Builder = new ContainerBuilderWrapper(builder);
 
-                //如果可用 
+                // 如果可用
                 if (Enable)
                 {
-                    //注册创建容器
+                    // 注册创建容器
                     RegisterBuilder(Builder);
-                    //注册组件
+
+                    // 注册组件
                     RegisterComponents(Builder);
-                    
                 }
             }
             catch (Exception ex)
@@ -108,7 +101,6 @@ namespace KissU.Core.CPlatform.Module
             }
         }
 
-       
         /// <summary>
         /// 注册服务
         /// </summary>
@@ -125,27 +117,32 @@ namespace KissU.Core.CPlatform.Module
         {
             Components?.ForEach(component =>
             {
-                //服务类型
+                // 服务类型
                 Type serviceType = Type.GetType(component.ServiceType, true);
-                //实现类型
+
+                // 实现类型
                 Type implementType = Type.GetType(component.ImplementType, true);
-                //组件生命周期
+
+                // 组件生命周期
                 switch (component.LifetimeScope)
                 {
-                    //依赖创建
+                    // 依赖创建
                     case LifetimeScope.InstancePerDependency:
-                        //如果是泛型
+
+                        // 如果是泛型
                         if (serviceType.GetTypeInfo().IsGenericType || implementType.GetTypeInfo().IsGenericType)
                         {
-                            //注册泛型
+                            // 注册泛型
                             builder.RegisterGeneric(implementType).As(serviceType).InstancePerDependency();
                         }
                         else
                         {
                             builder.RegisterType(implementType).As(serviceType).InstancePerDependency();
                         }
+
                         break;
-                    case LifetimeScope.SingleInstance://单例
+                    case LifetimeScope.SingleInstance:
+                        // 单例
                         if (serviceType.GetTypeInfo().IsGenericType || implementType.GetTypeInfo().IsGenericType)
                         {
                             builder.RegisterGeneric(implementType).As(serviceType).SingleInstance();
@@ -154,8 +151,10 @@ namespace KissU.Core.CPlatform.Module
                         {
                             builder.RegisterType(implementType).As(serviceType).SingleInstance();
                         }
+
                         break;
-                    default://默认依赖创建
+                    default:
+                        // 默认依赖创建
                         if (serviceType.GetTypeInfo().IsGenericType || implementType.GetTypeInfo().IsGenericType)
                         {
                             builder.RegisterGeneric(implementType).As(serviceType).InstancePerDependency();
@@ -164,15 +163,17 @@ namespace KissU.Core.CPlatform.Module
                         {
                             builder.RegisterType(implementType).As(serviceType).InstancePerDependency();
                         }
+
                         break;
                 }
-
             });
         }
 
         /// <summary>
         /// 验证模块
         /// </summary>
+        /// <exception cref="CPlatformException">模块属性：Identifier，ModuleName，TypeName，Title 是必须的不能为空！</exception>
+        /// <exception cref="CPlatformException">模块属性：ModuleName 必须为字母开头数字或下划线的组合！</exception>
         public virtual void ValidateModule()
         {
             if (this.Identifier == Guid.Empty || string.IsNullOrEmpty(this.ModuleName) || string.IsNullOrEmpty(this.TypeName)
@@ -220,7 +221,5 @@ namespace KissU.Core.CPlatform.Module
         public virtual void Dispose()
         {
         }
-
-        #endregion
     }
 }

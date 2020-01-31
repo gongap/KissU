@@ -129,7 +129,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
                         resultMessage.Result = taskType.GetProperty("Result").GetValue(task);
                 }
 
-                if (remoteInvokeMessage.DecodeJOject && !(resultMessage.Result is IConvertible && UtilityType.ConvertibleType.GetTypeInfo().IsAssignableFrom(resultMessage.Result.GetType())))
+                if (remoteInvokeMessage.DecodeJObject && !(resultMessage.Result is IConvertible && UtilityType.ConvertibleType.GetTypeInfo().IsAssignableFrom(resultMessage.Result.GetType())))
                 {
                     resultMessage.Result = JsonConvert.SerializeObject(resultMessage.Result);
                 }

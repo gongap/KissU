@@ -63,10 +63,10 @@ namespace KissU.Core.Protocol.Http
 
             if (!message.IsHttpMessage())
                 return;
-            HttpMessage httpMessage;
+            HttpRequestMessage httpMessage;
             try
             {
-                httpMessage = message.GetContent<HttpMessage>();
+                httpMessage = message.GetContent<HttpRequestMessage>();
             }
             catch (Exception exception)
             {
@@ -100,7 +100,7 @@ namespace KissU.Core.Protocol.Http
 
         #region Private Method
 
-        private async Task<HttpResultMessage<object>> RemoteExecuteAsync(ServiceEntry entry, HttpMessage httpMessage)
+        private async Task<HttpResultMessage<object>> RemoteExecuteAsync(ServiceEntry entry, HttpRequestMessage httpMessage)
         {
             HttpResultMessage<object> resultMessage = new HttpResultMessage<object>();
             var provider = _concurrent.GetValueOrDefault(httpMessage.RoutePath);
@@ -126,16 +126,16 @@ namespace KissU.Core.Protocol.Http
                 var task = methodResult as Task;
                 if (task == null)
                 {
-                    resultMessage.Entity = methodResult;
+                    resultMessage.Data = methodResult;
                 }
                 else
                 {
                     await task;
                     var taskType = task.GetType().GetTypeInfo();
                     if (taskType.IsGenericType)
-                        resultMessage.Entity = taskType.GetProperty("Result").GetValue(task);
+                        resultMessage.Data = taskType.GetProperty("Result").GetValue(task);
                 }
-                resultMessage.IsSucceed = resultMessage.Entity != null;
+                resultMessage.IsSucceed = resultMessage.Data != null;
                 resultMessage.StatusCode = resultMessage.IsSucceed ? (int)StatusCode.Success : (int)StatusCode.RequestError;
             }
             catch (ValidateException validateException)
@@ -150,12 +150,12 @@ namespace KissU.Core.Protocol.Http
             {
                 if (_logger.IsEnabled(LogLevel.Error))
                     _logger.LogError(ex, "执行远程调用逻辑时候发生了错误。");
-                resultMessage = new HttpResultMessage<object> { Entity = null, Message = "执行发生了错误。", StatusCode = (int)StatusCode.RequestError };
+                resultMessage = new HttpResultMessage<object> { Data = null, Message = "执行发生了错误。", StatusCode = (int)StatusCode.RequestError };
             }
             return resultMessage;
         }
 
-        private async Task<HttpResultMessage<object>> LocalExecuteAsync(ServiceEntry entry, HttpMessage httpMessage)
+        private async Task<HttpResultMessage<object>> LocalExecuteAsync(ServiceEntry entry, HttpRequestMessage httpMessage)
         {
             HttpResultMessage<object> resultMessage = new HttpResultMessage<object>();
             try
@@ -165,16 +165,16 @@ namespace KissU.Core.Protocol.Http
 
                 if (task == null)
                 {
-                    resultMessage.Entity = result;
+                    resultMessage.Data = result;
                 }
                 else
                 {
                     task.Wait();
                     var taskType = task.GetType().GetTypeInfo();
                     if (taskType.IsGenericType)
-                        resultMessage.Entity = taskType.GetProperty("Result").GetValue(task);
+                        resultMessage.Data = taskType.GetProperty("Result").GetValue(task);
                 }
-                resultMessage.IsSucceed = resultMessage.Entity != null;
+                resultMessage.IsSucceed = resultMessage.Data != null;
                 resultMessage.StatusCode = resultMessage.IsSucceed ? (int)StatusCode.Success : (int)StatusCode.RequestError;
             }
             catch (ValidateException validateException)

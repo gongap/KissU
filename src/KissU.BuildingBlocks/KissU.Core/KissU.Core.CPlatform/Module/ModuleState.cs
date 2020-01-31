@@ -23,6 +23,6 @@
         /// <summary>
         /// 已卸载。
         /// </summary>
-        Uninstalled
+        Uninstalled,
     }
 }

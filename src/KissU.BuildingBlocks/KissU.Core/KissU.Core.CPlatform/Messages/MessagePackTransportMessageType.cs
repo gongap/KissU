@@ -6,7 +6,7 @@
 
         public static string remoteInvokeMessageTypeName = typeof(RemoteInvokeMessage).FullName;
 
-        public static string httpMessageTypeName = typeof(HttpMessage).FullName;
+        public static string httpMessageTypeName = typeof(HttpRequestMessage).FullName;
 
         public static string httpResultMessageTypeName = typeof(HttpResultMessage<object>).FullName;
     }

@@ -32,7 +32,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public ServiceEntry Locate(HttpMessage httpMessage)
+        public ServiceEntry Locate(HttpRequestMessage httpMessage)
         {
             string routePath = httpMessage.RoutePath;
             if (httpMessage.RoutePath.AsSpan().IndexOf("/") == -1)

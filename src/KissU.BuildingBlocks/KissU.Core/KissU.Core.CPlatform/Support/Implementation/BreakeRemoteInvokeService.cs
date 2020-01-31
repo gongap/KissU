@@ -90,7 +90,7 @@ namespace KissU.Core.CPlatform.Support.Implementation
                 Parameters = parameters,
                 ServiceId = serviceId,
                 ServiceKey = serviceKey,
-                DecodeJOject = decodeJOject,
+                DecodeJObject = decodeJOject,
                 Attachments = RpcContext.GetContext().GetContextParameters()
             };
             try
