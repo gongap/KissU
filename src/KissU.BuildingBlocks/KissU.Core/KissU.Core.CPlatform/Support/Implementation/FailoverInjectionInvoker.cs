@@ -7,12 +7,23 @@ using KissU.Core.CPlatform.Runtime.Server;
 
 namespace KissU.Core.CPlatform.Support.Implementation
 {
+    /// <summary>
+    /// 故障转移注入调用者.
+    /// Implements the <see cref="KissU.Core.CPlatform.Support.IClusterInvoker" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Support.IClusterInvoker" />
     public class FailoverInjectionInvoker : IClusterInvoker
     {
         public readonly IServiceCommandProvider _serviceCommandProvider;
         public readonly IServiceEntryManager _serviceEntryManager;
         private readonly ITypeConvertibleService _typeConvertibleService;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FailoverInjectionInvoker"/> class.
+        /// </summary>
+        /// <param name="serviceCommandProvider">The service command provider.</param>
+        /// <param name="serviceEntryManager">The service entry manager.</param>
+        /// <param name="typeConvertibleService">The type convertible service.</param>
         public FailoverInjectionInvoker(IServiceCommandProvider serviceCommandProvider, IServiceEntryManager serviceEntryManager, ITypeConvertibleService typeConvertibleService)
         {
             _serviceCommandProvider = serviceCommandProvider;
@@ -20,12 +31,20 @@ namespace KissU.Core.CPlatform.Support.Implementation
             _typeConvertibleService = typeConvertibleService;
         }
 
+        /// <summary>
+        /// 调用.
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <param name="serviceId">The service identifier.</param>
+        /// <param name="serviceKey">The service key.</param>
+        /// <param name="decodeJOject">if set to <c>true</c> [decode j oject].</param>
+        /// <returns>Task.</returns>
         public async Task Invoke(IDictionary<string, object> parameters, string serviceId, string serviceKey, bool decodeJOject)
         {
             var vt = _serviceCommandProvider.GetCommand(serviceId);
             var command = vt.IsCompletedSuccessfully ? vt.Result : await vt;
             var result = await _serviceCommandProvider.Run(command.Injection, command.InjectionNamespaces);
-            if (result is Boolean)
+            if (result is bool)
             {
                 if ((bool)result)
                 {
@@ -36,12 +55,21 @@ namespace KissU.Core.CPlatform.Support.Implementation
             }
         }
 
+        /// <summary>
+        /// 调用.
+        /// </summary>
+        /// <typeparam name="T">The result type</typeparam>
+        /// <param name="parameters">The parameters.</param>
+        /// <param name="serviceId">The service identifier.</param>
+        /// <param name="serviceKey">The service key.</param>
+        /// <param name="decodeJOject">if set to <c>true</c> [decode j oject].</param>
+        /// <returns>Task&lt;T&gt;.</returns>
         public async Task<T> Invoke<T>(IDictionary<string, object> parameters, string serviceId, string serviceKey, bool decodeJOject)
         {
             var vt = _serviceCommandProvider.GetCommand(serviceId);
             var command = vt.IsCompletedSuccessfully ? vt.Result : await vt;
             var injectionResult = await _serviceCommandProvider.Run(command.Injection, command.InjectionNamespaces);
-            if (injectionResult is Boolean)
+            if (injectionResult is bool)
             {
                 if ((bool)injectionResult)
                 {
@@ -53,6 +81,7 @@ namespace KissU.Core.CPlatform.Support.Implementation
                     {
                         result = _typeConvertibleService.Convert((message as Task<T>).Result, typeof(T));
                     }
+
                     return (T)result;
                 }
             }
@@ -63,8 +92,10 @@ namespace KissU.Core.CPlatform.Support.Implementation
                 {
                     result = _typeConvertibleService.Convert((injectionResult as Task<T>).Result, typeof(T));
                 }
+
                 return (T)result;
             }
+
             return default(T);
         }
     }

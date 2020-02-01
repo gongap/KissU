@@ -9,12 +9,22 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace KissU.Core.CPlatform.Support.Implementation
 {
+    /// <summary>
+    /// 服务命令提供者.
+    /// Implements the <see cref="ServiceCommandBase" />
+    /// </summary>
+    /// <seealso cref="ServiceCommandBase" />
     public class ServiceCommandProvider : ServiceCommandBase
     {
         private readonly IServiceEntryManager _serviceEntryManager;
         private readonly IServiceProvider _serviceProvider;
         private readonly ConcurrentDictionary<string, ServiceCommand> _serviceCommand = new ConcurrentDictionary<string, ServiceCommand>();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ServiceCommandProvider"/> class.
+        /// </summary>
+        /// <param name="serviceEntryManager">The service entry manager.</param>
+        /// <param name="serviceProvider">The service provider.</param>
         public ServiceCommandProvider(IServiceEntryManager serviceEntryManager, IServiceProvider serviceProvider)
         {
             _serviceEntryManager = serviceEntryManager;
@@ -28,7 +38,12 @@ namespace KissU.Core.CPlatform.Support.Implementation
             }
         }
 
-        public override async  ValueTask<ServiceCommand> GetCommand(string serviceId)
+        /// <summary>
+        /// 获取命令.
+        /// </summary>
+        /// <param name="serviceId">The service identifier.</param>
+        /// <returns>ValueTask&lt;ServiceCommand&gt;.</returns>
+        public override async ValueTask<ServiceCommand> GetCommand(string serviceId)
         {
             var result = _serviceCommand.GetValueOrDefault(serviceId);
             if (result == null)
@@ -42,6 +57,11 @@ namespace KissU.Core.CPlatform.Support.Implementation
             }
         }
 
+        /// <summary>
+        /// 获取命令.
+        /// </summary>
+        /// <param name="serviceId">The service identifier.</param>
+        /// <returns>Task&lt;ServiceCommand&gt;.</returns>
         public async Task<ServiceCommand> GetCommandAsync(string serviceId)
         {
             var result = new ServiceCommand();
@@ -59,6 +79,7 @@ namespace KissU.Core.CPlatform.Support.Implementation
                 var commands = await manager.GetServiceCommandsAsync();
                 result = ConvertServiceCommand(commands.Where(p => p.ServiceId == serviceId).FirstOrDefault());
             }
+
             _serviceCommand.AddOrUpdate(serviceId, result, (s, r) => result);
             return result;
         }
@@ -69,11 +90,21 @@ namespace KissU.Core.CPlatform.Support.Implementation
             _serviceCommand.TryRemove(e.Command.ServiceId, out value);
         }
 
+        /// <summary>
+        /// 处理ServiceCommandManager控件的Add事件.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="ServiceCommandEventArgs"/> instance containing the event data.</param>
         public void ServiceCommandManager_Add(object sender, ServiceCommandEventArgs e)
-        { 
+        {
             _serviceCommand.GetOrAdd(e.Command.ServiceId, e.Command);
         }
 
+        /// <summary>
+        /// 转换服务命令.
+        /// </summary>
+        /// <param name="command">The command.</param>
+        /// <returns>ServiceCommand.</returns>
         public ServiceCommand ConvertServiceCommand(CommandAttribute command)
         {
             var result = new ServiceCommand();
@@ -93,12 +124,18 @@ namespace KissU.Core.CPlatform.Support.Implementation
                     BreakerForceClosed = command.BreakerForceClosed,
                     BreakerRequestVolumeThreshold = command.BreakerRequestVolumeThreshold,
                     BreakeSleepWindowInMilliseconds = command.BreakeSleepWindowInMilliseconds,
-                    MaxConcurrentRequests = command.MaxConcurrentRequests
+                    MaxConcurrentRequests = command.MaxConcurrentRequests,
                 };
             }
+
             return result;
         }
 
+        /// <summary>
+        /// 转换服务命令.
+        /// </summary>
+        /// <param name="command">The command.</param>
+        /// <returns>ServiceCommand.</returns>
         public ServiceCommand ConvertServiceCommand(ServiceCommandDescriptor command)
         {
             var result = new ServiceCommand();
@@ -118,9 +155,10 @@ namespace KissU.Core.CPlatform.Support.Implementation
                     BreakerForceClosed = command.BreakerForceClosed,
                     BreakerRequestVolumeThreshold = command.BreakerRequestVolumeThreshold,
                     BreakeSleepWindowInMilliseconds = command.BreakeSleepWindowInMilliseconds,
-                    MaxConcurrentRequests = command.MaxConcurrentRequests
+                    MaxConcurrentRequests = command.MaxConcurrentRequests,
                 };
             }
+
             return result;
         }
     }

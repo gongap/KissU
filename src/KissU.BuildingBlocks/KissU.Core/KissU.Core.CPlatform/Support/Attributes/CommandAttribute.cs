@@ -4,9 +4,17 @@ using KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selec
 namespace KissU.Core.CPlatform.Support.Attributes
 {
 
+    /// <summary>
+    /// 命令属性.
+    /// Implements the <see cref="Attribute" />
+    /// </summary>
+    /// <seealso cref="Attribute" />
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true, Inherited = false)]
     public class CommandAttribute : Attribute
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CommandAttribute"/> class.
+        /// </summary>
         public CommandAttribute()
         {
             if (AppConfig.ServerOptions != null)
@@ -31,6 +39,10 @@ namespace KissU.Core.CPlatform.Support.Attributes
         /// 故障转移次数
         /// </summary>
         public int FailoverCluster { get; set; } = 3;
+
+        /// <summary>
+        /// 是否强制断开断路器.
+        /// </summary>
         public bool CircuitBreakerForceOpen { get; set; }
 
         /// <summary>
@@ -69,7 +81,7 @@ namespace KissU.Core.CPlatform.Support.Attributes
         public int BreakeSleepWindowInMilliseconds { get; set; } = 60000;
 
         /// <summary>
-        ///  	是否强制关闭熔断
+        /// 是否强制关闭熔断
         /// </summary>
         public bool BreakerForceClosed { get; set; }
 
@@ -77,16 +89,14 @@ namespace KissU.Core.CPlatform.Support.Attributes
         /// 负载分流策略
         /// </summary>
         public AddressSelectorMode ShuntStrategy { get; set; } = AddressSelectorMode.Polling;
-        
+
         /// <summary>
         /// IFallbackInvoker 实例名称
         /// </summary>
         public string FallBackName { get; set; }
 
         /// <summary>
-
-        /// <summary>
-        ///    10秒钟内至少多少请求失败，熔断器才发挥起作用
+        /// 断路器请求量阈值.
         /// </summary>
         public int BreakerRequestVolumeThreshold { get; set; } = 20;
 

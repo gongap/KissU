@@ -8,39 +8,11 @@ using KissU.Core.CPlatform.Support.Attributes;
 
 namespace KissU.Core.CPlatform.Support.Implementation
 {
-
     /// <summary>
-    /// 服务命令事件参数。
+    /// 服务命令管理器基类.
+    /// Implements the <see cref="IServiceCommandManager" />
     /// </summary>
-    public class ServiceCommandEventArgs
-    {
-        public ServiceCommandEventArgs(ServiceCommandDescriptor serviceCommand)
-        {
-            Command = serviceCommand;
-        }
-
-        /// <summary>
-        /// 服务命令信息。
-        /// </summary>
-        public ServiceCommandDescriptor Command { get; private set; }
-    }
-
-    /// <summary>
-    /// 服务命令变更事件参数。
-    /// </summary>
-    public class ServiceCommandChangedEventArgs : ServiceCommandEventArgs
-    {
-        public ServiceCommandChangedEventArgs(ServiceCommandDescriptor serviceCommand, ServiceCommandDescriptor oldServiceCommand) : base(serviceCommand)
-        {
-            OldServiceCommand = oldServiceCommand;
-        }
-
-        /// <summary>
-        /// 旧的服务命令信息。
-        /// </summary>
-        public ServiceCommandDescriptor OldServiceCommand { get; set; }
-    }
-
+    /// <seealso cref="IServiceCommandManager" />
     public abstract class ServiceCommandManagerBase : IServiceCommandManager
     {
         private readonly ISerializer<string> _serializer;
@@ -48,13 +20,17 @@ namespace KissU.Core.CPlatform.Support.Implementation
         private EventHandler<ServiceCommandEventArgs> _created;
         private EventHandler<ServiceCommandEventArgs> _removed;
         private EventHandler<ServiceCommandChangedEventArgs> _changed;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ServiceCommandManagerBase"/> class.
+        /// </summary>
+        /// <param name="serializer">The serializer.</param>
+        /// <param name="serviceEntryManager">The service entry manager.</param>
         protected ServiceCommandManagerBase(ISerializer<string> serializer, IServiceEntryManager serviceEntryManager)
         {
             _serializer = serializer;
             _serviceEntryManager = serviceEntryManager;
         }
-
-        #region Implementation of IServiceRouteManager
 
         /// <summary>
         /// 服务命令被创建。
@@ -89,9 +65,17 @@ namespace KissU.Core.CPlatform.Support.Implementation
         /// <returns>服务命令集合。</returns>
         public abstract Task<IEnumerable<ServiceCommandDescriptor>> GetServiceCommandsAsync();
 
+        /// <summary>
+        /// 初始化服务命令.
+        /// </summary>
+        /// <param name="routes">The routes.</param>
+        /// <returns>Task.</returns>
         protected abstract Task InitServiceCommandsAsync(IEnumerable<ServiceCommandDescriptor> routes);
 
-
+        /// <summary>
+        /// 设置服务命令.
+        /// </summary>
+        /// <returns>Task.</returns>
         public virtual async Task SetServiceCommandsAsync()
         {
             List<ServiceCommandDescriptor> serviceCommands = new List<ServiceCommandDescriptor>();
@@ -111,8 +95,6 @@ namespace KissU.Core.CPlatform.Support.Implementation
         /// <returns>一个任务。</returns>
         public abstract Task ClearAsync();
 
-        #endregion Implementation of IServiceRouteManager
-
         /// <summary>
         /// 设置服务命令。
         /// </summary>
@@ -120,33 +102,63 @@ namespace KissU.Core.CPlatform.Support.Implementation
         /// <returns>一个任务。</returns>
         public abstract Task SetServiceCommandsAsync(IEnumerable<ServiceCommandDescriptor> routes);
 
+        /// <summary>
+        /// Called when [created].
+        /// </summary>
+        /// <param name="args">The arguments.</param>
         protected void OnCreated(params ServiceCommandEventArgs[] args)
         {
             if (_created == null)
+            {
                 return;
+            }
 
             foreach (var arg in args)
+            {
                 _created(this, arg);
+            }
         }
 
+        /// <summary>
+        /// Called when [changed].
+        /// </summary>
+        /// <param name="args">The arguments.</param>
         protected void OnChanged(params ServiceCommandChangedEventArgs[] args)
         {
             if (_changed == null)
+            {
                 return;
+            }
 
             foreach (var arg in args)
+            {
                 _changed(this, arg);
+            }
         }
 
+        /// <summary>
+        /// Called when [removed].
+        /// </summary>
+        /// <param name="args">The arguments.</param>
         protected void OnRemoved(params ServiceCommandEventArgs[] args)
         {
             if (_removed == null)
+            {
                 return;
+            }
 
             foreach (var arg in args)
+            {
                 _removed(this, arg);
+            }
         }
 
+        /// <summary>
+        /// 转换服务命令.
+        /// </summary>
+        /// <param name="serviceId">The service identifier.</param>
+        /// <param name="command">The command.</param>
+        /// <returns>ServiceCommandDescriptor.</returns>
         private ServiceCommandDescriptor ConvertServiceCommand(string serviceId, CommandAttribute command)
         {
             var result = new ServiceCommandDescriptor() { ServiceId = serviceId };
@@ -161,15 +173,16 @@ namespace KissU.Core.CPlatform.Support.Implementation
                     Injection = command.Injection,
                     RequestCacheEnabled = command.RequestCacheEnabled,
                     Strategy = command.Strategy,
-                    ShuntStrategy=command.ShuntStrategy,
+                    ShuntStrategy = command.ShuntStrategy,
                     InjectionNamespaces = command.InjectionNamespaces,
                     BreakeErrorThresholdPercentage = command.BreakeErrorThresholdPercentage,
                     BreakerForceClosed = command.BreakerForceClosed,
                     BreakerRequestVolumeThreshold = command.BreakerRequestVolumeThreshold,
                     BreakeSleepWindowInMilliseconds = command.BreakeSleepWindowInMilliseconds,
-                    MaxConcurrentRequests = command.MaxConcurrentRequests
+                    MaxConcurrentRequests = command.MaxConcurrentRequests,
                 };
             }
+
             return result;
         }
     }

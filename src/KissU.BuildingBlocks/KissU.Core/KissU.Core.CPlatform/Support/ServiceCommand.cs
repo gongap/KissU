@@ -103,6 +103,5 @@ namespace KissU.Core.CPlatform.Support
         /// 信号量最大并发度
         /// </summary>
         public int MaxConcurrentRequests { get; set; } = 200;
-
     }
 }

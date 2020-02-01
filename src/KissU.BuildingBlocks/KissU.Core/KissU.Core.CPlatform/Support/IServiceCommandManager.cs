@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using KissU.Core.CPlatform.Support.Implementation;
 
 namespace KissU.Core.CPlatform.Support
 {
+    /// <summary>
+    /// 服务命令管理器
+    /// </summary>
     public interface IServiceCommandManager
     {
         /// <summary>
@@ -36,7 +38,10 @@ namespace KissU.Core.CPlatform.Support
         /// <returns>一个任务。</returns>
         Task SetServiceCommandsAsync(IEnumerable<ServiceCommandDescriptor> commands);
 
-
+        /// <summary>
+        /// 设置服务命令.
+        /// </summary>
+        /// <returns>Task.</returns>
         Task SetServiceCommandsAsync();
 
         /// <summary>
@@ -44,22 +49,5 @@ namespace KissU.Core.CPlatform.Support
         /// </summary>
         /// <returns>一个任务。</returns>
         Task ClearAsync();
-    }
-
-    /// <summary>
-    /// 服务命令管理者扩展方法。
-    /// </summary>
-    public static class ServiceCommandManagerExtensions
-    {
-        /// <summary>
-        /// 获取所有可用的服务命令信息。
-        /// </summary>
-        /// <returns>服务命令集合。</returns>
-        public static async Task<IEnumerable<ServiceCommandDescriptor>> GetServiceCommandsAsync
-            (this IServiceCommandManager serviceCommandManager, params string[] serviceIds)
-        {
-            var result = (await serviceCommandManager.GetServiceCommandsAsync());
-            return result.Where(p => serviceIds.Contains(p.ServiceId));
-        }
     }
 }
