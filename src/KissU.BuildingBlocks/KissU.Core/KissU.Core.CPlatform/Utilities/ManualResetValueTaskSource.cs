@@ -6,6 +6,10 @@ using System.Threading.Tasks.Sources;
 
 namespace KissU.Core.CPlatform.Utilities
 {
+    /// <summary>
+    /// 保险箱
+    /// </summary>
+    /// <typeparam name="T">对象类型</typeparam>
     internal interface IStrongBox<T>
     {
         ref T Value { get; }
@@ -13,6 +17,9 @@ namespace KissU.Core.CPlatform.Utilities
         bool RunContinuationsAsynchronously { get; set; }
     }
 
+    /// <summary>
+    /// 延续选项
+    /// </summary>
     public enum ContinuationOptions
     {
         None,
@@ -20,6 +27,15 @@ namespace KissU.Core.CPlatform.Utilities
         ForceDefaultTaskScheduler
     }
 
+    /// <summary>
+    /// Manual Reset Value Task Source.
+    /// Implements the <see cref="KissU.Core.CPlatform.Utilities.IStrongBox{KissU.Core.CPlatform.Utilities.ManualResetValueTaskSourceLogic{T}}" />
+    /// Implements the <see cref="System.Threading.Tasks.Sources.IValueTaskSource{T}" />
+    /// Implements the <see cref="System.Threading.Tasks.Sources.IValueTaskSource" /></summary>
+    /// <typeparam name="T"></typeparam>
+    /// <seealso cref="KissU.Core.CPlatform.Utilities.IStrongBox{KissU.Core.CPlatform.Utilities.ManualResetValueTaskSourceLogic{T}}" />
+    /// <seealso cref="System.Threading.Tasks.Sources.IValueTaskSource{T}" />
+    /// <seealso cref="System.Threading.Tasks.Sources.IValueTaskSource" />
     public class ManualResetValueTaskSource<T> : IStrongBox<ManualResetValueTaskSourceLogic<T>>, IValueTaskSource<T>, IValueTaskSource
     {
         private ManualResetValueTaskSourceLogic<T> _logic;

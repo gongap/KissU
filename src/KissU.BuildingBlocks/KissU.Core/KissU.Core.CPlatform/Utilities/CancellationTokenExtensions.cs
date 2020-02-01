@@ -4,8 +4,16 @@ using System.Threading.Tasks;
 
 namespace KissU.Core.CPlatform.Utilities
 {
+    /// <summary>
+    /// CancellationTokenExtensions.
+    /// </summary>
     public static class CancellationTokenExtensions
     {
+        /// <summary>
+        /// Whens the canceled.
+        /// </summary>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>Task.</returns>
         public static Task WhenCanceled(this CancellationToken cancellationToken)
         {
             var tcs = new TaskCompletionSource<bool>();
@@ -13,6 +21,14 @@ namespace KissU.Core.CPlatform.Utilities
             return tcs.Task;
         }
 
+        /// <summary>
+        /// Withes the cancellation.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="task">The task.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>Task&lt;T&gt;.</returns>
+        /// <exception cref="TimeoutException"></exception>
         public static async Task<T> WithCancellation<T>(
     this Task<T> task, CancellationToken cancellationToken)
         {
@@ -24,6 +40,15 @@ namespace KissU.Core.CPlatform.Utilities
             return await task;
         }
 
+        /// <summary>
+        /// Withes the cancellation.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="task">The task.</param>
+        /// <param name="cts">The CTS.</param>
+        /// <param name="requestTimeout">The request timeout.</param>
+        /// <returns>Task&lt;T&gt;.</returns>
+        /// <exception cref="TimeoutException"></exception>
         public static async Task<T> WithCancellation<T>(
     this Task<T> task, CancellationTokenSource cts, int requestTimeout)
         {

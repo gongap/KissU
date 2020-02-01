@@ -5,8 +5,16 @@ using System.Text.RegularExpressions;
 
 namespace KissU.Core.CPlatform.Utilities
 {
+    /// <summary>
+    /// EnvironmentHelper.
+    /// </summary>
     public class EnvironmentHelper
     {
+        /// <summary>
+        /// Gets the environment variable.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns>System.String.</returns>
         public static string GetEnvironmentVariable(string value)
         {
             var result = value;
@@ -24,6 +32,12 @@ namespace KissU.Core.CPlatform.Utilities
             return result;
         }
 
+        /// <summary>
+        /// Gets the environment variable as bool.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="defaultValue">if set to <c>true</c> [default value].</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public static bool GetEnvironmentVariableAsBool(string name, bool defaultValue = false)
         {
             var str = Environment.GetEnvironmentVariable(name);
@@ -56,6 +70,7 @@ namespace KissU.Core.CPlatform.Utilities
             {
                 matchVale.Add(m.Value);
             }
+
             return matchVale;
         }
     }

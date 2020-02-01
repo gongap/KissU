@@ -23,6 +23,7 @@
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.Codec.MessagePack\KissU.Core.Codec.MessagePack.csproj" />
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.Codec.ProtoBuffer\KissU.Core.Codec.ProtoBuffer.csproj" />
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.Common\KissU.Core.Common.csproj" />
+    <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.Configuration.Apollo\KissU.Core.Configuration.Apollo.csproj" />
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.Consul\KissU.Core.Consul.csproj" />
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.CPlatform\KissU.Core.CPlatform.csproj" />
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.DNS\KissU.Core.DNS.csproj" />
@@ -51,6 +52,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="apollo.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="cachesettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -4,6 +4,9 @@ using KissU.Core.CPlatform.Address;
 
 namespace KissU.Core.CPlatform.Utilities
 {
+    /// <summary>
+    /// 网络工具.
+    /// </summary>
     public class NetUtils
     {
         public const string LOCALHOST = "127.0.0.1";
@@ -14,11 +17,21 @@ namespace KissU.Core.CPlatform.Utilities
         private const string IP_PATTERN = "\\d{1,3}(\\.\\d{1,3}){3,5}$";
         private static AddressModel _host = null;
 
+        /// <summary>
+        /// Determines whether [is invalid port] [the specified port].
+        /// </summary>
+        /// <param name="port">The port.</param>
+        /// <returns><c>true</c> if [is invalid port] [the specified port]; otherwise, <c>false</c>.</returns>
         public static bool IsInvalidPort(int port)
         {
             return port <= MIN_PORT || port > MAX_PORT;
         }
 
+        /// <summary>
+        /// Determines whether [is local host] [the specified host].
+        /// </summary>
+        /// <param name="host">The host.</param>
+        /// <returns><c>true</c> if [is local host] [the specified host]; otherwise, <c>false</c>.</returns>
         public static bool IsLocalHost(string host)
         {
             return host != null
@@ -26,27 +39,46 @@ namespace KissU.Core.CPlatform.Utilities
                     || host.Equals("localhost", StringComparison.OrdinalIgnoreCase));
         }
 
+        /// <summary>
+        /// Determines whether [is any host] [the specified host].
+        /// </summary>
+        /// <param name="host">The host.</param>
+        /// <returns><c>true</c> if [is any host] [the specified host]; otherwise, <c>false</c>.</returns>
         public static bool IsAnyHost(String host)
         {
             return "0.0.0.0".Equals(host);
         }
 
+        /// <summary>
+        /// Determines whether [is valid address] [the specified address].
+        /// </summary>
+        /// <param name="address">The address.</param>
+        /// <returns><c>true</c> if [is valid address] [the specified address]; otherwise, <c>false</c>.</returns>
         private static bool IsValidAddress(string address)
         {
-            return (address != null
+            return address != null
                     && !ANYHOST.Equals(address)
-                    && address.IsMatch(IP_PATTERN));
+                    && address.IsMatch(IP_PATTERN);
         }
 
-        public static bool IsInvalidLocalHost(String host)
+        /// <summary>
+        /// Determines whether [is invalid local host] [the specified host].
+        /// </summary>
+        /// <param name="host">The host.</param>
+        /// <returns><c>true</c> if [is invalid local host] [the specified host]; otherwise, <c>false</c>.</returns>
+        public static bool IsInvalidLocalHost(string host)
         {
             return host == null
                     || host.Length == 0
                     || host.Equals("localhost", StringComparison.OrdinalIgnoreCase)
                     || host.Equals("0.0.0.0")
-                    || (host.IsMatch(LOCAL_IP_PATTERN));
+                    || host.IsMatch(LOCAL_IP_PATTERN);
         }
 
+        /// <summary>
+        /// Gets any host address.
+        /// </summary>
+        /// <returns>System.String.</returns>
         public static string GetAnyHostAddress()
         {
             string result = "";
@@ -66,9 +98,15 @@ namespace KissU.Core.CPlatform.Utilities
                     }
                 }
             }
+
             return result;
         }
 
+        /// <summary>
+        /// Gets the host address.
+        /// </summary>
+        /// <param name="hostAddress">The host address.</param>
+        /// <returns>System.String.</returns>
         public static string GetHostAddress(string hostAddress)
         {
             var result = hostAddress;
@@ -76,20 +114,31 @@ namespace KissU.Core.CPlatform.Utilities
             {
                 result = GetAnyHostAddress();
             }
+
             return result;
         }
 
+        /// <summary>
+        /// Gets the host address.
+        /// </summary>
+        /// <returns>AddressModel.</returns>
         public static AddressModel GetHostAddress()
         {
             if (_host != null)
+            {
                 return _host;
+            }
+
             var ports = AppConfig.ServerOptions.Ports;
             string address = GetHostAddress(AppConfig.ServerOptions.Ip);
             int port = AppConfig.ServerOptions.Port;
             var mappingIp = AppConfig.ServerOptions.MappingIP ?? address;
             var mappingPort = AppConfig.ServerOptions.MappingPort;
             if (mappingPort == 0)
+            {
                 mappingPort = port;
+            }
+
             _host = new IpAddressModel
             {
                 HttpPort = ports.HttpPort,
@@ -97,7 +146,7 @@ namespace KissU.Core.CPlatform.Utilities
                 Port = mappingPort,
                 MqttPort = ports.MQTTPort,
                 WanIp = AppConfig.ServerOptions.WanIp,
-                WsPort = ports.WSPort
+                WsPort = ports.WSPort,
             };
             return _host;
         }

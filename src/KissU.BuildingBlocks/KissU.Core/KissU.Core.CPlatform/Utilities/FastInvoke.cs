@@ -5,7 +5,7 @@ using System.Reflection.Emit;
 namespace KissU.Core.CPlatform.Utilities
 {
     /// <summary>
-    /// FastInvoke.
+    /// 快速调用.
     /// </summary>
     public class FastInvoke
     {
@@ -124,6 +124,11 @@ namespace KissU.Core.CPlatform.Utilities
             return invoder;
         }
 
+        /// <summary>
+        /// Emits the cast to reference.
+        /// </summary>
+        /// <param name="il">The il.</param>
+        /// <param name="type">The type.</param>
         private static void EmitCastToReference(ILGenerator il, System.Type type)
         {
             if (type.IsValueType)
@@ -136,6 +141,11 @@ namespace KissU.Core.CPlatform.Utilities
             }
         }
 
+        /// <summary>
+        /// Emits the box if needed.
+        /// </summary>
+        /// <param name="il">The il.</param>
+        /// <param name="type">The type.</param>
         private static void EmitBoxIfNeeded(ILGenerator il, System.Type type)
         {
             if (type.IsValueType)
@@ -144,6 +154,11 @@ namespace KissU.Core.CPlatform.Utilities
             }
         }
 
+        /// <summary>
+        /// Emits the fast int.
+        /// </summary>
+        /// <param name="il">The il.</param>
+        /// <param name="value">The value.</param>
         private static void EmitFastInt(ILGenerator il, int value)
         {
             switch (value)
