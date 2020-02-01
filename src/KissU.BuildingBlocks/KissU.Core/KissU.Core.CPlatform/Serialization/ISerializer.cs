@@ -23,6 +23,4 @@ namespace KissU.Core.CPlatform.Serialization
         /// <returns>一个对象实例。</returns>
         object Deserialize(T content, Type type);
     }
-
-  
 }

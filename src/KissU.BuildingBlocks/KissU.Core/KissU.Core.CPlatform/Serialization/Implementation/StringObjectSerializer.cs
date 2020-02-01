@@ -7,22 +7,16 @@ namespace KissU.Core.CPlatform.Serialization.Implementation
     /// </summary>
     public class StringObjectSerializer : ISerializer<object>
     {
-        #region Field
-
         private readonly ISerializer<string> _serializer;
 
-        #endregion Field
-
-        #region Constructor
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StringObjectSerializer"/> class.
+        /// </summary>
+        /// <param name="serializer">The serializer.</param>
         public StringObjectSerializer(ISerializer<string> serializer)
         {
             _serializer = serializer;
         }
-
-        #endregion Constructor
-
-        #region Implementation of ISerializer<object>
 
         /// <summary>
         /// 序列化。
@@ -44,7 +38,5 @@ namespace KissU.Core.CPlatform.Serialization.Implementation
         {
             return _serializer.Deserialize(content.ToString(), type);
         }
-
-        #endregion Implementation of ISerializer<object>
     }
 }

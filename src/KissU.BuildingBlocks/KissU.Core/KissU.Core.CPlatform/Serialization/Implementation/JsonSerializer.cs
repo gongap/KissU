@@ -8,8 +8,6 @@ namespace KissU.Core.CPlatform.Serialization.Implementation
     /// </summary>
     public sealed class JsonSerializer : ISerializer<string>
     {
-        #region Implementation of ISerializer<string>
-
         /// <summary>
         /// 序列化。
         /// </summary>
@@ -30,7 +28,5 @@ namespace KissU.Core.CPlatform.Serialization.Implementation
         {
             return JsonConvert.DeserializeObject(content, type);
         }
-
-        #endregion Implementation of ISerializer<string>
     }
 }
