@@ -6,12 +6,12 @@ using System.Text.RegularExpressions;
 namespace KissU.Core.CPlatform.Utilities
 {
     /// <summary>
-    /// EnvironmentHelper.
+    /// 环境助手.
     /// </summary>
     public class EnvironmentHelper
     {
         /// <summary>
-        /// Gets the environment variable.
+        /// 获取环境变量.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>System.String.</returns>
@@ -29,11 +29,12 @@ namespace KissU.Core.CPlatform.Utilities
                     result = arrayData.Length == 2 ? arrayData[1] : env;
                 }
             }
+
             return result;
         }
 
         /// <summary>
-        /// Gets the environment variable as bool.
+        /// 获取bool环境变量.
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="defaultValue">if set to <c>true</c> [default value].</param>

@@ -24,7 +24,7 @@ namespace KissU.Core.CPlatform.Utilities
         }
 
         /// <summary>
-        /// Determines whether this instance is registered.
+        /// 确定指定服务在上下文中是否可用.
         /// </summary>
         /// <typeparam name="T">服务类型</typeparam>
         /// <returns><c>true</c> if this instance is registered; otherwise, <c>false</c>.</returns>
@@ -34,7 +34,7 @@ namespace KissU.Core.CPlatform.Utilities
         }
 
         /// <summary>
-        /// Determines whether the specified key is registered.
+        /// 确定指定服务在上下文中是否可用.
         /// </summary>
         /// <typeparam name="T">服务类型</typeparam>
         /// <param name="key">The key.</param>
@@ -45,7 +45,7 @@ namespace KissU.Core.CPlatform.Utilities
         }
 
         /// <summary>
-        /// Determines whether the specified type is registered.
+        /// 确定指定服务在上下文中是否可用.
         /// </summary>
         /// <param name="type">The type.</param>
         /// <returns><c>true</c> if the specified type is registered; otherwise, <c>false</c>.</returns>
@@ -55,7 +55,7 @@ namespace KissU.Core.CPlatform.Utilities
         }
 
         /// <summary>
-        /// Determines whether [is registered with key] [the specified key].
+        /// 确定指定服务在上下文中是否可用.
         /// </summary>
         /// <param name="key">The key.</param>
         /// <param name="type">The type.</param>

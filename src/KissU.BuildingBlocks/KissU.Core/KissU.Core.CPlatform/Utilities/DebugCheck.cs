@@ -3,40 +3,33 @@
 namespace KissU.Core.CPlatform.Utilities
 {
     /// <summary>
-    /// DebugCheck. This class cannot be inherited.
+    /// 调试检查。这个类不能被继承.
     /// </summary>
     public sealed class DebugCheck
     {
         /// <summary>
-        /// Nots the null.
+        /// 不是null.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="T">参数类型</typeparam>
         /// <param name="value">The value.</param>
         [Conditional("DEBUG")]
-        public static void NotNull<T>(T value) where T : class
-        {
-            Debug.Assert(value != null);
-        }
+        public static void NotNull<T>(T value)
+            where T : class => Debug.Assert(value != null, "NotNull");
 
         /// <summary>
-        /// Nots the null.
+        /// 不是null.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="T">参数类型</typeparam>
         /// <param name="value">The value.</param>
         [Conditional("DEBUG")]
-        public static void NotNull<T>(T? value) where T : struct
-        {
-            Debug.Assert(value != null);
-        }
+        public static void NotNull<T>(T? value)
+            where T : struct => Debug.Assert(value != null, "NotNull");
 
         /// <summary>
-        /// Nots the empty.
+        /// 不是空.
         /// </summary>
         /// <param name="value">The value.</param>
         [Conditional("DEBUG")]
-        public static void NotEmpty(string value)
-        {
-            Debug.Assert(!string.IsNullOrWhiteSpace(value));
-        }
+        public static void NotEmpty(string value) => Debug.Assert(!string.IsNullOrWhiteSpace(value), "NotEmpty");
     }
 }
