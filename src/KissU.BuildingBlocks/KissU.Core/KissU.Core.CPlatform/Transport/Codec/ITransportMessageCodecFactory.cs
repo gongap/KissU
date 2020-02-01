@@ -1,7 +1,7 @@
 ﻿namespace KissU.Core.CPlatform.Transport.Codec
 {
     /// <summary>
-    /// 一个抽象的传输消息编解码器工厂。
+    /// 传输消息编解码器工厂。
     /// </summary>
     public interface ITransportMessageCodecFactory
     {

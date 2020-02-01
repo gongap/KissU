@@ -19,7 +19,7 @@ namespace KissU.Core.CPlatform.Transport
         /// 接收到消息的事件。
         /// </summary>
         event ReceivedDelegate Received;
-        
+ 
         /// <summary>
         /// 触发接收到消息事件。
         /// </summary>

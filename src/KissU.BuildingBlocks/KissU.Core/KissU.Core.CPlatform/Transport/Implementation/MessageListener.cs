@@ -8,8 +8,6 @@ namespace KissU.Core.CPlatform.Transport.Implementation
     /// </summary>
     public class MessageListener : IMessageListener
     {
-        #region Implementation of IMessageListener
-
         /// <summary>
         /// 接收到消息的事件。
         /// </summary>
@@ -24,10 +22,11 @@ namespace KissU.Core.CPlatform.Transport.Implementation
         public async Task OnReceived(IMessageSender sender, TransportMessage message)
         {
             if (Received == null)
+            {
                 return;
+            }
+
             await Received(sender, message);
         }
-
-        #endregion Implementation of IMessageListener
     }
 }

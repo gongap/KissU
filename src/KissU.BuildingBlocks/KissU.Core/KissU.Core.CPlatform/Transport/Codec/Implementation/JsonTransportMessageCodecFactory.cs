@@ -1,13 +1,14 @@
 ﻿namespace KissU.Core.CPlatform.Transport.Codec.Implementation
 {
+    /// <summary>
+    /// Json传输消息编解码器工厂.
+    /// Implements the <see cref="KissU.Core.CPlatform.Transport.Codec.ITransportMessageCodecFactory" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Transport.Codec.ITransportMessageCodecFactory" />
     public class JsonTransportMessageCodecFactory : ITransportMessageCodecFactory
     {
-        #region Field
         private readonly ITransportMessageEncoder _transportMessageEncoder = new JsonTransportMessageEncoder();
         private readonly ITransportMessageDecoder _transportMessageDecoder = new JsonTransportMessageDecoder();
-        #endregion Field
-
-        #region Implementation of ITransportMessageCodecFactory
 
         /// <summary>
         /// 获取编码器。
@@ -26,7 +27,5 @@
         {
             return _transportMessageDecoder;
         }
-
-        #endregion Implementation of ITransportMessageCodecFactory
     }
 }
