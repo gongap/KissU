@@ -49,7 +49,10 @@ namespace KissU.Core.CPlatform.Runtime.Client.Implementation
             {
                 var endPoint = address.CreateEndPoint();
                 if (_logger.IsEnabled(LogLevel.Debug))
+                {
                     _logger.LogDebug($"使用地址：'{endPoint}'进行调用。");
+                }
+
                 var client =await _transportClientFactory.CreateClientAsync(endPoint);
                 RpcContext.GetContext().SetAttachment("RemoteAddress", address.ToString());
                 return await client.SendAsync(invokeMessage,cancellationToken).WithCancellation(cancellationToken);
@@ -76,7 +79,10 @@ namespace KissU.Core.CPlatform.Runtime.Client.Implementation
             {
                 var endPoint = address.CreateEndPoint();
                 if (_logger.IsEnabled(LogLevel.Debug))
+                {
                     _logger.LogDebug($"使用地址：'{endPoint}'进行调用。");
+                }
+
                 var task = _transportClientFactory.CreateClientAsync(endPoint);
                 var client= task.IsCompletedSuccessfully ? task.Result : await task;
                 RpcContext.GetContext().SetAttachment("RemoteAddress", address.ToString());
@@ -100,20 +106,29 @@ namespace KissU.Core.CPlatform.Runtime.Client.Implementation
         private async ValueTask<AddressModel> ResolverAddress(RemoteInvokeContext context,string item)
         {
             if (context == null)
+            {
                 throw new ArgumentNullException(nameof(context));
+            }
 
             if (context.InvokeMessage == null)
+            {
                 throw new ArgumentNullException(nameof(context.InvokeMessage));
+            }
 
             if (string.IsNullOrEmpty(context.InvokeMessage.ServiceId))
+            {
                 throw new ArgumentException("服务Id不能为空。", nameof(context.InvokeMessage.ServiceId));
+            }
             //远程调用信息
             var invokeMessage = context.InvokeMessage; 
             //解析服务地址
             var vt =  _addressResolver.Resolver(invokeMessage.ServiceId, item);
             var address = vt.IsCompletedSuccessfully ? vt.Result : await vt;
             if (address == null)
+            {
                 throw new CPlatformException($"无法解析服务Id：{invokeMessage.ServiceId}的地址信息。");
+            }
+
             return address;
         }
 

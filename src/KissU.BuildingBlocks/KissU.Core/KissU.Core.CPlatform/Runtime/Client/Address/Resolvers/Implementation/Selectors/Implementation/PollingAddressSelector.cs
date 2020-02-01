@@ -125,9 +125,13 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
 
                     //设置为下一个
                     if (_maxIndex > _index)
+                    {
                         _index++;
+                    }
                     else
+                    {
                         _index = 0;
+                    }
 
                     //释放锁
                     Interlocked.Exchange(ref _lock, 0);

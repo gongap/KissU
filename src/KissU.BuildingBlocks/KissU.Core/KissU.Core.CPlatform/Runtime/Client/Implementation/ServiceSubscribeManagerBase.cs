@@ -33,7 +33,9 @@ namespace KissU.Core.CPlatform.Runtime.Client.Implementation
         public virtual Task SetSubscribersAsync(IEnumerable<ServiceSubscriber> subscibers)
         {
             if (subscibers == null)
+            {
                 throw new ArgumentNullException(nameof(subscibers));
+            }
 
             var descriptors = subscibers.Where(route => route != null).Select(route => new ServiceSubscriberDescriptor
             {

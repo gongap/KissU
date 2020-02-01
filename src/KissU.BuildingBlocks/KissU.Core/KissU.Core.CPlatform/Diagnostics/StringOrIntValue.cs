@@ -59,7 +59,11 @@ namespace KissU.Core.CPlatform.Diagnostics
 
         public override string ToString()
         {
-            if (HasIntValue) return _intValue.ToString();
+            if (HasIntValue)
+            {
+                return _intValue.ToString();
+            }
+
             return _stringValue;
         }
 

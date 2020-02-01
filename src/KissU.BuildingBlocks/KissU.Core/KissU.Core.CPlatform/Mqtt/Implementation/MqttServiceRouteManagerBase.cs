@@ -68,7 +68,9 @@ namespace KissU.Core.CPlatform.Mqtt.Implementation
         public virtual Task SetRoutesAsync(IEnumerable<MqttServiceRoute> routes)
         {
             if (routes == null)
+            {
                 throw new ArgumentNullException(nameof(routes));
+            }
 
             var descriptors = routes.Where(route => route != null).Select(route => new MqttServiceDescriptor
             {
@@ -86,28 +88,40 @@ namespace KissU.Core.CPlatform.Mqtt.Implementation
         protected void OnCreated(params MqttServiceRouteEventArgs[] args)
         {
             if (_created == null)
+            {
                 return;
+            }
 
             foreach (var arg in args)
+            {
                 _created(this, arg);
+            }
         }
 
         protected void OnChanged(params MqttServiceRouteChangedEventArgs[] args)
         {
             if (_changed == null)
+            {
                 return;
+            }
 
             foreach (var arg in args)
+            {
                 _changed(this, arg);
+            }
         }
 
         protected void OnRemoved(params MqttServiceRouteEventArgs[] args)
         {
             if (_removed == null)
+            {
                 return;
+            }
 
             foreach (var arg in args)
+            {
                 _removed(this, arg);
+            }
         }
     }
 }

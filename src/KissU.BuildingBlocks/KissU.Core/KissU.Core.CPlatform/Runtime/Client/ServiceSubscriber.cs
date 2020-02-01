@@ -25,13 +25,19 @@ namespace KissU.Core.CPlatform.Runtime.Client
         {
             var model = obj as ServiceSubscriber;
             if (model == null)
+            {
                 return false;
+            }
 
             if (obj.GetType() != GetType())
+            {
                 return false;
+            }
 
             if (model.ServiceDescriptor != ServiceDescriptor)
+            {
                 return false;
+            }
 
             return model.Address.Count() == Address.Count() && model.Address.All(addressModel => Address.Contains(addressModel));
         }

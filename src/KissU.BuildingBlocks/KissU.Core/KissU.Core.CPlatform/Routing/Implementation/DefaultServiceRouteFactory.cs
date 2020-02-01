@@ -32,7 +32,9 @@ namespace KissU.Core.CPlatform.Routing.Implementation
         public Task<IEnumerable<ServiceRoute>> CreateServiceRoutesAsync(IEnumerable<ServiceRouteDescriptor> descriptors)
         {
             if (descriptors == null)
+            {
                 throw new ArgumentNullException(nameof(descriptors));
+            }
 
             descriptors = descriptors.ToArray();
             var routes = new List<ServiceRoute>(descriptors.Count());
@@ -52,7 +54,9 @@ namespace KissU.Core.CPlatform.Routing.Implementation
         private IEnumerable<AddressModel> CreateAddress(IEnumerable<ServiceAddressDescriptor> descriptors)
         {
             if (descriptors == null)
+            {
                 yield break;
+            }
 
             foreach (var descriptor in descriptors)
             {

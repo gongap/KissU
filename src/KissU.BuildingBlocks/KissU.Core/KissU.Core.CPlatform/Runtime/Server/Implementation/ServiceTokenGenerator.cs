@@ -14,8 +14,14 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
             }
             else
             {
-                if (enableToken) _serviceToken = Guid.NewGuid().ToString("N");
-                else _serviceToken = null;
+                if (enableToken)
+                {
+                    _serviceToken = Guid.NewGuid().ToString("N");
+                }
+                else
+                {
+                    _serviceToken = null;
+                }
             }
             return _serviceToken;
         }

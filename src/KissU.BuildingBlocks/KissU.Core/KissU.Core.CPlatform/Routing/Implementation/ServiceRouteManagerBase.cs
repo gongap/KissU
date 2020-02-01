@@ -97,7 +97,9 @@ namespace KissU.Core.CPlatform.Routing.Implementation
         public virtual Task SetRoutesAsync(IEnumerable<ServiceRoute> routes)
         {
             if (routes == null)
+            {
                 throw new ArgumentNullException(nameof(routes));
+            }
 
             var descriptors = routes.Where(route => route != null).Select(route => new ServiceRouteDescriptor
             {
@@ -130,28 +132,40 @@ namespace KissU.Core.CPlatform.Routing.Implementation
         protected void OnCreated(params ServiceRouteEventArgs[] args)
         {
             if (_created == null)
+            {
                 return;
+            }
 
             foreach (var arg in args)
+            {
                 _created(this, arg);
+            }
         }
 
         protected void OnChanged(params ServiceRouteChangedEventArgs[] args)
         {
             if (_changed == null)
+            {
                 return;
+            }
 
             foreach (var arg in args)
+            {
                 _changed(this, arg);
+            }
         }
 
         protected void OnRemoved(params ServiceRouteEventArgs[] args)
         {
             if (_removed == null)
+            {
                 return;
+            }
 
             foreach (var arg in args)
+            {
                 _removed(this, arg);
+            }
         }
     }
 }

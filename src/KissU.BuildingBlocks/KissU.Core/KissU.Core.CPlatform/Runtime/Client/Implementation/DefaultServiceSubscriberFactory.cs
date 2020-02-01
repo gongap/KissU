@@ -20,7 +20,9 @@ namespace KissU.Core.CPlatform.Runtime.Client.Implementation
         public Task<IEnumerable<ServiceSubscriber>> CreateServiceSubscribersAsync(IEnumerable<ServiceSubscriberDescriptor> descriptors)
         {
             if (descriptors == null)
+            {
                 throw new ArgumentNullException(nameof(descriptors));
+            }
 
             descriptors = descriptors.ToArray();
             var subscribers = new List<ServiceSubscriber>(descriptors.Count());
@@ -35,7 +37,9 @@ namespace KissU.Core.CPlatform.Runtime.Client.Implementation
         private IEnumerable<AddressModel> CreateAddress(IEnumerable<ServiceAddressDescriptor> descriptors)
         {
             if (descriptors == null)
+            {
                 yield break;
+            }
 
             foreach (var descriptor in descriptors)
             {

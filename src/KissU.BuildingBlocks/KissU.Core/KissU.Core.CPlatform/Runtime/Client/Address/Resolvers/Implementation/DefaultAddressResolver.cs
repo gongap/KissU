@@ -72,7 +72,9 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation
         public async ValueTask<AddressModel> Resolver(string serviceId, string item)
         {
             if (_logger.IsEnabled(LogLevel.Debug))
+            {
                 _logger.LogDebug($"准备为服务id：{serviceId}，解析可用地址。");
+            }
 
             _concurrent.TryGetValue(serviceId, out ServiceRoute descriptor);
             if (descriptor == null)
@@ -89,7 +91,10 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation
                     if (descriptor == null)
                     {
                         if (_logger.IsEnabled(LogLevel.Warning))
+                        {
                             _logger.LogWarning($"根据服务id：{serviceId}，找不到相关服务信息。");
+                        }
+
                         return null;
                     }
                 }
@@ -110,12 +115,18 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation
             if (address.Count == 0)
             {
                 if (_logger.IsEnabled(LogLevel.Warning))
+                {
                     _logger.LogWarning($"根据服务id：{serviceId}，找不到可用的地址。");
+                }
+
                 return null;
             }
 
             if (_logger.IsEnabled(LogLevel.Information))
+            {
                 _logger.LogInformation($"根据服务id：{serviceId}，找到以下可用地址：{string.Join(",", address.Select(i => i.ToString()))}。");
+            }
+
             var vtCommand = _commandProvider.GetCommand(serviceId);
             var command = vtCommand.IsCompletedSuccessfully ? vtCommand.Result : await vtCommand;
             var addressSelector = _addressSelectors[command.ShuntStrategy.ToString()];

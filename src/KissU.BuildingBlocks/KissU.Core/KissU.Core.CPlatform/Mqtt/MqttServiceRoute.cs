@@ -4,7 +4,10 @@ using KissU.Core.CPlatform.Address;
 
 namespace KissU.Core.CPlatform.Mqtt
 {
-   public  class MqttServiceRoute
+    /// <summary>
+    /// Mqtt服务路由.
+    /// </summary>
+    public class MqttServiceRoute
     {
         /// <summary>
         /// Mqtt服务可用地址。
@@ -16,43 +19,61 @@ namespace KissU.Core.CPlatform.Mqtt
         /// </summary>
         public MqttDescriptor MqttDescriptor { get; set; }
 
-        #region Equality members
-
-        /// <summary>Determines whether the specified object is equal to the current object.</summary>
-        /// <returns>true if the specified object  is equal to the current object; otherwise, false.</returns>
-        /// <param name="obj">The object to compare with the current object. </param>
+        /// <summary>
+        /// Determines whether the specified <see cref="System.Object" /> is equal to this instance.
+        /// </summary>
+        /// <param name="obj">The object to compare with the current object.</param>
+        /// <returns><c>true</c> if the specified <see cref="System.Object" /> is equal to this instance; otherwise, <c>false</c>.</returns>
         public override bool Equals(object obj)
         {
             var model = obj as MqttServiceRoute;
             if (model == null)
+            {
                 return false;
+            }
 
             if (obj.GetType() != GetType())
+            {
                 return false;
+            }
 
             if (model.MqttDescriptor != MqttDescriptor)
+            {
                 return false;
+            }
 
             return model.MqttEndpoint.Count() == MqttEndpoint.Count() && model.MqttEndpoint.All(addressModel => MqttEndpoint.Contains(addressModel));
         }
 
-        /// <summary>Serves as the default hash function. </summary>
-        /// <returns>A hash code for the current object.</returns>
+        /// <summary>
+        /// Returns a hash code for this instance.
+        /// </summary>
+        /// <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.</returns>
         public override int GetHashCode()
         {
             return ToString().GetHashCode();
         }
 
+        /// <summary>
+        /// Implements the == operator.
+        /// </summary>
+        /// <param name="model1">The model1.</param>
+        /// <param name="model2">The model2.</param>
+        /// <returns>The result of the operator.</returns>
         public static bool operator ==(MqttServiceRoute model1, MqttServiceRoute model2)
         {
             return Equals(model1, model2);
         }
 
+        /// <summary>
+        /// Implements the != operator.
+        /// </summary>
+        /// <param name="model1">The model1.</param>
+        /// <param name="model2">The model2.</param>
+        /// <returns>The result of the operator.</returns>
         public static bool operator != (MqttServiceRoute model1, MqttServiceRoute model2)
         {
             return !Equals(model1, model2);
         }
-
-        #endregion Equality members
     }
 }

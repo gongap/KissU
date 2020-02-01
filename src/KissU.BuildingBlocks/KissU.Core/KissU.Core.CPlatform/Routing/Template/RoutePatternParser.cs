@@ -5,8 +5,18 @@ using System.Text.RegularExpressions;
 
 namespace KissU.Core.CPlatform.Routing.Template
 {
+    /// <summary>
+    /// 路由模式解析器.
+    /// </summary>
     public class RoutePatternParser
     {
+        /// <summary>
+        /// 解析指定的路由模板.
+        /// </summary>
+        /// <param name="routeTemplet">The route templet.</param>
+        /// <param name="service">The service.</param>
+        /// <param name="method">The method.</param>
+        /// <returns>System.String.</returns>
         public static string Parse(string routeTemplet, string service, string method)
         {
             StringBuilder result = new StringBuilder();
@@ -30,17 +40,33 @@ namespace KissU.Core.CPlatform.Routing.Template
                 }
                 else
                 {
-                    if (!isAppendMethod) result.AppendFormat("{0}/", method);
+                    if (!isAppendMethod)
+                    {
+                        result.AppendFormat("{0}/", method);
+                    }
+
                     result.Append(parameter);
                     isAppendMethod = true;
                 }
+
                 result.Append("/");
             }
+
             result.Length = result.Length - 1;
-            if (!isAppendMethod) result.AppendFormat("/{0}", method);
+            if (!isAppendMethod)
+            {
+                result.AppendFormat("/{0}", method);
+            }
+
             return result.ToString().ToLower();
         }
 
+        /// <summary>
+        /// 解析指定的路由模板.
+        /// </summary>
+        /// <param name="routeTemplet">The route templet.</param>
+        /// <param name="service">The service.</param>
+        /// <returns>System.String.</returns>
         public static string Parse(string routeTemplet, string service)
         {
             StringBuilder result = new StringBuilder();
@@ -56,6 +82,7 @@ namespace KissU.Core.CPlatform.Routing.Template
                 {
                     result.Append(service.Substring(1, service.Length - param.Length - 1));
                 }
+
                 result.Append("/");
             }
 
@@ -71,6 +98,7 @@ namespace KissU.Core.CPlatform.Routing.Template
             {
                 matchVale.Add(m.Value);
             }
+
             return matchVale;
         }
     }

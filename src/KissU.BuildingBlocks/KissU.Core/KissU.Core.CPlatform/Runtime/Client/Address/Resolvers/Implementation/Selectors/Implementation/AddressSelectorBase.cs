@@ -20,16 +20,26 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
         async ValueTask<AddressModel> IAddressSelector.SelectAsync(AddressSelectContext context)
         {
             if (context == null)
+            {
                 throw new ArgumentNullException(nameof(context));
+            }
+
             if (context.Descriptor == null)
+            {
                 throw new ArgumentNullException(nameof(context.Descriptor));
+            }
+
             if (context.Address == null)
+            {
                 throw new ArgumentNullException(nameof(context.Address));
+            }
 
             //  var address = context.Address.ToArray();
             if (context.Address.Count() == 0)
+            {
                 throw new ArgumentException("没有任何地址信息。", nameof(context.Address));
-             
+            }
+
             if (context.Address.Count() == 1)
             {
                 return context.Address.First();

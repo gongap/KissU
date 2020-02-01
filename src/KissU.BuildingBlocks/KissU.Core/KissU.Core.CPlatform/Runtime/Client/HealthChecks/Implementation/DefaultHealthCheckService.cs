@@ -128,19 +128,27 @@ namespace KissU.Core.CPlatform.Runtime.Client.HealthChecks.Implementation
         protected void OnRemoved(params HealthCheckEventArgs[] args)
         {
             if (_removed == null)
+            {
                 return;
+            }
 
             foreach (var arg in args)
+            {
                 _removed(this, arg);
+            }
         }
 
         protected void OnChanged(params HealthCheckEventArgs[] args)
         {
             if (_changed == null)
+            {
                 return;
+            }
 
             foreach (var arg in args)
+            {
                 _changed(this, arg);
+            }
         }
 
         #endregion Implementation of IHealthCheckService

@@ -38,7 +38,9 @@ namespace KissU.Core.CPlatform.Routing.Implementation
 
             var directoryName = Path.GetDirectoryName(filePath);
             if (!string.IsNullOrEmpty(directoryName))
+            {
                 _fileSystemWatcher = new FileSystemWatcher(directoryName, "*" + Path.GetExtension(filePath));
+            }
 
             _fileSystemWatcher.Changed += _fileSystemWatcher_Changed;
             _fileSystemWatcher.Created += _fileSystemWatcher_Changed;
@@ -71,7 +73,10 @@ namespace KissU.Core.CPlatform.Routing.Implementation
         public override async Task<IEnumerable<ServiceRoute>> GetRoutesAsync()
         {
             if (_routes == null)
+            {
                 await EntryRoutes(_filePath);
+            }
+
             return _routes;
         }
 
@@ -82,7 +87,10 @@ namespace KissU.Core.CPlatform.Routing.Implementation
         public override Task ClearAsync()
         {
             if (File.Exists(_filePath))
+            {
                 File.Delete(_filePath);
+            }
+
             return Task.FromResult(0);
         }
 
@@ -123,7 +131,10 @@ namespace KissU.Core.CPlatform.Routing.Implementation
             if (File.Exists(file))
             {
                 if (_logger.IsEnabled(LogLevel.Debug))
+                {
                     _logger.LogDebug($"准备从文件：{file}中获取服务路由。");
+                }
+
                 string content;
                 while (true)
                 {
@@ -155,14 +166,20 @@ namespace KissU.Core.CPlatform.Routing.Implementation
                 catch (Exception exception)
                 {
                     if (_logger.IsEnabled(LogLevel.Error))
+                    {
                         _logger.LogError(exception,"获取路由信息时发生了错误。");
+                    }
+
                     routes = new ServiceRoute[0];
                 }
             }
             else
             {
                 if (_logger.IsEnabled(LogLevel.Warning))
+                {
                     _logger.LogWarning($"无法获取路由信息，因为文件：{file}不存在。");
+                }
+
                 routes = new ServiceRoute[0];
             }
             return routes;
@@ -225,7 +242,9 @@ namespace KissU.Core.CPlatform.Routing.Implementation
         private async void _fileSystemWatcher_Changed(object sender, FileSystemEventArgs e)
         {
             if (_logger.IsEnabled(LogLevel.Information))
+            {
                 _logger.LogInformation($"文件{_filePath}发生了变更，将重新获取路由信息。");
+            }
 
             if (e.ChangeType == WatcherChangeTypes.Changed)
             {

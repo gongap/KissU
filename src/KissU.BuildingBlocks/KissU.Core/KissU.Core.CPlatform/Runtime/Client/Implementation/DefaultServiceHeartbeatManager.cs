@@ -10,7 +10,9 @@ namespace KissU.Core.CPlatform.Runtime.Client.Implementation
         public void AddWhitelist(string serviceId)
         {
             if(!_whitelist.Contains(serviceId))
-            _whitelist.Add(serviceId);
+            {
+                _whitelist.Add(serviceId);
+            }
         }
 
         public bool ExistsWhitelist(string serviceId)

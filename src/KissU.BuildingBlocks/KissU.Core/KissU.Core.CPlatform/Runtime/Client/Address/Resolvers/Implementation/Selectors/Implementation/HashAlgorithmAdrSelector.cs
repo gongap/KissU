@@ -91,7 +91,9 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
                 }
             }
             if(_unHealths.Count==0)
+            {
                 _healthCheckService.Changed -= ItemNode_Changed;
+            }
         }
 
         private static string GetCacheKey(ServiceDescriptor descriptor)

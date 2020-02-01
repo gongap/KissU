@@ -56,9 +56,14 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Im
                 var serviceRoute = methodInfo.GetCustomAttribute<ServiceRouteAttribute>();
                 var routeTemplateVal = routeTemplate.RouteTemplate;
                 if (!routeTemplate.IsPrefix && serviceRoute != null)
+                {
                     routeTemplateVal = serviceRoute.Template;
+                }
                 else if (routeTemplate.IsPrefix && serviceRoute != null)
+                {
                     routeTemplateVal = $"{ routeTemplate.RouteTemplate}/{ serviceRoute.Template}";
+                }
+
                 yield return Create(methodInfo, service.Name, routeTemplateVal);
             }
         }
@@ -87,7 +92,9 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Im
             {
                 httpMethods.AddRange(attribute.HttpMethods);
                 if (attribute.IsRegisterMetadata)
+                {
                     httpMethod.AppendJoin(',', attribute.HttpMethods).Append(",");
+                }
             }
             if (httpMethod.Length > 0)
             {
@@ -96,7 +103,10 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Im
             }
             var authorization = attributes.Where(p => p is AuthorizationFilterAttribute).FirstOrDefault();
             if (authorization != null)
+            {
                 serviceDescriptor.EnableAuthorization(true);
+            }
+
             if (authorization != null)
             {
                 serviceDescriptor.AuthType(((authorization as AuthorizationAttribute)?.AuthType)
@@ -119,9 +129,14 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Im
                 {
                     object instance = null;
                     if (AppConfig.ServerOptions.IsModulePerLifetimeScope)
+                    {
                         instance = _serviceProvider.GetInstancePerLifetimeScope(key, method.DeclaringType);
+                    }
                     else
+                    {
                         instance = _serviceProvider.GetInstances(key, method.DeclaringType);
+                    }
+
                     var list = new List<object>();
 
                     foreach (var parameterInfo in method.GetParameters())
@@ -135,7 +150,9 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Im
                         var value = parameters[parameterInfo.Name];
 
                         if (methodValidateAttribute != null)
+                        {
                             _validationProcessor.Validate(parameterInfo, value);
+                        }
 
                         var parameterType = parameterInfo.ParameterType;
                         var parameter = _typeConvertibleService.Convert(value, parameterType);

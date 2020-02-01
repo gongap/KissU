@@ -35,7 +35,10 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
         public RandomAddressSelector(Func<int, int, int> generate)
         {
             if (generate == null)
+            {
                 throw new ArgumentNullException(nameof(generate));
+            }
+
             _generate = generate;
         }
 

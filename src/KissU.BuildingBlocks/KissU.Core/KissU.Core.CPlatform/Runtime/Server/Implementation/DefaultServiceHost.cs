@@ -38,7 +38,10 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
         public override async Task StartAsync(EndPoint endPoint)
         {
             if (_serverMessageListener != null)
+            {
                 return;
+            }
+
             _serverMessageListener = await _messageListenerFactory(endPoint);
             _serverMessageListener.Received += async (sender, message) =>
             {
@@ -52,7 +55,10 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
         public override async Task StartAsync(string ip,int port)
         {
             if (_serverMessageListener != null)
+            {
                 return;
+            }
+
             _serverMessageListener = await _messageListenerFactory(new IPEndPoint(IPAddress.Parse(ip), port));
             _serverMessageListener.Received += async (sender, message) =>
             {

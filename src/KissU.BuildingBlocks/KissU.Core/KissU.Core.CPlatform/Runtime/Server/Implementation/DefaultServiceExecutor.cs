@@ -48,11 +48,15 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
         {
 
             if (_logger.IsEnabled(LogLevel.Trace))
+            {
                 _logger.LogTrace("服务提供者接收到消息。");
+            }
 
             if (!message.IsInvokeMessage())
+            {
                 return;
-          
+            }
+
             RemoteInvokeMessage remoteInvokeMessage;
             try
             {
@@ -69,18 +73,25 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
             if (entry == null)
             {
                 if (_logger.IsEnabled(LogLevel.Error))
+                {
                     _logger.LogError($"根据服务Id：{remoteInvokeMessage.ServiceId}，找不到服务条目。");
+                }
+
                 return;
             }
 
             if(remoteInvokeMessage.Attachments !=null)
             {
                 foreach(var attachment in remoteInvokeMessage.Attachments)
-                RpcContext.GetContext().SetAttachment(attachment.Key,attachment.Value);
+                {
+                    RpcContext.GetContext().SetAttachment(attachment.Key,attachment.Value);
+                }
             }
 
             if (_logger.IsEnabled(LogLevel.Debug))
+            {
                 _logger.LogDebug("准备执行本地逻辑。");
+            }
 
             var resultMessage = new RemoteInvokeResultMessage();
 
@@ -123,10 +134,15 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
                 else
                 {
                     if (!task.IsCompletedSuccessfully)
+                    {
                         await task;
+                    }
+
                     var taskType = task.GetType().GetTypeInfo();
                     if (taskType.IsGenericType)
+                    {
                         resultMessage.Result = taskType.GetProperty("Result").GetValue(task);
+                    }
                 }
 
                 if (remoteInvokeMessage.DecodeJObject && !(resultMessage.Result is IConvertible && UtilityType.ConvertibleType.GetTypeInfo().IsAssignableFrom(resultMessage.Result.GetType())))
@@ -137,7 +153,10 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
             catch (Exception exception)
             {
                 if (_logger.IsEnabled(LogLevel.Error))
+                {
                     _logger.LogError(exception, "执行本地逻辑时候发生了错误。");
+                }
+
                 resultMessage.ExceptionMessage = GetExceptionMessage(exception);
                 resultMessage.StatusCode = exception.HResult;
             }
@@ -148,23 +167,31 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
             try
             {
                 if (_logger.IsEnabled(LogLevel.Debug))
+                {
                     _logger.LogDebug("准备发送响应消息。");
+                }
 
                 await sender.SendAndFlushAsync(TransportMessage.CreateInvokeResultMessage(messageId, resultMessage));
                 if (_logger.IsEnabled(LogLevel.Debug))
+                {
                     _logger.LogDebug("响应消息发送成功。");
+                }
             }
             catch (Exception exception)
             {
                 if (_logger.IsEnabled(LogLevel.Error))
+                {
                     _logger.LogError(exception,"发送响应消息时候发生了异常。" );
+                }
             }
         } 
 
         private static string GetExceptionMessage(Exception exception)
         {
             if (exception == null)
+            {
                 return string.Empty;
+            }
 
             var message = exception.Message;
             if (exception.InnerException != null)

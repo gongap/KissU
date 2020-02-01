@@ -3,9 +3,11 @@ using System.Threading.Tasks;
 
 namespace KissU.Core.CPlatform.Mqtt
 {
-   public interface IMqttServiceFactory
+    /// <summary>
+    /// Mqtt服务工厂
+    /// </summary>
+    public interface IMqttServiceFactory
     {
-
         /// <summary>
         /// 根据Mqtt服务路由描述符创建Mqtt服务路由。
         /// </summary>
