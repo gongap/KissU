@@ -24,7 +24,15 @@ namespace KissU.Core.CPlatform.Runtime.Client.Implementation
         private readonly ILogger<RemoteInvokeService> _logger;
         private readonly IHealthCheckService _healthCheckService;
 
-        public RemoteInvokeService(IHashAlgorithm hashAlgorithm,IAddressResolver addressResolver, ITransportClientFactory transportClientFactory, ILogger<RemoteInvokeService> logger, IHealthCheckService healthCheckService)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RemoteInvokeService"/> class.
+        /// </summary>
+        /// <param name="hashAlgorithm">The hash algorithm.</param>
+        /// <param name="addressResolver">The address resolver.</param>
+        /// <param name="transportClientFactory">The transport client factory.</param>
+        /// <param name="logger">The logger.</param>
+        /// <param name="healthCheckService">The health check service.</param>
+        public RemoteInvokeService(IHashAlgorithm hashAlgorithm, IAddressResolver addressResolver, ITransportClientFactory transportClientFactory, ILogger<RemoteInvokeService> logger, IHealthCheckService healthCheckService)
         {
             _addressResolver = addressResolver;
             _transportClientFactory = transportClientFactory;
@@ -32,19 +40,28 @@ namespace KissU.Core.CPlatform.Runtime.Client.Implementation
             _healthCheckService = healthCheckService;
         }
 
-        #region Implementation of IRemoteInvokeService
-
+        /// <summary>
+        /// 调用.
+        /// </summary>
+        /// <param name="context">调用上下文。</param>
+        /// <returns>远程调用结果消息模型。</returns>
         public async Task<RemoteInvokeResultMessage> InvokeAsync(RemoteInvokeContext context)
         {
             return await InvokeAsync(context, Task.Factory.CancellationToken);
         }
 
+        /// <summary>
+        /// 调用.
+        /// </summary>
+        /// <param name="context">调用上下文。</param>
+        /// <param name="cancellationToken">取消操作通知实例。</param>
+        /// <returns>远程调用结果消息模型。</returns>
         public async Task<RemoteInvokeResultMessage> InvokeAsync(RemoteInvokeContext context, CancellationToken cancellationToken)
         {
             var invokeMessage = context.InvokeMessage;
             AddressModel address = null;
             var vt = ResolverAddress(context, context.Item);
-            address = vt.IsCompletedSuccessfully? vt.Result: await vt; 
+            address = vt.IsCompletedSuccessfully ? vt.Result : await vt;
             try
             {
                 var endPoint = address.CreateEndPoint();
@@ -53,9 +70,9 @@ namespace KissU.Core.CPlatform.Runtime.Client.Implementation
                     _logger.LogDebug($"使用地址：'{endPoint}'进行调用。");
                 }
 
-                var client =await _transportClientFactory.CreateClientAsync(endPoint);
+                var client = await _transportClientFactory.CreateClientAsync(endPoint);
                 RpcContext.GetContext().SetAttachment("RemoteAddress", address.ToString());
-                return await client.SendAsync(invokeMessage,cancellationToken).WithCancellation(cancellationToken);
+                return await client.SendAsync(invokeMessage, cancellationToken).WithCancellation(cancellationToken);
             }
             catch (CommunicationException)
             {
@@ -69,6 +86,12 @@ namespace KissU.Core.CPlatform.Runtime.Client.Implementation
             }
         }
 
+        /// <summary>
+        /// 调用.
+        /// </summary>
+        /// <param name="context">调用上下文。</param>
+        /// <param name="requestTimeout">超时时间。</param>
+        /// <returns>远程调用结果消息模型。</returns>
         public async Task<RemoteInvokeResultMessage> InvokeAsync(RemoteInvokeContext context, int requestTimeout)
         {
             var invokeMessage = context.InvokeMessage;
@@ -84,7 +107,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.Implementation
                 }
 
                 var task = _transportClientFactory.CreateClientAsync(endPoint);
-                var client= task.IsCompletedSuccessfully ? task.Result : await task;
+                var client = task.IsCompletedSuccessfully ? task.Result : await task;
                 RpcContext.GetContext().SetAttachment("RemoteAddress", address.ToString());
                 using (var cts = new CancellationTokenSource())
                 {
@@ -103,7 +126,17 @@ namespace KissU.Core.CPlatform.Runtime.Client.Implementation
             }
         }
 
-        private async ValueTask<AddressModel> ResolverAddress(RemoteInvokeContext context,string item)
+        /// <summary>
+        /// 解析地址.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="item">The item.</param>
+        /// <returns>ValueTask&lt;AddressModel&gt;.</returns>
+        /// <exception cref="ArgumentNullException">context</exception>
+        /// <exception cref="ArgumentNullException">InvokeMessage</exception>
+        /// <exception cref="ArgumentException">服务Id不能为空。 - ServiceId</exception>
+        /// <exception cref="CPlatformException">无法解析服务Id：{invokeMessage.ServiceId}的地址信息。</exception>
+        private async ValueTask<AddressModel> ResolverAddress(RemoteInvokeContext context, string item)
         {
             if (context == null)
             {
@@ -121,9 +154,10 @@ namespace KissU.Core.CPlatform.Runtime.Client.Implementation
             }
 
             // 远程调用信息
-            var invokeMessage = context.InvokeMessage; 
+            var invokeMessage = context.InvokeMessage;
+
             // 解析服务地址
-            var vt =  _addressResolver.Resolver(invokeMessage.ServiceId, item);
+            var vt = _addressResolver.Resolver(invokeMessage.ServiceId, item);
             var address = vt.IsCompletedSuccessfully ? vt.Result : await vt;
             if (address == null)
             {
@@ -132,7 +166,5 @@ namespace KissU.Core.CPlatform.Runtime.Client.Implementation
 
             return address;
         }
-
-        #endregion Implementation of IRemoteInvokeService
     }
 }

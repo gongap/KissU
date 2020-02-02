@@ -5,7 +5,6 @@ using KissU.Core.CPlatform.Runtime.Client.HealthChecks.Implementation;
 
 namespace KissU.Core.CPlatform.Runtime.Client.HealthChecks
 {
-
     /// <summary>
     /// 一个抽象的健康检查服务。
     /// </summary>
@@ -15,7 +14,6 @@ namespace KissU.Core.CPlatform.Runtime.Client.HealthChecks
         /// 监控一个地址。
         /// </summary>
         /// <param name="address">地址模型。</param>
-        /// <returns>一个任务。</returns>
         void Monitor(AddressModel address);
 
         /// <summary>
@@ -32,8 +30,14 @@ namespace KissU.Core.CPlatform.Runtime.Client.HealthChecks
         /// <returns>一个任务。</returns>
         Task MarkFailure(AddressModel address);
 
+        /// <summary>
+        /// Occurs when [removed].
+        /// </summary>
         event EventHandler<HealthCheckEventArgs> Removed;
 
+        /// <summary>
+        /// Occurs when [changed].
+        /// </summary>
         event EventHandler<HealthCheckEventArgs> Changed;
     }
 }

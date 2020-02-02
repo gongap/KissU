@@ -7,17 +7,23 @@ using KissU.Core.CPlatform.Serialization;
 
 namespace KissU.Core.CPlatform.Runtime.Client.Implementation
 {
-    public abstract  class ServiceSubscribeManagerBase : IServiceSubscribeManager
-    { 
-        private readonly ISerializer<string> _serializer; 
+    /// <summary>
+    /// 服务订阅管理器.
+    /// Implements the <see cref="IServiceSubscribeManager" />
+    /// </summary>
+    /// <seealso cref="IServiceSubscribeManager" />
+    public abstract class ServiceSubscribeManagerBase : IServiceSubscribeManager
+    {
+        private readonly ISerializer<string> _serializer;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ServiceSubscribeManagerBase"/> class.
+        /// </summary>
+        /// <param name="serializer">The serializer.</param>
         protected ServiceSubscribeManagerBase(ISerializer<string> serializer)
         {
             _serializer = serializer;
         }
-
-        #region Implementation of IServiceRouteManager
-
 
         /// <summary>
         /// 获取所有服务订阅者信息。
@@ -28,8 +34,9 @@ namespace KissU.Core.CPlatform.Runtime.Client.Implementation
         /// <summary>
         /// 设置服务订阅者。
         /// </summary>
-        /// <param name="routes">服务路由集合。</param>
+        /// <param name="subscibers">The subscibers.</param>
         /// <returns>一个任务。</returns>
+        /// <exception cref="ArgumentNullException">subscibers</exception>
         public virtual Task SetSubscribersAsync(IEnumerable<ServiceSubscriber> subscibers)
         {
             if (subscibers == null)
@@ -56,15 +63,11 @@ namespace KissU.Core.CPlatform.Runtime.Client.Implementation
         /// <returns>一个任务。</returns>
         public abstract Task ClearAsync();
 
-        #endregion Implementation of IServiceSubscriberManager
-
         /// <summary>
         /// 设置服务订阅者。
         /// </summary>
-        /// <param name="routes">服务订阅者集合。</param>
+        /// <param name="subscribers">The subscribers.</param>
         /// <returns>一个任务。</returns>
         protected abstract Task SetSubscribersAsync(IEnumerable<ServiceSubscriberDescriptor> subscribers);
-
-     
     }
 }

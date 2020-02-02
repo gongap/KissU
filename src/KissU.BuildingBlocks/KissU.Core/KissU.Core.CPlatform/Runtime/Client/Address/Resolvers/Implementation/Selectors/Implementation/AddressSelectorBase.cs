@@ -10,8 +10,6 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
     /// </summary>
     public abstract class AddressSelectorBase : IAddressSelector
     {
-        #region Implementation of IAddressSelector
-
         /// <summary>
         /// 选择一个地址。
         /// </summary>
@@ -50,8 +48,6 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
                 return vt.IsCompletedSuccessfully ? vt.Result : await vt;
             }
         }
-
-        #endregion Implementation of IAddressSelector
 
         /// <summary>
         /// 选择一个地址。

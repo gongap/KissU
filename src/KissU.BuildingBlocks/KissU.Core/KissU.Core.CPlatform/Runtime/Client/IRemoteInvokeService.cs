@@ -28,7 +28,7 @@ namespace KissU.Core.CPlatform.Runtime.Client
         /// 调用。
         /// </summary>
         /// <param name="context">调用上下文。</param>
-        /// <param name="cancellationToken">超时时间。</param>
+        /// <param name="requestTimeout">超时时间。</param>
         /// <returns>远程调用结果消息模型。</returns>
         Task<RemoteInvokeResultMessage> InvokeAsync(RemoteInvokeContext context, int requestTimeout);
     }

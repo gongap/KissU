@@ -12,6 +12,9 @@ namespace KissU.Core.CPlatform.Runtime.Client
         /// </summary>
         public RemoteInvokeMessage InvokeMessage { get; set; }
 
+        /// <summary>
+        /// 项目.
+        /// </summary>
         public string Item { get; set; }
     }
 }

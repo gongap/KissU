@@ -9,10 +9,10 @@ namespace KissU.Core.CPlatform.Runtime.Client
     public interface IServiceSubscriberFactory
     {
         /// <summary>
-        /// 根据服务描述创建服务订阅者
+        /// 根据服务描述创建服务订阅者.
         /// </summary>
-        /// <param name="descriptors"></param>
-        /// <returns></returns>
+        /// <param name="descriptors">The descriptors.</param>
+        /// <returns>Task&lt;IEnumerable&lt;ServiceSubscriber&gt;&gt;.</returns>
         Task<IEnumerable<ServiceSubscriber>> CreateServiceSubscribersAsync(IEnumerable<ServiceSubscriberDescriptor> descriptors);
     }
 }

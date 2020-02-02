@@ -8,15 +8,30 @@ using KissU.Core.CPlatform.Serialization;
 
 namespace KissU.Core.CPlatform.Runtime.Client.Implementation
 {
-    class DefaultServiceSubscriberFactory : IServiceSubscriberFactory
+    /// <summary>
+    /// 默认服务订阅者工厂.
+    /// Implements the <see cref="IServiceSubscriberFactory" />
+    /// </summary>
+    /// <seealso cref="IServiceSubscriberFactory" />
+    internal class DefaultServiceSubscriberFactory : IServiceSubscriberFactory
     {
         private readonly ISerializer<string> _serializer;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DefaultServiceSubscriberFactory"/> class.
+        /// </summary>
+        /// <param name="serializer">The serializer.</param>
         public DefaultServiceSubscriberFactory(ISerializer<string> serializer)
         {
             _serializer = serializer;
         }
-        
+
+        /// <summary>
+        /// 根据服务描述创建服务订阅者.
+        /// </summary>
+        /// <param name="descriptors">The descriptors.</param>
+        /// <returns>Task&lt;IEnumerable&lt;ServiceSubscriber&gt;&gt;.</returns>
+        /// <exception cref="ArgumentNullException">descriptors</exception>
         public Task<IEnumerable<ServiceSubscriber>> CreateServiceSubscribersAsync(IEnumerable<ServiceSubscriberDescriptor> descriptors)
         {
             if (descriptors == null)
@@ -34,6 +49,11 @@ namespace KissU.Core.CPlatform.Runtime.Client.Implementation
             return Task.FromResult(subscribers.AsEnumerable());
         }
 
+        /// <summary>
+        /// 创建地址.
+        /// </summary>
+        /// <param name="descriptors">The descriptors.</param>
+        /// <returns>IEnumerable&lt;AddressModel&gt;.</returns>
         private IEnumerable<AddressModel> CreateAddress(IEnumerable<ServiceAddressDescriptor> descriptors)
         {
             if (descriptors == null)

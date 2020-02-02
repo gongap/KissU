@@ -17,19 +17,21 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
     public class PollingAddressSelector : AddressSelectorBase
     {
         private readonly IHealthCheckService _healthCheckService;
+        private readonly ConcurrentDictionary<string, Lazy<AddressEntry>> _concurrent = new ConcurrentDictionary<string, Lazy<AddressEntry>>();
 
-        private readonly ConcurrentDictionary<string, Lazy<AddressEntry>> _concurrent =
-            new ConcurrentDictionary<string, Lazy<AddressEntry>>();
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PollingAddressSelector"/> class.
+        /// </summary>
+        /// <param name="serviceRouteManager">The service route manager.</param>
+        /// <param name="healthCheckService">The health check service.</param>
         public PollingAddressSelector(IServiceRouteManager serviceRouteManager, IHealthCheckService healthCheckService)
         {
             _healthCheckService = healthCheckService;
+
             // 路由发生变更时重建地址条目。
             serviceRouteManager.Changed += ServiceRouteManager_Removed;
             serviceRouteManager.Removed += ServiceRouteManager_Removed;
         }
-
-        #region Overrides of AddressSelectorBase
 
         /// <summary>
         /// 选择一个地址。
@@ -39,6 +41,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
         protected override async ValueTask<AddressModel> SelectAsync(AddressSelectContext context)
         {
             var key = GetCacheKey(context.Descriptor);
+
             // 根据服务id缓存服务地址。
             var addressEntry = _concurrent.GetOrAdd(key, k => new Lazy<AddressEntry>(() => new AddressEntry(context.Address))).Value;
             AddressModel addressModel;
@@ -47,7 +50,6 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
             ValueTask<bool> vt;
             do
             {
-
                 addressModel = addressEntry.GetAddress();
                 if (len <= index)
                 {
@@ -62,15 +64,16 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
             return addressModel;
         }
 
-        #endregion Overrides of AddressSelectorBase
-
-        #region Private Method
-
         private static string GetCacheKey(ServiceDescriptor descriptor)
         {
             return descriptor.Id;
         }
 
+        /// <summary>
+        /// 检查健康.
+        /// </summary>
+        /// <param name="addressModel">The address model.</param>
+        /// <returns>ValueTask&lt;System.Boolean&gt;.</returns>
         public async ValueTask<bool> CheckHealth(AddressModel addressModel)
         {
             var vt = _healthCheckService.IsHealth(addressModel);
@@ -84,33 +87,30 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
             _concurrent.TryRemove(key, out value);
         }
 
-        #endregion Private Method
-
-        #region Help Class
-
+        /// <summary>
+        /// AddressEntry.
+        /// </summary>
         protected class AddressEntry
         {
-            #region Field
-
             private int _index;
             private int _lock;
             private readonly int _maxIndex;
             private readonly AddressModel[] _address;
 
-            #endregion Field
-
-            #region Constructor
-
+            /// <summary>
+            /// Initializes a new instance of the <see cref="AddressEntry"/> class.
+            /// </summary>
+            /// <param name="address">The address.</param>
             public AddressEntry(IEnumerable<AddressModel> address)
             {
                 _address = address.ToArray();
                 _maxIndex = _address.Length - 1;
             }
 
-            #endregion Constructor
-
-            #region Public Method
-
+            /// <summary>
+            /// 获取地址.
+            /// </summary>
+            /// <returns>AddressModel.</returns>
             public AddressModel GetAddress()
             {
                 while (true)
@@ -140,10 +140,6 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
                     return address;
                 }
             }
-
-            #endregion Public Method
         }
-
-        #endregion Help Class
     }
 }

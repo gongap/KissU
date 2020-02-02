@@ -3,6 +3,9 @@ using KissU.Core.CPlatform.Routing;
 
 namespace KissU.Core.CPlatform.Runtime.Client
 {
+    /// <summary>
+    /// 服务订阅描述符.
+    /// </summary>
     public class ServiceSubscriberDescriptor
     {
         /// <summary>

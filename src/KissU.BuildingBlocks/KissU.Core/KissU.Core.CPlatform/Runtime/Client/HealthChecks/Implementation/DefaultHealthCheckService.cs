@@ -12,25 +12,29 @@ using KissU.Core.CPlatform.Routing;
 namespace KissU.Core.CPlatform.Runtime.Client.HealthChecks.Implementation
 {
     /// <summary>
-    /// 默认健康检查服务(每10秒会检查一次服务状态，在构造函数中添加服务管理事件) 
+    /// 默认健康检查服务(每10秒会检查一次服务状态，在构造函数中添加服务管理事件)
     /// </summary>
     public class DefaultHealthCheckService : IHealthCheckService, IDisposable
     {
-        private readonly ConcurrentDictionary<ValueTuple<string, int>, MonitorEntry> _dictionary =
-            new ConcurrentDictionary<ValueTuple<string, int>, MonitorEntry>();
+        private readonly ConcurrentDictionary<ValueTuple<string, int>, MonitorEntry> _dictionary = new ConcurrentDictionary<ValueTuple<string, int>, MonitorEntry>();
         private readonly IServiceRouteManager _serviceRouteManager;
         private readonly int _timeout = 30000;
         private readonly Timer _timer;
         private EventHandler<HealthCheckEventArgs> _removed;
-
         private EventHandler<HealthCheckEventArgs> _changed;
 
+        /// <summary>
+        /// Occurs when [removed].
+        /// </summary>
         public event EventHandler<HealthCheckEventArgs> Removed
         {
             add { _removed += value; }
             remove { _removed -= value; }
         }
 
+        /// <summary>
+        /// Occurs when [changed].
+        /// </summary>
         public event EventHandler<HealthCheckEventArgs> Changed
         {
             add { _changed += value; }
@@ -38,28 +42,36 @@ namespace KissU.Core.CPlatform.Runtime.Client.HealthChecks.Implementation
         }
 
         /// <summary>
-        /// 默认心跳检查服务(每10秒会检查一次服务状态，在构造函数中添加服务管理事件) 
+        /// Initializes a new instance of the <see cref="DefaultHealthCheckService"/> class.
+        /// 默认心跳检查服务(每10秒会检查一次服务状态，在构造函数中添加服务管理事件)
         /// </summary>
-        /// <param name="serviceRouteManager"></param>
+        /// <param name="serviceRouteManager">The service route manager.</param>
         public DefaultHealthCheckService(IServiceRouteManager serviceRouteManager)
         {
             var timeSpan = TimeSpan.FromSeconds(10);
 
             _serviceRouteManager = serviceRouteManager;
+
             // 建立计时器
-            _timer = new Timer(async s =>
-            {
-                // 检查服务是否可用
-                await Check(_dictionary.ToArray().Select(i => i.Value), _timeout);
-                // 移除不可用的服务地址
-                RemoveUnhealthyAddress(_dictionary.ToArray().Select(i => i.Value).Where(m => m.UnhealthyTimes >= 6));
-            }, null, timeSpan, timeSpan);
+            _timer = new Timer(
+                async s =>
+                {
+                    // 检查服务是否可用
+                    await Check(_dictionary.ToArray().Select(i => i.Value), _timeout);
+
+                    // 移除不可用的服务地址
+                    RemoveUnhealthyAddress(_dictionary.ToArray().Select(i => i.Value).Where(m => m.UnhealthyTimes >= 6));
+                },
+                null,
+                timeSpan,
+                timeSpan);
 
             // 去除监控。
             serviceRouteManager.Removed += (s, e) =>
             {
                 Remove(e.Route.Address);
             };
+
             // 重新监控。
             serviceRouteManager.Created += async (s, e) =>
             {
@@ -70,6 +82,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.HealthChecks.Implementation
                 });
                 await Check(_dictionary.Where(i => keys.Contains(i.Key)).Select(i => i.Value), _timeout);
             };
+
             // 重新监控。
             serviceRouteManager.Changed += async (s, e) =>
             {
@@ -82,14 +95,10 @@ namespace KissU.Core.CPlatform.Runtime.Client.HealthChecks.Implementation
             };
         }
 
-
-        #region Implementation of IHealthCheckService
-
         /// <summary>
         /// 监控一个地址。
         /// </summary>
         /// <param name="address">地址模型。</param>
-        /// <returns>一个任务。</returns>
         public void Monitor(AddressModel address)
         {
             var ipAddress = address as IpAddressModel;
@@ -105,8 +114,8 @@ namespace KissU.Core.CPlatform.Runtime.Client.HealthChecks.Implementation
         {
             var ipAddress = address as IpAddressModel;
             MonitorEntry entry;
-            var isHealth= !_dictionary.TryGetValue(new ValueTuple<string, int>(ipAddress.Ip, ipAddress.Port), out entry) ? await  Check(address, _timeout) :entry.Health;
-            OnChanged(new HealthCheckEventArgs(address,isHealth));
+            var isHealth = !_dictionary.TryGetValue(new ValueTuple<string, int>(ipAddress.Ip, ipAddress.Port), out entry) ? await Check(address, _timeout) : entry.Health;
+            OnChanged(new HealthCheckEventArgs(address, isHealth));
             return isHealth;
         }
 
@@ -125,6 +134,10 @@ namespace KissU.Core.CPlatform.Runtime.Client.HealthChecks.Implementation
             });
         }
 
+        /// <summary>
+        /// Called when [removed].
+        /// </summary>
+        /// <param name="args">The arguments.</param>
         protected void OnRemoved(params HealthCheckEventArgs[] args)
         {
             if (_removed == null)
@@ -138,6 +151,10 @@ namespace KissU.Core.CPlatform.Runtime.Client.HealthChecks.Implementation
             }
         }
 
+        /// <summary>
+        /// Called when [changed].
+        /// </summary>
+        /// <param name="args">The arguments.</param>
         protected void OnChanged(params HealthCheckEventArgs[] args)
         {
             if (_changed == null)
@@ -151,19 +168,13 @@ namespace KissU.Core.CPlatform.Runtime.Client.HealthChecks.Implementation
             }
         }
 
-        #endregion Implementation of IHealthCheckService
-
-        #region Implementation of IDisposable
-
-        /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
         public void Dispose()
         {
             _timer.Dispose();
         }
-
-        #endregion Implementation of IDisposable
-
-        #region Private Method
 
         private void Remove(IEnumerable<AddressModel> addressModels)
         {
@@ -206,7 +217,6 @@ namespace KissU.Core.CPlatform.Runtime.Client.HealthChecks.Implementation
                 }
                 catch
                 {
-
                 }
 
                 return isHealth;
@@ -234,25 +244,36 @@ namespace KissU.Core.CPlatform.Runtime.Client.HealthChecks.Implementation
             }
         }
 
-        #endregion Private Method
-
-        #region Help Class
-
+        /// <summary>
+        /// Monitor Entry.
+        /// </summary>
         protected class MonitorEntry
         {
+            /// <summary>
+            /// Initializes a new instance of the <see cref="MonitorEntry"/> class.
+            /// </summary>
+            /// <param name="addressModel">The address model.</param>
+            /// <param name="health">if set to <c>true</c> [health].</param>
             public MonitorEntry(AddressModel addressModel, bool health = true)
             {
                 EndPoint = addressModel.CreateEndPoint();
                 Health = health;
-
             }
 
+            /// <summary>
+            /// Gets or sets the unhealthy times.
+            /// </summary>
             public int UnhealthyTimes { get; set; }
 
+            /// <summary>
+            /// Gets or sets the end point.
+            /// </summary>
             public EndPoint EndPoint { get; set; }
+
+            /// <summary>
+            /// Gets or sets a value indicating whether this <see cref="MonitorEntry"/> is health.
+            /// </summary>
             public bool Health { get; set; }
         }
-
-        #endregion Help Class
     }
 }

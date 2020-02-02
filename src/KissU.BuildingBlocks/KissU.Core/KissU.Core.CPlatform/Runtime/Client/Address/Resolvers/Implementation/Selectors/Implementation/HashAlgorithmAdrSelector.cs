@@ -12,24 +12,33 @@ using KissU.Core.CPlatform.Runtime.Client.HealthChecks.Implementation;
 
 namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation
 {
-   public class HashAlgorithmAdrSelector : AddressSelectorBase
+    /// <summary>
+    /// 哈希算法地址选择器.
+    /// Implements the <see cref="AddressSelectorBase" />
+    /// </summary>
+    /// <seealso cref="AddressSelectorBase" />
+    public class HashAlgorithmAdrSelector : AddressSelectorBase
     {
         private readonly IHealthCheckService _healthCheckService;
-        private readonly ConcurrentDictionary<string, ConsistentHash<AddressModel>> _concurrent =
-    new ConcurrentDictionary<string, ConsistentHash<AddressModel>>();
-        private readonly List<ValueTuple<string, AddressModel>> _unHealths =
-    new List<ValueTuple<string, AddressModel>>();
+        private readonly ConcurrentDictionary<string, ConsistentHash<AddressModel>> _concurrent = new ConcurrentDictionary<string, ConsistentHash<AddressModel>>();
+        private readonly List<ValueTuple<string, AddressModel>> _unHealths = new List<ValueTuple<string, AddressModel>>();
         private readonly IHashAlgorithm _hashAlgorithm;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HashAlgorithmAdrSelector" /> class.
+        /// </summary>
+        /// <param name="serviceRouteManager">The service route manager.</param>
+        /// <param name="healthCheckService">The health check service.</param>
+        /// <param name="hashAlgorithm">The hash algorithm.</param>
         public HashAlgorithmAdrSelector(IServiceRouteManager serviceRouteManager, IHealthCheckService healthCheckService, IHashAlgorithm hashAlgorithm)
         {
             _healthCheckService = healthCheckService;
             _hashAlgorithm = hashAlgorithm;
+
             // 路由发生变更时重建地址条目。
             serviceRouteManager.Changed += ServiceRouteManager_Removed;
             serviceRouteManager.Removed += ServiceRouteManager_Removed;
         }
-
-        #region Overrides of AddressSelectorBase
 
         /// <summary>
         /// 选择一个地址。
@@ -46,13 +55,13 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
                 var hash = new ConsistentHash<AddressModel>(_hashAlgorithm, len);
                 foreach (var address in context.Address)
                 {
-                    hash.Add(address,address.ToString());
+                    hash.Add(address, address.ToString());
                 }
 
                 return hash;
             });
-            AddressModel addressModel; 
-            var IsHealth = false;
+            AddressModel addressModel;
+            var isHealth = false;
             var index = 0;
             var count = context.Address.Count();
             do
@@ -65,24 +74,21 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
                 }
 
                 index++;
-                IsHealth = await _healthCheckService.IsHealth(addressModel);
-                if(!IsHealth)
+                isHealth = await _healthCheckService.IsHealth(addressModel);
+                if (!isHealth)
                 {
-                    addressEntry.Remove(addressModel.ToString()); 
-                    _unHealths.Add(new ValueTuple<string, AddressModel>(key,addressModel));
+                    addressEntry.Remove(addressModel.ToString());
+                    _unHealths.Add(new ValueTuple<string, AddressModel>(key, addressModel));
                     _healthCheckService.Changed += ItemNode_Changed;
                 }
             }
-            while (!IsHealth); 
+            while (!isHealth);
             return addressModel;
         }
-        #endregion Overrides of AddressSelectorBase
-
-        #region Private Method
 
         private void ItemNode_Changed(object sender, HealthCheckEventArgs e)
-        { 
-            var list= _unHealths.Where(p=>p.Item2.ToString()==e.Address.ToString()).ToList();
+        {
+            var list = _unHealths.Where(p => p.Item2.ToString() == e.Address.ToString()).ToList();
             foreach (var item in list)
             {
                 if (item.Item1 != null && e.Health)
@@ -93,7 +99,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
                 }
             }
 
-            if(_unHealths.Count==0)
+            if (_unHealths.Count == 0)
             {
                 _healthCheckService.Changed -= ItemNode_Changed;
             }
@@ -107,11 +113,9 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
         private void ServiceRouteManager_Removed(object sender, ServiceRouteEventArgs e)
         {
             var key = GetCacheKey(e.Route.ServiceDescriptor);
-            var item = _unHealths.Where(p =>  e.Route.Address.Select(addr=> addr.ToString()).Contains(p.Item2.ToString())).ToList();
+            var item = _unHealths.Where(p => e.Route.Address.Select(addr => addr.ToString()).Contains(p.Item2.ToString())).ToList();
             item.ForEach(p => _unHealths.Remove(p));
             _concurrent.TryRemove(key, out ConsistentHash<AddressModel> value);
         }
-
-        #endregion
     }
 }

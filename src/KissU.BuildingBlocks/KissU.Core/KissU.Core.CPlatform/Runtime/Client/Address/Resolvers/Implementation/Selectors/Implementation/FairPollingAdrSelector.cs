@@ -11,16 +11,25 @@ using KissU.Core.CPlatform.Runtime.Client.HealthChecks;
 
 namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation
 {
+    /// <summary>
+    /// 压力最小优先地址选择器.
+    /// Implements the <see cref="AddressSelectorBase" />
+    /// </summary>
+    /// <seealso cref="AddressSelectorBase" />
     public class FairPollingAdrSelector : AddressSelectorBase
     {
         private readonly IHealthCheckService _healthCheckService;
+        private readonly ConcurrentDictionary<string, Lazy<AddressEntry>> _concurrent = new ConcurrentDictionary<string, Lazy<AddressEntry>>();
 
-        private readonly ConcurrentDictionary<string, Lazy<AddressEntry>> _concurrent =
-            new ConcurrentDictionary<string, Lazy<AddressEntry>>();
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FairPollingAdrSelector"/> class.
+        /// </summary>
+        /// <param name="serviceRouteManager">The service route manager.</param>
+        /// <param name="healthCheckService">The health check service.</param>
         public FairPollingAdrSelector(IServiceRouteManager serviceRouteManager, IHealthCheckService healthCheckService)
         {
             _healthCheckService = healthCheckService;
+
             // 路由发生变更时重建地址条目。
             serviceRouteManager.Changed += ServiceRouteManager_Removed;
             serviceRouteManager.Removed += ServiceRouteManager_Removed;
@@ -38,9 +47,15 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
             return descriptor.Id;
         }
 
+        /// <summary>
+        /// 选择.
+        /// </summary>
+        /// <param name="context">地址选择上下文。</param>
+        /// <returns>地址模型。</returns>
         protected override async ValueTask<AddressModel> SelectAsync(AddressSelectContext context)
         {
             var key = GetCacheKey(context.Descriptor);
+
             // 根据服务id缓存服务地址。
             var addressEntry = _concurrent.GetOrAdd(key, k => new Lazy<AddressEntry>(() => new AddressEntry(context.Address))).Value;
             AddressModel addressModel;
@@ -61,31 +76,30 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
             return addressModel;
         }
 
-        #region Help Class
-
+        /// <summary>
+        /// AddressEntry.
+        /// </summary>
         protected class AddressEntry
         {
-            #region Field
-
             private int _index;
             private int _lock;
             private readonly int _maxIndex;
             private readonly AddressModel[] _address;
 
-            #endregion Field
-
-            #region Constructor
-
+            /// <summary>
+            /// Initializes a new instance of the <see cref="AddressEntry"/> class.
+            /// </summary>
+            /// <param name="address">The address.</param>
             public AddressEntry(IEnumerable<AddressModel> address)
             {
-                _address = address.OrderBy(p=>p.ProcessorTime).ToArray();
+                _address = address.OrderBy(p => p.ProcessorTime).ToArray();
                 _maxIndex = _address.Length - 1;
             }
-            
-            #endregion Constructor
 
-            #region Public Method
-
+            /// <summary>
+            /// 获取地址.
+            /// </summary>
+            /// <returns>AddressModel.</returns>
             public AddressModel GetAddress()
             {
                 while (true)
@@ -115,10 +129,6 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
                     return address;
                 }
             }
-
-            #endregion Public Method
         }
-
-        #endregion Help Class
     }
 }
