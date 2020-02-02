@@ -33,7 +33,7 @@ namespace KissU.Core.CPlatform.Cache.Implementation
         private EventHandler<ServiceCacheChangedEventArgs> _changed;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServiceCacheManagerBase"/> class.
+        /// Initializes a new instance of the <see cref="ServiceCacheManagerBase" /> class.
         /// </summary>
         /// <param name="serializer">The serializer.</param>
         protected ServiceCacheManagerBase(ISerializer<string> serializer)

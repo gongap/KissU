@@ -9,7 +9,7 @@ namespace KissU.Core.CPlatform.Address
     public sealed class IpAddressModel : AddressModel
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="IpAddressModel"/> class.
+        /// Initializes a new instance of the <see cref="IpAddressModel" /> class.
         /// 初始化一个新的ip地址模型实例。
         /// </summary>
         public IpAddressModel()
@@ -17,7 +17,7 @@ namespace KissU.Core.CPlatform.Address
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="IpAddressModel"/> class.
+        /// Initializes a new instance of the <see cref="IpAddressModel" /> class.
         /// 初始化一个新的ip地址模型实例。
         /// </summary>
         /// <param name="ip">ip地址。</param>
@@ -41,28 +41,24 @@ namespace KissU.Core.CPlatform.Address
         /// <summary>
         /// 外网ip地址
         /// </summary>
-        /// <value>The wan ip.</value>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string WanIp { get; set; }
 
         /// <summary>
         /// Gets or sets the WS port.
         /// </summary>
-        /// <value>The ws port.</value>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public int? WsPort { get; set; }
 
         /// <summary>
         /// Gets or sets the MQTT port.
         /// </summary>
-        /// <value>The MQTT port.</value>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public int? MqttPort { get; set; }
 
         /// <summary>
         /// Gets or sets the HTTP port.
         /// </summary>
-        /// <value>The HTTP port.</value>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public int? HttpPort { get; set; }
 

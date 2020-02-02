@@ -29,8 +29,8 @@ namespace KissU.Core.CPlatform.Address
         /// <summary>
         /// 确定指定对象是否等于当前对象。
         /// </summary>
-        /// <returns>如果指定对象等于当前对象，则返回true；否则返回true。否则为假。</returns>
         /// <param name="obj">要与当前对象进行比较的对象。</param>
+        /// <returns>如果指定对象等于当前对象，则返回true；否则返回true。否则为假。</returns>
         public override bool Equals(object obj)
         {
             var model = obj as AddressModel;

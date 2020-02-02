@@ -6,7 +6,7 @@
     public class ServiceCacheEventArgs
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServiceCacheEventArgs"/> class.
+        /// Initializes a new instance of the <see cref="ServiceCacheEventArgs" /> class.
         /// </summary>
         /// <param name="cache">服务缓存</param>
         public ServiceCacheEventArgs(ServiceCache cache)

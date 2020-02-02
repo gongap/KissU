@@ -14,19 +14,16 @@ namespace KissU.Core.CPlatform.Configurations.Remote
         /// <summary>
         /// The uri to call to fetch
         /// </summary>
-        /// <value>The configuration URI.</value>
         public Uri ConfigurationUri { get; set; }
 
         /// <summary>
         /// Determines if the remote source is optional
         /// </summary>
-        /// <value><c>true</c> if optional; otherwise, <c>false</c>.</value>
         public bool Optional { get; set; }
 
         /// <summary>
         /// 用于与远程配置提供程序通信的HttpMessageHandler.
         /// </summary>
-        /// <value>The backchannel HTTP handler.</value>
         public HttpMessageHandler BackchannelHttpHandler { get; set; }
 
         /// <summary>
@@ -37,25 +34,21 @@ namespace KissU.Core.CPlatform.Configurations.Remote
         /// <summary>
         /// Parser for parsing the returned data into the required configuration source
         /// </summary>
-        /// <value>The parser.</value>
         public IConfigurationParser Parser { get; set; }
 
         /// <summary>
         /// The accept header used to create a MediaTypeWithQualityHeaderValue
         /// </summary>
-        /// <value>The type of the media.</value>
         public string MediaType { get; set; } = "application/json";
 
         /// <summary>
         /// Events providing hooks into the remote call
         /// </summary>
-        /// <value>The events.</value>
         public RemoteConfigurationEvents Events { get; set; } = new RemoteConfigurationEvents();
 
         /// <summary>
         /// If provided, keys loaded from endpoint will be prefixed with the provided value
         /// </summary>
-        /// <value>The configuration key prefix.</value>
         public string ConfigurationKeyPrefix { get; set; }
 
         /// <summary>

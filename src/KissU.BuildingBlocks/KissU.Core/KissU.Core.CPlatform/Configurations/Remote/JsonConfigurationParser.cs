@@ -28,7 +28,7 @@ namespace KissU.Core.CPlatform.Configurations.Remote
         /// <param name="input">The input.</param>
         /// <param name="initialContext">The initial context.</param>
         /// <returns>IDictionary&lt;System.String, System.String&gt;.</returns>
-        /// <exception cref="FormatException">格式异常</exception>
+        /// <exception cref="FormatException"></exception>
         public IDictionary<string, string> Parse(Stream input, string initialContext)
         {
             try

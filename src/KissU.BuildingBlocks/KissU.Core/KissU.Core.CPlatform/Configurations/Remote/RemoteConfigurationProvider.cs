@@ -14,9 +14,9 @@ namespace KissU.Core.CPlatform.Configurations.Remote
     internal class RemoteConfigurationProvider : ConfigurationProvider
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RemoteConfigurationProvider"/> class.
+        /// Initializes a new instance of the <see cref="RemoteConfigurationProvider" /> class.
         /// </summary>
-        /// <param name="source"></param>
+        /// <param name="source">The source.</param>
         public RemoteConfigurationProvider(RemoteConfigurationSource source)
         {
             Check.NotNull(source, "source");
@@ -34,16 +34,25 @@ namespace KissU.Core.CPlatform.Configurations.Remote
             Parser = source.Parser ?? new JsonConfigurationParser();
         }
 
+        /// <summary>
+        /// Gets the source.
+        /// </summary>
         public RemoteConfigurationSource Source { get; }
 
+        /// <summary>
+        /// Gets the parser.
+        /// </summary>
         public IConfigurationParser Parser { get; }
 
+        /// <summary>
+        /// Gets the backchannel.
+        /// </summary>
         public HttpClient Backchannel { get; }
 
         /// <summary>
         /// Loads (or reloads) the data for this provider.
         /// </summary>
-        /// <exception cref="Exception">调用远程配置终结点发生错误</exception>
+        /// <exception cref="Exception"></exception>
         public override void Load()
         {
             var requestMessage = new HttpRequestMessage(HttpMethod.Get, Source.ConfigurationUri);

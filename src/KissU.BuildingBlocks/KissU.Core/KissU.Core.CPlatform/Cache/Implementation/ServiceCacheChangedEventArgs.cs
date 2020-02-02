@@ -7,7 +7,7 @@
     public class ServiceCacheChangedEventArgs : ServiceCacheEventArgs
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServiceCacheChangedEventArgs"/> class.
+        /// Initializes a new instance of the <see cref="ServiceCacheChangedEventArgs" /> class.
         /// </summary>
         /// <param name="cache">The cache.</param>
         /// <param name="oldCache">The old cache.</param>
@@ -20,7 +20,6 @@
         /// <summary>
         /// Gets or sets the old cache.
         /// </summary>
-        /// <value>The old cache.</value>
         public ServiceCache OldCache { get; set; }
     }
 }

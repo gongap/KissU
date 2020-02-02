@@ -28,6 +28,7 @@ namespace KissU.Core.CPlatform.Configurations.Remote
         /// <returns>The <see cref="IConfigurationBuilder" />.</returns>
         /// <exception cref="ArgumentNullException">builder</exception>
         /// <exception cref="ArgumentNullException">configurationUri</exception>
+        /// <exception cref="ArgumentNullException">builder</exception>
         public static IConfigurationBuilder AddRemoteSource(this IConfigurationBuilder builder, Uri configurationUri, bool optional)
         {
             if (builder == null)
@@ -60,6 +61,8 @@ namespace KissU.Core.CPlatform.Configurations.Remote
         /// <exception cref="ArgumentNullException">builder</exception>
         /// <exception cref="ArgumentNullException">configurationUri</exception>
         /// <exception cref="ArgumentNullException">events</exception>
+        /// <exception cref="ArgumentNullException">builder</exception>
+        /// <exception cref="ArgumentNullException">configurationUri</exception>
         public static IConfigurationBuilder AddRemoteSource(this IConfigurationBuilder builder, Uri configurationUri, bool optional, RemoteConfigurationEvents events)
         {
             if (builder == null)
@@ -95,6 +98,7 @@ namespace KissU.Core.CPlatform.Configurations.Remote
         /// <returns>IConfigurationBuilder.</returns>
         /// <exception cref="ArgumentNullException">builder</exception>
         /// <exception cref="ArgumentNullException">source</exception>
+        /// <exception cref="ArgumentNullException">builder</exception>
         public static IConfigurationBuilder AddRemoteSource(this IConfigurationBuilder builder, RemoteConfigurationSource source)
         {
             if (builder == null)

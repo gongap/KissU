@@ -147,13 +147,11 @@ namespace KissU.Core.CPlatform.Cache
         /// <summary>
         /// 默认的过期时间.
         /// </summary>
-        /// <value>The default expire time.</value>
         long DefaultExpireTime { get; set; }
 
         /// <summary>
         /// 键后缀。
         /// </summary>
-        /// <value>The key suffix.</value>
         string KeySuffix { get; set; }
     }
 }
