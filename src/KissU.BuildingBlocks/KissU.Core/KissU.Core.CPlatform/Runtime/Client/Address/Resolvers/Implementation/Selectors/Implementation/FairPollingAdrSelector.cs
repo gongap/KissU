@@ -21,7 +21,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
         public FairPollingAdrSelector(IServiceRouteManager serviceRouteManager, IHealthCheckService healthCheckService)
         {
             _healthCheckService = healthCheckService;
-            //路由发生变更时重建地址条目。
+            // 路由发生变更时重建地址条目。
             serviceRouteManager.Changed += ServiceRouteManager_Removed;
             serviceRouteManager.Removed += ServiceRouteManager_Removed;
         }
@@ -41,7 +41,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
         protected override async ValueTask<AddressModel> SelectAsync(AddressSelectContext context)
         {
             var key = GetCacheKey(context.Descriptor);
-            //根据服务id缓存服务地址。
+            // 根据服务id缓存服务地址。
             var addressEntry = _concurrent.GetOrAdd(key, k => new Lazy<AddressEntry>(() => new AddressEntry(context.Address))).Value;
             AddressModel addressModel;
             var index = 0;
@@ -54,6 +54,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
                     addressModel = null;
                     break;
                 }
+
                 index++;
             }
             while (await _healthCheckService.IsHealth(addressModel) == false);
@@ -89,7 +90,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
             {
                 while (true)
                 {
-                    //如果无法得到锁则等待
+                    // 如果无法得到锁则等待
                     if (Interlocked.Exchange(ref _lock, 1) != 0)
                     {
                         default(SpinWait).SpinOnce();
@@ -98,7 +99,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
 
                     var address = _address[_index];
 
-                    //设置为下一个
+                    // 设置为下一个
                     if (_maxIndex > _index)
                     {
                         _index++;
@@ -108,7 +109,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
                         _index = 0;
                     }
 
-                    //释放锁
+                    // 释放锁
                     Interlocked.Exchange(ref _lock, 0);
 
                     return address;

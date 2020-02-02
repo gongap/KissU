@@ -43,9 +43,11 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
                         throw new InvalidOperationException($"本地包含多个Id为：{entry.Descriptor.Id} 的服务条目。");
                     }
                 }
+
                 list.AddRange(entries);
                 allEntries.AddRange( provider.GetALLEntries());
             } 
+
             _serviceEntries = list.ToArray();
             _allEntries = allEntries;
         }

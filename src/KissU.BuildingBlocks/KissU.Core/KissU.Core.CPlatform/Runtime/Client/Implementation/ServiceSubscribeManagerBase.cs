@@ -42,9 +42,9 @@ namespace KissU.Core.CPlatform.Runtime.Client.Implementation
                 AddressDescriptors = route.Address?.Select(address => new ServiceAddressDescriptor
                 {
                     Type = address.GetType().FullName,
-                    Value = _serializer.Serialize(address)
+                    Value = _serializer.Serialize(address),
                 }) ?? Enumerable.Empty<ServiceAddressDescriptor>(),
-                ServiceDescriptor = route.ServiceDescriptor
+                ServiceDescriptor = route.ServiceDescriptor,
             });
 
             return SetSubscribersAsync(descriptors);

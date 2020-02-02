@@ -119,9 +119,10 @@ namespace KissU.Core.CPlatform.Runtime.Client.Implementation
             {
                 throw new ArgumentException("服务Id不能为空。", nameof(context.InvokeMessage.ServiceId));
             }
-            //远程调用信息
+
+            // 远程调用信息
             var invokeMessage = context.InvokeMessage; 
-            //解析服务地址
+            // 解析服务地址
             var vt =  _addressResolver.Resolver(invokeMessage.ServiceId, item);
             var address = vt.IsCompletedSuccessfully ? vt.Result : await vt;
             if (address == null)

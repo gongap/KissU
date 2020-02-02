@@ -78,13 +78,14 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Im
             var serviceDescriptor = new ServiceDescriptor
             {
                 Id = serviceId,
-                RoutePath = RoutePatternParser.Parse(routeTemplate, serviceName, method.Name)
+                RoutePath = RoutePatternParser.Parse(routeTemplate, serviceName, method.Name),
             };
             var descriptorAttributes = method.GetCustomAttributes<ServiceDescriptorAttribute>();
             foreach (var descriptorAttribute in descriptorAttributes)
             {
                 descriptorAttribute.Apply(serviceDescriptor);
             }
+
             var httpMethodAttributes = attributes.Where(p => p is HttpMethodAttribute).Select(p => p as HttpMethodAttribute).ToList();
             var httpMethods = new List<string>();
             StringBuilder httpMethod = new StringBuilder();
@@ -96,11 +97,13 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Im
                     httpMethod.AppendJoin(',', attribute.HttpMethods).Append(",");
                 }
             }
+
             if (httpMethod.Length > 0)
             {
                 httpMethod.Length = httpMethod.Length - 1;
                 serviceDescriptor.HttpMethod(httpMethod.ToString());
             }
+
             var authorization = attributes.Where(p => p is AuthorizationFilterAttribute).FirstOrDefault();
             if (authorization != null)
             {
@@ -112,6 +115,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Im
                 serviceDescriptor.AuthType(((authorization as AuthorizationAttribute)?.AuthType)
                     ?? AuthorizationType.AppSecret);
             }
+
             var fastInvoker = GetHandler(serviceId, method);
 
             var methodValidateAttribute = attributes.Where(p => p is ValidateAttribute)
@@ -141,12 +145,13 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Im
 
                     foreach (var parameterInfo in method.GetParameters())
                     {
-                        //加入是否有默认值的判断，有默认值，并且用户没传，取默认值
+                        // 加入是否有默认值的判断，有默认值，并且用户没传，取默认值
                         if (parameterInfo.HasDefaultValue && !parameters.ContainsKey(parameterInfo.Name))
                         {
                             list.Add(parameterInfo.DefaultValue);
                             continue;
                         }
+
                         var value = parameters[parameterInfo.Name];
 
                         if (methodValidateAttribute != null)
@@ -158,9 +163,10 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Im
                         var parameter = _typeConvertibleService.Convert(value, parameterType);
                         list.Add(parameter);
                     }
+
                     var result = fastInvoker(instance, list.ToArray());
                     return Task.FromResult(result);
-                }
+                },
             };
         }
 
@@ -172,6 +178,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Im
                 objInstance = FastInvoke.GetMethodInvoker(method);
                 ServiceResolver.Current.Register(key, objInstance, null);
             }
+
             return objInstance as FastInvokeHandler;
         }
         #endregion Private Method

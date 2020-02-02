@@ -22,6 +22,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
             HttpMethods = httpMethods;
             IsRegisterMetadata = isRegisterMetadata;
         } 
+
         public IEnumerable<string> HttpMethods { get; }
         public bool IsRegisterMetadata { get; }
 

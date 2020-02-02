@@ -44,7 +44,7 @@ namespace KissU.Core.CPlatform.Diagnostics
     public enum Reference
     {
         CrossProcess = 0,
-        CrossThread = 1
+        CrossThread = 1,
     }
 
     public class SegmentReferenceCollection : IEnumerable<SegmentReference>

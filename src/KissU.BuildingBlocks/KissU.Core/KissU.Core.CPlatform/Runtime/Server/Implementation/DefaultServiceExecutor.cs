@@ -95,22 +95,22 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
 
             var resultMessage = new RemoteInvokeResultMessage();
 
-            //是否需要等待执行。
+            // 是否需要等待执行。
             if (entry.Descriptor.WaitExecution())
             {
-                //执行本地代码。
+                // 执行本地代码。
                 await  LocalExecuteAsync(entry, remoteInvokeMessage, resultMessage);
-                //向客户端发送调用结果。
+                // 向客户端发送调用结果。
                 await SendRemoteInvokeResult(sender, message.Id, resultMessage);
             }
             else
             {
-                //通知客户端已接收到消息。
+                // 通知客户端已接收到消息。
                 await SendRemoteInvokeResult(sender, message.Id, resultMessage);
-                //确保新起一个线程执行，不堵塞当前线程。
+                // 确保新起一个线程执行，不堵塞当前线程。
                 await Task.Factory.StartNew(async () =>
                 {
-                    //执行本地代码。
+                    // 执行本地代码。
                   await   LocalExecuteAsync(entry, remoteInvokeMessage, resultMessage);
             }, TaskCreationOptions.LongRunning);
         }
@@ -198,6 +198,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
             {
                 message += "|InnerException:" + GetExceptionMessage(exception.InnerException);
             }
+
             return message;
         }
 

@@ -8,38 +8,6 @@ using KissU.Core.CPlatform.Serialization;
 namespace KissU.Core.CPlatform.Routing.Implementation
 {
     /// <summary>
-    /// 服务路由事件参数。
-    /// </summary>
-    public class ServiceRouteEventArgs
-    {
-        public ServiceRouteEventArgs(ServiceRoute route)
-        {
-            Route = route;
-        }
-
-        /// <summary>
-        /// 服务路由信息。
-        /// </summary>
-        public ServiceRoute Route { get; private set; }
-    }
-
-    /// <summary>
-    /// 服务路由变更事件参数。
-    /// </summary>
-    public class ServiceRouteChangedEventArgs : ServiceRouteEventArgs
-    {
-        public ServiceRouteChangedEventArgs(ServiceRoute route, ServiceRoute oldRoute) : base(route)
-        {
-            OldRoute = oldRoute;
-        }
-
-        /// <summary>
-        /// 旧的服务路由信息。
-        /// </summary>
-        public ServiceRoute OldRoute { get; set; }
-    }
-
-    /// <summary>
     /// 服务路由管理者基类。
     /// </summary>
     public abstract class ServiceRouteManagerBase : IServiceRouteManager
@@ -49,12 +17,14 @@ namespace KissU.Core.CPlatform.Routing.Implementation
         private EventHandler<ServiceRouteEventArgs> _removed;
         private EventHandler<ServiceRouteChangedEventArgs> _changed;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ServiceRouteManagerBase"/> class.
+        /// </summary>
+        /// <param name="serializer">The serializer.</param>
         protected ServiceRouteManagerBase(ISerializer<string> serializer)
         {
             _serializer = serializer;
         }
-
-        #region Implementation of IServiceRouteManager
 
         /// <summary>
         /// 服务路由被创建。
@@ -94,6 +64,7 @@ namespace KissU.Core.CPlatform.Routing.Implementation
         /// </summary>
         /// <param name="routes">服务路由集合。</param>
         /// <returns>一个任务。</returns>
+        /// <exception cref="ArgumentNullException">routes</exception>
         public virtual Task SetRoutesAsync(IEnumerable<ServiceRoute> routes)
         {
             if (routes == null)
@@ -105,13 +76,19 @@ namespace KissU.Core.CPlatform.Routing.Implementation
             {
                 AddressDescriptors = route.Address?.Select(address => new ServiceAddressDescriptor
                 {
-                    Value = _serializer.Serialize(address)
+                    Value = _serializer.Serialize(address),
                 }) ?? Enumerable.Empty<ServiceAddressDescriptor>(),
-                ServiceDescriptor = route.ServiceDescriptor
+                ServiceDescriptor = route.ServiceDescriptor,
             });
 
             return SetRoutesAsync(descriptors);
         }
+
+        /// <summary>
+        /// 移除地址列表
+        /// </summary>
+        /// <param name="Address">The address.</param>
+        /// <returns>一个任务。</returns>
         public abstract Task RemveAddressAsync(IEnumerable<AddressModel> Address);
 
         /// <summary>
@@ -120,15 +97,17 @@ namespace KissU.Core.CPlatform.Routing.Implementation
         /// <returns>一个任务。</returns>
         public abstract Task ClearAsync();
 
-        #endregion Implementation of IServiceRouteManager
-
         /// <summary>
         /// 设置服务路由。
         /// </summary>
         /// <param name="routes">服务路由集合。</param>
         /// <returns>一个任务。</returns>
         protected abstract Task SetRoutesAsync(IEnumerable<ServiceRouteDescriptor> routes);
-        
+
+        /// <summary>
+        /// Called when [created].
+        /// </summary>
+        /// <param name="args">The arguments.</param>
         protected void OnCreated(params ServiceRouteEventArgs[] args)
         {
             if (_created == null)
@@ -142,6 +121,10 @@ namespace KissU.Core.CPlatform.Routing.Implementation
             }
         }
 
+        /// <summary>
+        /// Called when [changed].
+        /// </summary>
+        /// <param name="args">The arguments.</param>
         protected void OnChanged(params ServiceRouteChangedEventArgs[] args)
         {
             if (_changed == null)
@@ -155,6 +138,10 @@ namespace KissU.Core.CPlatform.Routing.Implementation
             }
         }
 
+        /// <summary>
+        /// Called when [removed].
+        /// </summary>
+        /// <param name="args">The arguments.</param>
         protected void OnRemoved(params ServiceRouteEventArgs[] args)
         {
             if (_removed == null)

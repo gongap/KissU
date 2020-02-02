@@ -3,6 +3,6 @@
     public enum RpcMethod
     {
         Proxy_Rpc,
-        Json_Rpc
+        Json_Rpc,
     }
 }

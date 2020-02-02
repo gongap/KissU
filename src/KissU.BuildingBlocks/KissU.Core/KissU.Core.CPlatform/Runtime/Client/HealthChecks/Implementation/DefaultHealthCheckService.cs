@@ -46,21 +46,21 @@ namespace KissU.Core.CPlatform.Runtime.Client.HealthChecks.Implementation
             var timeSpan = TimeSpan.FromSeconds(10);
 
             _serviceRouteManager = serviceRouteManager;
-            //建立计时器
+            // 建立计时器
             _timer = new Timer(async s =>
             {
-                //检查服务是否可用
+                // 检查服务是否可用
                 await Check(_dictionary.ToArray().Select(i => i.Value), _timeout);
-                //移除不可用的服务地址
+                // 移除不可用的服务地址
                 RemoveUnhealthyAddress(_dictionary.ToArray().Select(i => i.Value).Where(m => m.UnhealthyTimes >= 6));
             }, null, timeSpan, timeSpan);
 
-            //去除监控。
+            // 去除监控。
             serviceRouteManager.Removed += (s, e) =>
             {
                 Remove(e.Route.Address);
             };
-            //重新监控。
+            // 重新监控。
             serviceRouteManager.Created += async (s, e) =>
             {
                 var keys = e.Route.Address.Select(address =>
@@ -70,7 +70,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.HealthChecks.Implementation
                 });
                 await Check(_dictionary.Where(i => keys.Contains(i.Key)).Select(i => i.Value), _timeout);
             };
-            //重新监控。
+            // 重新监控。
             serviceRouteManager.Changed += async (s, e) =>
             {
                 var keys = e.Route.Address.Select(address =>
@@ -208,6 +208,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.HealthChecks.Implementation
                 {
 
                 }
+
                 return isHealth;
             }
         }

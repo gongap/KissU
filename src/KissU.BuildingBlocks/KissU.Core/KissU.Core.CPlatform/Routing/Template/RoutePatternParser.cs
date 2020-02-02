@@ -89,12 +89,17 @@ namespace KissU.Core.CPlatform.Routing.Template
             return result.ToString().TrimEnd('/').ToLower();
         }
 
+        /// <summary>
+        /// 获取参数.
+        /// </summary>
+        /// <param name="text">The text.</param>
+        /// <returns>List&lt;System.String&gt;.</returns>
         private static List<string> GetParameters(string text)
         {
             var matchVale = new List<string>();
-            string Reg = @"(?<={)[^{}]*(?=})";
+            string reg = @"(?<={)[^{}]*(?=})";
             string key = string.Empty;
-            foreach (Match m in Regex.Matches(text, Reg))
+            foreach (Match m in Regex.Matches(text, reg))
             {
                 matchVale.Add(m.Value);
             }

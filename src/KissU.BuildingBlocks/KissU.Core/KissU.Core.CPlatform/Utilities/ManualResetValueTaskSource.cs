@@ -24,7 +24,7 @@ namespace KissU.Core.CPlatform.Utilities
     {
         None,
 
-        ForceDefaultTaskScheduler
+        ForceDefaultTaskScheduler,
     }
 
     /// <summary>
@@ -325,6 +325,7 @@ namespace KissU.Core.CPlatform.Utilities
                     {
                         _continuation(_continuationState);
                     }
+
                     break;
 
                 case SynchronizationContext sc:

@@ -29,7 +29,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.Implementation
             subscribers.AddRange(descriptors.Select(descriptor => new ServiceSubscriber
             {
                 Address = CreateAddress(descriptor.AddressDescriptors),
-                ServiceDescriptor = descriptor.ServiceDescriptor
+                ServiceDescriptor = descriptor.ServiceDescriptor,
             }));
             return Task.FromResult(subscribers.AsEnumerable());
         }

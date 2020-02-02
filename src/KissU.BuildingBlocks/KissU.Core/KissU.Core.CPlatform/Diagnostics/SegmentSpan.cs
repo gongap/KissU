@@ -109,7 +109,7 @@ namespace KissU.Core.CPlatform.Diagnostics
     {
         Entry = 0,
         Exit = 1,
-        Local = 2
+        Local = 2,
     }
 
     public enum SpanLayer
@@ -118,7 +118,7 @@ namespace KissU.Core.CPlatform.Diagnostics
         RPC_FRAMEWORK = 2,
         HTTP = 3,
         MQ = 4,
-        CACHE = 5
+        CACHE = 5,
     }
 
     public class LogCollection : IEnumerable<SpanLog>

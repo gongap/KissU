@@ -372,6 +372,7 @@ namespace KissU.Core.CPlatform
                     services.Register(p => authorizationFilter).As(typeof(IAuthorizationFilter)).SingleInstance();
                     break;
             }
+
             return builder;
         }
 
@@ -425,32 +426,32 @@ namespace KissU.Core.CPlatform
         public static IServiceBuilder AddCoreService(this ContainerBuilder services)
         {
             Check.NotNull(services, "services");
-            //注册服务ID生成实例 
+            // 注册服务ID生成实例 
             services.RegisterType<DefaultServiceIdGenerator>().As<IServiceIdGenerator>().SingleInstance();
             services.Register(p => new CPlatformContainer(p));
-            //注册默认的类型转换 
+            // 注册默认的类型转换 
             services.RegisterType(typeof(DefaultTypeConvertibleProvider)).As(typeof(ITypeConvertibleProvider)).SingleInstance();
-            //注册默认的类型转换服务 
+            // 注册默认的类型转换服务 
             services.RegisterType(typeof(DefaultTypeConvertibleService)).As(typeof(ITypeConvertibleService)).SingleInstance();
-            //注册权限过滤 
+            // 注册权限过滤 
             services.RegisterType(typeof(AuthorizationAttribute)).As(typeof(IAuthorizationFilter)).SingleInstance();
-            //注册基本过滤 
+            // 注册基本过滤 
             services.RegisterType(typeof(AuthorizationAttribute)).As(typeof(IFilter)).SingleInstance();
-            //注册默认校验处理器
+            // 注册默认校验处理器
             services.RegisterType(typeof(DefaultValidationProcessor)).As(typeof(IValidationProcessor)).SingleInstance();
-            //注册服务器路由接口 
+            // 注册服务器路由接口 
             services.RegisterType(typeof(DefaultServiceRouteProvider)).As(typeof(IServiceRouteProvider)).SingleInstance();
-            //注册服务路由工厂 
+            // 注册服务路由工厂 
             services.RegisterType(typeof(DefaultServiceRouteFactory)).As(typeof(IServiceRouteFactory)).SingleInstance();
-            //注册服务订阅工厂 
+            // 注册服务订阅工厂 
             services.RegisterType(typeof(DefaultServiceSubscriberFactory)).As(typeof(IServiceSubscriberFactory)).SingleInstance();
-            //注册服务token生成接口 
+            // 注册服务token生成接口 
             services.RegisterType(typeof(ServiceTokenGenerator)).As(typeof(IServiceTokenGenerator)).SingleInstance();
-            //注册哈希一致性算法 
+            // 注册哈希一致性算法 
             services.RegisterType(typeof(HashAlgorithm)).As(typeof(IHashAlgorithm)).SingleInstance();
-            //注册组件生命周期接口 
+            // 注册组件生命周期接口 
             services.RegisterType(typeof(ServiceEngineLifetime)).As(typeof(IServiceEngineLifetime)).SingleInstance();
-            //注册服务心跳管理 
+            // 注册服务心跳管理 
             services.RegisterType(typeof(DefaultServiceHeartbeatManager)).As(typeof(IServiceHeartbeatManager)).SingleInstance();
             return new ServiceBuilder(services)
                 .AddJsonSerialization()
@@ -477,6 +478,7 @@ namespace KissU.Core.CPlatform
                 services.RegisterAssemblyTypes(assembly)
                 .Where(t => typeof(ITransientDependency).GetTypeInfo().IsAssignableFrom(t)).AsImplementedInterfaces().AsSelf().InstancePerDependency();
             }
+
             return builder;
 
         }
@@ -535,16 +537,16 @@ namespace KissU.Core.CPlatform
                 foreach (Assembly assembly in referenceAssemblies)
                 {
                     services.RegisterAssemblyTypes(assembly)
-                       //注入继承IServiceKey接口的所有接口
+                       // 注入继承IServiceKey接口的所有接口
                        .Where(t => typeof(IServiceKey).GetTypeInfo().IsAssignableFrom(t) && t.IsInterface)
                        .AsImplementedInterfaces();
                     services.RegisterAssemblyTypes(assembly)
-                 //注入实现IServiceBehavior接口并ModuleName为空的类，作为接口实现类
+                 // 注入实现IServiceBehavior接口并ModuleName为空的类，作为接口实现类
                  .Where(t => !typeof(ISingleInstance).GetTypeInfo().IsAssignableFrom(t) &&
                  typeof(IServiceBehavior).GetTypeInfo().IsAssignableFrom(t) && t.GetTypeInfo().GetCustomAttribute<ModuleNameAttribute>() == null).AsImplementedInterfaces();
 
                     services.RegisterAssemblyTypes(assembly)
-             //注入实现IServiceBehavior接口并ModuleName为空的类，作为接口实现类
+             // 注入实现IServiceBehavior接口并ModuleName为空的类，作为接口实现类
              .Where(t => typeof(ISingleInstance).GetTypeInfo().IsAssignableFrom(t) &&
              typeof(IServiceBehavior).GetTypeInfo().IsAssignableFrom(t) && t.GetTypeInfo().GetCustomAttribute<ModuleNameAttribute>() == null).SingleInstance().AsImplementedInterfaces();
 
@@ -552,7 +554,7 @@ namespace KissU.Core.CPlatform
                     foreach (Type type in types)
                     {
                         ModuleNameAttribute module = type.GetTypeInfo().GetCustomAttribute<ModuleNameAttribute>();
-                        //对ModuleName不为空的对象，找到第一个继承IServiceKey的接口并注入接口及实现
+                        // 对ModuleName不为空的对象，找到第一个继承IServiceKey的接口并注入接口及实现
                         Type interfaceObj = type.GetInterfaces()
                             .FirstOrDefault(t => typeof(IServiceKey).GetTypeInfo().IsAssignableFrom(t));
                         if (interfaceObj != null)
@@ -563,6 +565,7 @@ namespace KissU.Core.CPlatform
                     }
 
                 }
+
                 return builder;
             }
             catch (Exception ex)
@@ -596,6 +599,7 @@ namespace KissU.Core.CPlatform
                 services.RegisterAssemblyTypes(assembly)
                  .Where(t => typeof(IIntegrationEventHandler).IsAssignableFrom(t)).SingleInstance();
             }
+
             return builder;
         }
 
@@ -615,6 +619,7 @@ namespace KissU.Core.CPlatform
                 services.RegisterAssemblyTypes(assembly)
                     .Where(t => typeof(BaseRepository).GetTypeInfo().IsAssignableFrom(t));
             }
+
             return builder;
         }
 
@@ -633,7 +638,8 @@ namespace KissU.Core.CPlatform
             {
                 throw new ArgumentNullException("builder");
             }
-            //从servicesettings.json取到packages
+
+            // 从servicesettings.json取到packages
             IDictionary<string, string> packages = ConvertDictionary(AppConfig.ServerOptions.Packages);
             foreach (Assembly moduleAssembly in referenceAssemblies)
             {
@@ -652,9 +658,11 @@ namespace KissU.Core.CPlatform
                             p.Enable = false;
                         }
                     }
+
                     _modules.Add(p);
                 });
             }
+
             builder.Services.Register(provider => new ModuleProvider(
                _modules, virtualPaths, provider.Resolve<ILogger<ModuleProvider>>(), provider.Resolve<CPlatformContainer>()
                 )).As<IModuleProvider>().SingleInstance();
@@ -753,9 +761,11 @@ namespace KissU.Core.CPlatform
 
                         refAssemblies.Add(referencedAssembly);
                     }
+
                     result = existsPath ? refAssemblies : _referenceAssembly;
                 });
             }
+
             return result;
         }
 
@@ -775,6 +785,7 @@ namespace KissU.Core.CPlatform
                     assemblies.Add(referenceAssembly);
                 }
             }
+
             return assemblies;
         }
 
@@ -802,6 +813,7 @@ namespace KissU.Core.CPlatform
 
                 _referenceAssembly.AddRange(referenceAssemblies.Except(_referenceAssembly));
             }
+
             return referenceAssemblies;
         }
 
@@ -821,6 +833,7 @@ namespace KissU.Core.CPlatform
                 AbstractModule abstractModule = (AbstractModule)Activator.CreateInstance(moduleType);
                 abstractModules.Add(abstractModule);
             }
+
             return abstractModules;
         }
 

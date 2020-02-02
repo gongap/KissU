@@ -64,6 +64,7 @@ namespace KissU.Core.CPlatform.Runtime.Client
                     subscribers = subscribers.Where(p => p.Address.Any(m => m.ToString() == condition));
                 }
             }
+
             Dictionary<string, AddressModel> result = new Dictionary<string, AddressModel>();
             foreach (var route in subscribers)
             {
@@ -76,6 +77,7 @@ namespace KissU.Core.CPlatform.Runtime.Client
                     }
                 }
             }
+
             return result.Values;
         }
 

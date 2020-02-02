@@ -34,7 +34,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
                 throw new ArgumentNullException(nameof(context.Address));
             }
 
-            //  var address = context.Address.ToArray();
+            // var address = context.Address.ToArray();
             if (context.Address.Count() == 0)
             {
                 throw new ArgumentException("没有任何地址信息。", nameof(context.Address));

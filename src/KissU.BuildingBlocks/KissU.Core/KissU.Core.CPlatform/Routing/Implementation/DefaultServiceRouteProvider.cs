@@ -11,22 +11,29 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.CPlatform.Routing.Implementation
 {
+    /// <summary>
+    /// 默认服务路由提供者.
+    /// Implements the <see cref="IServiceRouteProvider" />
+    /// </summary>
+    /// <seealso cref="IServiceRouteProvider" />
     public class DefaultServiceRouteProvider : IServiceRouteProvider
     {
-        private readonly ConcurrentDictionary<string, ServiceRoute> _concurrent =
-       new ConcurrentDictionary<string, ServiceRoute>();
-
+        private readonly ConcurrentDictionary<string, ServiceRoute> _concurrent = new ConcurrentDictionary<string, ServiceRoute>();
+        private readonly ConcurrentDictionary<string, ServiceRoute> _serviceRoute = new ConcurrentDictionary<string, ServiceRoute>();
         private readonly List<ServiceRoute> _localRoutes = new List<ServiceRoute>();
-
-        private readonly ConcurrentDictionary<string, ServiceRoute> _serviceRoute =
-       new ConcurrentDictionary<string, ServiceRoute>();
-
         private readonly IServiceEntryManager _serviceEntryManager;
         private readonly ILogger<DefaultServiceRouteProvider> _logger;
         private readonly IServiceRouteManager _serviceRouteManager;
         private readonly IServiceTokenGenerator _serviceTokenGenerator;
-        public DefaultServiceRouteProvider(IServiceRouteManager serviceRouteManager, ILogger<DefaultServiceRouteProvider> logger,
-            IServiceEntryManager serviceEntryManager, IServiceTokenGenerator serviceTokenGenerator)
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DefaultServiceRouteProvider"/> class.
+        /// </summary>
+        /// <param name="serviceRouteManager">The service route manager.</param>
+        /// <param name="logger">The logger.</param>
+        /// <param name="serviceEntryManager">The service entry manager.</param>
+        /// <param name="serviceTokenGenerator">The service token generator.</param>
+        public DefaultServiceRouteProvider(IServiceRouteManager serviceRouteManager, ILogger<DefaultServiceRouteProvider> logger, IServiceEntryManager serviceEntryManager, IServiceTokenGenerator serviceTokenGenerator)
         {
             _serviceRouteManager = serviceRouteManager;
             serviceRouteManager.Changed += ServiceRouteManager_Removed;
@@ -37,6 +44,11 @@ namespace KissU.Core.CPlatform.Routing.Implementation
             _logger = logger;
         }
 
+        /// <summary>
+        /// 根据服务id找到相关服务信息
+        /// </summary>
+        /// <param name="serviceId">The service identifier.</param>
+        /// <returns>Task&lt;ServiceRoute&gt;.</returns>
         public async Task<ServiceRoute> Locate(string serviceId)
         {
             _concurrent.TryGetValue(serviceId, out ServiceRoute route);
@@ -52,26 +64,34 @@ namespace KissU.Core.CPlatform.Routing.Implementation
                     }
                 }
                 else
+                {
                     _concurrent.GetOrAdd(serviceId, route);
+                }
             }
+
             return route;
         }
 
-        public  ValueTask<ServiceRoute> GetLocalRouteByPathRegex(string path)
+        /// <summary>
+        /// 通过路径正则表达式获取本地路由.
+        /// </summary>
+        /// <param name="path">The path.</param>
+        /// <returns>ValueTask&lt;ServiceRoute&gt;.</returns>
+        public ValueTask<ServiceRoute> GetLocalRouteByPathRegex(string path)
         {
             var addess = NetUtils.GetHostAddress();
 
             if (_localRoutes.Count == 0)
             {
-                _localRoutes.AddRange( _serviceEntryManager.GetEntries().Select(i =>
-                {
-                    i.Descriptor.Token = _serviceTokenGenerator.GetToken();
-                    return new ServiceRoute
-                    {
-                        Address = new[] { addess },
-                        ServiceDescriptor = i.Descriptor
-                    };
-                }).ToList());
+                _localRoutes.AddRange(_serviceEntryManager.GetEntries().Select(i =>
+               {
+                   i.Descriptor.Token = _serviceTokenGenerator.GetToken();
+                   return new ServiceRoute
+                   {
+                       Address = new[] { addess },
+                       ServiceDescriptor = i.Descriptor,
+                   };
+               }).ToList());
             }
 
             path = path.ToLower();
@@ -86,6 +106,11 @@ namespace KissU.Core.CPlatform.Routing.Implementation
             }
         }
 
+        /// <summary>
+        /// 根据服务路由路径获取路由信息
+        /// </summary>
+        /// <param name="path">The path.</param>
+        /// <returns>ValueTask&lt;ServiceRoute&gt;.</returns>
         public ValueTask<ServiceRoute> GetRouteByPath(string path)
         {
             _serviceRoute.TryGetValue(path.ToLower(), out ServiceRoute route);
@@ -99,6 +124,11 @@ namespace KissU.Core.CPlatform.Routing.Implementation
             }
         }
 
+        /// <summary>
+        /// 通过路径正则表达式获取路线.
+        /// </summary>
+        /// <param name="path">The path.</param>
+        /// <returns>ValueTask&lt;ServiceRoute&gt;.</returns>
         public async ValueTask<ServiceRoute> GetRouteByPathRegex(string path)
         {
             path = path.ToLower();
@@ -106,7 +136,7 @@ namespace KissU.Core.CPlatform.Routing.Implementation
             if (route == null)
             {
                 var routes = await _serviceRouteManager.GetRoutesAsync();
-                return await GetRouteByPathRegexAsync(routes,path);
+                return await GetRouteByPathRegexAsync(routes, path);
             }
             else
             {
@@ -114,13 +144,23 @@ namespace KissU.Core.CPlatform.Routing.Implementation
             }
         }
 
+        /// <summary>
+        /// 根据服务路由路径找到相关服务信息
+        /// </summary>
+        /// <param name="path">The path.</param>
+        /// <returns>Task&lt;ServiceRoute&gt;.</returns>
         public async Task<ServiceRoute> SearchRoute(string path)
         {
             return await SearchRouteAsync(path);
         }
 
+        /// <summary>
+        /// 注册路由
+        /// </summary>
+        /// <param name="processorTime">The processor time.</param>
+        /// <returns>Task.</returns>
         public async Task RegisterRoutes(decimal processorTime)
-        {  
+        {
             var addess = NetUtils.GetHostAddress();
             addess.ProcessorTime = processorTime;
             RpcContext.GetContext().SetAttachment("Host", addess);
@@ -130,13 +170,12 @@ namespace KissU.Core.CPlatform.Routing.Implementation
                 return new ServiceRoute
                 {
                     Address = new[] { addess },
-                    ServiceDescriptor = i.Descriptor
+                    ServiceDescriptor = i.Descriptor,
                 };
             }).ToList();
-           await  _serviceRouteManager.SetRoutesAsync(addressDescriptors);
+            await _serviceRouteManager.SetRoutesAsync(addressDescriptors);
         }
 
-        #region 私有方法
         private static string GetCacheKey(ServiceDescriptor descriptor)
         {
             return descriptor.Id;
@@ -160,7 +199,7 @@ namespace KissU.Core.CPlatform.Routing.Implementation
         private async Task<ServiceRoute> SearchRouteAsync(string path)
         {
             var routes = await _serviceRouteManager.GetRoutesAsync();
-            var route = routes.FirstOrDefault(i => String.Compare(i.ServiceDescriptor.RoutePath, path, true) == 0);
+            var route = routes.FirstOrDefault(i => string.Compare(i.ServiceDescriptor.RoutePath, path, true) == 0);
             if (route == null)
             {
                 if (_logger.IsEnabled(LogLevel.Warning))
@@ -169,14 +208,17 @@ namespace KissU.Core.CPlatform.Routing.Implementation
                 }
             }
             else
+            {
                 _serviceRoute.GetOrAdd(path, route);
+            }
+
             return route;
         }
 
         private async Task<ServiceRoute> GetRouteByPathAsync(string path)
         {
             var routes = await _serviceRouteManager.GetRoutesAsync();
-            var route = routes.FirstOrDefault(i => String.Compare(i.ServiceDescriptor.RoutePath, path, true) == 0 && !i.ServiceDescriptor.GetMetadata<bool>("IsOverload"));
+            var route = routes.FirstOrDefault(i => string.Compare(i.ServiceDescriptor.RoutePath, path, true) == 0 && !i.ServiceDescriptor.GetMetadata<bool>("IsOverload"));
             if (route == null)
             {
                 if (_logger.IsEnabled(LogLevel.Warning))
@@ -185,21 +227,23 @@ namespace KissU.Core.CPlatform.Routing.Implementation
                 }
             }
             else
+            {
                 _serviceRoute.GetOrAdd(path, route);
+            }
+
             return route;
         }
 
         private async Task<ServiceRoute> GetRouteByPathRegexAsync(IEnumerable<ServiceRoute> routes, string path)
-        { 
+        {
             var pattern = "/{.*?}";
 
-           var route = routes.FirstOrDefault(i =>
-            {
-                var routePath = Regex.Replace(i.ServiceDescriptor.RoutePath, pattern, "");
-                var newPath = path.Replace(routePath, "");
-                return (newPath.StartsWith("/")|| newPath.Length==0) && i.ServiceDescriptor.RoutePath.Split("/").Length == path.Split("/").Length && !i.ServiceDescriptor.GetMetadata<bool>("IsOverload");
-            });
-
+            var route = routes.FirstOrDefault(i =>
+             {
+                 var routePath = Regex.Replace(i.ServiceDescriptor.RoutePath, pattern, string.Empty);
+                 var newPath = path.Replace(routePath, string.Empty);
+                 return (newPath.StartsWith("/") || newPath.Length == 0) && i.ServiceDescriptor.RoutePath.Split("/").Length == path.Split("/").Length && !i.ServiceDescriptor.GetMetadata<bool>("IsOverload");
+             });
 
             if (route == null)
             {
@@ -208,11 +252,12 @@ namespace KissU.Core.CPlatform.Routing.Implementation
                     _logger.LogWarning($"根据服务路由路径：{path}，找不到相关服务信息。");
                 }
             }
-            else
-              if(!Regex.IsMatch(route.ServiceDescriptor.RoutePath, pattern))  _serviceRoute.GetOrAdd(path, route);
+            else if (!Regex.IsMatch(route.ServiceDescriptor.RoutePath, pattern))
+            {
+                _serviceRoute.GetOrAdd(path, route);
+            }
+
             return await Task.FromResult(route);
         }
-
-        #endregion
     }
 }

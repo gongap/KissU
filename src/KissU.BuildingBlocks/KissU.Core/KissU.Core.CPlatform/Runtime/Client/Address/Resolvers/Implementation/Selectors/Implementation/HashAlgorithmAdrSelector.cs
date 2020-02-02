@@ -24,7 +24,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
         {
             _healthCheckService = healthCheckService;
             _hashAlgorithm = hashAlgorithm;
-            //路由发生变更时重建地址条目。
+            // 路由发生变更时重建地址条目。
             serviceRouteManager.Changed += ServiceRouteManager_Removed;
             serviceRouteManager.Removed += ServiceRouteManager_Removed;
         }
@@ -48,6 +48,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
                 {
                     hash.Add(address,address.ToString());
                 }
+
                 return hash;
             });
             AddressModel addressModel; 
@@ -62,6 +63,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
                     addressModel = null;
                     break;
                 }
+
                 index++;
                 IsHealth = await _healthCheckService.IsHealth(addressModel);
                 if(!IsHealth)
@@ -90,6 +92,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
                     _unHealths.Remove(item);
                 }
             }
+
             if(_unHealths.Count==0)
             {
                 _healthCheckService.Changed -= ItemNode_Changed;

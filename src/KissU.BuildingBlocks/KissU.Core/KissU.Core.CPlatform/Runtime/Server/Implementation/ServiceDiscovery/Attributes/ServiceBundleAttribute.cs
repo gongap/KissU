@@ -13,6 +13,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
             RouteTemplate = routeTemplate;
             IsPrefix = isPrefix;
         }
+
         public string RouteTemplate { get; }
 
         public bool IsPrefix { get; }

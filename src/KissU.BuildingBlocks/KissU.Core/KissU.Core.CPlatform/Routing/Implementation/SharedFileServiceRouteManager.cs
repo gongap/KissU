@@ -15,8 +15,6 @@ namespace KissU.Core.CPlatform.Routing.Implementation
     /// </summary>
     public class SharedFileServiceRouteManager : ServiceRouteManagerBase, IDisposable
     {
-        #region Field
-
         private readonly string _filePath;
         private readonly ISerializer<string> _serializer;
         private readonly IServiceRouteFactory _serviceRouteFactory;
@@ -24,12 +22,15 @@ namespace KissU.Core.CPlatform.Routing.Implementation
         private ServiceRoute[] _routes;
         private readonly FileSystemWatcher _fileSystemWatcher;
 
-        #endregion Field
-
-        #region Constructor
-
-        public SharedFileServiceRouteManager(string filePath, ISerializer<string> serializer,
-            IServiceRouteFactory serviceRouteFactory, ILogger<SharedFileServiceRouteManager> logger) : base(serializer)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SharedFileServiceRouteManager"/> class.
+        /// </summary>
+        /// <param name="filePath">The file path.</param>
+        /// <param name="serializer">The serializer.</param>
+        /// <param name="serviceRouteFactory">The service route factory.</param>
+        /// <param name="logger">The logger.</param>
+        public SharedFileServiceRouteManager(string filePath, ISerializer<string> serializer, IServiceRouteFactory serviceRouteFactory, ILogger<SharedFileServiceRouteManager> logger)
+            : base(serializer)
         {
             _filePath = filePath;
             _serializer = serializer;
@@ -42,32 +43,37 @@ namespace KissU.Core.CPlatform.Routing.Implementation
                 _fileSystemWatcher = new FileSystemWatcher(directoryName, "*" + Path.GetExtension(filePath));
             }
 
-            _fileSystemWatcher.Changed += _fileSystemWatcher_Changed;
-            _fileSystemWatcher.Created += _fileSystemWatcher_Changed;
-            _fileSystemWatcher.Deleted += _fileSystemWatcher_Changed;
-            _fileSystemWatcher.Renamed += _fileSystemWatcher_Changed;
+            _fileSystemWatcher.Changed += FileSystemWatcher_Changed;
+            _fileSystemWatcher.Created += FileSystemWatcher_Changed;
+            _fileSystemWatcher.Deleted += FileSystemWatcher_Changed;
+            _fileSystemWatcher.Renamed += FileSystemWatcher_Changed;
             _fileSystemWatcher.IncludeSubdirectories = false;
             _fileSystemWatcher.EnableRaisingEvents = true;
         }
 
-        #endregion Constructor
-
-        #region Implementation of IDisposable
-
         /// <summary>
-        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// 释放资源
         /// </summary>
         public void Dispose()
         {
-            _fileSystemWatcher?.Dispose();
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
 
-        #endregion Implementation of IDisposable
-
-        #region Overrides of ServiceRouteManagerBase
+        /// <summary>
+        /// 释放资源
+        /// </summary>
+        /// <param name="disposing">释放</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _fileSystemWatcher?.Dispose();
+            }
+        }
 
         /// <summary>
-        ///     获取所有可用的服务路由信息。
+        /// 获取所有可用的服务路由信息。
         /// </summary>
         /// <returns>服务路由集合。</returns>
         public override async Task<IEnumerable<ServiceRoute>> GetRoutesAsync()
@@ -81,7 +87,7 @@ namespace KissU.Core.CPlatform.Routing.Implementation
         }
 
         /// <summary>
-        ///     清空所有的服务路由。
+        /// 清空所有的服务路由。
         /// </summary>
         /// <returns>一个任务。</returns>
         public override Task ClearAsync()
@@ -95,7 +101,7 @@ namespace KissU.Core.CPlatform.Routing.Implementation
         }
 
         /// <summary>
-        ///     设置服务路由。
+        /// 设置服务路由。
         /// </summary>
         /// <param name="routes">服务路由集合。</param>
         /// <returns>一个任务。</returns>
@@ -111,6 +117,11 @@ namespace KissU.Core.CPlatform.Routing.Implementation
             }
         }
 
+        /// <summary>
+        /// remve address as an asynchronous operation.
+        /// </summary>
+        /// <param name="Address">The address.</param>
+        /// <returns>一个任务。</returns>
         public override async Task RemveAddressAsync(IEnumerable<AddressModel> Address)
         {
             var routes = await GetRoutesAsync();
@@ -118,12 +129,9 @@ namespace KissU.Core.CPlatform.Routing.Implementation
             {
                 route.Address = route.Address.Except(Address);
             }
-            await base.SetRoutesAsync(routes);
+
+            await SetRoutesAsync(routes);
         }
-
-        #endregion Overrides of ServiceRouteManagerBase
-
-        #region Private Method
 
         private async Task<IEnumerable<ServiceRoute>> GetRoutes(string file)
         {
@@ -146,28 +154,28 @@ namespace KissU.Core.CPlatform.Routing.Implementation
                             var reader = new StreamReader(fileStream, Encoding.UTF8);
                             content = await reader.ReadToEndAsync();
                         }
+
                         break;
                     }
                     catch (IOException)
                     {
                     }
                 }
+
                 try
                 {
                     var serializer = _serializer;
-                    routes =
-                    (await
-                        _serviceRouteFactory.CreateServiceRoutesAsync(
-                            serializer.Deserialize<string, ServiceRouteDescriptor[]>(content))).ToArray();
+                    routes = (await _serviceRouteFactory.CreateServiceRoutesAsync(serializer.Deserialize<string, ServiceRouteDescriptor[]>(content))).ToArray();
                     if (_logger.IsEnabled(LogLevel.Information))
-                        _logger.LogInformation(
-                            $"成功获取到以下路由信息：{string.Join(",", routes.Select(i => i.ServiceDescriptor.Id))}。");
+                    {
+                        _logger.LogInformation($"成功获取到以下路由信息：{string.Join(",", routes.Select(i => i.ServiceDescriptor.Id))}。");
+                    }
                 }
                 catch (Exception exception)
                 {
                     if (_logger.IsEnabled(LogLevel.Error))
                     {
-                        _logger.LogError(exception,"获取路由信息时发生了错误。");
+                        _logger.LogError(exception, "获取路由信息时发生了错误。");
                     }
 
                     routes = new ServiceRoute[0];
@@ -182,6 +190,7 @@ namespace KissU.Core.CPlatform.Routing.Implementation
 
                 routes = new ServiceRoute[0];
             }
+
             return routes;
         }
 
@@ -192,36 +201,37 @@ namespace KissU.Core.CPlatform.Routing.Implementation
             _routes = newRoutes;
             if (oldRoutes == null)
             {
-                //触发服务路由创建事件。
+                // 触发服务路由创建事件。
                 OnCreated(newRoutes.Select(route => new ServiceRouteEventArgs(route)).ToArray());
             }
             else
             {
-                //旧的服务Id集合。
+                // 旧的服务Id集合。
                 var oldServiceIds = oldRoutes.Select(i => i.ServiceDescriptor.Id).ToArray();
-                //新的服务Id集合。
+
+                // 新的服务Id集合。
                 var newServiceIds = newRoutes.Select(i => i.ServiceDescriptor.Id).ToArray();
 
-                //被删除的服务Id集合
+                // 被删除的服务Id集合
                 var removeServiceIds = oldServiceIds.Except(newServiceIds).ToArray();
-                //新增的服务Id集合。
+
+                // 新增的服务Id集合。
                 var addServiceIds = newServiceIds.Except(oldServiceIds).ToArray();
-                //可能被修改的服务Id集合。
+
+                // 可能被修改的服务Id集合。
                 var mayModifyServiceIds = newServiceIds.Except(removeServiceIds).ToArray();
 
-                //触发服务路由创建事件。
-                OnCreated(
-                    newRoutes.Where(i => addServiceIds.Contains(i.ServiceDescriptor.Id))
+                // 触发服务路由创建事件。
+                OnCreated(newRoutes.Where(i => addServiceIds.Contains(i.ServiceDescriptor.Id))
                         .Select(route => new ServiceRouteEventArgs(route))
                         .ToArray());
 
-                //触发服务路由删除事件。
-                OnRemoved(
-                    oldRoutes.Where(i => removeServiceIds.Contains(i.ServiceDescriptor.Id))
+                // 触发服务路由删除事件。
+                OnRemoved(oldRoutes.Where(i => removeServiceIds.Contains(i.ServiceDescriptor.Id))
                         .Select(route => new ServiceRouteEventArgs(route))
                         .ToArray());
 
-                //触发服务路由变更事件。
+                // 触发服务路由变更事件。
                 var currentMayModifyRoutes =
                     newRoutes.Where(i => mayModifyServiceIds.Contains(i.ServiceDescriptor.Id)).ToArray();
                 var oldMayModifyRoutes =
@@ -230,16 +240,16 @@ namespace KissU.Core.CPlatform.Routing.Implementation
                 foreach (var oldMayModifyRoute in oldMayModifyRoutes)
                 {
                     if (!currentMayModifyRoutes.Contains(oldMayModifyRoute))
-                        OnChanged(
-                            new ServiceRouteChangedEventArgs(
-                                currentMayModifyRoutes.First(
-                                    i => i.ServiceDescriptor.Id == oldMayModifyRoute.ServiceDescriptor.Id),
-                                oldMayModifyRoute));
+                    {
+                        OnChanged(new ServiceRouteChangedEventArgs(
+                            currentMayModifyRoutes.First(i => i.ServiceDescriptor.Id == oldMayModifyRoute.ServiceDescriptor.Id),
+                            oldMayModifyRoute));
+                    }
                 }
             }
         }
 
-        private async void _fileSystemWatcher_Changed(object sender, FileSystemEventArgs e)
+        private async void FileSystemWatcher_Changed(object sender, FileSystemEventArgs e)
         {
             if (_logger.IsEnabled(LogLevel.Information))
             {
@@ -253,10 +263,12 @@ namespace KissU.Core.CPlatform.Routing.Implementation
                 {
                     content = File.ReadAllText(_filePath, Encoding.UTF8);
                 }
-                catch (IOException) //还没有操作完，忽略本次修改
+                catch (IOException)
                 {
+                    // 还没有操作完，忽略本次修改
                     return;
                 }
+
                 if (!string.IsNullOrWhiteSpace(content))
                 {
                     await EntryRoutes(_filePath);
@@ -269,7 +281,5 @@ namespace KissU.Core.CPlatform.Routing.Implementation
 
             await EntryRoutes(_filePath);
         }
-
-        #endregion Private Method
     }
 }

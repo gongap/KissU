@@ -47,11 +47,13 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
             {
                 _logger.LogInformation($"发现了以下服务：{string.Join(",", services.Select(i => i.ToString()))}。");
             }
+
             var entries = new List<ServiceEntry>();
             foreach (var service in services)
             {
                 entries.AddRange( _clrServiceEntryFactory.CreateServiceEntry(service));
             }
+
             return entries;
         }
 
@@ -66,11 +68,13 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
             {
                 _logger.LogInformation($"发现了以下服务：{string.Join(",", services.Select(i => i.ToString()))}。");
             }
+
             var entries = new List<ServiceEntry>();
             foreach (var service in services)
             {
                 entries.AddRange(_clrServiceEntryFactory.CreateServiceEntry(service));
             }
+
             return entries;
         }
 

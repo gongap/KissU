@@ -14,21 +14,23 @@ namespace KissU.Core.CPlatform.Routing.Implementation
     public class DefaultServiceRouteFactory : IServiceRouteFactory
     {
         private readonly ISerializer<string> _serializer;
-         private readonly ConcurrentDictionary<string, AddressModel> _addressModel =
-                new ConcurrentDictionary<string, AddressModel>();
+        private readonly ConcurrentDictionary<string, AddressModel> _addressModel = new ConcurrentDictionary<string, AddressModel>();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DefaultServiceRouteFactory"/> class.
+        /// </summary>
+        /// <param name="serializer">The serializer.</param>
         public DefaultServiceRouteFactory(ISerializer<string> serializer)
         {
             _serializer = serializer;
         }
-
-        #region Implementation of IServiceRouteFactory
 
         /// <summary>
         /// 根据服务路由描述符创建服务路由。
         /// </summary>
         /// <param name="descriptors">服务路由描述符。</param>
         /// <returns>服务路由集合。</returns>
+        /// <exception cref="ArgumentNullException">descriptors</exception>
         public Task<IEnumerable<ServiceRoute>> CreateServiceRoutesAsync(IEnumerable<ServiceRouteDescriptor> descriptors)
         {
             if (descriptors == null)
@@ -41,16 +43,18 @@ namespace KissU.Core.CPlatform.Routing.Implementation
 
             routes.AddRange(descriptors.Select(descriptor => new ServiceRoute
             {
-               
                 Address = CreateAddress(descriptor.AddressDescriptors),
-                ServiceDescriptor = descriptor.ServiceDescriptor
+                ServiceDescriptor = descriptor.ServiceDescriptor,
             }));
 
             return Task.FromResult(routes.AsEnumerable());
         }
 
-        #endregion Implementation of IServiceRouteFactory
-
+        /// <summary>
+        /// 创建地址.
+        /// </summary>
+        /// <param name="descriptors">The descriptors.</param>
+        /// <returns>IEnumerable&lt;AddressModel&gt;.</returns>
         private IEnumerable<AddressModel> CreateAddress(IEnumerable<ServiceAddressDescriptor> descriptors)
         {
             if (descriptors == null)
@@ -66,6 +70,7 @@ namespace KissU.Core.CPlatform.Routing.Implementation
                     address = (AddressModel)_serializer.Deserialize(descriptor.Value, typeof(IpAddressModel));
                     _addressModel.TryAdd(descriptor.Value, address);
                 }
+
                 yield return address;
             }
         }

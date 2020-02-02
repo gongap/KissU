@@ -23,6 +23,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
                     _serviceToken = null;
                 }
             }
+
             return _serviceToken;
         }
 
