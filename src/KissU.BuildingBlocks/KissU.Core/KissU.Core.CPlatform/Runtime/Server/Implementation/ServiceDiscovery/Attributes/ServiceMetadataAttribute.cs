@@ -9,7 +9,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
     public class ServiceMetadataAttribute : ServiceDescriptorAttribute
     {
         /// <summary>
-        /// 初始化构造函数。
+        /// Initializes a new instance of the <see cref="ServiceMetadataAttribute"/> class.
         /// </summary>
         /// <param name="name">名称。</param>
         /// <param name="data">数据。</param>
@@ -29,8 +29,6 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
         /// </summary>
         public object Data { get; }
 
-        #region Overrides of ServiceDescriptorAttribute
-
         /// <summary>
         /// 应用标记。
         /// </summary>
@@ -39,7 +37,5 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
         {
             descriptor.Metadatas[Name] = Data;
         }
-
-        #endregion Overrides of RpcServiceDescriptorAttribute
     }
 }

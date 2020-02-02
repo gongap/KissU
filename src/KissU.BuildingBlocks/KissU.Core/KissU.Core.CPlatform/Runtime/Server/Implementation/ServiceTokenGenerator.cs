@@ -2,9 +2,23 @@
 
 namespace KissU.Core.CPlatform.Runtime.Server.Implementation
 {
+    /// <summary>
+    /// 服务令牌生成器.
+    /// Implements the <see cref="IServiceTokenGenerator" />
+    /// </summary>
+    /// <seealso cref="IServiceTokenGenerator" />
     public class ServiceTokenGenerator : IServiceTokenGenerator
     {
+        /// <summary>
+        /// 服务令牌
+        /// </summary>
         public string _serviceToken;
+
+        /// <summary>
+        /// 生成令牌.
+        /// </summary>
+        /// <param name="code">The code.</param>
+        /// <returns>System.String.</returns>
         public string GeneratorToken(string code)
         {
             bool enableToken;
@@ -27,6 +41,10 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
             return _serviceToken;
         }
 
+        /// <summary>
+        /// 获取令牌.
+        /// </summary>
+        /// <returns>System.String.</returns>
         public string GetToken()
         {
             return _serviceToken;

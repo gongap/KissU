@@ -14,8 +14,16 @@ namespace KissU.Core.CPlatform.Runtime.Server
         /// <returns>服务条目集合。</returns>
         IEnumerable<ServiceEntry> GetEntries();
 
+        /// <summary>
+        /// 获取所有条目.
+        /// </summary>
+        /// <returns>IEnumerable&lt;ServiceEntry&gt;.</returns>
         IEnumerable<ServiceEntry> GetALLEntries();
 
+        /// <summary>
+        /// 获取类型.
+        /// </summary>
+        /// <returns>IEnumerable&lt;Type&gt;.</returns>
         IEnumerable<Type> GetTypes();
     }
 }

@@ -12,22 +12,26 @@ using Newtonsoft.Json;
 
 namespace KissU.Core.CPlatform.Runtime.Server.Implementation
 {
+    /// <summary>
+    /// 默认服务执行器.
+    /// Implements the <see cref="IServiceExecutor" />
+    /// </summary>
+    /// <seealso cref="IServiceExecutor" />
     public class DefaultServiceExecutor : IServiceExecutor
     {
-        #region Field
-
         private readonly IServiceEntryLocate _serviceEntryLocate;
         private readonly ILogger<DefaultServiceExecutor> _logger;
         private readonly IServiceRouteProvider _serviceRouteProvider;
         private readonly IAuthorizationFilter _authorizationFilter;
 
-        #endregion Field
-
-        #region Constructor
-
-        public DefaultServiceExecutor(IServiceEntryLocate serviceEntryLocate, IServiceRouteProvider serviceRouteProvider,
-            IAuthorizationFilter authorizationFilter,
-            ILogger<DefaultServiceExecutor> logger)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DefaultServiceExecutor"/> class.
+        /// </summary>
+        /// <param name="serviceEntryLocate">The service entry locate.</param>
+        /// <param name="serviceRouteProvider">The service route provider.</param>
+        /// <param name="authorizationFilter">The authorization filter.</param>
+        /// <param name="logger">The logger.</param>
+        public DefaultServiceExecutor(IServiceEntryLocate serviceEntryLocate, IServiceRouteProvider serviceRouteProvider, IAuthorizationFilter authorizationFilter, ILogger<DefaultServiceExecutor> logger)
         {
             _serviceEntryLocate = serviceEntryLocate;
             _logger = logger;
@@ -35,18 +39,14 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
             _authorizationFilter = authorizationFilter;
         }
 
-        #endregion Constructor
-
-        #region Implementation of IServiceExecutor
-
         /// <summary>
         /// 执行。
         /// </summary>
         /// <param name="sender">消息发送者。</param>
         /// <param name="message">调用消息。</param>
+        /// <returns>A <see cref="Task" /> representing the asynchronous operation.</returns>
         public async Task ExecuteAsync(IMessageSender sender, TransportMessage message)
         {
-
             if (_logger.IsEnabled(LogLevel.Trace))
             {
                 _logger.LogTrace("服务提供者接收到消息。");
@@ -64,12 +64,11 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
             }
             catch (Exception exception)
             {
-                _logger.LogError(exception,"将接收到的消息反序列化成 TransportMessage<RemoteInvokeMessage> 时发送了错误。");
+                _logger.LogError(exception, "将接收到的消息反序列化成 TransportMessage<RemoteInvokeMessage> 时发送了错误。");
                 return;
             }
-             
+
             var entry = _serviceEntryLocate.Locate(remoteInvokeMessage);
-             
             if (entry == null)
             {
                 if (_logger.IsEnabled(LogLevel.Error))
@@ -80,11 +79,11 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
                 return;
             }
 
-            if(remoteInvokeMessage.Attachments !=null)
+            if (remoteInvokeMessage.Attachments != null)
             {
-                foreach(var attachment in remoteInvokeMessage.Attachments)
+                foreach (var attachment in remoteInvokeMessage.Attachments)
                 {
-                    RpcContext.GetContext().SetAttachment(attachment.Key,attachment.Value);
+                    RpcContext.GetContext().SetAttachment(attachment.Key, attachment.Value);
                 }
             }
 
@@ -99,7 +98,8 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
             if (entry.Descriptor.WaitExecution())
             {
                 // 执行本地代码。
-                await  LocalExecuteAsync(entry, remoteInvokeMessage, resultMessage);
+                await LocalExecuteAsync(entry, remoteInvokeMessage, resultMessage);
+
                 // 向客户端发送调用结果。
                 await SendRemoteInvokeResult(sender, message.Id, resultMessage);
             }
@@ -107,18 +107,16 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
             {
                 // 通知客户端已接收到消息。
                 await SendRemoteInvokeResult(sender, message.Id, resultMessage);
+
                 // 确保新起一个线程执行，不堵塞当前线程。
-                await Task.Factory.StartNew(async () =>
+                await Task.Factory.StartNew(
+                    async () =>
                 {
                     // 执行本地代码。
-                  await   LocalExecuteAsync(entry, remoteInvokeMessage, resultMessage);
-            }, TaskCreationOptions.LongRunning);
+                    await LocalExecuteAsync(entry, remoteInvokeMessage, resultMessage);
+                }, TaskCreationOptions.LongRunning);
+            }
         }
-        }
-
-        #endregion Implementation of IServiceExecutor
-
-        #region Private Method
 
         private async Task LocalExecuteAsync(ServiceEntry entry, RemoteInvokeMessage remoteInvokeMessage, RemoteInvokeResultMessage resultMessage)
         {
@@ -161,7 +159,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
                 resultMessage.StatusCode = exception.HResult;
             }
         }
-         
+
         private async Task SendRemoteInvokeResult(IMessageSender sender, string messageId, RemoteInvokeResultMessage resultMessage)
         {
             try
@@ -181,10 +179,10 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
             {
                 if (_logger.IsEnabled(LogLevel.Error))
                 {
-                    _logger.LogError(exception,"发送响应消息时候发生了异常。" );
+                    _logger.LogError(exception, "发送响应消息时候发生了异常。");
                 }
             }
-        } 
+        }
 
         private static string GetExceptionMessage(Exception exception)
         {
@@ -201,7 +199,5 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
 
             return message;
         }
-
-        #endregion Private Method
     }
 }

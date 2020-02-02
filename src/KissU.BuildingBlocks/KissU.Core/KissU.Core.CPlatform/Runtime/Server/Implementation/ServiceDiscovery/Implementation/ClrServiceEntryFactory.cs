@@ -21,15 +21,18 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Im
     /// </summary>
     public class ClrServiceEntryFactory : IClrServiceEntryFactory
     {
-        #region Field
         private readonly CPlatformContainer _serviceProvider;
         private readonly IServiceIdGenerator _serviceIdGenerator;
         private readonly ITypeConvertibleService _typeConvertibleService;
         private readonly IValidationProcessor _validationProcessor;
 
-        #endregion Field
-
-        #region Constructor
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ClrServiceEntryFactory"/> class.
+        /// </summary>
+        /// <param name="serviceProvider">The service provider.</param>
+        /// <param name="serviceIdGenerator">The service identifier generator.</param>
+        /// <param name="typeConvertibleService">The type convertible service.</param>
+        /// <param name="validationProcessor">The validation processor.</param>
         public ClrServiceEntryFactory(CPlatformContainer serviceProvider, IServiceIdGenerator serviceIdGenerator, ITypeConvertibleService typeConvertibleService, IValidationProcessor validationProcessor)
         {
             _serviceProvider = serviceProvider;
@@ -38,15 +41,10 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Im
             _validationProcessor = validationProcessor;
         }
 
-        #endregion Constructor
-
-        #region Implementation of IClrServiceEntryFactory
-
         /// <summary>
         /// 创建服务条目。
         /// </summary>
         /// <param name="service">服务类型。</param>
-        /// <param name="serviceImplementation">服务实现类型。</param>
         /// <returns>服务条目集合。</returns>
         public IEnumerable<ServiceEntry> CreateServiceEntry(Type service)
         {
@@ -67,10 +65,14 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Im
                 yield return Create(methodInfo, service.Name, routeTemplateVal);
             }
         }
-        #endregion Implementation of IClrServiceEntryFactory
 
-        #region Private Method
-
+        /// <summary>
+        /// 创建服务条目.
+        /// </summary>
+        /// <param name="method">The method.</param>
+        /// <param name="serviceName">Name of the service.</param>
+        /// <param name="routeTemplate">The route template.</param>
+        /// <returns>ServiceEntry.</returns>
         private ServiceEntry Create(MethodInfo method, string serviceName, string routeTemplate)
         {
             var serviceId = _serviceIdGenerator.GenerateServiceId(method);
@@ -112,14 +114,12 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Im
 
             if (authorization != null)
             {
-                serviceDescriptor.AuthType(((authorization as AuthorizationAttribute)?.AuthType)
-                    ?? AuthorizationType.AppSecret);
+                serviceDescriptor.AuthType((authorization as AuthorizationAttribute)?.AuthType?? AuthorizationType.AppSecret);
             }
 
             var fastInvoker = GetHandler(serviceId, method);
 
-            var methodValidateAttribute = attributes.Where(p => p is ValidateAttribute)
-                .Cast<ValidateAttribute>().FirstOrDefault();
+            var methodValidateAttribute = attributes.Where(p => p is ValidateAttribute).Cast<ValidateAttribute>().FirstOrDefault();
 
             return new ServiceEntry
             {
@@ -170,6 +170,12 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Im
             };
         }
 
+        /// <summary>
+        /// 获取处理程序.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="method">The method.</param>
+        /// <returns>FastInvokeHandler.</returns>
         private FastInvokeHandler GetHandler(string key, MethodInfo method)
         {
             var objInstance = ServiceResolver.Current.GetService(null, key);
@@ -181,6 +187,5 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Im
 
             return objInstance as FastInvokeHandler;
         }
-        #endregion Private Method
     }
 }

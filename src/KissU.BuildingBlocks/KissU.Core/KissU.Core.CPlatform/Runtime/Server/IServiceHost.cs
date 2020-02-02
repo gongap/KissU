@@ -19,7 +19,9 @@ namespace KissU.Core.CPlatform.Runtime.Server
         /// <summary>
         /// 启动主机。
         /// </summary>
-        /// <param name="endPoint">ip地址。</param>
-        Task StartAsync(string ip,int port);
+        /// <param name="ip">The ip.</param>
+        /// <param name="port">The port.</param>
+        /// <returns>Task.</returns>
+        Task StartAsync(string ip, int port);
     }
 }

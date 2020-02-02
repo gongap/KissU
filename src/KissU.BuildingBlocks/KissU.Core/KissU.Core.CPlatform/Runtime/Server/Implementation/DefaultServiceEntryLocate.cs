@@ -12,12 +12,14 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
     {
         private readonly IServiceEntryManager _serviceEntryManager;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DefaultServiceEntryLocate"/> class.
+        /// </summary>
+        /// <param name="serviceEntryManager">The service entry manager.</param>
         public DefaultServiceEntryLocate(IServiceEntryManager serviceEntryManager)
         {
             _serviceEntryManager = serviceEntryManager;
         }
-
-        #region Implementation of IServiceEntryLocate
 
         /// <summary>
         /// 定位服务条目。
@@ -31,6 +33,11 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
             return serviceEntries.SingleOrDefault(i => i.Descriptor.Id == invokeMessage.ServiceId);
         }
 
+        /// <summary>
+        /// 定位服务条目.
+        /// </summary>
+        /// <param name="httpMessage">The HTTP message.</param>
+        /// <returns>ServiceEntry.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public ServiceEntry Locate(HttpRequestMessage httpMessage)
         {
@@ -43,7 +50,5 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
             var serviceEntries = _serviceEntryManager.GetAllEntries();
             return serviceEntries.SingleOrDefault(i => i.RoutePath == routePath && !i.Descriptor.GetMetadata<bool>("IsOverload"));
         }
-
-        #endregion Implementation of IServiceEntryLocate
     }
 }

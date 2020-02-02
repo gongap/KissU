@@ -11,10 +11,11 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
     /// </summary>
     public abstract class ServiceHostAbstract : IServiceHost
     {
-        #region Field
-
         private readonly IServiceExecutor _serviceExecutor;
 
+        /// <summary>
+        /// 服务执行器.
+        /// </summary>
         public IServiceExecutor ServiceExecutor { get => _serviceExecutor; }
 
         /// <summary>
@@ -22,26 +23,20 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
         /// </summary>
         protected IMessageListener MessageListener { get; } = new MessageListener();
 
-        #endregion Field
-
-        #region Constructor
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ServiceHostAbstract"/> class.
+        /// </summary>
+        /// <param name="serviceExecutor">The service executor.</param>
         protected ServiceHostAbstract(IServiceExecutor serviceExecutor)
         {
             _serviceExecutor = serviceExecutor;
             MessageListener.Received += MessageListener_Received;
         }
 
-        #endregion Constructor
-
-        #region Implementation of IDisposable
-
-        /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
         public abstract void Dispose();
-
-        #endregion Implementation of IDisposable
-
-        #region Implementation of IServiceHost
 
         /// <summary>
         /// 启动主机。
@@ -50,17 +45,17 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
         /// <returns>一个任务。</returns>
         public abstract Task StartAsync(EndPoint endPoint);
 
-        #endregion Implementation of IServiceHost
-
-        #region Private Method
-
         private async Task MessageListener_Received(IMessageSender sender, TransportMessage message)
         {
             await _serviceExecutor.ExecuteAsync(sender, message);
         }
 
-        public abstract Task StartAsync(string ip,int port);
-
-        #endregion Private Method
+        /// <summary>
+        /// 启动主机。
+        /// </summary>
+        /// <param name="ip">The ip.</param>
+        /// <param name="port">The port.</param>
+        /// <returns>Task.</returns>
+        public abstract Task StartAsync(string ip, int port);
     }
 }

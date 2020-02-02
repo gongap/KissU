@@ -9,7 +9,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
     public class ServiceAttribute : ServiceDescriptorAttribute
     {
         /// <summary>
-        /// 初始化构造函数
+        /// Initializes a new instance of the <see cref="ServiceAttribute"/> class.
         /// </summary>
         public ServiceAttribute()
         {
@@ -45,7 +45,6 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
         /// 日期
         /// </summary>
         public string Date { get; set; }
-        #region Overrides of DescriptorAttribute
 
         /// <summary>
         /// 应用标记。
@@ -61,7 +60,5 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
                 .GroupName(Name)
                 .Date(Date);
         }
-
-        #endregion Overrides of ServiceDescriptorAttribute
     }
 }

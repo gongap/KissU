@@ -12,28 +12,25 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
     /// </summary>
     public class AttributeServiceEntryProvider : IServiceEntryProvider
     {
-        #region Field
-
         private readonly IEnumerable<Type> _types;
         private readonly IClrServiceEntryFactory _clrServiceEntryFactory;
         private readonly ILogger<AttributeServiceEntryProvider> _logger;
         private readonly CPlatformContainer _serviceProvider;
 
-        #endregion Field
-
-        #region Constructor
-
-        public AttributeServiceEntryProvider(IEnumerable<Type> types, IClrServiceEntryFactory clrServiceEntryFactory, ILogger<AttributeServiceEntryProvider> logger ,CPlatformContainer serviceProvider)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AttributeServiceEntryProvider"/> class.
+        /// </summary>
+        /// <param name="types">The types.</param>
+        /// <param name="clrServiceEntryFactory">The color service entry factory.</param>
+        /// <param name="logger">The logger.</param>
+        /// <param name="serviceProvider">The service provider.</param>
+        public AttributeServiceEntryProvider(IEnumerable<Type> types, IClrServiceEntryFactory clrServiceEntryFactory, ILogger<AttributeServiceEntryProvider> logger, CPlatformContainer serviceProvider)
         {
             _types = types;
             _clrServiceEntryFactory = clrServiceEntryFactory;
             _logger = logger;
             _serviceProvider = serviceProvider;
         }
-
-        #endregion Constructor
-
-        #region Implementation of IServiceEntryProvider
 
         /// <summary>
         /// 获取服务条目集合。
@@ -51,12 +48,16 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
             var entries = new List<ServiceEntry>();
             foreach (var service in services)
             {
-                entries.AddRange( _clrServiceEntryFactory.CreateServiceEntry(service));
+                entries.AddRange(_clrServiceEntryFactory.CreateServiceEntry(service));
             }
 
             return entries;
         }
 
+        /// <summary>
+        /// 获取所有条目.
+        /// </summary>
+        /// <returns>IEnumerable&lt;ServiceEntry&gt;.</returns>
         public IEnumerable<ServiceEntry> GetALLEntries()
         {
             var services = _types.Where(i =>
@@ -78,6 +79,10 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
             return entries;
         }
 
+        /// <summary>
+        /// 获取类型.
+        /// </summary>
+        /// <returns>IEnumerable&lt;Type&gt;.</returns>
         public IEnumerable<Type> GetTypes()
         {
             var services = _types.Where(i =>
@@ -87,7 +92,5 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
             }).Distinct().ToArray();
             return services;
         }
-
-        #endregion Implementation of IServiceEntryProvider
     }
 }

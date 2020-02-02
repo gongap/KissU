@@ -10,29 +10,27 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
     /// </summary>
     public class DefaultServiceEntryManager : IServiceEntryManager
     {
-        #region Field
+        private IEnumerable<ServiceEntry> _serviceEntries;
+        private IEnumerable<ServiceEntry> _allEntries;
 
-        private  IEnumerable<ServiceEntry> _serviceEntries;
-
-        private  IEnumerable<ServiceEntry> _allEntries;
-
-        #endregion Field
-
-        #region Constructor
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DefaultServiceEntryManager" /> class.
+        /// </summary>
+        /// <param name="providers">The providers.</param>
         public DefaultServiceEntryManager(IEnumerable<IServiceEntryProvider> providers)
         {
             UpdateEntries(providers);
         }
 
-        #endregion Constructor
-
-        #region Implementation of IServiceEntryManager
-
+        /// <summary>
+        /// 更新条目.
+        /// </summary>
+        /// <param name="providers">The providers.</param>
+        /// <exception cref="InvalidOperationException">本地包含多个Id为：{entry.Descriptor.Id} 的服务条目。</exception>
         public void UpdateEntries(IEnumerable<IServiceEntryProvider> providers)
         {
-             var list = new List<ServiceEntry>();
-            var  allEntries = new List<ServiceEntry>();
+            var list = new List<ServiceEntry>();
+            var allEntries = new List<ServiceEntry>();
             foreach (var provider in providers)
             {
                 var entries = provider.GetEntries().ToArray();
@@ -45,8 +43,8 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
                 }
 
                 list.AddRange(entries);
-                allEntries.AddRange( provider.GetALLEntries());
-            } 
+                allEntries.AddRange(provider.GetALLEntries());
+            }
 
             _serviceEntries = list.ToArray();
             _allEntries = allEntries;
@@ -62,12 +60,14 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
             return _serviceEntries;
         }
 
+        /// <summary>
+        /// 获取所有条目.
+        /// </summary>
+        /// <returns>IEnumerable&lt;ServiceEntry&gt;.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public IEnumerable<ServiceEntry> GetAllEntries()
         {
             return _allEntries;
         }
-
-        #endregion Implementation of IServiceEntryManager
     }
 }

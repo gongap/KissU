@@ -2,13 +2,25 @@
 
 namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes
 {
-   public class ServiceRouteAttribute: Attribute
+    /// <summary>
+    /// ServiceRouteAttribute.
+    /// Implements the <see cref="System.Attribute" />
+    /// </summary>
+    /// <seealso cref="System.Attribute" />
+    public class ServiceRouteAttribute : Attribute
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ServiceRouteAttribute"/> class.
+        /// </summary>
+        /// <param name="template">The template.</param>
         public ServiceRouteAttribute(string template)
         {
             Template = template;
         }
-         
-        public string Template { get; }  
+
+        /// <summary>
+        /// Gets the template.
+        /// </summary>
+        public string Template { get; }
     }
 }
