@@ -43,7 +43,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
 
             if (_logger.IsEnabled(LogLevel.Information))
             {
-                _logger.LogInformation($"发现了以下服务：{string.Join(",", services.Select(i => i.ToString()))}。");
+                _logger.LogInformation($"发现了以下服务：\n{string.Join(",\n", services.Select(i => i.ToString()))}。");
             }
 
             var entries = new List<ServiceEntry>();
@@ -68,7 +68,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
             }).Distinct().ToArray();
             if (_logger.IsEnabled(LogLevel.Information))
             {
-                _logger.LogInformation($"发现了以下服务：{string.Join(",", services.Select(i => i.ToString()))}。");
+                _logger.LogInformation($"发现了以下服务：\n{string.Join(",\n", services.Select(i => i.ToString()))}。");
             }
 
             var entries = new List<ServiceEntry>();
