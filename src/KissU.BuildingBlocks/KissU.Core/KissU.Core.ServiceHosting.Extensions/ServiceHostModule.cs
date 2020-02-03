@@ -16,6 +16,10 @@ namespace KissU.Core.ServiceHosting.Extensions
     /// </summary>
     public class ServiceHostModule : EnginePartModule
     {
+        /// <summary>
+        /// Initializes the specified context.
+        /// </summary>
+        /// <param name="context">The context.</param>
         public override void Initialize(AppModuleContext context)
         {
             var serviceProvider = context.ServiceProvoider;
@@ -42,6 +46,10 @@ namespace KissU.Core.ServiceHosting.Extensions
             });
         }
 
+        /// <summary>
+        /// 注册服务
+        /// </summary>
+        /// <param name="builder">构建器包装</param>
         protected override void RegisterBuilder(ContainerBuilderWrapper builder)
         {
             base.RegisterBuilder(builder);

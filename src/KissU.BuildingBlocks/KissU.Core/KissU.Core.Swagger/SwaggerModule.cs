@@ -13,11 +13,20 @@ using Microsoft.Extensions.Configuration;
 
 namespace KissU.Core.Swagger
 {
+    /// <summary>
+    /// SwaggerModule.
+    /// Implements the <see cref="KissU.Core.KestrelHttpServer.KestrelHttpModule" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.KestrelHttpServer.KestrelHttpModule" />
     public class SwaggerModule: KestrelHttpModule
     {
         private  IServiceSchemaProvider _serviceSchemaProvider; 
         private  IServiceEntryProvider _serviceEntryProvider;
 
+        /// <summary>
+        /// Initializes the specified context.
+        /// </summary>
+        /// <param name="context">The context.</param>
         public override void Initialize(AppModuleContext context)
         {
             var serviceProvider = context.ServiceProvoider;
@@ -25,6 +34,10 @@ namespace KissU.Core.Swagger
             _serviceEntryProvider = serviceProvider.GetInstances<IServiceEntryProvider>();
         }
 
+        /// <summary>
+        /// Initializes the specified context.
+        /// </summary>
+        /// <param name="context">The context.</param>
         public override void Initialize(ApplicationInitializationContext context)
         {
             var info = AppConfig.SwaggerConfig.Info == null
@@ -41,6 +54,10 @@ namespace KissU.Core.Swagger
             }
         }
 
+        /// <summary>
+        /// Registers the builder.
+        /// </summary>
+        /// <param name="context">The context.</param>
         public override void RegisterBuilder(ConfigurationContext context)
         {
             var serviceCollection = context.Services;
@@ -78,7 +95,7 @@ namespace KissU.Core.Swagger
         /// <summary>
         /// Inject dependent third-party components
         /// </summary>
-        /// <param name="builder"></param>
+        /// <param name="builder">The builder.</param>
         protected override void RegisterBuilder(ContainerBuilderWrapper builder)
         {
             var section = CPlatform.AppConfig.GetSection("Swagger");

@@ -14,21 +14,42 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.KestrelHttpServer
 {
+    /// <summary>
+    /// KestrelHttpModule.
+    /// Implements the <see cref="KissU.Core.CPlatform.Module.EnginePartModule" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Module.EnginePartModule" />
     public class KestrelHttpModule : EnginePartModule
     {
+        /// <summary>
+        /// Initializes the specified context.
+        /// </summary>
+        /// <param name="context">The context.</param>
         public override void Initialize(AppModuleContext context)
         {
             base.Initialize(context);
         }
 
+        /// <summary>
+        /// Initializes the specified builder.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
         public virtual void Initialize(ApplicationInitializationContext builder)
         {
         }
 
+        /// <summary>
+        /// Registers the builder.
+        /// </summary>
+        /// <param name="context">The context.</param>
         public virtual void RegisterBuilder(WebHostContext context)
         {
         }
 
+        /// <summary>
+        /// Registers the builder.
+        /// </summary>
+        /// <param name="context">The context.</param>
         public virtual void RegisterBuilder(ConfigurationContext context)
         {
             context.Services.AddFilters(typeof(HttpRequestFilterAttribute));
@@ -38,7 +59,7 @@ namespace KissU.Core.KestrelHttpServer
         /// <summary>
         /// Inject dependent third-party components
         /// </summary>
-        /// <param name="builder"></param>
+        /// <param name="builder">构建器包装</param>
         protected override void RegisterBuilder(ContainerBuilderWrapper builder)
         {
             base.RegisterBuilder(builder);

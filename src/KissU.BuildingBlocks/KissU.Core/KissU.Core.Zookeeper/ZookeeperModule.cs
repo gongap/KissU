@@ -20,8 +20,17 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.Zookeeper
 {
+    /// <summary>
+    /// ZookeeperModule.
+    /// Implements the <see cref="KissU.Core.CPlatform.Module.EnginePartModule" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Module.EnginePartModule" />
     public class ZookeeperModule : EnginePartModule
     {
+        /// <summary>
+        /// Initializes the specified context.
+        /// </summary>
+        /// <param name="context">The context.</param>
         public override void Initialize(AppModuleContext context)
         {
             base.Initialize(context);
@@ -30,7 +39,7 @@ namespace KissU.Core.Zookeeper
         /// <summary>
         /// Inject dependent third-party components
         /// </summary>
-        /// <param name="builder"></param>
+        /// <param name="builder">构建器包装</param>
         protected override void RegisterBuilder(ContainerBuilderWrapper builder)
         {
             base.RegisterBuilder(builder);
@@ -45,36 +54,72 @@ namespace KissU.Core.Zookeeper
             .UseZooKeeperCommandManager(builder, configInfo);
         }
 
+        /// <summary>
+        /// Uses the route manager.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="factory">The factory.</param>
+        /// <returns>ContainerBuilderWrapper.</returns>
         public ContainerBuilderWrapper UseRouteManager(ContainerBuilderWrapper builder, Func<IServiceProvider, IServiceRouteManager> factory)
         {
             builder.RegisterAdapter(factory).InstancePerLifetimeScope();
             return builder;
         }
 
+        /// <summary>
+        /// Uses the subscribe manager.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="factory">The factory.</param>
+        /// <returns>ContainerBuilderWrapper.</returns>
         public ContainerBuilderWrapper UseSubscribeManager(ContainerBuilderWrapper builder, Func<IServiceProvider, IServiceSubscribeManager> factory)
         {
             builder.RegisterAdapter(factory).InstancePerLifetimeScope();
             return builder;
         }
 
+        /// <summary>
+        /// Uses the command manager.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="factory">The factory.</param>
+        /// <returns>ContainerBuilderWrapper.</returns>
         public ContainerBuilderWrapper UseCommandManager(ContainerBuilderWrapper builder, Func<IServiceProvider, IServiceCommandManager> factory)
         {
             builder.RegisterAdapter(factory).InstancePerLifetimeScope();
             return builder;
         }
 
+        /// <summary>
+        /// Uses the cache manager.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="factory">The factory.</param>
+        /// <returns>ContainerBuilderWrapper.</returns>
         public ContainerBuilderWrapper UseCacheManager(ContainerBuilderWrapper builder, Func<IServiceProvider, IServiceCacheManager> factory)
         {
             builder.RegisterAdapter(factory).InstancePerLifetimeScope();
             return builder;
         }
 
+        /// <summary>
+        /// Uses the MQTT route manager.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="factory">The factory.</param>
+        /// <returns>ContainerBuilderWrapper.</returns>
         public ContainerBuilderWrapper UseMqttRouteManager(ContainerBuilderWrapper builder, Func<IServiceProvider, IMqttServiceRouteManager> factory)
         {
             builder.RegisterAdapter(factory).InstancePerLifetimeScope();
             return builder;
         }
 
+        /// <summary>
+        /// Uses the zoo keeper client provider.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="factory">The factory.</param>
+        /// <returns>ContainerBuilderWrapper.</returns>
         public ContainerBuilderWrapper UseZooKeeperClientProvider(ContainerBuilderWrapper builder, Func<IServiceProvider, IZookeeperClientProvider> factory)
         {
             builder.RegisterAdapter(factory).InstancePerLifetimeScope();
@@ -100,6 +145,12 @@ namespace KissU.Core.Zookeeper
             return this;
         }
 
+        /// <summary>
+        /// Uses the zoo keeper MQTT route manager.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="configInfo">The configuration information.</param>
+        /// <returns>ZookeeperModule.</returns>
         public ZookeeperModule UseZooKeeperMqttRouteManager(ContainerBuilderWrapper builder, ConfigInfo configInfo)
         {
             UseMqttRouteManager(builder, provider =>
@@ -140,6 +191,12 @@ namespace KissU.Core.Zookeeper
             return this;
         }
 
+        /// <summary>
+        /// Uses the zoo keeper service subscribe manager.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="configInfo">The configuration information.</param>
+        /// <returns>ZookeeperModule.</returns>
         public ZookeeperModule UseZooKeeperServiceSubscribeManager(ContainerBuilderWrapper builder, ConfigInfo configInfo)
         {
              UseSubscribeManager(builder,provider =>
@@ -156,6 +213,12 @@ namespace KissU.Core.Zookeeper
             return this;
         }
 
+        /// <summary>
+        /// Uses the zoo keeper cache manager.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="configInfo">The configuration information.</param>
+        /// <returns>ZookeeperModule.</returns>
         public ZookeeperModule UseZooKeeperCacheManager(ContainerBuilderWrapper builder, ConfigInfo configInfo)
         {
             UseCacheManager(builder, provider =>
@@ -169,6 +232,12 @@ namespace KissU.Core.Zookeeper
             return this;
         }
 
+        /// <summary>
+        /// Uses the zookeeper client provider.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="configInfo">The configuration information.</param>
+        /// <returns>ZookeeperModule.</returns>
         public ZookeeperModule UseZookeeperClientProvider(ContainerBuilderWrapper builder, ConfigInfo configInfo)
         {
             UseZooKeeperClientProvider(builder, provider =>
@@ -180,12 +249,22 @@ namespace KissU.Core.Zookeeper
             return this;
         }
 
+        /// <summary>
+        /// Uses the zookeeper address selector.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <returns>ZookeeperModule.</returns>
         public ZookeeperModule UseZookeeperAddressSelector(ContainerBuilderWrapper builder)
         {
             builder.RegisterType<ZookeeperRandomAddressSelector>().As<IZookeeperAddressSelector>().SingleInstance();
             return this;
         }
 
+        /// <summary>
+        /// Uses the health check.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <returns>ZookeeperModule.</returns>
         public ZookeeperModule UseHealthCheck(ContainerBuilderWrapper builder)
         {
             builder.RegisterType<DefaultHealthCheckService>().As<IHealthCheckService>().SingleInstance();

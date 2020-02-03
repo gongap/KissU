@@ -9,8 +9,17 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.Protocol.Udp
 {
+    /// <summary>
+    /// DnsProtocolModule.
+    /// Implements the <see cref="KissU.Core.CPlatform.Module.EnginePartModule" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Module.EnginePartModule" />
     public class DnsProtocolModule : EnginePartModule
     {
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        /// <param name="serviceProvider">The service provider.</param>
         public override void Initialize(AppModuleContext serviceProvider)
         {
             base.Initialize(serviceProvider);
@@ -19,7 +28,7 @@ namespace KissU.Core.Protocol.Udp
         /// <summary>
         /// Inject dependent third-party components
         /// </summary>
-        /// <param name="builder"></param>
+        /// <param name="builder">构建器包装</param>
         protected override void RegisterBuilder(ContainerBuilderWrapper builder)
         {
             base.RegisterBuilder(builder);

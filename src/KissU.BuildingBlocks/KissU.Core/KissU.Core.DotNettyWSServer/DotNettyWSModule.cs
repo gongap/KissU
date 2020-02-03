@@ -9,13 +9,26 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.DotNettyWSServer
 {
+    /// <summary>
+    /// DotNettyWSModule.
+    /// Implements the <see cref="KissU.Core.CPlatform.Module.EnginePartModule" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Module.EnginePartModule" />
     public class DotNettyWSModule : EnginePartModule
     {
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        /// <param name="serviceProvider">The service provider.</param>
         public override void Initialize(AppModuleContext serviceProvider)
         {
             base.Initialize(serviceProvider);
         }
 
+        /// <summary>
+        /// 注册服务
+        /// </summary>
+        /// <param name="builder">构建器包装</param>
         protected override void RegisterBuilder(ContainerBuilderWrapper builder)
         {
             base.RegisterBuilder(builder);

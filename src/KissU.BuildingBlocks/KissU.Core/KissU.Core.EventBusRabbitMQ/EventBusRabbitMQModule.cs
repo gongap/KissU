@@ -16,8 +16,17 @@ using RabbitMQ.Client;
 
 namespace KissU.Core.EventBusRabbitMQ
 {
+    /// <summary>
+    /// EventBusRabbitMQModule.
+    /// Implements the <see cref="KissU.Core.CPlatform.Module.EnginePartModule" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Module.EnginePartModule" />
     public class EventBusRabbitMQModule : EnginePartModule
     {
+        /// <summary>
+        /// Initializes the specified context.
+        /// </summary>
+        /// <param name="context">The context.</param>
         public override void Initialize(AppModuleContext context)
         {
             var serviceProvider = context.ServiceProvoider;
@@ -36,7 +45,7 @@ namespace KissU.Core.EventBusRabbitMQ
         /// <summary>
         /// Inject dependent third-party components
         /// </summary>
-        /// <param name="builder"></param>
+        /// <param name="builder">构建器包装</param>
         protected override void RegisterBuilder(ContainerBuilderWrapper builder)
         {
             base.RegisterBuilder(builder);
@@ -44,6 +53,11 @@ namespace KissU.Core.EventBusRabbitMQ
             .AddRabbitMQAdapt(builder);
         }
 
+        /// <summary>
+        /// Uses the rabbit mq transport.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <returns>EventBusRabbitMQModule.</returns>
         public EventBusRabbitMQModule UseRabbitMQTransport(ContainerBuilderWrapper builder)
         {
             builder.RegisterType(typeof(Implementation.EventBusRabbitMQ)).As(typeof(IEventBus)).SingleInstance();

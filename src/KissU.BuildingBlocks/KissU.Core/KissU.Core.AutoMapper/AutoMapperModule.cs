@@ -5,15 +5,28 @@ using CPlatformAppConfig = KissU.Core.CPlatform.AppConfig;
 
 namespace KissU.Core.AutoMapper
 {
+    /// <summary>
+    /// AutoMapperModule.
+    /// Implements the <see cref="KissU.Core.CPlatform.Module.EnginePartModule" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Module.EnginePartModule" />
     public class AutoMapperModule : EnginePartModule
     {
 
+        /// <summary>
+        /// Initializes the specified context.
+        /// </summary>
+        /// <param name="context">The context.</param>
         public override void Initialize(AppModuleContext context)
         {
             base.Initialize(context);
             context.ServiceProvoider.GetInstances<IAutoMapperBootstrap>().Initialize();
         }
 
+        /// <summary>
+        /// 注册服务
+        /// </summary>
+        /// <param name="builder">构建器包装</param>
         protected override void RegisterBuilder(ContainerBuilderWrapper builder)
         {
             var configAssembliesStr = CPlatformAppConfig.GetSection("Automapper:Assemblies").Get<string>();

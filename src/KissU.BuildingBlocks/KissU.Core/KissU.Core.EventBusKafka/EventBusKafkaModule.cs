@@ -12,8 +12,17 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace KissU.Core.EventBusKafka
 {
+    /// <summary>
+    /// EventBusKafkaModule.
+    /// Implements the <see cref="KissU.Core.CPlatform.Module.EnginePartModule" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Module.EnginePartModule" />
     public class EventBusKafkaModule : EnginePartModule
     {
+        /// <summary>
+        /// Initializes the specified context.
+        /// </summary>
+        /// <param name="context">The context.</param>
         public override void Initialize(AppModuleContext context)
         {
             var serviceProvider = context.ServiceProvoider;
@@ -29,14 +38,19 @@ namespace KissU.Core.EventBusKafka
         /// <summary>
         /// Inject dependent third-party components
         /// </summary>
-        /// <param name="builder"></param>
+        /// <param name="builder">构建器包装</param>
         protected override void RegisterBuilder(ContainerBuilderWrapper builder)
         {
             base.RegisterBuilder(builder);
             UseKafkaMQTransport(builder).AddKafkaMQAdapt(builder);
         }
 
-        public  EventBusKafkaModule UseKafkaMQTransport(ContainerBuilderWrapper builder)
+        /// <summary>
+        /// Uses the kafka mq transport.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <returns>EventBusKafkaModule.</returns>
+        public EventBusKafkaModule UseKafkaMQTransport(ContainerBuilderWrapper builder)
         {
             AppConfig.Options = new KafkaOptions();
             var section = CPlatform.AppConfig.GetSection("EventBus_Kafka");
@@ -56,13 +70,24 @@ namespace KissU.Core.EventBusKafka
             return this;
         }
 
-        public  ContainerBuilderWrapper UseKafkaMQEventAdapt(ContainerBuilderWrapper builder, Func<IServiceProvider, ISubscriptionAdapt> adapt)
+        /// <summary>
+        /// Uses the kafka mq event adapt.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="adapt">The adapt.</param>
+        /// <returns>ContainerBuilderWrapper.</returns>
+        public ContainerBuilderWrapper UseKafkaMQEventAdapt(ContainerBuilderWrapper builder, Func<IServiceProvider, ISubscriptionAdapt> adapt)
         {
             builder.RegisterAdapter(adapt);
             return builder;
         }
 
-        public  EventBusKafkaModule AddKafkaMQAdapt(ContainerBuilderWrapper builder)
+        /// <summary>
+        /// Adds the kafka mq adapt.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <returns>EventBusKafkaModule.</returns>
+        public EventBusKafkaModule AddKafkaMQAdapt(ContainerBuilderWrapper builder)
         {
               UseKafkaMQEventAdapt(builder,provider =>
              new KafkaSubscriptionAdapt(

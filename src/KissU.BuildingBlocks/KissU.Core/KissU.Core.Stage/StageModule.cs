@@ -15,19 +15,36 @@ using Newtonsoft.Json.Serialization;
 
 namespace KissU.Core.Stage
 {
+    /// <summary>
+    /// StageModule.
+    /// Implements the <see cref="KissU.Core.KestrelHttpServer.KestrelHttpModule" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.KestrelHttpServer.KestrelHttpModule" />
     public class StageModule : KestrelHttpModule
     {
         private IWebServerListener _listener;
+        /// <summary>
+        /// Initializes the specified context.
+        /// </summary>
+        /// <param name="context">The context.</param>
         public override void Initialize(AppModuleContext context)
         {
             _listener = context.ServiceProvoider.GetInstances<IWebServerListener>();
         }
 
+        /// <summary>
+        /// Registers the builder.
+        /// </summary>
+        /// <param name="context">The context.</param>
         public override void RegisterBuilder(WebHostContext context)
         {  
             _listener.Listen(context);
         }
 
+        /// <summary>
+        /// Initializes the specified context.
+        /// </summary>
+        /// <param name="context">The context.</param>
         public override void Initialize(ApplicationInitializationContext context)
         {
             var policy = AppConfig.Options.AccessPolicy;
@@ -36,7 +53,7 @@ namespace KissU.Core.Stage
                 context.Builder.UseCors(builder =>
                 {
                     if(policy.Origins!=null)
-                    builder.WithOrigins(policy.Origins);
+                        builder.WithOrigins(policy.Origins);
                     if (policy.AllowAnyHeader)
                         builder.AllowAnyHeader();
                     if (policy.AllowAnyMethod)
@@ -49,6 +66,10 @@ namespace KissU.Core.Stage
             }
         }
 
+        /// <summary>
+        /// Registers the builder.
+        /// </summary>
+        /// <param name="context">The context.</param>
         public override void RegisterBuilder(ConfigurationContext context)
         {
             var apiConfig = AppConfig.Options.ApiGetWay;
@@ -93,6 +114,10 @@ namespace KissU.Core.Stage
             context.Services.AddFilters(typeof(IPFilterAttribute));
         }
 
+        /// <summary>
+        /// Inject dependent third-party components
+        /// </summary>
+        /// <param name="builder">The builder.</param>
         protected override void RegisterBuilder(ContainerBuilderWrapper builder)
         {
             CPlatform.AppConfig.ServerOptions.DisableServiceRegistration = true;

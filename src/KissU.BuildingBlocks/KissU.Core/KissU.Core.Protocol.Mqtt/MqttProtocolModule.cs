@@ -16,8 +16,17 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.Protocol.Mqtt
 {
+    /// <summary>
+    /// MqttProtocolModule.
+    /// Implements the <see cref="KissU.Core.CPlatform.Module.EnginePartModule" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Module.EnginePartModule" />
     public class MqttProtocolModule : EnginePartModule
     {
+        /// <summary>
+        /// Initializes the specified context.
+        /// </summary>
+        /// <param name="context">The context.</param>
         public override void Initialize(AppModuleContext context)
         {
             base.Initialize(context);
@@ -26,7 +35,7 @@ namespace KissU.Core.Protocol.Mqtt
         /// <summary>
         /// Inject dependent third-party components
         /// </summary>
-        /// <param name="builder"></param>
+        /// <param name="builder">构建器包装</param>
         protected override void RegisterBuilder(ContainerBuilderWrapper builder)
         {
             base.RegisterBuilder(builder);

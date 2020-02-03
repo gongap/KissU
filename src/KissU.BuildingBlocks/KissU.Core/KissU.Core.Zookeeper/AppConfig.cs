@@ -2,8 +2,14 @@
 
 namespace KissU.Core.Zookeeper
 {
-   public class AppConfig
+    /// <summary>
+    /// AppConfig.
+    /// </summary>
+    public class AppConfig
     {
+        /// <summary>
+        /// Gets or sets the configuration.
+        /// </summary>
         public static IConfigurationRoot Configuration { get; set; }
     }
 }

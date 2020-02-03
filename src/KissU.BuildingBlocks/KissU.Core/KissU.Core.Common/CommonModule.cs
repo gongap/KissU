@@ -2,7 +2,12 @@
 
 namespace KissU.Core.Common
 {
-    public  class CommonModule:SystemModule
+    /// <summary>
+    /// CommonModule.
+    /// Implements the <see cref="KissU.Core.CPlatform.Module.SystemModule" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Module.SystemModule" />
+    public class CommonModule:SystemModule
     {
     }
 }

@@ -23,8 +23,17 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.Consul
 {
+    /// <summary>
+    /// ConsulModule.
+    /// Implements the <see cref="KissU.Core.CPlatform.Module.EnginePartModule" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Module.EnginePartModule" />
     public class ConsulModule : EnginePartModule
     {
+        /// <summary>
+        /// Initializes the specified context.
+        /// </summary>
+        /// <param name="context">The context.</param>
         public override void Initialize(AppModuleContext context)
         {
             base.Initialize(context);
@@ -33,7 +42,7 @@ namespace KissU.Core.Consul
         /// <summary>
         /// Inject dependent third-party components
         /// </summary>
-        /// <param name="builder"></param>
+        /// <param name="builder">构建器包装</param>
         protected override void RegisterBuilder(ContainerBuilderWrapper builder)
         {
             base.RegisterBuilder(builder);
@@ -49,6 +58,12 @@ namespace KissU.Core.Consul
               .UseConsulMqttRouteManager(builder, configInfo);
         }
 
+        /// <summary>
+        /// Uses the consul route manager.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="configInfo">The configuration information.</param>
+        /// <returns>ConsulModule.</returns>
         public ConsulModule UseConsulRouteManager(ContainerBuilderWrapper builder, ConfigInfo configInfo)
         {
             UseRouteManager(builder, provider =>
@@ -64,6 +79,12 @@ namespace KissU.Core.Consul
             return this;
         }
 
+        /// <summary>
+        /// Uses the consul cache manager.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="configInfo">The configuration information.</param>
+        /// <returns>ConsulModule.</returns>
         public ConsulModule UseConsulCacheManager(ContainerBuilderWrapper builder, ConfigInfo configInfo)
         {
             UseCacheManager(builder, provider =>
@@ -99,6 +120,12 @@ namespace KissU.Core.Consul
             return this;
         }
 
+        /// <summary>
+        /// Uses the consul service subscribe manager.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="configInfo">The configuration information.</param>
+        /// <returns>ConsulModule.</returns>
         public ConsulModule UseConsulServiceSubscribeManager(ContainerBuilderWrapper builder, ConfigInfo configInfo)
         {
             UseSubscribeManager(builder, provider => new ConsulServiceSubscribeManager(
@@ -112,6 +139,12 @@ namespace KissU.Core.Consul
             return this;
         }
 
+        /// <summary>
+        /// Uses the consul MQTT route manager.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="configInfo">The configuration information.</param>
+        /// <returns>ConsulModule.</returns>
         public ConsulModule UseConsulMqttRouteManager(ContainerBuilderWrapper builder, ConfigInfo configInfo)
         {
             UseMqttRouteManager(builder, provider =>
@@ -130,8 +163,9 @@ namespace KissU.Core.Consul
         /// <summary>
         /// 设置使用基于Consul的Watch机制
         /// </summary>
-        /// <param name="builder"></param>
-        /// <returns></returns>
+        /// <param name="builder">The builder.</param>
+        /// <param name="configInfo">The configuration information.</param>
+        /// <returns>ConsulModule.</returns>
         public ConsulModule UseConsulWatch(ContainerBuilderWrapper builder, ConfigInfo configInfo)
         {
             builder.Register(provider =>
@@ -141,18 +175,34 @@ namespace KissU.Core.Consul
             return this;
         }
 
+        /// <summary>
+        /// Uses the consul address selector.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <returns>ConsulModule.</returns>
         public ConsulModule UseConsulAddressSelector(ContainerBuilderWrapper builder)
         {
             builder.RegisterType<ConsulRandomAddressSelector>().As<IConsulAddressSelector>().SingleInstance();
             return this;
         }
 
+        /// <summary>
+        /// Uses the health check.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <returns>ConsulModule.</returns>
         public ConsulModule UseHealthCheck(ContainerBuilderWrapper builder)
         {
             builder.RegisterType<DefaultHealthCheckService>().As<IHealthCheckService>().SingleInstance();
             return this;
         }
 
+        /// <summary>
+        /// Uses the counl client provider.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="configInfo">The configuration information.</param>
+        /// <returns>ConsulModule.</returns>
         public ConsulModule UseCounlClientProvider(ContainerBuilderWrapper builder, ConfigInfo configInfo)
         {
             UseCounlClientProvider(builder, provider =>
@@ -164,36 +214,72 @@ namespace KissU.Core.Consul
             return this;
         }
 
+        /// <summary>
+        /// Uses the subscribe manager.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="factory">The factory.</param>
+        /// <returns>ContainerBuilderWrapper.</returns>
         public ContainerBuilderWrapper UseSubscribeManager(ContainerBuilderWrapper builder, Func<IServiceProvider, IServiceSubscribeManager> factory)
         {
             builder.RegisterAdapter(factory).InstancePerLifetimeScope();
             return builder;
         }
 
+        /// <summary>
+        /// Uses the command manager.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="factory">The factory.</param>
+        /// <returns>ContainerBuilderWrapper.</returns>
         public ContainerBuilderWrapper UseCommandManager(ContainerBuilderWrapper builder, Func<IServiceProvider, IServiceCommandManager> factory)
         {
             builder.RegisterAdapter(factory).InstancePerLifetimeScope();
             return builder;
         }
 
+        /// <summary>
+        /// Uses the cache manager.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="factory">The factory.</param>
+        /// <returns>ContainerBuilderWrapper.</returns>
         public ContainerBuilderWrapper UseCacheManager(ContainerBuilderWrapper builder, Func<IServiceProvider, IServiceCacheManager> factory)
         {
             builder.RegisterAdapter(factory).InstancePerLifetimeScope();
             return builder;
         }
 
+        /// <summary>
+        /// Uses the route manager.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="factory">The factory.</param>
+        /// <returns>ContainerBuilderWrapper.</returns>
         public ContainerBuilderWrapper UseRouteManager(ContainerBuilderWrapper builder, Func<IServiceProvider, IServiceRouteManager> factory)
         {
             builder.RegisterAdapter(factory).InstancePerLifetimeScope();
             return builder;
         }
 
+        /// <summary>
+        /// Uses the MQTT route manager.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="factory">The factory.</param>
+        /// <returns>ContainerBuilderWrapper.</returns>
         public ContainerBuilderWrapper UseMqttRouteManager(ContainerBuilderWrapper builder, Func<IServiceProvider, IMqttServiceRouteManager> factory)
         {
             builder.RegisterAdapter(factory).InstancePerLifetimeScope();
             return builder;
         }
 
+        /// <summary>
+        /// Uses the counl client provider.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="factory">The factory.</param>
+        /// <returns>ContainerBuilderWrapper.</returns>
         public ContainerBuilderWrapper UseCounlClientProvider(ContainerBuilderWrapper builder, Func<IServiceProvider, IConsulClientProvider> factory)
         {
             builder.RegisterAdapter(factory).InstancePerLifetimeScope();

@@ -2,13 +2,22 @@
 
 namespace KissU.Core.Swagger
 {
-   public  class AppConfig
+    /// <summary>
+    /// AppConfig.
+    /// </summary>
+    public class AppConfig
     {
+        /// <summary>
+        /// Gets the swagger options.
+        /// </summary>
         public static Info SwaggerOptions
         {
             get; internal set;
         }
 
+        /// <summary>
+        /// Gets the swagger configuration.
+        /// </summary>
         public static DocumentConfiguration SwaggerConfig
         {
             get; internal set;
