@@ -15,7 +15,7 @@ namespace KissU.Core.CPlatform.Support
         ValueTask<ServiceCommand> GetCommand(string serviceId);
 
         /// <summary>
-        ///运行.
+        /// 运行.
         /// </summary>
         /// <param name="text">The text.</param>
         /// <param name="InjectionNamespaces">The injection namespaces.</param>

@@ -22,7 +22,7 @@ namespace KissU.Core.CPlatform.EventBus
         public event EventHandler<ValueTuple<string, string>> OnEventRemoved;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="InMemoryEventBusSubscriptionsManager"/> class.
+        /// Initializes a new instance of the <see cref="InMemoryEventBusSubscriptionsManager" /> class.
         /// </summary>
         public InMemoryEventBusSubscriptionsManager()
         {

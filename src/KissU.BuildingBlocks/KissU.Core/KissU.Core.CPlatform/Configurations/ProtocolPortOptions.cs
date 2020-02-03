@@ -1,7 +1,7 @@
 ﻿namespace KissU.Core.CPlatform.Configurations
 {
     /// <summary>
-    ///协议端口选项。
+    /// 协议端口选项。
     /// </summary>
     public class ProtocolPortOptions
     {

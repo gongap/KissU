@@ -10,7 +10,7 @@ namespace KissU.Core.CPlatform.Serialization.Implementation
         private readonly ISerializer<string> _serializer;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="StringObjectSerializer"/> class.
+        /// Initializes a new instance of the <see cref="StringObjectSerializer" /> class.
         /// </summary>
         /// <param name="serializer">The serializer.</param>
         public StringObjectSerializer(ISerializer<string> serializer)

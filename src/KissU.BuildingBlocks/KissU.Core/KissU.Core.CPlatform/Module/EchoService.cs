@@ -24,7 +24,7 @@ namespace KissU.Core.CPlatform.Module
         private readonly IServiceHeartbeatManager _serviceHeartbeatManager;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EchoService"/> class.
+        /// Initializes a new instance of the <see cref="EchoService" /> class.
         /// </summary>
         /// <param name="hashAlgorithm">The hash algorithm.</param>
         /// <param name="serviceRouteProvider">The service route provider.</param>

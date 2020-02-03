@@ -2,8 +2,18 @@
 
 namespace KissU.Core.CPlatform.Diagnostics
 {
-   public class TransportErrorEventData : EventData
+    /// <summary>
+    /// TransportErrorEventData.
+    /// Implements the <see cref="KissU.Core.CPlatform.Diagnostics.EventData" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Diagnostics.EventData" />
+    public class TransportErrorEventData : EventData
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TransportErrorEventData"/> class.
+        /// </summary>
+        /// <param name="message">The message.</param>
+        /// <param name="ex">The ex.</param>
         public TransportErrorEventData(DiagnosticMessage message,Exception ex)
           : base(Guid.Parse(message.Id))
         {
@@ -12,10 +22,19 @@ namespace KissU.Core.CPlatform.Diagnostics
         }
 
 
+        /// <summary>
+        /// Gets or sets the exception.
+        /// </summary>
         public Exception Exception { get; set; }
 
+        /// <summary>
+        /// Gets or sets the headers.
+        /// </summary>
         public TracingHeaders Headers { get; set; }
 
+        /// <summary>
+        /// Gets or sets the message.
+        /// </summary>
         public DiagnosticMessage Message { get; set; }
     }
 }

@@ -4,10 +4,19 @@ using System.Linq;
 
 namespace KissU.Core.CPlatform.Diagnostics
 {
+    /// <summary>
+    /// TracingHeaders.
+    /// Implements the <see cref="System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String, System.String}}" />
+    /// </summary>
+    /// <seealso cref="System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String, System.String}}" />
     public class TracingHeaders : IEnumerable<KeyValuePair<string, string>>
     {
         private List<KeyValuePair<string, string>> _dataStore = new List<KeyValuePair<string, string>>();
 
+        /// <summary>
+        /// Returns an enumerator that iterates through the collection.
+        /// </summary>
+        /// <returns>An enumerator that can be used to iterate through the collection.</returns>
         public IEnumerator<KeyValuePair<string, string>> GetEnumerator()
         {
             return _dataStore.GetEnumerator();
@@ -18,21 +27,38 @@ namespace KissU.Core.CPlatform.Diagnostics
             return GetEnumerator();
         }
 
+        /// <summary>
+        /// Adds the specified name.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="value">The value.</param>
         public void Add(string name, string value)
         {
             _dataStore.Add(new KeyValuePair<string, string>(name, value));
         }
 
+        /// <summary>
+        /// Determines whether this instance contains the object.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <returns><c>true</c> if [contains] [the specified name]; otherwise, <c>false</c>.</returns>
         public bool Contains(string name)
         {
             return _dataStore != null && _dataStore.Any(x => x.Key == name);
         }
 
+        /// <summary>
+        /// Removes the specified name.
+        /// </summary>
+        /// <param name="name">The name.</param>
         public void Remove(string name)
         {
             _dataStore?.RemoveAll(x => x.Key == name);
         }
 
+        /// <summary>
+        /// Cleaars this instance.
+        /// </summary>
         public void Cleaar()
         {
             _dataStore?.Clear();

@@ -42,7 +42,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.HealthChecks.Implementation
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DefaultHealthCheckService"/> class.
+        /// Initializes a new instance of the <see cref="DefaultHealthCheckService" /> class.
         /// 默认心跳检查服务(每10秒会检查一次服务状态，在构造函数中添加服务管理事件)
         /// </summary>
         /// <param name="serviceRouteManager">The service route manager.</param>
@@ -250,7 +250,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.HealthChecks.Implementation
         protected class MonitorEntry
         {
             /// <summary>
-            /// Initializes a new instance of the <see cref="MonitorEntry"/> class.
+            /// Initializes a new instance of the <see cref="MonitorEntry" /> class.
             /// </summary>
             /// <param name="addressModel">The address model.</param>
             /// <param name="health">if set to <c>true</c> [health].</param>
@@ -271,7 +271,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.HealthChecks.Implementation
             public EndPoint EndPoint { get; set; }
 
             /// <summary>
-            /// Gets or sets a value indicating whether this <see cref="MonitorEntry"/> is health.
+            /// Gets or sets a value indicating whether this <see cref="MonitorEntry" /> is health.
             /// </summary>
             public bool Health { get; set; }
         }

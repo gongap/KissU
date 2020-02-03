@@ -12,7 +12,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
         private static readonly IEnumerable<string> _supportedMethods = new[] { "PUT" };
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="HttpPutAttribute"/> class.
+        /// Initializes a new instance of the <see cref="HttpPutAttribute" /> class.
         /// </summary>
         public HttpPutAttribute()
             : base(_supportedMethods)
@@ -20,7 +20,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="HttpPutAttribute"/> class.
+        /// Initializes a new instance of the <see cref="HttpPutAttribute" /> class.
         /// </summary>
         /// <param name="isRegisterMetadata">if set to <c>true</c> [is register metadata].</param>
         public HttpPutAttribute(bool isRegisterMetadata)

@@ -12,7 +12,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
         private static readonly IEnumerable<string> _supportedMethods = new[] { "PATCH" };
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="HttpPatchAttribute"/> class.
+        /// Initializes a new instance of the <see cref="HttpPatchAttribute" /> class.
         /// </summary>
         public HttpPatchAttribute()
             : base(_supportedMethods)
@@ -20,7 +20,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="HttpPatchAttribute"/> class.
+        /// Initializes a new instance of the <see cref="HttpPatchAttribute" /> class.
         /// </summary>
         /// <param name="isRegisterMetadata">if set to <c>true</c> [is register metadata].</param>
         public HttpPatchAttribute(bool isRegisterMetadata)

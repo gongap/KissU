@@ -32,7 +32,7 @@ namespace KissU.Core.CPlatform.Support.Implementation
         private readonly IEnumerable<IExceptionFilter> exceptionFilters = new List<IExceptionFilter>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BreakeRemoteInvokeService"/> class.
+        /// Initializes a new instance of the <see cref="BreakeRemoteInvokeService" /> class.
         /// </summary>
         /// <param name="hashAlgorithm">The hash algorithm.</param>
         /// <param name="commandProvider">The command provider.</param>

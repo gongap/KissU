@@ -20,7 +20,7 @@ namespace KissU.Core.CPlatform.Engines.Implementation
         private DateTime _lastBuildTime = DateTime.Now;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DefaultServiceEngineBuilder"/> class.
+        /// Initializes a new instance of the <see cref="DefaultServiceEngineBuilder" /> class.
         /// </summary>
         /// <param name="serviceEngine">The service engine.</param>
         /// <param name="logger">The logger.</param>

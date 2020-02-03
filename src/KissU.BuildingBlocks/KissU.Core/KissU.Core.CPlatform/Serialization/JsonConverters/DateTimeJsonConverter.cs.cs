@@ -16,7 +16,7 @@ namespace KissU.Core.CPlatform.Serialization.JsonConverters
         private readonly string _dateFormatString;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DateTimeJsonConverter"/> class.
+        /// Initializes a new instance of the <see cref="DateTimeJsonConverter" /> class.
         /// </summary>
         public DateTimeJsonConverter()
         {
@@ -24,7 +24,7 @@ namespace KissU.Core.CPlatform.Serialization.JsonConverters
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DateTimeJsonConverter"/> class.
+        /// Initializes a new instance of the <see cref="DateTimeJsonConverter" /> class.
         /// </summary>
         /// <param name="dateFormatString">The date format string.</param>
         public DateTimeJsonConverter(string dateFormatString)

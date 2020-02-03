@@ -9,7 +9,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
     public class ServiceBundleAttribute : Attribute
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServiceBundleAttribute"/> class.
+        /// Initializes a new instance of the <see cref="ServiceBundleAttribute" /> class.
         /// </summary>
         /// <param name="routeTemplate">The route template.</param>
         /// <param name="isPrefix">if set to <c>true</c> [is prefix].</param>

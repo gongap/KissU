@@ -9,7 +9,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
     public class ServiceAttribute : ServiceDescriptorAttribute
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServiceAttribute"/> class.
+        /// Initializes a new instance of the <see cref="ServiceAttribute" /> class.
         /// </summary>
         public ServiceAttribute()
         {

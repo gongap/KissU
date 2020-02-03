@@ -8,7 +8,7 @@ namespace KissU.Core.CPlatform.EventBus.Events
     public class IntegrationEvent
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="IntegrationEvent"/> class.
+        /// Initializes a new instance of the <see cref="IntegrationEvent" /> class.
         /// </summary>
         public IntegrationEvent()
         {
@@ -17,7 +17,7 @@ namespace KissU.Core.CPlatform.EventBus.Events
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="IntegrationEvent"/> class.
+        /// Initializes a new instance of the <see cref="IntegrationEvent" /> class.
         /// </summary>
         /// <param name="integrationEvent">The integration event.</param>
         public IntegrationEvent(IntegrationEvent integrationEvent)

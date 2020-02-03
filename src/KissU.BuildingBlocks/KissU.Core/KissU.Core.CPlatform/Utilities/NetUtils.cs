@@ -9,7 +9,13 @@ namespace KissU.Core.CPlatform.Utilities
     /// </summary>
     public class NetUtils
     {
+        /// <summary>
+        /// The localhost
+        /// </summary>
         public const string LOCALHOST = "127.0.0.1";
+        /// <summary>
+        /// The anyhost
+        /// </summary>
         public const string ANYHOST = "0.0.0.0";
         private const int MIN_PORT = 0;
         private const int MAX_PORT = 65535;

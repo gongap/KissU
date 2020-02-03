@@ -25,7 +25,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
         private readonly IAuthorizationFilter _authorizationFilter;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DefaultServiceExecutor"/> class.
+        /// Initializes a new instance of the <see cref="DefaultServiceExecutor" /> class.
         /// </summary>
         /// <param name="serviceEntryLocate">The service entry locate.</param>
         /// <param name="serviceRouteProvider">The service route provider.</param>

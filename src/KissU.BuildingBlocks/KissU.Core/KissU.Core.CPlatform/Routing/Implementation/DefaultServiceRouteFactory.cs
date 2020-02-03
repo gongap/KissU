@@ -17,7 +17,7 @@ namespace KissU.Core.CPlatform.Routing.Implementation
         private readonly ConcurrentDictionary<string, AddressModel> _addressModel = new ConcurrentDictionary<string, AddressModel>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DefaultServiceRouteFactory"/> class.
+        /// Initializes a new instance of the <see cref="DefaultServiceRouteFactory" /> class.
         /// </summary>
         /// <param name="serializer">The serializer.</param>
         public DefaultServiceRouteFactory(ISerializer<string> serializer)

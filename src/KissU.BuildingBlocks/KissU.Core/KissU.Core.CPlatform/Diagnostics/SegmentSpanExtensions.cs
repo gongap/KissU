@@ -2,8 +2,16 @@
 
 namespace KissU.Core.CPlatform.Diagnostics
 {
-   public static class SegmentSpanExtensions
+    /// <summary>
+    /// SegmentSpanExtensions.
+    /// </summary>
+    public static class SegmentSpanExtensions
     {
+        /// <summary>
+        /// Errors the occurred.
+        /// </summary>
+        /// <param name="span">The span.</param>
+        /// <param name="exception">The exception.</param>
         public static void ErrorOccurred(this SegmentSpan span, Exception exception = null)
         {
             if (span == null)

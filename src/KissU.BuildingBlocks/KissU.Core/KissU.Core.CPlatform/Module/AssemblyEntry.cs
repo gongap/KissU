@@ -134,6 +134,7 @@ namespace KissU.Core.CPlatform.Module
         /// </summary>
         /// <param name="controllerType">Type of the controller.</param>
         /// <returns>BusinessModule.</returns>
+        /// <exception cref="Exception"></exception>
         public BusinessModule GetBusinessModuleByControllerType(Type controllerType)
         {
             BusinessModule businessModule = AbstractModules.Find(m => controllerType.Namespace.Contains(m.GetType().Namespace) == true) as BusinessModule;

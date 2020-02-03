@@ -18,12 +18,24 @@
   
 namespace KissU.Core.CPlatform.Diagnostics
 {
+    /// <summary>
+    /// Components.
+    /// </summary>
     public static class Components
     {
+        /// <summary>
+        /// The RPC transport
+        /// </summary>
         public static readonly StringOrIntValue RpcTransport = new StringOrIntValue("RPCTransport");
 
+        /// <summary>
+        /// The cache intercept
+        /// </summary>
         public static readonly StringOrIntValue CacheIntercept = new StringOrIntValue("CacheIntercept");
 
+        /// <summary>
+        /// The intercept
+        /// </summary>
         public static readonly StringOrIntValue Intercept = new StringOrIntValue("Intercept");
     }
         

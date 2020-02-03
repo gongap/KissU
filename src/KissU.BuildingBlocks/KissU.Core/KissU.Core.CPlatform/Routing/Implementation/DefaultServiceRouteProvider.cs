@@ -27,7 +27,7 @@ namespace KissU.Core.CPlatform.Routing.Implementation
         private readonly IServiceTokenGenerator _serviceTokenGenerator;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DefaultServiceRouteProvider"/> class.
+        /// Initializes a new instance of the <see cref="DefaultServiceRouteProvider" /> class.
         /// </summary>
         /// <param name="serviceRouteManager">The service route manager.</param>
         /// <param name="logger">The logger.</param>

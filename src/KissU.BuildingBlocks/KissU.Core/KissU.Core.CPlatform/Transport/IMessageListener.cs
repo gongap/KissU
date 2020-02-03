@@ -8,6 +8,7 @@ namespace KissU.Core.CPlatform.Transport
     /// </summary>
     /// <param name="sender">消息发送者。</param>
     /// <param name="message">接收到的消息。</param>
+    /// <returns>Task.</returns>
     public delegate Task ReceivedDelegate(IMessageSender sender, TransportMessage message);
 
     /// <summary>
@@ -19,7 +20,7 @@ namespace KissU.Core.CPlatform.Transport
         /// 接收到消息的事件。
         /// </summary>
         event ReceivedDelegate Received;
- 
+
         /// <summary>
         /// 触发接收到消息事件。
         /// </summary>

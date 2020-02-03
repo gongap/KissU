@@ -9,7 +9,7 @@ namespace KissU.Core.CPlatform
     public class IdentifyAttribute : Attribute
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="IdentifyAttribute"/> class.
+        /// Initializes a new instance of the <see cref="IdentifyAttribute" /> class.
         /// </summary>
         /// <param name="name">The name.</param>
         public IdentifyAttribute(CommunicationProtocol name)
@@ -20,7 +20,6 @@ namespace KissU.Core.CPlatform
         /// <summary>
         /// Gets or sets the name.
         /// </summary>
-        /// <value>The name.</value>
         public CommunicationProtocol Name { get; set; }
     }
 }

@@ -18,7 +18,7 @@ namespace KissU.Core.CPlatform.Validation.Implementation
         private readonly ITypeConvertibleService _typeConvertibleService;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DefaultValidationProcessor"/> class.
+        /// Initializes a new instance of the <see cref="DefaultValidationProcessor" /> class.
         /// </summary>
         /// <param name="typeConvertibleService">The type convertible service.</param>
         public DefaultValidationProcessor(ITypeConvertibleService typeConvertibleService)
@@ -31,6 +31,7 @@ namespace KissU.Core.CPlatform.Validation.Implementation
         /// </summary>
         /// <param name="parameterInfo">参数信息</param>
         /// <param name="value">值</param>
+        /// <exception cref="KissU.Core.CPlatform.Exceptions.ValidateException"></exception>
         /// <exception cref="ValidateException">校验异常</exception>
         public void Validate(ParameterInfo parameterInfo, object value)
         {

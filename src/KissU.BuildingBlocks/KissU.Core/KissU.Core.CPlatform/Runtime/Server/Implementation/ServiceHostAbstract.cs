@@ -24,7 +24,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
         protected IMessageListener MessageListener { get; } = new MessageListener();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServiceHostAbstract"/> class.
+        /// Initializes a new instance of the <see cref="ServiceHostAbstract" /> class.
         /// </summary>
         /// <param name="serviceExecutor">The service executor.</param>
         protected ServiceHostAbstract(IServiceExecutor serviceExecutor)

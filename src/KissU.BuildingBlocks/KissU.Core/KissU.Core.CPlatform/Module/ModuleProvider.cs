@@ -18,7 +18,7 @@ namespace KissU.Core.CPlatform.Module
         private readonly ILogger<ModuleProvider> _logger;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ModuleProvider"/> class.
+        /// Initializes a new instance of the <see cref="ModuleProvider" /> class.
         /// </summary>
         /// <param name="modules">The modules.</param>
         /// <param name="virtualPaths">The virtual paths.</param>

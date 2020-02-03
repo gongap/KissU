@@ -11,7 +11,7 @@ namespace KissU.Core.CPlatform.Serialization.Implementation
         private readonly ISerializer<string> _serializer;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="StringByteArraySerializer"/> class.
+        /// Initializes a new instance of the <see cref="StringByteArraySerializer" /> class.
         /// </summary>
         /// <param name="serializer">The serializer.</param>
         public StringByteArraySerializer(ISerializer<string> serializer)

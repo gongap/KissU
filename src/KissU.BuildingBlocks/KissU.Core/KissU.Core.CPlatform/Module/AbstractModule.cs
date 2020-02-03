@@ -54,7 +54,7 @@ namespace KissU.Core.CPlatform.Module
         public List<Component> Components { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AbstractModule"/> class.
+        /// Initializes a new instance of the <see cref="AbstractModule" /> class.
         /// 初始化
         /// </summary>
         public AbstractModule()
@@ -76,6 +76,7 @@ namespace KissU.Core.CPlatform.Module
         /// 重写将注册添加到容器，判断组件是否可用，并注册模块组件
         /// </summary>
         /// <param name="builder">The builder through which components can be registered.</param>
+        /// <exception cref="KissU.Core.CPlatform.Exceptions.CPlatformException"></exception>
         /// <exception cref="CPlatformException">基础异常类</exception>
         /// <remarks>Note that the ContainerBuilder parameter is unique to this module.</remarks>
         protected override void Load(ContainerBuilder builder)
@@ -172,6 +173,8 @@ namespace KissU.Core.CPlatform.Module
         /// <summary>
         /// 验证模块
         /// </summary>
+        /// <exception cref="KissU.Core.CPlatform.Exceptions.CPlatformException">模块属性：Identifier，ModuleName，TypeName，Title 是必须的不能为空！</exception>
+        /// <exception cref="KissU.Core.CPlatform.Exceptions.CPlatformException">模块属性：ModuleName 必须为字母开头数字或下划线的组合！</exception>
         /// <exception cref="CPlatformException">模块属性：Identifier，ModuleName，TypeName，Title 是必须的不能为空！</exception>
         /// <exception cref="CPlatformException">模块属性：ModuleName 必须为字母开头数字或下划线的组合！</exception>
         public virtual void ValidateModule()

@@ -22,7 +22,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
         private readonly ConcurrentDictionary<string, Lazy<AddressEntry>> _concurrent = new ConcurrentDictionary<string, Lazy<AddressEntry>>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FairPollingAdrSelector"/> class.
+        /// Initializes a new instance of the <see cref="FairPollingAdrSelector" /> class.
         /// </summary>
         /// <param name="serviceRouteManager">The service route manager.</param>
         /// <param name="healthCheckService">The health check service.</param>
@@ -87,7 +87,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
             private readonly AddressModel[] _address;
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="AddressEntry"/> class.
+            /// Initializes a new instance of the <see cref="AddressEntry" /> class.
             /// </summary>
             /// <param name="address">The address.</param>
             public AddressEntry(IEnumerable<AddressModel> address)

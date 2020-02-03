@@ -18,7 +18,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
         private readonly CPlatformContainer _serviceProvider;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AttributeServiceEntryProvider"/> class.
+        /// Initializes a new instance of the <see cref="AttributeServiceEntryProvider" /> class.
         /// </summary>
         /// <param name="types">The types.</param>
         /// <param name="clrServiceEntryFactory">The color service entry factory.</param>

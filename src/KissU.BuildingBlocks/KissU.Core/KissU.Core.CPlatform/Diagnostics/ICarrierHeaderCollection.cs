@@ -20,8 +20,18 @@ using System.Collections.Generic;
 
 namespace KissU.Core.CPlatform.Diagnostics
 {
+    /// <summary>
+    /// Interface ICarrierHeaderCollection
+    /// Implements the <see cref="System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String, System.String}}" />
+    /// </summary>
+    /// <seealso cref="System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String, System.String}}" />
     public interface ICarrierHeaderCollection : IEnumerable<KeyValuePair<string, string>>
     {
+        /// <summary>
+        /// Adds the specified key.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="value">The value.</param>
         void Add(string key, string value);
     }
 }

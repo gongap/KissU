@@ -21,14 +21,14 @@ namespace KissU.Core.CPlatform.Ioc
         public string Version { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ModuleNameAttribute"/> class.
+        /// Initializes a new instance of the <see cref="ModuleNameAttribute" /> class.
         /// </summary>
         public ModuleNameAttribute()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ModuleNameAttribute"/> class.
+        /// Initializes a new instance of the <see cref="ModuleNameAttribute" /> class.
         /// </summary>
         /// <param name="moduleName">Name of the module.</param>
         public ModuleNameAttribute(string moduleName)

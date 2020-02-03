@@ -18,7 +18,7 @@ namespace KissU.Core.CPlatform.Routing.Implementation
         private EventHandler<ServiceRouteChangedEventArgs> _changed;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServiceRouteManagerBase"/> class.
+        /// Initializes a new instance of the <see cref="ServiceRouteManagerBase" /> class.
         /// </summary>
         /// <param name="serializer">The serializer.</param>
         protected ServiceRouteManagerBase(ISerializer<string> serializer)

@@ -14,7 +14,7 @@ namespace KissU.Core.CPlatform.Runtime.Server
         /// </summary>
         /// <param name="sender">消息发送者。</param>
         /// <param name="message">调用消息。</param>
-        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
+        /// <returns>A <see cref="Task" /> representing the asynchronous operation.</returns>
         Task ExecuteAsync(IMessageSender sender, TransportMessage message);
     }
 }

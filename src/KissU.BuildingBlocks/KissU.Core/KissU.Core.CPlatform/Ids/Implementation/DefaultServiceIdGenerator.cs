@@ -13,7 +13,7 @@ namespace KissU.Core.CPlatform.Ids.Implementation
         private readonly ILogger<DefaultServiceIdGenerator> _logger;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DefaultServiceIdGenerator"/> class.
+        /// Initializes a new instance of the <see cref="DefaultServiceIdGenerator" /> class.
         /// </summary>
         /// <param name="logger">The logger.</param>
         public DefaultServiceIdGenerator(ILogger<DefaultServiceIdGenerator> logger)
@@ -28,6 +28,7 @@ namespace KissU.Core.CPlatform.Ids.Implementation
         /// <returns>对应方法的唯一服务Id。</returns>
         /// <exception cref="ArgumentNullException">method</exception>
         /// <exception cref="ArgumentNullException">DeclaringType - 方法的定义类型不能为空。</exception>
+        /// <exception cref="ArgumentNullException">method</exception>
         public string GenerateServiceId(MethodInfo method)
         {
             if (method == null)

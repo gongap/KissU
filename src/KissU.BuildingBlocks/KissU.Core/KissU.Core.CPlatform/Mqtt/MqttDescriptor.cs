@@ -10,7 +10,7 @@ namespace KissU.Core.CPlatform.Mqtt
     public class MqttDescriptor
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="MqttDescriptor"/> class.
+        /// Initializes a new instance of the <see cref="MqttDescriptor" /> class.
         /// 初始化一个新的服务描述符。
         /// </summary>
         public MqttDescriptor()

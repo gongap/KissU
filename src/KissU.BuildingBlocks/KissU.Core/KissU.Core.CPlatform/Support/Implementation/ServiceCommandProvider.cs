@@ -21,7 +21,7 @@ namespace KissU.Core.CPlatform.Support.Implementation
         private readonly ConcurrentDictionary<string, ServiceCommand> _serviceCommand = new ConcurrentDictionary<string, ServiceCommand>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServiceCommandProvider"/> class.
+        /// Initializes a new instance of the <see cref="ServiceCommandProvider" /> class.
         /// </summary>
         /// <param name="serviceEntryManager">The service entry manager.</param>
         /// <param name="serviceProvider">The service provider.</param>
@@ -94,7 +94,7 @@ namespace KissU.Core.CPlatform.Support.Implementation
         /// 处理ServiceCommandManager控件的Add事件.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="ServiceCommandEventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="ServiceCommandEventArgs" /> instance containing the event data.</param>
         public void ServiceCommandManager_Add(object sender, ServiceCommandEventArgs e)
         {
             _serviceCommand.GetOrAdd(e.Command.ServiceId, e.Command);

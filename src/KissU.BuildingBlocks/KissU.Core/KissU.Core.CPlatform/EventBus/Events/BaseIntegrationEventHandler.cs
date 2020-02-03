@@ -21,7 +21,7 @@ namespace KissU.Core.CPlatform.EventBus.Events
         /// 已处理.
         /// </summary>
         /// <param name="context">The context.</param>
-        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
+        /// <returns>A <see cref="Task" /> representing the asynchronous operation.</returns>
         public virtual async Task Handled(EventContext context)
         {
             await Task.CompletedTask;

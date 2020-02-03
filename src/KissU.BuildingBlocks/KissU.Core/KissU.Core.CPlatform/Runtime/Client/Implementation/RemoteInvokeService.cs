@@ -25,7 +25,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.Implementation
         private readonly IHealthCheckService _healthCheckService;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RemoteInvokeService"/> class.
+        /// Initializes a new instance of the <see cref="RemoteInvokeService" /> class.
         /// </summary>
         /// <param name="hashAlgorithm">The hash algorithm.</param>
         /// <param name="addressResolver">The address resolver.</param>

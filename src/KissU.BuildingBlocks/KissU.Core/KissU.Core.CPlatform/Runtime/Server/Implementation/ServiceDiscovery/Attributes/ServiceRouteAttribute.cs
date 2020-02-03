@@ -10,7 +10,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
     public class ServiceRouteAttribute : Attribute
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServiceRouteAttribute"/> class.
+        /// Initializes a new instance of the <see cref="ServiceRouteAttribute" /> class.
         /// </summary>
         /// <param name="template">The template.</param>
         public ServiceRouteAttribute(string template)

@@ -22,12 +22,14 @@ namespace KissU.Core.CPlatform.Routing
             return (await serviceRouteManager.GetRoutesAsync()).SingleOrDefault(i => i.ServiceDescriptor.Id == serviceId);
         }
 
-       
+
 
         /// <summary>
         /// 获取地址
         /// </summary>
-        /// <returns></returns>
+        /// <param name="serviceRouteManager">The service route manager.</param>
+        /// <param name="condition">The condition.</param>
+        /// <returns>Task&lt;IEnumerable&lt;AddressModel&gt;&gt;.</returns>
         public static async Task<IEnumerable<AddressModel>> GetAddressAsync(this IServiceRouteManager serviceRouteManager, string condition = null)
         {
             var routes = await serviceRouteManager.GetRoutesAsync();
@@ -61,12 +63,25 @@ namespace KissU.Core.CPlatform.Routing
             return result.Values;
         }
 
+        /// <summary>
+        /// get routes as an asynchronous operation.
+        /// </summary>
+        /// <param name="serviceRouteManager">The service route manager.</param>
+        /// <param name="address">The address.</param>
+        /// <returns>Task&lt;IEnumerable&lt;ServiceRoute&gt;&gt;.</returns>
         public static async Task<IEnumerable<ServiceRoute>> GetRoutesAsync(this IServiceRouteManager serviceRouteManager, string address)
         {
             var routes = await serviceRouteManager.GetRoutesAsync();
             return routes.Where(p => p.Address.Any(m => m.ToString() == address));
         }
 
+        /// <summary>
+        /// get service descriptor as an asynchronous operation.
+        /// </summary>
+        /// <param name="serviceRouteManager">The service route manager.</param>
+        /// <param name="address">The address.</param>
+        /// <param name="serviceId">The service identifier.</param>
+        /// <returns>Task&lt;IEnumerable&lt;ServiceDescriptor&gt;&gt;.</returns>
         public static async Task<IEnumerable<ServiceDescriptor>> GetServiceDescriptorAsync(this IServiceRouteManager serviceRouteManager, string address, string serviceId = null)
         {
             var routes = await serviceRouteManager.GetRoutesAsync();

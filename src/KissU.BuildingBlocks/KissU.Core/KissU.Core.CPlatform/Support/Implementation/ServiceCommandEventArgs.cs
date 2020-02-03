@@ -6,7 +6,7 @@
     public class ServiceCommandEventArgs
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServiceCommandEventArgs"/> class.
+        /// Initializes a new instance of the <see cref="ServiceCommandEventArgs" /> class.
         /// </summary>
         /// <param name="serviceCommand">The service command.</param>
         public ServiceCommandEventArgs(ServiceCommandDescriptor serviceCommand)

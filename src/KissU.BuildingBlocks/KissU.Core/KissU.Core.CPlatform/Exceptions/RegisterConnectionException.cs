@@ -10,7 +10,7 @@ namespace KissU.Core.CPlatform.Exceptions
     public class RegisterConnectionException : CPlatformException
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RegisterConnectionException"/> class.
+        /// Initializes a new instance of the <see cref="RegisterConnectionException" /> class.
         /// </summary>
         /// <param name="message">异常消息。</param>
         /// <param name="innerException">内部异常。</param>

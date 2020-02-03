@@ -9,7 +9,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
     public class ServiceMetadataAttribute : ServiceDescriptorAttribute
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServiceMetadataAttribute"/> class.
+        /// Initializes a new instance of the <see cref="ServiceMetadataAttribute" /> class.
         /// </summary>
         /// <param name="name">名称。</param>
         /// <param name="data">数据。</param>

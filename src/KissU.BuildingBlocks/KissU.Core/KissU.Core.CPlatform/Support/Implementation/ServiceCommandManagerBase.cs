@@ -22,7 +22,7 @@ namespace KissU.Core.CPlatform.Support.Implementation
         private EventHandler<ServiceCommandChangedEventArgs> _changed;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServiceCommandManagerBase"/> class.
+        /// Initializes a new instance of the <see cref="ServiceCommandManagerBase" /> class.
         /// </summary>
         /// <param name="serializer">The serializer.</param>
         /// <param name="serviceEntryManager">The service entry manager.</param>

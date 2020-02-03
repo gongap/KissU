@@ -9,14 +9,14 @@ namespace KissU.Core.CPlatform.Messages
     public class TransportMessage
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="TransportMessage"/> class.
+        /// Initializes a new instance of the <see cref="TransportMessage" /> class.
         /// </summary>
         public TransportMessage()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TransportMessage"/> class.
+        /// Initializes a new instance of the <see cref="TransportMessage" /> class.
         /// </summary>
         /// <param name="content">The content.</param>
         /// <exception cref="ArgumentNullException">content</exception>
@@ -28,7 +28,7 @@ namespace KissU.Core.CPlatform.Messages
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TransportMessage"/> class.
+        /// Initializes a new instance of the <see cref="TransportMessage" /> class.
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <param name="content">The content.</param>
@@ -42,7 +42,7 @@ namespace KissU.Core.CPlatform.Messages
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TransportMessage"/> class.
+        /// Initializes a new instance of the <see cref="TransportMessage" /> class.
         /// </summary>
         /// <param name="content">The content.</param>
         /// <param name="fullName">The full name.</param>

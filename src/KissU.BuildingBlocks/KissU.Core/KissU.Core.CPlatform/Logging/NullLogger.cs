@@ -50,7 +50,7 @@ namespace KissU.Core.CPlatform.Logging
         /// <typeparam name="TState">The type of the t state.</typeparam>
         /// <param name="state">The identifier for the scope.</param>
         /// <returns>An IDisposable that ends the logical operation scope on dispose.</returns>
-        /// <exception cref="NotImplementedException">The exception that is thrown when a requested method or operation is not implemented.</exception>
+        /// <exception cref="NotImplementedException"></exception>
         public IDisposable BeginScope<TState>(TState state)
         {
             throw new NotImplementedException();

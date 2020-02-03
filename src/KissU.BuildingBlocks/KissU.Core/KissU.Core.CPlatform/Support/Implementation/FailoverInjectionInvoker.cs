@@ -14,12 +14,18 @@ namespace KissU.Core.CPlatform.Support.Implementation
     /// <seealso cref="KissU.Core.CPlatform.Support.IClusterInvoker" />
     public class FailoverInjectionInvoker : IClusterInvoker
     {
+        /// <summary>
+        /// The service command provider
+        /// </summary>
         public readonly IServiceCommandProvider _serviceCommandProvider;
+        /// <summary>
+        /// The service entry manager
+        /// </summary>
         public readonly IServiceEntryManager _serviceEntryManager;
         private readonly ITypeConvertibleService _typeConvertibleService;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FailoverInjectionInvoker"/> class.
+        /// Initializes a new instance of the <see cref="FailoverInjectionInvoker" /> class.
         /// </summary>
         /// <param name="serviceCommandProvider">The service command provider.</param>
         /// <param name="serviceEntryManager">The service entry manager.</param>

@@ -17,7 +17,7 @@ namespace KissU.Core.CPlatform.Engines.Implementation
         private readonly ILogger<ServiceEngineLifetime> _logger;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServiceEngineLifetime"/> class.
+        /// Initializes a new instance of the <see cref="ServiceEngineLifetime" /> class.
         /// </summary>
         /// <param name="logger">The logger.</param>
         public ServiceEngineLifetime(ILogger<ServiceEngineLifetime> logger)

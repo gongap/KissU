@@ -12,7 +12,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
         private static readonly IEnumerable<string> _supportedMethods = new[] { "HEAD" };
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="HttpHeadAttribute"/> class.
+        /// Initializes a new instance of the <see cref="HttpHeadAttribute" /> class.
         /// </summary>
         public HttpHeadAttribute()
             : base(_supportedMethods)
@@ -20,7 +20,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="HttpHeadAttribute"/> class.
+        /// Initializes a new instance of the <see cref="HttpHeadAttribute" /> class.
         /// </summary>
         /// <param name="isRegisterMetadata">if set to <c>true</c> [is register metadata].</param>
         public HttpHeadAttribute(bool isRegisterMetadata)

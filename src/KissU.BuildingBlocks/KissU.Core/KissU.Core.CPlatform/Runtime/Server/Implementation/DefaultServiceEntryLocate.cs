@@ -13,7 +13,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
         private readonly IServiceEntryManager _serviceEntryManager;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DefaultServiceEntryLocate"/> class.
+        /// Initializes a new instance of the <see cref="DefaultServiceEntryLocate" /> class.
         /// </summary>
         /// <param name="serviceEntryManager">The service entry manager.</param>
         public DefaultServiceEntryLocate(IServiceEntryManager serviceEntryManager)

@@ -28,7 +28,7 @@ namespace KissU.Core.CPlatform.Utilities
         /// <param name="task">The task.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>Task&lt;T&gt;.</returns>
-        /// <exception cref="TimeoutException">The exception that is thrown when the time allotted for a process or operation has expired</exception>
+        /// <exception cref="TimeoutException"></exception>
         public static async Task<T> WithCancellation<T>(this Task<T> task, CancellationToken cancellationToken)
         {
             var tcs = new TaskCompletionSource<bool>();
@@ -51,7 +51,7 @@ namespace KissU.Core.CPlatform.Utilities
         /// <param name="cts">The CTS.</param>
         /// <param name="requestTimeout">The request timeout.</param>
         /// <returns>Task&lt;T&gt;.</returns>
-        /// <exception cref="TimeoutException">The exception that is thrown when the time allotted for a process or operation has expired</exception>
+        /// <exception cref="TimeoutException"></exception>
         public static async Task<T> WithCancellation<T>(this Task<T> task, CancellationTokenSource cts, int requestTimeout)
         {
             if (task == await Task.WhenAny(task, Task.Delay(requestTimeout, cts.Token)))

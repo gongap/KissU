@@ -14,7 +14,7 @@ namespace KissU.Core.CPlatform.Filters.Implementation
         private readonly bool _filterAttribute;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FilterAttribute"/> class.
+        /// Initializes a new instance of the <see cref="FilterAttribute" /> class.
         /// </summary>
         protected FilterAttribute()
         {

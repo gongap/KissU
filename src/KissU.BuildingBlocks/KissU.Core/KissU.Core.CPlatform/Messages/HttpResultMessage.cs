@@ -76,7 +76,7 @@
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="HttpResultMessage"/> class.
+        /// Initializes a new instance of the <see cref="HttpResultMessage" /> class.
         /// 构造服务数据集
         /// </summary>
         public HttpResultMessage()

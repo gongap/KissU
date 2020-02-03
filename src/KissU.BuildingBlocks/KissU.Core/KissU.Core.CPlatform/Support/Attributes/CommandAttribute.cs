@@ -13,7 +13,7 @@ namespace KissU.Core.CPlatform.Support.Attributes
     public class CommandAttribute : Attribute
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CommandAttribute"/> class.
+        /// Initializes a new instance of the <see cref="CommandAttribute" /> class.
         /// </summary>
         public CommandAttribute()
         {

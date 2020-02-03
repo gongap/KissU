@@ -11,8 +11,7 @@ namespace KissU.Core.CPlatform
     public class ServiceDescriptor
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServiceDescriptor"/> class.
-        /// 初始化一个新的服务描述符。
+        /// Initializes a new instance of the <see cref="ServiceDescriptor" /> class.
         /// </summary>
         public ServiceDescriptor()
         {
@@ -22,7 +21,6 @@ namespace KissU.Core.CPlatform
         /// <summary>
         /// 服务Id。
         /// </summary>
-        /// <value>The identifier.</value>
         public string Id { get; set; }
 
         /// <summary>
@@ -33,13 +31,11 @@ namespace KissU.Core.CPlatform
         /// <summary>
         /// 路由
         /// </summary>
-        /// <value>The route path.</value>
         public string RoutePath { get; set; }
 
         /// <summary>
         /// 元数据。
         /// </summary>
-        /// <value>The metadatas.</value>
         public IDictionary<string, object> Metadatas { get; set; }
 
         /// <summary>

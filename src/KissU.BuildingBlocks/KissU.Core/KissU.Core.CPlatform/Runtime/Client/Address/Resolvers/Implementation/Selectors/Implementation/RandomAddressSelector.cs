@@ -14,7 +14,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
         private readonly Random _random;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RandomAddressSelector"/> class.
+        /// Initializes a new instance of the <see cref="RandomAddressSelector" /> class.
         /// 初始化一个以Random生成随机数的随机地址选择器。
         /// </summary>
         public RandomAddressSelector()
@@ -24,10 +24,11 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RandomAddressSelector"/> class.
+        /// Initializes a new instance of the <see cref="RandomAddressSelector" /> class.
         /// 初始化一个自定义的随机地址选择器。
         /// </summary>
         /// <param name="generate">随机数生成委托，第一个参数为最小值，第二个参数为最大值（不可以超过该值）。</param>
+        /// <exception cref="ArgumentNullException">generate</exception>
         public RandomAddressSelector(Func<int, int, int> generate)
         {
             if (generate == null)

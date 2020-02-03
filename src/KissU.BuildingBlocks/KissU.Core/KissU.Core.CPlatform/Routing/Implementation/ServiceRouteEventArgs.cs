@@ -6,7 +6,7 @@
     public class ServiceRouteEventArgs
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServiceRouteEventArgs"/> class.
+        /// Initializes a new instance of the <see cref="ServiceRouteEventArgs" /> class.
         /// </summary>
         /// <param name="route">The route.</param>
         public ServiceRouteEventArgs(ServiceRoute route)

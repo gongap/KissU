@@ -17,7 +17,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.Implementation
         private readonly ISerializer<string> _serializer;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServiceSubscribeManagerBase"/> class.
+        /// Initializes a new instance of the <see cref="ServiceSubscribeManagerBase" /> class.
         /// </summary>
         /// <param name="serializer">The serializer.</param>
         protected ServiceSubscribeManagerBase(ISerializer<string> serializer)

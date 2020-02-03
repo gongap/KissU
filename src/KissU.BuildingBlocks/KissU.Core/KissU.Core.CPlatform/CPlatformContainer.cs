@@ -24,7 +24,7 @@ namespace KissU.Core.CPlatform
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CPlatformContainer"/> class.
+        /// Initializes a new instance of the <see cref="CPlatformContainer" /> class.
         /// </summary>
         /// <param name="container">The container.</param>
         public CPlatformContainer(IComponentContext container)

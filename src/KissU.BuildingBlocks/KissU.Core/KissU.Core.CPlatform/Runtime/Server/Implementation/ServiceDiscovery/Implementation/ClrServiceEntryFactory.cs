@@ -27,7 +27,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Im
         private readonly IValidationProcessor _validationProcessor;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ClrServiceEntryFactory"/> class.
+        /// Initializes a new instance of the <see cref="ClrServiceEntryFactory" /> class.
         /// </summary>
         /// <param name="serviceProvider">The service provider.</param>
         /// <param name="serviceIdGenerator">The service identifier generator.</param>

@@ -25,7 +25,7 @@ namespace KissU.Core.CPlatform.Transport.Implementation
         private readonly ConcurrentDictionary<string, ManualResetValueTaskSource<TransportMessage>> _resultDictionary = new ConcurrentDictionary<string, ManualResetValueTaskSource<TransportMessage>>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TransportClient"/> class.
+        /// Initializes a new instance of the <see cref="TransportClient" /> class.
         /// </summary>
         /// <param name="messageSender">The message sender.</param>
         /// <param name="messageListener">The message listener.</param>
@@ -46,6 +46,7 @@ namespace KissU.Core.CPlatform.Transport.Implementation
         /// <param name="message">远程调用消息模型。</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>远程调用消息的传输消息。</returns>
+        /// <exception cref="KissU.Core.CPlatform.Exceptions.CommunicationException">与服务端通讯时发生了异常。</exception>
         /// <exception cref="CommunicationException">与服务端通讯时发生了异常。</exception>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public async Task<RemoteInvokeResultMessage> SendAsync(RemoteInvokeMessage message, CancellationToken cancellationToken)

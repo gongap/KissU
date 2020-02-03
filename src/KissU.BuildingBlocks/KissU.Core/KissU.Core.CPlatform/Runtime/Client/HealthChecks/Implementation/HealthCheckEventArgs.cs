@@ -8,7 +8,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.HealthChecks.Implementation
     public class HealthCheckEventArgs
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="HealthCheckEventArgs"/> class.
+        /// Initializes a new instance of the <see cref="HealthCheckEventArgs" /> class.
         /// </summary>
         /// <param name="address">The address.</param>
         public HealthCheckEventArgs(AddressModel address)
@@ -17,7 +17,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.HealthChecks.Implementation
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="HealthCheckEventArgs"/> class.
+        /// Initializes a new instance of the <see cref="HealthCheckEventArgs" /> class.
         /// </summary>
         /// <param name="address">The address.</param>
         /// <param name="health">if set to <c>true</c> [health].</param>
@@ -33,7 +33,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.HealthChecks.Implementation
         public AddressModel Address { get; private set; }
 
         /// <summary>
-        /// Gets a value indicating whether this <see cref="HealthCheckEventArgs"/> is health.
+        /// Gets a value indicating whether this <see cref="HealthCheckEventArgs" /> is health.
         /// </summary>
         public bool Health { get; private set; }
     }

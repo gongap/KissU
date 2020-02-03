@@ -13,7 +13,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
     {
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="HttpMethodAttribute"/> class.
+        /// Initializes a new instance of the <see cref="HttpMethodAttribute" /> class.
         /// </summary>
         /// <param name="httpMethods">The HTTP methods.</param>
         public HttpMethodAttribute(IEnumerable<string> httpMethods)
@@ -22,7 +22,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="HttpMethodAttribute"/> class.
+        /// Initializes a new instance of the <see cref="HttpMethodAttribute" /> class.
         /// </summary>
         /// <param name="httpMethods">The HTTP methods.</param>
         /// <param name="isRegisterMetadata">if set to <c>true</c> [is register metadata].</param>

@@ -14,7 +14,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
         private IMessageListener _serverMessageListener;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DefaultServiceHost"/> class.
+        /// Initializes a new instance of the <see cref="DefaultServiceHost" /> class.
         /// </summary>
         /// <param name="messageListenerFactory">The message listener factory.</param>
         /// <param name="serviceExecutor">The service executor.</param>

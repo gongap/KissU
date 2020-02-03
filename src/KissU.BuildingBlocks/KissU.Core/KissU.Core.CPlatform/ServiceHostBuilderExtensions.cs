@@ -130,7 +130,7 @@ namespace KissU.Core.CPlatform
         /// 配置路由.
         /// </summary>
         /// <param name="mapper">The mapper.</param>
-        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
+        /// <returns>A <see cref="Task" /> representing the asynchronous operation.</returns>
         public static async Task ConfigureRoute(IContainer mapper)
         {
             if (AppConfig.ServerOptions.Protocol == CommunicationProtocol.Tcp || AppConfig.ServerOptions.Protocol == CommunicationProtocol.None)

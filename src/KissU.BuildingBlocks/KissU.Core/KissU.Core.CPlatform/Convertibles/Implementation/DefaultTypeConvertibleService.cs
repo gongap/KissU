@@ -48,6 +48,7 @@ namespace KissU.Core.CPlatform.Convertibles.Implementation
         /// <exception cref="ArgumentNullException">instance</exception>
         /// <exception cref="ArgumentNullException">conversionType</exception>
         /// <exception cref="ArgumentNullException">instance</exception>
+        /// <exception cref="ArgumentNullException">conversionType</exception>
         public object Convert(object instance, Type conversionType)
         {
             if (instance == null)

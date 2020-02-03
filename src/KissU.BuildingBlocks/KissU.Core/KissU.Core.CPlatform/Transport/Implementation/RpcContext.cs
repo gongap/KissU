@@ -13,7 +13,7 @@ namespace KissU.Core.CPlatform.Transport.Implementation
         private ConcurrentDictionary<string, object> contextParameters;
 
         /// <summary>
-        ///获取上下文参数.
+        /// 获取上下文参数.
         /// </summary>
         /// <returns>ConcurrentDictionary&lt;String, Object&gt;.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

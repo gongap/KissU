@@ -6,7 +6,7 @@
     public class ServiceCommandChangedEventArgs : ServiceCommandEventArgs
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServiceCommandChangedEventArgs"/> class.
+        /// Initializes a new instance of the <see cref="ServiceCommandChangedEventArgs" /> class.
         /// </summary>
         /// <param name="serviceCommand">The service command.</param>
         /// <param name="oldServiceCommand">The old service command.</param>

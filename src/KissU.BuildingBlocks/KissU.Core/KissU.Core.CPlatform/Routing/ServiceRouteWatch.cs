@@ -15,7 +15,7 @@ namespace KissU.Core.CPlatform.Routing
         private readonly Action _action;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServiceRouteWatch"/> class.
+        /// Initializes a new instance of the <see cref="ServiceRouteWatch" /> class.
         /// </summary>
         /// <param name="serviceProvider">The service provider.</param>
         /// <param name="action">The action.</param>

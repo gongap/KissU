@@ -8,7 +8,7 @@ namespace KissU.Core.CPlatform.Exceptions
     public class CommunicationException : CPlatformException
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CommunicationException"/> class.
+        /// Initializes a new instance of the <see cref="CommunicationException" /> class.
         /// 初始构造函数
         /// </summary>
         /// <param name="message">异常消息。</param>

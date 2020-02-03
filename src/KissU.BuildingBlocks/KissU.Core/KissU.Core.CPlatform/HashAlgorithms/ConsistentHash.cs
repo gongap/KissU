@@ -16,7 +16,7 @@ namespace KissU.Core.CPlatform.HashAlgorithms
         private readonly int _virtualNodeReplicationFactor = 1000;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ConsistentHash{T}"/> class.
+        /// Initializes a new instance of the <see cref="ConsistentHash{T}" /> class.
         /// </summary>
         /// <param name="hashAlgorithm">The hash algorithm.</param>
         public ConsistentHash(IHashAlgorithm hashAlgorithm)
@@ -25,7 +25,7 @@ namespace KissU.Core.CPlatform.HashAlgorithms
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ConsistentHash{T}"/> class.
+        /// Initializes a new instance of the <see cref="ConsistentHash{T}" /> class.
         /// </summary>
         /// <param name="hashAlgorithm">The hash algorithm.</param>
         /// <param name="virtualNodeReplicationFactor">The virtual node replication factor.</param>

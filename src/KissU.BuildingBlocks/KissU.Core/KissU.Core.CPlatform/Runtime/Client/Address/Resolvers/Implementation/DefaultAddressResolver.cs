@@ -29,7 +29,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation
         private readonly IServiceHeartbeatManager _serviceHeartbeatManager;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DefaultAddressResolver"/> class.
+        /// Initializes a new instance of the <see cref="DefaultAddressResolver" /> class.
         /// </summary>
         /// <param name="commandProvider">The command provider.</param>
         /// <param name="serviceRouteManager">The service route manager.</param>

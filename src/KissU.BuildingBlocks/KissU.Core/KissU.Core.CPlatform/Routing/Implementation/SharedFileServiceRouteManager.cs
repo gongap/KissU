@@ -23,7 +23,7 @@ namespace KissU.Core.CPlatform.Routing.Implementation
         private readonly FileSystemWatcher _fileSystemWatcher;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SharedFileServiceRouteManager"/> class.
+        /// Initializes a new instance of the <see cref="SharedFileServiceRouteManager" /> class.
         /// </summary>
         /// <param name="filePath">The file path.</param>
         /// <param name="serializer">The serializer.</param>
