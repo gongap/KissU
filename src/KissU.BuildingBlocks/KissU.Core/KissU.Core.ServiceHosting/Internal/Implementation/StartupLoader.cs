@@ -22,15 +22,14 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
         /// <param name="startupType">启动类型</param>
         /// <param name="environmentName">环境名</param>
         /// <returns>启动方法</returns>
-        public static StartupMethods LoadMethods(IServiceProvider hostingServiceProvider, IConfigurationBuilder config,
-            Type startupType, string environmentName)
+        public static StartupMethods LoadMethods(IServiceProvider hostingServiceProvider, IConfigurationBuilder config, Type startupType, string environmentName)
         {
             ConfigureBuilder configureMethod = FindConfigureDelegate(startupType, environmentName);
             ConfigureServicesBuilder servicesMethod = FindConfigureServicesDelegate(startupType, environmentName);
             ConfigureContainerBuilder configureContainerMethod = FindConfigureContainerDelegate(startupType, environmentName);
 
             object instance = null;
-            if (!configureMethod.MethodInfo.IsStatic || servicesMethod != null && !servicesMethod.MethodInfo.IsStatic)
+            if (!configureMethod.MethodInfo.IsStatic || (servicesMethod != null && !servicesMethod.MethodInfo.IsStatic))
             {
                 instance = ActivatorUtilities.CreateInstance(hostingServiceProvider, startupType, config);
             }
@@ -67,14 +66,14 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
         /// <param name="startupAssemblyName">启动类型程序集</param>
         /// <param name="environmentName">环境名</param>
         /// <returns>启动类型</returns>
+        /// <exception cref="ArgumentException">startupAssemblyName</exception>
+        /// <exception cref="InvalidOperationException">startupAssemblyName</exception>
+        /// <exception cref="InvalidOperationException">startupAssemblyName</exception>
         public static Type FindStartupType(string startupAssemblyName, string environmentName)
         {
             if (string.IsNullOrEmpty(startupAssemblyName))
             {
-                throw new ArgumentException(
-                    string.Format("'{0}' 不能为空.",
-                        nameof(startupAssemblyName)),
-                    nameof(startupAssemblyName));
+                throw new ArgumentException(string.Format("'{0}' 不能为空.", nameof(startupAssemblyName)), nameof(startupAssemblyName));
             }
 
             Assembly assembly = Assembly.Load(new AssemblyName(startupAssemblyName));
@@ -138,8 +137,7 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
             return new ConfigureServicesBuilder(servicesMethod);
         }
 
-        private static MethodInfo FindMethod(Type startupType, string methodName, string environmentName,
-            Type returnType = null, bool required = true)
+        private static MethodInfo FindMethod(Type startupType, string methodName, string environmentName, Type returnType = null, bool required = true)
         {
             string methodNameWithEnv = string.Format(CultureInfo.InvariantCulture, methodName, environmentName);
             string methodNameWithNoEnv = string.Format(CultureInfo.InvariantCulture, methodName, "");
@@ -167,7 +165,8 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
             {
                 if (required)
                 {
-                    throw new InvalidOperationException(string.Format("公共方法名称必须为'{0}' 或者 '{1}' 找不到 '{2}' 类型.",
+                    throw new InvalidOperationException(string.Format(
+                        "公共方法名称必须为'{0}' 或者 '{1}' 找不到 '{2}' 类型.",
                         methodNameWithEnv,
                         methodNameWithNoEnv,
                         startupType.FullName));
@@ -180,7 +179,8 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
             {
                 if (required)
                 {
-                    throw new InvalidOperationException(string.Format(" '{0}'的方法在类型 '{1}' 必须有返回类型 '{2}'.",
+                    throw new InvalidOperationException(string.Format(
+                        " '{0}'的方法在类型 '{1}' 必须有返回类型 '{2}'.",
                         methodInfo.Name,
                         startupType.FullName,
                         returnType.Name));

@@ -16,6 +16,7 @@ namespace KissU.Core.ServiceHosting.Startup.Implementation
         private readonly StartupMethods _methods;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="ConventionBasedStartup" /> class.
         /// 初始化
         /// </summary>
         /// <param name="methods">启动方法</param>

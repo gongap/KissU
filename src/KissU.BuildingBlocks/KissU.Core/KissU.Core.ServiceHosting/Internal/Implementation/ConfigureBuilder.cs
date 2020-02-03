@@ -10,6 +10,7 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
     public class ConfigureBuilder
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="ConfigureBuilder" /> class.
         /// 初始化
         /// </summary>
         /// <param name="configure">配置方法</param>

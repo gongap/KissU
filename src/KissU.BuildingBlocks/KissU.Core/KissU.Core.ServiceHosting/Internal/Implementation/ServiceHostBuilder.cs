@@ -20,6 +20,7 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
         private Action<ILoggingBuilder> _loggingDelegate;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="ServiceHostBuilder" /> class.
         /// 初始化
         /// </summary>
         public ServiceHostBuilder()
@@ -63,7 +64,7 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
         /// </summary>
         /// <param name="mapper">映射器</param>
         /// <returns>服务主机构建器</returns>
-        /// <exception cref="ArgumentNullException">映射器</exception>
+        /// <exception cref="ArgumentNullException">mapper</exception>
         public IServiceHostBuilder MapServices(Action<IContainer> mapper)
         {
             if (mapper == null)

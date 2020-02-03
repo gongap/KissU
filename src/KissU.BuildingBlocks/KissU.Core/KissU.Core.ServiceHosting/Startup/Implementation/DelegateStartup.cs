@@ -14,6 +14,7 @@ namespace KissU.Core.ServiceHosting.Startup.Implementation
         private readonly Action<IContainer> _configureApp;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="DelegateStartup" /> class.
         /// 初始化
         /// </summary>
         /// <param name="configureApp">配置容器的委托</param>

@@ -9,6 +9,7 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
     public class ConfigureContainerBuilder
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="ConfigureContainerBuilder" /> class.
         /// 初始化
         /// </summary>
         /// <param name="configureContainerMethod">配置容器方法</param>
@@ -35,7 +36,8 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
         /// <summary>
         /// 获取容器类型
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Type.</returns>
+        /// <exception cref="InvalidOperationException"></exception>
         public Type GetContainerType()
         {
             var parameters = MethodInfo.GetParameters();

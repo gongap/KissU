@@ -10,6 +10,7 @@ namespace KissU.Core.ServiceHosting.Startup.Implementation
     public class StartupMethods
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="StartupMethods" /> class.
         /// 初始化
         /// </summary>
         /// <param name="instance">实例</param>

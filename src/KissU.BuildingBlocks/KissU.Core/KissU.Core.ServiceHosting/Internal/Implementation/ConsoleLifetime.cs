@@ -12,10 +12,11 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
         private readonly ManualResetEvent _shutdownBlock = new ManualResetEvent(false);
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="ConsoleLifetime" /> class.
         /// 初始化
         /// </summary>
         /// <param name="applicationLifetime">应用生命周期</param>
-        /// <exception cref="ArgumentNullException">应用生命周期</exception>
+        /// <exception cref="ArgumentNullException">applicationLifetime</exception>
         public ConsoleLifetime(IApplicationLifetime applicationLifetime)
         {
             ApplicationLifetime = applicationLifetime ?? throw new ArgumentNullException(nameof(applicationLifetime));

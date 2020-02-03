@@ -22,6 +22,7 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
         private IStartup _startup;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="ServiceHost" /> class.
         /// 初始化
         /// </summary>
         /// <param name="builder">容器构建器</param>

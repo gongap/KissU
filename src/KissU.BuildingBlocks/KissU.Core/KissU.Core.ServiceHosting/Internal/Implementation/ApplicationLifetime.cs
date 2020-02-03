@@ -15,6 +15,7 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
         private readonly CancellationTokenSource _stoppingSource = new CancellationTokenSource();
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="ApplicationLifetime" /> class.
         /// 初始化
         /// </summary>
         /// <param name="logger">日志记录器</param>
