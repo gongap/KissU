@@ -29,7 +29,8 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
         /// <param name="hostingServiceProvider">服务提供程序</param>
         /// <param name="hostLifetime">主机生命周期</param>
         /// <param name="mapServicesDelegate">容器服务映射委托</param>
-        public ServiceHost(ContainerBuilder builder, IServiceProvider hostingServiceProvider, IHostLifetime hostLifetime, List<Action<IContainer>> mapServicesDelegate)
+        public ServiceHost(ContainerBuilder builder, IServiceProvider hostingServiceProvider,
+            IHostLifetime hostLifetime, List<Action<IContainer>> mapServicesDelegate)
         {
             _builder = builder;
             _hostingServiceProvider = hostingServiceProvider;
@@ -162,7 +163,7 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
         /// <param name="mapper">映射器</param>
         private void MapperServices(IContainer mapper)
         {
-            foreach (Action<IContainer> mapServices in _mapServicesDelegates)
+            foreach (var mapServices in _mapServicesDelegates)
             {
                 mapServices(mapper);
             }

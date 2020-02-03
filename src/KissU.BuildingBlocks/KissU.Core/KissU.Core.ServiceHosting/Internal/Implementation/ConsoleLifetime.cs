@@ -34,10 +34,7 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
         /// <returns>A <see cref="Task" /> representing the asynchronous operation.</returns>
         public Task WaitForStartAsync(CancellationToken cancellationToken)
         {
-            ApplicationLifetime.ApplicationStarted.Register(() =>
-            {
-                Console.WriteLine("服务已启动。 按下Ctrl + C关闭。");
-            });
+            ApplicationLifetime.ApplicationStarted.Register(() => { Console.WriteLine("服务已启动。 按下Ctrl + C关闭。"); });
 
             AppDomain.CurrentDomain.ProcessExit += (sender, eventArgs) =>
             {

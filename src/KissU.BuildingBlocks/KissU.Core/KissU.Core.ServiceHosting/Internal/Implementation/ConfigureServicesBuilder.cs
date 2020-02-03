@@ -48,7 +48,7 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
                 return null;
             }
 
-            //  只支持ContainerBuilder参数
+            // 只支持ContainerBuilder参数
             var parameters = MethodInfo.GetParameters();
             if (parameters.Length > 1 ||
                 parameters.Any(p => p.ParameterType != typeof(ContainerBuilder)))

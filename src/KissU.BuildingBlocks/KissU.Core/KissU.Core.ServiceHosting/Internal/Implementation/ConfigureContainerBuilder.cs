@@ -61,7 +61,7 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
                 return;
             }
 
-            var arguments = new object[1] {container };
+            var arguments = new object[1] {container};
             MethodInfo.Invoke(instance, arguments);
         }
     }

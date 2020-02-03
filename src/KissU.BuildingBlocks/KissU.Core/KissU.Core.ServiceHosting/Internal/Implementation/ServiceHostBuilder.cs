@@ -37,8 +37,8 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
         /// <returns>服务主机</returns>
         public IServiceHost Build()
         {
-            IServiceCollection services = BuildCommonServices();
-            IConfigurationBuilder config = Configure();
+            var services = BuildCommonServices();
+            var config = Configure();
             if (_loggingDelegate != null)
             {
                 services.AddLogging(_loggingDelegate);
@@ -49,13 +49,13 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
             }
 
             services.AddSingleton(typeof(IConfigurationBuilder), config);
-            ContainerBuilder hostingServices = RegisterServices();
-            IServiceCollection applicationServices = services.Clone();
-            ServiceProvider hostingServiceProvider = services.BuildServiceProvider();
+            var hostingServices = RegisterServices();
+            var applicationServices = services.Clone();
+            var hostingServiceProvider = services.BuildServiceProvider();
             hostingServices.Populate(services);
-            IHostLifetime hostLifetime = hostingServiceProvider.GetService<IHostLifetime>();
-            ServiceHost host = new ServiceHost(hostingServices, hostingServiceProvider, hostLifetime, _mapServicesDelegates);
-            IContainer container = host.Initialize();
+            var hostLifetime = hostingServiceProvider.GetService<IHostLifetime>();
+            var host = new ServiceHost(hostingServices, hostingServiceProvider, hostLifetime, _mapServicesDelegates);
+            var container = host.Initialize();
             return host;
         }
 
@@ -145,8 +145,8 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
         /// <returns>IServiceCollection.</returns>
         private IServiceCollection BuildCommonServices()
         {
-            ServiceCollection services = new ServiceCollection();
-            foreach (Action<IServiceCollection> configureServices in _configureServicesDelegates)
+            var services = new ServiceCollection();
+            foreach (var configureServices in _configureServicesDelegates)
             {
                 configureServices(services);
             }
@@ -160,8 +160,8 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
         /// <returns>IConfigurationBuilder.</returns>
         private IConfigurationBuilder Configure()
         {
-            IConfigurationBuilder config = new ConfigurationBuilder().SetBasePath(AppContext.BaseDirectory);
-            foreach (Action<IConfigurationBuilder> configure in _configureDelegates)
+            var config = new ConfigurationBuilder().SetBasePath(AppContext.BaseDirectory);
+            foreach (var configure in _configureDelegates)
             {
                 configure(config);
             }
@@ -176,7 +176,7 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
         private ContainerBuilder RegisterServices()
         {
             var hostingServices = new ContainerBuilder();
-            foreach (Action<ContainerBuilder> registerServices in _registerServicesDelegates)
+            foreach (var registerServices in _registerServicesDelegates)
             {
                 registerServices(hostingServices);
             }

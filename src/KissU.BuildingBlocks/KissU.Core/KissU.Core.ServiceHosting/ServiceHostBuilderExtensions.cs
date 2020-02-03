@@ -33,7 +33,7 @@ namespace KissU.Core.ServiceHosting
                     {
                         services.AddSingleton(typeof(IStartup), sp =>
                         {
-                            IConfigurationBuilder config = sp.GetService<IConfigurationBuilder>();
+                            var config = sp.GetService<IConfigurationBuilder>();
                             return new ConventionBasedStartup(StartupLoader.LoadMethods(sp, config, startupType, ""));
                         });
                     }

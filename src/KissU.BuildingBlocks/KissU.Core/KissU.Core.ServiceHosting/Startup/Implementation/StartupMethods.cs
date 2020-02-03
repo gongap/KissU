@@ -16,10 +16,11 @@ namespace KissU.Core.ServiceHosting.Startup.Implementation
         /// <param name="instance">实例</param>
         /// <param name="configure">配置容器的委托</param>
         /// <param name="configureServices">配置服务的委托</param>
-        public StartupMethods(object instance, Action<IContainer> configure,Func<ContainerBuilder, IContainer> configureServices)
+        public StartupMethods(object instance, Action<IContainer> configure,
+            Func<ContainerBuilder, IContainer> configureServices)
         {
-            Debug.Assert(configure != null);
-            Debug.Assert(configureServices != null);
+            Debug.Assert(configure != null, "configure != null");
+            Debug.Assert(configureServices != null, "configureServices != null");
 
             StartupInstance = instance;
             ConfigureDelegate = configure;
