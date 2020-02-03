@@ -91,7 +91,7 @@ namespace KissU.Core.CPlatform.Support.Implementation
             bool reachErrorThresholdPercentage()
             {
                 return serviceInvokeInfos.FaultRemoteServiceRequests /
-                       (double) (serviceInvokeInfos.RemoteServiceRequests ?? 1) * 100 >
+                       (double)(serviceInvokeInfos.RemoteServiceRequests ?? 1) * 100 >
                        command.BreakeErrorThresholdPercentage;
             }
 

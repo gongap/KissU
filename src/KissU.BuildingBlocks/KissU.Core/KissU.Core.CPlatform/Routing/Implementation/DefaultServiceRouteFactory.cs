@@ -69,7 +69,7 @@ namespace KissU.Core.CPlatform.Routing.Implementation
                 _addressModel.TryGetValue(descriptor.Value, out var address);
                 if (address == null)
                 {
-                    address = (AddressModel) _serializer.Deserialize(descriptor.Value, typeof(IpAddressModel));
+                    address = (AddressModel)_serializer.Deserialize(descriptor.Value, typeof(IpAddressModel));
                     _addressModel.TryAdd(descriptor.Value, address);
                 }
 

@@ -33,7 +33,7 @@ namespace KissU.Core.Codec.MessagePack.Messages
             return new RemoteInvokeResultMessage
             {
                 ExceptionMessage = ExceptionMessage,
-                Result = Result?.Get()
+                Result = Result?.Get(),
             };
         }
     }

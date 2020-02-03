@@ -39,11 +39,11 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
             AppDomain.CurrentDomain.ProcessExit += (sender, eventArgs) =>
             {
                 ApplicationLifetime.StopApplication();
-                //阻止程序主线程自动退出，等待退出信号
+                // 阻止程序主线程自动退出，等待退出信号
                 _shutdownBlock.WaitOne();
             };
 
-            //按下Ctrl+C退出程序
+            // 按下Ctrl+C退出程序
             Console.CancelKeyPress += (sender, e) =>
             {
                 e.Cancel = true;

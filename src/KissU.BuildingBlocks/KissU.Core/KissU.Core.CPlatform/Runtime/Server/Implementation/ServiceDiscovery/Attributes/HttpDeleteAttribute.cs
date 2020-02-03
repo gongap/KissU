@@ -9,7 +9,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
     /// <seealso cref="HttpMethodAttribute" />
     public class HttpDeleteAttribute : HttpMethodAttribute
     {
-        private static readonly IEnumerable<string> _supportedMethods = new[] {"DELETE"};
+        private static readonly IEnumerable<string> _supportedMethods = new[] { "DELETE" };
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HttpDeleteAttribute" /> class.

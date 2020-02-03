@@ -13,9 +13,9 @@ namespace KissU.Core.CPlatform.Support
         /// </summary>
         /// <param name="parameters">The parameters.</param>
         /// <param name="serviceId">The service identifier.</param>
-        /// <param name="_serviceKey">The service key.</param>
+        /// <param name="serviceKey">The service key.</param>
         /// <returns>Task.</returns>
-        Task Invoke(IDictionary<string, object> parameters, string serviceId, string _serviceKey);
+        Task Invoke(IDictionary<string, object> parameters, string serviceId, string serviceKey);
 
         /// <summary>
         /// 调用.
@@ -23,8 +23,8 @@ namespace KissU.Core.CPlatform.Support
         /// <typeparam name="T">The result type</typeparam>
         /// <param name="parameters">The parameters.</param>
         /// <param name="serviceId">The service identifier.</param>
-        /// <param name="_serviceKey">The service key.</param>
+        /// <param name="serviceKey">The service key.</param>
         /// <returns>Task&lt;T&gt;.</returns>
-        Task<T> Invoke<T>(IDictionary<string, object> parameters, string serviceId, string _serviceKey);
+        Task<T> Invoke<T>(IDictionary<string, object> parameters, string serviceId, string serviceKey);
     }
 }

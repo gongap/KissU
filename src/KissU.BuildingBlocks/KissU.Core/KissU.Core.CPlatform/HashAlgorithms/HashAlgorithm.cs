@@ -17,8 +17,8 @@ namespace KissU.Core.CPlatform.HashAlgorithms
         /// <returns>返回哈希值</returns>
         public int Hash(string item)
         {
-            var hash = Hash(Encoding.ASCII.GetBytes(item ?? string.Empty));
-            return (int) hash;
+            uint hash = Hash(Encoding.ASCII.GetBytes(item ?? string.Empty));
+            return (int)hash;
         }
 
         /// <summary>
@@ -29,17 +29,17 @@ namespace KissU.Core.CPlatform.HashAlgorithms
         /// <returns>UInt32.</returns>
         public static uint Hash(byte[] data, uint seed = 0xc58f1a7b)
         {
-            var length = data.Length;
+            int length = data.Length;
             if (length == 0)
             {
                 return 0;
             }
 
-            var h = seed ^ (uint) length;
-            var c = 0;
+            uint h = seed ^ (uint)length;
+            int c = 0;
             while (length >= 4)
             {
-                var k = (uint) (
+                uint k = (uint)(
                     data[c++]
                     | (data[c++] << 8)
                     | (data[c++] << 16)
@@ -55,12 +55,12 @@ namespace KissU.Core.CPlatform.HashAlgorithms
             switch (length)
             {
                 case 3:
-                    h ^= (ushort) (data[c++] | (data[c++] << 8));
-                    h ^= (uint) (data[c] << 16);
+                    h ^= (ushort)(data[c++] | (data[c++] << 8));
+                    h ^= (uint)(data[c] << 16);
                     h *= m;
                     break;
                 case 2:
-                    h ^= (ushort) (data[c++] | (data[c] << 8));
+                    h ^= (ushort)(data[c++] | (data[c] << 8));
                     h *= m;
                     break;
                 case 1:

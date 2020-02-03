@@ -662,7 +662,7 @@ namespace KissU.Core.CPlatform
                     t => t.IsSubclassOf(typeof(AbstractModule))).ToArray();
             foreach (var moduleType in arrayModule)
             {
-                var abstractModule = (AbstractModule) Activator.CreateInstance(moduleType);
+                var abstractModule = (AbstractModule)Activator.CreateInstance(moduleType);
                 abstractModules.Add(abstractModule);
             }
 

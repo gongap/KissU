@@ -44,3 +44,6 @@ dotnet_diagnostic.SA1515.severity = none
 
 # SA1013: Closing braces should be spaced correctly
 dotnet_diagnostic.SA1013.severity = none
+
+# SA1128: Put constructor initializers on their own line
+dotnet_diagnostic.SA1128.severity = none

@@ -37,7 +37,7 @@ namespace KissU.Core.CPlatform.Utilities
         public static FastInvokeHandler GetMethodInvoker(MethodInfo methodInfo)
         {
             var dynamicMethod = new DynamicMethod(string.Empty, typeof(object),
-                new[] {typeof(object), typeof(object[])}, methodInfo.DeclaringType.Module);
+                new[] { typeof(object), typeof(object[]) }, methodInfo.DeclaringType.Module);
             var il = dynamicMethod.GetILGenerator();
             var ps = methodInfo.GetParameters();
             var paramTypes = new Type[ps.Length];
@@ -121,7 +121,7 @@ namespace KissU.Core.CPlatform.Utilities
             }
 
             il.Emit(OpCodes.Ret);
-            var invoder = (FastInvokeHandler) dynamicMethod.CreateDelegate(typeof(FastInvokeHandler));
+            var invoder = (FastInvokeHandler)dynamicMethod.CreateDelegate(typeof(FastInvokeHandler));
             return invoder;
         }
 
@@ -198,7 +198,7 @@ namespace KissU.Core.CPlatform.Utilities
 
             if (value > -129 && value < 128)
             {
-                il.Emit(OpCodes.Ldc_I4_S, (sbyte) value);
+                il.Emit(OpCodes.Ldc_I4_S, (sbyte)value);
             }
             else
             {

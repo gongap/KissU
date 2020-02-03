@@ -53,7 +53,7 @@ namespace KissU.Core.CPlatform.Cache
                 return def;
             }
 
-            return (T) Metadatas[name];
+            return (T)Metadatas[name];
         }
 
         /// <summary>

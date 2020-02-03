@@ -58,7 +58,7 @@ namespace KissU.Core.CPlatform.Support.Implementation
                     decodeJOject);
                 if (message != null && message.Result != null)
                 {
-                    result = (T) _typeConvertibleService.Convert(message.Result, typeof(T));
+                    result = (T)_typeConvertibleService.Convert(message.Result, typeof(T));
                 }
             } while (message == null && ++time < command.FailoverCluster);
 

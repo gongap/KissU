@@ -62,7 +62,7 @@ namespace KissU.Core.Codec.MessagePack.Messages
             {
                 ContentType = ContentType,
                 Id = Id,
-                Content = null
+                Content = null,
             };
 
             object contentObject;

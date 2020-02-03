@@ -117,7 +117,7 @@ namespace KissU.Core.CPlatform.Messages
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public T GetContent<T>()
         {
-            return (T) Content;
+            return (T)Content;
         }
 
         /// <summary>

@@ -64,7 +64,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.Implementation
 
             foreach (var descriptor in descriptors)
             {
-                yield return (AddressModel) _serializer.Deserialize(descriptor.Value, typeof(IpAddressModel));
+                yield return (AddressModel)_serializer.Deserialize(descriptor.Value, typeof(IpAddressModel));
             }
         }
     }

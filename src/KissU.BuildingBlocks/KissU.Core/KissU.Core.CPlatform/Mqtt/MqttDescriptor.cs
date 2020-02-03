@@ -43,7 +43,7 @@ namespace KissU.Core.CPlatform.Mqtt
                 return def;
             }
 
-            return (T) Metadatas[name];
+            return (T)Metadatas[name];
         }
 
         /// <summary>
