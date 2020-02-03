@@ -36,7 +36,7 @@ namespace KissU.Core.Protocol.Mqtt.Diagnostics
             _segmentContextAccessor = contextAccessor;
         }
 
-        [DiagnosticName(KissUEvents.KissUBeforeTransport, TransportType.Mqtt)]
+        [DiagnosticName(KissUEvents.BeforeTransport, TransportType.Mqtt)]
         public void TransportBefore([Object] TransportEventData eventData)
         {
             var message = eventData.Message.GetContent<RemoteInvokeMessage>();
@@ -52,7 +52,7 @@ namespace KissU.Core.Protocol.Mqtt.Diagnostics
             context.Span.AddTag(Tags.MQTT_BROKER_ADDRESS, NetUtils.GetHostAddress().ToString());
         }
 
-        [DiagnosticName(KissUEvents.KissUAfterTransport, TransportType.Mqtt)]
+        [DiagnosticName(KissUEvents.AfterTransport, TransportType.Mqtt)]
         public void TransportAfter([Object] ReceiveEventData eventData)
         {
             var context = _segmentContextAccessor.Context;
@@ -62,7 +62,7 @@ namespace KissU.Core.Protocol.Mqtt.Diagnostics
             }
         }
 
-        [DiagnosticName(KissUEvents.KissUErrorTransport, TransportType.Mqtt)]
+        [DiagnosticName(KissUEvents.ErrorTransport, TransportType.Mqtt)]
         public void TransportError([Object] TransportErrorEventData eventData)
         {
             var context = _segmentContextAccessor.Context;

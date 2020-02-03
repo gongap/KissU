@@ -4,9 +4,9 @@ namespace KissU.Core.CPlatform.Diagnostics
 {
     /// <summary>
     /// TransportErrorEventData.
-    /// Implements the <see cref="KissU.Core.CPlatform.Diagnostics.EventData" />
+    /// Implements the <see cref="EventData" />
     /// </summary>
-    /// <seealso cref="KissU.Core.CPlatform.Diagnostics.EventData" />
+    /// <seealso cref="EventData" />
     public class TransportErrorEventData : EventData
     {
         /// <summary>
@@ -20,7 +20,6 @@ namespace KissU.Core.CPlatform.Diagnostics
             Message = message;
             Exception = ex;
         }
-
 
         /// <summary>
         /// Gets or sets the exception.

@@ -1,30 +1,12 @@
-﻿/*
- * Licensed to the SkyAPM under one or more
- * contributor license agreements.  See the NOTICE file distributed with
- * this work for additional information regarding copyright ownership.
- * The SkyAPM licenses this file to You under the Apache License, Version 2.0
- * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
- */
-
-using System;
+﻿using System;
 
 namespace KissU.Core.CPlatform.Diagnostics
 {
     /// <summary>
     /// Struct UniqueId
-    /// Implements the <see cref="System.IEquatable{KissU.Core.CPlatform.Diagnostics.UniqueId}" />
+    /// Implements the <see cref="IEquatable{UniqueId}" />
     /// </summary>
-    /// <seealso cref="System.IEquatable{KissU.Core.CPlatform.Diagnostics.UniqueId}" />
+    /// <seealso cref="IEquatable{UniqueId}" />
     public struct UniqueId : IEquatable<UniqueId>
     {
         /// <summary>
@@ -56,9 +38,9 @@ namespace KissU.Core.CPlatform.Diagnostics
         }
 
         /// <summary>
-        /// Returns a <see cref="System.String" /> that represents this instance.
+        /// Returns a <see cref="string" /> that represents this instance.
         /// </summary>
-        /// <returns>A <see cref="System.String" /> that represents this instance.</returns>
+        /// <returns>A <see cref="string" /> that represents this instance.</returns>
         public override string ToString() => $"{Part1}.{Part2}.{Part3}";
 
         /// <summary>
@@ -70,10 +52,10 @@ namespace KissU.Core.CPlatform.Diagnostics
             Part1 == other.Part1 && Part2 == other.Part2 && Part3 == other.Part3;
 
         /// <summary>
-        /// Determines whether the specified <see cref="System.Object" /> is equal to this instance.
+        /// Determines whether the specified <see cref="object" /> is equal to this instance.
         /// </summary>
         /// <param name="obj">The object to compare with the current instance.</param>
-        /// <returns><c>true</c> if the specified <see cref="System.Object" /> is equal to this instance; otherwise, <c>false</c>.</returns>
+        /// <returns><c>true</c> if the specified <see cref="object" /> is equal to this instance; otherwise, <c>false</c>.</returns>
         public override bool Equals(object obj) =>
             obj is UniqueId other && Equals(other);
 
@@ -109,4 +91,3 @@ namespace KissU.Core.CPlatform.Diagnostics
         public static bool operator !=(UniqueId left, UniqueId right) => !left.Equals(right);
     }
 }
- 

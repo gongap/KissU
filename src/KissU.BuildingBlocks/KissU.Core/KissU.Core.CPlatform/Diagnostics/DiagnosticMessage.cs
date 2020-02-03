@@ -3,14 +3,14 @@
 namespace KissU.Core.CPlatform.Diagnostics
 {
     /// <summary>
-    /// DiagnosticMessage.
-    /// Implements the <see cref="KissU.Core.CPlatform.Messages.TransportMessage" />
+    /// 诊断信息.
+    /// Implements the <see cref="TransportMessage" />
     /// </summary>
-    /// <seealso cref="KissU.Core.CPlatform.Messages.TransportMessage" />
-    public class DiagnosticMessage: TransportMessage
+    /// <seealso cref="TransportMessage" />
+    public class DiagnosticMessage : TransportMessage
     {
         /// <summary>
-        /// Gets or sets the name of the message.
+        /// 消息名称.
         /// </summary>
         public string MessageName { get; set; }
     }

@@ -4,11 +4,11 @@ namespace KissU.Core.CPlatform.Diagnostics
 {
     /// <summary>
     /// ParameterBinder.
-    /// Implements the <see cref="System.Attribute" />
-    /// Implements the <see cref="KissU.Core.CPlatform.Diagnostics.IParameterResolver" />
+    /// Implements the <see cref="Attribute" />
+    /// Implements the <see cref="IParameterResolver" />
     /// </summary>
-    /// <seealso cref="System.Attribute" />
-    /// <seealso cref="KissU.Core.CPlatform.Diagnostics.IParameterResolver" />
+    /// <seealso cref="Attribute" />
+    /// <seealso cref="IParameterResolver" />
     public abstract class ParameterBinder : Attribute, IParameterResolver
     {
         /// <summary>

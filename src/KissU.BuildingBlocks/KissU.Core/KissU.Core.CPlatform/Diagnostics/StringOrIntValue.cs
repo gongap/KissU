@@ -1,26 +1,7 @@
-﻿/*
- * Licensed to the SkyAPM under one or more
- * contributor license agreements.  See the NOTICE file distributed with
- * this work for additional information regarding copyright ownership.
- * The SkyAPM licenses this file to You under the Apache License, Version 2.0
- * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
- */
-
-
-namespace KissU.Core.CPlatform.Diagnostics
+﻿namespace KissU.Core.CPlatform.Diagnostics
 {
     /// <summary>
-    /// Struct StringOrIntValue
+    /// 字符串或整数值
     /// </summary>
     public struct StringOrIntValue
     {
@@ -95,9 +76,9 @@ namespace KissU.Core.CPlatform.Diagnostics
         }
 
         /// <summary>
-        /// Returns a <see cref="System.String" /> that represents this instance.
+        /// Returns a <see cref="string" /> that represents this instance.
         /// </summary>
-        /// <returns>A <see cref="System.String" /> that represents this instance.</returns>
+        /// <returns>A <see cref="string" /> that represents this instance.</returns>
         public override string ToString()
         {
             if (HasIntValue)
@@ -109,13 +90,14 @@ namespace KissU.Core.CPlatform.Diagnostics
         }
 
         /// <summary>
-        /// Performs an implicit conversion from <see cref="System.String"/> to <see cref="StringOrIntValue"/>.
+        /// Performs an implicit conversion from <see cref="string"/> to <see cref="StringOrIntValue"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>The result of the conversion.</returns>
         public static implicit operator StringOrIntValue(string value) => new StringOrIntValue(value);
+
         /// <summary>
-        /// Performs an implicit conversion from <see cref="System.Int32"/> to <see cref="StringOrIntValue"/>.
+        /// Performs an implicit conversion from <see cref="int"/> to <see cref="StringOrIntValue"/>.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>The result of the conversion.</returns>

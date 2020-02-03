@@ -3,30 +3,34 @@
 namespace KissU.Core.CPlatform.Diagnostics
 {
     /// <summary>
-    /// DiagnosticListenerExtensions.
+    /// 诊断侦听器扩展.
     /// </summary>
     public static class DiagnosticListenerExtensions
     {
         /// <summary>
-        /// The diagnostic listener name
+        /// 诊断侦听器名称
         /// </summary>
         public const string DiagnosticListenerName = "KissUDiagnosticListener";
+
         /// <summary>
-        /// The prefix
+        /// 前缀
         /// </summary>
         public const string Prefix = "KissU.Core.";
+
         /// <summary>
-        /// The kiss u before transport
+        /// 传输前
         /// </summary>
-        public const string KissUBeforeTransport = Prefix +".{0}."+ nameof(WriteTransportBefore);
+        public const string BeforeTransport = Prefix + ".{0}." + nameof(WriteTransportBefore);
+
         /// <summary>
-        /// The kiss u after transport
+        /// 传输后
         /// </summary>
-        public const string KissUAfterTransport= Prefix + ".{0}." + nameof(WriteTransportAfter);
+        public const string AfterTransport = Prefix + ".{0}." + nameof(WriteTransportAfter);
+
         /// <summary>
-        /// The kiss u error transport
+        /// 错误传输
         /// </summary>
-        public const string KissUErrorTransport = Prefix + ".{0}." + nameof(WriteTransportError);
+        public const string ErrorTransport = Prefix + ".{0}." + nameof(WriteTransportError);
 
         /// <summary>
         /// Writes the transport before.
@@ -34,14 +38,12 @@ namespace KissU.Core.CPlatform.Diagnostics
         /// <param name="diagnosticListener">The diagnostic listener.</param>
         /// <param name="transportType">Type of the transport.</param>
         /// <param name="eventData">The event data.</param>
-        public static void WriteTransportBefore(this DiagnosticListener diagnosticListener,TransportType transportType, TransportEventData eventData)
+        public static void WriteTransportBefore(this DiagnosticListener diagnosticListener, TransportType transportType, TransportEventData eventData)
         {
-
-            if (diagnosticListener.IsEnabled(KissUBeforeTransport))
+            if (diagnosticListener.IsEnabled(BeforeTransport))
             {
                 eventData.Headers = new TracingHeaders();
-                diagnosticListener.Write(string.Format(KissUBeforeTransport,transportType), eventData);
-
+                diagnosticListener.Write(string.Format(BeforeTransport, transportType), eventData);
             }
         }
 
@@ -52,11 +54,11 @@ namespace KissU.Core.CPlatform.Diagnostics
         /// <param name="transportType">Type of the transport.</param>
         /// <param name="eventData">The event data.</param>
         public static void WriteTransportAfter(this DiagnosticListener diagnosticListener, TransportType transportType, ReceiveEventData eventData)
-        { 
-            if (diagnosticListener.IsEnabled(KissUAfterTransport))
+        {
+            if (diagnosticListener.IsEnabled(AfterTransport))
             {
                 eventData.Headers = new TracingHeaders();
-                diagnosticListener.Write(string.Format(KissUAfterTransport, transportType), eventData);
+                diagnosticListener.Write(string.Format(AfterTransport, transportType), eventData);
             }
         }
 
@@ -68,10 +70,10 @@ namespace KissU.Core.CPlatform.Diagnostics
         /// <param name="eventData">The event data.</param>
         public static void WriteTransportError(this DiagnosticListener diagnosticListener, TransportType transportType, TransportErrorEventData eventData)
         {
-            if (diagnosticListener.IsEnabled(KissUErrorTransport))
+            if (diagnosticListener.IsEnabled(ErrorTransport))
             {
                 eventData.Headers = new TracingHeaders();
-                diagnosticListener.Write(string.Format(KissUErrorTransport, transportType), eventData);
+                diagnosticListener.Write(string.Format(ErrorTransport, transportType), eventData);
             }
         }
     }

@@ -1,42 +1,23 @@
-﻿/*
- * Licensed to the KissU.Apm.Skywalking.Abstractions under one or more
- * contributor license agreements.  See the NOTICE file distributed with
- * this work for additional information regarding copyright ownership.
- * The KissU.Apm.Skywalking.Abstractions licenses this file to You under the Apache License, Version 2.0
- * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
- */
-  
-namespace KissU.Core.CPlatform.Diagnostics
+﻿namespace KissU.Core.CPlatform.Diagnostics
 {
     /// <summary>
-    /// Components.
+    /// 组件.
     /// </summary>
     public static class Components
     {
         /// <summary>
-        /// The RPC transport
+        /// RPC传输
         /// </summary>
         public static readonly StringOrIntValue RpcTransport = new StringOrIntValue("RPCTransport");
 
         /// <summary>
-        /// The cache intercept
+        /// 缓存拦截
         /// </summary>
         public static readonly StringOrIntValue CacheIntercept = new StringOrIntValue("CacheIntercept");
 
         /// <summary>
-        /// The intercept
+        /// 拦截
         /// </summary>
         public static readonly StringOrIntValue Intercept = new StringOrIntValue("Intercept");
     }
-        
 }

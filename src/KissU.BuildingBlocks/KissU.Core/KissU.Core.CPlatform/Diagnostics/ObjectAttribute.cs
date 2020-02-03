@@ -4,10 +4,10 @@ namespace KissU.Core.CPlatform.Diagnostics
 {
     /// <summary>
     /// ObjectAttribute.
-    /// Implements the <see cref="KissU.Core.CPlatform.Diagnostics.ParameterBinder" />
+    /// Implements the <see cref="ParameterBinder" />
     /// </summary>
-    /// <seealso cref="KissU.Core.CPlatform.Diagnostics.ParameterBinder" />
-    public class ObjectAttribute: ParameterBinder
+    /// <seealso cref="ParameterBinder" />
+    public class ObjectAttribute : ParameterBinder
     {
         /// <summary>
         /// Gets or sets the type of the target.

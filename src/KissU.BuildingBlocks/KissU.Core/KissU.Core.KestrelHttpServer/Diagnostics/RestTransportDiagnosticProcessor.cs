@@ -38,7 +38,7 @@ namespace KissU.Core.KestrelHttpServer.Diagnostics
             _serializer = serializer;
         }
 
-        [DiagnosticName(KissUEvents.KissUBeforeTransport, TransportType.Rest)]
+        [DiagnosticName(KissUEvents.BeforeTransport, TransportType.Rest)]
         public void TransportBefore([Object] TransportEventData eventData)
         {
             var message = eventData.Message.GetContent<HttpRequestMessage>();
@@ -55,7 +55,7 @@ namespace KissU.Core.KestrelHttpServer.Diagnostics
             _resultDictionary.TryAdd(eventData.OperationId.ToString(), context);
         }
 
-        [DiagnosticName(KissUEvents.KissUAfterTransport, TransportType.Rest)]
+        [DiagnosticName(KissUEvents.AfterTransport, TransportType.Rest)]
         public void TransportAfter([Object] ReceiveEventData eventData)
         {
             _resultDictionary.TryRemove(eventData.OperationId.ToString(), out SegmentContext context);
@@ -65,7 +65,7 @@ namespace KissU.Core.KestrelHttpServer.Diagnostics
             }
         }
 
-        [DiagnosticName(KissUEvents.KissUErrorTransport, TransportType.Rest)]
+        [DiagnosticName(KissUEvents.ErrorTransport, TransportType.Rest)]
         public void TransportError([Object] TransportErrorEventData eventData)
         {
             _resultDictionary.TryRemove(eventData.OperationId.ToString(), out SegmentContext context);

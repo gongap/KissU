@@ -1,23 +1,23 @@
 ﻿namespace KissU.Core.CPlatform.Diagnostics
 {
     /// <summary>
-    /// Enum TransportType
+    /// Enum SpanType
     /// </summary>
-    public enum TransportType
+    public enum SpanType
     {
         /// <summary>
-        /// The RPC
+        /// The entry
         /// </summary>
-        Rpc,
+        Entry = 0,
 
         /// <summary>
-        /// The rest
+        /// The exit
         /// </summary>
-        Rest,
+        Exit = 1,
 
         /// <summary>
-        /// The MQTT
+        /// The local
         /// </summary>
-        Mqtt,
+        Local = 2,
     }
 }

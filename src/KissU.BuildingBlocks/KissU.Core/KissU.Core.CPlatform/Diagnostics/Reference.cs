@@ -1,18 +1,18 @@
 ﻿namespace KissU.Core.CPlatform.Diagnostics
 {
     /// <summary>
-    /// Enum RpcMethod
+    /// Enum Reference
     /// </summary>
-    public enum RpcMethod
+    public enum Reference
     {
         /// <summary>
-        /// The proxy RPC
+        /// The cross process
         /// </summary>
-        Proxy_Rpc,
+        CrossProcess = 0,
 
         /// <summary>
-        /// The json RPC
+        /// The cross thread
         /// </summary>
-        Json_Rpc,
+        CrossThread = 1,
     }
 }

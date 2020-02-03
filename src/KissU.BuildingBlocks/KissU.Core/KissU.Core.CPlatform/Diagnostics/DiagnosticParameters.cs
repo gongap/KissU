@@ -1,17 +1,17 @@
 ﻿namespace KissU.Core.CPlatform.Diagnostics
 {
     /// <summary>
-    /// DiagnosticParameters.
+    /// 诊断参数.
     /// </summary>
     public class DiagnosticParameters
     {
         /// <summary>
-        /// The prefix
+        /// 前缀
         /// </summary>
-        public const string PREFIX = "KissU.Core.";
+        public const string Prefix = "KissU.Core.";
 
         /// <summary>
-        /// The diagnostic listener name
+        /// 诊断侦听器名称
         /// </summary>
         public const string DiagnosticListenerName = "KissUDiagnosticListener";
     }

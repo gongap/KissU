@@ -3,7 +3,7 @@
 namespace KissU.Core.CPlatform.Diagnostics
 {
     /// <summary>
-    /// EventData.
+    /// 事件数据.
     /// </summary>
     public class EventData
     {
@@ -13,13 +13,12 @@ namespace KissU.Core.CPlatform.Diagnostics
         /// <param name="operationId">The operation identifier.</param>
         public EventData(Guid operationId)
         {
-            OperationId = operationId; 
+            OperationId = operationId;
         }
 
         /// <summary>
         /// Gets or sets the operation identifier.
         /// </summary>
         public Guid OperationId { get; set; }
-
     }
 }

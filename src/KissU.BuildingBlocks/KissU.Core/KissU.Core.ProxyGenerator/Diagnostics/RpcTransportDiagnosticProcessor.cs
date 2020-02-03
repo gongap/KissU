@@ -38,7 +38,7 @@ namespace KissU.Core.ProxyGenerator.Diagnostics
             _serializer = serializer;
         }
 
-        [DiagnosticName(KissUEvents.KissUBeforeTransport, TransportType.Rpc)]
+        [DiagnosticName(KissUEvents.BeforeTransport, TransportType.Rpc)]
         public void TransportBefore([Object] TransportEventData eventData)
         {
             var message = eventData.Message.GetContent<RemoteInvokeMessage>();
@@ -56,7 +56,7 @@ namespace KissU.Core.ProxyGenerator.Diagnostics
             _resultDictionary.TryAdd(eventData.OperationId.ToString(), context);
         }
 
-        [DiagnosticName(KissUEvents.KissUAfterTransport, TransportType.Rpc)]
+        [DiagnosticName(KissUEvents.AfterTransport, TransportType.Rpc)]
         public void TransportAfter([Object] ReceiveEventData eventData)
         {
             _resultDictionary.TryRemove(eventData.OperationId.ToString(), out SegmentContext context);
@@ -66,7 +66,7 @@ namespace KissU.Core.ProxyGenerator.Diagnostics
             }
         }
 
-        [DiagnosticName(KissUEvents.KissUErrorTransport, TransportType.Rpc)]
+        [DiagnosticName(KissUEvents.ErrorTransport, TransportType.Rpc)]
         public void TransportError([Object] TransportErrorEventData eventData)
         {
               _resultDictionary.TryRemove(eventData.OperationId.ToString(),out SegmentContext context);

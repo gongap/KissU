@@ -6,9 +6,9 @@ namespace KissU.Core.CPlatform.Diagnostics
 {
     /// <summary>
     /// TracingHeaders.
-    /// Implements the <see cref="System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String, System.String}}" />
+    /// Implements the <see cref="IEnumerable{KeyValuePair{string, string}}" />
     /// </summary>
-    /// <seealso cref="System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String, System.String}}" />
+    /// <seealso cref="IEnumerable{KeyValuePair{string, string}}" />
     public class TracingHeaders : IEnumerable<KeyValuePair<string, string>>
     {
         private List<KeyValuePair<string, string>> _dataStore = new List<KeyValuePair<string, string>>();
@@ -65,5 +65,3 @@ namespace KissU.Core.CPlatform.Diagnostics
         }
     }
 }
-
-   
