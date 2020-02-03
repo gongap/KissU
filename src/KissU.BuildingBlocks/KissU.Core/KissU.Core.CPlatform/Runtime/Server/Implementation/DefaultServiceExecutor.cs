@@ -19,10 +19,10 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
     /// <seealso cref="IServiceExecutor" />
     public class DefaultServiceExecutor : IServiceExecutor
     {
-        private readonly IServiceEntryLocate _serviceEntryLocate;
-        private readonly ILogger<DefaultServiceExecutor> _logger;
-        private readonly IServiceRouteProvider _serviceRouteProvider;
         private readonly IAuthorizationFilter _authorizationFilter;
+        private readonly ILogger<DefaultServiceExecutor> _logger;
+        private readonly IServiceEntryLocate _serviceEntryLocate;
+        private readonly IServiceRouteProvider _serviceRouteProvider;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DefaultServiceExecutor" /> class.
@@ -31,7 +31,9 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
         /// <param name="serviceRouteProvider">The service route provider.</param>
         /// <param name="authorizationFilter">The authorization filter.</param>
         /// <param name="logger">The logger.</param>
-        public DefaultServiceExecutor(IServiceEntryLocate serviceEntryLocate, IServiceRouteProvider serviceRouteProvider, IAuthorizationFilter authorizationFilter, ILogger<DefaultServiceExecutor> logger)
+        public DefaultServiceExecutor(IServiceEntryLocate serviceEntryLocate,
+            IServiceRouteProvider serviceRouteProvider, IAuthorizationFilter authorizationFilter,
+            ILogger<DefaultServiceExecutor> logger)
         {
             _serviceEntryLocate = serviceEntryLocate;
             _logger = logger;
@@ -111,14 +113,15 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
                 // 确保新起一个线程执行，不堵塞当前线程。
                 await Task.Factory.StartNew(
                     async () =>
-                {
-                    // 执行本地代码。
-                    await LocalExecuteAsync(entry, remoteInvokeMessage, resultMessage);
-                }, TaskCreationOptions.LongRunning);
+                    {
+                        // 执行本地代码。
+                        await LocalExecuteAsync(entry, remoteInvokeMessage, resultMessage);
+                    }, TaskCreationOptions.LongRunning);
             }
         }
 
-        private async Task LocalExecuteAsync(ServiceEntry entry, RemoteInvokeMessage remoteInvokeMessage, RemoteInvokeResultMessage resultMessage)
+        private async Task LocalExecuteAsync(ServiceEntry entry, RemoteInvokeMessage remoteInvokeMessage,
+            RemoteInvokeResultMessage resultMessage)
         {
             try
             {
@@ -143,7 +146,9 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
                     }
                 }
 
-                if (remoteInvokeMessage.DecodeJObject && !(resultMessage.Result is IConvertible && UtilityType.ConvertibleType.GetTypeInfo().IsAssignableFrom(resultMessage.Result.GetType())))
+                if (remoteInvokeMessage.DecodeJObject &&
+                    !(resultMessage.Result is IConvertible && UtilityType.ConvertibleType.GetTypeInfo()
+                          .IsAssignableFrom(resultMessage.Result.GetType())))
                 {
                     resultMessage.Result = JsonConvert.SerializeObject(resultMessage.Result);
                 }
@@ -160,7 +165,8 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
             }
         }
 
-        private async Task SendRemoteInvokeResult(IMessageSender sender, string messageId, RemoteInvokeResultMessage resultMessage)
+        private async Task SendRemoteInvokeResult(IMessageSender sender, string messageId,
+            RemoteInvokeResultMessage resultMessage)
         {
             try
             {

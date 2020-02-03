@@ -8,6 +8,6 @@
         /// <summary>
         /// Gets a value indicating whether [allow multiple].
         /// </summary>
-        bool AllowMultiple { get; }  
+        bool AllowMultiple { get; }
     }
 }

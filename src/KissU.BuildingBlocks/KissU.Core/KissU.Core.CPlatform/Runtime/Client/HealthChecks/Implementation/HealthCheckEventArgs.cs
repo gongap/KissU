@@ -21,7 +21,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.HealthChecks.Implementation
         /// </summary>
         /// <param name="address">The address.</param>
         /// <param name="health">if set to <c>true</c> [health].</param>
-        public HealthCheckEventArgs(AddressModel address,bool health)
+        public HealthCheckEventArgs(AddressModel address, bool health)
         {
             Address = address;
             Health = health;
@@ -30,11 +30,11 @@ namespace KissU.Core.CPlatform.Runtime.Client.HealthChecks.Implementation
         /// <summary>
         /// 地址.
         /// </summary>
-        public AddressModel Address { get; private set; }
+        public AddressModel Address { get; }
 
         /// <summary>
         /// Gets a value indicating whether this <see cref="HealthCheckEventArgs" /> is health.
         /// </summary>
-        public bool Health { get; private set; }
+        public bool Health { get; }
     }
 }

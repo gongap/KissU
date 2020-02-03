@@ -11,12 +11,12 @@ namespace KissU.Core.CPlatform.Configurations.Watch
     /// Implements the <see cref="IConfigurationWatchManager" />.
     /// </summary>
     /// <seealso cref="IConfigurationWatchManager" />
-    public class ConfigurationWatchManager: IConfigurationWatchManager
+    public class ConfigurationWatchManager : IConfigurationWatchManager
     {
         /// <summary>
-        /// The data watches
+        /// The logger
         /// </summary>
-        internal HashSet<ConfigurationWatch> dataWatches = new  HashSet<ConfigurationWatch>();
+        private readonly ILogger<ConfigurationWatchManager> _logger;
 
         /// <summary>
         /// The timer
@@ -24,9 +24,9 @@ namespace KissU.Core.CPlatform.Configurations.Watch
         private readonly Timer _timer;
 
         /// <summary>
-        /// The logger
+        /// The data watches
         /// </summary>
-        private readonly ILogger<ConfigurationWatchManager> _logger;
+        internal HashSet<ConfigurationWatch> dataWatches = new HashSet<ConfigurationWatch>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ConfigurationWatchManager" /> class.
@@ -37,10 +37,7 @@ namespace KissU.Core.CPlatform.Configurations.Watch
             _logger = logger;
             var timeSpan = TimeSpan.FromSeconds(AppConfig.ServerOptions.WatchInterval);
             _timer = new Timer(
-                async s =>
-            {
-                await Watching();
-            }, null, timeSpan, timeSpan);
+                async s => { await Watching(); }, null, timeSpan, timeSpan);
         }
 
         /// <summary>
@@ -48,15 +45,9 @@ namespace KissU.Core.CPlatform.Configurations.Watch
         /// </summary>
         public HashSet<ConfigurationWatch> DataWatches
         {
-            get
-            {
-                return dataWatches;
-            }
+            get => dataWatches;
 
-            set
-            {
-                dataWatches = value;
-            }
+            set => dataWatches = value;
         }
 
         /// <summary>
@@ -67,7 +58,7 @@ namespace KissU.Core.CPlatform.Configurations.Watch
         {
             lock (dataWatches)
             {
-               if (!dataWatches.Contains(watch))
+                if (!dataWatches.Contains(watch))
                 {
                     dataWatches.Add(watch);
                 }
@@ -83,7 +74,7 @@ namespace KissU.Core.CPlatform.Configurations.Watch
             {
                 try
                 {
-                    var task= watch.Process();
+                    var task = watch.Process();
                     if (!task.IsCompletedSuccessfully)
                     {
                         await task;

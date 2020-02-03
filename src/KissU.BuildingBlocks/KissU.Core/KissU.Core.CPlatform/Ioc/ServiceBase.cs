@@ -8,7 +8,7 @@ namespace KissU.Core.CPlatform.Ioc
     /// Implements the <see cref="IServiceBehavior" />
     /// </summary>
     /// <seealso cref="IServiceBehavior" />
-    public abstract class ServiceBase: IServiceBehavior
+    public abstract class ServiceBase : IServiceBehavior
     {
         /// <summary>
         /// Gets the service.

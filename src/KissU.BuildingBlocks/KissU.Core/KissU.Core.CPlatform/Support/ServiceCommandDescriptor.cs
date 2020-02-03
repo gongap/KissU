@@ -5,7 +5,7 @@
     /// Implements the <see cref="ServiceCommand" />
     /// </summary>
     /// <seealso cref="ServiceCommand" />
-    public class ServiceCommandDescriptor:ServiceCommand
+    public class ServiceCommandDescriptor : ServiceCommand
     {
         /// <summary>
         /// 服务标识符.

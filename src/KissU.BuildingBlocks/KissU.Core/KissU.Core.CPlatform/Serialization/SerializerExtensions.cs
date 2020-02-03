@@ -15,7 +15,7 @@
         /// <returns>返回反序列化对象</returns>
         public static TResult Deserialize<T, TResult>(this ISerializer<T> serializer, T content)
         {
-            return (TResult)serializer.Deserialize(content, typeof(TResult));
+            return (TResult) serializer.Deserialize(content, typeof(TResult));
         }
     }
 }

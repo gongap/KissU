@@ -9,7 +9,7 @@ namespace KissU.Core.CPlatform.Filters
     /// Implements the <see cref="T:KissU.Core.CPlatform.Filters.IFilter" />.
     /// </summary>
     /// <seealso cref="KissU.Core.CPlatform.Filters.IFilter" />
-    public interface IExceptionFilter: IFilter
+    public interface IExceptionFilter : IFilter
     {
         /// <summary>
         /// 异步执行异常过滤器.
@@ -17,6 +17,7 @@ namespace KissU.Core.CPlatform.Filters
         /// <param name="actionExecutedContext">The action executed context.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>Task.</returns>
-        Task ExecuteExceptionFilterAsync(RpcActionExecutedContext actionExecutedContext, CancellationToken cancellationToken);
+        Task ExecuteExceptionFilterAsync(RpcActionExecutedContext actionExecutedContext,
+            CancellationToken cancellationToken);
     }
 }

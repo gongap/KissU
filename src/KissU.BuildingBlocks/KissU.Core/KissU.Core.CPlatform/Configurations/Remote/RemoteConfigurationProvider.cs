@@ -22,8 +22,10 @@ namespace KissU.Core.CPlatform.Configurations.Remote
             Check.NotNull(source, "source");
             if (!string.IsNullOrEmpty(source.ConfigurationKeyPrefix))
             {
-                Check.CheckCondition(() => source.ConfigurationKeyPrefix.Trim().StartsWith(":"), CPlatformResource.InvalidStartCharacter, "source.ConfigurationKeyPrefix", ":");
-                Check.CheckCondition(() => source.ConfigurationKeyPrefix.Trim().EndsWith(":"), CPlatformResource.InvalidEndCharacter, "source.ConfigurationKeyPrefix",":");
+                Check.CheckCondition(() => source.ConfigurationKeyPrefix.Trim().StartsWith(":"),
+                    CPlatformResource.InvalidStartCharacter, "source.ConfigurationKeyPrefix", ":");
+                Check.CheckCondition(() => source.ConfigurationKeyPrefix.Trim().EndsWith(":"),
+                    CPlatformResource.InvalidEndCharacter, "source.ConfigurationKeyPrefix", ":");
             }
 
             Source = source;
@@ -78,7 +80,8 @@ namespace KissU.Core.CPlatform.Configurations.Remote
                 }
                 else if (!Source.Optional)
                 {
-                    throw new Exception(string.Format(CPlatformResource.HttpException, response.StatusCode, response.ReasonPhrase));
+                    throw new Exception(string.Format(CPlatformResource.HttpException, response.StatusCode,
+                        response.ReasonPhrase));
                 }
             }
             catch (Exception)

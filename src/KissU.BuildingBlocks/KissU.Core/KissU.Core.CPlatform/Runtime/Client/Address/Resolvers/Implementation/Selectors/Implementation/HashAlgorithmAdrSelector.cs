@@ -19,10 +19,14 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
     /// <seealso cref="AddressSelectorBase" />
     public class HashAlgorithmAdrSelector : AddressSelectorBase
     {
-        private readonly IHealthCheckService _healthCheckService;
-        private readonly ConcurrentDictionary<string, ConsistentHash<AddressModel>> _concurrent = new ConcurrentDictionary<string, ConsistentHash<AddressModel>>();
-        private readonly List<ValueTuple<string, AddressModel>> _unHealths = new List<ValueTuple<string, AddressModel>>();
+        private readonly ConcurrentDictionary<string, ConsistentHash<AddressModel>> _concurrent =
+            new ConcurrentDictionary<string, ConsistentHash<AddressModel>>();
+
         private readonly IHashAlgorithm _hashAlgorithm;
+        private readonly IHealthCheckService _healthCheckService;
+
+        private readonly List<ValueTuple<string, AddressModel>> _unHealths =
+            new List<ValueTuple<string, AddressModel>>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HashAlgorithmAdrSelector" /> class.
@@ -30,7 +34,8 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
         /// <param name="serviceRouteManager">The service route manager.</param>
         /// <param name="healthCheckService">The health check service.</param>
         /// <param name="hashAlgorithm">The hash algorithm.</param>
-        public HashAlgorithmAdrSelector(IServiceRouteManager serviceRouteManager, IHealthCheckService healthCheckService, IHashAlgorithm hashAlgorithm)
+        public HashAlgorithmAdrSelector(IServiceRouteManager serviceRouteManager,
+            IHealthCheckService healthCheckService, IHashAlgorithm hashAlgorithm)
         {
             _healthCheckService = healthCheckService;
             _hashAlgorithm = hashAlgorithm;
@@ -81,8 +86,8 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
                     _unHealths.Add(new ValueTuple<string, AddressModel>(key, addressModel));
                     _healthCheckService.Changed += ItemNode_Changed;
                 }
-            }
-            while (!isHealth);
+            } while (!isHealth);
+
             return addressModel;
         }
 
@@ -113,9 +118,10 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
         private void ServiceRouteManager_Removed(object sender, ServiceRouteEventArgs e)
         {
             var key = GetCacheKey(e.Route.ServiceDescriptor);
-            var item = _unHealths.Where(p => e.Route.Address.Select(addr => addr.ToString()).Contains(p.Item2.ToString())).ToList();
+            var item = _unHealths
+                .Where(p => e.Route.Address.Select(addr => addr.ToString()).Contains(p.Item2.ToString())).ToList();
             item.ForEach(p => _unHealths.Remove(p));
-            _concurrent.TryRemove(key, out ConsistentHash<AddressModel> value);
+            _concurrent.TryRemove(key, out var value);
         }
     }
 }

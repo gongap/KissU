@@ -42,11 +42,9 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
             {
                 return context.Address.First();
             }
-            else
-            {
-                var vt = SelectAsync(context);
-                return vt.IsCompletedSuccessfully ? vt.Result : await vt;
-            }
+
+            var vt = SelectAsync(context);
+            return vt.IsCompletedSuccessfully ? vt.Result : await vt;
         }
 
         /// <summary>

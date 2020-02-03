@@ -5,22 +5,12 @@ namespace KissU.Core.CPlatform.Diagnostics
 {
     /// <summary>
     /// TagCollection.
-    /// Implements the <see cref="IEnumerable{KeyValuePair{string, string}}" />
+    /// Implements the <see cref="IEnumerable{T}" />
     /// </summary>
     /// <seealso cref="IEnumerable{KeyValuePair{string, string}}" />
     public class TagCollection : IEnumerable<KeyValuePair<string, string>>
     {
         private readonly Dictionary<string, string> tags = new Dictionary<string, string>();
-
-        /// <summary>
-        /// Adds the tag.
-        /// </summary>
-        /// <param name="key">The key.</param>
-        /// <param name="value">The value.</param>
-        internal void AddTag(string key, string value)
-        {
-            tags[key] = value;
-        }
 
         /// <summary>
         /// Returns an enumerator that iterates through the collection.
@@ -34,6 +24,16 @@ namespace KissU.Core.CPlatform.Diagnostics
         IEnumerator IEnumerable.GetEnumerator()
         {
             return tags.GetEnumerator();
+        }
+
+        /// <summary>
+        /// Adds the tag.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="value">The value.</param>
+        internal void AddTag(string key, string value)
+        {
+            tags[key] = value;
         }
     }
 }

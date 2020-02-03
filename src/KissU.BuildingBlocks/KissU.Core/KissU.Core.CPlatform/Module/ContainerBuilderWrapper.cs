@@ -8,11 +8,6 @@ namespace KissU.Core.CPlatform.Module
     public class ContainerBuilderWrapper
     {
         /// <summary>
-        /// 容器构建器
-        /// </summary>
-        public ContainerBuilder ContainerBuilder { get; private set; }
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="ContainerBuilderWrapper" /> class.
         /// </summary>
         /// <param name="builder">容器构建器</param>
@@ -20,6 +15,11 @@ namespace KissU.Core.CPlatform.Module
         {
             ContainerBuilder = builder;
         }
+
+        /// <summary>
+        /// 容器构建器
+        /// </summary>
+        public ContainerBuilder ContainerBuilder { get; }
 
         /// <summary>
         /// 构建容器

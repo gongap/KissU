@@ -4,7 +4,7 @@ namespace KissU.Core.CPlatform.Diagnostics
 {
     /// <summary>
     /// Struct UniqueId
-    /// Implements the <see cref="IEquatable{UniqueId}" />
+    /// Implements the <see cref="IEquatable{T}" />
     /// </summary>
     /// <seealso cref="IEquatable{UniqueId}" />
     public struct UniqueId : IEquatable<UniqueId>
@@ -25,7 +25,7 @@ namespace KissU.Core.CPlatform.Diagnostics
         public long Part3 { get; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UniqueId"/> struct.
+        /// Initializes a new instance of the <see cref="UniqueId" /> struct.
         /// </summary>
         /// <param name="part1">The part1.</param>
         /// <param name="part2">The part2.</param>
@@ -41,23 +41,33 @@ namespace KissU.Core.CPlatform.Diagnostics
         /// Returns a <see cref="string" /> that represents this instance.
         /// </summary>
         /// <returns>A <see cref="string" /> that represents this instance.</returns>
-        public override string ToString() => $"{Part1}.{Part2}.{Part3}";
+        public override string ToString()
+        {
+            return $"{Part1}.{Part2}.{Part3}";
+        }
 
         /// <summary>
         /// Indicates whether the current object is equal to another object of the same type.
         /// </summary>
         /// <param name="other">An object to compare with this object.</param>
-        /// <returns><see langword="true" /> if the current object is equal to the <paramref name="other" /> parameter; otherwise, <see langword="false" />.</returns>
-        public bool Equals(UniqueId other) =>
-            Part1 == other.Part1 && Part2 == other.Part2 && Part3 == other.Part3;
+        /// <returns>
+        /// <see langword="true" /> if the current object is equal to the <paramref name="other" /> parameter;
+        /// otherwise, <see langword="false" />.
+        /// </returns>
+        public bool Equals(UniqueId other)
+        {
+            return Part1 == other.Part1 && Part2 == other.Part2 && Part3 == other.Part3;
+        }
 
         /// <summary>
         /// Determines whether the specified <see cref="object" /> is equal to this instance.
         /// </summary>
         /// <param name="obj">The object to compare with the current instance.</param>
         /// <returns><c>true</c> if the specified <see cref="object" /> is equal to this instance; otherwise, <c>false</c>.</returns>
-        public override bool Equals(object obj) =>
-            obj is UniqueId other && Equals(other);
+        public override bool Equals(object obj)
+        {
+            return obj is UniqueId other && Equals(other);
+        }
 
         /// <summary>
         /// Returns a hash code for this instance.
@@ -80,7 +90,10 @@ namespace KissU.Core.CPlatform.Diagnostics
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <returns>The result of the operator.</returns>
-        public static bool operator ==(UniqueId left, UniqueId right) => left.Equals(right);
+        public static bool operator ==(UniqueId left, UniqueId right)
+        {
+            return left.Equals(right);
+        }
 
         /// <summary>
         /// Implements the != operator.
@@ -88,6 +101,9 @@ namespace KissU.Core.CPlatform.Diagnostics
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <returns>The result of the operator.</returns>
-        public static bool operator !=(UniqueId left, UniqueId right) => !left.Equals(right);
+        public static bool operator !=(UniqueId left, UniqueId right)
+        {
+            return !left.Equals(right);
+        }
     }
 }

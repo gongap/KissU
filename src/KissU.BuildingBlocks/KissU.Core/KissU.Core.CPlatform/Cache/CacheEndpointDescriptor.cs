@@ -24,7 +24,8 @@ namespace KissU.Core.CPlatform.Cache
         /// <param name="address">地址模型实例。</param>
         /// <param name="serializer">序列化器。</param>
         /// <returns>服务地址描述符。</returns>
-        public static CacheEndpointDescriptor CreateDescriptor<T>(T address, ISerializer<string> serializer) where T : CacheEndpoint, new()
+        public static CacheEndpointDescriptor CreateDescriptor<T>(T address, ISerializer<string> serializer)
+            where T : CacheEndpoint, new()
         {
             return new CacheEndpointDescriptor
             {

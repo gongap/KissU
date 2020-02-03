@@ -17,6 +17,19 @@ namespace KissU.Core.CPlatform.Filters.Implementation
     public abstract class ExceptionFilterAttribute : FilterAttribute, IExceptionFilter, IFilter
     {
         /// <summary>
+        /// 异步执行异常过滤器.
+        /// </summary>
+        /// <param name="actionExecutedContext">The action executed context.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>Task.</returns>
+        Task IExceptionFilter.ExecuteExceptionFilterAsync(RpcActionExecutedContext actionExecutedContext,
+            CancellationToken cancellationToken)
+        {
+            Check.NotNull(actionExecutedContext, "actionExecutedContext");
+            return ExecuteExceptionFilterAsyncCore(actionExecutedContext, cancellationToken);
+        }
+
+        /// <summary>
         /// Called when [exception].
         /// </summary>
         /// <param name="actionExecutedContext">The action executed context.</param>
@@ -30,7 +43,8 @@ namespace KissU.Core.CPlatform.Filters.Implementation
         /// <param name="actionExecutedContext">The action executed context.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>Task.</returns>
-        public virtual Task OnExceptionAsync(RpcActionExecutedContext actionExecutedContext, CancellationToken cancellationToken)
+        public virtual Task OnExceptionAsync(RpcActionExecutedContext actionExecutedContext,
+            CancellationToken cancellationToken)
         {
             try
             {
@@ -44,19 +58,8 @@ namespace KissU.Core.CPlatform.Filters.Implementation
             return TaskHelpers.Completed();
         }
 
-        /// <summary>
-        /// 异步执行异常过滤器.
-        /// </summary>
-        /// <param name="actionExecutedContext">The action executed context.</param>
-        /// <param name="cancellationToken">The cancellation token.</param>
-        /// <returns>Task.</returns>
-        Task IExceptionFilter.ExecuteExceptionFilterAsync(RpcActionExecutedContext actionExecutedContext, CancellationToken cancellationToken)
-        {
-            Check.NotNull(actionExecutedContext, "actionExecutedContext");
-            return ExecuteExceptionFilterAsyncCore(actionExecutedContext, cancellationToken);
-        }
-
-        private async Task ExecuteExceptionFilterAsyncCore(RpcActionExecutedContext actionExecutedContext, CancellationToken cancellationToken)
+        private async Task ExecuteExceptionFilterAsyncCore(RpcActionExecutedContext actionExecutedContext,
+            CancellationToken cancellationToken)
         {
             await OnExceptionAsync(actionExecutedContext, cancellationToken);
         }

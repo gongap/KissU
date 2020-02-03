@@ -12,7 +12,7 @@
         /// <returns>失效时间。</returns>
         public static int DefaultExpireTime(this CacheDescriptor descriptor)
         {
-            return descriptor.GetMetadata<int>("DefaultExpireTime", 60);
+            return descriptor.GetMetadata("DefaultExpireTime", 60);
         }
 
         /// <summary>
@@ -34,7 +34,7 @@
         /// <returns>缓存描述符。</returns>
         public static int ConnectTimeout(this CacheDescriptor descriptor)
         {
-            return descriptor.GetMetadata<int>("ConnectTimeout", 60);
+            return descriptor.GetMetadata("ConnectTimeout", 60);
         }
 
         /// <summary>

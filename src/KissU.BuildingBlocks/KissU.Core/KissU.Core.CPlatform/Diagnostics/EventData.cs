@@ -8,7 +8,7 @@ namespace KissU.Core.CPlatform.Diagnostics
     public class EventData
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="EventData"/> class.
+        /// Initializes a new instance of the <see cref="EventData" /> class.
         /// </summary>
         /// <param name="operationId">The operation identifier.</param>
         public EventData(Guid operationId)

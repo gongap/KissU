@@ -14,9 +14,9 @@ namespace KissU.Core.CPlatform.Engines.Implementation
     /// <seealso cref="IServiceEngineBuilder" />
     public class DefaultServiceEngineBuilder : IServiceEngineBuilder
     {
-        private readonly VirtualPathProviderServiceEngine _serviceEngine;
-        private readonly ILogger<DefaultServiceEngineBuilder> _logger;
         private readonly Dictionary<string, DateTime> _dic = new Dictionary<string, DateTime>();
+        private readonly ILogger<DefaultServiceEngineBuilder> _logger;
+        private readonly VirtualPathProviderServiceEngine _serviceEngine;
         private DateTime _lastBuildTime = DateTime.Now;
 
         /// <summary>
@@ -89,14 +89,17 @@ namespace KissU.Core.CPlatform.Engines.Implementation
             ValueTuple<List<Type>, IEnumerable<string>>? result = null;
             var serviceBuilder = new ServiceBuilder(serviceContainer);
             var virtualPaths = new List<string>();
-            string rootPath = string.IsNullOrEmpty(AppConfig.ServerOptions.RootPath) ?
-            AppContext.BaseDirectory : AppConfig.ServerOptions.RootPath;
+            var rootPath = string.IsNullOrEmpty(AppConfig.ServerOptions.RootPath)
+                ? AppContext.BaseDirectory
+                : AppConfig.ServerOptions.RootPath;
             if (_serviceEngine != null)
             {
                 if (_serviceEngine.ModuleServiceLocationFormats != null)
                 {
                     var paths = GetPaths(_serviceEngine.ModuleServiceLocationFormats);
-                    paths = paths?.Where(p => (Directory.GetLastWriteTime(Path.Combine(rootPath, p)) - _lastBuildTime).TotalSeconds > 0).ToArray();
+                    paths = paths?.Where(p =>
+                            (Directory.GetLastWriteTime(Path.Combine(rootPath, p)) - _lastBuildTime).TotalSeconds > 0)
+                        .ToArray();
                     if (paths == null || paths.Length == 0)
                     {
                         return null;
@@ -110,13 +113,15 @@ namespace KissU.Core.CPlatform.Engines.Implementation
                     serviceBuilder.RegisterServices(paths);
                     serviceBuilder.RegisterRepositories(paths);
                     serviceBuilder.RegisterServiceBus(paths);
-                    result = new ValueTuple<List<Type>, IEnumerable<string>>(serviceBuilder.GetInterfaceService(paths), serviceBuilder.GetDataContractName(paths));
+                    result = new ValueTuple<List<Type>, IEnumerable<string>>(serviceBuilder.GetInterfaceService(paths),
+                        serviceBuilder.GetDataContractName(paths));
                 }
 
                 if (_serviceEngine.ComponentServiceLocationFormats != null)
                 {
                     var paths = GetPaths(_serviceEngine.ComponentServiceLocationFormats);
-                    paths = paths?.Where(p => (Directory.GetLastWriteTime(p) - _lastBuildTime).TotalSeconds > 0).ToArray();
+                    paths = paths?.Where(p => (Directory.GetLastWriteTime(p) - _lastBuildTime).TotalSeconds > 0)
+                        .ToArray();
                     if (paths != null && paths.Length > 0)
                     {
                         if (_logger.IsEnabled(LogLevel.Debug))
@@ -137,8 +142,9 @@ namespace KissU.Core.CPlatform.Engines.Implementation
         private string[] GetPaths(params string[] virtualPaths)
         {
             var directories = new List<string>(virtualPaths.Where(p => !string.IsNullOrEmpty(p)));
-            string rootPath = string.IsNullOrEmpty(AppConfig.ServerOptions.RootPath) ?
-                AppContext.BaseDirectory : AppConfig.ServerOptions.RootPath;
+            var rootPath = string.IsNullOrEmpty(AppConfig.ServerOptions.RootPath)
+                ? AppContext.BaseDirectory
+                : AppConfig.ServerOptions.RootPath;
             var virPaths = virtualPaths;
             foreach (var virtualPath in virtualPaths)
             {

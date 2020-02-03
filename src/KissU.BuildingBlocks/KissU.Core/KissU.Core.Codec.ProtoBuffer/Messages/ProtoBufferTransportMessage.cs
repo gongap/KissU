@@ -46,12 +46,12 @@ namespace KissU.Core.Codec.ProtoBuffer.Messages
     
         public bool IsInvokeMessage()
         {
-            return ContentType == MessagePackTransportMessageType.remoteInvokeMessageTypeName;
+            return ContentType == MessagePackTransportMessageType.RemoteInvokeMessageTypeName;
         }
 
         public bool IsInvokeResultMessage()
         {
-            return ContentType == MessagePackTransportMessageType.remoteInvokeResultMessageTypeName;
+            return ContentType == MessagePackTransportMessageType.RemoteInvokeResultMessageTypeName;
         }
 
         public TransportMessage GetTransportMessage()

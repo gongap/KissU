@@ -16,9 +16,11 @@ namespace KissU.Core.CPlatform.Support.Implementation
     /// <seealso cref="ServiceCommandBase" />
     public class ServiceCommandProvider : ServiceCommandBase
     {
+        private readonly ConcurrentDictionary<string, ServiceCommand> _serviceCommand =
+            new ConcurrentDictionary<string, ServiceCommand>();
+
         private readonly IServiceEntryManager _serviceEntryManager;
         private readonly IServiceProvider _serviceProvider;
-        private readonly ConcurrentDictionary<string, ServiceCommand> _serviceCommand = new ConcurrentDictionary<string, ServiceCommand>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ServiceCommandProvider" /> class.
@@ -51,10 +53,8 @@ namespace KissU.Core.CPlatform.Support.Implementation
                 var task = GetCommandAsync(serviceId);
                 return task.IsCompletedSuccessfully ? task.Result : await task;
             }
-            else
-            {
-                return result;
-            }
+
+            return result;
         }
 
         /// <summary>
@@ -69,9 +69,9 @@ namespace KissU.Core.CPlatform.Support.Implementation
             if (manager == null)
             {
                 var command = (from q in _serviceEntryManager.GetEntries()
-                               let k = q.Attributes
-                               where k.OfType<CommandAttribute>().Count() > 0 && q.Descriptor.Id == serviceId
-                               select k.OfType<CommandAttribute>().FirstOrDefault()).FirstOrDefault();
+                    let k = q.Attributes
+                    where k.OfType<CommandAttribute>().Count() > 0 && q.Descriptor.Id == serviceId
+                    select k.OfType<CommandAttribute>().FirstOrDefault()).FirstOrDefault();
                 result = ConvertServiceCommand(command);
             }
             else

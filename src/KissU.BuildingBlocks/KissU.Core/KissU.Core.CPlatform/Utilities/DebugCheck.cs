@@ -14,7 +14,10 @@ namespace KissU.Core.CPlatform.Utilities
         /// <param name="value">The value.</param>
         [Conditional("DEBUG")]
         public static void NotNull<T>(T value)
-            where T : class => Debug.Assert(value != null, "NotNull");
+            where T : class
+        {
+            Debug.Assert(value != null, "NotNull");
+        }
 
         /// <summary>
         /// 不是null.
@@ -23,13 +26,19 @@ namespace KissU.Core.CPlatform.Utilities
         /// <param name="value">The value.</param>
         [Conditional("DEBUG")]
         public static void NotNull<T>(T? value)
-            where T : struct => Debug.Assert(value != null, "NotNull");
+            where T : struct
+        {
+            Debug.Assert(value != null, "NotNull");
+        }
 
         /// <summary>
         /// 不是空.
         /// </summary>
         /// <param name="value">The value.</param>
         [Conditional("DEBUG")]
-        public static void NotEmpty(string value) => Debug.Assert(!string.IsNullOrWhiteSpace(value), "NotEmpty");
+        public static void NotEmpty(string value)
+        {
+            Debug.Assert(!string.IsNullOrWhiteSpace(value), "NotEmpty");
+        }
     }
 }

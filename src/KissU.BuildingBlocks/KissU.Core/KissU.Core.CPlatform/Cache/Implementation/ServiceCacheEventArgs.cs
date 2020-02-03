@@ -17,6 +17,6 @@
         /// <summary>
         /// 服务缓存
         /// </summary>
-        public ServiceCache Cache { get; private set; }
+        public ServiceCache Cache { get; }
     }
 }

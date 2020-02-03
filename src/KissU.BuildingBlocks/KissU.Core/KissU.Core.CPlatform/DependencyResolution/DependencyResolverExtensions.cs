@@ -21,7 +21,7 @@ namespace KissU.Core.CPlatform.DependencyResolution
         {
             Check.NotNull(resolver, "resolver");
 
-            return (T)resolver.GetService(typeof(T), key);
+            return (T) resolver.GetService(typeof(T), key);
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace KissU.Core.CPlatform.DependencyResolution
         public static T GetService<T>(this IDependencyResolver resolver)
         {
             Check.NotNull(resolver, "resolver");
-            return (T)resolver.GetService(typeof(T), null);
+            return (T) resolver.GetService(typeof(T), null);
         }
 
         /// <summary>
@@ -94,12 +94,13 @@ namespace KissU.Core.CPlatform.DependencyResolution
         /// <param name="type">类型</param>
         /// <param name="key">键</param>
         /// <returns>返回实例对象集合</returns>
-        internal static IEnumerable<object> GetServiceAsServices(this IDependencyResolver resolver, Type type, object key)
+        internal static IEnumerable<object> GetServiceAsServices(this IDependencyResolver resolver, Type type,
+            object key)
         {
             DebugCheck.NotNull(resolver);
 
             var service = resolver.GetService(type, key);
-            return service == null ? Enumerable.Empty<object>() : new[] { service };
+            return service == null ? Enumerable.Empty<object>() : new[] {service};
         }
     }
 }

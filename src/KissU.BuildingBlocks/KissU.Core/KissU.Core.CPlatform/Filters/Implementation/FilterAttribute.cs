@@ -11,19 +11,17 @@ namespace KissU.Core.CPlatform.Filters.Implementation
     /// <seealso cref="IFilter" />
     public abstract class FilterAttribute : Attribute, IFilter
     {
-        private readonly bool _filterAttribute;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="FilterAttribute" /> class.
         /// </summary>
         protected FilterAttribute()
         {
-            _filterAttribute = true;
+            AllowMultiple = true;
         }
 
         /// <summary>
         /// 允许多重.
         /// </summary>
-        public virtual bool AllowMultiple { get => _filterAttribute; }
+        public virtual bool AllowMultiple { get; }
     }
 }

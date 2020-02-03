@@ -9,7 +9,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
     /// <seealso cref="HttpMethodAttribute" />
     public class HttpPostAttribute : HttpMethodAttribute
     {
-        private static readonly IEnumerable<string> _supportedMethods = new[] { "POST" };
+        private static readonly IEnumerable<string> _supportedMethods = new[] {"POST"};
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HttpPostAttribute" /> class.

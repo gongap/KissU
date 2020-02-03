@@ -25,7 +25,7 @@ namespace KissU.Core.CPlatform.Utilities
                 result = env;
                 if (string.IsNullOrEmpty(env))
                 {
-                    var arrayData = value.ToString().Split("|");
+                    var arrayData = value.Split("|");
                     result = arrayData.Length == 2 ? arrayData[1] : env;
                 }
             }
@@ -65,8 +65,8 @@ namespace KissU.Core.CPlatform.Utilities
         private static List<string> GetParameters(string text)
         {
             var matchVale = new List<string>();
-            string Reg = @"(?<=\${)[^\${}]*(?=})";
-            string key = string.Empty;
+            var Reg = @"(?<=\${)[^\${}]*(?=})";
+            var key = string.Empty;
             foreach (Match m in Regex.Matches(text, Reg))
             {
                 matchVale.Add(m.Value);

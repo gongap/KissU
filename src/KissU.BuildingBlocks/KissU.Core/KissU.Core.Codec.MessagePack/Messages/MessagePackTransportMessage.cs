@@ -47,13 +47,13 @@ namespace KissU.Core.Codec.MessagePack.Messages
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool IsInvokeMessage()
         {
-            return ContentType == MessagePackTransportMessageType.remoteInvokeMessageTypeName;
+            return ContentType == MessagePackTransportMessageType.RemoteInvokeMessageTypeName;
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool IsInvokeResultMessage()
         {
-            return ContentType == MessagePackTransportMessageType.remoteInvokeResultMessageTypeName;
+            return ContentType == MessagePackTransportMessageType.RemoteInvokeResultMessageTypeName;
         }
 
         public TransportMessage GetTransportMessage()

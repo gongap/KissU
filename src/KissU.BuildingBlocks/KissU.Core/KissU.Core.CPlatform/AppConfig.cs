@@ -32,8 +32,9 @@ namespace KissU.Core.CPlatform
         {
             get
             {
-                AddressSelectorMode mode = _loadBalanceMode;
-                if (Configuration?["AccessTokenExpireTimeSpan"] != null && !Enum.TryParse(Configuration["AccessTokenExpireTimeSpan"], out mode))
+                var mode = _loadBalanceMode;
+                if (Configuration?["AccessTokenExpireTimeSpan"] != null &&
+                    !Enum.TryParse(Configuration["AccessTokenExpireTimeSpan"], out mode))
                 {
                     mode = _loadBalanceMode;
                 }
@@ -44,6 +45,15 @@ namespace KissU.Core.CPlatform
         }
 
         /// <summary>
+        /// 服务器选项.
+        /// </summary>
+        public static ServerEngineOptions ServerOptions
+        {
+            get => _serverOptions;
+            internal set => _serverOptions = value;
+        }
+
+        /// <summary>
         /// 获取配置节点.
         /// </summary>
         /// <param name="name">名称</param>
@@ -51,15 +61,6 @@ namespace KissU.Core.CPlatform
         public static IConfigurationSection GetSection(string name)
         {
             return Configuration?.GetSection(name);
-        }
-
-        /// <summary>
-        /// 服务器选项.
-        /// </summary>
-        public static ServerEngineOptions ServerOptions
-        {
-            get => _serverOptions;
-            internal set => _serverOptions = value;
         }
     }
 }

@@ -8,13 +8,6 @@ namespace KissU.Core.CPlatform.Configurations.Watch
     public abstract class ConfigurationWatch
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ConfigurationWatch" /> class.
-        /// </summary>
-        protected ConfigurationWatch()
-        {
-        }
-
-        /// <summary>
         /// Processes this instance.
         /// </summary>
         /// <returns>Task.</returns>

@@ -22,7 +22,7 @@
         /// <returns>返回信息结果集</returns>
         public static HttpResultMessage<T> Create(bool successd, string message, T data)
         {
-            return new HttpResultMessage<T>()
+            return new HttpResultMessage<T>
             {
                 IsSucceed = successd,
                 Message = message,
@@ -38,7 +38,7 @@
         /// <returns>返回信息结果集</returns>
         public static HttpResultMessage<T> Create(bool successd, T data)
         {
-            return new HttpResultMessage<T>()
+            return new HttpResultMessage<T>
             {
                 IsSucceed = successd,
                 Data = data,
@@ -53,28 +53,6 @@
     /// <seealso cref="HttpResultMessage" />
     public class HttpResultMessage
     {
-        /// <summary>
-        /// 生成错误信息
-        /// </summary>
-        /// <param name="message">返回客户端的消息</param>
-        /// <returns>返回服务数据集</returns>
-        public static HttpResultMessage Error(string message)
-        {
-            return new HttpResultMessage() { Message = message, IsSucceed = false };
-        }
-
-        /// <summary>
-        /// 生成服务器数据集
-        /// </summary>
-        /// <param name="success">状态值（true:成功 false：失败）</param>
-        /// <param name="successMessage">返回客户端的消息</param>
-        /// <param name="errorMessage">错误信息</param>
-        /// <returns>返回服务数据集</returns>
-        public static HttpResultMessage Create(bool success, string successMessage = "", string errorMessage = "")
-        {
-            return new HttpResultMessage() { Message = success ? successMessage : errorMessage, IsSucceed = success };
-        }
-
         /// <summary>
         /// Initializes a new instance of the <see cref="HttpResultMessage" /> class.
         /// 构造服务数据集
@@ -99,5 +77,27 @@
         /// 状态码
         /// </summary>
         public int StatusCode { get; set; }
+
+        /// <summary>
+        /// 生成错误信息
+        /// </summary>
+        /// <param name="message">返回客户端的消息</param>
+        /// <returns>返回服务数据集</returns>
+        public static HttpResultMessage Error(string message)
+        {
+            return new HttpResultMessage {Message = message, IsSucceed = false};
+        }
+
+        /// <summary>
+        /// 生成服务器数据集
+        /// </summary>
+        /// <param name="success">状态值（true:成功 false：失败）</param>
+        /// <param name="successMessage">返回客户端的消息</param>
+        /// <param name="errorMessage">错误信息</param>
+        /// <returns>返回服务数据集</returns>
+        public static HttpResultMessage Create(bool success, string successMessage = "", string errorMessage = "")
+        {
+            return new HttpResultMessage {Message = success ? successMessage : errorMessage, IsSucceed = success};
+        }
     }
 }

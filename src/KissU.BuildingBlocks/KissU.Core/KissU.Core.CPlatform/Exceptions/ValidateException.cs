@@ -13,7 +13,8 @@ namespace KissU.Core.CPlatform.Exceptions
         /// </summary>
         /// <param name="message">异常信息</param>
         /// <param name="innerException">内部异常</param>
-        public ValidateException(string message, Exception innerException = null) : base(message, innerException)
+        public ValidateException(string message, Exception innerException = null)
+            : base(message, innerException)
         {
         }
     }

@@ -8,6 +8,17 @@ namespace KissU.Core.CPlatform.Diagnostics
     public class SegmentSpan
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="SegmentSpan" /> class.
+        /// </summary>
+        /// <param name="operationName">Name of the operation.</param>
+        /// <param name="spanType">Type of the span.</param>
+        public SegmentSpan(string operationName, SpanType spanType)
+        {
+            OperationName = new StringOrIntValue(operationName);
+            SpanType = spanType;
+        }
+
+        /// <summary>
         /// Gets the span identifier.
         /// </summary>
         public int SpanId { get; } = 0;
@@ -48,7 +59,9 @@ namespace KissU.Core.CPlatform.Diagnostics
         public SpanLayer SpanLayer { get; set; }
 
         /// <summary>
-        /// Limiting values. Please see <see cref="Components" /> or see <seealso href="https://github.com/apache/incubator-skywalking/blob/master/oap-server/server-starter/src/main/resources/component-libraries.yml" />
+        /// Limiting values. Please see <see cref="Components" /> or see
+        /// <seealso
+        ///     href="https://github.com/apache/incubator-skywalking/blob/master/oap-server/server-starter/src/main/resources/component-libraries.yml" />
         /// </summary>
         public StringOrIntValue Component { get; set; }
 
@@ -66,17 +79,6 @@ namespace KissU.Core.CPlatform.Diagnostics
         /// Gets the logs.
         /// </summary>
         public LogCollection Logs { get; } = new LogCollection();
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SegmentSpan" /> class.
-        /// </summary>
-        /// <param name="operationName">Name of the operation.</param>
-        /// <param name="spanType">Type of the span.</param>
-        public SegmentSpan(string operationName, SpanType spanType)
-        {
-            OperationName = new StringOrIntValue(operationName);
-            SpanType = spanType;
-        }
 
         /// <summary>
         /// Adds the tag.

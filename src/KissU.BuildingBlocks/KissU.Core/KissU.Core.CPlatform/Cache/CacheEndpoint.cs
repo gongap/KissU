@@ -8,20 +8,12 @@
         /// <summary>
         /// 主机
         /// </summary>
-        public string Host
-        {
-            get;
-            set;
-        }
+        public string Host { get; set; }
 
         /// <summary>
         /// 端口
         /// </summary>
-        public int Port
-        {
-            get;
-            set;
-        }
+        public int Port { get; set; }
 
         /// <summary>
         /// Returns a <see cref="string" /> that represents this instance.

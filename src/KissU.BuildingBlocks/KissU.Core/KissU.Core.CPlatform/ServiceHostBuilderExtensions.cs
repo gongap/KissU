@@ -17,6 +17,7 @@ using KissU.Core.CPlatform.Support;
 using KissU.Core.CPlatform.Utilities;
 using KissU.Core.ServiceHosting.Internal;
 using Microsoft.Extensions.Configuration;
+using IServiceHost = KissU.Core.CPlatform.Runtime.Server.IServiceHost;
 
 namespace KissU.Core.CPlatform
 {
@@ -33,14 +34,16 @@ namespace KissU.Core.CPlatform
         /// <param name="port">The port.</param>
         /// <param name="token">The token.</param>
         /// <returns>IServiceHostBuilder.</returns>
-        public static IServiceHostBuilder UseServer(this IServiceHostBuilder hostBuilder, string ip, int port, string token = "True")
+        public static IServiceHostBuilder UseServer(this IServiceHostBuilder hostBuilder, string ip, int port,
+            string token = "True")
         {
             return hostBuilder.MapServices(async mapper =>
             {
                 BuildServiceEngine(mapper);
                 mapper.Resolve<IServiceTokenGenerator>().GeneratorToken(token);
-                int _port = AppConfig.ServerOptions.Port = AppConfig.ServerOptions.Port == 0 ? port : AppConfig.ServerOptions.Port;
-                string _ip = AppConfig.ServerOptions.Ip = AppConfig.ServerOptions.Ip ?? ip;
+                var _port = AppConfig.ServerOptions.Port =
+                    AppConfig.ServerOptions.Port == 0 ? port : AppConfig.ServerOptions.Port;
+                var _ip = AppConfig.ServerOptions.Ip = AppConfig.ServerOptions.Ip ?? ip;
                 _port = AppConfig.ServerOptions.Port = AppConfig.ServerOptions.IpEndpoint?.Port ?? _port;
                 _ip = AppConfig.ServerOptions.Ip = AppConfig.ServerOptions.IpEndpoint?.Address.ToString() ?? _ip;
                 _ip = NetUtils.GetHostAddress(_ip);
@@ -51,10 +54,10 @@ namespace KissU.Core.CPlatform
                     await ConfigureRoute(mapper).ConfigureAwait(false);
                 }
 
-                IList<Runtime.Server.IServiceHost> serviceHosts = mapper.Resolve<IList<Runtime.Server.IServiceHost>>();
+                var serviceHosts = mapper.Resolve<IList<IServiceHost>>();
                 await Task.Factory.StartNew(async () =>
                 {
-                    foreach (Runtime.Server.IServiceHost serviceHost in serviceHosts)
+                    foreach (var serviceHost in serviceHosts)
                     {
                         await serviceHost.StartAsync(_ip, _port).ConfigureAwait(false);
                     }
@@ -70,9 +73,10 @@ namespace KissU.Core.CPlatform
         /// <param name="hostBuilder">The host builder.</param>
         /// <param name="options">The options.</param>
         /// <returns>IServiceHostBuilder.</returns>
-        public static IServiceHostBuilder UseServer(this IServiceHostBuilder hostBuilder, Action<ServerEngineOptions> options)
+        public static IServiceHostBuilder UseServer(this IServiceHostBuilder hostBuilder,
+            Action<ServerEngineOptions> options)
         {
-            ServerEngineOptions serverOptions = new ServerEngineOptions();
+            var serverOptions = new ServerEngineOptions();
             options.Invoke(serverOptions);
             AppConfig.ServerOptions = serverOptions;
             return hostBuilder.UseServer(serverOptions.Ip, serverOptions.Port, serverOptions.Token);
@@ -87,8 +91,8 @@ namespace KissU.Core.CPlatform
         {
             return hostBuilder.MapServices(mapper =>
             {
-                IServiceEntryManager serviceEntryManager = mapper.Resolve<IServiceEntryManager>();
-                List<ServiceSubscriber> addressDescriptors = serviceEntryManager.GetEntries().Select(i =>
+                var serviceEntryManager = mapper.Resolve<IServiceEntryManager>();
+                var addressDescriptors = serviceEntryManager.GetEntries().Select(i =>
                 {
                     i.Descriptor.Metadatas = null;
                     return new ServiceSubscriber
@@ -97,7 +101,8 @@ namespace KissU.Core.CPlatform
                         {
                             new IpAddressModel
                             {
-                                Ip = Dns.GetHostEntry(Dns.GetHostName()).AddressList.FirstOrDefault<IPAddress>(a => a.AddressFamily.ToString().Equals("InterNetwork"))?.ToString(),
+                                Ip = Dns.GetHostEntry(Dns.GetHostName()).AddressList
+                                    .FirstOrDefault(a => a.AddressFamily.ToString().Equals("InterNetwork"))?.ToString()
                             },
                         },
                         ServiceDescriptor = i.Descriptor,
@@ -120,8 +125,8 @@ namespace KissU.Core.CPlatform
                 var builder = new ContainerBuilder();
                 container.Resolve<IServiceEngineBuilder>().Build(builder);
                 var configBuilder = container.Resolve<IConfigurationBuilder>();
-                string appSettingPath = Path.Combine(AppConfig.ServerOptions.RootPath, "appsettings.json");
-                configBuilder.AddCPlatformFile("${appsettingspath}|" + appSettingPath, optional: false, reloadOnChange: true);
+                var appSettingPath = Path.Combine(AppConfig.ServerOptions.RootPath, "appsettings.json");
+                configBuilder.AddCPlatformFile("${appsettingspath}|" + appSettingPath, false, true);
                 builder.Update(container);
             }
         }
@@ -133,12 +138,16 @@ namespace KissU.Core.CPlatform
         /// <returns>A <see cref="Task" /> representing the asynchronous operation.</returns>
         public static async Task ConfigureRoute(IContainer mapper)
         {
-            if (AppConfig.ServerOptions.Protocol == CommunicationProtocol.Tcp || AppConfig.ServerOptions.Protocol == CommunicationProtocol.None)
+            if (AppConfig.ServerOptions.Protocol == CommunicationProtocol.Tcp ||
+                AppConfig.ServerOptions.Protocol == CommunicationProtocol.None)
             {
-                IServiceRouteProvider routeProvider = mapper.Resolve<IServiceRouteProvider>();
+                var routeProvider = mapper.Resolve<IServiceRouteProvider>();
                 if (AppConfig.ServerOptions.EnableRouteWatch)
                 {
-                    new ServiceRouteWatch(mapper.Resolve<CPlatformContainer>(), async () => await routeProvider.RegisterRoutes(Math.Round(Convert.ToDecimal(Process.GetCurrentProcess().TotalProcessorTime.TotalSeconds), 2, MidpointRounding.AwayFromZero)));
+                    new ServiceRouteWatch(mapper.Resolve<CPlatformContainer>(),
+                        async () => await routeProvider.RegisterRoutes(Math.Round(
+                            Convert.ToDecimal(Process.GetCurrentProcess().TotalProcessorTime.TotalSeconds), 2,
+                            MidpointRounding.AwayFromZero)));
                 }
                 else
                 {

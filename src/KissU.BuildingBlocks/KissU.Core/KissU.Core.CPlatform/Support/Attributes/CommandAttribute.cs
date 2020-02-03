@@ -3,7 +3,6 @@ using KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selec
 
 namespace KissU.Core.CPlatform.Support.Attributes
 {
-
     /// <summary>
     /// 命令属性.
     /// Implements the <see cref="Attribute" />

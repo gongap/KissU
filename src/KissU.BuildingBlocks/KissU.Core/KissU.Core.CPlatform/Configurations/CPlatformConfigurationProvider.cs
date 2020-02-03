@@ -15,7 +15,9 @@ namespace KissU.Core.CPlatform.Configurations
         /// Initializes a new instance of the <see cref="CPlatformConfigurationProvider" /> class.
         /// </summary>
         /// <param name="source">The source.</param>
-        public CPlatformConfigurationProvider(CPlatformConfigurationSource source) : base(source) { }
+        public CPlatformConfigurationProvider(CPlatformConfigurationSource source) : base(source)
+        {
+        }
 
         /// <summary>
         /// Loads this provider's data from a stream.

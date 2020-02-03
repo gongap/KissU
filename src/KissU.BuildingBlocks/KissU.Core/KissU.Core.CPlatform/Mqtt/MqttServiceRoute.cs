@@ -23,7 +23,10 @@ namespace KissU.Core.CPlatform.Mqtt
         /// Determines whether the specified <see cref="System.Object" /> is equal to this instance.
         /// </summary>
         /// <param name="obj">The object to compare with the current object.</param>
-        /// <returns><c>true</c> if the specified <see cref="System.Object" /> is equal to this instance; otherwise, <c>false</c>.</returns>
+        /// <returns>
+        /// <c>true</c> if the specified <see cref="System.Object" /> is equal to this instance; otherwise, <c>false</c>
+        /// .
+        /// </returns>
         public override bool Equals(object obj)
         {
             var model = obj as MqttServiceRoute;
@@ -42,7 +45,8 @@ namespace KissU.Core.CPlatform.Mqtt
                 return false;
             }
 
-            return model.MqttEndpoint.Count() == MqttEndpoint.Count() && model.MqttEndpoint.All(addressModel => MqttEndpoint.Contains(addressModel));
+            return model.MqttEndpoint.Count() == MqttEndpoint.Count() &&
+                   model.MqttEndpoint.All(addressModel => MqttEndpoint.Contains(addressModel));
         }
 
         /// <summary>
@@ -71,7 +75,7 @@ namespace KissU.Core.CPlatform.Mqtt
         /// <param name="model1">The model1.</param>
         /// <param name="model2">The model2.</param>
         /// <returns>The result of the operator.</returns>
-        public static bool operator != (MqttServiceRoute model1, MqttServiceRoute model2)
+        public static bool operator !=(MqttServiceRoute model1, MqttServiceRoute model2)
         {
             return !Equals(model1, model2);
         }

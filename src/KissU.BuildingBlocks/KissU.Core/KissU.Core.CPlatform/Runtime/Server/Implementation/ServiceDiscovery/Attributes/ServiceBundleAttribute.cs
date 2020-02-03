@@ -13,7 +13,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
         /// </summary>
         /// <param name="routeTemplate">The route template.</param>
         /// <param name="isPrefix">if set to <c>true</c> [is prefix].</param>
-        public ServiceBundleAttribute(string routeTemplate,bool isPrefix=true)
+        public ServiceBundleAttribute(string routeTemplate, bool isPrefix = true)
         {
             RouteTemplate = routeTemplate;
             IsPrefix = isPrefix;

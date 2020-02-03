@@ -48,7 +48,8 @@ namespace KissU.Core.CPlatform.Validation.Implementation
                 var validationContext = new ValidationContext(parameter);
                 var validationResults = new List<ValidationResult>();
                 var isObjValid = Validator.TryValidateObject(parameter, validationContext, validationResults, true);
-                var isValueValid = Validator.TryValidateValue(parameter, validationContext, validationResults, customValidAttributes);
+                var isValueValid = Validator.TryValidateValue(parameter, validationContext, validationResults,
+                    customValidAttributes);
                 if (isObjValid && isValueValid)
                 {
                     return;

@@ -9,7 +9,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
     /// <seealso cref="HttpMethodAttribute" />
     public class HttpGetAttribute : HttpMethodAttribute
     {
-        private static readonly IEnumerable<string> _supportedMethods = new[] { "GET" };
+        private static readonly IEnumerable<string> _supportedMethods = new[] {"GET"};
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HttpGetAttribute" /> class.
@@ -24,7 +24,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
         /// </summary>
         /// <param name="isRegisterMetadata">if set to <c>true</c> [is register metadata].</param>
         public HttpGetAttribute(bool isRegisterMetadata)
-            : base(_supportedMethods,  isRegisterMetadata)
+            : base(_supportedMethods, isRegisterMetadata)
         {
         }
     }

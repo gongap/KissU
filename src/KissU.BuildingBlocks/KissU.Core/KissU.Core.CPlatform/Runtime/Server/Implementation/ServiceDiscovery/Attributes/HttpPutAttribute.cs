@@ -9,7 +9,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
     /// <seealso cref="HttpMethodAttribute" />
     public class HttpPutAttribute : HttpMethodAttribute
     {
-        private static readonly IEnumerable<string> _supportedMethods = new[] { "PUT" };
+        private static readonly IEnumerable<string> _supportedMethods = new[] {"PUT"};
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HttpPutAttribute" /> class.

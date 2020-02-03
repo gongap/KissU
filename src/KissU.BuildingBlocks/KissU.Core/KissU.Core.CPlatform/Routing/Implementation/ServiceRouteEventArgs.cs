@@ -17,6 +17,6 @@
         /// <summary>
         /// 服务路由信息。
         /// </summary>
-        public ServiceRoute Route { get; private set; }
+        public ServiceRoute Route { get; }
     }
 }

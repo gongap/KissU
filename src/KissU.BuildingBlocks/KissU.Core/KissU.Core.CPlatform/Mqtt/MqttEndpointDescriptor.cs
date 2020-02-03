@@ -27,7 +27,8 @@ namespace KissU.Core.CPlatform.Mqtt
         /// <param name="address">地址模型实例。</param>
         /// <param name="serializer">序列化器。</param>
         /// <returns>Mqtt地址描述符。</returns>
-        public static MqttEndpointDescriptor CreateDescriptor<T>(T address, ISerializer<string> serializer) where T : AddressModel, new()
+        public static MqttEndpointDescriptor CreateDescriptor<T>(T address, ISerializer<string> serializer)
+            where T : AddressModel, new()
         {
             return new MqttEndpointDescriptor
             {

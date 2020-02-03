@@ -18,7 +18,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.Implementation
         /// <param name="serviceId">The service identifier.</param>
         public void AddWhitelist(string serviceId)
         {
-            if(!_whitelist.Contains(serviceId))
+            if (!_whitelist.Contains(serviceId))
             {
                 _whitelist.Add(serviceId);
             }

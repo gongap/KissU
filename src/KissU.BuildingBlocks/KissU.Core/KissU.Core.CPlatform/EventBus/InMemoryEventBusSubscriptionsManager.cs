@@ -12,14 +12,9 @@ namespace KissU.Core.CPlatform.EventBus
     /// <seealso cref="IEventBusSubscriptionsManager" />
     public class InMemoryEventBusSubscriptionsManager : IEventBusSubscriptionsManager
     {
-        private readonly Dictionary<string, List<Delegate>> _handlers;
         private readonly Dictionary<Delegate, string> _consumers;
         private readonly List<Type> _eventTypes;
-
-        /// <summary>
-        /// Occurs when [on event removed].
-        /// </summary>
-        public event EventHandler<ValueTuple<string, string>> OnEventRemoved;
+        private readonly Dictionary<string, List<Delegate>> _handlers;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="InMemoryEventBusSubscriptionsManager" /> class.
@@ -32,6 +27,11 @@ namespace KissU.Core.CPlatform.EventBus
         }
 
         /// <summary>
+        /// Occurs when [on event removed].
+        /// </summary>
+        public event EventHandler<ValueTuple<string, string>> OnEventRemoved;
+
+        /// <summary>
         /// Gets a value indicating whether this instance is empty.
         /// </summary>
         public bool IsEmpty => !_handlers.Keys.Any();
@@ -39,7 +39,10 @@ namespace KissU.Core.CPlatform.EventBus
         /// <summary>
         /// 清除.
         /// </summary>
-        public void Clear() => _handlers.Clear();
+        public void Clear()
+        {
+            _handlers.Clear();
+        }
 
         /// <summary>
         /// 添加订阅.
@@ -48,7 +51,7 @@ namespace KissU.Core.CPlatform.EventBus
         /// <typeparam name="TH">The type of the th.</typeparam>
         /// <param name="handler">The handler.</param>
         /// <param name="consumerName">Name of the consumer.</param>
-        public void AddSubscription<T, TH>(Func<TH> handler,string consumerName)
+        public void AddSubscription<T, TH>(Func<TH> handler, string consumerName)
             where TH : IIntegrationEventHandler<T>
         {
             var key = GetEventKey<T>();
@@ -84,7 +87,7 @@ namespace KissU.Core.CPlatform.EventBus
                     {
                         _eventTypes.Remove(eventType);
                         _consumers.Remove(handlerToRemove);
-                        RaiseOnEventRemoved(eventType.Name,consumerName);
+                        RaiseOnEventRemoved(eventType.Name, consumerName);
                     }
                 }
             }
@@ -107,14 +110,48 @@ namespace KissU.Core.CPlatform.EventBus
         /// </summary>
         /// <param name="eventName">Name of the event.</param>
         /// <returns>IEnumerable&lt;Delegate&gt;.</returns>
-        public IEnumerable<Delegate> GetHandlersForEvent(string eventName) => _handlers[eventName];
+        public IEnumerable<Delegate> GetHandlersForEvent(string eventName)
+        {
+            return _handlers[eventName];
+        }
 
-        private void RaiseOnEventRemoved(string eventName,string consumerName)
+        /// <summary>
+        /// Determines whether [has subscriptions for event].
+        /// </summary>
+        /// <typeparam name="T">事件参数类型</typeparam>
+        /// <returns><c>true</c> if [has subscriptions for event]; otherwise, <c>false</c>.</returns>
+        public bool HasSubscriptionsForEvent<T>()
+        {
+            var key = GetEventKey<T>();
+            return HasSubscriptionsForEvent(key);
+        }
+
+        /// <summary>
+        /// Determines whether [has subscriptions for event] [the specified event name].
+        /// </summary>
+        /// <param name="eventName">Name of the event.</param>
+        /// <returns><c>true</c> if [has subscriptions for event] [the specified event name]; otherwise, <c>false</c>.</returns>
+        public bool HasSubscriptionsForEvent(string eventName)
+        {
+            return _handlers.ContainsKey(eventName);
+        }
+
+        /// <summary>
+        /// 通过名称获取事件类型.
+        /// </summary>
+        /// <param name="eventName">Name of the event.</param>
+        /// <returns>Type.</returns>
+        public Type GetEventTypeByName(string eventName)
+        {
+            return _eventTypes.Single(t => t.Name == eventName);
+        }
+
+        private void RaiseOnEventRemoved(string eventName, string consumerName)
         {
             var handler = OnEventRemoved;
             if (handler != null)
             {
-                handler(this,new ValueTuple<string,string>(consumerName, eventName));
+                handler(this, new ValueTuple<string, string>(consumerName, eventName));
             }
         }
 
@@ -138,31 +175,6 @@ namespace KissU.Core.CPlatform.EventBus
 
             return null;
         }
-
-        /// <summary>
-        /// Determines whether [has subscriptions for event].
-        /// </summary>
-        /// <typeparam name="T">事件参数类型</typeparam>
-        /// <returns><c>true</c> if [has subscriptions for event]; otherwise, <c>false</c>.</returns>
-        public bool HasSubscriptionsForEvent<T>()
-        {
-            var key = GetEventKey<T>();
-            return HasSubscriptionsForEvent(key);
-        }
-
-        /// <summary>
-        /// Determines whether [has subscriptions for event] [the specified event name].
-        /// </summary>
-        /// <param name="eventName">Name of the event.</param>
-        /// <returns><c>true</c> if [has subscriptions for event] [the specified event name]; otherwise, <c>false</c>.</returns>
-        public bool HasSubscriptionsForEvent(string eventName) => _handlers.ContainsKey(eventName);
-
-        /// <summary>
-        /// 通过名称获取事件类型.
-        /// </summary>
-        /// <param name="eventName">Name of the event.</param>
-        /// <returns>Type.</returns>
-        public Type GetEventTypeByName(string eventName) => _eventTypes.Single(t => t.Name == eventName);
 
         private string GetEventKey<T>()
         {

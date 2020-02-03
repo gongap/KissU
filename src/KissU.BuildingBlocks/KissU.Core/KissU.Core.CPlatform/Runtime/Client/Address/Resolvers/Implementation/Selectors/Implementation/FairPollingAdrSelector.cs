@@ -18,8 +18,10 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
     /// <seealso cref="AddressSelectorBase" />
     public class FairPollingAdrSelector : AddressSelectorBase
     {
+        private readonly ConcurrentDictionary<string, Lazy<AddressEntry>> _concurrent =
+            new ConcurrentDictionary<string, Lazy<AddressEntry>>();
+
         private readonly IHealthCheckService _healthCheckService;
-        private readonly ConcurrentDictionary<string, Lazy<AddressEntry>> _concurrent = new ConcurrentDictionary<string, Lazy<AddressEntry>>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FairPollingAdrSelector" /> class.
@@ -57,7 +59,8 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
             var key = GetCacheKey(context.Descriptor);
 
             // 根据服务id缓存服务地址。
-            var addressEntry = _concurrent.GetOrAdd(key, k => new Lazy<AddressEntry>(() => new AddressEntry(context.Address))).Value;
+            var addressEntry = _concurrent
+                .GetOrAdd(key, k => new Lazy<AddressEntry>(() => new AddressEntry(context.Address))).Value;
             AddressModel addressModel;
             var index = 0;
             var len = context.Address.Count();
@@ -71,8 +74,8 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
                 }
 
                 index++;
-            }
-            while (await _healthCheckService.IsHealth(addressModel) == false);
+            } while (await _healthCheckService.IsHealth(addressModel) == false);
+
             return addressModel;
         }
 
@@ -81,10 +84,10 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.S
         /// </summary>
         protected class AddressEntry
         {
+            private readonly AddressModel[] _address;
+            private readonly int _maxIndex;
             private int _index;
             private int _lock;
-            private readonly int _maxIndex;
-            private readonly AddressModel[] _address;
 
             /// <summary>
             /// Initializes a new instance of the <see cref="AddressEntry" /> class.

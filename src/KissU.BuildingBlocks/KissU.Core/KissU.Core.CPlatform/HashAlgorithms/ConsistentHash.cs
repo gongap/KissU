@@ -10,10 +10,9 @@ namespace KissU.Core.CPlatform.HashAlgorithms
     /// <typeparam name="T">类型</typeparam>
     public class ConsistentHash<T>
     {
-        private readonly SortedDictionary<int, T> _ring = new SortedDictionary<int, T>();
-        private int[] _nodeKeysInRing = null;
         private readonly IHashAlgorithm _hashAlgorithm;
-        private readonly int _virtualNodeReplicationFactor = 1000;
+        private readonly SortedDictionary<int, T> _ring = new SortedDictionary<int, T>();
+        private int[] _nodeKeysInRing;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ConsistentHash{T}" /> class.
@@ -32,16 +31,13 @@ namespace KissU.Core.CPlatform.HashAlgorithms
         public ConsistentHash(IHashAlgorithm hashAlgorithm, int virtualNodeReplicationFactor)
             : this(hashAlgorithm)
         {
-            _virtualNodeReplicationFactor = virtualNodeReplicationFactor;
+            VirtualNodeReplicationFactor = virtualNodeReplicationFactor;
         }
 
         /// <summary>
         /// 复制哈希节点数
         /// </summary>
-        public int VirtualNodeReplicationFactor
-        {
-            get { return _virtualNodeReplicationFactor; }
-        }
+        public int VirtualNodeReplicationFactor { get; } = 1000;
 
         /// <summary>
         /// 添加节点
@@ -82,7 +78,7 @@ namespace KissU.Core.CPlatform.HashAlgorithms
         /// <param name="node">节点</param>
         private void AddNode(T node, string value)
         {
-            for (var i = 0; i < _virtualNodeReplicationFactor; i++)
+            for (var i = 0; i < VirtualNodeReplicationFactor; i++)
             {
                 var hashOfVirtualNode = _hashAlgorithm.Hash(value.ToString(CultureInfo.InvariantCulture) + i);
                 _ring[hashOfVirtualNode] = node;
@@ -95,9 +91,9 @@ namespace KissU.Core.CPlatform.HashAlgorithms
         /// <param name="value">节点.</param>
         private void RemoveNode(string value)
         {
-            for (var i = 0; i < _virtualNodeReplicationFactor; i++)
+            for (var i = 0; i < VirtualNodeReplicationFactor; i++)
             {
-                var hashOfVirtualNode = _hashAlgorithm.Hash(value.ToString() + i);
+                var hashOfVirtualNode = _hashAlgorithm.Hash(value + i);
                 _ring.Remove(hashOfVirtualNode);
             }
         }
@@ -118,7 +114,7 @@ namespace KissU.Core.CPlatform.HashAlgorithms
             }
 
             var mid = begin;
-            while ((end - begin) > 1)
+            while (end - begin > 1)
             {
                 mid = (end + begin) / 2;
                 if (keys[mid] >= hashOfItem)

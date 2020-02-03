@@ -13,6 +13,7 @@ namespace KissU.Core.CPlatform.Mqtt
         /// </summary>
         /// <param name="descriptors">Mqtt服务路由描述符。</param>
         /// <returns>Mqtt服务路由集合。</returns>
-        Task<IEnumerable<MqttServiceRoute>> CreateMqttServiceRoutesAsync(IEnumerable<MqttServiceDescriptor> descriptors);
+        Task<IEnumerable<MqttServiceRoute>>
+            CreateMqttServiceRoutesAsync(IEnumerable<MqttServiceDescriptor> descriptors);
     }
 }

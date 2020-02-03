@@ -32,7 +32,8 @@ namespace KissU.Core.CPlatform.Runtime.Client.Implementation
         /// <param name="descriptors">The descriptors.</param>
         /// <returns>Task&lt;IEnumerable&lt;ServiceSubscriber&gt;&gt;.</returns>
         /// <exception cref="ArgumentNullException">descriptors</exception>
-        public Task<IEnumerable<ServiceSubscriber>> CreateServiceSubscribersAsync(IEnumerable<ServiceSubscriberDescriptor> descriptors)
+        public Task<IEnumerable<ServiceSubscriber>> CreateServiceSubscribersAsync(
+            IEnumerable<ServiceSubscriberDescriptor> descriptors)
         {
             if (descriptors == null)
             {
@@ -63,7 +64,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.Implementation
 
             foreach (var descriptor in descriptors)
             {
-                yield return (AddressModel)_serializer.Deserialize(descriptor.Value, typeof(IpAddressModel));
+                yield return (AddressModel) _serializer.Deserialize(descriptor.Value, typeof(IpAddressModel));
             }
         }
     }

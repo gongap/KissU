@@ -7,8 +7,8 @@
     /// <seealso cref="KissU.Core.CPlatform.Transport.Codec.ITransportMessageCodecFactory" />
     public class JsonTransportMessageCodecFactory : ITransportMessageCodecFactory
     {
-        private readonly ITransportMessageEncoder _transportMessageEncoder = new JsonTransportMessageEncoder();
         private readonly ITransportMessageDecoder _transportMessageDecoder = new JsonTransportMessageDecoder();
+        private readonly ITransportMessageEncoder _transportMessageEncoder = new JsonTransportMessageEncoder();
 
         /// <summary>
         /// 获取编码器。

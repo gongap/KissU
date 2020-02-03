@@ -24,7 +24,7 @@ namespace KissU.Core.CPlatform.Utilities
         /// <param name="target">The target.</param>
         /// <param name="paramters">The paramters.</param>
         /// <returns>System.Object.</returns>
-        static object InvokeMethod(FastInvokeHandler invoke, object target, params object[] paramters)
+        private static object InvokeMethod(FastInvokeHandler invoke, object target, params object[] paramters)
         {
             return invoke(null, paramters);
         }
@@ -36,11 +36,12 @@ namespace KissU.Core.CPlatform.Utilities
         /// <returns>FastInvokeHandler.</returns>
         public static FastInvokeHandler GetMethodInvoker(MethodInfo methodInfo)
         {
-            DynamicMethod dynamicMethod = new DynamicMethod(string.Empty, typeof(object), new Type[] { typeof(object), typeof(object[]) }, methodInfo.DeclaringType.Module);
-            ILGenerator il = dynamicMethod.GetILGenerator();
-            ParameterInfo[] ps = methodInfo.GetParameters();
-            Type[] paramTypes = new Type[ps.Length];
-            for (int i = 0; i < paramTypes.Length; i++)
+            var dynamicMethod = new DynamicMethod(string.Empty, typeof(object),
+                new[] {typeof(object), typeof(object[])}, methodInfo.DeclaringType.Module);
+            var il = dynamicMethod.GetILGenerator();
+            var ps = methodInfo.GetParameters();
+            var paramTypes = new Type[ps.Length];
+            for (var i = 0; i < paramTypes.Length; i++)
             {
                 if (ps[i].ParameterType.IsByRef)
                 {
@@ -52,14 +53,14 @@ namespace KissU.Core.CPlatform.Utilities
                 }
             }
 
-            LocalBuilder[] locals = new LocalBuilder[paramTypes.Length];
+            var locals = new LocalBuilder[paramTypes.Length];
 
-            for (int i = 0; i < paramTypes.Length; i++)
+            for (var i = 0; i < paramTypes.Length; i++)
             {
                 locals[i] = il.DeclareLocal(paramTypes[i], true);
             }
 
-            for (int i = 0; i < paramTypes.Length; i++)
+            for (var i = 0; i < paramTypes.Length; i++)
             {
                 il.Emit(OpCodes.Ldarg_1);
                 EmitFastInt(il, i);
@@ -73,7 +74,7 @@ namespace KissU.Core.CPlatform.Utilities
                 il.Emit(OpCodes.Ldarg_0);
             }
 
-            for (int i = 0; i < paramTypes.Length; i++)
+            for (var i = 0; i < paramTypes.Length; i++)
             {
                 if (ps[i].ParameterType.IsByRef)
                 {
@@ -103,7 +104,7 @@ namespace KissU.Core.CPlatform.Utilities
                 EmitBoxIfNeeded(il, methodInfo.ReturnType);
             }
 
-            for (int i = 0; i < paramTypes.Length; i++)
+            for (var i = 0; i < paramTypes.Length; i++)
             {
                 if (ps[i].ParameterType.IsByRef)
                 {
@@ -120,7 +121,7 @@ namespace KissU.Core.CPlatform.Utilities
             }
 
             il.Emit(OpCodes.Ret);
-            FastInvokeHandler invoder = (FastInvokeHandler)dynamicMethod.CreateDelegate(typeof(FastInvokeHandler));
+            var invoder = (FastInvokeHandler) dynamicMethod.CreateDelegate(typeof(FastInvokeHandler));
             return invoder;
         }
 
@@ -129,7 +130,7 @@ namespace KissU.Core.CPlatform.Utilities
         /// </summary>
         /// <param name="il">The il.</param>
         /// <param name="type">The type.</param>
-        private static void EmitCastToReference(ILGenerator il, System.Type type)
+        private static void EmitCastToReference(ILGenerator il, Type type)
         {
             if (type.IsValueType)
             {
@@ -146,7 +147,7 @@ namespace KissU.Core.CPlatform.Utilities
         /// </summary>
         /// <param name="il">The il.</param>
         /// <param name="type">The type.</param>
-        private static void EmitBoxIfNeeded(ILGenerator il, System.Type type)
+        private static void EmitBoxIfNeeded(ILGenerator il, Type type)
         {
             if (type.IsValueType)
             {
@@ -197,7 +198,7 @@ namespace KissU.Core.CPlatform.Utilities
 
             if (value > -129 && value < 128)
             {
-                il.Emit(OpCodes.Ldc_I4_S, (sbyte)value);
+                il.Emit(OpCodes.Ldc_I4_S, (sbyte) value);
             }
             else
             {

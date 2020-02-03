@@ -13,7 +13,7 @@ namespace KissU.Core.CPlatform.Mqtt.Implementation
     public class MqttServiceRouteEventArgs
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="MqttServiceRouteEventArgs"/> class.
+        /// Initializes a new instance of the <see cref="MqttServiceRouteEventArgs" /> class.
         /// </summary>
         /// <param name="route">The route.</param>
         public MqttServiceRouteEventArgs(MqttServiceRoute route)
@@ -24,7 +24,7 @@ namespace KissU.Core.CPlatform.Mqtt.Implementation
         /// <summary>
         /// Gets the route.
         /// </summary>
-        public MqttServiceRoute Route { get; private set; }
+        public MqttServiceRoute Route { get; }
     }
 
     /// <summary>
@@ -35,7 +35,7 @@ namespace KissU.Core.CPlatform.Mqtt.Implementation
     public class MqttServiceRouteChangedEventArgs : MqttServiceRouteEventArgs
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="MqttServiceRouteChangedEventArgs"/> class.
+        /// Initializes a new instance of the <see cref="MqttServiceRouteChangedEventArgs" /> class.
         /// </summary>
         /// <param name="route">The route.</param>
         /// <param name="oldRoute">The old route.</param>
@@ -58,12 +58,12 @@ namespace KissU.Core.CPlatform.Mqtt.Implementation
     public abstract class MqttServiceRouteManagerBase : IMqttServiceRouteManager
     {
         private readonly ISerializer<string> _serializer;
+        private EventHandler<MqttServiceRouteChangedEventArgs> _changed;
         private EventHandler<MqttServiceRouteEventArgs> _created;
         private EventHandler<MqttServiceRouteEventArgs> _removed;
-        private EventHandler<MqttServiceRouteChangedEventArgs> _changed;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MqttServiceRouteManagerBase"/> class.
+        /// Initializes a new instance of the <see cref="MqttServiceRouteManagerBase" /> class.
         /// </summary>
         /// <param name="serializer">The serializer.</param>
         protected MqttServiceRouteManagerBase(ISerializer<string> serializer)
@@ -76,8 +76,8 @@ namespace KissU.Core.CPlatform.Mqtt.Implementation
         /// </summary>
         public event EventHandler<MqttServiceRouteEventArgs> Created
         {
-            add { _created += value; }
-            remove { _created -= value; }
+            add => _created += value;
+            remove => _created -= value;
         }
 
         /// <summary>
@@ -85,8 +85,8 @@ namespace KissU.Core.CPlatform.Mqtt.Implementation
         /// </summary>
         public event EventHandler<MqttServiceRouteEventArgs> Removed
         {
-            add { _removed += value; }
-            remove { _removed -= value; }
+            add => _removed += value;
+            remove => _removed -= value;
         }
 
         /// <summary>
@@ -94,8 +94,8 @@ namespace KissU.Core.CPlatform.Mqtt.Implementation
         /// </summary>
         public event EventHandler<MqttServiceRouteChangedEventArgs> Changed
         {
-            add { _changed += value; }
-            remove { _changed -= value; }
+            add => _changed += value;
+            remove => _changed -= value;
         }
 
         /// <summary>
@@ -103,6 +103,7 @@ namespace KissU.Core.CPlatform.Mqtt.Implementation
         /// </summary>
         /// <returns>一个任务。</returns>
         public abstract Task ClearAsync();
+
         /// <summary>
         /// Gets the routes asynchronous.
         /// </summary>
@@ -145,7 +146,7 @@ namespace KissU.Core.CPlatform.Mqtt.Implementation
                     Type = address.GetType().FullName,
                     Value = _serializer.Serialize(address),
                 }) ?? Enumerable.Empty<MqttEndpointDescriptor>(),
-                 MqttDescriptor = route.MqttDescriptor,
+                MqttDescriptor = route.MqttDescriptor,
             });
             return SetRoutesAsync(descriptors);
         }

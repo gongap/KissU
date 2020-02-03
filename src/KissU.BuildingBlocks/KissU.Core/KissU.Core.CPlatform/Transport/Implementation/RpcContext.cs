@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Concurrent;
+﻿using System.Collections.Concurrent;
 using System.Runtime.CompilerServices;
 using System.Threading;
 
@@ -10,7 +9,12 @@ namespace KissU.Core.CPlatform.Transport.Implementation
     /// </summary>
     public class RpcContext
     {
+        private static readonly AsyncLocal<RpcContext> rpcContextThreadLocal = new AsyncLocal<RpcContext>();
         private ConcurrentDictionary<string, object> contextParameters;
+
+        private RpcContext()
+        {
+        }
 
         /// <summary>
         /// 获取上下文参数.
@@ -41,7 +45,7 @@ namespace KissU.Core.CPlatform.Transport.Implementation
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public object GetAttachment(string key)
         {
-            contextParameters.TryGetValue(key, out object result);
+            contextParameters.TryGetValue(key, out var result);
             return result;
         }
 
@@ -54,8 +58,6 @@ namespace KissU.Core.CPlatform.Transport.Implementation
         {
             this.contextParameters = contextParameters;
         }
-
-        private static AsyncLocal<RpcContext> rpcContextThreadLocal = new AsyncLocal<RpcContext>();
 
         /// <summary>
         /// 获取上下文.
@@ -81,10 +83,6 @@ namespace KissU.Core.CPlatform.Transport.Implementation
         public static void RemoveContext()
         {
             rpcContextThreadLocal.Value = null;
-        }
-
-        private RpcContext()
-        {
         }
     }
 }

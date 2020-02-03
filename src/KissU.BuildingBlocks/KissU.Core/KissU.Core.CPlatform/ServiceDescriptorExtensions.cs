@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using KissU.Core.CPlatform.Filters.Implementation;
+﻿using KissU.Core.CPlatform.Filters.Implementation;
 
 namespace KissU.Core.CPlatform
 {
@@ -95,7 +94,7 @@ namespace KissU.Core.CPlatform
         /// <returns>System.String.</returns>
         public static string HttpMethod(this ServiceDescriptor descriptor)
         {
-            return descriptor.GetMetadata("httpMethod", "");
+            return descriptor.GetMetadata("httpMethod", string.Empty);
         }
 
         /// <summary>
@@ -127,7 +126,7 @@ namespace KissU.Core.CPlatform
         /// <returns>服务描述符.</returns>
         public static string AuthType(this ServiceDescriptor descriptor)
         {
-            return descriptor.GetMetadata("AuthType", "");
+            return descriptor.GetMetadata("AuthType", string.Empty);
         }
 
 

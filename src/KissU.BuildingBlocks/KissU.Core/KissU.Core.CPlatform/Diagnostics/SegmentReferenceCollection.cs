@@ -5,7 +5,7 @@ namespace KissU.Core.CPlatform.Diagnostics
 {
     /// <summary>
     /// SegmentReferenceCollection.
-    /// Implements the <see cref="IEnumerable{SegmentReference}" />
+    /// Implements the <see cref="IEnumerable{T}" />
     /// </summary>
     /// <seealso cref="IEnumerable{SegmentReference}" />
     public class SegmentReferenceCollection : IEnumerable<SegmentReference>
@@ -13,14 +13,9 @@ namespace KissU.Core.CPlatform.Diagnostics
         private readonly HashSet<SegmentReference> _references = new HashSet<SegmentReference>();
 
         /// <summary>
-        /// Adds the specified reference.
+        /// Gets the count.
         /// </summary>
-        /// <param name="reference">The reference.</param>
-        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-        public bool Add(SegmentReference reference)
-        {
-            return _references.Add(reference);
-        }
+        public int Count => _references.Count;
 
         /// <summary>
         /// Returns an enumerator that iterates through the collection.
@@ -37,8 +32,13 @@ namespace KissU.Core.CPlatform.Diagnostics
         }
 
         /// <summary>
-        /// Gets the count.
+        /// Adds the specified reference.
         /// </summary>
-        public int Count => _references.Count;
+        /// <param name="reference">The reference.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        public bool Add(SegmentReference reference)
+        {
+            return _references.Add(reference);
+        }
     }
 }

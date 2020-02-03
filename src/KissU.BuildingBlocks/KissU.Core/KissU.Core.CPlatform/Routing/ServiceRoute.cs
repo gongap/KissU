@@ -23,7 +23,10 @@ namespace KissU.Core.CPlatform.Routing
         /// Determines whether the specified <see cref="System.Object" /> is equal to this instance.
         /// </summary>
         /// <param name="obj">The object to compare with the current object.</param>
-        /// <returns><c>true</c> if the specified <see cref="System.Object" /> is equal to this instance; otherwise, <c>false</c>.</returns>
+        /// <returns>
+        /// <c>true</c> if the specified <see cref="System.Object" /> is equal to this instance; otherwise, <c>false</c>
+        /// .
+        /// </returns>
         public override bool Equals(object obj)
         {
             var model = obj as ServiceRoute;
@@ -42,7 +45,8 @@ namespace KissU.Core.CPlatform.Routing
                 return false;
             }
 
-            return model.Address.Count() == Address.Count() && model.Address.All(addressModel => Address.Contains(addressModel));
+            return model.Address.Count() == Address.Count() &&
+                   model.Address.All(addressModel => Address.Contains(addressModel));
         }
 
         /// <summary>

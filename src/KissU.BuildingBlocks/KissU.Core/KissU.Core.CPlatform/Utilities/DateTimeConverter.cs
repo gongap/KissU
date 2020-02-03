@@ -26,7 +26,9 @@ namespace KissU.Core.CPlatform.Utilities
         /// <returns>DateTime.</returns>
         public static DateTime UnixTimestampToDateTime(long timestamp, DateTime? time = null)
         {
-            var start = time == null ? new DateTime(1970, 1, 1, 0, 0, 0) : new DateTime(1970, 1, 1, 0, 0, 0, time.Value.Kind);
+            var start = time == null
+                ? new DateTime(1970, 1, 1, 0, 0, 0)
+                : new DateTime(1970, 1, 1, 0, 0, 0, time.Value.Kind);
             return start.AddSeconds(timestamp);
         }
     }

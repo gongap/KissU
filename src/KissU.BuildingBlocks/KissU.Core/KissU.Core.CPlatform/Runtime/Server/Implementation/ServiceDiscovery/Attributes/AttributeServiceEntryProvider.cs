@@ -12,10 +12,10 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
     /// </summary>
     public class AttributeServiceEntryProvider : IServiceEntryProvider
     {
-        private readonly IEnumerable<Type> _types;
         private readonly IClrServiceEntryFactory _clrServiceEntryFactory;
         private readonly ILogger<AttributeServiceEntryProvider> _logger;
         private readonly CPlatformContainer _serviceProvider;
+        private readonly IEnumerable<Type> _types;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AttributeServiceEntryProvider" /> class.
@@ -24,7 +24,8 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
         /// <param name="clrServiceEntryFactory">The color service entry factory.</param>
         /// <param name="logger">The logger.</param>
         /// <param name="serviceProvider">The service provider.</param>
-        public AttributeServiceEntryProvider(IEnumerable<Type> types, IClrServiceEntryFactory clrServiceEntryFactory, ILogger<AttributeServiceEntryProvider> logger, CPlatformContainer serviceProvider)
+        public AttributeServiceEntryProvider(IEnumerable<Type> types, IClrServiceEntryFactory clrServiceEntryFactory,
+            ILogger<AttributeServiceEntryProvider> logger, CPlatformContainer serviceProvider)
         {
             _types = types;
             _clrServiceEntryFactory = clrServiceEntryFactory;
@@ -88,7 +89,8 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
             var services = _types.Where(i =>
             {
                 var typeInfo = i.GetTypeInfo();
-                return typeInfo.IsInterface && typeInfo.GetCustomAttribute<ServiceBundleAttribute>() != null && _serviceProvider.Current.IsRegistered(i);
+                return typeInfo.IsInterface && typeInfo.GetCustomAttribute<ServiceBundleAttribute>() != null &&
+                       _serviceProvider.Current.IsRegistered(i);
             }).Distinct().ToArray();
             return services;
         }

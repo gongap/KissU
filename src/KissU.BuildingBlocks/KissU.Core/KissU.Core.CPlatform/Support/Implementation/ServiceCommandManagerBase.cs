@@ -17,9 +17,9 @@ namespace KissU.Core.CPlatform.Support.Implementation
     {
         private readonly ISerializer<string> _serializer;
         private readonly IServiceEntryManager _serviceEntryManager;
+        private EventHandler<ServiceCommandChangedEventArgs> _changed;
         private EventHandler<ServiceCommandEventArgs> _created;
         private EventHandler<ServiceCommandEventArgs> _removed;
-        private EventHandler<ServiceCommandChangedEventArgs> _changed;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ServiceCommandManagerBase" /> class.
@@ -37,8 +37,8 @@ namespace KissU.Core.CPlatform.Support.Implementation
         /// </summary>
         public event EventHandler<ServiceCommandEventArgs> Created
         {
-            add { _created += value; }
-            remove { _created -= value; }
+            add => _created += value;
+            remove => _created -= value;
         }
 
         /// <summary>
@@ -46,8 +46,8 @@ namespace KissU.Core.CPlatform.Support.Implementation
         /// </summary>
         public event EventHandler<ServiceCommandEventArgs> Removed
         {
-            add { _removed += value; }
-            remove { _removed -= value; }
+            add => _removed += value;
+            remove => _removed -= value;
         }
 
         /// <summary>
@@ -55,8 +55,8 @@ namespace KissU.Core.CPlatform.Support.Implementation
         /// </summary>
         public event EventHandler<ServiceCommandChangedEventArgs> Changed
         {
-            add { _changed += value; }
-            remove { _changed -= value; }
+            add => _changed += value;
+            remove => _changed -= value;
         }
 
         /// <summary>
@@ -64,13 +64,6 @@ namespace KissU.Core.CPlatform.Support.Implementation
         /// </summary>
         /// <returns>服务命令集合。</returns>
         public abstract Task<IEnumerable<ServiceCommandDescriptor>> GetServiceCommandsAsync();
-
-        /// <summary>
-        /// 初始化服务命令.
-        /// </summary>
-        /// <param name="routes">The routes.</param>
-        /// <returns>Task.</returns>
-        protected abstract Task InitServiceCommandsAsync(IEnumerable<ServiceCommandDescriptor> routes);
 
         /// <summary>
         /// 设置服务命令.
@@ -83,8 +76,14 @@ namespace KissU.Core.CPlatform.Support.Implementation
             {
                 var commands = (from q in _serviceEntryManager.GetEntries()
                                 let k = q.Attributes
-                                select new { ServiceId = q.Descriptor.Id, Command = k.OfType<CommandAttribute>().FirstOrDefault() }).ToList();
-                commands.ForEach(command => serviceCommands.Add(ConvertServiceCommand(command.ServiceId, command.Command)));
+                                select new
+                                {
+                                    ServiceId = q.Descriptor.Id,
+                                    Command = k.OfType<CommandAttribute>().FirstOrDefault(),
+                                })
+                    .ToList();
+                commands.ForEach(command =>
+                    serviceCommands.Add(ConvertServiceCommand(command.ServiceId, command.Command)));
                 InitServiceCommandsAsync(serviceCommands);
             });
         }
@@ -103,6 +102,13 @@ namespace KissU.Core.CPlatform.Support.Implementation
         public abstract Task SetServiceCommandsAsync(IEnumerable<ServiceCommandDescriptor> routes);
 
         /// <summary>
+        /// 初始化服务命令.
+        /// </summary>
+        /// <param name="routes">The routes.</param>
+        /// <returns>Task.</returns>
+        protected abstract Task InitServiceCommandsAsync(IEnumerable<ServiceCommandDescriptor> routes);
+
+        /// <summary>
         /// Called when [created].
         /// </summary>
         /// <param name="args">The arguments.</param>
@@ -113,7 +119,7 @@ namespace KissU.Core.CPlatform.Support.Implementation
                 return;
             }
 
-            foreach (var arg in args)
+            foreach (ServiceCommandEventArgs arg in args)
             {
                 _created(this, arg);
             }
@@ -130,7 +136,7 @@ namespace KissU.Core.CPlatform.Support.Implementation
                 return;
             }
 
-            foreach (var arg in args)
+            foreach (ServiceCommandChangedEventArgs arg in args)
             {
                 _changed(this, arg);
             }
@@ -147,7 +153,7 @@ namespace KissU.Core.CPlatform.Support.Implementation
                 return;
             }
 
-            foreach (var arg in args)
+            foreach (ServiceCommandEventArgs arg in args)
             {
                 _removed(this, arg);
             }
@@ -161,7 +167,7 @@ namespace KissU.Core.CPlatform.Support.Implementation
         /// <returns>ServiceCommandDescriptor.</returns>
         private ServiceCommandDescriptor ConvertServiceCommand(string serviceId, CommandAttribute command)
         {
-            var result = new ServiceCommandDescriptor() { ServiceId = serviceId };
+            ServiceCommandDescriptor result = new ServiceCommandDescriptor { ServiceId = serviceId };
             if (command != null)
             {
                 result = new ServiceCommandDescriptor

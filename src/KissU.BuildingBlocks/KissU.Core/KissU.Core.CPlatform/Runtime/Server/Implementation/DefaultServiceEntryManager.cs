@@ -10,8 +10,8 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
     /// </summary>
     public class DefaultServiceEntryManager : IServiceEntryManager
     {
-        private IEnumerable<ServiceEntry> _serviceEntries;
         private IEnumerable<ServiceEntry> _allEntries;
+        private IEnumerable<ServiceEntry> _serviceEntries;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DefaultServiceEntryManager" /> class.

@@ -25,9 +25,10 @@ namespace KissU.Core.CPlatform.Cache
         /// </summary>
         /// <param name="serviceCacheManager">The service cache manager.</param>
         /// <returns>Task&lt;IEnumerable&lt;CacheDescriptor&gt;&gt;.</returns>
-        public static async Task<IEnumerable<CacheDescriptor>> GetCacheDescriptorAsync(this IServiceCacheManager serviceCacheManager)
+        public static async Task<IEnumerable<CacheDescriptor>> GetCacheDescriptorAsync(
+            this IServiceCacheManager serviceCacheManager)
         {
-            IEnumerable<ServiceCache> caches = await serviceCacheManager.GetCachesAsync();
+            var caches = await serviceCacheManager.GetCachesAsync();
             return caches.Select(p => p.CacheDescriptor);
         }
 
@@ -37,9 +38,10 @@ namespace KissU.Core.CPlatform.Cache
         /// <param name="serviceCacheManager">The service cache manager.</param>
         /// <param name="cacheId">The cache identifier.</param>
         /// <returns>Task&lt;IEnumerable&lt;CacheEndpoint&gt;&gt;.</returns>
-        public static async Task<IEnumerable<CacheEndpoint>> GetCacheEndpointAsync(this IServiceCacheManager serviceCacheManager, string cacheId)
+        public static async Task<IEnumerable<CacheEndpoint>> GetCacheEndpointAsync(
+            this IServiceCacheManager serviceCacheManager, string cacheId)
         {
-            IEnumerable<ServiceCache> caches = await serviceCacheManager.GetCachesAsync();
+            var caches = await serviceCacheManager.GetCachesAsync();
             return caches.Where(p => p.CacheDescriptor.Id == cacheId).Select(p => p.CacheEndpoint).FirstOrDefault();
         }
 
@@ -50,10 +52,12 @@ namespace KissU.Core.CPlatform.Cache
         /// <param name="cacheId">The cache identifier.</param>
         /// <param name="endpoint">The endpoint.</param>
         /// <returns>Task&lt;CacheEndpoint&gt;.</returns>
-        public static async Task<CacheEndpoint> GetCacheEndpointAsync(this IServiceCacheManager serviceCacheManager, string cacheId, string endpoint)
+        public static async Task<CacheEndpoint> GetCacheEndpointAsync(this IServiceCacheManager serviceCacheManager,
+            string cacheId, string endpoint)
         {
-            IEnumerable<ServiceCache> caches = await serviceCacheManager.GetCachesAsync();
-            IEnumerable<CacheEndpoint> cache = caches.Where(p => p.CacheDescriptor.Id == cacheId).Select(p => p.CacheEndpoint).FirstOrDefault();
+            var caches = await serviceCacheManager.GetCachesAsync();
+            var cache = caches.Where(p => p.CacheDescriptor.Id == cacheId).Select(p => p.CacheEndpoint)
+                .FirstOrDefault();
             return cache.Where(p => p.ToString() == endpoint).FirstOrDefault();
         }
     }

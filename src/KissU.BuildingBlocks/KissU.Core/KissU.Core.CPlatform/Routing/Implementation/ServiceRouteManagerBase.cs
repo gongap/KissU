@@ -13,9 +13,9 @@ namespace KissU.Core.CPlatform.Routing.Implementation
     public abstract class ServiceRouteManagerBase : IServiceRouteManager
     {
         private readonly ISerializer<string> _serializer;
+        private EventHandler<ServiceRouteChangedEventArgs> _changed;
         private EventHandler<ServiceRouteEventArgs> _created;
         private EventHandler<ServiceRouteEventArgs> _removed;
-        private EventHandler<ServiceRouteChangedEventArgs> _changed;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ServiceRouteManagerBase" /> class.
@@ -31,8 +31,8 @@ namespace KissU.Core.CPlatform.Routing.Implementation
         /// </summary>
         public event EventHandler<ServiceRouteEventArgs> Created
         {
-            add { _created += value; }
-            remove { _created -= value; }
+            add => _created += value;
+            remove => _created -= value;
         }
 
         /// <summary>
@@ -40,8 +40,8 @@ namespace KissU.Core.CPlatform.Routing.Implementation
         /// </summary>
         public event EventHandler<ServiceRouteEventArgs> Removed
         {
-            add { _removed += value; }
-            remove { _removed -= value; }
+            add => _removed += value;
+            remove => _removed -= value;
         }
 
         /// <summary>
@@ -49,8 +49,8 @@ namespace KissU.Core.CPlatform.Routing.Implementation
         /// </summary>
         public event EventHandler<ServiceRouteChangedEventArgs> Changed
         {
-            add { _changed += value; }
-            remove { _changed -= value; }
+            add => _changed += value;
+            remove => _changed -= value;
         }
 
         /// <summary>

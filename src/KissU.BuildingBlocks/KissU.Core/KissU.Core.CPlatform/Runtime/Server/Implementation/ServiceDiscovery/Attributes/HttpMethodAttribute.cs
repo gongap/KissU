@@ -8,10 +8,9 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
     /// Implements the <see cref="Attribute" />
     /// </summary>
     /// <seealso cref="Attribute" />
-    [AttributeUsage(AttributeTargets.Method, AllowMultiple = true, Inherited = true)]
+    [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
     public abstract class HttpMethodAttribute : Attribute
     {
-
         /// <summary>
         /// Initializes a new instance of the <see cref="HttpMethodAttribute" /> class.
         /// </summary>

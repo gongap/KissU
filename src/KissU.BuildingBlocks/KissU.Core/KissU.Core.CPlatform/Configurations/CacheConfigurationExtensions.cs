@@ -18,7 +18,7 @@ namespace KissU.Core.CPlatform.Configurations
         /// <returns>IConfigurationBuilder.</returns>
         public static IConfigurationBuilder AddCPlatformFile(this IConfigurationBuilder builder, string path)
         {
-            return AddCPlatformFile(builder, provider: null, path: path, basePath: null, optional: false, reloadOnChange: false);
+            return AddCPlatformFile(builder, null, path, null, false, false);
         }
 
         /// <summary>
@@ -28,9 +28,10 @@ namespace KissU.Core.CPlatform.Configurations
         /// <param name="path">The path.</param>
         /// <param name="optional">if set to <c>true</c> [optional].</param>
         /// <returns>IConfigurationBuilder.</returns>
-        public static IConfigurationBuilder AddCPlatformFile(this IConfigurationBuilder builder, string path, bool optional)
+        public static IConfigurationBuilder AddCPlatformFile(this IConfigurationBuilder builder, string path,
+            bool optional)
         {
-            return AddCPlatformFile(builder, provider: null, path: path, basePath: null, optional: optional, reloadOnChange: false);
+            return AddCPlatformFile(builder, null, path, null, optional, false);
         }
 
         /// <summary>
@@ -41,9 +42,10 @@ namespace KissU.Core.CPlatform.Configurations
         /// <param name="optional">if set to <c>true</c> [optional].</param>
         /// <param name="reloadOnChange">if set to <c>true</c> [reload on change].</param>
         /// <returns>IConfigurationBuilder.</returns>
-        public static IConfigurationBuilder AddCPlatformFile(this IConfigurationBuilder builder, string path, bool optional, bool reloadOnChange)
+        public static IConfigurationBuilder AddCPlatformFile(this IConfigurationBuilder builder, string path,
+            bool optional, bool reloadOnChange)
         {
-            return AddCPlatformFile(builder, provider: null, path: path, basePath: null, optional: optional, reloadOnChange: reloadOnChange);
+            return AddCPlatformFile(builder, null, path, null, optional, reloadOnChange);
         }
 
         /// <summary>
@@ -55,9 +57,10 @@ namespace KissU.Core.CPlatform.Configurations
         /// <param name="optional">if set to <c>true</c> [optional].</param>
         /// <param name="reloadOnChange">if set to <c>true</c> [reload on change].</param>
         /// <returns>IConfigurationBuilder.</returns>
-        public static IConfigurationBuilder AddCPlatformFile(this IConfigurationBuilder builder, string path, string basePath, bool optional, bool reloadOnChange)
+        public static IConfigurationBuilder AddCPlatformFile(this IConfigurationBuilder builder, string path,
+            string basePath, bool optional, bool reloadOnChange)
         {
-            return AddCPlatformFile(builder, provider: null, path: path, basePath: basePath, optional: optional, reloadOnChange: reloadOnChange);
+            return AddCPlatformFile(builder, null, path, basePath, optional, reloadOnChange);
         }
 
         /// <summary>
@@ -70,7 +73,8 @@ namespace KissU.Core.CPlatform.Configurations
         /// <param name="optional">if set to <c>true</c> [optional].</param>
         /// <param name="reloadOnChange">if set to <c>true</c> [reload on change].</param>
         /// <returns>IConfigurationBuilder.</returns>
-        public static IConfigurationBuilder AddCPlatformFile(this IConfigurationBuilder builder, IFileProvider provider, string path, string basePath, bool optional, bool reloadOnChange)
+        public static IConfigurationBuilder AddCPlatformFile(this IConfigurationBuilder builder, IFileProvider provider,
+            string path, string basePath, bool optional, bool reloadOnChange)
         {
             Check.NotNull(builder, "builder");
             Check.CheckCondition(() => string.IsNullOrEmpty(path), "path");
@@ -99,10 +103,11 @@ namespace KissU.Core.CPlatform.Configurations
 
                 AppConfig.Configuration = builder.Build();
                 AppConfig.ServerOptions = AppConfig.Configuration.Get<ServerEngineOptions>();
-                IConfigurationSection section = AppConfig.Configuration.GetSection("ServerEngine");
+                var section = AppConfig.Configuration.GetSection("ServerEngine");
                 if (section.Exists())
                 {
-                    AppConfig.ServerOptions = AppConfig.Configuration.GetSection("ServerEngine").Get<ServerEngineOptions>();
+                    AppConfig.ServerOptions =
+                        AppConfig.Configuration.GetSection("ServerEngine").Get<ServerEngineOptions>();
                 }
             }
 

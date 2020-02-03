@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace KissU.Core.CPlatform.Mqtt
 {
@@ -35,14 +36,14 @@ namespace KissU.Core.CPlatform.Mqtt
         /// <param name="name">元数据名称。</param>
         /// <param name="def">如果指定名称的元数据不存在则返回这个参数。</param>
         /// <returns>元数据值。</returns>
-        public T GetMetadata<T>(string name, T def = default(T))
+        public T GetMetadata<T>(string name, T def = default)
         {
             if (!Metadatas.ContainsKey(name))
             {
                 return def;
             }
 
-            return (T)Metadatas[name];
+            return (T) Metadatas[name];
         }
 
         /// <summary>

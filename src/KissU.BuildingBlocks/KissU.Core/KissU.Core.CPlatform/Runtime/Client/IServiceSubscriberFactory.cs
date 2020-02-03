@@ -13,6 +13,7 @@ namespace KissU.Core.CPlatform.Runtime.Client
         /// </summary>
         /// <param name="descriptors">The descriptors.</param>
         /// <returns>Task&lt;IEnumerable&lt;ServiceSubscriber&gt;&gt;.</returns>
-        Task<IEnumerable<ServiceSubscriber>> CreateServiceSubscribersAsync(IEnumerable<ServiceSubscriberDescriptor> descriptors);
+        Task<IEnumerable<ServiceSubscriber>> CreateServiceSubscribersAsync(
+            IEnumerable<ServiceSubscriberDescriptor> descriptors);
     }
 }

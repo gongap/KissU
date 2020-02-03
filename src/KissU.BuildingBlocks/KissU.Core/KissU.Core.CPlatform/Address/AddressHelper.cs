@@ -33,10 +33,11 @@ namespace KissU.Core.CPlatform.Address
         {
             if (Regex.IsMatch(address, "[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}"))
             {
-                string[] ips = address.Split('.');
+                var ips = address.Split('.');
                 if (ips.Length == 4 || ips.Length == 6)
                 {
-                    if (int.Parse(ips[0]) < 256 && int.Parse(ips[1]) < 256 && int.Parse(ips[2]) < 256 && int.Parse(ips[3]) < 256)
+                    if (int.Parse(ips[0]) < 256 && int.Parse(ips[1]) < 256 && int.Parse(ips[2]) < 256 &&
+                        int.Parse(ips[3]) < 256)
                     {
                         return true;
                     }

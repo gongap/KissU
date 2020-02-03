@@ -23,13 +23,19 @@ namespace KissU.Core.CPlatform.Configurations.Remote
         /// 发送请求.
         /// </summary>
         /// <param name="msg">The msg.</param>
-        public virtual void SendingRequest(HttpRequestMessage msg) => OnSendingRequest(msg);
+        public virtual void SendingRequest(HttpRequestMessage msg)
+        {
+            OnSendingRequest(msg);
+        }
 
         /// <summary>
         /// 解析的数据.
         /// </summary>
         /// <param name="data">The data.</param>
         /// <returns>IDictionary&lt;System.String, System.String&gt;.</returns>
-        public virtual IDictionary<string, string> DataParsed(IDictionary<string, string> data) => OnDataParsed(data);
+        public virtual IDictionary<string, string> DataParsed(IDictionary<string, string> data)
+        {
+            return OnDataParsed(data);
+        }
     }
 }

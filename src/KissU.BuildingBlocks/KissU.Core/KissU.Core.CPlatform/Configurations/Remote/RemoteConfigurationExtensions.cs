@@ -16,7 +16,7 @@ namespace KissU.Core.CPlatform.Configurations.Remote
         /// <returns>The <see cref="IConfigurationBuilder" />.</returns>
         public static IConfigurationBuilder AddRemoteSource(this IConfigurationBuilder builder, Uri configurationUri)
         {
-            return builder.AddRemoteSource(configurationUri, optional: false);
+            return builder.AddRemoteSource(configurationUri, false);
         }
 
         /// <summary>
@@ -30,7 +30,8 @@ namespace KissU.Core.CPlatform.Configurations.Remote
         /// <exception cref="ArgumentNullException">configurationUri</exception>
         /// <exception cref="ArgumentNullException">builder</exception>
         /// <exception cref="ArgumentNullException">configurationUri</exception>
-        public static IConfigurationBuilder AddRemoteSource(this IConfigurationBuilder builder, Uri configurationUri, bool optional)
+        public static IConfigurationBuilder AddRemoteSource(this IConfigurationBuilder builder, Uri configurationUri,
+            bool optional)
         {
             if (builder == null)
             {
@@ -66,7 +67,8 @@ namespace KissU.Core.CPlatform.Configurations.Remote
         /// <exception cref="ArgumentNullException">configurationUri</exception>
         /// <exception cref="ArgumentNullException">events</exception>
         /// <exception cref="ArgumentNullException">builder</exception>
-        public static IConfigurationBuilder AddRemoteSource(this IConfigurationBuilder builder, Uri configurationUri, bool optional, RemoteConfigurationEvents events)
+        public static IConfigurationBuilder AddRemoteSource(this IConfigurationBuilder builder, Uri configurationUri,
+            bool optional, RemoteConfigurationEvents events)
         {
             if (builder == null)
             {
@@ -103,7 +105,8 @@ namespace KissU.Core.CPlatform.Configurations.Remote
         /// <exception cref="ArgumentNullException">source</exception>
         /// <exception cref="ArgumentNullException">builder</exception>
         /// <exception cref="ArgumentNullException">source</exception>
-        public static IConfigurationBuilder AddRemoteSource(this IConfigurationBuilder builder, RemoteConfigurationSource source)
+        public static IConfigurationBuilder AddRemoteSource(this IConfigurationBuilder builder,
+            RemoteConfigurationSource source)
         {
             if (builder == null)
             {

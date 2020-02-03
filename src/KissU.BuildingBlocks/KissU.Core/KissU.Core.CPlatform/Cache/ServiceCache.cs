@@ -41,7 +41,8 @@ namespace KissU.Core.CPlatform.Cache
                 return false;
             }
 
-            return model.CacheEndpoint.Count() == CacheEndpoint.Count() && model.CacheEndpoint.All(addressModel => CacheEndpoint.Contains(addressModel));
+            return model.CacheEndpoint.Count() == CacheEndpoint.Count() &&
+                   model.CacheEndpoint.All(addressModel => CacheEndpoint.Contains(addressModel));
         }
 
         /// <summary>

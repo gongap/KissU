@@ -14,6 +14,16 @@ namespace KissU.Core.CPlatform.Module
     public abstract class AbstractModule : Autofac.Module, IDisposable
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="AbstractModule" /> class.
+        /// 初始化
+        /// </summary>
+        public AbstractModule()
+        {
+            ModuleName = GetType().Name;
+            TypeName = GetType().BaseType?.Name;
+        }
+
+        /// <summary>
         /// 容器创建包装属性
         /// </summary>
         public ContainerBuilderWrapper Builder { get; set; }
@@ -54,13 +64,10 @@ namespace KissU.Core.CPlatform.Module
         public List<Component> Components { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AbstractModule" /> class.
-        /// 初始化
+        /// 释放资源
         /// </summary>
-        public AbstractModule()
+        public virtual void Dispose()
         {
-            ModuleName = this.GetType().Name;
-            TypeName = this.GetType().BaseType?.Name;
         }
 
         /// <summary>
@@ -119,10 +126,10 @@ namespace KissU.Core.CPlatform.Module
             Components?.ForEach(component =>
             {
                 // 服务类型
-                Type serviceType = Type.GetType(component.ServiceType, true);
+                var serviceType = Type.GetType(component.ServiceType, true);
 
                 // 实现类型
-                Type implementType = Type.GetType(component.ImplementType, true);
+                var implementType = Type.GetType(component.ImplementType, true);
 
                 // 组件生命周期
                 switch (component.LifetimeScope)
@@ -173,20 +180,23 @@ namespace KissU.Core.CPlatform.Module
         /// <summary>
         /// 验证模块
         /// </summary>
-        /// <exception cref="KissU.Core.CPlatform.Exceptions.CPlatformException">模块属性：Identifier，ModuleName，TypeName，Title 是必须的不能为空！</exception>
+        /// <exception cref="KissU.Core.CPlatform.Exceptions.CPlatformException">
+        /// 模块属性：Identifier，ModuleName，TypeName，Title
+        /// 是必须的不能为空！
+        /// </exception>
         /// <exception cref="KissU.Core.CPlatform.Exceptions.CPlatformException">模块属性：ModuleName 必须为字母开头数字或下划线的组合！</exception>
         /// <exception cref="CPlatformException">模块属性：Identifier，ModuleName，TypeName，Title 是必须的不能为空！</exception>
         /// <exception cref="CPlatformException">模块属性：ModuleName 必须为字母开头数字或下划线的组合！</exception>
         public virtual void ValidateModule()
         {
-            if (this.Identifier == Guid.Empty || string.IsNullOrEmpty(this.ModuleName) || string.IsNullOrEmpty(this.TypeName)
-                || string.IsNullOrEmpty(this.Title))
+            if (Identifier == Guid.Empty || string.IsNullOrEmpty(ModuleName) || string.IsNullOrEmpty(TypeName)
+                || string.IsNullOrEmpty(Title))
             {
                 throw new CPlatformException("模块属性：Identifier，ModuleName，TypeName，Title 是必须的不能为空！");
             }
 
-            Regex regex = new Regex(@"^[a-zA-Z][a-zA-Z0-9_]*$");
-            if (!regex.IsMatch(this.ModuleName))
+            var regex = new Regex(@"^[a-zA-Z][a-zA-Z0-9_]*$");
+            if (!regex.IsMatch(ModuleName))
             {
                 throw new CPlatformException("模块属性：ModuleName 必须为字母开头数字或下划线的组合！");
             }
@@ -198,7 +208,7 @@ namespace KissU.Core.CPlatform.Module
         /// <returns>字符串</returns>
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             sb.AppendFormat("标识符：{0}", Identifier);
             sb.AppendLine();
             sb.AppendFormat("模块名：{0}", ModuleName);
@@ -211,18 +221,8 @@ namespace KissU.Core.CPlatform.Module
             sb.AppendLine();
             sb.AppendFormat("组件详细 {0}个", Components.Count);
             sb.AppendLine();
-            Components.ForEach(c =>
-            {
-                sb.AppendLine(c.ToString());
-            });
+            Components.ForEach(c => { sb.AppendLine(c.ToString()); });
             return sb.ToString();
-        }
-
-        /// <summary>
-        /// 释放资源
-        /// </summary>
-        public virtual void Dispose()
-        {
         }
     }
 }

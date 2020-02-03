@@ -14,7 +14,8 @@ namespace KissU.Core.CPlatform.Exceptions
         /// </summary>
         /// <param name="message">异常消息。</param>
         /// <param name="innerException">内部异常。</param>
-        public RegisterConnectionException(string message, Exception innerException = null) : base(message, innerException)
+        public RegisterConnectionException(string message, Exception innerException = null) : base(message,
+            innerException)
         {
         }
     }

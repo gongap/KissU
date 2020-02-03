@@ -19,9 +19,9 @@ namespace KissU.Core.CPlatform.Routing.Template
         /// <returns>System.String.</returns>
         public static string Parse(string routeTemplet, string service, string method)
         {
-            StringBuilder result = new StringBuilder();
+            var result = new StringBuilder();
             var parameters = routeTemplet.Split(@"/");
-            bool isAppendMethod=false;
+            var isAppendMethod = false;
             foreach (var parameter in parameters)
             {
                 var param = GetParameters(parameter).FirstOrDefault();
@@ -69,7 +69,7 @@ namespace KissU.Core.CPlatform.Routing.Template
         /// <returns>System.String.</returns>
         public static string Parse(string routeTemplet, string service)
         {
-            StringBuilder result = new StringBuilder();
+            var result = new StringBuilder();
             var parameters = routeTemplet.Split(@"/");
             foreach (var parameter in parameters)
             {
@@ -97,8 +97,8 @@ namespace KissU.Core.CPlatform.Routing.Template
         private static List<string> GetParameters(string text)
         {
             var matchVale = new List<string>();
-            string reg = @"(?<={)[^{}]*(?=})";
-            string key = string.Empty;
+            var reg = @"(?<={)[^{}]*(?=})";
+            var key = string.Empty;
             foreach (Match m in Regex.Matches(text, reg))
             {
                 matchVale.Add(m.Value);

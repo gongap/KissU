@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -8,7 +6,7 @@ namespace KissU.Core.CPlatform.Serialization.JsonConverters
 {
     /// <summary>
     /// 日期JsonConverter.
-    /// Implements the <see cref="JsonConverter{DateTime}" />
+    /// Implements the <see cref="JsonConverter{T}" />
     /// </summary>
     /// <seealso cref="JsonConverter{DateTime}" />
     public class DateTimeJsonConverter : JsonConverter<DateTime>

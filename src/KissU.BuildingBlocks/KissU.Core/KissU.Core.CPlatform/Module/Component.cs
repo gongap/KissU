@@ -28,7 +28,7 @@ namespace KissU.Core.CPlatform.Module
         /// <returns>A <see cref="string" /> that represents this instance.</returns>
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             sb.AppendFormat("接口类型：{0}", ServiceType);
             sb.AppendLine();
             sb.AppendFormat("实现类型：{0}", ImplementType);

@@ -10,6 +10,16 @@ namespace KissU.Core.CPlatform.Cache
     public interface ICacheProvider
     {
         /// <summary>
+        /// 默认的过期时间.
+        /// </summary>
+        long DefaultExpireTime { get; set; }
+
+        /// <summary>
+        /// 键后缀。
+        /// </summary>
+        string KeySuffix { get; set; }
+
+        /// <summary>
         /// 连接缓存终结点
         /// </summary>
         /// <param name="endpoint">终结点</param>
@@ -143,15 +153,5 @@ namespace KissU.Core.CPlatform.Cache
         /// </summary>
         /// <param name="key">The key.</param>
         void RemoveAsync(string key);
-
-        /// <summary>
-        /// 默认的过期时间.
-        /// </summary>
-        long DefaultExpireTime { get; set; }
-
-        /// <summary>
-        /// 键后缀。
-        /// </summary>
-        string KeySuffix { get; set; }
     }
 }

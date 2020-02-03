@@ -18,6 +18,11 @@ namespace KissU.Core.CPlatform.Cache.Implementation
         private readonly ISerializer<string> _serializer;
 
         /// <summary>
+        /// The changed
+        /// </summary>
+        private EventHandler<ServiceCacheChangedEventArgs> _changed;
+
+        /// <summary>
         /// The created
         /// </summary>
         private EventHandler<ServiceCacheEventArgs> _created;
@@ -26,11 +31,6 @@ namespace KissU.Core.CPlatform.Cache.Implementation
         /// The removed
         /// </summary>
         private EventHandler<ServiceCacheEventArgs> _removed;
-
-        /// <summary>
-        /// The changed
-        /// </summary>
-        private EventHandler<ServiceCacheChangedEventArgs> _changed;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ServiceCacheManagerBase" /> class.
@@ -46,8 +46,8 @@ namespace KissU.Core.CPlatform.Cache.Implementation
         /// </summary>
         public event EventHandler<ServiceCacheEventArgs> Created
         {
-            add { _created += value; }
-            remove { _created -= value; }
+            add => _created += value;
+            remove => _created -= value;
         }
 
         /// <summary>
@@ -55,8 +55,8 @@ namespace KissU.Core.CPlatform.Cache.Implementation
         /// </summary>
         public event EventHandler<ServiceCacheEventArgs> Removed
         {
-            add { _removed += value; }
-            remove { _removed -= value; }
+            add => _removed += value;
+            remove => _removed -= value;
         }
 
         /// <summary>
@@ -64,8 +64,8 @@ namespace KissU.Core.CPlatform.Cache.Implementation
         /// </summary>
         public event EventHandler<ServiceCacheChangedEventArgs> Changed
         {
-            add { _changed += value; }
-            remove { _changed -= value; }
+            add => _changed += value;
+            remove => _changed -= value;
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace KissU.Core.CPlatform.Cache.Implementation
                 throw new ArgumentNullException(nameof(caches));
             }
 
-            IEnumerable<ServiceCacheDescriptor> descriptors = caches.Where(cache => cache != null).Select(cache => new ServiceCacheDescriptor
+            var descriptors = caches.Where(cache => cache != null).Select(cache => new ServiceCacheDescriptor
             {
                 AddressDescriptors = cache.CacheEndpoint?.Select(address => new CacheEndpointDescriptor
                 {
@@ -130,7 +130,7 @@ namespace KissU.Core.CPlatform.Cache.Implementation
                 return;
             }
 
-            foreach (ServiceCacheEventArgs arg in args)
+            foreach (var arg in args)
             {
                 _created(this, arg);
             }
@@ -147,7 +147,7 @@ namespace KissU.Core.CPlatform.Cache.Implementation
                 return;
             }
 
-            foreach (ServiceCacheChangedEventArgs arg in args)
+            foreach (var arg in args)
             {
                 _changed(this, arg);
             }
@@ -164,7 +164,7 @@ namespace KissU.Core.CPlatform.Cache.Implementation
                 return;
             }
 
-            foreach (ServiceCacheEventArgs arg in args)
+            foreach (var arg in args)
             {
                 _removed(this, arg);
             }

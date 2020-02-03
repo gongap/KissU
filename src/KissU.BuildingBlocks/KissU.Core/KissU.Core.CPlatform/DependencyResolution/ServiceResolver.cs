@@ -11,8 +11,37 @@ namespace KissU.Core.CPlatform.DependencyResolution
     /// </summary>
     public class ServiceResolver : IDependencyResolver
     {
-        private static readonly ServiceResolver _defaultInstance = new ServiceResolver();
-        private readonly ConcurrentDictionary<ValueTuple<Type, string>, object> _initializers = new ConcurrentDictionary<ValueTuple<Type, string>, object>();
+        private readonly ConcurrentDictionary<ValueTuple<Type, string>, object> _initializers =
+            new ConcurrentDictionary<ValueTuple<Type, string>, object>();
+
+        /// <summary>
+        /// 返回当前IOC容器
+        /// </summary>
+        public static ServiceResolver Current { get; } = new ServiceResolver();
+
+        /// <summary>
+        /// 通过KEY和TYPE获取实例对象
+        /// </summary>
+        /// <param name="type">类型</param>
+        /// <param name="key">键</param>
+        /// <returns>返回实例对象</returns>
+        public virtual object GetService(Type type, object key)
+        {
+            object result;
+            _initializers.TryGetValue(ValueTuple.Create(type, key == null ? null : key.ToString()), out result);
+            return result;
+        }
+
+        /// <summary>
+        /// 通过KEY和TYPE获取实例对象集合
+        /// </summary>
+        /// <param name="type">类型</param>
+        /// <param name="key">键</param>
+        /// <returns>返回实例对象</returns>
+        public IEnumerable<object> GetServices(Type type, object key)
+        {
+            return this.GetServiceAsServices(type, key);
+        }
 
         /// <summary>
         /// 注册对象添加到IOC容器
@@ -41,38 +70,6 @@ namespace KissU.Core.CPlatform.DependencyResolution
         {
             DebugCheck.NotNull(value);
             _initializers.GetOrAdd(ValueTuple.Create(type, key), value);
-        }
-
-        /// <summary>
-        /// 返回当前IOC容器
-        /// </summary>
-        public static ServiceResolver Current
-        {
-            get { return _defaultInstance; }
-        }
-
-        /// <summary>
-        /// 通过KEY和TYPE获取实例对象
-        /// </summary>
-        /// <param name="type">类型</param>
-        /// <param name="key">键</param>
-        /// <returns>返回实例对象</returns>
-        public virtual object GetService(Type type, object key)
-        {
-            object result;
-            _initializers.TryGetValue(ValueTuple.Create(type, key == null ? null : key.ToString()), out result);
-            return result;
-        }
-
-        /// <summary>
-        /// 通过KEY和TYPE获取实例对象集合
-        /// </summary>
-        /// <param name="type">类型</param>
-        /// <param name="key">键</param>
-        /// <returns>返回实例对象</returns>
-        public IEnumerable<object> GetServices(Type type, object key)
-        {
-            return this.GetServiceAsServices(type, key);
         }
     }
 }

@@ -20,9 +20,9 @@ namespace KissU.Core.CPlatform.Runtime.Client.Implementation
     public class RemoteInvokeService : IRemoteInvokeService
     {
         private readonly IAddressResolver _addressResolver;
-        private readonly ITransportClientFactory _transportClientFactory;
-        private readonly ILogger<RemoteInvokeService> _logger;
         private readonly IHealthCheckService _healthCheckService;
+        private readonly ILogger<RemoteInvokeService> _logger;
+        private readonly ITransportClientFactory _transportClientFactory;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RemoteInvokeService" /> class.
@@ -32,7 +32,9 @@ namespace KissU.Core.CPlatform.Runtime.Client.Implementation
         /// <param name="transportClientFactory">The transport client factory.</param>
         /// <param name="logger">The logger.</param>
         /// <param name="healthCheckService">The health check service.</param>
-        public RemoteInvokeService(IHashAlgorithm hashAlgorithm, IAddressResolver addressResolver, ITransportClientFactory transportClientFactory, ILogger<RemoteInvokeService> logger, IHealthCheckService healthCheckService)
+        public RemoteInvokeService(IHashAlgorithm hashAlgorithm, IAddressResolver addressResolver,
+            ITransportClientFactory transportClientFactory, ILogger<RemoteInvokeService> logger,
+            IHealthCheckService healthCheckService)
         {
             _addressResolver = addressResolver;
             _transportClientFactory = transportClientFactory;
@@ -56,7 +58,8 @@ namespace KissU.Core.CPlatform.Runtime.Client.Implementation
         /// <param name="context">调用上下文。</param>
         /// <param name="cancellationToken">取消操作通知实例。</param>
         /// <returns>远程调用结果消息模型。</returns>
-        public async Task<RemoteInvokeResultMessage> InvokeAsync(RemoteInvokeContext context, CancellationToken cancellationToken)
+        public async Task<RemoteInvokeResultMessage> InvokeAsync(RemoteInvokeContext context,
+            CancellationToken cancellationToken)
         {
             var invokeMessage = context.InvokeMessage;
             AddressModel address = null;

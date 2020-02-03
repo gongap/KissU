@@ -9,7 +9,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
     /// <seealso cref="HttpMethodAttribute" />
     public class HttpPatchAttribute : HttpMethodAttribute
     {
-        private static readonly IEnumerable<string> _supportedMethods = new[] { "PATCH" };
+        private static readonly IEnumerable<string> _supportedMethods = new[] {"PATCH"};
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HttpPatchAttribute" /> class.

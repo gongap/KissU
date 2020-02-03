@@ -10,12 +10,7 @@ namespace KissU.Core.CPlatform.Diagnostics
     public class DiagnosticName : Attribute
     {
         /// <summary>
-        /// 名称.
-        /// </summary>
-        public string Name { get; }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DiagnosticName"/> class.
+        /// Initializes a new instance of the <see cref="DiagnosticName" /> class.
         /// </summary>
         /// <param name="name">The name.</param>
         public DiagnosticName(string name)
@@ -24,13 +19,18 @@ namespace KissU.Core.CPlatform.Diagnostics
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DiagnosticName"/> class.
+        /// Initializes a new instance of the <see cref="DiagnosticName" /> class.
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="type">The type.</param>
-        public DiagnosticName(string name,TransportType type)
+        public DiagnosticName(string name, TransportType type)
         {
-            Name = string.Format(name,type);
+            Name = string.Format(name, type);
         }
+
+        /// <summary>
+        /// 名称.
+        /// </summary>
+        public string Name { get; }
     }
 }

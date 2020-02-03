@@ -19,9 +19,9 @@ namespace KissU.Core.CPlatform.Routing
         /// <returns>服务路由。</returns>
         public static async Task<ServiceRoute> GetAsync(this IServiceRouteManager serviceRouteManager, string serviceId)
         {
-            return (await serviceRouteManager.GetRoutesAsync()).SingleOrDefault(i => i.ServiceDescriptor.Id == serviceId);
+            return (await serviceRouteManager.GetRoutesAsync()).SingleOrDefault(
+                i => i.ServiceDescriptor.Id == serviceId);
         }
-
 
 
         /// <summary>
@@ -30,10 +30,11 @@ namespace KissU.Core.CPlatform.Routing
         /// <param name="serviceRouteManager">The service route manager.</param>
         /// <param name="condition">The condition.</param>
         /// <returns>Task&lt;IEnumerable&lt;AddressModel&gt;&gt;.</returns>
-        public static async Task<IEnumerable<AddressModel>> GetAddressAsync(this IServiceRouteManager serviceRouteManager, string condition = null)
+        public static async Task<IEnumerable<AddressModel>> GetAddressAsync(
+            this IServiceRouteManager serviceRouteManager, string condition = null)
         {
             var routes = await serviceRouteManager.GetRoutesAsync();
-            Dictionary<string, AddressModel> result = new Dictionary<string, AddressModel>();
+            var result = new Dictionary<string, AddressModel>();
             if (condition != null)
             {
                 if (!condition.IsIP())
@@ -69,7 +70,8 @@ namespace KissU.Core.CPlatform.Routing
         /// <param name="serviceRouteManager">The service route manager.</param>
         /// <param name="address">The address.</param>
         /// <returns>Task&lt;IEnumerable&lt;ServiceRoute&gt;&gt;.</returns>
-        public static async Task<IEnumerable<ServiceRoute>> GetRoutesAsync(this IServiceRouteManager serviceRouteManager, string address)
+        public static async Task<IEnumerable<ServiceRoute>> GetRoutesAsync(
+            this IServiceRouteManager serviceRouteManager, string address)
         {
             var routes = await serviceRouteManager.GetRoutesAsync();
             return routes.Where(p => p.Address.Any(m => m.ToString() == address));
@@ -82,19 +84,18 @@ namespace KissU.Core.CPlatform.Routing
         /// <param name="address">The address.</param>
         /// <param name="serviceId">The service identifier.</param>
         /// <returns>Task&lt;IEnumerable&lt;ServiceDescriptor&gt;&gt;.</returns>
-        public static async Task<IEnumerable<ServiceDescriptor>> GetServiceDescriptorAsync(this IServiceRouteManager serviceRouteManager, string address, string serviceId = null)
+        public static async Task<IEnumerable<ServiceDescriptor>> GetServiceDescriptorAsync(
+            this IServiceRouteManager serviceRouteManager, string address, string serviceId = null)
         {
             var routes = await serviceRouteManager.GetRoutesAsync();
             if (serviceId == null)
             {
                 return routes.Where(p => p.Address.Any(m => m.ToString() == address))
-                 .Select(p => p.ServiceDescriptor);
+                    .Select(p => p.ServiceDescriptor);
             }
-            else
-            {
-                return routes.Where(p => p.ServiceDescriptor.Id == serviceId)
-               .Select(p => p.ServiceDescriptor);
-            }
+
+            return routes.Where(p => p.ServiceDescriptor.Id == serviceId)
+                .Select(p => p.ServiceDescriptor);
         }
     }
 }

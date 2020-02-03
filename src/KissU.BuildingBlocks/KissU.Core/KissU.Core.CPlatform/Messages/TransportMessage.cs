@@ -76,7 +76,7 @@ namespace KissU.Core.CPlatform.Messages
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool IsInvokeMessage()
         {
-            return ContentType == MessagePackTransportMessageType.remoteInvokeMessageTypeName;
+            return ContentType == MessagePackTransportMessageType.RemoteInvokeMessageTypeName;
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace KissU.Core.CPlatform.Messages
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool IsInvokeResultMessage()
         {
-            return ContentType == MessagePackTransportMessageType.remoteInvokeResultMessageTypeName;
+            return ContentType == MessagePackTransportMessageType.RemoteInvokeResultMessageTypeName;
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace KissU.Core.CPlatform.Messages
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool IsHttpMessage()
         {
-            return ContentType == MessagePackTransportMessageType.httpMessageTypeName;
+            return ContentType == MessagePackTransportMessageType.HttpMessageTypeName;
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace KissU.Core.CPlatform.Messages
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool IsHttpResultMessage()
         {
-            return ContentType == MessagePackTransportMessageType.httpResultMessageTypeName;
+            return ContentType == MessagePackTransportMessageType.HttpResultMessageTypeName;
         }
 
         /// <summary>
@@ -117,7 +117,7 @@ namespace KissU.Core.CPlatform.Messages
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public T GetContent<T>()
         {
-            return (T)Content;
+            return (T) Content;
         }
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace KissU.Core.CPlatform.Messages
         /// <returns>调用传输消息。</returns>
         public static TransportMessage CreateInvokeMessage(RemoteInvokeMessage invokeMessage)
         {
-            return new TransportMessage(invokeMessage, MessagePackTransportMessageType.remoteInvokeMessageTypeName)
+            return new TransportMessage(invokeMessage, MessagePackTransportMessageType.RemoteInvokeMessageTypeName)
             {
                 Id = Guid.NewGuid().ToString("N"),
             };
@@ -139,9 +139,11 @@ namespace KissU.Core.CPlatform.Messages
         /// <param name="id">消息Id。</param>
         /// <param name="invokeResultMessage">调用结果实例。</param>
         /// <returns>调用结果传输消息。</returns>
-        public static TransportMessage CreateInvokeResultMessage(string id, RemoteInvokeResultMessage invokeResultMessage)
+        public static TransportMessage CreateInvokeResultMessage(string id,
+            RemoteInvokeResultMessage invokeResultMessage)
         {
-            return new TransportMessage(invokeResultMessage, MessagePackTransportMessageType.remoteInvokeResultMessageTypeName)
+            return new TransportMessage(invokeResultMessage,
+                MessagePackTransportMessageType.RemoteInvokeResultMessageTypeName)
             {
                 Id = id,
             };

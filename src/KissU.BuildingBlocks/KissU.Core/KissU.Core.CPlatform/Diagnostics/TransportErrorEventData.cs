@@ -10,12 +10,12 @@ namespace KissU.Core.CPlatform.Diagnostics
     public class TransportErrorEventData : EventData
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="TransportErrorEventData"/> class.
+        /// Initializes a new instance of the <see cref="TransportErrorEventData" /> class.
         /// </summary>
         /// <param name="message">The message.</param>
         /// <param name="ex">The ex.</param>
-        public TransportErrorEventData(DiagnosticMessage message,Exception ex)
-          : base(Guid.Parse(message.Id))
+        public TransportErrorEventData(DiagnosticMessage message, Exception ex)
+            : base(Guid.Parse(message.Id))
         {
             Message = message;
             Exception = ex;

@@ -5,7 +5,7 @@
     /// Implements the <see cref="IServiceEngine" />
     /// </summary>
     /// <seealso cref="IServiceEngine" />
-    public abstract class VirtualPathProviderServiceEngine: IServiceEngine
+    public abstract class VirtualPathProviderServiceEngine : IServiceEngine
     {
         /// <summary>
         /// Gets or sets the module service location formats.

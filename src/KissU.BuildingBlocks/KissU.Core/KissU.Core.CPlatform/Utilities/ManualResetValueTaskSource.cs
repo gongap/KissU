@@ -29,17 +29,22 @@ namespace KissU.Core.CPlatform.Utilities
 
     /// <summary>
     /// Manual Reset Value Task Source.
-    /// Implements the <see cref="KissU.Core.CPlatform.Utilities.IStrongBox{KissU.Core.CPlatform.Utilities.ManualResetValueTaskSourceLogic{T}}" />
+    /// Implements the
+    /// <see
+    ///     cref="KissU.Core.CPlatform.Utilities.IStrongBox{KissU.Core.CPlatform.Utilities.ManualResetValueTaskSourceLogic{T}}" />
     /// Implements the <see cref="System.Threading.Tasks.Sources.IValueTaskSource{T}" />
-    /// Implements the <see cref="System.Threading.Tasks.Sources.IValueTaskSource" /></summary>
+    /// Implements the <see cref="System.Threading.Tasks.Sources.IValueTaskSource" />
+    /// </summary>
     /// <typeparam name="T"></typeparam>
-    /// <seealso cref="KissU.Core.CPlatform.Utilities.IStrongBox{KissU.Core.CPlatform.Utilities.ManualResetValueTaskSourceLogic{T}}" />
+    /// <seealso
+    ///     cref="KissU.Core.CPlatform.Utilities.IStrongBox{KissU.Core.CPlatform.Utilities.ManualResetValueTaskSourceLogic{T}}" />
     /// <seealso cref="System.Threading.Tasks.Sources.IValueTaskSource{T}" />
     /// <seealso cref="System.Threading.Tasks.Sources.IValueTaskSource" />
-    public class ManualResetValueTaskSource<T> : IStrongBox<ManualResetValueTaskSourceLogic<T>>, IValueTaskSource<T>, IValueTaskSource
+    public class ManualResetValueTaskSource<T> : IStrongBox<ManualResetValueTaskSourceLogic<T>>, IValueTaskSource<T>,
+        IValueTaskSource
     {
-        private ManualResetValueTaskSourceLogic<T> _logic;
         private readonly Action _cancellationCallback;
+        private ManualResetValueTaskSourceLogic<T> _logic;
 
         public ManualResetValueTaskSource(ContinuationOptions options = ContinuationOptions.None)
         {
@@ -48,6 +53,31 @@ namespace KissU.Core.CPlatform.Utilities
         }
 
         public short Version => _logic.Version;
+
+        public bool RunContinuationsAsynchronously { get; set; } = true;
+
+        ref ManualResetValueTaskSourceLogic<T> IStrongBox<ManualResetValueTaskSourceLogic<T>>.Value => ref _logic;
+
+        void IValueTaskSource.GetResult(short token)
+        {
+            _logic.GetResult(token);
+        }
+
+        public T GetResult(short token)
+        {
+            return _logic.GetResult(token);
+        }
+
+        public ValueTaskSourceStatus GetStatus(short token)
+        {
+            return _logic.GetStatus(token);
+        }
+
+        public void OnCompleted(Action<object> continuation, object state, short token,
+            ValueTaskSourceOnCompletedFlags flags)
+        {
+            _logic.OnCompleted(continuation, state, token, flags);
+        }
 
         public bool SetResult(T result)
         {
@@ -78,38 +108,32 @@ namespace KissU.Core.CPlatform.Utilities
             }
         }
 
-        public void SetCanceled() => SetException(new TaskCanceledException());
-
-        public T GetResult(short token) => _logic.GetResult(token);
-
-        void IValueTaskSource.GetResult(short token) => _logic.GetResult(token);
-
-        public ValueTaskSourceStatus GetStatus(short token) => _logic.GetStatus(token);
-
-        public bool RunContinuationsAsynchronously { get; set; } = true;
-
-        public void OnCompleted(Action<object> continuation, object state, short token, ValueTaskSourceOnCompletedFlags flags) => _logic.OnCompleted(continuation, state, token, flags);
-
-        ref ManualResetValueTaskSourceLogic<T> IStrongBox<ManualResetValueTaskSourceLogic<T>>.Value => ref _logic;
+        public void SetCanceled()
+        {
+            SetException(new TaskCanceledException());
+        }
 
 
         public ValueTask<T> AwaitValue(CancellationToken cancellation)
         {
-            CancellationTokenRegistration? registration = cancellation == CancellationToken.None
-                ? (CancellationTokenRegistration?)null
+            var registration = cancellation == CancellationToken.None
+                ? (CancellationTokenRegistration?) null
                 : cancellation.Register(_cancellationCallback);
             return _logic.AwaitValue(this, registration);
         }
 
         public ValueTask AwaitVoid(CancellationToken cancellation)
         {
-            CancellationTokenRegistration? registration = cancellation == CancellationToken.None
-                ? (CancellationTokenRegistration?)null
+            var registration = cancellation == CancellationToken.None
+                ? (CancellationTokenRegistration?) null
                 : cancellation.Register(_cancellationCallback);
             return _logic.AwaitVoid(this, registration);
         }
 
-        public void Reset() => _logic.Reset();
+        public void Reset()
+        {
+            _logic.Reset();
+        }
     }
 
     internal struct ManualResetValueTaskSourceLogic<TResult>
@@ -122,12 +146,12 @@ namespace KissU.Core.CPlatform.Utilities
         private object _continuationState;
         private object _capturedContext;
         private ExecutionContext _executionContext;
-        private bool _completed;
         private TResult _result;
         private ExceptionDispatchInfo _error;
         private CancellationTokenRegistration? _registration;
 
-        public ManualResetValueTaskSourceLogic(IStrongBox<ManualResetValueTaskSourceLogic<TResult>> parent, ContinuationOptions options)
+        public ManualResetValueTaskSourceLogic(IStrongBox<ManualResetValueTaskSourceLogic<TResult>> parent,
+            ContinuationOptions options)
         {
             _parent = parent ?? throw new ArgumentNullException(nameof(parent));
             _options = options;
@@ -135,8 +159,8 @@ namespace KissU.Core.CPlatform.Utilities
             _continuationState = null;
             _capturedContext = null;
             _executionContext = null;
-            _completed = false;
-            _result = default(TResult);
+            Completed = false;
+            _result = default;
             _error = null;
             Version = 0;
             _registration = null;
@@ -144,7 +168,7 @@ namespace KissU.Core.CPlatform.Utilities
 
         public short Version { get; private set; }
 
-        public bool Completed => _completed;
+        public bool Completed { get; private set; }
 
         private void ValidateToken(short token)
         {
@@ -159,7 +183,7 @@ namespace KissU.Core.CPlatform.Utilities
             ValidateToken(token);
 
             return
-                !_completed ? ValueTaskSourceStatus.Pending :
+                !Completed ? ValueTaskSourceStatus.Pending :
                 _error == null ? ValueTaskSourceStatus.Succeeded :
                 _error.SourceException is OperationCanceledException ? ValueTaskSourceStatus.Canceled :
                 ValueTaskSourceStatus.Faulted;
@@ -169,13 +193,13 @@ namespace KissU.Core.CPlatform.Utilities
         {
             ValidateToken(token);
 
-            if (!_completed)
+            if (!Completed)
             {
                 throw new InvalidOperationException();
             }
 
-            TResult result = _result;
-            ExceptionDispatchInfo error = _error;
+            var result = _result;
+            var error = _error;
             Reset();
 
             error?.Throw();
@@ -188,17 +212,18 @@ namespace KissU.Core.CPlatform.Utilities
 
             _registration?.Dispose();
 
-            _completed = false;
+            Completed = false;
             _continuation = null;
             _continuationState = null;
-            _result = default(TResult);
+            _result = default;
             _error = null;
             _executionContext = null;
             _capturedContext = null;
             _registration = null;
         }
 
-        public void OnCompleted(Action<object> continuation, object state, short token, ValueTaskSourceOnCompletedFlags flags)
+        public void OnCompleted(Action<object> continuation, object state, short token,
+            ValueTaskSourceOnCompletedFlags flags)
         {
             if (continuation == null)
             {
@@ -215,14 +240,14 @@ namespace KissU.Core.CPlatform.Utilities
 
             if ((flags & ValueTaskSourceOnCompletedFlags.UseSchedulingContext) != 0)
             {
-                SynchronizationContext sc = SynchronizationContext.Current;
+                var sc = SynchronizationContext.Current;
                 if (sc != null && sc.GetType() != typeof(SynchronizationContext))
                 {
                     _capturedContext = sc;
                 }
                 else
                 {
-                    TaskScheduler ts = TaskScheduler.Current;
+                    var ts = TaskScheduler.Current;
                     if (ts != TaskScheduler.Default)
                     {
                         _capturedContext = ts;
@@ -235,25 +260,27 @@ namespace KissU.Core.CPlatform.Utilities
             {
                 _executionContext = null;
 
-                object cc = _capturedContext;
+                var cc = _capturedContext;
                 _capturedContext = null;
 
                 switch (cc)
                 {
                     case null:
-                        Task.Factory.StartNew(continuation, state, CancellationToken.None, TaskCreationOptions.DenyChildAttach, TaskScheduler.Default);
+                        Task.Factory.StartNew(continuation, state, CancellationToken.None,
+                            TaskCreationOptions.DenyChildAttach, TaskScheduler.Default);
                         break;
 
                     case SynchronizationContext sc:
                         sc.Post(s =>
                         {
-                            var tuple = (Tuple<Action<object>, object>)s;
+                            var tuple = (Tuple<Action<object>, object>) s;
                             tuple.Item1(tuple.Item2);
                         }, Tuple.Create(continuation, state));
                         break;
 
                     case TaskScheduler ts:
-                        Task.Factory.StartNew(continuation, state, CancellationToken.None, TaskCreationOptions.DenyChildAttach, ts);
+                        Task.Factory.StartNew(continuation, state, CancellationToken.None,
+                            TaskCreationOptions.DenyChildAttach, ts);
                         break;
                 }
             }
@@ -273,12 +300,12 @@ namespace KissU.Core.CPlatform.Utilities
 
         private void SignalCompletion()
         {
-            if (_completed)
+            if (Completed)
             {
                 throw new InvalidOperationException("Double completion of completion source is prohibited");
             }
 
-            _completed = true;
+            Completed = true;
 
             if (Interlocked.CompareExchange(ref _continuation, s_sentinel, null) != null)
             {
@@ -286,7 +313,7 @@ namespace KissU.Core.CPlatform.Utilities
                 {
                     ExecutionContext.Run(
                         _executionContext,
-                        s => ((IStrongBox<ManualResetValueTaskSourceLogic<TResult>>)s).Value.InvokeContinuation(),
+                        s => ((IStrongBox<ManualResetValueTaskSourceLogic<TResult>>) s).Value.InvokeContinuation(),
                         _parent ?? throw new InvalidOperationException());
                 }
                 else
@@ -298,7 +325,7 @@ namespace KissU.Core.CPlatform.Utilities
 
         private void InvokeContinuation()
         {
-            object cc = _capturedContext;
+            var cc = _capturedContext;
             _capturedContext = null;
 
             if (_options == ContinuationOptions.ForceDefaultTaskScheduler)
@@ -318,7 +345,7 @@ namespace KissU.Core.CPlatform.Utilities
                         }
                         else
                         {
-                            ThreadPool.UnsafeQueueUserWorkItem(s => c(s),  _continuationState);
+                            ThreadPool.UnsafeQueueUserWorkItem(s => c(s), _continuationState);
                         }
                     }
                     else
@@ -330,14 +357,15 @@ namespace KissU.Core.CPlatform.Utilities
 
                 case SynchronizationContext sc:
                     sc.Post(s =>
-                    {
-                        ref ManualResetValueTaskSourceLogic<TResult> logicRef = ref ((IStrongBox<ManualResetValueTaskSourceLogic<TResult>>)s).Value;
-                        logicRef._continuation(logicRef._continuationState);
-                    }, _parent ?? throw new InvalidOperationException());
+                        {
+                            ref var logicRef = ref ((IStrongBox<ManualResetValueTaskSourceLogic<TResult>>) s).Value;
+                            logicRef._continuation(logicRef._continuationState);
+                        }, _parent ?? throw new InvalidOperationException());
                     break;
 
                 case TaskScheduler ts:
-                    Task.Factory.StartNew(_continuation, _continuationState, CancellationToken.None, TaskCreationOptions.DenyChildAttach, ts);
+                    Task.Factory.StartNew(_continuation, _continuationState, CancellationToken.None,
+                        TaskCreationOptions.DenyChildAttach, ts);
                     break;
             }
         }

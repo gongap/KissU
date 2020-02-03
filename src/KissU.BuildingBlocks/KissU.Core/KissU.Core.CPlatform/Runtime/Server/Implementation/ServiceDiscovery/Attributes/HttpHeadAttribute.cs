@@ -9,7 +9,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
     /// <seealso cref="HttpMethodAttribute" />
     public class HttpHeadAttribute : HttpMethodAttribute
     {
-        private static readonly IEnumerable<string> _supportedMethods = new[] { "HEAD" };
+        private static readonly IEnumerable<string> _supportedMethods = new[] {"HEAD"};
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HttpHeadAttribute" /> class.

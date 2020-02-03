@@ -16,30 +16,14 @@ namespace KissU.Core.CPlatform.Runtime.Client.HealthChecks.Implementation
     /// </summary>
     public class DefaultHealthCheckService : IHealthCheckService, IDisposable
     {
-        private readonly ConcurrentDictionary<ValueTuple<string, int>, MonitorEntry> _dictionary = new ConcurrentDictionary<ValueTuple<string, int>, MonitorEntry>();
+        private readonly ConcurrentDictionary<ValueTuple<string, int>, MonitorEntry> _dictionary =
+            new ConcurrentDictionary<ValueTuple<string, int>, MonitorEntry>();
+
         private readonly IServiceRouteManager _serviceRouteManager;
         private readonly int _timeout = 30000;
         private readonly Timer _timer;
-        private EventHandler<HealthCheckEventArgs> _removed;
         private EventHandler<HealthCheckEventArgs> _changed;
-
-        /// <summary>
-        /// Occurs when [removed].
-        /// </summary>
-        public event EventHandler<HealthCheckEventArgs> Removed
-        {
-            add { _removed += value; }
-            remove { _removed -= value; }
-        }
-
-        /// <summary>
-        /// Occurs when [changed].
-        /// </summary>
-        public event EventHandler<HealthCheckEventArgs> Changed
-        {
-            add { _changed += value; }
-            remove { _changed -= value; }
-        }
+        private EventHandler<HealthCheckEventArgs> _removed;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DefaultHealthCheckService" /> class.
@@ -60,17 +44,15 @@ namespace KissU.Core.CPlatform.Runtime.Client.HealthChecks.Implementation
                     await Check(_dictionary.ToArray().Select(i => i.Value), _timeout);
 
                     // 移除不可用的服务地址
-                    RemoveUnhealthyAddress(_dictionary.ToArray().Select(i => i.Value).Where(m => m.UnhealthyTimes >= 6));
+                    RemoveUnhealthyAddress(_dictionary.ToArray().Select(i => i.Value)
+                        .Where(m => m.UnhealthyTimes >= 6));
                 },
                 null,
                 timeSpan,
                 timeSpan);
 
             // 去除监控。
-            serviceRouteManager.Removed += (s, e) =>
-            {
-                Remove(e.Route.Address);
-            };
+            serviceRouteManager.Removed += (s, e) => { Remove(e.Route.Address); };
 
             // 重新监控。
             serviceRouteManager.Created += async (s, e) =>
@@ -96,13 +78,40 @@ namespace KissU.Core.CPlatform.Runtime.Client.HealthChecks.Implementation
         }
 
         /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+        public void Dispose()
+        {
+            _timer.Dispose();
+        }
+
+        /// <summary>
+        /// Occurs when [removed].
+        /// </summary>
+        public event EventHandler<HealthCheckEventArgs> Removed
+        {
+            add => _removed += value;
+            remove => _removed -= value;
+        }
+
+        /// <summary>
+        /// Occurs when [changed].
+        /// </summary>
+        public event EventHandler<HealthCheckEventArgs> Changed
+        {
+            add => _changed += value;
+            remove => _changed -= value;
+        }
+
+        /// <summary>
         /// 监控一个地址。
         /// </summary>
         /// <param name="address">地址模型。</param>
         public void Monitor(AddressModel address)
         {
             var ipAddress = address as IpAddressModel;
-            _dictionary.GetOrAdd(new ValueTuple<string, int>(ipAddress.Ip, ipAddress.Port), k => new MonitorEntry(address));
+            _dictionary.GetOrAdd(new ValueTuple<string, int>(ipAddress.Ip, ipAddress.Port),
+                k => new MonitorEntry(address));
         }
 
         /// <summary>
@@ -114,7 +123,10 @@ namespace KissU.Core.CPlatform.Runtime.Client.HealthChecks.Implementation
         {
             var ipAddress = address as IpAddressModel;
             MonitorEntry entry;
-            var isHealth = !_dictionary.TryGetValue(new ValueTuple<string, int>(ipAddress.Ip, ipAddress.Port), out entry) ? await Check(address, _timeout) : entry.Health;
+            var isHealth =
+                !_dictionary.TryGetValue(new ValueTuple<string, int>(ipAddress.Ip, ipAddress.Port), out entry)
+                    ? await Check(address, _timeout)
+                    : entry.Health;
             OnChanged(new HealthCheckEventArgs(address, isHealth));
             return isHealth;
         }
@@ -129,7 +141,8 @@ namespace KissU.Core.CPlatform.Runtime.Client.HealthChecks.Implementation
             return Task.Run(() =>
             {
                 var ipAddress = address as IpAddressModel;
-                var entry = _dictionary.GetOrAdd(new ValueTuple<string, int>(ipAddress.Ip, ipAddress.Port), k => new MonitorEntry(address, false));
+                var entry = _dictionary.GetOrAdd(new ValueTuple<string, int>(ipAddress.Ip, ipAddress.Port),
+                    k => new MonitorEntry(address, false));
                 entry.Health = false;
             });
         }
@@ -168,14 +181,6 @@ namespace KissU.Core.CPlatform.Runtime.Client.HealthChecks.Implementation
             }
         }
 
-        /// <summary>
-        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-        /// </summary>
-        public void Dispose()
-        {
-            _timer.Dispose();
-        }
-
         private void Remove(IEnumerable<AddressModel> addressModels)
         {
             foreach (var addressModel in addressModels)
@@ -198,8 +203,8 @@ namespace KissU.Core.CPlatform.Runtime.Client.HealthChecks.Implementation
                 _serviceRouteManager.RemveAddressAsync(addresses).Wait();
                 addresses.ForEach(p =>
                 {
-                    var ipAddress = p as IpAddressModel;
-                    _dictionary.TryRemove(new ValueTuple<string, int>(ipAddress.Ip, ipAddress.Port), out MonitorEntry value);
+                    var ipAddress = p;
+                    _dictionary.TryRemove(new ValueTuple<string, int>(ipAddress.Ip, ipAddress.Port), out var value);
                 });
                 OnRemoved(addresses.Select(p => new HealthCheckEventArgs(p)).ToArray());
             }
@@ -207,8 +212,9 @@ namespace KissU.Core.CPlatform.Runtime.Client.HealthChecks.Implementation
 
         private static async Task<bool> Check(AddressModel address, int timeout)
         {
-            bool isHealth = false;
-            using (var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp) { SendTimeout = timeout })
+            var isHealth = false;
+            using (var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
+                {SendTimeout = timeout})
             {
                 try
                 {
@@ -227,7 +233,8 @@ namespace KissU.Core.CPlatform.Runtime.Client.HealthChecks.Implementation
         {
             foreach (var entry in entrys)
             {
-                using (var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp) { SendTimeout = timeout })
+                using (var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
+                    {SendTimeout = timeout})
                 {
                     try
                     {

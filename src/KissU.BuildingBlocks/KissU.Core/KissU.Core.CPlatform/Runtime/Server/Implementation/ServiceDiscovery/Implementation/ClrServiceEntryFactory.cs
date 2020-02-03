@@ -1,16 +1,15 @@
-using KissU.Core.CPlatform.Convertibles;
-using KissU.Core.CPlatform.DependencyResolution;
-using KissU.Core.CPlatform.Filters.Implementation;
-using KissU.Core.CPlatform.Ids;
-using KissU.Core.CPlatform.Routing.Template;
-using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
-using KissU.Core.CPlatform.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform.Convertibles;
+using KissU.Core.CPlatform.DependencyResolution;
+using KissU.Core.CPlatform.Filters.Implementation;
+using KissU.Core.CPlatform.Ids;
+using KissU.Core.CPlatform.Routing.Template;
+using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Core.CPlatform.Validation;
 using static KissU.Core.CPlatform.Utilities.FastInvoke;
 
@@ -21,8 +20,8 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Im
     /// </summary>
     public class ClrServiceEntryFactory : IClrServiceEntryFactory
     {
-        private readonly CPlatformContainer _serviceProvider;
         private readonly IServiceIdGenerator _serviceIdGenerator;
+        private readonly CPlatformContainer _serviceProvider;
         private readonly ITypeConvertibleService _typeConvertibleService;
         private readonly IValidationProcessor _validationProcessor;
 
@@ -33,7 +32,8 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Im
         /// <param name="serviceIdGenerator">The service identifier generator.</param>
         /// <param name="typeConvertibleService">The type convertible service.</param>
         /// <param name="validationProcessor">The validation processor.</param>
-        public ClrServiceEntryFactory(CPlatformContainer serviceProvider, IServiceIdGenerator serviceIdGenerator, ITypeConvertibleService typeConvertibleService, IValidationProcessor validationProcessor)
+        public ClrServiceEntryFactory(CPlatformContainer serviceProvider, IServiceIdGenerator serviceIdGenerator,
+            ITypeConvertibleService typeConvertibleService, IValidationProcessor validationProcessor)
         {
             _serviceProvider = serviceProvider;
             _serviceIdGenerator = serviceIdGenerator;
@@ -59,7 +59,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Im
                 }
                 else if (routeTemplate.IsPrefix && serviceRoute != null)
                 {
-                    routeTemplateVal = $"{ routeTemplate.RouteTemplate}/{ serviceRoute.Template}";
+                    routeTemplateVal = $"{routeTemplate.RouteTemplate}/{serviceRoute.Template}";
                 }
 
                 yield return Create(methodInfo, service.Name, routeTemplateVal);
@@ -88,9 +88,10 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Im
                 descriptorAttribute.Apply(serviceDescriptor);
             }
 
-            var httpMethodAttributes = attributes.Where(p => p is HttpMethodAttribute).Select(p => p as HttpMethodAttribute).ToList();
+            var httpMethodAttributes = attributes.Where(p => p is HttpMethodAttribute)
+                .Select(p => p as HttpMethodAttribute).ToList();
             var httpMethods = new List<string>();
-            StringBuilder httpMethod = new StringBuilder();
+            var httpMethod = new StringBuilder();
             foreach (var attribute in httpMethodAttributes)
             {
                 httpMethods.AddRange(attribute.HttpMethods);
@@ -114,12 +115,14 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Im
 
             if (authorization != null)
             {
-                serviceDescriptor.AuthType((authorization as AuthorizationAttribute)?.AuthType?? AuthorizationType.AppSecret);
+                serviceDescriptor.AuthType((authorization as AuthorizationAttribute)?.AuthType ??
+                                           AuthorizationType.AppSecret);
             }
 
             var fastInvoker = GetHandler(serviceId, method);
 
-            var methodValidateAttribute = attributes.Where(p => p is ValidateAttribute).Cast<ValidateAttribute>().FirstOrDefault();
+            var methodValidateAttribute =
+                attributes.Where(p => p is ValidateAttribute).Cast<ValidateAttribute>().FirstOrDefault();
 
             return new ServiceEntry
             {
@@ -181,7 +184,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Im
             var objInstance = ServiceResolver.Current.GetService(null, key);
             if (objInstance == null)
             {
-                objInstance = FastInvoke.GetMethodInvoker(method);
+                objInstance = GetMethodInvoker(method);
                 ServiceResolver.Current.Register(key, objInstance, null);
             }
 

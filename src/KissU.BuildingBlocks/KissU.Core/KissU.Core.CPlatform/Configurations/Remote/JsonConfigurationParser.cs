@@ -17,8 +17,11 @@ namespace KissU.Core.CPlatform.Configurations.Remote
     /// <seealso cref="IConfigurationParser" />
     public class JsonConfigurationParser : IConfigurationParser
     {
-        private readonly IDictionary<string, string> _data = new SortedDictionary<string, string>(StringComparer.OrdinalIgnoreCase);
         private readonly Stack<string> _context = new Stack<string>();
+
+        private readonly IDictionary<string, string> _data =
+            new SortedDictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+
         private string _currentPath;
         private JsonTextReader _reader;
 
@@ -38,7 +41,7 @@ namespace KissU.Core.CPlatform.Configurations.Remote
                 {
                     DateParseHandling = DateParseHandling.None,
                 };
-                JObject jsonConfig = JObject.Load(_reader);
+                var jsonConfig = JObject.Load(_reader);
                 if (!string.IsNullOrEmpty(initialContext))
                 {
                     EnterContext(initialContext);
@@ -54,13 +57,13 @@ namespace KissU.Core.CPlatform.Configurations.Remote
             }
             catch (JsonReaderException e)
             {
-                string errorLine = string.Empty;
+                var errorLine = string.Empty;
                 if (input.CanSeek)
                 {
                     input.Seek(0, SeekOrigin.Begin);
 
                     IEnumerable<string> fileContent;
-                    using (StreamReader streamReader = new StreamReader(input))
+                    using (var streamReader = new StreamReader(input))
                     {
                         fileContent = ReadLines(streamReader);
                         errorLine = RetrieveErrorContext(e, fileContent);
@@ -82,7 +85,7 @@ namespace KissU.Core.CPlatform.Configurations.Remote
         /// <param name="jObject">The j object.</param>
         private void VisitJObject(JObject jObject)
         {
-            foreach (JProperty property in jObject.Properties())
+            foreach (var property in jObject.Properties())
             {
                 EnterContext(property.Name);
                 VisitProperty(property);
@@ -128,11 +131,11 @@ namespace KissU.Core.CPlatform.Configurations.Remote
 
                 default:
                     throw new FormatException(string.Format(
-                       CPlatformResource.UnsupportedJSONToken,
-                       _reader.TokenType,
-                       _reader.Path,
-                       _reader.LineNumber,
-                       _reader.LinePosition));
+                        CPlatformResource.UnsupportedJSONToken,
+                        _reader.TokenType,
+                        _reader.Path,
+                        _reader.LineNumber,
+                        _reader.LinePosition));
             }
         }
 
@@ -142,7 +145,7 @@ namespace KissU.Core.CPlatform.Configurations.Remote
         /// <param name="array">The array.</param>
         private void VisitArray(JArray array)
         {
-            for (int index = 0; index < array.Count; index++)
+            for (var index = 0; index < array.Count; index++)
             {
                 EnterContext(index.ToString());
                 VisitToken(array[index]);
@@ -156,7 +159,7 @@ namespace KissU.Core.CPlatform.Configurations.Remote
         /// <param name="data">The data.</param>
         private void VisitPrimitive(JToken data)
         {
-            string key = _currentPath;
+            var key = _currentPath;
             Check.CheckCondition(() => _data.ContainsKey(key), "key");
             _data[key] = EnvironmentHelper.GetEnvironmentVariable(data.ToString());
         }
@@ -207,12 +210,12 @@ namespace KissU.Core.CPlatform.Configurations.Remote
             string errorLine;
             if (e.LineNumber >= 2)
             {
-                List<string> errorContext = fileContent.Skip(e.LineNumber - 2).Take(2).ToList();
+                var errorContext = fileContent.Skip(e.LineNumber - 2).Take(2).ToList();
                 errorLine = errorContext[0].Trim() + Environment.NewLine + errorContext[1].Trim();
             }
             else
             {
-                string possibleLineContent = fileContent.Skip(e.LineNumber - 1).FirstOrDefault();
+                var possibleLineContent = fileContent.Skip(e.LineNumber - 1).FirstOrDefault();
                 errorLine = possibleLineContent ?? string.Empty;
             }
 

@@ -27,7 +27,8 @@ namespace KissU.Core.CPlatform.Convertibles.Implementation
         /// </summary>
         /// <param name="providers">The providers.</param>
         /// <param name="logger">The logger.</param>
-        public DefaultTypeConvertibleService(IEnumerable<ITypeConvertibleProvider> providers, ILogger<DefaultTypeConvertibleService> logger)
+        public DefaultTypeConvertibleService(IEnumerable<ITypeConvertibleProvider> providers,
+            ILogger<DefaultTypeConvertibleService> logger)
         {
             _logger = logger;
             providers = providers.ToArray();
@@ -72,7 +73,7 @@ namespace KissU.Core.CPlatform.Convertibles.Implementation
             }
 
             object result = null;
-            foreach (TypeConvertDelegate converter in _converters)
+            foreach (var converter in _converters)
             {
                 result = converter(instance, conversionType);
                 if (result != null)
@@ -86,7 +87,7 @@ namespace KissU.Core.CPlatform.Convertibles.Implementation
                 return result;
             }
 
-            CPlatformException exception = new CPlatformException($"无法将实例：{instance}转换为{conversionType}。");
+            var exception = new CPlatformException($"无法将实例：{instance}转换为{conversionType}。");
 
             if (_logger.IsEnabled(LogLevel.Error))
             {

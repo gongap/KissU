@@ -19,9 +19,9 @@ namespace KissU.Core.CPlatform.Routing
         /// </summary>
         /// <param name="serviceProvider">The service provider.</param>
         /// <param name="action">The action.</param>
-        public ServiceRouteWatch(CPlatformContainer serviceProvider,  Action action)
+        public ServiceRouteWatch(CPlatformContainer serviceProvider, Action action)
         {
-            this._action = action;
+            _action = action;
             if (serviceProvider.IsRegistered<IConfigurationWatchManager>())
             {
                 serviceProvider.GetInstances<IConfigurationWatchManager>().Register(this);

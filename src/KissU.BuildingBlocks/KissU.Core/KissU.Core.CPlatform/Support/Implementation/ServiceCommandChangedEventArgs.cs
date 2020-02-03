@@ -10,7 +10,8 @@
         /// </summary>
         /// <param name="serviceCommand">The service command.</param>
         /// <param name="oldServiceCommand">The old service command.</param>
-        public ServiceCommandChangedEventArgs(ServiceCommandDescriptor serviceCommand, ServiceCommandDescriptor oldServiceCommand)
+        public ServiceCommandChangedEventArgs(ServiceCommandDescriptor serviceCommand,
+            ServiceCommandDescriptor oldServiceCommand)
             : base(serviceCommand)
         {
             OldServiceCommand = oldServiceCommand;

@@ -17,6 +17,6 @@
         /// <summary>
         /// 服务命令信息。
         /// </summary>
-        public ServiceCommandDescriptor Command { get; private set; }
+        public ServiceCommandDescriptor Command { get; }
     }
 }

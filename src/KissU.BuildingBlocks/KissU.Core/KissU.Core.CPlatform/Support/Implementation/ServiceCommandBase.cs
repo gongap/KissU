@@ -10,7 +10,7 @@ namespace KissU.Core.CPlatform.Support.Implementation
     /// Implements the <see cref="IServiceCommandProvider" />
     /// </summary>
     /// <seealso cref="IServiceCommandProvider" />
-    public abstract class ServiceCommandBase: IServiceCommandProvider
+    public abstract class ServiceCommandBase : IServiceCommandProvider
     {
         private readonly ConcurrentDictionary<string, object> scripts = new ConcurrentDictionary<string, object>();
 

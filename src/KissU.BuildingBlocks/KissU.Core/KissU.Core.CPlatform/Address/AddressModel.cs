@@ -9,16 +9,16 @@ namespace KissU.Core.CPlatform.Address
     public abstract class AddressModel
     {
         /// <summary>
-        /// 创建终结点。
-        /// </summary>
-        /// <returns>终结点</returns>
-        public abstract EndPoint CreateEndPoint();
-
-        /// <summary>
         /// 处理器时间
         /// </summary>
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public decimal ProcessorTime { get; set; }
+
+        /// <summary>
+        /// 创建终结点。
+        /// </summary>
+        /// <returns>终结点</returns>
+        public abstract EndPoint CreateEndPoint();
 
         /// <summary>
         /// 重写后的标识。

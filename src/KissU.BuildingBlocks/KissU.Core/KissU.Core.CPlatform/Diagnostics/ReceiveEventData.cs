@@ -10,7 +10,7 @@ namespace KissU.Core.CPlatform.Diagnostics
     public class ReceiveEventData : EventData
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ReceiveEventData"/> class.
+        /// Initializes a new instance of the <see cref="ReceiveEventData" /> class.
         /// </summary>
         /// <param name="message">The message.</param>
         public ReceiveEventData(DiagnosticMessage message)

@@ -4,7 +4,7 @@ namespace KissU.Core.CPlatform.Diagnostics
 {
     /// <summary>
     /// Interface ICarrier Header Collection
-    /// Implements the <see cref="IEnumerable{KeyValuePair{string, string}}" />
+    /// Implements the <see cref="IEnumerable{T}" />
     /// </summary>
     /// <seealso cref="IEnumerable{KeyValuePair{string, string}}" />
     public interface ICarrierHeaderCollection : IEnumerable<KeyValuePair<string, string>>

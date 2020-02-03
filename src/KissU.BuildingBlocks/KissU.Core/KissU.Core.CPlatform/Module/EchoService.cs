@@ -18,10 +18,10 @@ namespace KissU.Core.CPlatform.Module
     /// <seealso cref="IEchoService" />
     public class EchoService : ServiceBase, IEchoService
     {
-        private readonly IHashAlgorithm _hashAlgorithm;
         private readonly IAddressSelector _addressSelector;
-        private readonly IServiceRouteProvider _serviceRouteProvider;
+        private readonly IHashAlgorithm _hashAlgorithm;
         private readonly IServiceHeartbeatManager _serviceHeartbeatManager;
+        private readonly IServiceRouteProvider _serviceRouteProvider;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EchoService" /> class.
@@ -30,7 +30,8 @@ namespace KissU.Core.CPlatform.Module
         /// <param name="serviceRouteProvider">The service route provider.</param>
         /// <param name="container">The container.</param>
         /// <param name="serviceHeartbeatManager">The service heartbeat manager.</param>
-        public EchoService(IHashAlgorithm hashAlgorithm, IServiceRouteProvider serviceRouteProvider, CPlatformContainer container, IServiceHeartbeatManager serviceHeartbeatManager)
+        public EchoService(IHashAlgorithm hashAlgorithm, IServiceRouteProvider serviceRouteProvider,
+            CPlatformContainer container, IServiceHeartbeatManager serviceHeartbeatManager)
         {
             _hashAlgorithm = hashAlgorithm;
             _addressSelector = container.GetInstances<IAddressSelector>(AddressSelectorMode.HashAlgorithm.ToString());
@@ -50,7 +51,7 @@ namespace KissU.Core.CPlatform.Module
             AddressModel result = new IpAddressModel();
             if (route != null)
             {
-                result = await _addressSelector.SelectAsync(new AddressSelectContext()
+                result = await _addressSelector.SelectAsync(new AddressSelectContext
                 {
                     Address = route.Address,
                     Descriptor = route.ServiceDescriptor,

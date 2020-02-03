@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Concurrent;
+﻿using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -18,11 +17,16 @@ namespace KissU.Core.CPlatform.Routing.Implementation
     /// <seealso cref="IServiceRouteProvider" />
     public class DefaultServiceRouteProvider : IServiceRouteProvider
     {
-        private readonly ConcurrentDictionary<string, ServiceRoute> _concurrent = new ConcurrentDictionary<string, ServiceRoute>();
-        private readonly ConcurrentDictionary<string, ServiceRoute> _serviceRoute = new ConcurrentDictionary<string, ServiceRoute>();
+        private readonly ConcurrentDictionary<string, ServiceRoute> _concurrent =
+            new ConcurrentDictionary<string, ServiceRoute>();
+
         private readonly List<ServiceRoute> _localRoutes = new List<ServiceRoute>();
-        private readonly IServiceEntryManager _serviceEntryManager;
         private readonly ILogger<DefaultServiceRouteProvider> _logger;
+        private readonly IServiceEntryManager _serviceEntryManager;
+
+        private readonly ConcurrentDictionary<string, ServiceRoute> _serviceRoute =
+            new ConcurrentDictionary<string, ServiceRoute>();
+
         private readonly IServiceRouteManager _serviceRouteManager;
         private readonly IServiceTokenGenerator _serviceTokenGenerator;
 
@@ -33,7 +37,9 @@ namespace KissU.Core.CPlatform.Routing.Implementation
         /// <param name="logger">The logger.</param>
         /// <param name="serviceEntryManager">The service entry manager.</param>
         /// <param name="serviceTokenGenerator">The service token generator.</param>
-        public DefaultServiceRouteProvider(IServiceRouteManager serviceRouteManager, ILogger<DefaultServiceRouteProvider> logger, IServiceEntryManager serviceEntryManager, IServiceTokenGenerator serviceTokenGenerator)
+        public DefaultServiceRouteProvider(IServiceRouteManager serviceRouteManager,
+            ILogger<DefaultServiceRouteProvider> logger, IServiceEntryManager serviceEntryManager,
+            IServiceTokenGenerator serviceTokenGenerator)
         {
             _serviceRouteManager = serviceRouteManager;
             serviceRouteManager.Changed += ServiceRouteManager_Removed;
@@ -51,7 +57,7 @@ namespace KissU.Core.CPlatform.Routing.Implementation
         /// <returns>Task&lt;ServiceRoute&gt;.</returns>
         public async Task<ServiceRoute> Locate(string serviceId)
         {
-            _concurrent.TryGetValue(serviceId, out ServiceRoute route);
+            _concurrent.TryGetValue(serviceId, out var route);
             if (route == null)
             {
                 var routes = await _serviceRouteManager.GetRoutesAsync();
@@ -84,26 +90,24 @@ namespace KissU.Core.CPlatform.Routing.Implementation
             if (_localRoutes.Count == 0)
             {
                 _localRoutes.AddRange(_serviceEntryManager.GetEntries().Select(i =>
-               {
-                   i.Descriptor.Token = _serviceTokenGenerator.GetToken();
-                   return new ServiceRoute
-                   {
-                       Address = new[] { addess },
-                       ServiceDescriptor = i.Descriptor,
-                   };
-               }).ToList());
+                {
+                    i.Descriptor.Token = _serviceTokenGenerator.GetToken();
+                    return new ServiceRoute
+                    {
+                        Address = new[] {addess},
+                        ServiceDescriptor = i.Descriptor,
+                    };
+                }).ToList());
             }
 
             path = path.ToLower();
-            _serviceRoute.TryGetValue(path, out ServiceRoute route);
+            _serviceRoute.TryGetValue(path, out var route);
             if (route == null)
             {
                 return new ValueTask<ServiceRoute>(GetRouteByPathRegexAsync(_localRoutes, path));
             }
-            else
-            {
-                return new ValueTask<ServiceRoute>(route);
-            }
+
+            return new ValueTask<ServiceRoute>(route);
         }
 
         /// <summary>
@@ -113,15 +117,13 @@ namespace KissU.Core.CPlatform.Routing.Implementation
         /// <returns>ValueTask&lt;ServiceRoute&gt;.</returns>
         public ValueTask<ServiceRoute> GetRouteByPath(string path)
         {
-            _serviceRoute.TryGetValue(path.ToLower(), out ServiceRoute route);
+            _serviceRoute.TryGetValue(path.ToLower(), out var route);
             if (route == null)
             {
                 return new ValueTask<ServiceRoute>(GetRouteByPathAsync(path));
             }
-            else
-            {
-                return new ValueTask<ServiceRoute>(route);
-            }
+
+            return new ValueTask<ServiceRoute>(route);
         }
 
         /// <summary>
@@ -132,16 +134,14 @@ namespace KissU.Core.CPlatform.Routing.Implementation
         public async ValueTask<ServiceRoute> GetRouteByPathRegex(string path)
         {
             path = path.ToLower();
-            _serviceRoute.TryGetValue(path, out ServiceRoute route);
+            _serviceRoute.TryGetValue(path, out var route);
             if (route == null)
             {
                 var routes = await _serviceRouteManager.GetRoutesAsync();
                 return await GetRouteByPathRegexAsync(routes, path);
             }
-            else
-            {
-                return route;
-            }
+
+            return route;
         }
 
         /// <summary>
@@ -169,7 +169,7 @@ namespace KissU.Core.CPlatform.Routing.Implementation
                 i.Descriptor.Token = _serviceTokenGenerator.GetToken();
                 return new ServiceRoute
                 {
-                    Address = new[] { addess },
+                    Address = new[] {addess},
                     ServiceDescriptor = i.Descriptor,
                 };
             }).ToList();
@@ -218,7 +218,9 @@ namespace KissU.Core.CPlatform.Routing.Implementation
         private async Task<ServiceRoute> GetRouteByPathAsync(string path)
         {
             var routes = await _serviceRouteManager.GetRoutesAsync();
-            var route = routes.FirstOrDefault(i => string.Compare(i.ServiceDescriptor.RoutePath, path, true) == 0 && !i.ServiceDescriptor.GetMetadata<bool>("IsOverload"));
+            var route = routes.FirstOrDefault(i =>
+                string.Compare(i.ServiceDescriptor.RoutePath, path, true) == 0 &&
+                !i.ServiceDescriptor.GetMetadata<bool>("IsOverload"));
             if (route == null)
             {
                 if (_logger.IsEnabled(LogLevel.Warning))
@@ -239,11 +241,13 @@ namespace KissU.Core.CPlatform.Routing.Implementation
             var pattern = "/{.*?}";
 
             var route = routes.FirstOrDefault(i =>
-             {
-                 var routePath = Regex.Replace(i.ServiceDescriptor.RoutePath, pattern, string.Empty);
-                 var newPath = path.Replace(routePath, string.Empty);
-                 return (newPath.StartsWith("/") || newPath.Length == 0) && i.ServiceDescriptor.RoutePath.Split("/").Length == path.Split("/").Length && !i.ServiceDescriptor.GetMetadata<bool>("IsOverload");
-             });
+            {
+                var routePath = Regex.Replace(i.ServiceDescriptor.RoutePath, pattern, string.Empty);
+                var newPath = path.Replace(routePath, string.Empty);
+                return (newPath.StartsWith("/") || newPath.Length == 0) &&
+                       i.ServiceDescriptor.RoutePath.Split("/").Length == path.Split("/").Length &&
+                       !i.ServiceDescriptor.GetMetadata<bool>("IsOverload");
+            });
 
             if (route == null)
             {

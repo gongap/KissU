@@ -41,14 +41,15 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public ServiceEntry Locate(HttpRequestMessage httpMessage)
         {
-            string routePath = httpMessage.RoutePath;
+            var routePath = httpMessage.RoutePath;
             if (httpMessage.RoutePath.AsSpan().IndexOf("/") == -1)
             {
                 routePath = $"/{routePath}";
             }
 
             var serviceEntries = _serviceEntryManager.GetAllEntries();
-            return serviceEntries.SingleOrDefault(i => i.RoutePath == routePath && !i.Descriptor.GetMetadata<bool>("IsOverload"));
+            return serviceEntries.SingleOrDefault(i =>
+                i.RoutePath == routePath && !i.Descriptor.GetMetadata<bool>("IsOverload"));
         }
     }
 }

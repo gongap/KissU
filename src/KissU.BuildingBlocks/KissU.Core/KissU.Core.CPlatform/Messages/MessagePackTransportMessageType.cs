@@ -8,21 +8,21 @@
         /// <summary>
         /// The remote invoke result message type name
         /// </summary>
-        public static string remoteInvokeResultMessageTypeName= typeof(RemoteInvokeResultMessage).FullName;
+        public static string RemoteInvokeResultMessageTypeName = typeof(RemoteInvokeResultMessage).FullName;
 
         /// <summary>
         /// The remote invoke message type name
         /// </summary>
-        public static string remoteInvokeMessageTypeName = typeof(RemoteInvokeMessage).FullName;
+        public static string RemoteInvokeMessageTypeName = typeof(RemoteInvokeMessage).FullName;
 
         /// <summary>
         /// The HTTP message type name
         /// </summary>
-        public static string httpMessageTypeName = typeof(HttpRequestMessage).FullName;
+        public static string HttpMessageTypeName = typeof(HttpRequestMessage).FullName;
 
         /// <summary>
         /// The HTTP result message type name
         /// </summary>
-        public static string httpResultMessageTypeName = typeof(HttpResultMessage<object>).FullName;
+        public static string HttpResultMessageTypeName = typeof(HttpResultMessage<object>).FullName;
     }
 }

@@ -10,7 +10,7 @@ namespace KissU.Core.CPlatform.Configurations
     /// Implements the <see cref="ServiceCommand" />
     /// </summary>
     /// <seealso cref="ServiceCommand" />
-    public partial class ServerEngineOptions : ServiceCommand
+    public class ServerEngineOptions : ServiceCommand
     {
         /// <summary>
         /// Gets or sets the ip.

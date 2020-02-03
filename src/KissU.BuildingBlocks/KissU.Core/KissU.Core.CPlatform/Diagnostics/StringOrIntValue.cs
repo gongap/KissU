@@ -9,7 +9,7 @@
         private readonly string _stringValue;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="StringOrIntValue"/> struct.
+        /// Initializes a new instance of the <see cref="StringOrIntValue" /> struct.
         /// </summary>
         /// <param name="value">The value.</param>
         public StringOrIntValue(int value)
@@ -34,7 +34,7 @@
         public bool HasStringValue => _stringValue != null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="StringOrIntValue"/> struct.
+        /// Initializes a new instance of the <see cref="StringOrIntValue" /> struct.
         /// </summary>
         /// <param name="value">The value.</param>
         public StringOrIntValue(string value)
@@ -44,7 +44,7 @@
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="StringOrIntValue"/> struct.
+        /// Initializes a new instance of the <see cref="StringOrIntValue" /> struct.
         /// </summary>
         /// <param name="intValue">The int value.</param>
         /// <param name="stringValue">The string value.</param>
@@ -58,13 +58,19 @@
         /// Gets the int value.
         /// </summary>
         /// <returns>System.Int32.</returns>
-        public int GetIntValue() => _intValue;
+        public int GetIntValue()
+        {
+            return _intValue;
+        }
 
         /// <summary>
         /// Gets the string value.
         /// </summary>
         /// <returns>System.String.</returns>
-        public string GetStringValue() => _stringValue;
+        public string GetStringValue()
+        {
+            return _stringValue;
+        }
 
         /// <summary>
         /// Gets the value.
@@ -90,17 +96,23 @@
         }
 
         /// <summary>
-        /// Performs an implicit conversion from <see cref="string"/> to <see cref="StringOrIntValue"/>.
+        /// Performs an implicit conversion from <see cref="string" /> to <see cref="StringOrIntValue" />.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator StringOrIntValue(string value) => new StringOrIntValue(value);
+        public static implicit operator StringOrIntValue(string value)
+        {
+            return new StringOrIntValue(value);
+        }
 
         /// <summary>
-        /// Performs an implicit conversion from <see cref="int"/> to <see cref="StringOrIntValue"/>.
+        /// Performs an implicit conversion from <see cref="int" /> to <see cref="StringOrIntValue" />.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator StringOrIntValue(int value) => new StringOrIntValue(value);
+        public static implicit operator StringOrIntValue(int value)
+        {
+            return new StringOrIntValue(value);
+        }
     }
 }

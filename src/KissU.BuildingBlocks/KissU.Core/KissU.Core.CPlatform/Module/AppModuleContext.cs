@@ -14,7 +14,8 @@ namespace KissU.Core.CPlatform.Module
         /// <param name="modules">模块集合</param>
         /// <param name="virtualPaths">虚拟目录集合</param>
         /// <param name="serviceProvoider">平台容器</param>
-        public AppModuleContext(List<AbstractModule> modules,string[] virtualPaths, CPlatformContainer serviceProvoider)
+        public AppModuleContext(List<AbstractModule> modules, string[] virtualPaths,
+            CPlatformContainer serviceProvoider)
         {
             Modules = Check.NotNull(modules, nameof(modules));
             VirtualPaths = Check.NotNull(virtualPaths, nameof(virtualPaths));

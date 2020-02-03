@@ -11,27 +11,25 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
     /// </summary>
     public abstract class ServiceHostAbstract : IServiceHost
     {
-        private readonly IServiceExecutor _serviceExecutor;
-
-        /// <summary>
-        /// 服务执行器.
-        /// </summary>
-        public IServiceExecutor ServiceExecutor { get => _serviceExecutor; }
-
-        /// <summary>
-        /// 消息监听者。
-        /// </summary>
-        protected IMessageListener MessageListener { get; } = new MessageListener();
-
         /// <summary>
         /// Initializes a new instance of the <see cref="ServiceHostAbstract" /> class.
         /// </summary>
         /// <param name="serviceExecutor">The service executor.</param>
         protected ServiceHostAbstract(IServiceExecutor serviceExecutor)
         {
-            _serviceExecutor = serviceExecutor;
+            ServiceExecutor = serviceExecutor;
             MessageListener.Received += MessageListener_Received;
         }
+
+        /// <summary>
+        /// 服务执行器.
+        /// </summary>
+        public IServiceExecutor ServiceExecutor { get; }
+
+        /// <summary>
+        /// 消息监听者。
+        /// </summary>
+        protected IMessageListener MessageListener { get; } = new MessageListener();
 
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
@@ -45,11 +43,6 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
         /// <returns>一个任务。</returns>
         public abstract Task StartAsync(EndPoint endPoint);
 
-        private async Task MessageListener_Received(IMessageSender sender, TransportMessage message)
-        {
-            await _serviceExecutor.ExecuteAsync(sender, message);
-        }
-
         /// <summary>
         /// 启动主机。
         /// </summary>
@@ -57,5 +50,10 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
         /// <param name="port">The port.</param>
         /// <returns>Task.</returns>
         public abstract Task StartAsync(string ip, int port);
+
+        private async Task MessageListener_Received(IMessageSender sender, TransportMessage message)
+        {
+            await ServiceExecutor.ExecuteAsync(sender, message);
+        }
     }
 }

@@ -18,11 +18,14 @@ namespace KissU.Core.CPlatform.Transport.Implementation
     /// </summary>
     public class TransportClient : ITransportClient, IDisposable
     {
-        private readonly IMessageSender _messageSender;
-        private readonly IMessageListener _messageListener;
         private readonly ILogger _logger;
+        private readonly IMessageListener _messageListener;
+        private readonly IMessageSender _messageSender;
+
+        private readonly ConcurrentDictionary<string, ManualResetValueTaskSource<TransportMessage>> _resultDictionary =
+            new ConcurrentDictionary<string, ManualResetValueTaskSource<TransportMessage>>();
+
         private readonly IServiceExecutor _serviceExecutor;
-        private readonly ConcurrentDictionary<string, ManualResetValueTaskSource<TransportMessage>> _resultDictionary = new ConcurrentDictionary<string, ManualResetValueTaskSource<TransportMessage>>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TransportClient" /> class.
@@ -31,13 +34,23 @@ namespace KissU.Core.CPlatform.Transport.Implementation
         /// <param name="messageListener">The message listener.</param>
         /// <param name="logger">The logger.</param>
         /// <param name="serviceExecutor">The service executor.</param>
-        public TransportClient(IMessageSender messageSender, IMessageListener messageListener, ILogger logger, IServiceExecutor serviceExecutor)
+        public TransportClient(IMessageSender messageSender, IMessageListener messageListener, ILogger logger,
+            IServiceExecutor serviceExecutor)
         {
             _messageSender = messageSender;
             _messageListener = messageListener;
             _logger = logger;
             _serviceExecutor = serviceExecutor;
             messageListener.Received += MessageListener_Received;
+        }
+
+        /// <summary>
+        /// 释放资源
+        /// </summary>
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
 
         /// <summary>
@@ -49,7 +62,8 @@ namespace KissU.Core.CPlatform.Transport.Implementation
         /// <exception cref="KissU.Core.CPlatform.Exceptions.CommunicationException">与服务端通讯时发生了异常。</exception>
         /// <exception cref="CommunicationException">与服务端通讯时发生了异常。</exception>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public async Task<RemoteInvokeResultMessage> SendAsync(RemoteInvokeMessage message, CancellationToken cancellationToken)
+        public async Task<RemoteInvokeResultMessage> SendAsync(RemoteInvokeMessage message,
+            CancellationToken cancellationToken)
         {
             try
             {
@@ -94,15 +108,6 @@ namespace KissU.Core.CPlatform.Transport.Implementation
         /// <summary>
         /// 释放资源
         /// </summary>
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        /// <summary>
-        /// 释放资源
-        /// </summary>
         /// <param name="disposing">释放</param>
         protected virtual void Dispose(bool disposing)
         {
@@ -123,7 +128,8 @@ namespace KissU.Core.CPlatform.Transport.Implementation
         /// <param name="id">消息Id。</param>
         /// <returns>远程调用结果消息模型。</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private async Task<RemoteInvokeResultMessage> RegisterResultCallbackAsync(string id, CancellationToken cancellationToken)
+        private async Task<RemoteInvokeResultMessage> RegisterResultCallbackAsync(string id,
+            CancellationToken cancellationToken)
         {
             if (_logger.IsEnabled(LogLevel.Debug))
             {
@@ -169,7 +175,8 @@ namespace KissU.Core.CPlatform.Transport.Implementation
                 var content = message.GetContent<RemoteInvokeResultMessage>();
                 if (!string.IsNullOrEmpty(content.ExceptionMessage))
                 {
-                    task.SetException(new CPlatformCommunicationException(content.ExceptionMessage, content.StatusCode));
+                    task.SetException(
+                        new CPlatformCommunicationException(content.ExceptionMessage, content.StatusCode));
                     WirteDiagnosticError(message);
                 }
                 else
@@ -195,7 +202,7 @@ namespace KissU.Core.CPlatform.Transport.Implementation
             {
                 var diagnosticListener = new DiagnosticListener(DiagnosticListenerExtensions.DiagnosticListenerName);
                 var remoteInvokeMessage = message.GetContent<RemoteInvokeMessage>();
-                remoteInvokeMessage.Attachments.TryGetValue("TraceId", out object traceId);
+                remoteInvokeMessage.Attachments.TryGetValue("TraceId", out var traceId);
                 diagnosticListener.WriteTransportBefore(TransportType.Rpc, new TransportEventData(
                     new DiagnosticMessage
                     {
@@ -210,7 +217,7 @@ namespace KissU.Core.CPlatform.Transport.Implementation
             }
 
             var parameters = RpcContext.GetContext().GetContextParameters();
-            parameters.TryRemove("RemoteAddress", out object value);
+            parameters.TryRemove("RemoteAddress", out var value);
             RpcContext.GetContext().SetContextParameters(parameters);
         }
 

@@ -15,21 +15,21 @@ namespace KissU.Core.CPlatform
         private IComponentContext _container;
 
         /// <summary>
-        /// 当前IComponentContext
-        /// </summary>
-        public IComponentContext Current
-        {
-            get => _container;
-            internal set => _container = value;
-        }
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="CPlatformContainer" /> class.
         /// </summary>
         /// <param name="container">The container.</param>
         public CPlatformContainer(IComponentContext container)
         {
             _container = container;
+        }
+
+        /// <summary>
+        /// 当前IComponentContext
+        /// </summary>
+        public IComponentContext Current
+        {
+            get => _container;
+            internal set => _container = value;
         }
 
         /// <summary>
@@ -54,10 +54,8 @@ namespace KissU.Core.CPlatform
             {
                 return _container.IsRegisteredWithKey(serviceKey, serviceType);
             }
-            else
-            {
-                return _container.IsRegistered(serviceType);
-            }
+
+            return _container.IsRegistered(serviceType);
         }
 
         /// <summary>
@@ -133,7 +131,7 @@ namespace KissU.Core.CPlatform
         public object GetInstances(string name, Type type)
         {
             // var appConfig = AppConfig.DefaultInstance;
-            object objInstance = ServiceResolver.Current.GetService(type, name);
+            var objInstance = ServiceResolver.Current.GetService(type, name);
             if (objInstance == null)
             {
                 objInstance = string.IsNullOrEmpty(name) ? GetInstances(type) : _container.ResolveKeyed(name, type);

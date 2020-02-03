@@ -10,13 +10,13 @@ namespace KissU.Core.CPlatform.Diagnostics
     public class TransportEventData : EventData
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="TransportEventData"/> class.
+        /// Initializes a new instance of the <see cref="TransportEventData" /> class.
         /// </summary>
         /// <param name="message">The message.</param>
         /// <param name="method">The method.</param>
         /// <param name="traceId">The trace identifier.</param>
         /// <param name="address">The address.</param>
-        public TransportEventData(DiagnosticMessage message, string  method, string traceId, string address)
+        public TransportEventData(DiagnosticMessage message, string method, string traceId, string address)
             : base(Guid.Parse(message.Id))
         {
             Message = message;

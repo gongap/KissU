@@ -11,10 +11,10 @@ namespace KissU.Core.CPlatform.Engines.Implementation
     /// <seealso cref="IServiceEngineLifetime" />
     public class ServiceEngineLifetime : IServiceEngineLifetime
     {
-        private readonly CancellationTokenSource _startedSource = new CancellationTokenSource();
-        private readonly CancellationTokenSource _stoppingSource = new CancellationTokenSource();
-        private readonly CancellationTokenSource _stoppedSource = new CancellationTokenSource();
         private readonly ILogger<ServiceEngineLifetime> _logger;
+        private readonly CancellationTokenSource _startedSource = new CancellationTokenSource();
+        private readonly CancellationTokenSource _stoppedSource = new CancellationTokenSource();
+        private readonly CancellationTokenSource _stoppingSource = new CancellationTokenSource();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ServiceEngineLifetime" /> class.
@@ -95,7 +95,7 @@ namespace KissU.Core.CPlatform.Engines.Implementation
                 return;
             }
 
-            cancel.Cancel(throwOnFirstException: false);
+            cancel.Cancel(false);
         }
     }
 }

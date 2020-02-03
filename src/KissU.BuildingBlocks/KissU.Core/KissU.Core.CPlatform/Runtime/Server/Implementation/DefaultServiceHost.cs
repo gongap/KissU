@@ -18,7 +18,8 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
         /// </summary>
         /// <param name="messageListenerFactory">The message listener factory.</param>
         /// <param name="serviceExecutor">The service executor.</param>
-        public DefaultServiceHost(Func<EndPoint, Task<IMessageListener>> messageListenerFactory, IServiceExecutor serviceExecutor) : base(serviceExecutor)
+        public DefaultServiceHost(Func<EndPoint, Task<IMessageListener>> messageListenerFactory,
+            IServiceExecutor serviceExecutor) : base(serviceExecutor)
         {
             _messageListenerFactory = messageListenerFactory;
         }
@@ -46,10 +47,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
             _serverMessageListener = await _messageListenerFactory(endPoint);
             _serverMessageListener.Received += async (sender, message) =>
             {
-                await Task.Run(() =>
-                {
-                    MessageListener.OnReceived(sender, message);
-                });
+                await Task.Run(() => { MessageListener.OnReceived(sender, message); });
             };
         }
 
@@ -68,10 +66,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation
             _serverMessageListener = await _messageListenerFactory(new IPEndPoint(IPAddress.Parse(ip), port));
             _serverMessageListener.Received += async (sender, message) =>
             {
-                await Task.Run(() =>
-                {
-                    MessageListener.OnReceived(sender, message);
-                });
+                await Task.Run(() => { MessageListener.OnReceived(sender, message); });
             };
         }
     }

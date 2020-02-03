@@ -19,14 +19,19 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation
     /// </summary>
     public class DefaultAddressResolver : IAddressResolver
     {
-        private readonly IServiceRouteManager _serviceRouteManager;
-        private readonly ILogger<DefaultAddressResolver> _logger;
-        private readonly IHealthCheckService _healthCheckService;
-        private readonly CPlatformContainer _container;
-        private readonly ConcurrentDictionary<string, IAddressSelector> _addressSelectors = new ConcurrentDictionary<string, IAddressSelector>();
+        private readonly ConcurrentDictionary<string, IAddressSelector> _addressSelectors =
+            new ConcurrentDictionary<string, IAddressSelector>();
+
         private readonly IServiceCommandProvider _commandProvider;
-        private readonly ConcurrentDictionary<string, ServiceRoute> _concurrent = new ConcurrentDictionary<string, ServiceRoute>();
+
+        private readonly ConcurrentDictionary<string, ServiceRoute> _concurrent =
+            new ConcurrentDictionary<string, ServiceRoute>();
+
+        private readonly CPlatformContainer _container;
+        private readonly IHealthCheckService _healthCheckService;
+        private readonly ILogger<DefaultAddressResolver> _logger;
         private readonly IServiceHeartbeatManager _serviceHeartbeatManager;
+        private readonly IServiceRouteManager _serviceRouteManager;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DefaultAddressResolver" /> class.
@@ -37,7 +42,9 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation
         /// <param name="container">The container.</param>
         /// <param name="healthCheckService">The health check service.</param>
         /// <param name="serviceHeartbeatManager">The service heartbeat manager.</param>
-        public DefaultAddressResolver(IServiceCommandProvider commandProvider, IServiceRouteManager serviceRouteManager, ILogger<DefaultAddressResolver> logger, CPlatformContainer container, IHealthCheckService healthCheckService, IServiceHeartbeatManager serviceHeartbeatManager)
+        public DefaultAddressResolver(IServiceCommandProvider commandProvider, IServiceRouteManager serviceRouteManager,
+            ILogger<DefaultAddressResolver> logger, CPlatformContainer container,
+            IHealthCheckService healthCheckService, IServiceHeartbeatManager serviceHeartbeatManager)
         {
             _container = container;
             _serviceRouteManager = serviceRouteManager;
@@ -73,7 +80,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation
                 _logger.LogDebug($"准备为服务id：{serviceId}，解析可用地址。");
             }
 
-            _concurrent.TryGetValue(serviceId, out ServiceRoute descriptor);
+            _concurrent.TryGetValue(serviceId, out var descriptor);
             if (descriptor == null)
             {
                 var descriptors = await _serviceRouteManager.GetRoutesAsync();
@@ -122,7 +129,8 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation
 
             if (_logger.IsEnabled(LogLevel.Information))
             {
-                _logger.LogInformation($"根据服务id：{serviceId}，找到以下可用地址：{string.Join(",", address.Select(i => i.ToString()))}。");
+                _logger.LogInformation(
+                    $"根据服务id：{serviceId}，找到以下可用地址：{string.Join(",", address.Select(i => i.ToString()))}。");
             }
 
             var vtCommand = _commandProvider.GetCommand(serviceId);

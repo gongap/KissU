@@ -14,7 +14,7 @@ namespace KissU.Core.CPlatform.Exceptions
         /// <param name="message">异常消息。</param>
         /// <param name="StatusCode">The status code.</param>
         /// <param name="innerException">内部异常。</param>
-        public CPlatformCommunicationException(string message,int StatusCode=0, Exception innerException = null)
+        public CPlatformCommunicationException(string message, int StatusCode = 0, Exception innerException = null)
             : base(message, innerException)
         {
             HResult = StatusCode;

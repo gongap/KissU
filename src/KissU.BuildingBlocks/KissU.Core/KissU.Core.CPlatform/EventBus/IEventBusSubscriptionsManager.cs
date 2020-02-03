@@ -27,7 +27,7 @@ namespace KissU.Core.CPlatform.EventBus
         /// <param name="handler">The handler.</param>
         /// <param name="consumerName">Name of the consumer.</param>
         void AddSubscription<T, TH>(Func<TH> handler, string consumerName)
-           where TH : IIntegrationEventHandler<T>;
+            where TH : IIntegrationEventHandler<T>;
 
         /// <summary>
         /// Removes the subscription.
@@ -35,7 +35,7 @@ namespace KissU.Core.CPlatform.EventBus
         /// <typeparam name="T">事件参数类型</typeparam>
         /// <typeparam name="TH">The type of the th.</typeparam>
         void RemoveSubscription<T, TH>()
-             where TH : IIntegrationEventHandler<T>;
+            where TH : IIntegrationEventHandler<T>;
 
         /// <summary>
         /// Determines whether [has subscriptions for event].

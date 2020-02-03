@@ -42,7 +42,8 @@ namespace KissU.Core.CPlatform.Runtime.Client
                 return false;
             }
 
-            return model.Address.Count() == Address.Count() && model.Address.All(addressModel => Address.Contains(addressModel));
+            return model.Address.Count() == Address.Count() &&
+                   model.Address.All(addressModel => Address.Contains(addressModel));
         }
 
         /// <summary>

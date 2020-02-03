@@ -17,9 +17,11 @@ namespace KissU.Core.CPlatform.Runtime.Client
         /// <param name="serviceSubscribeManager">The service subscribe manager.</param>
         /// <param name="serviceId">服务Id。</param>
         /// <returns>服务路由。</returns>
-        public static async Task<ServiceSubscriber> GetAsync(this IServiceSubscribeManager serviceSubscribeManager, string serviceId)
+        public static async Task<ServiceSubscriber> GetAsync(this IServiceSubscribeManager serviceSubscribeManager,
+            string serviceId)
         {
-            return (await serviceSubscribeManager.GetSubscribersAsync()).SingleOrDefault(i => i.ServiceDescriptor.Id == serviceId);
+            return (await serviceSubscribeManager.GetSubscribersAsync()).SingleOrDefault(i =>
+                i.ServiceDescriptor.Id == serviceId);
         }
 
         /// <summary>
@@ -28,7 +30,8 @@ namespace KissU.Core.CPlatform.Runtime.Client
         /// <param name="serviceSubscribeManager">The service subscribe manager.</param>
         /// <param name="condition">The condition.</param>
         /// <returns>Task&lt;IEnumerable&lt;AddressModel&gt;&gt;.</returns>
-        public static async Task<IEnumerable<AddressModel>> GetAddressAsync(this IServiceSubscribeManager serviceSubscribeManager, string condition = null)
+        public static async Task<IEnumerable<AddressModel>> GetAddressAsync(
+            this IServiceSubscribeManager serviceSubscribeManager, string condition = null)
         {
             var subscribers = await serviceSubscribeManager.GetSubscribersAsync();
             if (condition != null)
@@ -43,7 +46,7 @@ namespace KissU.Core.CPlatform.Runtime.Client
                 }
             }
 
-            Dictionary<string, AddressModel> result = new Dictionary<string, AddressModel>();
+            var result = new Dictionary<string, AddressModel>();
             foreach (var route in subscribers)
             {
                 var addresses = route.Address;
@@ -66,19 +69,18 @@ namespace KissU.Core.CPlatform.Runtime.Client
         /// <param name="address">The address.</param>
         /// <param name="serviceId">The service identifier.</param>
         /// <returns>Task&lt;IEnumerable&lt;ServiceDescriptor&gt;&gt;.</returns>
-        public static async Task<IEnumerable<ServiceDescriptor>> GetServiceDescriptorAsync(this IServiceSubscribeManager serviceSubscribeManager, string address, string serviceId = null)
+        public static async Task<IEnumerable<ServiceDescriptor>> GetServiceDescriptorAsync(
+            this IServiceSubscribeManager serviceSubscribeManager, string address, string serviceId = null)
         {
             var subscribers = await serviceSubscribeManager.GetSubscribersAsync();
             if (serviceId == null)
             {
                 return subscribers.Where(p => p.Address.Any(m => m.ToString() == address))
-                 .Select(p => p.ServiceDescriptor);
+                    .Select(p => p.ServiceDescriptor);
             }
-            else
-            {
-                return subscribers.Where(p => p.ServiceDescriptor.Id == serviceId)
-               .Select(p => p.ServiceDescriptor);
-            }
+
+            return subscribers.Where(p => p.ServiceDescriptor.Id == serviceId)
+                .Select(p => p.ServiceDescriptor);
         }
     }
 }

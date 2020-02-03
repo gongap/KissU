@@ -8,7 +8,7 @@ namespace KissU.Core.CPlatform.Utilities
     /// </summary>
     internal static class TaskHelpers
     {
-        private static readonly Task _defaultCompleted = Task.FromResult<AsyncVoid>(default(AsyncVoid));
+        private static readonly Task _defaultCompleted = Task.FromResult(default(AsyncVoid));
         private static readonly Task<object> _completedTaskReturningNull = Task.FromResult<object>(null);
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace KissU.Core.CPlatform.Utilities
         /// <returns>Task&lt;TResult&gt;.</returns>
         internal static Task<TResult> FromError<TResult>(Exception exception)
         {
-            TaskCompletionSource<TResult> tcs = new TaskCompletionSource<TResult>();
+            var tcs = new TaskCompletionSource<TResult>();
             tcs.SetException(exception);
             return tcs.Task;
         }
@@ -91,7 +91,7 @@ namespace KissU.Core.CPlatform.Utilities
 
             private static Task<TResult> GetCancelledTask()
             {
-                TaskCompletionSource<TResult> tcs = new TaskCompletionSource<TResult>();
+                var tcs = new TaskCompletionSource<TResult>();
                 tcs.SetCanceled();
                 return tcs.Task;
             }

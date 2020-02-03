@@ -14,7 +14,7 @@ namespace KissU.Core.CPlatform
         /// <param name="name">The name.</param>
         public IdentifyAttribute(CommunicationProtocol name)
         {
-            this.Name = name;
+            Name = name;
         }
 
         /// <summary>

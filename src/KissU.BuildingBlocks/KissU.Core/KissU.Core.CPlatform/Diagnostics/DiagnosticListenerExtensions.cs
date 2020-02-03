@@ -38,7 +38,8 @@ namespace KissU.Core.CPlatform.Diagnostics
         /// <param name="diagnosticListener">The diagnostic listener.</param>
         /// <param name="transportType">Type of the transport.</param>
         /// <param name="eventData">The event data.</param>
-        public static void WriteTransportBefore(this DiagnosticListener diagnosticListener, TransportType transportType, TransportEventData eventData)
+        public static void WriteTransportBefore(this DiagnosticListener diagnosticListener, TransportType transportType,
+            TransportEventData eventData)
         {
             if (diagnosticListener.IsEnabled(BeforeTransport))
             {
@@ -53,7 +54,8 @@ namespace KissU.Core.CPlatform.Diagnostics
         /// <param name="diagnosticListener">The diagnostic listener.</param>
         /// <param name="transportType">Type of the transport.</param>
         /// <param name="eventData">The event data.</param>
-        public static void WriteTransportAfter(this DiagnosticListener diagnosticListener, TransportType transportType, ReceiveEventData eventData)
+        public static void WriteTransportAfter(this DiagnosticListener diagnosticListener, TransportType transportType,
+            ReceiveEventData eventData)
         {
             if (diagnosticListener.IsEnabled(AfterTransport))
             {
@@ -68,7 +70,8 @@ namespace KissU.Core.CPlatform.Diagnostics
         /// <param name="diagnosticListener">The diagnostic listener.</param>
         /// <param name="transportType">Type of the transport.</param>
         /// <param name="eventData">The event data.</param>
-        public static void WriteTransportError(this DiagnosticListener diagnosticListener, TransportType transportType, TransportErrorEventData eventData)
+        public static void WriteTransportError(this DiagnosticListener diagnosticListener, TransportType transportType,
+            TransportErrorEventData eventData)
         {
             if (diagnosticListener.IsEnabled(ErrorTransport))
             {

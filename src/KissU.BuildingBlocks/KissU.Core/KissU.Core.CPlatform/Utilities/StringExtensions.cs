@@ -12,7 +12,11 @@ namespace KissU.Core.CPlatform.Utilities
         /// </summary>
         /// <param name="input">The input.</param>
         /// <returns><c>true</c> if the specified input is ip; otherwise, <c>false</c>.</returns>
-        public static bool IsIP(this string input) => input.IsMatch(@"\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\:\d{2,5}\b");
+        public static bool IsIP(this string input)
+        {
+            return input.IsMatch(
+                @"\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\:\d{2,5}\b");
+        }
 
         /// <summary>
         /// 确定指定的操作是否匹配.

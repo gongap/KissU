@@ -13,8 +13,10 @@ namespace KissU.Core.CPlatform.Routing.Implementation
     /// </summary>
     public class DefaultServiceRouteFactory : IServiceRouteFactory
     {
+        private readonly ConcurrentDictionary<string, AddressModel> _addressModel =
+            new ConcurrentDictionary<string, AddressModel>();
+
         private readonly ISerializer<string> _serializer;
-        private readonly ConcurrentDictionary<string, AddressModel> _addressModel = new ConcurrentDictionary<string, AddressModel>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DefaultServiceRouteFactory" /> class.
@@ -64,10 +66,10 @@ namespace KissU.Core.CPlatform.Routing.Implementation
 
             foreach (var descriptor in descriptors)
             {
-                _addressModel.TryGetValue(descriptor.Value, out AddressModel address);
+                _addressModel.TryGetValue(descriptor.Value, out var address);
                 if (address == null)
                 {
-                    address = (AddressModel)_serializer.Deserialize(descriptor.Value, typeof(IpAddressModel));
+                    address = (AddressModel) _serializer.Deserialize(descriptor.Value, typeof(IpAddressModel));
                     _addressModel.TryAdd(descriptor.Value, address);
                 }
 

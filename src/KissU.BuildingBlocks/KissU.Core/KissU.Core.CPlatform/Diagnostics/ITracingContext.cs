@@ -27,7 +27,8 @@
         /// <param name="networkAddress">The network address.</param>
         /// <param name="carrierHeader">The carrier header.</param>
         /// <returns>SegmentContext.</returns>
-        SegmentContext CreateExitSegmentContext(string operationName, string networkAddress, ICarrierHeaderCollection carrierHeader = default(ICarrierHeaderCollection));
+        SegmentContext CreateExitSegmentContext(string operationName, string networkAddress,
+            ICarrierHeaderCollection carrierHeader = default);
 
         /// <summary>
         /// Releases the specified segment context.

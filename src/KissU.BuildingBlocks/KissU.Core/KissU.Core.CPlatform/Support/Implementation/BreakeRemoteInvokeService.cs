@@ -25,10 +25,13 @@ namespace KissU.Core.CPlatform.Support.Implementation
     public class BreakeRemoteInvokeService : IBreakeRemoteInvokeService
     {
         private readonly IServiceCommandProvider _commandProvider;
-        private readonly IRemoteInvokeService _remoteInvokeService;
-        private readonly ILogger<BreakeRemoteInvokeService> _logger;
-        private readonly ConcurrentDictionary<string, ServiceInvokeListenInfo> _serviceInvokeListenInfo = new ConcurrentDictionary<string, ServiceInvokeListenInfo>();
         private readonly IHashAlgorithm _hashAlgorithm;
+        private readonly ILogger<BreakeRemoteInvokeService> _logger;
+        private readonly IRemoteInvokeService _remoteInvokeService;
+
+        private readonly ConcurrentDictionary<string, ServiceInvokeListenInfo> _serviceInvokeListenInfo =
+            new ConcurrentDictionary<string, ServiceInvokeListenInfo>();
+
         private readonly IEnumerable<IExceptionFilter> exceptionFilters = new List<IExceptionFilter>();
 
         /// <summary>
@@ -39,7 +42,9 @@ namespace KissU.Core.CPlatform.Support.Implementation
         /// <param name="logger">The logger.</param>
         /// <param name="remoteInvokeService">The remote invoke service.</param>
         /// <param name="serviceProvider">The service provider.</param>
-        public BreakeRemoteInvokeService(IHashAlgorithm hashAlgorithm, IServiceCommandProvider commandProvider, ILogger<BreakeRemoteInvokeService> logger, IRemoteInvokeService remoteInvokeService, CPlatformContainer serviceProvider)
+        public BreakeRemoteInvokeService(IHashAlgorithm hashAlgorithm, IServiceCommandProvider commandProvider,
+            ILogger<BreakeRemoteInvokeService> logger, IRemoteInvokeService remoteInvokeService,
+            CPlatformContainer serviceProvider)
         {
             _commandProvider = commandProvider;
             _remoteInvokeService = remoteInvokeService;
@@ -59,10 +64,11 @@ namespace KissU.Core.CPlatform.Support.Implementation
         /// <param name="serviceKey">The service key.</param>
         /// <param name="decodeJOject">if set to <c>true</c> [decode j oject].</param>
         /// <returns>Task&lt;RemoteInvokeResultMessage&gt;.</returns>
-        public async Task<RemoteInvokeResultMessage> InvokeAsync(IDictionary<string, object> parameters, string serviceId, string serviceKey, bool decodeJOject)
+        public async Task<RemoteInvokeResultMessage> InvokeAsync(IDictionary<string, object> parameters,
+            string serviceId, string serviceKey, bool decodeJOject)
         {
             var serviceInvokeInfos = _serviceInvokeListenInfo.GetOrAdd(serviceId,
-                new ServiceInvokeListenInfo()
+                new ServiceInvokeListenInfo
                 {
                     FirstInvokeTime = DateTime.Now,
                     FinalRemoteInvokeTime = DateTime.Now,
@@ -70,34 +76,55 @@ namespace KissU.Core.CPlatform.Support.Implementation
             var vt = _commandProvider.GetCommand(serviceId);
             var command = vt.IsCompletedSuccessfully ? vt.Result : await vt;
             var intervalSeconds = (DateTime.Now - serviceInvokeInfos.FinalRemoteInvokeTime).TotalSeconds;
-            bool reachConcurrentRequest() => serviceInvokeInfos.ConcurrentRequests > command.MaxConcurrentRequests;
-            bool reachRequestVolumeThreshold() => intervalSeconds <= 10 && serviceInvokeInfos.SinceFaultRemoteServiceRequests > command.BreakerRequestVolumeThreshold;
-            bool reachErrorThresholdPercentage() => (double)serviceInvokeInfos.FaultRemoteServiceRequests / (double)(serviceInvokeInfos.RemoteServiceRequests ?? 1) * 100 > command.BreakeErrorThresholdPercentage;
+
+            bool reachConcurrentRequest()
+            {
+                return serviceInvokeInfos.ConcurrentRequests > command.MaxConcurrentRequests;
+            }
+
+            bool reachRequestVolumeThreshold()
+            {
+                return intervalSeconds <= 10 && serviceInvokeInfos.SinceFaultRemoteServiceRequests >
+                       command.BreakerRequestVolumeThreshold;
+            }
+
+            bool reachErrorThresholdPercentage()
+            {
+                return serviceInvokeInfos.FaultRemoteServiceRequests /
+                       (double) (serviceInvokeInfos.RemoteServiceRequests ?? 1) * 100 >
+                       command.BreakeErrorThresholdPercentage;
+            }
+
             var item = GetHashItem(command, parameters);
             if (command.BreakerForceClosed)
             {
-                _serviceInvokeListenInfo.AddOrUpdate(serviceId, new ServiceInvokeListenInfo(), (k, v) => { v.LocalServiceRequests++; return v; });
-                return await MonitorRemoteInvokeAsync(parameters, serviceId, serviceKey, decodeJOject, command.ExecutionTimeoutInMilliseconds, item);
+                _serviceInvokeListenInfo.AddOrUpdate(serviceId, new ServiceInvokeListenInfo(), (k, v) =>
+                {
+                    v.LocalServiceRequests++;
+                    return v;
+                });
+                return await MonitorRemoteInvokeAsync(parameters, serviceId, serviceKey, decodeJOject,
+                    command.ExecutionTimeoutInMilliseconds, item);
             }
-            else
+
+            if (reachConcurrentRequest() || reachRequestVolumeThreshold() || reachErrorThresholdPercentage())
             {
-                if (reachConcurrentRequest() || reachRequestVolumeThreshold() || reachErrorThresholdPercentage())
+                if (intervalSeconds * 1000 > command.BreakeSleepWindowInMilliseconds)
                 {
-                    if (intervalSeconds * 1000 > command.BreakeSleepWindowInMilliseconds)
-                    {
-                        return await MonitorRemoteInvokeAsync(parameters, serviceId, serviceKey, decodeJOject, command.ExecutionTimeoutInMilliseconds, item);
-                    }
-                    else
-                    {
-                        _serviceInvokeListenInfo.AddOrUpdate(serviceId, new ServiceInvokeListenInfo(), (k, v) => { v.LocalServiceRequests++; return v; });
-                        return null;
-                    }
+                    return await MonitorRemoteInvokeAsync(parameters, serviceId, serviceKey, decodeJOject,
+                        command.ExecutionTimeoutInMilliseconds, item);
                 }
-                else
+
+                _serviceInvokeListenInfo.AddOrUpdate(serviceId, new ServiceInvokeListenInfo(), (k, v) =>
                 {
-                    return await MonitorRemoteInvokeAsync(parameters, serviceId, serviceKey, decodeJOject, command.ExecutionTimeoutInMilliseconds, item);
-                }
+                    v.LocalServiceRequests++;
+                    return v;
+                });
+                return null;
             }
+
+            return await MonitorRemoteInvokeAsync(parameters, serviceId, serviceKey, decodeJOject,
+                command.ExecutionTimeoutInMilliseconds, item);
         }
 
         /// <summary>
@@ -110,9 +137,10 @@ namespace KissU.Core.CPlatform.Support.Implementation
         /// <param name="requestTimeout">The request timeout.</param>
         /// <param name="item">The item.</param>
         /// <returns>Task&lt;RemoteInvokeResultMessage&gt;.</returns>
-        private async Task<RemoteInvokeResultMessage> MonitorRemoteInvokeAsync(IDictionary<string, object> parameters, string serviceId, string serviceKey, bool decodeJOject, int requestTimeout, string item)
+        private async Task<RemoteInvokeResultMessage> MonitorRemoteInvokeAsync(IDictionary<string, object> parameters,
+            string serviceId, string serviceKey, bool decodeJOject, int requestTimeout, string item)
         {
-            CancellationTokenSource source = new CancellationTokenSource();
+            var source = new CancellationTokenSource();
             var token = source.Token;
             var invokeMessage = new RemoteInvokeMessage
             {
@@ -165,7 +193,8 @@ namespace KissU.Core.CPlatform.Support.Implementation
         /// <param name="ex">The ex.</param>
         /// <param name="invokeMessage">The invoke message.</param>
         /// <param name="token">The token.</param>
-        private async Task ExecuteExceptionFilter(Exception ex, RemoteInvokeMessage invokeMessage, CancellationToken token)
+        private async Task ExecuteExceptionFilter(Exception ex, RemoteInvokeMessage invokeMessage,
+            CancellationToken token)
         {
             foreach (var filter in exceptionFilters)
             {
@@ -187,7 +216,7 @@ namespace KissU.Core.CPlatform.Support.Implementation
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private string GetHashItem(ServiceCommand command, IDictionary<string, object> parameters)
         {
-            string result = string.Empty;
+            var result = string.Empty;
             if (command.ShuntStrategy == AddressSelectorMode.HashAlgorithm)
             {
                 var parameter = parameters.Values.FirstOrDefault();

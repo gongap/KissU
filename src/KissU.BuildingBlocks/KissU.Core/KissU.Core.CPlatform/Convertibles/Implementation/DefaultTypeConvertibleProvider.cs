@@ -104,7 +104,7 @@ namespace KissU.Core.CPlatform.Convertibles.Implementation
                 return null;
             }
 
-            Guid.TryParse(instance.ToString(), out Guid result);
+            Guid.TryParse(instance.ToString(), out var result);
             return result;
         }
     }

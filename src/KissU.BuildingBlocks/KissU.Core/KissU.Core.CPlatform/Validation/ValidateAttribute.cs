@@ -10,11 +10,5 @@ namespace KissU.Core.CPlatform.Validation
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Parameter)]
     public class ValidateAttribute : Attribute
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ValidateAttribute" /> class.
-        /// </summary>
-        public ValidateAttribute()
-        {
-        }
     }
 }

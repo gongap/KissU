@@ -27,6 +27,7 @@ namespace KissU.Core.CPlatform.Support
         /// <param name="_serviceKey">The service key.</param>
         /// <param name="decodeJOject">if set to <c>true</c> [decode j oject].</param>
         /// <returns>Task&lt;T&gt;.</returns>
-        Task<T> Invoke<T>(IDictionary<string, object> parameters, string serviceId, string _serviceKey,bool decodeJOject);
+        Task<T> Invoke<T>(IDictionary<string, object> parameters, string serviceId, string _serviceKey,
+            bool decodeJOject);
     }
 }
