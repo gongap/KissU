@@ -12,7 +12,6 @@ namespace KissU.Core.AutoMapper
     /// <seealso cref="EnginePartModule" />
     public class AutoMapperModule : EnginePartModule
     {
-
         /// <summary>
         /// Initializes the specified context.
         /// </summary>
@@ -34,9 +33,8 @@ namespace KissU.Core.AutoMapper
             {
                 AppConfig.AssembliesStrings = configAssembliesStr.Split(";");
             }
+
             builder.RegisterType<AutoMapperBootstrap>().As<IAutoMapperBootstrap>();
         }
-
-
     }
 }

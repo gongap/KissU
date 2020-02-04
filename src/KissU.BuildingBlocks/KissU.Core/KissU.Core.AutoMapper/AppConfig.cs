@@ -13,9 +13,16 @@ using CPlatformAppConfig = KissU.Core.CPlatform.AppConfig;
 
 namespace KissU.Core.AutoMapper
 {
+    /// <summary>
+    /// AppConfig.
+    /// </summary>
     public class AppConfig
     {
+        private static readonly List<Assembly> _referenceAssembly = new List<Assembly>();
 
+        /// <summary>
+        /// Gets the assemblies.
+        /// </summary>
         public static IEnumerable<Assembly> Assemblies
         {
             get
@@ -24,12 +31,17 @@ namespace KissU.Core.AutoMapper
                 var referenceAssemblies = GetAllReferenceAssemblies();
                 foreach (var assembiyString in AssembliesStrings)
                 {
-                    assemblies.AddRange(referenceAssemblies.Where(p => p.FullName == assembiyString || Regex.IsMatch(p.FullName, assembiyString)));
+                    assemblies.AddRange(referenceAssemblies.Where(p =>
+                        p.FullName == assembiyString || Regex.IsMatch(p.FullName, assembiyString)));
                 }
+
                 return assemblies;
             }
         }
 
+        /// <summary>
+        /// Gets the profiles.
+        /// </summary>
         public static IEnumerable<Profile> Profiles
         {
             get
@@ -39,7 +51,8 @@ namespace KissU.Core.AutoMapper
                 var referenceAssemblies = GetAllReferenceAssemblies();
                 foreach (var assembly in referenceAssemblies)
                 {
-                    var profileTypes = assembly.DefinedTypes.Select(p => p.AsType()).Where(p => typeof(Profile).IsAssignableFrom(p) && !p.IsAbstract).ToList();
+                    var profileTypes = assembly.DefinedTypes.Select(p => p.AsType())
+                        .Where(p => typeof(Profile).IsAssignableFrom(p) && !p.IsAbstract).ToList();
                     if (profileTypes.Any())
                     {
                         foreach (var profileType in profileTypes)
@@ -54,13 +67,18 @@ namespace KissU.Core.AutoMapper
                                 if (logger.IsEnabled(LogLevel.Warning))
                                     logger.LogWarning($"构建profile失败,profile类型为{profileType.FullName}");
                             }
-
                         }
                     }
                 }
+
                 return profiles;
             }
         }
+
+        /// <summary>
+        /// Gets the assemblies strings.
+        /// </summary>
+        public static IEnumerable<string> AssembliesStrings { get; internal set; }
 
         private static IEnumerable<Assembly> GetAllReferenceAssemblies()
         {
@@ -73,19 +91,16 @@ namespace KissU.Core.AutoMapper
                     paths = GetPaths(serviceEngine.ModuleServiceLocationFormats);
                 }
             }
+
             var referenceAssemblies = paths == null ? GetReferenceAssembly() : GetReferenceAssembly(paths);
             return referenceAssemblies;
         }
 
-        private static List<Assembly> _referenceAssembly = new List<Assembly>();
-
-        public static IEnumerable<string> AssembliesStrings { get; internal set; }
-
         private static List<Assembly> GetReferenceAssembly(params string[] virtualPaths)
         {
-            var refAssemblies = new List<Assembly>();//Assembly 通过此类能够载入操纵一个程序集，并获取程序集内部信息
+            var refAssemblies = new List<Assembly>(); //Assembly 通过此类能够载入操纵一个程序集，并获取程序集内部信息
             var rootPath = AppContext.BaseDirectory;
-            var existsPath = virtualPaths.Any();//判断是否有数据
+            var existsPath = virtualPaths.Any(); //判断是否有数据
             if (existsPath && !string.IsNullOrEmpty(CPlatformAppConfig.ServerOptions.RootPath))
                 rootPath = CPlatformAppConfig.ServerOptions.RootPath;
             var result = _referenceAssembly;
@@ -104,9 +119,11 @@ namespace KissU.Core.AutoMapper
                             _referenceAssembly.Add(referencedAssembly);
                         refAssemblies.Add(referencedAssembly);
                     }
+
                     result = existsPath ? refAssemblies : _referenceAssembly;
                 });
             }
+
             return result;
         }
 
@@ -115,28 +132,29 @@ namespace KissU.Core.AutoMapper
             var notRelatedFile = CPlatformAppConfig.ServerOptions.NotRelatedAssemblyFiles;
             var relatedFile = CPlatformAppConfig.ServerOptions.RelatedAssemblyFiles;
             var pattern = string.Format("^Microsoft.\\w*|^System.\\w*|^Netty.\\w*|^Autofac.\\w*{0}",
-               string.IsNullOrEmpty(notRelatedFile) ? "" : $"|{notRelatedFile}");
-            Regex notRelatedRegex = new Regex(pattern, RegexOptions.Singleline | RegexOptions.Compiled | RegexOptions.IgnoreCase);
-            Regex relatedRegex = new Regex(relatedFile, RegexOptions.Singleline | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+                string.IsNullOrEmpty(notRelatedFile) ? "" : $"|{notRelatedFile}");
+            var notRelatedRegex = new Regex(pattern,
+                RegexOptions.Singleline | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+            var relatedRegex = new Regex(relatedFile,
+                RegexOptions.Singleline | RegexOptions.Compiled | RegexOptions.IgnoreCase);
             if (!string.IsNullOrEmpty(relatedFile))
             {
                 return
                     Directory.GetFiles(parentDir, "*.dll").Select(Path.GetFullPath).Where(
                         a => !notRelatedRegex.IsMatch(a) && relatedRegex.IsMatch(a)).ToList();
             }
-            else
-            {
-                return
-                    Directory.GetFiles(parentDir, "*.dll").Select(Path.GetFullPath).Where(
-                        a => !notRelatedRegex.IsMatch(a)).ToList();
-            }
+
+            return
+                Directory.GetFiles(parentDir, "*.dll").Select(Path.GetFullPath).Where(
+                    a => !notRelatedRegex.IsMatch(a)).ToList();
         }
 
         private static string[] GetPaths(params string[] virtualPaths)
         {
             var directories = new List<string>(virtualPaths.Where(p => !string.IsNullOrEmpty(p)));
-            string rootPath = string.IsNullOrEmpty(CPlatformAppConfig.ServerOptions.RootPath) ?
-                AppContext.BaseDirectory : CPlatformAppConfig.ServerOptions.RootPath;
+            var rootPath = string.IsNullOrEmpty(CPlatformAppConfig.ServerOptions.RootPath)
+                ? AppContext.BaseDirectory
+                : CPlatformAppConfig.ServerOptions.RootPath;
             var virPaths = virtualPaths;
             foreach (var virtualPath in virtualPaths)
             {
@@ -152,8 +170,8 @@ namespace KissU.Core.AutoMapper
                     virPaths = null;
                 }
             }
+
             return directories.Any() ? directories.Distinct().ToArray() : virPaths;
         }
-
     }
 }

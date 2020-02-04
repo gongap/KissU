@@ -6,8 +6,16 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.AutoMapper.AutoMapper
 {
+    /// <summary>
+    /// AutoMapperBootstrap.
+    /// Implements the <see cref="KissU.Core.AutoMapper.AutoMapper.IAutoMapperBootstrap" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.AutoMapper.AutoMapper.IAutoMapperBootstrap" />
     public class AutoMapperBootstrap : IAutoMapperBootstrap
     {
+        /// <summary>
+        /// Initializes this instance.
+        /// </summary>
         public void Initialize()
         {
             var logger = ServiceLocator.GetService<ILogger<AutoMapperBootstrap>>();
@@ -30,9 +38,7 @@ namespace KissU.Core.AutoMapper.AutoMapper
                         config.AddProfile(profile);
                     }
                 }
-
             });
         }
-
     }
 }
