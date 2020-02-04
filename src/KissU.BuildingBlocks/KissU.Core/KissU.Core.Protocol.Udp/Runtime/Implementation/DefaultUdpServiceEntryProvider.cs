@@ -17,19 +17,10 @@ namespace KissU.Core.Protocol.Udp.Runtime.Implementation
     /// <seealso cref="KissU.Core.Protocol.Udp.Runtime.IUdpServiceEntryProvider" />
     public class DefaultUdpServiceEntryProvider : IUdpServiceEntryProvider
     {
-        #region Field
-
-        private readonly IEnumerable<Type> _types;
-        private readonly ILogger<DefaultUdpServiceEntryProvider> _logger;
-        private readonly CPlatformContainer _serviceProvider;
-        private UdpServiceEntry _udpServiceEntry;
-
-        #endregion Field
-
         #region Constructor
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DefaultUdpServiceEntryProvider"/> class.
+        /// Initializes a new instance of the <see cref="DefaultUdpServiceEntryProvider" /> class.
         /// </summary>
         /// <param name="serviceEntryProvider">The service entry provider.</param>
         /// <param name="logger">The logger.</param>
@@ -44,6 +35,15 @@ namespace KissU.Core.Protocol.Udp.Runtime.Implementation
         }
 
         #endregion Constructor
+
+        #region Field
+
+        private readonly IEnumerable<Type> _types;
+        private readonly ILogger<DefaultUdpServiceEntryProvider> _logger;
+        private readonly CPlatformContainer _serviceProvider;
+        private UdpServiceEntry _udpServiceEntry;
+
+        #endregion Field
 
         #region Implementation of IUdpServiceEntryProvider
 
@@ -66,11 +66,13 @@ namespace KissU.Core.Protocol.Udp.Runtime.Implementation
                         break;
                     }
                 }
+
                 if (_logger.IsEnabled(LogLevel.Debug))
                 {
                     _logger.LogDebug($"发现了以下Udp服务：{_udpServiceEntry.Type.FullName}。");
                 }
             }
+
             return _udpServiceEntry;
         }
 
@@ -93,10 +95,11 @@ namespace KissU.Core.Protocol.Udp.Runtime.Implementation
                 {
                     Behavior = behavior,
                     Type = behavior.GetType(),
-                    Path = path,
+                    Path = path
                 };
             return result;
         }
+
         #endregion
     }
 }

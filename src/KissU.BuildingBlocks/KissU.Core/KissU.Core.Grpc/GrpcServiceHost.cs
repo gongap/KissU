@@ -14,13 +14,6 @@ namespace KissU.Core.Grpc
     /// <seealso cref="KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceHostAbstract" />
     public class GrpcServiceHost : ServiceHostAbstract
     {
-        #region Field
-
-        private readonly Func<EndPoint, Task<IMessageListener>> _messageListenerFactory;
-        private IMessageListener _serverMessageListener;
-
-        #endregion Field
-
         /// <summary>
         /// Initializes a new instance of the <see cref="GrpcServiceHost" /> class.
         /// </summary>
@@ -29,6 +22,13 @@ namespace KissU.Core.Grpc
         {
             _messageListenerFactory = messageListenerFactory;
         }
+
+        #region Field
+
+        private readonly Func<EndPoint, Task<IMessageListener>> _messageListenerFactory;
+        private IMessageListener _serverMessageListener;
+
+        #endregion Field
 
         #region Overrides of ServiceHostAbstract
 
@@ -50,7 +50,6 @@ namespace KissU.Core.Grpc
             if (_serverMessageListener != null)
                 return;
             _serverMessageListener = await _messageListenerFactory(endPoint);
-
         }
 
         /// <summary>
@@ -63,7 +62,9 @@ namespace KissU.Core.Grpc
         {
             if (_serverMessageListener != null)
                 return;
-            _serverMessageListener = await _messageListenerFactory(new IPEndPoint(IPAddress.Parse(ip), AppConfig.ServerOptions.Ports.GrpcPort));
+            _serverMessageListener =
+                await _messageListenerFactory(new IPEndPoint(IPAddress.Parse(ip),
+                    AppConfig.ServerOptions.Ports.GrpcPort));
         }
 
         #endregion Overrides of ServiceHostAbstract

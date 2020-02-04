@@ -21,6 +21,5 @@ namespace KissU.Core.DNS.Runtime
         /// Gets or sets the behavior.
         /// </summary>
         public DnsBehavior Behavior { get; set; }
-
     }
 }

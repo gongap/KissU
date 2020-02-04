@@ -31,17 +31,15 @@ namespace KissU.Core.Consul.Internal.Cluster.Implementation.Selectors.Implementa
 
             //  var address = context.Address.ToArray();
             if (context.Address.Count() == 0)
-                throw new ArgumentException("没有任何地址信息。", nameof(context.Address)); 
+                throw new ArgumentException("没有任何地址信息。", nameof(context.Address));
 
             if (context.Address.Count() == 1)
             {
                 return context.Address.First();
             }
-            else
-            {
-                var vt = SelectAsync(context);
-                return vt.IsCompletedSuccessfully ? vt.Result : await vt;
-            }
+
+            var vt = SelectAsync(context);
+            return vt.IsCompletedSuccessfully ? vt.Result : await vt;
         }
 
         #endregion Implementation of IAddressSelector

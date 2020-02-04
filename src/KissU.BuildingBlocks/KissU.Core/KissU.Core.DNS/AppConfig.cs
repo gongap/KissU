@@ -6,7 +6,7 @@ namespace KissU.Core.DNS
     /// <summary>
     /// AppConfig.
     /// </summary>
-    public static  class AppConfig
+    public static class AppConfig
     {
         /// <summary>
         /// Gets or sets the configuration.

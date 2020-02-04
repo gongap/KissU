@@ -9,7 +9,7 @@ namespace KissU.Core.EventBusRabbitMQ
     /// </summary>
     /// <seealso cref="System.IDisposable" />
     public interface IRabbitMQPersistentConnection
-         : IDisposable
+        : IDisposable
     {
         /// <summary>
         /// Gets a value indicating whether this instance is connected.

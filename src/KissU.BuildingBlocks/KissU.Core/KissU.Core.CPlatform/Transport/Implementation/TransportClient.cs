@@ -209,7 +209,7 @@ namespace KissU.Core.CPlatform.Transport.Implementation
                         Content = message.Content,
                         ContentType = message.ContentType,
                         Id = message.Id,
-                        MessageName = remoteInvokeMessage.ServiceId,
+                        MessageName = remoteInvokeMessage.ServiceId
                     },
                     remoteInvokeMessage.DecodeJObject ? RpcMethod.Json_Rpc.ToString() : RpcMethod.Proxy_Rpc.ToString(),
                     traceId?.ToString(),
@@ -235,7 +235,7 @@ namespace KissU.Core.CPlatform.Transport.Implementation
                 {
                     Content = message.Content,
                     ContentType = message.ContentType,
-                    Id = message.Id,
+                    Id = message.Id
                 }));
             }
         }
@@ -255,7 +255,7 @@ namespace KissU.Core.CPlatform.Transport.Implementation
                     {
                         Content = message.Content,
                         ContentType = message.ContentType,
-                        Id = message.Id,
+                        Id = message.Id
                     },
                     new CPlatformCommunicationException(remoteInvokeResultMessage.ExceptionMessage)));
             }

@@ -11,24 +11,20 @@ namespace KissU.Core.ProxyGenerator.Interceptors.Implementation
     /// </summary>
     /// <seealso cref="KissU.Core.ProxyGenerator.Interceptors.IInvocation" />
     /// <seealso cref="KissU.Core.ProxyGenerator.Interceptors.ICacheInvocation" />
-    public abstract class AbstractInvocation : IInvocation,ICacheInvocation
+    public abstract class AbstractInvocation : IInvocation, ICacheInvocation
     {
-        private readonly IDictionary<string, object> _arguments;
-        private readonly string _serviceId;
-        private readonly string[] _cacheKey;
-        private readonly List<Attribute> _attributes;
-        private readonly Type _returnType;
         /// <summary>
         /// The proxy object
         /// </summary>
         protected readonly object proxyObject;
+
         /// <summary>
         /// The return value
         /// </summary>
         protected object _returnValue;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AbstractInvocation"/> class.
+        /// Initializes a new instance of the <see cref="AbstractInvocation" /> class.
         /// </summary>
         /// <param name="arguments">The arguments.</param>
         /// <param name="serviceId">The service identifier.</param>
@@ -37,21 +33,31 @@ namespace KissU.Core.ProxyGenerator.Interceptors.Implementation
         /// <param name="returnType">Type of the return.</param>
         /// <param name="proxy">The proxy.</param>
         protected AbstractInvocation(
-          IDictionary<string, object> arguments,
-           string serviceId,
+            IDictionary<string, object> arguments,
+            string serviceId,
             string[] cacheKey,
             List<Attribute> attributes,
             Type returnType,
             object proxy
-            )
+        )
         {
-            _arguments = arguments;
-            _serviceId = serviceId;
-            _cacheKey = cacheKey;
-            _attributes = attributes;
-            _returnType = returnType;
+            Arguments = arguments;
+            ServiceId = serviceId;
+            CacheKey = cacheKey;
+            Attributes = attributes;
+            ReturnType = returnType;
             proxyObject = proxy;
         }
+
+        /// <summary>
+        /// Gets the cache key.
+        /// </summary>
+        public string[] CacheKey { get; }
+
+        /// <summary>
+        /// Gets the attributes.
+        /// </summary>
+        public List<Attribute> Attributes { get; }
 
         /// <summary>
         /// Gets the proxy.
@@ -61,28 +67,23 @@ namespace KissU.Core.ProxyGenerator.Interceptors.Implementation
         /// <summary>
         /// Gets the service identifier.
         /// </summary>
-        public string ServiceId => _serviceId;
-        /// <summary>
-        /// Gets the cache key.
-        /// </summary>
-        public string[] CacheKey => _cacheKey;
+        public string ServiceId { get; }
 
         /// <summary>
         /// Gets the arguments.
         /// </summary>
-        public IDictionary<string, object> Arguments => _arguments;
+        public IDictionary<string, object> Arguments { get; }
 
-        /// <summary>
-        /// Gets the attributes.
-        /// </summary>
-        public List<Attribute> Attributes => _attributes;
-
-        object IInvocation.ReturnValue { get => _returnValue; set => _returnValue = value; }
+        object IInvocation.ReturnValue
+        {
+            get => _returnValue;
+            set => _returnValue = value;
+        }
 
         /// <summary>
         /// Gets the type of the return.
         /// </summary>
-        public Type ReturnType => _returnType;
+        public Type ReturnType { get; }
 
         /// <summary>
         /// Proceeds this instance.

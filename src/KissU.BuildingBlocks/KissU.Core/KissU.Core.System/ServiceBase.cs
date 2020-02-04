@@ -40,6 +40,7 @@ namespace KissU.Core.System
         {
             return ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy(key, type);
         }
+
         /// <summary>
         /// Creates the proxy.
         /// </summary>

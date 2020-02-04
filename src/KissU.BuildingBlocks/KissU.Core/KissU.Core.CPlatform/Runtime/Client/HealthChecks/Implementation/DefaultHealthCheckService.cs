@@ -214,7 +214,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.HealthChecks.Implementation
         {
             var isHealth = false;
             using (var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
-            { SendTimeout = timeout })
+                {SendTimeout = timeout})
             {
                 try
                 {
@@ -234,7 +234,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.HealthChecks.Implementation
             foreach (var entry in entrys)
             {
                 using (var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
-                { SendTimeout = timeout })
+                    {SendTimeout = timeout})
                 {
                     try
                     {

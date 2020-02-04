@@ -26,16 +26,16 @@ namespace KissU.Core.Zookeeper
     /// <seealso cref="KissU.Core.CPlatform.Support.Implementation.ServiceCommandManagerBase" />
     /// <seealso cref="System.IDisposable" />
     public class ZookeeperServiceCommandManager : ServiceCommandManagerBase, IDisposable
-    { 
+    {
         private readonly ConfigInfo _configInfo;
-        private readonly ISerializer<byte[]> _serializer;
         private readonly ILogger<ZookeeperServiceCommandManager> _logger;
-        private ServiceCommandDescriptor[] _serviceCommands; 
-        private readonly IServiceRouteManager _serviceRouteManager; 
+        private readonly ISerializer<byte[]> _serializer;
+        private readonly IServiceRouteManager _serviceRouteManager;
         private readonly IZookeeperClientProvider _zookeeperClientProvider;
+        private ServiceCommandDescriptor[] _serviceCommands;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ZookeeperServiceCommandManager"/> class.
+        /// Initializes a new instance of the <see cref="ZookeeperServiceCommandManager" /> class.
         /// </summary>
         /// <param name="configInfo">The configuration information.</param>
         /// <param name="serializer">The serializer.</param>
@@ -45,16 +45,26 @@ namespace KissU.Core.Zookeeper
         /// <param name="logger">The logger.</param>
         /// <param name="zookeeperClientProvider">The zookeeper client provider.</param>
         public ZookeeperServiceCommandManager(ConfigInfo configInfo, ISerializer<byte[]> serializer,
-            ISerializer<string> stringSerializer, IServiceRouteManager serviceRouteManager, IServiceEntryManager serviceEntryManager,
-            ILogger<ZookeeperServiceCommandManager> logger, IZookeeperClientProvider zookeeperClientProvider) : base(stringSerializer, serviceEntryManager)
+            ISerializer<string> stringSerializer, IServiceRouteManager serviceRouteManager,
+            IServiceEntryManager serviceEntryManager,
+            ILogger<ZookeeperServiceCommandManager> logger, IZookeeperClientProvider zookeeperClientProvider) : base(
+            stringSerializer, serviceEntryManager)
         {
             _configInfo = configInfo;
             _serializer = serializer;
             _serviceRouteManager = serviceRouteManager;
             _logger = logger;
             _zookeeperClientProvider = zookeeperClientProvider;
-             EnterServiceCommands().Wait();
+            EnterServiceCommands().Wait();
             _serviceRouteManager.Removed += ServiceRouteManager_Removed;
+        }
+
+
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+        public void Dispose()
+        {
         }
 
 
@@ -80,7 +90,7 @@ namespace KissU.Core.Zookeeper
             foreach (var zooKeeper in zooKeepers)
             {
                 var path = _configInfo.CommandPath;
-                var childrens = path.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+                var childrens = path.Split(new[] {'/'}, StringSplitOptions.RemoveEmptyEntries);
 
                 var index = 0;
                 while (childrens.Count() > 1)
@@ -100,13 +110,16 @@ namespace KissU.Core.Zookeeper
                                 await zooKeeper.Item2.deleteAsync(childPath);
                             }
                         }
+
                         if (_logger.IsEnabled(LogLevel.Debug))
                             _logger.LogDebug($"准备删除：{nodePath}。");
                         await zooKeeper.Item2.deleteAsync(nodePath);
                     }
+
                     index++;
                     childrens = childrens.Take(childrens.Length - index).ToArray();
                 }
+
                 if (_logger.IsEnabled(LogLevel.Information))
                     _logger.LogInformation("服务命令配置清空完成。");
             }
@@ -141,7 +154,8 @@ namespace KissU.Core.Zookeeper
                         if (_logger.IsEnabled(LogLevel.Debug))
                             _logger.LogDebug($"节点：{nodePath}不存在将进行创建。");
 
-                        await zooKeeper.Item2.createAsync(nodePath, nodeData, ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+                        await zooKeeper.Item2.createAsync(nodePath, nodeData, ZooDefs.Ids.OPEN_ACL_UNSAFE,
+                            CreateMode.PERSISTENT);
                     }
                     else
                     {
@@ -152,8 +166,10 @@ namespace KissU.Core.Zookeeper
                         if (!DataEquals(nodeData, onlineData))
                             await zooKeeper.Item2.setDataAsync(nodePath, nodeData);
                     }
+
                     NodeChange(command);
                 }
+
                 if (_logger.IsEnabled(LogLevel.Information))
                     _logger.LogInformation("服务命令添加成功。");
             }
@@ -167,7 +183,7 @@ namespace KissU.Core.Zookeeper
         {
             var commands = await GetServiceCommands(serviceCommands.Select(p => p.ServiceId));
             if (commands.Count() == 0 || _configInfo.ReloadOnChange)
-            { 
+            {
                 await SetServiceCommandsAsync(serviceCommands);
             }
         }
@@ -198,7 +214,7 @@ namespace KissU.Core.Zookeeper
             if (_logger.IsEnabled(LogLevel.Information))
                 _logger.LogInformation($"节点{path}不存在，将进行创建。");
 
-            var childrens = path.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+            var childrens = path.Split(new[] {'/'}, StringSplitOptions.RemoveEmptyEntries);
             var nodePath = "/";
 
             foreach (var children in childrens)
@@ -206,8 +222,10 @@ namespace KissU.Core.Zookeeper
                 nodePath += children;
                 if (await zooKeeper.Item2.existsAsync(nodePath) == null)
                 {
-                    await zooKeeper.Item2.createAsync(nodePath, null, ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+                    await zooKeeper.Item2.createAsync(nodePath, null, ZooDefs.Ids.OPEN_ACL_UNSAFE,
+                        CreateMode.PERSISTENT);
                 }
+
                 nodePath += "/";
             }
         }
@@ -226,16 +244,17 @@ namespace KissU.Core.Zookeeper
 
         private async Task<ServiceCommandDescriptor> GetServiceCommand(string path)
         {
-            ServiceCommandDescriptor result = null; 
+            ServiceCommandDescriptor result = null;
             var zooKeeper = await GetZooKeeper();
             var watcher = new NodeMonitorWatcher(GetZooKeeper, path,
-                  (oldData, newData) => NodeChange(oldData, newData));
+                (oldData, newData) => NodeChange(oldData, newData));
             if (await zooKeeper.Item2.existsAsync(path) != null)
             {
                 var data = (await zooKeeper.Item2.getDataAsync(path, watcher)).Data;
                 watcher.SetCurrentData(data);
                 result = GetServiceCommand(data);
             }
+
             return result;
         }
 
@@ -258,6 +277,7 @@ namespace KissU.Core.Zookeeper
                 if (serviceCommand != null)
                     serviceCommands.Add(serviceCommand);
             }
+
             return serviceCommands.ToArray();
         }
 
@@ -296,6 +316,7 @@ namespace KissU.Core.Zookeeper
                 if (b1 != b2)
                     return false;
             }
+
             return true;
         }
 
@@ -314,10 +335,10 @@ namespace KissU.Core.Zookeeper
                 _serviceCommands =
                     _serviceCommands
                         .Where(i => i.ServiceId != newCommand.ServiceId)
-                        .Concat(new[] { newCommand }).ToArray();
+                        .Concat(new[] {newCommand}).ToArray();
             }
-            
-                //触发服务命令变更事件。
+
+            //触发服务命令变更事件。
             OnChanged(new ServiceCommandChangedEventArgs(newCommand, oldCommand));
         }
 
@@ -341,8 +362,9 @@ namespace KissU.Core.Zookeeper
                 _serviceCommands =
                     _serviceCommands
                         .Where(i => i.ServiceId != newCommand.ServiceId)
-                        .Concat(new[] { newCommand }).ToArray();
+                        .Concat(new[] {newCommand}).ToArray();
             }
+
             //触发服务命令变更事件。
             OnChanged(new ServiceCommandChangedEventArgs(newCommand, oldCommand));
         }
@@ -383,6 +405,7 @@ namespace KissU.Core.Zookeeper
                     .Concat(newCommands)
                     .ToArray();
             }
+
             //需要删除的服务命令集合。
             var deletedRoutes = routes.Where(i => deletedChildrens.Contains(i.ServiceId)).ToArray();
             //触发删除事件。
@@ -395,19 +418,10 @@ namespace KissU.Core.Zookeeper
                 _logger.LogInformation("服务命令数据更新成功。");
         }
 
-
-        /// <summary>
-        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-        /// </summary>
-        public void Dispose()
-        { 
-        }
-
         private async ValueTask<(ManualResetEvent, ZooKeeper)> GetZooKeeper()
         {
             var zooKeeper = await _zookeeperClientProvider.GetZooKeeper();
             return zooKeeper;
         }
-
     }
 }

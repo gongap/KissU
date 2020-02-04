@@ -45,7 +45,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.Implementation
             subscribers.AddRange(descriptors.Select(descriptor => new ServiceSubscriber
             {
                 Address = CreateAddress(descriptor.AddressDescriptors),
-                ServiceDescriptor = descriptor.ServiceDescriptor,
+                ServiceDescriptor = descriptor.ServiceDescriptor
             }));
             return Task.FromResult(subscribers.AsEnumerable());
         }
@@ -64,7 +64,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.Implementation
 
             foreach (var descriptor in descriptors)
             {
-                yield return (AddressModel)_serializer.Deserialize(descriptor.Value, typeof(IpAddressModel));
+                yield return (AddressModel) _serializer.Deserialize(descriptor.Value, typeof(IpAddressModel));
             }
         }
     }

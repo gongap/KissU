@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using Microsoft.Extensions.Logging;
+using NLog;
+using ILogger = Microsoft.Extensions.Logging.ILogger;
+using LogLevel = Microsoft.Extensions.Logging.LogLevel;
 
 namespace KissU.Core.Nlog
 {
@@ -11,14 +14,15 @@ namespace KissU.Core.Nlog
     /// <seealso cref="Microsoft.Extensions.Logging.ILogger" />
     public class NLogger : ILogger
     {
-        private readonly NLog.Logger _log;
+        private readonly Logger _log;
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="NLogger"/> class.
+        /// Initializes a new instance of the <see cref="NLogger" /> class.
         /// </summary>
         /// <param name="name">The name.</param>
         public NLogger(string name)
-        { 
-            _log = NLog.LogManager.GetLogger(name);
+        {
+            _log = LogManager.GetLogger(name);
         }
 
         /// <summary>
@@ -68,7 +72,10 @@ namespace KissU.Core.Nlog
         /// <param name="eventId">Id of the event.</param>
         /// <param name="state">The entry to be written. Can be also an object.</param>
         /// <param name="exception">The exception related to this entry.</param>
-        /// <param name="formatter">Function to create a <c>string</c> message of the <paramref name="state" /> and <paramref name="exception" />.</param>
+        /// <param name="formatter">
+        /// Function to create a <c>string</c> message of the <paramref name="state" /> and
+        /// <paramref name="exception" />.
+        /// </param>
         /// <exception cref="ArgumentNullException">formatter</exception>
         public void Log<TState>(LogLevel logLevel, EventId eventId, TState state,
             Exception exception, Func<TState, Exception, string> formatter)
@@ -82,11 +89,13 @@ namespace KissU.Core.Nlog
             {
                 throw new ArgumentNullException(nameof(formatter));
             }
+
             string message = null;
             if (null != formatter)
             {
                 message = formatter(state, exception);
             }
+
             if (!string.IsNullOrEmpty(message) || exception != null)
             {
                 switch (logLevel)
@@ -101,7 +110,7 @@ namespace KissU.Core.Nlog
                         _log.Trace(message);
                         break;
                     case LogLevel.Error:
-                        _log.Error(message, exception,null);
+                        _log.Error(message, exception, null);
                         break;
                     case LogLevel.Information:
                         _log.Info(message);
@@ -111,7 +120,7 @@ namespace KissU.Core.Nlog
                         break;
                     default:
                         _log.Warn($"遇到未知日志级别{logLevel}");
-                        _log.Info(message, exception,null);
+                        _log.Info(message, exception, null);
                         break;
                 }
             }
@@ -127,14 +136,13 @@ namespace KissU.Core.Nlog
             /// <summary>
             /// The instance
             /// </summary>
-            public static NoopDisposable Instance = new NoopDisposable();
+            public static readonly NoopDisposable Instance = new NoopDisposable();
 
             /// <summary>
             /// Disposes this instance.
             /// </summary>
             public void Dispose()
             {
-               
             }
         }
     }

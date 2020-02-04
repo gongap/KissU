@@ -15,18 +15,18 @@ namespace KissU.Core.EventBusKafka.Implementation
     /// <seealso cref="KissU.Core.EventBusKafka.Implementation.KafkaPersistentConnectionBase" />
     public class KafkaProducerPersistentConnection : KafkaPersistentConnectionBase
     {
-        private Producer<Null, string> _connection;
         private readonly ILogger<KafkaProducerPersistentConnection> _logger;
         private readonly ISerializer<string> _stringSerializer;
-        bool _disposed;
+        private Producer<Null, string> _connection;
+        private bool _disposed;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="KafkaProducerPersistentConnection" /> class.
         /// </summary>
         /// <param name="logger">The logger.</param>
         public KafkaProducerPersistentConnection(ILogger<KafkaProducerPersistentConnection> logger)
-            :base(logger,AppConfig.KafkaProducerConfig)
-        { 
+            : base(logger, AppConfig.KafkaProducerConfig)
+        {
             _logger = logger;
             _stringSerializer = new StringSerializer(Encoding.UTF8);
         }
@@ -34,7 +34,7 @@ namespace KissU.Core.EventBusKafka.Implementation
         /// <summary>
         /// Gets a value indicating whether this instance is connected.
         /// </summary>
-        public override bool IsConnected =>   _connection != null &&  !_disposed;
+        public override bool IsConnected => _connection != null && !_disposed;
 
 
         /// <summary>
@@ -45,9 +45,9 @@ namespace KissU.Core.EventBusKafka.Implementation
         public override Action Connection(IEnumerable<KeyValuePair<string, object>> options)
         {
             return () =>
-            { 
-                _connection = new Producer<Null, string>(options,null, _stringSerializer);
-                _connection.OnError += OnConnectionException; 
+            {
+                _connection = new Producer<Null, string>(options, null, _stringSerializer);
+                _connection.OnError += OnConnectionException;
             };
         }
 
@@ -88,7 +88,5 @@ namespace KissU.Core.EventBusKafka.Implementation
 
             TryConnect();
         }
-
-
     }
 }

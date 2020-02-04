@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Concurrent;
+﻿using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -23,21 +22,19 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services
     /// <seealso cref="KissU.Core.Protocol.Mqtt.Internal.Services.IChannelService" />
     public abstract class AbstractChannelService : IChannelService
     {
-        private readonly AttributeKey<string> _loginAttrKey = AttributeKey<string>.ValueOf("login");
-        private readonly AttributeKey<string> _deviceIdAttrKey = AttributeKey<string>.ValueOf("deviceId");
         private readonly IMessagePushService _messagePushService;
-        private readonly ConcurrentDictionary<string, IEnumerable<MqttChannel>> _topics = new ConcurrentDictionary<string, IEnumerable<MqttChannel>>();
-        private readonly ConcurrentDictionary<string, MqttChannel> _mqttChannels = new ConcurrentDictionary<String, MqttChannel>();
-        /// <summary>
-        /// The retain
-        /// </summary>
-        protected readonly  ConcurrentDictionary<String, ConcurrentQueue<RetainMessage>> _retain = new ConcurrentDictionary<String, ConcurrentQueue<RetainMessage>>();
         private readonly IMqttBrokerEntryManger _mqttBrokerEntryManger;
         private readonly IMqttRemoteInvokeService _mqttRemoteInvokeService;
         private readonly string _publishServiceId;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AbstractChannelService"/> class.
+        /// The retain
+        /// </summary>
+        protected readonly ConcurrentDictionary<string, ConcurrentQueue<RetainMessage>> _retain =
+            new ConcurrentDictionary<string, ConcurrentQueue<RetainMessage>>();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AbstractChannelService" /> class.
         /// </summary>
         /// <param name="messagePushService">The message push service.</param>
         /// <param name="mqttBrokerEntryManger">The MQTT broker entry manger.</param>
@@ -47,68 +44,41 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services
             IMqttBrokerEntryManger mqttBrokerEntryManger,
             IMqttRemoteInvokeService mqttRemoteInvokeService,
             IServiceIdGenerator serviceIdGenerator
-            )
+        )
         {
             _messagePushService = messagePushService;
             _mqttBrokerEntryManger = mqttBrokerEntryManger;
             _mqttRemoteInvokeService = mqttRemoteInvokeService;
-            _publishServiceId= serviceIdGenerator.GenerateServiceId(typeof(IMqttRomtePublishService).GetMethod("Publish"));
+            _publishServiceId =
+                serviceIdGenerator.GenerateServiceId(typeof(IMqttRomtePublishService).GetMethod("Publish"));
         }
 
         /// <summary>
         /// Gets the MQTT channels.
         /// </summary>
-        public ConcurrentDictionary<string, MqttChannel> MqttChannels
-        {
-            get
-        {
-                return _mqttChannels;
-            }
-        }
+        public ConcurrentDictionary<string, MqttChannel> MqttChannels { get; } =
+            new ConcurrentDictionary<string, MqttChannel>();
 
         /// <summary>
         /// Gets the device identifier attribute key.
         /// </summary>
-        public AttributeKey<string> DeviceIdAttrKey
-        {
-            get
-            {
-                return _deviceIdAttrKey;
-            }
-        }
+        public AttributeKey<string> DeviceIdAttrKey { get; } = AttributeKey<string>.ValueOf("deviceId");
 
         /// <summary>
         /// Gets the login attribute key.
         /// </summary>
-        public AttributeKey<string> LoginAttrKey
-        {
-            get
-            {
-                return _loginAttrKey;
-            }
-        }
+        public AttributeKey<string> LoginAttrKey { get; } = AttributeKey<string>.ValueOf("login");
 
         /// <summary>
         /// Gets the topics.
         /// </summary>
-        public ConcurrentDictionary<string, IEnumerable<MqttChannel>> Topics
-        {
-            get
-            {
-                return _topics;
-            }
-        }
+        public ConcurrentDictionary<string, IEnumerable<MqttChannel>> Topics { get; } =
+            new ConcurrentDictionary<string, IEnumerable<MqttChannel>>();
 
         /// <summary>
         /// Gets the retain.
         /// </summary>
-        public ConcurrentDictionary<String, ConcurrentQueue<RetainMessage>> Retain
-        {
-            get
-            {
-                return _retain;
-            }
-        }
+        public ConcurrentDictionary<string, ConcurrentQueue<RetainMessage>> Retain => _retain;
 
         /// <summary>
         /// Closes the specified device identifier.
@@ -127,26 +97,6 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services
         public abstract Task<bool> Connect(string deviceId, MqttChannel build);
 
         /// <summary>
-        /// Removes the channel.
-        /// </summary>
-        /// <param name="topic">The topic.</param>
-        /// <param name="mqttChannel">The MQTT channel.</param>
-        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-        public bool RemoveChannel(string topic, MqttChannel mqttChannel)
-        {
-            var result = false;
-            if (!string.IsNullOrEmpty(topic) && mqttChannel != null)
-            {
-                _topics.TryGetValue(topic, out IEnumerable<MqttChannel> mqttChannels);
-                var channels = mqttChannels == null ? new List<MqttChannel>() : mqttChannels.ToList();
-                channels.Remove(mqttChannel);
-                _topics.AddOrUpdate(topic, channels, (key, value) => channels);
-                result = true;
-            }
-            return result;
-        }
-
-        /// <summary>
         /// Gets the device identifier.
         /// </summary>
         /// <param name="channel">The channel.</param>
@@ -155,30 +105,11 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services
         {
             string deviceId = null;
             if (channel != null)
-            { 
+            {
                 deviceId = channel.GetAttribute(DeviceIdAttrKey).Get();
             }
-            return await new ValueTask<string>(deviceId);
-        }
 
-        /// <summary>
-        /// Adds the channel.
-        /// </summary>
-        /// <param name="topic">The topic.</param>
-        /// <param name="mqttChannel">The MQTT channel.</param>
-        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-        public bool AddChannel(string topic, MqttChannel mqttChannel)
-        {
-            var result = false;
-            if (!string.IsNullOrEmpty(topic) && mqttChannel != null)
-            {
-                _topics.TryGetValue(topic, out IEnumerable<MqttChannel> mqttChannels);
-                var channels = mqttChannels==null ? new List<MqttChannel>(): mqttChannels.ToList();
-                channels.Add(mqttChannel);
-                _topics.AddOrUpdate(topic, channels, (key, value) => channels);
-                result = true; 
-            }
-            return result;
+            return await new ValueTask<string>(deviceId);
         }
 
         /// <summary>
@@ -191,38 +122,10 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services
             MqttChannel channel = null;
             if (!string.IsNullOrEmpty(deviceId))
             {
-                _mqttChannels.TryGetValue(deviceId, out channel);
+                MqttChannels.TryGetValue(deviceId, out channel);
             }
+
             return channel;
-        }
-
-        /// <summary>
-        /// Registers the MQTT broker.
-        /// </summary>
-        /// <param name="topic">The topic.</param>
-        protected async Task RegisterMqttBroker(string topic)
-        {
-            var addresses = await _mqttBrokerEntryManger.GetMqttBrokerAddress(topic);
-            var host = NetUtils.GetHostAddress();
-            if (addresses==null || !addresses.Any(p => p.ToString() == host.ToString()))
-                await _mqttBrokerEntryManger.Register(topic, host);
-        }
-
-        /// <summary>
-        /// Brokers the cancellation reg.
-        /// </summary>
-        /// <param name="topic">The topic.</param>
-        protected async Task  BrokerCancellationReg(string topic)
-        {
-            if (Topics.ContainsKey(topic))
-            {
-                if (Topics[topic].Count() == 0)
-                    await _mqttBrokerEntryManger.CancellationReg(topic, NetUtils.GetHostAddress());
-            }
-            else
-            {
-                await _mqttBrokerEntryManger.CancellationReg(topic, NetUtils.GetHostAddress());
-            }
         }
 
         /// <summary>
@@ -238,13 +141,12 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services
                 InvokeMessage = new RemoteInvokeMessage
                 {
                     ServiceId = _publishServiceId,
-                    Parameters = new Dictionary<string, object>()
+                    Parameters = new Dictionary<string, object>
                     {
-                           {"deviceId",deviceId},
-                           { "message",willMessage}
-                       }
-                },
-
+                        {"deviceId", deviceId},
+                        {"message", willMessage}
+                    }
+                }
             }, AppConfig.ServerOptions.ExecutionTimeoutInMilliseconds);
         }
 
@@ -294,6 +196,7 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services
         /// <param name="willMeaasge">The will meaasge.</param>
         /// <returns>Task.</returns>
         public abstract Task SendWillMsg(MqttWillMessage willMeaasge);
+
         /// <summary>
         /// 订阅
         /// </summary>
@@ -325,13 +228,85 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services
         /// <returns>ValueTask&lt;System.Boolean&gt;.</returns>
         public async ValueTask<bool> GetDeviceIsOnine(string deviceId)
         {
-            bool result = false;
+            var result = false;
             if (!string.IsNullOrEmpty(deviceId))
             {
-                MqttChannels.TryGetValue(deviceId, out MqttChannel mqttChannel);
-                result = mqttChannel==null?false: await mqttChannel.IsOnine();
+                MqttChannels.TryGetValue(deviceId, out var mqttChannel);
+                result = mqttChannel == null ? false : await mqttChannel.IsOnine();
             }
+
             return result;
+        }
+
+        /// <summary>
+        /// Removes the channel.
+        /// </summary>
+        /// <param name="topic">The topic.</param>
+        /// <param name="mqttChannel">The MQTT channel.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        public bool RemoveChannel(string topic, MqttChannel mqttChannel)
+        {
+            var result = false;
+            if (!string.IsNullOrEmpty(topic) && mqttChannel != null)
+            {
+                Topics.TryGetValue(topic, out var mqttChannels);
+                var channels = mqttChannels == null ? new List<MqttChannel>() : mqttChannels.ToList();
+                channels.Remove(mqttChannel);
+                Topics.AddOrUpdate(topic, channels, (key, value) => channels);
+                result = true;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Adds the channel.
+        /// </summary>
+        /// <param name="topic">The topic.</param>
+        /// <param name="mqttChannel">The MQTT channel.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        public bool AddChannel(string topic, MqttChannel mqttChannel)
+        {
+            var result = false;
+            if (!string.IsNullOrEmpty(topic) && mqttChannel != null)
+            {
+                Topics.TryGetValue(topic, out var mqttChannels);
+                var channels = mqttChannels == null ? new List<MqttChannel>() : mqttChannels.ToList();
+                channels.Add(mqttChannel);
+                Topics.AddOrUpdate(topic, channels, (key, value) => channels);
+                result = true;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Registers the MQTT broker.
+        /// </summary>
+        /// <param name="topic">The topic.</param>
+        protected async Task RegisterMqttBroker(string topic)
+        {
+            var addresses = await _mqttBrokerEntryManger.GetMqttBrokerAddress(topic);
+            var host = NetUtils.GetHostAddress();
+            if (addresses == null || !addresses.Any(p => p.ToString() == host.ToString()))
+                await _mqttBrokerEntryManger.Register(topic, host);
+        }
+
+        /// <summary>
+        /// Brokers the cancellation reg.
+        /// </summary>
+        /// <param name="topic">The topic.</param>
+        protected async Task BrokerCancellationReg(string topic)
+        {
+            if (Topics.ContainsKey(topic))
+            {
+                if (Topics[topic].Count() == 0)
+                    await _mqttBrokerEntryManger.CancellationReg(topic, NetUtils.GetHostAddress());
+            }
+            else
+            {
+                await _mqttBrokerEntryManger.CancellationReg(topic, NetUtils.GetHostAddress());
+            }
         }
     }
 }

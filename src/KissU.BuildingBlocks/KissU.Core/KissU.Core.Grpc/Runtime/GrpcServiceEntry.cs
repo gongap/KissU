@@ -8,7 +8,6 @@ namespace KissU.Core.Grpc.Runtime
     /// </summary>
     public class GrpcServiceEntry
     {
-
         /// <summary>
         /// Gets or sets the type.
         /// </summary>

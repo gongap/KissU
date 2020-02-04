@@ -5,7 +5,6 @@
     /// </summary>
     public class ZookeeperOption
     {
-
         /// <summary>
         /// Gets or sets the session timeout.
         /// </summary>

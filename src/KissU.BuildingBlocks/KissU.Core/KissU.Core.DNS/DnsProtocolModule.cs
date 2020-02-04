@@ -40,13 +40,13 @@ namespace KissU.Core.DNS
             builder.Register(provider =>
             {
                 return new DefaultDnsServiceEntryProvider(
-                       provider.Resolve<IServiceEntryProvider>(),
+                    provider.Resolve<IServiceEntryProvider>(),
                     provider.Resolve<ILogger<DefaultDnsServiceEntryProvider>>(),
-                      provider.Resolve<CPlatformContainer>()
-                      );
+                    provider.Resolve<CPlatformContainer>()
+                );
             }).As(typeof(IDnsServiceEntryProvider)).SingleInstance();
             builder.RegisterType(typeof(DnsServiceExecutor)).As(typeof(IServiceExecutor))
-            .Named<IServiceExecutor>(CommunicationProtocol.Dns.ToString()).SingleInstance();
+                .Named<IServiceExecutor>(CommunicationProtocol.Dns.ToString()).SingleInstance();
             if (CPlatform.AppConfig.ServerOptions.Protocol == CommunicationProtocol.Dns)
             {
                 RegisterDefaultProtocol(builder);
@@ -61,9 +61,10 @@ namespace KissU.Core.DNS
         {
             builder.Register(provider =>
             {
-                return new DotNettyDnsServerMessageListener(provider.Resolve<ILogger<DotNettyDnsServerMessageListener>>(),
-                      provider.Resolve<ITransportMessageCodecFactory>()
-                      );
+                return new DotNettyDnsServerMessageListener(
+                    provider.Resolve<ILogger<DotNettyDnsServerMessageListener>>(),
+                    provider.Resolve<ITransportMessageCodecFactory>()
+                );
             }).SingleInstance();
             builder.Register(provider =>
             {
@@ -74,18 +75,17 @@ namespace KissU.Core.DNS
                     await messageListener.StartAsync(endPoint);
                     return messageListener;
                 }, serviceExecutor);
-
             }).As<IServiceHost>();
         }
 
         private static void RegisterDnsProtocol(ContainerBuilderWrapper builder)
         {
-
             builder.Register(provider =>
             {
-                return new DotNettyDnsServerMessageListener(provider.Resolve<ILogger<DotNettyDnsServerMessageListener>>(),
-                      provider.Resolve<ITransportMessageCodecFactory>()
-                      );
+                return new DotNettyDnsServerMessageListener(
+                    provider.Resolve<ILogger<DotNettyDnsServerMessageListener>>(),
+                    provider.Resolve<ITransportMessageCodecFactory>()
+                );
             }).SingleInstance();
             builder.Register(provider =>
             {
@@ -96,7 +96,6 @@ namespace KissU.Core.DNS
                     await messageListener.StartAsync(endPoint);
                     return messageListener;
                 }, serviceExecutor);
-
             }).As<IServiceHost>();
         }
     }

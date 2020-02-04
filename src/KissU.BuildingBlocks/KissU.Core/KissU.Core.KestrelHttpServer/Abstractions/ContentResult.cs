@@ -3,7 +3,7 @@
     /// <summary>
     /// ContentResult.
     /// </summary>
-    class ContentResult
+    internal class ContentResult
     {
     }
 }

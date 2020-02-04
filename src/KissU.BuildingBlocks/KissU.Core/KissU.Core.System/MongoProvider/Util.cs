@@ -11,12 +11,12 @@ namespace KissU.Core.System.MongoProvider
     internal static class Util
     {
         private static IConfigurationRoot _config;
+
         private static IMongoDatabase GetDatabase(string connectString)
         {
             var mongoUrl = new MongoUrl(connectString);
             var client = new MongoClient(connectString);
             return client.GetDatabase(mongoUrl.DatabaseName);
-
         }
 
         /// <summary>
@@ -56,16 +56,17 @@ namespace KissU.Core.System.MongoProvider
             {
                 throw new ArgumentException("这个实体的集合名称不能为空");
             }
+
             return collectionName;
         }
 
         private static string GetCollectioNameFromInterface<T>()
         {
             string collectionname;
-            Attribute att = Attribute.GetCustomAttribute(typeof(T), typeof(CollectionNameAttribute));
+            var att = Attribute.GetCustomAttribute(typeof(T), typeof(CollectionNameAttribute));
             if (att != null)
             {
-                collectionname = ((CollectionNameAttribute)att).Name;
+                collectionname = ((CollectionNameAttribute) att).Name;
             }
             else
             {
@@ -78,10 +79,10 @@ namespace KissU.Core.System.MongoProvider
         private static string GetCollectionNameFromType(Type entitytype)
         {
             string collectionname;
-            Attribute att = Attribute.GetCustomAttribute(entitytype, typeof(CollectionNameAttribute));
+            var att = Attribute.GetCustomAttribute(entitytype, typeof(CollectionNameAttribute));
             if (att != null)
             {
-                collectionname = ((CollectionNameAttribute)att).Name;
+                collectionname = ((CollectionNameAttribute) att).Name;
             }
             else
             {
@@ -89,10 +90,11 @@ namespace KissU.Core.System.MongoProvider
                 {
                     entitytype = entitytype.BaseType;
                 }
+
                 collectionname = entitytype.Name;
             }
+
             return collectionname;
         }
     }
 }
-

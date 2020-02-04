@@ -71,7 +71,7 @@ namespace KissU.Core.CPlatform.Support.Implementation
                 new ServiceInvokeListenInfo
                 {
                     FirstInvokeTime = DateTime.Now,
-                    FinalRemoteInvokeTime = DateTime.Now,
+                    FinalRemoteInvokeTime = DateTime.Now
                 });
             var vt = _commandProvider.GetCommand(serviceId);
             var command = vt.IsCompletedSuccessfully ? vt.Result : await vt;
@@ -91,7 +91,7 @@ namespace KissU.Core.CPlatform.Support.Implementation
             bool reachErrorThresholdPercentage()
             {
                 return serviceInvokeInfos.FaultRemoteServiceRequests /
-                       (double)(serviceInvokeInfos.RemoteServiceRequests ?? 1) * 100 >
+                       (double) (serviceInvokeInfos.RemoteServiceRequests ?? 1) * 100 >
                        command.BreakeErrorThresholdPercentage;
             }
 
@@ -148,7 +148,7 @@ namespace KissU.Core.CPlatform.Support.Implementation
                 ServiceId = serviceId,
                 ServiceKey = serviceKey,
                 DecodeJObject = decodeJOject,
-                Attachments = RpcContext.GetContext().GetContextParameters(),
+                Attachments = RpcContext.GetContext().GetContextParameters()
             };
             try
             {
@@ -163,7 +163,7 @@ namespace KissU.Core.CPlatform.Support.Implementation
                     new RemoteInvokeContext
                     {
                         Item = item,
-                        InvokeMessage = invokeMessage,
+                        InvokeMessage = invokeMessage
                     }, requestTimeout);
                 _serviceInvokeListenInfo.AddOrUpdate(serviceId, new ServiceInvokeListenInfo(), (k, v) =>
                 {
@@ -202,7 +202,7 @@ namespace KissU.Core.CPlatform.Support.Implementation
                     new RpcActionExecutedContext
                     {
                         Exception = ex,
-                        InvokeMessage = invokeMessage,
+                        InvokeMessage = invokeMessage
                     }, token);
             }
         }

@@ -103,9 +103,9 @@ namespace KissU.Core.CPlatform
                             {
                                 Ip = Dns.GetHostEntry(Dns.GetHostName()).AddressList
                                     .FirstOrDefault(a => a.AddressFamily.ToString().Equals("InterNetwork"))?.ToString()
-                            },
+                            }
                         },
-                        ServiceDescriptor = i.Descriptor,
+                        ServiceDescriptor = i.Descriptor
                     };
                 }).ToList();
                 mapper.Resolve<IServiceSubscribeManager>().SetSubscribersAsync(addressDescriptors);

@@ -1,26 +1,21 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
+﻿using System;
+using System.Collections.Concurrent;
+using System.Diagnostics;
+using System.Reflection;
+using System.Threading.Tasks;
 using KissU.Core.CPlatform;
 using KissU.Core.CPlatform.Convertibles;
+using KissU.Core.CPlatform.Diagnostics;
+using KissU.Core.CPlatform.Exceptions;
 using KissU.Core.CPlatform.Filters;
 using KissU.Core.CPlatform.Messages;
 using KissU.Core.CPlatform.Routing;
 using KissU.Core.CPlatform.Runtime.Server;
 using KissU.Core.CPlatform.Transport;
-using KissU.Core.CPlatform.Utilities;
-using KissU.Core.ProxyGenerator;
-using System;
-using System.Linq;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using static KissU.Core.CPlatform.Utilities.FastInvoke;
-using System.Diagnostics;
-using KissU.Core.CPlatform.Diagnostics;
-using KissU.Core.CPlatform.Exceptions;
 using KissU.Core.CPlatform.Transport.Implementation;
+using KissU.Core.ProxyGenerator;
+using Microsoft.Extensions.Logging;
+using static KissU.Core.CPlatform.Utilities.FastInvoke;
 
 namespace KissU.Core.KestrelHttpServer
 {
@@ -31,22 +26,10 @@ namespace KissU.Core.KestrelHttpServer
     /// <seealso cref="KissU.Core.CPlatform.Runtime.Server.IServiceExecutor" />
     public class HttpExecutor : IServiceExecutor
     {
-        #region Field
-        private readonly IServiceEntryLocate _serviceEntryLocate;
-        private readonly ILogger<HttpExecutor> _logger;
-        private readonly IServiceRouteProvider _serviceRouteProvider;
-        private readonly IAuthorizationFilter _authorizationFilter;
-        private readonly CPlatformContainer _serviceProvider;
-        private readonly ITypeConvertibleService _typeConvertibleService;
-        private readonly IServiceProxyProvider _serviceProxyProvider;
-        private readonly ConcurrentDictionary<string, ValueTuple<FastInvokeHandler, object, MethodInfo>> _concurrent =
-        new ConcurrentDictionary<string, ValueTuple<FastInvokeHandler, object, MethodInfo>>();
-        #endregion Field
-
         #region Constructor
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="HttpExecutor"/> class.
+        /// Initializes a new instance of the <see cref="HttpExecutor" /> class.
         /// </summary>
         /// <param name="serviceEntryLocate">The service entry locate.</param>
         /// <param name="serviceRouteProvider">The service route provider.</param>
@@ -57,7 +40,8 @@ namespace KissU.Core.KestrelHttpServer
         /// <param name="typeConvertibleService">The type convertible service.</param>
         public HttpExecutor(IServiceEntryLocate serviceEntryLocate, IServiceRouteProvider serviceRouteProvider,
             IAuthorizationFilter authorizationFilter,
-            ILogger<HttpExecutor> logger, CPlatformContainer serviceProvider, IServiceProxyProvider serviceProxyProvider, ITypeConvertibleService typeConvertibleService)
+            ILogger<HttpExecutor> logger, CPlatformContainer serviceProvider,
+            IServiceProxyProvider serviceProxyProvider, ITypeConvertibleService typeConvertibleService)
         {
             _serviceEntryLocate = serviceEntryLocate;
             _logger = logger;
@@ -67,6 +51,7 @@ namespace KissU.Core.KestrelHttpServer
             _authorizationFilter = authorizationFilter;
             _serviceProxyProvider = serviceProxyProvider;
         }
+
         #endregion Constructor
 
         #region Implementation of IExecutor
@@ -93,15 +78,17 @@ namespace KissU.Core.KestrelHttpServer
                 _logger.LogError(exception, "将接收到的消息反序列化成 TransportMessage<httpMessage> 时发送了错误。");
                 return;
             }
+
             if (httpMessage.Attachments != null)
             {
                 foreach (var attachment in httpMessage.Attachments)
                     RpcContext.GetContext().SetAttachment(attachment.Key, attachment.Value);
             }
+
             WirteDiagnosticBefore(message);
             var entry = _serviceEntryLocate.Locate(httpMessage);
 
-            HttpResultMessage<object> httpResultMessage = new HttpResultMessage<object>() { };
+            var httpResultMessage = new HttpResultMessage<object>();
 
             if (entry != null && _serviceProvider.IsRegisteredWithKey(httpMessage.ServiceKey, entry.Type))
             {
@@ -112,35 +99,55 @@ namespace KissU.Core.KestrelHttpServer
             {
                 httpResultMessage = await RemoteExecuteAsync(httpMessage);
             }
+
             await SendRemoteInvokeResult(sender, message.Id, httpResultMessage);
         }
 
-
         #endregion Implementation of IServiceExecutor
+
+        #region Field
+
+        private readonly IServiceEntryLocate _serviceEntryLocate;
+        private readonly ILogger<HttpExecutor> _logger;
+        private readonly IServiceRouteProvider _serviceRouteProvider;
+        private readonly IAuthorizationFilter _authorizationFilter;
+        private readonly CPlatformContainer _serviceProvider;
+        private readonly ITypeConvertibleService _typeConvertibleService;
+        private readonly IServiceProxyProvider _serviceProxyProvider;
+
+        private readonly ConcurrentDictionary<string, ValueTuple<FastInvokeHandler, object, MethodInfo>> _concurrent =
+            new ConcurrentDictionary<string, ValueTuple<FastInvokeHandler, object, MethodInfo>>();
+
+        #endregion Field
 
         #region Private Method
 
         private async Task<HttpResultMessage<object>> RemoteExecuteAsync(HttpRequestMessage httpMessage)
         {
-            HttpResultMessage<object> resultMessage = new HttpResultMessage<object>();
+            var resultMessage = new HttpResultMessage<object>();
             try
             {
-                resultMessage.Data = await _serviceProxyProvider.Invoke<object>(httpMessage.Parameters, httpMessage.RoutePath, httpMessage.ServiceKey);
+                resultMessage.Data = await _serviceProxyProvider.Invoke<object>(httpMessage.Parameters,
+                    httpMessage.RoutePath, httpMessage.ServiceKey);
                 resultMessage.IsSucceed = resultMessage.Data != default;
-                resultMessage.StatusCode = resultMessage.IsSucceed ? (int)StatusCode.Success : (int)StatusCode.RequestError;
+                resultMessage.StatusCode =
+                    resultMessage.IsSucceed ? (int) StatusCode.Success : (int) StatusCode.RequestError;
             }
             catch (Exception ex)
             {
                 if (_logger.IsEnabled(LogLevel.Error))
                     _logger.LogError(ex, "执行远程调用逻辑时候发生了错误。");
-                resultMessage = new HttpResultMessage<object> { Data = null, Message = "执行发生了错误。", StatusCode = (int)StatusCode.RequestError };
+                resultMessage = new HttpResultMessage<object>
+                    {Data = null, Message = "执行发生了错误。", StatusCode = (int) StatusCode.RequestError};
             }
+
             return resultMessage;
         }
 
-        private async Task<HttpResultMessage<object>> LocalExecuteAsync(ServiceEntry entry, HttpRequestMessage httpMessage)
+        private async Task<HttpResultMessage<object>> LocalExecuteAsync(ServiceEntry entry,
+            HttpRequestMessage httpMessage)
         {
-            HttpResultMessage<object> resultMessage = new HttpResultMessage<object>();
+            var resultMessage = new HttpResultMessage<object>();
             try
             {
                 var result = await entry.Func(httpMessage.ServiceKey, httpMessage.Parameters);
@@ -160,7 +167,7 @@ namespace KissU.Core.KestrelHttpServer
 
                 resultMessage.IsSucceed = resultMessage.Data != null;
                 resultMessage.StatusCode =
-                    resultMessage.IsSucceed ? (int)StatusCode.Success : (int)StatusCode.RequestError;
+                    resultMessage.IsSucceed ? (int) StatusCode.Success : (int) StatusCode.RequestError;
             }
             catch (ValidateException validateException)
             {
@@ -177,10 +184,12 @@ namespace KissU.Core.KestrelHttpServer
                 resultMessage.Message = "执行发生了错误。";
                 resultMessage.StatusCode = exception.HResult;
             }
+
             return resultMessage;
         }
 
-        private async Task SendRemoteInvokeResult(IMessageSender sender, string messageId, HttpResultMessage resultMessage)
+        private async Task SendRemoteInvokeResult(IMessageSender sender, string messageId,
+            HttpResultMessage resultMessage)
         {
             try
             {
@@ -208,6 +217,7 @@ namespace KissU.Core.KestrelHttpServer
             {
                 message += "|InnerException:" + GetExceptionMessage(exception.InnerException);
             }
+
             return message;
         }
 
@@ -219,25 +229,23 @@ namespace KissU.Core.KestrelHttpServer
                 var diagnosticListener = new DiagnosticListener(DiagnosticListenerExtensions.DiagnosticListenerName);
                 var remoteInvokeMessage = message.GetContent<HttpRequestMessage>();
                 diagnosticListener.WriteTransportBefore(TransportType.Rest, new TransportEventData(new DiagnosticMessage
-                {
-                    Content = message.Content,
-                    ContentType = message.ContentType,
-                    Id = message.Id,
-                    MessageName = remoteInvokeMessage.RoutePath
-                }, TransportType.Rest.ToString(),
-               message.Id,
-                RpcContext.GetContext().GetAttachment("RemoteIpAddress")?.ToString()));
+                    {
+                        Content = message.Content,
+                        ContentType = message.ContentType,
+                        Id = message.Id,
+                        MessageName = remoteInvokeMessage.RoutePath
+                    }, TransportType.Rest.ToString(),
+                    message.Id,
+                    RpcContext.GetContext().GetAttachment("RemoteIpAddress")?.ToString()));
             }
             else
             {
                 var parameters = RpcContext.GetContext().GetContextParameters();
-                parameters.TryRemove("RemoteIpAddress", out object value);
+                parameters.TryRemove("RemoteIpAddress", out var value);
                 RpcContext.GetContext().SetContextParameters(parameters);
             }
-
         }
 
         #endregion Private Method
-
     }
 }

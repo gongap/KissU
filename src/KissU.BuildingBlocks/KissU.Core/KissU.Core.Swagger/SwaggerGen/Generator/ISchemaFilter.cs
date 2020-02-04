@@ -23,7 +23,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
     public class SchemaFilterContext
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SchemaFilterContext"/> class.
+        /// Initializes a new instance of the <see cref="SchemaFilterContext" /> class.
         /// </summary>
         /// <param name="systemType">Type of the system.</param>
         /// <param name="jsonContract">The json contract.</param>
@@ -41,16 +41,16 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
         /// <summary>
         /// Gets the type of the system.
         /// </summary>
-        public Type SystemType { get; private set; }
+        public Type SystemType { get; }
 
         /// <summary>
         /// Gets the json contract.
         /// </summary>
-        public JsonContract JsonContract { get; private set; }
+        public JsonContract JsonContract { get; }
 
         /// <summary>
         /// Gets the schema registry.
         /// </summary>
-        public ISchemaRegistry SchemaRegistry { get; private set; }
+        public ISchemaRegistry SchemaRegistry { get; }
     }
 }

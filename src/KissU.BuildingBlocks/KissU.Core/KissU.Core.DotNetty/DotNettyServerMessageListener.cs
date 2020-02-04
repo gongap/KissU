@@ -25,23 +25,15 @@ namespace KissU.Core.DotNetty
     /// <seealso cref="System.IDisposable" />
     public class DotNettyServerMessageListener : IMessageListener, IDisposable
     {
-        #region Field
-
-        private readonly ILogger<DotNettyServerMessageListener> _logger;
-        private readonly ITransportMessageDecoder _transportMessageDecoder;
-        private readonly ITransportMessageEncoder _transportMessageEncoder;
-        private IChannel _channel;
-
-        #endregion Field
-
         #region Constructor
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DotNettyServerMessageListener"/> class.
+        /// Initializes a new instance of the <see cref="DotNettyServerMessageListener" /> class.
         /// </summary>
         /// <param name="logger">The logger.</param>
         /// <param name="codecFactory">The codec factory.</param>
-        public DotNettyServerMessageListener(ILogger<DotNettyServerMessageListener> logger, ITransportMessageCodecFactory codecFactory)
+        public DotNettyServerMessageListener(ILogger<DotNettyServerMessageListener> logger,
+            ITransportMessageCodecFactory codecFactory)
         {
             _logger = logger;
             _transportMessageEncoder = codecFactory.GetEncoder();
@@ -50,27 +42,17 @@ namespace KissU.Core.DotNetty
 
         #endregion Constructor
 
-        #region Implementation of IMessageListener
+        #region Implementation of IDisposable
 
         /// <summary>
-        /// 接收到消息的事件。
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         /// </summary>
-        public event ReceivedDelegate Received;
-
-        /// <summary>
-        /// 触发接收到消息事件。
-        /// </summary>
-        /// <param name="sender">消息发送者。</param>
-        /// <param name="message">接收到的消息。</param>
-        /// <returns>一个任务。</returns>
-        public async Task OnReceived(IMessageSender sender, TransportMessage message)
+        public void Dispose()
         {
-            if (Received == null)
-                return;
-            await Received(sender, message);
+            Task.Run(async () => { await _channel.DisconnectAsync(); }).Wait();
         }
 
-        #endregion Implementation of IMessageListener
+        #endregion Implementation of IDisposable
 
         /// <summary>
         /// start as an asynchronous operation.
@@ -82,9 +64,11 @@ namespace KissU.Core.DotNetty
                 _logger.LogDebug($"准备启动服务主机，监听地址：{endPoint}。");
 
             IEventLoopGroup bossGroup = new MultithreadEventLoopGroup(1);
-            IEventLoopGroup workerGroup = new MultithreadEventLoopGroup();//Default eventLoopCount is Environment.ProcessorCount * 2
+            IEventLoopGroup
+                workerGroup =
+                    new MultithreadEventLoopGroup(); //Default eventLoopCount is Environment.ProcessorCount * 2
             var bootstrap = new ServerBootstrap();
-           
+
             if (AppConfig.ServerOptions.Libuv)
             {
                 var dispatcher = new DispatcherEventLoopGroup();
@@ -97,23 +81,24 @@ namespace KissU.Core.DotNetty
                 bossGroup = new MultithreadEventLoopGroup(1);
                 workerGroup = new MultithreadEventLoopGroup();
                 bootstrap.Channel<TcpServerSocketChannel>();
-            } 
+            }
+
             bootstrap
-            .Option(ChannelOption.SoBacklog, AppConfig.ServerOptions.SoBacklog)
-            .ChildOption(ChannelOption.Allocator, PooledByteBufferAllocator.Default)
-            .Group(bossGroup, workerGroup)
-            .ChildHandler(new ActionChannelInitializer<IChannel>(channel =>
-            {
-                var pipeline = channel.Pipeline;
-                pipeline.AddLast(new LengthFieldPrepender(4));
-                pipeline.AddLast(new LengthFieldBasedFrameDecoder(int.MaxValue, 0, 4, 0, 4));
-                pipeline.AddLast(new TransportMessageChannelHandlerAdapter(_transportMessageDecoder));
-                pipeline.AddLast(new ServerHandler(async (contenxt, message) =>
+                .Option(ChannelOption.SoBacklog, AppConfig.ServerOptions.SoBacklog)
+                .ChildOption(ChannelOption.Allocator, PooledByteBufferAllocator.Default)
+                .Group(bossGroup, workerGroup)
+                .ChildHandler(new ActionChannelInitializer<IChannel>(channel =>
                 {
-                    var sender = new DotNettyServerMessageSender(_transportMessageEncoder, contenxt);
-                    await OnReceived(sender, message);
-                }, _logger));
-            }));
+                    var pipeline = channel.Pipeline;
+                    pipeline.AddLast(new LengthFieldPrepender(4));
+                    pipeline.AddLast(new LengthFieldBasedFrameDecoder(int.MaxValue, 0, 4, 0, 4));
+                    pipeline.AddLast(new TransportMessageChannelHandlerAdapter(_transportMessageDecoder));
+                    pipeline.AddLast(new ServerHandler(async (contenxt, message) =>
+                    {
+                        var sender = new DotNettyServerMessageSender(_transportMessageEncoder, contenxt);
+                        await OnReceived(sender, message);
+                    }, _logger));
+                }));
             try
             {
                 _channel = await bootstrap.BindAsync(endPoint);
@@ -138,21 +123,6 @@ namespace KissU.Core.DotNetty
             }).Wait();
         }
 
-        #region Implementation of IDisposable
-
-        /// <summary>
-        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-        /// </summary>
-        public void Dispose()
-        {
-            Task.Run(async () =>
-            {
-                await _channel.DisconnectAsync();
-            }).Wait();
-        }
-
-        #endregion Implementation of IDisposable
-
         #region Help Class
 
         /// <summary>
@@ -162,11 +132,11 @@ namespace KissU.Core.DotNetty
         /// <seealso cref="DotNetty.Transport.Channels.ChannelHandlerAdapter" />
         private class ServerHandler : ChannelHandlerAdapter
         {
-            private readonly Action<IChannelHandlerContext, TransportMessage> _readAction;
             private readonly ILogger _logger;
+            private readonly Action<IChannelHandlerContext, TransportMessage> _readAction;
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="ServerHandler"/> class.
+            /// Initializes a new instance of the <see cref="ServerHandler" /> class.
             /// </summary>
             /// <param name="readAction">The read action.</param>
             /// <param name="logger">The logger.</param>
@@ -187,7 +157,7 @@ namespace KissU.Core.DotNetty
             {
                 Task.Run(() =>
                 {
-                    var transportMessage = (TransportMessage)message;
+                    var transportMessage = (TransportMessage) message;
                     _readAction(context, transportMessage);
                 });
             }
@@ -208,14 +178,45 @@ namespace KissU.Core.DotNetty
             /// <param name="exception">The exception.</param>
             public override void ExceptionCaught(IChannelHandlerContext context, Exception exception)
             {
-                context.CloseAsync();//客户端主动断开需要应答，否则socket变成CLOSE_WAIT状态导致socket资源耗尽
+                context.CloseAsync(); //客户端主动断开需要应答，否则socket变成CLOSE_WAIT状态导致socket资源耗尽
                 if (_logger.IsEnabled(LogLevel.Error))
-                    _logger.LogError(exception,$"与服务器：{context.Channel.RemoteAddress}通信时发送了错误。");
+                    _logger.LogError(exception, $"与服务器：{context.Channel.RemoteAddress}通信时发送了错误。");
             }
 
             #endregion Overrides of ChannelHandlerAdapter
         }
 
         #endregion Help Class
+
+        #region Field
+
+        private readonly ILogger<DotNettyServerMessageListener> _logger;
+        private readonly ITransportMessageDecoder _transportMessageDecoder;
+        private readonly ITransportMessageEncoder _transportMessageEncoder;
+        private IChannel _channel;
+
+        #endregion Field
+
+        #region Implementation of IMessageListener
+
+        /// <summary>
+        /// 接收到消息的事件。
+        /// </summary>
+        public event ReceivedDelegate Received;
+
+        /// <summary>
+        /// 触发接收到消息事件。
+        /// </summary>
+        /// <param name="sender">消息发送者。</param>
+        /// <param name="message">接收到的消息。</param>
+        /// <returns>一个任务。</returns>
+        public async Task OnReceived(IMessageSender sender, TransportMessage message)
+        {
+            if (Received == null)
+                return;
+            await Received(sender, message);
+        }
+
+        #endregion Implementation of IMessageListener
     }
 }

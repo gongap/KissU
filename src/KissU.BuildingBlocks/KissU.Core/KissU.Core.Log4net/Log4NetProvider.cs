@@ -13,8 +13,10 @@ namespace KissU.Core.Log4net
     public class Log4NetProvider : ILoggerProvider
     {
         private readonly string _log4NetConfigFile;
+
         private readonly ConcurrentDictionary<string, Log4NetLogger> _loggers =
             new ConcurrentDictionary<string, Log4NetLogger>();
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Log4NetProvider" /> class.
         /// </summary>
@@ -41,6 +43,7 @@ namespace KissU.Core.Log4net
         {
             _loggers.Clear();
         }
+
         private Log4NetLogger CreateLoggerImplementation(string name)
         {
             return new Log4NetLogger(name, Parselog4NetConfigFile(_log4NetConfigFile));
@@ -48,8 +51,8 @@ namespace KissU.Core.Log4net
 
         private static XmlElement Parselog4NetConfigFile(string filename)
         {
-            XmlDocument log4netConfig = new XmlDocument();
-            var stream= File.OpenRead(filename);
+            var log4netConfig = new XmlDocument();
+            var stream = File.OpenRead(filename);
             log4netConfig.Load(stream);
             stream.Close();
             return log4netConfig["log4net"];

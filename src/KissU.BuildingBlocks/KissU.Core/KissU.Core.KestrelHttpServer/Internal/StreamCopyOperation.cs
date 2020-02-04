@@ -15,19 +15,19 @@ namespace KissU.Core.KestrelHttpServer.Internal
     internal class StreamCopyOperation
     {
         private const int DefaultBufferSize = 1024 * 16;
+        private readonly byte[] _buffer;
+        private readonly Stream _destination;
+        private readonly AsyncCallback _readCallback;
+        private readonly Stream _source;
 
         private readonly TaskCompletionSource<object> _tcs;
-        private readonly Stream _source;
-        private readonly Stream _destination;
-        private readonly byte[] _buffer;
-        private readonly AsyncCallback _readCallback;
         private readonly AsyncCallback _writeCallback;
 
         private long? _bytesRemaining;
-        private CancellationToken _cancel;
+        private readonly CancellationToken _cancel;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="StreamCopyOperation"/> class.
+        /// Initializes a new instance of the <see cref="StreamCopyOperation" /> class.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="destination">The destination.</param>
@@ -39,27 +39,29 @@ namespace KissU.Core.KestrelHttpServer.Internal
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="StreamCopyOperation"/> class.
+        /// Initializes a new instance of the <see cref="StreamCopyOperation" /> class.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="destination">The destination.</param>
         /// <param name="bytesRemaining">The bytes remaining.</param>
         /// <param name="bufferSize">Size of the buffer.</param>
         /// <param name="cancel">The cancel.</param>
-        internal StreamCopyOperation(Stream source, Stream destination, long? bytesRemaining, int bufferSize, CancellationToken cancel)
+        internal StreamCopyOperation(Stream source, Stream destination, long? bytesRemaining, int bufferSize,
+            CancellationToken cancel)
             : this(source, destination, bytesRemaining, new byte[bufferSize], cancel)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="StreamCopyOperation"/> class.
+        /// Initializes a new instance of the <see cref="StreamCopyOperation" /> class.
         /// </summary>
         /// <param name="source">The source.</param>
         /// <param name="destination">The destination.</param>
         /// <param name="bytesRemaining">The bytes remaining.</param>
         /// <param name="buffer">The buffer.</param>
         /// <param name="cancel">The cancel.</param>
-        internal StreamCopyOperation(Stream source, Stream destination, long? bytesRemaining, byte[] buffer, CancellationToken cancel)
+        internal StreamCopyOperation(Stream source, Stream destination, long? bytesRemaining, byte[] buffer,
+            CancellationToken cancel)
         {
             Contract.Assert(source != null);
             Contract.Assert(destination != null);
@@ -73,8 +75,8 @@ namespace KissU.Core.KestrelHttpServer.Internal
             _buffer = buffer;
 
             _tcs = new TaskCompletionSource<object>();
-            _readCallback = new AsyncCallback(ReadCallback);
-            _writeCallback = new AsyncCallback(WriteCallback);
+            _readCallback = ReadCallback;
+            _writeCallback = WriteCallback;
         }
 
         /// <summary>
@@ -85,9 +87,10 @@ namespace KissU.Core.KestrelHttpServer.Internal
         /// <param name="count">The count.</param>
         /// <param name="bufferSize">Size of the buffer.</param>
         /// <param name="cancel">The cancel.</param>
-        public static async Task CopyToAsync(Stream source, Stream destination, long? count, int bufferSize, CancellationToken cancel)
+        public static async Task CopyToAsync(Stream source, Stream destination, long? count, int bufferSize,
+            CancellationToken cancel)
         {
-            long? bytesRemaining = count;
+            var bytesRemaining = count;
 
             var buffer = ArrayPool<byte>.Shared.Rent(bufferSize);
             try
@@ -106,18 +109,19 @@ namespace KissU.Core.KestrelHttpServer.Internal
 
                     cancel.ThrowIfCancellationRequested();
 
-                    int readLength = buffer.Length;
+                    var readLength = buffer.Length;
                     if (bytesRemaining.HasValue)
                     {
-                        readLength = (int)Math.Min(bytesRemaining.Value, (long)readLength);
+                        readLength = (int) Math.Min(bytesRemaining.Value, readLength);
                     }
-                    int read = await source.ReadAsync(buffer, 0, readLength, cancel);
+
+                    var read = await source.ReadAsync(buffer, 0, readLength, cancel);
 
                     if (bytesRemaining.HasValue)
                     {
                         bytesRemaining -= read;
                     }
-                    
+
                     if (read <= 0)
                     {
                         return;
@@ -156,6 +160,7 @@ namespace KissU.Core.KestrelHttpServer.Internal
                 _tcs.TrySetCanceled();
                 return true;
             }
+
             return false;
         }
 
@@ -181,16 +186,17 @@ namespace KissU.Core.KestrelHttpServer.Internal
 
             try
             {
-                int readLength = _buffer.Length;
+                var readLength = _buffer.Length;
                 if (_bytesRemaining.HasValue)
                 {
-                    readLength = (int)Math.Min(_bytesRemaining.Value, (long)readLength);
+                    readLength = (int) Math.Min(_bytesRemaining.Value, readLength);
                 }
-                IAsyncResult async = _source.BeginRead(_buffer, 0, readLength, _readCallback, null);
+
+                var async = _source.BeginRead(_buffer, 0, readLength, _readCallback, null);
 
                 if (async.CompletedSynchronously)
                 {
-                    int read = _source.EndRead(async);
+                    var read = _source.EndRead(async);
                     WriteToOutputStream(read);
                 }
             }
@@ -210,7 +216,7 @@ namespace KissU.Core.KestrelHttpServer.Internal
 
             try
             {
-                int read = _source.EndRead(async);
+                var read = _source.EndRead(async);
                 WriteToOutputStream(read);
             }
             catch (Exception ex)
@@ -226,7 +232,7 @@ namespace KissU.Core.KestrelHttpServer.Internal
             {
                 _bytesRemaining -= count;
             }
-             
+
             if (count == 0)
             {
                 Complete();
@@ -240,7 +246,7 @@ namespace KissU.Core.KestrelHttpServer.Internal
 
             try
             {
-                IAsyncResult async = _destination.BeginWrite(_buffer, 0, count, _writeCallback, null);
+                var async = _destination.BeginWrite(_buffer, 0, count, _writeCallback, null);
                 if (async.CompletedSynchronously)
                 {
                     _destination.EndWrite(async);

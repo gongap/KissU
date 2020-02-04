@@ -39,7 +39,7 @@ namespace KissU.Core.CPlatform.Configurations.Remote
                 _data.Clear();
                 _reader = new JsonTextReader(new StreamReader(input))
                 {
-                    DateParseHandling = DateParseHandling.None,
+                    DateParseHandling = DateParseHandling.None
                 };
                 var jsonConfig = JObject.Load(_reader);
                 if (!string.IsNullOrEmpty(initialContext))
@@ -195,8 +195,7 @@ namespace KissU.Core.CPlatform.Configurations.Remote
             {
                 line = streamReader.ReadLine();
                 yield return line;
-            }
-            while (line != null);
+            } while (line != null);
         }
 
         /// <summary>

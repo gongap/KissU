@@ -25,22 +25,31 @@ namespace KissU.Core.ProxyGenerator.FastReflection
     /// <seealso cref="KissU.Core.ProxyGenerator.FastReflection.IConstructorInvoker" />
     public class ConstructorInvoker : IConstructorInvoker
     {
-        private Func<object[], object> m_invoker;
+        private readonly Func<object[], object> m_invoker;
 
         /// <summary>
-        /// Gets the constructor information.
-        /// </summary>
-        public ConstructorInfo ConstructorInfo { get; private set; }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ConstructorInvoker"/> class.
+        /// Initializes a new instance of the <see cref="ConstructorInvoker" /> class.
         /// </summary>
         /// <param name="constructorInfo">The constructor information.</param>
         public ConstructorInvoker(ConstructorInfo constructorInfo)
         {
-            this.ConstructorInfo = constructorInfo;
-            this.m_invoker = InitializeInvoker(constructorInfo);
+            ConstructorInfo = constructorInfo;
+            m_invoker = InitializeInvoker(constructorInfo);
         }
+
+        /// <summary>
+        /// Gets the constructor information.
+        /// </summary>
+        public ConstructorInfo ConstructorInfo { get; }
+
+        #region IConstructorInvoker Members
+
+        object IConstructorInvoker.Invoke(params object[] parameters)
+        {
+            return Invoke(parameters);
+        }
+
+        #endregion
 
         private Func<object[], object> InitializeInvoker(ConstructorInfo constructorInfo)
         {
@@ -52,7 +61,7 @@ namespace KissU.Core.ProxyGenerator.FastReflection
             // build parameter list
             var parameterExpressions = new List<Expression>();
             var paramInfos = constructorInfo.GetParameters();
-            for (int i = 0; i < paramInfos.Length; i++)
+            for (var i = 0; i < paramInfos.Length; i++)
             {
                 // (Ti)parameters[i]
                 var valueObj = Expression.ArrayIndex(parametersParameter, Expression.Constant(i));
@@ -79,16 +88,7 @@ namespace KissU.Core.ProxyGenerator.FastReflection
         /// <returns>System.Object.</returns>
         public object Invoke(params object[] parameters)
         {
-            return this.m_invoker(parameters);
+            return m_invoker(parameters);
         }
-
-        #region IConstructorInvoker Members
-
-        object IConstructorInvoker.Invoke(params object[] parameters)
-        {
-            return this.Invoke(parameters);
-        }
-
-        #endregion
     }
 }

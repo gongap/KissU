@@ -30,7 +30,7 @@ namespace KissU.Core.CPlatform.Cache
             return new CacheEndpointDescriptor
             {
                 Type = typeof(T).FullName,
-                Value = serializer.Serialize(address),
+                Value = serializer.Serialize(address)
             };
         }
     }

@@ -16,17 +16,10 @@ namespace KissU.Core.Protocol.Udp
     /// <seealso cref="KissU.Core.CPlatform.Runtime.Server.IServiceExecutor" />
     public class UdpServiceExecutor : IServiceExecutor
     {
-        #region Field
-
-        private readonly IUdpServiceEntryProvider _udpServiceEntryProvider;
-        private readonly ILogger<UdpServiceExecutor> _logger;
-
-        #endregion Field
-
         #region Constructor
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UdpServiceExecutor"/> class.
+        /// Initializes a new instance of the <see cref="UdpServiceExecutor" /> class.
         /// </summary>
         /// <param name="dnsServiceEntryProvider">The DNS service entry provider.</param>
         /// <param name="logger">The logger.</param>
@@ -63,36 +56,44 @@ namespace KissU.Core.Protocol.Udp
                 _logger.LogError(exception, "将接收到的消息反序列化成 TransportMessage<byte[]> 时发送了错误。");
                 return;
             }
+
             var entry = _udpServiceEntryProvider.GetEntry();
             if (entry == null)
             {
                 if (_logger.IsEnabled(LogLevel.Error))
-                    _logger.LogError($"未实现UdpBehavior实例。");
+                    _logger.LogError("未实现UdpBehavior实例。");
                 return;
             }
+
             if (udpMessage != null)
                 await LocalExecuteAsync(entry, udpMessage);
-           
+
             await SendRemoteInvokeResult(sender, udpMessage);
         }
 
         #endregion Implementation of IServiceExecutor
 
+        #region Field
+
+        private readonly IUdpServiceEntryProvider _udpServiceEntryProvider;
+        private readonly ILogger<UdpServiceExecutor> _logger;
+
+        #endregion Field
+
         #region Private Method
 
-
-        private async Task LocalExecuteAsync(UdpServiceEntry entry, byte [] bytes)
+        private async Task LocalExecuteAsync(UdpServiceEntry entry, byte[] bytes)
         {
-            HttpResultMessage<object> resultMessage = new HttpResultMessage<object>();
+            var resultMessage = new HttpResultMessage<object>();
             try
-            { 
-                 await entry.Behavior.Dispatch(bytes);
+            {
+                await entry.Behavior.Dispatch(bytes);
             }
             catch (Exception exception)
             {
                 if (_logger.IsEnabled(LogLevel.Error))
                     _logger.LogError(exception, "执行本地逻辑时候发生了错误。");
-            } 
+            }
         }
 
         private async Task SendRemoteInvokeResult(IMessageSender sender, byte[] resultMessage)

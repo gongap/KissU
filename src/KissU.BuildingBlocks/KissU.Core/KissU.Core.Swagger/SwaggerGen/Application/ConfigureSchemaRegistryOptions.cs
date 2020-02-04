@@ -9,16 +9,19 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
 {
     /// <summary>
     /// ConfigureSchemaRegistryOptions.
-    /// Implements the <see cref="Microsoft.Extensions.Options.IConfigureOptions{KissU.Core.Swagger.SwaggerGen.Generator.SchemaRegistryOptions}" />
+    /// Implements the
+    /// <see
+    ///     cref="Microsoft.Extensions.Options.IConfigureOptions{KissU.Core.Swagger.SwaggerGen.Generator.SchemaRegistryOptions}" />
     /// </summary>
-    /// <seealso cref="Microsoft.Extensions.Options.IConfigureOptions{KissU.Core.Swagger.SwaggerGen.Generator.SchemaRegistryOptions}" />
+    /// <seealso
+    ///     cref="Microsoft.Extensions.Options.IConfigureOptions{KissU.Core.Swagger.SwaggerGen.Generator.SchemaRegistryOptions}" />
     internal class ConfigureSchemaRegistryOptions : IConfigureOptions<SchemaRegistryOptions>
     {
         private readonly IServiceProvider _serviceProvider;
         private readonly SwaggerGenOptions _swaggerGenOptions;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ConfigureSchemaRegistryOptions"/> class.
+        /// Initializes a new instance of the <see cref="ConfigureSchemaRegistryOptions" /> class.
         /// </summary>
         /// <param name="serviceProvider">The service provider.</param>
         /// <param name="swaggerGenOptionsAccessor">The swagger gen options accessor.</param>
@@ -57,7 +60,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
 
         private TFilter CreateFilter<TFilter>(FilterDescriptor filterDescriptor)
         {
-            return (TFilter)ActivatorUtilities
+            return (TFilter) ActivatorUtilities
                 .CreateInstance(_serviceProvider, filterDescriptor.Type, filterDescriptor.Arguments);
         }
     }

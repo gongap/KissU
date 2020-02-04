@@ -10,22 +10,20 @@ namespace KissU.Core.System.Intercept
     public class InterceptMethodAttribute : Attribute
     {
         #region 字段
-        int _time = 60;
-        CacheTargetType _mode = CacheTargetType.MemoryCache;
-        CachingMethod _method;
-        string[] _correspondingKeys;
 
         #endregion
 
         #region 构造函数
+
         /// <summary>
         /// 初始化一个新的<c>InterceptMethodAttribute</c>类型。
         /// </summary>
         /// <param name="method">缓存方式。</param>
         public InterceptMethodAttribute(CachingMethod method)
         {
-            this._method = method;
+            Method = method;
         }
+
         /// <summary>
         /// 初始化一个新的<c>InterceptMethodAttribute</c>类型。
         /// </summary>
@@ -34,27 +32,22 @@ namespace KissU.Core.System.Intercept
         public InterceptMethodAttribute(CachingMethod method, params string[] correspondingMethodNames)
             : this(method)
         {
-            this._correspondingKeys = correspondingMethodNames;
+            CorrespondingKeys = correspondingMethodNames;
         }
+
         #endregion
 
         #region 公共属性
+
         /// <summary>
         /// 有效时间
         /// </summary>
-        public int Time
-        {
-            get { return _time; }
-            set { _time = value; }
-        }
+        public int Time { get; set; } = 60;
+
         /// <summary>
         /// 采用什么进行缓存
         /// </summary>
-        public CacheTargetType Mode
-        {
-            get { return _mode; }
-            set { _mode = value; }
-        }
+        public CacheTargetType Mode { get; set; } = CacheTargetType.MemoryCache;
 
         ///// <summary>
         ///// 设置SectionType
@@ -62,64 +55,38 @@ namespace KissU.Core.System.Intercept
         /// <summary>
         /// Gets or sets the type of the cache section.
         /// </summary>
-        public SectionType CacheSectionType
-        {
-            get;
-            set;
-        }
+        public SectionType CacheSectionType { get; set; }
 
         /// <summary>
         /// Gets or sets the l2 key.
         /// </summary>
-        public string L2Key
-        {
-            get; set;
-        }
+        public string L2Key { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether [enable l2 cache].
         /// </summary>
-        public bool EnableL2Cache
-        {
-            get;set;
-        }
+        public bool EnableL2Cache { get; set; }
 
         /// <summary>
         /// Gets or sets the key.
         /// </summary>
         public string Key { get; set; }
+
         /// <summary>
         /// 获取或设置缓存方式。
         /// </summary>
-        public CachingMethod Method
-        {
-            get
-            {
-                return _method;
-            }
-            set { _method = value; }
-        }
+        public CachingMethod Method { get; set; }
 
         /// <summary>
         /// 获取或设置一个<see cref="Boolean" />值，该值表示当缓存方式为Put时，是否强制将值写入缓存中。
         /// </summary>
         public bool Force { get; set; }
+
         /// <summary>
         /// 获取或设置与当前缓存方式相关的方法名称。注：此参数仅在缓存方式为Remove时起作用。
         /// </summary>
-        public string[] CorrespondingKeys
-        {
-            get
-            {
-                return _correspondingKeys;
-            }
-            set
-            {
-                _correspondingKeys = value;
-            }
-        }
+        public string[] CorrespondingKeys { get; set; }
 
         #endregion
-
     }
 }

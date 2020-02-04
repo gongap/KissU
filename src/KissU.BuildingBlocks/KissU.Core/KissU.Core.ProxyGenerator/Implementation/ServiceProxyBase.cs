@@ -18,28 +18,17 @@ namespace KissU.Core.ProxyGenerator.Implementation
     /// </summary>
     public abstract class ServiceProxyBase
     {
-        #region Field
-        private readonly IRemoteInvokeService _remoteInvokeService;
-        private readonly ITypeConvertibleService _typeConvertibleService;
-        private readonly string _serviceKey;
-        private readonly CPlatformContainer _serviceProvider;
-        private readonly IServiceCommandProvider _commandProvider;
-        private readonly IBreakeRemoteInvokeService _breakeRemoteInvokeService;
-        private readonly IEnumerable<IInterceptor> _interceptors;
-        private readonly IInterceptor _cacheInterceptor;
-        #endregion Field
-
         #region Constructor
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServiceProxyBase"/> class.
+        /// Initializes a new instance of the <see cref="ServiceProxyBase" /> class.
         /// </summary>
         /// <param name="remoteInvokeService">The remote invoke service.</param>
         /// <param name="typeConvertibleService">The type convertible service.</param>
         /// <param name="serviceKey">The service key.</param>
         /// <param name="serviceProvider">The service provider.</param>
         protected ServiceProxyBase(IRemoteInvokeService remoteInvokeService,
-            ITypeConvertibleService typeConvertibleService, String serviceKey, CPlatformContainer serviceProvider)
+            ITypeConvertibleService typeConvertibleService, string serviceKey, CPlatformContainer serviceProvider)
         {
             _remoteInvokeService = remoteInvokeService;
             _typeConvertibleService = typeConvertibleService;
@@ -52,14 +41,28 @@ namespace KissU.Core.ProxyGenerator.Implementation
             {
                 var interceptors = serviceProvider.GetInstances<IEnumerable<IInterceptor>>();
                 _interceptors = interceptors.Where(p => !typeof(CacheInterceptor).IsAssignableFrom(p.GetType()));
-                _cacheInterceptor = interceptors.Where(p => typeof(CacheInterceptor).IsAssignableFrom(p.GetType())).FirstOrDefault();
-            } 
-
-
+                _cacheInterceptor = interceptors.Where(p => typeof(CacheInterceptor).IsAssignableFrom(p.GetType()))
+                    .FirstOrDefault();
+            }
         }
+
         #endregion Constructor
 
+        #region Field
+
+        private readonly IRemoteInvokeService _remoteInvokeService;
+        private readonly ITypeConvertibleService _typeConvertibleService;
+        private readonly string _serviceKey;
+        private readonly CPlatformContainer _serviceProvider;
+        private readonly IServiceCommandProvider _commandProvider;
+        private readonly IBreakeRemoteInvokeService _breakeRemoteInvokeService;
+        private readonly IEnumerable<IInterceptor> _interceptors;
+        private readonly IInterceptor _cacheInterceptor;
+
+        #endregion Field
+
         #region Protected Method
+
         /// <summary>
         /// 远程调用。
         /// </summary>
@@ -70,18 +73,21 @@ namespace KissU.Core.ProxyGenerator.Implementation
         protected async Task<T> Invoke<T>(IDictionary<string, object> parameters, string serviceId)
         {
             object result = default(T);
-            var vt = _commandProvider.GetCommand(serviceId); 
+            var vt = _commandProvider.GetCommand(serviceId);
             var command = vt.IsCompletedSuccessfully ? vt.Result : await vt;
             RemoteInvokeResultMessage message = null;
             var decodeJOject = typeof(T) == UtilityType.ObjectType;
             IInvocation invocation = null;
             var existsInterceptor = _interceptors.Any();
-            if ((_cacheInterceptor==null || !command.RequestCacheEnabled)  && !existsInterceptor)
+            if ((_cacheInterceptor == null || !command.RequestCacheEnabled) && !existsInterceptor)
             {
-                message = await _breakeRemoteInvokeService.InvokeAsync(parameters, serviceId, _serviceKey, decodeJOject);
+                message = await _breakeRemoteInvokeService.InvokeAsync(parameters, serviceId, _serviceKey,
+                    decodeJOject);
                 if (message == null)
                 {
-                    if (command.FallBackName != null && _serviceProvider.IsRegistered<IFallbackInvoker>(command.FallBackName) && command.Strategy == StrategyType.FallBack)
+                    if (command.FallBackName != null &&
+                        _serviceProvider.IsRegistered<IFallbackInvoker>(command.FallBackName) &&
+                        command.Strategy == StrategyType.FallBack)
                     {
                         var invoker = _serviceProvider.GetInstances<IFallbackInvoker>(command.FallBackName);
                         return await invoker.Invoke<T>(parameters, serviceId, _serviceKey);
@@ -89,17 +95,20 @@ namespace KissU.Core.ProxyGenerator.Implementation
                     else
                     {
                         var invoker = _serviceProvider.GetInstances<IClusterInvoker>(command.Strategy.ToString());
-                        return await invoker.Invoke<T>(parameters, serviceId, _serviceKey, typeof(T) == UtilityType.ObjectType);
+                        return await invoker.Invoke<T>(parameters, serviceId, _serviceKey,
+                            typeof(T) == UtilityType.ObjectType);
                     }
                 }
             }
-            if (_cacheInterceptor!=null && command.RequestCacheEnabled)
+
+            if (_cacheInterceptor != null && command.RequestCacheEnabled)
             {
                 invocation = GetCacheInvocation(parameters, serviceId, typeof(T));
                 var interceptReuslt = await Intercept(_cacheInterceptor, invocation);
                 message = interceptReuslt.Item1;
                 result = interceptReuslt.Item2 == null ? default(T) : interceptReuslt.Item2;
             }
+
             if (existsInterceptor)
             {
                 invocation = invocation == null ? GetInvocation(parameters, serviceId, typeof(T)) : invocation;
@@ -110,12 +119,14 @@ namespace KissU.Core.ProxyGenerator.Implementation
                     result = interceptReuslt.Item2 == null ? default(T) : interceptReuslt.Item2;
                 }
             }
+
             if (message != null)
             {
                 if (message.Result == null) result = message.Result;
-                else  result = _typeConvertibleService.Convert(message.Result, typeof(T));
+                else result = _typeConvertibleService.Convert(message.Result, typeof(T));
             }
-            return (T)result;
+
+            return (T) result;
         }
 
         /// <summary>
@@ -130,12 +141,14 @@ namespace KissU.Core.ProxyGenerator.Implementation
             var serviceId = invocation.ServiceId;
             var type = invocation.ReturnType;
             var message = await _breakeRemoteInvokeService.InvokeAsync(parameters, serviceId, _serviceKey,
-                   type == typeof(Task) ? false : true);
+                type == typeof(Task) ? false : true);
             if (message == null)
             {
-                var vt =  _commandProvider.GetCommand(serviceId); 
+                var vt = _commandProvider.GetCommand(serviceId);
                 var command = vt.IsCompletedSuccessfully ? vt.Result : await vt;
-                if (command.FallBackName != null && _serviceProvider.IsRegistered<IFallbackInvoker>(command.FallBackName) && command.Strategy == StrategyType.FallBack)
+                if (command.FallBackName != null &&
+                    _serviceProvider.IsRegistered<IFallbackInvoker>(command.FallBackName) &&
+                    command.Strategy == StrategyType.FallBack)
                 {
                     var invoker = _serviceProvider.GetInstances<IFallbackInvoker>(command.FallBackName);
                     return await invoker.Invoke<object>(parameters, serviceId, _serviceKey);
@@ -146,6 +159,7 @@ namespace KissU.Core.ProxyGenerator.Implementation
                     return await invoker.Invoke<object>(parameters, serviceId, _serviceKey, true);
                 }
             }
+
             if (type == typeof(Task)) return message;
             return _typeConvertibleService.Convert(message.Result, type);
         }
@@ -171,11 +185,14 @@ namespace KissU.Core.ProxyGenerator.Implementation
                     message = interceptReuslt.Item1;
                 }
             }
+
             if (message == null)
             {
-                var vt =   _commandProvider.GetCommand(serviceId);
+                var vt = _commandProvider.GetCommand(serviceId);
                 var command = vt.IsCompletedSuccessfully ? vt.Result : await vt;
-                if (command.FallBackName != null && _serviceProvider.IsRegistered<IFallbackInvoker>(command.FallBackName) && command.Strategy == StrategyType.FallBack)
+                if (command.FallBackName != null &&
+                    _serviceProvider.IsRegistered<IFallbackInvoker>(command.FallBackName) &&
+                    command.Strategy == StrategyType.FallBack)
                 {
                     var invoker = _serviceProvider.GetInstances<IFallbackInvoker>(command.FallBackName);
                     await invoker.Invoke<object>(parameters, serviceId, _serviceKey);
@@ -188,21 +205,24 @@ namespace KissU.Core.ProxyGenerator.Implementation
             }
         }
 
-        private async Task<Tuple<RemoteInvokeResultMessage, object>> Intercept(IInterceptor interceptor, IInvocation invocation)
+        private async Task<Tuple<RemoteInvokeResultMessage, object>> Intercept(IInterceptor interceptor,
+            IInvocation invocation)
         {
             await interceptor.Intercept(invocation);
             var message = invocation.ReturnValue is RemoteInvokeResultMessage
-             ? invocation.ReturnValue as RemoteInvokeResultMessage : null;
+                ? invocation.ReturnValue as RemoteInvokeResultMessage
+                : null;
             return new Tuple<RemoteInvokeResultMessage, object>(message, invocation.ReturnValue);
         }
-        
+
         private IInvocation GetInvocation(IDictionary<string, object> parameters, string serviceId, Type returnType)
         {
             var invocation = _serviceProvider.GetInstances<IInterceptorProvider>();
             return invocation.GetInvocation(this, parameters, serviceId, returnType);
         }
 
-        private IInvocation GetCacheInvocation(IDictionary<string, object> parameters, string serviceId, Type returnType)
+        private IInvocation GetCacheInvocation(IDictionary<string, object> parameters, string serviceId,
+            Type returnType)
         {
             var invocation = _serviceProvider.GetInstances<IInterceptorProvider>();
             return invocation.GetCacheInvocation(this, parameters, serviceId, returnType);

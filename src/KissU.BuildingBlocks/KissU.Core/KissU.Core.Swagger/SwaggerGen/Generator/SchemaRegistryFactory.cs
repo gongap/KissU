@@ -15,7 +15,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
         private readonly SchemaRegistryOptions _schemaRegistryOptions;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SchemaRegistryFactory"/> class.
+        /// Initializes a new instance of the <see cref="SchemaRegistryFactory" /> class.
         /// </summary>
         /// <param name="mvcJsonOptionsAccessor">The MVC json options accessor.</param>
         /// <param name="schemaRegistryOptionsAccessor">The schema registry options accessor.</param>
@@ -23,10 +23,11 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
             IOptions<MvcNewtonsoftJsonOptions> mvcJsonOptionsAccessor,
             IOptions<SchemaRegistryOptions> schemaRegistryOptionsAccessor)
             : this(mvcJsonOptionsAccessor.Value.SerializerSettings, schemaRegistryOptionsAccessor.Value)
-        { }
+        {
+        }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SchemaRegistryFactory"/> class.
+        /// Initializes a new instance of the <see cref="SchemaRegistryFactory" /> class.
         /// </summary>
         /// <param name="jsonSerializerSettings">The json serializer settings.</param>
         /// <param name="schemaRegistryOptions">The schema registry options.</param>

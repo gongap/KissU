@@ -29,9 +29,11 @@ namespace KissU.Core.EventBusKafka
             base.Initialize(context);
             serviceProvider.GetInstances<ISubscriptionAdapt>().SubscribeAt();
             serviceProvider.GetInstances<IServiceEngineLifetime>().ServiceEngineStarted.Register(() =>
-             {
-                 KafkaConsumerPersistentConnection connection = serviceProvider.GetInstances<IKafkaPersisterConnection>(KafkaConnectionType.Consumer.ToString()) as KafkaConsumerPersistentConnection;
-                 connection.Listening(TimeSpan.FromMilliseconds(AppConfig.Options.Timeout));
+            {
+                var connection =
+                    serviceProvider.GetInstances<IKafkaPersisterConnection>(KafkaConnectionType.Consumer.ToString()) as
+                        KafkaConsumerPersistentConnection;
+                connection.Listening(TimeSpan.FromMilliseconds(AppConfig.Options.Timeout));
             });
         }
 
@@ -62,11 +64,12 @@ namespace KissU.Core.EventBusKafka
             AppConfig.KafkaProducerConfig = AppConfig.Options.GetProducerConfig();
             builder.RegisterType(typeof(Implementation.EventBusKafka)).As(typeof(IEventBus)).SingleInstance();
             builder.RegisterType(typeof(DefaultConsumeConfigurator)).As(typeof(IConsumeConfigurator)).SingleInstance();
-            builder.RegisterType(typeof(InMemoryEventBusSubscriptionsManager)).As(typeof(IEventBusSubscriptionsManager)).SingleInstance();
+            builder.RegisterType(typeof(InMemoryEventBusSubscriptionsManager)).As(typeof(IEventBusSubscriptionsManager))
+                .SingleInstance();
             builder.RegisterType(typeof(KafkaProducerPersistentConnection))
-           .Named(KafkaConnectionType.Producer.ToString(), typeof(IKafkaPersisterConnection)).SingleInstance();
+                .Named(KafkaConnectionType.Producer.ToString(), typeof(IKafkaPersisterConnection)).SingleInstance();
             builder.RegisterType(typeof(KafkaConsumerPersistentConnection))
-            .Named(KafkaConnectionType.Consumer.ToString(), typeof(IKafkaPersisterConnection)).SingleInstance();
+                .Named(KafkaConnectionType.Consumer.ToString(), typeof(IKafkaPersisterConnection)).SingleInstance();
             return this;
         }
 
@@ -76,7 +79,8 @@ namespace KissU.Core.EventBusKafka
         /// <param name="builder">The builder.</param>
         /// <param name="adapt">The adapt.</param>
         /// <returns>ContainerBuilderWrapper.</returns>
-        public ContainerBuilderWrapper UseKafkaMQEventAdapt(ContainerBuilderWrapper builder, Func<IServiceProvider, ISubscriptionAdapt> adapt)
+        public ContainerBuilderWrapper UseKafkaMQEventAdapt(ContainerBuilderWrapper builder,
+            Func<IServiceProvider, ISubscriptionAdapt> adapt)
         {
             builder.RegisterAdapter(adapt);
             return builder;
@@ -89,11 +93,11 @@ namespace KissU.Core.EventBusKafka
         /// <returns>EventBusKafkaModule.</returns>
         public EventBusKafkaModule AddKafkaMQAdapt(ContainerBuilderWrapper builder)
         {
-              UseKafkaMQEventAdapt(builder,provider =>
-             new KafkaSubscriptionAdapt(
-                 provider.GetService<IConsumeConfigurator>(),
-                 provider.GetService<IEnumerable<IIntegrationEventHandler>>()
-                 )
+            UseKafkaMQEventAdapt(builder, provider =>
+                new KafkaSubscriptionAdapt(
+                    provider.GetService<IConsumeConfigurator>(),
+                    provider.GetService<IEnumerable<IIntegrationEventHandler>>()
+                )
             );
             return this;
         }

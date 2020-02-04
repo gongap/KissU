@@ -30,15 +30,15 @@ namespace KissU.Core.ProxyGenerator.Interceptors
         Type ReturnType { get; }
 
         /// <summary>
+        /// Gets or sets the return value.
+        /// </summary>
+        object ReturnValue { get; set; }
+
+        /// <summary>
         /// Proceeds this instance.
         /// </summary>
         /// <returns>Task.</returns>
         Task Proceed();
-
-        /// <summary>
-        /// Gets or sets the return value.
-        /// </summary>
-        object ReturnValue { get; set; }
 
         /// <summary>
         /// Sets the argument value.

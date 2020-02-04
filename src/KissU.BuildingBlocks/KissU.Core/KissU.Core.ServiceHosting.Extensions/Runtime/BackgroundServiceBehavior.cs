@@ -20,7 +20,15 @@ namespace KissU.Core.ServiceHosting.Extensions.Runtime
     public abstract class BackgroundServiceBehavior : IServiceBehavior, IDisposable
     {
         private Task _executingTask;
-        private  CancellationTokenSource _stoppingCts = new CancellationTokenSource();
+        private CancellationTokenSource _stoppingCts = new CancellationTokenSource();
+
+        /// <summary>
+        /// Disposes this instance.
+        /// </summary>
+        public virtual void Dispose()
+        {
+            _stoppingCts.Cancel();
+        }
 
         /// <summary>
         /// Creates the proxy.
@@ -74,8 +82,7 @@ namespace KissU.Core.ServiceHosting.Extensions.Runtime
         {
             if (ServiceLocator.Current.IsRegisteredWithKey<T>(key))
                 return ServiceLocator.GetService<T>(key);
-            else
-                return ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy<T>(key);
+            return ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy<T>(key);
         }
 
         /// <summary>
@@ -87,9 +94,7 @@ namespace KissU.Core.ServiceHosting.Extensions.Runtime
         {
             if (ServiceLocator.Current.IsRegistered<T>())
                 return ServiceLocator.GetService<T>();
-            else
-                return ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy<T>();
-
+            return ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy<T>();
         }
 
         /// <summary>
@@ -101,8 +106,7 @@ namespace KissU.Core.ServiceHosting.Extensions.Runtime
         {
             if (ServiceLocator.Current.IsRegistered(type))
                 return ServiceLocator.GetService(type);
-            else
-                return ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy(type);
+            return ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy(type);
         }
 
         /// <summary>
@@ -115,9 +119,7 @@ namespace KissU.Core.ServiceHosting.Extensions.Runtime
         {
             if (ServiceLocator.Current.IsRegisteredWithKey(key, type))
                 return ServiceLocator.GetService(key, type);
-            else
-                return ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy(key, type);
-
+            return ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy(key, type);
         }
 
         /// <summary>
@@ -142,15 +144,15 @@ namespace KissU.Core.ServiceHosting.Extensions.Runtime
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>Task.</returns>
         public virtual Task StartAsync(CancellationToken cancellationToken)
-        {     
+        {
             _stoppingCts = new CancellationTokenSource();
             _executingTask = ExecutingAsync(_stoppingCts.Token);
-        
+
             if (_executingTask.IsCompleted)
             {
                 return _executingTask;
             }
-             
+
             return Task.CompletedTask;
         }
 
@@ -159,29 +161,20 @@ namespace KissU.Core.ServiceHosting.Extensions.Runtime
         /// </summary>
         /// <param name="cancellationToken">The cancellation token.</param>
         public virtual async Task StopAsync(CancellationToken cancellationToken)
-        { 
+        {
             if (_executingTask == null)
             {
                 return;
             }
 
             try
-            { 
+            {
                 _stoppingCts.Cancel();
             }
             finally
-            { 
+            {
                 await Task.WhenAny(_executingTask, Task.Delay(Timeout.Infinite, cancellationToken));
             }
-
-        }
-
-        /// <summary>
-        /// Disposes this instance.
-        /// </summary>
-        public virtual void Dispose()
-        {
-            _stoppingCts.Cancel();
         }
 
         private async Task ExecutingAsync(CancellationToken stoppingToken)

@@ -14,13 +14,14 @@ namespace KissU.Core.Serilog
         /// Returns true if the provided event is enabled. Otherwise, false.
         /// </summary>
         /// <param name="logEvent">The event to test.</param>
-        /// <returns>True if the event is enabled by this filter. If false
-        /// is returned, the event will not be emitted.</returns>
+        /// <returns>
+        /// True if the event is enabled by this filter. If false
+        /// is returned, the event will not be emitted.
+        /// </returns>
         public bool IsEnabled(LogEvent logEvent)
         {
             return logEvent.Level == LogEventLevel.Verbose;
         }
-
     }
 
     /// <summary>
@@ -34,13 +35,14 @@ namespace KissU.Core.Serilog
         /// Returns true if the provided event is enabled. Otherwise, false.
         /// </summary>
         /// <param name="logEvent">The event to test.</param>
-        /// <returns>True if the event is enabled by this filter. If false
-        /// is returned, the event will not be emitted.</returns>
+        /// <returns>
+        /// True if the event is enabled by this filter. If false
+        /// is returned, the event will not be emitted.
+        /// </returns>
         public bool IsEnabled(LogEvent logEvent)
         {
             return logEvent.Level == LogEventLevel.Debug;
         }
-
     }
 
     /// <summary>
@@ -54,8 +56,10 @@ namespace KissU.Core.Serilog
         /// Returns true if the provided event is enabled. Otherwise, false.
         /// </summary>
         /// <param name="logEvent">The event to test.</param>
-        /// <returns>True if the event is enabled by this filter. If false
-        /// is returned, the event will not be emitted.</returns>
+        /// <returns>
+        /// True if the event is enabled by this filter. If false
+        /// is returned, the event will not be emitted.
+        /// </returns>
         public bool IsEnabled(LogEvent logEvent)
         {
             return logEvent.Level == LogEventLevel.Error;
@@ -73,8 +77,10 @@ namespace KissU.Core.Serilog
         /// Returns true if the provided event is enabled. Otherwise, false.
         /// </summary>
         /// <param name="logEvent">The event to test.</param>
-        /// <returns>True if the event is enabled by this filter. If false
-        /// is returned, the event will not be emitted.</returns>
+        /// <returns>
+        /// True if the event is enabled by this filter. If false
+        /// is returned, the event will not be emitted.
+        /// </returns>
         public bool IsEnabled(LogEvent logEvent)
         {
             return logEvent.Level == LogEventLevel.Fatal;
@@ -92,8 +98,10 @@ namespace KissU.Core.Serilog
         /// Returns true if the provided event is enabled. Otherwise, false.
         /// </summary>
         /// <param name="logEvent">The event to test.</param>
-        /// <returns>True if the event is enabled by this filter. If false
-        /// is returned, the event will not be emitted.</returns>
+        /// <returns>
+        /// True if the event is enabled by this filter. If false
+        /// is returned, the event will not be emitted.
+        /// </returns>
         public bool IsEnabled(LogEvent logEvent)
         {
             return logEvent.Level == LogEventLevel.Information;
@@ -111,8 +119,10 @@ namespace KissU.Core.Serilog
         /// Returns true if the provided event is enabled. Otherwise, false.
         /// </summary>
         /// <param name="logEvent">The event to test.</param>
-        /// <returns>True if the event is enabled by this filter. If false
-        /// is returned, the event will not be emitted.</returns>
+        /// <returns>
+        /// True if the event is enabled by this filter. If false
+        /// is returned, the event will not be emitted.
+        /// </returns>
         public bool IsEnabled(LogEvent logEvent)
         {
             return logEvent.Level == LogEventLevel.Warning;

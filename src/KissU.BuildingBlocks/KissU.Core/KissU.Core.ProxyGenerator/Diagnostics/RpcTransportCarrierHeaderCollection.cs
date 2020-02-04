@@ -14,7 +14,7 @@ namespace KissU.Core.ProxyGenerator.Diagnostics
         private readonly TracingHeaders _tracingHeaders;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RpcTransportCarrierHeaderCollection"/> class.
+        /// Initializes a new instance of the <see cref="RpcTransportCarrierHeaderCollection" /> class.
         /// </summary>
         /// <param name="tracingHeaders">The tracing headers.</param>
         public RpcTransportCarrierHeaderCollection(TracingHeaders tracingHeaders)

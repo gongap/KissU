@@ -7,7 +7,7 @@ namespace KissU.Core.KestrelHttpServer.Abstractions
     /// Implements the <see cref="KissU.Core.KestrelHttpServer.Abstractions.ActionResult" />
     /// </summary>
     /// <seealso cref="KissU.Core.KestrelHttpServer.Abstractions.ActionResult" />
-    public abstract class FileResult: ActionResult
+    public abstract class FileResult : ActionResult
     {
         private string _fileDownloadName;
 
@@ -37,8 +37,8 @@ namespace KissU.Core.KestrelHttpServer.Abstractions
         /// </summary>
         public string FileDownloadName
         {
-            get { return _fileDownloadName ?? string.Empty; }
-            set { _fileDownloadName = value; }
+            get => _fileDownloadName ?? string.Empty;
+            set => _fileDownloadName = value;
         }
     }
 }

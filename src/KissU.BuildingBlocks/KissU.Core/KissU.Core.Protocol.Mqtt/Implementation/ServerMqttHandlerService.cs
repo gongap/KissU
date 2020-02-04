@@ -20,11 +20,12 @@ namespace KissU.Core.Protocol.Mqtt.Implementation
     /// </summary>
     public class ServerMqttHandlerService
     {
-        private readonly ILogger _logger;
         private readonly IChannelService _channelService;
+        private readonly ILogger _logger;
         private readonly IMqttBehaviorProvider _mqttBehaviorProvider;
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServerMqttHandlerService"/> class.
+        /// Initializes a new instance of the <see cref="ServerMqttHandlerService" /> class.
         /// </summary>
         /// <param name="logger">The logger.</param>
         /// <param name="channelService">The channel service.</param>
@@ -44,7 +45,7 @@ namespace KissU.Core.Protocol.Mqtt.Implementation
         /// <param name="packet">The packet.</param>
         public async Task ConnAck(IChannelHandlerContext context, ConnAckPacket packet)
         {
-           await context.WriteAndFlushAsync(packet);
+            await context.WriteAndFlushAsync(packet);
         }
 
         /// <summary>
@@ -54,13 +55,13 @@ namespace KissU.Core.Protocol.Mqtt.Implementation
         /// <param name="packet">The packet.</param>
         public async Task Login(IChannelHandlerContext context, ConnectPacket packet)
         {
-
-            string deviceId = packet.ClientId;
-            var message = TransportMessage.CreateInvokeMessage(new RemoteInvokeMessage() { ServiceId = $"Connect", Parameters = new Dictionary<string, object> { { "packet", packet} } });
-            WirteDiagnosticBefore(message,context.Channel.RemoteAddress.ToString(),  deviceId, packet.PacketType);
+            var deviceId = packet.ClientId;
+            var message = TransportMessage.CreateInvokeMessage(new RemoteInvokeMessage
+                {ServiceId = "Connect", Parameters = new Dictionary<string, object> {{"packet", packet}}});
+            WirteDiagnosticBefore(message, context.Channel.RemoteAddress.ToString(), deviceId, packet.PacketType);
             if (string.IsNullOrEmpty(deviceId))
             {
-               await ConnAck(context, new ConnAckPacket
+                await ConnAck(context, new ConnAckPacket
                 {
                     ReturnCode = ConnectReturnCode.RefusedIdentifierRejected
                 });
@@ -71,7 +72,7 @@ namespace KissU.Core.Protocol.Mqtt.Implementation
             if (mqttBehavior != null)
             {
                 if (packet.HasPassword && packet.HasUsername
-                        && await mqttBehavior.Authorized(packet.Username, packet.Password))
+                                       && await mqttBehavior.Authorized(packet.Username, packet.Password))
                 {
                     var mqttChannel = _channelService.GetMqttChannel(deviceId);
                     if (mqttChannel == null || !await mqttChannel.IsOnine())
@@ -82,7 +83,8 @@ namespace KissU.Core.Protocol.Mqtt.Implementation
                             bytes = new byte[packet.WillMessage.ReadableBytes];
                             packet.WillMessage.ReadBytes(bytes);
                         }
-                       await _channelService.Login(context.Channel, deviceId, new ConnectMessage
+
+                        await _channelService.Login(context.Channel, deviceId, new ConnectMessage
                         {
                             CleanSession = packet.CleanSession,
                             ClientId = packet.ClientId,
@@ -94,20 +96,19 @@ namespace KissU.Core.Protocol.Mqtt.Implementation
                             Password = packet.Password,
                             ProtocolLevel = packet.ProtocolLevel,
                             ProtocolName = packet.ProtocolName,
-                            Qos = (int)packet.QualityOfService,
+                            Qos = (int) packet.QualityOfService,
                             RetainRequested = packet.RetainRequested,
                             Username = packet.Username,
                             WillMessage = bytes,
-                            WillQualityOfService = (int)packet.WillQualityOfService,
+                            WillQualityOfService = (int) packet.WillQualityOfService,
                             WillRetain = packet.WillRetain,
                             WillTopic = packet.WillTopicName
-
                         });
                     }
                 }
                 else
                 {
-                  await  ConnAck(context, new ConnAckPacket
+                    await ConnAck(context, new ConnAckPacket
                     {
                         ReturnCode = ConnectReturnCode.RefusedBadUsernameOrPassword
                     });
@@ -115,11 +116,12 @@ namespace KissU.Core.Protocol.Mqtt.Implementation
             }
             else
             {
-               await ConnAck(context, new ConnAckPacket
+                await ConnAck(context, new ConnAckPacket
                 {
                     ReturnCode = ConnectReturnCode.RefusedServerUnavailable
                 });
             }
+
             WirteDiagnosticAfter(message);
         }
 
@@ -131,11 +133,11 @@ namespace KissU.Core.Protocol.Mqtt.Implementation
         public async Task Disconnect(IChannelHandlerContext context, DisconnectPacket packet)
         {
             var deviceId = await _channelService.GetDeviceId(context.Channel);
-            var message = TransportMessage.CreateInvokeMessage(new RemoteInvokeMessage() { ServiceId = $"Disconnect", Parameters = new Dictionary<string, object> { { "packet", packet } } });
-            WirteDiagnosticBefore(message,context.Channel.RemoteAddress.ToString(), deviceId, packet.PacketType);
+            var message = TransportMessage.CreateInvokeMessage(new RemoteInvokeMessage
+                {ServiceId = "Disconnect", Parameters = new Dictionary<string, object> {{"packet", packet}}});
+            WirteDiagnosticBefore(message, context.Channel.RemoteAddress.ToString(), deviceId, packet.PacketType);
             await _channelService.Close(deviceId, true);
             WirteDiagnosticAfter(message);
-
         }
 
         /// <summary>
@@ -143,13 +145,13 @@ namespace KissU.Core.Protocol.Mqtt.Implementation
         /// </summary>
         /// <param name="context">The context.</param>
         /// <param name="packet">The packet.</param>
-        public async Task  PingReq(IChannelHandlerContext context, PingReqPacket packet)
+        public async Task PingReq(IChannelHandlerContext context, PingReqPacket packet)
         {
             var channel = context.Channel;
             if (channel.Open && channel.Active && channel.IsWritable)
             {
                 if (_logger.IsEnabled(LogLevel.Information))
-                    _logger.LogInformation("收到来自：【" + context.Channel.RemoteAddress.ToString() + "】心跳");
+                    _logger.LogInformation("收到来自：【" + context.Channel.RemoteAddress + "】心跳");
                 await _channelService.PingReq(context.Channel);
                 await PingResp(context, PingRespPacket.Instance);
             }
@@ -162,7 +164,7 @@ namespace KissU.Core.Protocol.Mqtt.Implementation
         /// <param name="packet">The packet.</param>
         public async Task PingResp(IChannelHandlerContext context, PingRespPacket packet)
         {
-           await context.WriteAndFlushAsync(packet);
+            await context.WriteAndFlushAsync(packet);
         }
 
         /// <summary>
@@ -172,13 +174,14 @@ namespace KissU.Core.Protocol.Mqtt.Implementation
         /// <param name="packet">The packet.</param>
         public async Task PubAck(IChannelHandlerContext context, PubAckPacket packet)
         {
-            int messageId = packet.PacketId;
+            var messageId = packet.PacketId;
             var mqttChannel = _channelService.GetMqttChannel(await _channelService.GetDeviceId(context.Channel));
             var message = mqttChannel.GetMqttMessage(messageId);
             if (message != null)
             {
                 message.ConfirmStatus = ConfirmStatus.COMPLETE;
             }
+
             await context.WriteAndFlushAsync(packet);
         }
 
@@ -189,13 +192,14 @@ namespace KissU.Core.Protocol.Mqtt.Implementation
         /// <param name="packet">The packet.</param>
         public async Task PubComp(IChannelHandlerContext context, PubCompPacket packet)
         {
-            int messageId = packet.PacketId;
+            var messageId = packet.PacketId;
             var mqttChannel = _channelService.GetMqttChannel(await _channelService.GetDeviceId(context.Channel));
             var message = mqttChannel.GetMqttMessage(messageId);
             if (message != null)
             {
                 message.ConfirmStatus = ConfirmStatus.COMPLETE;
             }
+
             await context.WriteAndFlushAsync(packet);
         }
 
@@ -216,13 +220,14 @@ namespace KissU.Core.Protocol.Mqtt.Implementation
         /// <param name="packet">The packet.</param>
         public async Task PubRec(IChannelHandlerContext context, PubRecPacket packet)
         {
-            int messageId = packet.PacketId;
+            var messageId = packet.PacketId;
             var mqttChannel = _channelService.GetMqttChannel(await _channelService.GetDeviceId(context.Channel));
-             var message= mqttChannel.GetMqttMessage(messageId);
+            var message = mqttChannel.GetMqttMessage(messageId);
             if (message != null)
             {
                 message.ConfirmStatus = ConfirmStatus.PUBREC;
             }
+
             await _channelService.Pubrec(mqttChannel, messageId);
         }
 
@@ -233,13 +238,14 @@ namespace KissU.Core.Protocol.Mqtt.Implementation
         /// <param name="packet">The packet.</param>
         public async Task PubRel(IChannelHandlerContext context, PubRelPacket packet)
         {
-            int messageId = packet.PacketId;
+            var messageId = packet.PacketId;
             var mqttChannel = _channelService.GetMqttChannel(await _channelService.GetDeviceId(context.Channel));
             var message = mqttChannel.GetMqttMessage(messageId);
             if (message != null)
             {
                 message.ConfirmStatus = ConfirmStatus.PUBREL;
             }
+
             await _channelService.Pubrel(context.Channel, messageId);
         }
 
@@ -250,7 +256,7 @@ namespace KissU.Core.Protocol.Mqtt.Implementation
         /// <param name="packet">The packet.</param>
         public async Task SubAck(IChannelHandlerContext context, SubAckPacket packet)
         {
-           await  context.WriteAndFlushAsync(packet);
+            await context.WriteAndFlushAsync(packet);
         }
 
         /// <summary>
@@ -262,10 +268,11 @@ namespace KissU.Core.Protocol.Mqtt.Implementation
         {
             if (packet != null)
             {
-               var deviceId= await _channelService.GetDeviceId(context.Channel);
+                var deviceId = await _channelService.GetDeviceId(context.Channel);
                 var topics = packet.Requests.Select(p => p.TopicFilter).ToArray();
-                var message = TransportMessage.CreateInvokeMessage(new RemoteInvokeMessage() { ServiceId = $"Subscribe", Parameters=new Dictionary<string, object> { { "packet", packet } } });
-                WirteDiagnosticBefore(message,context.Channel.RemoteAddress.ToString(), deviceId, packet.PacketType); 
+                var message = TransportMessage.CreateInvokeMessage(new RemoteInvokeMessage
+                    {ServiceId = "Subscribe", Parameters = new Dictionary<string, object> {{"packet", packet}}});
+                WirteDiagnosticBefore(message, context.Channel.RemoteAddress.ToString(), deviceId, packet.PacketType);
                 await _channelService.Suscribe(deviceId, topics);
                 await SubAck(context, SubAckPacket.InResponseTo(packet, QualityOfService.ExactlyOnce));
                 WirteDiagnosticAfter(message);
@@ -279,7 +286,7 @@ namespace KissU.Core.Protocol.Mqtt.Implementation
         /// <param name="packet">The packet.</param>
         public async Task UnsubAck(IChannelHandlerContext context, UnsubAckPacket packet)
         {
-           await context.WriteAndFlushAsync(packet);
+            await context.WriteAndFlushAsync(packet);
         }
 
         /// <summary>
@@ -289,29 +296,31 @@ namespace KissU.Core.Protocol.Mqtt.Implementation
         /// <param name="packet">The packet.</param>
         public async Task Unsubscribe(IChannelHandlerContext context, UnsubscribePacket packet)
         {
-            string [] topics = packet.TopicFilters.ToArray();
+            var topics = packet.TopicFilters.ToArray();
             var deviceId = await _channelService.GetDeviceId(context.Channel);
-            var message = TransportMessage.CreateInvokeMessage(new RemoteInvokeMessage() { ServiceId = $"Unsubscribe", Parameters = new Dictionary<string, object> { { "packet", packet } } });
+            var message = TransportMessage.CreateInvokeMessage(new RemoteInvokeMessage
+                {ServiceId = "Unsubscribe", Parameters = new Dictionary<string, object> {{"packet", packet}}});
             WirteDiagnosticBefore(message, context.Channel.RemoteAddress.ToString(), deviceId, packet.PacketType);
             await _channelService.UnSubscribe(deviceId, topics);
-            await  UnsubAck(context, UnsubAckPacket.InResponseTo(packet));
+            await UnsubAck(context, UnsubAckPacket.InResponseTo(packet));
             WirteDiagnosticAfter(message);
         }
 
-        private void WirteDiagnosticBefore(TransportMessage message,string address, string traceId, PacketType packetType)
+        private void WirteDiagnosticBefore(TransportMessage message, string address, string traceId,
+            PacketType packetType)
         {
             if (!AppConfig.ServerOptions.DisableDiagnostic)
             {
                 var diagnosticListener = new DiagnosticListener(DiagnosticListenerExtensions.DiagnosticListenerName);
                 var remoteInvokeMessage = message.GetContent<RemoteInvokeMessage>();
                 diagnosticListener.WriteTransportBefore(TransportType.Mqtt, new TransportEventData(new DiagnosticMessage
-                {
-                    Content = message.Content,
-                    ContentType = message.ContentType,
-                    Id = message.Id,
-                    MessageName = remoteInvokeMessage.ServiceId
-                }, packetType.ToString(),
-                traceId,address ));
+                    {
+                        Content = message.Content,
+                        ContentType = message.ContentType,
+                        Id = message.Id,
+                        MessageName = remoteInvokeMessage.ServiceId
+                    }, packetType.ToString(),
+                    traceId, address));
             }
         }
 

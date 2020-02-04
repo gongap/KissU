@@ -11,8 +11,10 @@ namespace KissU.Core.System.Module
     /// <summary>
     /// 抽象模块业务模块和系统模块的基类。
     /// </summary>
-    /// <remarks><para>创建：范亮</para>
-    /// <para>日期：2015/12/4</para></remarks>
+    /// <remarks>
+    ///     <para>创建：范亮</para>
+    ///     <para>日期：2015/12/4</para>
+    /// </remarks>
     public abstract class AbstractModule : Autofac.Module
     {
         #region 实例属性
@@ -21,49 +23,62 @@ namespace KissU.Core.System.Module
         /// Gets or sets the builder.
         /// </summary>
         public ContainerBuilderWrapper Builder { get; set; }
+
         /// <summary>
         /// 获取或设置模块标识符 GUID 。
         /// </summary>
-        /// <remarks><para>创建：范亮</para>
-        /// <para>日期：2015/12/4</para></remarks>
+        /// <remarks>
+        ///     <para>创建：范亮</para>
+        ///     <para>日期：2015/12/4</para>
+        /// </remarks>
         public Guid Identifier { get; set; }
 
         /// <summary>
         /// 获取或设置模块名称(对应视图目录名称)唯一键。
         /// </summary>
-        /// <remarks><para>创建：范亮</para>
-        /// <para>日期：2015/12/4</para></remarks>
+        /// <remarks>
+        ///     <para>创建：范亮</para>
+        ///     <para>日期：2015/12/4</para>
+        /// </remarks>
 
         public string ModuleName { get; set; }
 
         /// <summary>
         /// 获取或设置模块类型名称(包含程序集名称的限定名)。
         /// </summary>
-        /// <remarks><para>创建：范亮</para>
-        /// <para>日期：2015/12/4</para></remarks>
+        /// <remarks>
+        ///     <para>创建：范亮</para>
+        ///     <para>日期：2015/12/4</para>
+        /// </remarks>
 
         public string TypeName { get; set; }
 
         /// <summary>
         /// 获取或设置模块标题文本。
         /// </summary>
-        /// <remarks><para>创建：范亮</para>
-        /// <para>日期：2015/12/4</para></remarks>
+        /// <remarks>
+        ///     <para>创建：范亮</para>
+        ///     <para>日期：2015/12/4</para>
+        /// </remarks>
 
         public string Title { get; set; }
 
         /// <summary>
         /// 获取或设置模块功能描述。
         /// </summary>
-        /// <remarks><para>创建：范亮</para>
-        /// <para>日期：2015/12/4</para></remarks>
+        /// <remarks>
+        ///     <para>创建：范亮</para>
+        ///     <para>日期：2015/12/4</para>
+        /// </remarks>
         public string Description { get; set; }
 
         /// <summary>
         /// 获取或设置模块组件(定义了接口+实现类)列表。
         /// </summary>
-        /// <remarks><para>创建：范亮</para>
-        /// <para>日期：2015/12/4</para></remarks>
+        /// <remarks>
+        ///     <para>创建：范亮</para>
+        ///     <para>日期：2015/12/4</para>
+        /// </remarks>
         public List<Component> Components { get; set; }
 
         #endregion
@@ -73,8 +88,10 @@ namespace KissU.Core.System.Module
         /// <summary>
         /// 初始化模块，该操作在应用程序启动时执行。
         /// </summary>
-        /// <remarks><para>创建：范亮</para>
-        /// <para>日期：2015/12/4</para></remarks>
+        /// <remarks>
+        ///     <para>创建：范亮</para>
+        ///     <para>日期：2015/12/4</para>
+        /// </remarks>
         public virtual void Initialize()
         {
         }
@@ -104,8 +121,10 @@ namespace KissU.Core.System.Module
         /// 注册构建。
         /// </summary>
         /// <param name="builder">容器构建对象。</param>
-        /// <remarks><para>创建：范亮</para>
-        /// <para>日期：2015/12/4</para></remarks>
+        /// <remarks>
+        ///     <para>创建：范亮</para>
+        ///     <para>日期：2015/12/4</para>
+        /// </remarks>
         protected virtual void RegisterBuilder(ContainerBuilderWrapper builder)
         {
         }
@@ -114,8 +133,10 @@ namespace KissU.Core.System.Module
         /// 注册组件到依赖注入容器。
         /// </summary>
         /// <param name="builder">容器构建对象。</param>
-        /// <remarks><para>创建：范亮</para>
-        /// <para>日期：2015/12/4</para></remarks>
+        /// <remarks>
+        ///     <para>创建：范亮</para>
+        ///     <para>日期：2015/12/4</para>
+        /// </remarks>
         internal virtual void RegisterComponents(ContainerBuilderWrapper builder)
         {
             if (Components != null)
@@ -123,9 +144,9 @@ namespace KissU.Core.System.Module
                 Components.ForEach(component =>
                 {
                     //服务类型
-                    Type serviceType = Type.GetType(component.ServiceType, true);
+                    var serviceType = Type.GetType(component.ServiceType, true);
                     //实现类型
-                    Type implementType = Type.GetType(component.ImplementType, true);
+                    var implementType = Type.GetType(component.ImplementType, true);
                     //组件生命周期
                     switch (component.LifetimeScope)
                     {
@@ -139,8 +160,9 @@ namespace KissU.Core.System.Module
                             {
                                 builder.RegisterType(implementType).As(serviceType).InstancePerDependency();
                             }
+
                             break;
-                        case LifetimeScope.SingleInstance://单例
+                        case LifetimeScope.SingleInstance: //单例
                             if (serviceType.GetTypeInfo().IsGenericType || implementType.GetTypeInfo().IsGenericType)
                             {
                                 builder.RegisterGeneric(implementType).As(serviceType).SingleInstance();
@@ -149,8 +171,9 @@ namespace KissU.Core.System.Module
                             {
                                 builder.RegisterType(implementType).As(serviceType).SingleInstance();
                             }
+
                             break;
-                        default://默认依赖创建
+                        default: //默认依赖创建
                             if (serviceType.GetTypeInfo().IsGenericType || implementType.GetTypeInfo().IsGenericType)
                             {
                                 builder.RegisterGeneric(implementType).As(serviceType).InstancePerDependency();
@@ -159,9 +182,9 @@ namespace KissU.Core.System.Module
                             {
                                 builder.RegisterType(implementType).As(serviceType).InstancePerDependency();
                             }
+
                             break;
                     }
-
                 });
             }
         }
@@ -171,18 +194,20 @@ namespace KissU.Core.System.Module
         /// </summary>
         /// <exception cref="ServiceException">模块属性：Identifier，ModuleName，TypeName，Title 是必须的不能为空！</exception>
         /// <exception cref="ServiceException">模块属性：ModuleName 必须为字母开头数字或下划线的组合！</exception>
-        /// <remarks><para>创建：范亮</para>
-        /// <para>日期：2015/12/4</para></remarks>
+        /// <remarks>
+        ///     <para>创建：范亮</para>
+        ///     <para>日期：2015/12/4</para>
+        /// </remarks>
         public virtual void ValidateModule()
         {
-            if (this.Identifier == Guid.Empty || string.IsNullOrEmpty(this.ModuleName) || string.IsNullOrEmpty(this.TypeName)
-                || string.IsNullOrEmpty(this.Title))
+            if (Identifier == Guid.Empty || string.IsNullOrEmpty(ModuleName) || string.IsNullOrEmpty(TypeName)
+                || string.IsNullOrEmpty(Title))
             {
                 throw new ServiceException("模块属性：Identifier，ModuleName，TypeName，Title 是必须的不能为空！");
             }
 
-            Regex regex = new Regex(@"^[a-zA-Z][a-zA-Z0-9_]*$");
-            if (!regex.IsMatch(this.ModuleName))
+            var regex = new Regex(@"^[a-zA-Z][a-zA-Z0-9_]*$");
+            if (!regex.IsMatch(ModuleName))
             {
                 throw new ServiceException("模块属性：ModuleName 必须为字母开头数字或下划线的组合！");
             }
@@ -192,11 +217,13 @@ namespace KissU.Core.System.Module
         /// 获取模块的字符串文本描述信息。
         /// </summary>
         /// <returns>返回模块对象的字符串文本描述信息。</returns>
-        /// <remarks><para>创建：范亮</para>
-        /// <para>日期：2015/12/4</para></remarks>
+        /// <remarks>
+        ///     <para>创建：范亮</para>
+        ///     <para>日期：2015/12/4</para>
+        /// </remarks>
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             sb.AppendFormat("标识符：{0}", Identifier);
             sb.AppendLine();
             sb.AppendFormat("模块名：{0}", ModuleName);
@@ -209,10 +236,7 @@ namespace KissU.Core.System.Module
             sb.AppendLine();
             sb.AppendFormat("组件详细 {0}个", Components.Count);
             sb.AppendLine();
-            Components.ForEach(c =>
-            {
-                sb.AppendLine(c.ToString());
-            });
+            Components.ForEach(c => { sb.AppendLine(c.ToString()); });
             return sb.ToString();
         }
 

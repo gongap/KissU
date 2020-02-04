@@ -35,18 +35,18 @@ namespace KissU.Core.Protocol.Udp
             builder.Register(provider =>
             {
                 return new DefaultUdpServiceEntryProvider(
-                       provider.Resolve<IServiceEntryProvider>(),
+                    provider.Resolve<IServiceEntryProvider>(),
                     provider.Resolve<ILogger<DefaultUdpServiceEntryProvider>>(),
-                      provider.Resolve<CPlatformContainer>()
-                      );
+                    provider.Resolve<CPlatformContainer>()
+                );
             }).As(typeof(IUdpServiceEntryProvider)).SingleInstance();
             builder.RegisterType(typeof(UdpServiceExecutor)).As(typeof(IServiceExecutor))
-            .Named<IServiceExecutor>(CommunicationProtocol.Udp.ToString()).SingleInstance();
-            if (CPlatform.AppConfig.ServerOptions.Protocol == CommunicationProtocol.Dns)
+                .Named<IServiceExecutor>(CommunicationProtocol.Udp.ToString()).SingleInstance();
+            if (AppConfig.ServerOptions.Protocol == CommunicationProtocol.Dns)
             {
                 RegisterDefaultProtocol(builder);
             }
-            else if (CPlatform.AppConfig.ServerOptions.Protocol == CommunicationProtocol.None)
+            else if (AppConfig.ServerOptions.Protocol == CommunicationProtocol.None)
             {
                 RegisterUdpProtocol(builder);
             }
@@ -56,9 +56,10 @@ namespace KissU.Core.Protocol.Udp
         {
             builder.Register(provider =>
             {
-                return new DotNettyUdpServerMessageListener(provider.Resolve<ILogger<DotNettyUdpServerMessageListener>>(),
-                      provider.Resolve<ITransportMessageCodecFactory>()
-                      );
+                return new DotNettyUdpServerMessageListener(
+                    provider.Resolve<ILogger<DotNettyUdpServerMessageListener>>(),
+                    provider.Resolve<ITransportMessageCodecFactory>()
+                );
             }).SingleInstance();
             builder.Register(provider =>
             {
@@ -69,18 +70,17 @@ namespace KissU.Core.Protocol.Udp
                     await messageListener.StartAsync(endPoint);
                     return messageListener;
                 }, serviceExecutor);
-
             }).As<IServiceHost>();
         }
 
         private static void RegisterUdpProtocol(ContainerBuilderWrapper builder)
         {
-
             builder.Register(provider =>
             {
-                return new DotNettyUdpServerMessageListener(provider.Resolve<ILogger<DotNettyUdpServerMessageListener>>(),
-                      provider.Resolve<ITransportMessageCodecFactory>()
-                      );
+                return new DotNettyUdpServerMessageListener(
+                    provider.Resolve<ILogger<DotNettyUdpServerMessageListener>>(),
+                    provider.Resolve<ITransportMessageCodecFactory>()
+                );
             }).SingleInstance();
             builder.Register(provider =>
             {
@@ -91,7 +91,6 @@ namespace KissU.Core.Protocol.Udp
                     await messageListener.StartAsync(endPoint);
                     return messageListener;
                 }, serviceExecutor);
-
             }).As<IServiceHost>();
         }
     }

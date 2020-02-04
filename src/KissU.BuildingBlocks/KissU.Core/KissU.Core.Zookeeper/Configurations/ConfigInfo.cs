@@ -29,14 +29,14 @@ namespace KissU.Core.Zookeeper.Configurations
             string mqttRoutePath = "/services/mqttServiceRoutes",
             string chRoot = null,
             bool reloadOnChange = false, bool enableChildrenMonitor = false) : this(connectionString,
-                TimeSpan.FromSeconds(20),
-                routePath,
-                subscriberPath,
-                commandPath,
-                cachePath,
-                mqttRoutePath,
-                chRoot,
-                reloadOnChange, enableChildrenMonitor)
+            TimeSpan.FromSeconds(20),
+            routePath,
+            subscriberPath,
+            commandPath,
+            cachePath,
+            mqttRoutePath,
+            chRoot,
+            reloadOnChange, enableChildrenMonitor)
         {
         }
 
@@ -53,7 +53,8 @@ namespace KissU.Core.Zookeeper.Configurations
         /// <param name="chRoot">根节点。</param>
         /// <param name="reloadOnChange">if set to <c>true</c> [reload on change].</param>
         /// <param name="enableChildrenMonitor">if set to <c>true</c> [enable children monitor].</param>
-        public ConfigInfo(string connectionString, TimeSpan sessionTimeout, string routePath = "/services/serviceRoutes",
+        public ConfigInfo(string connectionString, TimeSpan sessionTimeout,
+            string routePath = "/services/serviceRoutes",
             string subscriberPath = "/services/serviceSubscribers",
             string commandPath = "/services/serviceCommands",
             string cachePath = "/services/serviceCaches",
@@ -84,7 +85,7 @@ namespace KissU.Core.Zookeeper.Configurations
                     if (address != null)
                     {
                         var ipAddress = address as IpAddressModel;
-                        Addresses = new IpAddressModel[] { ipAddress};
+                        Addresses = new[] {ipAddress};
                     }
                 }
             }
@@ -161,6 +162,7 @@ namespace KissU.Core.Zookeeper.Configurations
                 int.TryParse(address[1], out port);
                 return new IpAddressModel(address[0], port);
             }
+
             return null;
         }
     }

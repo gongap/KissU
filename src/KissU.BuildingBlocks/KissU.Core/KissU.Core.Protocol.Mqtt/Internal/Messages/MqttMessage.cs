@@ -14,13 +14,15 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Messages
         public abstract MessageType MessageType { get; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="MqttMessage"/> is duplicate.
+        /// Gets or sets a value indicating whether this <see cref="MqttMessage" /> is duplicate.
         /// </summary>
         public virtual bool Duplicate { get; set; }
+
         /// <summary>
         /// Gets or sets the qos.
         /// </summary>
-        public virtual int Qos { get; set; } =(int) QualityOfService.AtMostOnce;
+        public virtual int Qos { get; set; } = (int) QualityOfService.AtMostOnce;
+
         /// <summary>
         /// Gets or sets a value indicating whether [retain requested].
         /// </summary>
@@ -33,7 +35,7 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Messages
         /// <returns>A <see cref="System.String" /> that represents this instance.</returns>
         public override string ToString()
         {
-            return $"{this.GetType().Name}[Qos={this.Qos}, Duplicate={this.Duplicate}, Retain={this.RetainRequested}]";
+            return $"{GetType().Name}[Qos={Qos}, Duplicate={Duplicate}, Retain={RetainRequested}]";
         }
     }
 }

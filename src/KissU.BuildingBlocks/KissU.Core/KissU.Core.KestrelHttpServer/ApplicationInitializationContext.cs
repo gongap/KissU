@@ -12,16 +12,16 @@ namespace KissU.Core.KestrelHttpServer
     public class ApplicationInitializationContext
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ApplicationInitializationContext"/> class.
+        /// Initializes a new instance of the <see cref="ApplicationInitializationContext" /> class.
         /// </summary>
         /// <param name="builder">The builder.</param>
         /// <param name="modules">The modules.</param>
         /// <param name="virtualPaths">The virtual paths.</param>
         /// <param name="configuration">The configuration.</param>
         public ApplicationInitializationContext(IApplicationBuilder builder,
-    List<AbstractModule> modules,
-    string[] virtualPaths,
-   IConfigurationRoot configuration)
+            List<AbstractModule> modules,
+            string[] virtualPaths,
+            IConfigurationRoot configuration)
         {
             Builder = Check.NotNull(builder, nameof(builder));
             Modules = Check.NotNull(modules, nameof(modules));

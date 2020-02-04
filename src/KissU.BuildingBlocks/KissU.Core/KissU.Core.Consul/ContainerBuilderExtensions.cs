@@ -36,15 +36,15 @@ namespace KissU.Core.Consul
         public static IServiceBuilder UseConsulRouteManager(this IServiceBuilder builder, ConfigInfo configInfo)
         {
             return builder.UseRouteManager(provider =>
-             new ConsulServiceRouteManager(
-                GetConfigInfo(configInfo),
-                provider.GetRequiredService<ISerializer<byte[]>>(),
-                provider.GetRequiredService<ISerializer<string>>(),
-                provider.GetRequiredService<IClientWatchManager>(),
-                provider.GetRequiredService<IServiceRouteFactory>(),
-                provider.GetRequiredService<ILogger<ConsulServiceRouteManager>>(),
-                provider.GetRequiredService<IServiceHeartbeatManager>(),
-                provider.GetRequiredService<IConsulClientProvider>()));
+                new ConsulServiceRouteManager(
+                    GetConfigInfo(configInfo),
+                    provider.GetRequiredService<ISerializer<byte[]>>(),
+                    provider.GetRequiredService<ISerializer<string>>(),
+                    provider.GetRequiredService<IClientWatchManager>(),
+                    provider.GetRequiredService<IServiceRouteFactory>(),
+                    provider.GetRequiredService<ILogger<ConsulServiceRouteManager>>(),
+                    provider.GetRequiredService<IServiceHeartbeatManager>(),
+                    provider.GetRequiredService<IConsulClientProvider>()));
         }
 
         /// <summary>
@@ -56,14 +56,14 @@ namespace KissU.Core.Consul
         public static IServiceBuilder UseConsulCacheManager(this IServiceBuilder builder, ConfigInfo configInfo)
         {
             return builder.UseCacheManager(provider =>
-             new ConsulServiceCacheManager(
-                GetConfigInfo(configInfo),
-                provider.GetRequiredService<ISerializer<byte[]>>(),
-                provider.GetRequiredService<ISerializer<string>>(),
-                provider.GetRequiredService<IClientWatchManager>(),
-                provider.GetRequiredService<IServiceCacheFactory>(),
-                provider.GetRequiredService<ILogger<ConsulServiceCacheManager>>(),
-                provider.GetRequiredService<IConsulClientProvider>()));
+                new ConsulServiceCacheManager(
+                    GetConfigInfo(configInfo),
+                    provider.GetRequiredService<ISerializer<byte[]>>(),
+                    provider.GetRequiredService<ISerializer<string>>(),
+                    provider.GetRequiredService<IClientWatchManager>(),
+                    provider.GetRequiredService<IServiceCacheFactory>(),
+                    provider.GetRequiredService<ILogger<ConsulServiceCacheManager>>(),
+                    provider.GetRequiredService<IConsulClientProvider>()));
         }
 
         /// <summary>
@@ -99,15 +99,15 @@ namespace KissU.Core.Consul
         public static IServiceBuilder UseConsulMqttRouteManager(this IServiceBuilder builder, ConfigInfo configInfo)
         {
             return builder.UseMqttRouteManager(provider =>
-             new ConsulMqttServiceRouteManager(
-                 GetConfigInfo(configInfo),
-                provider.GetRequiredService<ISerializer<byte[]>>(),
-                provider.GetRequiredService<ISerializer<string>>(),
-                provider.GetRequiredService<IClientWatchManager>(),
-                provider.GetRequiredService<IMqttServiceFactory>(),
-                provider.GetRequiredService<ILogger<ConsulMqttServiceRouteManager>>(),
-                provider.GetRequiredService<IServiceHeartbeatManager>(),
-                provider.GetRequiredService<IConsulClientProvider>()));
+                new ConsulMqttServiceRouteManager(
+                    GetConfigInfo(configInfo),
+                    provider.GetRequiredService<ISerializer<byte[]>>(),
+                    provider.GetRequiredService<ISerializer<string>>(),
+                    provider.GetRequiredService<IClientWatchManager>(),
+                    provider.GetRequiredService<IMqttServiceFactory>(),
+                    provider.GetRequiredService<ILogger<ConsulMqttServiceRouteManager>>(),
+                    provider.GetRequiredService<IServiceHeartbeatManager>(),
+                    provider.GetRequiredService<IConsulClientProvider>()));
         }
 
         /// <summary>
@@ -116,7 +116,8 @@ namespace KissU.Core.Consul
         /// <param name="builder">The builder.</param>
         /// <param name="configInfo">The configuration information.</param>
         /// <returns>IServiceBuilder.</returns>
-        public static IServiceBuilder UseConsulServiceSubscribeManager(this IServiceBuilder builder, ConfigInfo configInfo)
+        public static IServiceBuilder UseConsulServiceSubscribeManager(this IServiceBuilder builder,
+            ConfigInfo configInfo)
         {
             return builder.UseSubscribeManager(provider =>
             {
@@ -127,7 +128,7 @@ namespace KissU.Core.Consul
                     provider.GetRequiredService<IClientWatchManager>(),
                     provider.GetRequiredService<IServiceSubscriberFactory>(),
                     provider.GetRequiredService<ILogger<ConsulServiceSubscribeManager>>(),
-               provider.GetRequiredService<IConsulClientProvider>());
+                    provider.GetRequiredService<IConsulClientProvider>());
                 return result;
             });
         }
@@ -179,11 +180,12 @@ namespace KissU.Core.Consul
         public static IServiceBuilder UseCounlClientProvider(this IServiceBuilder builder, ConfigInfo configInfo)
         {
             builder.Services.Register(provider =>
-              new DefaultConsulClientProvider(
-                GetConfigInfo(configInfo),
-                provider.Resolve<IHealthCheckService>(),
-                provider.Resolve<IConsulAddressSelector>(),
-                provider.Resolve<ILogger<DefaultConsulClientProvider>>())).As<IConsulClientProvider>().SingleInstance();
+                    new DefaultConsulClientProvider(
+                        GetConfigInfo(configInfo),
+                        provider.Resolve<IHealthCheckService>(),
+                        provider.Resolve<IConsulAddressSelector>(),
+                        provider.Resolve<ILogger<DefaultConsulClientProvider>>())).As<IConsulClientProvider>()
+                .SingleInstance();
             return builder;
         }
 
@@ -239,7 +241,7 @@ namespace KissU.Core.Consul
             if (option != null)
             {
                 var sessionTimeout = config.SessionTimeout.TotalSeconds;
-                Double.TryParse(option.SessionTimeout, out sessionTimeout);
+                double.TryParse(option.SessionTimeout, out sessionTimeout);
                 config = new ConfigInfo(
                     option.ConnectionString,
                     TimeSpan.FromSeconds(sessionTimeout),
@@ -249,12 +251,13 @@ namespace KissU.Core.Consul
                     option.CommandPath ?? config.CommandPath,
                     option.CachePath ?? config.CachePath,
                     option.MqttRoutePath ?? config.MqttRoutePath,
-                    option.ReloadOnChange != null ? bool.Parse(option.ReloadOnChange) :
-                    config.ReloadOnChange,
-                    option.EnableChildrenMonitor != null ? bool.Parse(option.EnableChildrenMonitor) :
-                    config.EnableChildrenMonitor
-                   );
+                    option.ReloadOnChange != null ? bool.Parse(option.ReloadOnChange) : config.ReloadOnChange,
+                    option.EnableChildrenMonitor != null
+                        ? bool.Parse(option.EnableChildrenMonitor)
+                        : config.EnableChildrenMonitor
+                );
             }
+
             return config;
         }
     }

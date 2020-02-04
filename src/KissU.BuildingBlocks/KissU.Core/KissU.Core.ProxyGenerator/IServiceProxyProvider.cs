@@ -6,7 +6,7 @@ namespace KissU.Core.ProxyGenerator
     /// <summary>
     /// 代理服务接口
     /// </summary>
-    public interface  IServiceProxyProvider
+    public interface IServiceProxyProvider
     {
         /// <summary>
         /// Invokes the specified parameters.
@@ -25,6 +25,6 @@ namespace KissU.Core.ProxyGenerator
         /// <param name="routePath">The route path.</param>
         /// <param name="serviceKey">The service key.</param>
         /// <returns>Task&lt;T&gt;.</returns>
-        Task<T> Invoke<T>(IDictionary<string, object> parameters, string routePath,string serviceKey);
+        Task<T> Invoke<T>(IDictionary<string, object> parameters, string routePath, string serviceKey);
     }
 }

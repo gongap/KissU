@@ -1,10 +1,8 @@
-﻿using Microsoft.Extensions.Logging;
-using Serilog;
-using Serilog.Events;
-using Serilog.Formatting.Elasticsearch;
-using KissU.Core.CPlatform;
+﻿using KissU.Core.CPlatform;
 using KissU.Core.CPlatform.Module;
 using KissU.Core.ServiceHosting.Internal;
+using Microsoft.Extensions.Logging;
+using Serilog;
 
 namespace KissU.Core.Serilog
 {
@@ -13,7 +11,7 @@ namespace KissU.Core.Serilog
     /// Implements the <see cref="EnginePartModule" />
     /// </summary>
     /// <seealso cref="EnginePartModule" />
-    public class SerilogModule: EnginePartModule
+    public class SerilogModule : EnginePartModule
     {
         /// <summary>
         /// Initializes the specified context.
@@ -31,7 +29,7 @@ namespace KissU.Core.Serilog
                 //    //config.Filter.ByIncludingOnly(evt => evt.Level == LogEventLevel.Information).ReadFrom.Configuration(AppConfig.Configuration.GetSection("Information"))
                 //})
                 .CreateLogger();
-            
+
             serviceProvider.GetInstances<ILoggerFactory>().AddSerilog(logger);
             serviceProvider.GetInstances<IApplicationLifetime>().ApplicationStopped.Register(Log.CloseAndFlush);
         }

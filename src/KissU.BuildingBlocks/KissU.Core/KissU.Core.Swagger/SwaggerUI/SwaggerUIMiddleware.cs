@@ -29,7 +29,7 @@ namespace KissU.Core.Swagger.SwaggerUI
         private readonly StaticFileMiddleware _staticFileMiddleware;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SwaggerUIMiddleware"/> class.
+        /// Initializes a new instance of the <see cref="SwaggerUIMiddleware" /> class.
         /// </summary>
         /// <param name="next">The next.</param>
         /// <param name="hostingEnv">The hosting env.</param>
@@ -41,10 +41,11 @@ namespace KissU.Core.Swagger.SwaggerUI
             ILoggerFactory loggerFactory,
             IOptions<SwaggerUIOptions> optionsAccessor)
             : this(next, hostingEnv, loggerFactory, optionsAccessor.Value)
-        { }
+        {
+        }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SwaggerUIMiddleware"/> class.
+        /// Initializes a new instance of the <see cref="SwaggerUIMiddleware" /> class.
         /// </summary>
         /// <param name="next">The next.</param>
         /// <param name="hostingEnv">The hosting env.</param>
@@ -116,12 +117,12 @@ namespace KissU.Core.Swagger.SwaggerUI
 
         private IDictionary<string, string> GetIndexArguments()
         {
-            return new Dictionary<string, string>()
+            return new Dictionary<string, string>
             {
-                { "%(DocumentTitle)", _options.DocumentTitle },
-                { "%(HeadContent)", _options.HeadContent },
-                { "%(ConfigObject)", SerializeToJson(_options.ConfigObject) },
-                { "%(OAuthConfigObject)", SerializeToJson(_options.OAuthConfigObject) }
+                {"%(DocumentTitle)", _options.DocumentTitle},
+                {"%(HeadContent)", _options.HeadContent},
+                {"%(ConfigObject)", SerializeToJson(_options.ConfigObject)},
+                {"%(OAuthConfigObject)", SerializeToJson(_options.OAuthConfigObject)}
             };
         }
 
@@ -130,7 +131,7 @@ namespace KissU.Core.Swagger.SwaggerUI
             return JsonConvert.SerializeObject(obj, new JsonSerializerSettings
             {
                 ContractResolver = new CamelCasePropertyNamesContractResolver(),
-                Converters = new[] { new StringEnumConverter(true) },
+                Converters = new[] {new StringEnumConverter(true)},
                 NullValueHandling = NullValueHandling.Ignore,
                 Formatting = Formatting.None,
                 StringEscapeHandling = StringEscapeHandling.EscapeHtml
@@ -146,7 +147,8 @@ namespace KissU.Core.Swagger.SwaggerUI
             var staticFileOptions = new StaticFileOptions
             {
                 RequestPath = string.IsNullOrEmpty(options.RoutePrefix) ? string.Empty : $"/{options.RoutePrefix}",
-                FileProvider = new EmbeddedFileProvider(typeof(SwaggerUIMiddleware).GetTypeInfo().Assembly, EmbeddedFileNamespace),
+                FileProvider = new EmbeddedFileProvider(typeof(SwaggerUIMiddleware).GetTypeInfo().Assembly,
+                    EmbeddedFileNamespace)
             };
 
             return new StaticFileMiddleware(next, hostingEnv, Options.Create(staticFileOptions), loggerFactory);

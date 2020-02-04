@@ -27,10 +27,10 @@ namespace KissU.Core.ServiceHosting.Extensions
             serviceProvider.GetInstances<IServiceEngineLifetime>().ServiceEngineStarted.Register(() =>
             {
                 var provider = serviceProvider.GetInstances<IBackgroundServiceEntryProvider>();
-                var entries =  provider.GetEntries();
-                foreach(var entry in entries)
+                var entries = provider.GetEntries();
+                foreach (var entry in entries)
                 {
-                     var cts = new CancellationTokenSource();
+                    var cts = new CancellationTokenSource();
                     Task.Run(() =>
                     {
                         try
@@ -56,10 +56,10 @@ namespace KissU.Core.ServiceHosting.Extensions
             builder.Register(provider =>
             {
                 return new DefaultBackgroundServiceEntryProvider(
-                       provider.Resolve<IServiceEntryProvider>(),
+                    provider.Resolve<IServiceEntryProvider>(),
                     provider.Resolve<ILogger<DefaultBackgroundServiceEntryProvider>>(),
-                      provider.Resolve<CPlatformContainer>()
-                      );
+                    provider.Resolve<CPlatformContainer>()
+                );
             }).As(typeof(IBackgroundServiceEntryProvider)).SingleInstance();
         }
     }

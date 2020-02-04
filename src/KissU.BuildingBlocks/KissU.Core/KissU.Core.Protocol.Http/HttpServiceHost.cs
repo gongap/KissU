@@ -13,22 +13,23 @@ namespace KissU.Core.Protocol.Http
     /// </summary>
     public class HttpServiceHost : ServiceHostAbstract
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HttpServiceHost" /> class.
+        /// </summary>
+        /// <param name="messageListenerFactory">The message listener factory.</param>
+        /// <param name="serviceExecutor">The service executor.</param>
+        public HttpServiceHost(Func<EndPoint, Task<IMessageListener>> messageListenerFactory,
+            IServiceExecutor serviceExecutor) : base(serviceExecutor)
+        {
+            _messageListenerFactory = messageListenerFactory;
+        }
+
         #region Field
 
         private readonly Func<EndPoint, Task<IMessageListener>> _messageListenerFactory;
         private IMessageListener _serverMessageListener;
 
         #endregion Field
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="HttpServiceHost"/> class.
-        /// </summary>
-        /// <param name="messageListenerFactory">The message listener factory.</param>
-        /// <param name="serviceExecutor">The service executor.</param>
-        public HttpServiceHost(Func<EndPoint, Task<IMessageListener>> messageListenerFactory, IServiceExecutor serviceExecutor) : base(serviceExecutor)
-        {
-            _messageListenerFactory = messageListenerFactory;
-        }
 
         #region Overrides of ServiceHostAbstract
 
@@ -52,10 +53,7 @@ namespace KissU.Core.Protocol.Http
             _serverMessageListener = await _messageListenerFactory(endPoint);
             _serverMessageListener.Received += async (sender, message) =>
             {
-                await Task.Run(() =>
-                {
-                    MessageListener.OnReceived(sender, message);
-                });
+                await Task.Run(() => { MessageListener.OnReceived(sender, message); });
             };
         }
 
@@ -64,17 +62,16 @@ namespace KissU.Core.Protocol.Http
         /// </summary>
         /// <param name="ip">The ip.</param>
         /// <param name="port">The port.</param>
-        public override async Task StartAsync(string ip,int port)
+        public override async Task StartAsync(string ip, int port)
         {
             if (_serverMessageListener != null)
                 return;
-            _serverMessageListener = await _messageListenerFactory(new IPEndPoint(IPAddress.Parse(ip), AppConfig.ServerOptions.Ports.HttpPort??0));
+            _serverMessageListener =
+                await _messageListenerFactory(new IPEndPoint(IPAddress.Parse(ip),
+                    AppConfig.ServerOptions.Ports.HttpPort ?? 0));
             _serverMessageListener.Received += async (sender, message) =>
             {
-                await Task.Run(() =>
-                {
-                    MessageListener.OnReceived(sender, message);
-                });
+                await Task.Run(() => { MessageListener.OnReceived(sender, message); });
             };
         }
 

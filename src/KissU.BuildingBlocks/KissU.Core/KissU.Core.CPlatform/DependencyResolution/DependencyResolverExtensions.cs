@@ -21,7 +21,7 @@ namespace KissU.Core.CPlatform.DependencyResolution
         {
             Check.NotNull(resolver, "resolver");
 
-            return (T)resolver.GetService(typeof(T), key);
+            return (T) resolver.GetService(typeof(T), key);
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace KissU.Core.CPlatform.DependencyResolution
         public static T GetService<T>(this IDependencyResolver resolver)
         {
             Check.NotNull(resolver, "resolver");
-            return (T)resolver.GetService(typeof(T), null);
+            return (T) resolver.GetService(typeof(T), null);
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace KissU.Core.CPlatform.DependencyResolution
             DebugCheck.NotNull(resolver);
 
             var service = resolver.GetService(type, key);
-            return service == null ? Enumerable.Empty<object>() : new[] { service };
+            return service == null ? Enumerable.Empty<object>() : new[] {service};
         }
     }
 }

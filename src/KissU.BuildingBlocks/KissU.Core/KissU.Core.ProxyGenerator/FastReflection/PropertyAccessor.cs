@@ -35,20 +35,20 @@ namespace KissU.Core.ProxyGenerator.FastReflection
         private MethodInvoker m_setMethodInvoker;
 
         /// <summary>
-        /// Gets the property information.
-        /// </summary>
-        public PropertyInfo PropertyInfo { get; private set; }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PropertyAccessor"/> class.
+        /// Initializes a new instance of the <see cref="PropertyAccessor" /> class.
         /// </summary>
         /// <param name="propertyInfo">The property information.</param>
         public PropertyAccessor(PropertyInfo propertyInfo)
         {
-            this.PropertyInfo = propertyInfo;
-            this.InitializeGet(propertyInfo);
-            this.InitializeSet(propertyInfo);
+            PropertyInfo = propertyInfo;
+            InitializeGet(propertyInfo);
+            InitializeSet(propertyInfo);
         }
+
+        /// <summary>
+        /// Gets the property information.
+        /// </summary>
+        public PropertyInfo PropertyInfo { get; }
 
         private void InitializeGet(PropertyInfo propertyInfo)
         {
@@ -60,8 +60,9 @@ namespace KissU.Core.ProxyGenerator.FastReflection
             var instance = Expression.Parameter(typeof(object), "instance");
 
             // non-instance for static method, or ((TInstance)instance)
-            var instanceCast = propertyInfo.GetGetMethod(true).IsStatic ? null :
-                Expression.Convert(instance, propertyInfo.ReflectedType);
+            var instanceCast = propertyInfo.GetGetMethod(true).IsStatic
+                ? null
+                : Expression.Convert(instance, propertyInfo.ReflectedType);
 
             // ((TInstance)instance).Property
             var propertyAccess = Expression.Property(instanceCast, propertyInfo);
@@ -72,13 +73,13 @@ namespace KissU.Core.ProxyGenerator.FastReflection
             // Lambda expression
             var lambda = Expression.Lambda<Func<object, object>>(castPropertyValue, instance);
 
-            this.m_getter = lambda.Compile();
+            m_getter = lambda.Compile();
         }
 
         private void InitializeSet(PropertyInfo propertyInfo)
         {
             if (!propertyInfo.CanWrite) return;
-            this.m_setMethodInvoker = new MethodInvoker(propertyInfo.GetSetMethod(true));
+            m_setMethodInvoker = new MethodInvoker(propertyInfo.GetSetMethod(true));
         }
 
         /// <summary>
@@ -89,12 +90,12 @@ namespace KissU.Core.ProxyGenerator.FastReflection
         /// <exception cref="NotSupportedException">Get method is not defined for this property.</exception>
         public object GetValue(object o)
         {
-            if (this.m_getter == null)
+            if (m_getter == null)
             {
                 throw new NotSupportedException("Get method is not defined for this property.");
             }
 
-            return this.m_getter(o);
+            return m_getter(o);
         }
 
         /// <summary>
@@ -105,27 +106,26 @@ namespace KissU.Core.ProxyGenerator.FastReflection
         /// <exception cref="NotSupportedException">Set method is not defined for this property.</exception>
         public void SetValue(object o, object value)
         {
-            if (this.m_setMethodInvoker == null)
+            if (m_setMethodInvoker == null)
             {
                 throw new NotSupportedException("Set method is not defined for this property.");
             }
 
-            this.m_setMethodInvoker.Invoke(o, new object[] { value });
+            m_setMethodInvoker.Invoke(o, value);
         }
 
         #region IPropertyAccessor Members
 
         object IPropertyAccessor.GetValue(object instance)
         {
-            return this.GetValue(instance);
+            return GetValue(instance);
         }
 
         void IPropertyAccessor.SetValue(object instance, object value)
         {
-            this.SetValue(instance, value);
+            SetValue(instance, value);
         }
 
         #endregion
     }
 }
-

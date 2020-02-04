@@ -23,6 +23,6 @@
         /// <summary>
         /// The production
         /// </summary>
-        Production,
+        Production
     }
 }

@@ -28,6 +28,6 @@
         /// <summary>
         /// The cache
         /// </summary>
-        CACHE = 5,
+        CACHE = 5
     }
 }

@@ -14,18 +14,16 @@ namespace KissU.Core.ProxyGenerator.Interceptors
         /// The composition invocation constructor
         /// </summary>
         public static readonly ConstructorInfo CompositionInvocationConstructor =
-        typeof(ActionInvocation).GetConstructor(BindingFlags.Instance | BindingFlags.NonPublic, null,
-                                                     new[]
-                                                     {
-                                                             typeof(IDictionary<string, object>),
-                                                             typeof(string),
-                                                             typeof(string[]),
-                                                             typeof(List<Attribute>),
-                                                             typeof(Type),
-                                                             typeof(object)
-                                                     },
-                                                     null);
-
-
+            typeof(ActionInvocation).GetConstructor(BindingFlags.Instance | BindingFlags.NonPublic, null,
+                new[]
+                {
+                    typeof(IDictionary<string, object>),
+                    typeof(string),
+                    typeof(string[]),
+                    typeof(List<Attribute>),
+                    typeof(Type),
+                    typeof(object)
+                },
+                null);
     }
 }

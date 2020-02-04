@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Autofac;
 using KissU.Core.ApiGateWay;
 using KissU.Core.ApiGateWay.OAuth;
@@ -21,13 +20,15 @@ namespace KissU.Core.Stage.Filters
     public class AuthorizationFilterAttribute : IAuthorizationFilter
     {
         private readonly IAuthorizationServerProvider _authorizationServerProvider;
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="AuthorizationFilterAttribute"/> class.
+        /// Initializes a new instance of the <see cref="AuthorizationFilterAttribute" /> class.
         /// </summary>
         public AuthorizationFilterAttribute()
         {
             _authorizationServerProvider = ServiceLocator.Current.Resolve<IAuthorizationServerProvider>();
         }
+
         /// <summary>
         /// Called when [authorization].
         /// </summary>
@@ -36,7 +37,8 @@ namespace KissU.Core.Stage.Filters
         {
             var gatewayAppConfig = AppConfig.Options.ApiGetWay;
             if (filterContext.Route != null && filterContext.Route.ServiceDescriptor.DisableNetwork())
-                filterContext.Result = new HttpResultMessage<object> { IsSucceed = false, StatusCode = (int)ServiceStatusCode.RequestError, Message = "Request error" };
+                filterContext.Result = new HttpResultMessage<object>
+                    {IsSucceed = false, StatusCode = (int) ServiceStatusCode.RequestError, Message = "Request error"};
             else
             {
                 if (filterContext.Route != null && filterContext.Route.ServiceDescriptor.EnableAuthorization())
@@ -49,7 +51,11 @@ namespace KissU.Core.Stage.Filters
                             var isSuccess = await _authorizationServerProvider.ValidateClientAuthentication(author);
                             if (!isSuccess)
                             {
-                                filterContext.Result = new HttpResultMessage<object> { IsSucceed = false, StatusCode = (int)ServiceStatusCode.AuthorizationFailed, Message = "Invalid authentication credentials" };
+                                filterContext.Result = new HttpResultMessage<object>
+                                {
+                                    IsSucceed = false, StatusCode = (int) ServiceStatusCode.AuthorizationFailed,
+                                    Message = "Invalid authentication credentials"
+                                };
                             }
                             else
                             {
@@ -58,16 +64,17 @@ namespace KissU.Core.Stage.Filters
                             }
                         }
                         else
-                            filterContext.Result = new HttpResultMessage<object> { IsSucceed = false, StatusCode = (int)ServiceStatusCode.AuthorizationFailed, Message = "Invalid authentication credentials" };
-
+                            filterContext.Result = new HttpResultMessage<object>
+                            {
+                                IsSucceed = false, StatusCode = (int) ServiceStatusCode.AuthorizationFailed,
+                                Message = "Invalid authentication credentials"
+                            };
                     }
                 }
             }
-          
-            if (String.Compare(filterContext.Path.ToLower(), gatewayAppConfig.TokenEndpointPath, true) == 0)
-                filterContext.Context.Items.Add("path", gatewayAppConfig.AuthorizationRoutePath);
 
+            if (string.Compare(filterContext.Path.ToLower(), gatewayAppConfig.TokenEndpointPath, true) == 0)
+                filterContext.Context.Items.Add("path", gatewayAppConfig.AuthorizationRoutePath);
         }
     }
 }
- 

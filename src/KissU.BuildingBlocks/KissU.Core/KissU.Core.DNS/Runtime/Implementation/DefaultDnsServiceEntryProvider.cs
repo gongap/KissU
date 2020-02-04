@@ -15,21 +15,12 @@ namespace KissU.Core.DNS.Runtime.Implementation
     /// Implements the <see cref="KissU.Core.DNS.Runtime.IDnsServiceEntryProvider" />
     /// </summary>
     /// <seealso cref="KissU.Core.DNS.Runtime.IDnsServiceEntryProvider" />
-    public class DefaultDnsServiceEntryProvider:IDnsServiceEntryProvider
+    public class DefaultDnsServiceEntryProvider : IDnsServiceEntryProvider
     {
-        #region Field
-
-        private readonly IEnumerable<Type> _types;
-        private readonly ILogger<DefaultDnsServiceEntryProvider> _logger;
-        private readonly CPlatformContainer _serviceProvider;
-        private  DnsServiceEntry _dnsServiceEntry;
-
-        #endregion Field
-
         #region Constructor
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DefaultDnsServiceEntryProvider"/> class.
+        /// Initializes a new instance of the <see cref="DefaultDnsServiceEntryProvider" /> class.
         /// </summary>
         /// <param name="serviceEntryProvider">The service entry provider.</param>
         /// <param name="logger">The logger.</param>
@@ -40,7 +31,7 @@ namespace KissU.Core.DNS.Runtime.Implementation
         {
             _types = serviceEntryProvider.GetTypes();
             _logger = logger;
-            _serviceProvider = serviceProvider; 
+            _serviceProvider = serviceProvider;
         }
 
         #endregion Constructor
@@ -56,7 +47,7 @@ namespace KissU.Core.DNS.Runtime.Implementation
             var services = _types.ToArray();
             if (_dnsServiceEntry == null)
             {
-                _dnsServiceEntry =new DnsServiceEntry();
+                _dnsServiceEntry = new DnsServiceEntry();
                 foreach (var service in services)
                 {
                     var entry = CreateServiceEntry(service);
@@ -66,13 +57,16 @@ namespace KissU.Core.DNS.Runtime.Implementation
                         break;
                     }
                 }
+
                 if (_logger.IsEnabled(LogLevel.Debug))
                 {
                     _logger.LogDebug($"发现了以下dns服务：{_dnsServiceEntry.Type.FullName}。");
                 }
             }
+
             return _dnsServiceEntry;
         }
+
         #endregion
 
         /// <summary>
@@ -94,9 +88,18 @@ namespace KissU.Core.DNS.Runtime.Implementation
                 {
                     Behavior = behavior,
                     Type = behavior.GetType(),
-                    Path = path,
+                    Path = path
                 };
             return result;
         }
+
+        #region Field
+
+        private readonly IEnumerable<Type> _types;
+        private readonly ILogger<DefaultDnsServiceEntryProvider> _logger;
+        private readonly CPlatformContainer _serviceProvider;
+        private DnsServiceEntry _dnsServiceEntry;
+
+        #endregion Field
     }
 }

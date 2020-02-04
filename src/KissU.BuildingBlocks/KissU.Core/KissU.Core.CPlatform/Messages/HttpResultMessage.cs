@@ -26,7 +26,7 @@
             {
                 IsSucceed = successd,
                 Message = message,
-                Data = data,
+                Data = data
             };
         }
 
@@ -41,7 +41,7 @@
             return new HttpResultMessage<T>
             {
                 IsSucceed = successd,
-                Data = data,
+                Data = data
             };
         }
     }
@@ -85,7 +85,7 @@
         /// <returns>返回服务数据集</returns>
         public static HttpResultMessage Error(string message)
         {
-            return new HttpResultMessage { Message = message, IsSucceed = false };
+            return new HttpResultMessage {Message = message, IsSucceed = false};
         }
 
         /// <summary>
@@ -97,7 +97,7 @@
         /// <returns>返回服务数据集</returns>
         public static HttpResultMessage Create(bool success, string successMessage = "", string errorMessage = "")
         {
-            return new HttpResultMessage { Message = success ? successMessage : errorMessage, IsSucceed = success };
+            return new HttpResultMessage {Message = success ? successMessage : errorMessage, IsSucceed = success};
         }
     }
 }

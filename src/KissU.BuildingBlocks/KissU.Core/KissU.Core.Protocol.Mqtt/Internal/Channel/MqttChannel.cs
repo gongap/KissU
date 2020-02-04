@@ -18,30 +18,37 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Channel
         /// Gets or sets the channel.
         /// </summary>
         public IChannel Channel { get; set; }
+
         /// <summary>
         /// Gets or sets the client identifier.
         /// </summary>
         public string ClientId { get; set; }
+
         /// <summary>
         /// Gets or sets a value indicating whether this instance is will.
         /// </summary>
         public bool IsWill { get; set; }
+
         /// <summary>
         /// Gets or sets the subscribe status.
         /// </summary>
         public SubscribeStatus SubscribeStatus { get; set; }
+
         /// <summary>
         /// Gets or sets the topics.
         /// </summary>
         public List<string> Topics { get; set; }
+
         /// <summary>
         /// Gets or sets the session status.
         /// </summary>
         public SessionStatus SessionStatus { get; set; }
+
         /// <summary>
         /// Gets or sets the keep alive in seconds.
         /// </summary>
         public int KeepAliveInSeconds { get; set; }
+
         /// <summary>
         /// Gets or sets the ping req time.
         /// </summary>
@@ -51,6 +58,7 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Channel
         /// Gets or sets a value indicating whether [clean session].
         /// </summary>
         public bool CleanSession { get; set; }
+
         /// <summary>
         /// Gets or sets the messages.
         /// </summary>
@@ -63,7 +71,7 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Channel
         /// <param name="msg">The MSG.</param>
         public void AddMqttMessage(int messageId, SendMqttMessage msg)
         {
-            Messages.AddOrUpdate(messageId, msg,(id,message)=>msg);
+            Messages.AddOrUpdate(messageId, msg, (id, message) => msg);
         }
 
         /// <summary>
@@ -86,7 +94,7 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Channel
         public void RemoveMqttMessage(int messageId)
         {
             SendMqttMessage mqttMessage = null;
-            Messages.Remove(messageId,out mqttMessage);
+            Messages.Remove(messageId, out mqttMessage);
         }
 
         /// <summary>
@@ -95,12 +103,13 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Channel
         /// <returns><c>true</c> if this instance is login; otherwise, <c>false</c>.</returns>
         public bool IsLogin()
         {
-            bool result = false;
+            var result = false;
             if (Channel != null)
             {
-                AttributeKey<string> _login = AttributeKey<string>.ValueOf("login");
-                result= Channel.Active && Channel.HasAttribute(_login);
+                var _login = AttributeKey<string>.ValueOf("login");
+                result = Channel.Active && Channel.HasAttribute(_login);
             }
+
             return result;
         }
 
@@ -121,11 +130,13 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Channel
         public async Task<bool> IsOnine()
         {
             //如果保持连接的值非零，并且服务端在2倍的保持连接时间内没有收到客户端的报文，需要断开客户端的连接
-            bool isOnline= (DateTime.Now - PingReqTime).TotalSeconds <= (this.KeepAliveInSeconds*2) && SessionStatus== SessionStatus.OPEN;
-            if(!isOnline)
+            var isOnline = (DateTime.Now - PingReqTime).TotalSeconds <= KeepAliveInSeconds * 2 &&
+                           SessionStatus == SessionStatus.OPEN;
+            if (!isOnline)
             {
-               await Close();
+                await Close();
             }
+
             return isOnline;
         }
 

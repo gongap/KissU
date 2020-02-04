@@ -19,22 +19,23 @@ namespace KissU.Core.Protocol.Http
     /// </summary>
     /// <seealso cref="KissU.Core.DotNetty.DotNettyMessageSender" />
     /// <seealso cref="KissU.Core.CPlatform.Transport.IMessageSender" />
-    public class DotNettyHttpServerMessageSender: DotNettyMessageSender, IMessageSender
+    public class DotNettyHttpServerMessageSender : DotNettyMessageSender, IMessageSender
     {
         private readonly IChannelHandlerContext _context;
         private readonly ISerializer<string> _serializer;
+        private readonly AsciiString ContentLengthEntity = HttpHeaderNames.ContentLength;
         private readonly AsciiString ContentTypeEntity = HttpHeaderNames.ContentType;
         private readonly AsciiString ServerEntity = HttpHeaderNames.Server;
-        private readonly AsciiString ContentLengthEntity = HttpHeaderNames.ContentLength;
         private readonly AsciiString TypeJson = AsciiString.Cached("application/json");
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DotNettyHttpServerMessageSender"/> class.
+        /// Initializes a new instance of the <see cref="DotNettyHttpServerMessageSender" /> class.
         /// </summary>
         /// <param name="transportMessageEncoder">The transport message encoder.</param>
         /// <param name="context">The context.</param>
         /// <param name="serializer">The serializer.</param>
-        public DotNettyHttpServerMessageSender(ITransportMessageEncoder transportMessageEncoder, IChannelHandlerContext context, ISerializer<string> serializer) : base(transportMessageEncoder)
+        public DotNettyHttpServerMessageSender(ITransportMessageEncoder transportMessageEncoder,
+            IChannelHandlerContext context, ISerializer<string> serializer) : base(transportMessageEncoder)
         {
             _context = context;
             _serializer = serializer;
@@ -49,7 +50,7 @@ namespace KissU.Core.Protocol.Http
         /// <returns>一个任务。</returns>
         public async Task SendAsync(TransportMessage message)
         {
-            var buffer = GetByteBuffer(message, out int contentLength);
+            var buffer = GetByteBuffer(message, out var contentLength);
             var response = WriteResponse(_context, buffer, TypeJson, AsciiString.Cached($"{contentLength}"));
             await _context.WriteAsync(response);
         }
@@ -61,8 +62,8 @@ namespace KissU.Core.Protocol.Http
         /// <returns>一个任务。</returns>
         public async Task SendAndFlushAsync(TransportMessage message)
         {
-            var buffer = GetByteBuffer(message, out int contentLength);
-            var response = WriteResponse(_context, buffer, TypeJson, AsciiString.Cached($"{ contentLength}"));
+            var buffer = GetByteBuffer(message, out var contentLength);
+            var response = WriteResponse(_context, buffer, TypeJson, AsciiString.Cached($"{contentLength}"));
 
             await _context.WriteAndFlushAsync(response);
             await _context.CloseAsync();
@@ -80,15 +81,16 @@ namespace KissU.Core.Protocol.Http
             return Unpooled.WrappedBuffer(data);
         }
 
-        private DefaultFullHttpResponse WriteResponse(IChannelHandlerContext ctx, IByteBuffer buf, ICharSequence contentType, ICharSequence contentLength)
+        private DefaultFullHttpResponse WriteResponse(IChannelHandlerContext ctx, IByteBuffer buf,
+            ICharSequence contentType, ICharSequence contentLength)
         {
             var response = new DefaultFullHttpResponse(HttpVersion.Http11, HttpResponseStatus.OK, buf, false);
-            HttpHeaders headers = response.Headers;
+            var headers = response.Headers;
             headers.Set(ContentTypeEntity, contentType);
             headers.Set(ContentLengthEntity, contentLength);
             return response;
         }
+
         #endregion Implementation of IMessageSender
     }
 }
-

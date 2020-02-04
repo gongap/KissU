@@ -55,7 +55,7 @@ namespace KissU.Core.CPlatform.Support.Implementation
             var result = await _serviceCommandProvider.Run(command.Injection, command.InjectionNamespaces);
             if (result is bool)
             {
-                if ((bool)result)
+                if ((bool) result)
                 {
                     var entries = _serviceEntryManager.GetEntries().ToList();
                     var entry = entries.Where(p => p.Descriptor.Id == serviceId).FirstOrDefault();
@@ -81,7 +81,7 @@ namespace KissU.Core.CPlatform.Support.Implementation
             var injectionResult = await _serviceCommandProvider.Run(command.Injection, command.InjectionNamespaces);
             if (injectionResult is bool)
             {
-                if ((bool)injectionResult)
+                if ((bool) injectionResult)
                 {
                     var entries = _serviceEntryManager.GetEntries().ToList();
                     var entry = entries.Where(p => p.Descriptor.Id == serviceId).FirstOrDefault();
@@ -92,7 +92,7 @@ namespace KissU.Core.CPlatform.Support.Implementation
                         result = _typeConvertibleService.Convert((message as Task<T>).Result, typeof(T));
                     }
 
-                    return (T)result;
+                    return (T) result;
                 }
             }
             else
@@ -103,7 +103,7 @@ namespace KissU.Core.CPlatform.Support.Implementation
                     result = _typeConvertibleService.Convert((injectionResult as Task<T>).Result, typeof(T));
                 }
 
-                return (T)result;
+                return (T) result;
             }
 
             return default;

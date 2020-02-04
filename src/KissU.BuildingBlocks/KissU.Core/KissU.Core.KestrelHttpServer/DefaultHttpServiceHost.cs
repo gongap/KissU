@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform.Messages;
 using KissU.Core.CPlatform.Runtime.Server;
 using KissU.Core.CPlatform.Runtime.Server.Implementation;
 using KissU.Core.CPlatform.Transport;
@@ -14,6 +15,28 @@ namespace KissU.Core.KestrelHttpServer
     /// <seealso cref="KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceHostAbstract" />
     public class DefaultHttpServiceHost : ServiceHostAbstract
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DefaultHttpServiceHost" /> class.
+        /// </summary>
+        /// <param name="messageListenerFactory">The message listener factory.</param>
+        /// <param name="serviceExecutor">The service executor.</param>
+        /// <param name="httpMessageListener">The HTTP message listener.</param>
+        public DefaultHttpServiceHost(Func<EndPoint, Task<IMessageListener>> messageListenerFactory,
+            IServiceExecutor serviceExecutor, HttpMessageListener httpMessageListener) : base(serviceExecutor)
+        {
+            _messageListenerFactory = messageListenerFactory;
+            _serverMessageListener = httpMessageListener;
+            _serverMessageListener.Received += async (sender, message) =>
+            {
+                await Task.Run(() => { MessageListener.OnReceived(sender, message); });
+            };
+        }
+
+        private async Task MessageListener_Received(IMessageSender sender, TransportMessage message)
+        {
+            await ServiceExecutor.ExecuteAsync(sender, message);
+        }
+
         #region Field
 
         private readonly Func<EndPoint, Task<IMessageListener>> _messageListenerFactory;
@@ -21,27 +44,7 @@ namespace KissU.Core.KestrelHttpServer
 
         #endregion Field
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DefaultHttpServiceHost"/> class.
-        /// </summary>
-        /// <param name="messageListenerFactory">The message listener factory.</param>
-        /// <param name="serviceExecutor">The service executor.</param>
-        /// <param name="httpMessageListener">The HTTP message listener.</param>
-        public DefaultHttpServiceHost(Func<EndPoint, Task<IMessageListener>> messageListenerFactory, IServiceExecutor serviceExecutor, HttpMessageListener httpMessageListener) : base(serviceExecutor)
-        {
-            _messageListenerFactory = messageListenerFactory;
-            _serverMessageListener = httpMessageListener;
-            _serverMessageListener.Received += async (sender, message) =>
-            {
-                await Task.Run(() =>
-                {
-                    MessageListener.OnReceived(sender, message);
-                });
-            };
-        }
-
         #region Overrides of ServiceHostAbstract
-
 
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
@@ -72,10 +75,5 @@ namespace KissU.Core.KestrelHttpServer
         }
 
         #endregion Overrides of ServiceHostAbstract
-
-        private async Task MessageListener_Received(IMessageSender sender, CPlatform.Messages.TransportMessage message)
-        {
-            await ServiceExecutor.ExecuteAsync(sender, message);
-        }
     }
-} 
+}

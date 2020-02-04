@@ -69,9 +69,9 @@ namespace KissU.Core.CPlatform.Support.Implementation
             if (manager == null)
             {
                 var command = (from q in _serviceEntryManager.GetEntries()
-                               let k = q.Attributes
-                               where k.OfType<CommandAttribute>().Count() > 0 && q.Descriptor.Id == serviceId
-                               select k.OfType<CommandAttribute>().FirstOrDefault()).FirstOrDefault();
+                    let k = q.Attributes
+                    where k.OfType<CommandAttribute>().Count() > 0 && q.Descriptor.Id == serviceId
+                    select k.OfType<CommandAttribute>().FirstOrDefault()).FirstOrDefault();
                 result = ConvertServiceCommand(command);
             }
             else
@@ -124,7 +124,7 @@ namespace KissU.Core.CPlatform.Support.Implementation
                     BreakerForceClosed = command.BreakerForceClosed,
                     BreakerRequestVolumeThreshold = command.BreakerRequestVolumeThreshold,
                     BreakeSleepWindowInMilliseconds = command.BreakeSleepWindowInMilliseconds,
-                    MaxConcurrentRequests = command.MaxConcurrentRequests,
+                    MaxConcurrentRequests = command.MaxConcurrentRequests
                 };
             }
 
@@ -155,7 +155,7 @@ namespace KissU.Core.CPlatform.Support.Implementation
                     BreakerForceClosed = command.BreakerForceClosed,
                     BreakerRequestVolumeThreshold = command.BreakerRequestVolumeThreshold,
                     BreakeSleepWindowInMilliseconds = command.BreakeSleepWindowInMilliseconds,
-                    MaxConcurrentRequests = command.MaxConcurrentRequests,
+                    MaxConcurrentRequests = command.MaxConcurrentRequests
                 };
             }
 

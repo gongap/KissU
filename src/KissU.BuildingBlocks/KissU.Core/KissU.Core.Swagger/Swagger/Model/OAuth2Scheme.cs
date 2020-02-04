@@ -10,7 +10,7 @@ namespace KissU.Core.Swagger.Swagger.Model
     public class OAuth2Scheme : SecurityScheme
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="OAuth2Scheme"/> class.
+        /// Initializes a new instance of the <see cref="OAuth2Scheme" /> class.
         /// </summary>
         public OAuth2Scheme()
         {

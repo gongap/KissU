@@ -80,7 +80,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Im
             var serviceDescriptor = new ServiceDescriptor
             {
                 Id = serviceId,
-                RoutePath = RoutePatternParser.Parse(routeTemplate, serviceName, method.Name),
+                RoutePath = RoutePatternParser.Parse(routeTemplate, serviceName, method.Name)
             };
             var descriptorAttributes = method.GetCustomAttributes<ServiceDescriptorAttribute>();
             foreach (var descriptorAttribute in descriptorAttributes)
@@ -169,7 +169,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Im
 
                     var result = fastInvoker(instance, list.ToArray());
                     return Task.FromResult(result);
-                },
+                }
             };
         }
 

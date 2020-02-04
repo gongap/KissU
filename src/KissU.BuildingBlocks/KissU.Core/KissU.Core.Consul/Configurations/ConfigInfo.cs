@@ -21,13 +21,14 @@ namespace KissU.Core.Consul.Configurations
         /// <param name="mqttRoutePath">The MQTT route path.</param>
         /// <param name="reloadOnChange">if set to <c>true</c> [reload on change].</param>
         /// <param name="enableChildrenMonitor">if set to <c>true</c> [enable children monitor].</param>
-        public ConfigInfo(string connectionString,string routePath = "services/serviceRoutes/",
-             string subscriberPath = "services/serviceSubscribers/",
+        public ConfigInfo(string connectionString, string routePath = "services/serviceRoutes/",
+            string subscriberPath = "services/serviceSubscribers/",
             string commandPath = "services/serviceCommands/",
-            string cachePath="services/serviceCaches/",
+            string cachePath = "services/serviceCaches/",
             string mqttRoutePath = "services/mqttServiceRoutes/",
-            bool reloadOnChange=false, bool enableChildrenMonitor = false) :
-            this(connectionString, TimeSpan.FromSeconds(20), 0, routePath, subscriberPath,commandPath, cachePath, mqttRoutePath, reloadOnChange, enableChildrenMonitor)
+            bool reloadOnChange = false, bool enableChildrenMonitor = false) :
+            this(connectionString, TimeSpan.FromSeconds(20), 0, routePath, subscriberPath, commandPath, cachePath,
+                mqttRoutePath, reloadOnChange, enableChildrenMonitor)
         {
         }
 
@@ -46,11 +47,11 @@ namespace KissU.Core.Consul.Configurations
         /// <param name="enableChildrenMonitor">if set to <c>true</c> [enable children monitor].</param>
         public ConfigInfo(string connectionString, TimeSpan sessionTimeout, int lockDelay,
             string routePath = "services/serviceRoutes/",
-             string subscriberPath = "services/serviceSubscribers/",
+            string subscriberPath = "services/serviceSubscribers/",
             string commandPath = "services/serviceCommands/",
-            string cachePath= "services/serviceCaches/",
-            string mqttRoutePath= "services/mqttServiceRoutes/",
-            bool reloadOnChange=false, bool enableChildrenMonitor = false)
+            string cachePath = "services/serviceCaches/",
+            string mqttRoutePath = "services/mqttServiceRoutes/",
+            bool reloadOnChange = false, bool enableChildrenMonitor = false)
         {
             CachePath = cachePath;
             ReloadOnChange = reloadOnChange;
@@ -71,22 +72,23 @@ namespace KissU.Core.Consul.Configurations
                 else
                 {
                     var address = ConvertAddressModel(connectionString);
-                    if (address !=null)
-                    { 
-                        var ipAddress=address as IpAddressModel;
+                    if (address != null)
+                    {
+                        var ipAddress = address as IpAddressModel;
                         Host = ipAddress.Ip;
                         Port = ipAddress.Port;
                     }
-                    Addresses = new IpAddressModel[]
+
+                    Addresses = new[]
                     {
-                        new IpAddressModel(Host,Port)
+                        new IpAddressModel(Host, Port)
                     };
                 }
             }
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ConfigInfo"/> class.
+        /// Initializes a new instance of the <see cref="ConfigInfo" /> class.
         /// </summary>
         /// <param name="host">The host.</param>
         /// <param name="port">The port.</param>
@@ -95,7 +97,7 @@ namespace KissU.Core.Consul.Configurations
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ConfigInfo"/> class.
+        /// Initializes a new instance of the <see cref="ConfigInfo" /> class.
         /// </summary>
         /// <param name="host">The host.</param>
         /// <param name="port">The port.</param>
@@ -126,6 +128,7 @@ namespace KissU.Core.Consul.Configurations
         /// Gets or sets a value indicating whether [enable children monitor].
         /// </summary>
         public bool EnableChildrenMonitor { get; set; }
+
         /// <summary>
         /// 命令配置路径
         /// </summary>
@@ -186,8 +189,8 @@ namespace KissU.Core.Consul.Configurations
                 int.TryParse(address[1], out port);
                 return new IpAddressModel(address[0], port);
             }
+
             return null;
         }
-
     }
 }

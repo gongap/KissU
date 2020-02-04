@@ -38,6 +38,6 @@
         /// <summary>
         /// UDP
         /// </summary>
-        Udp,
+        Udp
     }
 }

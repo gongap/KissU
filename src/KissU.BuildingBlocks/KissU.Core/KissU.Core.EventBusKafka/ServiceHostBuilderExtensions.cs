@@ -7,7 +7,7 @@ namespace KissU.Core.EventBusKafka
     /// <summary>
     /// ServiceHostBuilderExtensions.
     /// </summary>
-    public static  class ServiceHostBuilderExtensions
+    public static class ServiceHostBuilderExtensions
     {
         /// <summary>
         /// Subscribes at.
@@ -16,10 +16,7 @@ namespace KissU.Core.EventBusKafka
         /// <returns>IServiceHostBuilder.</returns>
         public static IServiceHostBuilder SubscribeAt(this IServiceHostBuilder hostBuilder)
         {
-            return hostBuilder.MapServices(mapper =>
-            {
-                mapper.Resolve<ISubscriptionAdapt>().SubscribeAt();
-            });
+            return hostBuilder.MapServices(mapper => { mapper.Resolve<ISubscriptionAdapt>().SubscribeAt(); });
         }
     }
 }

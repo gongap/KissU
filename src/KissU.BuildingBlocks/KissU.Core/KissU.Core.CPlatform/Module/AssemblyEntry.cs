@@ -153,7 +153,7 @@ namespace KissU.Core.CPlatform.Module
                         {
                             var type = Type.GetType(reader.GetAttribute("TypeName"), true);
                             var xmlSerializer = new XmlSerializer(type);
-                            AbstractModules.Add((AbstractModule)xmlSerializer.Deserialize(reader));
+                            AbstractModules.Add((AbstractModule) xmlSerializer.Deserialize(reader));
                         }
 
                         reader.ReadEndElement();

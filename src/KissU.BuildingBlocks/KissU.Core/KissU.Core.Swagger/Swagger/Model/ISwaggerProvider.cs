@@ -30,11 +30,12 @@ namespace KissU.Core.Swagger.Swagger.Model
     public class UnknownSwaggerDocument : Exception
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="UnknownSwaggerDocument"/> class.
+        /// Initializes a new instance of the <see cref="UnknownSwaggerDocument" /> class.
         /// </summary>
         /// <param name="documentName">Name of the document.</param>
         public UnknownSwaggerDocument(string documentName)
             : base(string.Format("Unknown Swagger document - {0}", documentName))
-        {}
+        {
+        }
     }
 }

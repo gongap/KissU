@@ -17,7 +17,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
             var propertyInfo = apiResponseType.GetType().GetProperty("IsDefaultResponse");
             if (propertyInfo != null)
             {
-                return (bool)propertyInfo.GetValue(apiResponseType);
+                return (bool) propertyInfo.GetValue(apiResponseType);
             }
 
             // ApiExplorer < 2.1.0 does not support default response.

@@ -16,13 +16,13 @@ namespace KissU.Core.Protocol.Mqtt.Implementation
     /// <seealso cref="KissU.Core.CPlatform.Mqtt.IMqttServiceFactory" />
     public class DefaultMqttServiceFactory : IMqttServiceFactory
     {
+        private readonly ConcurrentDictionary<string, AddressModel> _addressModel =
+            new ConcurrentDictionary<string, AddressModel>();
 
         private readonly ISerializer<string> _serializer;
-        private readonly ConcurrentDictionary<string, AddressModel> _addressModel =
-               new ConcurrentDictionary<string, AddressModel>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DefaultMqttServiceFactory"/> class.
+        /// Initializes a new instance of the <see cref="DefaultMqttServiceFactory" /> class.
         /// </summary>
         /// <param name="serializer">The serializer.</param>
         public DefaultMqttServiceFactory(ISerializer<string> serializer)
@@ -36,7 +36,8 @@ namespace KissU.Core.Protocol.Mqtt.Implementation
         /// <param name="descriptors">The descriptors.</param>
         /// <returns>Task&lt;IEnumerable&lt;MqttServiceRoute&gt;&gt;.</returns>
         /// <exception cref="ArgumentNullException">descriptors</exception>
-        public Task<IEnumerable<MqttServiceRoute>> CreateMqttServiceRoutesAsync(IEnumerable<MqttServiceDescriptor> descriptors)
+        public Task<IEnumerable<MqttServiceRoute>> CreateMqttServiceRoutesAsync(
+            IEnumerable<MqttServiceDescriptor> descriptors)
         {
             if (descriptors == null)
                 throw new ArgumentNullException(nameof(descriptors));
@@ -61,15 +62,15 @@ namespace KissU.Core.Protocol.Mqtt.Implementation
 
             foreach (var descriptor in descriptors)
             {
-                _addressModel.TryGetValue(descriptor.Value, out AddressModel address);
+                _addressModel.TryGetValue(descriptor.Value, out var address);
                 if (address == null)
                 {
-                    address = (AddressModel)_serializer.Deserialize(descriptor.Value, typeof(IpAddressModel));
+                    address = (AddressModel) _serializer.Deserialize(descriptor.Value, typeof(IpAddressModel));
                     _addressModel.TryAdd(descriptor.Value, address);
                 }
+
                 yield return address;
             }
         }
-
     }
 }

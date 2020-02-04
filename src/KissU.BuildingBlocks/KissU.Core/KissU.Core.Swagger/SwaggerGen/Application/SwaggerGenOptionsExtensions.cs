@@ -48,8 +48,8 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
         /// <param name="swaggerGenOptions">The swagger gen options.</param>
         /// <param name="predicate">The predicate.</param>
         public static void DocInclusionPredicateV2(
-      this SwaggerGenOptions swaggerGenOptions,
-      Func<string, ServiceEntry, bool> predicate)
+            this SwaggerGenOptions swaggerGenOptions,
+            Func<string, ServiceEntry, bool> predicate)
         {
             swaggerGenOptions.SwaggerGeneratorOptions.DocInclusionPredicateV2 = predicate;
         }
@@ -60,9 +60,8 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
         /// <param name="swaggerGenOptions">The swagger gen options.</param>
         /// <param name="entries">The entries.</param>
         public static void GenerateSwaggerDoc(
-      this SwaggerGenOptions swaggerGenOptions, IEnumerable<ServiceEntry> entries)
+            this SwaggerGenOptions swaggerGenOptions, IEnumerable<ServiceEntry> entries)
         {
-
             var result = new Dictionary<string, Info>();
             var assemblies = entries.Select(p => p.Type.Assembly).Distinct();
             foreach (var assembly in assemblies)
@@ -72,21 +71,20 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
                     .OfType<AssemblyFileVersionAttribute>().FirstOrDefault();
 
                 var title = assembly
-                  .GetCustomAttributes(true)
-                  .OfType<AssemblyTitleAttribute>().FirstOrDefault();
+                    .GetCustomAttributes(true)
+                    .OfType<AssemblyTitleAttribute>().FirstOrDefault();
 
                 var des = assembly
-                  .GetCustomAttributes(true)
-                  .OfType<AssemblyDescriptionAttribute>().FirstOrDefault();
+                    .GetCustomAttributes(true)
+                    .OfType<AssemblyDescriptionAttribute>().FirstOrDefault();
 
                 if (version == null || title == null)
                     continue;
-                swaggerGenOptions.SwaggerDoc(title.Title, new Info()
+                swaggerGenOptions.SwaggerDoc(title.Title, new Info
                 {
                     Title = title.Title,
                     Version = version.Version,
-                    Description = des?.Description,
-
+                    Description = des?.Description
                 });
             }
         }
@@ -134,7 +132,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
             this SwaggerGenOptions swaggerGenOptions,
             Func<ApiDescription, string> tagSelector)
         {
-            swaggerGenOptions.SwaggerGeneratorOptions.TagsSelector = (apiDesc) => new[] { tagSelector(apiDesc) };
+            swaggerGenOptions.SwaggerGeneratorOptions.TagsSelector = apiDesc => new[] {tagSelector(apiDesc)};
         }
 
         /// <summary>
@@ -175,7 +173,10 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
         /// </summary>
         /// <param name="swaggerGenOptions">The swagger gen options.</param>
         /// <param name="name">A unique name for the scheme, as per the Swagger spec.</param>
-        /// <param name="securityScheme">A description of the scheme - can be an instance of BasicAuthScheme, ApiKeyScheme or OAuth2Scheme</param>
+        /// <param name="securityScheme">
+        /// A description of the scheme - can be an instance of BasicAuthScheme, ApiKeyScheme or
+        /// OAuth2Scheme
+        /// </param>
         public static void AddSecurityDefinition(
             this SwaggerGenOptions swaggerGenOptions,
             string name,
@@ -188,8 +189,10 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
         /// Adds a global security requirement
         /// </summary>
         /// <param name="swaggerGenOptions">The swagger gen options.</param>
-        /// <param name="requirement">A dictionary of required schemes (logical AND). Keys must correspond to schemes defined through AddSecurityDefinition
-        /// If the scheme is of type "oauth2", then the value is a list of scopes, otherwise it MUST be an empty array</param>
+        /// <param name="requirement">
+        /// A dictionary of required schemes (logical AND). Keys must correspond to schemes defined through AddSecurityDefinition
+        /// If the scheme is of type "oauth2", then the value is a list of scopes, otherwise it MUST be an empty array
+        /// </param>
         public static void AddSecurityRequirement(
             this SwaggerGenOptions swaggerGenOptions,
             IDictionary<string, IEnumerable<string>> requirement)
@@ -358,8 +361,10 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
         /// </summary>
         /// <param name="swaggerGenOptions">The swagger gen options.</param>
         /// <param name="xmlDocFactory">A factory method that returns XML Comments as an XPathDocument</param>
-        /// <param name="includeControllerXmlComments">Flag to indicate if controller XML comments (i.e. summary) should be used to assign Tag descriptions.
-        /// Don't set this flag if you're customizing the default tag for operations via TagActionsBy.</param>
+        /// <param name="includeControllerXmlComments">
+        /// Flag to indicate if controller XML comments (i.e. summary) should be used to assign Tag descriptions.
+        /// Don't set this flag if you're customizing the default tag for operations via TagActionsBy.
+        /// </param>
         public static void IncludeXmlComments(
             this SwaggerGenOptions swaggerGenOptions,
             Func<XPathDocument> xmlDocFactory,
@@ -378,8 +383,10 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
         /// </summary>
         /// <param name="swaggerGenOptions">The swagger gen options.</param>
         /// <param name="filePath">An abolsute path to the file that contains XML Comments</param>
-        /// <param name="includeControllerXmlComments">Flag to indicate if controller XML comments (i.e. summary) should be used to assign Tag descriptions.
-        /// Don't set this flag if you're customizing the default tag for operations via TagActionsBy.</param>
+        /// <param name="includeControllerXmlComments">
+        /// Flag to indicate if controller XML comments (i.e. summary) should be used to assign Tag descriptions.
+        /// Don't set this flag if you're customizing the default tag for operations via TagActionsBy.
+        /// </param>
         public static void IncludeXmlComments(
             this SwaggerGenOptions swaggerGenOptions,
             string filePath,

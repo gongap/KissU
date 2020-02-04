@@ -18,7 +18,7 @@ namespace KissU.Core.Zookeeper.Configurations
         /// <returns>IConfigurationBuilder.</returns>
         public static IConfigurationBuilder AddZookeeperFile(this IConfigurationBuilder builder, string path)
         {
-            return AddZookeeperFile(builder, provider: null, path: path, optional: false, reloadOnChange: false);
+            return AddZookeeperFile(builder, null, path, false, false);
         }
 
         /// <summary>
@@ -28,9 +28,10 @@ namespace KissU.Core.Zookeeper.Configurations
         /// <param name="path">The path.</param>
         /// <param name="optional">if set to <c>true</c> [optional].</param>
         /// <returns>IConfigurationBuilder.</returns>
-        public static IConfigurationBuilder AddZookeeperFile(this IConfigurationBuilder builder, string path, bool optional)
+        public static IConfigurationBuilder AddZookeeperFile(this IConfigurationBuilder builder, string path,
+            bool optional)
         {
-            return AddZookeeperFile(builder, provider: null, path: path, optional: optional, reloadOnChange: false);
+            return AddZookeeperFile(builder, null, path, optional, false);
         }
 
         /// <summary>
@@ -41,9 +42,10 @@ namespace KissU.Core.Zookeeper.Configurations
         /// <param name="optional">if set to <c>true</c> [optional].</param>
         /// <param name="reloadOnChange">if set to <c>true</c> [reload on change].</param>
         /// <returns>IConfigurationBuilder.</returns>
-        public static IConfigurationBuilder AddZookeeperFile(this IConfigurationBuilder builder, string path, bool optional, bool reloadOnChange)
+        public static IConfigurationBuilder AddZookeeperFile(this IConfigurationBuilder builder, string path,
+            bool optional, bool reloadOnChange)
         {
-            return AddZookeeperFile(builder, provider: null, path: path, optional: optional, reloadOnChange: reloadOnChange);
+            return AddZookeeperFile(builder, null, path, optional, reloadOnChange);
         }
 
         /// <summary>
@@ -55,7 +57,8 @@ namespace KissU.Core.Zookeeper.Configurations
         /// <param name="optional">if set to <c>true</c> [optional].</param>
         /// <param name="reloadOnChange">if set to <c>true</c> [reload on change].</param>
         /// <returns>IConfigurationBuilder.</returns>
-        public static IConfigurationBuilder AddZookeeperFile(this IConfigurationBuilder builder, IFileProvider provider, string path, bool optional, bool reloadOnChange)
+        public static IConfigurationBuilder AddZookeeperFile(this IConfigurationBuilder builder, IFileProvider provider,
+            string path, bool optional, bool reloadOnChange)
         {
             Check.NotNull(builder, "builder");
             Check.CheckCondition(() => string.IsNullOrEmpty(path), "path");
@@ -64,6 +67,7 @@ namespace KissU.Core.Zookeeper.Configurations
                 provider = new PhysicalFileProvider(Path.GetDirectoryName(path));
                 path = Path.GetFileName(path);
             }
+
             var source = new ZookeeperConfigurationSource
             {
                 FileProvider = provider,

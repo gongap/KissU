@@ -18,6 +18,6 @@
         /// <summary>
         /// The JWT bearer
         /// </summary>
-        JWTBearer,
+        JWTBearer
     }
 }

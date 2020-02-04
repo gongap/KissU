@@ -22,12 +22,11 @@ namespace KissU.Core.Protocol.WS
     public class DefaultWSServerMessageListener : IMessageListener, IDisposable
     {
         private readonly List<WSServiceEntry> _entries;
-        private  WebSocketServer _wssv;
         private readonly ILogger<DefaultWSServerMessageListener> _logger;
         private readonly WebSocketOptions _options;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DefaultWSServerMessageListener"/> class.
+        /// Initializes a new instance of the <see cref="DefaultWSServerMessageListener" /> class.
         /// </summary>
         /// <param name="logger">The logger.</param>
         /// <param name="wsServiceEntryProvider">The ws service entry provider.</param>
@@ -39,42 +38,18 @@ namespace KissU.Core.Protocol.WS
             _entries = wsServiceEntryProvider.GetEntries().ToList();
             _options = options;
         }
-        /// <summary>
-        /// start as an asynchronous operation.
-        /// </summary>
-        /// <param name="endPoint">The end point.</param>
-        public async Task StartAsync(EndPoint endPoint)
-        {
-            var ipEndPoint = endPoint as IPEndPoint;
-            _wssv = new WebSocketServer(ipEndPoint.Address, ipEndPoint.Port);
-            try
-            {
-                foreach (var entry in _entries)
-                    _wssv.AddWebSocketService(entry.Path, entry.FuncBehavior);
-                _wssv.KeepClean = _options.KeepClean;
-                _wssv.WaitTime = TimeSpan.FromSeconds(_options.WaitTime); 
-                //允许转发请求
-                _wssv.AllowForwardedRequest = true;  
-                _wssv.Start();
-                if (_logger.IsEnabled(LogLevel.Debug))
-                    _logger.LogDebug($"WS服务主机启动成功，监听地址：{endPoint}。");
-            }
-            catch
-            {
-                _logger.LogError($"WS服务主机启动失败，监听地址：{endPoint}。 ");
-            }
-         
-        }
 
         /// <summary>
         /// Gets the server.
         /// </summary>
-        public WebSocketServer  Server
+        public WebSocketServer Server { get; private set; }
+
+        /// <summary>
+        /// Disposes this instance.
+        /// </summary>
+        public void Dispose()
         {
-            get
-            {
-                return _wssv;
-            }
+            Server.Stop();
         }
 
         /// <summary>
@@ -94,11 +69,29 @@ namespace KissU.Core.Protocol.WS
         }
 
         /// <summary>
-        /// Disposes this instance.
+        /// start as an asynchronous operation.
         /// </summary>
-        public void Dispose()
+        /// <param name="endPoint">The end point.</param>
+        public async Task StartAsync(EndPoint endPoint)
         {
-            _wssv.Stop();
+            var ipEndPoint = endPoint as IPEndPoint;
+            Server = new WebSocketServer(ipEndPoint.Address, ipEndPoint.Port);
+            try
+            {
+                foreach (var entry in _entries)
+                    Server.AddWebSocketService(entry.Path, entry.FuncBehavior);
+                Server.KeepClean = _options.KeepClean;
+                Server.WaitTime = TimeSpan.FromSeconds(_options.WaitTime);
+                //允许转发请求
+                Server.AllowForwardedRequest = true;
+                Server.Start();
+                if (_logger.IsEnabled(LogLevel.Debug))
+                    _logger.LogDebug($"WS服务主机启动成功，监听地址：{endPoint}。");
+            }
+            catch
+            {
+                _logger.LogError($"WS服务主机启动失败，监听地址：{endPoint}。 ");
+            }
         }
     }
 }

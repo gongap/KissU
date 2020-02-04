@@ -8,13 +8,6 @@ namespace KissU.Core.Consul.WatcherProvider.Implementation
     public abstract class Watcher
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Watcher"/> class.
-        /// </summary>
-        protected Watcher()
-        {
-        }
-
-        /// <summary>
         /// Processes this instance.
         /// </summary>
         /// <returns>Task.</returns>
@@ -34,10 +27,11 @@ namespace KissU.Core.Consul.WatcherProvider.Implementation
                 /// The disconnected
                 /// </summary>
                 Disconnected = 0,
+
                 /// <summary>
                 /// The synchronize connected
                 /// </summary>
-                SyncConnected = 3,
+                SyncConnected = 3
             }
         }
     }

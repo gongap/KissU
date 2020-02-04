@@ -8,7 +8,6 @@ namespace KissU.Core.Protocol.Udp.Extensions
     /// </summary>
     public static class TransportMessageExtensions
     {
-
         /// <summary>
         /// Determines whether [is UDP dispatch message] [the specified message].
         /// </summary>

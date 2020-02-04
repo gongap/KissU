@@ -117,7 +117,7 @@ namespace KissU.Core.CPlatform.Messages
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public T GetContent<T>()
         {
-            return (T)Content;
+            return (T) Content;
         }
 
         /// <summary>
@@ -129,7 +129,7 @@ namespace KissU.Core.CPlatform.Messages
         {
             return new TransportMessage(invokeMessage, MessagePackTransportMessageType.RemoteInvokeMessageTypeName)
             {
-                Id = Guid.NewGuid().ToString("N"),
+                Id = Guid.NewGuid().ToString("N")
             };
         }
 
@@ -145,7 +145,7 @@ namespace KissU.Core.CPlatform.Messages
             return new TransportMessage(invokeResultMessage,
                 MessagePackTransportMessageType.RemoteInvokeResultMessageTypeName)
             {
-                Id = id,
+                Id = id
             };
         }
     }

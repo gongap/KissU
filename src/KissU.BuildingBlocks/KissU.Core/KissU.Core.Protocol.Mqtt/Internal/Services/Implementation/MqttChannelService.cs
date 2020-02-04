@@ -22,12 +22,13 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
     /// <seealso cref="KissU.Core.Protocol.Mqtt.Internal.Services.AbstractChannelService" />
     public class MqttChannelService : AbstractChannelService
     {
-        private readonly IMessagePushService _messagePushService;
         private readonly IClientSessionService _clientSessionService;
         private readonly ILogger<MqttChannelService> _logger;
+        private readonly IMessagePushService _messagePushService;
         private readonly IWillService _willService;
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="MqttChannelService"/> class.
+        /// Initializes a new instance of the <see cref="MqttChannelService" /> class.
         /// </summary>
         /// <param name="messagePushService">The message push service.</param>
         /// <param name="clientSessionService">The client session service.</param>
@@ -61,13 +62,14 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
         {
             if (!string.IsNullOrEmpty(deviceId))
             {
-                MqttChannels.TryGetValue(deviceId, out MqttChannel mqttChannel);
+                MqttChannels.TryGetValue(deviceId, out var mqttChannel);
                 if (mqttChannel != null)
                 {
                     mqttChannel.SessionStatus = SessionStatus.CLOSE;
                     await mqttChannel.Close();
                     mqttChannel.Channel = null;
                 }
+
                 if (!mqttChannel.CleanSession)
                 {
                     var messages = mqttChannel.Messages;
@@ -89,13 +91,15 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
                 }
                 else
                 {
-                    MqttChannels.TryRemove(deviceId, out MqttChannel channel);
+                    MqttChannels.TryRemove(deviceId, out var channel);
                     if (mqttChannel.SubscribeStatus == SubscribeStatus.Yes)
                     {
                         RemoveSubTopic(mqttChannel);
                     }
+
                     mqttChannel.Topics.ForEach(async topic => { await BrokerCancellationReg(topic); });
                 }
+
                 if (mqttChannel.IsWill)
                 {
                     if (!isDisconnect)
@@ -103,7 +107,6 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
                         await _willService.SendWillMessage(deviceId);
                     }
                 }
-
             }
         }
 
@@ -119,21 +122,18 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
             if (mqttChannel != null)
             {
                 if (await mqttChannel.IsOnine()) return false;
-                else
+                if (mqttChannel.SubscribeStatus == SubscribeStatus.Yes)
                 {
-                    if (mqttChannel.SubscribeStatus == SubscribeStatus.Yes)
+                    var topics = RemoveSubTopic(mqttChannel);
+                    foreach (var topic in topics)
                     {
-                        var topics = RemoveSubTopic(mqttChannel);
-                        foreach (var topic in topics)
-                        {
-                            Topics.TryGetValue(topic, out IEnumerable<MqttChannel> comparisonValue);
-                            var newValue = comparisonValue.Concat(new[] { channel });
-                            Topics.AddOrUpdate(topic, newValue, (key, value) => newValue);
-                        }
+                        Topics.TryGetValue(topic, out var comparisonValue);
+                        var newValue = comparisonValue.Concat(new[] {channel});
+                        Topics.AddOrUpdate(topic, newValue, (key, value) => newValue);
                     }
-
                 }
             }
+
             MqttChannels.AddOrUpdate(deviceId, channel, (k, v) => channel);
             return true;
         }
@@ -158,14 +158,14 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
         /// <param name="mqttPublishMessage">The MQTT publish message.</param>
         public override async Task Publish(IChannel channel, PublishPacket mqttPublishMessage)
         {
-            MqttChannel mqttChannel = GetMqttChannel(await this.GetDeviceId(channel));
+            var mqttChannel = GetMqttChannel(await GetDeviceId(channel));
             var buffer = mqttPublishMessage.Payload;
-            byte[] bytes = new byte[buffer.ReadableBytes];
+            var bytes = new byte[buffer.ReadableBytes];
             buffer.ReadBytes(bytes);
-            int messageId = mqttPublishMessage.PacketId;
+            var messageId = mqttPublishMessage.PacketId;
             if (channel.HasAttribute(LoginAttrKey) && mqttChannel != null)
             {
-                bool isRetain = mqttPublishMessage.RetainRequested;
+                var isRetain = mqttPublishMessage.RetainRequested;
                 switch (mqttPublishMessage.QualityOfService)
                 {
                     case QualityOfService.AtLeastOnce:
@@ -175,19 +175,22 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
                         await Pubrec(mqttChannel, messageId);
                         break;
                 }
+
                 if (isRetain)
                 {
                     SaveRetain(mqttPublishMessage.TopicName,
-                           new RetainMessage
-                           {
-                               ByteBuf = bytes,
-                               QoS = (int)mqttPublishMessage.QualityOfService
-                           }, mqttPublishMessage.QualityOfService == QualityOfService.AtMostOnce ? true : false);
+                        new RetainMessage
+                        {
+                            ByteBuf = bytes,
+                            QoS = (int) mqttPublishMessage.QualityOfService
+                        }, mqttPublishMessage.QualityOfService == QualityOfService.AtMostOnce ? true : false);
                 }
-                await PushMessage(mqttPublishMessage.TopicName, (int)mqttPublishMessage.QualityOfService, bytes, isRetain);
+
+                await PushMessage(mqttPublishMessage.TopicName, (int) mqttPublishMessage.QualityOfService, bytes,
+                    isRetain);
                 await RemotePublishMessage("", new MqttWillMessage
                 {
-                    Qos = (int)mqttPublishMessage.QualityOfService,
+                    Qos = (int) mqttPublishMessage.QualityOfService,
                     Topic = mqttPublishMessage.TopicName,
                     WillMessage = Encoding.Default.GetString(bytes),
                     WillRetain = mqttPublishMessage.RetainRequested
@@ -210,18 +213,22 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
                     await _messagePushService.WriteWillMsg(mqttChannel, willMessage);
                 }
             }
-            else { await SendWillMsg(willMessage); }
+            else
+            {
+                await SendWillMsg(willMessage);
+            }
+
             if (willMessage.WillRetain)
                 SaveRetain(willMessage.Topic, new RetainMessage
-                {
-                    ByteBuf = Encoding.UTF8.GetBytes(willMessage.WillMessage),
-                    QoS = willMessage.Qos
-                }, willMessage.Qos == 0 ? true : false);
+                    {
+                        ByteBuf = Encoding.UTF8.GetBytes(willMessage.WillMessage),
+                        QoS = willMessage.Qos
+                    }, willMessage.Qos == 0 ? true : false);
         }
 
         private async Task PushMessage(string topic, int qos, byte[] bytes, bool isRetain)
         {
-            Topics.TryGetValue(topic, out IEnumerable<MqttChannel> mqttChannels);
+            Topics.TryGetValue(topic, out var mqttChannels);
             if (mqttChannels != null && mqttChannels.Any())
             {
                 foreach (var mqttChannel in mqttChannels)
@@ -238,12 +245,12 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
                             if (!mqttChannel.CleanSession && !isRetain)
                             {
                                 _clientSessionService.SaveMessage(mqttChannel.ClientId,
-                                       new SessionMessage
-                                       {
-                                           Message = bytes,
-                                           QoS = qos,
-                                           Topic = topic
-                                       });
+                                    new SessionMessage
+                                    {
+                                        Message = bytes,
+                                        QoS = qos,
+                                        Topic = topic
+                                    });
                                 break;
                             }
                         }
@@ -251,12 +258,12 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
                     else
                     {
                         _clientSessionService.SaveMessage(mqttChannel.ClientId,
-                                         new SessionMessage
-                                         {
-                                             Message = bytes,
-                                             QoS = qos,
-                                             Topic = topic
-                                         });
+                            new SessionMessage
+                            {
+                                Message = bytes,
+                                QoS = qos,
+                                Topic = topic
+                            });
                     }
                 }
             }
@@ -279,7 +286,7 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
         /// <param name="messageId">The message identifier.</param>
         public override async Task Pubrel(IChannel channel, int messageId)
         {
-            if (MqttChannels.TryGetValue(await this.GetDeviceId(channel), out MqttChannel mqttChannel))
+            if (MqttChannels.TryGetValue(await GetDeviceId(channel), out var mqttChannel))
             {
                 if (mqttChannel.IsLogin())
                 {
@@ -296,7 +303,7 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
         /// <returns>ValueTask.</returns>
         public override async ValueTask PingReq(IChannel channel)
         {
-            if (MqttChannels.TryGetValue(await this.GetDeviceId(channel), out MqttChannel mqttChannel))
+            if (MqttChannels.TryGetValue(await GetDeviceId(channel), out var mqttChannel))
             {
                 if (mqttChannel.IsLogin())
                 {
@@ -311,7 +318,7 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
         /// <param name="willMeaasge">The will meaasge.</param>
         public override async Task SendWillMsg(MqttWillMessage willMeaasge)
         {
-            Topics.TryGetValue(willMeaasge.Topic, out IEnumerable<MqttChannel> mqttChannels);
+            Topics.TryGetValue(willMeaasge.Topic, out var mqttChannels);
             if (mqttChannels != null && mqttChannels.Any())
             {
                 foreach (var mqttChannel in mqttChannels)
@@ -342,16 +349,16 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
         {
             if (!string.IsNullOrEmpty(deviceId))
             {
-                MqttChannels.TryGetValue(deviceId, out MqttChannel mqttChannel);
+                MqttChannels.TryGetValue(deviceId, out var mqttChannel);
                 mqttChannel.SubscribeStatus = SubscribeStatus.Yes;
                 mqttChannel.AddTopic(topics);
                 if (mqttChannel.IsLogin())
                 {
                     foreach (var topic in topics)
                     {
-                        this.AddChannel(topic, mqttChannel);
+                        AddChannel(topic, mqttChannel);
                         await RegisterMqttBroker(topic);
-                        await this.SendRetain(topic, mqttChannel);
+                        await SendRetain(topic, mqttChannel);
                     }
                 }
             }
@@ -364,14 +371,14 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
         /// <param name="topics">The topics.</param>
         public override async Task UnSubscribe(string deviceId, params string[] topics)
         {
-            if (MqttChannels.TryGetValue(deviceId, out MqttChannel mqttChannel))
+            if (MqttChannels.TryGetValue(deviceId, out var mqttChannel))
             {
                 foreach (var topic in topics)
                 {
                     RemoveChannel(topic, mqttChannel);
                     await BrokerCancellationReg(topic);
                 }
-            } 
+            }
         }
 
         /// <summary>
@@ -381,7 +388,7 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
         /// <param name="mqttChannel">The MQTT channel.</param>
         public async Task SendRetain(string topic, MqttChannel mqttChannel)
         {
-            Retain.TryGetValue(topic, out ConcurrentQueue<RetainMessage> retainMessages);
+            Retain.TryGetValue(topic, out var retainMessages);
             if (retainMessages != null && !retainMessages.IsEmpty)
             {
                 var messages = retainMessages.GetEnumerator();
@@ -389,20 +396,23 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
                 {
                     var retainMessage = messages.Current;
                     await SendMessage(mqttChannel, retainMessage.QoS, topic, retainMessage.ByteBuf);
-                };
+                }
+
+                ;
             }
         }
 
-        private void SaveRetain(String topic, RetainMessage retainMessage, bool isClean)
+        private void SaveRetain(string topic, RetainMessage retainMessage, bool isClean)
         {
-            Retain.TryGetValue(topic, out ConcurrentQueue<RetainMessage> retainMessages);
-            if (retainMessages == null) retainMessages=new ConcurrentQueue<RetainMessage>();
+            Retain.TryGetValue(topic, out var retainMessages);
+            if (retainMessages == null) retainMessages = new ConcurrentQueue<RetainMessage>();
             if (!retainMessages.IsEmpty && isClean)
             {
                 retainMessages.Clear();
-            } 
+            }
+
             retainMessages.Enqueue(retainMessage);
-            Retain.AddOrUpdate(topic, retainMessages,(key,value)=> retainMessages);
+            Retain.AddOrUpdate(topic, retainMessages, (key, value) => retainMessages);
         }
 
         /// <summary>
@@ -410,38 +420,41 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
         /// </summary>
         /// <param name="mqttChannel">The MQTT channel.</param>
         /// <returns>IEnumerable&lt;String&gt;.</returns>
-        public IEnumerable<String> RemoveSubTopic(MqttChannel mqttChannel)
+        public IEnumerable<string> RemoveSubTopic(MqttChannel mqttChannel)
         {
-            IEnumerable<String> topics = mqttChannel.Topics;
+            IEnumerable<string> topics = mqttChannel.Topics;
             foreach (var topic in topics)
             {
-                Topics.TryGetValue(topic, out IEnumerable<MqttChannel> comparisonValue);
+                Topics.TryGetValue(topic, out var comparisonValue);
                 var newValue = comparisonValue.Where(p => p != mqttChannel);
                 Topics.TryUpdate(topic, newValue, comparisonValue);
             }
+
             return topics;
         }
 
-        private async Task SendMessage(MqttChannel mqttChannel,int qos, string topic,byte [] byteBuf)
+        private async Task SendMessage(MqttChannel mqttChannel, int qos, string topic, byte[] byteBuf)
         {
             switch (qos)
             {
                 case 0:
-                   await _messagePushService.SendQos0Msg(mqttChannel.Channel, topic, byteBuf);
+                    await _messagePushService.SendQos0Msg(mqttChannel.Channel, topic, byteBuf);
                     break;
                 case 1:
-                   await _messagePushService.SendQosConfirmMsg(QualityOfService.AtLeastOnce, mqttChannel, topic, byteBuf);
+                    await _messagePushService.SendQosConfirmMsg(QualityOfService.AtLeastOnce, mqttChannel, topic,
+                        byteBuf);
                     break;
                 case 2:
-                  await  _messagePushService.SendQosConfirmMsg(QualityOfService.ExactlyOnce, mqttChannel, topic, byteBuf);
+                    await _messagePushService.SendQosConfirmMsg(QualityOfService.ExactlyOnce, mqttChannel, topic,
+                        byteBuf);
                     break;
             }
         }
 
         private async Task Init(IChannel channel, ConnectMessage mqttConnectMessage)
         {
-            String deviceId = await GetDeviceId(channel);
-            MqttChannel mqttChannel = new MqttChannel()
+            var deviceId = await GetDeviceId(channel);
+            var mqttChannel = new MqttChannel
             {
                 Channel = channel,
                 KeepAliveInSeconds = mqttConnectMessage.KeepAliveInSeconds,
@@ -460,16 +473,16 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
                     if (mqttConnectMessage.WillMessage == null || string.IsNullOrEmpty(mqttConnectMessage.WillTopic))
                     {
                         if (_logger.IsEnabled(LogLevel.Error))
-                            _logger.LogError($"WillMessage 和 WillTopic不能为空");
+                            _logger.LogError("WillMessage 和 WillTopic不能为空");
                         return;
                     }
+
                     var willMessage = new MqttWillMessage
                     {
                         Qos = mqttConnectMessage.Qos,
                         WillRetain = mqttConnectMessage.WillRetain,
                         Topic = mqttConnectMessage.WillTopic,
                         WillMessage = Encoding.UTF8.GetString(mqttConnectMessage.WillMessage)
-
                     };
                     _willService.Add(mqttConnectMessage.ClientId, willMessage);
                 }
@@ -479,30 +492,34 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
                     if (!mqttConnectMessage.WillRetain && mqttConnectMessage.WillQualityOfService != 0)
                     {
                         if (_logger.IsEnabled(LogLevel.Error))
-                            _logger.LogError($"WillRetain 设置为false,WillQos必须设置为AtMostOnce");
+                            _logger.LogError("WillRetain 设置为false,WillQos必须设置为AtMostOnce");
                         return;
                     }
                 }
+
                 await channel.WriteAndFlushAsync(new ConnAckPacket
                 {
                     ReturnCode = ConnectReturnCode.Accepted,
                     SessionPresent = !mqttConnectMessage.CleanSession
-                }); 
+                });
                 var sessionMessages = _clientSessionService.GetMessages(mqttConnectMessage.ClientId);
                 if (sessionMessages != null && !sessionMessages.IsEmpty)
                 {
-                    for (; sessionMessages.TryDequeue(out SessionMessage sessionMessage) && sessionMessage != null;)
+                    for (; sessionMessages.TryDequeue(out var sessionMessage) && sessionMessage != null;)
                     {
                         switch (sessionMessage.QoS)
                         {
                             case 0:
-                                await _messagePushService.SendQos0Msg(channel, sessionMessage.Topic, sessionMessage.Message);
+                                await _messagePushService.SendQos0Msg(channel, sessionMessage.Topic,
+                                    sessionMessage.Message);
                                 break;
                             case 1:
-                                await _messagePushService.SendQosConfirmMsg(QualityOfService.AtLeastOnce, GetMqttChannel(deviceId), sessionMessage.Topic, sessionMessage.Message);
+                                await _messagePushService.SendQosConfirmMsg(QualityOfService.AtLeastOnce,
+                                    GetMqttChannel(deviceId), sessionMessage.Topic, sessionMessage.Message);
                                 break;
                             case 2:
-                                await _messagePushService.SendQosConfirmMsg(QualityOfService.ExactlyOnce, GetMqttChannel(deviceId), sessionMessage.Topic, sessionMessage.Message);
+                                await _messagePushService.SendQosConfirmMsg(QualityOfService.ExactlyOnce,
+                                    GetMqttChannel(deviceId), sessionMessage.Topic, sessionMessage.Message);
                                 break;
                         }
                     }

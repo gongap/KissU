@@ -13,6 +13,6 @@
         /// <summary>
         /// The json RPC
         /// </summary>
-        Json_Rpc,
+        Json_Rpc
     }
 }

@@ -14,7 +14,6 @@ using KissU.Core.EventBusRabbitMQ.Attributes;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Polly;
-using Polly.Retry;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using RabbitMQ.Client.Exceptions;
@@ -31,64 +30,67 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
     /// <seealso cref="System.IDisposable" />
     public class EventBusRabbitMQ : IEventBus, IDisposable
     {
-        private readonly string BROKER_NAME;
+        private readonly IDictionary<QueueConsumerMode, string> _exchanges;
+        private readonly ILogger<EventBusRabbitMQ> _logger;
         private readonly int _messageTTL;
+        private readonly IRabbitMQPersistentConnection _persistentConnection;
+        private readonly ushort _prefetchCount;
         private readonly int _retryCount;
         private readonly int _rollbackCount;
-        private readonly ushort _prefetchCount;
-        private readonly IRabbitMQPersistentConnection _persistentConnection;
-        private readonly ILogger<EventBusRabbitMQ> _logger;
         private readonly IEventBusSubscriptionsManager _subsManager;
-        private readonly IDictionary<QueueConsumerMode, string> _exchanges;
+        private readonly string BROKER_NAME;
 
-        private IDictionary<Tuple<string,QueueConsumerMode>, IModel> _consumerChannels;
-
-        /// <summary>
-        /// Occurs when [on shutdown].
-        /// </summary>
-        public event EventHandler OnShutdown;
+        private readonly IDictionary<Tuple<string, QueueConsumerMode>, IModel> _consumerChannels;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EventBusRabbitMQ"/> class.
+        /// Initializes a new instance of the <see cref="EventBusRabbitMQ" /> class.
         /// </summary>
         /// <param name="persistentConnection">The persistent connection.</param>
         /// <param name="logger">The logger.</param>
         /// <param name="subsManager">The subs manager.</param>
         /// <exception cref="ArgumentNullException">persistentConnection</exception>
         /// <exception cref="ArgumentNullException">logger</exception>
-        public EventBusRabbitMQ(IRabbitMQPersistentConnection persistentConnection, ILogger<EventBusRabbitMQ> logger, IEventBusSubscriptionsManager subsManager)
+        public EventBusRabbitMQ(IRabbitMQPersistentConnection persistentConnection, ILogger<EventBusRabbitMQ> logger,
+            IEventBusSubscriptionsManager subsManager)
         {
             BROKER_NAME = AppConfig.BrokerName;
             _messageTTL = AppConfig.MessageTTL;
             _retryCount = AppConfig.RetryCount;
             _prefetchCount = AppConfig.PrefetchCount;
             _rollbackCount = AppConfig.FailCount;
-            _consumerChannels = new Dictionary<Tuple<string,QueueConsumerMode>, IModel>();
+            _consumerChannels = new Dictionary<Tuple<string, QueueConsumerMode>, IModel>();
             _exchanges = new Dictionary<QueueConsumerMode, string>();
             _exchanges.Add(QueueConsumerMode.Normal, BROKER_NAME);
             _exchanges.Add(QueueConsumerMode.Retry, $"{BROKER_NAME}@{QueueConsumerMode.Retry.ToString()}");
             _exchanges.Add(QueueConsumerMode.Fail, $"{BROKER_NAME}@{QueueConsumerMode.Fail.ToString()}");
-            _persistentConnection = persistentConnection ?? throw new ArgumentNullException(nameof(persistentConnection));
+            _persistentConnection =
+                persistentConnection ?? throw new ArgumentNullException(nameof(persistentConnection));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _subsManager = subsManager ?? new InMemoryEventBusSubscriptionsManager();
             _persistentConnection.OnRabbitConnectionShutdown += PersistentConnection_OnEventShutDown;
             _subsManager.OnEventRemoved += SubsManager_OnEventRemoved;
         }
 
-        private void SubsManager_OnEventRemoved(object sender, ValueTuple<string, string> tuple)
+        /// <summary>
+        /// Disposes this instance.
+        /// </summary>
+        public void Dispose()
         {
-            if (!_persistentConnection.IsConnected)
+            foreach (var key in _consumerChannels.Keys)
             {
-                _persistentConnection.TryConnect();
+                if (_consumerChannels[key] != null)
+                {
+                    _consumerChannels[key].Dispose();
+                }
             }
 
-            using (var channel = _persistentConnection.CreateModel())
-            {
-                channel.QueueUnbind(queue: tuple.Item1,
-                    exchange: BROKER_NAME,
-                    routingKey: tuple.Item2);
-            }
+            _subsManager.Clear();
         }
+
+        /// <summary>
+        /// Occurs when [on shutdown].
+        /// </summary>
+        public event EventHandler OnShutdown;
 
         /// <summary>
         /// Publishes the specified event.
@@ -101,20 +103,18 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
                 _persistentConnection.TryConnect();
             }
 
-            var policy = RetryPolicy.Handle<BrokerUnreachableException>()
+            var policy = Policy.Handle<BrokerUnreachableException>()
                 .Or<SocketException>()
-                .WaitAndRetry(5, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), (ex, time) =>
-                {
-                    _logger.LogWarning(ex.ToString());
-                });
+                .WaitAndRetry(5, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)),
+                    (ex, time) => { _logger.LogWarning(ex.ToString()); });
 
             using (var channel = _persistentConnection.CreateModel())
             {
                 var eventName = @event.GetType()
                     .Name;
 
-                channel.ExchangeDeclare(exchange: BROKER_NAME,
-                                    type: "direct");
+                channel.ExchangeDeclare(BROKER_NAME,
+                    "direct");
                 var properties = channel.CreateBasicProperties();
                 properties.Persistent = true;
                 var message = JsonConvert.SerializeObject(@event);
@@ -122,10 +122,10 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
 
                 policy.Execute(() =>
                 {
-                    channel.BasicPublish(exchange: BROKER_NAME,
-                                     routingKey: eventName,
-                                     basicProperties: properties,
-                                     body: body);
+                    channel.BasicPublish(BROKER_NAME,
+                        eventName,
+                        properties,
+                        body);
                 });
             }
         }
@@ -151,6 +151,7 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
                 {
                     _persistentConnection.TryConnect();
                 }
+
                 var _modeNames = Enum.GetNames(typeof(QueueConsumerMode));
 
                 using (var channel = _persistentConnection.CreateModel())
@@ -159,7 +160,7 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
                     {
                         var mode = Enum.Parse<QueueConsumerMode>(modeName);
 
-                        string queueName = "";
+                        var queueName = "";
 
                         if (mode != QueueConsumerMode.Normal)
                             queueName = $"{queueConsumerAttr.QueueName}@{mode.ToString()}";
@@ -171,14 +172,16 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
                             _consumerChannels[key].Close();
                             _consumerChannels.Remove(key);
                         }
+
                         _consumerChannels.Add(key,
                             CreateConsumerChannel(queueConsumerAttr, eventName, mode));
-                        channel.QueueBind(queue: queueName,
-                                          exchange: _exchanges[mode],
-                                          routingKey: eventName); 
+                        channel.QueueBind(queueName,
+                            _exchanges[mode],
+                            eventName);
                     }
                 }
             }
+
             if (!_subsManager.HasSubscriptionsForEvent<T>())
                 _subsManager.AddSubscription<T, TH>(handler, queueConsumerAttr.QueueName);
         }
@@ -195,7 +198,23 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
                 _subsManager.RemoveSubscription<T, TH>();
         }
 
-        private static Func<IIntegrationEventHandler> FindHandlerByType(Type handlerType, IEnumerable<Func<IIntegrationEventHandler>> handlers)
+        private void SubsManager_OnEventRemoved(object sender, ValueTuple<string, string> tuple)
+        {
+            if (!_persistentConnection.IsConnected)
+            {
+                _persistentConnection.TryConnect();
+            }
+
+            using (var channel = _persistentConnection.CreateModel())
+            {
+                channel.QueueUnbind(tuple.Item1,
+                    BROKER_NAME,
+                    tuple.Item2);
+            }
+        }
+
+        private static Func<IIntegrationEventHandler> FindHandlerByType(Type handlerType,
+            IEnumerable<Func<IIntegrationEventHandler>> handlers)
         {
             foreach (var func in handlers)
             {
@@ -208,48 +227,35 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
             return null;
         }
 
-        /// <summary>
-        /// Disposes this instance.
-        /// </summary>
-        public void Dispose()
-        {
-            foreach (var key in _consumerChannels.Keys)
-            {
-                if (_consumerChannels[key] != null)
-                {
-                    _consumerChannels[key].Dispose();
-                }
-            }
-            _subsManager.Clear();
-        }
-
-        private IModel CreateConsumerChannel(QueueConsumerAttribute queueConsumer, string routeKey, QueueConsumerMode mode)
+        private IModel CreateConsumerChannel(QueueConsumerAttribute queueConsumer, string routeKey,
+            QueueConsumerMode mode)
         {
             IModel result = null;
             switch (mode)
             {
                 case QueueConsumerMode.Normal:
-                    {
-                        var bindConsumer = queueConsumer.Modes.Any(p => p == QueueConsumerMode.Normal);
-                        result = CreateConsumerChannel(queueConsumer.QueueName,
-                           bindConsumer);
-                    }
+                {
+                    var bindConsumer = queueConsumer.Modes.Any(p => p == QueueConsumerMode.Normal);
+                    result = CreateConsumerChannel(queueConsumer.QueueName,
+                        bindConsumer);
+                }
                     break;
                 case QueueConsumerMode.Retry:
-                    {
-                        var bindConsumer = queueConsumer.Modes.Any(p => p == QueueConsumerMode.Retry);
-                        result = CreateRetryConsumerChannel(queueConsumer.QueueName, routeKey,
-                            bindConsumer);
-                    }
+                {
+                    var bindConsumer = queueConsumer.Modes.Any(p => p == QueueConsumerMode.Retry);
+                    result = CreateRetryConsumerChannel(queueConsumer.QueueName, routeKey,
+                        bindConsumer);
+                }
                     break;
                 case QueueConsumerMode.Fail:
-                    {
-                        var bindConsumer = queueConsumer.Modes.Any(p => p == QueueConsumerMode.Fail);
-                        result = CreateFailConsumerChannel(queueConsumer.QueueName,
-                              bindConsumer);
-                    }
+                {
+                    var bindConsumer = queueConsumer.Modes.Any(p => p == QueueConsumerMode.Fail);
+                    result = CreateFailConsumerChannel(queueConsumer.QueueName,
+                        bindConsumer);
+                }
                     break;
             }
+
             return result;
         }
 
@@ -263,8 +269,8 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
 
             var channel = _persistentConnection.CreateModel();
 
-            channel.ExchangeDeclare(exchange: BROKER_NAME,
-                                 type: "direct");
+            channel.ExchangeDeclare(BROKER_NAME,
+                "direct");
 
             channel.QueueDeclare(queueName, true, false, false, null);
 
@@ -278,9 +284,9 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
             if (bindConsumer)
             {
                 channel.BasicQos(0, _prefetchCount, false);
-                channel.BasicConsume(queue: queueName,
-                                  autoAck: false,
-                                 consumer: consumer);
+                channel.BasicConsume(queueName,
+                    false,
+                    consumer);
                 channel.CallbackException += (sender, ea) =>
                 {
                     var key = new Tuple<string, QueueConsumerMode>(queueName, mode);
@@ -290,6 +296,7 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
             }
             else
                 channel.Close();
+
             return channel;
         }
 
@@ -300,34 +307,35 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
             {
                 _persistentConnection.TryConnect();
             }
-            IDictionary<String, Object> arguments = new Dictionary<String, Object>();
-            arguments.Add("x-dead-letter-exchange", _exchanges[QueueConsumerMode.Fail].ToString());
+
+            IDictionary<string, object> arguments = new Dictionary<string, object>();
+            arguments.Add("x-dead-letter-exchange", _exchanges[QueueConsumerMode.Fail]);
             arguments.Add("x-message-ttl", _messageTTL);
             arguments.Add("x-dead-letter-routing-key", routeKey);
             var channel = _persistentConnection.CreateModel();
             var retryQueueName = $"{queueName}@{mode.ToString()}";
-            channel.ExchangeDeclare(exchange: _exchanges[mode],
-                                 type: "direct");
+            channel.ExchangeDeclare(_exchanges[mode],
+                "direct");
             channel.QueueDeclare(retryQueueName, true, false, false, arguments);
             var consumer = new EventingBasicConsumer(channel);
             consumer.Received += async (model, ea) =>
             {
                 var eventName = ea.RoutingKey;
-                await ProcessEvent(eventName, ea.Body, mode,ea.BasicProperties);
+                await ProcessEvent(eventName, ea.Body, mode, ea.BasicProperties);
                 channel.BasicAck(ea.DeliveryTag, false);
             };
             if (bindConsumer)
             {
                 channel.BasicQos(0, _prefetchCount, false);
-                channel.BasicConsume(queue: retryQueueName,
-                                      autoAck: false,
-                                     consumer: consumer);
+                channel.BasicConsume(retryQueueName,
+                    false,
+                    consumer);
                 channel.CallbackException += (sender, ea) =>
-              {
-                  var key = new Tuple<string, QueueConsumerMode>(queueName, mode);
-                  _consumerChannels[key].Dispose();
-                  _consumerChannels[key] = CreateRetryConsumerChannel(queueName, routeKey, bindConsumer);
-              };
+                {
+                    var key = new Tuple<string, QueueConsumerMode>(queueName, mode);
+                    _consumerChannels[key].Dispose();
+                    _consumerChannels[key] = CreateRetryConsumerChannel(queueName, routeKey, bindConsumer);
+                };
             }
             else
                 channel.Close();
@@ -343,9 +351,10 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
             {
                 _persistentConnection.TryConnect();
             }
+
             var channel = _persistentConnection.CreateModel();
-            channel.ExchangeDeclare(exchange: _exchanges[mode],
-                                type: "direct");
+            channel.ExchangeDeclare(_exchanges[mode],
+                "direct");
             var failQueueName = $"{queueName}@{mode.ToString()}";
             channel.QueueDeclare(failQueueName, true, false, false, null);
             var consumer = new EventingBasicConsumer(channel);
@@ -358,9 +367,9 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
             if (bindConsumer)
             {
                 channel.BasicQos(0, _prefetchCount, false);
-                channel.BasicConsume(queue: failQueueName,
-                                      autoAck: false,
-                                     consumer: consumer);
+                channel.BasicConsume(failQueueName,
+                    false,
+                    consumer);
                 channel.CallbackException += (sender, ea) =>
                 {
                     var key = new Tuple<string, QueueConsumerMode>(queueName, mode);
@@ -374,7 +383,8 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
             return channel;
         }
 
-        private async Task ProcessEvent(string eventName, byte[] body, QueueConsumerMode mode, IBasicProperties properties)
+        private async Task ProcessEvent(string eventName, byte[] body, QueueConsumerMode mode,
+            IBasicProperties properties)
         {
             var message = Encoding.UTF8.GetString(body);
             if (_subsManager.HasSubscriptionsForEvent(eventName))
@@ -382,15 +392,16 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
                 var eventType = _subsManager.GetEventTypeByName(eventName);
                 var integrationEvent = JsonConvert.DeserializeObject(message, eventType);
                 var handlers = _subsManager.GetHandlersForEvent(eventName);
-                 var concreteType = typeof(IIntegrationEventHandler<>).MakeGenericType(eventType);
+                var concreteType = typeof(IIntegrationEventHandler<>).MakeGenericType(eventType);
                 foreach (var handlerfactory in handlers)
                 {
                     var handler = handlerfactory.DynamicInvoke();
-                    long retryCount = 1; 
+                    long retryCount = 1;
                     try
                     {
-                        var fastInvoker = GetHandler($"{concreteType.FullName}.Handle", concreteType.GetMethod("Handle"));
-                        await (Task)fastInvoker(handler, new object[] { integrationEvent });
+                        var fastInvoker = GetHandler($"{concreteType.FullName}.Handle",
+                            concreteType.GetMethod("Handle"));
+                        await (Task) fastInvoker(handler, new[] {integrationEvent});
                     }
                     catch
                     {
@@ -398,6 +409,7 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
                         {
                             _persistentConnection.TryConnect();
                         }
+
                         retryCount = GetRetryCount(properties);
                         using (var channel = _persistentConnection.CreateModel())
                         {
@@ -407,40 +419,43 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
                                 var rollbackCount = retryCount - _retryCount;
                                 if (rollbackCount < _rollbackCount)
                                 {
-                                    IDictionary<String, Object> headers = new Dictionary<String, Object>();
+                                    IDictionary<string, object> headers = new Dictionary<string, object>();
                                     if (!headers.ContainsKey("x-orig-routing-key"))
                                         headers.Add("x-orig-routing-key", GetOrigRoutingKey(properties, eventName));
                                     retryCount = rollbackCount;
-                                    channel.BasicPublish(_exchanges[QueueConsumerMode.Fail], eventName, CreateOverrideProperties(properties, headers), body);
-
+                                    channel.BasicPublish(_exchanges[QueueConsumerMode.Fail], eventName,
+                                        CreateOverrideProperties(properties, headers), body);
                                 }
                             }
                             else
                             {
-                                IDictionary<String, Object> headers = properties.Headers;
+                                var headers = properties.Headers;
                                 if (headers == null)
                                 {
-                                    headers = new Dictionary<String, Object>();
+                                    headers = new Dictionary<string, object>();
                                 }
+
                                 if (!headers.ContainsKey("x-orig-routing-key"))
-                                    headers.Add("x-orig-routing-key", GetOrigRoutingKey(properties, eventName)); 
-                                channel.BasicPublish(_exchanges[QueueConsumerMode.Retry], eventName, CreateOverrideProperties(properties, headers), body);
+                                    headers.Add("x-orig-routing-key", GetOrigRoutingKey(properties, eventName));
+                                channel.BasicPublish(_exchanges[QueueConsumerMode.Retry], eventName,
+                                    CreateOverrideProperties(properties, headers), body);
                             }
                         }
                     }
                     finally
                     {
-                        var baseConcreteType = typeof(BaseIntegrationEventHandler<>).MakeGenericType(eventType); 
-                       if (handler.GetType().BaseType== baseConcreteType)
-                        { 
-                            var context = new EventContext()
+                        var baseConcreteType = typeof(BaseIntegrationEventHandler<>).MakeGenericType(eventType);
+                        if (handler.GetType().BaseType == baseConcreteType)
+                        {
+                            var context = new EventContext
                             {
-                                Content= integrationEvent,
+                                Content = integrationEvent,
                                 Count = retryCount,
                                 Type = mode.ToString()
                             };
-                            var fastInvoker = GetHandler($"{baseConcreteType.FullName}.Handled", baseConcreteType.GetMethod("Handled"));
-                            await (Task)fastInvoker(handler, new object[] { context });
+                            var fastInvoker = GetHandler($"{baseConcreteType.FullName}.Handled",
+                                baseConcreteType.GetMethod("Handled"));
+                            await (Task) fastInvoker(handler, new object[] {context});
                         }
                     }
                 }
@@ -448,7 +463,7 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
         }
 
         private IBasicProperties CreateOverrideProperties(IBasicProperties properties,
-    IDictionary<String, Object> headers)
+            IDictionary<string, object> headers)
         {
             IBasicProperties newProperties = new BasicProperties();
             newProperties.ContentType = properties.ContentType ?? "";
@@ -461,17 +476,18 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
                 if (!newProperties.Headers.ContainsKey(key))
                     newProperties.Headers.Add(key, headers[key]);
             }
+
             newProperties.DeliveryMode = properties.DeliveryMode;
             return newProperties;
         }
 
-        private String GetOrigRoutingKey(IBasicProperties properties,
-          String defaultValue)
+        private string GetOrigRoutingKey(IBasicProperties properties,
+            string defaultValue)
         {
-            String routingKey = defaultValue;
+            var routingKey = defaultValue;
             if (properties != null)
             {
-                IDictionary<String, Object> headers = properties.Headers;
+                var headers = properties.Headers;
                 if (headers != null && headers.Count > 0)
                 {
                     if (headers.ContainsKey("x-orig-routing-key"))
@@ -480,23 +496,23 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
                     }
                 }
             }
+
             return routingKey;
         }
 
         private long GetRetryCount(IBasicProperties properties)
         {
-            long retryCount = 1L;
+            var retryCount = 1L;
             try
             {
                 if (properties != null)
                 {
-
-                    IDictionary<String, Object> headers = properties.Headers;
+                    var headers = properties.Headers;
                     if (headers != null)
                     {
                         if (headers.ContainsKey("x-death"))
                         {
-                            retryCount= GetRetryCount(properties, headers);
+                            retryCount = GetRetryCount(properties, headers);
                         }
                         else
                         {
@@ -507,33 +523,37 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
                     }
                 }
             }
-            catch { }
+            catch
+            {
+            }
+
             return retryCount;
         }
 
-       private  long GetRetryCount(IBasicProperties properties, IDictionary<String, Object> headers)
+        private long GetRetryCount(IBasicProperties properties, IDictionary<string, object> headers)
         {
             var retryCount = 1L;
             if (headers["x-death"] is List<object>)
             {
-                var deaths = (List<object>)headers["x-death"];
+                var deaths = (List<object>) headers["x-death"];
                 if (deaths.Count > 0)
                 {
-                    IDictionary<String, Object> death = deaths[0] as Dictionary<String, Object>;
-                    retryCount = (long)death["count"];
+                    IDictionary<string, object> death = deaths[0] as Dictionary<string, object>;
+                    retryCount = (long) death["count"];
                     death["count"] = ++retryCount;
                 }
             }
             else
             {
-                Dictionary<String, Object> death = (Dictionary<String, Object>)headers["x-death"];
+                var death = (Dictionary<string, object>) headers["x-death"];
                 if (death != null)
                 {
-                    retryCount = (long)death["count"];
+                    retryCount = (long) death["count"];
                     death["count"] = ++retryCount;
                     properties.Headers = headers;
                 }
             }
+
             return retryCount;
         }
 
@@ -545,12 +565,13 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
                 objInstance = FastInvoke.GetMethodInvoker(method);
                 ServiceResolver.Current.Register(key, objInstance, null);
             }
+
             return objInstance as FastInvoke.FastInvokeHandler;
         }
 
         private void PersistentConnection_OnEventShutDown(object sender, ShutdownEventArgs reason)
         {
-            OnShutdown(this,new EventArgs());
+            OnShutdown(this, new EventArgs());
         }
     }
 }

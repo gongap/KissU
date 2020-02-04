@@ -8,7 +8,7 @@
     public class BasicAuthScheme : SecurityScheme
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="BasicAuthScheme"/> class.
+        /// Initializes a new instance of the <see cref="BasicAuthScheme" /> class.
         /// </summary>
         public BasicAuthScheme()
         {

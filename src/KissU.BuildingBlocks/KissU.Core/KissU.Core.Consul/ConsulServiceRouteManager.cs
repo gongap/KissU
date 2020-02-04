@@ -17,6 +17,7 @@ using KissU.Core.CPlatform.Runtime.Client;
 using KissU.Core.CPlatform.Serialization;
 using KissU.Core.CPlatform.Utilities;
 using Microsoft.Extensions.Logging;
+using LogLevel = Microsoft.Extensions.Logging.LogLevel;
 
 namespace KissU.Core.Consul
 {
@@ -26,17 +27,17 @@ namespace KissU.Core.Consul
     public class ConsulServiceRouteManager : ServiceRouteManagerBase, IDisposable
     {
         private readonly ConfigInfo _configInfo;
-        private readonly ISerializer<byte[]> _serializer;
-        private readonly IServiceRouteFactory _serviceRouteFactory;
-        private readonly ILogger<ConsulServiceRouteManager> _logger;
-        private readonly ISerializer<string> _stringSerializer;
-        private readonly IClientWatchManager _manager;
-        private ServiceRoute[] _routes;
         private readonly IConsulClientProvider _consulClientProvider;
+        private readonly ILogger<ConsulServiceRouteManager> _logger;
+        private readonly IClientWatchManager _manager;
+        private readonly ISerializer<byte[]> _serializer;
         private readonly IServiceHeartbeatManager _serviceHeartbeatManager;
+        private readonly IServiceRouteFactory _serviceRouteFactory;
+        private readonly ISerializer<string> _stringSerializer;
+        private ServiceRoute[] _routes;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ConsulServiceRouteManager"/> class.
+        /// Initializes a new instance of the <see cref="ConsulServiceRouteManager" /> class.
         /// </summary>
         /// <param name="configInfo">The configuration information.</param>
         /// <param name="serializer">The serializer.</param>
@@ -47,9 +48,10 @@ namespace KissU.Core.Consul
         /// <param name="serviceHeartbeatManager">The service heartbeat manager.</param>
         /// <param name="consulClientProvider">The consul client provider.</param>
         public ConsulServiceRouteManager(ConfigInfo configInfo, ISerializer<byte[]> serializer,
-       ISerializer<string> stringSerializer, IClientWatchManager manager, IServiceRouteFactory serviceRouteFactory,
-       ILogger<ConsulServiceRouteManager> logger,
-       IServiceHeartbeatManager serviceHeartbeatManager, IConsulClientProvider consulClientProvider) : base(stringSerializer)
+            ISerializer<string> stringSerializer, IClientWatchManager manager, IServiceRouteFactory serviceRouteFactory,
+            ILogger<ConsulServiceRouteManager> logger,
+            IServiceHeartbeatManager serviceHeartbeatManager, IConsulClientProvider consulClientProvider) : base(
+            stringSerializer)
         {
             _configInfo = configInfo;
             _serializer = serializer;
@@ -60,6 +62,13 @@ namespace KissU.Core.Consul
             _manager = manager;
             _serviceHeartbeatManager = serviceHeartbeatManager;
             EnterRoutes().Wait();
+        }
+
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+        public void Dispose()
+        {
         }
 
         /// <summary>
@@ -86,13 +95,6 @@ namespace KissU.Core.Consul
         }
 
         /// <summary>
-        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-        /// </summary>
-        public void Dispose()
-        {
-        }
-
-        /// <summary>
         /// 获取所有可用的服务路由信息。
         /// </summary>
         /// <returns>服务路由集合。</returns>
@@ -114,24 +116,28 @@ namespace KissU.Core.Consul
             {
                 await _consulClientProvider.Check();
                 var hostAddr = NetUtils.GetHostAddress();
-                var serviceRoutes = await GetRoutes(routes.Select(p => $"{ _configInfo.RoutePath}{p.ServiceDescriptor.Id}"));
+                var serviceRoutes =
+                    await GetRoutes(routes.Select(p => $"{_configInfo.RoutePath}{p.ServiceDescriptor.Id}"));
                 foreach (var route in routes)
                 {
-                    var serviceRoute = serviceRoutes.Where(p => p.ServiceDescriptor.Id == route.ServiceDescriptor.Id).FirstOrDefault();
+                    var serviceRoute = serviceRoutes.Where(p => p.ServiceDescriptor.Id == route.ServiceDescriptor.Id)
+                        .FirstOrDefault();
 
                     if (serviceRoute != null)
                     {
                         var addresses = serviceRoute.Address.Concat(
-                          route.Address.Except(serviceRoute.Address)).ToList();
+                            route.Address.Except(serviceRoute.Address)).ToList();
 
                         foreach (var address in route.Address)
                         {
                             addresses.Remove(addresses.Where(p => p.ToString() == address.ToString()).FirstOrDefault());
                             addresses.Add(address);
                         }
+
                         route.Address = addresses;
                     }
                 }
+
                 await RemoveExceptRoutesAsync(routes, hostAddr);
                 await base.SetRoutesAsync(routes);
             }
@@ -160,6 +166,7 @@ namespace KissU.Core.Consul
             {
                 throw ex;
             }
+
             await base.SetRoutesAsync(routes);
         }
 
@@ -175,7 +182,8 @@ namespace KissU.Core.Consul
                 foreach (var serviceRoute in routes)
                 {
                     var nodeData = _serializer.Serialize(serviceRoute);
-                    var keyValuePair = new KVPair($"{_configInfo.RoutePath}{serviceRoute.ServiceDescriptor.Id}") { Value = nodeData };
+                    var keyValuePair = new KVPair($"{_configInfo.RoutePath}{serviceRoute.ServiceDescriptor.Id}")
+                        {Value = nodeData};
                     await client.KV.Put(keyValuePair);
                 }
             }
@@ -196,7 +204,8 @@ namespace KissU.Core.Consul
                     var deletedRouteIds = oldRouteIds.Except(newRouteIds).ToArray();
                     foreach (var deletedRouteId in deletedRouteIds)
                     {
-                        var addresses = _routes.Where(p => p.ServiceDescriptor.Id == deletedRouteId).Select(p => p.Address).FirstOrDefault();
+                        var addresses = _routes.Where(p => p.ServiceDescriptor.Id == deletedRouteId)
+                            .Select(p => p.Address).FirstOrDefault();
                         if (addresses.Contains(hostAddr))
                             await client.KV.Delete($"{_configInfo.RoutePath}{deletedRouteId}");
                     }
@@ -220,39 +229,42 @@ namespace KissU.Core.Consul
                 else
                 {
                     var distributedLock = await client.AcquireLock(new LockOptions($"lock_{_configInfo.RoutePath}")
-                    {
-                        SessionTTL = TimeSpan.FromSeconds(_configInfo.LockDelay),
-                        LockTryOnce = true,
-                        LockWaitTime = TimeSpan.FromSeconds(_configInfo.LockDelay)
-                    }, _configInfo.LockDelay == 0 ?
-                        default :
-                         new CancellationTokenSource(TimeSpan.FromSeconds(_configInfo.LockDelay)).Token);
+                        {
+                            SessionTTL = TimeSpan.FromSeconds(_configInfo.LockDelay),
+                            LockTryOnce = true,
+                            LockWaitTime = TimeSpan.FromSeconds(_configInfo.LockDelay)
+                        },
+                        _configInfo.LockDelay == 0
+                            ? default
+                            : new CancellationTokenSource(TimeSpan.FromSeconds(_configInfo.LockDelay)).Token);
                     result.Add(distributedLock);
                 }
-
             }
+
             return result;
         }
+
         private async Task<ServiceRoute> GetRoute(byte[] data)
         {
-            if (_logger.IsEnabled(Microsoft.Extensions.Logging.LogLevel.Debug))
+            if (_logger.IsEnabled(LogLevel.Debug))
                 _logger.LogDebug($"准备转换服务路由，配置内容：{Encoding.UTF8.GetString(data)}。");
 
             if (data == null)
                 return null;
 
             var descriptor = _serializer.Deserialize<byte[], ServiceRouteDescriptor>(data);
-            return (await _serviceRouteFactory.CreateServiceRoutesAsync(new[] { descriptor })).First();
+            return (await _serviceRouteFactory.CreateServiceRoutesAsync(new[] {descriptor})).First();
         }
 
         private async Task<ServiceRoute[]> GetRouteDatas(string[] routes)
         {
-            List<ServiceRoute> serviceRoutes = new List<ServiceRoute>();
+            var serviceRoutes = new List<ServiceRoute>();
             foreach (var route in routes)
             {
                 var serviceRoute = await GetRouteData(route);
                 serviceRoutes.Add(serviceRoute);
             }
+
             return serviceRoutes.ToArray();
         }
 
@@ -261,19 +273,19 @@ namespace KissU.Core.Consul
             if (data == null)
                 return null;
 
-            var descriptor = _stringSerializer.Deserialize(data, typeof(ServiceRouteDescriptor)) as ServiceRouteDescriptor;
-            return (await _serviceRouteFactory.CreateServiceRoutesAsync(new[] { descriptor })).First();
+            var descriptor =
+                _stringSerializer.Deserialize(data, typeof(ServiceRouteDescriptor)) as ServiceRouteDescriptor;
+            return (await _serviceRouteFactory.CreateServiceRoutesAsync(new[] {descriptor})).First();
         }
 
         private async Task<ServiceRoute[]> GetRoutes(IEnumerable<string> childrens)
         {
-
             childrens = childrens.ToArray();
             var routes = new List<ServiceRoute>(childrens.Count());
 
             foreach (var children in childrens)
             {
-                if (_logger.IsEnabled(Microsoft.Extensions.Logging.LogLevel.Debug))
+                if (_logger.IsEnabled(LogLevel.Debug))
                     _logger.LogDebug($"准备从节点：{children}中获取路由信息。");
 
                 var route = await GetRoute(children);
@@ -298,13 +310,14 @@ namespace KissU.Core.Consul
             var queryResult = await client.KV.Keys(path);
             if (queryResult.Response != null)
             {
-                var data = (await client.GetDataAsync(path));
+                var data = await client.GetDataAsync(path);
                 if (data != null)
                 {
                     watcher.SetCurrentData(data);
                     result = await GetRoute(data);
                 }
             }
+
             return result;
         }
 
@@ -325,11 +338,12 @@ namespace KissU.Core.Consul
             {
                 //创建子监控类
                 var watcher = new ChildrenMonitorWatcher(GetConsulClient, _manager, _configInfo.RoutePath,
-             async (oldChildrens, newChildrens) => await ChildrenChange(oldChildrens, newChildrens),
-               (result) => ConvertPaths(result).Result);
+                    async (oldChildrens, newChildrens) => await ChildrenChange(oldChildrens, newChildrens),
+                    result => ConvertPaths(result).Result);
                 //对委托绑定方法
                 action = currentData => watcher.SetCurrentData(currentData);
             }
+
             if (client.KV.Keys(_configInfo.RoutePath).Result.Response?.Count() > 0)
             {
                 var result = await client.GetChildrenAsync(_configInfo.RoutePath);
@@ -342,7 +356,7 @@ namespace KissU.Core.Consul
             }
             else
             {
-                if (_logger.IsEnabled(Microsoft.Extensions.Logging.LogLevel.Warning))
+                if (_logger.IsEnabled(LogLevel.Warning))
                     _logger.LogWarning($"无法获取路由信息，因为节点：{_configInfo.RoutePath}，不存在。");
                 _routes = new ServiceRoute[0];
             }
@@ -359,6 +373,7 @@ namespace KissU.Core.Consul
                 if (b1 != b2)
                     return false;
             }
+
             return true;
         }
 
@@ -369,7 +384,7 @@ namespace KissU.Core.Consul
         /// <returns>返回路径集合</returns>
         private async Task<string[]> ConvertPaths(string[] datas)
         {
-            List<string> paths = new List<string>();
+            var paths = new List<string>();
             foreach (var data in datas)
             {
                 var result = await GetRouteData(data);
@@ -377,6 +392,7 @@ namespace KissU.Core.Consul
                 if (!string.IsNullOrEmpty(serviceId))
                     paths.Add(serviceId);
             }
+
             return paths.ToArray();
         }
 
@@ -395,7 +411,7 @@ namespace KissU.Core.Consul
                 _routes =
                     _routes
                         .Where(i => i.ServiceDescriptor.Id != newRoute.ServiceDescriptor.Id)
-                        .Concat(new[] { newRoute }).ToArray();
+                        .Concat(new[] {newRoute}).ToArray();
             }
 
             //触发路由变更事件。
@@ -410,10 +426,10 @@ namespace KissU.Core.Consul
         /// <returns></returns>
         private async Task ChildrenChange(string[] oldChildrens, string[] newChildrens)
         {
-            if (_logger.IsEnabled(Microsoft.Extensions.Logging.LogLevel.Debug))
+            if (_logger.IsEnabled(LogLevel.Debug))
                 _logger.LogDebug($"最新的节点信息：{string.Join(",", newChildrens)}");
 
-            if (_logger.IsEnabled(Microsoft.Extensions.Logging.LogLevel.Debug))
+            if (_logger.IsEnabled(LogLevel.Debug))
                 _logger.LogDebug($"旧的节点信息：{string.Join(",", oldChildrens)}");
 
             //计算出已被删除的节点。
@@ -421,9 +437,9 @@ namespace KissU.Core.Consul
             //计算出新增的节点。
             var createdChildrens = newChildrens.Except(oldChildrens).ToArray();
 
-            if (_logger.IsEnabled(Microsoft.Extensions.Logging.LogLevel.Debug))
+            if (_logger.IsEnabled(LogLevel.Debug))
                 _logger.LogDebug($"需要被删除的路由节点：{string.Join(",", deletedChildrens)}");
-            if (_logger.IsEnabled(Microsoft.Extensions.Logging.LogLevel.Debug))
+            if (_logger.IsEnabled(LogLevel.Debug))
                 _logger.LogDebug($"需要被添加的路由节点：{string.Join(",", createdChildrens)}");
 
             //获取新增的路由信息。
@@ -433,25 +449,30 @@ namespace KissU.Core.Consul
             lock (_routes)
             {
                 #region 节点变更操作
+
                 _routes = _routes
                     //删除无效的节点路由。
                     .Where(i => !deletedChildrens.Contains($"{_configInfo.RoutePath}{i.ServiceDescriptor.Id}"))
                     //连接上新的路由。
                     .Concat(newRoutes)
                     .ToArray();
+
                 #endregion
             }
+
             //需要删除的路由集合。
-            var deletedRoutes = routes.Where(i => deletedChildrens.Contains($"{_configInfo.RoutePath}{i.ServiceDescriptor.Id}")).ToArray();
+            var deletedRoutes = routes
+                .Where(i => deletedChildrens.Contains($"{_configInfo.RoutePath}{i.ServiceDescriptor.Id}")).ToArray();
             //触发删除事件。
             OnRemoved(deletedRoutes.Select(route => new ServiceRouteEventArgs(route)).ToArray());
 
             //触发路由被创建事件。
             OnCreated(newRoutes.Select(route => new ServiceRouteEventArgs(route)).ToArray());
 
-            if (_logger.IsEnabled(Microsoft.Extensions.Logging.LogLevel.Information))
+            if (_logger.IsEnabled(LogLevel.Information))
                 _logger.LogInformation("路由数据更新成功。");
         }
+
         #endregion
     }
 }

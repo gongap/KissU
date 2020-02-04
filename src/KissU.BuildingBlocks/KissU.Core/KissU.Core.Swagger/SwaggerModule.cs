@@ -18,10 +18,10 @@ namespace KissU.Core.Swagger
     /// Implements the <see cref="KestrelHttpModule" />
     /// </summary>
     /// <seealso cref="KestrelHttpModule" />
-    public class SwaggerModule: KestrelHttpModule
+    public class SwaggerModule : KestrelHttpModule
     {
-        private  IServiceSchemaProvider _serviceSchemaProvider; 
-        private  IServiceEntryProvider _serviceEntryProvider;
+        private IServiceEntryProvider _serviceEntryProvider;
+        private IServiceSchemaProvider _serviceSchemaProvider;
 
         /// <summary>
         /// Initializes the specified context.
@@ -41,7 +41,8 @@ namespace KissU.Core.Swagger
         public override void Initialize(ApplicationInitializationContext context)
         {
             var info = AppConfig.SwaggerConfig.Info == null
-          ? AppConfig.SwaggerOptions : AppConfig.SwaggerConfig.Info;
+                ? AppConfig.SwaggerOptions
+                : AppConfig.SwaggerConfig.Info;
             if (info != null)
             {
                 context.Builder.UseSwagger();
@@ -62,7 +63,8 @@ namespace KissU.Core.Swagger
         {
             var serviceCollection = context.Services;
             var info = AppConfig.SwaggerConfig.Info == null
-                     ? AppConfig.SwaggerOptions : AppConfig.SwaggerConfig.Info;
+                ? AppConfig.SwaggerOptions
+                : AppConfig.SwaggerConfig.Info;
             var swaggerOptions = AppConfig.SwaggerConfig.Options;
             if (info != null)
             {
@@ -104,8 +106,9 @@ namespace KissU.Core.Swagger
                 AppConfig.SwaggerOptions = section.Get<Info>();
                 AppConfig.SwaggerConfig = section.Get<DocumentConfiguration>();
             }
-            builder.RegisterType(typeof(DefaultServiceSchemaProvider)).As(typeof(IServiceSchemaProvider)).SingleInstance();
 
+            builder.RegisterType(typeof(DefaultServiceSchemaProvider)).As(typeof(IServiceSchemaProvider))
+                .SingleInstance();
         }
     }
 }

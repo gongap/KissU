@@ -24,7 +24,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
     public class DocumentFilterContext
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DocumentFilterContext"/> class.
+        /// Initializes a new instance of the <see cref="DocumentFilterContext" /> class.
         /// </summary>
         /// <param name="apiDescriptionsGroups">The API descriptions groups.</param>
         /// <param name="apiDescriptions">The API descriptions.</param>
@@ -43,16 +43,16 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
         /// Gets the API descriptions groups.
         /// </summary>
         [Obsolete("Deprecated: Use ApiDescriptions")]
-        public ApiDescriptionGroupCollection ApiDescriptionsGroups { get; private set; }
+        public ApiDescriptionGroupCollection ApiDescriptionsGroups { get; }
 
         /// <summary>
         /// Gets the API descriptions.
         /// </summary>
-        public IEnumerable<ApiDescription> ApiDescriptions { get; private set; }
+        public IEnumerable<ApiDescription> ApiDescriptions { get; }
 
         /// <summary>
         /// Gets the schema registry.
         /// </summary>
-        public ISchemaRegistry SchemaRegistry { get; private set; }
+        public ISchemaRegistry SchemaRegistry { get; }
     }
 }

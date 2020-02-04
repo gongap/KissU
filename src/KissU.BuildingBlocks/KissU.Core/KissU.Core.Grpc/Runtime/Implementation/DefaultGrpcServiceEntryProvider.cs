@@ -13,17 +13,8 @@ namespace KissU.Core.Grpc.Runtime.Implementation
     /// Implements the <see cref="KissU.Core.Grpc.Runtime.IGrpcServiceEntryProvider" />
     /// </summary>
     /// <seealso cref="KissU.Core.Grpc.Runtime.IGrpcServiceEntryProvider" />
-    public class DefaultGrpcServiceEntryProvider: IGrpcServiceEntryProvider
-    { 
-        #region Field
-
-        private readonly IEnumerable<Type> _types;
-        private readonly ILogger<DefaultGrpcServiceEntryProvider> _logger;
-        private readonly CPlatformContainer _serviceProvider;
-        private List<GrpcServiceEntry> _grpcServiceEntries;
-
-        #endregion Field
-
+    public class DefaultGrpcServiceEntryProvider : IGrpcServiceEntryProvider
+    {
         #region Constructor
 
         /// <summary>
@@ -43,6 +34,15 @@ namespace KissU.Core.Grpc.Runtime.Implementation
 
         #endregion Constructor
 
+        #region Field
+
+        private readonly IEnumerable<Type> _types;
+        private readonly ILogger<DefaultGrpcServiceEntryProvider> _logger;
+        private readonly CPlatformContainer _serviceProvider;
+        private List<GrpcServiceEntry> _grpcServiceEntries;
+
+        #endregion Field
+
         #region Implementation of IUdpServiceEntryProvider
 
         /// <summary>
@@ -54,20 +54,24 @@ namespace KissU.Core.Grpc.Runtime.Implementation
             var services = _types.ToArray();
             if (_grpcServiceEntries == null)
             {
-                _grpcServiceEntries = new List<GrpcServiceEntry>(); 
+                _grpcServiceEntries = new List<GrpcServiceEntry>();
                 foreach (var service in services)
                 {
                     var entry = CreateServiceEntry(service);
                     if (entry != null)
                     {
-                        _grpcServiceEntries.Add(entry); 
+                        _grpcServiceEntries.Add(entry);
                     }
                 }
+
                 if (_logger.IsEnabled(LogLevel.Debug))
                 {
-                    _logger.LogDebug($"发现了以下grpc服务：{string.Join(",", _grpcServiceEntries.Select(i => i.Type.FullName))}。"); ;
+                    _logger.LogDebug(
+                        $"发现了以下grpc服务：{string.Join(",", _grpcServiceEntries.Select(i => i.Type.FullName))}。");
+                    ;
                 }
             }
+
             return _grpcServiceEntries;
         }
 
@@ -78,9 +82,9 @@ namespace KissU.Core.Grpc.Runtime.Implementation
         /// <returns>GrpcServiceEntry.</returns>
         public GrpcServiceEntry CreateServiceEntry(Type service)
         {
-            GrpcServiceEntry result = null; 
+            GrpcServiceEntry result = null;
             var objInstance = _serviceProvider.GetInstances(service);
-            var behavior = objInstance as IServiceBehavior;  
+            var behavior = objInstance as IServiceBehavior;
             if (behavior != null)
                 result = new GrpcServiceEntry
                 {
@@ -89,6 +93,7 @@ namespace KissU.Core.Grpc.Runtime.Implementation
                 };
             return result;
         }
+
         #endregion
     }
 }

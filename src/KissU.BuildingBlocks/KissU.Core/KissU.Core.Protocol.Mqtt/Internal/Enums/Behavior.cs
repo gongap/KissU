@@ -9,9 +9,10 @@
         /// The publish
         /// </summary>
         Publish,
+
         /// <summary>
         /// The suscribe
         /// </summary>
-        Suscribe,
+        Suscribe
     }
 }

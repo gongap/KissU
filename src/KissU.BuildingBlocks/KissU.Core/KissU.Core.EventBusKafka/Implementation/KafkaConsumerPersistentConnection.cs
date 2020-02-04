@@ -17,10 +17,10 @@ namespace KissU.Core.EventBusKafka.Implementation
     public class KafkaConsumerPersistentConnection : KafkaPersistentConnectionBase
     {
         private readonly ILogger<KafkaConsumerPersistentConnection> _logger;
-        private ConcurrentBag<Consumer<Null, string>> _consumerClients;
-        private Consumer<Null, string> _consumerClient;
         private readonly IDeserializer<string> _stringDeserializer;
-        bool _disposed;
+        private Consumer<Null, string> _consumerClient;
+        private readonly ConcurrentBag<Consumer<Null, string>> _consumerClients;
+        private bool _disposed;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="KafkaConsumerPersistentConnection" /> class.
@@ -52,7 +52,6 @@ namespace KissU.Core.EventBusKafka.Implementation
                 _consumerClient.OnConsumeError += OnConsumeError;
                 _consumerClient.OnError += OnConnectionException;
                 _consumerClients.Add(_consumerClient);
-
             };
         }
 
@@ -66,17 +65,18 @@ namespace KissU.Core.EventBusKafka.Implementation
             {
                 TryConnect();
             }
+
             while (true)
             {
                 foreach (var client in _consumerClients)
                 {
-
                     client.Poll(timeout);
 
-                    if (!client.Consume(out Message<Null, string> msg, (int)timeout.TotalMilliseconds))
+                    if (!client.Consume(out var msg, (int) timeout.TotalMilliseconds))
                     {
                         continue;
                     }
+
                     if (msg.Offset % 5 == 0)
                     {
                         var committedOffsets = client.CommitAsync(msg).Result;
@@ -101,7 +101,7 @@ namespace KissU.Core.EventBusKafka.Implementation
             if (_disposed) return;
 
             _logger.LogWarning($"An error occurred during consume the message; Topic:'{e.Topic}'," +
-                $"Message:'{message.Value}', Reason:'{e.Error}'.");
+                               $"Message:'{message.Value}', Reason:'{e.Error}'.");
 
             TryConnect();
         }

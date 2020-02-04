@@ -34,13 +34,13 @@ namespace KissU.Core.Zookeeper
         public static IServiceBuilder UseZooKeeperRouteManager(this IServiceBuilder builder, ConfigInfo configInfo)
         {
             return builder.UseRouteManager(provider =>
-             new ZooKeeperServiceRouteManager(
-                GetConfigInfo(configInfo),
-              provider.GetRequiredService<ISerializer<byte[]>>(),
-                provider.GetRequiredService<ISerializer<string>>(),
-                provider.GetRequiredService<IServiceRouteFactory>(),
-                provider.GetRequiredService<ILogger<ZooKeeperServiceRouteManager>>(),
-                  provider.GetRequiredService<IZookeeperClientProvider>()));
+                new ZooKeeperServiceRouteManager(
+                    GetConfigInfo(configInfo),
+                    provider.GetRequiredService<ISerializer<byte[]>>(),
+                    provider.GetRequiredService<ISerializer<string>>(),
+                    provider.GetRequiredService<IServiceRouteFactory>(),
+                    provider.GetRequiredService<ILogger<ZooKeeperServiceRouteManager>>(),
+                    provider.GetRequiredService<IZookeeperClientProvider>()));
         }
 
         /// <summary>
@@ -54,12 +54,12 @@ namespace KissU.Core.Zookeeper
             return builder.UseMqttRouteManager(provider =>
             {
                 var result = new ZooKeeperMqttServiceRouteManager(
-                     GetConfigInfo(configInfo),
-                   provider.GetRequiredService<ISerializer<byte[]>>(),
-                     provider.GetRequiredService<ISerializer<string>>(),
-                     provider.GetRequiredService<IMqttServiceFactory>(),
-                     provider.GetRequiredService<ILogger<ZooKeeperMqttServiceRouteManager>>(),
-                  provider.GetRequiredService<IZookeeperClientProvider>());
+                    GetConfigInfo(configInfo),
+                    provider.GetRequiredService<ISerializer<byte[]>>(),
+                    provider.GetRequiredService<ISerializer<string>>(),
+                    provider.GetRequiredService<IMqttServiceFactory>(),
+                    provider.GetRequiredService<ILogger<ZooKeeperMqttServiceRouteManager>>(),
+                    provider.GetRequiredService<IZookeeperClientProvider>());
                 return result;
             });
         }
@@ -76,12 +76,12 @@ namespace KissU.Core.Zookeeper
             {
                 var result = new ZookeeperServiceCommandManager(
                     GetConfigInfo(configInfo),
-                  provider.GetRequiredService<ISerializer<byte[]>>(),
+                    provider.GetRequiredService<ISerializer<byte[]>>(),
                     provider.GetRequiredService<ISerializer<string>>(),
-                  provider.GetRequiredService<IServiceRouteManager>(),
+                    provider.GetRequiredService<IServiceRouteManager>(),
                     provider.GetRequiredService<IServiceEntryManager>(),
                     provider.GetRequiredService<ILogger<ZookeeperServiceCommandManager>>(),
-                  provider.GetRequiredService<IZookeeperClientProvider>());
+                    provider.GetRequiredService<IZookeeperClientProvider>());
                 return result;
             });
         }
@@ -92,17 +92,18 @@ namespace KissU.Core.Zookeeper
         /// <param name="builder">The builder.</param>
         /// <param name="configInfo">The configuration information.</param>
         /// <returns>IServiceBuilder.</returns>
-        public static IServiceBuilder UseZooKeeperServiceSubscribeManager(this IServiceBuilder builder, ConfigInfo configInfo)
+        public static IServiceBuilder UseZooKeeperServiceSubscribeManager(this IServiceBuilder builder,
+            ConfigInfo configInfo)
         {
             return builder.UseSubscribeManager(provider =>
             {
                 var result = new ZooKeeperServiceSubscribeManager(
                     GetConfigInfo(configInfo),
-                  provider.GetRequiredService<ISerializer<byte[]>>(),
+                    provider.GetRequiredService<ISerializer<byte[]>>(),
                     provider.GetRequiredService<ISerializer<string>>(),
                     provider.GetRequiredService<IServiceSubscriberFactory>(),
                     provider.GetRequiredService<ILogger<ZooKeeperServiceSubscribeManager>>(),
-                  provider.GetRequiredService<IZookeeperClientProvider>());
+                    provider.GetRequiredService<IZookeeperClientProvider>());
                 return result;
             });
         }
@@ -116,13 +117,13 @@ namespace KissU.Core.Zookeeper
         public static IServiceBuilder UseZooKeeperCacheManager(this IServiceBuilder builder, ConfigInfo configInfo)
         {
             return builder.UseCacheManager(provider =>
-             new ZookeeperServiceCacheManager(
-               GetConfigInfo(configInfo),
-              provider.GetRequiredService<ISerializer<byte[]>>(),
-                provider.GetRequiredService<ISerializer<string>>(),
-                provider.GetRequiredService<IServiceCacheFactory>(),
-                provider.GetRequiredService<ILogger<ZookeeperServiceCacheManager>>(),
-                  provider.GetRequiredService<IZookeeperClientProvider>()));
+                new ZookeeperServiceCacheManager(
+                    GetConfigInfo(configInfo),
+                    provider.GetRequiredService<ISerializer<byte[]>>(),
+                    provider.GetRequiredService<ISerializer<string>>(),
+                    provider.GetRequiredService<IServiceCacheFactory>(),
+                    provider.GetRequiredService<ILogger<ZookeeperServiceCacheManager>>(),
+                    provider.GetRequiredService<IZookeeperClientProvider>()));
         }
 
 
@@ -169,7 +170,8 @@ namespace KissU.Core.Zookeeper
         /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder UseZookeeperAddressSelector(this IServiceBuilder builder)
         {
-            builder.Services.RegisterType<ZookeeperRandomAddressSelector>().As<IZookeeperAddressSelector>().SingleInstance();
+            builder.Services.RegisterType<ZookeeperRandomAddressSelector>().As<IZookeeperAddressSelector>()
+                .SingleInstance();
             return builder;
         }
 
@@ -194,11 +196,12 @@ namespace KissU.Core.Zookeeper
         public static IServiceBuilder UseZookeeperClientProvider(this IServiceBuilder builder, ConfigInfo configInfo)
         {
             builder.Services.Register(provider =>
-       new DefaultZookeeperClientProvider(
-           GetConfigInfo(configInfo),
-        provider.Resolve<IHealthCheckService>(),
-          provider.Resolve<IZookeeperAddressSelector>(),
-          provider.Resolve<ILogger<DefaultZookeeperClientProvider>>())).As<IZookeeperClientProvider>().SingleInstance();
+                    new DefaultZookeeperClientProvider(
+                        GetConfigInfo(configInfo),
+                        provider.Resolve<IHealthCheckService>(),
+                        provider.Resolve<IZookeeperAddressSelector>(),
+                        provider.Resolve<ILogger<DefaultZookeeperClientProvider>>())).As<IZookeeperClientProvider>()
+                .SingleInstance();
             return builder;
         }
 
@@ -214,7 +217,7 @@ namespace KissU.Core.Zookeeper
             if (option != null)
             {
                 var sessionTimeout = config.SessionTimeout.TotalSeconds;
-                Double.TryParse(option.SessionTimeout, out sessionTimeout);
+                double.TryParse(option.SessionTimeout, out sessionTimeout);
                 config = new ConfigInfo(
                     option.ConnectionString,
                     TimeSpan.FromSeconds(sessionTimeout),
@@ -224,12 +227,13 @@ namespace KissU.Core.Zookeeper
                     option.CachePath ?? config.CachePath,
                     option.MqttRoutePath ?? config.MqttRoutePath,
                     option.ChRoot ?? config.ChRoot,
-                    option.ReloadOnChange != null ? bool.Parse(option.ReloadOnChange) :
-                    config.ReloadOnChange,
-                   option.EnableChildrenMonitor != null ? bool.Parse(option.EnableChildrenMonitor) :
-                    config.EnableChildrenMonitor
-                   );
+                    option.ReloadOnChange != null ? bool.Parse(option.ReloadOnChange) : config.ReloadOnChange,
+                    option.EnableChildrenMonitor != null
+                        ? bool.Parse(option.EnableChildrenMonitor)
+                        : config.EnableChildrenMonitor
+                );
             }
+
             return config;
         }
     }

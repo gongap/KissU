@@ -17,12 +17,12 @@ namespace KissU.Core.Swagger.Swagger.Application
     public class SwaggerMiddleware
     {
         private readonly RequestDelegate _next;
-        private readonly JsonSerializer _swaggerSerializer;
         private readonly SwaggerOptions _options;
         private readonly TemplateMatcher _requestMatcher;
+        private readonly JsonSerializer _swaggerSerializer;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SwaggerMiddleware"/> class.
+        /// Initializes a new instance of the <see cref="SwaggerMiddleware" /> class.
         /// </summary>
         /// <param name="next">The next.</param>
         /// <param name="mvcJsonOptionsAccessor">The MVC json options accessor.</param>
@@ -32,10 +32,11 @@ namespace KissU.Core.Swagger.Swagger.Application
             IOptions<MvcNewtonsoftJsonOptions> mvcJsonOptionsAccessor,
             IOptions<SwaggerOptions> optionsAccessor)
             : this(next, mvcJsonOptionsAccessor, optionsAccessor.Value)
-        { }
+        {
+        }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SwaggerMiddleware"/> class.
+        /// Initializes a new instance of the <see cref="SwaggerMiddleware" /> class.
         /// </summary>
         /// <param name="next">The next.</param>
         /// <param name="mvcJsonOptions">The MVC json options.</param>
@@ -48,7 +49,8 @@ namespace KissU.Core.Swagger.Swagger.Application
             _next = next;
             _swaggerSerializer = SwaggerSerializerFactory.Create(mvcJsonOptions);
             _options = options ?? new SwaggerOptions();
-            _requestMatcher = new TemplateMatcher(TemplateParser.Parse(options.RouteTemplate), new RouteValueDictionary());
+            _requestMatcher =
+                new TemplateMatcher(TemplateParser.Parse(options.RouteTemplate), new RouteValueDictionary());
         }
 
         /// <summary>
@@ -58,7 +60,7 @@ namespace KissU.Core.Swagger.Swagger.Application
         /// <param name="swaggerProvider">The swagger provider.</param>
         public async Task Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
         {
-            if (!RequestingSwaggerDocument(httpContext.Request, out string documentName))
+            if (!RequestingSwaggerDocument(httpContext.Request, out var documentName))
             {
                 await _next(httpContext);
                 return;
@@ -91,8 +93,9 @@ namespace KissU.Core.Swagger.Swagger.Application
             documentName = null;
             if (request.Method != "GET") return false;
 
-			var routeValues = new RouteValueDictionary();
-            if (!_requestMatcher.TryMatch(request.Path, routeValues) || !routeValues.ContainsKey("documentName")) return false;
+            var routeValues = new RouteValueDictionary();
+            if (!_requestMatcher.TryMatch(request.Path, routeValues) ||
+                !routeValues.ContainsKey("documentName")) return false;
 
             documentName = routeValues["documentName"].ToString();
             return true;

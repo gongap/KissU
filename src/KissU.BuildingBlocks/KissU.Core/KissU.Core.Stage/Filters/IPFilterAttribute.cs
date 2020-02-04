@@ -18,8 +18,9 @@ namespace KissU.Core.Stage.Filters
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IIPChecker _ipChecker;
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="IPFilterAttribute"/> class.
+        /// Initializes a new instance of the <see cref="IPFilterAttribute" /> class.
         /// </summary>
         /// <param name="httpContextAccessor">The HTTP context accessor.</param>
         /// <param name="ipChecker">The ip checker.</param>
@@ -28,6 +29,7 @@ namespace KissU.Core.Stage.Filters
             _httpContextAccessor = httpContextAccessor;
             _ipChecker = ipChecker;
         }
+
         /// <summary>
         /// Called when [action executed].
         /// </summary>
@@ -47,11 +49,16 @@ namespace KissU.Core.Stage.Filters
         {
             var address = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress;
             RpcContext.GetContext().SetAttachment("RemoteIpAddress", address.ToString());
-            if (_ipChecker.IsBlackIp(address,filterContext.Message.RoutePath))
+            if (_ipChecker.IsBlackIp(address, filterContext.Message.RoutePath))
             {
-                filterContext.Result = new HttpResultMessage<object> { IsSucceed = false, StatusCode = (int)ServiceStatusCode.AuthorizationFailed, Message = "Your IP address is not allowed" };
+                filterContext.Result = new HttpResultMessage<object>
+                {
+                    IsSucceed = false, StatusCode = (int) ServiceStatusCode.AuthorizationFailed,
+                    Message = "Your IP address is not allowed"
+                };
             }
-             return Task.CompletedTask;
+
+            return Task.CompletedTask;
         }
     }
 }

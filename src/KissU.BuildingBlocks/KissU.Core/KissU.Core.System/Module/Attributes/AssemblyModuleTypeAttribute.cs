@@ -8,21 +8,20 @@ namespace KissU.Core.System.Module.Attributes
     /// Implements the <see cref="System.Attribute" />
     /// </summary>
     /// <seealso cref="System.Attribute" />
-    [AttributeUsage(AttributeTargets.Assembly, Inherited = false), ComVisible(true)]
-    public sealed class  AssemblyModuleTypeAttribute:Attribute
+    [AttributeUsage(AttributeTargets.Assembly)]
+    [ComVisible(true)]
+    public sealed class AssemblyModuleTypeAttribute : Attribute
     {
         #region 属性
 
         /// <summary>
         /// 获取模块类型
         /// </summary>
-        /// <remarks><para>创建：范亮</para>
-        /// <para>日期：2015/12/8</para></remarks>
-        public ModuleType Type
-        {
-            get;
-            private set;
-        }
+        /// <remarks>
+        ///     <para>创建：范亮</para>
+        ///     <para>日期：2015/12/8</para>
+        /// </remarks>
+        public ModuleType Type { get; private set; }
 
         /// <summary>
         /// Gets the serial number.
@@ -38,8 +37,10 @@ namespace KissU.Core.System.Module.Attributes
         /// </summary>
         /// <param name="type">模块类型。</param>
         /// <param name="serialNumber">序号</param>
-        /// <remarks><para>创建：范亮</para>
-        /// <para>日期：2015/12/8</para></remarks>
+        /// <remarks>
+        ///     <para>创建：范亮</para>
+        ///     <para>日期：2015/12/8</para>
+        /// </remarks>
         public AssemblyModuleTypeAttribute(ModuleType type, int serialNumber)
         {
             Type = type;
@@ -48,13 +49,14 @@ namespace KissU.Core.System.Module.Attributes
 
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AssemblyModuleTypeAttribute"/> class.
+        /// Initializes a new instance of the <see cref="AssemblyModuleTypeAttribute" /> class.
         /// </summary>
         /// <param name="type">The type.</param>
         public AssemblyModuleTypeAttribute(ModuleType type)
         {
             Type = type;
         }
+
         #endregion
     }
 }

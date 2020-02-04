@@ -13,7 +13,7 @@ namespace KissU.Core.ProxyGenerator.Interceptors.Implementation
     public class ActionInvocation : AbstractInvocation
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ActionInvocation"/> class.
+        /// Initializes a new instance of the <see cref="ActionInvocation" /> class.
         /// </summary>
         /// <param name="arguments">The arguments.</param>
         /// <param name="serviceId">The service identifier.</param>
@@ -22,13 +22,13 @@ namespace KissU.Core.ProxyGenerator.Interceptors.Implementation
         /// <param name="returnType">Type of the return.</param>
         /// <param name="proxy">The proxy.</param>
         protected ActionInvocation(
-             IDictionary<string, object> arguments,
-           string serviceId,
+            IDictionary<string, object> arguments,
+            string serviceId,
             string[] cacheKey,
             List<Attribute> attributes,
             Type returnType,
             object proxy
-            ) : base(arguments, serviceId, cacheKey, attributes, returnType, proxy)
+        ) : base(arguments, serviceId, cacheKey, attributes, returnType, proxy)
         {
         }
 
@@ -39,8 +39,8 @@ namespace KissU.Core.ProxyGenerator.Interceptors.Implementation
         {
             try
             {
-                if(_returnValue ==null)
-                _returnValue = await (Proxy as ServiceProxyBase).CallInvoke(this);
+                if (_returnValue == null)
+                    _returnValue = await (Proxy as ServiceProxyBase).CallInvoke(this);
             }
             catch (Exception ex)
             {

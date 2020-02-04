@@ -18,19 +18,10 @@ namespace KissU.Core.DotNettyWSServer.Runtime.Implementation
     /// <seealso cref="KissU.Core.DotNettyWSServer.Runtime.IWSServiceEntryProvider" />
     public class DefaultWSServiceEntryProvider : IWSServiceEntryProvider
     {
-        #region Field
-
-        private readonly IEnumerable<Type> _types;
-        private readonly ILogger<DefaultWSServiceEntryProvider> _logger;
-        private readonly CPlatformContainer _serviceProvider;
-        private List<WSServiceEntry> _wSServiceEntries;
-
-        #endregion Field
-
         #region Constructor
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DefaultWSServiceEntryProvider"/> class.
+        /// Initializes a new instance of the <see cref="DefaultWSServiceEntryProvider" /> class.
         /// </summary>
         /// <param name="serviceEntryProvider">The service entry provider.</param>
         /// <param name="logger">The logger.</param>
@@ -45,6 +36,15 @@ namespace KissU.Core.DotNettyWSServer.Runtime.Implementation
         }
 
         #endregion Constructor
+
+        #region Field
+
+        private readonly IEnumerable<Type> _types;
+        private readonly ILogger<DefaultWSServiceEntryProvider> _logger;
+        private readonly CPlatformContainer _serviceProvider;
+        private List<WSServiceEntry> _wSServiceEntries;
+
+        #endregion Field
 
         #region Implementation of IUdpServiceEntryProvider
 
@@ -66,13 +66,16 @@ namespace KissU.Core.DotNettyWSServer.Runtime.Implementation
                         _wSServiceEntries.Add(entry);
                     }
                 }
+
                 if (_logger.IsEnabled(LogLevel.Debug))
                 {
                     _logger.LogDebug($"发现了以下WS服务：{string.Join(",", _wSServiceEntries.Select(i => i.Type.FullName))}。");
                 }
             }
+
             return _wSServiceEntries;
         }
+
         /// <summary>
         /// Creates the service entry.
         /// </summary>
@@ -81,7 +84,7 @@ namespace KissU.Core.DotNettyWSServer.Runtime.Implementation
         public WSServiceEntry CreateServiceEntry(Type service)
         {
             WSServiceEntry result = null;
-            var routeTemplate = service.GetCustomAttribute<ServiceBundleAttribute>(); 
+            var routeTemplate = service.GetCustomAttribute<ServiceBundleAttribute>();
             var behaviorContract = service.GetCustomAttribute<BehaviorContractAttribute>();
             var objInstance = _serviceProvider.GetInstances(service);
             var behavior = objInstance as WSBehavior;
@@ -95,11 +98,13 @@ namespace KissU.Core.DotNettyWSServer.Runtime.Implementation
                 {
                     Behavior = behavior,
                     Type = behavior.GetType(),
-                    Path = path,
+                    Path = path
                 };
             }
+
             return result;
         }
+
         #endregion
     }
 }

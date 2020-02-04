@@ -17,36 +17,39 @@ namespace KissU.Core.ProxyGenerator.Implementation
     public class ServiceProxyFactory : IServiceProxyFactory
     {
         #region Field
+
         private readonly IRemoteInvokeService _remoteInvokeService;
         private readonly ITypeConvertibleService _typeConvertibleService;
         private readonly IServiceProvider _serviceProvider;
-        private Type[] _serviceTypes=new Type[0];
+        private Type[] _serviceTypes = new Type[0];
 
         #endregion Field
 
         #region Constructor
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServiceProxyFactory"/> class.
+        /// Initializes a new instance of the <see cref="ServiceProxyFactory" /> class.
         /// </summary>
         /// <param name="remoteInvokeService">The remote invoke service.</param>
         /// <param name="typeConvertibleService">The type convertible service.</param>
         /// <param name="serviceProvider">The service provider.</param>
-        public ServiceProxyFactory(IRemoteInvokeService remoteInvokeService, ITypeConvertibleService typeConvertibleService,
-           IServiceProvider serviceProvider):this(remoteInvokeService, typeConvertibleService, serviceProvider,null,null)
+        public ServiceProxyFactory(IRemoteInvokeService remoteInvokeService,
+            ITypeConvertibleService typeConvertibleService,
+            IServiceProvider serviceProvider) : this(remoteInvokeService, typeConvertibleService, serviceProvider, null,
+            null)
         {
-
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServiceProxyFactory"/> class.
+        /// Initializes a new instance of the <see cref="ServiceProxyFactory" /> class.
         /// </summary>
         /// <param name="remoteInvokeService">The remote invoke service.</param>
         /// <param name="typeConvertibleService">The type convertible service.</param>
         /// <param name="serviceProvider">The service provider.</param>
         /// <param name="types">The types.</param>
         /// <param name="namespaces">The namespaces.</param>
-        public ServiceProxyFactory(IRemoteInvokeService remoteInvokeService, ITypeConvertibleService typeConvertibleService,
+        public ServiceProxyFactory(IRemoteInvokeService remoteInvokeService,
+            ITypeConvertibleService typeConvertibleService,
             IServiceProvider serviceProvider, IEnumerable<Type> types, IEnumerable<string> namespaces)
         {
             _remoteInvokeService = remoteInvokeService;
@@ -54,7 +57,7 @@ namespace KissU.Core.ProxyGenerator.Implementation
             _serviceProvider = serviceProvider;
             if (types != null)
             {
-               RegisterProxType(namespaces.ToArray(),types.ToArray());
+                RegisterProxType(namespaces.ToArray(), types.ToArray());
             }
         }
 
@@ -77,10 +80,11 @@ namespace KissU.Core.ProxyGenerator.Implementation
                 instance = proxyType.GetTypeInfo().GetConstructors().First().Invoke(new object[]
                 {
                     _remoteInvokeService, _typeConvertibleService, null,
-             _serviceProvider.GetService<CPlatformContainer>()
+                    _serviceProvider.GetService<CPlatformContainer>()
                 });
                 ServiceResolver.Current.Register(null, instance, type);
             }
+
             return instance;
         }
 
@@ -91,19 +95,20 @@ namespace KissU.Core.ProxyGenerator.Implementation
         /// <param name="type">The type.</param>
         /// <returns>System.Object.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public object CreateProxy(string key,Type type)
+        public object CreateProxy(string key, Type type)
         {
-            var instance = ServiceResolver.Current.GetService(type,key);
+            var instance = ServiceResolver.Current.GetService(type, key);
             if (instance == null)
             {
                 var proxyType = _serviceTypes.Single(type.GetTypeInfo().IsAssignableFrom);
-                 instance = proxyType.GetTypeInfo().GetConstructors().First().Invoke(new object[]
+                instance = proxyType.GetTypeInfo().GetConstructors().First().Invoke(new object[]
                 {
                     _remoteInvokeService, _typeConvertibleService, key,
-             _serviceProvider.GetService<CPlatformContainer>()
+                    _serviceProvider.GetService<CPlatformContainer>()
                 });
                 ServiceResolver.Current.Register(key, instance, type);
             }
+
             return instance;
         }
 
@@ -114,20 +119,21 @@ namespace KissU.Core.ProxyGenerator.Implementation
         /// <param name="key">The key.</param>
         /// <returns>T.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public T CreateProxy<T>(string key) where T:class
+        public T CreateProxy<T>(string key) where T : class
         {
             var instanceType = typeof(T);
             var instance = ServiceResolver.Current.GetService(instanceType, key);
             if (instance == null)
             {
                 var proxyType = _serviceTypes.Single(typeof(T).GetTypeInfo().IsAssignableFrom);
-                 instance = proxyType.GetTypeInfo().GetConstructors().First().Invoke(new object[]
+                instance = proxyType.GetTypeInfo().GetConstructors().First().Invoke(new object[]
                 {
-                    _remoteInvokeService, _typeConvertibleService,key,
-                _serviceProvider.GetService<CPlatformContainer>()
+                    _remoteInvokeService, _typeConvertibleService, key,
+                    _serviceProvider.GetService<CPlatformContainer>()
                 });
                 ServiceResolver.Current.Register(key, instance, instanceType);
             }
+
             return instance as T;
         }
 
@@ -147,11 +153,11 @@ namespace KissU.Core.ProxyGenerator.Implementation
         /// <param name="namespaces">The namespaces.</param>
         /// <param name="types">The types.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public void RegisterProxType(string[] namespaces,params Type[] types)
+        public void RegisterProxType(string[] namespaces, params Type[] types)
         {
             var proxyGenerater = _serviceProvider.GetService<IServiceProxyGenerater>();
             var serviceTypes = proxyGenerater.GenerateProxys(types, namespaces).ToArray();
-            _serviceTypes= _serviceTypes.Except(serviceTypes).Concat(serviceTypes).ToArray();
+            _serviceTypes = _serviceTypes.Except(serviceTypes).Concat(serviceTypes).ToArray();
             proxyGenerater.Dispose();
             GC.Collect();
         }

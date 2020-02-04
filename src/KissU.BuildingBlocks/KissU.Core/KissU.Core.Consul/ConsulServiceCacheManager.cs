@@ -13,6 +13,7 @@ using KissU.Core.CPlatform.Cache;
 using KissU.Core.CPlatform.Cache.Implementation;
 using KissU.Core.CPlatform.Serialization;
 using Microsoft.Extensions.Logging;
+using LogLevel = Microsoft.Extensions.Logging.LogLevel;
 
 namespace KissU.Core.Consul
 {
@@ -26,16 +27,16 @@ namespace KissU.Core.Consul
     public class ConsulServiceCacheManager : ServiceCacheManagerBase, IDisposable
     {
         private readonly ConfigInfo _configInfo;
-        private readonly ISerializer<byte[]> _serializer;
+        private readonly IConsulClientProvider _consulClientFactory;
         private readonly ILogger<ConsulServiceCacheManager> _logger;
         private readonly IClientWatchManager _manager;
-        private ServiceCache[] _serviceCaches;
+        private readonly ISerializer<byte[]> _serializer;
         private readonly IServiceCacheFactory _serviceCacheFactory;
         private readonly ISerializer<string> _stringSerializer;
-        private readonly IConsulClientProvider _consulClientFactory;
+        private ServiceCache[] _serviceCaches;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ConsulServiceCacheManager"/> class.
+        /// Initializes a new instance of the <see cref="ConsulServiceCacheManager" /> class.
         /// </summary>
         /// <param name="configInfo">The configuration information.</param>
         /// <param name="serializer">The serializer.</param>
@@ -45,8 +46,9 @@ namespace KissU.Core.Consul
         /// <param name="logger">The logger.</param>
         /// <param name="consulClientFactory">The consul client factory.</param>
         public ConsulServiceCacheManager(ConfigInfo configInfo, ISerializer<byte[]> serializer,
-        ISerializer<string> stringSerializer, IClientWatchManager manager, IServiceCacheFactory serviceCacheFactory,
-        ILogger<ConsulServiceCacheManager> logger, IConsulClientProvider consulClientFactory) : base(stringSerializer)
+            ISerializer<string> stringSerializer, IClientWatchManager manager, IServiceCacheFactory serviceCacheFactory,
+            ILogger<ConsulServiceCacheManager> logger, IConsulClientProvider consulClientFactory) : base(
+            stringSerializer)
         {
             _configInfo = configInfo;
             _serializer = serializer;
@@ -54,8 +56,15 @@ namespace KissU.Core.Consul
             _serviceCacheFactory = serviceCacheFactory;
             _consulClientFactory = consulClientFactory;
             _logger = logger;
-            _manager = manager; 
+            _manager = manager;
             EnterCaches().Wait();
+        }
+
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+        public void Dispose()
+        {
         }
 
         /// <summary>
@@ -81,21 +90,14 @@ namespace KissU.Core.Consul
         }
 
         /// <summary>
-        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-        /// </summary>
-        public void Dispose()
-        {
-        }
-
-        /// <summary>
         /// set caches as an asynchronous operation.
         /// </summary>
         /// <param name="caches">The caches.</param>
         /// <returns>Task.</returns>
         public override async Task SetCachesAsync(IEnumerable<ServiceCache> caches)
         {
-            var serviceCaches = await GetCaches(caches.Select(p => $"{ _configInfo.CachePath}{p.CacheDescriptor.Id}"));
-          
+            var serviceCaches = await GetCaches(caches.Select(p => $"{_configInfo.CachePath}{p.CacheDescriptor.Id}"));
+
             await RemoveCachesAsync(caches);
             await base.SetCachesAsync(caches);
         }
@@ -129,6 +131,7 @@ namespace KissU.Core.Consul
             {
                 throw ex;
             }
+
             await base.SetCachesAsync(caches);
         }
 
@@ -144,7 +147,8 @@ namespace KissU.Core.Consul
                 foreach (var cacheDescriptor in cacheDescriptors)
                 {
                     var nodeData = _serializer.Serialize(cacheDescriptor);
-                    var keyValuePair = new KVPair($"{_configInfo.CachePath}{cacheDescriptor.CacheDescriptor.Id}") { Value = nodeData };
+                    var keyValuePair = new KVPair($"{_configInfo.CachePath}{cacheDescriptor.CacheDescriptor.Id}")
+                        {Value = nodeData};
                     await client.KV.Put(keyValuePair);
                 }
             }
@@ -152,19 +156,19 @@ namespace KissU.Core.Consul
 
         private async Task<ServiceCache[]> GetCaches(IEnumerable<string> childrens)
         {
-
             childrens = childrens.ToArray();
             var caches = new List<ServiceCache>(childrens.Count());
 
             foreach (var children in childrens)
             {
-                if (_logger.IsEnabled(Microsoft.Extensions.Logging.LogLevel.Debug))
+                if (_logger.IsEnabled(LogLevel.Debug))
                     _logger.LogDebug($"准备从节点：{children}中获取缓存信息。");
 
                 var cache = await GetCache(children);
                 if (cache != null)
                     caches.Add(cache);
             }
+
             return caches.ToArray();
         }
 
@@ -173,17 +177,18 @@ namespace KissU.Core.Consul
             ServiceCache result = null;
             var client = await GetConsulClient();
             var watcher = new NodeMonitorWatcher(GetConsulClient, _manager, path,
-                 async (oldData, newData) => await NodeChange(oldData, newData),null);
+                async (oldData, newData) => await NodeChange(oldData, newData), null);
             var queryResult = await client.KV.Keys(path);
             if (queryResult.Response != null)
             {
-                var data = (await client.GetDataAsync(path));
+                var data = await client.GetDataAsync(path);
                 if (data != null)
                 {
                     watcher.SetCurrentData(data);
                     result = await GetCache(data);
                 }
             }
+
             return result;
         }
 
@@ -199,7 +204,6 @@ namespace KissU.Core.Consul
                 var clients = await _consulClientFactory.GetClients();
                 foreach (var client in clients)
                 {
-                    
                     var deletedCacheIds = caches.Select(i => i.CacheDescriptor.Id).ToArray();
                     foreach (var deletedCacheId in deletedCacheIds)
                     {
@@ -214,21 +218,22 @@ namespace KissU.Core.Consul
         {
             if (_serviceCaches != null && _serviceCaches.Length > 0)
                 return;
-            var client =await GetConsulClient();
-             var watcher = new ChildrenMonitorWatcher(GetConsulClient, _manager, _configInfo.CachePath,
+            var client = await GetConsulClient();
+            var watcher = new ChildrenMonitorWatcher(GetConsulClient, _manager, _configInfo.CachePath,
                 async (oldChildrens, newChildrens) => await ChildrenChange(oldChildrens, newChildrens),
-                  (result) => ConvertPaths(result).Result);
+                result => ConvertPaths(result).Result);
             if (client.KV.Keys(_configInfo.CachePath).Result.Response?.Count() > 0)
             {
                 var result = await client.GetChildrenAsync(_configInfo.CachePath);
                 var keys = await client.KV.Keys(_configInfo.CachePath);
-                var childrens = result; 
-                watcher.SetCurrentData(ConvertPaths(childrens).Result.Select(key => $"{_configInfo.CachePath}{key}").ToArray());
+                var childrens = result;
+                watcher.SetCurrentData(ConvertPaths(childrens).Result.Select(key => $"{_configInfo.CachePath}{key}")
+                    .ToArray());
                 _serviceCaches = await GetCaches(keys.Response);
             }
             else
             {
-                if (_logger.IsEnabled(Microsoft.Extensions.Logging.LogLevel.Warning))
+                if (_logger.IsEnabled(LogLevel.Warning))
                     _logger.LogWarning($"无法获取缓存信息，因为节点：{_configInfo.CachePath}，不存在。");
                 _serviceCaches = new ServiceCache[0];
             }
@@ -245,19 +250,20 @@ namespace KissU.Core.Consul
                 if (b1 != b2)
                     return false;
             }
+
             return true;
         }
 
         private async Task<ServiceCache> GetCache(byte[] data)
         {
-            if (_logger.IsEnabled(Microsoft.Extensions.Logging.LogLevel.Debug))
+            if (_logger.IsEnabled(LogLevel.Debug))
                 _logger.LogDebug($"准备转换服务缓存，配置内容：{Encoding.UTF8.GetString(data)}。");
 
             if (data == null)
                 return null;
 
             var descriptor = _serializer.Deserialize<byte[], ServiceCacheDescriptor>(data);
-            return (await _serviceCacheFactory.CreateServiceCachesAsync(new[] { descriptor })).First();
+            return (await _serviceCacheFactory.CreateServiceCachesAsync(new[] {descriptor})).First();
         }
 
         private async Task<ServiceCache> GetCacheData(string data)
@@ -265,24 +271,26 @@ namespace KissU.Core.Consul
             if (data == null)
                 return null;
 
-            var descriptor = _stringSerializer.Deserialize(data, typeof(ServiceCacheDescriptor)) as ServiceCacheDescriptor;
-            return (await _serviceCacheFactory.CreateServiceCachesAsync(new[] { descriptor })).First();
+            var descriptor =
+                _stringSerializer.Deserialize(data, typeof(ServiceCacheDescriptor)) as ServiceCacheDescriptor;
+            return (await _serviceCacheFactory.CreateServiceCachesAsync(new[] {descriptor})).First();
         }
 
         private async Task<ServiceCache[]> GetCacheDatas(string[] caches)
         {
-            List<ServiceCache> serviceCaches = new List<ServiceCache>();
+            var serviceCaches = new List<ServiceCache>();
             foreach (var cache in caches)
             {
                 var serviceCache = await GetCacheData(cache);
                 serviceCaches.Add(serviceCache);
             }
+
             return serviceCaches.ToArray();
         }
 
         private async Task<string[]> ConvertPaths(string[] datas)
         {
-            List<string> paths = new List<string>();
+            var paths = new List<string>();
             foreach (var data in datas)
             {
                 var result = await GetCacheData(data);
@@ -290,6 +298,7 @@ namespace KissU.Core.Consul
                 if (!string.IsNullOrEmpty(serviceId))
                     paths.Add(serviceId);
             }
+
             return paths.ToArray();
         }
 
@@ -314,7 +323,7 @@ namespace KissU.Core.Consul
                 _serviceCaches =
                     _serviceCaches
                         .Where(i => i.CacheDescriptor.Id != newCache.CacheDescriptor.Id)
-                        .Concat(new[] { newCache }).ToArray();
+                        .Concat(new[] {newCache}).ToArray();
             }
 
             if (newCache == null)
@@ -324,17 +333,17 @@ namespace KissU.Core.Consul
             else if (oldCache == null)
                 OnCreated(new ServiceCacheEventArgs(newCache));
 
-            else 
-            //触发缓存变更事件。
-            OnChanged(new ServiceCacheChangedEventArgs(newCache, oldCache));
+            else
+                //触发缓存变更事件。
+                OnChanged(new ServiceCacheChangedEventArgs(newCache, oldCache));
         }
 
         private async Task ChildrenChange(string[] oldChildrens, string[] newChildrens)
         {
-            if (_logger.IsEnabled(Microsoft.Extensions.Logging.LogLevel.Debug))
+            if (_logger.IsEnabled(LogLevel.Debug))
                 _logger.LogDebug($"最新的节点信息：{string.Join(",", newChildrens)}");
 
-            if (_logger.IsEnabled(Microsoft.Extensions.Logging.LogLevel.Debug))
+            if (_logger.IsEnabled(LogLevel.Debug))
                 _logger.LogDebug($"旧的节点信息：{string.Join(",", oldChildrens)}");
 
             //计算出已被删除的节点。
@@ -342,9 +351,9 @@ namespace KissU.Core.Consul
             //计算出新增的节点。
             var createdChildrens = newChildrens.Except(oldChildrens).ToArray();
 
-            if (_logger.IsEnabled(Microsoft.Extensions.Logging.LogLevel.Debug))
+            if (_logger.IsEnabled(LogLevel.Debug))
                 _logger.LogDebug($"需要被删除的服务缓存节点：{string.Join(",", deletedChildrens)}");
-            if (_logger.IsEnabled(Microsoft.Extensions.Logging.LogLevel.Information))
+            if (_logger.IsEnabled(LogLevel.Information))
                 _logger.LogDebug($"需要被添加的服务缓存节点：{string.Join(",", createdChildrens)}");
 
             //获取新增的缓存信息。
@@ -360,15 +369,17 @@ namespace KissU.Core.Consul
                     .Concat(newCaches)
                     .ToArray();
             }
+
             //需要删除的缓存集合。
-            var deletedCaches = caches.Where(i => deletedChildrens.Contains($"{_configInfo.CachePath}{i.CacheDescriptor.Id}")).ToArray();
+            var deletedCaches = caches
+                .Where(i => deletedChildrens.Contains($"{_configInfo.CachePath}{i.CacheDescriptor.Id}")).ToArray();
             //触发删除事件。
             OnRemoved(deletedCaches.Select(cache => new ServiceCacheEventArgs(cache)).ToArray());
 
             //触发缓存被创建事件。
             OnCreated(newCaches.Select(cache => new ServiceCacheEventArgs(cache)).ToArray());
 
-            if (_logger.IsEnabled(Microsoft.Extensions.Logging.LogLevel.Information))
+            if (_logger.IsEnabled(LogLevel.Information))
                 _logger.LogInformation("缓存数据更新成功。");
         }
 

@@ -71,16 +71,16 @@ namespace KissU.Core.CPlatform.Support.Implementation
         /// <returns>Task.</returns>
         public virtual async Task SetServiceCommandsAsync()
         {
-            List<ServiceCommandDescriptor> serviceCommands = new List<ServiceCommandDescriptor>();
+            var serviceCommands = new List<ServiceCommandDescriptor>();
             await Task.Run(() =>
             {
                 var commands = (from q in _serviceEntryManager.GetEntries()
-                                let k = q.Attributes
-                                select new
-                                {
-                                    ServiceId = q.Descriptor.Id,
-                                    Command = k.OfType<CommandAttribute>().FirstOrDefault(),
-                                })
+                        let k = q.Attributes
+                        select new
+                        {
+                            ServiceId = q.Descriptor.Id,
+                            Command = k.OfType<CommandAttribute>().FirstOrDefault()
+                        })
                     .ToList();
                 commands.ForEach(command =>
                     serviceCommands.Add(ConvertServiceCommand(command.ServiceId, command.Command)));
@@ -119,7 +119,7 @@ namespace KissU.Core.CPlatform.Support.Implementation
                 return;
             }
 
-            foreach (ServiceCommandEventArgs arg in args)
+            foreach (var arg in args)
             {
                 _created(this, arg);
             }
@@ -136,7 +136,7 @@ namespace KissU.Core.CPlatform.Support.Implementation
                 return;
             }
 
-            foreach (ServiceCommandChangedEventArgs arg in args)
+            foreach (var arg in args)
             {
                 _changed(this, arg);
             }
@@ -153,7 +153,7 @@ namespace KissU.Core.CPlatform.Support.Implementation
                 return;
             }
 
-            foreach (ServiceCommandEventArgs arg in args)
+            foreach (var arg in args)
             {
                 _removed(this, arg);
             }
@@ -167,7 +167,7 @@ namespace KissU.Core.CPlatform.Support.Implementation
         /// <returns>ServiceCommandDescriptor.</returns>
         private ServiceCommandDescriptor ConvertServiceCommand(string serviceId, CommandAttribute command)
         {
-            ServiceCommandDescriptor result = new ServiceCommandDescriptor { ServiceId = serviceId };
+            var result = new ServiceCommandDescriptor {ServiceId = serviceId};
             if (command != null)
             {
                 result = new ServiceCommandDescriptor
@@ -185,7 +185,7 @@ namespace KissU.Core.CPlatform.Support.Implementation
                     BreakerForceClosed = command.BreakerForceClosed,
                     BreakerRequestVolumeThreshold = command.BreakerRequestVolumeThreshold,
                     BreakeSleepWindowInMilliseconds = command.BreakeSleepWindowInMilliseconds,
-                    MaxConcurrentRequests = command.MaxConcurrentRequests,
+                    MaxConcurrentRequests = command.MaxConcurrentRequests
                 };
             }
 

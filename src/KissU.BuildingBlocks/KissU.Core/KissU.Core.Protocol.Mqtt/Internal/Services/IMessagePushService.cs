@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using DotNetty.Codecs.Mqtt.Packets;
 using DotNetty.Transport.Channels;
 using KissU.Core.Protocol.Mqtt.Internal.Channel;
@@ -69,6 +68,6 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services
         /// <param name="topic">The topic.</param>
         /// <param name="byteBuf">The byte buf.</param>
         /// <returns>Task.</returns>
-        Task SendQos0Msg(IChannel channel, String topic, byte[] byteBuf);
+        Task SendQos0Msg(IChannel channel, string topic, byte[] byteBuf);
     }
 }

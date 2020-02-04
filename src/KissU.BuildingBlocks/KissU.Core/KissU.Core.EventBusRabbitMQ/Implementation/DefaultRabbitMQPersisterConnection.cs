@@ -3,7 +3,6 @@ using System.IO;
 using System.Net.Sockets;
 using Microsoft.Extensions.Logging;
 using Polly;
-using Polly.Retry;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using RabbitMQ.Client.Exceptions;
@@ -16,22 +15,17 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
     /// </summary>
     /// <seealso cref="KissU.Core.EventBusRabbitMQ.IRabbitMQPersistentConnection" />
     public class DefaultRabbitMQPersistentConnection
-       : IRabbitMQPersistentConnection
+        : IRabbitMQPersistentConnection
     {
         private readonly IConnectionFactory _connectionFactory;
         private readonly ILogger<DefaultRabbitMQPersistentConnection> _logger;
-        IConnection _connection;
-        bool _disposed;
+        private IConnection _connection;
+        private bool _disposed;
 
-        object sync_root = new object();
-
-        /// <summary>
-        /// Occurs when [on rabbit connection shutdown].
-        /// </summary>
-        public event EventHandler<ShutdownEventArgs> OnRabbitConnectionShutdown;
+        private readonly object sync_root = new object();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DefaultRabbitMQPersistentConnection"/> class.
+        /// Initializes a new instance of the <see cref="DefaultRabbitMQPersistentConnection" /> class.
         /// </summary>
         /// <param name="connectionFactory">The connection factory.</param>
         /// <param name="logger">The logger.</param>
@@ -45,15 +39,14 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
         }
 
         /// <summary>
+        /// Occurs when [on rabbit connection shutdown].
+        /// </summary>
+        public event EventHandler<ShutdownEventArgs> OnRabbitConnectionShutdown;
+
+        /// <summary>
         /// Gets a value indicating whether this instance is connected.
         /// </summary>
-        public bool IsConnected
-        {
-            get
-            {
-                return _connection != null && _connection.IsOpen && !_disposed;
-            }
-        }
+        public bool IsConnected => _connection != null && _connection.IsOpen && !_disposed;
 
         /// <summary>
         /// Creates the model.
@@ -99,19 +92,16 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
 
             lock (sync_root)
             {
-                var policy = RetryPolicy.Handle<SocketException>()
+                var policy = Policy.Handle<SocketException>()
                     .Or<BrokerUnreachableException>()
-                    .WaitAndRetry(5, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), (ex, time) =>
-                    {
-                        _logger.LogWarning(ex.ToString());
-                    }
-                );
+                    .WaitAndRetry(5, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)),
+                        (ex, time) => { _logger.LogWarning(ex.ToString()); }
+                    );
 
                 policy.Execute(() =>
                 {
                     _connection = _connectionFactory
-                          .CreateConnection();
-             
+                        .CreateConnection();
                 });
 
                 if (IsConnected)
@@ -120,15 +110,14 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
                     _connection.CallbackException += OnCallbackException;
                     _connection.ConnectionBlocked += OnConnectionBlocked;
 
-                    _logger.LogInformation($"RabbitMQ persistent connection acquired a connection {_connection.Endpoint.HostName} and is subscribed to failure events");
+                    _logger.LogInformation(
+                        $"RabbitMQ persistent connection acquired a connection {_connection.Endpoint.HostName} and is subscribed to failure events");
 
                     return true;
                 }
-                else
-                {
-                    _logger.LogCritical("FATAL ERROR: RabbitMQ connections could not be created and opened");
-                    return false;
-                }
+
+                _logger.LogCritical("FATAL ERROR: RabbitMQ connections could not be created and opened");
+                return false;
             }
         }
 
@@ -141,7 +130,7 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
             TryConnect();
         }
 
-        void OnCallbackException(object sender, CallbackExceptionEventArgs e)
+        private void OnCallbackException(object sender, CallbackExceptionEventArgs e)
         {
             if (_disposed) return;
 
@@ -150,7 +139,7 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
             TryConnect();
         }
 
-        void OnConnectionShutdown(object sender, ShutdownEventArgs reason)
+        private void OnConnectionShutdown(object sender, ShutdownEventArgs reason)
         {
             if (_disposed) return;
 

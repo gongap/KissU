@@ -7,7 +7,7 @@ namespace KissU.Core.KestrelHttpServer.Abstractions
     /// Implements the <see cref="KissU.Core.KestrelHttpServer.Abstractions.IActionResult" />
     /// </summary>
     /// <seealso cref="KissU.Core.KestrelHttpServer.Abstractions.IActionResult" />
-    public abstract class ActionResult: IActionResult
+    public abstract class ActionResult : IActionResult
     {
         /// <summary>
         /// Executes the result asynchronous.

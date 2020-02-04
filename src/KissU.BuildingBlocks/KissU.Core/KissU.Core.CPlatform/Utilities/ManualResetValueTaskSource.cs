@@ -24,7 +24,7 @@ namespace KissU.Core.CPlatform.Utilities
     {
         None,
 
-        ForceDefaultTaskScheduler,
+        ForceDefaultTaskScheduler
     }
 
     /// <summary>
@@ -32,7 +32,7 @@ namespace KissU.Core.CPlatform.Utilities
     /// Implements the
     /// <see
     ///     cref="IStrongBox{ManualResetValueTaskSourceLogic{T}}" />
-    /// Implements the <see cref="IValueTaskSource{T}" />
+    /// Implements the <see cref="IValueTaskSource{TResult}" />
     /// Implements the <see cref="IValueTaskSource" />
     /// </summary>
     /// <typeparam name="T"></typeparam>
@@ -117,7 +117,7 @@ namespace KissU.Core.CPlatform.Utilities
         public ValueTask<T> AwaitValue(CancellationToken cancellation)
         {
             var registration = cancellation == CancellationToken.None
-                ? (CancellationTokenRegistration?)null
+                ? (CancellationTokenRegistration?) null
                 : cancellation.Register(_cancellationCallback);
             return _logic.AwaitValue(this, registration);
         }
@@ -125,7 +125,7 @@ namespace KissU.Core.CPlatform.Utilities
         public ValueTask AwaitVoid(CancellationToken cancellation)
         {
             var registration = cancellation == CancellationToken.None
-                ? (CancellationTokenRegistration?)null
+                ? (CancellationTokenRegistration?) null
                 : cancellation.Register(_cancellationCallback);
             return _logic.AwaitVoid(this, registration);
         }
@@ -273,7 +273,7 @@ namespace KissU.Core.CPlatform.Utilities
                     case SynchronizationContext sc:
                         sc.Post(s =>
                         {
-                            var tuple = (Tuple<Action<object>, object>)s;
+                            var tuple = (Tuple<Action<object>, object>) s;
                             tuple.Item1(tuple.Item2);
                         }, Tuple.Create(continuation, state));
                         break;
@@ -313,7 +313,7 @@ namespace KissU.Core.CPlatform.Utilities
                 {
                     ExecutionContext.Run(
                         _executionContext,
-                        s => ((IStrongBox<ManualResetValueTaskSourceLogic<TResult>>)s).Value.InvokeContinuation(),
+                        s => ((IStrongBox<ManualResetValueTaskSourceLogic<TResult>>) s).Value.InvokeContinuation(),
                         _parent ?? throw new InvalidOperationException());
                 }
                 else
@@ -358,7 +358,7 @@ namespace KissU.Core.CPlatform.Utilities
                 case SynchronizationContext sc:
                     sc.Post(s =>
                         {
-                            ref var logicRef = ref ((IStrongBox<ManualResetValueTaskSourceLogic<TResult>>)s).Value;
+                            ref var logicRef = ref ((IStrongBox<ManualResetValueTaskSourceLogic<TResult>>) s).Value;
                             logicRef._continuation(logicRef._continuationState);
                         }, _parent ?? throw new InvalidOperationException());
                     break;

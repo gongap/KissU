@@ -10,12 +10,12 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
     public class SchemaRegistryOptions
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SchemaRegistryOptions"/> class.
+        /// Initializes a new instance of the <see cref="SchemaRegistryOptions" /> class.
         /// </summary>
         public SchemaRegistryOptions()
         {
             CustomTypeMappings = new Dictionary<Type, Func<Schema>>();
-            SchemaIdSelector = (type) => type.FriendlyId(IgnoreFullyQualified);
+            SchemaIdSelector = type => type.FriendlyId(IgnoreFullyQualified);
             SchemaFilters = new List<ISchemaFilter>();
         }
 

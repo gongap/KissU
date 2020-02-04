@@ -12,14 +12,15 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Runtime
     /// <seealso cref="KissU.Core.Protocol.Mqtt.Internal.Runtime.Runnable" />
     public abstract class ScanRunnable : Runnable
     {
-        private ConcurrentQueue<SendMqttMessage> _queue = new ConcurrentQueue<SendMqttMessage>();
+        private readonly ConcurrentQueue<SendMqttMessage> _queue = new ConcurrentQueue<SendMqttMessage>();
+
         /// <summary>
         /// Enqueues the specified t.
         /// </summary>
         /// <param name="t">The t.</param>
         public void Enqueue(SendMqttMessage t)
         {
-             _queue.Enqueue(t);
+            _queue.Enqueue(t);
         }
 
         /// <summary>
@@ -28,7 +29,7 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Runtime
         /// <param name="ts">The ts.</param>
         public void Enqueue(List<SendMqttMessage> ts)
         {
-            ts.ForEach(message=> _queue.Enqueue(message));
+            ts.ForEach(message => _queue.Enqueue(message));
         }
 
         /// <summary>
@@ -38,14 +39,15 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Runtime
         {
             if (!_queue.IsEmpty)
             {
-                List<SendMqttMessage> list = new List<SendMqttMessage>();
-                for (; (_queue.TryDequeue(out SendMqttMessage poll));)
+                var list = new List<SendMqttMessage>();
+                for (; _queue.TryDequeue(out var poll);)
                 {
                     if (poll.ConfirmStatus != ConfirmStatus.COMPLETE)
                     {
                         list.Add(poll);
                         Execute(poll);
                     }
+
                     break;
                 }
             }

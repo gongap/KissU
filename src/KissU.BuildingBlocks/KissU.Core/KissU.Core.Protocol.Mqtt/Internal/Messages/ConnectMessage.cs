@@ -7,12 +7,13 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Messages
     /// Implements the <see cref="KissU.Core.Protocol.Mqtt.Internal.Messages.MqttMessage" />
     /// </summary>
     /// <seealso cref="KissU.Core.Protocol.Mqtt.Internal.Messages.MqttMessage" />
-    public class ConnectMessage:MqttMessage
+    public class ConnectMessage : MqttMessage
     {
         /// <summary>
         /// Gets the type of the message.
         /// </summary>
         public override MessageType MessageType => MessageType.CONNECT;
+
         /// <summary>
         /// Gets or sets the name of the protocol.
         /// </summary>

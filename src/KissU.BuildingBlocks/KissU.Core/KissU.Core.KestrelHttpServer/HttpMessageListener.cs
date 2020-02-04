@@ -28,28 +28,29 @@ namespace KissU.Core.KestrelHttpServer
     /// <seealso cref="KissU.Core.CPlatform.Transport.IMessageListener" />
     public abstract class HttpMessageListener : IMessageListener
     {
-        /// <summary>
-        /// 接收到消息的事件。
-        /// </summary>
-        public event ReceivedDelegate Received;
         private readonly ILogger<HttpMessageListener> _logger;
         private readonly ISerializer<string> _serializer;
-        private event RequestDelegate Requested;
+        private readonly string[] _serviceKeys = {"serviceKey", "servicekey"};
         private readonly IServiceRouteProvider _serviceRouteProvider;
-        private readonly string[] _serviceKeys = {  "serviceKey", "servicekey"};
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="HttpMessageListener"/> class.
+        /// Initializes a new instance of the <see cref="HttpMessageListener" /> class.
         /// </summary>
         /// <param name="logger">The logger.</param>
         /// <param name="serializer">The serializer.</param>
         /// <param name="serviceRouteProvider">The service route provider.</param>
-        public HttpMessageListener(ILogger<HttpMessageListener> logger, ISerializer<string> serializer, IServiceRouteProvider serviceRouteProvider)
+        public HttpMessageListener(ILogger<HttpMessageListener> logger, ISerializer<string> serializer,
+            IServiceRouteProvider serviceRouteProvider)
         {
             _logger = logger;
             _serializer = serializer;
             _serviceRouteProvider = serviceRouteProvider;
         }
+
+        /// <summary>
+        /// 接收到消息的事件。
+        /// </summary>
+        public event ReceivedDelegate Received;
 
         /// <summary>
         /// 触发接收到消息事件。
@@ -64,6 +65,8 @@ namespace KissU.Core.KestrelHttpServer
             await Received(sender, message);
         }
 
+        private event RequestDelegate Requested;
+
         /// <summary>
         /// Called when [received].
         /// </summary>
@@ -71,21 +74,24 @@ namespace KissU.Core.KestrelHttpServer
         /// <param name="messageId">The message identifier.</param>
         /// <param name="context">The context.</param>
         /// <param name="actionFilters">The action filters.</param>
-        public async Task OnReceived(IMessageSender sender,string messageId, HttpContext context, IEnumerable<IActionFilter> actionFilters)
+        public async Task OnReceived(IMessageSender sender, string messageId, HttpContext context,
+            IEnumerable<IActionFilter> actionFilters)
         {
             var serviceRoute = context.Items["route"] as ServiceRoute;
 
             var path = (context.Items["path"]
-                ?? HttpUtility.UrlDecode(GetRoutePath(context.Request.Path.ToString()))) as string;
+                        ?? HttpUtility.UrlDecode(GetRoutePath(context.Request.Path.ToString()))) as string;
             if (serviceRoute == null)
             {
                 serviceRoute = await _serviceRouteProvider.GetRouteByPathRegex(path);
             }
-            IDictionary<string, object> parameters = context.Request.Query.ToDictionary(p => p.Key, p => (object)p.Value.ToString());
+
+            IDictionary<string, object> parameters =
+                context.Request.Query.ToDictionary(p => p.Key, p => (object) p.Value.ToString());
             object serviceKey = null;
             foreach (var key in _serviceKeys)
             {
-                parameters.Remove(key, out object value);
+                parameters.Remove(key, out var value);
                 if (value != null)
                 {
                     serviceKey = value;
@@ -93,7 +99,7 @@ namespace KissU.Core.KestrelHttpServer
                 }
             }
 
-            if (String.Compare(serviceRoute.ServiceDescriptor.RoutePath, path, true) != 0)
+            if (string.Compare(serviceRoute.ServiceDescriptor.RoutePath, path, true) != 0)
             {
                 var @params = RouteTemplateSegmenter.Segment(serviceRoute.ServiceDescriptor.RoutePath, path);
                 foreach (var param in @params)
@@ -101,6 +107,7 @@ namespace KissU.Core.KestrelHttpServer
                     parameters.Add(param.Key, param.Value);
                 }
             }
+
             var httpMessage = new HttpRequestMessage
             {
                 Parameters = parameters,
@@ -112,34 +119,38 @@ namespace KissU.Core.KestrelHttpServer
             {
                 var collection = await GetFormCollection(context.Request);
                 httpMessage.Parameters.Add("form", collection);
-                if (!await OnActionExecuting(new ActionExecutingContext { Context = context, Route = serviceRoute, Message = httpMessage }, 
+                if (!await OnActionExecuting(
+                    new ActionExecutingContext {Context = context, Route = serviceRoute, Message = httpMessage},
                     sender, messageId, actionFilters)) return;
                 httpMessage.Attachments = RpcContext.GetContext().GetContextParameters();
-                await Received(sender, new TransportMessage(messageId,httpMessage));
+                await Received(sender, new TransportMessage(messageId, httpMessage));
             }
             else
             {
-                StreamReader streamReader = new StreamReader(context.Request.Body);
+                var streamReader = new StreamReader(context.Request.Body);
                 var data = await streamReader.ReadToEndAsync();
                 if (context.Request.Method == "POST" || context.Request.Method == "PUT")
                 {
-                    var bodyParams = _serializer.Deserialize<string, IDictionary<string, object>>(data) ?? new Dictionary<string, object>();
+                    var bodyParams = _serializer.Deserialize<string, IDictionary<string, object>>(data) ??
+                                     new Dictionary<string, object>();
                     foreach (var param in bodyParams)
                         httpMessage.Parameters.Add(param.Key, param.Value);
-                    if (!await OnActionExecuting(new ActionExecutingContext { Context = context, Route = serviceRoute, Message = httpMessage },
-                       sender,  messageId, actionFilters)) return;
+                    if (!await OnActionExecuting(
+                        new ActionExecutingContext {Context = context, Route = serviceRoute, Message = httpMessage},
+                        sender, messageId, actionFilters)) return;
                     httpMessage.Attachments = RpcContext.GetContext().GetContextParameters();
-                    await Received(sender, new TransportMessage(messageId,httpMessage));
+                    await Received(sender, new TransportMessage(messageId, httpMessage));
                 }
                 else
                 {
-                    if (!await OnActionExecuting(new ActionExecutingContext { Context = context, Route = serviceRoute, Message = httpMessage }, 
+                    if (!await OnActionExecuting(
+                        new ActionExecutingContext {Context = context, Route = serviceRoute, Message = httpMessage},
                         sender, messageId, actionFilters)) return;
                     httpMessage.Attachments = RpcContext.GetContext().GetContextParameters();
-                    await Received(sender, new TransportMessage(messageId,httpMessage));
+                    await Received(sender, new TransportMessage(messageId, httpMessage));
                 }
             }
-          
+
             await OnActionExecuted(context, httpMessage, actionFilters);
         }
 
@@ -151,17 +162,19 @@ namespace KissU.Core.KestrelHttpServer
         /// <param name="messageId">The message identifier.</param>
         /// <param name="filters">The filters.</param>
         /// <returns>Task&lt;System.Boolean&gt;.</returns>
-        public async Task<bool> OnActionExecuting(ActionExecutingContext filterContext, IMessageSender sender, string messageId, IEnumerable<IActionFilter> filters)
+        public async Task<bool> OnActionExecuting(ActionExecutingContext filterContext, IMessageSender sender,
+            string messageId, IEnumerable<IActionFilter> filters)
         {
             foreach (var fiter in filters)
-            { 
-                await fiter.OnActionExecuting(filterContext); 
+            {
+                await fiter.OnActionExecuting(filterContext);
                 if (filterContext.Result != null)
                 {
-                    await sender.SendAndFlushAsync(new TransportMessage(messageId,filterContext.Result));
+                    await sender.SendAndFlushAsync(new TransportMessage(messageId, filterContext.Result));
                     return false;
                 }
             }
+
             return true;
         }
 
@@ -171,11 +184,12 @@ namespace KissU.Core.KestrelHttpServer
         /// <param name="context">The context.</param>
         /// <param name="message">The message.</param>
         /// <param name="filters">The filters.</param>
-        public async Task OnActionExecuted(HttpContext context, HttpRequestMessage message, IEnumerable<IActionFilter> filters)
+        public async Task OnActionExecuted(HttpContext context, HttpRequestMessage message,
+            IEnumerable<IActionFilter> filters)
         {
             foreach (var fiter in filters)
             {
-                var filterContext = new ActionExecutedContext()
+                var filterContext = new ActionExecutedContext
                 {
                     Context = context,
                     Message = message
@@ -192,7 +206,8 @@ namespace KissU.Core.KestrelHttpServer
         /// <param name="messageId">The message identifier.</param>
         /// <param name="filters">The filters.</param>
         /// <returns>Task&lt;System.Boolean&gt;.</returns>
-        public async Task<bool> OnAuthorization(HttpContext context, HttpServerMessageSender sender,string messageId, IEnumerable<IAuthorizationFilter> filters)
+        public async Task<bool> OnAuthorization(HttpContext context, HttpServerMessageSender sender, string messageId,
+            IEnumerable<IAuthorizationFilter> filters)
         {
             foreach (var filter in filters)
             {
@@ -209,10 +224,11 @@ namespace KissU.Core.KestrelHttpServer
                 await filter.OnAuthorization(filterContext);
                 if (filterContext.Result != null)
                 {
-                    await sender.SendAndFlushAsync(new TransportMessage(messageId,filterContext.Result));
+                    await sender.SendAndFlushAsync(new TransportMessage(messageId, filterContext.Result));
                     return false;
                 }
             }
+
             return true;
         }
 
@@ -225,7 +241,8 @@ namespace KissU.Core.KestrelHttpServer
         /// <param name="exception">The exception.</param>
         /// <param name="filters">The filters.</param>
         /// <returns>Task&lt;System.Boolean&gt;.</returns>
-        public async Task<bool> OnException(HttpContext context, HttpServerMessageSender sender, string messageId, Exception exception, IEnumerable<IExceptionFilter> filters)
+        public async Task<bool> OnException(HttpContext context, HttpServerMessageSender sender, string messageId,
+            Exception exception, IEnumerable<IExceptionFilter> filters)
         {
             foreach (var filter in filters)
             {
@@ -243,12 +260,13 @@ namespace KissU.Core.KestrelHttpServer
                     return false;
                 }
             }
+
             return true;
         }
 
         private async Task<HttpFormCollection> GetFormCollection(HttpRequest request)
         {
-            var boundary = GetName("boundary=", request.ContentType); 
+            var boundary = GetName("boundary=", request.ContentType);
             var reader = new MultipartReader(boundary, request.Body);
             var collection = await GetMultipartForm(reader);
             var fileCollection = new HttpFormFileCollection();
@@ -264,47 +282,50 @@ namespace KissU.Core.KestrelHttpServer
                 {
                     var itemCollection = item.Value as Dictionary<string, StringValues>;
                     fields = fields.Concat(itemCollection).ToDictionary(k => k.Key, v => v.Value);
-
                 }
             }
-           return new HttpFormCollection(fields, fileCollection);
+
+            return new HttpFormCollection(fields, fileCollection);
         }
 
-        private async Task<IDictionary<string,object>> GetMultipartForm(MultipartReader reader)
+        private async Task<IDictionary<string, object>> GetMultipartForm(MultipartReader reader)
         {
-           var section = await reader.ReadNextSectionAsync();
+            var section = await reader.ReadNextSectionAsync();
             var collection = new Dictionary<string, object>();
             if (section != null)
-            { 
-                var name=GetName("name=",section.ContentDisposition);
-                var fileName = GetName("filename=",section.ContentDisposition);
+            {
+                var name = GetName("name=", section.ContentDisposition);
+                var fileName = GetName("filename=", section.ContentDisposition);
                 var buffer = new MemoryStream();
                 await section.Body.CopyToAsync(buffer);
-                if(string.IsNullOrEmpty(fileName))
+                if (string.IsNullOrEmpty(fileName))
                 {
                     var fields = new Dictionary<string, StringValues>();
-                    StreamReader streamReader = new StreamReader(buffer);
-                    fields.Add(name, new StringValues(UTF8Encoding.Default.GetString(buffer.GetBuffer(),0,(int)buffer.Length)));
+                    var streamReader = new StreamReader(buffer);
+                    fields.Add(name,
+                        new StringValues(Encoding.Default.GetString(buffer.GetBuffer(), 0, (int) buffer.Length)));
                     collection.Add(name, fields);
                 }
                 else
                 {
                     var fileCollection = new HttpFormFileCollection();
-                    StreamReader streamReader = new StreamReader(buffer);
-                    fileCollection.Add(new HttpFormFile(buffer.Length,name,fileName,buffer.GetBuffer()));
+                    var streamReader = new StreamReader(buffer);
+                    fileCollection.Add(new HttpFormFile(buffer.Length, name, fileName, buffer.GetBuffer()));
                     collection.Add(name, fileCollection);
                 }
-                var formCollection= await GetMultipartForm(reader);
-                foreach(var item in formCollection)
+
+                var formCollection = await GetMultipartForm(reader);
+                foreach (var item in formCollection)
                 {
                     if (!collection.ContainsKey(item.Key))
-                        collection.Add(item.Key,item.Value);
+                        collection.Add(item.Key, item.Value);
                 }
             }
+
             return collection;
         }
 
-        private string GetName(string type,string content)
+        private string GetName(string type, string content)
         {
             var elements = content.Split(';');
             var element = elements.Where(entry => entry.Trim().StartsWith(type)).FirstOrDefault()?.Trim();
@@ -313,12 +334,13 @@ namespace KissU.Core.KestrelHttpServer
             {
                 name = name.Substring(1, name.Length - 2);
             }
+
             return name;
         }
 
         private string GetRoutePath(string path)
         {
-            string routePath = "";
+            var routePath = "";
             var urlSpan = path.AsSpan();
             var len = urlSpan.IndexOf("?");
             if (urlSpan.LastIndexOf("/") == 0)
@@ -332,6 +354,7 @@ namespace KissU.Core.KestrelHttpServer
                 else
                     routePath = urlSpan.Slice(0, len).TrimStart("/").ToString().ToLower();
             }
+
             return routePath;
         }
     }

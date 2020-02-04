@@ -32,6 +32,7 @@ namespace KissU.Core.Protocol.Http
             {
                 RegisterHttpProtocol(services);
             }
+
             return builder;
         }
 
@@ -39,15 +40,15 @@ namespace KissU.Core.Protocol.Http
         {
             builder.Register(provider =>
             {
-                return new DotNettyHttpServerMessageListener(provider.Resolve<ILogger<DotNettyHttpServerMessageListener>>(),
-                      provider.Resolve<ITransportMessageCodecFactory>(),
-                      provider.Resolve<ISerializer<string>>(),
-                      provider.Resolve<IServiceRouteProvider>()
-                      );
+                return new DotNettyHttpServerMessageListener(
+                    provider.Resolve<ILogger<DotNettyHttpServerMessageListener>>(),
+                    provider.Resolve<ITransportMessageCodecFactory>(),
+                    provider.Resolve<ISerializer<string>>(),
+                    provider.Resolve<IServiceRouteProvider>()
+                );
             }).SingleInstance();
             builder.Register(provider =>
             {
-
                 var serviceExecutor = provider.ResolveKeyed<IServiceExecutor>(CommunicationProtocol.Http.ToString());
                 var messageListener = provider.Resolve<DotNettyHttpServerMessageListener>();
                 return new DefaultServiceHost(async endPoint =>
@@ -55,20 +56,19 @@ namespace KissU.Core.Protocol.Http
                     await messageListener.StartAsync(endPoint);
                     return messageListener;
                 }, serviceExecutor);
-
             }).As<IServiceHost>();
         }
 
         private static void RegisterHttpProtocol(ContainerBuilder builder)
         {
-
             builder.Register(provider =>
             {
-                return new DotNettyHttpServerMessageListener(provider.Resolve<ILogger<DotNettyHttpServerMessageListener>>(),
-                      provider.Resolve<ITransportMessageCodecFactory>(),
-                      provider.Resolve<ISerializer<string>>(),
-                      provider.Resolve<IServiceRouteProvider>()
-                      );
+                return new DotNettyHttpServerMessageListener(
+                    provider.Resolve<ILogger<DotNettyHttpServerMessageListener>>(),
+                    provider.Resolve<ITransportMessageCodecFactory>(),
+                    provider.Resolve<ISerializer<string>>(),
+                    provider.Resolve<IServiceRouteProvider>()
+                );
             }).SingleInstance();
             builder.Register(provider =>
             {
@@ -79,7 +79,6 @@ namespace KissU.Core.Protocol.Http
                     await messageListener.StartAsync(endPoint);
                     return messageListener;
                 }, serviceExecutor);
-
             }).As<IServiceHost>();
         }
     }

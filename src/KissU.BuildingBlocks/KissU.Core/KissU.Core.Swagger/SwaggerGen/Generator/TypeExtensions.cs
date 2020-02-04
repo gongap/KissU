@@ -63,7 +63,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
 
             var fullName = type.FullName;
             var chopIndex = fullName.IndexOf("[[");
-            return (chopIndex == -1) ? fullName : fullName.Substring(0, chopIndex);
+            return chopIndex == -1 ? fullName : fullName.Substring(0, chopIndex);
         }
     }
 }

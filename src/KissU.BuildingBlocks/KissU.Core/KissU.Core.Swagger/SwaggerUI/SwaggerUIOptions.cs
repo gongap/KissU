@@ -50,6 +50,11 @@ namespace KissU.Core.Swagger.SwaggerUI
     public class ConfigObject
     {
         /// <summary>
+        /// The additional items
+        /// </summary>
+        [JsonExtensionData] public Dictionary<string, object> AdditionalItems = new Dictionary<string, object>();
+
+        /// <summary>
         /// One or more Swagger JSON endpoints (url and name) to power the UI
         /// </summary>
         public IEnumerable<UrlDescriptor> Urls { get; set; } = null;
@@ -117,28 +122,24 @@ namespace KissU.Core.Swagger.SwaggerUI
         /// OAuth redirect URL
         /// </summary>
         [JsonProperty("oauth2RedirectUrl")]
-        public string OAuth2RedirectUrl { get; set; } = null;
+        public string OAuth2RedirectUrl { get; set; }
 
         /// <summary>
         /// List of HTTP methods that have the Try it out feature enabled.
         /// An empty array disables Try it out for all operations. This does not filter the operations from the display
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Include)]
-        public IEnumerable<SubmitMethod> SupportedSubmitMethods { get; set; } = Enum.GetValues(typeof(SubmitMethod)).Cast<SubmitMethod>();
+        public IEnumerable<SubmitMethod> SupportedSubmitMethods { get; set; } =
+            Enum.GetValues(typeof(SubmitMethod)).Cast<SubmitMethod>();
 
         /// <summary>
         /// By default, Swagger-UI attempts to validate specs against swagger.io's online validator.
-        /// You can use this parameter to set a different validator URL, for example for locally deployed validators (Validator Badge).
+        /// You can use this parameter to set a different validator URL, for example for locally deployed validators (Validator
+        /// Badge).
         /// Setting it to null will disable validation
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Include)]
-        public string ValidatorUrl { get; set; } = null;
-
-        /// <summary>
-        /// The additional items
-        /// </summary>
-        [JsonExtensionData]
-        public Dictionary<string, object> AdditionalItems = new Dictionary<string, object>();
+        public string ValidatorUrl { get; set; }
     }
 
     /// <summary>
@@ -166,6 +167,7 @@ namespace KissU.Core.Swagger.SwaggerUI
         /// The example
         /// </summary>
         Example,
+
         /// <summary>
         /// The model
         /// </summary>
@@ -181,10 +183,12 @@ namespace KissU.Core.Swagger.SwaggerUI
         /// The list
         /// </summary>
         List,
+
         /// <summary>
         /// The full
         /// </summary>
         Full,
+
         /// <summary>
         /// The none
         /// </summary>
@@ -200,30 +204,37 @@ namespace KissU.Core.Swagger.SwaggerUI
         /// The get
         /// </summary>
         Get,
+
         /// <summary>
         /// The put
         /// </summary>
         Put,
+
         /// <summary>
         /// The post
         /// </summary>
         Post,
+
         /// <summary>
         /// The delete
         /// </summary>
         Delete,
+
         /// <summary>
         /// The options
         /// </summary>
         Options,
+
         /// <summary>
         /// The head
         /// </summary>
         Head,
+
         /// <summary>
         /// The patch
         /// </summary>
         Patch,
+
         /// <summary>
         /// The trace
         /// </summary>

@@ -14,15 +14,17 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
     {
         private readonly IConsumeConfigurator _consumeConfigurator;
         private readonly IEnumerable<IIntegrationEventHandler> _integrationEventHandler;
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="RabbitMqSubscriptionAdapt"/> class.
+        /// Initializes a new instance of the <see cref="RabbitMqSubscriptionAdapt" /> class.
         /// </summary>
         /// <param name="consumeConfigurator">The consume configurator.</param>
         /// <param name="integrationEventHandler">The integration event handler.</param>
-        public RabbitMqSubscriptionAdapt(IConsumeConfigurator consumeConfigurator, IEnumerable<IIntegrationEventHandler> integrationEventHandler)
+        public RabbitMqSubscriptionAdapt(IConsumeConfigurator consumeConfigurator,
+            IEnumerable<IIntegrationEventHandler> integrationEventHandler)
         {
-            this._consumeConfigurator = consumeConfigurator;
-            this._integrationEventHandler = integrationEventHandler;
+            _consumeConfigurator = consumeConfigurator;
+            _integrationEventHandler = integrationEventHandler;
         }
 
         /// <summary>
@@ -43,6 +45,7 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
 
 
         #region 私有方法
+
         private List<Type> GetQueueConsumers()
         {
             var result = new List<Type>();
@@ -51,8 +54,10 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
                 var type = consumer.GetType();
                 result.Add(type);
             }
+
             return result;
         }
+
         #endregion
     }
 }

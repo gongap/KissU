@@ -20,26 +20,16 @@ namespace KissU.Core.Protocol.WS.Runtime.Implementation
     /// <seealso cref="KissU.Core.Protocol.WS.Runtime.IWSServiceEntryProvider" />
     public class DefaultWSServiceEntryProvider : IWSServiceEntryProvider
     {
-        #region Field
-
-        private readonly IEnumerable<Type> _types;
-        private readonly ILogger<DefaultWSServiceEntryProvider> _logger;
-        private readonly CPlatformContainer _serviceProvider;
-        private List<WSServiceEntry> _wSServiceEntries;
-        private WebSocketOptions _options;
-
-        #endregion Field
-
         #region Constructor
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DefaultWSServiceEntryProvider"/> class.
+        /// Initializes a new instance of the <see cref="DefaultWSServiceEntryProvider" /> class.
         /// </summary>
         /// <param name="serviceEntryProvider">The service entry provider.</param>
         /// <param name="logger">The logger.</param>
         /// <param name="serviceProvider">The service provider.</param>
         /// <param name="options">The options.</param>
-        public DefaultWSServiceEntryProvider(IServiceEntryProvider  serviceEntryProvider,
+        public DefaultWSServiceEntryProvider(IServiceEntryProvider serviceEntryProvider,
             ILogger<DefaultWSServiceEntryProvider> logger,
             CPlatformContainer serviceProvider,
             WebSocketOptions options)
@@ -72,13 +62,16 @@ namespace KissU.Core.Protocol.WS.Runtime.Implementation
                         _wSServiceEntries.Add(entry);
                     }
                 }
+
                 if (_logger.IsEnabled(LogLevel.Debug))
                 {
                     _logger.LogDebug($"发现了以下WS服务：{string.Join(",", _wSServiceEntries.Select(i => i.Type.FullName))}。");
                 }
             }
+
             return _wSServiceEntries;
         }
+
         #endregion
 
         /// <summary>
@@ -94,7 +87,7 @@ namespace KissU.Core.Protocol.WS.Runtime.Implementation
             var objInstance = _serviceProvider.GetInstances(service);
             var behavior = objInstance as WebSocketBehavior;
             var path = RoutePatternParser.Parse(routeTemplate.RouteTemplate, service.Name);
-            if (path.Length>0 && path[0] != '/')
+            if (path.Length > 0 && path[0] != '/')
                 path = $"/{path}";
             if (behavior != null)
                 result = new WSServiceEntry
@@ -102,15 +95,13 @@ namespace KissU.Core.Protocol.WS.Runtime.Implementation
                     Behavior = behavior,
                     Type = behavior.GetType(),
                     Path = path,
-                    FuncBehavior = () =>
-                    {
-                        return GetWebSocketBehavior(service, _options?.Behavior, behaviorContract);
-                    }
+                    FuncBehavior = () => { return GetWebSocketBehavior(service, _options?.Behavior, behaviorContract); }
                 };
             return result;
         }
 
-        private WebSocketBehavior GetWebSocketBehavior(Type service,BehaviorOption option, BehaviorContractAttribute contractAttribute)
+        private WebSocketBehavior GetWebSocketBehavior(Type service, BehaviorOption option,
+            BehaviorContractAttribute contractAttribute)
         {
             var wsBehavior = _serviceProvider.GetInstances(service) as WebSocketBehavior;
             if (option != null)
@@ -119,13 +110,25 @@ namespace KissU.Core.Protocol.WS.Runtime.Implementation
                 wsBehavior.Protocol = option.Protocol;
                 wsBehavior.EmitOnPing = option.EmitOnPing;
             }
+
             if (contractAttribute != null)
             {
                 wsBehavior.IgnoreExtensions = contractAttribute.IgnoreExtensions;
                 wsBehavior.Protocol = contractAttribute.Protocol;
                 wsBehavior.EmitOnPing = contractAttribute.EmitOnPing;
-            } 
+            }
+
             return wsBehavior;
         }
+
+        #region Field
+
+        private readonly IEnumerable<Type> _types;
+        private readonly ILogger<DefaultWSServiceEntryProvider> _logger;
+        private readonly CPlatformContainer _serviceProvider;
+        private List<WSServiceEntry> _wSServiceEntries;
+        private readonly WebSocketOptions _options;
+
+        #endregion Field
     }
 }

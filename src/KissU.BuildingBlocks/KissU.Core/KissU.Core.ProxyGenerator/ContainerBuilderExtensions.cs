@@ -26,13 +26,13 @@ namespace KissU.Core.ProxyGenerator
             var services = builder.Services;
             services.RegisterType<ServiceProxyGenerater>().As<IServiceProxyGenerater>().SingleInstance();
             services.RegisterType<ServiceProxyProvider>().As<IServiceProxyProvider>().SingleInstance();
-            builder.Services.Register(provider =>new ServiceProxyFactory(
-                 provider.Resolve<IRemoteInvokeService>(),
-                 provider.Resolve<ITypeConvertibleService>(),
-                 provider.Resolve<IServiceProvider>(),
-                 builder.GetInterfaceService(),
-                 builder.GetDataContractName()
-                 )).As<IServiceProxyFactory>().SingleInstance();
+            builder.Services.Register(provider => new ServiceProxyFactory(
+                provider.Resolve<IRemoteInvokeService>(),
+                provider.Resolve<ITypeConvertibleService>(),
+                provider.Resolve<IServiceProvider>(),
+                builder.GetInterfaceService(),
+                builder.GetDataContractName()
+            )).As<IServiceProxyFactory>().SingleInstance();
             return builder;
         }
 
@@ -42,9 +42,10 @@ namespace KissU.Core.ProxyGenerator
         /// <param name="builder">The builder.</param>
         /// <param name="interceptorServiceTypes">The interceptor service types.</param>
         /// <returns>IServiceBuilder.</returns>
-        public static IServiceBuilder AddClientIntercepted(this IServiceBuilder builder,params Type[] interceptorServiceTypes )
+        public static IServiceBuilder AddClientIntercepted(this IServiceBuilder builder,
+            params Type[] interceptorServiceTypes)
         {
-            var services = builder.Services; 
+            var services = builder.Services;
             services.RegisterTypes(interceptorServiceTypes).As<IInterceptor>().SingleInstance();
             services.RegisterType<InterceptorProvider>().As<IInterceptorProvider>().SingleInstance();
             return builder;

@@ -155,7 +155,7 @@ namespace KissU.Core.CPlatform.Utilities
                 Port = mappingPort,
                 MqttPort = ports.MQTTPort,
                 WanIp = AppConfig.ServerOptions.WanIp,
-                WsPort = ports.WSPort,
+                WsPort = ports.WSPort
             };
             return _host;
         }

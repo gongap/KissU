@@ -11,18 +11,18 @@ namespace KissU.Core.Zookeeper.WatcherProvider
     public abstract class WatcherBase : Watcher
     {
         /// <summary>
-        /// Gets the path.
-        /// </summary>
-        protected string Path { get; }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="WatcherBase"/> class.
+        /// Initializes a new instance of the <see cref="WatcherBase" /> class.
         /// </summary>
         /// <param name="path">The path.</param>
         protected WatcherBase(string path)
         {
             Path = path;
         }
+
+        /// <summary>
+        /// Gets the path.
+        /// </summary>
+        protected string Path { get; }
 
         /// <summary>
         /// Processes the specified watched event.

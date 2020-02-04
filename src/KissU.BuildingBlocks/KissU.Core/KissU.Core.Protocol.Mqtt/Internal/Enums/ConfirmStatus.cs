@@ -9,17 +9,20 @@
         /// The pub
         /// </summary>
         PUB,
+
         /// <summary>
         /// The pubrec
         /// </summary>
         PUBREC,
+
         /// <summary>
         /// The pubrel
         /// </summary>
         PUBREL,
+
         /// <summary>
         /// The complete
         /// </summary>
-        COMPLETE,
+        COMPLETE
     }
 }

@@ -46,10 +46,10 @@ namespace KissU.Core.Swagger.SwaggerUI
         /// <param name="url">Can be fully qualified or relative to the current host</param>
         /// <param name="name">The description that appears in the document selector drop-down</param>
         /// <param name="areaName">Name of the area.</param>
-        public static void SwaggerEndpoint(this SwaggerUIOptions options, string url, string name,string areaName)
+        public static void SwaggerEndpoint(this SwaggerUIOptions options, string url, string name, string areaName)
         {
             var urls = new List<UrlDescriptor>(options.ConfigObject.Urls ?? Enumerable.Empty<UrlDescriptor>());
-            urls.Add(new UrlDescriptor { Url = string.IsNullOrEmpty(areaName) ? url : $"{areaName}{url}", Name = name });
+            urls.Add(new UrlDescriptor {Url = string.IsNullOrEmpty(areaName) ? url : $"{areaName}{url}", Name = name});
             options.ConfigObject.Urls = urls;
         }
 
@@ -59,9 +59,9 @@ namespace KissU.Core.Swagger.SwaggerUI
         /// <param name="options">The options.</param>
         /// <param name="entries">The entries.</param>
         /// <param name="areaName">Name of the area.</param>
-        public static void SwaggerEndpoint(this SwaggerUIOptions options, IEnumerable<ServiceEntry> entries,string areaName)
+        public static void SwaggerEndpoint(this SwaggerUIOptions options, IEnumerable<ServiceEntry> entries,
+            string areaName)
         {
-
             var list = new List<Info>();
             var assemblies = entries.Select(p => p.Type.Assembly).Distinct();
             foreach (var assembly in assemblies)
@@ -71,24 +71,23 @@ namespace KissU.Core.Swagger.SwaggerUI
                     .OfType<AssemblyFileVersionAttribute>().FirstOrDefault();
 
                 var title = assembly
-                  .GetCustomAttributes(true)
-                  .OfType<AssemblyTitleAttribute>().FirstOrDefault();
+                    .GetCustomAttributes(true)
+                    .OfType<AssemblyTitleAttribute>().FirstOrDefault();
 
                 var des = assembly
-                  .GetCustomAttributes(true)
-                  .OfType<AssemblyDescriptionAttribute>().FirstOrDefault();
+                    .GetCustomAttributes(true)
+                    .OfType<AssemblyDescriptionAttribute>().FirstOrDefault();
 
                 if (version == null || title == null)
                     continue;
 
-                var info = new Info()
+                var info = new Info
                 {
                     Title = title.Title,
                     Version = version.Version,
-                    Description = des?.Description,
-
+                    Description = des?.Description
                 };
-                options.SwaggerEndpoint($"../swagger/{info.Title}/swagger.json", info.Title,areaName);
+                options.SwaggerEndpoint($"../swagger/{info.Title}/swagger.json", info.Title, areaName);
             }
         }
 
@@ -230,7 +229,8 @@ namespace KissU.Core.Swagger.SwaggerUI
         /// </summary>
         /// <param name="options">The options.</param>
         /// <param name="url">The URL.</param>
-        public static void EnableValidator(this SwaggerUIOptions options, string url = "https://online.swagger.io/validator")
+        public static void EnableValidator(this SwaggerUIOptions options,
+            string url = "https://online.swagger.io/validator")
         {
             options.ConfigObject.ValidatorUrl = url;
         }

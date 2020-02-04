@@ -6,7 +6,7 @@ namespace KissU.Core.KestrelHttpServer.Extensions
     /// <summary>
     /// ModuleProviderExtensions.
     /// </summary>
-    public static  class ModuleProviderExtensions
+    public static class ModuleProviderExtensions
     {
         /// <summary>
         /// Initializes the specified builder.

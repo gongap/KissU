@@ -105,9 +105,9 @@ namespace KissU.Core.CPlatform.Cache.Implementation
                 AddressDescriptors = cache.CacheEndpoint?.Select(address => new CacheEndpointDescriptor
                 {
                     Type = address.GetType().FullName,
-                    Value = _serializer.Serialize(address),
+                    Value = _serializer.Serialize(address)
                 }) ?? Enumerable.Empty<CacheEndpointDescriptor>(),
-                CacheDescriptor = cache.CacheDescriptor,
+                CacheDescriptor = cache.CacheDescriptor
             });
             return SetCachesAsync(descriptors);
         }

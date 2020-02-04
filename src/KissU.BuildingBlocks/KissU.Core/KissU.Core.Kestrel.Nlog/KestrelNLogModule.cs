@@ -5,6 +5,7 @@ using KissU.Core.KestrelHttpServer;
 using KissU.Core.Nlog;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using NLog;
 
 namespace KissU.Core.Kestrel.Nlog
 {
@@ -16,13 +17,13 @@ namespace KissU.Core.Kestrel.Nlog
     public class KestrelNLogModule : KestrelHttpModule
     {
         private string nlogConfigFile = "${LogPath}|NLog.config";
+
         /// <summary>
         /// Initializes the specified context.
         /// </summary>
         /// <param name="context">The context.</param>
         public override void Initialize(AppModuleContext context)
         {
-  
         }
 
         /// <summary>
@@ -30,7 +31,7 @@ namespace KissU.Core.Kestrel.Nlog
         /// </summary>
         /// <param name="context">The context.</param>
         public override void RegisterBuilder(WebHostContext context)
-        { 
+        {
         }
 
         /// <summary>
@@ -44,7 +45,7 @@ namespace KissU.Core.Kestrel.Nlog
             var section = AppConfig.GetSection("Logging");
             nlogConfigFile = EnvironmentHelper.GetEnvironmentVariable(nlogConfigFile);
 
-            NLog.LogManager.LoadConfiguration(nlogConfigFile);
+            LogManager.LoadConfiguration(nlogConfigFile);
             serviceProvider.GetService<ILoggerFactory>().AddProvider(new NLogProvider());
         }
 
@@ -54,7 +55,7 @@ namespace KissU.Core.Kestrel.Nlog
         /// <param name="context">The context.</param>
         public override void RegisterBuilder(ConfigurationContext context)
         {
-             context.Services.AddLogging();
+            context.Services.AddLogging();
         }
 
         /// <summary>
@@ -63,7 +64,6 @@ namespace KissU.Core.Kestrel.Nlog
         /// <param name="builder">构建器包装</param>
         protected override void RegisterBuilder(ContainerBuilderWrapper builder)
         {
-           
         }
     }
 }

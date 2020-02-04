@@ -46,7 +46,7 @@ namespace KissU.Core.CPlatform.Routing.Implementation
             routes.AddRange(descriptors.Select(descriptor => new ServiceRoute
             {
                 Address = CreateAddress(descriptor.AddressDescriptors),
-                ServiceDescriptor = descriptor.ServiceDescriptor,
+                ServiceDescriptor = descriptor.ServiceDescriptor
             }));
 
             return Task.FromResult(routes.AsEnumerable());
@@ -69,7 +69,7 @@ namespace KissU.Core.CPlatform.Routing.Implementation
                 _addressModel.TryGetValue(descriptor.Value, out var address);
                 if (address == null)
                 {
-                    address = (AddressModel)_serializer.Deserialize(descriptor.Value, typeof(IpAddressModel));
+                    address = (AddressModel) _serializer.Deserialize(descriptor.Value, typeof(IpAddressModel));
                     _addressModel.TryAdd(descriptor.Value, address);
                 }
 

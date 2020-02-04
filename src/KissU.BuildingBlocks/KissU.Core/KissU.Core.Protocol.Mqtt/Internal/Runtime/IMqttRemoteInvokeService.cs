@@ -9,7 +9,6 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Runtime
     /// </summary>
     public interface IMqttRemoteInvokeService
     {
-
         /// <summary>
         /// Invokes the asynchronous.
         /// </summary>

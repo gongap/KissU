@@ -26,7 +26,7 @@ namespace KissU.Core.Swagger.SwaggerGen.XmlComments
         private readonly XPathNavigator _xmlNavigator;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="XmlCommentsOperationFilter"/> class.
+        /// Initializes a new instance of the <see cref="XmlCommentsOperationFilter" /> class.
         /// </summary>
         /// <param name="xmlDoc">The XML document.</param>
         public XmlCommentsOperationFilter(XPathDocument xmlDoc)
@@ -60,9 +60,9 @@ namespace KissU.Core.Swagger.SwaggerGen.XmlComments
                 ApplyResponsesXmlToResponses(operation.Responses, methodNode.Select(ResponsesXPath));
             }
 
-            if(context.ApiDescription !=null)
-            // Special handling for parameters that are bound to model properties
-            ApplyPropertiesXmlToPropertyParameters(operation.Parameters, context.ApiDescription);
+            if (context.ApiDescription != null)
+                // Special handling for parameters that are bound to model properties
+                ApplyPropertiesXmlToPropertyParameters(operation.Parameters, context.ApiDescription);
             else
                 ApplyPropertiesXmlToPropertyParameters(operation.Parameters, context.ServiceEntry);
         }
@@ -76,13 +76,13 @@ namespace KissU.Core.Swagger.SwaggerGen.XmlComments
             var candidateMethods = genericTypeDefinition.GetMethods()
                 .Where(m =>
                 {
-                    return (m.Name == constructedTypeMethod.Name)
-                        && (m.GetParameters().Length == constructedTypeMethod.GetParameters().Length);
+                    return m.Name == constructedTypeMethod.Name
+                           && m.GetParameters().Length == constructedTypeMethod.GetParameters().Length;
                 });
 
 
             // If inconclusive, just return null
-            return (candidateMethods.Count() == 1) ? candidateMethods.First() : null;
+            return candidateMethods.Count() == 1 ? candidateMethods.First() : null;
         }
 
         private void ApplyMethodXmlToOperation(Operation operation, XPathNavigator methodNode)
@@ -108,7 +108,7 @@ namespace KissU.Core.Swagger.SwaggerGen.XmlComments
                 // Check for a corresponding action parameter?
                 var actionParameter = apiDescription.ActionDescriptor.Parameters
                     .FirstOrDefault(p => parameter.Name.Equals(
-                        (p.BindingInfo?.BinderModelName ?? p.Name), StringComparison.OrdinalIgnoreCase));
+                        p.BindingInfo?.BinderModelName ?? p.Name, StringComparison.OrdinalIgnoreCase));
                 if (actionParameter == null) continue;
 
                 var paramNode = methodNode.SelectSingleNode(string.Format(ParamXPath, actionParameter.Name));
@@ -118,18 +118,19 @@ namespace KissU.Core.Swagger.SwaggerGen.XmlComments
         }
 
         private void ApplyParamsXmlToActionParameters(
-         IList<IParameter> parameters,
-         XPathNavigator methodNode,
-         ServiceEntry serviceEntry)
+            IList<IParameter> parameters,
+            XPathNavigator methodNode,
+            ServiceEntry serviceEntry)
         {
             if (parameters == null) return;
 
             foreach (var parameter in parameters)
             {
                 // Check for a corresponding action parameter?
-                var methodInfo = serviceEntry.Type.GetTypeInfo().DeclaredMethods.Where(p => p.Name == serviceEntry.MethodName).FirstOrDefault();
+                var methodInfo = serviceEntry.Type.GetTypeInfo().DeclaredMethods
+                    .Where(p => p.Name == serviceEntry.MethodName).FirstOrDefault();
                 var actionParameter = methodInfo.GetParameters()
-                 .FirstOrDefault(p => parameter.Name.Equals(p.Name, StringComparison.OrdinalIgnoreCase));
+                    .FirstOrDefault(p => parameter.Name.Equals(p.Name, StringComparison.OrdinalIgnoreCase));
                 if (actionParameter == null) continue;
 
                 var paramNode = methodNode.SelectSingleNode(string.Format(ParamXPath, actionParameter.Name));
@@ -138,7 +139,8 @@ namespace KissU.Core.Swagger.SwaggerGen.XmlComments
             }
         }
 
-        private void ApplyResponsesXmlToResponses(IDictionary<string, Response> responses, XPathNodeIterator responseNodes)
+        private void ApplyResponsesXmlToResponses(IDictionary<string, Response> responses,
+            XPathNodeIterator responseNodes)
         {
             while (responseNodes.MoveNext())
             {
@@ -180,18 +182,19 @@ namespace KissU.Core.Swagger.SwaggerGen.XmlComments
         }
 
         private void ApplyPropertiesXmlToPropertyParameters(
-    IList<IParameter> parameters,
-    ServiceEntry serviceEntry)
+            IList<IParameter> parameters,
+            ServiceEntry serviceEntry)
         {
             if (parameters == null) return;
 
             foreach (var parameter in parameters)
             {
-                var methodInfo = serviceEntry.Type.GetTypeInfo().DeclaredMethods.Where(p => p.Name == serviceEntry.MethodName).FirstOrDefault();
-                var propertyParam = methodInfo.GetParameters() 
-                 .FirstOrDefault(p => parameter.Name.Equals(p.Name, StringComparison.OrdinalIgnoreCase));
-                if (propertyParam == null) continue; 
-                var memberInfo = propertyParam.Member  ;
+                var methodInfo = serviceEntry.Type.GetTypeInfo().DeclaredMethods
+                    .Where(p => p.Name == serviceEntry.MethodName).FirstOrDefault();
+                var propertyParam = methodInfo.GetParameters()
+                    .FirstOrDefault(p => parameter.Name.Equals(p.Name, StringComparison.OrdinalIgnoreCase));
+                if (propertyParam == null) continue;
+                var memberInfo = propertyParam.Member;
                 if (memberInfo == null) continue;
 
                 var memberName = XmlCommentsMemberNameHelper.GetMemberNameForMember(memberInfo);

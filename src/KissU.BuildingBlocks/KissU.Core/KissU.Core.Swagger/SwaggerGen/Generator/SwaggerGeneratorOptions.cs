@@ -14,7 +14,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
     public class SwaggerGeneratorOptions
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SwaggerGeneratorOptions"/> class.
+        /// Initializes a new instance of the <see cref="SwaggerGeneratorOptions" /> class.
         /// </summary>
         public SwaggerGeneratorOptions()
         {
@@ -22,7 +22,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
             DocInclusionPredicate = DefaultDocInclusionPredicate;
             DocInclusionPredicateV2 = DefaultDocInclusionPredicateV2;
             OperationIdSelector = DefaultOperationIdSelector;
-           TagsSelector = DefaultTagsSelector;
+            TagsSelector = DefaultTagsSelector;
             SortKeySelector = DefaultSortKeySelector;
             SecurityDefinitions = new Dictionary<string, SecurityScheme>();
             SecurityRequirements = new List<IDictionary<string, IEnumerable<string>>>();
@@ -111,9 +111,9 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
             var assembly = apiDescription.Type.Assembly;
 
             var versions = assembly
-                        .GetCustomAttributes(true)
-                        .OfType<AssemblyVersionAttribute>();
-            return versions != null; 
+                .GetCustomAttributes(true)
+                .OfType<AssemblyVersionAttribute>();
+            return versions != null;
         }
 
         private string DefaultOperationIdSelector(ApiDescription apiDescription)
@@ -121,14 +121,14 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
             var routeName = apiDescription.ActionDescriptor.AttributeRouteInfo?.Name;
             if (routeName != null) return routeName;
 
-            if (apiDescription.TryGetMethodInfo(out MethodInfo methodInfo)) return methodInfo.Name;
+            if (apiDescription.TryGetMethodInfo(out var methodInfo)) return methodInfo.Name;
 
             return null;
         }
 
         private IList<string> DefaultTagsSelector(ApiDescription apiDescription)
         {
-            return new[] { apiDescription.ActionDescriptor.RouteValues["controller"] };
+            return new[] {apiDescription.ActionDescriptor.RouteValues["controller"]};
         }
 
         private string DefaultSortKeySelector(ApiDescription apiDescription)

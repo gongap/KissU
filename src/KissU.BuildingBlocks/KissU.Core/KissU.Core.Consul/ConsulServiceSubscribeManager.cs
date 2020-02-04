@@ -12,6 +12,7 @@ using KissU.Core.CPlatform.Runtime.Client;
 using KissU.Core.CPlatform.Runtime.Client.Implementation;
 using KissU.Core.CPlatform.Serialization;
 using Microsoft.Extensions.Logging;
+using LogLevel = Microsoft.Extensions.Logging.LogLevel;
 
 namespace KissU.Core.Consul
 {
@@ -25,16 +26,16 @@ namespace KissU.Core.Consul
     public class ConsulServiceSubscribeManager : ServiceSubscribeManagerBase, IDisposable
     {
         private readonly ConfigInfo _configInfo;
+        private readonly IConsulClientProvider _consulClientFactory;
+        private readonly ILogger<ConsulServiceSubscribeManager> _logger;
+        private readonly IClientWatchManager _manager;
         private readonly ISerializer<byte[]> _serializer;
         private readonly IServiceSubscriberFactory _serviceSubscriberFactory;
-        private readonly ILogger<ConsulServiceSubscribeManager> _logger;
         private readonly ISerializer<string> _stringSerializer;
-        private readonly IClientWatchManager _manager;
-        private readonly IConsulClientProvider _consulClientFactory;
         private ServiceSubscriber[] _subscribers;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ConsulServiceSubscribeManager"/> class.
+        /// Initializes a new instance of the <see cref="ConsulServiceSubscribeManager" /> class.
         /// </summary>
         /// <param name="configInfo">The configuration information.</param>
         /// <param name="serializer">The serializer.</param>
@@ -44,8 +45,10 @@ namespace KissU.Core.Consul
         /// <param name="logger">The logger.</param>
         /// <param name="consulClientFactory">The consul client factory.</param>
         public ConsulServiceSubscribeManager(ConfigInfo configInfo, ISerializer<byte[]> serializer,
-            ISerializer<string> stringSerializer, IClientWatchManager manager, IServiceSubscriberFactory serviceSubscriberFactory,
-            ILogger<ConsulServiceSubscribeManager> logger, IConsulClientProvider consulClientFactory) : base(stringSerializer)
+            ISerializer<string> stringSerializer, IClientWatchManager manager,
+            IServiceSubscriberFactory serviceSubscriberFactory,
+            ILogger<ConsulServiceSubscribeManager> logger, IConsulClientProvider consulClientFactory) : base(
+            stringSerializer)
         {
             _configInfo = configInfo;
             _serializer = serializer;
@@ -55,6 +58,13 @@ namespace KissU.Core.Consul
             _manager = manager;
             _consulClientFactory = consulClientFactory;
             EnterSubscribers().Wait();
+        }
+
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+        public void Dispose()
+        {
         }
 
         /// <summary>
@@ -91,13 +101,6 @@ namespace KissU.Core.Consul
         }
 
         /// <summary>
-        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-        /// </summary>
-        public void Dispose()
-        {
-        }
-
-        /// <summary>
         /// set subscribers as an asynchronous operation.
         /// </summary>
         /// <param name="subscribers">The subscribers.</param>
@@ -118,10 +121,13 @@ namespace KissU.Core.Consul
                         await client.KV.Delete($"{_configInfo.SubscriberPath}{deletedSubscriberId}");
                     }
                 }
+
                 foreach (var serviceSubscriber in subscribers)
                 {
                     var nodeData = _serializer.Serialize(serviceSubscriber);
-                    var keyValuePair = new KVPair($"{_configInfo.SubscriberPath}{serviceSubscriber.ServiceDescriptor.Id}") { Value = nodeData };
+                    var keyValuePair =
+                        new KVPair($"{_configInfo.SubscriberPath}{serviceSubscriber.ServiceDescriptor.Id}")
+                            {Value = nodeData};
                     await client.KV.Put(keyValuePair);
                 }
             }
@@ -133,12 +139,14 @@ namespace KissU.Core.Consul
         /// <param name="subscribers">The subscribers.</param>
         public override async Task SetSubscribersAsync(IEnumerable<ServiceSubscriber> subscribers)
         {
-            var serviceSubscribers = await GetSubscribers(subscribers.Select(p => $"{ _configInfo.SubscriberPath }{ p.ServiceDescriptor.Id}"));
+            var serviceSubscribers =
+                await GetSubscribers(subscribers.Select(p => $"{_configInfo.SubscriberPath}{p.ServiceDescriptor.Id}"));
             if (serviceSubscribers.Count() > 0)
             {
                 foreach (var subscriber in subscribers)
                 {
-                    var serviceSubscriber = serviceSubscribers.Where(p => p.ServiceDescriptor.Id == subscriber.ServiceDescriptor.Id).FirstOrDefault();
+                    var serviceSubscriber = serviceSubscribers
+                        .Where(p => p.ServiceDescriptor.Id == subscriber.ServiceDescriptor.Id).FirstOrDefault();
                     if (serviceSubscriber != null)
                     {
                         subscriber.Address = subscriber.Address.Concat(
@@ -146,19 +154,20 @@ namespace KissU.Core.Consul
                     }
                 }
             }
+
             await base.SetSubscribersAsync(subscribers);
         }
 
         private async Task<ServiceSubscriber> GetSubscriber(byte[] data)
         {
-            if (_logger.IsEnabled(Microsoft.Extensions.Logging.LogLevel.Debug))
+            if (_logger.IsEnabled(LogLevel.Debug))
                 _logger.LogDebug($"准备转换服务订阅者，配置内容：{Encoding.UTF8.GetString(data)}。");
 
             if (data == null)
                 return null;
 
             var descriptor = _serializer.Deserialize<byte[], ServiceSubscriberDescriptor>(data);
-            return (await _serviceSubscriberFactory.CreateServiceSubscribersAsync(new[] { descriptor })).First();
+            return (await _serviceSubscriberFactory.CreateServiceSubscribersAsync(new[] {descriptor})).First();
         }
 
         private async Task EnterSubscribers()
@@ -174,7 +183,7 @@ namespace KissU.Core.Consul
             }
             else
             {
-                if (_logger.IsEnabled(Microsoft.Extensions.Logging.LogLevel.Warning))
+                if (_logger.IsEnabled(LogLevel.Warning))
                     _logger.LogWarning($"无法获取订阅者信息，因为节点：{_configInfo.SubscriberPath}，不存在。");
                 _subscribers = new ServiceSubscriber[0];
             }
@@ -187,12 +196,13 @@ namespace KissU.Core.Consul
             var queryResult = await client.KV.Keys(path);
             if (queryResult.Response != null)
             {
-                var data = (await client.GetDataAsync(path));
+                var data = await client.GetDataAsync(path);
                 if (data != null)
                 {
                     result = await GetSubscriber(data);
                 }
             }
+
             return result;
         }
 
@@ -202,13 +212,14 @@ namespace KissU.Core.Consul
             var subscribers = new List<ServiceSubscriber>(childrens.Count());
             foreach (var children in childrens)
             {
-                if (_logger.IsEnabled(Microsoft.Extensions.Logging.LogLevel.Debug))
+                if (_logger.IsEnabled(LogLevel.Debug))
                     _logger.LogDebug($"准备从节点：{children}中获取订阅者信息。");
 
                 var subscriber = await GetSubscriber(children);
                 if (subscriber != null)
                     subscribers.Add(subscriber);
             }
+
             return subscribers.ToArray();
         }
     }

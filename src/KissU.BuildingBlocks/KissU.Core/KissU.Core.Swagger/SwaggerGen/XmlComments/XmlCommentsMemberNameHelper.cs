@@ -29,7 +29,7 @@ namespace KissU.Core.Swagger.SwaggerGen.XmlComments
                 {
                     return p.ParameterType.IsGenericParameter
                         ? $"`{p.ParameterType.GenericParameterPosition}"
-                        : QualifiedNameFor(p.ParameterType, expandGenericArgs: true);
+                        : QualifiedNameFor(p.ParameterType, true);
                 });
                 builder.Append($"({string.Join(",", parametersNames)})");
             }
@@ -57,7 +57,7 @@ namespace KissU.Core.Swagger.SwaggerGen.XmlComments
         /// <returns>System.String.</returns>
         public static string GetMemberNameForMember(MemberInfo memberInfo)
         {
-            var builder = new StringBuilder(((memberInfo.MemberType & MemberTypes.Field) != 0) ? "F:" : "P:");
+            var builder = new StringBuilder((memberInfo.MemberType & MemberTypes.Field) != 0 ? "F:" : "P:");
             builder.Append(QualifiedNameFor(memberInfo.DeclaringType));
             builder.Append($".{memberInfo.Name}");
 

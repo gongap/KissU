@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Concurrent;
+﻿using System.Collections.Concurrent;
 using System.Threading.Tasks;
 using KissU.Core.CPlatform;
 using KissU.Core.Protocol.Mqtt.Internal.Messages;
@@ -12,18 +11,20 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
     /// Implements the <see cref="KissU.Core.Protocol.Mqtt.Internal.Services.IWillService" />
     /// </summary>
     /// <seealso cref="KissU.Core.Protocol.Mqtt.Internal.Services.IWillService" />
-    public class WillService: IWillService
+    public class WillService : IWillService
     {
-        private  ConcurrentDictionary<String, MqttWillMessage> willMeaasges = new ConcurrentDictionary<String, MqttWillMessage>();
         private readonly ILogger<WillService> _logger;
         private readonly CPlatformContainer _serviceProvider;
 
+        private readonly ConcurrentDictionary<string, MqttWillMessage> willMeaasges =
+            new ConcurrentDictionary<string, MqttWillMessage>();
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="WillService"/> class.
+        /// Initializes a new instance of the <see cref="WillService" /> class.
         /// </summary>
         /// <param name="logger">The logger.</param>
         /// <param name="serviceProvider">The service provider.</param>
-        public WillService(ILogger<WillService> logger,  CPlatformContainer serviceProvider)
+        public WillService(ILogger<WillService> logger, CPlatformContainer serviceProvider)
         {
             _logger = logger;
             _serviceProvider = serviceProvider;
@@ -36,7 +37,7 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
         /// <param name="willMessage">The will message.</param>
         public void Add(string deviceid, MqttWillMessage willMessage)
         {
-            willMeaasges.AddOrUpdate(deviceid, willMessage,(id,message)=>willMessage); 
+            willMeaasges.AddOrUpdate(deviceid, willMessage, (id, message) => willMessage);
         }
 
         /// <summary>
@@ -47,16 +48,15 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
         {
             if (!string.IsNullOrEmpty(deviceId))
             {
-                willMeaasges.TryGetValue(deviceId, out MqttWillMessage willMessage);
+                willMeaasges.TryGetValue(deviceId, out var willMessage);
                 if (willMeaasges != null)
                 {
-                   await _serviceProvider.GetInstances<IChannelService>().SendWillMsg(willMessage);
+                    await _serviceProvider.GetInstances<IChannelService>().SendWillMsg(willMessage);
                     if (!willMessage.WillRetain)
                     {
                         Remove(deviceId);
                         if (_logger.IsEnabled(LogLevel.Information))
                             _logger.LogInformation($"deviceId:{deviceId} 的遗嘱消息[" + willMessage.WillMessage + "] 已经被删除");
-
                     }
                 }
             }
@@ -68,7 +68,7 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
         /// <param name="deviceid">The deviceid.</param>
         public void Remove(string deviceid)
         {
-            willMeaasges.TryRemove(deviceid,out MqttWillMessage message);
+            willMeaasges.TryRemove(deviceid, out var message);
         }
     }
 }

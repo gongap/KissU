@@ -9,7 +9,7 @@ namespace KissU.Core.Swagger.Swagger.Model
     public class SwaggerDocument
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SwaggerDocument"/> class.
+        /// Initializes a new instance of the <see cref="SwaggerDocument" /> class.
         /// </summary>
         public SwaggerDocument()
         {
@@ -19,10 +19,7 @@ namespace KissU.Core.Swagger.Swagger.Model
         /// <summary>
         /// Gets the swagger.
         /// </summary>
-        public string Swagger
-        {
-            get { return "2.0"; }
-        }
+        public string Swagger => "2.0";
 
         /// <summary>
         /// Gets or sets the information.
@@ -98,7 +95,7 @@ namespace KissU.Core.Swagger.Swagger.Model
         /// Gets the extensions.
         /// </summary>
         [JsonExtensionData]
-        public Dictionary<string, object> Extensions { get; private set; }
+        public Dictionary<string, object> Extensions { get; }
     }
 
     /// <summary>
@@ -160,7 +157,7 @@ namespace KissU.Core.Swagger.Swagger.Model
     public class Info
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Info"/> class.
+        /// Initializes a new instance of the <see cref="Info" /> class.
         /// </summary>
         public Info()
         {
@@ -201,7 +198,7 @@ namespace KissU.Core.Swagger.Swagger.Model
         /// Gets the extensions.
         /// </summary>
         [JsonExtensionData]
-        public Dictionary<string, object> Extensions { get; private set; }
+        public Dictionary<string, object> Extensions { get; }
     }
 
     /// <summary>
@@ -247,7 +244,7 @@ namespace KissU.Core.Swagger.Swagger.Model
     public class PathItem
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PathItem"/> class.
+        /// Initializes a new instance of the <see cref="PathItem" /> class.
         /// </summary>
         public PathItem()
         {
@@ -304,7 +301,7 @@ namespace KissU.Core.Swagger.Swagger.Model
         /// Gets the extensions.
         /// </summary>
         [JsonExtensionData]
-        public Dictionary<string, object> Extensions { get; private set; }
+        public Dictionary<string, object> Extensions { get; }
     }
 
     /// <summary>
@@ -313,7 +310,7 @@ namespace KissU.Core.Swagger.Swagger.Model
     public class Operation
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Operation"/> class.
+        /// Initializes a new instance of the <see cref="Operation" /> class.
         /// </summary>
         public Operation()
         {
@@ -371,7 +368,7 @@ namespace KissU.Core.Swagger.Swagger.Model
         public IList<string> Schemes { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="Operation"/> is deprecated.
+        /// Gets or sets a value indicating whether this <see cref="Operation" /> is deprecated.
         /// </summary>
         public bool? Deprecated { get; set; }
 
@@ -384,7 +381,7 @@ namespace KissU.Core.Swagger.Swagger.Model
         /// Gets the extensions.
         /// </summary>
         [JsonExtensionData]
-        public Dictionary<string, object> Extensions { get; private set; }
+        public Dictionary<string, object> Extensions { get; }
     }
 
     /// <summary>
@@ -393,7 +390,7 @@ namespace KissU.Core.Swagger.Swagger.Model
     public class Tag
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Tag"/> class.
+        /// Initializes a new instance of the <see cref="Tag" /> class.
         /// </summary>
         public Tag()
         {
@@ -419,7 +416,7 @@ namespace KissU.Core.Swagger.Swagger.Model
         /// Gets the extensions.
         /// </summary>
         [JsonExtensionData]
-        public Dictionary<string, object> Extensions { get; private set; }
+        public Dictionary<string, object> Extensions { get; }
     }
 
     /// <summary>
@@ -460,7 +457,7 @@ namespace KissU.Core.Swagger.Swagger.Model
         string Description { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="IParameter"/> is required.
+        /// Gets or sets a value indicating whether this <see cref="IParameter" /> is required.
         /// </summary>
         bool Required { get; set; }
 
@@ -478,13 +475,18 @@ namespace KissU.Core.Swagger.Swagger.Model
     public class BodyParameter : IParameter
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="BodyParameter"/> class.
+        /// Initializes a new instance of the <see cref="BodyParameter" /> class.
         /// </summary>
         public BodyParameter()
         {
             In = "body";
             Extensions = new Dictionary<string, object>();
         }
+
+        /// <summary>
+        /// Gets or sets the schema.
+        /// </summary>
+        public Schema Schema { get; set; }
 
         /// <summary>
         /// Gets or sets the name.
@@ -502,7 +504,7 @@ namespace KissU.Core.Swagger.Swagger.Model
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="BodyParameter"/> is required.
+        /// Gets or sets a value indicating whether this <see cref="BodyParameter" /> is required.
         /// </summary>
         public bool Required { get; set; }
 
@@ -510,12 +512,7 @@ namespace KissU.Core.Swagger.Swagger.Model
         /// Gets the extensions.
         /// </summary>
         [JsonExtensionData]
-        public Dictionary<string, object> Extensions { get; private set; }
-
-        /// <summary>
-        /// Gets or sets the schema.
-        /// </summary>
-        public Schema Schema { get; set; }
+        public Dictionary<string, object> Extensions { get; }
     }
 
     /// <summary>
@@ -543,7 +540,7 @@ namespace KissU.Core.Swagger.Swagger.Model
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="NonBodyParameter"/> is required.
+        /// Gets or sets a value indicating whether this <see cref="NonBodyParameter" /> is required.
         /// </summary>
         public bool Required { get; set; }
     }
@@ -554,7 +551,7 @@ namespace KissU.Core.Swagger.Swagger.Model
     public class Schema
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Schema"/> class.
+        /// Initializes a new instance of the <see cref="Schema" /> class.
         /// </summary>
         public Schema()
         {
@@ -716,7 +713,7 @@ namespace KissU.Core.Swagger.Swagger.Model
         /// Gets the extensions.
         /// </summary>
         [JsonExtensionData]
-        public Dictionary<string, object> Extensions { get; private set; }
+        public Dictionary<string, object> Extensions { get; }
     }
 
     /// <summary>
@@ -725,7 +722,7 @@ namespace KissU.Core.Swagger.Swagger.Model
     public class PartialSchema
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PartialSchema"/> class.
+        /// Initializes a new instance of the <see cref="PartialSchema" /> class.
         /// </summary>
         public PartialSchema()
         {
@@ -821,7 +818,7 @@ namespace KissU.Core.Swagger.Swagger.Model
         /// Gets the extensions.
         /// </summary>
         [JsonExtensionData]
-        public Dictionary<string, object> Extensions { get; private set; }
+        public Dictionary<string, object> Extensions { get; }
     }
 
     /// <summary>
@@ -830,7 +827,7 @@ namespace KissU.Core.Swagger.Swagger.Model
     public class Response
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Response"/> class.
+        /// Initializes a new instance of the <see cref="Response" /> class.
         /// </summary>
         public Response()
         {
@@ -861,7 +858,7 @@ namespace KissU.Core.Swagger.Swagger.Model
         /// Gets the extensions.
         /// </summary>
         [JsonExtensionData]
-        public Dictionary<string, object> Extensions { get; private set; }
+        public Dictionary<string, object> Extensions { get; }
     }
 
     /// <summary>
@@ -898,12 +895,12 @@ namespace KissU.Core.Swagger.Swagger.Model
         public string Prefix { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="Xml"/> is attribute.
+        /// Gets or sets a value indicating whether this <see cref="Xml" /> is attribute.
         /// </summary>
         public bool? Attribute { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="Xml"/> is wrapped.
+        /// Gets or sets a value indicating whether this <see cref="Xml" /> is wrapped.
         /// </summary>
         public bool? Wrapped { get; set; }
     }

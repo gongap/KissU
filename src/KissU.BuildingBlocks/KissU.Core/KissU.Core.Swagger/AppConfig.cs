@@ -10,17 +10,11 @@ namespace KissU.Core.Swagger
         /// <summary>
         /// Gets the swagger options.
         /// </summary>
-        public static Info SwaggerOptions
-        {
-            get; internal set;
-        }
+        public static Info SwaggerOptions { get; internal set; }
 
         /// <summary>
         /// Gets the swagger configuration.
         /// </summary>
-        public static DocumentConfiguration SwaggerConfig
-        {
-            get; internal set;
-        }
+        public static DocumentConfiguration SwaggerConfig { get; internal set; }
     }
 }

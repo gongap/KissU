@@ -8,7 +8,6 @@ using KissU.Core.CPlatform.EventBus.Implementation;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Polly;
-using Polly.Retry;
 
 namespace KissU.Core.EventBusKafka.Implementation
 {
@@ -21,15 +20,10 @@ namespace KissU.Core.EventBusKafka.Implementation
     /// <seealso cref="System.IDisposable" />
     public class EventBusKafka : IEventBus, IDisposable
     {
-        private readonly ILogger<EventBusKafka> _logger;
-        private readonly IEventBusSubscriptionsManager _subsManager;
-        private readonly IKafkaPersisterConnection _producerConnection;
         private readonly IKafkaPersisterConnection _consumerConnection;
-
-        /// <summary>
-        /// Occurs when [on shutdown].
-        /// </summary>
-        public event EventHandler OnShutdown;
+        private readonly ILogger<EventBusKafka> _logger;
+        private readonly IKafkaPersisterConnection _producerConnection;
+        private readonly IEventBusSubscriptionsManager _subsManager;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EventBusKafka" /> class.
@@ -37,32 +31,17 @@ namespace KissU.Core.EventBusKafka.Implementation
         /// <param name="logger">The logger.</param>
         /// <param name="subsManager">The subs manager.</param>
         /// <param name="serviceProvider">The service provider.</param>
-        public EventBusKafka( ILogger<EventBusKafka> logger,
+        public EventBusKafka(ILogger<EventBusKafka> logger,
             IEventBusSubscriptionsManager subsManager,
             CPlatformContainer serviceProvider)
-        { 
-            this._logger = logger;
-            this._producerConnection = serviceProvider.GetInstances<IKafkaPersisterConnection>(KafkaConnectionType.Producer.ToString());
-            this._consumerConnection = serviceProvider.GetInstances<IKafkaPersisterConnection>(KafkaConnectionType.Consumer.ToString());
+        {
+            _logger = logger;
+            _producerConnection =
+                serviceProvider.GetInstances<IKafkaPersisterConnection>(KafkaConnectionType.Producer.ToString());
+            _consumerConnection =
+                serviceProvider.GetInstances<IKafkaPersisterConnection>(KafkaConnectionType.Consumer.ToString());
             _subsManager = subsManager;
             _subsManager.OnEventRemoved += SubsManager_OnEventRemoved;
-        }
-
-        private void SubsManager_OnEventRemoved(object sender, ValueTuple<string,string> tuple)
-        {
-            if (!_consumerConnection.IsConnected)
-            {
-                _consumerConnection.TryConnect();
-            }
-
-            using (var channel = _consumerConnection.CreateConnect() as Consumer<Null, string>)
-            {
-                channel.Unsubscribe();
-                if (_subsManager.IsEmpty)
-                { 
-                    _consumerConnection.Dispose();
-                }
-            }
         }
 
         /// <summary>
@@ -75,6 +54,11 @@ namespace KissU.Core.EventBusKafka.Implementation
         }
 
         /// <summary>
+        /// Occurs when [on shutdown].
+        /// </summary>
+        public event EventHandler OnShutdown;
+
+        /// <summary>
         /// Publishes the specified event.
         /// </summary>
         /// <param name="event">The event.</param>
@@ -84,20 +68,16 @@ namespace KissU.Core.EventBusKafka.Implementation
             {
                 _producerConnection.TryConnect();
             }
+
             var eventName = @event.GetType()
-                   .Name;
+                .Name;
             var body = JsonConvert.SerializeObject(@event);
-            var policy = RetryPolicy.Handle<KafkaException>()
-               .WaitAndRetry(5, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), (ex, time) =>
-               {
-                   _logger.LogWarning(ex.ToString());
-               });
+            var policy = Policy.Handle<KafkaException>()
+                .WaitAndRetry(5, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)),
+                    (ex, time) => { _logger.LogWarning(ex.ToString()); });
 
             var conn = _producerConnection.CreateConnect() as Producer<Null, string>;
-            policy.Execute(() =>
-           {
-               conn.ProduceAsync(eventName, null, body).GetAwaiter().GetResult();
-           });
+            policy.Execute(() => { conn.ProduceAsync(eventName, null, body).GetAwaiter().GetResult(); });
         }
 
         /// <summary>
@@ -116,6 +96,7 @@ namespace KissU.Core.EventBusKafka.Implementation
                 channel.OnMessage += ConsumerClient_OnMessage;
                 channel.Subscribe(eventName);
             }
+
             _subsManager.AddSubscription<T, TH>(handler, null);
         }
 
@@ -128,12 +109,29 @@ namespace KissU.Core.EventBusKafka.Implementation
         {
             _subsManager.RemoveSubscription<T, TH>();
         }
-        
+
+        private void SubsManager_OnEventRemoved(object sender, ValueTuple<string, string> tuple)
+        {
+            if (!_consumerConnection.IsConnected)
+            {
+                _consumerConnection.TryConnect();
+            }
+
+            using (var channel = _consumerConnection.CreateConnect() as Consumer<Null, string>)
+            {
+                channel.Unsubscribe();
+                if (_subsManager.IsEmpty)
+                {
+                    _consumerConnection.Dispose();
+                }
+            }
+        }
+
         private void ConsumerClient_OnMessage(object sender, Message<Null, string> e)
         {
             ProcessEvent(e.Topic, e.Value).Wait();
         }
-        
+
         private async Task ProcessEvent(string eventName, string message)
         {
             if (_subsManager.HasSubscriptionsForEvent(eventName))
@@ -148,7 +146,7 @@ namespace KissU.Core.EventBusKafka.Implementation
                     {
                         var handler = handlerfactory.DynamicInvoke();
                         var concreteType = typeof(IIntegrationEventHandler<>).MakeGenericType(eventType);
-                        await (Task)concreteType.GetMethod("Handle").Invoke(handler, new object[] { integrationEvent });
+                        await (Task) concreteType.GetMethod("Handle").Invoke(handler, new[] {integrationEvent});
                     }
                     catch
                     {

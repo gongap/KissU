@@ -14,21 +14,21 @@ namespace KissU.Core.Protocol.Mqtt
     /// <seealso cref="KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceHostAbstract" />
     public class MqttServiceHost : ServiceHostAbstract
     {
-        #region Field
-
-        private readonly Func<EndPoint, Task<IMessageListener>> _messageListenerFactory;
-        private IMessageListener _serverMessageListener;
-
-        #endregion Field
-
         /// <summary>
-        /// Initializes a new instance of the <see cref="MqttServiceHost"/> class.
+        /// Initializes a new instance of the <see cref="MqttServiceHost" /> class.
         /// </summary>
         /// <param name="messageListenerFactory">The message listener factory.</param>
         public MqttServiceHost(Func<EndPoint, Task<IMessageListener>> messageListenerFactory) : base(null)
         {
             _messageListenerFactory = messageListenerFactory;
         }
+
+        #region Field
+
+        private readonly Func<EndPoint, Task<IMessageListener>> _messageListenerFactory;
+        private IMessageListener _serverMessageListener;
+
+        #endregion Field
 
         #region Overrides of ServiceHostAbstract
 
@@ -50,7 +50,6 @@ namespace KissU.Core.Protocol.Mqtt
             if (_serverMessageListener != null)
                 return;
             _serverMessageListener = await _messageListenerFactory(endPoint);
-
         }
 
         /// <summary>
@@ -62,7 +61,9 @@ namespace KissU.Core.Protocol.Mqtt
         {
             if (_serverMessageListener != null)
                 return;
-            _serverMessageListener = await _messageListenerFactory(new IPEndPoint(IPAddress.Parse(ip), AppConfig.ServerOptions.Ports.MQTTPort));
+            _serverMessageListener =
+                await _messageListenerFactory(new IPEndPoint(IPAddress.Parse(ip),
+                    AppConfig.ServerOptions.Ports.MQTTPort));
         }
 
         #endregion Overrides of ServiceHostAbstract

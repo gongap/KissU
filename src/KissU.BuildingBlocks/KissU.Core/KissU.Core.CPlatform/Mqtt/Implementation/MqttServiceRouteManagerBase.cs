@@ -144,9 +144,9 @@ namespace KissU.Core.CPlatform.Mqtt.Implementation
                 AddressDescriptors = route.MqttEndpoint?.Select(address => new MqttEndpointDescriptor
                 {
                     Type = address.GetType().FullName,
-                    Value = _serializer.Serialize(address),
+                    Value = _serializer.Serialize(address)
                 }) ?? Enumerable.Empty<MqttEndpointDescriptor>(),
-                MqttDescriptor = route.MqttDescriptor,
+                MqttDescriptor = route.MqttDescriptor
             });
             return SetRoutesAsync(descriptors);
         }

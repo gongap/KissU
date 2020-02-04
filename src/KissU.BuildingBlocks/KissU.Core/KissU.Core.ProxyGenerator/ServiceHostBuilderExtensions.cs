@@ -19,9 +19,9 @@ namespace KissU.Core.ProxyGenerator
             return hostBuilder.MapServices(mapper =>
             {
                 mapper.Resolve<IServiceEngineLifetime>().ServiceEngineStarted.Register(() =>
-                 {
-                     mapper.Resolve<IServiceProxyFactory>();
-                 }); 
+                {
+                    mapper.Resolve<IServiceProxyFactory>();
+                });
             });
         }
     }

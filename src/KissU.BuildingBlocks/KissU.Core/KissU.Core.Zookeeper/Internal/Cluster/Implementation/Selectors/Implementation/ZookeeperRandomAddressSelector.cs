@@ -8,11 +8,32 @@ namespace KissU.Core.Zookeeper.Internal.Cluster.Implementation.Selectors.Impleme
 {
     /// <summary>
     /// ZookeeperRandomAddressSelector.
-    /// Implements the <see cref="KissU.Core.Zookeeper.Internal.Cluster.Implementation.Selectors.Implementation.ZookeeperAddressSelectorBase" />
+    /// Implements the
+    /// <see
+    ///     cref="KissU.Core.Zookeeper.Internal.Cluster.Implementation.Selectors.Implementation.ZookeeperAddressSelectorBase" />
     /// </summary>
-    /// <seealso cref="KissU.Core.Zookeeper.Internal.Cluster.Implementation.Selectors.Implementation.ZookeeperAddressSelectorBase" />
+    /// <seealso
+    ///     cref="KissU.Core.Zookeeper.Internal.Cluster.Implementation.Selectors.Implementation.ZookeeperAddressSelectorBase" />
     public class ZookeeperRandomAddressSelector : ZookeeperAddressSelectorBase
     {
+        #region Overrides of AddressSelectorBase
+
+        /// <summary>
+        /// 选择一个地址。
+        /// </summary>
+        /// <param name="context">地址选择上下文。</param>
+        /// <returns>地址模型。</returns>
+        protected override ValueTask<AddressModel> SelectAsync(AddressSelectContext context)
+        {
+            var address = context.Address.ToArray();
+            var length = address.Length;
+
+            var index = _generate(0, length);
+            return new ValueTask<AddressModel>(address[index]);
+        }
+
+        #endregion Overrides of AddressSelectorBase
+
         #region Field
 
         private readonly Func<int, int, int> _generate;
@@ -44,24 +65,5 @@ namespace KissU.Core.Zookeeper.Internal.Cluster.Implementation.Selectors.Impleme
         }
 
         #endregion Constructor
-
-        #region Overrides of AddressSelectorBase
-
-        /// <summary>
-        /// 选择一个地址。
-        /// </summary>
-        /// <param name="context">地址选择上下文。</param>
-        /// <returns>地址模型。</returns>
-        protected override ValueTask<AddressModel> SelectAsync(AddressSelectContext context)
-        {
-            var address = context.Address.ToArray();
-            var length = address.Length;
-
-            var index = _generate(0, length);
-            return new ValueTask<AddressModel>(address[index]);
-        }
-
-        #endregion Overrides of AddressSelectorBase
     }
 }
-

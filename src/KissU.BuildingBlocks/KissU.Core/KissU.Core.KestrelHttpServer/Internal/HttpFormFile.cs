@@ -6,19 +6,20 @@
     public class HttpFormFile
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="HttpFormFile"/> class.
+        /// Initializes a new instance of the <see cref="HttpFormFile" /> class.
         /// </summary>
         /// <param name="length">The length.</param>
         /// <param name="name">The name.</param>
         /// <param name="fileName">Name of the file.</param>
         /// <param name="file">The file.</param>
-        public HttpFormFile(long length, string name, string fileName,byte[] file)
+        public HttpFormFile(long length, string name, string fileName, byte[] file)
         {
             Length = length;
             Name = name;
             FileName = fileName;
             File = file;
         }
+
         /// <summary>
         /// Gets the length.
         /// </summary>
@@ -37,6 +38,6 @@
         /// <summary>
         /// Gets the file.
         /// </summary>
-        public byte[] File { get; } 
+        public byte[] File { get; }
     }
 }

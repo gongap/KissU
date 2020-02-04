@@ -22,7 +22,7 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Runtime
         /// <param name="topic">The topic.</param>
         /// <param name="addressModel">The address model.</param>
         /// <returns>Task.</returns>
-        Task CancellationReg(string topic,AddressModel addressModel);
+        Task CancellationReg(string topic, AddressModel addressModel);
 
         /// <summary>
         /// Registers the specified topic.

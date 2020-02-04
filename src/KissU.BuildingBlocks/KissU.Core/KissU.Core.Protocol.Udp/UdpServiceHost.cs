@@ -13,24 +13,25 @@ namespace KissU.Core.Protocol.Udp
     /// Implements the <see cref="KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceHostAbstract" />
     /// </summary>
     /// <seealso cref="KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceHostAbstract" />
-    class UdpServiceHost : ServiceHostAbstract
+    internal class UdpServiceHost : ServiceHostAbstract
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UdpServiceHost" /> class.
+        /// </summary>
+        /// <param name="messageListenerFactory">The message listener factory.</param>
+        /// <param name="serviceExecutor">The service executor.</param>
+        public UdpServiceHost(Func<EndPoint, Task<IMessageListener>> messageListenerFactory,
+            IServiceExecutor serviceExecutor) : base(serviceExecutor)
+        {
+            _messageListenerFactory = messageListenerFactory;
+        }
+
         #region Field
 
         private readonly Func<EndPoint, Task<IMessageListener>> _messageListenerFactory;
         private IMessageListener _serverMessageListener;
 
         #endregion Field
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="UdpServiceHost"/> class.
-        /// </summary>
-        /// <param name="messageListenerFactory">The message listener factory.</param>
-        /// <param name="serviceExecutor">The service executor.</param>
-        public UdpServiceHost(Func<EndPoint, Task<IMessageListener>> messageListenerFactory, IServiceExecutor serviceExecutor) : base(serviceExecutor)
-        {
-            _messageListenerFactory = messageListenerFactory;
-        }
 
         #region Overrides of ServiceHostAbstract
 
@@ -54,10 +55,7 @@ namespace KissU.Core.Protocol.Udp
             _serverMessageListener = await _messageListenerFactory(endPoint);
             _serverMessageListener.Received += async (sender, message) =>
             {
-                await Task.Run(() =>
-                {
-                    MessageListener.OnReceived(sender, message);
-                });
+                await Task.Run(() => { MessageListener.OnReceived(sender, message); });
             };
         }
 
@@ -70,13 +68,12 @@ namespace KissU.Core.Protocol.Udp
         {
             if (_serverMessageListener != null)
                 return;
-            _serverMessageListener = await _messageListenerFactory(new IPEndPoint(IPAddress.Parse(ip), AppConfig.ServerOptions.Ports.UdpPort));
+            _serverMessageListener =
+                await _messageListenerFactory(
+                    new IPEndPoint(IPAddress.Parse(ip), AppConfig.ServerOptions.Ports.UdpPort));
             _serverMessageListener.Received += async (sender, message) =>
             {
-                await Task.Run(() =>
-                {
-                    MessageListener.OnReceived(sender, message);
-                });
+                await Task.Run(() => { MessageListener.OnReceived(sender, message); });
             };
         }
 

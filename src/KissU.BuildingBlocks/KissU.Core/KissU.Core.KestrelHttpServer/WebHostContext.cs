@@ -11,7 +11,7 @@ namespace KissU.Core.KestrelHttpServer
     public class WebHostContext
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="WebHostContext"/> class.
+        /// Initializes a new instance of the <see cref="WebHostContext" /> class.
         /// </summary>
         /// <param name="context">The context.</param>
         /// <param name="options">The options.</param>
@@ -37,6 +37,5 @@ namespace KissU.Core.KestrelHttpServer
         /// Gets the address.
         /// </summary>
         public IPAddress Address { get; }
-
     }
 }

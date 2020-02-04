@@ -16,21 +16,14 @@ namespace KissU.Core.DNS
     /// <seealso cref="KissU.Core.CPlatform.Runtime.Server.IServiceExecutor" />
     public class DnsServiceExecutor : IServiceExecutor
     {
-        #region Field
-
-        private readonly IDnsServiceEntryProvider _dnsServiceEntryProvider;
-        private readonly ILogger<DnsServiceExecutor> _logger;
-
-        #endregion Field
-
         #region Constructor
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DnsServiceExecutor"/> class.
+        /// Initializes a new instance of the <see cref="DnsServiceExecutor" /> class.
         /// </summary>
         /// <param name="dnsServiceEntryProvider">The DNS service entry provider.</param>
         /// <param name="logger">The logger.</param>
-        public DnsServiceExecutor(IDnsServiceEntryProvider dnsServiceEntryProvider, 
+        public DnsServiceExecutor(IDnsServiceEntryProvider dnsServiceEntryProvider,
             ILogger<DnsServiceExecutor> logger)
         {
             _dnsServiceEntryProvider = dnsServiceEntryProvider;
@@ -63,11 +56,12 @@ namespace KissU.Core.DNS
                 _logger.LogError(exception, "将接收到的消息反序列化成 TransportMessage<DnsTransportMessage> 时发送了错误。");
                 return;
             }
+
             var entry = _dnsServiceEntryProvider.GetEntry();
             if (entry == null)
             {
                 if (_logger.IsEnabled(LogLevel.Error))
-                    _logger.LogError($"未实现DnsBehavior实例。");
+                    _logger.LogError("未实现DnsBehavior实例。");
                 return;
             }
 
@@ -77,22 +71,29 @@ namespace KissU.Core.DNS
 
         #endregion Implementation of IServiceExecutor
 
+        #region Field
+
+        private readonly IDnsServiceEntryProvider _dnsServiceEntryProvider;
+        private readonly ILogger<DnsServiceExecutor> _logger;
+
+        #endregion Field
+
         #region Private Method
 
-    
         private async Task<DnsTransportMessage> LocalExecuteAsync(DnsServiceEntry entry, DnsTransportMessage message)
         {
-            HttpResultMessage<object> resultMessage = new HttpResultMessage<object>();
+            var resultMessage = new HttpResultMessage<object>();
             try
             {
                 var dnsQuestion = message.DnsQuestion;
-                message.Address= await entry.Behavior.DomainResolve(dnsQuestion.Name);
+                message.Address = await entry.Behavior.DomainResolve(dnsQuestion.Name);
             }
             catch (Exception exception)
             {
                 if (_logger.IsEnabled(LogLevel.Error))
                     _logger.LogError(exception, "执行本地逻辑时候发生了错误。");
             }
+
             return message;
         }
 

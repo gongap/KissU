@@ -24,4 +24,4 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Runtime
         [Command(ShuntStrategy = AddressSelectorMode.HashAlgorithm)]
         Task Publish(string deviceId, MqttWillMessage message);
     }
-} 
+}

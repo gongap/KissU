@@ -16,7 +16,7 @@ namespace KissU.Core.DotNetty
         private readonly ITransportMessageEncoder _transportMessageEncoder;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DotNettyMessageSender"/> class.
+        /// Initializes a new instance of the <see cref="DotNettyMessageSender" /> class.
         /// </summary>
         /// <param name="transportMessageEncoder">The transport message encoder.</param>
         protected DotNettyMessageSender(ITransportMessageEncoder transportMessageEncoder)
@@ -45,11 +45,12 @@ namespace KissU.Core.DotNetty
         private readonly IChannel _channel;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DotNettyMessageClientSender"/> class.
+        /// Initializes a new instance of the <see cref="DotNettyMessageClientSender" /> class.
         /// </summary>
         /// <param name="transportMessageEncoder">The transport message encoder.</param>
         /// <param name="channel">The channel.</param>
-        public DotNettyMessageClientSender(ITransportMessageEncoder transportMessageEncoder, IChannel channel) : base(transportMessageEncoder)
+        public DotNettyMessageClientSender(ITransportMessageEncoder transportMessageEncoder, IChannel channel) : base(
+            transportMessageEncoder)
         {
             _channel = channel;
         }
@@ -61,10 +62,7 @@ namespace KissU.Core.DotNetty
         /// </summary>
         public void Dispose()
         {
-            Task.Run(async () =>
-            {
-                await _channel.DisconnectAsync();
-            }).Wait();
+            Task.Run(async () => { await _channel.DisconnectAsync(); }).Wait();
         }
 
         #endregion Implementation of IDisposable
@@ -104,11 +102,12 @@ namespace KissU.Core.DotNetty
         private readonly IChannelHandlerContext _context;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DotNettyServerMessageSender"/> class.
+        /// Initializes a new instance of the <see cref="DotNettyServerMessageSender" /> class.
         /// </summary>
         /// <param name="transportMessageEncoder">The transport message encoder.</param>
         /// <param name="context">The context.</param>
-        public DotNettyServerMessageSender(ITransportMessageEncoder transportMessageEncoder, IChannelHandlerContext context) : base(transportMessageEncoder)
+        public DotNettyServerMessageSender(ITransportMessageEncoder transportMessageEncoder,
+            IChannelHandlerContext context) : base(transportMessageEncoder)
         {
             _context = context;
         }

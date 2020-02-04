@@ -33,7 +33,7 @@ namespace KissU.Core.CPlatform.Mqtt
             return new MqttEndpointDescriptor
             {
                 Type = typeof(T).FullName,
-                Value = serializer.Serialize(address),
+                Value = serializer.Serialize(address)
             };
         }
     }

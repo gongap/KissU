@@ -35,10 +35,10 @@ namespace KissU.Core.DotNettyWSServer
             builder.Register(provider =>
             {
                 return new DefaultWSServiceEntryProvider(
-                       provider.Resolve<IServiceEntryProvider>(),
+                    provider.Resolve<IServiceEntryProvider>(),
                     provider.Resolve<ILogger<DefaultWSServiceEntryProvider>>(),
-                      provider.Resolve<CPlatformContainer>()
-                      );
+                    provider.Resolve<CPlatformContainer>()
+                );
             }).As(typeof(IWSServiceEntryProvider)).SingleInstance();
             if (AppConfig.ServerOptions.Protocol == CommunicationProtocol.WS)
             {
@@ -52,13 +52,12 @@ namespace KissU.Core.DotNettyWSServer
 
         private static void RegisterDefaultProtocol(ContainerBuilderWrapper builder)
         {
-
             builder.Register(provider =>
             {
                 return new DotNettyWSMessageListener(
                     provider.Resolve<ILogger<DotNettyWSMessageListener>>(),
-                              provider.Resolve<IWSServiceEntryProvider>()
-                      );
+                    provider.Resolve<IWSServiceEntryProvider>()
+                );
             }).SingleInstance();
             builder.Register(provider =>
             {
@@ -68,7 +67,6 @@ namespace KissU.Core.DotNettyWSServer
                     await messageListener.StartAsync(endPoint);
                     return messageListener;
                 }, null);
-
             }).As<IServiceHost>();
         }
 
@@ -77,8 +75,8 @@ namespace KissU.Core.DotNettyWSServer
             builder.Register(provider =>
             {
                 return new DotNettyWSMessageListener(provider.Resolve<ILogger<DotNettyWSMessageListener>>(),
-                      provider.Resolve<IWSServiceEntryProvider>()
-                      );
+                    provider.Resolve<IWSServiceEntryProvider>()
+                );
             }).SingleInstance();
             builder.Register(provider =>
             {
@@ -88,7 +86,6 @@ namespace KissU.Core.DotNettyWSServer
                     await messageListener.StartAsync(endPoint);
                     return messageListener;
                 });
-
             }).As<IServiceHost>();
         }
     }

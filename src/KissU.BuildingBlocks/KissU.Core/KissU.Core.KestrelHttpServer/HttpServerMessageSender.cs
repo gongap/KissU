@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform;
 using KissU.Core.CPlatform.Diagnostics;
 using KissU.Core.CPlatform.Messages;
 using KissU.Core.CPlatform.Serialization;
@@ -18,14 +19,15 @@ namespace KissU.Core.KestrelHttpServer
     /// <seealso cref="KissU.Core.CPlatform.Transport.IMessageSender" />
     public class HttpServerMessageSender : IMessageSender
     {
-        private readonly ISerializer<string> _serializer;
         private readonly HttpContext _context;
+        private readonly ISerializer<string> _serializer;
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="HttpServerMessageSender"/> class.
+        /// Initializes a new instance of the <see cref="HttpServerMessageSender" /> class.
         /// </summary>
         /// <param name="serializer">The serializer.</param>
         /// <param name="httpContext">The HTTP context.</param>
-        public HttpServerMessageSender(ISerializer<string> serializer,HttpContext httpContext)
+        public HttpServerMessageSender(ISerializer<string> serializer, HttpContext httpContext)
         {
             _serializer = serializer;
             _context = httpContext;
@@ -37,9 +39,9 @@ namespace KissU.Core.KestrelHttpServer
         /// <param name="message">消息内容。</param>
         /// <returns>一个任务。</returns>
         public async Task SendAndFlushAsync(TransportMessage message)
-        { 
-            var httpMessage = message.GetContent<HttpResultMessage<Object>>();
-            var actionResult= httpMessage.Data as IActionResult;
+        {
+            var httpMessage = message.GetContent<HttpResultMessage<object>>();
+            var actionResult = httpMessage.Data as IActionResult;
             WirteDiagnostic(message);
             if (actionResult == null)
             {
@@ -66,35 +68,36 @@ namespace KissU.Core.KestrelHttpServer
         /// <param name="message">The message.</param>
         public async Task SendAsync(TransportMessage message)
         {
-           await this.SendAndFlushAsync(message);
+            await SendAndFlushAsync(message);
         }
 
         private void WirteDiagnostic(TransportMessage message)
         {
-            if (!CPlatform.AppConfig.ServerOptions.DisableDiagnostic)
+            if (!AppConfig.ServerOptions.DisableDiagnostic)
             {
                 var diagnosticListener = new DiagnosticListener(DiagnosticListenerExtensions.DiagnosticListenerName);
                 var remoteInvokeResultMessage = message.GetContent<HttpResultMessage>();
                 if (remoteInvokeResultMessage.IsSucceed)
                 {
-                    diagnosticListener.WriteTransportAfter(TransportType.Rest, new ReceiveEventData(new DiagnosticMessage
-                    {
-                        Content = message.Content,
-                        ContentType = message.ContentType,
-                        Id = message.Id
-                    }));
+                    diagnosticListener.WriteTransportAfter(TransportType.Rest, new ReceiveEventData(
+                        new DiagnosticMessage
+                        {
+                            Content = message.Content,
+                            ContentType = message.ContentType,
+                            Id = message.Id
+                        }));
                 }
                 else
                 {
-                    diagnosticListener.WriteTransportError(TransportType.Rest, new TransportErrorEventData(new DiagnosticMessage
-                    {
-                        Content = message.Content,
-                        ContentType = message.ContentType,
-                        Id = message.Id
-                    }, new Exception(remoteInvokeResultMessage.Message)));
+                    diagnosticListener.WriteTransportError(TransportType.Rest, new TransportErrorEventData(
+                        new DiagnosticMessage
+                        {
+                            Content = message.Content,
+                            ContentType = message.ContentType,
+                            Id = message.Id
+                        }, new Exception(remoteInvokeResultMessage.Message)));
                 }
             }
         }
-          
     }
 }

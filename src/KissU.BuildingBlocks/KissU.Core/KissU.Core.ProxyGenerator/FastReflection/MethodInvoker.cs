@@ -26,22 +26,31 @@ namespace KissU.Core.ProxyGenerator.FastReflection
     /// <seealso cref="KissU.Core.ProxyGenerator.FastReflection.IMethodInvoker" />
     public class MethodInvoker : IMethodInvoker
     {
-        private Func<object, object[], object> m_invoker;
+        private readonly Func<object, object[], object> m_invoker;
 
         /// <summary>
-        /// Gets the method information.
-        /// </summary>
-        public MethodInfo MethodInfo { get; private set; }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MethodInvoker"/> class.
+        /// Initializes a new instance of the <see cref="MethodInvoker" /> class.
         /// </summary>
         /// <param name="methodInfo">The method information.</param>
         public MethodInvoker(MethodInfo methodInfo)
         {
-            this.MethodInfo = methodInfo;
-            this.m_invoker = CreateInvokeDelegate(methodInfo);
+            MethodInfo = methodInfo;
+            m_invoker = CreateInvokeDelegate(methodInfo);
         }
+
+        /// <summary>
+        /// Gets the method information.
+        /// </summary>
+        public MethodInfo MethodInfo { get; }
+
+        #region IMethodInvoker Members
+
+        object IMethodInvoker.Invoke(object instance, params object[] parameters)
+        {
+            return Invoke(instance, parameters);
+        }
+
+        #endregion
 
         /// <summary>
         /// Invokes the specified instance.
@@ -51,7 +60,7 @@ namespace KissU.Core.ProxyGenerator.FastReflection
         /// <returns>System.Object.</returns>
         public object Invoke(object instance, params object[] parameters)
         {
-            return this.m_invoker(instance, parameters);
+            return m_invoker(instance, parameters);
         }
 
         private static Func<object, object[], object> CreateInvokeDelegate(MethodInfo methodInfo)
@@ -65,20 +74,21 @@ namespace KissU.Core.ProxyGenerator.FastReflection
             // build parameter list
             var parameterExpressions = new List<Expression>();
             var paramInfos = methodInfo.GetParameters();
-            for (int i = 0; i < paramInfos.Length; i++)
+            for (var i = 0; i < paramInfos.Length; i++)
             {
                 // (Ti)parameters[i]
-                BinaryExpression valueObj = Expression.ArrayIndex(
+                var valueObj = Expression.ArrayIndex(
                     parametersParameter, Expression.Constant(i));
-                UnaryExpression valueCast = Expression.Convert(
+                var valueCast = Expression.Convert(
                     valueObj, paramInfos[i].ParameterType);
 
                 parameterExpressions.Add(valueCast);
             }
 
             // non-instance for static method, or ((TInstance)instance)
-            var instanceCast = methodInfo.IsStatic ? null :
-                Expression.Convert(instanceParameter, methodInfo.ReflectedType);
+            var instanceCast = methodInfo.IsStatic
+                ? null
+                : Expression.Convert(instanceParameter, methodInfo.ReflectedType);
 
             // static invoke or ((TInstance)instance).Method
             var methodCall = Expression.Call(instanceCast, methodInfo, parameterExpressions);
@@ -87,9 +97,9 @@ namespace KissU.Core.ProxyGenerator.FastReflection
             if (methodCall.Type == typeof(void))
             {
                 var lambda = Expression.Lambda<Action<object, object[]>>(
-                        methodCall, instanceParameter, parametersParameter);
+                    methodCall, instanceParameter, parametersParameter);
 
-                Action<object, object[]> execute = lambda.Compile();
+                var execute = lambda.Compile();
                 return (instance, parameters) =>
                 {
                     execute(instance, parameters);
@@ -105,15 +115,5 @@ namespace KissU.Core.ProxyGenerator.FastReflection
                 return lambda.Compile();
             }
         }
-
-        #region IMethodInvoker Members
-
-        object IMethodInvoker.Invoke(object instance, params object[] parameters)
-        {
-            return this.Invoke(instance, parameters);
-        }
-
-        #endregion
     }
 }
-

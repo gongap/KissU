@@ -11,7 +11,7 @@ namespace KissU.Core.Swagger.Swagger.Application
     public class SwaggerOptions
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SwaggerOptions"/> class.
+        /// Initializes a new instance of the <see cref="SwaggerOptions" /> class.
         /// </summary>
         public SwaggerOptions()
         {
@@ -27,6 +27,6 @@ namespace KissU.Core.Swagger.Swagger.Application
         /// Actions that can be applied SwaggerDocument's before they're serialized to JSON.
         /// Useful for setting metadata that's derived from the current request
         /// </summary>
-        public List<Action<SwaggerDocument, HttpRequest>> PreSerializeFilters { get; private set; }
+        public List<Action<SwaggerDocument, HttpRequest>> PreSerializeFilters { get; }
     }
 }

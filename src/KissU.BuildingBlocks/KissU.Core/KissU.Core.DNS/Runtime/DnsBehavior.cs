@@ -6,8 +6,8 @@ using KissU.Core.CPlatform.EventBus.Events;
 using KissU.Core.CPlatform.EventBus.Implementation;
 using KissU.Core.CPlatform.Ioc;
 using KissU.Core.CPlatform.Module;
+using KissU.Core.CPlatform.Utilities;
 using KissU.Core.ProxyGenerator;
-using ServiceLocator = KissU.Core.CPlatform.Utilities.ServiceLocator;
 
 namespace KissU.Core.DNS.Runtime
 {
@@ -70,8 +70,7 @@ namespace KissU.Core.DNS.Runtime
         {
             if (ServiceLocator.Current.IsRegisteredWithKey<T>(key))
                 return ServiceLocator.GetService<T>(key);
-            else
-                return ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy<T>(key);
+            return ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy<T>(key);
         }
 
         /// <summary>
@@ -83,9 +82,7 @@ namespace KissU.Core.DNS.Runtime
         {
             if (ServiceLocator.Current.IsRegistered<T>())
                 return ServiceLocator.GetService<T>();
-            else
-                return ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy<T>();
-
+            return ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy<T>();
         }
 
         /// <summary>
@@ -97,8 +94,7 @@ namespace KissU.Core.DNS.Runtime
         {
             if (ServiceLocator.Current.IsRegistered(type))
                 return ServiceLocator.GetService(type);
-            else
-                return ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy(type);
+            return ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy(type);
         }
 
         /// <summary>
@@ -111,9 +107,7 @@ namespace KissU.Core.DNS.Runtime
         {
             if (ServiceLocator.Current.IsRegisteredWithKey(key, type))
                 return ServiceLocator.GetService(key, type);
-            else
-                return ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy(key, type);
-
+            return ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy(key, type);
         }
 
         /// <summary>
@@ -144,12 +138,12 @@ namespace KissU.Core.DNS.Runtime
             var prefixLen = domainName.IndexOf(".");
             IPAddress result = null;
             if (prefixLen > 0)
-            { 
-                var prefixName = domainName.Substring(0, prefixLen).ToString();
-                var  pathLen= domainName.LastIndexOf(".") - prefixLen - 1;
+            {
+                var prefixName = domainName.Substring(0, prefixLen);
+                var pathLen = domainName.LastIndexOf(".") - prefixLen - 1;
                 if (pathLen > 0)
                 {
-                    var routePath = domainName.Substring(prefixLen + 1, pathLen).Replace(".", "/").ToString();
+                    var routePath = domainName.Substring(prefixLen + 1, pathLen).Replace(".", "/");
                     if (routePath.IndexOf("/") < 0 && routePath[0] != '/')
                         routePath = $"/{routePath}";
                     var address = await GetService<IEchoService>().Locate(prefixName, routePath);
@@ -157,6 +151,7 @@ namespace KissU.Core.DNS.Runtime
                         result = IPAddress.Parse(address.WanIp);
                 }
             }
+
             result = await Resolve(domainName) ?? result;
             return result;
         }

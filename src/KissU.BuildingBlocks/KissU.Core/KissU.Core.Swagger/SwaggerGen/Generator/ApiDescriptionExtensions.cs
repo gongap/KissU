@@ -21,7 +21,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
         public static IEnumerable<object> ControllerAttributes(this ApiDescription apiDescription)
         {
             var controllerActionDescriptor = apiDescription.ActionDescriptor as ControllerActionDescriptor;
-            return (controllerActionDescriptor == null)
+            return controllerActionDescriptor == null
                 ? Enumerable.Empty<object>()
                 : controllerActionDescriptor.ControllerTypeInfo.GetCustomAttributes(true);
         }
@@ -35,7 +35,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
         public static IEnumerable<object> ActionAttributes(this ApiDescription apiDescription)
         {
             var controllerActionDescriptor = apiDescription.ActionDescriptor as ControllerActionDescriptor;
-            return (controllerActionDescriptor == null)
+            return controllerActionDescriptor == null
                 ? Enumerable.Empty<object>()
                 : controllerActionDescriptor.MethodInfo.GetCustomAttributes(true);
         }
@@ -52,7 +52,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
 
             methodInfo = controllerActionDescriptor?.MethodInfo;
 
-            return (methodInfo != null);
+            return methodInfo != null;
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
         /// <returns><c>true</c> if the specified API description is obsolete; otherwise, <c>false</c>.</returns>
         internal static bool IsObsolete(this ApiDescription apiDescription)
         {
-            if (!apiDescription.TryGetMethodInfo(out MethodInfo methodInfo))
+            if (!apiDescription.TryGetMethodInfo(out var methodInfo))
                 return false;
 
             return methodInfo.GetCustomAttributes(true)

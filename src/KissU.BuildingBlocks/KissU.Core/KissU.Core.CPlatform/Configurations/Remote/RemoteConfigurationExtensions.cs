@@ -46,7 +46,7 @@ namespace KissU.Core.CPlatform.Configurations.Remote
             var source = new RemoteConfigurationSource
             {
                 ConfigurationUri = configurationUri,
-                Optional = optional,
+                Optional = optional
             };
 
             return builder.AddRemoteSource(source);
@@ -89,7 +89,7 @@ namespace KissU.Core.CPlatform.Configurations.Remote
             {
                 ConfigurationUri = configurationUri,
                 Events = events,
-                Optional = optional,
+                Optional = optional
             };
 
             return builder.AddRemoteSource(source);

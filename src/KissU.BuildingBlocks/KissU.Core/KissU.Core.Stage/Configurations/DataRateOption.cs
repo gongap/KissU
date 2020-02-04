@@ -11,6 +11,7 @@ namespace KissU.Core.Stage.Configurations
         /// Gets or sets the bytes per second.
         /// </summary>
         public double BytesPerSecond { get; set; }
+
         /// <summary>
         /// Gets or sets the grace period.
         /// </summary>

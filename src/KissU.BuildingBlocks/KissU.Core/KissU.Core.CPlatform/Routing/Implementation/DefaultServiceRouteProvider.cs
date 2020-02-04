@@ -94,8 +94,8 @@ namespace KissU.Core.CPlatform.Routing.Implementation
                     i.Descriptor.Token = _serviceTokenGenerator.GetToken();
                     return new ServiceRoute
                     {
-                        Address = new[] { addess },
-                        ServiceDescriptor = i.Descriptor,
+                        Address = new[] {addess},
+                        ServiceDescriptor = i.Descriptor
                     };
                 }).ToList());
             }
@@ -169,8 +169,8 @@ namespace KissU.Core.CPlatform.Routing.Implementation
                 i.Descriptor.Token = _serviceTokenGenerator.GetToken();
                 return new ServiceRoute
                 {
-                    Address = new[] { addess },
-                    ServiceDescriptor = i.Descriptor,
+                    Address = new[] {addess},
+                    ServiceDescriptor = i.Descriptor
                 };
             }).ToList();
             await _serviceRouteManager.SetRoutesAsync(addressDescriptors);

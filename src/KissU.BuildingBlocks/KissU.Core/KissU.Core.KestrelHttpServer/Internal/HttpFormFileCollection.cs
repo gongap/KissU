@@ -11,7 +11,7 @@ namespace KissU.Core.KestrelHttpServer.Internal
     public class HttpFormFileCollection : List<HttpFormFile>
     {
         /// <summary>
-        /// Gets the <see cref="HttpFormFile"/> with the specified name.
+        /// Gets the <see cref="HttpFormFile" /> with the specified name.
         /// </summary>
         /// <param name="name">The name.</param>
         /// <returns>HttpFormFile.</returns>

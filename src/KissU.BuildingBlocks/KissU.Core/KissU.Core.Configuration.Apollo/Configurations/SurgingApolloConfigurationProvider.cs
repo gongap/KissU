@@ -1,10 +1,10 @@
-﻿using Com.Ctrip.Framework.Apollo;
+﻿using System;
+using System.Collections.Generic;
+using Com.Ctrip.Framework.Apollo;
 using Com.Ctrip.Framework.Apollo.Core.Utils;
 using Com.Ctrip.Framework.Apollo.Internals;
-using Microsoft.Extensions.Configuration;
 using KissU.Core.CPlatform.Utilities;
-using System;
-using System.Collections.Generic;
+using Microsoft.Extensions.Configuration;
 
 namespace KissU.Core.Configuration.Apollo.Configurations
 {
@@ -16,24 +16,26 @@ namespace KissU.Core.Configuration.Apollo.Configurations
     public class KissUApolloConfigurationProvider : ApolloConfigurationProvider
     {
         /// <summary>
-        /// Gets the section key.
-        /// </summary>
-        internal string SectionKey { get; }
-        /// <summary>
-        /// Gets the configuration repository.
-        /// </summary>
-        internal IConfigRepository ConfigRepository { get; }
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="KissUApolloConfigurationProvider" /> class.
         /// </summary>
         /// <param name="sectionKey">The section key.</param>
         /// <param name="configRepository">The configuration repository.</param>
-        public KissUApolloConfigurationProvider(string sectionKey, IConfigRepository configRepository) : base(sectionKey, configRepository)
+        public KissUApolloConfigurationProvider(string sectionKey, IConfigRepository configRepository) : base(
+            sectionKey, configRepository)
         {
             SectionKey = sectionKey;
             ConfigRepository = configRepository;
         }
+
+        /// <summary>
+        /// Gets the section key.
+        /// </summary>
+        internal string SectionKey { get; }
+
+        /// <summary>
+        /// Gets the configuration repository.
+        /// </summary>
+        internal IConfigRepository ConfigRepository { get; }
 
         /// <summary>
         /// Sets the data.
@@ -48,11 +50,11 @@ namespace KissU.Core.Configuration.Apollo.Configurations
                 if (string.IsNullOrEmpty(SectionKey))
                     data[key] = EnvironmentHelper.GetEnvironmentVariable(properties.GetProperty(key) ?? string.Empty);
                 else
-                    data[$"{SectionKey}{ConfigurationPath.KeyDelimiter}{key}"] = EnvironmentHelper.GetEnvironmentVariable(properties.GetProperty(key) ?? string.Empty);
+                    data[$"{SectionKey}{ConfigurationPath.KeyDelimiter}{key}"] =
+                        EnvironmentHelper.GetEnvironmentVariable(properties.GetProperty(key) ?? string.Empty);
             }
 
             Data = data;
         }
-
     }
 }

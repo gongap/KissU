@@ -13,14 +13,15 @@ namespace KissU.Core.ProxyGenerator.Implementation
     /// <seealso cref="KissU.Core.ProxyGenerator.IServiceProxyProvider" />
     public class ServiceProxyProvider : IServiceProxyProvider
     {
-        private readonly IServiceRouteProvider _serviceRouteProvider;
         private readonly CPlatformContainer _serviceProvider;
+        private readonly IServiceRouteProvider _serviceRouteProvider;
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="ServiceProxyProvider"/> class.
+        /// Initializes a new instance of the <see cref="ServiceProxyProvider" /> class.
         /// </summary>
         /// <param name="serviceRouteProvider">The service route provider.</param>
         /// <param name="serviceProvider">The service provider.</param>
-        public ServiceProxyProvider( IServiceRouteProvider serviceRouteProvider
+        public ServiceProxyProvider(IServiceRouteProvider serviceRouteProvider
             , CPlatformContainer serviceProvider)
         {
             _serviceRouteProvider = serviceRouteProvider;
@@ -36,30 +37,32 @@ namespace KissU.Core.ProxyGenerator.Implementation
         /// <returns>Task&lt;T&gt;.</returns>
         public async Task<T> Invoke<T>(IDictionary<string, object> parameters, string routePath)
         {
-           var serviceRoute= await _serviceRouteProvider.GetRouteByPath(routePath.ToLower());
-            T result = default(T);
+            var serviceRoute = await _serviceRouteProvider.GetRouteByPath(routePath.ToLower());
+            T result = default;
             if (parameters.ContainsKey("serviceKey"))
             {
                 var serviceKey = parameters["serviceKey"].ToString();
                 var proxy = ServiceResolver.Current.GetService<RemoteServiceProxy>(serviceKey);
                 if (proxy == null)
                 {
-                     proxy = new RemoteServiceProxy(serviceKey.ToString(), _serviceProvider);
-                    ServiceResolver.Current.Register(serviceKey.ToString(), proxy);
+                    proxy = new RemoteServiceProxy(serviceKey, _serviceProvider);
+                    ServiceResolver.Current.Register(serviceKey, proxy);
                 }
+
                 result = await proxy.Invoke<T>(parameters, serviceRoute.ServiceDescriptor.Id);
-                    
             }
             else
             {
                 var proxy = ServiceResolver.Current.GetService<RemoteServiceProxy>();
                 if (proxy == null)
                 {
-                     proxy = new RemoteServiceProxy(null, _serviceProvider);
+                    proxy = new RemoteServiceProxy(null, _serviceProvider);
                     ServiceResolver.Current.Register(null, proxy);
                 }
+
                 result = await proxy.Invoke<T>(parameters, serviceRoute.ServiceDescriptor.Id);
             }
+
             return result;
         }
 
@@ -74,7 +77,7 @@ namespace KissU.Core.ProxyGenerator.Implementation
         public async Task<T> Invoke<T>(IDictionary<string, object> parameters, string routePath, string serviceKey)
         {
             var serviceRoute = await _serviceRouteProvider.GetRouteByPath(routePath.ToLower());
-            T result = default(T);
+            var result = default(T);
             if (!string.IsNullOrEmpty(serviceKey))
             {
                 var proxy = ServiceResolver.Current.GetService<RemoteServiceProxy>(serviceKey);
@@ -83,6 +86,7 @@ namespace KissU.Core.ProxyGenerator.Implementation
                     proxy = new RemoteServiceProxy(serviceKey, _serviceProvider);
                     ServiceResolver.Current.Register(serviceKey, proxy);
                 }
+
                 result = await proxy.Invoke<T>(parameters, serviceRoute.ServiceDescriptor.Id);
             }
             else
@@ -93,8 +97,10 @@ namespace KissU.Core.ProxyGenerator.Implementation
                     proxy = new RemoteServiceProxy(null, _serviceProvider);
                     ServiceResolver.Current.Register(null, proxy);
                 }
+
                 result = await proxy.Invoke<T>(parameters, serviceRoute.ServiceDescriptor.Id);
             }
+
             return result;
         }
     }

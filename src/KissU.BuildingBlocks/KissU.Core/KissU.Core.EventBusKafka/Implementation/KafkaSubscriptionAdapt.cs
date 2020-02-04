@@ -14,15 +14,17 @@ namespace KissU.Core.EventBusKafka.Implementation
     {
         private readonly IConsumeConfigurator _consumeConfigurator;
         private readonly IEnumerable<IIntegrationEventHandler> _integrationEventHandler;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="KafkaSubscriptionAdapt" /> class.
         /// </summary>
         /// <param name="consumeConfigurator">The consume configurator.</param>
         /// <param name="integrationEventHandler">The integration event handler.</param>
-        public KafkaSubscriptionAdapt(IConsumeConfigurator consumeConfigurator, IEnumerable<IIntegrationEventHandler> integrationEventHandler)
+        public KafkaSubscriptionAdapt(IConsumeConfigurator consumeConfigurator,
+            IEnumerable<IIntegrationEventHandler> integrationEventHandler)
         {
-            this._consumeConfigurator = consumeConfigurator;
-            this._integrationEventHandler = integrationEventHandler;
+            _consumeConfigurator = consumeConfigurator;
+            _integrationEventHandler = integrationEventHandler;
         }
 
         /// <summary>
@@ -42,6 +44,7 @@ namespace KissU.Core.EventBusKafka.Implementation
         }
 
         #region 私有方法
+
         private List<Type> GetQueueConsumers()
         {
             var result = new List<Type>();
@@ -50,9 +53,10 @@ namespace KissU.Core.EventBusKafka.Implementation
                 var type = consumer.GetType();
                 result.Add(type);
             }
+
             return result;
         }
+
         #endregion
     }
 }
-

@@ -23,17 +23,17 @@ namespace KissU.Core.Zookeeper
     /// <seealso cref="KissU.Core.CPlatform.Cache.Implementation.ServiceCacheManagerBase" />
     /// <seealso cref="System.IDisposable" />
     public class ZookeeperServiceCacheManager : ServiceCacheManagerBase, IDisposable
-    { 
+    {
         private readonly ConfigInfo _configInfo;
-        private readonly ISerializer<byte[]> _serializer;
         private readonly ILogger<ZookeeperServiceCacheManager> _logger;
-        private ServiceCache[] _serviceCaches;
+        private readonly ISerializer<byte[]> _serializer;
         private readonly IServiceCacheFactory _serviceCacheFactory;
         private readonly ISerializer<string> _stringSerializer;
         private readonly IZookeeperClientProvider _zookeeperClientProvider;
+        private ServiceCache[] _serviceCaches;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ZookeeperServiceCacheManager"/> class.
+        /// Initializes a new instance of the <see cref="ZookeeperServiceCacheManager" /> class.
         /// </summary>
         /// <param name="configInfo">The configuration information.</param>
         /// <param name="serializer">The serializer.</param>
@@ -42,8 +42,9 @@ namespace KissU.Core.Zookeeper
         /// <param name="logger">The logger.</param>
         /// <param name="zookeeperClientProvider">The zookeeper client provider.</param>
         public ZookeeperServiceCacheManager(ConfigInfo configInfo, ISerializer<byte[]> serializer,
-        ISerializer<string> stringSerializer, IServiceCacheFactory serviceCacheFactory,
-        ILogger<ZookeeperServiceCacheManager> logger, IZookeeperClientProvider zookeeperClientProvider) : base(stringSerializer)
+            ISerializer<string> stringSerializer, IServiceCacheFactory serviceCacheFactory,
+            ILogger<ZookeeperServiceCacheManager> logger, IZookeeperClientProvider zookeeperClientProvider) : base(
+            stringSerializer)
         {
             _configInfo = configInfo;
             _serializer = serializer;
@@ -52,6 +53,13 @@ namespace KissU.Core.Zookeeper
             _logger = logger;
             _zookeeperClientProvider = zookeeperClientProvider;
             EnterCaches().Wait();
+        }
+
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+        public void Dispose()
+        {
         }
 
         /// <summary>
@@ -66,7 +74,7 @@ namespace KissU.Core.Zookeeper
             foreach (var zooKeeper in zooKeepers)
             {
                 var path = _configInfo.CachePath;
-                var childrens = path.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+                var childrens = path.Split(new[] {'/'}, StringSplitOptions.RemoveEmptyEntries);
 
                 var index = 0;
                 while (childrens.Count() > 1)
@@ -86,23 +94,19 @@ namespace KissU.Core.Zookeeper
                                 await zooKeeper.Item2.deleteAsync(childPath);
                             }
                         }
+
                         if (_logger.IsEnabled(LogLevel.Debug))
                             _logger.LogDebug($"准备删除：{nodePath}。");
                         await zooKeeper.Item2.deleteAsync(nodePath);
                     }
+
                     index++;
                     childrens = childrens.Take(childrens.Length - index).ToArray();
                 }
+
                 if (_logger.IsEnabled(LogLevel.Information))
                     _logger.LogInformation("服务缓存配置清空完成。");
             }
-        }
-
-        /// <summary>
-        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-        /// </summary>
-        public void Dispose()
-        {
         }
 
         /// <summary>
@@ -146,6 +150,7 @@ namespace KissU.Core.Zookeeper
             {
                 throw ex;
             }
+
             await base.SetCachesAsync(caches);
         }
 
@@ -176,7 +181,8 @@ namespace KissU.Core.Zookeeper
                         if (_logger.IsEnabled(LogLevel.Debug))
                             _logger.LogDebug($"节点：{nodePath}不存在将进行创建。");
 
-                        await zooKeeper.Item2.createAsync(nodePath, nodeData, ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+                        await zooKeeper.Item2.createAsync(nodePath, nodeData, ZooDefs.Ids.OPEN_ACL_UNSAFE,
+                            CreateMode.PERSISTENT);
                     }
                     else
                     {
@@ -188,6 +194,7 @@ namespace KissU.Core.Zookeeper
                             await zooKeeper.Item2.setDataAsync(nodePath, nodeData);
                     }
                 }
+
                 if (_logger.IsEnabled(LogLevel.Information))
                     _logger.LogInformation("服务缓存添加成功。");
             }
@@ -212,6 +219,7 @@ namespace KissU.Core.Zookeeper
                 if (cache != null)
                     caches.Add(cache);
             }
+
             return caches.ToArray();
         }
 
@@ -224,7 +232,7 @@ namespace KissU.Core.Zookeeper
             if (_logger.IsEnabled(LogLevel.Information))
                 _logger.LogInformation($"节点{path}不存在，将进行创建。");
 
-            var childrens = path.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+            var childrens = path.Split(new[] {'/'}, StringSplitOptions.RemoveEmptyEntries);
             var nodePath = "/";
 
             foreach (var children in childrens)
@@ -232,28 +240,32 @@ namespace KissU.Core.Zookeeper
                 nodePath += children;
                 if (await zooKeeper.Item2.existsAsync(nodePath) == null)
                 {
-                    await zooKeeper.Item2.createAsync(nodePath, null, ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+                    await zooKeeper.Item2.createAsync(nodePath, null, ZooDefs.Ids.OPEN_ACL_UNSAFE,
+                        CreateMode.PERSISTENT);
                 }
+
                 nodePath += "/";
             }
         }
 
         private async Task<ServiceCache> GetCache(string path)
         {
-            ServiceCache result = null; 
+            ServiceCache result = null;
             var zooKeeper = await GetZooKeeper();
             var watcher = new NodeMonitorWatcher(GetZooKeeper, path,
-                 async (oldData, newData) => await NodeChange(oldData, newData));
+                async (oldData, newData) => await NodeChange(oldData, newData));
             if (await zooKeeper.Item2.existsAsync(path) != null)
             {
                 var data = (await zooKeeper.Item2.getDataAsync(path, watcher)).Data;
                 watcher.SetCurrentData(data);
                 result = await GetCache(data);
             }
+
             return result;
         }
 
         #region 私有方法
+
         private async Task RemoveCachesAsync(IEnumerable<ServiceCache> caches)
         {
             var path = _configInfo.CachePath;
@@ -265,7 +277,6 @@ namespace KissU.Core.Zookeeper
                 var zooKeepers = await _zookeeperClientProvider.GetZooKeepers();
                 foreach (var zooKeeper in zooKeepers)
                 {
-
                     var deletedCacheIds = caches.Select(i => i.CacheDescriptor.Id).ToArray();
                     foreach (var deletedCacheId in deletedCacheIds)
                     {
@@ -311,19 +322,20 @@ namespace KissU.Core.Zookeeper
                 if (b1 != b2)
                     return false;
             }
+
             return true;
         }
 
         private async Task<ServiceCache> GetCache(byte[] data)
         {
-            if (_logger.IsEnabled(Microsoft.Extensions.Logging.LogLevel.Debug))
+            if (_logger.IsEnabled(LogLevel.Debug))
                 _logger.LogDebug($"准备转换服务缓存，配置内容：{Encoding.UTF8.GetString(data)}。");
 
             if (data == null)
                 return null;
 
             var descriptor = _serializer.Deserialize<byte[], ServiceCacheDescriptor>(data);
-            return (await _serviceCacheFactory.CreateServiceCachesAsync(new[] { descriptor })).First();
+            return (await _serviceCacheFactory.CreateServiceCachesAsync(new[] {descriptor})).First();
         }
 
         private async Task<ServiceCache> GetCacheData(string data)
@@ -331,24 +343,26 @@ namespace KissU.Core.Zookeeper
             if (data == null)
                 return null;
 
-            var descriptor = _stringSerializer.Deserialize(data, typeof(ServiceCacheDescriptor)) as ServiceCacheDescriptor;
-            return (await _serviceCacheFactory.CreateServiceCachesAsync(new[] { descriptor })).First();
+            var descriptor =
+                _stringSerializer.Deserialize(data, typeof(ServiceCacheDescriptor)) as ServiceCacheDescriptor;
+            return (await _serviceCacheFactory.CreateServiceCachesAsync(new[] {descriptor})).First();
         }
 
         private async Task<ServiceCache[]> GetCacheDatas(string[] caches)
         {
-            List<ServiceCache> serviceCaches = new List<ServiceCache>();
+            var serviceCaches = new List<ServiceCache>();
             foreach (var cache in caches)
             {
                 var serviceCache = await GetCacheData(cache);
                 serviceCaches.Add(serviceCache);
             }
+
             return serviceCaches.ToArray();
         }
 
         private async Task<string[]> ConvertPaths(string[] datas)
         {
-            List<string> paths = new List<string>();
+            var paths = new List<string>();
             foreach (var data in datas)
             {
                 var result = await GetCacheData(data);
@@ -356,6 +370,7 @@ namespace KissU.Core.Zookeeper
                 if (!string.IsNullOrEmpty(serviceId))
                     paths.Add(serviceId);
             }
+
             return paths.ToArray();
         }
 
@@ -374,19 +389,19 @@ namespace KissU.Core.Zookeeper
                 _serviceCaches =
                     _serviceCaches
                         .Where(i => i.CacheDescriptor.Id != newCache.CacheDescriptor.Id)
-                        .Concat(new[] { newCache }).ToArray();
+                        .Concat(new[] {newCache}).ToArray();
             }
-            
+
             //触发缓存变更事件。
-             OnChanged(new ServiceCacheChangedEventArgs(newCache, oldCache));
+            OnChanged(new ServiceCacheChangedEventArgs(newCache, oldCache));
         }
 
         private async Task ChildrenChange(string[] oldChildrens, string[] newChildrens)
         {
-            if (_logger.IsEnabled(Microsoft.Extensions.Logging.LogLevel.Debug))
+            if (_logger.IsEnabled(LogLevel.Debug))
                 _logger.LogDebug($"最新的节点信息：{string.Join(",", newChildrens)}");
 
-            if (_logger.IsEnabled(Microsoft.Extensions.Logging.LogLevel.Debug))
+            if (_logger.IsEnabled(LogLevel.Debug))
                 _logger.LogDebug($"旧的节点信息：{string.Join(",", oldChildrens)}");
 
             //计算出已被删除的节点。
@@ -412,6 +427,7 @@ namespace KissU.Core.Zookeeper
                     .Concat(newCaches)
                     .ToArray();
             }
+
             //需要删除的缓存集合。
             var deletedCaches = caches.Where(i => deletedChildrens.Contains(i.CacheDescriptor.Id)).ToArray();
             //触发删除事件。
@@ -420,7 +436,7 @@ namespace KissU.Core.Zookeeper
             //触发缓存被创建事件。
             OnCreated(newCaches.Select(cache => new ServiceCacheEventArgs(cache)).ToArray());
 
-            if (_logger.IsEnabled(Microsoft.Extensions.Logging.LogLevel.Information))
+            if (_logger.IsEnabled(LogLevel.Information))
                 _logger.LogInformation("缓存数据更新成功。");
         }
 
@@ -433,4 +449,3 @@ namespace KissU.Core.Zookeeper
         #endregion
     }
 }
-

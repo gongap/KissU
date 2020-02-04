@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using DotNetty.Codecs.Http;
@@ -27,31 +28,20 @@ namespace KissU.Core.Protocol.Http
     /// </summary>
     /// <seealso cref="KissU.Core.CPlatform.Transport.IMessageListener" />
     /// <seealso cref="System.IDisposable" />
-    class DotNettyHttpServerMessageListener : IMessageListener, IDisposable
+    internal class DotNettyHttpServerMessageListener : IMessageListener, IDisposable
     {
-        #region Field
-
-        private readonly ILogger<DotNettyHttpServerMessageListener> _logger;
-        private readonly ITransportMessageDecoder _transportMessageDecoder;
-        private readonly ITransportMessageEncoder _transportMessageEncoder;
-        private IChannel _channel;
-        private readonly ISerializer<string> _serializer;
-        private readonly IServiceRouteProvider _serviceRouteProvider;
-
-        #endregion Field
-
         #region Constructor
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DotNettyHttpServerMessageListener"/> class.
+        /// Initializes a new instance of the <see cref="DotNettyHttpServerMessageListener" /> class.
         /// </summary>
         /// <param name="logger">The logger.</param>
         /// <param name="codecFactory">The codec factory.</param>
         /// <param name="serializer">The serializer.</param>
         /// <param name="serviceRouteProvider">The service route provider.</param>
         public DotNettyHttpServerMessageListener(ILogger<DotNettyHttpServerMessageListener> logger,
-            ITransportMessageCodecFactory codecFactory, 
-            ISerializer<string> serializer, 
+            ITransportMessageCodecFactory codecFactory,
+            ISerializer<string> serializer,
             IServiceRouteProvider serviceRouteProvider)
         {
             _logger = logger;
@@ -63,27 +53,17 @@ namespace KissU.Core.Protocol.Http
 
         #endregion Constructor
 
-        #region Implementation of IMessageListener
+        #region Implementation of IDisposable
 
         /// <summary>
-        /// 接收到消息的事件。
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         /// </summary>
-        public event ReceivedDelegate Received;
-
-        /// <summary>
-        /// 触发接收到消息事件。
-        /// </summary>
-        /// <param name="sender">消息发送者。</param>
-        /// <param name="message">接收到的消息。</param>
-        /// <returns>一个任务。</returns>
-        public async Task OnReceived(IMessageSender sender, TransportMessage message)
+        public void Dispose()
         {
-            if (Received == null)
-                return;
-            await Received(sender, message);
+            Task.Run(async () => { await _channel.DisconnectAsync(); }).Wait();
         }
 
-        #endregion Implementation of IMessageListener
+        #endregion Implementation of IDisposable
 
         /// <summary>
         /// start as an asynchronous operation.
@@ -95,27 +75,29 @@ namespace KissU.Core.Protocol.Http
                 _logger.LogDebug($"准备启动服务主机，监听地址：{endPoint}。");
             var serverCompletion = new TaskCompletionSource();
             var bossGroup = new MultithreadEventLoopGroup(1);
-            var workerGroup = new MultithreadEventLoopGroup();//Default eventLoopCount is Environment.ProcessorCount * 2
+            var workerGroup =
+                new MultithreadEventLoopGroup(); //Default eventLoopCount is Environment.ProcessorCount * 2
             var bootstrap = new ServerBootstrap();
             bootstrap
-            .Group(bossGroup, workerGroup)
-            .Channel<TcpServerSocketChannel>()
-            .Option(ChannelOption.SoReuseport, true)
-            .ChildOption(ChannelOption.SoReuseaddr, true)
-            .Option(ChannelOption.SoBacklog, AppConfig.ServerOptions.SoBacklog)
-            .ChildHandler(new ActionChannelInitializer<IChannel>(channel =>
-            {
-                IChannelPipeline pipeline = channel.Pipeline;
-                pipeline.AddLast("encoder", new HttpResponseEncoder());
-                pipeline.AddLast(new HttpRequestDecoder(int.MaxValue, 8192, 8192, true));
-                pipeline.AddLast(new HttpObjectAggregator(int.MaxValue));
-                pipeline.AddLast(new ServerHandler(async (contenxt, message) =>
+                .Group(bossGroup, workerGroup)
+                .Channel<TcpServerSocketChannel>()
+                .Option(ChannelOption.SoReuseport, true)
+                .ChildOption(ChannelOption.SoReuseaddr, true)
+                .Option(ChannelOption.SoBacklog, AppConfig.ServerOptions.SoBacklog)
+                .ChildHandler(new ActionChannelInitializer<IChannel>(channel =>
                 {
-                    var sender = new DotNettyHttpServerMessageSender(_transportMessageEncoder, contenxt, _serializer);
-                    await OnReceived(sender, message);
-                }, _logger, _serializer, _serviceRouteProvider));
-                serverCompletion.TryComplete();
-            }));
+                    var pipeline = channel.Pipeline;
+                    pipeline.AddLast("encoder", new HttpResponseEncoder());
+                    pipeline.AddLast(new HttpRequestDecoder(int.MaxValue, 8192, 8192, true));
+                    pipeline.AddLast(new HttpObjectAggregator(int.MaxValue));
+                    pipeline.AddLast(new ServerHandler(async (contenxt, message) =>
+                    {
+                        var sender =
+                            new DotNettyHttpServerMessageSender(_transportMessageEncoder, contenxt, _serializer);
+                        await OnReceived(sender, message);
+                    }, _logger, _serializer, _serviceRouteProvider));
+                    serverCompletion.TryComplete();
+                }));
             try
             {
                 _channel = await bootstrap.BindAsync(endPoint);
@@ -126,7 +108,6 @@ namespace KissU.Core.Protocol.Http
             {
                 _logger.LogError($"Http服务主机启动失败，监听地址：{endPoint}。 ");
             }
-
         }
 
         /// <summary>
@@ -141,46 +122,32 @@ namespace KissU.Core.Protocol.Http
             }).Wait();
         }
 
-        #region Implementation of IDisposable
-
-
-        /// <summary>
-        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-        /// </summary>
-        public void Dispose()
-        {
-            Task.Run(async () =>
-            {
-                await _channel.DisconnectAsync();
-            }).Wait();
-        }
-
-        #endregion Implementation of IDisposable
-
         #region Help Class
+
         /// <summary>
         /// ServerHandler.
-        /// Implements the <see cref="DotNetty.Transport.Channels.SimpleChannelInboundHandler{DotNetty.Codecs.Http.IFullHttpRequest}" />
+        /// Implements the
+        /// <see cref="DotNetty.Transport.Channels.SimpleChannelInboundHandler{DotNetty.Codecs.Http.IFullHttpRequest}" />
         /// </summary>
         /// <seealso cref="DotNetty.Transport.Channels.SimpleChannelInboundHandler{DotNetty.Codecs.Http.IFullHttpRequest}" />
         private class ServerHandler : SimpleChannelInboundHandler<IFullHttpRequest>
         {
-            readonly TaskCompletionSource completion = new TaskCompletionSource();
+            private readonly ILogger _logger;
 
             private readonly Action<IChannelHandlerContext, TransportMessage> _readAction;
-            private readonly ILogger _logger;
             private readonly ISerializer<string> _serializer;
             private readonly IServiceRouteProvider _serviceRouteProvider;
+            private readonly TaskCompletionSource completion = new TaskCompletionSource();
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="ServerHandler"/> class.
+            /// Initializes a new instance of the <see cref="ServerHandler" /> class.
             /// </summary>
             /// <param name="readAction">The read action.</param>
             /// <param name="logger">The logger.</param>
             /// <param name="serializer">The serializer.</param>
             /// <param name="serviceRouteProvider">The service route provider.</param>
-            public ServerHandler(Action<IChannelHandlerContext, TransportMessage> readAction, 
-                ILogger logger, 
+            public ServerHandler(Action<IChannelHandlerContext, TransportMessage> readAction,
+                ILogger logger,
                 ISerializer<string> serializer,
                 IServiceRouteProvider serviceRouteProvider)
             {
@@ -196,8 +163,8 @@ namespace KissU.Core.Protocol.Http
             /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
             public bool WaitForCompletion()
             {
-                this.completion.Task.Wait(TimeSpan.FromSeconds(5));
-                return this.completion.Task.Status == TaskStatus.RanToCompletion;
+                completion.Task.Wait(TimeSpan.FromSeconds(5));
+                return completion.Task.Status == TaskStatus.RanToCompletion;
             }
 
             /// <summary>
@@ -212,19 +179,22 @@ namespace KissU.Core.Protocol.Http
 
                 Task.Run(async () =>
                 {
-                    var parameters = GetParameters(HttpUtility.UrlDecode(msg.Uri), out string path);
+                    var parameters = GetParameters(HttpUtility.UrlDecode(msg.Uri), out var path);
                     var serviceRoute = await _serviceRouteProvider.GetRouteByPathRegex(path);
-                    parameters.Remove("servicekey", out object serviceKey);
+                    parameters.Remove("servicekey", out var serviceKey);
                     if (data.Length > 0)
-                        parameters = _serializer.Deserialize<string, IDictionary<string, object>>(System.Text.Encoding.ASCII.GetString(data)) ?? new Dictionary<string, object>();
-                    if (String.Compare(serviceRoute.ServiceDescriptor.RoutePath, path, true) != 0)
+                        parameters =
+                            _serializer.Deserialize<string, IDictionary<string, object>>(
+                                Encoding.ASCII.GetString(data)) ?? new Dictionary<string, object>();
+                    if (string.Compare(serviceRoute.ServiceDescriptor.RoutePath, path, true) != 0)
                     {
                         var @params = RouteTemplateSegmenter.Segment(serviceRoute.ServiceDescriptor.RoutePath, path);
                         foreach (var param in @params)
                         {
-                            parameters.Add(param.Key,param.Value);
+                            parameters.Add(param.Key, param.Value);
                         }
                     }
+
                     if (msg.Method.Name == "POST")
                     {
                         _readAction(ctx, new TransportMessage(new HttpRequestMessage
@@ -259,12 +229,14 @@ namespace KissU.Core.Protocol.Http
                 if (len == -1)
                 {
                     routePath = urlSpan.TrimStart("/").ToString().ToLower();
-                    return new  Dictionary<string, object>();
+                    return new Dictionary<string, object>();
                 }
+
                 routePath = urlSpan.Slice(0, len).TrimStart("/").ToString().ToLower();
                 var paramStr = urlSpan.Slice(len + 1).ToString();
                 var parameters = paramStr.Split('&');
-                return parameters.ToList().Select(p => p.Split("=")).ToDictionary(p => p[0].ToLower(), p => (object)p[1]);
+                return parameters.ToList().Select(p => p.Split("="))
+                    .ToDictionary(p => p[0].ToLower(), p => (object) p[1]);
             }
 
             /// <summary>
@@ -272,9 +244,45 @@ namespace KissU.Core.Protocol.Http
             /// </summary>
             /// <param name="context">The context.</param>
             /// <param name="exception">The exception.</param>
-            public override void ExceptionCaught(IChannelHandlerContext context, Exception exception) => this.completion.TrySetException(exception);
+            public override void ExceptionCaught(IChannelHandlerContext context, Exception exception)
+            {
+                completion.TrySetException(exception);
+            }
         }
 
         #endregion Help Class
+
+        #region Field
+
+        private readonly ILogger<DotNettyHttpServerMessageListener> _logger;
+        private readonly ITransportMessageDecoder _transportMessageDecoder;
+        private readonly ITransportMessageEncoder _transportMessageEncoder;
+        private IChannel _channel;
+        private readonly ISerializer<string> _serializer;
+        private readonly IServiceRouteProvider _serviceRouteProvider;
+
+        #endregion Field
+
+        #region Implementation of IMessageListener
+
+        /// <summary>
+        /// 接收到消息的事件。
+        /// </summary>
+        public event ReceivedDelegate Received;
+
+        /// <summary>
+        /// 触发接收到消息事件。
+        /// </summary>
+        /// <param name="sender">消息发送者。</param>
+        /// <param name="message">接收到的消息。</param>
+        /// <returns>一个任务。</returns>
+        public async Task OnReceived(IMessageSender sender, TransportMessage message)
+        {
+            if (Received == null)
+                return;
+            await Received(sender, message);
+        }
+
+        #endregion Implementation of IMessageListener
     }
 }

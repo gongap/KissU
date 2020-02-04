@@ -9,13 +9,15 @@
         /// The earliest
         /// </summary>
         Earliest,
+
         /// <summary>
         /// The latest
         /// </summary>
         Latest,
+
         /// <summary>
         /// The none
         /// </summary>
-        None,
+        None
     }
 }

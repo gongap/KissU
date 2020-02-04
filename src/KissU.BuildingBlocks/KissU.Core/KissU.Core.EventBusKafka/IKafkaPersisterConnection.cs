@@ -24,6 +24,6 @@ namespace KissU.Core.EventBusKafka
         /// Creates the connect.
         /// </summary>
         /// <returns>Object.</returns>
-        Object CreateConnect();
+        object CreateConnect();
     }
 }

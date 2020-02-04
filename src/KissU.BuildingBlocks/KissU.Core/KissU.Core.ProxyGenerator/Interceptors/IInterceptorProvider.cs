@@ -16,7 +16,8 @@ namespace KissU.Core.ProxyGenerator.Interceptors
         /// <param name="serviceId">The service identifier.</param>
         /// <param name="returnType">Type of the return.</param>
         /// <returns>IInvocation.</returns>
-        IInvocation GetInvocation(object proxy, IDictionary<string, object> parameters, string serviceId, Type returnType);
+        IInvocation GetInvocation(object proxy, IDictionary<string, object> parameters, string serviceId,
+            Type returnType);
 
         /// <summary>
         /// Gets the cache invocation.
@@ -26,6 +27,7 @@ namespace KissU.Core.ProxyGenerator.Interceptors
         /// <param name="serviceId">The service identifier.</param>
         /// <param name="returnType">Type of the return.</param>
         /// <returns>IInvocation.</returns>
-        IInvocation GetCacheInvocation(object proxy, IDictionary<string, object> parameters,string serviceId, Type returnType);
+        IInvocation GetCacheInvocation(object proxy, IDictionary<string, object> parameters, string serviceId,
+            Type returnType);
     }
 }

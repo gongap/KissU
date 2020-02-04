@@ -13,11 +13,12 @@ namespace KissU.Core.Protocol.Mqtt
         /// The handler
         /// </summary>
         protected readonly Action<IChannelHandlerContext, object> _handler;
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="MqttHandlerServiceBase"/> class.
+        /// Initializes a new instance of the <see cref="MqttHandlerServiceBase" /> class.
         /// </summary>
         /// <param name="handler">The handler.</param>
-        public MqttHandlerServiceBase( Action<IChannelHandlerContext, object> handler)
+        public MqttHandlerServiceBase(Action<IChannelHandlerContext, object> handler)
         {
             _handler = handler;
         }
@@ -119,6 +120,5 @@ namespace KissU.Core.Protocol.Mqtt
         /// <param name="context">The context.</param>
         /// <param name="packet">The packet.</param>
         public abstract void Unsubscribe(IChannelHandlerContext context, UnsubscribePacket packet);
-
     }
 }

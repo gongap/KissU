@@ -69,8 +69,7 @@ namespace KissU.Core.Protocol.Udp.Runtime
         {
             if (ServiceLocator.Current.IsRegisteredWithKey<T>(key))
                 return ServiceLocator.GetService<T>(key);
-            else
-                return ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy<T>(key);
+            return ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy<T>(key);
         }
 
         /// <summary>
@@ -82,9 +81,7 @@ namespace KissU.Core.Protocol.Udp.Runtime
         {
             if (ServiceLocator.Current.IsRegistered<T>())
                 return ServiceLocator.GetService<T>();
-            else
-                return ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy<T>();
-
+            return ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy<T>();
         }
 
         /// <summary>
@@ -96,8 +93,7 @@ namespace KissU.Core.Protocol.Udp.Runtime
         {
             if (ServiceLocator.Current.IsRegistered(type))
                 return ServiceLocator.GetService(type);
-            else
-                return ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy(type);
+            return ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy(type);
         }
 
         /// <summary>
@@ -110,9 +106,7 @@ namespace KissU.Core.Protocol.Udp.Runtime
         {
             if (ServiceLocator.Current.IsRegisteredWithKey(key, type))
                 return ServiceLocator.GetService(key, type);
-            else
-                return ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy(key, type);
-
+            return ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy(key, type);
         }
 
         /// <summary>
@@ -130,6 +124,5 @@ namespace KissU.Core.Protocol.Udp.Runtime
         {
             GetService<IEventBus>().Publish(@event);
         }
-
     }
 }

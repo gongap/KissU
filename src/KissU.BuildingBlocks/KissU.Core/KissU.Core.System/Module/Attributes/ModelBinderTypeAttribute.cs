@@ -10,11 +10,6 @@ namespace KissU.Core.System.Module.Attributes
     public sealed class ModelBinderTypeAttribute : Attribute
     {
         /// <summary>
-        /// 目标类型
-        /// </summary>
-        public IEnumerable<Type> TargetTypes { get; private set; }
-
-        /// <summary>
         /// 初始化一个新的 <see cref="ModelBinderTypeAttribute" /> 类实例。
         /// </summary>
         /// <param name="targetTypes">目标类型列表</param>
@@ -33,7 +28,12 @@ namespace KissU.Core.System.Module.Attributes
         public ModelBinderTypeAttribute(Type targetType)
         {
             if (targetType == null) throw new ArgumentNullException("targetType");
-            TargetTypes = new Type[] { targetType };
+            TargetTypes = new[] {targetType};
         }
+
+        /// <summary>
+        /// 目标类型
+        /// </summary>
+        public IEnumerable<Type> TargetTypes { get; }
     }
 }

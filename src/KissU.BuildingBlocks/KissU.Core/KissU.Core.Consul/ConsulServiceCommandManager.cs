@@ -17,6 +17,7 @@ using KissU.Core.CPlatform.Serialization;
 using KissU.Core.CPlatform.Support;
 using KissU.Core.CPlatform.Support.Implementation;
 using Microsoft.Extensions.Logging;
+using LogLevel = Microsoft.Extensions.Logging.LogLevel;
 
 namespace KissU.Core.Consul
 {
@@ -30,17 +31,17 @@ namespace KissU.Core.Consul
     public class ConsulServiceCommandManager : ServiceCommandManagerBase, IDisposable
     {
         private readonly ConfigInfo _configInfo;
-        private readonly ISerializer<byte[]> _serializer;
+        private readonly IConsulClientProvider _consulClientFactory;
         private readonly ILogger<ConsulServiceCommandManager> _logger;
         private readonly IClientWatchManager _manager;
-        private ServiceCommandDescriptor[] _serviceCommands;
-        private readonly ISerializer<string> _stringSerializer;
-        private readonly IServiceRouteManager _serviceRouteManager;
+        private readonly ISerializer<byte[]> _serializer;
         private readonly IServiceHeartbeatManager _serviceHeartbeatManager;
-        private readonly IConsulClientProvider _consulClientFactory;
+        private readonly IServiceRouteManager _serviceRouteManager;
+        private readonly ISerializer<string> _stringSerializer;
+        private ServiceCommandDescriptor[] _serviceCommands;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ConsulServiceCommandManager"/> class.
+        /// Initializes a new instance of the <see cref="ConsulServiceCommandManager" /> class.
         /// </summary>
         /// <param name="configInfo">The configuration information.</param>
         /// <param name="serializer">The serializer.</param>
@@ -52,9 +53,11 @@ namespace KissU.Core.Consul
         /// <param name="serviceHeartbeatManager">The service heartbeat manager.</param>
         /// <param name="consulClientFactory">The consul client factory.</param>
         public ConsulServiceCommandManager(ConfigInfo configInfo, ISerializer<byte[]> serializer,
-        ISerializer<string> stringSerializer, IServiceRouteManager serviceRouteManager, IClientWatchManager manager, IServiceEntryManager serviceEntryManager,
+            ISerializer<string> stringSerializer, IServiceRouteManager serviceRouteManager, IClientWatchManager manager,
+            IServiceEntryManager serviceEntryManager,
             ILogger<ConsulServiceCommandManager> logger,
-            IServiceHeartbeatManager serviceHeartbeatManager, IConsulClientProvider consulClientFactory) : base(stringSerializer, serviceEntryManager)
+            IServiceHeartbeatManager serviceHeartbeatManager, IConsulClientProvider consulClientFactory) : base(
+            stringSerializer, serviceEntryManager)
         {
             _configInfo = configInfo;
             _serializer = serializer;
@@ -66,6 +69,13 @@ namespace KissU.Core.Consul
             _serviceHeartbeatManager = serviceHeartbeatManager;
             EnterServiceCommands().Wait();
             _serviceRouteManager.Removed += ServiceRouteManager_Removed;
+        }
+
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+        public void Dispose()
+        {
         }
 
         /// <summary>
@@ -89,13 +99,6 @@ namespace KissU.Core.Consul
                     }
                 }
             }
-        }
-
-        /// <summary>
-        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-        /// </summary>
-        public void Dispose()
-        {
         }
 
         /// <summary>
@@ -128,7 +131,7 @@ namespace KissU.Core.Consul
                 _serviceCommands =
                     _serviceCommands
                         .Where(i => i.ServiceId != newCommand.ServiceId)
-                        .Concat(new[] { newCommand }).ToArray();
+                        .Concat(new[] {newCommand}).ToArray();
             }
 
             if (newCommand == null)
@@ -157,8 +160,9 @@ namespace KissU.Core.Consul
                 _serviceCommands =
                     _serviceCommands
                         .Where(i => i.ServiceId != newCommand.ServiceId)
-                        .Concat(new[] { newCommand }).ToArray();
+                        .Concat(new[] {newCommand}).ToArray();
             }
+
             //触发服务命令变更事件。
             OnChanged(new ServiceCommandChangedEventArgs(newCommand, oldCommand));
         }
@@ -172,12 +176,13 @@ namespace KissU.Core.Consul
             var clients = await _consulClientFactory.GetClients();
             foreach (var client in clients)
             {
-                if (_logger.IsEnabled(Microsoft.Extensions.Logging.LogLevel.Information))
+                if (_logger.IsEnabled(LogLevel.Information))
                     _logger.LogInformation("准备添加服务命令。");
                 foreach (var serviceCommand in serviceCommands)
                 {
                     var nodeData = _serializer.Serialize(serviceCommand);
-                    var keyValuePair = new KVPair($"{_configInfo.CommandPath}{serviceCommand.ServiceId}") { Value = nodeData };
+                    var keyValuePair = new KVPair($"{_configInfo.CommandPath}{serviceCommand.ServiceId}")
+                        {Value = nodeData};
                     var isSuccess = await client.KV.Put(keyValuePair);
                     if (isSuccess.Response)
                         NodeChange(serviceCommand);
@@ -191,7 +196,8 @@ namespace KissU.Core.Consul
         /// <param name="serviceCommands">The service commands.</param>
         protected override async Task InitServiceCommandsAsync(IEnumerable<ServiceCommandDescriptor> serviceCommands)
         {
-            var commands = await GetServiceCommands(serviceCommands.Select(p => $"{ _configInfo.CommandPath}{ p.ServiceId}"));
+            var commands =
+                await GetServiceCommands(serviceCommands.Select(p => $"{_configInfo.CommandPath}{p.ServiceId}"));
             if (commands.Count() == 0 || _configInfo.ReloadOnChange)
             {
                 await SetServiceCommandsAsync(serviceCommands);
@@ -208,10 +214,9 @@ namespace KissU.Core.Consul
         }
 
 
-
         private ServiceCommandDescriptor GetServiceCommand(byte[] data)
         {
-            if (_logger.IsEnabled(Microsoft.Extensions.Logging.LogLevel.Debug))
+            if (_logger.IsEnabled(LogLevel.Debug))
                 _logger.LogDebug($"准备转换服务命令，配置内容：{Encoding.UTF8.GetString(data)}。");
 
             if (data == null)
@@ -223,12 +228,13 @@ namespace KissU.Core.Consul
 
         private ServiceCommandDescriptor[] GetServiceCommandDatas(string[] commands)
         {
-            List<ServiceCommandDescriptor> serviceCommands = new List<ServiceCommandDescriptor>();
+            var serviceCommands = new List<ServiceCommandDescriptor>();
             foreach (var command in commands)
             {
                 var serviceCommand = GetServiceCommandData(command);
                 serviceCommands.Add(serviceCommand);
             }
+
             return serviceCommands.ToArray();
         }
 
@@ -237,7 +243,8 @@ namespace KissU.Core.Consul
             if (data == null)
                 return null;
 
-            var serviceCommand = _stringSerializer.Deserialize(data, typeof(ServiceCommandDescriptor)) as ServiceCommandDescriptor;
+            var serviceCommand =
+                _stringSerializer.Deserialize(data, typeof(ServiceCommandDescriptor)) as ServiceCommandDescriptor;
             return serviceCommand;
         }
 
@@ -246,21 +253,22 @@ namespace KissU.Core.Consul
             ServiceCommandDescriptor result = null;
             var client = await GetConsulClient();
             var watcher = new NodeMonitorWatcher(GetConsulClient, _manager, path,
-              (oldData, newData) => NodeChange(oldData, newData), tmpPath =>
-              {
-                  var index = tmpPath.LastIndexOf("/");
-                  return _serviceHeartbeatManager.ExistsWhitelist(tmpPath.Substring(index + 1));
-              });
+                (oldData, newData) => NodeChange(oldData, newData), tmpPath =>
+                {
+                    var index = tmpPath.LastIndexOf("/");
+                    return _serviceHeartbeatManager.ExistsWhitelist(tmpPath.Substring(index + 1));
+                });
             var queryResult = await client.KV.Keys(path);
             if (queryResult.Response != null)
             {
-                var data = (await client.GetDataAsync(path));
+                var data = await client.GetDataAsync(path);
                 if (data != null)
                 {
                     watcher.SetCurrentData(data);
                     result = GetServiceCommand(data);
                 }
             }
+
             return result;
         }
 
@@ -275,15 +283,17 @@ namespace KissU.Core.Consul
 
             foreach (var children in childrens)
             {
-                if (_logger.IsEnabled(Microsoft.Extensions.Logging.LogLevel.Debug))
+                if (_logger.IsEnabled(LogLevel.Debug))
                     _logger.LogDebug($"准备从节点：{children}中获取服务命令信息。");
 
                 var serviceCommand = await GetServiceCommand(children);
                 if (serviceCommand != null)
                     serviceCommands.Add(serviceCommand);
             }
+
             return serviceCommands.ToArray();
         }
+
         private async ValueTask<ConsulClient> GetConsulClient()
         {
             var client = await _consulClientFactory.GetClient();
@@ -299,10 +309,11 @@ namespace KissU.Core.Consul
             if (_configInfo.EnableChildrenMonitor)
             {
                 var watcher = new ChildrenMonitorWatcher(GetConsulClient, _manager, _configInfo.CommandPath,
-                async (oldChildrens, newChildrens) => await ChildrenChange(oldChildrens, newChildrens),
-                       (result) => ConvertPaths(result));
+                    async (oldChildrens, newChildrens) => await ChildrenChange(oldChildrens, newChildrens),
+                    result => ConvertPaths(result));
                 action = currentData => watcher.SetCurrentData(currentData);
             }
+
             if (client.KV.Keys(_configInfo.CommandPath).Result.Response?.Count() > 0)
             {
                 var result = await client.GetChildrenAsync(_configInfo.CommandPath);
@@ -313,7 +324,7 @@ namespace KissU.Core.Consul
             }
             else
             {
-                if (_logger.IsEnabled(Microsoft.Extensions.Logging.LogLevel.Warning))
+                if (_logger.IsEnabled(LogLevel.Warning))
                     _logger.LogWarning($"无法获取服务命令信息，因为节点：{_configInfo.CommandPath}，不存在。");
                 _serviceCommands = new ServiceCommandDescriptor[0];
             }
@@ -326,7 +337,7 @@ namespace KissU.Core.Consul
         /// <returns>返回路径集合</returns>
         private string[] ConvertPaths(string[] datas)
         {
-            List<string> paths = new List<string>();
+            var paths = new List<string>();
             foreach (var data in datas)
             {
                 var result = GetServiceCommandData(data);
@@ -334,6 +345,7 @@ namespace KissU.Core.Consul
                 if (!string.IsNullOrEmpty(serviceId))
                     paths.Add(serviceId);
             }
+
             return paths.ToArray();
         }
 
@@ -348,6 +360,7 @@ namespace KissU.Core.Consul
                 if (b1 != b2)
                     return false;
             }
+
             return true;
         }
 
@@ -358,10 +371,10 @@ namespace KissU.Core.Consul
         /// <param name="newChildrens">The new childrens.</param>
         public async Task ChildrenChange(string[] oldChildrens, string[] newChildrens)
         {
-            if (_logger.IsEnabled(Microsoft.Extensions.Logging.LogLevel.Debug))
+            if (_logger.IsEnabled(LogLevel.Debug))
                 _logger.LogDebug($"最新的节点信息：{string.Join(",", newChildrens)}");
 
-            if (_logger.IsEnabled(Microsoft.Extensions.Logging.LogLevel.Debug))
+            if (_logger.IsEnabled(LogLevel.Debug))
                 _logger.LogDebug($"旧的节点信息：{string.Join(",", oldChildrens)}");
 
             //计算出已被删除的节点。
@@ -369,9 +382,9 @@ namespace KissU.Core.Consul
             //计算出新增的节点。
             var createdChildrens = newChildrens.Except(oldChildrens).ToArray();
 
-            if (_logger.IsEnabled(Microsoft.Extensions.Logging.LogLevel.Debug))
+            if (_logger.IsEnabled(LogLevel.Debug))
                 _logger.LogDebug($"需要被删除的服务命令节点：{string.Join(",", deletedChildrens)}");
-            if (_logger.IsEnabled(Microsoft.Extensions.Logging.LogLevel.Debug))
+            if (_logger.IsEnabled(LogLevel.Debug))
                 _logger.LogDebug($"需要被添加的服务命令节点：{string.Join(",", createdChildrens)}");
 
             //获取新增的服务命令信息。
@@ -387,15 +400,17 @@ namespace KissU.Core.Consul
                     .Concat(newCommands)
                     .ToArray();
             }
+
             //需要删除的服务命令集合。
-            var deletedRoutes = serviceCommands.Where(i => deletedChildrens.Contains($"{_configInfo.CommandPath}{i.ServiceId}")).ToArray();
+            var deletedRoutes = serviceCommands
+                .Where(i => deletedChildrens.Contains($"{_configInfo.CommandPath}{i.ServiceId}")).ToArray();
             //触发删除事件。
             OnRemoved(deletedRoutes.Select(command => new ServiceCommandEventArgs(command)).ToArray());
 
             //触发服务命令被创建事件。
             OnCreated(newCommands.Select(command => new ServiceCommandEventArgs(command)).ToArray());
 
-            if (_logger.IsEnabled(Microsoft.Extensions.Logging.LogLevel.Information))
+            if (_logger.IsEnabled(LogLevel.Information))
                 _logger.LogInformation("服务命令数据更新成功。");
         }
     }

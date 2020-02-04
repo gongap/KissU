@@ -8,7 +8,8 @@ namespace KissU.Core.Zookeeper.Internal.Cluster.Implementation.Selectors.Impleme
 {
     /// <summary>
     /// ZookeeperAddressSelectorBase.
-    /// Implements the <see cref="KissU.Core.Zookeeper.Internal.Cluster.Implementation.Selectors.IZookeeperAddressSelector" />
+    /// Implements the
+    /// <see cref="KissU.Core.Zookeeper.Internal.Cluster.Implementation.Selectors.IZookeeperAddressSelector" />
     /// </summary>
     /// <seealso cref="KissU.Core.Zookeeper.Internal.Cluster.Implementation.Selectors.IZookeeperAddressSelector" />
     public abstract class ZookeeperAddressSelectorBase : IZookeeperAddressSelector
@@ -37,11 +38,9 @@ namespace KissU.Core.Zookeeper.Internal.Cluster.Implementation.Selectors.Impleme
             {
                 return context.Address.First();
             }
-            else
-            {
-                var vt = SelectAsync(context);
-                return vt.IsCompletedSuccessfully ? vt.Result : await vt;
-            }
+
+            var vt = SelectAsync(context);
+            return vt.IsCompletedSuccessfully ? vt.Result : await vt;
         }
 
         #endregion Implementation of IAddressSelector

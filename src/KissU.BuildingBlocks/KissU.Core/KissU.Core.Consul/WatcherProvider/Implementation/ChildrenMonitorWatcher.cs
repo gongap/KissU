@@ -14,23 +14,25 @@ namespace KissU.Core.Consul.WatcherProvider.Implementation
     public class ChildrenMonitorWatcher : WatcherBase
     {
         private readonly Action<string[], string[]> _action;
-        private readonly IClientWatchManager _manager; 
-        private readonly string _path;
-        private readonly Func<string[], string[]> _func;
-        private string[] _currentData = new string[0];
         private readonly Func<ValueTask<ConsulClient>> _clientCall;
+        private readonly Func<string[], string[]> _func;
+        private readonly IClientWatchManager _manager;
+        private readonly string _path;
+        private string[] _currentData = new string[0];
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="ChildrenMonitorWatcher"/> class.
+        /// Initializes a new instance of the <see cref="ChildrenMonitorWatcher" /> class.
         /// </summary>
         /// <param name="clientCall">The client call.</param>
         /// <param name="manager">The manager.</param>
         /// <param name="path">The path.</param>
         /// <param name="action">The action.</param>
         /// <param name="func">The function.</param>
-        public ChildrenMonitorWatcher(Func<ValueTask<ConsulClient>> clientCall, IClientWatchManager manager, string path,
+        public ChildrenMonitorWatcher(Func<ValueTask<ConsulClient>> clientCall, IClientWatchManager manager,
+            string path,
             Action<string[], string[]> action, Func<string[], string[]> func)
         {
-            this._action = action;
+            _action = action;
             _manager = manager;
             _clientCall = clientCall;
             _path = path;
@@ -55,13 +57,13 @@ namespace KissU.Core.Consul.WatcherProvider.Implementation
         protected override async Task ProcessImpl()
         {
             RegisterWatch(this);
-            var client =await _clientCall();
+            var client = await _clientCall();
             var result = await client.GetChildrenAsync(_path);
             if (result != null)
             {
                 var convertResult = _func.Invoke(result).Select(key => $"{_path}{key}").ToArray();
                 _action(_currentData, convertResult);
-                this.SetCurrentData(convertResult);
+                SetCurrentData(convertResult);
             }
         }
 
@@ -76,6 +78,7 @@ namespace KissU.Core.Consul.WatcherProvider.Implementation
             {
                 wcb = new ChildWatchRegistration(_manager, this, _path);
             }
+
             wcb.Register();
         }
     }

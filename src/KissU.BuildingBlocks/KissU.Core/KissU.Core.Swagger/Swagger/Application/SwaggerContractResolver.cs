@@ -15,21 +15,25 @@ namespace KissU.Core.Swagger.Swagger.Application
         private readonly JsonConverter _applicationTypeConverter;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SwaggerContractResolver"/> class.
+        /// Initializes a new instance of the <see cref="SwaggerContractResolver" /> class.
         /// </summary>
         /// <param name="applicationSerializerSettings">The application serializer settings.</param>
         public SwaggerContractResolver(JsonSerializerSettings applicationSerializerSettings)
         {
-            NamingStrategy = new CamelCaseNamingStrategy { ProcessDictionaryKeys = false };
+            NamingStrategy = new CamelCaseNamingStrategy {ProcessDictionaryKeys = false};
             _applicationTypeConverter = new ApplicationTypeConverter(applicationSerializerSettings);
         }
 
         /// <summary>
-        /// Creates a <see cref="T:Newtonsoft.Json.Serialization.JsonProperty" /> for the given <see cref="T:System.Reflection.MemberInfo" />.
+        /// Creates a <see cref="T:Newtonsoft.Json.Serialization.JsonProperty" /> for the given
+        /// <see cref="T:System.Reflection.MemberInfo" />.
         /// </summary>
         /// <param name="member">The member to create a <see cref="T:Newtonsoft.Json.Serialization.JsonProperty" /> for.</param>
         /// <param name="memberSerialization">The member's parent <see cref="T:Newtonsoft.Json.MemberSerialization" />.</param>
-        /// <returns>A created <see cref="T:Newtonsoft.Json.Serialization.JsonProperty" /> for the given <see cref="T:System.Reflection.MemberInfo" />.</returns>
+        /// <returns>
+        /// A created <see cref="T:Newtonsoft.Json.Serialization.JsonProperty" /> for the given
+        /// <see cref="T:System.Reflection.MemberInfo" />.
+        /// </returns>
         protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization)
         {
             var jsonProperty = base.CreateProperty(member, memberSerialization);
@@ -47,10 +51,10 @@ namespace KissU.Core.Swagger.Swagger.Application
         /// <seealso cref="Newtonsoft.Json.JsonConverter" />
         private class ApplicationTypeConverter : JsonConverter
         {
-            private JsonSerializer _applicationTypeSerializer;
+            private readonly JsonSerializer _applicationTypeSerializer;
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="ApplicationTypeConverter"/> class.
+            /// Initializes a new instance of the <see cref="ApplicationTypeConverter" /> class.
             /// </summary>
             /// <param name="applicationSerializerSettings">The application serializer settings.</param>
             public ApplicationTypeConverter(JsonSerializerSettings applicationSerializerSettings)
@@ -63,7 +67,10 @@ namespace KissU.Core.Swagger.Swagger.Application
             /// </summary>
             /// <param name="objectType">Type of the object.</param>
             /// <returns><c>true</c> if this instance can convert the specified object type; otherwise, <c>false</c>.</returns>
-            public override bool CanConvert(Type objectType) { return true; }
+            public override bool CanConvert(Type objectType)
+            {
+                return true;
+            }
 
             /// <summary>
             /// Reads the JSON representation of the object.
@@ -74,7 +81,8 @@ namespace KissU.Core.Swagger.Swagger.Application
             /// <param name="serializer">The calling serializer.</param>
             /// <returns>The object value.</returns>
             /// <exception cref="NotImplementedException"></exception>
-            public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+            public override object ReadJson(JsonReader reader, Type objectType, object existingValue,
+                JsonSerializer serializer)
             {
                 throw new NotImplementedException();
             }

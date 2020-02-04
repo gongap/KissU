@@ -16,10 +16,10 @@ namespace KissU.Core.Swagger.Internal
         private readonly IServiceEntryProvider _serviceEntryProvider;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DefaultServiceSchemaProvider"/> class.
+        /// Initializes a new instance of the <see cref="DefaultServiceSchemaProvider" /> class.
         /// </summary>
         /// <param name="serviceEntryProvider">The service entry provider.</param>
-        public DefaultServiceSchemaProvider( IServiceEntryProvider serviceEntryProvider)
+        public DefaultServiceSchemaProvider(IServiceEntryProvider serviceEntryProvider)
         {
             _serviceEntryProvider = serviceEntryProvider;
         }
@@ -32,7 +32,7 @@ namespace KissU.Core.Swagger.Internal
         {
             var result = new List<string>();
             var assemblieFiles = _serviceEntryProvider.GetALLEntries()
-                        .Select(p => p.Type.Assembly.Location).Distinct();
+                .Select(p => p.Type.Assembly.Location).Distinct();
 
             foreach (var assemblieFile in assemblieFiles)
             {
@@ -41,6 +41,7 @@ namespace KissU.Core.Swagger.Internal
                 if (File.Exists(path))
                     result.Add(path);
             }
+
             return result;
         }
     }

@@ -9,14 +9,6 @@ namespace KissU.Core.KestrelHttpServer.Abstractions
     public class ActionContext
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ActionContext" /> class.
-        /// </summary>
-        public ActionContext()
-        {
-
-        }
-
-        /// <summary>
         /// Gets or sets the HTTP context.
         /// </summary>
         public HttpContext HttpContext { get; set; }
@@ -25,6 +17,5 @@ namespace KissU.Core.KestrelHttpServer.Abstractions
         /// Gets or sets the message.
         /// </summary>
         public TransportMessage Message { get; set; }
-         
     }
 }

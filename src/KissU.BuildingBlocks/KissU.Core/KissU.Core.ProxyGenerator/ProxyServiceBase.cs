@@ -13,7 +13,7 @@ namespace KissU.Core.ProxyGenerator
     /// Implements the <see cref="KissU.Core.CPlatform.Ioc.ServiceBase" />
     /// </summary>
     /// <seealso cref="KissU.Core.CPlatform.Ioc.ServiceBase" />
-    public abstract class ProxyServiceBase:  ServiceBase
+    public abstract class ProxyServiceBase : ServiceBase
     {
         /// <summary>
         /// Creates the proxy.
@@ -24,14 +24,14 @@ namespace KissU.Core.ProxyGenerator
         [Obsolete("This method is Obsolete, use GetService")]
         public T CreateProxy<T>(string key) where T : class
         {
-           // return ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy<T>(key);
+            // return ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy<T>(key);
             var result = ServiceResolver.Current.GetService<T>(key);
             if (result == null)
             {
                 result = ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy<T>(key);
                 ServiceResolver.Current.Register(key, result);
-
             }
+
             return result;
         }
 
@@ -48,8 +48,8 @@ namespace KissU.Core.ProxyGenerator
             {
                 result = ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy(type);
                 ServiceResolver.Current.Register(null, result);
-
             }
+
             return result;
         }
 
@@ -62,12 +62,13 @@ namespace KissU.Core.ProxyGenerator
         [Obsolete("This method is Obsolete, use GetService")]
         public object CreateProxy(string key, Type type)
         {
-            var result = ServiceResolver.Current.GetService(type,key);
+            var result = ServiceResolver.Current.GetService(type, key);
             if (result == null)
             {
-                result = ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy(key,type);
+                result = ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy(key, type);
                 ServiceResolver.Current.Register(key, result);
             }
+
             return result;
         }
 
@@ -83,8 +84,9 @@ namespace KissU.Core.ProxyGenerator
             if (result == null)
             {
                 result = ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy<T>();
-                ServiceResolver.Current.Register(null,result);
+                ServiceResolver.Current.Register(null, result);
             }
+
             return result;
         }
 
@@ -94,20 +96,18 @@ namespace KissU.Core.ProxyGenerator
         /// <typeparam name="T">服务类型</typeparam>
         /// <param name="key">The key.</param>
         /// <returns>T.</returns>
-        public override T GetService<T>(string key) 
+        public override T GetService<T>(string key)
         {
             if (ServiceLocator.Current.IsRegisteredWithKey<T>(key))
                 return base.GetService<T>(key);
-            else
+            var result = ServiceResolver.Current.GetService<T>(key);
+            if (result == null)
             {
-                var result = ServiceResolver.Current.GetService<T>(key);
-                if (result == null)
-                {
-                    result = ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy<T>(key);
-                    ServiceResolver.Current.Register(key, result);
-                }
-                return result;
+                result = ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy<T>(key);
+                ServiceResolver.Current.Register(key, result);
             }
+
+            return result;
         }
 
         /// <summary>
@@ -119,17 +119,14 @@ namespace KissU.Core.ProxyGenerator
         {
             if (ServiceLocator.Current.IsRegistered<T>())
                 return base.GetService<T>();
-            else
+            var result = ServiceResolver.Current.GetService<T>();
+            if (result == null)
             {
-                var result = ServiceResolver.Current.GetService<T>();
-                if (result == null)
-                {
-                    result = ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy<T>();
-                    ServiceResolver.Current.Register(null, result);
-                }
-                return result;
+                result = ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy<T>();
+                ServiceResolver.Current.Register(null, result);
             }
 
+            return result;
         }
 
         /// <summary>
@@ -141,16 +138,14 @@ namespace KissU.Core.ProxyGenerator
         {
             if (ServiceLocator.Current.IsRegistered(type))
                 return base.GetService(type);
-            else
+            var result = ServiceResolver.Current.GetService(type);
+            if (result == null)
             {
-                var result = ServiceResolver.Current.GetService(type);
-                if (result == null)
-                {
-                    result = ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy(type);
-                    ServiceResolver.Current.Register(null, result); 
-                }
-                return result;
+                result = ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy(type);
+                ServiceResolver.Current.Register(null, result);
             }
+
+            return result;
         }
 
         /// <summary>
@@ -163,17 +158,14 @@ namespace KissU.Core.ProxyGenerator
         {
             if (ServiceLocator.Current.IsRegisteredWithKey(key, type))
                 return base.GetService(key, type);
-            else
+            var result = ServiceResolver.Current.GetService(type, key);
+            if (result == null)
             {
-                var result = ServiceResolver.Current.GetService(type, key);
-                if (result == null)
-                {
-                    result = ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy(key, type);
-                    ServiceResolver.Current.Register(key, result);
-                }
-                return result;
+                result = ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy(key, type);
+                ServiceResolver.Current.Register(key, result);
             }
-           
+
+            return result;
         }
 
         /// <summary>

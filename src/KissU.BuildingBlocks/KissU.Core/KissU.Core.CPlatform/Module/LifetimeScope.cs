@@ -18,6 +18,6 @@
         /// <summary>
         /// 单实例
         /// </summary>
-        SingleInstance,
+        SingleInstance
     }
 }

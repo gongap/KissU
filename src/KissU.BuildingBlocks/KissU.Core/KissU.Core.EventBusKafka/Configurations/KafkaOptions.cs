@@ -105,8 +105,8 @@ namespace KissU.Core.EventBusKafka.Configurations
             var configs = new List<KeyValuePair<string, object>>();
             configs.Add(new KeyValuePair<string, object>("bootstrap.servers", Servers));
             configs.Add(new KeyValuePair<string, object>("acks", Acks));
-            configs.Add(new KeyValuePair<string, object>("retries", Retries)); 
-            configs.Add(new KeyValuePair<string, object>("linger.ms", Linger)); 
+            configs.Add(new KeyValuePair<string, object>("retries", Retries));
+            configs.Add(new KeyValuePair<string, object>("linger.ms", Linger));
             return configs;
         }
     }

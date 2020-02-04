@@ -35,9 +35,9 @@ namespace KissU.Core.EventBusRabbitMQ
             {
                 var subscriptionAdapt = serviceProvider.GetInstances<ISubscriptionAdapt>();
                 serviceProvider.GetInstances<IEventBus>().OnShutdown += (sender, args) =>
-                 {
-                     subscriptionAdapt.Unsubscribe();
-                 };
+                {
+                    subscriptionAdapt.Unsubscribe();
+                };
                 serviceProvider.GetInstances<ISubscriptionAdapt>().SubscribeAt();
             });
         }
@@ -50,7 +50,7 @@ namespace KissU.Core.EventBusRabbitMQ
         {
             base.RegisterBuilder(builder);
             UseRabbitMQTransport(builder)
-            .AddRabbitMQAdapt(builder);
+                .AddRabbitMQAdapt(builder);
         }
 
         /// <summary>
@@ -62,23 +62,24 @@ namespace KissU.Core.EventBusRabbitMQ
         {
             builder.RegisterType(typeof(Implementation.EventBusRabbitMQ)).As(typeof(IEventBus)).SingleInstance();
             builder.RegisterType(typeof(DefaultConsumeConfigurator)).As(typeof(IConsumeConfigurator)).SingleInstance();
-            builder.RegisterType(typeof(InMemoryEventBusSubscriptionsManager)).As(typeof(IEventBusSubscriptionsManager)).SingleInstance();
+            builder.RegisterType(typeof(InMemoryEventBusSubscriptionsManager)).As(typeof(IEventBusSubscriptionsManager))
+                .SingleInstance();
             builder.Register(provider =>
             {
                 var logger = provider.Resolve<ILogger<DefaultRabbitMQPersistentConnection>>();
-                EventBusOption option = new EventBusOption();
+                var option = new EventBusOption();
                 var section = CPlatform.AppConfig.GetSection("EventBus");
                 if (section.Exists())
                     option = section.Get<EventBusOption>();
                 else if (AppConfig.Configuration != null)
                     option = AppConfig.Configuration.Get<EventBusOption>();
-                var factory = new ConnectionFactory()
+                var factory = new ConnectionFactory
                 {
                     HostName = option.EventBusConnection,
                     UserName = option.EventBusUserName,
                     Password = option.EventBusPassword,
                     VirtualHost = option.VirtualHost,
-                    Port = int.Parse(option.Port),
+                    Port = int.Parse(option.Port)
                 };
                 factory.RequestedHeartbeat = 60;
                 AppConfig.BrokerName = option.BrokerName;
@@ -91,7 +92,8 @@ namespace KissU.Core.EventBusRabbitMQ
             return this;
         }
 
-        private ContainerBuilderWrapper UseRabbitMQEventAdapt(ContainerBuilderWrapper builder, Func<IServiceProvider, ISubscriptionAdapt> adapt)
+        private ContainerBuilderWrapper UseRabbitMQEventAdapt(ContainerBuilderWrapper builder,
+            Func<IServiceProvider, ISubscriptionAdapt> adapt)
         {
             builder.RegisterAdapter(adapt);
             return builder;
@@ -100,11 +102,11 @@ namespace KissU.Core.EventBusRabbitMQ
         private EventBusRabbitMQModule AddRabbitMQAdapt(ContainerBuilderWrapper builder)
         {
             UseRabbitMQEventAdapt(builder, provider =>
-               new RabbitMqSubscriptionAdapt(
-                   provider.GetService<IConsumeConfigurator>(),
-                   provider.GetService<IEnumerable<IIntegrationEventHandler>>()
-                   )
-             );
+                new RabbitMqSubscriptionAdapt(
+                    provider.GetService<IConsumeConfigurator>(),
+                    provider.GetService<IEnumerable<IIntegrationEventHandler>>()
+                )
+            );
             return this;
         }
     }

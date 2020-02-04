@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Autofac;
 using KissU.Core.CPlatform;
@@ -21,20 +20,26 @@ namespace KissU.Core.KestrelHttpServer.Filters.Implementation
         /// The HTTP405 endpoint display name
         /// </summary>
         internal const string Http405EndpointDisplayName = "405 HTTP Method Not Supported";
+
         /// <summary>
         /// The HTTP405 endpoint status code
         /// </summary>
         internal const int Http405EndpointStatusCode = 405;
-        private readonly IServiceRouteProvider _serviceRouteProvider;
+
         private readonly IServiceEntryLocate _serviceEntryLocate;
+        private readonly IServiceRouteProvider _serviceRouteProvider;
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="HttpRequestFilterAttribute"/> class.
+        /// Initializes a new instance of the <see cref="HttpRequestFilterAttribute" /> class.
         /// </summary>
         public HttpRequestFilterAttribute()
         {
-            _serviceRouteProvider = ServiceLocator.Current.Resolve<IServiceRouteProvider>(); ;
-            _serviceEntryLocate = ServiceLocator.Current.Resolve<IServiceEntryLocate>(); ;
+            _serviceRouteProvider = ServiceLocator.Current.Resolve<IServiceRouteProvider>();
+            ;
+            _serviceEntryLocate = ServiceLocator.Current.Resolve<IServiceEntryLocate>();
+            ;
         }
+
         /// <summary>
         /// Called when [action executed].
         /// </summary>
@@ -50,12 +55,13 @@ namespace KissU.Core.KestrelHttpServer.Filters.Implementation
         /// </summary>
         /// <param name="filterContext">The filter context.</param>
         public async Task OnActionExecuting(ActionExecutingContext filterContext)
-        { 
-            var serviceEntry= _serviceEntryLocate.Locate(filterContext.Message);
+        {
+            var serviceEntry = _serviceEntryLocate.Locate(filterContext.Message);
             if (serviceEntry != null)
             {
                 var httpMethods = serviceEntry.Methods;
-                if (httpMethods.Count()>0 && !httpMethods.Any(p => String.Compare(p, filterContext.Context.Request.Method, true) == 0))
+                if (httpMethods.Count() > 0 &&
+                    !httpMethods.Any(p => string.Compare(p, filterContext.Context.Request.Method, true) == 0))
                 {
                     filterContext.Result = new HttpResultMessage<object>
                     {

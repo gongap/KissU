@@ -26,13 +26,13 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
                 .OfType<ControllerParameterDescriptor>()
                 .FirstOrDefault(descriptor =>
                 {
-                    return (apiParameterDescription.Name == descriptor.BindingInfo?.BinderModelName)
-                        || (apiParameterDescription.Name == descriptor.Name);
+                    return apiParameterDescription.Name == descriptor.BindingInfo?.BinderModelName
+                           || apiParameterDescription.Name == descriptor.Name;
                 });
 
             parameterInfo = controllerParameterDescriptor?.ParameterInfo;
 
-            return (parameterInfo != null);
+            return parameterInfo != null;
         }
 
         /// <summary>
@@ -47,11 +47,11 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
         {
             var modelMetadata = apiParameterDescription.ModelMetadata;
 
-            propertyInfo = (modelMetadata?.ContainerType != null)
+            propertyInfo = modelMetadata?.ContainerType != null
                 ? modelMetadata.ContainerType.GetProperty(modelMetadata.PropertyName)
                 : null;
 
-            return (propertyInfo != null);
+            return propertyInfo != null;
         }
     }
 }

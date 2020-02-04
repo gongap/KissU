@@ -67,11 +67,11 @@ namespace KissU.Core.KestrelHttpServer
             builder.RegisterType<RestTransportDiagnosticProcessor>().As<ITracingDiagnosticProcessor>().SingleInstance();
             builder.RegisterType(typeof(HttpExecutor)).As(typeof(IServiceExecutor))
                 .Named<IServiceExecutor>(CommunicationProtocol.Http.ToString()).SingleInstance();
-            if (CPlatform.AppConfig.ServerOptions.Protocol == CommunicationProtocol.Http)
+            if (AppConfig.ServerOptions.Protocol == CommunicationProtocol.Http)
             {
                 RegisterDefaultProtocol(builder);
             }
-            else if (CPlatform.AppConfig.ServerOptions.Protocol == CommunicationProtocol.None)
+            else if (AppConfig.ServerOptions.Protocol == CommunicationProtocol.None)
             {
                 RegisterHttpProtocol(builder);
             }
@@ -84,11 +84,11 @@ namespace KissU.Core.KestrelHttpServer
                 return new KestrelHttpMessageListener(
                     provider.Resolve<ILogger<KestrelHttpMessageListener>>(),
                     provider.Resolve<ISerializer<string>>(),
-                     provider.Resolve<IServiceEngineLifetime>(),
-                     provider.Resolve<IModuleProvider>(),
+                    provider.Resolve<IServiceEngineLifetime>(),
+                    provider.Resolve<IModuleProvider>(),
                     provider.Resolve<IServiceRouteProvider>(),
-                     provider.Resolve<CPlatformContainer>()
-                      );
+                    provider.Resolve<CPlatformContainer>()
+                );
             }).SingleInstance();
             builder.Register(provider =>
             {
@@ -100,7 +100,6 @@ namespace KissU.Core.KestrelHttpServer
                     await messageListener.StartAsync(address?.Address, address?.Port);
                     return messageListener;
                 }, executor, messageListener);
-
             }).As<IServiceHost>();
         }
 
@@ -111,12 +110,11 @@ namespace KissU.Core.KestrelHttpServer
                 return new KestrelHttpMessageListener(
                     provider.Resolve<ILogger<KestrelHttpMessageListener>>(),
                     provider.Resolve<ISerializer<string>>(),
-                     provider.Resolve<IServiceEngineLifetime>(),
-                       provider.Resolve<IModuleProvider>(),
-                       provider.Resolve<IServiceRouteProvider>(),
-                     provider.Resolve<CPlatformContainer>()
-
-                      );
+                    provider.Resolve<IServiceEngineLifetime>(),
+                    provider.Resolve<IModuleProvider>(),
+                    provider.Resolve<IServiceRouteProvider>(),
+                    provider.Resolve<CPlatformContainer>()
+                );
             }).SingleInstance();
             builder.Register(provider =>
             {
@@ -128,7 +126,6 @@ namespace KissU.Core.KestrelHttpServer
                     await messageListener.StartAsync(address?.Address, address?.Port);
                     return messageListener;
                 }, executor, messageListener);
-
             }).As<IServiceHost>();
         }
     }

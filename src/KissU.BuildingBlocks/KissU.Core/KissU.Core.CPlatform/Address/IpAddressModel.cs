@@ -77,7 +77,7 @@ namespace KissU.Core.CPlatform.Address
         /// <returns>A <see cref="string" /> that represents this instance.</returns>
         public override string ToString()
         {
-            return string.Concat(new[] { Ip, ":", Port.ToString() });
+            return string.Concat(new[] {Ip, ":", Port.ToString()});
         }
     }
 }

@@ -55,7 +55,7 @@ namespace KissU.Core.CPlatform.Module
                 {
                     Address = route.Address,
                     Descriptor = route.ServiceDescriptor,
-                    Item = key,
+                    Item = key
                 });
                 _serviceHeartbeatManager.AddWhitelist(route.ServiceDescriptor.Id);
             }

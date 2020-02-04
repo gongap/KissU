@@ -1,8 +1,8 @@
-﻿using Com.Ctrip.Framework.Apollo;
+﻿using System;
+using System.Linq;
+using Com.Ctrip.Framework.Apollo;
 using Com.Ctrip.Framework.Apollo.Enums;
 using Com.Ctrip.Framework.Apollo.Spi;
-using System;
-using System.Linq;
 
 namespace KissU.Core.Configuration.Apollo.Configurations
 {
@@ -11,7 +11,6 @@ namespace KissU.Core.Configuration.Apollo.Configurations
     /// </summary>
     public static class ApolloConfigurationBuilderExtensions
     {
-
         /// <summary>
         /// 添加其他namespace
         /// </summary>
@@ -19,8 +18,11 @@ namespace KissU.Core.Configuration.Apollo.Configurations
         /// <param name="namespace">The namespace.</param>
         /// <param name="format">The format.</param>
         /// <returns>IApolloConfigurationBuilder.</returns>
-        public static IApolloConfigurationBuilder AddNamespaceKissUApollo(this IApolloConfigurationBuilder builder, string @namespace, ConfigFileFormat format = ConfigFileFormat.Json) =>
-            builder.AddNamespaceKissUApollo(@namespace, null, format);
+        public static IApolloConfigurationBuilder AddNamespaceKissUApollo(this IApolloConfigurationBuilder builder,
+            string @namespace, ConfigFileFormat format = ConfigFileFormat.Json)
+        {
+            return builder.AddNamespaceKissUApollo(@namespace, null, format);
+        }
 
         /// <summary>
         /// 添加其他namespace。如果sectionKey为null则添加到root中，可以直接读取，否则使用Configuration.GetSection(sectionKey)读取
@@ -32,10 +34,13 @@ namespace KissU.Core.Configuration.Apollo.Configurations
         /// <returns>IApolloConfigurationBuilder.</returns>
         /// <exception cref="ArgumentNullException">namespace</exception>
         /// <exception cref="ArgumentOutOfRangeException">format - 最小值{ConfigFileFormat.Properties}，最大值{ConfigFileFormat.Txt}</exception>
-        public static IApolloConfigurationBuilder AddNamespaceKissUApollo(this IApolloConfigurationBuilder builder, string @namespace, string? sectionKey, ConfigFileFormat format = ConfigFileFormat.Json)
+        public static IApolloConfigurationBuilder AddNamespaceKissUApollo(this IApolloConfigurationBuilder builder,
+            string @namespace, string? sectionKey, ConfigFileFormat format = ConfigFileFormat.Json)
         {
             if (string.IsNullOrWhiteSpace(@namespace)) throw new ArgumentNullException(nameof(@namespace));
-            if (format < ConfigFileFormat.Properties || format > ConfigFileFormat.Txt) throw new ArgumentOutOfRangeException(nameof(format), format, $"最小值{ConfigFileFormat.Properties}，最大值{ConfigFileFormat.Txt}");
+            if (format < ConfigFileFormat.Properties || format > ConfigFileFormat.Txt)
+                throw new ArgumentOutOfRangeException(nameof(format), format,
+                    $"最小值{ConfigFileFormat.Properties}，最大值{ConfigFileFormat.Txt}");
 
             if (format != ConfigFileFormat.Properties) @namespace += "." + format.GetString();
 
@@ -53,7 +58,8 @@ namespace KissU.Core.Configuration.Apollo.Configurations
             {
                 builder.Add(new KissUApolloConfigurationProvider(sectionKey, configRepository));
 #pragma warning disable 618
-                ApolloConfigurationManager.Manager.Registry.Register(@namespace, new DefaultConfigFactory(builder.ConfigRepositoryFactory));
+                ApolloConfigurationManager.Manager.Registry.Register(@namespace,
+                    new DefaultConfigFactory(builder.ConfigRepositoryFactory));
 #pragma warning restore 618
             }
 

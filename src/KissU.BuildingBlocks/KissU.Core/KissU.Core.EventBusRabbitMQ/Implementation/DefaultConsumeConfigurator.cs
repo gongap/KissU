@@ -14,12 +14,13 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
     /// Implements the <see cref="KissU.Core.EventBusRabbitMQ.IConsumeConfigurator" />
     /// </summary>
     /// <seealso cref="KissU.Core.EventBusRabbitMQ.IConsumeConfigurator" />
-    public class DefaultConsumeConfigurator: IConsumeConfigurator
+    public class DefaultConsumeConfigurator : IConsumeConfigurator
     {
-        private readonly IEventBus _eventBus;
         private readonly CPlatformContainer _container;
+        private readonly IEventBus _eventBus;
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="DefaultConsumeConfigurator"/> class.
+        /// Initializes a new instance of the <see cref="DefaultConsumeConfigurator" /> class.
         /// </summary>
         /// <param name="eventBus">The event bus.</param>
         /// <param name="container">The container.</param>
@@ -41,6 +42,7 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
                 {
                     continue;
                 }
+
                 var consumerType = consumer.GetInterfaces()
                     .Where(
                         d =>
@@ -51,7 +53,7 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
                 try
                 {
                     var type = consumer;
-                    this.FastInvoke(new[] { consumerType, consumer },
+                    this.FastInvoke(new[] {consumerType, consumer},
                         x => x.ConsumerTo<object, IIntegrationEventHandler<object>>());
                 }
                 catch (Exception ex)
@@ -73,6 +75,7 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
                 {
                     continue;
                 }
+
                 var consumerType = consumer.GetInterfaces()
                     .Where(
                         d =>
@@ -83,7 +86,7 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
                 try
                 {
                     var type = consumer;
-                    this.FastInvoke(new[] { consumerType, consumer },
+                    this.FastInvoke(new[] {consumerType, consumer},
                         x => x.RemoveConsumer<object, IIntegrationEventHandler<object>>());
                 }
                 catch (Exception ex)
@@ -98,12 +101,12 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
         /// </summary>
         /// <typeparam name="TEvent">The type of the t event.</typeparam>
         /// <typeparam name="TConsumer">The type of the t consumer.</typeparam>
-        protected void ConsumerTo<TEvent,TConsumer>()
+        protected void ConsumerTo<TEvent, TConsumer>()
             where TConsumer : IIntegrationEventHandler<TEvent>
             where TEvent : class
         {
             _eventBus.Subscribe<TEvent, TConsumer>
-              (() => (TConsumer)_container.GetInstances(typeof(TConsumer)));
+                (() => (TConsumer) _container.GetInstances(typeof(TConsumer)));
         }
 
         /// <summary>
@@ -112,8 +115,8 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
         /// <typeparam name="TEvent">The type of the t event.</typeparam>
         /// <typeparam name="TConsumer">The type of the t consumer.</typeparam>
         protected void RemoveConsumer<TEvent, TConsumer>()
-         where TConsumer : IIntegrationEventHandler<TEvent>
-         where TEvent : class
+            where TConsumer : IIntegrationEventHandler<TEvent>
+            where TEvent : class
         {
             _eventBus.Unsubscribe<TEvent, TConsumer>();
         }

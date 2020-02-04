@@ -18,7 +18,7 @@ namespace KissU.Core.DNS.Configurations
         /// <returns>IConfigurationBuilder.</returns>
         public static IConfigurationBuilder AddDnsFile(this IConfigurationBuilder builder, string path)
         {
-            return AddDnsFile(builder, provider: null, path: path, basePath: null, optional: false, reloadOnChange: false);
+            return AddDnsFile(builder, null, path, null, false, false);
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace KissU.Core.DNS.Configurations
         /// <returns>IConfigurationBuilder.</returns>
         public static IConfigurationBuilder AddDnsFile(this IConfigurationBuilder builder, string path, bool optional)
         {
-            return AddDnsFile(builder, provider: null, path: path, basePath: null, optional: optional, reloadOnChange: false);
+            return AddDnsFile(builder, null, path, null, optional, false);
         }
 
         /// <summary>
@@ -41,9 +41,10 @@ namespace KissU.Core.DNS.Configurations
         /// <param name="optional">if set to <c>true</c> [optional].</param>
         /// <param name="reloadOnChange">if set to <c>true</c> [reload on change].</param>
         /// <returns>IConfigurationBuilder.</returns>
-        public static IConfigurationBuilder AddDnsFile(this IConfigurationBuilder builder, string path, bool optional, bool reloadOnChange)
+        public static IConfigurationBuilder AddDnsFile(this IConfigurationBuilder builder, string path, bool optional,
+            bool reloadOnChange)
         {
-            return AddDnsFile(builder, provider: null, path: path, basePath: null, optional: optional, reloadOnChange: reloadOnChange);
+            return AddDnsFile(builder, null, path, null, optional, reloadOnChange);
         }
 
         /// <summary>
@@ -55,9 +56,10 @@ namespace KissU.Core.DNS.Configurations
         /// <param name="optional">if set to <c>true</c> [optional].</param>
         /// <param name="reloadOnChange">if set to <c>true</c> [reload on change].</param>
         /// <returns>IConfigurationBuilder.</returns>
-        public static IConfigurationBuilder AddDnsFile(this IConfigurationBuilder builder, string path, string basePath, bool optional, bool reloadOnChange)
+        public static IConfigurationBuilder AddDnsFile(this IConfigurationBuilder builder, string path, string basePath,
+            bool optional, bool reloadOnChange)
         {
-            return AddDnsFile(builder, provider: null, path: path, basePath: basePath, optional: optional, reloadOnChange: reloadOnChange);
+            return AddDnsFile(builder, null, path, basePath, optional, reloadOnChange);
         }
 
         /// <summary>
@@ -70,7 +72,8 @@ namespace KissU.Core.DNS.Configurations
         /// <param name="optional">if set to <c>true</c> [optional].</param>
         /// <param name="reloadOnChange">if set to <c>true</c> [reload on change].</param>
         /// <returns>IConfigurationBuilder.</returns>
-        public static IConfigurationBuilder AddDnsFile(this IConfigurationBuilder builder, IFileProvider provider, string path, string basePath, bool optional, bool reloadOnChange)
+        public static IConfigurationBuilder AddDnsFile(this IConfigurationBuilder builder, IFileProvider provider,
+            string path, string basePath, bool optional, bool reloadOnChange)
         {
             Check.NotNull(builder, "builder");
             Check.CheckCondition(() => string.IsNullOrEmpty(path), "path");

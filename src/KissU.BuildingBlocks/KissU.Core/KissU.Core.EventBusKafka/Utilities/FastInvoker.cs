@@ -10,8 +10,8 @@ namespace KissU.Core.EventBusKafka.Utilities
     /// <typeparam name="T"></typeparam>
     public class FastInvoker<T>
     {
-        [ThreadStatic]
-        static FastInvoker<T> _current;
+        [ThreadStatic] private static FastInvoker<T> _current;
+
         /// <summary>
         /// Gets the current.
         /// </summary>
@@ -36,7 +36,7 @@ namespace KissU.Core.EventBusKafka.Utilities
             var call = expression.Body as MethodCallExpression;
             if (call == null)
                 throw new ArgumentException("只支持方法调用表达式。 ", "expression");
-            Action<T> invoker = GetInvoker(() => call.Method);
+            var invoker = GetInvoker(() => call.Method);
             invoker(target);
         }
 
@@ -53,8 +53,8 @@ namespace KissU.Core.EventBusKafka.Utilities
             if (call == null)
                 throw new ArgumentException("只支持方法调用表达式", "expression");
 
-            MethodInfo method = call.Method;
-            Action<T> invoker = GetInvoker(() =>
+            var method = call.Method;
+            var invoker = GetInvoker(() =>
             {
                 if (method.IsGenericMethod)
                     return GetGenericMethodFromTypes(method.GetGenericMethodDefinition(), genericTypes);
@@ -63,31 +63,30 @@ namespace KissU.Core.EventBusKafka.Utilities
             invoker(target);
         }
 
-        MethodInfo GetGenericMethodFromTypes(MethodInfo method, Type[] genericTypes)
+        private MethodInfo GetGenericMethodFromTypes(MethodInfo method, Type[] genericTypes)
         {
             if (!method.IsGenericMethod)
                 throw new ArgumentException("不能为非泛型方法指定泛型类型。: " + method.Name);
-            Type[] genericArguments = method.GetGenericArguments();
+            var genericArguments = method.GetGenericArguments();
             if (genericArguments.Length != genericTypes.Length)
             {
                 throw new ArgumentException("传递的泛型参数的数目错误" + genericTypes.Length
-                                            + " (needed " + genericArguments.Length + ")");
+                                                           + " (needed " + genericArguments.Length + ")");
             }
+
             method = method.GetGenericMethodDefinition().MakeGenericMethod(genericTypes);
             return method;
         }
 
-        Action<T> GetInvoker(Func<MethodInfo> getMethodInfo)
+        private Action<T> GetInvoker(Func<MethodInfo> getMethodInfo)
         {
-            MethodInfo method = getMethodInfo();
+            var method = getMethodInfo();
 
-            ParameterExpression instanceParameter = Expression.Parameter(typeof(T), "target");
+            var instanceParameter = Expression.Parameter(typeof(T), "target");
 
-            MethodCallExpression call = Expression.Call(instanceParameter, method);
+            var call = Expression.Call(instanceParameter, method);
 
-            return Expression.Lambda<Action<T>>(call, new[] { instanceParameter }).Compile();
-
+            return Expression.Lambda<Action<T>>(call, instanceParameter).Compile();
         }
     }
 }
- 

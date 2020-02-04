@@ -12,10 +12,12 @@ namespace KissU.Core.Zookeeper.Configurations
     public class ZookeeperConfigurationProvider : FileConfigurationProvider
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ZookeeperConfigurationProvider"/> class.
+        /// Initializes a new instance of the <see cref="ZookeeperConfigurationProvider" /> class.
         /// </summary>
         /// <param name="source">The source.</param>
-        public ZookeeperConfigurationProvider(ZookeeperConfigurationSource source) : base(source) { }
+        public ZookeeperConfigurationProvider(ZookeeperConfigurationSource source) : base(source)
+        {
+        }
 
         /// <summary>
         /// Loads the specified stream.
@@ -24,7 +26,7 @@ namespace KissU.Core.Zookeeper.Configurations
         public override void Load(Stream stream)
         {
             var parser = new JsonConfigurationParser();
-            this.Data = parser.Parse(stream, null);
+            Data = parser.Parse(stream, null);
         }
     }
 }

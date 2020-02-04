@@ -41,33 +41,33 @@ namespace KissU.Core.Protocol.Mqtt
             base.RegisterBuilder(builder);
             builder.RegisterType<MqttTransportDiagnosticProcessor>().As<ITracingDiagnosticProcessor>().SingleInstance();
             builder.RegisterType(typeof(DefaultMqttServiceFactory)).As(typeof(IMqttServiceFactory)).SingleInstance();
-            builder.RegisterType(typeof(DefaultMqttBrokerEntryManager)).As(typeof(IMqttBrokerEntryManger)).SingleInstance();
+            builder.RegisterType(typeof(DefaultMqttBrokerEntryManager)).As(typeof(IMqttBrokerEntryManger))
+                .SingleInstance();
             builder.RegisterType(typeof(MqttRemoteInvokeService)).As(typeof(IMqttRemoteInvokeService)).SingleInstance();
             builder.Register(provider =>
             {
                 return new WillService(
-                            provider.Resolve<ILogger<WillService>>(),
-                             provider.Resolve<CPlatformContainer>()
-                    );
+                    provider.Resolve<ILogger<WillService>>(),
+                    provider.Resolve<CPlatformContainer>()
+                );
             }).As<IWillService>().SingleInstance();
-            builder.Register(provider =>
-            {
-                return new MessagePushService(new SacnScheduled());
-            }).As<IMessagePushService>().SingleInstance();
+            builder.Register(provider => { return new MessagePushService(new SacnScheduled()); })
+                .As<IMessagePushService>().SingleInstance();
             builder.RegisterType(typeof(ClientSessionService)).As(typeof(IClientSessionService)).SingleInstance();
             builder.Register(provider =>
             {
                 return new MqttChannelService(
-                        provider.Resolve<IMessagePushService>(),
-                        provider.Resolve<IClientSessionService>(),
-                        provider.Resolve<ILogger<MqttChannelService>>(),
-                        provider.Resolve<IWillService>(),
-                        provider.Resolve<IMqttBrokerEntryManger>(),
-                         provider.Resolve<IMqttRemoteInvokeService>(),
-                         provider.Resolve<IServiceIdGenerator>()
-                    );
+                    provider.Resolve<IMessagePushService>(),
+                    provider.Resolve<IClientSessionService>(),
+                    provider.Resolve<ILogger<MqttChannelService>>(),
+                    provider.Resolve<IWillService>(),
+                    provider.Resolve<IMqttBrokerEntryManger>(),
+                    provider.Resolve<IMqttRemoteInvokeService>(),
+                    provider.Resolve<IServiceIdGenerator>()
+                );
             }).As(typeof(IChannelService)).SingleInstance();
-            builder.RegisterType(typeof(DefaultMqttBehaviorProvider)).As(typeof(IMqttBehaviorProvider)).SingleInstance();
+            builder.RegisterType(typeof(DefaultMqttBehaviorProvider)).As(typeof(IMqttBehaviorProvider))
+                .SingleInstance();
 
             if (AppConfig.ServerOptions.Protocol == CommunicationProtocol.Mqtt)
             {
@@ -83,43 +83,41 @@ namespace KissU.Core.Protocol.Mqtt
         {
             builder.Register(provider =>
             {
-                return new DotNettyMqttServerMessageListener(provider.Resolve<ILogger<DotNettyMqttServerMessageListener>>(),
-                      provider.Resolve<IChannelService>(),
-                      provider.Resolve<IMqttBehaviorProvider>()
-                      );
+                return new DotNettyMqttServerMessageListener(
+                    provider.Resolve<ILogger<DotNettyMqttServerMessageListener>>(),
+                    provider.Resolve<IChannelService>(),
+                    provider.Resolve<IMqttBehaviorProvider>()
+                );
             }).SingleInstance();
             builder.Register(provider =>
             {
-                
                 var messageListener = provider.Resolve<DotNettyMqttServerMessageListener>();
                 return new DefaultServiceHost(async endPoint =>
                 {
                     await messageListener.StartAsync(endPoint);
                     return messageListener;
                 }, null);
-
             }).As<IServiceHost>();
         }
 
         private static void RegisterMqttProtocol(ContainerBuilderWrapper builder)
         {
-
             builder.Register(provider =>
             {
-                return new DotNettyMqttServerMessageListener(provider.Resolve<ILogger<DotNettyMqttServerMessageListener>>(),
-                     provider.Resolve<IChannelService>(),
-                     provider.Resolve<IMqttBehaviorProvider>()
-                     );
+                return new DotNettyMqttServerMessageListener(
+                    provider.Resolve<ILogger<DotNettyMqttServerMessageListener>>(),
+                    provider.Resolve<IChannelService>(),
+                    provider.Resolve<IMqttBehaviorProvider>()
+                );
             }).SingleInstance();
             builder.Register(provider =>
-            { 
+            {
                 var messageListener = provider.Resolve<DotNettyMqttServerMessageListener>();
                 return new MqttServiceHost(async endPoint =>
                 {
                     await messageListener.StartAsync(endPoint);
                     return messageListener;
                 });
-
             }).As<IServiceHost>();
         }
     }

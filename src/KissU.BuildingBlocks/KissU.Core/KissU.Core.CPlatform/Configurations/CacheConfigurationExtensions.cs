@@ -92,7 +92,7 @@ namespace KissU.Core.CPlatform.Configurations
                     FileProvider = provider,
                     Path = path,
                     Optional = optional,
-                    ReloadOnChange = reloadOnChange,
+                    ReloadOnChange = reloadOnChange
                 };
 
                 builder.Add(source);

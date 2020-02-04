@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Concurrent;
+﻿using System.Collections.Concurrent;
 using KissU.Core.Protocol.Mqtt.Internal.Messages;
 
 namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
@@ -9,10 +8,10 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
     /// Implements the <see cref="KissU.Core.Protocol.Mqtt.Internal.Services.IClientSessionService" />
     /// </summary>
     /// <seealso cref="KissU.Core.Protocol.Mqtt.Internal.Services.IClientSessionService" />
-    public class ClientSessionService: IClientSessionService
+    public class ClientSessionService : IClientSessionService
     {
-        private  readonly ConcurrentDictionary<String, ConcurrentQueue<SessionMessage>> _clientsessionMessages = 
-            new ConcurrentDictionary<String, ConcurrentQueue<SessionMessage>>();
+        private readonly ConcurrentDictionary<string, ConcurrentQueue<SessionMessage>> _clientsessionMessages =
+            new ConcurrentDictionary<string, ConcurrentQueue<SessionMessage>>();
 
         /// <summary>
         /// Gets the messages.
@@ -21,7 +20,7 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
         /// <returns>ConcurrentQueue&lt;SessionMessage&gt;.</returns>
         public ConcurrentQueue<SessionMessage> GetMessages(string deviceId)
         {
-            _clientsessionMessages.TryGetValue(deviceId, out ConcurrentQueue<SessionMessage> messages);
+            _clientsessionMessages.TryGetValue(deviceId, out var messages);
             return messages;
         }
 
@@ -32,7 +31,7 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
         /// <param name="sessionMessage">The session message.</param>
         public void SaveMessage(string deviceId, SessionMessage sessionMessage)
         {
-            _clientsessionMessages.TryGetValue(deviceId, out ConcurrentQueue<SessionMessage> sessionMessages);
+            _clientsessionMessages.TryGetValue(deviceId, out var sessionMessages);
             _clientsessionMessages.AddOrUpdate(deviceId, sessionMessages, (id, message) =>
             {
                 message.Enqueue(sessionMessage);

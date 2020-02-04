@@ -1,4 +1,5 @@
-﻿using KissU.Core.CPlatform.Module;
+﻿using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Module;
 using KissU.Core.CPlatform.Utilities;
 using KissU.Core.KestrelHttpServer;
 using KissU.Core.Log4net;
@@ -7,7 +8,6 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.Kestrel.Log4net
 {
-
     /// <summary>
     /// KestrelLog4netModule.
     /// Implements the <see cref="KestrelHttpModule" />
@@ -16,13 +16,13 @@ namespace KissU.Core.Kestrel.Log4net
     public class KestrelLog4netModule : KestrelHttpModule
     {
         private string log4NetConfigFile = "${LogPath}|log4net.config";
+
         /// <summary>
         /// Initializes the specified context.
         /// </summary>
         /// <param name="context">The context.</param>
         public override void Initialize(AppModuleContext context)
         {
-
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace KissU.Core.Kestrel.Log4net
         {
             var serviceProvider = context.Builder.ApplicationServices;
             base.Initialize(context);
-            var section = CPlatform.AppConfig.GetSection("Logging");
+            var section = AppConfig.GetSection("Logging");
             log4NetConfigFile = EnvironmentHelper.GetEnvironmentVariable(log4NetConfigFile);
             serviceProvider.GetService<ILoggerFactory>().AddProvider(new Log4NetProvider(log4NetConfigFile));
         }
@@ -61,7 +61,6 @@ namespace KissU.Core.Kestrel.Log4net
         /// <param name="builder">构建器包装</param>
         protected override void RegisterBuilder(ContainerBuilderWrapper builder)
         {
-
         }
     }
 }

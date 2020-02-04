@@ -30,27 +30,15 @@ namespace KissU.Core.Protocol.Mqtt
     /// <seealso cref="System.IDisposable" />
     public class DotNettyMqttServerMessageListener : IMessageListener, IDisposable
     {
-        #region Field
-
-        private readonly ILogger<DotNettyMqttServerMessageListener> _logger;
-        private IChannel _channel;
-        private readonly IChannelService _channelService;
-        private readonly IMqttBehaviorProvider _mqttBehaviorProvider;
-        #endregion Field
-
-        /// <summary>
-        /// 接收到消息的事件。
-        /// </summary>
-        public event ReceivedDelegate Received;
-
         #region Constructor
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="DotNettyMqttServerMessageListener"/> class.
+        /// Initializes a new instance of the <see cref="DotNettyMqttServerMessageListener" /> class.
         /// </summary>
         /// <param name="logger">The logger.</param>
         /// <param name="channelService">The channel service.</param>
         /// <param name="mqttBehaviorProvider">The MQTT behavior provider.</param>
-        public DotNettyMqttServerMessageListener(ILogger<DotNettyMqttServerMessageListener> logger, 
+        public DotNettyMqttServerMessageListener(ILogger<DotNettyMqttServerMessageListener> logger,
             IChannelService channelService,
             IMqttBehaviorProvider mqttBehaviorProvider)
         {
@@ -58,6 +46,7 @@ namespace KissU.Core.Protocol.Mqtt
             _channelService = channelService;
             _mqttBehaviorProvider = mqttBehaviorProvider;
         }
+
         #endregion
 
         /// <summary>
@@ -68,6 +57,11 @@ namespace KissU.Core.Protocol.Mqtt
         {
             throw new NotImplementedException();
         }
+
+        /// <summary>
+        /// 接收到消息的事件。
+        /// </summary>
+        public event ReceivedDelegate Received;
 
         /// <summary>
         /// 触发接收到消息事件。
@@ -91,7 +85,9 @@ namespace KissU.Core.Protocol.Mqtt
             if (_logger.IsEnabled(LogLevel.Debug))
                 _logger.LogDebug($"准备启动Mqtt服务主机，监听地址：{endPoint}。");
             IEventLoopGroup bossGroup = new MultithreadEventLoopGroup(1);
-            IEventLoopGroup workerGroup = new MultithreadEventLoopGroup();//Default eventLoopCount is Environment.ProcessorCount * 2
+            IEventLoopGroup
+                workerGroup =
+                    new MultithreadEventLoopGroup(); //Default eventLoopCount is Environment.ProcessorCount * 2
             var bootstrap = new ServerBootstrap();
             if (AppConfig.ServerOptions.Libuv)
             {
@@ -106,21 +102,23 @@ namespace KissU.Core.Protocol.Mqtt
                 workerGroup = new MultithreadEventLoopGroup();
                 bootstrap.Channel<TcpServerSocketChannel>();
             }
+
             bootstrap
-            .Option(ChannelOption.SoBacklog, AppConfig.ServerOptions.SoBacklog)
-            .ChildOption(ChannelOption.Allocator, PooledByteBufferAllocator.Default)
-            .Group(bossGroup, workerGroup)
-            .Option(ChannelOption.TcpNodelay, true)
-            .ChildHandler(new ActionChannelInitializer<IChannel>(channel =>
-            {
-                IChannelPipeline pipeline = channel.Pipeline;
-                pipeline.AddLast(MqttEncoder.Instance,
-                    new MqttDecoder(true, 256 * 1024), new ServerHandler(async (context, packetType, message) =>
+                .Option(ChannelOption.SoBacklog, AppConfig.ServerOptions.SoBacklog)
+                .ChildOption(ChannelOption.Allocator, PooledByteBufferAllocator.Default)
+                .Group(bossGroup, workerGroup)
+                .Option(ChannelOption.TcpNodelay, true)
+                .ChildHandler(new ActionChannelInitializer<IChannel>(channel =>
                 {
-                    var mqttHandlerService = new ServerMqttHandlerService(_logger, _channelService, _mqttBehaviorProvider);
-                    await ChannelWrite(context, message, packetType, mqttHandlerService);
-                }, _logger, _channelService, _mqttBehaviorProvider));
-            }));
+                    var pipeline = channel.Pipeline;
+                    pipeline.AddLast(MqttEncoder.Instance,
+                        new MqttDecoder(true, 256 * 1024), new ServerHandler(async (context, packetType, message) =>
+                        {
+                            var mqttHandlerService =
+                                new ServerMqttHandlerService(_logger, _channelService, _mqttBehaviorProvider);
+                            await ChannelWrite(context, message, packetType, mqttHandlerService);
+                        }, _logger, _channelService, _mqttBehaviorProvider));
+                }));
             try
             {
                 _channel = await bootstrap.BindAsync(endPoint);
@@ -140,12 +138,13 @@ namespace KissU.Core.Protocol.Mqtt
         /// <param name="message">The message.</param>
         /// <param name="packetType">Type of the packet.</param>
         /// <param name="mqttHandlerService">The MQTT handler service.</param>
-        public async Task ChannelWrite(IChannelHandlerContext context,object message, PacketType packetType, ServerMqttHandlerService mqttHandlerService)
+        public async Task ChannelWrite(IChannelHandlerContext context, object message, PacketType packetType,
+            ServerMqttHandlerService mqttHandlerService)
         {
             switch (packetType)
             {
                 case PacketType.CONNECT:
-                   await mqttHandlerService.Login(context, message as ConnectPacket);
+                    await mqttHandlerService.Login(context, message as ConnectPacket);
                     break;
                 case PacketType.PUBLISH:
                     await mqttHandlerService.Publish(context, message as PublishPacket);
@@ -186,6 +185,22 @@ namespace KissU.Core.Protocol.Mqtt
             }
         }
 
+        private void WirteDiagnosticError(TransportMessage message)
+        {
+            if (!AppConfig.ServerOptions.DisableDiagnostic)
+            {
+                var diagnosticListener = new DiagnosticListener(DiagnosticListenerExtensions.DiagnosticListenerName);
+                var remoteInvokeResultMessage = message.GetContent<RemoteInvokeResultMessage>();
+                diagnosticListener.WriteTransportError(TransportType.Mqtt, new TransportErrorEventData(
+                    new DiagnosticMessage
+                    {
+                        Content = message.Content,
+                        ContentType = message.ContentType,
+                        Id = message.Id
+                    }, new Exception(remoteInvokeResultMessage.ExceptionMessage)));
+            }
+        }
+
         /// <summary>
         /// ServerHandler.
         /// Implements the <see cref="DotNetty.Transport.Channels.ChannelHandlerAdapter" />
@@ -193,20 +208,20 @@ namespace KissU.Core.Protocol.Mqtt
         /// <seealso cref="DotNetty.Transport.Channels.ChannelHandlerAdapter" />
         private class ServerHandler : ChannelHandlerAdapter
         {
-            private readonly Action<IChannelHandlerContext, PacketType, object> _readAction;
             private readonly ILogger _logger;
+            private readonly Action<IChannelHandlerContext, PacketType, object> _readAction;
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="ServerHandler"/> class.
+            /// Initializes a new instance of the <see cref="ServerHandler" /> class.
             /// </summary>
             /// <param name="readAction">The read action.</param>
             /// <param name="logger">The logger.</param>
             /// <param name="channelService">The channel service.</param>
             /// <param name="mqttBehaviorProvider">The MQTT behavior provider.</param>
-            public ServerHandler(Action<IChannelHandlerContext,PacketType, object> readAction, 
+            public ServerHandler(Action<IChannelHandlerContext, PacketType, object> readAction,
                 ILogger logger,
                 IChannelService channelService,
-                IMqttBehaviorProvider mqttBehaviorProvider)  
+                IMqttBehaviorProvider mqttBehaviorProvider)
             {
                 _readAction = readAction;
                 _logger = logger;
@@ -218,7 +233,7 @@ namespace KissU.Core.Protocol.Mqtt
             /// <param name="context">The context.</param>
             /// <param name="message">The message.</param>
             public override void ChannelRead(IChannelHandlerContext context, object message)
-            { 
+            {
                 var buffer = message as Packet;
                 _readAction(context, buffer.PacketType, buffer);
                 ReferenceCountUtil.Release(message);
@@ -230,7 +245,7 @@ namespace KissU.Core.Protocol.Mqtt
             /// <param name="context">The context.</param>
             public override void ChannelInactive(IChannelHandlerContext context)
             {
-                this.SetException(new InvalidOperationException("Channel is closed."));
+                SetException(new InvalidOperationException("Channel is closed."));
                 base.ChannelInactive(context);
             }
 
@@ -241,30 +256,24 @@ namespace KissU.Core.Protocol.Mqtt
             /// <param name="exception">The exception.</param>
             public override void ExceptionCaught(IChannelHandlerContext context, Exception exception)
             {
-                _readAction.Invoke(context,PacketType.DISCONNECT,DisconnectPacket.Instance);
-                this.SetException(exception);
+                _readAction.Invoke(context, PacketType.DISCONNECT, DisconnectPacket.Instance);
+                SetException(exception);
             }
 
-            void SetException(Exception ex)
+            private void SetException(Exception ex)
             {
                 if (_logger.IsEnabled(LogLevel.Error))
                     _logger.LogError($"message:{ex.Message},Source:{ex.Source},Trace:{ex.StackTrace}");
             }
         }
 
-        private void WirteDiagnosticError(TransportMessage message)
-        {
-            if (!AppConfig.ServerOptions.DisableDiagnostic)
-            {
-                var diagnosticListener = new DiagnosticListener(DiagnosticListenerExtensions.DiagnosticListenerName);
-                var remoteInvokeResultMessage = message.GetContent<RemoteInvokeResultMessage>();
-                diagnosticListener.WriteTransportError(TransportType.Mqtt, new TransportErrorEventData(new DiagnosticMessage
-                {
-                    Content = message.Content,
-                    ContentType = message.ContentType,
-                    Id = message.Id
-                }, new Exception(remoteInvokeResultMessage.ExceptionMessage)));
-            }
-        }
+        #region Field
+
+        private readonly ILogger<DotNettyMqttServerMessageListener> _logger;
+        private IChannel _channel;
+        private readonly IChannelService _channelService;
+        private readonly IMqttBehaviorProvider _mqttBehaviorProvider;
+
+        #endregion Field
     }
 }

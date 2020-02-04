@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using KissU.Core.CPlatform.Address;
 using KissU.Core.CPlatform.Exceptions;
 using KissU.Core.CPlatform.Runtime.Client;
 using KissU.Core.CPlatform.Runtime.Client.HealthChecks;
@@ -17,25 +16,25 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Runtime.Implementation
     /// Implements the <see cref="KissU.Core.Protocol.Mqtt.Internal.Runtime.IMqttRemoteInvokeService" />
     /// </summary>
     /// <seealso cref="KissU.Core.Protocol.Mqtt.Internal.Runtime.IMqttRemoteInvokeService" />
-    public class MqttRemoteInvokeService:IMqttRemoteInvokeService
-    { 
-        private readonly ITransportClientFactory _transportClientFactory;
-        private readonly ILogger<MqttRemoteInvokeService> _logger;
+    public class MqttRemoteInvokeService : IMqttRemoteInvokeService
+    {
         private readonly IHealthCheckService _healthCheckService;
+        private readonly ILogger<MqttRemoteInvokeService> _logger;
         private readonly IMqttBrokerEntryManger _mqttBrokerEntryManger;
+        private readonly ITransportClientFactory _transportClientFactory;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MqttRemoteInvokeService"/> class.
+        /// Initializes a new instance of the <see cref="MqttRemoteInvokeService" /> class.
         /// </summary>
         /// <param name="transportClientFactory">The transport client factory.</param>
         /// <param name="logger">The logger.</param>
         /// <param name="healthCheckService">The health check service.</param>
         /// <param name="mqttBrokerEntryManger">The MQTT broker entry manger.</param>
-        public MqttRemoteInvokeService( ITransportClientFactory transportClientFactory,
-            ILogger<MqttRemoteInvokeService> logger, 
+        public MqttRemoteInvokeService(ITransportClientFactory transportClientFactory,
+            ILogger<MqttRemoteInvokeService> logger,
             IHealthCheckService healthCheckService,
             IMqttBrokerEntryManger mqttBrokerEntryManger)
-        { 
+        {
             _transportClientFactory = transportClientFactory;
             _logger = logger;
             _healthCheckService = healthCheckService;
@@ -50,7 +49,7 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Runtime.Implementation
         /// <param name="context">The context.</param>
         public async Task InvokeAsync(RemoteInvokeContext context)
         {
-              await InvokeAsync(context, Task.Factory.CancellationToken);
+            await InvokeAsync(context, Task.Factory.CancellationToken);
         }
 
         /// <summary>
@@ -64,9 +63,9 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Runtime.Implementation
             if (mqttContext != null)
             {
                 var invokeMessage = context.InvokeMessage;
-                var host= NetUtils.GetHostAddress();
+                var host = NetUtils.GetHostAddress();
                 var addresses = await _mqttBrokerEntryManger.GetMqttBrokerAddress(mqttContext.topic);
-                addresses = addresses.Except(new AddressModel[] { host });
+                addresses = addresses.Except(new[] {host});
                 foreach (var address in addresses)
                 {
                     try
@@ -74,7 +73,7 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Runtime.Implementation
                         var endPoint = address.CreateEndPoint();
                         if (_logger.IsEnabled(LogLevel.Debug))
                             _logger.LogDebug($"使用地址：'{endPoint}'进行调用。");
-                        var client =await _transportClientFactory.CreateClientAsync(endPoint);
+                        var client = await _transportClientFactory.CreateClientAsync(endPoint);
                         await client.SendAsync(invokeMessage, cancellationToken).WithCancellation(cancellationToken);
                     }
                     catch (CommunicationException)
@@ -104,7 +103,7 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Runtime.Implementation
                 var addresses = await _mqttBrokerEntryManger.GetMqttBrokerAddress(mqttContext.topic);
                 if (addresses != null)
                 {
-                    addresses = addresses.Except(new AddressModel[] { host });
+                    addresses = addresses.Except(new[] {host});
                     foreach (var address in addresses)
                     {
                         try
@@ -112,10 +111,10 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Runtime.Implementation
                             var endPoint = address.CreateEndPoint();
                             if (_logger.IsEnabled(LogLevel.Debug))
                                 _logger.LogDebug($"使用地址：'{endPoint}'进行调用。");
-                            var client =await _transportClientFactory.CreateClientAsync(endPoint);
+                            var client = await _transportClientFactory.CreateClientAsync(endPoint);
                             using (var cts = new CancellationTokenSource())
                             {
-                                await client.SendAsync(invokeMessage,cts.Token).WithCancellation(cts,requestTimeout);
+                                await client.SendAsync(invokeMessage, cts.Token).WithCancellation(cts, requestTimeout);
                             }
                         }
                         catch (CommunicationException)
@@ -125,13 +124,11 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Runtime.Implementation
                         catch (Exception exception)
                         {
                             _logger.LogError(exception, $"发起mqtt请求中发生了错误，服务Id：{invokeMessage.ServiceId}。");
-
                         }
                     }
                 }
             }
         }
-        
 
         #endregion Implementation of IRemoteInvokeService
     }

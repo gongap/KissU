@@ -9,7 +9,6 @@ namespace KissU.Core.Protocol.WS.Attributes
     /// <seealso cref="System.Attribute" />
     public class BehaviorContractAttribute : Attribute
     {
-
         /// <summary>
         /// Gets or sets a value indicating whether [ignore extensions].
         /// </summary>

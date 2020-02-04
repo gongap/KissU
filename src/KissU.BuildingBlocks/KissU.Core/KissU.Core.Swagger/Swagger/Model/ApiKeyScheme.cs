@@ -8,6 +8,14 @@
     public class ApiKeyScheme : SecurityScheme
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="ApiKeyScheme" /> class.
+        /// </summary>
+        public ApiKeyScheme()
+        {
+            Type = "apiKey";
+        }
+
+        /// <summary>
         /// Gets or sets the name.
         /// </summary>
         public string Name { get; set; }
@@ -16,13 +24,5 @@
         /// Gets or sets the in.
         /// </summary>
         public string In { get; set; }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ApiKeyScheme"/> class.
-        /// </summary>
-        public ApiKeyScheme()
-        {
-            Type = "apiKey";
-        }
     }
 }

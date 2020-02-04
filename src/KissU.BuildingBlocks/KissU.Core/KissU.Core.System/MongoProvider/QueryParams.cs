@@ -6,7 +6,7 @@
     public class QueryParams
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="QueryParams"/> class.
+        /// Initializes a new instance of the <see cref="QueryParams" /> class.
         /// </summary>
         public QueryParams()
         {
@@ -28,7 +28,6 @@
         /// Gets or sets the size.
         /// </summary>
         public int Size { get; set; }
-
     }
 
     /// <summary>
@@ -38,7 +37,7 @@
     public class QueryParams<T>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="QueryParams{T}"/> class.
+        /// Initializes a new instance of the <see cref="QueryParams{T}" /> class.
         /// </summary>
         public QueryParams()
         {
@@ -65,6 +64,5 @@
         /// Gets or sets the size.
         /// </summary>
         public int Size { get; set; }
-
     }
 }

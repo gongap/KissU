@@ -9,6 +9,7 @@
         /// The polling
         /// </summary>
         Polling,
+
         /// <summary>
         /// The random
         /// </summary>

@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using TransportType = KissU.Core.CPlatform.Diagnostics.TransportType;
 
 namespace KissU.Core.KestrelHttpServer
 {
@@ -31,17 +32,17 @@ namespace KissU.Core.KestrelHttpServer
     /// <seealso cref="System.IDisposable" />
     public class KestrelHttpMessageListener : HttpMessageListener, IDisposable
     {
+        private readonly CPlatformContainer _container;
+        private readonly IServiceEngineLifetime _lifetime;
         private readonly ILogger<KestrelHttpMessageListener> _logger;
+        private readonly IModuleProvider _moduleProvider;
+        private readonly ISerializer<string> _serializer;
+        private readonly IServiceRouteProvider _serviceRouteProvider;
         private IWebHost _host;
         private bool _isCompleted;
-        private readonly ISerializer<string> _serializer;
-        private readonly IServiceEngineLifetime _lifetime;
-        private readonly IModuleProvider _moduleProvider;
-        private readonly CPlatformContainer _container;
-        private readonly IServiceRouteProvider _serviceRouteProvider;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="KestrelHttpMessageListener"/> class.
+        /// Initializes a new instance of the <see cref="KestrelHttpMessageListener" /> class.
         /// </summary>
         /// <param name="logger">The logger.</param>
         /// <param name="serializer">The serializer.</param>
@@ -50,7 +51,7 @@ namespace KissU.Core.KestrelHttpServer
         /// <param name="serviceRouteProvider">The service route provider.</param>
         /// <param name="container">The container.</param>
         public KestrelHttpMessageListener(ILogger<KestrelHttpMessageListener> logger,
-            ISerializer<string> serializer, 
+            ISerializer<string> serializer,
             IServiceEngineLifetime lifetime,
             IModuleProvider moduleProvider,
             IServiceRouteProvider serviceRouteProvider,
@@ -65,12 +66,20 @@ namespace KissU.Core.KestrelHttpServer
         }
 
         /// <summary>
+        /// Disposes this instance.
+        /// </summary>
+        public void Dispose()
+        {
+            _host.Dispose();
+        }
+
+        /// <summary>
         /// start as an asynchronous operation.
         /// </summary>
         /// <param name="address">The address.</param>
         /// <param name="port">The port.</param>
-        public async Task StartAsync(IPAddress address,int? port)
-        { 
+        public async Task StartAsync(IPAddress address, int? port)
+        {
             try
             {
                 if (AppConfig.ServerOptions.DockerDeployMode == DockerDeployMode.Swarm)
@@ -79,43 +88,35 @@ namespace KissU.Core.KestrelHttpServer
                 }
 
                 var hostBuilder = new WebHostBuilder()
-                  .UseContentRoot(Directory.GetCurrentDirectory())
-                  .UseKestrel((context,options) =>
-                  {
-                      options.Limits.MinRequestBodyDataRate = null;
-                      options.Limits.MinResponseDataRate = null;
-                      options.Limits.MaxRequestBodySize = null;
-                      options.Limits.KeepAliveTimeout = TimeSpan.FromMinutes(30);
-                      if (port != null && port > 0)
-                          options.Listen(address, port.Value, listenOptions =>
-                          {
-                              listenOptions.Protocols = HttpProtocols.Http1AndHttp2;
-                          });
-                      ConfigureHost(context, options, address);
+                    .UseContentRoot(Directory.GetCurrentDirectory())
+                    .UseKestrel((context, options) =>
+                    {
+                        options.Limits.MinRequestBodyDataRate = null;
+                        options.Limits.MinResponseDataRate = null;
+                        options.Limits.MaxRequestBodySize = null;
+                        options.Limits.KeepAliveTimeout = TimeSpan.FromMinutes(30);
+                        if (port != null && port > 0)
+                            options.Listen(address, port.Value,
+                                listenOptions => { listenOptions.Protocols = HttpProtocols.Http1AndHttp2; });
+                        ConfigureHost(context, options, address);
+                    })
+                    .ConfigureServices(ConfigureServices)
+                    .ConfigureLogging(logger =>
+                    {
+                        logger.AddConfiguration(
+                            AppConfig.GetSection("Logging"));
+                    })
+                    .Configure(AppResolve);
 
-                  })
-                  .ConfigureServices(ConfigureServices)
-                  .ConfigureLogging((logger) =>
-                  {
-                      logger.AddConfiguration(
-                             CPlatform.AppConfig.GetSection("Logging"));
-                  })
-                  .Configure(AppResolve);
-
-                if (Directory.Exists(CPlatform.AppConfig.ServerOptions.WebRootPath))
-                    hostBuilder = hostBuilder.UseWebRoot(CPlatform.AppConfig.ServerOptions.WebRootPath);
+                if (Directory.Exists(AppConfig.ServerOptions.WebRootPath))
+                    hostBuilder = hostBuilder.UseWebRoot(AppConfig.ServerOptions.WebRootPath);
                 _host = hostBuilder.Build();
-                _lifetime.ServiceEngineStarted.Register(async () =>
-                {
-                    await _host.RunAsync();
-                });
-
+                _lifetime.ServiceEngineStarted.Register(async () => { await _host.RunAsync(); });
             }
             catch
             {
                 _logger.LogError($"http服务主机启动失败，监听地址：{address}:{port}。 ");
             }
-
         }
 
         /// <summary>
@@ -124,7 +125,7 @@ namespace KissU.Core.KestrelHttpServer
         /// <param name="context">The context.</param>
         /// <param name="options">The options.</param>
         /// <param name="ipAddress">The ip address.</param>
-        public void ConfigureHost(WebHostBuilderContext context, KestrelServerOptions options,IPAddress ipAddress)
+        public void ConfigureHost(WebHostBuilderContext context, KestrelServerOptions options, IPAddress ipAddress)
         {
             _moduleProvider.ConfigureHost(new WebHostContext(context, options, ipAddress));
         }
@@ -134,7 +135,7 @@ namespace KissU.Core.KestrelHttpServer
         /// </summary>
         /// <param name="services">The services.</param>
         public void ConfigureServices(IServiceCollection services)
-        { 
+        {
             var builder = new ContainerBuilder();
             services.AddMvc()
                 .AddNewtonsoftJson();
@@ -142,22 +143,19 @@ namespace KissU.Core.KestrelHttpServer
                 _moduleProvider.Modules,
                 _moduleProvider.VirtualPaths,
                 AppConfig.Configuration));
-            builder.Populate(services); 
+            builder.Populate(services);
             builder.Update(_container.Current.ComponentRegistry);
         }
 
         private void AppResolve(IApplicationBuilder app)
-        { 
+        {
             app.UseStaticFiles();
             app.UseRouting();
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapDefaultControllerRoute();
-            });
+            app.UseEndpoints(endpoints => { endpoints.MapDefaultControllerRoute(); });
             _moduleProvider.Initialize(new ApplicationInitializationContext(app, _moduleProvider.Modules,
                 _moduleProvider.VirtualPaths,
                 AppConfig.Configuration));
-            app.Run(async (context) =>
+            app.Run(async context =>
             {
                 var messageId = Guid.NewGuid().ToString("N");
                 var sender = new HttpServerMessageSender(_serializer, context);
@@ -180,22 +178,13 @@ namespace KissU.Core.KestrelHttpServer
             });
         }
 
-        private void WirteDiagnosticError(string messageId,Exception ex)
+        private void WirteDiagnosticError(string messageId, Exception ex)
         {
             var diagnosticListener = new DiagnosticListener(DiagnosticListenerExtensions.DiagnosticListenerName);
-            diagnosticListener.WriteTransportError(CPlatform.Diagnostics.TransportType.Rest, new TransportErrorEventData(new DiagnosticMessage
+            diagnosticListener.WriteTransportError(TransportType.Rest, new TransportErrorEventData(new DiagnosticMessage
             {
                 Id = messageId
             }, ex));
         }
-
-        /// <summary>
-        /// Disposes this instance.
-        /// </summary>
-        public void Dispose()
-        {
-            _host.Dispose();
-        }
-
     }
 }

@@ -9,6 +9,7 @@
         /// The open
         /// </summary>
         OPEN,
+
         /// <summary>
         /// The close
         /// </summary>

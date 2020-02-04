@@ -50,12 +50,12 @@ namespace KissU.Core.Consul
             UseConsulAddressSelector(builder)
                 .UseHealthCheck(builder)
                 .UseCounlClientProvider(builder, configInfo)
-               .UseConsulRouteManager(builder, configInfo)
-               .UseConsulServiceSubscribeManager(builder, configInfo)
-              .UseConsulCommandManager(builder, configInfo)
-              .UseConsulCacheManager(builder, configInfo)
-              .UseConsulWatch(builder, configInfo)
-              .UseConsulMqttRouteManager(builder, configInfo);
+                .UseConsulRouteManager(builder, configInfo)
+                .UseConsulServiceSubscribeManager(builder, configInfo)
+                .UseConsulCommandManager(builder, configInfo)
+                .UseConsulCacheManager(builder, configInfo)
+                .UseConsulWatch(builder, configInfo)
+                .UseConsulMqttRouteManager(builder, configInfo);
         }
 
         /// <summary>
@@ -67,15 +67,15 @@ namespace KissU.Core.Consul
         public ConsulModule UseConsulRouteManager(ContainerBuilderWrapper builder, ConfigInfo configInfo)
         {
             UseRouteManager(builder, provider =>
-           new ConsulServiceRouteManager(
-               GetConfigInfo(configInfo),
-            provider.GetRequiredService<ISerializer<byte[]>>(),
-              provider.GetRequiredService<ISerializer<string>>(),
-              provider.GetRequiredService<IClientWatchManager>(),
-              provider.GetRequiredService<IServiceRouteFactory>(),
-              provider.GetRequiredService<ILogger<ConsulServiceRouteManager>>(),
-               provider.GetRequiredService<IServiceHeartbeatManager>(), 
-               provider.GetRequiredService<IConsulClientProvider>()));
+                new ConsulServiceRouteManager(
+                    GetConfigInfo(configInfo),
+                    provider.GetRequiredService<ISerializer<byte[]>>(),
+                    provider.GetRequiredService<ISerializer<string>>(),
+                    provider.GetRequiredService<IClientWatchManager>(),
+                    provider.GetRequiredService<IServiceRouteFactory>(),
+                    provider.GetRequiredService<ILogger<ConsulServiceRouteManager>>(),
+                    provider.GetRequiredService<IServiceHeartbeatManager>(),
+                    provider.GetRequiredService<IConsulClientProvider>()));
             return this;
         }
 
@@ -88,14 +88,14 @@ namespace KissU.Core.Consul
         public ConsulModule UseConsulCacheManager(ContainerBuilderWrapper builder, ConfigInfo configInfo)
         {
             UseCacheManager(builder, provider =>
-          new ConsulServiceCacheManager(
-              GetConfigInfo(configInfo),
-           provider.GetRequiredService<ISerializer<byte[]>>(),
-             provider.GetRequiredService<ISerializer<string>>(),
-             provider.GetRequiredService<IClientWatchManager>(),
-             provider.GetRequiredService<IServiceCacheFactory>(),
-             provider.GetRequiredService<ILogger<ConsulServiceCacheManager>>(),
-                provider.GetRequiredService<IConsulClientProvider>()));
+                new ConsulServiceCacheManager(
+                    GetConfigInfo(configInfo),
+                    provider.GetRequiredService<ISerializer<byte[]>>(),
+                    provider.GetRequiredService<ISerializer<string>>(),
+                    provider.GetRequiredService<IClientWatchManager>(),
+                    provider.GetRequiredService<IServiceCacheFactory>(),
+                    provider.GetRequiredService<ILogger<ConsulServiceCacheManager>>(),
+                    provider.GetRequiredService<IConsulClientProvider>()));
             return this;
         }
 
@@ -108,15 +108,15 @@ namespace KissU.Core.Consul
         public ConsulModule UseConsulCommandManager(ContainerBuilderWrapper builder, ConfigInfo configInfo)
         {
             UseCommandManager(builder, provider => new ConsulServiceCommandManager(
-                   GetConfigInfo(configInfo),
+                GetConfigInfo(configInfo),
                 provider.GetRequiredService<ISerializer<byte[]>>(),
-                  provider.GetRequiredService<ISerializer<string>>(),
-                  provider.GetRequiredService<IServiceRouteManager>(),
-                  provider.GetRequiredService<IClientWatchManager>(),
-                  provider.GetRequiredService<IServiceEntryManager>(),
-                  provider.GetRequiredService<ILogger<ConsulServiceCommandManager>>(),
-                  provider.GetRequiredService<IServiceHeartbeatManager>(),
-                 provider.GetRequiredService<IConsulClientProvider>()));
+                provider.GetRequiredService<ISerializer<string>>(),
+                provider.GetRequiredService<IServiceRouteManager>(),
+                provider.GetRequiredService<IClientWatchManager>(),
+                provider.GetRequiredService<IServiceEntryManager>(),
+                provider.GetRequiredService<ILogger<ConsulServiceCommandManager>>(),
+                provider.GetRequiredService<IServiceHeartbeatManager>(),
+                provider.GetRequiredService<IConsulClientProvider>()));
             return this;
         }
 
@@ -129,13 +129,13 @@ namespace KissU.Core.Consul
         public ConsulModule UseConsulServiceSubscribeManager(ContainerBuilderWrapper builder, ConfigInfo configInfo)
         {
             UseSubscribeManager(builder, provider => new ConsulServiceSubscribeManager(
-                  GetConfigInfo(configInfo),
-                  provider.GetRequiredService<ISerializer<byte[]>>(),
-                  provider.GetRequiredService<ISerializer<string>>(),
-                  provider.GetRequiredService<IClientWatchManager>(),
-                  provider.GetRequiredService<IServiceSubscriberFactory>(),
-                  provider.GetRequiredService<ILogger<ConsulServiceSubscribeManager>>(),
-                  provider.GetRequiredService<IConsulClientProvider>()));
+                GetConfigInfo(configInfo),
+                provider.GetRequiredService<ISerializer<byte[]>>(),
+                provider.GetRequiredService<ISerializer<string>>(),
+                provider.GetRequiredService<IClientWatchManager>(),
+                provider.GetRequiredService<IServiceSubscriberFactory>(),
+                provider.GetRequiredService<ILogger<ConsulServiceSubscribeManager>>(),
+                provider.GetRequiredService<IConsulClientProvider>()));
             return this;
         }
 
@@ -148,15 +148,15 @@ namespace KissU.Core.Consul
         public ConsulModule UseConsulMqttRouteManager(ContainerBuilderWrapper builder, ConfigInfo configInfo)
         {
             UseMqttRouteManager(builder, provider =>
-           new ConsulMqttServiceRouteManager(
-               GetConfigInfo(configInfo),
-            provider.GetRequiredService<ISerializer<byte[]>>(),
-              provider.GetRequiredService<ISerializer<string>>(),
-              provider.GetRequiredService<IClientWatchManager>(),
-              provider.GetRequiredService<IMqttServiceFactory>(),
-              provider.GetRequiredService<ILogger<ConsulMqttServiceRouteManager>>(),
-              provider.GetRequiredService<IServiceHeartbeatManager>(), 
-              provider.GetRequiredService<IConsulClientProvider>()));
+                new ConsulMqttServiceRouteManager(
+                    GetConfigInfo(configInfo),
+                    provider.GetRequiredService<ISerializer<byte[]>>(),
+                    provider.GetRequiredService<ISerializer<string>>(),
+                    provider.GetRequiredService<IClientWatchManager>(),
+                    provider.GetRequiredService<IMqttServiceFactory>(),
+                    provider.GetRequiredService<ILogger<ConsulMqttServiceRouteManager>>(),
+                    provider.GetRequiredService<IServiceHeartbeatManager>(),
+                    provider.GetRequiredService<IConsulClientProvider>()));
             return this;
         }
 
@@ -170,7 +170,7 @@ namespace KissU.Core.Consul
         {
             builder.Register(provider =>
             {
-                return new ClientWatchManager(provider.Resolve<ILogger<ClientWatchManager>>(),configInfo);
+                return new ClientWatchManager(provider.Resolve<ILogger<ClientWatchManager>>(), configInfo);
             }).As<IClientWatchManager>().SingleInstance();
             return this;
         }
@@ -206,11 +206,11 @@ namespace KissU.Core.Consul
         public ConsulModule UseCounlClientProvider(ContainerBuilderWrapper builder, ConfigInfo configInfo)
         {
             UseCounlClientProvider(builder, provider =>
-        new DefaultConsulClientProvider(
-            GetConfigInfo(configInfo),
-         provider.GetRequiredService<IHealthCheckService>(),
-           provider.GetRequiredService<IConsulAddressSelector>(),
-           provider.GetRequiredService<ILogger<DefaultConsulClientProvider>>()));
+                new DefaultConsulClientProvider(
+                    GetConfigInfo(configInfo),
+                    provider.GetRequiredService<IHealthCheckService>(),
+                    provider.GetRequiredService<IConsulAddressSelector>(),
+                    provider.GetRequiredService<ILogger<DefaultConsulClientProvider>>()));
             return this;
         }
 
@@ -220,7 +220,8 @@ namespace KissU.Core.Consul
         /// <param name="builder">The builder.</param>
         /// <param name="factory">The factory.</param>
         /// <returns>ContainerBuilderWrapper.</returns>
-        public ContainerBuilderWrapper UseSubscribeManager(ContainerBuilderWrapper builder, Func<IServiceProvider, IServiceSubscribeManager> factory)
+        public ContainerBuilderWrapper UseSubscribeManager(ContainerBuilderWrapper builder,
+            Func<IServiceProvider, IServiceSubscribeManager> factory)
         {
             builder.RegisterAdapter(factory).InstancePerLifetimeScope();
             return builder;
@@ -232,7 +233,8 @@ namespace KissU.Core.Consul
         /// <param name="builder">The builder.</param>
         /// <param name="factory">The factory.</param>
         /// <returns>ContainerBuilderWrapper.</returns>
-        public ContainerBuilderWrapper UseCommandManager(ContainerBuilderWrapper builder, Func<IServiceProvider, IServiceCommandManager> factory)
+        public ContainerBuilderWrapper UseCommandManager(ContainerBuilderWrapper builder,
+            Func<IServiceProvider, IServiceCommandManager> factory)
         {
             builder.RegisterAdapter(factory).InstancePerLifetimeScope();
             return builder;
@@ -244,7 +246,8 @@ namespace KissU.Core.Consul
         /// <param name="builder">The builder.</param>
         /// <param name="factory">The factory.</param>
         /// <returns>ContainerBuilderWrapper.</returns>
-        public ContainerBuilderWrapper UseCacheManager(ContainerBuilderWrapper builder, Func<IServiceProvider, IServiceCacheManager> factory)
+        public ContainerBuilderWrapper UseCacheManager(ContainerBuilderWrapper builder,
+            Func<IServiceProvider, IServiceCacheManager> factory)
         {
             builder.RegisterAdapter(factory).InstancePerLifetimeScope();
             return builder;
@@ -256,7 +259,8 @@ namespace KissU.Core.Consul
         /// <param name="builder">The builder.</param>
         /// <param name="factory">The factory.</param>
         /// <returns>ContainerBuilderWrapper.</returns>
-        public ContainerBuilderWrapper UseRouteManager(ContainerBuilderWrapper builder, Func<IServiceProvider, IServiceRouteManager> factory)
+        public ContainerBuilderWrapper UseRouteManager(ContainerBuilderWrapper builder,
+            Func<IServiceProvider, IServiceRouteManager> factory)
         {
             builder.RegisterAdapter(factory).InstancePerLifetimeScope();
             return builder;
@@ -268,7 +272,8 @@ namespace KissU.Core.Consul
         /// <param name="builder">The builder.</param>
         /// <param name="factory">The factory.</param>
         /// <returns>ContainerBuilderWrapper.</returns>
-        public ContainerBuilderWrapper UseMqttRouteManager(ContainerBuilderWrapper builder, Func<IServiceProvider, IMqttServiceRouteManager> factory)
+        public ContainerBuilderWrapper UseMqttRouteManager(ContainerBuilderWrapper builder,
+            Func<IServiceProvider, IMqttServiceRouteManager> factory)
         {
             builder.RegisterAdapter(factory).InstancePerLifetimeScope();
             return builder;
@@ -280,7 +285,8 @@ namespace KissU.Core.Consul
         /// <param name="builder">The builder.</param>
         /// <param name="factory">The factory.</param>
         /// <returns>ContainerBuilderWrapper.</returns>
-        public ContainerBuilderWrapper UseCounlClientProvider(ContainerBuilderWrapper builder, Func<IServiceProvider, IConsulClientProvider> factory)
+        public ContainerBuilderWrapper UseCounlClientProvider(ContainerBuilderWrapper builder,
+            Func<IServiceProvider, IConsulClientProvider> factory)
         {
             builder.RegisterAdapter(factory).InstancePerLifetimeScope();
             return builder;
@@ -297,9 +303,9 @@ namespace KissU.Core.Consul
             if (option != null)
             {
                 var sessionTimeout = config.SessionTimeout.TotalSeconds;
-                Double.TryParse(option.SessionTimeout, out sessionTimeout);
+                double.TryParse(option.SessionTimeout, out sessionTimeout);
                 config = new ConfigInfo(
-                   option.ConnectionString,
+                    option.ConnectionString,
                     TimeSpan.FromSeconds(sessionTimeout),
                     option.LockDelay ?? config.LockDelay,
                     option.RoutePath ?? config.RoutePath,
@@ -307,12 +313,13 @@ namespace KissU.Core.Consul
                     option.CommandPath ?? config.CommandPath,
                     option.CachePath ?? config.CachePath,
                     option.MqttRoutePath ?? config.MqttRoutePath,
-                   option.ReloadOnChange != null ? bool.Parse(option.ReloadOnChange) :
-                    config.ReloadOnChange,
-                    option.EnableChildrenMonitor != null ? bool.Parse(option.EnableChildrenMonitor) :
-                    config.EnableChildrenMonitor
-                   );
+                    option.ReloadOnChange != null ? bool.Parse(option.ReloadOnChange) : config.ReloadOnChange,
+                    option.EnableChildrenMonitor != null
+                        ? bool.Parse(option.EnableChildrenMonitor)
+                        : config.EnableChildrenMonitor
+                );
             }
+
             return config;
         }
     }

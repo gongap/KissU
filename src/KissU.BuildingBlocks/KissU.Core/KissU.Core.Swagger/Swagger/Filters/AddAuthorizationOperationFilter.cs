@@ -13,14 +13,6 @@ namespace KissU.Core.Swagger.Swagger.Filters
     /// <seealso cref="KissU.Core.Swagger.SwaggerGen.Generator.IOperationFilter" />
     public class AddAuthorizationOperationFilter : IOperationFilter
     {
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AddAuthorizationOperationFilter"/> class.
-        /// </summary>
-        public AddAuthorizationOperationFilter()
-        {
-        }
-
         /// <summary>
         /// Applies the specified operation.
         /// </summary>
@@ -35,8 +27,8 @@ namespace KissU.Core.Swagger.Swagger.Filters
 
 
             var attribute =
-                 context.ServiceEntry.Attributes.Where(p => p is AuthorizationAttribute)
-                 .Select(p => p as AuthorizationAttribute).FirstOrDefault();
+                context.ServiceEntry.Attributes.Where(p => p is AuthorizationAttribute)
+                    .Select(p => p as AuthorizationAttribute).FirstOrDefault();
             if (attribute != null && attribute.AuthType == AuthorizationType.JWT)
             {
                 operation.Parameters.Add(new BodyParameter
@@ -50,7 +42,7 @@ namespace KissU.Core.Swagger.Swagger.Filters
                     }
                 });
             }
-            else if( attribute != null && attribute.AuthType == AuthorizationType.AppSecret)
+            else if (attribute != null && attribute.AuthType == AuthorizationType.AppSecret)
             {
                 operation.Parameters.Add(new BodyParameter
                 {

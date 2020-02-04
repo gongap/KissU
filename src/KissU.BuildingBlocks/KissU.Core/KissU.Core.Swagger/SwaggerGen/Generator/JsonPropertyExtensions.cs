@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
 namespace KissU.Core.Swagger.SwaggerGen.Generator
@@ -19,10 +20,10 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
         /// <returns><c>true</c> if the specified json property is required; otherwise, <c>false</c>.</returns>
         internal static bool IsRequired(this JsonProperty jsonProperty)
         {
-            if (jsonProperty.Required == Newtonsoft.Json.Required.AllowNull)
+            if (jsonProperty.Required == Required.AllowNull)
                 return true;
 
-            if (jsonProperty.Required == Newtonsoft.Json.Required.Always)
+            if (jsonProperty.Required == Required.Always)
                 return true;
 
             if (jsonProperty.HasAttribute<RequiredAttribute>())
@@ -50,7 +51,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
         internal static bool HasAttribute<T>(this JsonProperty jsonProperty)
             where T : Attribute
         {
-            if (!jsonProperty.TryGetMemberInfo(out MemberInfo memberInfo))
+            if (!jsonProperty.TryGetMemberInfo(out var memberInfo))
                 return false;
 
             return memberInfo.GetCustomAttribute<T>() != null;
@@ -74,13 +75,13 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
                 .GetCustomAttributes(typeof(ModelMetadataTypeAttribute), true)
                 .FirstOrDefault();
 
-            var typeToReflect = (metadataAttribute != null)
-                ? ((ModelMetadataTypeAttribute)metadataAttribute).MetadataType
+            var typeToReflect = metadataAttribute != null
+                ? ((ModelMetadataTypeAttribute) metadataAttribute).MetadataType
                 : jsonProperty.DeclaringType;
 
             memberInfo = typeToReflect.GetMember(jsonProperty.UnderlyingName).FirstOrDefault();
 
-            return (memberInfo != null);
+            return memberInfo != null;
         }
     }
 }

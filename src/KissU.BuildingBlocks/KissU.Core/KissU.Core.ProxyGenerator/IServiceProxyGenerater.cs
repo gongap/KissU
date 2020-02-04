@@ -7,7 +7,7 @@ namespace KissU.Core.ProxyGenerator
     /// <summary>
     /// 一个抽象的服务代理生成器。
     /// </summary>
-    public interface IServiceProxyGenerater:IDisposable
+    public interface IServiceProxyGenerater : IDisposable
     {
         /// <summary>
         /// 生成服务代理。
@@ -15,7 +15,7 @@ namespace KissU.Core.ProxyGenerator
         /// <param name="interfacTypes">需要被代理的接口类型。</param>
         /// <param name="namespaces">The namespaces.</param>
         /// <returns>服务代理实现。</returns>
-        IEnumerable<Type> GenerateProxys(IEnumerable<Type> interfacTypes,IEnumerable<string> namespaces);
+        IEnumerable<Type> GenerateProxys(IEnumerable<Type> interfacTypes, IEnumerable<string> namespaces);
 
         /// <summary>
         /// 生成服务代理代码树。

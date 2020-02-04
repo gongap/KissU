@@ -17,8 +17,7 @@ namespace KissU.Core.EventBusRabbitMQ.Utilities
         /// <param name="expression">The expression.</param>
         public static void FastInvoke<T>(this T target, Type[] genericTypes, Expression<Action<T>> expression)
         {
-            FastInvoker<T>.Current.FastInvoke(target, genericTypes,expression);
+            FastInvoker<T>.Current.FastInvoke(target, genericTypes, expression);
         }
-
     }
 }

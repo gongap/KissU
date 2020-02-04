@@ -60,9 +60,7 @@ namespace KissU.Core.ProxyGenerator
         /// <returns>服务代理实例。</returns>
         public static T CreateProxy<T>(this IServiceProxyFactory serviceProxyFactory, Type proxyType)
         {
-            return (T)serviceProxyFactory.CreateProxy(proxyType);
+            return (T) serviceProxyFactory.CreateProxy(proxyType);
         }
-
-       
     }
 }

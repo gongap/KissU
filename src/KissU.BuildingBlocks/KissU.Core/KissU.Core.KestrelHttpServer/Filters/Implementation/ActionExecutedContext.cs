@@ -12,6 +12,7 @@ namespace KissU.Core.KestrelHttpServer.Filters.Implementation
         /// Gets the message.
         /// </summary>
         public HttpRequestMessage Message { get; internal set; }
+
         /// <summary>
         /// Gets the context.
         /// </summary>

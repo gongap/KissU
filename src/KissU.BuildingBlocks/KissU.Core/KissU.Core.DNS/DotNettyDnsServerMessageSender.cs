@@ -22,16 +22,17 @@ namespace KissU.Core.DNS
     /// </summary>
     /// <seealso cref="KissU.Core.DotNetty.DotNettyMessageSender" />
     /// <seealso cref="KissU.Core.CPlatform.Transport.IMessageSender" />
-    class DotNettyDnsServerMessageSender : DotNettyMessageSender, IMessageSender
+    internal class DotNettyDnsServerMessageSender : DotNettyMessageSender, IMessageSender
     {
         private readonly IChannelHandlerContext _context;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DotNettyDnsServerMessageSender"/> class.
+        /// Initializes a new instance of the <see cref="DotNettyDnsServerMessageSender" /> class.
         /// </summary>
         /// <param name="transportMessageEncoder">The transport message encoder.</param>
         /// <param name="context">The context.</param>
-        public DotNettyDnsServerMessageSender(ITransportMessageEncoder transportMessageEncoder, IChannelHandlerContext context) : base(transportMessageEncoder)
+        public DotNettyDnsServerMessageSender(ITransportMessageEncoder transportMessageEncoder,
+            IChannelHandlerContext context) : base(transportMessageEncoder)
         {
             _context = context;
         }
@@ -43,7 +44,7 @@ namespace KissU.Core.DNS
         /// <returns>一个任务。</returns>
         public async Task SendAndFlushAsync(TransportMessage message)
         {
-            var response=await  WriteResponse(message);
+            var response = await WriteResponse(message);
             await _context.WriteAndFlushAsync(response);
         }
 
@@ -59,11 +60,11 @@ namespace KissU.Core.DNS
         }
 
         private IDnsResponse GetDnsResponse(TransportMessage message)
-        { 
-            if (message.Content !=null && !message.IsDnsResultMessage())
+        {
+            if (message.Content != null && !message.IsDnsResultMessage())
                 return null;
 
-            var transportMessage = message.GetContent<DnsTransportMessage>(); 
+            var transportMessage = message.GetContent<DnsTransportMessage>();
             return transportMessage.DnsResponse;
         }
 
@@ -86,7 +87,7 @@ namespace KissU.Core.DNS
         }
 
         private async Task<IDnsResponse> WriteResponse(TransportMessage message)
-        { 
+        {
             var response = GetDnsResponse(message);
             var dnsQuestion = GetDnsQuestion(message);
             var ipAddr = GetIpAddr(message);
@@ -95,31 +96,40 @@ namespace KissU.Core.DNS
                 if (ipAddr != null)
                 {
                     var buf = Unpooled.WrappedBuffer(ipAddr.GetAddressBytes());
-                    response.AddRecord(DnsSection.ANSWER, new DefaultDnsRawRecord(dnsQuestion.Name, DnsRecordType.A, 100, buf));
+                    response.AddRecord(DnsSection.ANSWER,
+                        new DefaultDnsRawRecord(dnsQuestion.Name, DnsRecordType.A, 100, buf));
                 }
                 else
                 {
-                    var dnsMessage =await GetDnsMessage(dnsQuestion.Name, dnsQuestion.Type);
+                    var dnsMessage = await GetDnsMessage(dnsQuestion.Name, dnsQuestion.Type);
                     if (dnsMessage != null)
                     {
-                        foreach (DnsRecordBase dnsRecord in dnsMessage.AnswerRecords)
+                        foreach (var dnsRecord in dnsMessage.AnswerRecords)
                         {
                             var aRecord = dnsRecord as ARecord;
                             var buf = Unpooled.Buffer();
                             if (dnsRecord.RecordType == RecordType.Ptr)
                             {
                                 var ptrRecord = dnsRecord as PtrRecord;
-                                response.AddRecord(DnsSection.ANSWER, new DefaultDnsPtrRecord(ptrRecord.Name.ToString(), (DnsRecordClass)(int)ptrRecord.RecordClass, ptrRecord.TimeToLive, ptrRecord.PointerDomainName.ToString()));
+                                response.AddRecord(DnsSection.ANSWER,
+                                    new DefaultDnsPtrRecord(ptrRecord.Name.ToString(),
+                                        (DnsRecordClass) (int) ptrRecord.RecordClass, ptrRecord.TimeToLive,
+                                        ptrRecord.PointerDomainName.ToString()));
                             }
+
                             if (aRecord != null)
                             {
                                 buf = Unpooled.WrappedBuffer(aRecord.Address.GetAddressBytes());
-                                response.AddRecord(DnsSection.ANSWER, new DefaultDnsRawRecord(dnsQuestion.Name, DnsRecordType.From((int)dnsRecord.RecordType), (DnsRecordClass)(int)aRecord.RecordClass, dnsRecord.TimeToLive, buf));
+                                response.AddRecord(DnsSection.ANSWER,
+                                    new DefaultDnsRawRecord(dnsQuestion.Name,
+                                        DnsRecordType.From((int) dnsRecord.RecordType),
+                                        (DnsRecordClass) (int) aRecord.RecordClass, dnsRecord.TimeToLive, buf));
                             }
                         }
                     }
                 }
             }
+
             return response;
         }
 
@@ -131,7 +141,7 @@ namespace KissU.Core.DNS
         /// <returns>Task&lt;DnsMessage&gt;.</returns>
         public async Task<DnsMessage> GetDnsMessage(string name, DnsRecordType recordType)
         {
-           return await DnsClientProvider.Instance().Resolve(name, recordType);
+            return await DnsClientProvider.Instance().Resolve(name, recordType);
         }
     }
 }

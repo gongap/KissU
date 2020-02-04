@@ -18,9 +18,11 @@ namespace KissU.Core.DNS.Utilities
         /// <param name="recordType">Type of the record.</param>
         /// <param name="recordClass">The record class.</param>
         /// <returns>Task&lt;DnsMessage&gt;.</returns>
-        public async Task<DnsMessage> Resolve(string name, DnsRecordType recordType , DnsRecordClass recordClass = DnsRecordClass.IN)
+        public async Task<DnsMessage> Resolve(string name, DnsRecordType recordType,
+            DnsRecordClass recordClass = DnsRecordClass.IN)
         {
-            var dnsMessage =await GetDnsClient().ResolveAsync(DomainName.Parse(name), (RecordType)recordType.IntValue,(RecordClass)(int)recordClass);
+            var dnsMessage = await GetDnsClient().ResolveAsync(DomainName.Parse(name), (RecordType) recordType.IntValue,
+                (RecordClass) (int) recordClass);
             return dnsMessage;
         }
 
@@ -31,7 +33,7 @@ namespace KissU.Core.DNS.Utilities
         public DnsClient GetDnsClient()
         {
             var dnsOption = AppConfig.DnsOption;
-            DnsClient dnsClient = new DnsClient(IPAddress.Parse(dnsOption.RootDnsAddress), dnsOption.QueryTimeout); 
+            var dnsClient = new DnsClient(IPAddress.Parse(dnsOption.RootDnsAddress), dnsOption.QueryTimeout);
             return dnsClient;
         }
 

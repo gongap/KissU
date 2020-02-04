@@ -15,7 +15,7 @@ namespace KissU.Core.KestrelHttpServer.Internal
         private Stream _fileStream;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FileStreamResult"/> class.
+        /// Initializes a new instance of the <see cref="FileStreamResult" /> class.
         /// </summary>
         /// <param name="fileStream">The file stream.</param>
         /// <param name="contentType">Type of the content.</param>
@@ -25,7 +25,7 @@ namespace KissU.Core.KestrelHttpServer.Internal
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FileStreamResult"/> class.
+        /// Initializes a new instance of the <see cref="FileStreamResult" /> class.
         /// </summary>
         /// <param name="fileStream">The file stream.</param>
         /// <param name="contentType">Type of the content.</param>
@@ -58,6 +58,5 @@ namespace KissU.Core.KestrelHttpServer.Internal
                 _fileStream = value;
             }
         }
-
     }
 }

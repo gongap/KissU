@@ -17,11 +17,10 @@ namespace KissU.Core.Grpc
     /// </summary>
     /// <seealso cref="KissU.Core.CPlatform.Transport.IMessageListener" />
     /// <seealso cref="System.IDisposable" />
-    public class GrpcServerMessageListener: IMessageListener, IDisposable
-    { 
-        private Server _server;
-        private readonly ILogger<GrpcServerMessageListener> _logger;
+    public class GrpcServerMessageListener : IMessageListener, IDisposable
+    {
         private readonly IGrpcServiceEntryProvider _grpcServiceEntryProvider;
+        private readonly ILogger<GrpcServerMessageListener> _logger;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GrpcServerMessageListener" /> class.
@@ -32,60 +31,20 @@ namespace KissU.Core.Grpc
             IGrpcServiceEntryProvider grpcServiceEntryProvider)
         {
             _logger = logger;
-            _grpcServiceEntryProvider = grpcServiceEntryProvider; 
-        }
-        /// <summary>
-        /// Starts the asynchronous.
-        /// </summary>
-        /// <param name="endPoint">The end point.</param>
-        /// <returns>Task.</returns>
-        public Task StartAsync(EndPoint endPoint)
-        {
-            var ipEndPoint = endPoint as IPEndPoint;
-            _server = new Server() { Ports = { new ServerPort(ipEndPoint.Address.ToString(), ipEndPoint.Port, ServerCredentials.Insecure) } };
- 
-            try
-            {
-                var entries = _grpcServiceEntryProvider.GetEntries();
-
-                var serverServiceDefinitions = new List<ServerServiceDefinition>();
-                foreach (var entry in entries)
-                {
-
-                    var baseType = entry.Type.BaseType.BaseType;
-                    var definitionType = baseType?.DeclaringType;
-
-                    var methodInfo = definitionType?.GetMethod("BindService", new Type[] { baseType });
-                    if (methodInfo != null)
-                    {
-                        var serviceDescriptor = methodInfo.Invoke(null, new object[] { entry.Behavior }) as ServerServiceDefinition;
-                        if (serviceDescriptor != null)
-                        {
-                            _server.Services.Add(serviceDescriptor);
-                            continue;
-                        }
-                    }
-                } 
-                _server.Start();
-                if (_logger.IsEnabled(LogLevel.Debug))
-                    _logger.LogDebug($"Grpc服务主机启动成功，监听地址：{endPoint}。");
-            }
-            catch
-            {
-                _logger.LogError($"Grpc服务主机启动失败，监听地址：{endPoint}。 ");
-            }
-            return Task.CompletedTask;
+            _grpcServiceEntryProvider = grpcServiceEntryProvider;
         }
 
         /// <summary>
         /// Gets the server.
         /// </summary>
-        public Server  Server
+        public Server Server { get; private set; }
+
+        /// <summary>
+        /// Disposes this instance.
+        /// </summary>
+        public void Dispose()
         {
-            get
-            {
-                return _server;
-            }
+            Server.ShutdownAsync();
         }
 
         /// <summary>
@@ -105,11 +64,48 @@ namespace KissU.Core.Grpc
         }
 
         /// <summary>
-        /// Disposes this instance.
+        /// Starts the asynchronous.
         /// </summary>
-        public void Dispose()
+        /// <param name="endPoint">The end point.</param>
+        /// <returns>Task.</returns>
+        public Task StartAsync(EndPoint endPoint)
         {
-            _server.ShutdownAsync();
+            var ipEndPoint = endPoint as IPEndPoint;
+            Server = new Server
+                {Ports = {new ServerPort(ipEndPoint.Address.ToString(), ipEndPoint.Port, ServerCredentials.Insecure)}};
+
+            try
+            {
+                var entries = _grpcServiceEntryProvider.GetEntries();
+
+                var serverServiceDefinitions = new List<ServerServiceDefinition>();
+                foreach (var entry in entries)
+                {
+                    var baseType = entry.Type.BaseType.BaseType;
+                    var definitionType = baseType?.DeclaringType;
+
+                    var methodInfo = definitionType?.GetMethod("BindService", new[] {baseType});
+                    if (methodInfo != null)
+                    {
+                        var serviceDescriptor =
+                            methodInfo.Invoke(null, new object[] {entry.Behavior}) as ServerServiceDefinition;
+                        if (serviceDescriptor != null)
+                        {
+                            Server.Services.Add(serviceDescriptor);
+                        }
+                    }
+                }
+
+                Server.Start();
+                if (_logger.IsEnabled(LogLevel.Debug))
+                    _logger.LogDebug($"Grpc服务主机启动成功，监听地址：{endPoint}。");
+            }
+            catch
+            {
+                _logger.LogError($"Grpc服务主机启动失败，监听地址：{endPoint}。 ");
+            }
+
+            return Task.CompletedTask;
         }
     }
 }

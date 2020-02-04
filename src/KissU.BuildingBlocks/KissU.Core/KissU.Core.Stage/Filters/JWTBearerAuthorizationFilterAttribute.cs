@@ -33,14 +33,14 @@ namespace KissU.Core.Stage.Filters
     {
         private readonly IAuthorizationServerProvider _authorizationServerProvider;
         private readonly IBase64UrlEncoder _base64UrlEncoder;
-        private readonly IDateTimeProvider _dateTimeProvider;
-        private readonly IJwtValidator _jwtValidator;
-        private readonly IJsonSerializer _jsonSerializer;
         private readonly RSACryptoServiceProvider _cryptoServiceProvider;
+        private readonly IDateTimeProvider _dateTimeProvider;
+        private readonly IJsonSerializer _jsonSerializer;
+        private readonly IJwtValidator _jwtValidator;
 
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="JWTBearerAuthorizationFilterAttribute"/> class.
+        /// Initializes a new instance of the <see cref="JWTBearerAuthorizationFilterAttribute" /> class.
         /// </summary>
         public JWTBearerAuthorizationFilterAttribute()
         {
@@ -48,7 +48,7 @@ namespace KissU.Core.Stage.Filters
             _base64UrlEncoder = new JwtBase64UrlEncoder();
             _jsonSerializer = new JsonNetSerializer();
             _dateTimeProvider = new UtcDateTimeProvider();
-           _cryptoServiceProvider = new RSACryptoServiceProvider();
+            _cryptoServiceProvider = new RSACryptoServiceProvider();
             _jwtValidator = new JwtValidator(_jsonSerializer, _dateTimeProvider);
         }
 
@@ -59,7 +59,8 @@ namespace KissU.Core.Stage.Filters
         public override async Task OnAuthorization(AuthorizationFilterContext filterContext)
         {
             if (filterContext.Route != null && filterContext.Route.ServiceDescriptor.DisableNetwork())
-                filterContext.Result = new HttpResultMessage<object> { IsSucceed = false, StatusCode = (int)ServiceStatusCode.RequestError, Message = "Request error" };
+                filterContext.Result = new HttpResultMessage<object>
+                    {IsSucceed = false, StatusCode = (int) ServiceStatusCode.RequestError, Message = "Request error"};
             else
             {
                 if (filterContext.Route != null && filterContext.Route.ServiceDescriptor.EnableAuthorization())
@@ -75,7 +76,7 @@ namespace KissU.Core.Stage.Filters
                                 filterContext.Result = new HttpResultMessage<object>
                                 {
                                     IsSucceed = false,
-                                    StatusCode = (int)ServiceStatusCode.AuthorizationFailed,
+                                    StatusCode = (int) ServiceStatusCode.AuthorizationFailed,
                                     Message = "Invalid authentication credentials"
                                 };
                             }
@@ -90,7 +91,7 @@ namespace KissU.Core.Stage.Filters
                             filterContext.Result = new HttpResultMessage<object>
                             {
                                 IsSucceed = false,
-                                StatusCode = (int)ServiceStatusCode.AuthorizationFailed,
+                                StatusCode = (int) ServiceStatusCode.AuthorizationFailed,
                                 Message = "Invalid authentication credentials"
                             };
                         }
@@ -102,6 +103,7 @@ namespace KissU.Core.Stage.Filters
         }
 
         #region  ValidateClientAuthentication
+
         /// <summary>
         /// 解码JWT
         /// </summary>
@@ -172,7 +174,7 @@ namespace KissU.Core.Stage.Filters
                 _cryptoServiceProvider.ImportParameters(new RSAParameters
                 {
                     Exponent = _base64UrlEncoder.Decode(exponent),
-                    Modulus = _base64UrlEncoder.Decode(modulus),
+                    Modulus = _base64UrlEncoder.Decode(modulus)
                 });
                 var cspBlob = _cryptoServiceProvider.ExportCspBlob(true);
                 var x509Certificate2 = new X509Certificate2(cspBlob);
@@ -184,7 +186,7 @@ namespace KissU.Core.Stage.Filters
         }
 
         /// <summary>
-        ///     此方法用解码payload，并返回秘钥的信息对象
+        /// 此方法用解码payload，并返回秘钥的信息对象
         /// </summary>
         /// <param name="payload">载荷</param>
         /// <returns></returns>
@@ -194,7 +196,8 @@ namespace KissU.Core.Stage.Filters
             var claims = new List<Claim>();
             foreach (var item in payload) claims.Add(new Claim(item.Key, item.Value.ToString()));
             // 根据验证token后获取的用户名重新在建一个声明
-            claims.Add(new Claim(ClaimTypes.Name, claims.Where(x => x.Type == "name").Select(x => x.Value).FirstOrDefault()));
+            claims.Add(new Claim(ClaimTypes.Name,
+                claims.Where(x => x.Type == "name").Select(x => x.Value).FirstOrDefault()));
             claims.Add(new Claim("application_id", "E9138A35-A4FF-460E-AC55-B743D55B9691"));
             // 构造身份证
             var identity = new ClaimsIdentity(claims, "JWTBearer");
@@ -213,6 +216,7 @@ namespace KissU.Core.Stage.Filters
             /// </summary>
             public List<JwkModel> keys { get; set; }
         }
+
         /// <summary>
         /// JwkModel.
         /// </summary>
@@ -222,27 +226,33 @@ namespace KissU.Core.Stage.Filters
             /// Gets or sets the kty.
             /// </summary>
             public string kty { get; set; }
+
             /// <summary>
             /// Gets or sets the use.
             /// </summary>
             public string use { get; set; }
+
             /// <summary>
             /// Gets or sets the kid.
             /// </summary>
             public string kid { get; set; }
+
             /// <summary>
             /// Gets or sets the e.
             /// </summary>
             public string e { get; set; }
+
             /// <summary>
             /// Gets or sets the n.
             /// </summary>
             public string n { get; set; }
+
             /// <summary>
             /// Gets or sets the alg.
             /// </summary>
             public string alg { get; set; }
         }
+
         #endregion
     }
 }

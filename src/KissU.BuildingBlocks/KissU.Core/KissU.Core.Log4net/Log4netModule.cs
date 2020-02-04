@@ -1,4 +1,5 @@
-﻿using KissU.Core.CPlatform.Module;
+﻿using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Module;
 using KissU.Core.CPlatform.Utilities;
 using Microsoft.Extensions.Logging;
 
@@ -12,6 +13,7 @@ namespace KissU.Core.Log4net
     public class Log4netModule : EnginePartModule
     {
         private string log4NetConfigFile = "${LogPath}|log4net.config";
+
         /// <summary>
         /// Initializes the specified context.
         /// </summary>
@@ -20,7 +22,7 @@ namespace KissU.Core.Log4net
         {
             var serviceProvider = context.ServiceProvoider;
             base.Initialize(context);
-            var section = CPlatform.AppConfig.GetSection("Logging");
+            var section = AppConfig.GetSection("Logging");
             log4NetConfigFile = EnvironmentHelper.GetEnvironmentVariable(log4NetConfigFile);
             serviceProvider.GetInstances<ILoggerFactory>().AddProvider(new Log4NetProvider(log4NetConfigFile));
         }
@@ -32,7 +34,6 @@ namespace KissU.Core.Log4net
         protected override void RegisterBuilder(ContainerBuilderWrapper builder)
         {
             base.RegisterBuilder(builder);
-
         }
     }
 }

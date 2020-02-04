@@ -14,7 +14,7 @@ namespace KissU.Core.Protocol.Mqtt.Diagnostics
         private readonly TracingHeaders _tracingHeaders;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MqttTransportCarrierHeaderCollection"/> class.
+        /// Initializes a new instance of the <see cref="MqttTransportCarrierHeaderCollection" /> class.
         /// </summary>
         /// <param name="tracingHeaders">The tracing headers.</param>
         public MqttTransportCarrierHeaderCollection(TracingHeaders tracingHeaders)

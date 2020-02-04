@@ -9,7 +9,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
     /// <seealso cref="HttpMethodAttribute" />
     public class HttpOptionsAttribute : HttpMethodAttribute
     {
-        private static readonly IEnumerable<string> _supportedMethods = new[] { "OPTIONS" };
+        private static readonly IEnumerable<string> _supportedMethods = new[] {"OPTIONS"};
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HttpOptionsAttribute" /> class.

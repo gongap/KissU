@@ -22,5 +22,4 @@ namespace KissU.Core.Protocol.Udp.Runtime
         /// </summary>
         public UdpBehavior Behavior { get; set; }
     }
-
 }

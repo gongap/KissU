@@ -14,13 +14,6 @@ namespace KissU.Core.Nlog
             new ConcurrentDictionary<string, NLogger>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="NLogProvider"/> class.
-        /// </summary>
-        public NLogProvider()
-        {
-        }
-
-        /// <summary>
         /// Creates a new <see cref="T:Microsoft.Extensions.Logging.ILogger" /> instance.
         /// </summary>
         /// <param name="categoryName">The category name for messages produced by the logger.</param>
@@ -30,17 +23,17 @@ namespace KissU.Core.Nlog
             return _loggers.GetOrAdd(categoryName, CreateLoggerImplementation);
         }
 
-        private NLogger CreateLoggerImplementation(string name)
-        {
-            return new NLogger(name);
-        }
-
         /// <summary>
         /// Disposes this instance.
         /// </summary>
         public void Dispose()
         {
             _loggers.Clear();
+        }
+
+        private NLogger CreateLoggerImplementation(string name)
+        {
+            return new NLogger(name);
         }
     }
 }

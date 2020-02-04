@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using KissU.Core.Swagger.Swagger.Model;
@@ -11,6 +10,13 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
     /// </summary>
     internal static class SchemaExtensions
     {
+        private static readonly Dictionary<DataType, string> DataTypeFormatMap = new Dictionary<DataType, string>
+        {
+            {DataType.Date, "date"},
+            {DataType.DateTime, "date-time"},
+            {DataType.Password, "password"}
+        };
+
         /// <summary>
         /// Assigns the attribute metadata.
         /// </summary>
@@ -29,10 +35,10 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
 
                 if (attribute is RangeAttribute range)
                 {
-                    if (Double.TryParse(range.Maximum.ToString(), out double maximum))
+                    if (double.TryParse(range.Maximum.ToString(), out var maximum))
                         schema.Maximum = maximum;
 
-                    if (Double.TryParse(range.Minimum.ToString(), out double minimum))
+                    if (double.TryParse(range.Minimum.ToString(), out var minimum))
                         schema.Minimum = minimum;
                 }
 
@@ -50,7 +56,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
 
                 if (attribute is DataTypeAttribute dataTypeAttribute && schema.Type == "string")
                 {
-                    if (DataTypeFormatMap.TryGetValue(dataTypeAttribute.DataType, out string format))
+                    if (DataTypeFormatMap.TryGetValue(dataTypeAttribute.DataType, out var format))
                         schema.Format = format;
                 }
             }
@@ -92,12 +98,5 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
             partialSchema.Enum = schema.Enum;
             partialSchema.MultipleOf = schema.MultipleOf;
         }
-
-        private static readonly Dictionary<DataType, string> DataTypeFormatMap = new Dictionary<DataType, string>
-        {
-            { DataType.Date, "date" },
-            { DataType.DateTime, "date-time" },
-            { DataType.Password, "password" }
-        };
     }
 }

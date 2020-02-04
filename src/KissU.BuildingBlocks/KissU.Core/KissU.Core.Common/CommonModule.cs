@@ -7,7 +7,7 @@ namespace KissU.Core.Common
     /// Implements the <see cref="SystemModule" />
     /// </summary>
     /// <seealso cref="SystemModule" />
-    public class CommonModule:SystemModule
+    public class CommonModule : SystemModule
     {
     }
 }

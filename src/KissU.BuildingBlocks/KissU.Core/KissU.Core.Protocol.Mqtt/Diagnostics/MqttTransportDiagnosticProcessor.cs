@@ -13,18 +13,28 @@ namespace KissU.Core.Protocol.Mqtt.Diagnostics
     /// Implements the <see cref="KissU.Core.CPlatform.Diagnostics.ITracingDiagnosticProcessor" />
     /// </summary>
     /// <seealso cref="KissU.Core.CPlatform.Diagnostics.ITracingDiagnosticProcessor" />
-    public class MqttTransportDiagnosticProcessor: ITracingDiagnosticProcessor
+    public class MqttTransportDiagnosticProcessor : ITracingDiagnosticProcessor
     {
-        private Func<TransportEventData, string> _transportOperationNameResolver;
-        /// <summary>
-        /// Gets the name of the listener.
-        /// </summary>
-        public string ListenerName => KissUEvents.DiagnosticListenerName;
+        private readonly IEntrySegmentContextAccessor _segmentContextAccessor;
 
 
         private readonly ISerializer<string> _serializer;
         private readonly ITracingContext _tracingContext;
-        private readonly IEntrySegmentContextAccessor _segmentContextAccessor;
+        private Func<TransportEventData, string> _transportOperationNameResolver;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MqttTransportDiagnosticProcessor" /> class.
+        /// </summary>
+        /// <param name="tracingContext">The tracing context.</param>
+        /// <param name="serializer">The serializer.</param>
+        /// <param name="contextAccessor">The context accessor.</param>
+        public MqttTransportDiagnosticProcessor(ITracingContext tracingContext, ISerializer<string> serializer,
+            IEntrySegmentContextAccessor contextAccessor)
+        {
+            _tracingContext = tracingContext;
+            _serializer = serializer;
+            _segmentContextAccessor = contextAccessor;
+        }
 
         /// <summary>
         /// Gets or sets the transport operation name resolver.
@@ -35,24 +45,16 @@ namespace KissU.Core.Protocol.Mqtt.Diagnostics
             get
             {
                 return _transportOperationNameResolver ??
-                       (_transportOperationNameResolver = (data) => "Mqtt-Transport:: " + data.Message.MessageName);
+                       (_transportOperationNameResolver = data => "Mqtt-Transport:: " + data.Message.MessageName);
             }
             set => _transportOperationNameResolver =
                 value ?? throw new ArgumentNullException(nameof(TransportOperationNameResolver));
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MqttTransportDiagnosticProcessor"/> class.
+        /// Gets the name of the listener.
         /// </summary>
-        /// <param name="tracingContext">The tracing context.</param>
-        /// <param name="serializer">The serializer.</param>
-        /// <param name="contextAccessor">The context accessor.</param>
-        public MqttTransportDiagnosticProcessor(ITracingContext tracingContext, ISerializer<string> serializer, IEntrySegmentContextAccessor contextAccessor)
-        {
-            _tracingContext = tracingContext;
-            _serializer = serializer;
-            _segmentContextAccessor = contextAccessor;
-        }
+        public string ListenerName => KissUEvents.DiagnosticListenerName;
 
         /// <summary>
         /// Transports the before.
@@ -63,13 +65,14 @@ namespace KissU.Core.Protocol.Mqtt.Diagnostics
         {
             var message = eventData.Message.GetContent<RemoteInvokeMessage>();
             var operationName = TransportOperationNameResolver(eventData);
-            var context = _tracingContext.CreateEntrySegmentContext(operationName, new MqttTransportCarrierHeaderCollection(eventData.Headers));
+            var context = _tracingContext.CreateEntrySegmentContext(operationName,
+                new MqttTransportCarrierHeaderCollection(eventData.Headers));
             if (!string.IsNullOrEmpty(eventData.TraceId))
                 context.TraceId = ConvertUniqueId(eventData);
             context.Span.AddLog(LogEvent.Message($"Worker running at: {DateTime.Now}"));
             context.Span.SpanLayer = SpanLayer.RPC_FRAMEWORK;
-            context.Span.AddTag(Tags.MQTT_CLIENT_ID, eventData.TraceId.ToString());
-            context.Span.AddTag(Tags.MQTT_METHOD, eventData.Method.ToString());
+            context.Span.AddTag(Tags.MQTT_CLIENT_ID, eventData.TraceId);
+            context.Span.AddTag(Tags.MQTT_METHOD, eventData.Method);
             context.Span.AddTag(Tags.REST_PARAMETERS, _serializer.Serialize(message.Parameters));
             context.Span.AddTag(Tags.MQTT_BROKER_ADDRESS, NetUtils.GetHostAddress().ToString());
         }
@@ -111,7 +114,7 @@ namespace KissU.Core.Protocol.Mqtt.Diagnostics
         public UniqueId ConvertUniqueId(TransportEventData eventData)
         {
             long part1 = 0, part2 = 0, part3 = 0;
-            UniqueId uniqueId = new UniqueId();
+            var uniqueId = new UniqueId();
             var bytes = Encoding.Default.GetBytes($"{eventData.TraceId}-{nameof(MqttTransportDiagnosticProcessor)}");
             part1 = BitConverter.ToInt64(bytes, 0);
             if (eventData.TraceId.Length > 8)

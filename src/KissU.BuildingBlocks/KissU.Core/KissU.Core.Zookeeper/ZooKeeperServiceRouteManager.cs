@@ -25,16 +25,16 @@ namespace KissU.Core.Zookeeper
     /// <seealso cref="KissU.Core.CPlatform.Routing.Implementation.ServiceRouteManagerBase" />
     /// <seealso cref="System.IDisposable" />
     public class ZooKeeperServiceRouteManager : ServiceRouteManagerBase, IDisposable
-    { 
+    {
         private readonly ConfigInfo _configInfo;
+        private readonly ILogger<ZooKeeperServiceRouteManager> _logger;
         private readonly ISerializer<byte[]> _serializer;
         private readonly IServiceRouteFactory _serviceRouteFactory;
-        private readonly ILogger<ZooKeeperServiceRouteManager> _logger;
-        private ServiceRoute[] _routes;
         private readonly IZookeeperClientProvider _zookeeperClientProvider;
+        private ServiceRoute[] _routes;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ZooKeeperServiceRouteManager"/> class.
+        /// Initializes a new instance of the <see cref="ZooKeeperServiceRouteManager" /> class.
         /// </summary>
         /// <param name="configInfo">The configuration information.</param>
         /// <param name="serializer">The serializer.</param>
@@ -44,14 +44,23 @@ namespace KissU.Core.Zookeeper
         /// <param name="zookeeperClientProvider">The zookeeper client provider.</param>
         public ZooKeeperServiceRouteManager(ConfigInfo configInfo, ISerializer<byte[]> serializer,
             ISerializer<string> stringSerializer, IServiceRouteFactory serviceRouteFactory,
-            ILogger<ZooKeeperServiceRouteManager> logger, IZookeeperClientProvider zookeeperClientProvider) : base(stringSerializer)
+            ILogger<ZooKeeperServiceRouteManager> logger, IZookeeperClientProvider zookeeperClientProvider) : base(
+            stringSerializer)
         {
             _configInfo = configInfo;
             _serializer = serializer;
             _serviceRouteFactory = serviceRouteFactory;
             _logger = logger;
-            _zookeeperClientProvider = zookeeperClientProvider; 
+            _zookeeperClientProvider = zookeeperClientProvider;
             EnterRoutes().Wait();
+        }
+
+
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+        public void Dispose()
+        {
         }
 
 
@@ -77,7 +86,7 @@ namespace KissU.Core.Zookeeper
             foreach (var zooKeeper in zooKeepers)
             {
                 var path = _configInfo.RoutePath;
-                var childrens = path.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+                var childrens = path.Split(new[] {'/'}, StringSplitOptions.RemoveEmptyEntries);
 
                 var index = 0;
                 while (childrens.Count() > 1)
@@ -97,13 +106,16 @@ namespace KissU.Core.Zookeeper
                                 await zooKeeper.Item2.deleteAsync(childPath);
                             }
                         }
+
                         if (_logger.IsEnabled(LogLevel.Debug))
                             _logger.LogDebug($"准备删除：{nodePath}。");
                         await zooKeeper.Item2.deleteAsync(nodePath);
                     }
+
                     index++;
                     childrens = childrens.Take(childrens.Length - index).ToArray();
                 }
+
                 if (_logger.IsEnabled(LogLevel.Information))
                     _logger.LogInformation("路由配置清空完成。");
             }
@@ -121,7 +133,7 @@ namespace KissU.Core.Zookeeper
             var zooKeepers = await _zookeeperClientProvider.GetZooKeepers();
             foreach (var zooKeeper in zooKeepers)
             {
-                await CreateSubdirectory(zooKeeper,_configInfo.RoutePath);
+                await CreateSubdirectory(zooKeeper, _configInfo.RoutePath);
 
                 var path = _configInfo.RoutePath;
                 if (!path.EndsWith("/"))
@@ -138,7 +150,8 @@ namespace KissU.Core.Zookeeper
                         if (_logger.IsEnabled(LogLevel.Debug))
                             _logger.LogDebug($"节点：{nodePath}不存在将进行创建。");
 
-                        await zooKeeper.Item2.createAsync(nodePath, nodeData, ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+                        await zooKeeper.Item2.createAsync(nodePath, nodeData, ZooDefs.Ids.OPEN_ACL_UNSAFE,
+                            CreateMode.PERSISTENT);
                     }
                     else
                     {
@@ -150,6 +163,7 @@ namespace KissU.Core.Zookeeper
                             await zooKeeper.Item2.setDataAsync(nodePath, nodeData);
                     }
                 }
+
                 if (_logger.IsEnabled(LogLevel.Information))
                     _logger.LogInformation("服务路由添加成功。");
             }
@@ -167,6 +181,7 @@ namespace KissU.Core.Zookeeper
             {
                 route.Address = route.Address.Except(Address);
             }
+
             await base.SetRoutesAsync(routes);
         }
 
@@ -183,21 +198,24 @@ namespace KissU.Core.Zookeeper
             {
                 foreach (var route in routes)
                 {
-                    var serviceRoute = serviceRoutes.Where(p => p.ServiceDescriptor.Id == route.ServiceDescriptor.Id).FirstOrDefault();
+                    var serviceRoute = serviceRoutes.Where(p => p.ServiceDescriptor.Id == route.ServiceDescriptor.Id)
+                        .FirstOrDefault();
                     if (serviceRoute != null)
                     {
                         var addresses = serviceRoute.Address.Concat(
-                          route.Address.Except(serviceRoute.Address)).ToList();
+                            route.Address.Except(serviceRoute.Address)).ToList();
 
                         foreach (var address in route.Address)
                         {
                             addresses.Remove(addresses.Where(p => p.ToString() == address.ToString()).FirstOrDefault());
                             addresses.Add(address);
                         }
+
                         route.Address = addresses;
                     }
                 }
             }
+
             await RemoveExceptRoutesAsync(routes, hostAddr);
             await base.SetRoutesAsync(routes);
         }
@@ -218,7 +236,8 @@ namespace KissU.Core.Zookeeper
                     var deletedRouteIds = oldRouteIds.Except(newRouteIds).ToArray();
                     foreach (var deletedRouteId in deletedRouteIds)
                     {
-                        var addresses = _routes.Where(p => p.ServiceDescriptor.Id == deletedRouteId).Select(p => p.Address).FirstOrDefault();
+                        var addresses = _routes.Where(p => p.ServiceDescriptor.Id == deletedRouteId)
+                            .Select(p => p.Address).FirstOrDefault();
                         if (addresses.Contains(hostAddr))
                         {
                             var nodePath = $"{path}{deletedRouteId}";
@@ -229,7 +248,7 @@ namespace KissU.Core.Zookeeper
             }
         }
 
-        private async Task CreateSubdirectory((ManualResetEvent, ZooKeeper) zooKeeper,  string path)
+        private async Task CreateSubdirectory((ManualResetEvent, ZooKeeper) zooKeeper, string path)
         {
             zooKeeper.Item1.WaitOne();
             if (await zooKeeper.Item2.existsAsync(path) != null)
@@ -238,7 +257,7 @@ namespace KissU.Core.Zookeeper
             if (_logger.IsEnabled(LogLevel.Information))
                 _logger.LogInformation($"节点{path}不存在，将进行创建。");
 
-            var childrens = path.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+            var childrens = path.Split(new[] {'/'}, StringSplitOptions.RemoveEmptyEntries);
             var nodePath = "/";
 
             foreach (var children in childrens)
@@ -246,8 +265,10 @@ namespace KissU.Core.Zookeeper
                 nodePath += children;
                 if (await zooKeeper.Item2.existsAsync(nodePath) == null)
                 {
-                    await zooKeeper.Item2.createAsync(nodePath, null, ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+                    await zooKeeper.Item2.createAsync(nodePath, null, ZooDefs.Ids.OPEN_ACL_UNSAFE,
+                        CreateMode.PERSISTENT);
                 }
+
                 nodePath += "/";
             }
         }
@@ -261,7 +282,7 @@ namespace KissU.Core.Zookeeper
                 return null;
 
             var descriptor = _serializer.Deserialize<byte[], ServiceRouteDescriptor>(data);
-            return (await _serviceRouteFactory.CreateServiceRoutesAsync(new[] { descriptor })).First();
+            return (await _serviceRouteFactory.CreateServiceRoutesAsync(new[] {descriptor})).First();
         }
 
         private async Task<ServiceRoute> GetRoute(string path)
@@ -269,13 +290,14 @@ namespace KissU.Core.Zookeeper
             ServiceRoute result = null;
             var zooKeeper = await GetZooKeeper();
             var watcher = new NodeMonitorWatcher(GetZooKeeper, path,
-                 async (oldData, newData) => await NodeChange(oldData, newData));
+                async (oldData, newData) => await NodeChange(oldData, newData));
             if (await zooKeeper.Item2.existsAsync(path) != null)
             {
                 var data = (await zooKeeper.Item2.getDataAsync(path, watcher)).Data;
                 watcher.SetCurrentData(data);
                 result = await GetRoute(data);
             }
+
             return result;
         }
 
@@ -305,11 +327,11 @@ namespace KissU.Core.Zookeeper
         private async Task EnterRoutes()
         {
             if (_routes != null)
-                return; 
+                return;
             var zooKeeper = await GetZooKeeper();
             zooKeeper.Item1.WaitOne();
             var watcher = new ChildrenMonitorWatcher(GetZooKeeper, _configInfo.RoutePath,
-             async (oldChildrens, newChildrens) => await ChildrenChange(oldChildrens, newChildrens));
+                async (oldChildrens, newChildrens) => await ChildrenChange(oldChildrens, newChildrens));
             if (await zooKeeper.Item2.existsAsync(_configInfo.RoutePath, watcher) != null)
             {
                 var result = await zooKeeper.Item2.getChildrenAsync(_configInfo.RoutePath, watcher);
@@ -336,6 +358,7 @@ namespace KissU.Core.Zookeeper
                 if (b1 != b2)
                     return false;
             }
+
             return true;
         }
 
@@ -359,7 +382,7 @@ namespace KissU.Core.Zookeeper
                 _routes =
                     _routes
                         .Where(i => i.ServiceDescriptor.Id != newRoute.ServiceDescriptor.Id)
-                        .Concat(new[] { newRoute }).ToArray();
+                        .Concat(new[] {newRoute}).ToArray();
             }
 
             //触发路由变更事件。
@@ -402,6 +425,7 @@ namespace KissU.Core.Zookeeper
                     .Concat(newRoutes)
                     .ToArray();
             }
+
             //需要删除的路由集合。
             var deletedRoutes = routes.Where(i => deletedChildrens.Contains(i.ServiceDescriptor.Id)).ToArray();
             //触发删除事件。
@@ -414,19 +438,10 @@ namespace KissU.Core.Zookeeper
                 _logger.LogInformation("路由数据更新成功。");
         }
 
-
-        /// <summary>
-        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-        /// </summary>
-        public void Dispose()
-        {
-        }
-
         private async ValueTask<(ManualResetEvent, ZooKeeper)> GetZooKeeper()
         {
             var zooKeeper = await _zookeeperClientProvider.GetZooKeeper();
             return zooKeeper;
         }
-
     }
 }

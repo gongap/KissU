@@ -23,7 +23,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
     public class ParameterFilterContext
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ParameterFilterContext"/> class.
+        /// Initializes a new instance of the <see cref="ParameterFilterContext" /> class.
         /// </summary>
         /// <param name="apiParameterDescription">The API parameter description.</param>
         /// <param name="schemaRegistry">The schema registry.</param>

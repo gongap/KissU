@@ -9,11 +9,11 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
     /// </summary>
     public class SchemaIdManager
     {
-        private readonly Func<Type, string> _schemaIdSelector;
         private readonly IDictionary<Type, string> _schemaIdMap;
+        private readonly Func<Type, string> _schemaIdSelector;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SchemaIdManager"/> class.
+        /// Initializes a new instance of the <see cref="SchemaIdManager" /> class.
         /// </summary>
         /// <param name="schemaIdSelector">The schema identifier selector.</param>
         public SchemaIdManager(Func<Type, string> schemaIdSelector)
@@ -30,7 +30,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
         /// <exception cref="InvalidOperationException"></exception>
         public string IdFor(Type type)
         {
-            if (!_schemaIdMap.TryGetValue(type, out string schemaId))
+            if (!_schemaIdMap.TryGetValue(type, out var schemaId))
             {
                 schemaId = _schemaIdSelector(type);
 

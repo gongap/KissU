@@ -1,7 +1,4 @@
 ﻿using Com.Ctrip.Framework.Apollo.Enums;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace KissU.Core.Configuration.Apollo.Configurations
 {
@@ -18,7 +15,7 @@ namespace KissU.Core.Configuration.Apollo.Configurations
         public static string GetString(this ConfigFileFormat format)
         {
             return format switch
-            {
+                {
                 ConfigFileFormat.Properties => "properties",
                 ConfigFileFormat.Xml => "xml",
                 ConfigFileFormat.Json => "json",
@@ -26,7 +23,7 @@ namespace KissU.Core.Configuration.Apollo.Configurations
                 ConfigFileFormat.Yaml => "yaml",
                 ConfigFileFormat.Txt => "txt",
                 _ => "unknown",
-            };
+                };
         }
     }
 }

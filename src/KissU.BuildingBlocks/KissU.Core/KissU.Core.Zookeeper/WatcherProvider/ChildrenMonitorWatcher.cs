@@ -12,18 +12,19 @@ namespace KissU.Core.Zookeeper.WatcherProvider
     /// <seealso cref="KissU.Core.Zookeeper.WatcherProvider.WatcherBase" />
     internal class ChildrenMonitorWatcher : WatcherBase
     {
-        private readonly Func<ValueTask<(ManualResetEvent, ZooKeeper)>> _zooKeeperCall;
         private readonly Action<string[], string[]> _action;
+        private readonly Func<ValueTask<(ManualResetEvent, ZooKeeper)>> _zooKeeperCall;
         private string[] _currentData = new string[0];
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ChildrenMonitorWatcher"/> class.
+        /// Initializes a new instance of the <see cref="ChildrenMonitorWatcher" /> class.
         /// </summary>
         /// <param name="zooKeeperCall">The zoo keeper call.</param>
         /// <param name="path">The path.</param>
         /// <param name="action">The action.</param>
-        public ChildrenMonitorWatcher(Func<ValueTask<(ManualResetEvent, ZooKeeper)>> zooKeeperCall, string path, Action<string[], string[]> action)
-                : base(path)
+        public ChildrenMonitorWatcher(Func<ValueTask<(ManualResetEvent, ZooKeeper)>> zooKeeperCall, string path,
+            Action<string[], string[]> action)
+            : base(path)
         {
             _zooKeeperCall = zooKeeperCall;
             _action = action;
@@ -50,7 +51,7 @@ namespace KissU.Core.Zookeeper.WatcherProvider
         protected override async Task ProcessImpl(WatchedEvent watchedEvent)
         {
             var path = Path;
-            var zooKeeper =await _zooKeeperCall();
+            var zooKeeper = await _zooKeeperCall();
             Func<ChildrenMonitorWatcher> getWatcher = () => new ChildrenMonitorWatcher(_zooKeeperCall, path, _action);
             switch (watchedEvent.get_Type())
             {
@@ -73,19 +74,21 @@ namespace KissU.Core.Zookeeper.WatcherProvider
                     {
                         _action(_currentData, new string[0]);
                     }
+
                     break;
 
                 //删除之后开始监控自身节点，并通知客户端数据被清空。
                 case Event.EventType.NodeDeleted:
-                    {
-                        var watcher = getWatcher();
-                        await zooKeeper.Item2.existsAsync(path, watcher);
-                        _action(_currentData, new string[0]);
-                        watcher.SetCurrentData(new string[0]);
-                    }
+                {
+                    var watcher = getWatcher();
+                    await zooKeeper.Item2.existsAsync(path, watcher);
+                    _action(_currentData, new string[0]);
+                    watcher.SetCurrentData(new string[0]);
+                }
                     break;
             }
         }
+
         #endregion Overrides of WatcherBase
     }
 }

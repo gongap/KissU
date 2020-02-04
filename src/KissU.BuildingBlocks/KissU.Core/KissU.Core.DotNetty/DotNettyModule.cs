@@ -39,7 +39,7 @@ namespace KissU.Core.DotNetty
                 if (provider.IsRegistered(typeof(IServiceExecutor)))
                     serviceExecutor = provider.Resolve<IServiceExecutor>();
                 return new DotNettyTransportClientFactory(provider.Resolve<ITransportMessageCodecFactory>(),
-                      provider.Resolve<IHealthCheckService>(),
+                    provider.Resolve<IHealthCheckService>(),
                     provider.Resolve<ILogger<DotNettyTransportClientFactory>>(),
                     serviceExecutor);
             }).As(typeof(ITransportClientFactory)).SingleInstance();
@@ -55,7 +55,7 @@ namespace KissU.Core.DotNetty
             builder.Register(provider =>
             {
                 return new DotNettyServerMessageListener(provider.Resolve<ILogger<DotNettyServerMessageListener>>(),
-                      provider.Resolve<ITransportMessageCodecFactory>());
+                    provider.Resolve<ITransportMessageCodecFactory>());
             }).SingleInstance();
             builder.Register(provider =>
             {

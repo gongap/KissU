@@ -9,7 +9,7 @@ namespace KissU.Core.Swagger.Swagger.Model
     public abstract class SecurityScheme
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SecurityScheme"/> class.
+        /// Initializes a new instance of the <see cref="SecurityScheme" /> class.
         /// </summary>
         public SecurityScheme()
         {
@@ -30,6 +30,6 @@ namespace KissU.Core.Swagger.Swagger.Model
         /// Gets the extensions.
         /// </summary>
         [JsonExtensionData]
-        public Dictionary<string, object> Extensions { get; private set; }
+        public Dictionary<string, object> Extensions { get; }
     }
 }

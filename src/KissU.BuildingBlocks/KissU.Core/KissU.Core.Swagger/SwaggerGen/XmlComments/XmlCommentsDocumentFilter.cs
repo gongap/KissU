@@ -20,7 +20,7 @@ namespace KissU.Core.Swagger.SwaggerGen.XmlComments
         private readonly XPathNavigator _xmlNavigator;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="XmlCommentsDocumentFilter"/> class.
+        /// Initializes a new instance of the <see cref="XmlCommentsDocumentFilter" /> class.
         /// </summary>
         /// <param name="xmlDoc">The XML document.</param>
         public XmlCommentsDocumentFilter(XPathDocument xmlDoc)

@@ -12,16 +12,8 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Runtime
     /// Implements the <see cref="KissU.Core.Protocol.Mqtt.Internal.Runtime.ScanRunnable" />
     /// </summary>
     /// <seealso cref="KissU.Core.Protocol.Mqtt.Internal.Runtime.ScanRunnable" />
-    public class SacnScheduled: ScanRunnable
+    public class SacnScheduled : ScanRunnable
     {
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SacnScheduled"/> class.
-        /// </summary>
-        public SacnScheduled()
-        {
-        }
-
         private bool CheckTime(long time)
         {
             return DateTime.Now.Millisecond - time >= 10 * 1000;
@@ -35,7 +27,7 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Runtime
         {
             if (CheckTime(poll.Time) && poll.Channel.Active)
             {
-                poll.Time=DateTime.Now.Ticks / 10000;
+                poll.Time = DateTime.Now.Ticks / 10000;
                 switch (poll.ConfirmStatus)
                 {
                     case ConfirmStatus.PUB:
@@ -53,7 +45,7 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Runtime
 
         private void PubMessage(IChannel channel, SendMqttMessage mqttMessage)
         {
-            PublishPacket mqttPublishMessage = new PublishPacket((QualityOfService)mqttMessage.Qos, true, mqttMessage.Retain)
+            var mqttPublishMessage = new PublishPacket((QualityOfService) mqttMessage.Qos, true, mqttMessage.Retain)
             {
                 TopicName = mqttMessage.Topic,
                 PacketId = mqttMessage.MessageId,
@@ -66,20 +58,20 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Runtime
         /// Pubs the relative ack.
         /// </summary>
         /// <param name="mqttMessage">The MQTT message.</param>
-        protected void PubRelAck( SendMqttMessage mqttMessage)
+        protected void PubRelAck(SendMqttMessage mqttMessage)
         {
-            PubRelPacket mqttPubAckMessage = new PubRelPacket()
+            var mqttPubAckMessage = new PubRelPacket
             {
-                PacketId = mqttMessage.MessageId,
+                PacketId = mqttMessage.MessageId
             };
             mqttMessage.Channel.WriteAndFlushAsync(mqttPubAckMessage);
         }
 
         private void PubRecAck(SendMqttMessage mqttMessage)
         {
-            PubRecPacket mqttPubAckMessage = new PubRecPacket()
+            var mqttPubAckMessage = new PubRecPacket
             {
-                PacketId = mqttMessage.MessageId,
+                PacketId = mqttMessage.MessageId
             };
             mqttMessage.Channel.WriteAndFlushAsync(mqttPubAckMessage);
         }

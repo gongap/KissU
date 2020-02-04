@@ -8,7 +8,7 @@
         /// <summary>
         /// Gets or sets the cache mode.
         /// </summary>
-        public string CacheMode{get;set; }
+        public string CacheMode { get; set; }
 
         /// <summary>
         /// Gets or sets the authorization service key.
@@ -28,6 +28,6 @@
         /// <summary>
         /// Gets or sets the token endpoint path.
         /// </summary>
-        public string TokenEndpointPath{ get; set; }
+        public string TokenEndpointPath { get; set; }
     }
 }

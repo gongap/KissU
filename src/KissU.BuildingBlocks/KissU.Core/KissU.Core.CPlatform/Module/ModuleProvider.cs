@@ -52,7 +52,7 @@ namespace KissU.Core.CPlatform.Module
                 {
                     Type[] types =
                     {
-                        typeof(SystemModule), typeof(BusinessModule), typeof(EnginePartModule), typeof(AbstractModule),
+                        typeof(SystemModule), typeof(BusinessModule), typeof(EnginePartModule), typeof(AbstractModule)
                     };
                     if (p.Enable)
                     {

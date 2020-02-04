@@ -22,16 +22,16 @@ namespace KissU.Core.Zookeeper
     /// <seealso cref="KissU.Core.CPlatform.Runtime.Client.Implementation.ServiceSubscribeManagerBase" />
     /// <seealso cref="System.IDisposable" />
     public class ZooKeeperServiceSubscribeManager : ServiceSubscribeManagerBase, IDisposable
-    { 
+    {
         private readonly ConfigInfo _configInfo;
+        private readonly ILogger<ZooKeeperServiceSubscribeManager> _logger;
         private readonly ISerializer<byte[]> _serializer;
         private readonly IServiceSubscriberFactory _serviceSubscriberFactory;
-        private ServiceSubscriber[] _subscribers;
-        private readonly ILogger<ZooKeeperServiceSubscribeManager> _logger; 
         private readonly IZookeeperClientProvider _zookeeperClientProvider;
+        private ServiceSubscriber[] _subscribers;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ZooKeeperServiceSubscribeManager"/> class.
+        /// Initializes a new instance of the <see cref="ZooKeeperServiceSubscribeManager" /> class.
         /// </summary>
         /// <param name="configInfo">The configuration information.</param>
         /// <param name="serializer">The serializer.</param>
@@ -41,7 +41,8 @@ namespace KissU.Core.Zookeeper
         /// <param name="zookeeperClientProvider">The zookeeper client provider.</param>
         public ZooKeeperServiceSubscribeManager(ConfigInfo configInfo, ISerializer<byte[]> serializer,
             ISerializer<string> stringSerializer, IServiceSubscriberFactory serviceSubscriberFactory,
-            ILogger<ZooKeeperServiceSubscribeManager> logger, IZookeeperClientProvider zookeeperClientProvider) : base(stringSerializer)
+            ILogger<ZooKeeperServiceSubscribeManager> logger, IZookeeperClientProvider zookeeperClientProvider) : base(
+            stringSerializer)
         {
             _configInfo = configInfo;
             _serviceSubscriberFactory = serviceSubscriberFactory;
@@ -49,6 +50,13 @@ namespace KissU.Core.Zookeeper
             _logger = logger;
             _zookeeperClientProvider = zookeeperClientProvider;
             EnterSubscribers().Wait();
+        }
+
+        /// <summary>
+        /// Disposes this instance.
+        /// </summary>
+        public void Dispose()
+        {
         }
 
         /// <summary>
@@ -73,7 +81,7 @@ namespace KissU.Core.Zookeeper
             foreach (var zooKeeper in zooKeepers)
             {
                 var path = _configInfo.SubscriberPath;
-                var childrens = path.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+                var childrens = path.Split(new[] {'/'}, StringSplitOptions.RemoveEmptyEntries);
 
                 var index = 0;
                 while (childrens.Count() > 1)
@@ -93,13 +101,16 @@ namespace KissU.Core.Zookeeper
                                 await zooKeeper.Item2.deleteAsync(childPath);
                             }
                         }
+
                         if (_logger.IsEnabled(LogLevel.Debug))
                             _logger.LogDebug($"准备删除：{nodePath}。");
                         await zooKeeper.Item2.deleteAsync(nodePath);
                     }
+
                     index++;
                     childrens = childrens.Take(childrens.Length - index).ToArray();
                 }
+
                 if (_logger.IsEnabled(LogLevel.Information))
                     _logger.LogInformation("路由配置清空完成。");
             }
@@ -146,7 +157,8 @@ namespace KissU.Core.Zookeeper
                         if (_logger.IsEnabled(LogLevel.Debug))
                             _logger.LogDebug($"节点：{nodePath}不存在将进行创建。");
 
-                        await zooKeeper.Item2.createAsync(nodePath, nodeData, ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+                        await zooKeeper.Item2.createAsync(nodePath, nodeData, ZooDefs.Ids.OPEN_ACL_UNSAFE,
+                            CreateMode.PERSISTENT);
                     }
                     else
                     {
@@ -158,6 +170,7 @@ namespace KissU.Core.Zookeeper
                             await zooKeeper.Item2.setDataAsync(nodePath, nodeData);
                     }
                 }
+
                 if (_logger.IsEnabled(LogLevel.Information))
                     _logger.LogInformation("服务订阅者添加成功。");
             }
@@ -172,13 +185,15 @@ namespace KissU.Core.Zookeeper
             var serviceSubscribers = await GetSubscribers(subscribers.Select(p => p.ServiceDescriptor.Id));
             foreach (var subscriber in subscribers)
             {
-                var serviceSubscriber = serviceSubscribers.Where(p => p.ServiceDescriptor.Id == subscriber.ServiceDescriptor.Id).FirstOrDefault();
+                var serviceSubscriber = serviceSubscribers
+                    .Where(p => p.ServiceDescriptor.Id == subscriber.ServiceDescriptor.Id).FirstOrDefault();
                 if (serviceSubscriber != null)
                 {
                     subscriber.Address = subscriber.Address.Concat(
                         subscriber.Address.Except(serviceSubscriber.Address));
                 }
             }
+
             await base.SetSubscribersAsync(subscribers);
         }
 
@@ -192,7 +207,7 @@ namespace KissU.Core.Zookeeper
             if (_logger.IsEnabled(LogLevel.Information))
                 _logger.LogInformation($"节点{path}不存在，将进行创建。");
 
-            var childrens = path.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+            var childrens = path.Split(new[] {'/'}, StringSplitOptions.RemoveEmptyEntries);
             var nodePath = "/";
 
             foreach (var children in childrens)
@@ -200,8 +215,10 @@ namespace KissU.Core.Zookeeper
                 nodePath += children;
                 if (await zooKeeper.Item2.existsAsync(nodePath) == null)
                 {
-                    await zooKeeper.Item2.createAsync(nodePath, null, ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+                    await zooKeeper.Item2.createAsync(nodePath, null, ZooDefs.Ids.OPEN_ACL_UNSAFE,
+                        CreateMode.PERSISTENT);
                 }
+
                 nodePath += "/";
             }
         }
@@ -215,7 +232,7 @@ namespace KissU.Core.Zookeeper
                 return null;
 
             var descriptor = _serializer.Deserialize<byte[], ServiceSubscriberDescriptor>(data);
-            return (await _serviceSubscriberFactory.CreateServiceSubscribersAsync(new[] { descriptor })).First();
+            return (await _serviceSubscriberFactory.CreateServiceSubscribersAsync(new[] {descriptor})).First();
         }
 
         private async Task<ServiceSubscriber> GetSubscriber(string path)
@@ -228,6 +245,7 @@ namespace KissU.Core.Zookeeper
                 var data = (await zooKeeper.Item2.getDataAsync(path)).Data;
                 result = await GetSubscriber(data);
             }
+
             return result;
         }
 
@@ -250,6 +268,7 @@ namespace KissU.Core.Zookeeper
                 if (subscriber != null)
                     subscribers.Add(subscriber);
             }
+
             return subscribers.ToArray();
         }
 
@@ -258,7 +277,7 @@ namespace KissU.Core.Zookeeper
             if (_subscribers != null)
                 return;
             var zooKeeper = await GetZooKeeper();
-            zooKeeper.Item1.WaitOne(); 
+            zooKeeper.Item1.WaitOne();
 
             if (await zooKeeper.Item2.existsAsync(_configInfo.SubscriberPath) != null)
             {
@@ -285,14 +304,8 @@ namespace KissU.Core.Zookeeper
                 if (b1 != b2)
                     return false;
             }
-            return true;
-        }
 
-        /// <summary>
-        /// Disposes this instance.
-        /// </summary>
-        public void Dispose()
-        { 
+            return true;
         }
 
         private async ValueTask<(ManualResetEvent, ZooKeeper)> GetZooKeeper()

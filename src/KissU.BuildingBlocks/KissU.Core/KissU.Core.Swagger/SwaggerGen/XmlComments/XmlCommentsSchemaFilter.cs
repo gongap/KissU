@@ -20,7 +20,7 @@ namespace KissU.Core.Swagger.SwaggerGen.XmlComments
         private readonly XPathNavigator _xmlNavigator;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="XmlCommentsSchemaFilter"/> class.
+        /// Initializes a new instance of the <see cref="XmlCommentsSchemaFilter" /> class.
         /// </summary>
         /// <param name="xmlDoc">The XML document.</param>
         public XmlCommentsSchemaFilter(XPathDocument xmlDoc)
@@ -54,7 +54,7 @@ namespace KissU.Core.Swagger.SwaggerGen.XmlComments
                 var jsonProperty = jsonObjectContract.Properties[entry.Key];
                 if (jsonProperty == null) continue;
 
-                if (jsonProperty.TryGetMemberInfo(out MemberInfo memberInfo))
+                if (jsonProperty.TryGetMemberInfo(out var memberInfo))
                 {
                     ApplyPropertyComments(entry.Value, memberInfo);
                 }

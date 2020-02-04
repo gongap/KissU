@@ -2,6 +2,7 @@
 using KissU.Core.CPlatform.Module;
 using KissU.Core.CPlatform.Utilities;
 using Microsoft.Extensions.Logging;
+using NLog;
 
 namespace KissU.Core.Nlog
 {
@@ -13,6 +14,7 @@ namespace KissU.Core.Nlog
     public class NLogModule : EnginePartModule
     {
         private string nlogConfigFile = "${LogPath}|NLog.config";
+
         /// <summary>
         /// Initializes the specified context.
         /// </summary>
@@ -23,7 +25,7 @@ namespace KissU.Core.Nlog
             base.Initialize(context);
             var section = AppConfig.GetSection("Logging");
             nlogConfigFile = EnvironmentHelper.GetEnvironmentVariable(nlogConfigFile);
-            NLog.LogManager.LoadConfiguration(nlogConfigFile);
+            LogManager.LoadConfiguration(nlogConfigFile);
             serviceProvider.GetInstances<ILoggerFactory>().AddProvider(new NLogProvider());
         }
 
@@ -34,7 +36,6 @@ namespace KissU.Core.Nlog
         protected override void RegisterBuilder(ContainerBuilderWrapper builder)
         {
             base.RegisterBuilder(builder);
-           
         }
     }
 }

@@ -15,20 +15,12 @@ namespace KissU.Core.ServiceHosting.Extensions.Runtime.Implementation
     /// Implements the <see cref="KissU.Core.ServiceHosting.Extensions.Runtime.IBackgroundServiceEntryProvider" />
     /// </summary>
     /// <seealso cref="KissU.Core.ServiceHosting.Extensions.Runtime.IBackgroundServiceEntryProvider" />
-    public class DefaultBackgroundServiceEntryProvider: IBackgroundServiceEntryProvider
+    public class DefaultBackgroundServiceEntryProvider : IBackgroundServiceEntryProvider
     {
-        #region Field
-        private readonly IEnumerable<Type> _types;
-        private readonly ILogger<DefaultBackgroundServiceEntryProvider> _logger;
-        private readonly CPlatformContainer _serviceProvider;
-        private List<BackgroundServiceEntry> _backgroundServiceEntries;
-
-        #endregion Field
-
         #region Constructor
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DefaultBackgroundServiceEntryProvider"/> class.
+        /// Initializes a new instance of the <see cref="DefaultBackgroundServiceEntryProvider" /> class.
         /// </summary>
         /// <param name="serviceEntryProvider">The service entry provider.</param>
         /// <param name="logger">The logger.</param>
@@ -44,8 +36,16 @@ namespace KissU.Core.ServiceHosting.Extensions.Runtime.Implementation
 
         #endregion Constructor
 
-        #region Implementation of IUdpServiceEntryProvider
+        #region Field
 
+        private readonly IEnumerable<Type> _types;
+        private readonly ILogger<DefaultBackgroundServiceEntryProvider> _logger;
+        private readonly CPlatformContainer _serviceProvider;
+        private List<BackgroundServiceEntry> _backgroundServiceEntries;
+
+        #endregion Field
+
+        #region Implementation of IUdpServiceEntryProvider
 
         /// <summary>
         /// Gets the entries.
@@ -65,11 +65,14 @@ namespace KissU.Core.ServiceHosting.Extensions.Runtime.Implementation
                         _backgroundServiceEntries.Add(entry);
                     }
                 }
+
                 if (_logger.IsEnabled(LogLevel.Debug))
                 {
-                    _logger.LogDebug($"发现了以下后台托管服务：{string.Join(",", _backgroundServiceEntries.Select(i => i.Type.FullName))}。");
+                    _logger.LogDebug(
+                        $"发现了以下后台托管服务：{string.Join(",", _backgroundServiceEntries.Select(i => i.Type.FullName))}。");
                 }
             }
+
             return _backgroundServiceEntries;
         }
 
@@ -93,10 +96,11 @@ namespace KissU.Core.ServiceHosting.Extensions.Runtime.Implementation
                 {
                     Behavior = behavior,
                     Type = behavior.GetType(),
-                    Path = path,
+                    Path = path
                 };
             return result;
         }
+
         #endregion
     }
 }

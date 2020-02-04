@@ -12,7 +12,7 @@ namespace KissU.Core.Consul.WatcherProvider.Implementation
         private readonly IClientWatchManager watchManager;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ChildWatchRegistration"/> class.
+        /// Initializes a new instance of the <see cref="ChildWatchRegistration" /> class.
         /// </summary>
         /// <param name="watchManager">The watch manager.</param>
         /// <param name="watcher">The watcher.</param>

@@ -9,16 +9,19 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
 {
     /// <summary>
     /// ConfigureSwaggerGeneratorOptions.
-    /// Implements the <see cref="Microsoft.Extensions.Options.IConfigureOptions{KissU.Core.Swagger.SwaggerGen.Generator.SwaggerGeneratorOptions}" />
+    /// Implements the
+    /// <see
+    ///     cref="Microsoft.Extensions.Options.IConfigureOptions{KissU.Core.Swagger.SwaggerGen.Generator.SwaggerGeneratorOptions}" />
     /// </summary>
-    /// <seealso cref="Microsoft.Extensions.Options.IConfigureOptions{KissU.Core.Swagger.SwaggerGen.Generator.SwaggerGeneratorOptions}" />
+    /// <seealso
+    ///     cref="Microsoft.Extensions.Options.IConfigureOptions{KissU.Core.Swagger.SwaggerGen.Generator.SwaggerGeneratorOptions}" />
     internal class ConfigureSwaggerGeneratorOptions : IConfigureOptions<SwaggerGeneratorOptions>
     {
         private readonly IServiceProvider _serviceProvider;
         private readonly SwaggerGenOptions _swaggerGenOptions;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ConfigureSwaggerGeneratorOptions"/> class.
+        /// Initializes a new instance of the <see cref="ConfigureSwaggerGeneratorOptions" /> class.
         /// </summary>
         /// <param name="serviceProvider">The service provider.</param>
         /// <param name="swaggerGenOptionsAccessor">The swagger gen options accessor.</param>
@@ -67,7 +70,8 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
             target.SortKeySelector = source.SortKeySelector;
             target.DescribeAllParametersInCamelCase = source.DescribeAllParametersInCamelCase;
             target.SecurityDefinitions = new Dictionary<string, SecurityScheme>(source.SecurityDefinitions);
-            target.SecurityRequirements = new List<IDictionary<string, IEnumerable<string>>>(source.SecurityRequirements);
+            target.SecurityRequirements =
+                new List<IDictionary<string, IEnumerable<string>>>(source.SecurityRequirements);
             target.ParameterFilters = new List<IParameterFilter>(source.ParameterFilters);
             target.OperationFilters = new List<IOperationFilter>(source.OperationFilters);
             target.DocumentFilters = new List<IDocumentFilter>(source.DocumentFilters);
@@ -75,7 +79,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
 
         private TFilter CreateFilter<TFilter>(FilterDescriptor filterDescriptor)
         {
-            return (TFilter)ActivatorUtilities
+            return (TFilter) ActivatorUtilities
                 .CreateInstance(_serviceProvider, filterDescriptor.Type, filterDescriptor.Arguments);
         }
     }

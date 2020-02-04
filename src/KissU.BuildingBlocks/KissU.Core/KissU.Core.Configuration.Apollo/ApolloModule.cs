@@ -1,5 +1,4 @@
-﻿using System;
-using KissU.Core.Configuration.Apollo.Configurations;
+﻿using KissU.Core.Configuration.Apollo.Configurations;
 using KissU.Core.CPlatform.Module;
 
 namespace KissU.Core.Configuration.Apollo

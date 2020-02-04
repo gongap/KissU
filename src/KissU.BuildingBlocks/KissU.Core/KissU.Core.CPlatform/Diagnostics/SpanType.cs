@@ -18,6 +18,6 @@
         /// <summary>
         /// The local
         /// </summary>
-        Local = 2,
+        Local = 2
     }
 }

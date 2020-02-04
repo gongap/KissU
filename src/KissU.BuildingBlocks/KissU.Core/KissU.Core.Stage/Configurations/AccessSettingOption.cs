@@ -21,7 +21,7 @@
         public string RoutePath { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="AccessSettingOption"/> is enable.
+        /// Gets or sets a value indicating whether this <see cref="AccessSettingOption" /> is enable.
         /// </summary>
         public bool Enable { get; set; }
     }

@@ -16,7 +16,7 @@ namespace KissU.Core.Zookeeper.WatcherProvider
         private readonly Action _reconnection;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ReconnectionWatcher"/> class.
+        /// Initializes a new instance of the <see cref="ReconnectionWatcher" /> class.
         /// </summary>
         /// <param name="connectioned">The connectioned.</param>
         /// <param name="disconnect">The disconnect.</param>
@@ -40,25 +40,28 @@ namespace KissU.Core.Zookeeper.WatcherProvider
             switch (state)
             {
                 case Event.KeeperState.Expired:
-                    {
-                        _reconnection();
-                        break;
-                    }
+                {
+                    _reconnection();
+                    break;
+                }
+
                 case Event.KeeperState.AuthFailed:
-                    {
-                        _disconnect();
-                        break;
-                    }
+                {
+                    _disconnect();
+                    break;
+                }
+
                 case Event.KeeperState.Disconnected:
-                    {
-                        _reconnection();
-                        break;
-                    }
+                {
+                    _reconnection();
+                    break;
+                }
+
                 default:
-                    {
-                        _connectioned();
-                        break;
-                    }
+                {
+                    _connectioned();
+                    break;
+                }
             }
 
 #if NET

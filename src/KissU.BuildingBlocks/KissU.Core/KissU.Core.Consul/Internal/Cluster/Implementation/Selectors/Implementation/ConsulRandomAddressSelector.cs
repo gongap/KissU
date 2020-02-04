@@ -8,11 +8,30 @@ namespace KissU.Core.Consul.Internal.Cluster.Implementation.Selectors.Implementa
 {
     /// <summary>
     /// ConsulRandomAddressSelector.
-    /// Implements the <see cref="KissU.Core.Consul.Internal.Cluster.Implementation.Selectors.Implementation.ConsulAddressSelectorBase" />
+    /// Implements the
+    /// <see cref="KissU.Core.Consul.Internal.Cluster.Implementation.Selectors.Implementation.ConsulAddressSelectorBase" />
     /// </summary>
     /// <seealso cref="KissU.Core.Consul.Internal.Cluster.Implementation.Selectors.Implementation.ConsulAddressSelectorBase" />
     public class ConsulRandomAddressSelector : ConsulAddressSelectorBase
     {
+        #region Overrides of AddressSelectorBase
+
+        /// <summary>
+        /// 选择一个地址。
+        /// </summary>
+        /// <param name="context">地址选择上下文。</param>
+        /// <returns>地址模型。</returns>
+        protected override ValueTask<AddressModel> SelectAsync(AddressSelectContext context)
+        {
+            var address = context.Address.ToArray();
+            var length = address.Length;
+
+            var index = _generate(0, length);
+            return new ValueTask<AddressModel>(address[index]);
+        }
+
+        #endregion Overrides of AddressSelectorBase
+
         #region Field
 
         private readonly Func<int, int, int> _generate;
@@ -44,23 +63,5 @@ namespace KissU.Core.Consul.Internal.Cluster.Implementation.Selectors.Implementa
         }
 
         #endregion Constructor
-
-        #region Overrides of AddressSelectorBase
-
-        /// <summary>
-        /// 选择一个地址。
-        /// </summary>
-        /// <param name="context">地址选择上下文。</param>
-        /// <returns>地址模型。</returns>
-        protected override ValueTask<AddressModel> SelectAsync(AddressSelectContext context)
-        {
-            var address = context.Address.ToArray();
-            var length = address.Length;
-
-            var index = _generate(0, length);
-            return new ValueTask<AddressModel>(address[index]);
-        }
-
-        #endregion Overrides of AddressSelectorBase
     }
 }

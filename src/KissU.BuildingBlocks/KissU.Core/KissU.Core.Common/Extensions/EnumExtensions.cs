@@ -29,9 +29,8 @@ namespace KissU.Core.Common.Extensions
         /// <returns>返回自定义属性</returns>
         public static T GetAttribute<T>(this Enum value) where T : Attribute
         {
-            FieldInfo field = value.GetType().GetField(value.ToString());
+            var field = value.GetType().GetField(value.ToString());
             return field.GetCustomAttribute(typeof(T)) as T;
-
         }
 
         /// <summary>
@@ -67,6 +66,7 @@ namespace KissU.Core.Common.Extensions
                 else
                     list.Add(new Tuple<string, string>(Convert.ToInt32(value) + "", fieldName));
             }
+
             return list;
         }
     }

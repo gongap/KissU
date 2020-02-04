@@ -22,12 +22,12 @@ namespace KissU.Core.System.Ioc
     [Obsolete]
     public static class RegistrationExtensions
     {
-        private static readonly IEnumerable<Service> EmptyServices = new Service[0];
-
         private const string InterceptorsPropertyName =
             "KissU.Core.System.Ioc.RegistrationExtensions.InterceptorsPropertyName";
 
-        private static Dictionary<string, Assembly> _referenceAssembly = new Dictionary<string, Assembly>();
+        private static readonly IEnumerable<Service> EmptyServices = new Service[0];
+
+        private static readonly Dictionary<string, Assembly> _referenceAssembly = new Dictionary<string, Assembly>();
 
         /// <summary>
         /// Gets the reference assembly.
@@ -47,9 +47,9 @@ namespace KissU.Core.System.Ioc
         /// <param name="pattern">The pattern.</param>
         [Obsolete]
         public static void Initialize(this ContainerBuilder builder,
-                                      string pattern = "")
+            string pattern = "")
         {
-            string path = AppContext.BaseDirectory;
+            var path = AppContext.BaseDirectory;
             if (_referenceAssembly.Count == 0)
             {
                 var assemblyNames = GetAllAssemblyFiles(path, pattern);
@@ -62,7 +62,6 @@ namespace KissU.Core.System.Ioc
                     {
                         _referenceAssembly.Add(referencedAssemblyName, referencedAssembly);
                     }
-
                 }
             }
         }
@@ -83,15 +82,14 @@ namespace KissU.Core.System.Ioc
             if (builder == null) throw new ArgumentNullException("builder");
             var interfaceAssemblies = referenceAssemblies.Where(
                 p =>
-                p.GetCustomAttribute<AssemblyModuleTypeAttribute>().Type == ModuleType.WcfService).ToList();
+                    p.GetCustomAttribute<AssemblyModuleTypeAttribute>().Type == ModuleType.WcfService).ToList();
             foreach (var interfaceAssembly in interfaceAssemblies)
             {
                 result = builder.RegisterAssemblyTypes(interfaceAssembly)
                     .Where(t => t.Name.EndsWith("Service")).SingleInstance();
-
             }
-            return result;
 
+            return result;
         }
 
         /// <summary>
@@ -109,31 +107,36 @@ namespace KissU.Core.System.Ioc
             if (builder == null) throw new ArgumentNullException("builder");
 
             #region 接口服务注入
+
             var interfaceAssemblies = referenceAssemblies.Where(
                 p =>
-                p.GetCustomAttribute<AssemblyModuleTypeAttribute>().Type == ModuleType.InterFaceService ||
-                p.GetCustomAttribute<AssemblyModuleTypeAttribute>().Type == ModuleType.SystemModule).ToList();
+                    p.GetCustomAttribute<AssemblyModuleTypeAttribute>().Type == ModuleType.InterFaceService ||
+                    p.GetCustomAttribute<AssemblyModuleTypeAttribute>().Type == ModuleType.SystemModule).ToList();
             foreach (var interfaceAssembly in interfaceAssemblies)
             {
                 result = builder.RegisterAssemblyTypes(interfaceAssembly)
                     .Where(t => t.Name.StartsWith("I")).Where(t => t.Name.EndsWith("Service"))
                     .AsImplementedInterfaces();
-
             }
+
             #endregion
 
             #region 领域服务注入
+
             var domainAssemblies = referenceAssemblies.Where(
                 p =>
-                p.GetCustomAttribute<AssemblyModuleTypeAttribute>().Type == ModuleType.BusinessModule ||
-                p.GetCustomAttribute<AssemblyModuleTypeAttribute>().Type == ModuleType.Domain).ToList();
+                    p.GetCustomAttribute<AssemblyModuleTypeAttribute>().Type == ModuleType.BusinessModule ||
+                    p.GetCustomAttribute<AssemblyModuleTypeAttribute>().Type == ModuleType.Domain).ToList();
             foreach (var domainAssembly in domainAssemblies)
             {
                 result = builder.RegisterAssemblyTypes(domainAssembly)
-              .Where(t => t.Name.EndsWith("Service") && t.GetTypeInfo().GetCustomAttribute<ModuleNameAttribute>() == null).AsImplementedInterfaces();
-              //  result = builder.RegisterAssemblyTypes(domainAssembly)
-              //.Where(t => t.Name.EndsWith("Service") && t.GetTypeInfo().GetCustomAttribute<ModuleNameAttribute>() == null).EnableClassInterceptors();
-                var types = domainAssembly.GetTypes().Where(t => t.Name.EndsWith("Service") && t.GetTypeInfo().GetCustomAttribute<ModuleNameAttribute>() != null);
+                    .Where(t => t.Name.EndsWith("Service") &&
+                                t.GetTypeInfo().GetCustomAttribute<ModuleNameAttribute>() == null)
+                    .AsImplementedInterfaces();
+                //  result = builder.RegisterAssemblyTypes(domainAssembly)
+                //.Where(t => t.Name.EndsWith("Service") && t.GetTypeInfo().GetCustomAttribute<ModuleNameAttribute>() == null).EnableClassInterceptors();
+                var types = domainAssembly.GetTypes().Where(t =>
+                    t.Name.EndsWith("Service") && t.GetTypeInfo().GetCustomAttribute<ModuleNameAttribute>() != null);
                 foreach (var type in types)
                 {
                     var module = type.GetTypeInfo().GetCustomAttribute<ModuleNameAttribute>();
@@ -145,9 +148,10 @@ namespace KissU.Core.System.Ioc
                         builder.RegisterType(type).Named(module.ModuleName, type);
                     }
                 }
-
             }
+
             #endregion
+
             return result;
         }
 
@@ -158,25 +162,28 @@ namespace KissU.Core.System.Ioc
         /// <returns>IRegistrationBuilder&lt;System.Object, ScanningActivatorData, DynamicRegistrationStyle&gt;.</returns>
         [Obsolete]
         public static IRegistrationBuilder<object, ScanningActivatorData, DynamicRegistrationStyle> RegisterServiceBus
-            (
+        (
             this ContainerBuilder builder)
         {
             var referenceAssemblies = builder.GetReferenceAssembly();
             IRegistrationBuilder<object, ScanningActivatorData, DynamicRegistrationStyle> result = null;
             var assemblies = referenceAssemblies.Where(
-              p =>
-              p.GetCustomAttribute<AssemblyModuleTypeAttribute>().Type == ModuleType.BusinessModule ||
-              p.GetCustomAttribute<AssemblyModuleTypeAttribute>().Type == ModuleType.Domain).ToList();
+                p =>
+                    p.GetCustomAttribute<AssemblyModuleTypeAttribute>().Type == ModuleType.BusinessModule ||
+                    p.GetCustomAttribute<AssemblyModuleTypeAttribute>().Type == ModuleType.Domain).ToList();
 
             foreach (var assembly in assemblies)
             {
                 result = builder.RegisterAssemblyTypes(assembly)
-                 .Where(t => typeof(IIntegrationEventHandler).GetTypeInfo().IsAssignableFrom(t)).AsImplementedInterfaces().SingleInstance();
+                    .Where(t => typeof(IIntegrationEventHandler).GetTypeInfo().IsAssignableFrom(t))
+                    .AsImplementedInterfaces().SingleInstance();
                 result = builder.RegisterAssemblyTypes(assembly)
-               .Where(t => typeof(IIntegrationEventHandler).IsAssignableFrom(t)).SingleInstance();
+                    .Where(t => typeof(IIntegrationEventHandler).IsAssignableFrom(t)).SingleInstance();
             }
+
             return result;
         }
+
         /// <summary>
         /// 依赖注入仓储模块程序集
         /// </summary>
@@ -185,22 +192,22 @@ namespace KissU.Core.System.Ioc
         /// <exception cref="ArgumentNullException">builder</exception>
         [Obsolete]
         public static IRegistrationBuilder<object, ScanningActivatorData, DynamicRegistrationStyle> RegisterRepositories
-            (
+        (
             this ContainerBuilder builder)
         {
-
             var referenceAssemblies = builder.GetReferenceAssembly();
             IRegistrationBuilder<object, ScanningActivatorData, DynamicRegistrationStyle> result = null;
             if (builder == null) throw new ArgumentNullException("builder");
             var repositoryAssemblies = referenceAssemblies.Where(
                 p =>
-                p.GetCustomAttribute<AssemblyModuleTypeAttribute>().Type == ModuleType.BusinessModule ||
-                p.GetCustomAttribute<AssemblyModuleTypeAttribute>().Type == ModuleType.Domain).ToList();
+                    p.GetCustomAttribute<AssemblyModuleTypeAttribute>().Type == ModuleType.BusinessModule ||
+                    p.GetCustomAttribute<AssemblyModuleTypeAttribute>().Type == ModuleType.Domain).ToList();
             foreach (var repositoryAssembly in repositoryAssemblies)
             {
                 result = builder.RegisterAssemblyTypes(repositoryAssembly)
                     .Where(t => t.Name.EndsWith("Repository"));
             }
+
             return result;
         }
 
@@ -215,16 +222,17 @@ namespace KissU.Core.System.Ioc
             this ContainerBuilder builder)
         {
             var referenceAssemblies = builder.GetReferenceAssembly();
-            IModuleRegistrar result = default(IModuleRegistrar);
+            IModuleRegistrar result = default;
             if (builder == null) throw new ArgumentNullException("builder");
             var moduleAssemblies = referenceAssemblies.Where(
                 p =>
-                p.GetCustomAttribute<AssemblyModuleTypeAttribute>().Type == ModuleType.SystemModule ||
-                p.GetCustomAttribute<AssemblyModuleTypeAttribute>().Type == ModuleType.BusinessModule).ToList();
+                    p.GetCustomAttribute<AssemblyModuleTypeAttribute>().Type == ModuleType.SystemModule ||
+                    p.GetCustomAttribute<AssemblyModuleTypeAttribute>().Type == ModuleType.BusinessModule).ToList();
             foreach (var moduleAssembly in moduleAssemblies)
             {
                 result = builder.RegisterModules(moduleAssembly);
             }
+
             return result;
         }
 
@@ -232,12 +240,9 @@ namespace KissU.Core.System.Ioc
         private static IModuleRegistrar RegisterModules(
             this ContainerBuilder builder, Assembly assembly)
         {
-            IModuleRegistrar result = default(IModuleRegistrar);
+            var result = default(IModuleRegistrar);
 
-            GetAbstractModules(assembly).ForEach(p =>
-            {
-                result = builder.RegisterModule(p);
-            });
+            GetAbstractModules(assembly).ForEach(p => { result = builder.RegisterModule(p); });
 
             return result;
         }
@@ -257,12 +262,13 @@ namespace KissU.Core.System.Ioc
             if (builder == null) throw new ArgumentNullException("builder");
             var repositoryAssemblies = referenceAssemblies.Where(
                 p =>
-                p.GetCustomAttribute<AssemblyModuleTypeAttribute>().Type == ModuleType.BusinessModule ||
-                p.GetCustomAttribute<AssemblyModuleTypeAttribute>().Type == ModuleType.Domain).ToList();
+                    p.GetCustomAttribute<AssemblyModuleTypeAttribute>().Type == ModuleType.BusinessModule ||
+                    p.GetCustomAttribute<AssemblyModuleTypeAttribute>().Type == ModuleType.Domain).ToList();
             foreach (var repositoryAssembly in repositoryAssemblies)
             {
                 result = builder.RegisterAssemblyTypes(repositoryAssembly).AsImplementedInterfaces().SingleInstance();
             }
+
             return result;
         }
 
@@ -278,8 +284,8 @@ namespace KissU.Core.System.Ioc
             if (builder == null) throw new ArgumentNullException("builder");
             var moduleAssemblies = referenceAssemblies.Where(
                 p =>
-                p.GetCustomAttribute<AssemblyModuleTypeAttribute>().Type == ModuleType.SystemModule ||
-                p.GetCustomAttribute<AssemblyModuleTypeAttribute>().Type == ModuleType.BusinessModule).ToList();
+                    p.GetCustomAttribute<AssemblyModuleTypeAttribute>().Type == ModuleType.SystemModule ||
+                    p.GetCustomAttribute<AssemblyModuleTypeAttribute>().Type == ModuleType.BusinessModule).ToList();
             foreach (var moduleAssembly in moduleAssemblies)
             {
                 GetAbstractModules(moduleAssembly).ForEach(p => p.Initialize());
@@ -289,7 +295,7 @@ namespace KissU.Core.System.Ioc
         private static List<AbstractModule> GetAbstractModules(Assembly assembly)
         {
             var abstractModules = new List<AbstractModule>();
-            Type[] arrayModule =
+            var arrayModule =
                 assembly.GetTypes().Where(
                     t => t.GetTypeInfo().IsSubclassOf(typeof(AbstractModule)) && t.Name.EndsWith("Module")).ToArray();
             foreach (var moduleType in arrayModule)
@@ -301,14 +307,15 @@ namespace KissU.Core.System.Ioc
                 if (moduleDescriptionAttribute == null)
                 {
                     throw new ServiceException(string.Format("{0} 模块没有定义 ModuleDescriptor 特性",
-                                                             moduleType.AssemblyQualifiedName));
+                        moduleType.AssemblyQualifiedName));
                 }
 
                 #endregion
 
-                var abstractModule = (AbstractModule)Activator.CreateInstance(moduleType);
+                var abstractModule = (AbstractModule) Activator.CreateInstance(moduleType);
                 abstractModules.Add(abstractModule);
             }
+
             return abstractModules;
         }
 
@@ -322,13 +329,14 @@ namespace KissU.Core.System.Ioc
         {
             var referenceAssemblies = builder.GetReferenceAssembly();
             var interfaceAssemblies = referenceAssemblies.Where(
-          p =>
-          p.GetCustomAttribute<AssemblyModuleTypeAttribute>().Type == ModuleType.InterFaceService ||
-          p.GetCustomAttribute<AssemblyModuleTypeAttribute>().Type == ModuleType.SystemModule).ToList();
+                p =>
+                    p.GetCustomAttribute<AssemblyModuleTypeAttribute>().Type == ModuleType.InterFaceService ||
+                    p.GetCustomAttribute<AssemblyModuleTypeAttribute>().Type == ModuleType.SystemModule).ToList();
             var types = new List<Type>();
-            interfaceAssemblies.ForEach(p => 
+            interfaceAssemblies.ForEach(p =>
             {
-                types.AddRange(p.GetTypes().Where(t => t.Name.StartsWith("I")).Where(t => t.Name.EndsWith("Service")));
+                types.AddRange(p.GetTypes().Where(t => t.Name.StartsWith("I"))
+                    .Where(t => t.Name.EndsWith("Service")));
             });
             return types;
         }
@@ -339,8 +347,10 @@ namespace KissU.Core.System.Ioc
         /// <typeparam name="TAttributeType">类型参数：自定义特性的类型。</typeparam>
         /// <param name="type">类型。</param>
         /// <returns>返回指定类型的自定义特性对象。</returns>
-        /// <remarks><para>创建：范亮</para>
-        /// <para>日期：2015/12/5</para></remarks>
+        /// <remarks>
+        ///     <para>创建：范亮</para>
+        ///     <para>日期：2015/12/5</para>
+        /// </remarks>
         [Obsolete]
         public static TAttributeType GetTypeCustomAttribute<TAttributeType>(Type type) where TAttributeType : Attribute
         {
@@ -350,6 +360,7 @@ namespace KissU.Core.System.Ioc
             {
                 attr = attributes.First() as TAttributeType;
             }
+
             return attr;
         }
 

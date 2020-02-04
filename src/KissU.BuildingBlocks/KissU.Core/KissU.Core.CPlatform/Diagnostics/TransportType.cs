@@ -18,6 +18,6 @@
         /// <summary>
         /// The MQTT
         /// </summary>
-        Mqtt,
+        Mqtt
     }
 }

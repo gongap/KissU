@@ -9,7 +9,6 @@ namespace KissU.Core.Common
     [DataContract]
     public class ApiResult<T>
     {
-
         /// <summary>
         /// Gets or sets the status code.
         /// </summary>

@@ -44,6 +44,6 @@ namespace KissU.Core.KestrelHttpServer.Diagnostics
         IEnumerator IEnumerable.GetEnumerator()
         {
             return _tracingHeaders.GetEnumerator();
-        } 
+        }
     }
 }

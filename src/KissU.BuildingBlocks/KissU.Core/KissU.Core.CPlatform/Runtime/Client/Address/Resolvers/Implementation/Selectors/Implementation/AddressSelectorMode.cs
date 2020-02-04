@@ -23,6 +23,6 @@
         /// <summary>
         /// 压力最小优先
         /// </summary>
-        FairPolling,
+        FairPolling
     }
 }

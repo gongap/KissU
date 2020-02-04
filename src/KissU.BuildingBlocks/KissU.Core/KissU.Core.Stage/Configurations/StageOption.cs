@@ -11,12 +11,12 @@ namespace KissU.Core.Stage.Configurations
         /// <summary>
         /// Gets or sets a value indicating whether [enable HTTPS].
         /// </summary>
-        public bool EnableHttps { get;  set; }
+        public bool EnableHttps { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the certificate file.
         /// </summary>
-        public string CertificateFileName { get;  set; }
+        public string CertificateFileName { get; set; }
 
         /// <summary>
         /// Gets or sets the certificate location.
@@ -26,12 +26,12 @@ namespace KissU.Core.Stage.Configurations
         /// <summary>
         /// Gets or sets the certificate password.
         /// </summary>
-        public string CertificatePassword { get;  set; }
+        public string CertificatePassword { get; set; }
 
         /// <summary>
         /// Gets or sets the HTTPS port.
         /// </summary>
-        public string HttpsPort { get;  set; }
+        public string HttpsPort { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this instance is camel case resolver.
@@ -111,6 +111,6 @@ namespace KissU.Core.Stage.Configurations
         /// <summary>
         /// Gets or sets the HTTP ports.
         /// </summary>
-        public string HttpPorts { get;  set; }
+        public string HttpPorts { get; set; }
     }
 }

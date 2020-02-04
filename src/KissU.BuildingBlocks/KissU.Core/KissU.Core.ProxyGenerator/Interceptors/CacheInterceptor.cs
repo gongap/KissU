@@ -13,16 +13,16 @@ namespace KissU.Core.ProxyGenerator.Interceptors
         /// Intercepts the specified invocation.
         /// </summary>
         /// <param name="invocation">The invocation.</param>
-        /// <returns>Task.</returns>
-        public abstract Task Intercept(ICacheInvocation invocation);
+        public async Task Intercept(IInvocation invocation)
+        {
+            await Intercept(invocation as ICacheInvocation);
+        }
 
         /// <summary>
         /// Intercepts the specified invocation.
         /// </summary>
         /// <param name="invocation">The invocation.</param>
-        public async Task Intercept(IInvocation invocation)
-        {
-           await Intercept(invocation as ICacheInvocation);
-        }
+        /// <returns>Task.</returns>
+        public abstract Task Intercept(ICacheInvocation invocation);
     }
 }

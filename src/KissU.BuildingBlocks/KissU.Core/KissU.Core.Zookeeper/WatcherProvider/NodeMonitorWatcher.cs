@@ -12,17 +12,18 @@ namespace KissU.Core.Zookeeper.WatcherProvider
     /// <seealso cref="KissU.Core.Zookeeper.WatcherProvider.WatcherBase" />
     internal class NodeMonitorWatcher : WatcherBase
     {
-        private readonly Func<ValueTask<(ManualResetEvent, ZooKeeper)>> _zooKeeperCall;
         private readonly Action<byte[], byte[]> _action;
+        private readonly Func<ValueTask<(ManualResetEvent, ZooKeeper)>> _zooKeeperCall;
         private byte[] _currentData;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="NodeMonitorWatcher"/> class.
+        /// Initializes a new instance of the <see cref="NodeMonitorWatcher" /> class.
         /// </summary>
         /// <param name="zooKeeperCall">The zoo keeper call.</param>
         /// <param name="path">The path.</param>
         /// <param name="action">The action.</param>
-        public NodeMonitorWatcher(Func<ValueTask<(ManualResetEvent, ZooKeeper)>> zooKeeperCall, string path, Action<byte[], byte[]> action) : base(path)
+        public NodeMonitorWatcher(Func<ValueTask<(ManualResetEvent, ZooKeeper)>> zooKeeperCall, string path,
+            Action<byte[], byte[]> action) : base(path)
         {
             _zooKeeperCall = zooKeeperCall;
             _action = action;

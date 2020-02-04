@@ -6,7 +6,7 @@ namespace KissU.Core.Swagger.SwaggerUI
     /// <summary>
     /// SwaggerUIBuilderExtensions.
     /// </summary>
-    public static  class SwaggerUIBuilderExtensions
+    public static class SwaggerUIBuilderExtensions
     {
         /// <summary>
         /// Uses the swagger UI.
@@ -15,8 +15,8 @@ namespace KissU.Core.Swagger.SwaggerUI
         /// <param name="setupAction">The setup action.</param>
         /// <returns>IApplicationBuilder.</returns>
         public static IApplicationBuilder UseSwaggerUI(
-           this IApplicationBuilder app,
-           Action<SwaggerUIOptions> setupAction = null)
+            this IApplicationBuilder app,
+            Action<SwaggerUIOptions> setupAction = null)
         {
             if (setupAction == null)
             {

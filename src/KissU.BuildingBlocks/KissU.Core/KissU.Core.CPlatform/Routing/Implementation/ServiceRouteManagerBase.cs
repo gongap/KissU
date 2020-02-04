@@ -76,9 +76,9 @@ namespace KissU.Core.CPlatform.Routing.Implementation
             {
                 AddressDescriptors = route.Address?.Select(address => new ServiceAddressDescriptor
                 {
-                    Value = _serializer.Serialize(address),
+                    Value = _serializer.Serialize(address)
                 }) ?? Enumerable.Empty<ServiceAddressDescriptor>(),
-                ServiceDescriptor = route.ServiceDescriptor,
+                ServiceDescriptor = route.ServiceDescriptor
             });
 
             return SetRoutesAsync(descriptors);

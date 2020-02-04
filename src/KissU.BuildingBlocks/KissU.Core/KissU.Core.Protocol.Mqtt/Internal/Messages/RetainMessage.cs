@@ -16,6 +16,7 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Messages
         /// Gets or sets the qo s.
         /// </summary>
         public int QoS { get; set; }
+
         /// <summary>
         /// Converts to string.
         /// </summary>

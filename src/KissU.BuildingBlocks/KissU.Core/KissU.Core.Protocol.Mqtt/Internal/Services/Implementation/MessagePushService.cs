@@ -17,17 +17,19 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
     /// Implements the <see cref="KissU.Core.Protocol.Mqtt.Internal.Services.IMessagePushService" />
     /// </summary>
     /// <seealso cref="KissU.Core.Protocol.Mqtt.Internal.Services.IMessagePushService" />
-    public class MessagePushService:IMessagePushService
+    public class MessagePushService : IMessagePushService
     {
         private readonly ScanRunnable _scanRunnable;
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="MessagePushService"/> class.
+        /// Initializes a new instance of the <see cref="MessagePushService" /> class.
         /// </summary>
         /// <param name="scanRunnable">The scan runnable.</param>
         public MessagePushService(ScanRunnable scanRunnable)
         {
             _scanRunnable = scanRunnable;
         }
+
         /// <summary>
         /// Writes the will MSG.
         /// </summary>
@@ -37,17 +39,19 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
         {
             switch (willMeaasge.Qos)
             {
-                case 0: 
-                    await SendQos0Msg(mqttChannel.Channel, willMeaasge.Topic,  Encoding.Default.GetBytes(willMeaasge.WillMessage));
+                case 0:
+                    await SendQos0Msg(mqttChannel.Channel, willMeaasge.Topic,
+                        Encoding.Default.GetBytes(willMeaasge.WillMessage));
                     break;
                 case 1: // qos1
-                    await SendQosConfirmMsg(QualityOfService.AtLeastOnce, mqttChannel, willMeaasge.Topic, Encoding.Default.GetBytes(willMeaasge.WillMessage));
+                    await SendQosConfirmMsg(QualityOfService.AtLeastOnce, mqttChannel, willMeaasge.Topic,
+                        Encoding.Default.GetBytes(willMeaasge.WillMessage));
                     break;
                 case 2: // qos2
-                    await SendQosConfirmMsg(QualityOfService.ExactlyOnce, mqttChannel, willMeaasge.Topic, Encoding.Default.GetBytes(willMeaasge.WillMessage));
+                    await SendQosConfirmMsg(QualityOfService.ExactlyOnce, mqttChannel, willMeaasge.Topic,
+                        Encoding.Default.GetBytes(willMeaasge.WillMessage));
                     break;
-            } 
-             
+            }
         }
 
         /// <summary>
@@ -61,48 +65,18 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
         {
             if (mqttChannel.IsLogin())
             {
-                int messageId = MessageIdGenerater.GenerateId();
+                var messageId = MessageIdGenerater.GenerateId();
                 switch (qos)
                 {
                     case QualityOfService.AtLeastOnce:
-                        mqttChannel.AddMqttMessage(messageId, await SendQos1Msg(mqttChannel.Channel, topic, false, bytes, messageId));
+                        mqttChannel.AddMqttMessage(messageId,
+                            await SendQos1Msg(mqttChannel.Channel, topic, false, bytes, messageId));
                         break;
                     case QualityOfService.ExactlyOnce:
-                        mqttChannel.AddMqttMessage(messageId,await SendQos2Msg(mqttChannel.Channel, topic, false, bytes, messageId));
+                        mqttChannel.AddMqttMessage(messageId,
+                            await SendQos2Msg(mqttChannel.Channel, topic, false, bytes, messageId));
                         break;
                 }
-            }
-
-        }
-
-        private async Task<SendMqttMessage> SendQos1Msg(IChannel channel, String topic, bool isDup, byte[] byteBuf, int messageId)
-        {
-            var mqttPublishMessage = new PublishPacket(QualityOfService.AtMostOnce, true, true);
-            mqttPublishMessage.TopicName = topic;
-            mqttPublishMessage.PacketId = messageId;
-            mqttPublishMessage.Payload = Unpooled.WrappedBuffer(byteBuf);
-            await channel.WriteAndFlushAsync(mqttPublishMessage);
-            return Enqueue(channel, messageId, topic, byteBuf, (int)QualityOfService.AtLeastOnce, ConfirmStatus.PUB);
-        }
-
-        private async Task<SendMqttMessage> SendQos2Msg(IChannel channel, String topic, bool isDup, byte[] byteBuf, int messageId)
-        {
-            var mqttPublishMessage = new PublishPacket(QualityOfService.AtMostOnce, true, true);
-            mqttPublishMessage.TopicName = topic;
-            mqttPublishMessage.PacketId = messageId;
-            mqttPublishMessage.Payload = Unpooled.WrappedBuffer(byteBuf);
-            await channel.WriteAndFlushAsync(mqttPublishMessage);
-            return Enqueue(channel, messageId, topic, byteBuf, (int)QualityOfService.ExactlyOnce, ConfirmStatus.PUB);
-        }
-        
-        private async Task SendQos0Msg(IChannel channel, String topic, byte[] byteBuf, int messageId)
-        {
-            if (channel != null)
-            {
-                var mqttPublishMessage = new PublishPacket(QualityOfService.AtMostOnce, true, true);
-                mqttPublishMessage.TopicName = topic;
-                mqttPublishMessage.Payload = Unpooled.WrappedBuffer(byteBuf);
-                await channel.WriteAndFlushAsync(mqttPublishMessage);
             }
         }
 
@@ -113,11 +87,11 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
         /// <param name="messageId">The message identifier.</param>
         public async Task SendPubBack(IChannel channel, int messageId)
         {
-            var mqttPubAckMessage = new PubAckPacket()
+            var mqttPubAckMessage = new PubAckPacket
             {
                 PacketId = messageId
             };
-           await channel.WriteAndFlushAsync(mqttPubAckMessage);
+            await channel.WriteAndFlushAsync(mqttPubAckMessage);
         }
 
         /// <summary>
@@ -127,7 +101,7 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
         /// <param name="messageId">The message identifier.</param>
         public async Task SendPubRec(MqttChannel mqttChannel, int messageId)
         {
-            var mqttPubAckMessage = new PubRecPacket()
+            var mqttPubAckMessage = new PubRecPacket
             {
                 PacketId = messageId
             };
@@ -144,11 +118,11 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
         /// <param name="messageId">The message identifier.</param>
         public async Task SendPubRel(IChannel channel, int messageId)
         {
-            var mqttPubAckMessage = new PubRelPacket()
+            var mqttPubAckMessage = new PubRelPacket
             {
                 PacketId = messageId
-            }; 
-           await channel.WriteAndFlushAsync(mqttPubAckMessage); 
+            };
+            await channel.WriteAndFlushAsync(mqttPubAckMessage);
         }
 
         /// <summary>
@@ -158,11 +132,11 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
         /// <param name="messageId">The message identifier.</param>
         public async Task SendToPubComp(IChannel channel, int messageId)
         {
-            var mqttPubAckMessage = new PubCompPacket()
+            var mqttPubAckMessage = new PubCompPacket
             {
                 PacketId = messageId
             };
-           await channel.WriteAndFlushAsync(mqttPubAckMessage);
+            await channel.WriteAndFlushAsync(mqttPubAckMessage);
         }
 
 
@@ -172,17 +146,51 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
         /// <param name="channel">The channel.</param>
         /// <param name="topic">The topic.</param>
         /// <param name="byteBuf">The byte buf.</param>
-        public async Task SendQos0Msg(IChannel channel, String topic, byte[] byteBuf)
+        public async Task SendQos0Msg(IChannel channel, string topic, byte[] byteBuf)
         {
             if (channel != null)
             {
-               await SendQos0Msg(channel, topic, byteBuf, 0);
+                await SendQos0Msg(channel, topic, byteBuf, 0);
             }
         }
 
-        private SendMqttMessage Enqueue(IChannel channel, int messageId, String topic, byte[] datas, int mqttQoS, ConfirmStatus confirmStatus)
+        private async Task<SendMqttMessage> SendQos1Msg(IChannel channel, string topic, bool isDup, byte[] byteBuf,
+            int messageId)
         {
-            var  message = new SendMqttMessage
+            var mqttPublishMessage = new PublishPacket(QualityOfService.AtMostOnce, true, true);
+            mqttPublishMessage.TopicName = topic;
+            mqttPublishMessage.PacketId = messageId;
+            mqttPublishMessage.Payload = Unpooled.WrappedBuffer(byteBuf);
+            await channel.WriteAndFlushAsync(mqttPublishMessage);
+            return Enqueue(channel, messageId, topic, byteBuf, (int) QualityOfService.AtLeastOnce, ConfirmStatus.PUB);
+        }
+
+        private async Task<SendMqttMessage> SendQos2Msg(IChannel channel, string topic, bool isDup, byte[] byteBuf,
+            int messageId)
+        {
+            var mqttPublishMessage = new PublishPacket(QualityOfService.AtMostOnce, true, true);
+            mqttPublishMessage.TopicName = topic;
+            mqttPublishMessage.PacketId = messageId;
+            mqttPublishMessage.Payload = Unpooled.WrappedBuffer(byteBuf);
+            await channel.WriteAndFlushAsync(mqttPublishMessage);
+            return Enqueue(channel, messageId, topic, byteBuf, (int) QualityOfService.ExactlyOnce, ConfirmStatus.PUB);
+        }
+
+        private async Task SendQos0Msg(IChannel channel, string topic, byte[] byteBuf, int messageId)
+        {
+            if (channel != null)
+            {
+                var mqttPublishMessage = new PublishPacket(QualityOfService.AtMostOnce, true, true);
+                mqttPublishMessage.TopicName = topic;
+                mqttPublishMessage.Payload = Unpooled.WrappedBuffer(byteBuf);
+                await channel.WriteAndFlushAsync(mqttPublishMessage);
+            }
+        }
+
+        private SendMqttMessage Enqueue(IChannel channel, int messageId, string topic, byte[] datas, int mqttQoS,
+            ConfirmStatus confirmStatus)
+        {
+            var message = new SendMqttMessage
             {
                 ByteBuf = datas,
                 Channel = channel,
@@ -195,6 +203,5 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
             _scanRunnable.Enqueue(message);
             return message;
         }
-
     }
 }

@@ -20,7 +20,6 @@ namespace KissU.Core.DotNetty
         /// </summary>
         /// <param name="builder">服务构建者。</param>
         /// <returns>服务构建者。</returns>
-
         [Obsolete]
         public static IServiceBuilder UseDotNettyTransport(this IServiceBuilder builder)
         {
@@ -33,7 +32,7 @@ namespace KissU.Core.DotNetty
                     serviceExecutor = provider.Resolve<IServiceExecutor>();
                 return new DotNettyTransportClientFactory(provider.Resolve<ITransportMessageCodecFactory>(),
                     provider.Resolve<IHealthCheckService>(),
-                     provider.Resolve<ILogger<DotNettyTransportClientFactory>>(),
+                    provider.Resolve<ILogger<DotNettyTransportClientFactory>>(),
                     serviceExecutor);
             }).As(typeof(ITransportClientFactory)).SingleInstance();
             if (AppConfig.ServerOptions.Protocol == CommunicationProtocol.Tcp ||
@@ -41,6 +40,7 @@ namespace KissU.Core.DotNetty
             {
                 RegisterDefaultProtocol(services);
             }
+
             return builder;
         }
 
@@ -49,11 +49,10 @@ namespace KissU.Core.DotNetty
             builder.Register(provider =>
             {
                 return new DotNettyServerMessageListener(provider.Resolve<ILogger<DotNettyServerMessageListener>>(),
-                      provider.Resolve<ITransportMessageCodecFactory>());
+                    provider.Resolve<ITransportMessageCodecFactory>());
             }).SingleInstance();
             builder.Register(provider =>
             {
-
                 var serviceExecutor = provider.ResolveKeyed<IServiceExecutor>(CommunicationProtocol.Tcp.ToString());
                 var messageListener = provider.Resolve<DotNettyServerMessageListener>();
                 return new DefaultServiceHost(async endPoint =>

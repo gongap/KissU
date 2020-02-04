@@ -1,7 +1,8 @@
 using System;
 using System.IO;
-using Microsoft.Extensions.Configuration;
 using KissU.Core.CPlatform;
+using Microsoft.Extensions.Configuration;
+
 namespace KissU.Core.Configuration.Apollo.Configurations
 {
     /// <summary>
@@ -10,15 +11,8 @@ namespace KissU.Core.Configuration.Apollo.Configurations
     /// </summary>
     /// <seealso cref="KissU.Core.Configuration.Apollo.Configurations.IConfigurationFactory" />
     public class ConfigurationFactory : IConfigurationFactory
-    { 
+    {
         private const string CONFIG_FILE_PATH = "APOLLO__CONFIG__PATH";
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ConfigurationFactory" /> class.
-        /// </summary>
-        public ConfigurationFactory()
-        {  
-        }
 
         /// <summary>
         /// Creates this instance.
@@ -29,7 +23,7 @@ namespace KissU.Core.Configuration.Apollo.Configurations
         {
             var builder = new ConfigurationBuilder();
             var environmentName = Environment.GetEnvironmentVariable("environmentname");
-          
+
 
             builder.AddJsonFile("apollo.json", true)
                 .AddJsonFile($"apollo.{environmentName}.json", true);
@@ -59,13 +53,15 @@ namespace KissU.Core.Configuration.Apollo.Configurations
                     builder.Add(fileConfigurationProvider.Source);
                 }
             }
+
             var config = builder.Build();
             var section = config.GetSection("apollo");
             if (!section.Exists())
             {
                 throw new Exception("apollo config file not exists!");
             }
-            var apollo = builder.AddApollo(section); 
+
+            var apollo = builder.AddApollo(section);
             apollo.AddNamespaceKissUApollo("surgingSettings");
             return config;
         }

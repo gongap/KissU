@@ -17,23 +17,59 @@ namespace KissU.Core.Zookeeper.Internal.Cluster.HealthChecks.Implementation
     /// <seealso cref="KissU.Core.Zookeeper.Internal.Cluster.HealthChecks.IHealthCheckService" />
     public class DefaultHealthCheckService : IHealthCheckService
     {
+        private readonly ConcurrentDictionary<ValueTuple<string, int>, MonitorEntry> _dictionary =
+            new ConcurrentDictionary<ValueTuple<string, int>, MonitorEntry>();
+
         private readonly int _timeout = 30000;
         private readonly Timer _timer;
-        private readonly ConcurrentDictionary<ValueTuple<string, int>, MonitorEntry> _dictionary =
-    new ConcurrentDictionary<ValueTuple<string, int>, MonitorEntry>();
+
+        #region Help Class
+
+        /// <summary>
+        /// MonitorEntry.
+        /// </summary>
+        protected class MonitorEntry
+        {
+            /// <summary>
+            /// Initializes a new instance of the <see cref="MonitorEntry" /> class.
+            /// </summary>
+            /// <param name="addressModel">The address model.</param>
+            /// <param name="health">if set to <c>true</c> [health].</param>
+            public MonitorEntry(AddressModel addressModel, bool health = true)
+            {
+                EndPoint = addressModel.CreateEndPoint();
+                Health = health;
+            }
+
+            /// <summary>
+            /// Gets or sets the unhealthy times.
+            /// </summary>
+            public int UnhealthyTimes { get; set; }
+
+            /// <summary>
+            /// Gets or sets the end point.
+            /// </summary>
+            public EndPoint EndPoint { get; set; }
+
+            /// <summary>
+            /// Gets or sets a value indicating whether this <see cref="MonitorEntry" /> is health.
+            /// </summary>
+            public bool Health { get; set; }
+        }
+
+        #endregion Help Class
 
         #region Implementation of IHealthCheckService
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="DefaultHealthCheckService"/> class.
+        /// Initializes a new instance of the <see cref="DefaultHealthCheckService" /> class.
         /// </summary>
         public DefaultHealthCheckService()
         {
             var timeSpan = TimeSpan.FromSeconds(60);
 
-            _timer = new Timer(async s =>
-            {
-                await Check(_dictionary.ToArray().Select(i => i.Value), _timeout);
-            }, null, timeSpan, timeSpan);
+            _timer = new Timer(async s => { await Check(_dictionary.ToArray().Select(i => i.Value), _timeout); }, null,
+                timeSpan, timeSpan);
         }
 
         /// <summary>
@@ -45,7 +81,10 @@ namespace KissU.Core.Zookeeper.Internal.Cluster.HealthChecks.Implementation
         {
             var ipAddress = address as IpAddressModel;
             MonitorEntry entry;
-            var isHealth = !_dictionary.TryGetValue(new ValueTuple<string, int>(ipAddress.Ip, ipAddress.Port), out entry) ? await Check(address, _timeout) : entry.Health;
+            var isHealth =
+                !_dictionary.TryGetValue(new ValueTuple<string, int>(ipAddress.Ip, ipAddress.Port), out entry)
+                    ? await Check(address, _timeout)
+                    : entry.Health;
             return isHealth;
         }
 
@@ -56,7 +95,8 @@ namespace KissU.Core.Zookeeper.Internal.Cluster.HealthChecks.Implementation
         public void Monitor(AddressModel address)
         {
             var ipAddress = address as IpAddressModel;
-            _dictionary.GetOrAdd(new ValueTuple<string, int>(ipAddress.Ip, ipAddress.Port), k => new MonitorEntry(address));
+            _dictionary.GetOrAdd(new ValueTuple<string, int>(ipAddress.Ip, ipAddress.Port),
+                k => new MonitorEntry(address));
         }
 
         #region Implementation of IDisposable
@@ -68,6 +108,7 @@ namespace KissU.Core.Zookeeper.Internal.Cluster.HealthChecks.Implementation
         {
             _timer.Dispose();
         }
+
         #endregion
 
         #endregion Implementation of IDisposable
@@ -76,8 +117,9 @@ namespace KissU.Core.Zookeeper.Internal.Cluster.HealthChecks.Implementation
 
         private static async Task<bool> Check(AddressModel address, int timeout)
         {
-            bool isHealth = false;
-            using (var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp) { SendTimeout = timeout })
+            var isHealth = false;
+            using (var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
+                {SendTimeout = timeout})
             {
                 try
                 {
@@ -86,8 +128,8 @@ namespace KissU.Core.Zookeeper.Internal.Cluster.HealthChecks.Implementation
                 }
                 catch
                 {
-
                 }
+
                 return isHealth;
             }
         }
@@ -96,7 +138,8 @@ namespace KissU.Core.Zookeeper.Internal.Cluster.HealthChecks.Implementation
         {
             foreach (var entry in entrys)
             {
-                using (var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp) { SendTimeout = timeout })
+                using (var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
+                    {SendTimeout = timeout})
                 {
                     try
                     {
@@ -114,42 +157,5 @@ namespace KissU.Core.Zookeeper.Internal.Cluster.HealthChecks.Implementation
         }
 
         #endregion Private Method
-
-        #region Help Class
-
-        /// <summary>
-        /// MonitorEntry.
-        /// </summary>
-        protected class MonitorEntry
-        {
-            /// <summary>
-            /// Initializes a new instance of the <see cref="MonitorEntry"/> class.
-            /// </summary>
-            /// <param name="addressModel">The address model.</param>
-            /// <param name="health">if set to <c>true</c> [health].</param>
-            public MonitorEntry(AddressModel addressModel, bool health = true)
-            {
-                EndPoint = addressModel.CreateEndPoint();
-                Health = health;
-
-            }
-
-            /// <summary>
-            /// Gets or sets the unhealthy times.
-            /// </summary>
-            public int UnhealthyTimes { get; set; }
-
-            /// <summary>
-            /// Gets or sets the end point.
-            /// </summary>
-            public EndPoint EndPoint { get; set; }
-            /// <summary>
-            /// Gets or sets a value indicating whether this <see cref="MonitorEntry"/> is health.
-            /// </summary>
-            public bool Health { get; set; }
-        }
-
-        #endregion Help Class
     }
 }
-

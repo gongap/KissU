@@ -10,6 +10,11 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
     public interface ISchemaRegistry
     {
         /// <summary>
+        /// Gets the definitions.
+        /// </summary>
+        IDictionary<string, Schema> Definitions { get; }
+
+        /// <summary>
         /// Gets the or register.
         /// </summary>
         /// <param name="type">The type.</param>
@@ -23,10 +28,5 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
         /// <param name="type">The type.</param>
         /// <returns>Schema.</returns>
         Schema GetOrRegister(string parmName, Type type);
-
-        /// <summary>
-        /// Gets the definitions.
-        /// </summary>
-        IDictionary<string, Schema> Definitions { get; }
     }
 }

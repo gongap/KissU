@@ -34,10 +34,10 @@ namespace KissU.Core.Grpc
             builder.Register(provider =>
             {
                 return new DefaultGrpcServiceEntryProvider(
-                       provider.Resolve<IServiceEntryProvider>(),
+                    provider.Resolve<IServiceEntryProvider>(),
                     provider.Resolve<ILogger<DefaultGrpcServiceEntryProvider>>(),
-                      provider.Resolve<CPlatformContainer>()
-                      );
+                    provider.Resolve<CPlatformContainer>()
+                );
             }).As(typeof(IGrpcServiceEntryProvider)).SingleInstance();
             if (AppConfig.ServerOptions.Protocol == CommunicationProtocol.WS)
             {
@@ -51,13 +51,12 @@ namespace KissU.Core.Grpc
 
         private static void RegisterDefaultProtocol(ContainerBuilderWrapper builder)
         {
-
             builder.Register(provider =>
             {
                 return new GrpcServerMessageListener(
                     provider.Resolve<ILogger<GrpcServerMessageListener>>(),
-                      provider.Resolve<IGrpcServiceEntryProvider>()
-                      );
+                    provider.Resolve<IGrpcServiceEntryProvider>()
+                );
             }).SingleInstance();
             builder.Register(provider =>
             {
@@ -67,7 +66,6 @@ namespace KissU.Core.Grpc
                     await messageListener.StartAsync(endPoint);
                     return messageListener;
                 }, null);
-
             }).As<IServiceHost>();
         }
 
@@ -76,8 +74,8 @@ namespace KissU.Core.Grpc
             builder.Register(provider =>
             {
                 return new GrpcServerMessageListener(provider.Resolve<ILogger<GrpcServerMessageListener>>(),
-                      provider.Resolve<IGrpcServiceEntryProvider>()
-                      );
+                    provider.Resolve<IGrpcServiceEntryProvider>()
+                );
             }).SingleInstance();
             builder.Register(provider =>
             {
@@ -87,9 +85,7 @@ namespace KissU.Core.Grpc
                     await messageListener.StartAsync(endPoint);
                     return messageListener;
                 });
-
             }).As<IServiceHost>();
         }
     }
 }
- 

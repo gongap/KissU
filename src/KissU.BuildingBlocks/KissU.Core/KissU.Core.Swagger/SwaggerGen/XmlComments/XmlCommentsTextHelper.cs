@@ -9,8 +9,10 @@ namespace KissU.Core.Swagger.SwaggerGen.XmlComments
     /// </summary>
     public static class XmlCommentsTextHelper
     {
-        private static Regex RefTagPattern = new Regex(@"<(see|paramref) (name|cref)=""([TPF]{1}:)?(?<display>.+?)"" ?/>");
-        private static Regex CodeTagPattern = new Regex(@"<c>(?<display>.+?)</c>");
+        private static readonly Regex RefTagPattern =
+            new Regex(@"<(see|paramref) (name|cref)=""([TPF]{1}:)?(?<display>.+?)"" ?/>");
+
+        private static readonly Regex CodeTagPattern = new Regex(@"<c>(?<display>.+?)</c>");
 
         /// <summary>
         /// Humanizes the specified text.
@@ -31,15 +33,15 @@ namespace KissU.Core.Swagger.SwaggerGen.XmlComments
 
         private static string NormalizeIndentation(this string text)
         {
-            string[] lines = text.Split('\n');
-            string padding = GetCommonLeadingWhitespace(lines);
+            var lines = text.Split('\n');
+            var padding = GetCommonLeadingWhitespace(lines);
 
-            int padLen = padding == null ? 0 : padding.Length;
+            var padLen = padding == null ? 0 : padding.Length;
 
             // remove leading padding from each line
             for (int i = 0, l = lines.Length; i < l; ++i)
             {
-                string line = lines[i].TrimEnd('\r'); // remove trailing '\r'
+                var line = lines[i].TrimEnd('\r'); // remove trailing '\r'
 
                 if (padLen != 0 && line.Length >= padLen && line.Substring(0, padLen) == padding)
                     line = line.Substring(padLen);
@@ -60,17 +62,17 @@ namespace KissU.Core.Swagger.SwaggerGen.XmlComments
             if (lines.Length == 0)
                 return null;
 
-            string[] nonEmptyLines = lines
+            var nonEmptyLines = lines
                 .Where(x => !string.IsNullOrWhiteSpace(x))
                 .ToArray();
 
             if (nonEmptyLines.Length < 1)
                 return null;
 
-            int padLen = 0;
+            var padLen = 0;
 
             // use the first line as a seed, and see what is shared over all nonEmptyLines
-            string seed = nonEmptyLines[0];
+            var seed = nonEmptyLines[0];
             for (int i = 0, l = seed.Length; i < l; ++i)
             {
                 if (!char.IsWhiteSpace(seed, i))
@@ -90,13 +92,12 @@ namespace KissU.Core.Swagger.SwaggerGen.XmlComments
 
         private static string HumanizeRefTags(this string text)
         {
-            return RefTagPattern.Replace(text, (match) => match.Groups["display"].Value);
+            return RefTagPattern.Replace(text, match => match.Groups["display"].Value);
         }
 
         private static string HumanizeCodeTags(this string text)
         {
-            return CodeTagPattern.Replace(text, (match) => "{" + match.Groups["display"].Value + "}");
+            return CodeTagPattern.Replace(text, match => "{" + match.Groups["display"].Value + "}");
         }
-
     }
 }

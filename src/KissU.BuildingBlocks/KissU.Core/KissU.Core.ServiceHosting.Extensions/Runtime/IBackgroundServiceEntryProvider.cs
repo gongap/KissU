@@ -11,6 +11,6 @@ namespace KissU.Core.ServiceHosting.Extensions.Runtime
         /// Gets the entries.
         /// </summary>
         /// <returns>IEnumerable&lt;BackgroundServiceEntry&gt;.</returns>
-        IEnumerable<BackgroundServiceEntry> GetEntries(); 
+        IEnumerable<BackgroundServiceEntry> GetEntries();
     }
 }

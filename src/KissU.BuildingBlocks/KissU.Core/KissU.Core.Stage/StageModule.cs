@@ -23,6 +23,7 @@ namespace KissU.Core.Stage
     public class StageModule : KestrelHttpModule
     {
         private IWebServerListener _listener;
+
         /// <summary>
         /// Initializes the specified context.
         /// </summary>
@@ -37,7 +38,7 @@ namespace KissU.Core.Stage
         /// </summary>
         /// <param name="context">The context.</param>
         public override void RegisterBuilder(WebHostContext context)
-        {  
+        {
             _listener.Listen(context);
         }
 
@@ -52,7 +53,7 @@ namespace KissU.Core.Stage
             {
                 context.Builder.UseCors(builder =>
                 {
-                    if(policy.Origins!=null)
+                    if (policy.Origins != null)
                         builder.WithOrigins(policy.Origins);
                     if (policy.AllowAnyHeader)
                         builder.AllowAnyHeader();
@@ -77,38 +78,40 @@ namespace KissU.Core.Stage
             {
                 ApiGateWay.AppConfig.CacheMode = apiConfig.CacheMode;
                 ApiGateWay.AppConfig.AuthorizationServiceKey = apiConfig.AuthorizationServiceKey;
-                ApiGateWay.AppConfig.AccessTokenExpireTimeSpan =TimeSpan.FromMinutes(apiConfig.AccessTokenExpireTimeSpan);
+                ApiGateWay.AppConfig.AccessTokenExpireTimeSpan =
+                    TimeSpan.FromMinutes(apiConfig.AccessTokenExpireTimeSpan);
                 ApiGateWay.AppConfig.AuthorizationRoutePath = apiConfig.AuthorizationRoutePath;
                 ApiGateWay.AppConfig.TokenEndpointPath = apiConfig.TokenEndpointPath;
             }
+
             context.Services.AddMvc().AddNewtonsoftJson(options =>
             {
                 options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
                 if (AppConfig.Options.IsCamelCaseResolver)
                 {
-                    JsonConvert.DefaultSettings= new Func<JsonSerializerSettings>(() =>
+                    JsonConvert.DefaultSettings = () =>
                     {
-                       JsonSerializerSettings setting = new JsonSerializerSettings();
+                        var setting = new JsonSerializerSettings();
                         setting.DateFormatString = "yyyy-MM-dd HH:mm:ss";
                         setting.ContractResolver = new CamelCasePropertyNamesContractResolver();
                         return setting;
-                    });
+                    };
                     options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
                 }
                 else
                 {
-                    JsonConvert.DefaultSettings = new Func<JsonSerializerSettings>(() =>
+                    JsonConvert.DefaultSettings = () =>
                     {
-                        JsonSerializerSettings setting = new JsonSerializerSettings();
+                        var setting = new JsonSerializerSettings();
                         setting.DateFormatString = "yyyy-MM-dd HH:mm:ss";
-                        setting.ContractResolver= new DefaultContractResolver();
+                        setting.ContractResolver = new DefaultContractResolver();
                         return setting;
-                    });
+                    };
                     options.SerializerSettings.ContractResolver = new DefaultContractResolver();
                 }
             });
-            context.Services.AddSingleton<IHttpContextAccessor,HttpContextAccessor>();
-            context.Services.AddSingleton<IIPChecker,IPAddressChecker>();
+            context.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            context.Services.AddSingleton<IIPChecker, IPAddressChecker>();
             context.Services.AddFilters(typeof(JWTBearerAuthorizationFilterAttribute));
             context.Services.AddFilters(typeof(ActionFilterAttribute));
             context.Services.AddFilters(typeof(IPFilterAttribute));
@@ -126,8 +129,8 @@ namespace KissU.Core.Stage
             {
                 AppConfig.Options = section.Get<StageOption>();
             }
-            
-            builder.RegisterType<WebServerListener>().As<IWebServerListener>().SingleInstance(); 
+
+            builder.RegisterType<WebServerListener>().As<IWebServerListener>().SingleInstance();
         }
     }
 }

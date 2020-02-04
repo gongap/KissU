@@ -10,16 +10,17 @@ namespace KissU.Core.Consul.WatcherProvider.Implementation
     /// Implements the <see cref="KissU.Core.Consul.WatcherProvider.Implementation.WatcherBase" />
     /// </summary>
     /// <seealso cref="KissU.Core.Consul.WatcherProvider.Implementation.WatcherBase" />
-    class NodeMonitorWatcher : WatcherBase
+    internal class NodeMonitorWatcher : WatcherBase
     {
         private readonly Action<byte[], byte[]> _action;
-        private readonly IClientWatchManager _manager;
         private readonly Func<ValueTask<ConsulClient>> _clientCall;
+        private readonly IClientWatchManager _manager;
         private readonly string _path;
+        private readonly Func<string, bool> _allowChange;
         private byte[] _currentData = new byte[0];
-        Func<string,bool> _allowChange;
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="NodeMonitorWatcher"/> class.
+        /// Initializes a new instance of the <see cref="NodeMonitorWatcher" /> class.
         /// </summary>
         /// <param name="clientCall">The client call.</param>
         /// <param name="manager">The manager.</param>
@@ -27,9 +28,9 @@ namespace KissU.Core.Consul.WatcherProvider.Implementation
         /// <param name="action">The action.</param>
         /// <param name="allowChange">The allow change.</param>
         public NodeMonitorWatcher(Func<ValueTask<ConsulClient>> clientCall, IClientWatchManager manager, string path,
-            Action<byte[], byte[]> action,Func<string,bool> allowChange)
+            Action<byte[], byte[]> action, Func<string, bool> allowChange)
         {
-            this._action = action;
+            _action = action;
             _manager = manager;
             _clientCall = clientCall;
             _path = path;
@@ -54,13 +55,13 @@ namespace KissU.Core.Consul.WatcherProvider.Implementation
         protected override async Task ProcessImpl()
         {
             RegisterWatch(this);
-            if (_allowChange!=null&&! _allowChange(_path)) return;
+            if (_allowChange != null && !_allowChange(_path)) return;
             var client = await _clientCall();
-            var result =await client.GetDataAsync(_path);
+            var result = await client.GetDataAsync(_path);
             if (result != null)
             {
                 _action(_currentData, result);
-                this.SetCurrentData(result);
+                SetCurrentData(result);
             }
         }
 
@@ -75,6 +76,7 @@ namespace KissU.Core.Consul.WatcherProvider.Implementation
             {
                 wcb = new ChildWatchRegistration(_manager, this, _path);
             }
+
             wcb.Register();
         }
     }

@@ -1,6 +1,12 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Threading.Tasks;
 using KissU.Core.CPlatform;
 using KissU.Core.CPlatform.Convertibles;
+using KissU.Core.CPlatform.Exceptions;
 using KissU.Core.CPlatform.Filters;
 using KissU.Core.CPlatform.Messages;
 using KissU.Core.CPlatform.Routing;
@@ -8,13 +14,7 @@ using KissU.Core.CPlatform.Runtime.Server;
 using KissU.Core.CPlatform.Transport;
 using KissU.Core.CPlatform.Utilities;
 using KissU.Core.ProxyGenerator;
-using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
-using KissU.Core.CPlatform.Exceptions;
+using Microsoft.Extensions.Logging;
 using static KissU.Core.CPlatform.Utilities.FastInvoke;
 
 namespace KissU.Core.Protocol.Http
@@ -26,22 +26,10 @@ namespace KissU.Core.Protocol.Http
     /// <seealso cref="KissU.Core.CPlatform.Runtime.Server.IServiceExecutor" />
     public class HttpServiceExecutor : IServiceExecutor
     {
-        #region Field
-
-        private readonly IServiceEntryLocate _serviceEntryLocate;
-        private readonly ILogger<HttpServiceExecutor> _logger;
-        private readonly IServiceRouteProvider _serviceRouteProvider;
-        private readonly IAuthorizationFilter _authorizationFilter;
-        private readonly CPlatformContainer _serviceProvider;
-        private readonly ITypeConvertibleService _typeConvertibleService;
-        private readonly ConcurrentDictionary<string, ValueTuple<FastInvokeHandler, object, MethodInfo>> _concurrent =
- new ConcurrentDictionary<string, ValueTuple<FastInvokeHandler, object, MethodInfo>>();
-        #endregion Field
-
         #region Constructor
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="HttpServiceExecutor"/> class.
+        /// Initializes a new instance of the <see cref="HttpServiceExecutor" /> class.
         /// </summary>
         /// <param name="serviceEntryLocate">The service entry locate.</param>
         /// <param name="serviceRouteProvider">The service route provider.</param>
@@ -51,7 +39,8 @@ namespace KissU.Core.Protocol.Http
         /// <param name="typeConvertibleService">The type convertible service.</param>
         public HttpServiceExecutor(IServiceEntryLocate serviceEntryLocate, IServiceRouteProvider serviceRouteProvider,
             IAuthorizationFilter authorizationFilter,
-            ILogger<HttpServiceExecutor> logger, CPlatformContainer serviceProvider, ITypeConvertibleService typeConvertibleService)
+            ILogger<HttpServiceExecutor> logger, CPlatformContainer serviceProvider,
+            ITypeConvertibleService typeConvertibleService)
         {
             _serviceEntryLocate = serviceEntryLocate;
             _logger = logger;
@@ -87,6 +76,7 @@ namespace KissU.Core.Protocol.Http
                 _logger.LogError(exception, "将接收到的消息反序列化成 TransportMessage<httpMessage> 时发送了错误。");
                 return;
             }
+
             var entry = _serviceEntryLocate.Locate(httpMessage);
             if (entry == null)
             {
@@ -94,9 +84,10 @@ namespace KissU.Core.Protocol.Http
                     _logger.LogError($"根据服务routePath：{httpMessage.RoutePath}，找不到服务条目。");
                 return;
             }
+
             if (_logger.IsEnabled(LogLevel.Debug))
                 _logger.LogDebug("准备执行本地逻辑。");
-            HttpResultMessage<object> httpResultMessage = new HttpResultMessage<object>() { };
+            var httpResultMessage = new HttpResultMessage<object>();
 
             if (_serviceProvider.IsRegisteredWithKey(httpMessage.ServiceKey, entry.Type))
             {
@@ -107,25 +98,46 @@ namespace KissU.Core.Protocol.Http
             {
                 httpResultMessage = await RemoteExecuteAsync(entry, httpMessage);
             }
+
             await SendRemoteInvokeResult(sender, httpResultMessage);
         }
 
         #endregion Implementation of IServiceExecutor
 
+        #region Field
+
+        private readonly IServiceEntryLocate _serviceEntryLocate;
+        private readonly ILogger<HttpServiceExecutor> _logger;
+        private readonly IServiceRouteProvider _serviceRouteProvider;
+        private readonly IAuthorizationFilter _authorizationFilter;
+        private readonly CPlatformContainer _serviceProvider;
+        private readonly ITypeConvertibleService _typeConvertibleService;
+
+        private readonly ConcurrentDictionary<string, ValueTuple<FastInvokeHandler, object, MethodInfo>> _concurrent =
+            new ConcurrentDictionary<string, ValueTuple<FastInvokeHandler, object, MethodInfo>>();
+
+        #endregion Field
+
         #region Private Method
 
-        private async Task<HttpResultMessage<object>> RemoteExecuteAsync(ServiceEntry entry, HttpRequestMessage httpMessage)
+        private async Task<HttpResultMessage<object>> RemoteExecuteAsync(ServiceEntry entry,
+            HttpRequestMessage httpMessage)
         {
-            HttpResultMessage<object> resultMessage = new HttpResultMessage<object>();
+            var resultMessage = new HttpResultMessage<object>();
             var provider = _concurrent.GetValueOrDefault(httpMessage.RoutePath);
             var list = new List<object>();
             if (provider.Item1 == null)
             {
-                provider.Item2 = ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy(httpMessage.ServiceKey, entry.Type);
-                provider.Item3 = provider.Item2.GetType().GetTypeInfo().DeclaredMethods.Where(p => p.Name == entry.MethodName).FirstOrDefault(); ;
-                provider.Item1 = FastInvoke.GetMethodInvoker(provider.Item3);
-                _concurrent.GetOrAdd(httpMessage.RoutePath, ValueTuple.Create(provider.Item1, provider.Item2, provider.Item3));
+                provider.Item2 = ServiceLocator.GetService<IServiceProxyFactory>()
+                    .CreateProxy(httpMessage.ServiceKey, entry.Type);
+                provider.Item3 = provider.Item2.GetType().GetTypeInfo().DeclaredMethods
+                    .Where(p => p.Name == entry.MethodName).FirstOrDefault();
+                ;
+                provider.Item1 = GetMethodInvoker(provider.Item3);
+                _concurrent.GetOrAdd(httpMessage.RoutePath,
+                    ValueTuple.Create(provider.Item1, provider.Item2, provider.Item3));
             }
+
             foreach (var parameterInfo in provider.Item3.GetParameters())
             {
                 var value = httpMessage.Parameters[parameterInfo.Name];
@@ -133,6 +145,7 @@ namespace KissU.Core.Protocol.Http
                 var parameter = _typeConvertibleService.Convert(value, parameterType);
                 list.Add(parameter);
             }
+
             try
             {
                 var methodResult = provider.Item1(provider.Item2, list.ToArray());
@@ -149,8 +162,10 @@ namespace KissU.Core.Protocol.Http
                     if (taskType.IsGenericType)
                         resultMessage.Data = taskType.GetProperty("Result").GetValue(task);
                 }
+
                 resultMessage.IsSucceed = resultMessage.Data != null;
-                resultMessage.StatusCode = resultMessage.IsSucceed ? (int)StatusCode.Success : (int)StatusCode.RequestError;
+                resultMessage.StatusCode =
+                    resultMessage.IsSucceed ? (int) StatusCode.Success : (int) StatusCode.RequestError;
             }
             catch (ValidateException validateException)
             {
@@ -164,14 +179,17 @@ namespace KissU.Core.Protocol.Http
             {
                 if (_logger.IsEnabled(LogLevel.Error))
                     _logger.LogError(ex, "执行远程调用逻辑时候发生了错误。");
-                resultMessage = new HttpResultMessage<object> { Data = null, Message = "执行发生了错误。", StatusCode = (int)StatusCode.RequestError };
+                resultMessage = new HttpResultMessage<object>
+                    {Data = null, Message = "执行发生了错误。", StatusCode = (int) StatusCode.RequestError};
             }
+
             return resultMessage;
         }
 
-        private async Task<HttpResultMessage<object>> LocalExecuteAsync(ServiceEntry entry, HttpRequestMessage httpMessage)
+        private async Task<HttpResultMessage<object>> LocalExecuteAsync(ServiceEntry entry,
+            HttpRequestMessage httpMessage)
         {
-            HttpResultMessage<object> resultMessage = new HttpResultMessage<object>();
+            var resultMessage = new HttpResultMessage<object>();
             try
             {
                 var result = await entry.Func(httpMessage.ServiceKey, httpMessage.Parameters);
@@ -188,8 +206,10 @@ namespace KissU.Core.Protocol.Http
                     if (taskType.IsGenericType)
                         resultMessage.Data = taskType.GetProperty("Result").GetValue(task);
                 }
+
                 resultMessage.IsSucceed = resultMessage.Data != null;
-                resultMessage.StatusCode = resultMessage.IsSucceed ? (int)StatusCode.Success : (int)StatusCode.RequestError;
+                resultMessage.StatusCode =
+                    resultMessage.IsSucceed ? (int) StatusCode.Success : (int) StatusCode.RequestError;
             }
             catch (ValidateException validateException)
             {
@@ -206,6 +226,7 @@ namespace KissU.Core.Protocol.Http
                 resultMessage.Message = "执行发生了错误。";
                 resultMessage.StatusCode = exception.HResult;
             }
+
             return resultMessage;
         }
 
@@ -237,6 +258,7 @@ namespace KissU.Core.Protocol.Http
             {
                 message += "|InnerException:" + GetExceptionMessage(exception.InnerException);
             }
+
             return message;
         }
 

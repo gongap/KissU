@@ -9,22 +9,13 @@ namespace KissU.Core.Consul.WatcherProvider.Implementation
     /// <seealso cref="KissU.Core.Consul.WatcherProvider.Implementation.Watcher" />
     public abstract class WatcherBase : Watcher
     {
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="WatcherBase"/> class.
-        /// </summary>
-        protected WatcherBase()
-        {
-         
-        }
-
         /// <summary>
         /// Processes this instance.
         /// </summary>
         /// <returns>Task.</returns>
         public override async Task Process()
         {
-                await ProcessImpl();
+            await ProcessImpl();
         }
 
         /// <summary>

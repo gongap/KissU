@@ -141,7 +141,7 @@ namespace KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation
             {
                 Descriptor = descriptor.ServiceDescriptor,
                 Address = address,
-                Item = item,
+                Item = item
             });
             return vt.IsCompletedSuccessfully ? vt.Result : await vt;
         }

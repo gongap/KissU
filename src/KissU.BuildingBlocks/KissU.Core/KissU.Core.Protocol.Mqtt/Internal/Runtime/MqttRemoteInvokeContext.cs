@@ -7,7 +7,7 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Runtime
     /// Implements the <see cref="KissU.Core.CPlatform.Runtime.Client.RemoteInvokeContext" />
     /// </summary>
     /// <seealso cref="KissU.Core.CPlatform.Runtime.Client.RemoteInvokeContext" />
-    public class MqttRemoteInvokeContext: RemoteInvokeContext
+    public class MqttRemoteInvokeContext : RemoteInvokeContext
     {
         /// <summary>
         /// Gets or sets the topic.
@@ -15,4 +15,3 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Runtime
         public string topic { get; set; }
     }
 }
- 

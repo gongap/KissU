@@ -12,10 +12,12 @@ namespace KissU.Core.Consul.Configurations
     public class ConsulConfigurationProvider : FileConfigurationProvider
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ConsulConfigurationProvider"/> class.
+        /// Initializes a new instance of the <see cref="ConsulConfigurationProvider" /> class.
         /// </summary>
         /// <param name="source">The source.</param>
-        public ConsulConfigurationProvider(ConsulConfigurationSource source) : base(source) { }
+        public ConsulConfigurationProvider(ConsulConfigurationSource source) : base(source)
+        {
+        }
 
         /// <summary>
         /// Loads the specified stream.
@@ -24,7 +26,7 @@ namespace KissU.Core.Consul.Configurations
         public override void Load(Stream stream)
         {
             var parser = new JsonConfigurationParser();
-            this.Data = parser.Parse(stream, null);
+            Data = parser.Parse(stream, null);
         }
     }
 }

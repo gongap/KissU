@@ -18,6 +18,6 @@
         /// <summary>
         /// 回退策略、失败时调用通过FallBackName指定的接口
         /// </summary>
-        FallBack = 2,
+        FallBack = 2
     }
 }

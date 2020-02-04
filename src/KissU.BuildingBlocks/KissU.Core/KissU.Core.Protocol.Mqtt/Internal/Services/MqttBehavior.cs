@@ -15,7 +15,7 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services
     /// Implements the <see cref="KissU.Core.CPlatform.Ioc.ServiceBase" />
     /// </summary>
     /// <seealso cref="KissU.Core.CPlatform.Ioc.ServiceBase" />
-    public abstract class MqttBehavior: ServiceBase
+    public abstract class MqttBehavior : ServiceBase
     {
         /// <summary>
         /// Publishes the specified device identifier.
@@ -47,8 +47,7 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services
         {
             if (ServiceLocator.Current.IsRegisteredWithKey<T>(key))
                 return base.GetService<T>(key);
-            else
-                return ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy<T>(key);
+            return ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy<T>(key);
         }
 
         /// <summary>
@@ -60,9 +59,7 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services
         {
             if (ServiceLocator.Current.IsRegistered<T>())
                 return base.GetService<T>();
-            else
-                return ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy<T>();
-
+            return ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy<T>();
         }
 
         /// <summary>
@@ -74,8 +71,7 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services
         {
             if (ServiceLocator.Current.IsRegistered(type))
                 return base.GetService(type);
-            else
-                return ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy(type);
+            return ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy(type);
         }
 
         /// <summary>
@@ -88,9 +84,7 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services
         {
             if (ServiceLocator.Current.IsRegisteredWithKey(key, type))
                 return base.GetService(key, type);
-            else
-                return ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy(key, type);
-
+            return ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy(key, type);
         }
 
         /// <summary>
@@ -109,7 +103,7 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services
         /// <returns>Task&lt;System.Boolean&gt;.</returns>
         public async Task<bool> GetDeviceIsOnine(string deviceId)
         {
-           return  await this.GetService<IChannelService>().GetDeviceIsOnine(deviceId);
+            return await GetService<IChannelService>().GetDeviceIsOnine(deviceId);
         }
 
         /// <summary>

@@ -15,7 +15,7 @@ namespace KissU.Core.Protocol.Udp
         private readonly ITransportMessageEncoder _transportMessageEncoder;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DotNettyUdpMessageSender"/> class.
+        /// Initializes a new instance of the <see cref="DotNettyUdpMessageSender" /> class.
         /// </summary>
         /// <param name="transportMessageEncoder">The transport message encoder.</param>
         protected DotNettyUdpMessageSender(ITransportMessageEncoder transportMessageEncoder)
@@ -30,7 +30,7 @@ namespace KissU.Core.Protocol.Udp
         /// <returns>IByteBuffer.</returns>
         protected IByteBuffer GetByteBuffer(TransportMessage message)
         {
-            var data =  message.GetContent<byte []>(); 
+            var data = message.GetContent<byte[]>();
             return Unpooled.WrappedBuffer(data);
         }
     }
@@ -43,11 +43,12 @@ namespace KissU.Core.Protocol.Udp
         private readonly IChannelHandlerContext _context;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DotNettyUdpServerMessageSender"/> class.
+        /// Initializes a new instance of the <see cref="DotNettyUdpServerMessageSender" /> class.
         /// </summary>
         /// <param name="transportMessageEncoder">The transport message encoder.</param>
         /// <param name="context">The context.</param>
-        public DotNettyUdpServerMessageSender(ITransportMessageEncoder transportMessageEncoder, IChannelHandlerContext context) : base(transportMessageEncoder)
+        public DotNettyUdpServerMessageSender(ITransportMessageEncoder transportMessageEncoder,
+            IChannelHandlerContext context) : base(transportMessageEncoder)
         {
             _context = context;
         }
@@ -73,8 +74,8 @@ namespace KissU.Core.Protocol.Udp
         public async Task SendAndFlushAsync(TransportMessage message)
         {
             var buffer = GetByteBuffer(message);
-            if( _context.Channel.RemoteAddress !=null)
-            await _context.WriteAndFlushAsync(buffer);
+            if (_context.Channel.RemoteAddress != null)
+                await _context.WriteAndFlushAsync(buffer);
         }
 
         #endregion Implementation of IMessageSender

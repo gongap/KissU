@@ -34,7 +34,7 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Messages
         public byte[] ByteBuf { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="SendMqttMessage"/> is retain.
+        /// Gets or sets a value indicating whether this <see cref="SendMqttMessage" /> is retain.
         /// </summary>
         public bool Retain { get; set; }
 

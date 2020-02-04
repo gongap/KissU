@@ -17,12 +17,12 @@ namespace KissU.Core.KestrelHttpServer.Filters.Implementation
         /// <summary>
         /// Gets or sets the path.
         /// </summary>
-        public string Path { get;  set; }
+        public string Path { get; set; }
 
         /// <summary>
         /// Gets or sets the result.
         /// </summary>
-        public HttpResultMessage<object>  Result { get;  set; }
+        public HttpResultMessage<object> Result { get; set; }
 
         /// <summary>
         /// Gets the context.

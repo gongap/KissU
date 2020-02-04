@@ -8,7 +8,7 @@
         /// <summary>
         /// Gets or sets the topic.
         /// </summary>
-        public string Topic{ get; set; }
+        public string Topic { get; set; }
 
         /// <summary>
         /// Gets or sets the will message.

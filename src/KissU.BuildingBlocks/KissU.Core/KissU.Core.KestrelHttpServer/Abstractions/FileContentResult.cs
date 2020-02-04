@@ -13,11 +13,12 @@ namespace KissU.Core.KestrelHttpServer.Abstractions
     /// <seealso cref="KissU.Core.KestrelHttpServer.Abstractions.FileResult" />
     public class FileContentResult : FileResult
     {
-        private byte[] _fileContents;
         /// <summary>
         /// The buffer size
         /// </summary>
         protected const int BufferSize = 64 * 1024;
+
+        private byte[] _fileContents;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FileContentResult" /> class.
@@ -43,18 +44,20 @@ namespace KissU.Core.KestrelHttpServer.Abstractions
         /// <exception cref="ArgumentNullException">fileContents</exception>
         /// <exception cref="ArgumentNullException">fileDownloadName</exception>
         /// <exception cref="ArgumentNullException">fileContents</exception>
-        public FileContentResult(byte[] fileContents, string contentType,string fileDownloadName)
-      : this(fileContents, MediaTypeHeaderValue.Parse(contentType))
+        public FileContentResult(byte[] fileContents, string contentType, string fileDownloadName)
+            : this(fileContents, MediaTypeHeaderValue.Parse(contentType))
         {
             if (fileContents == null)
             {
                 throw new ArgumentNullException(nameof(fileContents));
             }
+
             if (fileDownloadName == null)
             {
                 throw new ArgumentNullException(nameof(fileDownloadName));
             }
-            this.FileDownloadName = fileDownloadName;
+
+            FileDownloadName = fileDownloadName;
         }
 
         /// <summary>
@@ -110,11 +113,12 @@ namespace KissU.Core.KestrelHttpServer.Abstractions
                 contentDisposition.SetHttpFileName(FileDownloadName);
                 var httpResponse = context.HttpContext.Response;
 
-                httpResponse.Headers.Add("Content-Type", this.ContentType);
+                httpResponse.Headers.Add("Content-Type", ContentType);
                 httpResponse.Headers.Add("Content-Length", FileContents.Length.ToString());
                 httpResponse.Headers[HeaderNames.ContentDisposition] = contentDisposition.ToString();
                 using (var stream = new MemoryStream(FileContents))
-                    await StreamCopyOperation.CopyToAsync(stream, httpResponse.Body, count: null, bufferSize: BufferSize, cancel: context.HttpContext.RequestAborted);
+                    await StreamCopyOperation.CopyToAsync(stream, httpResponse.Body, null, BufferSize,
+                        context.HttpContext.RequestAborted);
             }
             catch (OperationCanceledException)
             {

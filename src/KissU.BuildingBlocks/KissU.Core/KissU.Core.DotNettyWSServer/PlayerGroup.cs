@@ -42,7 +42,7 @@ namespace KissU.Core.DotNettyWSServer
         {
             if (ChannelGroup == null) return;
 
-            BinaryWebSocketFrame frame = new BinaryWebSocketFrame(message);
+            var frame = new BinaryWebSocketFrame(message);
             message.Retain();
             await ChannelGroup.WriteAndFlushAsync(frame);
         }

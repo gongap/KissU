@@ -24,7 +24,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
     public class OperationFilterContext
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="OperationFilterContext"/> class.
+        /// Initializes a new instance of the <see cref="OperationFilterContext" /> class.
         /// </summary>
         /// <param name="apiDescription">The API description.</param>
         /// <param name="schemaRegistry">The schema registry.</param>
@@ -32,22 +32,21 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
         public OperationFilterContext(
             ApiDescription apiDescription,
             ISchemaRegistry schemaRegistry,
-            MethodInfo methodInfo):this(apiDescription,schemaRegistry,methodInfo,null)
+            MethodInfo methodInfo) : this(apiDescription, schemaRegistry, methodInfo, null)
         {
-             
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="OperationFilterContext"/> class.
+        /// Initializes a new instance of the <see cref="OperationFilterContext" /> class.
         /// </summary>
         /// <param name="apiDescription">The API description.</param>
         /// <param name="schemaRegistry">The schema registry.</param>
         /// <param name="methodInfo">The method information.</param>
         /// <param name="serviceEntry">The service entry.</param>
         public OperationFilterContext(
-       ApiDescription apiDescription,
-       ISchemaRegistry schemaRegistry,
-       MethodInfo methodInfo,ServiceEntry serviceEntry)
+            ApiDescription apiDescription,
+            ISchemaRegistry schemaRegistry,
+            MethodInfo methodInfo, ServiceEntry serviceEntry)
         {
             ApiDescription = apiDescription;
             SchemaRegistry = schemaRegistry;
@@ -63,12 +62,12 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
         /// <summary>
         /// Gets the API description.
         /// </summary>
-        public ApiDescription ApiDescription { get; private set; }
+        public ApiDescription ApiDescription { get; }
 
         /// <summary>
         /// Gets the schema registry.
         /// </summary>
-        public ISchemaRegistry SchemaRegistry { get; private set; }
+        public ISchemaRegistry SchemaRegistry { get; }
 
         /// <summary>
         /// Gets the method information.

@@ -8,7 +8,6 @@ namespace KissU.Core.DNS.Extensions
     /// </summary>
     public static class TransportMessageExtensions
     {
-
         /// <summary>
         /// Determines whether [is DNS result message] [the specified message].
         /// </summary>

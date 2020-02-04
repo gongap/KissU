@@ -8,11 +8,11 @@ namespace KissU.Core.Consul.WatcherProvider.Implementation
     /// </summary>
     public abstract class WatchRegistration
     {
-        private readonly Watcher watcher;
         private readonly string clientPath;
+        private readonly Watcher watcher;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="WatchRegistration"/> class.
+        /// Initializes a new instance of the <see cref="WatchRegistration" /> class.
         /// </summary>
         /// <param name="watcher">The watcher.</param>
         /// <param name="clientPath">The client path.</param>
@@ -43,8 +43,9 @@ namespace KissU.Core.Consul.WatcherProvider.Implementation
                     watchers = new HashSet<Watcher>();
                     watches[clientPath] = watchers;
                 }
-               if (!watchers.Any(p => p.GetType() == watcher.GetType()))
-                watchers.Add(watcher);
+
+                if (!watchers.Any(p => p.GetType() == watcher.GetType()))
+                    watchers.Add(watcher);
             }
         }
     }

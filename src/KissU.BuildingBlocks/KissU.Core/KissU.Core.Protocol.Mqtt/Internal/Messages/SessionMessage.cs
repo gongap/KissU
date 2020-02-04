@@ -19,6 +19,5 @@
         /// Gets or sets the topic.
         /// </summary>
         public string Topic { get; set; }
-
     }
 }

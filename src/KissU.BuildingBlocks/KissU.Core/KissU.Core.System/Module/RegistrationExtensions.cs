@@ -23,7 +23,8 @@ namespace KissU.Core.System.Module
         /// <param name="builder">The builder.</param>
         /// <param name="delegate">The delegate.</param>
         /// <returns>IRegistrationBuilder&lt;T, SimpleActivatorData, SingleRegistrationStyle&gt;.</returns>
-        public static IRegistrationBuilder<T, SimpleActivatorData, SingleRegistrationStyle> Register<T>(this ContainerBuilderWrapper builder, Func<IComponentContext, T> @delegate)
+        public static IRegistrationBuilder<T, SimpleActivatorData, SingleRegistrationStyle> Register<T>(
+            this ContainerBuilderWrapper builder, Func<IComponentContext, T> @delegate)
         {
             return builder.ContainerBuilder.Register(@delegate);
         }
@@ -35,7 +36,8 @@ namespace KissU.Core.System.Module
         /// <param name="builder">The builder.</param>
         /// <param name="delegate">The delegate.</param>
         /// <returns>IRegistrationBuilder&lt;T, SimpleActivatorData, SingleRegistrationStyle&gt;.</returns>
-        public static IRegistrationBuilder<T, SimpleActivatorData, SingleRegistrationStyle> Register<T>(this ContainerBuilderWrapper builder, Func<IComponentContext, IEnumerable<Parameter>, T> @delegate)
+        public static IRegistrationBuilder<T, SimpleActivatorData, SingleRegistrationStyle> Register<T>(
+            this ContainerBuilderWrapper builder, Func<IComponentContext, IEnumerable<Parameter>, T> @delegate)
         {
             return builder.ContainerBuilder.Register(@delegate);
         }
@@ -68,7 +70,8 @@ namespace KissU.Core.System.Module
         /// <param name="builder">The builder.</param>
         /// <param name="instance">The instance.</param>
         /// <returns>IRegistrationBuilder&lt;T, SimpleActivatorData, SingleRegistrationStyle&gt;.</returns>
-        public static IRegistrationBuilder<T, SimpleActivatorData, SingleRegistrationStyle> RegisterInstance<T>(this ContainerBuilderWrapper builder, T instance)
+        public static IRegistrationBuilder<T, SimpleActivatorData, SingleRegistrationStyle> RegisterInstance<T>(
+            this ContainerBuilderWrapper builder, T instance)
             where T : class
         {
             return builder.ContainerBuilder.RegisterInstance(instance);
@@ -80,7 +83,8 @@ namespace KissU.Core.System.Module
         /// <typeparam name="TImplementor">The type of the t implementor.</typeparam>
         /// <param name="builder">The builder.</param>
         /// <returns>IRegistrationBuilder&lt;TImplementor, ConcreteReflectionActivatorData, SingleRegistrationStyle&gt;.</returns>
-        public static IRegistrationBuilder<TImplementor, ConcreteReflectionActivatorData, SingleRegistrationStyle> RegisterType<TImplementor>(this ContainerBuilderWrapper builder)
+        public static IRegistrationBuilder<TImplementor, ConcreteReflectionActivatorData, SingleRegistrationStyle>
+            RegisterType<TImplementor>(this ContainerBuilderWrapper builder)
         {
             return builder.ContainerBuilder.RegisterType<TImplementor>();
         }
@@ -91,7 +95,8 @@ namespace KissU.Core.System.Module
         /// <param name="builder">The builder.</param>
         /// <param name="implementationType">Type of the implementation.</param>
         /// <returns>IRegistrationBuilder&lt;System.Object, ConcreteReflectionActivatorData, SingleRegistrationStyle&gt;.</returns>
-        public static IRegistrationBuilder<object, ConcreteReflectionActivatorData, SingleRegistrationStyle> RegisterType(this ContainerBuilderWrapper builder, Type implementationType)
+        public static IRegistrationBuilder<object, ConcreteReflectionActivatorData, SingleRegistrationStyle>
+            RegisterType(this ContainerBuilderWrapper builder, Type implementationType)
         {
             return builder.ContainerBuilder.RegisterType(implementationType);
         }
@@ -102,7 +107,8 @@ namespace KissU.Core.System.Module
         /// <param name="builder">The builder.</param>
         /// <param name="assemblies">The assemblies.</param>
         /// <returns>IRegistrationBuilder&lt;System.Object, ScanningActivatorData, DynamicRegistrationStyle&gt;.</returns>
-        public static IRegistrationBuilder<object, ScanningActivatorData, DynamicRegistrationStyle> RegisterAssemblyTypes(this ContainerBuilderWrapper builder, params Assembly[] assemblies)
+        public static IRegistrationBuilder<object, ScanningActivatorData, DynamicRegistrationStyle>
+            RegisterAssemblyTypes(this ContainerBuilderWrapper builder, params Assembly[] assemblies)
         {
             return builder.ContainerBuilder.RegisterAssemblyTypes(assemblies);
         }
@@ -113,7 +119,8 @@ namespace KissU.Core.System.Module
         /// <param name="builder">The builder.</param>
         /// <param name="implementor">The implementor.</param>
         /// <returns>IRegistrationBuilder&lt;System.Object, ReflectionActivatorData, DynamicRegistrationStyle&gt;.</returns>
-        public static IRegistrationBuilder<object, ReflectionActivatorData, DynamicRegistrationStyle> RegisterGeneric(this ContainerBuilderWrapper builder, Type implementor)
+        public static IRegistrationBuilder<object, ReflectionActivatorData, DynamicRegistrationStyle> RegisterGeneric(
+            this ContainerBuilderWrapper builder, Type implementor)
         {
             return builder.ContainerBuilder.RegisterGeneric(implementor);
         }
@@ -126,7 +133,8 @@ namespace KissU.Core.System.Module
         /// <param name="builder">The builder.</param>
         /// <param name="adapter">The adapter.</param>
         /// <returns>IRegistrationBuilder&lt;TTo, LightweightAdapterActivatorData, DynamicRegistrationStyle&gt;.</returns>
-        public static IRegistrationBuilder<TTo, LightweightAdapterActivatorData, DynamicRegistrationStyle> RegisterAdapter<TFrom, TTo>(this ContainerBuilderWrapper builder, Func<TFrom, TTo> adapter)
+        public static IRegistrationBuilder<TTo, LightweightAdapterActivatorData, DynamicRegistrationStyle>
+            RegisterAdapter<TFrom, TTo>(this ContainerBuilderWrapper builder, Func<TFrom, TTo> adapter)
         {
             return builder.ContainerBuilder.RegisterAdapter(adapter);
         }
@@ -140,9 +148,12 @@ namespace KissU.Core.System.Module
         /// <param name="fromKey">From key.</param>
         /// <param name="toKey">To key.</param>
         /// <returns>IRegistrationBuilder&lt;System.Object, OpenGenericDecoratorActivatorData, DynamicRegistrationStyle&gt;.</returns>
-        public static IRegistrationBuilder<object, OpenGenericDecoratorActivatorData, DynamicRegistrationStyle> RegisterGenericDecorator(this ContainerBuilderWrapper builder, Type decoratorType, Type decoratedServiceType, object fromKey, object toKey = null)
+        public static IRegistrationBuilder<object, OpenGenericDecoratorActivatorData, DynamicRegistrationStyle>
+            RegisterGenericDecorator(this ContainerBuilderWrapper builder, Type decoratorType,
+                Type decoratedServiceType, object fromKey, object toKey = null)
         {
-            return builder.ContainerBuilder.RegisterGenericDecorator(decoratorType, decoratedServiceType, fromKey, toKey);
+            return builder.ContainerBuilder.RegisterGenericDecorator(decoratorType, decoratedServiceType, fromKey,
+                toKey);
         }
 
         /// <summary>
@@ -154,7 +165,9 @@ namespace KissU.Core.System.Module
         /// <param name="fromKey">From key.</param>
         /// <param name="toKey">To key.</param>
         /// <returns>IRegistrationBuilder&lt;TService, LightweightAdapterActivatorData, DynamicRegistrationStyle&gt;.</returns>
-        public static IRegistrationBuilder<TService, LightweightAdapterActivatorData, DynamicRegistrationStyle> RegisterDecorator<TService>(this ContainerBuilderWrapper builder, Func<TService, TService> decorator, object fromKey, object toKey = null)
+        public static IRegistrationBuilder<TService, LightweightAdapterActivatorData, DynamicRegistrationStyle>
+            RegisterDecorator<TService>(this ContainerBuilderWrapper builder, Func<TService, TService> decorator,
+                object fromKey, object toKey = null)
         {
             return builder.ContainerBuilder.RegisterDecorator(decorator, fromKey, toKey);
         }
@@ -166,7 +179,8 @@ namespace KissU.Core.System.Module
         /// <param name="builder">The builder.</param>
         /// <param name="delegateType">Type of the delegate.</param>
         /// <returns>IRegistrationBuilder&lt;Delegate, GeneratedFactoryActivatorData, SingleRegistrationStyle&gt;.</returns>
-        public static IRegistrationBuilder<Delegate, GeneratedFactoryActivatorData, SingleRegistrationStyle> RegisterGeneratedFactory(this ContainerBuilderWrapper builder, Type delegateType)
+        public static IRegistrationBuilder<Delegate, GeneratedFactoryActivatorData, SingleRegistrationStyle>
+            RegisterGeneratedFactory(this ContainerBuilderWrapper builder, Type delegateType)
         {
             return builder.ContainerBuilder.RegisterGeneratedFactory(delegateType);
         }
@@ -177,7 +191,8 @@ namespace KissU.Core.System.Module
         /// <typeparam name="TDelegate">The type of the t delegate.</typeparam>
         /// <param name="builder">The builder.</param>
         /// <returns>IRegistrationBuilder&lt;TDelegate, GeneratedFactoryActivatorData, SingleRegistrationStyle&gt;.</returns>
-        public static IRegistrationBuilder<TDelegate, GeneratedFactoryActivatorData, SingleRegistrationStyle> RegisterGeneratedFactory<TDelegate>(this ContainerBuilderWrapper builder)
+        public static IRegistrationBuilder<TDelegate, GeneratedFactoryActivatorData, SingleRegistrationStyle>
+            RegisterGeneratedFactory<TDelegate>(this ContainerBuilderWrapper builder)
             where TDelegate : class
         {
             return builder.ContainerBuilder.RegisterGeneratedFactory<TDelegate>();
@@ -189,7 +204,8 @@ namespace KissU.Core.System.Module
         /// <param name="builder">The builder.</param>
         /// <param name="repositoriesAssemblies">The repositories assemblies.</param>
         /// <returns>IRegistrationBuilder&lt;System.Object, ScanningActivatorData, DynamicRegistrationStyle&gt;.</returns>
-        public static IRegistrationBuilder<object, ScanningActivatorData, DynamicRegistrationStyle> RegisterRepositories(this ContainerBuilderWrapper builder, params Assembly[] repositoriesAssemblies)
+        public static IRegistrationBuilder<object, ScanningActivatorData, DynamicRegistrationStyle>
+            RegisterRepositories(this ContainerBuilderWrapper builder, params Assembly[] repositoriesAssemblies)
         {
             return builder.RegisterAssemblyTypes(repositoriesAssemblies)
                 .Where(t => t.Name.EndsWith("Repository"))
@@ -203,7 +219,8 @@ namespace KissU.Core.System.Module
         /// <param name="builder">The builder.</param>
         /// <param name="serviceAssemblies">The service assemblies.</param>
         /// <returns>IRegistrationBuilder&lt;System.Object, ScanningActivatorData, DynamicRegistrationStyle&gt;.</returns>
-        public static IRegistrationBuilder<object, ScanningActivatorData, DynamicRegistrationStyle> RegisterServices(this ContainerBuilderWrapper builder, params Assembly[] serviceAssemblies)
+        public static IRegistrationBuilder<object, ScanningActivatorData, DynamicRegistrationStyle> RegisterServices(
+            this ContainerBuilderWrapper builder, params Assembly[] serviceAssemblies)
         {
             return builder.RegisterAssemblyTypes(serviceAssemblies)
                 .Where(t => t.Name.EndsWith("Service"))
@@ -218,7 +235,9 @@ namespace KissU.Core.System.Module
         /// <param name="registration">The registration.</param>
         /// <returns>IRegistrationBuilder&lt;TLimit, ScanningActivatorData, DynamicRegistrationStyle&gt;.</returns>
         /// <exception cref="ArgumentNullException">registration</exception>
-        public static IRegistrationBuilder<TLimit, ScanningActivatorData, DynamicRegistrationStyle> AsInheritedClasses<TLimit>(this IRegistrationBuilder<TLimit, ScanningActivatorData, DynamicRegistrationStyle> registration)
+        public static IRegistrationBuilder<TLimit, ScanningActivatorData, DynamicRegistrationStyle>
+            AsInheritedClasses<TLimit>(
+                this IRegistrationBuilder<TLimit, ScanningActivatorData, DynamicRegistrationStyle> registration)
         {
             if (registration == null) throw new ArgumentNullException("registration");
             return registration.As(t => GetInheritedClasses(t));
@@ -226,9 +245,9 @@ namespace KissU.Core.System.Module
 
         private static List<Type> GetInheritedClasses(Type type)
         {
-            List<Type> types = new List<Type>();
+            var types = new List<Type>();
 
-            Func<Type, Type> GetBaseType = (t) =>
+            Func<Type, Type> GetBaseType = t =>
             {
                 if (t.GetTypeInfo().BaseType != null && t.GetTypeInfo().BaseType != typeof(object))
                 {
@@ -239,13 +258,12 @@ namespace KissU.Core.System.Module
                 return null;
             };
 
-            Type baseType = type;
+            var baseType = type;
 
             do
             {
                 baseType = GetBaseType(baseType);
-            }
-            while (baseType != null);
+            } while (baseType != null);
 
             return types;
         }

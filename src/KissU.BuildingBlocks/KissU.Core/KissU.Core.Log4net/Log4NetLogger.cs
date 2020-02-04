@@ -3,7 +3,9 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Xml;
 using log4net;
+using log4net.Config;
 using log4net.Repository;
+using log4net.Repository.Hierarchy;
 using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.Log4net
@@ -15,10 +17,11 @@ namespace KissU.Core.Log4net
     /// <seealso cref="Microsoft.Extensions.Logging.ILogger" />
     public class Log4NetLogger : ILogger
     {
+        private readonly ILog _log;
         private readonly string _name;
         private readonly XmlElement _xmlElement;
-        private readonly ILog _log;
-        private ILoggerRepository _loggerRepository;
+        private readonly ILoggerRepository _loggerRepository;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Log4NetLogger" /> class.
         /// </summary>
@@ -28,10 +31,10 @@ namespace KissU.Core.Log4net
         {
             _name = name;
             _xmlElement = xmlElement;
-            _loggerRepository = log4net.LogManager.CreateRepository(
-                Assembly.GetEntryAssembly(), typeof(log4net.Repository.Hierarchy.Hierarchy));
+            _loggerRepository = LogManager.CreateRepository(
+                Assembly.GetEntryAssembly(), typeof(Hierarchy));
             _log = LogManager.GetLogger(_loggerRepository.Name, name);
-            log4net.Config.XmlConfigurator.Configure(_loggerRepository, xmlElement);
+            XmlConfigurator.Configure(_loggerRepository, xmlElement);
         }
 
         /// <summary>
@@ -80,7 +83,10 @@ namespace KissU.Core.Log4net
         /// <param name="eventId">Id of the event.</param>
         /// <param name="state">The entry to be written. Can be also an object.</param>
         /// <param name="exception">The exception related to this entry.</param>
-        /// <param name="formatter">Function to create a <c>string</c> message of the <paramref name="state" /> and <paramref name="exception" />.</param>
+        /// <param name="formatter">
+        /// Function to create a <c>string</c> message of the <paramref name="state" /> and
+        /// <paramref name="exception" />.
+        /// </param>
         /// <exception cref="ArgumentNullException">formatter</exception>
         public void Log<TState>(LogLevel logLevel, EventId eventId, TState state,
             Exception exception, Func<TState, Exception, string> formatter)
@@ -94,11 +100,13 @@ namespace KissU.Core.Log4net
             {
                 throw new ArgumentNullException(nameof(formatter));
             }
+
             string message = null;
             if (null != formatter)
             {
                 message = formatter(state, exception);
             }
+
             if (!string.IsNullOrEmpty(message) || exception != null)
             {
                 switch (logLevel)
@@ -137,7 +145,7 @@ namespace KissU.Core.Log4net
             /// <summary>
             /// The instance
             /// </summary>
-            public static NoopDisposable Instance = new NoopDisposable();
+            public static readonly NoopDisposable Instance = new NoopDisposable();
 
             /// <summary>
             /// Disposes this instance.
@@ -148,4 +156,3 @@ namespace KissU.Core.Log4net
         }
     }
 }
-
