@@ -37,23 +37,23 @@ using System;
 
 namespace WebSocketCore
 {
-  /// <summary>
-  /// Represents the event data for the <see cref="WebSocket.OnError"/> event.
-  /// </summary>
-  /// <remarks>
-  ///   <para>
-  ///   That event occurs when the <see cref="WebSocket"/> gets an error.
-  ///   </para>
-  ///   <para>
-  ///   If you would like to get the error message, you should access
-  ///   the <see cref="ErrorEventArgs.Message"/> property.
-  ///   </para>
-  ///   <para>
-  ///   And if the error is due to an exception, you can get it by accessing
-  ///   the <see cref="ErrorEventArgs.Exception"/> property.
-  ///   </para>
-  /// </remarks>
-  public class ErrorEventArgs : EventArgs
+    /// <summary>
+    /// Represents the event data for the <see cref="WebSocket.OnError"/> event.
+    /// </summary>
+    /// <remarks>
+    ///   <para>
+    ///   That event occurs when the <see cref="WebSocket"/> gets an error.
+    ///   </para>
+    ///   <para>
+    ///   If you would like to get the error message, you should access
+    ///   the <see cref="Message"/> property.
+    ///   </para>
+    ///   <para>
+    ///   And if the error is due to an exception, you can get it by accessing
+    ///   the <see cref="Exception"/> property.
+    ///   </para>
+    /// </remarks>
+    public class ErrorEventArgs : EventArgs
   {
     #region Private Fields
 

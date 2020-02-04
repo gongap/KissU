@@ -7,9 +7,9 @@ namespace KissU.Core.Nlog
 {
     /// <summary>
     /// NLogModule.
-    /// Implements the <see cref="KissU.Core.CPlatform.Module.EnginePartModule" />
+    /// Implements the <see cref="EnginePartModule" />
     /// </summary>
-    /// <seealso cref="KissU.Core.CPlatform.Module.EnginePartModule" />
+    /// <seealso cref="EnginePartModule" />
     public class NLogModule : EnginePartModule
     {
         private string nlogConfigFile = "${LogPath}|NLog.config";

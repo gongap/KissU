@@ -31,7 +31,7 @@ namespace KissU.Core.CPlatform.Validation.Implementation
         /// </summary>
         /// <param name="parameterInfo">参数信息</param>
         /// <param name="value">值</param>
-        /// <exception cref="KissU.Core.CPlatform.Exceptions.ValidateException"></exception>
+        /// <exception cref="ValidateException"></exception>
         /// <exception cref="ValidateException">校验异常</exception>
         public void Validate(ParameterInfo parameterInfo, object value)
         {

@@ -631,7 +631,7 @@ namespace WebSocketCore.Net
     /// A <see cref="NameObjectCollectionBase.KeysCollection"/> that contains
     /// all header names in the collection.
     /// </value>
-    public override NameObjectCollectionBase.KeysCollection Keys {
+    public override KeysCollection Keys {
       get {
         return base.Keys;
       }

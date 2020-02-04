@@ -8,9 +8,9 @@ namespace KissU.Core.CPlatform.Support.Implementation
 {
     /// <summary>
     /// 故障转移注入调用者.
-    /// Implements the <see cref="KissU.Core.CPlatform.Support.IClusterInvoker" />
+    /// Implements the <see cref="IClusterInvoker" />
     /// </summary>
-    /// <seealso cref="KissU.Core.CPlatform.Support.IClusterInvoker" />
+    /// <seealso cref="IClusterInvoker" />
     public class FailoverInjectionInvoker : IClusterInvoker
     {
         /// <summary>

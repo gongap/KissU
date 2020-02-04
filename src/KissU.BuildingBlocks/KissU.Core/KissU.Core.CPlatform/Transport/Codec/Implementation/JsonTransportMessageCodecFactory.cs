@@ -2,9 +2,9 @@
 {
     /// <summary>
     /// Json传输消息编解码器工厂.
-    /// Implements the <see cref="KissU.Core.CPlatform.Transport.Codec.ITransportMessageCodecFactory" />
+    /// Implements the <see cref="ITransportMessageCodecFactory" />
     /// </summary>
-    /// <seealso cref="KissU.Core.CPlatform.Transport.Codec.ITransportMessageCodecFactory" />
+    /// <seealso cref="ITransportMessageCodecFactory" />
     public class JsonTransportMessageCodecFactory : ITransportMessageCodecFactory
     {
         private readonly ITransportMessageDecoder _transportMessageDecoder = new JsonTransportMessageDecoder();

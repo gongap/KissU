@@ -364,27 +364,27 @@ namespace WebSocketCore.Server
       }
     }
 
-    /// <summary>
-    /// Gets or sets the scheme used to authenticate the clients.
-    /// </summary>
-    /// <remarks>
-    /// The set operation does nothing if the server has already started or
-    /// it is shutting down.
-    /// </remarks>
-    /// <value>
-    ///   <para>
-    ///   One of the <see cref="WebSocketCore.Net.AuthenticationSchemes"/>
-    ///   enum values.
-    ///   </para>
-    ///   <para>
-    ///   It represents the scheme used to authenticate the clients.
-    ///   </para>
-    ///   <para>
-    ///   The default value is
-    ///   <see cref="WebSocketCore.Net.AuthenticationSchemes.Anonymous"/>.
-    ///   </para>
-    /// </value>
-    public AuthenticationSchemes AuthenticationSchemes {
+        /// <summary>
+        /// Gets or sets the scheme used to authenticate the clients.
+        /// </summary>
+        /// <remarks>
+        /// The set operation does nothing if the server has already started or
+        /// it is shutting down.
+        /// </remarks>
+        /// <value>
+        ///   <para>
+        ///   One of the <see cref="Net.AuthenticationSchemes"/>
+        ///   enum values.
+        ///   </para>
+        ///   <para>
+        ///   It represents the scheme used to authenticate the clients.
+        ///   </para>
+        ///   <para>
+        ///   The default value is
+        ///   <see cref="Net.AuthenticationSchemes.Anonymous"/>.
+        ///   </para>
+        /// </value>
+        public AuthenticationSchemes AuthenticationSchemes {
       get {
         return _authSchemes;
       }
@@ -1127,7 +1127,7 @@ namespace WebSocketCore.Server
         throw new ArgumentException (msg, "path");
       }
 
-      _services.Add<TBehavior> (path, creator);
+      _services.Add(path, creator);
     }
 
     /// <summary>
@@ -1252,7 +1252,7 @@ namespace WebSocketCore.Server
     )
       where TBehaviorWithNew : WebSocketBehavior, new ()
     {
-      _services.AddService<TBehaviorWithNew> (path, initializer);
+      _services.AddService(path, initializer);
     }
 
     /// <summary>

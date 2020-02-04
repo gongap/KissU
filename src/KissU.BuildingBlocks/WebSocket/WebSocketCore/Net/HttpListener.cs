@@ -140,22 +140,22 @@ namespace WebSocketCore.Net
       }
     }
 
-    #endregion
+        #endregion
 
-    #region Public Properties
+        #region Public Properties
 
-    /// <summary>
-    /// Gets or sets the scheme used to authenticate the clients.
-    /// </summary>
-    /// <value>
-    /// One of the <see cref="WebSocketCore.Net.AuthenticationSchemes"/> enum values,
-    /// represents the scheme used to authenticate the clients. The default value is
-    /// <see cref="WebSocketCore.Net.AuthenticationSchemes.Anonymous"/>.
-    /// </value>
-    /// <exception cref="ObjectDisposedException">
-    /// This listener has been closed.
-    /// </exception>
-    public AuthenticationSchemes AuthenticationSchemes {
+        /// <summary>
+        /// Gets or sets the scheme used to authenticate the clients.
+        /// </summary>
+        /// <value>
+        /// One of the <see cref="Net.AuthenticationSchemes"/> enum values,
+        /// represents the scheme used to authenticate the clients. The default value is
+        /// <see cref="Net.AuthenticationSchemes.Anonymous"/>.
+        /// </value>
+        /// <exception cref="ObjectDisposedException">
+        /// This listener has been closed.
+        /// </exception>
+        public AuthenticationSchemes AuthenticationSchemes {
       get {
         CheckDisposed ();
         return _authSchemes;
@@ -167,24 +167,24 @@ namespace WebSocketCore.Net
       }
     }
 
-    /// <summary>
-    /// Gets or sets the delegate called to select the scheme used to authenticate the clients.
-    /// </summary>
-    /// <remarks>
-    /// If you set this property, the listener uses the authentication scheme selected by
-    /// the delegate for each request. Or if you don't set, the listener uses the value of
-    /// the <see cref="HttpListener.AuthenticationSchemes"/> property as the authentication
-    /// scheme for all requests.
-    /// </remarks>
-    /// <value>
-    /// A <c>Func&lt;<see cref="HttpListenerRequest"/>, <see cref="AuthenticationSchemes"/>&gt;</c>
-    /// delegate that references the method used to select an authentication scheme. The default
-    /// value is <see langword="null"/>.
-    /// </value>
-    /// <exception cref="ObjectDisposedException">
-    /// This listener has been closed.
-    /// </exception>
-    public Func<HttpListenerRequest, AuthenticationSchemes> AuthenticationSchemeSelector {
+        /// <summary>
+        /// Gets or sets the delegate called to select the scheme used to authenticate the clients.
+        /// </summary>
+        /// <remarks>
+        /// If you set this property, the listener uses the authentication scheme selected by
+        /// the delegate for each request. Or if you don't set, the listener uses the value of
+        /// the <see cref="AuthenticationSchemes"/> property as the authentication
+        /// scheme for all requests.
+        /// </remarks>
+        /// <value>
+        /// A <c>Func&lt;<see cref="HttpListenerRequest"/>, <see cref="AuthenticationSchemes"/>&gt;</c>
+        /// delegate that references the method used to select an authentication scheme. The default
+        /// value is <see langword="null"/>.
+        /// </value>
+        /// <exception cref="ObjectDisposedException">
+        /// This listener has been closed.
+        /// </exception>
+        public Func<HttpListenerRequest, AuthenticationSchemes> AuthenticationSchemeSelector {
       get {
         CheckDisposed ();
         return _authSchemeSelector;

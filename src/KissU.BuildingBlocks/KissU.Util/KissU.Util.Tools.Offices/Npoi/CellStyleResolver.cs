@@ -53,7 +53,7 @@ namespace KissU.Util.Tools.Offices.Npoi
         /// <summary>
         /// 获取水平对齐
         /// </summary>
-        private NPOI.SS.UserModel.HorizontalAlignment GetHorizontalAlignment()
+        private HorizontalAlignment GetHorizontalAlignment()
         {
             if ( _style.Alignment == Core.HorizontalAlignment.Left )
                 return HorizontalAlignment.Left;

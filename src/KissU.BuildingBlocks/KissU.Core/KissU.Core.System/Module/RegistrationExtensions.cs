@@ -15,12 +15,12 @@ namespace KissU.Core.System.Module
     {
         public static IRegistrationBuilder<T, SimpleActivatorData, SingleRegistrationStyle> Register<T>(this ContainerBuilderWrapper builder, Func<IComponentContext, T> @delegate)
         {
-            return builder.ContainerBuilder.Register<T>(@delegate);
+            return builder.ContainerBuilder.Register(@delegate);
         }
 
         public static IRegistrationBuilder<T, SimpleActivatorData, SingleRegistrationStyle> Register<T>(this ContainerBuilderWrapper builder, Func<IComponentContext, IEnumerable<Parameter>, T> @delegate)
         {
-            return builder.ContainerBuilder.Register<T>(@delegate);
+            return builder.ContainerBuilder.Register(@delegate);
         }
 
         public static void RegisterModule(this ContainerBuilderWrapper builder, IModule module)
@@ -37,7 +37,7 @@ namespace KissU.Core.System.Module
         public static IRegistrationBuilder<T, SimpleActivatorData, SingleRegistrationStyle> RegisterInstance<T>(this ContainerBuilderWrapper builder, T instance)
             where T : class
         {
-            return builder.ContainerBuilder.RegisterInstance<T>(instance);
+            return builder.ContainerBuilder.RegisterInstance(instance);
         }
 
         public static IRegistrationBuilder<TImplementor, ConcreteReflectionActivatorData, SingleRegistrationStyle> RegisterType<TImplementor>(this ContainerBuilderWrapper builder)
@@ -62,7 +62,7 @@ namespace KissU.Core.System.Module
 
         public static IRegistrationBuilder<TTo, LightweightAdapterActivatorData, DynamicRegistrationStyle> RegisterAdapter<TFrom, TTo>(this ContainerBuilderWrapper builder, Func<TFrom, TTo> adapter)
         {
-            return builder.ContainerBuilder.RegisterAdapter<TFrom, TTo>(adapter);
+            return builder.ContainerBuilder.RegisterAdapter(adapter);
         }
 
         public static IRegistrationBuilder<object, OpenGenericDecoratorActivatorData, DynamicRegistrationStyle> RegisterGenericDecorator(this ContainerBuilderWrapper builder, Type decoratorType, Type decoratedServiceType, object fromKey, object toKey = null)
@@ -72,7 +72,7 @@ namespace KissU.Core.System.Module
 
         public static IRegistrationBuilder<TService, LightweightAdapterActivatorData, DynamicRegistrationStyle> RegisterDecorator<TService>(this ContainerBuilderWrapper builder, Func<TService, TService> decorator, object fromKey, object toKey = null)
         {
-            return builder.ContainerBuilder.RegisterDecorator<TService>(decorator, fromKey, toKey);
+            return builder.ContainerBuilder.RegisterDecorator(decorator, fromKey, toKey);
         }
 
 

@@ -110,7 +110,7 @@ namespace KissU.Core.Protocol.Http
                 provider.Item2 = ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy(httpMessage.ServiceKey, entry.Type);
                 provider.Item3 = provider.Item2.GetType().GetTypeInfo().DeclaredMethods.Where(p => p.Name == entry.MethodName).FirstOrDefault(); ;
                 provider.Item1 = FastInvoke.GetMethodInvoker(provider.Item3);
-                _concurrent.GetOrAdd(httpMessage.RoutePath, ValueTuple.Create<FastInvokeHandler, object, MethodInfo>(provider.Item1, provider.Item2, provider.Item3));
+                _concurrent.GetOrAdd(httpMessage.RoutePath, ValueTuple.Create(provider.Item1, provider.Item2, provider.Item3));
             }
             foreach (var parameterInfo in provider.Item3.GetParameters())
             {

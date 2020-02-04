@@ -98,7 +98,7 @@ namespace KissU.Util.AspNetCore.Webs.Filters
         /// <summary>
         /// 添加表单参数
         /// </summary>
-        private async Task AddFormParams(Microsoft.AspNetCore.Http.HttpRequest request, ILog log)
+        private async Task AddFormParams(HttpRequest request, ILog log)
         {
             if (IsMultipart(request.ContentType))
                 return;
@@ -123,7 +123,7 @@ namespace KissU.Util.AspNetCore.Webs.Filters
         /// <summary>
         /// 添加Cookie
         /// </summary>
-        private void AddCookie(Microsoft.AspNetCore.Http.HttpRequest request, ILog log)
+        private void AddCookie(HttpRequest request, ILog log)
         {
             log.Params("Cookie:");
             foreach (var key in request.Cookies.Keys)

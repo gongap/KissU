@@ -6,9 +6,9 @@ namespace KissU.Core.Log4net
 {
     /// <summary>
     /// Log4netModule.
-    /// Implements the <see cref="KissU.Core.CPlatform.Module.EnginePartModule" />
+    /// Implements the <see cref="EnginePartModule" />
     /// </summary>
-    /// <seealso cref="KissU.Core.CPlatform.Module.EnginePartModule" />
+    /// <seealso cref="EnginePartModule" />
     public class Log4netModule : EnginePartModule
     {
         private string log4NetConfigFile = "${LogPath}|log4net.config";

@@ -31,7 +31,7 @@ namespace KissU.Apm.Skywalking
             services.RegisterType<ServiceDiscoveryV5Service>().As<IExecutionService>().SingleInstance();
             services.RegisterType<SegmentReportService>().As<IExecutionService>().SingleInstance();
             services.RegisterType<InstrumentStartup>().As<IInstrumentStartup>().SingleInstance();
-            services.Register<IRuntimeEnvironment>(p => RuntimeEnvironment.Instance).SingleInstance();
+            services.Register(p => RuntimeEnvironment.Instance).SingleInstance();
             services.RegisterType<TracingDiagnosticProcessorObserver>().SingleInstance();
             services.RegisterType<ConfigAccessor>().As<IConfigAccessor>().SingleInstance();
             services.RegisterType<ConfigurationFactory>().As<IConfigurationFactory>().SingleInstance();

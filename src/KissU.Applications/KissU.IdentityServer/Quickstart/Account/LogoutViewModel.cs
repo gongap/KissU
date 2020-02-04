@@ -2,9 +2,9 @@
 {
     /// <summary>
     /// LogoutViewModel.
-    /// Implements the <see cref="KissU.IdentityServer.Quickstart.Account.LogoutInputModel" />
+    /// Implements the <see cref="LogoutInputModel" />
     /// </summary>
-    /// <seealso cref="KissU.IdentityServer.Quickstart.Account.LogoutInputModel" />
+    /// <seealso cref="LogoutInputModel" />
     public class LogoutViewModel : LogoutInputModel
     {
         /// <summary>

@@ -12,9 +12,9 @@ namespace KissU.Core.DotNetty
 {
     /// <summary>
     /// DotNettyModule.
-    /// Implements the <see cref="KissU.Core.CPlatform.Module.EnginePartModule" />
+    /// Implements the <see cref="EnginePartModule" />
     /// </summary>
-    /// <seealso cref="KissU.Core.CPlatform.Module.EnginePartModule" />
+    /// <seealso cref="EnginePartModule" />
     public class DotNettyModule : EnginePartModule
     {
         /// <summary>

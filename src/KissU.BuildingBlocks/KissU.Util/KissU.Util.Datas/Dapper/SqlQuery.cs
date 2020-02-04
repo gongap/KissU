@@ -15,7 +15,7 @@ namespace KissU.Util.Datas.Dapper
     /// <summary>
     /// Dapper Sql查询对象
     /// </summary>
-    public class SqlQuery : Util.Datas.Sql.Queries.SqlQueryBase
+    public class SqlQuery : Sql.Queries.SqlQueryBase
     {
         /// <summary>
         /// 跟踪日志名称

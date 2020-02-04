@@ -2,9 +2,19 @@
 
 namespace KissU.Core.ApiGateWay.Configurations
 {
-   public class Services
+    /// <summary>
+    /// Services.
+    /// </summary>
+    public class Services
     {
-        public  List<ServiceAggregation> serviceAggregation { get; set; }
+        /// <summary>
+        /// Gets or sets the service aggregation.
+        /// </summary>
+        public List<ServiceAggregation> serviceAggregation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the URL mapping.
+        /// </summary>
         public string UrlMapping { get; set; }
     }
 }

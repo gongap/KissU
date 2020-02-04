@@ -14,10 +14,11 @@ namespace KissU.Core.ApiGateWay.ServiceDiscovery.Implementation
     /// </summary>
     public class ServiceDiscoveryProvider : IServiceDiscoveryProvider
     {
-        public ServiceDiscoveryProvider()
-        {
-
-        }
+        /// <summary>
+        /// get address as an asynchronous operation.
+        /// </summary>
+        /// <param name="condition">The condition.</param>
+        /// <returns>Task&lt;IEnumerable&lt;ServiceAddressModel&gt;&gt;.</returns>
         public async Task<IEnumerable<ServiceAddressModel>> GetAddressAsync(string condition = null)
         {
             var result = new List<ServiceAddressModel>();
@@ -30,24 +31,37 @@ namespace KissU.Core.ApiGateWay.ServiceDiscovery.Implementation
                     IsHealth = await ServiceLocator.GetService<IHealthCheckService>().IsHealth(address)
                 });
             }
+
             return result;
         }
 
-        public async Task<IEnumerable<ServiceDescriptor>> GetServiceDescriptorAsync(string address, string condition = null)
+        /// <summary>
+        /// get service descriptor as an asynchronous operation.
+        /// </summary>
+        /// <param name="address">The address.</param>
+        /// <param name="condition">The condition.</param>
+        /// <returns>Task&lt;IEnumerable&lt;ServiceDescriptor&gt;&gt;.</returns>
+        public async Task<IEnumerable<ServiceDescriptor>> GetServiceDescriptorAsync(string address,
+            string condition = null)
         {
-            return await ServiceLocator.GetService<IServiceRouteManager>().GetServiceDescriptorAsync(address, condition);
+            return await ServiceLocator.GetService<IServiceRouteManager>()
+                .GetServiceDescriptorAsync(address, condition);
         }
 
+        /// <summary>
+        /// Edits the service token.
+        /// </summary>
+        /// <param name="address">The address.</param>
         public async Task EditServiceToken(AddressModel address)
         {
             var routes = await ServiceLocator.GetService<IServiceRouteManager>().GetRoutesAsync(address.ToString());
             routes = routes.ToList();
-            List<ServiceRoute> serviceRoutes = new List<ServiceRoute>();
+            var serviceRoutes = new List<ServiceRoute>();
             routes.ToList().ForEach(route =>
             {
                 var addresses = new List<AddressModel>();
 
-                serviceRoutes.Add(new ServiceRoute()
+                serviceRoutes.Add(new ServiceRoute
                 {
                     ServiceDescriptor = route.ServiceDescriptor,
                     Address = addresses
@@ -55,8 +69,6 @@ namespace KissU.Core.ApiGateWay.ServiceDiscovery.Implementation
             });
             await ServiceLocator.GetService<IServiceRouteManager>().ClearAsync();
             await ServiceLocator.GetService<IServiceRouteManager>().SetRoutesAsync(serviceRoutes);
-
         }
-
     }
 }

@@ -8,7 +8,7 @@ namespace KissU.Core.CPlatform.Filters
     /// 异常过滤器
     /// Implements the <see cref="T:KissU.Core.CPlatform.Filters.IFilter" />.
     /// </summary>
-    /// <seealso cref="KissU.Core.CPlatform.Filters.IFilter" />
+    /// <seealso cref="IFilter" />
     public interface IExceptionFilter : IFilter
     {
         /// <summary>

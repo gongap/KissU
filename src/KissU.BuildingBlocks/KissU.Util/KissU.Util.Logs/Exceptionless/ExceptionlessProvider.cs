@@ -22,7 +22,7 @@ namespace KissU.Util.Logs.Exceptionless
         /// <summary>
         /// 客户端
         /// </summary>
-        private readonly el.ExceptionlessClient _client;
+        private readonly ExceptionlessClient _client;
 
         /// <summary>
         /// 行号

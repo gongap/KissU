@@ -41,7 +41,7 @@ namespace KissU.Apm.Skywalking
             builder.RegisterType<ServiceDiscoveryV5Service>().As<IExecutionService>().SingleInstance();
             builder.RegisterType<SegmentReportService>().As<IExecutionService>().SingleInstance();
             builder.RegisterType<InstrumentStartup>().As<IInstrumentStartup>().SingleInstance();
-            builder.Register<IRuntimeEnvironment>(p => RuntimeEnvironment.Instance).SingleInstance();
+            builder.Register(p => RuntimeEnvironment.Instance).SingleInstance();
             builder.RegisterType<TracingDiagnosticProcessorObserver>().SingleInstance();
             builder.RegisterType<ConfigAccessor>().As<IConfigAccessor>().SingleInstance();
             builder.RegisterType<ConfigurationFactory>().As<IConfigurationFactory>().SingleInstance();
@@ -79,7 +79,7 @@ namespace KissU.Apm.Skywalking
         private SkywalkingModule AddGrpcTransport(ContainerBuilderWrapper builder)
         {
             builder.RegisterType<SkyApmClientV5>().As<ISkyApmClientV5>().SingleInstance();
-            builder.RegisterType<KissU.Apm.Skywalking.Transport.Grpc.SegmentReporter>().As<ISegmentReporter>().SingleInstance();
+            builder.RegisterType<Transport.Grpc.SegmentReporter>().As<ISegmentReporter>().SingleInstance();
             builder.RegisterType<ConnectionManager>().SingleInstance();
             builder.RegisterType<PingCaller>().As<IPingCaller>().SingleInstance();
             builder.RegisterType<ServiceRegister>().As<IServiceRegister>().SingleInstance();

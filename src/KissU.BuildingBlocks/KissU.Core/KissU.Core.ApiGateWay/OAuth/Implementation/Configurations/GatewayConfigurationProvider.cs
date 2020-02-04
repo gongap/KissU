@@ -4,14 +4,29 @@ using Microsoft.Extensions.Configuration;
 
 namespace KissU.Core.ApiGateWay.OAuth.Implementation.Configurations
 {
-   public class GatewayConfigurationProvider : FileConfigurationProvider
+    /// <summary>
+    /// GatewayConfigurationProvider.
+    /// Implements the <see cref="Microsoft.Extensions.Configuration.FileConfigurationProvider" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Extensions.Configuration.FileConfigurationProvider" />
+    public class GatewayConfigurationProvider : FileConfigurationProvider
     {
-        public GatewayConfigurationProvider(GatewayConfigurationSource source) : base(source) { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GatewayConfigurationProvider" /> class.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        public GatewayConfigurationProvider(GatewayConfigurationSource source) : base(source)
+        {
+        }
 
+        /// <summary>
+        /// Loads the specified stream.
+        /// </summary>
+        /// <param name="stream">The stream.</param>
         public override void Load(Stream stream)
         {
             var parser = new JsonConfigurationParser();
-            this.Data = parser.Parse(stream, null);
+            Data = parser.Parse(stream, null);
         }
     }
 }

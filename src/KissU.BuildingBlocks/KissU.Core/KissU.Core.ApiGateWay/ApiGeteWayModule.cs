@@ -15,9 +15,9 @@ namespace KissU.Core.ApiGateWay
 {
     /// <summary>
     /// ApiGeteWayModule.
-    /// Implements the <see cref="KissU.Core.CPlatform.Module.EnginePartModule" />
+    /// Implements the <see cref="EnginePartModule" />
     /// </summary>
-    /// <seealso cref="KissU.Core.CPlatform.Module.EnginePartModule" />
+    /// <seealso cref="EnginePartModule" />
     public class ApiGeteWayModule : EnginePartModule
     {
         /// <summary>
@@ -42,7 +42,7 @@ namespace KissU.Core.ApiGateWay
             builder.RegisterType<ServiceSubscribeProvider>().As<IServiceSubscribeProvider>().SingleInstance();
             builder.RegisterType<ServiceCacheProvider>().As<IServiceCacheProvider>().SingleInstance();
             builder.RegisterType<ServicePartProvider>().As<IServicePartProvider>().SingleInstance();
-   
+
             builder.Register(provider =>
             {
                 var serviceProxyProvider = provider.Resolve<IServiceProxyProvider>();
@@ -52,5 +52,4 @@ namespace KissU.Core.ApiGateWay
             }).As<IAuthorizationServerProvider>().SingleInstance();
         }
     }
-
 }

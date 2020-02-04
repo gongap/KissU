@@ -27,7 +27,7 @@ namespace KissU.Util.Datas.PgSql.Ef
         /// 获取映射实例列表
         /// </summary>
         /// <param name="assembly">程序集</param>
-        protected override IEnumerable<Util.Datas.Ef.Core.IMap> GetMapInstances(Assembly assembly)
+        protected override IEnumerable<Datas.Ef.Core.IMap> GetMapInstances(Assembly assembly)
         {
             return Util.Helpers.Reflection.GetInstancesByInterface<IMap>(assembly);
         }

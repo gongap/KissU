@@ -29,9 +29,9 @@ namespace KissU.Core.CPlatform.Mqtt.Implementation
 
     /// <summary>
     /// MqttServiceRouteChangedEventArgs.
-    /// Implements the <see cref="KissU.Core.CPlatform.Mqtt.Implementation.MqttServiceRouteEventArgs" />
+    /// Implements the <see cref="MqttServiceRouteEventArgs" />
     /// </summary>
-    /// <seealso cref="KissU.Core.CPlatform.Mqtt.Implementation.MqttServiceRouteEventArgs" />
+    /// <seealso cref="MqttServiceRouteEventArgs" />
     public class MqttServiceRouteChangedEventArgs : MqttServiceRouteEventArgs
     {
         /// <summary>
@@ -52,9 +52,9 @@ namespace KissU.Core.CPlatform.Mqtt.Implementation
 
     /// <summary>
     /// MqttServiceRouteManagerBase.
-    /// Implements the <see cref="KissU.Core.CPlatform.Mqtt.IMqttServiceRouteManager" />
+    /// Implements the <see cref="IMqttServiceRouteManager" />
     /// </summary>
-    /// <seealso cref="KissU.Core.CPlatform.Mqtt.IMqttServiceRouteManager" />
+    /// <seealso cref="IMqttServiceRouteManager" />
     public abstract class MqttServiceRouteManagerBase : IMqttServiceRouteManager
     {
         private readonly ISerializer<string> _serializer;

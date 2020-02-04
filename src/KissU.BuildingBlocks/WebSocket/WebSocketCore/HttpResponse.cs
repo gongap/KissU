@@ -169,7 +169,7 @@ namespace WebSocketCore
 
     internal static HttpResponse Read (Stream stream, int millisecondsTimeout)
     {
-      return Read<HttpResponse> (stream, Parse, millisecondsTimeout);
+      return Read(stream, Parse, millisecondsTimeout);
     }
 
     #endregion

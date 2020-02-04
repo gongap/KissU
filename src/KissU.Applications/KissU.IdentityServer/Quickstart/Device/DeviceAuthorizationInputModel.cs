@@ -4,9 +4,9 @@ namespace KissU.IdentityServer.Quickstart.Device
 {
     /// <summary>
     /// DeviceAuthorizationInputModel.
-    /// Implements the <see cref="KissU.IdentityServer.Quickstart.Consent.ConsentInputModel" />
+    /// Implements the <see cref="ConsentInputModel" />
     /// </summary>
-    /// <seealso cref="KissU.IdentityServer.Quickstart.Consent.ConsentInputModel" />
+    /// <seealso cref="ConsentInputModel" />
     public class DeviceAuthorizationInputModel : ConsentInputModel
     {
         /// <summary>

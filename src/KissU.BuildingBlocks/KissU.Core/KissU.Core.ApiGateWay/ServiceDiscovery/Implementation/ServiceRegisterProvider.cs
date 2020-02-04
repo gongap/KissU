@@ -11,7 +11,12 @@ namespace KissU.Core.ApiGateWay.ServiceDiscovery.Implementation
     /// </summary>
     public class ServiceRegisterProvider : IServiceRegisterProvider
     {
-        public async  Task<IEnumerable<ServiceAddressModel>> GetAddressAsync(string condition = null)
+        /// <summary>
+        /// get address as an asynchronous operation.
+        /// </summary>
+        /// <param name="condition">The condition.</param>
+        /// <returns>Task&lt;IEnumerable&lt;ServiceAddressModel&gt;&gt;.</returns>
+        public async Task<IEnumerable<ServiceAddressModel>> GetAddressAsync(string condition = null)
         {
             var result = new List<ServiceAddressModel>();
             var registerConfig = AppConfig.Register;
@@ -20,14 +25,12 @@ namespace KissU.Core.ApiGateWay.ServiceDiscovery.Implementation
             {
                 foreach (var address in addresses)
                 {
-
                     var addr = ConvertAddressModel(address);
                     result.Add(new ServiceAddressModel
                     {
                         Address = addr,
                         IsHealth = await ServiceLocator.GetService<IHealthCheckService>().IsHealth(addr)
                     });
-
                 }
             }
             else
@@ -44,9 +47,15 @@ namespace KissU.Core.ApiGateWay.ServiceDiscovery.Implementation
                     });
                 }
             }
+
             return result;
         }
 
+        /// <summary>
+        /// Converts the address model.
+        /// </summary>
+        /// <param name="connection">The connection.</param>
+        /// <returns>AddressModel.</returns>
         public AddressModel ConvertAddressModel(string connection)
         {
             var address = connection.Split(":");
@@ -56,6 +65,7 @@ namespace KissU.Core.ApiGateWay.ServiceDiscovery.Implementation
                 int.TryParse(address[1], out port);
                 return new IpAddressModel(address[0], port);
             }
+
             return null;
         }
     }

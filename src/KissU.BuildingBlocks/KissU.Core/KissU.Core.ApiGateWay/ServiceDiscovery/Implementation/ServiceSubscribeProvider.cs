@@ -9,8 +9,13 @@ namespace KissU.Core.ApiGateWay.ServiceDiscovery.Implementation
     /// <summary>
     /// 服务订阅提供者
     /// </summary>
-    public class ServiceSubscribeProvider :IServiceSubscribeProvider
+    public class ServiceSubscribeProvider : IServiceSubscribeProvider
     {
+        /// <summary>
+        /// get address as an asynchronous operation.
+        /// </summary>
+        /// <param name="condition">The condition.</param>
+        /// <returns>Task&lt;IEnumerable&lt;ServiceAddressModel&gt;&gt;.</returns>
         public async Task<IEnumerable<ServiceAddressModel>> GetAddressAsync(string condition = null)
         {
             var result = new List<ServiceAddressModel>();
@@ -19,15 +24,24 @@ namespace KissU.Core.ApiGateWay.ServiceDiscovery.Implementation
             {
                 result.Add(new ServiceAddressModel
                 {
-                    Address = address,
+                    Address = address
                 });
             }
+
             return result;
         }
 
-        public async Task<IEnumerable<ServiceDescriptor>> GetServiceDescriptorAsync(string address, string condition = null)
+        /// <summary>
+        /// get service descriptor as an asynchronous operation.
+        /// </summary>
+        /// <param name="address">The address.</param>
+        /// <param name="condition">The condition.</param>
+        /// <returns>Task&lt;IEnumerable&lt;ServiceDescriptor&gt;&gt;.</returns>
+        public async Task<IEnumerable<ServiceDescriptor>> GetServiceDescriptorAsync(string address,
+            string condition = null)
         {
-            return await ServiceLocator.GetService<IServiceSubscribeManager>().GetServiceDescriptorAsync(address, condition);
+            return await ServiceLocator.GetService<IServiceSubscribeManager>()
+                .GetServiceDescriptorAsync(address, condition);
         }
     }
 }

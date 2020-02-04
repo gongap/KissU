@@ -13,15 +13,18 @@ using KissU.Core.ProxyGenerator;
 
 namespace KissU.Core.ApiGateWay
 {
-   public static  class ContainerBuilderExtensions
+    /// <summary>
+    /// ContainerBuilderExtensions.
+    /// </summary>
+    public static class ContainerBuilderExtensions
     {
         /// <summary>
         /// 添加网关中间件
         /// </summary>
         /// <param name="builder">服务构建者</param>
-        /// <param name="config"></param>
+        /// <param name="config">The configuration.</param>
         /// <returns>服务构建者</returns>
-        public static IServiceBuilder AddApiGateWay(this IServiceBuilder builder, ConfigInfo config=null)
+        public static IServiceBuilder AddApiGateWay(this IServiceBuilder builder, ConfigInfo config = null)
         {
             var services = builder.Services;
             services.RegisterType<FaultTolerantProvider>().As<IFaultTolerantProvider>().SingleInstance();
@@ -37,6 +40,7 @@ namespace KissU.Core.ApiGateWay
                 AppConfig.AuthorizationRoutePath = config.AuthorizationRoutePath;
                 AppConfig.AuthorizationServiceKey = config.AuthorizationServiceKey;
             }
+
             builder.Services.Register(provider =>
             {
                 var serviceProxyProvider = provider.Resolve<IServiceProxyProvider>();

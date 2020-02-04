@@ -5,9 +5,9 @@ namespace KissU.IdentityServer.Quickstart
 {
     /// <summary>
     /// Class SecurityHeadersAttribute.
-    /// Implements the <see cref="Microsoft.AspNetCore.Mvc.Filters.ActionFilterAttribute" />
+    /// Implements the <see cref="ActionFilterAttribute" />
     /// </summary>
-    /// <seealso cref="Microsoft.AspNetCore.Mvc.Filters.ActionFilterAttribute" />
+    /// <seealso cref="ActionFilterAttribute" />
     public class SecurityHeadersAttribute : ActionFilterAttribute
     {
         /// <summary>

@@ -2,7 +2,7 @@
 {
     /// <summary>
     /// 服务缓存已更改事件参数.
-    /// Implements the <see cref="KissU.Core.CPlatform.Cache.Implementation.ServiceCacheEventArgs" />
+    /// Implements the <see cref="ServiceCacheEventArgs" />
     /// </summary>
     public class ServiceCacheChangedEventArgs : ServiceCacheEventArgs
     {

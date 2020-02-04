@@ -192,7 +192,7 @@ namespace KissU.Util.Tests.Helpers
         {
             Assert.Null(Reflection.GetTopBaseType(null));
             Assert.Contains("Util.Domains.DomainBase", Reflection.GetTopBaseType<User>().FullName);
-            Assert.Contains("Util.Domains.DomainBase", Reflection.GetTopBaseType<Util.Domains.DomainBase<User>>().FullName);
+            Assert.Contains("Util.Domains.DomainBase", Reflection.GetTopBaseType<DomainBase<User>>().FullName);
             Assert.Contains("Util.Domains.IEntity", Reflection.GetTopBaseType<IEntity>().FullName);
         }
 

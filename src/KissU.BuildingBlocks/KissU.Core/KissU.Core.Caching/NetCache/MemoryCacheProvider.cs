@@ -148,7 +148,7 @@ namespace KissU.Core.Caching.NetCache
 
         public Task<bool> ConnectionAsync(CacheEndpoint endpoint)
         {
-            return Task.FromResult<bool>(true);
+            return Task.FromResult(true);
         }
 
         #endregion

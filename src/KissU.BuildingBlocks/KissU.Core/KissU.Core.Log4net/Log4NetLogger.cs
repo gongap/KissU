@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.Log4net
 {
-    public class Log4NetLogger : Microsoft.Extensions.Logging.ILogger
+    public class Log4NetLogger : ILogger
     {
         private readonly string _name;
         private readonly XmlElement _xmlElement;

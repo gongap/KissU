@@ -20,11 +20,11 @@ namespace KissU.Core.CPlatform.Mqtt
         public MqttDescriptor MqttDescriptor { get; set; }
 
         /// <summary>
-        /// Determines whether the specified <see cref="System.Object" /> is equal to this instance.
+        /// Determines whether the specified <see cref="object" /> is equal to this instance.
         /// </summary>
         /// <param name="obj">The object to compare with the current object.</param>
         /// <returns>
-        /// <c>true</c> if the specified <see cref="System.Object" /> is equal to this instance; otherwise, <c>false</c>
+        /// <c>true</c> if the specified <see cref="object" /> is equal to this instance; otherwise, <c>false</c>
         /// .
         /// </returns>
         public override bool Equals(object obj)

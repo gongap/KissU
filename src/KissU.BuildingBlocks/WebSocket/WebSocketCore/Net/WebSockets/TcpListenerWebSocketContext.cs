@@ -125,23 +125,23 @@ namespace WebSocketCore.Net.WebSockets
       }
     }
 
-    #endregion
+        #endregion
 
-    #region Public Properties
+        #region Public Properties
 
-    /// <summary>
-    /// Gets the HTTP cookies included in the handshake request.
-    /// </summary>
-    /// <value>
-    ///   <para>
-    ///   A <see cref="WebSocketCore.Net.CookieCollection"/> that contains
-    ///   the cookies.
-    ///   </para>
-    ///   <para>
-    ///   An empty collection if not included.
-    ///   </para>
-    /// </value>
-    public override CookieCollection CookieCollection {
+        /// <summary>
+        /// Gets the HTTP cookies included in the handshake request.
+        /// </summary>
+        /// <value>
+        ///   <para>
+        ///   A <see cref="Net.CookieCollection"/> that contains
+        ///   the cookies.
+        ///   </para>
+        ///   <para>
+        ///   An empty collection if not included.
+        ///   </para>
+        /// </value>
+        public override CookieCollection CookieCollection {
       get {
         return _request.Cookies;
       }

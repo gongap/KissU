@@ -7,9 +7,9 @@ namespace KissU.Core.CPlatform.Module
 {
     /// <summary>
     /// 模块提供器.
-    /// Implements the <see cref="KissU.Core.CPlatform.Module.IModuleProvider" />
+    /// Implements the <see cref="IModuleProvider" />
     /// </summary>
-    /// <seealso cref="KissU.Core.CPlatform.Module.IModuleProvider" />
+    /// <seealso cref="IModuleProvider" />
     public class ModuleProvider : IModuleProvider
     {
         private readonly ILogger<ModuleProvider> _logger;

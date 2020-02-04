@@ -17,9 +17,9 @@ namespace KissU.Core.Stage
 {
     /// <summary>
     /// StageModule.
-    /// Implements the <see cref="KissU.Core.KestrelHttpServer.KestrelHttpModule" />
+    /// Implements the <see cref="KestrelHttpModule" />
     /// </summary>
-    /// <seealso cref="KissU.Core.KestrelHttpServer.KestrelHttpModule" />
+    /// <seealso cref="KestrelHttpModule" />
     public class StageModule : KestrelHttpModule
     {
         private IWebServerListener _listener;
@@ -88,7 +88,7 @@ namespace KissU.Core.Stage
                 {
                     JsonConvert.DefaultSettings= new Func<JsonSerializerSettings>(() =>
                     {
-                       JsonSerializerSettings setting = new Newtonsoft.Json.JsonSerializerSettings();
+                       JsonSerializerSettings setting = new JsonSerializerSettings();
                         setting.DateFormatString = "yyyy-MM-dd HH:mm:ss";
                         setting.ContractResolver = new CamelCasePropertyNamesContractResolver();
                         return setting;

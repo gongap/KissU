@@ -15,9 +15,9 @@ namespace KissU.Core.Swagger
 {
     /// <summary>
     /// SwaggerModule.
-    /// Implements the <see cref="KissU.Core.KestrelHttpServer.KestrelHttpModule" />
+    /// Implements the <see cref="KestrelHttpModule" />
     /// </summary>
-    /// <seealso cref="KissU.Core.KestrelHttpServer.KestrelHttpModule" />
+    /// <seealso cref="KestrelHttpModule" />
     public class SwaggerModule: KestrelHttpModule
     {
         private  IServiceSchemaProvider _serviceSchemaProvider; 

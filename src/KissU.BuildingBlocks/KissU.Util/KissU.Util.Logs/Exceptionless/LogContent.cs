@@ -6,7 +6,7 @@ namespace KissU.Util.Logs.Exceptionless
     /// <summary>
     /// Exceptionless日志内容
     /// </summary>
-    public class LogContent : Util.Logs.Contents.LogContent, ILogConvert
+    public class LogContent : Contents.LogContent, ILogConvert
     {
         /// <summary>
         /// 转换

@@ -11,7 +11,7 @@ namespace KissU.Core.AutoMapper.AutoMapper
 
         public static TDestination MapTo<TSource, TDestination>(this TSource obj, TDestination entity) where TSource : class where TDestination : class
         {
-            return Mapper.Map<TSource, TDestination>(obj, entity);
+            return Mapper.Map(obj, entity);
         }
     }
 }

@@ -1,10 +1,28 @@
 ﻿namespace KissU.Core.ApiGateWay
 {
-   public enum ServiceStatusCode
+    /// <summary>
+    /// Enum ServiceStatusCode
+    /// </summary>
+    public enum ServiceStatusCode
     {
-        Success=200,
-        RequestError =400,
-        AuthorizationFailed=401,
-        Http405Endpoint=405
+        /// <summary>
+        /// The success
+        /// </summary>
+        Success = 200,
+
+        /// <summary>
+        /// The request error
+        /// </summary>
+        RequestError = 400,
+
+        /// <summary>
+        /// The authorization failed
+        /// </summary>
+        AuthorizationFailed = 401,
+
+        /// <summary>
+        /// The HTTP405 endpoint
+        /// </summary>
+        Http405Endpoint = 405
     }
 }

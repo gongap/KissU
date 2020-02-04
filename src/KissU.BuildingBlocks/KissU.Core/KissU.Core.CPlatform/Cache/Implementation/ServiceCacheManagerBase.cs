@@ -8,7 +8,7 @@ namespace KissU.Core.CPlatform.Cache.Implementation
 {
     /// <summary>
     /// 服务缓存管理基类.
-    /// Implements the <see cref="KissU.Core.CPlatform.Cache.IServiceCacheManager" />
+    /// Implements the <see cref="IServiceCacheManager" />
     /// </summary>
     public abstract class ServiceCacheManagerBase : IServiceCacheManager
     {

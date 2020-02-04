@@ -31,15 +31,15 @@ namespace KissU.Core.CPlatform.Utilities
     /// Manual Reset Value Task Source.
     /// Implements the
     /// <see
-    ///     cref="KissU.Core.CPlatform.Utilities.IStrongBox{KissU.Core.CPlatform.Utilities.ManualResetValueTaskSourceLogic{T}}" />
-    /// Implements the <see cref="System.Threading.Tasks.Sources.IValueTaskSource{T}" />
-    /// Implements the <see cref="System.Threading.Tasks.Sources.IValueTaskSource" />
+    ///     cref="IStrongBox{ManualResetValueTaskSourceLogic{T}}" />
+    /// Implements the <see cref="IValueTaskSource{T}" />
+    /// Implements the <see cref="IValueTaskSource" />
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <seealso
-    ///     cref="KissU.Core.CPlatform.Utilities.IStrongBox{KissU.Core.CPlatform.Utilities.ManualResetValueTaskSourceLogic{T}}" />
-    /// <seealso cref="System.Threading.Tasks.Sources.IValueTaskSource{T}" />
-    /// <seealso cref="System.Threading.Tasks.Sources.IValueTaskSource" />
+    ///     cref="IStrongBox{ManualResetValueTaskSourceLogic{T}}" />
+    /// <seealso cref="IValueTaskSource{T}" />
+    /// <seealso cref="IValueTaskSource" />
     public class ManualResetValueTaskSource<T> : IStrongBox<ManualResetValueTaskSourceLogic<T>>, IValueTaskSource<T>,
         IValueTaskSource
     {

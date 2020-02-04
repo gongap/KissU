@@ -403,25 +403,25 @@ namespace WebSocketCore.Net
       }
     }
 
-    /// <summary>
-    /// Gets or sets the description of the HTTP status code returned to the client.
-    /// </summary>
-    /// <value>
-    /// A <see cref="string"/> that represents the description of the status code. The default
-    /// value is the <see href="http://tools.ietf.org/html/rfc2616#section-10">RFC 2616</see>
-    /// description for the <see cref="HttpListenerResponse.StatusCode"/> property value,
-    /// or <see cref="String.Empty"/> if an RFC 2616 description doesn't exist.
-    /// </value>
-    /// <exception cref="ArgumentException">
-    /// The value specified for a set operation contains invalid characters.
-    /// </exception>
-    /// <exception cref="InvalidOperationException">
-    /// The response has already been sent.
-    /// </exception>
-    /// <exception cref="ObjectDisposedException">
-    /// This object is closed.
-    /// </exception>
-    public string StatusDescription {
+        /// <summary>
+        /// Gets or sets the description of the HTTP status code returned to the client.
+        /// </summary>
+        /// <value>
+        /// A <see cref="string"/> that represents the description of the status code. The default
+        /// value is the <see href="http://tools.ietf.org/html/rfc2616#section-10">RFC 2616</see>
+        /// description for the <see cref="StatusCode"/> property value,
+        /// or <see cref="String.Empty"/> if an RFC 2616 description doesn't exist.
+        /// </value>
+        /// <exception cref="ArgumentException">
+        /// The value specified for a set operation contains invalid characters.
+        /// </exception>
+        /// <exception cref="InvalidOperationException">
+        /// The response has already been sent.
+        /// </exception>
+        /// <exception cref="ObjectDisposedException">
+        /// This object is closed.
+        /// </exception>
+        public string StatusDescription {
       get {
         return _statusDescription;
       }
@@ -763,32 +763,32 @@ namespace WebSocketCore.Net
       _version = templateResponse._version;
     }
 
-    /// <summary>
-    /// Configures the response to redirect the client's request to
-    /// the specified <paramref name="url"/>.
-    /// </summary>
-    /// <remarks>
-    /// This method sets the <see cref="HttpListenerResponse.RedirectLocation"/> property to
-    /// <paramref name="url"/>, the <see cref="HttpListenerResponse.StatusCode"/> property to
-    /// <c>302</c>, and the <see cref="HttpListenerResponse.StatusDescription"/> property to
-    /// <c>"Found"</c>.
-    /// </remarks>
-    /// <param name="url">
-    /// A <see cref="string"/> that represents the URL to redirect the client's request to.
-    /// </param>
-    /// <exception cref="ArgumentNullException">
-    /// <paramref name="url"/> is <see langword="null"/>.
-    /// </exception>
-    /// <exception cref="ArgumentException">
-    /// <paramref name="url"/> isn't an absolute URL.
-    /// </exception>
-    /// <exception cref="InvalidOperationException">
-    /// The response has already been sent.
-    /// </exception>
-    /// <exception cref="ObjectDisposedException">
-    /// This object is closed.
-    /// </exception>
-    public void Redirect (string url)
+        /// <summary>
+        /// Configures the response to redirect the client's request to
+        /// the specified <paramref name="url"/>.
+        /// </summary>
+        /// <remarks>
+        /// This method sets the <see cref="RedirectLocation"/> property to
+        /// <paramref name="url"/>, the <see cref="StatusCode"/> property to
+        /// <c>302</c>, and the <see cref="StatusDescription"/> property to
+        /// <c>"Found"</c>.
+        /// </remarks>
+        /// <param name="url">
+        /// A <see cref="string"/> that represents the URL to redirect the client's request to.
+        /// </param>
+        /// <exception cref="ArgumentNullException">
+        /// <paramref name="url"/> is <see langword="null"/>.
+        /// </exception>
+        /// <exception cref="ArgumentException">
+        /// <paramref name="url"/> isn't an absolute URL.
+        /// </exception>
+        /// <exception cref="InvalidOperationException">
+        /// The response has already been sent.
+        /// </exception>
+        /// <exception cref="ObjectDisposedException">
+        /// This object is closed.
+        /// </exception>
+        public void Redirect (string url)
     {
       checkDisposedOrHeadersSent ();
       if (url == null)

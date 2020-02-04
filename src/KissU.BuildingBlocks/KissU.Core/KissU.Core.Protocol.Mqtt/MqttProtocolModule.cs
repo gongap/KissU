@@ -18,9 +18,9 @@ namespace KissU.Core.Protocol.Mqtt
 {
     /// <summary>
     /// MqttProtocolModule.
-    /// Implements the <see cref="KissU.Core.CPlatform.Module.EnginePartModule" />
+    /// Implements the <see cref="EnginePartModule" />
     /// </summary>
-    /// <seealso cref="KissU.Core.CPlatform.Module.EnginePartModule" />
+    /// <seealso cref="EnginePartModule" />
     public class MqttProtocolModule : EnginePartModule
     {
         /// <summary>

@@ -4,12 +4,29 @@ using Microsoft.Extensions.Configuration;
 
 namespace KissU.Core.ApiGateWay
 {
+    /// <summary>
+    /// AppConfig.
+    /// </summary>
     public static class AppConfig
     {
+        private static string _authorizationServiceKey;
+
+        private static string _authorizationRoutePath;
+
+        private static TimeSpan _accessTokenExpireTimeSpan = TimeSpan.FromMinutes(30);
+
+        private static string _tokenEndpointPath = "oauth2/token";
+
+        private static string _cacheMode = "MemoryCache";
+
+        /// <summary>
+        /// Gets or sets the configuration.
+        /// </summary>
         public static IConfigurationRoot Configuration { get; set; }
 
-
-        private static string _authorizationServiceKey;
+        /// <summary>
+        /// Gets or sets the authorization service key.
+        /// </summary>
         public static string AuthorizationServiceKey
         {
             get
@@ -18,14 +35,12 @@ namespace KissU.Core.ApiGateWay
                     return _authorizationServiceKey;
                 return Configuration["AuthorizationServiceKey"] ?? _authorizationServiceKey;
             }
-             set
-            {
-
-                _authorizationServiceKey = value;
-            }
+            set => _authorizationServiceKey = value;
         }
 
-        private static string _authorizationRoutePath;
+        /// <summary>
+        /// Gets or sets the authorization route path.
+        /// </summary>
         public static string AuthorizationRoutePath
         {
             get
@@ -34,14 +49,12 @@ namespace KissU.Core.ApiGateWay
                     return _authorizationRoutePath;
                 return Configuration["AuthorizationRoutePath"] ?? _authorizationRoutePath;
             }
-            set
-            {
-
-                _authorizationRoutePath = value;
-            }
+            set => _authorizationRoutePath = value;
         }
 
-        private static TimeSpan _accessTokenExpireTimeSpan = TimeSpan.FromMinutes(30);
+        /// <summary>
+        /// Gets or sets the access token expire time span.
+        /// </summary>
         public static TimeSpan AccessTokenExpireTimeSpan
         {
             get
@@ -49,21 +62,21 @@ namespace KissU.Core.ApiGateWay
                 if (Configuration == null)
                     return _accessTokenExpireTimeSpan;
                 int tokenExpireTime;
-                if (Configuration["AccessTokenExpireTimeSpan"] != null && int.TryParse(Configuration["AccessTokenExpireTimeSpan"], out tokenExpireTime))
+                if (Configuration["AccessTokenExpireTimeSpan"] != null &&
+                    int.TryParse(Configuration["AccessTokenExpireTimeSpan"], out tokenExpireTime))
                 {
                     _accessTokenExpireTimeSpan = TimeSpan.FromMinutes(tokenExpireTime);
                 }
+
                 return _accessTokenExpireTimeSpan;
             }
-            set
-            {
-                _accessTokenExpireTimeSpan = value;
-            }
+            set => _accessTokenExpireTimeSpan = value;
         }
 
-        private static string _tokenEndpointPath = "oauth2/token";
-
-        public static string  TokenEndpointPath
+        /// <summary>
+        /// Gets or sets the token endpoint path.
+        /// </summary>
+        public static string TokenEndpointPath
         {
             get
             {
@@ -71,25 +84,27 @@ namespace KissU.Core.ApiGateWay
                     return _tokenEndpointPath;
                 return Configuration["TokenEndpointPath"] ?? _tokenEndpointPath;
             }
-            set
-            {
-                _tokenEndpointPath = value;
-            }
+            set => _tokenEndpointPath = value;
         }
 
+        /// <summary>
+        /// Gets the register.
+        /// </summary>
         public static Register Register
         {
             get
             {
                 var result = new Register();
-                var section= Configuration.GetSection("Register");
+                var section = Configuration.GetSection("Register");
                 if (section != null)
-                    result=  section.Get<Register>();
+                    result = section.Get<Register>();
                 return result;
             }
-
         }
 
+        /// <summary>
+        /// Gets the service part.
+        /// </summary>
         public static ServicePart ServicePart
         {
             get
@@ -102,20 +117,24 @@ namespace KissU.Core.ApiGateWay
             }
         }
 
+        /// <summary>
+        /// Gets the policy.
+        /// </summary>
         public static AccessPolicy Policy
         {
             get
             {
                 var result = new AccessPolicy();
                 var section = Configuration.GetSection("AccessPolicy");
-                if (section.Exists() )
+                if (section.Exists())
                     result = section.Get<AccessPolicy>();
                 return result;
             }
         }
 
-        private static string _cacheMode = "MemoryCache";
-
+        /// <summary>
+        /// Gets or sets the cache mode.
+        /// </summary>
         public static string CacheMode
         {
             get
@@ -125,11 +144,7 @@ namespace KissU.Core.ApiGateWay
 
                 return Configuration["CacheMode"] ?? _cacheMode;
             }
-           set
-            {
-                _cacheMode = value;
-            }
-           
+            set => _cacheMode = value;
         }
     }
 }

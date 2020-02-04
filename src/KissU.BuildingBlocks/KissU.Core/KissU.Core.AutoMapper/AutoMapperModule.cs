@@ -7,9 +7,9 @@ namespace KissU.Core.AutoMapper
 {
     /// <summary>
     /// AutoMapperModule.
-    /// Implements the <see cref="KissU.Core.CPlatform.Module.EnginePartModule" />
+    /// Implements the <see cref="EnginePartModule" />
     /// </summary>
-    /// <seealso cref="KissU.Core.CPlatform.Module.EnginePartModule" />
+    /// <seealso cref="EnginePartModule" />
     public class AutoMapperModule : EnginePartModule
     {
 

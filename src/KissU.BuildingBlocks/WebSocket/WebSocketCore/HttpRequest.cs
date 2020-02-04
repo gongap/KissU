@@ -151,7 +151,7 @@ namespace WebSocketCore
       var buff = ToByteArray ();
       stream.Write (buff, 0, buff.Length);
 
-      return Read<HttpResponse> (stream, HttpResponse.Parse, millisecondsTimeout);
+      return Read(stream, HttpResponse.Parse, millisecondsTimeout);
     }
 
     internal static HttpRequest Parse (string[] headerParts)
@@ -170,7 +170,7 @@ namespace WebSocketCore
 
     internal static HttpRequest Read (Stream stream, int millisecondsTimeout)
     {
-      return Read<HttpRequest> (stream, Parse, millisecondsTimeout);
+      return Read(stream, Parse, millisecondsTimeout);
     }
 
     #endregion

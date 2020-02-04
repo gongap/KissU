@@ -1,8 +1,18 @@
 ﻿namespace KissU.Core.ApiGateWay.Configurations
 {
-   public  enum RegisterProvider
+    /// <summary>
+    /// Enum RegisterProvider
+    /// </summary>
+    public enum RegisterProvider
     {
+        /// <summary>
+        /// The consul
+        /// </summary>
         Consul,
-        Zookeeper,
+
+        /// <summary>
+        /// The zookeeper
+        /// </summary>
+        Zookeeper
     }
 }

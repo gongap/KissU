@@ -40,7 +40,7 @@ namespace KissU.Util.Datas.Ef.Core
         /// <summary>
         /// Sql查询对象
         /// </summary>
-        private Util.Datas.Sql.ISqlQuery _sqlQuery;
+        private Sql.ISqlQuery _sqlQuery;
 
         /// <summary>
         /// 初始化查询存储器
@@ -69,14 +69,14 @@ namespace KissU.Util.Datas.Ef.Core
         /// <summary>
         /// Sql查询对象
         /// </summary>
-        protected Util.Datas.Sql.ISqlQuery Sql => _sqlQuery ?? ( _sqlQuery = CreateSqlQuery() );
+        protected Sql.ISqlQuery Sql => _sqlQuery ?? ( _sqlQuery = CreateSqlQuery() );
 
         /// <summary>
         /// 创建Sql查询对象
         /// </summary>
-        protected virtual Util.Datas.Sql.ISqlQuery CreateSqlQuery()
+        protected virtual Sql.ISqlQuery CreateSqlQuery()
         {
-            var result = Ioc.Create<Util.Datas.Sql.ISqlQuery>();
+            var result = Ioc.Create<Sql.ISqlQuery>();
             result.SetConnection( Connection );
             return result;
         }

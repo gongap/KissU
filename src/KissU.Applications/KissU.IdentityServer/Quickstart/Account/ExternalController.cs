@@ -21,9 +21,9 @@ namespace KissU.IdentityServer.Quickstart.Account
 {
     /// <summary>
     /// ExternalController.
-    /// Implements the <see cref="Microsoft.AspNetCore.Mvc.Controller" />
+    /// Implements the <see cref="Controller" />
     /// </summary>
-    /// <seealso cref="Microsoft.AspNetCore.Mvc.Controller" />
+    /// <seealso cref="Controller" />
     [SecurityHeaders]
     [AllowAnonymous]
     public class ExternalController : Controller

@@ -4,9 +4,9 @@ namespace KissU.Core.CPlatform.Diagnostics
 {
     /// <summary>
     /// 诊断名称.
-    /// Implements the <see cref="System.Attribute" />
+    /// Implements the <see cref="Attribute" />
     /// </summary>
-    /// <seealso cref="System.Attribute" />
+    /// <seealso cref="Attribute" />
     public class DiagnosticName : Attribute
     {
         /// <summary>

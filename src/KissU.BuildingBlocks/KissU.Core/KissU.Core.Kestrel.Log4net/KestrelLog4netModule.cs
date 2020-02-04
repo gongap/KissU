@@ -10,9 +10,9 @@ namespace KissU.Core.Kestrel.Log4net
 
     /// <summary>
     /// KestrelLog4netModule.
-    /// Implements the <see cref="KissU.Core.KestrelHttpServer.KestrelHttpModule" />
+    /// Implements the <see cref="KestrelHttpModule" />
     /// </summary>
-    /// <seealso cref="KissU.Core.KestrelHttpServer.KestrelHttpModule" />
+    /// <seealso cref="KestrelHttpModule" />
     public class KestrelLog4netModule : KestrelHttpModule
     {
         private string log4NetConfigFile = "${LogPath}|log4net.config";

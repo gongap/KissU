@@ -5,7 +5,7 @@ namespace KissU.Util.Datas.Sql.Matedatas
     /// <summary>
     /// 实体元数据
     /// </summary>
-    [Util.Aspects.Ignore]
+    [Aspects.Ignore]
     public interface IEntityMatedata
     {
         /// <summary>

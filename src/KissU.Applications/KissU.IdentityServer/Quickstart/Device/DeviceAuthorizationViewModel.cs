@@ -4,9 +4,9 @@ namespace KissU.IdentityServer.Quickstart.Device
 {
     /// <summary>
     /// DeviceAuthorizationViewModel.
-    /// Implements the <see cref="KissU.IdentityServer.Quickstart.Consent.ConsentViewModel" />
+    /// Implements the <see cref="ConsentViewModel" />
     /// </summary>
-    /// <seealso cref="KissU.IdentityServer.Quickstart.Consent.ConsentViewModel" />
+    /// <seealso cref="ConsentViewModel" />
     public class DeviceAuthorizationViewModel : ConsentViewModel
     {
         /// <summary>

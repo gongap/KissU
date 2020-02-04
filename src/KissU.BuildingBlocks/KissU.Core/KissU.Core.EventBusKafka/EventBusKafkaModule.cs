@@ -14,9 +14,9 @@ namespace KissU.Core.EventBusKafka
 {
     /// <summary>
     /// EventBusKafkaModule.
-    /// Implements the <see cref="KissU.Core.CPlatform.Module.EnginePartModule" />
+    /// Implements the <see cref="EnginePartModule" />
     /// </summary>
-    /// <seealso cref="KissU.Core.CPlatform.Module.EnginePartModule" />
+    /// <seealso cref="EnginePartModule" />
     public class EventBusKafkaModule : EnginePartModule
     {
         /// <summary>

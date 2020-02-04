@@ -4,9 +4,9 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
 {
     /// <summary>
     /// ServiceRouteAttribute.
-    /// Implements the <see cref="System.Attribute" />
+    /// Implements the <see cref="Attribute" />
     /// </summary>
-    /// <seealso cref="System.Attribute" />
+    /// <seealso cref="Attribute" />
     public class ServiceRouteAttribute : Attribute
     {
         /// <summary>

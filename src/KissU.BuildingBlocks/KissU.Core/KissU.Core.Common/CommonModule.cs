@@ -4,9 +4,9 @@ namespace KissU.Core.Common
 {
     /// <summary>
     /// CommonModule.
-    /// Implements the <see cref="KissU.Core.CPlatform.Module.SystemModule" />
+    /// Implements the <see cref="SystemModule" />
     /// </summary>
-    /// <seealso cref="KissU.Core.CPlatform.Module.SystemModule" />
+    /// <seealso cref="SystemModule" />
     public class CommonModule:SystemModule
     {
     }

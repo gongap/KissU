@@ -32,25 +32,25 @@ using System.IO;
 
 namespace WebSocketCore
 {
-  /// <summary>
-  /// Provides a set of methods and properties for logging.
-  /// </summary>
-  /// <remarks>
-  ///   <para>
-  ///   If you output a log with lower than the value of the <see cref="Logger.Level"/> property,
-  ///   it cannot be outputted.
-  ///   </para>
-  ///   <para>
-  ///   The default output action writes a log to the standard output stream and the log file
-  ///   if the <see cref="Logger.File"/> property has a valid path to it.
-  ///   </para>
-  ///   <para>
-  ///   If you would like to use the custom output action, you should set
-  ///   the <see cref="Logger.Output"/> property to any <c>Action&lt;LogData, string&gt;</c>
-  ///   delegate.
-  ///   </para>
-  /// </remarks>
-  public class Logger
+    /// <summary>
+    /// Provides a set of methods and properties for logging.
+    /// </summary>
+    /// <remarks>
+    ///   <para>
+    ///   If you output a log with lower than the value of the <see cref="Level"/> property,
+    ///   it cannot be outputted.
+    ///   </para>
+    ///   <para>
+    ///   The default output action writes a log to the standard output stream and the log file
+    ///   if the <see cref="File"/> property has a valid path to it.
+    ///   </para>
+    ///   <para>
+    ///   If you would like to use the custom output action, you should set
+    ///   the <see cref="Output"/> property to any <c>Action&lt;LogData, string&gt;</c>
+    ///   delegate.
+    ///   </para>
+    /// </remarks>
+    public class Logger
   {
     #region Private Fields
 
@@ -156,21 +156,21 @@ namespace WebSocketCore
       }
     }
 
-    /// <summary>
-    /// Gets or sets the current output action used to output a log.
-    /// </summary>
-    /// <value>
-    ///   <para>
-    ///   An <c>Action&lt;LogData, string&gt;</c> delegate that references the method(s) used to
-    ///   output a log. A <see cref="string"/> parameter passed to this delegate is the value of
-    ///   the <see cref="Logger.File"/> property.
-    ///   </para>
-    ///   <para>
-    ///   If the value to set is <see langword="null"/>, the current output action is changed to
-    ///   the default output action.
-    ///   </para>
-    /// </value>
-    public Action<LogData, string> Output {
+        /// <summary>
+        /// Gets or sets the current output action used to output a log.
+        /// </summary>
+        /// <value>
+        ///   <para>
+        ///   An <c>Action&lt;LogData, string&gt;</c> delegate that references the method(s) used to
+        ///   output a log. A <see cref="string"/> parameter passed to this delegate is the value of
+        ///   the <see cref="File"/> property.
+        ///   </para>
+        ///   <para>
+        ///   If the value to set is <see langword="null"/>, the current output action is changed to
+        ///   the default output action.
+        ///   </para>
+        /// </value>
+        public Action<LogData, string> Output {
       get {
         return _output;
       }

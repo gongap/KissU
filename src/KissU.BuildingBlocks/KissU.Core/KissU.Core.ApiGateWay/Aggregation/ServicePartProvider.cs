@@ -13,19 +13,30 @@ namespace KissU.Core.ApiGateWay.Aggregation
     /// </summary>
     public class ServicePartProvider : IServicePartProvider
     {
-        private readonly IServiceProxyProvider _serviceProxyProvider;
         private readonly ConcurrentDictionary<string, ServicePartType> _servicePartTypes =
             new ConcurrentDictionary<string, ServicePartType>();
+
+        private readonly IServiceProxyProvider _serviceProxyProvider;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ServicePartProvider" /> class.
+        /// </summary>
+        /// <param name="serviceProxyProvider">The service proxy provider.</param>
         public ServicePartProvider(IServiceProxyProvider serviceProxyProvider)
         {
             _serviceProxyProvider = serviceProxyProvider;
         }
 
+        /// <summary>
+        /// Determines whether the specified routh path is part.
+        /// </summary>
+        /// <param name="routhPath">The routh path.</param>
+        /// <returns><c>true</c> if the specified routh path is part; otherwise, <c>false</c>.</returns>
         public bool IsPart(string routhPath)
         {
             var servicePart = AppConfig.ServicePart;
             var parts = servicePart.Services;
-            if (!_servicePartTypes.TryGetValue(routhPath, out ServicePartType partType))
+            if (!_servicePartTypes.TryGetValue(routhPath, out var partType))
             {
                 if (servicePart.MainPath.Equals(routhPath, StringComparison.OrdinalIgnoreCase))
                 {
@@ -36,18 +47,23 @@ namespace KissU.Core.ApiGateWay.Aggregation
                     partType = _servicePartTypes.GetOrAdd(routhPath, ServicePartType.Section);
                 }
             }
+
             return partType != ServicePartType.None;
-
-
         }
 
+        /// <summary>
+        /// Merges the specified routh path.
+        /// </summary>
+        /// <param name="routhPath">The routh path.</param>
+        /// <param name="param">The parameter.</param>
+        /// <returns>Task&lt;System.Object&gt;.</returns>
         public async Task<object> Merge(string routhPath, Dictionary<string, object> param)
         {
             var partType = _servicePartTypes.GetValueOrDefault(routhPath);
-            JObject jObject = new JObject();
+            var jObject = new JObject();
             if (partType == ServicePartType.Main)
             {
-                param.TryGetValue("ServiceAggregation", out object model);
+                param.TryGetValue("ServiceAggregation", out var model);
                 var parts = model as JArray;
                 foreach (var part in parts)
                 {
@@ -60,13 +76,17 @@ namespace KissU.Core.ApiGateWay.Aggregation
             }
             else
             {
-                var service = AppConfig.ServicePart.Services.Where(p => p.UrlMapping.Equals(routhPath, StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
+                var service = AppConfig.ServicePart.Services
+                    .Where(p => p.UrlMapping.Equals(routhPath, StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
                 foreach (var part in service.serviceAggregation)
                 {
                     var result = await _serviceProxyProvider.Invoke<object>(param, part.RoutePath, part.ServiceKey);
                     jObject.Add(part.Key, JToken.FromObject(result));
-                };
+                }
+
+                ;
             }
+
             return jObject;
         }
     }

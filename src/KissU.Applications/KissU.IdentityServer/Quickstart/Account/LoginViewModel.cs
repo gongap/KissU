@@ -6,9 +6,9 @@ namespace KissU.IdentityServer.Quickstart.Account
 {
     /// <summary>
     /// LoginViewModel.
-    /// Implements the <see cref="KissU.IdentityServer.Quickstart.Account.LoginInputModel" />
+    /// Implements the <see cref="LoginInputModel" />
     /// </summary>
-    /// <seealso cref="KissU.IdentityServer.Quickstart.Account.LoginInputModel" />
+    /// <seealso cref="LoginInputModel" />
     public class LoginViewModel : LoginInputModel
     {
         /// <summary>

@@ -103,7 +103,7 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services
             string deviceId = null;
             if (channel != null)
             { 
-                deviceId = channel.GetAttribute<string>(DeviceIdAttrKey).Get();
+                deviceId = channel.GetAttribute(DeviceIdAttrKey).Get();
             }
             return await new ValueTask<string>(deviceId);
         }

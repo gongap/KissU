@@ -98,9 +98,9 @@ namespace KissU.IdentityServer.Services
             var application = await GetApplication(context);
             if (application == null) return;
 
-            identity.AddClaim(new System.Security.Claims.Claim(Util.Security.Claims.ClaimTypes.ApplicationId, application.Id));
-            identity.AddClaim(new System.Security.Claims.Claim(Util.Security.Claims.ClaimTypes.ApplicationCode, application.Code));
-            identity.AddClaim(new System.Security.Claims.Claim(Util.Security.Claims.ClaimTypes.ApplicationName, application.Name));
+            identity.AddClaim(new Claim(Util.Security.Claims.ClaimTypes.ApplicationId, application.Id));
+            identity.AddClaim(new Claim(Util.Security.Claims.ClaimTypes.ApplicationCode, application.Code));
+            identity.AddClaim(new Claim(Util.Security.Claims.ClaimTypes.ApplicationName, application.Name));
         }
 
         /// <summary>
@@ -126,8 +126,8 @@ namespace KissU.IdentityServer.Services
             var roles = await _roleService.GetRolesAsync(user.Id);
             if (roles == null || roles.Count == 0) return;
 
-            identity.AddClaim(new System.Security.Claims.Claim(Util.Security.Claims.ClaimTypes.RoleIds, roles.Select(t => t.Id).ToList().Join()));
-            identity.AddClaim(new System.Security.Claims.Claim(Util.Security.Claims.ClaimTypes.RoleName, roles.Select(t => t.Name).ToList().Join()));
+            identity.AddClaim(new Claim(Util.Security.Claims.ClaimTypes.RoleIds, roles.Select(t => t.Id).ToList().Join()));
+            identity.AddClaim(new Claim(Util.Security.Claims.ClaimTypes.RoleName, roles.Select(t => t.Name).ToList().Join()));
         }
     }
 }

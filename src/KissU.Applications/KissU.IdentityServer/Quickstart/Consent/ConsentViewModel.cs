@@ -4,9 +4,9 @@ namespace KissU.IdentityServer.Quickstart.Consent
 {
     /// <summary>
     /// ConsentViewModel.
-    /// Implements the <see cref="KissU.IdentityServer.Quickstart.Consent.ConsentInputModel" />
+    /// Implements the <see cref="ConsentInputModel" />
     /// </summary>
-    /// <seealso cref="KissU.IdentityServer.Quickstart.Consent.ConsentInputModel" />
+    /// <seealso cref="ConsentInputModel" />
     public class ConsentViewModel : ConsentInputModel
     {
         /// <summary>
