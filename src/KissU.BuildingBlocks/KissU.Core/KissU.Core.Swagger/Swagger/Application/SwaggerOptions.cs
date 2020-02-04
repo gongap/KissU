@@ -5,8 +5,14 @@ using Microsoft.AspNetCore.Http;
 
 namespace KissU.Core.Swagger.Swagger.Application
 {
+    /// <summary>
+    /// SwaggerOptions.
+    /// </summary>
     public class SwaggerOptions
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SwaggerOptions"/> class.
+        /// </summary>
         public SwaggerOptions()
         {
             PreSerializeFilters = new List<Action<SwaggerDocument, HttpRequest>>();

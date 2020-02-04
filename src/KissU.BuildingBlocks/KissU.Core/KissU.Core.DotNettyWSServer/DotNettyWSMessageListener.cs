@@ -22,18 +22,33 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.DotNettyWSServer
 {
-   public class DotNettyWSMessageListener : IMessageListener, IDisposable
+    /// <summary>
+    /// DotNettyWSMessageListener.
+    /// Implements the <see cref="KissU.Core.CPlatform.Transport.IMessageListener" />
+    /// Implements the <see cref="System.IDisposable" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Transport.IMessageListener" />
+    /// <seealso cref="System.IDisposable" />
+    public class DotNettyWSMessageListener : IMessageListener, IDisposable
     {
         #region Field
 
         private readonly ILogger<DotNettyWSMessageListener> _logger; 
         private IChannel _channel;
         private List<WSServiceEntry> _wSServiceEntries;
+        /// <summary>
+        /// 接收到消息的事件。
+        /// </summary>
         public event ReceivedDelegate Received;
 
         #endregion Field
 
         #region Constructor
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DotNettyWSMessageListener"/> class.
+        /// </summary>
+        /// <param name="logger">The logger.</param>
+        /// <param name="wsServiceEntryProvider">The ws service entry provider.</param>
         public DotNettyWSMessageListener(ILogger<DotNettyWSMessageListener> logger
             ,  IWSServiceEntryProvider wsServiceEntryProvider)
         {
@@ -41,6 +56,10 @@ namespace KissU.Core.DotNettyWSServer
             _wSServiceEntries = wsServiceEntryProvider.GetEntries().ToList();
         }
 
+        /// <summary>
+        /// start as an asynchronous operation.
+        /// </summary>
+        /// <param name="endPoint">The end point.</param>
         public async Task StartAsync(EndPoint endPoint)
         {
             if (_logger.IsEnabled(LogLevel.Debug))
@@ -100,6 +119,12 @@ namespace KissU.Core.DotNettyWSServer
 
         }
 
+        /// <summary>
+        /// 触发接收到消息事件。
+        /// </summary>
+        /// <param name="sender">消息发送者。</param>
+        /// <param name="message">接收到的消息。</param>
+        /// <returns>一个任务。</returns>
         public async Task OnReceived(IMessageSender sender, TransportMessage message)
         {
             if (Received == null)
@@ -108,6 +133,9 @@ namespace KissU.Core.DotNettyWSServer
         }
 
 
+        /// <summary>
+        /// Closes the asynchronous.
+        /// </summary>
         public void CloseAsync()
         {
             Task.Run(async () =>
@@ -117,6 +145,9 @@ namespace KissU.Core.DotNettyWSServer
             }).Wait();
         }
 
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
         public void Dispose()
         {
             Task.Run(async () =>
@@ -127,9 +158,20 @@ namespace KissU.Core.DotNettyWSServer
 
         #endregion
 
+        /// <summary>
+        /// WebSocketFrameDecoder.
+        /// Implements the <see cref="DotNetty.Codecs.MessageToMessageDecoder{DotNetty.Codecs.Http.WebSockets.WebSocketFrame}" />
+        /// </summary>
+        /// <seealso cref="DotNetty.Codecs.MessageToMessageDecoder{DotNetty.Codecs.Http.WebSockets.WebSocketFrame}" />
         public class WebSocketFrameDecoder : MessageToMessageDecoder<WebSocketFrame>
         {
 
+            /// <summary>
+            /// Decodes the specified CTX.
+            /// </summary>
+            /// <param name="ctx">The CTX.</param>
+            /// <param name="msg">The MSG.</param>
+            /// <param name="output">The output.</param>
             protected override void Decode(IChannelHandlerContext ctx, WebSocketFrame msg, List<Object> output)
             {
                 var buff = msg.Content;
@@ -141,26 +183,50 @@ namespace KissU.Core.DotNettyWSServer
             }
         }
 
+        /// <summary>
+        /// WebSocketFramePrepender.
+        /// Implements the <see cref="DotNetty.Codecs.MessageToMessageDecoder{DotNetty.Buffers.IByteBuffer}" />
+        /// </summary>
+        /// <seealso cref="DotNetty.Codecs.MessageToMessageDecoder{DotNetty.Buffers.IByteBuffer}" />
         public class WebSocketFramePrepender : MessageToMessageDecoder<IByteBuffer>
         {
 
+            /// <summary>
+            /// Decodes the specified CTX.
+            /// </summary>
+            /// <param name="ctx">The CTX.</param>
+            /// <param name="msg">The MSG.</param>
+            /// <param name="output">The output.</param>
             protected override void Decode(IChannelHandlerContext ctx, IByteBuffer msg, List<Object> output)
             {
                 WebSocketFrame webSocketFrame = new BinaryWebSocketFrame(msg);
                 output.Add(webSocketFrame);
             }
         }
- 
 
+
+        /// <summary>
+        /// ServerHandler.
+        /// Implements the <see cref="DotNetty.Transport.Channels.SimpleChannelInboundHandler{DotNetty.Codecs.Http.WebSockets.TextWebSocketFrame}" />
+        /// </summary>
+        /// <seealso cref="DotNetty.Transport.Channels.SimpleChannelInboundHandler{DotNetty.Codecs.Http.WebSockets.TextWebSocketFrame}" />
         private class ServerHandler : SimpleChannelInboundHandler<TextWebSocketFrame>
         {
-            private readonly ILogger _logger; 
+            private readonly ILogger _logger;
 
+            /// <summary>
+            /// Initializes a new instance of the <see cref="ServerHandler"/> class.
+            /// </summary>
+            /// <param name="logger">The logger.</param>
             public ServerHandler(ILogger logger)
             {
                 _logger = logger; 
             }
 
+            /// <summary>
+            /// Channels the active.
+            /// </summary>
+            /// <param name="ctx">The CTX.</param>
             public override void ChannelActive(IChannelHandlerContext ctx)
             {
                 if (_logger.IsEnabled(LogLevel.Information))
@@ -169,6 +235,11 @@ namespace KissU.Core.DotNettyWSServer
                 PlayerGroup.AddChannel(ctx.Channel);
             }
 
+            /// <summary>
+            /// Exceptions the caught.
+            /// </summary>
+            /// <param name="context">The context.</param>
+            /// <param name="exception">The exception.</param>
             public override void ExceptionCaught(IChannelHandlerContext context, Exception exception)
             {
                 context.CloseAsync();
@@ -177,6 +248,11 @@ namespace KissU.Core.DotNettyWSServer
                     _logger.LogError(exception, $"与服务器：{context.Channel.RemoteAddress}通信时发送了错误。");
             }
 
+            /// <summary>
+            /// Channels the read0.
+            /// </summary>
+            /// <param name="ctx">The CTX.</param>
+            /// <param name="msg">The MSG.</param>
             protected override void ChannelRead0(IChannelHandlerContext ctx, TextWebSocketFrame msg)
             {
                

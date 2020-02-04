@@ -7,8 +7,17 @@ using Microsoft.Extensions.Options;
 
 namespace KissU.Core.Swagger.SwaggerGen.Application
 {
+    /// <summary>
+    /// SwaggerGenServiceCollectionExtensions.
+    /// </summary>
     public static class SwaggerGenServiceCollectionExtensions
     {
+        /// <summary>
+        /// Adds the swagger gen.
+        /// </summary>
+        /// <param name="services">The services.</param>
+        /// <param name="setupAction">The setup action.</param>
+        /// <returns>IServiceCollection.</returns>
         public static IServiceCollection AddSwaggerGen(
             this IServiceCollection services,
             Action<SwaggerGenOptions> setupAction = null)
@@ -31,6 +40,11 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
             return services;
         }
 
+        /// <summary>
+        /// Configures the swagger gen.
+        /// </summary>
+        /// <param name="services">The services.</param>
+        /// <param name="setupAction">The setup action.</param>
         public static void ConfigureSwaggerGen(
             this IServiceCollection services,
             Action<SwaggerGenOptions> setupAction)

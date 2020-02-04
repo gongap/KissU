@@ -10,9 +10,18 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.Stage.Internal.Implementation
 {
+    /// <summary>
+    /// WebServerListener.
+    /// Implements the <see cref="KissU.Core.Stage.Internal.IWebServerListener" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.Stage.Internal.IWebServerListener" />
     public class WebServerListener : IWebServerListener
     {
         private readonly ILogger<WebServerListener> _logger;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WebServerListener"/> class.
+        /// </summary>
+        /// <param name="logger">The logger.</param>
         public WebServerListener(ILogger<WebServerListener> logger)
         {
             _logger = logger;

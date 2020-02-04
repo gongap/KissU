@@ -5,18 +5,34 @@ using org.apache.zookeeper;
 
 namespace KissU.Core.Zookeeper.WatcherProvider
 {
+    /// <summary>
+    /// NodeMonitorWatcher.
+    /// Implements the <see cref="KissU.Core.Zookeeper.WatcherProvider.WatcherBase" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.Zookeeper.WatcherProvider.WatcherBase" />
     internal class NodeMonitorWatcher : WatcherBase
     {
         private readonly Func<ValueTask<(ManualResetEvent, ZooKeeper)>> _zooKeeperCall;
         private readonly Action<byte[], byte[]> _action;
         private byte[] _currentData;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NodeMonitorWatcher"/> class.
+        /// </summary>
+        /// <param name="zooKeeperCall">The zoo keeper call.</param>
+        /// <param name="path">The path.</param>
+        /// <param name="action">The action.</param>
         public NodeMonitorWatcher(Func<ValueTask<(ManualResetEvent, ZooKeeper)>> zooKeeperCall, string path, Action<byte[], byte[]> action) : base(path)
         {
             _zooKeeperCall = zooKeeperCall;
             _action = action;
         }
 
+        /// <summary>
+        /// Sets the current data.
+        /// </summary>
+        /// <param name="currentData">The current data.</param>
+        /// <returns>NodeMonitorWatcher.</returns>
         public NodeMonitorWatcher SetCurrentData(byte[] currentData)
         {
             _currentData = currentData;
@@ -26,6 +42,10 @@ namespace KissU.Core.Zookeeper.WatcherProvider
 
         #region Overrides of WatcherBase
 
+        /// <summary>
+        /// Processes the implementation.
+        /// </summary>
+        /// <param name="watchedEvent">The watched event.</param>
         protected override async Task ProcessImpl(WatchedEvent watchedEvent)
         {
             var path = Path;

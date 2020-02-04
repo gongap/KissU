@@ -24,6 +24,11 @@ using KissU.Core.CPlatform.Transport.Implementation;
 
 namespace KissU.Core.KestrelHttpServer
 {
+    /// <summary>
+    /// HttpExecutor.
+    /// Implements the <see cref="KissU.Core.CPlatform.Runtime.Server.IServiceExecutor" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Runtime.Server.IServiceExecutor" />
     public class HttpExecutor : IServiceExecutor
     {
         #region Field
@@ -40,6 +45,16 @@ namespace KissU.Core.KestrelHttpServer
 
         #region Constructor
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HttpExecutor"/> class.
+        /// </summary>
+        /// <param name="serviceEntryLocate">The service entry locate.</param>
+        /// <param name="serviceRouteProvider">The service route provider.</param>
+        /// <param name="authorizationFilter">The authorization filter.</param>
+        /// <param name="logger">The logger.</param>
+        /// <param name="serviceProvider">The service provider.</param>
+        /// <param name="serviceProxyProvider">The service proxy provider.</param>
+        /// <param name="typeConvertibleService">The type convertible service.</param>
         public HttpExecutor(IServiceEntryLocate serviceEntryLocate, IServiceRouteProvider serviceRouteProvider,
             IAuthorizationFilter authorizationFilter,
             ILogger<HttpExecutor> logger, CPlatformContainer serviceProvider, IServiceProxyProvider serviceProxyProvider, ITypeConvertibleService typeConvertibleService)
@@ -56,6 +71,11 @@ namespace KissU.Core.KestrelHttpServer
 
         #region Implementation of IExecutor
 
+        /// <summary>
+        /// execute as an asynchronous operation.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="message">The message.</param>
         public async Task ExecuteAsync(IMessageSender sender, TransportMessage message)
         {
             if (_logger.IsEnabled(LogLevel.Trace))

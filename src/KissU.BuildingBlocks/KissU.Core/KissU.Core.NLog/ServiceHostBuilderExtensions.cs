@@ -6,8 +6,17 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.Nlog
 {
-   public static class ServiceHostBuilderExtensions
+    /// <summary>
+    /// ServiceHostBuilderExtensions.
+    /// </summary>
+    public static class ServiceHostBuilderExtensions
     {
+        /// <summary>
+        /// Uses the n log.
+        /// </summary>
+        /// <param name="hostBuilder">The host builder.</param>
+        /// <param name="nlogConfigFile">The nlog configuration file.</param>
+        /// <returns>IServiceHostBuilder.</returns>
         public static IServiceHostBuilder UseNLog(this IServiceHostBuilder hostBuilder, string nlogConfigFile = "nLog.config")
         {
             hostBuilder.ConfigureLogging(logger =>
@@ -23,6 +32,13 @@ namespace KissU.Core.Nlog
             });
         }
 
+        /// <summary>
+        /// Uses the n log.
+        /// </summary>
+        /// <param name="hostBuilder">The host builder.</param>
+        /// <param name="minLevel">The minimum level.</param>
+        /// <param name="nlogConfigFile">The nlog configuration file.</param>
+        /// <returns>IServiceHostBuilder.</returns>
         public static IServiceHostBuilder UseNLog(this IServiceHostBuilder hostBuilder, LogLevel minLevel, string nlogConfigFile = "nLog.config")
         {
             hostBuilder.ConfigureLogging(logger =>
@@ -37,6 +53,13 @@ namespace KissU.Core.Nlog
             });
         }
 
+        /// <summary>
+        /// Uses the n log.
+        /// </summary>
+        /// <param name="hostBuilder">The host builder.</param>
+        /// <param name="filter">The filter.</param>
+        /// <param name="nlogConfigFile">The nlog configuration file.</param>
+        /// <returns>IServiceHostBuilder.</returns>
         public static IServiceHostBuilder UseNLog(this IServiceHostBuilder hostBuilder, Func<string, LogLevel, bool> filter, string nlogConfigFile = "nLog.config")
         {
             hostBuilder.ConfigureLogging(logger =>

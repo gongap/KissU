@@ -11,16 +11,31 @@ using Microsoft.AspNetCore.Http;
 
 namespace KissU.Core.KestrelHttpServer
 {
+    /// <summary>
+    /// HttpServerMessageSender.
+    /// Implements the <see cref="KissU.Core.CPlatform.Transport.IMessageSender" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Transport.IMessageSender" />
     public class HttpServerMessageSender : IMessageSender
     {
         private readonly ISerializer<string> _serializer;
         private readonly HttpContext _context;
-       public  HttpServerMessageSender(ISerializer<string> serializer,HttpContext httpContext)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HttpServerMessageSender"/> class.
+        /// </summary>
+        /// <param name="serializer">The serializer.</param>
+        /// <param name="httpContext">The HTTP context.</param>
+        public HttpServerMessageSender(ISerializer<string> serializer,HttpContext httpContext)
         {
             _serializer = serializer;
             _context = httpContext;
         }
-        
+
+        /// <summary>
+        /// send and flush as an asynchronous operation.
+        /// </summary>
+        /// <param name="message">消息内容。</param>
+        /// <returns>一个任务。</returns>
         public async Task SendAndFlushAsync(TransportMessage message)
         { 
             var httpMessage = message.GetContent<HttpResultMessage<Object>>();
@@ -45,6 +60,10 @@ namespace KissU.Core.KestrelHttpServer
             }
         }
 
+        /// <summary>
+        /// send as an asynchronous operation.
+        /// </summary>
+        /// <param name="message">The message.</param>
         public async Task SendAsync(TransportMessage message)
         {
            await this.SendAndFlushAsync(message);

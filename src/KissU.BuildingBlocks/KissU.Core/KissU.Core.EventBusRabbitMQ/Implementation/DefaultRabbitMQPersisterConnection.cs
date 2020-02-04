@@ -10,7 +10,12 @@ using RabbitMQ.Client.Exceptions;
 
 namespace KissU.Core.EventBusRabbitMQ.Implementation
 {
-   public class DefaultRabbitMQPersistentConnection
+    /// <summary>
+    /// DefaultRabbitMQPersistentConnection.
+    /// Implements the <see cref="KissU.Core.EventBusRabbitMQ.IRabbitMQPersistentConnection" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.EventBusRabbitMQ.IRabbitMQPersistentConnection" />
+    public class DefaultRabbitMQPersistentConnection
        : IRabbitMQPersistentConnection
     {
         private readonly IConnectionFactory _connectionFactory;
@@ -20,8 +25,18 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
 
         object sync_root = new object();
 
+        /// <summary>
+        /// Occurs when [on rabbit connection shutdown].
+        /// </summary>
         public event EventHandler<ShutdownEventArgs> OnRabbitConnectionShutdown;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DefaultRabbitMQPersistentConnection"/> class.
+        /// </summary>
+        /// <param name="connectionFactory">The connection factory.</param>
+        /// <param name="logger">The logger.</param>
+        /// <exception cref="ArgumentNullException">connectionFactory</exception>
+        /// <exception cref="ArgumentNullException">logger</exception>
         public DefaultRabbitMQPersistentConnection(IConnectionFactory connectionFactory,
             ILogger<DefaultRabbitMQPersistentConnection> logger)
         {
@@ -29,6 +44,9 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
+        /// <summary>
+        /// Gets a value indicating whether this instance is connected.
+        /// </summary>
         public bool IsConnected
         {
             get
@@ -37,6 +55,11 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
             }
         }
 
+        /// <summary>
+        /// Creates the model.
+        /// </summary>
+        /// <returns>IModel.</returns>
+        /// <exception cref="InvalidOperationException">No RabbitMQ connections are available to perform this action</exception>
         public IModel CreateModel()
         {
             if (!IsConnected)
@@ -47,6 +70,9 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
             return _connection.CreateModel();
         }
 
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
         public void Dispose()
         {
             if (_disposed) return;
@@ -63,6 +89,10 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
             }
         }
 
+        /// <summary>
+        /// Tries the connect.
+        /// </summary>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool TryConnect()
         {
             _logger.LogInformation("RabbitMQ Client is trying to connect");

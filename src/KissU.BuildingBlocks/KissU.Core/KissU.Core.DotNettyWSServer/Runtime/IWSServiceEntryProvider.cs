@@ -2,8 +2,15 @@
 
 namespace KissU.Core.DotNettyWSServer.Runtime
 {
-   public interface IWSServiceEntryProvider
+    /// <summary>
+    /// Interface IWSServiceEntryProvider
+    /// </summary>
+    public interface IWSServiceEntryProvider
     {
+        /// <summary>
+        /// Gets the entries.
+        /// </summary>
+        /// <returns>IEnumerable&lt;WSServiceEntry&gt;.</returns>
         IEnumerable<WSServiceEntry> GetEntries();
     }
 }

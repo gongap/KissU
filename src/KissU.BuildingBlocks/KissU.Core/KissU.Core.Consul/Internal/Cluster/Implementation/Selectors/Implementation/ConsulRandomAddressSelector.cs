@@ -6,6 +6,11 @@ using KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selec
 
 namespace KissU.Core.Consul.Internal.Cluster.Implementation.Selectors.Implementation
 {
+    /// <summary>
+    /// ConsulRandomAddressSelector.
+    /// Implements the <see cref="KissU.Core.Consul.Internal.Cluster.Implementation.Selectors.Implementation.ConsulAddressSelectorBase" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.Consul.Internal.Cluster.Implementation.Selectors.Implementation.ConsulAddressSelectorBase" />
     public class ConsulRandomAddressSelector : ConsulAddressSelectorBase
     {
         #region Field
@@ -30,6 +35,7 @@ namespace KissU.Core.Consul.Internal.Cluster.Implementation.Selectors.Implementa
         /// 初始化一个自定义的随机地址选择器。
         /// </summary>
         /// <param name="generate">随机数生成委托，第一个参数为最小值，第二个参数为最大值（不可以超过该值）。</param>
+        /// <exception cref="ArgumentNullException">generate</exception>
         public ConsulRandomAddressSelector(Func<int, int, int> generate)
         {
             if (generate == null)

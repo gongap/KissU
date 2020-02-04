@@ -5,6 +5,11 @@ using KissU.Core.Consul.Utilitys;
 
 namespace KissU.Core.Consul.WatcherProvider.Implementation
 {
+    /// <summary>
+    /// NodeMonitorWatcher.
+    /// Implements the <see cref="KissU.Core.Consul.WatcherProvider.Implementation.WatcherBase" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.Consul.WatcherProvider.Implementation.WatcherBase" />
     class NodeMonitorWatcher : WatcherBase
     {
         private readonly Action<byte[], byte[]> _action;
@@ -13,6 +18,14 @@ namespace KissU.Core.Consul.WatcherProvider.Implementation
         private readonly string _path;
         private byte[] _currentData = new byte[0];
         Func<string,bool> _allowChange;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NodeMonitorWatcher"/> class.
+        /// </summary>
+        /// <param name="clientCall">The client call.</param>
+        /// <param name="manager">The manager.</param>
+        /// <param name="path">The path.</param>
+        /// <param name="action">The action.</param>
+        /// <param name="allowChange">The allow change.</param>
         public NodeMonitorWatcher(Func<ValueTask<ConsulClient>> clientCall, IClientWatchManager manager, string path,
             Action<byte[], byte[]> action,Func<string,bool> allowChange)
         {
@@ -24,12 +37,20 @@ namespace KissU.Core.Consul.WatcherProvider.Implementation
             RegisterWatch();
         }
 
+        /// <summary>
+        /// Sets the current data.
+        /// </summary>
+        /// <param name="currentData">The current data.</param>
+        /// <returns>NodeMonitorWatcher.</returns>
         public NodeMonitorWatcher SetCurrentData(byte[] currentData)
         {
             _currentData = currentData;
             return this;
         }
 
+        /// <summary>
+        /// Processes the implementation.
+        /// </summary>
         protected override async Task ProcessImpl()
         {
             RegisterWatch(this);

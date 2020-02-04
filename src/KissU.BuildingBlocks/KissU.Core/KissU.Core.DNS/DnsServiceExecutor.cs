@@ -9,7 +9,12 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.DNS
 {
-   public class DnsServiceExecutor : IServiceExecutor
+    /// <summary>
+    /// DnsServiceExecutor.
+    /// Implements the <see cref="KissU.Core.CPlatform.Runtime.Server.IServiceExecutor" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Runtime.Server.IServiceExecutor" />
+    public class DnsServiceExecutor : IServiceExecutor
     {
         #region Field
 
@@ -20,6 +25,11 @@ namespace KissU.Core.DNS
 
         #region Constructor
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DnsServiceExecutor"/> class.
+        /// </summary>
+        /// <param name="dnsServiceEntryProvider">The DNS service entry provider.</param>
+        /// <param name="logger">The logger.</param>
         public DnsServiceExecutor(IDnsServiceEntryProvider dnsServiceEntryProvider, 
             ILogger<DnsServiceExecutor> logger)
         {

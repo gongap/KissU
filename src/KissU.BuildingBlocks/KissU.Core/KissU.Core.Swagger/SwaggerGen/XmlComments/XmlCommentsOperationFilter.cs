@@ -10,6 +10,11 @@ using Microsoft.AspNetCore.Mvc.ApiExplorer;
 
 namespace KissU.Core.Swagger.SwaggerGen.XmlComments
 {
+    /// <summary>
+    /// XmlCommentsOperationFilter.
+    /// Implements the <see cref="KissU.Core.Swagger.SwaggerGen.Generator.IOperationFilter" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.Swagger.SwaggerGen.Generator.IOperationFilter" />
     public class XmlCommentsOperationFilter : IOperationFilter
     {
         private const string MemberXPath = "/doc/members/member[@name='{0}']";
@@ -20,11 +25,20 @@ namespace KissU.Core.Swagger.SwaggerGen.XmlComments
 
         private readonly XPathNavigator _xmlNavigator;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XmlCommentsOperationFilter"/> class.
+        /// </summary>
+        /// <param name="xmlDoc">The XML document.</param>
         public XmlCommentsOperationFilter(XPathDocument xmlDoc)
         {
             _xmlNavigator = xmlDoc.CreateNavigator();
         }
 
+        /// <summary>
+        /// Applies the specified operation.
+        /// </summary>
+        /// <param name="operation">The operation.</param>
+        /// <param name="context">The context.</param>
         public void Apply(Operation operation, OperationFilterContext context)
         {
             if (context.MethodInfo == null) return;

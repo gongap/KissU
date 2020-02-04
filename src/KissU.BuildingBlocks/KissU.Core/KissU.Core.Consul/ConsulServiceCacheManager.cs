@@ -16,6 +16,13 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.Consul
 {
+    /// <summary>
+    /// ConsulServiceCacheManager.
+    /// Implements the <see cref="KissU.Core.CPlatform.Cache.Implementation.ServiceCacheManagerBase" />
+    /// Implements the <see cref="System.IDisposable" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Cache.Implementation.ServiceCacheManagerBase" />
+    /// <seealso cref="System.IDisposable" />
     public class ConsulServiceCacheManager : ServiceCacheManagerBase, IDisposable
     {
         private readonly ConfigInfo _configInfo;
@@ -27,6 +34,16 @@ namespace KissU.Core.Consul
         private readonly ISerializer<string> _stringSerializer;
         private readonly IConsulClientProvider _consulClientFactory;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ConsulServiceCacheManager"/> class.
+        /// </summary>
+        /// <param name="configInfo">The configuration information.</param>
+        /// <param name="serializer">The serializer.</param>
+        /// <param name="stringSerializer">The string serializer.</param>
+        /// <param name="manager">The manager.</param>
+        /// <param name="serviceCacheFactory">The service cache factory.</param>
+        /// <param name="logger">The logger.</param>
+        /// <param name="consulClientFactory">The consul client factory.</param>
         public ConsulServiceCacheManager(ConfigInfo configInfo, ISerializer<byte[]> serializer,
         ISerializer<string> stringSerializer, IClientWatchManager manager, IServiceCacheFactory serviceCacheFactory,
         ILogger<ConsulServiceCacheManager> logger, IConsulClientProvider consulClientFactory) : base(stringSerializer)
@@ -41,6 +58,10 @@ namespace KissU.Core.Consul
             EnterCaches().Wait();
         }
 
+        /// <summary>
+        /// clear as an asynchronous operation.
+        /// </summary>
+        /// <returns>Task.</returns>
         public override async Task ClearAsync()
         {
             var clients = await _consulClientFactory.GetClients();
@@ -59,10 +80,18 @@ namespace KissU.Core.Consul
             }
         }
 
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
         public void Dispose()
         {
         }
 
+        /// <summary>
+        /// set caches as an asynchronous operation.
+        /// </summary>
+        /// <param name="caches">The caches.</param>
+        /// <returns>Task.</returns>
         public override async Task SetCachesAsync(IEnumerable<ServiceCache> caches)
         {
             var serviceCaches = await GetCaches(caches.Select(p => $"{ _configInfo.CachePath}{p.CacheDescriptor.Id}"));
@@ -71,12 +100,21 @@ namespace KissU.Core.Consul
             await base.SetCachesAsync(caches);
         }
 
+        /// <summary>
+        /// get caches as an asynchronous operation.
+        /// </summary>
+        /// <returns>Task&lt;IEnumerable&lt;ServiceCache&gt;&gt;.</returns>
         public override async Task<IEnumerable<ServiceCache>> GetCachesAsync()
         {
             await EnterCaches();
             return _serviceCaches;
         }
-        
+
+        /// <summary>
+        /// remve address as an asynchronous operation.
+        /// </summary>
+        /// <param name="endpoints">The endpoints.</param>
+        /// <returns>Task.</returns>
         public override async Task RemveAddressAsync(IEnumerable<CacheEndpoint> endpoints)
         {
             var caches = await GetCachesAsync();
@@ -94,6 +132,10 @@ namespace KissU.Core.Consul
             await base.SetCachesAsync(caches);
         }
 
+        /// <summary>
+        /// set caches as an asynchronous operation.
+        /// </summary>
+        /// <param name="cacheDescriptors">The cache descriptors.</param>
         public override async Task SetCachesAsync(IEnumerable<ServiceCacheDescriptor> cacheDescriptors)
         {
             var clients = await _consulClientFactory.GetClients();

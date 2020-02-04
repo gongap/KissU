@@ -3,8 +3,16 @@ using KissU.Core.CPlatform.Module;
 
 namespace KissU.Core.KestrelHttpServer.Extensions
 {
-   public static  class ModuleProviderExtensions
+    /// <summary>
+    /// ModuleProviderExtensions.
+    /// </summary>
+    public static  class ModuleProviderExtensions
     {
+        /// <summary>
+        /// Initializes the specified builder.
+        /// </summary>
+        /// <param name="moduleProvider">The module provider.</param>
+        /// <param name="builder">The builder.</param>
         public static void Initialize(this IModuleProvider moduleProvider, ApplicationInitializationContext builder)
         {
             moduleProvider.Modules.ForEach(p =>
@@ -25,6 +33,11 @@ namespace KissU.Core.KestrelHttpServer.Extensions
             });
         }
 
+        /// <summary>
+        /// Configures the services.
+        /// </summary>
+        /// <param name="moduleProvider">The module provider.</param>
+        /// <param name="context">The context.</param>
         public static void ConfigureServices(this IModuleProvider moduleProvider, ConfigurationContext context)
         {
             moduleProvider.Modules.ForEach(p =>
@@ -44,6 +57,11 @@ namespace KissU.Core.KestrelHttpServer.Extensions
             });
         }
 
+        /// <summary>
+        /// Configures the host.
+        /// </summary>
+        /// <param name="moduleProvider">The module provider.</param>
+        /// <param name="context">The context.</param>
         public static void ConfigureHost(this IModuleProvider moduleProvider, WebHostContext context)
         {
             moduleProvider.Modules.ForEach(p =>

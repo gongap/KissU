@@ -12,6 +12,11 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.Protocol.Mqtt.Internal.Runtime.Implementation
 {
+    /// <summary>
+    /// MqttRemoteInvokeService.
+    /// Implements the <see cref="KissU.Core.Protocol.Mqtt.Internal.Runtime.IMqttRemoteInvokeService" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.Protocol.Mqtt.Internal.Runtime.IMqttRemoteInvokeService" />
     public class MqttRemoteInvokeService:IMqttRemoteInvokeService
     { 
         private readonly ITransportClientFactory _transportClientFactory;
@@ -19,6 +24,13 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Runtime.Implementation
         private readonly IHealthCheckService _healthCheckService;
         private readonly IMqttBrokerEntryManger _mqttBrokerEntryManger;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MqttRemoteInvokeService"/> class.
+        /// </summary>
+        /// <param name="transportClientFactory">The transport client factory.</param>
+        /// <param name="logger">The logger.</param>
+        /// <param name="healthCheckService">The health check service.</param>
+        /// <param name="mqttBrokerEntryManger">The MQTT broker entry manger.</param>
         public MqttRemoteInvokeService( ITransportClientFactory transportClientFactory,
             ILogger<MqttRemoteInvokeService> logger, 
             IHealthCheckService healthCheckService,
@@ -32,11 +44,20 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Runtime.Implementation
 
         #region Implementation of IRemoteInvokeService
 
+        /// <summary>
+        /// invoke as an asynchronous operation.
+        /// </summary>
+        /// <param name="context">The context.</param>
         public async Task InvokeAsync(RemoteInvokeContext context)
         {
               await InvokeAsync(context, Task.Factory.CancellationToken);
         }
 
+        /// <summary>
+        /// invoke as an asynchronous operation.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
         public async Task InvokeAsync(RemoteInvokeContext context, CancellationToken cancellationToken)
         {
             var mqttContext = context as MqttRemoteInvokeContext;
@@ -68,6 +89,11 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Runtime.Implementation
             }
         }
 
+        /// <summary>
+        /// invoke as an asynchronous operation.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="requestTimeout">The request timeout.</param>
         public async Task InvokeAsync(RemoteInvokeContext context, int requestTimeout)
         {
             var mqttContext = context as MqttRemoteInvokeContext;

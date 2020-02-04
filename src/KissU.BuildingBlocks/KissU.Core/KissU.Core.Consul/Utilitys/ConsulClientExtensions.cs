@@ -6,8 +6,17 @@ using Consul;
 
 namespace KissU.Core.Consul.Utilitys
 {
+    /// <summary>
+    /// ConsulClientExtensions.
+    /// </summary>
     public static class ConsulClientExtensions
     {
+        /// <summary>
+        /// get children as an asynchronous operation.
+        /// </summary>
+        /// <param name="client">The client.</param>
+        /// <param name="path">The path.</param>
+        /// <returns>Task&lt;System.String[]&gt;.</returns>
         public static async Task<string[]> GetChildrenAsync(this ConsulClient client, string path)
         {
             try
@@ -21,6 +30,12 @@ namespace KissU.Core.Consul.Utilitys
             }
         }
 
+        /// <summary>
+        /// get data as an asynchronous operation.
+        /// </summary>
+        /// <param name="client">The client.</param>
+        /// <param name="path">The path.</param>
+        /// <returns>Task&lt;System.Byte[]&gt;.</returns>
         public static async Task<byte[]> GetDataAsync(this ConsulClient client, string path)
         {
             try

@@ -21,6 +21,13 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.Protocol.Mqtt
 {
+    /// <summary>
+    /// DotNettyMqttServerMessageListener.
+    /// Implements the <see cref="KissU.Core.CPlatform.Transport.IMessageListener" />
+    /// Implements the <see cref="System.IDisposable" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Transport.IMessageListener" />
+    /// <seealso cref="System.IDisposable" />
     public class DotNettyMqttServerMessageListener : IMessageListener, IDisposable
     {
         #region Field
@@ -31,9 +38,18 @@ namespace KissU.Core.Protocol.Mqtt
         private readonly IMqttBehaviorProvider _mqttBehaviorProvider;
         #endregion Field
 
+        /// <summary>
+        /// 接收到消息的事件。
+        /// </summary>
         public event ReceivedDelegate Received;
 
         #region Constructor
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DotNettyMqttServerMessageListener"/> class.
+        /// </summary>
+        /// <param name="logger">The logger.</param>
+        /// <param name="channelService">The channel service.</param>
+        /// <param name="mqttBehaviorProvider">The MQTT behavior provider.</param>
         public DotNettyMqttServerMessageListener(ILogger<DotNettyMqttServerMessageListener> logger, 
             IChannelService channelService,
             IMqttBehaviorProvider mqttBehaviorProvider)
@@ -44,11 +60,21 @@ namespace KissU.Core.Protocol.Mqtt
         }
         #endregion
 
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
         public void Dispose()
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// 触发接收到消息事件。
+        /// </summary>
+        /// <param name="sender">消息发送者。</param>
+        /// <param name="message">接收到的消息。</param>
+        /// <returns>一个任务。</returns>
         public async Task OnReceived(IMessageSender sender, TransportMessage message)
         {
             if (Received == null)
@@ -56,6 +82,10 @@ namespace KissU.Core.Protocol.Mqtt
             await Received(sender, message);
         }
 
+        /// <summary>
+        /// start as an asynchronous operation.
+        /// </summary>
+        /// <param name="endPoint">The end point.</param>
         public async Task StartAsync(EndPoint endPoint)
         {
             if (_logger.IsEnabled(LogLevel.Debug))
@@ -103,6 +133,13 @@ namespace KissU.Core.Protocol.Mqtt
             }
         }
 
+        /// <summary>
+        /// Channels the write.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="message">The message.</param>
+        /// <param name="packetType">Type of the packet.</param>
+        /// <param name="mqttHandlerService">The MQTT handler service.</param>
         public async Task ChannelWrite(IChannelHandlerContext context,object message, PacketType packetType, ServerMqttHandlerService mqttHandlerService)
         {
             switch (packetType)
@@ -149,11 +186,23 @@ namespace KissU.Core.Protocol.Mqtt
             }
         }
 
+        /// <summary>
+        /// ServerHandler.
+        /// Implements the <see cref="DotNetty.Transport.Channels.ChannelHandlerAdapter" />
+        /// </summary>
+        /// <seealso cref="DotNetty.Transport.Channels.ChannelHandlerAdapter" />
         private class ServerHandler : ChannelHandlerAdapter
         {
             private readonly Action<IChannelHandlerContext, PacketType, object> _readAction;
-            private readonly ILogger _logger; 
+            private readonly ILogger _logger;
 
+            /// <summary>
+            /// Initializes a new instance of the <see cref="ServerHandler"/> class.
+            /// </summary>
+            /// <param name="readAction">The read action.</param>
+            /// <param name="logger">The logger.</param>
+            /// <param name="channelService">The channel service.</param>
+            /// <param name="mqttBehaviorProvider">The MQTT behavior provider.</param>
             public ServerHandler(Action<IChannelHandlerContext,PacketType, object> readAction, 
                 ILogger logger,
                 IChannelService channelService,
@@ -162,7 +211,12 @@ namespace KissU.Core.Protocol.Mqtt
                 _readAction = readAction;
                 _logger = logger;
             }
-             
+
+            /// <summary>
+            /// Channels the read.
+            /// </summary>
+            /// <param name="context">The context.</param>
+            /// <param name="message">The message.</param>
             public override void ChannelRead(IChannelHandlerContext context, object message)
             { 
                 var buffer = message as Packet;
@@ -170,12 +224,21 @@ namespace KissU.Core.Protocol.Mqtt
                 ReferenceCountUtil.Release(message);
             }
 
+            /// <summary>
+            /// Channels the inactive.
+            /// </summary>
+            /// <param name="context">The context.</param>
             public override void ChannelInactive(IChannelHandlerContext context)
             {
                 this.SetException(new InvalidOperationException("Channel is closed."));
                 base.ChannelInactive(context);
             }
 
+            /// <summary>
+            /// Exceptions the caught.
+            /// </summary>
+            /// <param name="context">The context.</param>
+            /// <param name="exception">The exception.</param>
             public override void ExceptionCaught(IChannelHandlerContext context, Exception exception)
             {
                 _readAction.Invoke(context,PacketType.DISCONNECT,DisconnectPacket.Instance);

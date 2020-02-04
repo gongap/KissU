@@ -26,12 +26,26 @@ namespace KissU.Core.ProxyGenerator.Implementation
 
         #region Constructor
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ServiceProxyFactory"/> class.
+        /// </summary>
+        /// <param name="remoteInvokeService">The remote invoke service.</param>
+        /// <param name="typeConvertibleService">The type convertible service.</param>
+        /// <param name="serviceProvider">The service provider.</param>
         public ServiceProxyFactory(IRemoteInvokeService remoteInvokeService, ITypeConvertibleService typeConvertibleService,
            IServiceProvider serviceProvider):this(remoteInvokeService, typeConvertibleService, serviceProvider,null,null)
         {
 
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ServiceProxyFactory"/> class.
+        /// </summary>
+        /// <param name="remoteInvokeService">The remote invoke service.</param>
+        /// <param name="typeConvertibleService">The type convertible service.</param>
+        /// <param name="serviceProvider">The service provider.</param>
+        /// <param name="types">The types.</param>
+        /// <param name="namespaces">The namespaces.</param>
         public ServiceProxyFactory(IRemoteInvokeService remoteInvokeService, ITypeConvertibleService typeConvertibleService,
             IServiceProvider serviceProvider, IEnumerable<Type> types, IEnumerable<string> namespaces)
         {
@@ -48,6 +62,11 @@ namespace KissU.Core.ProxyGenerator.Implementation
 
         #region Implementation of IServiceProxyFactory
 
+        /// <summary>
+        /// Creates the proxy.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <returns>System.Object.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public object CreateProxy(Type type)
         {
@@ -65,6 +84,12 @@ namespace KissU.Core.ProxyGenerator.Implementation
             return instance;
         }
 
+        /// <summary>
+        /// Creates the proxy.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="type">The type.</param>
+        /// <returns>System.Object.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public object CreateProxy(string key,Type type)
         {
@@ -82,6 +107,12 @@ namespace KissU.Core.ProxyGenerator.Implementation
             return instance;
         }
 
+        /// <summary>
+        /// Creates the proxy.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key">The key.</param>
+        /// <returns>T.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public T CreateProxy<T>(string key) where T:class
         {
@@ -100,11 +131,21 @@ namespace KissU.Core.ProxyGenerator.Implementation
             return instance as T;
         }
 
+        /// <summary>
+        /// Creates the proxy.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns>T.</returns>
         public T CreateProxy<T>() where T : class
         {
             return CreateProxy<T>(null);
         }
 
+        /// <summary>
+        /// Registers the type of the prox.
+        /// </summary>
+        /// <param name="namespaces">The namespaces.</param>
+        /// <param name="types">The types.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void RegisterProxType(string[] namespaces,params Type[] types)
         {

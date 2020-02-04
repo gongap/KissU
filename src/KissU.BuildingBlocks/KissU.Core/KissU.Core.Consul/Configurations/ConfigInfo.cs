@@ -5,16 +5,22 @@ using KissU.Core.CPlatform.Address;
 
 namespace KissU.Core.Consul.Configurations
 {
+    /// <summary>
+    /// ConfigInfo.
+    /// </summary>
     public class ConfigInfo
     {
         /// <summary>
         /// 初始化会话超时为20秒的consul配置信息。
         /// </summary>
         /// <param name="connectionString">连接字符串。</param>
-        /// <param name="commandPath">服务命令配置路径</param>
         /// <param name="routePath">路由路径配置路径</param>
         /// <param name="subscriberPath">订阅者配置路径</param>
+        /// <param name="commandPath">服务命令配置路径</param>
         /// <param name="cachePath">缓存中心配置路径</param>
+        /// <param name="mqttRoutePath">The MQTT route path.</param>
+        /// <param name="reloadOnChange">if set to <c>true</c> [reload on change].</param>
+        /// <param name="enableChildrenMonitor">if set to <c>true</c> [enable children monitor].</param>
         public ConfigInfo(string connectionString,string routePath = "services/serviceRoutes/",
              string subscriberPath = "services/serviceSubscribers/",
             string commandPath = "services/serviceCommands/",
@@ -30,11 +36,14 @@ namespace KissU.Core.Consul.Configurations
         /// </summary>
         /// <param name="connectionString">连接字符串。</param>
         /// <param name="sessionTimeout">会话超时时间。</param>
-        /// <param name="commandPath">服务命令配置命令。</param>
-        /// <param name="subscriberPath">订阅者配置命令。</param>
+        /// <param name="lockDelay">The lock delay.</param>
         /// <param name="routePath">路由路径配置路径</param>
+        /// <param name="subscriberPath">订阅者配置命令。</param>
+        /// <param name="commandPath">服务命令配置命令。</param>
         /// <param name="cachePath">缓存中心配置路径</param>
         /// <param name="mqttRoutePath">Mqtt路由路径配置路径</param>
+        /// <param name="reloadOnChange">if set to <c>true</c> [reload on change].</param>
+        /// <param name="enableChildrenMonitor">if set to <c>true</c> [enable children monitor].</param>
         public ConfigInfo(string connectionString, TimeSpan sessionTimeout, int lockDelay,
             string routePath = "services/serviceRoutes/",
              string subscriberPath = "services/serviceSubscribers/",
@@ -76,10 +85,21 @@ namespace KissU.Core.Consul.Configurations
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ConfigInfo"/> class.
+        /// </summary>
+        /// <param name="host">The host.</param>
+        /// <param name="port">The port.</param>
         public ConfigInfo(string host, int port) : this(host, port, TimeSpan.FromSeconds(20))
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ConfigInfo"/> class.
+        /// </summary>
+        /// <param name="host">The host.</param>
+        /// <param name="port">The port.</param>
+        /// <param name="sessionTimeout">The session timeout.</param>
         public ConfigInfo(string host, int port, TimeSpan sessionTimeout)
         {
             SessionTimeout = sessionTimeout;
@@ -87,6 +107,9 @@ namespace KissU.Core.Consul.Configurations
             Port = port;
         }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether [reload on change].
+        /// </summary>
         public bool ReloadOnChange { get; set; }
 
         /// <summary>
@@ -94,8 +117,14 @@ namespace KissU.Core.Consul.Configurations
         /// </summary>
         public int WatchInterval { get; set; } = 60;
 
+        /// <summary>
+        /// Gets or sets the lock delay.
+        /// </summary>
         public int LockDelay { get; set; } = 600;
 
+        /// <summary>
+        /// Gets or sets a value indicating whether [enable children monitor].
+        /// </summary>
         public bool EnableChildrenMonitor { get; set; }
         /// <summary>
         /// 命令配置路径
@@ -118,6 +147,9 @@ namespace KissU.Core.Consul.Configurations
         /// </summary>
         public string MqttRoutePath { get; set; }
 
+        /// <summary>
+        /// Gets or sets the addresses.
+        /// </summary>
         public IEnumerable<AddressModel> Addresses { get; set; }
 
         /// <summary>
@@ -125,8 +157,14 @@ namespace KissU.Core.Consul.Configurations
         /// </summary>
         public string CachePath { get; set; }
 
+        /// <summary>
+        /// Gets or sets the host.
+        /// </summary>
         public string Host { get; set; }
 
+        /// <summary>
+        /// Gets or sets the port.
+        /// </summary>
         public int Port { get; set; }
 
         /// <summary>
@@ -134,6 +172,11 @@ namespace KissU.Core.Consul.Configurations
         /// </summary>
         public TimeSpan SessionTimeout { get; set; }
 
+        /// <summary>
+        /// Converts the address model.
+        /// </summary>
+        /// <param name="connection">The connection.</param>
+        /// <returns>AddressModel.</returns>
         public AddressModel ConvertAddressModel(string connection)
         {
             var address = connection.Split(":");

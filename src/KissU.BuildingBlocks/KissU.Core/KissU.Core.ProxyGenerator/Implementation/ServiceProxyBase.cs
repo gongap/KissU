@@ -31,6 +31,13 @@ namespace KissU.Core.ProxyGenerator.Implementation
 
         #region Constructor
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ServiceProxyBase"/> class.
+        /// </summary>
+        /// <param name="remoteInvokeService">The remote invoke service.</param>
+        /// <param name="typeConvertibleService">The type convertible service.</param>
+        /// <param name="serviceKey">The service key.</param>
+        /// <param name="serviceProvider">The service provider.</param>
         protected ServiceProxyBase(IRemoteInvokeService remoteInvokeService,
             ITypeConvertibleService typeConvertibleService, String serviceKey, CPlatformContainer serviceProvider)
         {
@@ -111,6 +118,11 @@ namespace KissU.Core.ProxyGenerator.Implementation
             return (T)result;
         }
 
+        /// <summary>
+        /// Calls the invoke.
+        /// </summary>
+        /// <param name="invocation">The invocation.</param>
+        /// <returns>Task&lt;System.Object&gt;.</returns>
         public async Task<object> CallInvoke(IInvocation invocation)
         {
             var cacheInvocation = invocation as ICacheInvocation;

@@ -8,8 +8,19 @@ using KissU.Core.CPlatform.Utilities;
 
 namespace KissU.Core.ProxyGenerator
 {
+    /// <summary>
+    /// ProxyServiceBase.
+    /// Implements the <see cref="KissU.Core.CPlatform.Ioc.ServiceBase" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Ioc.ServiceBase" />
     public abstract class ProxyServiceBase:  ServiceBase
     {
+        /// <summary>
+        /// Creates the proxy.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key">The key.</param>
+        /// <returns>T.</returns>
         [Obsolete("This method is Obsolete, use GetService")]
         public T CreateProxy<T>(string key) where T : class
         {
@@ -24,6 +35,11 @@ namespace KissU.Core.ProxyGenerator
             return result;
         }
 
+        /// <summary>
+        /// Creates the proxy.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <returns>System.Object.</returns>
         [Obsolete("This method is Obsolete, use GetService")]
         public object CreateProxy(Type type)
         {
@@ -37,6 +53,12 @@ namespace KissU.Core.ProxyGenerator
             return result;
         }
 
+        /// <summary>
+        /// Creates the proxy.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="type">The type.</param>
+        /// <returns>System.Object.</returns>
         [Obsolete("This method is Obsolete, use GetService")]
         public object CreateProxy(string key, Type type)
         {
@@ -49,6 +71,11 @@ namespace KissU.Core.ProxyGenerator
             return result;
         }
 
+        /// <summary>
+        /// Creates the proxy.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns>T.</returns>
         [Obsolete("This method is Obsolete, use GetService")]
         public T CreateProxy<T>() where T : class
         {
@@ -61,6 +88,12 @@ namespace KissU.Core.ProxyGenerator
             return result;
         }
 
+        /// <summary>
+        /// Gets the service.
+        /// </summary>
+        /// <typeparam name="T">服务类型</typeparam>
+        /// <param name="key">The key.</param>
+        /// <returns>T.</returns>
         public override T GetService<T>(string key) 
         {
             if (ServiceLocator.Current.IsRegisteredWithKey<T>(key))
@@ -77,6 +110,11 @@ namespace KissU.Core.ProxyGenerator
             }
         }
 
+        /// <summary>
+        /// Gets the service.
+        /// </summary>
+        /// <typeparam name="T">服务类型</typeparam>
+        /// <returns>T.</returns>
         public override T GetService<T>()
         {
             if (ServiceLocator.Current.IsRegistered<T>())
@@ -94,6 +132,11 @@ namespace KissU.Core.ProxyGenerator
 
         }
 
+        /// <summary>
+        /// Gets the service.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <returns>System.Object.</returns>
         public override object GetService(Type type)
         {
             if (ServiceLocator.Current.IsRegistered(type))
@@ -110,6 +153,12 @@ namespace KissU.Core.ProxyGenerator
             }
         }
 
+        /// <summary>
+        /// Gets the service.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="type">The type.</param>
+        /// <returns>System.Object.</returns>
         public override object GetService(string key, Type type)
         {
             if (ServiceLocator.Current.IsRegisteredWithKey(key, type))
@@ -127,6 +176,10 @@ namespace KissU.Core.ProxyGenerator
            
         }
 
+        /// <summary>
+        /// Publishes the specified event.
+        /// </summary>
+        /// <param name="event">The event.</param>
         public void Publish(IntegrationEvent @event)
         {
             GetService<IEventBus>().Publish(@event);

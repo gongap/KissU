@@ -4,12 +4,23 @@ using org.apache.zookeeper;
 
 namespace KissU.Core.Zookeeper.WatcherProvider
 {
+    /// <summary>
+    /// ReconnectionWatcher.
+    /// Implements the <see cref="org.apache.zookeeper.Watcher" />
+    /// </summary>
+    /// <seealso cref="org.apache.zookeeper.Watcher" />
     internal class ReconnectionWatcher : Watcher
     {
         private readonly Action _connectioned;
         private readonly Action _disconnect;
         private readonly Action _reconnection;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ReconnectionWatcher"/> class.
+        /// </summary>
+        /// <param name="connectioned">The connectioned.</param>
+        /// <param name="disconnect">The disconnect.</param>
+        /// <param name="reconnection">The reconnection.</param>
         public ReconnectionWatcher(Action connectioned, Action disconnect, Action reconnection)
         {
             _connectioned = connectioned;
@@ -19,9 +30,10 @@ namespace KissU.Core.Zookeeper.WatcherProvider
 
         #region Overrides of Watcher
 
-        /// <summary>Processes the specified event.</summary>
+        /// <summary>
+        /// Processes the specified event.
+        /// </summary>
         /// <param name="watchedEvent">The event.</param>
-        /// <returns></returns>
         public override async Task process(WatchedEvent watchedEvent)
         {
             var state = watchedEvent.getState();

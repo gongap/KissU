@@ -7,15 +7,27 @@ using KissU.Core.CPlatform.Transport.Codec;
 
 namespace KissU.Core.Protocol.Udp
 {
-   public abstract class DotNettyUdpMessageSender
+    /// <summary>
+    /// DotNettyUdpMessageSender.
+    /// </summary>
+    public abstract class DotNettyUdpMessageSender
     {
         private readonly ITransportMessageEncoder _transportMessageEncoder;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DotNettyUdpMessageSender"/> class.
+        /// </summary>
+        /// <param name="transportMessageEncoder">The transport message encoder.</param>
         protected DotNettyUdpMessageSender(ITransportMessageEncoder transportMessageEncoder)
         {
             _transportMessageEncoder = transportMessageEncoder;
         }
 
+        /// <summary>
+        /// Gets the byte buffer.
+        /// </summary>
+        /// <param name="message">The message.</param>
+        /// <returns>IByteBuffer.</returns>
         protected IByteBuffer GetByteBuffer(TransportMessage message)
         {
             var data =  message.GetContent<byte []>(); 
@@ -30,6 +42,11 @@ namespace KissU.Core.Protocol.Udp
     {
         private readonly IChannelHandlerContext _context;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DotNettyUdpServerMessageSender"/> class.
+        /// </summary>
+        /// <param name="transportMessageEncoder">The transport message encoder.</param>
+        /// <param name="context">The context.</param>
         public DotNettyUdpServerMessageSender(ITransportMessageEncoder transportMessageEncoder, IChannelHandlerContext context) : base(transportMessageEncoder)
         {
             _context = context;

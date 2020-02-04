@@ -5,8 +5,16 @@ using System.Text;
 
 namespace KissU.Core.Swagger.SwaggerGen.XmlComments
 {
+    /// <summary>
+    /// XmlCommentsMemberNameHelper.
+    /// </summary>
     public class XmlCommentsMemberNameHelper
     {
+        /// <summary>
+        /// Gets the member name for method.
+        /// </summary>
+        /// <param name="method">The method.</param>
+        /// <returns>System.String.</returns>
         public static string GetMemberNameForMethod(MethodInfo method)
         {
             var builder = new StringBuilder("M:");
@@ -29,6 +37,11 @@ namespace KissU.Core.Swagger.SwaggerGen.XmlComments
             return builder.ToString();
         }
 
+        /// <summary>
+        /// Gets the type of the member name for.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <returns>System.String.</returns>
         public static string GetMemberNameForType(Type type)
         {
             var builder = new StringBuilder("T:");
@@ -37,6 +50,11 @@ namespace KissU.Core.Swagger.SwaggerGen.XmlComments
             return builder.ToString();
         }
 
+        /// <summary>
+        /// Gets the member name for member.
+        /// </summary>
+        /// <param name="memberInfo">The member information.</param>
+        /// <returns>System.String.</returns>
         public static string GetMemberNameForMember(MemberInfo memberInfo)
         {
             var builder = new StringBuilder(((memberInfo.MemberType & MemberTypes.Field) != 0) ? "F:" : "P:");

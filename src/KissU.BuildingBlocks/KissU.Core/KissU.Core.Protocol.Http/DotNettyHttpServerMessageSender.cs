@@ -12,6 +12,13 @@ using KissU.Core.DotNetty;
 
 namespace KissU.Core.Protocol.Http
 {
+    /// <summary>
+    /// DotNettyHttpServerMessageSender.
+    /// Implements the <see cref="KissU.Core.DotNetty.DotNettyMessageSender" />
+    /// Implements the <see cref="KissU.Core.CPlatform.Transport.IMessageSender" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.DotNetty.DotNettyMessageSender" />
+    /// <seealso cref="KissU.Core.CPlatform.Transport.IMessageSender" />
     public class DotNettyHttpServerMessageSender: DotNettyMessageSender, IMessageSender
     {
         private readonly IChannelHandlerContext _context;
@@ -21,6 +28,12 @@ namespace KissU.Core.Protocol.Http
         private readonly AsciiString ContentLengthEntity = HttpHeaderNames.ContentLength;
         private readonly AsciiString TypeJson = AsciiString.Cached("application/json");
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DotNettyHttpServerMessageSender"/> class.
+        /// </summary>
+        /// <param name="transportMessageEncoder">The transport message encoder.</param>
+        /// <param name="context">The context.</param>
+        /// <param name="serializer">The serializer.</param>
         public DotNettyHttpServerMessageSender(ITransportMessageEncoder transportMessageEncoder, IChannelHandlerContext context, ISerializer<string> serializer) : base(transportMessageEncoder)
         {
             _context = context;

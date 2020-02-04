@@ -11,88 +11,59 @@ namespace KissU.Core.System.Module
     /// <summary>
     /// 抽象模块业务模块和系统模块的基类。
     /// </summary>
-    /// <remarks>
-    /// 	<para>创建：范亮</para>
-    /// 	<para>日期：2015/12/4</para>
-    /// </remarks>
+    /// <remarks><para>创建：范亮</para>
+    /// <para>日期：2015/12/4</para></remarks>
     public abstract class AbstractModule : Autofac.Module
     {
         #region 实例属性
 
+        /// <summary>
+        /// Gets or sets the builder.
+        /// </summary>
         public ContainerBuilderWrapper Builder { get; set; }
         /// <summary>
         /// 获取或设置模块标识符 GUID 。
         /// </summary>
-        /// <value>
-        /// 模块全局标识符 GUID 。
-        /// </value>
-        /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2015/12/4</para>
-        /// </remarks>
+        /// <remarks><para>创建：范亮</para>
+        /// <para>日期：2015/12/4</para></remarks>
         public Guid Identifier { get; set; }
 
         /// <summary>
         /// 获取或设置模块名称(对应视图目录名称)唯一键。
         /// </summary>
-        /// <value>
-        /// 模块的名称需大小写字母组合。
-        /// </value>
-        /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2015/12/4</para>
-        /// </remarks>
-   
+        /// <remarks><para>创建：范亮</para>
+        /// <para>日期：2015/12/4</para></remarks>
+
         public string ModuleName { get; set; }
 
         /// <summary>
         /// 获取或设置模块类型名称(包含程序集名称的限定名)。
         /// </summary>
-        /// <value>
-        /// 模块类型名称。
-        /// </value>
-        /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2015/12/4</para>
-        /// </remarks>
-    
+        /// <remarks><para>创建：范亮</para>
+        /// <para>日期：2015/12/4</para></remarks>
+
         public string TypeName { get; set; }
 
         /// <summary>
         /// 获取或设置模块标题文本。
         /// </summary>
-        /// <value>
-        /// 标题文本。
-        /// </value>
-        /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2015/12/4</para>
-        /// </remarks>
-      
+        /// <remarks><para>创建：范亮</para>
+        /// <para>日期：2015/12/4</para></remarks>
+
         public string Title { get; set; }
 
         /// <summary>
         /// 获取或设置模块功能描述。
         /// </summary>
-        /// <value>
-        /// 模块功能描述文本。
-        /// </value>
-        /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2015/12/4</para>
-        /// </remarks>
+        /// <remarks><para>创建：范亮</para>
+        /// <para>日期：2015/12/4</para></remarks>
         public string Description { get; set; }
 
         /// <summary>
         /// 获取或设置模块组件(定义了接口+实现类)列表。
         /// </summary>
-        /// <value>
-        /// 组件列表 List 泛型集合。
-        /// </value>
-        /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2015/12/4</para>
-        /// </remarks>
+        /// <remarks><para>创建：范亮</para>
+        /// <para>日期：2015/12/4</para></remarks>
         public List<Component> Components { get; set; }
 
         #endregion
@@ -102,10 +73,8 @@ namespace KissU.Core.System.Module
         /// <summary>
         /// 初始化模块，该操作在应用程序启动时执行。
         /// </summary>
-        /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2015/12/4</para>
-        /// </remarks>    
+        /// <remarks><para>创建：范亮</para>
+        /// <para>日期：2015/12/4</para></remarks>
         public virtual void Initialize()
         {
         }
@@ -114,10 +83,8 @@ namespace KissU.Core.System.Module
         /// 加载组件到依赖注入容器。
         /// </summary>
         /// <param name="builder">容器构建对象。</param>
-        /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2015/12/4</para>
-        /// </remarks>
+        /// <exception cref="ServiceException"></exception>
+        /// <remarks>Note that the ContainerBuilder parameter is unique to this module.</remarks>
         protected override void Load(ContainerBuilder builder)
         {
             try
@@ -137,10 +104,8 @@ namespace KissU.Core.System.Module
         /// 注册构建。
         /// </summary>
         /// <param name="builder">容器构建对象。</param>
-        /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2015/12/4</para>
-        /// </remarks>
+        /// <remarks><para>创建：范亮</para>
+        /// <para>日期：2015/12/4</para></remarks>
         protected virtual void RegisterBuilder(ContainerBuilderWrapper builder)
         {
         }
@@ -149,10 +114,8 @@ namespace KissU.Core.System.Module
         /// 注册组件到依赖注入容器。
         /// </summary>
         /// <param name="builder">容器构建对象。</param>
-        /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2015/12/4</para>
-        /// </remarks>
+        /// <remarks><para>创建：范亮</para>
+        /// <para>日期：2015/12/4</para></remarks>
         internal virtual void RegisterComponents(ContainerBuilderWrapper builder)
         {
             if (Components != null)
@@ -206,10 +169,10 @@ namespace KissU.Core.System.Module
         /// <summary>
         /// 验证校验模块。
         /// </summary>
-        /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2015/12/4</para>
-        /// </remarks>
+        /// <exception cref="ServiceException">模块属性：Identifier，ModuleName，TypeName，Title 是必须的不能为空！</exception>
+        /// <exception cref="ServiceException">模块属性：ModuleName 必须为字母开头数字或下划线的组合！</exception>
+        /// <remarks><para>创建：范亮</para>
+        /// <para>日期：2015/12/4</para></remarks>
         public virtual void ValidateModule()
         {
             if (this.Identifier == Guid.Empty || string.IsNullOrEmpty(this.ModuleName) || string.IsNullOrEmpty(this.TypeName)
@@ -228,13 +191,9 @@ namespace KissU.Core.System.Module
         /// <summary>
         /// 获取模块的字符串文本描述信息。
         /// </summary>
-        /// <returns>
-        /// 返回模块对象的字符串文本描述信息。
-        /// </returns>
-        /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2015/12/4</para>
-        /// </remarks>
+        /// <returns>返回模块对象的字符串文本描述信息。</returns>
+        /// <remarks><para>创建：范亮</para>
+        /// <para>日期：2015/12/4</para></remarks>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();

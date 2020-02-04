@@ -15,19 +15,37 @@ using KissU.Core.KestrelHttpServer.Filters.Implementation;
 
 namespace KissU.Core.Stage.Filters
 {
+    /// <summary>
+    /// ActionFilterAttribute.
+    /// Implements the <see cref="KissU.Core.KestrelHttpServer.Filters.IActionFilter" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.KestrelHttpServer.Filters.IActionFilter" />
     public class ActionFilterAttribute : IActionFilter
     {
         private readonly IAuthorizationServerProvider _authorizationServerProvider;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ActionFilterAttribute"/> class.
+        /// </summary>
         public ActionFilterAttribute()
         {
             _authorizationServerProvider = ServiceLocator.Current.Resolve<IAuthorizationServerProvider>();
         }
 
+        /// <summary>
+        /// Called when [action executed].
+        /// </summary>
+        /// <param name="filterContext">The filter context.</param>
+        /// <returns>Task.</returns>
         public Task OnActionExecuted(ActionExecutedContext filterContext)
         {
             return Task.CompletedTask;
         }
 
+        /// <summary>
+        /// Called when [action executing].
+        /// </summary>
+        /// <param name="filterContext">The filter context.</param>
+        /// <returns>Task.</returns>
         public async Task OnActionExecuting(ActionExecutingContext filterContext)
         {
             var gatewayAppConfig = AppConfig.Options.ApiGetWay;
@@ -95,7 +113,12 @@ namespace KissU.Core.Stage.Filters
             return isSuccess;
         }
 
-        public  string GetMD5(string encypStr)
+        /// <summary>
+        /// Gets the m d5.
+        /// </summary>
+        /// <param name="encypStr">The encyp string.</param>
+        /// <returns>System.String.</returns>
+        public string GetMD5(string encypStr)
         {
             try
             {

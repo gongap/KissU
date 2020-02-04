@@ -19,6 +19,13 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.Consul
 {
+    /// <summary>
+    /// ConsulMqttServiceRouteManager.
+    /// Implements the <see cref="KissU.Core.CPlatform.Mqtt.Implementation.MqttServiceRouteManagerBase" />
+    /// Implements the <see cref="System.IDisposable" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Mqtt.Implementation.MqttServiceRouteManagerBase" />
+    /// <seealso cref="System.IDisposable" />
     public class ConsulMqttServiceRouteManager : MqttServiceRouteManagerBase, IDisposable
     { 
         private readonly ConfigInfo _configInfo;
@@ -31,6 +38,17 @@ namespace KissU.Core.Consul
         private readonly IConsulClientProvider _consulClientFactory;
         private readonly IServiceHeartbeatManager _serviceHeartbeatManager;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ConsulMqttServiceRouteManager"/> class.
+        /// </summary>
+        /// <param name="configInfo">The configuration information.</param>
+        /// <param name="serializer">The serializer.</param>
+        /// <param name="stringSerializer">The string serializer.</param>
+        /// <param name="manager">The manager.</param>
+        /// <param name="mqttServiceFactory">The MQTT service factory.</param>
+        /// <param name="logger">The logger.</param>
+        /// <param name="serviceHeartbeatManager">The service heartbeat manager.</param>
+        /// <param name="consulClientFactory">The consul client factory.</param>
         public ConsulMqttServiceRouteManager(ConfigInfo configInfo, ISerializer<byte[]> serializer,
        ISerializer<string> stringSerializer, IClientWatchManager manager, IMqttServiceFactory mqttServiceFactory,
        ILogger<ConsulMqttServiceRouteManager> logger,IServiceHeartbeatManager serviceHeartbeatManager,
@@ -47,6 +65,10 @@ namespace KissU.Core.Consul
             EnterRoutes().Wait();
         }
 
+        /// <summary>
+        /// clear as an asynchronous operation.
+        /// </summary>
+        /// <returns>一个任务。</returns>
         public override async Task ClearAsync()
         {
             var clients = await _consulClientFactory.GetClients();
@@ -66,6 +88,9 @@ namespace KissU.Core.Consul
             }
         }
 
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
         public void Dispose()
         {
         }
@@ -80,6 +105,11 @@ namespace KissU.Core.Consul
             return _routes;
         }
 
+        /// <summary>
+        /// set routes as an asynchronous operation.
+        /// </summary>
+        /// <param name="routes">服务路由集合。</param>
+        /// <returns>一个任务。</returns>
         public override async Task SetRoutesAsync(IEnumerable<MqttServiceRoute> routes)
         {
             var hostAddr = NetUtils.GetHostAddress();
@@ -105,6 +135,10 @@ namespace KissU.Core.Consul
             await base.SetRoutesAsync(routes);
         }
 
+        /// <summary>
+        /// remve address as an asynchronous operation.
+        /// </summary>
+        /// <param name="endpoint">The endpoint.</param>
         public override async Task RemveAddressAsync(IEnumerable<AddressModel> endpoint)
         {
             var routes = await GetRoutesAsync();
@@ -122,6 +156,12 @@ namespace KissU.Core.Consul
             await base.SetRoutesAsync(routes);
         }
 
+        /// <summary>
+        /// remove by topic as an asynchronous operation.
+        /// </summary>
+        /// <param name="topic">The topic.</param>
+        /// <param name="endpoint">The endpoint.</param>
+        /// <returns>Task.</returns>
         public override async Task RemoveByTopicAsync(string topic, IEnumerable<AddressModel> endpoint)
         {
             var routes = await GetRoutesAsync();
@@ -141,6 +181,10 @@ namespace KissU.Core.Consul
            
         }
 
+        /// <summary>
+        /// set routes as an asynchronous operation.
+        /// </summary>
+        /// <param name="routes">The routes.</param>
         protected override async Task SetRoutesAsync(IEnumerable<MqttServiceDescriptor> routes)
         {
             var clients = await _consulClientFactory.GetClients();

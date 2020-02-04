@@ -4,11 +4,20 @@ using System.Text.RegularExpressions;
 
 namespace KissU.Core.Swagger.SwaggerGen.XmlComments
 {
+    /// <summary>
+    /// XmlCommentsTextHelper.
+    /// </summary>
     public static class XmlCommentsTextHelper
     {
         private static Regex RefTagPattern = new Regex(@"<(see|paramref) (name|cref)=""([TPF]{1}:)?(?<display>.+?)"" ?/>");
         private static Regex CodeTagPattern = new Regex(@"<c>(?<display>.+?)</c>");
 
+        /// <summary>
+        /// Humanizes the specified text.
+        /// </summary>
+        /// <param name="text">The text.</param>
+        /// <returns>System.String.</returns>
+        /// <exception cref="ArgumentNullException">text</exception>
         public static string Humanize(string text)
         {
             if (text == null)

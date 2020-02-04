@@ -1,8 +1,17 @@
 ﻿namespace KissU.Core.Zookeeper.Internal.Cluster.Implementation.Selectors.Implementation
 {
-   public enum AddressSelectorMode
+    /// <summary>
+    /// Enum AddressSelectorMode
+    /// </summary>
+    public enum AddressSelectorMode
     {
+        /// <summary>
+        /// The polling
+        /// </summary>
         Polling,
+        /// <summary>
+        /// The random
+        /// </summary>
         Random
     }
 }

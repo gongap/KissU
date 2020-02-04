@@ -9,16 +9,30 @@ using KissU.Core.EventBusKafka.Utilities;
 
 namespace KissU.Core.EventBusKafka.Implementation
 {
-   public class DefaultConsumeConfigurator : IConsumeConfigurator
+    /// <summary>
+    /// DefaultConsumeConfigurator.
+    /// Implements the <see cref="KissU.Core.EventBusKafka.IConsumeConfigurator" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.EventBusKafka.IConsumeConfigurator" />
+    public class DefaultConsumeConfigurator : IConsumeConfigurator
     {
         private readonly IEventBus _eventBus;
         private readonly CPlatformContainer _container;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DefaultConsumeConfigurator" /> class.
+        /// </summary>
+        /// <param name="eventBus">The event bus.</param>
+        /// <param name="container">The container.</param>
         public DefaultConsumeConfigurator(IEventBus eventBus, CPlatformContainer container)
         {
             _eventBus = eventBus;
             _container = container;
         }
 
+        /// <summary>
+        /// Configures the specified consumers.
+        /// </summary>
+        /// <param name="consumers">The consumers.</param>
         public void Configure(List<Type> consumers)
         {
             foreach (var consumer in consumers)
@@ -47,6 +61,10 @@ namespace KissU.Core.EventBusKafka.Implementation
             }
         }
 
+        /// <summary>
+        /// Unconfigures the specified consumers.
+        /// </summary>
+        /// <param name="consumers">The consumers.</param>
         public void Unconfigure(List<Type> consumers)
         {
             foreach (var consumer in consumers)
@@ -75,6 +93,11 @@ namespace KissU.Core.EventBusKafka.Implementation
             }
         }
 
+        /// <summary>
+        /// Consumers to.
+        /// </summary>
+        /// <typeparam name="TEvent">The type of the t event.</typeparam>
+        /// <typeparam name="TConsumer">The type of the t consumer.</typeparam>
         protected void ConsumerTo<TEvent, TConsumer>()
             where TConsumer : IIntegrationEventHandler<TEvent>
             where TEvent : class
@@ -83,6 +106,11 @@ namespace KissU.Core.EventBusKafka.Implementation
               (() => (TConsumer)_container.GetInstances(typeof(TConsumer)));
         }
 
+        /// <summary>
+        /// Removes the consumer.
+        /// </summary>
+        /// <typeparam name="TEvent">The type of the t event.</typeparam>
+        /// <typeparam name="TConsumer">The type of the t consumer.</typeparam>
         protected void RemoveConsumer<TEvent, TConsumer>()
   where TConsumer : IIntegrationEventHandler<TEvent>
   where TEvent : class

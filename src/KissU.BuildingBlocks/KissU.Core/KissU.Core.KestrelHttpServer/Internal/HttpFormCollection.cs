@@ -5,8 +5,18 @@ using Microsoft.Extensions.Primitives;
 
 namespace KissU.Core.KestrelHttpServer.Internal
 {
+    /// <summary>
+    /// HttpFormCollection.
+    /// Implements the <see cref="System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String, Microsoft.Extensions.Primitives.StringValues}}" />
+    /// Implements the <see cref="System.Collections.IEnumerable" />
+    /// </summary>
+    /// <seealso cref="System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String, Microsoft.Extensions.Primitives.StringValues}}" />
+    /// <seealso cref="System.Collections.IEnumerable" />
     public class HttpFormCollection : IEnumerable<KeyValuePair<string, StringValues>>, IEnumerable
     {
+        /// <summary>
+        /// The empty
+        /// </summary>
         public static readonly HttpFormCollection Empty = new HttpFormCollection();
         private static readonly string[] EmptyKeys = Array.Empty<string>();
         private static readonly StringValues[] EmptyValues = Array.Empty<StringValues>();
@@ -22,12 +32,20 @@ namespace KissU.Core.KestrelHttpServer.Internal
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HttpFormCollection"/> class.
+        /// </summary>
+        /// <param name="fields">The fields.</param>
+        /// <param name="files">The files.</param>
         public HttpFormCollection(Dictionary<string, StringValues> fields, HttpFormFileCollection files = null)
         {
             Store = fields;
             _files = files;
         }
 
+        /// <summary>
+        /// Gets the files.
+        /// </summary>
         public HttpFormFileCollection Files
         {
             get
@@ -39,7 +57,12 @@ namespace KissU.Core.KestrelHttpServer.Internal
 
         private Dictionary<string, StringValues> Store { get; set; }
 
-      
+
+        /// <summary>
+        /// Gets the <see cref="StringValues"/> with the specified key.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <returns>StringValues.</returns>
         public StringValues this[string key]
         {
             get
@@ -58,7 +81,10 @@ namespace KissU.Core.KestrelHttpServer.Internal
             }
         }
 
-        
+
+        /// <summary>
+        /// Gets the count.
+        /// </summary>
         public int Count
         {
             get
@@ -67,6 +93,9 @@ namespace KissU.Core.KestrelHttpServer.Internal
             }
         }
 
+        /// <summary>
+        /// Gets the keys.
+        /// </summary>
         public ICollection<string> Keys
         {
             get
@@ -79,7 +108,12 @@ namespace KissU.Core.KestrelHttpServer.Internal
             }
         }
 
-      
+
+        /// <summary>
+        /// Determines whether the specified key contains key.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <returns><c>true</c> if the specified key contains key; otherwise, <c>false</c>.</returns>
         public bool ContainsKey(string key)
         {
             if (Store == null)
@@ -88,7 +122,13 @@ namespace KissU.Core.KestrelHttpServer.Internal
             }
             return Store.ContainsKey(key);
         }
-        
+
+        /// <summary>
+        /// Tries the get value.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="value">The value.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool TryGetValue(string key, out StringValues value)
         {
             if (Store == null)
@@ -99,6 +139,10 @@ namespace KissU.Core.KestrelHttpServer.Internal
             return Store.TryGetValue(key, out value);
         }
 
+        /// <summary>
+        /// Gets the enumerator.
+        /// </summary>
+        /// <returns>Enumerator.</returns>
         public Enumerator GetEnumerator()
         {
             if (Store == null || Store.Count == 0)
@@ -127,17 +171,30 @@ namespace KissU.Core.KestrelHttpServer.Internal
         }
     }
 
+    /// <summary>
+    /// Struct Enumerator
+    /// Implements the <see cref="System.Collections.Generic.IEnumerator{System.Collections.Generic.KeyValuePair{System.String, Microsoft.Extensions.Primitives.StringValues}}" />
+    /// </summary>
+    /// <seealso cref="System.Collections.Generic.IEnumerator{System.Collections.Generic.KeyValuePair{System.String, Microsoft.Extensions.Primitives.StringValues}}" />
     public struct Enumerator : IEnumerator<KeyValuePair<string, StringValues>>
     {
         private Dictionary<string, StringValues>.Enumerator _dictionaryEnumerator;
         private bool _notEmpty;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Enumerator"/> struct.
+        /// </summary>
+        /// <param name="dictionaryEnumerator">The dictionary enumerator.</param>
         internal Enumerator(Dictionary<string, StringValues>.Enumerator dictionaryEnumerator)
         {
             _dictionaryEnumerator = dictionaryEnumerator;
             _notEmpty = true;
         }
 
+        /// <summary>
+        /// Advances the enumerator to the next element of the collection.
+        /// </summary>
+        /// <returns><see langword="true" /> if the enumerator was successfully advanced to the next element; <see langword="false" /> if the enumerator has passed the end of the collection.</returns>
         public bool MoveNext()
         {
             if (_notEmpty)
@@ -147,6 +204,9 @@ namespace KissU.Core.KestrelHttpServer.Internal
             return false;
         }
 
+        /// <summary>
+        /// Gets the current.
+        /// </summary>
         public KeyValuePair<string, StringValues> Current
         {
             get
@@ -159,6 +219,9 @@ namespace KissU.Core.KestrelHttpServer.Internal
             }
         }
 
+        /// <summary>
+        /// Disposes this instance.
+        /// </summary>
         public void Dispose()
         {
         }

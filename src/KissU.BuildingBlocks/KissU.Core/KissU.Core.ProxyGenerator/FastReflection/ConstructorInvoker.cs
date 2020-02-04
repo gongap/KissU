@@ -5,17 +5,37 @@ using System.Reflection;
 
 namespace KissU.Core.ProxyGenerator.FastReflection
 {
+    /// <summary>
+    /// Interface IConstructorInvoker
+    /// </summary>
     public interface IConstructorInvoker
     {
+        /// <summary>
+        /// Invokes the specified parameters.
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>System.Object.</returns>
         object Invoke(params object[] parameters);
     }
 
+    /// <summary>
+    /// ConstructorInvoker.
+    /// Implements the <see cref="KissU.Core.ProxyGenerator.FastReflection.IConstructorInvoker" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.ProxyGenerator.FastReflection.IConstructorInvoker" />
     public class ConstructorInvoker : IConstructorInvoker
     {
         private Func<object[], object> m_invoker;
 
+        /// <summary>
+        /// Gets the constructor information.
+        /// </summary>
         public ConstructorInfo ConstructorInfo { get; private set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ConstructorInvoker"/> class.
+        /// </summary>
+        /// <param name="constructorInfo">The constructor information.</param>
         public ConstructorInvoker(ConstructorInfo constructorInfo)
         {
             this.ConstructorInfo = constructorInfo;
@@ -52,6 +72,11 @@ namespace KissU.Core.ProxyGenerator.FastReflection
             return lambda.Compile();
         }
 
+        /// <summary>
+        /// Invokes the specified parameters.
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>System.Object.</returns>
         public object Invoke(params object[] parameters)
         {
             return this.m_invoker(parameters);

@@ -5,23 +5,50 @@ using System.Reflection;
 
 namespace KissU.Core.ProxyGenerator.FastReflection
 {
+    /// <summary>
+    /// Interface IMethodInvoker
+    /// </summary>
     public interface IMethodInvoker
     {
+        /// <summary>
+        /// Invokes the specified instance.
+        /// </summary>
+        /// <param name="instance">The instance.</param>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>System.Object.</returns>
         object Invoke(object instance, params object[] parameters);
     }
 
+    /// <summary>
+    /// MethodInvoker.
+    /// Implements the <see cref="KissU.Core.ProxyGenerator.FastReflection.IMethodInvoker" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.ProxyGenerator.FastReflection.IMethodInvoker" />
     public class MethodInvoker : IMethodInvoker
     {
         private Func<object, object[], object> m_invoker;
 
+        /// <summary>
+        /// Gets the method information.
+        /// </summary>
         public MethodInfo MethodInfo { get; private set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MethodInvoker"/> class.
+        /// </summary>
+        /// <param name="methodInfo">The method information.</param>
         public MethodInvoker(MethodInfo methodInfo)
         {
             this.MethodInfo = methodInfo;
             this.m_invoker = CreateInvokeDelegate(methodInfo);
         }
 
+        /// <summary>
+        /// Invokes the specified instance.
+        /// </summary>
+        /// <param name="instance">The instance.</param>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>System.Object.</returns>
         public object Invoke(object instance, params object[] parameters)
         {
             return this.m_invoker(instance, parameters);

@@ -1,6 +1,9 @@
 ﻿namespace KissU.Core.KestrelHttpServer.Filters
 {
-    public  interface IFilter
+    /// <summary>
+    /// Interface IFilter
+    /// </summary>
+    public interface IFilter
     {
     }
 }

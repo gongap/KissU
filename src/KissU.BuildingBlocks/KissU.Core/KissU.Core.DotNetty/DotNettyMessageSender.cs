@@ -15,11 +15,20 @@ namespace KissU.Core.DotNetty
     {
         private readonly ITransportMessageEncoder _transportMessageEncoder;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DotNettyMessageSender"/> class.
+        /// </summary>
+        /// <param name="transportMessageEncoder">The transport message encoder.</param>
         protected DotNettyMessageSender(ITransportMessageEncoder transportMessageEncoder)
         {
             _transportMessageEncoder = transportMessageEncoder;
         }
 
+        /// <summary>
+        /// Gets the byte buffer.
+        /// </summary>
+        /// <param name="message">The message.</param>
+        /// <returns>IByteBuffer.</returns>
         protected IByteBuffer GetByteBuffer(TransportMessage message)
         {
             var data = _transportMessageEncoder.Encode(message);
@@ -35,6 +44,11 @@ namespace KissU.Core.DotNetty
     {
         private readonly IChannel _channel;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DotNettyMessageClientSender"/> class.
+        /// </summary>
+        /// <param name="transportMessageEncoder">The transport message encoder.</param>
+        /// <param name="channel">The channel.</param>
         public DotNettyMessageClientSender(ITransportMessageEncoder transportMessageEncoder, IChannel channel) : base(transportMessageEncoder)
         {
             _channel = channel;
@@ -42,7 +56,9 @@ namespace KissU.Core.DotNetty
 
         #region Implementation of IDisposable
 
-        /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
         public void Dispose()
         {
             Task.Run(async () =>
@@ -87,6 +103,11 @@ namespace KissU.Core.DotNetty
     {
         private readonly IChannelHandlerContext _context;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DotNettyServerMessageSender"/> class.
+        /// </summary>
+        /// <param name="transportMessageEncoder">The transport message encoder.</param>
+        /// <param name="context">The context.</param>
         public DotNettyServerMessageSender(ITransportMessageEncoder transportMessageEncoder, IChannelHandlerContext context) : base(transportMessageEncoder)
         {
             _context = context;

@@ -9,7 +9,12 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.Protocol.Udp
 {
-   public class UdpServiceExecutor : IServiceExecutor
+    /// <summary>
+    /// UdpServiceExecutor.
+    /// Implements the <see cref="KissU.Core.CPlatform.Runtime.Server.IServiceExecutor" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Runtime.Server.IServiceExecutor" />
+    public class UdpServiceExecutor : IServiceExecutor
     {
         #region Field
 
@@ -20,6 +25,11 @@ namespace KissU.Core.Protocol.Udp
 
         #region Constructor
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UdpServiceExecutor"/> class.
+        /// </summary>
+        /// <param name="dnsServiceEntryProvider">The DNS service entry provider.</param>
+        /// <param name="logger">The logger.</param>
         public UdpServiceExecutor(IUdpServiceEntryProvider dnsServiceEntryProvider,
             ILogger<UdpServiceExecutor> logger)
         {

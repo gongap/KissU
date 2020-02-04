@@ -10,7 +10,12 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.DNS.Runtime.Implementation
 {
-   public class DefaultDnsServiceEntryProvider:IDnsServiceEntryProvider
+    /// <summary>
+    /// DefaultDnsServiceEntryProvider.
+    /// Implements the <see cref="KissU.Core.DNS.Runtime.IDnsServiceEntryProvider" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.DNS.Runtime.IDnsServiceEntryProvider" />
+    public class DefaultDnsServiceEntryProvider:IDnsServiceEntryProvider
     {
         #region Field
 
@@ -23,6 +28,12 @@ namespace KissU.Core.DNS.Runtime.Implementation
 
         #region Constructor
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DefaultDnsServiceEntryProvider"/> class.
+        /// </summary>
+        /// <param name="serviceEntryProvider">The service entry provider.</param>
+        /// <param name="logger">The logger.</param>
+        /// <param name="serviceProvider">The service provider.</param>
         public DefaultDnsServiceEntryProvider(IServiceEntryProvider serviceEntryProvider,
             ILogger<DefaultDnsServiceEntryProvider> logger,
             CPlatformContainer serviceProvider)
@@ -64,6 +75,11 @@ namespace KissU.Core.DNS.Runtime.Implementation
         }
         #endregion
 
+        /// <summary>
+        /// Creates the service entry.
+        /// </summary>
+        /// <param name="service">The service.</param>
+        /// <returns>DnsServiceEntry.</returns>
         public DnsServiceEntry CreateServiceEntry(Type service)
         {
             DnsServiceEntry result = null;

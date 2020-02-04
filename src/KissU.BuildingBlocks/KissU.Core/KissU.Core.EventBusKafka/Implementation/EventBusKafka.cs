@@ -12,6 +12,13 @@ using Polly.Retry;
 
 namespace KissU.Core.EventBusKafka.Implementation
 {
+    /// <summary>
+    /// EventBusKafka.
+    /// Implements the <see cref="KissU.Core.CPlatform.EventBus.Implementation.IEventBus" />
+    /// Implements the <see cref="System.IDisposable" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.EventBus.Implementation.IEventBus" />
+    /// <seealso cref="System.IDisposable" />
     public class EventBusKafka : IEventBus, IDisposable
     {
         private readonly ILogger<EventBusKafka> _logger;
@@ -19,8 +26,17 @@ namespace KissU.Core.EventBusKafka.Implementation
         private readonly IKafkaPersisterConnection _producerConnection;
         private readonly IKafkaPersisterConnection _consumerConnection;
 
+        /// <summary>
+        /// Occurs when [on shutdown].
+        /// </summary>
         public event EventHandler OnShutdown;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EventBusKafka" /> class.
+        /// </summary>
+        /// <param name="logger">The logger.</param>
+        /// <param name="subsManager">The subs manager.</param>
+        /// <param name="serviceProvider">The service provider.</param>
         public EventBusKafka( ILogger<EventBusKafka> logger,
             IEventBusSubscriptionsManager subsManager,
             CPlatformContainer serviceProvider)
@@ -49,12 +65,19 @@ namespace KissU.Core.EventBusKafka.Implementation
             }
         }
 
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
         public void Dispose()
         {
             _producerConnection.Dispose();
             _consumerConnection.Dispose();
         }
 
+        /// <summary>
+        /// Publishes the specified event.
+        /// </summary>
+        /// <param name="event">The event.</param>
         public void Publish(IntegrationEvent @event)
         {
             if (!_producerConnection.IsConnected)
@@ -77,6 +100,12 @@ namespace KissU.Core.EventBusKafka.Implementation
            });
         }
 
+        /// <summary>
+        /// Subscribes the specified handler.
+        /// </summary>
+        /// <typeparam name="T">事件参数类型</typeparam>
+        /// <typeparam name="TH">The type of the th.</typeparam>
+        /// <param name="handler">The handler.</param>
         public void Subscribe<T, TH>(Func<TH> handler) where TH : IIntegrationEventHandler<T>
         {
             var eventName = typeof(T).Name;
@@ -89,7 +118,12 @@ namespace KissU.Core.EventBusKafka.Implementation
             }
             _subsManager.AddSubscription<T, TH>(handler, null);
         }
-        
+
+        /// <summary>
+        /// Unsubscribes this instance.
+        /// </summary>
+        /// <typeparam name="T">事件参数类型</typeparam>
+        /// <typeparam name="TH">The type of the th.</typeparam>
         public void Unsubscribe<T, TH>() where TH : IIntegrationEventHandler<T>
         {
             _subsManager.RemoveSubscription<T, TH>();

@@ -4,12 +4,24 @@ using DotNetty.Codecs.DNS.Records;
 
 namespace KissU.Core.DNS
 {
-   public class DnsTransportMessage
+    /// <summary>
+    /// DnsTransportMessage.
+    /// </summary>
+    public class DnsTransportMessage
     {
+        /// <summary>
+        /// Gets or sets the DNS response.
+        /// </summary>
         public IDnsResponse DnsResponse { get; set; }
 
+        /// <summary>
+        /// Gets or sets the DNS question.
+        /// </summary>
         public IDnsQuestion DnsQuestion { get; set; }
 
+        /// <summary>
+        /// Gets or sets the address.
+        /// </summary>
         public IPAddress Address { get; set; }
     }
 }

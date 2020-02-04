@@ -6,14 +6,32 @@ using System.Linq;
 
 namespace KissU.Core.Configuration.Apollo.Configurations
 {
+    /// <summary>
+    /// ApolloConfigurationBuilderExtensions.
+    /// </summary>
     public static class ApolloConfigurationBuilderExtensions
     {
 
-        /// <summary>添加其他namespace</summary>
+        /// <summary>
+        /// 添加其他namespace
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="namespace">The namespace.</param>
+        /// <param name="format">The format.</param>
+        /// <returns>IApolloConfigurationBuilder.</returns>
         public static IApolloConfigurationBuilder AddNamespaceKissUApollo(this IApolloConfigurationBuilder builder, string @namespace, ConfigFileFormat format = ConfigFileFormat.Json) =>
             builder.AddNamespaceKissUApollo(@namespace, null, format);
 
-        /// <summary>添加其他namespace。如果sectionKey为null则添加到root中，可以直接读取，否则使用Configuration.GetSection(sectionKey)读取</summary>
+        /// <summary>
+        /// 添加其他namespace。如果sectionKey为null则添加到root中，可以直接读取，否则使用Configuration.GetSection(sectionKey)读取
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="namespace">The namespace.</param>
+        /// <param name="sectionKey">The section key.</param>
+        /// <param name="format">The format.</param>
+        /// <returns>IApolloConfigurationBuilder.</returns>
+        /// <exception cref="ArgumentNullException">namespace</exception>
+        /// <exception cref="ArgumentOutOfRangeException">format - 最小值{ConfigFileFormat.Properties}，最大值{ConfigFileFormat.Txt}</exception>
         public static IApolloConfigurationBuilder AddNamespaceKissUApollo(this IApolloConfigurationBuilder builder, string @namespace, string? sectionKey, ConfigFileFormat format = ConfigFileFormat.Json)
         {
             if (string.IsNullOrWhiteSpace(@namespace)) throw new ArgumentNullException(nameof(@namespace));

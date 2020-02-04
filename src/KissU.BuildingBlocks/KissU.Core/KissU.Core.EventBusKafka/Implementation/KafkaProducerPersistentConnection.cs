@@ -8,6 +8,11 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.EventBusKafka.Implementation
 {
+    /// <summary>
+    /// KafkaProducerPersistentConnection.
+    /// Implements the <see cref="KissU.Core.EventBusKafka.Implementation.KafkaPersistentConnectionBase" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.EventBusKafka.Implementation.KafkaPersistentConnectionBase" />
     public class KafkaProducerPersistentConnection : KafkaPersistentConnectionBase
     {
         private Producer<Null, string> _connection;
@@ -15,6 +20,10 @@ namespace KissU.Core.EventBusKafka.Implementation
         private readonly ISerializer<string> _stringSerializer;
         bool _disposed;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="KafkaProducerPersistentConnection" /> class.
+        /// </summary>
+        /// <param name="logger">The logger.</param>
         public KafkaProducerPersistentConnection(ILogger<KafkaProducerPersistentConnection> logger)
             :base(logger,AppConfig.KafkaProducerConfig)
         { 
@@ -22,9 +31,17 @@ namespace KissU.Core.EventBusKafka.Implementation
             _stringSerializer = new StringSerializer(Encoding.UTF8);
         }
 
+        /// <summary>
+        /// Gets a value indicating whether this instance is connected.
+        /// </summary>
         public override bool IsConnected =>   _connection != null &&  !_disposed;
-             
 
+
+        /// <summary>
+        /// Connections the specified options.
+        /// </summary>
+        /// <param name="options">The options.</param>
+        /// <returns>Action.</returns>
         public override Action Connection(IEnumerable<KeyValuePair<string, object>> options)
         {
             return () =>
@@ -34,12 +51,19 @@ namespace KissU.Core.EventBusKafka.Implementation
             };
         }
 
+        /// <summary>
+        /// Creates the connect.
+        /// </summary>
+        /// <returns>System.Object.</returns>
         public override object CreateConnect()
         {
             TryConnect();
             return _connection;
         }
 
+        /// <summary>
+        /// Disposes this instance.
+        /// </summary>
         public override void Dispose()
         {
             if (_disposed) return;

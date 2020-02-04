@@ -1,9 +1,9 @@
 ﻿using System;
 
 namespace KissU.Core.System.Intercept
-{ /// <summary>
-  /// 设置判断日志拦截方法的特性类
-  /// </summary>
+/// <summary>
+/// 设置判断日志拦截方法的特性类
+/// </summary>
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Interface)]
     public class LoggerInterceptAttribute : Attribute
     {
@@ -15,14 +15,14 @@ namespace KissU.Core.System.Intercept
         /// <summary>
         /// 初始化一个新的<c>InterceptMethodAttribute</c>类型。
         /// </summary>
-        /// <param name="method">缓存方式。</param>
+        /// <param name="message">The message.</param>
         public LoggerInterceptAttribute(string message)
         {
             this._message = message;
         }
 
         /// <summary>
-        ///  初始化一个新的<c>InterceptMethodAttribute</c>类型。
+        /// 初始化一个新的<c>InterceptMethodAttribute</c>类型。
         /// </summary>
         public LoggerInterceptAttribute()
             : this(null)

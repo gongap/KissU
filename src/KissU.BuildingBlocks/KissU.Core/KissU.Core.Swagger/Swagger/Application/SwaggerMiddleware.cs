@@ -11,6 +11,9 @@ using Newtonsoft.Json;
 
 namespace KissU.Core.Swagger.Swagger.Application
 {
+    /// <summary>
+    /// SwaggerMiddleware.
+    /// </summary>
     public class SwaggerMiddleware
     {
         private readonly RequestDelegate _next;
@@ -18,6 +21,12 @@ namespace KissU.Core.Swagger.Swagger.Application
         private readonly SwaggerOptions _options;
         private readonly TemplateMatcher _requestMatcher;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SwaggerMiddleware"/> class.
+        /// </summary>
+        /// <param name="next">The next.</param>
+        /// <param name="mvcJsonOptionsAccessor">The MVC json options accessor.</param>
+        /// <param name="optionsAccessor">The options accessor.</param>
         public SwaggerMiddleware(
             RequestDelegate next,
             IOptions<MvcNewtonsoftJsonOptions> mvcJsonOptionsAccessor,
@@ -25,6 +34,12 @@ namespace KissU.Core.Swagger.Swagger.Application
             : this(next, mvcJsonOptionsAccessor, optionsAccessor.Value)
         { }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SwaggerMiddleware"/> class.
+        /// </summary>
+        /// <param name="next">The next.</param>
+        /// <param name="mvcJsonOptions">The MVC json options.</param>
+        /// <param name="options">The options.</param>
         public SwaggerMiddleware(
             RequestDelegate next,
             IOptions<MvcNewtonsoftJsonOptions> mvcJsonOptions,
@@ -36,6 +51,11 @@ namespace KissU.Core.Swagger.Swagger.Application
             _requestMatcher = new TemplateMatcher(TemplateParser.Parse(options.RouteTemplate), new RouteValueDictionary());
         }
 
+        /// <summary>
+        /// Invokes the specified HTTP context.
+        /// </summary>
+        /// <param name="httpContext">The HTTP context.</param>
+        /// <param name="swaggerProvider">The swagger provider.</param>
         public async Task Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
         {
             if (!RequestingSwaggerDocument(httpContext.Request, out string documentName))

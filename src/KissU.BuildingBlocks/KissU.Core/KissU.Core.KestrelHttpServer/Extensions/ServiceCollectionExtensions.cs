@@ -4,8 +4,16 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace KissU.Core.KestrelHttpServer.Extensions
 {
+    /// <summary>
+    /// ServiceCollectionExtensions.
+    /// </summary>
     public static class ServiceCollectionExtensions
     {
+        /// <summary>
+        /// Adds the filters.
+        /// </summary>
+        /// <param name="serviceCollection">The service collection.</param>
+        /// <param name="filter">The filter.</param>
         public static void AddFilters(this IServiceCollection serviceCollection, Type filter)
         {
             if (typeof(IAuthorizationFilter).IsAssignableFrom(filter))

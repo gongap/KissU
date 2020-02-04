@@ -6,10 +6,20 @@ using KissU.Core.CPlatform.Routing;
 
 namespace KissU.Core.ProxyGenerator.Implementation
 {
+    /// <summary>
+    /// ServiceProxyProvider.
+    /// Implements the <see cref="KissU.Core.ProxyGenerator.IServiceProxyProvider" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.ProxyGenerator.IServiceProxyProvider" />
     public class ServiceProxyProvider : IServiceProxyProvider
     {
         private readonly IServiceRouteProvider _serviceRouteProvider;
         private readonly CPlatformContainer _serviceProvider;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ServiceProxyProvider"/> class.
+        /// </summary>
+        /// <param name="serviceRouteProvider">The service route provider.</param>
+        /// <param name="serviceProvider">The service provider.</param>
         public ServiceProxyProvider( IServiceRouteProvider serviceRouteProvider
             , CPlatformContainer serviceProvider)
         {
@@ -17,7 +27,14 @@ namespace KissU.Core.ProxyGenerator.Implementation
             _serviceProvider = serviceProvider;
         }
 
-        public  async Task<T> Invoke<T>(IDictionary<string, object> parameters, string routePath)
+        /// <summary>
+        /// Invokes the specified parameters.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="parameters">The parameters.</param>
+        /// <param name="routePath">The route path.</param>
+        /// <returns>Task&lt;T&gt;.</returns>
+        public async Task<T> Invoke<T>(IDictionary<string, object> parameters, string routePath)
         {
            var serviceRoute= await _serviceRouteProvider.GetRouteByPath(routePath.ToLower());
             T result = default(T);
@@ -46,6 +63,14 @@ namespace KissU.Core.ProxyGenerator.Implementation
             return result;
         }
 
+        /// <summary>
+        /// Invokes the specified parameters.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="parameters">The parameters.</param>
+        /// <param name="routePath">The route path.</param>
+        /// <param name="serviceKey">The service key.</param>
+        /// <returns>Task&lt;T&gt;.</returns>
         public async Task<T> Invoke<T>(IDictionary<string, object> parameters, string routePath, string serviceKey)
         {
             var serviceRoute = await _serviceRouteProvider.GetRouteByPath(routePath.ToLower());

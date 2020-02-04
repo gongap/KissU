@@ -4,8 +4,16 @@ using Newtonsoft.Json;
 
 namespace KissU.Core.Swagger.Swagger.Application
 {
+    /// <summary>
+    /// SwaggerSerializerFactory.
+    /// </summary>
     public class SwaggerSerializerFactory
     {
+        /// <summary>
+        /// Creates the specified application json options.
+        /// </summary>
+        /// <param name="applicationJsonOptions">The application json options.</param>
+        /// <returns>JsonSerializer.</returns>
         public static JsonSerializer Create(IOptions<MvcNewtonsoftJsonOptions> applicationJsonOptions)
         {
             // TODO: Should this handle case where mvcJsonOptions.Value == null?

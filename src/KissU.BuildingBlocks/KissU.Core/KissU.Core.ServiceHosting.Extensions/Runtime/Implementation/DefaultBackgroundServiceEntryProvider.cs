@@ -10,6 +10,11 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.ServiceHosting.Extensions.Runtime.Implementation
 {
+    /// <summary>
+    /// DefaultBackgroundServiceEntryProvider.
+    /// Implements the <see cref="KissU.Core.ServiceHosting.Extensions.Runtime.IBackgroundServiceEntryProvider" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.ServiceHosting.Extensions.Runtime.IBackgroundServiceEntryProvider" />
     public class DefaultBackgroundServiceEntryProvider: IBackgroundServiceEntryProvider
     {
         #region Field
@@ -22,6 +27,12 @@ namespace KissU.Core.ServiceHosting.Extensions.Runtime.Implementation
 
         #region Constructor
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DefaultBackgroundServiceEntryProvider"/> class.
+        /// </summary>
+        /// <param name="serviceEntryProvider">The service entry provider.</param>
+        /// <param name="logger">The logger.</param>
+        /// <param name="serviceProvider">The service provider.</param>
         public DefaultBackgroundServiceEntryProvider(IServiceEntryProvider serviceEntryProvider,
             ILogger<DefaultBackgroundServiceEntryProvider> logger,
             CPlatformContainer serviceProvider)
@@ -36,6 +47,10 @@ namespace KissU.Core.ServiceHosting.Extensions.Runtime.Implementation
         #region Implementation of IUdpServiceEntryProvider
 
 
+        /// <summary>
+        /// Gets the entries.
+        /// </summary>
+        /// <returns>IEnumerable&lt;BackgroundServiceEntry&gt;.</returns>
         public IEnumerable<BackgroundServiceEntry> GetEntries()
         {
             var services = _types.ToArray();
@@ -59,6 +74,11 @@ namespace KissU.Core.ServiceHosting.Extensions.Runtime.Implementation
         }
 
 
+        /// <summary>
+        /// Creates the service entry.
+        /// </summary>
+        /// <param name="service">The service.</param>
+        /// <returns>BackgroundServiceEntry.</returns>
         public BackgroundServiceEntry CreateServiceEntry(Type service)
         {
             BackgroundServiceEntry result = null;

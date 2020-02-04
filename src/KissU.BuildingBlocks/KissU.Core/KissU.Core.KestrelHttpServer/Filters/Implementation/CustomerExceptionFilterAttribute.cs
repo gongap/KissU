@@ -3,8 +3,18 @@ using KissU.Core.CPlatform.Messages;
 
 namespace KissU.Core.KestrelHttpServer.Filters.Implementation
 {
-   public class CustomerExceptionFilterAttribute : IExceptionFilter
+    /// <summary>
+    /// CustomerExceptionFilterAttribute.
+    /// Implements the <see cref="KissU.Core.KestrelHttpServer.Filters.IExceptionFilter" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.KestrelHttpServer.Filters.IExceptionFilter" />
+    public class CustomerExceptionFilterAttribute : IExceptionFilter
     {
+        /// <summary>
+        /// Called when [exception].
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <returns>Task.</returns>
         public Task OnException(ExceptionContext context)
         {
             context.Result = new HttpResultMessage<object>

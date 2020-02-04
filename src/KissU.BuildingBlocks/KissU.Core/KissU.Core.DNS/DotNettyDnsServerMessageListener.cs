@@ -14,6 +14,13 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.DNS
 {
+    /// <summary>
+    /// DotNettyDnsServerMessageListener.
+    /// Implements the <see cref="KissU.Core.CPlatform.Transport.IMessageListener" />
+    /// Implements the <see cref="System.IDisposable" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Transport.IMessageListener" />
+    /// <seealso cref="System.IDisposable" />
     class DotNettyDnsServerMessageListener : IMessageListener, IDisposable
     {
         #region Field
@@ -23,12 +30,20 @@ namespace KissU.Core.DNS
         private readonly ITransportMessageEncoder _transportMessageEncoder;
         private IChannel _channel;
 
+        /// <summary>
+        /// 接收到消息的事件。
+        /// </summary>
         public event ReceivedDelegate Received;
 
         #endregion Field
 
         #region Constructor
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DotNettyDnsServerMessageListener"/> class.
+        /// </summary>
+        /// <param name="logger">The logger.</param>
+        /// <param name="codecFactory">The codec factory.</param>
         public DotNettyDnsServerMessageListener(ILogger<DotNettyDnsServerMessageListener> logger, ITransportMessageCodecFactory codecFactory)
         {
             _logger = logger;
@@ -38,6 +53,10 @@ namespace KissU.Core.DNS
 
         #endregion Constructor
 
+        /// <summary>
+        /// start as an asynchronous operation.
+        /// </summary>
+        /// <param name="endPoint">The end point.</param>
         public async Task StartAsync(EndPoint endPoint)
         {
             if (_logger.IsEnabled(LogLevel.Debug))
@@ -73,6 +92,9 @@ namespace KissU.Core.DNS
 
         }
 
+        /// <summary>
+        /// Closes the asynchronous.
+        /// </summary>
         public void CloseAsync()
         {
             Task.Run(async () =>
@@ -85,6 +107,9 @@ namespace KissU.Core.DNS
         #region Implementation of IDisposable
 
 
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
         public void Dispose()
         {
             Task.Run(async () =>
@@ -93,6 +118,12 @@ namespace KissU.Core.DNS
             }).Wait();
         }
 
+        /// <summary>
+        /// 触发接收到消息事件。
+        /// </summary>
+        /// <param name="sender">消息发送者。</param>
+        /// <param name="message">接收到的消息。</param>
+        /// <returns>一个任务。</returns>
         public async Task OnReceived(IMessageSender sender, TransportMessage message)
         {
             if (Received == null)
@@ -102,18 +133,33 @@ namespace KissU.Core.DNS
 
         #endregion Implementation of IDisposable
 
+        /// <summary>
+        /// ServerHandler.
+        /// Implements the <see cref="DotNetty.Transport.Channels.SimpleChannelInboundHandler{DotNetty.Codecs.DNS.Messages.DatagramDnsQuery}" />
+        /// </summary>
+        /// <seealso cref="DotNetty.Transport.Channels.SimpleChannelInboundHandler{DotNetty.Codecs.DNS.Messages.DatagramDnsQuery}" />
         private class ServerHandler : SimpleChannelInboundHandler<DatagramDnsQuery>
         {
 
             private readonly Action<IChannelHandlerContext, TransportMessage> _readAction;
             private readonly ILogger _logger;
 
+            /// <summary>
+            /// Initializes a new instance of the <see cref="ServerHandler"/> class.
+            /// </summary>
+            /// <param name="readAction">The read action.</param>
+            /// <param name="logger">The logger.</param>
             public ServerHandler(Action<IChannelHandlerContext, TransportMessage> readAction, ILogger logger)
             {
                 _readAction = readAction;
                 _logger = logger; 
             }
 
+            /// <summary>
+            /// Channels the read0.
+            /// </summary>
+            /// <param name="ctx">The CTX.</param>
+            /// <param name="query">The query.</param>
             protected override void ChannelRead0(IChannelHandlerContext ctx, DatagramDnsQuery query)
             {
 
@@ -127,6 +173,11 @@ namespace KissU.Core.DNS
                 }));
             }
 
+            /// <summary>
+            /// Exceptions the caught.
+            /// </summary>
+            /// <param name="context">The context.</param>
+            /// <param name="exception">The exception.</param>
             public override void ExceptionCaught(IChannelHandlerContext context, Exception exception)
             {
                  context.CloseAsync();

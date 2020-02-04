@@ -5,9 +5,19 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 
 namespace KissU.Core.Swagger.SwaggerGen.Generator
 {
+    /// <summary>
+    /// ApiParameterDescriptionExtensions.
+    /// </summary>
     public static class ApiParameterDescriptionExtensions
     {
-          internal static bool TryGetParameterInfo(
+        /// <summary>
+        /// Tries the get parameter information.
+        /// </summary>
+        /// <param name="apiParameterDescription">The API parameter description.</param>
+        /// <param name="apiDescription">The API description.</param>
+        /// <param name="parameterInfo">The parameter information.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        internal static bool TryGetParameterInfo(
             this ApiParameterDescription apiParameterDescription,
             ApiDescription apiDescription,
             out ParameterInfo parameterInfo)
@@ -25,6 +35,12 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
             return (parameterInfo != null);
         }
 
+        /// <summary>
+        /// Tries the get property information.
+        /// </summary>
+        /// <param name="apiParameterDescription">The API parameter description.</param>
+        /// <param name="propertyInfo">The property information.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         internal static bool TryGetPropertyInfo(
             this ApiParameterDescription apiParameterDescription,
             out PropertyInfo propertyInfo)

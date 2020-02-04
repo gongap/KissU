@@ -4,10 +4,17 @@ using System.Reflection;
 
 namespace KissU.Core.EventBusRabbitMQ.Utilities
 {
+    /// <summary>
+    /// FastInvoker.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class FastInvoker<T>
     {
         [ThreadStatic]
         static FastInvoker<T> _current;
+        /// <summary>
+        /// Gets the current.
+        /// </summary>
         public static FastInvoker<T> Current
         {
             get
@@ -18,6 +25,12 @@ namespace KissU.Core.EventBusRabbitMQ.Utilities
             }
         }
 
+        /// <summary>
+        /// Fasts the invoke.
+        /// </summary>
+        /// <param name="target">The target.</param>
+        /// <param name="expression">The expression.</param>
+        /// <exception cref="ArgumentException">只支持方法调用表达式。 - expression</exception>
         public void FastInvoke(T target, Expression<Action<T>> expression)
         {
             var call = expression.Body as MethodCallExpression;
@@ -27,6 +40,13 @@ namespace KissU.Core.EventBusRabbitMQ.Utilities
             invoker(target);
         }
 
+        /// <summary>
+        /// Fasts the invoke.
+        /// </summary>
+        /// <param name="target">The target.</param>
+        /// <param name="genericTypes">The generic types.</param>
+        /// <param name="expression">The expression.</param>
+        /// <exception cref="ArgumentException">只支持方法调用表达式 - expression</exception>
         public void FastInvoke(T target, Type[] genericTypes, Expression<Action<T>> expression)
         {
             var call = expression.Body as MethodCallExpression;

@@ -6,15 +6,28 @@ using KissU.Core.CPlatform.Runtime.Server;
 
 namespace KissU.Core.Swagger.Internal
 {
-   public class DefaultServiceSchemaProvider : IServiceSchemaProvider
+    /// <summary>
+    /// DefaultServiceSchemaProvider.
+    /// Implements the <see cref="KissU.Core.Swagger.Internal.IServiceSchemaProvider" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.Swagger.Internal.IServiceSchemaProvider" />
+    public class DefaultServiceSchemaProvider : IServiceSchemaProvider
     {
         private readonly IServiceEntryProvider _serviceEntryProvider;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DefaultServiceSchemaProvider"/> class.
+        /// </summary>
+        /// <param name="serviceEntryProvider">The service entry provider.</param>
         public DefaultServiceSchemaProvider( IServiceEntryProvider serviceEntryProvider)
         {
             _serviceEntryProvider = serviceEntryProvider;
         }
 
+        /// <summary>
+        /// Gets the schema files path.
+        /// </summary>
+        /// <returns>IEnumerable&lt;System.String&gt;.</returns>
         public IEnumerable<string> GetSchemaFilesPath()
         {
             var result = new List<string>();

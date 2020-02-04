@@ -5,8 +5,22 @@ using KissU.Core.ProxyGenerator.Implementation;
 
 namespace KissU.Core.ProxyGenerator.Interceptors.Implementation
 {
+    /// <summary>
+    /// ActionInvocation.
+    /// Implements the <see cref="KissU.Core.ProxyGenerator.Interceptors.Implementation.AbstractInvocation" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.ProxyGenerator.Interceptors.Implementation.AbstractInvocation" />
     public class ActionInvocation : AbstractInvocation
-    { 
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ActionInvocation"/> class.
+        /// </summary>
+        /// <param name="arguments">The arguments.</param>
+        /// <param name="serviceId">The service identifier.</param>
+        /// <param name="cacheKey">The cache key.</param>
+        /// <param name="attributes">The attributes.</param>
+        /// <param name="returnType">Type of the return.</param>
+        /// <param name="proxy">The proxy.</param>
         protected ActionInvocation(
              IDictionary<string, object> arguments,
            string serviceId,
@@ -18,6 +32,9 @@ namespace KissU.Core.ProxyGenerator.Interceptors.Implementation
         {
         }
 
+        /// <summary>
+        /// Proceeds this instance.
+        /// </summary>
         public override async Task Proceed()
         {
             try

@@ -12,6 +12,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace KissU.Core.EventBusKafka
 {
+    /// <summary>
+    /// ContainerBuilderExtensions.
+    /// </summary>
     public static class ContainerBuilderExtensions
     {
 
@@ -19,6 +22,7 @@ namespace KissU.Core.EventBusKafka
         /// 使用KafkaMQ进行传输。
         /// </summary>
         /// <param name="builder">服务构建者。</param>
+        /// <param name="options">The options.</param>
         /// <returns>服务构建者。</returns>
         public static IServiceBuilder UseKafkaMQTransport(this IServiceBuilder builder,Action<KafkaOptions> options)
         {
@@ -42,6 +46,12 @@ namespace KissU.Core.EventBusKafka
             return builder;
         }
 
+        /// <summary>
+        /// Uses the kafka mq event adapt.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="adapt">The adapt.</param>
+        /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder UseKafkaMQEventAdapt(this IServiceBuilder builder, Func<IServiceProvider, ISubscriptionAdapt> adapt)
         {
             var services = builder.Services;
@@ -49,6 +59,11 @@ namespace KissU.Core.EventBusKafka
             return builder;
         }
 
+        /// <summary>
+        /// Adds the kafka mq adapt.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder AddKafkaMQAdapt(this IServiceBuilder builder)
         {
             return builder.UseKafkaMQEventAdapt(provider =>

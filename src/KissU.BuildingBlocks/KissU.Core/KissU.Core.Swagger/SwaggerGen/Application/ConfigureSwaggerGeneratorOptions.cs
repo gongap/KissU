@@ -7,11 +7,21 @@ using Microsoft.Extensions.Options;
 
 namespace KissU.Core.Swagger.SwaggerGen.Application
 {
+    /// <summary>
+    /// ConfigureSwaggerGeneratorOptions.
+    /// Implements the <see cref="Microsoft.Extensions.Options.IConfigureOptions{KissU.Core.Swagger.SwaggerGen.Generator.SwaggerGeneratorOptions}" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Extensions.Options.IConfigureOptions{KissU.Core.Swagger.SwaggerGen.Generator.SwaggerGeneratorOptions}" />
     internal class ConfigureSwaggerGeneratorOptions : IConfigureOptions<SwaggerGeneratorOptions>
     {
         private readonly IServiceProvider _serviceProvider;
         private readonly SwaggerGenOptions _swaggerGenOptions;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ConfigureSwaggerGeneratorOptions"/> class.
+        /// </summary>
+        /// <param name="serviceProvider">The service provider.</param>
+        /// <param name="swaggerGenOptionsAccessor">The swagger gen options accessor.</param>
         public ConfigureSwaggerGeneratorOptions(
             IServiceProvider serviceProvider,
             IOptions<SwaggerGenOptions> swaggerGenOptionsAccessor)
@@ -20,6 +30,10 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
             _swaggerGenOptions = swaggerGenOptionsAccessor.Value;
         }
 
+        /// <summary>
+        /// Invoked to configure a <typeparamref name="TOptions" /> instance.
+        /// </summary>
+        /// <param name="options">The options instance to configure.</param>
         public void Configure(SwaggerGeneratorOptions options)
         {
             DeepCopy(_swaggerGenOptions.SwaggerGeneratorOptions, options);
@@ -36,6 +50,11 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
                 filterDescriptor => options.DocumentFilters.Add(CreateFilter<IDocumentFilter>(filterDescriptor)));
         }
 
+        /// <summary>
+        /// Deeps the copy.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="target">The target.</param>
         public void DeepCopy(SwaggerGeneratorOptions source, SwaggerGeneratorOptions target)
         {
             target.SwaggerDocs = new Dictionary<string, Info>(source.SwaggerDocs);

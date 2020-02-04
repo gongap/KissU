@@ -12,7 +12,14 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.Protocol.Udp
 {
-   public class DotNettyUdpServerMessageListener : IMessageListener, IDisposable
+    /// <summary>
+    /// DotNettyUdpServerMessageListener.
+    /// Implements the <see cref="KissU.Core.CPlatform.Transport.IMessageListener" />
+    /// Implements the <see cref="System.IDisposable" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Transport.IMessageListener" />
+    /// <seealso cref="System.IDisposable" />
+    public class DotNettyUdpServerMessageListener : IMessageListener, IDisposable
     {
         #region Field
 
@@ -22,11 +29,19 @@ namespace KissU.Core.Protocol.Udp
         private IChannel _channel;
         private readonly ISerializer<string> _serializer;
 
+        /// <summary>
+        /// 接收到消息的事件。
+        /// </summary>
         public event ReceivedDelegate Received;
 
         #endregion Field
 
         #region Constructor
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DotNettyUdpServerMessageListener"/> class.
+        /// </summary>
+        /// <param name="logger">The logger.</param>
+        /// <param name="codecFactory">The codec factory.</param>
         public DotNettyUdpServerMessageListener(ILogger<DotNettyUdpServerMessageListener> logger
             , ITransportMessageCodecFactory codecFactory)
         {
@@ -35,6 +50,10 @@ namespace KissU.Core.Protocol.Udp
             _transportMessageDecoder = codecFactory.GetDecoder();
         }
 
+        /// <summary>
+        /// start as an asynchronous operation.
+        /// </summary>
+        /// <param name="endPoint">The end point.</param>
         public async Task StartAsync(EndPoint endPoint)
         {
             if (_logger.IsEnabled(LogLevel.Debug))
@@ -68,6 +87,12 @@ namespace KissU.Core.Protocol.Udp
 
         }
 
+        /// <summary>
+        /// 触发接收到消息事件。
+        /// </summary>
+        /// <param name="sender">消息发送者。</param>
+        /// <param name="message">接收到的消息。</param>
+        /// <returns>一个任务。</returns>
         public async Task OnReceived(IMessageSender sender, TransportMessage message)
         {
             if (Received == null)
@@ -76,6 +101,9 @@ namespace KissU.Core.Protocol.Udp
         }
 
 
+        /// <summary>
+        /// Closes the asynchronous.
+        /// </summary>
         public void CloseAsync()
         {
             Task.Run(async () =>
@@ -85,6 +113,9 @@ namespace KissU.Core.Protocol.Udp
             }).Wait();
         }
 
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
         public void Dispose()
         {
             Task.Run(async () =>
@@ -95,6 +126,11 @@ namespace KissU.Core.Protocol.Udp
 
         #endregion
 
+        /// <summary>
+        /// ServerHandler.
+        /// Implements the <see cref="DotNetty.Transport.Channels.SimpleChannelInboundHandler{DotNetty.Transport.Channels.Sockets.DatagramPacket}" />
+        /// </summary>
+        /// <seealso cref="DotNetty.Transport.Channels.SimpleChannelInboundHandler{DotNetty.Transport.Channels.Sockets.DatagramPacket}" />
         private class ServerHandler : SimpleChannelInboundHandler<DatagramPacket>
         {
 
@@ -104,6 +140,12 @@ namespace KissU.Core.Protocol.Udp
 
 
 
+            /// <summary>
+            /// Initializes a new instance of the <see cref="ServerHandler"/> class.
+            /// </summary>
+            /// <param name="readAction">The read action.</param>
+            /// <param name="logger">The logger.</param>
+            /// <param name="serializer">The serializer.</param>
             public ServerHandler(Action<IChannelHandlerContext, TransportMessage> readAction, ILogger logger, ISerializer<string> serializer)
             {
                 _readAction = readAction;
@@ -111,6 +153,11 @@ namespace KissU.Core.Protocol.Udp
                 _serializer = serializer;
             }
 
+            /// <summary>
+            /// Channels the read0.
+            /// </summary>
+            /// <param name="ctx">The CTX.</param>
+            /// <param name="msg">The MSG.</param>
             protected override void ChannelRead0(IChannelHandlerContext ctx, DatagramPacket msg)
             {
                var buff = msg.Content;
@@ -119,6 +166,11 @@ namespace KissU.Core.Protocol.Udp
                 _readAction(ctx, new TransportMessage(messageBytes));
             }
 
+            /// <summary>
+            /// Exceptions the caught.
+            /// </summary>
+            /// <param name="context">The context.</param>
+            /// <param name="exception">The exception.</param>
             public override void ExceptionCaught(IChannelHandlerContext context, Exception exception)
             {
                 context.CloseAsync();

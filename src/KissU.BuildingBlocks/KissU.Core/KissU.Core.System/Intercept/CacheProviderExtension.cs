@@ -5,8 +5,21 @@ using Newtonsoft.Json;
 
 namespace KissU.Core.System.Intercept
 {
+    /// <summary>
+    /// CacheProviderExtension.
+    /// </summary>
     public static class CacheProviderExtension
     {
+        /// <summary>
+        /// Gets from cache first.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="cacheProvider">The cache provider.</param>
+        /// <param name="key">The key.</param>
+        /// <param name="getFromPersistence">The get from persistence.</param>
+        /// <param name="returnType">Type of the return.</param>
+        /// <param name="storeTime">The store time.</param>
+        /// <returns>Task&lt;T&gt;.</returns>
         public static async Task<T> GetFromCacheFirst<T>(this ICacheProvider cacheProvider, string key, Func<Task<T>> getFromPersistence, Type returnType, long? storeTime = null) where T : class
         {
             object returnValue;
@@ -44,6 +57,18 @@ namespace KissU.Core.System.Intercept
             }
         }
 
+        /// <summary>
+        /// Gets from cache first.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="cacheProvider">The cache provider.</param>
+        /// <param name="l2cacheProvider">The l2cache provider.</param>
+        /// <param name="l2Key">The l2 key.</param>
+        /// <param name="key">The key.</param>
+        /// <param name="getFromPersistence">The get from persistence.</param>
+        /// <param name="returnType">Type of the return.</param>
+        /// <param name="storeTime">The store time.</param>
+        /// <returns>Task&lt;T&gt;.</returns>
         public static async Task<T> GetFromCacheFirst<T>(this ICacheProvider cacheProvider, ICacheProvider l2cacheProvider,string l2Key, string key, Func<Task<T>> getFromPersistence, Type returnType, long? storeTime = null) where T : class
         {
             object returnValue;

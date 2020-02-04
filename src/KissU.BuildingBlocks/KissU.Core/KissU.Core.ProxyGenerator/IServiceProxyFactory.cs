@@ -14,13 +14,35 @@ namespace KissU.Core.ProxyGenerator
         /// <returns>服务代理实例。</returns>
         object CreateProxy(Type proxyType);
 
+        /// <summary>
+        /// Creates the proxy.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="type">The type.</param>
+        /// <returns>System.Object.</returns>
         object CreateProxy(string key, Type type);
 
+        /// <summary>
+        /// Registers the type of the prox.
+        /// </summary>
+        /// <param name="namespaces">The namespaces.</param>
+        /// <param name="types">The types.</param>
         void RegisterProxType(string[] namespaces, params Type[] types);
 
 
+        /// <summary>
+        /// Creates the proxy.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns>T.</returns>
         T CreateProxy<T>() where T : class;
 
+        /// <summary>
+        /// Creates the proxy.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key">The key.</param>
+        /// <returns>T.</returns>
         T CreateProxy<T>(string key) where T : class;
     }
 

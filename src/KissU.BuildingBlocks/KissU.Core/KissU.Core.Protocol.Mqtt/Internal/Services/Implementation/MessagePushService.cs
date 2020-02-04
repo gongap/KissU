@@ -12,13 +12,27 @@ using KissU.Core.Protocol.Mqtt.Util;
 
 namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
 {
-   public class MessagePushService:IMessagePushService
+    /// <summary>
+    /// MessagePushService.
+    /// Implements the <see cref="KissU.Core.Protocol.Mqtt.Internal.Services.IMessagePushService" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.Protocol.Mqtt.Internal.Services.IMessagePushService" />
+    public class MessagePushService:IMessagePushService
     {
         private readonly ScanRunnable _scanRunnable;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MessagePushService"/> class.
+        /// </summary>
+        /// <param name="scanRunnable">The scan runnable.</param>
         public MessagePushService(ScanRunnable scanRunnable)
         {
             _scanRunnable = scanRunnable;
         }
+        /// <summary>
+        /// Writes the will MSG.
+        /// </summary>
+        /// <param name="mqttChannel">The MQTT channel.</param>
+        /// <param name="willMeaasge">The will meaasge.</param>
         public async Task WriteWillMsg(MqttChannel mqttChannel, MqttWillMessage willMeaasge)
         {
             switch (willMeaasge.Qos)
@@ -36,6 +50,13 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
              
         }
 
+        /// <summary>
+        /// Sends the qos confirm MSG.
+        /// </summary>
+        /// <param name="qos">The qos.</param>
+        /// <param name="mqttChannel">The MQTT channel.</param>
+        /// <param name="topic">The topic.</param>
+        /// <param name="bytes">The bytes.</param>
         public async Task SendQosConfirmMsg(QualityOfService qos, MqttChannel mqttChannel, string topic, byte[] bytes)
         {
             if (mqttChannel.IsLogin())
@@ -85,6 +106,11 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
             }
         }
 
+        /// <summary>
+        /// Sends the pub back.
+        /// </summary>
+        /// <param name="channel">The channel.</param>
+        /// <param name="messageId">The message identifier.</param>
         public async Task SendPubBack(IChannel channel, int messageId)
         {
             var mqttPubAckMessage = new PubAckPacket()
@@ -94,6 +120,11 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
            await channel.WriteAndFlushAsync(mqttPubAckMessage);
         }
 
+        /// <summary>
+        /// Sends the pub record.
+        /// </summary>
+        /// <param name="mqttChannel">The MQTT channel.</param>
+        /// <param name="messageId">The message identifier.</param>
         public async Task SendPubRec(MqttChannel mqttChannel, int messageId)
         {
             var mqttPubAckMessage = new PubRecPacket()
@@ -105,7 +136,12 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
             var sendMqttMessage = Enqueue(channel, messageId, null, null, 1, ConfirmStatus.PUBREC);
             mqttChannel.AddMqttMessage(messageId, sendMqttMessage);
         }
-        
+
+        /// <summary>
+        /// Sends the pub relative.
+        /// </summary>
+        /// <param name="channel">The channel.</param>
+        /// <param name="messageId">The message identifier.</param>
         public async Task SendPubRel(IChannel channel, int messageId)
         {
             var mqttPubAckMessage = new PubRelPacket()
@@ -114,7 +150,12 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
             }; 
            await channel.WriteAndFlushAsync(mqttPubAckMessage); 
         }
-         
+
+        /// <summary>
+        /// Sends to pub comp.
+        /// </summary>
+        /// <param name="channel">The channel.</param>
+        /// <param name="messageId">The message identifier.</param>
         public async Task SendToPubComp(IChannel channel, int messageId)
         {
             var mqttPubAckMessage = new PubCompPacket()
@@ -125,6 +166,12 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
         }
 
 
+        /// <summary>
+        /// Sends the qos0 MSG.
+        /// </summary>
+        /// <param name="channel">The channel.</param>
+        /// <param name="topic">The topic.</param>
+        /// <param name="byteBuf">The byte buf.</param>
         public async Task SendQos0Msg(IChannel channel, String topic, byte[] byteBuf)
         {
             if (channel != null)

@@ -14,6 +14,9 @@ using RabbitMQ.Client;
 
 namespace KissU.Core.EventBusRabbitMQ
 {
+    /// <summary>
+    /// ContainerBuilderExtensions.
+    /// </summary>
     public static class ContainerBuilderExtensions
     {
 
@@ -55,6 +58,12 @@ namespace KissU.Core.EventBusRabbitMQ
             return builder;
         }
 
+        /// <summary>
+        /// Uses the rabbit mq event adapt.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="adapt">The adapt.</param>
+        /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder UseRabbitMQEventAdapt(this IServiceBuilder builder, Func<IServiceProvider, ISubscriptionAdapt> adapt)
         {
             var services = builder.Services;
@@ -62,6 +71,11 @@ namespace KissU.Core.EventBusRabbitMQ
             return builder;
         }
 
+        /// <summary>
+        /// Adds the rabbit mq adapt.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder AddRabbitMQAdapt(this IServiceBuilder builder)
         {
             return builder.UseRabbitMQEventAdapt(provider =>

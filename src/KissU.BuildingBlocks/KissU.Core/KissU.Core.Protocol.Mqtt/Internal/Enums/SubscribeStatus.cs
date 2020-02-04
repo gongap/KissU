@@ -1,8 +1,17 @@
 ﻿namespace KissU.Core.Protocol.Mqtt.Internal.Enums
 {
-   public enum SubscribeStatus
+    /// <summary>
+    /// Enum SubscribeStatus
+    /// </summary>
+    public enum SubscribeStatus
     {
+        /// <summary>
+        /// The yes
+        /// </summary>
         Yes,
+        /// <summary>
+        /// The no
+        /// </summary>
         No
     }
 }

@@ -6,11 +6,25 @@ using Microsoft.Net.Http.Headers;
 
 namespace KissU.Core.KestrelHttpServer.Abstractions
 {
-   public class FileContentResult : FileResult
+    /// <summary>
+    /// FileContentResult.
+    /// Implements the <see cref="KissU.Core.KestrelHttpServer.Abstractions.FileResult" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.KestrelHttpServer.Abstractions.FileResult" />
+    public class FileContentResult : FileResult
     {
         private byte[] _fileContents;
+        /// <summary>
+        /// The buffer size
+        /// </summary>
         protected const int BufferSize = 64 * 1024;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FileContentResult" /> class.
+        /// </summary>
+        /// <param name="fileContents">The file contents.</param>
+        /// <param name="contentType">Type of the content.</param>
+        /// <exception cref="ArgumentNullException">fileContents</exception>
         public FileContentResult(byte[] fileContents, string contentType)
             : this(fileContents, MediaTypeHeaderValue.Parse(contentType))
         {
@@ -20,6 +34,15 @@ namespace KissU.Core.KestrelHttpServer.Abstractions
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FileContentResult" /> class.
+        /// </summary>
+        /// <param name="fileContents">The file contents.</param>
+        /// <param name="contentType">Type of the content.</param>
+        /// <param name="fileDownloadName">Name of the file download.</param>
+        /// <exception cref="ArgumentNullException">fileContents</exception>
+        /// <exception cref="ArgumentNullException">fileDownloadName</exception>
+        /// <exception cref="ArgumentNullException">fileContents</exception>
         public FileContentResult(byte[] fileContents, string contentType,string fileDownloadName)
       : this(fileContents, MediaTypeHeaderValue.Parse(contentType))
         {
@@ -34,6 +57,12 @@ namespace KissU.Core.KestrelHttpServer.Abstractions
             this.FileDownloadName = fileDownloadName;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FileContentResult" /> class.
+        /// </summary>
+        /// <param name="fileContents">The file contents.</param>
+        /// <param name="contentType">Type of the content.</param>
+        /// <exception cref="ArgumentNullException">fileContents</exception>
         public FileContentResult(byte[] fileContents, MediaTypeHeaderValue contentType)
             : base(contentType?.ToString())
         {
@@ -44,7 +73,11 @@ namespace KissU.Core.KestrelHttpServer.Abstractions
 
             FileContents = fileContents;
         }
-        
+
+        /// <summary>
+        /// Gets or sets the file contents.
+        /// </summary>
+        /// <exception cref="ArgumentNullException">value</exception>
         public byte[] FileContents
         {
             get => _fileContents;
@@ -59,6 +92,11 @@ namespace KissU.Core.KestrelHttpServer.Abstractions
             }
         }
 
+        /// <summary>
+        /// execute result as an asynchronous operation.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <exception cref="ArgumentNullException">context</exception>
         public override async Task ExecuteResultAsync(ActionContext context)
         {
             if (context == null)

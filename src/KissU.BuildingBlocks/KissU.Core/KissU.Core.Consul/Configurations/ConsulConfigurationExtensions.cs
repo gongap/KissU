@@ -5,23 +5,56 @@ using Microsoft.Extensions.FileProviders;
 
 namespace KissU.Core.Consul.Configurations
 {
+    /// <summary>
+    /// ConsulConfigurationExtensions.
+    /// </summary>
     public static class ConsulConfigurationExtensions
     {
+        /// <summary>
+        /// Adds the consul file.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="path">The path.</param>
+        /// <returns>IConfigurationBuilder.</returns>
         public static IConfigurationBuilder AddConsulFile(this IConfigurationBuilder builder, string path)
         {
             return AddConsulFile(builder, provider: null, path: path, optional: false, reloadOnChange: false);
         }
 
+        /// <summary>
+        /// Adds the consul file.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="path">The path.</param>
+        /// <param name="optional">if set to <c>true</c> [optional].</param>
+        /// <returns>IConfigurationBuilder.</returns>
         public static IConfigurationBuilder AddConsulFile(this IConfigurationBuilder builder, string path, bool optional)
         {
             return AddConsulFile(builder, provider: null, path: path, optional: optional, reloadOnChange: false);
         }
 
+        /// <summary>
+        /// Adds the consul file.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="path">The path.</param>
+        /// <param name="optional">if set to <c>true</c> [optional].</param>
+        /// <param name="reloadOnChange">if set to <c>true</c> [reload on change].</param>
+        /// <returns>IConfigurationBuilder.</returns>
         public static IConfigurationBuilder AddConsulFile(this IConfigurationBuilder builder, string path, bool optional, bool reloadOnChange)
         {
             return AddConsulFile(builder, provider: null, path: path, optional: optional, reloadOnChange: reloadOnChange);
         }
 
+        /// <summary>
+        /// Adds the consul file.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="provider">The provider.</param>
+        /// <param name="path">The path.</param>
+        /// <param name="optional">if set to <c>true</c> [optional].</param>
+        /// <param name="reloadOnChange">if set to <c>true</c> [reload on change].</param>
+        /// <returns>IConfigurationBuilder.</returns>
         public static IConfigurationBuilder AddConsulFile(this IConfigurationBuilder builder, IFileProvider provider, string path, bool optional, bool reloadOnChange)
         {
             Check.NotNull(builder, "builder");

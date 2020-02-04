@@ -15,11 +15,20 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.Protocol.Mqtt.Implementation
 {
-    public  class ServerMqttHandlerService
+    /// <summary>
+    /// ServerMqttHandlerService.
+    /// </summary>
+    public class ServerMqttHandlerService
     {
         private readonly ILogger _logger;
         private readonly IChannelService _channelService;
         private readonly IMqttBehaviorProvider _mqttBehaviorProvider;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ServerMqttHandlerService"/> class.
+        /// </summary>
+        /// <param name="logger">The logger.</param>
+        /// <param name="channelService">The channel service.</param>
+        /// <param name="mqttBehaviorProvider">The MQTT behavior provider.</param>
         public ServerMqttHandlerService(
             ILogger logger, IChannelService channelService, IMqttBehaviorProvider mqttBehaviorProvider)
         {
@@ -28,11 +37,21 @@ namespace KissU.Core.Protocol.Mqtt.Implementation
             _mqttBehaviorProvider = mqttBehaviorProvider;
         }
 
+        /// <summary>
+        /// Connections the ack.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="packet">The packet.</param>
         public async Task ConnAck(IChannelHandlerContext context, ConnAckPacket packet)
         {
            await context.WriteAndFlushAsync(packet);
         }
 
+        /// <summary>
+        /// Logins the specified context.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="packet">The packet.</param>
         public async Task Login(IChannelHandlerContext context, ConnectPacket packet)
         {
 
@@ -104,6 +123,11 @@ namespace KissU.Core.Protocol.Mqtt.Implementation
             WirteDiagnosticAfter(message);
         }
 
+        /// <summary>
+        /// Disconnects the specified context.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="packet">The packet.</param>
         public async Task Disconnect(IChannelHandlerContext context, DisconnectPacket packet)
         {
             var deviceId = await _channelService.GetDeviceId(context.Channel);
@@ -114,6 +138,11 @@ namespace KissU.Core.Protocol.Mqtt.Implementation
 
         }
 
+        /// <summary>
+        /// Pings the req.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="packet">The packet.</param>
         public async Task  PingReq(IChannelHandlerContext context, PingReqPacket packet)
         {
             var channel = context.Channel;
@@ -126,11 +155,21 @@ namespace KissU.Core.Protocol.Mqtt.Implementation
             }
         }
 
+        /// <summary>
+        /// Pings the resp.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="packet">The packet.</param>
         public async Task PingResp(IChannelHandlerContext context, PingRespPacket packet)
         {
            await context.WriteAndFlushAsync(packet);
         }
 
+        /// <summary>
+        /// Pubs the ack.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="packet">The packet.</param>
         public async Task PubAck(IChannelHandlerContext context, PubAckPacket packet)
         {
             int messageId = packet.PacketId;
@@ -143,6 +182,11 @@ namespace KissU.Core.Protocol.Mqtt.Implementation
             await context.WriteAndFlushAsync(packet);
         }
 
+        /// <summary>
+        /// Pubs the comp.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="packet">The packet.</param>
         public async Task PubComp(IChannelHandlerContext context, PubCompPacket packet)
         {
             int messageId = packet.PacketId;
@@ -155,11 +199,21 @@ namespace KissU.Core.Protocol.Mqtt.Implementation
             await context.WriteAndFlushAsync(packet);
         }
 
+        /// <summary>
+        /// Publishes the specified context.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="packet">The packet.</param>
         public async Task Publish(IChannelHandlerContext context, PublishPacket packet)
         {
             await _channelService.Publish(context.Channel, packet);
         }
 
+        /// <summary>
+        /// Pubs the record.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="packet">The packet.</param>
         public async Task PubRec(IChannelHandlerContext context, PubRecPacket packet)
         {
             int messageId = packet.PacketId;
@@ -172,6 +226,11 @@ namespace KissU.Core.Protocol.Mqtt.Implementation
             await _channelService.Pubrec(mqttChannel, messageId);
         }
 
+        /// <summary>
+        /// Pubs the relative.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="packet">The packet.</param>
         public async Task PubRel(IChannelHandlerContext context, PubRelPacket packet)
         {
             int messageId = packet.PacketId;
@@ -184,11 +243,21 @@ namespace KissU.Core.Protocol.Mqtt.Implementation
             await _channelService.Pubrel(context.Channel, messageId);
         }
 
+        /// <summary>
+        /// Subs the ack.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="packet">The packet.</param>
         public async Task SubAck(IChannelHandlerContext context, SubAckPacket packet)
         {
            await  context.WriteAndFlushAsync(packet);
         }
 
+        /// <summary>
+        /// Subscribes the specified context.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="packet">The packet.</param>
         public async Task Subscribe(IChannelHandlerContext context, SubscribePacket packet)
         {
             if (packet != null)
@@ -203,12 +272,22 @@ namespace KissU.Core.Protocol.Mqtt.Implementation
             }
         }
 
-        public  async Task UnsubAck(IChannelHandlerContext context, UnsubAckPacket packet)
+        /// <summary>
+        /// Unsubs the ack.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="packet">The packet.</param>
+        public async Task UnsubAck(IChannelHandlerContext context, UnsubAckPacket packet)
         {
            await context.WriteAndFlushAsync(packet);
         }
 
-        public  async Task Unsubscribe(IChannelHandlerContext context, UnsubscribePacket packet)
+        /// <summary>
+        /// Unsubscribes the specified context.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="packet">The packet.</param>
+        public async Task Unsubscribe(IChannelHandlerContext context, UnsubscribePacket packet)
         {
             string [] topics = packet.TopicFilters.ToArray();
             var deviceId = await _channelService.GetDeviceId(context.Channel);

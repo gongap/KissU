@@ -5,10 +5,19 @@ using KissU.Core.CPlatform.Transport.Codec;
 
 namespace KissU.Core.DotNetty.Adapter
 {
+    /// <summary>
+    /// TransportMessageChannelHandlerAdapter.
+    /// Implements the <see cref="DotNetty.Transport.Channels.ChannelHandlerAdapter" />
+    /// </summary>
+    /// <seealso cref="DotNetty.Transport.Channels.ChannelHandlerAdapter" />
     class TransportMessageChannelHandlerAdapter : ChannelHandlerAdapter
     {
         private readonly ITransportMessageDecoder _transportMessageDecoder;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TransportMessageChannelHandlerAdapter"/> class.
+        /// </summary>
+        /// <param name="transportMessageDecoder">The transport message decoder.</param>
         public TransportMessageChannelHandlerAdapter(ITransportMessageDecoder transportMessageDecoder)
         {
             _transportMessageDecoder = transportMessageDecoder;
@@ -16,6 +25,11 @@ namespace KissU.Core.DotNetty.Adapter
 
         #region Overrides of ChannelHandlerAdapter
 
+        /// <summary>
+        /// Channels the read.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="message">The message.</param>
         public override void ChannelRead(IChannelHandlerContext context, object message)
         {
             var buffer = (IByteBuffer)message;

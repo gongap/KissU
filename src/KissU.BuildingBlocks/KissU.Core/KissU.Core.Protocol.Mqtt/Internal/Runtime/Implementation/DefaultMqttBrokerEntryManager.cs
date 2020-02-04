@@ -11,6 +11,11 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.Protocol.Mqtt.Internal.Runtime.Implementation
 {
+    /// <summary>
+    /// DefaultMqttBrokerEntryManager.
+    /// Implements the <see cref="KissU.Core.Protocol.Mqtt.Internal.Runtime.IMqttBrokerEntryManger" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.Protocol.Mqtt.Internal.Runtime.IMqttBrokerEntryManger" />
     public class DefaultMqttBrokerEntryManager : IMqttBrokerEntryManger
     {
         private readonly IMqttServiceRouteManager _mqttServiceRouteManager;
@@ -18,6 +23,12 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Runtime.Implementation
         private readonly ConcurrentDictionary<string, IEnumerable<AddressModel>> _brokerEntries =
             new ConcurrentDictionary<string, IEnumerable<AddressModel>>();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DefaultMqttBrokerEntryManager"/> class.
+        /// </summary>
+        /// <param name="mqttServiceRouteManager">The MQTT service route manager.</param>
+        /// <param name="logger">The logger.</param>
+        /// <param name="healthCheckService">The health check service.</param>
         public DefaultMqttBrokerEntryManager(IMqttServiceRouteManager mqttServiceRouteManager,
                 ILogger<DefaultMqttBrokerEntryManager> logger, IHealthCheckService healthCheckService)
         {
@@ -28,11 +39,21 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Runtime.Implementation
             healthCheckService.Removed += MqttRouteManager_Removed;
         }
 
+        /// <summary>
+        /// Cancellations the reg.
+        /// </summary>
+        /// <param name="topic">The topic.</param>
+        /// <param name="addressModel">The address model.</param>
         public async Task CancellationReg(string topic, AddressModel addressModel)
         {
             await _mqttServiceRouteManager.RemoveByTopicAsync(topic, new AddressModel[] { addressModel });
         }
 
+        /// <summary>
+        /// Gets the MQTT broker address.
+        /// </summary>
+        /// <param name="topic">The topic.</param>
+        /// <returns>ValueTask&lt;IEnumerable&lt;AddressModel&gt;&gt;.</returns>
         public async ValueTask<IEnumerable<AddressModel>> GetMqttBrokerAddress(string topic)
         {
             _brokerEntries.TryGetValue(topic, out IEnumerable<AddressModel> addresses);
@@ -49,6 +70,11 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Runtime.Implementation
             return addresses;
         }
 
+        /// <summary>
+        /// Registers the specified topic.
+        /// </summary>
+        /// <param name="topic">The topic.</param>
+        /// <param name="addressModel">The address model.</param>
         public async Task Register(string topic, AddressModel addressModel)
         {
             await _mqttServiceRouteManager.SetRoutesAsync(new MqttServiceRoute[]

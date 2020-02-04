@@ -18,13 +18,23 @@ using Newtonsoft.Json.Serialization;
 
 namespace KissU.Core.Swagger.SwaggerUI
 {
-   public class SwaggerUIMiddleware
+    /// <summary>
+    /// SwaggerUIMiddleware.
+    /// </summary>
+    public class SwaggerUIMiddleware
     {
         private const string EmbeddedFileNamespace = "KissU.Core.Swagger.SwaggerUI.node_modules.swagger_ui_dist";
 
         private readonly SwaggerUIOptions _options;
         private readonly StaticFileMiddleware _staticFileMiddleware;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SwaggerUIMiddleware"/> class.
+        /// </summary>
+        /// <param name="next">The next.</param>
+        /// <param name="hostingEnv">The hosting env.</param>
+        /// <param name="loggerFactory">The logger factory.</param>
+        /// <param name="optionsAccessor">The options accessor.</param>
         public SwaggerUIMiddleware(
             RequestDelegate next,
             IWebHostEnvironment hostingEnv,
@@ -33,6 +43,13 @@ namespace KissU.Core.Swagger.SwaggerUI
             : this(next, hostingEnv, loggerFactory, optionsAccessor.Value)
         { }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SwaggerUIMiddleware"/> class.
+        /// </summary>
+        /// <param name="next">The next.</param>
+        /// <param name="hostingEnv">The hosting env.</param>
+        /// <param name="loggerFactory">The logger factory.</param>
+        /// <param name="options">The options.</param>
         public SwaggerUIMiddleware(
             RequestDelegate next,
             IWebHostEnvironment hostingEnv,
@@ -43,6 +60,10 @@ namespace KissU.Core.Swagger.SwaggerUI
             _staticFileMiddleware = CreateStaticFileMiddleware(next, hostingEnv, loggerFactory, options);
         }
 
+        /// <summary>
+        /// Invokes the specified HTTP context.
+        /// </summary>
+        /// <param name="httpContext">The HTTP context.</param>
         public async Task Invoke(HttpContext httpContext)
         {
             var httpMethod = httpContext.Request.Method;

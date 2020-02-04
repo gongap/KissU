@@ -6,6 +6,11 @@ using KissU.Core.Consul.Utilitys;
 
 namespace KissU.Core.Consul.WatcherProvider.Implementation
 {
+    /// <summary>
+    /// ChildrenMonitorWatcher.
+    /// Implements the <see cref="KissU.Core.Consul.WatcherProvider.Implementation.WatcherBase" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.Consul.WatcherProvider.Implementation.WatcherBase" />
     public class ChildrenMonitorWatcher : WatcherBase
     {
         private readonly Action<string[], string[]> _action;
@@ -14,6 +19,14 @@ namespace KissU.Core.Consul.WatcherProvider.Implementation
         private readonly Func<string[], string[]> _func;
         private string[] _currentData = new string[0];
         private readonly Func<ValueTask<ConsulClient>> _clientCall;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ChildrenMonitorWatcher"/> class.
+        /// </summary>
+        /// <param name="clientCall">The client call.</param>
+        /// <param name="manager">The manager.</param>
+        /// <param name="path">The path.</param>
+        /// <param name="action">The action.</param>
+        /// <param name="func">The function.</param>
         public ChildrenMonitorWatcher(Func<ValueTask<ConsulClient>> clientCall, IClientWatchManager manager, string path,
             Action<string[], string[]> action, Func<string[], string[]> func)
         {
@@ -25,12 +38,20 @@ namespace KissU.Core.Consul.WatcherProvider.Implementation
             RegisterWatch();
         }
 
+        /// <summary>
+        /// Sets the current data.
+        /// </summary>
+        /// <param name="currentData">The current data.</param>
+        /// <returns>ChildrenMonitorWatcher.</returns>
         public ChildrenMonitorWatcher SetCurrentData(string[] currentData)
         {
             _currentData = currentData ?? new string[0];
             return this;
         }
 
+        /// <summary>
+        /// Processes the implementation.
+        /// </summary>
         protected override async Task ProcessImpl()
         {
             RegisterWatch(this);

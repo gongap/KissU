@@ -16,6 +16,13 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.DotNetty
 {
+    /// <summary>
+    /// DotNettyServerMessageListener.
+    /// Implements the <see cref="KissU.Core.CPlatform.Transport.IMessageListener" />
+    /// Implements the <see cref="System.IDisposable" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Transport.IMessageListener" />
+    /// <seealso cref="System.IDisposable" />
     public class DotNettyServerMessageListener : IMessageListener, IDisposable
     {
         #region Field
@@ -29,6 +36,11 @@ namespace KissU.Core.DotNetty
 
         #region Constructor
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DotNettyServerMessageListener"/> class.
+        /// </summary>
+        /// <param name="logger">The logger.</param>
+        /// <param name="codecFactory">The codec factory.</param>
         public DotNettyServerMessageListener(ILogger<DotNettyServerMessageListener> logger, ITransportMessageCodecFactory codecFactory)
         {
             _logger = logger;
@@ -40,6 +52,9 @@ namespace KissU.Core.DotNetty
 
         #region Implementation of IMessageListener
 
+        /// <summary>
+        /// 接收到消息的事件。
+        /// </summary>
         public event ReceivedDelegate Received;
 
         /// <summary>
@@ -57,6 +72,10 @@ namespace KissU.Core.DotNetty
 
         #endregion Implementation of IMessageListener
 
+        /// <summary>
+        /// start as an asynchronous operation.
+        /// </summary>
+        /// <param name="endPoint">The end point.</param>
         public async Task StartAsync(EndPoint endPoint)
         {
             if (_logger.IsEnabled(LogLevel.Debug))
@@ -107,6 +126,9 @@ namespace KissU.Core.DotNetty
             }
         }
 
+        /// <summary>
+        /// Closes the asynchronous.
+        /// </summary>
         public void CloseAsync()
         {
             Task.Run(async () =>
@@ -118,7 +140,9 @@ namespace KissU.Core.DotNetty
 
         #region Implementation of IDisposable
 
-        /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
         public void Dispose()
         {
             Task.Run(async () =>
@@ -131,11 +155,21 @@ namespace KissU.Core.DotNetty
 
         #region Help Class
 
+        /// <summary>
+        /// ServerHandler.
+        /// Implements the <see cref="DotNetty.Transport.Channels.ChannelHandlerAdapter" />
+        /// </summary>
+        /// <seealso cref="DotNetty.Transport.Channels.ChannelHandlerAdapter" />
         private class ServerHandler : ChannelHandlerAdapter
         {
             private readonly Action<IChannelHandlerContext, TransportMessage> _readAction;
             private readonly ILogger _logger;
 
+            /// <summary>
+            /// Initializes a new instance of the <see cref="ServerHandler"/> class.
+            /// </summary>
+            /// <param name="readAction">The read action.</param>
+            /// <param name="logger">The logger.</param>
             public ServerHandler(Action<IChannelHandlerContext, TransportMessage> readAction, ILogger logger)
             {
                 _readAction = readAction;
@@ -144,6 +178,11 @@ namespace KissU.Core.DotNetty
 
             #region Overrides of ChannelHandlerAdapter
 
+            /// <summary>
+            /// Channels the read.
+            /// </summary>
+            /// <param name="context">The context.</param>
+            /// <param name="message">The message.</param>
             public override void ChannelRead(IChannelHandlerContext context, object message)
             {
                 Task.Run(() =>
@@ -153,11 +192,20 @@ namespace KissU.Core.DotNetty
                 });
             }
 
+            /// <summary>
+            /// Channels the read complete.
+            /// </summary>
+            /// <param name="context">The context.</param>
             public override void ChannelReadComplete(IChannelHandlerContext context)
             {
                 context.Flush();
             }
 
+            /// <summary>
+            /// Exceptions the caught.
+            /// </summary>
+            /// <param name="context">The context.</param>
+            /// <param name="exception">The exception.</param>
             public override void ExceptionCaught(IChannelHandlerContext context, Exception exception)
             {
                 context.CloseAsync();//客户端主动断开需要应答，否则socket变成CLOSE_WAIT状态导致socket资源耗尽

@@ -11,6 +11,10 @@ namespace KissU.Core.System.Intercept
     /// </summary>
     public class CacheProviderInterceptor : CacheInterceptor
     {
+        /// <summary>
+        /// Intercepts the specified invocation.
+        /// </summary>
+        /// <param name="invocation">The invocation.</param>
         public override async Task Intercept(ICacheInvocation invocation)
         {
             var attribute =

@@ -8,8 +8,14 @@ using Microsoft.AspNetCore.Mvc.ApiExplorer;
 
 namespace KissU.Core.Swagger.SwaggerGen.Generator
 {
+    /// <summary>
+    /// SwaggerGeneratorOptions.
+    /// </summary>
     public class SwaggerGeneratorOptions
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SwaggerGeneratorOptions"/> class.
+        /// </summary>
         public SwaggerGeneratorOptions()
         {
             SwaggerDocs = new Dictionary<string, Info>();
@@ -25,32 +31,74 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
             DocumentFilters = new List<IDocumentFilter>();
         }
 
+        /// <summary>
+        /// Gets or sets the swagger docs.
+        /// </summary>
         public IDictionary<string, Info> SwaggerDocs { get; set; }
 
+        /// <summary>
+        /// Gets or sets the document inclusion predicate.
+        /// </summary>
         public Func<string, ApiDescription, bool> DocInclusionPredicate { get; set; }
 
+        /// <summary>
+        /// Gets or sets the document inclusion predicate v2.
+        /// </summary>
         public Func<string, ServiceEntry, bool> DocInclusionPredicateV2 { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether [ignore obsolete actions].
+        /// </summary>
         public bool IgnoreObsoleteActions { get; set; }
 
+        /// <summary>
+        /// Gets or sets the conflicting actions resolver.
+        /// </summary>
         public Func<IEnumerable<ApiDescription>, ApiDescription> ConflictingActionsResolver { get; set; }
 
+        /// <summary>
+        /// Gets or sets the operation identifier selector.
+        /// </summary>
         public Func<ApiDescription, string> OperationIdSelector { get; set; }
 
+        /// <summary>
+        /// Gets or sets the tags selector.
+        /// </summary>
         public Func<ApiDescription, IList<string>> TagsSelector { get; set; }
 
+        /// <summary>
+        /// Gets or sets the sort key selector.
+        /// </summary>
         public Func<ApiDescription, string> SortKeySelector { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether [describe all parameters in camel case].
+        /// </summary>
         public bool DescribeAllParametersInCamelCase { get; set; }
 
+        /// <summary>
+        /// Gets or sets the security definitions.
+        /// </summary>
         public IDictionary<string, SecurityScheme> SecurityDefinitions { get; set; }
 
+        /// <summary>
+        /// Gets or sets the security requirements.
+        /// </summary>
         public IList<IDictionary<string, IEnumerable<string>>> SecurityRequirements { get; set; }
 
+        /// <summary>
+        /// Gets or sets the parameter filters.
+        /// </summary>
         public IList<IParameterFilter> ParameterFilters { get; set; }
 
+        /// <summary>
+        /// Gets or sets the operation filters.
+        /// </summary>
         public List<IOperationFilter> OperationFilters { get; set; }
 
+        /// <summary>
+        /// Gets or sets the document filters.
+        /// </summary>
         public IList<IDocumentFilter> DocumentFilters { get; set; }
 
         private bool DefaultDocInclusionPredicate(string documentName, ApiDescription apiDescription)

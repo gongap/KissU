@@ -17,7 +17,14 @@ using org.apache.zookeeper;
 
 namespace KissU.Core.Zookeeper
 {
-   public class ZooKeeperMqttServiceRouteManager : MqttServiceRouteManagerBase, IDisposable
+    /// <summary>
+    /// ZooKeeperMqttServiceRouteManager.
+    /// Implements the <see cref="KissU.Core.CPlatform.Mqtt.Implementation.MqttServiceRouteManagerBase" />
+    /// Implements the <see cref="System.IDisposable" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Mqtt.Implementation.MqttServiceRouteManagerBase" />
+    /// <seealso cref="System.IDisposable" />
+    public class ZooKeeperMqttServiceRouteManager : MqttServiceRouteManagerBase, IDisposable
     { 
         private readonly ConfigInfo _configInfo;
         private readonly ISerializer<byte[]> _serializer;
@@ -26,6 +33,15 @@ namespace KissU.Core.Zookeeper
         private MqttServiceRoute[] _routes;
         private readonly IZookeeperClientProvider _zookeeperClientProvider;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ZooKeeperMqttServiceRouteManager"/> class.
+        /// </summary>
+        /// <param name="configInfo">The configuration information.</param>
+        /// <param name="serializer">The serializer.</param>
+        /// <param name="stringSerializer">The string serializer.</param>
+        /// <param name="mqttServiceFactory">The MQTT service factory.</param>
+        /// <param name="logger">The logger.</param>
+        /// <param name="zookeeperClientProvider">The zookeeper client provider.</param>
         public ZooKeeperMqttServiceRouteManager(ConfigInfo configInfo, ISerializer<byte[]> serializer,
             ISerializer<string> stringSerializer, IMqttServiceFactory mqttServiceFactory,
             ILogger<ZooKeeperMqttServiceRouteManager> logger, IZookeeperClientProvider zookeeperClientProvider) : base(stringSerializer)
@@ -137,6 +153,10 @@ namespace KissU.Core.Zookeeper
             }
         }
 
+        /// <summary>
+        /// remve address as an asynchronous operation.
+        /// </summary>
+        /// <param name="Address">The address.</param>
         public override async Task RemveAddressAsync(IEnumerable<AddressModel> Address)
         {
             var routes = await GetRoutesAsync();
@@ -147,6 +167,12 @@ namespace KissU.Core.Zookeeper
             await base.SetRoutesAsync(routes);
         }
 
+        /// <summary>
+        /// remove by topic as an asynchronous operation.
+        /// </summary>
+        /// <param name="topic">The topic.</param>
+        /// <param name="endpoint">The endpoint.</param>
+        /// <returns>Task.</returns>
         public override async Task RemoveByTopicAsync(string topic, IEnumerable<AddressModel> endpoint)
         {
             var routes = await GetRoutesAsync();
@@ -158,6 +184,11 @@ namespace KissU.Core.Zookeeper
             }
         }
 
+        /// <summary>
+        /// set routes as an asynchronous operation.
+        /// </summary>
+        /// <param name="routes">服务路由集合。</param>
+        /// <returns>一个任务。</returns>
         public override async Task SetRoutesAsync(IEnumerable<MqttServiceRoute> routes)
         {
             var hostAddr = NetUtils.GetHostAddress();
@@ -319,6 +350,11 @@ namespace KissU.Core.Zookeeper
             return true;
         }
 
+        /// <summary>
+        /// Nodes the change.
+        /// </summary>
+        /// <param name="oldData">The old data.</param>
+        /// <param name="newData">The new data.</param>
         public async Task NodeChange(byte[] oldData, byte[] newData)
         {
             if (DataEquals(oldData, newData))
@@ -341,6 +377,11 @@ namespace KissU.Core.Zookeeper
             OnChanged(new MqttServiceRouteChangedEventArgs(newRoute, oldRoute));
         }
 
+        /// <summary>
+        /// Childrens the change.
+        /// </summary>
+        /// <param name="oldChildrens">The old childrens.</param>
+        /// <param name="newChildrens">The new childrens.</param>
         public async Task ChildrenChange(string[] oldChildrens, string[] newChildrens)
         {
             if (_logger.IsEnabled(LogLevel.Debug))
@@ -385,7 +426,9 @@ namespace KissU.Core.Zookeeper
         }
 
 
-        /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
         public void Dispose()
         { 
         }

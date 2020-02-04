@@ -45,11 +45,24 @@ namespace KissU.Core.DotNetty
 
         #region Constructor
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DotNettyTransportClientFactory"/> class.
+        /// </summary>
+        /// <param name="codecFactory">The codec factory.</param>
+        /// <param name="healthCheckService">The health check service.</param>
+        /// <param name="logger">The logger.</param>
         public DotNettyTransportClientFactory(ITransportMessageCodecFactory codecFactory, IHealthCheckService healthCheckService, ILogger<DotNettyTransportClientFactory> logger)
             : this(codecFactory, healthCheckService, logger, null)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DotNettyTransportClientFactory"/> class.
+        /// </summary>
+        /// <param name="codecFactory">The codec factory.</param>
+        /// <param name="healthCheckService">The health check service.</param>
+        /// <param name="logger">The logger.</param>
+        /// <param name="serviceExecutor">The service executor.</param>
         public DotNettyTransportClientFactory(ITransportMessageCodecFactory codecFactory, IHealthCheckService healthCheckService, ILogger<DotNettyTransportClientFactory> logger, IServiceExecutor serviceExecutor)
         {
             _transportMessageEncoder = codecFactory.GetEncoder();
@@ -121,7 +134,9 @@ namespace KissU.Core.DotNetty
 
         #region Implementation of IDisposable
 
-        /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
         public void Dispose()
         {
             foreach (var client in _clients.Values)
@@ -156,10 +171,19 @@ namespace KissU.Core.DotNetty
             return bootstrap;
         }
 
+        /// <summary>
+        /// DefaultChannelHandler.
+        /// Implements the <see cref="DotNetty.Transport.Channels.ChannelHandlerAdapter" />
+        /// </summary>
+        /// <seealso cref="DotNetty.Transport.Channels.ChannelHandlerAdapter" />
         protected class DefaultChannelHandler : ChannelHandlerAdapter
         {
             private readonly DotNettyTransportClientFactory _factory;
 
+            /// <summary>
+            /// Initializes a new instance of the <see cref="DefaultChannelHandler"/> class.
+            /// </summary>
+            /// <param name="factory">The factory.</param>
             public DefaultChannelHandler(DotNettyTransportClientFactory factory)
             {
                 this._factory = factory;
@@ -167,11 +191,20 @@ namespace KissU.Core.DotNetty
 
             #region Overrides of ChannelHandlerAdapter
 
+            /// <summary>
+            /// Channels the inactive.
+            /// </summary>
+            /// <param name="context">The context.</param>
             public override void ChannelInactive(IChannelHandlerContext context)
             {
                 _factory._clients.TryRemove(context.Channel.GetAttribute(origEndPointKey).Get(), out var value);
             }
 
+            /// <summary>
+            /// Channels the read.
+            /// </summary>
+            /// <param name="context">The context.</param>
+            /// <param name="message">The message.</param>
             public override void ChannelRead(IChannelHandlerContext context, object message)
             {
                 var transportMessage = message as TransportMessage;

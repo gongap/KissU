@@ -19,10 +19,20 @@ using Microsoft.Extensions.DependencyModel;
 
 namespace KissU.Core.ProxyGenerator.Utilitys
 {
+    /// <summary>
+    /// CompilationUtilitys.
+    /// </summary>
     public static class CompilationUtilitys
     {
         #region Public Method
 
+        /// <summary>
+        /// Compiles the client proxy.
+        /// </summary>
+        /// <param name="trees">The trees.</param>
+        /// <param name="references">The references.</param>
+        /// <param name="logger">The logger.</param>
+        /// <returns>MemoryStream.</returns>
         public static MemoryStream CompileClientProxy(IEnumerable<SyntaxTree> trees, IEnumerable<MetadataReference> references, ILogger logger = null)
         {
 #if !NET
@@ -45,11 +55,28 @@ namespace KissU.Core.ProxyGenerator.Utilitys
             return Compile(AssemblyInfo.Create("KissU.Cores.ClientProxys"), trees, references, logger);
         }
 
+        /// <summary>
+        /// Compiles the specified assembly information.
+        /// </summary>
+        /// <param name="assemblyInfo">The assembly information.</param>
+        /// <param name="trees">The trees.</param>
+        /// <param name="references">The references.</param>
+        /// <param name="logger">The logger.</param>
+        /// <returns>MemoryStream.</returns>
         public static MemoryStream Compile(AssemblyInfo assemblyInfo, IEnumerable<SyntaxTree> trees, IEnumerable<MetadataReference> references, ILogger logger = null)
         {
             return Compile(assemblyInfo.Title, assemblyInfo, trees, references, logger);
         }
 
+        /// <summary>
+        /// Compiles the specified assembly name.
+        /// </summary>
+        /// <param name="assemblyName">Name of the assembly.</param>
+        /// <param name="assemblyInfo">The assembly information.</param>
+        /// <param name="trees">The trees.</param>
+        /// <param name="references">The references.</param>
+        /// <param name="logger">The logger.</param>
+        /// <returns>MemoryStream.</returns>
         public static MemoryStream Compile(string assemblyName, AssemblyInfo assemblyInfo, IEnumerable<SyntaxTree> trees, IEnumerable<MetadataReference> references, ILogger logger = null)
         {
             trees = trees.Concat(new[] { GetAssemblyInfo(assemblyInfo) });
@@ -232,16 +259,47 @@ namespace KissU.Core.ProxyGenerator.Utilitys
 
         #region Help Class
 
+        /// <summary>
+        /// AssemblyInfo.
+        /// </summary>
         public class AssemblyInfo
         {
+            /// <summary>
+            /// Gets or sets the title.
+            /// </summary>
             public string Title { get; set; }
+            /// <summary>
+            /// Gets or sets the product.
+            /// </summary>
             public string Product { get; set; }
+            /// <summary>
+            /// Gets or sets the copyright.
+            /// </summary>
             public string Copyright { get; set; }
+            /// <summary>
+            /// Gets or sets the unique identifier.
+            /// </summary>
             public string Guid { get; set; }
+            /// <summary>
+            /// Gets or sets the version.
+            /// </summary>
             public string Version { get; set; }
+            /// <summary>
+            /// Gets or sets the file version.
+            /// </summary>
             public string FileVersion { get; set; }
+            /// <summary>
+            /// Gets or sets a value indicating whether [COM visible].
+            /// </summary>
             public bool ComVisible { get; set; }
 
+            /// <summary>
+            /// Creates the specified name.
+            /// </summary>
+            /// <param name="name">The name.</param>
+            /// <param name="copyright">The copyright.</param>
+            /// <param name="version">The version.</param>
+            /// <returns>AssemblyInfo.</returns>
             public static AssemblyInfo Create(string name, string copyright = "Copyright ©  KissU", string version = "0.0.0.1")
             {
                 return new AssemblyInfo

@@ -19,6 +19,11 @@ using KissU.Core.Swagger.Swagger.Model;
 
 namespace KissU.Core.Swagger.SwaggerGen.Generator
 {
+    /// <summary>
+    /// SwaggerGenerator.
+    /// Implements the <see cref="KissU.Core.Swagger.Swagger.Model.ISwaggerProvider" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.Swagger.Swagger.Model.ISwaggerProvider" />
     public class SwaggerGenerator : ISwaggerProvider
     {
         private readonly IApiDescriptionGroupCollectionProvider _apiDescriptionsProvider;
@@ -26,6 +31,12 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
         private readonly SwaggerGeneratorOptions _options;
         private readonly IServiceEntryProvider _serviceEntryProvider;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SwaggerGenerator"/> class.
+        /// </summary>
+        /// <param name="apiDescriptionsProvider">The API descriptions provider.</param>
+        /// <param name="schemaRegistryFactory">The schema registry factory.</param>
+        /// <param name="optionsAccessor">The options accessor.</param>
         public SwaggerGenerator(
             IApiDescriptionGroupCollectionProvider apiDescriptionsProvider,
             ISchemaRegistryFactory schemaRegistryFactory,
@@ -33,6 +44,12 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
             : this(apiDescriptionsProvider, schemaRegistryFactory, optionsAccessor.Value)
         { }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SwaggerGenerator"/> class.
+        /// </summary>
+        /// <param name="apiDescriptionsProvider">The API descriptions provider.</param>
+        /// <param name="schemaRegistryFactory">The schema registry factory.</param>
+        /// <param name="options">The options.</param>
         public SwaggerGenerator(
             IApiDescriptionGroupCollectionProvider apiDescriptionsProvider,
             ISchemaRegistryFactory schemaRegistryFactory,
@@ -44,6 +61,15 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
             _serviceEntryProvider = ServiceLocator.Current.Resolve<IServiceEntryProvider>();
         }
 
+        /// <summary>
+        /// Gets the swagger.
+        /// </summary>
+        /// <param name="documentName">Name of the document.</param>
+        /// <param name="host">The host.</param>
+        /// <param name="basePath">The base path.</param>
+        /// <param name="schemes">The schemes.</param>
+        /// <returns>SwaggerDocument.</returns>
+        /// <exception cref="UnknownSwaggerDocument"></exception>
         public SwaggerDocument GetSwagger(
             string documentName,
             string host = null,

@@ -10,6 +10,11 @@ using KissU.Core.CPlatform.Address;
 
 namespace KissU.Core.Zookeeper.Internal.Cluster.HealthChecks.Implementation
 {
+    /// <summary>
+    /// DefaultHealthCheckService.
+    /// Implements the <see cref="KissU.Core.Zookeeper.Internal.Cluster.HealthChecks.IHealthCheckService" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.Zookeeper.Internal.Cluster.HealthChecks.IHealthCheckService" />
     public class DefaultHealthCheckService : IHealthCheckService
     {
         private readonly int _timeout = 30000;
@@ -18,6 +23,9 @@ namespace KissU.Core.Zookeeper.Internal.Cluster.HealthChecks.Implementation
     new ConcurrentDictionary<ValueTuple<string, int>, MonitorEntry>();
 
         #region Implementation of IHealthCheckService
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DefaultHealthCheckService"/> class.
+        /// </summary>
         public DefaultHealthCheckService()
         {
             var timeSpan = TimeSpan.FromSeconds(60);
@@ -28,6 +36,11 @@ namespace KissU.Core.Zookeeper.Internal.Cluster.HealthChecks.Implementation
             }, null, timeSpan, timeSpan);
         }
 
+        /// <summary>
+        /// Determines whether the specified address is health.
+        /// </summary>
+        /// <param name="address">The address.</param>
+        /// <returns>ValueTask&lt;System.Boolean&gt;.</returns>
         public async ValueTask<bool> IsHealth(AddressModel address)
         {
             var ipAddress = address as IpAddressModel;
@@ -36,6 +49,10 @@ namespace KissU.Core.Zookeeper.Internal.Cluster.HealthChecks.Implementation
             return isHealth;
         }
 
+        /// <summary>
+        /// Monitors the specified address.
+        /// </summary>
+        /// <param name="address">The address.</param>
         public void Monitor(AddressModel address)
         {
             var ipAddress = address as IpAddressModel;
@@ -44,6 +61,9 @@ namespace KissU.Core.Zookeeper.Internal.Cluster.HealthChecks.Implementation
 
         #region Implementation of IDisposable
 
+        /// <summary>
+        /// Disposes this instance.
+        /// </summary>
         public void Dispose()
         {
             _timer.Dispose();
@@ -97,8 +117,16 @@ namespace KissU.Core.Zookeeper.Internal.Cluster.HealthChecks.Implementation
 
         #region Help Class
 
+        /// <summary>
+        /// MonitorEntry.
+        /// </summary>
         protected class MonitorEntry
         {
+            /// <summary>
+            /// Initializes a new instance of the <see cref="MonitorEntry"/> class.
+            /// </summary>
+            /// <param name="addressModel">The address model.</param>
+            /// <param name="health">if set to <c>true</c> [health].</param>
             public MonitorEntry(AddressModel addressModel, bool health = true)
             {
                 EndPoint = addressModel.CreateEndPoint();
@@ -106,9 +134,18 @@ namespace KissU.Core.Zookeeper.Internal.Cluster.HealthChecks.Implementation
 
             }
 
+            /// <summary>
+            /// Gets or sets the unhealthy times.
+            /// </summary>
             public int UnhealthyTimes { get; set; }
 
+            /// <summary>
+            /// Gets or sets the end point.
+            /// </summary>
             public EndPoint EndPoint { get; set; }
+            /// <summary>
+            /// Gets or sets a value indicating whether this <see cref="MonitorEntry"/> is health.
+            /// </summary>
             public bool Health { get; set; }
         }
 

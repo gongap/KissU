@@ -5,8 +5,16 @@ using System.Text;
 
 namespace KissU.Core.Configuration.Apollo.Configurations
 {
+    /// <summary>
+    /// ConfigFileFormatMethods.
+    /// </summary>
     public static class ConfigFileFormatMethods
     {
+        /// <summary>
+        /// Gets the string.
+        /// </summary>
+        /// <param name="format">The format.</param>
+        /// <returns>System.String.</returns>
         public static string GetString(this ConfigFileFormat format)
         {
             return format switch

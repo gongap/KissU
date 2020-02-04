@@ -7,6 +7,11 @@ using KissU.Core.CPlatform.Transport;
 
 namespace KissU.Core.Protocol.WS
 {
+    /// <summary>
+    /// WSServiceHost.
+    /// Implements the <see cref="KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceHostAbstract" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceHostAbstract" />
     public class WSServiceHost : ServiceHostAbstract
     {
         #region Field
@@ -16,6 +21,10 @@ namespace KissU.Core.Protocol.WS
 
         #endregion Field
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WSServiceHost"/> class.
+        /// </summary>
+        /// <param name="messageListenerFactory">The message listener factory.</param>
         public WSServiceHost(Func<EndPoint, Task<IMessageListener>> messageListenerFactory) : base(null)
         {
             _messageListenerFactory = messageListenerFactory;
@@ -23,7 +32,9 @@ namespace KissU.Core.Protocol.WS
 
         #region Overrides of ServiceHostAbstract
 
-        /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
         public override void Dispose()
         {
             (_serverMessageListener as IDisposable)?.Dispose();
@@ -42,6 +53,11 @@ namespace KissU.Core.Protocol.WS
         
         }
 
+        /// <summary>
+        /// start as an asynchronous operation.
+        /// </summary>
+        /// <param name="ip">The ip.</param>
+        /// <param name="port">The port.</param>
         public override async Task StartAsync(string ip, int port)
         {
             if (_serverMessageListener != null)

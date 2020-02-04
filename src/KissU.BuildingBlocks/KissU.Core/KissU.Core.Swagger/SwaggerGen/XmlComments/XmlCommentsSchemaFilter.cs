@@ -6,6 +6,11 @@ using Newtonsoft.Json.Serialization;
 
 namespace KissU.Core.Swagger.SwaggerGen.XmlComments
 {
+    /// <summary>
+    /// XmlCommentsSchemaFilter.
+    /// Implements the <see cref="KissU.Core.Swagger.SwaggerGen.Generator.ISchemaFilter" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.Swagger.SwaggerGen.Generator.ISchemaFilter" />
     public class XmlCommentsSchemaFilter : ISchemaFilter
     {
         private const string MemberXPath = "/doc/members/member[@name='{0}']";
@@ -14,11 +19,20 @@ namespace KissU.Core.Swagger.SwaggerGen.XmlComments
 
         private readonly XPathNavigator _xmlNavigator;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XmlCommentsSchemaFilter"/> class.
+        /// </summary>
+        /// <param name="xmlDoc">The XML document.</param>
         public XmlCommentsSchemaFilter(XPathDocument xmlDoc)
         {
             _xmlNavigator = xmlDoc.CreateNavigator();
         }
 
+        /// <summary>
+        /// Applies the specified schema.
+        /// </summary>
+        /// <param name="schema">The schema.</param>
+        /// <param name="context">The context.</param>
         public void Apply(Schema schema, SchemaFilterContext context)
         {
             var jsonObjectContract = context.JsonContract as JsonObjectContract;

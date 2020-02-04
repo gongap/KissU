@@ -7,8 +7,16 @@ using Newtonsoft.Json.Serialization;
 
 namespace KissU.Core.Swagger.SwaggerGen.Generator
 {
+    /// <summary>
+    /// JsonPropertyExtensions.
+    /// </summary>
     internal static class JsonPropertyExtensions
     {
+        /// <summary>
+        /// Determines whether the specified json property is required.
+        /// </summary>
+        /// <param name="jsonProperty">The json property.</param>
+        /// <returns><c>true</c> if the specified json property is required; otherwise, <c>false</c>.</returns>
         internal static bool IsRequired(this JsonProperty jsonProperty)
         {
             if (jsonProperty.Required == Newtonsoft.Json.Required.AllowNull)
@@ -23,11 +31,22 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
             return false;
         }
 
+        /// <summary>
+        /// Determines whether the specified json property is obsolete.
+        /// </summary>
+        /// <param name="jsonProperty">The json property.</param>
+        /// <returns><c>true</c> if the specified json property is obsolete; otherwise, <c>false</c>.</returns>
         internal static bool IsObsolete(this JsonProperty jsonProperty)
         {
             return jsonProperty.HasAttribute<ObsoleteAttribute>();
         }
 
+        /// <summary>
+        /// Determines whether the specified json property has attribute.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="jsonProperty">The json property.</param>
+        /// <returns><c>true</c> if the specified json property has attribute; otherwise, <c>false</c>.</returns>
         internal static bool HasAttribute<T>(this JsonProperty jsonProperty)
             where T : Attribute
         {
@@ -37,6 +56,12 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
             return memberInfo.GetCustomAttribute<T>() != null;
         }
 
+        /// <summary>
+        /// Tries the get member information.
+        /// </summary>
+        /// <param name="jsonProperty">The json property.</param>
+        /// <param name="memberInfo">The member information.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         internal static bool TryGetMemberInfo(this JsonProperty jsonProperty, out MemberInfo memberInfo)
         {
             if (jsonProperty.UnderlyingName == null)

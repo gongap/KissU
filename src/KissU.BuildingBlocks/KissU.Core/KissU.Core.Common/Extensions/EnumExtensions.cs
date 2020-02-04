@@ -11,7 +11,7 @@ namespace KissU.Core.Common.Extensions
     public static class EnumExtensions
     {
         /// <summary>
-        ///  获取对枚举的描述信息
+        /// 获取对枚举的描述信息
         /// </summary>
         /// <param name="value">枚举</param>
         /// <returns>返回枚举的描述信息</returns>
@@ -49,6 +49,7 @@ namespace KissU.Core.Common.Extensions
         /// </summary>
         /// <param name="type">枚举</param>
         /// <returns>返回枚举的值对象</returns>
+        /// <exception cref="Exception">type 类型必须为枚举类型!</exception>
         public static List<Tuple<string, string>> GetEnumSource(this Type type)
         {
             if (!type.GetTypeInfo().IsEnum)

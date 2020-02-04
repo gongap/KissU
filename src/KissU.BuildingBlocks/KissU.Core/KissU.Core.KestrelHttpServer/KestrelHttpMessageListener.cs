@@ -22,6 +22,13 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.KestrelHttpServer
 {
+    /// <summary>
+    /// KestrelHttpMessageListener.
+    /// Implements the <see cref="KissU.Core.KestrelHttpServer.HttpMessageListener" />
+    /// Implements the <see cref="System.IDisposable" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.KestrelHttpServer.HttpMessageListener" />
+    /// <seealso cref="System.IDisposable" />
     public class KestrelHttpMessageListener : HttpMessageListener, IDisposable
     {
         private readonly ILogger<KestrelHttpMessageListener> _logger;
@@ -33,6 +40,15 @@ namespace KissU.Core.KestrelHttpServer
         private readonly CPlatformContainer _container;
         private readonly IServiceRouteProvider _serviceRouteProvider;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="KestrelHttpMessageListener"/> class.
+        /// </summary>
+        /// <param name="logger">The logger.</param>
+        /// <param name="serializer">The serializer.</param>
+        /// <param name="lifetime">The lifetime.</param>
+        /// <param name="moduleProvider">The module provider.</param>
+        /// <param name="serviceRouteProvider">The service route provider.</param>
+        /// <param name="container">The container.</param>
         public KestrelHttpMessageListener(ILogger<KestrelHttpMessageListener> logger,
             ISerializer<string> serializer, 
             IServiceEngineLifetime lifetime,
@@ -48,6 +64,11 @@ namespace KissU.Core.KestrelHttpServer
             _serviceRouteProvider = serviceRouteProvider;
         }
 
+        /// <summary>
+        /// start as an asynchronous operation.
+        /// </summary>
+        /// <param name="address">The address.</param>
+        /// <param name="port">The port.</param>
         public async Task StartAsync(IPAddress address,int? port)
         { 
             try
@@ -97,11 +118,21 @@ namespace KissU.Core.KestrelHttpServer
 
         }
 
+        /// <summary>
+        /// Configures the host.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="options">The options.</param>
+        /// <param name="ipAddress">The ip address.</param>
         public void ConfigureHost(WebHostBuilderContext context, KestrelServerOptions options,IPAddress ipAddress)
         {
             _moduleProvider.ConfigureHost(new WebHostContext(context, options, ipAddress));
         }
 
+        /// <summary>
+        /// Configures the services.
+        /// </summary>
+        /// <param name="services">The services.</param>
         public void ConfigureServices(IServiceCollection services)
         { 
             var builder = new ContainerBuilder();
@@ -158,6 +189,9 @@ namespace KissU.Core.KestrelHttpServer
             }, ex));
         }
 
+        /// <summary>
+        /// Disposes this instance.
+        /// </summary>
         public void Dispose()
         {
             _host.Dispose();

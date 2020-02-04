@@ -7,11 +7,21 @@ using Microsoft.Extensions.Options;
 
 namespace KissU.Core.Swagger.SwaggerGen.Application
 {
+    /// <summary>
+    /// ConfigureSchemaRegistryOptions.
+    /// Implements the <see cref="Microsoft.Extensions.Options.IConfigureOptions{KissU.Core.Swagger.SwaggerGen.Generator.SchemaRegistryOptions}" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Extensions.Options.IConfigureOptions{KissU.Core.Swagger.SwaggerGen.Generator.SchemaRegistryOptions}" />
     internal class ConfigureSchemaRegistryOptions : IConfigureOptions<SchemaRegistryOptions>
     {
         private readonly IServiceProvider _serviceProvider;
         private readonly SwaggerGenOptions _swaggerGenOptions;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ConfigureSchemaRegistryOptions"/> class.
+        /// </summary>
+        /// <param name="serviceProvider">The service provider.</param>
+        /// <param name="swaggerGenOptionsAccessor">The swagger gen options accessor.</param>
         public ConfigureSchemaRegistryOptions(
             IServiceProvider serviceProvider,
             IOptions<SwaggerGenOptions> swaggerGenOptionsAccessor)
@@ -20,6 +30,10 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
             _swaggerGenOptions = swaggerGenOptionsAccessor.Value;
         }
 
+        /// <summary>
+        /// Configures the specified options.
+        /// </summary>
+        /// <param name="options">The options.</param>
         public void Configure(SchemaRegistryOptions options)
         {
             DeepCopy(_swaggerGenOptions.SchemaRegistryOptions, options);

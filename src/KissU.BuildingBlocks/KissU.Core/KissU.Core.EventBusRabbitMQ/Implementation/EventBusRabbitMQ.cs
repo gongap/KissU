@@ -22,6 +22,13 @@ using RabbitMQ.Client.Framing;
 
 namespace KissU.Core.EventBusRabbitMQ.Implementation
 {
+    /// <summary>
+    /// EventBusRabbitMQ.
+    /// Implements the <see cref="KissU.Core.CPlatform.EventBus.Implementation.IEventBus" />
+    /// Implements the <see cref="System.IDisposable" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.EventBus.Implementation.IEventBus" />
+    /// <seealso cref="System.IDisposable" />
     public class EventBusRabbitMQ : IEventBus, IDisposable
     {
         private readonly string BROKER_NAME;
@@ -36,8 +43,19 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
 
         private IDictionary<Tuple<string,QueueConsumerMode>, IModel> _consumerChannels;
 
+        /// <summary>
+        /// Occurs when [on shutdown].
+        /// </summary>
         public event EventHandler OnShutdown;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EventBusRabbitMQ"/> class.
+        /// </summary>
+        /// <param name="persistentConnection">The persistent connection.</param>
+        /// <param name="logger">The logger.</param>
+        /// <param name="subsManager">The subs manager.</param>
+        /// <exception cref="ArgumentNullException">persistentConnection</exception>
+        /// <exception cref="ArgumentNullException">logger</exception>
         public EventBusRabbitMQ(IRabbitMQPersistentConnection persistentConnection, ILogger<EventBusRabbitMQ> logger, IEventBusSubscriptionsManager subsManager)
         {
             BROKER_NAME = AppConfig.BrokerName;
@@ -72,6 +90,10 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
             }
         }
 
+        /// <summary>
+        /// Publishes the specified event.
+        /// </summary>
+        /// <param name="event">The event.</param>
         public void Publish(IntegrationEvent @event)
         {
             if (!_persistentConnection.IsConnected)
@@ -108,6 +130,13 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
             }
         }
 
+        /// <summary>
+        /// Subscribes the specified handler.
+        /// </summary>
+        /// <typeparam name="T">事件参数类型</typeparam>
+        /// <typeparam name="TH">The type of the th.</typeparam>
+        /// <param name="handler">The handler.</param>
+        /// <exception cref="ArgumentNullException">QueueConsumerAttribute</exception>
         public void Subscribe<T, TH>(Func<TH> handler)
             where TH : IIntegrationEventHandler<T>
         {
@@ -154,6 +183,11 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
                 _subsManager.AddSubscription<T, TH>(handler, queueConsumerAttr.QueueName);
         }
 
+        /// <summary>
+        /// Unsubscribes this instance.
+        /// </summary>
+        /// <typeparam name="T">事件参数类型</typeparam>
+        /// <typeparam name="TH">The type of the th.</typeparam>
         public void Unsubscribe<T, TH>()
             where TH : IIntegrationEventHandler<T>
         {
@@ -174,6 +208,9 @@ namespace KissU.Core.EventBusRabbitMQ.Implementation
             return null;
         }
 
+        /// <summary>
+        /// Disposes this instance.
+        /// </summary>
         public void Dispose()
         {
             foreach (var key in _consumerChannels.Keys)

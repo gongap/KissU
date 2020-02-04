@@ -13,6 +13,11 @@ using WebSocketCore.Server;
 
 namespace KissU.Core.Protocol.WS.Runtime.Implementation
 {
+    /// <summary>
+    /// DefaultWSServiceEntryProvider.
+    /// Implements the <see cref="KissU.Core.Protocol.WS.Runtime.IWSServiceEntryProvider" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.Protocol.WS.Runtime.IWSServiceEntryProvider" />
     public class DefaultWSServiceEntryProvider : IWSServiceEntryProvider
     {
         #region Field
@@ -27,6 +32,13 @@ namespace KissU.Core.Protocol.WS.Runtime.Implementation
 
         #region Constructor
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DefaultWSServiceEntryProvider"/> class.
+        /// </summary>
+        /// <param name="serviceEntryProvider">The service entry provider.</param>
+        /// <param name="logger">The logger.</param>
+        /// <param name="serviceProvider">The service provider.</param>
+        /// <param name="options">The options.</param>
         public DefaultWSServiceEntryProvider(IServiceEntryProvider  serviceEntryProvider,
             ILogger<DefaultWSServiceEntryProvider> logger,
             CPlatformContainer serviceProvider,
@@ -69,6 +81,11 @@ namespace KissU.Core.Protocol.WS.Runtime.Implementation
         }
         #endregion
 
+        /// <summary>
+        /// Creates the service entry.
+        /// </summary>
+        /// <param name="service">The service.</param>
+        /// <returns>WSServiceEntry.</returns>
         public WSServiceEntry CreateServiceEntry(Type service)
         {
             WSServiceEntry result = null;

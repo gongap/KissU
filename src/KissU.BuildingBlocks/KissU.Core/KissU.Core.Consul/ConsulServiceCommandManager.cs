@@ -20,6 +20,13 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.Consul
 {
+    /// <summary>
+    /// ConsulServiceCommandManager.
+    /// Implements the <see cref="KissU.Core.CPlatform.Support.Implementation.ServiceCommandManagerBase" />
+    /// Implements the <see cref="System.IDisposable" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Support.Implementation.ServiceCommandManagerBase" />
+    /// <seealso cref="System.IDisposable" />
     public class ConsulServiceCommandManager : ServiceCommandManagerBase, IDisposable
     {
         private readonly ConfigInfo _configInfo;
@@ -32,6 +39,18 @@ namespace KissU.Core.Consul
         private readonly IServiceHeartbeatManager _serviceHeartbeatManager;
         private readonly IConsulClientProvider _consulClientFactory;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ConsulServiceCommandManager"/> class.
+        /// </summary>
+        /// <param name="configInfo">The configuration information.</param>
+        /// <param name="serializer">The serializer.</param>
+        /// <param name="stringSerializer">The string serializer.</param>
+        /// <param name="serviceRouteManager">The service route manager.</param>
+        /// <param name="manager">The manager.</param>
+        /// <param name="serviceEntryManager">The service entry manager.</param>
+        /// <param name="logger">The logger.</param>
+        /// <param name="serviceHeartbeatManager">The service heartbeat manager.</param>
+        /// <param name="consulClientFactory">The consul client factory.</param>
         public ConsulServiceCommandManager(ConfigInfo configInfo, ISerializer<byte[]> serializer,
         ISerializer<string> stringSerializer, IServiceRouteManager serviceRouteManager, IClientWatchManager manager, IServiceEntryManager serviceEntryManager,
             ILogger<ConsulServiceCommandManager> logger,
@@ -49,6 +68,10 @@ namespace KissU.Core.Consul
             _serviceRouteManager.Removed += ServiceRouteManager_Removed;
         }
 
+        /// <summary>
+        /// clear as an asynchronous operation.
+        /// </summary>
+        /// <returns>一个任务。</returns>
         public override async Task ClearAsync()
         {
             var clients = await _consulClientFactory.GetClients();
@@ -68,6 +91,9 @@ namespace KissU.Core.Consul
             }
         }
 
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
         public void Dispose()
         {
         }
@@ -82,6 +108,11 @@ namespace KissU.Core.Consul
             return _serviceCommands;
         }
 
+        /// <summary>
+        /// Nodes the change.
+        /// </summary>
+        /// <param name="oldData">The old data.</param>
+        /// <param name="newData">The new data.</param>
         public void NodeChange(byte[] oldData, byte[] newData)
         {
             if (DataEquals(oldData, newData))
@@ -111,6 +142,10 @@ namespace KissU.Core.Consul
                 OnChanged(new ServiceCommandChangedEventArgs(newCommand, oldCommand));
         }
 
+        /// <summary>
+        /// Nodes the change.
+        /// </summary>
+        /// <param name="newCommand">The new command.</param>
         public void NodeChange(ServiceCommandDescriptor newCommand)
         {
             //得到旧的服务命令。
@@ -128,6 +163,10 @@ namespace KissU.Core.Consul
             OnChanged(new ServiceCommandChangedEventArgs(newCommand, oldCommand));
         }
 
+        /// <summary>
+        /// set service commands as an asynchronous operation.
+        /// </summary>
+        /// <param name="serviceCommands">The service commands.</param>
         public override async Task SetServiceCommandsAsync(IEnumerable<ServiceCommandDescriptor> serviceCommands)
         {
             var clients = await _consulClientFactory.GetClients();
@@ -146,6 +185,10 @@ namespace KissU.Core.Consul
             }
         }
 
+        /// <summary>
+        /// initialize service commands as an asynchronous operation.
+        /// </summary>
+        /// <param name="serviceCommands">The service commands.</param>
         protected override async Task InitServiceCommandsAsync(IEnumerable<ServiceCommandDescriptor> serviceCommands)
         {
             var commands = await GetServiceCommands(serviceCommands.Select(p => $"{ _configInfo.CommandPath}{ p.ServiceId}"));
@@ -308,6 +351,11 @@ namespace KissU.Core.Consul
             return true;
         }
 
+        /// <summary>
+        /// Childrens the change.
+        /// </summary>
+        /// <param name="oldChildrens">The old childrens.</param>
+        /// <param name="newChildrens">The new childrens.</param>
         public async Task ChildrenChange(string[] oldChildrens, string[] newChildrens)
         {
             if (_logger.IsEnabled(Microsoft.Extensions.Logging.LogLevel.Debug))

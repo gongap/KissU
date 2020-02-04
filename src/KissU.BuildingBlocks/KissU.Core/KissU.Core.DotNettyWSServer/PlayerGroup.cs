@@ -6,20 +6,38 @@ using DotNetty.Transport.Channels.Groups;
 
 namespace KissU.Core.DotNettyWSServer
 {
+    /// <summary>
+    /// PlayerGroup.
+    /// </summary>
     public class PlayerGroup
     {
+        /// <summary>
+        /// Gets or sets the channel group.
+        /// </summary>
         public static IChannelGroup ChannelGroup { get; set; }
 
-         public static void AddChannel(IChannel channel)
+        /// <summary>
+        /// Adds the channel.
+        /// </summary>
+        /// <param name="channel">The channel.</param>
+        public static void AddChannel(IChannel channel)
         {
             ChannelGroup.Add(channel);
         }
 
+        /// <summary>
+        /// Removes the channel.
+        /// </summary>
+        /// <param name="channel">The channel.</param>
         public static void RemoveChannel(IChannel channel)
         {
             ChannelGroup.Remove(channel);
         }
 
+        /// <summary>
+        /// Broads the cast.
+        /// </summary>
+        /// <param name="message">The message.</param>
         public static async Task BroadCast(IByteBuffer message)
         {
             if (ChannelGroup == null) return;
@@ -29,6 +47,9 @@ namespace KissU.Core.DotNettyWSServer
             await ChannelGroup.WriteAndFlushAsync(frame);
         }
 
+        /// <summary>
+        /// Destories this instance.
+        /// </summary>
         public static async Task Destory()
         {
             if (ChannelGroup == null) return;

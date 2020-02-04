@@ -10,7 +10,12 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.Protocol.Udp.Runtime.Implementation
 {
-   public class DefaultUdpServiceEntryProvider : IUdpServiceEntryProvider
+    /// <summary>
+    /// DefaultUdpServiceEntryProvider.
+    /// Implements the <see cref="KissU.Core.Protocol.Udp.Runtime.IUdpServiceEntryProvider" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.Protocol.Udp.Runtime.IUdpServiceEntryProvider" />
+    public class DefaultUdpServiceEntryProvider : IUdpServiceEntryProvider
     {
         #region Field
 
@@ -23,6 +28,12 @@ namespace KissU.Core.Protocol.Udp.Runtime.Implementation
 
         #region Constructor
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DefaultUdpServiceEntryProvider"/> class.
+        /// </summary>
+        /// <param name="serviceEntryProvider">The service entry provider.</param>
+        /// <param name="logger">The logger.</param>
+        /// <param name="serviceProvider">The service provider.</param>
         public DefaultUdpServiceEntryProvider(IServiceEntryProvider serviceEntryProvider,
             ILogger<DefaultUdpServiceEntryProvider> logger,
             CPlatformContainer serviceProvider)
@@ -63,6 +74,11 @@ namespace KissU.Core.Protocol.Udp.Runtime.Implementation
             return _udpServiceEntry;
         }
 
+        /// <summary>
+        /// Creates the service entry.
+        /// </summary>
+        /// <param name="service">The service.</param>
+        /// <returns>UdpServiceEntry.</returns>
         public UdpServiceEntry CreateServiceEntry(Type service)
         {
             UdpServiceEntry result = null;

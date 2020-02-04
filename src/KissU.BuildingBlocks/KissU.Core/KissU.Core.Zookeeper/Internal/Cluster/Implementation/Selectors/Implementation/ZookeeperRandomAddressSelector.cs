@@ -6,7 +6,12 @@ using KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selec
 
 namespace KissU.Core.Zookeeper.Internal.Cluster.Implementation.Selectors.Implementation
 {
-    public  class ZookeeperRandomAddressSelector : ZookeeperAddressSelectorBase
+    /// <summary>
+    /// ZookeeperRandomAddressSelector.
+    /// Implements the <see cref="KissU.Core.Zookeeper.Internal.Cluster.Implementation.Selectors.Implementation.ZookeeperAddressSelectorBase" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.Zookeeper.Internal.Cluster.Implementation.Selectors.Implementation.ZookeeperAddressSelectorBase" />
+    public class ZookeeperRandomAddressSelector : ZookeeperAddressSelectorBase
     {
         #region Field
 
@@ -30,6 +35,7 @@ namespace KissU.Core.Zookeeper.Internal.Cluster.Implementation.Selectors.Impleme
         /// 初始化一个自定义的随机地址选择器。
         /// </summary>
         /// <param name="generate">随机数生成委托，第一个参数为最小值，第二个参数为最大值（不可以超过该值）。</param>
+        /// <exception cref="ArgumentNullException">generate</exception>
         public ZookeeperRandomAddressSelector(Func<int, int, int> generate)
         {
             if (generate == null)

@@ -2,8 +2,15 @@
 
 namespace KissU.Core.Protocol.Mqtt.Internal.Runtime
 {
-   public interface IMqttBehaviorProvider
+    /// <summary>
+    /// Interface IMqttBehaviorProvider
+    /// </summary>
+    public interface IMqttBehaviorProvider
     {
+        /// <summary>
+        /// Gets the MQTT behavior.
+        /// </summary>
+        /// <returns>MqttBehavior.</returns>
         MqttBehavior GetMqttBehavior();
     }
 }

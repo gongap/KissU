@@ -9,6 +9,11 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.EventBusKafka.Implementation
 {
+    /// <summary>
+    /// KafkaConsumerPersistentConnection.
+    /// Implements the <see cref="KissU.Core.EventBusKafka.Implementation.KafkaPersistentConnectionBase" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.EventBusKafka.Implementation.KafkaPersistentConnectionBase" />
     public class KafkaConsumerPersistentConnection : KafkaPersistentConnectionBase
     {
         private readonly ILogger<KafkaConsumerPersistentConnection> _logger;
@@ -17,6 +22,10 @@ namespace KissU.Core.EventBusKafka.Implementation
         private readonly IDeserializer<string> _stringDeserializer;
         bool _disposed;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="KafkaConsumerPersistentConnection" /> class.
+        /// </summary>
+        /// <param name="logger">The logger.</param>
         public KafkaConsumerPersistentConnection(ILogger<KafkaConsumerPersistentConnection> logger)
             : base(logger, AppConfig.KafkaConsumerConfig)
         {
@@ -25,8 +34,16 @@ namespace KissU.Core.EventBusKafka.Implementation
             _consumerClients = new ConcurrentBag<Consumer<Null, string>>();
         }
 
+        /// <summary>
+        /// Gets a value indicating whether this instance is connected.
+        /// </summary>
         public override bool IsConnected => _consumerClient != null && !_disposed;
 
+        /// <summary>
+        /// Connections the specified options.
+        /// </summary>
+        /// <param name="options">The options.</param>
+        /// <returns>Action.</returns>
         public override Action Connection(IEnumerable<KeyValuePair<string, object>> options)
         {
             return () =>
@@ -39,6 +56,10 @@ namespace KissU.Core.EventBusKafka.Implementation
             };
         }
 
+        /// <summary>
+        /// Listenings the specified timeout.
+        /// </summary>
+        /// <param name="timeout">The timeout.</param>
         public void Listening(TimeSpan timeout)
         {
             if (!IsConnected)
@@ -64,6 +85,10 @@ namespace KissU.Core.EventBusKafka.Implementation
             }
         }
 
+        /// <summary>
+        /// Creates the connect.
+        /// </summary>
+        /// <returns>System.Object.</returns>
         public override object CreateConnect()
         {
             TryConnect();
@@ -90,6 +115,9 @@ namespace KissU.Core.EventBusKafka.Implementation
             TryConnect();
         }
 
+        /// <summary>
+        /// Disposes this instance.
+        /// </summary>
         public override void Dispose()
         {
             if (_disposed) return;

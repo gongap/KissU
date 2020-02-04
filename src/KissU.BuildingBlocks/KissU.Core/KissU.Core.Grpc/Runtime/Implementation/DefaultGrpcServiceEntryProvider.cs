@@ -8,6 +8,11 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.Grpc.Runtime.Implementation
 {
+    /// <summary>
+    /// DefaultGrpcServiceEntryProvider.
+    /// Implements the <see cref="KissU.Core.Grpc.Runtime.IGrpcServiceEntryProvider" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.Grpc.Runtime.IGrpcServiceEntryProvider" />
     public class DefaultGrpcServiceEntryProvider: IGrpcServiceEntryProvider
     { 
         #region Field
@@ -21,6 +26,12 @@ namespace KissU.Core.Grpc.Runtime.Implementation
 
         #region Constructor
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DefaultGrpcServiceEntryProvider" /> class.
+        /// </summary>
+        /// <param name="serviceEntryProvider">The service entry provider.</param>
+        /// <param name="logger">The logger.</param>
+        /// <param name="serviceProvider">The service provider.</param>
         public DefaultGrpcServiceEntryProvider(IServiceEntryProvider serviceEntryProvider,
             ILogger<DefaultGrpcServiceEntryProvider> logger,
             CPlatformContainer serviceProvider)
@@ -60,6 +71,11 @@ namespace KissU.Core.Grpc.Runtime.Implementation
             return _grpcServiceEntries;
         }
 
+        /// <summary>
+        /// Creates the service entry.
+        /// </summary>
+        /// <param name="service">The service.</param>
+        /// <returns>GrpcServiceEntry.</returns>
         public GrpcServiceEntry CreateServiceEntry(Type service)
         {
             GrpcServiceEntry result = null; 

@@ -5,21 +5,37 @@ using KissU.Core.CPlatform.EventBus.Events;
 
 namespace KissU.Core.EventBusKafka.Implementation
 {
-    public  class KafkaSubscriptionAdapt : ISubscriptionAdapt
+    /// <summary>
+    /// KafkaSubscriptionAdapt.
+    /// Implements the <see cref="KissU.Core.CPlatform.EventBus.ISubscriptionAdapt" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.EventBus.ISubscriptionAdapt" />
+    public class KafkaSubscriptionAdapt : ISubscriptionAdapt
     {
         private readonly IConsumeConfigurator _consumeConfigurator;
         private readonly IEnumerable<IIntegrationEventHandler> _integrationEventHandler;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="KafkaSubscriptionAdapt" /> class.
+        /// </summary>
+        /// <param name="consumeConfigurator">The consume configurator.</param>
+        /// <param name="integrationEventHandler">The integration event handler.</param>
         public KafkaSubscriptionAdapt(IConsumeConfigurator consumeConfigurator, IEnumerable<IIntegrationEventHandler> integrationEventHandler)
         {
             this._consumeConfigurator = consumeConfigurator;
             this._integrationEventHandler = integrationEventHandler;
         }
 
+        /// <summary>
+        /// 订阅.
+        /// </summary>
         public void SubscribeAt()
         {
             _consumeConfigurator.Configure(GetQueueConsumers());
         }
 
+        /// <summary>
+        /// Unsubscribes this instance.
+        /// </summary>
         public void Unsubscribe()
         {
             _consumeConfigurator.Unconfigure(GetQueueConsumers());

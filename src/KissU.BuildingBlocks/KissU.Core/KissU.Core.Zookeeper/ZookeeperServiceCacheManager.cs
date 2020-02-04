@@ -15,6 +15,13 @@ using org.apache.zookeeper;
 
 namespace KissU.Core.Zookeeper
 {
+    /// <summary>
+    /// ZookeeperServiceCacheManager.
+    /// Implements the <see cref="KissU.Core.CPlatform.Cache.Implementation.ServiceCacheManagerBase" />
+    /// Implements the <see cref="System.IDisposable" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Cache.Implementation.ServiceCacheManagerBase" />
+    /// <seealso cref="System.IDisposable" />
     public class ZookeeperServiceCacheManager : ServiceCacheManagerBase, IDisposable
     { 
         private readonly ConfigInfo _configInfo;
@@ -25,6 +32,15 @@ namespace KissU.Core.Zookeeper
         private readonly ISerializer<string> _stringSerializer;
         private readonly IZookeeperClientProvider _zookeeperClientProvider;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ZookeeperServiceCacheManager"/> class.
+        /// </summary>
+        /// <param name="configInfo">The configuration information.</param>
+        /// <param name="serializer">The serializer.</param>
+        /// <param name="stringSerializer">The string serializer.</param>
+        /// <param name="serviceCacheFactory">The service cache factory.</param>
+        /// <param name="logger">The logger.</param>
+        /// <param name="zookeeperClientProvider">The zookeeper client provider.</param>
         public ZookeeperServiceCacheManager(ConfigInfo configInfo, ISerializer<byte[]> serializer,
         ISerializer<string> stringSerializer, IServiceCacheFactory serviceCacheFactory,
         ILogger<ZookeeperServiceCacheManager> logger, IZookeeperClientProvider zookeeperClientProvider) : base(stringSerializer)
@@ -38,6 +54,10 @@ namespace KissU.Core.Zookeeper
             EnterCaches().Wait();
         }
 
+        /// <summary>
+        /// clear as an asynchronous operation.
+        /// </summary>
+        /// <returns>Task.</returns>
         public override async Task ClearAsync()
         {
             if (_logger.IsEnabled(LogLevel.Information))
@@ -78,23 +98,40 @@ namespace KissU.Core.Zookeeper
             }
         }
 
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
         public void Dispose()
         {
         }
-        
+
+        /// <summary>
+        /// set caches as an asynchronous operation.
+        /// </summary>
+        /// <param name="caches">The caches.</param>
+        /// <returns>Task.</returns>
         public override async Task SetCachesAsync(IEnumerable<ServiceCache> caches)
         {
             var serviceCaches = await GetCaches(caches.Select(p => p.CacheDescriptor.Id));
             await RemoveCachesAsync(caches);
             await base.SetCachesAsync(caches);
         }
-        
+
+        /// <summary>
+        /// get caches as an asynchronous operation.
+        /// </summary>
+        /// <returns>Task&lt;IEnumerable&lt;ServiceCache&gt;&gt;.</returns>
         public override async Task<IEnumerable<ServiceCache>> GetCachesAsync()
         {
             await EnterCaches();
             return _serviceCaches;
         }
 
+        /// <summary>
+        /// remve address as an asynchronous operation.
+        /// </summary>
+        /// <param name="endpoints">The endpoints.</param>
+        /// <returns>Task.</returns>
         public override async Task RemveAddressAsync(IEnumerable<CacheEndpoint> endpoints)
         {
             var caches = await GetCachesAsync();
@@ -112,6 +149,10 @@ namespace KissU.Core.Zookeeper
             await base.SetCachesAsync(caches);
         }
 
+        /// <summary>
+        /// set caches as an asynchronous operation.
+        /// </summary>
+        /// <param name="cacheDescriptors">The cache descriptors.</param>
         public override async Task SetCachesAsync(IEnumerable<ServiceCacheDescriptor> cacheDescriptors)
         {
             if (_logger.IsEnabled(LogLevel.Information))

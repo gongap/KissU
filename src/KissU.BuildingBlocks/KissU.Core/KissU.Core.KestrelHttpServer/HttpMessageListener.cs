@@ -21,8 +21,16 @@ using Microsoft.Extensions.Primitives;
 
 namespace KissU.Core.KestrelHttpServer
 {
+    /// <summary>
+    /// HttpMessageListener.
+    /// Implements the <see cref="KissU.Core.CPlatform.Transport.IMessageListener" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Transport.IMessageListener" />
     public abstract class HttpMessageListener : IMessageListener
     {
+        /// <summary>
+        /// 接收到消息的事件。
+        /// </summary>
         public event ReceivedDelegate Received;
         private readonly ILogger<HttpMessageListener> _logger;
         private readonly ISerializer<string> _serializer;
@@ -30,6 +38,12 @@ namespace KissU.Core.KestrelHttpServer
         private readonly IServiceRouteProvider _serviceRouteProvider;
         private readonly string[] _serviceKeys = {  "serviceKey", "servicekey"};
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HttpMessageListener"/> class.
+        /// </summary>
+        /// <param name="logger">The logger.</param>
+        /// <param name="serializer">The serializer.</param>
+        /// <param name="serviceRouteProvider">The service route provider.</param>
         public HttpMessageListener(ILogger<HttpMessageListener> logger, ISerializer<string> serializer, IServiceRouteProvider serviceRouteProvider)
         {
             _logger = logger;
@@ -37,6 +51,12 @@ namespace KissU.Core.KestrelHttpServer
             _serviceRouteProvider = serviceRouteProvider;
         }
 
+        /// <summary>
+        /// 触发接收到消息事件。
+        /// </summary>
+        /// <param name="sender">消息发送者。</param>
+        /// <param name="message">接收到的消息。</param>
+        /// <returns>一个任务。</returns>
         public async Task OnReceived(IMessageSender sender, TransportMessage message)
         {
             if (Received == null)
@@ -44,6 +64,13 @@ namespace KissU.Core.KestrelHttpServer
             await Received(sender, message);
         }
 
+        /// <summary>
+        /// Called when [received].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="messageId">The message identifier.</param>
+        /// <param name="context">The context.</param>
+        /// <param name="actionFilters">The action filters.</param>
         public async Task OnReceived(IMessageSender sender,string messageId, HttpContext context, IEnumerable<IActionFilter> actionFilters)
         {
             var serviceRoute = context.Items["route"] as ServiceRoute;
@@ -116,6 +143,14 @@ namespace KissU.Core.KestrelHttpServer
             await OnActionExecuted(context, httpMessage, actionFilters);
         }
 
+        /// <summary>
+        /// Called when [action executing].
+        /// </summary>
+        /// <param name="filterContext">The filter context.</param>
+        /// <param name="sender">The sender.</param>
+        /// <param name="messageId">The message identifier.</param>
+        /// <param name="filters">The filters.</param>
+        /// <returns>Task&lt;System.Boolean&gt;.</returns>
         public async Task<bool> OnActionExecuting(ActionExecutingContext filterContext, IMessageSender sender, string messageId, IEnumerable<IActionFilter> filters)
         {
             foreach (var fiter in filters)
@@ -130,6 +165,12 @@ namespace KissU.Core.KestrelHttpServer
             return true;
         }
 
+        /// <summary>
+        /// Called when [action executed].
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="message">The message.</param>
+        /// <param name="filters">The filters.</param>
         public async Task OnActionExecuted(HttpContext context, HttpRequestMessage message, IEnumerable<IActionFilter> filters)
         {
             foreach (var fiter in filters)
@@ -143,6 +184,14 @@ namespace KissU.Core.KestrelHttpServer
             }
         }
 
+        /// <summary>
+        /// Called when [authorization].
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="sender">The sender.</param>
+        /// <param name="messageId">The message identifier.</param>
+        /// <param name="filters">The filters.</param>
+        /// <returns>Task&lt;System.Boolean&gt;.</returns>
         public async Task<bool> OnAuthorization(HttpContext context, HttpServerMessageSender sender,string messageId, IEnumerable<IAuthorizationFilter> filters)
         {
             foreach (var filter in filters)
@@ -167,6 +216,15 @@ namespace KissU.Core.KestrelHttpServer
             return true;
         }
 
+        /// <summary>
+        /// Called when [exception].
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="sender">The sender.</param>
+        /// <param name="messageId">The message identifier.</param>
+        /// <param name="exception">The exception.</param>
+        /// <param name="filters">The filters.</param>
+        /// <returns>Task&lt;System.Boolean&gt;.</returns>
         public async Task<bool> OnException(HttpContext context, HttpServerMessageSender sender, string messageId, Exception exception, IEnumerable<IExceptionFilter> filters)
         {
             foreach (var filter in filters)

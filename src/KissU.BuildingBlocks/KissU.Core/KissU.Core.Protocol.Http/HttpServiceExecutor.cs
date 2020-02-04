@@ -19,6 +19,11 @@ using static KissU.Core.CPlatform.Utilities.FastInvoke;
 
 namespace KissU.Core.Protocol.Http
 {
+    /// <summary>
+    /// HttpServiceExecutor.
+    /// Implements the <see cref="KissU.Core.CPlatform.Runtime.Server.IServiceExecutor" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Runtime.Server.IServiceExecutor" />
     public class HttpServiceExecutor : IServiceExecutor
     {
         #region Field
@@ -35,6 +40,15 @@ namespace KissU.Core.Protocol.Http
 
         #region Constructor
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HttpServiceExecutor"/> class.
+        /// </summary>
+        /// <param name="serviceEntryLocate">The service entry locate.</param>
+        /// <param name="serviceRouteProvider">The service route provider.</param>
+        /// <param name="authorizationFilter">The authorization filter.</param>
+        /// <param name="logger">The logger.</param>
+        /// <param name="serviceProvider">The service provider.</param>
+        /// <param name="typeConvertibleService">The type convertible service.</param>
         public HttpServiceExecutor(IServiceEntryLocate serviceEntryLocate, IServiceRouteProvider serviceRouteProvider,
             IAuthorizationFilter authorizationFilter,
             ILogger<HttpServiceExecutor> logger, CPlatformContainer serviceProvider, ITypeConvertibleService typeConvertibleService)

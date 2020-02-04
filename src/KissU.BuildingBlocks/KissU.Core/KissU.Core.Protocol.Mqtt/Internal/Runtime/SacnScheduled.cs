@@ -7,9 +7,17 @@ using KissU.Core.Protocol.Mqtt.Internal.Messages;
 
 namespace KissU.Core.Protocol.Mqtt.Internal.Runtime
 {
+    /// <summary>
+    /// SacnScheduled.
+    /// Implements the <see cref="KissU.Core.Protocol.Mqtt.Internal.Runtime.ScanRunnable" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.Protocol.Mqtt.Internal.Runtime.ScanRunnable" />
     public class SacnScheduled: ScanRunnable
     {
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SacnScheduled"/> class.
+        /// </summary>
         public SacnScheduled()
         {
         }
@@ -18,7 +26,11 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Runtime
         {
             return DateTime.Now.Millisecond - time >= 10 * 1000;
         }
-         
+
+        /// <summary>
+        /// Executes the specified poll.
+        /// </summary>
+        /// <param name="poll">The poll.</param>
         public override void Execute(SendMqttMessage poll)
         {
             if (CheckTime(poll.Time) && poll.Channel.Active)
@@ -50,6 +62,10 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Runtime
             channel.WriteAndFlushAsync(mqttPublishMessage);
         }
 
+        /// <summary>
+        /// Pubs the relative ack.
+        /// </summary>
+        /// <param name="mqttMessage">The MQTT message.</param>
         protected void PubRelAck( SendMqttMessage mqttMessage)
         {
             PubRelPacket mqttPubAckMessage = new PubRelPacket()

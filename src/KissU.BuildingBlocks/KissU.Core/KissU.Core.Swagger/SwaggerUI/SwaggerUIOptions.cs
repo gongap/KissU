@@ -7,6 +7,9 @@ using Newtonsoft.Json;
 
 namespace KissU.Core.Swagger.SwaggerUI
 {
+    /// <summary>
+    /// SwaggerUIOptions.
+    /// </summary>
     public class SwaggerUIOptions
     {
         /// <summary>
@@ -41,6 +44,9 @@ namespace KissU.Core.Swagger.SwaggerUI
         public OAuthConfigObject OAuthConfigObject { get; set; } = new OAuthConfigObject();
     }
 
+    /// <summary>
+    /// ConfigObject.
+    /// </summary>
     public class ConfigObject
     {
         /// <summary>
@@ -128,42 +134,105 @@ namespace KissU.Core.Swagger.SwaggerUI
         [JsonProperty(NullValueHandling = NullValueHandling.Include)]
         public string ValidatorUrl { get; set; } = null;
 
+        /// <summary>
+        /// The additional items
+        /// </summary>
         [JsonExtensionData]
         public Dictionary<string, object> AdditionalItems = new Dictionary<string, object>();
     }
 
+    /// <summary>
+    /// UrlDescriptor.
+    /// </summary>
     public class UrlDescriptor
     {
+        /// <summary>
+        /// Gets or sets the URL.
+        /// </summary>
         public string Url { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
         public string Name { get; set; }
     }
 
+    /// <summary>
+    /// Enum ModelRendering
+    /// </summary>
     public enum ModelRendering
     {
+        /// <summary>
+        /// The example
+        /// </summary>
         Example,
+        /// <summary>
+        /// The model
+        /// </summary>
         Model
     }
 
+    /// <summary>
+    /// Enum DocExpansion
+    /// </summary>
     public enum DocExpansion
     {
+        /// <summary>
+        /// The list
+        /// </summary>
         List,
+        /// <summary>
+        /// The full
+        /// </summary>
         Full,
+        /// <summary>
+        /// The none
+        /// </summary>
         None
     }
 
+    /// <summary>
+    /// Enum SubmitMethod
+    /// </summary>
     public enum SubmitMethod
     {
+        /// <summary>
+        /// The get
+        /// </summary>
         Get,
+        /// <summary>
+        /// The put
+        /// </summary>
         Put,
+        /// <summary>
+        /// The post
+        /// </summary>
         Post,
+        /// <summary>
+        /// The delete
+        /// </summary>
         Delete,
+        /// <summary>
+        /// The options
+        /// </summary>
         Options,
+        /// <summary>
+        /// The head
+        /// </summary>
         Head,
+        /// <summary>
+        /// The patch
+        /// </summary>
         Patch,
+        /// <summary>
+        /// The trace
+        /// </summary>
         Trace
     }
 
+    /// <summary>
+    /// OAuthConfigObject.
+    /// </summary>
     public class OAuthConfigObject
     {
         /// <summary>

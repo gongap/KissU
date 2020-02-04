@@ -5,22 +5,38 @@ using KissU.Core.CPlatform.EventBus.Events;
 
 namespace KissU.Core.EventBusRabbitMQ.Implementation
 {
+    /// <summary>
+    /// RabbitMqSubscriptionAdapt.
+    /// Implements the <see cref="KissU.Core.CPlatform.EventBus.ISubscriptionAdapt" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.EventBus.ISubscriptionAdapt" />
     public class RabbitMqSubscriptionAdapt : ISubscriptionAdapt
     {
         private readonly IConsumeConfigurator _consumeConfigurator;
         private readonly IEnumerable<IIntegrationEventHandler> _integrationEventHandler;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RabbitMqSubscriptionAdapt"/> class.
+        /// </summary>
+        /// <param name="consumeConfigurator">The consume configurator.</param>
+        /// <param name="integrationEventHandler">The integration event handler.</param>
         public RabbitMqSubscriptionAdapt(IConsumeConfigurator consumeConfigurator, IEnumerable<IIntegrationEventHandler> integrationEventHandler)
         {
             this._consumeConfigurator = consumeConfigurator;
             this._integrationEventHandler = integrationEventHandler;
         }
-    
+
+        /// <summary>
+        /// 订阅.
+        /// </summary>
         public void SubscribeAt()
         {
             _consumeConfigurator.Configure(GetQueueConsumers());
         }
 
-       public void Unsubscribe()
+        /// <summary>
+        /// Unsubscribes this instance.
+        /// </summary>
+        public void Unsubscribe()
         {
             _consumeConfigurator.Unconfigure(GetQueueConsumers());
         }

@@ -12,6 +12,13 @@ using WebSocketCore.Server;
 
 namespace KissU.Core.Protocol.WS
 {
+    /// <summary>
+    /// DefaultWSServerMessageListener.
+    /// Implements the <see cref="KissU.Core.CPlatform.Transport.IMessageListener" />
+    /// Implements the <see cref="System.IDisposable" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Transport.IMessageListener" />
+    /// <seealso cref="System.IDisposable" />
     public class DefaultWSServerMessageListener : IMessageListener, IDisposable
     {
         private readonly List<WSServiceEntry> _entries;
@@ -19,6 +26,12 @@ namespace KissU.Core.Protocol.WS
         private readonly ILogger<DefaultWSServerMessageListener> _logger;
         private readonly WebSocketOptions _options;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DefaultWSServerMessageListener"/> class.
+        /// </summary>
+        /// <param name="logger">The logger.</param>
+        /// <param name="wsServiceEntryProvider">The ws service entry provider.</param>
+        /// <param name="options">The options.</param>
         public DefaultWSServerMessageListener(ILogger<DefaultWSServerMessageListener> logger,
             IWSServiceEntryProvider wsServiceEntryProvider, WebSocketOptions options)
         {
@@ -26,6 +39,10 @@ namespace KissU.Core.Protocol.WS
             _entries = wsServiceEntryProvider.GetEntries().ToList();
             _options = options;
         }
+        /// <summary>
+        /// start as an asynchronous operation.
+        /// </summary>
+        /// <param name="endPoint">The end point.</param>
         public async Task StartAsync(EndPoint endPoint)
         {
             var ipEndPoint = endPoint as IPEndPoint;
@@ -49,6 +66,9 @@ namespace KissU.Core.Protocol.WS
          
         }
 
+        /// <summary>
+        /// Gets the server.
+        /// </summary>
         public WebSocketServer  Server
         {
             get
@@ -57,13 +77,25 @@ namespace KissU.Core.Protocol.WS
             }
         }
 
+        /// <summary>
+        /// 接收到消息的事件。
+        /// </summary>
         public event ReceivedDelegate Received;
 
+        /// <summary>
+        /// 触发接收到消息事件。
+        /// </summary>
+        /// <param name="sender">消息发送者。</param>
+        /// <param name="message">接收到的消息。</param>
+        /// <returns>一个任务。</returns>
         public Task OnReceived(IMessageSender sender, TransportMessage message)
         {
             return Task.CompletedTask;
         }
 
+        /// <summary>
+        /// Disposes this instance.
+        /// </summary>
         public void Dispose()
         {
             _wssv.Stop();

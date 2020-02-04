@@ -10,6 +10,10 @@ namespace KissU.Core.System.Intercept
         AllowMultiple = false)]
     public class CacheKeyAttribute : KeyAttribute
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CacheKeyAttribute"/> class.
+        /// </summary>
+        /// <param name="sortIndex">Index of the sort.</param>
         public CacheKeyAttribute(int sortIndex) : base(sortIndex)
         {
         }

@@ -6,8 +6,15 @@ using KissU.Core.ProxyGenerator.FastReflection;
 
 namespace KissU.Core.ProxyGenerator.Utilitys
 {
+    /// <summary>
+    /// AttributeFactory.
+    /// </summary>
     class AttributeFactory
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AttributeFactory"/> class.
+        /// </summary>
+        /// <param name="data">The data.</param>
         public AttributeFactory(CustomAttributeData data)
         {
             this.Data = data;
@@ -26,11 +33,18 @@ namespace KissU.Core.ProxyGenerator.Utilitys
             }
         }
 
+        /// <summary>
+        /// Gets the data.
+        /// </summary>
         public CustomAttributeData Data { get; private set; }
 
         private Func<object> m_attributeCreator;
         private List<Action<object>> m_propertySetters;
 
+        /// <summary>
+        /// Creates this instance.
+        /// </summary>
+        /// <returns>Attribute.</returns>
         public Attribute Create()
         {
             var attribute = this.m_attributeCreator();

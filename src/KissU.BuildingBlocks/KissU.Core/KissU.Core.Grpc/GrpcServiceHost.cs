@@ -7,7 +7,12 @@ using KissU.Core.CPlatform.Transport;
 
 namespace KissU.Core.Grpc
 {
-   public  class GrpcServiceHost : ServiceHostAbstract
+    /// <summary>
+    /// GrpcServiceHost.
+    /// Implements the <see cref="KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceHostAbstract" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceHostAbstract" />
+    public class GrpcServiceHost : ServiceHostAbstract
     {
         #region Field
 
@@ -16,6 +21,10 @@ namespace KissU.Core.Grpc
 
         #endregion Field
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GrpcServiceHost" /> class.
+        /// </summary>
+        /// <param name="messageListenerFactory">The message listener factory.</param>
         public GrpcServiceHost(Func<EndPoint, Task<IMessageListener>> messageListenerFactory) : base(null)
         {
             _messageListenerFactory = messageListenerFactory;
@@ -23,7 +32,9 @@ namespace KissU.Core.Grpc
 
         #region Overrides of ServiceHostAbstract
 
-        /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
         public override void Dispose()
         {
             (_serverMessageListener as IDisposable)?.Dispose();
@@ -42,6 +53,12 @@ namespace KissU.Core.Grpc
 
         }
 
+        /// <summary>
+        /// start as an asynchronous operation.
+        /// </summary>
+        /// <param name="ip">The ip.</param>
+        /// <param name="port">The port.</param>
+        /// <returns>Task.</returns>
         public override async Task StartAsync(string ip, int port)
         {
             if (_serverMessageListener != null)

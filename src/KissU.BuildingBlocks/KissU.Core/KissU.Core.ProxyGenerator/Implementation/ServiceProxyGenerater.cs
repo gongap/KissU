@@ -25,6 +25,13 @@ using KissU.Core.CPlatform;
 
 namespace KissU.Core.ProxyGenerator.Implementation
 {
+    /// <summary>
+    /// ServiceProxyGenerater.
+    /// Implements the <see cref="KissU.Core.ProxyGenerator.IServiceProxyGenerater" />
+    /// Implements the <see cref="System.IDisposable" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.ProxyGenerator.IServiceProxyGenerater" />
+    /// <seealso cref="System.IDisposable" />
     public class ServiceProxyGenerater : IServiceProxyGenerater,IDisposable
     {
         #region Field
@@ -35,6 +42,11 @@ namespace KissU.Core.ProxyGenerator.Implementation
 
         #region Constructor
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ServiceProxyGenerater"/> class.
+        /// </summary>
+        /// <param name="serviceIdGenerator">The service identifier generator.</param>
+        /// <param name="logger">The logger.</param>
         public ServiceProxyGenerater(IServiceIdGenerator serviceIdGenerator, ILogger<ServiceProxyGenerater> logger)
         {
             _serviceIdGenerator = serviceIdGenerator;
@@ -49,6 +61,7 @@ namespace KissU.Core.ProxyGenerator.Implementation
         /// 生成服务代理。
         /// </summary>
         /// <param name="interfacTypes">需要被代理的接口类型。</param>
+        /// <param name="namespaces">The namespaces.</param>
         /// <returns>服务代理实现。</returns>
         public IEnumerable<Type> GenerateProxys(IEnumerable<Type> interfacTypes, IEnumerable<string> namespaces)
         {
@@ -89,6 +102,7 @@ namespace KissU.Core.ProxyGenerator.Implementation
         /// 生成服务代理代码树。
         /// </summary>
         /// <param name="interfaceType">需要被代理的接口类型。</param>
+        /// <param name="namespaces">The namespaces.</param>
         /// <returns>代码树。</returns>
         public SyntaxTree GenerateProxyTree(Type interfaceType, IEnumerable<string> namespaces)
         {
@@ -376,6 +390,9 @@ namespace KissU.Core.ProxyGenerator.Implementation
             return declaration;
         }
 
+        /// <summary>
+        /// Disposes this instance.
+        /// </summary>
         public void Dispose()
         { 
             GC.SuppressFinalize(this);

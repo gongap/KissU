@@ -1,9 +1,21 @@
 ﻿namespace KissU.Core.Protocol.Http
 {
-   public enum StatusCode
+    /// <summary>
+    /// Enum StatusCode
+    /// </summary>
+    public enum StatusCode
     {
-        Success=200,
-        RequestError =400,
-        AuthorizationFailed=401,
+        /// <summary>
+        /// The success
+        /// </summary>
+        Success = 200,
+        /// <summary>
+        /// The request error
+        /// </summary>
+        RequestError = 400,
+        /// <summary>
+        /// The authorization failed
+        /// </summary>
+        AuthorizationFailed = 401,
     }
 }

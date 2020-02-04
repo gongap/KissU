@@ -18,6 +18,13 @@ using org.apache.zookeeper;
 
 namespace KissU.Core.Zookeeper
 {
+    /// <summary>
+    /// ZookeeperServiceCommandManager.
+    /// Implements the <see cref="KissU.Core.CPlatform.Support.Implementation.ServiceCommandManagerBase" />
+    /// Implements the <see cref="System.IDisposable" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Support.Implementation.ServiceCommandManagerBase" />
+    /// <seealso cref="System.IDisposable" />
     public class ZookeeperServiceCommandManager : ServiceCommandManagerBase, IDisposable
     { 
         private readonly ConfigInfo _configInfo;
@@ -27,6 +34,16 @@ namespace KissU.Core.Zookeeper
         private readonly IServiceRouteManager _serviceRouteManager; 
         private readonly IZookeeperClientProvider _zookeeperClientProvider;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ZookeeperServiceCommandManager"/> class.
+        /// </summary>
+        /// <param name="configInfo">The configuration information.</param>
+        /// <param name="serializer">The serializer.</param>
+        /// <param name="stringSerializer">The string serializer.</param>
+        /// <param name="serviceRouteManager">The service route manager.</param>
+        /// <param name="serviceEntryManager">The service entry manager.</param>
+        /// <param name="logger">The logger.</param>
+        /// <param name="zookeeperClientProvider">The zookeeper client provider.</param>
         public ZookeeperServiceCommandManager(ConfigInfo configInfo, ISerializer<byte[]> serializer,
             ISerializer<string> stringSerializer, IServiceRouteManager serviceRouteManager, IServiceEntryManager serviceEntryManager,
             ILogger<ZookeeperServiceCommandManager> logger, IZookeeperClientProvider zookeeperClientProvider) : base(stringSerializer, serviceEntryManager)
@@ -98,7 +115,7 @@ namespace KissU.Core.Zookeeper
         /// <summary>
         /// 设置服务命令。
         /// </summary>
-        /// <param name="routes">服务命令集合。</param>
+        /// <param name="serviceCommand">The service command.</param>
         /// <returns>一个任务。</returns>
         public override async Task SetServiceCommandsAsync(IEnumerable<ServiceCommandDescriptor> serviceCommand)
         {
@@ -142,6 +159,10 @@ namespace KissU.Core.Zookeeper
             }
         }
 
+        /// <summary>
+        /// initialize service commands as an asynchronous operation.
+        /// </summary>
+        /// <param name="serviceCommands">The service commands.</param>
         protected override async Task InitServiceCommandsAsync(IEnumerable<ServiceCommandDescriptor> serviceCommands)
         {
             var commands = await GetServiceCommands(serviceCommands.Select(p => p.ServiceId));
@@ -278,6 +299,10 @@ namespace KissU.Core.Zookeeper
             return true;
         }
 
+        /// <summary>
+        /// Nodes the change.
+        /// </summary>
+        /// <param name="newCommand">The new command.</param>
         public void NodeChange(ServiceCommandDescriptor newCommand)
         {
             //得到旧的服务命令。
@@ -296,6 +321,11 @@ namespace KissU.Core.Zookeeper
             OnChanged(new ServiceCommandChangedEventArgs(newCommand, oldCommand));
         }
 
+        /// <summary>
+        /// Nodes the change.
+        /// </summary>
+        /// <param name="oldData">The old data.</param>
+        /// <param name="newData">The new data.</param>
         public void NodeChange(byte[] oldData, byte[] newData)
         {
             if (DataEquals(oldData, newData))
@@ -317,6 +347,11 @@ namespace KissU.Core.Zookeeper
             OnChanged(new ServiceCommandChangedEventArgs(newCommand, oldCommand));
         }
 
+        /// <summary>
+        /// Childrens the change.
+        /// </summary>
+        /// <param name="oldChildrens">The old childrens.</param>
+        /// <param name="newChildrens">The new childrens.</param>
         public async Task ChildrenChange(string[] oldChildrens, string[] newChildrens)
         {
             if (_logger.IsEnabled(LogLevel.Debug))
@@ -361,7 +396,9 @@ namespace KissU.Core.Zookeeper
         }
 
 
-        /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
         public void Dispose()
         { 
         }

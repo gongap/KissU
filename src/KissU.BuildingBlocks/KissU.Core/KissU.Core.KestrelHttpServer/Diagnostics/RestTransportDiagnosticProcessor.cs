@@ -9,9 +9,17 @@ using KissUEvents = KissU.Core.CPlatform.Diagnostics.DiagnosticListenerExtension
 
 namespace KissU.Core.KestrelHttpServer.Diagnostics
 {
-   public class RestTransportDiagnosticProcessor : ITracingDiagnosticProcessor
+    /// <summary>
+    /// RestTransportDiagnosticProcessor.
+    /// Implements the <see cref="KissU.Core.CPlatform.Diagnostics.ITracingDiagnosticProcessor" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Diagnostics.ITracingDiagnosticProcessor" />
+    public class RestTransportDiagnosticProcessor : ITracingDiagnosticProcessor
     {
         private Func<TransportEventData, string> _transportOperationNameResolver;
+        /// <summary>
+        /// Gets the name of the listener.
+        /// </summary>
         public string ListenerName => KissUEvents.DiagnosticListenerName;
 
 
@@ -21,6 +29,10 @@ namespace KissU.Core.KestrelHttpServer.Diagnostics
         private readonly ISerializer<string> _serializer;
         private readonly ITracingContext _tracingContext;
 
+        /// <summary>
+        /// Gets or sets the transport operation name resolver.
+        /// </summary>
+        /// <exception cref="ArgumentNullException">TransportOperationNameResolver</exception>
         public Func<TransportEventData, string> TransportOperationNameResolver
         {
             get
@@ -32,12 +44,21 @@ namespace KissU.Core.KestrelHttpServer.Diagnostics
                 value ?? throw new ArgumentNullException(nameof(TransportOperationNameResolver));
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RestTransportDiagnosticProcessor" /> class.
+        /// </summary>
+        /// <param name="tracingContext">The tracing context.</param>
+        /// <param name="serializer">The serializer.</param>
         public RestTransportDiagnosticProcessor(ITracingContext tracingContext,ISerializer<string> serializer)
         {
             _tracingContext = tracingContext;
             _serializer = serializer;
         }
 
+        /// <summary>
+        /// Transports the before.
+        /// </summary>
+        /// <param name="eventData">The event data.</param>
         [DiagnosticName(KissUEvents.BeforeTransport, TransportType.Rest)]
         public void TransportBefore([Object] TransportEventData eventData)
         {
@@ -55,6 +76,10 @@ namespace KissU.Core.KestrelHttpServer.Diagnostics
             _resultDictionary.TryAdd(eventData.OperationId.ToString(), context);
         }
 
+        /// <summary>
+        /// Transports the after.
+        /// </summary>
+        /// <param name="eventData">The event data.</param>
         [DiagnosticName(KissUEvents.AfterTransport, TransportType.Rest)]
         public void TransportAfter([Object] ReceiveEventData eventData)
         {
@@ -65,6 +90,10 @@ namespace KissU.Core.KestrelHttpServer.Diagnostics
             }
         }
 
+        /// <summary>
+        /// Transports the error.
+        /// </summary>
+        /// <param name="eventData">The event data.</param>
         [DiagnosticName(KissUEvents.ErrorTransport, TransportType.Rest)]
         public void TransportError([Object] TransportErrorEventData eventData)
         {
@@ -76,6 +105,11 @@ namespace KissU.Core.KestrelHttpServer.Diagnostics
             }
         }
 
+        /// <summary>
+        /// Converts the unique identifier.
+        /// </summary>
+        /// <param name="eventData">The event data.</param>
+        /// <returns>UniqueId.</returns>
         public UniqueId ConvertUniqueId(TransportEventData eventData)
         {
             long part1 = 0, part2 = 0, part3 = 0;

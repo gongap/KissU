@@ -11,7 +11,7 @@ namespace KissU.Core.Protocol.Http
     /// <summary>
     /// HTTP服务主机
     /// </summary>
-   public class HttpServiceHost : ServiceHostAbstract
+    public class HttpServiceHost : ServiceHostAbstract
     {
         #region Field
 
@@ -20,6 +20,11 @@ namespace KissU.Core.Protocol.Http
 
         #endregion Field
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HttpServiceHost"/> class.
+        /// </summary>
+        /// <param name="messageListenerFactory">The message listener factory.</param>
+        /// <param name="serviceExecutor">The service executor.</param>
         public HttpServiceHost(Func<EndPoint, Task<IMessageListener>> messageListenerFactory, IServiceExecutor serviceExecutor) : base(serviceExecutor)
         {
             _messageListenerFactory = messageListenerFactory;
@@ -27,7 +32,9 @@ namespace KissU.Core.Protocol.Http
 
         #region Overrides of ServiceHostAbstract
 
-        /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
         public override void Dispose()
         {
             (_serverMessageListener as IDisposable)?.Dispose();
@@ -52,6 +59,11 @@ namespace KissU.Core.Protocol.Http
             };
         }
 
+        /// <summary>
+        /// start as an asynchronous operation.
+        /// </summary>
+        /// <param name="ip">The ip.</param>
+        /// <param name="port">The port.</param>
         public override async Task StartAsync(string ip,int port)
         {
             if (_serverMessageListener != null)

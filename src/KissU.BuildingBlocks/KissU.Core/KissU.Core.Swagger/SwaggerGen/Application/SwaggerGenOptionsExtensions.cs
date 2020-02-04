@@ -11,12 +11,15 @@ using Microsoft.AspNetCore.Mvc.ApiExplorer;
 
 namespace KissU.Core.Swagger.SwaggerGen.Application
 {
+    /// <summary>
+    /// SwaggerGenOptionsExtensions.
+    /// </summary>
     public static class SwaggerGenOptionsExtensions
     {
         /// <summary>
         /// Define one or more documents to be created by the Swagger generator
         /// </summary>
-        /// <param name="swaggerGenOptions"></param>
+        /// <param name="swaggerGenOptions">The swagger gen options.</param>
         /// <param name="name">A URI-friendly name that uniquely identifies the document</param>
         /// <param name="info">Global metadata to be included in the Swagger output</param>
         public static void SwaggerDoc(
@@ -30,10 +33,8 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
         /// <summary>
         /// Provide a custom strategy for selecting actions.
         /// </summary>
-        /// <param name="swaggerGenOptions"></param>
-        /// <param name="predicate">
-        /// A lambda that returns true/false based on document name and ApiDescription
-        /// </param>
+        /// <param name="swaggerGenOptions">The swagger gen options.</param>
+        /// <param name="predicate">A lambda that returns true/false based on document name and ApiDescription</param>
         public static void DocInclusionPredicate(
             this SwaggerGenOptions swaggerGenOptions,
             Func<string, ApiDescription, bool> predicate)
@@ -41,6 +42,11 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
             swaggerGenOptions.SwaggerGeneratorOptions.DocInclusionPredicate = predicate;
         }
 
+        /// <summary>
+        /// Documents the inclusion predicate v2.
+        /// </summary>
+        /// <param name="swaggerGenOptions">The swagger gen options.</param>
+        /// <param name="predicate">The predicate.</param>
         public static void DocInclusionPredicateV2(
       this SwaggerGenOptions swaggerGenOptions,
       Func<string, ServiceEntry, bool> predicate)
@@ -48,6 +54,11 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
             swaggerGenOptions.SwaggerGeneratorOptions.DocInclusionPredicateV2 = predicate;
         }
 
+        /// <summary>
+        /// Generates the swagger document.
+        /// </summary>
+        /// <param name="swaggerGenOptions">The swagger gen options.</param>
+        /// <param name="entries">The entries.</param>
         public static void GenerateSwaggerDoc(
       this SwaggerGenOptions swaggerGenOptions, IEnumerable<ServiceEntry> entries)
         {
@@ -83,6 +94,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
         /// <summary>
         /// Ignore any actions that are decorated with the ObsoleteAttribute
         /// </summary>
+        /// <param name="swaggerGenOptions">The swagger gen options.</param>
         public static void IgnoreObsoleteActions(this SwaggerGenOptions swaggerGenOptions)
         {
             swaggerGenOptions.SwaggerGeneratorOptions.IgnoreObsoleteActions = true;
@@ -91,8 +103,8 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
         /// <summary>
         /// Merge actions that have conflicting HTTP methods and paths (must be unique for Swagger 2.0)
         /// </summary>
-        /// <param name="swaggerGenOptions"></param>
-        /// <param name="resolver"></param>
+        /// <param name="swaggerGenOptions">The swagger gen options.</param>
+        /// <param name="resolver">The resolver.</param>
         public static void ResolveConflictingActions(
             this SwaggerGenOptions swaggerGenOptions,
             Func<IEnumerable<ApiDescription>, ApiDescription> resolver)
@@ -103,6 +115,8 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
         /// <summary>
         /// Provide a custom strategy for assigning "operationId" to operations
         /// </summary>
+        /// <param name="swaggerGenOptions">The swagger gen options.</param>
+        /// <param name="operationIdSelector">The operation identifier selector.</param>
         public static void CustomOperationIds(
             this SwaggerGenOptions swaggerGenOptions,
             Func<ApiDescription, string> operationIdSelector)
@@ -113,8 +127,8 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
         /// <summary>
         /// Provide a custom strategy for assigning a default "tag" to operations
         /// </summary>
-        /// <param name="swaggerGenOptions"></param>
-        /// <param name="tagSelector"></param>
+        /// <param name="swaggerGenOptions">The swagger gen options.</param>
+        /// <param name="tagSelector">The tag selector.</param>
         [Obsolete("Deprecated: Use the overload that accepts a Func that returns a list of tags")]
         public static void TagActionsBy(
             this SwaggerGenOptions swaggerGenOptions,
@@ -126,8 +140,8 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
         /// <summary>
         /// Provide a custom strategy for assigning "tags" to actions
         /// </summary>
-        /// <param name="swaggerGenOptions"></param>
-        /// <param name="tagsSelector"></param>
+        /// <param name="swaggerGenOptions">The swagger gen options.</param>
+        /// <param name="tagsSelector">The tags selector.</param>
         public static void TagActionsBy(
             this SwaggerGenOptions swaggerGenOptions,
             Func<ApiDescription, IList<string>> tagsSelector)
@@ -138,8 +152,8 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
         /// <summary>
         /// Provide a custom strategy for sorting actions before they're transformed into the Swagger format
         /// </summary>
-        /// <param name="swaggerGenOptions"></param>
-        /// <param name="sortKeySelector"></param>
+        /// <param name="swaggerGenOptions">The swagger gen options.</param>
+        /// <param name="sortKeySelector">The sort key selector.</param>
         public static void OrderActionsBy(
             this SwaggerGenOptions swaggerGenOptions,
             Func<ApiDescription, string> sortKeySelector)
@@ -150,6 +164,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
         /// <summary>
         /// Describe all parameters, regardless of how they appear in code, in camelCase
         /// </summary>
+        /// <param name="swaggerGenOptions">The swagger gen options.</param>
         public static void DescribeAllParametersInCamelCase(this SwaggerGenOptions swaggerGenOptions)
         {
             swaggerGenOptions.SwaggerGeneratorOptions.DescribeAllParametersInCamelCase = true;
@@ -158,11 +173,9 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
         /// <summary>
         /// Add one or more "securityDefinitions", describing how your API is protected, to the generated Swagger
         /// </summary>
-        /// <param name="swaggerGenOptions"></param>
+        /// <param name="swaggerGenOptions">The swagger gen options.</param>
         /// <param name="name">A unique name for the scheme, as per the Swagger spec.</param>
-        /// <param name="securityScheme">
-        /// A description of the scheme - can be an instance of BasicAuthScheme, ApiKeyScheme or OAuth2Scheme
-        /// </param>
+        /// <param name="securityScheme">A description of the scheme - can be an instance of BasicAuthScheme, ApiKeyScheme or OAuth2Scheme</param>
         public static void AddSecurityDefinition(
             this SwaggerGenOptions swaggerGenOptions,
             string name,
@@ -174,11 +187,9 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
         /// <summary>
         /// Adds a global security requirement
         /// </summary>
-        /// <param name="swaggerGenOptions"></param>
-        /// <param name="requirement">
-        /// A dictionary of required schemes (logical AND). Keys must correspond to schemes defined through AddSecurityDefinition
-        /// If the scheme is of type "oauth2", then the value is a list of scopes, otherwise it MUST be an empty array
-        /// </param>
+        /// <param name="swaggerGenOptions">The swagger gen options.</param>
+        /// <param name="requirement">A dictionary of required schemes (logical AND). Keys must correspond to schemes defined through AddSecurityDefinition
+        /// If the scheme is of type "oauth2", then the value is a list of scopes, otherwise it MUST be an empty array</param>
         public static void AddSecurityRequirement(
             this SwaggerGenOptions swaggerGenOptions,
             IDictionary<string, IEnumerable<string>> requirement)
@@ -189,7 +200,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
         /// <summary>
         /// Provide a custom mapping, for a given type, to the Swagger-flavored JSONSchema
         /// </summary>
-        /// <param name="swaggerGenOptions"></param>
+        /// <param name="swaggerGenOptions">The swagger gen options.</param>
         /// <param name="type">System type</param>
         /// <param name="schemaFactory">A factory method that generates Schema's for the provided type</param>
         public static void MapType(
@@ -204,7 +215,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
         /// Provide a custom mapping, for a given type, to the Swagger-flavored JSONSchema
         /// </summary>
         /// <typeparam name="T">System type</typeparam>
-        /// <param name="swaggerGenOptions"></param>
+        /// <param name="swaggerGenOptions">The swagger gen options.</param>
         /// <param name="schemaFactory">A factory method that generates Schema's for the provided type</param>
         public static void MapType<T>(
             this SwaggerGenOptions swaggerGenOptions,
@@ -216,6 +227,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
         /// <summary>
         /// Use the enum names, as opposed to their integer values, when describing enum types
         /// </summary>
+        /// <param name="swaggerGenOptions">The swagger gen options.</param>
         public static void DescribeAllEnumsAsStrings(this SwaggerGenOptions swaggerGenOptions)
         {
             swaggerGenOptions.SchemaRegistryOptions.DescribeAllEnumsAsStrings = true;
@@ -224,6 +236,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
         /// <summary>
         /// If applicable, describe all enum names, regardless of how they appear in code, in camelCase.
         /// </summary>
+        /// <param name="swaggerGenOptions">The swagger gen options.</param>
         public static void DescribeStringEnumsInCamelCase(this SwaggerGenOptions swaggerGenOptions)
         {
             swaggerGenOptions.SchemaRegistryOptions.DescribeStringEnumsInCamelCase = true;
@@ -232,6 +245,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
         /// <summary>
         /// Use referenced definitions for enum types within body parameter and response schemas
         /// </summary>
+        /// <param name="swaggerGenOptions">The swagger gen options.</param>
         public static void UseReferencedDefinitionsForEnums(this SwaggerGenOptions swaggerGenOptions)
         {
             swaggerGenOptions.SchemaRegistryOptions.UseReferencedDefinitionsForEnums = true;
@@ -240,10 +254,8 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
         /// <summary>
         /// Provide a custom strategy for generating the unique Id's that are used to reference object Schema's
         /// </summary>
-        /// <param name="swaggerGenOptions"></param>
-        /// <param name="schemaIdSelector">
-        /// A lambda that returns a unique identifier for the provided system type
-        /// </param>
+        /// <param name="swaggerGenOptions">The swagger gen options.</param>
+        /// <param name="schemaIdSelector">A lambda that returns a unique identifier for the provided system type</param>
         public static void CustomSchemaIds(
             this SwaggerGenOptions swaggerGenOptions,
             Func<Type, string> schemaIdSelector)
@@ -254,11 +266,16 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
         /// <summary>
         /// Ignore any properties that are decorated with the ObsoleteAttribute
         /// </summary>
+        /// <param name="swaggerGenOptions">The swagger gen options.</param>
         public static void IgnoreObsoleteProperties(this SwaggerGenOptions swaggerGenOptions)
         {
             swaggerGenOptions.SchemaRegistryOptions.IgnoreObsoleteProperties = true;
         }
 
+        /// <summary>
+        /// Ignores the fully qualified.
+        /// </summary>
+        /// <param name="swaggerGenOptions">The swagger gen options.</param>
         public static void IgnoreFullyQualified(this SwaggerGenOptions swaggerGenOptions)
         {
             swaggerGenOptions.SchemaRegistryOptions.IgnoreFullyQualified = true;
@@ -268,7 +285,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
         /// Extend the Swagger Generator with "filters" that can modify Schemas after they're initially generated
         /// </summary>
         /// <typeparam name="TFilter">A type that derives from ISchemaFilter</typeparam>
-        /// <param name="swaggerGenOptions"></param>
+        /// <param name="swaggerGenOptions">The swagger gen options.</param>
         /// <param name="arguments">Optionally inject parameters through filter constructors</param>
         public static void SchemaFilter<TFilter>(
             this SwaggerGenOptions swaggerGenOptions,
@@ -286,7 +303,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
         /// Extend the Swagger Generator with "filters" that can modify Parameters after they're initially generated
         /// </summary>
         /// <typeparam name="TFilter">A type that derives from IParameterFilter</typeparam>
-        /// <param name="swaggerGenOptions"></param>
+        /// <param name="swaggerGenOptions">The swagger gen options.</param>
         /// <param name="arguments">Optionally inject parameters through filter constructors</param>
         public static void ParameterFilter<TFilter>(
             this SwaggerGenOptions swaggerGenOptions,
@@ -304,7 +321,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
         /// Extend the Swagger Generator with "filters" that can modify Operations after they're initially generated
         /// </summary>
         /// <typeparam name="TFilter">A type that derives from IOperationFilter</typeparam>
-        /// <param name="swaggerGenOptions"></param>
+        /// <param name="swaggerGenOptions">The swagger gen options.</param>
         /// <param name="arguments">Optionally inject parameters through filter constructors</param>
         public static void OperationFilter<TFilter>(
             this SwaggerGenOptions swaggerGenOptions,
@@ -322,7 +339,7 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
         /// Extend the Swagger Generator with "filters" that can modify SwaggerDocuments after they're initially generated
         /// </summary>
         /// <typeparam name="TFilter">A type that derives from IDocumentFilter</typeparam>
-        /// <param name="swaggerGenOptions"></param>
+        /// <param name="swaggerGenOptions">The swagger gen options.</param>
         /// <param name="arguments">Optionally inject parameters through filter constructors</param>
         public static void DocumentFilter<TFilter>(
             this SwaggerGenOptions swaggerGenOptions,
@@ -339,12 +356,10 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
         /// <summary>
         /// Inject human-friendly descriptions for Operations, Parameters and Schemas based on XML Comment files
         /// </summary>
-        /// <param name="swaggerGenOptions"></param>
+        /// <param name="swaggerGenOptions">The swagger gen options.</param>
         /// <param name="xmlDocFactory">A factory method that returns XML Comments as an XPathDocument</param>
-        /// <param name="includeControllerXmlComments">
-        /// Flag to indicate if controller XML comments (i.e. summary) should be used to assign Tag descriptions.
-        /// Don't set this flag if you're customizing the default tag for operations via TagActionsBy.
-        /// </param>
+        /// <param name="includeControllerXmlComments">Flag to indicate if controller XML comments (i.e. summary) should be used to assign Tag descriptions.
+        /// Don't set this flag if you're customizing the default tag for operations via TagActionsBy.</param>
         public static void IncludeXmlComments(
             this SwaggerGenOptions swaggerGenOptions,
             Func<XPathDocument> xmlDocFactory,
@@ -361,12 +376,10 @@ namespace KissU.Core.Swagger.SwaggerGen.Application
         /// <summary>
         /// Inject human-friendly descriptions for Operations, Parameters and Schemas based on XML Comment files
         /// </summary>
-        /// <param name="swaggerGenOptions"></param>
+        /// <param name="swaggerGenOptions">The swagger gen options.</param>
         /// <param name="filePath">An abolsute path to the file that contains XML Comments</param>
-        /// <param name="includeControllerXmlComments">
-        /// Flag to indicate if controller XML comments (i.e. summary) should be used to assign Tag descriptions.
-        /// Don't set this flag if you're customizing the default tag for operations via TagActionsBy.
-        /// </param>
+        /// <param name="includeControllerXmlComments">Flag to indicate if controller XML comments (i.e. summary) should be used to assign Tag descriptions.
+        /// Don't set this flag if you're customizing the default tag for operations via TagActionsBy.</param>
         public static void IncludeXmlComments(
             this SwaggerGenOptions swaggerGenOptions,
             string filePath,

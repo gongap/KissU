@@ -9,6 +9,9 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.Protocol.Http
 {
+    /// <summary>
+    /// ContainerBuilderExtensions.
+    /// </summary>
     public static class ContainerBuilderExtensions
     {
         /// <summary>

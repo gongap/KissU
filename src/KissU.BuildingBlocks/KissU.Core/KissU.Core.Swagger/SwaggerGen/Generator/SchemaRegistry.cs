@@ -10,6 +10,11 @@ using Newtonsoft.Json.Serialization;
 
 namespace KissU.Core.Swagger.SwaggerGen.Generator
 {
+    /// <summary>
+    /// SchemaRegistry.
+    /// Implements the <see cref="KissU.Core.Swagger.SwaggerGen.Generator.ISchemaRegistry" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.Swagger.SwaggerGen.Generator.ISchemaRegistry" />
     public class SchemaRegistry : ISchemaRegistry
     {
         private readonly JsonSerializerSettings _jsonSerializerSettings;
@@ -17,6 +22,11 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
         private readonly SchemaRegistryOptions _options;
         private readonly SchemaIdManager _schemaIdManager;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SchemaRegistry"/> class.
+        /// </summary>
+        /// <param name="jsonSerializerSettings">The json serializer settings.</param>
+        /// <param name="options">The options.</param>
         public SchemaRegistry(
             JsonSerializerSettings jsonSerializerSettings,
             SchemaRegistryOptions options = null)
@@ -28,11 +38,25 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
             Definitions = new Dictionary<string, Schema>();
         }
 
+        /// <summary>
+        /// Gets the definitions.
+        /// </summary>
         public IDictionary<string, Schema> Definitions { get; private set; }
 
+        /// <summary>
+        /// Gets the or register.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <returns>Schema.</returns>
         public Schema GetOrRegister(Type type)
        => GetOrRegister(null, type);
 
+        /// <summary>
+        /// Gets the or register.
+        /// </summary>
+        /// <param name="paramName">Name of the parameter.</param>
+        /// <param name="type">The type.</param>
+        /// <returns>Schema.</returns>
         public Schema GetOrRegister(string paramName, Type type)
         {
             var referencedTypes = new Queue<Type>();

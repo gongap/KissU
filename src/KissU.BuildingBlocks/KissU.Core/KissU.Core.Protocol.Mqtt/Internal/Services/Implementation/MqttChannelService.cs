@@ -15,12 +15,27 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
 {
+    /// <summary>
+    /// MqttChannelService.
+    /// Implements the <see cref="KissU.Core.Protocol.Mqtt.Internal.Services.AbstractChannelService" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.Protocol.Mqtt.Internal.Services.AbstractChannelService" />
     public class MqttChannelService : AbstractChannelService
     {
         private readonly IMessagePushService _messagePushService;
         private readonly IClientSessionService _clientSessionService;
         private readonly ILogger<MqttChannelService> _logger;
         private readonly IWillService _willService;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MqttChannelService"/> class.
+        /// </summary>
+        /// <param name="messagePushService">The message push service.</param>
+        /// <param name="clientSessionService">The client session service.</param>
+        /// <param name="logger">The logger.</param>
+        /// <param name="willService">The will service.</param>
+        /// <param name="mqttBrokerEntryManger">The MQTT broker entry manger.</param>
+        /// <param name="mqttRemoteInvokeService">The MQTT remote invoke service.</param>
+        /// <param name="serviceIdGenerator">The service identifier generator.</param>
         public MqttChannelService(IMessagePushService messagePushService, IClientSessionService clientSessionService,
             ILogger<MqttChannelService> logger, IWillService willService,
             IMqttBrokerEntryManger mqttBrokerEntryManger,
@@ -37,6 +52,11 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
             _willService = willService;
         }
 
+        /// <summary>
+        /// Closes the specified device identifier.
+        /// </summary>
+        /// <param name="deviceId">The device identifier.</param>
+        /// <param name="isDisconnect">if set to <c>true</c> [is disconnect].</param>
         public override async Task Close(string deviceId, bool isDisconnect)
         {
             if (!string.IsNullOrEmpty(deviceId))
@@ -87,6 +107,12 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
             }
         }
 
+        /// <summary>
+        /// Connects the specified device identifier.
+        /// </summary>
+        /// <param name="deviceId">The device identifier.</param>
+        /// <param name="channel">The channel.</param>
+        /// <returns>Task&lt;System.Boolean&gt;.</returns>
         public override async Task<bool> Connect(string deviceId, MqttChannel channel)
         {
             var mqttChannel = GetMqttChannel(deviceId);
@@ -112,6 +138,12 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
             return true;
         }
 
+        /// <summary>
+        /// Logins the specified channel.
+        /// </summary>
+        /// <param name="channel">The channel.</param>
+        /// <param name="deviceId">The device identifier.</param>
+        /// <param name="mqttConnectMessage">The MQTT connect message.</param>
         public override async Task Login(IChannel channel, string deviceId, ConnectMessage mqttConnectMessage)
         {
             channel.GetAttribute(LoginAttrKey).Set("login");
@@ -119,6 +151,11 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
             await Init(channel, mqttConnectMessage);
         }
 
+        /// <summary>
+        /// Publishes the specified channel.
+        /// </summary>
+        /// <param name="channel">The channel.</param>
+        /// <param name="mqttPublishMessage">The MQTT publish message.</param>
         public override async Task Publish(IChannel channel, PublishPacket mqttPublishMessage)
         {
             MqttChannel mqttChannel = GetMqttChannel(await this.GetDeviceId(channel));
@@ -158,6 +195,11 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
             }
         }
 
+        /// <summary>
+        /// Publishes the specified device identifier.
+        /// </summary>
+        /// <param name="deviceId">The device identifier.</param>
+        /// <param name="willMessage">The will message.</param>
         public override async Task Publish(string deviceId, MqttWillMessage willMessage)
         {
             if (!string.IsNullOrEmpty(deviceId))
@@ -220,11 +262,21 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
             }
         }
 
+        /// <summary>
+        /// Pubrecs the specified channel.
+        /// </summary>
+        /// <param name="channel">The channel.</param>
+        /// <param name="messageId">The message identifier.</param>
         public override async Task Pubrec(MqttChannel channel, int messageId)
         {
             await _messagePushService.SendPubRec(channel, messageId);
         }
 
+        /// <summary>
+        /// Pubrels the specified channel.
+        /// </summary>
+        /// <param name="channel">The channel.</param>
+        /// <param name="messageId">The message identifier.</param>
         public override async Task Pubrel(IChannel channel, int messageId)
         {
             if (MqttChannels.TryGetValue(await this.GetDeviceId(channel), out MqttChannel mqttChannel))
@@ -237,6 +289,11 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
             }
         }
 
+        /// <summary>
+        /// Pings the req.
+        /// </summary>
+        /// <param name="channel">The channel.</param>
+        /// <returns>ValueTask.</returns>
         public override async ValueTask PingReq(IChannel channel)
         {
             if (MqttChannels.TryGetValue(await this.GetDeviceId(channel), out MqttChannel mqttChannel))
@@ -248,6 +305,10 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
             }
         }
 
+        /// <summary>
+        /// Sends the will MSG.
+        /// </summary>
+        /// <param name="willMeaasge">The will meaasge.</param>
         public override async Task SendWillMsg(MqttWillMessage willMeaasge)
         {
             Topics.TryGetValue(willMeaasge.Topic, out IEnumerable<MqttChannel> mqttChannels);
@@ -270,8 +331,13 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
                     }
                 }
             }
-        } 
+        }
 
+        /// <summary>
+        /// Suscribes the specified device identifier.
+        /// </summary>
+        /// <param name="deviceId">The device identifier.</param>
+        /// <param name="topics">The topics.</param>
         public override async Task Suscribe(string deviceId, params string[] topics)
         {
             if (!string.IsNullOrEmpty(deviceId))
@@ -291,6 +357,11 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
             }
         }
 
+        /// <summary>
+        /// Uns the subscribe.
+        /// </summary>
+        /// <param name="deviceId">The device identifier.</param>
+        /// <param name="topics">The topics.</param>
         public override async Task UnSubscribe(string deviceId, params string[] topics)
         {
             if (MqttChannels.TryGetValue(deviceId, out MqttChannel mqttChannel))
@@ -303,6 +374,11 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
             } 
         }
 
+        /// <summary>
+        /// Sends the retain.
+        /// </summary>
+        /// <param name="topic">The topic.</param>
+        /// <param name="mqttChannel">The MQTT channel.</param>
         public async Task SendRetain(string topic, MqttChannel mqttChannel)
         {
             Retain.TryGetValue(topic, out ConcurrentQueue<RetainMessage> retainMessages);
@@ -329,6 +405,11 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Services.Implementation
             Retain.AddOrUpdate(topic, retainMessages,(key,value)=> retainMessages);
         }
 
+        /// <summary>
+        /// Removes the sub topic.
+        /// </summary>
+        /// <param name="mqttChannel">The MQTT channel.</param>
+        /// <returns>IEnumerable&lt;String&gt;.</returns>
         public IEnumerable<String> RemoveSubTopic(MqttChannel mqttChannel)
         {
             IEnumerable<String> topics = mqttChannel.Topics;

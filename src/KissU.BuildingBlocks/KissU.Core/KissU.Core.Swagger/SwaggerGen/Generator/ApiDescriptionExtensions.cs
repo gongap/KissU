@@ -7,8 +7,16 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 
 namespace KissU.Core.Swagger.SwaggerGen.Generator
 {
-   public static class ApiDescriptionExtensions
+    /// <summary>
+    /// ApiDescriptionExtensions.
+    /// </summary>
+    public static class ApiDescriptionExtensions
     {
+        /// <summary>
+        /// Controllers the attributes.
+        /// </summary>
+        /// <param name="apiDescription">The API description.</param>
+        /// <returns>IEnumerable&lt;System.Object&gt;.</returns>
         [Obsolete("Deprecated: Use TryGetMethodInfo")]
         public static IEnumerable<object> ControllerAttributes(this ApiDescription apiDescription)
         {
@@ -18,6 +26,11 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
                 : controllerActionDescriptor.ControllerTypeInfo.GetCustomAttributes(true);
         }
 
+        /// <summary>
+        /// Actions the attributes.
+        /// </summary>
+        /// <param name="apiDescription">The API description.</param>
+        /// <returns>IEnumerable&lt;System.Object&gt;.</returns>
         [Obsolete("Deprecated: Use TryGetMethodInfo")]
         public static IEnumerable<object> ActionAttributes(this ApiDescription apiDescription)
         {
@@ -27,6 +40,12 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
                 : controllerActionDescriptor.MethodInfo.GetCustomAttributes(true);
         }
 
+        /// <summary>
+        /// Tries the get method information.
+        /// </summary>
+        /// <param name="apiDescription">The API description.</param>
+        /// <param name="methodInfo">The method information.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public static bool TryGetMethodInfo(this ApiDescription apiDescription, out MethodInfo methodInfo)
         {
             var controllerActionDescriptor = apiDescription.ActionDescriptor as ControllerActionDescriptor;
@@ -36,11 +55,21 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
             return (methodInfo != null);
         }
 
+        /// <summary>
+        /// Relatives the path sans query string.
+        /// </summary>
+        /// <param name="apiDescription">The API description.</param>
+        /// <returns>System.String.</returns>
         internal static string RelativePathSansQueryString(this ApiDescription apiDescription)
         {
             return apiDescription.RelativePath.Split('?').First();
         }
 
+        /// <summary>
+        /// Determines whether the specified API description is obsolete.
+        /// </summary>
+        /// <param name="apiDescription">The API description.</param>
+        /// <returns><c>true</c> if the specified API description is obsolete; otherwise, <c>false</c>.</returns>
         internal static bool IsObsolete(this ApiDescription apiDescription)
         {
             if (!apiDescription.TryGetMethodInfo(out MethodInfo methodInfo))

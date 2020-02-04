@@ -22,6 +22,9 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.Consul
 {
+    /// <summary>
+    /// ContainerBuilderExtensions.
+    /// </summary>
     public static class ContainerBuilderExtensions
     {
         /// <summary>
@@ -44,6 +47,12 @@ namespace KissU.Core.Consul
                 provider.GetRequiredService<IConsulClientProvider>()));
         }
 
+        /// <summary>
+        /// Uses the consul cache manager.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="configInfo">The configuration information.</param>
+        /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder UseConsulCacheManager(this IServiceBuilder builder, ConfigInfo configInfo)
         {
             return builder.UseCacheManager(provider =>
@@ -81,6 +90,12 @@ namespace KissU.Core.Consul
             });
         }
 
+        /// <summary>
+        /// Uses the consul MQTT route manager.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="configInfo">The configuration information.</param>
+        /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder UseConsulMqttRouteManager(this IServiceBuilder builder, ConfigInfo configInfo)
         {
             return builder.UseMqttRouteManager(provider =>
@@ -95,6 +110,12 @@ namespace KissU.Core.Consul
                 provider.GetRequiredService<IConsulClientProvider>()));
         }
 
+        /// <summary>
+        /// Uses the consul service subscribe manager.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="configInfo">The configuration information.</param>
+        /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder UseConsulServiceSubscribeManager(this IServiceBuilder builder, ConfigInfo configInfo)
         {
             return builder.UseSubscribeManager(provider =>
@@ -114,8 +135,9 @@ namespace KissU.Core.Consul
         /// <summary>
         /// 设置使用基于Consul的Watch机制
         /// </summary>
-        /// <param name="builder"></param>
-        /// <returns></returns>
+        /// <param name="builder">The builder.</param>
+        /// <param name="configInfo">The configuration information.</param>
+        /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder UseConsulWatch(this IServiceBuilder builder, ConfigInfo configInfo)
         {
             builder.Services.Register(provider =>
@@ -125,12 +147,22 @@ namespace KissU.Core.Consul
             return builder;
         }
 
+        /// <summary>
+        /// Uses the consul address selector.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder UseConsulAddressSelector(this IServiceBuilder builder)
         {
             builder.Services.RegisterType<ConsulRandomAddressSelector>().As<IConsulAddressSelector>().SingleInstance();
             return builder;
         }
 
+        /// <summary>
+        /// Uses the health check.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder UseHealthCheck(this IServiceBuilder builder)
         {
             builder.Services.RegisterType<DefaultHealthCheckService>().As<IHealthCheckService>().SingleInstance();
@@ -138,6 +170,12 @@ namespace KissU.Core.Consul
         }
 
 
+        /// <summary>
+        /// Uses the counl client provider.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="configInfo">The configuration information.</param>
+        /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder UseCounlClientProvider(this IServiceBuilder builder, ConfigInfo configInfo)
         {
             builder.Services.Register(provider =>
@@ -149,6 +187,12 @@ namespace KissU.Core.Consul
             return builder;
         }
 
+        /// <summary>
+        /// Uses the consul manager.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="configInfo">The configuration information.</param>
+        /// <returns>IServiceBuilder.</returns>
         [Obsolete]
         public static IServiceBuilder UseConsulManager(this IServiceBuilder builder, ConfigInfo configInfo)
         {
@@ -163,6 +207,11 @@ namespace KissU.Core.Consul
                 .UseConsulMqttRouteManager(configInfo);
         }
 
+        /// <summary>
+        /// Uses the consul manager.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <returns>IServiceBuilder.</returns>
         [Obsolete]
         public static IServiceBuilder UseConsulManager(this IServiceBuilder builder)
         {

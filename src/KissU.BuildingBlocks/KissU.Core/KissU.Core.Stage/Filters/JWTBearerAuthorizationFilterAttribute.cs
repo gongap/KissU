@@ -24,6 +24,11 @@ using Newtonsoft.Json.Linq;
 
 namespace KissU.Core.Stage.Filters
 {
+    /// <summary>
+    /// JWTBearerAuthorizationFilterAttribute.
+    /// Implements the <see cref="KissU.Core.Stage.Filters.AuthorizationFilterAttribute" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.Stage.Filters.AuthorizationFilterAttribute" />
     public class JWTBearerAuthorizationFilterAttribute : AuthorizationFilterAttribute
     {
         private readonly IAuthorizationServerProvider _authorizationServerProvider;
@@ -34,6 +39,9 @@ namespace KissU.Core.Stage.Filters
         private readonly RSACryptoServiceProvider _cryptoServiceProvider;
 
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="JWTBearerAuthorizationFilterAttribute"/> class.
+        /// </summary>
         public JWTBearerAuthorizationFilterAttribute()
         {
             _authorizationServerProvider = ServiceLocator.Current.Resolve<IAuthorizationServerProvider>();
@@ -43,7 +51,11 @@ namespace KissU.Core.Stage.Filters
            _cryptoServiceProvider = new RSACryptoServiceProvider();
             _jwtValidator = new JwtValidator(_jsonSerializer, _dateTimeProvider);
         }
-        
+
+        /// <summary>
+        /// Called when [authorization].
+        /// </summary>
+        /// <param name="filterContext">The filter context.</param>
         public override async Task OnAuthorization(AuthorizationFilterContext filterContext)
         {
             if (filterContext.Route != null && filterContext.Route.ServiceDescriptor.DisableNetwork())
@@ -191,17 +203,44 @@ namespace KissU.Core.Stage.Filters
             return claimsPrincipal;
         }
 
+        /// <summary>
+        /// JwkModels.
+        /// </summary>
         private class JwkModels
         {
+            /// <summary>
+            /// Gets or sets the keys.
+            /// </summary>
             public List<JwkModel> keys { get; set; }
         }
+        /// <summary>
+        /// JwkModel.
+        /// </summary>
         private class JwkModel
         {
+            /// <summary>
+            /// Gets or sets the kty.
+            /// </summary>
             public string kty { get; set; }
+            /// <summary>
+            /// Gets or sets the use.
+            /// </summary>
             public string use { get; set; }
+            /// <summary>
+            /// Gets or sets the kid.
+            /// </summary>
             public string kid { get; set; }
+            /// <summary>
+            /// Gets or sets the e.
+            /// </summary>
             public string e { get; set; }
+            /// <summary>
+            /// Gets or sets the n.
+            /// </summary>
             public string n { get; set; }
+            /// <summary>
+            /// Gets or sets the alg.
+            /// </summary>
             public string alg { get; set; }
         }
         #endregion

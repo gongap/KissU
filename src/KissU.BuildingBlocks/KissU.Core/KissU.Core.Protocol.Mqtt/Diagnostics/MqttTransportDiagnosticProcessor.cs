@@ -8,9 +8,17 @@ using KissUEvents = KissU.Core.CPlatform.Diagnostics.DiagnosticListenerExtension
 
 namespace KissU.Core.Protocol.Mqtt.Diagnostics
 {
-     public class MqttTransportDiagnosticProcessor: ITracingDiagnosticProcessor
+    /// <summary>
+    /// MqttTransportDiagnosticProcessor.
+    /// Implements the <see cref="KissU.Core.CPlatform.Diagnostics.ITracingDiagnosticProcessor" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Diagnostics.ITracingDiagnosticProcessor" />
+    public class MqttTransportDiagnosticProcessor: ITracingDiagnosticProcessor
     {
         private Func<TransportEventData, string> _transportOperationNameResolver;
+        /// <summary>
+        /// Gets the name of the listener.
+        /// </summary>
         public string ListenerName => KissUEvents.DiagnosticListenerName;
 
 
@@ -18,6 +26,10 @@ namespace KissU.Core.Protocol.Mqtt.Diagnostics
         private readonly ITracingContext _tracingContext;
         private readonly IEntrySegmentContextAccessor _segmentContextAccessor;
 
+        /// <summary>
+        /// Gets or sets the transport operation name resolver.
+        /// </summary>
+        /// <exception cref="ArgumentNullException">TransportOperationNameResolver</exception>
         public Func<TransportEventData, string> TransportOperationNameResolver
         {
             get
@@ -29,6 +41,12 @@ namespace KissU.Core.Protocol.Mqtt.Diagnostics
                 value ?? throw new ArgumentNullException(nameof(TransportOperationNameResolver));
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MqttTransportDiagnosticProcessor"/> class.
+        /// </summary>
+        /// <param name="tracingContext">The tracing context.</param>
+        /// <param name="serializer">The serializer.</param>
+        /// <param name="contextAccessor">The context accessor.</param>
         public MqttTransportDiagnosticProcessor(ITracingContext tracingContext, ISerializer<string> serializer, IEntrySegmentContextAccessor contextAccessor)
         {
             _tracingContext = tracingContext;
@@ -36,6 +54,10 @@ namespace KissU.Core.Protocol.Mqtt.Diagnostics
             _segmentContextAccessor = contextAccessor;
         }
 
+        /// <summary>
+        /// Transports the before.
+        /// </summary>
+        /// <param name="eventData">The event data.</param>
         [DiagnosticName(KissUEvents.BeforeTransport, TransportType.Mqtt)]
         public void TransportBefore([Object] TransportEventData eventData)
         {
@@ -52,6 +74,10 @@ namespace KissU.Core.Protocol.Mqtt.Diagnostics
             context.Span.AddTag(Tags.MQTT_BROKER_ADDRESS, NetUtils.GetHostAddress().ToString());
         }
 
+        /// <summary>
+        /// Transports the after.
+        /// </summary>
+        /// <param name="eventData">The event data.</param>
         [DiagnosticName(KissUEvents.AfterTransport, TransportType.Mqtt)]
         public void TransportAfter([Object] ReceiveEventData eventData)
         {
@@ -62,6 +88,10 @@ namespace KissU.Core.Protocol.Mqtt.Diagnostics
             }
         }
 
+        /// <summary>
+        /// Transports the error.
+        /// </summary>
+        /// <param name="eventData">The event data.</param>
         [DiagnosticName(KissUEvents.ErrorTransport, TransportType.Mqtt)]
         public void TransportError([Object] TransportErrorEventData eventData)
         {
@@ -73,6 +103,11 @@ namespace KissU.Core.Protocol.Mqtt.Diagnostics
             }
         }
 
+        /// <summary>
+        /// Converts the unique identifier.
+        /// </summary>
+        /// <param name="eventData">The event data.</param>
+        /// <returns>UniqueId.</returns>
         public UniqueId ConvertUniqueId(TransportEventData eventData)
         {
             long part1 = 0, part2 = 0, part3 = 0;

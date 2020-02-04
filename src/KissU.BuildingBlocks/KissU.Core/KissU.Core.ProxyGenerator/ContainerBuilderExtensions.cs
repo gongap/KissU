@@ -11,6 +11,9 @@ using KissU.Core.ProxyGenerator.Interceptors.Implementation;
 
 namespace KissU.Core.ProxyGenerator
 {
+    /// <summary>
+    /// ContainerBuilderExtensions.
+    /// </summary>
     public static class ContainerBuilderExtensions
     {
         /// <summary>
@@ -33,6 +36,12 @@ namespace KissU.Core.ProxyGenerator
             return builder;
         }
 
+        /// <summary>
+        /// Adds the client intercepted.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="interceptorServiceTypes">The interceptor service types.</param>
+        /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder AddClientIntercepted(this IServiceBuilder builder,params Type[] interceptorServiceTypes )
         {
             var services = builder.Services; 
@@ -41,6 +50,11 @@ namespace KissU.Core.ProxyGenerator
             return builder;
         }
 
+        /// <summary>
+        /// Adds the RPC transport diagnostic.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder AddRpcTransportDiagnostic(this IServiceBuilder builder)
         {
             var services = builder.Services;
@@ -51,8 +65,8 @@ namespace KissU.Core.ProxyGenerator
         /// <summary>
         /// 添加客户端拦截
         /// </summary>
-        /// <param name="builder"></param>
-        /// <param name="interceptorServiceType"></param>
+        /// <param name="builder">The builder.</param>
+        /// <param name="interceptorServiceType">Type of the interceptor service.</param>
         /// <returns>服务构建者</returns>
         public static IServiceBuilder AddClientIntercepted(this IServiceBuilder builder, Type interceptorServiceType)
         {
@@ -62,6 +76,11 @@ namespace KissU.Core.ProxyGenerator
             return builder;
         }
 
+        /// <summary>
+        /// Adds the client.
+        /// </summary>
+        /// <param name="services">The services.</param>
+        /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder AddClient(this ContainerBuilder services)
         {
             return services
@@ -73,7 +92,7 @@ namespace KissU.Core.ProxyGenerator
         /// <summary>
         /// 添加关联服务
         /// </summary>
-        /// <param name="builder"></param>
+        /// <param name="builder">The builder.</param>
         /// <returns>服务构建者</returns>
         public static IServiceBuilder AddRelateService(this IServiceBuilder builder)
         {

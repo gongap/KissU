@@ -10,23 +10,46 @@ using KissU.Core.CPlatform.Utilities;
 
 namespace KissU.Core.KestrelHttpServer.Filters.Implementation
 {
-   public class HttpRequestFilterAttribute : IActionFilter
+    /// <summary>
+    /// HttpRequestFilterAttribute.
+    /// Implements the <see cref="KissU.Core.KestrelHttpServer.Filters.IActionFilter" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.KestrelHttpServer.Filters.IActionFilter" />
+    public class HttpRequestFilterAttribute : IActionFilter
     {
+        /// <summary>
+        /// The HTTP405 endpoint display name
+        /// </summary>
         internal const string Http405EndpointDisplayName = "405 HTTP Method Not Supported";
+        /// <summary>
+        /// The HTTP405 endpoint status code
+        /// </summary>
         internal const int Http405EndpointStatusCode = 405;
         private readonly IServiceRouteProvider _serviceRouteProvider;
         private readonly IServiceEntryLocate _serviceEntryLocate;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HttpRequestFilterAttribute"/> class.
+        /// </summary>
         public HttpRequestFilterAttribute()
         {
             _serviceRouteProvider = ServiceLocator.Current.Resolve<IServiceRouteProvider>(); ;
             _serviceEntryLocate = ServiceLocator.Current.Resolve<IServiceEntryLocate>(); ;
         }
+        /// <summary>
+        /// Called when [action executed].
+        /// </summary>
+        /// <param name="filterContext">The filter context.</param>
+        /// <returns>Task.</returns>
         public Task OnActionExecuted(ActionExecutedContext filterContext)
         {
             return Task.CompletedTask;
         }
 
-        public  async Task OnActionExecuting(ActionExecutingContext filterContext)
+        /// <summary>
+        /// Called when [action executing].
+        /// </summary>
+        /// <param name="filterContext">The filter context.</param>
+        public async Task OnActionExecuting(ActionExecutingContext filterContext)
         { 
             var serviceEntry= _serviceEntryLocate.Locate(filterContext.Message);
             if (serviceEntry != null)

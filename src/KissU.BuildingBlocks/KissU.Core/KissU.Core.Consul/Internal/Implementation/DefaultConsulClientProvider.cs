@@ -15,6 +15,11 @@ using Level = Microsoft.Extensions.Logging.LogLevel;
 
 namespace KissU.Core.Consul.Internal.Implementation
 {
+    /// <summary>
+    /// DefaultConsulClientProvider.
+    /// Implements the <see cref="KissU.Core.Consul.Internal.IConsulClientProvider" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.Consul.Internal.IConsulClientProvider" />
     public class DefaultConsulClientProvider : IConsulClientProvider
     {
         private ConfigInfo _config;
@@ -26,6 +31,13 @@ namespace KissU.Core.Consul.Internal.Implementation
         private readonly ConcurrentDictionary<AddressModel, ConsulClient> _consulClients = new
             ConcurrentDictionary<AddressModel, ConsulClient>();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DefaultConsulClientProvider"/> class.
+        /// </summary>
+        /// <param name="config">The configuration.</param>
+        /// <param name="healthCheckService">The health check service.</param>
+        /// <param name="consulAddressSelector">The consul address selector.</param>
+        /// <param name="logger">The logger.</param>
         public DefaultConsulClientProvider(ConfigInfo config, IHealthCheckService healthCheckService, IConsulAddressSelector consulAddressSelector,
             ILogger<DefaultConsulClientProvider> logger)
         {
@@ -35,6 +47,10 @@ namespace KissU.Core.Consul.Internal.Implementation
             _logger = logger;
         }
 
+        /// <summary>
+        /// Gets the client.
+        /// </summary>
+        /// <returns>ValueTask&lt;ConsulClient&gt;.</returns>
         public async ValueTask<ConsulClient> GetClient()
         {
             ConsulClient result = null;
@@ -73,6 +89,10 @@ namespace KissU.Core.Consul.Internal.Implementation
             return result;
         }
 
+        /// <summary>
+        /// Gets the clients.
+        /// </summary>
+        /// <returns>ValueTask&lt;IEnumerable&lt;ConsulClient&gt;&gt;.</returns>
         public async ValueTask<IEnumerable<ConsulClient>> GetClients()
         {
             var result = new List<ConsulClient>();
@@ -91,6 +111,11 @@ namespace KissU.Core.Consul.Internal.Implementation
             return result;
         }
 
+        /// <summary>
+        /// Checks this instance.
+        /// </summary>
+        /// <returns>ValueTask.</returns>
+        /// <exception cref="RegisterConnectionException"></exception>
         public async ValueTask Check()
         {
             foreach (var address in _config.Addresses)

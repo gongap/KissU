@@ -3,8 +3,17 @@ using Microsoft.AspNetCore.Builder;
 
 namespace KissU.Core.Swagger.SwaggerUI
 {
+    /// <summary>
+    /// SwaggerUIBuilderExtensions.
+    /// </summary>
     public static  class SwaggerUIBuilderExtensions
     {
+        /// <summary>
+        /// Uses the swagger UI.
+        /// </summary>
+        /// <param name="app">The application.</param>
+        /// <param name="setupAction">The setup action.</param>
+        /// <returns>IApplicationBuilder.</returns>
         public static IApplicationBuilder UseSwaggerUI(
            this IApplicationBuilder app,
            Action<SwaggerUIOptions> setupAction = null)

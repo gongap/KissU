@@ -13,7 +13,7 @@ namespace KissU.Core.ProxyGenerator
         /// 生成服务代理。
         /// </summary>
         /// <param name="interfacTypes">需要被代理的接口类型。</param>
-        /// <param name="interfacTypes">引用的命名空间。</param>
+        /// <param name="namespaces">The namespaces.</param>
         /// <returns>服务代理实现。</returns>
         IEnumerable<Type> GenerateProxys(IEnumerable<Type> interfacTypes,IEnumerable<string> namespaces);
 
@@ -21,6 +21,7 @@ namespace KissU.Core.ProxyGenerator
         /// 生成服务代理代码树。
         /// </summary>
         /// <param name="interfaceType">需要被代理的接口类型。</param>
+        /// <param name="namespaces">The namespaces.</param>
         /// <returns>代码树。</returns>
         SyntaxTree GenerateProxyTree(Type interfaceType, IEnumerable<string> namespaces);
     }

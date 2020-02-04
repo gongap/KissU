@@ -6,6 +6,11 @@ using KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selec
 
 namespace KissU.Core.Zookeeper.Internal.Cluster.Implementation.Selectors.Implementation
 {
+    /// <summary>
+    /// ZookeeperAddressSelectorBase.
+    /// Implements the <see cref="KissU.Core.Zookeeper.Internal.Cluster.Implementation.Selectors.IZookeeperAddressSelector" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.Zookeeper.Internal.Cluster.Implementation.Selectors.IZookeeperAddressSelector" />
     public abstract class ZookeeperAddressSelectorBase : IZookeeperAddressSelector
     {
         #region Implementation of IAddressSelector

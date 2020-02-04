@@ -5,6 +5,9 @@ using MongoDB.Driver;
 
 namespace KissU.Core.System.MongoProvider
 {
+    /// <summary>
+    /// Util.
+    /// </summary>
     internal static class Util
     {
         private static IConfigurationRoot _config;
@@ -16,11 +19,21 @@ namespace KissU.Core.System.MongoProvider
 
         }
 
+        /// <summary>
+        /// Gets the default connection string.
+        /// </summary>
+        /// <returns>System.String.</returns>
         public static string GetDefaultConnectionString()
         {
             return MongoConfig.DefaultInstance.MongConnectionString;
         }
 
+        /// <summary>
+        /// Gets the collection from connection string.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="connectionstring">The connectionstring.</param>
+        /// <returns>IMongoCollection&lt;T&gt;.</returns>
         public static IMongoCollection<T> GetCollectionFromConnectionString<T>(string connectionstring)
             where T : IEntity
         {

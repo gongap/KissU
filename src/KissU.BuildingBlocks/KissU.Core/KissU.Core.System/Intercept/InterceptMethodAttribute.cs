@@ -59,22 +59,34 @@ namespace KissU.Core.System.Intercept
         ///// <summary>
         ///// 设置SectionType
         ///// </summary>
+        /// <summary>
+        /// Gets or sets the type of the cache section.
+        /// </summary>
         public SectionType CacheSectionType
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// Gets or sets the l2 key.
+        /// </summary>
         public string L2Key
         {
             get; set;
         }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether [enable l2 cache].
+        /// </summary>
         public bool EnableL2Cache
         {
             get;set;
         }
 
+        /// <summary>
+        /// Gets or sets the key.
+        /// </summary>
         public string Key { get; set; }
         /// <summary>
         /// 获取或设置缓存方式。
@@ -89,7 +101,7 @@ namespace KissU.Core.System.Intercept
         }
 
         /// <summary>
-        /// 获取或设置一个<see cref="Boolean"/>值，该值表示当缓存方式为Put时，是否强制将值写入缓存中。
+        /// 获取或设置一个<see cref="Boolean" />值，该值表示当缓存方式为Put时，是否强制将值写入缓存中。
         /// </summary>
         public bool Force { get; set; }
         /// <summary>

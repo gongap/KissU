@@ -5,6 +5,11 @@ using KissU.Core.Protocol.Mqtt.Internal.Services;
 
 namespace KissU.Core.Protocol.Mqtt.Internal.Runtime.Implementation
 {
+    /// <summary>
+    /// DefaultMqttBehaviorProvider.
+    /// Implements the <see cref="KissU.Core.Protocol.Mqtt.Internal.Runtime.IMqttBehaviorProvider" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.Protocol.Mqtt.Internal.Runtime.IMqttBehaviorProvider" />
     public class DefaultMqttBehaviorProvider : IMqttBehaviorProvider
     {
         #region Field
@@ -17,6 +22,11 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Runtime.Implementation
 
         #region Constructor
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DefaultMqttBehaviorProvider"/> class.
+        /// </summary>
+        /// <param name="serviceEntryProvider">The service entry provider.</param>
+        /// <param name="serviceProvider">The service provider.</param>
         public DefaultMqttBehaviorProvider(IServiceEntryProvider serviceEntryProvider,  CPlatformContainer serviceProvider)
         {
             _serviceEntryProvider = serviceEntryProvider;
@@ -25,6 +35,10 @@ namespace KissU.Core.Protocol.Mqtt.Internal.Runtime.Implementation
 
         #endregion Constructor
 
+        /// <summary>
+        /// Gets the MQTT behavior.
+        /// </summary>
+        /// <returns>MqttBehavior.</returns>
         public MqttBehavior GetMqttBehavior()
         {
             if (_mqttBehavior == null)

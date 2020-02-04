@@ -9,6 +9,11 @@ using KissU.Core.CPlatform.Serialization;
 
 namespace KissU.Core.Protocol.Mqtt.Implementation
 {
+    /// <summary>
+    /// DefaultMqttServiceFactory.
+    /// Implements the <see cref="KissU.Core.CPlatform.Mqtt.IMqttServiceFactory" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Mqtt.IMqttServiceFactory" />
     public class DefaultMqttServiceFactory : IMqttServiceFactory
     {
 
@@ -16,11 +21,21 @@ namespace KissU.Core.Protocol.Mqtt.Implementation
         private readonly ConcurrentDictionary<string, AddressModel> _addressModel =
                new ConcurrentDictionary<string, AddressModel>();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DefaultMqttServiceFactory"/> class.
+        /// </summary>
+        /// <param name="serializer">The serializer.</param>
         public DefaultMqttServiceFactory(ISerializer<string> serializer)
         {
             _serializer = serializer;
         }
 
+        /// <summary>
+        /// Creates the MQTT service routes asynchronous.
+        /// </summary>
+        /// <param name="descriptors">The descriptors.</param>
+        /// <returns>Task&lt;IEnumerable&lt;MqttServiceRoute&gt;&gt;.</returns>
+        /// <exception cref="ArgumentNullException">descriptors</exception>
         public Task<IEnumerable<MqttServiceRoute>> CreateMqttServiceRoutesAsync(IEnumerable<MqttServiceDescriptor> descriptors)
         {
             if (descriptors == null)

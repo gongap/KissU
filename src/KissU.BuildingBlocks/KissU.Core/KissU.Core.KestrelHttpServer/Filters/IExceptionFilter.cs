@@ -3,8 +3,16 @@ using KissU.Core.KestrelHttpServer.Filters.Implementation;
 
 namespace KissU.Core.KestrelHttpServer.Filters
 {
-   public interface IExceptionFilter
-    { 
-          Task OnException(ExceptionContext context);
+    /// <summary>
+    /// Interface IExceptionFilter
+    /// </summary>
+    public interface IExceptionFilter
+    {
+        /// <summary>
+        /// Called when [exception].
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <returns>Task.</returns>
+        Task OnException(ExceptionContext context);
     }
 }

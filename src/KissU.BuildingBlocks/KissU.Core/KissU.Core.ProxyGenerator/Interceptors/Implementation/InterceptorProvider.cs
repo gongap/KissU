@@ -8,14 +8,31 @@ using KissU.Core.CPlatform.Runtime.Server;
 
 namespace KissU.Core.ProxyGenerator.Interceptors.Implementation
 {
+    /// <summary>
+    /// InterceptorProvider.
+    /// Implements the <see cref="KissU.Core.ProxyGenerator.Interceptors.IInterceptorProvider" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.ProxyGenerator.Interceptors.IInterceptorProvider" />
     public class InterceptorProvider : IInterceptorProvider
     {
         private readonly IServiceEntryManager _serviceEntryManager;
         ConcurrentDictionary<Tuple<Type, Type>,bool> _derivedTypes = new ConcurrentDictionary<Tuple<Type, Type>, bool>();
+        /// <summary>
+        /// Initializes a new instance of the <see cref="InterceptorProvider"/> class.
+        /// </summary>
+        /// <param name="serviceEntryManager">The service entry manager.</param>
         public InterceptorProvider(IServiceEntryManager serviceEntryManager)
         {
             _serviceEntryManager = serviceEntryManager;
         }
+        /// <summary>
+        /// Gets the invocation.
+        /// </summary>
+        /// <param name="proxy">The proxy.</param>
+        /// <param name="parameters">The parameters.</param>
+        /// <param name="serviceId">The service identifier.</param>
+        /// <param name="returnType">Type of the return.</param>
+        /// <returns>IInvocation.</returns>
         public IInvocation GetInvocation(object proxy, IDictionary<string, object> parameters,
             string serviceId,Type returnType)
         {
@@ -31,6 +48,14 @@ namespace KissU.Core.ProxyGenerator.Interceptors.Implementation
                 }) as IInvocation;
         }
 
+        /// <summary>
+        /// Gets the cache invocation.
+        /// </summary>
+        /// <param name="proxy">The proxy.</param>
+        /// <param name="parameters">The parameters.</param>
+        /// <param name="serviceId">The service identifier.</param>
+        /// <param name="returnType">Type of the return.</param>
+        /// <returns>IInvocation.</returns>
         public IInvocation GetCacheInvocation(object proxy, IDictionary<string, object> parameters,
     string serviceId, Type returnType)
         {

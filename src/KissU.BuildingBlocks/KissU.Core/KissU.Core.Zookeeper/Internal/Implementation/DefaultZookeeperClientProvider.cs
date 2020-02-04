@@ -17,6 +17,11 @@ using Level = Microsoft.Extensions.Logging.LogLevel;
 
 namespace KissU.Core.Zookeeper.Internal.Implementation
 {
+    /// <summary>
+    /// DefaultZookeeperClientProvider.
+    /// Implements the <see cref="KissU.Core.Zookeeper.Internal.IZookeeperClientProvider" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.Zookeeper.Internal.IZookeeperClientProvider" />
     public class DefaultZookeeperClientProvider : IZookeeperClientProvider
     {
         private ConfigInfo _config;
@@ -27,6 +32,13 @@ namespace KissU.Core.Zookeeper.Internal.Implementation
             ConcurrentDictionary<string, IAddressSelector>();
         private readonly ConcurrentDictionary<AddressModel,ValueTuple<ManualResetEvent, ZooKeeper>> _zookeeperClients = new
            ConcurrentDictionary<AddressModel, ValueTuple<ManualResetEvent, ZooKeeper>>();
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DefaultZookeeperClientProvider"/> class.
+        /// </summary>
+        /// <param name="config">The configuration.</param>
+        /// <param name="healthCheckService">The health check service.</param>
+        /// <param name="zookeeperAddressSelector">The zookeeper address selector.</param>
+        /// <param name="logger">The logger.</param>
         public DefaultZookeeperClientProvider(ConfigInfo config, IHealthCheckService healthCheckService, IZookeeperAddressSelector zookeeperAddressSelector,
       ILogger<DefaultZookeeperClientProvider> logger)
         {
@@ -35,6 +47,11 @@ namespace KissU.Core.Zookeeper.Internal.Implementation
             _zookeeperAddressSelector = zookeeperAddressSelector;
             _logger = logger;
         }
+        /// <summary>
+        /// Checks this instance.
+        /// </summary>
+        /// <returns>ValueTask.</returns>
+        /// <exception cref="RegisterConnectionException"></exception>
         public async ValueTask Check()
         {
             foreach (var address in _config.Addresses)
@@ -46,6 +63,10 @@ namespace KissU.Core.Zookeeper.Internal.Implementation
             }
         }
 
+        /// <summary>
+        /// Gets the zoo keeper.
+        /// </summary>
+        /// <returns>ValueTask&lt;System.ValueTuple&lt;ManualResetEvent, ZooKeeper&gt;&gt;.</returns>
         public async ValueTask<(ManualResetEvent, ZooKeeper)> GetZooKeeper()
         {
 
@@ -82,6 +103,11 @@ namespace KissU.Core.Zookeeper.Internal.Implementation
             return result;
         }
 
+        /// <summary>
+        /// Creates the zoo keeper.
+        /// </summary>
+        /// <param name="ipAddress">The ip address.</param>
+        /// <returns>System.ValueTuple&lt;ManualResetEvent, ZooKeeper&gt;.</returns>
         protected (ManualResetEvent, ZooKeeper) CreateZooKeeper(IpAddressModel ipAddress)
         {
             if (!_zookeeperClients.TryGetValue(ipAddress, out (ManualResetEvent, ZooKeeper) result))
@@ -112,6 +138,10 @@ namespace KissU.Core.Zookeeper.Internal.Implementation
             return result;
         }
 
+        /// <summary>
+        /// Gets the zoo keepers.
+        /// </summary>
+        /// <returns>ValueTask&lt;IEnumerable&lt;System.ValueTuple&lt;ManualResetEvent, ZooKeeper&gt;&gt;&gt;.</returns>
         public async ValueTask<IEnumerable<(ManualResetEvent, ZooKeeper)>> GetZooKeepers()
         {
             var result = new List<(ManualResetEvent, ZooKeeper)>();

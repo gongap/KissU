@@ -15,21 +15,43 @@ using KissU.Core.DotNetty;
 
 namespace KissU.Core.DNS
 {
+    /// <summary>
+    /// DotNettyDnsServerMessageSender.
+    /// Implements the <see cref="KissU.Core.DotNetty.DotNettyMessageSender" />
+    /// Implements the <see cref="KissU.Core.CPlatform.Transport.IMessageSender" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.DotNetty.DotNettyMessageSender" />
+    /// <seealso cref="KissU.Core.CPlatform.Transport.IMessageSender" />
     class DotNettyDnsServerMessageSender : DotNettyMessageSender, IMessageSender
     {
         private readonly IChannelHandlerContext _context;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DotNettyDnsServerMessageSender"/> class.
+        /// </summary>
+        /// <param name="transportMessageEncoder">The transport message encoder.</param>
+        /// <param name="context">The context.</param>
         public DotNettyDnsServerMessageSender(ITransportMessageEncoder transportMessageEncoder, IChannelHandlerContext context) : base(transportMessageEncoder)
         {
             _context = context;
         }
 
+        /// <summary>
+        /// send and flush as an asynchronous operation.
+        /// </summary>
+        /// <param name="message">消息内容。</param>
+        /// <returns>一个任务。</returns>
         public async Task SendAndFlushAsync(TransportMessage message)
         {
             var response=await  WriteResponse(message);
             await _context.WriteAndFlushAsync(response);
         }
 
+        /// <summary>
+        /// send as an asynchronous operation.
+        /// </summary>
+        /// <param name="message">消息内容。</param>
+        /// <returns>一个任务。</returns>
         public async Task SendAsync(TransportMessage message)
         {
             var response = await WriteResponse(message);
@@ -101,6 +123,12 @@ namespace KissU.Core.DNS
             return response;
         }
 
+        /// <summary>
+        /// Gets the DNS message.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="recordType">Type of the record.</param>
+        /// <returns>Task&lt;DnsMessage&gt;.</returns>
         public async Task<DnsMessage> GetDnsMessage(string name, DnsRecordType recordType)
         {
            return await DnsClientProvider.Instance().Resolve(name, recordType);

@@ -10,6 +10,9 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.DotNetty
 {
+    /// <summary>
+    /// ContainerBuilderExtensions.
+    /// </summary>
     public static class ContainerBuilderExtensions
     {
         /// <summary>

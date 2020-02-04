@@ -4,17 +4,30 @@ using System.Linq;
 
 namespace KissU.Core.Swagger.SwaggerGen.Generator
 {
+    /// <summary>
+    /// SchemaIdManager.
+    /// </summary>
     public class SchemaIdManager
     {
         private readonly Func<Type, string> _schemaIdSelector;
         private readonly IDictionary<Type, string> _schemaIdMap;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SchemaIdManager"/> class.
+        /// </summary>
+        /// <param name="schemaIdSelector">The schema identifier selector.</param>
         public SchemaIdManager(Func<Type, string> schemaIdSelector)
         {
             _schemaIdSelector = schemaIdSelector;
             _schemaIdMap = new Dictionary<Type, string>();
         }
 
+        /// <summary>
+        /// Identifiers for.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <returns>System.String.</returns>
+        /// <exception cref="InvalidOperationException"></exception>
         public string IdFor(Type type)
         {
             if (!_schemaIdMap.TryGetValue(type, out string schemaId))

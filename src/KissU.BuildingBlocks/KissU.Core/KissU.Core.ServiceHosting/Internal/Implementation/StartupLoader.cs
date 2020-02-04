@@ -73,8 +73,10 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
         /// <param name="environmentName">环境名</param>
         /// <returns>启动类型</returns>
         /// <exception cref="ArgumentException">startupAssemblyName</exception>
+        /// <exception cref="InvalidOperationException"></exception>
+        /// <exception cref="InvalidOperationException"></exception>
         /// <exception cref="InvalidOperationException">startupAssemblyName</exception>
-        /// <exception cref="InvalidOperationException">startupAssemblyName</exception>
+        /// <exception cref="InvalidOperationException"></exception>
         public static Type FindStartupType(string startupAssemblyName, string environmentName)
         {
             if (string.IsNullOrEmpty(startupAssemblyName))

@@ -6,13 +6,26 @@ using KissU.Core.Swagger.SwaggerGen.Generator;
 
 namespace KissU.Core.Swagger.Swagger.Filters
 {
-   public class AddAuthorizationOperationFilter : IOperationFilter
+    /// <summary>
+    /// AddAuthorizationOperationFilter.
+    /// Implements the <see cref="KissU.Core.Swagger.SwaggerGen.Generator.IOperationFilter" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.Swagger.SwaggerGen.Generator.IOperationFilter" />
+    public class AddAuthorizationOperationFilter : IOperationFilter
     {
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AddAuthorizationOperationFilter"/> class.
+        /// </summary>
         public AddAuthorizationOperationFilter()
         {
         }
 
+        /// <summary>
+        /// Applies the specified operation.
+        /// </summary>
+        /// <param name="operation">The operation.</param>
+        /// <param name="context">The context.</param>
         public void Apply(Operation operation, OperationFilterContext context)
         {
             if (operation.Parameters == null)

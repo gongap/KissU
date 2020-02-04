@@ -15,6 +15,13 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.Consul
 {
+    /// <summary>
+    /// ConsulServiceSubscribeManager.
+    /// Implements the <see cref="KissU.Core.CPlatform.Runtime.Client.Implementation.ServiceSubscribeManagerBase" />
+    /// Implements the <see cref="System.IDisposable" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Runtime.Client.Implementation.ServiceSubscribeManagerBase" />
+    /// <seealso cref="System.IDisposable" />
     public class ConsulServiceSubscribeManager : ServiceSubscribeManagerBase, IDisposable
     {
         private readonly ConfigInfo _configInfo;
@@ -26,6 +33,16 @@ namespace KissU.Core.Consul
         private readonly IConsulClientProvider _consulClientFactory;
         private ServiceSubscriber[] _subscribers;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ConsulServiceSubscribeManager"/> class.
+        /// </summary>
+        /// <param name="configInfo">The configuration information.</param>
+        /// <param name="serializer">The serializer.</param>
+        /// <param name="stringSerializer">The string serializer.</param>
+        /// <param name="manager">The manager.</param>
+        /// <param name="serviceSubscriberFactory">The service subscriber factory.</param>
+        /// <param name="logger">The logger.</param>
+        /// <param name="consulClientFactory">The consul client factory.</param>
         public ConsulServiceSubscribeManager(ConfigInfo configInfo, ISerializer<byte[]> serializer,
             ISerializer<string> stringSerializer, IClientWatchManager manager, IServiceSubscriberFactory serviceSubscriberFactory,
             ILogger<ConsulServiceSubscribeManager> logger, IConsulClientProvider consulClientFactory) : base(stringSerializer)
@@ -50,6 +67,10 @@ namespace KissU.Core.Consul
             return _subscribers;
         }
 
+        /// <summary>
+        /// clear as an asynchronous operation.
+        /// </summary>
+        /// <returns>一个任务。</returns>
         public override async Task ClearAsync()
         {
             var clients = await _consulClientFactory.GetClients();
@@ -69,10 +90,18 @@ namespace KissU.Core.Consul
             }
         }
 
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
         public void Dispose()
         {
         }
 
+        /// <summary>
+        /// set subscribers as an asynchronous operation.
+        /// </summary>
+        /// <param name="subscribers">The subscribers.</param>
+        /// <returns>一个任务。</returns>
         protected override async Task SetSubscribersAsync(IEnumerable<ServiceSubscriberDescriptor> subscribers)
         {
             subscribers = subscribers.ToArray();
@@ -98,6 +127,10 @@ namespace KissU.Core.Consul
             }
         }
 
+        /// <summary>
+        /// set subscribers as an asynchronous operation.
+        /// </summary>
+        /// <param name="subscribers">The subscribers.</param>
         public override async Task SetSubscribersAsync(IEnumerable<ServiceSubscriber> subscribers)
         {
             var serviceSubscribers = await GetSubscribers(subscribers.Select(p => $"{ _configInfo.SubscriberPath }{ p.ServiceDescriptor.Id}"));

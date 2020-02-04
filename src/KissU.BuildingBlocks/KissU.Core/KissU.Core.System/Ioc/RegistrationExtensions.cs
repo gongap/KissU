@@ -29,12 +29,22 @@ namespace KissU.Core.System.Ioc
 
         private static Dictionary<string, Assembly> _referenceAssembly = new Dictionary<string, Assembly>();
 
+        /// <summary>
+        /// Gets the reference assembly.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <returns>List&lt;Assembly&gt;.</returns>
         [Obsolete]
         public static List<Assembly> GetReferenceAssembly(this ContainerBuilder builder)
         {
             return _referenceAssembly.Values.ToList();
         }
 
+        /// <summary>
+        /// Initializes the specified pattern.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="pattern">The pattern.</param>
         [Obsolete]
         public static void Initialize(this ContainerBuilder builder,
                                       string pattern = "")
@@ -63,6 +73,7 @@ namespace KissU.Core.System.Ioc
         /// </summary>
         /// <param name="builder">ioc容器</param>
         /// <returns>返回注册模块信息</returns>
+        /// <exception cref="ArgumentNullException">builder</exception>
         [Obsolete]
         public static IRegistrationBuilder<object, ScanningActivatorData, DynamicRegistrationStyle> RegisterWcfServices(
             this ContainerBuilder builder)
@@ -88,6 +99,7 @@ namespace KissU.Core.System.Ioc
         /// </summary>
         /// <param name="builder">ioc容器</param>
         /// <returns>返回注册模块信息</returns>
+        /// <exception cref="ArgumentNullException">builder</exception>
         [Obsolete]
         public static IRegistrationBuilder<object, ScanningActivatorData, DynamicRegistrationStyle> RegisterServices(
             this ContainerBuilder builder)
@@ -139,6 +151,11 @@ namespace KissU.Core.System.Ioc
             return result;
         }
 
+        /// <summary>
+        /// Registers the service bus.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <returns>IRegistrationBuilder&lt;System.Object, ScanningActivatorData, DynamicRegistrationStyle&gt;.</returns>
         [Obsolete]
         public static IRegistrationBuilder<object, ScanningActivatorData, DynamicRegistrationStyle> RegisterServiceBus
             (
@@ -161,10 +178,11 @@ namespace KissU.Core.System.Ioc
             return result;
         }
         /// <summary>
-        ///依赖注入仓储模块程序集
+        /// 依赖注入仓储模块程序集
         /// </summary>
         /// <param name="builder">IOC容器</param>
         /// <returns>返回注册模块信息</returns>
+        /// <exception cref="ArgumentNullException">builder</exception>
         [Obsolete]
         public static IRegistrationBuilder<object, ScanningActivatorData, DynamicRegistrationStyle> RegisterRepositories
             (
@@ -186,6 +204,12 @@ namespace KissU.Core.System.Ioc
             return result;
         }
 
+        /// <summary>
+        /// Registers the modules.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <returns>IModuleRegistrar.</returns>
+        /// <exception cref="ArgumentNullException">builder</exception>
         [Obsolete]
         public static IModuleRegistrar RegisterModules(
             this ContainerBuilder builder)
@@ -218,6 +242,12 @@ namespace KissU.Core.System.Ioc
             return result;
         }
 
+        /// <summary>
+        /// Registers the business modules.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <returns>IRegistrationBuilder&lt;System.Object, ScanningActivatorData, DynamicRegistrationStyle&gt;.</returns>
+        /// <exception cref="ArgumentNullException">builder</exception>
         [Obsolete]
         public static IRegistrationBuilder<object, ScanningActivatorData, DynamicRegistrationStyle>
             RegisterBusinessModules(this ContainerBuilder builder)
@@ -236,6 +266,11 @@ namespace KissU.Core.System.Ioc
             return result;
         }
 
+        /// <summary>
+        /// Initializes the module.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <exception cref="ArgumentNullException">builder</exception>
         [Obsolete]
         public static void InitializeModule(this ContainerBuilder builder)
         {
@@ -277,6 +312,11 @@ namespace KissU.Core.System.Ioc
             return abstractModules;
         }
 
+        /// <summary>
+        /// Gets the interface service.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <returns>List&lt;Type&gt;.</returns>
         [Obsolete]
         public static List<Type> GetInterfaceService(this ContainerBuilder builder)
         {
@@ -299,10 +339,8 @@ namespace KissU.Core.System.Ioc
         /// <typeparam name="TAttributeType">类型参数：自定义特性的类型。</typeparam>
         /// <param name="type">类型。</param>
         /// <returns>返回指定类型的自定义特性对象。</returns>
-        /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2015/12/5</para>
-        /// </remarks>
+        /// <remarks><para>创建：范亮</para>
+        /// <para>日期：2015/12/5</para></remarks>
         [Obsolete]
         public static TAttributeType GetTypeCustomAttribute<TAttributeType>(Type type) where TAttributeType : Attribute
         {

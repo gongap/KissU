@@ -5,6 +5,9 @@ using KissU.Core.CPlatform.Address;
 
 namespace KissU.Core.Zookeeper.Configurations
 {
+    /// <summary>
+    /// ConfigInfo.
+    /// </summary>
     public class ConfigInfo
     {
         /// <summary>
@@ -17,6 +20,8 @@ namespace KissU.Core.Zookeeper.Configurations
         /// <param name="cachePath">缓存中心配置路径</param>
         /// <param name="mqttRoutePath">mqtt路由配置路径</param>
         /// <param name="chRoot">根节点。</param>
+        /// <param name="reloadOnChange">if set to <c>true</c> [reload on change].</param>
+        /// <param name="enableChildrenMonitor">if set to <c>true</c> [enable children monitor].</param>
         public ConfigInfo(string connectionString, string routePath = "/services/serviceRoutes",
             string subscriberPath = "/services/serviceSubscribers",
             string commandPath = "/services/serviceCommands",
@@ -39,13 +44,15 @@ namespace KissU.Core.Zookeeper.Configurations
         /// 初始化Zookeeper配置信息。
         /// </summary>
         /// <param name="connectionString">连接字符串。</param>
-        /// <param name="routePath">路由配置路径。</param>
-        /// <param name="commandPath">服务命令配置路径</param>
-        /// <param name="subscriberPath">订阅者配置路径</param>
         /// <param name="sessionTimeout">会话超时时间。</param>
+        /// <param name="routePath">路由配置路径。</param>
+        /// <param name="subscriberPath">订阅者配置路径</param>
+        /// <param name="commandPath">服务命令配置路径</param>
         /// <param name="cachePath">缓存中心配置路径</param>
         /// <param name="mqttRoutePath">mqtt路由配置路径</param>
         /// <param name="chRoot">根节点。</param>
+        /// <param name="reloadOnChange">if set to <c>true</c> [reload on change].</param>
+        /// <param name="enableChildrenMonitor">if set to <c>true</c> [enable children monitor].</param>
         public ConfigInfo(string connectionString, TimeSpan sessionTimeout, string routePath = "/services/serviceRoutes",
             string subscriberPath = "/services/serviceSubscribers",
             string commandPath = "/services/serviceCommands",
@@ -83,8 +90,14 @@ namespace KissU.Core.Zookeeper.Configurations
             }
         }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether [enable children monitor].
+        /// </summary>
         public bool EnableChildrenMonitor { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether [reload on change].
+        /// </summary>
         public bool ReloadOnChange { get; set; }
 
         /// <summary>
@@ -118,6 +131,9 @@ namespace KissU.Core.Zookeeper.Configurations
         public string ChRoot { get; set; }
 
 
+        /// <summary>
+        /// Gets or sets the addresses.
+        /// </summary>
         public IEnumerable<AddressModel> Addresses { get; set; }
 
         /// <summary>
@@ -131,6 +147,11 @@ namespace KissU.Core.Zookeeper.Configurations
         /// </summary>
         public string MqttRoutePath { get; set; }
 
+        /// <summary>
+        /// Converts the address model.
+        /// </summary>
+        /// <param name="connection">The connection.</param>
+        /// <returns>AddressModel.</returns>
         public AddressModel ConvertAddressModel(string connection)
         {
             var address = connection.Split(":");

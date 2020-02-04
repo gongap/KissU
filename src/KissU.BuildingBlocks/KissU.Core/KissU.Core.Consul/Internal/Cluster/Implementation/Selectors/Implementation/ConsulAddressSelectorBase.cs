@@ -6,6 +6,11 @@ using KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selec
 
 namespace KissU.Core.Consul.Internal.Cluster.Implementation.Selectors.Implementation
 {
+    /// <summary>
+    /// ConsulAddressSelectorBase.
+    /// Implements the <see cref="KissU.Core.Consul.Internal.Cluster.Implementation.Selectors.IConsulAddressSelector" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.Consul.Internal.Cluster.Implementation.Selectors.IConsulAddressSelector" />
     public abstract class ConsulAddressSelectorBase : IConsulAddressSelector
     {
         #region Implementation of IAddressSelector

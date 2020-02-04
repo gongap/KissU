@@ -11,7 +11,12 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.DotNettyWSServer.Runtime.Implementation
 {
-   public class DefaultWSServiceEntryProvider : IWSServiceEntryProvider
+    /// <summary>
+    /// DefaultWSServiceEntryProvider.
+    /// Implements the <see cref="KissU.Core.DotNettyWSServer.Runtime.IWSServiceEntryProvider" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.DotNettyWSServer.Runtime.IWSServiceEntryProvider" />
+    public class DefaultWSServiceEntryProvider : IWSServiceEntryProvider
     {
         #region Field
 
@@ -24,6 +29,12 @@ namespace KissU.Core.DotNettyWSServer.Runtime.Implementation
 
         #region Constructor
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DefaultWSServiceEntryProvider"/> class.
+        /// </summary>
+        /// <param name="serviceEntryProvider">The service entry provider.</param>
+        /// <param name="logger">The logger.</param>
+        /// <param name="serviceProvider">The service provider.</param>
         public DefaultWSServiceEntryProvider(IServiceEntryProvider serviceEntryProvider,
             ILogger<DefaultWSServiceEntryProvider> logger,
             CPlatformContainer serviceProvider)
@@ -62,6 +73,11 @@ namespace KissU.Core.DotNettyWSServer.Runtime.Implementation
             }
             return _wSServiceEntries;
         }
+        /// <summary>
+        /// Creates the service entry.
+        /// </summary>
+        /// <param name="service">The service.</param>
+        /// <returns>WSServiceEntry.</returns>
         public WSServiceEntry CreateServiceEntry(Type service)
         {
             WSServiceEntry result = null;

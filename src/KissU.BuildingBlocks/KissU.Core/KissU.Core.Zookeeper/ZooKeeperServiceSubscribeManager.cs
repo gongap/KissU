@@ -14,6 +14,13 @@ using org.apache.zookeeper;
 
 namespace KissU.Core.Zookeeper
 {
+    /// <summary>
+    /// ZooKeeperServiceSubscribeManager.
+    /// Implements the <see cref="KissU.Core.CPlatform.Runtime.Client.Implementation.ServiceSubscribeManagerBase" />
+    /// Implements the <see cref="System.IDisposable" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Runtime.Client.Implementation.ServiceSubscribeManagerBase" />
+    /// <seealso cref="System.IDisposable" />
     public class ZooKeeperServiceSubscribeManager : ServiceSubscribeManagerBase, IDisposable
     { 
         private readonly ConfigInfo _configInfo;
@@ -23,6 +30,15 @@ namespace KissU.Core.Zookeeper
         private readonly ILogger<ZooKeeperServiceSubscribeManager> _logger; 
         private readonly IZookeeperClientProvider _zookeeperClientProvider;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ZooKeeperServiceSubscribeManager"/> class.
+        /// </summary>
+        /// <param name="configInfo">The configuration information.</param>
+        /// <param name="serializer">The serializer.</param>
+        /// <param name="stringSerializer">The string serializer.</param>
+        /// <param name="serviceSubscriberFactory">The service subscriber factory.</param>
+        /// <param name="logger">The logger.</param>
+        /// <param name="zookeeperClientProvider">The zookeeper client provider.</param>
         public ZooKeeperServiceSubscribeManager(ConfigInfo configInfo, ISerializer<byte[]> serializer,
             ISerializer<string> stringSerializer, IServiceSubscriberFactory serviceSubscriberFactory,
             ILogger<ZooKeeperServiceSubscribeManager> logger, IZookeeperClientProvider zookeeperClientProvider) : base(stringSerializer)
@@ -34,7 +50,7 @@ namespace KissU.Core.Zookeeper
             _zookeeperClientProvider = zookeeperClientProvider;
             EnterSubscribers().Wait();
         }
-        
+
         /// <summary>
         /// 获取所有可用的服务订阅者信息。
         /// </summary>
@@ -92,7 +108,7 @@ namespace KissU.Core.Zookeeper
         /// <summary>
         /// 设置服务订阅者。
         /// </summary>
-        /// <param name="routes">服务订阅者集合。</param>
+        /// <param name="subscribers">The subscribers.</param>
         /// <returns>一个任务。</returns>
         protected override async Task SetSubscribersAsync(IEnumerable<ServiceSubscriberDescriptor> subscribers)
         {
@@ -147,6 +163,10 @@ namespace KissU.Core.Zookeeper
             }
         }
 
+        /// <summary>
+        /// set subscribers as an asynchronous operation.
+        /// </summary>
+        /// <param name="subscribers">The subscribers.</param>
         public override async Task SetSubscribersAsync(IEnumerable<ServiceSubscriber> subscribers)
         {
             var serviceSubscribers = await GetSubscribers(subscribers.Select(p => p.ServiceDescriptor.Id));
@@ -268,6 +288,9 @@ namespace KissU.Core.Zookeeper
             return true;
         }
 
+        /// <summary>
+        /// Disposes this instance.
+        /// </summary>
         public void Dispose()
         { 
         }

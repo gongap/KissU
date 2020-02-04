@@ -4,11 +4,20 @@ using Microsoft.Extensions.Configuration;
 
 namespace KissU.Core.EventBusKafka
 {
-    public  class AppConfig
+    /// <summary>
+    /// AppConfig.
+    /// </summary>
+    public class AppConfig
     {
 
+        /// <summary>
+        /// Gets or sets the configuration.
+        /// </summary>
         public static IConfigurationRoot Configuration { get; set; }
 
+        /// <summary>
+        /// Gets the options.
+        /// </summary>
         public static KafkaOptions  Options { get; internal set; }
 
         private static IEnumerable<KeyValuePair<string, object>> _kafkaConsumerConfig;
@@ -16,6 +25,9 @@ namespace KissU.Core.EventBusKafka
 
         private static IEnumerable<KeyValuePair<string, object>> _kafkaProducerConfig;
 
+        /// <summary>
+        /// Gets the kafka consumer configuration.
+        /// </summary>
         public static IEnumerable<KeyValuePair<string, object>> KafkaConsumerConfig
         {
             get
@@ -28,6 +40,9 @@ namespace KissU.Core.EventBusKafka
             }
         }
 
+        /// <summary>
+        /// Gets the kafka producer configuration.
+        /// </summary>
         public static IEnumerable<KeyValuePair<string, object>> KafkaProducerConfig
         {
             get

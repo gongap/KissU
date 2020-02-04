@@ -5,8 +5,14 @@ using KissU.Core.ProxyGenerator.Interceptors.Implementation;
 
 namespace KissU.Core.ProxyGenerator.Interceptors
 {
-    public  class InvocationMethods
+    /// <summary>
+    /// InvocationMethods.
+    /// </summary>
+    public class InvocationMethods
     {
+        /// <summary>
+        /// The composition invocation constructor
+        /// </summary>
         public static readonly ConstructorInfo CompositionInvocationConstructor =
         typeof(ActionInvocation).GetConstructor(BindingFlags.Instance | BindingFlags.NonPublic, null,
                                                      new[]

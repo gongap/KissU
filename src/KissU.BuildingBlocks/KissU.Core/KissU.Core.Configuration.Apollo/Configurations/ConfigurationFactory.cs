@@ -4,14 +4,27 @@ using Microsoft.Extensions.Configuration;
 using KissU.Core.CPlatform;
 namespace KissU.Core.Configuration.Apollo.Configurations
 {
+    /// <summary>
+    /// ConfigurationFactory.
+    /// Implements the <see cref="KissU.Core.Configuration.Apollo.Configurations.IConfigurationFactory" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.Configuration.Apollo.Configurations.IConfigurationFactory" />
     public class ConfigurationFactory : IConfigurationFactory
     { 
-        private const string CONFIG_FILE_PATH = "APOLLO__CONFIG__PATH"; 
+        private const string CONFIG_FILE_PATH = "APOLLO__CONFIG__PATH";
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ConfigurationFactory" /> class.
+        /// </summary>
         public ConfigurationFactory()
         {  
         }
 
+        /// <summary>
+        /// Creates this instance.
+        /// </summary>
+        /// <returns>IConfiguration.</returns>
+        /// <exception cref="Exception">apollo config file not exists!</exception>
         public IConfiguration Create()
         {
             var builder = new ConfigurationBuilder();

@@ -21,7 +21,7 @@ using Microsoft.Extensions.Logging;
 namespace KissU.Core.Consul
 {
     /// <summary>
-    /// consul服务路由管理器 
+    /// consul服务路由管理器
     /// </summary>
     public class ConsulServiceRouteManager : ServiceRouteManagerBase, IDisposable
     {
@@ -35,6 +35,17 @@ namespace KissU.Core.Consul
         private readonly IConsulClientProvider _consulClientProvider;
         private readonly IServiceHeartbeatManager _serviceHeartbeatManager;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ConsulServiceRouteManager"/> class.
+        /// </summary>
+        /// <param name="configInfo">The configuration information.</param>
+        /// <param name="serializer">The serializer.</param>
+        /// <param name="stringSerializer">The string serializer.</param>
+        /// <param name="manager">The manager.</param>
+        /// <param name="serviceRouteFactory">The service route factory.</param>
+        /// <param name="logger">The logger.</param>
+        /// <param name="serviceHeartbeatManager">The service heartbeat manager.</param>
+        /// <param name="consulClientProvider">The consul client provider.</param>
         public ConsulServiceRouteManager(ConfigInfo configInfo, ISerializer<byte[]> serializer,
        ISerializer<string> stringSerializer, IClientWatchManager manager, IServiceRouteFactory serviceRouteFactory,
        ILogger<ConsulServiceRouteManager> logger,
@@ -54,7 +65,7 @@ namespace KissU.Core.Consul
         /// <summary>
         /// 清空服务路由
         /// </summary>
-        /// <returns></returns>
+        /// <returns>一个任务。</returns>
         public override async Task ClearAsync()
         {
             var clients = await _consulClientProvider.GetClients();
@@ -74,6 +85,9 @@ namespace KissU.Core.Consul
             }
         }
 
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
         public void Dispose()
         {
         }
@@ -88,6 +102,11 @@ namespace KissU.Core.Consul
             return _routes;
         }
 
+        /// <summary>
+        /// set routes as an asynchronous operation.
+        /// </summary>
+        /// <param name="routes">服务路由集合。</param>
+        /// <returns>一个任务。</returns>
         public override async Task SetRoutesAsync(IEnumerable<ServiceRoute> routes)
         {
             var locks = await CreateLock();
@@ -122,6 +141,11 @@ namespace KissU.Core.Consul
             }
         }
 
+        /// <summary>
+        /// remve address as an asynchronous operation.
+        /// </summary>
+        /// <param name="Address">The address.</param>
+        /// <returns>一个任务。</returns>
         public override async Task RemveAddressAsync(IEnumerable<AddressModel> Address)
         {
             var routes = await GetRoutesAsync();
@@ -139,6 +163,10 @@ namespace KissU.Core.Consul
             await base.SetRoutesAsync(routes);
         }
 
+        /// <summary>
+        /// set routes as an asynchronous operation.
+        /// </summary>
+        /// <param name="routes">The routes.</param>
         protected override async Task SetRoutesAsync(IEnumerable<ServiceRouteDescriptor> routes)
         {
             var clients = await _consulClientProvider.GetClients();

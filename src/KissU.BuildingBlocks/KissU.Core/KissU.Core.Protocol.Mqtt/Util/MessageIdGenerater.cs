@@ -2,11 +2,18 @@
 
 namespace KissU.Core.Protocol.Mqtt.Util
 {
-   public class MessageIdGenerater
+    /// <summary>
+    /// MessageIdGenerater.
+    /// </summary>
+    public class MessageIdGenerater
     {
 
         private static  int _index;
         private static int _lock;
+        /// <summary>
+        /// Generates the identifier.
+        /// </summary>
+        /// <returns>System.Int32.</returns>
         public static int GenerateId()
         {
             for (; ; )

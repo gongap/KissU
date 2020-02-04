@@ -20,6 +20,9 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.Zookeeper
 {
+    /// <summary>
+    /// ContainerBuilderExtensions.
+    /// </summary>
     public static class ContainerBuilderExtensions
     {
         /// <summary>
@@ -40,6 +43,12 @@ namespace KissU.Core.Zookeeper
                   provider.GetRequiredService<IZookeeperClientProvider>()));
         }
 
+        /// <summary>
+        /// Uses the zoo keeper MQTT route manager.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="configInfo">The configuration information.</param>
+        /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder UseZooKeeperMqttRouteManager(this IServiceBuilder builder, ConfigInfo configInfo)
         {
             return builder.UseMqttRouteManager(provider =>
@@ -77,6 +86,12 @@ namespace KissU.Core.Zookeeper
             });
         }
 
+        /// <summary>
+        /// Uses the zoo keeper service subscribe manager.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="configInfo">The configuration information.</param>
+        /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder UseZooKeeperServiceSubscribeManager(this IServiceBuilder builder, ConfigInfo configInfo)
         {
             return builder.UseSubscribeManager(provider =>
@@ -92,6 +107,12 @@ namespace KissU.Core.Zookeeper
             });
         }
 
+        /// <summary>
+        /// Uses the zoo keeper cache manager.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="configInfo">The configuration information.</param>
+        /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder UseZooKeeperCacheManager(this IServiceBuilder builder, ConfigInfo configInfo)
         {
             return builder.UseCacheManager(provider =>
@@ -105,6 +126,12 @@ namespace KissU.Core.Zookeeper
         }
 
 
+        /// <summary>
+        /// Uses the zoo keeper manager.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="configInfo">The configuration information.</param>
+        /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder UseZooKeeperManager(this IServiceBuilder builder, ConfigInfo configInfo)
         {
             return builder.UseZooKeeperRouteManager(configInfo)
@@ -117,6 +144,11 @@ namespace KissU.Core.Zookeeper
                 .UseZooKeeperMqttRouteManager(configInfo);
         }
 
+        /// <summary>
+        /// Uses the zoo keeper manager.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder UseZooKeeperManager(this IServiceBuilder builder)
         {
             var configInfo = new ConfigInfo(null);
@@ -130,12 +162,22 @@ namespace KissU.Core.Zookeeper
                 .UseZooKeeperMqttRouteManager(configInfo);
         }
 
+        /// <summary>
+        /// Uses the zookeeper address selector.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder UseZookeeperAddressSelector(this IServiceBuilder builder)
         {
             builder.Services.RegisterType<ZookeeperRandomAddressSelector>().As<IZookeeperAddressSelector>().SingleInstance();
             return builder;
         }
 
+        /// <summary>
+        /// Uses the health check.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder UseHealthCheck(this IServiceBuilder builder)
         {
             builder.Services.RegisterType<DefaultHealthCheckService>().As<IHealthCheckService>().SingleInstance();
@@ -143,6 +185,12 @@ namespace KissU.Core.Zookeeper
         }
 
 
+        /// <summary>
+        /// Uses the zookeeper client provider.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="configInfo">The configuration information.</param>
+        /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder UseZookeeperClientProvider(this IServiceBuilder builder, ConfigInfo configInfo)
         {
             builder.Services.Register(provider =>

@@ -7,6 +7,11 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 
 namespace KissU.Core.Swagger.SwaggerGen.XmlComments
 {
+    /// <summary>
+    /// XmlCommentsDocumentFilter.
+    /// Implements the <see cref="KissU.Core.Swagger.SwaggerGen.Generator.IDocumentFilter" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.Swagger.SwaggerGen.Generator.IDocumentFilter" />
     public class XmlCommentsDocumentFilter : IDocumentFilter
     {
         private const string MemberXPath = "/doc/members/member[@name='{0}']";
@@ -14,11 +19,20 @@ namespace KissU.Core.Swagger.SwaggerGen.XmlComments
 
         private readonly XPathNavigator _xmlNavigator;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XmlCommentsDocumentFilter"/> class.
+        /// </summary>
+        /// <param name="xmlDoc">The XML document.</param>
         public XmlCommentsDocumentFilter(XPathDocument xmlDoc)
         {
             _xmlNavigator = xmlDoc.CreateNavigator();
         }
 
+        /// <summary>
+        /// Applies the specified swagger document.
+        /// </summary>
+        /// <param name="swaggerDoc">The swagger document.</param>
+        /// <param name="context">The context.</param>
         public void Apply(SwaggerDocument swaggerDoc, DocumentFilterContext context)
         {
             // Collect (unique) controller names and types in a dictionary

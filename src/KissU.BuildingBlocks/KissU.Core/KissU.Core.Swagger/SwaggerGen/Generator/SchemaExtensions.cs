@@ -6,8 +6,17 @@ using KissU.Core.Swagger.Swagger.Model;
 
 namespace KissU.Core.Swagger.SwaggerGen.Generator
 {
+    /// <summary>
+    /// SchemaExtensions.
+    /// </summary>
     internal static class SchemaExtensions
     {
+        /// <summary>
+        /// Assigns the attribute metadata.
+        /// </summary>
+        /// <param name="schema">The schema.</param>
+        /// <param name="attributes">The attributes.</param>
+        /// <returns>Schema.</returns>
         internal static Schema AssignAttributeMetadata(this Schema schema, IEnumerable<object> attributes)
         {
             foreach (var attribute in attributes)
@@ -49,6 +58,11 @@ namespace KissU.Core.Swagger.SwaggerGen.Generator
             return schema;
         }
 
+        /// <summary>
+        /// Populates from.
+        /// </summary>
+        /// <param name="partialSchema">The partial schema.</param>
+        /// <param name="schema">The schema.</param>
         internal static void PopulateFrom(this PartialSchema partialSchema, Schema schema)
         {
             if (schema == null) return;

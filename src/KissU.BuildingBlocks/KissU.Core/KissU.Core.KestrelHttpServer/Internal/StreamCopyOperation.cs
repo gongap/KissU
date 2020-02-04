@@ -9,7 +9,10 @@ using System.Threading.Tasks;
 
 namespace KissU.Core.KestrelHttpServer.Internal
 {
-   internal class StreamCopyOperation
+    /// <summary>
+    /// StreamCopyOperation.
+    /// </summary>
+    internal class StreamCopyOperation
     {
         private const int DefaultBufferSize = 1024 * 16;
 
@@ -23,16 +26,39 @@ namespace KissU.Core.KestrelHttpServer.Internal
         private long? _bytesRemaining;
         private CancellationToken _cancel;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StreamCopyOperation"/> class.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="destination">The destination.</param>
+        /// <param name="bytesRemaining">The bytes remaining.</param>
+        /// <param name="cancel">The cancel.</param>
         internal StreamCopyOperation(Stream source, Stream destination, long? bytesRemaining, CancellationToken cancel)
             : this(source, destination, bytesRemaining, DefaultBufferSize, cancel)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StreamCopyOperation"/> class.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="destination">The destination.</param>
+        /// <param name="bytesRemaining">The bytes remaining.</param>
+        /// <param name="bufferSize">Size of the buffer.</param>
+        /// <param name="cancel">The cancel.</param>
         internal StreamCopyOperation(Stream source, Stream destination, long? bytesRemaining, int bufferSize, CancellationToken cancel)
             : this(source, destination, bytesRemaining, new byte[bufferSize], cancel)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StreamCopyOperation"/> class.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="destination">The destination.</param>
+        /// <param name="bytesRemaining">The bytes remaining.</param>
+        /// <param name="buffer">The buffer.</param>
+        /// <param name="cancel">The cancel.</param>
         internal StreamCopyOperation(Stream source, Stream destination, long? bytesRemaining, byte[] buffer, CancellationToken cancel)
         {
             Contract.Assert(source != null);
@@ -51,6 +77,14 @@ namespace KissU.Core.KestrelHttpServer.Internal
             _writeCallback = new AsyncCallback(WriteCallback);
         }
 
+        /// <summary>
+        /// copy to as an asynchronous operation.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <param name="destination">The destination.</param>
+        /// <param name="count">The count.</param>
+        /// <param name="bufferSize">Size of the buffer.</param>
+        /// <param name="cancel">The cancel.</param>
         public static async Task CopyToAsync(Stream source, Stream destination, long? count, int bufferSize, CancellationToken cancel)
         {
             long? bytesRemaining = count;
@@ -100,6 +134,10 @@ namespace KissU.Core.KestrelHttpServer.Internal
             }
         }
 
+        /// <summary>
+        /// Starts this instance.
+        /// </summary>
+        /// <returns>Task.</returns>
         internal Task Start()
         {
             ReadNextSegment();
