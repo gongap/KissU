@@ -3,18 +3,25 @@ using KissU.Core.CPlatform.Transport.Codec;
 
 namespace KissU.Core.Codec.MessagePack
 {
+    /// <summary>
+    /// MessagePackTransportMessageCodecFactory. This class cannot be inherited.
+    /// Implements the <see cref="KissU.Core.CPlatform.Transport.Codec.ITransportMessageCodecFactory" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Transport.Codec.ITransportMessageCodecFactory" />
     public sealed class MessagePackTransportMessageCodecFactory : ITransportMessageCodecFactory
     {
         #region Field
+
         private readonly ITransportMessageEncoder _transportMessageEncoder = new MessagePackTransportMessageEncoder();
         private readonly ITransportMessageDecoder _transportMessageDecoder = new MessagePackTransportMessageDecoder();
+
         #endregion Field
 
         #region Implementation of ITransportMessageCodecFactory
 
         /// <inheritdoc />
         /// <summary>
-        /// 获取编码器 
+        /// 获取编码器
         /// </summary>
         /// <returns></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -25,7 +32,7 @@ namespace KissU.Core.Codec.MessagePack
 
         /// <inheritdoc />
         /// <summary>
-        /// 获取解码器 
+        /// 获取解码器
         /// </summary>
         /// <returns></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -33,6 +40,7 @@ namespace KissU.Core.Codec.MessagePack
         {
             return _transportMessageDecoder;
         }
+
         #endregion Implementation of ITransportMessageCodecFactory
     }
 }
