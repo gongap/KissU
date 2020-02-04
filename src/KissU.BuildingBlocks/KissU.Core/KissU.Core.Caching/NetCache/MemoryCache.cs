@@ -8,16 +8,21 @@ using KissU.Core.Caching.Utilities;
 
 namespace KissU.Core.Caching.NetCache
 {
+    /// <summary>
+    /// MemoryCache.
+    /// </summary>
     public class MemoryCache
     {
-        private static readonly ConcurrentDictionary<string, Tuple<string, object, DateTime>> cache = new ConcurrentDictionary<string, Tuple<string, object, DateTime>>();
-        private const  int taskInterval = 5;
+        private const int taskInterval = 5;
+
+        private static readonly ConcurrentDictionary<string, Tuple<string, object, DateTime>> cache =
+            new ConcurrentDictionary<string, Tuple<string, object, DateTime>>();
 
         static MemoryCache()
         {
             try
             {
-                GCThreadProvider.AddThread(new ParameterizedThreadStart(Collect));
+                GCThreadProvider.AddThread(Collect);
             }
             catch (Exception err)
             {
@@ -25,18 +30,16 @@ namespace KissU.Core.Caching.NetCache
             }
         }
 
-        public static int Count
-        {
-            get
-            {
-                return cache.Count;
-            }
-        }
-        
+        /// <summary>
+        /// Gets the count.
+        /// </summary>
+        public static int Count => cache.Count;
+
         /// <summary>
         /// 获得一个Cache对象
         /// </summary>
         /// <param name="key">标识</param>
+        /// <returns>System.Object.</returns>
         public static object Get(string key)
         {
             Check.CheckCondition(() => string.IsNullOrEmpty(key), "key");
@@ -45,55 +48,78 @@ namespace KissU.Core.Caching.NetCache
             {
                 return result;
             }
+
             return null;
         }
 
+        /// <summary>
+        /// Gets the specified keys.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="keys">The keys.</param>
+        /// <returns>IDictionary&lt;System.String, T&gt;.</returns>
         public static IDictionary<string, T> Get<T>(IEnumerable<string> keys)
         {
             if (keys == null)
             {
                 return new Dictionary<string, T>();
             }
+
             var dictionary = new Dictionary<string, T>();
-            IEnumerator<string> enumerator = keys.GetEnumerator();
+            var enumerator = keys.GetEnumerator();
             while (enumerator.MoveNext())
             {
-                string current = enumerator.Current;
-                object obj2 = Get(current);
+                var current = enumerator.Current;
+                var obj2 = Get(current);
                 if (obj2 is T)
                 {
-                    dictionary.Add(current, (T)obj2);
+                    dictionary.Add(current, (T) obj2);
                 }
             }
+
             return dictionary;
         }
 
+        /// <summary>
+        /// Gets the cache try parse.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="obj">The object.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public static bool GetCacheTryParse(string key, out object obj)
         {
             Check.CheckCondition(() => string.IsNullOrEmpty(key), "key");
             obj = Get(key);
-            return (obj != null);
+            return obj != null;
         }
-        
+
+        /// <summary>
+        /// Gets the specified key.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key">The key.</param>
+        /// <returns>T.</returns>
         public static T Get<T>(string key)
         {
             Check.CheckCondition(() => string.IsNullOrEmpty(key), "key");
-            object obj2 = Get(key);
+            var obj2 = Get(key);
             if (obj2 is T)
             {
-                return (T)obj2;
+                return (T) obj2;
             }
-            return default(T);
+
+            return default;
         }
 
         /// <summary>
         /// 是否存在缓存
         /// </summary>
         /// <param name="key">标识</param>
-        /// <returns></returns>
+        /// <param name="value">The value.</param>
+        /// <returns><c>true</c> if [contains] [the specified key]; otherwise, <c>false</c>.</returns>
         public static bool Contains(string key, out object value)
         {
-            bool isSuccess = false;
+            var isSuccess = false;
             Tuple<string, object, DateTime> item;
             value = null;
             if (cache.TryGetValue(key, out item))
@@ -101,23 +127,34 @@ namespace KissU.Core.Caching.NetCache
                 value = item.Item2;
                 isSuccess = item.Item3 > DateTime.Now;
             }
+
             return isSuccess;
         }
 
+        /// <summary>
+        /// Sets the specified key.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="cacheSecond">The cache second.</param>
         public static void Set(string key, object value, double cacheSecond)
         {
-            DateTime cacheTime = DateTime.Now.AddSeconds(cacheSecond);
+            var cacheTime = DateTime.Now.AddSeconds(cacheSecond);
             var cacheValue = new Tuple<string, object, DateTime>(key, value, cacheTime);
             cache.AddOrUpdate(key, cacheValue, (v, oldValue) => cacheValue);
         }
 
+        /// <summary>
+        /// Removes the by pattern.
+        /// </summary>
+        /// <param name="pattern">The pattern.</param>
         public static void RemoveByPattern(string pattern)
         {
             var enumerator = cache.GetEnumerator();
-            Regex regex = new Regex(pattern, RegexOptions.Singleline | RegexOptions.Compiled | RegexOptions.IgnoreCase);
+            var regex = new Regex(pattern, RegexOptions.Singleline | RegexOptions.Compiled | RegexOptions.IgnoreCase);
             while (enumerator.MoveNext())
             {
-                string input = enumerator.Current.Key.ToString();
+                var input = enumerator.Current.Key;
                 if (regex.IsMatch(input))
                 {
                     Remove(input);
@@ -125,12 +162,19 @@ namespace KissU.Core.Caching.NetCache
             }
         }
 
+        /// <summary>
+        /// Removes the specified key.
+        /// </summary>
+        /// <param name="key">The key.</param>
         public static void Remove(string key)
         {
             Tuple<string, object, DateTime> item;
-            cache.TryRemove(key,out item);
+            cache.TryRemove(key, out item);
         }
 
+        /// <summary>
+        /// Disposes this instance.
+        /// </summary>
         public static void Dispose()
         {
             cache.Clear();
@@ -152,16 +196,15 @@ namespace KissU.Core.Caching.NetCache
                             cache.TryRemove(cacheValue.Item1, out item);
                         }
                     }
+
                     Thread.Sleep(taskInterval * 60 * 1000);
                 }
                 catch
                 {
-                     Dispose();
-                    GCThreadProvider.AddThread(new ParameterizedThreadStart(Collect));
+                    Dispose();
+                    GCThreadProvider.AddThread(Collect);
                 }
-
             }
-
         }
     }
 }

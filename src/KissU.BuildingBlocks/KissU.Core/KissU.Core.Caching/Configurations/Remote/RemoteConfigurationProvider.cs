@@ -6,30 +6,55 @@ using Microsoft.Extensions.Configuration;
 
 namespace KissU.Core.Caching.Configurations.Remote
 {
-    class RemoteConfigurationProvider : ConfigurationProvider
+    /// <summary>
+    /// RemoteConfigurationProvider.
+    /// Implements the <see cref="Microsoft.Extensions.Configuration.ConfigurationProvider" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Extensions.Configuration.ConfigurationProvider" />
+    internal class RemoteConfigurationProvider : ConfigurationProvider
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RemoteConfigurationProvider" /> class.
+        /// </summary>
+        /// <param name="source">The source.</param>
         public RemoteConfigurationProvider(RemoteConfigurationSource source)
         {
             Check.NotNull(source, "source");
             if (!string.IsNullOrEmpty(source.ConfigurationKeyPrefix))
             {
-                Check.CheckCondition(() => source.ConfigurationKeyPrefix.Trim().StartsWith(":"), CachingResources.InvalidStartCharacter, "source.ConfigurationKeyPrefix", ":");
-                Check.CheckCondition(() => source.ConfigurationKeyPrefix.Trim().EndsWith(":"), CachingResources.InvalidEndCharacter, "source.ConfigurationKeyPrefix",":");
+                Check.CheckCondition(() => source.ConfigurationKeyPrefix.Trim().StartsWith(":"),
+                    CachingResources.InvalidStartCharacter, "source.ConfigurationKeyPrefix", ":");
+                Check.CheckCondition(() => source.ConfigurationKeyPrefix.Trim().EndsWith(":"),
+                    CachingResources.InvalidEndCharacter, "source.ConfigurationKeyPrefix", ":");
             }
+
             Source = source;
             Backchannel = new HttpClient(source.BackchannelHttpHandler ?? new HttpClientHandler());
             Backchannel.DefaultRequestHeaders.UserAgent.ParseAdd("获取CacheConfiugration信息");
             Backchannel.Timeout = source.BackchannelTimeout;
-            Backchannel.MaxResponseContentBufferSize = 1024 * 1024 * 10; 
+            Backchannel.MaxResponseContentBufferSize = 1024 * 1024 * 10;
             Parser = source.Parser ?? new JsonConfigurationParser();
         }
 
+        /// <summary>
+        /// Gets the source.
+        /// </summary>
         public RemoteConfigurationSource Source { get; }
 
+        /// <summary>
+        /// Gets the parser.
+        /// </summary>
         public IConfigurationParser Parser { get; }
 
+        /// <summary>
+        /// Gets the backchannel.
+        /// </summary>
         public HttpClient Backchannel { get; }
-        
+
+        /// <summary>
+        /// Loads this instance.
+        /// </summary>
+        /// <exception cref="Exception"></exception>
         public override void Load()
         {
             var requestMessage = new HttpRequestMessage(HttpMethod.Get, Source.ConfigurationUri);
@@ -55,7 +80,8 @@ namespace KissU.Core.Caching.Configurations.Remote
                 }
                 else if (!Source.Optional)
                 {
-                    throw new Exception(string.Format(CachingResources.HttpException, response.StatusCode, response.ReasonPhrase));
+                    throw new Exception(string.Format(CachingResources.HttpException, response.StatusCode,
+                        response.ReasonPhrase));
                 }
             }
             catch (Exception)

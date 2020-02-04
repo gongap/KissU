@@ -2,6 +2,11 @@
 
 namespace KissU.Core.Caching.Utilities
 {
+    /// <summary>
+    /// CacheException.
+    /// Implements the <see cref="System.Exception" />
+    /// </summary>
+    /// <seealso cref="System.Exception" />
     internal class CacheException : Exception
     {
         /// <summary>
@@ -24,7 +29,7 @@ namespace KissU.Core.Caching.Utilities
         /// <summary>
         /// 使用指定错误消息和对作为此异常原因的内部异常的引用来初始化 System.Exception 类的新实例。
         /// </summary>
-        /// <param name="message"> 解释异常原因的错误信息。</param>
+        /// <param name="message">解释异常原因的错误信息。</param>
         /// <param name="e">导致当前异常的异常；如果未指定内部异常，则是一个 null 引用</param>
         public CacheException(string message, Exception e)
             : base(message, e)
@@ -35,10 +40,6 @@ namespace KissU.Core.Caching.Utilities
         /// <summary>
         /// 错误信息
         /// </summary>
-        private new string Message
-        {
-            get;
-            set;
-        }
+        private new string Message { get; }
     }
 }

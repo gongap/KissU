@@ -10,10 +10,10 @@
 
 namespace KissU.Core.Caching {
     using System;
-    
-    
+
+
     /// <summary>
-    ///   一个强类型的资源类，用于查找本地化的字符串等。
+    /// 一个强类型的资源类，用于查找本地化的字符串等。
     /// </summary>
     // 此类是由 StronglyTypedResourceBuilder
     // 类通过类似于 ResGen 或 Visual Studio 的工具自动生成的。
@@ -27,13 +27,16 @@ namespace KissU.Core.Caching {
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
-        
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CachingResources"/> class.
+        /// </summary>
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal CachingResources() {
         }
-        
+
         /// <summary>
-        ///   返回此类使用的缓存的 ResourceManager 实例。
+        /// 返回此类使用的缓存的 ResourceManager 实例。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         internal static global::System.Resources.ResourceManager ResourceManager {
@@ -45,10 +48,10 @@ namespace KissU.Core.Caching {
                 return resourceMan;
             }
         }
-        
+
         /// <summary>
-        ///   重写当前线程的 CurrentUICulture 属性
-        ///   重写当前线程的 CurrentUICulture 属性。
+        /// 重写当前线程的 CurrentUICulture 属性
+        /// 重写当前线程的 CurrentUICulture 属性。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         internal static global::System.Globalization.CultureInfo Culture {
@@ -59,63 +62,63 @@ namespace KissU.Core.Caching {
                 resourceCulture = value;
             }
         }
-        
+
         /// <summary>
-        ///   查找类似 &quot;{0}&quot;参数不能为空 的本地化字符串。
+        /// 查找类似 "{0}"参数不能为空 的本地化字符串。
         /// </summary>
         internal static string ArgumentIsNullOrWhitespace {
             get {
                 return ResourceManager.GetString("ArgumentIsNullOrWhitespace", resourceCulture);
             }
         }
-        
+
         /// <summary>
-        ///   查找类似 调用远程配置终结点发生错误： {0} - {1} 的本地化字符串。
+        /// 查找类似 调用远程配置终结点发生错误： {0} - {1} 的本地化字符串。
         /// </summary>
         internal static string HttpException {
             get {
                 return ResourceManager.GetString("HttpException", resourceCulture);
             }
         }
-        
+
         /// <summary>
-        ///   查找类似 {0} 不能以&apos;{1}&apos;结束 的本地化字符串。
+        /// 查找类似 {0} 不能以'{1}'结束 的本地化字符串。
         /// </summary>
         internal static string InvalidEndCharacter {
             get {
                 return ResourceManager.GetString("InvalidEndCharacter", resourceCulture);
             }
         }
-        
+
         /// <summary>
-        ///   查找类似 初始化配置{0}与{1}类型不匹配 的本地化字符串。
+        /// 查找类似 初始化配置{0}与{1}类型不匹配 的本地化字符串。
         /// </summary>
         internal static string InvalidProviderTypeException {
             get {
                 return ResourceManager.GetString("InvalidProviderTypeException", resourceCulture);
             }
         }
-        
+
         /// <summary>
-        ///   查找类似 {0} 不能以&apos;{1}&apos;开始 的本地化字符串。
+        /// 查找类似 {0} 不能以'{1}'开始 的本地化字符串。
         /// </summary>
         internal static string InvalidStartCharacter {
             get {
                 return ResourceManager.GetString("InvalidStartCharacter", resourceCulture);
             }
         }
-        
+
         /// <summary>
-        ///   查找类似 不能解析JSON文本，行号 &apos;{0}&apos;: &apos;{1}&apos;. 的本地化字符串。
+        /// 查找类似 不能解析JSON文本，行号 '{0}': '{1}'. 的本地化字符串。
         /// </summary>
         internal static string JSONParseException {
             get {
                 return ResourceManager.GetString("JSONParseException", resourceCulture);
             }
         }
-        
+
         /// <summary>
-        ///   查找类似 此&apos;{0}&apos; JSON 令牌不支持，路径&apos;{1}&apos;,行&apos;{2}&apos;,位置&apos;{3}&apos; 的本地化字符串。
+        /// 查找类似 此'{0}' JSON 令牌不支持，路径'{1}',行'{2}',位置'{3}' 的本地化字符串。
         /// </summary>
         internal static string UnsupportedJSONToken {
             get {

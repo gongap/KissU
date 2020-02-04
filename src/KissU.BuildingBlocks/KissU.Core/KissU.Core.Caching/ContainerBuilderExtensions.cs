@@ -20,14 +20,14 @@ using Microsoft.Extensions.Configuration;
 namespace KissU.Core.Caching
 {
     /// <summary>
-    /// 容器生成扩展 
+    /// 容器生成扩展
     /// </summary>
     public static class ContainerBuilderExtensions
     {
         private const string CacheSectionName = "CachingProvider";
 
         /// <summary>
-        /// 附加缓存注入 
+        /// 附加缓存注入
         /// </summary>
         /// <param name="builder">服务构建者</param>
         /// <returns>服务构建者</returns>
@@ -39,21 +39,22 @@ namespace KissU.Core.Caching
             services.RegisterType(typeof(HashAlgorithm)).As(typeof(IHashAlgorithm)).SingleInstance();
             services.RegisterType(typeof(DefaultServiceCacheFactory)).As(typeof(IServiceCacheFactory)).SingleInstance();
             services.RegisterType(typeof(DefaultCacheNodeProvider)).As(typeof(ICacheNodeProvider)).SingleInstance();
-            services.RegisterType(typeof(ConfigurationWatchProvider)).As(typeof(IConfigurationWatchProvider)).SingleInstance();
+            services.RegisterType(typeof(ConfigurationWatchProvider)).As(typeof(IConfigurationWatchProvider))
+                .SingleInstance();
             RegisterConfigInstance(services);
             RegisterLocalInstance("ICacheClient`1", services);
             return builder;
         }
 
         /// <summary>
-        /// 注册本地实例 
+        /// 注册本地实例
         /// </summary>
         /// <param name="typeName"></param>
         /// <param name="services"></param>
         private static void RegisterLocalInstance(string typeName, ContainerBuilder services)
         {
             var types = typeof(AppConfig)
-                        .Assembly.GetTypes().Where(p => p.GetTypeInfo().GetInterface(typeName) != null);
+                .Assembly.GetTypes().Where(p => p.GetTypeInfo().GetInterface(typeName) != null);
             foreach (var t in types)
             {
                 var attribute = t.GetTypeInfo().GetCustomAttribute<IdentifyCacheAttribute>();
@@ -62,7 +63,7 @@ namespace KissU.Core.Caching
         }
 
         /// <summary>
-        /// 注册配置实例 
+        /// 注册配置实例
         /// </summary>
         /// <param name="services"></param>
         private static void RegisterConfigInstance(ContainerBuilder services)
@@ -72,7 +73,7 @@ namespace KissU.Core.Caching
             try
             {
                 var types =
-                     typeof(AppConfig)
+                    typeof(AppConfig)
                         .Assembly.GetTypes()
                         .Where(
                             p => p.GetTypeInfo().GetInterface("ICacheProvider") != null);
@@ -81,32 +82,41 @@ namespace KissU.Core.Caching
                     foreach (var setting in bingingSettings)
                     {
                         var properties = setting.Properties;
-                        var args = properties.Select(p => GetTypedPropertyValue(p)).ToArray(); ;
+                        var args = properties.Select(p => GetTypedPropertyValue(p)).ToArray();
+                        ;
                         var maps =
                             properties.Select(p => p.Maps)
                                 .FirstOrDefault(p => p != null && p.Any());
-                        var type = Type.GetType(setting.Class, throwOnError: true);
-                        services.Register(p => Activator.CreateInstance(type, args)).Named(setting.Id, type).SingleInstance();
+                        var type = Type.GetType(setting.Class, true);
+                        services.Register(p => Activator.CreateInstance(type, args)).Named(setting.Id, type)
+                            .SingleInstance();
 
                         if (maps == null) continue;
                         if (!maps.Any()) continue;
                         foreach (
                             var mapsetting in
-                                maps.Where(mapsetting => t.Name.StartsWith(mapsetting.Name, StringComparison.CurrentCultureIgnoreCase)))
+                            maps.Where(mapsetting =>
+                                t.Name.StartsWith(mapsetting.Name, StringComparison.CurrentCultureIgnoreCase)))
                         {
-                            services.Register(p => Activator.CreateInstance(t, new object[] { setting.Id })).Named(string.Format("{0}.{1}", setting.Id, mapsetting.Name), typeof(ICacheProvider)).SingleInstance();
+                            services.Register(p => Activator.CreateInstance(t, setting.Id))
+                                .Named(string.Format("{0}.{1}", setting.Id, mapsetting.Name), typeof(ICacheProvider))
+                                .SingleInstance();
                         }
                     }
+
                     var attribute = t.GetTypeInfo().GetCustomAttribute<IdentifyCacheAttribute>();
                     if (attribute != null)
-                        services.Register(p => Activator.CreateInstance(t)).Named(attribute.Name.ToString(), typeof(ICacheProvider)).SingleInstance();
+                        services.Register(p => Activator.CreateInstance(t))
+                            .Named(attribute.Name.ToString(), typeof(ICacheProvider)).SingleInstance();
                 }
             }
-            catch { }
+            catch
+            {
+            }
         }
 
         /// <summary>
-        /// 获取类型的属性值 
+        /// 获取类型的属性值
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
@@ -127,17 +137,20 @@ namespace KissU.Core.Caching
                         Items = items
                     });
                 }
+
                 return results;
             }
-            else if (!string.IsNullOrEmpty(obj.Value))
+
+            if (!string.IsNullOrEmpty(obj.Value))
             {
                 return new
                 {
                     Name = Convert.ChangeType(obj.Name ?? "", typeof(string)),
-                    Value = Convert.ChangeType(obj.Value, typeof(string)),
+                    Value = Convert.ChangeType(obj.Value, typeof(string))
                 };
             }
-            else if (!string.IsNullOrEmpty(obj.Ref))
+
+            if (!string.IsNullOrEmpty(obj.Ref))
                 return Convert.ChangeType(obj.Ref, typeof(string));
 
             return null;

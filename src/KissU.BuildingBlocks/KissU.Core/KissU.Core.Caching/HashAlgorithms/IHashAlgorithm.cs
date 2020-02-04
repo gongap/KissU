@@ -4,8 +4,8 @@
     /// 一致性哈希的抽象接口
     /// </summary>
     /// <remarks>
-    /// 	<para>创建：范亮</para>
-    /// 	<para>日期：2016/4/2</para>
+    ///     <para>创建：范亮</para>
+    ///     <para>日期：2016/4/2</para>
     /// </remarks>
     public interface IHashAlgorithm
     {
@@ -15,8 +15,8 @@
         /// <param name="item">字符串</param>
         /// <returns>返回哈希值</returns>
         /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2016/4/2</para>
+        ///     <para>创建：范亮</para>
+        ///     <para>日期：2016/4/2</para>
         /// </remarks>
         int Hash(string item);
     }

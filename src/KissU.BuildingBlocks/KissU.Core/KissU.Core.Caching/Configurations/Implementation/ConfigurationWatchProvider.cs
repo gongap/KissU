@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using KissU.Core.Caching.HashAlgorithms;
@@ -19,16 +20,15 @@ namespace KissU.Core.Caching.Configurations.Implementation
     /// </summary>
     public class ConfigurationWatchProvider : ConfigurationWatch, IConfigurationWatchProvider
     {
-        #region Field  
-        private readonly ILogger<ConfigurationWatchProvider> _logger;
-        private readonly IServiceCacheManager _serviceCacheManager;
-        private readonly CachingProvider _cachingProvider;
-        private Queue<bool> queue = new Queue<bool>();
-        #endregion
-
-        public ConfigurationWatchProvider(CPlatformContainer serviceProvider, ILogger<ConfigurationWatchProvider> logger, IServiceCacheManager serviceCacheManager)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ConfigurationWatchProvider" /> class.
+        /// </summary>
+        /// <param name="serviceProvider">The service provider.</param>
+        /// <param name="logger">The logger.</param>
+        /// <param name="serviceCacheManager">The service cache manager.</param>
+        public ConfigurationWatchProvider(CPlatformContainer serviceProvider,
+            ILogger<ConfigurationWatchProvider> logger, IServiceCacheManager serviceCacheManager)
         {
-           
             if (serviceProvider.IsRegistered<IConfigurationWatchManager>())
                 serviceProvider.GetInstances<IConfigurationWatchManager>().Register(this);
             _logger = logger;
@@ -52,45 +52,60 @@ namespace KissU.Core.Caching.Configurations.Implementation
 
         private void SaveConfiguration(ServiceCache cache)
         {
-            if (this.queue.Count > 0) this.queue.Dequeue();
-            var setting = _cachingProvider.CachingSettings.Where(p => p.Id == cache.CacheDescriptor.Prefix).FirstOrDefault();
+            if (queue.Count > 0) queue.Dequeue();
+            var setting = _cachingProvider.CachingSettings.Where(p => p.Id == cache.CacheDescriptor.Prefix)
+                .FirstOrDefault();
             if (setting != null)
             {
                 setting.Properties.ForEach(p =>
                 {
                     if (p.Maps != null)
                         p.Maps.ForEach(m =>
-                    {
-                        if (m.Name == cache.CacheDescriptor.Type)
-                            m.Properties = cache.CacheEndpoint.Select(n =>
-                            {
-                                var hashNode = n as ConsistentHashNode;
-                                if (!string.IsNullOrEmpty(hashNode.UserName) || !string.IsNullOrEmpty(hashNode.Password))
+                        {
+                            if (m.Name == cache.CacheDescriptor.Type)
+                                m.Properties = cache.CacheEndpoint.Select(n =>
                                 {
+                                    var hashNode = n as ConsistentHashNode;
+                                    if (!string.IsNullOrEmpty(hashNode.UserName) ||
+                                        !string.IsNullOrEmpty(hashNode.Password))
+                                    {
+                                        return new Property
+                                        {
+                                            Value =
+                                                $"{hashNode.UserName}:{hashNode.Password}@{hashNode.Host}:{hashNode.Port}::{hashNode.Db}"
+                                        };
+                                    }
+
                                     return new Property
                                     {
-                                        Value = $"{hashNode.UserName}:{hashNode.Password}@{hashNode.Host}:{hashNode.Port}::{hashNode.Db}"
+                                        Value = $"{hashNode.Host}:{hashNode.Port}::{hashNode.Db}"
                                     };
-                                }
-                                return new Property
-                                {
-                                    Value = $"{hashNode.Host}:{hashNode.Port}::{hashNode.Db}"
-                                };
-
-                            }).ToList();
-                    });
+                                }).ToList();
+                        });
                 });
-                this.queue.Enqueue(true);
+                queue.Enqueue(true);
             }
         }
 
+        /// <summary>
+        /// Processes this instance.
+        /// </summary>
         public override async Task Process()
-        { 
-            if (this.queue.Count>0 && this.queue.Dequeue())
+        {
+            if (queue.Count > 0 && queue.Dequeue())
             {
                 var jsonString = JsonConvert.SerializeObject(_cachingProvider);
-                await System.IO.File.WriteAllTextAsync(AppConfig.Path, jsonString);
+                await File.WriteAllTextAsync(AppConfig.Path, jsonString);
             }
         }
+
+        #region Field  
+
+        private readonly ILogger<ConfigurationWatchProvider> _logger;
+        private readonly IServiceCacheManager _serviceCacheManager;
+        private readonly CachingProvider _cachingProvider;
+        private readonly Queue<bool> queue = new Queue<bool>();
+
+        #endregion
     }
 }

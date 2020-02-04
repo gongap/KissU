@@ -10,26 +10,28 @@ namespace KissU.Core.Caching.DependencyResolution
     /// IOC容器对象
     /// </summary>
     /// <remarks>
-    /// 	<para>创建：范亮</para>
-    /// 	<para>日期：2016/4/2</para>
+    ///     <para>创建：范亮</para>
+    ///     <para>日期：2016/4/2</para>
     /// </remarks>
     public class ServiceResolver : IDependencyResolver
     {
         #region 字段
-        private static readonly ServiceResolver _defaultInstance = new ServiceResolver();
+
         private readonly ConcurrentDictionary<Tuple<Type, string>, object> _initializers =
             new ConcurrentDictionary<Tuple<Type, string>, object>();
+
         #endregion
 
         #region 公共方法
+
         /// <summary>
         /// 注册对象添加到IOC容器
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="value">值</param>
         /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2016/4/2</para>
+        ///     <para>创建：范亮</para>
+        ///     <para>日期：2016/4/2</para>
         /// </remarks>
         public virtual void Register(string key, object value)
         {
@@ -48,13 +50,10 @@ namespace KissU.Core.Caching.DependencyResolution
         /// 返回当前IOC容器
         /// </summary>
         /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2016/4/2</para>
+        ///     <para>创建：范亮</para>
+        ///     <para>日期：2016/4/2</para>
         /// </remarks>
-        public static ServiceResolver Current
-        {
-            get { return _defaultInstance; }
-        }
+        public static ServiceResolver Current { get; } = new ServiceResolver();
 
         /// <summary>
         /// 通过KEY和TYPE获取实例对象
@@ -63,8 +62,8 @@ namespace KissU.Core.Caching.DependencyResolution
         /// <param name="key">键</param>
         /// <returns>返回实例对象</returns>
         /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2016/4/2</para>
+        ///     <para>创建：范亮</para>
+        ///     <para>日期：2016/4/2</para>
         /// </remarks>
         public virtual object GetService(Type type, object key)
         {
@@ -80,14 +79,14 @@ namespace KissU.Core.Caching.DependencyResolution
         /// <param name="key">键</param>
         /// <returns>返回实例对象</returns>
         /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2016/4/2</para>
+        ///     <para>创建：范亮</para>
+        ///     <para>日期：2016/4/2</para>
         /// </remarks>
         public IEnumerable<object> GetServices(Type type, object key)
         {
             return this.GetServiceAsServices(type, key);
         }
+
         #endregion
     }
-
 }

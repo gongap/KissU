@@ -10,13 +10,23 @@ using Microsoft.Extensions.Configuration;
 
 namespace KissU.Core.Caching
 {
+    /// <summary>
+    /// AppConfig.
+    /// </summary>
     public class AppConfig
     {
         private const string CacheSectionName = "CachingProvider";
-        private readonly CachingProvider _cacheWrapperSetting;
-        internal static string Path;
-        internal static IConfigurationRoot Configuration { get; set; }
 
+        /// <summary>
+        /// The path
+        /// </summary>
+        internal static string Path;
+
+        private readonly CachingProvider _cacheWrapperSetting;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AppConfig" /> class.
+        /// </summary>
         public AppConfig()
         {
             ServiceResolver.Current.Register(null, Activator.CreateInstance(typeof(HashAlgorithm), new object[] { }));
@@ -26,6 +36,14 @@ namespace KissU.Core.Caching
             InitSettingMethod();
         }
 
+        /// <summary>
+        /// Gets or sets the configuration.
+        /// </summary>
+        internal static IConfigurationRoot Configuration { get; set; }
+
+        /// <summary>
+        /// Gets the default instance.
+        /// </summary>
         internal static AppConfig DefaultInstance
         {
             get
@@ -36,16 +54,28 @@ namespace KissU.Core.Caching
                     config = Activator.CreateInstance(typeof(AppConfig), new object[] { }) as AppConfig;
                     ServiceResolver.Current.Register(null, config);
                 }
+
                 return config;
             }
         }
 
+        /// <summary>
+        /// Gets the context instance.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns>T.</returns>
         public T GetContextInstance<T>() where T : class
         {
             var context = ServiceResolver.Current.GetService<T>(typeof(T));
             return context;
         }
 
+        /// <summary>
+        /// Gets the context instance.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="name">The name.</param>
+        /// <returns>T.</returns>
         public T GetContextInstance<T>(string name) where T : class
         {
             DebugCheck.NotEmpty(name);
@@ -55,7 +85,8 @@ namespace KissU.Core.Caching
 
         private void RegisterLocalInstance(string typeName)
         {
-            var types = this.GetType().GetTypeInfo().Assembly.GetTypes().Where(p => p.GetTypeInfo().GetInterface(typeName) != null);
+            var types = GetType().GetTypeInfo().Assembly.GetTypes()
+                .Where(p => p.GetTypeInfo().GetInterface(typeName) != null);
             foreach (var t in types)
             {
                 var attribute = t.GetTypeInfo().GetCustomAttribute<IdentifyCacheAttribute>();
@@ -70,7 +101,7 @@ namespace KissU.Core.Caching
             try
             {
                 var types =
-                    this.GetType().GetTypeInfo()
+                    GetType().GetTypeInfo()
                         .Assembly.GetTypes()
                         .Where(
                             p => p.GetTypeInfo().GetInterface("ICacheProvider") != null);
@@ -79,32 +110,42 @@ namespace KissU.Core.Caching
                     foreach (var setting in bingingSettings)
                     {
                         var properties = setting.Properties;
-                        var args = properties.Select(p => GetTypedPropertyValue(p)).ToArray(); ;
+                        var args = properties.Select(p => GetTypedPropertyValue(p)).ToArray();
+                        ;
                         var maps =
                             properties.Select(p => p.Maps)
                                 .FirstOrDefault(p => p != null && p.Any());
-                        var type = Type.GetType(setting.Class, throwOnError: true);
+                        var type = Type.GetType(setting.Class, true);
                         if (ServiceResolver.Current.GetService(type, setting.Id) == null)
                             ServiceResolver.Current.Register(setting.Id, Activator.CreateInstance(type, args));
                         if (maps == null) continue;
                         if (!maps.Any()) continue;
                         foreach (
                             var mapsetting in
-                                maps.Where(mapsetting => t.Name.StartsWith(mapsetting.Name, StringComparison.CurrentCultureIgnoreCase)))
+                            maps.Where(mapsetting =>
+                                t.Name.StartsWith(mapsetting.Name, StringComparison.CurrentCultureIgnoreCase)))
                         {
                             ServiceResolver.Current.Register(string.Format("{0}.{1}", setting.Id, mapsetting.Name),
-                                Activator.CreateInstance(t, new object[] { setting.Id }));
+                                Activator.CreateInstance(t, setting.Id));
                         }
                     }
+
                     var attribute = t.GetTypeInfo().GetCustomAttribute<IdentifyCacheAttribute>();
                     if (attribute != null)
                         ServiceResolver.Current.Register(attribute.Name.ToString(),
                             Activator.CreateInstance(t));
                 }
             }
-            catch { }
+            catch
+            {
+            }
         }
 
+        /// <summary>
+        /// Gets the typed property value.
+        /// </summary>
+        /// <param name="obj">The object.</param>
+        /// <returns>System.Object.</returns>
         public object GetTypedPropertyValue(Property obj)
         {
             var mapCollections = obj.Maps;
@@ -122,17 +163,20 @@ namespace KissU.Core.Caching
                         Items = items
                     });
                 }
+
                 return results;
             }
-            else if (!string.IsNullOrEmpty(obj.Value))
+
+            if (!string.IsNullOrEmpty(obj.Value))
             {
                 return new
                 {
                     Name = Convert.ChangeType(obj.Name ?? "", typeof(string)),
-                    Value = Convert.ChangeType(obj.Value, typeof(string)),
+                    Value = Convert.ChangeType(obj.Value, typeof(string))
                 };
             }
-            else if (!string.IsNullOrEmpty(obj.Ref))
+
+            if (!string.IsNullOrEmpty(obj.Ref))
                 return Convert.ChangeType(obj.Ref, typeof(string));
 
             return null;
@@ -146,9 +190,10 @@ namespace KissU.Core.Caching
             foreach (var setting in settings)
             {
                 var bindingInstance =
-                    ServiceResolver.Current.GetService(Type.GetType(setting.Class, throwOnError: true),
+                    ServiceResolver.Current.GetService(Type.GetType(setting.Class, true),
                         setting.Id);
-                bindingInstance.GetType().GetMethod(setting.InitMethod, System.Reflection.BindingFlags.InvokeMethod).Invoke(bindingInstance, new object[] { });
+                bindingInstance.GetType().GetMethod(setting.InitMethod, BindingFlags.InvokeMethod)
+                    .Invoke(bindingInstance, new object[] { });
             }
         }
     }

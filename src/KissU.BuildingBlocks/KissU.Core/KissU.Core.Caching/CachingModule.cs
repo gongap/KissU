@@ -51,7 +51,8 @@ namespace KissU.Core.Caching
             builder.RegisterType(typeof(HashAlgorithm)).As(typeof(IHashAlgorithm)).SingleInstance();
             builder.RegisterType(typeof(DefaultServiceCacheFactory)).As(typeof(IServiceCacheFactory)).SingleInstance();
             builder.RegisterType(typeof(DefaultCacheNodeProvider)).As(typeof(ICacheNodeProvider)).SingleInstance();
-            builder.RegisterType(typeof(ConfigurationWatchProvider)).As(typeof(IConfigurationWatchProvider)).SingleInstance();
+            builder.RegisterType(typeof(ConfigurationWatchProvider)).As(typeof(IConfigurationWatchProvider))
+                .SingleInstance();
             RegisterConfigInstance(builder);
             RegisterLocalInstance("ICacheClient`1", builder);
         }
@@ -59,7 +60,7 @@ namespace KissU.Core.Caching
         private static void RegisterLocalInstance(string typeName, ContainerBuilderWrapper builder)
         {
             var types = typeof(AppConfig)
-                        .Assembly.GetTypes().Where(p => p.GetTypeInfo().GetInterface(typeName) != null);
+                .Assembly.GetTypes().Where(p => p.GetTypeInfo().GetInterface(typeName) != null);
             foreach (var t in types)
             {
                 var attribute = t.GetTypeInfo().GetCustomAttribute<IdentifyCacheAttribute>();
@@ -74,7 +75,7 @@ namespace KissU.Core.Caching
             try
             {
                 var types =
-                     typeof(AppConfig)
+                    typeof(AppConfig)
                         .Assembly.GetTypes()
                         .Where(
                             p => p.GetTypeInfo().GetInterface("ICacheProvider") != null);
@@ -83,28 +84,37 @@ namespace KissU.Core.Caching
                     foreach (var setting in bingingSettings)
                     {
                         var properties = setting.Properties;
-                        var args = properties.Select(p => GetTypedPropertyValue(p)).ToArray(); ;
+                        var args = properties.Select(p => GetTypedPropertyValue(p)).ToArray();
+                        ;
                         var maps =
                             properties.Select(p => p.Maps)
                                 .FirstOrDefault(p => p != null && p.Any());
-                        var type = Type.GetType(setting.Class, throwOnError: true);
-                        builder.Register(p => Activator.CreateInstance(type, args)).Named(setting.Id, type).SingleInstance();
+                        var type = Type.GetType(setting.Class, true);
+                        builder.Register(p => Activator.CreateInstance(type, args)).Named(setting.Id, type)
+                            .SingleInstance();
 
                         if (maps == null) continue;
                         if (!maps.Any()) continue;
                         foreach (
                             var mapsetting in
-                                maps.Where(mapsetting => t.Name.StartsWith(mapsetting.Name, StringComparison.CurrentCultureIgnoreCase)))
+                            maps.Where(mapsetting =>
+                                t.Name.StartsWith(mapsetting.Name, StringComparison.CurrentCultureIgnoreCase)))
                         {
-                            builder.Register(p => Activator.CreateInstance(t, new object[] { setting.Id })).Named(string.Format("{0}.{1}", setting.Id, mapsetting.Name), typeof(ICacheProvider)).SingleInstance();
+                            builder.Register(p => Activator.CreateInstance(t, setting.Id))
+                                .Named(string.Format("{0}.{1}", setting.Id, mapsetting.Name), typeof(ICacheProvider))
+                                .SingleInstance();
                         }
                     }
+
                     var attribute = t.GetTypeInfo().GetCustomAttribute<IdentifyCacheAttribute>();
                     if (attribute != null)
-                        builder.Register(p => Activator.CreateInstance(t)).Named(attribute.Name.ToString(), typeof(ICacheProvider)).SingleInstance();
+                        builder.Register(p => Activator.CreateInstance(t))
+                            .Named(attribute.Name.ToString(), typeof(ICacheProvider)).SingleInstance();
                 }
             }
-            catch { }
+            catch
+            {
+            }
         }
 
         private static object GetTypedPropertyValue(Property obj)
@@ -124,17 +134,20 @@ namespace KissU.Core.Caching
                         Items = items
                     });
                 }
+
                 return results;
             }
-            else if (!string.IsNullOrEmpty(obj.Value))
+
+            if (!string.IsNullOrEmpty(obj.Value))
             {
                 return new
                 {
                     Name = Convert.ChangeType(obj.Name ?? "", typeof(string)),
-                    Value = Convert.ChangeType(obj.Value, typeof(string)),
+                    Value = Convert.ChangeType(obj.Value, typeof(string))
                 };
             }
-            else if (!string.IsNullOrEmpty(obj.Ref))
+
+            if (!string.IsNullOrEmpty(obj.Ref))
                 return Convert.ChangeType(obj.Ref, typeof(string));
 
             return null;

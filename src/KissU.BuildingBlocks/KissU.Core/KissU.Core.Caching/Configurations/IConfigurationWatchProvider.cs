@@ -1,6 +1,9 @@
 ﻿namespace KissU.Core.Caching.Configurations
 {
-   public interface IConfigurationWatchProvider 
+    /// <summary>
+    /// Interface IConfigurationWatchProvider
+    /// </summary>
+    public interface IConfigurationWatchProvider
     {
     }
 }

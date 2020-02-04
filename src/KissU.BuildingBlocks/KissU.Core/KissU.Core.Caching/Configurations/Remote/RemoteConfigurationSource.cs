@@ -4,15 +4,20 @@ using Microsoft.Extensions.Configuration;
 
 namespace KissU.Core.Caching.Configurations.Remote
 {
-   public class RemoteConfigurationSource : IConfigurationSource
+    /// <summary>
+    /// RemoteConfigurationSource.
+    /// Implements the <see cref="Microsoft.Extensions.Configuration.IConfigurationSource" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Extensions.Configuration.IConfigurationSource" />
+    public class RemoteConfigurationSource : IConfigurationSource
     {
         /// <summary>
-        /// The uri to call to fetch 
+        /// The uri to call to fetch
         /// </summary>
         public Uri ConfigurationUri { get; set; }
 
         /// <summary>
-        /// Determines if the remote source is optional 
+        /// Determines if the remote source is optional
         /// </summary>
         public bool Optional { get; set; }
 
@@ -24,9 +29,6 @@ namespace KissU.Core.Caching.Configurations.Remote
         /// <summary>
         /// Gets or sets timeout value in milliseconds for back channel communications with the remote identity provider.
         /// </summary>
-        /// <value>
-        /// The back channel timeout.
-        /// </value>
         public TimeSpan BackchannelTimeout { get; set; } = TimeSpan.FromSeconds(60);
 
         /// <summary>
@@ -49,6 +51,11 @@ namespace KissU.Core.Caching.Configurations.Remote
         /// </summary>
         public string ConfigurationKeyPrefix { get; set; }
 
+        /// <summary>
+        /// Builds the specified builder.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <returns>IConfigurationProvider.</returns>
         public IConfigurationProvider Build(IConfigurationBuilder builder)
         {
             return new RemoteConfigurationProvider(this);

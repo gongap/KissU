@@ -7,8 +7,8 @@ namespace KissU.Core.Caching.DependencyResolution
     /// 注入IOC容器接口
     /// </summary>
     /// <remarks>
-    /// 	<para>创建：范亮</para>
-    /// 	<para>日期：2016/4/2</para>
+    ///     <para>创建：范亮</para>
+    ///     <para>日期：2016/4/2</para>
     /// </remarks>
     public interface IDependencyResolver
     {
@@ -19,8 +19,8 @@ namespace KissU.Core.Caching.DependencyResolution
         /// <param name="key">键</param>
         /// <returns>返回实例对象</returns>
         /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2016/4/2</para>
+        ///     <para>创建：范亮</para>
+        ///     <para>日期：2016/4/2</para>
         /// </remarks>
         object GetService(Type type, object key);
 
@@ -31,8 +31,8 @@ namespace KissU.Core.Caching.DependencyResolution
         /// <param name="key">键</param>
         /// <returns>返回实例对象</returns>
         /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2016/4/2</para>
+        ///     <para>创建：范亮</para>
+        ///     <para>日期：2016/4/2</para>
         /// </remarks>
         IEnumerable<object> GetServices(Type type, object key);
     }

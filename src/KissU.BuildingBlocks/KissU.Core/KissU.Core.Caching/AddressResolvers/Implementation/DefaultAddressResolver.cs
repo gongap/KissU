@@ -16,16 +16,14 @@ namespace KissU.Core.Caching.AddressResolvers.Implementation
     /// </summary>
     public class DefaultAddressResolver : IAddressResolver
     {
-
-        #region Field  
-        private readonly ILogger<DefaultAddressResolver> _logger;
-        private readonly IHealthCheckService _healthCheckService;
-        private readonly IServiceCacheManager _serviceCacheManager;
-        private readonly ConcurrentDictionary<string, ServiceCache> _concurrent =
-new ConcurrentDictionary<string, ServiceCache>();
-        #endregion
-
-        public DefaultAddressResolver(IHealthCheckService healthCheckService, ILogger<DefaultAddressResolver> logger, IServiceCacheManager serviceCacheManager)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DefaultAddressResolver" /> class.
+        /// </summary>
+        /// <param name="healthCheckService">The health check service.</param>
+        /// <param name="logger">The logger.</param>
+        /// <param name="serviceCacheManager">The service cache manager.</param>
+        public DefaultAddressResolver(IHealthCheckService healthCheckService, ILogger<DefaultAddressResolver> logger,
+            IServiceCacheManager serviceCacheManager)
         {
             _healthCheckService = healthCheckService;
             _logger = logger;
@@ -35,10 +33,15 @@ new ConcurrentDictionary<string, ServiceCache>();
             _serviceCacheManager.Created += ServiceCacheManager_Add;
         }
 
+        /// <summary>
+        /// Resolvers the specified cache identifier.
+        /// </summary>
+        /// <param name="cacheId">The cache identifier.</param>
+        /// <param name="item">The item.</param>
+        /// <returns>ValueTask&lt;ConsistentHashNode&gt;.</returns>
         public async ValueTask<ConsistentHashNode> Resolver(string cacheId, string item)
         {
-
-            _concurrent.TryGetValue(cacheId, out ServiceCache descriptor);
+            _concurrent.TryGetValue(cacheId, out var descriptor);
             if (descriptor == null)
             {
                 var descriptors = await _serviceCacheManager.GetCachesAsync();
@@ -76,11 +79,12 @@ new ConcurrentDictionary<string, ServiceCache>();
             }
 
             if (_logger.IsEnabled(LogLevel.Information))
-                _logger.LogInformation($"根据缓存id：{cacheId}，找到以下可用地址：{string.Join(",", address.Select(i => i.ToString()))}。");
+                _logger.LogInformation(
+                    $"根据缓存id：{cacheId}，找到以下可用地址：{string.Join(",", address.Select(i => i.ToString()))}。");
             var redisContext = CacheContainer.GetService<RedisContext>(descriptor.CacheDescriptor.Prefix);
             ConsistentHash<ConsistentHashNode> hash;
             redisContext.dicHash.TryGetValue(descriptor.CacheDescriptor.Type, out hash);
-            return hash != null ? hash.GetItemNode(item) : default(ConsistentHashNode);
+            return hash != null ? hash.GetItemNode(item) : default;
         }
 
 
@@ -102,8 +106,7 @@ new ConcurrentDictionary<string, ServiceCache>();
                 if (hash != null)
                     foreach (var node in e.Cache.CacheEndpoint)
                     {
-              
-                         var hashNode = node as ConsistentHashNode;
+                        var hashNode = node as ConsistentHashNode;
                         var addr = string.Format("{0}:{1}", hashNode.Host, hashNode.Port);
                         hash.Remove(addr);
                         hash.Add(hashNode, addr);
@@ -130,5 +133,16 @@ new ConcurrentDictionary<string, ServiceCache>();
                     }
             }
         }
+
+        #region Field  
+
+        private readonly ILogger<DefaultAddressResolver> _logger;
+        private readonly IHealthCheckService _healthCheckService;
+        private readonly IServiceCacheManager _serviceCacheManager;
+
+        private readonly ConcurrentDictionary<string, ServiceCache> _concurrent =
+            new ConcurrentDictionary<string, ServiceCache>();
+
+        #endregion
     }
 }

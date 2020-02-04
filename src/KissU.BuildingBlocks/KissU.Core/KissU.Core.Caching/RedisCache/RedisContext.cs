@@ -11,66 +11,32 @@ namespace KissU.Core.Caching.RedisCache
     /// redis数据上下文
     /// </summary>
     /// <remarks>
-    /// 	<para>创建：范亮</para>
-    /// 	<para>日期：2016/4/2</para>
+    ///     <para>创建：范亮</para>
+    ///     <para>日期：2016/4/2</para>
     /// </remarks>
     public class RedisContext
     {
         private readonly IHashAlgorithm _hashAlgorithm;
+
+        /// <summary>
+        /// The bucket
+        /// </summary>
+        internal string _bucket = null;
+
         /// <summary>
         /// 缓存对象集合容器池
         /// </summary>
-        /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2016/4/2</para>
-        /// </remarks>
         internal Lazy<Dictionary<string, List<string>>> _cachingContextPool;
-
-        /// <summary>
-        /// 密码
-        /// </summary>
-        /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2016/4/2</para>
-        /// </remarks>
-        internal string _password = null;
-
-        internal string _bucket = null;
-        /// <summary>
-        /// 默认缓存失效时间
-        /// </summary>
-        /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2016/4/2</para>
-        /// </remarks>
-        internal string _defaultExpireTime=null;
 
         /// <summary>
         /// 连接失效时间
         /// </summary>
-        /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2016/4/2</para>
-        /// </remarks>
         internal string _connectTimeout = null;
 
         /// <summary>
-        /// 规则名（现在只实现哈希一致性）
+        /// 默认缓存失效时间
         /// </summary>
-        /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2016/4/2</para>
-        /// </remarks>
-        internal string _ruleName = null;
-
-        /// <summary>
-        /// 哈希节点容器
-        /// </summary>
-        /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2016/4/2</para>
-        /// </remarks>
-        internal ConcurrentDictionary<string, ConsistentHash<ConsistentHashNode>> dicHash;
+        internal string _defaultExpireTime = null;
 
         /// <summary>
         /// 对象池上限
@@ -80,17 +46,33 @@ namespace KissU.Core.Caching.RedisCache
         /// <summary>
         /// 对象池下限
         /// </summary>
-        internal string _minSize=null;
+        internal string _minSize = null;
+
+        /// <summary>
+        /// 密码
+        /// </summary>
+        internal string _password = null;
+
+        /// <summary>
+        /// 规则名（现在只实现哈希一致性）
+        /// </summary>
+        internal string _ruleName;
+
+        /// <summary>
+        /// 哈希节点容器
+        /// </summary>
+        internal ConcurrentDictionary<string, ConsistentHash<ConsistentHashNode>> dicHash;
 
         #region 构造函数
+
         /// <summary>
         /// redis数据上下文
         /// </summary>
         /// <param name="rule">规则</param>
         /// <param name="args">参数</param>
         /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2016/4/2</para>
+        ///     <para>创建：范亮</para>
+        ///     <para>日期：2016/4/2</para>
         /// </remarks>
         public RedisContext(string rule, params object[] args)
         {
@@ -101,10 +83,10 @@ namespace KissU.Core.Caching.RedisCache
             foreach (var arg in args)
             {
                 var properties = arg.GetType().GetProperties();
-                var field = this.GetType()
-                    .GetField(string.Format("_{0}", properties[0].GetValue(arg).ToString()),
-                        System.Reflection.BindingFlags.NonPublic |
-                        System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.IgnoreCase);
+                var field = GetType()
+                    .GetField(string.Format("_{0}", properties[0].GetValue(arg)),
+                        BindingFlags.NonPublic |
+                        BindingFlags.Instance | BindingFlags.IgnoreCase);
                 if (properties.Count() == 3)
                 {
                     _cachingContextPool = new Lazy<Dictionary<string, List<string>>>(
@@ -119,56 +101,29 @@ namespace KissU.Core.Caching.RedisCache
                                 if (items != null)
                                 {
                                     var list = (from item in items
-                                                let itemProperties = item.GetType().GetProperties()
-                                                select itemProperties[1].GetValue(item)
+                                        let itemProperties = item.GetType().GetProperties()
+                                        select itemProperties[1].GetValue(item)
                                         into value
-                                                select value.ToString()).ToList();
+                                        select value.ToString()).ToList();
                                     dataContextPool.Add(props[1].GetValue(tmpArg).ToString(), list);
                                 }
                             }
+
                             return dataContextPool;
                         }
-                        );
+                    );
                 }
                 else
                 {
                     if (field != null) field.SetValue(this, properties[1].GetValue(arg));
                 }
             }
+
             _ruleName = rule;
             dicHash = new ConcurrentDictionary<string, ConsistentHash<ConsistentHashNode>>();
             InitSettingHashStorage();
         }
-        #endregion
 
-        #region 属性
-
-        public string ConnectTimeout
-        {
-            get
-            {
-                return _connectTimeout;
-            }
-        }
-
-        public string DefaultExpireTime
-        {
-            get
-            {
-                return _defaultExpireTime;
-            }
-        }
-        /// <summary>
-        /// 缓存对象集合容器池
-        /// </summary>
-        /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2016/4/2</para>
-        /// </remarks>
-        public Dictionary<string, List<string>> DataContextPool
-        {
-            get { return _cachingContextPool.Value; }
-        }
         #endregion
 
         #region 私有方法
@@ -177,8 +132,8 @@ namespace KissU.Core.Caching.RedisCache
         /// 初始化设置哈希节点容器
         /// </summary>
         /// <remarks>
-        /// 	<para>创建：范亮</para>
-        /// 	<para>日期：2016/4/2</para>
+        ///     <para>创建：范亮</para>
+        ///     <para>日期：2016/4/2</para>
         /// </remarks>
         private void InitSettingHashStorage()
         {
@@ -192,33 +147,57 @@ namespace KissU.Core.Caching.RedisCache
                 dataContext.Value.ForEach(v =>
                 {
                     var db = "";
-                    var dbs = v.Split(new string[] { "::" }, StringSplitOptions.RemoveEmptyEntries);
+                    var dbs = v.Split(new[] {"::"}, StringSplitOptions.RemoveEmptyEntries);
                     var server = v.Split('@');
                     var endpoints = server.Length > 1 ? server[1].Split(':') : server[0].Split(':');
                     var account = server.Length > 1 ? server[0].Split(':') : null;
                     var username = account != null && account.Length > 1 ? account[0] : null;
-                    var password = server.Length > 1 ? account[account.Length - 1] : this._password;
+                    var password = server.Length > 1 ? account[account.Length - 1] : _password;
                     if (endpoints.Length <= 1) return;
                     if (dbs.Length > 1)
                     {
                         db = dbs[dbs.Length - 1];
                     }
-                    var node = new ConsistentHashNode()
+
+                    var node = new ConsistentHashNode
                     {
                         Type = targetType,
                         Host = endpoints[0],
                         Port = endpoints[1],
                         UserName = username,
                         Password = password,
-                        MaxSize = this._maxSize,
-                        MinSize = this._minSize,
+                        MaxSize = _maxSize,
+                        MinSize = _minSize,
                         Db = db.ToString()
                     };
-                    hash.Add(node,string.Format("{0}:{1}",node.Host,node.Port));
+                    hash.Add(node, string.Format("{0}:{1}", node.Host, node.Port));
                     dicHash.GetOrAdd(targetType.ToString(), hash);
                 });
             }
         }
+
+        #endregion
+
+        #region 属性
+
+        /// <summary>
+        /// Gets the connect timeout.
+        /// </summary>
+        public string ConnectTimeout => _connectTimeout;
+
+        /// <summary>
+        /// Gets the default expire time.
+        /// </summary>
+        public string DefaultExpireTime => _defaultExpireTime;
+
+        /// <summary>
+        /// 缓存对象集合容器池
+        /// </summary>
+        /// <remarks>
+        ///     <para>创建：范亮</para>
+        ///     <para>日期：2016/4/2</para>
+        /// </remarks>
+        public Dictionary<string, List<string>> DataContextPool => _cachingContextPool.Value;
 
         #endregion
     }

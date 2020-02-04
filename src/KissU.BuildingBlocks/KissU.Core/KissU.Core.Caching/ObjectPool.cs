@@ -5,31 +5,12 @@ using KissU.Core.Caching.Utilities;
 
 namespace KissU.Core.Caching
 {
+    /// <summary>
+    /// ObjectPool.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class ObjectPool<T>
     {
-        #region 
-        private int isTaked = 0;
-        private Queue<T> queue = new Queue<T>();
-        private Func<T> func = null;
-        private int currentResource = 0;
-        private int tryNewObject = 0;
-        private readonly int minSize = 1;
-        private readonly int maxSize = 50;
-        #endregion
-
-        #region private methods
-        private void Enter()
-        {
-            while (Interlocked.Exchange(ref isTaked, 1) != 0)
-            {
-            }
-        }
-        private void Leave()
-        {
-            Interlocked.Exchange(ref isTaked, 0);
-        }
-        #endregion
-
         /// <summary>
         /// 构造一个对象池
         /// </summary>
@@ -47,44 +28,74 @@ namespace KissU.Core.Caching
                 this.maxSize = maxSize;
             for (var i = 0; i < this.minSize; i++)
             {
-                this.queue.Enqueue(func());
+                queue.Enqueue(func());
             }
-            this.currentResource = this.minSize;
-            this.tryNewObject = this.minSize;
+
+            currentResource = this.minSize;
+            tryNewObject = this.minSize;
             this.func = func;
         }
 
         /// <summary>
         /// 从对象池中取一个对象出来, 执行完成以后会自动将对象放回池中
         /// </summary>
+        /// <returns>T.</returns>
         public T GetObject()
         {
             var t = default(T);
             try
             {
-                if (this.tryNewObject < this.maxSize)
+                if (tryNewObject < maxSize)
                 {
-                    Interlocked.Increment(ref this.tryNewObject);
+                    Interlocked.Increment(ref tryNewObject);
                     t = func();
                     // Interlocked.Increment(ref this.currentResource);
                 }
                 else
                 {
-                    this.Enter();
-                    t = this.queue.Dequeue();
-                    this.Leave();
-                    Interlocked.Decrement(ref this.currentResource);
+                    Enter();
+                    t = queue.Dequeue();
+                    Leave();
+                    Interlocked.Decrement(ref currentResource);
                 }
+
                 return t;
             }
             finally
             {
-                this.Enter();
-                this.queue.Enqueue(t);
-                this.Leave();
+                Enter();
+                queue.Enqueue(t);
+                Leave();
                 Interlocked.Increment(ref currentResource);
             }
         }
 
+        #region
+
+        private int isTaked;
+        private readonly Queue<T> queue = new Queue<T>();
+        private readonly Func<T> func;
+        private int currentResource;
+        private int tryNewObject;
+        private readonly int minSize = 1;
+        private readonly int maxSize = 50;
+
+        #endregion
+
+        #region private methods
+
+        private void Enter()
+        {
+            while (Interlocked.Exchange(ref isTaked, 1) != 0)
+            {
+            }
+        }
+
+        private void Leave()
+        {
+            Interlocked.Exchange(ref isTaked, 0);
+        }
+
+        #endregion
     }
 }

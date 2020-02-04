@@ -13,11 +13,20 @@ namespace KissU.Core.Caching.Internal.Implementation
     public class DefaultCacheNodeProvider : ICacheNodeProvider
     {
         private readonly CPlatformContainer _serviceProvider;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DefaultCacheNodeProvider" /> class.
+        /// </summary>
+        /// <param name="serviceProvider">The service provider.</param>
         public DefaultCacheNodeProvider(CPlatformContainer serviceProvider)
         {
             _serviceProvider = serviceProvider;
         }
 
+        /// <summary>
+        /// Gets the service caches.
+        /// </summary>
+        /// <returns>IEnumerable&lt;ServiceCache&gt;.</returns>
         public IEnumerable<ServiceCache> GetServiceCaches()
         {
             var cacheWrapperSetting = AppConfig.Configuration.Get<CachingProvider>();
@@ -30,12 +39,12 @@ namespace KissU.Core.Caching.Internal.Implementation
                 {
                     var cacheDescriptor = new CacheDescriptor
                     {
-                        Id = $"{setting.Id}.{type.ToString()}",
+                        Id = $"{setting.Id}.{type}",
                         Prefix = setting.Id,
                         Type = type
                     };
-                    int.TryParse(context.DefaultExpireTime, out int defaultExpireTime);
-                    int.TryParse(context.ConnectTimeout, out int connectTimeout);
+                    int.TryParse(context.DefaultExpireTime, out var defaultExpireTime);
+                    int.TryParse(context.ConnectTimeout, out var connectTimeout);
                     cacheDescriptor.DefaultExpireTime(defaultExpireTime);
                     cacheDescriptor.ConnectTimeout(connectTimeout);
                     var serviceCache = new ServiceCache
@@ -46,6 +55,7 @@ namespace KissU.Core.Caching.Internal.Implementation
                     serviceCaches.Add(serviceCache);
                 }
             }
+
             return serviceCaches;
         }
     }

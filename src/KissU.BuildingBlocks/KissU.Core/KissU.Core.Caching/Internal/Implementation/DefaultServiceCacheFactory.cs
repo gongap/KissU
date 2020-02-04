@@ -13,15 +13,26 @@ namespace KissU.Core.Caching.Internal.Implementation
     /// </summary>
     public class DefaultServiceCacheFactory : IServiceCacheFactory
     {
-        private readonly ISerializer<string> _serializer;
         private readonly ConcurrentDictionary<string, CacheEndpoint> _addressModel =
-               new ConcurrentDictionary<string, CacheEndpoint>();
+            new ConcurrentDictionary<string, CacheEndpoint>();
 
+        private readonly ISerializer<string> _serializer;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DefaultServiceCacheFactory" /> class.
+        /// </summary>
+        /// <param name="serializer">The serializer.</param>
         public DefaultServiceCacheFactory(ISerializer<string> serializer)
         {
             _serializer = serializer;
         }
 
+        /// <summary>
+        /// Creates the service caches asynchronous.
+        /// </summary>
+        /// <param name="descriptors">The descriptors.</param>
+        /// <returns>Task&lt;IEnumerable&lt;ServiceCache&gt;&gt;.</returns>
+        /// <exception cref="ArgumentNullException">descriptors</exception>
         public Task<IEnumerable<ServiceCache>> CreateServiceCachesAsync(IEnumerable<ServiceCacheDescriptor> descriptors)
         {
             if (descriptors == null)
@@ -32,13 +43,13 @@ namespace KissU.Core.Caching.Internal.Implementation
 
             routes.AddRange(descriptors.Select(descriptor => new ServiceCache
             {
-                 CacheEndpoint = CreateAddress(descriptor.AddressDescriptors),
-                 CacheDescriptor = descriptor.CacheDescriptor
+                CacheEndpoint = CreateAddress(descriptor.AddressDescriptors),
+                CacheDescriptor = descriptor.CacheDescriptor
             }));
 
             return Task.FromResult(routes.AsEnumerable());
         }
-   
+
 
         private IEnumerable<CacheEndpoint> CreateAddress(IEnumerable<CacheEndpointDescriptor> descriptors)
         {
@@ -47,13 +58,14 @@ namespace KissU.Core.Caching.Internal.Implementation
 
             foreach (var descriptor in descriptors)
             {
-                _addressModel.TryGetValue(descriptor.Value, out CacheEndpoint address);
+                _addressModel.TryGetValue(descriptor.Value, out var address);
                 if (address == null)
                 {
                     var addressType = Type.GetType(descriptor.Type);
-                    address = (CacheEndpoint)_serializer.Deserialize(descriptor.Value, addressType);
+                    address = (CacheEndpoint) _serializer.Deserialize(descriptor.Value, addressType);
                     _addressModel.TryAdd(descriptor.Value, address);
                 }
+
                 yield return address;
             }
         }

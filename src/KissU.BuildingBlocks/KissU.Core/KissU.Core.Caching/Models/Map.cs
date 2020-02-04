@@ -2,10 +2,19 @@
 
 namespace KissU.Core.Caching.Models
 {
-   public  class Map
+    /// <summary>
+    /// Map.
+    /// </summary>
+    public class Map
     {
+        /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
         public string Name { get; set; }
 
+        /// <summary>
+        /// Gets or sets the properties.
+        /// </summary>
         public List<Property> Properties { get; set; }
     }
 }

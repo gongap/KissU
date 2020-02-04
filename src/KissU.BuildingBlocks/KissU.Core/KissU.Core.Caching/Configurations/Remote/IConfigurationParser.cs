@@ -4,7 +4,7 @@ using System.IO;
 namespace KissU.Core.Caching.Configurations.Remote
 {
     /// <summary>
-    ///  对于配置进行解析
+    /// 对于配置进行解析
     /// </summary>
     public interface IConfigurationParser
     {

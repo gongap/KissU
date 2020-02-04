@@ -1,43 +1,91 @@
 ﻿using System.IO;
-using KissU.Core.Caching.Utilities;
+using KissU.Core.CPlatform.Utilities;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.FileProviders;
+using Check = KissU.Core.Caching.Utilities.Check;
 
 namespace KissU.Core.Caching.Configurations
 {
+    /// <summary>
+    /// CacheConfigurationExtensionsstatic.
+    /// </summary>
     public static class CacheConfigurationExtensionsstatic
     {
+        /// <summary>
+        /// Adds the cache file.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="path">The path.</param>
+        /// <returns>IConfigurationBuilder.</returns>
         public static IConfigurationBuilder AddCacheFile(this IConfigurationBuilder builder, string path)
         {
-            return AddCacheFile(builder, provider: null, path: path, basePath: null, optional: false, reloadOnChange: false);
+            return AddCacheFile(builder, null, path, null, false, false);
         }
 
+        /// <summary>
+        /// Adds the cache file.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="path">The path.</param>
+        /// <param name="optional">if set to <c>true</c> [optional].</param>
+        /// <returns>IConfigurationBuilder.</returns>
         public static IConfigurationBuilder AddCacheFile(this IConfigurationBuilder builder, string path, bool optional)
         {
-            return AddCacheFile(builder, provider: null, path: path, basePath: null, optional: optional, reloadOnChange: false);
+            return AddCacheFile(builder, null, path, null, optional, false);
         }
 
-        public static IConfigurationBuilder AddCacheFile(this IConfigurationBuilder builder, string path, bool optional, bool reloadOnChange)
+        /// <summary>
+        /// Adds the cache file.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="path">The path.</param>
+        /// <param name="optional">if set to <c>true</c> [optional].</param>
+        /// <param name="reloadOnChange">if set to <c>true</c> [reload on change].</param>
+        /// <returns>IConfigurationBuilder.</returns>
+        public static IConfigurationBuilder AddCacheFile(this IConfigurationBuilder builder, string path, bool optional,
+            bool reloadOnChange)
         {
-            return AddCacheFile(builder, provider: null, path: path, basePath: null, optional: optional, reloadOnChange: reloadOnChange);
+            return AddCacheFile(builder, null, path, null, optional, reloadOnChange);
         }
 
-        public static IConfigurationBuilder AddCacheFile(this IConfigurationBuilder builder, string path, string basePath, bool optional, bool reloadOnChange)
+        /// <summary>
+        /// Adds the cache file.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="path">The path.</param>
+        /// <param name="basePath">The base path.</param>
+        /// <param name="optional">if set to <c>true</c> [optional].</param>
+        /// <param name="reloadOnChange">if set to <c>true</c> [reload on change].</param>
+        /// <returns>IConfigurationBuilder.</returns>
+        public static IConfigurationBuilder AddCacheFile(this IConfigurationBuilder builder, string path,
+            string basePath, bool optional, bool reloadOnChange)
         {
-            return AddCacheFile(builder, provider: null, path: path, basePath: basePath, optional: optional, reloadOnChange: reloadOnChange);
+            return AddCacheFile(builder, null, path, basePath, optional, reloadOnChange);
         }
 
-        public static IConfigurationBuilder AddCacheFile(this IConfigurationBuilder builder, IFileProvider provider, string path, string basePath, bool optional, bool reloadOnChange)
+        /// <summary>
+        /// Adds the cache file.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="provider">The provider.</param>
+        /// <param name="path">The path.</param>
+        /// <param name="basePath">The base path.</param>
+        /// <param name="optional">if set to <c>true</c> [optional].</param>
+        /// <param name="reloadOnChange">if set to <c>true</c> [reload on change].</param>
+        /// <returns>IConfigurationBuilder.</returns>
+        public static IConfigurationBuilder AddCacheFile(this IConfigurationBuilder builder, IFileProvider provider,
+            string path, string basePath, bool optional, bool reloadOnChange)
         {
             Check.NotNull(builder, "builder");
             //获取一个环境变量的路径
             Check.CheckCondition(() => string.IsNullOrEmpty(path), "path");
-            path = CPlatform.Utilities.EnvironmentHelper.GetEnvironmentVariable(path);
+            path = EnvironmentHelper.GetEnvironmentVariable(path);
             if (provider == null && Path.IsPathRooted(path))
             {
                 provider = new PhysicalFileProvider(Path.GetDirectoryName(path));
                 path = Path.GetFileName(path);
             }
+
             //建立CacheConfigurationSource类，此类继承了FileConfigurationSource接口，并重写加入了json转换方法
             var source = new CacheConfigurationSource
             {

@@ -9,7 +9,13 @@ using StackExchange.Redis;
 
 namespace KissU.Core.Caching.RedisCache
 {
-    [IdentifyCache(name: CacheTargetType.Redis)]
+    /// <summary>
+    /// RedisCacheClient.
+    /// Implements the <see cref="KissU.Core.Caching.Interfaces.ICacheClient{T}" />
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <seealso cref="KissU.Core.Caching.Interfaces.ICacheClient{T}" />
+    [IdentifyCache(CacheTargetType.Redis)]
     public class RedisCacheClient<T> : ICacheClient<T>
         where T : class
 
@@ -17,21 +23,23 @@ namespace KissU.Core.Caching.RedisCache
         private static readonly ConcurrentDictionary<string, Lazy<ObjectPool<T>>> _pool =
             new ConcurrentDictionary<string, Lazy<ObjectPool<T>>>();
 
-        public RedisCacheClient()
-        {
-
-        }
-
+        /// <summary>
+        /// connection as an asynchronous operation.
+        /// </summary>
+        /// <param name="endpoint">The endpoint.</param>
+        /// <param name="connectTimeout">The connect timeout.</param>
+        /// <returns>Task&lt;System.Boolean&gt;.</returns>
+        /// <exception cref="CacheException"></exception>
         public async Task<bool> ConnectionAsync(CacheEndpoint endpoint, int connectTimeout)
         {
-            ConnectionMultiplexer conn=null;
+            ConnectionMultiplexer conn = null;
             try
             {
                 var info = endpoint as ConsistentHashNode;
                 var point = string.Format("{0}:{1}", info.Host, info.Port);
-                  conn = await ConnectionMultiplexer.ConnectAsync(new ConfigurationOptions()
+                conn = await ConnectionMultiplexer.ConnectAsync(new ConfigurationOptions
                 {
-                    EndPoints = { { point } },
+                    EndPoints = {point},
                     ServiceName = point,
                     Password = info.Password,
                     ConnectTimeout = connectTimeout
@@ -44,11 +52,18 @@ namespace KissU.Core.Caching.RedisCache
             }
             finally
             {
-               if(conn !=null)
-                conn.Close();
+                if (conn != null)
+                    conn.Close();
             }
         }
 
+        /// <summary>
+        /// Gets the client.
+        /// </summary>
+        /// <param name="endpoint">The endpoint.</param>
+        /// <param name="connectTimeout">The connect timeout.</param>
+        /// <returns>T.</returns>
+        /// <exception cref="CacheException"></exception>
         public T GetClient(CacheEndpoint endpoint, int connectTimeout)
         {
             try
@@ -57,32 +72,30 @@ namespace KissU.Core.Caching.RedisCache
                 Check.NotNull(info, "endpoint");
                 var key = string.Format("{0}{1}{2}{3}", info.Host, info.Port, info.Password, info.DbIndex);
                 if (!_pool.ContainsKey(key))
-                { 
-                        var objectPool = new Lazy<ObjectPool<T>>(()=>new ObjectPool<T>(() =>
-                        {
-                            var point = string.Format("{0}:{1}", info.Host, info.Port);
-                            var redisClient = ConnectionMultiplexer.Connect(new ConfigurationOptions()
-                            {
-                                EndPoints = { { point } },
-                                ServiceName = point,
-                                Password = info.Password,
-                                ConnectTimeout = connectTimeout,
-                                AbortOnConnectFail = false
-                            }); 
-                            return redisClient.GetDatabase(info.DbIndex) as T;
-                        }, info.MinSize, info.MaxSize));
-                        _pool.GetOrAdd(key, objectPool);
-                        return objectPool.Value.GetObject(); 
-                }
-                else
                 {
-                    return _pool[key].Value.GetObject();
+                    var objectPool = new Lazy<ObjectPool<T>>(() => new ObjectPool<T>(() =>
+                    {
+                        var point = string.Format("{0}:{1}", info.Host, info.Port);
+                        var redisClient = ConnectionMultiplexer.Connect(new ConfigurationOptions
+                        {
+                            EndPoints = {point},
+                            ServiceName = point,
+                            Password = info.Password,
+                            ConnectTimeout = connectTimeout,
+                            AbortOnConnectFail = false
+                        });
+                        return redisClient.GetDatabase(info.DbIndex) as T;
+                    }, info.MinSize, info.MaxSize));
+                    _pool.GetOrAdd(key, objectPool);
+                    return objectPool.Value.GetObject();
                 }
+
+                return _pool[key].Value.GetObject();
             }
             catch (Exception e)
             {
                 throw new CacheException(e.Message);
-            } 
+            }
         }
     }
 }
