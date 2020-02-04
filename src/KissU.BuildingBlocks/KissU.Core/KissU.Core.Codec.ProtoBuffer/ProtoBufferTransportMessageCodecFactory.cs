@@ -2,7 +2,12 @@
 
 namespace KissU.Core.Codec.ProtoBuffer
 {
-   public sealed  class ProtoBufferTransportMessageCodecFactory : ITransportMessageCodecFactory
+    /// <summary>
+    /// ProtoBufferTransportMessageCodecFactory. This class cannot be inherited.
+    /// Implements the <see cref="KissU.Core.CPlatform.Transport.Codec.ITransportMessageCodecFactory" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Transport.Codec.ITransportMessageCodecFactory" />
+    public sealed class ProtoBufferTransportMessageCodecFactory : ITransportMessageCodecFactory
     {
         #region Field
 
@@ -12,12 +17,20 @@ namespace KissU.Core.Codec.ProtoBuffer
         #endregion Field
 
         #region Implementation of ITransportMessageCodecFactory
-        
+
+        /// <summary>
+        /// 获取编码器。
+        /// </summary>
+        /// <returns>编码器实例。</returns>
         public ITransportMessageEncoder GetEncoder()
         {
             return _transportMessageEncoder;
         }
-        
+
+        /// <summary>
+        /// Gets the decoder.
+        /// </summary>
+        /// <returns>ITransportMessageDecoder.</returns>
         public ITransportMessageDecoder GetDecoder()
         {
             return _transportMessageDecoder;
@@ -26,4 +39,3 @@ namespace KissU.Core.Codec.ProtoBuffer
         #endregion Implementation of ITransportMessageCodecFactory
     }
 }
-

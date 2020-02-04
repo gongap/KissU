@@ -5,10 +5,20 @@ using KissU.Core.CPlatform.Transport.Codec;
 
 namespace KissU.Core.Codec.ProtoBuffer
 {
-   public sealed class ProtoBufferTransportMessageDecoder : ITransportMessageDecoder
+    /// <summary>
+    /// ProtoBufferTransportMessageDecoder. This class cannot be inherited.
+    /// Implements the <see cref="KissU.Core.CPlatform.Transport.Codec.ITransportMessageDecoder" />
+    /// </summary>
+    /// <seealso cref="KissU.Core.CPlatform.Transport.Codec.ITransportMessageDecoder" />
+    public sealed class ProtoBufferTransportMessageDecoder : ITransportMessageDecoder
     {
         #region Implementation of ITransportMessageDecoder
 
+        /// <summary>
+        /// Decodes the specified data.
+        /// </summary>
+        /// <param name="data">The data.</param>
+        /// <returns>TransportMessage.</returns>
         public TransportMessage Decode(byte[] data)
         {
             var message = SerializerUtilitys.Deserialize<ProtoBufferTransportMessage>(data);
@@ -17,4 +27,4 @@ namespace KissU.Core.Codec.ProtoBuffer
 
         #endregion Implementation of ITransportMessageDecoder
     }
-} 
+}

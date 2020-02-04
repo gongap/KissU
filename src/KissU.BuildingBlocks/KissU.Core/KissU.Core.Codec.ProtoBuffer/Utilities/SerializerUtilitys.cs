@@ -4,8 +4,16 @@ using ProtoBuf;
 
 namespace KissU.Core.Codec.ProtoBuffer.Utilities
 {
+    /// <summary>
+    /// SerializerUtilitys.
+    /// </summary>
     public static class SerializerUtilitys
     {
+        /// <summary>
+        /// Serializes the specified instance.
+        /// </summary>
+        /// <param name="instance">The instance.</param>
+        /// <returns>System.Byte[].</returns>
         public static byte[] Serialize(object instance)
         {
             using (var stream = new MemoryStream())
@@ -15,6 +23,12 @@ namespace KissU.Core.Codec.ProtoBuffer.Utilities
             }
         }
 
+        /// <summary>
+        /// Deserializes the specified data.
+        /// </summary>
+        /// <param name="data">The data.</param>
+        /// <param name="type">The type.</param>
+        /// <returns>System.Object.</returns>
         public static object Deserialize(byte[] data, Type type)
         {
             if (data == null)
@@ -25,10 +39,16 @@ namespace KissU.Core.Codec.ProtoBuffer.Utilities
             }
         }
 
+        /// <summary>
+        /// Deserializes the specified data.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="data">The data.</param>
+        /// <returns>T.</returns>
         public static T Deserialize<T>(byte[] data)
         {
             if (data == null)
-                return default(T);
+                return default;
             using (var stream = new MemoryStream(data))
             {
                 return Serializer.Deserialize<T>(stream);
