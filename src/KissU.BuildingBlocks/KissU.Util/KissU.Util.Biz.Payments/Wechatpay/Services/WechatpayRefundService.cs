@@ -82,6 +82,7 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services
         /// <param name="param">支付参数</param>
         /// <exception cref="Warning">商户订单号和微信订单号只能设置一个</exception>
         /// <exception cref="Warning">退款金额不能超过支付金额</exception>
+        /// <exception cref="Warning">商户订单号和微信订单号只能设置一个</exception>
         protected void ValidateParam(WechatRefundRequest param)
         {
             if (param.TransactionId.IsEmpty() && param.OrderId.IsEmpty())

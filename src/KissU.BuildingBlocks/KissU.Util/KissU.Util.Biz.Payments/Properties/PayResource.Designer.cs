@@ -26,7 +26,7 @@ namespace KissU.Util.Biz.Payments.Properties {
         private static global::System.Globalization.CultureInfo resourceCulture;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PayResource"/> class.
+        /// Initializes a new instance of the <see cref="PayResource" /> class.
         /// </summary>
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal PayResource() {
