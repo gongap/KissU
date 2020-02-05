@@ -13,11 +13,12 @@ namespace KissU.Util.Datas.Ef.Internal
         /// <summary>
         /// 初始化版本号
         /// </summary>
-        public static void InitVersion( EntityEntry entry )
+        /// <param name="entry">The entry.</param>
+        public static void InitVersion(EntityEntry entry)
         {
-            if( !( entry.Entity is IVersion entity ) )
+            if (!(entry.Entity is IVersion entity))
                 return;
-            entity.Version = Encoding.UTF8.GetBytes( Guid.NewGuid().ToString() );
+            entity.Version = Encoding.UTF8.GetBytes(Guid.NewGuid().ToString());
         }
     }
 }

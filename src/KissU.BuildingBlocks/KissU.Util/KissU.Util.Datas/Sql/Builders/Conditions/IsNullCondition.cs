@@ -14,7 +14,7 @@
         /// 初始化Is Null查询条件
         /// </summary>
         /// <param name="name">列名</param>
-        public IsNullCondition( string name )
+        public IsNullCondition(string name)
         {
             _name = name;
         }
@@ -22,9 +22,10 @@
         /// <summary>
         /// 获取查询条件
         /// </summary>
+        /// <returns>System.String.</returns>
         public string GetCondition()
         {
-            return string.IsNullOrWhiteSpace( _name ) ? null : $"{_name} Is Null";
+            return string.IsNullOrWhiteSpace(_name) ? null : $"{_name} Is Null";
         }
     }
 }

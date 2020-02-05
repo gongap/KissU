@@ -17,18 +17,22 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses
         /// Sql方言
         /// </summary>
         private readonly IDialect _dialect;
-        /// <summary>
-        /// 实体解析器
-        /// </summary>
-        private readonly IEntityResolver _resolver;
-        /// <summary>
-        /// 实体注册器
-        /// </summary>
-        private readonly IEntityAliasRegister _register;
+
         /// <summary>
         /// 分组字段
         /// </summary>
         private readonly List<SqlItem> _group;
+
+        /// <summary>
+        /// 实体注册器
+        /// </summary>
+        private readonly IEntityAliasRegister _register;
+
+        /// <summary>
+        /// 实体解析器
+        /// </summary>
+        private readonly IEntityResolver _resolver;
+
         /// <summary>
         /// 分组条件
         /// </summary>
@@ -42,7 +46,8 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses
         /// <param name="register">实体别名注册器</param>
         /// <param name="group">分组字段</param>
         /// <param name="having">分组条件</param>
-        public GroupByClause( IDialect dialect, IEntityResolver resolver, IEntityAliasRegister register, List<SqlItem> group = null, string having = null )
+        public GroupByClause(IDialect dialect, IEntityResolver resolver, IEntityAliasRegister register,
+            List<SqlItem> group = null, string having = null)
         {
             _dialect = dialect;
             _resolver = resolver;
@@ -59,15 +64,16 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses
         /// <summary>
         /// 分组列表
         /// </summary>
-        public string GroupColumns => _group.Select( t => t.ToSql( _dialect ) ).Join();
+        public string GroupColumns => _group.Select(t => t.ToSql(_dialect)).Join();
 
         /// <summary>
         /// 复制Group By子句
         /// </summary>
         /// <param name="register">实体别名注册器</param>
-        public virtual IGroupByClause Clone( IEntityAliasRegister register )
+        /// <returns>IGroupByClause.</returns>
+        public virtual IGroupByClause Clone(IEntityAliasRegister register)
         {
-            return new GroupByClause( _dialect, _resolver, register, new List<SqlItem>( _group ), _having );
+            return new GroupByClause(_dialect, _resolver, register, new List<SqlItem>(_group), _having);
         }
 
         /// <summary>
@@ -75,11 +81,11 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses
         /// </summary>
         /// <param name="columns">分组字段</param>
         /// <param name="having">分组条件</param>
-        public void GroupBy( string columns, string having = null )
+        public void GroupBy(string columns, string having = null)
         {
-            if( string.IsNullOrWhiteSpace( columns ) )
+            if (string.IsNullOrWhiteSpace(columns))
                 return;
-            _group.AddRange( columns.Split( ',' ).Select( item => new SqlItem( item ) ) );
+            _group.AddRange(columns.Split(',').Select(item => new SqlItem(item)));
             _having = having;
         }
 
@@ -88,12 +94,12 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses
         /// </summary>
         /// <typeparam name="TEntity">实体类型</typeparam>
         /// <param name="columns">分组字段</param>
-        public void GroupBy<TEntity>( params Expression<Func<TEntity, object>>[] columns )
+        public void GroupBy<TEntity>(params Expression<Func<TEntity, object>>[] columns)
         {
-            if( columns == null )
+            if (columns == null)
                 return;
-            foreach( var column in columns )
-                GroupBy( column );
+            foreach (var column in columns)
+                GroupBy(column);
         }
 
         /// <summary>
@@ -102,11 +108,11 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses
         /// <typeparam name="TEntity">实体类型</typeparam>
         /// <param name="column">分组字段</param>
         /// <param name="having">分组条件</param>
-        public void GroupBy<TEntity>( Expression<Func<TEntity, object>> column, string having = null )
+        public void GroupBy<TEntity>(Expression<Func<TEntity, object>> column, string having = null)
         {
-            if( column == null )
+            if (column == null)
                 return;
-            _group.Add( new SqlItem( _resolver.GetColumn( column ), _register.GetAlias( typeof( TEntity ) ) ) );
+            _group.Add(new SqlItem(_resolver.GetColumn(column), _register.GetAlias(typeof(TEntity))));
             _having = having;
         }
 
@@ -114,26 +120,27 @@ namespace KissU.Util.Datas.Sql.Builders.Clauses
         /// 添加到GroupBy子句
         /// </summary>
         /// <param name="sql">Sql语句</param>
-        public void AppendSql( string sql )
+        public void AppendSql(string sql)
         {
-            if( string.IsNullOrWhiteSpace( sql ) )
+            if (string.IsNullOrWhiteSpace(sql))
                 return;
-            sql = Helper.ResolveSql( sql, _dialect );
-            _group.Add( new SqlItem( sql, raw: true ) );
+            sql = Helper.ResolveSql(sql, _dialect);
+            _group.Add(new SqlItem(sql, raw: true));
         }
 
         /// <summary>
         /// 获取Sql
         /// </summary>
+        /// <returns>System.String.</returns>
         public string ToSql()
         {
-            if( IsGroup == false )
+            if (IsGroup == false)
                 return null;
             var result = new StringBuilder();
-            result.Append( $"Group By {GroupColumns}" );
-            if( string.IsNullOrWhiteSpace( _having ) )
+            result.Append($"Group By {GroupColumns}");
+            if (string.IsNullOrWhiteSpace(_having))
                 return result.ToString();
-            result.Append( $" Having {_having}" );
+            result.Append($" Having {_having}");
             return result.ToString();
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Threading.Tasks;
+using Convert = KissU.Util.Helpers.Convert;
 
 namespace KissU.Util.Datas.Sql
 {
@@ -14,9 +15,10 @@ namespace KissU.Util.Datas.Sql
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
         /// <param name="connection">数据库连接</param>
-        public static async Task<string> ToStringAsync( this ISqlQuery sqlQuery, IDbConnection connection = null )
+        /// <returns>Task&lt;System.String&gt;.</returns>
+        public static async Task<string> ToStringAsync(this ISqlQuery sqlQuery, IDbConnection connection = null)
         {
-            return ( await sqlQuery.ToScalarAsync( connection ) ).SafeString();
+            return (await sqlQuery.ToScalarAsync(connection)).SafeString();
         }
 
         /// <summary>
@@ -24,9 +26,10 @@ namespace KissU.Util.Datas.Sql
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
         /// <param name="connection">数据库连接</param>
-        public static int ToInt( this ISqlQuery sqlQuery, IDbConnection connection = null )
+        /// <returns>System.Int32.</returns>
+        public static int ToInt(this ISqlQuery sqlQuery, IDbConnection connection = null)
         {
-            return Util.Helpers.Convert.ToInt( sqlQuery.ToScalar( connection ) );
+            return Convert.ToInt(sqlQuery.ToScalar(connection));
         }
 
         /// <summary>
@@ -34,9 +37,10 @@ namespace KissU.Util.Datas.Sql
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
         /// <param name="connection">数据库连接</param>
-        public static async Task<int> ToIntAsync( this ISqlQuery sqlQuery, IDbConnection connection = null )
+        /// <returns>Task&lt;System.Int32&gt;.</returns>
+        public static async Task<int> ToIntAsync(this ISqlQuery sqlQuery, IDbConnection connection = null)
         {
-            return Util.Helpers.Convert.ToInt( await sqlQuery.ToScalarAsync( connection ) );
+            return Convert.ToInt(await sqlQuery.ToScalarAsync(connection));
         }
 
         /// <summary>
@@ -44,9 +48,10 @@ namespace KissU.Util.Datas.Sql
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
         /// <param name="connection">数据库连接</param>
-        public static int? ToIntOrNull( this ISqlQuery sqlQuery, IDbConnection connection = null )
+        /// <returns>System.Nullable&lt;System.Int32&gt;.</returns>
+        public static int? ToIntOrNull(this ISqlQuery sqlQuery, IDbConnection connection = null)
         {
-            return Util.Helpers.Convert.ToIntOrNull( sqlQuery.ToScalar( connection ) );
+            return Convert.ToIntOrNull(sqlQuery.ToScalar(connection));
         }
 
         /// <summary>
@@ -54,9 +59,10 @@ namespace KissU.Util.Datas.Sql
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
         /// <param name="connection">数据库连接</param>
-        public static async Task<int?> ToIntOrNullAsync( this ISqlQuery sqlQuery, IDbConnection connection = null )
+        /// <returns>Task&lt;System.Nullable&lt;System.Int32&gt;&gt;.</returns>
+        public static async Task<int?> ToIntOrNullAsync(this ISqlQuery sqlQuery, IDbConnection connection = null)
         {
-            return Util.Helpers.Convert.ToIntOrNull( await sqlQuery.ToScalarAsync( connection ) );
+            return Convert.ToIntOrNull(await sqlQuery.ToScalarAsync(connection));
         }
 
         /// <summary>
@@ -64,9 +70,10 @@ namespace KissU.Util.Datas.Sql
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
         /// <param name="connection">数据库连接</param>
-        public static float ToFloat( this ISqlQuery sqlQuery, IDbConnection connection = null )
+        /// <returns>System.Single.</returns>
+        public static float ToFloat(this ISqlQuery sqlQuery, IDbConnection connection = null)
         {
-            return Util.Helpers.Convert.ToFloat( sqlQuery.ToScalar( connection ) );
+            return Convert.ToFloat(sqlQuery.ToScalar(connection));
         }
 
         /// <summary>
@@ -74,9 +81,10 @@ namespace KissU.Util.Datas.Sql
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
         /// <param name="connection">数据库连接</param>
-        public static async Task<float> ToFloatAsync( this ISqlQuery sqlQuery, IDbConnection connection = null )
+        /// <returns>Task&lt;System.Single&gt;.</returns>
+        public static async Task<float> ToFloatAsync(this ISqlQuery sqlQuery, IDbConnection connection = null)
         {
-            return Util.Helpers.Convert.ToFloat( await sqlQuery.ToScalarAsync( connection ) );
+            return Convert.ToFloat(await sqlQuery.ToScalarAsync(connection));
         }
 
         /// <summary>
@@ -84,9 +92,10 @@ namespace KissU.Util.Datas.Sql
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
         /// <param name="connection">数据库连接</param>
-        public static float? ToFloatOrNull( this ISqlQuery sqlQuery, IDbConnection connection = null )
+        /// <returns>System.Nullable&lt;System.Single&gt;.</returns>
+        public static float? ToFloatOrNull(this ISqlQuery sqlQuery, IDbConnection connection = null)
         {
-            return Util.Helpers.Convert.ToFloatOrNull( sqlQuery.ToScalar( connection ) );
+            return Convert.ToFloatOrNull(sqlQuery.ToScalar(connection));
         }
 
         /// <summary>
@@ -94,9 +103,10 @@ namespace KissU.Util.Datas.Sql
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
         /// <param name="connection">数据库连接</param>
-        public static async Task<float?> ToFloatOrNullAsync( this ISqlQuery sqlQuery, IDbConnection connection = null )
+        /// <returns>Task&lt;System.Nullable&lt;System.Single&gt;&gt;.</returns>
+        public static async Task<float?> ToFloatOrNullAsync(this ISqlQuery sqlQuery, IDbConnection connection = null)
         {
-            return Util.Helpers.Convert.ToFloatOrNull( await sqlQuery.ToScalarAsync( connection ) );
+            return Convert.ToFloatOrNull(await sqlQuery.ToScalarAsync(connection));
         }
 
         /// <summary>
@@ -104,9 +114,10 @@ namespace KissU.Util.Datas.Sql
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
         /// <param name="connection">数据库连接</param>
-        public static double ToDouble( this ISqlQuery sqlQuery, IDbConnection connection = null )
+        /// <returns>System.Double.</returns>
+        public static double ToDouble(this ISqlQuery sqlQuery, IDbConnection connection = null)
         {
-            return Util.Helpers.Convert.ToDouble( sqlQuery.ToScalar( connection ) );
+            return Convert.ToDouble(sqlQuery.ToScalar(connection));
         }
 
         /// <summary>
@@ -114,9 +125,10 @@ namespace KissU.Util.Datas.Sql
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
         /// <param name="connection">数据库连接</param>
-        public static async Task<double> ToDoubleAsync( this ISqlQuery sqlQuery, IDbConnection connection = null )
+        /// <returns>Task&lt;System.Double&gt;.</returns>
+        public static async Task<double> ToDoubleAsync(this ISqlQuery sqlQuery, IDbConnection connection = null)
         {
-            return Util.Helpers.Convert.ToDouble( await sqlQuery.ToScalarAsync( connection ) );
+            return Convert.ToDouble(await sqlQuery.ToScalarAsync(connection));
         }
 
         /// <summary>
@@ -124,9 +136,10 @@ namespace KissU.Util.Datas.Sql
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
         /// <param name="connection">数据库连接</param>
-        public static double? ToDoubleOrNull( this ISqlQuery sqlQuery, IDbConnection connection = null )
+        /// <returns>System.Nullable&lt;System.Double&gt;.</returns>
+        public static double? ToDoubleOrNull(this ISqlQuery sqlQuery, IDbConnection connection = null)
         {
-            return Util.Helpers.Convert.ToDoubleOrNull( sqlQuery.ToScalar( connection ) );
+            return Convert.ToDoubleOrNull(sqlQuery.ToScalar(connection));
         }
 
         /// <summary>
@@ -134,9 +147,10 @@ namespace KissU.Util.Datas.Sql
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
         /// <param name="connection">数据库连接</param>
-        public static async Task<double?> ToDoubleOrNullAsync( this ISqlQuery sqlQuery, IDbConnection connection = null )
+        /// <returns>Task&lt;System.Nullable&lt;System.Double&gt;&gt;.</returns>
+        public static async Task<double?> ToDoubleOrNullAsync(this ISqlQuery sqlQuery, IDbConnection connection = null)
         {
-            return Util.Helpers.Convert.ToDoubleOrNull( await sqlQuery.ToScalarAsync( connection ) );
+            return Convert.ToDoubleOrNull(await sqlQuery.ToScalarAsync(connection));
         }
 
         /// <summary>
@@ -144,9 +158,10 @@ namespace KissU.Util.Datas.Sql
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
         /// <param name="connection">数据库连接</param>
-        public static decimal ToDecimal( this ISqlQuery sqlQuery, IDbConnection connection = null )
+        /// <returns>System.Decimal.</returns>
+        public static decimal ToDecimal(this ISqlQuery sqlQuery, IDbConnection connection = null)
         {
-            return Util.Helpers.Convert.ToDecimal( sqlQuery.ToScalar( connection ) );
+            return Convert.ToDecimal(sqlQuery.ToScalar(connection));
         }
 
         /// <summary>
@@ -154,9 +169,10 @@ namespace KissU.Util.Datas.Sql
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
         /// <param name="connection">数据库连接</param>
-        public static async Task<decimal> ToDecimalAsync( this ISqlQuery sqlQuery, IDbConnection connection = null )
+        /// <returns>Task&lt;System.Decimal&gt;.</returns>
+        public static async Task<decimal> ToDecimalAsync(this ISqlQuery sqlQuery, IDbConnection connection = null)
         {
-            return Util.Helpers.Convert.ToDecimal( await sqlQuery.ToScalarAsync( connection ) );
+            return Convert.ToDecimal(await sqlQuery.ToScalarAsync(connection));
         }
 
         /// <summary>
@@ -164,9 +180,10 @@ namespace KissU.Util.Datas.Sql
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
         /// <param name="connection">数据库连接</param>
-        public static decimal? ToDecimalOrNull( this ISqlQuery sqlQuery, IDbConnection connection = null )
+        /// <returns>System.Nullable&lt;System.Decimal&gt;.</returns>
+        public static decimal? ToDecimalOrNull(this ISqlQuery sqlQuery, IDbConnection connection = null)
         {
-            return Util.Helpers.Convert.ToDecimalOrNull( sqlQuery.ToScalar( connection ) );
+            return Convert.ToDecimalOrNull(sqlQuery.ToScalar(connection));
         }
 
         /// <summary>
@@ -174,9 +191,11 @@ namespace KissU.Util.Datas.Sql
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
         /// <param name="connection">数据库连接</param>
-        public static async Task<decimal?> ToDecimalOrNullAsync( this ISqlQuery sqlQuery, IDbConnection connection = null )
+        /// <returns>Task&lt;System.Nullable&lt;System.Decimal&gt;&gt;.</returns>
+        public static async Task<decimal?> ToDecimalOrNullAsync(this ISqlQuery sqlQuery,
+            IDbConnection connection = null)
         {
-            return Util.Helpers.Convert.ToDecimalOrNull( await sqlQuery.ToScalarAsync( connection ) );
+            return Convert.ToDecimalOrNull(await sqlQuery.ToScalarAsync(connection));
         }
 
         /// <summary>
@@ -184,9 +203,10 @@ namespace KissU.Util.Datas.Sql
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
         /// <param name="connection">数据库连接</param>
-        public static bool ToBool( this ISqlQuery sqlQuery, IDbConnection connection = null )
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        public static bool ToBool(this ISqlQuery sqlQuery, IDbConnection connection = null)
         {
-            return Util.Helpers.Convert.ToBool( sqlQuery.ToScalar( connection ) );
+            return Convert.ToBool(sqlQuery.ToScalar(connection));
         }
 
         /// <summary>
@@ -194,9 +214,10 @@ namespace KissU.Util.Datas.Sql
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
         /// <param name="connection">数据库连接</param>
-        public static async Task<bool> ToBoolAsync( this ISqlQuery sqlQuery, IDbConnection connection = null )
+        /// <returns>Task&lt;System.Boolean&gt;.</returns>
+        public static async Task<bool> ToBoolAsync(this ISqlQuery sqlQuery, IDbConnection connection = null)
         {
-            return Util.Helpers.Convert.ToBool( await sqlQuery.ToScalarAsync( connection ) );
+            return Convert.ToBool(await sqlQuery.ToScalarAsync(connection));
         }
 
         /// <summary>
@@ -204,9 +225,10 @@ namespace KissU.Util.Datas.Sql
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
         /// <param name="connection">数据库连接</param>
-        public static bool? ToBoolOrNull( this ISqlQuery sqlQuery, IDbConnection connection = null )
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        public static bool? ToBoolOrNull(this ISqlQuery sqlQuery, IDbConnection connection = null)
         {
-            return Util.Helpers.Convert.ToBoolOrNull( sqlQuery.ToScalar( connection ) );
+            return Convert.ToBoolOrNull(sqlQuery.ToScalar(connection));
         }
 
         /// <summary>
@@ -214,9 +236,10 @@ namespace KissU.Util.Datas.Sql
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
         /// <param name="connection">数据库连接</param>
-        public static async Task<bool?> ToBoolOrNullAsync( this ISqlQuery sqlQuery, IDbConnection connection = null )
+        /// <returns>Task&lt;System.Nullable&lt;System.Boolean&gt;&gt;.</returns>
+        public static async Task<bool?> ToBoolOrNullAsync(this ISqlQuery sqlQuery, IDbConnection connection = null)
         {
-            return Util.Helpers.Convert.ToBoolOrNull( await sqlQuery.ToScalarAsync( connection ) );
+            return Convert.ToBoolOrNull(await sqlQuery.ToScalarAsync(connection));
         }
 
         /// <summary>
@@ -224,9 +247,10 @@ namespace KissU.Util.Datas.Sql
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
         /// <param name="connection">数据库连接</param>
-        public static DateTime ToDate( this ISqlQuery sqlQuery, IDbConnection connection = null )
+        /// <returns>DateTime.</returns>
+        public static DateTime ToDate(this ISqlQuery sqlQuery, IDbConnection connection = null)
         {
-            return Util.Helpers.Convert.ToDate( sqlQuery.ToScalar( connection ) );
+            return Convert.ToDate(sqlQuery.ToScalar(connection));
         }
 
         /// <summary>
@@ -234,9 +258,10 @@ namespace KissU.Util.Datas.Sql
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
         /// <param name="connection">数据库连接</param>
-        public static async Task<DateTime> ToDateAsync( this ISqlQuery sqlQuery, IDbConnection connection = null )
+        /// <returns>Task&lt;DateTime&gt;.</returns>
+        public static async Task<DateTime> ToDateAsync(this ISqlQuery sqlQuery, IDbConnection connection = null)
         {
-            return Util.Helpers.Convert.ToDate( await sqlQuery.ToScalarAsync( connection ) );
+            return Convert.ToDate(await sqlQuery.ToScalarAsync(connection));
         }
 
         /// <summary>
@@ -244,9 +269,10 @@ namespace KissU.Util.Datas.Sql
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
         /// <param name="connection">数据库连接</param>
-        public static DateTime? ToDateOrNull( this ISqlQuery sqlQuery, IDbConnection connection = null )
+        /// <returns>System.Nullable&lt;DateTime&gt;.</returns>
+        public static DateTime? ToDateOrNull(this ISqlQuery sqlQuery, IDbConnection connection = null)
         {
-            return Util.Helpers.Convert.ToDateOrNull( sqlQuery.ToScalar( connection ) );
+            return Convert.ToDateOrNull(sqlQuery.ToScalar(connection));
         }
 
         /// <summary>
@@ -254,9 +280,10 @@ namespace KissU.Util.Datas.Sql
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
         /// <param name="connection">数据库连接</param>
-        public static async Task<DateTime?> ToDateOrNullAsync( this ISqlQuery sqlQuery, IDbConnection connection = null )
+        /// <returns>Task&lt;System.Nullable&lt;DateTime&gt;&gt;.</returns>
+        public static async Task<DateTime?> ToDateOrNullAsync(this ISqlQuery sqlQuery, IDbConnection connection = null)
         {
-            return Util.Helpers.Convert.ToDateOrNull( await sqlQuery.ToScalarAsync( connection ) );
+            return Convert.ToDateOrNull(await sqlQuery.ToScalarAsync(connection));
         }
 
         /// <summary>
@@ -264,9 +291,10 @@ namespace KissU.Util.Datas.Sql
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
         /// <param name="connection">数据库连接</param>
-        public static Guid ToGuid( this ISqlQuery sqlQuery, IDbConnection connection = null )
+        /// <returns>Guid.</returns>
+        public static Guid ToGuid(this ISqlQuery sqlQuery, IDbConnection connection = null)
         {
-            return Util.Helpers.Convert.ToGuid( sqlQuery.ToScalar( connection ) );
+            return Convert.ToGuid(sqlQuery.ToScalar(connection));
         }
 
         /// <summary>
@@ -274,9 +302,10 @@ namespace KissU.Util.Datas.Sql
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
         /// <param name="connection">数据库连接</param>
-        public static async Task<Guid> ToGuidAsync( this ISqlQuery sqlQuery, IDbConnection connection = null )
+        /// <returns>Task&lt;Guid&gt;.</returns>
+        public static async Task<Guid> ToGuidAsync(this ISqlQuery sqlQuery, IDbConnection connection = null)
         {
-            return Util.Helpers.Convert.ToGuid( await sqlQuery.ToScalarAsync( connection ) );
+            return Convert.ToGuid(await sqlQuery.ToScalarAsync(connection));
         }
 
         /// <summary>
@@ -284,9 +313,10 @@ namespace KissU.Util.Datas.Sql
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
         /// <param name="connection">数据库连接</param>
-        public static Guid? ToGuidOrNull( this ISqlQuery sqlQuery, IDbConnection connection = null )
+        /// <returns>System.Nullable&lt;Guid&gt;.</returns>
+        public static Guid? ToGuidOrNull(this ISqlQuery sqlQuery, IDbConnection connection = null)
         {
-            return Util.Helpers.Convert.ToGuidOrNull( sqlQuery.ToScalar( connection ) );
+            return Convert.ToGuidOrNull(sqlQuery.ToScalar(connection));
         }
 
         /// <summary>
@@ -294,9 +324,10 @@ namespace KissU.Util.Datas.Sql
         /// </summary>
         /// <param name="sqlQuery">Sql查询对象</param>
         /// <param name="connection">数据库连接</param>
-        public static async Task<Guid?> ToGuidOrNullAsync( this ISqlQuery sqlQuery, IDbConnection connection = null )
+        /// <returns>Task&lt;System.Nullable&lt;Guid&gt;&gt;.</returns>
+        public static async Task<Guid?> ToGuidOrNullAsync(this ISqlQuery sqlQuery, IDbConnection connection = null)
         {
-            return Util.Helpers.Convert.ToGuidOrNull( await sqlQuery.ToScalarAsync( connection ) );
+            return Convert.ToGuidOrNull(await sqlQuery.ToScalarAsync(connection));
         }
     }
 }

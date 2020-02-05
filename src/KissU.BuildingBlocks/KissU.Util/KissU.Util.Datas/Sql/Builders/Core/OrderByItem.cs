@@ -15,23 +15,24 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// <param name="type">实体类型</param>
         /// <param name="raw">使用原始值</param>
         /// <param name="prefix">前缀</param>
-        public OrderByItem( string order, bool desc = false, Type type = null, bool raw = false, string prefix = null )
+        public OrderByItem(string order, bool desc = false, Type type = null, bool raw = false, string prefix = null)
         {
             Order = order.SafeString();
             Desc = desc;
             Type = type;
             Raw = raw;
-            if( raw )
+            if (raw)
                 return;
-            Order = Order.RemoveEnd( "asc" );
-            if( Order.ToLower().EndsWith( "desc" ) )
+            Order = Order.RemoveEnd("asc");
+            if (Order.ToLower().EndsWith("desc"))
             {
                 Desc = true;
-                Order = Order.RemoveEnd( "desc" );
+                Order = Order.RemoveEnd("desc");
             }
-            var item = new NameItem( Order );
+
+            var item = new NameItem(Order);
             Column = item.Name;
-            Prefix = string.IsNullOrWhiteSpace( item.Prefix ) ? prefix : item.Prefix;
+            Prefix = string.IsNullOrWhiteSpace(item.Prefix) ? prefix : item.Prefix;
         }
 
         /// <summary>
@@ -69,22 +70,23 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// </summary>
         /// <param name="dialect">Sql方言</param>
         /// <param name="register">实体别名注册器</param>
-        public string ToSql( IDialect dialect, IEntityAliasRegister register )
+        /// <returns>System.String.</returns>
+        public string ToSql(IDialect dialect, IEntityAliasRegister register)
         {
-            if( Raw )
+            if (Raw)
                 return Order;
-            var name = new NameItem( Order );
-            return $"{name.ToSql( dialect, GetPrefix( register ) )} {( Desc ? "Desc" : null )}".TrimEnd();
+            var name = new NameItem(Order);
+            return $"{name.ToSql(dialect, GetPrefix(register))} {(Desc ? "Desc" : null)}".TrimEnd();
         }
 
         /// <summary>
         /// 获取前缀
         /// </summary>
-        private string GetPrefix( IEntityAliasRegister register )
+        private string GetPrefix(IEntityAliasRegister register)
         {
-            if( string.IsNullOrWhiteSpace( Prefix ) == false )
+            if (string.IsNullOrWhiteSpace(Prefix) == false)
                 return Prefix;
-            return register.GetAlias( Type );
+            return register.GetAlias(Type);
         }
     }
 }

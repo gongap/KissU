@@ -22,9 +22,10 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// <param name="resolver">实体解析器</param>
         /// <param name="register">实体别名注册器</param>
         /// <param name="parameterManager">参数管理器</param>
-        public PredicateExpressionResolver( IDialect dialect, IEntityResolver resolver, IEntityAliasRegister register, IParameterManager parameterManager )
+        public PredicateExpressionResolver(IDialect dialect, IEntityResolver resolver, IEntityAliasRegister register,
+            IParameterManager parameterManager)
         {
-            _helper = new Helper( dialect, resolver, register, parameterManager );
+            _helper = new Helper(dialect, resolver, register, parameterManager);
         }
 
         /// <summary>
@@ -32,49 +33,50 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// </summary>
         /// <typeparam name="TEntiy">实体类型</typeparam>
         /// <param name="expression">谓词表达式</param>
-        public ICondition Resolve<TEntiy>( Expression<Func<TEntiy, bool>> expression )
+        /// <returns>ICondition.</returns>
+        public ICondition Resolve<TEntiy>(Expression<Func<TEntiy, bool>> expression)
         {
-            if( expression == null )
+            if (expression == null)
                 return NullCondition.Instance;
-            return ResolveExpression( expression, typeof( TEntiy ) );
+            return ResolveExpression(expression, typeof(TEntiy));
         }
 
         /// <summary>
         /// 解析谓词表达式
         /// </summary>
-        private ICondition ResolveExpression( Expression expression,Type type )
+        private ICondition ResolveExpression(Expression expression, Type type)
         {
-            switch( expression.NodeType )
+            switch (expression.NodeType)
             {
                 case ExpressionType.Lambda:
-                    return ResolveExpression( ((LambdaExpression)expression ).Body, type );
+                    return ResolveExpression(((LambdaExpression) expression).Body, type);
                 case ExpressionType.OrElse:
-                    return ResolveOrExpression( (BinaryExpression)expression, type );
+                    return ResolveOrExpression((BinaryExpression) expression, type);
                 case ExpressionType.AndAlso:
-                    return ResolveAndExpression( (BinaryExpression) expression, type );
+                    return ResolveAndExpression((BinaryExpression) expression, type);
                 default:
-                    return _helper.CreateCondition( expression, type );
+                    return _helper.CreateCondition(expression, type);
             }
         }
 
         /// <summary>
         /// 解析Or表达式
         /// </summary>
-        private ICondition ResolveOrExpression( BinaryExpression expression, Type type )
+        private ICondition ResolveOrExpression(BinaryExpression expression, Type type)
         {
-            ICondition left = ResolveExpression( expression.Left, type );
-            ICondition right = ResolveExpression( expression.Right, type );
-            return new OrCondition( left, right );
+            var left = ResolveExpression(expression.Left, type);
+            var right = ResolveExpression(expression.Right, type);
+            return new OrCondition(left, right);
         }
 
         /// <summary>
         /// 解析And表达式
         /// </summary>
-        private ICondition ResolveAndExpression( BinaryExpression expression, Type type )
+        private ICondition ResolveAndExpression(BinaryExpression expression, Type type)
         {
-            ICondition left = ResolveExpression( expression.Left, type );
-            ICondition right = ResolveExpression( expression.Right, type );
-            return new AndCondition( left, right );
+            var left = ResolveExpression(expression.Left, type);
+            var right = ResolveExpression(expression.Right, type);
+            return new AndCondition(left, right);
         }
     }
 }

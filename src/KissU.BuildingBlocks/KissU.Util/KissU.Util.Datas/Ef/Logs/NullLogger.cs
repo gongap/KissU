@@ -16,7 +16,17 @@ namespace KissU.Util.Datas.Ef.Logs
         /// <summary>
         /// 日志记录
         /// </summary>
-        public void Log<TState>( LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter )
+        /// <typeparam name="TState">The type of the object to be written.</typeparam>
+        /// <param name="logLevel">Entry will be written on this level.</param>
+        /// <param name="eventId">Id of the event.</param>
+        /// <param name="state">The entry to be written. Can be also an object.</param>
+        /// <param name="exception">The exception related to this entry.</param>
+        /// <param name="formatter">
+        /// Function to create a <see cref="T:System.String" /> message of the <paramref name="state" />
+        /// and <paramref name="exception" />.
+        /// </param>
+        public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception,
+            Func<TState, Exception, string> formatter)
         {
         }
 
@@ -24,7 +34,8 @@ namespace KissU.Util.Datas.Ef.Logs
         /// 是否启用
         /// </summary>
         /// <param name="logLevel">日志级别</param>
-        public bool IsEnabled( LogLevel logLevel )
+        /// <returns><c>true</c> if enabled.</returns>
+        public bool IsEnabled(LogLevel logLevel)
         {
             return false;
         }
@@ -32,7 +43,10 @@ namespace KissU.Util.Datas.Ef.Logs
         /// <summary>
         /// 起始范围
         /// </summary>
-        public IDisposable BeginScope<TState>( TState state )
+        /// <typeparam name="TState">The type of the t state.</typeparam>
+        /// <param name="state">The state.</param>
+        /// <returns>IDisposable.</returns>
+        public IDisposable BeginScope<TState>(TState state)
         {
             return null;
         }

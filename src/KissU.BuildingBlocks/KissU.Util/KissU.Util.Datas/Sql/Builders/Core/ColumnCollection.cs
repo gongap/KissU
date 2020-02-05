@@ -18,7 +18,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// <summary>
         /// 初始化列集合
         /// </summary>
-        public ColumnCollection( List<ColumnItem> items = null )
+        /// <param name="items">The items.</param>
+        public ColumnCollection(List<ColumnItem> items = null)
         {
             _items = items ?? new List<ColumnItem>();
         }
@@ -27,6 +28,7 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// 获取列
         /// </summary>
         /// <param name="index">索引</param>
+        /// <returns>ColumnItem.</returns>
         public ColumnItem this[int index] => _items[index];
 
         /// <summary>
@@ -39,32 +41,32 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// </summary>
         /// <param name="columns">列集合</param>
         /// <param name="tableAlias">表别名</param>
-        public void AddColumns( string columns, string tableAlias = null )
+        public void AddColumns(string columns, string tableAlias = null)
         {
-            if( columns.IsEmpty() )
+            if (columns.IsEmpty())
                 return;
-            var items = columns.Split( ',' ).Select( column => CreateItem( column, tableAlias ) ).ToList();
-            items.ForEach( AddColumn );
+            var items = columns.Split(',').Select(column => CreateItem(column, tableAlias)).ToList();
+            items.ForEach(AddColumn);
         }
 
         /// <summary>
         /// 创建列
         /// </summary>
-        private ColumnItem CreateItem( string column, string tableAlias )
+        private ColumnItem CreateItem(string column, string tableAlias)
         {
-            var item = new SqlItem( column, tableAlias );
-            return new ColumnItem( item.Name, item.Prefix, item.Alias );
+            var item = new SqlItem(column, tableAlias);
+            return new ColumnItem(item.Name, item.Prefix, item.Alias);
         }
 
         /// <summary>
         /// 添加列
         /// </summary>
         /// <param name="item">列</param>
-        public void AddColumn( ColumnItem item )
+        public void AddColumn(ColumnItem item)
         {
-            if( item == null )
+            if (item == null)
                 return;
-            _items.Add( item );
+            _items.Add(item);
         }
 
         /// <summary>
@@ -72,11 +74,11 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// </summary>
         /// <param name="sql">Sql语句</param>
         /// <param name="columnAlias">列别名</param>
-        public void AddRawColumn( string sql, string columnAlias = null )
+        public void AddRawColumn(string sql, string columnAlias = null)
         {
-            if( sql.IsEmpty() )
+            if (sql.IsEmpty())
                 return;
-            _items.Add( new ColumnItem( sql,columnAlias: columnAlias, raw: true ) );
+            _items.Add(new ColumnItem(sql, columnAlias: columnAlias, raw: true));
         }
 
         /// <summary>
@@ -85,25 +87,25 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// <param name="columns">列集合</param>
         /// <param name="tableType">表实体类型</param>
         /// <param name="columnAlias">列别名</param>
-        public void AddColumns( string columns, Type tableType, string columnAlias = null )
+        public void AddColumns(string columns, Type tableType, string columnAlias = null)
         {
-            if( columns.IsEmpty() )
+            if (columns.IsEmpty())
                 return;
-            var items = columns.Split( ',' ).Select( column => CreateItem( column, tableType, columnAlias ) ).ToList();
-            items.ForEach( item =>
+            var items = columns.Split(',').Select(column => CreateItem(column, tableType, columnAlias)).ToList();
+            items.ForEach(item =>
             {
-                RemoveColumn( item );
-                AddColumn( item );
-            } );
+                RemoveColumn(item);
+                AddColumn(item);
+            });
         }
 
         /// <summary>
         /// 创建列
         /// </summary>
-        private ColumnItem CreateItem( string column, Type tableType, string columnAlias = null )
+        private ColumnItem CreateItem(string column, Type tableType, string columnAlias = null)
         {
-            var item = new SqlItem( column,alias: columnAlias );
-            return new ColumnItem( item.Name, columnAlias:item.Alias,tableType: tableType );
+            var item = new SqlItem(column, alias: columnAlias);
+            return new ColumnItem(item.Name, columnAlias: item.Alias, tableType: tableType);
         }
 
         /// <summary>
@@ -111,11 +113,11 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// </summary>
         /// <param name="column">列名</param>
         /// <param name="columnAlias">列别名</param>
-        public void AddAggregationColumn( string column, string columnAlias )
+        public void AddAggregationColumn(string column, string columnAlias)
         {
-            if( column.IsEmpty() )
+            if (column.IsEmpty())
                 return;
-            _items.Add( new ColumnItem( column, columnAlias: columnAlias, isAggregation: true ) );
+            _items.Add(new ColumnItem(column, columnAlias: columnAlias, isAggregation: true));
         }
 
         /// <summary>
@@ -123,22 +125,23 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// </summary>
         /// <param name="columns">列集合</param>
         /// <param name="tableAlias">表别名</param>
-        public void RemoveColumns( string columns, string tableAlias = null )
+        public void RemoveColumns(string columns, string tableAlias = null)
         {
-            if( columns.IsEmpty() )
+            if (columns.IsEmpty())
                 return;
-            var items = columns.Split( ',' ).Select( column => CreateItem( column, tableAlias ) ).ToList();
-            items.ForEach( RemoveColumn );
+            var items = columns.Split(',').Select(column => CreateItem(column, tableAlias)).ToList();
+            items.ForEach(RemoveColumn);
         }
 
         /// <summary>
         /// 移除列集合
         /// </summary>
-        private void RemoveColumn( ColumnItem item )
+        private void RemoveColumn(ColumnItem item)
         {
-            if( item == null )
+            if (item == null)
                 return;
-            _items.RemoveAll( t => t.Name == item.Name && t.TableAlias == item.TableAlias && t.TableType == item.TableType );
+            _items.RemoveAll(t =>
+                t.Name == item.Name && t.TableAlias == item.TableAlias && t.TableType == item.TableType);
         }
 
         /// <summary>
@@ -146,20 +149,21 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// </summary>
         /// <param name="columns">列集合</param>
         /// <param name="tableType">表实体类型</param>
-        public void RemoveColumns( string columns, Type tableType )
+        public void RemoveColumns(string columns, Type tableType)
         {
-            if( columns.IsEmpty() )
+            if (columns.IsEmpty())
                 return;
-            var items = columns.Split( ',' ).Select( column => CreateItem( column, tableType ) ).ToList();
-            items.ForEach( RemoveColumn );
+            var items = columns.Split(',').Select(column => CreateItem(column, tableType)).ToList();
+            items.ForEach(RemoveColumn);
         }
 
         /// <summary>
         /// 复制
         /// </summary>
+        /// <returns>ColumnCollection.</returns>
         public ColumnCollection Clone()
         {
-            return new ColumnCollection(_items.Select( t => t.Clone() ).ToList() );
+            return new ColumnCollection(_items.Select(t => t.Clone()).ToList());
         }
 
         /// <summary>
@@ -167,16 +171,18 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// </summary>
         /// <param name="dialect">Sql方言</param>
         /// <param name="register">实体别名注册器</param>
-        public string ToSql( IDialect dialect, IEntityAliasRegister register )
+        /// <returns>System.String.</returns>
+        public string ToSql(IDialect dialect, IEntityAliasRegister register)
         {
             var result = new StringBuilder();
-            foreach( var item in _items )
+            foreach (var item in _items)
             {
-                result.Append( item.ToSql( dialect, register ) );
-                if ( item.Raw == false )
-                    result.Append( "," );
+                result.Append(item.ToSql(dialect, register));
+                if (item.Raw == false)
+                    result.Append(",");
             }
-            return result.ToString().TrimEnd( ',' );
+
+            return result.ToString().TrimEnd(',');
         }
     }
 }

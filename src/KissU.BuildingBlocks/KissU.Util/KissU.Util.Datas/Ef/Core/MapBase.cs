@@ -18,39 +18,43 @@ namespace KissU.Util.Datas.Ef.Core
         /// 映射配置
         /// </summary>
         /// <param name="modelBuilder">模型生成器</param>
-        public void Map( ModelBuilder modelBuilder )
+        public void Map(ModelBuilder modelBuilder)
         {
             ModelBuilder = modelBuilder;
             var builder = modelBuilder.Entity<TEntity>();
-            MapTable( builder );
-            MapVersion( builder );
-            MapProperties( builder );
-            MapAssociations( builder );
+            MapTable(builder);
+            MapVersion(builder);
+            MapProperties(builder);
+            MapAssociations(builder);
         }
 
         /// <summary>
         /// 映射表
         /// </summary>
-        protected abstract void MapTable( EntityTypeBuilder<TEntity> builder );
+        /// <param name="builder">The builder.</param>
+        protected abstract void MapTable(EntityTypeBuilder<TEntity> builder);
 
         /// <summary>
         /// 映射乐观离线锁
         /// </summary>
-        protected virtual void MapVersion( EntityTypeBuilder<TEntity> builder )
+        /// <param name="builder">The builder.</param>
+        protected virtual void MapVersion(EntityTypeBuilder<TEntity> builder)
         {
         }
 
         /// <summary>
         /// 映射属性
         /// </summary>
-        protected virtual void MapProperties( EntityTypeBuilder<TEntity> builder )
+        /// <param name="builder">The builder.</param>
+        protected virtual void MapProperties(EntityTypeBuilder<TEntity> builder)
         {
         }
 
         /// <summary>
         /// 映射导航属性
         /// </summary>
-        protected virtual void MapAssociations( EntityTypeBuilder<TEntity> builder )
+        /// <param name="builder">The builder.</param>
+        protected virtual void MapAssociations(EntityTypeBuilder<TEntity> builder)
         {
         }
     }

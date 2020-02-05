@@ -13,9 +13,9 @@ namespace KissU.Util.Datas.Dapper.Handlers
         /// </summary>
         /// <param name="parameter">参数</param>
         /// <param name="value">值</param>
-        public override void SetValue( IDbDataParameter parameter, string value )
+        public override void SetValue(IDbDataParameter parameter, string value)
         {
-            if ( parameter == null )
+            if (parameter == null)
                 return;
             parameter.Value = value;
         }
@@ -24,7 +24,8 @@ namespace KissU.Util.Datas.Dapper.Handlers
         /// 转换值
         /// </summary>
         /// <param name="value">值</param>
-        public override string Parse( object value )
+        /// <returns>System.String.</returns>
+        public override string Parse(object value)
         {
             return value?.ToString();
         }

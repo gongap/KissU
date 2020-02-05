@@ -12,7 +12,7 @@ namespace KissU.Util.Datas.Sql.Builders.Filters
         /// </summary>
         static SqlFilterCollection()
         {
-            Filters = new List<ISqlFilter> { new IsDeletedFilter() };
+            Filters = new List<ISqlFilter> {new IsDeletedFilter()};
         }
 
         /// <summary>
@@ -24,11 +24,11 @@ namespace KissU.Util.Datas.Sql.Builders.Filters
         /// 添加Sql过滤器
         /// </summary>
         /// <param name="filter">Sql查询过滤器</param>
-        public static void Add( ISqlFilter filter )
+        public static void Add(ISqlFilter filter)
         {
-            if( filter == null )
+            if (filter == null)
                 return;
-            Filters.Add( filter );
+            Filters.Add(filter);
         }
     }
 }

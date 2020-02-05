@@ -6,12 +6,14 @@ using System.Linq.Dynamic.Core;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
+using KissU.Util.Datas.Sql;
 using KissU.Util.Datas.Stores;
 using KissU.Util.Datas.UnitOfWorks;
 using KissU.Util.Domains;
 using KissU.Util.Domains.Repositories;
 using KissU.Util.Helpers;
 using Microsoft.EntityFrameworkCore;
+using Convert = KissU.Util.Helpers.Convert;
 
 namespace KissU.Util.Datas.Ef.Core
 {
@@ -19,13 +21,14 @@ namespace KissU.Util.Datas.Ef.Core
     /// 查询存储器
     /// </summary>
     /// <typeparam name="TEntity">对象类型</typeparam>
-    public abstract partial class QueryStoreBase<TEntity> : QueryStoreBase<TEntity, Guid>, IQueryStore<TEntity> where TEntity : class, IKey<Guid>
+    public abstract class QueryStoreBase<TEntity> : QueryStoreBase<TEntity, Guid>, IQueryStore<TEntity>
+        where TEntity : class, IKey<Guid>
     {
         /// <summary>
         /// 初始化查询存储器
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
-        protected QueryStoreBase( IUnitOfWork unitOfWork ) : base( unitOfWork )
+        protected QueryStoreBase(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
         }
     }
@@ -35,20 +38,20 @@ namespace KissU.Util.Datas.Ef.Core
     /// </summary>
     /// <typeparam name="TEntity">对象类型</typeparam>
     /// <typeparam name="TKey">对象标识类型</typeparam>
-    public abstract partial class QueryStoreBase<TEntity, TKey> : IQueryStore<TEntity, TKey> where TEntity : class, IKey<TKey>
+    public abstract class QueryStoreBase<TEntity, TKey> : IQueryStore<TEntity, TKey> where TEntity : class, IKey<TKey>
     {
         /// <summary>
         /// Sql查询对象
         /// </summary>
-        private Sql.ISqlQuery _sqlQuery;
+        private ISqlQuery _sqlQuery;
 
         /// <summary>
         /// 初始化查询存储器
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
-        protected QueryStoreBase( IUnitOfWork unitOfWork )
+        protected QueryStoreBase(IUnitOfWork unitOfWork)
         {
-            UnitOfWork = (UnitOfWorkBase)unitOfWork;
+            UnitOfWork = (UnitOfWorkBase) unitOfWork;
         }
 
         /// <summary>
@@ -69,21 +72,12 @@ namespace KissU.Util.Datas.Ef.Core
         /// <summary>
         /// Sql查询对象
         /// </summary>
-        protected Sql.ISqlQuery Sql => _sqlQuery ?? ( _sqlQuery = CreateSqlQuery() );
-
-        /// <summary>
-        /// 创建Sql查询对象
-        /// </summary>
-        protected virtual Sql.ISqlQuery CreateSqlQuery()
-        {
-            var result = Ioc.Create<Sql.ISqlQuery>();
-            result.SetConnection( Connection );
-            return result;
-        }
+        protected ISqlQuery Sql => _sqlQuery ?? (_sqlQuery = CreateSqlQuery());
 
         /// <summary>
         /// 获取未跟踪查询对象
         /// </summary>
+        /// <returns>IQueryable&lt;TEntity&gt;.</returns>
         public IQueryable<TEntity> FindAsNoTracking()
         {
             return Set.AsNoTracking();
@@ -92,6 +86,7 @@ namespace KissU.Util.Datas.Ef.Core
         /// <summary>
         /// 获取查询对象
         /// </summary>
+        /// <returns>IQueryable&lt;TEntity&gt;.</returns>
         public IQueryable<TEntity> Find()
         {
             return Set;
@@ -101,29 +96,32 @@ namespace KissU.Util.Datas.Ef.Core
         /// 查询
         /// </summary>
         /// <param name="criteria">条件</param>
-        public IQueryable<TEntity> Find( ICriteria<TEntity> criteria )
+        /// <returns>IQueryable&lt;TEntity&gt;.</returns>
+        public IQueryable<TEntity> Find(ICriteria<TEntity> criteria)
         {
-            return Set.Where( criteria );
+            return Set.Where(criteria);
         }
 
         /// <summary>
         /// 查询
         /// </summary>
         /// <param name="predicate">条件</param>
-        public IQueryable<TEntity> Find( Expression<Func<TEntity, bool>> predicate )
+        /// <returns>IQueryable&lt;TEntity&gt;.</returns>
+        public IQueryable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
         {
-            return Set.Where( predicate );
+            return Set.Where(predicate);
         }
 
         /// <summary>
         /// 查找实体
         /// </summary>
         /// <param name="id">标识</param>
-        public virtual TEntity Find( object id )
+        /// <returns>TEntity.</returns>
+        public virtual TEntity Find(object id)
         {
-            if( id.SafeString().IsEmpty() )
+            if (id.SafeString().IsEmpty())
                 return null;
-            return Set.Find( id );
+            return Set.Find(id);
         }
 
         /// <summary>
@@ -131,50 +129,55 @@ namespace KissU.Util.Datas.Ef.Core
         /// </summary>
         /// <param name="id">标识</param>
         /// <param name="cancellationToken">取消令牌</param>
-        public virtual async Task<TEntity> FindAsync( object id, CancellationToken cancellationToken = default( CancellationToken ) )
+        /// <returns>Task&lt;TEntity&gt;.</returns>
+        public virtual async Task<TEntity> FindAsync(object id, CancellationToken cancellationToken = default)
         {
-            if( id.SafeString().IsEmpty() )
+            if (id.SafeString().IsEmpty())
                 return null;
-            return await Set.FindAsync( new[] { id }, cancellationToken );
+            return await Set.FindAsync(new[] {id}, cancellationToken);
         }
 
         /// <summary>
         /// 查找实体列表
         /// </summary>
         /// <param name="ids">标识列表</param>
-        public virtual List<TEntity> FindByIds( params TKey[] ids )
+        /// <returns>List&lt;TEntity&gt;.</returns>
+        public virtual List<TEntity> FindByIds(params TKey[] ids)
         {
-            return FindByIds( (IEnumerable<TKey>)ids );
+            return FindByIds((IEnumerable<TKey>) ids);
         }
 
         /// <summary>
         /// 查找实体列表
         /// </summary>
         /// <param name="ids">标识列表</param>
-        public virtual List<TEntity> FindByIds( IEnumerable<TKey> ids )
+        /// <returns>List&lt;TEntity&gt;.</returns>
+        public virtual List<TEntity> FindByIds(IEnumerable<TKey> ids)
         {
-            if( ids == null )
+            if (ids == null)
                 return null;
-            return Find( t => ids.Contains( t.Id ) ).ToList();
+            return Find(t => ids.Contains(t.Id)).ToList();
         }
 
         /// <summary>
         /// 查找实体列表
         /// </summary>
         /// <param name="ids">逗号分隔的标识列表，范例："1,2"</param>
-        public virtual List<TEntity> FindByIds( string ids )
+        /// <returns>List&lt;TEntity&gt;.</returns>
+        public virtual List<TEntity> FindByIds(string ids)
         {
-            var idList = Util.Helpers.Convert.ToList<TKey>( ids );
-            return FindByIds( idList );
+            var idList = Convert.ToList<TKey>(ids);
+            return FindByIds(idList);
         }
 
         /// <summary>
         /// 查找实体列表
         /// </summary>
         /// <param name="ids">标识列表</param>
-        public virtual async Task<List<TEntity>> FindByIdsAsync( params TKey[] ids )
+        /// <returns>Task&lt;List&lt;TEntity&gt;&gt;.</returns>
+        public virtual async Task<List<TEntity>> FindByIdsAsync(params TKey[] ids)
         {
-            return await FindByIdsAsync( (IEnumerable<TKey>)ids );
+            return await FindByIdsAsync((IEnumerable<TKey>) ids);
         }
 
         /// <summary>
@@ -182,31 +185,35 @@ namespace KissU.Util.Datas.Ef.Core
         /// </summary>
         /// <param name="ids">标识列表</param>
         /// <param name="cancellationToken">取消令牌</param>
-        public virtual async Task<List<TEntity>> FindByIdsAsync( IEnumerable<TKey> ids, CancellationToken cancellationToken = default( CancellationToken ) )
+        /// <returns>Task&lt;List&lt;TEntity&gt;&gt;.</returns>
+        public virtual async Task<List<TEntity>> FindByIdsAsync(IEnumerable<TKey> ids,
+            CancellationToken cancellationToken = default)
         {
-            if( ids == null )
+            if (ids == null)
                 return null;
-            return await Find( t => ids.Contains( t.Id ) ).ToListAsync( cancellationToken );
+            return await Find(t => ids.Contains(t.Id)).ToListAsync(cancellationToken);
         }
 
         /// <summary>
         /// 查找实体列表
         /// </summary>
         /// <param name="ids">逗号分隔的标识列表，范例："1,2"</param>
-        public virtual async Task<List<TEntity>> FindByIdsAsync( string ids )
+        /// <returns>Task&lt;List&lt;TEntity&gt;&gt;.</returns>
+        public virtual async Task<List<TEntity>> FindByIdsAsync(string ids)
         {
-            var idList = Util.Helpers.Convert.ToList<TKey>( ids );
-            return await FindByIdsAsync( idList );
+            var idList = Convert.ToList<TKey>(ids);
+            return await FindByIdsAsync(idList);
         }
 
         /// <summary>
         /// 查找未跟踪单个实体
         /// </summary>
         /// <param name="id">标识</param>
-        public virtual TEntity FindByIdNoTracking( TKey id )
+        /// <returns>TEntity.</returns>
+        public virtual TEntity FindByIdNoTracking(TKey id)
         {
-            var entities = FindByIdsNoTracking( id );
-            if ( entities == null || entities.Count == 0 )
+            var entities = FindByIdsNoTracking(id);
+            if (entities == null || entities.Count == 0)
                 return null;
             return entities[0];
         }
@@ -216,10 +223,12 @@ namespace KissU.Util.Datas.Ef.Core
         /// </summary>
         /// <param name="id">标识</param>
         /// <param name="cancellationToken">取消令牌</param>
-        public virtual async Task<TEntity> FindByIdNoTrackingAsync( TKey id,CancellationToken cancellationToken = default( CancellationToken ) )
+        /// <returns>Task&lt;TEntity&gt;.</returns>
+        public virtual async Task<TEntity> FindByIdNoTrackingAsync(TKey id,
+            CancellationToken cancellationToken = default)
         {
-            var entities = await FindByIdsNoTrackingAsync( id );
-            if( entities == null || entities.Count == 0 )
+            var entities = await FindByIdsNoTrackingAsync(id);
+            if (entities == null || entities.Count == 0)
                 return null;
             return entities[0];
         }
@@ -228,39 +237,43 @@ namespace KissU.Util.Datas.Ef.Core
         /// 查找实体列表,不跟踪
         /// </summary>
         /// <param name="ids">标识列表</param>
-        public virtual List<TEntity> FindByIdsNoTracking( params TKey[] ids )
+        /// <returns>List&lt;TEntity&gt;.</returns>
+        public virtual List<TEntity> FindByIdsNoTracking(params TKey[] ids)
         {
-            return FindByIdsNoTracking( (IEnumerable<TKey>)ids );
+            return FindByIdsNoTracking((IEnumerable<TKey>) ids);
         }
 
         /// <summary>
         /// 查找实体列表,不跟踪
         /// </summary>
         /// <param name="ids">标识列表</param>
-        public virtual List<TEntity> FindByIdsNoTracking( IEnumerable<TKey> ids )
+        /// <returns>List&lt;TEntity&gt;.</returns>
+        public virtual List<TEntity> FindByIdsNoTracking(IEnumerable<TKey> ids)
         {
-            if( ids == null )
+            if (ids == null)
                 return null;
-            return FindAsNoTracking().Where( t => ids.Contains( t.Id ) ).ToList();
+            return FindAsNoTracking().Where(t => ids.Contains(t.Id)).ToList();
         }
 
         /// <summary>
         /// 查找实体列表,不跟踪
         /// </summary>
         /// <param name="ids">逗号分隔的标识列表，范例："1,2"</param>
-        public virtual List<TEntity> FindByIdsNoTracking( string ids )
+        /// <returns>List&lt;TEntity&gt;.</returns>
+        public virtual List<TEntity> FindByIdsNoTracking(string ids)
         {
-            var idList = Util.Helpers.Convert.ToList<TKey>( ids );
-            return FindByIdsNoTracking( idList );
+            var idList = Convert.ToList<TKey>(ids);
+            return FindByIdsNoTracking(idList);
         }
 
         /// <summary>
         /// 查找实体列表,不跟踪
         /// </summary>
         /// <param name="ids">标识列表</param>
-        public virtual async Task<List<TEntity>> FindByIdsNoTrackingAsync( params TKey[] ids )
+        /// <returns>Task&lt;List&lt;TEntity&gt;&gt;.</returns>
+        public virtual async Task<List<TEntity>> FindByIdsNoTrackingAsync(params TKey[] ids)
         {
-            return await FindByIdsNoTrackingAsync( (IEnumerable<TKey>)ids );
+            return await FindByIdsNoTrackingAsync((IEnumerable<TKey>) ids);
         }
 
         /// <summary>
@@ -268,30 +281,34 @@ namespace KissU.Util.Datas.Ef.Core
         /// </summary>
         /// <param name="ids">标识列表</param>
         /// <param name="cancellationToken">取消令牌</param>
-        public virtual async Task<List<TEntity>> FindByIdsNoTrackingAsync( IEnumerable<TKey> ids, CancellationToken cancellationToken = default( CancellationToken ) )
+        /// <returns>Task&lt;List&lt;TEntity&gt;&gt;.</returns>
+        public virtual async Task<List<TEntity>> FindByIdsNoTrackingAsync(IEnumerable<TKey> ids,
+            CancellationToken cancellationToken = default)
         {
-            if( ids == null )
+            if (ids == null)
                 return null;
-            return await FindAsNoTracking().Where( t => ids.Contains( t.Id ) ).ToListAsync( cancellationToken );
+            return await FindAsNoTracking().Where(t => ids.Contains(t.Id)).ToListAsync(cancellationToken);
         }
 
         /// <summary>
         /// 查找实体列表,不跟踪
         /// </summary>
         /// <param name="ids">逗号分隔的标识列表，范例："1,2"</param>
-        public virtual async Task<List<TEntity>> FindByIdsNoTrackingAsync( string ids )
+        /// <returns>Task&lt;List&lt;TEntity&gt;&gt;.</returns>
+        public virtual async Task<List<TEntity>> FindByIdsNoTrackingAsync(string ids)
         {
-            var idList = Util.Helpers.Convert.ToList<TKey>( ids );
-            return await FindByIdsNoTrackingAsync( idList );
+            var idList = Convert.ToList<TKey>(ids);
+            return await FindByIdsNoTrackingAsync(idList);
         }
 
         /// <summary>
         /// 查找单个实体
         /// </summary>
         /// <param name="predicate">条件</param>
-        public virtual TEntity Single( Expression<Func<TEntity, bool>> predicate )
+        /// <returns>TEntity.</returns>
+        public virtual TEntity Single(Expression<Func<TEntity, bool>> predicate)
         {
-            return Set.FirstOrDefault( predicate );
+            return Set.FirstOrDefault(predicate);
         }
 
         /// <summary>
@@ -299,203 +316,238 @@ namespace KissU.Util.Datas.Ef.Core
         /// </summary>
         /// <param name="predicate">条件</param>
         /// <param name="cancellationToken">取消令牌</param>
-        public virtual async Task<TEntity> SingleAsync( Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default( CancellationToken ) )
+        /// <returns>Task&lt;TEntity&gt;.</returns>
+        public virtual async Task<TEntity> SingleAsync(Expression<Func<TEntity, bool>> predicate,
+            CancellationToken cancellationToken = default)
         {
-            return await Set.FirstOrDefaultAsync( predicate, cancellationToken );
+            return await Set.FirstOrDefaultAsync(predicate, cancellationToken);
         }
 
         /// <summary>
         /// 查找实体列表
         /// </summary>
         /// <param name="predicate">条件</param>
-        public virtual List<TEntity> FindAll( Expression<Func<TEntity, bool>> predicate = null )
+        /// <returns>List&lt;TEntity&gt;.</returns>
+        public virtual List<TEntity> FindAll(Expression<Func<TEntity, bool>> predicate = null)
         {
-            if( predicate == null )
+            if (predicate == null)
                 return Set.ToList();
-            return Find( predicate ).ToList();
+            return Find(predicate).ToList();
         }
 
         /// <summary>
         /// 查找实体列表,不跟踪
         /// </summary>
         /// <param name="predicate">条件</param>
-        public virtual List<TEntity> FindAllNoTracking( Expression<Func<TEntity, bool>> predicate = null )
+        /// <returns>List&lt;TEntity&gt;.</returns>
+        public virtual List<TEntity> FindAllNoTracking(Expression<Func<TEntity, bool>> predicate = null)
         {
-            if( predicate == null )
+            if (predicate == null)
                 return FindAsNoTracking().ToList();
-            return FindAsNoTracking().Where( predicate ).ToList();
+            return FindAsNoTracking().Where(predicate).ToList();
         }
 
         /// <summary>
         /// 查找实体列表
         /// </summary>
         /// <param name="predicate">条件</param>
-        public virtual async Task<List<TEntity>> FindAllAsync( Expression<Func<TEntity, bool>> predicate = null )
+        /// <returns>Task&lt;List&lt;TEntity&gt;&gt;.</returns>
+        public virtual async Task<List<TEntity>> FindAllAsync(Expression<Func<TEntity, bool>> predicate = null)
         {
-            if( predicate == null )
+            if (predicate == null)
                 return await Set.ToListAsync();
-            return await Find( predicate ).ToListAsync();
+            return await Find(predicate).ToListAsync();
         }
 
         /// <summary>
         /// 查找实体列表,不跟踪
         /// </summary>
         /// <param name="predicate">条件</param>
-        public virtual async Task<List<TEntity>> FindAllNoTrackingAsync( Expression<Func<TEntity, bool>> predicate = null )
+        /// <returns>Task&lt;List&lt;TEntity&gt;&gt;.</returns>
+        public virtual async Task<List<TEntity>> FindAllNoTrackingAsync(
+            Expression<Func<TEntity, bool>> predicate = null)
         {
-            if( predicate == null )
+            if (predicate == null)
                 return await FindAsNoTracking().ToListAsync();
-            return await FindAsNoTracking().Where( predicate ).ToListAsync();
+            return await FindAsNoTracking().Where(predicate).ToListAsync();
         }
 
         /// <summary>
         /// 判断是否存在
         /// </summary>
         /// <param name="predicate">条件</param>
-        public virtual bool Exists( Expression<Func<TEntity, bool>> predicate )
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        public virtual bool Exists(Expression<Func<TEntity, bool>> predicate)
         {
-            if( predicate == null )
+            if (predicate == null)
                 return false;
-            return Set.Any( predicate );
+            return Set.Any(predicate);
         }
 
         /// <summary>
         /// 判断是否存在
         /// </summary>
         /// <param name="ids">标识列表</param>
-        public virtual bool Exists( params TKey[] ids )
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        public virtual bool Exists(params TKey[] ids)
         {
-            if( ids == null )
+            if (ids == null)
                 return false;
-            return Exists( t => ids.Contains( t.Id ) );
+            return Exists(t => ids.Contains(t.Id));
         }
 
         /// <summary>
         /// 判断是否存在
         /// </summary>
         /// <param name="predicate">条件</param>
-        public virtual async Task<bool> ExistsAsync( Expression<Func<TEntity, bool>> predicate )
+        /// <returns>Task&lt;System.Boolean&gt;.</returns>
+        public virtual async Task<bool> ExistsAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            if( predicate == null )
+            if (predicate == null)
                 return false;
-            return await Set.AnyAsync( predicate );
+            return await Set.AnyAsync(predicate);
         }
 
         /// <summary>
         /// 判断是否存在
         /// </summary>
         /// <param name="ids">标识列表</param>
-        public virtual async Task<bool> ExistsAsync( params TKey[] ids )
+        /// <returns>Task&lt;System.Boolean&gt;.</returns>
+        public virtual async Task<bool> ExistsAsync(params TKey[] ids)
         {
-            if( ids == null )
+            if (ids == null)
                 return false;
-            return await ExistsAsync( t => ids.Contains( t.Id ) );
+            return await ExistsAsync(t => ids.Contains(t.Id));
         }
 
         /// <summary>
         /// 查找数量
         /// </summary>
         /// <param name="predicate">条件</param>
-        public virtual int Count( Expression<Func<TEntity, bool>> predicate = null )
+        /// <returns>System.Int32.</returns>
+        public virtual int Count(Expression<Func<TEntity, bool>> predicate = null)
         {
-            if( predicate == null )
+            if (predicate == null)
                 return Set.Count();
-            return Set.Count( predicate );
+            return Set.Count(predicate);
         }
 
         /// <summary>
         /// 查找数量
         /// </summary>
         /// <param name="predicate">条件</param>
-        public virtual async Task<int> CountAsync( Expression<Func<TEntity, bool>> predicate = null )
+        /// <returns>Task&lt;System.Int32&gt;.</returns>
+        public virtual async Task<int> CountAsync(Expression<Func<TEntity, bool>> predicate = null)
         {
-            if( predicate == null )
+            if (predicate == null)
                 return await Set.CountAsync();
-            return await Set.CountAsync( predicate );
+            return await Set.CountAsync(predicate);
         }
 
         /// <summary>
         /// 查询
         /// </summary>
         /// <param name="query">查询对象</param>
-        public virtual List<TEntity> Query( IQueryBase<TEntity> query )
+        /// <returns>List&lt;TEntity&gt;.</returns>
+        public virtual List<TEntity> Query(IQueryBase<TEntity> query)
         {
-            return Query( Set, query ).ToList();
+            return Query(Set, query).ToList();
+        }
+
+        /// <summary>
+        /// 查询
+        /// </summary>
+        /// <param name="query">查询对象</param>
+        /// <returns>Task&lt;List&lt;TEntity&gt;&gt;.</returns>
+        public virtual async Task<List<TEntity>> QueryAsync(IQueryBase<TEntity> query)
+        {
+            return await Query(Set, query).ToListAsync();
+        }
+
+        /// <summary>
+        /// 查询，不跟踪实体
+        /// </summary>
+        /// <param name="query">查询对象</param>
+        /// <returns>List&lt;TEntity&gt;.</returns>
+        public virtual List<TEntity> QueryAsNoTracking(IQueryBase<TEntity> query)
+        {
+            return Query(FindAsNoTracking(), query).ToList();
+        }
+
+        /// <summary>
+        /// 查询，不跟踪实体
+        /// </summary>
+        /// <param name="query">查询对象</param>
+        /// <returns>Task&lt;List&lt;TEntity&gt;&gt;.</returns>
+        public virtual async Task<List<TEntity>> QueryAsNoTrackingAsync(IQueryBase<TEntity> query)
+        {
+            return await Query(FindAsNoTracking(), query).ToListAsync();
+        }
+
+        /// <summary>
+        /// 分页查询
+        /// </summary>
+        /// <param name="query">查询对象</param>
+        /// <returns>PagerList&lt;TEntity&gt;.</returns>
+        public virtual PagerList<TEntity> PagerQuery(IQueryBase<TEntity> query)
+        {
+            return Set.Where(query).ToPagerList(query.GetPager());
+        }
+
+        /// <summary>
+        /// 分页查询
+        /// </summary>
+        /// <param name="query">查询对象</param>
+        /// <returns>Task&lt;PagerList&lt;TEntity&gt;&gt;.</returns>
+        public virtual async Task<PagerList<TEntity>> PagerQueryAsync(IQueryBase<TEntity> query)
+        {
+            return await Set.Where(query).ToPagerListAsync(query.GetPager());
+        }
+
+        /// <summary>
+        /// 分页查询
+        /// </summary>
+        /// <param name="query">查询对象</param>
+        /// <returns>PagerList&lt;TEntity&gt;.</returns>
+        public virtual PagerList<TEntity> PagerQueryAsNoTracking(IQueryBase<TEntity> query)
+        {
+            return FindAsNoTracking().Where(query).ToPagerList(query.GetPager());
+        }
+
+        /// <summary>
+        /// 分页查询
+        /// </summary>
+        /// <param name="query">查询对象</param>
+        /// <returns>Task&lt;PagerList&lt;TEntity&gt;&gt;.</returns>
+        public virtual async Task<PagerList<TEntity>> PagerQueryAsNoTrackingAsync(IQueryBase<TEntity> query)
+        {
+            return await FindAsNoTracking().Where(query).ToPagerListAsync(query.GetPager());
+        }
+
+        /// <summary>
+        /// 创建Sql查询对象
+        /// </summary>
+        /// <returns>Sql.ISqlQuery.</returns>
+        protected virtual ISqlQuery CreateSqlQuery()
+        {
+            var result = Ioc.Create<ISqlQuery>();
+            result.SetConnection(Connection);
+            return result;
         }
 
         /// <summary>
         /// 获取查询结果
         /// </summary>
-        protected IQueryable<TEntity> Query( IQueryable<TEntity> queryable, IQueryBase<TEntity> query )
+        /// <param name="queryable">The queryable.</param>
+        /// <param name="query">The query.</param>
+        /// <returns>IQueryable&lt;TEntity&gt;.</returns>
+        protected IQueryable<TEntity> Query(IQueryable<TEntity> queryable, IQueryBase<TEntity> query)
         {
-            queryable = queryable.Where( query );
+            queryable = queryable.Where(query);
             var order = query.GetOrder();
-            if( string.IsNullOrWhiteSpace( order ) )
+            if (string.IsNullOrWhiteSpace(order))
                 return queryable;
-            return queryable.OrderBy( order );
-        }
-
-        /// <summary>
-        /// 查询
-        /// </summary>
-        /// <param name="query">查询对象</param>
-        public virtual async Task<List<TEntity>> QueryAsync( IQueryBase<TEntity> query )
-        {
-            return await Query( Set, query ).ToListAsync();
-        }
-
-        /// <summary>
-        /// 查询，不跟踪实体
-        /// </summary>
-        /// <param name="query">查询对象</param>
-        public virtual List<TEntity> QueryAsNoTracking( IQueryBase<TEntity> query )
-        {
-            return Query( FindAsNoTracking(), query ).ToList();
-        }
-
-        /// <summary>
-        /// 查询，不跟踪实体
-        /// </summary>
-        /// <param name="query">查询对象</param>
-        public virtual async Task<List<TEntity>> QueryAsNoTrackingAsync( IQueryBase<TEntity> query )
-        {
-            return await Query( FindAsNoTracking(), query ).ToListAsync();
-        }
-
-        /// <summary>
-        /// 分页查询
-        /// </summary>
-        /// <param name="query">查询对象</param>
-        public virtual PagerList<TEntity> PagerQuery( IQueryBase<TEntity> query )
-        {
-            return Set.Where( query ).ToPagerList( query.GetPager() );
-        }
-
-        /// <summary>
-        /// 分页查询
-        /// </summary>
-        /// <param name="query">查询对象</param>
-        public virtual async Task<PagerList<TEntity>> PagerQueryAsync( IQueryBase<TEntity> query )
-        {
-            return await Set.Where( query ).ToPagerListAsync( query.GetPager() );
-        }
-
-        /// <summary>
-        /// 分页查询
-        /// </summary>
-        /// <param name="query">查询对象</param>
-        public virtual PagerList<TEntity> PagerQueryAsNoTracking( IQueryBase<TEntity> query )
-        {
-            return FindAsNoTracking().Where( query ).ToPagerList( query.GetPager() );
-        }
-
-        /// <summary>
-        /// 分页查询
-        /// </summary>
-        /// <param name="query">查询对象</param>
-        public virtual async Task<PagerList<TEntity>> PagerQueryAsNoTrackingAsync( IQueryBase<TEntity> query )
-        {
-            return await FindAsNoTracking().Where( query ).ToPagerListAsync( query.GetPager() );
+            return queryable.OrderBy(order);
         }
     }
 }

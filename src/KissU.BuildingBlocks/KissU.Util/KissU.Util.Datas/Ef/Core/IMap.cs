@@ -11,6 +11,6 @@ namespace KissU.Util.Datas.Ef.Core
         /// 映射配置
         /// </summary>
         /// <param name="builder">模型生成器</param>
-        void Map( ModelBuilder builder );
+        void Map(ModelBuilder builder);
     }
 }

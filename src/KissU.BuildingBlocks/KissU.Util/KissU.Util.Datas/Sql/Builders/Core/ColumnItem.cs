@@ -17,7 +17,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// <param name="tableType">表实体类型</param>
         /// <param name="raw">使用原始值</param>
         /// <param name="isAggregation">是否聚合函数</param>
-        public ColumnItem( string name, string tableAlias = null, string columnAlias = null, Type tableType = null, bool raw = false, bool isAggregation = false )
+        public ColumnItem(string name, string tableAlias = null, string columnAlias = null, Type tableType = null,
+            bool raw = false, bool isAggregation = false)
         {
             Name = name;
             TableAlias = tableAlias;
@@ -31,22 +32,27 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// 列名
         /// </summary>
         public string Name { get; set; }
+
         /// <summary>
         /// 表别名
         /// </summary>
         public string TableAlias { get; set; }
+
         /// <summary>
         /// 列别名
         /// </summary>
         public string ColumnAlias { get; set; }
+
         /// <summary>
         /// 使用原始值
         /// </summary>
         public bool Raw { get; }
+
         /// <summary>
         /// 表实体类型
         /// </summary>
         public Type TableType { get; }
+
         /// <summary>
         /// 是否聚合函数
         /// </summary>
@@ -57,30 +63,32 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// </summary>
         /// <param name="dialect">Sql方言</param>
         /// <param name="register">实体别名注册器</param>
-        public string ToSql( IDialect dialect, IEntityAliasRegister register )
+        /// <returns>System.String.</returns>
+        public string ToSql(IDialect dialect, IEntityAliasRegister register)
         {
-            if ( Raw || IsAggregation )
-                return dialect.GetColumn( Name,dialect.GetSafeName( ColumnAlias ) );
-            var result = new SqlItem( Name, GetTableAlias( register ), ColumnAlias, isResolve: false );
-            return result.ToSql( dialect );
+            if (Raw || IsAggregation)
+                return dialect.GetColumn(Name, dialect.GetSafeName(ColumnAlias));
+            var result = new SqlItem(Name, GetTableAlias(register), ColumnAlias, isResolve: false);
+            return result.ToSql(dialect);
         }
 
         /// <summary>
         /// 获取表别名
         /// </summary>
-        private string GetTableAlias( IEntityAliasRegister register )
+        private string GetTableAlias(IEntityAliasRegister register)
         {
-            if( register != null && register.Contains( TableType ) )
-                return register.GetAlias( TableType );
+            if (register != null && register.Contains(TableType))
+                return register.GetAlias(TableType);
             return TableAlias;
         }
 
         /// <summary>
         /// 复制
         /// </summary>
+        /// <returns>ColumnItem.</returns>
         public ColumnItem Clone()
         {
-            return new ColumnItem( Name,TableAlias,ColumnAlias,TableType,Raw,IsAggregation );
+            return new ColumnItem(Name, TableAlias, ColumnAlias, TableType, Raw, IsAggregation);
         }
     }
 }

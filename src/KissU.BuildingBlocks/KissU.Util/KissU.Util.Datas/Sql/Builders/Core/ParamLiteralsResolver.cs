@@ -1,4 +1,6 @@
-﻿namespace KissU.Util.Datas.Sql.Builders.Core
+﻿using KissU.Util.Helpers;
+
+namespace KissU.Util.Datas.Sql.Builders.Core
 {
     /// <summary>
     /// 参数字面值解析器
@@ -9,14 +11,15 @@
         /// 获取参数字面值
         /// </summary>
         /// <param name="value">参数值</param>
-        public string GetParamLiterals( object value )
+        /// <returns>System.String.</returns>
+        public string GetParamLiterals(object value)
         {
-            if( value == null )
+            if (value == null)
                 return "''";
-            switch( value.GetType().Name.ToLower() )
+            switch (value.GetType().Name.ToLower())
             {
                 case "boolean":
-                    return Helpers.Convert.ToBool( value ) ? "1" : "0";
+                    return Convert.ToBool(value) ? "1" : "0";
                 case "int16":
                 case "int32":
                 case "int64":

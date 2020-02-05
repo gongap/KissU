@@ -15,7 +15,6 @@ using KissU.Util.Domains.Auditing;
 using KissU.Util.Exceptions;
 using KissU.Util.Helpers;
 using KissU.Util.Logs;
-using KissU.Util.Security;
 using KissU.Util.Sessions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -28,26 +27,8 @@ namespace KissU.Util.Datas.Ef.Core
     /// <summary>
     /// 工作单元
     /// </summary>
-    public abstract partial class UnitOfWorkBase : DbContext, IUnitOfWork, IDatabase, IEntityMatedata
+    public abstract class UnitOfWorkBase : DbContext, IUnitOfWork, IDatabase, IEntityMatedata
     {
-
-        #region 字段
-
-        /// <summary>
-        /// 映射字典
-        /// </summary>
-        private static readonly ConcurrentDictionary<Type, IEnumerable<IMap>> Maps;
-        /// <summary>
-        /// 日志工厂
-        /// </summary>
-        private static readonly ILoggerFactory LoggerFactory;
-        /// <summary>
-        /// 服务提供器
-        /// </summary>
-        private IServiceProvider _serviceProvider;
-
-        #endregion
-
         #region 静态构造方法
 
         /// <summary>
@@ -56,8 +37,40 @@ namespace KissU.Util.Datas.Ef.Core
         static UnitOfWorkBase()
         {
             Maps = new ConcurrentDictionary<Type, IEnumerable<IMap>>();
-            LoggerFactory = new LoggerFactory( new[] { new EfLogProvider() } );
+            LoggerFactory = new LoggerFactory(new[] {new EfLogProvider()});
         }
+
+        #endregion
+
+        #region GetConnection(获取数据库连接)
+
+        /// <summary>
+        /// 获取数据库连接
+        /// </summary>
+        /// <returns>IDbConnection.</returns>
+        public IDbConnection GetConnection()
+        {
+            return Database.GetDbConnection();
+        }
+
+        #endregion
+
+        #region 字段
+
+        /// <summary>
+        /// 映射字典
+        /// </summary>
+        private static readonly ConcurrentDictionary<Type, IEnumerable<IMap>> Maps;
+
+        /// <summary>
+        /// 日志工厂
+        /// </summary>
+        private static readonly ILoggerFactory LoggerFactory;
+
+        /// <summary>
+        /// 服务提供器
+        /// </summary>
+        private readonly IServiceProvider _serviceProvider;
 
         #endregion
 
@@ -68,9 +81,9 @@ namespace KissU.Util.Datas.Ef.Core
         /// </summary>
         /// <param name="options">配置</param>
         /// <param name="serviceProvider">服务提供器</param>
-        protected UnitOfWorkBase( DbContextOptions options, IServiceProvider serviceProvider )
-            : base( options )
-            {
+        protected UnitOfWorkBase(DbContextOptions options, IServiceProvider serviceProvider)
+            : base(options)
+        {
             TraceId = Guid.NewGuid().ToString();
             Session = NullSession.Instance;
             _serviceProvider = serviceProvider ?? Ioc.Create<IServiceProvider>();
@@ -83,7 +96,7 @@ namespace KissU.Util.Datas.Ef.Core
         private void RegisterToManager()
         {
             var manager = Create<IUnitOfWorkManager>();
-            manager?.Register( this );
+            manager?.Register(this);
         }
 
         /// <summary>
@@ -91,10 +104,10 @@ namespace KissU.Util.Datas.Ef.Core
         /// </summary>
         private T Create<T>()
         {
-            var result = _serviceProvider.GetService( typeof( T ) );
-            if( result == null )
-                return default( T );
-            return (T)result;
+            var result = _serviceProvider.GetService(typeof(T));
+            if (result == null)
+                return default;
+            return (T) result;
         }
 
         #endregion
@@ -105,6 +118,7 @@ namespace KissU.Util.Datas.Ef.Core
         /// 跟踪号
         /// </summary>
         public string TraceId { get; set; }
+
         /// <summary>
         /// 用户会话
         /// </summary>
@@ -118,32 +132,34 @@ namespace KissU.Util.Datas.Ef.Core
         /// 配置
         /// </summary>
         /// <param name="builder">配置生成器</param>
-        protected override void OnConfiguring( DbContextOptionsBuilder builder )
+        protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
-            EnableLog( builder );
+            EnableLog(builder);
         }
 
         /// <summary>
         /// 启用日志
         /// </summary>
-        protected void EnableLog( DbContextOptionsBuilder builder )
+        /// <param name="builder">The builder.</param>
+        protected void EnableLog(DbContextOptionsBuilder builder)
         {
             var log = GetLog();
-            if( IsEnabled( log ) == false )
+            if (IsEnabled(log) == false)
                 return;
             builder.EnableSensitiveDataLogging();
             builder.EnableDetailedErrors();
-            builder.UseLoggerFactory( LoggerFactory );
+            builder.UseLoggerFactory(LoggerFactory);
         }
 
         /// <summary>
         /// 获取日志操作
         /// </summary>
+        /// <returns>ILog.</returns>
         protected virtual ILog GetLog()
         {
             try
             {
-                return Log.GetLog( EfLog.TraceLogName );
+                return Log.GetLog(EfLog.TraceLogName);
             }
             catch
             {
@@ -154,12 +170,12 @@ namespace KissU.Util.Datas.Ef.Core
         /// <summary>
         /// 是否启用Ef日志
         /// </summary>
-        private bool IsEnabled( ILog log )
+        private bool IsEnabled(ILog log)
         {
             var config = GetConfig();
-            if( config.EfLogLevel == EfLogLevel.Off )
+            if (config.EfLogLevel == EfLogLevel.Off)
                 return false;
-            if( log.IsTraceEnabled == false )
+            if (log.IsTraceEnabled == false)
                 return false;
             return true;
         }
@@ -176,7 +192,7 @@ namespace KissU.Util.Datas.Ef.Core
             }
             catch
             {
-                return new EfConfig { EfLogLevel = EfLogLevel.Sql };
+                return new EfConfig {EfLogLevel = EfLogLevel.Sql};
             }
         }
 
@@ -187,10 +203,22 @@ namespace KissU.Util.Datas.Ef.Core
         /// <summary>
         /// 配置映射
         /// </summary>
-        protected override void OnModelCreating( ModelBuilder modelBuilder )
+        /// <param name="modelBuilder">
+        /// The builder being used to construct the model for this context. Databases (and other extensions) typically
+        /// define extension methods on this object that allow you to configure aspects of the model that are specific
+        /// to a given database.
+        /// </param>
+        /// <remarks>
+        /// If a model is explicitly set on the options for this context (via
+        /// <see
+        ///     cref="M:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.UseModel(Microsoft.EntityFrameworkCore.Metadata.IModel)" />
+        /// )
+        /// then this method will not be run.
+        /// </remarks>
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            foreach( IMap mapper in GetMaps() )
-                mapper.Map( modelBuilder );
+            foreach (var mapper in GetMaps())
+                mapper.Map(modelBuilder);
         }
 
         /// <summary>
@@ -198,15 +226,16 @@ namespace KissU.Util.Datas.Ef.Core
         /// </summary>
         private IEnumerable<IMap> GetMaps()
         {
-            return Maps.GetOrAdd( GetMapType(), GetMapsFromAssemblies() );
+            return Maps.GetOrAdd(GetMapType(), GetMapsFromAssemblies());
         }
 
         /// <summary>
         /// 获取映射接口类型
         /// </summary>
+        /// <returns>Type.</returns>
         protected virtual Type GetMapType()
         {
-            return this.GetType();
+            return GetType();
         }
 
         /// <summary>
@@ -215,26 +244,28 @@ namespace KissU.Util.Datas.Ef.Core
         private IEnumerable<IMap> GetMapsFromAssemblies()
         {
             var result = new List<IMap>();
-            foreach( var assembly in GetAssemblies() )
-                result.AddRange( GetMapInstances( assembly ) );
+            foreach (var assembly in GetAssemblies())
+                result.AddRange(GetMapInstances(assembly));
             return result;
         }
 
         /// <summary>
         /// 获取定义映射配置的程序集列表
         /// </summary>
+        /// <returns>Assembly[].</returns>
         protected virtual Assembly[] GetAssemblies()
         {
-            return new[] { GetType().Assembly };
+            return new[] {GetType().Assembly};
         }
 
         /// <summary>
         /// 获取映射实例列表
         /// </summary>
         /// <param name="assembly">程序集</param>
-        protected virtual IEnumerable<IMap> GetMapInstances( Assembly assembly )
+        /// <returns>IEnumerable&lt;IMap&gt;.</returns>
+        protected virtual IEnumerable<IMap> GetMapInstances(Assembly assembly)
         {
-            return Util.Helpers.Reflection.GetInstancesByInterface<IMap>( assembly );
+            return Reflection.GetInstancesByInterface<IMap>(assembly);
         }
 
         #endregion
@@ -244,21 +275,24 @@ namespace KissU.Util.Datas.Ef.Core
         /// <summary>
         /// 提交,返回影响的行数
         /// </summary>
+        /// <returns>System.Int32.</returns>
+        /// <exception cref="ConcurrencyException"></exception>
         public int Commit()
         {
             try
             {
                 return SaveChanges();
             }
-            catch( DbUpdateConcurrencyException ex )
+            catch (DbUpdateConcurrencyException ex)
             {
-                throw new ConcurrencyException( ex );
+                throw new ConcurrencyException(ex);
             }
         }
 
         /// <summary>
         /// 保存更改
         /// </summary>
+        /// <returns>The number of state entries written to the database.</returns>
         public override int SaveChanges()
         {
             return SaveChangesAsync().GetAwaiter().GetResult();
@@ -271,28 +305,38 @@ namespace KissU.Util.Datas.Ef.Core
         /// <summary>
         /// 提交,返回影响的行数
         /// </summary>
+        /// <returns>Task&lt;System.Int32&gt;.</returns>
+        /// <exception cref="ConcurrencyException"></exception>
         public async Task<int> CommitAsync()
         {
             try
             {
                 return await SaveChangesAsync();
             }
-            catch( DbUpdateConcurrencyException ex )
+            catch (DbUpdateConcurrencyException ex)
             {
-                throw new ConcurrencyException( ex );
+                throw new ConcurrencyException(ex);
             }
         }
 
         /// <summary>
         /// 异步保存更改
         /// </summary>
-        public override async Task<int> SaveChangesAsync( CancellationToken cancellationToken = default( CancellationToken ) )
+        /// <param name="cancellationToken">
+        /// A <see cref="T:System.Threading.CancellationToken" /> to observe while waiting for
+        /// the task to complete.
+        /// </param>
+        /// <returns>
+        /// A task that represents the asynchronous save operation. The task result contains the
+        /// number of state entries written to the database.
+        /// </returns>
+        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             SaveChangesBefore();
             var transactionActionManager = Create<ITransactionActionManager>();
-            if( transactionActionManager.Count == 0 )
-                return await base.SaveChangesAsync( cancellationToken );
-            return await TransactionCommit( transactionActionManager, cancellationToken );
+            if (transactionActionManager.Count == 0)
+                return await base.SaveChangesAsync(cancellationToken);
+            return await TransactionCommit(transactionActionManager, cancellationToken);
         }
 
         /// <summary>
@@ -300,18 +344,18 @@ namespace KissU.Util.Datas.Ef.Core
         /// </summary>
         protected virtual void SaveChangesBefore()
         {
-            foreach( var entry in ChangeTracker.Entries() )
+            foreach (var entry in ChangeTracker.Entries())
             {
-                switch( entry.State )
+                switch (entry.State)
                 {
                     case EntityState.Added:
-                        InterceptAddedOperation( entry );
+                        InterceptAddedOperation(entry);
                         break;
                     case EntityState.Modified:
-                        InterceptModifiedOperation( entry );
+                        InterceptModifiedOperation(entry);
                         break;
                     case EntityState.Deleted:
-                        InterceptDeletedOperation( entry );
+                        InterceptDeletedOperation(entry);
                         break;
                 }
             }
@@ -320,23 +364,25 @@ namespace KissU.Util.Datas.Ef.Core
         /// <summary>
         /// 拦截添加操作
         /// </summary>
-        protected virtual void InterceptAddedOperation( EntityEntry entry )
+        /// <param name="entry">The entry.</param>
+        protected virtual void InterceptAddedOperation(EntityEntry entry)
         {
-            InitCreationAudited( entry );
-            InitModificationAudited( entry );
+            InitCreationAudited(entry);
+            InitModificationAudited(entry);
         }
 
         /// <summary>
         /// 初始化创建审计信息
         /// </summary>
-        private void InitCreationAudited( EntityEntry entry )
+        private void InitCreationAudited(EntityEntry entry)
         {
-            CreationAuditedInitializer.Init( entry.Entity, GetUserId(), GetUserName() );
+            CreationAuditedInitializer.Init(entry.Entity, GetUserId(), GetUserName());
         }
 
         /// <summary>
         /// 获取用户标识
         /// </summary>
+        /// <returns>System.String.</returns>
         protected virtual string GetUserId()
         {
             return GetSession().UserId;
@@ -345,6 +391,7 @@ namespace KissU.Util.Datas.Ef.Core
         /// <summary>
         /// 获取用户会话
         /// </summary>
+        /// <returns>ISession.</returns>
         protected virtual ISession GetSession()
         {
             return Session;
@@ -353,6 +400,7 @@ namespace KissU.Util.Datas.Ef.Core
         /// <summary>
         /// 获取用户名称
         /// </summary>
+        /// <returns>System.String.</returns>
         protected virtual string GetUserName()
         {
             return GetSession().UserName;
@@ -361,42 +409,45 @@ namespace KissU.Util.Datas.Ef.Core
         /// <summary>
         /// 初始化修改审计信息
         /// </summary>
-        private void InitModificationAudited( EntityEntry entry )
+        private void InitModificationAudited(EntityEntry entry)
         {
-            ModificationAuditedInitializer.Init( entry.Entity, GetUserId(), GetUserName() );
+            ModificationAuditedInitializer.Init(entry.Entity, GetUserId(), GetUserName());
         }
 
         /// <summary>
         /// 拦截修改操作
         /// </summary>
-        protected virtual void InterceptModifiedOperation( EntityEntry entry )
+        /// <param name="entry">The entry.</param>
+        protected virtual void InterceptModifiedOperation(EntityEntry entry)
         {
-            InitModificationAudited( entry );
+            InitModificationAudited(entry);
         }
 
         /// <summary>
         /// 拦截删除操作
         /// </summary>
-        protected virtual void InterceptDeletedOperation( EntityEntry entry )
+        /// <param name="entry">The entry.</param>
+        protected virtual void InterceptDeletedOperation(EntityEntry entry)
         {
         }
 
         /// <summary>
         /// 手工创建事务提交
         /// </summary>
-        private async Task<int> TransactionCommit( ITransactionActionManager transactionActionManager, CancellationToken cancellationToken )
+        private async Task<int> TransactionCommit(ITransactionActionManager transactionActionManager,
+            CancellationToken cancellationToken)
         {
-            using( var connection = Database.GetDbConnection() )
+            using (var connection = Database.GetDbConnection())
             {
-                if( connection.State == ConnectionState.Closed )
-                    await connection.OpenAsync( cancellationToken );
-                using( var transaction = connection.BeginTransaction() )
+                if (connection.State == ConnectionState.Closed)
+                    await connection.OpenAsync(cancellationToken);
+                using (var transaction = connection.BeginTransaction())
                 {
                     try
                     {
-                        await transactionActionManager.CommitAsync( transaction );
-                        Database.UseTransaction( transaction );
-                        var result = await base.SaveChangesAsync( cancellationToken );
+                        await transactionActionManager.CommitAsync(transaction);
+                        Database.UseTransaction(transaction);
+                        var result = await base.SaveChangesAsync(cancellationToken);
                         transaction.Commit();
                         return result;
                     }
@@ -411,32 +462,21 @@ namespace KissU.Util.Datas.Ef.Core
 
         #endregion
 
-        #region GetConnection(获取数据库连接)
-
-        /// <summary>
-        /// 获取数据库连接
-        /// </summary>
-        public IDbConnection GetConnection()
-        {
-            return Database.GetDbConnection();
-        }
-
-        #endregion
-
         #region 获取元数据
 
         /// <summary>
         /// 获取表名
         /// </summary>
         /// <param name="type">实体类型</param>
-        public string GetTable( Type type )
+        /// <returns>System.String.</returns>
+        public string GetTable(Type type)
         {
-            if( type == null )
+            if (type == null)
                 return null;
             try
             {
-                var entityType = Model.FindEntityType( type );
-                return entityType?.FindAnnotation( "Relational:TableName" )?.Value.SafeString();
+                var entityType = Model.FindEntityType(type);
+                return entityType?.FindAnnotation("Relational:TableName")?.Value.SafeString();
             }
             catch
             {
@@ -448,14 +488,15 @@ namespace KissU.Util.Datas.Ef.Core
         /// 获取架构
         /// </summary>
         /// <param name="type">实体类型</param>
-        public string GetSchema( Type type )
+        /// <returns>System.String.</returns>
+        public string GetSchema(Type type)
         {
-            if( type == null )
+            if (type == null)
                 return null;
             try
             {
-                var entityType = Model.FindEntityType( type );
-                return entityType?.FindAnnotation( "Relational:Schema" )?.Value.SafeString();
+                var entityType = Model.FindEntityType(type);
+                return entityType?.FindAnnotation("Relational:Schema")?.Value.SafeString();
             }
             catch
             {
@@ -468,16 +509,17 @@ namespace KissU.Util.Datas.Ef.Core
         /// </summary>
         /// <param name="type">实体类型</param>
         /// <param name="property">属性名</param>
-        public string GetColumn( Type type, string property )
+        /// <returns>System.String.</returns>
+        public string GetColumn(Type type, string property)
         {
-            if( type == null || string.IsNullOrWhiteSpace( property ) )
+            if (type == null || string.IsNullOrWhiteSpace(property))
                 return null;
             try
             {
-                var entityType = Model.FindEntityType( type );
-                var result = entityType?.GetProperty( property )?.FindAnnotation( "Relational:ColumnName" )?.Value
+                var entityType = Model.FindEntityType(type);
+                var result = entityType?.GetProperty(property)?.FindAnnotation("Relational:ColumnName")?.Value
                     .SafeString();
-                return string.IsNullOrWhiteSpace( result ) ? property : result;
+                return string.IsNullOrWhiteSpace(result) ? property : result;
             }
             catch
             {

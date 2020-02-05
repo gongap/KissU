@@ -30,18 +30,40 @@ namespace KissU.Util.Datas.Ef.Logs
         /// <param name="state">状态</param>
         /// <param name="exception">异常</param>
         /// <param name="formatter">日志内容</param>
-        public void Log<TState>( LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter )
+        public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception,
+            Func<TState, Exception, string> formatter)
         {
             var config = GetConfig();
             var log = GetLog();
-            if( IsEnabled( eventId, config ) == false )
+            if (IsEnabled(eventId, config) == false)
                 return;
-            log.Caption( $"执行Ef操作：" )
-                .Content( $"工作单元跟踪号: {GetUnitOfWork()?.TraceId}" )
-                .Content( $"事件Id: {eventId.Id}" )
-                .Content( $"事件名称: {eventId.Name}" );
-            AddContent( state, config, log );
-            log.Exception( exception ).Trace();
+            log.Caption("执行Ef操作：")
+                .Content($"工作单元跟踪号: {GetUnitOfWork()?.TraceId}")
+                .Content($"事件Id: {eventId.Id}")
+                .Content($"事件名称: {eventId.Name}");
+            AddContent(state, config, log);
+            log.Exception(exception).Trace();
+        }
+
+        /// <summary>
+        /// 是否启用
+        /// </summary>
+        /// <param name="logLevel">日志级别</param>
+        /// <returns><c>true</c> if enabled.</returns>
+        public bool IsEnabled(LogLevel logLevel)
+        {
+            return true;
+        }
+
+        /// <summary>
+        /// 起始范围
+        /// </summary>
+        /// <typeparam name="TState">The type of the t state.</typeparam>
+        /// <param name="state">The state.</param>
+        /// <returns>IDisposable.</returns>
+        public IDisposable BeginScope<TState>(TState state)
+        {
+            return null;
         }
 
         /// <summary>
@@ -56,18 +78,19 @@ namespace KissU.Util.Datas.Ef.Logs
             }
             catch
             {
-                return new EfConfig { EfLogLevel = EfLogLevel.Sql };
+                return new EfConfig {EfLogLevel = EfLogLevel.Sql};
             }
         }
 
         /// <summary>
         /// 获取日志操作
         /// </summary>
+        /// <returns>ILog.</returns>
         protected virtual ILog GetLog()
         {
             try
             {
-                return Util.Logs.Log.GetLog( TraceLogName );
+                return Util.Logs.Log.GetLog(TraceLogName);
             }
             catch
             {
@@ -78,6 +101,7 @@ namespace KissU.Util.Datas.Ef.Logs
         /// <summary>
         /// 工作单元
         /// </summary>
+        /// <returns>UnitOfWorkBase.</returns>
         protected virtual UnitOfWorkBase GetUnitOfWork()
         {
             try
@@ -94,13 +118,13 @@ namespace KissU.Util.Datas.Ef.Logs
         /// <summary>
         /// 是否启用Ef日志
         /// </summary>
-        private bool IsEnabled( EventId eventId, EfConfig config )
+        private bool IsEnabled(EventId eventId, EfConfig config)
         {
-            if ( config.EfLogLevel == EfLogLevel.Off )
+            if (config.EfLogLevel == EfLogLevel.Off)
                 return false;
-            if( config.EfLogLevel == EfLogLevel.All )
+            if (config.EfLogLevel == EfLogLevel.All)
                 return true;
-            if( eventId.Name == "Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted" )
+            if (eventId.Name == "Microsoft.EntityFrameworkCore.Database.Command.CommandExecuted")
                 return true;
             return false;
         }
@@ -108,35 +132,35 @@ namespace KissU.Util.Datas.Ef.Logs
         /// <summary>
         /// 添加日志内容
         /// </summary>
-        private void AddContent<TState>( TState state, EfConfig config, ILog log )
+        private void AddContent<TState>(TState state, EfConfig config, ILog log)
         {
-            if( config.EfLogLevel == EfLogLevel.All )
-                log.Content( "事件内容：" ).Content( state.SafeString() );
-            if( !( state is IEnumerable list ) )
+            if (config.EfLogLevel == EfLogLevel.All)
+                log.Content("事件内容：").Content(state.SafeString());
+            if (!(state is IEnumerable list))
                 return;
             var dictionary = new Dictionary<string, string>();
-            foreach( KeyValuePair<string, object> item in list )
-                dictionary.Add( item.Key, item.Value.SafeString() );
-            AddDictionary( dictionary, log );
+            foreach (KeyValuePair<string, object> item in list)
+                dictionary.Add(item.Key, item.Value.SafeString());
+            AddDictionary(dictionary, log);
         }
 
         /// <summary>
         /// 添加字典内容
         /// </summary>
-        private void AddDictionary( IDictionary<string, string> dictionary, ILog log )
+        private void AddDictionary(IDictionary<string, string> dictionary, ILog log)
         {
-            AddElapsed( GetValue( dictionary, "elapsed" ), log );
-            var sqlParams = GetValue( dictionary, "parameters" );
-            AddSql( GetValue( dictionary, "commandText" ), log );
-            AddSqlParams( sqlParams, log );
+            AddElapsed(GetValue(dictionary, "elapsed"), log);
+            var sqlParams = GetValue(dictionary, "parameters");
+            AddSql(GetValue(dictionary, "commandText"), log);
+            AddSqlParams(sqlParams, log);
         }
 
         /// <summary>
         /// 获取值
         /// </summary>
-        private string GetValue( IDictionary<string, string> dictionary, string key )
+        private string GetValue(IDictionary<string, string> dictionary, string key)
         {
-            if( dictionary.ContainsKey( key ) )
+            if (dictionary.ContainsKey(key))
                 return dictionary[key];
             return string.Empty;
         }
@@ -144,48 +168,31 @@ namespace KissU.Util.Datas.Ef.Logs
         /// <summary>
         /// 添加执行时间
         /// </summary>
-        private void AddElapsed( string value, ILog log )
+        private void AddElapsed(string value, ILog log)
         {
-            if( string.IsNullOrWhiteSpace( value ) )
+            if (string.IsNullOrWhiteSpace(value))
                 return;
-            log.Content( $"执行时间: {value} 毫秒" );
+            log.Content($"执行时间: {value} 毫秒");
         }
 
         /// <summary>
         /// 添加Sql
         /// </summary>
-        private void AddSql( string sql, ILog log )
+        private void AddSql(string sql, ILog log)
         {
-            if( string.IsNullOrWhiteSpace( sql ) )
+            if (string.IsNullOrWhiteSpace(sql))
                 return;
-            log.Sql( $"{sql}{Common.Line}" );
+            log.Sql($"{sql}{Common.Line}");
         }
 
         /// <summary>
         /// 添加Sql参数
         /// </summary>
-        private void AddSqlParams( string value, ILog log )
+        private void AddSqlParams(string value, ILog log)
         {
-            if( string.IsNullOrWhiteSpace( value ) )
+            if (string.IsNullOrWhiteSpace(value))
                 return;
-            log.SqlParams( value );
-        }
-
-        /// <summary>
-        /// 是否启用
-        /// </summary>
-        /// <param name="logLevel">日志级别</param>
-        public bool IsEnabled( LogLevel logLevel )
-        {
-            return true;
-        }
-
-        /// <summary>
-        /// 起始范围
-        /// </summary>
-        public IDisposable BeginScope<TState>( TState state )
-        {
-            return null;
+            log.SqlParams(value);
         }
     }
 }

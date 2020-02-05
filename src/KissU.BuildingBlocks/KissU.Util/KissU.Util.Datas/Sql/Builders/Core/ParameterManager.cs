@@ -13,10 +13,12 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// Sql方言
         /// </summary>
         private readonly IDialect _dialect;
+
         /// <summary>
         /// 参数集合
         /// </summary>
         private readonly IDictionary<string, object> _params;
+
         /// <summary>
         /// 参数索引
         /// </summary>
@@ -28,7 +30,7 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// <param name="dialect">Sql方言</param>
         /// <param name="data">参数集合</param>
         /// <param name="index">参数索引</param>
-        public ParameterManager( IDialect dialect, IDictionary<string, object> data = null, int? index = null )
+        public ParameterManager(IDialect dialect, IDictionary<string, object> data = null, int? index = null)
         {
             _dialect = dialect;
             _params = data ?? new Dictionary<string, object>();
@@ -38,9 +40,10 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// <summary>
         /// 创建参数名
         /// </summary>
+        /// <returns>System.String.</returns>
         public string GenerateName()
         {
-            var result =_dialect.GenerateName( _paramIndex );
+            var result = _dialect.GenerateName(_paramIndex);
             _paramIndex += 1;
             return result;
         }
@@ -48,9 +51,10 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// <summary>
         /// 获取参数列表
         /// </summary>
+        /// <returns>IReadOnlyDictionary&lt;System.String, System.Object&gt;.</returns>
         public IReadOnlyDictionary<string, object> GetParams()
         {
-            return new ReadOnlyDictionary<string, object>( _params );
+            return new ReadOnlyDictionary<string, object>(_params);
         }
 
         /// <summary>
@@ -59,25 +63,43 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// <param name="name">参数名</param>
         /// <param name="value">参数值</param>
         /// <param name="operator">运算符</param>
-        public void Add( string name, object value, Operator? @operator = null )
+        public void Add(string name, object value, Operator? @operator = null)
         {
-            if( string.IsNullOrWhiteSpace( name ) )
+            if (string.IsNullOrWhiteSpace(name))
                 return;
-            name = _dialect.GetParamName( name );
-            value = _dialect.GetParamValue( value );
-            if ( _params.ContainsKey( name ) )
-                _params.Remove( name );
-            _params.Add( name, GetValue( value, @operator ) );
+            name = _dialect.GetParamName(name);
+            value = _dialect.GetParamValue(value);
+            if (_params.ContainsKey(name))
+                _params.Remove(name);
+            _params.Add(name, GetValue(value, @operator));
+        }
+
+        /// <summary>
+        /// 复制副本
+        /// </summary>
+        /// <returns>IParameterManager.</returns>
+        public IParameterManager Clone()
+        {
+            return new ParameterManager(_dialect, new Dictionary<string, object>(_params), _paramIndex);
+        }
+
+        /// <summary>
+        /// 清空参数
+        /// </summary>
+        public void Clear()
+        {
+            _paramIndex = 0;
+            _params.Clear();
         }
 
         /// <summary>
         /// 获取值
         /// </summary>
-        private object GetValue( object value, Operator? @operator )
+        private object GetValue(object value, Operator? @operator)
         {
-            if( string.IsNullOrWhiteSpace( value.SafeString() ) )
+            if (string.IsNullOrWhiteSpace(value.SafeString()))
                 return value;
-            switch( @operator )
+            switch (@operator)
             {
                 case Operator.Contains:
                     return $"%{value}%";
@@ -88,23 +110,6 @@ namespace KissU.Util.Datas.Sql.Builders.Core
                 default:
                     return value;
             }
-        }
-
-        /// <summary>
-        /// 复制副本
-        /// </summary>
-        public IParameterManager Clone()
-        {
-            return new ParameterManager( _dialect, new Dictionary<string, object>( _params ), _paramIndex );
-        }
-
-        /// <summary>
-        /// 清空参数
-        /// </summary>
-        public void Clear()
-        {
-            _paramIndex = 0;
-            _params.Clear();
         }
     }
 }
