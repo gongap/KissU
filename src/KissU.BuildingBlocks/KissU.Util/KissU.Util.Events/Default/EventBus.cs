@@ -13,7 +13,8 @@ namespace KissU.Util.Events.Default
         /// 初始化事件总线
         /// </summary>
         /// <param name="manager">事件处理器服务</param>
-        public EventBus( IEventHandlerManager manager )
+        /// <exception cref="ArgumentNullException">manager</exception>
+        public EventBus(IEventHandlerManager manager)
         {
             Manager = manager ?? throw new ArgumentNullException(nameof(manager));
         }
@@ -28,16 +29,16 @@ namespace KissU.Util.Events.Default
         /// </summary>
         /// <typeparam name="TEvent">事件类型</typeparam>
         /// <param name="event">事件</param>
-        public async Task PublishAsync<TEvent>( TEvent @event ) where TEvent : IEvent
+        public async Task PublishAsync<TEvent>(TEvent @event) where TEvent : IEvent
         {
             var handlers = Manager.GetHandlers<TEvent>();
-            if ( handlers == null )
+            if (handlers == null)
                 return;
-            foreach ( var handler in handlers )
+            foreach (var handler in handlers)
             {
-                if ( handler == null )
+                if (handler == null)
                     continue;
-                await handler.HandleAsync( @event );
+                await handler.HandleAsync(@event);
             }
         }
     }

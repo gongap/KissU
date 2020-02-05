@@ -16,17 +16,18 @@ namespace KissU.Util.Tools.Sms.LuoSiMao
         /// 初始化短信配置提供器
         /// </summary>
         /// <param name="key">密钥</param>
-        public SmsConfigProvider( string key )
+        public SmsConfigProvider(string key)
         {
-            _config = new SmsConfig( key );
+            _config = new SmsConfig(key);
         }
 
         /// <summary>
         /// 获取配置
         /// </summary>
+        /// <returns>Task&lt;SmsConfig&gt;.</returns>
         public Task<SmsConfig> GetConfigAsync()
         {
-            return Task.FromResult( _config );
+            return Task.FromResult(_config);
         }
     }
 }

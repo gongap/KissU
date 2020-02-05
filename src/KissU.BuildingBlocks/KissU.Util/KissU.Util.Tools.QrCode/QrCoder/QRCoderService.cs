@@ -8,14 +8,14 @@ namespace KissU.Util.Tools.QrCode.QrCoder
     public class QrCoderService : IQrCodeService
     {
         /// <summary>
-        /// 二维码尺寸
-        /// </summary>
-        private int _size;
-
-        /// <summary>
         /// 容错级别
         /// </summary>
         private QRCodeGenerator.ECCLevel _level;
+
+        /// <summary>
+        /// 二维码尺寸
+        /// </summary>
+        private int _size;
 
         /// <summary>
         /// 初始化QRCoder组件二维码服务
@@ -30,6 +30,7 @@ namespace KissU.Util.Tools.QrCode.QrCoder
         /// 设置二维码尺寸
         /// </summary>
         /// <param name="size">二维码尺寸</param>
+        /// <returns>IQrCodeService.</returns>
         public IQrCodeService Size(QrSize size)
         {
             return Size(size.Value());
@@ -39,6 +40,7 @@ namespace KissU.Util.Tools.QrCode.QrCoder
         /// 设置二维码尺寸
         /// </summary>
         /// <param name="size">二维码尺寸</param>
+        /// <returns>IQrCodeService.</returns>
         public IQrCodeService Size(int size)
         {
             _size = size;
@@ -49,6 +51,7 @@ namespace KissU.Util.Tools.QrCode.QrCoder
         /// 容错处理
         /// </summary>
         /// <param name="level">容错级别</param>
+        /// <returns>IQrCodeService.</returns>
         public IQrCodeService Correction(ErrorCorrectionLevel level)
         {
             switch (level)
@@ -66,6 +69,7 @@ namespace KissU.Util.Tools.QrCode.QrCoder
                     _level = QRCodeGenerator.ECCLevel.H;
                     break;
             }
+
             return this;
         }
 
@@ -73,11 +77,12 @@ namespace KissU.Util.Tools.QrCode.QrCoder
         /// 创建二维码
         /// </summary>
         /// <param name="content">内容</param>
+        /// <returns>System.Byte[].</returns>
         public byte[] CreateQrCode(string content)
         {
-            QRCodeGenerator generator = new QRCodeGenerator();
-            QRCodeData data = generator.CreateQrCode(content, _level);
-            BitmapByteQRCode qrCode = new BitmapByteQRCode(data);
+            var generator = new QRCodeGenerator();
+            var data = generator.CreateQrCode(content, _level);
+            var qrCode = new BitmapByteQRCode(data);
             return qrCode.GetGraphic(_size);
         }
     }

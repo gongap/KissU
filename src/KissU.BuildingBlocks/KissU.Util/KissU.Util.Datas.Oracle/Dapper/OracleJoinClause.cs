@@ -21,10 +21,11 @@ namespace KissU.Util.Datas.Oracle.Dapper
         /// <param name="register">实体注册器</param>
         /// <param name="parameterManager">参数管理器</param>
         /// <param name="tableDatabase">表数据库</param>
-        public OracleJoinClause( ISqlBuilder sqlBuilder, IDialect dialect, IEntityResolver resolver, IEntityAliasRegister register, 
-            IParameterManager parameterManager, ITableDatabase tableDatabase )
-            : base( sqlBuilder, dialect, resolver, register, parameterManager, tableDatabase )
-            {
+        public OracleJoinClause(ISqlBuilder sqlBuilder, IDialect dialect, IEntityResolver resolver,
+            IEntityAliasRegister register,
+            IParameterManager parameterManager, ITableDatabase tableDatabase)
+            : base(sqlBuilder, dialect, resolver, register, parameterManager, tableDatabase)
+        {
         }
 
         /// <summary>
@@ -35,9 +36,11 @@ namespace KissU.Util.Datas.Oracle.Dapper
         /// <param name="schema">架构名</param>
         /// <param name="alias">别名</param>
         /// <param name="type">实体类型</param>
-        protected override JoinItem CreateJoinItem( string joinType, string table, string schema, string alias, Type type = null )
+        /// <returns>JoinItem.</returns>
+        protected override JoinItem CreateJoinItem(string joinType, string table, string schema, string alias,
+            Type type = null)
         {
-            return new JoinItem( joinType, table, schema, alias, false, false, type );
+            return new JoinItem(joinType, table, schema, alias, false, false, type);
         }
     }
 }

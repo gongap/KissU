@@ -12,9 +12,10 @@ namespace KissU.Util.Logs.Exceptionless
         /// </summary>
         /// <param name="logName">日志名称</param>
         /// <param name="format">日志格式化器</param>
-        public ILogProvider Create( string logName, ILogFormat format = null )
+        /// <returns>ILogProvider.</returns>
+        public ILogProvider Create(string logName, ILogFormat format = null)
         {
-            return new ExceptionlessProvider( logName );
+            return new ExceptionlessProvider(logName);
         }
     }
 }

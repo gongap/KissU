@@ -10,6 +10,7 @@ namespace KissU.Util.Logs.Exceptionless
         /// <summary>
         /// 转换
         /// </summary>
+        /// <returns>List&lt;Item&gt;.</returns>
         List<Item> To();
     }
 }

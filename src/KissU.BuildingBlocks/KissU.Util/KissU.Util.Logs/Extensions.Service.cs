@@ -14,15 +14,15 @@ namespace KissU.Util.Logs
     /// <summary>
     /// 日志扩展
     /// </summary>
-    public static partial class Extensions
+    public static class Extensions
     {
         /// <summary>
         /// 注册NLog日志操作
         /// </summary>
         /// <param name="services">服务集合</param>
-        public static void AddNLog( this IServiceCollection services )
+        public static void AddNLog(this IServiceCollection services)
         {
-            LayoutRenderer.Register<NLogLayoutRenderer>( "log" );
+            LayoutRenderer.Register<NLogLayoutRenderer>("log");
             services.TryAddScoped<ILogProviderFactory, LogProviderFactory>();
             services.TryAddSingleton<ILogFormat, ContentFormat>();
             services.TryAddScoped<ILogContext, LogContext>();
@@ -34,13 +34,14 @@ namespace KissU.Util.Logs
         /// </summary>
         /// <param name="services">服务集合</param>
         /// <param name="configAction">配置操作</param>
-        public static void AddExceptionless( this IServiceCollection services, Action<ExceptionlessConfiguration> configAction )
+        public static void AddExceptionless(this IServiceCollection services,
+            Action<ExceptionlessConfiguration> configAction)
         {
             services.TryAddScoped<ILogProviderFactory, Exceptionless.LogProviderFactory>();
-            services.TryAddSingleton( typeof( ILogFormat ), t => NullLogFormat.Instance );
+            services.TryAddSingleton(typeof(ILogFormat), t => NullLogFormat.Instance);
             services.TryAddScoped<ILogContext, Exceptionless.LogContext>();
             services.TryAddScoped<ILog, Log>();
-            configAction?.Invoke( ExceptionlessClient.Default.Configuration );
+            configAction?.Invoke(ExceptionlessClient.Default.Configuration);
         }
     }
 }

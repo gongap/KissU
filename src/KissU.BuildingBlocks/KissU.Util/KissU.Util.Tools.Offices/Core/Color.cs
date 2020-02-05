@@ -5,52 +5,239 @@
     /// </summary>
     public enum Color
     {
-        Black, 
-        Brown, 
-        OliveGreen, 
+        /// <summary>
+        /// The black
+        /// </summary>
+        Black,
+
+        /// <summary>
+        /// The brown
+        /// </summary>
+        Brown,
+
+        /// <summary>
+        /// The olive green
+        /// </summary>
+        OliveGreen,
+
+        /// <summary>
+        /// The dark green
+        /// </summary>
         DarkGreen,
-        DarkTeal, 
-        DarkBlue, 
-        Indigo, 
+
+        /// <summary>
+        /// The dark teal
+        /// </summary>
+        DarkTeal,
+
+        /// <summary>
+        /// The dark blue
+        /// </summary>
+        DarkBlue,
+
+        /// <summary>
+        /// The indigo
+        /// </summary>
+        Indigo,
+
+        /// <summary>
+        /// The grey80 percent
+        /// </summary>
         Grey80Percent,
-        Orange, 
-        DarkYellow, 
-        Green, 
-        Teal, 
+
+        /// <summary>
+        /// The orange
+        /// </summary>
+        Orange,
+
+        /// <summary>
+        /// The dark yellow
+        /// </summary>
+        DarkYellow,
+
+        /// <summary>
+        /// The green
+        /// </summary>
+        Green,
+
+        /// <summary>
+        /// The teal
+        /// </summary>
+        Teal,
+
+        /// <summary>
+        /// The blue
+        /// </summary>
         Blue,
-        BlueGrey, 
-        Grey50Percent, 
-        Red, 
-        LightOrange, 
+
+        /// <summary>
+        /// The blue grey
+        /// </summary>
+        BlueGrey,
+
+        /// <summary>
+        /// The grey50 percent
+        /// </summary>
+        Grey50Percent,
+
+        /// <summary>
+        /// The red
+        /// </summary>
+        Red,
+
+        /// <summary>
+        /// The light orange
+        /// </summary>
+        LightOrange,
+
+        /// <summary>
+        /// The lime
+        /// </summary>
         Lime,
-        SeaGreen, 
-        Aqua, 
-        LightBlue, 
-        Violet, 
+
+        /// <summary>
+        /// The sea green
+        /// </summary>
+        SeaGreen,
+
+        /// <summary>
+        /// The aqua
+        /// </summary>
+        Aqua,
+
+        /// <summary>
+        /// The light blue
+        /// </summary>
+        LightBlue,
+
+        /// <summary>
+        /// The violet
+        /// </summary>
+        Violet,
+
+        /// <summary>
+        /// The grey40 percent
+        /// </summary>
         Grey40Percent,
-        Pink, 
-        Gold, 
-        Yellow, 
-        BrightGreen, 
+
+        /// <summary>
+        /// The pink
+        /// </summary>
+        Pink,
+
+        /// <summary>
+        /// The gold
+        /// </summary>
+        Gold,
+
+        /// <summary>
+        /// The yellow
+        /// </summary>
+        Yellow,
+
+        /// <summary>
+        /// The bright green
+        /// </summary>
+        BrightGreen,
+
+        /// <summary>
+        /// The turquoise
+        /// </summary>
         Turquoise,
-        DarkRed, 
-        SkyBlue, 
-        Plum, 
-        Grey25Percent, 
+
+        /// <summary>
+        /// The dark red
+        /// </summary>
+        DarkRed,
+
+        /// <summary>
+        /// The sky blue
+        /// </summary>
+        SkyBlue,
+
+        /// <summary>
+        /// The plum
+        /// </summary>
+        Plum,
+
+        /// <summary>
+        /// The grey25 percent
+        /// </summary>
+        Grey25Percent,
+
+        /// <summary>
+        /// The rose
+        /// </summary>
         Rose,
-        LightYellow, 
-        LightGreen, 
-        LightTurquoise, 
+
+        /// <summary>
+        /// The light yellow
+        /// </summary>
+        LightYellow,
+
+        /// <summary>
+        /// The light green
+        /// </summary>
+        LightGreen,
+
+        /// <summary>
+        /// The light turquoise
+        /// </summary>
+        LightTurquoise,
+
+        /// <summary>
+        /// The pale blue
+        /// </summary>
         PaleBlue,
-        Lavender, 
-        White, 
-        CornflowerBlue, 
+
+        /// <summary>
+        /// The lavender
+        /// </summary>
+        Lavender,
+
+        /// <summary>
+        /// The white
+        /// </summary>
+        White,
+
+        /// <summary>
+        /// The cornflower blue
+        /// </summary>
+        CornflowerBlue,
+
+        /// <summary>
+        /// The lemon chiffon
+        /// </summary>
         LemonChiffon,
-        Maroon, 
-        Orchid, 
-        Coral, 
+
+        /// <summary>
+        /// The maroon
+        /// </summary>
+        Maroon,
+
+        /// <summary>
+        /// The orchid
+        /// </summary>
+        Orchid,
+
+        /// <summary>
+        /// The coral
+        /// </summary>
+        Coral,
+
+        /// <summary>
+        /// The royal blue
+        /// </summary>
         RoyalBlue,
-        LightCornflowerBlue, 
+
+        /// <summary>
+        /// The light cornflower blue
+        /// </summary>
+        LightCornflowerBlue,
+
+        /// <summary>
+        /// The tan
+        /// </summary>
         Tan
     }
 }

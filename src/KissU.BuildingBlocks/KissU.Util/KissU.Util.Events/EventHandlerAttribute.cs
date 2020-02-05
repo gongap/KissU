@@ -11,7 +11,7 @@ namespace KissU.Util.Events
         /// 初始化事件处理器
         /// </summary>
         /// <param name="name">消息名称</param>
-        public EventHandlerAttribute( string name ) : base( name )
+        public EventHandlerAttribute(string name) : base(name)
         {
         }
     }

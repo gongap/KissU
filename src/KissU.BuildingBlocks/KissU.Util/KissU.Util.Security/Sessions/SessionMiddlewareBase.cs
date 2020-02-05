@@ -20,7 +20,7 @@ namespace KissU.Util.Security.Sessions
         /// 初始化用户会话中间件
         /// </summary>
         /// <param name="next">方法</param>
-        protected SessionMiddlewareBase( RequestDelegate next )
+        protected SessionMiddlewareBase(RequestDelegate next)
         {
             _next = next;
         }
@@ -29,29 +29,31 @@ namespace KissU.Util.Security.Sessions
         /// 执行方法
         /// </summary>
         /// <param name="context">Http上下文</param>
-        public async Task Invoke( HttpContext context )
+        public async Task Invoke(HttpContext context)
         {
-            await Authenticate( context );
-            await _next( context );
+            await Authenticate(context);
+            await _next(context);
         }
 
         /// <summary>
         /// 认证
         /// </summary>
-        protected virtual async Task Authenticate( HttpContext context )
+        /// <param name="context">The context.</param>
+        protected virtual async Task Authenticate(HttpContext context)
         {
-            await AuthenticateBefore( context );
-            if( IsAuthenticated( context ) == false )
+            await AuthenticateBefore(context);
+            if (IsAuthenticated(context) == false)
                 return;
-            await LoadClaims( context, context.GetIdentity() );
-            await AuthenticateAfter( context );
+            await LoadClaims(context, context.GetIdentity());
+            await AuthenticateAfter(context);
         }
 
         /// <summary>
         /// 认证前操作
         /// </summary>
         /// <param name="context">Http上下文</param>
-        protected virtual Task AuthenticateBefore( HttpContext context )
+        /// <returns>Task.</returns>
+        protected virtual Task AuthenticateBefore(HttpContext context)
         {
             return Task.CompletedTask;
         }
@@ -59,11 +61,13 @@ namespace KissU.Util.Security.Sessions
         /// <summary>
         /// 是否认证
         /// </summary>
-        protected virtual bool IsAuthenticated( HttpContext context )
+        /// <param name="context">The context.</param>
+        /// <returns><c>true</c> if the specified context is authenticated; otherwise, <c>false</c>.</returns>
+        protected virtual bool IsAuthenticated(HttpContext context)
         {
-            if( context.User == null )
+            if (context.User == null)
                 return false;
-            if( context.User.Identity.IsAuthenticated == false )
+            if (context.User.Identity.IsAuthenticated == false)
                 return false;
             return true;
         }
@@ -73,13 +77,15 @@ namespace KissU.Util.Security.Sessions
         /// </summary>
         /// <param name="context">Http上下文</param>
         /// <param name="identity">身份标识</param>
-        protected abstract Task LoadClaims( HttpContext context, ClaimsIdentity identity );
+        /// <returns>Task.</returns>
+        protected abstract Task LoadClaims(HttpContext context, ClaimsIdentity identity);
 
         /// <summary>
         /// 认证后操作
         /// </summary>
         /// <param name="context">Http上下文</param>
-        protected virtual Task AuthenticateAfter( HttpContext context )
+        /// <returns>Task.</returns>
+        protected virtual Task AuthenticateAfter(HttpContext context)
         {
             return Task.CompletedTask;
         }
@@ -87,9 +93,10 @@ namespace KissU.Util.Security.Sessions
         /// <summary>
         /// 获取服务
         /// </summary>
-        /// <param name="context">Http上下文</param>
         /// <typeparam name="T">服务类型</typeparam>
-        protected T GetService<T>( HttpContext context )
+        /// <param name="context">Http上下文</param>
+        /// <returns>T.</returns>
+        protected T GetService<T>(HttpContext context)
         {
             return context.RequestServices.GetService<T>();
         }

@@ -9,28 +9,29 @@ namespace KissU.Util.Tools.Offices.Core
     public class IndexManager
     {
         /// <summary>
-        /// 初始化索引管理器
-        /// </summary>
-        public IndexManager()
-        {
-            _list = new List<IndexRange> { new IndexRange( 0, 10000 ) };
-        }
-
-        /// <summary>
         /// 索引列表
         /// </summary>
         private readonly List<IndexRange> _list;
 
         /// <summary>
+        /// 初始化索引管理器
+        /// </summary>
+        public IndexManager()
+        {
+            _list = new List<IndexRange> {new IndexRange(0, 10000)};
+        }
+
+        /// <summary>
         /// 获取索引
         /// </summary>
         /// <param name="span">跨度</param>
-        public int GetIndex( int span = 1 )
+        /// <returns>System.Int32.</returns>
+        public int GetIndex(int span = 1)
         {
             var range = _list.First();
-            var index = range.GetIndex( span );
-            if ( range.IsEnd )
-                _list.Remove( range );
+            var index = range.GetIndex(span);
+            if (range.IsEnd)
+                _list.Remove(range);
             return index;
         }
 
@@ -39,13 +40,13 @@ namespace KissU.Util.Tools.Offices.Core
         /// </summary>
         /// <param name="index">索引</param>
         /// <param name="span">跨度</param>
-        public void AddIndex( int index, int span = 1 )
+        public void AddIndex(int index, int span = 1)
         {
-            foreach ( var range in _list )
+            foreach (var range in _list)
             {
-                if ( range.Contains( index ) )
+                if (range.Contains(index))
                 {
-                    AddIndex( range, index, span );
+                    AddIndex(range, index, span);
                     return;
                 }
             }
@@ -54,12 +55,12 @@ namespace KissU.Util.Tools.Offices.Core
         /// <summary>
         /// 添加索引
         /// </summary>
-        private void AddIndex( IndexRange range, int index, int span )
+        private void AddIndex(IndexRange range, int index, int span)
         {
-            var newRange = range.Split( index, span );
-            if ( newRange == null )
+            var newRange = range.Split(index, span);
+            if (newRange == null)
                 return;
-            _list.Add( newRange );
+            _list.Add(newRange);
         }
     }
 }

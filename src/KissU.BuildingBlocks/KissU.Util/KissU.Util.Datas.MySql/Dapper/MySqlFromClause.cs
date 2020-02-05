@@ -20,9 +20,10 @@ namespace KissU.Util.Datas.MySql.Dapper
         /// <param name="register">实体别名注册器</param>
         /// <param name="tableDatabase">表数据库</param>
         /// <param name="table">表</param>
-        public MySqlFromClause( ISqlBuilder builder, IDialect dialect, IEntityResolver resolver, IEntityAliasRegister register, ITableDatabase tableDatabase, SqlItem table = null )
-            : base( builder, dialect, resolver, register, tableDatabase, table )
-            {
+        public MySqlFromClause(ISqlBuilder builder, IDialect dialect, IEntityResolver resolver,
+            IEntityAliasRegister register, ITableDatabase tableDatabase, SqlItem table = null)
+            : base(builder, dialect, resolver, register, tableDatabase, table)
+        {
         }
 
         /// <summary>
@@ -31,9 +32,10 @@ namespace KissU.Util.Datas.MySql.Dapper
         /// <param name="table">表名</param>
         /// <param name="schema">架构名</param>
         /// <param name="alias">别名</param>
-        protected override SqlItem CreateSqlItem( string table, string schema, string alias )
+        /// <returns>SqlItem.</returns>
+        protected override SqlItem CreateSqlItem(string table, string schema, string alias)
         {
-            return new SqlItem( table, schema, alias, false, false );
+            return new SqlItem(table, schema, alias, false, false);
         }
 
         /// <summary>
@@ -41,11 +43,12 @@ namespace KissU.Util.Datas.MySql.Dapper
         /// </summary>
         /// <param name="builder">Sql生成器</param>
         /// <param name="register">实体别名注册器</param>
-        public override IFromClause Clone( ISqlBuilder builder, IEntityAliasRegister register )
+        /// <returns>IFromClause.</returns>
+        public override IFromClause Clone(ISqlBuilder builder, IEntityAliasRegister register)
         {
-            if( register != null )
+            if (register != null)
                 register.FromType = Register.FromType;
-            return new MySqlFromClause( builder, Dialect, Resolver, register, TableDatabase, Table );
+            return new MySqlFromClause(builder, Dialect, Resolver, register, TableDatabase, Table);
         }
     }
 }

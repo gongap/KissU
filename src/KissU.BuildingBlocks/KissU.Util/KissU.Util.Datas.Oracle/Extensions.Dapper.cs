@@ -22,9 +22,10 @@ namespace KissU.Util.Datas.Oracle
         /// </summary>
         /// <param name="services">服务集合</param>
         /// <param name="action">Sql查询配置</param>
-        public static IServiceCollection AddSqlQuery( this IServiceCollection services, Action<SqlOptions> action = null )
+        /// <returns>IServiceCollection.</returns>
+        public static IServiceCollection AddSqlQuery(this IServiceCollection services, Action<SqlOptions> action = null)
         {
-            return AddSqlQuery( services, action, null, null );
+            return AddSqlQuery(services, action, null, null);
         }
 
         /// <summary>
@@ -33,10 +34,12 @@ namespace KissU.Util.Datas.Oracle
         /// <typeparam name="TDatabase">IDatabase实现类型，提供数据库连接</typeparam>
         /// <param name="services">服务集合</param>
         /// <param name="action">Sql查询配置</param>
-        public static IServiceCollection AddSqlQuery<TDatabase>( this IServiceCollection services, Action<SqlOptions> action = null )
+        /// <returns>IServiceCollection.</returns>
+        public static IServiceCollection AddSqlQuery<TDatabase>(this IServiceCollection services,
+            Action<SqlOptions> action = null)
             where TDatabase : class, IDatabase
-            {
-            return AddSqlQuery( services, action, typeof( TDatabase ), null );
+        {
+            return AddSqlQuery(services, action, typeof(TDatabase), null);
         }
 
         /// <summary>
@@ -46,35 +49,40 @@ namespace KissU.Util.Datas.Oracle
         /// <typeparam name="TEntityMatedata">IEntityMatedata实现类型,提供实体元数据解析</typeparam>
         /// <param name="services">服务集合</param>
         /// <param name="action">Sql查询配置</param>
-        public static IServiceCollection AddSqlQuery<TDatabase, TEntityMatedata>( this IServiceCollection services, Action<SqlOptions> action = null )
+        /// <returns>IServiceCollection.</returns>
+        public static IServiceCollection AddSqlQuery<TDatabase, TEntityMatedata>(this IServiceCollection services,
+            Action<SqlOptions> action = null)
             where TDatabase : class, IDatabase
             where TEntityMatedata : class, IEntityMatedata
-            {
-            return AddSqlQuery( services, action, typeof( TDatabase ), typeof( TEntityMatedata ) );
+        {
+            return AddSqlQuery(services, action, typeof(TDatabase), typeof(TEntityMatedata));
         }
 
         /// <summary>
         /// 注册Sql查询服务
         /// </summary>
-        private static IServiceCollection AddSqlQuery( IServiceCollection services, Action<SqlOptions> action, Type database, Type entityMatedata )
+        private static IServiceCollection AddSqlQuery(IServiceCollection services, Action<SqlOptions> action,
+            Type database, Type entityMatedata)
         {
             var config = new SqlOptions();
-            if( action != null )
+            if (action != null)
             {
-                action.Invoke( config );
-                services.Configure( action );
+                action.Invoke(config);
+                services.Configure(action);
             }
-            if( entityMatedata != null )
-                services.TryAddScoped( typeof( IEntityMatedata ), t => t.GetService( entityMatedata ) );
-            if( database != null )
+
+            if (entityMatedata != null)
+                services.TryAddScoped(typeof(IEntityMatedata), t => t.GetService(entityMatedata));
+            if (database != null)
             {
-                services.TryAddScoped( database );
-                services.TryAddScoped( typeof( IDatabase ), t => t.GetService( database ) );
+                services.TryAddScoped(database);
+                services.TryAddScoped(typeof(IDatabase), t => t.GetService(database));
             }
+
             services.TryAddTransient<ISqlQuery, SqlQuery>();
             services.TryAddScoped<ITableDatabase, DefaultTableDatabase>();
-            AddSqlBuilder( services, config );
-            RegisterTypeHandlers( config );
+            AddSqlBuilder(services, config);
+            RegisterTypeHandlers(config);
             return services;
         }
 
@@ -89,11 +97,11 @@ namespace KissU.Util.Datas.Oracle
         /// <summary>
         /// 注册类型处理器
         /// </summary>
-        private static void RegisterTypeHandlers( SqlOptions config )
+        private static void RegisterTypeHandlers(SqlOptions config)
         {
-            SqlMapper.AddTypeHandler( typeof( string ), new StringTypeHandler() );
-            if( config.DatabaseType == DatabaseType.Oracle )
-                SqlMapper.AddTypeHandler( new GuidTypeHandler() );
+            SqlMapper.AddTypeHandler(typeof(string), new StringTypeHandler());
+            if (config.DatabaseType == DatabaseType.Oracle)
+                SqlMapper.AddTypeHandler(new GuidTypeHandler());
         }
     }
 }

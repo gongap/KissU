@@ -11,6 +11,7 @@ namespace KissU.Util.Tools.Offices.Npoi
         /// <summary>
         /// 创建工作薄
         /// </summary>
+        /// <returns>IWorkbook.</returns>
         protected override IWorkbook GetWorkbook()
         {
             return new HSSFWorkbook();

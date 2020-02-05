@@ -19,26 +19,28 @@ namespace KissU.Util.Logs.NLog
         /// <summary>
         /// 添加日志信息
         /// </summary>
-        protected override void Append( StringBuilder builder, LogEventInfo logEvent )
+        /// <param name="builder">The builder.</param>
+        /// <param name="logEvent">The log event.</param>
+        protected override void Append(StringBuilder builder, LogEventInfo logEvent)
         {
-            if ( logEvent.Parameters == null || logEvent.Parameters.Length == 0 )
+            if (logEvent.Parameters == null || logEvent.Parameters.Length == 0)
                 return;
-            if ( !( logEvent.Parameters[0] is LogContent content ) )
+            if (!(logEvent.Parameters[0] is LogContent content))
                 return;
-            builder.Append( GetValue( content ) );
+            builder.Append(GetValue(content));
         }
 
         /// <summary>
         /// 获取值
         /// </summary>
-        private object GetValue( LogContent content )
+        private object GetValue(LogContent content)
         {
             var name = Name.SafeString().ToLower();
-            if ( name == "errormessage" )
-                return Warning.GetMessage( content.Exception );
-            if( name == "stacktrace" )
+            if (name == "errormessage")
+                return Warning.GetMessage(content.Exception);
+            if (name == "stacktrace")
                 return content.Exception?.StackTrace;
-            return content.GetType().GetProperty( Name )?.GetValue( content );
+            return content.GetType().GetProperty(Name)?.GetValue(content);
         }
     }
 }

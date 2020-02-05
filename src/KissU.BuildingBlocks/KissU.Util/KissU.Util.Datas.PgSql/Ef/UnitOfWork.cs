@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using KissU.Util.Datas.Ef.Core;
 using KissU.Util.Datas.Ef.Internal;
+using KissU.Util.Helpers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
@@ -27,14 +28,16 @@ namespace KissU.Util.Datas.PgSql.Ef
         /// 获取映射实例列表
         /// </summary>
         /// <param name="assembly">程序集</param>
+        /// <returns>IEnumerable&lt;IMap&gt;.</returns>
         protected override IEnumerable<Datas.Ef.Core.IMap> GetMapInstances(Assembly assembly)
         {
-            return Util.Helpers.Reflection.GetInstancesByInterface<IMap>(assembly);
+            return Reflection.GetInstancesByInterface<IMap>(assembly);
         }
 
         /// <summary>
         /// 拦截添加操作
         /// </summary>
+        /// <param name="entry">The entry.</param>
         protected override void InterceptAddedOperation(EntityEntry entry)
         {
             base.InterceptAddedOperation(entry);
@@ -44,6 +47,7 @@ namespace KissU.Util.Datas.PgSql.Ef
         /// <summary>
         /// 拦截修改操作
         /// </summary>
+        /// <param name="entry">The entry.</param>
         protected override void InterceptModifiedOperation(EntityEntry entry)
         {
             base.InterceptModifiedOperation(entry);

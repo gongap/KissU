@@ -13,7 +13,8 @@ namespace KissU.Util.Events.Default
         /// 注册事件总线服务
         /// </summary>
         /// <param name="services">服务集合</param>
-        public static IServiceCollection AddEventBus( this IServiceCollection services )
+        /// <returns>IServiceCollection.</returns>
+        public static IServiceCollection AddEventBus(this IServiceCollection services)
         {
             services.TryAddSingleton<IEventHandlerManager, EventHandlerManager>();
             services.TryAddSingleton<ISimpleEventBus, EventBus>();

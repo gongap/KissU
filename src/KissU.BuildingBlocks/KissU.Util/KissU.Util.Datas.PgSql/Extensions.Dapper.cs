@@ -22,6 +22,7 @@ namespace KissU.Util.Datas.PgSql
         /// </summary>
         /// <param name="services">服务集合</param>
         /// <param name="action">Sql查询配置</param>
+        /// <returns>IServiceCollection.</returns>
         public static IServiceCollection AddSqlQuery(this IServiceCollection services, Action<SqlOptions> action = null)
         {
             return AddSqlQuery(services, action, null, null);
@@ -33,7 +34,9 @@ namespace KissU.Util.Datas.PgSql
         /// <typeparam name="TDatabase">IDatabase实现类型，提供数据库连接</typeparam>
         /// <param name="services">服务集合</param>
         /// <param name="action">Sql查询配置</param>
-        public static IServiceCollection AddSqlQuery<TDatabase>(this IServiceCollection services, Action<SqlOptions> action = null)
+        /// <returns>IServiceCollection.</returns>
+        public static IServiceCollection AddSqlQuery<TDatabase>(this IServiceCollection services,
+            Action<SqlOptions> action = null)
             where TDatabase : class, IDatabase
         {
             return AddSqlQuery(services, action, typeof(TDatabase), null);
@@ -46,7 +49,9 @@ namespace KissU.Util.Datas.PgSql
         /// <typeparam name="TEntityMatedata">IEntityMatedata实现类型,提供实体元数据解析</typeparam>
         /// <param name="services">服务集合</param>
         /// <param name="action">Sql查询配置</param>
-        public static IServiceCollection AddSqlQuery<TDatabase, TEntityMatedata>(this IServiceCollection services, Action<SqlOptions> action = null)
+        /// <returns>IServiceCollection.</returns>
+        public static IServiceCollection AddSqlQuery<TDatabase, TEntityMatedata>(this IServiceCollection services,
+            Action<SqlOptions> action = null)
             where TDatabase : class, IDatabase
             where TEntityMatedata : class, IEntityMatedata
         {
@@ -56,7 +61,8 @@ namespace KissU.Util.Datas.PgSql
         /// <summary>
         /// 注册Sql查询服务
         /// </summary>
-        private static IServiceCollection AddSqlQuery(IServiceCollection services, Action<SqlOptions> action, Type database, Type entityMatedata)
+        private static IServiceCollection AddSqlQuery(IServiceCollection services, Action<SqlOptions> action,
+            Type database, Type entityMatedata)
         {
             var config = new SqlOptions();
             if (action != null)
@@ -64,6 +70,7 @@ namespace KissU.Util.Datas.PgSql
                 action.Invoke(config);
                 services.Configure(action);
             }
+
             if (entityMatedata != null)
                 services.TryAddScoped(typeof(IEntityMatedata), t => t.GetService(entityMatedata));
             if (database != null)
@@ -71,6 +78,7 @@ namespace KissU.Util.Datas.PgSql
                 services.TryAddScoped(database);
                 services.TryAddScoped(typeof(IDatabase), t => t.GetService(database));
             }
+
             services.TryAddTransient<ISqlQuery, SqlQuery>();
             services.TryAddScoped<ITableDatabase, DefaultTableDatabase>();
             AddSqlBuilder(services, config);

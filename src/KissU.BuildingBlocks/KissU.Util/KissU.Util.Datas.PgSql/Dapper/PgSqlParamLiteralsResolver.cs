@@ -1,4 +1,5 @@
 ﻿using KissU.Util.Datas.Sql.Builders;
+using KissU.Util.Helpers;
 
 namespace KissU.Util.Datas.PgSql.Dapper
 {
@@ -11,6 +12,7 @@ namespace KissU.Util.Datas.PgSql.Dapper
         /// 获取参数字面值
         /// </summary>
         /// <param name="value">参数值</param>
+        /// <returns>System.String.</returns>
         public string GetParamLiterals(object value)
         {
             if (value == null)
@@ -18,7 +20,7 @@ namespace KissU.Util.Datas.PgSql.Dapper
             switch (value.GetType().Name.ToLower())
             {
                 case "boolean":
-                    return Helpers.Convert.ToBool(value) ? "true" : "false";
+                    return Convert.ToBool(value) ? "true" : "false";
                 case "int16":
                 case "int32":
                 case "int64":

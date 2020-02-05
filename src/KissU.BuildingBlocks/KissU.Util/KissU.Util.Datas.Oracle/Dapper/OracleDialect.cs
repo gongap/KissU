@@ -1,4 +1,5 @@
 ﻿using KissU.Util.Datas.Sql.Builders.Core;
+using KissU.Util.Helpers;
 
 namespace KissU.Util.Datas.Oracle.Dapper
 {
@@ -21,7 +22,8 @@ namespace KissU.Util.Datas.Oracle.Dapper
         /// 获取安全名称
         /// </summary>
         /// <param name="name">名称</param>
-        protected override string GetSafeName( string name )
+        /// <returns>System.String.</returns>
+        protected override string GetSafeName(string name)
         {
             return $"\"{name}\"";
         }
@@ -29,6 +31,7 @@ namespace KissU.Util.Datas.Oracle.Dapper
         /// <summary>
         /// 获取参数前缀
         /// </summary>
+        /// <returns>System.String.</returns>
         public override string GetPrefix()
         {
             return ":";
@@ -37,6 +40,7 @@ namespace KissU.Util.Datas.Oracle.Dapper
         /// <summary>
         /// Select子句是否支持As关键字
         /// </summary>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public override bool SupportSelectAs()
         {
             return false;
@@ -46,7 +50,8 @@ namespace KissU.Util.Datas.Oracle.Dapper
         /// 创建参数名
         /// </summary>
         /// <param name="paramIndex">参数索引</param>
-        public override string GenerateName( int paramIndex )
+        /// <returns>System.String.</returns>
+        public override string GenerateName(int paramIndex)
         {
             return $"{GetPrefix()}p_{paramIndex}";
         }
@@ -55,10 +60,11 @@ namespace KissU.Util.Datas.Oracle.Dapper
         /// 获取参数名
         /// </summary>
         /// <param name="paramName">参数名</param>
-        public override string GetParamName( string paramName )
+        /// <returns>System.String.</returns>
+        public override string GetParamName(string paramName)
         {
-            if ( paramName.StartsWith( ":" ) )
-                return paramName.TrimStart( ':' );
+            if (paramName.StartsWith(":"))
+                return paramName.TrimStart(':');
             return paramName;
         }
 
@@ -66,14 +72,15 @@ namespace KissU.Util.Datas.Oracle.Dapper
         /// 获取参数值
         /// </summary>
         /// <param name="paramValue">参数值</param>
-        public override object GetParamValue( object paramValue )
+        /// <returns>System.Object.</returns>
+        public override object GetParamValue(object paramValue)
         {
-            if( paramValue == null )
+            if (paramValue == null)
                 return "";
-            switch( paramValue.GetType().Name.ToLower() )
+            switch (paramValue.GetType().Name.ToLower())
             {
                 case "boolean":
-                    return Helpers.Convert.ToBool( paramValue ) ? 1 : 0;
+                    return Convert.ToBool(paramValue) ? 1 : 0;
                 case "int16":
                 case "int32":
                 case "int64":

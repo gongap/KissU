@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using KissU.Util.AspNetCore.Helpers;
 using KissU.Util.Helpers;
+using Convert = System.Convert;
 
 namespace KissU.Util.Tools.Sms.LuoSiMao
 {
@@ -19,9 +20,9 @@ namespace KissU.Util.Tools.Sms.LuoSiMao
         /// 初始化短信服务
         /// </summary>
         /// <param name="configProvider">短信配置提供器</param>
-        public SmsService( ISmsConfigProvider configProvider )
+        public SmsService(ISmsConfigProvider configProvider)
         {
-            configProvider.CheckNull( nameof( configProvider ) );
+            configProvider.CheckNull(nameof(configProvider));
             _configProvider = configProvider;
         }
 
@@ -30,14 +31,15 @@ namespace KissU.Util.Tools.Sms.LuoSiMao
         /// </summary>
         /// <param name="mobile">手机号</param>
         /// <param name="content">内容</param>
-        public async Task<SmsResult> SendAsync( string mobile, string content )
+        /// <returns>Task&lt;SmsResult&gt;.</returns>
+        public async Task<SmsResult> SendAsync(string mobile, string content)
         {
-            var result = await Web.Client().Post( "https://sms-api.luosimao.com/v1/send.json" )
-                .Header( "Authorization", await GetAuthorization() )
-                .Data( "mobile", mobile )
-                .Data( "message", content )
+            var result = await Web.Client().Post("https://sms-api.luosimao.com/v1/send.json")
+                .Header("Authorization", await GetAuthorization())
+                .Data("mobile", mobile)
+                .Data("message", content)
                 .ResultAsync();
-            return CreateResult( result );
+            return CreateResult(result);
         }
 
         /// <summary>
@@ -46,21 +48,21 @@ namespace KissU.Util.Tools.Sms.LuoSiMao
         private async Task<string> GetAuthorization()
         {
             var config = await _configProvider.GetConfigAsync();
-            return $"Basic {System.Convert.ToBase64String( Encoding.UTF8.GetBytes( $"api:{config.Key}" ) )}";
+            return $"Basic {Convert.ToBase64String(Encoding.UTF8.GetBytes($"api:{config.Key}"))}";
         }
 
         /// <summary>
         /// 创建结果
         /// </summary>
-        private SmsResult CreateResult( string message )
+        private SmsResult CreateResult(string message)
         {
-            var result = Json.ToObject<LuoSiMaoResult>( message );
-            result.CheckNull( nameof( result ) );
-            if( result.error == "0" )
+            var result = Json.ToObject<LuoSiMaoResult>(message);
+            result.CheckNull(nameof(result));
+            if (result.error == "0")
                 return SmsResult.Ok;
-            if( result.msg == "WRONG_MOBILE" )
-                return new SmsResult( false, message, SmsErrorCode.MobileError );
-            return new SmsResult( false, message );
+            if (result.msg == "WRONG_MOBILE")
+                return new SmsResult(false, message, SmsErrorCode.MobileError);
+            return new SmsResult(false, message);
         }
     }
 }

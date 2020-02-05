@@ -10,9 +10,9 @@ namespace KissU.Util.Tools.Offices.Npoi
         /// <summary>
         /// 初始化Npoi Excel2003 导出操作
         /// </summary>
-        public Excel2003Export() 
-            : base ( ExportFormat.Xls, new Excel2003() )
-            {
+        public Excel2003Export()
+            : base(ExportFormat.Xls, new Excel2003())
+        {
         }
     }
 }

@@ -17,13 +17,14 @@ namespace KissU.Util.Events.Cap
         /// </summary>
         /// <param name="services">服务集合</param>
         /// <param name="action">配置操作</param>
-        public static IServiceCollection AddEventBus( this IServiceCollection services, Action<CapOptions> action )
+        /// <returns>IServiceCollection.</returns>
+        public static IServiceCollection AddEventBus(this IServiceCollection services, Action<CapOptions> action)
         {
             services.TryAddSingleton<IEventHandlerManager, EventHandlerManager>();
             services.TryAddSingleton<ISimpleEventBus, Default.EventBus>();
             services.TryAddScoped<IMessageEventBus, MessageEventBus>();
             services.TryAddScoped<IEventBus, EventBus>();
-            services.AddCap( action );
+            services.AddCap(action);
             return services;
         }
     }

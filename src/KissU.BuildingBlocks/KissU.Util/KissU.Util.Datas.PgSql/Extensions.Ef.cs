@@ -24,8 +24,10 @@ namespace KissU.Util.Datas.PgSql
         /// <param name="configAction">配置操作</param>
         /// <param name="efConfigAction">Ef配置操作</param>
         /// <param name="configuration">配置</param>
+        /// <returns>IServiceCollection.</returns>
         public static IServiceCollection AddUnitOfWork<TService, TImplementation>(this IServiceCollection services,
-            Action<DbContextOptionsBuilder> configAction, Action<EfConfig> efConfigAction = null, IConfiguration configuration = null)
+            Action<DbContextOptionsBuilder> configAction, Action<EfConfig> efConfigAction = null,
+            IConfiguration configuration = null)
             where TService : class, IUnitOfWork
             where TImplementation : UnitOfWorkBase, TService
         {
@@ -36,6 +38,7 @@ namespace KissU.Util.Datas.PgSql
                 services.Configure(efConfigAction);
                 efConfigAction.Invoke(efConfig);
             }
+
             if (configuration != null)
                 services.Configure<EfConfig>(configuration);
             services.TryAddScoped<TService>(t => t.GetService<TImplementation>());
@@ -64,20 +67,22 @@ namespace KissU.Util.Datas.PgSql
         /// <param name="services">服务集合</param>
         /// <param name="connection">连接字符串</param>
         /// <param name="level">Ef日志级别</param>
-        public static IServiceCollection AddUnitOfWork<TService, TImplementation>(this IServiceCollection services, string connection, EfLogLevel level = EfLogLevel.Sql)
+        /// <returns>IServiceCollection.</returns>
+        public static IServiceCollection AddUnitOfWork<TService, TImplementation>(this IServiceCollection services,
+            string connection, EfLogLevel level = EfLogLevel.Sql)
             where TService : class, IUnitOfWork
             where TImplementation : UnitOfWorkBase, TService
         {
-            return AddUnitOfWork<TService, TImplementation>(services, builder =>
-            {
-                ConfigConnection<TImplementation>(builder, connection);
-            }, config => config.EfLogLevel = level);
+            return AddUnitOfWork<TService, TImplementation>(services,
+                builder => { ConfigConnection<TImplementation>(builder, connection); },
+                config => config.EfLogLevel = level);
         }
 
         /// <summary>
         /// 配置连接字符串
         /// </summary>
-        private static void ConfigConnection<TImplementation>(DbContextOptionsBuilder builder, string connection) where TImplementation : UnitOfWorkBase
+        private static void ConfigConnection<TImplementation>(DbContextOptionsBuilder builder, string connection)
+            where TImplementation : UnitOfWorkBase
         {
             builder.UseNpgsql(connection);
         }
@@ -90,14 +95,14 @@ namespace KissU.Util.Datas.PgSql
         /// <param name="services">服务集合</param>
         /// <param name="connection">连接字符串</param>
         /// <param name="efConfigAction">Ef配置操作</param>
-        public static IServiceCollection AddUnitOfWork<TService, TImplementation>(this IServiceCollection services, string connection, Action<EfConfig> efConfigAction)
+        /// <returns>IServiceCollection.</returns>
+        public static IServiceCollection AddUnitOfWork<TService, TImplementation>(this IServiceCollection services,
+            string connection, Action<EfConfig> efConfigAction)
             where TService : class, IUnitOfWork
             where TImplementation : UnitOfWorkBase, TService
         {
-            return AddUnitOfWork<TService, TImplementation>(services, builder =>
-            {
-                ConfigConnection<TImplementation>(builder, connection);
-            }, efConfigAction);
+            return AddUnitOfWork<TService, TImplementation>(services,
+                builder => { ConfigConnection<TImplementation>(builder, connection); }, efConfigAction);
         }
 
         /// <summary>
@@ -108,14 +113,14 @@ namespace KissU.Util.Datas.PgSql
         /// <param name="services">服务集合</param>
         /// <param name="connection">连接字符串</param>
         /// <param name="configuration">配置</param>
-        public static IServiceCollection AddUnitOfWork<TService, TImplementation>(this IServiceCollection services, string connection, IConfiguration configuration)
+        /// <returns>IServiceCollection.</returns>
+        public static IServiceCollection AddUnitOfWork<TService, TImplementation>(this IServiceCollection services,
+            string connection, IConfiguration configuration)
             where TService : class, IUnitOfWork
             where TImplementation : UnitOfWorkBase, TService
         {
-            return AddUnitOfWork<TService, TImplementation>(services, builder =>
-            {
-                ConfigConnection<TImplementation>(builder, connection);
-            }, null, configuration);
+            return AddUnitOfWork<TService, TImplementation>(services,
+                builder => { ConfigConnection<TImplementation>(builder, connection); }, null, configuration);
         }
     }
 }

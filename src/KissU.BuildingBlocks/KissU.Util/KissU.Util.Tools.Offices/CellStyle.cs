@@ -66,6 +66,7 @@ namespace KissU.Util.Tools.Offices
         /// <summary>
         /// 创建表头样式
         /// </summary>
+        /// <returns>CellStyle.</returns>
         public static CellStyle Head()
         {
             return new CellStyle
@@ -82,6 +83,7 @@ namespace KissU.Util.Tools.Offices
         /// <summary>
         /// 创建正文样式
         /// </summary>
+        /// <returns>CellStyle.</returns>
         public static CellStyle Body()
         {
             return new CellStyle();
@@ -90,6 +92,7 @@ namespace KissU.Util.Tools.Offices
         /// <summary>
         /// 创建页脚样式
         /// </summary>
+        /// <returns>CellStyle.</returns>
         public static CellStyle Foot()
         {
             return new CellStyle

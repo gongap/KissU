@@ -11,10 +11,10 @@ namespace KissU.Util.Tools.Sms
         /// 发送成功
         /// </summary>
         Ok,
+
         /// <summary>
         /// 手机号错误
         /// </summary>
-        [Description("手机号错误")]
-        MobileError
+        [Description("手机号错误")] MobileError
     }
 }

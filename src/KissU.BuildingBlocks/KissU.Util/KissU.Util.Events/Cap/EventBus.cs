@@ -13,10 +13,12 @@ namespace KissU.Util.Events.Cap
         /// </summary>
         /// <param name="simpleEventBus">基于内存的简单事件总线</param>
         /// <param name="messageEventBus">Cap消息事件总线</param>
-        public EventBus( ISimpleEventBus simpleEventBus, IMessageEventBus messageEventBus )
+        /// <exception cref="ArgumentNullException">simpleEventBus</exception>
+        /// <exception cref="ArgumentNullException">messageEventBus</exception>
+        public EventBus(ISimpleEventBus simpleEventBus, IMessageEventBus messageEventBus)
         {
-            SimpleEventBus = simpleEventBus ?? throw new ArgumentNullException( nameof( simpleEventBus ) );
-            MessageEventBus = messageEventBus ?? throw new ArgumentNullException( nameof( messageEventBus ) );
+            SimpleEventBus = simpleEventBus ?? throw new ArgumentNullException(nameof(simpleEventBus));
+            MessageEventBus = messageEventBus ?? throw new ArgumentNullException(nameof(messageEventBus));
         }
 
         /// <summary>
@@ -34,12 +36,12 @@ namespace KissU.Util.Events.Cap
         /// </summary>
         /// <typeparam name="TEvent">事件类型</typeparam>
         /// <param name="event">事件</param>
-        public async Task PublishAsync<TEvent>( TEvent @event ) where TEvent : IEvent
+        public async Task PublishAsync<TEvent>(TEvent @event) where TEvent : IEvent
         {
-            await SimpleEventBus.PublishAsync( @event );
-            if( !( @event is IMessageEvent messageEvent ) )
+            await SimpleEventBus.PublishAsync(@event);
+            if (!(@event is IMessageEvent messageEvent))
                 return;
-            await MessageEventBus.PublishAsync( messageEvent );
+            await MessageEventBus.PublishAsync(messageEvent);
         }
     }
 }

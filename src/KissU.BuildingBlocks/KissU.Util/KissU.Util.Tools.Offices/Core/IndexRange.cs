@@ -10,7 +10,7 @@
         /// </summary>
         /// <param name="index">当前索引</param>
         /// <param name="endIndex">结束索引</param>
-        public IndexRange( int index,int endIndex)
+        public IndexRange(int index, int endIndex)
         {
             Index = index;
             EndIndex = endIndex;
@@ -27,10 +27,16 @@
         public int EndIndex { get; set; }
 
         /// <summary>
+        /// 是否已结束
+        /// </summary>
+        public bool IsEnd => Index >= EndIndex;
+
+        /// <summary>
         /// 获取索引
         /// </summary>
         /// <param name="span">跨度</param>
-        public int GetIndex( int span = 1 )
+        /// <returns>System.Int32.</returns>
+        public int GetIndex(int span = 1)
         {
             var result = Index;
             Index = Index + span;
@@ -41,7 +47,8 @@
         /// 判断是否包含该索引
         /// </summary>
         /// <param name="index">索引</param>
-        public bool Contains( int index )
+        /// <returns><c>true</c> if [contains] [the specified index]; otherwise, <c>false</c>.</returns>
+        public bool Contains(int index)
         {
             return index >= Index && index <= EndIndex;
         }
@@ -51,21 +58,18 @@
         /// </summary>
         /// <param name="index">索引</param>
         /// <param name="span">跨度</param>
-        public IndexRange Split( int index, int span )
+        /// <returns>IndexRange.</returns>
+        public IndexRange Split(int index, int span)
         {
-            if ( index == Index )
+            if (index == Index)
             {
                 Index = index + span;
                 return null;
             }
-            var result = new IndexRange( index + span,EndIndex );
+
+            var result = new IndexRange(index + span, EndIndex);
             EndIndex = index - 1;
             return result;
         }
-
-        /// <summary>
-        /// 是否已结束
-        /// </summary>
-        public bool IsEnd => Index >= EndIndex;
     }
 }

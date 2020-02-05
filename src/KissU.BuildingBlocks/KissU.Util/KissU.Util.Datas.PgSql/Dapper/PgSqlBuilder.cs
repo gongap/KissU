@@ -16,7 +16,8 @@ namespace KissU.Util.Datas.PgSql.Dapper
         /// <param name="matedata">实体元数据解析器</param>
         /// <param name="tableDatabase">表数据库</param>
         /// <param name="parameterManager">参数管理器</param>
-        public PgSqlBuilder(IEntityMatedata matedata = null, ITableDatabase tableDatabase = null, IParameterManager parameterManager = null)
+        public PgSqlBuilder(IEntityMatedata matedata = null, ITableDatabase tableDatabase = null,
+            IParameterManager parameterManager = null)
             : base(matedata, tableDatabase, parameterManager)
         {
         }
@@ -24,6 +25,7 @@ namespace KissU.Util.Datas.PgSql.Dapper
         /// <summary>
         /// 复制Sql生成器
         /// </summary>
+        /// <returns>ISqlBuilder.</returns>
         public override ISqlBuilder Clone()
         {
             var sqlBuilder = new PgSqlBuilder();
@@ -34,6 +36,7 @@ namespace KissU.Util.Datas.PgSql.Dapper
         /// <summary>
         /// 获取Sql方言
         /// </summary>
+        /// <returns>IDialect.</returns>
         protected override IDialect GetDialect()
         {
             return new PgSqlDialect();
@@ -42,6 +45,7 @@ namespace KissU.Util.Datas.PgSql.Dapper
         /// <summary>
         /// 获取参数字面值解析器
         /// </summary>
+        /// <returns>IParamLiteralsResolver.</returns>
         protected override IParamLiteralsResolver GetParamLiteralsResolver()
         {
             return new PgSqlParamLiteralsResolver();
@@ -50,6 +54,7 @@ namespace KissU.Util.Datas.PgSql.Dapper
         /// <summary>
         /// 创建Sql生成器
         /// </summary>
+        /// <returns>ISqlBuilder.</returns>
         public override ISqlBuilder New()
         {
             return new PgSqlBuilder(EntityMatedata, TableDatabase, ParameterManager);
@@ -58,6 +63,7 @@ namespace KissU.Util.Datas.PgSql.Dapper
         /// <summary>
         /// 创建分页Sql
         /// </summary>
+        /// <returns>System.String.</returns>
         protected override string CreateLimitSql()
         {
             return $"Limit {GetLimitParam()} OFFSET {GetOffsetParam()}";

@@ -11,21 +11,25 @@ namespace KissU.Util.Tools.Offices.Npoi
         /// 创建导出器
         /// </summary>
         /// <param name="format">导出格式</param>
-        public IExport Create( ExportFormat format = ExportFormat.Xlsx )
+        /// <returns>IExport.</returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public IExport Create(ExportFormat format = ExportFormat.Xlsx)
         {
-            switch( format )
+            switch (format)
             {
                 case ExportFormat.Xlsx:
                     return CreateExcel2007Export();
                 case ExportFormat.Xls:
                     return CreateExcel2003Export();
             }
+
             throw new NotImplementedException();
         }
 
         /// <summary>
         /// 创建Npoi Excel 2003导出器
         /// </summary>
+        /// <returns>IExport.</returns>
         public static IExport CreateExcel2003Export()
         {
             return new Excel2003Export();
@@ -34,6 +38,7 @@ namespace KissU.Util.Tools.Offices.Npoi
         /// <summary>
         /// 创建Npoi Excel 2007导出器
         /// </summary>
+        /// <returns>IExport.</returns>
         public static IExport CreateExcel2007Export()
         {
             return new Excel2007Export();

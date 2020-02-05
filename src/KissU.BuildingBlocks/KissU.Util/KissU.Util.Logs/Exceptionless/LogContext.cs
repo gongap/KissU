@@ -12,6 +12,7 @@ namespace KissU.Util.Logs.Exceptionless
         /// <summary>
         /// 创建日志上下文信息
         /// </summary>
+        /// <returns>LogContextInfo.</returns>
         protected override LogContextInfo CreateInfo()
         {
             return new LogContextInfo

@@ -20,9 +20,10 @@ namespace KissU.Util.Datas.Oracle.Dapper
         /// <param name="register">实体别名注册器</param>
         /// <param name="tableDatabase">表数据库</param>
         /// <param name="table">表</param>
-        public OracleFromClause( ISqlBuilder builder, IDialect dialect, IEntityResolver resolver, IEntityAliasRegister register, ITableDatabase tableDatabase, SqlItem table = null )
-            : base( builder, dialect, resolver, register, tableDatabase, table )
-            {
+        public OracleFromClause(ISqlBuilder builder, IDialect dialect, IEntityResolver resolver,
+            IEntityAliasRegister register, ITableDatabase tableDatabase, SqlItem table = null)
+            : base(builder, dialect, resolver, register, tableDatabase, table)
+        {
         }
 
         /// <summary>
@@ -30,11 +31,12 @@ namespace KissU.Util.Datas.Oracle.Dapper
         /// </summary>
         /// <param name="builder">Sql生成器</param>
         /// <param name="register">实体别名注册器</param>
-        public override IFromClause Clone( ISqlBuilder builder, IEntityAliasRegister register )
+        /// <returns>IFromClause.</returns>
+        public override IFromClause Clone(ISqlBuilder builder, IEntityAliasRegister register)
         {
-            if( register != null )
+            if (register != null)
                 register.FromType = Register.FromType;
-            return new OracleFromClause( builder, Dialect, Resolver, register, TableDatabase, Table );
+            return new OracleFromClause(builder, Dialect, Resolver, register, TableDatabase, Table);
         }
     }
 }

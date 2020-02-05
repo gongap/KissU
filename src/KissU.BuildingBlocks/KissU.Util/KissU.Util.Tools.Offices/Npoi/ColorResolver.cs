@@ -11,9 +11,10 @@ namespace KissU.Util.Tools.Offices.Npoi
         /// 转换
         /// </summary>
         /// <param name="color">颜色枚举</param>
-        public static short Resolve( Color color )
+        /// <returns>System.Int16.</returns>
+        public static short Resolve(Color color)
         {
-            switch ( color )
+            switch (color)
             {
                 case Color.Aqua:
                     return 0x31;

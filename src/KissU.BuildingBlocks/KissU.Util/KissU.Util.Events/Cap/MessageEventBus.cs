@@ -16,10 +16,13 @@ namespace KissU.Util.Events.Cap
         /// </summary>
         /// <param name="publisher">事件发布器</param>
         /// <param name="transactionActionManager">事务操作管理器</param>
-        public MessageEventBus( ICapPublisher publisher, ITransactionActionManager transactionActionManager )
+        /// <exception cref="ArgumentNullException">publisher</exception>
+        /// <exception cref="ArgumentNullException">transactionActionManager</exception>
+        public MessageEventBus(ICapPublisher publisher, ITransactionActionManager transactionActionManager)
         {
-            Publisher = publisher ?? throw new ArgumentNullException( nameof( publisher ) );
-            TransactionActionManager = transactionActionManager ?? throw new ArgumentNullException( nameof( transactionActionManager ) );
+            Publisher = publisher ?? throw new ArgumentNullException(nameof(publisher));
+            TransactionActionManager = transactionActionManager ??
+                                       throw new ArgumentNullException(nameof(transactionActionManager));
         }
 
         /// <summary>
@@ -37,9 +40,10 @@ namespace KissU.Util.Events.Cap
         /// </summary>
         /// <typeparam name="TEvent">事件类型</typeparam>
         /// <param name="event">事件</param>
-        public async Task PublishAsync<TEvent>( TEvent @event ) where TEvent : IMessageEvent
+        /// <returns>Task.</returns>
+        public async Task PublishAsync<TEvent>(TEvent @event) where TEvent : IMessageEvent
         {
-            await PublishAsync( @event.Name, @event.Data, @event.Callback, @event.Send );
+            await PublishAsync(@event.Name, @event.Data, @event.Callback, @event.Send);
         }
 
         /// <summary>
@@ -49,23 +53,24 @@ namespace KissU.Util.Events.Cap
         /// <param name="data">事件数据</param>
         /// <param name="callback">回调名称</param>
         /// <param name="send">是否立即发送消息</param>
-        public async Task PublishAsync( string name, object data, string callback = null, bool send = false )
+        public async Task PublishAsync(string name, object data, string callback = null, bool send = false)
         {
             var capTransaction = GetCapTransaction();
-            if( send )
+            if (send)
             {
                 capTransaction.AutoCommit = true;
                 Publisher.Transaction.Value = capTransaction;
-                await Publish( name, data, callback );
+                await Publish(name, data, callback);
                 return;
             }
-            TransactionActionManager.Register( async transaction =>
+
+            TransactionActionManager.Register(async transaction =>
             {
                 capTransaction.DbTransaction = transaction;
                 capTransaction.AutoCommit = false;
                 Publisher.Transaction.Value = capTransaction;
-                await Publish( name, data, callback );
-            } );
+                await Publish(name, data, callback);
+            });
         }
 
         /// <summary>
@@ -73,28 +78,28 @@ namespace KissU.Util.Events.Cap
         /// </summary>
         private CapTransactionBase GetCapTransaction()
         {
-            return (CapTransactionBase)Publisher.ServiceProvider.GetService(typeof( CapTransactionBase ) );
+            return (CapTransactionBase) Publisher.ServiceProvider.GetService(typeof(CapTransactionBase));
         }
 
         /// <summary>
         /// 发布事件
         /// </summary>
-        private async Task Publish( string name, object data, string callback )
+        private async Task Publish(string name, object data, string callback)
         {
-            await Publisher.PublishAsync( name, data, callback );
-            WriteLog( name );
+            await Publisher.PublishAsync(name, data, callback);
+            WriteLog(name);
         }
 
         /// <summary>
         /// 写日志
         /// </summary>
-        private void WriteLog( string name )
+        private void WriteLog(string name)
         {
             var log = GetLog();
-            if( log.IsDebugEnabled == false )
+            if (log.IsDebugEnabled == false)
                 return;
-            log.Caption( "Cap发送事件完成" )
-                .Content( $"消息名称:{name}" )
+            log.Caption("Cap发送事件完成")
+                .Content($"消息名称:{name}")
                 .Debug();
         }
 
@@ -105,7 +110,7 @@ namespace KissU.Util.Events.Cap
         {
             try
             {
-                return Log.GetLog( this );
+                return Log.GetLog(this);
             }
             catch
             {

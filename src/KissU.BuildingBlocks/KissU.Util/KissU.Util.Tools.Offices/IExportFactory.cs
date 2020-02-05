@@ -9,6 +9,7 @@
         /// 创建文件导出
         /// </summary>
         /// <param name="format">导出格式</param>
-        IExport Create( ExportFormat format = ExportFormat.Xlsx );
+        /// <returns>IExport.</returns>
+        IExport Create(ExportFormat format = ExportFormat.Xlsx);
     }
 }

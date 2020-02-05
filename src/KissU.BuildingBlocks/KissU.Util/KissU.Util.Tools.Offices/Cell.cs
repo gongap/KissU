@@ -7,13 +7,17 @@ namespace KissU.Util.Tools.Offices
     /// </summary>
     public class Cell
     {
+        private int _columnSpan;
+
+        private int _rowSpan;
+
         /// <summary>
         /// 初始化单元格
         /// </summary>
         /// <param name="value">值</param>
         /// <param name="columnSpan">列跨度</param>
         /// <param name="rowSpan">行跨度</param>
-        public Cell( object value,int columnSpan = 1,int rowSpan = 1 )
+        public Cell(object value, int columnSpan = 1, int rowSpan = 1)
         {
             Value = value;
             ColumnSpan = columnSpan;
@@ -30,8 +34,6 @@ namespace KissU.Util.Tools.Offices
         /// </summary>
         public object Value { get; set; }
 
-        private int _columnSpan;
-
         /// <summary>
         /// 列跨度
         /// </summary>
@@ -40,13 +42,11 @@ namespace KissU.Util.Tools.Offices
             get => _columnSpan;
             set
             {
-                if ( value < 1 )
+                if (value < 1)
                     value = 1;
                 _columnSpan = value;
             }
         }
-
-        private int _rowSpan;
 
         /// <summary>
         /// 行跨度
@@ -56,7 +56,7 @@ namespace KissU.Util.Tools.Offices
             get => _rowSpan;
             set
             {
-                if ( value < 1 )
+                if (value < 1)
                     value = 1;
                 _rowSpan = value;
             }
@@ -69,7 +69,7 @@ namespace KissU.Util.Tools.Offices
         {
             get
             {
-                Row.CheckNull( "Row" );
+                Row.CheckNull("Row");
                 return Row.RowIndex;
             }
         }
@@ -97,6 +97,7 @@ namespace KissU.Util.Tools.Offices
         /// <summary>
         /// 是否为空单元格
         /// </summary>
+        /// <returns><c>true</c> if this instance is null; otherwise, <c>false</c>.</returns>
         public virtual bool IsNull()
         {
             return false;

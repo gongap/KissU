@@ -9,15 +9,9 @@ namespace KissU.Util.Tools.Offices.Npoi
     public class CellStyleResolver
     {
         /// <summary>
-        /// 初始化单元格样式解析器
+        /// 单元格样式
         /// </summary>
-        /// <param name="workbook">工作薄</param>
-        /// <param name="style">单元格样式</param>
-        private CellStyleResolver( IWorkbook workbook,CellStyle style )
-        {
-            _workbook = workbook;
-            _style = style;
-        }
+        private readonly CellStyle _style;
 
         /// <summary>
         /// 工作薄
@@ -27,16 +21,23 @@ namespace KissU.Util.Tools.Offices.Npoi
         /// <summary>
         /// 单元格样式
         /// </summary>
-        private readonly CellStyle _style;
+        private ICellStyle _result;
 
         /// <summary>
-        /// 单元格样式
+        /// 初始化单元格样式解析器
         /// </summary>
-        private ICellStyle _result;
+        /// <param name="workbook">工作薄</param>
+        /// <param name="style">单元格样式</param>
+        private CellStyleResolver(IWorkbook workbook, CellStyle style)
+        {
+            _workbook = workbook;
+            _style = style;
+        }
 
         /// <summary>
         /// 解析为Npoi单元格样式
         /// </summary>
+        /// <returns>ICellStyle.</returns>
         public ICellStyle Resolve()
         {
             _result = _workbook.CreateCellStyle();
@@ -55,9 +56,9 @@ namespace KissU.Util.Tools.Offices.Npoi
         /// </summary>
         private HorizontalAlignment GetHorizontalAlignment()
         {
-            if ( _style.Alignment == Core.HorizontalAlignment.Left )
+            if (_style.Alignment == Core.HorizontalAlignment.Left)
                 return HorizontalAlignment.Left;
-            if ( _style.Alignment == Core.HorizontalAlignment.Right )
+            if (_style.Alignment == Core.HorizontalAlignment.Right)
                 return HorizontalAlignment.Right;
             return HorizontalAlignment.Center;
         }
@@ -67,9 +68,9 @@ namespace KissU.Util.Tools.Offices.Npoi
         /// </summary>
         private VerticalAlignment GetVerticalAlignment()
         {
-            if ( _style.VerticalAlignment == Core.VerticalAlignment.Top )
+            if (_style.VerticalAlignment == Core.VerticalAlignment.Top)
                 return VerticalAlignment.Top;
-            if ( _style.VerticalAlignment == Core.VerticalAlignment.Bottom )
+            if (_style.VerticalAlignment == Core.VerticalAlignment.Bottom)
                 return VerticalAlignment.Bottom;
             return VerticalAlignment.Center;
         }
@@ -79,7 +80,7 @@ namespace KissU.Util.Tools.Offices.Npoi
         /// </summary>
         private void SetBackgroundColor()
         {
-            _result.FillForegroundColor = ColorResolver.Resolve( _style.BackgroundColor );
+            _result.FillForegroundColor = ColorResolver.Resolve(_style.BackgroundColor);
         }
 
         /// <summary>
@@ -87,7 +88,7 @@ namespace KissU.Util.Tools.Offices.Npoi
         /// </summary>
         private void SetFillPattern()
         {
-            _result.FillPattern = Enum.Parse<FillPattern>( _style.FillPattern );
+            _result.FillPattern = Enum.Parse<FillPattern>(_style.FillPattern);
         }
 
         /// <summary>
@@ -99,10 +100,10 @@ namespace KissU.Util.Tools.Offices.Npoi
             _result.BorderRight = BorderStyle.Thin;
             _result.BorderBottom = BorderStyle.Thin;
             _result.BorderLeft = BorderStyle.Thin;
-            _result.TopBorderColor = ColorResolver.Resolve( _style.BorderColor );
-            _result.RightBorderColor = ColorResolver.Resolve( _style.BorderColor );
-            _result.BottomBorderColor = ColorResolver.Resolve( _style.BorderColor );
-            _result.LeftBorderColor = ColorResolver.Resolve( _style.BorderColor );
+            _result.TopBorderColor = ColorResolver.Resolve(_style.BorderColor);
+            _result.RightBorderColor = ColorResolver.Resolve(_style.BorderColor);
+            _result.BottomBorderColor = ColorResolver.Resolve(_style.BorderColor);
+            _result.LeftBorderColor = ColorResolver.Resolve(_style.BorderColor);
         }
 
         /// <summary>
@@ -112,9 +113,9 @@ namespace KissU.Util.Tools.Offices.Npoi
         {
             var font = _workbook.CreateFont();
             font.FontHeightInPoints = _style.FontSize;
-            font.Color = ColorResolver.Resolve( _style.FontColor );
+            font.Color = ColorResolver.Resolve(_style.FontColor);
             font.Boldweight = _style.FontBoldWeight;
-            _result.SetFont( font );
+            _result.SetFont(font);
         }
 
         /// <summary>
@@ -122,9 +123,10 @@ namespace KissU.Util.Tools.Offices.Npoi
         /// </summary>
         /// <param name="workbook">工作薄</param>
         /// <param name="style">单元格样式</param>
-        public static ICellStyle Resolve( IWorkbook workbook,CellStyle style )
+        /// <returns>ICellStyle.</returns>
+        public static ICellStyle Resolve(IWorkbook workbook, CellStyle style)
         {
-            return new CellStyleResolver( workbook, style ).Resolve();
+            return new CellStyleResolver(workbook, style).Resolve();
         }
     }
 }

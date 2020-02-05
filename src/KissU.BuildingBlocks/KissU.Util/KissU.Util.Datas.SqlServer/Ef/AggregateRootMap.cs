@@ -13,9 +13,10 @@ namespace KissU.Util.Datas.SqlServer.Ef
         /// <summary>
         /// 映射乐观离线锁
         /// </summary>
-        protected override void MapVersion( EntityTypeBuilder<TEntity> builder )
+        /// <param name="builder">The builder.</param>
+        protected override void MapVersion(EntityTypeBuilder<TEntity> builder)
         {
-            builder.Property( t => t.Version ).IsRowVersion();
+            builder.Property(t => t.Version).IsRowVersion();
         }
     }
 }

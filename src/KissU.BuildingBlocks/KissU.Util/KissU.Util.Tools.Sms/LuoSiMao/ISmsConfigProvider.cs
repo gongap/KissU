@@ -10,6 +10,7 @@ namespace KissU.Util.Tools.Sms.LuoSiMao
         /// <summary>
         /// 获取配置
         /// </summary>
+        /// <returns>Task&lt;SmsConfig&gt;.</returns>
         Task<SmsConfig> GetConfigAsync();
     }
 }

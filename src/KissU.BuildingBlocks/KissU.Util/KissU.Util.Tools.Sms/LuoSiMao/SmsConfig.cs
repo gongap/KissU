@@ -9,7 +9,7 @@
         /// 初始化短信配置
         /// </summary>
         /// <param name="key">密钥</param>
-        public SmsConfig( string key )
+        public SmsConfig(string key)
         {
             Key = key;
         }

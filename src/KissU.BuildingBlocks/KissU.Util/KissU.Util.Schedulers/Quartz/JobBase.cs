@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using KissU.Util.Dependency;
 using KissU.Util.Helpers;
-using Quartz;
 using Qz = Quartz;
 
 namespace KissU.Util.Schedulers.Quartz
@@ -10,20 +9,22 @@ namespace KissU.Util.Schedulers.Quartz
     /// <summary>
     /// Quartz作业
     /// </summary>
-    public abstract class JobBase : IJob,Qz.IJob
+    public abstract class JobBase : IJob, Qz.IJob
     {
-        /// <summary>
-        /// 作业名称
-        /// </summary>
-        private readonly string _jobName;
-        /// <summary>
-        /// 触发器名称
-        /// </summary>
-        private readonly string _triggerName;
         /// <summary>
         /// 组名称
         /// </summary>
         private readonly string _groupName;
+
+        /// <summary>
+        /// 作业名称
+        /// </summary>
+        private readonly string _jobName;
+
+        /// <summary>
+        /// 触发器名称
+        /// </summary>
+        private readonly string _triggerName;
 
         /// <summary>
         /// 初始化
@@ -36,8 +37,29 @@ namespace KissU.Util.Schedulers.Quartz
         }
 
         /// <summary>
+        /// 执行
+        /// </summary>
+        /// <param name="context">执行上下文</param>
+        /// <remarks>
+        /// The implementation may wish to set a  result object on the
+        /// JobExecutionContext before this method exits.  The result itself
+        /// is meaningless to Quartz, but may be informative to
+        /// <see cref="T:Quartz.IJobListener" />s or
+        /// <see cref="T:Quartz.ITriggerListener" />s that are watching the job's
+        /// execution.
+        /// </remarks>
+        public async Task Execute(Qz.IJobExecutionContext context)
+        {
+            using (var scope = Ioc.BeginScope())
+            {
+                await Execute(context, scope);
+            }
+        }
+
+        /// <summary>
         /// 获取作业名称
         /// </summary>
+        /// <returns>System.String.</returns>
         public virtual string GetJobName()
         {
             return _jobName;
@@ -46,6 +68,7 @@ namespace KissU.Util.Schedulers.Quartz
         /// <summary>
         /// 获取触发器名称
         /// </summary>
+        /// <returns>System.String.</returns>
         public virtual string GetTriggerName()
         {
             return _triggerName;
@@ -54,6 +77,7 @@ namespace KissU.Util.Schedulers.Quartz
         /// <summary>
         /// 获取组名称
         /// </summary>
+        /// <returns>System.String.</returns>
         public virtual string GetGroupName()
         {
             return _groupName;
@@ -62,6 +86,7 @@ namespace KissU.Util.Schedulers.Quartz
         /// <summary>
         /// 获取Cron表达式
         /// </summary>
+        /// <returns>System.String.</returns>
         public virtual string GetCron()
         {
             return null;
@@ -70,6 +95,7 @@ namespace KissU.Util.Schedulers.Quartz
         /// <summary>
         /// 获取重复执行次数，默认返回null，表示持续重复执行
         /// </summary>
+        /// <returns>System.Nullable&lt;System.Int32&gt;.</returns>
         public virtual int? GetRepeatCount()
         {
             return null;
@@ -78,6 +104,7 @@ namespace KissU.Util.Schedulers.Quartz
         /// <summary>
         /// 获取开始执行时间
         /// </summary>
+        /// <returns>System.Nullable&lt;DateTimeOffset&gt;.</returns>
         public virtual DateTimeOffset? GetStartTime()
         {
             return null;
@@ -86,6 +113,7 @@ namespace KissU.Util.Schedulers.Quartz
         /// <summary>
         /// 获取结束执行时间
         /// </summary>
+        /// <returns>System.Nullable&lt;DateTimeOffset&gt;.</returns>
         public virtual DateTimeOffset? GetEndTime()
         {
             return null;
@@ -94,6 +122,7 @@ namespace KissU.Util.Schedulers.Quartz
         /// <summary>
         /// 获取重复执行间隔时间
         /// </summary>
+        /// <returns>System.Nullable&lt;TimeSpan&gt;.</returns>
         public virtual TimeSpan? GetInterval()
         {
             return null;
@@ -102,6 +131,7 @@ namespace KissU.Util.Schedulers.Quartz
         /// <summary>
         /// 获取重复执行间隔时间，单位：小时
         /// </summary>
+        /// <returns>System.Nullable&lt;System.Int32&gt;.</returns>
         public virtual int? GetIntervalInHours()
         {
             return null;
@@ -110,6 +140,7 @@ namespace KissU.Util.Schedulers.Quartz
         /// <summary>
         /// 获取重复执行间隔时间，单位：分
         /// </summary>
+        /// <returns>System.Nullable&lt;System.Int32&gt;.</returns>
         public virtual int? GetIntervalInMinutes()
         {
             return null;
@@ -118,6 +149,7 @@ namespace KissU.Util.Schedulers.Quartz
         /// <summary>
         /// 获取重复执行间隔时间，单位：秒
         /// </summary>
+        /// <returns>System.Nullable&lt;System.Int32&gt;.</returns>
         public virtual int? GetIntervalInSeconds()
         {
             return null;
@@ -126,20 +158,9 @@ namespace KissU.Util.Schedulers.Quartz
         /// <summary>
         /// 执行
         /// </summary>
-        /// <param name="context">执行上下文</param>
-        public async Task Execute( IJobExecutionContext context )
-        {
-            using ( var scope = Ioc.BeginScope() )
-            {
-                await Execute( context, scope );
-            }
-        }
-
-        /// <summary>
-        /// 执行
-        /// </summary>
         /// <param name="context">上下文</param>
         /// <param name="scope">作用域</param>
-        protected abstract Task Execute( IJobExecutionContext context, IScope scope );
+        /// <returns>Task.</returns>
+        protected abstract Task Execute(Qz.IJobExecutionContext context, IScope scope);
     }
 }
