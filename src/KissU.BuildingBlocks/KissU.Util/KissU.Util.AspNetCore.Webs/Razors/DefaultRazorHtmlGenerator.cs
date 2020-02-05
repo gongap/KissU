@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewEngines;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Routing;
+using File = System.IO.File;
 
 namespace KissU.Util.AspNetCore.Webs.Razors
 {
@@ -24,7 +25,7 @@ namespace KissU.Util.AspNetCore.Webs.Razors
         private readonly IRouteAnalyzer _routeAnalyzer;
 
         /// <summary>
-        /// 初始化一个<see cref="DefaultRazorHtmlGenerator"/>类型的实例
+        /// 初始化一个<see cref="DefaultRazorHtmlGenerator" />类型的实例
         /// </summary>
         /// <param name="routeAnalyzer">路由分析器</param>
         public DefaultRazorHtmlGenerator(IRouteAnalyzer routeAnalyzer)
@@ -45,6 +46,7 @@ namespace KissU.Util.AspNetCore.Webs.Razors
                 {
                     continue;
                 }
+
                 await WriteViewToFileAsync(routeInformation);
             }
         }
@@ -59,17 +61,21 @@ namespace KissU.Util.AspNetCore.Webs.Razors
             var razorViewEngine = Ioc.Create<IRazorViewEngine>();
             var tempDataProvider = Ioc.Create<ITempDataProvider>();
             var serviceProvider = Ioc.Create<IServiceProvider>();
-            var httpContext = new DefaultHttpContext { RequestServices = serviceProvider };
+            var httpContext = new DefaultHttpContext {RequestServices = serviceProvider};
             var actionContext = new ActionContext(httpContext, GetRouteData(info), new ActionDescriptor());
             var viewResult = GetView(razorViewEngine, actionContext, info);
             if (!viewResult.Success)
             {
                 throw new InvalidOperationException($"找不到视图模板 {info.ActionName}");
             }
+
             using (var stringWriter = new StringWriter())
             {
-                var viewDictionary = new ViewDataDictionary(new EmptyModelMetadataProvider(), new ModelStateDictionary());
-                var viewContext = new ViewContext(actionContext, viewResult.View, viewDictionary, new TempDataDictionary(actionContext.HttpContext, tempDataProvider), stringWriter, new HtmlHelperOptions());
+                var viewDictionary =
+                    new ViewDataDictionary(new EmptyModelMetadataProvider(), new ModelStateDictionary());
+                var viewContext = new ViewContext(actionContext, viewResult.View, viewDictionary,
+                    new TempDataDictionary(actionContext.HttpContext, tempDataProvider), stringWriter,
+                    new HtmlHelperOptions());
                 await viewResult.View.RenderAsync(viewContext);
                 return stringWriter.ToString();
             }
@@ -85,7 +91,7 @@ namespace KissU.Util.AspNetCore.Webs.Razors
             var engine = Ioc.Create<ICompositeViewEngine>();
             var serviceProvider = Ioc.Create<IServiceProvider>();
             var tempDataProvider = Ioc.Create<ITempDataProvider>();
-            var httpContext = new DefaultHttpContext { RequestServices = serviceProvider };
+            var httpContext = new DefaultHttpContext {RequestServices = serviceProvider};
             var viewResult = GetView(engine, info);
             if (!viewResult.Success)
             {
@@ -95,8 +101,11 @@ namespace KissU.Util.AspNetCore.Webs.Razors
             using (var output = new StringWriter())
             {
                 var actionContext = new ActionContext(httpContext, GetRouteData(info), new ActionDescriptor());
-                var viewDictionary = new ViewDataDictionary(new EmptyModelMetadataProvider(), new ModelStateDictionary());
-                var viewContext = new ViewContext(actionContext, viewResult.View, viewDictionary, new TempDataDictionary(actionContext.HttpContext, tempDataProvider), output, new HtmlHelperOptions());
+                var viewDictionary =
+                    new ViewDataDictionary(new EmptyModelMetadataProvider(), new ModelStateDictionary());
+                var viewContext = new ViewContext(actionContext, viewResult.View, viewDictionary,
+                    new TempDataDictionary(actionContext.HttpContext, tempDataProvider), output,
+                    new HtmlHelperOptions());
                 await viewResult.View.RenderAsync(viewContext);
                 return output.ToString();
             }
@@ -116,13 +125,15 @@ namespace KissU.Util.AspNetCore.Webs.Razors
                     : await RenderActionViewToStringAsync(info);
                 if (string.IsNullOrWhiteSpace(html))
                     return;
-                var path = Util.Helpers.Common.GetPhysicalPath(string.IsNullOrWhiteSpace(info.FilePath) ? GetPath(info) : info.FilePath);
-                var directory = System.IO.Path.GetDirectoryName(path);
+                var path = Common.GetPhysicalPath(string.IsNullOrWhiteSpace(info.FilePath)
+                    ? GetPath(info)
+                    : info.FilePath);
+                var directory = Path.GetDirectoryName(path);
                 if (string.IsNullOrWhiteSpace(directory))
                     return;
                 if (Directory.Exists(directory) == false)
                     Directory.CreateDirectory(directory);
-                System.IO.File.WriteAllText(path, html);
+                File.WriteAllText(path, html);
             }
             catch (Exception ex)
             {
@@ -142,7 +153,8 @@ namespace KissU.Util.AspNetCore.Webs.Razors
                 var area = info.AreaName.SafeString();
                 var controller = info.ControllerName.SafeString();
                 var action = info.ActionName.SafeString();
-                var path = info.TemplatePath.Replace("{area}", area).Replace("{controller}", controller).Replace("{action}", action);
+                var path = info.TemplatePath.Replace("{area}", area).Replace("{controller}", controller)
+                    .Replace("{action}", action);
                 return path.ToLower();
             }
 
@@ -150,6 +162,7 @@ namespace KissU.Util.AspNetCore.Webs.Razors
             {
                 return info.FilePath.ToLower();
             }
+
             var paths = info.Path.TrimStart('/').Split('/');
             if (paths.Length >= 3)
             {
@@ -157,6 +170,7 @@ namespace KissU.Util.AspNetCore.Webs.Razors
                     .Replace("{controller}", paths[1])
                     .Replace("{action}", JoinActionUrl(paths));
             }
+
             return string.Empty;
         }
 
@@ -173,6 +187,7 @@ namespace KissU.Util.AspNetCore.Webs.Razors
                 result.Append(paths[i]);
                 result.Append("/");
             }
+
             return result.ToString().TrimEnd('/');
         }
 
@@ -183,7 +198,8 @@ namespace KissU.Util.AspNetCore.Webs.Razors
         /// <param name="actionContext">操作上下文</param>
         /// <param name="info">路由信息</param>
         /// <returns></returns>
-        protected virtual ViewEngineResult GetView(IRazorViewEngine razorViewEngine, ActionContext actionContext, RouteInformation info)
+        protected virtual ViewEngineResult GetView(IRazorViewEngine razorViewEngine, ActionContext actionContext,
+            RouteInformation info)
         {
             return razorViewEngine.FindView(actionContext, info.ViewName.IsEmpty() ? info.ActionName : info.ViewName,
                 !info.IsPartialView);
@@ -212,10 +228,12 @@ namespace KissU.Util.AspNetCore.Webs.Razors
             {
                 routeData.Values.Add("area", info.AreaName);
             }
+
             if (!info.ControllerName.IsEmpty())
             {
                 routeData.Values.Add("controller", info.ControllerName);
             }
+
             if (!info.ActionName.IsEmpty())
             {
                 routeData.Values.Add("action", info.ActionName);
@@ -225,6 +243,7 @@ namespace KissU.Util.AspNetCore.Webs.Razors
             {
                 routeData.Values.Add("page", info.Path);
             }
+
             return routeData;
         }
     }

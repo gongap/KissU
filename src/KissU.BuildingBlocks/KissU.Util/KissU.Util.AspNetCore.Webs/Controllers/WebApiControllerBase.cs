@@ -14,7 +14,7 @@ namespace KissU.Util.AspNetCore.Webs.Controllers
     [ExceptionHandler]
     [ErrorLog]
     [TraceLog]
-    public abstract partial class WebApiControllerBase : Controller
+    public abstract class WebApiControllerBase : Controller
     {
         /// <summary>
         /// 日志
@@ -25,6 +25,11 @@ namespace KissU.Util.AspNetCore.Webs.Controllers
         /// 日志
         /// </summary>
         public ILog Log => _log ?? (_log = GetLog());
+
+        /// <summary>
+        /// 会话
+        /// </summary>
+        public virtual ISession Session => Sessions.Session.Instance;
 
         /// <summary>
         /// 获取日志操作
@@ -40,11 +45,6 @@ namespace KissU.Util.AspNetCore.Webs.Controllers
                 return Util.Logs.Log.Null;
             }
         }
-
-        /// <summary>
-        /// 会话
-        /// </summary>
-        public virtual ISession Session => AspNetCore.Sessions.Session.Instance;
 
         /// <summary>
         /// 返回成功消息

@@ -15,8 +15,8 @@ namespace KissU.Util.AspNetCore.Webs.Controllers
     /// 查询控制器
     /// </summary>
     /// <typeparam name="TDto">数据传输对象类型</typeparam>
-    /// <typeparam name="TQuery">查询参数类型</typeparam>    
-    public abstract partial class QueryControllerBase<TDto, TQuery> : WebApiControllerBase
+    /// <typeparam name="TQuery">查询参数类型</typeparam>
+    public abstract class QueryControllerBase<TDto, TQuery> : WebApiControllerBase
         where TQuery : IQueryParameter
         where TDto : IDto, new()
     {
@@ -37,10 +37,10 @@ namespace KissU.Util.AspNetCore.Webs.Controllers
         /// <summary>
         /// 获取单个实例
         /// </summary>
-        /// <remarks> 
-        /// 调用范例: 
+        /// <remarks>
+        /// 调用范例:
         /// GET
-        /// /api/customer/1 
+        /// /api/customer/1
         /// </remarks>
         /// <param name="id">标识</param>
         [HttpGet("{id}")]
@@ -53,8 +53,8 @@ namespace KissU.Util.AspNetCore.Webs.Controllers
         /// <summary>
         /// 分页查询
         /// </summary>
-        /// <remarks> 
-        /// 调用范例: 
+        /// <remarks>
+        /// 调用范例:
         /// GET
         /// /api/customer?name=a
         /// </remarks>
@@ -87,8 +87,8 @@ namespace KissU.Util.AspNetCore.Webs.Controllers
         /// <summary>
         /// 查询
         /// </summary>
-        /// <remarks> 
-        /// 调用范例: 
+        /// <remarks>
+        /// 调用范例:
         /// GET
         /// /api/customer/query?name=a
         /// </remarks>

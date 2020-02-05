@@ -22,7 +22,7 @@ namespace KissU.Util.AspNetCore.Webs.Middlewares
         private readonly RealIpOptions _options;
 
         /// <summary>
-        /// 初始化一个<see cref="RealIpMiddleware"/>类型的实例
+        /// 初始化一个<see cref="RealIpMiddleware" />类型的实例
         /// </summary>
         /// <param name="next">方法</param>
         /// <param name="options">真实Ip选项</param>

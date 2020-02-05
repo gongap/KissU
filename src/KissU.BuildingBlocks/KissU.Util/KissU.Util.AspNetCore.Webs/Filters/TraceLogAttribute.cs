@@ -173,7 +173,7 @@ namespace KissU.Util.AspNetCore.Webs.Filters
         {
             if (!(context.Result is Result result))
                 return;
-            log.Content($"响应消息: { result.Message}")
+            log.Content($"响应消息: {result.Message}")
                 .Content("响应结果:")
                 .Content($"{Json.ToJson(result.Data)}");
         }

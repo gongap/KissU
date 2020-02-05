@@ -26,7 +26,7 @@ namespace KissU.Util.AspNetCore.Properties {
         private static global::System.Globalization.CultureInfo resourceCulture;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="WebResource"/> class.
+        /// Initializes a new instance of the <see cref="WebResource" /> class.
         /// </summary>
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal WebResource() {

@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewEngines;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using File = System.IO.File;
 
 namespace KissU.Util.AspNetCore.Webs.Filters
 {
@@ -61,13 +62,13 @@ namespace KissU.Util.AspNetCore.Webs.Filters
                 var html = await RenderToStringAsync(context);
                 if (string.IsNullOrWhiteSpace(html))
                     return;
-                var path = Util.Helpers.Common.GetPhysicalPath(string.IsNullOrWhiteSpace(Path) ? GetPath(context) : Path);
+                var path = Common.GetPhysicalPath(string.IsNullOrWhiteSpace(Path) ? GetPath(context) : Path);
                 var directory = System.IO.Path.GetDirectoryName(path);
                 if (string.IsNullOrWhiteSpace(directory))
                     return;
                 if (Directory.Exists(directory) == false)
                     Directory.CreateDirectory(directory);
-                System.IO.File.WriteAllText(path, html);
+                File.WriteAllText(path, html);
             }
             catch (Exception ex)
             {
@@ -80,13 +81,15 @@ namespace KissU.Util.AspNetCore.Webs.Filters
         /// </summary>
         protected async Task<string> RenderToStringAsync(ResultExecutingContext context)
         {
-            string viewName = "";
+            var viewName = "";
             object model = null;
-            bool isPage = false;
+            var isPage = false;
             if (context.Result is ViewResult result)
             {
                 viewName = result.ViewName;
-                viewName = string.IsNullOrWhiteSpace(viewName) ? context.RouteData.Values["action"].SafeString() : viewName;
+                viewName = string.IsNullOrWhiteSpace(viewName)
+                    ? context.RouteData.Values["action"].SafeString()
+                    : viewName;
                 model = result.Model;
             }
 
@@ -99,11 +102,12 @@ namespace KissU.Util.AspNetCore.Webs.Filters
                     viewName = pageActionDescriptor.RelativePath;
                 }
             }
+
             var razorViewEngine = Ioc.Create<IRazorViewEngine>();
             var compositeViewEngine = Ioc.Create<ICompositeViewEngine>();
             var tempDataProvider = Ioc.Create<ITempDataProvider>();
             var serviceProvider = Ioc.Create<IServiceProvider>();
-            var httpContext = new DefaultHttpContext { RequestServices = serviceProvider };
+            var httpContext = new DefaultHttpContext {RequestServices = serviceProvider};
             var actionContext = new ActionContext(httpContext, context.RouteData, new ActionDescriptor());
             using (var stringWriter = new StringWriter())
             {
@@ -112,8 +116,12 @@ namespace KissU.Util.AspNetCore.Webs.Filters
                     : GetView(razorViewEngine, actionContext, viewName);
                 if (viewResult.View == null)
                     throw new ArgumentNullException($"未找到视图： {viewName}");
-                var viewDictionary = new ViewDataDictionary(new EmptyModelMetadataProvider(), new ModelStateDictionary()) { Model = model };
-                var viewContext = new ViewContext(actionContext, viewResult.View, viewDictionary, new TempDataDictionary(actionContext.HttpContext, tempDataProvider), stringWriter, new HtmlHelperOptions());
+                var viewDictionary =
+                    new ViewDataDictionary(new EmptyModelMetadataProvider(), new ModelStateDictionary())
+                        {Model = model};
+                var viewContext = new ViewContext(actionContext, viewResult.View, viewDictionary,
+                    new TempDataDictionary(actionContext.HttpContext, tempDataProvider), stringWriter,
+                    new HtmlHelperOptions());
                 await viewResult.View.RenderAsync(viewContext);
                 return stringWriter.ToString();
             }
@@ -156,8 +164,10 @@ namespace KissU.Util.AspNetCore.Webs.Filters
                         .Replace("{controller}", paths[1])
                         .Replace("{action}", JoinActionUrl(paths));
                 }
+
                 return string.Empty;
             }
+
             var area = context.RouteData.Values["area"].SafeString();
             var controller = context.RouteData.Values["controller"].SafeString();
             var action = context.RouteData.Values["action"].SafeString();
@@ -178,6 +188,7 @@ namespace KissU.Util.AspNetCore.Webs.Filters
                 result.Append(paths[i]);
                 result.Append("/");
             }
+
             return result.ToString().TrimEnd('/');
         }
     }

@@ -11,7 +11,7 @@ namespace KissU.Util.AspNetCore.Webs.Controllers.Trees
     /// <typeparam name="TDto">数据传输对象类型</typeparam>
     /// <typeparam name="TQuery">查询参数类型</typeparam>
     /// <typeparam name="TParentId">父标识类型</typeparam>
-    public abstract partial class ControllerBase<TDto, TQuery, TParentId> : WebApiControllerBase
+    public abstract class ControllerBase<TDto, TQuery, TParentId> : WebApiControllerBase
         where TDto : class, ITreeNode, new()
         where TQuery : class, ITreeQueryParameter<TParentId>
     {
@@ -40,10 +40,10 @@ namespace KissU.Util.AspNetCore.Webs.Controllers.Trees
         /// <summary>
         /// 获取单个实例
         /// </summary>
-        /// <remarks> 
-        /// 调用范例: 
+        /// <remarks>
+        /// 调用范例:
         /// GET
-        /// /api/customer/1 
+        /// /api/customer/1
         /// </remarks>
         /// <param name="id">标识</param>
         [HttpGet("{id}")]
@@ -74,7 +74,7 @@ namespace KissU.Util.AspNetCore.Webs.Controllers.Trees
         /// </summary>
         /// <remarks>
         /// 调用范例:
-        /// POST   
+        /// POST
         /// /api/customer/delete
         /// body: "'1,2,3'"
         /// </remarks>
@@ -113,9 +113,10 @@ namespace KissU.Util.AspNetCore.Webs.Controllers.Trees
         /// <summary>
         /// 交换排序
         /// </summary>
-        /// /// <remarks>
+        /// ///
+        /// <remarks>
         /// 调用范例:
-        /// POST   
+        /// POST
         /// /api/customer/SwapSort
         /// body: "'1,2'"
         /// </remarks>
@@ -132,7 +133,7 @@ namespace KissU.Util.AspNetCore.Webs.Controllers.Trees
 
         /// <summary>
         /// 修正排序
-        /// </summary> 
+        /// </summary>
         /// <param name="parameter">查询参数</param>
         [HttpPost("fix")]
         public virtual async Task<IActionResult> FixAsync([FromBody] TQuery parameter)

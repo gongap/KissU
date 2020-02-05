@@ -24,11 +24,12 @@ namespace KissU.Util.AspNetCore.Webs.Razors
         private readonly IPageLoader _pageLoader;
 
         /// <summary>
-        /// 初始化一个<see cref="RouteAnalyzer"/>类型的实例
+        /// 初始化一个<see cref="RouteAnalyzer" />类型的实例
         /// </summary>
         /// <param name="actionDescriptorCollectionProvider">操作描述集合提供程序</param>
         /// <param name="pageLoader">页面加载器</param>
-        public RouteAnalyzer(IActionDescriptorCollectionProvider actionDescriptorCollectionProvider, IPageLoader pageLoader)
+        public RouteAnalyzer(IActionDescriptorCollectionProvider actionDescriptorCollectionProvider,
+            IPageLoader pageLoader)
         {
             _actionDescriptorCollectionProvider = actionDescriptorCollectionProvider;
             _pageLoader = pageLoader;
@@ -39,16 +40,17 @@ namespace KissU.Util.AspNetCore.Webs.Razors
         /// </summary>
         public IEnumerable<RouteInformation> GetAllRouteInformations()
         {
-            List<RouteInformation> list = new List<RouteInformation>();
+            var list = new List<RouteInformation>();
 
-            var actionDescriptors = this._actionDescriptorCollectionProvider.ActionDescriptors.Items;
+            var actionDescriptors = _actionDescriptorCollectionProvider.ActionDescriptors.Items;
             foreach (var actionDescriptor in actionDescriptors)
             {
-                RouteInformation info = new RouteInformation();
+                var info = new RouteInformation();
                 if (actionDescriptor.RouteValues.ContainsKey("area"))
                 {
                     info.AreaName = actionDescriptor.RouteValues["area"];
                 }
+
                 // Razor页面路径以及调用
                 if (actionDescriptor is PageActionDescriptor pageActionDescriptor)
                 {
@@ -60,25 +62,32 @@ namespace KissU.Util.AspNetCore.Webs.Razors
                     {
                         list.Add(info);
                     }
+
                     continue;
                 }
+
                 // 路由属性路径
                 if (actionDescriptor.AttributeRouteInfo != null)
                 {
                     info.Path = $"/{actionDescriptor.AttributeRouteInfo.Template}";
                 }
+
                 // Controller/Action 的路径以及调用
                 if (actionDescriptor is ControllerActionDescriptor controllerActionDescriptor)
                 {
                     if (info.Path.IsEmpty())
                     {
-                        info.Path = $"/{controllerActionDescriptor.ControllerName}/{controllerActionDescriptor.ActionName}";
+                        info.Path =
+                            $"/{controllerActionDescriptor.ControllerName}/{controllerActionDescriptor.ActionName}";
                     }
+
                     SetHtmlInfo(info, controllerActionDescriptor);
                     info.ControllerName = controllerActionDescriptor.ControllerName;
                     info.ActionName = controllerActionDescriptor.ActionName;
-                    info.Invocation = $"{controllerActionDescriptor.ControllerName}Controller.{controllerActionDescriptor.ActionName}";
+                    info.Invocation =
+                        $"{controllerActionDescriptor.ControllerName}Controller.{controllerActionDescriptor.ActionName}";
                 }
+
                 info.Invocation += $"({actionDescriptor.DisplayName})";
                 list.Add(info);
             }

@@ -36,7 +36,7 @@ namespace KissU.Util.AspNetCore.Webs.Extensions
                 {
                     var tokens = antiforgery.GetAndStoreTokens(context);
                     context.Response.Cookies.Append("XSRF-TOKEN", tokens.RequestToken,
-                        new CookieOptions() {HttpOnly = false});
+                        new CookieOptions {HttpOnly = false});
                 }
 
                 return next(context);

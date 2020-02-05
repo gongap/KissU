@@ -9,6 +9,19 @@ namespace KissU.Util.AspNetCore.Webs.Commons
     public class Result : JsonResult
     {
         /// <summary>
+        /// 初始化返回结果
+        /// </summary>
+        /// <param name="code">状态码</param>
+        /// <param name="message">消息</param>
+        /// <param name="data">数据</param>
+        public Result(StateCode code, string message, dynamic data = null) : base(null)
+        {
+            Code = code;
+            Message = message;
+            Data = data;
+        }
+
+        /// <summary>
         /// 状态码
         /// </summary>
         public StateCode Code { get; }
@@ -24,24 +37,11 @@ namespace KissU.Util.AspNetCore.Webs.Commons
         public dynamic Data { get; }
 
         /// <summary>
-        /// 初始化返回结果
-        /// </summary>
-        /// <param name="code">状态码</param>
-        /// <param name="message">消息</param>
-        /// <param name="data">数据</param>
-        public Result(StateCode code, string message, dynamic data = null) : base(null)
-        {
-            Code = code;
-            Message = message;
-            Data = data;
-        }
-
-        /// <summary>
         /// 执行结果
         /// </summary>
         public override Task ExecuteResultAsync(ActionContext context)
         {
-            this.Value = new
+            Value = new
             {
                 Code = Code.Value(),
                 Message,

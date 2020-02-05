@@ -51,6 +51,7 @@ namespace KissU.Util.AspNetCore.Webs.Filters
                     context.Result = new Result(StateCode.Fail, GetFailMessage());
                     return;
                 }
+
                 OnActionExecuting(context);
                 if (context.Result != null)
                     return;
