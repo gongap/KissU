@@ -1,9 +1,11 @@
-﻿namespace KissU.Util.Aspects
+﻿using AspectCore.DynamicProxy;
+
+namespace KissU.Util.Aspects
 {
     /// <summary>
     /// 忽略拦截
     /// </summary>
-    public class IgnoreAttribute : AspectCore.DynamicProxy.NonAspectAttribute
+    public class IgnoreAttribute : NonAspectAttribute
     {
     }
 }

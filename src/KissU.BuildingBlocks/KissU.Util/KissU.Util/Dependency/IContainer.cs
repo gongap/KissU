@@ -80,7 +80,8 @@ namespace KissU.Util.Dependency
         /// <param name="actionBefore">注册前操作</param>
         /// <param name="configs">依赖配置</param>
         /// <returns>Autofac.IContainer.</returns>
-        Autofac.IContainer Register(ContainerBuilder builder, IServiceCollection services, Action<ContainerBuilder> actionBefore, params IConfig[] configs);
+        Autofac.IContainer Register(ContainerBuilder builder, IServiceCollection services,
+            Action<ContainerBuilder> actionBefore, params IConfig[] configs);
 
         /// <summary>
         /// 注册依赖

@@ -14,6 +14,11 @@ namespace KissU.Util.Logs.Core
         public static readonly ILogContext Instance = new NullLogContext();
 
         /// <summary>
+        /// 排序
+        /// </summary>
+        public int Order => 0;
+
+        /// <summary>
         /// 日志标识
         /// </summary>
         public string LogId => string.Empty;
@@ -47,11 +52,6 @@ namespace KissU.Util.Logs.Core
         /// 请求地址
         /// </summary>
         public string Url => string.Empty;
-
-        /// <summary>
-        /// 排序
-        /// </summary>
-        public int Order => 0;
 
         /// <summary>
         /// 更新上下文

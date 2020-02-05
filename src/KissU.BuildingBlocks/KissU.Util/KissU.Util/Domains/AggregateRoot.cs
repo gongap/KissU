@@ -7,7 +7,8 @@ namespace KissU.Util.Domains
     /// </summary>
     /// <typeparam name="TEntity">实体类型</typeparam>
     /// <typeparam name="TKey">标识类型</typeparam>
-    public abstract class AggregateRoot<TEntity, TKey> : EntityBase<TEntity, TKey>, IAggregateRoot<TEntity, TKey> where TEntity : IAggregateRoot
+    public abstract class AggregateRoot<TEntity, TKey> : EntityBase<TEntity, TKey>, IAggregateRoot<TEntity, TKey>
+        where TEntity : IAggregateRoot
     {
         /// <summary>
         /// 初始化聚合根
@@ -40,5 +41,3 @@ namespace KissU.Util.Domains
         }
     }
 }
-
-

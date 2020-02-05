@@ -18,7 +18,8 @@ namespace KissU.Util
         /// <typeparam name="TParentId">The type of the t parent identifier.</typeparam>
         /// <param name="repository">仓储</param>
         /// <param name="entity">实体</param>
-        public static async Task UpdatePathAsync<TEntity, TKey, TParentId>(this ITreeCompactRepository<TEntity, TKey, TParentId> repository, TEntity entity)
+        public static async Task UpdatePathAsync<TEntity, TKey, TParentId>(
+            this ITreeCompactRepository<TEntity, TKey, TParentId> repository, TEntity entity)
             where TEntity : class, ITreeEntity<TEntity, TKey, TParentId>
         {
             var manager = new UpdatePathManager<TEntity, TKey, TParentId>(repository);
@@ -45,18 +46,19 @@ namespace KissU.Util
         /// <typeparam name="TParentId">父标识类型</typeparam>
         /// <param name="entities">实体列表</param>
         /// <returns>List&lt;System.String&gt;.</returns>
-        public static List<string> GetMissingParentIds<TEntity, TKey, TParentId>(this IEnumerable<TEntity> entities) where TEntity : class, ITreeEntity<TEntity, TKey, TParentId>
+        public static List<string> GetMissingParentIds<TEntity, TKey, TParentId>(this IEnumerable<TEntity> entities)
+            where TEntity : class, ITreeEntity<TEntity, TKey, TParentId>
         {
             var result = new List<string>();
             if (entities == null)
                 return result;
             var list = entities.ToList();
             list.ForEach(entity =>
-           {
-               if (entity == null)
-                   return;
-               result.AddRange(entity.GetParentIdsFromPath().Select(t => t.SafeString()));
-           });
+            {
+                if (entity == null)
+                    return;
+                result.AddRange(entity.GetParentIdsFromPath().Select(t => t.SafeString()));
+            });
             var ids = list.Select(t => t?.Id.SafeString());
             return result.Except(ids).ToList();
         }

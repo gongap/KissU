@@ -57,7 +57,8 @@ namespace KissU.Util.Expressions
         /// <param name="property">属性表达式</param>
         /// <param name="operator">运算符</param>
         /// <param name="value">值</param>
-        public void Append<TProperty>(Expression<Func<TEntity, TProperty>> property, Operator @operator, Expression value)
+        public void Append<TProperty>(Expression<Func<TEntity, TProperty>> property, Operator @operator,
+            Expression value)
         {
             _result = _result.And(_parameter.Property(Lambda.GetMember(property)).Operation(@operator, value));
         }

@@ -17,9 +17,9 @@ namespace KissU.Util.Datas.Queries.Criterias
         where TValue : struct
     {
         /// <summary>
-        /// 属性表达式
+        /// 包含边界
         /// </summary>
-        private readonly Expression<Func<TEntity, TProperty>> _propertyExpression;
+        private readonly Boundary _boundary;
 
         /// <summary>
         /// 表达式生成器
@@ -27,9 +27,9 @@ namespace KissU.Util.Datas.Queries.Criterias
         private readonly PredicateExpressionBuilder<TEntity> _builder;
 
         /// <summary>
-        /// 最小值
+        /// 属性表达式
         /// </summary>
-        private TValue? _min;
+        private readonly Expression<Func<TEntity, TProperty>> _propertyExpression;
 
         /// <summary>
         /// 最大值
@@ -37,9 +37,9 @@ namespace KissU.Util.Datas.Queries.Criterias
         private TValue? _max;
 
         /// <summary>
-        /// 包含边界
+        /// 最小值
         /// </summary>
-        private readonly Boundary _boundary;
+        private TValue? _min;
 
         /// <summary>
         /// 初始化范围过滤条件
@@ -48,22 +48,14 @@ namespace KissU.Util.Datas.Queries.Criterias
         /// <param name="min">最小值</param>
         /// <param name="max">最大值</param>
         /// <param name="boundary">包含边界</param>
-        protected SegmentCriteriaBase(Expression<Func<TEntity, TProperty>> propertyExpression, TValue? min, TValue? max, Boundary boundary)
+        protected SegmentCriteriaBase(Expression<Func<TEntity, TProperty>> propertyExpression, TValue? min, TValue? max,
+            Boundary boundary)
         {
             _builder = new PredicateExpressionBuilder<TEntity>();
             _propertyExpression = propertyExpression;
             _min = min;
             _max = max;
             _boundary = boundary;
-        }
-
-        /// <summary>
-        /// 获取属性类型
-        /// </summary>
-        /// <returns>Type.</returns>
-        protected Type GetPropertyType()
-        {
-            return Lambda.GetType(_propertyExpression);
         }
 
         /// <summary>
@@ -77,6 +69,15 @@ namespace KissU.Util.Datas.Queries.Criterias
             CreateLeftExpression();
             CreateRightExpression();
             return _builder.ToLambda();
+        }
+
+        /// <summary>
+        /// 获取属性类型
+        /// </summary>
+        /// <returns>Type.</returns>
+        protected Type GetPropertyType()
+        {
+            return Lambda.GetType(_propertyExpression);
         }
 
         /// <summary>

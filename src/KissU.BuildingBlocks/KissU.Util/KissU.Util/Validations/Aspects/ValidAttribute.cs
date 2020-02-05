@@ -32,7 +32,8 @@ namespace KissU.Util.Validations.Aspects
                 ValidateCollection(parameter);
                 return;
             }
-            IValidation validation = parameter.Value as IValidation;
+
+            var validation = parameter.Value as IValidation;
             validation?.Validate();
         }
 

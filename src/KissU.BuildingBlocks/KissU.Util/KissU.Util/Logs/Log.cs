@@ -2,6 +2,7 @@
 using KissU.Util.Logs.Abstractions;
 using KissU.Util.Logs.Contents;
 using KissU.Util.Logs.Core;
+using KissU.Util.Logs.Formats;
 using KissU.Util.Sessions;
 
 namespace KissU.Util.Logs
@@ -12,14 +13,14 @@ namespace KissU.Util.Logs
     public class Log : LogBase<LogContent>
     {
         /// <summary>
-        /// 类名
-        /// </summary>
-        private readonly string _class;
-
-        /// <summary>
         /// 空日志操作
         /// </summary>
         public static readonly ILog Null = NullLog.Instance;
+
+        /// <summary>
+        /// 类名
+        /// </summary>
+        private readonly string _class;
 
         /// <summary>
         /// 初始化日志操作
@@ -28,7 +29,8 @@ namespace KissU.Util.Logs
         /// <param name="context">日志上下文</param>
         /// <param name="format">日志格式器</param>
         /// <param name="session">用户会话</param>
-        public Log( ILogProviderFactory providerFactory, ILogContext context, ILogFormat format, ISession session ) : base( providerFactory.Create( "", format ), context, session )
+        public Log(ILogProviderFactory providerFactory, ILogContext context, ILogFormat format, ISession session) :
+            base(providerFactory.Create("", format), context, session)
         {
         }
 
@@ -39,7 +41,8 @@ namespace KissU.Util.Logs
         /// <param name="context">日志上下文</param>
         /// <param name="session">用户会话</param>
         /// <param name="class">类名</param>
-        private Log( ILogProvider provider, ILogContext context, ISession session, string @class ) : base( provider, context, session )
+        private Log(ILogProvider provider, ILogContext context, ISession session, string @class) : base(provider,
+            context, session)
         {
             _class = @class;
         }
@@ -50,7 +53,7 @@ namespace KissU.Util.Logs
         /// <returns>TContent.</returns>
         protected override LogContent GetContent()
         {
-            return new LogContent { Class = _class };
+            return new LogContent {Class = _class};
         }
 
         /// <summary>
@@ -59,7 +62,7 @@ namespace KissU.Util.Logs
         /// <returns>ILog.</returns>
         public static ILog GetLog()
         {
-            return GetLog( string.Empty );
+            return GetLog(string.Empty);
         }
 
         /// <summary>
@@ -67,12 +70,12 @@ namespace KissU.Util.Logs
         /// </summary>
         /// <param name="instance">实例</param>
         /// <returns>ILog.</returns>
-        public static ILog GetLog( object instance )
+        public static ILog GetLog(object instance)
         {
-            if( instance == null )
+            if (instance == null)
                 return GetLog();
             var className = instance.GetType().ToString();
-            return GetLog( className, className );
+            return GetLog(className, className);
         }
 
         /// <summary>
@@ -80,21 +83,21 @@ namespace KissU.Util.Logs
         /// </summary>
         /// <param name="logName">日志名称</param>
         /// <returns>ILog.</returns>
-        public static ILog GetLog( string logName )
+        public static ILog GetLog(string logName)
         {
-            return GetLog( logName, string.Empty );
+            return GetLog(logName, string.Empty);
         }
 
         /// <summary>
         /// 获取日志操作实例
         /// </summary>
-        private static ILog GetLog( string logName, string @class )
+        private static ILog GetLog(string logName, string @class)
         {
             var providerFactory = GetLogProviderFactory();
             var format = GetLogFormat();
             var context = GetLogContext();
             var session = GetSession();
-            return new Log( providerFactory.Create( logName, format ), context, session, @class );
+            return new Log(providerFactory.Create(logName, format), context, session, @class);
         }
 
         /// <summary>
@@ -123,7 +126,7 @@ namespace KissU.Util.Logs
             }
             catch
             {
-                return Util.Logs.Formats.ContentFormat.Instance;
+                return ContentFormat.Instance;
             }
         }
 

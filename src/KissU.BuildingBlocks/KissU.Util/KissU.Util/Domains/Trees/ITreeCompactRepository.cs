@@ -10,7 +10,8 @@ namespace KissU.Util.Domains.Trees
     /// 树型仓储
     /// </summary>
     /// <typeparam name="TEntity">实体类型</typeparam>
-    public interface ITreeCompactRepository<TEntity> : ITreeCompactRepository<TEntity, Guid, Guid?> where TEntity : class, ITreeEntity<TEntity, Guid, Guid?>
+    public interface ITreeCompactRepository<TEntity> : ITreeCompactRepository<TEntity, Guid, Guid?>
+        where TEntity : class, ITreeEntity<TEntity, Guid, Guid?>
     {
     }
 
@@ -20,7 +21,8 @@ namespace KissU.Util.Domains.Trees
     /// <typeparam name="TEntity">实体类型</typeparam>
     /// <typeparam name="TKey">实体标识类型</typeparam>
     /// <typeparam name="TParentId">父标识类型</typeparam>
-    public interface ITreeCompactRepository<TEntity, in TKey, in TParentId> : ICompactRepository<TEntity, TKey>, IFindByIdNoTrackingAsync<TEntity, TKey>
+    public interface ITreeCompactRepository<TEntity, in TKey, in TParentId> : ICompactRepository<TEntity, TKey>,
+        IFindByIdNoTrackingAsync<TEntity, TKey>
         where TEntity : class, ITreeEntity<TEntity, TKey, TParentId>
     {
         /// <summary>

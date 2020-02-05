@@ -6,6 +6,11 @@
     public class NullSession : ISession
     {
         /// <summary>
+        /// 空用户会话实例
+        /// </summary>
+        public static readonly ISession Instance = new NullSession();
+
+        /// <summary>
         /// 是否认证
         /// </summary>
         public bool IsAuthenticated => false;
@@ -19,10 +24,5 @@
         /// 用户名称
         /// </summary>
         public string UserName => string.Empty;
-
-        /// <summary>
-        /// 空用户会话实例
-        /// </summary>
-        public static readonly ISession Instance = new NullSession();
     }
 }

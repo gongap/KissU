@@ -13,6 +13,122 @@ namespace KissU.Util
     /// </summary>
     public static partial class Extensions
     {
+        #region Value(获取lambda表达式的值)
+
+        /// <summary>
+        /// 获取lambda表达式的值
+        /// </summary>
+        /// <typeparam name="T">对象类型</typeparam>
+        /// <param name="expression">The expression.</param>
+        /// <returns>System.Object.</returns>
+        public static object Value<T>(this Expression<Func<T, bool>> expression)
+        {
+            return Lambda.GetValue(expression);
+        }
+
+        #endregion
+
+        #region StartsWith(头匹配)
+
+        /// <summary>
+        /// 头匹配
+        /// </summary>
+        /// <param name="left">左操作数</param>
+        /// <param name="value">值</param>
+        /// <returns>Expression.</returns>
+        public static Expression StartsWith(this Expression left, object value)
+        {
+            return left.Call("StartsWith", new[] {typeof(string)}, value);
+        }
+
+        #endregion
+
+        #region EndsWith(尾匹配)
+
+        /// <summary>
+        /// 尾匹配
+        /// </summary>
+        /// <param name="left">左操作数</param>
+        /// <param name="value">值</param>
+        /// <returns>Expression.</returns>
+        public static Expression EndsWith(this Expression left, object value)
+        {
+            return left.Call("EndsWith", new[] {typeof(string)}, value);
+        }
+
+        #endregion
+
+        #region Contains(模糊匹配)
+
+        /// <summary>
+        /// 模糊匹配
+        /// </summary>
+        /// <param name="left">左操作数</param>
+        /// <param name="value">值</param>
+        /// <returns>Expression.</returns>
+        public static Expression Contains(this Expression left, object value)
+        {
+            return left.Call("Contains", new[] {typeof(string)}, value);
+        }
+
+        #endregion
+
+        #region Compose(组合表达式)
+
+        /// <summary>
+        /// 组合表达式
+        /// </summary>
+        /// <typeparam name="T">对象类型</typeparam>
+        /// <param name="first">左操作数</param>
+        /// <param name="second">右操作数</param>
+        /// <param name="merge">合并操作</param>
+        /// <returns>Expression&lt;T&gt;.</returns>
+        internal static Expression<T> Compose<T>(this Expression<T> first, Expression<T> second,
+            Func<Expression, Expression, Expression> merge)
+        {
+            var map = first.Parameters.Select((f, i) => new {f, s = second.Parameters[i]})
+                .ToDictionary(p => p.s, p => p.f);
+            var secondBody = ParameterRebinder.ReplaceParameters(map, second.Body);
+            return Expression.Lambda<T>(merge(first.Body, secondBody), first.Parameters);
+        }
+
+        #endregion
+
+        #region ToLambda(创建Lambda表达式)
+
+        /// <summary>
+        /// 创建Lambda表达式
+        /// </summary>
+        /// <typeparam name="TDelegate">委托类型</typeparam>
+        /// <param name="body">表达式</param>
+        /// <param name="parameters">参数列表</param>
+        /// <returns>Expression&lt;TDelegate&gt;.</returns>
+        public static Expression<TDelegate> ToLambda<TDelegate>(this Expression body,
+            params ParameterExpression[] parameters)
+        {
+            if (body == null)
+                return null;
+            return Expression.Lambda<TDelegate>(body, parameters);
+        }
+
+        #endregion
+
+        #region ToPredicate(创建谓词表达式)
+
+        /// <summary>
+        /// 创建谓词表达式
+        /// </summary>
+        /// <typeparam name="T">委托类型</typeparam>
+        /// <param name="body">表达式</param>
+        /// <param name="parameters">参数列表</param>
+        /// <returns>Expression&lt;Func&lt;T, System.Boolean&gt;&gt;.</returns>
+        public static Expression<Func<T, bool>> ToPredicate<T>(this Expression body,
+            params ParameterExpression[] parameters)
+        {
+            return ToLambda<Func<T, bool>>(body, parameters);
+        }
+
+        #endregion
 
         #region Property(属性表达式)
 
@@ -28,15 +144,17 @@ namespace KissU.Util
                 return Expression.Property(expression, propertyName);
             var propertyNameList = propertyName.Split('.');
             Expression result = null;
-            for (int i = 0; i < propertyNameList.Length; i++)
+            for (var i = 0; i < propertyNameList.Length; i++)
             {
                 if (i == 0)
                 {
                     result = Expression.Property(expression, propertyNameList[0]);
                     continue;
                 }
+
                 result = result.Property(propertyNameList[i]);
             }
+
             return result;
         }
 
@@ -77,7 +195,8 @@ namespace KissU.Util
         /// <param name="left">左操作数</param>
         /// <param name="right">右操作数</param>
         /// <returns>Expression&lt;Func&lt;T, System.Boolean&gt;&gt;.</returns>
-        public static Expression<Func<T, bool>> And<T>(this Expression<Func<T, bool>> left, Expression<Func<T, bool>> right)
+        public static Expression<Func<T, bool>> And<T>(this Expression<Func<T, bool>> left,
+            Expression<Func<T, bool>> right)
         {
             if (left == null)
                 return right;
@@ -112,28 +231,14 @@ namespace KissU.Util
         /// <param name="left">左操作数</param>
         /// <param name="right">右操作数</param>
         /// <returns>Expression&lt;Func&lt;T, System.Boolean&gt;&gt;.</returns>
-        public static Expression<Func<T, bool>> Or<T>(this Expression<Func<T, bool>> left, Expression<Func<T, bool>> right)
+        public static Expression<Func<T, bool>> Or<T>(this Expression<Func<T, bool>> left,
+            Expression<Func<T, bool>> right)
         {
             if (left == null)
                 return right;
             if (right == null)
                 return left;
             return left.Compose(right, Expression.OrElse);
-        }
-
-        #endregion
-
-        #region Value(获取lambda表达式的值)
-
-        /// <summary>
-        /// 获取lambda表达式的值
-        /// </summary>
-        /// <typeparam name="T">对象类型</typeparam>
-        /// <param name="expression">The expression.</param>
-        /// <returns>System.Object.</returns>
-        public static object Value<T>(this Expression<Func<T, bool>> expression)
-        {
-            return Lambda.GetValue(expression);
         }
 
         #endregion
@@ -294,51 +399,6 @@ namespace KissU.Util
 
         #endregion
 
-        #region StartsWith(头匹配)
-
-        /// <summary>
-        /// 头匹配
-        /// </summary>
-        /// <param name="left">左操作数</param>
-        /// <param name="value">值</param>
-        /// <returns>Expression.</returns>
-        public static Expression StartsWith(this Expression left, object value)
-        {
-            return left.Call("StartsWith", new[] { typeof(string) }, value);
-        }
-
-        #endregion
-
-        #region EndsWith(尾匹配)
-
-        /// <summary>
-        /// 尾匹配
-        /// </summary>
-        /// <param name="left">左操作数</param>
-        /// <param name="value">值</param>
-        /// <returns>Expression.</returns>
-        public static Expression EndsWith(this Expression left, object value)
-        {
-            return left.Call("EndsWith", new[] { typeof(string) }, value);
-        }
-
-        #endregion
-
-        #region Contains(模糊匹配)
-
-        /// <summary>
-        /// 模糊匹配
-        /// </summary>
-        /// <param name="left">左操作数</param>
-        /// <param name="value">值</param>
-        /// <returns>Expression.</returns>
-        public static Expression Contains(this Expression left, object value)
-        {
-            return left.Call("Contains", new[] { typeof(string) }, value);
-        }
-
-        #endregion
-
         #region Operation(操作)
 
         /// <summary>
@@ -372,6 +432,7 @@ namespace KissU.Util
                 case Operator.Contains:
                     return left.Contains(value);
             }
+
             throw new NotImplementedException();
         }
 
@@ -400,6 +461,7 @@ namespace KissU.Util
                 case Operator.LessEqual:
                     return left.LessEqual(value);
             }
+
             throw new NotImplementedException();
         }
 
@@ -461,7 +523,8 @@ namespace KissU.Util
         /// <param name="values">参数值列表</param>
         /// <returns>Expression.</returns>
         /// <exception cref="ArgumentNullException">instance</exception>
-        public static Expression Call(this Expression instance, string methodName, Type[] paramTypes, params object[] values)
+        public static Expression Call(this Expression instance, string methodName, Type[] paramTypes,
+            params object[] values)
         {
             if (instance == null)
                 throw new ArgumentNullException(nameof(instance));
@@ -471,60 +534,6 @@ namespace KissU.Util
             if (values == null || values.Length == 0)
                 return Expression.Call(instance, methodInfo);
             return Expression.Call(instance, methodInfo, values.Select(Expression.Constant));
-        }
-
-        #endregion
-
-        #region Compose(组合表达式)
-
-        /// <summary>
-        /// 组合表达式
-        /// </summary>
-        /// <typeparam name="T">对象类型</typeparam>
-        /// <param name="first">左操作数</param>
-        /// <param name="second">右操作数</param>
-        /// <param name="merge">合并操作</param>
-        /// <returns>Expression&lt;T&gt;.</returns>
-        internal static Expression<T> Compose<T>(this Expression<T> first, Expression<T> second,
-            Func<Expression, Expression, Expression> merge)
-        {
-            var map = first.Parameters.Select((f, i) => new { f, s = second.Parameters[i] }).ToDictionary(p => p.s, p => p.f);
-            var secondBody = ParameterRebinder.ReplaceParameters(map, second.Body);
-            return Expression.Lambda<T>(merge(first.Body, secondBody), first.Parameters);
-        }
-
-        #endregion
-
-        #region ToLambda(创建Lambda表达式)
-
-        /// <summary>
-        /// 创建Lambda表达式
-        /// </summary>
-        /// <typeparam name="TDelegate">委托类型</typeparam>
-        /// <param name="body">表达式</param>
-        /// <param name="parameters">参数列表</param>
-        /// <returns>Expression&lt;TDelegate&gt;.</returns>
-        public static Expression<TDelegate> ToLambda<TDelegate>(this Expression body, params ParameterExpression[] parameters)
-        {
-            if (body == null)
-                return null;
-            return Expression.Lambda<TDelegate>(body, parameters);
-        }
-
-        #endregion
-
-        #region ToPredicate(创建谓词表达式)
-
-        /// <summary>
-        /// 创建谓词表达式
-        /// </summary>
-        /// <typeparam name="T">委托类型</typeparam>
-        /// <param name="body">表达式</param>
-        /// <param name="parameters">参数列表</param>
-        /// <returns>Expression&lt;Func&lt;T, System.Boolean&gt;&gt;.</returns>
-        public static Expression<Func<T, bool>> ToPredicate<T>(this Expression body, params ParameterExpression[] parameters)
-        {
-            return ToLambda<Func<T, bool>>(body, parameters);
         }
 
         #endregion

@@ -5,7 +5,7 @@ namespace KissU.Util.Helpers
     /// <summary>
     /// 标识生成器
     /// </summary>
-    public static partial class Id
+    public static class Id
     {
         /// <summary>
         /// 标识
@@ -35,7 +35,7 @@ namespace KissU.Util.Helpers
         /// <returns>System.String.</returns>
         public static string ObjectId()
         {
-            return string.IsNullOrWhiteSpace(_id) ? Util.Helpers.Internal.ObjectId.GenerateNewStringId() : _id;
+            return string.IsNullOrWhiteSpace(_id) ? Internal.ObjectId.GenerateNewStringId() : _id;
         }
 
         /// <summary>

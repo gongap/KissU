@@ -18,6 +18,8 @@ namespace KissU.Util.Datas.Queries.Trees
     /// <typeparam name="TParentId">The type of the t parent identifier.</typeparam>
     public class TreeQueryParameter<TParentId> : QueryParameter, ITreeQueryParameter<TParentId>
     {
+        private string _path = string.Empty;
+
         /// <summary>
         /// 初始化树形查询参数
         /// </summary>
@@ -35,8 +37,6 @@ namespace KissU.Util.Datas.Queries.Trees
         /// 层级
         /// </summary>
         public int? Level { get; set; }
-
-        private string _path = string.Empty;
 
         /// <summary>
         /// 路径
@@ -81,6 +81,7 @@ namespace KissU.Util.Datas.Queries.Trees
                 case "totalcount":
                     return false;
             }
+
             return true;
         }
     }

@@ -8,6 +8,11 @@ namespace KissU.Util.Randoms
     public class GuidRandomGenerator : IRandomGenerator
     {
         /// <summary>
+        /// Guid随机数生成器实例
+        /// </summary>
+        public static readonly IRandomGenerator Instance = new GuidRandomGenerator();
+
+        /// <summary>
         /// 生成随机数
         /// </summary>
         /// <returns>System.String.</returns>
@@ -15,10 +20,5 @@ namespace KissU.Util.Randoms
         {
             return Id.Guid();
         }
-
-        /// <summary>
-        /// Guid随机数生成器实例
-        /// </summary>
-        public static readonly IRandomGenerator Instance = new GuidRandomGenerator();
     }
 }

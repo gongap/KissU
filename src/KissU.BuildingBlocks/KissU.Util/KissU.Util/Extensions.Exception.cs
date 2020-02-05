@@ -1,4 +1,5 @@
 ﻿using System;
+using AspectCore.DynamicProxy;
 using KissU.Util.Exceptions.Prompts;
 
 namespace KissU.Util
@@ -17,12 +18,13 @@ namespace KissU.Util
         {
             if (exception == null)
                 return null;
-            if (exception is AspectCore.DynamicProxy.AspectInvocationException aspectInvocationException)
+            if (exception is AspectInvocationException aspectInvocationException)
             {
                 if (aspectInvocationException.InnerException == null)
                     return aspectInvocationException;
                 return GetRawException(aspectInvocationException.InnerException);
             }
+
             return exception;
         }
 

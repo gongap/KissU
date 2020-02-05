@@ -66,7 +66,8 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <param name="expression">列名表达式</param>
         /// <param name="value">值</param>
         /// <param name="operator">运算符</param>
-        void Where<TEntity>(Expression<Func<TEntity, object>> expression, object value, Operator @operator = Operator.Equal) where TEntity : class;
+        void Where<TEntity>(Expression<Func<TEntity, object>> expression, object value,
+            Operator @operator = Operator.Equal) where TEntity : class;
 
         /// <summary>
         /// 设置查询条件
@@ -90,7 +91,8 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <param name="expression">列名表达式</param>
         /// <param name="builder">子查询Sql生成器</param>
         /// <param name="operator">运算符</param>
-        void Where<TEntity>(Expression<Func<TEntity, object>> expression, ISqlBuilder builder, Operator @operator = Operator.Equal) where TEntity : class;
+        void Where<TEntity>(Expression<Func<TEntity, object>> expression, ISqlBuilder builder,
+            Operator @operator = Operator.Equal) where TEntity : class;
 
         /// <summary>
         /// 设置子查询条件
@@ -107,7 +109,8 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <param name="expression">列名表达式</param>
         /// <param name="action">子查询操作</param>
         /// <param name="operator">运算符</param>
-        void Where<TEntity>(Expression<Func<TEntity, object>> expression, Action<ISqlBuilder> action, Operator @operator = Operator.Equal) where TEntity : class;
+        void Where<TEntity>(Expression<Func<TEntity, object>> expression, Action<ISqlBuilder> action,
+            Operator @operator = Operator.Equal) where TEntity : class;
 
         /// <summary>
         /// 设置查询条件
@@ -124,7 +127,8 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <param name="expression">列名表达式</param>
         /// <param name="value">值,如果值为空，则忽略该查询条件</param>
         /// <param name="operator">运算符</param>
-        void WhereIfNotEmpty<TEntity>(Expression<Func<TEntity, object>> expression, object value, Operator @operator = Operator.Equal) where TEntity : class;
+        void WhereIfNotEmpty<TEntity>(Expression<Func<TEntity, object>> expression, object value,
+            Operator @operator = Operator.Equal) where TEntity : class;
 
         /// <summary>
         /// 设置查询条件
@@ -141,7 +145,8 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <param name="min">最小值</param>
         /// <param name="max">最大值</param>
         /// <param name="boundary">包含边界</param>
-        void Between<TEntity>(Expression<Func<TEntity, object>> expression, int? min, int? max, Boundary boundary) where TEntity : class;
+        void Between<TEntity>(Expression<Func<TEntity, object>> expression, int? min, int? max, Boundary boundary)
+            where TEntity : class;
 
         /// <summary>
         /// 添加范围查询条件
@@ -151,7 +156,8 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <param name="min">最小值</param>
         /// <param name="max">最大值</param>
         /// <param name="boundary">包含边界</param>
-        void Between<TEntity>(Expression<Func<TEntity, object>> expression, double? min, double? max, Boundary boundary) where TEntity : class;
+        void Between<TEntity>(Expression<Func<TEntity, object>> expression, double? min, double? max, Boundary boundary)
+            where TEntity : class;
 
         /// <summary>
         /// 添加范围查询条件
@@ -161,7 +167,8 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <param name="min">最小值</param>
         /// <param name="max">最大值</param>
         /// <param name="boundary">包含边界</param>
-        void Between<TEntity>(Expression<Func<TEntity, object>> expression, decimal? min, decimal? max, Boundary boundary) where TEntity : class;
+        void Between<TEntity>(Expression<Func<TEntity, object>> expression, decimal? min, decimal? max,
+            Boundary boundary) where TEntity : class;
 
         /// <summary>
         /// 添加范围查询条件
@@ -172,7 +179,8 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <param name="max">最大值</param>
         /// <param name="includeTime">是否包含时间</param>
         /// <param name="boundary">包含边界</param>
-        void Between<TEntity>(Expression<Func<TEntity, object>> expression, DateTime? min, DateTime? max, bool includeTime, Boundary? boundary) where TEntity : class;
+        void Between<TEntity>(Expression<Func<TEntity, object>> expression, DateTime? min, DateTime? max,
+            bool includeTime, Boundary? boundary) where TEntity : class;
 
         /// <summary>
         /// 添加范围查询条件
@@ -276,7 +284,8 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="expression">列名表达式</param>
         /// <param name="values">值集合</param>
-        void In<TEntity>(Expression<Func<TEntity, object>> expression, IEnumerable<object> values) where TEntity : class;
+        void In<TEntity>(Expression<Func<TEntity, object>> expression, IEnumerable<object> values)
+            where TEntity : class;
 
         /// <summary>
         /// 设置In条件
@@ -321,7 +330,8 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="expression">列名表达式</param>
         /// <param name="values">值集合</param>
-        void NotIn<TEntity>(Expression<Func<TEntity, object>> expression, IEnumerable<object> values) where TEntity : class;
+        void NotIn<TEntity>(Expression<Func<TEntity, object>> expression, IEnumerable<object> values)
+            where TEntity : class;
 
         /// <summary>
         /// 设置Not In条件

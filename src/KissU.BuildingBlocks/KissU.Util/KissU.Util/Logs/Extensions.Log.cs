@@ -7,6 +7,7 @@ using KissU.Util.Helpers;
 using KissU.Util.Logs.Abstractions;
 using KissU.Util.Logs.Contents;
 using KissU.Util.Properties;
+using Convert = KissU.Util.Helpers.Convert;
 
 namespace KissU.Util.Logs
 {
@@ -138,10 +139,13 @@ namespace KissU.Util.Logs
             {
                 if (string.IsNullOrWhiteSpace(type))
                 {
-                    content.AppendLine(content.Params, $"{LogResource.ParameterName}: {name}, {LogResource.ParameterValue}: {value}");
+                    content.AppendLine(content.Params,
+                        $"{LogResource.ParameterName}: {name}, {LogResource.ParameterValue}: {value}");
                     return;
                 }
-                content.AppendLine(content.Params, $"{LogResource.ParameterType}: {type}, {LogResource.ParameterName}: {name}, {LogResource.ParameterValue}: {value}");
+
+                content.AppendLine(content.Params,
+                    $"{LogResource.ParameterType}: {type}, {LogResource.ParameterName}: {name}, {LogResource.ParameterValue}: {value}");
             });
         }
 
@@ -223,7 +227,7 @@ namespace KissU.Util.Logs
             switch (value.GetType().Name.ToLower())
             {
                 case "boolean":
-                    return Helpers.Convert.ToBool(value) ? "1" : "0";
+                    return Convert.ToBool(value) ? "1" : "0";
                 case "int16":
                 case "int32":
                 case "int64":

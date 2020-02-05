@@ -16,7 +16,7 @@ namespace KissU.Util.Datas.Queries.Criterias
         /// <returns>Expression.</returns>
         public static Expression CreateDateTimeExpression(object value, bool isNull = true)
         {
-            Type type = isNull ? typeof(DateTime?) : typeof(DateTime);
+            var type = isNull ? typeof(DateTime?) : typeof(DateTime);
             return CreateDateTimeExpression(value, type);
         }
 
@@ -28,7 +28,7 @@ namespace KissU.Util.Datas.Queries.Criterias
         /// <returns>Expression.</returns>
         public static Expression CreateDateTimeExpression(object value, Type targetType)
         {
-            var parse = typeof(DateTime).GetMethod("Parse", new[] { typeof(string) });
+            var parse = typeof(DateTime).GetMethod("Parse", new[] {typeof(string)});
             if (parse == null)
                 return null;
             var parseExpression = Expression.Call(parse, Expression.Constant(value.SafeString()));

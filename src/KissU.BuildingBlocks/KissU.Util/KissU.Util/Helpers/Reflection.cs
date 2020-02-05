@@ -11,7 +11,7 @@ namespace KissU.Util.Helpers
     /// <summary>
     /// 反射操作
     /// </summary>
-    public static partial class Reflection
+    public static class Reflection
     {
         /// <summary>
         /// 获取类型描述，使用DescriptionAttribute设置描述
@@ -58,7 +58,9 @@ namespace KissU.Util.Helpers
         {
             if (member == null)
                 return string.Empty;
-            return member.GetCustomAttribute<DescriptionAttribute>() is DescriptionAttribute attribute ? attribute.Description : member.Name;
+            return member.GetCustomAttribute<DescriptionAttribute>() is DescriptionAttribute attribute
+                ? attribute.Description
+                : member.Name;
         }
 
         /// <summary>
@@ -151,6 +153,7 @@ namespace KissU.Util.Helpers
             {
                 return result;
             }
+
             foreach (var type in types)
                 AddType(result, findType, type);
             return result;
@@ -182,6 +185,7 @@ namespace KissU.Util.Helpers
                     continue;
                 return definition.IsAssignableFrom(implementedInterface.GetGenericTypeDefinition());
             }
+
             return false;
         }
 
@@ -206,7 +210,7 @@ namespace KissU.Util.Helpers
         /// <returns>T.</returns>
         public static T CreateInstance<T>(Type type, params object[] parameters)
         {
-            return Util.Helpers.Convert.To<T>(Activator.CreateInstance(type, parameters));
+            return Convert.To<T>(Activator.CreateInstance(type, parameters));
         }
 
         /// <summary>
@@ -233,8 +237,9 @@ namespace KissU.Util.Helpers
                 case MemberTypes.TypeInfo:
                     return member.ToString() == "System.Boolean";
                 case MemberTypes.Property:
-                    return IsBool((PropertyInfo)member);
+                    return IsBool((PropertyInfo) member);
             }
+
             return false;
         }
 
@@ -258,10 +263,11 @@ namespace KissU.Util.Helpers
             switch (member.MemberType)
             {
                 case MemberTypes.TypeInfo:
-                    return ((TypeInfo)member).IsEnum;
+                    return ((TypeInfo) member).IsEnum;
                 case MemberTypes.Property:
-                    return IsEnum((PropertyInfo)member);
+                    return IsEnum((PropertyInfo) member);
             }
+
             return false;
         }
 
@@ -292,8 +298,9 @@ namespace KissU.Util.Helpers
                 case MemberTypes.TypeInfo:
                     return member.ToString() == "System.DateTime";
                 case MemberTypes.Property:
-                    return IsDate((PropertyInfo)member);
+                    return IsDate((PropertyInfo) member);
             }
+
             return false;
         }
 
@@ -321,10 +328,12 @@ namespace KissU.Util.Helpers
             switch (member.MemberType)
             {
                 case MemberTypes.TypeInfo:
-                    return member.ToString() == "System.Int32" || member.ToString() == "System.Int16" || member.ToString() == "System.Int64";
+                    return member.ToString() == "System.Int32" || member.ToString() == "System.Int16" ||
+                           member.ToString() == "System.Int64";
                 case MemberTypes.Property:
-                    return IsInt((PropertyInfo)member);
+                    return IsInt((PropertyInfo) member);
             }
+
             return false;
         }
 
@@ -362,10 +371,12 @@ namespace KissU.Util.Helpers
             switch (member.MemberType)
             {
                 case MemberTypes.TypeInfo:
-                    return member.ToString() == "System.Double" || member.ToString() == "System.Decimal" || member.ToString() == "System.Single";
+                    return member.ToString() == "System.Double" || member.ToString() == "System.Decimal" ||
+                           member.ToString() == "System.Single";
                 case MemberTypes.Property:
-                    return IsNumber((PropertyInfo)member);
+                    return IsNumber((PropertyInfo) member);
             }
+
             return false;
         }
 

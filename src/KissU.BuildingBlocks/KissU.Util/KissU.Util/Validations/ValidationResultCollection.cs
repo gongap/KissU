@@ -11,6 +11,11 @@ namespace KissU.Util.Validations
     public class ValidationResultCollection : IEnumerable<ValidationResult>
     {
         /// <summary>
+        /// 成功验证结果集合
+        /// </summary>
+        public static readonly ValidationResultCollection Success = new ValidationResultCollection();
+
+        /// <summary>
         /// 验证结果
         /// </summary>
         private readonly List<ValidationResult> _results;
@@ -35,11 +40,6 @@ namespace KissU.Util.Validations
         }
 
         /// <summary>
-        /// 成功验证结果集合
-        /// </summary>
-        public static readonly ValidationResultCollection Success = new ValidationResultCollection();
-
-        /// <summary>
         /// 是否有效
         /// </summary>
         public bool IsValid => _results.Count == 0;
@@ -48,6 +48,22 @@ namespace KissU.Util.Validations
         /// 验证结果个数
         /// </summary>
         public int Count => _results.Count;
+
+        /// <summary>
+        /// 获取迭代器
+        /// </summary>
+        IEnumerator<ValidationResult> IEnumerable<ValidationResult>.GetEnumerator()
+        {
+            return _results.GetEnumerator();
+        }
+
+        /// <summary>
+        /// 获取迭代器
+        /// </summary>
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return _results.GetEnumerator();
+        }
 
         /// <summary>
         /// 添加验证结果
@@ -70,22 +86,6 @@ namespace KissU.Util.Validations
                 return;
             foreach (var result in results)
                 Add(result);
-        }
-
-        /// <summary>
-        /// 获取迭代器
-        /// </summary>
-        IEnumerator<ValidationResult> IEnumerable<ValidationResult>.GetEnumerator()
-        {
-            return _results.GetEnumerator();
-        }
-
-        /// <summary>
-        /// 获取迭代器
-        /// </summary>
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return _results.GetEnumerator();
         }
 
         /// <summary>

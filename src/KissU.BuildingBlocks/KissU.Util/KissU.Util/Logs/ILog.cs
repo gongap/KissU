@@ -9,14 +9,6 @@ namespace KissU.Util.Logs
     public interface ILog
     {
         /// <summary>
-        /// 设置内容
-        /// </summary>
-        /// <typeparam name="TContent">日志内容类型</typeparam>
-        /// <param name="action">设置内容操作</param>
-        /// <returns>ILog.</returns>
-        ILog Set<TContent>(Action<TContent> action) where TContent : ILogContent;
-
-        /// <summary>
         /// 调试级别是否启用
         /// </summary>
         bool IsDebugEnabled { get; }
@@ -25,6 +17,14 @@ namespace KissU.Util.Logs
         /// 跟踪级别是否启用
         /// </summary>
         bool IsTraceEnabled { get; }
+
+        /// <summary>
+        /// 设置内容
+        /// </summary>
+        /// <typeparam name="TContent">日志内容类型</typeparam>
+        /// <param name="action">设置内容操作</param>
+        /// <returns>ILog.</returns>
+        ILog Set<TContent>(Action<TContent> action) where TContent : ILogContent;
 
         /// <summary>
         /// 跟踪

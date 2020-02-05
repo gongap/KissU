@@ -14,14 +14,14 @@ namespace KissU.Util.Locks.Default
         private readonly ICache _cache;
 
         /// <summary>
-        /// 锁定标识
-        /// </summary>
-        private string _key;
-
-        /// <summary>
         /// 延迟执行时间
         /// </summary>
         private TimeSpan? _expiration;
+
+        /// <summary>
+        /// 锁定标识
+        /// </summary>
+        private string _key;
 
         /// <summary>
         /// 初始化业务锁

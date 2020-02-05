@@ -5,7 +5,7 @@ namespace KissU.Util.Helpers
     /// <summary>
     /// 时间操作
     /// </summary>
-    public static partial class Time
+    public static class Time
     {
         /// <summary>
         /// 日期
@@ -27,7 +27,7 @@ namespace KissU.Util.Helpers
         /// <param name="dateTime">时间</param>
         public static void SetTime(string dateTime)
         {
-            _dateTime = Util.Helpers.Convert.ToDateOrNull(dateTime);
+            _dateTime = Convert.ToDateOrNull(dateTime);
         }
 
         /// <summary>
@@ -75,8 +75,8 @@ namespace KissU.Util.Helpers
         public static long GetUnixTimestamp(DateTime time)
         {
             var start = TimeZoneInfo.ConvertTime(new DateTime(1970, 1, 1), TimeZoneInfo.Local);
-            long ticks = (time - start.Add(new TimeSpan(8, 0, 0))).Ticks;
-            return Util.Helpers.Convert.ToLong(ticks / TimeSpan.TicksPerSecond);
+            var ticks = (time - start.Add(new TimeSpan(8, 0, 0))).Ticks;
+            return Convert.ToLong(ticks / TimeSpan.TicksPerSecond);
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace KissU.Util.Helpers
         public static DateTime GetTimeFromUnixTimestamp(long timestamp)
         {
             var start = TimeZoneInfo.ConvertTime(new DateTime(1970, 1, 1), TimeZoneInfo.Local);
-            TimeSpan span = new TimeSpan(long.Parse(timestamp + "0000000"));
+            var span = new TimeSpan(long.Parse(timestamp + "0000000"));
             return start.Add(span).Add(new TimeSpan(8, 0, 0));
         }
     }

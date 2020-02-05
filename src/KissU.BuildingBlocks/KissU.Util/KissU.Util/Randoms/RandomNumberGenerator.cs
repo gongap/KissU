@@ -1,4 +1,6 @@
-﻿namespace KissU.Util.Randoms
+﻿using System;
+
+namespace KissU.Util.Randoms
 {
     /// <summary>
     /// 随机数字生成器
@@ -8,14 +10,14 @@
         /// <summary>
         /// 随机数
         /// </summary>
-        private readonly System.Random _random;
+        private readonly Random _random;
 
         /// <summary>
         /// 初始化随机数字生成器
         /// </summary>
         public RandomNumberGenerator()
         {
-            _random = new System.Random();
+            _random = new Random();
         }
 
         /// <summary>

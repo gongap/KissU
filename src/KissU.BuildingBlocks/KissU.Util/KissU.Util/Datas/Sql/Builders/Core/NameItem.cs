@@ -11,6 +11,16 @@ namespace KissU.Util.Datas.Sql.Builders.Core
     public class NameItem
     {
         /// <summary>
+        /// 名称
+        /// </summary>
+        private string _name;
+
+        /// <summary>
+        /// 前缀
+        /// </summary>
+        private string _prefix;
+
+        /// <summary>
         /// 初始化名称项
         /// </summary>
         /// <param name="name">名称</param>
@@ -24,18 +34,43 @@ namespace KissU.Util.Datas.Sql.Builders.Core
                 Name = list[0];
                 return;
             }
+
             if (list.Count == 2)
             {
                 Prefix = list[0];
                 Name = list[1];
                 return;
             }
+
             if (list.Count == 3)
             {
                 DatabaseName = list[0];
                 Prefix = list[1];
                 Name = list[2];
             }
+        }
+
+        /// <summary>
+        /// 数据库名称
+        /// </summary>
+        public string DatabaseName { get; }
+
+        /// <summary>
+        /// 前缀
+        /// </summary>
+        public string Prefix
+        {
+            get => _prefix.SafeString();
+            set => _prefix = value;
+        }
+
+        /// <summary>
+        /// 名称
+        /// </summary>
+        public string Name
+        {
+            get => _name.SafeString();
+            set => _name = value;
         }
 
         /// <summary>
@@ -60,41 +95,9 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         private List<string> ResolveByPattern(string name)
         {
             var pattern = "^(([\\[`\"]\\S+?[\\]`\"]).)?(([\\[`\"]\\S+[\\]`\"]).)?([\\[`\"]\\S+[\\]`\"])$";
-            var list = Regex.GetValues(name, pattern, new[] { "$1", "$2", "$3", "$4", "$5" }).Select(t => t.Value).ToList();
+            var list = Regex.GetValues(name, pattern, new[] {"$1", "$2", "$3", "$4", "$5"}).Select(t => t.Value)
+                .ToList();
             return list.Where(t => string.IsNullOrWhiteSpace(t) == false && t.EndsWith(".") == false).ToList();
-        }
-
-        /// <summary>
-        /// 数据库名称
-        /// </summary>
-        public string DatabaseName { get; private set; }
-
-        /// <summary>
-        /// 前缀
-        /// </summary>
-        private string _prefix;
-
-        /// <summary>
-        /// 前缀
-        /// </summary>
-        public string Prefix
-        {
-            get => _prefix.SafeString();
-            set => _prefix = value;
-        }
-
-        /// <summary>
-        /// 名称
-        /// </summary>
-        private string _name;
-
-        /// <summary>
-        /// 名称
-        /// </summary>
-        public string Name
-        {
-            get => _name.SafeString();
-            set => _name = value;
         }
 
         /// <summary>

@@ -7,7 +7,7 @@ namespace KissU.Util.Helpers
     /// <summary>
     /// 线程操作
     /// </summary>
-    public static partial class Thread
+    public static class Thread
     {
         /// <summary>
         /// 执行多个操作，等待所有操作完成
@@ -17,7 +17,7 @@ namespace KissU.Util.Helpers
         {
             if (actions == null)
                 return;
-            List<Task> tasks = new List<Task>();
+            var tasks = new List<Task>();
             foreach (var action in actions)
                 tasks.Add(Task.Factory.StartNew(action, TaskCreationOptions.None));
             Task.WaitAll(tasks.ToArray());
@@ -45,6 +45,7 @@ namespace KissU.Util.Helpers
                 Parallel.For(0, count, i => action());
                 return;
             }
+
             Parallel.For(0, count, options, i => action());
         }
     }

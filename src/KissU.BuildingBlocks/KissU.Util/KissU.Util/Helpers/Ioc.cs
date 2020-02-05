@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Autofac;
 using KissU.Util.Dependency;
 using Microsoft.Extensions.DependencyInjection;
+using IContainer = KissU.Util.Dependency.IContainer;
 
 namespace KissU.Util.Helpers
 {
     /// <summary>
     /// 容器
     /// </summary>
-    public static partial class Ioc
+    public static class Ioc
     {
         /// <summary>
         /// 默认容器
@@ -48,7 +50,7 @@ namespace KissU.Util.Helpers
         /// <returns>List&lt;T&gt;.</returns>
         public static List<T> CreateList<T>(Type type, string name = null)
         {
-            return ((IEnumerable<T>)DefaultContainer.CreateList(type, name)).ToList();
+            return ((IEnumerable<T>) DefaultContainer.CreateList(type, name)).ToList();
         }
 
         /// <summary>
@@ -71,7 +73,7 @@ namespace KissU.Util.Helpers
         /// <returns>T.</returns>
         public static T Create<T>(Type type, string name = null)
         {
-            return (T)DefaultContainer.Create(type, name);
+            return (T) DefaultContainer.Create(type, name);
         }
 
         /// <summary>
@@ -99,7 +101,7 @@ namespace KissU.Util.Helpers
         /// <param name="builder">容器生成器</param>
         /// <param name="configs">依赖配置</param>
         /// <returns>Autofac.IContainer.</returns>
-        public static Autofac.IContainer Register(Autofac.ContainerBuilder builder, params IConfig[] configs)
+        public static Autofac.IContainer Register(ContainerBuilder builder, params IConfig[] configs)
         {
             return DefaultContainer.Register(builder, null, b => b.EnableAop(), configs);
         }
@@ -111,7 +113,8 @@ namespace KissU.Util.Helpers
         /// <param name="services">服务集合</param>
         /// <param name="configs">依赖配置</param>
         /// <returns>Autofac.IContainer.</returns>
-        public static Autofac.IContainer Register(Autofac.ContainerBuilder builder, IServiceCollection services, params IConfig[] configs)
+        public static Autofac.IContainer Register(ContainerBuilder builder, IServiceCollection services,
+            params IConfig[] configs)
         {
             return DefaultContainer.Register(builder, services, b => b.EnableAop(), configs);
         }

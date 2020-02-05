@@ -2,6 +2,7 @@
 using System.IO;
 using KissU.Util.Helpers;
 using KissU.Util.Randoms;
+using String = KissU.Util.Helpers.String;
 
 namespace KissU.Util.Files.Paths
 {
@@ -56,6 +57,7 @@ namespace KissU.Util.Files.Paths
                 extension = fileName;
                 name = string.Empty;
             }
+
             if (string.IsNullOrWhiteSpace(name))
                 name = _randomGenerator.Generate();
             name = FilterFileName(name);
@@ -68,7 +70,7 @@ namespace KissU.Util.Files.Paths
         private static string FilterFileName(string fileName)
         {
             fileName = Regex.Replace(fileName, "\\W", "");
-            return Util.Helpers.String.PinYin(fileName);
+            return String.PinYin(fileName);
         }
     }
 }

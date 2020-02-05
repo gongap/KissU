@@ -21,6 +21,16 @@ namespace KissU.Util.Helpers
         private StringBuilder Builder { get; set; }
 
         /// <summary>
+        /// 字符串长度
+        /// </summary>
+        public int Length => Builder.Length;
+
+        /// <summary>
+        /// 空字符串
+        /// </summary>
+        public string Empty => string.Empty;
+
+        /// <summary>
         /// 追加内容
         /// </summary>
         /// <typeparam name="T">值的类型</typeparam>
@@ -41,7 +51,7 @@ namespace KissU.Util.Helpers
         public String Append(string value, params object[] args)
         {
             if (args == null)
-                args = new object[] { string.Empty };
+                args = new object[] {string.Empty};
             if (args.Length == 0)
                 Builder.Append(value);
             else
@@ -104,7 +114,7 @@ namespace KissU.Util.Helpers
         /// <returns>String.</returns>
         public String RemoveEnd(string end)
         {
-            string result = Builder.ToString();
+            var result = Builder.ToString();
             if (!result.EndsWith(end))
                 return this;
             Builder = new StringBuilder(result.TrimEnd(end.ToCharArray()));
@@ -120,16 +130,6 @@ namespace KissU.Util.Helpers
             Builder = Builder.Clear();
             return this;
         }
-
-        /// <summary>
-        /// 字符串长度
-        /// </summary>
-        public int Length => Builder.Length;
-
-        /// <summary>
-        /// 空字符串
-        /// </summary>
-        public string Empty => string.Empty;
 
         /// <summary>
         /// 转换为字符串

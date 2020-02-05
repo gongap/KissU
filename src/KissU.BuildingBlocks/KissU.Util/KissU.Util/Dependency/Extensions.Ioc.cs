@@ -17,7 +17,8 @@ namespace KissU.Util.Dependency
         /// <param name="builder">容器生成器</param>
         /// <param name="name">服务名称</param>
         /// <returns>IRegistrationBuilder&lt;TImplementation, ConcreteReflectionActivatorData, SingleRegistrationStyle&gt;.</returns>
-        public static IRegistrationBuilder<TImplementation, ConcreteReflectionActivatorData, SingleRegistrationStyle> AddTransient<TService, TImplementation>(this ContainerBuilder builder, string name = null)
+        public static IRegistrationBuilder<TImplementation, ConcreteReflectionActivatorData, SingleRegistrationStyle>
+            AddTransient<TService, TImplementation>(this ContainerBuilder builder, string name = null)
             where TService : class
             where TImplementation : class, TService
         {
@@ -34,7 +35,8 @@ namespace KissU.Util.Dependency
         /// <param name="builder">容器生成器</param>
         /// <param name="name">服务名称</param>
         /// <returns>IRegistrationBuilder&lt;TImplementation, ConcreteReflectionActivatorData, SingleRegistrationStyle&gt;.</returns>
-        public static IRegistrationBuilder<TImplementation, ConcreteReflectionActivatorData, SingleRegistrationStyle>AddScoped<TService, TImplementation>(this ContainerBuilder builder, string name = null)
+        public static IRegistrationBuilder<TImplementation, ConcreteReflectionActivatorData, SingleRegistrationStyle>
+            AddScoped<TService, TImplementation>(this ContainerBuilder builder, string name = null)
             where TService : class
             where TImplementation : class, TService
         {
@@ -49,7 +51,8 @@ namespace KissU.Util.Dependency
         /// <typeparam name="TImplementation">实现类型</typeparam>
         /// <param name="builder">容器生成器</param>
         /// <returns>IRegistrationBuilder&lt;TImplementation, ConcreteReflectionActivatorData, SingleRegistrationStyle&gt;.</returns>
-        public static IRegistrationBuilder<TImplementation, ConcreteReflectionActivatorData, SingleRegistrationStyle>AddScoped<TImplementation>(this ContainerBuilder builder) where TImplementation : class
+        public static IRegistrationBuilder<TImplementation, ConcreteReflectionActivatorData, SingleRegistrationStyle>
+            AddScoped<TImplementation>(this ContainerBuilder builder) where TImplementation : class
         {
             return builder.RegisterType<TImplementation>().InstancePerLifetimeScope();
         }
@@ -62,7 +65,9 @@ namespace KissU.Util.Dependency
         /// <param name="builder">容器生成器</param>
         /// <param name="name">服务名称</param>
         /// <returns>IRegistrationBuilder&lt;TImplementation, ConcreteReflectionActivatorData, SingleRegistrationStyle&gt;.</returns>
-        public static IRegistrationBuilder<TImplementation, ConcreteReflectionActivatorData, SingleRegistrationStyle>AddSingleton<TService, TImplementation>(this ContainerBuilder builder, string name = null) where TService : class where TImplementation : class, TService
+        public static IRegistrationBuilder<TImplementation, ConcreteReflectionActivatorData, SingleRegistrationStyle>
+            AddSingleton<TService, TImplementation>(this ContainerBuilder builder, string name = null)
+            where TService : class where TImplementation : class, TService
         {
             if (name == null)
                 return builder.RegisterType<TImplementation>().As<TService>().SingleInstance();
@@ -76,7 +81,8 @@ namespace KissU.Util.Dependency
         /// <param name="builder">容器生成器</param>
         /// <param name="instance">服务实例</param>
         /// <returns>IRegistrationBuilder&lt;TService, SimpleActivatorData, SingleRegistrationStyle&gt;.</returns>
-        public static IRegistrationBuilder<TService, SimpleActivatorData, SingleRegistrationStyle>AddSingleton<TService>(this ContainerBuilder builder, TService instance) where TService : class
+        public static IRegistrationBuilder<TService, SimpleActivatorData, SingleRegistrationStyle>
+            AddSingleton<TService>(this ContainerBuilder builder, TService instance) where TService : class
         {
             return builder.RegisterInstance(instance).As<TService>().SingleInstance();
         }

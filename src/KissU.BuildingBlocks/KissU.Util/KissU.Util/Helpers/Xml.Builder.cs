@@ -23,14 +23,6 @@ namespace KissU.Util.Helpers
         }
 
         /// <summary>
-        /// 获取Xml字符串
-        /// </summary>
-        private string GetXml(string xml)
-        {
-            return string.IsNullOrWhiteSpace(xml) ? "<xml></xml>" : xml;
-        }
-
-        /// <summary>
         /// Xml文档
         /// </summary>
         public XmlDocument Document { get; }
@@ -39,6 +31,14 @@ namespace KissU.Util.Helpers
         /// Xml根节点
         /// </summary>
         public XmlElement Root { get; }
+
+        /// <summary>
+        /// 获取Xml字符串
+        /// </summary>
+        private string GetXml(string xml)
+        {
+            return string.IsNullOrWhiteSpace(xml) ? "<xml></xml>" : xml;
+        }
 
         /// <summary>
         /// 添加节点

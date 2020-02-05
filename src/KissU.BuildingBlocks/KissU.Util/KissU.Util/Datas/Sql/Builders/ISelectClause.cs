@@ -40,7 +40,8 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="expression">列名表达式</param>
         /// <param name="columnAlias">列别名</param>
-        void Count<TEntity>(Expression<Func<TEntity, object>> expression, string columnAlias = null) where TEntity : class;
+        void Count<TEntity>(Expression<Func<TEntity, object>> expression, string columnAlias = null)
+            where TEntity : class;
 
         /// <summary>
         /// 求和
@@ -55,7 +56,8 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="expression">列名表达式</param>
         /// <param name="columnAlias">列别名</param>
-        void Sum<TEntity>(Expression<Func<TEntity, object>> expression, string columnAlias = null) where TEntity : class;
+        void Sum<TEntity>(Expression<Func<TEntity, object>> expression, string columnAlias = null)
+            where TEntity : class;
 
         /// <summary>
         /// 求平均值
@@ -70,7 +72,8 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="expression">列名表达式</param>
         /// <param name="columnAlias">列别名</param>
-        void Avg<TEntity>(Expression<Func<TEntity, object>> expression, string columnAlias = null) where TEntity : class;
+        void Avg<TEntity>(Expression<Func<TEntity, object>> expression, string columnAlias = null)
+            where TEntity : class;
 
         /// <summary>
         /// 求最大值
@@ -85,7 +88,8 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="expression">列名表达式</param>
         /// <param name="columnAlias">列别名</param>
-        void Max<TEntity>(Expression<Func<TEntity, object>> expression, string columnAlias = null) where TEntity : class;
+        void Max<TEntity>(Expression<Func<TEntity, object>> expression, string columnAlias = null)
+            where TEntity : class;
 
         /// <summary>
         /// 求最小值
@@ -100,7 +104,8 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="expression">列名表达式</param>
         /// <param name="columnAlias">列别名</param>
-        void Min<TEntity>(Expression<Func<TEntity, object>> expression, string columnAlias = null) where TEntity : class;
+        void Min<TEntity>(Expression<Func<TEntity, object>> expression, string columnAlias = null)
+            where TEntity : class;
 
         /// <summary>
         /// 设置列名
@@ -122,7 +127,8 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="columns">列名</param>
         /// <param name="propertyAsAlias">是否将属性名映射为列别名</param>
-        void Select<TEntity>(Expression<Func<TEntity, object[]>> columns, bool propertyAsAlias = false) where TEntity : class;
+        void Select<TEntity>(Expression<Func<TEntity, object[]>> columns, bool propertyAsAlias = false)
+            where TEntity : class;
 
         /// <summary>
         /// 设置列名

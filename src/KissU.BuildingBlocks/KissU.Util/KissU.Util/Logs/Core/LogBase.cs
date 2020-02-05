@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Threading;
 using KissU.Util.Logs.Abstractions;
 using KissU.Util.Sessions;
 using Microsoft.Extensions.Logging;
+using Enum = KissU.Util.Helpers.Enum;
 
 namespace KissU.Util.Logs.Core
 {
@@ -17,11 +19,6 @@ namespace KissU.Util.Logs.Core
         private TContent _content;
 
         /// <summary>
-        /// 日志内容
-        /// </summary>
-        private TContent LogContent => _content ?? (_content = GetContent());
-
-        /// <summary>
         /// 初始化日志操作
         /// </summary>
         /// <param name="provider">日志提供程序</param>
@@ -33,6 +30,11 @@ namespace KissU.Util.Logs.Core
             Context = context;
             Session = session ?? NullSession.Instance;
         }
+
+        /// <summary>
+        /// 日志内容
+        /// </summary>
+        private TContent LogContent => _content ?? (_content = GetContent());
 
         /// <summary>
         /// 日志提供程序
@@ -50,12 +52,6 @@ namespace KissU.Util.Logs.Core
         public ISession Session { get; set; }
 
         /// <summary>
-        /// 获取日志内容
-        /// </summary>
-        /// <returns>TContent.</returns>
-        protected abstract TContent GetContent();
-
-        /// <summary>
         /// 设置内容
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -67,27 +63,8 @@ namespace KissU.Util.Logs.Core
             if (action == null)
                 throw new ArgumentNullException(nameof(action));
             ILogContent content = LogContent;
-            action((T)content);
+            action((T) content);
             return this;
-        }
-
-        /// <summary>
-        /// 初始化
-        /// </summary>
-        /// <param name="content">日志内容</param>
-        protected virtual void Init(TContent content)
-        {
-            content.LogName = Provider.LogName;
-            content.LogId = Context.LogId;
-            content.TraceId = Context.TraceId;
-            content.OperationTime = DateTime.Now.ToMillisecondString();
-            content.Duration = Context.Stopwatch.Elapsed.Description();
-            content.Ip = Context.Ip;
-            content.Host = Context.Host;
-            content.ThreadId = System.Threading.Thread.CurrentThread.ManagedThreadId.ToString();
-            content.Browser = Context.Browser;
-            content.Url = Context.Url;
-            content.UserId = Session.UserId;
         }
 
         /// <summary>
@@ -107,37 +84,6 @@ namespace KissU.Util.Logs.Core
         {
             _content = LogContent;
             Execute(LogLevel.Trace, ref _content);
-        }
-
-        /// <summary>
-        /// 执行
-        /// </summary>
-        private void Execute(LogLevel level, ref TContent content)
-        {
-            if (content == null)
-                return;
-            if (Enabled(level) == false)
-                return;
-            try
-            {
-                content.Level = Util.Helpers.Enum.GetName<LogLevel>(level);
-                Init(content);
-                Provider.WriteLog(level, content);
-            }
-            finally
-            {
-                content = null;
-            }
-        }
-
-        /// <summary>
-        /// 是否启用
-        /// </summary>
-        private bool Enabled(LogLevel level)
-        {
-            if (level > LogLevel.Debug)
-                return true;
-            return IsDebugEnabled || IsTraceEnabled && level == LogLevel.Trace;
         }
 
         /// <summary>
@@ -243,6 +189,62 @@ namespace KissU.Util.Logs.Core
         {
             LogContent.Content(message);
             Fatal();
+        }
+
+        /// <summary>
+        /// 获取日志内容
+        /// </summary>
+        /// <returns>TContent.</returns>
+        protected abstract TContent GetContent();
+
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        /// <param name="content">日志内容</param>
+        protected virtual void Init(TContent content)
+        {
+            content.LogName = Provider.LogName;
+            content.LogId = Context.LogId;
+            content.TraceId = Context.TraceId;
+            content.OperationTime = DateTime.Now.ToMillisecondString();
+            content.Duration = Context.Stopwatch.Elapsed.Description();
+            content.Ip = Context.Ip;
+            content.Host = Context.Host;
+            content.ThreadId = Thread.CurrentThread.ManagedThreadId.ToString();
+            content.Browser = Context.Browser;
+            content.Url = Context.Url;
+            content.UserId = Session.UserId;
+        }
+
+        /// <summary>
+        /// 执行
+        /// </summary>
+        private void Execute(LogLevel level, ref TContent content)
+        {
+            if (content == null)
+                return;
+            if (Enabled(level) == false)
+                return;
+            try
+            {
+                content.Level = Enum.GetName<LogLevel>(level);
+                Init(content);
+                Provider.WriteLog(level, content);
+            }
+            finally
+            {
+                content = null;
+            }
+        }
+
+        /// <summary>
+        /// 是否启用
+        /// </summary>
+        private bool Enabled(LogLevel level)
+        {
+            if (level > LogLevel.Debug)
+                return true;
+            return IsDebugEnabled || IsTraceEnabled && level == LogLevel.Trace;
         }
     }
 }

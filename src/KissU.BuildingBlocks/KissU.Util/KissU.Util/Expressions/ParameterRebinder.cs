@@ -28,7 +28,8 @@ namespace KissU.Util.Expressions
         /// <param name="map">参数字典</param>
         /// <param name="exp">表达式</param>
         /// <returns>Expression.</returns>
-        public static Expression ReplaceParameters(Dictionary<ParameterExpression, ParameterExpression> map, Expression exp)
+        public static Expression ReplaceParameters(Dictionary<ParameterExpression, ParameterExpression> map,
+            Expression exp)
         {
             return new ParameterRebinder(map).Visit(exp);
         }

@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Convert = KissU.Util.Helpers.Convert;
+using String = KissU.Util.Helpers.String;
 
 namespace KissU.Util
 {
@@ -23,11 +26,11 @@ namespace KissU.Util
         /// </summary>
         /// <param name="instance">枚举实例</param>
         /// <returns>System.Int32.</returns>
-        public static int Value(this System.Enum instance)
+        public static int Value(this Enum instance)
         {
             if (instance == null)
                 return 0;
-            return Util.Helpers.Enum.GetValue(instance.GetType(), instance);
+            return Helpers.Enum.GetValue(instance.GetType(), instance);
         }
 
         /// <summary>
@@ -36,11 +39,11 @@ namespace KissU.Util
         /// <typeparam name="TResult">返回值类型</typeparam>
         /// <param name="instance">枚举实例</param>
         /// <returns>TResult.</returns>
-        public static TResult Value<TResult>(this System.Enum instance)
+        public static TResult Value<TResult>(this Enum instance)
         {
             if (instance == null)
                 return default;
-            return Util.Helpers.Convert.To<TResult>(Value(instance));
+            return Convert.To<TResult>(Value(instance));
         }
 
         /// <summary>
@@ -48,11 +51,11 @@ namespace KissU.Util
         /// </summary>
         /// <param name="instance">枚举实例</param>
         /// <returns>System.String.</returns>
-        public static string Description(this System.Enum instance)
+        public static string Description(this Enum instance)
         {
             if (instance == null)
                 return string.Empty;
-            return Util.Helpers.Enum.GetDescription(instance.GetType(), instance);
+            return Helpers.Enum.GetDescription(instance.GetType(), instance);
         }
 
         /// <summary>
@@ -65,7 +68,7 @@ namespace KissU.Util
         /// <returns>System.String.</returns>
         public static string Join<T>(this IEnumerable<T> list, string quotes = "", string separator = ",")
         {
-            return Util.Helpers.String.Join(list, quotes, separator);
+            return String.Join(list, quotes, separator);
         }
     }
 }

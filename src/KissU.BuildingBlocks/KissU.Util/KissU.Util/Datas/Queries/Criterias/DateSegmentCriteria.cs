@@ -8,7 +8,8 @@ namespace KissU.Util.Datas.Queries.Criterias
     /// </summary>
     /// <typeparam name="TEntity">实体类型</typeparam>
     /// <typeparam name="TProperty">属性类型</typeparam>
-    public class DateSegmentCriteria<TEntity, TProperty> : SegmentCriteriaBase<TEntity, TProperty, DateTime> where TEntity : class
+    public class DateSegmentCriteria<TEntity, TProperty> : SegmentCriteriaBase<TEntity, TProperty, DateTime>
+        where TEntity : class
     {
         /// <summary>
         /// 初始化日期范围过滤条件 - 不包含时间
@@ -17,7 +18,8 @@ namespace KissU.Util.Datas.Queries.Criterias
         /// <param name="min">最小值</param>
         /// <param name="max">最大值</param>
         /// <param name="boundary">包含边界</param>
-        public DateSegmentCriteria(Expression<Func<TEntity, TProperty>> propertyExpression, DateTime? min, DateTime? max, Boundary boundary = Boundary.Left)
+        public DateSegmentCriteria(Expression<Func<TEntity, TProperty>> propertyExpression, DateTime? min,
+            DateTime? max, Boundary boundary = Boundary.Left)
             : base(propertyExpression, min, max, boundary)
         {
         }
@@ -48,7 +50,8 @@ namespace KissU.Util.Datas.Queries.Criterias
         /// <returns>Expression.</returns>
         protected override Expression GetMaxValueExpression()
         {
-            return ValueExpressionHelper.CreateDateTimeExpression(GetMaxValue().SafeValue().Date.AddDays(1), GetPropertyType());
+            return ValueExpressionHelper.CreateDateTimeExpression(GetMaxValue().SafeValue().Date.AddDays(1),
+                GetPropertyType());
         }
     }
 }

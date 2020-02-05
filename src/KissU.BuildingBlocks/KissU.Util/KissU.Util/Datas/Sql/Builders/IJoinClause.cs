@@ -152,7 +152,8 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <param name="left">左表列名</param>
         /// <param name="right">右表列名</param>
         /// <param name="operator">条件运算符</param>
-        void On<TLeft, TRight>(Expression<Func<TLeft, object>> left, Expression<Func<TRight, object>> right, Operator @operator = Operator.Equal) where TLeft : class where TRight : class;
+        void On<TLeft, TRight>(Expression<Func<TLeft, object>> left, Expression<Func<TRight, object>> right,
+            Operator @operator = Operator.Equal) where TLeft : class where TRight : class;
 
         /// <summary>
         /// 设置连接条件
@@ -160,7 +161,8 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <typeparam name="TLeft">The type of the t left.</typeparam>
         /// <typeparam name="TRight">The type of the t right.</typeparam>
         /// <param name="expression">条件表达式</param>
-        void On<TLeft, TRight>(Expression<Func<TLeft, TRight, bool>> expression) where TLeft : class where TRight : class;
+        void On<TLeft, TRight>(Expression<Func<TLeft, TRight, bool>> expression)
+            where TLeft : class where TRight : class;
 
         /// <summary>
         /// 添加到On子句

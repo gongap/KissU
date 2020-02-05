@@ -8,7 +8,8 @@ namespace KissU.Util.Datas.Queries.Criterias
     /// </summary>
     /// <typeparam name="TEntity">实体类型</typeparam>
     /// <typeparam name="TProperty">属性类型</typeparam>
-    public class IntSegmentCriteria<TEntity, TProperty> : SegmentCriteriaBase<TEntity, TProperty, int> where TEntity : class
+    public class IntSegmentCriteria<TEntity, TProperty> : SegmentCriteriaBase<TEntity, TProperty, int>
+        where TEntity : class
     {
         /// <summary>
         /// 初始化整数范围过滤条件
@@ -17,7 +18,8 @@ namespace KissU.Util.Datas.Queries.Criterias
         /// <param name="min">最小值</param>
         /// <param name="max">最大值</param>
         /// <param name="boundary">包含边界</param>
-        public IntSegmentCriteria(Expression<Func<TEntity, TProperty>> propertyExpression, int? min, int? max, Boundary boundary = Boundary.Both)
+        public IntSegmentCriteria(Expression<Func<TEntity, TProperty>> propertyExpression, int? min, int? max,
+            Boundary boundary = Boundary.Both)
             : base(propertyExpression, min, max, boundary)
         {
         }

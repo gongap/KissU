@@ -8,7 +8,7 @@ namespace KissU.Util.Helpers
     /// <summary>
     /// 枚举操作
     /// </summary>
-    public static partial class Enum
+    public static class Enum
     {
         /// <summary>
         /// 获取实例
@@ -19,14 +19,15 @@ namespace KissU.Util.Helpers
         /// <exception cref="ArgumentNullException">member</exception>
         public static TEnum Parse<TEnum>(object member)
         {
-            string value = member.SafeString();
+            var value = member.SafeString();
             if (string.IsNullOrWhiteSpace(value))
             {
                 if (typeof(TEnum).IsGenericType)
                     return default;
                 throw new ArgumentNullException(nameof(member));
             }
-            return (TEnum)System.Enum.Parse(Common.GetType<TEnum>(), value, true);
+
+            return (TEnum) System.Enum.Parse(Common.GetType<TEnum>(), value, true);
         }
 
         /// <summary>
@@ -79,10 +80,10 @@ namespace KissU.Util.Helpers
         /// <exception cref="ArgumentNullException">member</exception>
         public static int GetValue(Type type, object member)
         {
-            string value = member.SafeString();
+            var value = member.SafeString();
             if (string.IsNullOrWhiteSpace(value))
                 throw new ArgumentNullException(nameof(member));
-            return (int)System.Enum.Parse(type, member.ToString(), true);
+            return (int) System.Enum.Parse(type, member.ToString(), true);
         }
 
         /// <summary>
@@ -174,6 +175,7 @@ namespace KissU.Util.Helpers
                     continue;
                 result.Add(field.Name);
             }
+
             return result;
         }
     }

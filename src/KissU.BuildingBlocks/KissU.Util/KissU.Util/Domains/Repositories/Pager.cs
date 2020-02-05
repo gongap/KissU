@@ -5,6 +5,8 @@
     /// </summary>
     public class Pager : IPager
     {
+        private int _pageIndex;
+
         /// <summary>
         /// 初始化分页参数
         /// </summary>
@@ -39,8 +41,6 @@
             Order = order;
         }
 
-        private int _pageIndex;
-
         /// <summary>
         /// 页索引，即第几页，从1开始
         /// </summary>
@@ -71,9 +71,9 @@
         /// <returns>System.Int32.</returns>
         public int GetPageCount()
         {
-            if ((TotalCount % PageSize) == 0)
+            if (TotalCount % PageSize == 0)
                 return TotalCount / PageSize;
-            return (TotalCount / PageSize) + 1;
+            return TotalCount / PageSize + 1;
         }
 
         /// <summary>

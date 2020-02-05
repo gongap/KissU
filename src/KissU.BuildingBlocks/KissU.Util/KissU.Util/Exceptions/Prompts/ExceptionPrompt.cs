@@ -66,6 +66,7 @@ namespace KissU.Util.Exceptions.Prompts
                 if (string.IsNullOrWhiteSpace(result) == false)
                     return result;
             }
+
             return string.Empty;
         }
     }

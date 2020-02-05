@@ -1,15 +1,5 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.NetworkInformation;
-using System.Net.Sockets;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 using System.Web;
-using IdentityModel.Client;
-using KissU.Util.Security.Principals;
 using Microsoft.Extensions.Hosting;
 
 namespace KissU.Util.Helpers
@@ -17,7 +7,7 @@ namespace KissU.Util.Helpers
     /// <summary>
     /// Host操作
     /// </summary>
-    public static partial class Host
+    public static class Host
     {
         #region 静态构造方法
 
@@ -54,7 +44,7 @@ namespace KissU.Util.Helpers
         /// </summary>
         public static string RootPath => Environment?.ContentRootPath;
 
-        #endregion 
+        #endregion
 
         #region UrlEncode(Url编码)
 
@@ -103,16 +93,17 @@ namespace KissU.Util.Helpers
         private static string GetUpperEncode(string encode)
         {
             var result = new StringBuilder();
-            int index = int.MinValue;
-            for (int i = 0; i < encode.Length; i++)
+            var index = int.MinValue;
+            for (var i = 0; i < encode.Length; i++)
             {
-                string character = encode[i].ToString();
+                var character = encode[i].ToString();
                 if (character == "%")
                     index = i;
                 if (i - index == 1 || i - index == 2)
                     character = character.ToUpper();
                 result.Append(character);
             }
+
             return result.ToString();
         }
 

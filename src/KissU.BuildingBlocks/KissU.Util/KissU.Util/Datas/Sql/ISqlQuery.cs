@@ -45,7 +45,8 @@ namespace KissU.Util.Datas.Sql
         /// <param name="func">查询操作</param>
         /// <param name="connection">数据库连接</param>
         /// <returns>TResult.</returns>
-        TResult Query<TResult>(Func<IDbConnection, string, IReadOnlyDictionary<string, object>, TResult> func, IDbConnection connection = null);
+        TResult Query<TResult>(Func<IDbConnection, string, IReadOnlyDictionary<string, object>, TResult> func,
+            IDbConnection connection = null);
 
         /// <summary>
         /// 查询
@@ -54,7 +55,9 @@ namespace KissU.Util.Datas.Sql
         /// <param name="func">查询操作</param>
         /// <param name="connection">数据库连接</param>
         /// <returns>Task&lt;TResult&gt;.</returns>
-        Task<TResult> QueryAsync<TResult>(Func<IDbConnection, string, IReadOnlyDictionary<string, object>, Task<TResult>> func, IDbConnection connection = null);
+        Task<TResult> QueryAsync<TResult>(
+            Func<IDbConnection, string, IReadOnlyDictionary<string, object>, Task<TResult>> func,
+            IDbConnection connection = null);
 
         /// <summary>
         /// 分页查询
@@ -64,7 +67,8 @@ namespace KissU.Util.Datas.Sql
         /// <param name="parameter">分页参数</param>
         /// <param name="connection">数据库连接</param>
         /// <returns>PagerList&lt;TResult&gt;.</returns>
-        PagerList<TResult> PagerQuery<TResult>(Func<List<TResult>> func, IPager parameter, IDbConnection connection = null);
+        PagerList<TResult> PagerQuery<TResult>(Func<List<TResult>> func, IPager parameter,
+            IDbConnection connection = null);
 
         /// <summary>
         /// 分页查询
@@ -74,7 +78,8 @@ namespace KissU.Util.Datas.Sql
         /// <param name="parameter">分页参数</param>
         /// <param name="connection">数据库连接</param>
         /// <returns>Task&lt;PagerList&lt;TResult&gt;&gt;.</returns>
-        Task<PagerList<TResult>> PagerQueryAsync<TResult>(Func<Task<List<TResult>>> func, IPager parameter, IDbConnection connection = null);
+        Task<PagerList<TResult>> PagerQueryAsync<TResult>(Func<Task<List<TResult>>> func, IPager parameter,
+            IDbConnection connection = null);
 
         /// <summary>
         /// 获取单值
@@ -178,6 +183,7 @@ namespace KissU.Util.Datas.Sql
         /// <param name="pageSize">每页显示行数</param>
         /// <param name="connection">数据库连接</param>
         /// <returns>Task&lt;PagerList&lt;TResult&gt;&gt;.</returns>
-        Task<PagerList<TResult>> ToPagerListAsync<TResult>(string sql, int page, int pageSize, IDbConnection connection = null);
+        Task<PagerList<TResult>> ToPagerListAsync<TResult>(string sql, int page, int pageSize,
+            IDbConnection connection = null);
     }
 }

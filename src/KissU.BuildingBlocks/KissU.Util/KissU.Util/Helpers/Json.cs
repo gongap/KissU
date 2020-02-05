@@ -5,7 +5,7 @@ namespace KissU.Util.Helpers
     /// <summary>
     /// Json操作
     /// </summary>
-    public static partial class Json
+    public static class Json
     {
         /// <summary>
         /// 将Json字符串转换为对象

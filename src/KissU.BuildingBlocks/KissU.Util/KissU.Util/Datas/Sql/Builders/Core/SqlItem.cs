@@ -12,6 +12,11 @@ namespace KissU.Util.Datas.Sql.Builders.Core
     public class SqlItem
     {
         /// <summary>
+        /// 别名
+        /// </summary>
+        private string _alias;
+
+        /// <summary>
         /// 名称
         /// </summary>
         private string _name;
@@ -22,11 +27,6 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         private string _prefix;
 
         /// <summary>
-        /// 别名
-        /// </summary>
-        private string _alias;
-
-        /// <summary>
         /// 初始化Sql项
         /// </summary>
         /// <param name="name">名称</param>
@@ -35,7 +35,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// <param name="raw">使用原始值</param>
         /// <param name="isSplit">是否用句点分割名称</param>
         /// <param name="isResolve">是否解析名称</param>
-        public SqlItem(string name, string prefix = null, string alias = null, bool raw = false, bool isSplit = true, bool isResolve = true)
+        public SqlItem(string name, string prefix = null, string alias = null, bool raw = false, bool isSplit = true,
+            bool isResolve = true)
         {
             if (string.IsNullOrWhiteSpace(name))
                 return;
@@ -47,52 +48,8 @@ namespace KissU.Util.Datas.Sql.Builders.Core
                 _name = name;
                 return;
             }
+
             Resolve(name, isSplit, isResolve);
-        }
-
-        /// <summary>
-        /// 解析名称
-        /// </summary>
-        private void Resolve(string name, bool isSplit, bool isResolve)
-        {
-            name = name.Trim();
-            if (isResolve == false)
-            {
-                _name = name;
-                return;
-            }
-            var pattern = @"\s+[aA][sS]\s+";
-            name = Regex.Replace(name, pattern, " ");
-            if (name.Contains("."))
-            {
-                pattern = @"\s+.\s+";
-                name = Regex.Replace(name, pattern, ".");
-            }
-            var list = name.Split(' ').Where(t => t.IsEmpty() == false).ToList();
-            if (list.Count == 0)
-                return;
-            if (list.Count == 2)
-                _alias = list[1].Trim();
-            if (isSplit)
-            {
-                SplitName(list[0]);
-                return;
-            }
-            _name = name;
-        }
-
-        /// <summary>
-        /// 分割名称
-        /// </summary>
-        private void SplitName(string name)
-        {
-            var result = new NameItem(name);
-            if (string.IsNullOrWhiteSpace(result.Name) == false)
-                _name = result.Name;
-            if (string.IsNullOrWhiteSpace(result.Prefix) == false)
-                _prefix = result.Prefix;
-            if (string.IsNullOrWhiteSpace(result.DatabaseName) == false)
-                DatabaseName = result.DatabaseName;
         }
 
         /// <summary>
@@ -119,6 +76,54 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// 数据库名称
         /// </summary>
         public string DatabaseName { get; private set; }
+
+        /// <summary>
+        /// 解析名称
+        /// </summary>
+        private void Resolve(string name, bool isSplit, bool isResolve)
+        {
+            name = name.Trim();
+            if (isResolve == false)
+            {
+                _name = name;
+                return;
+            }
+
+            var pattern = @"\s+[aA][sS]\s+";
+            name = Regex.Replace(name, pattern, " ");
+            if (name.Contains("."))
+            {
+                pattern = @"\s+.\s+";
+                name = Regex.Replace(name, pattern, ".");
+            }
+
+            var list = name.Split(' ').Where(t => t.IsEmpty() == false).ToList();
+            if (list.Count == 0)
+                return;
+            if (list.Count == 2)
+                _alias = list[1].Trim();
+            if (isSplit)
+            {
+                SplitName(list[0]);
+                return;
+            }
+
+            _name = name;
+        }
+
+        /// <summary>
+        /// 分割名称
+        /// </summary>
+        private void SplitName(string name)
+        {
+            var result = new NameItem(name);
+            if (string.IsNullOrWhiteSpace(result.Name) == false)
+                _name = result.Name;
+            if (string.IsNullOrWhiteSpace(result.Prefix) == false)
+                _prefix = result.Prefix;
+            if (string.IsNullOrWhiteSpace(result.DatabaseName) == false)
+                DatabaseName = result.DatabaseName;
+        }
 
         /// <summary>
         /// 复制副本

@@ -21,6 +21,71 @@ namespace KissU.Util.Logs.Contents
         }
 
         /// <summary>
+        /// 业务标识
+        /// </summary>
+        public string BusinessId { get; set; }
+
+        /// <summary>
+        /// 租户
+        /// </summary>
+        public string Tenant { get; set; }
+
+        /// <summary>
+        /// 应用程序
+        /// </summary>
+        public string Application { get; set; }
+
+        /// <summary>
+        /// 模块
+        /// </summary>
+        public string Module { get; set; }
+
+        /// <summary>
+        /// 类名
+        /// </summary>
+        public string Class { get; set; }
+
+        /// <summary>
+        /// 方法
+        /// </summary>
+        public string Method { get; set; }
+
+        /// <summary>
+        /// 参数
+        /// </summary>
+        public StringBuilder Params { get; set; }
+
+        /// <summary>
+        /// 操作人
+        /// </summary>
+        public string Operator { get; set; }
+
+        /// <summary>
+        /// 操作人角色
+        /// </summary>
+        public string Role { get; set; }
+
+        /// <summary>
+        /// Sql语句
+        /// </summary>
+        public StringBuilder Sql { get; set; }
+
+        /// <summary>
+        /// Sql参数
+        /// </summary>
+        public StringBuilder SqlParams { get; set; }
+
+        /// <summary>
+        /// 错误码
+        /// </summary>
+        public string ErrorCode { get; set; }
+
+        /// <summary>
+        /// 标题
+        /// </summary>
+        public string Caption { get; set; }
+
+        /// <summary>
         /// 日志名称
         /// </summary>
         public string LogName { get; set; }
@@ -76,79 +141,14 @@ namespace KissU.Util.Logs.Contents
         public string Url { get; set; }
 
         /// <summary>
-        /// 业务标识
-        /// </summary>
-        public string BusinessId { get; set; }
-
-        /// <summary>
-        /// 租户
-        /// </summary>
-        public string Tenant { get; set; }
-
-        /// <summary>
-        /// 应用程序
-        /// </summary>
-        public string Application { get; set; }
-
-        /// <summary>
-        /// 模块
-        /// </summary>
-        public string Module { get; set; }
-
-        /// <summary>
-        /// 类名
-        /// </summary>
-        public string Class { get; set; }
-
-        /// <summary>
-        /// 方法
-        /// </summary>
-        public string Method { get; set; }
-
-        /// <summary>
-        /// 参数
-        /// </summary>
-        public StringBuilder Params { get; set; }
-
-        /// <summary>
         /// 操作人标识
         /// </summary>
         public string UserId { get; set; }
 
         /// <summary>
-        /// 操作人
-        /// </summary>
-        public string Operator { get; set; }
-
-        /// <summary>
-        /// 操作人角色
-        /// </summary>
-        public string Role { get; set; }
-
-        /// <summary>
-        /// 标题
-        /// </summary>
-        public string Caption { get; set; }
-
-        /// <summary>
         /// 内容
         /// </summary>
         public StringBuilder Content { get; set; }
-
-        /// <summary>
-        /// Sql语句
-        /// </summary>
-        public StringBuilder Sql { get; set; }
-
-        /// <summary>
-        /// Sql参数
-        /// </summary>
-        public StringBuilder SqlParams { get; set; }
-
-        /// <summary>
-        /// 错误码
-        /// </summary>
-        public string ErrorCode { get; set; }
 
         /// <summary>
         /// 异常

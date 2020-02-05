@@ -10,6 +10,11 @@ namespace KissU.Util.Datas.Sql
     public interface ISqlBuilder : ICondition, ISelect, IFrom, IJoin, IWhere, IGroupBy, IOrderBy, IUnion, ICte
     {
         /// <summary>
+        /// 分页参数
+        /// </summary>
+        IPager Pager { get; }
+
+        /// <summary>
         /// 复制Sql生成器
         /// </summary>
         /// <returns>ISqlBuilder.</returns>
@@ -112,11 +117,6 @@ namespace KissU.Util.Datas.Sql
         /// </summary>
         /// <returns>IReadOnlyDictionary&lt;System.String, System.Object&gt;.</returns>
         IReadOnlyDictionary<string, object> GetParams();
-
-        /// <summary>
-        /// 分页参数
-        /// </summary>
-        IPager Pager { get; }
 
         /// <summary>
         /// 设置分页

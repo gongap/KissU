@@ -44,8 +44,10 @@ namespace KissU.Util.Datas.Queries
         /// <summary>
         /// 添加查询条件
         /// </summary>
-        /// <param name="predicate">查询条件,如果参数值为空，则忽略该查询条件，范例：t =&gt; t.Name == ""，该查询条件被忽略。
-        /// 注意：一次仅能添加一个条件，范例：t =&gt; t.Name == "a" &amp;&amp; t.Mobile == "123"，不支持，将抛出异常</param>
+        /// <param name="predicate">
+        /// 查询条件,如果参数值为空，则忽略该查询条件，范例：t =&gt; t.Name == ""，该查询条件被忽略。
+        /// 注意：一次仅能添加一个条件，范例：t =&gt; t.Name == "a" &amp;&amp; t.Mobile == "123"，不支持，将抛出异常
+        /// </param>
         /// <returns>IQuery&lt;TEntity, TKey&gt;.</returns>
         IQuery<TEntity, TKey> WhereIfNotEmpty(Expression<Func<TEntity, bool>> predicate);
 
@@ -58,7 +60,8 @@ namespace KissU.Util.Datas.Queries
         /// <param name="max">最大值</param>
         /// <param name="boundary">包含边界</param>
         /// <returns>IQuery&lt;TEntity, TKey&gt;.</returns>
-        IQuery<TEntity, TKey> Between<TProperty>(Expression<Func<TEntity, TProperty>> propertyExpression, int? min, int? max, Boundary boundary = Boundary.Both);
+        IQuery<TEntity, TKey> Between<TProperty>(Expression<Func<TEntity, TProperty>> propertyExpression, int? min,
+            int? max, Boundary boundary = Boundary.Both);
 
         /// <summary>
         /// 添加范围查询条件
@@ -69,7 +72,8 @@ namespace KissU.Util.Datas.Queries
         /// <param name="max">最大值</param>
         /// <param name="boundary">包含边界</param>
         /// <returns>IQuery&lt;TEntity, TKey&gt;.</returns>
-        IQuery<TEntity, TKey> Between<TProperty>(Expression<Func<TEntity, TProperty>> propertyExpression, double? min, double? max, Boundary boundary = Boundary.Both);
+        IQuery<TEntity, TKey> Between<TProperty>(Expression<Func<TEntity, TProperty>> propertyExpression, double? min,
+            double? max, Boundary boundary = Boundary.Both);
 
         /// <summary>
         /// 添加范围查询条件
@@ -80,7 +84,8 @@ namespace KissU.Util.Datas.Queries
         /// <param name="max">最大值</param>
         /// <param name="boundary">包含边界</param>
         /// <returns>IQuery&lt;TEntity, TKey&gt;.</returns>
-        IQuery<TEntity, TKey> Between<TProperty>(Expression<Func<TEntity, TProperty>> propertyExpression, decimal? min, decimal? max, Boundary boundary = Boundary.Both);
+        IQuery<TEntity, TKey> Between<TProperty>(Expression<Func<TEntity, TProperty>> propertyExpression, decimal? min,
+            decimal? max, Boundary boundary = Boundary.Both);
 
         /// <summary>
         /// 添加范围查询条件
@@ -92,7 +97,8 @@ namespace KissU.Util.Datas.Queries
         /// <param name="includeTime">是否包含时间</param>
         /// <param name="boundary">包含边界</param>
         /// <returns>IQuery&lt;TEntity, TKey&gt;.</returns>
-        IQuery<TEntity, TKey> Between<TProperty>(Expression<Func<TEntity, TProperty>> propertyExpression, DateTime? min, DateTime? max, bool includeTime = true, Boundary? boundary = null);
+        IQuery<TEntity, TKey> Between<TProperty>(Expression<Func<TEntity, TProperty>> propertyExpression, DateTime? min,
+            DateTime? max, bool includeTime = true, Boundary? boundary = null);
 
         /// <summary>
         /// 添加排序

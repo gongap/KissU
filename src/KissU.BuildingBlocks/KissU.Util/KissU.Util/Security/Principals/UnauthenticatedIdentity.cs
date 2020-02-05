@@ -8,13 +8,13 @@ namespace KissU.Util.Security.Principals
     public class UnauthenticatedIdentity : ClaimsIdentity
     {
         /// <summary>
-        /// 是否认证
-        /// </summary>
-        public override bool IsAuthenticated => false;
-
-        /// <summary>
         /// 未认证的身份标识实例
         /// </summary>
         public static readonly UnauthenticatedIdentity Instance = new UnauthenticatedIdentity();
+
+        /// <summary>
+        /// 是否认证
+        /// </summary>
+        public override bool IsAuthenticated => false;
     }
 }

@@ -15,21 +15,21 @@ namespace KissU.Util.Logs
         /// </summary>
         /// <param name="parameter">参数</param>
         /// <param name="log">参数</param>
-        public static void AppendTo( this Parameter parameter, ILog log )
+        public static void AppendTo(this Parameter parameter, ILog log)
         {
-            log.Params( parameter.Name, GetParameterValue( parameter ), parameter.ParameterInfo.ParameterType.FullName );
+            log.Params(parameter.Name, GetParameterValue(parameter), parameter.ParameterInfo.ParameterType.FullName);
         }
 
         /// <summary>
         /// 获取参数值
         /// </summary>
-        private static string GetParameterValue( Parameter parameter )
+        private static string GetParameterValue(Parameter parameter)
         {
-            if( Reflection.IsGenericCollection( parameter.RawType ) == false )
+            if (Reflection.IsGenericCollection(parameter.RawType) == false)
                 return parameter.Value.SafeString();
-            if ( !( parameter.Value is IEnumerable<object> list ) )
+            if (!(parameter.Value is IEnumerable<object> list))
                 return parameter.Value.SafeString();
-            return list.Select( t => t.SafeString() ).Join();
+            return list.Select(t => t.SafeString()).Join();
         }
     }
 }

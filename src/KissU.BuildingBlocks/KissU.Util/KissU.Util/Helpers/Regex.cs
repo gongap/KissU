@@ -6,7 +6,7 @@ namespace KissU.Util.Helpers
     /// <summary>
     /// 正则操作
     /// </summary>
-    public static partial class Regex
+    public static class Regex
     {
         /// <summary>
         /// 获取匹配值集合
@@ -16,7 +16,8 @@ namespace KissU.Util.Helpers
         /// <param name="resultPatterns">结果模式字符串数组,范例：new[]{"$1","$2"}</param>
         /// <param name="options">选项</param>
         /// <returns>Dictionary&lt;System.String, System.String&gt;.</returns>
-        public static Dictionary<string, string> GetValues(string input, string pattern, string[] resultPatterns, RegexOptions options = RegexOptions.IgnoreCase)
+        public static Dictionary<string, string> GetValues(string input, string pattern, string[] resultPatterns,
+            RegexOptions options = RegexOptions.IgnoreCase)
         {
             var result = new Dictionary<string, string>();
             if (string.IsNullOrWhiteSpace(input))
@@ -38,6 +39,7 @@ namespace KissU.Util.Helpers
                 result.Add(string.Empty, match.Value);
                 return;
             }
+
             foreach (var resultPattern in resultPatterns)
                 result.Add(resultPattern, match.Result(resultPattern));
         }
@@ -50,7 +52,8 @@ namespace KissU.Util.Helpers
         /// <param name="resultPattern">结果模式字符串,范例："$1"用来获取第一个()内的值</param>
         /// <param name="options">选项</param>
         /// <returns>System.String.</returns>
-        public static string GetValue(string input, string pattern, string resultPattern = "", RegexOptions options = RegexOptions.IgnoreCase)
+        public static string GetValue(string input, string pattern, string resultPattern = "",
+            RegexOptions options = RegexOptions.IgnoreCase)
         {
             if (string.IsNullOrWhiteSpace(input))
                 return string.Empty;
@@ -82,7 +85,8 @@ namespace KissU.Util.Helpers
         /// <param name="replacement">替换字符串</param>
         /// <param name="options">选项</param>
         /// <returns>System.String.</returns>
-        public static string Replace(string input, string pattern, string replacement, RegexOptions options = RegexOptions.IgnoreCase)
+        public static string Replace(string input, string pattern, string replacement,
+            RegexOptions options = RegexOptions.IgnoreCase)
         {
             if (string.IsNullOrWhiteSpace(input))
                 return string.Empty;

@@ -8,7 +8,8 @@ namespace KissU.Util.Datas.Queries.Criterias
     /// </summary>
     /// <typeparam name="TEntity">实体类型</typeparam>
     /// <typeparam name="TProperty">属性类型</typeparam>
-    public class DecimalSegmentCriteria<TEntity, TProperty> : SegmentCriteriaBase<TEntity, TProperty, decimal> where TEntity : class
+    public class DecimalSegmentCriteria<TEntity, TProperty> : SegmentCriteriaBase<TEntity, TProperty, decimal>
+        where TEntity : class
     {
         /// <summary>
         /// 初始化decimal范围过滤条件
@@ -17,7 +18,8 @@ namespace KissU.Util.Datas.Queries.Criterias
         /// <param name="min">最小值</param>
         /// <param name="max">最大值</param>
         /// <param name="boundary">包含边界</param>
-        public DecimalSegmentCriteria(Expression<Func<TEntity, TProperty>> propertyExpression, decimal? min, decimal? max, Boundary boundary = Boundary.Both)
+        public DecimalSegmentCriteria(Expression<Func<TEntity, TProperty>> propertyExpression, decimal? min,
+            decimal? max, Boundary boundary = Boundary.Both)
             : base(propertyExpression, min, max, boundary)
         {
         }

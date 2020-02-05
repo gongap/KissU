@@ -67,7 +67,8 @@ namespace KissU.Util.Clients
         /// <param name="domain">所属域</param>
         /// <param name="expiresDate">到期时间</param>
         /// <returns>TRequest.</returns>
-        TRequest Cookie(string name, string value, string path = "/", string domain = null, DateTime? expiresDate = null);
+        TRequest Cookie(string name, string value, string path = "/", string domain = null,
+            DateTime? expiresDate = null);
 
         /// <summary>
         /// 设置Cookie

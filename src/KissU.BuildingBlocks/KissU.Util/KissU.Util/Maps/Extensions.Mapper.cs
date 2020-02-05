@@ -1,7 +1,6 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 using AutoMapper;
 using KissU.Util.Helpers;
 using KissU.Util.Reflections;
@@ -55,16 +54,17 @@ namespace KissU.Util.Maps
             try
             {
                 if (source == null)
-                    return default(TDestination);
+                    return default;
                 if (destination == null)
-                    return default(TDestination);
+                    return default;
                 var sourceType = GetType(source);
                 var destinationType = GetType(destination);
                 return GetResult(sourceType, destinationType, source, destination);
             }
             catch (AutoMapperMappingException ex)
             {
-                return GetResult(GetType(ex.MemberMap.SourceType), GetType(ex.MemberMap.DestinationType), source, destination);
+                return GetResult(GetType(ex.MemberMap.SourceType), GetType(ex.MemberMap.DestinationType), source,
+                    destination);
             }
         }
 
@@ -87,7 +87,8 @@ namespace KissU.Util.Maps
         /// <summary>
         /// 获取结果
         /// </summary>
-        private static TDestination GetResult<TDestination>(Type sourceType, Type destinationType, object source, TDestination destination)
+        private static TDestination GetResult<TDestination>(Type sourceType, Type destinationType, object source,
+            TDestination destination)
         {
             if (Exists(sourceType, destinationType))
                 return GetResult(source, destination);
@@ -97,6 +98,7 @@ namespace KissU.Util.Maps
                     return GetResult(source, destination);
                 Init(sourceType, destinationType);
             }
+
             return GetResult(source, destination);
         }
 
@@ -139,7 +141,7 @@ namespace KissU.Util.Maps
         /// <typeparam name="TDestination">目标元素类型,范例：Sample,不要加List</typeparam>
         /// <param name="source">源集合</param>
         /// <returns>List&lt;TDestination&gt;.</returns>
-        public static List<TDestination> MapToList<TDestination>(this System.Collections.IEnumerable source)
+        public static List<TDestination> MapToList<TDestination>(this IEnumerable source)
         {
             return MapTo<List<TDestination>>(source);
         }

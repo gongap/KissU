@@ -3,7 +3,7 @@
     /// <summary>
     /// Sql方言扩展
     /// </summary>
-    public static partial class Extensions
+    public static class Extensions
     {
         /// <summary>
         /// 获取列

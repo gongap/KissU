@@ -7,7 +7,7 @@ namespace KissU.Util.Helpers
     /// <summary>
     /// 文件和流操作
     /// </summary>
-    public static partial class File
+    public static class File
     {
         /// <summary>
         /// 流转换为字节流
@@ -70,7 +70,7 @@ namespace KissU.Util.Helpers
             var fileInfo = new FileInfo(filePath);
             using (var reader = new BinaryReader(fileInfo.Open(FileMode.Open)))
             {
-                return reader.ReadBytes((int)fileInfo.Length);
+                return reader.ReadBytes((int) fileInfo.Length);
             }
         }
 
@@ -82,7 +82,8 @@ namespace KissU.Util.Helpers
         /// <param name="bufferSize">缓冲区大小</param>
         /// <param name="isCloseStream">读取完成是否释放流，默认为true</param>
         /// <returns>A <see cref="System.String" /> that represents this instance.</returns>
-        public static string ToString(Stream stream, Encoding encoding = null, int bufferSize = 1024 * 2, bool isCloseStream = true)
+        public static string ToString(Stream stream, Encoding encoding = null, int bufferSize = 1024 * 2,
+            bool isCloseStream = true)
         {
             if (stream == null)
                 return string.Empty;
@@ -109,7 +110,8 @@ namespace KissU.Util.Helpers
         /// <param name="bufferSize">缓冲区大小</param>
         /// <param name="isCloseStream">读取完成是否释放流，默认为true</param>
         /// <returns>Task&lt;System.String&gt;.</returns>
-        public static async Task<string> ToStringAsync(Stream stream, Encoding encoding = null, int bufferSize = 1024 * 2, bool isCloseStream = true)
+        public static async Task<string> ToStringAsync(Stream stream, Encoding encoding = null,
+            int bufferSize = 1024 * 2, bool isCloseStream = true)
         {
             if (stream == null)
                 return string.Empty;

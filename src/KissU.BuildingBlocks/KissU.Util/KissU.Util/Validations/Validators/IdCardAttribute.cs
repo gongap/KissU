@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using KissU.Util.Helpers;
 using KissU.Util.Properties;
-using String = System.String;
 
 namespace KissU.Util.Validations.Validators
 {
@@ -22,7 +21,7 @@ namespace KissU.Util.Validations.Validators
         {
             if (ErrorMessage == null && ErrorMessageResourceName == null)
                 ErrorMessage = LibraryResource.InvalidIdCard;
-            return String.Format(CultureInfo.CurrentCulture, ErrorMessageString);
+            return string.Format(CultureInfo.CurrentCulture, ErrorMessageString);
         }
 
         /// <summary>

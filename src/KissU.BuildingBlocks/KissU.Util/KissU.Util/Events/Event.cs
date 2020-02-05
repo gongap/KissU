@@ -14,7 +14,7 @@ namespace KissU.Util.Events
         /// </summary>
         public Event()
         {
-            Id = Util.Helpers.Id.Guid();
+            Id = Helpers.Id.Guid();
             Time = DateTime.Now;
         }
 

@@ -16,13 +16,11 @@ namespace KissU.Util.Clients
         /// <summary>
         /// application/json
         /// </summary>
-        [Description("application/json")]
-        Json,
+        [Description("application/json")] Json,
 
         /// <summary>
         /// text/xml
         /// </summary>
-        [Description("text/xml")]
-        Xml
+        [Description("text/xml")] Xml
     }
 }

@@ -15,21 +15,21 @@ namespace KissU.Util.Logs.Aspects
         /// </summary>
         /// <param name="context">The context.</param>
         /// <param name="next">The next.</param>
-        public override async Task Invoke( AspectContext context, AspectDelegate next )
+        public override async Task Invoke(AspectContext context, AspectDelegate next)
         {
-            var methodName = GetMethodName( context );
-            var log = Log.GetLog( methodName );
-            if( !Enabled( log ) )
+            var methodName = GetMethodName(context);
+            var log = Log.GetLog(methodName);
+            if (!Enabled(log))
                 return;
-            ExecuteBefore( log, context, methodName );
-            await next( context );
-            ExecuteAfter( log, context, methodName );
+            ExecuteBefore(log, context, methodName);
+            await next(context);
+            ExecuteAfter(log, context, methodName);
         }
 
         /// <summary>
         /// 获取方法名
         /// </summary>
-        private string GetMethodName( AspectContext context )
+        private string GetMethodName(AspectContext context)
         {
             return $"{context.ServiceMethod.DeclaringType?.FullName}.{context.ServiceMethod?.Name}";
         }
@@ -39,7 +39,7 @@ namespace KissU.Util.Logs.Aspects
         /// </summary>
         /// <param name="log">The log.</param>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-        protected virtual bool Enabled( ILog log )
+        protected virtual bool Enabled(ILog log)
         {
             return true;
         }
@@ -47,32 +47,32 @@ namespace KissU.Util.Logs.Aspects
         /// <summary>
         /// 执行前
         /// </summary>
-        private void ExecuteBefore( ILog log, AspectContext context, string methodName )
+        private void ExecuteBefore(ILog log, AspectContext context, string methodName)
         {
-            log.Caption( $"{context.ServiceMethod.Name}方法执行前" )
-                .Class( context.ServiceMethod.DeclaringType?.FullName )
-                .Method( methodName );
-            foreach( var parameter in context.GetParameters() )
-                parameter.AppendTo( log );
-            WriteLog( log );
+            log.Caption($"{context.ServiceMethod.Name}方法执行前")
+                .Class(context.ServiceMethod.DeclaringType?.FullName)
+                .Method(methodName);
+            foreach (var parameter in context.GetParameters())
+                parameter.AppendTo(log);
+            WriteLog(log);
         }
 
         /// <summary>
         /// 写日志
         /// </summary>
         /// <param name="log">The log.</param>
-        protected abstract void WriteLog( ILog log );
+        protected abstract void WriteLog(ILog log);
 
         /// <summary>
         /// 执行后
         /// </summary>
-        private void ExecuteAfter( ILog log, AspectContext context, string methodName )
+        private void ExecuteAfter(ILog log, AspectContext context, string methodName)
         {
             var parameter = context.GetReturnParameter();
-            log.Caption( $"{context.ServiceMethod.Name}方法执行后" )
-                .Method( methodName )
-                .Content( $"返回类型: {parameter.ParameterInfo.ParameterType.FullName},返回值: {parameter.Value.SafeString()}" );
-            WriteLog( log );
+            log.Caption($"{context.ServiceMethod.Name}方法执行后")
+                .Method(methodName)
+                .Content($"返回类型: {parameter.ParameterInfo.ParameterType.FullName},返回值: {parameter.Value.SafeString()}");
+            WriteLog(log);
         }
     }
 }

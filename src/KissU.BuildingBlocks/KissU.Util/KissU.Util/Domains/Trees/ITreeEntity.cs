@@ -8,7 +8,8 @@ namespace KissU.Util.Domains.Trees
     /// <typeparam name="TEntity">实体类型</typeparam>
     /// <typeparam name="TKey">实体标识类型</typeparam>
     /// <typeparam name="TParentId">父标识类型</typeparam>
-    public interface ITreeEntity<in TEntity, TKey, TParentId> : IAggregateRoot<TEntity, TKey>, IParentId<TParentId>, IPath, IEnabled, ISortId where TEntity : ITreeEntity<TEntity, TKey, TParentId>
+    public interface ITreeEntity<in TEntity, TKey, TParentId> : IAggregateRoot<TEntity, TKey>, IParentId<TParentId>,
+        IPath, IEnabled, ISortId where TEntity : ITreeEntity<TEntity, TKey, TParentId>
     {
         /// <summary>
         /// 初始化路径

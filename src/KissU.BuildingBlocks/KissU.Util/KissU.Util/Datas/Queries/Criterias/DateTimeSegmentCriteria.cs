@@ -8,7 +8,8 @@ namespace KissU.Util.Datas.Queries.Criterias
     /// </summary>
     /// <typeparam name="TEntity">实体类型</typeparam>
     /// <typeparam name="TProperty">属性类型</typeparam>
-    public class DateTimeSegmentCriteria<TEntity, TProperty> : SegmentCriteriaBase<TEntity, TProperty, DateTime> where TEntity : class
+    public class DateTimeSegmentCriteria<TEntity, TProperty> : SegmentCriteriaBase<TEntity, TProperty, DateTime>
+        where TEntity : class
     {
         /// <summary>
         /// 初始化日期范围过滤条件 - 包含时间
@@ -17,7 +18,8 @@ namespace KissU.Util.Datas.Queries.Criterias
         /// <param name="min">最小值</param>
         /// <param name="max">最大值</param>
         /// <param name="boundary">包含边界</param>
-        public DateTimeSegmentCriteria(Expression<Func<TEntity, TProperty>> propertyExpression, DateTime? min, DateTime? max, Boundary boundary = Boundary.Both)
+        public DateTimeSegmentCriteria(Expression<Func<TEntity, TProperty>> propertyExpression, DateTime? min,
+            DateTime? max, Boundary boundary = Boundary.Both)
             : base(propertyExpression, min, max, boundary)
         {
         }

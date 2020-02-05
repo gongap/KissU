@@ -62,35 +62,40 @@ namespace KissU.Util.Domains.Auditing
                 InitGuid();
                 return;
             }
+
             if (_entity is IModificationAudited<Guid?>)
             {
                 InitNullableGuid();
                 return;
             }
+
             if (_entity is IModificationAudited<int>)
             {
                 InitInt();
                 return;
             }
+
             if (_entity is IModificationAudited<int?>)
             {
                 InitNullableInt();
                 return;
             }
+
             if (_entity is IModificationAudited<string>)
             {
                 InitString();
                 return;
             }
+
             if (_entity is IModificationAudited<long>)
             {
                 InitLong();
                 return;
             }
+
             if (_entity is IModificationAudited<long?>)
             {
                 InitNullableLong();
-                return;
             }
         }
 
@@ -119,7 +124,7 @@ namespace KissU.Util.Domains.Auditing
         /// </summary>
         private void InitGuid()
         {
-            var result = (IModificationAudited<Guid>)_entity;
+            var result = (IModificationAudited<Guid>) _entity;
             result.LastModifierId = _userId.ToGuid();
         }
 
@@ -128,7 +133,7 @@ namespace KissU.Util.Domains.Auditing
         /// </summary>
         private void InitNullableGuid()
         {
-            var result = (IModificationAudited<Guid?>)_entity;
+            var result = (IModificationAudited<Guid?>) _entity;
             result.LastModifierId = _userId.ToGuidOrNull();
         }
 
@@ -137,7 +142,7 @@ namespace KissU.Util.Domains.Auditing
         /// </summary>
         private void InitInt()
         {
-            var result = (IModificationAudited<int>)_entity;
+            var result = (IModificationAudited<int>) _entity;
             result.LastModifierId = _userId.ToInt();
         }
 
@@ -146,7 +151,7 @@ namespace KissU.Util.Domains.Auditing
         /// </summary>
         private void InitNullableInt()
         {
-            var result = (IModificationAudited<int?>)_entity;
+            var result = (IModificationAudited<int?>) _entity;
             result.LastModifierId = _userId.ToIntOrNull();
         }
 
@@ -155,7 +160,7 @@ namespace KissU.Util.Domains.Auditing
         /// </summary>
         private void InitString()
         {
-            var result = (IModificationAudited<string>)_entity;
+            var result = (IModificationAudited<string>) _entity;
             result.LastModifierId = _userId.SafeString();
         }
 
@@ -164,7 +169,7 @@ namespace KissU.Util.Domains.Auditing
         /// </summary>
         private void InitLong()
         {
-            var result = (IModificationAudited<long>)_entity;
+            var result = (IModificationAudited<long>) _entity;
             result.LastModifierId = _userId.ToLong();
         }
 
@@ -173,7 +178,7 @@ namespace KissU.Util.Domains.Auditing
         /// </summary>
         private void InitNullableLong()
         {
-            var result = (IModificationAudited<long?>)_entity;
+            var result = (IModificationAudited<long?>) _entity;
             result.LastModifierId = _userId.ToLongOrNull();
         }
     }

@@ -10,7 +10,7 @@
         /// </summary>
         /// <param name="log">The log.</param>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-        protected override bool Enabled( ILog log )
+        protected override bool Enabled(ILog log)
         {
             return log.IsDebugEnabled;
         }
@@ -19,7 +19,7 @@
         /// 写日志
         /// </summary>
         /// <param name="log">The log.</param>
-        protected override void WriteLog( ILog log )
+        protected override void WriteLog(ILog log)
         {
             log.Debug();
         }

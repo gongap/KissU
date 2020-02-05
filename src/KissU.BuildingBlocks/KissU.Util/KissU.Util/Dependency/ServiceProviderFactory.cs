@@ -16,10 +16,13 @@ namespace KissU.Util.Dependency
         /// <summary>
         /// Initializes a new instance of the <see cref="AutofacServiceProviderFactory" /> class.
         /// </summary>
-        /// <param name="configurationAction">Action on a <see cref="ContainerBuilder" /> that adds component registrations to the conatiner.</param>
+        /// <param name="configurationAction">
+        /// Action on a <see cref="ContainerBuilder" /> that adds component registrations to
+        /// the conatiner.
+        /// </param>
         public ServiceProviderFactory(Action<ContainerBuilder> configurationAction = null)
         {
-            _configurationAction = configurationAction ?? (builder => { });
+            _configurationAction = configurationAction ?? builder => { };
         }
 
         /// <summary>

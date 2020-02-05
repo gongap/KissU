@@ -38,7 +38,39 @@ namespace KissU.Util.Parameters
         /// <param name="dictionary">字典</param>
         public ParameterBuilder(IDictionary<string, object> dictionary)
         {
-            _params = dictionary == null ? new Dictionary<string, object>() : new Dictionary<string, object>(dictionary);
+            _params = dictionary == null
+                ? new Dictionary<string, object>()
+                : new Dictionary<string, object>(dictionary);
+        }
+
+        /// <summary>
+        /// 索引器
+        /// </summary>
+        /// <param name="name">参数名</param>
+        /// <returns>System.Object.</returns>
+        public object this[string name]
+        {
+            get => GetValue(name);
+            set => Add(name, value);
+        }
+
+        /// <summary>
+        /// 是否空参数
+        /// </summary>
+        public bool IsEmpty => _params.Count == 0;
+
+        /// <summary>
+        /// 获取值
+        /// </summary>
+        /// <param name="name">参数名</param>
+        /// <returns>System.Object.</returns>
+        public object GetValue(string name)
+        {
+            if (name.IsEmpty())
+                return string.Empty;
+            if (_params.ContainsKey(name))
+                return _params[name];
+            return string.Empty;
         }
 
         /// <summary>
@@ -87,7 +119,8 @@ namespace KissU.Util.Parameters
         /// <param name="isUrlEncode">是否Url编码</param>
         /// <param name="encoding">字符编码，默认值：UTF-8</param>
         /// <returns>IDictionary&lt;System.String, System.Object&gt;.</returns>
-        public IDictionary<string, object> GetDictionary(bool isSort = true, bool isUrlEncode = false, string encoding = "UTF-8")
+        public IDictionary<string, object> GetDictionary(bool isSort = true, bool isUrlEncode = false,
+            string encoding = "UTF-8")
         {
             var result = _params.ToDictionary(t => t.Key, t => GetEncodeValue(t.Value, isUrlEncode, encoding));
             if (isSort == false)
@@ -151,7 +184,8 @@ namespace KissU.Util.Parameters
         /// <param name="encoding">字符编码，默认值：UTF-8</param>
         /// <returns>System.String.</returns>
         /// <exception cref="ArgumentNullException">format</exception>
-        public string Result(IParameterFormat format, bool isSort = false, bool isUrlEncode = false, string encoding = "UTF-8")
+        public string Result(IParameterFormat format, bool isSort = false, bool isUrlEncode = false,
+            string encoding = "UTF-8")
         {
             if (format == null)
                 throw new ArgumentNullException(nameof(format));
@@ -160,35 +194,5 @@ namespace KissU.Util.Parameters
                 result = format.Join(result, format.Format(param.Key, param.Value));
             return result;
         }
-
-        /// <summary>
-        /// 获取值
-        /// </summary>
-        /// <param name="name">参数名</param>
-        /// <returns>System.Object.</returns>
-        public object GetValue(string name)
-        {
-            if (name.IsEmpty())
-                return string.Empty;
-            if (_params.ContainsKey(name))
-                return _params[name];
-            return string.Empty;
-        }
-
-        /// <summary>
-        /// 索引器
-        /// </summary>
-        /// <param name="name">参数名</param>
-        /// <returns>System.Object.</returns>
-        public object this[string name]
-        {
-            get => GetValue(name);
-            set => Add(name, value);
-        }
-
-        /// <summary>
-        /// 是否空参数
-        /// </summary>
-        public bool IsEmpty => _params.Count == 0;
     }
 }

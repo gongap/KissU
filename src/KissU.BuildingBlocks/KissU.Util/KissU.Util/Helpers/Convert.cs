@@ -8,7 +8,7 @@ namespace KissU.Util.Helpers
     /// <summary>
     /// 类型转换
     /// </summary>
-    public static partial class Convert
+    public static class Convert
     {
         /// <summary>
         /// 转换为32位整型
@@ -100,7 +100,7 @@ namespace KissU.Util.Helpers
                 return null;
             if (digits == null)
                 return result;
-            return (float)Math.Round(result, digits.Value);
+            return (float) Math.Round(result, digits.Value);
         }
 
         /// <summary>
@@ -174,10 +174,10 @@ namespace KissU.Util.Helpers
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public static bool? ToBoolOrNull(object input)
         {
-            bool? value = GetBool(input);
+            var value = GetBool(input);
             if (value != null)
                 return value.Value;
-            return bool.TryParse(input.SafeString(), out var result) ? (bool?)result : null;
+            return bool.TryParse(input.SafeString(), out var result) ? (bool?) result : null;
         }
 
         /// <summary>
@@ -227,7 +227,7 @@ namespace KissU.Util.Helpers
         /// <returns>System.Nullable&lt;DateTime&gt;.</returns>
         public static DateTime? ToDateOrNull(object input)
         {
-            return DateTime.TryParse(input.SafeString(), out var result) ? (DateTime?)result : null;
+            return DateTime.TryParse(input.SafeString(), out var result) ? (DateTime?) result : null;
         }
 
         /// <summary>
@@ -247,7 +247,7 @@ namespace KissU.Util.Helpers
         /// <returns>System.Nullable&lt;Guid&gt;.</returns>
         public static Guid? ToGuidOrNull(object input)
         {
-            return Guid.TryParse(input.SafeString(), out var result) ? (Guid?)result : null;
+            return Guid.TryParse(input.SafeString(), out var result) ? (Guid?) result : null;
         }
 
         /// <summary>
@@ -288,19 +288,19 @@ namespace KissU.Util.Helpers
                 return default;
             if (input is string && string.IsNullOrWhiteSpace(input.ToString()))
                 return default;
-            Type type = Common.GetType<T>();
+            var type = Common.GetType<T>();
             var typeName = type.Name.ToLower();
             try
             {
                 if (typeName == "string")
-                    return (T)(object)input.ToString();
+                    return (T) (object) input.ToString();
                 if (typeName == "guid")
-                    return (T)(object)new Guid(input.ToString());
+                    return (T) (object) new Guid(input.ToString());
                 if (type.IsEnum)
                     return Enum.Parse<T>(input);
                 if (input is IConvertible)
-                    return (T)System.Convert.ChangeType(input, type);
-                return (T)input;
+                    return (T) System.Convert.ChangeType(input, type);
+                return (T) input;
             }
             catch
             {

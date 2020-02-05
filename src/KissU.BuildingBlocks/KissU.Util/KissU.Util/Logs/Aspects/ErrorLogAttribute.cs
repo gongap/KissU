@@ -16,19 +16,19 @@ namespace KissU.Util.Logs.Aspects
         /// </summary>
         /// <param name="context">The context.</param>
         /// <param name="next">The next.</param>
-        public override async Task Invoke( AspectContext context, AspectDelegate next )
+        public override async Task Invoke(AspectContext context, AspectDelegate next)
         {
-            var methodName = GetMethodName( context );
-            var log = Log.GetLog( methodName );
+            var methodName = GetMethodName(context);
+            var log = Log.GetLog(methodName);
             try
             {
-                await next( context );
+                await next(context);
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                log.Class( context.ServiceMethod.DeclaringType.FullName ).Method( methodName ).Exception( ex );
-                foreach ( var parameter in context.GetParameters() )
-                    parameter.AppendTo( log );
+                log.Class(context.ServiceMethod.DeclaringType.FullName).Method(methodName).Exception(ex);
+                foreach (var parameter in context.GetParameters())
+                    parameter.AppendTo(log);
                 log.Error();
                 throw;
             }
@@ -37,7 +37,7 @@ namespace KissU.Util.Logs.Aspects
         /// <summary>
         /// 获取方法名
         /// </summary>
-        private string GetMethodName( AspectContext context )
+        private string GetMethodName(AspectContext context)
         {
             return $"{context.ServiceMethod.DeclaringType.FullName}.{context.ServiceMethod.Name}";
         }

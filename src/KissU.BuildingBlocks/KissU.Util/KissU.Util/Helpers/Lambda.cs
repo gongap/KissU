@@ -10,7 +10,7 @@ namespace KissU.Util.Helpers
     /// <summary>
     /// Lambda表达式操作
     /// </summary>
-    public static partial class Lambda
+    public static class Lambda
     {
         #region GetType(获取类型)
 
@@ -23,97 +23,6 @@ namespace KissU.Util.Helpers
         {
             var memberExpression = GetMemberExpression(expression);
             return memberExpression?.Type;
-        }
-
-        #endregion
-
-        #region GetMember(获取成员)
-
-        /// <summary>
-        /// 获取成员
-        /// </summary>
-        /// <param name="expression">表达式,范例：t =&gt; t.Name</param>
-        /// <returns>MemberInfo.</returns>
-        public static MemberInfo GetMember(Expression expression)
-        {
-            var memberExpression = GetMemberExpression(expression);
-            return memberExpression?.Member;
-        }
-
-        /// <summary>
-        /// 获取成员表达式
-        /// </summary>
-        /// <param name="expression">表达式</param>
-        /// <param name="right">取表达式右侧,(l,r) =&gt; l.id == r.id，设置为true,返回r.id表达式</param>
-        /// <returns>MemberExpression.</returns>
-        public static MemberExpression GetMemberExpression(Expression expression, bool right = false)
-        {
-            if (expression == null)
-                return null;
-            switch (expression.NodeType)
-            {
-                case ExpressionType.Lambda:
-                    return GetMemberExpression(((LambdaExpression)expression).Body, right);
-                case ExpressionType.Convert:
-                case ExpressionType.Not:
-                    return GetMemberExpression(((UnaryExpression)expression).Operand, right);
-                case ExpressionType.MemberAccess:
-                    return (MemberExpression)expression;
-                case ExpressionType.Equal:
-                case ExpressionType.NotEqual:
-                case ExpressionType.GreaterThan:
-                case ExpressionType.LessThan:
-                case ExpressionType.GreaterThanOrEqual:
-                case ExpressionType.LessThanOrEqual:
-                    return GetMemberExpression(right ? ((BinaryExpression)expression).Right : ((BinaryExpression)expression).Left, right);
-                case ExpressionType.Call:
-                    return GetMethodCallExpressionName(expression);
-            }
-            return null;
-        }
-
-        /// <summary>
-        /// 获取方法调用表达式的成员名称
-        /// </summary>
-        private static MemberExpression GetMethodCallExpressionName(Expression expression)
-        {
-            var methodCallExpression = (MethodCallExpression)expression;
-            var left = (MemberExpression)methodCallExpression.Object;
-            if (Reflection.IsGenericCollection(left?.Type))
-            {
-                var argumentExpression = methodCallExpression.Arguments.FirstOrDefault();
-                if (argumentExpression != null && argumentExpression.NodeType == ExpressionType.MemberAccess)
-                    return (MemberExpression)argumentExpression;
-            }
-            return left;
-        }
-
-        #endregion
-
-        #region GetName(获取成员名称)
-
-        /// <summary>
-        /// 获取成员名称，范例：t =&gt; t.A.Name,返回 A.Name
-        /// </summary>
-        /// <param name="expression">表达式,范例：t =&gt; t.Name</param>
-        /// <returns>System.String.</returns>
-        public static string GetName(Expression expression)
-        {
-            var memberExpression = GetMemberExpression(expression);
-            return GetMemberName(memberExpression);
-        }
-
-        /// <summary>
-        /// 获取成员名称
-        /// </summary>
-        /// <param name="memberExpression">The member expression.</param>
-        /// <returns>System.String.</returns>
-        public static string GetMemberName(MemberExpression memberExpression)
-        {
-            if (memberExpression == null)
-                return string.Empty;
-            string result = memberExpression.ToString();
-            return result.Substring(result.IndexOf(".", StringComparison.Ordinal) + 1);
         }
 
         #endregion
@@ -139,46 +48,8 @@ namespace KissU.Util.Helpers
                 if (string.IsNullOrWhiteSpace(name) == false)
                     result.Add(name);
             }
+
             return result;
-        }
-
-        #endregion
-
-        #region GetLastName(获取最后一级成员名称)
-
-        /// <summary>
-        /// 获取最后一级成员名称，范例：t =&gt; t.A.Name,返回 Name
-        /// </summary>
-        /// <param name="expression">表达式,范例：t =&gt; t.Name</param>
-        /// <param name="right">取表达式右侧,(l,r) =&gt; l.LId == r.RId，设置为true,返回RId</param>
-        /// <returns>System.String.</returns>
-        public static string GetLastName(Expression expression, bool right = false)
-        {
-            var memberExpression = GetMemberExpression(expression, right);
-            if (memberExpression == null)
-                return string.Empty;
-            if (IsValueExpression(memberExpression))
-                return string.Empty;
-            string result = memberExpression.ToString();
-            return result.Substring(result.LastIndexOf(".", StringComparison.Ordinal) + 1);
-        }
-
-        /// <summary>
-        /// 是否值表达式
-        /// </summary>
-        /// <param name="expression">表达式</param>
-        private static bool IsValueExpression(Expression expression)
-        {
-            if (expression == null)
-                return false;
-            switch (expression.NodeType)
-            {
-                case ExpressionType.MemberAccess:
-                    return IsValueExpression(((MemberExpression)expression).Expression);
-                case ExpressionType.Constant:
-                    return true;
-            }
-            return false;
         }
 
         #endregion
@@ -204,175 +75,8 @@ namespace KissU.Util.Helpers
                 if (string.IsNullOrWhiteSpace(name) == false)
                     result.Add(name);
             }
+
             return result;
-        }
-
-        #endregion
-
-        #region GetValue(获取值)
-
-        /// <summary>
-        /// 获取值,范例：t =&gt; t.Name == "A",返回 A
-        /// </summary>
-        /// <param name="expression">表达式,范例：t =&gt; t.Name == "A"</param>
-        /// <returns>System.Object.</returns>
-        public static object GetValue(Expression expression)
-        {
-            if (expression == null)
-                return null;
-            switch (expression.NodeType)
-            {
-                case ExpressionType.Lambda:
-                    return GetValue(((LambdaExpression)expression).Body);
-                case ExpressionType.Convert:
-                    return GetValue(((UnaryExpression)expression).Operand);
-                case ExpressionType.Equal:
-                case ExpressionType.NotEqual:
-                case ExpressionType.GreaterThan:
-                case ExpressionType.LessThan:
-                case ExpressionType.GreaterThanOrEqual:
-                case ExpressionType.LessThanOrEqual:
-                    var hasParameter = HasParameter(((BinaryExpression)expression).Left);
-                    if (hasParameter)
-                        return GetValue(((BinaryExpression)expression).Right);
-                    return GetValue(((BinaryExpression)expression).Left);
-                case ExpressionType.Call:
-                    return GetMethodCallExpressionValue(expression);
-                case ExpressionType.MemberAccess:
-                    return GetMemberValue((MemberExpression)expression);
-                case ExpressionType.Constant:
-                    return GetConstantExpressionValue(expression);
-                case ExpressionType.Not:
-                    if (expression.Type == typeof(bool))
-                        return false;
-                    return null;
-            }
-            return null;
-        }
-
-        /// <summary>
-        /// 是否包含参数，用于检测是属性，而不是值
-        /// </summary>
-        private static bool HasParameter(Expression expression)
-        {
-            if (expression == null)
-                return false;
-            switch (expression.NodeType)
-            {
-                case ExpressionType.Convert:
-                    return HasParameter(((UnaryExpression)expression).Operand);
-                case ExpressionType.MemberAccess:
-                    return HasParameter(((MemberExpression)expression).Expression);
-                case ExpressionType.Parameter:
-                    return true;
-            }
-            return false;
-        }
-
-        /// <summary>
-        /// 获取方法调用表达式的值
-        /// </summary>
-        private static object GetMethodCallExpressionValue(Expression expression)
-        {
-            var methodCallExpression = (MethodCallExpression)expression;
-            var value = GetValue(methodCallExpression.Arguments.FirstOrDefault());
-            if (value != null)
-                return value;
-            if (methodCallExpression.Object == null)
-                return methodCallExpression.Type.InvokeMember(methodCallExpression.Method.Name, BindingFlags.InvokeMethod, null, null, null);
-            return GetValue(methodCallExpression.Object);
-        }
-
-        /// <summary>
-        /// 获取属性表达式的值
-        /// </summary>
-        private static object GetMemberValue(MemberExpression expression)
-        {
-            if (expression == null)
-                return null;
-            var field = expression.Member as FieldInfo;
-            if (field != null)
-            {
-                var constValue = GetConstantExpressionValue(expression.Expression);
-                return field.GetValue(constValue);
-            }
-            var property = expression.Member as PropertyInfo;
-            if (property == null)
-                return null;
-            if (expression.Expression == null)
-                return property.GetValue(null);
-            var value = GetMemberValue(expression.Expression as MemberExpression);
-            if (value == null)
-            {
-                if (property.PropertyType == typeof(bool))
-                    return true;
-                return null;
-            }
-            return property.GetValue(value);
-        }
-
-        /// <summary>
-        /// 获取常量表达式的值
-        /// </summary>
-        private static object GetConstantExpressionValue(Expression expression)
-        {
-            var constantExpression = (ConstantExpression)expression;
-            return constantExpression.Value;
-        }
-
-        #endregion
-
-        #region GetOperator(获取查询操作符)
-
-        /// <summary>
-        /// 获取查询操作符,范例：t =&gt; t.Name == "A",返回 Operator.Equal
-        /// </summary>
-        /// <param name="expression">表达式,范例：t =&gt; t.Name == "A"</param>
-        /// <returns>System.Nullable&lt;Operator&gt;.</returns>
-        public static Operator? GetOperator(Expression expression)
-        {
-            if (expression == null)
-                return null;
-            switch (expression.NodeType)
-            {
-                case ExpressionType.Lambda:
-                    return GetOperator(((LambdaExpression)expression).Body);
-                case ExpressionType.Convert:
-                    return GetOperator(((UnaryExpression)expression).Operand);
-                case ExpressionType.Equal:
-                    return Operator.Equal;
-                case ExpressionType.NotEqual:
-                    return Operator.NotEqual;
-                case ExpressionType.GreaterThan:
-                    return Operator.Greater;
-                case ExpressionType.LessThan:
-                    return Operator.Less;
-                case ExpressionType.GreaterThanOrEqual:
-                    return Operator.GreaterEqual;
-                case ExpressionType.LessThanOrEqual:
-                    return Operator.LessEqual;
-                case ExpressionType.Call:
-                    return GetMethodCallExpressionOperator(expression);
-            }
-            return null;
-        }
-
-        /// <summary>
-        /// 获取方法调用表达式的值
-        /// </summary>
-        private static Operator? GetMethodCallExpressionOperator(Expression expression)
-        {
-            var methodCallExpression = (MethodCallExpression)expression;
-            switch (methodCallExpression?.Method?.Name?.ToLower())
-            {
-                case "contains":
-                    return Operator.Contains;
-                case "endswith":
-                    return Operator.Ends;
-                case "startswith":
-                    return Operator.Starts;
-            }
-            return null;
         }
 
         #endregion
@@ -391,76 +95,25 @@ namespace KissU.Util.Helpers
             switch (expression.NodeType)
             {
                 case ExpressionType.Lambda:
-                    return GetParameter(((LambdaExpression)expression).Body);
+                    return GetParameter(((LambdaExpression) expression).Body);
                 case ExpressionType.Convert:
-                    return GetParameter(((UnaryExpression)expression).Operand);
+                    return GetParameter(((UnaryExpression) expression).Operand);
                 case ExpressionType.Equal:
                 case ExpressionType.NotEqual:
                 case ExpressionType.GreaterThan:
                 case ExpressionType.LessThan:
                 case ExpressionType.GreaterThanOrEqual:
                 case ExpressionType.LessThanOrEqual:
-                    return GetParameter(((BinaryExpression)expression).Left);
+                    return GetParameter(((BinaryExpression) expression).Left);
                 case ExpressionType.MemberAccess:
-                    return GetParameter(((MemberExpression)expression).Expression);
+                    return GetParameter(((MemberExpression) expression).Expression);
                 case ExpressionType.Call:
-                    return GetParameter(((MethodCallExpression)expression).Object);
+                    return GetParameter(((MethodCallExpression) expression).Object);
                 case ExpressionType.Parameter:
-                    return (ParameterExpression)expression;
+                    return (ParameterExpression) expression;
             }
+
             return null;
-        }
-
-        #endregion
-
-        #region GetGroupPredicates(获取分组的谓词表达式)
-
-        /// <summary>
-        /// 获取分组的谓词表达式，通过Or进行分组
-        /// </summary>
-        /// <param name="expression">谓词表达式</param>
-        /// <returns>List&lt;List&lt;Expression&gt;&gt;.</returns>
-        public static List<List<Expression>> GetGroupPredicates(Expression expression)
-        {
-            var result = new List<List<Expression>>();
-            if (expression == null)
-                return result;
-            AddPredicates(expression, result, CreateGroup(result));
-            return result;
-        }
-
-        /// <summary>
-        /// 创建分组
-        /// </summary>
-        private static List<Expression> CreateGroup(List<List<Expression>> result)
-        {
-            var gourp = new List<Expression>();
-            result.Add(gourp);
-            return gourp;
-        }
-
-        /// <summary>
-        /// 添加通过Or分割的谓词表达式
-        /// </summary>
-        private static void AddPredicates(Expression expression, List<List<Expression>> result, List<Expression> group)
-        {
-            switch (expression.NodeType)
-            {
-                case ExpressionType.Lambda:
-                    AddPredicates(((LambdaExpression)expression).Body, result, group);
-                    break;
-                case ExpressionType.OrElse:
-                    AddPredicates(((BinaryExpression)expression).Left, result, group);
-                    AddPredicates(((BinaryExpression)expression).Right, result, CreateGroup(result));
-                    break;
-                case ExpressionType.AndAlso:
-                    AddPredicates(((BinaryExpression)expression).Left, result, group);
-                    AddPredicates(((BinaryExpression)expression).Right, result, group);
-                    break;
-                default:
-                    group.Add(expression);
-                    break;
-            }
         }
 
         #endregion
@@ -470,8 +123,10 @@ namespace KissU.Util.Helpers
         /// <summary>
         /// 获取查询条件个数
         /// </summary>
-        /// <param name="expression">谓词表达式,范例1：t =&gt; t.Name == "A" ，结果1。
-        /// 范例2：t =&gt; t.Name == "A" &amp;&amp; t.Age =1 ，结果2。</param>
+        /// <param name="expression">
+        /// 谓词表达式,范例1：t =&gt; t.Name == "A" ，结果1。
+        /// 范例2：t =&gt; t.Name == "A" &amp;&amp; t.Age =1 ，结果2。
+        /// </param>
         /// <returns>System.Int32.</returns>
         public static int GetConditionCount(LambdaExpression expression)
         {
@@ -479,47 +134,6 @@ namespace KissU.Util.Helpers
                 return 0;
             var result = expression.ToString().Replace("AndAlso", "|").Replace("OrElse", "|");
             return result.Split('|').Count();
-        }
-
-        #endregion
-
-        #region GetAttribute(获取特性)
-
-        /// <summary>
-        /// 获取特性
-        /// </summary>
-        /// <typeparam name="TAttribute">特性类型</typeparam>
-        /// <param name="expression">属性表达式</param>
-        /// <returns>TAttribute.</returns>
-        public static TAttribute GetAttribute<TAttribute>(Expression expression) where TAttribute : Attribute
-        {
-            var memberInfo = GetMember(expression);
-            return memberInfo.GetCustomAttribute<TAttribute>();
-        }
-
-        /// <summary>
-        /// 获取特性
-        /// </summary>
-        /// <typeparam name="TEntity">实体类型</typeparam>
-        /// <typeparam name="TProperty">属性类型</typeparam>
-        /// <typeparam name="TAttribute">特性类型</typeparam>
-        /// <param name="propertyExpression">属性表达式</param>
-        /// <returns>TAttribute.</returns>
-        public static TAttribute GetAttribute<TEntity, TProperty, TAttribute>(Expression<Func<TEntity, TProperty>> propertyExpression) where TAttribute : Attribute
-        {
-            return GetAttribute<TAttribute>(propertyExpression);
-        }
-
-        /// <summary>
-        /// 获取特性
-        /// </summary>
-        /// <typeparam name="TProperty">属性类型</typeparam>
-        /// <typeparam name="TAttribute">特性类型</typeparam>
-        /// <param name="propertyExpression">属性表达式</param>
-        /// <returns>TAttribute.</returns>
-        public static TAttribute GetAttribute<TProperty, TAttribute>(Expression<Func<TProperty>> propertyExpression) where TAttribute : Attribute
-        {
-            return GetAttribute<TAttribute>(propertyExpression);
         }
 
         #endregion
@@ -534,7 +148,8 @@ namespace KissU.Util.Helpers
         /// <typeparam name="TAttribute">特性类型</typeparam>
         /// <param name="propertyExpression">属性表达式</param>
         /// <returns>IEnumerable&lt;TAttribute&gt;.</returns>
-        public static IEnumerable<TAttribute> GetAttributes<TEntity, TProperty, TAttribute>(Expression<Func<TEntity, TProperty>> propertyExpression) where TAttribute : Attribute
+        public static IEnumerable<TAttribute> GetAttributes<TEntity, TProperty, TAttribute>(
+            Expression<Func<TEntity, TProperty>> propertyExpression) where TAttribute : Attribute
         {
             var memberInfo = GetMember(propertyExpression);
             return memberInfo.GetCustomAttributes<TAttribute>();
@@ -741,6 +356,410 @@ namespace KissU.Util.Helpers
         {
             var parameter = CreateParameter<T>();
             return parameter.Property(propertyName).Operation(@operator, value).ToPredicate<T>(parameter);
+        }
+
+        #endregion
+
+        #region GetMember(获取成员)
+
+        /// <summary>
+        /// 获取成员
+        /// </summary>
+        /// <param name="expression">表达式,范例：t =&gt; t.Name</param>
+        /// <returns>MemberInfo.</returns>
+        public static MemberInfo GetMember(Expression expression)
+        {
+            var memberExpression = GetMemberExpression(expression);
+            return memberExpression?.Member;
+        }
+
+        /// <summary>
+        /// 获取成员表达式
+        /// </summary>
+        /// <param name="expression">表达式</param>
+        /// <param name="right">取表达式右侧,(l,r) =&gt; l.id == r.id，设置为true,返回r.id表达式</param>
+        /// <returns>MemberExpression.</returns>
+        public static MemberExpression GetMemberExpression(Expression expression, bool right = false)
+        {
+            if (expression == null)
+                return null;
+            switch (expression.NodeType)
+            {
+                case ExpressionType.Lambda:
+                    return GetMemberExpression(((LambdaExpression) expression).Body, right);
+                case ExpressionType.Convert:
+                case ExpressionType.Not:
+                    return GetMemberExpression(((UnaryExpression) expression).Operand, right);
+                case ExpressionType.MemberAccess:
+                    return (MemberExpression) expression;
+                case ExpressionType.Equal:
+                case ExpressionType.NotEqual:
+                case ExpressionType.GreaterThan:
+                case ExpressionType.LessThan:
+                case ExpressionType.GreaterThanOrEqual:
+                case ExpressionType.LessThanOrEqual:
+                    return GetMemberExpression(
+                        right ? ((BinaryExpression) expression).Right : ((BinaryExpression) expression).Left, right);
+                case ExpressionType.Call:
+                    return GetMethodCallExpressionName(expression);
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// 获取方法调用表达式的成员名称
+        /// </summary>
+        private static MemberExpression GetMethodCallExpressionName(Expression expression)
+        {
+            var methodCallExpression = (MethodCallExpression) expression;
+            var left = (MemberExpression) methodCallExpression.Object;
+            if (Reflection.IsGenericCollection(left?.Type))
+            {
+                var argumentExpression = methodCallExpression.Arguments.FirstOrDefault();
+                if (argumentExpression != null && argumentExpression.NodeType == ExpressionType.MemberAccess)
+                    return (MemberExpression) argumentExpression;
+            }
+
+            return left;
+        }
+
+        #endregion
+
+        #region GetName(获取成员名称)
+
+        /// <summary>
+        /// 获取成员名称，范例：t =&gt; t.A.Name,返回 A.Name
+        /// </summary>
+        /// <param name="expression">表达式,范例：t =&gt; t.Name</param>
+        /// <returns>System.String.</returns>
+        public static string GetName(Expression expression)
+        {
+            var memberExpression = GetMemberExpression(expression);
+            return GetMemberName(memberExpression);
+        }
+
+        /// <summary>
+        /// 获取成员名称
+        /// </summary>
+        /// <param name="memberExpression">The member expression.</param>
+        /// <returns>System.String.</returns>
+        public static string GetMemberName(MemberExpression memberExpression)
+        {
+            if (memberExpression == null)
+                return string.Empty;
+            var result = memberExpression.ToString();
+            return result.Substring(result.IndexOf(".", StringComparison.Ordinal) + 1);
+        }
+
+        #endregion
+
+        #region GetLastName(获取最后一级成员名称)
+
+        /// <summary>
+        /// 获取最后一级成员名称，范例：t =&gt; t.A.Name,返回 Name
+        /// </summary>
+        /// <param name="expression">表达式,范例：t =&gt; t.Name</param>
+        /// <param name="right">取表达式右侧,(l,r) =&gt; l.LId == r.RId，设置为true,返回RId</param>
+        /// <returns>System.String.</returns>
+        public static string GetLastName(Expression expression, bool right = false)
+        {
+            var memberExpression = GetMemberExpression(expression, right);
+            if (memberExpression == null)
+                return string.Empty;
+            if (IsValueExpression(memberExpression))
+                return string.Empty;
+            var result = memberExpression.ToString();
+            return result.Substring(result.LastIndexOf(".", StringComparison.Ordinal) + 1);
+        }
+
+        /// <summary>
+        /// 是否值表达式
+        /// </summary>
+        /// <param name="expression">表达式</param>
+        private static bool IsValueExpression(Expression expression)
+        {
+            if (expression == null)
+                return false;
+            switch (expression.NodeType)
+            {
+                case ExpressionType.MemberAccess:
+                    return IsValueExpression(((MemberExpression) expression).Expression);
+                case ExpressionType.Constant:
+                    return true;
+            }
+
+            return false;
+        }
+
+        #endregion
+
+        #region GetValue(获取值)
+
+        /// <summary>
+        /// 获取值,范例：t =&gt; t.Name == "A",返回 A
+        /// </summary>
+        /// <param name="expression">表达式,范例：t =&gt; t.Name == "A"</param>
+        /// <returns>System.Object.</returns>
+        public static object GetValue(Expression expression)
+        {
+            if (expression == null)
+                return null;
+            switch (expression.NodeType)
+            {
+                case ExpressionType.Lambda:
+                    return GetValue(((LambdaExpression) expression).Body);
+                case ExpressionType.Convert:
+                    return GetValue(((UnaryExpression) expression).Operand);
+                case ExpressionType.Equal:
+                case ExpressionType.NotEqual:
+                case ExpressionType.GreaterThan:
+                case ExpressionType.LessThan:
+                case ExpressionType.GreaterThanOrEqual:
+                case ExpressionType.LessThanOrEqual:
+                    var hasParameter = HasParameter(((BinaryExpression) expression).Left);
+                    if (hasParameter)
+                        return GetValue(((BinaryExpression) expression).Right);
+                    return GetValue(((BinaryExpression) expression).Left);
+                case ExpressionType.Call:
+                    return GetMethodCallExpressionValue(expression);
+                case ExpressionType.MemberAccess:
+                    return GetMemberValue((MemberExpression) expression);
+                case ExpressionType.Constant:
+                    return GetConstantExpressionValue(expression);
+                case ExpressionType.Not:
+                    if (expression.Type == typeof(bool))
+                        return false;
+                    return null;
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// 是否包含参数，用于检测是属性，而不是值
+        /// </summary>
+        private static bool HasParameter(Expression expression)
+        {
+            if (expression == null)
+                return false;
+            switch (expression.NodeType)
+            {
+                case ExpressionType.Convert:
+                    return HasParameter(((UnaryExpression) expression).Operand);
+                case ExpressionType.MemberAccess:
+                    return HasParameter(((MemberExpression) expression).Expression);
+                case ExpressionType.Parameter:
+                    return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// 获取方法调用表达式的值
+        /// </summary>
+        private static object GetMethodCallExpressionValue(Expression expression)
+        {
+            var methodCallExpression = (MethodCallExpression) expression;
+            var value = GetValue(methodCallExpression.Arguments.FirstOrDefault());
+            if (value != null)
+                return value;
+            if (methodCallExpression.Object == null)
+                return methodCallExpression.Type.InvokeMember(methodCallExpression.Method.Name,
+                    BindingFlags.InvokeMethod, null, null, null);
+            return GetValue(methodCallExpression.Object);
+        }
+
+        /// <summary>
+        /// 获取属性表达式的值
+        /// </summary>
+        private static object GetMemberValue(MemberExpression expression)
+        {
+            if (expression == null)
+                return null;
+            var field = expression.Member as FieldInfo;
+            if (field != null)
+            {
+                var constValue = GetConstantExpressionValue(expression.Expression);
+                return field.GetValue(constValue);
+            }
+
+            var property = expression.Member as PropertyInfo;
+            if (property == null)
+                return null;
+            if (expression.Expression == null)
+                return property.GetValue(null);
+            var value = GetMemberValue(expression.Expression as MemberExpression);
+            if (value == null)
+            {
+                if (property.PropertyType == typeof(bool))
+                    return true;
+                return null;
+            }
+
+            return property.GetValue(value);
+        }
+
+        /// <summary>
+        /// 获取常量表达式的值
+        /// </summary>
+        private static object GetConstantExpressionValue(Expression expression)
+        {
+            var constantExpression = (ConstantExpression) expression;
+            return constantExpression.Value;
+        }
+
+        #endregion
+
+        #region GetOperator(获取查询操作符)
+
+        /// <summary>
+        /// 获取查询操作符,范例：t =&gt; t.Name == "A",返回 Operator.Equal
+        /// </summary>
+        /// <param name="expression">表达式,范例：t =&gt; t.Name == "A"</param>
+        /// <returns>System.Nullable&lt;Operator&gt;.</returns>
+        public static Operator? GetOperator(Expression expression)
+        {
+            if (expression == null)
+                return null;
+            switch (expression.NodeType)
+            {
+                case ExpressionType.Lambda:
+                    return GetOperator(((LambdaExpression) expression).Body);
+                case ExpressionType.Convert:
+                    return GetOperator(((UnaryExpression) expression).Operand);
+                case ExpressionType.Equal:
+                    return Operator.Equal;
+                case ExpressionType.NotEqual:
+                    return Operator.NotEqual;
+                case ExpressionType.GreaterThan:
+                    return Operator.Greater;
+                case ExpressionType.LessThan:
+                    return Operator.Less;
+                case ExpressionType.GreaterThanOrEqual:
+                    return Operator.GreaterEqual;
+                case ExpressionType.LessThanOrEqual:
+                    return Operator.LessEqual;
+                case ExpressionType.Call:
+                    return GetMethodCallExpressionOperator(expression);
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// 获取方法调用表达式的值
+        /// </summary>
+        private static Operator? GetMethodCallExpressionOperator(Expression expression)
+        {
+            var methodCallExpression = (MethodCallExpression) expression;
+            switch (methodCallExpression?.Method?.Name?.ToLower())
+            {
+                case "contains":
+                    return Operator.Contains;
+                case "endswith":
+                    return Operator.Ends;
+                case "startswith":
+                    return Operator.Starts;
+            }
+
+            return null;
+        }
+
+        #endregion
+
+        #region GetGroupPredicates(获取分组的谓词表达式)
+
+        /// <summary>
+        /// 获取分组的谓词表达式，通过Or进行分组
+        /// </summary>
+        /// <param name="expression">谓词表达式</param>
+        /// <returns>List&lt;List&lt;Expression&gt;&gt;.</returns>
+        public static List<List<Expression>> GetGroupPredicates(Expression expression)
+        {
+            var result = new List<List<Expression>>();
+            if (expression == null)
+                return result;
+            AddPredicates(expression, result, CreateGroup(result));
+            return result;
+        }
+
+        /// <summary>
+        /// 创建分组
+        /// </summary>
+        private static List<Expression> CreateGroup(List<List<Expression>> result)
+        {
+            var gourp = new List<Expression>();
+            result.Add(gourp);
+            return gourp;
+        }
+
+        /// <summary>
+        /// 添加通过Or分割的谓词表达式
+        /// </summary>
+        private static void AddPredicates(Expression expression, List<List<Expression>> result, List<Expression> group)
+        {
+            switch (expression.NodeType)
+            {
+                case ExpressionType.Lambda:
+                    AddPredicates(((LambdaExpression) expression).Body, result, group);
+                    break;
+                case ExpressionType.OrElse:
+                    AddPredicates(((BinaryExpression) expression).Left, result, group);
+                    AddPredicates(((BinaryExpression) expression).Right, result, CreateGroup(result));
+                    break;
+                case ExpressionType.AndAlso:
+                    AddPredicates(((BinaryExpression) expression).Left, result, group);
+                    AddPredicates(((BinaryExpression) expression).Right, result, group);
+                    break;
+                default:
+                    group.Add(expression);
+                    break;
+            }
+        }
+
+        #endregion
+
+        #region GetAttribute(获取特性)
+
+        /// <summary>
+        /// 获取特性
+        /// </summary>
+        /// <typeparam name="TAttribute">特性类型</typeparam>
+        /// <param name="expression">属性表达式</param>
+        /// <returns>TAttribute.</returns>
+        public static TAttribute GetAttribute<TAttribute>(Expression expression) where TAttribute : Attribute
+        {
+            var memberInfo = GetMember(expression);
+            return memberInfo.GetCustomAttribute<TAttribute>();
+        }
+
+        /// <summary>
+        /// 获取特性
+        /// </summary>
+        /// <typeparam name="TEntity">实体类型</typeparam>
+        /// <typeparam name="TProperty">属性类型</typeparam>
+        /// <typeparam name="TAttribute">特性类型</typeparam>
+        /// <param name="propertyExpression">属性表达式</param>
+        /// <returns>TAttribute.</returns>
+        public static TAttribute GetAttribute<TEntity, TProperty, TAttribute>(
+            Expression<Func<TEntity, TProperty>> propertyExpression) where TAttribute : Attribute
+        {
+            return GetAttribute<TAttribute>(propertyExpression);
+        }
+
+        /// <summary>
+        /// 获取特性
+        /// </summary>
+        /// <typeparam name="TProperty">属性类型</typeparam>
+        /// <typeparam name="TAttribute">特性类型</typeparam>
+        /// <param name="propertyExpression">属性表达式</param>
+        /// <returns>TAttribute.</returns>
+        public static TAttribute GetAttribute<TProperty, TAttribute>(Expression<Func<TProperty>> propertyExpression)
+            where TAttribute : Attribute
+        {
+            return GetAttribute<TAttribute>(propertyExpression);
         }
 
         #endregion

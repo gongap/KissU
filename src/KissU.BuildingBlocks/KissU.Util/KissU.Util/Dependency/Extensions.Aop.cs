@@ -24,7 +24,9 @@ namespace KissU.Util.Dependency
             builder.RegisterDynamicProxy(config =>
             {
                 config.EnableParameterAspect();
-                config.NonAspectPredicates.Add(t => Reflection.GetTopBaseType(t.DeclaringType).SafeString() == "Microsoft.EntityFrameworkCore.DbContext");
+                config.NonAspectPredicates.Add(t =>
+                    Reflection.GetTopBaseType(t.DeclaringType).SafeString() ==
+                    "Microsoft.EntityFrameworkCore.DbContext");
                 configAction?.Invoke(config);
             });
             builder.EnableAspectScoped();
@@ -34,7 +36,7 @@ namespace KissU.Util.Dependency
         /// 启用Aop作用域
         /// </summary>
         /// <param name="builder">The builder.</param>
-	    public static void EnableAspectScoped(this ContainerBuilder builder)
+        public static void EnableAspectScoped(this ContainerBuilder builder)
         {
             builder.AddScoped<IAspectScheduler, ScopeAspectScheduler>();
             builder.AddScoped<IAspectBuilderFactory, ScopeAspectBuilderFactory>();

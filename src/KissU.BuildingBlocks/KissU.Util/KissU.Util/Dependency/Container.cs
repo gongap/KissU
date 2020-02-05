@@ -28,7 +28,7 @@ namespace KissU.Util.Dependency
             var result = CreateList(typeof(T), name);
             if (result == null)
                 return new List<T>();
-            return ((IEnumerable<T>)result).ToList();
+            return ((IEnumerable<T>) result).ToList();
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace KissU.Util.Dependency
         /// <returns>System.Object.</returns>
         public object CreateList(Type type, string name = null)
         {
-            Type serviceType = typeof(IEnumerable<>).MakeGenericType(type);
+            var serviceType = typeof(IEnumerable<>).MakeGenericType(type);
             return Create(serviceType, name);
         }
 
@@ -51,7 +51,7 @@ namespace KissU.Util.Dependency
         /// <returns>T.</returns>
         public T Create<T>(string name = null)
         {
-            return (T)Create(typeof(T), name);
+            return (T) Create(typeof(T), name);
         }
 
         /// <summary>
@@ -63,16 +63,6 @@ namespace KissU.Util.Dependency
         public object Create(Type type, string name = null)
         {
             return GetService(type, name);
-        }
-
-        /// <summary>
-        /// 获取服务
-        /// </summary>
-        private object GetService(Type type, string name)
-        {
-            if (name == null)
-                return _container.Resolve(type);
-            return _container.ResolveNamed(name, type);
         }
 
         /// <summary>
@@ -91,7 +81,7 @@ namespace KissU.Util.Dependency
         /// <returns>Autofac.IContainer.</returns>
         public Autofac.IContainer Register(params IConfig[] configs)
         {
-            return Register(null,  configs);
+            return Register(null, configs);
         }
 
         /// <summary>
@@ -102,7 +92,7 @@ namespace KissU.Util.Dependency
         /// <returns>Autofac.IContainer.</returns>
         public Autofac.IContainer Register(ContainerBuilder builder, params IConfig[] configs)
         {
-           return Register(builder, null, configs);
+            return Register(builder, null, configs);
         }
 
         /// <summary>
@@ -112,7 +102,8 @@ namespace KissU.Util.Dependency
         /// <param name="services">服务集合</param>
         /// <param name="configs">依赖配置</param>
         /// <returns>Autofac.IContainer.</returns>
-        public Autofac.IContainer Register(ContainerBuilder builder, IServiceCollection services, params IConfig[] configs)
+        public Autofac.IContainer Register(ContainerBuilder builder, IServiceCollection services,
+            params IConfig[] configs)
         {
             return Register(builder, services, null, configs);
         }
@@ -125,38 +116,12 @@ namespace KissU.Util.Dependency
         /// <param name="actionBefore">注册前操作</param>
         /// <param name="configs">依赖配置</param>
         /// <returns>Autofac.IContainer.</returns>
-        public Autofac.IContainer Register(ContainerBuilder builder, IServiceCollection services, Action<ContainerBuilder> actionBefore, params IConfig[] configs)
+        public Autofac.IContainer Register(ContainerBuilder builder, IServiceCollection services,
+            Action<ContainerBuilder> actionBefore, params IConfig[] configs)
         {
             builder = CreateBuilder(builder, services, actionBefore, configs);
             _container = builder.Build();
             return _container;
-        }
-
-        /// <summary>
-        /// 创建容器生成器
-        /// </summary>
-        /// <param name="builder">容器生成器</param>
-        /// <param name="services">服务集合</param>
-        /// <param name="actionBefore">注册前执行的操作</param>
-        /// <param name="configs">依赖配置</param>
-        public ContainerBuilder CreateBuilder(ContainerBuilder builder, IServiceCollection services, Action<ContainerBuilder> actionBefore, params IConfig[] configs)
-        {
-            builder ??= new ContainerBuilder();
-            actionBefore?.Invoke(builder);
-            if (configs != null)
-            {
-                foreach (var config in configs)
-                {
-                    builder.RegisterModule(config);
-                }
-            }
-
-            if (services != null)
-            {
-                builder.Populate(services);
-            }
-
-            return builder;
         }
 
         /// <summary>
@@ -174,6 +139,44 @@ namespace KissU.Util.Dependency
         public void Dispose()
         {
             _container.Dispose();
+        }
+
+        /// <summary>
+        /// 获取服务
+        /// </summary>
+        private object GetService(Type type, string name)
+        {
+            if (name == null)
+                return _container.Resolve(type);
+            return _container.ResolveNamed(name, type);
+        }
+
+        /// <summary>
+        /// 创建容器生成器
+        /// </summary>
+        /// <param name="builder">容器生成器</param>
+        /// <param name="services">服务集合</param>
+        /// <param name="actionBefore">注册前执行的操作</param>
+        /// <param name="configs">依赖配置</param>
+        public ContainerBuilder CreateBuilder(ContainerBuilder builder, IServiceCollection services,
+            Action<ContainerBuilder> actionBefore, params IConfig[] configs)
+        {
+            builder ??= new ContainerBuilder();
+            actionBefore?.Invoke(builder);
+            if (configs != null)
+            {
+                foreach (var config in configs)
+                {
+                    builder.RegisterModule(config);
+                }
+            }
+
+            if (services != null)
+            {
+                builder.Populate(services);
+            }
+
+            return builder;
         }
     }
 }

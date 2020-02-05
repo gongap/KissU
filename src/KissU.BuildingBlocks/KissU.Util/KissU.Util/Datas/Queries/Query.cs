@@ -37,6 +37,11 @@ namespace KissU.Util.Datas.Queries
     public class Query<TEntity, TKey> : IQuery<TEntity, TKey> where TEntity : class
     {
         /// <summary>
+        /// 排序生成器
+        /// </summary>
+        private readonly OrderByBuilder _orderByBuilder;
+
+        /// <summary>
         /// 查询参数
         /// </summary>
         private readonly IQueryParameter _parameter;
@@ -45,11 +50,6 @@ namespace KissU.Util.Datas.Queries
         /// 查询条件
         /// </summary>
         private Expression<Func<TEntity, bool>> _predicate;
-
-        /// <summary>
-        /// 排序生成器
-        /// </summary>
-        private readonly OrderByBuilder _orderByBuilder;
 
         /// <summary>
         /// 初始化查询对象
@@ -132,8 +132,10 @@ namespace KissU.Util.Datas.Queries
         /// <summary>
         /// 添加查询条件
         /// </summary>
-        /// <param name="predicate">查询条件,如果参数值为空，则忽略该查询条件，范例：t =&gt; t.Name == ""，该查询条件被忽略。
-        /// 注意：一次仅能添加一个条件，范例：t =&gt; t.Name == "a" &amp;&amp; t.Mobile == "123"，不支持，将抛出异常</param>
+        /// <param name="predicate">
+        /// 查询条件,如果参数值为空，则忽略该查询条件，范例：t =&gt; t.Name == ""，该查询条件被忽略。
+        /// 注意：一次仅能添加一个条件，范例：t =&gt; t.Name == "a" &amp;&amp; t.Mobile == "123"，不支持，将抛出异常
+        /// </param>
         /// <returns>IQuery&lt;TEntity, TKey&gt;.</returns>
         public IQuery<TEntity, TKey> WhereIfNotEmpty(Expression<Func<TEntity, bool>> predicate)
         {
@@ -152,7 +154,8 @@ namespace KissU.Util.Datas.Queries
         /// <param name="max">最大值</param>
         /// <param name="boundary">包含边界</param>
         /// <returns>IQuery&lt;TEntity, TKey&gt;.</returns>
-        public IQuery<TEntity, TKey> Between<TProperty>(Expression<Func<TEntity, TProperty>> propertyExpression, int? min, int? max, Boundary boundary = Boundary.Both)
+        public IQuery<TEntity, TKey> Between<TProperty>(Expression<Func<TEntity, TProperty>> propertyExpression,
+            int? min, int? max, Boundary boundary = Boundary.Both)
         {
             return Where(new IntSegmentCriteria<TEntity, TProperty>(propertyExpression, min, max, boundary));
         }
@@ -166,7 +169,8 @@ namespace KissU.Util.Datas.Queries
         /// <param name="max">最大值</param>
         /// <param name="boundary">包含边界</param>
         /// <returns>IQuery&lt;TEntity, TKey&gt;.</returns>
-        public IQuery<TEntity, TKey> Between<TProperty>(Expression<Func<TEntity, TProperty>> propertyExpression, double? min, double? max, Boundary boundary = Boundary.Both)
+        public IQuery<TEntity, TKey> Between<TProperty>(Expression<Func<TEntity, TProperty>> propertyExpression,
+            double? min, double? max, Boundary boundary = Boundary.Both)
         {
             return Where(new DoubleSegmentCriteria<TEntity, TProperty>(propertyExpression, min, max, boundary));
         }
@@ -180,7 +184,8 @@ namespace KissU.Util.Datas.Queries
         /// <param name="max">最大值</param>
         /// <param name="boundary">包含边界</param>
         /// <returns>IQuery&lt;TEntity, TKey&gt;.</returns>
-        public IQuery<TEntity, TKey> Between<TProperty>(Expression<Func<TEntity, TProperty>> propertyExpression, decimal? min, decimal? max, Boundary boundary = Boundary.Both)
+        public IQuery<TEntity, TKey> Between<TProperty>(Expression<Func<TEntity, TProperty>> propertyExpression,
+            decimal? min, decimal? max, Boundary boundary = Boundary.Both)
         {
             return Where(new DecimalSegmentCriteria<TEntity, TProperty>(propertyExpression, min, max, boundary));
         }
@@ -195,11 +200,14 @@ namespace KissU.Util.Datas.Queries
         /// <param name="includeTime">是否包含时间</param>
         /// <param name="boundary">包含边界</param>
         /// <returns>IQuery&lt;TEntity, TKey&gt;.</returns>
-        public IQuery<TEntity, TKey> Between<TProperty>(Expression<Func<TEntity, TProperty>> propertyExpression, DateTime? min, DateTime? max, bool includeTime = true, Boundary? boundary = null)
+        public IQuery<TEntity, TKey> Between<TProperty>(Expression<Func<TEntity, TProperty>> propertyExpression,
+            DateTime? min, DateTime? max, bool includeTime = true, Boundary? boundary = null)
         {
             if (includeTime)
-                return Where(new DateTimeSegmentCriteria<TEntity, TProperty>(propertyExpression, min, max, boundary ?? Boundary.Both));
-            return Where(new DateSegmentCriteria<TEntity, TProperty>(propertyExpression, min, max, boundary ?? Boundary.Left));
+                return Where(new DateTimeSegmentCriteria<TEntity, TProperty>(propertyExpression, min, max,
+                    boundary ?? Boundary.Both));
+            return Where(
+                new DateSegmentCriteria<TEntity, TProperty>(propertyExpression, min, max, boundary ?? Boundary.Left));
         }
 
         /// <summary>
@@ -209,7 +217,8 @@ namespace KissU.Util.Datas.Queries
         /// <param name="expression">属性表达式</param>
         /// <param name="desc">是否降序</param>
         /// <returns>IQuery&lt;TEntity, TKey&gt;.</returns>
-        public IQuery<TEntity, TKey> OrderBy<TProperty>(Expression<Func<TEntity, TProperty>> expression, bool desc = false)
+        public IQuery<TEntity, TKey> OrderBy<TProperty>(Expression<Func<TEntity, TProperty>> expression,
+            bool desc = false)
         {
             return OrderBy(Lambda.GetName(expression), desc);
         }
@@ -265,6 +274,7 @@ namespace KissU.Util.Datas.Queries
                     continue;
                 _predicate = _predicate.Or(predicate);
             }
+
             return this;
         }
 

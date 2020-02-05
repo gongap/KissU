@@ -16,7 +16,8 @@ namespace KissU.Util
         /// <param name="newList">新实体集合</param>
         /// <param name="oldList">旧实体集合</param>
         /// <returns>ListCompareResult&lt;TEntity, Guid&gt;.</returns>
-        public static ListCompareResult<TEntity, Guid> Compare<TEntity>(this IEnumerable<TEntity> newList, IEnumerable<TEntity> oldList)
+        public static ListCompareResult<TEntity, Guid> Compare<TEntity>(this IEnumerable<TEntity> newList,
+            IEnumerable<TEntity> oldList)
             where TEntity : IKey<Guid>
         {
             return Compare<TEntity, Guid>(newList, oldList);
@@ -30,7 +31,8 @@ namespace KissU.Util
         /// <param name="newList">新实体集合</param>
         /// <param name="oldList">旧实体集合</param>
         /// <returns>ListCompareResult&lt;TEntity, TKey&gt;.</returns>
-        public static ListCompareResult<TEntity, TKey> Compare<TEntity, TKey>(this IEnumerable<TEntity> newList, IEnumerable<TEntity> oldList)
+        public static ListCompareResult<TEntity, TKey> Compare<TEntity, TKey>(this IEnumerable<TEntity> newList,
+            IEnumerable<TEntity> oldList)
             where TEntity : IKey<TKey>
         {
             var comparator = new ListComparator<TEntity, TKey>();
@@ -55,7 +57,8 @@ namespace KissU.Util
         /// <param name="newList">新实体标识集合</param>
         /// <param name="oldList">旧实体标识集合</param>
         /// <returns>KeyListCompareResult&lt;System.String&gt;.</returns>
-        public static KeyListCompareResult<string> Compare(this IEnumerable<string> newList, IEnumerable<string> oldList)
+        public static KeyListCompareResult<string> Compare(this IEnumerable<string> newList,
+            IEnumerable<string> oldList)
         {
             var comparator = new KeyListComparator<string>();
             return comparator.Compare(newList, oldList);

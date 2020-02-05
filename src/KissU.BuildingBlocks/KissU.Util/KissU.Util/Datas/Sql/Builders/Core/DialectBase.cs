@@ -30,26 +30,6 @@
         }
 
         /// <summary>
-        /// 过滤名称
-        /// </summary>
-        /// <param name="name">名称</param>
-        /// <returns>System.String.</returns>
-        protected string FilterName(string name)
-        {
-            return name.Trim().TrimStart('[').TrimEnd(']').TrimStart('`').TrimEnd('`').TrimStart('"').TrimEnd('"');
-        }
-
-        /// <summary>
-        /// 获取安全名称
-        /// </summary>
-        /// <param name="name">名称</param>
-        /// <returns>System.String.</returns>
-        protected virtual string GetSafeName(string name)
-        {
-            return $"[{name}]";
-        }
-
-        /// <summary>
         /// 获取参数前缀
         /// </summary>
         /// <returns>System.String.</returns>
@@ -95,6 +75,26 @@
         public virtual object GetParamValue(object paramValue)
         {
             return paramValue;
+        }
+
+        /// <summary>
+        /// 过滤名称
+        /// </summary>
+        /// <param name="name">名称</param>
+        /// <returns>System.String.</returns>
+        protected string FilterName(string name)
+        {
+            return name.Trim().TrimStart('[').TrimEnd(']').TrimStart('`').TrimEnd('`').TrimStart('"').TrimEnd('"');
+        }
+
+        /// <summary>
+        /// 获取安全名称
+        /// </summary>
+        /// <param name="name">名称</param>
+        /// <returns>System.String.</returns>
+        protected virtual string GetSafeName(string name)
+        {
+            return $"[{name}]";
         }
     }
 }

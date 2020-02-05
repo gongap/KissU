@@ -27,10 +27,13 @@ namespace KissU.Util.Datas.Persistence
         /// 相等运算
         /// </summary>
         /// <param name="other">The <see cref="System.Object" /> to compare with this instance.</param>
-        /// <returns><c>true</c> if the specified <see cref="System.Object" /> is equal to this instance; otherwise, <c>false</c>.</returns>
+        /// <returns>
+        /// <c>true</c> if the specified <see cref="System.Object" /> is equal to this instance; otherwise, <c>false</c>
+        /// .
+        /// </returns>
         public override bool Equals(object other)
         {
-            return this == (PersistentEntityBase<TKey>)other;
+            return this == (PersistentEntityBase<TKey>) other;
         }
 
         /// <summary>
@@ -50,9 +53,9 @@ namespace KissU.Util.Datas.Persistence
         /// <returns>The result of the operator.</returns>
         public static bool operator ==(PersistentEntityBase<TKey> left, PersistentEntityBase<TKey> right)
         {
-            if ((object)left == null && (object)right == null)
+            if ((object) left == null && (object) right == null)
                 return true;
-            if ((object)left == null || (object)right == null)
+            if ((object) left == null || (object) right == null)
                 return false;
             if (left.GetType() != right.GetType())
                 return false;

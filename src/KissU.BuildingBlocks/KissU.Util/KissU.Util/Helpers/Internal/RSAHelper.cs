@@ -14,10 +14,10 @@ namespace KissU.Util.Helpers.Internal
     /// </summary>
     internal class RsaHelper
     {
+        private readonly Encoding _encoding;
+        private readonly HashAlgorithmName _hashAlgorithmName;
         private readonly RSA _privateKeyRsaProvider;
         private readonly RSA _publicKeyRsaProvider;
-        private readonly HashAlgorithmName _hashAlgorithmName;
-        private readonly Encoding _encoding;
 
         /// <summary>
         /// 实例化RSAHelper
@@ -51,9 +51,10 @@ namespace KissU.Util.Helpers.Internal
         /// <returns>System.String.</returns>
         public string Sign(string data)
         {
-            byte[] dataBytes = _encoding.GetBytes(data);
+            var dataBytes = _encoding.GetBytes(data);
 
-            var signatureBytes = _privateKeyRsaProvider.SignData(dataBytes, _hashAlgorithmName, RSASignaturePadding.Pkcs1);
+            var signatureBytes =
+                _privateKeyRsaProvider.SignData(dataBytes, _hashAlgorithmName, RSASignaturePadding.Pkcs1);
 
             return System.Convert.ToBase64String(signatureBytes);
         }
@@ -70,10 +71,11 @@ namespace KissU.Util.Helpers.Internal
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool Verify(string data, string sign)
         {
-            byte[] dataBytes = _encoding.GetBytes(data);
-            byte[] signBytes = System.Convert.FromBase64String(sign);
+            var dataBytes = _encoding.GetBytes(data);
+            var signBytes = System.Convert.FromBase64String(sign);
 
-            var verify = _publicKeyRsaProvider.VerifyData(dataBytes, signBytes, _hashAlgorithmName, RSASignaturePadding.Pkcs1);
+            var verify =
+                _publicKeyRsaProvider.VerifyData(dataBytes, signBytes, _hashAlgorithmName, RSASignaturePadding.Pkcs1);
 
             return verify;
         }
@@ -94,7 +96,9 @@ namespace KissU.Util.Helpers.Internal
             {
                 throw new Exception("_privateKeyRsaProvider is null");
             }
-            return Encoding.UTF8.GetString(_privateKeyRsaProvider.Decrypt(System.Convert.FromBase64String(cipherText), RSAEncryptionPadding.Pkcs1));
+
+            return Encoding.UTF8.GetString(_privateKeyRsaProvider.Decrypt(System.Convert.FromBase64String(cipherText),
+                RSAEncryptionPadding.Pkcs1));
         }
 
         #endregion
@@ -113,7 +117,9 @@ namespace KissU.Util.Helpers.Internal
             {
                 throw new Exception("_publicKeyRsaProvider is null");
             }
-            return System.Convert.ToBase64String(_publicKeyRsaProvider.Encrypt(Encoding.UTF8.GetBytes(text), RSAEncryptionPadding.Pkcs1));
+
+            return System.Convert.ToBase64String(_publicKeyRsaProvider.Encrypt(Encoding.UTF8.GetBytes(text),
+                RSAEncryptionPadding.Pkcs1));
         }
 
         #endregion
@@ -137,7 +143,7 @@ namespace KissU.Util.Helpers.Internal
             var rsa = RSA.Create();
             var rsaParameters = new RSAParameters();
 
-            using (BinaryReader binr = new BinaryReader(new MemoryStream(privateKeyBits)))
+            using (var binr = new BinaryReader(new MemoryStream(privateKeyBits)))
             {
                 byte bt = 0;
                 ushort twobytes = 0;
@@ -183,48 +189,49 @@ namespace KissU.Util.Helpers.Internal
         public RSA CreateRsaProviderFromPublicKey(string publicKeyString)
         {
             // encoded OID sequence for  PKCS #1 rsaEncryption szOID_RSA_RSA = "1.2.840.113549.1.1.1"
-            byte[] seqOid = { 0x30, 0x0D, 0x06, 0x09, 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01, 0x01, 0x01, 0x05, 0x00 };
-            byte[] seq = new byte[15];
+            byte[] seqOid = {0x30, 0x0D, 0x06, 0x09, 0x2A, 0x86, 0x48, 0x86, 0xF7, 0x0D, 0x01, 0x01, 0x01, 0x05, 0x00};
+            var seq = new byte[15];
 
             var x509Key = System.Convert.FromBase64String(publicKeyString);
 
             // ---------  Set up stream to read the asn.1 encoded SubjectPublicKeyInfo blob  ------
-            using (MemoryStream mem = new MemoryStream(x509Key))
+            using (var mem = new MemoryStream(x509Key))
             {
-                using (BinaryReader binr = new BinaryReader(mem))  //wrap Memory Stream with BinaryReader for easy reading
+                using (var binr = new BinaryReader(mem)) //wrap Memory Stream with BinaryReader for easy reading
                 {
                     byte bt = 0;
                     ushort twobytes = 0;
 
                     twobytes = binr.ReadUInt16();
                     if (twobytes == 0x8130) //data read as little endian order (actual data order for Sequence is 30 81)
-                        binr.ReadByte();    //advance 1 byte
+                        binr.ReadByte(); //advance 1 byte
                     else if (twobytes == 0x8230)
-                        binr.ReadInt16();   //advance 2 bytes
+                        binr.ReadInt16(); //advance 2 bytes
                     else
                         return null;
 
-                    seq = binr.ReadBytes(15);       //read the Sequence OID
-                    if (!CompareBytearrays(seq, seqOid))    //make sure Sequence for OID is correct
+                    seq = binr.ReadBytes(15); //read the Sequence OID
+                    if (!CompareBytearrays(seq, seqOid)) //make sure Sequence for OID is correct
                         return null;
 
                     twobytes = binr.ReadUInt16();
-                    if (twobytes == 0x8103) //data read as little endian order (actual data order for Bit String is 03 81)
-                        binr.ReadByte();    //advance 1 byte
+                    if (twobytes == 0x8103
+                    ) //data read as little endian order (actual data order for Bit String is 03 81)
+                        binr.ReadByte(); //advance 1 byte
                     else if (twobytes == 0x8203)
-                        binr.ReadInt16();   //advance 2 bytes
+                        binr.ReadInt16(); //advance 2 bytes
                     else
                         return null;
 
                     bt = binr.ReadByte();
-                    if (bt != 0x00)     //expect null byte next
+                    if (bt != 0x00) //expect null byte next
                         return null;
 
                     twobytes = binr.ReadUInt16();
                     if (twobytes == 0x8130) //data read as little endian order (actual data order for Sequence is 30 81)
-                        binr.ReadByte();    //advance 1 byte
+                        binr.ReadByte(); //advance 1 byte
                     else if (twobytes == 0x8230)
-                        binr.ReadInt16();   //advance 2 bytes
+                        binr.ReadInt16(); //advance 2 bytes
                     else
                         return null;
 
@@ -233,7 +240,7 @@ namespace KissU.Util.Helpers.Internal
                     byte highbyte = 0x00;
 
                     if (twobytes == 0x8102) //data read as little endian order (actual data order for Integer is 02 81)
-                        lowbyte = binr.ReadByte();  // read next bytes which is bytes in modulus
+                        lowbyte = binr.ReadByte(); // read next bytes which is bytes in modulus
                     else if (twobytes == 0x8202)
                     {
                         highbyte = binr.ReadByte(); //advance 2 bytes
@@ -241,26 +248,30 @@ namespace KissU.Util.Helpers.Internal
                     }
                     else
                         return null;
-                    byte[] modint = { lowbyte, highbyte, 0x00, 0x00 };   //reverse byte order since asn.1 key uses big endian order
-                    int modsize = BitConverter.ToInt32(modint, 0);
 
-                    int firstbyte = binr.PeekChar();
+                    byte[] modint =
+                        {lowbyte, highbyte, 0x00, 0x00}; //reverse byte order since asn.1 key uses big endian order
+                    var modsize = BitConverter.ToInt32(modint, 0);
+
+                    var firstbyte = binr.PeekChar();
                     if (firstbyte == 0x00)
-                    {   //if first byte (highest order) of modulus is zero, don't include it
-                        binr.ReadByte();    //skip this null byte
-                        modsize -= 1;   //reduce modulus buffer size by 1
+                    {
+                        //if first byte (highest order) of modulus is zero, don't include it
+                        binr.ReadByte(); //skip this null byte
+                        modsize -= 1; //reduce modulus buffer size by 1
                     }
 
-                    byte[] modulus = binr.ReadBytes(modsize);   //read the modulus bytes
+                    var modulus = binr.ReadBytes(modsize); //read the modulus bytes
 
-                    if (binr.ReadByte() != 0x02)            //expect an Integer for the exponent data
+                    if (binr.ReadByte() != 0x02) //expect an Integer for the exponent data
                         return null;
-                    int expbytes = (int)binr.ReadByte();        // should only need one byte for actual exponent data (for all useful values)
-                    byte[] exponent = binr.ReadBytes(expbytes);
+                    var expbytes =
+                        binr.ReadByte(); // should only need one byte for actual exponent data (for all useful values)
+                    var exponent = binr.ReadBytes(expbytes);
 
                     // ------- create RSACryptoServiceProvider instance and initialize with public key -----
                     var rsa = RSA.Create();
-                    RSAParameters rsaKeyInfo = new RSAParameters
+                    var rsaKeyInfo = new RSAParameters
                     {
                         Modulus = modulus,
                         Exponent = exponent
@@ -269,7 +280,6 @@ namespace KissU.Util.Helpers.Internal
 
                     return rsa;
                 }
-
             }
         }
 
@@ -280,7 +290,7 @@ namespace KissU.Util.Helpers.Internal
         private int GetIntegerSize(BinaryReader binr)
         {
             byte bt = 0;
-            int count = 0;
+            var count = 0;
             bt = binr.ReadByte();
             if (bt != 0x02)
                 return 0;
@@ -288,12 +298,11 @@ namespace KissU.Util.Helpers.Internal
 
             if (bt == 0x81)
                 count = binr.ReadByte();
-            else
-            if (bt == 0x82)
+            else if (bt == 0x82)
             {
                 var highbyte = binr.ReadByte();
                 var lowbyte = binr.ReadByte();
-                byte[] modint = { lowbyte, highbyte, 0x00, 0x00 };
+                byte[] modint = {lowbyte, highbyte, 0x00, 0x00};
                 count = BitConverter.ToInt32(modint, 0);
             }
             else
@@ -305,6 +314,7 @@ namespace KissU.Util.Helpers.Internal
             {
                 count -= 1;
             }
+
             binr.BaseStream.Seek(-1, SeekOrigin.Current);
             return count;
         }
@@ -313,18 +323,18 @@ namespace KissU.Util.Helpers.Internal
         {
             if (a.Length != b.Length)
                 return false;
-            int i = 0;
-            foreach (byte c in a)
+            var i = 0;
+            foreach (var c in a)
             {
                 if (c != b[i])
                     return false;
                 i++;
             }
+
             return true;
         }
 
         #endregion
-
     }
 
     /// <summary>

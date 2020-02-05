@@ -1,4 +1,6 @@
-﻿namespace KissU.Util.Files
+﻿using KissU.Util.Helpers;
+
+namespace KissU.Util.Files
 {
     /// <summary>
     /// 文件大小
@@ -12,7 +14,7 @@
         /// <param name="unit">文件大小单位</param>
         public FileSize(long size, FileSizeUnit unit = FileSizeUnit.Byte)
         {
-            _size = GetSize(size, unit);
+            Size = GetSize(size, unit);
         }
 
         /// <summary>
@@ -33,12 +35,10 @@
             }
         }
 
-        private readonly long _size;
-
         /// <summary>
         /// 文件字节长度
         /// </summary>
-        public long Size => _size;
+        public long Size { get; }
 
         /// <summary>
         /// 获取文件大小，单位：字节
@@ -46,7 +46,7 @@
         /// <returns>System.Int32.</returns>
         public int GetSize()
         {
-            return (int)Size;
+            return (int) Size;
         }
 
         /// <summary>
@@ -55,7 +55,7 @@
         /// <returns>System.Double.</returns>
         public double GetSizeByK()
         {
-            return Util.Helpers.Convert.ToDouble(_size / 1024.0, 2);
+            return Convert.ToDouble(Size / 1024.0, 2);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@
         /// <returns>System.Double.</returns>
         public double GetSizeByM()
         {
-            return Util.Helpers.Convert.ToDouble(_size / 1024.0 / 1024.0, 2);
+            return Convert.ToDouble(Size / 1024.0 / 1024.0, 2);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@
         /// <returns>System.Double.</returns>
         public double GetSizeByG()
         {
-            return Util.Helpers.Convert.ToDouble(_size / 1024.0 / 1024.0 / 1024.0, 2);
+            return Convert.ToDouble(Size / 1024.0 / 1024.0 / 1024.0, 2);
         }
 
         /// <summary>
@@ -82,13 +82,13 @@
         /// <returns>A <see cref="System.String" /> that represents this instance.</returns>
         public override string ToString()
         {
-            if (_size >= 1024 * 1024 * 1024)
+            if (Size >= 1024 * 1024 * 1024)
                 return $"{GetSizeByG()} {FileSizeUnit.G.Description()}";
-            if (_size >= 1024 * 1024)
+            if (Size >= 1024 * 1024)
                 return $"{GetSizeByM()} {FileSizeUnit.M.Description()}";
-            if (_size >= 1024)
+            if (Size >= 1024)
                 return $"{GetSizeByK()} {FileSizeUnit.K.Description()}";
-            return $"{_size} {FileSizeUnit.Byte.Description()}";
+            return $"{Size} {FileSizeUnit.Byte.Description()}";
         }
     }
 }

@@ -4,6 +4,7 @@ using KissU.Util.Helpers;
 using KissU.Util.Properties;
 using KissU.Util.Sessions;
 using KissU.Util.Validations;
+using Convert = KissU.Util.Helpers.Convert;
 
 namespace KissU.Util.Domains
 {
@@ -27,7 +28,8 @@ namespace KissU.Util.Domains
     /// </summary>
     /// <typeparam name="TEntity">实体类型</typeparam>
     /// <typeparam name="TKey">标识类型</typeparam>
-    public abstract class EntityBase<TEntity, TKey> : DomainBase<TEntity>, IEntity<TEntity, TKey> where TEntity : IEntity
+    public abstract class EntityBase<TEntity, TKey> : DomainBase<TEntity>, IEntity<TEntity, TKey>
+        where TEntity : IEntity
     {
         /// <summary>
         /// 初始化领域实体
@@ -39,19 +41,35 @@ namespace KissU.Util.Domains
         }
 
         /// <summary>
+        /// 用户会话
+        /// </summary>
+        protected virtual ISession Session => Ioc.Create<ISession>();
+
+        /// <summary>
         /// 标识
         /// </summary>
         [Key]
         public TKey Id { get; private set; }
 
         /// <summary>
+        /// 初始化
+        /// </summary>
+        public virtual void Init()
+        {
+            InitId();
+        }
+
+        /// <summary>
         /// 相等运算
         /// </summary>
         /// <param name="other">The <see cref="System.Object" /> to compare with this instance.</param>
-        /// <returns><c>true</c> if the specified <see cref="System.Object" /> is equal to this instance; otherwise, <c>false</c>.</returns>
+        /// <returns>
+        /// <c>true</c> if the specified <see cref="System.Object" /> is equal to this instance; otherwise, <c>false</c>
+        /// .
+        /// </returns>
         public override bool Equals(object other)
         {
-            return this == (other as EntityBase<TEntity, TKey>);
+            return this == other as EntityBase<TEntity, TKey>;
         }
 
         /// <summary>
@@ -71,7 +89,7 @@ namespace KissU.Util.Domains
         /// <returns>The result of the operator.</returns>
         public static bool operator ==(EntityBase<TEntity, TKey> left, EntityBase<TEntity, TKey> right)
         {
-            if ((object)left == null && (object)right == null)
+            if ((object) left == null && (object) right == null)
                 return true;
             if (!(left is TEntity) || !(right is TEntity))
                 return false;
@@ -94,14 +112,6 @@ namespace KissU.Util.Domains
         }
 
         /// <summary>
-        /// 初始化
-        /// </summary>
-        public virtual void Init()
-        {
-            InitId();
-        }
-
-        /// <summary>
         /// 初始化标识
         /// </summary>
         protected virtual void InitId()
@@ -118,13 +128,8 @@ namespace KissU.Util.Domains
         /// <returns>TKey.</returns>
         protected virtual TKey CreateId()
         {
-            return Util.Helpers.Convert.To<TKey>(Guid.NewGuid());
+            return Convert.To<TKey>(Guid.NewGuid());
         }
-
-        /// <summary>
-        /// 用户会话
-        /// </summary>
-        protected virtual ISession Session => Ioc.Create<ISession>();
 
         /// <summary>
         /// 验证

@@ -130,7 +130,7 @@ namespace KissU.Util
         /// <returns>System.String.</returns>
         public static string ToChineseDateTimeString(this DateTime dateTime, bool removeSecond = false)
         {
-            StringBuilder result = new StringBuilder();
+            var result = new StringBuilder();
             result.AppendFormat("{0}年{1}月{2}日", dateTime.Year, dateTime.Month, dateTime.Day);
             result.AppendFormat(" {0}时{1}分", dateTime.Hour, dateTime.Minute);
             if (removeSecond == false)
@@ -158,7 +158,7 @@ namespace KissU.Util
         /// <returns>System.String.</returns>
         public static string Description(this TimeSpan span)
         {
-            StringBuilder result = new StringBuilder();
+            var result = new StringBuilder();
             if (span.Days > 0)
                 result.AppendFormat("{0}天", span.Days);
             if (span.Hours > 0)

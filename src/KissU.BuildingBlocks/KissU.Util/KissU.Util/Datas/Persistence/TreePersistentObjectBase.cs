@@ -15,8 +15,14 @@ namespace KissU.Util.Datas.Persistence
     /// </summary>
     /// <typeparam name="TKey">标识类型</typeparam>
     /// <typeparam name="TParentId">父标识类型</typeparam>
-    public abstract class TreePersistentObjectBase<TKey, TParentId> : PersistentObjectBase<TKey>, IParentId<TParentId>, IPath, IEnabled, ISortId
+    public abstract class TreePersistentObjectBase<TKey, TParentId> : PersistentObjectBase<TKey>, IParentId<TParentId>,
+        IPath, IEnabled, ISortId
     {
+        /// <summary>
+        /// 启用
+        /// </summary>
+        public bool Enabled { get; set; }
+
         /// <summary>
         /// 父标识
         /// </summary>
@@ -31,11 +37,6 @@ namespace KissU.Util.Datas.Persistence
         /// 级数
         /// </summary>
         public int Level { get; set; }
-
-        /// <summary>
-        /// 启用
-        /// </summary>
-        public bool Enabled { get; set; }
 
         /// <summary>
         /// 排序号

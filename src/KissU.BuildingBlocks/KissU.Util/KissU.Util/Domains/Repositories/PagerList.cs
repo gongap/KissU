@@ -79,21 +79,6 @@ namespace KissU.Util.Domains.Repositories
         }
 
         /// <summary>
-        /// 页索引，即第几页，从1开始
-        /// </summary>
-        public int Page { get; set; }
-
-        /// <summary>
-        /// 每页显示行数
-        /// </summary>
-        public int PageSize { get; set; }
-
-        /// <summary>
-        /// 总行数
-        /// </summary>
-        public int TotalCount { get; set; }
-
-        /// <summary>
         /// 总页数
         /// </summary>
         public int PageCount { get; set; }
@@ -118,6 +103,21 @@ namespace KissU.Util.Domains.Repositories
             get => Data[index];
             set => Data[index] = value;
         }
+
+        /// <summary>
+        /// 页索引，即第几页，从1开始
+        /// </summary>
+        public int Page { get; set; }
+
+        /// <summary>
+        /// 每页显示行数
+        /// </summary>
+        public int PageSize { get; set; }
+
+        /// <summary>
+        /// 总行数
+        /// </summary>
+        public int TotalCount { get; set; }
 
         /// <summary>
         /// 添加元素
@@ -153,7 +153,7 @@ namespace KissU.Util.Domains.Repositories
         /// <returns>PagerList&lt;TResult&gt;.</returns>
         public PagerList<TResult> Convert<TResult>(Func<T, TResult> converter)
         {
-            return Convert(this.Data.Select(converter));
+            return Convert(Data.Select(converter));
         }
 
         /// <summary>

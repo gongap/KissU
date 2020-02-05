@@ -54,14 +54,15 @@ namespace KissU.Util.Helpers
                 return null;
             var random = new System.Random();
             var list = array.ToList();
-            for (int i = 0; i < list.Count; i++)
+            for (var i = 0; i < list.Count; i++)
             {
-                int index1 = random.Next(0, list.Count);
-                int index2 = random.Next(0, list.Count);
-                T temp = list[index1];
+                var index1 = random.Next(0, list.Count);
+                var index2 = random.Next(0, list.Count);
+                var temp = list[index1];
                 list[index1] = list[index2];
                 list[index2] = temp;
             }
+
             return list;
         }
     }

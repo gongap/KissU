@@ -6,6 +6,11 @@
     public interface IPager : IPagerBase
     {
         /// <summary>
+        /// 排序条件
+        /// </summary>
+        string Order { get; set; }
+
+        /// <summary>
         /// 获取总页数
         /// </summary>
         /// <returns>System.Int32.</returns>
@@ -16,11 +21,6 @@
         /// </summary>
         /// <returns>System.Int32.</returns>
         int GetSkipCount();
-
-        /// <summary>
-        /// 排序条件
-        /// </summary>
-        string Order { get; set; }
 
         /// <summary>
         /// 获取起始行数

@@ -62,35 +62,40 @@ namespace KissU.Util.Domains.Auditing
                 InitGuid();
                 return;
             }
+
             if (_entity is ICreationAudited<Guid?>)
             {
                 InitNullableGuid();
                 return;
             }
+
             if (_entity is ICreationAudited<int>)
             {
                 InitInt();
                 return;
             }
+
             if (_entity is ICreationAudited<int?>)
             {
                 InitNullableInt();
                 return;
             }
+
             if (_entity is ICreationAudited<string>)
             {
                 InitString();
                 return;
             }
+
             if (_entity is ICreationAudited<long>)
             {
                 InitLong();
                 return;
             }
+
             if (_entity is ICreationAudited<long?>)
             {
                 InitNullableLong();
-                return;
             }
         }
 
@@ -119,7 +124,7 @@ namespace KissU.Util.Domains.Auditing
         /// </summary>
         private void InitGuid()
         {
-            var result = (ICreationAudited<Guid>)_entity;
+            var result = (ICreationAudited<Guid>) _entity;
             result.CreatorId = _userId.ToGuid();
         }
 
@@ -128,7 +133,7 @@ namespace KissU.Util.Domains.Auditing
         /// </summary>
         private void InitNullableGuid()
         {
-            var result = (ICreationAudited<Guid?>)_entity;
+            var result = (ICreationAudited<Guid?>) _entity;
             result.CreatorId = _userId.ToGuidOrNull();
         }
 
@@ -137,7 +142,7 @@ namespace KissU.Util.Domains.Auditing
         /// </summary>
         private void InitInt()
         {
-            var result = (ICreationAudited<int>)_entity;
+            var result = (ICreationAudited<int>) _entity;
             result.CreatorId = _userId.ToInt();
         }
 
@@ -146,7 +151,7 @@ namespace KissU.Util.Domains.Auditing
         /// </summary>
         private void InitNullableInt()
         {
-            var result = (ICreationAudited<int?>)_entity;
+            var result = (ICreationAudited<int?>) _entity;
             result.CreatorId = _userId.ToIntOrNull();
         }
 
@@ -155,7 +160,7 @@ namespace KissU.Util.Domains.Auditing
         /// </summary>
         private void InitString()
         {
-            var result = (ICreationAudited<string>)_entity;
+            var result = (ICreationAudited<string>) _entity;
             result.CreatorId = _userId.SafeString();
         }
 
@@ -164,7 +169,7 @@ namespace KissU.Util.Domains.Auditing
         /// </summary>
         private void InitLong()
         {
-            var result = (ICreationAudited<long>)_entity;
+            var result = (ICreationAudited<long>) _entity;
             result.CreatorId = _userId.ToLong();
         }
 
@@ -173,7 +178,7 @@ namespace KissU.Util.Domains.Auditing
         /// </summary>
         private void InitNullableLong()
         {
-            var result = (ICreationAudited<long?>)_entity;
+            var result = (ICreationAudited<long?>) _entity;
             result.CreatorId = _userId.ToLongOrNull();
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using KissU.Util.Helpers;
+using Enum = KissU.Util.Helpers.Enum;
 
 namespace KissU.Util.Randoms
 {
@@ -10,6 +11,11 @@ namespace KissU.Util.Randoms
     public class RandomBuilder : IRandomBuilder
     {
         /// <summary>
+        /// 随机数字生成器
+        /// </summary>
+        private readonly IRandomNumberGenerator _random;
+
+        /// <summary>
         /// 初始化随机数生成器
         /// </summary>
         /// <param name="generator">随机数字生成器</param>
@@ -17,11 +23,6 @@ namespace KissU.Util.Randoms
         {
             _random = generator ?? new RandomNumberGenerator();
         }
-
-        /// <summary>
-        /// 随机数字生成器
-        /// </summary>
-        private readonly IRandomNumberGenerator _random;
 
         /// <summary>
         /// 生成随机字符串
@@ -35,25 +36,9 @@ namespace KissU.Util.Randoms
                 text = Const.Letters + Const.Numbers;
             var result = new StringBuilder();
             var length = GetRandomLength(maxLength);
-            for (int i = 0; i < length; i++)
+            for (var i = 0; i < length; i++)
                 result.Append(GetRandomChar(text));
             return result.ToString();
-        }
-
-        /// <summary>
-        /// 获取随机长度
-        /// </summary>
-        private int GetRandomLength(int maxLength)
-        {
-            return _random.Generate(1, maxLength);
-        }
-
-        /// <summary>
-        /// 获取随机字符
-        /// </summary>
-        private string GetRandomChar(string text)
-        {
-            return text[_random.Generate(1, text.Length)].ToString();
         }
 
         /// <summary>
@@ -132,9 +117,25 @@ namespace KissU.Util.Randoms
         /// <returns>TEnum.</returns>
         public TEnum GenerateEnum<TEnum>()
         {
-            var list = Util.Helpers.Enum.GetItems<TEnum>();
-            int index = _random.Generate(0, list.Count);
-            return Util.Helpers.Enum.Parse<TEnum>(list[index].Value);
+            var list = Enum.GetItems<TEnum>();
+            var index = _random.Generate(0, list.Count);
+            return Enum.Parse<TEnum>(list[index].Value);
+        }
+
+        /// <summary>
+        /// 获取随机长度
+        /// </summary>
+        private int GetRandomLength(int maxLength)
+        {
+            return _random.Generate(1, maxLength);
+        }
+
+        /// <summary>
+        /// 获取随机字符
+        /// </summary>
+        private string GetRandomChar(string text)
+        {
+            return text[_random.Generate(1, text.Length)].ToString();
         }
     }
 }

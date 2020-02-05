@@ -12,9 +12,8 @@ namespace KissU.Util.Helpers
     /// 1. AES加密整理自支付宝SDK
     /// 2. RSA加密采用 https://github.com/stulzq/DotnetCore.RSA/blob/master/DotnetCore.RSA/RSAHelper.cs
     /// </summary>
-    public static partial class Encrypt
+    public static class Encrypt
     {
-
         #region Md5加密
 
         /// <summary>
@@ -50,12 +49,15 @@ namespace KissU.Util.Helpers
             try
             {
                 var hash = md5.ComputeHash(encoding.GetBytes(value));
-                result = startIndex == null ? BitConverter.ToString(hash) : BitConverter.ToString(hash, startIndex.SafeValue(), length.SafeValue());
+                result = startIndex == null
+                    ? BitConverter.ToString(hash)
+                    : BitConverter.ToString(hash, startIndex.SafeValue(), length.SafeValue());
             }
             finally
             {
                 md5.Clear();
             }
+
             return result.Replace("-", "");
         }
 
@@ -119,7 +121,7 @@ namespace KissU.Util.Helpers
         /// <returns>System.String.</returns>
         public static string DesEncrypt(object value, string key, Encoding encoding)
         {
-            string text = value.SafeString();
+            var text = value.SafeString();
             if (ValidateDes(text, key) == false)
                 return string.Empty;
             using (var transform = CreateDesProvider(key).CreateEncryptor())
@@ -143,7 +145,8 @@ namespace KissU.Util.Helpers
         /// </summary>
         private static TripleDESCryptoServiceProvider CreateDesProvider(string key)
         {
-            return new TripleDESCryptoServiceProvider { Key = Encoding.ASCII.GetBytes(key), Mode = CipherMode.ECB, Padding = PaddingMode.PKCS7 };
+            return new TripleDESCryptoServiceProvider
+                {Key = Encoding.ASCII.GetBytes(key), Mode = CipherMode.ECB, Padding = PaddingMode.PKCS7};
         }
 
         /// <summary>
@@ -186,7 +189,7 @@ namespace KissU.Util.Helpers
         /// <returns>System.String.</returns>
         public static string DesDecrypt(object value, string key, Encoding encoding)
         {
-            string text = value.SafeString();
+            var text = value.SafeString();
             if (!ValidateDes(text, key))
                 return string.Empty;
             using (var transform = CreateDesProvider(key).CreateDecryptor())
@@ -225,9 +228,10 @@ namespace KissU.Util.Helpers
                 {
                     var size = 16;
                     _iv = new byte[size];
-                    for (int i = 0; i < size; i++)
+                    for (var i = 0; i < size; i++)
                         _iv[i] = 0;
                 }
+
                 return _iv;
             }
         }
@@ -279,7 +283,8 @@ namespace KissU.Util.Helpers
         /// <summary>
         /// 创建RijndaelManaged
         /// </summary>
-        private static RijndaelManaged CreateRijndaelManaged(string key, Encoding encoding, CipherMode cipherMode = CipherMode.CBC)
+        private static RijndaelManaged CreateRijndaelManaged(string key, Encoding encoding,
+            CipherMode cipherMode = CipherMode.CBC)
         {
             return new RijndaelManaged
             {
@@ -319,7 +324,8 @@ namespace KissU.Util.Helpers
         /// <param name="encoding">编码</param>
         /// <param name="cipherMode">密码模式</param>
         /// <returns>System.String.</returns>
-        public static string AesDecrypt(string value, string key, Encoding encoding, CipherMode cipherMode = CipherMode.CBC)
+        public static string AesDecrypt(string value, string key, Encoding encoding,
+            CipherMode cipherMode = CipherMode.CBC)
         {
             if (string.IsNullOrWhiteSpace(value) || string.IsNullOrWhiteSpace(key))
                 return string.Empty;
@@ -446,7 +452,8 @@ namespace KissU.Util.Helpers
         /// </summary>
         private static bool RsaVerify(string value, string publicKey, string sign, Encoding encoding, RSAType type)
         {
-            if (string.IsNullOrWhiteSpace(value) || string.IsNullOrWhiteSpace(publicKey) || string.IsNullOrWhiteSpace(sign))
+            if (string.IsNullOrWhiteSpace(value) || string.IsNullOrWhiteSpace(publicKey) ||
+                string.IsNullOrWhiteSpace(sign))
                 return false;
             var rsa = new RsaHelper(type, encoding, publicKey: publicKey);
             return rsa.Verify(value, sign);

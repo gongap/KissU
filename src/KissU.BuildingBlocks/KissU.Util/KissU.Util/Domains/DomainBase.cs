@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using KissU.Util.Helpers;
 using KissU.Util.Validations;
+using Convert = KissU.Util.Helpers.Convert;
 
 namespace KissU.Util.Domains
 {
@@ -14,31 +15,6 @@ namespace KissU.Util.Domains
     /// <typeparam name="T"></typeparam>
     public abstract class DomainBase<T> : IDomainObject, ICompareChange<T> where T : IDomainObject
     {
-
-        #region 字段
-
-        /// <summary>
-        /// 描述
-        /// </summary>
-        private StringBuilder _description;
-
-        /// <summary>
-        /// 验证规则集合
-        /// </summary>
-        private readonly List<IValidationRule> _rules;
-
-        /// <summary>
-        /// 验证处理器
-        /// </summary>
-        private IValidationHandler _handler;
-
-        /// <summary>
-        /// 变更值集合
-        /// </summary>
-        private ChangeValueCollection _changeValues;
-
-        #endregion
-
         #region 构造方法
 
         /// <summary>
@@ -50,7 +26,7 @@ namespace KissU.Util.Domains
             _handler = new ThrowHandler();
         }
 
-        #endregion        
+        #endregion
 
         #region SetValidationHandler(设置验证处理器)
 
@@ -95,6 +71,45 @@ namespace KissU.Util.Domains
                 return;
             _rules.Add(rule);
         }
+
+        #endregion
+
+        #region ToString(输出对象状态)
+
+        /// <summary>
+        /// 输出对象状态
+        /// </summary>
+        /// <returns>A <see cref="System.String" /> that represents this instance.</returns>
+        public override string ToString()
+        {
+            _description = new StringBuilder();
+            AddDescriptions();
+            return _description.ToString().TrimEnd().TrimEnd(',');
+        }
+
+        #endregion
+
+        #region 字段
+
+        /// <summary>
+        /// 描述
+        /// </summary>
+        private StringBuilder _description;
+
+        /// <summary>
+        /// 验证规则集合
+        /// </summary>
+        private readonly List<IValidationRule> _rules;
+
+        /// <summary>
+        /// 验证处理器
+        /// </summary>
+        private IValidationHandler _handler;
+
+        /// <summary>
+        /// 变更值集合
+        /// </summary>
+        private ChangeValueCollection _changeValues;
 
         #endregion
 
@@ -176,11 +191,11 @@ namespace KissU.Util.Domains
         /// <param name="newValue">新值,范例：newEntity.Name</param>
         protected void AddChange<TProperty, TValue>(Expression<Func<T, TProperty>> expression, TValue newValue)
         {
-            var member = Util.Helpers.Lambda.GetMemberExpression(expression);
-            var name = Util.Helpers.Lambda.GetMemberName(member);
-            var description = Util.Helpers.Reflection.GetDisplayNameOrDescription(member.Member);
+            var member = Lambda.GetMemberExpression(expression);
+            var name = Lambda.GetMemberName(member);
+            var description = Reflection.GetDisplayNameOrDescription(member.Member);
             var value = member.Member.GetPropertyValue(this);
-            AddChange(name, description, Util.Helpers.Convert.To<TValue>(value), newValue);
+            AddChange(name, description, Convert.To<TValue>(value), newValue);
         }
 
         /// <summary>
@@ -195,8 +210,8 @@ namespace KissU.Util.Domains
         {
             if (Equals(oldValue, newValue))
                 return;
-            string oldValueString = oldValue.SafeString().ToLower().Trim();
-            string newValueString = newValue.SafeString().ToLower().Trim();
+            var oldValueString = oldValue.SafeString().ToLower().Trim();
+            var newValueString = newValue.SafeString().ToLower().Trim();
             if (oldValueString == newValueString)
                 return;
             _changeValues.Add(propertyName, description, oldValueString, newValueString);
@@ -208,7 +223,8 @@ namespace KissU.Util.Domains
         /// <typeparam name="TDomainObject">The type of the t domain object.</typeparam>
         /// <param name="oldObject">旧对象</param>
         /// <param name="newObject">新对象</param>
-        protected void AddChange<TDomainObject>(ICompareChange<TDomainObject> oldObject, TDomainObject newObject) where TDomainObject : IDomainObject
+        protected void AddChange<TDomainObject>(ICompareChange<TDomainObject> oldObject, TDomainObject newObject)
+            where TDomainObject : IDomainObject
         {
             if (Equals(oldObject, null))
                 return;
@@ -223,7 +239,8 @@ namespace KissU.Util.Domains
         /// <typeparam name="TDomainObject">The type of the t domain object.</typeparam>
         /// <param name="oldObjects">旧对象列表</param>
         /// <param name="newObjects">新对象列表</param>
-        protected void AddChange<TDomainObject>(IEnumerable<ICompareChange<TDomainObject>> oldObjects, IEnumerable<TDomainObject> newObjects) where TDomainObject : IDomainObject
+        protected void AddChange<TDomainObject>(IEnumerable<ICompareChange<TDomainObject>> oldObjects,
+            IEnumerable<TDomainObject> newObjects) where TDomainObject : IDomainObject
         {
             if (Equals(oldObjects, null))
                 return;
@@ -231,7 +248,7 @@ namespace KissU.Util.Domains
                 return;
             var oldList = oldObjects.ToList();
             var newList = newObjects.ToList();
-            for (int i = 0; i < oldList.Count; i++)
+            for (var i = 0; i < oldList.Count; i++)
             {
                 if (newList.Count <= i)
                     return;
@@ -281,27 +298,12 @@ namespace KissU.Util.Domains
         /// <param name="expression">属性表达式,范例：t =&gt; t.Name</param>
         protected void AddDescription<TProperty>(Expression<Func<T, TProperty>> expression)
         {
-            var member = Util.Helpers.Lambda.GetMember(expression);
-            var description = Util.Helpers.Reflection.GetDisplayNameOrDescription(member);
+            var member = Lambda.GetMember(expression);
+            var description = Reflection.GetDisplayNameOrDescription(member);
             var value = member.GetPropertyValue(this);
             if (Reflection.IsBool(member))
-                value = Util.Helpers.Convert.ToBool(value).Description();
+                value = Convert.ToBool(value).Description();
             AddDescription(description, value);
-        }
-
-        #endregion
-
-        #region ToString(输出对象状态)
-
-        /// <summary>
-        /// 输出对象状态
-        /// </summary>
-        /// <returns>A <see cref="System.String" /> that represents this instance.</returns>
-        public override string ToString()
-        {
-            _description = new StringBuilder();
-            AddDescriptions();
-            return _description.ToString().TrimEnd().TrimEnd(',');
         }
 
         #endregion

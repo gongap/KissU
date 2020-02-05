@@ -9,6 +9,16 @@ namespace KissU.Util.Datas.Sql.Builders
     public interface IGroupByClause
     {
         /// <summary>
+        /// 是否分组
+        /// </summary>
+        bool IsGroup { get; }
+
+        /// <summary>
+        /// 分组列表
+        /// </summary>
+        string GroupColumns { get; }
+
+        /// <summary>
         /// 复制Group By子句
         /// </summary>
         /// <param name="register">实体别名注册器</param>
@@ -42,16 +52,6 @@ namespace KissU.Util.Datas.Sql.Builders
         /// </summary>
         /// <param name="sql">Sql语句</param>
         void AppendSql(string sql);
-
-        /// <summary>
-        /// 是否分组
-        /// </summary>
-        bool IsGroup { get; }
-
-        /// <summary>
-        /// 分组列表
-        /// </summary>
-        string GroupColumns { get; }
 
         /// <summary>
         /// 获取Sql

@@ -1,7 +1,5 @@
-﻿using System;
-using KissU.Util.Helpers;
+﻿using KissU.Util.Helpers;
 using KissU.Util.Logs.Abstractions;
-using KissU.Util.Logs.Formats;
 using Microsoft.Extensions.Logging;
 
 namespace KissU.Util.Logs.Core
@@ -18,23 +16,6 @@ namespace KissU.Util.Logs.Core
         /// <param name="format">日志格式化器</param>
         public NullProvider(string logName, ILogFormat format = null)
         {
-        }
-
-        /// <summary>
-        /// 获取NLog日志操作
-        /// </summary>
-        /// <param name="logName">日志名称</param>
-        /// <returns>ILogger.</returns>
-        public static ILogger GetLogger(string logName)
-        {
-            try
-            {
-                return Ioc.Create<ILogger>();
-            }
-            catch
-            {
-                return NullLogger.Instance;
-            }
         }
 
         /// <summary>
@@ -59,6 +40,23 @@ namespace KissU.Util.Logs.Core
         /// <param name="content">日志内容</param>
         public void WriteLog(LogLevel level, ILogContent content)
         {
+        }
+
+        /// <summary>
+        /// 获取NLog日志操作
+        /// </summary>
+        /// <param name="logName">日志名称</param>
+        /// <returns>ILogger.</returns>
+        public static ILogger GetLogger(string logName)
+        {
+            try
+            {
+                return Ioc.Create<ILogger>();
+            }
+            catch
+            {
+                return NullLogger.Instance;
+            }
         }
     }
 }
