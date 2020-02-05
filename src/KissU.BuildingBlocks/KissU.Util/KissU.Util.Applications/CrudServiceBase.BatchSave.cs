@@ -8,7 +8,15 @@ namespace KissU.Util.Applications
     /// <summary>
     /// 增删改查服务 - 批量Save
     /// </summary>
-    public abstract partial class CrudServiceBase<TEntity, TDto, TRequest, TCreateRequest, TUpdateRequest, TQueryParameter, TKey>
+    /// <typeparam name="TEntity">The type of the t entity.</typeparam>
+    /// <typeparam name="TDto">The type of the t dto.</typeparam>
+    /// <typeparam name="TRequest">The type of the t request.</typeparam>
+    /// <typeparam name="TCreateRequest">The type of the t create request.</typeparam>
+    /// <typeparam name="TUpdateRequest">The type of the t update request.</typeparam>
+    /// <typeparam name="TQueryParameter">The type of the t query parameter.</typeparam>
+    /// <typeparam name="TKey">The type of the t key.</typeparam>
+    public abstract partial class CrudServiceBase<TEntity, TDto, TRequest, TCreateRequest, TUpdateRequest,
+        TQueryParameter, TKey>
     {
         /// <summary>
         /// 批量保存
@@ -16,8 +24,9 @@ namespace KissU.Util.Applications
         /// <param name="creationList">新增列表</param>
         /// <param name="updateList">修改列表</param>
         /// <param name="deleteList">删除列表</param>
-        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
-        public virtual async Task<List<TDto>> SaveAsync(List<TDto> creationList, List<TDto> updateList, List<TDto> deleteList)
+        /// <returns>A <see cref="Task" /> representing the asynchronous operation.</returns>
+        public virtual async Task<List<TDto>> SaveAsync(List<TDto> creationList, List<TDto> updateList,
+            List<TDto> deleteList)
         {
             if (creationList == null && updateList == null && deleteList == null)
             {
@@ -54,7 +63,7 @@ namespace KissU.Util.Applications
         /// </summary>
         private void FilterByDeleteList(List<TDto> list, List<TDto> deleteList)
         {
-            for (int i = 0; i < list.Count; i++)
+            for (var i = 0; i < list.Count; i++)
             {
                 var item = list[i];
                 if (deleteList.Any(d => d.Id == item.Id))
@@ -78,7 +87,8 @@ namespace KissU.Util.Applications
         /// <param name="creationList">新增列表</param>
         /// <param name="updateList">修改列表</param>
         /// <param name="deleteList">删除列表</param>
-        protected virtual void SaveBefore(List<TEntity> creationList, List<TEntity> updateList, List<TEntity> deleteList)
+        protected virtual void SaveBefore(List<TEntity> creationList, List<TEntity> updateList,
+            List<TEntity> deleteList)
         {
         }
 
@@ -136,7 +146,8 @@ namespace KissU.Util.Applications
         /// <summary>
         /// 删除子节点集合
         /// </summary>
-        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
+        /// <param name="parent">The parent.</param>
+        /// <returns>A <see cref="Task" /> representing the asynchronous operation.</returns>
         protected virtual async Task DeleteChildsAsync(TEntity parent)
         {
             await DeleteEntityAsync(parent);
@@ -145,7 +156,8 @@ namespace KissU.Util.Applications
         /// <summary>
         /// 删除实体
         /// </summary>
-        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
+        /// <param name="entity">The entity.</param>
+        /// <returns>A <see cref="Task" /> representing the asynchronous operation.</returns>
         protected async Task DeleteEntityAsync(TEntity entity)
         {
             await _repository.RemoveAsync(entity.Id);
@@ -163,6 +175,9 @@ namespace KissU.Util.Applications
         /// <summary>
         /// 保存后操作
         /// </summary>
+        /// <param name="creationList">The creation list.</param>
+        /// <param name="updateList">The update list.</param>
+        /// <param name="deleteList">The delete list.</param>
         protected virtual void SaveAfter(List<TEntity> creationList, List<TEntity> updateList, List<TEntity> deleteList)
         {
             WriteLog($"保存{EntityDescription}成功");
@@ -171,6 +186,8 @@ namespace KissU.Util.Applications
         /// <summary>
         /// 获取结果
         /// </summary>
+        /// <param name="creationList">The creation list.</param>
+        /// <param name="updateList">The update list.</param>
         /// <returns>连接结果</returns>
         protected virtual List<TDto> GetResult(List<TEntity> creationList, List<TEntity> updateList)
         {

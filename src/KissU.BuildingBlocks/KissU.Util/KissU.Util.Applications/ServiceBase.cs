@@ -6,7 +6,7 @@ namespace KissU.Util.Applications
     /// <summary>
     /// 应用服务
     /// </summary>
-    public abstract partial class ServiceBase : IService
+    public abstract class ServiceBase : IService
     {
         /// <summary>
         /// 日志
@@ -19,6 +19,11 @@ namespace KissU.Util.Applications
         public ILog Log => _log ??= GetLog();
 
         /// <summary>
+        /// 用户会话
+        /// </summary>
+        public virtual ISession Session => NullSession.Instance;
+
+        /// <summary>
         /// 获取日志操作
         /// </summary>
         /// <returns>结果</returns>
@@ -26,17 +31,12 @@ namespace KissU.Util.Applications
         {
             try
             {
-                return Util.Logs.Log.GetLog(this);
+                return Logs.Log.GetLog(this);
             }
             catch
             {
-                return Util.Logs.Log.Null;
+                return Logs.Log.Null;
             }
         }
-
-        /// <summary>
-        /// 用户会话
-        /// </summary>
-        public virtual ISession Session => NullSession.Instance;
     }
 }

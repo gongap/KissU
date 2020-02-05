@@ -9,25 +9,10 @@ namespace KissU.Util.Applications.Trees
     public abstract class TreeDtoBase : DtoBase, ITreeNode
     {
         /// <summary>
-        /// 父标识
-        /// </summary>
-        public string ParentId { get; set; }
-
-        /// <summary>
         /// 父名称
         /// </summary>
         [Display(Name = "父名称")]
         public string ParentName { get; set; }
-
-        /// <summary>
-        /// 路径
-        /// </summary>
-        public string Path { get; set; }
-
-        /// <summary>
-        /// 层级
-        /// </summary>
-        public int? Level { get; set; }
 
         /// <summary>
         /// 启用
@@ -40,6 +25,21 @@ namespace KissU.Util.Applications.Trees
         /// </summary>
         [Display(Name = "排序号")]
         public int? SortId { get; set; }
+
+        /// <summary>
+        /// 父标识
+        /// </summary>
+        public string ParentId { get; set; }
+
+        /// <summary>
+        /// 路径
+        /// </summary>
+        public string Path { get; set; }
+
+        /// <summary>
+        /// 层级
+        /// </summary>
+        public int? Level { get; set; }
 
         /// <summary>
         /// 是否展开

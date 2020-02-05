@@ -36,7 +36,8 @@ namespace KissU.Util.Applications.Trees
         /// <typeparam name="TEntity">实体类型</typeparam>
         /// <param name="entities">实体列表</param>
         /// <returns>结果</returns>
-        public static List<string> GetMissingParentIds<TEntity>(this IEnumerable<TEntity> entities) where TEntity : class, ITreeNode
+        public static List<string> GetMissingParentIds<TEntity>(this IEnumerable<TEntity> entities)
+            where TEntity : class, ITreeNode
         {
             var result = new List<string>();
             if (entities == null)
@@ -46,14 +47,14 @@ namespace KissU.Util.Applications.Trees
 
             var list = entities.ToList();
             list.ForEach(entity =>
-           {
-               if (entity == null)
-               {
-                   return;
-               }
+            {
+                if (entity == null)
+                {
+                    return;
+                }
 
-               result.AddRange(entity.GetParentIdsFromPath().Select(t => t.SafeString()));
-           });
+                result.AddRange(entity.GetParentIdsFromPath().Select(t => t.SafeString()));
+            });
             var ids = list.Select(t => t?.Id.SafeString());
             return result.Except(ids).ToList();
         }

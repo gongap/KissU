@@ -21,7 +21,9 @@ namespace KissU.Util.Applications
     /// <typeparam name="TDto">数据传输对象类型</typeparam>
     /// <typeparam name="TRequest">参数类型</typeparam>
     /// <typeparam name="TQueryParameter">查询参数类型</typeparam>
-    public interface ICrudService<TDto, in TRequest, in TQueryParameter> : ICrudService<TDto, TRequest, TRequest, TRequest, TQueryParameter>
+    public interface
+        ICrudService<TDto, in TRequest, in TQueryParameter> : ICrudService<TDto, TRequest, TRequest, TRequest,
+            TQueryParameter>
         where TDto : IDto, new()
         where TRequest : IRequest, IKey, new()
         where TQueryParameter : IQueryParameter
@@ -36,9 +38,11 @@ namespace KissU.Util.Applications
     /// <typeparam name="TCreateRequest">创建参数类型</typeparam>
     /// <typeparam name="TUpdateRequest">修改参数类型</typeparam>
     /// <typeparam name="TQueryParameter">查询参数类型</typeparam>
-    public interface ICrudService<TDto, in TRequest, in TCreateRequest, in TUpdateRequest, in TQueryParameter> : IQueryService<TDto, TQueryParameter>,
+    public interface ICrudService<TDto, in TRequest, in TCreateRequest, in TUpdateRequest, in TQueryParameter> :
+        IQueryService<TDto, TQueryParameter>,
         ICreate<TCreateRequest>, IUpdate<TUpdateRequest>, IDelete,
-        ICreateAsync<TCreateRequest>, IUpdateAsync<TUpdateRequest>, IDeleteAsync, ISaveAsync<TRequest>, IBatchSaveAsync<TDto>
+        ICreateAsync<TCreateRequest>, IUpdateAsync<TUpdateRequest>, IDeleteAsync, ISaveAsync<TRequest>,
+        IBatchSaveAsync<TDto>
         where TDto : IDto, new()
         where TRequest : IRequest, IKey, new()
         where TCreateRequest : IRequest, new()

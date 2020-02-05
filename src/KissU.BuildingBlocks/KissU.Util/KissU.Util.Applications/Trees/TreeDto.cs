@@ -10,7 +10,7 @@ namespace KissU.Util.Applications.Trees
     public class TreeDto<TNode> : TreeDto where TNode : TreeDto<TNode>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="TreeDto{TNode}"/> class.
+        /// Initializes a new instance of the <see cref="TreeDto{TNode}" /> class.
         /// 初始化树形参数
         /// </summary>
         public TreeDto()

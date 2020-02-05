@@ -20,7 +20,9 @@ namespace KissU.Util.Applications.Aspects
         /// <summary>
         /// 执行
         /// </summary>
-        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
+        /// <param name="context">The context.</param>
+        /// <param name="next">The next.</param>
+        /// <returns>A <see cref="Task" /> representing the asynchronous operation.</returns>
         public override async Task Invoke(AspectContext context, AspectDelegate next)
         {
             await next(context);

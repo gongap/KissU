@@ -17,7 +17,7 @@ namespace KissU.Util.Applications.Operations
         /// <param name="creationList">新增列表</param>
         /// <param name="updateList">修改列表</param>
         /// <param name="deleteList">删除列表</param>
-        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
+        /// <returns>A <see cref="Task" /> representing the asynchronous operation.</returns>
         Task<List<TDto>> SaveAsync(List<TDto> creationList, List<TDto> updateList, List<TDto> deleteList);
     }
 }

@@ -30,21 +30,21 @@ namespace KissU.Util.Applications.Trees
         /// 通过标识查找列表
         /// </summary>
         /// <param name="ids">标识列表</param>
-        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
+        /// <returns>A <see cref="Task" /> representing the asynchronous operation.</returns>
         Task<List<TDto>> FindByIdsAsync(string ids);
 
         /// <summary>
         /// 启用
         /// </summary>
         /// <param name="ids">标识列表</param>
-        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
+        /// <returns>A <see cref="Task" /> representing the asynchronous operation.</returns>
         Task EnableAsync(string ids);
 
         /// <summary>
         /// 冻结
         /// </summary>
         /// <param name="ids">标识列表</param>
-        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
+        /// <returns>A <see cref="Task" /> representing the asynchronous operation.</returns>
         Task DisableAsync(string ids);
 
         /// <summary>
@@ -52,14 +52,14 @@ namespace KissU.Util.Applications.Trees
         /// </summary>
         /// <param name="id">标识</param>
         /// <param name="swapId">目标标识</param>
-        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
+        /// <returns>A <see cref="Task" /> representing the asynchronous operation.</returns>
         Task SwapSortAsync(Guid id, Guid swapId);
 
         /// <summary>
         /// 修正排序
         /// </summary>
         /// <param name="parameter">查询参数</param>
-        /// <returns>A <see cref="Task"/> representing the asynchronous operation.</returns>
+        /// <returns>A <see cref="Task" /> representing the asynchronous operation.</returns>
         Task FixSortIdAsync(TQueryParameter parameter);
     }
 }

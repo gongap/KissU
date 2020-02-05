@@ -6,6 +6,7 @@ using KissU.Util.Datas.UnitOfWorks;
 using KissU.Util.Domains;
 using KissU.Util.Domains.Repositories;
 using KissU.Util.Maps;
+using Convert = KissU.Util.Helpers.Convert;
 
 namespace KissU.Util.Applications
 {
@@ -15,14 +16,14 @@ namespace KissU.Util.Applications
     /// <typeparam name="TEntity">实体类型</typeparam>
     /// <typeparam name="TDto">数据传输对象类型</typeparam>
     /// <typeparam name="TQueryParameter">查询参数类型</typeparam>
-    public abstract partial class CrudServiceBase<TEntity, TDto, TQueryParameter>
+    public abstract class CrudServiceBase<TEntity, TDto, TQueryParameter>
         : CrudServiceBase<TEntity, TDto, TDto, TDto, TDto, TQueryParameter, Guid>, ICrudService<TDto, TQueryParameter>
         where TEntity : class, IAggregateRoot<TEntity, Guid>, new()
         where TDto : IDto, new()
         where TQueryParameter : IQueryParameter
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CrudServiceBase{TEntity, TDto, TQueryParameter}"/> class.
+        /// Initializes a new instance of the <see cref="CrudServiceBase{TEntity, TDto, TQueryParameter}" /> class.
         /// 初始化增删改查服务
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
@@ -40,14 +41,14 @@ namespace KissU.Util.Applications
     /// <typeparam name="TDto">数据传输对象类型</typeparam>
     /// <typeparam name="TQueryParameter">查询参数类型</typeparam>
     /// <typeparam name="TKey">实体标识类型</typeparam>
-    public abstract partial class CrudServiceBase<TEntity, TDto, TQueryParameter, TKey>
+    public abstract class CrudServiceBase<TEntity, TDto, TQueryParameter, TKey>
         : CrudServiceBase<TEntity, TDto, TDto, TQueryParameter, TKey>, ICrudService<TDto, TQueryParameter>
         where TEntity : class, IAggregateRoot<TEntity, TKey>, new()
         where TDto : IDto, new()
         where TQueryParameter : IQueryParameter
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CrudServiceBase{TEntity, TDto, TQueryParameter, TKey}"/> class.
+        /// Initializes a new instance of the <see cref="CrudServiceBase{TEntity, TDto, TQueryParameter, TKey}" /> class.
         /// 初始化增删改查服务
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
@@ -66,15 +67,17 @@ namespace KissU.Util.Applications
     /// <typeparam name="TRequest">参数类型</typeparam>
     /// <typeparam name="TQueryParameter">查询参数类型</typeparam>
     /// <typeparam name="TKey">实体标识类型</typeparam>
-    public abstract partial class CrudServiceBase<TEntity, TDto, TRequest, TQueryParameter, TKey>
-        : CrudServiceBase<TEntity, TDto, TRequest, TRequest, TRequest, TQueryParameter, TKey>, ICrudService<TDto, TRequest, TQueryParameter>
+    public abstract class CrudServiceBase<TEntity, TDto, TRequest, TQueryParameter, TKey>
+        : CrudServiceBase<TEntity, TDto, TRequest, TRequest, TRequest, TQueryParameter, TKey>,
+            ICrudService<TDto, TRequest, TQueryParameter>
         where TEntity : class, IAggregateRoot<TEntity, TKey>, new()
         where TDto : IDto, new()
         where TRequest : IRequest, IKey, new()
         where TQueryParameter : IQueryParameter
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CrudServiceBase{TEntity, TDto, TRequest, TQueryParameter, TKey}"/> class.
+        /// Initializes a new instance of the <see cref="CrudServiceBase{TEntity, TDto, TRequest, TQueryParameter, TKey}" />
+        /// class.
         /// 初始化增删改查服务
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
@@ -95,9 +98,10 @@ namespace KissU.Util.Applications
     /// <typeparam name="TUpdateRequest">修改参数类型</typeparam>
     /// <typeparam name="TQueryParameter">查询参数类型</typeparam>
     /// <typeparam name="TKey">实体标识类型</typeparam>
-    public abstract partial class CrudServiceBase<TEntity, TDto, TRequest, TCreateRequest, TUpdateRequest, TQueryParameter, TKey>
+    public abstract partial class CrudServiceBase<TEntity, TDto, TRequest, TCreateRequest, TUpdateRequest,
+            TQueryParameter, TKey>
         : DeleteServiceBase<TEntity, TDto, TQueryParameter, TKey>,
-        ICrudService<TDto, TRequest, TCreateRequest, TUpdateRequest, TQueryParameter>, ICommitAfter
+            ICrudService<TDto, TRequest, TCreateRequest, TUpdateRequest, TQueryParameter>, ICommitAfter
         where TEntity : class, IAggregateRoot<TEntity, TKey>, new()
         where TDto : IDto, new()
         where TRequest : IRequest, IKey, new()
@@ -106,17 +110,18 @@ namespace KissU.Util.Applications
         where TQueryParameter : IQueryParameter
     {
         /// <summary>
-        /// 工作单元
-        /// </summary>
-        private readonly IUnitOfWork _unitOfWork;
-
-        /// <summary>
         /// 仓储
         /// </summary>
         private readonly IRepository<TEntity, TKey> _repository;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CrudServiceBase{TEntity, TDto, TRequest, TCreateRequest, TUpdateRequest, TQueryParameter, TKey}"/> class.
+        /// 工作单元
+        /// </summary>
+        private readonly IUnitOfWork _unitOfWork;
+
+        /// <summary>
+        /// Initializes a new instance of the
+        /// <see cref="CrudServiceBase{TEntity, TDto, TRequest, TCreateRequest, TUpdateRequest, TQueryParameter, TKey}" /> class.
         /// 初始化增删改查服务
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
@@ -147,7 +152,7 @@ namespace KissU.Util.Applications
         {
             if (typeof(TCreateRequest) == typeof(TRequest))
             {
-                return ToEntity(Util.Helpers.Convert.To<TRequest>(request));
+                return ToEntity(Convert.To<TRequest>(request));
             }
 
             return request.MapTo<TEntity>();
@@ -162,7 +167,7 @@ namespace KissU.Util.Applications
         {
             if (typeof(TUpdateRequest) == typeof(TRequest))
             {
-                return ToEntity(Util.Helpers.Convert.To<TRequest>(request));
+                return ToEntity(Convert.To<TRequest>(request));
             }
 
             return request.MapTo<TEntity>();
@@ -177,7 +182,7 @@ namespace KissU.Util.Applications
         {
             if (typeof(TDto) == typeof(TRequest))
             {
-                return ToEntity(Util.Helpers.Convert.To<TRequest>(request));
+                return ToEntity(Convert.To<TRequest>(request));
             }
 
             return request.MapTo<TEntity>();
