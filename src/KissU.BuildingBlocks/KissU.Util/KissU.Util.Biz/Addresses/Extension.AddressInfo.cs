@@ -8,16 +8,20 @@
         /// <summary>
         /// 转换为地址
         /// </summary>
-        public static Address ToAddress( this AddressInfo info )
+        /// <param name="info">The information.</param>
+        /// <returns>Address.</returns>
+        public static Address ToAddress(this AddressInfo info)
         {
-            return new Address( info.ProvinceId.ToGuidOrNull(), info.CityId.ToGuidOrNull(), info.CountyId.ToGuidOrNull(), info.Province, info.City, info.County, info.Street, info.Zip );
+            return new Address(info.ProvinceId.ToGuidOrNull(), info.CityId.ToGuidOrNull(), info.CountyId.ToGuidOrNull(),
+                info.Province, info.City, info.County, info.Street, info.Zip);
         }
 
         /// <summary>
         /// 转换为地址信息
         /// </summary>
         /// <param name="address">地址</param>
-        public static AddressInfo ToInfo( this Address address )
+        /// <returns>AddressInfo.</returns>
+        public static AddressInfo ToInfo(this Address address)
         {
             return new AddressInfo
             {

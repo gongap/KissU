@@ -9,14 +9,13 @@ namespace KissU.Util.Biz.Enums
     {
         /// <summary>
         /// 女
-        /// </summary>        
-        [Description( "女" )]
-        Female = 1,
+        /// </summary>
+        [Description("女")] Female = 1,
+
         /// <summary>
         /// 男
         /// </summary>
-        [Description( "男" )]
-        Male = 2
+        [Description("男")] Male = 2
     }
 
     /// <summary>
@@ -27,7 +26,9 @@ namespace KissU.Util.Biz.Enums
         /// <summary>
         /// 获取描述
         /// </summary>
-        public static string Description( this Gender? gender )
+        /// <param name="gender">The gender.</param>
+        /// <returns>System.String.</returns>
+        public static string Description(this Gender? gender)
         {
             return gender == null ? string.Empty : gender.Value.Description();
         }
@@ -35,7 +36,9 @@ namespace KissU.Util.Biz.Enums
         /// <summary>
         /// 获取值
         /// </summary>
-        public static int? Value( this Gender? gender )
+        /// <param name="gender">The gender.</param>
+        /// <returns>System.Nullable&lt;System.Int32&gt;.</returns>
+        public static int? Value(this Gender? gender)
         {
             return gender?.Value();
         }
