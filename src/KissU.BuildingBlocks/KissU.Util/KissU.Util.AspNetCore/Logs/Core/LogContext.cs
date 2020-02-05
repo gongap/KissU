@@ -14,6 +14,11 @@ namespace KissU.Util.AspNetCore.Logs.Core
     public class LogContext : ILogContext
     {
         /// <summary>
+        /// 上下文
+        /// </summary>
+        private IContext _context;
+
+        /// <summary>
         /// 日志上下文信息
         /// </summary>
         private LogContextInfo _info;
@@ -22,11 +27,6 @@ namespace KissU.Util.AspNetCore.Logs.Core
         /// 序号
         /// </summary>
         private int _orderId;
-
-        /// <summary>
-        /// 上下文
-        /// </summary>
-        private IContext _context;
 
         /// <summary>
         /// 初始化日志上下文
@@ -95,6 +95,7 @@ namespace KissU.Util.AspNetCore.Logs.Core
         /// <summary>
         /// 创建日志上下文信息
         /// </summary>
+        /// <returns>LogContextInfo.</returns>
         protected virtual LogContextInfo CreateInfo()
         {
             return new LogContextInfo
@@ -111,6 +112,7 @@ namespace KissU.Util.AspNetCore.Logs.Core
         /// <summary>
         /// 获取跟踪号
         /// </summary>
+        /// <returns>System.String.</returns>
         protected string GetTraceId()
         {
             var traceId = Context.TraceId;
@@ -120,9 +122,10 @@ namespace KissU.Util.AspNetCore.Logs.Core
         /// <summary>
         /// 获取计时器
         /// </summary>
+        /// <returns>Stopwatch.</returns>
         protected Stopwatch GetStopwatch()
         {
-            Stopwatch stopwatch = new Stopwatch();
+            var stopwatch = new Stopwatch();
             stopwatch.Start();
             return stopwatch;
         }

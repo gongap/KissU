@@ -16,8 +16,61 @@ namespace KissU.Util.AspNetCore.Clients
     /// <summary>
     /// Http请求
     /// </summary>
+    /// <typeparam name="TRequest">The type of the t request.</typeparam>
     public abstract class HttpRequestBase<TRequest> where TRequest : IRequest<TRequest>
     {
+        #region 构造方法
+
+        /// <summary>
+        /// 初始化Http请求
+        /// </summary>
+        /// <param name="httpMethod">Http动词</param>
+        /// <param name="url">地址</param>
+        /// <exception cref="ArgumentNullException">url</exception>
+        protected HttpRequestBase(HttpMethod httpMethod, string url)
+        {
+            if (string.IsNullOrWhiteSpace(url))
+                throw new ArgumentNullException(nameof(url));
+            System.Text.Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+            _url = url;
+            _httpMethod = httpMethod;
+            _params = new Dictionary<string, object>();
+            _contentType = HttpContentType.FormUrlEncoded.Description();
+            _cookieContainer = new CookieContainer();
+            _timeout = new TimeSpan(0, 0, 30);
+            _headers = new Dictionary<string, string>();
+            _encoding = System.Text.Encoding.UTF8;
+        }
+
+        #endregion
+
+        #region ResultAsync(获取结果)
+
+        /// <summary>
+        /// 获取结果
+        /// </summary>
+        /// <returns>Task&lt;System.String&gt;.</returns>
+        public async Task<string> ResultAsync()
+        {
+            SendBefore();
+            var response = await SendAsync();
+            var result = await response.Content.ReadAsStringAsync();
+            SendAfter(result, response);
+            return result;
+        }
+
+        #endregion
+
+        #region SendBefore(发送前操作)
+
+        /// <summary>
+        /// 发送前操作
+        /// </summary>
+        protected virtual void SendBefore()
+        {
+        }
+
+        #endregion
 
         #region 字段
 
@@ -79,7 +132,8 @@ namespace KissU.Util.AspNetCore.Clients
         /// <summary>
         /// ssl证书验证委托
         /// </summary>
-        private Func<HttpRequestMessage, X509Certificate2, X509Chain, SslPolicyErrors, bool> _serverCertificateCustomValidationCallback;
+        private Func<HttpRequestMessage, X509Certificate2, X509Chain, SslPolicyErrors, bool>
+            _serverCertificateCustomValidationCallback;
 
         /// <summary>
         /// 令牌
@@ -98,36 +152,13 @@ namespace KissU.Util.AspNetCore.Clients
 
         #endregion
 
-        #region 构造方法
-
-        /// <summary>
-        /// 初始化Http请求
-        /// </summary>
-        /// <param name="httpMethod">Http动词</param>
-        /// <param name="url">地址</param>
-        protected HttpRequestBase(HttpMethod httpMethod, string url)
-        {
-            if (string.IsNullOrWhiteSpace(url))
-                throw new ArgumentNullException(nameof(url));
-            System.Text.Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-            _url = url;
-            _httpMethod = httpMethod;
-            _params = new Dictionary<string, object>();
-            _contentType = HttpContentType.FormUrlEncoded.Description();
-            _cookieContainer = new CookieContainer();
-            _timeout = new TimeSpan(0, 0, 30);
-            _headers = new Dictionary<string, string>();
-            _encoding = System.Text.Encoding.UTF8;
-        }
-
-        #endregion
-
         #region 配置
 
         /// <summary>
         /// 设置字符编码
         /// </summary>
         /// <param name="encoding">字符编码</param>
+        /// <returns>TRequest.</returns>
         public TRequest Encoding(Encoding encoding)
         {
             _encoding = encoding;
@@ -138,6 +169,7 @@ namespace KissU.Util.AspNetCore.Clients
         /// 设置字符编码
         /// </summary>
         /// <param name="encoding">字符编码</param>
+        /// <returns>TRequest.</returns>
         public TRequest Encoding(string encoding)
         {
             return Encoding(System.Text.Encoding.GetEncoding(encoding));
@@ -147,6 +179,7 @@ namespace KissU.Util.AspNetCore.Clients
         /// 设置内容类型
         /// </summary>
         /// <param name="contentType">内容类型</param>
+        /// <returns>TRequest.</returns>
         public TRequest ContentType(HttpContentType contentType)
         {
             return ContentType(contentType.Description());
@@ -156,6 +189,7 @@ namespace KissU.Util.AspNetCore.Clients
         /// 设置内容类型
         /// </summary>
         /// <param name="contentType">内容类型</param>
+        /// <returns>TRequest.</returns>
         public TRequest ContentType(string contentType)
         {
             _contentType = contentType;
@@ -167,7 +201,7 @@ namespace KissU.Util.AspNetCore.Clients
         /// </summary>
         private TRequest This()
         {
-            return (TRequest)(object)this;
+            return (TRequest) (object) this;
         }
 
         /// <summary>
@@ -176,6 +210,7 @@ namespace KissU.Util.AspNetCore.Clients
         /// <param name="name">名称</param>
         /// <param name="value">值</param>
         /// <param name="expiresDate">有效时间，单位：天</param>
+        /// <returns>TRequest.</returns>
         public TRequest Cookie(string name, string value, double expiresDate)
         {
             return Cookie(name, value, null, null, DateTime.Now.AddDays(expiresDate));
@@ -187,6 +222,7 @@ namespace KissU.Util.AspNetCore.Clients
         /// <param name="name">名称</param>
         /// <param name="value">值</param>
         /// <param name="expiresDate">到期时间</param>
+        /// <returns>TRequest.</returns>
         public TRequest Cookie(string name, string value, DateTime expiresDate)
         {
             return Cookie(name, value, null, null, expiresDate);
@@ -200,7 +236,9 @@ namespace KissU.Util.AspNetCore.Clients
         /// <param name="path">源服务器URL子集</param>
         /// <param name="domain">所属域</param>
         /// <param name="expiresDate">到期时间</param>
-        public TRequest Cookie(string name, string value, string path = "/", string domain = null, DateTime? expiresDate = null)
+        /// <returns>TRequest.</returns>
+        public TRequest Cookie(string name, string value, string path = "/", string domain = null,
+            DateTime? expiresDate = null)
         {
             return Cookie(new Cookie(name, value, path, domain)
             {
@@ -212,6 +250,7 @@ namespace KissU.Util.AspNetCore.Clients
         /// 设置Cookie
         /// </summary>
         /// <param name="cookie">cookie</param>
+        /// <returns>TRequest.</returns>
         public TRequest Cookie(Cookie cookie)
         {
             _cookieContainer.Add(new Uri(_url), cookie);
@@ -222,6 +261,7 @@ namespace KissU.Util.AspNetCore.Clients
         /// 超时时间
         /// </summary>
         /// <param name="timeout">超时时间</param>
+        /// <returns>TRequest.</returns>
         public TRequest Timeout(int timeout)
         {
             _timeout = new TimeSpan(0, 0, timeout);
@@ -231,8 +271,10 @@ namespace KissU.Util.AspNetCore.Clients
         /// <summary>
         /// 请求头
         /// </summary>
+        /// <typeparam name="T"></typeparam>
         /// <param name="key">键</param>
         /// <param name="value">值</param>
+        /// <returns>TRequest.</returns>
         public TRequest Header<T>(string key, T value)
         {
             _headers.Add(key, value.SafeString());
@@ -243,6 +285,8 @@ namespace KissU.Util.AspNetCore.Clients
         /// 添加参数字典
         /// </summary>
         /// <param name="parameters">参数字典</param>
+        /// <returns>TRequest.</returns>
+        /// <exception cref="ArgumentNullException">parameters</exception>
         public TRequest Data(IDictionary<string, object> parameters)
         {
             _params = parameters ?? throw new ArgumentNullException(nameof(parameters));
@@ -254,6 +298,8 @@ namespace KissU.Util.AspNetCore.Clients
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="value">值</param>
+        /// <returns>TRequest.</returns>
+        /// <exception cref="ArgumentNullException">key</exception>
         public TRequest Data(string key, object value)
         {
             if (string.IsNullOrWhiteSpace(key))
@@ -267,7 +313,9 @@ namespace KissU.Util.AspNetCore.Clients
         /// <summary>
         /// 添加Json参数
         /// </summary>
+        /// <typeparam name="T"></typeparam>
         /// <param name="value">值</param>
+        /// <returns>TRequest.</returns>
         public TRequest JsonData<T>(T value)
         {
             ContentType(HttpContentType.Json);
@@ -279,6 +327,7 @@ namespace KissU.Util.AspNetCore.Clients
         /// 添加Xml参数
         /// </summary>
         /// <param name="value">值</param>
+        /// <returns>TRequest.</returns>
         public TRequest XmlData(string value)
         {
             ContentType(HttpContentType.Xml);
@@ -290,6 +339,7 @@ namespace KissU.Util.AspNetCore.Clients
         /// 请求失败回调函数
         /// </summary>
         /// <param name="action">执行失败的回调函数,参数为响应结果</param>
+        /// <returns>TRequest.</returns>
         public TRequest OnFail(Action<string> action)
         {
             _failAction = action;
@@ -300,6 +350,7 @@ namespace KissU.Util.AspNetCore.Clients
         /// 请求失败回调函数
         /// </summary>
         /// <param name="action">执行失败的回调函数,第一个参数为响应结果，第二个参数为状态码</param>
+        /// <returns>TRequest.</returns>
         public TRequest OnFail(Action<string, HttpStatusCode> action)
         {
             _failStatusCodeAction = action;
@@ -309,6 +360,7 @@ namespace KissU.Util.AspNetCore.Clients
         /// <summary>
         /// 忽略Ssl
         /// </summary>
+        /// <returns>TRequest.</returns>
         public TRequest IgnoreSsl()
         {
             _serverCertificateCustomValidationCallback = (a, b, c, d) => true;
@@ -319,6 +371,7 @@ namespace KissU.Util.AspNetCore.Clients
         /// 设置Bearer令牌
         /// </summary>
         /// <param name="token">令牌</param>
+        /// <returns>TRequest.</returns>
         public TRequest BearerToken(string token)
         {
             _token = token;
@@ -330,6 +383,7 @@ namespace KissU.Util.AspNetCore.Clients
         /// </summary>
         /// <param name="path">证书路径</param>
         /// <param name="password">证书密码</param>
+        /// <returns>TRequest.</returns>
         public TRequest Certificate(string path, string password)
         {
             _certificatePath = path;
@@ -339,38 +393,12 @@ namespace KissU.Util.AspNetCore.Clients
 
         #endregion
 
-        #region ResultAsync(获取结果)
-
-        /// <summary>
-        /// 获取结果
-        /// </summary>
-        public async Task<string> ResultAsync()
-        {
-            SendBefore();
-            var response = await SendAsync();
-            var result = await response.Content.ReadAsStringAsync();
-            SendAfter(result, response);
-            return result;
-        }
-
-        #endregion
-
-        #region SendBefore(发送前操作)
-
-        /// <summary>
-        /// 发送前操作
-        /// </summary>
-        protected virtual void SendBefore()
-        {
-        }
-
-        #endregion
-
         #region SendAsync(发送请求)
 
         /// <summary>
         /// 发送请求
         /// </summary>
+        /// <returns>Task&lt;HttpResponseMessage&gt;.</returns>
         protected async Task<HttpResponseMessage> SendAsync()
         {
             var client = CreateHttpClient();
@@ -381,14 +409,16 @@ namespace KissU.Util.AspNetCore.Clients
         /// <summary>
         /// 创建Http客户端
         /// </summary>
+        /// <returns>HttpClient.</returns>
         protected virtual HttpClient CreateHttpClient()
         {
-            return new HttpClient(CreateHttpClientHandler()) { Timeout = _timeout };
+            return new HttpClient(CreateHttpClientHandler()) {Timeout = _timeout};
         }
 
         /// <summary>
         /// 创建Http客户端处理器
         /// </summary>
+        /// <returns>HttpClientHandler.</returns>
         protected HttpClientHandler CreateHttpClientHandler()
         {
             var handler = new HttpClientHandler
@@ -398,7 +428,8 @@ namespace KissU.Util.AspNetCore.Clients
             };
             if (string.IsNullOrWhiteSpace(_certificatePath))
                 return handler;
-            var certificate = new X509Certificate2(_certificatePath, _certificatePassword, X509KeyStorageFlags.PersistKeySet | X509KeyStorageFlags.MachineKeySet);
+            var certificate = new X509Certificate2(_certificatePath, _certificatePassword,
+                X509KeyStorageFlags.PersistKeySet | X509KeyStorageFlags.MachineKeySet);
             handler.ClientCertificates.Add(certificate);
             return handler;
         }
@@ -428,6 +459,7 @@ namespace KissU.Util.AspNetCore.Clients
         /// <summary>
         /// 创建请求消息
         /// </summary>
+        /// <returns>HttpRequestMessage.</returns>
         protected virtual HttpRequestMessage CreateRequestMessage()
         {
             var message = new HttpRequestMessage
@@ -456,6 +488,7 @@ namespace KissU.Util.AspNetCore.Clients
                 case "text/xml":
                     return CreateXmlContent();
             }
+
             throw new NotImplementedException("未实现该ContentType");
         }
 
@@ -484,6 +517,8 @@ namespace KissU.Util.AspNetCore.Clients
         /// <summary>
         /// 发送后操作
         /// </summary>
+        /// <param name="result">The result.</param>
+        /// <param name="response">The response.</param>
         protected virtual void SendAfter(string result, HttpResponseMessage response)
         {
             var contentType = GetContentType(response);
@@ -492,6 +527,7 @@ namespace KissU.Util.AspNetCore.Clients
                 SuccessHandler(result, response.StatusCode, contentType);
                 return;
             }
+
             FailHandler(result, response.StatusCode, contentType);
         }
 
@@ -500,12 +536,17 @@ namespace KissU.Util.AspNetCore.Clients
         /// </summary>
         private string GetContentType(HttpResponseMessage response)
         {
-            return response?.Content?.Headers?.ContentType == null ? string.Empty : response.Content.Headers.ContentType.MediaType;
+            return response?.Content?.Headers?.ContentType == null
+                ? string.Empty
+                : response.Content.Headers.ContentType.MediaType;
         }
 
         /// <summary>
         /// 成功处理操作
         /// </summary>
+        /// <param name="result">The result.</param>
+        /// <param name="statusCode">The status code.</param>
+        /// <param name="contentType">Type of the content.</param>
         protected virtual void SuccessHandler(string result, HttpStatusCode statusCode, string contentType)
         {
         }
@@ -513,6 +554,9 @@ namespace KissU.Util.AspNetCore.Clients
         /// <summary>
         /// 失败处理操作
         /// </summary>
+        /// <param name="result">The result.</param>
+        /// <param name="statusCode">The status code.</param>
+        /// <param name="contentType">Type of the content.</param>
         protected virtual void FailHandler(string result, HttpStatusCode statusCode, string contentType)
         {
             _failAction?.Invoke(result);

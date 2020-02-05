@@ -1,5 +1,6 @@
 ﻿using KissU.Util.AspNetCore.Helpers;
 using KissU.Util.Contexts;
+using KissU.Util.Helpers;
 
 namespace KissU.Util.AspNetCore.Contexts
 {
@@ -31,11 +32,12 @@ namespace KissU.Util.AspNetCore.Contexts
         /// </summary>
         /// <typeparam name="T">对象类型</typeparam>
         /// <param name="key">键名</param>
+        /// <returns>T.</returns>
         public T Get<T>(string key)
         {
             if (Web.HttpContext == null)
                 return default;
-            return Util.Helpers.Convert.To<T>(Web.HttpContext.Items[key]);
+            return Convert.To<T>(Web.HttpContext.Items[key]);
         }
 
         /// <summary>

@@ -12,6 +12,7 @@ namespace KissU.Util.AspNetCore.Clients
         /// Get请求
         /// </summary>
         /// <param name="url">地址</param>
+        /// <returns>IHttpRequest.</returns>
         public IHttpRequest Get(string url)
         {
             return new HttpRequest(HttpMethod.Get, url);
@@ -21,6 +22,7 @@ namespace KissU.Util.AspNetCore.Clients
         /// Post请求
         /// </summary>
         /// <param name="url">地址</param>
+        /// <returns>IHttpRequest.</returns>
         public IHttpRequest Post(string url)
         {
             return new HttpRequest(HttpMethod.Post, url);
@@ -30,6 +32,7 @@ namespace KissU.Util.AspNetCore.Clients
         /// Put请求
         /// </summary>
         /// <param name="url">地址</param>
+        /// <returns>IHttpRequest.</returns>
         public IHttpRequest Put(string url)
         {
             return new HttpRequest(HttpMethod.Put, url);
@@ -39,6 +42,7 @@ namespace KissU.Util.AspNetCore.Clients
         /// Delete请求
         /// </summary>
         /// <param name="url">地址</param>
+        /// <returns>IHttpRequest.</returns>
         public IHttpRequest Delete(string url)
         {
             return new HttpRequest(HttpMethod.Delete, url);
@@ -55,6 +59,7 @@ namespace KissU.Util.AspNetCore.Clients
         /// Get请求
         /// </summary>
         /// <param name="url">地址</param>
+        /// <returns>IHttpRequest&lt;TResult&gt;.</returns>
         public IHttpRequest<TResult> Get(string url)
         {
             return new HttpRequest<TResult>(HttpMethod.Get, url);
@@ -64,6 +69,7 @@ namespace KissU.Util.AspNetCore.Clients
         /// Post请求
         /// </summary>
         /// <param name="url">地址</param>
+        /// <returns>IHttpRequest&lt;TResult&gt;.</returns>
         public IHttpRequest<TResult> Post(string url)
         {
             return new HttpRequest<TResult>(HttpMethod.Post, url);
@@ -73,6 +79,7 @@ namespace KissU.Util.AspNetCore.Clients
         /// Put请求
         /// </summary>
         /// <param name="url">地址</param>
+        /// <returns>IHttpRequest&lt;TResult&gt;.</returns>
         public IHttpRequest<TResult> Put(string url)
         {
             return new HttpRequest<TResult>(HttpMethod.Put, url);
@@ -82,6 +89,7 @@ namespace KissU.Util.AspNetCore.Clients
         /// Delete请求
         /// </summary>
         /// <param name="url">地址</param>
+        /// <returns>IHttpRequest&lt;TResult&gt;.</returns>
         public IHttpRequest<TResult> Delete(string url)
         {
             return new HttpRequest<TResult>(HttpMethod.Delete, url);

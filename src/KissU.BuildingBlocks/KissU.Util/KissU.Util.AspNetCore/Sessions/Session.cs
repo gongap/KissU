@@ -1,4 +1,5 @@
-﻿using IdentityModel;
+﻿using System.Security.Claims;
+using IdentityModel;
 using KissU.Util.AspNetCore.Helpers;
 using KissU.Util.Sessions;
 
@@ -32,13 +33,13 @@ namespace KissU.Util.AspNetCore.Sessions
             get
             {
                 var result = Web.Identity.GetValue(JwtClaimTypes.Subject);
-                return string.IsNullOrWhiteSpace(result) ? Web.Identity.GetValue(System.Security.Claims.ClaimTypes.NameIdentifier) : result;
+                return string.IsNullOrWhiteSpace(result) ? Web.Identity.GetValue(ClaimTypes.NameIdentifier) : result;
             }
         }
 
         /// <summary>
         /// 用户名称
         /// </summary>
-        public string UserName => Web.Identity.GetValue(System.Security.Claims.ClaimTypes.NameIdentifier);
+        public string UserName => Web.Identity.GetValue(ClaimTypes.NameIdentifier);
     }
 }

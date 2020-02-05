@@ -8,21 +8,23 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using KissU.Util.AspNetCore.Clients;
 using KissU.Util.Helpers;
 using KissU.Util.Security.Principals;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using File = KissU.Util.Helpers.File;
+using HttpRequest = Microsoft.AspNetCore.Http.HttpRequest;
+using WebClient = KissU.Util.AspNetCore.Clients.WebClient;
 
 namespace KissU.Util.AspNetCore.Helpers
 {
     /// <summary>
     /// Web操作
     /// </summary>
-    public static partial class Web
+    public static class Web
     {
-
         #region 静态构造方法
 
         /// <summary>
@@ -40,35 +42,6 @@ namespace KissU.Util.AspNetCore.Helpers
                 // ignored
             }
         }
-
-        #endregion
-
-        #region 属性
-
-        /// <summary>
-        /// Http上下文访问器
-        /// </summary>
-        public static IHttpContextAccessor HttpContextAccessor { get; set; }
-
-        /// <summary>
-        /// 当前Http上下文
-        /// </summary>
-        public static HttpContext HttpContext => HttpContextAccessor?.HttpContext;
-
-        /// <summary>
-        /// 当前Http请求
-        /// </summary>
-        public static HttpRequest Request => HttpContext?.Request;
-
-        /// <summary>
-        /// 当前Http响应
-        /// </summary>
-        public static HttpResponse Response => HttpContext?.Response;
-
-        /// <summary>
-        /// 宿主环境
-        /// </summary>
-        public static IWebHostEnvironment Environment { get; set; }
 
         #endregion
 
@@ -142,11 +115,39 @@ namespace KissU.Util.AspNetCore.Helpers
 
         #endregion
 
+        #region Url(请求地址)
+
+        /// <summary>
+        /// 请求地址
+        /// </summary>
+        public static string Url => Request?.GetDisplayUrl();
+
+        #endregion
+
+        #region Browser(浏览器)
+
+        /// <summary>
+        /// 浏览器
+        /// </summary>
+        public static string Browser => Request?.Headers["User-Agent"];
+
+        #endregion
+
+        #region RootPath(根路径)
+
+        /// <summary>
+        /// 根路径
+        /// </summary>
+        public static string RootPath => Environment?.ContentRootPath;
+
+        #endregion
+
         #region GetBodyAsync(获取请求正文)
 
         /// <summary>
         /// 获取请求正文
         /// </summary>
+        /// <returns>Task&lt;System.String&gt;.</returns>
         public static async Task<string> GetBodyAsync()
         {
             Request.EnableBuffering();
@@ -155,33 +156,116 @@ namespace KissU.Util.AspNetCore.Helpers
 
         #endregion
 
+        #region GetFiles(获取客户端文件集合)
+
+        /// <summary>
+        /// 获取客户端文件集合
+        /// </summary>
+        /// <returns>List&lt;IFormFile&gt;.</returns>
+        public static List<IFormFile> GetFiles()
+        {
+            var result = new List<IFormFile>();
+            var files = Request.Form.Files;
+            if (files == null || files.Count == 0)
+                return result;
+            result.AddRange(files.Where(file => file?.Length > 0));
+            return result;
+        }
+
+        #endregion
+
+        #region GetFile(获取客户端文件)
+
+        /// <summary>
+        /// 获取客户端文件
+        /// </summary>
+        /// <returns>IFormFile.</returns>
+        public static IFormFile GetFile()
+        {
+            var files = GetFiles();
+            return files.Count == 0 ? null : files[0];
+        }
+
+        #endregion
+
+        #region GetParam(获取请求参数)
+
+        /// <summary>
+        /// 获取请求参数，搜索路径：查询参数-&gt;表单参数-&gt;请求头
+        /// </summary>
+        /// <param name="name">参数名</param>
+        /// <returns>System.String.</returns>
+        public static string GetParam(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+                return string.Empty;
+            if (Request == null)
+                return string.Empty;
+            var result = string.Empty;
+            if (Request.Query != null)
+                result = Request.Query[name];
+            if (string.IsNullOrWhiteSpace(result) == false)
+                return result;
+            if (Request.Form != null)
+                result = Request.Form[name];
+            if (string.IsNullOrWhiteSpace(result) == false)
+                return result;
+            if (Request.Headers != null)
+                result = Request.Headers[name];
+            return result;
+        }
+
+        #endregion
+
+        #region 属性
+
+        /// <summary>
+        /// Http上下文访问器
+        /// </summary>
+        public static IHttpContextAccessor HttpContextAccessor { get; set; }
+
+        /// <summary>
+        /// 当前Http上下文
+        /// </summary>
+        public static HttpContext HttpContext => HttpContextAccessor?.HttpContext;
+
+        /// <summary>
+        /// 当前Http请求
+        /// </summary>
+        public static HttpRequest Request => HttpContext?.Request;
+
+        /// <summary>
+        /// 当前Http响应
+        /// </summary>
+        public static HttpResponse Response => HttpContext?.Response;
+
+        /// <summary>
+        /// 宿主环境
+        /// </summary>
+        public static IWebHostEnvironment Environment { get; set; }
+
+        #endregion
+
         #region Client( Web客户端 )
 
         /// <summary>
         /// Web客户端，用于发送Http请求
         /// </summary>
-        public static Clients.WebClient Client()
+        /// <returns>Clients.WebClient.</returns>
+        public static WebClient Client()
         {
-            return new Clients.WebClient();
+            return new WebClient();
         }
 
         /// <summary>
         /// Web客户端，用于发送Http请求
         /// </summary>
         /// <typeparam name="TResult">返回结果类型</typeparam>
-        public static Clients.WebClient<TResult> Client<TResult>() where TResult : class
+        /// <returns>Clients.WebClient&lt;TResult&gt;.</returns>
+        public static WebClient<TResult> Client<TResult>() where TResult : class
         {
-            return new Clients.WebClient<TResult>();
+            return new WebClient<TResult>();
         }
-
-        #endregion
-
-        #region Url(请求地址)
-
-        /// <summary>
-        /// 请求地址
-        /// </summary>
-        public static string Url => Request?.GetDisplayUrl();
 
         #endregion
 
@@ -218,7 +302,7 @@ namespace KissU.Util.AspNetCore.Helpers
             {
                 if (string.IsNullOrWhiteSpace(_ip) == false)
                     return _ip;
-                var list = new[] { "127.0.0.1", "::1" };
+                var list = new[] {"127.0.0.1", "::1"};
                 var result = HttpContext?.Connection?.RemoteIpAddress.SafeString();
                 if (string.IsNullOrWhiteSpace(result) || list.Contains(result))
                     result = Common.IsWindows ? GetLanIp() : GetLanIp(NetworkInterfaceType.Ethernet);
@@ -236,6 +320,7 @@ namespace KissU.Util.AspNetCore.Helpers
                 if (hostAddress.AddressFamily == AddressFamily.InterNetwork)
                     return hostAddress.ToString();
             }
+
             return string.Empty;
         }
 
@@ -302,24 +387,6 @@ namespace KissU.Util.AspNetCore.Helpers
 
         #endregion
 
-        #region Browser(浏览器)
-
-        /// <summary>
-        /// 浏览器
-        /// </summary>
-        public static string Browser => Request?.Headers["User-Agent"];
-
-        #endregion
-
-        #region RootPath(根路径)
-
-        /// <summary>
-        /// 根路径
-        /// </summary>
-        public static string RootPath => Environment?.ContentRootPath;
-
-        #endregion 
-
         #region WebRootPath(Web根路径)
 
         /// <summary>
@@ -331,72 +398,15 @@ namespace KissU.Util.AspNetCore.Helpers
         /// 获取wwwroot路径
         /// </summary>
         /// <param name="relativePath">相对路径</param>
+        /// <returns>System.String.</returns>
         public static string GetWebRootPath(string relativePath)
         {
             if (string.IsNullOrWhiteSpace(relativePath))
                 return string.Empty;
-            var rootPath = Web.WebRootPath;
+            var rootPath = WebRootPath;
             if (string.IsNullOrWhiteSpace(rootPath))
                 return Path.GetFullPath(relativePath);
-            return $"{Web.WebRootPath}\\{relativePath.Replace("/", "\\").TrimStart('\\')}";
-        }
-
-        #endregion
-
-        #region GetFiles(获取客户端文件集合)
-
-        /// <summary>
-        /// 获取客户端文件集合
-        /// </summary>
-        public static List<IFormFile> GetFiles()
-        {
-            var result = new List<IFormFile>();
-            var files = Request.Form.Files;
-            if (files == null || files.Count == 0)
-                return result;
-            result.AddRange(files.Where(file => file?.Length > 0));
-            return result;
-        }
-
-        #endregion
-
-        #region GetFile(获取客户端文件)
-
-        /// <summary>
-        /// 获取客户端文件
-        /// </summary>
-        public static IFormFile GetFile()
-        {
-            var files = GetFiles();
-            return files.Count == 0 ? null : files[0];
-        }
-
-        #endregion
-
-        #region GetParam(获取请求参数)
-
-        /// <summary>
-        /// 获取请求参数，搜索路径：查询参数->表单参数->请求头
-        /// </summary>
-        /// <param name="name">参数名</param>
-        public static string GetParam(string name)
-        {
-            if (string.IsNullOrWhiteSpace(name))
-                return string.Empty;
-            if (Request == null)
-                return string.Empty;
-            var result = string.Empty;
-            if (Request.Query != null)
-                result = Request.Query[name];
-            if (string.IsNullOrWhiteSpace(result) == false)
-                return result;
-            if (Request.Form != null)
-                result = Request.Form[name];
-            if (string.IsNullOrWhiteSpace(result) == false)
-                return result;
-            if (Request.Headers != null)
-                result = Request.Headers[name];
-            return result;
+            return $"{WebRootPath}\\{relativePath.Replace("/", "\\").TrimStart('\\')}";
         }
 
         #endregion
@@ -408,6 +418,7 @@ namespace KissU.Util.AspNetCore.Helpers
         /// </summary>
         /// <param name="url">url</param>
         /// <param name="isUpper">编码字符是否转成大写,范例,"http://"转成"http%3A%2F%2F"</param>
+        /// <returns>System.String.</returns>
         public static string UrlEncode(string url, bool isUpper = false)
         {
             return UrlEncode(url, Encoding.UTF8, isUpper);
@@ -419,6 +430,7 @@ namespace KissU.Util.AspNetCore.Helpers
         /// <param name="url">url</param>
         /// <param name="encoding">字符编码</param>
         /// <param name="isUpper">编码字符是否转成大写,范例,"http://"转成"http%3A%2F%2F"</param>
+        /// <returns>System.String.</returns>
         public static string UrlEncode(string url, string encoding, bool isUpper = false)
         {
             encoding = string.IsNullOrWhiteSpace(encoding) ? "UTF-8" : encoding;
@@ -431,6 +443,7 @@ namespace KissU.Util.AspNetCore.Helpers
         /// <param name="url">url</param>
         /// <param name="encoding">字符编码</param>
         /// <param name="isUpper">编码字符是否转成大写,范例,"http://"转成"http%3A%2F%2F"</param>
+        /// <returns>System.String.</returns>
         public static string UrlEncode(string url, Encoding encoding, bool isUpper = false)
         {
             var result = HttpUtility.UrlEncode(url, encoding);
@@ -445,16 +458,17 @@ namespace KissU.Util.AspNetCore.Helpers
         private static string GetUpperEncode(string encode)
         {
             var result = new StringBuilder();
-            int index = int.MinValue;
-            for (int i = 0; i < encode.Length; i++)
+            var index = int.MinValue;
+            for (var i = 0; i < encode.Length; i++)
             {
-                string character = encode[i].ToString();
+                var character = encode[i].ToString();
                 if (character == "%")
                     index = i;
                 if (i - index == 1 || i - index == 2)
                     character = character.ToUpper();
                 result.Append(character);
             }
+
             return result.ToString();
         }
 
@@ -466,6 +480,7 @@ namespace KissU.Util.AspNetCore.Helpers
         /// Url解码
         /// </summary>
         /// <param name="url">url</param>
+        /// <returns>System.String.</returns>
         public static string UrlDecode(string url)
         {
             return HttpUtility.UrlDecode(url);
@@ -476,6 +491,7 @@ namespace KissU.Util.AspNetCore.Helpers
         /// </summary>
         /// <param name="url">url</param>
         /// <param name="encoding">字符编码</param>
+        /// <returns>System.String.</returns>
         public static string UrlDecode(string url, Encoding encoding)
         {
             return HttpUtility.UrlDecode(url, encoding);

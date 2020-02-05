@@ -11,6 +11,7 @@ namespace KissU.Util.AspNetCore.Contexts
         /// <summary>
         /// 创建上下文
         /// </summary>
+        /// <returns>IContext.</returns>
         public static IContext Create()
         {
             if (Web.HttpContext == null)

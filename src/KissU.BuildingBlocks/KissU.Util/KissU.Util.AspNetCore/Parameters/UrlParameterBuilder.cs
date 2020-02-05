@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Web;
 using KissU.Util.AspNetCore.Helpers;
 using KissU.Util.AspNetCore.Parameters.Formats;
+using KissU.Util.Helpers;
 using KissU.Util.Parameters;
-using KissU.Util.Parameters.Formats;
-using Url = KissU.Util.Helpers.Url;
 
 namespace KissU.Util.AspNetCore.Parameters
 {
@@ -14,11 +13,6 @@ namespace KissU.Util.AspNetCore.Parameters
     /// </summary>
     public class UrlParameterBuilder
     {
-        /// <summary>
-        /// 参数生成器
-        /// </summary>
-        private ParameterBuilder ParameterBuilder { get; }
-
         /// <summary>
         /// 初始化Url参数生成器
         /// </summary>
@@ -50,13 +44,31 @@ namespace KissU.Util.AspNetCore.Parameters
         /// <param name="builder">Url参数生成器</param>
         public UrlParameterBuilder(string url, UrlParameterBuilder builder = null)
         {
-            ParameterBuilder = builder == null ? new ParameterBuilder() : new ParameterBuilder(builder.ParameterBuilder);
+            ParameterBuilder =
+                builder == null ? new ParameterBuilder() : new ParameterBuilder(builder.ParameterBuilder);
             LoadUrl(url);
+        }
+
+        /// <summary>
+        /// 参数生成器
+        /// </summary>
+        private ParameterBuilder ParameterBuilder { get; }
+
+        /// <summary>
+        /// 索引器
+        /// </summary>
+        /// <param name="name">参数名</param>
+        /// <returns>System.Object.</returns>
+        public object this[string name]
+        {
+            get => GetValue(name);
+            set => Add(name, value);
         }
 
         /// <summary>
         /// 加载Url
         /// </summary>
+        /// <param name="url">The URL.</param>
         public void LoadUrl(string url)
         {
             if (string.IsNullOrWhiteSpace(url))
@@ -103,6 +115,7 @@ namespace KissU.Util.AspNetCore.Parameters
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="value">值</param>
+        /// <returns>UrlParameterBuilder.</returns>
         public UrlParameterBuilder Add(string key, object value)
         {
             ParameterBuilder.Add(key, value);
@@ -113,19 +126,10 @@ namespace KissU.Util.AspNetCore.Parameters
         /// 获取值
         /// </summary>
         /// <param name="name">参数名</param>
+        /// <returns>System.Object.</returns>
         public object GetValue(string name)
         {
             return ParameterBuilder.GetValue(name);
-        }
-
-        /// <summary>
-        /// 索引器
-        /// </summary>
-        /// <param name="name">参数名</param>
-        public object this[string name]
-        {
-            get => GetValue(name);
-            set => Add(name, value);
         }
 
         /// <summary>
@@ -134,7 +138,9 @@ namespace KissU.Util.AspNetCore.Parameters
         /// <param name="isSort">是否按参数名排序</param>
         /// <param name="isUrlEncode">是否Url编码</param>
         /// <param name="encoding">字符编码，默认值：UTF-8</param>
-        public IDictionary<string, object> GetDictionary(bool isSort = true, bool isUrlEncode = false, string encoding = "UTF-8")
+        /// <returns>IDictionary&lt;System.String, System.Object&gt;.</returns>
+        public IDictionary<string, object> GetDictionary(bool isSort = true, bool isUrlEncode = false,
+            string encoding = "UTF-8")
         {
             return ParameterBuilder.GetDictionary(isSort, isUrlEncode, encoding);
         }
@@ -142,6 +148,7 @@ namespace KissU.Util.AspNetCore.Parameters
         /// <summary>
         /// 获取键值对集合
         /// </summary>
+        /// <returns>IEnumerable&lt;KeyValuePair&lt;System.String, System.Object&gt;&gt;.</returns>
         public IEnumerable<KeyValuePair<string, object>> GetKeyValuePairs()
         {
             return ParameterBuilder.GetKeyValuePairs();
@@ -153,6 +160,7 @@ namespace KissU.Util.AspNetCore.Parameters
         /// <param name="isSort">是否按参数名排序</param>
         /// <param name="isUrlEncode">是否Url编码</param>
         /// <param name="encoding">字符编码，默认值：UTF-8</param>
+        /// <returns>System.String.</returns>
         public string Result(bool isSort = false, bool isUrlEncode = false, string encoding = "UTF-8")
         {
             return ParameterBuilder.Result(UrlParameterFormat.Instance, isSort, isUrlEncode, encoding);
@@ -162,6 +170,7 @@ namespace KissU.Util.AspNetCore.Parameters
         /// 连接Url
         /// </summary>
         /// <param name="url">地址</param>
+        /// <returns>System.String.</returns>
         public string JoinUrl(string url)
         {
             return Url.Join(url, Result());
@@ -179,6 +188,7 @@ namespace KissU.Util.AspNetCore.Parameters
         /// 移除参数
         /// </summary>
         /// <param name="key">键</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool Remove(string key)
         {
             return ParameterBuilder.Remove(key);

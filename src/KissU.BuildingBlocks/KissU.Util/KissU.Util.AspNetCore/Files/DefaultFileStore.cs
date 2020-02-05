@@ -29,6 +29,8 @@ namespace KissU.Util.AspNetCore.Files
         /// <summary>
         /// 保存文件,返回完整文件路径 w
         /// </summary>
+        /// <returns>Task&lt;System.String&gt;.</returns>
+        /// <exception cref="Warning">上传失败</exception>
         public async Task<string> SaveAsync()
         {
             var fileControl = Web.GetFile();
@@ -43,6 +45,7 @@ namespace KissU.Util.AspNetCore.Files
             {
                 await fileControl.CopyToAsync(stream);
             }
+
             return path;
         }
     }
