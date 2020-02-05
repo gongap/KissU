@@ -3,11 +3,13 @@ using KissU.Util.Biz.Payments.Alipay.Configs;
 using KissU.Util.Biz.Payments.Alipay.Parameters;
 using Newtonsoft.Json.Linq;
 
-namespace KissU.Util.Biz.Payments.Alipay.Results {
+namespace KissU.Util.Biz.Payments.Alipay.Results
+{
     /// <summary>
     /// 支付宝结果
     /// </summary>
-    public class AlipayResult {
+    public class AlipayResult
+    {
         /// <summary>
         /// 结果
         /// </summary>
@@ -16,7 +18,8 @@ namespace KissU.Util.Biz.Payments.Alipay.Results {
         /// <summary>
         /// 初始化支付宝结果
         /// </summary>
-        public AlipayResult() {
+        public AlipayResult()
+        {
         }
 
         /// <summary>
@@ -24,55 +27,67 @@ namespace KissU.Util.Biz.Payments.Alipay.Results {
         /// </summary>
         /// <param name="response">json响应消息</param>
         /// <param name="builder">支付宝参数生成器</param>
-        public AlipayResult( string response, AlipayParameterBuilder builder = null ) {
+        public AlipayResult(string response, AlipayParameterBuilder builder = null)
+        {
             Raw = response;
             Builder = builder;
             _result = new Dictionary<string, string>();
-            LoadJson( response );
+            LoadJson(response);
         }
 
         /// <summary>
         /// 支付宝原始响应
         /// </summary>
         public string Raw { get; }
+
         /// <summary>
         /// 支付宝参数生成器
         /// </summary>
         public AlipayParameterBuilder Builder { get; }
+
         /// <summary>
         /// 结果
         /// </summary>
         public string Result { get; set; }
 
         /// <summary>
+        /// 是否成功
+        /// </summary>
+        public bool Success => GetCode() == "10000";
+
+        /// <summary>
         /// 加载json
         /// </summary>
-        private void LoadJson( string json ) {
-            if( json.IsEmpty() )
+        private void LoadJson(string json)
+        {
+            if (json.IsEmpty())
                 return;
-            var jObject = JObject.Parse( json );
-            foreach( var token in jObject.Children() )
-                AddNodes( token );
+            var jObject = JObject.Parse(json);
+            foreach (var token in jObject.Children())
+                AddNodes(token);
         }
 
         /// <summary>
         /// 添加节点
         /// </summary>
-        private void AddNodes( JToken token ) {
-            if( !( token is JProperty item ) )
+        private void AddNodes(JToken token)
+        {
+            if (!(token is JProperty item))
                 return;
-            foreach( var value in item.Value )
-                AddNodes( value );
-            if( GetIgnoreItems().Contains( item.Name ) )
+            foreach (var value in item.Value)
+                AddNodes(value);
+            if (GetIgnoreItems().Contains(item.Name))
                 return;
-            _result.Add( item.Name, item.Value.SafeString() );
+            _result.Add(item.Name, item.Value.SafeString());
         }
 
         /// <summary>
         /// 获取忽略项
         /// </summary>
-        private List<string> GetIgnoreItems() {
-            return new List<string> {
+        private List<string> GetIgnoreItems()
+        {
+            return new List<string>
+            {
                 "alipay_trade_pay_response",
                 "alipay_trade_cancel_response"
             };
@@ -81,7 +96,9 @@ namespace KissU.Util.Biz.Payments.Alipay.Results {
         /// <summary>
         /// 获取字典
         /// </summary>
-        public IDictionary<string, string> GetDictionary() {
+        /// <returns>IDictionary&lt;System.String, System.String&gt;.</returns>
+        public IDictionary<string, string> GetDictionary()
+        {
             return _result;
         }
 
@@ -89,53 +106,60 @@ namespace KissU.Util.Biz.Payments.Alipay.Results {
         /// 获取值
         /// </summary>
         /// <param name="key">键</param>
-        public string GetValue( string key ) {
-            if( key.IsEmpty() )
+        /// <returns>System.String.</returns>
+        public string GetValue(string key)
+        {
+            if (key.IsEmpty())
                 return string.Empty;
-            return _result.ContainsKey( key ) ? _result[key].SafeString() : string.Empty;
+            return _result.ContainsKey(key) ? _result[key].SafeString() : string.Empty;
         }
 
         /// <summary>
         /// 是否包含指定键
         /// </summary>
         /// <param name="key">键</param>
-        public bool HasKey( string key ) {
-            if( key.IsEmpty() )
+        /// <returns><c>true</c> if the specified key has key; otherwise, <c>false</c>.</returns>
+        public bool HasKey(string key)
+        {
+            if (key.IsEmpty())
                 return false;
-            return _result.ContainsKey( key );
+            return _result.ContainsKey(key);
         }
 
         /// <summary>
         /// 获取状态码
         /// </summary>
-        public string GetCode() {
-            return GetValue( "code" );
+        /// <returns>System.String.</returns>
+        public string GetCode()
+        {
+            return GetValue("code");
         }
 
         /// <summary>
         /// 获取消息
         /// </summary>
-        public string GetMessage() {
-            return GetValue( "msg" );
+        /// <returns>System.String.</returns>
+        public string GetMessage()
+        {
+            return GetValue("msg");
         }
 
         /// <summary>
         /// 获取支付交易号
         /// </summary>
-        public string GetTradeNo() {
-            return GetValue( AlipayConst.TradeNo );
+        /// <returns>System.String.</returns>
+        public string GetTradeNo()
+        {
+            return GetValue(AlipayConst.TradeNo);
         }
 
         /// <summary>
         /// 获取商户订单号
         /// </summary>
-        public string GetOutTradeNo() {
-            return GetValue( AlipayConst.OutTradeNo );
+        /// <returns>System.String.</returns>
+        public string GetOutTradeNo()
+        {
+            return GetValue(AlipayConst.OutTradeNo);
         }
-
-        /// <summary>
-        /// 是否成功
-        /// </summary>
-        public bool Success => GetCode() == "10000";
     }
 }

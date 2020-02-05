@@ -1,14 +1,17 @@
-﻿namespace KissU.Util.Biz.Payments.Wechatpay.Results {
+﻿namespace KissU.Util.Biz.Payments.Wechatpay.Results
+{
     /// <summary>
     /// 微信支付关闭订单结果
     /// </summary>
-    public class WechatpayCloseOrderResult {
+    public class WechatpayCloseOrderResult
+    {
         /// <summary>
         /// 初始化微信支付关闭订单结果
         /// </summary>
         /// <param name="success">是否成功</param>
         /// <param name="result">请求结果</param>
-        public WechatpayCloseOrderResult( bool success,WechatpayResult result ) {
+        public WechatpayCloseOrderResult(bool success, WechatpayResult result)
+        {
             Success = success;
             ErrorCode = result.GetErrorCode();
             Raw = result.Raw;

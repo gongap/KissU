@@ -4,25 +4,30 @@ using KissU.Util.Biz.Payments.Alipay.Parameters;
 using KissU.Util.Biz.Payments.Alipay.Results;
 using KissU.Util.Biz.Payments.Core;
 
-namespace KissU.Util.Biz.Payments.Alipay.Services.Base {
+namespace KissU.Util.Biz.Payments.Alipay.Services.Base
+{
     /// <summary>
     /// 支付宝支付服务
     /// </summary>
-    public abstract class AlipayPayServiceBase : AlipayServiceBase<PayParam>, IPayService {
+    public abstract class AlipayPayServiceBase : AlipayServiceBase<PayParam>, IPayService
+    {
         /// <summary>
         /// 初始化支付宝支付服务
         /// </summary>
         /// <param name="provider">支付宝配置提供器</param>
-        protected AlipayPayServiceBase( IAlipayConfigProvider provider ) : base( provider ) {
+        protected AlipayPayServiceBase(IAlipayConfigProvider provider) : base(provider)
+        {
         }
 
         /// <summary>
         /// 支付
         /// </summary>
         /// <param name="param">支付参数</param>
-        public virtual async Task<PayResult> PayAsync( PayParam param ) {
-            var result = await Request( param );
-            return CreateResult( result );
+        /// <returns>Task&lt;PayResult&gt;.</returns>
+        public virtual async Task<PayResult> PayAsync(PayParam param)
+        {
+            var result = await Request(param);
+            return CreateResult(result);
         }
 
         /// <summary>
@@ -30,23 +35,30 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base {
         /// </summary>
         /// <param name="builder">支付宝参数生成器</param>
         /// <param name="param">支付参数</param>
-        protected override void InitBuilder( AlipayParameterBuilder builder, PayParam param ) {
-            builder.Init( param );
-            builder.Content.Scene( GetScene() );
+        protected override void InitBuilder(AlipayParameterBuilder builder, PayParam param)
+        {
+            builder.Init(param);
+            builder.Content.Scene(GetScene());
         }
 
         /// <summary>
         /// 获取场景
         /// </summary>
-        protected virtual string GetScene() {
+        /// <returns>System.String.</returns>
+        protected virtual string GetScene()
+        {
             return string.Empty;
         }
 
         /// <summary>
         /// 创建结果
         /// </summary>
-        protected virtual PayResult CreateResult( AlipayResult result ) {
-            return new PayResult( result.Success, result.GetTradeNo(), result.Raw ) {
+        /// <param name="result">The result.</param>
+        /// <returns>PayResult.</returns>
+        protected virtual PayResult CreateResult(AlipayResult result)
+        {
+            return new PayResult(result.Success, result.GetTradeNo(), result.Raw)
+            {
                 Parameter = result.Builder.ToString(),
                 Message = result.GetMessage()
             };

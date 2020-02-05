@@ -8,30 +8,37 @@ using KissU.Util.Biz.Payments.Wechatpay.Results;
 using KissU.Util.Biz.Payments.Wechatpay.Services.Base;
 using KissU.Util.Helpers;
 
-namespace KissU.Util.Biz.Payments.Wechatpay.Services {
+namespace KissU.Util.Biz.Payments.Wechatpay.Services
+{
     /// <summary>
     /// 微信App支付服务
     /// </summary>
-    public class WechatpayAppPayService : WechatpayPayServiceBase, IWechatpayAppPayService {
+    public class WechatpayAppPayService : WechatpayPayServiceBase, IWechatpayAppPayService
+    {
         /// <summary>
         /// 初始化微信App支付服务
         /// </summary>
         /// <param name="provider">微信支付配置提供器</param>
-        public WechatpayAppPayService( IWechatpayConfigProvider provider ) : base( provider ) {
+        public WechatpayAppPayService(IWechatpayConfigProvider provider) : base(provider)
+        {
         }
 
         /// <summary>
         /// 支付
         /// </summary>
         /// <param name="request">支付参数</param>
-        public async Task<PayResult> PayAsync( WechatpayAppPayRequest request ) {
-            return await PayAsync( request.ToParam() );
+        /// <returns>Task&lt;PayResult&gt;.</returns>
+        public async Task<PayResult> PayAsync(WechatpayAppPayRequest request)
+        {
+            return await PayAsync(request.ToParam());
         }
 
         /// <summary>
         /// 获取交易类型
         /// </summary>
-        protected override string GetTradeType() {
+        /// <returns>System.String.</returns>
+        protected override string GetTradeType()
+        {
             return "APP";
         }
 
@@ -39,12 +46,14 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services {
         /// 获取结果
         /// </summary>
         /// <param name="result">支付结果</param>
-        protected override string GetResult( WechatpayResult result ) {
-            return new WechatpayParameterBuilder( result.Config )
-                .AppId( result.Config.AppId )
-                .PartnerId( result.Config.MerchantId )
-                .Add( "prepayid", result.GetPrepayId() )
-                .Add( "noncestr", Id.Guid() )
+        /// <returns>System.String.</returns>
+        protected override string GetResult(WechatpayResult result)
+        {
+            return new WechatpayParameterBuilder(result.Config)
+                .AppId(result.Config.AppId)
+                .PartnerId(result.Config.MerchantId)
+                .Add("prepayid", result.GetPrepayId())
+                .Add("noncestr", Id.Guid())
                 .Timestamp()
                 .Package()
                 .ToJson();

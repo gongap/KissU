@@ -10,7 +10,7 @@
 
 namespace KissU.Util.Biz.Payments.Properties {
     /// <summary>
-    ///   一个强类型的资源类，用于查找本地化的字符串等。
+    /// 一个强类型的资源类，用于查找本地化的字符串等。
     /// </summary>
     // 此类是由 StronglyTypedResourceBuilder
     // 类通过类似于 ResGen 或 Visual Studio 的工具自动生成的。
@@ -24,13 +24,16 @@ namespace KissU.Util.Biz.Payments.Properties {
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
-        
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PayResource"/> class.
+        /// </summary>
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal PayResource() {
         }
-        
+
         /// <summary>
-        ///   返回此类使用的缓存的 ResourceManager 实例。
+        /// 返回此类使用的缓存的 ResourceManager 实例。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         public static global::System.Resources.ResourceManager ResourceManager {
@@ -42,10 +45,10 @@ namespace KissU.Util.Biz.Payments.Properties {
                 return resourceMan;
             }
         }
-        
+
         /// <summary>
-        ///   重写当前线程的 CurrentUICulture 属性
-        ///   重写当前线程的 CurrentUICulture 属性。
+        /// 重写当前线程的 CurrentUICulture 属性
+        /// 重写当前线程的 CurrentUICulture 属性。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         public static global::System.Globalization.CultureInfo Culture {
@@ -56,45 +59,45 @@ namespace KissU.Util.Biz.Payments.Properties {
                 resourceCulture = value;
             }
         }
-        
+
         /// <summary>
-        ///   查找类似 支付宝交易号和商户订单号不能同时为空 的本地化字符串。
+        /// 查找类似 支付宝交易号和商户订单号不能同时为空 的本地化字符串。
         /// </summary>
         public static string AlipayCancelParamIsEmpty {
             get {
                 return ResourceManager.GetString("AlipayCancelParamIsEmpty", resourceCulture);
             }
         }
-        
+
         /// <summary>
-        ///   查找类似 用户付款授权码 的本地化字符串。
+        /// 查找类似 用户付款授权码 的本地化字符串。
         /// </summary>
         public static string AuthCode {
             get {
                 return ResourceManager.GetString("AuthCode", resourceCulture);
             }
         }
-        
+
         /// <summary>
-        ///   查找类似 用户付款授权码不能为空 的本地化字符串。
+        /// 查找类似 用户付款授权码不能为空 的本地化字符串。
         /// </summary>
         public static string AuthCodeIsEmpty {
             get {
                 return ResourceManager.GetString("AuthCodeIsEmpty", resourceCulture);
             }
         }
-        
+
         /// <summary>
-        ///   查找类似 支付金额必须大于0 的本地化字符串。
+        /// 查找类似 支付金额必须大于0 的本地化字符串。
         /// </summary>
         public static string InvalidMoney {
             get {
                 return ResourceManager.GetString("InvalidMoney", resourceCulture);
             }
         }
-        
+
         /// <summary>
-        ///   查找类似 商户订单号不能为空 的本地化字符串。
+        /// 查找类似 商户订单号不能为空 的本地化字符串。
         /// </summary>
         public static string OrderIdIsEmpty {
             get {

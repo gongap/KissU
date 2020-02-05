@@ -1,21 +1,24 @@
 ﻿using KissU.Util.Biz.Payments.Alipay.Configs;
 using KissU.Util.Biz.Payments.Alipay.Enums;
 
-namespace KissU.Util.Biz.Payments.Alipay.Results {
+namespace KissU.Util.Biz.Payments.Alipay.Results
+{
     /// <summary>
     /// 支付宝交易撤消结果
     /// </summary>
-    public class AlipayCancelResult {
+    public class AlipayCancelResult
+    {
         /// <summary>
         /// 初始化支付撤消结果
         /// </summary>
         /// <param name="result">支付宝结果</param>
-        public AlipayCancelResult( AlipayResult result ) {
+        public AlipayCancelResult(AlipayResult result)
+        {
             Success = result.Success;
             TradeId = result.GetTradeNo();
             OrderId = result.GetOutTradeNo();
-            Retry = result.GetValue( AlipayConst.RetryFlag ) != "N";
-            Action = CreateAction( result.GetValue( AlipayConst.Action ) );
+            Retry = result.GetValue(AlipayConst.RetryFlag) != "N";
+            Action = CreateAction(result.GetValue(AlipayConst.Action));
             Raw = result.Raw;
             Message = result.GetMessage();
             Parameter = result.Builder.ToString();
@@ -64,8 +67,10 @@ namespace KissU.Util.Biz.Payments.Alipay.Results {
         /// <summary>
         /// 创建撤消操作
         /// </summary>
-        private CancelAction CreateAction( string action ) {
-            switch ( action ) {
+        private CancelAction CreateAction(string action)
+        {
+            switch (action)
+            {
                 case "close":
                     return CancelAction.Close;
                 case "refund":

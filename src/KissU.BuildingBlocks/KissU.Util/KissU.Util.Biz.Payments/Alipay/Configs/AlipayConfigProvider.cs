@@ -1,10 +1,12 @@
 ﻿using System.Threading.Tasks;
 
-namespace KissU.Util.Biz.Payments.Alipay.Configs {
+namespace KissU.Util.Biz.Payments.Alipay.Configs
+{
     /// <summary>
     /// 支付宝配置提供器
     /// </summary>
-    public class AlipayConfigProvider : IAlipayConfigProvider {
+    public class AlipayConfigProvider : IAlipayConfigProvider
+    {
         /// <summary>
         /// 配置
         /// </summary>
@@ -14,15 +16,18 @@ namespace KissU.Util.Biz.Payments.Alipay.Configs {
         /// 初始化支付宝配置提供器
         /// </summary>
         /// <param name="config">支付宝配置</param>
-        public AlipayConfigProvider( AlipayConfig config ) {
+        public AlipayConfigProvider(AlipayConfig config)
+        {
             _config = config;
         }
 
         /// <summary>
         /// 获取配置
         /// </summary>
-        public Task<AlipayConfig> GetConfigAsync() {
-            return Task.FromResult( _config );
+        /// <returns>Task&lt;AlipayConfig&gt;.</returns>
+        public Task<AlipayConfig> GetConfigAsync()
+        {
+            return Task.FromResult(_config);
         }
     }
 }

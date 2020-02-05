@@ -1,19 +1,20 @@
 ﻿using System.ComponentModel;
 
-namespace KissU.Util.Biz.Payments.Wechatpay.Enums {
+namespace KissU.Util.Biz.Payments.Wechatpay.Enums
+{
     /// <summary>
     /// 微信支付签名类型
     /// </summary>
-    public enum WechatpaySignType {
+    public enum WechatpaySignType
+    {
         /// <summary>
         /// Md5
         /// </summary>
-        [Description( "MD5" )]
-        Md5,
+        [Description("MD5")] Md5,
+
         /// <summary>
         /// HMAC-SHA256
         /// </summary>
-        [Description( "HMAC-SHA256" )]
-        HmacSha256
+        [Description("HMAC-SHA256")] HmacSha256
     }
 }

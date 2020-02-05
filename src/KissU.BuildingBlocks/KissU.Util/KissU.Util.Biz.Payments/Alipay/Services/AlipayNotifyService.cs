@@ -3,44 +3,32 @@ using KissU.Util.Biz.Payments.Alipay.Abstractions;
 using KissU.Util.Biz.Payments.Alipay.Configs;
 using KissU.Util.Biz.Payments.Alipay.Enums;
 using KissU.Util.Biz.Payments.Alipay.Services.Base;
-using KissU.Util.Parameters;
 using KissU.Util.Validations;
 
-namespace KissU.Util.Biz.Payments.Alipay.Services {
+namespace KissU.Util.Biz.Payments.Alipay.Services
+{
     /// <summary>
     /// 支付宝回调通知服务
     /// </summary>
-    public class AlipayNotifyService : AlipayNotifyServiceBase, IAlipayNotifyService {
+    public class AlipayNotifyService : AlipayNotifyServiceBase, IAlipayNotifyService
+    {
         /// <summary>
         /// 初始化支付宝通知服务
         /// </summary>
         /// <param name="configProvider">配置提供器</param>
-        public AlipayNotifyService( IAlipayConfigProvider configProvider ) : base( configProvider ) {
-        }
-
-        /// <summary>
-        /// 加载参数
-        /// </summary>
-        /// <param name="builder">参数生成器</param>
-        protected override void Load( UrlParameterBuilder builder ) {
-            builder.LoadForm();
-        }
-
-        /// <summary>
-        /// 验证
-        /// </summary>
-        protected override ValidationResultCollection Validate() {
-            if ( Status != TradeStatus.Success )
-                return new ValidationResultCollection( Status.Description() );
-            return ValidationResultCollection.Success;
+        public AlipayNotifyService(IAlipayConfigProvider configProvider) : base(configProvider)
+        {
         }
 
         /// <summary>
         /// 交易状态
         /// </summary>
-        public TradeStatus? Status {
-            get {
-                switch( GetParam( AlipayConst.TradeStatus ) ) {
+        public TradeStatus? Status
+        {
+            get
+            {
+                switch (GetParam(AlipayConst.TradeStatus))
+                {
                     case "WAIT_BUYER_PAY":
                         return TradeStatus.WaitPay;
                     case "TRADE_CLOSED":
@@ -50,6 +38,7 @@ namespace KissU.Util.Biz.Payments.Alipay.Services {
                     case "TRADE_FINISHED":
                         return TradeStatus.Finished;
                 }
+
                 return null;
             }
         }
@@ -57,21 +46,47 @@ namespace KissU.Util.Biz.Payments.Alipay.Services {
         /// <summary>
         /// 返回成功消息
         /// </summary>
-        public string Success() {
+        /// <returns>System.String.</returns>
+        public string Success()
+        {
             return "success";
         }
 
         /// <summary>
         /// 返回失败消息
         /// </summary>
-        public string Fail() {
+        /// <returns>System.String.</returns>
+        public string Fail()
+        {
             return "fail";
+        }
+
+        /// <summary>
+        /// 加载参数
+        /// </summary>
+        /// <param name="builder">参数生成器</param>
+        protected override void Load(UrlParameterBuilder builder)
+        {
+            builder.LoadForm();
+        }
+
+        /// <summary>
+        /// 验证
+        /// </summary>
+        /// <returns>ValidationResultCollection.</returns>
+        protected override ValidationResultCollection Validate()
+        {
+            if (Status != TradeStatus.Success)
+                return new ValidationResultCollection(Status.Description());
+            return ValidationResultCollection.Success;
         }
 
         /// <summary>
         /// 获取日志标题
         /// </summary>
-        protected override string GetCaption() {
+        /// <returns>System.String.</returns>
+        protected override string GetCaption()
+        {
             return "支付宝回调通知";
         }
     }

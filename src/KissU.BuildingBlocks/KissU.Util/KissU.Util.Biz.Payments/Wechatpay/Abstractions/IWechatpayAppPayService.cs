@@ -2,15 +2,18 @@
 using KissU.Util.Biz.Payments.Core;
 using KissU.Util.Biz.Payments.Wechatpay.Parameters.Requests;
 
-namespace KissU.Util.Biz.Payments.Wechatpay.Abstractions {
+namespace KissU.Util.Biz.Payments.Wechatpay.Abstractions
+{
     /// <summary>
     /// 微信App支付服务
     /// </summary>
-    public interface IWechatpayAppPayService {
+    public interface IWechatpayAppPayService
+    {
         /// <summary>
         /// 支付
         /// </summary>
         /// <param name="request">支付参数</param>
-        Task<PayResult> PayAsync( WechatpayAppPayRequest request );
+        /// <returns>Task&lt;PayResult&gt;.</returns>
+        Task<PayResult> PayAsync(WechatpayAppPayRequest request);
     }
 }

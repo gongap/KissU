@@ -8,37 +8,46 @@ using KissU.Util.Biz.Payments.Core;
 using KissU.Util.Biz.Payments.Properties;
 using KissU.Util.Exceptions;
 
-namespace KissU.Util.Biz.Payments.Alipay.Services {
+namespace KissU.Util.Biz.Payments.Alipay.Services
+{
     /// <summary>
     /// 支付宝条码支付服务
     /// </summary>
-    public class AlipayBarcodePayService : AlipayPayServiceBase, IAlipayBarcodePayService {
+    public class AlipayBarcodePayService : AlipayPayServiceBase, IAlipayBarcodePayService
+    {
         /// <summary>
         /// 初始化支付宝条码支付服务
         /// </summary>
         /// <param name="provider">支付宝配置提供器</param>
-        public AlipayBarcodePayService( IAlipayConfigProvider provider ) : base( provider ) {
+        public AlipayBarcodePayService(IAlipayConfigProvider provider) : base(provider)
+        {
         }
 
         /// <summary>
         /// 支付
         /// </summary>
         /// <param name="request">条码支付参数</param>
-        public async Task<PayResult> PayAsync( AlipayBarcodePayRequest request ) {
-            return await PayAsync( request.ToParam() );
+        /// <returns>Task&lt;PayResult&gt;.</returns>
+        public async Task<PayResult> PayAsync(AlipayBarcodePayRequest request)
+        {
+            return await PayAsync(request.ToParam());
         }
 
         /// <summary>
         /// 获取场景
         /// </summary>
-        protected override string GetScene() {
+        /// <returns>System.String.</returns>
+        protected override string GetScene()
+        {
             return "bar_code";
         }
 
         /// <summary>
         /// 获取请求方法
         /// </summary>
-        protected override string GetMethod() {
+        /// <returns>System.String.</returns>
+        protected override string GetMethod()
+        {
             return "alipay.trade.pay";
         }
 
@@ -46,9 +55,11 @@ namespace KissU.Util.Biz.Payments.Alipay.Services {
         /// 验证参数
         /// </summary>
         /// <param name="param">支付参数</param>
-        protected override void ValidateParam( PayParam param ) {
-            if( param.AuthCode.IsEmpty() )
-                throw new Warning( PayResource.AuthCodeIsEmpty );
+        /// <exception cref="Warning"></exception>
+        protected override void ValidateParam(PayParam param)
+        {
+            if (param.AuthCode.IsEmpty())
+                throw new Warning(PayResource.AuthCodeIsEmpty);
         }
 
         /// <summary>
@@ -56,8 +67,9 @@ namespace KissU.Util.Biz.Payments.Alipay.Services {
         /// </summary>
         /// <param name="builder">内容参数生成器</param>
         /// <param name="param">支付参数</param>
-        protected override void InitContentBuilder( AlipayContentBuilder builder, PayParam param ) {
-            builder.AuthCode( param.AuthCode );
+        protected override void InitContentBuilder(AlipayContentBuilder builder, PayParam param)
+        {
+            builder.AuthCode(param.AuthCode);
         }
     }
 }
