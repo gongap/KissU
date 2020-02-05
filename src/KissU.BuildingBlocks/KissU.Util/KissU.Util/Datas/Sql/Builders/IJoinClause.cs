@@ -15,12 +15,14 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <param name="sqlBuilder">Sql生成器</param>
         /// <param name="register">实体别名注册器</param>
         /// <param name="parameterManager">参数管理器</param>
+        /// <returns>IJoinClause.</returns>
         IJoinClause Clone(ISqlBuilder sqlBuilder, IEntityAliasRegister register, IParameterManager parameterManager);
 
         /// <summary>
         /// 查找连接项
         /// </summary>
         /// <param name="type">表实体类型</param>
+        /// <returns>IJoinOn.</returns>
         IJoinOn Find(Type type);
 
         /// <summary>
@@ -33,6 +35,7 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// 内连接
         /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="alias">别名</param>
         /// <param name="schema">架构名</param>
         void Join<TEntity>(string alias = null, string schema = null) where TEntity : class;
@@ -67,6 +70,7 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// 左外连接
         /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="alias">别名</param>
         /// <param name="schema">架构名</param>
         void LeftJoin<TEntity>(string alias = null, string schema = null) where TEntity : class;
@@ -101,6 +105,7 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// 右外连接
         /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="alias">别名</param>
         /// <param name="schema">架构名</param>
         void RightJoin<TEntity>(string alias = null, string schema = null) where TEntity : class;
@@ -142,6 +147,8 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// 设置连接条件
         /// </summary>
+        /// <typeparam name="TLeft">The type of the t left.</typeparam>
+        /// <typeparam name="TRight">The type of the t right.</typeparam>
         /// <param name="left">左表列名</param>
         /// <param name="right">右表列名</param>
         /// <param name="operator">条件运算符</param>
@@ -150,6 +157,8 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// 设置连接条件
         /// </summary>
+        /// <typeparam name="TLeft">The type of the t left.</typeparam>
+        /// <typeparam name="TRight">The type of the t right.</typeparam>
         /// <param name="expression">条件表达式</param>
         void On<TLeft, TRight>(Expression<Func<TLeft, TRight, bool>> expression) where TLeft : class where TRight : class;
 
@@ -162,6 +171,7 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// 输出Sql
         /// </summary>
+        /// <returns>System.String.</returns>
         string ToSql();
     }
 }

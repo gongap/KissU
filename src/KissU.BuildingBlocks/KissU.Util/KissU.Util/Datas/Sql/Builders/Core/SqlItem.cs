@@ -123,6 +123,7 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// <summary>
         /// 复制副本
         /// </summary>
+        /// <returns>SqlItem.</returns>
         public SqlItem Clone()
         {
             return new SqlItem(Name, Prefix, Alias, Raw, false);
@@ -131,6 +132,9 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// <summary>
         /// 获取Sql
         /// </summary>
+        /// <param name="dialect">The dialect.</param>
+        /// <param name="tableDatabase">The table database.</param>
+        /// <returns>System.String.</returns>
         public virtual string ToSql(IDialect dialect = null, ITableDatabase tableDatabase = null)
         {
             if (string.IsNullOrWhiteSpace(Name))
@@ -145,6 +149,9 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// <summary>
         /// 获取列
         /// </summary>
+        /// <param name="dialect">The dialect.</param>
+        /// <param name="tableDatabase">The table database.</param>
+        /// <returns>System.String.</returns>
         protected string GetColumn(IDialect dialect, ITableDatabase tableDatabase)
         {
             var result = new StringBuilder();
@@ -162,6 +169,7 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// <summary>
         /// 获取名称
         /// </summary>
+        /// <returns>System.String.</returns>
         protected string GetName()
         {
             if (string.IsNullOrWhiteSpace(Prefix))
@@ -172,6 +180,9 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// <summary>
         /// 获取安全名称
         /// </summary>
+        /// <param name="dialect">The dialect.</param>
+        /// <param name="name">The name.</param>
+        /// <returns>System.String.</returns>
         protected string GetSafeName(IDialect dialect, string name)
         {
             return dialect.GetSafeName(name);

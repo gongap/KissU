@@ -43,6 +43,7 @@
         /// <summary>
         /// 获取文件大小，单位：字节
         /// </summary>
+        /// <returns>System.Int32.</returns>
         public int GetSize()
         {
             return (int)Size;
@@ -51,6 +52,7 @@
         /// <summary>
         /// 获取文件大小，单位：K
         /// </summary>
+        /// <returns>System.Double.</returns>
         public double GetSizeByK()
         {
             return Util.Helpers.Convert.ToDouble(_size / 1024.0, 2);
@@ -59,6 +61,7 @@
         /// <summary>
         /// 获取文件大小，单位：M
         /// </summary>
+        /// <returns>System.Double.</returns>
         public double GetSizeByM()
         {
             return Util.Helpers.Convert.ToDouble(_size / 1024.0 / 1024.0, 2);
@@ -67,6 +70,7 @@
         /// <summary>
         /// 获取文件大小，单位：G
         /// </summary>
+        /// <returns>System.Double.</returns>
         public double GetSizeByG()
         {
             return Util.Helpers.Convert.ToDouble(_size / 1024.0 / 1024.0 / 1024.0, 2);
@@ -75,6 +79,7 @@
         /// <summary>
         /// 输出描述
         /// </summary>
+        /// <returns>A <see cref="System.String" /> that represents this instance.</returns>
         public override string ToString()
         {
             if (_size >= 1024 * 1024 * 1024)

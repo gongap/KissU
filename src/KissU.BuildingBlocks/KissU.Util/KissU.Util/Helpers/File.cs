@@ -13,6 +13,7 @@ namespace KissU.Util.Helpers
         /// 流转换为字节流
         /// </summary>
         /// <param name="stream">流</param>
+        /// <returns>Task&lt;System.Byte[]&gt;.</returns>
         public static async Task<byte[]> ToBytesAsync(Stream stream)
         {
             stream.Seek(0, SeekOrigin.Begin);
@@ -25,6 +26,7 @@ namespace KissU.Util.Helpers
         /// 流转换为字节流
         /// </summary>
         /// <param name="stream">流</param>
+        /// <returns>System.Byte[].</returns>
         public static byte[] ToBytes(Stream stream)
         {
             stream.Seek(0, SeekOrigin.Begin);
@@ -36,7 +38,8 @@ namespace KissU.Util.Helpers
         /// <summary>
         /// 字符串转换成字节数组
         /// </summary>
-        /// <param name="data">数据,默认字符编码utf-8</param>        
+        /// <param name="data">数据,默认字符编码utf-8</param>
+        /// <returns>System.Byte[].</returns>
         public static byte[] ToBytes(string data)
         {
             return ToBytes(data, Encoding.UTF8);
@@ -47,6 +50,7 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <param name="data">数据</param>
         /// <param name="encoding">字符编码</param>
+        /// <returns>System.Byte[].</returns>
         public static byte[] ToBytes(string data, Encoding encoding)
         {
             if (string.IsNullOrWhiteSpace(data))
@@ -58,6 +62,7 @@ namespace KissU.Util.Helpers
         /// 将文件读取到字节流中
         /// </summary>
         /// <param name="filePath">文件的绝对路径</param>
+        /// <returns>System.Byte[].</returns>
         public static byte[] Read(string filePath)
         {
             if (!System.IO.File.Exists(filePath))
@@ -76,6 +81,7 @@ namespace KissU.Util.Helpers
         /// <param name="encoding">字符编码</param>
         /// <param name="bufferSize">缓冲区大小</param>
         /// <param name="isCloseStream">读取完成是否释放流，默认为true</param>
+        /// <returns>A <see cref="System.String" /> that represents this instance.</returns>
         public static string ToString(Stream stream, Encoding encoding = null, int bufferSize = 1024 * 2, bool isCloseStream = true)
         {
             if (stream == null)
@@ -102,6 +108,7 @@ namespace KissU.Util.Helpers
         /// <param name="encoding">字符编码</param>
         /// <param name="bufferSize">缓冲区大小</param>
         /// <param name="isCloseStream">读取完成是否释放流，默认为true</param>
+        /// <returns>Task&lt;System.String&gt;.</returns>
         public static async Task<string> ToStringAsync(Stream stream, Encoding encoding = null, int bufferSize = 1024 * 2, bool isCloseStream = true)
         {
             if (stream == null)
@@ -126,6 +133,7 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <param name="stream">流</param>
         /// <param name="encoding">字符编码</param>
+        /// <returns>Task&lt;System.String&gt;.</returns>
         public static async Task<string> CopyToStringAsync(Stream stream, Encoding encoding = null)
         {
             if (stream == null)

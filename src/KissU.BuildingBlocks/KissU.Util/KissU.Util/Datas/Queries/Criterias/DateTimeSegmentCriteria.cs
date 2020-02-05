@@ -25,6 +25,9 @@ namespace KissU.Util.Datas.Queries.Criterias
         /// <summary>
         /// 最小值是否大于最大值
         /// </summary>
+        /// <param name="min">最小值</param>
+        /// <param name="max">最大值</param>
+        /// <returns><c>true</c> if [is minimum greater maximum] [the specified minimum]; otherwise, <c>false</c>.</returns>
         protected override bool IsMinGreaterMax(DateTime? min, DateTime? max)
         {
             return min > max;
@@ -33,6 +36,7 @@ namespace KissU.Util.Datas.Queries.Criterias
         /// <summary>
         /// 获取最小值
         /// </summary>
+        /// <returns>Expression.</returns>
         protected override Expression GetMinValueExpression()
         {
             return ValueExpressionHelper.CreateDateTimeExpression(GetMinValue(), GetPropertyType());
@@ -41,6 +45,7 @@ namespace KissU.Util.Datas.Queries.Criterias
         /// <summary>
         /// 获取最大值
         /// </summary>
+        /// <returns>Expression.</returns>
         protected override Expression GetMaxValueExpression()
         {
             return ValueExpressionHelper.CreateDateTimeExpression(GetMaxValue(), GetPropertyType());

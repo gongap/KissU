@@ -26,6 +26,8 @@ namespace KissU.Util.Datas.Persistence
         /// <summary>
         /// 相等运算
         /// </summary>
+        /// <param name="other">The <see cref="System.Object" /> to compare with this instance.</param>
+        /// <returns><c>true</c> if the specified <see cref="System.Object" /> is equal to this instance; otherwise, <c>false</c>.</returns>
         public override bool Equals(object other)
         {
             return this == (PersistentEntityBase<TKey>)other;
@@ -34,6 +36,7 @@ namespace KissU.Util.Datas.Persistence
         /// <summary>
         /// 获取哈希
         /// </summary>
+        /// <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.</returns>
         public override int GetHashCode()
         {
             return ReferenceEquals(Id, null) ? 0 : Id.GetHashCode();
@@ -42,6 +45,9 @@ namespace KissU.Util.Datas.Persistence
         /// <summary>
         /// 相等比较
         /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The result of the operator.</returns>
         public static bool operator ==(PersistentEntityBase<TKey> left, PersistentEntityBase<TKey> right)
         {
             if ((object)left == null && (object)right == null)
@@ -60,6 +66,9 @@ namespace KissU.Util.Datas.Persistence
         /// <summary>
         /// 不相等比较
         /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The result of the operator.</returns>
         public static bool operator !=(PersistentEntityBase<TKey> left, PersistentEntityBase<TKey> right)
         {
             return !(left == right);

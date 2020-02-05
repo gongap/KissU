@@ -18,6 +18,7 @@ namespace KissU.Util.Datas.Stores.Operations
         /// </summary>
         /// <param name="entity">实体</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>Task.</returns>
         Task AddAsync([Valid] TEntity entity, CancellationToken cancellationToken = default);
 
         /// <summary>
@@ -25,6 +26,7 @@ namespace KissU.Util.Datas.Stores.Operations
         /// </summary>
         /// <param name="entities">实体集合</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>Task.</returns>
         Task AddAsync([Valid] IEnumerable<TEntity> entities, CancellationToken cancellationToken = default);
     }
 }

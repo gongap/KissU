@@ -18,6 +18,7 @@ namespace KissU.Util.Logs.Core
         /// </summary>
         /// <typeparam name="TContent">日志内容类型</typeparam>
         /// <param name="action">设置内容操作</param>
+        /// <returns>ILog.</returns>
         public ILog Set<TContent>(Action<TContent> action) where TContent : ILogContent
         {
             return this;

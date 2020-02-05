@@ -28,6 +28,8 @@ namespace KissU.Util.Files.Paths
         /// 生成完整路径
         /// </summary>
         /// <param name="fileName">文件名，必须包含扩展名，如果仅传入扩展名则生成随机文件名</param>
+        /// <returns>System.String.</returns>
+        /// <exception cref="ArgumentNullException">fileName</exception>
         public string Generate(string fileName)
         {
             if (string.IsNullOrWhiteSpace(fileName))
@@ -39,6 +41,7 @@ namespace KissU.Util.Files.Paths
         /// 创建完整路径
         /// </summary>
         /// <param name="fileName">被处理过的安全有效的文件名</param>
+        /// <returns>System.String.</returns>
         protected abstract string GeneratePath(string fileName);
 
         /// <summary>

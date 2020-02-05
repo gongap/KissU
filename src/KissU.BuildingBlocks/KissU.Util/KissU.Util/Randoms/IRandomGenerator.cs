@@ -8,6 +8,7 @@
         /// <summary>
         /// 生成随机数
         /// </summary>
+        /// <returns>System.String.</returns>
         string Generate();
     }
 }

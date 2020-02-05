@@ -16,6 +16,7 @@ namespace KissU.Util.Datas.UnitOfWorks
         /// <summary>
         /// 提交
         /// </summary>
+        /// <returns>Task.</returns>
         Task CommitAsync();
 
         /// <summary>

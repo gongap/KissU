@@ -16,6 +16,7 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <param name="builder">Sql生成器</param>
         /// <param name="register">实体别名注册器</param>
         /// <param name="parameterManager">参数管理器</param>
+        /// <returns>IWhereClause.</returns>
         IWhereClause Clone(ISqlBuilder builder, IEntityAliasRegister register, IParameterManager parameterManager);
 
         /// <summary>
@@ -33,12 +34,14 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// Or连接条件
         /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="conditions">查询条件</param>
         void Or<TEntity>(params Expression<Func<TEntity, bool>>[] conditions);
 
         /// <summary>
         /// Or连接条件
         /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="conditions">查询条件,如果表达式中的值为空，则忽略该查询条件</param>
         void OrIfNotEmpty<TEntity>(params Expression<Func<TEntity, bool>>[] conditions);
 
@@ -59,6 +62,7 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// 设置查询条件
         /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="expression">列名表达式</param>
         /// <param name="value">值</param>
         /// <param name="operator">运算符</param>
@@ -67,6 +71,7 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// 设置查询条件
         /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="expression">查询条件表达式</param>
         void Where<TEntity>(Expression<Func<TEntity, bool>> expression) where TEntity : class;
 
@@ -81,6 +86,7 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// 设置子查询条件
         /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="expression">列名表达式</param>
         /// <param name="builder">子查询Sql生成器</param>
         /// <param name="operator">运算符</param>
@@ -97,6 +103,7 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// 设置子查询条件
         /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="expression">列名表达式</param>
         /// <param name="action">子查询操作</param>
         /// <param name="operator">运算符</param>
@@ -113,6 +120,7 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// 设置查询条件
         /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="expression">列名表达式</param>
         /// <param name="value">值,如果值为空，则忽略该查询条件</param>
         /// <param name="operator">运算符</param>
@@ -121,12 +129,14 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// 设置查询条件
         /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="expression">查询条件表达式,如果参数值为空，则忽略该查询条件</param>
         void WhereIfNotEmpty<TEntity>(Expression<Func<TEntity, bool>> expression) where TEntity : class;
 
         /// <summary>
         /// 添加范围查询条件
         /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="expression">列名表达式</param>
         /// <param name="min">最小值</param>
         /// <param name="max">最大值</param>
@@ -136,6 +146,7 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// 添加范围查询条件
         /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="expression">列名表达式</param>
         /// <param name="min">最小值</param>
         /// <param name="max">最大值</param>
@@ -145,6 +156,7 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// 添加范围查询条件
         /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="expression">列名表达式</param>
         /// <param name="min">最小值</param>
         /// <param name="max">最大值</param>
@@ -154,6 +166,7 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// 添加范围查询条件
         /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="expression">列名表达式</param>
         /// <param name="min">最小值</param>
         /// <param name="max">最大值</param>
@@ -207,6 +220,7 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// 设置Is Null条件
         /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="expression">列名表达式</param>
         void IsNull<TEntity>(Expression<Func<TEntity, object>> expression) where TEntity : class;
 
@@ -219,6 +233,7 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// 设置Is Not Null条件
         /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="expression">列名表达式</param>
         void IsNotNull<TEntity>(Expression<Func<TEntity, object>> expression) where TEntity : class;
 
@@ -231,6 +246,7 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// 设置空条件
         /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="expression">列名表达式</param>
         void IsEmpty<TEntity>(Expression<Func<TEntity, object>> expression) where TEntity : class;
 
@@ -243,6 +259,7 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// 设置非空条件
         /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="expression">列名表达式</param>
         void IsNotEmpty<TEntity>(Expression<Func<TEntity, object>> expression) where TEntity : class;
 
@@ -256,6 +273,7 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// 设置In条件
         /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="expression">列名表达式</param>
         /// <param name="values">值集合</param>
         void In<TEntity>(Expression<Func<TEntity, object>> expression, IEnumerable<object> values) where TEntity : class;
@@ -270,6 +288,7 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// 设置In条件
         /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="expression">列名表达式</param>
         /// <param name="builder">Sql生成器</param>
         void In<TEntity>(Expression<Func<TEntity, object>> expression, ISqlBuilder builder);
@@ -284,6 +303,7 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// 设置In条件
         /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="expression">列名表达式</param>
         /// <param name="action">子查询操作</param>
         void In<TEntity>(Expression<Func<TEntity, object>> expression, Action<ISqlBuilder> action);
@@ -298,6 +318,7 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// 设置Not In条件
         /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="expression">列名表达式</param>
         /// <param name="values">值集合</param>
         void NotIn<TEntity>(Expression<Func<TEntity, object>> expression, IEnumerable<object> values) where TEntity : class;
@@ -312,6 +333,7 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// 设置Not In条件
         /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="expression">列名表达式</param>
         /// <param name="builder">Sql生成器</param>
         void NotIn<TEntity>(Expression<Func<TEntity, object>> expression, ISqlBuilder builder);
@@ -326,6 +348,7 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// 设置Not In条件
         /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="expression">列名表达式</param>
         /// <param name="action">子查询操作</param>
         void NotIn<TEntity>(Expression<Func<TEntity, object>> expression, Action<ISqlBuilder> action);
@@ -363,6 +386,7 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// 输出Sql
         /// </summary>
+        /// <returns>System.String.</returns>
         string ToSql();
     }
 }

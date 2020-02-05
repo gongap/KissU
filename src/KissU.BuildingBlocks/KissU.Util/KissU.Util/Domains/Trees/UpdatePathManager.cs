@@ -9,6 +9,9 @@ namespace KissU.Util.Domains.Trees
     /// <summary>
     /// 树型路径更新服务
     /// </summary>
+    /// <typeparam name="TEntity">The type of the t entity.</typeparam>
+    /// <typeparam name="TKey">The type of the t key.</typeparam>
+    /// <typeparam name="TParentId">The type of the t parent identifier.</typeparam>
     public class UpdatePathManager<TEntity, TKey, TParentId>
         where TEntity : class, ITreeEntity<TEntity, TKey, TParentId>
     {
@@ -30,6 +33,9 @@ namespace KissU.Util.Domains.Trees
         /// 更新实体及所有下级节点路径
         /// </summary>
         /// <param name="entity">实体</param>
+        /// <exception cref="Warning"></exception>
+        /// <exception cref="Warning"></exception>
+        /// <exception cref="Warning"></exception>
         public async Task UpdatePathAsync(TEntity entity)
         {
             entity.CheckNull(nameof(entity));

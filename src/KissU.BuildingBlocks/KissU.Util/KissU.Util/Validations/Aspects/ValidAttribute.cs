@@ -14,6 +14,8 @@ namespace KissU.Util.Validations.Aspects
         /// <summary>
         /// 执行
         /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="next">The next.</param>
         public override async Task Invoke(ParameterAspectContext context, ParameterAspectDelegate next)
         {
             Validate(context.Parameter);

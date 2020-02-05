@@ -11,6 +11,7 @@ namespace KissU.Util.Caches
         /// 是否存在指定键的缓存
         /// </summary>
         /// <param name="key">缓存键</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         bool Exists(string key);
 
         /// <summary>
@@ -20,6 +21,7 @@ namespace KissU.Util.Caches
         /// <param name="key">缓存键</param>
         /// <param name="func">获取数据操作</param>
         /// <param name="expiration">过期时间间隔</param>
+        /// <returns>T.</returns>
         T Get<T>(string key, Func<T> func, TimeSpan? expiration = null);
 
         /// <summary>
@@ -29,6 +31,7 @@ namespace KissU.Util.Caches
         /// <param name="key">缓存键</param>
         /// <param name="value">值</param>
         /// <param name="expiration">过期时间间隔</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         bool TryAdd<T>(string key, T value, TimeSpan? expiration = null);
 
         /// <summary>

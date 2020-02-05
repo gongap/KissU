@@ -9,6 +9,7 @@
         /// 格式化
         /// </summary>
         /// <param name="content">日志内容</param>
+        /// <returns>System.String.</returns>
         string Format(ILogContent content);
     }
 }

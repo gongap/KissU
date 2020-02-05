@@ -13,6 +13,7 @@ namespace KissU.Util.Datas.Stores.Operations
         /// 判断是否存在
         /// </summary>
         /// <param name="ids">标识列表</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         bool Exists(params TKey[] ids);
     }
 }

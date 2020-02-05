@@ -13,6 +13,7 @@ namespace KissU.Util.Datas.Stores.Operations
         /// 查找实体
         /// </summary>
         /// <param name="id">标识</param>
+        /// <returns>TEntity.</returns>
         TEntity Find(object id);
     }
 }

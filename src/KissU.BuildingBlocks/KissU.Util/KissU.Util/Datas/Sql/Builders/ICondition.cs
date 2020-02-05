@@ -8,6 +8,7 @@
         /// <summary>
         /// 获取查询条件
         /// </summary>
+        /// <returns>System.String.</returns>
         string GetCondition();
     }
 }

@@ -17,6 +17,7 @@ namespace KissU.Util.Logs.Formats
         /// 格式化
         /// </summary>
         /// <param name="logContent">日志内容</param>
+        /// <returns>System.String.</returns>
         public string Format( ILogContent logContent )
         {
             if( !( logContent is LogContent content ) )
@@ -32,6 +33,8 @@ namespace KissU.Util.Logs.Formats
         /// <summary>
         /// 格式化
         /// </summary>
+        /// <param name="content">The content.</param>
+        /// <returns>System.String.</returns>
         protected virtual string Format( LogContent content )
         {
             int line = 1;
@@ -57,6 +60,10 @@ namespace KissU.Util.Logs.Formats
         /// <summary>
         /// 添加行
         /// </summary>
+        /// <param name="result">The result.</param>
+        /// <param name="content">The content.</param>
+        /// <param name="action">The action.</param>
+        /// <param name="line">The line.</param>
         protected void AppendLine( StringBuilder result, LogContent content, Action<StringBuilder, LogContent> action, ref int line )
         {
             Append( result, content, action, ref line );
@@ -66,6 +73,10 @@ namespace KissU.Util.Logs.Formats
         /// <summary>
         /// 添加行
         /// </summary>
+        /// <param name="result">The result.</param>
+        /// <param name="content">The content.</param>
+        /// <param name="action">The action.</param>
+        /// <param name="line">The line.</param>
         protected void Append( StringBuilder result, LogContent content, Action<StringBuilder, LogContent> action, ref int line )
         {
             result.AppendFormat( "{0}. ", line++ );
@@ -75,6 +86,9 @@ namespace KissU.Util.Logs.Formats
         /// <summary>
         /// 添加日志内容
         /// </summary>
+        /// <param name="result">The result.</param>
+        /// <param name="caption">The caption.</param>
+        /// <param name="value">The value.</param>
         protected void Append( StringBuilder result, string caption, string value )
         {
             if( string.IsNullOrWhiteSpace( value ) )
@@ -85,6 +99,9 @@ namespace KissU.Util.Logs.Formats
         /// <summary>
         /// 第1行
         /// </summary>
+        /// <param name="result">The result.</param>
+        /// <param name="content">The content.</param>
+        /// <param name="line">The line.</param>
         protected void Line1( StringBuilder result, LogContent content, ref int line )
         {
             AppendLine( result, content, ( r, c ) =>
@@ -101,6 +118,9 @@ namespace KissU.Util.Logs.Formats
         /// <summary>
         /// 第2行
         /// </summary>
+        /// <param name="result">The result.</param>
+        /// <param name="content">The content.</param>
+        /// <param name="line">The line.</param>
         protected void Line2( StringBuilder result, LogContent content, ref int line )
         {
             AppendLine( result, content, ( r, c ) =>
@@ -114,6 +134,9 @@ namespace KissU.Util.Logs.Formats
         /// <summary>
         /// 第3行
         /// </summary>
+        /// <param name="result">The result.</param>
+        /// <param name="content">The content.</param>
+        /// <param name="line">The line.</param>
         protected void Line3( StringBuilder result, LogContent content, ref int line )
         {
             if( string.IsNullOrWhiteSpace( content.Browser ) )
@@ -124,6 +147,9 @@ namespace KissU.Util.Logs.Formats
         /// <summary>
         /// 第4行
         /// </summary>
+        /// <param name="result">The result.</param>
+        /// <param name="content">The content.</param>
+        /// <param name="line">The line.</param>
         protected void Line4( StringBuilder result, LogContent content, ref int line )
         {
             if( string.IsNullOrWhiteSpace( content.Url ) )
@@ -134,6 +160,9 @@ namespace KissU.Util.Logs.Formats
         /// <summary>
         /// 第5行
         /// </summary>
+        /// <param name="result">The result.</param>
+        /// <param name="content">The content.</param>
+        /// <param name="line">The line.</param>
         protected void Line5( StringBuilder result, LogContent content, ref int line )
         {
             if( string.IsNullOrWhiteSpace( content.UserId ) && string.IsNullOrWhiteSpace( content.Operator )
@@ -150,6 +179,9 @@ namespace KissU.Util.Logs.Formats
         /// <summary>
         /// 第6行
         /// </summary>
+        /// <param name="result">The result.</param>
+        /// <param name="content">The content.</param>
+        /// <param name="line">The line.</param>
         protected void Line6( StringBuilder result, LogContent content, ref int line )
         {
             if( string.IsNullOrWhiteSpace( content.BusinessId ) && string.IsNullOrWhiteSpace( content.Tenant )
@@ -167,6 +199,9 @@ namespace KissU.Util.Logs.Formats
         /// <summary>
         /// 第7行
         /// </summary>
+        /// <param name="result">The result.</param>
+        /// <param name="content">The content.</param>
+        /// <param name="line">The line.</param>
         protected void Line7( StringBuilder result, LogContent content, ref int line )
         {
             if( string.IsNullOrWhiteSpace( content.Class ) && string.IsNullOrWhiteSpace( content.Method ) )
@@ -181,6 +216,9 @@ namespace KissU.Util.Logs.Formats
         /// <summary>
         /// 第8行
         /// </summary>
+        /// <param name="result">The result.</param>
+        /// <param name="content">The content.</param>
+        /// <param name="line">The line.</param>
         protected void Line8( StringBuilder result, LogContent content, ref int line )
         {
             if( content.Params.Length == 0 )
@@ -195,6 +233,9 @@ namespace KissU.Util.Logs.Formats
         /// <summary>
         /// 第9行
         /// </summary>
+        /// <param name="result">The result.</param>
+        /// <param name="content">The content.</param>
+        /// <param name="line">The line.</param>
         protected void Line9( StringBuilder result, LogContent content, ref int line )
         {
             if( string.IsNullOrWhiteSpace( content.Caption ) )
@@ -208,6 +249,9 @@ namespace KissU.Util.Logs.Formats
         /// <summary>
         /// 第10行
         /// </summary>
+        /// <param name="result">The result.</param>
+        /// <param name="content">The content.</param>
+        /// <param name="line">The line.</param>
         protected void Line10( StringBuilder result, LogContent content, ref int line )
         {
             if( content.Content.Length == 0 )
@@ -222,6 +266,9 @@ namespace KissU.Util.Logs.Formats
         /// <summary>
         /// 第11行
         /// </summary>
+        /// <param name="result">The result.</param>
+        /// <param name="content">The content.</param>
+        /// <param name="line">The line.</param>
         protected void Line11( StringBuilder result, LogContent content, ref int line )
         {
             if( content.Sql.Length == 0 )
@@ -236,6 +283,9 @@ namespace KissU.Util.Logs.Formats
         /// <summary>
         /// 第12行
         /// </summary>
+        /// <param name="result">The result.</param>
+        /// <param name="content">The content.</param>
+        /// <param name="line">The line.</param>
         protected void Line12( StringBuilder result, LogContent content, ref int line )
         {
             if( content.SqlParams.Length == 0 )
@@ -250,6 +300,9 @@ namespace KissU.Util.Logs.Formats
         /// <summary>
         /// 第13行
         /// </summary>
+        /// <param name="result">The result.</param>
+        /// <param name="content">The content.</param>
+        /// <param name="line">The line.</param>
         protected void Line13( StringBuilder result, LogContent content, ref int line )
         {
             if( content.Exception == null )
@@ -282,6 +335,9 @@ namespace KissU.Util.Logs.Formats
         /// <summary>
         /// 第14行
         /// </summary>
+        /// <param name="result">The result.</param>
+        /// <param name="content">The content.</param>
+        /// <param name="line">The line.</param>
         protected void Line14( StringBuilder result, LogContent content, ref int line )
         {
             if( content.Exception == null )
@@ -296,6 +352,7 @@ namespace KissU.Util.Logs.Formats
         /// <summary>
         /// 结束
         /// </summary>
+        /// <param name="result">The result.</param>
         protected void Finish( StringBuilder result )
         {
             for( int i = 0; i < 125; i++ )

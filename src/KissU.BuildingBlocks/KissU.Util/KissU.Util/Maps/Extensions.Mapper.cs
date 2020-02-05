@@ -30,6 +30,7 @@ namespace KissU.Util.Maps
         /// <typeparam name="TDestination">目标类型</typeparam>
         /// <param name="source">源对象</param>
         /// <param name="destination">目标对象</param>
+        /// <returns>TDestination.</returns>
         public static TDestination MapTo<TSource, TDestination>(this TSource source, TDestination destination)
         {
             return MapTo<TDestination>(source, destination);
@@ -40,6 +41,7 @@ namespace KissU.Util.Maps
         /// </summary>
         /// <typeparam name="TDestination">目标类型</typeparam>
         /// <param name="source">源对象</param>
+        /// <returns>TDestination.</returns>
         public static TDestination MapTo<TDestination>(this object source) where TDestination : new()
         {
             return MapTo(source, new TDestination());
@@ -136,6 +138,7 @@ namespace KissU.Util.Maps
         /// </summary>
         /// <typeparam name="TDestination">目标元素类型,范例：Sample,不要加List</typeparam>
         /// <param name="source">源集合</param>
+        /// <returns>List&lt;TDestination&gt;.</returns>
         public static List<TDestination> MapToList<TDestination>(this System.Collections.IEnumerable source)
         {
             return MapTo<List<TDestination>>(source);

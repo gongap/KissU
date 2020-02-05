@@ -13,6 +13,7 @@ namespace KissU.Util
         /// 安全转换为字符串，去除两端空格，当值为null时返回""
         /// </summary>
         /// <param name="input">输入值</param>
+        /// <returns>System.String.</returns>
         public static string SafeString(this object input)
         {
             return input?.ToString().Trim() ?? string.Empty;
@@ -22,6 +23,7 @@ namespace KissU.Util
         /// 转换为bool
         /// </summary>
         /// <param name="obj">数据</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public static bool ToBool(this string obj)
         {
             return Util.Helpers.Convert.ToBool(obj);
@@ -31,6 +33,7 @@ namespace KissU.Util
         /// 转换为可空bool
         /// </summary>
         /// <param name="obj">数据</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public static bool? ToBoolOrNull(this string obj)
         {
             return Util.Helpers.Convert.ToBoolOrNull(obj);
@@ -40,6 +43,7 @@ namespace KissU.Util
         /// 转换为int
         /// </summary>
         /// <param name="obj">数据</param>
+        /// <returns>System.Int32.</returns>
         public static int ToInt(this string obj)
         {
             return Util.Helpers.Convert.ToInt(obj);
@@ -49,6 +53,7 @@ namespace KissU.Util
         /// 转换为可空int
         /// </summary>
         /// <param name="obj">数据</param>
+        /// <returns>System.Nullable&lt;System.Int32&gt;.</returns>
         public static int? ToIntOrNull(this string obj)
         {
             return Util.Helpers.Convert.ToIntOrNull(obj);
@@ -58,6 +63,7 @@ namespace KissU.Util
         /// 转换为long
         /// </summary>
         /// <param name="obj">数据</param>
+        /// <returns>System.Int64.</returns>
         public static long ToLong(this string obj)
         {
             return Util.Helpers.Convert.ToLong(obj);
@@ -67,6 +73,7 @@ namespace KissU.Util
         /// 转换为可空long
         /// </summary>
         /// <param name="obj">数据</param>
+        /// <returns>System.Nullable&lt;System.Int64&gt;.</returns>
         public static long? ToLongOrNull(this string obj)
         {
             return Util.Helpers.Convert.ToLongOrNull(obj);
@@ -76,6 +83,7 @@ namespace KissU.Util
         /// 转换为double
         /// </summary>
         /// <param name="obj">数据</param>
+        /// <returns>System.Double.</returns>
         public static double ToDouble(this string obj)
         {
             return Util.Helpers.Convert.ToDouble(obj);
@@ -85,6 +93,7 @@ namespace KissU.Util
         /// 转换为可空double
         /// </summary>
         /// <param name="obj">数据</param>
+        /// <returns>System.Nullable&lt;System.Double&gt;.</returns>
         public static double? ToDoubleOrNull(this string obj)
         {
             return Util.Helpers.Convert.ToDoubleOrNull(obj);
@@ -94,6 +103,7 @@ namespace KissU.Util
         /// 转换为decimal
         /// </summary>
         /// <param name="obj">数据</param>
+        /// <returns>System.Decimal.</returns>
         public static decimal ToDecimal(this string obj)
         {
             return Util.Helpers.Convert.ToDecimal(obj);
@@ -103,6 +113,7 @@ namespace KissU.Util
         /// 转换为可空decimal
         /// </summary>
         /// <param name="obj">数据</param>
+        /// <returns>System.Nullable&lt;System.Decimal&gt;.</returns>
         public static decimal? ToDecimalOrNull(this string obj)
         {
             return Util.Helpers.Convert.ToDecimalOrNull(obj);
@@ -112,6 +123,7 @@ namespace KissU.Util
         /// 转换为日期
         /// </summary>
         /// <param name="obj">数据</param>
+        /// <returns>DateTime.</returns>
         public static DateTime ToDate(this string obj)
         {
             return Util.Helpers.Convert.ToDate(obj);
@@ -121,6 +133,7 @@ namespace KissU.Util
         /// 转换为可空日期
         /// </summary>
         /// <param name="obj">数据</param>
+        /// <returns>System.Nullable&lt;DateTime&gt;.</returns>
         public static DateTime? ToDateOrNull(this string obj)
         {
             return Util.Helpers.Convert.ToDateOrNull(obj);
@@ -130,6 +143,7 @@ namespace KissU.Util
         /// 转换为Guid
         /// </summary>
         /// <param name="obj">数据</param>
+        /// <returns>Guid.</returns>
         public static Guid ToGuid(this string obj)
         {
             return Util.Helpers.Convert.ToGuid(obj);
@@ -139,6 +153,7 @@ namespace KissU.Util
         /// 转换为可空Guid
         /// </summary>
         /// <param name="obj">数据</param>
+        /// <returns>System.Nullable&lt;Guid&gt;.</returns>
         public static Guid? ToGuidOrNull(this string obj)
         {
             return Util.Helpers.Convert.ToGuidOrNull(obj);
@@ -148,6 +163,7 @@ namespace KissU.Util
         /// 转换为Guid集合
         /// </summary>
         /// <param name="obj">数据,范例: "83B0233C-A24F-49FD-8083-1337209EBC9A,EAB523C6-2FE7-47BE-89D5-C6D440C3033A"</param>
+        /// <returns>List&lt;Guid&gt;.</returns>
         public static List<Guid> ToGuidList(this string obj)
         {
             return Util.Helpers.Convert.ToGuidList(obj);
@@ -157,6 +173,7 @@ namespace KissU.Util
         /// 转换为Guid集合
         /// </summary>
         /// <param name="obj">字符串集合</param>
+        /// <returns>List&lt;Guid&gt;.</returns>
         public static List<Guid> ToGuidList(this IList<string> obj)
         {
             if (obj == null)

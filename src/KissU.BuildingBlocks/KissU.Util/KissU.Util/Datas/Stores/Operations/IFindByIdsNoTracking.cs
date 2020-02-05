@@ -14,18 +14,21 @@ namespace KissU.Util.Datas.Stores.Operations
         /// 查找实体列表,不跟踪
         /// </summary>
         /// <param name="ids">标识列表</param>
+        /// <returns>List&lt;TEntity&gt;.</returns>
         List<TEntity> FindByIdsNoTracking(params TKey[] ids);
 
         /// <summary>
         /// 查找实体列表,不跟踪
         /// </summary>
         /// <param name="ids">标识列表</param>
+        /// <returns>List&lt;TEntity&gt;.</returns>
         List<TEntity> FindByIdsNoTracking(IEnumerable<TKey> ids);
 
         /// <summary>
         /// 查找实体列表,不跟踪
         /// </summary>
         /// <param name="ids">逗号分隔的标识列表，范例："1,2"</param>
+        /// <returns>List&lt;TEntity&gt;.</returns>
         List<TEntity> FindByIdsNoTracking(string ids);
     }
 }

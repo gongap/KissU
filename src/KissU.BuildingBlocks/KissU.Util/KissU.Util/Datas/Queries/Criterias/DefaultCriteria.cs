@@ -27,6 +27,7 @@ namespace KissU.Util.Datas.Queries.Criterias
         /// <summary>
         /// 获取查询条件
         /// </summary>
+        /// <returns>Expression&lt;Func&lt;TEntity, System.Boolean&gt;&gt;.</returns>
         public virtual Expression<Func<TEntity, bool>> GetPredicate()
         {
             return Predicate;

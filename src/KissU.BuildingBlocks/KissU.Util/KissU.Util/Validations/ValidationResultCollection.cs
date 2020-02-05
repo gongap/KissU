@@ -91,6 +91,7 @@ namespace KissU.Util.Validations
         /// <summary>
         /// 输出验证消息
         /// </summary>
+        /// <returns>A <see cref="System.String" /> that represents this instance.</returns>
         public override string ToString()
         {
             if (IsValid)

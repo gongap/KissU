@@ -25,6 +25,7 @@ namespace KissU.Util.Exceptions.Prompts
         /// 添加异常提示
         /// </summary>
         /// <param name="prompt">异常提示</param>
+        /// <exception cref="ArgumentNullException">prompt</exception>
         public static void AddPrompt(IExceptionPrompt prompt)
         {
             if (prompt == null)
@@ -38,6 +39,7 @@ namespace KissU.Util.Exceptions.Prompts
         /// 获取异常提示
         /// </summary>
         /// <param name="exception">异常</param>
+        /// <returns>System.String.</returns>
         public static string GetPrompt(Exception exception)
         {
             if (exception == null)

@@ -12,6 +12,7 @@ namespace KissU.Util.Helpers
         /// 初始化Xml操作
         /// </summary>
         /// <param name="xml">Xml字符串</param>
+        /// <exception cref="ArgumentException">xml</exception>
         public Xml(string xml = null)
         {
             Document = new XmlDocument();
@@ -45,6 +46,7 @@ namespace KissU.Util.Helpers
         /// <param name="name">节点名称</param>
         /// <param name="value">值</param>
         /// <param name="parent">父节点</param>
+        /// <returns>XmlNode.</returns>
         public XmlNode AddNode(string name, object value = null, XmlNode parent = null)
         {
             var node = CreateNode(name, value, XmlNodeType.Element);
@@ -78,6 +80,7 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <param name="value">值</param>
         /// <param name="parent">父节点</param>
+        /// <returns>XmlNode.</returns>
         public XmlNode AddCDataNode(object value, XmlNode parent = null)
         {
             var node = CreateNode(Id.Guid(), value, XmlNodeType.CDATA);
@@ -90,6 +93,7 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <param name="value">值</param>
         /// <param name="parentName">父节点名称</param>
+        /// <returns>XmlNode.</returns>
         public XmlNode AddCDataNode(object value, string parentName)
         {
             var parent = CreateNode(parentName, null, XmlNodeType.Element);
@@ -100,6 +104,7 @@ namespace KissU.Util.Helpers
         /// <summary>
         /// 输出Xml
         /// </summary>
+        /// <returns>A <see cref="System.String" /> that represents this instance.</returns>
         public override string ToString()
         {
             return Document.OuterXml;

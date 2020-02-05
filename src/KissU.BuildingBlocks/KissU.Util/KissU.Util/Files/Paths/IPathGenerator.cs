@@ -9,6 +9,7 @@
         /// 生成路径
         /// </summary>
         /// <param name="fileName">文件名，必须包含扩展名，如果仅传入扩展名则生成随机文件名</param>
+        /// <returns>System.String.</returns>
         string Generate(string fileName);
     }
 }

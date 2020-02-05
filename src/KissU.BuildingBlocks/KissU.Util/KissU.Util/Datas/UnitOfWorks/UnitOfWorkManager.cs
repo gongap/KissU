@@ -34,6 +34,7 @@ namespace KissU.Util.Datas.UnitOfWorks
         /// <summary>
         /// 提交
         /// </summary>
+        /// <returns>Task.</returns>
         public async Task CommitAsync()
         {
             foreach (var unitOfWork in _unitOfWorks)
@@ -44,6 +45,7 @@ namespace KissU.Util.Datas.UnitOfWorks
         /// 注册工作单元
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
+        /// <exception cref="ArgumentNullException">unitOfWork</exception>
         public void Register(IUnitOfWork unitOfWork)
         {
             if (unitOfWork == null)

@@ -16,6 +16,7 @@ namespace KissU.Util.Logs.Core
         /// 格式化
         /// </summary>
         /// <param name="content">日志内容</param>
+        /// <returns>System.String.</returns>
         public string Format(ILogContent content)
         {
             return "";

@@ -47,6 +47,7 @@ namespace KissU.Util.Logs
         /// <summary>
         /// 获取日志内容
         /// </summary>
+        /// <returns>TContent.</returns>
         protected override LogContent GetContent()
         {
             return new LogContent { Class = _class };
@@ -55,6 +56,7 @@ namespace KissU.Util.Logs
         /// <summary>
         /// 获取日志操作实例
         /// </summary>
+        /// <returns>ILog.</returns>
         public static ILog GetLog()
         {
             return GetLog( string.Empty );
@@ -64,6 +66,7 @@ namespace KissU.Util.Logs
         /// 获取日志操作实例
         /// </summary>
         /// <param name="instance">实例</param>
+        /// <returns>ILog.</returns>
         public static ILog GetLog( object instance )
         {
             if( instance == null )
@@ -76,6 +79,7 @@ namespace KissU.Util.Logs
         /// 获取日志操作实例
         /// </summary>
         /// <param name="logName">日志名称</param>
+        /// <returns>ILog.</returns>
         public static ILog GetLog( string logName )
         {
             return GetLog( logName, string.Empty );

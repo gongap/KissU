@@ -13,6 +13,7 @@ namespace KissU.Util.Helpers
         /// 将Xml字符串转换为XDocument
         /// </summary>
         /// <param name="xml">Xml字符串</param>
+        /// <returns>XDocument.</returns>
         public static XDocument ToDocument(string xml)
         {
             return XDocument.Parse(xml);
@@ -22,6 +23,7 @@ namespace KissU.Util.Helpers
         /// 将Xml字符串转换为XElement列表
         /// </summary>
         /// <param name="xml">Xml字符串</param>
+        /// <returns>List&lt;XElement&gt;.</returns>
         public static List<XElement> ToElements(string xml)
         {
             var document = ToDocument(xml);

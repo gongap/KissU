@@ -23,6 +23,7 @@ namespace KissU.Util.Reflections
         /// <summary>
         /// 获取程序集列表
         /// </summary>
+        /// <returns>List&lt;Assembly&gt;.</returns>
         public virtual List<Assembly> GetAssemblies()
         {
             LoadAssemblies(PlatformServices.Default.Application.ApplicationBasePath);
@@ -46,6 +47,8 @@ namespace KissU.Util.Reflections
         /// <summary>
         /// 程序集是否匹配
         /// </summary>
+        /// <param name="assemblyName">Name of the assembly.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         protected virtual bool Match(string assemblyName)
         {
             if (assemblyName.StartsWith($"{PlatformServices.Default.Application.ApplicationName}.Views"))
@@ -97,6 +100,7 @@ namespace KissU.Util.Reflections
         /// </summary>
         /// <typeparam name="T">查找类型</typeparam>
         /// <param name="assemblies">在指定的程序集列表中查找</param>
+        /// <returns>List&lt;Type&gt;.</returns>
         public List<Type> Find<T>(List<Assembly> assemblies = null)
         {
             return Find(typeof(T), assemblies);
@@ -107,6 +111,7 @@ namespace KissU.Util.Reflections
         /// </summary>
         /// <param name="findType">查找类型</param>
         /// <param name="assemblies">在指定的程序集列表中查找</param>
+        /// <returns>List&lt;Type&gt;.</returns>
         public List<Type> Find(Type findType, List<Assembly> assemblies = null)
         {
             assemblies = assemblies ?? GetAssemblies();

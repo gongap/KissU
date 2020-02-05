@@ -29,6 +29,7 @@
         /// <summary>
         /// 获取私钥
         /// </summary>
+        /// <returns>System.String.</returns>
         public string GetKey()
         {
             return _key;
@@ -37,6 +38,7 @@
         /// <summary>
         /// 获取公钥
         /// </summary>
+        /// <returns>System.String.</returns>
         public string GetPublicKey()
         {
             return _publicKey;

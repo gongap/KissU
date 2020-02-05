@@ -63,6 +63,7 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <param name="url">url</param>
         /// <param name="isUpper">编码字符是否转成大写,范例,"http://"转成"http%3A%2F%2F"</param>
+        /// <returns>System.String.</returns>
         public static string UrlEncode(string url, bool isUpper = false)
         {
             return UrlEncode(url, Encoding.UTF8, isUpper);
@@ -74,6 +75,7 @@ namespace KissU.Util.Helpers
         /// <param name="url">url</param>
         /// <param name="encoding">字符编码</param>
         /// <param name="isUpper">编码字符是否转成大写,范例,"http://"转成"http%3A%2F%2F"</param>
+        /// <returns>System.String.</returns>
         public static string UrlEncode(string url, string encoding, bool isUpper = false)
         {
             encoding = string.IsNullOrWhiteSpace(encoding) ? "UTF-8" : encoding;
@@ -86,6 +88,7 @@ namespace KissU.Util.Helpers
         /// <param name="url">url</param>
         /// <param name="encoding">字符编码</param>
         /// <param name="isUpper">编码字符是否转成大写,范例,"http://"转成"http%3A%2F%2F"</param>
+        /// <returns>System.String.</returns>
         public static string UrlEncode(string url, Encoding encoding, bool isUpper = false)
         {
             var result = HttpUtility.UrlEncode(url, encoding);
@@ -121,6 +124,7 @@ namespace KissU.Util.Helpers
         /// Url解码
         /// </summary>
         /// <param name="url">url</param>
+        /// <returns>System.String.</returns>
         public static string UrlDecode(string url)
         {
             return HttpUtility.UrlDecode(url);
@@ -131,6 +135,7 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <param name="url">url</param>
         /// <param name="encoding">字符编码</param>
+        /// <returns>System.String.</returns>
         public static string UrlDecode(string url, Encoding encoding)
         {
             return HttpUtility.UrlDecode(url, encoding);

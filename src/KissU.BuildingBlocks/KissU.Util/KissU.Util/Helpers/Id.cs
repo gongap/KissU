@@ -32,6 +32,7 @@ namespace KissU.Util.Helpers
         /// <summary>
         /// 创建标识
         /// </summary>
+        /// <returns>System.String.</returns>
         public static string ObjectId()
         {
             return string.IsNullOrWhiteSpace(_id) ? Util.Helpers.Internal.ObjectId.GenerateNewStringId() : _id;
@@ -40,6 +41,7 @@ namespace KissU.Util.Helpers
         /// <summary>
         /// 用Guid创建标识,去掉分隔符
         /// </summary>
+        /// <returns>System.String.</returns>
         public static string Guid()
         {
             return string.IsNullOrWhiteSpace(_id) ? System.Guid.NewGuid().ToString("N") : _id;
@@ -48,6 +50,7 @@ namespace KissU.Util.Helpers
         /// <summary>
         /// 获取Guid
         /// </summary>
+        /// <returns>Guid.</returns>
         public static Guid GetGuid()
         {
             return string.IsNullOrWhiteSpace(_id) ? System.Guid.NewGuid() : _id.ToGuid();

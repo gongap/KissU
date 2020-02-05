@@ -15,6 +15,7 @@ namespace KissU.Util
         /// <typeparam name="TEntity">实体类型</typeparam>
         /// <param name="newList">新实体集合</param>
         /// <param name="oldList">旧实体集合</param>
+        /// <returns>ListCompareResult&lt;TEntity, Guid&gt;.</returns>
         public static ListCompareResult<TEntity, Guid> Compare<TEntity>(this IEnumerable<TEntity> newList, IEnumerable<TEntity> oldList)
             where TEntity : IKey<Guid>
         {
@@ -28,6 +29,7 @@ namespace KissU.Util
         /// <typeparam name="TKey">标识类型</typeparam>
         /// <param name="newList">新实体集合</param>
         /// <param name="oldList">旧实体集合</param>
+        /// <returns>ListCompareResult&lt;TEntity, TKey&gt;.</returns>
         public static ListCompareResult<TEntity, TKey> Compare<TEntity, TKey>(this IEnumerable<TEntity> newList, IEnumerable<TEntity> oldList)
             where TEntity : IKey<TKey>
         {
@@ -40,6 +42,7 @@ namespace KissU.Util
         /// </summary>
         /// <param name="newList">新实体标识集合</param>
         /// <param name="oldList">旧实体标识集合</param>
+        /// <returns>KeyListCompareResult&lt;Guid&gt;.</returns>
         public static KeyListCompareResult<Guid> Compare(this IEnumerable<Guid> newList, IEnumerable<Guid> oldList)
         {
             var comparator = new KeyListComparator<Guid>();
@@ -51,6 +54,7 @@ namespace KissU.Util
         /// </summary>
         /// <param name="newList">新实体标识集合</param>
         /// <param name="oldList">旧实体标识集合</param>
+        /// <returns>KeyListCompareResult&lt;System.String&gt;.</returns>
         public static KeyListCompareResult<string> Compare(this IEnumerable<string> newList, IEnumerable<string> oldList)
         {
             var comparator = new KeyListComparator<string>();
@@ -62,6 +66,7 @@ namespace KissU.Util
         /// </summary>
         /// <param name="newList">新实体标识集合</param>
         /// <param name="oldList">旧实体标识集合</param>
+        /// <returns>KeyListCompareResult&lt;System.Int32&gt;.</returns>
         public static KeyListCompareResult<int> Compare(this IEnumerable<int> newList, IEnumerable<int> oldList)
         {
             var comparator = new KeyListComparator<int>();
@@ -73,6 +78,7 @@ namespace KissU.Util
         /// </summary>
         /// <param name="newList">新实体标识集合</param>
         /// <param name="oldList">旧实体标识集合</param>
+        /// <returns>KeyListCompareResult&lt;System.Int64&gt;.</returns>
         public static KeyListCompareResult<long> Compare(this IEnumerable<long> newList, IEnumerable<long> oldList)
         {
             var comparator = new KeyListComparator<long>();

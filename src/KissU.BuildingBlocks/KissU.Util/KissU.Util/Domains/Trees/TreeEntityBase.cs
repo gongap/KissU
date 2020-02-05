@@ -98,6 +98,7 @@ namespace KissU.Util.Domains.Trees
         /// 从路径中获取所有上级节点编号
         /// </summary>
         /// <param name="excludeSelf">是否排除当前节点,默认排除自身</param>
+        /// <returns>List&lt;TKey&gt;.</returns>
         public List<TKey> GetParentIdsFromPath(bool excludeSelf = true)
         {
             if (string.IsNullOrWhiteSpace(Path))

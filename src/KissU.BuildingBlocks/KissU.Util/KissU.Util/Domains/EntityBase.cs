@@ -47,6 +47,8 @@ namespace KissU.Util.Domains
         /// <summary>
         /// 相等运算
         /// </summary>
+        /// <param name="other">The <see cref="System.Object" /> to compare with this instance.</param>
+        /// <returns><c>true</c> if the specified <see cref="System.Object" /> is equal to this instance; otherwise, <c>false</c>.</returns>
         public override bool Equals(object other)
         {
             return this == (other as EntityBase<TEntity, TKey>);
@@ -55,6 +57,7 @@ namespace KissU.Util.Domains
         /// <summary>
         /// 获取哈希
         /// </summary>
+        /// <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.</returns>
         public override int GetHashCode()
         {
             return ReferenceEquals(Id, null) ? 0 : Id.GetHashCode();
@@ -63,6 +66,9 @@ namespace KissU.Util.Domains
         /// <summary>
         /// 相等比较
         /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The result of the operator.</returns>
         public static bool operator ==(EntityBase<TEntity, TKey> left, EntityBase<TEntity, TKey> right)
         {
             if ((object)left == null && (object)right == null)
@@ -79,6 +85,9 @@ namespace KissU.Util.Domains
         /// <summary>
         /// 不相等比较
         /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>The result of the operator.</returns>
         public static bool operator !=(EntityBase<TEntity, TKey> left, EntityBase<TEntity, TKey> right)
         {
             return !(left == right);
@@ -106,6 +115,7 @@ namespace KissU.Util.Domains
         /// <summary>
         /// 创建标识
         /// </summary>
+        /// <returns>TKey.</returns>
         protected virtual TKey CreateId()
         {
             return Util.Helpers.Convert.To<TKey>(Guid.NewGuid());
@@ -119,6 +129,7 @@ namespace KissU.Util.Domains
         /// <summary>
         /// 验证
         /// </summary>
+        /// <param name="results">验证结果集合</param>
         protected override void Validate(ValidationResultCollection results)
         {
             ValidateId(results);
@@ -127,6 +138,7 @@ namespace KissU.Util.Domains
         /// <summary>
         /// 验证标识
         /// </summary>
+        /// <param name="results">The results.</param>
         protected virtual void ValidateId(ValidationResultCollection results)
         {
             if (typeof(TKey) == typeof(int) || typeof(TKey) == typeof(long))

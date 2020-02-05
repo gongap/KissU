@@ -5,6 +5,7 @@ namespace KissU.Util.Domains
     /// <summary>
     /// 键列表比较结果
     /// </summary>
+    /// <typeparam name="TKey">The type of the t key.</typeparam>
     public class KeyListCompareResult<TKey>
     {
         /// <summary>

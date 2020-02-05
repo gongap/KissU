@@ -15,6 +15,7 @@ namespace KissU.Util.Helpers
         /// <param name="pattern">模式字符串</param>
         /// <param name="resultPatterns">结果模式字符串数组,范例：new[]{"$1","$2"}</param>
         /// <param name="options">选项</param>
+        /// <returns>Dictionary&lt;System.String, System.String&gt;.</returns>
         public static Dictionary<string, string> GetValues(string input, string pattern, string[] resultPatterns, RegexOptions options = RegexOptions.IgnoreCase)
         {
             var result = new Dictionary<string, string>();
@@ -48,6 +49,7 @@ namespace KissU.Util.Helpers
         /// <param name="pattern">模式字符串</param>
         /// <param name="resultPattern">结果模式字符串,范例："$1"用来获取第一个()内的值</param>
         /// <param name="options">选项</param>
+        /// <returns>System.String.</returns>
         public static string GetValue(string input, string pattern, string resultPattern = "", RegexOptions options = RegexOptions.IgnoreCase)
         {
             if (string.IsNullOrWhiteSpace(input))
@@ -64,6 +66,7 @@ namespace KissU.Util.Helpers
         /// <param name="input">输入字符串</param>
         /// <param name="pattern">模式字符串</param>
         /// <param name="options">选项</param>
+        /// <returns>System.String[].</returns>
         public static string[] Split(string input, string pattern, RegexOptions options = RegexOptions.IgnoreCase)
         {
             if (string.IsNullOrWhiteSpace(input))
@@ -78,6 +81,7 @@ namespace KissU.Util.Helpers
         /// <param name="pattern">模式字符串</param>
         /// <param name="replacement">替换字符串</param>
         /// <param name="options">选项</param>
+        /// <returns>System.String.</returns>
         public static string Replace(string input, string pattern, string replacement, RegexOptions options = RegexOptions.IgnoreCase)
         {
             if (string.IsNullOrWhiteSpace(input))
@@ -89,7 +93,8 @@ namespace KissU.Util.Helpers
         /// 验证输入与模式是否匹配
         /// </summary>
         /// <param name="input">输入字符串</param>
-        /// <param name="pattern">模式字符串</param>        
+        /// <param name="pattern">模式字符串</param>
+        /// <returns><c>true</c> if the specified input is match; otherwise, <c>false</c>.</returns>
         public static bool IsMatch(string input, string pattern)
         {
             return IsMatch(input, pattern, RegexOptions.IgnoreCase);
@@ -101,6 +106,7 @@ namespace KissU.Util.Helpers
         /// <param name="input">输入的字符串</param>
         /// <param name="pattern">模式字符串</param>
         /// <param name="options">选项</param>
+        /// <returns><c>true</c> if the specified input is match; otherwise, <c>false</c>.</returns>
         public static bool IsMatch(string input, string pattern, RegexOptions options)
         {
             return System.Text.RegularExpressions.Regex.IsMatch(input, pattern, options);

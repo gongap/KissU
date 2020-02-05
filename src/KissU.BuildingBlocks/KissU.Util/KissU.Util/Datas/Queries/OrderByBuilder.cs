@@ -36,6 +36,7 @@ namespace KissU.Util.Datas.Queries
         /// <summary>
         /// 生成排序字符串
         /// </summary>
+        /// <returns>System.String.</returns>
         public string Generate()
         {
             return _items.Select(t => t.Generate()).ToList().Join();

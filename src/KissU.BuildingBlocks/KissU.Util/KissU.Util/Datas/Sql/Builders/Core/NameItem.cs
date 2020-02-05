@@ -103,6 +103,7 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// <param name="dialect">Sql方言</param>
         /// <param name="prefix">前缀</param>
         /// <param name="tableDatabase">表数据库</param>
+        /// <returns>System.String.</returns>
         public string ToSql(IDialect dialect, string prefix = null, ITableDatabase tableDatabase = null)
         {
             var name = GetName(dialect, prefix);

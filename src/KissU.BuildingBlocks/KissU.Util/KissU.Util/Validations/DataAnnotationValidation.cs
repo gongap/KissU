@@ -13,6 +13,8 @@ namespace KissU.Util.Validations
         /// 验证
         /// </summary>
         /// <param name="target">验证目标</param>
+        /// <returns>ValidationResultCollection.</returns>
+        /// <exception cref="ArgumentNullException">target</exception>
         public static ValidationResultCollection Validate(object target)
         {
             if (target == null)

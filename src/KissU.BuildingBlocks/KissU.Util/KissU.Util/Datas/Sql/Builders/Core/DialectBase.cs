@@ -18,6 +18,8 @@
         /// <summary>
         /// 获取安全名称
         /// </summary>
+        /// <param name="name">名称</param>
+        /// <returns>System.String.</returns>
         public virtual string SafeName(string name)
         {
             if (string.IsNullOrWhiteSpace(name))
@@ -31,6 +33,7 @@
         /// 过滤名称
         /// </summary>
         /// <param name="name">名称</param>
+        /// <returns>System.String.</returns>
         protected string FilterName(string name)
         {
             return name.Trim().TrimStart('[').TrimEnd(']').TrimStart('`').TrimEnd('`').TrimStart('"').TrimEnd('"');
@@ -40,6 +43,7 @@
         /// 获取安全名称
         /// </summary>
         /// <param name="name">名称</param>
+        /// <returns>System.String.</returns>
         protected virtual string GetSafeName(string name)
         {
             return $"[{name}]";
@@ -48,6 +52,7 @@
         /// <summary>
         /// 获取参数前缀
         /// </summary>
+        /// <returns>System.String.</returns>
         public virtual string GetPrefix()
         {
             return "@";
@@ -56,6 +61,7 @@
         /// <summary>
         /// Select子句是否支持As关键字
         /// </summary>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public virtual bool SupportSelectAs()
         {
             return true;
@@ -65,6 +71,7 @@
         /// 创建参数名
         /// </summary>
         /// <param name="paramIndex">参数索引</param>
+        /// <returns>System.String.</returns>
         public virtual string GenerateName(int paramIndex)
         {
             return $"{GetPrefix()}_p_{paramIndex}";
@@ -74,6 +81,7 @@
         /// 获取参数名
         /// </summary>
         /// <param name="paramName">参数名</param>
+        /// <returns>System.String.</returns>
         public virtual string GetParamName(string paramName)
         {
             return paramName;
@@ -83,6 +91,7 @@
         /// 获取参数值
         /// </summary>
         /// <param name="paramValue">参数值</param>
+        /// <returns>System.Object.</returns>
         public virtual object GetParamValue(object paramValue)
         {
             return paramValue;

@@ -16,6 +16,7 @@ namespace KissU.Util.Datas.Stores.Operations
         /// </summary>
         /// <param name="id">标识</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>Task&lt;TEntity&gt;.</returns>
         Task<TEntity> FindByIdNoTrackingAsync(TKey id, CancellationToken cancellationToken = default);
     }
 }

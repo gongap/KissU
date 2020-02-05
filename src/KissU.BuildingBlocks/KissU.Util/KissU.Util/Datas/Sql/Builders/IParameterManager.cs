@@ -11,11 +11,13 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// 创建参数名
         /// </summary>
+        /// <returns>System.String.</returns>
         string GenerateName();
 
         /// <summary>
         /// 获取参数列表
         /// </summary>
+        /// <returns>IReadOnlyDictionary&lt;System.String, System.Object&gt;.</returns>
         IReadOnlyDictionary<string, object> GetParams();
 
         /// <summary>
@@ -29,6 +31,7 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// 复制副本
         /// </summary>
+        /// <returns>IParameterManager.</returns>
         IParameterManager Clone();
 
         /// <summary>

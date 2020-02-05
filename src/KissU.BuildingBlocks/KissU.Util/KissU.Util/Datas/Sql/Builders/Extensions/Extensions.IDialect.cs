@@ -11,6 +11,7 @@
         /// <param name="source">源</param>
         /// <param name="column">列名</param>
         /// <param name="columnAlias">列别名</param>
+        /// <returns>System.String.</returns>
         public static string GetColumn(this IDialect source, string column, string columnAlias)
         {
             if (columnAlias.IsEmpty())
@@ -33,6 +34,7 @@
         /// </summary>
         /// <param name="source">源</param>
         /// <param name="name">名称</param>
+        /// <returns>System.String.</returns>
         public static string GetSafeName(this IDialect source, string name)
         {
             if (source == null)

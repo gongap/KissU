@@ -25,6 +25,7 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <typeparam name="T">值的类型</typeparam>
         /// <param name="value">值</param>
+        /// <returns>String.</returns>
         public String Append<T>(T value)
         {
             Builder.Append(value);
@@ -36,6 +37,7 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <param name="value">值</param>
         /// <param name="args">参数</param>
+        /// <returns>String.</returns>
         public String Append(string value, params object[] args)
         {
             if (args == null)
@@ -50,6 +52,7 @@ namespace KissU.Util.Helpers
         /// <summary>
         /// 追加内容并换行
         /// </summary>
+        /// <returns>String.</returns>
         public String AppendLine()
         {
             Builder.AppendLine();
@@ -61,6 +64,7 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <typeparam name="T">值的类型</typeparam>
         /// <param name="value">值</param>
+        /// <returns>String.</returns>
         public String AppendLine<T>(T value)
         {
             Append(value);
@@ -73,6 +77,7 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <param name="value">值</param>
         /// <param name="args">参数</param>
+        /// <returns>String.</returns>
         public String AppendLine(string value, params object[] args)
         {
             Append(value, args);
@@ -84,6 +89,7 @@ namespace KissU.Util.Helpers
         /// 替换内容
         /// </summary>
         /// <param name="value">值</param>
+        /// <returns>String.</returns>
         public String Replace(string value)
         {
             Builder.Clear();
@@ -95,6 +101,7 @@ namespace KissU.Util.Helpers
         /// 移除末尾字符串
         /// </summary>
         /// <param name="end">末尾字符串</param>
+        /// <returns>String.</returns>
         public String RemoveEnd(string end)
         {
             string result = Builder.ToString();
@@ -107,6 +114,7 @@ namespace KissU.Util.Helpers
         /// <summary>
         /// 清空字符串
         /// </summary>
+        /// <returns>String.</returns>
         public String Clear()
         {
             Builder = Builder.Clear();
@@ -126,6 +134,7 @@ namespace KissU.Util.Helpers
         /// <summary>
         /// 转换为字符串
         /// </summary>
+        /// <returns>A <see cref="System.String" /> that represents this instance.</returns>
         public override string ToString()
         {
             return Builder.ToString();

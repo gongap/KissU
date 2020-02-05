@@ -15,6 +15,7 @@ namespace KissU.Util.Datas.Queries.Trees
     /// <summary>
     /// 树形查询参数
     /// </summary>
+    /// <typeparam name="TParentId">The type of the t parent identifier.</typeparam>
     public class TreeQueryParameter<TParentId> : QueryParameter, ITreeQueryParameter<TParentId>
     {
         /// <summary>
@@ -55,6 +56,7 @@ namespace KissU.Util.Datas.Queries.Trees
         /// <summary>
         /// 是否搜索
         /// </summary>
+        /// <returns><c>true</c> if this instance is search; otherwise, <c>false</c>.</returns>
         public virtual bool IsSearch()
         {
             var items = Reflection.GetPublicProperties(this);
@@ -64,6 +66,9 @@ namespace KissU.Util.Datas.Queries.Trees
         /// <summary>
         /// 是否搜索属性
         /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="value">The value.</param>
+        /// <returns><c>true</c> if [is search property] [the specified name]; otherwise, <c>false</c>.</returns>
         protected virtual bool IsSearchProperty(string name, object value)
         {
             if (value.SafeString().IsEmpty())

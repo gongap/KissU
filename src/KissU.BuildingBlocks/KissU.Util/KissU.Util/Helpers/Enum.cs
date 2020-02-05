@@ -15,6 +15,8 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <typeparam name="TEnum">枚举类型</typeparam>
         /// <param name="member">成员名或值,范例:Enum1枚举有成员A=0,则传入"A"或"0"获取 Enum1.A</param>
+        /// <returns>TEnum.</returns>
+        /// <exception cref="ArgumentNullException">member</exception>
         public static TEnum Parse<TEnum>(object member)
         {
             string value = member.SafeString();
@@ -32,6 +34,7 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <typeparam name="TEnum">枚举类型</typeparam>
         /// <param name="member">成员名、值、实例均可,范例:Enum1枚举有成员A=0,则传入Enum1.A或0,获取成员名"A"</param>
+        /// <returns>System.String.</returns>
         public static string GetName<TEnum>(object member)
         {
             return GetName(Common.GetType<TEnum>(), member);
@@ -42,6 +45,7 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <param name="type">枚举类型</param>
         /// <param name="member">成员名、值、实例均可</param>
+        /// <returns>System.String.</returns>
         public static string GetName(Type type, object member)
         {
             if (type == null)
@@ -60,6 +64,7 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <typeparam name="TEnum">枚举类型</typeparam>
         /// <param name="member">成员名、值、实例均可，范例:Enum1枚举有成员A=0,可传入"A"、0、Enum1.A，获取值0</param>
+        /// <returns>System.Int32.</returns>
         public static int GetValue<TEnum>(object member)
         {
             return GetValue(Common.GetType<TEnum>(), member);
@@ -70,6 +75,8 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <param name="type">枚举类型</param>
         /// <param name="member">成员名、值、实例均可</param>
+        /// <returns>System.Int32.</returns>
+        /// <exception cref="ArgumentNullException">member</exception>
         public static int GetValue(Type type, object member)
         {
             string value = member.SafeString();
@@ -83,6 +90,7 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <typeparam name="TEnum">枚举类型</typeparam>
         /// <param name="member">成员名、值、实例均可</param>
+        /// <returns>System.String.</returns>
         public static string GetDescription<TEnum>(object member)
         {
             return Reflection.GetDescription<TEnum>(GetName<TEnum>(member));
@@ -93,6 +101,7 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <param name="type">枚举类型</param>
         /// <param name="member">成员名、值、实例均可</param>
+        /// <returns>System.String.</returns>
         public static string GetDescription(Type type, object member)
         {
             return Reflection.GetDescription(type, GetName(type, member));
@@ -102,6 +111,7 @@ namespace KissU.Util.Helpers
         /// 获取项集合,文本设置为Description，值为Value
         /// </summary>
         /// <typeparam name="TEnum">枚举类型</typeparam>
+        /// <returns>List&lt;Item&gt;.</returns>
         public static List<Item> GetItems<TEnum>()
         {
             return GetItems(typeof(TEnum));
@@ -111,6 +121,8 @@ namespace KissU.Util.Helpers
         /// 获取项集合,文本设置为Description，值为Value
         /// </summary>
         /// <param name="type">枚举类型</param>
+        /// <returns>List&lt;Item&gt;.</returns>
+        /// <exception cref="InvalidOperationException">类型 {type} 不是枚举</exception>
         public static List<Item> GetItems(Type type)
         {
             type = Common.GetType(type);
@@ -138,6 +150,7 @@ namespace KissU.Util.Helpers
         /// 获取名称集合
         /// </summary>
         /// <typeparam name="TEnum">枚举类型</typeparam>
+        /// <returns>List&lt;System.String&gt;.</returns>
         public static List<string> GetNames<TEnum>()
         {
             return GetNames(typeof(TEnum));
@@ -147,6 +160,8 @@ namespace KissU.Util.Helpers
         /// 获取名称集合
         /// </summary>
         /// <param name="type">枚举类型</param>
+        /// <returns>List&lt;System.String&gt;.</returns>
+        /// <exception cref="InvalidOperationException">类型 {type} 不是枚举</exception>
         public static List<string> GetNames(Type type)
         {
             type = Common.GetType(type);

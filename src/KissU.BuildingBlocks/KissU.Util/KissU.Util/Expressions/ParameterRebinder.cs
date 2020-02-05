@@ -27,6 +27,7 @@ namespace KissU.Util.Expressions
         /// </summary>
         /// <param name="map">参数字典</param>
         /// <param name="exp">表达式</param>
+        /// <returns>Expression.</returns>
         public static Expression ReplaceParameters(Dictionary<ParameterExpression, ParameterExpression> map, Expression exp)
         {
             return new ParameterRebinder(map).Visit(exp);
@@ -36,6 +37,7 @@ namespace KissU.Util.Expressions
         /// 访问参数
         /// </summary>
         /// <param name="parameterExpression">参数</param>
+        /// <returns>Expression.</returns>
         protected override Expression VisitParameter(ParameterExpression parameterExpression)
         {
             if (_map.TryGetValue(parameterExpression, out var replacement))

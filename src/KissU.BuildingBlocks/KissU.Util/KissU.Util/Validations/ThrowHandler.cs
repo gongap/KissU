@@ -12,6 +12,7 @@ namespace KissU.Util.Validations
         /// 处理验证错误
         /// </summary>
         /// <param name="results">验证结果集合</param>
+        /// <exception cref="Warning"></exception>
         public void Handle(ValidationResultCollection results)
         {
             if (results.IsValid)

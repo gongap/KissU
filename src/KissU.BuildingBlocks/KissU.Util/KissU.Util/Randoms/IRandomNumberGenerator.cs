@@ -10,6 +10,7 @@
         /// </summary>
         /// <param name="min">最小值</param>
         /// <param name="max">最大值</param>
+        /// <returns>System.Int32.</returns>
         int Generate(int min, int max);
     }
 }

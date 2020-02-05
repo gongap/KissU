@@ -21,6 +21,7 @@ namespace KissU.Util
         /// </summary>
         /// <param name="expression">表达式</param>
         /// <param name="propertyName">属性名,支持多级属性名，与句点分隔，范例：Customer.Name</param>
+        /// <returns>Expression.</returns>
         public static Expression Property(this Expression expression, string propertyName)
         {
             if (propertyName.All(t => t != '.'))
@@ -44,6 +45,7 @@ namespace KissU.Util
         /// </summary>
         /// <param name="expression">表达式</param>
         /// <param name="member">属性</param>
+        /// <returns>Expression.</returns>
         public static Expression Property(this Expression expression, MemberInfo member)
         {
             return Expression.MakeMemberAccess(expression, member);
@@ -58,6 +60,7 @@ namespace KissU.Util
         /// </summary>
         /// <param name="left">左操作数</param>
         /// <param name="right">右操作数</param>
+        /// <returns>Expression.</returns>
         public static Expression And(this Expression left, Expression right)
         {
             if (left == null)
@@ -73,6 +76,7 @@ namespace KissU.Util
         /// <typeparam name="T">对象类型</typeparam>
         /// <param name="left">左操作数</param>
         /// <param name="right">右操作数</param>
+        /// <returns>Expression&lt;Func&lt;T, System.Boolean&gt;&gt;.</returns>
         public static Expression<Func<T, bool>> And<T>(this Expression<Func<T, bool>> left, Expression<Func<T, bool>> right)
         {
             if (left == null)
@@ -91,6 +95,7 @@ namespace KissU.Util
         /// </summary>
         /// <param name="left">左操作数</param>
         /// <param name="right">右操作数</param>
+        /// <returns>Expression.</returns>
         public static Expression Or(this Expression left, Expression right)
         {
             if (left == null)
@@ -106,6 +111,7 @@ namespace KissU.Util
         /// <typeparam name="T">对象类型</typeparam>
         /// <param name="left">左操作数</param>
         /// <param name="right">右操作数</param>
+        /// <returns>Expression&lt;Func&lt;T, System.Boolean&gt;&gt;.</returns>
         public static Expression<Func<T, bool>> Or<T>(this Expression<Func<T, bool>> left, Expression<Func<T, bool>> right)
         {
             if (left == null)
@@ -123,6 +129,8 @@ namespace KissU.Util
         /// 获取lambda表达式的值
         /// </summary>
         /// <typeparam name="T">对象类型</typeparam>
+        /// <param name="expression">The expression.</param>
+        /// <returns>System.Object.</returns>
         public static object Value<T>(this Expression<Func<T, bool>> expression)
         {
             return Lambda.GetValue(expression);
@@ -137,6 +145,7 @@ namespace KissU.Util
         /// </summary>
         /// <param name="left">左操作数</param>
         /// <param name="right">右操作数</param>
+        /// <returns>Expression.</returns>
         public static Expression Equal(this Expression left, Expression right)
         {
             return Expression.Equal(left, right);
@@ -147,6 +156,7 @@ namespace KissU.Util
         /// </summary>
         /// <param name="left">左操作数</param>
         /// <param name="value">值</param>
+        /// <returns>Expression.</returns>
         public static Expression Equal(this Expression left, object value)
         {
             return left.Equal(Lambda.Constant(value, left));
@@ -161,6 +171,7 @@ namespace KissU.Util
         /// </summary>
         /// <param name="left">左操作数</param>
         /// <param name="right">右操作数</param>
+        /// <returns>Expression.</returns>
         public static Expression NotEqual(this Expression left, Expression right)
         {
             return Expression.NotEqual(left, right);
@@ -171,6 +182,7 @@ namespace KissU.Util
         /// </summary>
         /// <param name="left">左操作数</param>
         /// <param name="value">值</param>
+        /// <returns>Expression.</returns>
         public static Expression NotEqual(this Expression left, object value)
         {
             return left.NotEqual(Lambda.Constant(value, left));
@@ -185,6 +197,7 @@ namespace KissU.Util
         /// </summary>
         /// <param name="left">左操作数</param>
         /// <param name="right">右操作数</param>
+        /// <returns>Expression.</returns>
         public static Expression Greater(this Expression left, Expression right)
         {
             return Expression.GreaterThan(left, right);
@@ -195,6 +208,7 @@ namespace KissU.Util
         /// </summary>
         /// <param name="left">左操作数</param>
         /// <param name="value">值</param>
+        /// <returns>Expression.</returns>
         public static Expression Greater(this Expression left, object value)
         {
             return left.Greater(Lambda.Constant(value, left));
@@ -209,6 +223,7 @@ namespace KissU.Util
         /// </summary>
         /// <param name="left">左操作数</param>
         /// <param name="right">右操作数</param>
+        /// <returns>Expression.</returns>
         public static Expression GreaterEqual(this Expression left, Expression right)
         {
             return Expression.GreaterThanOrEqual(left, right);
@@ -219,6 +234,7 @@ namespace KissU.Util
         /// </summary>
         /// <param name="left">左操作数</param>
         /// <param name="value">值</param>
+        /// <returns>Expression.</returns>
         public static Expression GreaterEqual(this Expression left, object value)
         {
             return left.GreaterEqual(Lambda.Constant(value, left));
@@ -233,6 +249,7 @@ namespace KissU.Util
         /// </summary>
         /// <param name="left">左操作数</param>
         /// <param name="right">右操作数</param>
+        /// <returns>Expression.</returns>
         public static Expression Less(this Expression left, Expression right)
         {
             return Expression.LessThan(left, right);
@@ -243,6 +260,7 @@ namespace KissU.Util
         /// </summary>
         /// <param name="left">左操作数</param>
         /// <param name="value">值</param>
+        /// <returns>Expression.</returns>
         public static Expression Less(this Expression left, object value)
         {
             return left.Less(Lambda.Constant(value, left));
@@ -257,6 +275,7 @@ namespace KissU.Util
         /// </summary>
         /// <param name="left">左操作数</param>
         /// <param name="right">右操作数</param>
+        /// <returns>Expression.</returns>
         public static Expression LessEqual(this Expression left, Expression right)
         {
             return Expression.LessThanOrEqual(left, right);
@@ -267,6 +286,7 @@ namespace KissU.Util
         /// </summary>
         /// <param name="left">左操作数</param>
         /// <param name="value">值</param>
+        /// <returns>Expression.</returns>
         public static Expression LessEqual(this Expression left, object value)
         {
             return left.LessEqual(Lambda.Constant(value, left));
@@ -281,6 +301,7 @@ namespace KissU.Util
         /// </summary>
         /// <param name="left">左操作数</param>
         /// <param name="value">值</param>
+        /// <returns>Expression.</returns>
         public static Expression StartsWith(this Expression left, object value)
         {
             return left.Call("StartsWith", new[] { typeof(string) }, value);
@@ -295,6 +316,7 @@ namespace KissU.Util
         /// </summary>
         /// <param name="left">左操作数</param>
         /// <param name="value">值</param>
+        /// <returns>Expression.</returns>
         public static Expression EndsWith(this Expression left, object value)
         {
             return left.Call("EndsWith", new[] { typeof(string) }, value);
@@ -309,6 +331,7 @@ namespace KissU.Util
         /// </summary>
         /// <param name="left">左操作数</param>
         /// <param name="value">值</param>
+        /// <returns>Expression.</returns>
         public static Expression Contains(this Expression left, object value)
         {
             return left.Call("Contains", new[] { typeof(string) }, value);
@@ -324,6 +347,8 @@ namespace KissU.Util
         /// <param name="left">左操作数</param>
         /// <param name="operator">运算符</param>
         /// <param name="value">值</param>
+        /// <returns>Expression.</returns>
+        /// <exception cref="NotImplementedException"></exception>
         public static Expression Operation(this Expression left, Operator @operator, object value)
         {
             switch (@operator)
@@ -356,6 +381,8 @@ namespace KissU.Util
         /// <param name="left">左操作数</param>
         /// <param name="operator">运算符</param>
         /// <param name="value">值</param>
+        /// <returns>Expression.</returns>
+        /// <exception cref="NotImplementedException"></exception>
         public static Expression Operation(this Expression left, Operator @operator, Expression value)
         {
             switch (@operator)
@@ -386,6 +413,8 @@ namespace KissU.Util
         /// <param name="instance">调用的实例</param>
         /// <param name="methodName">方法名</param>
         /// <param name="values">参数值列表</param>
+        /// <returns>Expression.</returns>
+        /// <exception cref="ArgumentNullException">instance</exception>
         public static Expression Call(this Expression instance, string methodName, params Expression[] values)
         {
             if (instance == null)
@@ -409,6 +438,8 @@ namespace KissU.Util
         /// <param name="instance">调用的实例</param>
         /// <param name="methodName">方法名</param>
         /// <param name="values">参数值列表</param>
+        /// <returns>Expression.</returns>
+        /// <exception cref="ArgumentNullException">instance</exception>
         public static Expression Call(this Expression instance, string methodName, params object[] values)
         {
             if (instance == null)
@@ -428,6 +459,8 @@ namespace KissU.Util
         /// <param name="methodName">方法名</param>
         /// <param name="paramTypes">参数类型列表</param>
         /// <param name="values">参数值列表</param>
+        /// <returns>Expression.</returns>
+        /// <exception cref="ArgumentNullException">instance</exception>
         public static Expression Call(this Expression instance, string methodName, Type[] paramTypes, params object[] values)
         {
             if (instance == null)
@@ -451,6 +484,7 @@ namespace KissU.Util
         /// <param name="first">左操作数</param>
         /// <param name="second">右操作数</param>
         /// <param name="merge">合并操作</param>
+        /// <returns>Expression&lt;T&gt;.</returns>
         internal static Expression<T> Compose<T>(this Expression<T> first, Expression<T> second,
             Func<Expression, Expression, Expression> merge)
         {
@@ -469,6 +503,7 @@ namespace KissU.Util
         /// <typeparam name="TDelegate">委托类型</typeparam>
         /// <param name="body">表达式</param>
         /// <param name="parameters">参数列表</param>
+        /// <returns>Expression&lt;TDelegate&gt;.</returns>
         public static Expression<TDelegate> ToLambda<TDelegate>(this Expression body, params ParameterExpression[] parameters)
         {
             if (body == null)
@@ -486,6 +521,7 @@ namespace KissU.Util
         /// <typeparam name="T">委托类型</typeparam>
         /// <param name="body">表达式</param>
         /// <param name="parameters">参数列表</param>
+        /// <returns>Expression&lt;Func&lt;T, System.Boolean&gt;&gt;.</returns>
         public static Expression<Func<T, bool>> ToPredicate<T>(this Expression body, params ParameterExpression[] parameters)
         {
             return ToLambda<Func<T, bool>>(body, parameters);

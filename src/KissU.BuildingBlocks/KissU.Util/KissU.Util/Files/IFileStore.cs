@@ -10,6 +10,7 @@ namespace KissU.Util.Files
         /// <summary>
         /// 保存文件,返回完整文件路径
         /// </summary>
+        /// <returns>Task&lt;System.String&gt;.</returns>
         Task<string> SaveAsync();
     }
 }

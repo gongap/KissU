@@ -22,6 +22,7 @@
         /// <summary>
         /// 获取基路径
         /// </summary>
+        /// <returns>System.String.</returns>
         public string GetPath()
         {
             return _path;

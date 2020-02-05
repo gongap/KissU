@@ -59,6 +59,7 @@ namespace KissU.Util.Exceptions
         /// <summary>
         /// 获取错误消息
         /// </summary>
+        /// <returns>System.String.</returns>
         public string GetMessage()
         {
             return GetMessage(this);
@@ -67,6 +68,8 @@ namespace KissU.Util.Exceptions
         /// <summary>
         /// 获取错误消息
         /// </summary>
+        /// <param name="ex">The ex.</param>
+        /// <returns>System.String.</returns>
         public static string GetMessage(Exception ex)
         {
             var result = new StringBuilder();
@@ -89,6 +92,7 @@ namespace KissU.Util.Exceptions
         /// <summary>
         /// 获取异常列表
         /// </summary>
+        /// <returns>IList&lt;Exception&gt;.</returns>
         public IList<Exception> GetExceptions()
         {
             return GetExceptions(this);
@@ -98,6 +102,7 @@ namespace KissU.Util.Exceptions
         /// 获取异常列表
         /// </summary>
         /// <param name="ex">异常</param>
+        /// <returns>IList&lt;Exception&gt;.</returns>
         public static IList<Exception> GetExceptions(Exception ex)
         {
             var result = new List<Exception>();
@@ -120,6 +125,7 @@ namespace KissU.Util.Exceptions
         /// 获取友情提示
         /// </summary>
         /// <param name="level">日志级别</param>
+        /// <returns>System.String.</returns>
         public string GetPrompt(LogLevel level)
         {
             if (level == LogLevel.Error)

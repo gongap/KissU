@@ -13,6 +13,9 @@ namespace KissU.Util
         /// </summary>
         /// <param name="member">成员信息</param>
         /// <param name="instance">成员所在的类实例</param>
+        /// <returns>System.Object.</returns>
+        /// <exception cref="ArgumentNullException">member</exception>
+        /// <exception cref="ArgumentNullException">instance</exception>
         public static object GetPropertyValue(this MemberInfo member, object instance)
         {
             if (member == null)

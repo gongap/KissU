@@ -13,6 +13,7 @@ namespace KissU.Util.Datas.Queries.Criterias
         /// </summary>
         /// <param name="value">日期值</param>
         /// <param name="isNull">日期是否可空</param>
+        /// <returns>Expression.</returns>
         public static Expression CreateDateTimeExpression(object value, bool isNull = true)
         {
             Type type = isNull ? typeof(DateTime?) : typeof(DateTime);
@@ -24,6 +25,7 @@ namespace KissU.Util.Datas.Queries.Criterias
         /// </summary>
         /// <param name="value">日期值</param>
         /// <param name="targetType">目标类型</param>
+        /// <returns>Expression.</returns>
         public static Expression CreateDateTimeExpression(object value, Type targetType)
         {
             var parse = typeof(DateTime).GetMethod("Parse", new[] { typeof(string) });

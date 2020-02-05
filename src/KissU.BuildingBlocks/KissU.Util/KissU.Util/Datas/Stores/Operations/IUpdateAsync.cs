@@ -16,12 +16,14 @@ namespace KissU.Util.Datas.Stores.Operations
         /// 修改实体
         /// </summary>
         /// <param name="entity">实体</param>
+        /// <returns>Task.</returns>
         Task UpdateAsync([Valid] TEntity entity);
 
         /// <summary>
         /// 修改实体集合
         /// </summary>
         /// <param name="entities">实体集合</param>
+        /// <returns>Task.</returns>
         Task UpdateAsync([Valid] IEnumerable<TEntity> entities);
     }
 }

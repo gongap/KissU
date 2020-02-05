@@ -25,6 +25,7 @@ namespace KissU.Util.Helpers
         /// 获取指定范围的随机整数
         /// </summary>
         /// <param name="max">最大值</param>
+        /// <returns>System.Int32.</returns>
         public int Next(int max)
         {
             return _random.Next(max);
@@ -35,6 +36,7 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <param name="min">最小值</param>
         /// <param name="max">最大值</param>
+        /// <returns>System.Int32.</returns>
         public int Next(int min, int max)
         {
             return _random.Next(min, max);
@@ -45,6 +47,7 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <typeparam name="T">集合元素类型</typeparam>
         /// <param name="array">集合</param>
+        /// <returns>List&lt;T&gt;.</returns>
         public static List<T> Sort<T>(IEnumerable<T> array)
         {
             if (array == null)

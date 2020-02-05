@@ -31,6 +31,7 @@ namespace KissU.Util.Events
         /// <summary>
         /// 输出日志
         /// </summary>
+        /// <returns>A <see cref="System.String" /> that represents this instance.</returns>
         public override string ToString()
         {
             var result = new StringBuilder();

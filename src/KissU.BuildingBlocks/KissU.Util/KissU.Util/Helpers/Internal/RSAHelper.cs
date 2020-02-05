@@ -7,9 +7,7 @@ namespace KissU.Util.Helpers.Internal
 {
     /// <summary>
     /// RSA加解密 使用OpenSSL的公钥加密/私钥解密
-    /// 
     /// 公私钥请使用openssl生成  ssh-keygen -t rsa 命令生成的公钥私钥是不行的
-    /// 
     /// 作者：李志强
     /// 时间：2017年10月30日15:50:14
     /// QQ:501232752
@@ -50,7 +48,7 @@ namespace KissU.Util.Helpers.Internal
         /// 使用私钥签名
         /// </summary>
         /// <param name="data">原始数据</param>
-        /// <returns></returns>
+        /// <returns>System.String.</returns>
         public string Sign(string data)
         {
             byte[] dataBytes = _encoding.GetBytes(data);
@@ -69,7 +67,7 @@ namespace KissU.Util.Helpers.Internal
         /// </summary>
         /// <param name="data">原始数据</param>
         /// <param name="sign">签名</param>
-        /// <returns></returns>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool Verify(string data, string sign)
         {
             byte[] dataBytes = _encoding.GetBytes(data);
@@ -84,6 +82,12 @@ namespace KissU.Util.Helpers.Internal
 
         #region 解密
 
+        /// <summary>
+        /// Decrypts the specified cipher text.
+        /// </summary>
+        /// <param name="cipherText">The cipher text.</param>
+        /// <returns>System.String.</returns>
+        /// <exception cref="Exception">_privateKeyRsaProvider is null</exception>
         public string Decrypt(string cipherText)
         {
             if (_privateKeyRsaProvider == null)
@@ -97,6 +101,12 @@ namespace KissU.Util.Helpers.Internal
 
         #region 加密
 
+        /// <summary>
+        /// Encrypts the specified text.
+        /// </summary>
+        /// <param name="text">The text.</param>
+        /// <returns>System.String.</returns>
+        /// <exception cref="Exception">_publicKeyRsaProvider is null</exception>
         public string Encrypt(string text)
         {
             if (_publicKeyRsaProvider == null)
@@ -110,6 +120,16 @@ namespace KissU.Util.Helpers.Internal
 
         #region 使用私钥创建RSA实例
 
+        /// <summary>
+        /// Creates the RSA provider from private key.
+        /// </summary>
+        /// <param name="privateKey">The private key.</param>
+        /// <returns>RSA.</returns>
+        /// <exception cref="Exception">Unexpected value read binr.ReadUInt16()</exception>
+        /// <exception cref="Exception">Unexpected version</exception>
+        /// <exception cref="Exception">Unexpected value read binr.ReadByte()</exception>
+        /// <exception cref="Exception">Unexpected value read binr.ReadUInt16()</exception>
+        /// <exception cref="Exception">Unexpected version</exception>
         public RSA CreateRsaProviderFromPrivateKey(string privateKey)
         {
             var privateKeyBits = System.Convert.FromBase64String(privateKey);
@@ -155,6 +175,11 @@ namespace KissU.Util.Helpers.Internal
 
         #region 使用公钥创建RSA实例
 
+        /// <summary>
+        /// Creates the RSA provider from public key.
+        /// </summary>
+        /// <param name="publicKeyString">The public key string.</param>
+        /// <returns>RSA.</returns>
         public RSA CreateRsaProviderFromPublicKey(string publicKeyString)
         {
             // encoded OID sequence for  PKCS #1 rsaEncryption szOID_RSA_RSA = "1.2.840.113549.1.1.1"

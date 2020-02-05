@@ -16,6 +16,7 @@ namespace KissU.Util.Datas.Stores.Operations
         /// 查找实体列表
         /// </summary>
         /// <param name="predicate">条件</param>
+        /// <returns>List&lt;TEntity&gt;.</returns>
         List<TEntity> FindAll(Expression<Func<TEntity, bool>> predicate = null);
     }
 }

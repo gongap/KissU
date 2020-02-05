@@ -30,6 +30,7 @@
         /// </summary>
         /// <typeparam name="T">对象类型</typeparam>
         /// <param name="key">键名</param>
+        /// <returns>T.</returns>
         public T Get<T>(string key)
         {
             return default;

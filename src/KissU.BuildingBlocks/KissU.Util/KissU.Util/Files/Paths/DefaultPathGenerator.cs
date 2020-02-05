@@ -26,6 +26,7 @@ namespace KissU.Util.Files.Paths
         /// 创建路径
         /// </summary>
         /// <param name="fileName">被处理过的安全有效的文件名</param>
+        /// <returns>System.String.</returns>
         protected override string GeneratePath(string fileName)
         {
             return $"{_basePath.GetPath()}/{fileName}";

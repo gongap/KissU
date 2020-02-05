@@ -40,6 +40,8 @@ namespace KissU.Util.Files
         /// <summary>
         /// 获取描述
         /// </summary>
+        /// <param name="unit">The unit.</param>
+        /// <returns>System.String.</returns>
         public static string Description(this FileSizeUnit? unit)
         {
             return unit == null ? string.Empty : unit.Value.Description();
@@ -48,6 +50,8 @@ namespace KissU.Util.Files
         /// <summary>
         /// 获取值
         /// </summary>
+        /// <param name="unit">The unit.</param>
+        /// <returns>System.Nullable&lt;System.Int32&gt;.</returns>
         public static int? Value(this FileSizeUnit? unit)
         {
             return unit?.Value();

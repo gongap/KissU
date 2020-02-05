@@ -19,6 +19,7 @@ namespace KissU.Util.Helpers
         /// <param name="list">集合</param>
         /// <param name="quotes">引号，默认不带引号，范例：单引号 "'"</param>
         /// <param name="separator">分隔符，默认使用逗号分隔</param>
+        /// <returns>System.String.</returns>
         public static string Join<T>(IEnumerable<T> list, string quotes = "", string separator = ",")
         {
             if (list == null)
@@ -39,6 +40,7 @@ namespace KissU.Util.Helpers
         /// 获取汉字的拼音简码，即首字母缩写,范例：中国,返回zg
         /// </summary>
         /// <param name="chineseText">汉字文本,范例： 中国</param>
+        /// <returns>System.String.</returns>
         public static string PinYin(string chineseText)
         {
             if (string.IsNullOrWhiteSpace(chineseText))
@@ -137,6 +139,7 @@ namespace KissU.Util.Helpers
         /// 首字母小写
         /// </summary>
         /// <param name="value">值</param>
+        /// <returns>System.String.</returns>
         public static string FirstLowerCase(string value)
         {
             if (string.IsNullOrWhiteSpace(value))
@@ -152,6 +155,7 @@ namespace KissU.Util.Helpers
         /// 首字母大写
         /// </summary>
         /// <param name="value">值</param>
+        /// <returns>System.String.</returns>
         public static string FirstUpperCase(string value)
         {
             if (string.IsNullOrWhiteSpace(value))
@@ -168,6 +172,7 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <param name="value">值</param>
         /// <param name="removeValue">要移除的值</param>
+        /// <returns>System.String.</returns>
         public static string RemoveEnd(string value, string removeValue)
         {
             if (string.IsNullOrWhiteSpace(value))
@@ -188,6 +193,7 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <param name="value">值</param>
         /// <param name="separator">分隔符，默认使用"-"分隔</param>
+        /// <returns>System.String.</returns>
         public static string SplitWordGroup(string value, char separator = '-')
         {
             var pattern = @"([A-Z])(?=[a-z])|(?<=[a-z])([A-Z]|[0-9]+)";

@@ -28,6 +28,7 @@ namespace KissU.Util.Randoms
         /// </summary>
         /// <param name="maxLength">最大长度</param>
         /// <param name="text">如果传入该参数，则从该文本中随机抽取</param>
+        /// <returns>System.String.</returns>
         public string GenerateString(int maxLength, string text = null)
         {
             if (text == null)
@@ -59,6 +60,7 @@ namespace KissU.Util.Randoms
         /// 生成随机字母
         /// </summary>
         /// <param name="maxLength">最大长度</param>
+        /// <returns>System.String.</returns>
         public string GenerateLetters(int maxLength)
         {
             return GenerateString(maxLength, Const.Letters);
@@ -68,6 +70,7 @@ namespace KissU.Util.Randoms
         /// 生成随机汉字
         /// </summary>
         /// <param name="maxLength">最大长度</param>
+        /// <returns>System.String.</returns>
         public string GenerateChinese(int maxLength)
         {
             return GenerateString(maxLength, Const.SimplifiedChinese);
@@ -77,6 +80,7 @@ namespace KissU.Util.Randoms
         /// 生成随机数字
         /// </summary>
         /// <param name="maxLength">最大长度</param>
+        /// <returns>System.String.</returns>
         public string GenerateNumbers(int maxLength)
         {
             return GenerateString(maxLength, Const.Numbers);
@@ -85,6 +89,7 @@ namespace KissU.Util.Randoms
         /// <summary>
         /// 生成随机布尔值
         /// </summary>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool GenerateBool()
         {
             var random = _random.Generate(1, 100);
@@ -97,6 +102,7 @@ namespace KissU.Util.Randoms
         /// 生成随机整数
         /// </summary>
         /// <param name="maxValue">最大值</param>
+        /// <returns>System.Int32.</returns>
         public int GenerateInt(int maxValue)
         {
             return _random.Generate(0, maxValue + 1);
@@ -107,6 +113,7 @@ namespace KissU.Util.Randoms
         /// </summary>
         /// <param name="beginYear">起始年份</param>
         /// <param name="endYear">结束年份</param>
+        /// <returns>DateTime.</returns>
         public DateTime GenerateDate(int beginYear = 1980, int endYear = 2080)
         {
             var year = _random.Generate(beginYear, endYear);
@@ -122,6 +129,7 @@ namespace KissU.Util.Randoms
         /// 生成随机枚举
         /// </summary>
         /// <typeparam name="TEnum">枚举类型</typeparam>
+        /// <returns>TEnum.</returns>
         public TEnum GenerateEnum<TEnum>()
         {
             var list = Util.Helpers.Enum.GetItems<TEnum>();

@@ -12,6 +12,7 @@ namespace KissU.Util
         /// 获取原始异常
         /// </summary>
         /// <param name="exception">异常</param>
+        /// <returns>Exception.</returns>
         public static Exception GetRawException(this Exception exception)
         {
             if (exception == null)
@@ -29,6 +30,7 @@ namespace KissU.Util
         /// 获取异常提示
         /// </summary>
         /// <param name="exception">异常</param>
+        /// <returns>System.String.</returns>
         public static string GetPrompt(this Exception exception)
         {
             return ExceptionPrompt.GetPrompt(exception);

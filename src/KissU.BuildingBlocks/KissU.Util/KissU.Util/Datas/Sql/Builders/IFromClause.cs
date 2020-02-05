@@ -12,6 +12,7 @@ namespace KissU.Util.Datas.Sql.Builders
         /// </summary>
         /// <param name="builder">Sql生成器</param>
         /// <param name="register">实体别名注册器</param>
+        /// <returns>IFromClause.</returns>
         IFromClause Clone(ISqlBuilder builder, IEntityAliasRegister register);
 
         /// <summary>
@@ -24,6 +25,7 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// 设置表名
         /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="alias">别名</param>
         /// <param name="schema">架构名</param>
         void From<TEntity>(string alias = null, string schema = null) where TEntity : class;
@@ -56,6 +58,7 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// 输出Sql
         /// </summary>
+        /// <returns>System.String.</returns>
         string ToSql();
     }
 }

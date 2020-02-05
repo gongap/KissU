@@ -13,6 +13,7 @@ namespace KissU.Util.Datas.Sql.Builders
         /// </summary>
         /// <param name="sqlBuilder">Sql生成器</param>
         /// <param name="register">实体别名注册器</param>
+        /// <returns>ISelectClause.</returns>
         ISelectClause Clone(ISqlBuilder sqlBuilder, IEntityAliasRegister register);
 
         /// <summary>
@@ -36,6 +37,7 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// 求总行数
         /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="expression">列名表达式</param>
         /// <param name="columnAlias">列别名</param>
         void Count<TEntity>(Expression<Func<TEntity, object>> expression, string columnAlias = null) where TEntity : class;
@@ -50,6 +52,7 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// 求和
         /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="expression">列名表达式</param>
         /// <param name="columnAlias">列别名</param>
         void Sum<TEntity>(Expression<Func<TEntity, object>> expression, string columnAlias = null) where TEntity : class;
@@ -64,6 +67,7 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// 求平均值
         /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="expression">列名表达式</param>
         /// <param name="columnAlias">列别名</param>
         void Avg<TEntity>(Expression<Func<TEntity, object>> expression, string columnAlias = null) where TEntity : class;
@@ -78,6 +82,7 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// 求最大值
         /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="expression">列名表达式</param>
         /// <param name="columnAlias">列别名</param>
         void Max<TEntity>(Expression<Func<TEntity, object>> expression, string columnAlias = null) where TEntity : class;
@@ -92,6 +97,7 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// 求最小值
         /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="expression">列名表达式</param>
         /// <param name="columnAlias">列别名</param>
         void Min<TEntity>(Expression<Func<TEntity, object>> expression, string columnAlias = null) where TEntity : class;
@@ -106,12 +112,14 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// 设置列名
         /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="propertyAsAlias">是否将属性名映射为列别名</param>
         void Select<TEntity>(bool propertyAsAlias = false);
 
         /// <summary>
         /// 设置列名
         /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="columns">列名</param>
         /// <param name="propertyAsAlias">是否将属性名映射为列别名</param>
         void Select<TEntity>(Expression<Func<TEntity, object[]>> columns, bool propertyAsAlias = false) where TEntity : class;
@@ -119,6 +127,7 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// 设置列名
         /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="column">列名</param>
         /// <param name="columnAlias">列别名</param>
         void Select<TEntity>(Expression<Func<TEntity, object>> column, string columnAlias = null) where TEntity : class;
@@ -154,18 +163,21 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// 移除列名
         /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="expression">列名表达式</param>
         void RemoveSelect<TEntity>(Expression<Func<TEntity, object[]>> expression) where TEntity : class;
 
         /// <summary>
         /// 移除列名
         /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
         /// <param name="expression">列名表达式</param>
         void RemoveSelect<TEntity>(Expression<Func<TEntity, object>> expression) where TEntity : class;
 
         /// <summary>
         /// 输出Sql
         /// </summary>
+        /// <returns>System.String.</returns>
         string ToSql();
     }
 }

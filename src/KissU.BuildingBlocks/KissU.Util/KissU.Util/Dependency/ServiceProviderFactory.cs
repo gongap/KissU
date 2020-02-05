@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace KissU.Util.Dependency
 {
     /// <summary>
-    /// A factory for creating a <see cref="ContainerBuilder"/> and an <see cref="IServiceProvider" />.
+    /// A factory for creating a <see cref="ContainerBuilder" /> and an <see cref="IServiceProvider" />.
     /// </summary>
     public class ServiceProviderFactory : IServiceProviderFactory<ContainerBuilder>
     {
@@ -14,18 +14,18 @@ namespace KissU.Util.Dependency
         private readonly Action<ContainerBuilder> _configurationAction;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AutofacServiceProviderFactory"/> class.
+        /// Initializes a new instance of the <see cref="AutofacServiceProviderFactory" /> class.
         /// </summary>
-        /// <param name="configurationAction">Action on a <see cref="ContainerBuilder"/> that adds component registrations to the conatiner.</param>
+        /// <param name="configurationAction">Action on a <see cref="ContainerBuilder" /> that adds component registrations to the conatiner.</param>
         public ServiceProviderFactory(Action<ContainerBuilder> configurationAction = null)
         {
             _configurationAction = configurationAction ?? (builder => { });
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AutofacServiceProviderFactory"/> class.
+        /// Initializes a new instance of the <see cref="AutofacServiceProviderFactory" /> class.
         /// </summary>
-        /// <param name="builder">Action on a <see cref="ContainerBuilder"/> that adds component registrations to the conatiner.</param>
+        /// <param name="builder">Action on a <see cref="ContainerBuilder" /> that adds component registrations to the conatiner.</param>
         public ServiceProviderFactory(ContainerBuilder builder)
         {
             _builder = builder;
@@ -52,6 +52,7 @@ namespace KissU.Util.Dependency
         /// </summary>
         /// <param name="builder">The container builder.</param>
         /// <returns>An <see cref="IServiceProvider" />.</returns>
+        /// <exception cref="ArgumentNullException">builder</exception>
         public IServiceProvider CreateServiceProvider(ContainerBuilder builder)
         {
             if (builder == null) throw new ArgumentNullException(nameof(builder));

@@ -12,6 +12,7 @@ namespace KissU.Util.Domains.Repositories
         /// <summary>
         /// 获取查询条件
         /// </summary>
+        /// <returns>Expression&lt;Func&lt;TEntity, System.Boolean&gt;&gt;.</returns>
         Expression<Func<TEntity, bool>> GetPredicate();
     }
 }

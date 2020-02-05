@@ -33,6 +33,7 @@ namespace KissU.Util.Dependency
         /// <summary>
         /// 启用Aop作用域
         /// </summary>
+        /// <param name="builder">The builder.</param>
 	    public static void EnableAspectScoped(this ContainerBuilder builder)
         {
             builder.AddScoped<IAspectScheduler, ScopeAspectScheduler>();

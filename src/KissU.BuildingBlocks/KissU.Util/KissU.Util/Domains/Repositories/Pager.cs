@@ -17,7 +17,7 @@
         /// 初始化分页参数
         /// </summary>
         /// <param name="page">页索引</param>
-        /// <param name="pageSize">每页显示行数,默认20</param> 
+        /// <param name="pageSize">每页显示行数,默认20</param>
         /// <param name="order">排序条件</param>
         public Pager(int page, int pageSize, string order)
             : this(page, pageSize, 0, order)
@@ -28,7 +28,7 @@
         /// 初始化分页参数
         /// </summary>
         /// <param name="page">页索引</param>
-        /// <param name="pageSize">每页显示行数,默认20</param> 
+        /// <param name="pageSize">每页显示行数,默认20</param>
         /// <param name="totalCount">总行数</param>
         /// <param name="order">排序条件</param>
         public Pager(int page, int pageSize = 20, int totalCount = 0, string order = "")
@@ -68,6 +68,7 @@
         /// <summary>
         /// 获取总页数
         /// </summary>
+        /// <returns>System.Int32.</returns>
         public int GetPageCount()
         {
             if ((TotalCount % PageSize) == 0)
@@ -78,6 +79,7 @@
         /// <summary>
         /// 获取跳过的行数
         /// </summary>
+        /// <returns>System.Int32.</returns>
         public int GetSkipCount()
         {
             return PageSize * (Page - 1);
@@ -91,6 +93,7 @@
         /// <summary>
         /// 起始行数
         /// </summary>
+        /// <returns>System.Int32.</returns>
         public int GetStartNumber()
         {
             return (Page - 1) * PageSize + 1;
@@ -99,6 +102,7 @@
         /// <summary>
         /// 结束行数
         /// </summary>
+        /// <returns>System.Int32.</returns>
         public int GetEndNumber()
         {
             return Page * PageSize;

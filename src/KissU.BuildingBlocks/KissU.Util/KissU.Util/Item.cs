@@ -59,6 +59,7 @@ namespace KissU.Util
         /// 比较
         /// </summary>
         /// <param name="other">其它列表项</param>
+        /// <returns>System.Int32.</returns>
         public int CompareTo(Item other)
         {
             return string.Compare(Text, other.Text, StringComparison.CurrentCulture);

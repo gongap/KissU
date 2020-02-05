@@ -11,6 +11,7 @@ namespace KissU.Util.Datas.Sql
         /// <summary>
         /// 获取数据库连接
         /// </summary>
+        /// <returns>IDbConnection.</returns>
         IDbConnection GetConnection();
     }
 }

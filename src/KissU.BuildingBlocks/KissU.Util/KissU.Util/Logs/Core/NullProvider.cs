@@ -24,6 +24,7 @@ namespace KissU.Util.Logs.Core
         /// 获取NLog日志操作
         /// </summary>
         /// <param name="logName">日志名称</param>
+        /// <returns>ILogger.</returns>
         public static ILogger GetLogger(string logName)
         {
             try

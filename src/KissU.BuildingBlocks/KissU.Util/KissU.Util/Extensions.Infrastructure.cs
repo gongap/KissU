@@ -18,6 +18,7 @@ namespace KissU.Util
         /// </summary>
         /// <param name="builder">容器生成器</param>
         /// <param name="configs">依赖配置</param>
+        /// <returns>Autofac.IContainer.</returns>
         public static Autofac.IContainer AddUtil(this ContainerBuilder builder, params IConfig[] configs)
         {
             return AddUtil(builder, new ServiceCollection(), configs);
@@ -29,6 +30,7 @@ namespace KissU.Util
         /// <param name="builder">容器生成器</param>
         /// <param name="services">服务集合</param>
         /// <param name="configs">依赖配置</param>
+        /// <returns>Autofac.IContainer.</returns>
         public static Autofac.IContainer AddUtil(this ContainerBuilder builder, IServiceCollection services, params IConfig[] configs)
         {
             return AddUtil(builder, services, null, configs);
@@ -41,6 +43,7 @@ namespace KissU.Util
         /// <param name="services">服务集合</param>
         /// <param name="aopConfigAction">Aop配置操作</param>
         /// <param name="configs">依赖配置</param>
+        /// <returns>Autofac.IContainer.</returns>
         public static Autofac.IContainer AddUtil(this ContainerBuilder builder, IServiceCollection services, Action<IAspectConfiguration> aopConfigAction, params IConfig[] configs)
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);

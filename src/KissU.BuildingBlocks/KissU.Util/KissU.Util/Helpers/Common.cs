@@ -13,6 +13,7 @@ namespace KissU.Util.Helpers
         /// 获取类型
         /// </summary>
         /// <typeparam name="T">类型</typeparam>
+        /// <returns>Type.</returns>
         public static Type GetType<T>()
         {
             return GetType(typeof(T));
@@ -22,6 +23,7 @@ namespace KissU.Util.Helpers
         /// 获取类型
         /// </summary>
         /// <param name="type">类型</param>
+        /// <returns>Type.</returns>
         public static Type GetType(Type type)
         {
             return Nullable.GetUnderlyingType(type) ?? type;
@@ -36,6 +38,7 @@ namespace KissU.Util.Helpers
         /// 获取物理路径
         /// </summary>
         /// <param name="relativePath">相对路径</param>
+        /// <returns>System.String.</returns>
         public static string GetPhysicalPath(string relativePath)
         {
             if (string.IsNullOrWhiteSpace(relativePath))

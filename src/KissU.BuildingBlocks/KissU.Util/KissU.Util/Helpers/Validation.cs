@@ -8,7 +8,8 @@
         /// <summary>
         /// 是否数字
         /// </summary>
-        /// <param name="input">输入值</param>        
+        /// <param name="input">输入值</param>
+        /// <returns><c>true</c> if the specified input is number; otherwise, <c>false</c>.</returns>
         public static bool IsNumber(string input)
         {
             if (input.IsEmpty())

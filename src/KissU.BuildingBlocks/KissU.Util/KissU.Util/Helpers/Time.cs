@@ -41,6 +41,7 @@ namespace KissU.Util.Helpers
         /// <summary>
         /// 获取当前日期时间
         /// </summary>
+        /// <returns>DateTime.</returns>
         public static DateTime GetDateTime()
         {
             if (_dateTime == null)
@@ -51,6 +52,7 @@ namespace KissU.Util.Helpers
         /// <summary>
         /// 获取当前日期,不带时间
         /// </summary>
+        /// <returns>DateTime.</returns>
         public static DateTime GetDate()
         {
             return GetDateTime().Date;
@@ -59,6 +61,7 @@ namespace KissU.Util.Helpers
         /// <summary>
         /// 获取Unix时间戳
         /// </summary>
+        /// <returns>System.Int64.</returns>
         public static long GetUnixTimestamp()
         {
             return GetUnixTimestamp(DateTime.Now);
@@ -68,6 +71,7 @@ namespace KissU.Util.Helpers
         /// 获取Unix时间戳
         /// </summary>
         /// <param name="time">时间</param>
+        /// <returns>System.Int64.</returns>
         public static long GetUnixTimestamp(DateTime time)
         {
             var start = TimeZoneInfo.ConvertTime(new DateTime(1970, 1, 1), TimeZoneInfo.Local);
@@ -79,6 +83,7 @@ namespace KissU.Util.Helpers
         /// 从Unix时间戳获取时间
         /// </summary>
         /// <param name="timestamp">Unix时间戳</param>
+        /// <returns>DateTime.</returns>
         public static DateTime GetTimeFromUnixTimestamp(long timestamp)
         {
             var start = TimeZoneInfo.ConvertTime(new DateTime(1970, 1, 1), TimeZoneInfo.Local);

@@ -52,6 +52,7 @@ namespace KissU.Util.Helpers.Internal
         /// Initializes a new instance of the ObjectId class.
         /// </summary>
         /// <param name="bytes">The bytes.</param>
+        /// <exception cref="ArgumentNullException">bytes</exception>
         public ObjectId(byte[] bytes)
         {
             if (bytes == null)
@@ -80,6 +81,9 @@ namespace KissU.Util.Helpers.Internal
         /// <param name="machine">The machine hash.</param>
         /// <param name="pid">The PID.</param>
         /// <param name="increment">The increment.</param>
+        /// <exception cref="ArgumentOutOfRangeException">machine - The machine value must be between 0 and 16777215 (it must fit in 3 bytes).</exception>
+        /// <exception cref="ArgumentOutOfRangeException">increment - The increment value must be between 0 and 16777215 (it must fit in 3 bytes).</exception>
+        /// <exception cref="ArgumentOutOfRangeException">machine - The machine value must be between 0 and 16777215 (it must fit in 3 bytes).</exception>
         public ObjectId(int timestamp, int machine, short pid, int increment)
         {
             if ((machine & 0xff000000) != 0)
@@ -101,6 +105,7 @@ namespace KissU.Util.Helpers.Internal
         /// Initializes a new instance of the ObjectId class.
         /// </summary>
         /// <param name="value">The value.</param>
+        /// <exception cref="ArgumentNullException">value</exception>
         public ObjectId(string value)
         {
             if (value == null)
@@ -279,6 +284,9 @@ namespace KissU.Util.Helpers.Internal
         /// <param name="pid">The PID.</param>
         /// <param name="increment">The increment.</param>
         /// <returns>A byte array.</returns>
+        /// <exception cref="ArgumentOutOfRangeException">machine - The machine value must be between 0 and 16777215 (it must fit in 3 bytes).</exception>
+        /// <exception cref="ArgumentOutOfRangeException">increment - The increment value must be between 0 and 16777215 (it must fit in 3 bytes).</exception>
+        /// <exception cref="ArgumentOutOfRangeException">machine - The machine value must be between 0 and 16777215 (it must fit in 3 bytes).</exception>
         public static byte[] Pack(int timestamp, int machine, short pid, int increment)
         {
             if ((machine & 0xff000000) != 0)
@@ -311,6 +319,8 @@ namespace KissU.Util.Helpers.Internal
         /// </summary>
         /// <param name="s">The string value.</param>
         /// <returns>A ObjectId.</returns>
+        /// <exception cref="ArgumentNullException">s</exception>
+        /// <exception cref="ArgumentOutOfRangeException">s - ObjectId string value must be 24 characters.</exception>
         public static ObjectId Parse(string s)
         {
             if (s == null)
@@ -332,6 +342,8 @@ namespace KissU.Util.Helpers.Internal
         /// <param name="machine">The machine hash.</param>
         /// <param name="pid">The PID.</param>
         /// <param name="increment">The increment.</param>
+        /// <exception cref="ArgumentNullException">bytes</exception>
+        /// <exception cref="ArgumentOutOfRangeException">bytes - Byte array must be 12 bytes long.</exception>
         public static void Unpack(byte[] bytes, out int timestamp, out int machine, out short pid, out int increment)
         {
             if (bytes == null)
@@ -460,6 +472,8 @@ namespace KissU.Util.Helpers.Internal
         /// </summary>
         /// <param name="s">The hex string to parse.</param>
         /// <returns>The byte equivalent of the hex string.</returns>
+        /// <exception cref="ArgumentNullException">s</exception>
+        /// <exception cref="Exception">The binary key cannot have an odd number of digits</exception>
         public static byte[] ParseHexString(string s)
         {
             if (s == null)
@@ -487,6 +501,7 @@ namespace KissU.Util.Helpers.Internal
         /// </summary>
         /// <param name="bytes">The byte array.</param>
         /// <returns>A hex string.</returns>
+        /// <exception cref="ArgumentNullException">bytes</exception>
         public static string ToHexString(byte[] bytes)
         {
             if (bytes == null)

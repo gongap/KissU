@@ -25,6 +25,7 @@ namespace KissU.Util.Domains
         /// <summary>
         /// 输出变更信息
         /// </summary>
+        /// <returns>A <see cref="System.String" /> that represents this instance.</returns>
         public override string ToString()
         {
             var result = new StringBuilder();

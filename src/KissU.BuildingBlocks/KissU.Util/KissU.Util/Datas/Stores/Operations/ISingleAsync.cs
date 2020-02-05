@@ -18,6 +18,7 @@ namespace KissU.Util.Datas.Stores.Operations
         /// </summary>
         /// <param name="predicate">条件</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>Task&lt;TEntity&gt;.</returns>
         Task<TEntity> SingleAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default);
     }
 }

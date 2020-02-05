@@ -10,6 +10,7 @@
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="value">值</param>
+        /// <returns>System.String.</returns>
         public string Format(string key, object value)
         {
             return $"{key}{FormatSeparator}{value}";
@@ -25,6 +26,7 @@
         /// </summary>
         /// <param name="left">左操作数</param>
         /// <param name="right">右操作数</param>
+        /// <returns>System.String.</returns>
         public string Join(string left, string right)
         {
             if (string.IsNullOrWhiteSpace(left))

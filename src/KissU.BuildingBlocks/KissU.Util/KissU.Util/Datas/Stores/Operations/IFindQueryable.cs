@@ -16,23 +16,27 @@ namespace KissU.Util.Datas.Stores.Operations
         /// <summary>
         /// 获取未跟踪查询对象
         /// </summary>
+        /// <returns>IQueryable&lt;TEntity&gt;.</returns>
         IQueryable<TEntity> FindAsNoTracking();
 
         /// <summary>
         /// 获取查询对象
         /// </summary>
+        /// <returns>IQueryable&lt;TEntity&gt;.</returns>
         IQueryable<TEntity> Find();
 
         /// <summary>
         /// 查询
         /// </summary>
         /// <param name="criteria">条件</param>
+        /// <returns>IQueryable&lt;TEntity&gt;.</returns>
         IQueryable<TEntity> Find(ICriteria<TEntity> criteria);
 
         /// <summary>
         /// 查询
         /// </summary>
         /// <param name="predicate">条件</param>
+        /// <returns>IQueryable&lt;TEntity&gt;.</returns>
         IQueryable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
     }
 }

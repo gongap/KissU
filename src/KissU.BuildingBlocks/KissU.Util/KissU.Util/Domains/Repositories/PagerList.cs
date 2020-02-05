@@ -112,6 +112,7 @@ namespace KissU.Util.Domains.Repositories
         /// 索引器
         /// </summary>
         /// <param name="index">索引</param>
+        /// <returns>T.</returns>
         public T this[int index]
         {
             get => Data[index];
@@ -149,6 +150,7 @@ namespace KissU.Util.Domains.Repositories
         /// </summary>
         /// <typeparam name="TResult">目标元素类型</typeparam>
         /// <param name="converter">转换方法</param>
+        /// <returns>PagerList&lt;TResult&gt;.</returns>
         public PagerList<TResult> Convert<TResult>(Func<T, TResult> converter)
         {
             return Convert(this.Data.Select(converter));
@@ -157,7 +159,9 @@ namespace KissU.Util.Domains.Repositories
         /// <summary>
         /// 转换分页集合
         /// </summary>
+        /// <typeparam name="TResult">The type of the t result.</typeparam>
         /// <param name="data">内容</param>
+        /// <returns>PagerList&lt;TResult&gt;.</returns>
         public PagerList<TResult> Convert<TResult>(IEnumerable<TResult> data)
         {
             return new PagerList<TResult>(Page, PageSize, TotalCount, Order, data);

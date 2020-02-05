@@ -21,6 +21,7 @@ namespace KissU.Util.Helpers
         /// Md5加密，返回16位结果
         /// </summary>
         /// <param name="value">值</param>
+        /// <returns>System.String.</returns>
         public static string Md5By16(string value)
         {
             return Md5By16(value, Encoding.UTF8);
@@ -31,6 +32,7 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <param name="value">值</param>
         /// <param name="encoding">字符编码</param>
+        /// <returns>System.String.</returns>
         public static string Md5By16(string value, Encoding encoding)
         {
             return Md5(value, encoding, 4, 8);
@@ -61,6 +63,7 @@ namespace KissU.Util.Helpers
         /// Md5加密，返回32位结果
         /// </summary>
         /// <param name="value">值</param>
+        /// <returns>System.String.</returns>
         public static string Md5By32(string value)
         {
             return Md5By32(value, Encoding.UTF8);
@@ -71,6 +74,7 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <param name="value">值</param>
         /// <param name="encoding">字符编码</param>
+        /// <returns>System.String.</returns>
         public static string Md5By32(string value, Encoding encoding)
         {
             return Md5(value, encoding, null, null);
@@ -89,6 +93,7 @@ namespace KissU.Util.Helpers
         /// DES加密
         /// </summary>
         /// <param name="value">待加密的值</param>
+        /// <returns>System.String.</returns>
         public static string DesEncrypt(object value)
         {
             return DesEncrypt(value, DesKey);
@@ -99,6 +104,7 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <param name="value">待加密的值</param>
         /// <param name="key">密钥,24位</param>
+        /// <returns>System.String.</returns>
         public static string DesEncrypt(object value, string key)
         {
             return DesEncrypt(value, key, Encoding.UTF8);
@@ -110,6 +116,7 @@ namespace KissU.Util.Helpers
         /// <param name="value">待加密的值</param>
         /// <param name="key">密钥,24位</param>
         /// <param name="encoding">编码</param>
+        /// <returns>System.String.</returns>
         public static string DesEncrypt(object value, string key, Encoding encoding)
         {
             string text = value.SafeString();
@@ -153,6 +160,7 @@ namespace KissU.Util.Helpers
         /// DES解密
         /// </summary>
         /// <param name="value">加密后的值</param>
+        /// <returns>System.String.</returns>
         public static string DesDecrypt(object value)
         {
             return DesDecrypt(value, DesKey);
@@ -163,6 +171,7 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <param name="value">加密后的值</param>
         /// <param name="key">密钥,24位</param>
+        /// <returns>System.String.</returns>
         public static string DesDecrypt(object value, string key)
         {
             return DesDecrypt(value, key, Encoding.UTF8);
@@ -174,6 +183,7 @@ namespace KissU.Util.Helpers
         /// <param name="value">加密后的值</param>
         /// <param name="key">密钥,24位</param>
         /// <param name="encoding">编码</param>
+        /// <returns>System.String.</returns>
         public static string DesDecrypt(object value, string key, Encoding encoding)
         {
             string text = value.SafeString();
@@ -231,6 +241,7 @@ namespace KissU.Util.Helpers
         /// AES加密
         /// </summary>
         /// <param name="value">待加密的值</param>
+        /// <returns>System.String.</returns>
         public static string AesEncrypt(string value)
         {
             return AesEncrypt(value, AesKey);
@@ -241,6 +252,7 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <param name="value">待加密的值</param>
         /// <param name="key">密钥</param>
+        /// <returns>System.String.</returns>
         public static string AesEncrypt(string value, string key)
         {
             return AesEncrypt(value, key, Encoding.UTF8);
@@ -252,6 +264,7 @@ namespace KissU.Util.Helpers
         /// <param name="value">待加密的值</param>
         /// <param name="key">密钥</param>
         /// <param name="encoding">编码</param>
+        /// <returns>System.String.</returns>
         public static string AesEncrypt(string value, string key, Encoding encoding)
         {
             if (string.IsNullOrWhiteSpace(value) || string.IsNullOrWhiteSpace(key))
@@ -281,6 +294,7 @@ namespace KissU.Util.Helpers
         /// AES解密
         /// </summary>
         /// <param name="value">加密后的值</param>
+        /// <returns>System.String.</returns>
         public static string AesDecrypt(string value)
         {
             return AesDecrypt(value, AesKey);
@@ -291,6 +305,7 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <param name="value">加密后的值</param>
         /// <param name="key">密钥</param>
+        /// <returns>System.String.</returns>
         public static string AesDecrypt(string value, string key)
         {
             return AesDecrypt(value, key, Encoding.UTF8);
@@ -303,6 +318,7 @@ namespace KissU.Util.Helpers
         /// <param name="key">密钥</param>
         /// <param name="encoding">编码</param>
         /// <param name="cipherMode">密码模式</param>
+        /// <returns>System.String.</returns>
         public static string AesDecrypt(string value, string key, Encoding encoding, CipherMode cipherMode = CipherMode.CBC)
         {
             if (string.IsNullOrWhiteSpace(value) || string.IsNullOrWhiteSpace(key))
@@ -323,6 +339,7 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <param name="value">待加密的值</param>
         /// <param name="key">密钥</param>
+        /// <returns>System.String.</returns>
         public static string RsaSign(string value, string key)
         {
             return RsaSign(value, key, Encoding.UTF8);
@@ -334,6 +351,7 @@ namespace KissU.Util.Helpers
         /// <param name="value">待加密的值</param>
         /// <param name="key">密钥</param>
         /// <param name="encoding">编码</param>
+        /// <returns>System.String.</returns>
         public static string RsaSign(string value, string key, Encoding encoding)
         {
             return RsaSign(value, key, encoding, RSAType.RSA);
@@ -344,6 +362,7 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <param name="value">待加密的值</param>
         /// <param name="key">密钥</param>
+        /// <returns>System.String.</returns>
         public static string Rsa2Sign(string value, string key)
         {
             return Rsa2Sign(value, key, Encoding.UTF8);
@@ -355,6 +374,7 @@ namespace KissU.Util.Helpers
         /// <param name="value">待加密的值</param>
         /// <param name="key">密钥</param>
         /// <param name="encoding">编码</param>
+        /// <returns>System.String.</returns>
         public static string Rsa2Sign(string value, string key, Encoding encoding)
         {
             return RsaSign(value, key, encoding, RSAType.RSA2);
@@ -377,6 +397,7 @@ namespace KissU.Util.Helpers
         /// <param name="value">待验签的值</param>
         /// <param name="publicKey">公钥</param>
         /// <param name="sign">签名</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public static bool RsaVerify(string value, string publicKey, string sign)
         {
             return RsaVerify(value, publicKey, sign, Encoding.UTF8);
@@ -389,6 +410,7 @@ namespace KissU.Util.Helpers
         /// <param name="publicKey">公钥</param>
         /// <param name="sign">签名</param>
         /// <param name="encoding">编码</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public static bool RsaVerify(string value, string publicKey, string sign, Encoding encoding)
         {
             return RsaVerify(value, publicKey, sign, encoding, RSAType.RSA);
@@ -400,6 +422,7 @@ namespace KissU.Util.Helpers
         /// <param name="value">待验签的值</param>
         /// <param name="publicKey">公钥</param>
         /// <param name="sign">签名</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public static bool Rsa2Verify(string value, string publicKey, string sign)
         {
             return Rsa2Verify(value, publicKey, sign, Encoding.UTF8);
@@ -412,6 +435,7 @@ namespace KissU.Util.Helpers
         /// <param name="publicKey">公钥</param>
         /// <param name="sign">签名</param>
         /// <param name="encoding">编码</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public static bool Rsa2Verify(string value, string publicKey, string sign, Encoding encoding)
         {
             return RsaVerify(value, publicKey, sign, encoding, RSAType.RSA2);
@@ -437,6 +461,7 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <param name="value">值</param>
         /// <param name="key">密钥</param>
+        /// <returns>System.String.</returns>
         public static string HmacSha256(string value, string key)
         {
             return HmacSha256(value, key, Encoding.UTF8);
@@ -448,6 +473,7 @@ namespace KissU.Util.Helpers
         /// <param name="value">值</param>
         /// <param name="key">密钥</param>
         /// <param name="encoding">字符编码</param>
+        /// <returns>System.String.</returns>
         public static string HmacSha256(string value, string key, Encoding encoding)
         {
             if (string.IsNullOrWhiteSpace(value) || string.IsNullOrWhiteSpace(key))

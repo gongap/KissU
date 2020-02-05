@@ -29,17 +29,20 @@ namespace KissU.Util.Datas.Sql.Builders
         /// 是否包含实体类型
         /// </summary>
         /// <param name="type">实体类型</param>
+        /// <returns><c>true</c> if [contains] [the specified type]; otherwise, <c>false</c>.</returns>
         bool Contains(Type type);
 
         /// <summary>
         /// 获取实体别名
         /// </summary>
         /// <param name="type">实体类型</param>
+        /// <returns>System.String.</returns>
         string GetAlias(Type type);
 
         /// <summary>
         /// 复制实体别名注册器
         /// </summary>
+        /// <returns>IEntityAliasRegister.</returns>
         IEntityAliasRegister Clone();
     }
 }

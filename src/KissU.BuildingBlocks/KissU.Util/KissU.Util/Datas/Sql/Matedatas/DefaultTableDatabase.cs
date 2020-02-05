@@ -9,6 +9,7 @@
         /// 获取数据库
         /// </summary>
         /// <param name="table">表</param>
+        /// <returns>System.String.</returns>
         public string GetDatabase(string table)
         {
             return null;

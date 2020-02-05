@@ -26,6 +26,7 @@ namespace KissU.Util.Dependency
         /// 创建实例
         /// </summary>
         /// <typeparam name="T">实例类型</typeparam>
+        /// <returns>T.</returns>
         public T Create<T>()
         {
             return _scope.Resolve<T>();
@@ -35,6 +36,7 @@ namespace KissU.Util.Dependency
         /// 创建对象
         /// </summary>
         /// <param name="type">对象类型</param>
+        /// <returns>System.Object.</returns>
         public object Create(Type type)
         {
             return _scope.Resolve(type);

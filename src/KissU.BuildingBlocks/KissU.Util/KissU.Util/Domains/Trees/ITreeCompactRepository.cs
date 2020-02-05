@@ -27,12 +27,14 @@ namespace KissU.Util.Domains.Trees
         /// 生成排序号
         /// </summary>
         /// <param name="parentId">父标识</param>
+        /// <returns>Task&lt;System.Int32&gt;.</returns>
         Task<int> GenerateSortIdAsync(TParentId parentId);
 
         /// <summary>
         /// 获取全部下级实体
         /// </summary>
         /// <param name="parent">父实体</param>
+        /// <returns>Task&lt;List&lt;TEntity&gt;&gt;.</returns>
         Task<List<TEntity>> GetAllChildrenAsync(TEntity parent);
     }
 }

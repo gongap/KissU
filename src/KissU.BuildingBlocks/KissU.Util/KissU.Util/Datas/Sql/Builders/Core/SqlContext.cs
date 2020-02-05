@@ -16,6 +16,7 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// <param name="matedata">实体元数据解析器</param>
         /// <param name="parameterManager">参数管理器</param>
         /// <param name="clause">Sql子句访问器</param>
+        /// <exception cref="ArgumentNullException">clause</exception>
         public SqlContext(IDialect dialect, IEntityAliasRegister entityAliasRegister, IEntityMatedata matedata, IParameterManager parameterManager, IClauseAccessor clause)
         {
             EntityAliasRegister = entityAliasRegister ?? new EntityAliasRegister();

@@ -12,6 +12,7 @@ namespace KissU.Util.Datas.Sql.Builders
         /// 复制Group By子句
         /// </summary>
         /// <param name="register">实体别名注册器</param>
+        /// <returns>IGroupByClause.</returns>
         IGroupByClause Clone(IEntityAliasRegister register);
 
         /// <summary>
@@ -55,6 +56,7 @@ namespace KissU.Util.Datas.Sql.Builders
         /// <summary>
         /// 获取Sql
         /// </summary>
+        /// <returns>System.String.</returns>
         string ToSql();
     }
 }

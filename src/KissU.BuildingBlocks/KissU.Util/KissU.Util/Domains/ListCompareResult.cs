@@ -5,6 +5,8 @@ namespace KissU.Util.Domains
     /// <summary>
     /// 列表比较结果
     /// </summary>
+    /// <typeparam name="TEntity">The type of the t entity.</typeparam>
+    /// <typeparam name="TKey">The type of the t key.</typeparam>
     public class ListCompareResult<TEntity, TKey> where TEntity : IKey<TKey>
     {
         /// <summary>

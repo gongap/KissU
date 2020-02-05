@@ -11,6 +11,9 @@ namespace KissU.Util.Logs
         /// <summary>
         /// 追加内容
         /// </summary>
+        /// <param name="content">The content.</param>
+        /// <param name="result">The result.</param>
+        /// <param name="value">The value.</param>
         public static void Append(this ILogContent content, StringBuilder result, string value)
         {
             if (string.IsNullOrWhiteSpace(value))
@@ -21,6 +24,9 @@ namespace KissU.Util.Logs
         /// <summary>
         /// 追加内容并换行
         /// </summary>
+        /// <param name="content">The content.</param>
+        /// <param name="result">The result.</param>
+        /// <param name="value">The value.</param>
         public static void AppendLine(this ILogContent content, StringBuilder result, string value)
         {
             content.Append(result, value);

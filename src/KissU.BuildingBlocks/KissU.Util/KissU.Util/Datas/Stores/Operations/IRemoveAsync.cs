@@ -17,6 +17,7 @@ namespace KissU.Util.Datas.Stores.Operations
         /// </summary>
         /// <param name="id">标识</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>Task.</returns>
         Task RemoveAsync(object id, CancellationToken cancellationToken = default);
 
         /// <summary>
@@ -24,6 +25,7 @@ namespace KissU.Util.Datas.Stores.Operations
         /// </summary>
         /// <param name="entity">实体</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>Task.</returns>
         Task RemoveAsync(TEntity entity, CancellationToken cancellationToken = default);
 
         /// <summary>
@@ -31,6 +33,7 @@ namespace KissU.Util.Datas.Stores.Operations
         /// </summary>
         /// <param name="ids">标识集合</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>Task.</returns>
         Task RemoveAsync(IEnumerable<TKey> ids, CancellationToken cancellationToken = default);
 
         /// <summary>
@@ -38,6 +41,7 @@ namespace KissU.Util.Datas.Stores.Operations
         /// </summary>
         /// <param name="entities">实体集合</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>Task.</returns>
         Task RemoveAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken = default);
     }
 }

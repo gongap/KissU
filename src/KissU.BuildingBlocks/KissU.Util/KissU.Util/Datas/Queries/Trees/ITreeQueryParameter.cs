@@ -38,6 +38,7 @@ namespace KissU.Util.Datas.Queries.Trees
         /// <summary>
         /// 是否搜索
         /// </summary>
+        /// <returns><c>true</c> if this instance is search; otherwise, <c>false</c>.</returns>
         bool IsSearch();
     }
 }

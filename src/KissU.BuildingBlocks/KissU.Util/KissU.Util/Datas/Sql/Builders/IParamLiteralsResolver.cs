@@ -9,6 +9,7 @@
         /// 获取参数字面值
         /// </summary>
         /// <param name="value">参数值</param>
+        /// <returns>System.String.</returns>
         string GetParamLiterals(object value);
     }
 }

@@ -46,6 +46,7 @@ namespace KissU.Util.Parameters
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="value">值</param>
+        /// <returns>ParameterBuilder.</returns>
         public ParameterBuilder Add(string key, object value)
         {
             if (string.IsNullOrWhiteSpace(key))
@@ -85,6 +86,7 @@ namespace KissU.Util.Parameters
         /// <param name="isSort">是否按参数名排序</param>
         /// <param name="isUrlEncode">是否Url编码</param>
         /// <param name="encoding">字符编码，默认值：UTF-8</param>
+        /// <returns>IDictionary&lt;System.String, System.Object&gt;.</returns>
         public IDictionary<string, object> GetDictionary(bool isSort = true, bool isUrlEncode = false, string encoding = "UTF-8")
         {
             var result = _params.ToDictionary(t => t.Key, t => GetEncodeValue(t.Value, isUrlEncode, encoding));
@@ -106,6 +108,7 @@ namespace KissU.Util.Parameters
         /// <summary>
         /// 获取键值对集合
         /// </summary>
+        /// <returns>IEnumerable&lt;KeyValuePair&lt;System.String, System.Object&gt;&gt;.</returns>
         public IEnumerable<KeyValuePair<string, object>> GetKeyValuePairs()
         {
             return _params;
@@ -123,6 +126,7 @@ namespace KissU.Util.Parameters
         /// 移除参数
         /// </summary>
         /// <param name="key">键</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool Remove(string key)
         {
             return _params.Remove(key);
@@ -132,6 +136,7 @@ namespace KissU.Util.Parameters
         /// 转换为Json
         /// </summary>
         /// <param name="isConvertToSingleQuotes">是否将双引号转成单引号</param>
+        /// <returns>System.String.</returns>
         public string ToJson(bool isConvertToSingleQuotes = false)
         {
             return Json.ToJson(_params, isConvertToSingleQuotes);
@@ -144,6 +149,8 @@ namespace KissU.Util.Parameters
         /// <param name="isSort">是否按参数名排序</param>
         /// <param name="isUrlEncode">是否Url编码</param>
         /// <param name="encoding">字符编码，默认值：UTF-8</param>
+        /// <returns>System.String.</returns>
+        /// <exception cref="ArgumentNullException">format</exception>
         public string Result(IParameterFormat format, bool isSort = false, bool isUrlEncode = false, string encoding = "UTF-8")
         {
             if (format == null)
@@ -158,6 +165,7 @@ namespace KissU.Util.Parameters
         /// 获取值
         /// </summary>
         /// <param name="name">参数名</param>
+        /// <returns>System.Object.</returns>
         public object GetValue(string name)
         {
             if (name.IsEmpty())
@@ -171,6 +179,7 @@ namespace KissU.Util.Parameters
         /// 索引器
         /// </summary>
         /// <param name="name">参数名</param>
+        /// <returns>System.Object.</returns>
         public object this[string name]
         {
             get => GetValue(name);

@@ -9,6 +9,7 @@
         /// 获取值
         /// </summary>
         /// <param name="name">参数名</param>
+        /// <returns>System.Object.</returns>
         object GetValue(string name);
     }
 }

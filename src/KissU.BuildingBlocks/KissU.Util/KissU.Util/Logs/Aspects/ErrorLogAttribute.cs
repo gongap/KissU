@@ -14,6 +14,8 @@ namespace KissU.Util.Logs.Aspects
         /// <summary>
         /// 执行
         /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="next">The next.</param>
         public override async Task Invoke( AspectContext context, AspectDelegate next )
         {
             var methodName = GetMethodName( context );

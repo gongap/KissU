@@ -52,12 +52,16 @@ namespace KissU.Util.Logs.Core
         /// <summary>
         /// 获取日志内容
         /// </summary>
+        /// <returns>TContent.</returns>
         protected abstract TContent GetContent();
 
         /// <summary>
         /// 设置内容
         /// </summary>
+        /// <typeparam name="T"></typeparam>
         /// <param name="action">设置内容操作</param>
+        /// <returns>ILog.</returns>
+        /// <exception cref="ArgumentNullException">action</exception>
         public ILog Set<T>(Action<T> action) where T : ILogContent
         {
             if (action == null)

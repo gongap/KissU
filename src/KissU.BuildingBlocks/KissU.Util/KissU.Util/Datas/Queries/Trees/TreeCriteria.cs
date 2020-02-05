@@ -8,6 +8,7 @@ namespace KissU.Util.Datas.Queries.Trees
     /// <summary>
     /// 树型查询条件
     /// </summary>
+    /// <typeparam name="TEntity">The type of the t entity.</typeparam>
     public class TreeCriteria<TEntity> : TreeCriteria<TEntity, Guid?> where TEntity : IPath, IEnabled, IParentId<Guid?>
     {
         /// <summary>
@@ -24,6 +25,8 @@ namespace KissU.Util.Datas.Queries.Trees
     /// <summary>
     /// 树型查询条件
     /// </summary>
+    /// <typeparam name="TEntity">The type of the t entity.</typeparam>
+    /// <typeparam name="TParentId">The type of the t parent identifier.</typeparam>
     public class TreeCriteria<TEntity, TParentId> : ICriteria<TEntity> where TEntity : IPath, IEnabled
     {
         /// <summary>
@@ -48,6 +51,7 @@ namespace KissU.Util.Datas.Queries.Trees
         /// <summary>
         /// 获取查询条件
         /// </summary>
+        /// <returns>Expression&lt;Func&lt;TEntity, System.Boolean&gt;&gt;.</returns>
         public Expression<Func<TEntity, bool>> GetPredicate()
         {
             return Predicate;

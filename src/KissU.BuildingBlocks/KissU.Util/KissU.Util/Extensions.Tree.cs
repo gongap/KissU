@@ -13,6 +13,9 @@ namespace KissU.Util
         /// <summary>
         /// 更新实体及所有下级节点路径
         /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
+        /// <typeparam name="TKey">The type of the t key.</typeparam>
+        /// <typeparam name="TParentId">The type of the t parent identifier.</typeparam>
         /// <param name="repository">仓储</param>
         /// <param name="entity">实体</param>
         public static async Task UpdatePathAsync<TEntity, TKey, TParentId>(this ITreeCompactRepository<TEntity, TKey, TParentId> repository, TEntity entity)
@@ -38,9 +41,10 @@ namespace KissU.Util
         /// 获取缺失的父标识列表
         /// </summary>
         /// <typeparam name="TEntity">实体类型</typeparam>
-        /// /// <typeparam name="TKey">标识类型</typeparam>
+        /// <typeparam name="TKey">标识类型</typeparam>
         /// <typeparam name="TParentId">父标识类型</typeparam>
         /// <param name="entities">实体列表</param>
+        /// <returns>List&lt;System.String&gt;.</returns>
         public static List<string> GetMissingParentIds<TEntity, TKey, TParentId>(this IEnumerable<TEntity> entities) where TEntity : class, ITreeEntity<TEntity, TKey, TParentId>
         {
             var result = new List<string>();

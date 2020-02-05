@@ -25,6 +25,7 @@ namespace KissU.Util.Datas.Transactions
         /// 提交
         /// </summary>
         /// <param name="transaction">事务</param>
+        /// <returns>Task.</returns>
         Task CommitAsync(IDbTransaction transaction);
     }
 }

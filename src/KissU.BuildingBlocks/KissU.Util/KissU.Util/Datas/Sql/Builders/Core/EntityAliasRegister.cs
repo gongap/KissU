@@ -41,6 +41,7 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// 是否包含实体
         /// </summary>
         /// <param name="entity">实体类型</param>
+        /// <returns><c>true</c> if [contains] [the specified entity]; otherwise, <c>false</c>.</returns>
         public bool Contains(Type entity)
         {
             if (entity == null)
@@ -52,6 +53,7 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// 获取实体别名
         /// </summary>
         /// <param name="entity">实体类型</param>
+        /// <returns>System.String.</returns>
         public string GetAlias(Type entity)
         {
             if (entity == null)
@@ -64,6 +66,7 @@ namespace KissU.Util.Datas.Sql.Builders.Core
         /// <summary>
         /// 复制实体别名注册器
         /// </summary>
+        /// <returns>IEntityAliasRegister.</returns>
         public IEntityAliasRegister Clone()
         {
             return new EntityAliasRegister(new Dictionary<Type, string>(Data));

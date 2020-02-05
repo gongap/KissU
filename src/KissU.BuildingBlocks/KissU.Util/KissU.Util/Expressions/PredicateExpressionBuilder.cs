@@ -8,6 +8,7 @@ namespace KissU.Util.Expressions
     /// <summary>
     /// 谓词表达式生成器
     /// </summary>
+    /// <typeparam name="TEntity">The type of the t entity.</typeparam>
     public class PredicateExpressionBuilder<TEntity>
     {
         /// <summary>
@@ -31,6 +32,7 @@ namespace KissU.Util.Expressions
         /// <summary>
         /// 获取参数
         /// </summary>
+        /// <returns>ParameterExpression.</returns>
         public ParameterExpression GetParameter()
         {
             return _parameter;
@@ -39,6 +41,7 @@ namespace KissU.Util.Expressions
         /// <summary>
         /// 添加表达式
         /// </summary>
+        /// <typeparam name="TProperty">The type of the t property.</typeparam>
         /// <param name="property">属性表达式</param>
         /// <param name="operator">运算符</param>
         /// <param name="value">值</param>
@@ -50,6 +53,7 @@ namespace KissU.Util.Expressions
         /// <summary>
         /// 添加表达式
         /// </summary>
+        /// <typeparam name="TProperty">The type of the t property.</typeparam>
         /// <param name="property">属性表达式</param>
         /// <param name="operator">运算符</param>
         /// <param name="value">值</param>
@@ -91,6 +95,7 @@ namespace KissU.Util.Expressions
         /// <summary>
         /// 转换为Lambda表达式
         /// </summary>
+        /// <returns>Expression&lt;Func&lt;TEntity, System.Boolean&gt;&gt;.</returns>
         public Expression<Func<TEntity, bool>> ToLambda()
         {
             return _result.ToLambda<Func<TEntity, bool>>(_parameter);

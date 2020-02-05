@@ -18,12 +18,14 @@ namespace KissU.Util.Applications.Operations
         /// 查询
         /// </summary>
         /// <param name="parameter">查询参数</param>
+        /// <returns>Task&lt;List&lt;TDto&gt;&gt;.</returns>
         Task<List<TDto>> QueryAsync(TQueryParameter parameter);
 
         /// <summary>
         /// 分页查询
         /// </summary>
         /// <param name="parameter">查询参数</param>
+        /// <returns>Task&lt;PagerList&lt;TDto&gt;&gt;.</returns>
         Task<PagerList<TDto>> PagerQueryAsync(TQueryParameter parameter);
     }
 }

@@ -14,6 +14,8 @@ namespace KissU.Util.Applications.Dtos
         /// <summary>
         /// 验证
         /// </summary>
+        /// <returns>ValidationResultCollection.</returns>
+        /// <exception cref="Warning"></exception>
         public virtual ValidationResultCollection Validate()
         {
             var result = DataAnnotationValidation.Validate(this);

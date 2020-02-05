@@ -16,6 +16,10 @@ namespace KissU.Util.Domains
         /// </summary>
         /// <param name="newList">新实体集合</param>
         /// <param name="oldList">旧实体集合</param>
+        /// <returns>ListCompareResult&lt;TEntity, TKey&gt;.</returns>
+        /// <exception cref="ArgumentNullException">newList</exception>
+        /// <exception cref="ArgumentNullException">oldList</exception>
+        /// <exception cref="ArgumentNullException">newList</exception>
         public ListCompareResult<TEntity, TKey> Compare(IEnumerable<TEntity> newList, IEnumerable<TEntity> oldList)
         {
             if (newList == null)

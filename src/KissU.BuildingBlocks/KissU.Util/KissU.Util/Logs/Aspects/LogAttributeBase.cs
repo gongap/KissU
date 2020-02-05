@@ -13,6 +13,8 @@ namespace KissU.Util.Logs.Aspects
         /// <summary>
         /// 执行
         /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="next">The next.</param>
         public override async Task Invoke( AspectContext context, AspectDelegate next )
         {
             var methodName = GetMethodName( context );
@@ -35,6 +37,8 @@ namespace KissU.Util.Logs.Aspects
         /// <summary>
         /// 是否启用
         /// </summary>
+        /// <param name="log">The log.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         protected virtual bool Enabled( ILog log )
         {
             return true;
@@ -56,6 +60,7 @@ namespace KissU.Util.Logs.Aspects
         /// <summary>
         /// 写日志
         /// </summary>
+        /// <param name="log">The log.</param>
         protected abstract void WriteLog( ILog log );
 
         /// <summary>

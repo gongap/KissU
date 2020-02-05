@@ -17,6 +17,7 @@ namespace KissU.Util.Helpers
         /// 获取类型描述，使用DescriptionAttribute设置描述
         /// </summary>
         /// <typeparam name="T">类型</typeparam>
+        /// <returns>System.String.</returns>
         public static string GetDescription<T>()
         {
             return GetDescription(Common.GetType<T>());
@@ -27,6 +28,7 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <typeparam name="T">类型</typeparam>
         /// <param name="memberName">成员名称</param>
+        /// <returns>System.String.</returns>
         public static string GetDescription<T>(string memberName)
         {
             return GetDescription(Common.GetType<T>(), memberName);
@@ -37,6 +39,7 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <param name="type">类型</param>
         /// <param name="memberName">成员名称</param>
+        /// <returns>System.String.</returns>
         public static string GetDescription(Type type, string memberName)
         {
             if (type == null)
@@ -50,6 +53,7 @@ namespace KissU.Util.Helpers
         /// 获取类型成员描述，使用DescriptionAttribute设置描述
         /// </summary>
         /// <param name="member">成员</param>
+        /// <returns>System.String.</returns>
         public static string GetDescription(MemberInfo member)
         {
             if (member == null)
@@ -61,6 +65,7 @@ namespace KissU.Util.Helpers
         /// 获取显示名称，使用DisplayNameAttribute设置显示名称
         /// </summary>
         /// <typeparam name="T">类型</typeparam>
+        /// <returns>System.String.</returns>
         public static string GetDisplayName<T>()
         {
             return GetDisplayName(Common.GetType<T>());
@@ -69,6 +74,8 @@ namespace KissU.Util.Helpers
         /// <summary>
         /// 获取显示名称，使用DisplayAttribute或DisplayNameAttribute设置显示名称
         /// </summary>
+        /// <param name="member">The member.</param>
+        /// <returns>System.String.</returns>
         public static string GetDisplayName(MemberInfo member)
         {
             if (member == null)
@@ -84,6 +91,7 @@ namespace KissU.Util.Helpers
         /// 获取显示名称或描述,使用DisplayNameAttribute设置显示名称,使用DescriptionAttribute设置描述
         /// </summary>
         /// <typeparam name="T">类型</typeparam>
+        /// <returns>System.String.</returns>
         public static string GetDisplayNameOrDescription<T>()
         {
             return GetDisplayNameOrDescription(Common.GetType<T>());
@@ -92,6 +100,8 @@ namespace KissU.Util.Helpers
         /// <summary>
         /// 获取属性显示名称或描述,使用DisplayAttribute或DisplayNameAttribute设置显示名称,使用DescriptionAttribute设置描述
         /// </summary>
+        /// <param name="member">The member.</param>
+        /// <returns>System.String.</returns>
         public static string GetDisplayNameOrDescription(MemberInfo member)
         {
             var result = GetDisplayName(member);
@@ -103,6 +113,7 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <typeparam name="TFind">查找类型</typeparam>
         /// <param name="assemblies">待查找的程序集列表</param>
+        /// <returns>List&lt;Type&gt;.</returns>
         public static List<Type> FindTypes<TFind>(params Assembly[] assemblies)
         {
             var findType = typeof(TFind);
@@ -114,6 +125,7 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <param name="findType">查找类型</param>
         /// <param name="assemblies">待查找的程序集列表</param>
+        /// <returns>List&lt;Type&gt;.</returns>
         public static List<Type> FindTypes(Type findType, params Assembly[] assemblies)
         {
             var result = new List<Type>();
@@ -178,6 +190,7 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <typeparam name="TInterface">接口类型</typeparam>
         /// <param name="assemblies">待查找的程序集列表</param>
+        /// <returns>List&lt;TInterface&gt;.</returns>
         public static List<TInterface> GetInstancesByInterface<TInterface>(params Assembly[] assemblies)
         {
             return FindTypes<TInterface>(assemblies)
@@ -189,7 +202,8 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <typeparam name="T">目标类型</typeparam>
         /// <param name="type">类型</param>
-        /// <param name="parameters">传递给构造函数的参数</param>        
+        /// <param name="parameters">传递给构造函数的参数</param>
+        /// <returns>T.</returns>
         public static T CreateInstance<T>(Type type, params object[] parameters)
         {
             return Util.Helpers.Convert.To<T>(Activator.CreateInstance(type, parameters));
@@ -199,6 +213,7 @@ namespace KissU.Util.Helpers
         /// 获取程序集
         /// </summary>
         /// <param name="assemblyName">程序集名称</param>
+        /// <returns>Assembly.</returns>
         public static Assembly GetAssembly(string assemblyName)
         {
             return Assembly.Load(new AssemblyName(assemblyName));
@@ -208,6 +223,7 @@ namespace KissU.Util.Helpers
         /// 是否布尔类型
         /// </summary>
         /// <param name="member">成员</param>
+        /// <returns><c>true</c> if the specified member is bool; otherwise, <c>false</c>.</returns>
         public static bool IsBool(MemberInfo member)
         {
             if (member == null)
@@ -234,6 +250,7 @@ namespace KissU.Util.Helpers
         /// 是否枚举类型
         /// </summary>
         /// <param name="member">成员</param>
+        /// <returns><c>true</c> if the specified member is enum; otherwise, <c>false</c>.</returns>
         public static bool IsEnum(MemberInfo member)
         {
             if (member == null)
@@ -265,6 +282,7 @@ namespace KissU.Util.Helpers
         /// 是否日期类型
         /// </summary>
         /// <param name="member">成员</param>
+        /// <returns><c>true</c> if the specified member is date; otherwise, <c>false</c>.</returns>
         public static bool IsDate(MemberInfo member)
         {
             if (member == null)
@@ -295,6 +313,7 @@ namespace KissU.Util.Helpers
         /// 是否整型
         /// </summary>
         /// <param name="member">成员</param>
+        /// <returns><c>true</c> if the specified member is int; otherwise, <c>false</c>.</returns>
         public static bool IsInt(MemberInfo member)
         {
             if (member == null)
@@ -333,6 +352,7 @@ namespace KissU.Util.Helpers
         /// 是否数值类型
         /// </summary>
         /// <param name="member">成员</param>
+        /// <returns><c>true</c> if the specified member is number; otherwise, <c>false</c>.</returns>
         public static bool IsNumber(MemberInfo member)
         {
             if (member == null)
@@ -373,6 +393,7 @@ namespace KissU.Util.Helpers
         /// 是否集合
         /// </summary>
         /// <param name="type">类型</param>
+        /// <returns><c>true</c> if the specified type is collection; otherwise, <c>false</c>.</returns>
         public static bool IsCollection(Type type)
         {
             if (type.IsArray)
@@ -384,6 +405,7 @@ namespace KissU.Util.Helpers
         /// 是否泛型集合
         /// </summary>
         /// <param name="type">类型</param>
+        /// <returns><c>true</c> if [is generic collection] [the specified type]; otherwise, <c>false</c>.</returns>
         public static bool IsGenericCollection(Type type)
         {
             if (!type.IsGenericType)
@@ -401,6 +423,7 @@ namespace KissU.Util.Helpers
         /// 从目录中获取所有程序集
         /// </summary>
         /// <param name="directoryPath">目录绝对路径</param>
+        /// <returns>List&lt;Assembly&gt;.</returns>
         public static List<Assembly> GetAssemblies(string directoryPath)
         {
             return Directory.GetFiles(directoryPath, "*.*", SearchOption.AllDirectories).ToList()
@@ -412,6 +435,7 @@ namespace KissU.Util.Helpers
         /// 获取公共属性列表
         /// </summary>
         /// <param name="instance">实例</param>
+        /// <returns>List&lt;Item&gt;.</returns>
         public static List<Item> GetPublicProperties(object instance)
         {
             var properties = instance.GetType().GetProperties();
@@ -422,6 +446,7 @@ namespace KissU.Util.Helpers
         /// 获取顶级基类
         /// </summary>
         /// <typeparam name="T">类型</typeparam>
+        /// <returns>Type.</returns>
         public static Type GetTopBaseType<T>()
         {
             return GetTopBaseType(typeof(T));
@@ -431,6 +456,7 @@ namespace KissU.Util.Helpers
         /// 获取顶级基类
         /// </summary>
         /// <param name="type">类型</param>
+        /// <returns>Type.</returns>
         public static Type GetTopBaseType(Type type)
         {
             if (type == null)
@@ -446,6 +472,8 @@ namespace KissU.Util.Helpers
         /// 获取元素类型，如果是集合，返回集合的元素类型
         /// </summary>
         /// <param name="type">类型</param>
+        /// <returns>Type.</returns>
+        /// <exception cref="ArgumentException">泛型类型参数不能为空</exception>
         public static Type GetElementType(Type type)
         {
             if (IsCollection(type) == false)

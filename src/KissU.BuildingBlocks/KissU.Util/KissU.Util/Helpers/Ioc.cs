@@ -20,6 +20,7 @@ namespace KissU.Util.Helpers
         /// 创建容器
         /// </summary>
         /// <param name="configs">依赖配置</param>
+        /// <returns>IContainer.</returns>
         public static IContainer CreateContainer(params IConfig[] configs)
         {
             var container = new Container();
@@ -32,6 +33,7 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <typeparam name="T">对象类型</typeparam>
         /// <param name="name">服务名称</param>
+        /// <returns>List&lt;T&gt;.</returns>
         public static List<T> CreateList<T>(string name = null)
         {
             return DefaultContainer.CreateList<T>(name);
@@ -43,6 +45,7 @@ namespace KissU.Util.Helpers
         /// <typeparam name="T">对象类型</typeparam>
         /// <param name="type">对象类型</param>
         /// <param name="name">服务名称</param>
+        /// <returns>List&lt;T&gt;.</returns>
         public static List<T> CreateList<T>(Type type, string name = null)
         {
             return ((IEnumerable<T>)DefaultContainer.CreateList(type, name)).ToList();
@@ -53,6 +56,7 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <typeparam name="T">对象类型</typeparam>
         /// <param name="name">服务名称</param>
+        /// <returns>T.</returns>
         public static T Create<T>(string name = null)
         {
             return DefaultContainer.Create<T>(name);
@@ -64,6 +68,7 @@ namespace KissU.Util.Helpers
         /// <typeparam name="T">对象类型</typeparam>
         /// <param name="type">对象类型</param>
         /// <param name="name">服务名称</param>
+        /// <returns>T.</returns>
         public static T Create<T>(Type type, string name = null)
         {
             return (T)DefaultContainer.Create(type, name);
@@ -72,6 +77,7 @@ namespace KissU.Util.Helpers
         /// <summary>
         /// 作用域开始
         /// </summary>
+        /// <returns>IScope.</returns>
         public static IScope BeginScope()
         {
             return DefaultContainer.BeginScope();
@@ -81,6 +87,7 @@ namespace KissU.Util.Helpers
         /// 注册依赖
         /// </summary>
         /// <param name="configs">依赖配置</param>
+        /// <returns>Autofac.IContainer.</returns>
         public static Autofac.IContainer Register(params IConfig[] configs)
         {
             return DefaultContainer.Register(null, null, b => b.EnableAop(), configs);
@@ -91,6 +98,7 @@ namespace KissU.Util.Helpers
         /// </summary>
         /// <param name="builder">容器生成器</param>
         /// <param name="configs">依赖配置</param>
+        /// <returns>Autofac.IContainer.</returns>
         public static Autofac.IContainer Register(Autofac.ContainerBuilder builder, params IConfig[] configs)
         {
             return DefaultContainer.Register(builder, null, b => b.EnableAop(), configs);
@@ -102,6 +110,7 @@ namespace KissU.Util.Helpers
         /// <param name="builder">容器生成器</param>
         /// <param name="services">服务集合</param>
         /// <param name="configs">依赖配置</param>
+        /// <returns>Autofac.IContainer.</returns>
         public static Autofac.IContainer Register(Autofac.ContainerBuilder builder, IServiceCollection services, params IConfig[] configs)
         {
             return DefaultContainer.Register(builder, services, b => b.EnableAop(), configs);

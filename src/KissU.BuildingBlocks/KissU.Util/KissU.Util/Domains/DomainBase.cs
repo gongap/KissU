@@ -11,6 +11,7 @@ namespace KissU.Util.Domains
     /// <summary>
     /// 领域层顶级基类
     /// </summary>
+    /// <typeparam name="T"></typeparam>
     public abstract class DomainBase<T> : IDomainObject, ICompareChange<T> where T : IDomainObject
     {
 
@@ -102,6 +103,7 @@ namespace KissU.Util.Domains
         /// <summary>
         /// 验证
         /// </summary>
+        /// <returns>ValidationResultCollection.</returns>
         public virtual ValidationResultCollection Validate()
         {
             var result = GetValidationResults();
@@ -147,6 +149,7 @@ namespace KissU.Util.Domains
         /// 获取变更属性
         /// </summary>
         /// <param name="newEntity">新对象</param>
+        /// <returns>ChangeValueCollection.</returns>
         public ChangeValueCollection GetChanges(T newEntity)
         {
             _changeValues = new ChangeValueCollection();
@@ -167,7 +170,9 @@ namespace KissU.Util.Domains
         /// <summary>
         /// 添加变更
         /// </summary>
-        /// <param name="expression">属性表达式,范例：t => t.Name</param>
+        /// <typeparam name="TProperty">The type of the t property.</typeparam>
+        /// <typeparam name="TValue">The type of the t value.</typeparam>
+        /// <param name="expression">属性表达式,范例：t =&gt; t.Name</param>
         /// <param name="newValue">新值,范例：newEntity.Name</param>
         protected void AddChange<TProperty, TValue>(Expression<Func<T, TProperty>> expression, TValue newValue)
         {
@@ -181,6 +186,7 @@ namespace KissU.Util.Domains
         /// <summary>
         /// 添加变更
         /// </summary>
+        /// <typeparam name="TValue">The type of the t value.</typeparam>
         /// <param name="propertyName">属性名</param>
         /// <param name="description">描述</param>
         /// <param name="oldValue">旧值,范例：this.Name</param>
@@ -199,6 +205,7 @@ namespace KissU.Util.Domains
         /// <summary>
         /// 添加变更
         /// </summary>
+        /// <typeparam name="TDomainObject">The type of the t domain object.</typeparam>
         /// <param name="oldObject">旧对象</param>
         /// <param name="newObject">新对象</param>
         protected void AddChange<TDomainObject>(ICompareChange<TDomainObject> oldObject, TDomainObject newObject) where TDomainObject : IDomainObject
@@ -213,6 +220,7 @@ namespace KissU.Util.Domains
         /// <summary>
         /// 添加变更
         /// </summary>
+        /// <typeparam name="TDomainObject">The type of the t domain object.</typeparam>
         /// <param name="oldObjects">旧对象列表</param>
         /// <param name="newObjects">新对象列表</param>
         protected void AddChange<TDomainObject>(IEnumerable<ICompareChange<TDomainObject>> oldObjects, IEnumerable<TDomainObject> newObjects) where TDomainObject : IDomainObject
@@ -245,6 +253,7 @@ namespace KissU.Util.Domains
         /// <summary>
         /// 添加描述
         /// </summary>
+        /// <param name="description">The description.</param>
         protected void AddDescription(string description)
         {
             if (string.IsNullOrWhiteSpace(description))
@@ -255,6 +264,9 @@ namespace KissU.Util.Domains
         /// <summary>
         /// 添加描述
         /// </summary>
+        /// <typeparam name="TValue">The type of the t value.</typeparam>
+        /// <param name="name">The name.</param>
+        /// <param name="value">The value.</param>
         protected void AddDescription<TValue>(string name, TValue value)
         {
             if (string.IsNullOrWhiteSpace(value.SafeString()))
@@ -265,7 +277,8 @@ namespace KissU.Util.Domains
         /// <summary>
         /// 添加描述
         /// </summary>
-        /// <param name="expression">属性表达式,范例：t => t.Name</param>
+        /// <typeparam name="TProperty">The type of the t property.</typeparam>
+        /// <param name="expression">属性表达式,范例：t =&gt; t.Name</param>
         protected void AddDescription<TProperty>(Expression<Func<T, TProperty>> expression)
         {
             var member = Util.Helpers.Lambda.GetMember(expression);
@@ -283,6 +296,7 @@ namespace KissU.Util.Domains
         /// <summary>
         /// 输出对象状态
         /// </summary>
+        /// <returns>A <see cref="System.String" /> that represents this instance.</returns>
         public override string ToString()
         {
             _description = new StringBuilder();

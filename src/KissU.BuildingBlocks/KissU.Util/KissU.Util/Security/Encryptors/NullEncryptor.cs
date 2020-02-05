@@ -14,6 +14,7 @@
         /// 加密
         /// </summary>
         /// <param name="data">原始数据</param>
+        /// <returns>System.String.</returns>
         public string Encrypt(string data)
         {
             return string.Empty;
@@ -23,6 +24,7 @@
         /// 解密
         /// </summary>
         /// <param name="data">已加密数据</param>
+        /// <returns>System.String.</returns>
         public string Decrypt(string data)
         {
             return string.Empty;

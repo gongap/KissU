@@ -25,6 +25,9 @@ namespace KissU.Util.Datas.Queries.Criterias
         /// <summary>
         /// 最小值是否大于最大值
         /// </summary>
+        /// <param name="min">The minimum.</param>
+        /// <param name="max">The maximum.</param>
+        /// <returns><c>true</c> if [is minimum greater maximum] [the specified minimum]; otherwise, <c>false</c>.</returns>
         protected override bool IsMinGreaterMax(int? min, int? max)
         {
             return min > max;

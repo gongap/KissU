@@ -10,10 +10,11 @@ namespace KissU.Util
     public static partial class Extensions
     {
         /// <summary>
-        /// 检测对象是否为null,为null则抛出<see cref="ArgumentNullException"/>异常
+        /// 检测对象是否为null,为null则抛出<see cref="ArgumentNullException" />异常
         /// </summary>
         /// <param name="obj">对象</param>
         /// <param name="parameterName">参数名</param>
+        /// <exception cref="ArgumentNullException"></exception>
         public static void CheckNull(this object obj, string parameterName)
         {
             if (obj == null)
@@ -24,6 +25,7 @@ namespace KissU.Util
         /// 是否为空
         /// </summary>
         /// <param name="value">值</param>
+        /// <returns><c>true</c> if the specified value is empty; otherwise, <c>false</c>.</returns>
         public static bool IsEmpty(this string value)
         {
             return string.IsNullOrWhiteSpace(value);
@@ -33,6 +35,7 @@ namespace KissU.Util
         /// 是否为空
         /// </summary>
         /// <param name="value">值</param>
+        /// <returns><c>true</c> if the specified value is empty; otherwise, <c>false</c>.</returns>
         public static bool IsEmpty(this Guid value)
         {
             return value == Guid.Empty;
@@ -42,6 +45,7 @@ namespace KissU.Util
         /// 是否为空
         /// </summary>
         /// <param name="value">值</param>
+        /// <returns><c>true</c> if the specified value is empty; otherwise, <c>false</c>.</returns>
         public static bool IsEmpty(this Guid? value)
         {
             if (value == null)
@@ -52,7 +56,9 @@ namespace KissU.Util
         /// <summary>
         /// 是否为空
         /// </summary>
+        /// <typeparam name="T"></typeparam>
         /// <param name="value">值</param>
+        /// <returns><c>true</c> if the specified value is empty; otherwise, <c>false</c>.</returns>
         public static bool IsEmpty<T>(this IEnumerable<T> value)
         {
             if (value == null)

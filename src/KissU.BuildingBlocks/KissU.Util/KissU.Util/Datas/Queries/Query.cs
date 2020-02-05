@@ -72,6 +72,7 @@ namespace KissU.Util.Datas.Queries
         /// <summary>
         /// 获取查询条件
         /// </summary>
+        /// <returns>Expression&lt;Func&lt;TEntity, System.Boolean&gt;&gt;.</returns>
         public Expression<Func<TEntity, bool>> GetPredicate()
         {
             return _predicate;
@@ -80,6 +81,7 @@ namespace KissU.Util.Datas.Queries
         /// <summary>
         /// 获取排序条件
         /// </summary>
+        /// <returns>System.String.</returns>
         public string GetOrder()
         {
             return _orderByBuilder.Generate();
@@ -88,6 +90,7 @@ namespace KissU.Util.Datas.Queries
         /// <summary>
         /// 获取分页
         /// </summary>
+        /// <returns>IPager.</returns>
         public IPager GetPager()
         {
             return new Pager(_parameter.Page, _parameter.PageSize, _parameter.TotalCount, GetOrder());
@@ -97,6 +100,7 @@ namespace KissU.Util.Datas.Queries
         /// 添加查询条件
         /// </summary>
         /// <param name="predicate">查询条件</param>
+        /// <returns>IQuery&lt;TEntity, TKey&gt;.</returns>
         public IQuery<TEntity, TKey> Where(Expression<Func<TEntity, bool>> predicate)
         {
             return And(predicate);
@@ -106,6 +110,7 @@ namespace KissU.Util.Datas.Queries
         /// 添加查询条件
         /// </summary>
         /// <param name="criteria">查询条件</param>
+        /// <returns>IQuery&lt;TEntity, TKey&gt;.</returns>
         public IQuery<TEntity, TKey> Where(ICriteria<TEntity> criteria)
         {
             return And(criteria.GetPredicate());
@@ -116,6 +121,7 @@ namespace KissU.Util.Datas.Queries
         /// </summary>
         /// <param name="predicate">查询条件</param>
         /// <param name="condition">该值为true时添加查询条件，否则忽略</param>
+        /// <returns>IQuery&lt;TEntity, TKey&gt;.</returns>
         public IQuery<TEntity, TKey> WhereIf(Expression<Func<TEntity, bool>> predicate, bool condition)
         {
             if (condition == false)
@@ -126,8 +132,9 @@ namespace KissU.Util.Datas.Queries
         /// <summary>
         /// 添加查询条件
         /// </summary>
-        /// <param name="predicate">查询条件,如果参数值为空，则忽略该查询条件，范例：t => t.Name == ""，该查询条件被忽略。
-        /// 注意：一次仅能添加一个条件，范例：t => t.Name == "a" &amp;&amp; t.Mobile == "123"，不支持，将抛出异常</param>
+        /// <param name="predicate">查询条件,如果参数值为空，则忽略该查询条件，范例：t =&gt; t.Name == ""，该查询条件被忽略。
+        /// 注意：一次仅能添加一个条件，范例：t =&gt; t.Name == "a" &amp;&amp; t.Mobile == "123"，不支持，将抛出异常</param>
+        /// <returns>IQuery&lt;TEntity, TKey&gt;.</returns>
         public IQuery<TEntity, TKey> WhereIfNotEmpty(Expression<Func<TEntity, bool>> predicate)
         {
             predicate = Helper.GetWhereIfNotEmptyExpression(predicate);
@@ -140,10 +147,11 @@ namespace KissU.Util.Datas.Queries
         /// 添加范围查询条件
         /// </summary>
         /// <typeparam name="TProperty">属性类型</typeparam>
-        /// <param name="propertyExpression">属性表达式，范例：t => t.Age</param>
+        /// <param name="propertyExpression">属性表达式，范例：t =&gt; t.Age</param>
         /// <param name="min">最小值</param>
         /// <param name="max">最大值</param>
         /// <param name="boundary">包含边界</param>
+        /// <returns>IQuery&lt;TEntity, TKey&gt;.</returns>
         public IQuery<TEntity, TKey> Between<TProperty>(Expression<Func<TEntity, TProperty>> propertyExpression, int? min, int? max, Boundary boundary = Boundary.Both)
         {
             return Where(new IntSegmentCriteria<TEntity, TProperty>(propertyExpression, min, max, boundary));
@@ -153,10 +161,11 @@ namespace KissU.Util.Datas.Queries
         /// 添加范围查询条件
         /// </summary>
         /// <typeparam name="TProperty">属性类型</typeparam>
-        /// <param name="propertyExpression">属性表达式，范例：t => t.Age</param>
+        /// <param name="propertyExpression">属性表达式，范例：t =&gt; t.Age</param>
         /// <param name="min">最小值</param>
         /// <param name="max">最大值</param>
         /// <param name="boundary">包含边界</param>
+        /// <returns>IQuery&lt;TEntity, TKey&gt;.</returns>
         public IQuery<TEntity, TKey> Between<TProperty>(Expression<Func<TEntity, TProperty>> propertyExpression, double? min, double? max, Boundary boundary = Boundary.Both)
         {
             return Where(new DoubleSegmentCriteria<TEntity, TProperty>(propertyExpression, min, max, boundary));
@@ -166,10 +175,11 @@ namespace KissU.Util.Datas.Queries
         /// 添加范围查询条件
         /// </summary>
         /// <typeparam name="TProperty">属性类型</typeparam>
-        /// <param name="propertyExpression">属性表达式，范例：t => t.Age</param>
+        /// <param name="propertyExpression">属性表达式，范例：t =&gt; t.Age</param>
         /// <param name="min">最小值</param>
         /// <param name="max">最大值</param>
         /// <param name="boundary">包含边界</param>
+        /// <returns>IQuery&lt;TEntity, TKey&gt;.</returns>
         public IQuery<TEntity, TKey> Between<TProperty>(Expression<Func<TEntity, TProperty>> propertyExpression, decimal? min, decimal? max, Boundary boundary = Boundary.Both)
         {
             return Where(new DecimalSegmentCriteria<TEntity, TProperty>(propertyExpression, min, max, boundary));
@@ -179,11 +189,12 @@ namespace KissU.Util.Datas.Queries
         /// 添加范围查询条件
         /// </summary>
         /// <typeparam name="TProperty">属性类型</typeparam>
-        /// <param name="propertyExpression">属性表达式，范例：t => t.Time</param>
+        /// <param name="propertyExpression">属性表达式，范例：t =&gt; t.Time</param>
         /// <param name="min">最小值</param>
         /// <param name="max">最大值</param>
         /// <param name="includeTime">是否包含时间</param>
         /// <param name="boundary">包含边界</param>
+        /// <returns>IQuery&lt;TEntity, TKey&gt;.</returns>
         public IQuery<TEntity, TKey> Between<TProperty>(Expression<Func<TEntity, TProperty>> propertyExpression, DateTime? min, DateTime? max, bool includeTime = true, Boundary? boundary = null)
         {
             if (includeTime)
@@ -197,6 +208,7 @@ namespace KissU.Util.Datas.Queries
         /// <typeparam name="TProperty">属性类型</typeparam>
         /// <param name="expression">属性表达式</param>
         /// <param name="desc">是否降序</param>
+        /// <returns>IQuery&lt;TEntity, TKey&gt;.</returns>
         public IQuery<TEntity, TKey> OrderBy<TProperty>(Expression<Func<TEntity, TProperty>> expression, bool desc = false)
         {
             return OrderBy(Lambda.GetName(expression), desc);
@@ -207,6 +219,7 @@ namespace KissU.Util.Datas.Queries
         /// </summary>
         /// <param name="propertyName">排序属性</param>
         /// <param name="desc">是否降序</param>
+        /// <returns>IQuery&lt;TEntity, TKey&gt;.</returns>
         public IQuery<TEntity, TKey> OrderBy(string propertyName, bool desc = false)
         {
             _orderByBuilder.Add(propertyName, desc);
@@ -217,6 +230,7 @@ namespace KissU.Util.Datas.Queries
         /// 与连接
         /// </summary>
         /// <param name="predicate">查询条件</param>
+        /// <returns>IQuery&lt;TEntity, TKey&gt;.</returns>
         public IQuery<TEntity, TKey> And(Expression<Func<TEntity, bool>> predicate)
         {
             _predicate = _predicate.And(predicate);
@@ -227,6 +241,7 @@ namespace KissU.Util.Datas.Queries
         /// 与连接
         /// </summary>
         /// <param name="query">查询对象</param>
+        /// <returns>IQuery&lt;TEntity, TKey&gt;.</returns>
         public IQuery<TEntity, TKey> And(IQuery<TEntity, TKey> query)
         {
             And(query.GetPredicate());
@@ -238,6 +253,7 @@ namespace KissU.Util.Datas.Queries
         /// 或连接
         /// </summary>
         /// <param name="predicates">查询条件</param>
+        /// <returns>IQuery&lt;TEntity, TKey&gt;.</returns>
         public IQuery<TEntity, TKey> Or(params Expression<Func<TEntity, bool>>[] predicates)
         {
             if (predicates == null)
@@ -256,6 +272,7 @@ namespace KissU.Util.Datas.Queries
         /// 或连接
         /// </summary>
         /// <param name="query">查询对象</param>
+        /// <returns>IQuery&lt;TEntity, TKey&gt;.</returns>
         public IQuery<TEntity, TKey> Or(IQuery<TEntity, TKey> query)
         {
             _predicate = _predicate.Or(query.GetPredicate());

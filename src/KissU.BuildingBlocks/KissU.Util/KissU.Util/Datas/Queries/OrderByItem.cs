@@ -29,6 +29,7 @@
         /// <summary>
         /// 创建排序字符串
         /// </summary>
+        /// <returns>System.String.</returns>
         public string Generate()
         {
             if (Desc)

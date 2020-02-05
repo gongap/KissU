@@ -10,7 +10,7 @@
 
 namespace KissU.Util.Properties {
     /// <summary>
-    ///   一个强类型的资源类，用于查找本地化的字符串等。
+    /// 一个强类型的资源类，用于查找本地化的字符串等。
     /// </summary>
     // 此类是由 StronglyTypedResourceBuilder
     // 类通过类似于 ResGen 或 Visual Studio 的工具自动生成的。
@@ -24,13 +24,16 @@ namespace KissU.Util.Properties {
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
-        
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LibraryResource" /> class.
+        /// </summary>
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal LibraryResource() {
         }
-        
+
         /// <summary>
-        ///   返回此类使用的缓存的 ResourceManager 实例。
+        /// 返回此类使用的缓存的 ResourceManager 实例。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         public static global::System.Resources.ResourceManager ResourceManager {
@@ -42,10 +45,10 @@ namespace KissU.Util.Properties {
                 return resourceMan;
             }
         }
-        
+
         /// <summary>
-        ///   重写当前线程的 CurrentUICulture 属性
-        ///   重写当前线程的 CurrentUICulture 属性。
+        /// 重写当前线程的 CurrentUICulture 属性
+        /// 重写当前线程的 CurrentUICulture 属性。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         public static global::System.Globalization.CultureInfo Culture {
@@ -56,63 +59,63 @@ namespace KissU.Util.Properties {
                 resourceCulture = value;
             }
         }
-        
+
         /// <summary>
-        ///   查找类似 当前操作的数据已被其他人修改，请刷新后重试 的本地化字符串。
+        /// 查找类似 当前操作的数据已被其他人修改，请刷新后重试 的本地化字符串。
         /// </summary>
         public static string ConcurrencyExceptionMessage {
             get {
                 return ResourceManager.GetString("ConcurrencyExceptionMessage", resourceCulture);
             }
         }
-        
+
         /// <summary>
-        ///   查找类似 身份证不正确 的本地化字符串。
+        /// 查找类似 身份证不正确 的本地化字符串。
         /// </summary>
         public static string InvalidIdCard {
             get {
                 return ResourceManager.GetString("InvalidIdCard", resourceCulture);
             }
         }
-        
+
         /// <summary>
-        ///   查找类似 手机号不正确 的本地化字符串。
+        /// 查找类似 手机号不正确 的本地化字符串。
         /// </summary>
         public static string InvalidMobilePhone {
             get {
                 return ResourceManager.GetString("InvalidMobilePhone", resourceCulture);
             }
         }
-        
+
         /// <summary>
-        ///   查找类似 不允许将节点移动到自己或子节点下 的本地化字符串。
+        /// 查找类似 不允许将节点移动到自己或子节点下 的本地化字符串。
         /// </summary>
         public static string NotSupportMoveToChildren {
             get {
                 return ResourceManager.GetString("NotSupportMoveToChildren", resourceCulture);
             }
         }
-        
+
         /// <summary>
-        ///   查找类似 仅允许添加一个条件,条件：{0} 的本地化字符串。
+        /// 查找类似 仅允许添加一个条件,条件：{0} 的本地化字符串。
         /// </summary>
         public static string OnlyOnePredicate {
             get {
                 return ResourceManager.GetString("OnlyOnePredicate", resourceCulture);
             }
         }
-        
+
         /// <summary>
-        ///   查找类似 分页必须设置排序字段 的本地化字符串。
+        /// 查找类似 分页必须设置排序字段 的本地化字符串。
         /// </summary>
         public static string OrderIsEmptyForPage {
             get {
                 return ResourceManager.GetString("OrderIsEmptyForPage", resourceCulture);
             }
         }
-        
+
         /// <summary>
-        ///   查找类似 必须设置表名 的本地化字符串。
+        /// 查找类似 必须设置表名 的本地化字符串。
         /// </summary>
         public static string TableIsEmpty {
             get {

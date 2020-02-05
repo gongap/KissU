@@ -10,6 +10,7 @@ namespace KissU.Util.Validations
         /// <summary>
         /// 验证
         /// </summary>
+        /// <returns>ValidationResult.</returns>
         ValidationResult Validate();
     }
 }

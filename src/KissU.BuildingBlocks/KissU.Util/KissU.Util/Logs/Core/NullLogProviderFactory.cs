@@ -12,6 +12,7 @@ namespace KissU.Util.Logs.Core
         /// </summary>
         /// <param name="logName">日志名称</param>
         /// <param name="format">日志格式化器</param>
+        /// <returns>ILogProvider.</returns>
         public ILogProvider Create(string logName, ILogFormat format = null)
         {
             return new NullProvider(logName, format);
