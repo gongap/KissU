@@ -214,6 +214,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "KissU.Core.Tests", "KissU.C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Tests", "test\KissU.Tests\KissU.Tests.csproj", "{0D56AE29-3DCA-4918-BF93-10856659AB79}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Core.ServiceHosting.Tests", "test\KissU.Core.Tests\KissU.Core.ServiceHosting.Tests\KissU.Core.ServiceHosting.Tests.csproj", "{C5B85524-5D30-4557-9071-7437276C8C42}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -524,6 +526,10 @@ Global
 		{0D56AE29-3DCA-4918-BF93-10856659AB79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D56AE29-3DCA-4918-BF93-10856659AB79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D56AE29-3DCA-4918-BF93-10856659AB79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5B85524-5D30-4557-9071-7437276C8C42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5B85524-5D30-4557-9071-7437276C8C42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5B85524-5D30-4557-9071-7437276C8C42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5B85524-5D30-4557-9071-7437276C8C42}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -622,6 +628,7 @@ Global
 		{E4064CED-EBEF-44A9-B1A3-0B3BC079FC43} = {C5FD25F4-7CA0-43AE-BC79-BF1132CE4C69}
 		{0132FC81-FFA9-4EE5-8595-03CFA8B6E3D2} = {8C5BB6A1-6362-4935-9278-993935F43949}
 		{0D56AE29-3DCA-4918-BF93-10856659AB79} = {8C5BB6A1-6362-4935-9278-993935F43949}
+		{C5B85524-5D30-4557-9071-7437276C8C42} = {0132FC81-FFA9-4EE5-8595-03CFA8B6E3D2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}

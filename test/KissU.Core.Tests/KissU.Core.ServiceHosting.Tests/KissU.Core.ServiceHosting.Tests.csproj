@@ -17,12 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\src\KissU.BuildingBlocks\KissU.Util\KissU.Util.Applications\KissU.Util.Applications.csproj" />
-    <ProjectReference Include="..\..\..\src\KissU.BuildingBlocks\KissU.Util\KissU.Util.Caches\KissU.Util.Caches.csproj" />
-    <ProjectReference Include="..\..\..\src\KissU.BuildingBlocks\KissU.Util\KissU.Util.Datas\KissU.Util.Datas.csproj" />
-    <ProjectReference Include="..\..\..\src\KissU.BuildingBlocks\KissU.Util\KissU.Util.Events\KissU.Util.Events.csproj" />
-    <ProjectReference Include="..\..\..\src\KissU.BuildingBlocks\KissU.Util\KissU.Util.Logs\KissU.Util.Logs.csproj" />
-    <ProjectReference Include="..\..\..\src\KissU.BuildingBlocks\KissU.Util\KissU.Util.Security\KissU.Util.Security.csproj" />
+    <ProjectReference Include="..\..\..\src\KissU.BuildingBlocks\KissU.Core\KissU.Core.ServiceHosting\KissU.Core.ServiceHosting.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,5 +33,10 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>TestResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Internal\" />
+    <Folder Include="Startup\" />
   </ItemGroup>
 </Project>
