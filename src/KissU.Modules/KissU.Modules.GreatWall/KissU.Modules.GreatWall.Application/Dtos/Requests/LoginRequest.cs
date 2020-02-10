@@ -52,6 +52,8 @@ namespace KissU.Modules.GreatWall.Application.Dtos.Requests
         /// <summary>
         /// 验证
         /// </summary>
+        /// <returns>ValidationResultCollection.</returns>
+        /// <exception cref="Warning">帐号不能为空</exception>
         public override ValidationResultCollection Validate()
         {
             if (Account.IsEmpty() && UserName.IsEmpty() && Email.IsEmpty() && PhoneNumber.IsEmpty())

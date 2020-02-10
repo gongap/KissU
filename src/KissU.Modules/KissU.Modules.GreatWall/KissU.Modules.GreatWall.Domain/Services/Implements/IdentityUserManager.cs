@@ -42,6 +42,8 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         /// <param name="tokenProvidor">令牌提供程序</param>
         /// <param name="token">令牌</param>
         /// <param name="newPassword">新密码</param>
+        /// <returns>Task&lt;IdentityResult&gt;.</returns>
+        /// <exception cref="ArgumentNullException">user</exception>
         public async Task<IdentityResult> ResetPasswordAsync(User user, string tokenProvidor, string token,
             string newPassword)
         {
@@ -61,6 +63,8 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="newPassword">新密码</param>
+        /// <returns>Task&lt;IdentityResult&gt;.</returns>
+        /// <exception cref="ArgumentNullException">user</exception>
         public async Task<IdentityResult> UpdatePasswordAsync(User user, string newPassword)
         {
             ThrowIfDisposed();

@@ -23,6 +23,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// 通过编号获取
         /// </summary>
         /// <param name="id">实体编号</param>
+        /// <returns>Task&lt;ApiResourceDto&gt;.</returns>
         [ServiceRoute("{id}")]
         [HttpGet(true)]
         Task<ApiResourceDto> GetByIdAsync(int id);
@@ -30,6 +31,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// <summary>
         /// 获取全部
         /// </summary>
+        /// <returns>Task&lt;List&lt;ApiResourceDto&gt;&gt;.</returns>
         [HttpGet(true)]
         Task<List<ApiResourceDto>> GetAllAsync();
 
@@ -37,6 +39,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// 查询
         /// </summary>
         /// <param name="parameter">查询参数</param>
+        /// <returns>Task&lt;List&lt;ApiResourceDto&gt;&gt;.</returns>
         [HttpPost(true)]
         Task<List<ApiResourceDto>> QueryAsync(ApiResourceQuery parameter);
 
@@ -44,6 +47,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// 分页查询
         /// </summary>
         /// <param name="parameter">查询参数</param>
+        /// <returns>Task&lt;PagerList&lt;ApiResourceDto&gt;&gt;.</returns>
         [HttpPost(true)]
         Task<PagerList<ApiResourceDto>> PagerQueryAsync(ApiResourceQuery parameter);
 
@@ -51,6 +55,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// 创建
         /// </summary>
         /// <param name="request">创建参数</param>
+        /// <returns>Task&lt;System.String&gt;.</returns>
         [HttpPost(true)]
         Task<string> CreateAsync([Valid] ApiResourceCreateRequest request);
 
@@ -58,6 +63,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// 修改
         /// </summary>
         /// <param name="request">修改参数</param>
+        /// <returns>Task.</returns>
         [HttpPut(true)]
         Task UpdateAsync([Valid] ApiResourceDto request);
 
@@ -65,6 +71,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// 删除
         /// </summary>
         /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
+        /// <returns>Task.</returns>
         [HttpDelete(true)]
         Task DeleteAsync(string ids);
 
@@ -76,7 +83,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// 获取许可范围
         /// </summary>
         /// <param name="id">资源编号</param>
-        /// <returns></returns>
+        /// <returns>Task&lt;List&lt;ApiScopeDto&gt;&gt;.</returns>
         [ServiceRoute("{id}")]
         [HttpGet(true)]
         Task<List<ApiScopeDto>> GetScopesAsync(string id);
@@ -85,7 +92,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// 获取许可范围
         /// </summary>
         /// <param name="scopeId">许可范围编号</param>
-        /// <returns></returns>
+        /// <returns>Task&lt;ApiScopeDto&gt;.</returns>
         [ServiceRoute("{scopeId}")]
         [HttpGet(true)]
         Task<ApiScopeDto> GetScopeAsync(string scopeId);
@@ -94,7 +101,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// 创建许可范围
         /// </summary>
         /// <param name="request">创建许可范围参数</param>
-        /// <returns></returns>
+        /// <returns>Task&lt;System.Int32&gt;.</returns>
         [HttpPost(true)]
         Task<int> CreateScopeAsync([Valid] ApiScopeCreateRequest request);
 
@@ -102,7 +109,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// 更新许可范围
         /// </summary>
         /// <param name="request">许可范围</param>
-        /// <returns></returns>
+        /// <returns>Task.</returns>
         [HttpPut(true)]
         Task UpdateScopeAsync([Valid] ApiScopeDto request);
 
@@ -110,7 +117,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// 删除许可范围
         /// </summary>
         /// <param name="scopeId">许可范围编号</param>
-        /// <returns></returns>
+        /// <returns>Task.</returns>
         [ServiceRoute("{scopeId}")]
         [HttpDelete(true)]
         Task DeleteScopeAsync(string scopeId);
@@ -123,7 +130,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// 获取密钥
         /// </summary>
         /// <param name="id">资源编号</param>
-        /// <returns></returns>
+        /// <returns>Task&lt;List&lt;ApiSecretDto&gt;&gt;.</returns>
         [ServiceRoute("{id}")]
         [HttpGet(true)]
         Task<List<ApiSecretDto>> GetSecretsAsync(string id);
@@ -132,7 +139,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// 获取密钥
         /// </summary>
         /// <param name="secretId">密钥编号</param>
-        /// <returns></returns>
+        /// <returns>Task&lt;ApiSecretDto&gt;.</returns>
         [ServiceRoute("{secretId}")]
         [HttpGet(true)]
         Task<ApiSecretDto> GetSecretAsync(string secretId);
@@ -141,7 +148,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// 创建密钥
         /// </summary>
         /// <param name="request">创建密钥参数</param>
-        /// <returns></returns>
+        /// <returns>Task&lt;System.Int32&gt;.</returns>
         [HttpPost(true)]
         Task<int> CreateSecretAsync([Valid] ApiSecretCreateRequest request);
 
@@ -149,7 +156,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// 删除密钥
         /// </summary>
         /// <param name="secretId">密钥编号</param>
-        /// <returns></returns>
+        /// <returns>Task.</returns>
         [ServiceRoute("{secretId}")]
         [HttpDelete(true)]
         Task DeleteSecretAsync(string secretId);

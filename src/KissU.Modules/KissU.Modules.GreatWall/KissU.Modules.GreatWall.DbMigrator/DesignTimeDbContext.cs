@@ -30,6 +30,7 @@ namespace KissU.Modules.GreatWall.DbMigrator
         /// <summary>
         /// 获取定义映射配置的程序集列表
         /// </summary>
+        /// <returns>Assembly[].</returns>
         protected override Assembly[] GetAssemblies()
         {
             return Finder.GetAssemblies().ToArray();

@@ -5,6 +5,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace KissU.Util.Tests.Samples
 {
+    /// <summary>
+    /// Interface ISample
+    /// </summary>
     public interface ISample
     {
     }
@@ -184,6 +187,7 @@ namespace KissU.Util.Tests.Samples
         /// <summary>
         /// 创建测试实例1
         /// </summary>
+        /// <returns>Sample.</returns>
         public static Sample Create1()
         {
             return new Sample { StringValue = "A" };
@@ -192,6 +196,7 @@ namespace KissU.Util.Tests.Samples
         /// <summary>
         /// 创建测试实例2
         /// </summary>
+        /// <returns>Sample.</returns>
         public static Sample Create2()
         {
             return new Sample { StringValue = "B" };

@@ -77,6 +77,7 @@ namespace KissU.Util.Datas.Tests.Integration.Commons.Domains.Models
         /// 查找订单明细
         /// </summary>
         /// <param name="itemId">订单明细编号</param>
+        /// <returns>OrderItem.</returns>
         public OrderItem FindItem(Guid itemId)
         {
             return _items.Find(t => t.Id == itemId);

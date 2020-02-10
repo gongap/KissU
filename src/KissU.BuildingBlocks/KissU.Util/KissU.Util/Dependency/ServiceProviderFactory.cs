@@ -22,7 +22,7 @@ namespace KissU.Util.Dependency
         /// </param>
         public ServiceProviderFactory(Action<ContainerBuilder> configurationAction = null)
         {
-            _configurationAction = configurationAction ?? builder => { };
+            _configurationAction = configurationAction ?? (builder => { });
         }
 
         /// <summary>

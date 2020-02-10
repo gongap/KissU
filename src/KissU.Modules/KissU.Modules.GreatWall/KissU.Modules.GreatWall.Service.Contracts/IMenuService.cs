@@ -15,6 +15,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts
         /// <summary>
         /// 获取菜单
         /// </summary>
+        /// <returns>Task&lt;List&lt;MenuResponse&gt;&gt;.</returns>
         [HttpGet(true)]
         Task<List<MenuResponse>> GetMenusAsync();
     }

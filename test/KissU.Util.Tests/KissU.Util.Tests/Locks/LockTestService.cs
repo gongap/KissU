@@ -44,6 +44,9 @@ namespace KissU.Util.Tests.Locks
         /// <summary>
         /// 执行
         /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="expiration">The expiration.</param>
+        /// <returns>System.String.</returns>
         public string Execute(string key, TimeSpan? expiration = null)
         {
             var result = _lock.Lock(key, expiration);

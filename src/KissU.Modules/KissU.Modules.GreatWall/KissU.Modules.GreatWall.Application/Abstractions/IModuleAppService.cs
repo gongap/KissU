@@ -17,12 +17,14 @@ namespace KissU.Modules.GreatWall.Application.Abstractions
         /// 创建模块
         /// </summary>
         /// <param name="request">创建模块参数</param>
+        /// <returns>Task&lt;Guid&gt;.</returns>
         Task<Guid> CreateAsync([NotNull] [Valid] CreateModuleRequest request);
 
         /// <summary>
         /// 修改模块
         /// </summary>
         /// <param name="request">模块参数</param>
+        /// <returns>Task.</returns>
         Task UpdateAsync([NotNull] [Valid] ModuleDto request);
     }
 }

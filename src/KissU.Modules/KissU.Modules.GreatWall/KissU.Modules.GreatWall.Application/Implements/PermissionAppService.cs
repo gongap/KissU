@@ -50,6 +50,7 @@ namespace KissU.Modules.GreatWall.Application.Implements
         /// 获取资源标识列表
         /// </summary>
         /// <param name="query">权限参数</param>
+        /// <returns>Task&lt;List&lt;Guid&gt;&gt;.</returns>
         public async Task<List<Guid>> GetResourceIdsAsync(PermissionQuery query)
         {
             return await PermissionRepository.GetResourceIdsAsync(query.ApplicationId.SafeValue(),

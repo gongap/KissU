@@ -13,11 +13,16 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         /// <summary>
         /// 映射表
         /// </summary>
+        /// <param name="builder">The builder.</param>
         protected override void MapTable(EntityTypeBuilder<DeviceFlowCode> builder)
         {
             builder.ToTable(DbConstants.DbTablePrefix + "DeviceFlowCodes", DbConstants.DbSchema);
         }
 
+        /// <summary>
+        /// Maps the properties.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
         protected override void MapProperties(EntityTypeBuilder<DeviceFlowCode> builder)
         {
             builder.HasKey(x => new { x.UserCode });

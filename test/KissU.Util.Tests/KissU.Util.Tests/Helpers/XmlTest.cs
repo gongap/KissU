@@ -13,6 +13,7 @@ namespace KissU.Util.Tests.Helpers
         /// <summary>
         /// 测试初始化
         /// </summary>
+        /// <param name="output">The output.</param>
         public XmlTest(ITestOutputHelper output)
         {
             _output = output;

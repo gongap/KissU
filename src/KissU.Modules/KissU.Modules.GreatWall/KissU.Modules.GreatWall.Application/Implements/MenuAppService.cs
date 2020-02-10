@@ -42,6 +42,7 @@ namespace KissU.Modules.GreatWall.Application.Implements
         /// <summary>
         /// 获取菜单
         /// </summary>
+        /// <returns>Task&lt;List&lt;MenuResponse&gt;&gt;.</returns>
         public async Task<List<MenuResponse>> GetMenusAsync()
         {
             var userId = Session.UserId;

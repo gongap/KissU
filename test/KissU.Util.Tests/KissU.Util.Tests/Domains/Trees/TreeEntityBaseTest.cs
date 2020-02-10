@@ -12,6 +12,7 @@ namespace KissU.Util.Tests.Domains.Trees
         /// <summary>
         /// 从路径中获取所有上级节点编号
         /// </summary>
+        /// <param name="path">The path.</param>
         [Theory]
         [InlineData(null)]
         [InlineData("")]

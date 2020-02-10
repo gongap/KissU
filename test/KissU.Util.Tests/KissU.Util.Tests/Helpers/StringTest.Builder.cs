@@ -25,6 +25,8 @@ namespace KissU.Util.Tests.Helpers
         /// <summary>
         /// 测试添加
         /// </summary>
+        /// <param name="value">The value.</param>
+        /// <param name="result">The result.</param>
         [Theory]
         [InlineData("a", "a")]
         [InlineData(1, "1")]
@@ -37,6 +39,9 @@ namespace KissU.Util.Tests.Helpers
         /// <summary>
         /// 测试添加 - 2个值
         /// </summary>
+        /// <param name="value">The value.</param>
+        /// <param name="value2">The value2.</param>
+        /// <param name="result">The result.</param>
         [Theory]
         [InlineData("a", 1, "a1")]
         [InlineData("{", "}", "{}")]
@@ -50,6 +55,9 @@ namespace KissU.Util.Tests.Helpers
         /// <summary>
         /// 测试添加 - 带一个参数
         /// </summary>
+        /// <param name="value">The value.</param>
+        /// <param name="arg">The argument.</param>
+        /// <param name="result">The result.</param>
         [Theory]
         [InlineData("a{0}b", 1, "a1b")]
         [InlineData("a{0}b", null, "ab")]
@@ -62,6 +70,10 @@ namespace KissU.Util.Tests.Helpers
         /// <summary>
         /// 测试添加 - 带2个参数
         /// </summary>
+        /// <param name="value">The value.</param>
+        /// <param name="arg">The argument.</param>
+        /// <param name="arg2">The arg2.</param>
+        /// <param name="result">The result.</param>
         [Theory]
         [InlineData("a{0}b{1}", 1, 5.5, "a1b5.5")]
         [InlineData("a{0}b{1}", null, null, "ab")]
@@ -74,6 +86,9 @@ namespace KissU.Util.Tests.Helpers
         /// <summary>
         /// 测试移除末尾的字符串
         /// </summary>
+        /// <param name="append">The append.</param>
+        /// <param name="remove">The remove.</param>
+        /// <param name="result">The result.</param>
         [Theory]
         [InlineData("a,", ",", "a")]
         [InlineData("ab", "a", "ab")]

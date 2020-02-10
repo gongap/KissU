@@ -152,6 +152,7 @@ namespace KissU.Util.Tests.Reflections
     /// <summary>
     /// 测试类型
     /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class D<T> : IC
     {
     }
@@ -159,6 +160,7 @@ namespace KissU.Util.Tests.Reflections
     /// <summary>
     /// 测试查找接口
     /// </summary>
+    /// <typeparam name="T"></typeparam>
     public interface IG<T>
     {
     }
@@ -173,6 +175,7 @@ namespace KissU.Util.Tests.Reflections
     /// <summary>
     /// 测试类型
     /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class F2<T> : IG<T>
     {
     }

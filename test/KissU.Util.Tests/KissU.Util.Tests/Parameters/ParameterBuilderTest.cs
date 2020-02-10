@@ -27,6 +27,7 @@ namespace KissU.Util.Tests.Parameters
         /// <summary>
         /// 验证key为空
         /// </summary>
+        /// <param name="key">The key.</param>
         [Theory]
         [InlineData(null)]
         [InlineData("")]
@@ -39,6 +40,7 @@ namespace KissU.Util.Tests.Parameters
         /// <summary>
         /// 验证value为空
         /// </summary>
+        /// <param name="value">The value.</param>
         [Theory]
         [InlineData(null)]
         [InlineData("")]

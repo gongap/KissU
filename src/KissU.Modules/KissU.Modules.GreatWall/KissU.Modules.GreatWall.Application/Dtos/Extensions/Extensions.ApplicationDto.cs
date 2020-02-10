@@ -15,6 +15,8 @@ namespace KissU.Modules.GreatWall.Application.Dtos.Extensions
         /// <summary>
         /// 转成应用程序参数
         /// </summary>
+        /// <param name="po">The po.</param>
+        /// <returns>ApplicationDto.</returns>
         public static ApplicationDto ToDto(this ApplicationPo po)
         {
             if (po == null)
@@ -30,6 +32,8 @@ namespace KissU.Modules.GreatWall.Application.Dtos.Extensions
         /// <summary>
         /// 转成应用程序实体
         /// </summary>
+        /// <param name="dto">The dto.</param>
+        /// <returns>Domain.Models.Application.</returns>
         public static Domain.Models.Application ToEntity(this ApplicationDto dto)
         {
             if (dto == null)

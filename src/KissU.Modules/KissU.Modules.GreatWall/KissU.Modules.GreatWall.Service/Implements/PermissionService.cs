@@ -19,6 +19,7 @@ namespace KissU.Modules.GreatWall.Service.Implements
         /// 初始化
         /// </summary>
         /// <param name="appService">应用服务</param>
+        /// <exception cref="ArgumentNullException">appService</exception>
         public PermissionService(IPermissionAppService appService)
         {
             _appService = appService ?? throw new ArgumentNullException(nameof(appService));
@@ -28,6 +29,7 @@ namespace KissU.Modules.GreatWall.Service.Implements
         /// 获取资源标识列表
         /// </summary>
         /// <param name="query">权限参数</param>
+        /// <returns>Task&lt;List&lt;Guid&gt;&gt;.</returns>
         public async Task<List<Guid>> GetResourceIdsAsync(PermissionQuery query)
         {
             return await _appService.GetResourceIdsAsync(query);

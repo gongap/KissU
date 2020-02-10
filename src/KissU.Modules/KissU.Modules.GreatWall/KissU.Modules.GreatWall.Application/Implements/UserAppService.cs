@@ -55,6 +55,7 @@ namespace KissU.Modules.GreatWall.Application.Implements
         /// 创建用户
         /// </summary>
         /// <param name="request">创建用户参数</param>
+        /// <returns>Task&lt;Guid&gt;.</returns>
         public async Task<Guid> CreateAsync(CreateUserRequest request)
         {
             var user = request.MapTo<User>();
@@ -68,6 +69,7 @@ namespace KissU.Modules.GreatWall.Application.Implements
         /// 创建查询对象
         /// </summary>
         /// <param name="param">查询参数</param>
+        /// <returns>IQueryBase&lt;User&gt;.</returns>
         protected override IQueryBase<User> CreateQuery(UserQuery param)
         {
             return new Query<User>(param)
@@ -79,6 +81,9 @@ namespace KissU.Modules.GreatWall.Application.Implements
         /// <summary>
         /// 过滤查询
         /// </summary>
+        /// <param name="queryable">The queryable.</param>
+        /// <param name="parameter">The parameter.</param>
+        /// <returns>IQueryable&lt;User&gt;.</returns>
         protected override IQueryable<User> Filter(IQueryable<User> queryable, UserQuery parameter)
         {
             if (parameter.RoleId != null)

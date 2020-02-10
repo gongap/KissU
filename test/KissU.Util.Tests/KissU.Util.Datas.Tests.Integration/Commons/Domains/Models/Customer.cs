@@ -123,6 +123,7 @@ namespace KissU.Util.Datas.Tests.Integration.Commons.Domains.Models
         /// <summary>
         /// 添加变更列表
         /// </summary>
+        /// <param name="other">The other.</param>
         protected override void AddChanges(Customer other)
         {
             AddChange("Id", "客户编号", Id, other.Id);
@@ -142,6 +143,7 @@ namespace KissU.Util.Datas.Tests.Integration.Commons.Domains.Models
         /// <summary>
         /// 添加客户集合
         /// </summary>
+        /// <returns>List&lt;Customer&gt;.</returns>
         public static List<Customer> CreateCustomers()
         {
             return new List<Customer>

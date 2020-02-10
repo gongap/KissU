@@ -175,6 +175,7 @@ namespace KissU.Util.Tests.Samples
         /// <summary>
         /// 添加变更列表
         /// </summary>
+        /// <param name="other">The other.</param>
         protected override void AddChanges(AggregateRootSample other)
         {
             AddChange("Name", "姓名", Name, other.Name);
@@ -187,6 +188,7 @@ namespace KissU.Util.Tests.Samples
         /// <summary>
         /// 创建测试样例
         /// </summary>
+        /// <returns>AggregateRootSample.</returns>
         public static AggregateRootSample CreateSample()
         {
             return CreateSample(Guid.NewGuid());
@@ -195,6 +197,8 @@ namespace KissU.Util.Tests.Samples
         /// <summary>
         /// 创建测试样例
         /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>AggregateRootSample.</returns>
         public static AggregateRootSample CreateSample(Guid id)
         {
             return new AggregateRootSample(id)
@@ -208,6 +212,7 @@ namespace KissU.Util.Tests.Samples
         /// <summary>
         /// 创建测试样例2
         /// </summary>
+        /// <returns>AggregateRootSample.</returns>
         public static AggregateRootSample CreateSample2()
         {
             return CreateSample2(Guid.NewGuid());
@@ -216,6 +221,8 @@ namespace KissU.Util.Tests.Samples
         /// <summary>
         /// 创建测试样例2
         /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>AggregateRootSample.</returns>
         public static AggregateRootSample CreateSample2(Guid id)
         {
             return new AggregateRootSample(id)

@@ -22,6 +22,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// 通过编号获取
         /// </summary>
         /// <param name="id">实体编号</param>
+        /// <returns>Task&lt;IdentityResourceDto&gt;.</returns>
         [HttpGet(true)]
         Task<IdentityResourceDto> GetByIdAsync(int id);
 
@@ -29,12 +30,14 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// 通过编号列表获取
         /// </summary>
         /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
+        /// <returns>Task&lt;List&lt;IdentityResourceDto&gt;&gt;.</returns>
         [HttpGet(true)]
         Task<List<IdentityResourceDto>> GetByIdsAsync(string ids);
 
         /// <summary>
         /// 获取全部
         /// </summary>
+        /// <returns>Task&lt;List&lt;IdentityResourceDto&gt;&gt;.</returns>
         [HttpGet(true)]
         Task<List<IdentityResourceDto>> GetAllAsync();
 
@@ -42,6 +45,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// 查询
         /// </summary>
         /// <param name="parameter">查询参数</param>
+        /// <returns>Task&lt;List&lt;IdentityResourceDto&gt;&gt;.</returns>
         [HttpGet(true)]
         Task<List<IdentityResourceDto>> QueryAsync(IdentityResourceQuery parameter);
 
@@ -49,6 +53,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// 分页查询
         /// </summary>
         /// <param name="parameter">查询参数</param>
+        /// <returns>Task&lt;PagerList&lt;IdentityResourceDto&gt;&gt;.</returns>
         [HttpGet(true)]
         Task<PagerList<IdentityResourceDto>> PagerQueryAsync(IdentityResourceQuery parameter);
 
@@ -56,6 +61,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// 创建
         /// </summary>
         /// <param name="request">创建参数</param>
+        /// <returns>Task&lt;System.String&gt;.</returns>
         [HttpPost(true)]
         [UnitOfWork]
         Task<string> CreateAsync([Valid] IdentityResourceCreateRequest request);
@@ -64,6 +70,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// 修改
         /// </summary>
         /// <param name="request">修改参数</param>
+        /// <returns>Task.</returns>
         [HttpPut(true)]
         [UnitOfWork]
         Task UpdateAsync([Valid] IdentityResourceDto request);
@@ -72,6 +79,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// 删除
         /// </summary>
         /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
+        /// <returns>Task.</returns>
         [HttpPost(true)]
         Task DeleteAsync(string ids);
     }

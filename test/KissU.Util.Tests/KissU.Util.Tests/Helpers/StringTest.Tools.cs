@@ -13,6 +13,8 @@ namespace KissU.Util.Tests.Helpers
         /// <summary>
         /// 测试获取拼音简码
         /// </summary>
+        /// <param name="input">The input.</param>
+        /// <param name="result">The result.</param>
         [Theory]
         [InlineData(null, "")]
         [InlineData("", "")]
@@ -28,6 +30,8 @@ namespace KissU.Util.Tests.Helpers
         /// <summary>
         /// 首字母小写
         /// </summary>
+        /// <param name="value">The value.</param>
+        /// <param name="result">The result.</param>
         [Theory]
         [InlineData(null, "")]
         [InlineData("", "")]
@@ -45,6 +49,8 @@ namespace KissU.Util.Tests.Helpers
         /// <summary>
         /// 首字母大写
         /// </summary>
+        /// <param name="value">The value.</param>
+        /// <param name="result">The result.</param>
         [Theory]
         [InlineData(null, "")]
         [InlineData("", "")]
@@ -62,6 +68,8 @@ namespace KissU.Util.Tests.Helpers
         /// <summary>
         /// 分隔词组
         /// </summary>
+        /// <param name="value">The value.</param>
+        /// <param name="result">The result.</param>
         [Theory]
         [InlineData(null, "")]
         [InlineData("", "")]

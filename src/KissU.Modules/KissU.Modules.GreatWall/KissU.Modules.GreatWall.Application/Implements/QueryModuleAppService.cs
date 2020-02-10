@@ -54,6 +54,7 @@ namespace KissU.Modules.GreatWall.Application.Implements
         /// 创建查询对象
         /// </summary>
         /// <param name="param">查询参数</param>
+        /// <returns>IQueryBase&lt;ResourcePo&gt;.</returns>
         protected override IQueryBase<ResourcePo> CreateQuery(ResourceQuery param)
         {
             return new Query<ResourcePo>(param)
@@ -66,6 +67,9 @@ namespace KissU.Modules.GreatWall.Application.Implements
         /// <summary>
         /// 过滤
         /// </summary>
+        /// <param name="queryable">The queryable.</param>
+        /// <param name="parameter">The parameter.</param>
+        /// <returns>结果</returns>
         protected override IQueryable<ResourcePo> Filter(IQueryable<ResourcePo> queryable, ResourceQuery parameter)
         {
             return base.Filter(queryable, parameter).Include(t => t.Application).Include(t => t.Parent);
@@ -74,6 +78,8 @@ namespace KissU.Modules.GreatWall.Application.Implements
         /// <summary>
         /// 转成数据传输对象
         /// </summary>
+        /// <param name="po">The po.</param>
+        /// <returns>ModuleDto.</returns>
         protected override ModuleDto ToDto(ResourcePo po)
         {
             return po.ToModuleDto();

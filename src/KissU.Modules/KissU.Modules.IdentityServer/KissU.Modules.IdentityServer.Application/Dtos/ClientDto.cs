@@ -286,10 +286,6 @@ namespace KissU.Modules.IdentityServer.Application.Dtos
         /// <summary>
         /// 允许应用程序的设置声明（将包含在访问令牌中）。
         /// </summary>
-        //public List<ClientClaim> Claims { get; set; }
-        /// <summary>
-        /// 如果设置，将为每个流发送应用程序声明。如果不是，仅用于应用程序凭证流（默认为false）
-        /// </summary>
 
         [Required]
         [Display(Name = "发送应用程序声明")]

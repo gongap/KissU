@@ -17,6 +17,8 @@ namespace KissU.Util.Tests.Helpers
         /// <summary>
         /// 测试获取枚举实例
         /// </summary>
+        /// <param name="memeber">The memeber.</param>
+        /// <param name="sample">The sample.</param>
         [Theory]
         [InlineData("C", EnumSample.C)]
         [InlineData("3", EnumSample.C)]
@@ -28,6 +30,7 @@ namespace KissU.Util.Tests.Helpers
         /// <summary>
         /// 测试获取枚举实例 - 参数为空,抛出异常
         /// </summary>
+        /// <param name="member">The member.</param>
         [Theory]
         [InlineData(null)]
         [InlineData("")]
@@ -39,6 +42,8 @@ namespace KissU.Util.Tests.Helpers
         /// <summary>
         /// 测试获取枚举实例 - 可空枚举
         /// </summary>
+        /// <param name="memeber">The memeber.</param>
+        /// <param name="sample">The sample.</param>
         [Theory]
         [InlineData(null, null)]
         [InlineData("", null)]
@@ -53,6 +58,8 @@ namespace KissU.Util.Tests.Helpers
         /// <summary>
         /// 测试获取枚举成员名
         /// </summary>
+        /// <param name="member">The member.</param>
+        /// <param name="name">The name.</param>
         [Theory]
         [InlineData(null, "")]
         [InlineData("", "")]
@@ -68,6 +75,8 @@ namespace KissU.Util.Tests.Helpers
         /// <summary>
         /// 测试获取枚举成员名 - 可空枚举
         /// </summary>
+        /// <param name="member">The member.</param>
+        /// <param name="name">The name.</param>
         [Theory]
         [InlineData(null, "")]
         [InlineData("", "")]
@@ -83,6 +92,8 @@ namespace KissU.Util.Tests.Helpers
         /// <summary>
         /// 测试获取枚举成员值
         /// </summary>
+        /// <param name="member">The member.</param>
+        /// <param name="value">The value.</param>
         [Theory]
         [InlineData("C", 3)]
         [InlineData(3, 3)]
@@ -95,6 +106,8 @@ namespace KissU.Util.Tests.Helpers
         /// <summary>
         /// 测试获取枚举成员值 - 可空枚举
         /// </summary>
+        /// <param name="member">The member.</param>
+        /// <param name="value">The value.</param>
         [Theory]
         [InlineData("C", 3)]
         [InlineData(3, 3)]
@@ -107,6 +120,8 @@ namespace KissU.Util.Tests.Helpers
         /// <summary>
         /// 测试获取枚举描述
         /// </summary>
+        /// <param name="member">The member.</param>
+        /// <param name="description">The description.</param>
         [Theory]
         [InlineData(null, "")]
         [InlineData("", "")]
@@ -122,6 +137,8 @@ namespace KissU.Util.Tests.Helpers
         /// <summary>
         /// 测试获取枚举描述 - 可空枚举
         /// </summary>
+        /// <param name="member">The member.</param>
+        /// <param name="description">The description.</param>
         [Theory]
         [InlineData(null, "")]
         [InlineData("", "")]

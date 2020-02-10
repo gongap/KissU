@@ -15,11 +15,14 @@ namespace KissU.Modules.GreatWall.Domain.Services.Abstractions
         /// 创建角色
         /// </summary>
         /// <param name="role">角色</param>
+        /// <returns>Task.</returns>
         Task CreateAsync(Role role);
 
         /// <summary>
         /// 修改角色
         /// </summary>
+        /// <param name="role">The role.</param>
+        /// <returns>Task.</returns>
         Task UpdateAsync(Role role);
 
         /// <summary>
@@ -27,6 +30,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Abstractions
         /// </summary>
         /// <param name="roleId">角色标识</param>
         /// <param name="userIds">用户标识列表</param>
+        /// <returns>Task.</returns>
         Task AddUsersToRoleAsync(Guid roleId, List<Guid> userIds);
 
         /// <summary>
@@ -34,6 +38,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Abstractions
         /// </summary>
         /// <param name="roleId">角色标识</param>
         /// <param name="userIds">用户标识列表</param>
+        /// <returns>Task.</returns>
         Task RemoveUsersFromRoleAsync(Guid roleId, List<Guid> userIds);
     }
 }

@@ -43,6 +43,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// 创建查询对象
         /// </summary>
         /// <param name="param">认证操作数据查询实体</param>
+        /// <returns>IQueryBase&lt;PersistedGrant&gt;.</returns>
         protected override IQueryBase<PersistedGrant> CreateQuery(PersistedGrantQuery param)
         {
             Query<PersistedGrant> query = new Query<PersistedGrant>(param);

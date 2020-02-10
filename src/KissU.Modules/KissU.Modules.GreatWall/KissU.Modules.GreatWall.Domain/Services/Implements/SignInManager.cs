@@ -40,6 +40,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         /// <param name="password">密码</param>
         /// <param name="isPersistent">cookie是否持久保留,设置为false,当关闭浏览器则cookie失效</param>
         /// <param name="lockoutOnFailure">达到登录失败次数是否锁定</param>
+        /// <returns>Task&lt;SignInResult&gt;.</returns>
         public async Task<SignInResult> SignInAsync(User user, string password, bool isPersistent,
             bool lockoutOnFailure)
         {
@@ -55,6 +56,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         /// </summary>
         /// <param name="phone">手机号</param>
         /// <param name="application">应用程序</param>
+        /// <returns>Task&lt;System.String&gt;.</returns>
         public async Task<string> GenerateSignInTokenAsync(string phone, string application = "")
         {
             return await UserManager.GenerateTokenAsync(phone, TokenPurpose.SignIn, application);
@@ -68,6 +70,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         /// <param name="isPersistent">cookie是否持久保留,设置为false,当关闭浏览器则cookie失效</param>
         /// <param name="lockoutOnFailure">达到登录失败次数是否锁定</param>
         /// <param name="application">应用程序</param>
+        /// <returns>Task&lt;SignInResult&gt;.</returns>
         public async Task<SignInResult> TokenSignInAsync(string phone, string token, bool isPersistent,
             bool lockoutOnFailure, string application = "")
         {

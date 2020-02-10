@@ -52,6 +52,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// 删除
         /// </summary>
         /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
+        /// <returns>A <see cref="T:System.Threading.Tasks.Task" /> representing the asynchronous operation.</returns>
         public override async Task DeleteAsync(string ids)
         {
             await base.DeleteAsync(ids);
@@ -61,6 +62,8 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// <summary>
         /// 创建后操作
         /// </summary>
+        /// <param name="entity">The entity.</param>
+        /// <returns>A <see cref="T:System.Threading.Tasks.Task" /> representing the asynchronous operation.</returns>
         protected override async Task CreateAfterAsync(ApiResource entity)
         {
             await base.CreateAfterAsync(entity);
@@ -71,6 +74,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// 修改
         /// </summary>
         /// <param name="request">修改参数</param>
+        /// <returns>A <see cref="T:System.Threading.Tasks.Task" /> representing the asynchronous operation.</returns>
         public override async Task UpdateAsync(ApiResourceDto request)
         {
             await base.UpdateAsync(request);
@@ -81,6 +85,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// 创建查询对象
         /// </summary>
         /// <param name="param">应用程序查询实体</param>
+        /// <returns>IQueryBase&lt;ApiResource&gt;.</returns>
         protected override IQueryBase<ApiResource> CreateQuery(ApiResourceQuery param)
         {
             var query = new Query<ApiResource>(param).Or(t => t.Name.Contains(param.Keyword), t => t.DisplayName.Contains(param.Keyword));
@@ -101,6 +106,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// <summary>
         /// 创建前操作
         /// </summary>
+        /// <param name="entity">The entity.</param>
         protected override void CreateBefore(ApiResource entity)
         {
             base.CreateBefore(entity);
@@ -121,6 +127,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// <summary>
         /// 修改前操作
         /// </summary>
+        /// <param name="entity">实体</param>
         protected override void UpdateBefore(ApiResource entity)
         {
             base.UpdateBefore(entity);
@@ -136,7 +143,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// 获取Api许可范围
         /// </summary>
         /// <param name="apiResourceId">资源编号</param>
-        /// <returns></returns>
+        /// <returns>Task&lt;List&lt;ApiScopeDto&gt;&gt;.</returns>
         public async Task<List<ApiScopeDto>> GetApiScopesAsync(int apiResourceId)
         {
             List<ApiScope> entities = await ApiResourceRepository.GetApiResourceScopesAsync(apiResourceId);
@@ -147,7 +154,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// 获取Api许可范围
         /// </summary>
         /// <param name="scopeId">许可范围编号</param>
-        /// <returns></returns>
+        /// <returns>Task&lt;ApiScopeDto&gt;.</returns>
         public async Task<ApiScopeDto> GetApiScopeAsync(int scopeId)
         {
             ApiScope entity = await ApiResourceRepository.GetApiResourceScopeAsync(scopeId);
@@ -158,7 +165,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// 添加Api许可范围
         /// </summary>
         /// <param name="request">许可范围</param>
-        /// <returns></returns>
+        /// <returns>Task&lt;System.Int32&gt;.</returns>
         public async Task<int> CreateApiScopeAsync(ApiScopeCreateRequest request)
         {
             ApiResource apiResource = await ApiResourceRepository.FindAsync(request.ApiResourceId);
@@ -174,7 +181,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// 更新Api许可范围
         /// </summary>
         /// <param name="dto">许可范围</param>
-        /// <returns></returns>
+        /// <returns>Task.</returns>
         public async Task UpdateApiScopeAsync(ApiScopeDto dto)
         {
             ApiResource apiResource = await ApiResourceRepository.FindAsync(dto.ApiResourceId);
@@ -189,7 +196,6 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// 删除Api许可范围
         /// </summary>
         /// <param name="scopeId">许可范围编号</param>
-        /// <returns></returns>
         public async Task DeleteApiScopeAsync(int scopeId)
         {
             await ApiResourceRepository.DeleteApiResourceScopeAsync(scopeId);
@@ -225,7 +231,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// Api获取密钥
         /// </summary>
         /// <param name="apiResourceId">资源编号</param>
-        /// <returns></returns>
+        /// <returns>Task&lt;List&lt;ApiSecretDto&gt;&gt;.</returns>
         public async Task<List<ApiSecretDto>> GetApiSecretsAsync(int apiResourceId)
         {
             List<ApiSecret> entities = await ApiResourceRepository.GetApiResourceSecretsAsync(apiResourceId);
@@ -236,7 +242,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// 获取密钥
         /// </summary>
         /// <param name="secretId">密钥编号</param>
-        /// <returns></returns>
+        /// <returns>Task&lt;ApiSecretDto&gt;.</returns>
         public async Task<ApiSecretDto> GetApiSecretAsync(int secretId)
         {
             ApiSecret entity = await ApiResourceRepository.GetApiResourceSecretAsync(secretId);
@@ -247,7 +253,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// 添加Api密钥
         /// </summary>
         /// <param name="request">密钥</param>
-        /// <returns></returns>
+        /// <returns>Task&lt;System.Int32&gt;.</returns>
         public async Task<int> CreateApiSecretAsync(ApiSecretCreateRequest request)
         {
             ApiResource apiResource = await ApiResourceRepository.FindAsync(request.ApiResourceId);
@@ -264,7 +270,6 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// 删除Api密钥
         /// </summary>
         /// <param name="secretId">密钥编号</param>
-        /// <returns></returns>
         public async Task DeleteApiSecretAsync(int secretId)
         {
             await ApiResourceRepository.DeleteApiResourceSecretAsync(secretId);

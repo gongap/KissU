@@ -11,6 +11,8 @@ namespace KissU.Util.Tests.Files
         /// <summary>
         /// 文件字节数
         /// </summary>
+        /// <param name="unit">The unit.</param>
+        /// <param name="result">The result.</param>
         [Theory]
         [InlineData(FileSizeUnit.Byte, 1)]
         [InlineData(FileSizeUnit.K, 1024)]

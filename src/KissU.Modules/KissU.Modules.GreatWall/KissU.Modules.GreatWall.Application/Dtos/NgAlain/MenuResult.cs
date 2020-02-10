@@ -33,6 +33,7 @@ namespace KissU.Modules.GreatWall.Application.Dtos.NgAlain
         /// <summary>
         /// 获取树形结果
         /// </summary>
+        /// <returns>List&lt;MenuInfo&gt;.</returns>
         public List<MenuInfo> GetResult()
         {
             if (_data == null)
@@ -45,6 +46,8 @@ namespace KissU.Modules.GreatWall.Application.Dtos.NgAlain
         /// <summary>
         /// 是否根节点
         /// </summary>
+        /// <param name="dto">The dto.</param>
+        /// <returns><c>true</c> if the specified dto is root; otherwise, <c>false</c>.</returns>
         protected virtual bool IsRoot(MenuResponse dto)
         {
             if (_data.Any(t => t.ParentId.IsEmpty()))

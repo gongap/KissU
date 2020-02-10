@@ -37,6 +37,7 @@ namespace KissU.Util.Tests.Files.Paths
         /// <summary>
         /// 测试生成路径,文件名仅包含扩展名，自动创建随机文件名
         /// </summary>
+        /// <param name="fileName">Name of the file.</param>
         [Theory(Skip = "偶尔会运行失败")]
         [InlineData("txt")]
         [InlineData(".txt")]

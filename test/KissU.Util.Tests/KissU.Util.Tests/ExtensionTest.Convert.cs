@@ -27,6 +27,8 @@ namespace KissU.Util.Tests
         /// <summary>
         /// 转换为整数
         /// </summary>
+        /// <param name="input">The input.</param>
+        /// <param name="result">The result.</param>
         [Theory]
         [InlineData("", 0)]
         [InlineData("1", 1)]
@@ -38,6 +40,8 @@ namespace KissU.Util.Tests
         /// <summary>
         /// 转换为可空整数
         /// </summary>
+        /// <param name="input">The input.</param>
+        /// <param name="result">The result.</param>
         [Theory]
         [InlineData("", null)]
         [InlineData("1", 1)]
@@ -49,6 +53,8 @@ namespace KissU.Util.Tests
         /// <summary>
         /// 转换为双精度浮点数
         /// </summary>
+        /// <param name="input">The input.</param>
+        /// <param name="result">The result.</param>
         [Theory]
         [InlineData("", 0)]
         [InlineData("1.2", 1.2)]
@@ -60,6 +66,8 @@ namespace KissU.Util.Tests
         /// <summary>
         /// 转换为可空双精度浮点数
         /// </summary>
+        /// <param name="input">The input.</param>
+        /// <param name="result">The result.</param>
         [Theory]
         [InlineData("", null)]
         [InlineData("1.2", 1.2)]

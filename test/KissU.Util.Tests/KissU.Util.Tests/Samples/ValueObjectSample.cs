@@ -19,6 +19,8 @@ namespace KissU.Util.Tests.Samples
         /// <summary>
         /// 初始化值对象测试样例
         /// </summary>
+        /// <param name="city">The city.</param>
+        /// <param name="street">The street.</param>
         public ValueObjectSample(string city, string street)
             : this(city, street, null)
         {
@@ -27,6 +29,9 @@ namespace KissU.Util.Tests.Samples
         /// <summary>
         /// 初始化值对象测试样例
         /// </summary>
+        /// <param name="city">The city.</param>
+        /// <param name="street">The street.</param>
+        /// <param name="sample">The sample.</param>
         public ValueObjectSample(string city, string street, AggregateRootSample sample)
             : this(city, street, sample, null)
         {
@@ -35,6 +40,10 @@ namespace KissU.Util.Tests.Samples
         /// <summary>
         /// 初始化值对象测试样例
         /// </summary>
+        /// <param name="city">The city.</param>
+        /// <param name="street">The street.</param>
+        /// <param name="sample">The sample.</param>
+        /// <param name="child">The child.</param>
         public ValueObjectSample(string city, string street, AggregateRootSample sample, ValueObjectSample child)
         {
             City = city;

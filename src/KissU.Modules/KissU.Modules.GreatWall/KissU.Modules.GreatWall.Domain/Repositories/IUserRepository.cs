@@ -16,6 +16,7 @@ namespace KissU.Modules.GreatWall.Domain.Repositories
         /// <param name="queryable">查询对象</param>
         /// <param name="roleId">角色标识</param>
         /// <param name="except">是否排除该角色的用户列表</param>
+        /// <returns>IQueryable&lt;User&gt;.</returns>
         IQueryable<User> FilterByRole(IQueryable<User> queryable, Guid roleId, bool except = false);
     }
 }

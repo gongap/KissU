@@ -49,6 +49,7 @@ namespace KissU.Modules.GreatWall.Application.Implements
         /// 登录
         /// </summary>
         /// <param name="request">登录参数</param>
+        /// <returns>Task&lt;SignInResult&gt;.</returns>
         public async Task<SignInResult> SignInAsync(LoginRequest request)
         {
             var user = await GetUser(request);

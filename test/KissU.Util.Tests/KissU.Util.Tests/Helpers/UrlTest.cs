@@ -11,6 +11,9 @@ namespace KissU.Util.Tests.Helpers
         /// <summary>
         /// 合并Url
         /// </summary>
+        /// <param name="url">The URL.</param>
+        /// <param name="url2">The url2.</param>
+        /// <param name="result">The result.</param>
         [Theory]
         [InlineData("http://a.com", "b", "http://a.com/b")]
         [InlineData("http://a.com/", "b", "http://a.com/b")]
@@ -23,6 +26,9 @@ namespace KissU.Util.Tests.Helpers
         /// <summary>
         /// 连接Url
         /// </summary>
+        /// <param name="url">The URL.</param>
+        /// <param name="param">The parameter.</param>
+        /// <param name="result">The result.</param>
         [Theory]
         [InlineData("http://test.com", "a=1", "http://test.com?a=1")]
         [InlineData("http://test.com?", "a=1", "http://test.com?a=1")]

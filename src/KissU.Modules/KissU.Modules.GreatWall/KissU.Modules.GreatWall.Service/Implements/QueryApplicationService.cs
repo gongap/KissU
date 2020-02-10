@@ -21,6 +21,7 @@ namespace KissU.Modules.GreatWall.Service.Implements
         /// 初始化
         /// </summary>
         /// <param name="appService">应用服务</param>
+        /// <exception cref="ArgumentNullException">appService</exception>
         public QueryApplicationService(IQueryApplicationAppService appService)
         {
             _appService = appService ?? throw new ArgumentNullException(nameof(appService));
@@ -30,6 +31,7 @@ namespace KissU.Modules.GreatWall.Service.Implements
         /// 通过编号获取
         /// </summary>
         /// <param name="id">实体编号</param>
+        /// <returns>Task&lt;ApplicationDto&gt;.</returns>
         public async Task<ApplicationDto> GetByIdAsync(string id)
         {
             return await _appService.GetByIdAsync(id);
@@ -39,6 +41,7 @@ namespace KissU.Modules.GreatWall.Service.Implements
         /// 通过编号列表获取
         /// </summary>
         /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
+        /// <returns>Task&lt;List&lt;ApplicationDto&gt;&gt;.</returns>
         public async Task<List<ApplicationDto>> GetByIdsAsync(string ids)
         {
             return await _appService.GetByIdsAsync(ids);
@@ -47,6 +50,7 @@ namespace KissU.Modules.GreatWall.Service.Implements
         /// <summary>
         /// 获取全部
         /// </summary>
+        /// <returns>Task&lt;List&lt;ApplicationDto&gt;&gt;.</returns>
         public async Task<List<ApplicationDto>> GetAllAsync()
         {
             return await _appService.GetAllAsync();
@@ -56,6 +60,7 @@ namespace KissU.Modules.GreatWall.Service.Implements
         /// 查询
         /// </summary>
         /// <param name="parameter">查询参数</param>
+        /// <returns>Task&lt;List&lt;ApplicationDto&gt;&gt;.</returns>
         public async Task<List<ApplicationDto>> QueryAsync(ApplicationQuery parameter)
         {
             return await _appService.QueryAsync(parameter);
@@ -65,6 +70,7 @@ namespace KissU.Modules.GreatWall.Service.Implements
         /// 分页查询
         /// </summary>
         /// <param name="parameter">查询参数</param>
+        /// <returns>Task&lt;PagerList&lt;ApplicationDto&gt;&gt;.</returns>
         public async Task<PagerList<ApplicationDto>> PagerQueryAsync(ApplicationQuery parameter)
         {
             return await _appService.PagerQueryAsync(parameter);
@@ -74,6 +80,7 @@ namespace KissU.Modules.GreatWall.Service.Implements
         /// 通过应用程序编码查找
         /// </summary>
         /// <param name="code">应用程序编码</param>
+        /// <returns>Task&lt;ApplicationDto&gt;.</returns>
         public async Task<ApplicationDto> GetByCodeAsync(string code)
         {
             return await _appService.GetByCodeAsync(code);

@@ -17,6 +17,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts
         /// 创建模块
         /// </summary>
         /// <param name="request">创建模块参数</param>
+        /// <returns>Task&lt;Guid&gt;.</returns>
         [HttpPost(true)]
         Task<Guid> CreateAsync(CreateModuleRequest request);
 
@@ -24,6 +25,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts
         /// 修改模块
         /// </summary>
         /// <param name="request">模块参数</param>
+        /// <returns>Task.</returns>
         [HttpPut(true)]
         Task UpdateAsync(ModuleDto request);
     }

@@ -12,9 +12,11 @@ namespace KissU.Modules.IdentityServer.DbMigrator
     /// </summary>
     public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<DesignTimeDbContext>
     {
-        /// <summary>创建派生上下文的新实例。</summary>
-        /// <param name="args"> 设计时服务提供的参数。 </param>
-        /// <returns> DbContext的实例。</returns>
+        /// <summary>
+        /// 创建派生上下文的新实例。
+        /// </summary>
+        /// <param name="args">设计时服务提供的参数。</param>
+        /// <returns>DbContext的实例。</returns>
         public DesignTimeDbContext CreateDbContext(string[] args)
         {
             Ioc.Register();

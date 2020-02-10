@@ -18,6 +18,7 @@ namespace KissU.Modules.GreatWall.Service.Implements
         /// 初始化
         /// </summary>
         /// <param name="appService">应用服务</param>
+        /// <exception cref="ArgumentNullException">appService</exception>
         public ModuleService(IModuleAppService appService)
         {
             _appService = appService ?? throw new ArgumentNullException(nameof(appService));
@@ -27,6 +28,7 @@ namespace KissU.Modules.GreatWall.Service.Implements
         /// 创建模块
         /// </summary>
         /// <param name="request">创建模块参数</param>
+        /// <returns>Task&lt;Guid&gt;.</returns>
         public async Task<Guid> CreateAsync(CreateModuleRequest request)
         {
             return await _appService.CreateAsync(request);

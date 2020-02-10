@@ -43,6 +43,8 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="password">密码</param>
+        /// <returns>Task.</returns>
+        /// <exception cref="ArgumentNullException">user</exception>
         public async Task CreateAsync(User user, string password)
         {
             if (user == null)
@@ -84,6 +86,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         /// <param name="purpose">用途</param>
         /// <param name="application">应用程序</param>
         /// <param name="provider">令牌提供器</param>
+        /// <returns>Task&lt;System.String&gt;.</returns>
         public async Task<string> GenerateTokenAsync(string phone, string purpose, string application = "",
             string provider = "")
         {
@@ -109,6 +112,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         /// <summary>
         /// 创建安全戳
         /// </summary>
+        /// <returns>System.String.</returns>
         protected virtual string CreateSecurityStamp()
         {
             return "56df9984-bc05-460a-a4ce-9dec3922a5e9";
@@ -121,6 +125,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         /// <param name="purpose">用途</param>
         /// <param name="application">应用程序</param>
         /// <param name="provider">令牌提供器</param>
+        /// <returns>Task&lt;System.String&gt;.</returns>
         public async Task<string> GenerateTokenAsync(User user, string purpose, string application = "",
             string provider = "")
         {
@@ -151,6 +156,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         /// <param name="token">令牌</param>
         /// <param name="application">应用程序</param>
         /// <param name="provider">令牌提供器</param>
+        /// <returns>Task&lt;System.Boolean&gt;.</returns>
         public async Task<bool> VerifyTokenAsync(string phone, string purpose, string token, string application = "",
             string provider = "")
         {
@@ -166,6 +172,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         /// <param name="token">令牌</param>
         /// <param name="application">应用程序</param>
         /// <param name="provider">令牌提供器</param>
+        /// <returns>Task&lt;System.Boolean&gt;.</returns>
         public async Task<bool> VerifyTokenAsync(User user, string purpose, string token, string application = "",
             string provider = "")
         {
@@ -185,6 +192,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         /// </summary>
         /// <param name="phone">手机号</param>
         /// <param name="application">应用程序</param>
+        /// <returns>Task&lt;System.String&gt;.</returns>
         public async Task<string> GenerateRegisterTokenAsync(string phone, string application = "")
         {
             return await GenerateTokenAsync(phone, TokenPurpose.PhoneRegister, application);
@@ -196,6 +204,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         /// <param name="phone">手机号</param>
         /// <param name="token">令牌</param>
         /// <param name="application">应用程序</param>
+        /// <returns>Task&lt;System.Boolean&gt;.</returns>
         public async Task<bool> VerifyRegisterTokenAsync(string phone, string token, string application = "")
         {
             return await VerifyTokenAsync(phone, TokenPurpose.PhoneRegister, token, application);
@@ -209,6 +218,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         /// 生成电子邮件确认令牌
         /// </summary>
         /// <param name="user">用户</param>
+        /// <returns>Task&lt;System.String&gt;.</returns>
         public async Task<string> GenerateEmailConfirmationTokenAsync(User user)
         {
             return await Manager.GenerateEmailConfirmationTokenAsync(user);
@@ -219,6 +229,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="token">令牌</param>
+        /// <returns>Task.</returns>
         public async Task ConfirmEmailAsync(User user, string token)
         {
             var result = await Manager.ConfirmEmailAsync(user, token);
@@ -233,6 +244,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         /// 生成电子邮件重置密码令牌
         /// </summary>
         /// <param name="user">用户</param>
+        /// <returns>Task&lt;System.String&gt;.</returns>
         public async Task<string> GenerateEmailPasswordResetTokenAsync(User user)
         {
             return await Manager.GenerateUserTokenAsync(user, TokenOptions.DefaultProvider,
@@ -245,6 +257,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         /// <param name="user">用户</param>
         /// <param name="token">令牌</param>
         /// <param name="newPassword">新密码</param>
+        /// <returns>Task.</returns>
         public async Task ResetPasswordByEmailAsync(User user, string token, string newPassword)
         {
             var result = await Manager.ResetPasswordAsync(user, TokenOptions.DefaultProvider, token, newPassword);
@@ -259,6 +272,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         /// 生成手机号重置密码令牌
         /// </summary>
         /// <param name="user">用户</param>
+        /// <returns>Task&lt;System.String&gt;.</returns>
         public async Task<string> GeneratePhonePasswordResetTokenAsync(User user)
         {
             return await Manager.GenerateUserTokenAsync(user, TokenOptions.DefaultPhoneProvider,
@@ -271,6 +285,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         /// <param name="user">用户</param>
         /// <param name="token">令牌</param>
         /// <param name="newPassword">新密码</param>
+        /// <returns>Task.</returns>
         public async Task ResetPasswordByPhoneAsync(User user, string token, string newPassword)
         {
             var result = await Manager.ResetPasswordAsync(user, TokenOptions.DefaultPhoneProvider, token, newPassword);
@@ -287,6 +302,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         /// <param name="user">用户</param>
         /// <param name="currentPassword">当前密码</param>
         /// <param name="newPassword">新密码</param>
+        /// <returns>Task.</returns>
         public async Task ChangePasswordAsync(User user, string currentPassword, string newPassword)
         {
             var result = await Manager.ChangePasswordAsync(user, currentPassword, newPassword);
@@ -312,6 +328,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         /// 通过用户名查找
         /// </summary>
         /// <param name="userName">用户名</param>
+        /// <returns>Task&lt;User&gt;.</returns>
         public async Task<User> FindByNameAsync(string userName)
         {
             return await Manager.FindByNameAsync(userName);
@@ -321,6 +338,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         /// 通过电子邮件查找
         /// </summary>
         /// <param name="email">电子邮件</param>
+        /// <returns>Task&lt;User&gt;.</returns>
         public async Task<User> FindByEmailAsync(string email)
         {
             return await Manager.FindByEmailAsync(email);
@@ -330,6 +348,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         /// 通过手机号查找
         /// </summary>
         /// <param name="phoneNumber">手机号</param>
+        /// <returns>Task&lt;User&gt;.</returns>
         public async Task<User> FindByPhoneAsync(string phoneNumber)
         {
             return await UserRepository.SingleAsync(t => t.PhoneNumber == phoneNumber);

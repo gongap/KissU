@@ -63,7 +63,6 @@ namespace KissU.Modules.IdentityServer.Data.Stores
         /// <param name="deviceCode">The device code.</param>
         /// <param name="userCode">The user code.</param>
         /// <param name="data">The data.</param>
-        /// <returns></returns>
         public virtual async Task StoreDeviceAuthorizationAsync(string deviceCode, string userCode, DeviceCode data)
         {
             await Repository.AddAsync(ToEntity(data, deviceCode, userCode));
@@ -75,7 +74,7 @@ namespace KissU.Modules.IdentityServer.Data.Stores
         /// 按用户代码查找设备授权
         /// </summary>
         /// <param name="userCode">The user code.</param>
-        /// <returns></returns>
+        /// <returns>Task&lt;DeviceCode&gt;.</returns>
         public virtual async Task<DeviceCode> FindByUserCodeAsync(string userCode)
         {
             var deviceFlowCodes = await Repository.Find(x => x.UserCode == userCode).FirstOrDefaultAsync();
@@ -90,7 +89,7 @@ namespace KissU.Modules.IdentityServer.Data.Stores
         /// 根据设备代码查找设备授权
         /// </summary>
         /// <param name="deviceCode">The device code.</param>
-        /// <returns></returns>
+        /// <returns>Task&lt;DeviceCode&gt;.</returns>
         public virtual async Task<DeviceCode> FindByDeviceCodeAsync(string deviceCode)
         {
             var deviceFlowCodes = await Repository.SingleAsync(x => x.DeviceCode == deviceCode);
@@ -106,7 +105,7 @@ namespace KissU.Modules.IdentityServer.Data.Stores
         /// </summary>
         /// <param name="userCode">The user code.</param>
         /// <param name="data">The data.</param>
-        /// <returns></returns>
+        /// <exception cref="InvalidOperationException">Could not update device code</exception>
         public virtual async Task UpdateByUserCodeAsync(string userCode, DeviceCode data)
         {
             var existing = await Repository.Find(x => x.UserCode == userCode).FirstOrDefaultAsync();
@@ -136,7 +135,6 @@ namespace KissU.Modules.IdentityServer.Data.Stores
         /// 按设备代码删除设备授权
         /// </summary>
         /// <param name="deviceCode">The device code.</param>
-        /// <returns></returns>
         public virtual async Task RemoveByDeviceCodeAsync(string deviceCode)
         {
             var deviceFlowCodes = await Repository.SingleAsync(x => x.DeviceCode == deviceCode);
@@ -166,10 +164,10 @@ namespace KissU.Modules.IdentityServer.Data.Stores
         /// <summary>
         /// 将模型转换为实体
         /// </summary>
-        /// <param name="model"></param>
-        /// <param name="deviceCode"></param>
-        /// <param name="userCode"></param>
-        /// <returns></returns>
+        /// <param name="model">The model.</param>
+        /// <param name="deviceCode">The device code.</param>
+        /// <param name="userCode">The user code.</param>
+        /// <returns>DeviceFlowCode.</returns>
         protected DeviceFlowCode ToEntity(DeviceCode model, string deviceCode, string userCode)
         {
             if (model == null || deviceCode == null || userCode == null) return null;
@@ -189,8 +187,8 @@ namespace KissU.Modules.IdentityServer.Data.Stores
         /// <summary>
         /// 将序列化的设备代码转换为模型
         /// </summary>
-        /// <param name="entity"></param>
-        /// <returns></returns>
+        /// <param name="entity">The entity.</param>
+        /// <returns>DeviceCode.</returns>
         protected DeviceCode ToModel(string entity)
         {
             if (entity == null) return null;

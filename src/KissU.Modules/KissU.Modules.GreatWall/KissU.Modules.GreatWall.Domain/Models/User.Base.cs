@@ -260,6 +260,7 @@ namespace KissU.Modules.GreatWall.Domain.Models
         /// <summary>
         /// 添加变更列表
         /// </summary>
+        /// <param name="other">The other.</param>
         protected override void AddChanges(User other)
         {
             AddChange(t => t.Id, other.Id);

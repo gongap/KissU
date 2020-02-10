@@ -13,6 +13,7 @@ namespace KissU.Modules.GreatWall.Data.Pos.Extensions
         /// 转换为应用程序实体
         /// </summary>
         /// <param name="po">应用程序持久化对象</param>
+        /// <returns>Application.</returns>
         public static Application ToEntity(this ApplicationPo po)
         {
             if (po == null)
@@ -29,6 +30,7 @@ namespace KissU.Modules.GreatWall.Data.Pos.Extensions
         /// 转换为应用程序持久化对象
         /// </summary>
         /// <param name="entity">应用程序实体</param>
+        /// <returns>ApplicationPo.</returns>
         public static ApplicationPo ToPo(this Application entity)
         {
             if (entity == null)

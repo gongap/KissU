@@ -24,6 +24,8 @@ namespace KissU.Util.Tests.Parameters
         /// <summary>
         /// 连接Url
         /// </summary>
+        /// <param name="url">The URL.</param>
+        /// <param name="result">The result.</param>
         [Theory]
         [InlineData("http://test.com", "http://test.com?a=1&b=2")]
         [InlineData("http://test.com?", "http://test.com?a=1&b=2")]

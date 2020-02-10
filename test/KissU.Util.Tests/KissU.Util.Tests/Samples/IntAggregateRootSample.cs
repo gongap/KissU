@@ -46,6 +46,7 @@ namespace KissU.Util.Tests.Samples
         /// <summary>
         /// 添加变更列表
         /// </summary>
+        /// <param name="other">The other.</param>
         protected override void AddChanges(IntAggregateRootSample other)
         {
             AddChange("Name", "IntSampleName", Name, other.Name);

@@ -33,6 +33,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.Samples
         /// 是否包含实体
         /// </summary>
         /// <param name="entity">实体类型</param>
+        /// <returns><c>true</c> if [contains] [the specified entity]; otherwise, <c>false</c>.</returns>
         public bool Contains(Type entity)
         {
             return true;
@@ -42,6 +43,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.Samples
         /// 获取实体别名
         /// </summary>
         /// <param name="entity">实体类型</param>
+        /// <returns>System.String.</returns>
         public string GetAlias(Type entity)
         {
             return $"as_{entity.Name}";
@@ -50,6 +52,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.Samples
         /// <summary>
         /// 复制实体别名注册器
         /// </summary>
+        /// <returns>IEntityAliasRegister.</returns>
         public IEntityAliasRegister Clone()
         {
             return new EntityAliasRegister(Data);

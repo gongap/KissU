@@ -20,6 +20,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Queries
         /// <summary>
         /// 测试初始化
         /// </summary>
+        /// <param name="output">The output.</param>
         public SqlQueryTest(ITestOutputHelper output)
         {
             _output = output;

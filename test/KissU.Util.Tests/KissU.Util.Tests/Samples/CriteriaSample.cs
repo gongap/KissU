@@ -10,8 +10,9 @@ namespace KissU.Util.Tests.Samples
     public class CriteriaSample : ICriteria<AggregateRootSample>
     {
         /// <summary>
-        /// 获取查询条件,返回结果："t => ((t.Name == \"A\") AndAlso (t.Tel == 1))"
+        /// 获取查询条件,返回结果："t =&gt; ((t.Name == \"A\") AndAlso (t.Tel == 1))"
         /// </summary>
+        /// <returns>Expression&lt;Func&lt;AggregateRootSample, System.Boolean&gt;&gt;.</returns>
         public Expression<Func<AggregateRootSample, bool>> GetPredicate()
         {
             return t => t.Name == "A" && t.Tel == 1;

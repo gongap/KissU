@@ -18,7 +18,7 @@ namespace KissU.Modules.IdentityServer.Domain.Models
         /// <summary>
         /// 初始化
         /// </summary>
-        /// <param name="grantType"></param>
+        /// <param name="grantType">Type of the grant.</param>
         public ClientGrantType(string grantType)
         {
             GrantType = grantType;

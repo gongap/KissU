@@ -21,6 +21,7 @@ namespace KissU.Modules.GreatWall.Service.Implements
         /// 初始化
         /// </summary>
         /// <param name="appService">应用服务</param>
+        /// <exception cref="ArgumentNullException">appService</exception>
         public RoleService(IRoleAppService appService)
         {
             _appService = appService ?? throw new ArgumentNullException(nameof(appService));
@@ -30,6 +31,7 @@ namespace KissU.Modules.GreatWall.Service.Implements
         /// 通过编号获取
         /// </summary>
         /// <param name="id">实体编号</param>
+        /// <returns>Task&lt;RoleDto&gt;.</returns>
         public async Task<RoleDto> GetByIdAsync(string id)
         {
             return await _appService.GetByIdAsync(id);
@@ -39,6 +41,7 @@ namespace KissU.Modules.GreatWall.Service.Implements
         /// 通过编号列表获取
         /// </summary>
         /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
+        /// <returns>Task&lt;List&lt;RoleDto&gt;&gt;.</returns>
         public async Task<List<RoleDto>> GetByIdsAsync(string ids)
         {
             return await _appService.GetByIdsAsync(ids);
@@ -47,6 +50,7 @@ namespace KissU.Modules.GreatWall.Service.Implements
         /// <summary>
         /// 获取全部
         /// </summary>
+        /// <returns>Task&lt;List&lt;RoleDto&gt;&gt;.</returns>
         public async Task<List<RoleDto>> GetAllAsync()
         {
             return await _appService.GetAllAsync();
@@ -56,6 +60,7 @@ namespace KissU.Modules.GreatWall.Service.Implements
         /// 查询
         /// </summary>
         /// <param name="parameter">查询参数</param>
+        /// <returns>Task&lt;List&lt;RoleDto&gt;&gt;.</returns>
         public async Task<List<RoleDto>> QueryAsync(RoleQuery parameter)
         {
             return await _appService.QueryAsync(parameter);
@@ -65,6 +70,7 @@ namespace KissU.Modules.GreatWall.Service.Implements
         /// 分页查询
         /// </summary>
         /// <param name="parameter">查询参数</param>
+        /// <returns>Task&lt;PagerList&lt;RoleDto&gt;&gt;.</returns>
         public async Task<PagerList<RoleDto>> PagerQueryAsync(RoleQuery parameter)
         {
             return await _appService.PagerQueryAsync(parameter);
@@ -83,6 +89,7 @@ namespace KissU.Modules.GreatWall.Service.Implements
         /// 获取用户的角色列表
         /// </summary>
         /// <param name="userId">用户标识</param>
+        /// <returns>Task&lt;List&lt;RoleDto&gt;&gt;.</returns>
         public async Task<List<RoleDto>> GetRolesAsync(Guid userId)
         {
             return await _appService.GetRolesAsync(userId);
@@ -92,6 +99,7 @@ namespace KissU.Modules.GreatWall.Service.Implements
         /// 创建角色
         /// </summary>
         /// <param name="request">创建角色参数</param>
+        /// <returns>Task&lt;Guid&gt;.</returns>
         public async Task<Guid> CreateAsync(CreateRoleRequest request)
         {
             return await _appService.CreateAsync(request);

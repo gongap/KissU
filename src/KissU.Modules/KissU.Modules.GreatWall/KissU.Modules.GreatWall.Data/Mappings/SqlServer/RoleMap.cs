@@ -13,6 +13,7 @@ namespace KissU.Modules.GreatWall.Data.Mappings.SqlServer
         /// <summary>
         /// 映射表
         /// </summary>
+        /// <param name="builder">The builder.</param>
         protected override void MapTable(EntityTypeBuilder<Role> builder)
         {
             builder.ToTable(DbConstants.DbTablePrefix + "Roles", DbConstants.DbSchema);
@@ -21,6 +22,7 @@ namespace KissU.Modules.GreatWall.Data.Mappings.SqlServer
         /// <summary>
         /// 映射属性
         /// </summary>
+        /// <param name="builder">The builder.</param>
         protected override void MapProperties(EntityTypeBuilder<Role> builder)
         {
             builder.HasQueryFilter(t => t.IsDeleted == false);

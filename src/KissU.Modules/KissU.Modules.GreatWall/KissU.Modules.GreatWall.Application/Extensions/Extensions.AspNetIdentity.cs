@@ -22,6 +22,7 @@ namespace KissU.Modules.GreatWall.Application.Extensions
         /// </summary>
         /// <param name="services">服务集合</param>
         /// <param name="setupAction">配置操作</param>
+        /// <returns>IServiceCollection.</returns>
         public static IServiceCollection AspNetIdentity(this IServiceCollection services, Action<PermissionOptions> setupAction = null)
         {
             var permissionOptions = new PermissionOptions();
@@ -40,6 +41,7 @@ namespace KissU.Modules.GreatWall.Application.Extensions
         /// </summary>
         /// <param name="services">服务集合</param>
         /// <param name="setupAction">配置操作</param>
+        /// <returns>IServiceCollection.</returns>
         public static IServiceCollection AddAspNetIdentityCore(this IServiceCollection services, Action<PermissionOptions> setupAction = null)
         {
             var permissionOptions = new PermissionOptions();

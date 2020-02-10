@@ -16,6 +16,7 @@ namespace KissU.Util.Tests.Datas.Queries.Criterias
         /// <summary>
         /// 测试初始化
         /// </summary>
+        /// <param name="output">The output.</param>
         public DateSegmentCriteriaTest(ITestOutputHelper output)
         {
             _output = output;

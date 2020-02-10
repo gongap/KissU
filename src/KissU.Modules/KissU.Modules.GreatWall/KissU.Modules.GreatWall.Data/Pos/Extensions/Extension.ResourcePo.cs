@@ -13,6 +13,8 @@ namespace KissU.Modules.GreatWall.Data.Pos.Extensions
         /// <summary>
         /// 转换为模块
         /// </summary>
+        /// <param name="po">The po.</param>
+        /// <returns>Module.</returns>
         public static Module ToModule(this ResourcePo po)
         {
             if (po == null)
@@ -29,6 +31,8 @@ namespace KissU.Modules.GreatWall.Data.Pos.Extensions
         /// <summary>
         /// 转换为资源持久化对象
         /// </summary>
+        /// <param name="entity">The entity.</param>
+        /// <returns>ResourcePo.</returns>
         public static ResourcePo ToPo(this Module entity)
         {
             if (entity == null)

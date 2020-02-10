@@ -31,6 +31,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// 通过应用程序编码查找
         /// </summary>
         /// <param name="code">应用程序编码</param>
+        /// <returns>Task&lt;Application&gt;.</returns>
         public async Task<Application> GetByCodeAsync(string code)
         {
             var po = await _store.SingleAsync(t => t.Code == code);
@@ -41,6 +42,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// 是否允许跨域访问
         /// </summary>
         /// <param name="origin">来源</param>
+        /// <returns>Task&lt;System.Boolean&gt;.</returns>
         public async Task<bool> IsOriginAllowedAsync(string origin)
         {
             return await _store.ExistsAsync(t => t.Extend.Contains(origin));
@@ -50,6 +52,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// 是否允许创建应用程序
         /// </summary>
         /// <param name="entity">应用程序</param>
+        /// <returns>Task&lt;System.Boolean&gt;.</returns>
         public async Task<bool> CanCreateAsync(Application entity)
         {
             var exists = await _store.ExistsAsync(t => t.Code == entity.Code);
@@ -60,6 +63,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// 是否允许修改应用程序
         /// </summary>
         /// <param name="entity">应用程序</param>
+        /// <returns>Task&lt;System.Boolean&gt;.</returns>
         public async Task<bool> CanUpdateAsync(Application entity)
         {
             var exists = await _store.ExistsAsync(t => t.Id != entity.Id && t.Code == entity.Code);
@@ -70,6 +74,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// 转成实体
         /// </summary>
         /// <param name="po">持久化对象</param>
+        /// <returns>TEntity.</returns>
         protected override Application ToEntity(ApplicationPo po)
         {
             return po.ToEntity();
@@ -79,6 +84,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// 转成持久化对象
         /// </summary>
         /// <param name="entity">实体</param>
+        /// <returns>ApplicationPo.</returns>
         protected override ApplicationPo ToPo(Application entity)
         {
             return entity.ToPo();

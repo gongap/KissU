@@ -28,6 +28,7 @@ namespace KissU.Util.Tests.Samples
         /// <summary>
         /// 创建空集合
         /// </summary>
+        /// <returns>List&lt;DtoSample&gt;.</returns>
         public static List<DtoSample> EmptyList()
         {
             return new List<DtoSample>();
@@ -39,6 +40,10 @@ namespace KissU.Util.Tests.Samples
     /// </summary>
     public class QueryServiceSample : QueryServiceBase<EntitySample, DtoSample, QueryParameterSample>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="QueryServiceSample"/> class.
+        /// </summary>
+        /// <param name="repository">The repository.</param>
         public QueryServiceSample(IRepositorySample repository) : base(repository)
         {
         }
@@ -52,6 +57,7 @@ namespace KissU.Util.Tests.Samples
         /// 创建查询对象
         /// </summary>
         /// <param name="parameter">查询参数</param>
+        /// <returns>IQueryBase&lt;EntitySample&gt;.</returns>
         protected override IQueryBase<EntitySample> CreateQuery(QueryParameterSample parameter)
         {
             return new Query<EntitySample>(parameter).WhereIfNotEmpty(t => t.Name == parameter.Name);

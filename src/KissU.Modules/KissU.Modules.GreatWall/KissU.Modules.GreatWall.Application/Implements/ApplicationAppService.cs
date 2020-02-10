@@ -42,6 +42,7 @@ namespace KissU.Modules.GreatWall.Application.Implements
         /// 创建应用程序
         /// </summary>
         /// <param name="dto">应用程序参数</param>
+        /// <returns>Task&lt;Guid&gt;.</returns>
         public async Task<Guid> CreateAsync(ApplicationDto dto)
         {
             var entity = dto.ToEntity();
@@ -56,6 +57,7 @@ namespace KissU.Modules.GreatWall.Application.Implements
         /// 修改应用程序
         /// </summary>
         /// <param name="dto">应用程序参数</param>
+        /// <returns>Task.</returns>
         public async Task UpdateAsync(ApplicationDto dto)
         {
             var entity = dto.ToEntity();

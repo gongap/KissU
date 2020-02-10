@@ -13,6 +13,7 @@ namespace KissU.Util.Datas.Tests.Integration.Ef.PgSql.Mappings
         /// <summary>
         /// 映射表
         /// </summary>
+        /// <param name="builder">The builder.</param>
         protected override void MapTable(EntityTypeBuilder<Customer> builder)
         {
             builder.ToTable("Customers", "Customers");
@@ -21,6 +22,7 @@ namespace KissU.Util.Datas.Tests.Integration.Ef.PgSql.Mappings
         /// <summary>
         /// 映射属性
         /// </summary>
+        /// <param name="builder">The builder.</param>
         protected override void MapProperties(EntityTypeBuilder<Customer> builder)
         {
             base.MapProperties(builder);

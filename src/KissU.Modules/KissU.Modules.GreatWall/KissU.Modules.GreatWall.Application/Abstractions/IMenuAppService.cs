@@ -13,6 +13,7 @@ namespace KissU.Modules.GreatWall.Application.Abstractions
         /// <summary>
         /// 获取菜单
         /// </summary>
+        /// <returns>Task&lt;List&lt;MenuResponse&gt;&gt;.</returns>
         Task<List<MenuResponse>> GetMenusAsync();
     }
 }

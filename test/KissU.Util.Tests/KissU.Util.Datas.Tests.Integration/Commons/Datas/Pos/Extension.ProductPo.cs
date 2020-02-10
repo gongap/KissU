@@ -13,6 +13,7 @@ namespace KissU.Util.Datas.Tests.Integration.Commons.Datas.Pos
         /// 转换为商品实体
         /// </summary>
         /// <param name="po">商品持久化对象</param>
+        /// <returns>Product.</returns>
         public static Product ToEntity(this ProductPo po)
         {
             if (po == null)
@@ -26,6 +27,7 @@ namespace KissU.Util.Datas.Tests.Integration.Commons.Datas.Pos
         /// 转换为商品持久化对象
         /// </summary>
         /// <param name="entity">商品实体</param>
+        /// <returns>ProductPo.</returns>
         public static ProductPo ToPo(this Product entity)
         {
             if (entity == null)

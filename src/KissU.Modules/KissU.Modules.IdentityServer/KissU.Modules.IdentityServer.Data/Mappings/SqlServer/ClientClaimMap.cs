@@ -13,6 +13,7 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         /// <summary>
         /// 映射表
         /// </summary>
+        /// <param name="builder">The builder.</param>
         protected override void MapTable(EntityTypeBuilder<ClientClaim> builder)
         {
             builder.ToTable(DbConstants.DbTablePrefix + "ClientClaims",DbConstants.DbSchema);
@@ -21,6 +22,7 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         /// <summary>
         /// 映射属性
         /// </summary>
+        /// <param name="builder">The builder.</param>
         protected override void MapProperties(EntityTypeBuilder<ClientClaim> builder)
         {
             builder.Property(x => x.Type).HasMaxLength(250).IsRequired();

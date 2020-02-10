@@ -17,6 +17,7 @@ namespace KissU.Util.Datas.Tests.Integration.Commons.Datas.PgSql.Configs
         /// <summary>
         /// 加载配置
         /// </summary>
+        /// <param name="builder">The builder.</param>
         protected override void Load(ContainerBuilder builder)
         {
             LoadInfrastructure(builder);

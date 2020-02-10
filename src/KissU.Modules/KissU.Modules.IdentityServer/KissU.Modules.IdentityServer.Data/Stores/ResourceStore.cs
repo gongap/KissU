@@ -25,6 +25,9 @@ namespace KissU.Modules.IdentityServer.Data.Stores
         /// </summary>
         /// <param name="apiResourceRepository">Api资源仓储</param>
         /// <param name="identityResourceRepository">身份资源仓储</param>
+        /// <param name="logger">The logger.</param>
+        /// <exception cref="ArgumentNullException">apiResourceRepository</exception>
+        /// <exception cref="ArgumentNullException">identityResourceRepository</exception>
         public ResourceStore(IApiResourceRepository apiResourceRepository,
             IIdentityResourceRepository identityResourceRepository, ILogger<ResourceStore> logger)
         {
@@ -39,7 +42,7 @@ namespace KissU.Modules.IdentityServer.Data.Stores
         /// 获取Api资源
         /// </summary>
         /// <param name="name">api名称</param>
-        /// <returns></returns>
+        /// <returns>Task&lt;ApiResource&gt;.</returns>
         public async Task<ApiResource> FindApiResourceAsync(string name)
         {
             var api = await _apiResourcePoStore.Find(p => p.Name == name)
@@ -62,7 +65,7 @@ namespace KissU.Modules.IdentityServer.Data.Stores
         /// 获取Api资源
         /// </summary>
         /// <param name="scopeNames">授权许可名称</param>
-        /// <returns></returns>
+        /// <returns>Task&lt;IEnumerable&lt;ApiResource&gt;&gt;.</returns>
         public async Task<IEnumerable<ApiResource>> FindApiResourcesByScopeAsync(IEnumerable<string> scopeNames)
         {
             var names = scopeNames.ToArray();
@@ -84,7 +87,7 @@ namespace KissU.Modules.IdentityServer.Data.Stores
         /// 获取身份资源
         /// </summary>
         /// <param name="scopeNames">授权许可名称</param>
-        /// <returns></returns>
+        /// <returns>Task&lt;IEnumerable&lt;IdentityResource&gt;&gt;.</returns>
         public async Task<IEnumerable<IdentityResource>> FindIdentityResourcesByScopeAsync(
             IEnumerable<string> scopeNames)
         {
@@ -102,7 +105,7 @@ namespace KissU.Modules.IdentityServer.Data.Stores
         /// <summary>
         /// 获取所有Api/身份资源
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Task&lt;Resources&gt;.</returns>
         public async Task<Resources> GetAllResourcesAsync()
         {
             var identitys = await _identityResourcesPoStore.FindAllAsync();

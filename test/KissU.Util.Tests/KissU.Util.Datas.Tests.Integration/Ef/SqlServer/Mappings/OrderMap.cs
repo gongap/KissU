@@ -13,6 +13,7 @@ namespace KissU.Util.Datas.Tests.Integration.Ef.SqlServer.Mappings
         /// <summary>
         /// 映射表
         /// </summary>
+        /// <param name="builder">The builder.</param>
         protected override void MapTable(EntityTypeBuilder<Order> builder)
         {
             builder.ToTable("Orders", "Sales");
@@ -21,6 +22,7 @@ namespace KissU.Util.Datas.Tests.Integration.Ef.SqlServer.Mappings
         /// <summary>
         /// 映射属性
         /// </summary>
+        /// <param name="builder">The builder.</param>
         protected override void MapProperties(EntityTypeBuilder<Order> builder)
         {
             base.MapProperties(builder);

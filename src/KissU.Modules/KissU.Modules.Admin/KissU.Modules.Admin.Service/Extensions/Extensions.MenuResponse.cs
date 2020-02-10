@@ -12,6 +12,8 @@ namespace KissU.Modules.Admin.Service.Extensions
         /// <summary>
         /// 转成NgAlain菜单
         /// </summary>
+        /// <param name="data">The data.</param>
+        /// <returns>List&lt;MenuInfo&gt;.</returns>
         public static List<MenuInfo> ToNgAlainMenus(this IEnumerable<MenuResponse> data)
         {
             return new MenuResult(data).GetResult();

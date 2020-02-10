@@ -22,6 +22,7 @@ namespace KissU.Modules.IdentityServer.Data.Stores
         /// </summary>
         /// <param name="unitOfWork">工作单元</param>
         /// <param name="persistedGrantRepository">认证操作数据仓储</param>
+        /// <param name="logger">The logger.</param>
         public PersistedGrantStore(IIdentityServerUnitOfWork unitOfWork,
             IPersistedGrantRepository persistedGrantRepository,
             ILogger<PersistedGrantStore> logger)
@@ -50,7 +51,6 @@ namespace KissU.Modules.IdentityServer.Data.Stores
         /// 持久化授权收据
         /// </summary>
         /// <param name="token">令牌</param>
-        /// <returns></returns>
         public async Task StoreAsync(Ids4.PersistedGrant token)
         {
             var existing = await _persistedGrantRepository.SingleAsync(x => x.Key == token.Key);
@@ -84,7 +84,7 @@ namespace KissU.Modules.IdentityServer.Data.Stores
         /// 获取授权收据
         /// </summary>
         /// <param name="key">标识key</param>
-        /// <returns></returns>
+        /// <returns>Task&lt;Ids4.PersistedGrant&gt;.</returns>
         public async Task<Ids4.PersistedGrant> GetAsync(string key)
         {
             var persistedGrant = await _persistedGrantRepository.SingleAsync(x => x.Key == key);
@@ -100,7 +100,7 @@ namespace KissU.Modules.IdentityServer.Data.Stores
         /// 获取用户所有授权收据
         /// </summary>
         /// <param name="subjectId">用户主体</param>
-        /// <returns></returns>
+        /// <returns>Task&lt;IEnumerable&lt;Ids4.PersistedGrant&gt;&gt;.</returns>
         public async Task<IEnumerable<Ids4.PersistedGrant>> GetAllAsync(string subjectId)
         {
             var persistedGrants = await _persistedGrantRepository.Find(x => x.SubjectId == subjectId).ToListAsync();
@@ -116,7 +116,6 @@ namespace KissU.Modules.IdentityServer.Data.Stores
         /// 删除授权数据
         /// </summary>
         /// <param name="key">标识key</param>
-        /// <returns></returns>
         public async Task RemoveAsync(string key)
         {
             var persistedGrant = await _persistedGrantRepository.SingleAsync(x => x.Key == key);
@@ -146,7 +145,6 @@ namespace KissU.Modules.IdentityServer.Data.Stores
         /// </summary>
         /// <param name="subjectId">用户Id</param>
         /// <param name="clientId">应用Id</param>
-        /// <returns></returns>
         public async Task RemoveAllAsync(string subjectId, string clientId)
         {
             var persistedGrants = await _persistedGrantRepository.Find(x => x.SubjectId == subjectId && x.ClientId == clientId).ToListAsync();
@@ -174,7 +172,6 @@ namespace KissU.Modules.IdentityServer.Data.Stores
         /// <param name="subjectId">用户Id</param>
         /// <param name="clientId">应用Id</param>
         /// <param name="type">类型</param>
-        /// <returns></returns>
         public async Task RemoveAllAsync(string subjectId, string clientId, string type)
         {
             var persistedGrants = await _persistedGrantRepository.Find(x => x.SubjectId == subjectId && x.ClientId == clientId && x.Type == type).ToListAsync();

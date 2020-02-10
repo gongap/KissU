@@ -37,6 +37,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// </summary>
         /// <param name="applicationId">应用程序标识</param>
         /// <param name="parentId">父标识</param>
+        /// <returns>Task&lt;System.Int32&gt;.</returns>
         public async Task<int> GenerateSortIdAsync(Guid applicationId, Guid? parentId)
         {
             var maxSortId = await _store.Find(t => t.ApplicationId == applicationId && t.ParentId == parentId)
@@ -49,6 +50,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// </summary>
         /// <param name="applicationId">应用程序标识</param>
         /// <param name="roleIds">角色标识列表</param>
+        /// <returns>Task&lt;List&lt;Module&gt;&gt;.</returns>
         public async Task<List<Module>> GetModulesAsync(Guid applicationId, List<Guid> roleIds)
         {
             var pos = await _store.GetModulesAsync(applicationId, roleIds);
@@ -59,6 +61,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// 转成实体
         /// </summary>
         /// <param name="po">持久化对象</param>
+        /// <returns>TEntity.</returns>
         protected override Module ToEntity(ResourcePo po)
         {
             return po.ToModule();
@@ -68,6 +71,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// 转成持久化对象
         /// </summary>
         /// <param name="entity">实体</param>
+        /// <returns>ResourcePo.</returns>
         protected override ResourcePo ToPo(Module entity)
         {
             return entity.ToPo();

@@ -21,6 +21,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// 通过编号获取
         /// </summary>
         /// <param name="id">实体编号</param>
+        /// <returns>Task&lt;ClientDto&gt;.</returns>
         [HttpGet(true)]
         Task<ClientDto> GetByIdAsync(int id);
 
@@ -28,12 +29,14 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// 通过编号列表获取
         /// </summary>
         /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
+        /// <returns>Task&lt;List&lt;ClientDto&gt;&gt;.</returns>
         [HttpGet(true)]
         Task<List<ClientDto>> GetByIdsAsync(string ids);
 
         /// <summary>
         /// 获取全部
         /// </summary>
+        /// <returns>Task&lt;List&lt;ClientDto&gt;&gt;.</returns>
         [HttpGet(true)]
         Task<List<ClientDto>> GetAllAsync();
 
@@ -41,6 +44,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// 查询
         /// </summary>
         /// <param name="parameter">查询参数</param>
+        /// <returns>Task&lt;List&lt;ClientDto&gt;&gt;.</returns>
         [HttpGet(true)]
         Task<List<ClientDto>> QueryAsync(ClientQuery parameter);
 
@@ -48,6 +52,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// 分页查询
         /// </summary>
         /// <param name="parameter">查询参数</param>
+        /// <returns>Task&lt;PagerList&lt;ClientDto&gt;&gt;.</returns>
         [HttpGet(true)]
         Task<PagerList<ClientDto>> PagerQueryAsync(ClientQuery parameter);
 
@@ -55,6 +60,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// 创建
         /// </summary>
         /// <param name="request">创建参数</param>
+        /// <returns>Task&lt;System.String&gt;.</returns>
         [HttpPost(true)]
         [UnitOfWork]
         Task<string> CreateAsync([Valid] ClientCreateRequest request);
@@ -63,6 +69,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// 修改
         /// </summary>
         /// <param name="request">修改参数</param>
+        /// <returns>Task.</returns>
         [HttpPut(true)]
         [UnitOfWork]
         Task UpdateAsync([Valid] ClientDto request);
@@ -71,6 +78,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// 删除
         /// </summary>
         /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
+        /// <returns>Task.</returns>
         [HttpPost(true)]
         Task DeleteAsync(string ids);
 
@@ -78,15 +86,15 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// 克隆应用程序
         /// </summary>
         /// <param name="request">克隆请求参数</param>
-        /// <returns></returns>
+        /// <returns>Task&lt;System.Int32&gt;.</returns>
         [UnitOfWork]
         Task<int> CloneAsync(ClientCloneRequest request);
 
         /// <summary>
         /// 通过编码查找
         /// </summary>
-        /// <param name="clientId"></param>
-        /// <returns></returns>
+        /// <param name="clientId">The client identifier.</param>
+        /// <returns>Task&lt;ClientDto&gt;.</returns>
         Task<ClientDto> FindEnabledByIdAsync(string clientId);
 
         #region 应用程序声明
@@ -95,14 +103,14 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// 获取应用程序声明
         /// </summary>
         /// <param name="clientId">应用程序编号</param>
-        /// <returns></returns>
+        /// <returns>Task&lt;List&lt;ClientClaimDto&gt;&gt;.</returns>
         Task<List<ClientClaimDto>> GetClaimsAsync(int clientId);
 
         /// <summary>
         /// 获取应用程序声明
         /// </summary>
         /// <param name="id">应用程序声明编号</param>
-        /// <returns></returns>
+        /// <returns>Task&lt;ClientClaimDto&gt;.</returns>
         Task<ClientClaimDto> GetClaimAsync(int id);
 
         /// <summary>
@@ -110,7 +118,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// </summary>
         /// <param name="clientId">应用标识</param>
         /// <param name="request">创建应用程序声明参数</param>
-        /// <returns></returns>
+        /// <returns>Task&lt;System.Int32&gt;.</returns>
         [UnitOfWork]
         Task<int> CreateClaimAsync(int clientId, [Valid] ClientClaimCreateRequest request);
 
@@ -119,7 +127,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// </summary>
         /// <param name="clientId">应用标识</param>
         /// <param name="dto">应用程序声明</param>
-        /// <returns></returns>
+        /// <returns>Task.</returns>
         [UnitOfWork]
         Task UpdateClaimAsync(int clientId, [Valid] ClientClaimDto dto);
 
@@ -127,7 +135,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// 删除应用程序声明
         /// </summary>
         /// <param name="id">应用程序声明编号</param>
-        /// <returns></returns>
+        /// <returns>Task.</returns>
         [UnitOfWork]
         Task DeleteClaimAsync(int id);
 
@@ -139,14 +147,14 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// 获取应用程序密钥
         /// </summary>
         /// <param name="clientId">应用程序编号</param>
-        /// <returns></returns>
+        /// <returns>Task&lt;List&lt;ClientSecretDto&gt;&gt;.</returns>
         Task<List<ClientSecretDto>> GetSecretsAsync(int clientId);
 
         /// <summary>
         /// 获取应用程序密钥
         /// </summary>
         /// <param name="id">应用程序密钥编号</param>
-        /// <returns></returns>
+        /// <returns>Task&lt;ClientSecretDto&gt;.</returns>
         Task<ClientSecretDto> GetSecretAsync(int id);
 
         /// <summary>
@@ -154,7 +162,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// </summary>
         /// <param name="clientId">应用标识</param>
         /// <param name="request">创建应用程序密钥参数</param>
-        /// <returns></returns>
+        /// <returns>Task&lt;System.Int32&gt;.</returns>
         [UnitOfWork]
         Task<int> CreateSecretAsync(int clientId, [Valid] ClientSecretCreateRequest request);
 
@@ -162,7 +170,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// 删除应用程序密钥
         /// </summary>
         /// <param name="id">应用程序密钥编号</param>
-        /// <returns></returns>
+        /// <returns>Task.</returns>
         [UnitOfWork]
         Task DeleteSecretAsync(int id);
 

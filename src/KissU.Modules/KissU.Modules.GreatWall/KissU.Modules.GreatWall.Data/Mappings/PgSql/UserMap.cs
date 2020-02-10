@@ -13,6 +13,7 @@ namespace KissU.Modules.GreatWall.Data.Mappings.PgSql
         /// <summary>
         /// 映射表
         /// </summary>
+        /// <param name="builder">The builder.</param>
         protected override void MapTable(EntityTypeBuilder<User> builder)
         {
             builder.ToTable(DbConstants.DbTablePrefix + "Users", DbConstants.DbSchema);
@@ -21,6 +22,7 @@ namespace KissU.Modules.GreatWall.Data.Mappings.PgSql
         /// <summary>
         /// 映射属性
         /// </summary>
+        /// <param name="builder">The builder.</param>
         protected override void MapProperties(EntityTypeBuilder<User> builder)
         {
             builder.HasQueryFilter(t => t.IsDeleted == false);

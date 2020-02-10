@@ -58,6 +58,8 @@ namespace KissU.Util.Biz.Tests.Integration.Payments.Wechatpay.Results
         /// <summary>
         /// 获取配置
         /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>Task&lt;WechatpayConfig&gt;.</returns>
         public Task<WechatpayConfig> GetConfigAsync(IParameterManager parameters = null)
         {
             var config = new WechatpayConfig

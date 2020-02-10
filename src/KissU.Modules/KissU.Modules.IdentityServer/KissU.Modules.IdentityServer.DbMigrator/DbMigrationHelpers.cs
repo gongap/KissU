@@ -10,8 +10,15 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace KissU.Modules.IdentityServer.DbMigrator
 {
+    /// <summary>
+    /// DbMigrationHelpers.
+    /// </summary>
     internal static class DbMigrationHelpers
     {
+        /// <summary>
+        /// Builds the configuration.
+        /// </summary>
+        /// <returns>IConfigurationRoot.</returns>
         public static IConfigurationRoot BuildConfiguration()
         {
             var builder = new ConfigurationBuilder()
@@ -20,6 +27,11 @@ namespace KissU.Modules.IdentityServer.DbMigrator
             return builder.Build();
         }
 
+        /// <summary>
+        /// migrate as an asynchronous operation.
+        /// </summary>
+        /// <typeparam name="TDbContext">The type of the t database context.</typeparam>
+        /// <param name="services">The services.</param>
         public static async Task MigrateAsync<TDbContext>(IServiceProvider services)
             where TDbContext : DbContext
         {
@@ -35,6 +47,11 @@ namespace KissU.Modules.IdentityServer.DbMigrator
             }
         }
 
+        /// <summary>
+        /// Ensures the databases migrated.
+        /// </summary>
+        /// <typeparam name="TDbContext">The type of the t database context.</typeparam>
+        /// <param name="serviceProvider">The service provider.</param>
         public static async Task EnsureDatabasesMigrated<TDbContext>(IServiceProvider serviceProvider)
             where TDbContext : DbContext
         {
@@ -46,6 +63,11 @@ namespace KissU.Modules.IdentityServer.DbMigrator
                 }
             }
         }
+        /// <summary>
+        /// Ensures the seed data.
+        /// </summary>
+        /// <typeparam name="TDbContext">The type of the t database context.</typeparam>
+        /// <param name="serviceProvider">The service provider.</param>
         public static async Task EnsureSeedData<TDbContext>(IServiceProvider serviceProvider)
             where TDbContext : DbContext
         {

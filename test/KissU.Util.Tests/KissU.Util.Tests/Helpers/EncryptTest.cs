@@ -13,6 +13,7 @@ namespace KissU.Util.Tests.Helpers
         /// <summary>
         /// 测试初始化
         /// </summary>
+        /// <param name="output">The output.</param>
         public EncryptTest(ITestOutputHelper output)
         {
             _output = output;
@@ -26,6 +27,8 @@ namespace KissU.Util.Tests.Helpers
         /// <summary>
         /// 测试Md5加密，返回16位结果
         /// </summary>
+        /// <param name="input">The input.</param>
+        /// <param name="result">The result.</param>
         [Theory]
         [InlineData(null, "")]
         [InlineData("", "")]
@@ -40,6 +43,8 @@ namespace KissU.Util.Tests.Helpers
         /// <summary>
         /// 测试Md5加密，返回32位结果
         /// </summary>
+        /// <param name="input">The input.</param>
+        /// <param name="result">The result.</param>
         [Theory]
         [InlineData(null, "")]
         [InlineData("", "")]
@@ -54,6 +59,9 @@ namespace KissU.Util.Tests.Helpers
         /// <summary>
         /// 测试DES加密验证
         /// </summary>
+        /// <param name="input">The input.</param>
+        /// <param name="key">The key.</param>
+        /// <param name="result">The result.</param>
         [Theory]
         [InlineData(null, "", "")]
         [InlineData("", "", "")]
@@ -68,6 +76,9 @@ namespace KissU.Util.Tests.Helpers
         /// <summary>
         /// 测试AES加密验证
         /// </summary>
+        /// <param name="input">The input.</param>
+        /// <param name="key">The key.</param>
+        /// <param name="result">The result.</param>
         [Theory]
         [InlineData(null, "", "")]
         [InlineData("", "", "")]
@@ -81,6 +92,9 @@ namespace KissU.Util.Tests.Helpers
         /// <summary>
         /// 测试Rsa签名验证
         /// </summary>
+        /// <param name="input">The input.</param>
+        /// <param name="key">The key.</param>
+        /// <param name="result">The result.</param>
         [Theory]
         [InlineData(null, "", "")]
         [InlineData("", "", "")]
@@ -100,6 +114,8 @@ namespace KissU.Util.Tests.Helpers
         /// <summary>
         /// 测试HmacSha256加密
         /// </summary>
+        /// <param name="input">The input.</param>
+        /// <param name="result">The result.</param>
         [Theory]
         [InlineData(null, "")]
         [InlineData("", "")]

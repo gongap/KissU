@@ -47,6 +47,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// 创建查询对象
         /// </summary>
         /// <param name="param">应用程序查询实体</param>
+        /// <returns>IQueryBase&lt;IdentityResource&gt;.</returns>
         protected override IQueryBase<IdentityResource> CreateQuery(IdentityResourceQuery param)
         {
             var query = new Query<IdentityResource>(param).Or(t => t.Name.Contains(param.Keyword), t => t.DisplayName.Contains(param.Keyword));
@@ -67,6 +68,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// <summary>
         /// 创建前操作
         /// </summary>
+        /// <param name="entity">The entity.</param>
         protected override void CreateBefore(IdentityResource entity)
         {
             base.CreateBefore(entity);
@@ -79,6 +81,8 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// <summary>
         /// 创建后操作
         /// </summary>
+        /// <param name="entity">The entity.</param>
+        /// <returns>A <see cref="T:System.Threading.Tasks.Task" /> representing the asynchronous operation.</returns>
         protected override async Task CreateAfterAsync(IdentityResource entity)
         {
             await base.CreateAfterAsync(entity);
@@ -89,6 +93,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// 修改
         /// </summary>
         /// <param name="request">修改参数</param>
+        /// <returns>A <see cref="T:System.Threading.Tasks.Task" /> representing the asynchronous operation.</returns>
         public override async Task UpdateAsync(IdentityResourceDto request)
         {
             await base.UpdateAsync(request);
@@ -106,6 +111,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// <summary>
         /// 修改前操作
         /// </summary>
+        /// <param name="entity">实体</param>
         protected override void UpdateBefore(IdentityResource entity)
         {
             base.UpdateBefore(entity);
@@ -118,6 +124,9 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// <summary>
         /// 过滤
         /// </summary>
+        /// <param name="queryable">The queryable.</param>
+        /// <param name="parameter">The parameter.</param>
+        /// <returns>IQueryable&lt;IdentityResource&gt;.</returns>
         protected override IQueryable<IdentityResource> Filter(IQueryable<IdentityResource> queryable,
             IdentityResourceQuery parameter)
         {

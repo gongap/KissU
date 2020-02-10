@@ -13,6 +13,7 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         /// <summary>
         /// 映射表
         /// </summary>
+        /// <param name="builder">The builder.</param>
         protected override void MapTable(EntityTypeBuilder<Client> builder)
         {
             builder.ToTable(DbConstants.DbTablePrefix + "Clients", DbConstants.DbSchema);
@@ -21,6 +22,7 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         /// <summary>
         /// 映射属性
         /// </summary>
+        /// <param name="builder">The builder.</param>
         protected override void MapProperties(EntityTypeBuilder<Client> builder)
         {
             builder.HasKey(x => x.Id);
@@ -41,6 +43,7 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         /// <summary>
         /// 映射导航属性
         /// </summary>
+        /// <param name="builder">The builder.</param>
         protected override void MapAssociations(EntityTypeBuilder<Client> builder)
         {
             builder.OwnsMany(t => t.RedirectUris, p =>

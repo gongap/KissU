@@ -19,6 +19,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         /// <summary>
         /// 测试初始化
         /// </summary>
+        /// <param name="output">The output.</param>
         public SqlServerBuilderTest(ITestOutputHelper output)
         {
             _output = output;

@@ -28,6 +28,7 @@ namespace KissU.Modules.GreatWall.Domain.Models
         /// <summary>
         /// 是否外部地址
         /// </summary>
+        /// <returns><c>true</c> if [is external URL]; otherwise, <c>false</c>.</returns>
         public bool IsExternalUrl()
         {
             if (Url.IsEmpty())

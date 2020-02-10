@@ -69,6 +69,7 @@ namespace KissU.Util.Datas.Tests.Integration.Commons.Domains.Models
         /// <summary>
         /// 添加变更列表
         /// </summary>
+        /// <param name="other">The other.</param>
         protected override void AddChanges(Product other)
         {
             AddChange("Id", "商品编号", Id, other.Id);

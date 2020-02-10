@@ -18,6 +18,7 @@ namespace KissU.Util.Tests.Samples
         /// <summary>
         /// 初始化树型实体测试样例
         /// </summary>
+        /// <param name="id">标识</param>
         public TreeEntitySample(Guid id)
             : base(id, "", 0)
         {
@@ -26,6 +27,8 @@ namespace KissU.Util.Tests.Samples
         /// <summary>
         /// 初始化树型实体测试样例
         /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="path">The path.</param>
         public TreeEntitySample(Guid id, string path)
             : base(id, path, 0)
         {

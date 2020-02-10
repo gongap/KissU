@@ -6,6 +6,9 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Util.Datas.Tests.Integration.Samples
 {
+    /// <summary>
+    /// Interface ISample
+    /// </summary>
     public interface ISample
     {
     }
@@ -197,6 +200,7 @@ namespace KissU.Util.Datas.Tests.Integration.Samples
         /// <summary>
         /// 创建测试实例1
         /// </summary>
+        /// <returns>Sample.</returns>
         public static Sample Create1()
         {
             return new Sample {StringValue = "A"};
@@ -205,6 +209,7 @@ namespace KissU.Util.Datas.Tests.Integration.Samples
         /// <summary>
         /// 创建测试实例2
         /// </summary>
+        /// <returns>Sample.</returns>
         public static Sample Create2()
         {
             return new Sample {StringValue = "B"};

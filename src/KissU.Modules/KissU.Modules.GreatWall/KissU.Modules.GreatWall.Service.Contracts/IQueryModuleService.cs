@@ -19,6 +19,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts
         /// 通过编号获取
         /// </summary>
         /// <param name="id">实体编号</param>
+        /// <returns>Task&lt;ModuleDto&gt;.</returns>
         [HttpGet(true)]
         Task<ModuleDto> GetByIdAsync(string id);
 
@@ -26,12 +27,14 @@ namespace KissU.Modules.GreatWall.Service.Contracts
         /// 通过编号列表获取
         /// </summary>
         /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
+        /// <returns>Task&lt;List&lt;ModuleDto&gt;&gt;.</returns>
         [HttpGet(true)]
         Task<List<ModuleDto>> GetByIdsAsync(string ids);
 
         /// <summary>
         /// 获取全部
         /// </summary>
+        /// <returns>Task&lt;List&lt;ModuleDto&gt;&gt;.</returns>
         [HttpGet(true)]
         Task<List<ModuleDto>> GetAllAsync();
 
@@ -39,6 +42,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts
         /// 查询
         /// </summary>
         /// <param name="parameter">查询参数</param>
+        /// <returns>Task&lt;List&lt;ModuleDto&gt;&gt;.</returns>
         [HttpGet(true)]
         Task<List<ModuleDto>> QueryAsync(ResourceQuery parameter);
 
@@ -46,6 +50,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts
         /// 分页查询
         /// </summary>
         /// <param name="parameter">查询参数</param>
+        /// <returns>Task&lt;PagerList&lt;ModuleDto&gt;&gt;.</returns>
         [HttpGet(true)]
         Task<PagerList<ModuleDto>> PagerQueryAsync(ResourceQuery parameter);
 
@@ -53,6 +58,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts
         /// 删除
         /// </summary>
         /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
+        /// <returns>Task.</returns>
         [HttpPost(true)]
         Task DeleteAsync(string ids);
 
@@ -60,6 +66,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts
         /// 通过标识查找列表
         /// </summary>
         /// <param name="ids">标识列表</param>
+        /// <returns>Task&lt;List&lt;ModuleDto&gt;&gt;.</returns>
         [HttpGet(true)]
         Task<List<ModuleDto>> FindByIdsAsync(string ids);
 
@@ -67,6 +74,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts
         /// 启用
         /// </summary>
         /// <param name="ids">标识列表</param>
+        /// <returns>Task.</returns>
         [HttpPost(true)]
         Task EnableAsync(string ids);
 
@@ -74,6 +82,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts
         /// 冻结
         /// </summary>
         /// <param name="ids">标识列表</param>
+        /// <returns>Task.</returns>
         [HttpPost(true)]
         Task DisableAsync(string ids);
 
@@ -82,6 +91,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts
         /// </summary>
         /// <param name="id">标识</param>
         /// <param name="swapId">目标标识</param>
+        /// <returns>Task.</returns>
         [HttpGet(true)]
         Task SwapSortAsync(Guid id, Guid swapId);
 
@@ -89,6 +99,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts
         /// 修正排序
         /// </summary>
         /// <param name="parameter">查询参数</param>
+        /// <returns>Task.</returns>
         [HttpGet(true)]
         Task FixSortIdAsync(ResourceQuery parameter);
     }

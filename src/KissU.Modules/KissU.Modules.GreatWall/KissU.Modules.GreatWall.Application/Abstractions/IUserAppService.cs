@@ -18,6 +18,7 @@ namespace KissU.Modules.GreatWall.Application.Abstractions
         /// 创建用户
         /// </summary>
         /// <param name="request">创建用户参数</param>
+        /// <returns>Task&lt;Guid&gt;.</returns>
         Task<Guid> CreateAsync([NotNull] [Valid] CreateUserRequest request);
     }
 }

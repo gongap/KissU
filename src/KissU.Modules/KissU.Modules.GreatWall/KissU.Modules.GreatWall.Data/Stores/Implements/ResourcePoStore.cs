@@ -30,6 +30,7 @@ namespace KissU.Modules.GreatWall.Data.Stores.Implements
         /// </summary>
         /// <param name="applicationId">应用程序标识</param>
         /// <param name="roleIds">角色标识列表</param>
+        /// <returns>Task&lt;List&lt;ResourcePo&gt;&gt;.</returns>
         public async Task<List<ResourcePo>> GetModulesAsync(Guid applicationId, List<Guid> roleIds)
         {
             if (applicationId == Guid.Empty || roleIds == null || roleIds.Count == 0)

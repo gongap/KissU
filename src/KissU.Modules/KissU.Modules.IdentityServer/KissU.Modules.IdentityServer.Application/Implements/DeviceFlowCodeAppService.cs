@@ -43,6 +43,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// 创建查询对象
         /// </summary>
         /// <param name="param">查询实体</param>
+        /// <returns>IQueryBase&lt;DeviceFlowCode&gt;.</returns>
         protected override IQueryBase<DeviceFlowCode> CreateQuery(DeviceFlowCodeQuery param)
         {
             Query<DeviceFlowCode> query = new Query<DeviceFlowCode>(param);

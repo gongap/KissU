@@ -34,6 +34,7 @@ namespace KissU.Util.Datas.Tests.Integration.Commons.Datas.Criterias
         /// <summary>
         /// 获取过滤条件
         /// </summary>
+        /// <returns>Expression&lt;Func&lt;Customer, System.Boolean&gt;&gt;.</returns>
         public Expression<Func<Customer, bool>> GetPredicate()
         {
             return customer => customer.Name == _name && customer.Nickname == _nickname;

@@ -10,6 +10,9 @@ namespace KissU.Util.Tests
         /// <summary>
         /// 测试移除末尾字符串
         /// </summary>
+        /// <param name="input">The input.</param>
+        /// <param name="remove">The remove.</param>
+        /// <param name="result">The result.</param>
         [Theory]
         [InlineData(null, "a", "")]
         [InlineData("a", null, "a")]

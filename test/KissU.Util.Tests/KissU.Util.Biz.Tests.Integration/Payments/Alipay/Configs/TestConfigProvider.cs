@@ -11,6 +11,7 @@ namespace KissU.Util.Biz.Tests.Integration.Payments.Alipay.Configs
         /// <summary>
         /// 获取配置
         /// </summary>
+        /// <returns>Task&lt;AlipayConfig&gt;.</returns>
         public Task<AlipayConfig> GetConfigAsync()
         {
             var config = new AlipayConfig

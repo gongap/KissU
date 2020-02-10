@@ -1,7 +1,7 @@
 ﻿namespace KissU.Modules.IdentityServer.Domain.Enums
 {
     /// <summary>
-    ///令牌使用类型
+    /// 令牌使用类型
     /// </summary>
     public enum TokenUsage
     {

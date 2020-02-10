@@ -15,6 +15,7 @@ namespace KissU.Util.Biz.Tests.Integration.Payments.Alipay.Parameters
         /// <summary>
         /// 测试初始化
         /// </summary>
+        /// <param name="output">The output.</param>
         public AlipayParameterBuilderTest(ITestOutputHelper output)
         {
             _output = output;

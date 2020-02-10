@@ -28,6 +28,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         /// 通过编号获取
         /// </summary>
         /// <param name="id">实体编号</param>
+        /// <returns>Task&lt;DeviceFlowCodeDto&gt;.</returns>
         public async Task<DeviceFlowCodeDto> GetByIdAsync(int id)
         {
             return await _appService.GetByIdAsync(id);
@@ -37,6 +38,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         /// 通过编号列表获取
         /// </summary>
         /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
+        /// <returns>Task&lt;List&lt;DeviceFlowCodeDto&gt;&gt;.</returns>
         public async Task<List<DeviceFlowCodeDto>> GetByIdsAsync(string ids)
         {
             return await _appService.GetByIdsAsync(ids);
@@ -45,6 +47,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         /// <summary>
         /// 获取全部
         /// </summary>
+        /// <returns>Task&lt;List&lt;DeviceFlowCodeDto&gt;&gt;.</returns>
         public async Task<List<DeviceFlowCodeDto>> GetAllAsync()
         {
             return await _appService.GetAllAsync();
@@ -54,6 +57,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         /// 查询
         /// </summary>
         /// <param name="parameter">查询参数</param>
+        /// <returns>Task&lt;List&lt;DeviceFlowCodeDto&gt;&gt;.</returns>
         public async Task<List<DeviceFlowCodeDto>> QueryAsync(DeviceFlowCodeQuery parameter)
         {
             return await _appService.QueryAsync(parameter);
@@ -63,6 +67,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
         /// 分页查询
         /// </summary>
         /// <param name="parameter">查询参数</param>
+        /// <returns>Task&lt;PagerList&lt;DeviceFlowCodeDto&gt;&gt;.</returns>
         public async Task<PagerList<DeviceFlowCodeDto>> PagerQueryAsync(DeviceFlowCodeQuery parameter)
         {
             return await _appService.PagerQueryAsync(parameter);

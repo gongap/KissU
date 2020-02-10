@@ -20,6 +20,7 @@ namespace KissU.Modules.Admin.Service.Implements
         /// <summary>
         /// 获取应用程序数据
         /// </summary>
+        /// <returns>Task&lt;AppData&gt;.</returns>
         [HttpGet(true)]
         public async Task<AppData> GetAppDataAsync()
         {

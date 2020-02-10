@@ -64,6 +64,10 @@ namespace KissU.Util.Tests.Domains
     /// </summary>
     public class IocConfig : ConfigBase
     {
+        /// <summary>
+        /// Loads the specified builder.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
         protected override void Load(ContainerBuilder builder)
         {
             builder.AddScoped<IRepositorySample, RepositorySample>();

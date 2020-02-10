@@ -47,6 +47,8 @@ namespace KissU.Modules.GreatWall.Domain.Models
         /// <summary>
         /// 验证
         /// </summary>
+        /// <returns>ValidationResultCollection.</returns>
+        /// <exception cref="Warning"></exception>
         public override ValidationResultCollection Validate()
         {
             if (UserName.IsEmpty())
@@ -73,6 +75,7 @@ namespace KissU.Modules.GreatWall.Domain.Models
         /// <summary>
         /// 获取加密器
         /// </summary>
+        /// <returns>IEncryptor.</returns>
         protected virtual IEncryptor GetEncryptor()
         {
             return Encryptor ?? new PasswordEncryptor();
@@ -97,6 +100,7 @@ namespace KissU.Modules.GreatWall.Domain.Models
         /// <summary>
         /// 获取密码
         /// </summary>
+        /// <returns>System.String.</returns>
         public string GetPassword()
         {
             return GetEncryptor().Decrypt(Password);
@@ -105,6 +109,7 @@ namespace KissU.Modules.GreatWall.Domain.Models
         /// <summary>
         /// 获取安全码
         /// </summary>
+        /// <returns>System.String.</returns>
         public string GetSafePassword()
         {
             return GetEncryptor().Decrypt(SafePassword);

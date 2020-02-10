@@ -43,6 +43,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         /// 创建角色
         /// </summary>
         /// <param name="role">角色</param>
+        /// <returns>Task.</returns>
         public virtual async Task CreateAsync(Role role)
         {
             await ValidateCreate(role);
@@ -57,6 +58,8 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         /// <summary>
         /// 修改角色
         /// </summary>
+        /// <param name="role">The role.</param>
+        /// <returns>Task.</returns>
         public async Task UpdateAsync(Role role)
         {
             role.CheckNull(nameof(role));
@@ -72,6 +75,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         /// </summary>
         /// <param name="roleId">角色标识</param>
         /// <param name="userIds">用户标识列表</param>
+        /// <returns>Task.</returns>
         public async Task AddUsersToRoleAsync(Guid roleId, List<Guid> userIds)
         {
             if (roleId.IsEmpty() || userIds == null)
@@ -87,6 +91,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         /// </summary>
         /// <param name="roleId">角色标识</param>
         /// <param name="userIds">用户标识列表</param>
+        /// <returns>Task.</returns>
         public Task RemoveUsersFromRoleAsync(Guid roleId, List<Guid> userIds)
         {
             if (roleId.IsEmpty() || userIds == null)
@@ -110,6 +115,8 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         /// <summary>
         /// 抛出编码重复异常
         /// </summary>
+        /// <param name="code">The code.</param>
+        /// <exception cref="Warning"></exception>
         protected void ThrowDuplicateCodeException(string code)
         {
             throw new Warning(string.Format(GreatWallResource.DuplicateRoleCode, code));

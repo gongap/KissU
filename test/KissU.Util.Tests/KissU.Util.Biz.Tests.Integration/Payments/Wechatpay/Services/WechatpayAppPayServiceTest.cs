@@ -20,6 +20,7 @@ namespace KissU.Util.Biz.Tests.Integration.Payments.Wechatpay.Services
         /// <summary>
         /// 测试初始化
         /// </summary>
+        /// <param name="output">The output.</param>
         public WechatpayAppPayServiceTest(ITestOutputHelper output)
         {
             _output = output;

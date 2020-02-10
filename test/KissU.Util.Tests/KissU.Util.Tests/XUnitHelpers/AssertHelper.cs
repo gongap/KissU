@@ -16,6 +16,7 @@ namespace KissU.Util.Tests.XUnitHelpers
         /// <typeparam name="TException">异常类型</typeparam>
         /// <param name="action">操作</param>
         /// <param name="keyword">关键字</param>
+        /// <returns>TException.</returns>
         public static TException Throws<TException>(Action action, string keyword = "") where TException : Exception
         {
             var exception = GetException<TException>(action);
@@ -46,6 +47,7 @@ namespace KissU.Util.Tests.XUnitHelpers
         /// <typeparam name="TException">异常类型</typeparam>
         /// <param name="action">操作</param>
         /// <param name="keyword">关键字</param>
+        /// <returns>Task&lt;TException&gt;.</returns>
         public static async Task<TException> ThrowsAsync<TException>(Func<Task> action, string keyword = "")
             where TException : Exception
         {

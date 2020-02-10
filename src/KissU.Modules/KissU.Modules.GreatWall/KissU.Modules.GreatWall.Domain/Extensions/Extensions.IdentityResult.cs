@@ -14,6 +14,8 @@ namespace KissU.Modules.GreatWall.Domain.Extensions
         /// 失败抛出异常
         /// </summary>
         /// <param name="result">Identity结果</param>
+        /// <exception cref="ArgumentNullException">result</exception>
+        /// <exception cref="Warning"></exception>
         public static void ThrowIfError(this IdentityResult result)
         {
             if (result == null)

@@ -30,6 +30,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// <param name="applicationId">应用程序标识</param>
         /// <param name="roleId">角色标识</param>
         /// <param name="isDeny">是否拒绝</param>
+        /// <returns>Task&lt;List&lt;Guid&gt;&gt;.</returns>
         public async Task<List<Guid>> GetResourceIdsAsync(Guid applicationId, Guid roleId, bool isDeny)
         {
             var queryable = from permission in Find()
@@ -45,6 +46,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// </summary>
         /// <param name="roleId">角色标识</param>
         /// <param name="resourceIds">资源标识列表</param>
+        /// <returns>Task&lt;List&lt;Guid&gt;&gt;.</returns>
         public async Task<List<Guid>> GetPermissionIdsAsync(Guid roleId, List<Guid> resourceIds)
         {
             return await Find().Where(t => t.RoleId == roleId && resourceIds.Contains(t.ResourceId)).Select(t => t.Id)

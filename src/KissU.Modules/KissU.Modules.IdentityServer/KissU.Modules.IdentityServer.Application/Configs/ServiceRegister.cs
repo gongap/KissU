@@ -11,6 +11,7 @@ namespace KissU.Modules.IdentityServer.Application.Configs
         /// <summary>
         /// 注册依赖
         /// </summary>
+        /// <param name="services">The services.</param>
         public void Register(IServiceCollection services)
         {
         }

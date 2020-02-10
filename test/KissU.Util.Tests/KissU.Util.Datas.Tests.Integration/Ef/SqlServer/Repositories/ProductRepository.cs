@@ -29,6 +29,7 @@ namespace KissU.Util.Datas.Tests.Integration.Ef.SqlServer.Repositories
         /// 通过编号获取商品
         /// </summary>
         /// <param name="id">商品编号</param>
+        /// <returns>Product.</returns>
         public Product GetById(int id)
         {
             return ToEntity(_store.Single(t => t.Id == id));
@@ -38,6 +39,7 @@ namespace KissU.Util.Datas.Tests.Integration.Ef.SqlServer.Repositories
         /// 将持久化对象转成实体
         /// </summary>
         /// <param name="po">持久化对象</param>
+        /// <returns>TEntity.</returns>
         protected override Product ToEntity(ProductPo po)
         {
             return po.ToEntity();
@@ -47,6 +49,7 @@ namespace KissU.Util.Datas.Tests.Integration.Ef.SqlServer.Repositories
         /// 将实体转成持久化对象
         /// </summary>
         /// <param name="entity">实体</param>
+        /// <returns>ProductPo.</returns>
         protected override ProductPo ToPo(Product entity)
         {
             return entity.ToPo();

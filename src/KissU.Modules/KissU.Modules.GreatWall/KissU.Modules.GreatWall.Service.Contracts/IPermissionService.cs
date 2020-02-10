@@ -18,6 +18,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts
         /// 获取资源标识列表
         /// </summary>
         /// <param name="query">权限参数</param>
+        /// <returns>Task&lt;List&lt;Guid&gt;&gt;.</returns>
         [HttpGet(true)]
         Task<List<Guid>> GetResourceIdsAsync(PermissionQuery query);
 
@@ -25,6 +26,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts
         /// 保存权限
         /// </summary>
         /// <param name="request">参数</param>
+        /// <returns>Task.</returns>
         [HttpPost(true)]
         Task SaveAsync(SavePermissionRequest request);
     }

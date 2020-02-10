@@ -55,6 +55,7 @@ namespace KissU.Modules.GreatWall.Application.Implements
         /// 获取用户的角色列表
         /// </summary>
         /// <param name="userId">用户标识</param>
+        /// <returns>Task&lt;List&lt;RoleDto&gt;&gt;.</returns>
         public async Task<List<RoleDto>> GetRolesAsync(Guid userId)
         {
             var result = await RoleRepository.GetRolesAsync(userId);
@@ -65,6 +66,7 @@ namespace KissU.Modules.GreatWall.Application.Implements
         /// 创建角色
         /// </summary>
         /// <param name="request">创建角色参数</param>
+        /// <returns>Task&lt;Guid&gt;.</returns>
         public async Task<Guid> CreateAsync(CreateRoleRequest request)
         {
             var role = request.MapTo<Role>();
@@ -77,6 +79,7 @@ namespace KissU.Modules.GreatWall.Application.Implements
         /// 修改角色
         /// </summary>
         /// <param name="request">修改角色参数</param>
+        /// <returns>Task.</returns>
         public async Task UpdateAsync(UpdateRoleRequest request)
         {
             var entity = await RoleRepository.FindAsync(request.Id.ToGuid());
@@ -89,6 +92,7 @@ namespace KissU.Modules.GreatWall.Application.Implements
         /// 添加用户到角色
         /// </summary>
         /// <param name="request">用户角色参数</param>
+        /// <returns>Task.</returns>
         public async Task AddUsersToRoleAsync(UserRoleRequest request)
         {
             await RoleManager.AddUsersToRoleAsync(request.RoleId, request.UserIds.ToGuidList());
@@ -99,6 +103,7 @@ namespace KissU.Modules.GreatWall.Application.Implements
         /// 从角色移除用户
         /// </summary>
         /// <param name="request">用户角色参数</param>
+        /// <returns>Task.</returns>
         public async Task RemoveUsersFromRoleAsync(UserRoleRequest request)
         {
             await RoleManager.RemoveUsersFromRoleAsync(request.RoleId, request.UserIds.ToGuidList());
@@ -109,6 +114,7 @@ namespace KissU.Modules.GreatWall.Application.Implements
         /// 创建查询对象
         /// </summary>
         /// <param name="param">查询参数</param>
+        /// <returns>IQueryBase&lt;Role&gt;.</returns>
         protected override IQueryBase<Role> CreateQuery(RoleQuery param)
         {
             return new Query<Role>(param)

@@ -13,6 +13,7 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         /// <summary>
         /// 映射表
         /// </summary>
+        /// <param name="builder">The builder.</param>
         protected override void MapTable(EntityTypeBuilder<PersistedGrant> builder)
         {
             builder.ToTable(DbConstants.DbTablePrefix + "PersistedGrants", DbConstants.DbSchema);
@@ -21,6 +22,7 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         /// <summary>
         /// 映射属性
         /// </summary>
+        /// <param name="builder">The builder.</param>
         protected override void MapProperties(EntityTypeBuilder<PersistedGrant> builder)
         {
             builder.HasKey(x => x.Key);

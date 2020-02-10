@@ -18,6 +18,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// 通过编号获取
         /// </summary>
         /// <param name="id">实体编号</param>
+        /// <returns>Task&lt;PersistedGrantDto&gt;.</returns>
         [HttpGet(true)]
         Task<PersistedGrantDto> GetByIdAsync(int id);
 
@@ -25,12 +26,14 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// 通过编号列表获取
         /// </summary>
         /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
+        /// <returns>Task&lt;List&lt;PersistedGrantDto&gt;&gt;.</returns>
         [HttpGet(true)]
         Task<List<PersistedGrantDto>> GetByIdsAsync(string ids);
 
         /// <summary>
         /// 获取全部
         /// </summary>
+        /// <returns>Task&lt;List&lt;PersistedGrantDto&gt;&gt;.</returns>
         [HttpGet(true)]
         Task<List<PersistedGrantDto>> GetAllAsync();
 
@@ -38,6 +41,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// 查询
         /// </summary>
         /// <param name="parameter">查询参数</param>
+        /// <returns>Task&lt;List&lt;PersistedGrantDto&gt;&gt;.</returns>
         [HttpGet(true)]
         Task<List<PersistedGrantDto>> QueryAsync(PersistedGrantQuery parameter);
 
@@ -45,6 +49,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// 分页查询
         /// </summary>
         /// <param name="parameter">查询参数</param>
+        /// <returns>Task&lt;PagerList&lt;PersistedGrantDto&gt;&gt;.</returns>
         [HttpGet(true)]
         Task<PagerList<PersistedGrantDto>> PagerQueryAsync(PersistedGrantQuery parameter);
 
@@ -52,6 +57,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// 删除
         /// </summary>
         /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
+        /// <returns>Task.</returns>
         [HttpPost(true)]
         Task DeleteAsync(string ids);
     }

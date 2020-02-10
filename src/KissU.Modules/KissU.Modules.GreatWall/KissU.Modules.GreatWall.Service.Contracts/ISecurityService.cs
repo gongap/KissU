@@ -16,11 +16,13 @@ namespace KissU.Modules.GreatWall.Service.Contracts
         /// 登录
         /// </summary>
         /// <param name="request">登录参数</param>
+        /// <returns>Task&lt;SignInResult&gt;.</returns>
         Task<SignInResult> SignInAsync(LoginRequest request);
 
         /// <summary>
         /// 退出登录
         /// </summary>
+        /// <returns>Task.</returns>
         Task SignOutAsync();
     }
 }

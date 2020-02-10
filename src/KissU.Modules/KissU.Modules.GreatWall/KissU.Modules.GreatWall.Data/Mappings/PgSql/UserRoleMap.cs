@@ -13,6 +13,7 @@ namespace KissU.Modules.GreatWall.Data.Mappings.PgSql
         /// <summary>
         /// 映射表
         /// </summary>
+        /// <param name="builder">The builder.</param>
         protected override void MapTable(EntityTypeBuilder<UserRole> builder)
         {
             builder.ToTable(DbConstants.DbTablePrefix + "UserRoles", DbConstants.DbSchema);
@@ -21,6 +22,7 @@ namespace KissU.Modules.GreatWall.Data.Mappings.PgSql
         /// <summary>
         /// 映射属性
         /// </summary>
+        /// <param name="builder">The builder.</param>
         protected override void MapProperties(EntityTypeBuilder<UserRole> builder)
         {
             builder.HasKey(t => new {t.UserId, t.RoleId});

@@ -10,6 +10,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace KissU.Modules.IdentityServer.DbMigrator
 {
+    /// <summary>
+    /// Program.
+    /// </summary>
     internal class Program
     {
         private static async Task Main(string[] args)

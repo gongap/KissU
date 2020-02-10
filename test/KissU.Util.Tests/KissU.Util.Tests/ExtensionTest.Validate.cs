@@ -13,6 +13,8 @@ namespace KissU.Util.Tests
         /// <summary>
         /// 测试是否空值 - 字符串
         /// </summary>
+        /// <param name="value">The value.</param>
+        /// <param name="result">if set to <c>true</c> [result].</param>
         [Theory]
         [InlineData(null, true)]
         [InlineData("", true)]

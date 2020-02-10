@@ -22,6 +22,7 @@ namespace KissU.Modules.IdentityServer.Application.Services
         /// </summary>
         /// <param name="context">上下文访问器</param>
         /// <param name="logger">日志记录器</param>
+        /// <exception cref="ArgumentNullException">context</exception>
         public CorsPolicyService(IHttpContextAccessor context, ILogger<CorsPolicyService> logger)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
@@ -32,7 +33,7 @@ namespace KissU.Modules.IdentityServer.Application.Services
         /// 是否允许跨域
         /// </summary>
         /// <param name="origin">跨域源</param>
-        /// <returns></returns>
+        /// <returns>Task&lt;System.Boolean&gt;.</returns>
         public Task<bool> IsOriginAllowedAsync(string origin)
         {
             // 不在构造函数注入的原因: https://github.com/aspnet/CORS/issues/105

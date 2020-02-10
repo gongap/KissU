@@ -42,6 +42,7 @@ namespace KissU.Modules.GreatWall.Application.Implements
         /// 创建模块
         /// </summary>
         /// <param name="request">创建模块参数</param>
+        /// <returns>Task&lt;Guid&gt;.</returns>
         public async Task<Guid> CreateAsync(CreateModuleRequest request)
         {
             var module = request.ToModule();

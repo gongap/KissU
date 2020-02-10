@@ -20,6 +20,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts
         /// 通过编号获取
         /// </summary>
         /// <param name="id">实体编号</param>
+        /// <returns>Task&lt;UserDto&gt;.</returns>
         [HttpGet(true)]
         Task<UserDto> GetByIdAsync(string id);
 
@@ -27,12 +28,14 @@ namespace KissU.Modules.GreatWall.Service.Contracts
         /// 通过编号列表获取
         /// </summary>
         /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
+        /// <returns>Task&lt;List&lt;UserDto&gt;&gt;.</returns>
         [HttpGet(true)]
         Task<List<UserDto>> GetByIdsAsync(string ids);
 
         /// <summary>
         /// 获取全部
         /// </summary>
+        /// <returns>Task&lt;List&lt;UserDto&gt;&gt;.</returns>
         [HttpGet(true)]
         Task<List<UserDto>> GetAllAsync();
 
@@ -40,6 +43,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts
         /// 查询
         /// </summary>
         /// <param name="parameter">查询参数</param>
+        /// <returns>Task&lt;List&lt;UserDto&gt;&gt;.</returns>
         [HttpGet(true)]
         Task<List<UserDto>> QueryAsync(UserQuery parameter);
 
@@ -47,6 +51,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts
         /// 分页查询
         /// </summary>
         /// <param name="parameter">查询参数</param>
+        /// <returns>Task&lt;PagerList&lt;UserDto&gt;&gt;.</returns>
         [HttpGet(true)]
         Task<PagerList<UserDto>> PagerQueryAsync(UserQuery parameter);
 
@@ -54,6 +59,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts
         /// 删除
         /// </summary>
         /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
+        /// <returns>Task.</returns>
         [HttpPost(true)]
         Task DeleteAsync(string ids);
 
@@ -61,6 +67,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts
         /// 创建用户
         /// </summary>
         /// <param name="request">创建用户参数</param>
+        /// <returns>Task&lt;Guid&gt;.</returns>
         [HttpPost(true)]
         Task<Guid> CreateAsync(CreateUserRequest request);
     }

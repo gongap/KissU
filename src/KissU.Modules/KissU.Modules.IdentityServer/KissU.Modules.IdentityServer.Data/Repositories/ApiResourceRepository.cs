@@ -30,6 +30,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         /// 获取Api许可范围
         /// </summary>
         /// <param name="apiResourceId">Api资源编号</param>
+        /// <returns>Task&lt;List&lt;ApiScope&gt;&gt;.</returns>
         public async Task<List<ApiScope>> GetApiResourceScopesAsync(int apiResourceId)
         {
             var queryable = from apiScope in UnitOfWork.Set<ApiScope>()
@@ -43,7 +44,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         /// 获取Api许可范围
         /// </summary>
         /// <param name="id">Api许可范围编号</param>
-        /// <returns></returns>
+        /// <returns>Task&lt;ApiScope&gt;.</returns>
         public async Task<ApiScope> GetApiResourceScopeAsync(int id)
         {
             var queryable = from apiScope in UnitOfWork.Set<ApiScope>()
@@ -57,7 +58,6 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         /// 添加Api许可范围
         /// </summary>
         /// <param name="entity">Api许可范围</param>
-        /// <returns></returns>
         public async Task CreateApiResourceScopeAsync(ApiScope entity)
         {
             await UnitOfWork.Set<ApiScope>().AddAsync(entity);
@@ -67,7 +67,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         /// 更新Api许可范围
         /// </summary>
         /// <param name="entity">Api许可范围</param>
-        /// <returns></returns>
+        /// <returns>Task.</returns>
         public Task UpdateApiResourceScopeAsync(ApiScope entity)
         {
             UnitOfWork.Set<ApiScope>().Update(entity);
@@ -78,7 +78,6 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         /// 删除Api许可范围
         /// </summary>
         /// <param name="id">Api许可范围</param>
-        /// <returns></returns>
         public async Task DeleteApiResourceScopeAsync(int id)
         {
             var entity = await UnitOfWork.Set<ApiScope>().Where(x => x.Id == id).SingleAsync();
@@ -96,6 +95,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         /// 获取Api密钥
         /// </summary>
         /// <param name="apiResourceId">Api资源编号</param>
+        /// <returns>Task&lt;List&lt;ApiSecret&gt;&gt;.</returns>
         public async Task<List<ApiSecret>> GetApiResourceSecretsAsync(int apiResourceId)
         {
             var queryable = from apiSecret in UnitOfWork.Set<ApiSecret>()
@@ -109,7 +109,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         /// 获取Api密钥
         /// </summary>
         /// <param name="id">Api密钥编号</param>
-        /// <returns></returns>
+        /// <returns>Task&lt;ApiSecret&gt;.</returns>
         public async Task<ApiSecret> GetApiResourceSecretAsync(int id)
         {
             var queryable = from apiSecret in UnitOfWork.Set<ApiSecret>()
@@ -123,7 +123,6 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         /// 添加Api密钥
         /// </summary>
         /// <param name="entity">Api密钥</param>
-        /// <returns></returns>
         public async Task CreateApiResourceSecretAsync(ApiSecret entity)
         {
             await UnitOfWork.Set<ApiSecret>().AddAsync(entity);
@@ -133,7 +132,6 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         /// 删除Api密钥
         /// </summary>
         /// <param name="id">Api密钥</param>
-        /// <returns></returns>
         public async Task DeleteApiResourceSecretAsync(int id)
         {
             var entity = await UnitOfWork.Set<ApiSecret>().Where(x => x.Id == id).SingleAsync();

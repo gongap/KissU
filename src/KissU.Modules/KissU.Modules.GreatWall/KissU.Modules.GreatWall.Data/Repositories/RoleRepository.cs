@@ -30,6 +30,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// 获取用户的角色列表
         /// </summary>
         /// <param name="userId">用户标识</param>
+        /// <returns>Task&lt;List&lt;Role&gt;&gt;.</returns>
         public async Task<List<Role>> GetRolesAsync(Guid userId)
         {
             return await GetRoleQueryable(userId).ToListAsync();
@@ -39,6 +40,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// 获取用户的角色标识列表
         /// </summary>
         /// <param name="userId">用户标识</param>
+        /// <returns>Task&lt;List&lt;Guid&gt;&gt;.</returns>
         public async Task<List<Guid>> GetRoleIdsAsync(Guid userId)
         {
             return await GetRoleQueryable(userId).Select(t => t.Id).ToListAsync();
@@ -49,6 +51,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// </summary>
         /// <param name="roleId">角色标识</param>
         /// <param name="userIds">用户标识列表</param>
+        /// <returns>Task&lt;List&lt;Guid&gt;&gt;.</returns>
         public async Task<List<Guid>> GetExistsUserIdsAsync(Guid roleId, List<Guid> userIds)
         {
             return await UnitOfWork.Set<UserRole>().Where(t => t.RoleId == roleId && userIds.Contains(t.UserId))
@@ -86,6 +89,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// </summary>
         /// <param name="role">角色</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>A <see cref="T:System.Threading.Tasks.Task`1" /> that represents the <see cref="T:Microsoft.AspNetCore.Identity.IdentityResult" /> of the asynchronous query.</returns>
         public async Task<IdentityResult> CreateAsync(Role role, CancellationToken cancellationToken)
         {
             ValidateRole(role, cancellationToken);
@@ -98,6 +102,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// </summary>
         /// <param name="role">角色</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>A <see cref="T:System.Threading.Tasks.Task`1" /> that represents the <see cref="T:Microsoft.AspNetCore.Identity.IdentityResult" /> of the asynchronous query.</returns>
         public async Task<IdentityResult> UpdateAsync(Role role, CancellationToken cancellationToken)
         {
             ValidateRole(role, cancellationToken);
@@ -110,6 +115,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// </summary>
         /// <param name="role">角色</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>A <see cref="T:System.Threading.Tasks.Task`1" /> that represents the <see cref="T:Microsoft.AspNetCore.Identity.IdentityResult" /> of the asynchronous query.</returns>
         public async Task<IdentityResult> DeleteAsync(Role role, CancellationToken cancellationToken)
         {
             ValidateRole(role, cancellationToken);
@@ -122,6 +128,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// </summary>
         /// <param name="role">角色</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>A <see cref="T:System.Threading.Tasks.Task`1" /> that contains the ID of the role.</returns>
         public Task<string> GetRoleIdAsync(Role role, CancellationToken cancellationToken)
         {
             ValidateRole(role, cancellationToken);
@@ -133,6 +140,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// </summary>
         /// <param name="role">角色</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>A <see cref="T:System.Threading.Tasks.Task`1" /> that contains the name of the role.</returns>
         public Task<string> GetRoleNameAsync(Role role, CancellationToken cancellationToken)
         {
             ValidateRole(role, cancellationToken);
@@ -145,6 +153,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// <param name="role">角色</param>
         /// <param name="roleName">角色名</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>The <see cref="T:System.Threading.Tasks.Task" /> that represents the asynchronous operation.</returns>
         public Task SetRoleNameAsync(Role role, string roleName, CancellationToken cancellationToken)
         {
             ValidateRole(role, cancellationToken);
@@ -157,6 +166,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// </summary>
         /// <param name="role">角色</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>A <see cref="T:System.Threading.Tasks.Task`1" /> that contains the name of the role.</returns>
         public Task<string> GetNormalizedRoleNameAsync(Role role, CancellationToken cancellationToken)
         {
             ValidateRole(role, cancellationToken);
@@ -169,6 +179,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// <param name="role">角色</param>
         /// <param name="normalizedName">标准化角色名称</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>The <see cref="T:System.Threading.Tasks.Task" /> that represents the asynchronous operation.</returns>
         public Task SetNormalizedRoleNameAsync(Role role, string normalizedName, CancellationToken cancellationToken)
         {
             ValidateRole(role, cancellationToken);
@@ -181,6 +192,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// </summary>
         /// <param name="roleId">角色编号</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>A <see cref="T:System.Threading.Tasks.Task`1" /> that result of the look up.</returns>
         public async Task<Role> FindByIdAsync(string roleId, CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -192,6 +204,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// </summary>
         /// <param name="normalizedRoleName">标准化角色名称</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>Task&lt;Role&gt;.</returns>
         public async Task<Role> FindByNameAsync(string normalizedRoleName, CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();

@@ -149,6 +149,10 @@ namespace KissU.Util.Tests.Applications
     /// </summary>
     public class IocConfig : ConfigBase
     {
+        /// <summary>
+        /// Loads the specified builder.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
         protected override void Load(ContainerBuilder builder)
         {
             builder.AddScoped<IUnitOfWork, UnitOfWorkSample>();

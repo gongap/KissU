@@ -48,6 +48,7 @@ namespace KissU.Modules.GreatWall.Application.Implements
         /// 通过应用程序编码查找
         /// </summary>
         /// <param name="code">应用程序编码</param>
+        /// <returns>Task&lt;ApplicationDto&gt;.</returns>
         public async Task<ApplicationDto> GetByCodeAsync(string code)
         {
             var application = await ApplicationStore.SingleAsync(t => t.Code == code);
@@ -57,6 +58,8 @@ namespace KissU.Modules.GreatWall.Application.Implements
         /// <summary>
         /// 转成参数
         /// </summary>
+        /// <param name="po">The po.</param>
+        /// <returns>ApplicationDto.</returns>
         protected override ApplicationDto ToDto(ApplicationPo po)
         {
             return po.ToDto();
@@ -66,6 +69,7 @@ namespace KissU.Modules.GreatWall.Application.Implements
         /// 创建查询对象
         /// </summary>
         /// <param name="query">查询参数</param>
+        /// <returns>IQueryBase&lt;ApplicationPo&gt;.</returns>
         protected override IQueryBase<ApplicationPo> CreateQuery(ApplicationQuery query)
         {
             return new Query<ApplicationPo>(query)

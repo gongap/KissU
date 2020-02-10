@@ -2,21 +2,48 @@
 
 namespace KissU.Util.Tests.Samples
 {
+    /// <summary>
+    /// A.
+    /// </summary>
     public class A
     {
+        /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
         public string Name { get; set; }
+        /// <summary>
+        /// Gets or sets the b.
+        /// </summary>
         public B B { get; set; }
     }
 
+    /// <summary>
+    /// B.
+    /// </summary>
     public class B
     {
+        /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
         public string Name { get; set; }
+        /// <summary>
+        /// Gets or sets the c.
+        /// </summary>
         public C C { get; set; }
     }
 
+    /// <summary>
+    /// C.
+    /// </summary>
     public class C
     {
+        /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
         public string Name { get; set; }
+        /// <summary>
+        /// Gets or sets a.
+        /// </summary>
         public A A { get; set; }
     }
 
@@ -63,6 +90,7 @@ namespace KissU.Util.Tests.Samples
         /// <summary>
         /// 创建客户
         /// </summary>
+        /// <returns>JsonTestSample.</returns>
         public static JsonTestSample Create()
         {
             return new JsonTestSample

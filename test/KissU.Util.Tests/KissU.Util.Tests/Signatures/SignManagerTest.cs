@@ -14,6 +14,7 @@ namespace KissU.Util.Tests.Signatures
         /// <summary>
         /// 测试初始化
         /// </summary>
+        /// <param name="output">The output.</param>
         public SignManagerTest(ITestOutputHelper output)
         {
             _output = output;

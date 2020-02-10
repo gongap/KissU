@@ -27,7 +27,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         /// 通过编码查找
         /// </summary>
         /// <param name="clientId">应用编号</param>
-        /// <returns></returns>
+        /// <returns>Task&lt;Client&gt;.</returns>
         public async Task<Client> FindEnabledClientByIdAsync(string clientId)
         {
             var queryable = Find(p => p.ClientId == clientId && p.Enabled)
@@ -42,6 +42,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         /// 获取应用程序声明
         /// </summary>
         /// <param name="clientId">应用程序编号</param>
+        /// <returns>Task&lt;List&lt;ClientClaim&gt;&gt;.</returns>
         public async Task<List<ClientClaim>> GetClientClaimsAsync(int clientId)
         {
             var queryable = from clientClaim in UnitOfWork.Set<ClientClaim>()
@@ -55,7 +56,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         /// 获取应用程序声明
         /// </summary>
         /// <param name="id">应用程序声明编号</param>
-        /// <returns></returns>
+        /// <returns>Task&lt;ClientClaim&gt;.</returns>
         public async Task<ClientClaim> GetClientClaimAsync(int id)
         {
             var queryable = from clientClaim in UnitOfWork.Set<ClientClaim>()
@@ -68,7 +69,6 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         /// 添加应用程序声明
         /// </summary>
         /// <param name="entity">应用程序声明</param>
-        /// <returns></returns>
         public async Task CreateClientClaimAsync(ClientClaim entity)
         {
             await UnitOfWork.Set<ClientClaim>().AddAsync(entity);
@@ -78,7 +78,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         /// 更新应用程序声明
         /// </summary>
         /// <param name="entity">应用程序声明</param>
-        /// <returns></returns>
+        /// <returns>Task.</returns>
         public Task UpdateClientClaimAsync(ClientClaim entity)
         {
             UnitOfWork.Set<ClientClaim>().Update(entity);
@@ -89,7 +89,6 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         /// 删除应用程序声明
         /// </summary>
         /// <param name="id">应用程序声明</param>
-        /// <returns></returns>
         public async Task DeleteClientClaimAsync(int id)
         {
             var entity = await UnitOfWork.Set<ClientClaim>().Where(x => x.Id == id).SingleAsync();
@@ -107,6 +106,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         /// 获取应用程序密钥
         /// </summary>
         /// <param name="clientId">应用程序编号</param>
+        /// <returns>Task&lt;List&lt;ClientSecret&gt;&gt;.</returns>
         public async Task<List<ClientSecret>> GetClientSecretsAsync(int clientId)
         {
             var queryable = from clientSecret in UnitOfWork.Set<ClientSecret>()
@@ -120,7 +120,7 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         /// 获取应用程序密钥
         /// </summary>
         /// <param name="id">应用程序密钥编号</param>
-        /// <returns></returns>
+        /// <returns>Task&lt;ClientSecret&gt;.</returns>
         public async Task<ClientSecret> GetClientSecretAsync(int id)
         {
             var queryable = from clientSecret in UnitOfWork.Set<ClientSecret>()
@@ -134,7 +134,6 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         /// 添加应用程序密钥
         /// </summary>
         /// <param name="entity">应用程序密钥</param>
-        /// <returns></returns>
         public async Task CreateClientSecretAsync(ClientSecret entity)
         {
             await UnitOfWork.Set<ClientSecret>().AddAsync(entity);
@@ -144,7 +143,6 @@ namespace KissU.Modules.IdentityServer.Data.Repositories
         /// 删除应用程序密钥
         /// </summary>
         /// <param name="id">应用程序密钥</param>
-        /// <returns></returns>
         public async Task DeleteClientSecretAsync(int id)
         {
             var entity = await UnitOfWork.Set<ClientSecret>().Where(x => x.Id == id).SingleAsync();

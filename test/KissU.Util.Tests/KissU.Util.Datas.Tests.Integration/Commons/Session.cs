@@ -11,6 +11,7 @@ namespace KissU.Util.Datas.Tests.Integration.Commons
         /// <summary>
         /// 初始化用户会话
         /// </summary>
+        /// <param name="userId">The user identifier.</param>
         public Session(string userId)
         {
             UserId = userId;
@@ -29,6 +30,7 @@ namespace KissU.Util.Datas.Tests.Integration.Commons
         /// <summary>
         /// 是否认证
         /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
         public bool IsAuthenticated => throw new NotImplementedException();
     }
 }

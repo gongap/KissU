@@ -29,6 +29,8 @@ namespace KissU.Modules.IdentityServer.Data.Stores
         /// 初始化应用程序仓储
         /// </summary>
         /// <param name="clientRepository">应用程序仓储</param>
+        /// <param name="logger">The logger.</param>
+        /// <exception cref="ArgumentNullException">clientRepository</exception>
         public ClientStore(IClientRepository clientRepository, ILogger<ClientStore> logger)
         {
             _clientRepository = clientRepository ?? throw new ArgumentNullException(nameof(clientRepository));
@@ -39,6 +41,7 @@ namespace KissU.Modules.IdentityServer.Data.Stores
         /// 通过ClientId查找应用
         /// </summary>
         /// <param name="clientId">The client id</param>
+        /// <returns>Task&lt;Client&gt;.</returns>
         public Task<Client> FindClientByIdAsync(string clientId)
         {
             var queryable = _clientRepository.Find(p => p.ClientId == clientId)

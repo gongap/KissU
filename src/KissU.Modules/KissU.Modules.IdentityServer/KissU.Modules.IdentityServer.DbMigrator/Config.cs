@@ -5,8 +5,14 @@ using IdentityServer4.Models;
 
 namespace KissU.Modules.IdentityServer.DbMigrator
 {
+    /// <summary>
+    /// Config.
+    /// </summary>
     public class Config
     {
+        /// <summary>
+        /// The clients
+        /// </summary>
         public static IEnumerable<Client> Clients = new Client[]
         {
             ///////////////////////////////////////////
@@ -299,6 +305,9 @@ namespace KissU.Modules.IdentityServer.DbMigrator
             }
         };
 
+        /// <summary>
+        /// The identity resources
+        /// </summary>
         public static IEnumerable<IdentityResource> IdentityResources = new IdentityResource[]
         {
             // some standard scopes from the OIDC spec
@@ -345,6 +354,9 @@ namespace KissU.Modules.IdentityServer.DbMigrator
             new IdentityResource("custom.profile", new[] {JwtClaimTypes.Name, JwtClaimTypes.Email, "location"})
         };
 
+        /// <summary>
+        /// The API resources
+        /// </summary>
         public static IEnumerable<ApiResource> ApiResources = new ApiResource[]
         {
             // simple version with ctor

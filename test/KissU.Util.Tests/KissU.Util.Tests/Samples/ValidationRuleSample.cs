@@ -25,6 +25,7 @@ namespace KissU.Util.Tests.Samples
         /// <summary>
         /// 验证
         /// </summary>
+        /// <returns>ValidationResult.</returns>
         public ValidationResult Validate()
         {
             if (_sample.Name.Length > 3)

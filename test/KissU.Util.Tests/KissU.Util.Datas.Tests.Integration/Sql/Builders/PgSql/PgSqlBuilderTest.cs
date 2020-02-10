@@ -14,6 +14,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.PgSql
         /// <summary>
         /// 测试初始化
         /// </summary>
+        /// <param name="output">The output.</param>
         public PgSqlBuilderTest(ITestOutputHelper output)
         {
             _output = output;

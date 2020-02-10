@@ -15,6 +15,8 @@ namespace KissU.Modules.GreatWall.Application.Dtos.Extensions
         /// <summary>
         /// 转成模块参数
         /// </summary>
+        /// <param name="po">The po.</param>
+        /// <returns>ModuleDto.</returns>
         public static ModuleDto ToModuleDto(this ResourcePo po)
         {
             if (po == null)
@@ -29,6 +31,8 @@ namespace KissU.Modules.GreatWall.Application.Dtos.Extensions
         /// <summary>
         /// 转成模块
         /// </summary>
+        /// <param name="request">The request.</param>
+        /// <returns>Module.</returns>
         public static Module ToModule(this CreateModuleRequest request)
         {
             return request?.MapTo<Module>();

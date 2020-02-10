@@ -35,6 +35,8 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         /// 是否允许登录
         /// </summary>
         /// <param name="user">用户</param>
+        /// <returns>The task object representing the asynchronous operation, containing a flag that is true
+        /// if the specified user can sign-in, otherwise false.</returns>
         public override async Task<bool> CanSignInAsync(User user)
         {
             if (user.Enabled == false)
@@ -49,6 +51,7 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         /// <param name="verifySuccess">令牌是否验证成功</param>
         /// <param name="isPersistent">cookie是否持久保留,设置为false,当关闭浏览器则cookie失效</param>
         /// <param name="lockoutOnFailure">达到登录失败次数是否锁定</param>
+        /// <returns>Task&lt;SignInResult&gt;.</returns>
         public async Task<SignInResult> TokenSignInAsync(User user, bool verifySuccess, bool isPersistent,
             bool lockoutOnFailure)
         {

@@ -31,6 +31,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// <param name="user">用户</param>
         /// <param name="email">电子邮件</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>The task object representing the asynchronous operation.</returns>
         public Task SetEmailAsync(User user, string email, CancellationToken cancellationToken)
         {
             ValidateUser(user, cancellationToken);
@@ -43,6 +44,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>The task object containing the results of the asynchronous operation, the email address for the specified <paramref name="user" />.</returns>
         public Task<string> GetEmailAsync(User user, CancellationToken cancellationToken)
         {
             ValidateUser(user, cancellationToken);
@@ -54,6 +56,8 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>The task object containing the results of the asynchronous operation, a flag indicating whether the email address for the specified <paramref name="user" />
+        /// has been confirmed or not.</returns>
         public Task<bool> GetEmailConfirmedAsync(User user, CancellationToken cancellationToken)
         {
             ValidateUser(user, cancellationToken);
@@ -66,6 +70,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// <param name="user">用户</param>
         /// <param name="confirmed">是否确认</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>The task object representing the asynchronous operation.</returns>
         public Task SetEmailConfirmedAsync(User user, bool confirmed, CancellationToken cancellationToken)
         {
             ValidateUser(user, cancellationToken);
@@ -78,6 +83,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// </summary>
         /// <param name="normalizedEmail">标准化电子邮件</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>The task object containing the results of the asynchronous lookup operation, the user if any associated with the specified normalized email address.</returns>
         public async Task<User> FindByEmailAsync(string normalizedEmail, CancellationToken cancellationToken = default)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -89,6 +95,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>The task object containing the results of the asynchronous lookup operation, the normalized email address if any associated with the specified user.</returns>
         public Task<string> GetNormalizedEmailAsync(User user, CancellationToken cancellationToken)
         {
             ValidateUser(user, cancellationToken);
@@ -101,6 +108,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// <param name="user">用户</param>
         /// <param name="normalizedEmail">标准化电子邮件</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>The task object representing the asynchronous operation.</returns>
         public Task SetNormalizedEmailAsync(User user, string normalizedEmail, CancellationToken cancellationToken)
         {
             ValidateUser(user, cancellationToken);
@@ -113,6 +121,8 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>A <see cref="T:System.Threading.Tasks.Task`1" /> that represents the result of the asynchronous query, a <see cref="T:System.DateTimeOffset" /> containing the last time
+        /// a user's lockout expired, if any.</returns>
         public Task<DateTimeOffset?> GetLockoutEndDateAsync(User user, CancellationToken cancellationToken)
         {
             ValidateUser(user, cancellationToken);
@@ -125,6 +135,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// <param name="user">用户</param>
         /// <param name="lockoutEnd">锁定结束日期</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>The <see cref="T:System.Threading.Tasks.Task" /> that represents the asynchronous operation.</returns>
         public Task SetLockoutEndDateAsync(User user, DateTimeOffset? lockoutEnd, CancellationToken cancellationToken)
         {
             ValidateUser(user, cancellationToken);
@@ -137,6 +148,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>The <see cref="T:System.Threading.Tasks.Task" /> that represents the asynchronous operation, containing the incremented failed access count.</returns>
         public Task<int> IncrementAccessFailedCountAsync(User user, CancellationToken cancellationToken)
         {
             ValidateUser(user, cancellationToken);
@@ -149,6 +161,8 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>The <see cref="T:System.Threading.Tasks.Task" /> that represents the asynchronous operation.</returns>
+        /// <remarks>This is typically called after the account is successfully accessed.</remarks>
         public Task ResetAccessFailedCountAsync(User user, CancellationToken cancellationToken)
         {
             ValidateUser(user, cancellationToken);
@@ -161,6 +175,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>The <see cref="T:System.Threading.Tasks.Task" /> that represents the asynchronous operation, containing the failed access count.</returns>
         public Task<int> GetAccessFailedCountAsync(User user, CancellationToken cancellationToken)
         {
             ValidateUser(user, cancellationToken);
@@ -172,6 +187,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>The <see cref="T:System.Threading.Tasks.Task" /> that represents the asynchronous operation, true if a user can be locked out, otherwise false.</returns>
         public Task<bool> GetLockoutEnabledAsync(User user, CancellationToken cancellationToken)
         {
             ValidateUser(user, cancellationToken);
@@ -184,6 +200,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// <param name="user">用户</param>
         /// <param name="enabled">是否启用锁定</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>The <see cref="T:System.Threading.Tasks.Task" /> that represents the asynchronous operation.</returns>
         public Task SetLockoutEnabledAsync(User user, bool enabled, CancellationToken cancellationToken)
         {
             ValidateUser(user, cancellationToken);
@@ -204,6 +221,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>The <see cref="T:System.Threading.Tasks.Task" /> that represents the asynchronous operation, containing the identifier for the specified <paramref name="user" />.</returns>
         public Task<string> GetUserIdAsync(User user, CancellationToken cancellationToken)
         {
             ValidateUser(user, cancellationToken);
@@ -215,6 +233,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>The <see cref="T:System.Threading.Tasks.Task" /> that represents the asynchronous operation, containing the name for the specified <paramref name="user" />.</returns>
         public Task<string> GetUserNameAsync(User user, CancellationToken cancellationToken)
         {
             ValidateUser(user, cancellationToken);
@@ -227,6 +246,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// <param name="user">用户</param>
         /// <param name="userName">用户名</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>The <see cref="T:System.Threading.Tasks.Task" /> that represents the asynchronous operation.</returns>
         public Task SetUserNameAsync(User user, string userName, CancellationToken cancellationToken)
         {
             ValidateUser(user, cancellationToken);
@@ -239,6 +259,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>The <see cref="T:System.Threading.Tasks.Task" /> that represents the asynchronous operation, containing the normalized user name for the specified <paramref name="user" />.</returns>
         public Task<string> GetNormalizedUserNameAsync(User user, CancellationToken cancellationToken)
         {
             ValidateUser(user, cancellationToken);
@@ -251,6 +272,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// <param name="user">用户</param>
         /// <param name="normalizedName">标准化用户名</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>The <see cref="T:System.Threading.Tasks.Task" /> that represents the asynchronous operation.</returns>
         public Task SetNormalizedUserNameAsync(User user, string normalizedName, CancellationToken cancellationToken)
         {
             ValidateUser(user, cancellationToken);
@@ -263,6 +285,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>The <see cref="T:System.Threading.Tasks.Task" /> that represents the asynchronous operation, containing the <see cref="T:Microsoft.AspNetCore.Identity.IdentityResult" /> of the creation operation.</returns>
         public Task<IdentityResult> CreateAsync(User user, CancellationToken cancellationToken)
         {
             ValidateUser(user, cancellationToken);
@@ -275,6 +298,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>The <see cref="T:System.Threading.Tasks.Task" /> that represents the asynchronous operation, containing the <see cref="T:Microsoft.AspNetCore.Identity.IdentityResult" /> of the update operation.</returns>
         public async Task<IdentityResult> UpdateAsync(User user, CancellationToken cancellationToken)
         {
             ValidateUser(user, cancellationToken);
@@ -287,6 +311,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>The <see cref="T:System.Threading.Tasks.Task" /> that represents the asynchronous operation, containing the <see cref="T:Microsoft.AspNetCore.Identity.IdentityResult" /> of the update operation.</returns>
         public async Task<IdentityResult> DeleteAsync(User user, CancellationToken cancellationToken)
         {
             await RemoveAsync(user, cancellationToken);
@@ -298,6 +323,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// </summary>
         /// <param name="userId">用户编号</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>The <see cref="T:System.Threading.Tasks.Task" /> that represents the asynchronous operation, containing the user matching the specified <paramref name="userId" /> if it exists.</returns>
         public Task<User> FindByIdAsync(string userId, CancellationToken cancellationToken = default)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -309,6 +335,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// </summary>
         /// <param name="normalizedUserName">标准化用户名</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>The <see cref="T:System.Threading.Tasks.Task" /> that represents the asynchronous operation, containing the user matching the specified <paramref name="normalizedUserName" /> if it exists.</returns>
         public Task<User> FindByNameAsync(string normalizedUserName, CancellationToken cancellationToken = default)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -321,6 +348,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// <param name="user">用户</param>
         /// <param name="passwordHash">密码散列</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>The <see cref="T:System.Threading.Tasks.Task" /> that represents the asynchronous operation.</returns>
         public Task SetPasswordHashAsync(User user, string passwordHash, CancellationToken cancellationToken)
         {
             ValidateUser(user, cancellationToken);
@@ -333,6 +361,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>The <see cref="T:System.Threading.Tasks.Task" /> that represents the asynchronous operation, returning the password hash for the specified <paramref name="user" />.</returns>
         public Task<string> GetPasswordHashAsync(User user, CancellationToken cancellationToken)
         {
             ValidateUser(user, cancellationToken);
@@ -344,6 +373,8 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>The <see cref="T:System.Threading.Tasks.Task" /> that represents the asynchronous operation, returning true if the specified <paramref name="user" /> has a password
+        /// otherwise false.</returns>
         public Task<bool> HasPasswordAsync(User user, CancellationToken cancellationToken)
         {
             ValidateUser(user, cancellationToken);
@@ -356,6 +387,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// <param name="user">用户</param>
         /// <param name="phoneNumber">手机号</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>The <see cref="T:System.Threading.Tasks.Task" /> that represents the asynchronous operation.</returns>
         public Task SetPhoneNumberAsync(User user, string phoneNumber, CancellationToken cancellationToken)
         {
             ValidateUser(user, cancellationToken);
@@ -368,6 +400,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>The <see cref="T:System.Threading.Tasks.Task" /> that represents the asynchronous operation, containing the user's telephone number, if any.</returns>
         public Task<string> GetPhoneNumberAsync(User user, CancellationToken cancellationToken)
         {
             ValidateUser(user, cancellationToken);
@@ -379,6 +412,8 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>The <see cref="T:System.Threading.Tasks.Task" /> that represents the asynchronous operation, returning true if the specified <paramref name="user" /> has a confirmed
+        /// telephone number otherwise false.</returns>
         public Task<bool> GetPhoneNumberConfirmedAsync(User user, CancellationToken cancellationToken)
         {
             ValidateUser(user, cancellationToken);
@@ -391,6 +426,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// <param name="user">用户</param>
         /// <param name="confirmed">是否确认</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>The <see cref="T:System.Threading.Tasks.Task" /> that represents the asynchronous operation.</returns>
         public Task SetPhoneNumberConfirmedAsync(User user, bool confirmed, CancellationToken cancellationToken)
         {
             ValidateUser(user, cancellationToken);
@@ -404,6 +440,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// <param name="queryable">查询对象</param>
         /// <param name="roleId">角色标识</param>
         /// <param name="except">是否排除该角色的用户列表</param>
+        /// <returns>IQueryable&lt;User&gt;.</returns>
         public IQueryable<User> FilterByRole(IQueryable<User> queryable, Guid roleId, bool except = false)
         {
             if (roleId.IsEmpty())
@@ -423,6 +460,8 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// <param name="user">用户</param>
         /// <param name="stamp">安全戳</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>The <see cref="T:System.Threading.Tasks.Task" /> that represents the asynchronous operation.</returns>
+        /// <exception cref="ArgumentNullException">stamp</exception>
         public Task SetSecurityStampAsync(User user, string stamp, CancellationToken cancellationToken)
         {
             ValidateUser(user, cancellationToken);
@@ -437,6 +476,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// </summary>
         /// <param name="user">用户</param>
         /// <param name="cancellationToken">取消令牌</param>
+        /// <returns>Task&lt;System.String&gt;.</returns>
         public Task<string> GetSecurityStampAsync(User user, CancellationToken cancellationToken)
         {
             ValidateUser(user, cancellationToken);

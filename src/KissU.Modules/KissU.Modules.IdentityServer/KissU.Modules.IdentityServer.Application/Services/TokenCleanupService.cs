@@ -23,11 +23,15 @@ namespace KissU.Modules.IdentityServer.Application.Services
         /// <summary>
         /// 构造函数初始化
         /// </summary>
-        /// <param name="options"></param>
-        /// <param name="unitOfWork"></param>
-        /// <param name="persistedGrantRepository"></param>
-        /// <param name="deviceFlowCodeRepository"></param>
-        /// <param name="logger"></param>
+        /// <param name="options">The options.</param>
+        /// <param name="unitOfWork">The unit of work.</param>
+        /// <param name="persistedGrantRepository">The persisted grant repository.</param>
+        /// <param name="deviceFlowCodeRepository">The device flow code repository.</param>
+        /// <param name="logger">The logger.</param>
+        /// <exception cref="ArgumentNullException">options</exception>
+        /// <exception cref="ArgumentNullException">persistedGrantRepository</exception>
+        /// <exception cref="ArgumentNullException">logger</exception>
+        /// <exception cref="ArgumentException">Token cleanup batch size interval must be at least 1</exception>
         public TokenCleanupService(
             OperationalStoreOptions options,
             IIdentityServerUnitOfWork unitOfWork,
@@ -47,7 +51,6 @@ namespace KissU.Modules.IdentityServer.Application.Services
         /// <summary>
         /// 清除过期的持久授权
         /// </summary>
-        /// <returns></returns>
         public async Task RemoveExpiredGrantsAsync()
         {
             try
@@ -66,7 +69,6 @@ namespace KissU.Modules.IdentityServer.Application.Services
         /// <summary>
         /// 移除过时的持久化授权
         /// </summary>
-        /// <returns></returns>
         protected virtual async Task RemoveGrantsAsync()
         {
             var found = int.MaxValue;
@@ -101,7 +103,6 @@ namespace KissU.Modules.IdentityServer.Application.Services
         /// <summary>
         /// 移除过时的设备代码
         /// </summary>
-        /// <returns></returns>
         protected virtual async Task RemoveDeviceCodesAsync()
         {
             var found = int.MaxValue;
