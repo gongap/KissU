@@ -10,6 +10,16 @@ namespace KissU.Core.ServiceHosting.Tests
     public class ServiceHostBuilderExtensionsTest
     {
         /// <summary>
+        /// 测试使用控制台生命周期
+        /// </summary>
+        [Fact]
+        public void TestUseConsoleLifetime()
+        {
+            var builder = new ServiceHostBuilder();
+            builder.UseConsoleLifetime();
+        }
+
+        /// <summary>
         /// 测试使用启动类
         /// </summary>
         [Fact]
@@ -27,16 +37,6 @@ namespace KissU.Core.ServiceHosting.Tests
         {
             var builder = new ServiceHostBuilder();
             builder.UseStartup<StartupSample>();
-        }
-
-        /// <summary>
-        /// 测试使用控制台生命周期
-        /// </summary>
-        [Fact]
-        public void TestUseConsoleLifetime()
-        {
-            var builder = new ServiceHostBuilder();
-            builder.UseConsoleLifetime();
         }
     }
 }
