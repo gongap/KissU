@@ -16,7 +16,7 @@ namespace KissU.Modules.GreatWall.Data.Mappings.SqlServer
         /// <param name="builder">The builder.</param>
         protected override void MapTable(EntityTypeBuilder<ApplicationPo> builder)
         {
-            builder.ToTable(DbConstants.DbTablePrefix + "Applications",DbConstants.DbSchema);
+            builder.ToTable(DbConstants.DbTablePrefix + "Applications", DbConstants.DbSchema);
         }
 
         /// <summary>

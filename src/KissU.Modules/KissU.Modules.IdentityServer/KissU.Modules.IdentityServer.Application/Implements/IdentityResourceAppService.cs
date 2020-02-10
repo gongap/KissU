@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using KissU.Modules.IdentityServer.Application.Abstractions;
 using KissU.Modules.IdentityServer.Application.Dtos;
@@ -18,7 +17,9 @@ namespace KissU.Modules.IdentityServer.Application.Implements
     /// <summary>
     /// 应用程序服务
     /// </summary>
-    public class IdentityResourceAppService : CrudServiceBase<IdentityResource, IdentityResourceDto, IdentityResourceDto, IdentityResourceCreateRequest, IdentityResourceDto, IdentityResourceQuery, int>, IIdentityResourceAppService
+    public class IdentityResourceAppService :
+        CrudServiceBase<IdentityResource, IdentityResourceDto, IdentityResourceDto, IdentityResourceCreateRequest,
+            IdentityResourceDto, IdentityResourceQuery, int>, IIdentityResourceAppService
     {
         /// <summary>
         /// 初始化应用程序服务
@@ -44,13 +45,25 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         public IIdentityServerUnitOfWork UnitOfWork { get; set; }
 
         /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="request">修改参数</param>
+        /// <returns>A <see cref="T:System.Threading.Tasks.Task" /> representing the asynchronous operation.</returns>
+        public override async Task UpdateAsync(IdentityResourceDto request)
+        {
+            await base.UpdateAsync(request);
+            await UnitOfWork.CommitAsync();
+        }
+
+        /// <summary>
         /// 创建查询对象
         /// </summary>
         /// <param name="param">应用程序查询实体</param>
         /// <returns>IQueryBase&lt;IdentityResource&gt;.</returns>
         protected override IQueryBase<IdentityResource> CreateQuery(IdentityResourceQuery param)
         {
-            var query = new Query<IdentityResource>(param).Or(t => t.Name.Contains(param.Keyword), t => t.DisplayName.Contains(param.Keyword));
+            var query = new Query<IdentityResource>(param).Or(t => t.Name.Contains(param.Keyword),
+                t => t.DisplayName.Contains(param.Keyword));
 
             if (param.Enabled.HasValue)
             {
@@ -86,17 +99,6 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         protected override async Task CreateAfterAsync(IdentityResource entity)
         {
             await base.CreateAfterAsync(entity);
-            await UnitOfWork.CommitAsync();
-        }
-
-        /// <summary>
-        /// 修改
-        /// </summary>
-        /// <param name="request">修改参数</param>
-        /// <returns>A <see cref="T:System.Threading.Tasks.Task" /> representing the asynchronous operation.</returns>
-        public override async Task UpdateAsync(IdentityResourceDto request)
-        {
-            await base.UpdateAsync(request);
             await UnitOfWork.CommitAsync();
         }
 

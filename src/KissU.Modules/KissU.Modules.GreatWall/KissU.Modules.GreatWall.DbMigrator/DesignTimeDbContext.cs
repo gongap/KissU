@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using KissU.Modules.GreatWall.Data;
 using KissU.Modules.GreatWall.Domain.UnitOfWorks;
 using KissU.Util.Datas.SqlServer.Ef;
 using KissU.Util.Reflections;

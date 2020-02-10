@@ -1,15 +1,12 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
-using IdentityModel;
 using KissU.Modules.GreatWall.Domain.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Claim = System.Security.Claims.Claim;
 
 namespace KissU.Modules.GreatWall.DbMigrator
 {
@@ -101,7 +98,7 @@ namespace KissU.Modules.GreatWall.DbMigrator
                 alice = new User
                 {
                     UserName = "alice",
-                    Enabled = true,
+                    Enabled = true
                 };
                 var result = await userMgr.CreateAsync(alice, "Pass123$").ConfigureAwait(false);
                 if (!result.Succeeded)
@@ -135,7 +132,7 @@ namespace KissU.Modules.GreatWall.DbMigrator
                 bob = new User
                 {
                     UserName = "bob",
-                    Enabled = true,
+                    Enabled = true
                 };
                 var result = await userMgr.CreateAsync(bob, "Pass123$").ConfigureAwait(false);
                 if (!result.Succeeded)

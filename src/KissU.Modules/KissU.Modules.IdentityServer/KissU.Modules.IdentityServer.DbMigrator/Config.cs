@@ -13,7 +13,7 @@ namespace KissU.Modules.IdentityServer.DbMigrator
         /// <summary>
         /// The clients
         /// </summary>
-        public static IEnumerable<Client> Clients = new Client[]
+        public static IEnumerable<Client> Clients = new[]
         {
             ///////////////////////////////////////////
             // Console Client Credentials Flow Sample
@@ -308,7 +308,7 @@ namespace KissU.Modules.IdentityServer.DbMigrator
         /// <summary>
         /// The identity resources
         /// </summary>
-        public static IEnumerable<IdentityResource> IdentityResources = new IdentityResource[]
+        public static IEnumerable<IdentityResource> IdentityResources = new[]
         {
             // some standard scopes from the OIDC spec
             new IdentityResource(IdentityServerConstants.StandardScopes.OpenId, "Your user identifier", new[]
@@ -338,7 +338,7 @@ namespace KissU.Modules.IdentityServer.DbMigrator
             })
             {
                 Description = "Your user profile information (first name, last name, etc.)",
-                Emphasize = true,
+                Emphasize = true
             },
 
             new IdentityResource(IdentityServerConstants.StandardScopes.Email, "Your email address", new[]
@@ -347,7 +347,7 @@ namespace KissU.Modules.IdentityServer.DbMigrator
                 JwtClaimTypes.EmailVerified
             })
             {
-                Emphasize = true,
+                Emphasize = true
             },
 
             // custom identity resource with some consolidated claims
@@ -357,7 +357,7 @@ namespace KissU.Modules.IdentityServer.DbMigrator
         /// <summary>
         /// The API resources
         /// </summary>
-        public static IEnumerable<ApiResource> ApiResources = new ApiResource[]
+        public static IEnumerable<ApiResource> ApiResources = new[]
         {
             // simple version with ctor
             new ApiResource("api1", "Some API 1")
@@ -384,7 +384,7 @@ namespace KissU.Modules.IdentityServer.DbMigrator
 
                 Scopes =
                 {
-                    new Scope()
+                    new Scope
                     {
                         Name = "api2.full_access",
                         DisplayName = "Full access to API 2"

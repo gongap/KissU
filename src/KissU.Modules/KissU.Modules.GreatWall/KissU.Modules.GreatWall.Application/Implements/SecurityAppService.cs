@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
 using KissU.Modules.GreatWall.Application.Abstractions;
 using KissU.Modules.GreatWall.Application.Dtos.Requests;
-using KissU.Modules.GreatWall.Data;
 using KissU.Modules.GreatWall.Domain.Models;
 using KissU.Modules.GreatWall.Domain.Results;
 using KissU.Modules.GreatWall.Domain.Services.Abstractions;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using IdentityServer4;
 using KissU.Modules.IdentityServer.Application.Abstractions;
 using KissU.Modules.IdentityServer.Application.Dtos;
 using KissU.Modules.IdentityServer.Application.Dtos.Requests;
@@ -17,7 +18,6 @@ using KissU.Util.Datas.Queries;
 using KissU.Util.Domains.Repositories;
 using KissU.Util.Exceptions;
 using KissU.Util.Maps;
-using IdentityServer4;
 using Ids4 = IdentityServer4.Models;
 
 namespace KissU.Modules.IdentityServer.Application.Implements
@@ -25,7 +25,9 @@ namespace KissU.Modules.IdentityServer.Application.Implements
     /// <summary>
     /// 应用程序服务
     /// </summary>
-    public class ClientAppService : CrudServiceBase<Client, ClientDto, ClientDto, ClientCreateRequest, ClientDto, ClientQuery, int>, IClientAppService
+    public class ClientAppService :
+        CrudServiceBase<Client, ClientDto, ClientDto, ClientCreateRequest, ClientDto, ClientQuery, int>,
+        IClientAppService
     {
         /// <summary>
         /// 初始化应用程序服务
@@ -56,17 +58,17 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// <returns>Task&lt;System.Int32&gt;.</returns>
         public async Task<int> CloneAsync(ClientCloneRequest request)
         {
-            Client client = await ClientRepository.FindEnabledClientByIdAsync(request.ClientId);
+            var client = await ClientRepository.FindEnabledClientByIdAsync(request.ClientId);
             client.CheckNull(nameof(client));
 
-            bool exist = await ClientRepository.ExistsAsync(x => x.ClientId == request.ClientIdOriginal);
+            var exist = await ClientRepository.ExistsAsync(x => x.ClientId == request.ClientIdOriginal);
             if (exist)
             {
                 ThrowDuplicateCodeException(request.ClientIdOriginal);
             }
 
-            ClientDto clientDto = client.MapTo<ClientDto>();
-            Client clientToClone = clientDto.MapTo<Client>();
+            var clientDto = client.MapTo<ClientDto>();
+            var clientToClone = clientDto.MapTo<Client>();
 
             clientToClone.ClientId = request.ClientIdOriginal;
             clientToClone.ClientName = request.ClientNameOriginal;
@@ -115,8 +117,19 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// <returns>Task&lt;ClientDto&gt;.</returns>
         public async Task<ClientDto> FindEnabledByIdAsync(string clientId)
         {
-            Client client = await ClientRepository.FindEnabledClientByIdAsync(clientId);
+            var client = await ClientRepository.FindEnabledClientByIdAsync(clientId);
             return client.MapTo<ClientDto>();
+        }
+
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="request">修改参数</param>
+        /// <returns>A <see cref="T:System.Threading.Tasks.Task" /> representing the asynchronous operation.</returns>
+        public override async Task UpdateAsync(ClientDto request)
+        {
+            await base.UpdateAsync(request);
+            await UnitOfWork.CommitAsync();
         }
 
         /// <summary>
@@ -126,7 +139,8 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// <returns>IQueryBase&lt;Client&gt;.</returns>
         protected override IQueryBase<Client> CreateQuery(ClientQuery param)
         {
-            var query = new Query<Client>(param).Or(t => t.ClientId.Contains(param.Keyword), t => t.ClientName.Contains(param.Keyword));
+            var query = new Query<Client>(param).Or(t => t.ClientId.Contains(param.Keyword),
+                t => t.ClientName.Contains(param.Keyword));
 
             if (param.Enabled.HasValue)
             {
@@ -165,24 +179,13 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         }
 
         /// <summary>
-        /// 修改
-        /// </summary>
-        /// <param name="request">修改参数</param>
-        /// <returns>A <see cref="T:System.Threading.Tasks.Task" /> representing the asynchronous operation.</returns>
-        public override async Task UpdateAsync(ClientDto request)
-        {
-            await base.UpdateAsync(request);
-            await UnitOfWork.CommitAsync();
-        }
-
-        /// <summary>
         /// 创建参数转换为实体
         /// </summary>
         /// <param name="request">创建参数</param>
         /// <returns>结果</returns>
         protected override Client ToEntityFromCreateRequest(ClientCreateRequest request)
         {
-            Client client = base.ToEntityFromCreateRequest(request);
+            var client = base.ToEntityFromCreateRequest(request);
             PrepareClientTypeForNewClient(request, client);
             return client;
         }
@@ -213,7 +216,8 @@ namespace KissU.Modules.IdentityServer.Application.Implements
                     client.AllowedGrantTypes = Ids4.GrantTypes.Hybrid.Select(x => new ClientGrantType(x)).ToList();
                     break;
                 case ClientType.Machine:
-                    client.AllowedGrantTypes = Ids4.GrantTypes.ResourceOwnerPasswordAndClientCredentials.Select(x => new ClientGrantType(x)).ToList();
+                    client.AllowedGrantTypes = Ids4.GrantTypes.ResourceOwnerPasswordAndClientCredentials
+                        .Select(x => new ClientGrantType(x)).ToList();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -250,7 +254,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// <returns>Task&lt;List&lt;ClientClaimDto&gt;&gt;.</returns>
         public async Task<List<ClientClaimDto>> GetClaimsAsync(int clientId)
         {
-            List<ClientClaim> entities = await ClientRepository.GetClientClaimsAsync(clientId);
+            var entities = await ClientRepository.GetClientClaimsAsync(clientId);
             return entities?.MapToList<ClientClaimDto>();
         }
 
@@ -262,9 +266,9 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// <returns>Task.</returns>
         public async Task UpdateClaimAsync(int clientId, ClientClaimDto dto)
         {
-            Client client = await ClientRepository.FindAsync(clientId);
+            var client = await ClientRepository.FindAsync(clientId);
             client.CheckNull(nameof(client));
-            ClientClaim entity = dto.MapTo<ClientClaim>();
+            var entity = dto.MapTo<ClientClaim>();
             entity.Client = client;
             await ClientRepository.UpdateClientClaimAsync(entity);
         }
@@ -276,7 +280,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// <returns>Task&lt;ClientClaimDto&gt;.</returns>
         public async Task<ClientClaimDto> GetClaimAsync(int id)
         {
-            ClientClaim entity = await ClientRepository.GetClientClaimAsync(id);
+            var entity = await ClientRepository.GetClientClaimAsync(id);
             return entity?.MapTo<ClientClaimDto>();
         }
 
@@ -288,9 +292,9 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// <returns>Task&lt;System.Int32&gt;.</returns>
         public async Task<int> CreateClaimAsync(int clientId, ClientClaimCreateRequest request)
         {
-            Client client = await ClientRepository.FindAsync(clientId);
+            var client = await ClientRepository.FindAsync(clientId);
             client.CheckNull(nameof(client));
-            ClientClaim entity = request.MapTo<ClientClaim>();
+            var entity = request.MapTo<ClientClaim>();
             entity.Client = client;
             await ClientRepository.CreateClientClaimAsync(entity);
             return entity.Id;
@@ -338,7 +342,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// <returns>Task&lt;List&lt;ClientSecretDto&gt;&gt;.</returns>
         public async Task<List<ClientSecretDto>> GetSecretsAsync(int clientId)
         {
-            List<ClientSecret> entities = await ClientRepository.GetClientSecretsAsync(clientId);
+            var entities = await ClientRepository.GetClientSecretsAsync(clientId);
             return entities?.MapToList<ClientSecretDto>();
         }
 
@@ -349,7 +353,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// <returns>Task&lt;ClientSecretDto&gt;.</returns>
         public async Task<ClientSecretDto> GetSecretAsync(int id)
         {
-            ClientSecret entity = await ClientRepository.GetClientSecretAsync(id);
+            var entity = await ClientRepository.GetClientSecretAsync(id);
             return entity?.MapTo<ClientSecretDto>();
         }
 
@@ -361,10 +365,10 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// <returns>Task&lt;System.Int32&gt;.</returns>
         public async Task<int> CreateSecretAsync(int clientId, ClientSecretCreateRequest request)
         {
-            Client client = await ClientRepository.FindAsync(clientId);
+            var client = await ClientRepository.FindAsync(clientId);
             client.CheckNull(nameof(client));
             HashApiSharedSecret(request);
-            ClientSecret entity = request.MapTo<ClientSecret>();
+            var entity = request.MapTo<ClientSecret>();
             entity.Client = client;
             await ClientRepository.CreateClientSecretAsync(entity);
             return entity.Id;

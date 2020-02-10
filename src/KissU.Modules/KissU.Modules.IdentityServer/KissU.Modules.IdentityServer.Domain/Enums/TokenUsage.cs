@@ -13,6 +13,6 @@
         /// <summary>
         /// 每次发出新的刷新令牌句柄
         /// </summary>
-        OneTimeOnly = 1,
+        OneTimeOnly = 1
     }
 }

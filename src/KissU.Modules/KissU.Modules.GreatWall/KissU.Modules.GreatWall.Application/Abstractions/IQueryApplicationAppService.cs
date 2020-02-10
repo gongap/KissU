@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using KissU.Modules.GreatWall.Application.Dtos;
 using KissU.Modules.GreatWall.Application.Queries;
-using KissU.Util;
 using KissU.Util.Applications;
 
 namespace KissU.Modules.GreatWall.Application.Abstractions

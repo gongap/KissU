@@ -33,6 +33,6 @@
         /// <summary>
         /// 机器
         /// </summary>
-        Machine = 5,
+        Machine = 5
     }
 }

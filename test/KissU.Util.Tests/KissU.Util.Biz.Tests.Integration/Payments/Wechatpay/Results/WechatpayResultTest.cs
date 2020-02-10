@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using KissU.Util.AspNetCore.Parameters;
 using KissU.Util.Biz.Payments.Wechatpay.Configs;
 using KissU.Util.Biz.Payments.Wechatpay.Enums;
 using KissU.Util.Biz.Payments.Wechatpay.Results;

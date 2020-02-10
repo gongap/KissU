@@ -13,7 +13,8 @@ namespace KissU.Modules.IdentityServer.Application.Implements
     /// <summary>
     /// 设备流代码服务
     /// </summary>
-    public class DeviceFlowCodeAppService : DeleteServiceBase<DeviceFlowCode, DeviceFlowCodeDto, DeviceFlowCodeQuery, int>,
+    public class DeviceFlowCodeAppService :
+        DeleteServiceBase<DeviceFlowCode, DeviceFlowCodeDto, DeviceFlowCodeQuery, int>,
         IDeviceFlowCodeAppService
     {
         /// <summary>
@@ -46,7 +47,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// <returns>IQueryBase&lt;DeviceFlowCode&gt;.</returns>
         protected override IQueryBase<DeviceFlowCode> CreateQuery(DeviceFlowCodeQuery param)
         {
-            Query<DeviceFlowCode> query = new Query<DeviceFlowCode>(param);
+            var query = new Query<DeviceFlowCode>(param);
 
             if (string.IsNullOrWhiteSpace(param.Order))
             {

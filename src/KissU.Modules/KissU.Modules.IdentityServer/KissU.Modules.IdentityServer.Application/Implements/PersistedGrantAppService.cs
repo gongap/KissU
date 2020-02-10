@@ -13,7 +13,8 @@ namespace KissU.Modules.IdentityServer.Application.Implements
     /// <summary>
     /// 认证操作数据服务
     /// </summary>
-    public class PersistedGrantAppService : DeleteServiceBase<PersistedGrant, PersistedGrantDto, PersistedGrantQuery, int>,
+    public class PersistedGrantAppService :
+        DeleteServiceBase<PersistedGrant, PersistedGrantDto, PersistedGrantQuery, int>,
         IPersistedGrantAppService
     {
         /// <summary>
@@ -46,7 +47,7 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         /// <returns>IQueryBase&lt;PersistedGrant&gt;.</returns>
         protected override IQueryBase<PersistedGrant> CreateQuery(PersistedGrantQuery param)
         {
-            Query<PersistedGrant> query = new Query<PersistedGrant>(param);
+            var query = new Query<PersistedGrant>(param);
 
             if (string.IsNullOrWhiteSpace(param.Order))
             {

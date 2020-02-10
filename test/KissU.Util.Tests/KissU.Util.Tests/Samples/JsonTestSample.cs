@@ -11,6 +11,7 @@ namespace KissU.Util.Tests.Samples
         /// Gets or sets the name.
         /// </summary>
         public string Name { get; set; }
+
         /// <summary>
         /// Gets or sets the b.
         /// </summary>
@@ -26,6 +27,7 @@ namespace KissU.Util.Tests.Samples
         /// Gets or sets the name.
         /// </summary>
         public string Name { get; set; }
+
         /// <summary>
         /// Gets or sets the c.
         /// </summary>
@@ -41,6 +43,7 @@ namespace KissU.Util.Tests.Samples
         /// Gets or sets the name.
         /// </summary>
         public string Name { get; set; }
+
         /// <summary>
         /// Gets or sets a.
         /// </summary>

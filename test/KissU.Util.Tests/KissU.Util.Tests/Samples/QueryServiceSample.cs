@@ -41,7 +41,7 @@ namespace KissU.Util.Tests.Samples
     public class QueryServiceSample : QueryServiceBase<EntitySample, DtoSample, QueryParameterSample>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="QueryServiceSample"/> class.
+        /// Initializes a new instance of the <see cref="QueryServiceSample" /> class.
         /// </summary>
         /// <param name="repository">The repository.</param>
         public QueryServiceSample(IRepositorySample repository) : base(repository)

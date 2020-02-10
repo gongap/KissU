@@ -55,6 +55,23 @@ namespace KissU.Util.Tests.Maps
         }
 
         /// <summary>
+        /// 测试映射 - 映射相同属性名的不同对象集合
+        /// </summary>
+        [Fact]
+        public void TestMapTo_5()
+        {
+            var sample = new Sample
+            {
+                TestList = new List<Sample3Copy>
+                    {new Sample3Copy {StringValue = "a"}, new Sample3Copy {StringValue = "b"}}
+            };
+            var sample2 = sample.MapTo<Sample2>();
+            Assert.Equal(2, sample2.TestList.Count);
+            Assert.Equal("a", sample2.TestList[0].StringValue);
+            Assert.Equal("b", sample2.TestList[1].StringValue);
+        }
+
+        /// <summary>
         /// 测试Castle代理类
         /// </summary>
         [Fact]
@@ -90,19 +107,6 @@ namespace KissU.Util.Tests.Maps
             var sample3 = sample.MapTo<DtoSample>();
             Assert.Equal("a", sample3.Name);
             Assert.Null(sample3.IgnoreValue);
-        }
-
-        /// <summary>
-        /// 测试映射 - 映射相同属性名的不同对象集合
-        /// </summary>
-        [Fact]
-        public void TestMapTo_5()
-        {
-            Sample sample = new Sample { TestList = new List<Sample3Copy> { new Sample3Copy { StringValue = "a" }, new Sample3Copy { StringValue = "b" } } };
-            Sample2 sample2 = sample.MapTo<Sample2>();
-            Assert.Equal(2, sample2.TestList.Count);
-            Assert.Equal("a", sample2.TestList[0].StringValue);
-            Assert.Equal("b", sample2.TestList[1].StringValue);
         }
 
         /// <summary>

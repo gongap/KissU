@@ -89,7 +89,10 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// </summary>
         /// <param name="role">角色</param>
         /// <param name="cancellationToken">取消令牌</param>
-        /// <returns>A <see cref="T:System.Threading.Tasks.Task`1" /> that represents the <see cref="T:Microsoft.AspNetCore.Identity.IdentityResult" /> of the asynchronous query.</returns>
+        /// <returns>
+        /// A <see cref="T:System.Threading.Tasks.Task`1" /> that represents the
+        /// <see cref="T:Microsoft.AspNetCore.Identity.IdentityResult" /> of the asynchronous query.
+        /// </returns>
         public async Task<IdentityResult> CreateAsync(Role role, CancellationToken cancellationToken)
         {
             ValidateRole(role, cancellationToken);
@@ -102,7 +105,10 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// </summary>
         /// <param name="role">角色</param>
         /// <param name="cancellationToken">取消令牌</param>
-        /// <returns>A <see cref="T:System.Threading.Tasks.Task`1" /> that represents the <see cref="T:Microsoft.AspNetCore.Identity.IdentityResult" /> of the asynchronous query.</returns>
+        /// <returns>
+        /// A <see cref="T:System.Threading.Tasks.Task`1" /> that represents the
+        /// <see cref="T:Microsoft.AspNetCore.Identity.IdentityResult" /> of the asynchronous query.
+        /// </returns>
         public async Task<IdentityResult> UpdateAsync(Role role, CancellationToken cancellationToken)
         {
             ValidateRole(role, cancellationToken);
@@ -115,7 +121,10 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         /// </summary>
         /// <param name="role">角色</param>
         /// <param name="cancellationToken">取消令牌</param>
-        /// <returns>A <see cref="T:System.Threading.Tasks.Task`1" /> that represents the <see cref="T:Microsoft.AspNetCore.Identity.IdentityResult" /> of the asynchronous query.</returns>
+        /// <returns>
+        /// A <see cref="T:System.Threading.Tasks.Task`1" /> that represents the
+        /// <see cref="T:Microsoft.AspNetCore.Identity.IdentityResult" /> of the asynchronous query.
+        /// </returns>
         public async Task<IdentityResult> DeleteAsync(Role role, CancellationToken cancellationToken)
         {
             ValidateRole(role, cancellationToken);

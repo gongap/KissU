@@ -13,6 +13,6 @@
         /// <summary>
         /// 绝对令牌到期
         /// </summary>
-        Absolute = 1,
+        Absolute = 1
     }
 }

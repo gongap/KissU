@@ -22,7 +22,8 @@ namespace KissU.Modules.IdentityServer.DbMigrator
             Ioc.Register();
             var configuration = DbMigrationHelpers.BuildConfiguration();
             var builder =
-                new DbContextOptionsBuilder<DesignTimeDbContext>().UseSqlServer(configuration.GetConnectionString(DbConstants.ConnectionStringName));
+                new DbContextOptionsBuilder<DesignTimeDbContext>().UseSqlServer(
+                    configuration.GetConnectionString(DbConstants.ConnectionStringName));
             return new DesignTimeDbContext(builder.Options);
         }
     }

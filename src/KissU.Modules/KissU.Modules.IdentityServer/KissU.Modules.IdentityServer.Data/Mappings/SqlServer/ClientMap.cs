@@ -49,37 +49,37 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
             builder.OwnsMany(t => t.RedirectUris, p =>
             {
                 p.WithOwner(x => x.Client);
-                p.ToTable(DbConstants.DbTablePrefix + "ClientRedirectUris",DbConstants.DbSchema);
+                p.ToTable(DbConstants.DbTablePrefix + "ClientRedirectUris", DbConstants.DbSchema);
                 p.Property(x => x.RedirectUri).HasMaxLength(2000).IsRequired();
             });
             builder.OwnsMany(t => t.AllowedGrantTypes, p =>
             {
                 p.WithOwner(x => x.Client);
-                p.ToTable(DbConstants.DbTablePrefix + "ClientGrantTypes",DbConstants.DbSchema);
+                p.ToTable(DbConstants.DbTablePrefix + "ClientGrantTypes", DbConstants.DbSchema);
                 p.Property(x => x.GrantType).HasMaxLength(250).IsRequired();
             });
             builder.OwnsMany(t => t.PostLogoutRedirectUris, p =>
             {
                 p.WithOwner(x => x.Client);
-                p.ToTable(DbConstants.DbTablePrefix + "ClientPostLogoutRedirectUris",DbConstants.DbSchema);
+                p.ToTable(DbConstants.DbTablePrefix + "ClientPostLogoutRedirectUris", DbConstants.DbSchema);
                 p.Property(x => x.PostLogoutRedirectUri).HasMaxLength(2000).IsRequired();
             });
             builder.OwnsMany(t => t.AllowedScopes, p =>
             {
                 p.WithOwner(x => x.Client);
-                p.ToTable(DbConstants.DbTablePrefix + "ClientScopes",DbConstants.DbSchema);
+                p.ToTable(DbConstants.DbTablePrefix + "ClientScopes", DbConstants.DbSchema);
                 p.Property(x => x.Scope).HasMaxLength(200).IsRequired();
             });
             builder.OwnsMany(t => t.IdentityProviderRestrictions, p =>
             {
                 p.WithOwner(x => x.Client);
-                p.ToTable(DbConstants.DbTablePrefix + "ClientIdPRestrictions",DbConstants.DbSchema);
+                p.ToTable(DbConstants.DbTablePrefix + "ClientIdPRestrictions", DbConstants.DbSchema);
                 p.Property(x => x.Provider).HasMaxLength(200).IsRequired();
             });
             builder.OwnsMany(t => t.AllowedCorsOrigins, p =>
             {
                 p.WithOwner(x => x.Client);
-                p.ToTable(DbConstants.DbTablePrefix + "ClientCorsOrigins",DbConstants.DbSchema);
+                p.ToTable(DbConstants.DbTablePrefix + "ClientCorsOrigins", DbConstants.DbSchema);
                 p.Property(x => x.Origin).HasMaxLength(150).IsRequired();
             });
             builder.OwnsMany(t => t.Properties, p =>

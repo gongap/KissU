@@ -75,7 +75,8 @@ namespace KissU.Modules.IdentityServer.Data.Stores
                 }
                 catch (DbUpdateConcurrencyException ex)
                 {
-                    Logger.LogWarning("exception updating {persistedGrantKey} persisted grant in database: {error}", token.Key, ex.Message);
+                    Logger.LogWarning("exception updating {persistedGrantKey} persisted grant in database: {error}",
+                        token.Key, ex.Message);
                 }
             }
         }
@@ -107,7 +108,8 @@ namespace KissU.Modules.IdentityServer.Data.Stores
 
             var model = persistedGrants?.MapToList<Ids4.PersistedGrant>().AsEnumerable();
 
-            Logger.LogDebug("{persistedGrantCount} persisted grants found for {subjectId}", persistedGrants.Count, subjectId);
+            Logger.LogDebug("{persistedGrantCount} persisted grants found for {subjectId}", persistedGrants.Count,
+                subjectId);
 
             return model;
         }
@@ -124,14 +126,16 @@ namespace KissU.Modules.IdentityServer.Data.Stores
                 Logger.LogDebug("removing {persistedGrantKey} persisted grant from database", key);
 
                 await _persistedGrantRepository.RemoveAsync(persistedGrant);
-                
+
                 try
                 {
                     await UnitOfWork.CommitAsync();
                 }
                 catch (DbUpdateConcurrencyException ex)
                 {
-                    Logger.LogInformation("exception removing {persistedGrantKey} persisted grant from database: {error}", key, ex.Message);
+                    Logger.LogInformation(
+                        "exception removing {persistedGrantKey} persisted grant from database: {error}", key,
+                        ex.Message);
                 }
             }
             else
@@ -147,21 +151,26 @@ namespace KissU.Modules.IdentityServer.Data.Stores
         /// <param name="clientId">应用Id</param>
         public async Task RemoveAllAsync(string subjectId, string clientId)
         {
-            var persistedGrants = await _persistedGrantRepository.Find(x => x.SubjectId == subjectId && x.ClientId == clientId).ToListAsync();
+            var persistedGrants = await _persistedGrantRepository
+                .Find(x => x.SubjectId == subjectId && x.ClientId == clientId).ToListAsync();
 
-            Logger.LogDebug("removing {persistedGrantCount} persisted grants from database for subject {subjectId}, clientId {clientId}", persistedGrants.Count, subjectId, clientId);
+            Logger.LogDebug(
+                "removing {persistedGrantCount} persisted grants from database for subject {subjectId}, clientId {clientId}",
+                persistedGrants.Count, subjectId, clientId);
 
             if (persistedGrants?.Count > 0)
             {
                 await _persistedGrantRepository.RemoveAsync(persistedGrants);
-                
+
                 try
                 {
                     await UnitOfWork.CommitAsync();
                 }
                 catch (DbUpdateConcurrencyException ex)
                 {
-                    Logger.LogInformation("removing {persistedGrantCount} persisted grants from database for subject {subjectId}, clientId {clientId}: {error}", persistedGrants.Count, subjectId, clientId, ex.Message);
+                    Logger.LogInformation(
+                        "removing {persistedGrantCount} persisted grants from database for subject {subjectId}, clientId {clientId}: {error}",
+                        persistedGrants.Count, subjectId, clientId, ex.Message);
                 }
             }
         }
@@ -174,20 +183,25 @@ namespace KissU.Modules.IdentityServer.Data.Stores
         /// <param name="type">类型</param>
         public async Task RemoveAllAsync(string subjectId, string clientId, string type)
         {
-            var persistedGrants = await _persistedGrantRepository.Find(x => x.SubjectId == subjectId && x.ClientId == clientId && x.Type == type).ToListAsync();
+            var persistedGrants = await _persistedGrantRepository
+                .Find(x => x.SubjectId == subjectId && x.ClientId == clientId && x.Type == type).ToListAsync();
 
-            Logger.LogDebug("removing {persistedGrantCount} persisted grants from database for subject {subjectId}, clientId {clientId}, grantType {persistedGrantType}", persistedGrants.Count, subjectId, clientId, type);
+            Logger.LogDebug(
+                "removing {persistedGrantCount} persisted grants from database for subject {subjectId}, clientId {clientId}, grantType {persistedGrantType}",
+                persistedGrants.Count, subjectId, clientId, type);
             if (persistedGrants?.Count > 0)
             {
                 await _persistedGrantRepository.RemoveAsync(persistedGrants);
-                
+
                 try
                 {
                     await UnitOfWork.CommitAsync();
                 }
                 catch (DbUpdateConcurrencyException ex)
                 {
-                    Logger.LogInformation("exception removing {persistedGrantCount} persisted grants from database for subject {subjectId}, clientId {clientId}, grantType {persistedGrantType}: {error}", persistedGrants.Count, subjectId, clientId, type, ex.Message);
+                    Logger.LogInformation(
+                        "exception removing {persistedGrantCount} persisted grants from database for subject {subjectId}, clientId {clientId}, grantType {persistedGrantType}: {error}",
+                        persistedGrants.Count, subjectId, clientId, type, ex.Message);
                 }
             }
         }

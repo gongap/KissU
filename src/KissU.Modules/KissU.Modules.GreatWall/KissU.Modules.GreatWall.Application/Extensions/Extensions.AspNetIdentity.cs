@@ -15,7 +15,7 @@ namespace KissU.Modules.GreatWall.Application.Extensions
     /// <summary>
     /// AspNetIdentity扩展
     /// </summary>
-    public static partial class Extensions
+    public static class Extensions
     {
         /// <summary>
         /// 添加AspNetIdentity服务
@@ -23,7 +23,8 @@ namespace KissU.Modules.GreatWall.Application.Extensions
         /// <param name="services">服务集合</param>
         /// <param name="setupAction">配置操作</param>
         /// <returns>IServiceCollection.</returns>
-        public static IServiceCollection AspNetIdentity(this IServiceCollection services, Action<PermissionOptions> setupAction = null)
+        public static IServiceCollection AspNetIdentity(this IServiceCollection services,
+            Action<PermissionOptions> setupAction = null)
         {
             var permissionOptions = new PermissionOptions();
             setupAction?.Invoke(permissionOptions);
@@ -42,7 +43,8 @@ namespace KissU.Modules.GreatWall.Application.Extensions
         /// <param name="services">服务集合</param>
         /// <param name="setupAction">配置操作</param>
         /// <returns>IServiceCollection.</returns>
-        public static IServiceCollection AddAspNetIdentityCore(this IServiceCollection services, Action<PermissionOptions> setupAction = null)
+        public static IServiceCollection AddAspNetIdentityCore(this IServiceCollection services,
+            Action<PermissionOptions> setupAction = null)
         {
             var permissionOptions = new PermissionOptions();
             setupAction?.Invoke(permissionOptions);

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using KissU.Modules.IdentityServer.Data;
-using KissU.Modules.IdentityServer.Domain;
 using KissU.Modules.IdentityServer.Domain.UnitOfWorks;
 using KissU.Util.Datas.SqlServer;
 using KissU.Util.Dependency;

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using KissU.Modules.IdentityServer.Domain.Models;
 using KissU.Util.Domains.Repositories;

@@ -63,6 +63,7 @@ namespace KissU.Modules.IdentityServer.DbMigrator
                 }
             }
         }
+
         /// <summary>
         /// Ensures the seed data.
         /// </summary>
@@ -92,6 +93,7 @@ namespace KissU.Modules.IdentityServer.DbMigrator
                 {
                     context.Set<Client>().Add(client.MapTo<Client>());
                 }
+
                 context.SaveChanges();
             }
             else
@@ -106,6 +108,7 @@ namespace KissU.Modules.IdentityServer.DbMigrator
                 {
                     context.Set<IdentityResource>().Add(resource.MapTo<IdentityResource>());
                 }
+
                 context.SaveChanges();
             }
             else
@@ -120,6 +123,7 @@ namespace KissU.Modules.IdentityServer.DbMigrator
                 {
                     context.Set<ApiResource>().Add(resource.MapTo<ApiResource>());
                 }
+
                 context.SaveChanges();
             }
             else

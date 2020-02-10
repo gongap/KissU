@@ -43,7 +43,8 @@ namespace KissU.Modules.IdentityServer.Application.Services
             _unitOfWork = unitOfWork;
             if (_options.TokenCleanupBatchSize < 1)
                 throw new ArgumentException("Token cleanup batch size interval must be at least 1");
-            _persistedGrantRepository = persistedGrantRepository ??throw new ArgumentNullException(nameof(persistedGrantRepository));
+            _persistedGrantRepository = persistedGrantRepository ??
+                                        throw new ArgumentNullException(nameof(persistedGrantRepository));
             _deviceFlowCodeRepository = deviceFlowCodeRepository;
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }

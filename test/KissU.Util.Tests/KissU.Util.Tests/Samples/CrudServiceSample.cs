@@ -51,7 +51,7 @@ namespace KissU.Util.Tests.Samples
     public class CrudServiceSample : CrudServiceBase<EntitySample, DtoSample, QueryParameterSample>, ICrudServiceSample
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CrudServiceSample"/> class.
+        /// Initializes a new instance of the <see cref="CrudServiceSample" /> class.
         /// </summary>
         /// <param name="unitOfWork">The unit of work.</param>
         /// <param name="repository">The repository.</param>

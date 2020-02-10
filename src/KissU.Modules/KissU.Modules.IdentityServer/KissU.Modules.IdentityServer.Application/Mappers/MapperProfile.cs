@@ -1,8 +1,4 @@
-﻿// <copyright file="MapperProfile.cs" company="KissU">
-// Copyright (c) KissU. All Rights Reserved.
-// </copyright>
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Security.Claims;
 using AutoMapper;
 using KissU.Modules.IdentityServer.Domain.Models;

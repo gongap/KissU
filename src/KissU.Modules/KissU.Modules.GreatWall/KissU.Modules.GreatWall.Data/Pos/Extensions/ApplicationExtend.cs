@@ -1,5 +1,4 @@
 ﻿using KissU.Modules.GreatWall.Domain.Enums;
-using KissU.Modules.GreatWall.Domain.Models;
 
 namespace KissU.Modules.GreatWall.Data.Pos.Extensions
 {

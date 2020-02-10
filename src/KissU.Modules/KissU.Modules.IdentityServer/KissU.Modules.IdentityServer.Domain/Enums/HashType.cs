@@ -13,6 +13,6 @@
         /// <summary>
         /// SHA512
         /// </summary>
-        Sha512,
+        Sha512
     }
 }

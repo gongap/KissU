@@ -78,7 +78,8 @@ namespace KissU.Modules.IdentityServer.Data.Stores
 
             var models = apiResources?.MapToList<ApiResource>().AsEnumerable();
 
-            _logger.LogDebug("Found {scopes} API scopes in database", models.SelectMany(x => x.Scopes).Select(x => x.Name));
+            _logger.LogDebug("Found {scopes} API scopes in database",
+                models.SelectMany(x => x.Scopes).Select(x => x.Name));
 
             return models;
         }
@@ -114,7 +115,9 @@ namespace KissU.Modules.IdentityServer.Data.Stores
                 .Include(x => x.ApiSecrets).ToListAsync();
             var result = new Resources(identitys?.MapToList<IdentityResource>(), apis?.MapToList<ApiResource>());
 
-            _logger.LogDebug("Found {scopes} as all scopes in database", result.IdentityResources.Select(x => x.Name).Union(result.ApiResources.SelectMany(x => x.Scopes).Select(x => x.Name)));
+            _logger.LogDebug("Found {scopes} as all scopes in database",
+                result.IdentityResources.Select(x => x.Name)
+                    .Union(result.ApiResources.SelectMany(x => x.Scopes).Select(x => x.Name)));
 
             return result;
         }

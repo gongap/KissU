@@ -26,7 +26,8 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         /// <param name="confirmation">检查是否确认了用户帐户</param>
         public IdentitySignInManager(IdentityUserManager userManager, IHttpContextAccessor contextAccessor,
             IUserClaimsPrincipalFactory<User> claimsFactory, IOptions<IdentityOptions> optionsAccessor,
-            ILogger<IdentitySignInManager> logger, IAuthenticationSchemeProvider schemes, IUserConfirmation<User> confirmation)
+            ILogger<IdentitySignInManager> logger, IAuthenticationSchemeProvider schemes,
+            IUserConfirmation<User> confirmation)
             : base(userManager, contextAccessor, claimsFactory, optionsAccessor, logger, schemes, confirmation)
         {
         }
@@ -35,8 +36,10 @@ namespace KissU.Modules.GreatWall.Domain.Services.Implements
         /// 是否允许登录
         /// </summary>
         /// <param name="user">用户</param>
-        /// <returns>The task object representing the asynchronous operation, containing a flag that is true
-        /// if the specified user can sign-in, otherwise false.</returns>
+        /// <returns>
+        /// The task object representing the asynchronous operation, containing a flag that is true
+        /// if the specified user can sign-in, otherwise false.
+        /// </returns>
         public override async Task<bool> CanSignInAsync(User user)
         {
             if (user.Enabled == false)

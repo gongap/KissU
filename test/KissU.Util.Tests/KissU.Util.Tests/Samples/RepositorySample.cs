@@ -19,7 +19,7 @@ namespace KissU.Util.Tests.Samples
     public class EntitySample : AggregateRoot<EntitySample>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="EntitySample"/> class.
+        /// Initializes a new instance of the <see cref="EntitySample" /> class.
         /// </summary>
         public EntitySample() : this(Guid.NewGuid())
         {

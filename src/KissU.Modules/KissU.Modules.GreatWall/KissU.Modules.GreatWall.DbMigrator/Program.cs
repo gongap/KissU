@@ -20,7 +20,8 @@ namespace KissU.Modules.GreatWall.DbMigrator
             var serviceProviderFactory = new ServiceProviderFactory();
             var configuration = DbMigrationHelpers.BuildConfiguration();
             var services = new ServiceCollection();
-            services.AddUnitOfWork<IGreatWallUnitOfWork, DesignTimeDbContext>(configuration.GetConnectionString(DbConstants.ConnectionStringName));
+            services.AddUnitOfWork<IGreatWallUnitOfWork, DesignTimeDbContext>(
+                configuration.GetConnectionString(DbConstants.ConnectionStringName));
             services.AddAspNetIdentityCore(options =>
             {
                 options.Password.MinLength = 6;

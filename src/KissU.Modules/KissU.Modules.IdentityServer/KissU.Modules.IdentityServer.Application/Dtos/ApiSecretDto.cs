@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using KissU.Modules.IdentityServer.Domain.Enums;
 using KissU.Util.Applications.Dtos;
 

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using KissU.Modules.GreatWall.Domain.Enums;
-using KissU.Modules.GreatWall.Domain.Models;
 using KissU.Util;
 using KissU.Util.Applications.Dtos;
 

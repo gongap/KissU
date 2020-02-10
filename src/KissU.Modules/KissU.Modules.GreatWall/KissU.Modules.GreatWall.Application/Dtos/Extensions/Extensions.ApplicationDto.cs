@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using KissU.Modules.GreatWall.Data.Pos;
+﻿using KissU.Modules.GreatWall.Data.Pos;
 using KissU.Modules.GreatWall.Data.Pos.Models;
 using KissU.Modules.GreatWall.Domain.Enums;
 using KissU.Util.Helpers;

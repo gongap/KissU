@@ -25,7 +25,7 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         /// <param name="builder">The builder.</param>
         protected override void MapProperties(EntityTypeBuilder<DeviceFlowCode> builder)
         {
-            builder.HasKey(x => new { x.UserCode });
+            builder.HasKey(x => new {x.UserCode});
             builder.Property(x => x.DeviceCode).HasMaxLength(200).IsRequired();
             builder.Property(x => x.UserCode).HasMaxLength(200).IsRequired();
             builder.Property(x => x.SubjectId).HasMaxLength(200);
