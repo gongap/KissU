@@ -2,7 +2,7 @@
 using KissU.Core.ServiceHosting.Tests.Samples;
 using Xunit;
 
-namespace KissU.Core.ServiceHosting.Tests.Startup
+namespace KissU.Core.ServiceHosting.Tests.Startup.Implementation
 {
     /// <summary>
     /// 启动基类测试.

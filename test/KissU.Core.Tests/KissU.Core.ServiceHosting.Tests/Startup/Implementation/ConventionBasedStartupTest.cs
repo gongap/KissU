@@ -4,7 +4,7 @@ using KissU.Core.ServiceHosting.Tests.Samples;
 using NSubstitute;
 using Xunit;
 
-namespace KissU.Core.ServiceHosting.Tests.Startup
+namespace KissU.Core.ServiceHosting.Tests.Startup.Implementation
 {
     /// <summary>
     /// 基于约定的启动测试.

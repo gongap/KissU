@@ -50,8 +50,7 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
             }
             catch (Exception ex)
             {
-                _logger.LogError("An error occurred starting the application",
-                    ex);
+                _logger.LogError("An error occurred starting the application", ex);
             }
         }
 
@@ -66,8 +65,7 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
             }
             catch (Exception ex)
             {
-                _logger.LogError("An error occurred stopping the application",
-                    ex);
+                _logger.LogError("An error occurred stopping the application", ex);
             }
         }
 
