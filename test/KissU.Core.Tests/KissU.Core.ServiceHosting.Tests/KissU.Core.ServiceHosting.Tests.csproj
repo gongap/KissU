@@ -37,6 +37,5 @@
 
   <ItemGroup>
     <Folder Include="Internal\" />
-    <Folder Include="Startup\" />
   </ItemGroup>
 </Project>

@@ -5,7 +5,7 @@ namespace KissU.Core.ServiceHosting
     /// <summary>
     /// 服务集合扩展.
     /// </summary>
-    internal static class ServiceCollectionExtensions
+    public static class ServiceCollectionExtensions
     {
         /// <summary>
         /// 克隆
