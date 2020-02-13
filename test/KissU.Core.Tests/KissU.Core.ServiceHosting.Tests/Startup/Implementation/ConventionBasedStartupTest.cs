@@ -18,7 +18,7 @@ namespace KissU.Core.ServiceHosting.Tests.Startup.Implementation
         public void TestConfigure()
         {
             var tag = false;
-            var instance = new StartupSample();
+            var instance = new StartupBaseSample();
 
             void Configure(IContainer c)
             {
@@ -43,7 +43,7 @@ namespace KissU.Core.ServiceHosting.Tests.Startup.Implementation
         [Fact]
         public void TestConfigureServices()
         {
-            var instance = new StartupSample();
+            var instance = new StartupBaseSample();
             var container1 = Substitute.For<IContainer>();
 
             void Configure(IContainer c)

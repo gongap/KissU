@@ -31,17 +31,17 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
         /// <returns>容器</returns>
         public Action<IContainer> Build(object instance)
         {
-            return builder => Invoke(instance, builder);
+            return container => Invoke(instance, container);
         }
 
         /// <summary>
         /// 调用
         /// </summary>
         /// <param name="instance">实例</param>
-        /// <param name="builder">容器</param>
-        private void Invoke(object instance, IContainer builder)
+        /// <param name="container">容器</param>
+        private void Invoke(object instance, IContainer container)
         {
-            using var scope = builder.BeginLifetimeScope();
+            using var scope = container.BeginLifetimeScope();
             var parameterInfos = MethodInfo.GetParameters();
             var parameters = new object[parameterInfos.Length];
             for (var index = 0; index < parameterInfos.Length; index++)
@@ -49,7 +49,7 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
                 var parameterInfo = parameterInfos[index];
                 if (parameterInfo.ParameterType == typeof(IContainer))
                 {
-                    parameters[index] = builder;
+                    parameters[index] = container;
                 }
                 else
                 {
@@ -59,9 +59,7 @@ namespace KissU.Core.ServiceHosting.Internal.Implementation
                     }
                     catch (Exception ex)
                     {
-                        throw new Exception(
-                            $"无法解析的服务类型: '{parameterInfo.ParameterType.FullName}'参数： '{parameterInfo.Name}' 方法： '{MethodInfo.Name}' 类型 '{MethodInfo.DeclaringType?.FullName}'.",
-                            ex);
+                        throw new Exception($"无法解析的服务类型: '{parameterInfo.ParameterType.FullName}'参数： '{parameterInfo.Name}' 方法： '{MethodInfo.Name}' 类型 '{MethodInfo.DeclaringType?.FullName}'.", ex);
                     }
                 }
             }

@@ -16,7 +16,7 @@ namespace KissU.Core.ServiceHosting.Tests.Startup.Implementation
         public void TestCreateServiceProvider()
         {
             var builder = new ContainerBuilder();
-            var startup = new StartupSample();
+            var startup = new StartupBaseSample();
             var container = startup.CreateServiceProvider(builder);
             Assert.NotNull(container);
         }

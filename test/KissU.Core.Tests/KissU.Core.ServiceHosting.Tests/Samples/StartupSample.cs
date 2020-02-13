@@ -1,20 +1,33 @@
 ﻿using Autofac;
-using KissU.Core.ServiceHosting.Startup.Implementation;
+using Microsoft.Extensions.Configuration;
 
 namespace KissU.Core.ServiceHosting.Tests.Samples
 {
     /// <summary>
-    /// 启动基类样例.
-    /// Implements the <see cref="StartupBase{ContainerBuilder}" />
+    /// 测试样例
     /// </summary>
-    /// <seealso cref="StartupBase{ContainerBuilder}" />
-    public class StartupSample : StartupBase<ContainerBuilder>
+    public interface IStartupSample
     {
-        /// <summary>
-        /// 配置容器
-        /// </summary>
-        /// <param name="app">容器</param>
-        public override void Configure(IContainer app)
+        void Configure(IContainer container, IConfigurationBuilder builder);
+
+        void ConfigureContainer(IContainer container);
+
+        void ConfigureServices(ContainerBuilder builder);
+    }
+
+    /// <summary>
+    /// 测试样例
+    /// </summary>
+    public class StartupSample : IStartupSample
+    {
+        public void Configure(IContainer container, IConfigurationBuilder builder)
+        {
+        }
+
+        public void ConfigureContainer(IContainer container)
+        {
+        }
+        public void ConfigureServices(ContainerBuilder builder)
         {
         }
     }

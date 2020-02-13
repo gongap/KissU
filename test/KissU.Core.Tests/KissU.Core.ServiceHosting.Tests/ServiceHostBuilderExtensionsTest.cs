@@ -26,7 +26,7 @@ namespace KissU.Core.ServiceHosting.Tests
         public void TestUseStartup()
         {
             var builder = new ServiceHostBuilder();
-            builder.UseStartup(typeof(StartupSample));
+            builder.UseStartup(typeof(StartupBaseSample));
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace KissU.Core.ServiceHosting.Tests
         public void TestUseStartup1()
         {
             var builder = new ServiceHostBuilder();
-            builder.UseStartup<StartupSample>();
+            builder.UseStartup<StartupBaseSample>();
         }
     }
 }

@@ -16,7 +16,7 @@ namespace KissU.Core.ServiceHosting.Tests
         public void TestClone()
         {
             var services = new ServiceCollection();
-            services.AddScoped<ISample, Sample>();
+            services.AddScoped<IStartupSample, StartupSample>();
             var clone = services.Clone();
             Assert.True(clone.Count == 1);
             Assert.True(clone[0].Equals(services[0]));
