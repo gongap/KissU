@@ -17,7 +17,10 @@ namespace KissU.Core.ServiceHosting.Extensions.Runtime.Implementation
     /// <seealso cref="KissU.Core.ServiceHosting.Extensions.Runtime.IBackgroundServiceEntryProvider" />
     public class DefaultBackgroundServiceEntryProvider : IBackgroundServiceEntryProvider
     {
-        #region Constructor
+        private readonly ILogger<DefaultBackgroundServiceEntryProvider> _logger;
+        private readonly CPlatformContainer _serviceProvider;
+        private readonly IEnumerable<Type> _types;
+        private List<BackgroundServiceEntry> _backgroundServiceEntries;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DefaultBackgroundServiceEntryProvider" /> class.
@@ -33,19 +36,6 @@ namespace KissU.Core.ServiceHosting.Extensions.Runtime.Implementation
             _logger = logger;
             _serviceProvider = serviceProvider;
         }
-
-        #endregion Constructor
-
-        #region Field
-
-        private readonly IEnumerable<Type> _types;
-        private readonly ILogger<DefaultBackgroundServiceEntryProvider> _logger;
-        private readonly CPlatformContainer _serviceProvider;
-        private List<BackgroundServiceEntry> _backgroundServiceEntries;
-
-        #endregion Field
-
-        #region Implementation of IUdpServiceEntryProvider
 
         /// <summary>
         /// Gets the entries.
@@ -100,7 +90,5 @@ namespace KissU.Core.ServiceHosting.Extensions.Runtime.Implementation
                 };
             return result;
         }
-
-        #endregion
     }
 }
