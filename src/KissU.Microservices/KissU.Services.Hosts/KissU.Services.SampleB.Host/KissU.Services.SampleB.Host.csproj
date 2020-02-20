@@ -48,8 +48,8 @@
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.Swagger\KissU.Core.Swagger.csproj" />
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.System\KissU.Core.System.csproj" />
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.Zookeeper\KissU.Core.Zookeeper.csproj" />
-    <ProjectReference Include="..\..\..\KissU.Modules\KissU.Modules.GreatWall\KissU.Modules.GreatWall.Service\KissU.Modules.GreatWall.Service.csproj" />
-    <ProjectReference Include="..\..\..\KissU.Modules\KissU.Modules.IdentityServer\KissU.Modules.IdentityServer.Service\KissU.Modules.IdentityServer.Service.csproj" />
+    <ProjectReference Include="..\..\..\KissU.Modules\KissU.Modules.Sample\KissU.Modules.SampleB.Service.Contracts\KissU.Modules.SampleB.Service.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\KissU.Modules\KissU.Modules.Sample\KissU.Modules.SampleB.Service\KissU.Modules.SampleB.Service.csproj" />
   </ItemGroup>
 
   <ItemGroup>

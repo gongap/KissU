@@ -3,7 +3,7 @@
   "ServerEngine": {
     "Ip": "${KissU_Server_IP}|127.0.0.1", //"配置微服务主机的Ip地址或域名": null,
     "WatchInterval": 30, //设置向服务注册中心更新路由数据的心跳值，缺省值为20s
-    "Port": "${KissU_Server_Port}|91", //微服务主机运行的端口号
+    "Port": "${KissU_Server_Port}|81", //微服务主机运行的端口号
     "MappingIp": "${Mapping_ip}", //映射的Ip地址，暂不需要配置
     "MappingPort": "${Mapping_Port}", //映射的端口号，	暂不需要配置
     "Token": "true", //是否验证Token	缺省值为True
@@ -21,8 +21,8 @@
     "ReloadOnChange": false,
     "Ports": {
       "HttpPort": "${HttpPort}|8001", //指定微服务对外提供的Http端口号,微服务组件必须依赖KestrelHttpModule才会对外提供Http服务，该配置项才有效
-      "WSPort": "${WSPort}|9001", //指定微服务对外提供的Ws端口号,微服务组件必须依赖WSProtocolModule才会对外提供WS服务，该配置项才有效
-      "MQTTPort": "${MQTTPort}|7001" //指定微服务对外提供的Mqtt端口号,微服务组件必须依赖MqttProtocolModule才会对外提供Mqtt服务，该配置项才有效
+      "WSPort": "${WSPort}|8101", //指定微服务对外提供的Ws端口号,微服务组件必须依赖WSProtocolModule才会对外提供WS服务，该配置项才有效
+      "MQTTPort": "${MQTTPort}|8201" //指定微服务对外提供的Mqtt端口号,微服务组件必须依赖MqttProtocolModule才会对外提供Mqtt服务，该配置项才有效
     },
     "RequestCacheEnabled": false,
     "Packages": [
@@ -38,40 +38,6 @@
     "RoutePath": "${Register_RoutePath}",
     "ReloadOnChange": true,
     "EnableChildrenMonitor": false
-  },
-  "Stage": {
-    "EnableHttps": true, // 不设置ports，默认httpsPort:443
-    "CertificateFileName": "${CertificateFileName}|",
-    "CertificateLocation": "${CertificateLocation}|pfxs",
-    "CertificatePassword": "${CertificatePassword}|",
-    "IsCamelCaseResolver": "${IsCamelCaseResolver}|true",
-    "Protocols": "Http1AndHttp2",
-    "ApiGetWay": {
-      "AccessTokenExpireTimeSpan": "30",
-      "AuthorizationRoutePath": "api/user/authentication",
-      "AuthorizationServiceKey": "User",
-      "TokenEndpointPath": "api/oauth2/token",
-      "CacheMode": "MemoryCache" //MemoryCache or  gateway.Redis save token
-    },
-    "AccessPolicy": {
-      "Origins": [ "http://localhost:4200" ],
-      "AllowAnyHeader": true,
-      "AllowAnyMethod": true
-    },
-    "AccessSetting": [
-      {
-        "BlackList": "${blacklist}|127.0.0.1",
-        "Enable": false
-      },
-      {
-        "WhiteList": "${whitelist}|192.168.10.50,192.168.43.0/24,127.0.0.1",
-        "BlackList": "${blacklist}|192.168.2.50,192.168.1.0/16",
-        "RoutePath": "api/user/exists",
-        "Enable": true
-      }
-    ],
-    "HttpsPort": "${StageHttpsPorts}|449,446",
-    "HttpPorts": "${StageHttpPorts}|285,282,283"
   },
   "Dns": {
     "RootDnsAddress": "192.168.1.1",

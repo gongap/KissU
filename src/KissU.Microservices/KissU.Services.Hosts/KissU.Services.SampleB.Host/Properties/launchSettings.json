@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "KissU.Services.SampleB.Host": {
+      "commandName": "Project",
+      "nativeDebugging": false
+    }
+  }
+}
