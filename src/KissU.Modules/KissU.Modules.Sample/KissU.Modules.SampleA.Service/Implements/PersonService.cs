@@ -17,12 +17,12 @@ namespace KissU.Modules.SampleA.Service.Implements
     /// <summary>
     /// PersonService.
     /// Implements the <see cref="KissU.Core.ProxyGenerator.ProxyServiceBase" />
-    /// Implements the <see cref="KissU.Modules.SampleA.Service.Contracts.IUserService" />
+    /// Implements the <see cref="KissU.Modules.SampleA.Service.Contracts.IAccountService" />
     /// </summary>
     /// <seealso cref="KissU.Core.ProxyGenerator.ProxyServiceBase" />
-    /// <seealso cref="KissU.Modules.SampleA.Service.Contracts.IUserService" />
+    /// <seealso cref="KissU.Modules.SampleA.Service.Contracts.IAccountService" />
     [ModuleName("Person")]
-    public class PersonService : ProxyServiceBase, IUserService
+    public class PersonService : ProxyServiceBase, IAccountService
     {
         #region Implementation of IUserService
 
@@ -44,7 +44,7 @@ namespace KissU.Modules.SampleA.Service.Implements
         /// <returns>Task&lt;System.String&gt;.</returns>
         public Task<string> GetUserName(int id)
         {
-            return GetService<IUserService>("User").GetUserName(id);
+            return GetService<IAccountService>("User").GetUserName(id);
         }
 
         /// <summary>

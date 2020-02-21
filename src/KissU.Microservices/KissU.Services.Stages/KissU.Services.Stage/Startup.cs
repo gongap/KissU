@@ -29,7 +29,8 @@ namespace KissU.Services.Stage
         public IContainer ConfigureServices(ContainerBuilder builder)
         {
             var serivces = new ServiceCollection();
-            return builder.AddUtil(serivces);
+            ServiceLocator.Current = builder.AddUtil(serivces);
+            return ServiceLocator.Current;
         }
 
         /// <summary>

@@ -18,7 +18,7 @@ using KissU.Modules.SampleA.Service.Contracts.Dtos;
 namespace KissU.Modules.SampleA.Service.Contracts
 {
     /// <summary>
-    /// Interface IUserService
+    /// Interface IAccountService
     /// Implements the <see cref="KissU.Core.CPlatform.Ioc.IServiceKey" />
     /// </summary>
     /// <seealso cref="KissU.Core.CPlatform.Ioc.IServiceKey" />
@@ -26,7 +26,7 @@ namespace KissU.Modules.SampleA.Service.Contracts
     //[ServiceBundle("api/{Service}")]
     //[ServiceBundle("api/{Service}/{Method}/test")]
     //[ServiceBundle("api/{Service}/{Method}/test",false)]
-    public interface IUserService : IServiceKey
+    public interface IAccountService : IServiceKey
     {
         /// <summary>
         /// 用戶授权
@@ -99,11 +99,11 @@ namespace KissU.Modules.SampleA.Service.Contracts
         /// <param name="user">用户模型</param>
         /// <returns>Task&lt;UserModel&gt;.</returns>
         [Command(Strategy = StrategyType.Injection, Injection = @"return
-new Surging.IModuleServices.Common.Models.UserModel
+        new KissU.Modules.SampleA.Service.Contracts.Dtos.UserModel
          {
             Name=""fanly"",
             Age=19
-         };", RequestCacheEnabled = true, InjectionNamespaces = new[] {"Surging.IModuleServices.Common"})]
+         };", RequestCacheEnabled = true, InjectionNamespaces = new[] { "KissU.Modules.SampleA.Service.Contracts" })]
         [InterceptMethod(CachingMethod.Get, Key = "GetUser_id_{0}", CacheSectionType = SectionType.ddlCache,
             Mode = CacheTargetType.Redis, Time = 480)]
         Task<UserModel> GetUser(UserModel user);
@@ -116,7 +116,7 @@ new Surging.IModuleServices.Common.Models.UserModel
         /// <returns>Task&lt;System.Boolean&gt;.</returns>
         [Authorization(AuthType = AuthorizationType.JWT)]
         [Command(Strategy = StrategyType.FallBack, FallBackName = "UpdateFallBackName", RequestCacheEnabled = true,
-            InjectionNamespaces = new[] {"Surging.IModuleServices.Common"})]
+            InjectionNamespaces = new[] { "KissU.Modules.SampleA.Service.Contracts" })]
         [InterceptMethod(CachingMethod.Remove, "GetUser_id_{0}", "GetUserName_name_{0}",
             CacheSectionType = SectionType.ddlCache, Mode = CacheTargetType.Redis)]
         Task<bool> Update(int id, UserModel model);

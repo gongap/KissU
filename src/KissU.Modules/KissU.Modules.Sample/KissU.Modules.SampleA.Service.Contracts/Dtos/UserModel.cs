@@ -34,4 +34,16 @@ namespace KissU.Modules.SampleA.Service.Contracts.Dtos
         [ProtoMember(4)]
         public Sex Sex { get; set; }
     }
+
+    /// <summary>
+    /// Enum Sex
+    /// </summary>
+    public enum Sex
+    {
+        /// <summary>
+        /// The man
+        /// </summary>
+        Man,
+        Woman
+    }
 }

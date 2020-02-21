@@ -62,7 +62,7 @@ namespace KissU.Core.Configuration.Apollo.Configurations
             }
 
             var apollo = builder.AddApollo(section);
-            apollo.AddNamespaceKissUApollo("surgingSettings");
+            apollo.AddNamespaceKissUApollo("servicesettings");
             return config;
         }
     }

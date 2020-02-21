@@ -22,7 +22,8 @@
     "Ports": {
       "HttpPort": "${HttpPort}|8003", //指定微服务对外提供的Http端口号,微服务组件必须依赖KestrelHttpModule才会对外提供Http服务，该配置项才有效
       "WSPort": "${WSPort}|8103", //指定微服务对外提供的Ws端口号,微服务组件必须依赖WSProtocolModule才会对外提供WS服务，该配置项才有效
-      "MQTTPort": "${MQTTPort}|8203" //指定微服务对外提供的Mqtt端口号,微服务组件必须依赖MqttProtocolModule才会对外提供Mqtt服务，该配置项才有效
+      "MQTTPort": "${MQTTPort}|8203", //指定微服务对外提供的Mqtt端口号,微服务组件必须依赖MqttProtocolModule才会对外提供Mqtt服务，该配置项才有效
+      "GrpcPort": "${GrpcPort}|8303"
     },
     "RequestCacheEnabled": false,
     "Packages": [
@@ -96,7 +97,7 @@
     "RetryCount": "${RetryCount}|1",
     "FailCount": "${FailCount}|3",
     "prefetchCount": "${PrefetchCount}|0",
-    "BrokerName": "${BrokerName}|kissu_demo",
+    "BrokerName": "${BrokerName}|kissu_sample",
     "Port": "${EventBusPort}|5672"
   },
   "Zookeeper": {

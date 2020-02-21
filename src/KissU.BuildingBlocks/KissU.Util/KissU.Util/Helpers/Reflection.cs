@@ -58,7 +58,7 @@ namespace KissU.Util.Helpers
         {
             if (member == null)
                 return string.Empty;
-            return member.GetCustomAttribute<DescriptionAttribute>() is DescriptionAttribute attribute
+            return member.GetCustomAttribute<DescriptionAttribute>() is { } attribute
                 ? attribute.Description
                 : member.Name;
         }

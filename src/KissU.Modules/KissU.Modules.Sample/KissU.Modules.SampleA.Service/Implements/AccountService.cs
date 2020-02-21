@@ -19,22 +19,22 @@ namespace KissU.Modules.SampleA.Service.Implements
     /// <summary>
     /// UserService.
     /// Implements the <see cref="KissU.Core.ProxyGenerator.ProxyServiceBase" />
-    /// Implements the <see cref="KissU.Modules.SampleA.Service.Contracts.IUserService" />
+    /// Implements the <see cref="KissU.Modules.SampleA.Service.Contracts.IAccountService" />
     /// </summary>
     /// <seealso cref="KissU.Core.ProxyGenerator.ProxyServiceBase" />
-    /// <seealso cref="KissU.Modules.SampleA.Service.Contracts.IUserService" />
+    /// <seealso cref="KissU.Modules.SampleA.Service.Contracts.IAccountService" />
     [ModuleName("User")]
-    public class UserService : ProxyServiceBase, IUserService
+    public class AccountService : ProxyServiceBase, IAccountService
     {
         #region Implementation of IUserService
 
         private readonly UserRepository _repository;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UserService" /> class.
+        /// Initializes a new instance of the <see cref="AccountService" /> class.
         /// </summary>
         /// <param name="repository">The repository.</param>
-        public UserService(UserRepository repository)
+        public AccountService(UserRepository repository)
         {
             _repository = repository;
         }

@@ -13,17 +13,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Google.Protobuf" Version="3.10.0" />
-    <PackageReference Include="Grpc.Core" Version="2.24.0" />
-    <PackageReference Include="Grpc.Tools" Version="2.24.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="MessagePack" Version="1.7.3.4" />
-    <PackageReference Include="protobuf-net" Version="2.4.0" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.CPlatform\KissU.Core.CPlatform.csproj" />
   </ItemGroup>
 </Project>

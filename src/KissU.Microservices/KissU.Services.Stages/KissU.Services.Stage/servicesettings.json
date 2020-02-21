@@ -130,7 +130,7 @@
     "RetryCount": "${RetryCount}|1",
     "FailCount": "${FailCount}|3",
     "prefetchCount": "${PrefetchCount}|0",
-    "BrokerName": "${BrokerName}|kissu_demo",
+    "BrokerName": "${BrokerName}|kissu_sample",
     "Port": "${EventBusPort}|5672"
   },
   "Zookeeper": {

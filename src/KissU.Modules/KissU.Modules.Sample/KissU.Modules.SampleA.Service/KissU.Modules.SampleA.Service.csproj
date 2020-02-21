@@ -18,6 +18,7 @@
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.EventBusRabbitMQ\KissU.Core.EventBusRabbitMQ.csproj" />
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.Protocol.Udp\KissU.Core.Protocol.Udp.csproj" />
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.ServiceHosting.Extensions\KissU.Core.ServiceHosting.Extensions.csproj" />
+    <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Util\KissU.Util\KissU.Util.csproj" />
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\WebSocket\WebSocketCore\WebSocketCore.csproj" />
     <ProjectReference Include="..\KissU.Modules.SampleA.Service.Contracts\KissU.Modules.SampleA.Service.Contracts.csproj" />
     <ProjectReference Include="..\KissU.Modules.SampleB.Service.Contracts\KissU.Modules.SampleB.Service.Contracts.csproj" />

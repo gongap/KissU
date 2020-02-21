@@ -1,4 +1,4 @@
-# KissU应用框架介绍 
+# KissU框架介绍 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://mit-license.org/)
 
 <blockquote>

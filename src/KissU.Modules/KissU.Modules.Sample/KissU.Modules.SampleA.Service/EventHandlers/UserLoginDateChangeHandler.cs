@@ -12,23 +12,18 @@ namespace KissU.Modules.SampleA.Service.EventHandlers
 {
     /// <summary>
     /// UserLoginDateChangeHandler.
-    /// Implements the
-    /// <see
-    ///     cref="KissU.Core.CPlatform.EventBus.Events.BaseIntegrationEventHandler{KissU.Modules.SampleA.Service.Contracts.Events.UserEvent}" />
     /// </summary>
-    /// <seealso
-    ///     cref="KissU.Core.CPlatform.EventBus.Events.BaseIntegrationEventHandler{KissU.Modules.SampleA.Service.Contracts.Events.UserEvent}" />
     [QueueConsumer("UserLoginDateChangeHandler", QueueConsumerMode.Normal, QueueConsumerMode.Fail)]
     public class UserLoginDateChangeHandler : BaseIntegrationEventHandler<UserEvent>
     {
-        private readonly IUserService _userService;
+        private readonly IAccountService _userService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UserLoginDateChangeHandler" /> class.
         /// </summary>
         public UserLoginDateChangeHandler()
         {
-            _userService = ServiceLocator.GetService<IUserService>("User");
+            _userService = ServiceLocator.GetService<IAccountService>("User");
         }
 
         /// <summary>
