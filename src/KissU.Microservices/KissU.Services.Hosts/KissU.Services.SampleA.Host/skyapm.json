@@ -1,6 +1,6 @@
 {
   "SkyWalking": {
-    "ServiceName": "KissU.Services.SampleA.Host",
+    "ServiceName": "SampleA",
     "Namespace": "",
     "HeaderVersions": [
       "sw6"

@@ -23,6 +23,7 @@ namespace KissU.Modules.SampleB.Service.Contracts
         [Command(Strategy = StrategyType.Injection, ShuntStrategy = AddressSelectorMode.HashAlgorithm,
             ExecutionTimeoutInMilliseconds = 2500, BreakerRequestVolumeThreshold = 3, Injection = @"return 1;",
             RequestCacheEnabled = false)]
+        [HttpGet]
         Task<string> SayHello(string name);
     }
 }

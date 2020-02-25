@@ -23,7 +23,7 @@ namespace KissU.Modules.SampleA.Service.Implements
         /// <returns>Task&lt;System.Boolean&gt;.</returns>
         public async Task<bool> IsOnline(string deviceId)
         {
-            var text = await GetService<IManagerService>().SayHello("fanly");
+            var text = await GetService<IManagerService>().SayHello("gongap");
             return await GetDeviceIsOnine(deviceId);
         }
 

@@ -86,7 +86,7 @@ namespace KissU.Modules.SampleA.Service.Implements
         {
             return Task.FromResult(new UserModel
             {
-                Name = "fanly",
+                Name = "gongap",
                 Age = 18
             });
         }
@@ -194,7 +194,7 @@ namespace KissU.Modules.SampleA.Service.Implements
         /// <returns>Task&lt;ApiResult&lt;UserModel&gt;&gt;.</returns>
         public Task<ApiResult<UserModel>> GetApiResult()
         {
-            return Task.FromResult(new ApiResult<UserModel> {Value = new UserModel {Name = "fanly"}, StatusCode = 200});
+            return Task.FromResult(new ApiResult<UserModel> {Value = new UserModel {Name = "gongap"}, StatusCode = 200});
         }
 
         /// <summary>

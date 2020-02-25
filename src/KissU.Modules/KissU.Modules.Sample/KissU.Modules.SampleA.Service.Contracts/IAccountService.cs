@@ -101,7 +101,7 @@ namespace KissU.Modules.SampleA.Service.Contracts
         [Command(Strategy = StrategyType.Injection, Injection = @"return
         new KissU.Modules.SampleA.Service.Contracts.Dtos.UserModel
          {
-            Name=""fanly"",
+            Name=""gongap"",
             Age=19
          };", RequestCacheEnabled = true, InjectionNamespaces = new[] { "KissU.Modules.SampleA.Service.Contracts" })]
         [InterceptMethod(CachingMethod.Get, Key = "GetUser_id_{0}", CacheSectionType = SectionType.ddlCache,
