@@ -40,7 +40,7 @@ namespace KissU.Core.System.Intercept
         #region 公共属性
 
         /// <summary>
-        /// 有效时间
+        /// 有效时间（分钟）
         /// </summary>
         public int Time { get; set; } = 60;
 

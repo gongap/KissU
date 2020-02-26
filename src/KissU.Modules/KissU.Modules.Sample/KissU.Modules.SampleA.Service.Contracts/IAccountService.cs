@@ -103,7 +103,7 @@ namespace KissU.Modules.SampleA.Service.Contracts
          {
             Name=""gongap"",
             Age=19
-         };", RequestCacheEnabled = true, InjectionNamespaces = new[] { "KissU.Modules.SampleA.Service.Contracts" })]
+         };", RequestCacheEnabled = true, InjectionNamespaces = new[] { "KissU.Modules.SampleA.Service.Contracts.Dtos" })]
         [InterceptMethod(CachingMethod.Get, Key = "GetUser_id_{0}", CacheSectionType = SectionType.ddlCache,
             Mode = CacheTargetType.Redis, Time = 480)]
         Task<UserModel> GetUser(UserModel user);

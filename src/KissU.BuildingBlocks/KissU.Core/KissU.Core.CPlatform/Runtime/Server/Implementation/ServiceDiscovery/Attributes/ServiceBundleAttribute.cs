@@ -3,7 +3,7 @@
 namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes
 {
     /// <summary>
-    /// 服务集标记。
+    /// 服务集标记
     /// </summary>
     [AttributeUsage(AttributeTargets.Interface)]
     public class ServiceBundleAttribute : Attribute
@@ -25,7 +25,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
         public string RouteTemplate { get; }
 
         /// <summary>
-        /// Gets a value indicating whether this instance is prefix.
+        /// 是否为前缀.
         /// </summary>
         public bool IsPrefix { get; }
     }

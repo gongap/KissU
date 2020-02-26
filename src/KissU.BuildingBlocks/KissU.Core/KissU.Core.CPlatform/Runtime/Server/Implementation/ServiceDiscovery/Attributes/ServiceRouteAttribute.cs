@@ -3,7 +3,7 @@
 namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes
 {
     /// <summary>
-    /// ServiceRouteAttribute.
+    /// 服务路由属性.
     /// Implements the <see cref="Attribute" />
     /// </summary>
     /// <seealso cref="Attribute" />
@@ -19,7 +19,7 @@ namespace KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.At
         }
 
         /// <summary>
-        /// Gets the template.
+        /// 模板.
         /// </summary>
         public string Template { get; }
     }
