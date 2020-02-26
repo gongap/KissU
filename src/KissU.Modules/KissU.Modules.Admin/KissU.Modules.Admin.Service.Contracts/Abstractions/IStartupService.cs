@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using KissU.Core.CPlatform.Ioc;
 using KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
 using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Core.CPlatform.Support;
@@ -14,7 +15,7 @@ namespace KissU.Modules.Admin.Service.Contracts.Abstractions
     /// </summary>
     /// <seealso cref="KissU.Util.Applications.IService" />
     [ServiceBundle("api/{Service}")]
-    public interface IStartupService : IService
+    public interface IStartupService : IServiceKey
     {
         /// <summary>
         /// 获取应用程序数据

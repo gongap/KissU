@@ -14,7 +14,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.CPlatform\KissU.Core.CPlatform.csproj" />
-    <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Util\KissU.Util.Applications\KissU.Util.Applications.csproj" />
     <ProjectReference Include="..\KissU.Modules.IdentityServer.Application\KissU.Modules.IdentityServer.Application.csproj" />
   </ItemGroup>
 </Project>

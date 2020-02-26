@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform.Ioc;
 using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Modules.GreatWall.Application.Dtos;
 using KissU.Modules.GreatWall.Application.Dtos.Requests;
-using KissU.Util.Applications;
 
 namespace KissU.Modules.GreatWall.Service.Contracts
 {
@@ -11,7 +11,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts
     /// 模块服务
     /// </summary>
     [ServiceBundle("api/{Service}")]
-    public interface IModuleService : IService
+    public interface IModuleService : IServiceKey
     {
         /// <summary>
         /// 创建模块

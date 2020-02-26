@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform.Ioc;
 using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Modules.GreatWall.Application.Dtos;
-using KissU.Util.Applications;
 
 namespace KissU.Modules.GreatWall.Service.Contracts
 {
@@ -10,7 +10,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts
     /// 应用程序服务
     /// </summary>
     [ServiceBundle("api/{Service}")]
-    public interface IApplicationService : IService
+    public interface IApplicationService : IServiceKey
     {
         /// <summary>
         /// 创建应用程序

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform.Ioc;
 using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Modules.GreatWall.Application.Dtos.Requests;
 using KissU.Modules.GreatWall.Application.Queries;
-using KissU.Util.Applications;
 
 namespace KissU.Modules.GreatWall.Service.Contracts
 {
@@ -12,7 +12,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts
     /// 权限服务
     /// </summary>
     [ServiceBundle("api/{Service}")]
-    public interface IPermissionService : IService
+    public interface IPermissionService : IServiceKey
     {
         /// <summary>
         /// 获取资源标识列表

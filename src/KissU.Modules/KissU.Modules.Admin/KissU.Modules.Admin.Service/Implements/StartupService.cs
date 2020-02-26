@@ -38,7 +38,7 @@ namespace KissU.Modules.Admin.Service.Implements
         /// </summary>
         private async Task<List<MenuInfo>> GetMenus()
         {
-            var result = await GetService<IMenuService>().GetMenusAsync().ConfigureAwait(false);
+            var result = await GetService<IMenuService>().GetMenusAsync();
             return result.ToNgAlainMenus();
         }
     }

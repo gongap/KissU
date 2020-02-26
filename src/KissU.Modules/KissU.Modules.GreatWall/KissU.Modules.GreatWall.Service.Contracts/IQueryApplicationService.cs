@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using KissU.Core.CPlatform.Ioc;
 using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Modules.GreatWall.Application.Dtos;
 using KissU.Modules.GreatWall.Application.Queries;
-using KissU.Util.Applications;
 using KissU.Util.Domains.Repositories;
 
 namespace KissU.Modules.GreatWall.Service.Contracts
@@ -12,7 +12,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts
     /// 应用程序查询服务
     /// </summary>
     [ServiceBundle("api/{Service}")]
-    public interface IQueryApplicationService : IService
+    public interface IQueryApplicationService : IServiceKey
     {
         /// <summary>
         /// 通过编号获取

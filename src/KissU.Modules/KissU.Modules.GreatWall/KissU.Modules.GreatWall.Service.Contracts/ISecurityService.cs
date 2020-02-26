@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
+using KissU.Core.CPlatform.Ioc;
 using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Modules.GreatWall.Application.Dtos.Requests;
 using KissU.Modules.GreatWall.Domain.Results;
-using KissU.Util.Applications;
 
 namespace KissU.Modules.GreatWall.Service.Contracts
 {
@@ -10,7 +10,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts
     /// 安全服务
     /// </summary>
     [ServiceBundle("api/{Service}")]
-    public interface ISecurityService : IService
+    public interface ISecurityService : IServiceKey
     {
         /// <summary>
         /// 登录
