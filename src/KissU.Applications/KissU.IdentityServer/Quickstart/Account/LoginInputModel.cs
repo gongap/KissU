@@ -11,6 +11,7 @@ namespace KissU.IdentityServer.Quickstart.Account
         /// Gets or sets the username.
         /// </summary>
         /// <value>The username.</value>
+        [Display(Name = "Username or email address")]
         [Required]
         public string Username { get; set; }
         /// <summary>
