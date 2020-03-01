@@ -30,7 +30,23 @@
 
 .session-authentication {
     background-color: #f9f9f9;
-    margin-top: 25px;
+    margin-top: 30px;
+}
+.session-authentication .auth-form label {
+    display: block;
+    margin-bottom: 7px;
+    text-align: left;
+}
+.session-authentication .label-link {
+    float: right;
+    font-size: 12px;
+}
+
+.session-authentication .create-account-callout {
+    padding: 15px 20px;
+    text-align: center;
+    border: 1px solid #d8dee2;
+    border-radius: 5px;
 }
 
 .login-page {
@@ -43,9 +59,27 @@
     margin: 0px 0 0px;
 }
 
+.login-page .page-header h1 {
+    font-size: 24px;
+    font-weight: 300;
+    letter-spacing: -.5px;
+}
+
 .login-page .panel-body {
     padding-top: 25px;
 }
+
+.login-page .footer .py-6{padding-top: 20px !important; padding-bottom: 20px !important;}
+.login-page .footer .mt-6{margin-top: 20px !important;}
+.login-page .footer .f6{font-size: 12px !important;}
+.login-page .footer .p-responsive{padding-right: 16px !important;padding-left: 16px !important;}
+.login-page .footer .d-flex{display: flex !important;}
+.login-page .footer .list-style-none{list-style: none !important;}
+.login-page .footer .flex-justify-center{justify-content: center !important;}
+.login-page .footer ol, .login-page .footer  ul{padding-left: 0; margin-top: 0; margin-bottom: 0;}
+.login-page .footer .mr-3{margin-right: 16px !important;}
+.login-page .footer .link-gray {color: #586069 !important;}
+
 
 .logged-out iframe {
   display: none;

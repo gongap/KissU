@@ -249,6 +249,26 @@ namespace KissU.IdentityServer.Quickstart.Account
             return View();
         }
 
+        /// <summary>
+        /// Reset your password.
+        /// </summary>
+        /// <returns>IActionResult.</returns>
+        [HttpGet]
+        public IActionResult PasswordReset()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// Join.
+        /// </summary>
+        /// <returns>IActionResult.</returns>
+        [HttpGet]
+        public IActionResult Join()
+        {
+            return View();
+        }
+
 
         /*****************************************/
         /* helper APIs for the AccountController */

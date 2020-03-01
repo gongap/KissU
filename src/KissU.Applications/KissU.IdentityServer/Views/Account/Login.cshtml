@@ -5,7 +5,10 @@
 
 <div class="login-page">
     <div class="page-header text-center">
-        <h1>Sign in</h1>
+        <a class="header-logo" href="~/">
+            <img height="48" width="48" src="~/logo-color.svg">
+        </a>
+        <h1>Sign in to KissU</h1>
     </div>
 
     <partial name="_ValidationSummary" />
@@ -17,7 +20,7 @@
             <div class="col-sm-12">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <form asp-route="Login">
+                        <form asp-route="Login" class="auth-form">
                             <input type="hidden" asp-for="ReturnUrl" />
                             <fieldset>
                                 <div class="form-group">
@@ -25,7 +28,10 @@
                                     <input class="form-control" placeholder="Username" asp-for="Username" autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <label asp-for="Password"></label>
+                                    <label asp-for="Password">
+                                        Password
+                                        <a class="label-link" href="~/Account/PasswordReset">Forgot password?</a>
+                                    </label>
                                     <input type="password" class="form-control" placeholder="Password" asp-for="Password" autocomplete="off">
                                 </div>
                                 @if (Model.AllowRememberLogin)
@@ -49,6 +55,10 @@
                         </form>
                     </div>
                 </div>
+                <p class="create-account-callout mt-3">
+                    New to KissU?
+                    <a href="~/Account/Join">Create an account</a>.
+                </p>
             </div>
         }
 
@@ -87,4 +97,15 @@
             </div>
         }
     </div>
+    <div class="footer">
+        <div class="container-lg p-responsive py-6 mt-6 f6">
+            <ul class="list-style-none d-flex flex-justify-center">
+                <li class="mr-3"><a href="" data-ga-click="Footer, go to terms, text:terms">Terms</a></li>
+                <li class="mr-3"><a href="" data-ga-click="Footer, go to privacy, text:privacy">Privacy</a></li>
+                <li class="mr-3"><a href="" data-ga-click="Footer, go to security, text:security">Security</a></li>
+                <li><a class="link-gray" href="" data-ga-click="Footer, go to contact, text:contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
 </div>
+
