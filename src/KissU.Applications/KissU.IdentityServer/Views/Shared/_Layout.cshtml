@@ -40,22 +40,33 @@
                     <a href="~/">
                         <span class="navbar-brand">
                             <img src="~/icon.png" class="icon-banner">
-                            IdentityServer4
+                            KissU
                         </span>
                     </a>
                 </div>
-
-                @if (!string.IsNullOrWhiteSpace(name))
-                {
+                
+                <div class="navbar-header-right">
                     <ul class="nav navbar-nav">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">@name <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a asp-action="Logout" asp-controller="Account">Logout</a></li>
-                            </ul>
-                        </li>
+                        @if (!string.IsNullOrWhiteSpace(name))
+                        {
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">@name <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a asp-controller="Grants">Grants</a></li>
+                                    <li><a asp-controller="Diagnostics">Diagnostics</a></li>
+                                    <li><a asp-action="Logout" asp-controller="Account">Logout</a></li>
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="~/Account/Login">Sign in</a>
+                            </li>
+                        }
                     </ul>
-                }
+                    </div>
             </div>
         </div>
     }
