@@ -94,7 +94,7 @@ namespace KissU.Modules.SampleA.Service.Implements
                 }
 
                 if (!_token.IsCancellationRequested)
-                    await Task.Delay(1000, stoppingToken);
+                    await Task.Delay(10000, stoppingToken);
             }
             catch (Exception ex)
             {

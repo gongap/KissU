@@ -56,8 +56,7 @@ namespace KissU.Core.Services.Client
 
         private static void ConfigureEventBus(IConfigurationBuilder build)
         {
-            build
-                .AddEventBusFile("eventBusSettings.json", false);
+            build.AddEventBusFile("eventBusSettings.json", false);
         }
 
         /// <summary>
@@ -65,8 +64,7 @@ namespace KissU.Core.Services.Client
         /// </summary>
         private void ConfigureCache(IConfigurationBuilder build)
         {
-            build
-                .AddCacheFile("cacheSettings.json", false);
+            build.AddCacheFile("cacheSettings.json", false);
         }
 
         /// <summary>
@@ -148,11 +146,12 @@ namespace KissU.Core.Services.Client
                 UserId = 1,
                 Sex = "Man"
             }));
-            var path = "api/user/getuser";
+            var path = "api/account/getuser";
             var serviceKey = "User";
 
             var userProxy = serviceProxyProvider.Invoke<object>(model, path, serviceKey);
             var s = userProxy.Result;
+            Console.WriteLine($"{s}");
             Console.WriteLine("Press any key to exit...");
             Console.ReadLine();
         }
