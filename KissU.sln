@@ -232,6 +232,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Services.SampleB.Host
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.Search", "src\KissU.BuildingBlocks\KissU.Util\KissU.Util.Search\KissU.Util.Search.csproj", "{05C9321C-EE46-4AFE-B79B-D8BA858F12BA}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Core.Services.Client", "test\KissU.Core.Tests\KissU.Core.Services.Client\KissU.Core.Services.Client.csproj", "{56DA0AAA-DDD2-4112-93F1-C8E4C2AF47EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -574,6 +576,10 @@ Global
 		{05C9321C-EE46-4AFE-B79B-D8BA858F12BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05C9321C-EE46-4AFE-B79B-D8BA858F12BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05C9321C-EE46-4AFE-B79B-D8BA858F12BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56DA0AAA-DDD2-4112-93F1-C8E4C2AF47EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56DA0AAA-DDD2-4112-93F1-C8E4C2AF47EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56DA0AAA-DDD2-4112-93F1-C8E4C2AF47EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56DA0AAA-DDD2-4112-93F1-C8E4C2AF47EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -681,6 +687,7 @@ Global
 		{29222707-93B8-4694-A792-5E4875B5B94A} = {0A04FA06-BE43-4BB1-A619-31BAAD599F65}
 		{9D343C52-6C55-4073-AF08-B5CEC1940E0E} = {0A04FA06-BE43-4BB1-A619-31BAAD599F65}
 		{05C9321C-EE46-4AFE-B79B-D8BA858F12BA} = {D4F921B5-1BBD-4F36-A1D0-DE934C035713}
+		{56DA0AAA-DDD2-4112-93F1-C8E4C2AF47EA} = {0132FC81-FFA9-4EE5-8595-03CFA8B6E3D2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}
