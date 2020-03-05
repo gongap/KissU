@@ -1,9 +1,9 @@
 {
   //微服务框架配置
   "ServerEngine": {
-    "Ip": "${KissU_Server_IP}|127.0.0.1", //"配置微服务主机的Ip地址或域名": null,
+    "Ip": "${Server_IP}|127.0.0.1", //"配置微服务主机的Ip地址或域名": null,
     "WatchInterval": 30, //设置向服务注册中心更新路由数据的心跳值，缺省值为20s
-    "Port": "${KissU_Server_Port}|90", //微服务主机运行的端口号
+    "Port": "${Server_Port}|90", //微服务主机运行的端口号
     "MappingIp": "${Mapping_ip}", //映射的Ip地址，暂不需要配置
     "MappingPort": "${Mapping_Port}", //映射的端口号，	暂不需要配置
     "Token": "true", //是否验证Token	缺省值为True
@@ -15,8 +15,8 @@
     "DisconnTimeInterval": 30,
     "ExecutionTimeoutInMilliseconds": 1000,
     "Protocol": "${Protocol}|None", //配置微服务组件支持的协议 缺省值为: None; 可选的值: None Tcp Http Ws
-    "RootPath": "${RootPath}|D:\\userapp", //指定服务引擎解析的业务模块路径
-    "WebRootPath": "${WebRootPath}|D:\\UserApp\\wwwroot",
+    "RootPath": "${RootPath}|D:\\App", //指定服务引擎解析的业务模块路径
+    "WebRootPath": "${WebRootPath}|D:\\App\\wwwroot",
     "IsModulePerLifetimeScope": false,
     "ReloadOnChange": false,
     "Ports": {
