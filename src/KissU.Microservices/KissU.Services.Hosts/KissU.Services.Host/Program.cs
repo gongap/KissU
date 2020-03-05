@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Text;
 using Autofac;
+using KissU.Core.Caching.Configurations;
 using KissU.Core.CPlatform;
+using KissU.Core.CPlatform.Configurations;
 using KissU.Core.CPlatform.Utilities;
 using KissU.Core.ProxyGenerator;
 using KissU.Core.ServiceHosting;
@@ -35,7 +37,8 @@ namespace KissU.Services.Host
                     builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
                 })
                 .ConfigureLogging(logger => { logger.AddConfiguration(AppConfig.GetSection("Logging")); })
-                .Configure(build => { })
+                .Configure(build => { build.AddCacheFile("${cachepath}|cachesettings.json", false, true); })
+                .Configure(build => { build.AddCPlatformFile("${servicepath}|servicesettings.json", false, true); })
                 .UseServer(options => { })
                 .UseConsoleLifetime()
                 .UseStartup<Startup>()

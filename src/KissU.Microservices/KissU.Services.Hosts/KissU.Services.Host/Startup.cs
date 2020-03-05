@@ -1,6 +1,4 @@
 ﻿using Autofac;
-using KissU.Core.Caching.Configurations;
-using KissU.Core.CPlatform.Configurations;
 using KissU.Core.CPlatform.Utilities;
 using KissU.Util;
 using Microsoft.Extensions.Configuration;
@@ -19,11 +17,6 @@ namespace KissU.Services.Host
         /// </summary>
         public Startup(IConfigurationBuilder build)
         {
-            //build.AddConsulFile("${consulpath}|consul.json", false, true);
-            //build.AddZookeeperFile("${zookeeperpath}|zookeeper.json", false, true); 
-            //build.AddEventBusFile("{eventbuspath}|eventbussettings.json", false, true);
-            build.AddCacheFile("${cachepath}|cachesettings.json", false, true);
-            build.AddCPlatformFile("${servicepath}|servicesettings.json", false, true);
         }
 
         /// <summary>
