@@ -31,6 +31,7 @@
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.DotNettyWSServer\KissU.Core.DotNettyWSServer.csproj" />
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.DotNetty\KissU.Core.DotNetty.csproj" />
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.EventBusKafka\KissU.Core.EventBusKafka.csproj" />
+    <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.EventBusRabbitMQ\KissU.Core.EventBusRabbitMQ.csproj" />
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.Grpc\KissU.Core.Grpc.csproj" />
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.Kestrel.Log4net\KissU.Core.Kestrel.Log4net.csproj" />
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.Kestrel.Nlog\KissU.Core.Kestrel.Nlog.csproj" />
@@ -59,7 +60,7 @@
     <None Update="cachesettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Configs\consul.json">
+    <None Update="consul.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="nlog.config">
@@ -70,6 +71,9 @@
     </None>
     <None Update="log4net.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="servicesettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

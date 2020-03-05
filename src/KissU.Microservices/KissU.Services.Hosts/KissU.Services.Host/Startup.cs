@@ -1,7 +1,7 @@
 ﻿using Autofac;
 using KissU.Core.Caching.Configurations;
+using KissU.Core.CPlatform.Configurations;
 using KissU.Core.CPlatform.Utilities;
-using KissU.Core.EventBusKafka.Configurations;
 using KissU.Util;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,8 +19,11 @@ namespace KissU.Services.Host
         /// </summary>
         public Startup(IConfigurationBuilder build)
         {
-            ConfigureEventBus(build);
-            ConfigureCache(build);
+            //build.AddConsulFile("${consulpath}|consul.json", false, true);
+            //build.AddZookeeperFile("${zookeeperpath}|zookeeper.json", false, true); 
+            //build.AddEventBusFile("{eventbuspath}|eventbussettings.json", false, true);
+            build.AddCacheFile("${cachepath}|cachesettings.json", false, true);
+            build.AddCPlatformFile("${servicepath}|servicesettings.json", false, true);
         }
 
         /// <summary>
@@ -38,23 +41,6 @@ namespace KissU.Services.Host
         /// </summary>
         public void Configure(IContainer app)
         {
-        }
-
-        /// <summary>
-        /// 配置事件总线
-        /// </summary>
-        /// <param name="build">服务构建者</param>
-        private static void ConfigureEventBus(IConfigurationBuilder build)
-        {
-            build.AddEventBusFile("eventbussettings.json", false);
-        }
-
-        /// <summary>
-        /// 配置缓存服务
-        /// </summary>
-        private void ConfigureCache(IConfigurationBuilder build)
-        {
-            build.AddCacheFile("cachesettings.json", false);
         }
     }
 }
