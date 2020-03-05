@@ -131,5 +131,25 @@
     "Properties": {
       "Application": "Sample"
     }
+  },
+  "Logging": {
+    "Debug": {
+      "LogLevel": {
+        "Default": "Information"
+      }
+    },
+    "Console": {
+      "IncludeScopes": true,
+      "LogLevel": {
+        "Default": "${LogLevel}|Debug"
+      }
+    },
+    "LogLevel": {
+      "Default": "${LogLevel}|Debug"
+    }
+  },
+  "ConnectionStrings": {
+    "IdentityServerConnection": "Server=.;Database=KissU.IdentityServer;uid=sa;pwd=saP@ss123;MultipleActiveResultSets=true",
+    "GreatWallConnection": "Server=.;Database=KissU.GreatWall;uid=sa;pwd=saP@ss123;MultipleActiveResultSets=true"
   }
 }

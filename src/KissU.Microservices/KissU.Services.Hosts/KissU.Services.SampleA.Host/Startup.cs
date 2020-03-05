@@ -19,8 +19,6 @@ namespace KissU.Services.SampleA.Host
         /// </summary>
         public Startup(IConfigurationBuilder build)
         {
-            ConfigureEventBus(build);
-            ConfigureCache(build);
         }
 
         /// <summary>
@@ -38,23 +36,6 @@ namespace KissU.Services.SampleA.Host
         /// </summary>
         public void Configure(IContainer app)
         {
-        }
-
-        /// <summary>
-        /// 配置事件总线
-        /// </summary>
-        /// <param name="build">服务构建者</param>
-        private static void ConfigureEventBus(IConfigurationBuilder build)
-        {
-            build.AddEventBusFile("eventbussettings.json", false);
-        }
-
-        /// <summary>
-        /// 配置缓存服务
-        /// </summary>
-        private void ConfigureCache(IConfigurationBuilder build)
-        {
-            build.AddCacheFile("cachesettings.json", false);
         }
     }
 }

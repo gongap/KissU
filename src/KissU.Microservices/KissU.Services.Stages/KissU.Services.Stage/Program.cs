@@ -37,10 +37,11 @@ namespace KissU.Services.Stage
                     builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
                 })
                 .ConfigureLogging(logger => { logger.AddConfiguration(AppConfig.GetSection("Logging")); })
+                .Configure(build => { build.AddCacheFile("${cachepath}|cachesettings.json", false, true); })
+                .Configure(build => { build.AddCPlatformFile("${servicepath}|servicesettings.json", false, true); })
+                .Configure(build => { build.AddCacheFile("${stagepath}|stagesettings.json", false, true); })
                 .UseServer(options => { })
                 .UseConsoleLifetime()
-                .Configure(build => build.AddCacheFile("${cachepath}|cachesettings.json", AppContext.BaseDirectory, false, true))
-                .Configure(build => build.AddCPlatformFile("${kissupath}|servicesettings.json", false, true))
                 .UseStartup<Startup>()
                 .Build();
 
