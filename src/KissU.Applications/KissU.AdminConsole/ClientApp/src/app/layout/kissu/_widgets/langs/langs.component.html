@@ -1,0 +1,9 @@
+<span class="alain-ms__topbar-item-btn" [ngClass]="{ 'alain-ms__topbar-item-icon': isMobile }">
+  <span *ngIf="!isMobile">{{ text }}</span>
+  <i *ngIf="isMobile" nz-icon nzType="global"></i>
+</span>
+<ul class="alain-ms__topbar-dd-menu">
+  <li *ngFor="let item of langs" (click)="change(item.code)">
+    <a class="alain-ms__topbar-dd-item">{{ item.text }}</a>
+  </li>
+</ul>

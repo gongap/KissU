@@ -1,0 +1,28 @@
+<ng-container *ngIf="userSrv.isLogin">
+  <span class="alain-ms__topbar-item-btn">
+    <nz-avatar [nzSrc]="settings.user.avatar" nzSize="small"></nz-avatar>
+  </span>
+  <div class="alain-ms__topbar-dd-menu width-md">
+    <div class="alain-ms__user-hd">
+      <div class="d-flex">
+        <nz-avatar [nzSrc]="settings.user.avatar" nzSize="small"></nz-avatar>
+        <span class="ml-md">{{ settings.user.name }}</span>
+      </div>
+      <div class="mt-sm">
+        <ng-container *ngFor="let i of mainLinks; let last = last">
+          <a [link-to]="i">{{ i.text }}</a>
+          <nz-divider *ngIf="!last" nzType="vertical"></nz-divider>
+        </ng-container>
+      </div>
+    </div>
+    <div class="alain-ms__user-bd">
+      <a *ngFor="let i of subLinks" [link-to]="i" class="alain-ms__user-bd-item">
+        <i nz-icon nzType="safety"></i>{{ i.text }}
+      </a>
+    </div>
+    <div class="alain-ms__user-fd">
+      <a (click)="logout()" class="d-block pt-sm pb-xs text-center">{{ l.signout.text }}</a>
+    </div>
+  </div>
+</ng-container>
+<a *ngIf="!userSrv.isLogin" routerLink="{{ userSrv.login_url }}" class="alain-ms__topbar-item-btn">登录</a>

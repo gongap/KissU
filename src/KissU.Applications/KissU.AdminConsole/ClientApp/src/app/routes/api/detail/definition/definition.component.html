@@ -1,0 +1,45 @@
+<page-bar [subTitle]="subTitleTpl">
+  <ng-template #subTitleTpl>
+    <button routerLink="/api/apis" nz-button nzSize="small"><i nz-icon nzType="rollback"></i> 返回API列表</button>
+  </ng-template>
+  <button (click)="t()" nz-button nzType="primary">克隆</button>
+  <button (click)="t()" nz-button nzType="primary">编辑</button>
+  <button (click)="t()" nz-button>发布</button>
+  <button (click)="t()" nz-button disabled>下线</button>
+</page-bar>
+<panel [title]="'名称及描述'">
+  <sv-container col="2">
+    <sv label="分组">用户类</sv> <sv label="名称">User</sv> <sv label="安全认证">XXX APP</sv> <sv label="类型">私有</sv>
+    <sv label="签名算法" col="1">HmacSHA256</sv>
+  </sv-container>
+</panel>
+<panel [title]="'请求基础定义'">
+  <sv-container col="2">
+    <sv label="Path">/user</sv> <sv label="协议">HTTP</sv> <sv label="HTTP Method">GET</sv>
+    <sv label="请求模式">入参映射</sv>
+  </sv-container>
+</panel>
+<panel [title]="'后端服务信息'">
+  <sv-container col="2">
+    <sv label="后端服务类型">HTTP</sv> <sv label="HTTP Method">GET</sv>
+    <sv label="VPC通道">不使用VPC通道</sv>
+    <sv label="后端服务地址">https://ng-alain.com/user</sv>
+    <sv label="Mock">不使用Mock</sv> <sv label="后端超时">10000 ms</sv>
+  </sv-container>
+</panel>
+<panel [title]="'后端服务参数'">
+  <st [data]="paramData" [columns]="paramColumns" noResult="您尚未创建任何后端服务参数">
+    <ng-template st-row="more" let-i>
+      <a nz-popover [nzContent]="moreTpl">更多</a>
+      <ng-template #moreTpl>
+        <sv-container col="2">
+          <sv label="枚举">无</sv> <sv label="最小值">1</sv> <sv label="最大值">无</sv> <sv label="文档可见">是</sv>
+          <sv label="文档中顺序">默认</sv>
+        </sv-container>
+      </ng-template>
+    </ng-template>
+  </st>
+</panel>
+<panel [title]="'错误码定义'" class="mb-lg">
+  <st [data]="errData" [columns]="errColumns" noResult="您尚未创建任何错误码定义"></st>
+</panel>

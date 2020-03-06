@@ -1,0 +1,25 @@
+<page-bar></page-bar>
+<div class="d-flex align-items-center justify-content-between">
+  <div class="d-flex">
+    <input nz-input [(ngModel)]="i.q" id="i.q" name="i.q" placeholder="输入完整API名称进行查询" class="mx-sm" />
+    <button (click)="st.reload(i)" nz-button nzType="primary">搜索</button>
+  </div>
+  <div>
+    <button (click)="t()" nz-button>导入 Swagger</button>
+    <button (click)="t()" nz-button nzType="primary">创建 API</button>
+  </div>
+</div>
+<div *ngIf="checkList.length > 0" class="mt-md">
+  <button (click)="t()" nz-button>拷贝</button>
+  <button (click)="t()" nz-button>授权</button>
+  <button (click)="t()" nz-button>发布</button>
+</div>
+<st
+  #st
+  [data]="url"
+  [columns]="columns"
+  [req]="{ params: i }"
+  (change)="change($event)"
+  noResult="您尚未创建任何API"
+  class="my-md"
+></st>

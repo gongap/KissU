@@ -1,0 +1,10 @@
+<page-bar [subTitle]="subTitleTpl">
+  <ng-template #subTitleTpl>
+    <button routerLink="/api/apis" nz-button nzSize="small"><i nz-icon nzType="rollback"></i> 返回API列表</button>
+  </ng-template>
+  <button (click)="t()" nz-button nzType="primary">添加授权</button>
+</page-bar>
+<div *ngIf="checkList.length > 0">
+  <button (click)="t()" nz-button>解除授权</button>
+</div>
+<st [data]="data" [columns]="columns" noResult="暂无已经授权应用"></st>
