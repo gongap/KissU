@@ -9,6 +9,8 @@ import { _HttpClient } from '@delon/theme';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DnsDomainComponent {
+
+  constructor(private http: _HttpClient, private msg: NzMessageService) {}
   i: any = {
     group: '',
   };
@@ -39,7 +41,11 @@ export class DnsDomainComponent {
   ];
   checkList: STData[] = [];
 
-  constructor(private http: _HttpClient, private msg: NzMessageService) {}
+  // #region remark
+
+  remarkVisible = false;
+  remarkItem: any = {};
+  remark = null;
 
   t() {
     this.msg.info('to');
@@ -50,12 +56,6 @@ export class DnsDomainComponent {
       this.checkList = e.checkbox;
     }
   }
-
-  // #region remark
-
-  remarkVisible = false;
-  remarkItem: any = {};
-  remark = null;
 
   remarkOpen(i: any) {
     this.remarkItem = i;

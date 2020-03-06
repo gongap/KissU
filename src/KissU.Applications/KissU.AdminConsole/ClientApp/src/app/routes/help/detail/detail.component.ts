@@ -13,6 +13,17 @@ import { deepCopy } from '@delon/util';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HelpDetailComponent implements OnInit {
+
+  constructor(
+    route: ActivatedRoute,
+    private titleSrv: TitleService,
+    private http: _HttpClient,
+    private dom: DomSanitizer,
+    private msgSrv: NzMessageService,
+    private cdr: ChangeDetectorRef,
+  ) {
+    this.id = +route.snapshot.params.id;
+  }
   id: number;
   item: HelpItem;
   search = {
@@ -33,16 +44,8 @@ export class HelpDetailComponent implements OnInit {
     anonymous: true,
   };
 
-  constructor(
-    route: ActivatedRoute,
-    private titleSrv: TitleService,
-    private http: _HttpClient,
-    private dom: DomSanitizer,
-    private msgSrv: NzMessageService,
-    private cdr: ChangeDetectorRef,
-  ) {
-    this.id = +route.snapshot.params.id;
-  }
+  feedbackTypeChecked = false;
+  feedbackRateTip = '';
 
   ngOnInit(): void {
     this.http.get(`/help/categories/${this.id}`).subscribe((res: any) => {
@@ -52,9 +55,6 @@ export class HelpDetailComponent implements OnInit {
       this.cdr.detectChanges();
     });
   }
-
-  feedbackTypeChecked = false;
-  feedbackRateTip = '';
   feedbackRateChange(val: number) {
     let text = '文档很好';
     switch (val) {

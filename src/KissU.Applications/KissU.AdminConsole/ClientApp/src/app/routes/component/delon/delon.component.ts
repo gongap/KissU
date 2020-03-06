@@ -25,6 +25,12 @@ const r = (min: number, max: number) => Math.floor(Math.random() * (max - min + 
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CompDelonComponent {
+
+  // #endregion
+
+  constructor(public msg: NzMessageService) {
+    this.reload();
+  }
   i: any = {
     ak: 'xxxxx',
   };
@@ -39,21 +45,6 @@ export class CompDelonComponent {
     { title: 'badge', index: 'badge', type: 'badge', badge: BADGE },
     { title: 'yn', index: 'yn', type: 'yn' },
   ];
-
-  reload() {
-    this.users = Array(5)
-      .fill({})
-      .map((item: any, idx: number) => {
-        return {
-          id: idx + 1,
-          name: `name ${idx + 1}`,
-          age: r(10, 50),
-          tag: r(1, 5),
-          badge: r(1, 5),
-          yn: [true, false][r(1, 5) % 2],
-        };
-      });
-  }
 
   // #endregion
 
@@ -104,13 +95,22 @@ export class CompDelonComponent {
     required: ['name'],
   };
 
-  sfSubmit(value: any) {
-    this.msg.success(JSON.stringify(value));
+  reload() {
+    this.users = Array(5)
+      .fill({})
+      .map((item: any, idx: number) => {
+        return {
+          id: idx + 1,
+          name: `name ${idx + 1}`,
+          age: r(10, 50),
+          tag: r(1, 5),
+          badge: r(1, 5),
+          yn: [true, false][r(1, 5) % 2],
+        };
+      });
   }
 
-  // #endregion
-
-  constructor(public msg: NzMessageService) {
-    this.reload();
+  sfSubmit(value: any) {
+    this.msg.success(JSON.stringify(value));
   }
 }
