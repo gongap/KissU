@@ -1,0 +1,19 @@
+<nz-spin [nzSpinning]="loading">
+  <div class="card__title">最近30天内到期活动</div>
+  <div nz-row nzGutter="16" class="position-relative d-flex align-items-center">
+    <div nz-col nzSpan="16">
+      <g2-custom class="mt-lg" (render)="render($event)"></g2-custom>
+    </div>
+    <div nz-col nzSpan="8">
+      <div class="chart__label">
+        <a *ngFor="let i of data" (click)="msg.info(i.type)" class="chart__label-item">
+          {{ i.text }}<span [ngStyle]="{ color: i.color }">{{ i.num }}</span>
+        </a>
+      </div>
+    </div>
+    <div *ngIf="data.length === 0" class="card__no-data" style="height: 215px;">暂无数据</div>
+  </div>
+  <div class="card__time" [ngStyle]="{ visibility: data.length > 0 && time ? 'visible' : 'hidden' }">
+    更新于: {{ time | _date }}
+  </div>
+</nz-spin>

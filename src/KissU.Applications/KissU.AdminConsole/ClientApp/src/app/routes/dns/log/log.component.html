@@ -1,0 +1,10 @@
+<page-bar></page-bar>
+<sf
+  mode="search"
+  [schema]="searchSchema"
+  [formData]="params"
+  (formSubmit)="st.reset($event)"
+  (formReset)="st.reset(params)"
+  class="my-md"
+></sf>
+<st #st [data]="url" [columns]="columns" [req]="{ params: params }" class="my-md"></st>

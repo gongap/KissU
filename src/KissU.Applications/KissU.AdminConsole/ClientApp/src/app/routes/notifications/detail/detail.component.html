@@ -1,0 +1,13 @@
+<page-bar [subTitle]="subTitleTpl">
+  <ng-template #subTitleTpl>
+    <button nz-button nzSize="small" (click)="back()">返回上一级</button>
+  </ng-template>
+</page-bar>
+<nz-spin *ngIf="!i" class="brand-page-loading"></nz-spin>
+<div class="detail-content" *ngIf="i">
+  <div class="detail-content__meta">
+    <h1>{{ i.title }}</h1>
+    <time>{{ i.time | _date }}</time>
+  </div>
+  <div class="alain-ms__markdown mt-lg" [innerHTML]="i.content"></div>
+</div>

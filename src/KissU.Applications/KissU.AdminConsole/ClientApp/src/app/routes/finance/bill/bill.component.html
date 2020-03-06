@@ -1,0 +1,14 @@
+<div class="mt-md p-md card">
+  <h2 class="card-tit">费用账单</h2>
+  <nz-tabset nzType="card">
+    <nz-tab nzTitle="总览">
+      <finance-bill-overview></finance-bill-overview>
+    </nz-tab>
+    <nz-tab nzTitle="账单">
+      <finance-bill-list></finance-bill-list>
+    </nz-tab>
+    <nz-tab nzTitle="明细" (nzClick)="showReport = true">
+      <finance-bill-report *ngIf="showReport"></finance-bill-report>
+    </nz-tab>
+  </nz-tabset>
+</div>

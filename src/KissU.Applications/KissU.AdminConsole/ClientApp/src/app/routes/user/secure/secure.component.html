@@ -1,0 +1,56 @@
+<page-bar></page-bar>
+<div class="d-flex align-items-center pb-md mb-md border-bottom-1">
+  <div class="mr-lg text-center">
+    <img src="{{ user.avatar }}" class="avatar" />
+    <a (click)="openAvatar()" class="brand-color">修改头像</a>
+  </div>
+  <div>
+    <p>
+      登录账号：{{ user.email }}<a class="mx-md brand-color" (click)="msg.info('to')">修改</a
+      ><span class="text-warning">(您已通过实名认证)</span>
+    </p>
+    <p>账号ID：1</p>
+    <p>注册时间：9102-01-01</p>
+  </div>
+</div>
+<div class="d-flex align-items-center py-lg mb-md">
+  <span>您当前的账号安全程度</span>
+  <div class="pl-md width-md" style="margin-top: -4px;">
+    <nz-progress nzStrokeWidth="16" [nzPercent]="50" [nzShowInfo]="false"></nz-progress>
+  </div>
+  <span class="px-lg">安全级别: <span class="text-warning">中</span></span>
+  继续努力
+</div>
+<ul class="set mb-lg">
+  <li>
+    <div class="set__tit">登录密码</div>
+    <div class="set__summary">
+      安全性高的密码可以使帐号更安全。建议您定期更换密码，设置一个包含字母，符号或数字中至少两项且长度超过6位的密码。
+    </div>
+    <div class="set__op text-success">
+      <i nz-icon nzType="check-circle" class="pr-sm"></i>已设置
+      <nz-divider nzType="vertical"></nz-divider>
+      <a class="brand-color">修改</a>
+    </div>
+  </li>
+  <li>
+    <div class="set__tit">手机绑定</div>
+    <div class="set__summary">
+      您已绑定了手机<span class="text-green">15900000000</span> [您的手机号可以直接用于登录、找回密码等]
+    </div>
+    <div class="set__op text-success">
+      <i nz-icon nzType="check-circle" class="pr-sm"></i>已设置
+      <nz-divider nzType="vertical"></nz-divider>
+      <a class="brand-color">修改</a>
+    </div>
+  </li>
+  <li>
+    <div class="set__tit">密保问题</div>
+    <div class="set__summary">建议您设置三个容易记住，且最不容易被他人获取的问题及答案，更有效保障您的密码安全。</div>
+    <div class="set__op text-warning">
+      <i nz-icon nzType="exclamation-circle" class="pr-sm"></i>未设置
+      <nz-divider nzType="vertical"></nz-divider>
+      <a class="brand-color">设置</a>
+    </div>
+  </li>
+</ul>

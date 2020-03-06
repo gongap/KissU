@@ -1,0 +1,68 @@
+@import '../../../../styles/variables.less';
+
+:host {
+  display: block;
+  height: 100%;
+  padding: 16px;
+  overflow: hidden;
+  background: @brand-grey;
+
+  ::ng-deep {
+    .container {
+      height: calc(100% - 62px);
+      margin-top: 16px;
+      padding-right: 8px;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+    .card {
+      display: block;
+      margin-bottom: 16px;
+      padding: 16px;
+      background: #fff;
+      box-shadow: 0 2px 2px @brand-bg;
+      &__title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      &__time {
+        margin-top: 8px;
+        color: @grey-5;
+        font-size: 12px;
+        text-align: right;
+      }
+      &__no-data {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        background: #fff;
+      }
+    }
+    .chart {
+      &__label {
+        &-item {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+          padding: 8px;
+          border-bottom: 1px solid @grey-4;
+          transition: all 0.3s;
+          &:hover {
+            background: @blue-1;
+          }
+          &:last-child {
+            border-bottom: none;
+          }
+        }
+      }
+    }
+  }
+}

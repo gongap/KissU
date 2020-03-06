@@ -1,0 +1,48 @@
+<ng-template #editTpl>
+  <div class="d-flex align-items-center">
+    <input nz-input nzSize="small" [(ngModel)]="editI.name" name="name" />
+    <i nz-icon nzType="check-circle" (click)="save($event)" class="mx-sm"></i>
+    <i nz-icon nzType="close-circle" (click)="cancel($event)"></i>
+  </div>
+</ng-template>
+<button
+  *ngIf="list"
+  nz-button
+  nz-dropdown
+  [nzDropdownMenu]="groupMenu"
+  nzTrigger="click"
+  [nzClickHide]="false"
+  [(nzVisible)]="visible"
+>
+  <span>{{ text }}</span>
+  <i nz-icon nzType="down"></i>
+</button>
+<nz-dropdown-menu #groupMenu="nzDropdownMenu">
+  <ul nz-menu class="min-width-sm">
+    <li
+      *ngFor="let i of list; let idx = index"
+      nz-menu-item
+      [ngClass]="{ 'bg-grey-lighter': i.selected }"
+      (click)="choose(i)"
+    >
+      <div *ngIf="i.action !== 'edit'" class="d-flex align-items-center justify-content-between">
+        <span class="flex-1 text-truncate">{{ i.name }}({{ i.count }})</span>
+        <ng-container *ngIf="i.id > 0">
+          <i nz-icon nzType="edit" (click)="edit(i, idx, $event)"></i>
+          <i nz-icon nzType="delete" (click)="remove(i, idx, $event)" class="ml-sm"></i>
+        </ng-container>
+      </div>
+      <ng-container *ngIf="i.action === 'edit'">
+        <ng-template [ngTemplateOutlet]="editTpl"></ng-template>
+      </ng-container>
+    </li>
+    <li nz-menu-item class="border-top-1">
+      <div *ngIf="!isAdd" (click)="add($event)" class="text-center">
+        <i nz-icon nzType="plus-circle"></i>
+      </div>
+      <ng-container *ngIf="isAdd">
+        <ng-template [ngTemplateOutlet]="editTpl"></ng-template>
+      </ng-container>
+    </li>
+  </ul>
+</nz-dropdown-menu>

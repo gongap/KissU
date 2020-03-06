@@ -1,7 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { DA_SERVICE_TOKEN, ITokenService } from '@delon/auth';
 import { SettingsService } from '@delon/theme';
-import { Session } from "@util";
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
@@ -18,8 +17,7 @@ export class UserService {
   }
 
   get isLogin() {
-    //return !!this.item.token;
-    return this.session.isAuthenticated;
+    return !!this.item.token;
   }
 
   get name() {
@@ -34,5 +32,5 @@ export class UserService {
     return this.settingsSrv.user.avatar;
   }
 
-  constructor(@Inject(DA_SERVICE_TOKEN) private tokenSrv: ITokenService, private session: Session, private settingsSrv: SettingsService) {}
+  constructor(@Inject(DA_SERVICE_TOKEN) private tokenSrv: ITokenService, private settingsSrv: SettingsService) {}
 }

@@ -1,0 +1,13 @@
+<page-bar [subTitle]="subTitTpl">
+  <ng-template #subTitTpl>
+    {{ domain }}
+  </ng-template>
+</page-bar>
+<div *ngIf="loading" class="brand-page-loading">
+  <nz-spin nzSpinning></nz-spin>
+</div>
+<div *ngIf="!loading" class="pt-lg mt-lg text-center brand-color">
+  <i nz-icon nzType="info-circle"></i>
+  <span class="px-sm">您还未购买此服务</span>
+  <button nz-button nzType="primary">升级VIP DNS</button>
+</div>

@@ -1,0 +1,23 @@
+<nz-spin [nzSpinning]="loading">
+  <div class="card__title">GPU实时使用率</div>
+  <g2-custom class="mt-sm" (render)="render($event)"></g2-custom>
+  <table class="stat">
+    <tr>
+      <th></th>
+      <th class="stat__head">最小值</th>
+      <th class="stat__head">最大值</th>
+      <th class="stat__head">平均值</th>
+      <th class="stat__head">当前值</th>
+    </tr>
+    <tr *ngFor="let i of stat">
+      <td class="stat__name">
+        <span class="stat__color" [ngStyle]="{ background: i.color }"></span>
+        {{ i.text }}
+      </td>
+      <td class="stat__value">{{ i.min }} MBps</td>
+      <td class="stat__value">{{ i.max }} MBps</td>
+      <td class="stat__value">{{ i.avg }} MBps</td>
+      <td class="stat__value">{{ i.current }} MBps</td>
+    </tr>
+  </table>
+</nz-spin>

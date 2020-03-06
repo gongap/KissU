@@ -1,0 +1,74 @@
+<ng-template #chatFirstTpl>
+  <div class="chat__message-msg width-100">
+    <div class="mb-sm">Hi，上午好，很高兴跟你做朋友，以后请多多指教！</div>
+    <div class="mb-sm">猜您想问的问题是：</div>
+    <a class="d-block mb-sm brand-color">为什么我的网站无法运行？</a>
+    <a class="d-block mb-sm brand-color">如何选择我的女朋友？</a>
+    <a class="d-block mb-sm brand-color">如何认证女朋友？</a>
+    <div
+      class="border-top-1 d-flex align-items-center justify-content-between pt-sm"
+      style="border-top-style: dashed !important"
+    >
+      <span>智能诊断 - <span class="text-grey">分析您的女朋友是否存在风险</span></span>
+      <button nz-button nzType="primary">前往诊断</button>
+    </div>
+  </div>
+</ng-template>
+<page-single wide="false" [title]="ptTitleTpl" [subTitle]="ptSubTitleTpl" [extra]="ptExtraTpl">
+  <ng-template #ptTitleTpl>
+    <h1 class="mb0 mr-md text-white text-lg">智能顾问</h1>
+  </ng-template>
+  <ng-template #ptSubTitleTpl>
+    <span class="text-grey">智能诊断，多端触达，即时应答的云产品顾问</span>
+  </ng-template>
+  <ng-template #ptExtraTpl>
+    <span class="text-grey">售前电话：</span>
+    <span class="brand-color">xxxxx转1</span>
+  </ng-template>
+  <div class="body">
+    <div class="chat">
+      <div class="chat-wrap">
+        <div class="chat-messages" scrollbar #messageScrollbar="scrollbarComp">
+          <div class="chat__message chat__message-left">
+            <div class="chat__message-avatar">
+              <img class="chat__user-avatar" src="./assets/logo-color.svg" />
+            </div>
+            <ng-template [ngTemplateOutlet]="chatFirstTpl"></ng-template>
+          </div>
+          <div *ngFor="let m of messages" class="chat__message chat__message-{{ m.dir }}">
+            <ng-container [ngSwitch]="m.type">
+              <div *ngSwitchCase="'only-text'" class="chat__message-text" [innerHTML]="m.msg"></div>
+              <ng-container *ngSwitchDefault>
+                <div class="chat__message-avatar">
+                  <img *ngIf="m.dir === 'left'" class="chat__user-avatar" src="./assets/logo-color.svg" />
+                  <nz-avatar *ngIf="m.dir !== 'left'" nzText="我"></nz-avatar>
+                </div>
+                <div class="chat__message-msg">
+                  <div class="chat__message-msg--text" *ngIf="m.type === 'text'" [innerHTML]="m.msg"></div>
+                  <div class="chat__message-msg--image" *ngIf="m.type === 'image'">
+                    <img height="40" src="{{ m.msg }}" />
+                  </div>
+                </div>
+              </ng-container>
+            </ng-container>
+          </div>
+        </div>
+        <div class="chat-hots">
+          热门问题：
+          <a class="chat-hots__item" *ngFor="let i of hots">{{ i }}</a>
+        </div>
+        <div class="chat-ask">
+          <textarea
+            nz-input
+            class="scrollbar chat-ask__ipt"
+            placeholder="Type your message..."
+            [(ngModel)]="text"
+            (keydown.enter)="enterSend($event)"
+          ></textarea>
+          <button class="chat-ask__btn" (click)="send()" nz-button nzType="primary" nzSize="large">发送</button>
+        </div>
+      </div>
+    </div>
+    <smart-tools></smart-tools>
+  </div>
+</page-single>

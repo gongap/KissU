@@ -5,10 +5,10 @@
   ],
   "rulesDirectory": [
     "codelyzer",
-    "ng-alain-codelyzer"
+    "ng-alain-codelyzer",
+    "node_modules/ng-alain-codelyzer"
   ],
   "rules": {
-    // Angular parts
     "array-type": false,
     "arrow-parens": false,
     "deprecation": {
@@ -18,16 +18,10 @@
     "contextual-lifecycle": true,
     "directive-class-suffix": true,
     "directive-selector": [
-      true,
-      "attribute",
-      ["app", "passport", "exception", "layout", "header"],
-      "camelCase"
+      false
     ],
     "component-selector": [
-      true,
-      "element",
-      ["app", "passport", "exception", "layout", "header"],
-      "kebab-case"
+      false
     ],
     "import-blacklist": [
       true,
@@ -82,7 +76,7 @@
     ],
     "trailing-comma": false,
     "no-conflicting-lifecycle": true,
-    "no-host-metadata-property": true,
+    "no-host-metadata-property": false,
     "no-input-rename": true,
     "no-inputs-metadata-property": true,
     "no-output-native": true,
@@ -93,7 +87,6 @@
     "template-no-negated-async": true,
     "use-lifecycle-interface": true,
     "use-pipe-transform-interface": true,
-    // Custom parts
     "no-submodule-imports": false,
     "no-implicit-dependencies": false,
     "curly": false,
@@ -101,11 +94,34 @@
     "no-this-assignment": false,
     "ban-types": [
       true,
-      ["Object", "Use {} instead."],
-      ["String", "Use string instead."],
-      ["Number", "Use number instead."],
-      ["Boolean", "Use boolean instead."],
-      ["Function", "Use specific callable interface instead."]
+      [
+        "Object",
+        "Use {} instead."
+      ],
+      [
+        "String",
+        "Use string instead."
+      ],
+      [
+        "Number",
+        "Use number instead."
+      ],
+      [
+        "Boolean",
+        "Use boolean instead."
+      ],
+      [
+        "Function",
+        "Use specific callable interface instead."
+      ]
+    ],
+    "use-path-mapping": [
+      true,
+      [
+        "@core/*",
+        "@shared/*",
+        "@brand/*"
+      ]
     ]
   }
 }

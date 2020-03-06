@@ -1,0 +1,84 @@
+<ng-template #menuTreeTpl let-ls let-level="level">
+  <li
+    *ngFor="let i of ls"
+    class="help-menu__item help-menu__item-level{{ level }}"
+    [ngClass]="{ 'help-menu__line': i.line, 'help-menu__item-expand': i.expand, 'help-menu__item-active': i.active }"
+  >
+    <a *ngIf="i.children && i.children.length > 0" (click)="i.expand = !i.expand">
+      <i class="help-menu__item-icon" nz-icon [nzType]="i.expand ? 'caret-down' : 'caret-right'"></i>
+      <span class="help-menu__item-text">{{ i.title }}</span>
+    </a>
+    <a [link-to]="i" *ngIf="!i.children || i.children.length === 0">
+      <span class="help-menu__item-text">{{ i.title }}</span>
+    </a>
+    <ul *ngIf="i.children && i.children.length > 0">
+      <ng-container
+        *ngTemplateOutlet="menuTreeTpl; context: { $implicit: i.children, level: level + 1 }"
+      ></ng-container>
+    </ul>
+  </li>
+</ng-template>
+<ng-template #menuTpl>
+  <ul *ngIf="menus" class="help-menu__list help-menu__line" [ngClass]="{ scrollbar: !isMobile }">
+    <ng-container *ngTemplateOutlet="menuTreeTpl; context: { $implicit: menus, level: 1 }"></ng-container>
+  </ul>
+</ng-template>
+<div class="help-menu__box" *ngIf="!isMobile">
+  <a class="help-menu__back" routerLink="/help">&lt; 文档首页</a>
+  <div class="help-menu__title">
+    <span class="help-menu__title-text">{{ cate.title }}</span>
+    <div class="help-menu__trigger">
+      <i class="help-menu__trigger-icon"></i>
+      <div class="help-menu__products scrollbar">
+        <div class="help-menu__products-hd">
+          <h3>全部产品</h3>
+          <nz-input-group [nzSuffix]="productSearchIcon" nzSize="large">
+            <input type="text" nz-input placeholder="请输入产品名称" />
+          </nz-input-group>
+          <ng-template #productSearchIcon>
+            <i nz-icon nzType="search"></i>
+          </ng-template>
+        </div>
+        <div *ngIf="categories" class="help-menu__products-bd">
+          <div *ngFor="let p of categories" class="help-menu__cate">
+            <h2 class="help-menu__cate-title">{{ p.title }}</h2>
+            <ul class="help-menu__cate-list">
+              <li *ngFor="let i of p.list">
+                <a [link-to]="i">{{ i.title }}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template [ngTemplateOutlet]="menuTpl"></ng-template>
+</div>
+<div class="help-menu__tools-wrap" *ngIf="isMobile">
+  <div class="help-menu__tools">
+    <div class="help-menu__trigger" (click)="visible = true">
+      <i class="help-menu__trigger-icon"></i>
+    </div>
+    <div class="help-menu__tools-search">
+      <nz-input-group nzSearch [nzSuffix]="searchBtn">
+        <input type="text" nz-input placeholder="input search text" />
+      </nz-input-group>
+      <ng-template #searchBtn>
+        <button nz-button nzType="primary" nzSearch>Search</button>
+      </ng-template>
+    </div>
+  </div>
+  <nz-drawer
+    nzWrapClassName="help-menu__drawer"
+    [(nzVisible)]="visible"
+    [nzClosable]="false"
+    [nzMaskClosable]="true"
+    nzPlacement="left"
+    [nzBodyStyle]="{ padding: '0' }"
+    (nzOnClose)="visible = false"
+  >
+    <div class="help-menu-box">
+      <ng-template [ngTemplateOutlet]="menuTpl"></ng-template>
+    </div>
+  </nz-drawer>
+</div>

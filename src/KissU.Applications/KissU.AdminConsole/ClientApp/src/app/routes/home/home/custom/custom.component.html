@@ -1,0 +1,22 @@
+<div class="modal-header">
+  <div class="modal-title">定制资讯</div>
+</div>
+<div nz-row nzGutter="12">
+  <div *ngFor="let p of panels" nz-col nzSpan="12">
+    <nz-card [nzTitle]="p.name" [nzExtra]="doTpl">
+      <ng-template #doTpl>
+        <label nz-checkbox [(ngModel)]="p.selected"></label>
+      </ng-template>
+      <ul class="list-unstyled">
+        <li *ngFor="let i of p.list" class="text-truncate">
+          <strong>{{ i.tip }}</strong>
+          {{ i.text }}
+        </li>
+      </ul>
+    </nz-card>
+  </div>
+</div>
+<div class="modal-footer">
+  <button (click)="cancel()" nz-button>{{ 'home.common.cancel' | i18n }}</button>
+  <button (click)="save()" nz-button nzType="primary">{{ 'home.common.confirm' | i18n }}</button>
+</div>

@@ -1,0 +1,39 @@
+@import '../../../../../styles/variables.less';
+
+:host {
+  ::ng-deep {
+    .avatar {
+      width: 100px;
+    }
+    .default {
+      display: flex;
+      justify-content: space-between;
+      img {
+        max-width: 100%;
+      }
+      &__list {
+        flex: 1;
+        height: 150px;
+        padding: 24px 24px 0;
+        overflow-y: auto;
+        background: @grey-4;
+        border: 1px solid @grey-5;
+        img {
+          display: block;
+          margin-bottom: 24px;
+          border: 2px solid @grey-4;
+          border-radius: 2px;
+          cursor: pointer;
+          &.active {
+            border-color: @brand-color;
+          }
+        }
+      }
+      &__preview {
+        width: 100px;
+        margin-left: 16px;
+        text-align: center;
+      }
+    }
+  }
+}

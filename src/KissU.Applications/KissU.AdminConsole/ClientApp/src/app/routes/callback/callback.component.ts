@@ -1,27 +1,39 @@
-import { Component, Injector, OnInit } from "@angular/core";
-import { OidcAuthorizeService, ComponentBase } from "@util";
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { SocialService } from '@delon/auth';
+import { SettingsService } from '@delon/theme';
 
-/**
- * 登录回调处理
- */
 @Component({
-    template: ``
+  selector: 'app-callback',
+  template: ``,
+  providers: [SocialService],
 })
-export class CallbackComponent extends ComponentBase implements OnInit {
-    /**
-     * 初始化
-     * @param injector 注入器
-     * @param authService 授权服务
-     * @param startupService 启动服务
-     */
-    constructor(injector: Injector, private authService: OidcAuthorizeService) {
-        super(injector);
-    }
+export class CallbackComponent implements OnInit {
+  type: string;
 
-    /**
-     * 初始化
-     */
-    async ngOnInit() {
-        await this.authService.loginCallback();
-    }
+  constructor(
+    private socialService: SocialService,
+    private settingsSrv: SettingsService,
+    private route: ActivatedRoute,
+  ) {}
+
+  ngOnInit(): void {
+    this.type = this.route.snapshot.params.type;
+    this.mockModel();
+  }
+
+  private mockModel() {
+    const info = {
+      token: '123456789',
+      name: 'cipchk',
+      email: `${this.type}@${this.type}.com`,
+      id: 10000,
+      time: +new Date(),
+    };
+    this.settingsSrv.setUser({
+      ...this.settingsSrv.user,
+      ...info,
+    });
+    this.socialService.callback(info);
+  }
 }

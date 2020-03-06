@@ -1,0 +1,37 @@
+<page-bar [subTitle]="subTitTpl">
+  <ng-template #subTitTpl>
+    {{ domain }}
+  </ng-template>
+</page-bar>
+<nz-alert nzType="success" nzShowIcon [nzMessage]="infoTpl">
+  <ng-template #infoTpl>
+    <div class="text-xs">
+      当前分配的DNS服务器是：dns15.xxxxx.com, dns16.xxxxx.com
+    </div>
+  </ng-template>
+</nz-alert>
+<div class="d-flex align-items-center justify-content-between mt-md">
+  <div class="d-flex">
+    <input nz-input [(ngModel)]="i.q" id="i.q" name="i.q" placeholder="模糊搜索请用 关键字? ，如：w?" class="mr-sm" />
+    <button (click)="st.reload(i)" nz-button nzType="primary">搜索</button>
+    <button (click)="t()" nz-button>新手引导</button>
+  </div>
+  <div>
+    <button (click)="add()" nz-button nzType="primary">添加记录</button>
+    <button (click)="t()" nz-button>导入/导出</button>
+  </div>
+</div>
+<div class="mt-md">
+  <button (click)="t()" nz-button [disabled]="checkList.length === 0">暂停</button>
+  <button (click)="t()" nz-button [disabled]="checkList.length === 0">启用</button>
+  <button
+    nz-popconfirm
+    nzPopconfirmTitle="确定吗？"
+    (nzOnConfirm)="remove(ids)"
+    nz-button
+    [disabled]="checkList.length === 0"
+  >
+    删除
+  </button>
+</div>
+<st #st [data]="url" [columns]="columns" [req]="{ params: i }" (change)="change($event)" class="my-md"></st>

@@ -1,0 +1,26 @@
+<div *ngIf="!chartCog.show" class="mb-md text-right">
+  <a (click)="chartCog.show = true" class="brand-color">展开图表展示</a>
+</div>
+<div class="chart" [ngClass]="{ 'd-none': !chartCog.show }">
+  <div class="chart__op">
+    <nz-radio-group [(ngModel)]="chartCog.type" (ngModelChange)="typeChange()" nzButtonStyle="solid">
+      <label nz-radio-button [nzValue]="1">按类型</label>
+      <label nz-radio-button [nzValue]="2">按产品</label>
+    </nz-radio-group>
+    <a (click)="chartCog.show = false" class="brand-color">收起图表展示</a>
+  </div>
+  <g2-custom (render)="render($event)"></g2-custom>
+</div>
+<div class="d-flex justify-content-between align-items-center mb-md">
+  <nz-month-picker
+    [(ngModel)]="month"
+    (ngModelChange)="st.reset()"
+    nzAllowClear="false"
+    [nzDisabledDate]="disabledDate"
+  ></nz-month-picker>
+  <div>
+    <custom-column [st]="st" (ok)="st.resetColumns()"></custom-column>
+    <a class="ml-md brand-color" (click)="st.export()"><i nz-icon nzType="setting" class="pr-xs"></i>导出</a>
+  </div>
+</div>
+<st #st data="/finance" ps="6" [req]="{ params: { month: month } }" [columns]="columns" [scroll]="{ x: '1600px' }"></st>

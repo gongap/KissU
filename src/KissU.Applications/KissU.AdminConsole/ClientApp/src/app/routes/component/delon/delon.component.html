@@ -1,0 +1,45 @@
+<page-bar [subTitle]="subTitleTpl">
+  <ng-template #subTitleTpl>
+    <div class="text-orange">
+      以下只展示部分组件，更多组件<a href="https://ng-alain.com/" target="_blank">ng-alain.com</a>
+    </div>
+  </ng-template>
+</page-bar>
+<div nz-row nzGutter="32">
+  <div nz-col nzMd="24" nzXl="12">
+    <nz-card nzTitle="sv">
+      <sv-container labelWidth="100" col="2">
+        <sv label="ID">1</sv>
+        <sv label="Name">asdf</sv>
+        <sv label="Reject" type="danger" col="1"> OMG <a class="ml-sm" (click)="msg.success('to')">Fixed</a> </sv>
+        <sv label="Default"></sv>
+        <sv [label]="label">
+          <ng-template #label> tip<i nz-icon nzType="question" nz-tooltip="test" class="ml-xs"></i> </ng-template>
+          Custom label
+        </sv>
+      </sv-container>
+    </nz-card>
+    <nz-card nzTitle="st">
+      <button nz-button (click)="reload()">Reload</button>
+      <st #st [data]="users" ps="3" [columns]="columns"></st>
+    </nz-card>
+  </div>
+  <div nz-col nzMd="24" nzXl="12">
+    <nz-card nzTitle="se">
+      <form nz-form #f="ngForm" se-container gutter="32">
+        <se label="App Key" error="请填写">
+          <input type="text" nz-input [(ngModel)]="i.ak" name="ak" required />
+        </se>
+        <se label="App Secret" error="请填写，最多32位">
+          <input type="text" nz-input [(ngModel)]="i.sk" name="sk" required maxlength="32" />
+        </se>
+        <se>
+          <button nz-button nzType="primary" [disabled]="f.invalid">Save</button>
+        </se>
+      </form>
+    </nz-card>
+    <nz-card nzTitle="sf">
+      <sf [schema]="schema" (formSubmit)="sfSubmit($event)"></sf>
+    </nz-card>
+  </div>
+</div>

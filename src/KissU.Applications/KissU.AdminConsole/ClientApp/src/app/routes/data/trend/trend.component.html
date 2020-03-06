@@ -1,0 +1,59 @@
+<page-bar [subTitle]="subTitleTpl">
+  <ng-template #subTitleTpl>
+    <a href="https://scttcper.github.io/ngx-trend/" target="_blank">ngx-trend</a>
+  </ng-template>
+</page-bar>
+<div nz-row nzGutter="32">
+  <div nz-col nzMd="24" nzXl="12">
+    <nz-card>
+      <ngx-trend
+        smooth="true"
+        [data]="[0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0]"
+        [gradient]="['red', 'orange', 'yellow']"
+        radius="6.5"
+        strokeWidth="0.1"
+        strokeLinecap="butt"
+      >
+      </ngx-trend>
+    </nz-card>
+  </div>
+  <div nz-col nzMd="24" nzXl="12">
+    <nz-card>
+      <ngx-trend
+        smooth="true"
+        [data]="[0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0]"
+        [gradient]="['purple', 'violet']"
+        radius="6.5"
+        strokeWidth="0.3"
+        strokeLinecap="butt"
+      >
+      </ngx-trend>
+    </nz-card>
+  </div>
+  <div nz-col nzMd="24" nzXl="12">
+    <nz-card>
+      <ngx-trend
+        smooth="true"
+        [data]="[0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0]"
+        [gradient]="['#00c6ff', '#F0F', '#FF0']"
+        radius="6.5"
+        strokeWidth="0.7"
+        strokeLinecap="butt"
+      >
+      </ngx-trend>
+    </nz-card>
+  </div>
+  <div nz-col nzMd="24" nzXl="12">
+    <nz-card>
+      <ngx-trend
+        smooth="true"
+        [data]="[0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0]"
+        [gradient]="['#f72047', '#ffd200', '#1feaea']"
+        radius="25"
+        strokeWidth="3"
+        strokeLinecap="butt"
+      >
+      </ngx-trend>
+    </nz-card>
+  </div>
+</div>

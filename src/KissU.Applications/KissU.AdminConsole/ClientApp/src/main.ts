@@ -4,9 +4,6 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
-import { preloaderFinished } from '@delon/theme';
-preloaderFinished();
-
 import { hmrBootstrap } from './hmr';
 
 if (environment.production) {
@@ -17,6 +14,7 @@ const bootstrap = () => {
   return platformBrowserDynamic()
     .bootstrapModule(AppModule, {
       defaultEncapsulation: ViewEncapsulation.Emulated,
+      preserveWhitespaces: false,
     })
     .then(res => {
       if ((window as any).appBootstrap) {

@@ -11,16 +11,7 @@
   "rules": {
     "no-descending-specificity": null,
     "plugin/declaration-block-no-ignored-properties": true,
-    "selector-type-no-unknown": [
-      true,
-      {
-        "ignoreTypes": [
-          "/^g2-/",
-          "/^nz-/",
-          "/^app-/"
-        ]
-      }
-    ],
+    "selector-type-no-unknown": null,
     "selector-pseudo-element-no-unknown": [
       true,
       {
@@ -28,7 +19,9 @@
           "ng-deep"
         ]
       }
-    ]
+    ],
+    "no-duplicate-selectors": null,
+    "at-rule-no-unknown": null
   },
   "ignoreFiles": [
     "src/assets/**/*"

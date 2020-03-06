@@ -1,0 +1,10 @@
+<a class="help-share__item" nz-tooltip="分享"><i nz-icon nzType="github"></i></a>
+<a class="help-share__item" nz-tooltip="分享"><i nz-icon nzType="facebook"></i></a>
+<a class="help-share__item" nz-tooltip="分享"><i nz-icon nzType="zhihu"></i></a>
+<a class="help-share__item" nz-tooltip="分享"><i nz-icon nzType="weibo"></i></a>
+<a class="help-share__item" nz-tooltip [nzTitle]="wechatTpl">
+  <i nz-icon nzType="wechat"></i>
+  <ng-template #wechatTpl>
+    <img src="//qr.liantu.com/api.php?text=https://e.ng-alain.com/" height="100" />
+  </ng-template>
+</a>

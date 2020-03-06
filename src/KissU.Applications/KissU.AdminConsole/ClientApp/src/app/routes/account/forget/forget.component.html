@@ -1,0 +1,55 @@
+<account-topbar></account-topbar>
+<div class="account-box">
+  <div style="width: 640px; margin: 0 auto;">
+    <div class="d-flex align-items-center mb-lg">
+      <h1 class="pl-sm mb0 brand-color border-primary h3" style="border-width: 2px; border-left: solid;">
+        手机找回
+      </h1>
+      <span class="pl-md text-grey text-xs">我们不会向第三方泄露您的信息</span>
+    </div>
+    <nz-tabset [(nzSelectedIndex)]="type" [nzType]="'card'">
+      <nz-tab nzTitle="手机找回">
+        <form nz-form [formGroup]="findMobile" (ngSubmit)="submit()" se-container="1" class="mt-lg pt-lg">
+          <se label="手机号码" extra="用户名将发送到与XXX帐号绑定的手机号，请输入该手机号码">
+            <nz-input-group nzSize="large" [nzAddOnBefore]="addOnBeforeTemplate">
+              <ng-template #addOnBeforeTemplate>
+                <nz-select formControlName="mobilePrefix" style="width: 100px;">
+                  <nz-option [nzLabel]="'+86'" [nzValue]="'+86'"></nz-option>
+                  <nz-option [nzLabel]="'+87'" [nzValue]="'+87'"></nz-option>
+                </nz-select>
+              </ng-template>
+              <input formControlName="mobile" nz-input placeholder="Phone number" />
+            </nz-input-group>
+          </se>
+          <se label="验证码">
+            <nz-row [nzGutter]="8">
+              <nz-col [nzSpan]="16">
+                <input nz-input formControlName="captcha" nzSize="large" placeholder="Captcha" />
+              </nz-col>
+              <nz-col [nzSpan]="8">
+                <captcha-btn
+                  [disabled]="findMobile.controls.mobile.invalid"
+                  size="large"
+                  (send)="sendCaptcha()"
+                ></captcha-btn>
+              </nz-col>
+            </nz-row>
+          </se>
+          <se>
+            <button nz-button nzType="primary" [disabled]="findMobile.invalid">立即找回</button>
+          </se>
+        </form>
+      </nz-tab>
+      <nz-tab nzTitle="域名找回">
+        <form nz-form [formGroup]="findDomain" se-container="1" class="mt-lg pt-lg">
+          <se label="手机号码" extra="请输入您在XX购买过的域名">
+            <input nz-input formControlName="domain" placeholder="如：ng-alain.com" />
+          </se>
+          <se>
+            <button nz-button nzType="primary" [disabled]="findDomain.invalid">立即找回</button>
+          </se>
+        </form>
+      </nz-tab>
+    </nz-tabset>
+  </div>
+</div>

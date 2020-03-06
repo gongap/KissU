@@ -1,0 +1,21 @@
+<div class="nav">
+  <div class="nav-wrap">
+    <div class="nav-user">
+      <div class="nav-user__title">
+        <span>{{ navConfig.titleI18n | i18n }}</span>
+      </div>
+      <img src="{{ user.avatar }}" class="nav-user__avatar" />
+      {{ user.email }}
+    </div>
+    <div class="nav-list">
+      <a *ngFor="let i of menus" routerLink="{{ i.link }}" routerLinkActive="nav-item__active" class="nav-item">{{
+        i.i18n | i18n
+      }}</a>
+    </div>
+  </div>
+</div>
+<div class="alain-ms__product-body scrollbar">
+  <div class="alain-ms__console">
+    <router-outlet></router-outlet>
+  </div>
+</div>

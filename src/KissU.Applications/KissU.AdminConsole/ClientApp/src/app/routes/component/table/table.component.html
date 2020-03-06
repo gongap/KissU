@@ -1,0 +1,110 @@
+<page-bar [subTitle]="subTitleTpl">
+  <ng-template #subTitleTpl>
+    <button (click)="msg.success('clean')" nz-button nzSize="small">进入域名解析列表 >></button>
+  </ng-template>
+</page-bar>
+<div nz-row nzGutter="8">
+  <div nz-col nzMd="24" nzLg="12" class="mb-md">
+    <div class="bg-grey-2 p-md text-xs">
+      <div class="pb-sm d-flex align-items-center justify-content-between">
+        <div><i nz-icon nzType="search" class="pr-xs"></i>推荐可注册的域名</div>
+        <a>查看更多</a>
+      </div>
+      <div>
+        <a class="text-primary">ng-alain.cn</a>、<a class="text-grey-dark text-hover">ng-alain.网址</a>、<a
+          class="text-grey-dark text-hover"
+          >ng-alain.网址</a
+        >、<a class="text-grey-dark text-hover">ng-alain.网址</a>、<a class="text-grey-dark text-hover">ng-alain.网址</a
+        >、<a class="text-grey-dark text-hover">ng-alain.网址</a>、<a class="text-grey-dark text-hover">ng-alain.网址</a
+        >、<a class="text-grey-dark text-hover">ng-alain.网址</a>、<a class="text-grey-dark text-hover"
+          >ng-alain.网址</a
+        >
+      </div>
+    </div>
+  </div>
+  <div nz-col nzMd="24" nzLg="12" class="mb-md">
+    <div class="bg-grey-2 p-md text-xs">
+      <div class="pb-sm"><i nz-icon nzType="gift" class="pr-xs"></i>域名资讯</div>
+      <div><a class="text-grey">【域名双11】11月19-11月30，活动新购满额返券已开启领取！</a></div>
+      <div><a class="text-grey">【域名双11】11月19-11月30，活动新购满额返券已开启领取！</a></div>
+    </div>
+  </div>
+</div>
+<nz-tabset [nzTabBarExtraContent]="extraTemplate" nzType="card" (nzSelectedIndexChange)="changeType($event)">
+  <nz-tab *ngFor="let tab of tabs" [nzTitle]="tab"></nz-tab>
+  <ng-template #extraTemplate>
+    <button (click)="msg.info('Export')" nz-button nzType="default">导出列表</button>
+    <button (click)="msg.info('View Export')" nz-button class="btn-link">查看导出结果</button>
+    <button (click)="msg.info('Group')" nz-button nzType="primary">域名分组管理</button>
+  </ng-template>
+</nz-tabset>
+<sf
+  #sf
+  mode="search"
+  [schema]="searchSchema"
+  [formData]="params"
+  (formSubmit)="st.reset($event)"
+  (formReset)="st.reset(params)"
+  class="mb-md"
+></sf>
+<div *ngIf="checkList.length > 0" class="mb-md">
+  <button (click)="msg.info('doing')" nz-button>域名续费</button>
+  <button (click)="msg.info('doing')" nz-button>转至其他账号</button>
+  <button nz-button nzType="default" nz-dropdown [nzDropdownMenu]="moreBatchMenu">
+    更多批量操作<i nz-icon nzType="down"></i>
+  </button>
+  <nz-dropdown-menu #moreBatchMenu="nzDropdownMenu">
+    <ul nz-menu>
+      <li nz-menu-item>域名分组管理</li>
+      <li nz-menu-item>添加备注</li>
+      <li nz-menu-divider></li>
+      <li nz-menu-item>一口价域名发布</li>
+      <li nz-menu-item>域名带价PUSH</li>
+      <li nz-menu-item>议价域名发布</li>
+    </ul>
+  </nz-dropdown-menu>
+</div>
+<st #st [data]="url" [columns]="columns" [req]="{ params: params }" (change)="change($event)"></st>
+<div nz-row nzGutter="0" class="mt-md brand-bordered">
+  <div nz-col nzSpan="8" class="p-lg text-center">
+    <a (click)="msg.info('to')"> <i nz-icon nzType="file-search" class="pr-sm"></i>域名注册 </a>
+  </div>
+  <div nz-col nzSpan="8" class="p-lg text-center">
+    <a (click)="msg.info('to')"> <i nz-icon nzType="edit" class="pr-sm"></i>域名转入 </a>
+  </div>
+  <div nz-col nzSpan="8" class="p-lg text-center">
+    <a (click)="msg.info('to')"> <i nz-icon nzType="shopping-cart" class="pr-sm"></i>购买二手域名 </a>
+  </div>
+</div>
+<nz-alert nzType="warning" [nzMessage]="warningTpl" class="mt-md">
+  <ng-template #warningTpl>
+    <strong>温馨提示：</strong>
+    <ul class="mb0 py-xs">
+      <li>如果在此账号下没有找到您的域名信息，您可以尝试<a>通过域名查询登录帐号</a></li>
+      <li>域名解析生效问题，您可以通过域名访问检测工具<a>来进行自助排查与解决</a></li>
+      <li>如何从域名到建站？您可以<a>点此查看</a></li>
+    </ul>
+  </ng-template>
+</nz-alert>
+<div class="my-lg p-lg border-1">
+  <p>新手必读：域名使用指南</p>
+  <nz-steps [nzCurrent]="-1" nzSize="small">
+    <nz-step nzTitle="域名持有者实名认证" [nzDescription]="step1Tpl">
+      <ng-template #step1Tpl>
+        <div class="mt-md width-md"><a>.cn等国内域名怎样进行实名认证？</a></div>
+        <div class="mt-md width-md"><a>.com等国际域名是否必须实名认证？</a></div>
+      </ng-template>
+    </nz-step>
+    <nz-step nzTitle="实名认证成功" [nzDescription]="step2Tpl">
+      <ng-template #step2Tpl>
+        <div class="mt-md width-md">3-5个工作日内审核完成</div>
+      </ng-template>
+    </nz-step>
+    <nz-step nzTitle="域名解析" [nzDescription]="step3Tpl">
+      <ng-template #step3Tpl>
+        <div class="mt-md width-md"><a>如何设置网站解析？</a></div>
+        <div class="mt-md width-md"><a>如何设置邮箱解析？</a></div>
+      </ng-template>
+    </nz-step>
+  </nz-steps>
+</div>

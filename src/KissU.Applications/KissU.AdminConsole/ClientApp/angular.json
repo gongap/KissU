@@ -3,16 +3,16 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "admin-console": {
+    "ng-alain": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "less"
-        }
-      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "less"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -20,21 +20,26 @@
             "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": false,
+            "polyfills": "src/polyfills.ts",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/favicon.ico"
             ],
             "styles": [
+              "node_modules/perfect-scrollbar/css/perfect-scrollbar.css",
+              "node_modules/quill/dist/quill.snow.css",
               "src/styles.less"
             ],
             "scripts": [
-              "node_modules/ajv/dist/ajv.bundle.js",
-              "node_modules/@antv/g2/dist/g2.min.js",
+              "node_modules/@antv/g2/build/g2.js",
               "node_modules/@antv/data-set/dist/data-set.min.js",
-              "node_modules/@antv/g2-plugin-slider/dist/g2-plugin-slider.min.js"
+              "node_modules/@antv/g2-plugin-slider/dist/g2-plugin-slider.min.js",
+              "node_modules/ajv/dist/ajv.bundle.js",
+              "node_modules/qrious/dist/qrious.min.js",
+              "node_modules/masonry-layout/dist/masonry.pkgd.js",
+              "node_modules/quill/dist/quill.min.js",
+              "node_modules/perfect-scrollbar/dist/perfect-scrollbar.js"
             ]
           },
           "configurations": {
@@ -58,7 +63,12 @@
                 {
                   "type": "initial",
                   "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+                  "maximumError": "6mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
                 }
               ]
             },
@@ -75,15 +85,15 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "admin-console:build",
+            "browserTarget": "ng-alain:build",
             "proxyConfig": "proxy.conf.json"
           },
           "configurations": {
             "production": {
-              "browserTarget": "admin-console:build:production"
+              "browserTarget": "ng-alain:build:production"
             },
             "hmr": {
-              "browserTarget": "admin-console:build:hmr",
+              "browserTarget": "ng-alain:build:hmr",
               "hmr": true
             }
           }
@@ -91,7 +101,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "admin-console:build"
+            "browserTarget": "ng-alain:build"
           }
         },
         "test": {
@@ -99,20 +109,21 @@
           "options": {
             "main": "src/test.ts",
             "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.less"
-            ],
+            "tsConfig": "tsconfig.spec.json",
             "scripts": [
-              "node_modules/ajv/dist/ajv.bundle.js",
               "node_modules/@antv/g2/dist/g2.min.js",
               "node_modules/@antv/data-set/dist/data-set.min.js",
-              "node_modules/@antv/g2-plugin-slider/dist/g2-plugin-slider.min.js"
+              "node_modules/@antv/g2-plugin-slider/dist/g2-plugin-slider.min.js",
+              "node_modules/ajv/dist/ajv.bundle.js",
+              "node_modules/qrious/dist/qrious.min.js",
+              "node_modules/masonry-layout/dist/masonry.pkgd.js",
+              "node_modules/quill/dist/quill.min.js",
+              "node_modules/perfect-scrollbar/dist/perfect-scrollbar.js"
+            ],
+            "styles": [],
+            "assets": [
+              "src/assets"
             ]
           }
         },
@@ -133,52 +144,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "admin-console:serve"
+            "devServerTarget": "ng-alain:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "admin-console:serve:production"
+              "devServerTarget": "ng-alain:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "admin-console",
-  "schematics": {
-    "ng-alain:module": {
-      "routing": true,
-      "spec": false
-    },
-    "ng-alain:list": {
-      "spec": false
-    },
-    "ng-alain:edit": {
-      "spec": false,
-      "modal": true
-    },
-    "ng-alain:view": {
-      "spec": false,
-      "modal": true
-    },
-    "ng-alain:curd": {
-      "spec": false
-    },
-    "@schematics/angular:module": {
-      "routing": true,
-      "spec": false
-    },
-    "@schematics/angular:component": {
-      "spec": false,
-      "flat": false,
-      "inlineStyle": true,
-      "inlineTemplate": false
-    },
-    "@schematics/angular:directive": {
-      "spec": false
-    },
-    "@schematics/angular:service": {
-      "spec": false
-    }
-  }
+  "defaultProject": "ng-alain"
 }

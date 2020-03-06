@@ -1,0 +1,38 @@
+<div class="modal-header">
+  <div class="modal-title">修改头像</div>
+</div>
+<nz-tabset nzType="card" [(nzSelectedIndex)]="type">
+  <nz-tab nzTitle="个性头像编辑">
+    <p>从个性头像库里选择一张图片作为头像</p>
+    <div *ngIf="defaultAvatar" class="default">
+      <div class="default__list scrollbar">
+        <div nz-row nzGutter="24">
+          <div *ngFor="let i of defaultAvatar" nz-col nzSpan="8" (click)="choose(i)">
+            <img src="{{ i.mp }}" [ngClass]="{ active: i.active }" />
+          </div>
+        </div>
+      </div>
+      <div class="default__preview">
+        <img src="{{ avatar }}" class="d-block mb-xs" />
+        头像预览
+      </div>
+    </div>
+  </nz-tab>
+  <nz-tab nzTitle="本地头像上传">
+    <p>从电脑里挑选一张好图作为头像吧</p>
+    <nz-upload
+      nzAction="/user/avatar"
+      nzAccept=".jpg,.png"
+      [nzShowUploadList]="false"
+      nzLimit="1"
+      (nzChange)="change($event)"
+    >
+      <button nz-button><i nz-icon nzType="upload"></i><span>Click to Upload</span></button>
+    </nz-upload>
+    <p class="mt-md">支持jpg/png格式图片，文件需小于2M</p>
+  </nz-tab>
+</nz-tabset>
+<div class="modal-footer">
+  <button nz-button nzType="primary" type="button" [disabled]="type === 1" (click)="save()">确认</button>
+  <button nz-button type="button" (click)="cancel()">取消</button>
+</div>

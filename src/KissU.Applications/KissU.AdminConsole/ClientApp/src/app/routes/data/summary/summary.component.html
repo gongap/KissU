@@ -1,0 +1,43 @@
+<div class="py-sm px-md mt0 card d-flex align-items-center justify-content-between">
+  <div>
+    资源概览
+    <nz-divider nzType="vertical" class="mx-md"></nz-divider>
+    <nz-radio-group [(ngModel)]="type" nzButtonStyle="solid">
+      <label nz-radio-button nzValue="">不分组</label>
+      <label nz-radio-button nzValue="B">按分类分组</label>
+      <label nz-radio-button nzValue="C">按标签分组</label>
+    </nz-radio-group>
+  </div>
+  <div>
+    <a (click)="$refresh.next(true)"><i nz-icon nzType="sync" class="text-lg brand-color"></i></a>
+    <nz-divider nzType="vertical"></nz-divider>
+    <a (click)="msg.info('Donwload')"><i nz-icon nzType="download" class="text-lg brand-color"></i></a>
+    <nz-divider nzType="vertical"></nz-divider>
+    <a routerLink="/">返回控制台</a>
+  </div>
+</div>
+<div class="container scrollbar">
+  <div nz-row nzGutter="16">
+    <div nz-col nzMd="24" nzLg="8">
+      <data-summary-status></data-summary-status>
+    </div>
+    <div nz-col nzMd="24" nzLg="16">
+      <data-summary-month></data-summary-month>
+    </div>
+    <div nz-col nzMd="24" nzLg="8">
+      <data-summary-pay></data-summary-pay>
+    </div>
+    <div nz-col nzMd="24" nzLg="16">
+      <data-summary-trade></data-summary-trade>
+    </div>
+    <div nz-col nzMd="24" nzLg="8">
+      <data-summary-gender></data-summary-gender>
+    </div>
+    <div nz-col nzMd="24" nzLg="8">
+      <data-summary-region></data-summary-region>
+    </div>
+    <div nz-col nzMd="24" nzLg="8">
+      <data-summary-realtime></data-summary-realtime>
+    </div>
+  </div>
+</div>

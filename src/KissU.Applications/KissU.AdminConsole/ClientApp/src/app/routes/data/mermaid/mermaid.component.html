@@ -1,0 +1,29 @@
+<page-bar [subTitle]="subTitleTpl">
+  <ng-template #subTitleTpl>
+    <a href="https://github.com/knsv/mermaid" target="_blank">mermaid</a>
+  </ng-template>
+</page-bar>
+<div nz-row nzGutter="24">
+  <div nz-col nzMd="24" nzXl="8">
+    <nz-card nzTitle="Code">
+      <strong>Quick: </strong>
+      <nz-select class="d-block mb-md" [(ngModel)]="quickCode" (ngModelChange)="quickCodeChange()">
+        <nz-option *ngFor="let i of quickCodes" [nzLabel]="i.label" [nzValue]="i.value"></nz-option>
+      </nz-select>
+      <textarea
+        nz-input
+        [nzAutosize]="{ minRows: 4, maxRows: 16 }"
+        [(ngModel)]="code"
+        (ngModelChange)="codeChang()"
+      ></textarea>
+    </nz-card>
+  </div>
+  <div nz-col nzMd="24" nzXl="16">
+    <nz-card nzTitle="Preview">
+      <div #container></div>
+    </nz-card>
+    <nz-card nzTitle="Actions">
+      <a download href="#" (click)="download($event)">Download SVG</a>
+    </nz-card>
+  </div>
+</div>

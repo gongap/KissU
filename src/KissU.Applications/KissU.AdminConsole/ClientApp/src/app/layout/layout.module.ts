@@ -4,30 +4,19 @@ import { SharedModule } from '@shared';
 
 import { ALAIN_I18N_TOKEN } from '@delon/theme';
 import { I18NService } from '@core';
-import { default as zh_CN } from './kissu/_i18n/zh-CN';
-import { default as zh_TW } from './kissu/_i18n/zh-TW';
-import { default as en_US } from './kissu/_i18n/en-US';
+import { default as zh_CN } from './ms/_i18n/zh-CN';
+import { default as zh_TW } from './ms/_i18n/zh-TW';
+import { default as en_US } from './ms/_i18n/en-US';
 
-import { MS_ENTRYCOMPONENTS, MS_COMPONENTS } from './kissu/index';
-
-import { LayoutFullScreenComponent } from './fullscreen/fullscreen.component';
-const COMPONENTS = [
-  LayoutFullScreenComponent,
-];
+import { MS_ENTRYCOMPONENTS, MS_COMPONENTS } from './ms/index';
 
 // passport
 
 @NgModule({
   imports: [SharedModule, DragDropModule],
   entryComponents: MS_ENTRYCOMPONENTS,
-  declarations: [
-    ...COMPONENTS,
-    ...MS_COMPONENTS
-  ],
-  exports: [
-    ...COMPONENTS,
-    ...MS_COMPONENTS
-  ],
+  declarations: [...MS_COMPONENTS],
+  exports: [...MS_COMPONENTS],
 })
 export class LayoutModule {
   constructor(@Inject(ALAIN_I18N_TOKEN) i18n: I18NService) {

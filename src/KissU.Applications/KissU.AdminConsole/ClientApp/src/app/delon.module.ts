@@ -1,6 +1,6 @@
 /**
  * 进一步对基础模块的导入提炼
- * 有关模块注册指导原则请参考：https://ng-alain.com/docs/module
+ * 有关模块注册指导原则请参考：https://github.com/ng-alain/ng-alain/issues/180
  */
 import { NgModule, Optional, SkipSelf, ModuleWithProviders } from '@angular/core';
 import { throwIfAlreadyLoaded } from '@core';
@@ -8,12 +8,12 @@ import { throwIfAlreadyLoaded } from '@core';
 import { AlainThemeModule } from '@delon/theme';
 import { DelonACLModule } from '@delon/acl';
 
- //#region mock
+// #region mock
 import { DelonMockModule } from '@delon/mock';
 import * as MOCKDATA from '../../_mock';
 import { environment } from '@env/environment';
-const MOCK_MODULES = true ? [DelonMockModule.forRoot({ data: MOCKDATA })] : [];
- //#endregion
+const MOCK_MODULES = !environment.production ? [DelonMockModule.forRoot({ data: MOCKDATA })] : [];
+// #endregion
 
 // #region reuse-tab
 /**
@@ -28,13 +28,13 @@ const MOCK_MODULES = true ? [DelonMockModule.forRoot({ data: MOCKDATA })] : [];
  *  ```
  */
 import { RouteReuseStrategy } from '@angular/router';
-import { ReuseTabService, ReuseTabStrategy } from '@delon/abc/reuse-tab';
+import { ReuseTabService, ReuseTabStrategy, ReuseTabMatchMode } from '@delon/abc/reuse-tab';
 const REUSETAB_PROVIDES = [
-  // {
-  //   provide: RouteReuseStrategy,
-  //   useClass: ReuseTabStrategy,
-  //   deps: [ReuseTabService],
-  // },
+  {
+    provide: RouteReuseStrategy,
+    useClass: ReuseTabStrategy,
+    deps: [ReuseTabService],
+  },
 ];
 // #endregion
 
@@ -45,6 +45,7 @@ export function fnPageHeaderConfig(): PageHeaderConfig {
   return {
     ...new PageHeaderConfig(),
     homeI18n: 'home',
+    recursiveBreadcrumb: true,
   };
 }
 
@@ -52,7 +53,7 @@ import { DelonAuthConfig } from '@delon/auth';
 export function fnDelonAuthConfig(): DelonAuthConfig {
   return {
     ...new DelonAuthConfig(),
-    login_url: '/passport/login',
+    login_url: '/account/login',
   };
 }
 
@@ -61,13 +62,22 @@ import { STConfig } from '@delon/abc';
 export function fnSTConfig(): STConfig {
   return {
     ...new STConfig(),
-    modal: { size: 'lg' },
+    modal: { paramsName: 'i', size: 'lg' },
+    page: { toTop: true, toTopOffset: 0 },
+  };
+}
+
+import { DelonFormConfig } from '@delon/form';
+export function fnDelonFormConfig(): DelonFormConfig {
+  return {
+    ...new DelonFormConfig(),
   };
 }
 
 const GLOBAL_CONFIG_PROVIDES = [
   // TIPS：@delon/abc 有大量的全局配置信息，例如设置所有 `st` 的页码默认为 `20` 行
   { provide: STConfig, useFactory: fnSTConfig },
+  { provide: DelonFormConfig, useFactory: fnDelonFormConfig },
   { provide: PageHeaderConfig, useFactory: fnPageHeaderConfig },
   { provide: DelonAuthConfig, useFactory: fnDelonAuthConfig },
 ];
@@ -75,12 +85,17 @@ const GLOBAL_CONFIG_PROVIDES = [
 // #endregion
 
 @NgModule({
-  imports: [AlainThemeModule.forRoot(), DelonACLModule.forRoot(),...MOCK_MODULES
+  imports: [
+    AlainThemeModule.forRoot(),
+    DelonACLModule.forRoot(),
+    // mock
+    ...MOCK_MODULES,
   ],
 })
 export class DelonModule {
-  constructor(@Optional() @SkipSelf() parentModule: DelonModule) {
+  constructor(@Optional() @SkipSelf() parentModule: DelonModule, reuseTabSrv: ReuseTabService) {
     throwIfAlreadyLoaded(parentModule, 'DelonModule');
+    reuseTabSrv.mode = ReuseTabMatchMode.MenuForce;
   }
 
   static forRoot(): ModuleWithProviders {
