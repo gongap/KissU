@@ -3,6 +3,9 @@
     "KissU.Services.Stage": {
       "commandName": "Project",
       "nativeDebugging": false
+    },
+    "Docker": {
+      "commandName": "Docker"
     }
   }
 }

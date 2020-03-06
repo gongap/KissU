@@ -3,6 +3,9 @@
     "KissU.Services.Host": {
       "commandName": "Project",
       "nativeDebugging": false
+    },
+    "Docker": {
+      "commandName": "Docker"
     }
   }
 }
