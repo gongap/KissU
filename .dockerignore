@@ -27,13 +27,4 @@ cli-linux
 **/wwwroot/lib/*
 global.json
 **/appsettings.localhost.json
-src/Web/WebSPA/wwwroot/
-packages/
-csproj-files/
-test-results/
-TestResults/
-src/Mobile/
-src/Web/Catalog.WebForms/
-src/Web/WebMonolithic/
-src/BuildingBlocks/CommandBus/
-src/Services/Marketing/Infrastructure/
+src/KissU.Applications/KissU.AdminConsole/ClientApp
