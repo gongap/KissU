@@ -4,7 +4,7 @@
     <Product>KissU</Product>
     <Authors>龚安平</Authors>
     <Copyright>Copyright（c）KissU. All rights reserved.</Copyright>
-    <PackageLicenseUrl>https://github.com/gongap/KissU/blob/master/LICENSE.txt</PackageLicenseUrl>
+    <PackageLicenseUrl>https://github.com/gongap/KissU/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/gongap/KissU</PackageProjectUrl>
     <RepositoryUrl>https://github.com/gongap/KissU.git</RepositoryUrl>
     <PackageIconUrl></PackageIconUrl>
