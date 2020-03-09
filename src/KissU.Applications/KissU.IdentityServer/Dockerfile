@@ -7,6 +7,7 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
+COPY "NuGet.config" "NuGet.config"
 COPY ["src/KissU.Applications/KissU.IdentityServer/KissU.IdentityServer.csproj", "src/KissU.Applications/KissU.IdentityServer/"]
 COPY ["src/KissU.BuildingBlocks/KissU.Util/KissU.Util.Logs/KissU.Util.Logs.csproj", "src/KissU.BuildingBlocks/KissU.Util/KissU.Util.Logs/"]
 COPY ["src/KissU.BuildingBlocks/KissU.Util/KissU.Util.Security/KissU.Util.Security.csproj", "src/KissU.BuildingBlocks/KissU.Util/KissU.Util.Security/"]

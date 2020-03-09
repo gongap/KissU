@@ -24,7 +24,3 @@ cli-linux
 **/obj/
 **/node_modules/
 **/bower_components/
-**/wwwroot/lib/*
-global.json
-**/appsettings.localhost.json
-src/KissU.Applications/KissU.AdminConsole/ClientApp

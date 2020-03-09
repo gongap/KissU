@@ -45,9 +45,6 @@ namespace KissU.Modules.GreatWall.Application.Implements
         /// <returns>Task&lt;List&lt;MenuResponse&gt;&gt;.</returns>
         public async Task<List<MenuResponse>> GetMenusAsync()
         {
-            var result = new List<MenuResponse>();
-            result.Add(new MenuResponse {Name = "ddd"});
-            return result;
             var userId = Session.UserId;
             if (userId.IsEmpty())
                 return new List<MenuResponse>();

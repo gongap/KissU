@@ -1,5 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="../../../../common.props" />
+   <Import Project="../../../../common.props" />
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <Description>KissU应用框架的PgSql数据访问类库。</Description>
