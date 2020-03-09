@@ -1,10 +1,11 @@
 #See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
-FROM mcr.microsoft.com/dotnet/core/runtime:3.1-buster-slim AS base
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
 WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
+COPY "NuGet.config" "NuGet.config"
 COPY ["src/KissU.Microservices/KissU.Services.Stages/KissU.Services.Stage/KissU.Services.Stage.csproj", "src/KissU.Microservices/KissU.Services.Stages/KissU.Services.Stage/"]
 COPY ["src/KissU.BuildingBlocks/KissU.Core/KissU.Core.DotNetty/KissU.Core.DotNetty.csproj", "src/KissU.BuildingBlocks/KissU.Core/KissU.Core.DotNetty/"]
 COPY ["src/KissU.BuildingBlocks/KissU.Core/KissU.Core.CPlatform/KissU.Core.CPlatform.csproj", "src/KissU.BuildingBlocks/KissU.Core/KissU.Core.CPlatform/"]
