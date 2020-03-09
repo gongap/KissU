@@ -5,6 +5,7 @@ WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
+COPY "NuGet.config" "NuGet.config"
 COPY ["src/KissU.Microservices/KissU.Services.Hosts/KissU.Services.Host/KissU.Services.Host.csproj", "src/KissU.Microservices/KissU.Services.Hosts/KissU.Services.Host/"]
 COPY ["src/KissU.BuildingBlocks/KissU.Core/KissU.Core.DotNetty/KissU.Core.DotNetty.csproj", "src/KissU.BuildingBlocks/KissU.Core/KissU.Core.DotNetty/"]
 COPY ["src/KissU.BuildingBlocks/KissU.Core/KissU.Core.CPlatform/KissU.Core.CPlatform.csproj", "src/KissU.BuildingBlocks/KissU.Core/KissU.Core.CPlatform/"]
