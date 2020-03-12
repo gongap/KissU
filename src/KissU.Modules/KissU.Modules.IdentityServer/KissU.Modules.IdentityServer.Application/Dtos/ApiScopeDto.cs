@@ -12,7 +12,6 @@ namespace KissU.Modules.IdentityServer.Application.Dtos
         /// <summary>
         /// Api资源编号
         /// </summary>
-
         [Required]
         [Display(Name = "Api资源编号")]
         public int ApiResourceId { get; set; }
@@ -20,7 +19,6 @@ namespace KissU.Modules.IdentityServer.Application.Dtos
         /// <summary>
         /// 名称
         /// </summary>
-
         [Required]
         [StringLength(200, ErrorMessage = "名称输入过长，不能超过200位")]
         [Display(Name = "名称")]
@@ -29,7 +27,6 @@ namespace KissU.Modules.IdentityServer.Application.Dtos
         /// <summary>
         /// 显示名称
         /// </summary>
-
         [Display(Name = "显示名称")]
         [StringLength(200, ErrorMessage = "显示名称输入过长，不能超过200位")]
         public string DisplayName { get; set; }
@@ -37,7 +34,6 @@ namespace KissU.Modules.IdentityServer.Application.Dtos
         /// <summary>
         /// 描述
         /// </summary>
-
         [Display(Name = "描述")]
         [StringLength(1000, ErrorMessage = "描述输入过长，不能超过1000位")]
         public string Description { get; set; }
@@ -45,7 +41,6 @@ namespace KissU.Modules.IdentityServer.Application.Dtos
         /// <summary>
         /// 指定用户是否可以在同意屏幕上取消选择范围（如果同意屏幕要实现此类功能）。默认为false。
         /// </summary>
-
         [Required]
         [Display(Name = "是否可以在同意屏幕上取消选择范围")]
         public bool Required { get; set; }
@@ -53,7 +48,6 @@ namespace KissU.Modules.IdentityServer.Application.Dtos
         /// <summary>
         /// 指定同意屏幕是否会强调此范围（如果同意屏幕要实现此类功能）。将此设置用于敏感或重要范围。默认为false。
         /// </summary>
-
         [Required]
         [Display(Name = "是否会强调此范围")]
         public bool Emphasize { get; set; }
@@ -61,7 +55,6 @@ namespace KissU.Modules.IdentityServer.Application.Dtos
         /// <summary>
         /// 指定此范围是否显示在发现文档中。默认为true。
         /// </summary>
-
         [Required]
         [Display(Name = "是否显示在发现文档中")]
         public bool ShowInDiscoveryDocument { get; set; } = true;
@@ -69,7 +62,6 @@ namespace KissU.Modules.IdentityServer.Application.Dtos
         /// <summary>
         /// 应包含在访问令牌中的关联用户声明类型列表
         /// </summary>
-
         [Display(Name = "用户声明类型列表")]
         public List<string> UserClaims { get; set; }
     }

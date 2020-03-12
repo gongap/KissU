@@ -11,7 +11,6 @@ namespace KissU.Modules.IdentityServer.Application.Dtos.Requests
         /// <summary>
         /// 应用程序
         /// </summary>
-
         [Required]
         public string ClientId { get; set; }
 

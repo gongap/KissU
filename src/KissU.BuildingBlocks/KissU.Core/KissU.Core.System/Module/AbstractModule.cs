@@ -40,7 +40,6 @@ namespace KissU.Core.System.Module
         ///     <para>创建：范亮</para>
         ///     <para>日期：2015/12/4</para>
         /// </remarks>
-
         public string ModuleName { get; set; }
 
         /// <summary>
@@ -50,7 +49,6 @@ namespace KissU.Core.System.Module
         ///     <para>创建：范亮</para>
         ///     <para>日期：2015/12/4</para>
         /// </remarks>
-
         public string TypeName { get; set; }
 
         /// <summary>
@@ -60,7 +58,6 @@ namespace KissU.Core.System.Module
         ///     <para>创建：范亮</para>
         ///     <para>日期：2015/12/4</para>
         /// </remarks>
-
         public string Title { get; set; }
 
         /// <summary>

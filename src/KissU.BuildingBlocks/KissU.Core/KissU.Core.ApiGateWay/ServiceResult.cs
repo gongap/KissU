@@ -63,7 +63,6 @@
         /// <summary>
         /// 状态值
         /// </summary>
-
         public bool IsSucceed { get; set; }
 
         /// <summary>

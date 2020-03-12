@@ -19,6 +19,7 @@ namespace KissU.Modules.GreatWall.Application.Implements
     public class MenuAppService : ServiceBase, IMenuAppService
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="MenuAppService"/> class.
         /// 初始化菜单服务
         /// </summary>
         /// <param name="roleRepository">角色仓储</param>

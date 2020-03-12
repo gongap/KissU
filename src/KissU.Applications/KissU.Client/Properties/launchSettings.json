@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "KissU.Client": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

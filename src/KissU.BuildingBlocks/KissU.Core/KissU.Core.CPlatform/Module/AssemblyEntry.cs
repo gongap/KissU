@@ -43,7 +43,6 @@ namespace KissU.Core.CPlatform.Module
         /// <summary>
         /// 获取程序集版本号。
         /// </summary>
-
         public Version Version { get; internal set; }
 
         /// <summary>
