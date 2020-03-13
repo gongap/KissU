@@ -6,46 +6,22 @@ services:
     image: consul
 
   redis:
-    image: redis:alpine
+    image: redis
 
   rabbitmq:
-    image: rabbitmq:3-management-alpine
+    image: rabbitmq:3-management
 
-  kissu.services.host:
-    image: ${REGISTRY:-gongap}/kissu.services.host:${PLATFORM:-linux}-${TAG:-latest}
+  identityserver:
+    image: ${REGISTRY:-gongap}/identityserver:${PLATFORM:-linux}-${TAG:-latest}
     build:
       context: .
-      dockerfile: src/KissU.Microservices/KissU.Services.Hosts/KissU.Services.Host/Dockerfile    
-    depends_on:
-      - consul
-      - redis
-      - rabbitmq
+      dockerfile: src/KissU.Applications/KissU.IdentityServer/Dockerfile
 
- kissu.services.stage:
-    image: ${REGISTRY:-gongap}/kissu.services.stage:${PLATFORM:-linux}-${TAG:-latest}
+  serviceshost:
+    image: ${REGISTRY:-gongap}/serviceshost:${PLATFORM:-linux}-${TAG:-latest}
     build:
       context: .
-      dockerfile: src/KissU.Microservices/KissU.Services.Hosts/KissU.Services.Host/Dockerfile    
-    depends_on:
-      - consul
-      - redis
-      - rabbitmq
-
-kissu.services.samplea.host:
-    image: ${REGISTRY:-gongap}/kissu.services.samplea.host:${PLATFORM:-linux}-${TAG:-latest}
-    build:
-      context: .
-      dockerfile: src/KissU.Microservices/KissU.Services.Hosts/KissU.Services.Host/Dockerfile    
-    depends_on:
-      - consul
-      - redis
-      - rabbitmq
-
-kissu.services.sampleb.host:
-    image: ${REGISTRY:-gongap}/kissu.services.sampleb.host:${PLATFORM:-linux}-${TAG:-latest}
-    build:
-      context: .
-      dockerfile: src/KissU.Microservices/KissU.Services.Hosts/KissU.Services.Host/Dockerfile    
+      dockerfile: src/KissU.Microservices/KissU.Services.Hosts/KissU.Services.Host/Dockerfile
     depends_on:
       - consul
       - redis

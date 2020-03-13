@@ -17,28 +17,37 @@ services:
 
   rabbitmq:
     ports:
+      - "15672:15672"
       - "5672:5672"
 
-  kissu.services.host:
+  identityserver:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+    ports:
+      - "8080:80"
+
+  serviceshost:
+    environment:
+      - Server_IP=0.0.0.0
+      - Server_Port=81
+      - Mapping_ip=192.168.2.76
+      - Mapping_port=81
+      - Register_Conn=192.168.2.76:8500
+      - EventBusConnection=192.168.2.76
+      - HttpPort=8001
+      - WSPort=8101
+      - MQTTPort=8201
+      - GrpcPort=8301
+    volumes:
+      - kissu-serviceshost:/home/gongap
     ports:
       - "81:81"
+      - "8001:8001"
+      - "8101:8101"
+      - "8201:8201"
+      - "8301:8301"
 
-  kissu.services.stage:
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-    ports:
-      - "82:82"
-
-  kissu.services.samplea.host::
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-    ports:
-      - "83:83"
-
-  kissu.services.sampleb.host::
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-    ports:
-      - "91:91"
+volumes:
+  kissu-serviceshost:
+    external: false

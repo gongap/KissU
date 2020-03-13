@@ -1,12 +1,12 @@
 version: '3.4'
 
 # The Production docker-compose file has to have the external/real IPs or DNS names for the services 
-# The ESHOP_PROD_EXTERNAL_DNS_NAME_OR_IP environment variable is taken, by default, from the ".env" file defined like: 
-#     ESHOP_PROD_EXTERNAL_DNS_NAME_OR_IP=192.168.88.248
+# The KISSU_PROD_EXTERNAL_DNS_NAME_OR_IP environment variable is taken, by default, from the ".env" file defined like: 
+#     KISSU_PROD_EXTERNAL_DNS_NAME_OR_IP=192.168.88.248
 # but values present in the environment vars at runtime will always override those defined inside the .env file
 # An external IP or DNS name has to be used when testing the Web apps and the Xamarin apps from remote machines/devices using the same WiFi, for instance.
 #
-# IMPORTANT: Note that this compose file uses ESHOP_PROD_EXTERNAL_DNS_NAME_OR_IP instead of ESHOP_EXTERNAL_DNS_NAME_OR_IP
+# IMPORTANT: Note that this compose file uses KISSU_PROD_EXTERNAL_DNS_NAME_OR_IP instead of KISSU_EXTERNAL_DNS_NAME_OR_IP
 
 # Set ASPNETCORE_ENVIRONMENT= Development or Production, depending if you want to show up errors while testing. 
 #
@@ -26,26 +26,15 @@ services:
     ports:
       - "5672:5672"
 
-  kissu.services.host:
+  identityserver:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80:80"
+      - "443:443"
+
+  serviceshost:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
     ports:
       - "81:81"
-
-  kissu.services.stage:
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-    ports:
-      - "82:82"
-
-  kissu.services.samplea.host::
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-    ports:
-      - "83:83"
-
-  kissu.services.sampleb.host::
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-    ports:
-      - "91:91"

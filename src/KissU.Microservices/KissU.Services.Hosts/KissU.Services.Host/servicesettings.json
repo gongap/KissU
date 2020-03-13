@@ -1,6 +1,6 @@
 {
   "ServerEngine": { //微服务框架配置
-    "Ip": "${Server_IP}|127.0.0.1", //"配置微服务主机的Ip地址或域名": null,
+    "Ip": "${Server_IP}|127.0.0.1", //"配置微服务主机的Ip地址或域名": null,容器内部IP(环境变量)
     "WatchInterval": 30, //设置向服务注册中心更新路由数据的心跳值，缺省值为20s
     "Port": "${Server_Port}|81", //微服务主机运行的端口号
     "MappingIp": "${Mapping_ip}", //映射的Ip地址,暂不需要配置
@@ -149,7 +149,7 @@
     }
   },
   "ConnectionStrings": {
-    "IdentityServerConnection": "Server=.;Database=KissU.IdentityServer;uid=sa;pwd=saP@ss123;MultipleActiveResultSets=true",
-    "GreatWallConnection": "Server=.;Database=KissU.GreatWall;uid=sa;pwd=saP@ss123;MultipleActiveResultSets=true"
+    "IdentityServerConnection": "Server=192.168.2.76;Database=KissU.IdentityServer;uid=sa;pwd=saP@ss123;MultipleActiveResultSets=true",
+    "GreatWallConnection": "Server=192.168.2.76;Database=KissU.GreatWall;uid=sa;pwd=saP@ss123;MultipleActiveResultSets=true"
   }
 }
