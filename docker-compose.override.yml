@@ -48,6 +48,27 @@ services:
       - "8201:8201"
       - "8301:8301"
 
+  serviceshost_a:
+    environment:
+      - Server_IP=0.0.0.0
+      - Server_Port=82
+      - Mapping_ip=192.168.2.76
+      - Mapping_port=82
+      - Register_Conn=192.168.2.76:8500
+      - EventBusConnection=192.168.2.76
+      - HttpPort=8002
+      - WSPort=8102
+      - MQTTPort=8202
+      - GrpcPort=8302
+    volumes:
+      - kissu-serviceshost:/home/gongap
+    ports:
+      - "82:82"
+      - "8002:8002"
+      - "8102:8102"
+      - "8202:8202"
+      - "8302:8302"
+
 volumes:
   kissu-serviceshost:
     external: false

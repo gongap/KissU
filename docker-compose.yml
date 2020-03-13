@@ -26,3 +26,13 @@ services:
       - consul
       - redis
       - rabbitmq
+
+  serviceshost_a:
+    image: ${REGISTRY:-gongap}/serviceshost_a:${PLATFORM:-linux}-${TAG:-latest}
+    build:
+      context: .
+      dockerfile: src/KissU.Microservices/KissU.Services.Hosts/KissU.Services.SampleA.Host/Dockerfile
+    depends_on:
+      - consul
+      - redis
+      - rabbitmq
