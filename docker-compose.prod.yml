@@ -26,13 +26,6 @@ services:
     ports:
       - "5672:5672"
 
-  sqldata:
-    environment:
-      - SA_PASSWORD=Pass@word
-      - ACCEPT_EULA=Y
-    ports:
-      - "5433:1433"
-
   identityserver:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development

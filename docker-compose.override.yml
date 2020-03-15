@@ -20,15 +20,6 @@ services:
       - "15672:15672"
       - "5672:5672"
 
-  sqldata:
-    environment:
-      - SA_PASSWORD=saP@ss123
-      - ACCEPT_EULA=Y
-    ports:
-      - "5433:1433"
-    volumes:
-      - kissu-sqldata:/var/opt/mssql
-
   identityserver:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
@@ -79,7 +70,5 @@ services:
       - "8302:8302"
 
 volumes:
-  kissu-sqldata:
-    external: false
   kissu-serviceshost:
     external: false

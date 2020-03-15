@@ -11,9 +11,6 @@ services:
   rabbitmq:
     image: rabbitmq:3-management
 
-  sqldata:
-    image: mcr.microsoft.com/mssql/server:2017-latest
-
   identityserver:
     image: ${REGISTRY:-gongap}/identityserver:${PLATFORM:-linux}-${TAG:-latest}
     build:
