@@ -5,12 +5,24 @@
     <Description>KissU应用框架的Oracle数据访问类库。</Description>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Dapper\**" />
+    <Compile Remove="Ef\**" />
+    <EmbeddedResource Remove="Dapper\**" />
+    <EmbeddedResource Remove="Ef\**" />
+    <None Remove="Dapper\**" />
+    <None Remove="Ef\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Extensions.Dapper.cs" />
+    <Compile Remove="Extensions.Ef.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Oracle.EntityFrameworkCore" Version="2.19.60" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KissU.Util.Datas\KissU.Util.Datas.csproj" />
+    <!--<ProjectReference Include="..\KissU.Util.Datas\KissU.Util.Datas.csproj" />-->
   </ItemGroup>
 </Project>
