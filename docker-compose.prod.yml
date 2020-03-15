@@ -2,7 +2,7 @@ version: '3.4'
 
 # The Production docker-compose file has to have the external/real IPs or DNS names for the services 
 # The KISSU_PROD_EXTERNAL_DNS_NAME_OR_IP environment variable is taken, by default, from the ".env" file defined like: 
-#     KISSU_PROD_EXTERNAL_DNS_NAME_OR_IP=192.168.88.248
+#     KISSU_PROD_EXTERNAL_DNS_NAME_OR_IP=192.168.2.76
 # but values present in the environment vars at runtime will always override those defined inside the .env file
 # An external IP or DNS name has to be used when testing the Web apps and the Xamarin apps from remote machines/devices using the same WiFi, for instance.
 #
@@ -24,17 +24,62 @@ services:
 
   rabbitmq:
     ports:
+      - "15672:15672"
       - "5672:5672"
 
-  identityserver:
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-    ports:
-      - "80:80"
-      - "443:443"
-
-  serviceshost:
+  identity_server:
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+    ports:
+      - "8080:80"
+
+  services_host:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - Server_IP=0.0.0.0
+      - Server_Port=81
+      - Mapping_ip=192.168.2.76
+      - Mapping_port=81
+      - Register_Conn=192.168.2.76:8500
+      - EventBusConnection=192.168.2.76
+      - HttpPort=8001
+      - WSPort=8101
+      - MQTTPort=8201
+      - GrpcPort=8301
+    volumes:
+      - kissu-services_host:/home/gongap
     ports:
       - "81:81"
+      - "8001:8001"
+      - "8101:8101"
+      - "8201:8201"
+      - "8301:8301"
+
+services_stage:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - Server_IP=0.0.0.0
+      - Server_Port=81
+      - Mapping_ip=192.168.2.76
+      - Mapping_port=81
+      - Register_Conn=192.168.2.76:8500
+      - EventBusConnection=192.168.2.76
+      - HttpPort=8001
+      - WSPort=8101
+      - MQTTPort=8201
+      - GrpcPort=8301
+    volumes:
+      - kissu-services_stage:/home/gongap
+    ports:
+      - "81:81"
+      - "8001:8001"
+      - "8101:8101"
+      - "8201:8201"
+      - "8301:8301"
+
+volumes:
+  kissu-services_host:
+    external: false
+  kissu-services_stage:
+    external: false

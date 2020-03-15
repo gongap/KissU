@@ -11,14 +11,14 @@ services:
   rabbitmq:
     image: rabbitmq:3-management
 
-  identityserver:
-    image: ${REGISTRY:-gongap}/identityserver:${PLATFORM:-linux}-${TAG:-latest}
+  identity_server:
+    image: ${REGISTRY:-gongap}/identity_server:${PLATFORM:-linux}-${TAG:-latest}
     build:
       context: .
       dockerfile: src/KissU.Applications/KissU.IdentityServer/Dockerfile
 
-  serviceshost:
-    image: ${REGISTRY:-gongap}/serviceshost:${PLATFORM:-linux}-${TAG:-latest}
+  services_host:
+    image: ${REGISTRY:-gongap}/services_host:${PLATFORM:-linux}-${TAG:-latest}
     build:
       context: .
       dockerfile: src/KissU.Microservices/KissU.Services.Hosts/KissU.Services.Host/Dockerfile
@@ -27,11 +27,11 @@ services:
       - redis
       - rabbitmq
 
-  serviceshost_a:
-    image: ${REGISTRY:-gongap}/serviceshost_a:${PLATFORM:-linux}-${TAG:-latest}
+  services_stage:
+    image: ${REGISTRY:-gongap}/services_stage:${PLATFORM:-linux}-${TAG:-latest}
     build:
       context: .
-      dockerfile: src/KissU.Microservices/KissU.Services.Hosts/KissU.Services.SampleA.Host/Dockerfile
+      dockerfile: src/KissU.Microservices/KissU.Services.Stages/KissU.Services.Stage/Dockerfile
     depends_on:
       - consul
       - redis
