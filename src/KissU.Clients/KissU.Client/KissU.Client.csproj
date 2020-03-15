@@ -3,8 +3,56 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <DockerfileContext>..\..</DockerfileContext>
+    <TieredCompilation>true</TieredCompilation>
   </PropertyGroup>
-  
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.9.4" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.1.2" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="4.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Apm\KissU.Apm.Skywalking\KissU.Apm.Skywalking.csproj" />
+    <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.Codec.MessagePack\KissU.Core.Codec.MessagePack.csproj" />
+    <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.Codec.ProtoBuffer\KissU.Core.Codec.ProtoBuffer.csproj" />
+    <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.Common\KissU.Core.Common.csproj" />
+    <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.Consul\KissU.Core.Consul.csproj" />
+    <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.CPlatform\KissU.Core.CPlatform.csproj" />
+    <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.DotNetty\KissU.Core.DotNetty.csproj" />
+    <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.EventBusKafka\KissU.Core.EventBusKafka.csproj" />
+    <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.EventBusRabbitMQ\KissU.Core.EventBusRabbitMQ.csproj" />
+    <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.Log4net\KissU.Core.Log4net.csproj" />
+    <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.NLog\KissU.Core.Nlog.csproj" />
+    <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.ProxyGenerator\KissU.Core.ProxyGenerator.csproj" />
+    <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.ServiceHosting\KissU.Core.ServiceHosting.csproj" />
+    <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.System\KissU.Core.System.csproj" />
+    <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.Zookeeper\KissU.Core.Zookeeper.csproj" />
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Sample\KissU.Modules.SampleA.Service.Contracts\KissU.Modules.SampleA.Service.Contracts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="cacheSettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="eventBusSettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="NLog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="servicesettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="skyapm.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

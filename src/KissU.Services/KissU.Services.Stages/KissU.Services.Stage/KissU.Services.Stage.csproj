@@ -55,8 +55,6 @@
     <ProjectReference Include="..\..\..\KissU.Modules\KissU.Modules.Admin\KissU.Modules.Admin.Service\KissU.Modules.Admin.Service.csproj" />
     <ProjectReference Include="..\..\..\KissU.Modules\KissU.Modules.GreatWall\KissU.Modules.GreatWall.Service.Contracts\KissU.Modules.GreatWall.Service.Contracts.csproj" />
     <ProjectReference Include="..\..\..\KissU.Modules\KissU.Modules.IdentityServer\KissU.Modules.IdentityServer.Service.Contracts\KissU.Modules.IdentityServer.Service.Contracts.csproj" />
-    <ProjectReference Include="..\..\..\KissU.Modules\KissU.Modules.Sample\KissU.Modules.SampleA.Service.Contracts\KissU.Modules.SampleA.Service.Contracts.csproj" />
-    <ProjectReference Include="..\..\..\KissU.Modules\KissU.Modules.Sample\KissU.Modules.SampleB.Service.Contracts\KissU.Modules.SampleB.Service.Contracts.csproj" />
   </ItemGroup>
 
   <ItemGroup>

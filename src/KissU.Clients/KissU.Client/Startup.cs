@@ -17,7 +17,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 
-namespace KissU.Core.Services.Client
+namespace KissU.Client
 {
     public class Startup
     {
@@ -25,8 +25,6 @@ namespace KissU.Core.Services.Client
 
         public Startup(IConfigurationBuilder config)
         {
-            ConfigureEventBus(config);
-            ConfigureCache(config);
         }
 
         public IContainer ConfigureServices(ContainerBuilder builder)
@@ -52,19 +50,6 @@ namespace KissU.Core.Services.Client
         private void ConfigureLogging(IServiceCollection services)
         {
             services.AddLogging();
-        }
-
-        private static void ConfigureEventBus(IConfigurationBuilder build)
-        {
-            build.AddEventBusFile("eventBusSettings.json", false);
-        }
-
-        /// <summary>
-        /// 配置缓存服务
-        /// </summary>
-        private void ConfigureCache(IConfigurationBuilder build)
-        {
-            build.AddCacheFile("cacheSettings.json", false);
         }
 
         /// <summary>

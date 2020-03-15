@@ -36,13 +36,12 @@ services:
 
   services-host:
     environment:
-      - ASPNETCORE_ENVIRONMENT=Production
       - Server_IP=0.0.0.0
       - Server_Port=81
-      - Mapping_ip=192.168.2.76
+      - Mapping_ip=${KISSU_PROD_EXTERNAL_DNS_NAME_OR_IP}
       - Mapping_port=81
-      - Register_Conn=192.168.2.76:8500
-      - EventBusConnection=192.168.2.76
+      - Register_Conn=${KISSU_SERVICE_REGISTER}
+      - EventBusConnection=${KISSU_SERVICE_BUS}
       - HttpPort=8001
       - WSPort=8101
       - MQTTPort=8201
@@ -58,25 +57,24 @@ services:
 
   services-stage:
     environment:
-      - ASPNETCORE_ENVIRONMENT=Production
       - Server_IP=0.0.0.0
-      - Server_Port=81
-      - Mapping_ip=192.168.2.76
-      - Mapping_port=81
-      - Register_Conn=192.168.2.76:8500
-      - EventBusConnection=192.168.2.76
-      - HttpPort=8001
-      - WSPort=8101
-      - MQTTPort=8201
-      - GrpcPort=8301
+      - Server_Port=91
+      - Mapping_ip=${KISSU_PROD_EXTERNAL_DNS_NAME_OR_IP}
+      - Mapping_port=91
+      - Register_Conn=${KISSU_SERVICE_REGISTER}
+      - EventBusConnection=${KISSU_SERVICE_BUS}
+      - HttpPort=9001
+      - WSPort=9101
+      - MQTTPort=9201
+      - GrpcPort=9301
     volumes:
       - kissu-services-stage:/home/gongap
     ports:
-      - "81:81"
-      - "8001:8001"
-      - "8101:8101"
-      - "8201:8201"
-      - "8301:8301"
+      - "91:91"
+      - "9001:9001"
+      - "9101:9101"
+      - "9201:9201"
+      - "9301:9301"
 
 volumes:
   kissu-services-host:
