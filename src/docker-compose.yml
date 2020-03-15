@@ -11,14 +11,14 @@ services:
   rabbitmq:
     image: rabbitmq:3-management
 
-  identity_server:
-    image: ${REGISTRY:-gongap}/identity_server:${PLATFORM:-linux}-${TAG:-latest}
+  identity-server:
+    image: ${REGISTRY:-gongap}/identity.server:${PLATFORM:-linux}-${TAG:-latest}
     build:
       context: .
       dockerfile: KissU.Services/KissU.IdentityServer/Dockerfile
 
-  services_host:
-    image: ${REGISTRY:-gongap}/services_host:${PLATFORM:-linux}-${TAG:-latest}
+  services-host:
+    image: ${REGISTRY:-gongap}/services.host:${PLATFORM:-linux}-${TAG:-latest}
     build:
       context: .
       dockerfile: KissU.Services/KissU.Services.Hosts/KissU.Services.Host/Dockerfile
@@ -27,8 +27,8 @@ services:
       - redis
       - rabbitmq
 
-  services_stage:
-    image: ${REGISTRY:-gongap}/services_stage:${PLATFORM:-linux}-${TAG:-latest}
+  services-stage:
+    image: ${REGISTRY:-gongap}/services.stage:${PLATFORM:-linux}-${TAG:-latest}
     build:
       context: .
       dockerfile: KissU.Services/KissU.Services.Stages/KissU.Services.Stage/Dockerfile

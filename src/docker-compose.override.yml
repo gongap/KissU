@@ -20,14 +20,14 @@ services:
       - "15672:15672"
       - "5672:5672"
 
-  identity_server:
+  identity-server:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://0.0.0.0:80
     ports:
       - "8080:80"
 
-  services_host:
+  services-host:
     environment:
       - Server_IP=0.0.0.0
       - Server_Port=81
@@ -40,7 +40,7 @@ services:
       - MQTTPort=8201
       - GrpcPort=8301
     volumes:
-      - kissu-services_host:/home/gongap
+      - kissu-services-host:/home/gongap
     ports:
       - "81:81"
       - "8001:8001"
@@ -48,7 +48,7 @@ services:
       - "8201:8201"
       - "8301:8301"
 
-  services_stage:
+  services-stage:
     environment:
       - Server_IP=0.0.0.0
       - Server_Port=81
@@ -61,7 +61,7 @@ services:
       - MQTTPort=8201
       - GrpcPort=8301
     volumes:
-      - kissu-services_stage:/home/gongap
+      - kissu-services-stage:/home/gongap
     ports:
       - "81:81"
       - "8001:8001"
@@ -70,7 +70,7 @@ services:
       - "8301:8301"
 
 volumes:
-  kissu-services_host:
+  kissu-services-host:
     external: false
-  kissu-services_stage:
+  kissu-services-stage:
     external: false
