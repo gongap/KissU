@@ -1,0 +1,10 @@
+.dockerignore
+.git
+.gitignore
+.vs
+.vscode
+**/*.*proj.user
+**/bin
+**/obj
+**/Dockerfile
+**/Dockerfile.develop

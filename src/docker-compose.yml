@@ -1,0 +1,38 @@
+version: '3.4'
+
+services:
+
+  consul:
+    image: consul
+
+  redis:
+    image: redis
+
+  rabbitmq:
+    image: rabbitmq:3-management
+
+  identity_server:
+    image: ${REGISTRY:-gongap}/identity_server:${PLATFORM:-linux}-${TAG:-latest}
+    build:
+      context: .
+      dockerfile: KissU.Services/KissU.IdentityServer/Dockerfile
+
+  services_host:
+    image: ${REGISTRY:-gongap}/services_host:${PLATFORM:-linux}-${TAG:-latest}
+    build:
+      context: .
+      dockerfile: KissU.Services/KissU.Services.Hosts/KissU.Services.Host/Dockerfile
+    depends_on:
+      - consul
+      - redis
+      - rabbitmq
+
+  services_stage:
+    image: ${REGISTRY:-gongap}/services_stage:${PLATFORM:-linux}-${TAG:-latest}
+    build:
+      context: .
+      dockerfile: KissU.Services/KissU.Services.Stages/KissU.Services.Stage/Dockerfile
+    depends_on:
+      - consul
+      - redis
+      - rabbitmq
