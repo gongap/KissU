@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 
 namespace KissU.Util.Domains.Repositories
 {
@@ -8,7 +9,7 @@ namespace KissU.Util.Domains.Repositories
     /// 分页集合
     /// </summary>
     /// <typeparam name="T">元素类型</typeparam>
-    [Serializable]
+    [DataContract]
     public class PagerList<T> : IPagerBase
     {
         /// <summary>
@@ -81,16 +82,19 @@ namespace KissU.Util.Domains.Repositories
         /// <summary>
         /// 总页数
         /// </summary>
+        [DataMember]
         public int PageCount { get; set; }
 
         /// <summary>
         /// 排序条件
         /// </summary>
+        [DataMember]
         public string Order { get; set; }
 
         /// <summary>
         /// 内容
         /// </summary>
+        [DataMember]
         public List<T> Data { get; }
 
         /// <summary>
@@ -107,16 +111,19 @@ namespace KissU.Util.Domains.Repositories
         /// <summary>
         /// 页索引，即第几页，从1开始
         /// </summary>
+        [DataMember]
         public int Page { get; set; }
 
         /// <summary>
         /// 每页显示行数
         /// </summary>
+        [DataMember]
         public int PageSize { get; set; }
 
         /// <summary>
         /// 总行数
         /// </summary>
+        [DataMember]
         public int TotalCount { get; set; }
 
         /// <summary>

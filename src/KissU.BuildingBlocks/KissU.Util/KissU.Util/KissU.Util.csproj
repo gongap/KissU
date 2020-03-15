@@ -28,6 +28,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\KissU.Core\KissU.Core.System\KissU.Core.System.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Properties\LibraryResource.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

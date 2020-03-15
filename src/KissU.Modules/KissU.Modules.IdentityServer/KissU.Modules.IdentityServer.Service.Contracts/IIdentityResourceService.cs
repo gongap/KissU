@@ -62,7 +62,6 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// <param name="request">创建参数</param>
         /// <returns>Task&lt;System.String&gt;.</returns>
         [HttpPost(true)]
-        [UnitOfWork]
         Task<string> CreateAsync([Valid] IdentityResourceCreateRequest request);
 
         /// <summary>
@@ -71,7 +70,6 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// <param name="request">修改参数</param>
         /// <returns>Task.</returns>
         [HttpPut(true)]
-        [UnitOfWork]
         Task UpdateAsync([Valid] IdentityResourceDto request);
 
         /// <summary>

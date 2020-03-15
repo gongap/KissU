@@ -62,7 +62,6 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// <param name="request">创建参数</param>
         /// <returns>Task&lt;System.String&gt;.</returns>
         [HttpPost(true)]
-        [UnitOfWork]
         Task<string> CreateAsync([Valid] ClientCreateRequest request);
 
         /// <summary>
@@ -71,7 +70,6 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// <param name="request">修改参数</param>
         /// <returns>Task.</returns>
         [HttpPut(true)]
-        [UnitOfWork]
         Task UpdateAsync([Valid] ClientDto request);
 
         /// <summary>
@@ -87,7 +85,6 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// </summary>
         /// <param name="request">克隆请求参数</param>
         /// <returns>Task&lt;System.Int32&gt;.</returns>
-        [UnitOfWork]
         Task<int> CloneAsync(ClientCloneRequest request);
 
         /// <summary>
@@ -119,7 +116,6 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// <param name="clientId">应用标识</param>
         /// <param name="request">创建应用程序声明参数</param>
         /// <returns>Task&lt;System.Int32&gt;.</returns>
-        [UnitOfWork]
         Task<int> CreateClaimAsync(int clientId, [Valid] ClientClaimCreateRequest request);
 
         /// <summary>
@@ -128,7 +124,6 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// <param name="clientId">应用标识</param>
         /// <param name="dto">应用程序声明</param>
         /// <returns>Task.</returns>
-        [UnitOfWork]
         Task UpdateClaimAsync(int clientId, [Valid] ClientClaimDto dto);
 
         /// <summary>
@@ -136,7 +131,6 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// </summary>
         /// <param name="id">应用程序声明编号</param>
         /// <returns>Task.</returns>
-        [UnitOfWork]
         Task DeleteClaimAsync(int id);
 
         #endregion
@@ -163,7 +157,6 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// <param name="clientId">应用标识</param>
         /// <param name="request">创建应用程序密钥参数</param>
         /// <returns>Task&lt;System.Int32&gt;.</returns>
-        [UnitOfWork]
         Task<int> CreateSecretAsync(int clientId, [Valid] ClientSecretCreateRequest request);
 
         /// <summary>
@@ -171,7 +164,6 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         /// </summary>
         /// <param name="id">应用程序密钥编号</param>
         /// <returns>Task.</returns>
-        [UnitOfWork]
         Task DeleteSecretAsync(int id);
 
         #endregion

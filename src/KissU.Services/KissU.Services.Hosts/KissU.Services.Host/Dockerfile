@@ -105,7 +105,7 @@ COPY "NuGet.config" "NuGet.config"
 RUN dotnet restore "KissU.sln"
 
 COPY . .
-WORKDIR "/src/src/KissU.Services/KissU.Services.Hosts/KissU.Services.Host"
+WORKDIR "/src/KissU.Services/KissU.Services.Hosts/KissU.Services.Host"
 RUN dotnet build "KissU.Services.Host.csproj" -c Release -o /app/build
 
 FROM build AS publish

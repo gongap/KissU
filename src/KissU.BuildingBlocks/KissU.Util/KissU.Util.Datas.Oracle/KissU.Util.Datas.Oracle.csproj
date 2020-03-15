@@ -18,11 +18,11 @@
     <Compile Remove="Extensions.Ef.cs" />
   </ItemGroup>
 
-  <ItemGroup>
+  <!--<ItemGroup>
     <PackageReference Include="Oracle.EntityFrameworkCore" Version="2.19.60" />
-  </ItemGroup>
+  </ItemGroup>-->
 
   <ItemGroup>
-    <!--<ProjectReference Include="..\KissU.Util.Datas\KissU.Util.Datas.csproj" />-->
+    <ProjectReference Include="..\KissU.Util.Datas\KissU.Util.Datas.csproj" />
   </ItemGroup>
 </Project>
