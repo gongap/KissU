@@ -1,14 +1,14 @@
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster
 ARG BUILD_CONFIGURATION=Debug
-EXPOSE 81
-EXPOSE 8001
-EXPOSE 8101
-EXPOSE 8201
-EXPOSE 8301
+EXPOSE 91
+EXPOSE 9001
+EXPOSE 9101
+EXPOSE 9201
+EXPOSE 9301
 
 WORKDIR /src
 
-COPY ["KissU.Services/KissU.Services.Hosts/KissU.Services.Host/KissU.Services.Host.csproj", "KissU.Services/KissU.Services.Hosts/KissU.Services.Host/"]
+COPY ["KissU.Services/KissU.Services.Stage/KissU.Services.Stage.csproj", "KissU.Services/KissU.Services.Stage/"]
 COPY ["KissU.BuildingBlocks/KissU.Core/KissU.Core.DotNetty/KissU.Core.DotNetty.csproj", "KissU.BuildingBlocks/KissU.Core/KissU.Core.DotNetty/"]
 COPY ["KissU.BuildingBlocks/KissU.Core/KissU.Core.CPlatform/KissU.Core.CPlatform.csproj", "KissU.BuildingBlocks/KissU.Core/KissU.Core.CPlatform/"]
 COPY ["KissU.BuildingBlocks/KissU.Core/KissU.Core.ServiceHosting/KissU.Core.ServiceHosting.csproj", "KissU.BuildingBlocks/KissU.Core/KissU.Core.ServiceHosting/"]
@@ -24,47 +24,49 @@ COPY ["KissU.BuildingBlocks/KissU.Core/KissU.Core.Protocol.WS/KissU.Core.Protoco
 COPY ["KissU.BuildingBlocks/WebSocket/WebSocketCore/WebSocketCore.csproj", "KissU.BuildingBlocks/WebSocket/WebSocketCore/"]
 COPY ["KissU.BuildingBlocks/KissU.Core/KissU.Core.DotNettyWSServer/KissU.Core.DotNettyWSServer.csproj", "KissU.BuildingBlocks/KissU.Core/KissU.Core.DotNettyWSServer/"]
 COPY ["KissU.BuildingBlocks/KissU.Apm/KissU.Apm.Skywalking/KissU.Apm.Skywalking.csproj", "KissU.BuildingBlocks/KissU.Apm/KissU.Apm.Skywalking/"]
-COPY ["KissU.Modules/KissU.Modules.GreatWall/KissU.Modules.GreatWall.Service/KissU.Modules.GreatWall.Service.csproj", "KissU.Modules/KissU.Modules.GreatWall/KissU.Modules.GreatWall.Service/"]
-COPY ["KissU.Modules/KissU.Modules.GreatWall/KissU.Modules.GreatWall.Service.Contracts/KissU.Modules.GreatWall.Service.Contracts.csproj", "KissU.Modules/KissU.Modules.GreatWall/KissU.Modules.GreatWall.Service.Contracts/"]
-COPY ["KissU.Modules/KissU.Modules.GreatWall/KissU.Modules.GreatWall.Application/KissU.Modules.GreatWall.Application.csproj", "KissU.Modules/KissU.Modules.GreatWall/KissU.Modules.GreatWall.Application/"]
-COPY ["KissU.Modules/KissU.Modules.GreatWall/KissU.Modules.GreatWall.Domain/KissU.Modules.GreatWall.Domain.csproj", "KissU.Modules/KissU.Modules.GreatWall/KissU.Modules.GreatWall.Domain/"]
-COPY ["KissU.BuildingBlocks/KissU.Util/KissU.Util/KissU.Util.csproj", "KissU.BuildingBlocks/KissU.Util/KissU.Util/"]
-COPY ["KissU.BuildingBlocks/KissU.Util/KissU.Util.Applications/KissU.Util.Applications.csproj", "KissU.BuildingBlocks/KissU.Util/KissU.Util.Applications/"]
-COPY ["KissU.BuildingBlocks/KissU.Util/KissU.Util.Datas/KissU.Util.Datas.csproj", "KissU.BuildingBlocks/KissU.Util/KissU.Util.Datas/"]
-COPY ["KissU.Modules/KissU.Modules.GreatWall/KissU.Modules.GreatWall.Data/KissU.Modules.GreatWall.Data.csproj", "KissU.Modules/KissU.Modules.GreatWall/KissU.Modules.GreatWall.Data/"]
-COPY ["KissU.BuildingBlocks/KissU.Util/KissU.Util.Datas.PgSql/KissU.Util.Datas.PgSql.csproj", "KissU.BuildingBlocks/KissU.Util/KissU.Util.Datas.PgSql/"]
-COPY ["KissU.BuildingBlocks/KissU.Util/KissU.Util.Datas.SqlServer/KissU.Util.Datas.SqlServer.csproj", "KissU.BuildingBlocks/KissU.Util/KissU.Util.Datas.SqlServer/"]
-COPY ["KissU.BuildingBlocks/KissU.Util/KissU.Util.AspNetCore/KissU.Util.AspNetCore.csproj", "KissU.BuildingBlocks/KissU.Util/KissU.Util.AspNetCore/"]
-COPY ["KissU.BuildingBlocks/KissU.Util/KissU.Util.Security/KissU.Util.Security.csproj", "KissU.BuildingBlocks/KissU.Util/KissU.Util.Security/"]
-COPY ["KissU.BuildingBlocks/KissU.Core/KissU.Core.System/KissU.Core.System.csproj", "KissU.BuildingBlocks/KissU.Core/KissU.Core.System/"]
-COPY ["KissU.BuildingBlocks/KissU.Core/KissU.Core.Caching/KissU.Core.Caching.csproj", "KissU.BuildingBlocks/KissU.Core/KissU.Core.Caching/"]
 COPY ["KissU.BuildingBlocks/KissU.Core/KissU.Core.Protocol.Udp/KissU.Core.Protocol.Udp.csproj", "KissU.BuildingBlocks/KissU.Core/KissU.Core.Protocol.Udp/"]
 COPY ["KissU.BuildingBlocks/KissU.Core/KissU.Core.Consul/KissU.Core.Consul.csproj", "KissU.BuildingBlocks/KissU.Core/KissU.Core.Consul/"]
+COPY ["KissU.Modules/KissU.Modules.IdentityServer/KissU.Modules.IdentityServer.Service.Contracts/KissU.Modules.IdentityServer.Service.Contracts.csproj", "KissU.Modules/KissU.Modules.IdentityServer/KissU.Modules.IdentityServer.Service.Contracts/"]
+COPY ["KissU.Modules/KissU.Modules.IdentityServer/KissU.Modules.IdentityServer.Application/KissU.Modules.IdentityServer.Application.csproj", "KissU.Modules/KissU.Modules.IdentityServer/KissU.Modules.IdentityServer.Application/"]
+COPY ["KissU.BuildingBlocks/KissU.Util/KissU.Util.Applications/KissU.Util.Applications.csproj", "KissU.BuildingBlocks/KissU.Util/KissU.Util.Applications/"]
+COPY ["KissU.BuildingBlocks/KissU.Util/KissU.Util.Datas/KissU.Util.Datas.csproj", "KissU.BuildingBlocks/KissU.Util/KissU.Util.Datas/"]
+COPY ["KissU.BuildingBlocks/KissU.Util/KissU.Util/KissU.Util.csproj", "KissU.BuildingBlocks/KissU.Util/KissU.Util/"]
+COPY ["KissU.Modules/KissU.Modules.IdentityServer/KissU.Modules.IdentityServer.Data/KissU.Modules.IdentityServer.Data.csproj", "KissU.Modules/KissU.Modules.IdentityServer/KissU.Modules.IdentityServer.Data/"]
+COPY ["KissU.BuildingBlocks/KissU.Util/KissU.Util.Datas.SqlServer/KissU.Util.Datas.SqlServer.csproj", "KissU.BuildingBlocks/KissU.Util/KissU.Util.Datas.SqlServer/"]
+COPY ["KissU.Modules/KissU.Modules.IdentityServer/KissU.Modules.IdentityServer.Domain/KissU.Modules.IdentityServer.Domain.csproj", "KissU.Modules/KissU.Modules.IdentityServer/KissU.Modules.IdentityServer.Domain/"]
 COPY ["KissU.BuildingBlocks/KissU.Core/KissU.Core.DNS/KissU.Core.DNS.csproj", "KissU.BuildingBlocks/KissU.Core/KissU.Core.DNS/"]
 COPY ["KissU.BuildingBlocks/DotNetty.Codecs/DotNetty.Codecs.DNS/DotNetty.Codecs.DNS.csproj", "KissU.BuildingBlocks/DotNetty.Codecs/DotNetty.Codecs.DNS/"]
 COPY ["KissU.BuildingBlocks/KissU.Core/KissU.Core.Codec.ProtoBuffer/KissU.Core.Codec.ProtoBuffer.csproj", "KissU.BuildingBlocks/KissU.Core/KissU.Core.Codec.ProtoBuffer/"]
+COPY ["KissU.Modules/KissU.Modules.GreatWall/KissU.Modules.GreatWall.Service.Contracts/KissU.Modules.GreatWall.Service.Contracts.csproj", "KissU.Modules/KissU.Modules.GreatWall/KissU.Modules.GreatWall.Service.Contracts/"]
+COPY ["KissU.Modules/KissU.Modules.GreatWall/KissU.Modules.GreatWall.Application/KissU.Modules.GreatWall.Application.csproj", "KissU.Modules/KissU.Modules.GreatWall/KissU.Modules.GreatWall.Application/"]
+COPY ["KissU.Modules/KissU.Modules.GreatWall/KissU.Modules.GreatWall.Domain/KissU.Modules.GreatWall.Domain.csproj", "KissU.Modules/KissU.Modules.GreatWall/KissU.Modules.GreatWall.Domain/"]
+COPY ["KissU.Modules/KissU.Modules.GreatWall/KissU.Modules.GreatWall.Data/KissU.Modules.GreatWall.Data.csproj", "KissU.Modules/KissU.Modules.GreatWall/KissU.Modules.GreatWall.Data/"]
+COPY ["KissU.BuildingBlocks/KissU.Util/KissU.Util.Datas.PgSql/KissU.Util.Datas.PgSql.csproj", "KissU.BuildingBlocks/KissU.Util/KissU.Util.Datas.PgSql/"]
+COPY ["KissU.BuildingBlocks/KissU.Util/KissU.Util.AspNetCore/KissU.Util.AspNetCore.csproj", "KissU.BuildingBlocks/KissU.Util/KissU.Util.AspNetCore/"]
+COPY ["KissU.BuildingBlocks/KissU.Util/KissU.Util.Security/KissU.Util.Security.csproj", "KissU.BuildingBlocks/KissU.Util/KissU.Util.Security/"]
+COPY ["KissU.Modules/KissU.Modules.Sample/KissU.Modules.SampleA.Service.Contracts/KissU.Modules.SampleA.Service.Contracts.csproj", "KissU.Modules/KissU.Modules.Sample/KissU.Modules.SampleA.Service.Contracts/"]
 COPY ["KissU.BuildingBlocks/KissU.Core/KissU.Core.Protocol.Mqtt/KissU.Core.Protocol.Mqtt.csproj", "KissU.BuildingBlocks/KissU.Core/KissU.Core.Protocol.Mqtt/"]
+COPY ["KissU.BuildingBlocks/KissU.Core/KissU.Core.System/KissU.Core.System.csproj", "KissU.BuildingBlocks/KissU.Core/KissU.Core.System/"]
+COPY ["KissU.BuildingBlocks/KissU.Core/KissU.Core.Caching/KissU.Core.Caching.csproj", "KissU.BuildingBlocks/KissU.Core/KissU.Core.Caching/"]
+COPY ["KissU.Modules/KissU.Modules.Admin/KissU.Modules.Admin.Service/KissU.Modules.Admin.Service.csproj", "KissU.Modules/KissU.Modules.Admin/KissU.Modules.Admin.Service/"]
+COPY ["KissU.Modules/KissU.Modules.Admin/KissU.Modules.Admin.Service.Contracts/KissU.Modules.Admin.Service.Contracts.csproj", "KissU.Modules/KissU.Modules.Admin/KissU.Modules.Admin.Service.Contracts/"]
 COPY ["KissU.BuildingBlocks/KissU.Core/KissU.Core.ServiceHosting.Extensions/KissU.Core.ServiceHosting.Extensions.csproj", "KissU.BuildingBlocks/KissU.Core/KissU.Core.ServiceHosting.Extensions/"]
 COPY ["KissU.BuildingBlocks/KissU.Core/KissU.Core.Grpc/KissU.Core.Grpc.csproj", "KissU.BuildingBlocks/KissU.Core/KissU.Core.Grpc/"]
+COPY ["KissU.Modules/KissU.Modules.Sample/KissU.Modules.SampleB.Service.Contracts/KissU.Modules.SampleB.Service.Contracts.csproj", "KissU.Modules/KissU.Modules.Sample/KissU.Modules.SampleB.Service.Contracts/"]
 COPY ["KissU.BuildingBlocks/KissU.Core/KissU.Core.ApiGateWay/KissU.Core.ApiGateWay.csproj", "KissU.BuildingBlocks/KissU.Core/KissU.Core.ApiGateWay/"]
 COPY ["KissU.BuildingBlocks/KissU.Core/KissU.Core.Protocol.Http/KissU.Core.Protocol.Http.csproj", "KissU.BuildingBlocks/KissU.Core/KissU.Core.Protocol.Http/"]
+COPY ["KissU.BuildingBlocks/KissU.Core/KissU.Core.Stage/KissU.Core.Stage.csproj", "KissU.BuildingBlocks/KissU.Core/KissU.Core.Stage/"]
 COPY ["KissU.BuildingBlocks/KissU.Core/KissU.Core.Kestrel.Nlog/KissU.Core.Kestrel.Nlog.csproj", "KissU.BuildingBlocks/KissU.Core/KissU.Core.Kestrel.Nlog/"]
 COPY ["KissU.BuildingBlocks/KissU.Core/KissU.Core.EventBusRabbitMQ/KissU.Core.EventBusRabbitMQ.csproj", "KissU.BuildingBlocks/KissU.Core/KissU.Core.EventBusRabbitMQ/"]
 COPY ["KissU.BuildingBlocks/KissU.Core/KissU.Core.Swagger/KissU.Core.Swagger.csproj", "KissU.BuildingBlocks/KissU.Core/KissU.Core.Swagger/"]
 COPY ["KissU.BuildingBlocks/KissU.Core/KissU.Core.Codec.MessagePack/KissU.Core.Codec.MessagePack.csproj", "KissU.BuildingBlocks/KissU.Core/KissU.Core.Codec.MessagePack/"]
 COPY ["KissU.BuildingBlocks/KissU.Core/KissU.Core.Serilog/KissU.Core.Serilog.csproj", "KissU.BuildingBlocks/KissU.Core/KissU.Core.Serilog/"]
 COPY ["KissU.BuildingBlocks/KissU.Core/KissU.Core.EventBusKafka/KissU.Core.EventBusKafka.csproj", "KissU.BuildingBlocks/KissU.Core/KissU.Core.EventBusKafka/"]
-COPY ["KissU.Modules/KissU.Modules.IdentityServer/KissU.Modules.IdentityServer.Service/KissU.Modules.IdentityServer.Service.csproj", "KissU.Modules/KissU.Modules.IdentityServer/KissU.Modules.IdentityServer.Service/"]
-COPY ["KissU.Modules/KissU.Modules.IdentityServer/KissU.Modules.IdentityServer.Service.Contracts/KissU.Modules.IdentityServer.Service.Contracts.csproj", "KissU.Modules/KissU.Modules.IdentityServer/KissU.Modules.IdentityServer.Service.Contracts/"]
-COPY ["KissU.Modules/KissU.Modules.IdentityServer/KissU.Modules.IdentityServer.Application/KissU.Modules.IdentityServer.Application.csproj", "KissU.Modules/KissU.Modules.IdentityServer/KissU.Modules.IdentityServer.Application/"]
-COPY ["KissU.Modules/KissU.Modules.IdentityServer/KissU.Modules.IdentityServer.Data/KissU.Modules.IdentityServer.Data.csproj", "KissU.Modules/KissU.Modules.IdentityServer/KissU.Modules.IdentityServer.Data/"]
-COPY ["KissU.Modules/KissU.Modules.IdentityServer/KissU.Modules.IdentityServer.Domain/KissU.Modules.IdentityServer.Domain.csproj", "KissU.Modules/KissU.Modules.IdentityServer/KissU.Modules.IdentityServer.Domain/"]
-
 COPY "NuGet.config" "NuGet.config"
 
-RUN dotnet restore "KissU.Services/KissU.Services.Hosts/KissU.Services.Host/KissU.Services.Host.csproj" -nowarn:msb3202,nu1503
+RUN dotnet restore "KissU.Services/KissU.Services.Stage/KissU.Services.Stage.csproj" -nowarn:msb3202,nu1503
 COPY . .
-WORKDIR "/src/KissU.Services/KissU.Services.Hosts/KissU.Services.Host"
+WORKDIR "/src/KissU.Services/KissU.Services.Stage"
 RUN dotnet build --no-restore -c $BUILD_CONFIGURATION
 
 ENTRYPOINT ["dotnet", "run", "--no-build", "--no-launch-profile", "-c", "$BUILD_CONFIGURATION", "--"]

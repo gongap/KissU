@@ -1,0 +1,34 @@
+#See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
+
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster
+ARG BUILD_CONFIGURATION=Debug
+ENV ASPNETCORE_ENVIRONMENT=Development
+ENV DOTNET_USE_POLLING_FILE_WATCHER=true
+EXPOSE 80
+
+WORKDIR /src
+COPY ["KissU.Services/KissU.Services.Identity/KissU.Services.Identity.csproj", "KissU.Services/KissU.Services.Identity/"]
+COPY ["KissU.BuildingBlocks/KissU.Util/KissU.Util.Logs/KissU.Util.Logs.csproj", "KissU.BuildingBlocks/KissU.Util/KissU.Util.Logs/"]
+COPY ["KissU.BuildingBlocks/KissU.Util/KissU.Util.Security/KissU.Util.Security.csproj", "KissU.BuildingBlocks/KissU.Util/KissU.Util.Security/"]
+COPY ["KissU.BuildingBlocks/KissU.Util/KissU.Util.AspNetCore/KissU.Util.AspNetCore.csproj", "KissU.BuildingBlocks/KissU.Util/KissU.Util.AspNetCore/"]
+COPY ["KissU.BuildingBlocks/KissU.Util/KissU.Util/KissU.Util.csproj", "KissU.BuildingBlocks/KissU.Util/KissU.Util/"]
+COPY ["KissU.BuildingBlocks/KissU.Core/KissU.Core.CPlatform/KissU.Core.CPlatform.csproj", "KissU.BuildingBlocks/KissU.Core/KissU.Core.CPlatform/"]
+COPY ["KissU.BuildingBlocks/KissU.Core/KissU.Core.ServiceHosting/KissU.Core.ServiceHosting.csproj", "KissU.BuildingBlocks/KissU.Core/KissU.Core.ServiceHosting/"]
+COPY ["KissU.Modules/KissU.Modules.IdentityServer/KissU.Modules.IdentityServer.Application/KissU.Modules.IdentityServer.Application.csproj", "KissU.Modules/KissU.Modules.IdentityServer/KissU.Modules.IdentityServer.Application/"]
+COPY ["KissU.BuildingBlocks/KissU.Util/KissU.Util.Applications/KissU.Util.Applications.csproj", "KissU.BuildingBlocks/KissU.Util/KissU.Util.Applications/"]
+COPY ["KissU.BuildingBlocks/KissU.Util/KissU.Util.Datas/KissU.Util.Datas.csproj", "KissU.BuildingBlocks/KissU.Util/KissU.Util.Datas/"]
+COPY ["KissU.Modules/KissU.Modules.IdentityServer/KissU.Modules.IdentityServer.Data/KissU.Modules.IdentityServer.Data.csproj", "KissU.Modules/KissU.Modules.IdentityServer/KissU.Modules.IdentityServer.Data/"]
+COPY ["KissU.BuildingBlocks/KissU.Util/KissU.Util.Datas.SqlServer/KissU.Util.Datas.SqlServer.csproj", "KissU.BuildingBlocks/KissU.Util/KissU.Util.Datas.SqlServer/"]
+COPY ["KissU.Modules/KissU.Modules.IdentityServer/KissU.Modules.IdentityServer.Domain/KissU.Modules.IdentityServer.Domain.csproj", "KissU.Modules/KissU.Modules.IdentityServer/KissU.Modules.IdentityServer.Domain/"]
+COPY ["KissU.Modules/KissU.Modules.GreatWall/KissU.Modules.GreatWall.Application/KissU.Modules.GreatWall.Application.csproj", "KissU.Modules/KissU.Modules.GreatWall/KissU.Modules.GreatWall.Application/"]
+COPY ["KissU.Modules/KissU.Modules.GreatWall/KissU.Modules.GreatWall.Domain/KissU.Modules.GreatWall.Domain.csproj", "KissU.Modules/KissU.Modules.GreatWall/KissU.Modules.GreatWall.Domain/"]
+COPY ["KissU.Modules/KissU.Modules.GreatWall/KissU.Modules.GreatWall.Data/KissU.Modules.GreatWall.Data.csproj", "KissU.Modules/KissU.Modules.GreatWall/KissU.Modules.GreatWall.Data/"]
+COPY ["KissU.BuildingBlocks/KissU.Util/KissU.Util.Datas.PgSql/KissU.Util.Datas.PgSql.csproj", "KissU.BuildingBlocks/KissU.Util/KissU.Util.Datas.PgSql/"]
+COPY "NuGet.config" "NuGet.config"
+
+RUN dotnet restore "KissU.Services/KissU.Services.Identity/KissU.Services.Identity.csproj" -nowarn:msb3202,nu1503
+COPY . .
+WORKDIR "/src/KissU.Services/KissU.Services.Identity"
+RUN dotnet build --no-restore -c $BUILD_CONFIGURATION
+
+ENTRYPOINT ["dotnet", "run", "--no-build", "--no-launch-profile", "-c", "$BUILD_CONFIGURATION", "--"]

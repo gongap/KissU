@@ -11,11 +11,11 @@ services:
   rabbitmq:
     image: rabbitmq:3-management
 
-  identity-server:
-    image: ${REGISTRY:-kissu}/identity.server:${PLATFORM:-linux}-${TAG:-latest}
+  services-identity:
+    image: ${REGISTRY:-kissu}/services.identity:${PLATFORM:-linux}-${TAG:-latest}
     build:
       context: .
-      dockerfile: KissU.Services/KissU.IdentityServer/Dockerfile
+      dockerfile: KissU.Services/KissU.Services.Identity/Dockerfile
 
   services-host:
     image: ${REGISTRY:-kissu}/services.host:${PLATFORM:-linux}-${TAG:-latest}
@@ -31,7 +31,7 @@ services:
     image: ${REGISTRY:-kissu}/services.stage:${PLATFORM:-linux}-${TAG:-latest}
     build:
       context: .
-      dockerfile: KissU.Services/KissU.Services.Stages/KissU.Services.Stage/Dockerfile
+      dockerfile: KissU.Services/KissU.Services.Stage/Dockerfile
     depends_on:
       - consul
       - redis

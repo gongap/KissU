@@ -27,7 +27,9 @@ services:
       - "15672:15672"
       - "5672:5672"
 
-  identity-server:
+  services-identity:
+    build:
+      dockerfile: KissU.Services/KissU.Services.Identity/Dockerfile.prod
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
       - ASPNETCORE_URLS=http://0.0.0.0:80
@@ -35,6 +37,8 @@ services:
       - "8080:80"
 
   services-host:
+    build:
+      dockerfile: KissU.Services/KissU.Services.Hosts/KissU.Services.Host/Dockerfile.prod
     environment:
       - Server_IP=0.0.0.0
       - Server_Port=81
@@ -56,6 +60,8 @@ services:
       - "8301:8301"
 
   services-stage:
+    build:
+      dockerfile: KissU.Services/KissU.Services.Stage/Dockerfile.prod
     environment:
       - Server_IP=0.0.0.0
       - Server_Port=91
