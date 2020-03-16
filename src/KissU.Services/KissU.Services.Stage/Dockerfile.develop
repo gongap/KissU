@@ -71,6 +71,6 @@ COPY "NuGet.config" "NuGet.config"
 RUN dotnet restore "KissU.Services/KissU.Services.Stage/KissU.Services.Stage.csproj" -nowarn:msb3202,nu1503
 COPY . .
 WORKDIR "/src/KissU.Services/KissU.Services.Stage"
-RUN dotnet build --no-restore -c $BUILD_CONFIGURATION
+RUN dotnet build -c $BUILD_CONFIGURATION
 
 ENTRYPOINT ["dotnet", "run", "--no-build", "--no-launch-profile", "-c", "$BUILD_CONFIGURATION", "--"]
