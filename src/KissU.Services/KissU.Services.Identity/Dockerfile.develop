@@ -2,6 +2,7 @@
 # docker build -f "./Dockerfile.develop" --force-rm -t kissu/services.identity:linux-latest  "../../"
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster
+ARG BUILD_CONFIGURATION=Debug
 ENV ASPNETCORE_ENVIRONMENT=Development
 ENV DOTNET_USE_POLLING_FILE_WATCHER=true
 EXPOSE 80
@@ -29,6 +30,6 @@ COPY "NuGet.config" "NuGet.config"
 RUN dotnet restore "KissU.Services/KissU.Services.Identity/KissU.Services.Identity.csproj" -nowarn:msb3202,nu1503
 COPY . .
 WORKDIR "/src/KissU.Services/KissU.Services.Identity"
-RUN dotnet build --no-restore -c debug
+RUN dotnet build -c $BUILD_CONFIGURATION
 
-ENTRYPOINT ["dotnet", "run", "--no-build", "--no-launch-profile", "-c", "debug", "--"]
+ENTRYPOINT ["dotnet", "run", "--no-build", "--no-launch-profile", "-c", "$BUILD_CONFIGURATION", "--"]
