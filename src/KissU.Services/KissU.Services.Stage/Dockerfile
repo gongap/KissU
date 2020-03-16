@@ -1,6 +1,4 @@
 #See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
-# You need to build it with the following CLI command:
-# docker build -f "./Dockerfile" --force-rm -t kissu/services.stage:linux-latest  "../../"
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1 AS base
 WORKDIR /app
