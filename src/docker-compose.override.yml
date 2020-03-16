@@ -21,8 +21,6 @@ services:
       - "5672:5672"
 
   services-identity:
-    build:
-      dockerfile: KissU.Services/KissU.Services.Identity/Dockerfile.develop
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - IdentityServerConnection=${KISSU_IDENTITY_DB:-Server=192.168.2.76;Database=KissU.IdentityServer;uid=sa;pwd=saP@ss123;MultipleActiveResultSets=true}
@@ -31,8 +29,6 @@ services:
       - "9000:80"
 
   services-host:
-    build:
-      dockerfile: KissU.Services/KissU.Services.Hosts/KissU.Services.Host/Dockerfile.develop
     environment:
       - Server_IP=0.0.0.0
       - Server_Port=81
@@ -52,8 +48,6 @@ services:
       - "8301:8301"
 
   services-stage:
-    build:
-      dockerfile: KissU.Services/KissU.Services.Stage/Dockerfile.develop
     environment:
       - Server_IP=0.0.0.0
       - Server_Port=91

@@ -1,5 +1,5 @@
 # You need to build it with the following CLI command:
-# docker build -f "./Dockerfile.develop" --force-rm -t kissu/services.host:linux-latest  "../../"
+# docker build -f "./Dockerfile.develop" --force-rm -t kissu/services.host:linux-latest  "../../../"
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster
 EXPOSE 81
@@ -66,7 +66,7 @@ COPY "NuGet.config" "NuGet.config"
 
 RUN dotnet restore "KissU.Services/KissU.Services.Hosts/KissU.Services.Host/KissU.Services.Host.csproj" -nowarn:msb3202,nu1503
 COPY . .
-WORKDIR "/src/KissU.Services/KissU.Services.Hosts/KissU.Services.Host"
-RUN dotnet build --no-restore -c Debug
+WORKDIR "/src/KissU.Services/KissU.Services.Hosts/KissU.Services.Host/"
+RUN dotnet build --no-restore -c debug
 
-ENTRYPOINT ["dotnet", "run", "--no-build", "--no-launch-profile", "-c", "Debug", "--"]
+ENTRYPOINT ["dotnet", "run", "--no-build", "--no-launch-profile", "-c", "debug", "--"]
