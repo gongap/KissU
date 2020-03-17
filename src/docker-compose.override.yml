@@ -23,6 +23,7 @@ services:
   services-identity:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
       - IdentityServerConnection=${KISSU_IDENTITY_DB:-Server=192.168.2.76;Database=KissU.IdentityServer;uid=sa;pwd=saP@ss123;MultipleActiveResultSets=true}
       - GreatWallConnection=${KISSU_GREATWALL_DB:-Server=192.168.2.76;Database=KissU.GreatWall;uid=sa;pwd=saP@ss123;MultipleActiveResultSets=true}
     ports:

@@ -31,17 +31,17 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
       - ASPNETCORE_URLS=http://0.0.0.0:80
+      - IdentityServerConnection=${KISSU_IDENTITY_DB:-Server=192.168.2.76;Database=KissU.IdentityServer;uid=sa;pwd=saP@ss123;MultipleActiveResultSets=true}
+      - GreatWallConnection=${KISSU_GREATWALL_DB:-Server=192.168.2.76;Database=KissU.GreatWall;uid=sa;pwd=saP@ss123;MultipleActiveResultSets=true}
     ports:
-      - "8080:80"
+      - "9000:80"
 
   services-host:
     environment:
       - Server_IP=0.0.0.0
       - Server_Port=81
-      - Mapping_ip=${KISSU_PROD_EXTERNAL_DNS_NAME_OR_IP}
-      - Mapping_port=81
-      - Register_Conn=${KISSU_SERVICE_REGISTER}
-      - EventBusConnection=${KISSU_SERVICE_BUS}
+      - Register_Conn=${KISSU_SERVICE_REGISTER:-consul}
+      - EventBusConnection=${KISSU_SERVICE_BUS:-rabbitmq}
       - HttpPort=8001
       - WSPort=8101
       - MQTTPort=8201
@@ -59,10 +59,8 @@ services:
     environment:
       - Server_IP=0.0.0.0
       - Server_Port=91
-      - Mapping_ip=${KISSU_PROD_EXTERNAL_DNS_NAME_OR_IP}
-      - Mapping_port=91
-      - Register_Conn=${KISSU_SERVICE_REGISTER}
-      - EventBusConnection=${KISSU_SERVICE_BUS}
+      - Register_Conn=${KISSU_SERVICE_REGISTER:-consul}
+      - EventBusConnection=${KISSU_SERVICE_BUS:-rabbitmq}
       - HttpPort=9001
       - WSPort=9101
       - MQTTPort=9201

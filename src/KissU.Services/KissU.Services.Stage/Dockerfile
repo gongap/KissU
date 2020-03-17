@@ -7,7 +7,7 @@ FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 WORKDIR /src
 
 # It's important to keep lines from here down to "COPY . ." identical in all Dockerfiles
-# to take advantage of Docker's build cache, to speed up local container builds
+# to take advantage of Docker's build cache, to speed up local container 
 
 COPY "KissU.sln" "KissU.sln"
 
@@ -86,13 +86,12 @@ COPY "KissU.Modules/KissU.Modules.Sample/KissU.Modules.SampleA.Service.Contracts
 COPY "KissU.Modules/KissU.Modules.Sample/KissU.Modules.SampleA.Service/KissU.Modules.SampleA.Service.csproj" "KissU.Modules/KissU.Modules.Sample/KissU.Modules.SampleA.Service/KissU.Modules.SampleA.Service.csproj"
 COPY "KissU.Modules/KissU.Modules.Sample/KissU.Modules.SampleB.Service.Contracts/KissU.Modules.SampleB.Service.Contracts.csproj" "KissU.Modules/KissU.Modules.Sample/KissU.Modules.SampleB.Service.Contracts/KissU.Modules.SampleB.Service.Contracts.csproj"
 COPY "KissU.Modules/KissU.Modules.Sample/KissU.Modules.SampleB.Service/KissU.Modules.SampleB.Service.csproj" "KissU.Modules/KissU.Modules.Sample/KissU.Modules.SampleB.Service/KissU.Modules.SampleB.Service.csproj"
-COPY "KissU.Services/KissU.IdentityServer/KissU.IdentityServer.csproj" "KissU.Services/KissU.IdentityServer/KissU.IdentityServer.csproj"
 COPY "KissU.Services/KissU.Services.Hosts/KissU.Services.Host/KissU.Services.Host.csproj" "KissU.Services/KissU.Services.Hosts/KissU.Services.Host/KissU.Services.Host.csproj"
 COPY "KissU.Services/KissU.Services.Hosts/KissU.Services.SampleA.Host/KissU.Services.SampleA.Host.csproj" "KissU.Services/KissU.Services.Hosts/KissU.Services.SampleA.Host/KissU.Services.SampleA.Host.csproj"
 COPY "KissU.Services/KissU.Services.Hosts/KissU.Services.SampleB.Host/KissU.Services.SampleB.Host.csproj" "KissU.Services/KissU.Services.Hosts/KissU.Services.SampleB.Host/KissU.Services.SampleB.Host.csproj"
+COPY "KissU.Services/KissU.Services.Identity/KissU.Services.Identity.csproj" "KissU.Services/KissU.Services.Identity/KissU.Services.Identity.csproj"
 COPY "KissU.Services/KissU.Services.Stage/KissU.Services.Stage.csproj" "KissU.Services/KissU.Services.Stage/KissU.Services.Stage.csproj"
 COPY "KissU.Tests/KissU.Core.Tests/KissU.Core.ServiceHosting.Tests/KissU.Core.ServiceHosting.Tests.csproj" "KissU.Tests/KissU.Core.Tests/KissU.Core.ServiceHosting.Tests/KissU.Core.ServiceHosting.Tests.csproj"
-COPY "KissU.Tests/KissU.Core.Tests/KissU.Core.Services.Client/KissU.Core.Services.Client.csproj" "KissU.Tests/KissU.Core.Tests/KissU.Core.Services.Client/KissU.Core.Services.Client.csproj"
 COPY "KissU.Tests/KissU.Util.Tests/KissU.Util.Biz.Tests.Integration/KissU.Util.Biz.Tests.Integration.csproj" "KissU.Tests/KissU.Util.Tests/KissU.Util.Biz.Tests.Integration/KissU.Util.Biz.Tests.Integration.csproj"
 COPY "KissU.Tests/KissU.Util.Tests/KissU.Util.Datas.Tests.Integration/KissU.Util.Datas.Tests.Integration.csproj" "KissU.Tests/KissU.Util.Tests/KissU.Util.Datas.Tests.Integration/KissU.Util.Datas.Tests.Integration.csproj"
 COPY "KissU.Tests/KissU.Util.Tests/KissU.Util.Tests/KissU.Util.Tests.csproj" "KissU.Tests/KissU.Util.Tests/KissU.Util.Tests/KissU.Util.Tests.csproj"
