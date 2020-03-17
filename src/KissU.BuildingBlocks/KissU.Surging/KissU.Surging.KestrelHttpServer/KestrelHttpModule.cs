@@ -10,6 +10,9 @@ using KissU.Surging.CPlatform.Serialization;
 using KissU.Surging.KestrelHttpServer.Diagnostics;
 using KissU.Surging.KestrelHttpServer.Extensions;
 using KissU.Surging.KestrelHttpServer.Filters.Implementation;
+using KissU.Surging.KestrelHttpServer.Internal;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 namespace KissU.Surging.KestrelHttpServer
@@ -36,6 +39,7 @@ namespace KissU.Surging.KestrelHttpServer
         /// <param name="builder">The builder.</param>
         public virtual void Initialize(ApplicationInitializationContext builder)
         {
+            RestContext.GetContext().Initialize(builder.Builder.ApplicationServices);
         }
 
         /// <summary>
@@ -52,6 +56,7 @@ namespace KissU.Surging.KestrelHttpServer
         /// <param name="context">The context.</param>
         public virtual void RegisterBuilder(ConfigurationContext context)
         {
+            context.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             context.Services.AddFilters(typeof(HttpRequestFilterAttribute));
             context.Services.AddFilters(typeof(CustomerExceptionFilterAttribute));
         }

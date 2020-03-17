@@ -9,6 +9,7 @@ using KissU.Surging.CPlatform.Transport.Implementation;
 using KissU.Surging.CPlatform.Utilities;
 using KissU.Surging.KestrelHttpServer.Filters;
 using KissU.Surging.KestrelHttpServer.Filters.Implementation;
+using KissU.Surging.KestrelHttpServer.Internal;
 
 namespace KissU.Surging.Stage.Filters
 {
@@ -60,7 +61,7 @@ namespace KissU.Surging.Stage.Filters
                             else
                             {
                                 var payload = _authorizationServerProvider.GetPayloadString(author);
-                                RpcContext.GetContext().SetAttachment("payload", payload);
+                                RestContext.GetContext().SetAttachment("payload", payload);
                             }
                         }
                         else

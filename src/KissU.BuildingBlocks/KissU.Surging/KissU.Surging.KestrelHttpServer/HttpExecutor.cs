@@ -15,6 +15,7 @@ using KissU.Surging.CPlatform.Transport;
 using KissU.Surging.CPlatform.Transport.Implementation;
 using KissU.Surging.ProxyGenerator;
 using Microsoft.Extensions.Logging;
+using KissU.Surging.KestrelHttpServer.Internal;
 using static KissU.Surging.CPlatform.Utilities.FastInvoke;
 
 namespace KissU.Surging.KestrelHttpServer
@@ -236,12 +237,11 @@ namespace KissU.Surging.KestrelHttpServer
                         MessageName = remoteInvokeMessage.RoutePath
                     }, TransportType.Rest.ToString(),
                     message.Id,
-                    RpcContext.GetContext().GetAttachment("RemoteIpAddress")?.ToString()));
+                    RestContext.GetContext().GetAttachment("RemoteIpAddress")?.ToString()));
             }
             else
             {
                 var parameters = RpcContext.GetContext().GetContextParameters();
-                parameters.TryRemove("RemoteIpAddress", out var value);
                 RpcContext.GetContext().SetContextParameters(parameters);
             }
         }

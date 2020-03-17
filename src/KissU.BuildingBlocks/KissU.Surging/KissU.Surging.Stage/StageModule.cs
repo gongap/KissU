@@ -110,7 +110,7 @@ namespace KissU.Surging.Stage
                     options.SerializerSettings.ContractResolver = new DefaultContractResolver();
                 }
             });
-            context.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
             context.Services.AddSingleton<IIPChecker, IPAddressChecker>();
             context.Services.AddFilters(typeof(JWTBearerAuthorizationFilterAttribute));
             context.Services.AddFilters(typeof(ActionFilterAttribute));

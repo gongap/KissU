@@ -4,6 +4,7 @@ using KissU.Surging.CPlatform.Messages;
 using KissU.Surging.CPlatform.Transport.Implementation;
 using KissU.Surging.KestrelHttpServer.Filters;
 using KissU.Surging.KestrelHttpServer.Filters.Implementation;
+using KissU.Surging.KestrelHttpServer.Internal;
 using KissU.Surging.Stage.Internal;
 using Microsoft.AspNetCore.Http;
 
@@ -48,7 +49,7 @@ namespace KissU.Surging.Stage.Filters
         public Task OnActionExecuting(ActionExecutingContext filterContext)
         {
             var address = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress;
-            RpcContext.GetContext().SetAttachment("RemoteIpAddress", address.ToString());
+            RestContext.GetContext().SetAttachment("RemoteIpAddress", address.ToString());
             if (_ipChecker.IsBlackIp(address, filterContext.Message.RoutePath))
             {
                 filterContext.Result = new HttpResultMessage<object>

@@ -77,9 +77,9 @@ namespace KissU.Surging.KestrelHttpServer
         public async Task OnReceived(IMessageSender sender, string messageId, HttpContext context,
             IEnumerable<IActionFilter> actionFilters)
         {
-            var serviceRoute = context.Items["route"] as ServiceRoute;
-
-            var path = (context.Items["path"]
+            var serviceRoute = RestContext.GetContext().GetAttachment("route") as ServiceRoute;
+            RestContext.GetContext().RemoveContextParameters("route");
+            var path = (RestContext.GetContext().GetAttachment("path")
                         ?? HttpUtility.UrlDecode(GetRoutePath(context.Request.Path.ToString()))) as string;
             if (serviceRoute == null)
             {
@@ -125,7 +125,7 @@ namespace KissU.Surging.KestrelHttpServer
                 if (!await OnActionExecuting(
                     new ActionExecutingContext {Context = context, Route = serviceRoute, Message = httpMessage},
                     sender, messageId, actionFilters)) return;
-                httpMessage.Attachments = RpcContext.GetContext().GetContextParameters();
+                httpMessage.Attachments = RestContext.GetContext().GetContextParameters();
                 await Received(sender, new TransportMessage(messageId, httpMessage));
             }
             else
@@ -141,7 +141,7 @@ namespace KissU.Surging.KestrelHttpServer
                     if (!await OnActionExecuting(
                         new ActionExecutingContext {Context = context, Route = serviceRoute, Message = httpMessage},
                         sender, messageId, actionFilters)) return;
-                    httpMessage.Attachments = RpcContext.GetContext().GetContextParameters();
+                    httpMessage.Attachments = RestContext.GetContext().GetContextParameters();
                     await Received(sender, new TransportMessage(messageId, httpMessage));
                 }
                 else
@@ -149,7 +149,7 @@ namespace KissU.Surging.KestrelHttpServer
                     if (!await OnActionExecuting(
                         new ActionExecutingContext {Context = context, Route = serviceRoute, Message = httpMessage},
                         sender, messageId, actionFilters)) return;
-                    httpMessage.Attachments = RpcContext.GetContext().GetContextParameters();
+                    httpMessage.Attachments = RestContext.GetContext().GetContextParameters();
                     await Received(sender, new TransportMessage(messageId, httpMessage));
                 }
             }
