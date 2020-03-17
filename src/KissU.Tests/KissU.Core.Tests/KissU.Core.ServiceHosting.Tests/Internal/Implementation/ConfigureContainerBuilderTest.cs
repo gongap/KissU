@@ -1,11 +1,11 @@
 ﻿using System;
 using Autofac;
-using KissU.Core.ServiceHosting.Internal.Implementation;
-using KissU.Core.ServiceHosting.Tests.Samples;
+using KissU.Surging.ServiceHosting.Internal.Implementation;
+using KissU.Surging.ServiceHosting.Tests.Samples;
 using Microsoft.Extensions.Configuration;
 using Xunit;
 
-namespace KissU.Core.ServiceHosting.Tests.Internal.Implementation
+namespace KissU.Surging.ServiceHosting.Tests.Internal.Implementation
 {
     /// <summary>
     /// 容器配置构建器测试.

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
-using KissU.Core.CPlatform.Transport.Implementation;
-using KissU.Core.ProxyGenerator;
+using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
+using KissU.Surging.CPlatform.Transport.Implementation;
+using KissU.Surging.ProxyGenerator;
 using KissU.Modules.Admin.Service.Contracts.Abstractions;
 using KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain;
 using KissU.Modules.Admin.Service.Extensions;

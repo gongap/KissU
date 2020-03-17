@@ -1,7 +1,7 @@
 ﻿using Autofac;
 using Microsoft.Extensions.Configuration;
 
-namespace KissU.Core.ServiceHosting.Tests.Samples
+namespace KissU.Surging.ServiceHosting.Tests.Samples
 {
     /// <summary>
     /// 测试样例

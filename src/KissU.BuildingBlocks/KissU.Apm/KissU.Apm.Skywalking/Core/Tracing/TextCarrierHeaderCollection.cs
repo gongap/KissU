@@ -18,7 +18,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
-using KissU.Core.CPlatform.Diagnostics;
+using KissU.Surging.CPlatform.Diagnostics;
 
 namespace KissU.Apm.Skywalking.Core.Tracing
 {

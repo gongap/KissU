@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core.ServiceHosting\KissU.Core.ServiceHosting.csproj" />
+    <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Surging\KissU.Surging.ServiceHosting\KissU.Surging.ServiceHosting.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -23,7 +23,7 @@ using System.Threading.Tasks;
 using KissU.Apm.Skywalking.Abstractions;
 using KissU.Apm.Skywalking.Abstractions.Config;
 using KissU.Apm.Skywalking.Abstractions.Transport;
-using KissU.Core.CPlatform.Diagnostics;
+using KissU.Surging.CPlatform.Diagnostics;
 using Microsoft.Extensions.Logging;
 
 namespace KissU.Apm.Skywalking.Core.Transport

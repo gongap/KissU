@@ -1,5 +1,5 @@
 ﻿using Autofac;
-using KissU.Core.CPlatform.Utilities;
+using KissU.Surging.CPlatform.Utilities;
 using KissU.Util;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

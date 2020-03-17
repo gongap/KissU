@@ -1,4 +1,4 @@
-﻿using KissU.Core.CPlatform.Module;
+﻿using KissU.Surging.CPlatform.Module;
 
 namespace KissU.Util.Datas.PgSql
 {

@@ -1,9 +1,9 @@
-﻿using KissU.Core.ServiceHosting.Internal.Implementation;
+﻿using KissU.Surging.ServiceHosting.Internal.Implementation;
 using Microsoft.Extensions.Logging;
 using NSubstitute;
 using Xunit;
 
-namespace KissU.Core.ServiceHosting.Tests.Internal.Implementation
+namespace KissU.Surging.ServiceHosting.Tests.Internal.Implementation
 {
     /// <summary>
     /// ApplicationLifetimeTest.

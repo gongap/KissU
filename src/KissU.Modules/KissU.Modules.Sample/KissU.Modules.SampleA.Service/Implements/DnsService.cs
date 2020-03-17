@@ -1,16 +1,16 @@
 ﻿using System.Net;
 using System.Threading.Tasks;
-using KissU.Core.DNS.Runtime;
+using KissU.Surging.DNS.Runtime;
 using KissU.Modules.SampleA.Service.Contracts;
 
 namespace KissU.Modules.SampleA.Service.Implements
 {
     /// <summary>
     /// DnsService.
-    /// Implements the <see cref="KissU.Core.DNS.Runtime.DnsBehavior" />
+    /// Implements the <see cref="KissU.Surging.DNS.Runtime.DnsBehavior" />
     /// Implements the <see cref="KissU.Modules.SampleA.Service.Contracts.IDnsService" />
     /// </summary>
-    /// <seealso cref="KissU.Core.DNS.Runtime.DnsBehavior" />
+    /// <seealso cref="KissU.Surging.DNS.Runtime.DnsBehavior" />
     /// <seealso cref="KissU.Modules.SampleA.Service.Contracts.IDnsService" />
     public class DnsService : DnsBehavior, IDnsService
     {

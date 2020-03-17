@@ -1,27 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.Core.Caching;
-using KissU.Core.Common;
-using KissU.Core.CPlatform.EventBus.Events;
-using KissU.Core.CPlatform.Filters.Implementation;
-using KissU.Core.CPlatform.Ioc;
-using KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
-using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
-using KissU.Core.CPlatform.Support;
-using KissU.Core.CPlatform.Support.Attributes;
-using KissU.Core.KestrelHttpServer.Abstractions;
-using KissU.Core.KestrelHttpServer.Internal;
-using KissU.Core.System.Intercept;
+using KissU.Surging.Caching;
+using KissU.Surging.Common;
+using KissU.Surging.CPlatform.EventBus.Events;
+using KissU.Surging.CPlatform.Filters.Implementation;
+using KissU.Surging.CPlatform.Ioc;
+using KissU.Surging.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
+using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
+using KissU.Surging.CPlatform.Support;
+using KissU.Surging.CPlatform.Support.Attributes;
+using KissU.Surging.KestrelHttpServer.Abstractions;
+using KissU.Surging.KestrelHttpServer.Internal;
+using KissU.Surging.System.Intercept;
 using KissU.Modules.SampleA.Service.Contracts.Dtos;
 
 namespace KissU.Modules.SampleA.Service.Contracts
 {
     /// <summary>
     /// Interface IAccountService
-    /// Implements the <see cref="KissU.Core.CPlatform.Ioc.IServiceKey" />
+    /// Implements the <see cref="KissU.Surging.CPlatform.Ioc.IServiceKey" />
     /// </summary>
-    /// <seealso cref="KissU.Core.CPlatform.Ioc.IServiceKey" />
+    /// <seealso cref="KissU.Surging.CPlatform.Ioc.IServiceKey" />
     [ServiceBundle("api/{Service}/{Method}")]
     //[ServiceBundle("api/{Service}")]
     //[ServiceBundle("api/{Service}/{Method}/test")]

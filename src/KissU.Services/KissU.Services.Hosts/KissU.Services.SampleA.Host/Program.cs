@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Text;
 using Autofac;
-using KissU.Core.Caching.Configurations;
-using KissU.Core.CPlatform;
-using KissU.Core.CPlatform.Configurations;
-using KissU.Core.CPlatform.Utilities;
-using KissU.Core.ProxyGenerator;
-using KissU.Core.ServiceHosting;
-using KissU.Core.ServiceHosting.Internal.Implementation;
+using KissU.Surging.Caching.Configurations;
+using KissU.Surging.CPlatform;
+using KissU.Surging.CPlatform.Configurations;
+using KissU.Surging.CPlatform.Utilities;
+using KissU.Surging.ProxyGenerator;
+using KissU.Surging.ServiceHosting;
+using KissU.Surging.ServiceHosting.Internal.Implementation;
 using Microsoft.Extensions.Logging;
 
 namespace KissU.Services.SampleA.Host

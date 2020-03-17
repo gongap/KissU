@@ -1,17 +1,17 @@
 ﻿using System.Threading.Tasks;
-using KissU.Core.CPlatform.Ioc;
-using KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
-using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
-using KissU.Core.CPlatform.Support.Attributes;
-using KissU.Core.Protocol.WS.Attributes;
+using KissU.Surging.CPlatform.Ioc;
+using KissU.Surging.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
+using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
+using KissU.Surging.CPlatform.Support.Attributes;
+using KissU.Surging.Protocol.WS.Attributes;
 
 namespace KissU.Modules.SampleA.Service.Contracts
 {
     /// <summary>
     /// Interface IChatService
-    /// Implements the <see cref="KissU.Core.CPlatform.Ioc.IServiceKey" />
+    /// Implements the <see cref="KissU.Surging.CPlatform.Ioc.IServiceKey" />
     /// </summary>
-    /// <seealso cref="KissU.Core.CPlatform.Ioc.IServiceKey" />
+    /// <seealso cref="KissU.Surging.CPlatform.Ioc.IServiceKey" />
     [ServiceBundle("Api/{Service}")]
     [BehaviorContract(IgnoreExtensions = true)]
     public interface IChatService : IServiceKey

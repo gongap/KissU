@@ -18,7 +18,7 @@
 
 using System.Collections.Generic;
 using KissU.Apm.Skywalking.Abstractions.Transport;
-using KissU.Core.CPlatform.Diagnostics;
+using KissU.Surging.CPlatform.Diagnostics;
 
 namespace KissU.Apm.Skywalking.Core.Transport
 {

@@ -2,7 +2,7 @@
   "CachingSettings": [
     {
       "Id": "ddlCache",
-      "Class": "KissU.Core.Caching.RedisCache.RedisContext,KissU.Core.Caching",
+      "Class": "KissU.Surging.Caching.RedisCache.RedisContext,KissU.Surging.Caching",
       "Properties": [
         {
           "Name": "appRuleFile",
@@ -45,7 +45,7 @@
     },
     {
       "Id": "KissUDemoCache",
-      "Class": "KissU.Core.Caching.RedisCache.RedisContext,KissU.Core.Caching",
+      "Class": "KissU.Surging.Caching.RedisCache.RedisContext,KissU.Surging.Caching",
       "InitMethod": "",
       "Maps": null,
       "Properties": [

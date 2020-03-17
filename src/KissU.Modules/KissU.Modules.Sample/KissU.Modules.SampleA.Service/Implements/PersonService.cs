@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using KissU.Core.Common;
-using KissU.Core.CPlatform.EventBus.Events;
-using KissU.Core.CPlatform.Ioc;
-using KissU.Core.KestrelHttpServer.Abstractions;
-using KissU.Core.KestrelHttpServer.Internal;
-using KissU.Core.ProxyGenerator;
+using KissU.Surging.Common;
+using KissU.Surging.CPlatform.EventBus.Events;
+using KissU.Surging.CPlatform.Ioc;
+using KissU.Surging.KestrelHttpServer.Abstractions;
+using KissU.Surging.KestrelHttpServer.Internal;
+using KissU.Surging.ProxyGenerator;
 using KissU.Modules.SampleA.Service.Contracts;
 using KissU.Modules.SampleA.Service.Contracts.Dtos;
 using KissU.Modules.SampleA.Service.Repositories;
@@ -16,10 +16,10 @@ namespace KissU.Modules.SampleA.Service.Implements
 {
     /// <summary>
     /// PersonService.
-    /// Implements the <see cref="KissU.Core.ProxyGenerator.ProxyServiceBase" />
+    /// Implements the <see cref="KissU.Surging.ProxyGenerator.ProxyServiceBase" />
     /// Implements the <see cref="KissU.Modules.SampleA.Service.Contracts.IUserService" />
     /// </summary>
-    /// <seealso cref="KissU.Core.ProxyGenerator.ProxyServiceBase" />
+    /// <seealso cref="KissU.Surging.ProxyGenerator.ProxyServiceBase" />
     /// <seealso cref="KissU.Modules.SampleA.Service.Contracts.IUserService" />
     [ModuleName("Person")]
     public class PersonService : ProxyServiceBase, IUserService

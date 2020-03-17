@@ -1,17 +1,17 @@
 ﻿using System.Threading.Tasks;
-using KissU.Core.CPlatform.Ioc;
-using KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
-using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
-using KissU.Core.CPlatform.Support;
-using KissU.Core.CPlatform.Support.Attributes;
+using KissU.Surging.CPlatform.Ioc;
+using KissU.Surging.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
+using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
+using KissU.Surging.CPlatform.Support;
+using KissU.Surging.CPlatform.Support.Attributes;
 
 namespace KissU.Modules.SampleB.Service.Contracts
 {
     /// <summary>
     /// Interface IManagerService
-    /// Implements the <see cref="KissU.Core.CPlatform.Ioc.IServiceKey" />
+    /// Implements the <see cref="KissU.Surging.CPlatform.Ioc.IServiceKey" />
     /// </summary>
-    /// <seealso cref="KissU.Core.CPlatform.Ioc.IServiceKey" />
+    /// <seealso cref="KissU.Surging.CPlatform.Ioc.IServiceKey" />
     [ServiceBundle("api/{Service}")]
     public interface IManagerService : IServiceKey
     {

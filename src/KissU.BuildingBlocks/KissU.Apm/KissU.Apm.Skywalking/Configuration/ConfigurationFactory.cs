@@ -20,7 +20,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using KissU.Apm.Skywalking.Abstractions;
-using KissU.Core.CPlatform;
+using KissU.Surging.CPlatform;
 using Microsoft.Extensions.Configuration;
 
 // ReSharper disable StringLiteralTypo

@@ -1,10 +1,10 @@
 ﻿using Autofac;
-using KissU.Core.ServiceHosting.Startup.Implementation;
-using KissU.Core.ServiceHosting.Tests.Samples;
+using KissU.Surging.ServiceHosting.Startup.Implementation;
+using KissU.Surging.ServiceHosting.Tests.Samples;
 using NSubstitute;
 using Xunit;
 
-namespace KissU.Core.ServiceHosting.Tests.Startup.Implementation
+namespace KissU.Surging.ServiceHosting.Tests.Startup.Implementation
 {
     /// <summary>
     /// 基于约定的启动测试.

@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using KissU.Core.ProxyGenerator;
+using KissU.Surging.ProxyGenerator;
 using KissU.Modules.SampleA.Service.Contracts;
 using KissU.Modules.SampleA.Service.Contracts.Dtos;
 
@@ -7,10 +7,10 @@ namespace KissU.Modules.SampleA.Service.Implements
 {
     /// <summary>
     /// RoteMangeService.
-    /// Implements the <see cref="KissU.Core.ProxyGenerator.ProxyServiceBase" />
+    /// Implements the <see cref="KissU.Surging.ProxyGenerator.ProxyServiceBase" />
     /// Implements the <see cref="KissU.Modules.SampleA.Service.Contracts.IRoteMangeService" />
     /// </summary>
-    /// <seealso cref="KissU.Core.ProxyGenerator.ProxyServiceBase" />
+    /// <seealso cref="KissU.Surging.ProxyGenerator.ProxyServiceBase" />
     /// <seealso cref="KissU.Modules.SampleA.Service.Contracts.IRoteMangeService" />
     public class RoteMangeService : ProxyServiceBase, IRoteMangeService
     {

@@ -1,16 +1,16 @@
 ﻿using System.Threading.Tasks;
 using Greet;
 using Grpc.Core;
-using KissU.Core.CPlatform.Ioc;
-using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
+using KissU.Surging.CPlatform.Ioc;
+using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 
 namespace KissU.Modules.SampleA.Service.Contracts
 {
     /// <summary>
     /// Interface IGreeterService
-    /// Implements the <see cref="KissU.Core.CPlatform.Ioc.IServiceKey" />
+    /// Implements the <see cref="KissU.Surging.CPlatform.Ioc.IServiceKey" />
     /// </summary>
-    /// <seealso cref="KissU.Core.CPlatform.Ioc.IServiceKey" />
+    /// <seealso cref="KissU.Surging.CPlatform.Ioc.IServiceKey" />
     [ServiceBundle("api/{Service}/{Method}")]
     public interface IGreeterService : IServiceKey
     {

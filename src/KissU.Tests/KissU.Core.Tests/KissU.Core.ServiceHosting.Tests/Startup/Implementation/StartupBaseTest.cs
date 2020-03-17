@@ -1,8 +1,8 @@
 ﻿using Autofac;
-using KissU.Core.ServiceHosting.Tests.Samples;
+using KissU.Surging.ServiceHosting.Tests.Samples;
 using Xunit;
 
-namespace KissU.Core.ServiceHosting.Tests.Startup.Implementation
+namespace KissU.Surging.ServiceHosting.Tests.Startup.Implementation
 {
     /// <summary>
     /// 启动基类测试.

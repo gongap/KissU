@@ -1,12 +1,12 @@
-﻿using KissU.Core.CPlatform.EventBus.Events;
+﻿using KissU.Surging.CPlatform.EventBus.Events;
 
 namespace KissU.Modules.SampleA.Service.Contracts.Events
 {
     /// <summary>
     /// LogoutEvent.
-    /// Implements the <see cref="KissU.Core.CPlatform.EventBus.Events.IntegrationEvent" />
+    /// Implements the <see cref="KissU.Surging.CPlatform.EventBus.Events.IntegrationEvent" />
     /// </summary>
-    /// <seealso cref="KissU.Core.CPlatform.EventBus.Events.IntegrationEvent" />
+    /// <seealso cref="KissU.Surging.CPlatform.EventBus.Events.IntegrationEvent" />
     public class LogoutEvent : IntegrationEvent
     {
         /// <summary>

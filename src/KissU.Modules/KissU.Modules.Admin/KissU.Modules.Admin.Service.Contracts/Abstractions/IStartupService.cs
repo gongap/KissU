@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
-using KissU.Core.CPlatform.Ioc;
-using KissU.Core.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
-using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
-using KissU.Core.CPlatform.Support;
-using KissU.Core.CPlatform.Support.Attributes;
+using KissU.Surging.CPlatform.Ioc;
+using KissU.Surging.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
+using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
+using KissU.Surging.CPlatform.Support;
+using KissU.Surging.CPlatform.Support.Attributes;
 using KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain;
 using KissU.Util.Applications;
 

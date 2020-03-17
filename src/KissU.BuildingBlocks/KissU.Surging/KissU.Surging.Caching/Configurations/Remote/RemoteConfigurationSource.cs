@@ -1,0 +1,64 @@
+﻿using System;
+using System.Net.Http;
+using Microsoft.Extensions.Configuration;
+
+namespace KissU.Surging.Caching.Configurations.Remote
+{
+    /// <summary>
+    /// RemoteConfigurationSource.
+    /// Implements the <see cref="Microsoft.Extensions.Configuration.IConfigurationSource" />
+    /// </summary>
+    /// <seealso cref="Microsoft.Extensions.Configuration.IConfigurationSource" />
+    public class RemoteConfigurationSource : IConfigurationSource
+    {
+        /// <summary>
+        /// The uri to call to fetch
+        /// </summary>
+        public Uri ConfigurationUri { get; set; }
+
+        /// <summary>
+        /// Determines if the remote source is optional
+        /// </summary>
+        public bool Optional { get; set; }
+
+        /// <summary>
+        /// The HttpMessageHandler used to communicate with remote configuration provider.
+        /// </summary>
+        public HttpMessageHandler BackchannelHttpHandler { get; set; }
+
+        /// <summary>
+        /// Gets or sets timeout value in milliseconds for back channel communications with the remote identity provider.
+        /// </summary>
+        public TimeSpan BackchannelTimeout { get; set; } = TimeSpan.FromSeconds(60);
+
+        /// <summary>
+        /// Parser for parsing the returned data into the required configuration source
+        /// </summary>
+        public IConfigurationParser Parser { get; set; }
+
+        /// <summary>
+        /// The accept header used to create a MediaTypeWithQualityHeaderValue
+        /// </summary>
+        public string MediaType { get; set; } = "application/json";
+
+        /// <summary>
+        /// Events providing hooks into the remote call
+        /// </summary>
+        public RemoteConfigurationEvents Events { get; set; } = new RemoteConfigurationEvents();
+
+        /// <summary>
+        /// If provided, keys loaded from endpoint will be prefixed with the provided value
+        /// </summary>
+        public string ConfigurationKeyPrefix { get; set; }
+
+        /// <summary>
+        /// Builds the specified builder.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <returns>IConfigurationProvider.</returns>
+        public IConfigurationProvider Build(IConfigurationBuilder builder)
+        {
+            return new RemoteConfigurationProvider(this);
+        }
+    }
+}

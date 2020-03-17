@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Autofac;
-using KissU.Core.ServiceHosting.Internal;
-using KissU.Core.ServiceHosting.Internal.Implementation;
-using KissU.Core.ServiceHosting.Startup;
-using KissU.Core.ServiceHosting.Tests.Samples;
+using KissU.Surging.ServiceHosting.Internal;
+using KissU.Surging.ServiceHosting.Internal.Implementation;
+using KissU.Surging.ServiceHosting.Startup;
+using KissU.Surging.ServiceHosting.Tests.Samples;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
 using NSubstitute;
 using Xunit;
 
-namespace KissU.Core.ServiceHosting.Tests.Internal.Implementation
+namespace KissU.Surging.ServiceHosting.Tests.Internal.Implementation
 {
     /// <summary>
     /// ServiceHostTest.

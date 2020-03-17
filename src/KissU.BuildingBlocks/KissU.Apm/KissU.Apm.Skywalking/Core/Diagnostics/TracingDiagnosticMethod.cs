@@ -20,7 +20,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using AspectCore.Extensions.Reflection;
-using KissU.Core.CPlatform.Diagnostics;
+using KissU.Surging.CPlatform.Diagnostics;
 
 namespace KissU.Apm.Skywalking.Core.Diagnostics
 {

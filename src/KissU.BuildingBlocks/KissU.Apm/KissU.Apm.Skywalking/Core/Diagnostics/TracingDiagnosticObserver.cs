@@ -18,7 +18,7 @@
 
 using System;
 using System.Collections.Generic;
-using KissU.Core.CPlatform.Diagnostics;
+using KissU.Surging.CPlatform.Diagnostics;
 using Microsoft.Extensions.Logging;
 
 namespace KissU.Apm.Skywalking.Core.Diagnostics

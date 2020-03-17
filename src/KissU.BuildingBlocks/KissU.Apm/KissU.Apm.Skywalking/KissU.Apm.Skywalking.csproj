@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\KissU.Core\KissU.Core.CPlatform\KissU.Core.CPlatform.csproj" />
+    <ProjectReference Include="..\..\KissU.Surging\KissU.Surging.CPlatform\KissU.Surging.CPlatform.csproj" />
   </ItemGroup>
 
   <ItemGroup>

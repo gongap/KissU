@@ -1,9 +1,9 @@
 ﻿using System;
-using KissU.Core.ServiceHosting.Internal.Implementation;
-using KissU.Core.ServiceHosting.Tests.Samples;
+using KissU.Surging.ServiceHosting.Internal.Implementation;
+using KissU.Surging.ServiceHosting.Tests.Samples;
 using Xunit;
 
-namespace KissU.Core.ServiceHosting.Tests.Internal.Implementation
+namespace KissU.Surging.ServiceHosting.Tests.Internal.Implementation
 {
     /// <summary>
     /// ConfigureServicesBuilderTest.

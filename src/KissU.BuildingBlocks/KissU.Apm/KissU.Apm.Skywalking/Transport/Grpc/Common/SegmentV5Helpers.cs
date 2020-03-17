@@ -20,7 +20,7 @@ using System;
 using System.Linq;
 using Google.Protobuf;
 using KissU.Apm.Skywalking.Abstractions.Transport;
-using KissU.Core.CPlatform.Diagnostics;
+using KissU.Surging.CPlatform.Diagnostics;
 using SkyWalking.NetworkProtocol;
 using SpanLayer = SkyWalking.NetworkProtocol.SpanLayer;
 using SpanType = SkyWalking.NetworkProtocol.SpanType;

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using KissU.Core.CPlatform.Ioc;
-using KissU.Core.ProxyGenerator;
-using KissU.Core.ServiceHosting.Extensions.Runtime;
+using KissU.Surging.CPlatform.Ioc;
+using KissU.Surging.ProxyGenerator;
+using KissU.Surging.ServiceHosting.Extensions.Runtime;
 using KissU.Modules.SampleA.Service.Contracts;
 using KissU.Modules.SampleA.Service.Contracts.Dtos;
 using Microsoft.Extensions.Logging;
@@ -13,13 +13,13 @@ namespace KissU.Modules.SampleA.Service.Implements
 {
     /// <summary>
     /// WorkService.
-    /// Implements the <see cref="KissU.Core.ServiceHosting.Extensions.Runtime.BackgroundServiceBehavior" />
+    /// Implements the <see cref="KissU.Surging.ServiceHosting.Extensions.Runtime.BackgroundServiceBehavior" />
     /// Implements the <see cref="KissU.Modules.SampleA.Service.Contracts.IWorkService" />
-    /// Implements the <see cref="KissU.Core.CPlatform.Ioc.ISingleInstance" />
+    /// Implements the <see cref="KissU.Surging.CPlatform.Ioc.ISingleInstance" />
     /// </summary>
-    /// <seealso cref="KissU.Core.ServiceHosting.Extensions.Runtime.BackgroundServiceBehavior" />
+    /// <seealso cref="KissU.Surging.ServiceHosting.Extensions.Runtime.BackgroundServiceBehavior" />
     /// <seealso cref="KissU.Modules.SampleA.Service.Contracts.IWorkService" />
-    /// <seealso cref="KissU.Core.CPlatform.Ioc.ISingleInstance" />
+    /// <seealso cref="KissU.Surging.CPlatform.Ioc.ISingleInstance" />
     public class WorkService : BackgroundServiceBehavior, IWorkService, ISingleInstance
     {
         private readonly ILogger<WorkService> _logger;

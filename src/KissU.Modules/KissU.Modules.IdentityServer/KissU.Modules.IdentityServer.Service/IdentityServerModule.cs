@@ -1,6 +1,6 @@
 ﻿using Autofac.Extensions.DependencyInjection;
-using KissU.Core.CPlatform;
-using KissU.Core.CPlatform.Module;
+using KissU.Surging.CPlatform;
+using KissU.Surging.CPlatform.Module;
 using KissU.Modules.IdentityServer.Data;
 using KissU.Modules.IdentityServer.Data.UnitOfWorks.SqlServer;
 using KissU.Modules.IdentityServer.Domain.UnitOfWorks;

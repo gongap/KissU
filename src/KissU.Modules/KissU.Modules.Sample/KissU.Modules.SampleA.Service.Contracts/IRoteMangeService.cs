@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using KissU.Core.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
+using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Modules.SampleA.Service.Contracts.Dtos;
 
 namespace KissU.Modules.SampleA.Service.Contracts

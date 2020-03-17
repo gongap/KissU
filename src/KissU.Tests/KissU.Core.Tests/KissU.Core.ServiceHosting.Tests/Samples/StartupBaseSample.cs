@@ -1,7 +1,7 @@
 ﻿using Autofac;
-using KissU.Core.ServiceHosting.Startup.Implementation;
+using KissU.Surging.ServiceHosting.Startup.Implementation;
 
-namespace KissU.Core.ServiceHosting.Tests.Samples
+namespace KissU.Surging.ServiceHosting.Tests.Samples
 {
     /// <summary>
     /// 启动基类样例.
