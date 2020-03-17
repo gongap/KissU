@@ -6,7 +6,7 @@ using KissU.Util.Domains.Trees;
 namespace KissU.Util
 {
     /// <summary>
-    /// 树型扩展
+    /// 树形扩展
     /// </summary>
     public static partial class Extensions
     {

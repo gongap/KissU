@@ -9,7 +9,7 @@ namespace KissU.Util.Datas.Tests.Integration.Commons.Domains.Repositories
     public interface IProductRepository : ICompactRepository<Product, int>
     {
         /// <summary>
-        /// 通过编号获取商品 - 内部采用FirstOrDefault方法获取
+        /// 通过标识获取商品 - 内部采用FirstOrDefault方法获取
         /// </summary>
         /// <param name="id">商品编号</param>
         /// <returns>Product.</returns>

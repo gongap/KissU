@@ -4,14 +4,14 @@ using KissU.Util.Domains.Trees;
 namespace KissU.Util.Datas.Persistence
 {
     /// <summary>
-    /// 树型持久化对象
+    /// 树形持久化对象
     /// </summary>
     public abstract class TreePersistentObjectBase : TreePersistentObjectBase<Guid, Guid?>
     {
     }
 
     /// <summary>
-    /// 树型持久化对象
+    /// 树形持久化对象
     /// </summary>
     /// <typeparam name="TKey">标识类型</typeparam>
     /// <typeparam name="TParentId">父标识类型</typeparam>

@@ -7,7 +7,7 @@ using KissU.Util.Properties;
 namespace KissU.Util.Domains.Trees
 {
     /// <summary>
-    /// 树型路径更新服务
+    /// 树形路径更新服务
     /// </summary>
     /// <typeparam name="TEntity">The type of the t entity.</typeparam>
     /// <typeparam name="TKey">The type of the t key.</typeparam>
@@ -21,7 +21,7 @@ namespace KissU.Util.Domains.Trees
         private readonly ITreeCompactRepository<TEntity, TKey, TParentId> _repository;
 
         /// <summary>
-        /// 初始化树型路径更新服务
+        /// 初始化树形路径更新服务
         /// </summary>
         /// <param name="repository">仓储</param>
         public UpdatePathManager(ITreeCompactRepository<TEntity, TKey, TParentId> repository)

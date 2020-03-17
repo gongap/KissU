@@ -15,7 +15,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts
     public interface IQueryApplicationService : IServiceKey
     {
         /// <summary>
-        /// 通过编号获取
+        /// 通过标识获取
         /// </summary>
         /// <param name="id">实体编号</param>
         /// <returns>Task&lt;ApplicationDto&gt;.</returns>
@@ -23,7 +23,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts
         Task<ApplicationDto> GetByIdAsync(string id);
 
         /// <summary>
-        /// 通过编号列表获取
+        /// 通过标识列表获取
         /// </summary>
         /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
         /// <returns>Task&lt;List&lt;ApplicationDto&gt;&gt;.</returns>

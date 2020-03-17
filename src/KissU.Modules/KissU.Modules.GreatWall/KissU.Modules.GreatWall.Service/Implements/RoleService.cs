@@ -28,7 +28,7 @@ namespace KissU.Modules.GreatWall.Service.Implements
         }
 
         /// <summary>
-        /// 通过编号获取
+        /// 通过标识获取
         /// </summary>
         /// <param name="id">实体编号</param>
         /// <returns>Task&lt;RoleDto&gt;.</returns>
@@ -38,7 +38,7 @@ namespace KissU.Modules.GreatWall.Service.Implements
         }
 
         /// <summary>
-        /// 通过编号列表获取
+        /// 通过标识列表获取
         /// </summary>
         /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
         /// <returns>Task&lt;List&lt;RoleDto&gt;&gt;.</returns>

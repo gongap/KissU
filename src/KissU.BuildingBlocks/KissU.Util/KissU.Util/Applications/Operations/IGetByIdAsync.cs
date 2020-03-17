@@ -10,14 +10,14 @@ namespace KissU.Util.Applications.Operations
     public interface IGetByIdAsync<TDto> where TDto : new()
     {
         /// <summary>
-        /// 通过编号获取
+        /// 通过标识获取
         /// </summary>
         /// <param name="id">实体编号</param>
         /// <returns>Task&lt;TDto&gt;.</returns>
         Task<TDto> GetByIdAsync(object id);
 
         /// <summary>
-        /// 通过编号列表获取
+        /// 通过标识列表获取
         /// </summary>
         /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
         /// <returns>Task&lt;List&lt;TDto&gt;&gt;.</returns>

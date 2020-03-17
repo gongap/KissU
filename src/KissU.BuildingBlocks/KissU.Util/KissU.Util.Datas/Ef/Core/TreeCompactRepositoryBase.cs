@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 namespace KissU.Util.Datas.Ef.Core
 {
     /// <summary>
-    /// 树型仓储
+    /// 树形仓储
     /// </summary>
     /// <typeparam name="TEntity">实体类型</typeparam>
     /// <typeparam name="TPo">持久化对象类型</typeparam>
@@ -26,7 +26,7 @@ namespace KissU.Util.Datas.Ef.Core
         private readonly IStore<TPo, Guid> _store;
 
         /// <summary>
-        /// 初始化树型仓储
+        /// 初始化树形仓储
         /// </summary>
         /// <param name="store">存储器</param>
         protected TreeCompactRepositoryBase(IStore<TPo, Guid> store) : base(store)
@@ -47,7 +47,7 @@ namespace KissU.Util.Datas.Ef.Core
     }
 
     /// <summary>
-    /// 树型仓储
+    /// 树形仓储
     /// </summary>
     /// <typeparam name="TEntity">实体类型</typeparam>
     /// <typeparam name="TPo">持久化对象类型</typeparam>
@@ -64,7 +64,7 @@ namespace KissU.Util.Datas.Ef.Core
         private readonly IStore<TPo, TKey> _store;
 
         /// <summary>
-        /// 初始化树型仓储
+        /// 初始化树形仓储
         /// </summary>
         /// <param name="store">存储器</param>
         protected TreeCompactRepositoryBase(IStore<TPo, TKey> store) : base(store)

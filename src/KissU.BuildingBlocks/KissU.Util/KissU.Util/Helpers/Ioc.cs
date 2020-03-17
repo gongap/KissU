@@ -11,7 +11,7 @@ namespace KissU.Util.Helpers
     /// <summary>
     /// 容器
     /// </summary>
-    public static class Ioc
+    public static partial class Ioc
     {
         /// <summary>
         /// 默认容器

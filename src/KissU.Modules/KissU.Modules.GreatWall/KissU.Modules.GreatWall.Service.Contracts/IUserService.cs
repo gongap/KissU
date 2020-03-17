@@ -17,7 +17,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts
     public interface IUserService : IServiceKey
     {
         /// <summary>
-        /// 通过编号获取
+        /// 通过标识获取
         /// </summary>
         /// <param name="id">实体编号</param>
         /// <returns>Task&lt;UserDto&gt;.</returns>
@@ -25,7 +25,7 @@ namespace KissU.Modules.GreatWall.Service.Contracts
         Task<UserDto> GetByIdAsync(string id);
 
         /// <summary>
-        /// 通过编号列表获取
+        /// 通过标识列表获取
         /// </summary>
         /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
         /// <returns>Task&lt;List&lt;UserDto&gt;&gt;.</returns>

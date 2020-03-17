@@ -443,7 +443,7 @@ namespace KissU.Util.AspNetCore.Clients
             InitToken();
             if (string.IsNullOrWhiteSpace(_token))
                 return;
-            client.SetBearerToken(_token);
+            client.SetToken("Bearer", _token);
         }
 
         /// <summary>

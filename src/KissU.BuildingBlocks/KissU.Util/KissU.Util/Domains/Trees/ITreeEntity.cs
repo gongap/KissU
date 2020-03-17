@@ -3,7 +3,7 @@
 namespace KissU.Util.Domains.Trees
 {
     /// <summary>
-    /// 树型实体
+    /// 树形实体
     /// </summary>
     /// <typeparam name="TEntity">实体类型</typeparam>
     /// <typeparam name="TKey">实体标识类型</typeparam>

@@ -4,7 +4,7 @@ using Xunit;
 namespace KissU.Util.Tests.Datas.Queries.Trees
 {
     /// <summary>
-    /// 树型查询参数测试
+    /// 树形查询参数测试
     /// </summary>
     public class TreeQueryParameterTest
     {
@@ -17,7 +17,7 @@ namespace KissU.Util.Tests.Datas.Queries.Trees
         }
 
         /// <summary>
-        /// 树型查询参数
+        /// 树形查询参数
         /// </summary>
         private readonly TreeQueryParameter _parameter;
 

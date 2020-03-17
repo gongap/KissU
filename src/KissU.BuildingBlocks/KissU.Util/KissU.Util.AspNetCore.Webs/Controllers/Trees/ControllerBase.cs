@@ -11,19 +11,19 @@ namespace KissU.Util.AspNetCore.Webs.Controllers.Trees
     /// <typeparam name="TDto">数据传输对象类型</typeparam>
     /// <typeparam name="TQuery">查询参数类型</typeparam>
     /// <typeparam name="TParentId">父标识类型</typeparam>
-    public abstract class ControllerBase<TDto, TQuery, TParentId> : WebApiControllerBase
+    public abstract partial class ControllerBase<TDto, TQuery, TParentId> : WebApiControllerBase
         where TDto : class, ITreeNode, new()
         where TQuery : class, ITreeQueryParameter<TParentId>
     {
         /// <summary>
-        /// 树型服务
+        /// 树形服务
         /// </summary>
         private readonly ITreeService<TDto, TQuery, TParentId> _service;
 
         /// <summary>
-        /// 初始化树型控制器
+        /// 初始化树形控制器
         /// </summary>
-        /// <param name="service">树型服务</param>
+        /// <param name="service">树形服务</param>
         protected ControllerBase(ITreeService<TDto, TQuery, TParentId> service)
         {
             _service = service;

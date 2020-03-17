@@ -197,7 +197,7 @@ namespace KissU.Modules.GreatWall.Data.Repositories
         }
 
         /// <summary>
-        /// 通过编号获取角色
+        /// 通过标识获取角色
         /// </summary>
         /// <param name="roleId">角色编号</param>
         /// <param name="cancellationToken">取消令牌</param>

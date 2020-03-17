@@ -4,19 +4,19 @@ using KissU.Util.Domains.Trees;
 namespace KissU.Util.Tests.Samples
 {
     /// <summary>
-    /// 树型实体测试样例
+    /// 树形实体测试样例
     /// </summary>
     public class TreeEntitySample : TreeEntityBase<TreeEntitySample>
     {
         /// <summary>
-        /// 初始化树型实体测试样例
+        /// 初始化树形实体测试样例
         /// </summary>
         public TreeEntitySample() : this(Guid.Empty)
         {
         }
 
         /// <summary>
-        /// 初始化树型实体测试样例
+        /// 初始化树形实体测试样例
         /// </summary>
         /// <param name="id">标识</param>
         public TreeEntitySample(Guid id)
@@ -25,7 +25,7 @@ namespace KissU.Util.Tests.Samples
         }
 
         /// <summary>
-        /// 初始化树型实体测试样例
+        /// 初始化树形实体测试样例
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <param name="path">The path.</param>

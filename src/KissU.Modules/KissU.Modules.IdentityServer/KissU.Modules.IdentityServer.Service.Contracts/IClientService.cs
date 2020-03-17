@@ -18,7 +18,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
     public interface IClientService : IServiceKey
     {
         /// <summary>
-        /// 通过编号获取
+        /// 通过标识获取
         /// </summary>
         /// <param name="id">实体编号</param>
         /// <returns>Task&lt;ClientDto&gt;.</returns>
@@ -26,7 +26,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         Task<ClientDto> GetByIdAsync(int id);
 
         /// <summary>
-        /// 通过编号列表获取
+        /// 通过标识列表获取
         /// </summary>
         /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
         /// <returns>Task&lt;List&lt;ClientDto&gt;&gt;.</returns>

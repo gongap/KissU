@@ -9,7 +9,7 @@ using Xunit;
 namespace KissU.Util.Tests
 {
     /// <summary>
-    /// 扩展测试 - 树型扩展
+    /// 扩展测试 - 树形扩展
     /// </summary>
     public partial class ExtensionTest
     {

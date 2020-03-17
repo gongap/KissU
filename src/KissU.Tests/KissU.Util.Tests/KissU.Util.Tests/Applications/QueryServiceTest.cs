@@ -91,7 +91,7 @@ namespace KissU.Util.Tests.Applications
         }
 
         /// <summary>
-        /// 测试通过编号获取
+        /// 测试通过标识获取
         /// </summary>
         [Fact]
         public void TestGetById()
@@ -102,7 +102,7 @@ namespace KissU.Util.Tests.Applications
         }
 
         /// <summary>
-        /// 测试通过编号获取
+        /// 测试通过标识获取
         /// </summary>
         [Fact]
         public async Task TestGetByIdAsync()
@@ -113,7 +113,7 @@ namespace KissU.Util.Tests.Applications
         }
 
         /// <summary>
-        /// 测试通过编号列表获取
+        /// 测试通过标识列表获取
         /// </summary>
         [Fact]
         public void TestGetByIds()
@@ -127,7 +127,7 @@ namespace KissU.Util.Tests.Applications
         }
 
         /// <summary>
-        /// 测试通过编号列表获取
+        /// 测试通过标识列表获取
         /// </summary>
         [Fact]
         public async Task TestGetByIdsAsync()

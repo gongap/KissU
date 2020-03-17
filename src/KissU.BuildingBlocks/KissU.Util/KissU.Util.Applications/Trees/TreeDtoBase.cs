@@ -4,7 +4,7 @@ using KissU.Util.Applications.Dtos;
 namespace KissU.Util.Applications.Trees
 {
     /// <summary>
-    /// 树型参数
+    /// 树形参数
     /// </summary>
     public abstract class TreeDtoBase : DtoBase, ITreeNode
     {

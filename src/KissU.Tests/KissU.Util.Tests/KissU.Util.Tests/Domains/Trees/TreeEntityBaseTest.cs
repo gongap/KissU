@@ -5,7 +5,7 @@ using Xunit;
 namespace KissU.Util.Tests.Domains.Trees
 {
     /// <summary>
-    /// 测试树型实体
+    /// 测试树形实体
     /// </summary>
     public class TreeEntityBaseTest
     {

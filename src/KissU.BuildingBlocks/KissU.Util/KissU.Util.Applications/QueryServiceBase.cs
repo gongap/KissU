@@ -91,7 +91,7 @@ namespace KissU.Util.Applications
         }
 
         /// <summary>
-        /// 通过编号获取
+        /// 通过标识获取
         /// </summary>
         /// <param name="id">实体编号</param>
         /// <returns>结果</returns>
@@ -102,7 +102,7 @@ namespace KissU.Util.Applications
         }
 
         /// <summary>
-        /// 通过编号获取
+        /// 通过标识获取
         /// </summary>
         /// <param name="id">实体编号</param>
         /// <returns>A <see cref="Task" /> representing the asynchronous operation.</returns>
@@ -113,7 +113,7 @@ namespace KissU.Util.Applications
         }
 
         /// <summary>
-        /// 通过编号列表获取
+        /// 通过标识列表获取
         /// </summary>
         /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
         /// <returns>结果</returns>
@@ -123,7 +123,7 @@ namespace KissU.Util.Applications
         }
 
         /// <summary>
-        /// 通过编号列表获取
+        /// 通过标识列表获取
         /// </summary>
         /// <param name="ids">用逗号分隔的Id列表，范例："1,2"</param>
         /// <returns>A <see cref="Task" /> representing the asynchronous operation.</returns>

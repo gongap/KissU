@@ -14,7 +14,7 @@ namespace KissU.Util.AspNetCore.Webs.Controllers
     [ExceptionHandler]
     [ErrorLog]
     [TraceLog]
-    public abstract class WebApiControllerBase : Controller
+    public abstract partial class WebApiControllerBase : Controller
     {
         /// <summary>
         /// 日志
@@ -24,7 +24,7 @@ namespace KissU.Util.AspNetCore.Webs.Controllers
         /// <summary>
         /// 日志
         /// </summary>
-        public ILog Log => _log ?? (_log = GetLog());
+        public ILog Log => _log ??= GetLog();
 
         /// <summary>
         /// 会话

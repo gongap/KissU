@@ -6,13 +6,13 @@ using KissU.Util.Domains.Trees;
 namespace KissU.Util.Datas.Queries.Trees
 {
     /// <summary>
-    /// 树型查询条件
+    /// 树形查询条件
     /// </summary>
     /// <typeparam name="TEntity">The type of the t entity.</typeparam>
     public class TreeCriteria<TEntity> : TreeCriteria<TEntity, Guid?> where TEntity : IPath, IEnabled, IParentId<Guid?>
     {
         /// <summary>
-        /// 初始化树型查询条件
+        /// 初始化树形查询条件
         /// </summary>
         /// <param name="parameter">查询参数</param>
         public TreeCriteria(ITreeQueryParameter parameter) : base(parameter)
@@ -23,14 +23,14 @@ namespace KissU.Util.Datas.Queries.Trees
     }
 
     /// <summary>
-    /// 树型查询条件
+    /// 树形查询条件
     /// </summary>
     /// <typeparam name="TEntity">The type of the t entity.</typeparam>
     /// <typeparam name="TParentId">The type of the t parent identifier.</typeparam>
     public class TreeCriteria<TEntity, TParentId> : ICriteria<TEntity> where TEntity : IPath, IEnabled
     {
         /// <summary>
-        /// 初始化树型查询条件
+        /// 初始化树形查询条件
         /// </summary>
         /// <param name="parameter">查询参数</param>
         public TreeCriteria(ITreeQueryParameter<TParentId> parameter)

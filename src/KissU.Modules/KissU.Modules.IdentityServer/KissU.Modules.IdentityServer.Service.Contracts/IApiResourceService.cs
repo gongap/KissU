@@ -19,7 +19,7 @@ namespace KissU.Modules.IdentityServer.Service.Contracts
         #region 资源
 
         /// <summary>
-        /// 通过编号获取
+        /// 通过标识获取
         /// </summary>
         /// <param name="id">实体编号</param>
         /// <returns>Task&lt;ApiResourceDto&gt;.</returns>

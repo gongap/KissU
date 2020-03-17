@@ -14,7 +14,7 @@ namespace KissU.Util.AspNetCore.Webs.Controllers
     /// </summary>
     /// <typeparam name="TDto">数据传输对象类型</typeparam>
     /// <typeparam name="TQuery">查询参数类型</typeparam>
-    public abstract class CrudControllerBase<TDto, TQuery> : CrudControllerBase<TDto, TDto, TDto, TQuery>
+    public abstract partial class CrudControllerBase<TDto, TQuery> : CrudControllerBase<TDto, TDto, TDto, TQuery>
         where TQuery : IQueryParameter
         where TDto : IDto, new()
     {

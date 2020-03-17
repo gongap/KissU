@@ -4,7 +4,7 @@ using System.Linq;
 namespace KissU.Util.Applications.Trees
 {
     /// <summary>
-    /// 树型扩展
+    /// 树形扩展
     /// </summary>
     public static class Extensions
     {

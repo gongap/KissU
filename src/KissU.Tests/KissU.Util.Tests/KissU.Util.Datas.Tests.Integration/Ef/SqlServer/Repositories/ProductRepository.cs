@@ -26,7 +26,7 @@ namespace KissU.Util.Datas.Tests.Integration.Ef.SqlServer.Repositories
         }
 
         /// <summary>
-        /// 通过编号获取商品
+        /// 通过标识获取商品
         /// </summary>
         /// <param name="id">商品编号</param>
         /// <returns>Product.</returns>

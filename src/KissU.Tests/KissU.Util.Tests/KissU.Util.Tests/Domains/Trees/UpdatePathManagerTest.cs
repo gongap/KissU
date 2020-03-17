@@ -13,7 +13,7 @@ using Xunit;
 namespace KissU.Util.Tests.Domains.Trees
 {
     /// <summary>
-    /// 树型更新路径服务测试
+    /// 树形更新路径服务测试
     /// </summary>
     public class UpdatePathManagerTest
     {
@@ -27,7 +27,7 @@ namespace KissU.Util.Tests.Domains.Trees
         }
 
         /// <summary>
-        /// 树型服务
+        /// 树形服务
         /// </summary>
         private readonly UpdatePathManager<Role, Guid, Guid?> _manager;
 

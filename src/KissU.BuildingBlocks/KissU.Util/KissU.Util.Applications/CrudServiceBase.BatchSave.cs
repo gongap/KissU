@@ -33,9 +33,9 @@ namespace KissU.Util.Applications
                 return new List<TDto>();
             }
 
-            creationList = creationList ?? new List<TDto>();
-            updateList = updateList ?? new List<TDto>();
-            deleteList = deleteList ?? new List<TDto>();
+            creationList ??= new List<TDto>();
+            updateList ??= new List<TDto>();
+            deleteList ??= new List<TDto>();
             FilterList(creationList, updateList, deleteList);
             var addEntities = ToEntities(creationList);
             var updateEntities = ToEntities(updateList);
