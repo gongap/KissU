@@ -135,7 +135,7 @@
   "Logging": {
     "Debug": {
       "LogLevel": {
-        "Default": "Information"
+        "Default": "Debug"
       }
     },
     "Console": {

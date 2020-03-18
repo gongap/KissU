@@ -4,13 +4,14 @@ using System.Threading.Tasks;
 using KissU.Modules.GreatWall.Application.Abstractions;
 using KissU.Modules.GreatWall.Application.Dtos.Responses;
 using KissU.Modules.GreatWall.Service.Contracts;
+using KissU.Surging.ProxyGenerator;
 
 namespace KissU.Modules.GreatWall.Service.Implements
 {
     /// <summary>
     /// 菜单服务
     /// </summary>
-    public class MenuService : IMenuService
+    public class MenuService : ProxyServiceBase, IMenuService
     {
         private readonly IMenuAppService _appService;
 

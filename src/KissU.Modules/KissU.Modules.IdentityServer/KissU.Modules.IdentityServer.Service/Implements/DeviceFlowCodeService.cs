@@ -4,6 +4,7 @@ using KissU.Modules.IdentityServer.Application.Abstractions;
 using KissU.Modules.IdentityServer.Application.Dtos;
 using KissU.Modules.IdentityServer.Application.Queries;
 using KissU.Modules.IdentityServer.Service.Contracts;
+using KissU.Surging.ProxyGenerator;
 using KissU.Util.Domains.Repositories;
 
 namespace KissU.Modules.IdentityServer.Service.Implements
@@ -11,7 +12,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
     /// <summary>
     /// 设备流代码服务
     /// </summary>
-    public class DeviceFlowCodeService : IDeviceFlowCodeService
+    public class DeviceFlowCodeService : ProxyServiceBase, IDeviceFlowCodeService
     {
         private readonly IDeviceFlowCodeAppService _appService;
 

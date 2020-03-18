@@ -6,6 +6,7 @@ using KissU.Modules.GreatWall.Application.Dtos;
 using KissU.Modules.GreatWall.Application.Dtos.Requests;
 using KissU.Modules.GreatWall.Application.Queries;
 using KissU.Modules.GreatWall.Service.Contracts;
+using KissU.Surging.ProxyGenerator;
 using KissU.Util.Domains.Repositories;
 
 namespace KissU.Modules.GreatWall.Service.Implements
@@ -13,7 +14,7 @@ namespace KissU.Modules.GreatWall.Service.Implements
     /// <summary>
     /// 用户服务
     /// </summary>
-    public class UserService : IUserService
+    public class UserService : ProxyServiceBase, IUserService
     {
         private readonly IUserAppService _appService;
 

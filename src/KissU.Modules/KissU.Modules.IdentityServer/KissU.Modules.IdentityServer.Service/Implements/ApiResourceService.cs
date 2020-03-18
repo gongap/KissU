@@ -5,6 +5,7 @@ using KissU.Modules.IdentityServer.Application.Dtos;
 using KissU.Modules.IdentityServer.Application.Dtos.Requests;
 using KissU.Modules.IdentityServer.Application.Queries;
 using KissU.Modules.IdentityServer.Service.Contracts;
+using KissU.Surging.ProxyGenerator;
 using KissU.Util;
 using KissU.Util.Domains.Repositories;
 
@@ -13,7 +14,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
     /// <summary>
     /// 资源服务
     /// </summary>
-    public class ApiResourceService : IApiResourceService
+    public class ApiResourceService : ProxyServiceBase, IApiResourceService
     {
         private readonly IApiResourceAppService _appService;
 

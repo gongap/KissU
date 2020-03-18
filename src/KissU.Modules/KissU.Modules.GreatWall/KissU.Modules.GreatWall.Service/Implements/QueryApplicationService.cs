@@ -5,6 +5,7 @@ using KissU.Modules.GreatWall.Application.Abstractions;
 using KissU.Modules.GreatWall.Application.Dtos;
 using KissU.Modules.GreatWall.Application.Queries;
 using KissU.Modules.GreatWall.Service.Contracts;
+using KissU.Surging.ProxyGenerator;
 using KissU.Util.Domains.Repositories;
 
 namespace KissU.Modules.GreatWall.Service.Implements
@@ -12,7 +13,7 @@ namespace KissU.Modules.GreatWall.Service.Implements
     /// <summary>
     /// 应用程序查询服务
     /// </summary>
-    public class QueryApplicationService : IQueryApplicationService
+    public class QueryApplicationService : ProxyServiceBase, IQueryApplicationService
     {
         private readonly IQueryApplicationAppService _appService;
 

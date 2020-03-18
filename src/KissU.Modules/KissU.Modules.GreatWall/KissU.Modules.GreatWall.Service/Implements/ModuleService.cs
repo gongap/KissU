@@ -4,13 +4,14 @@ using KissU.Modules.GreatWall.Application.Abstractions;
 using KissU.Modules.GreatWall.Application.Dtos;
 using KissU.Modules.GreatWall.Application.Dtos.Requests;
 using KissU.Modules.GreatWall.Service.Contracts;
+using KissU.Surging.ProxyGenerator;
 
 namespace KissU.Modules.GreatWall.Service.Implements
 {
     /// <summary>
     /// 模块服务
     /// </summary>
-    public class ModuleService : IModuleService
+    public class ModuleService : ProxyServiceBase, IModuleService
     {
         private readonly IModuleAppService _appService;
 

@@ -5,13 +5,14 @@ using KissU.Modules.GreatWall.Application.Abstractions;
 using KissU.Modules.GreatWall.Application.Dtos.Requests;
 using KissU.Modules.GreatWall.Application.Queries;
 using KissU.Modules.GreatWall.Service.Contracts;
+using KissU.Surging.ProxyGenerator;
 
 namespace KissU.Modules.GreatWall.Service.Implements
 {
     /// <summary>
     /// 权限服务
     /// </summary>
-    public class PermissionService : IPermissionService
+    public class PermissionService : ProxyServiceBase, IPermissionService
     {
         private readonly IPermissionAppService _appService;
 

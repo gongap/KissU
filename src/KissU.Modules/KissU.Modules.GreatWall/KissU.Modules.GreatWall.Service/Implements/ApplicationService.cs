@@ -3,13 +3,14 @@ using System.Threading.Tasks;
 using KissU.Modules.GreatWall.Application.Abstractions;
 using KissU.Modules.GreatWall.Application.Dtos;
 using KissU.Modules.GreatWall.Service.Contracts;
+using KissU.Surging.ProxyGenerator;
 
 namespace KissU.Modules.GreatWall.Service.Implements
 {
     /// <summary>
     /// 应用程序服务
     /// </summary>
-    public class ApplicationService : IApplicationService
+    public class ApplicationService : ProxyServiceBase, IApplicationService
     {
         private readonly IApplicationAppService _appService;
 

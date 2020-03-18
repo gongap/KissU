@@ -5,6 +5,7 @@ using KissU.Modules.IdentityServer.Application.Dtos;
 using KissU.Modules.IdentityServer.Application.Dtos.Requests;
 using KissU.Modules.IdentityServer.Application.Queries;
 using KissU.Modules.IdentityServer.Service.Contracts;
+using KissU.Surging.ProxyGenerator;
 using KissU.Util.Domains.Repositories;
 
 namespace KissU.Modules.IdentityServer.Service.Implements
@@ -12,7 +13,7 @@ namespace KissU.Modules.IdentityServer.Service.Implements
     /// <summary>
     /// 应用程序服务
     /// </summary>
-    public class ClientService : IClientService
+    public class ClientService : ProxyServiceBase, IClientService
     {
         private readonly IClientAppService _appService;
 
