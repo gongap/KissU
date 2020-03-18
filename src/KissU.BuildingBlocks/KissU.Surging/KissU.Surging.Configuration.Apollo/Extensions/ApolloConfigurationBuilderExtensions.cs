@@ -19,10 +19,10 @@ namespace KissU.Surging.Configuration.Apollo.Extensions
         /// <param name="namespace">The namespace.</param>
         /// <param name="format">The format.</param>
         /// <returns>IApolloConfigurationBuilder.</returns>
-        public static IApolloConfigurationBuilder AddNamespaceKissUApollo(this IApolloConfigurationBuilder builder,
+        public static IApolloConfigurationBuilder AddNamespaceApollo(this IApolloConfigurationBuilder builder,
             string @namespace, ConfigFileFormat format = ConfigFileFormat.Json)
         {
-            return builder.AddNamespaceKissUApollo(@namespace, null, format);
+            return builder.AddNamespaceApollo(@namespace, null, format);
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace KissU.Surging.Configuration.Apollo.Extensions
         /// <returns>IApolloConfigurationBuilder.</returns>
         /// <exception cref="ArgumentNullException">namespace</exception>
         /// <exception cref="ArgumentOutOfRangeException">format - 最小值{ConfigFileFormat.Properties}，最大值{ConfigFileFormat.Txt}</exception>
-        public static IApolloConfigurationBuilder AddNamespaceKissUApollo(this IApolloConfigurationBuilder builder,
+        public static IApolloConfigurationBuilder AddNamespaceApollo(this IApolloConfigurationBuilder builder,
             string @namespace, string? sectionKey, ConfigFileFormat format = ConfigFileFormat.Json)
         {
             if (string.IsNullOrWhiteSpace(@namespace)) throw new ArgumentNullException(nameof(@namespace));
