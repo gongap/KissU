@@ -3,8 +3,9 @@ using System.Linq;
 using Com.Ctrip.Framework.Apollo;
 using Com.Ctrip.Framework.Apollo.Enums;
 using Com.Ctrip.Framework.Apollo.Spi;
+using KissU.Surging.Configuration.Apollo.Configurations;
 
-namespace KissU.Surging.Configuration.Apollo.Configurations
+namespace KissU.Surging.Configuration.Apollo.Extensions
 {
     /// <summary>
     /// ApolloConfigurationBuilderExtensions.

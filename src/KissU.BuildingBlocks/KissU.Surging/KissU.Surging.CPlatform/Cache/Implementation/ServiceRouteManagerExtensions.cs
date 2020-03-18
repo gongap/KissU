@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace KissU.Surging.CPlatform.Cache
+namespace KissU.Surging.CPlatform.Cache.Implementation
 {
     /// <summary>
     /// 服务命令管理者扩展方法。
