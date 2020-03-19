@@ -1,5 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
    <Import Project="../../../common.props" />
+   <Import Project="../../../configureawait.props" />
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <Description>KissU应用框架的Office操作类库，目前封装了NPOI导出操作。</Description>
