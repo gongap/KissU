@@ -1,0 +1,28 @@
+﻿using System.Threading.Tasks;
+using KissU.Util.Dependency;
+
+namespace KissU.Util.Datas.UnitOfWorks
+{
+    /// <summary>
+    /// 工作单元管理器
+    /// </summary>
+    public interface IUnitOfWorkManager : IScopeDependency
+    {
+        /// <summary>
+        /// 提交
+        /// </summary>
+        void Commit();
+
+        /// <summary>
+        /// 提交
+        /// </summary>
+        /// <returns>Task.</returns>
+        Task CommitAsync();
+
+        /// <summary>
+        /// 注册工作单元
+        /// </summary>
+        /// <param name="unitOfWork">工作单元</param>
+        void Register(IUnitOfWork unitOfWork);
+    }
+}

@@ -6,6 +6,11 @@
     <Description>KissU应用框架的核心类库。</Description>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Views\**" />
+    <EmbeddedResource Remove="Views\**" />
+    <None Remove="Views\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AspectCore.Extensions.AspectScope" Version="2.0.0" />
@@ -63,9 +68,5 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>R.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\" />
   </ItemGroup>
 </Project>
