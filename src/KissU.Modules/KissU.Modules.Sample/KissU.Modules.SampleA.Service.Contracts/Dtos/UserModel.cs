@@ -1,4 +1,4 @@
-﻿using KissU.Surging.System.Intercept;
+﻿using KissU.Surging.Caching.Intercept;
 using ProtoBuf;
 
 namespace KissU.Modules.SampleA.Service.Contracts.Dtos

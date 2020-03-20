@@ -1,7 +1,14 @@
 #See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
+# You need to build it with the following CLI command:
+# docker build -f "./Dockerfile" --force-rm -t kissu/services.stage:linux-latest  "../../"
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1 AS base
 WORKDIR /app
+EXPOSE 91
+EXPOSE 9001
+EXPOSE 9101
+EXPOSE 9201
+EXPOSE 9301
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 WORKDIR /src
@@ -13,12 +20,13 @@ COPY "KissU.sln" "KissU.sln"
 
 COPY "KissU.BuildingBlocks/DotNetty.Codecs/DotNetty.Codecs.DNS/DotNetty.Codecs.DNS.csproj" "KissU.BuildingBlocks/DotNetty.Codecs/DotNetty.Codecs.DNS/DotNetty.Codecs.DNS.csproj"
 COPY "KissU.BuildingBlocks/KissU.Apm/KissU.Apm.Skywalking/KissU.Apm.Skywalking.csproj" "KissU.BuildingBlocks/KissU.Apm/KissU.Apm.Skywalking/KissU.Apm.Skywalking.csproj"
+COPY "KissU.BuildingBlocks/KissU.Core/KissU.Core/KissU.Core.csproj" "KissU.BuildingBlocks/KissU.Core/KissU.Core/KissU.Core.csproj"
 COPY "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.ApiGateWay/KissU.Surging.ApiGateWay.csproj" "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.ApiGateWay/KissU.Surging.ApiGateWay.csproj"
 COPY "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.AutoMapper/KissU.Surging.AutoMapper.csproj" "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.AutoMapper/KissU.Surging.AutoMapper.csproj"
+COPY "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.BackgroundServer/KissU.Surging.BackgroundServer.csproj" "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.BackgroundServer/KissU.Surging.BackgroundServer.csproj"
 COPY "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.Caching/KissU.Surging.Caching.csproj" "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.Caching/KissU.Surging.Caching.csproj"
 COPY "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.Codec.MessagePack/KissU.Surging.Codec.MessagePack.csproj" "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.Codec.MessagePack/KissU.Surging.Codec.MessagePack.csproj"
 COPY "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.Codec.ProtoBuffer/KissU.Surging.Codec.ProtoBuffer.csproj" "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.Codec.ProtoBuffer/KissU.Surging.Codec.ProtoBuffer.csproj"
-COPY "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.Common/KissU.Surging.Common.csproj" "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.Common/KissU.Surging.Common.csproj"
 COPY "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.Configuration.Apollo/KissU.Surging.Configuration.Apollo.csproj" "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.Configuration.Apollo/KissU.Surging.Configuration.Apollo.csproj"
 COPY "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.Consul/KissU.Surging.Consul.csproj" "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.Consul/KissU.Surging.Consul.csproj"
 COPY "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.CPlatform/KissU.Surging.CPlatform.csproj" "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.CPlatform/KissU.Surging.CPlatform.csproj"
@@ -39,11 +47,9 @@ COPY "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.Protocol.Udp/KissU.Surgin
 COPY "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.Protocol.WS/KissU.Surging.Protocol.WS.csproj" "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.Protocol.WS/KissU.Surging.Protocol.WS.csproj"
 COPY "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.ProxyGenerator/KissU.Surging.ProxyGenerator.csproj" "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.ProxyGenerator/KissU.Surging.ProxyGenerator.csproj"
 COPY "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.Serilog/KissU.Surging.Serilog.csproj" "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.Serilog/KissU.Surging.Serilog.csproj"
-COPY "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.ServiceHosting.Extensions/KissU.Surging.ServiceHosting.Extensions.csproj" "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.ServiceHosting.Extensions/KissU.Surging.ServiceHosting.Extensions.csproj"
 COPY "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.ServiceHosting/KissU.Surging.ServiceHosting.csproj" "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.ServiceHosting/KissU.Surging.ServiceHosting.csproj"
 COPY "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.Stage/KissU.Surging.Stage.csproj" "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.Stage/KissU.Surging.Stage.csproj"
 COPY "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.Swagger/KissU.Surging.Swagger.csproj" "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.Swagger/KissU.Surging.Swagger.csproj"
-COPY "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.System/KissU.Surging.System.csproj" "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.System/KissU.Surging.System.csproj"
 COPY "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.Zookeeper/KissU.Surging.Zookeeper.csproj" "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.Zookeeper/KissU.Surging.Zookeeper.csproj"
 COPY "KissU.BuildingBlocks/KissU.Util/KissU.Util.Applications/KissU.Util.Applications.csproj" "KissU.BuildingBlocks/KissU.Util/KissU.Util.Applications/KissU.Util.Applications.csproj"
 COPY "KissU.BuildingBlocks/KissU.Util/KissU.Util.AspNetCore.Webs/KissU.Util.AspNetCore.Webs.csproj" "KissU.BuildingBlocks/KissU.Util/KissU.Util.AspNetCore.Webs/KissU.Util.AspNetCore.Webs.csproj"
@@ -64,7 +70,6 @@ COPY "KissU.BuildingBlocks/KissU.Util/KissU.Util.Security/KissU.Util.Security.cs
 COPY "KissU.BuildingBlocks/KissU.Util/KissU.Util.Tools.Offices/KissU.Util.Tools.Offices.csproj" "KissU.BuildingBlocks/KissU.Util/KissU.Util.Tools.Offices/KissU.Util.Tools.Offices.csproj"
 COPY "KissU.BuildingBlocks/KissU.Util/KissU.Util.Tools.QrCode/KissU.Util.Tools.QrCode.csproj" "KissU.BuildingBlocks/KissU.Util/KissU.Util.Tools.QrCode/KissU.Util.Tools.QrCode.csproj"
 COPY "KissU.BuildingBlocks/KissU.Util/KissU.Util.Tools.Sms/KissU.Util.Tools.Sms.csproj" "KissU.BuildingBlocks/KissU.Util/KissU.Util.Tools.Sms/KissU.Util.Tools.Sms.csproj"
-COPY "KissU.BuildingBlocks/KissU.Util/KissU.Util/KissU.Util.csproj" "KissU.BuildingBlocks/KissU.Util/KissU.Util/KissU.Util.csproj"
 COPY "KissU.BuildingBlocks/WebSocket/WebSocketCore/WebSocketCore.csproj" "KissU.BuildingBlocks/WebSocket/WebSocketCore/WebSocketCore.csproj"
 COPY "KissU.Clients/KissU.AdminConsole/KissU.AdminConsole.csproj" "KissU.Clients/KissU.AdminConsole/KissU.AdminConsole.csproj"
 COPY "KissU.Clients/KissU.Client/KissU.Client.csproj" "KissU.Clients/KissU.Client/KissU.Client.csproj"
@@ -91,13 +96,11 @@ COPY "KissU.Services/KissU.Services.Hosts/KissU.Services.SampleA.Host/KissU.Serv
 COPY "KissU.Services/KissU.Services.Hosts/KissU.Services.SampleB.Host/KissU.Services.SampleB.Host.csproj" "KissU.Services/KissU.Services.Hosts/KissU.Services.SampleB.Host/KissU.Services.SampleB.Host.csproj"
 COPY "KissU.Services/KissU.Services.Identity/KissU.Services.Identity.csproj" "KissU.Services/KissU.Services.Identity/KissU.Services.Identity.csproj"
 COPY "KissU.Services/KissU.Services.Stage/KissU.Services.Stage.csproj" "KissU.Services/KissU.Services.Stage/KissU.Services.Stage.csproj"
-COPY "KissU.Tests/KissU.Surging.Tests/KissU.Surging.ServiceHosting.Tests/KissU.Surging.ServiceHosting.Tests.csproj" "KissU.Tests/KissU.Surging.Tests/KissU.Surging.ServiceHosting.Tests/KissU.Surging.ServiceHosting.Tests.csproj"
-COPY "KissU.Tests/KissU.Util.Tests/KissU.Util.Biz.Tests.Integration/KissU.Util.Biz.Tests.Integration.csproj" "KissU.Tests/KissU.Util.Tests/KissU.Util.Biz.Tests.Integration/KissU.Util.Biz.Tests.Integration.csproj"
-COPY "KissU.Tests/KissU.Util.Tests/KissU.Util.Datas.Tests.Integration/KissU.Util.Datas.Tests.Integration.csproj" "KissU.Tests/KissU.Util.Tests/KissU.Util.Datas.Tests.Integration/KissU.Util.Datas.Tests.Integration.csproj"
-COPY "KissU.Tests/KissU.Util.Tests/KissU.Util.Tests/KissU.Util.Tests.csproj" "KissU.Tests/KissU.Util.Tests/KissU.Util.Tests/KissU.Util.Tests.csproj"
-COPY "KissU.Tests/KissU.Util.Tests/KissU.Util.Tools.Offices.Tests.Integration/KissU.Util.Tools.Offices.Tests.Integration.csproj" "KissU.Tests/KissU.Util.Tests/KissU.Util.Tools.Offices.Tests.Integration/KissU.Util.Tools.Offices.Tests.Integration.csproj"
-
-COPY "docker-compose.dcproj" "docker-compose.dcproj"
+COPY "tests/KissU.Surging.ServiceHosting.Tests/KissU.Surging.ServiceHosting.Tests.csproj" "tests/KissU.Surging.ServiceHosting.Tests/KissU.Surging.ServiceHosting.Tests.csproj"
+COPY "tests/KissU.Util.Biz.Tests.Integration/KissU.Util.Biz.Tests.Integration.csproj" "tests/KissU.Util.Biz.Tests.Integration/KissU.Util.Biz.Tests.Integration.csproj"
+COPY "tests/KissU.Util.Datas.Tests.Integration/KissU.Util.Datas.Tests.Integration.csproj" "tests/KissU.Util.Datas.Tests.Integration/KissU.Util.Datas.Tests.Integration.csproj"
+COPY "tests/KissU.Util.Tests/KissU.Util.Tests.csproj" "tests/KissU.Util.Tests/KissU.Util.Tests.csproj"
+COPY "tests/KissU.Util.Tools.Offices.Tests.Integration/KissU.Util.Tools.Offices.Tests.Integration.csproj" "tests/KissU.Util.Tools.Offices.Tests.Integration/KissU.Util.Tools.Offices.Tests.Integration.csproj"
 
 COPY "NuGet.config" "NuGet.config"
 

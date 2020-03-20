@@ -20,7 +20,6 @@
     <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Apm\KissU.Apm.Skywalking\KissU.Apm.Skywalking.csproj" />
     <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Surging\KissU.Surging.Codec.MessagePack\KissU.Surging.Codec.MessagePack.csproj" />
     <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Surging\KissU.Surging.Codec.ProtoBuffer\KissU.Surging.Codec.ProtoBuffer.csproj" />
-    <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Surging\KissU.Surging.Common\KissU.Surging.Common.csproj" />
     <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Surging\KissU.Surging.Consul\KissU.Surging.Consul.csproj" />
     <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Surging\KissU.Surging.CPlatform\KissU.Surging.CPlatform.csproj" />
     <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Surging\KissU.Surging.DotNetty\KissU.Surging.DotNetty.csproj" />
@@ -30,7 +29,6 @@
     <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Surging\KissU.Surging.NLog\KissU.Surging.Nlog.csproj" />
     <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Surging\KissU.Surging.ProxyGenerator\KissU.Surging.ProxyGenerator.csproj" />
     <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Surging\KissU.Surging.ServiceHosting\KissU.Surging.ServiceHosting.csproj" />
-    <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Surging\KissU.Surging.System\KissU.Surging.System.csproj" />
     <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Surging\KissU.Surging.Zookeeper\KissU.Surging.Zookeeper.csproj" />
     <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Sample\KissU.Modules.SampleA.Service.Contracts\KissU.Modules.SampleA.Service.Contracts.csproj" />
   </ItemGroup>

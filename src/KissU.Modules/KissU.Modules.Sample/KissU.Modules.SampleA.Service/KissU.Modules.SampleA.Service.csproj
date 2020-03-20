@@ -17,7 +17,7 @@
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Surging\KissU.Surging.DotNettyWSServer\KissU.Surging.DotNettyWSServer.csproj" />
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Surging\KissU.Surging.EventBusRabbitMQ\KissU.Surging.EventBusRabbitMQ.csproj" />
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Surging\KissU.Surging.Protocol.Udp\KissU.Surging.Protocol.Udp.csproj" />
-    <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Surging\KissU.Surging.ServiceHosting.Extensions\KissU.Surging.ServiceHosting.Extensions.csproj" />
+    <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Surging\KissU.Surging.BackgroundServer\KissU.Surging.BackgroundServer.csproj" />
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\WebSocket\WebSocketCore\WebSocketCore.csproj" />
     <ProjectReference Include="..\KissU.Modules.SampleA.Service.Contracts\KissU.Modules.SampleA.Service.Contracts.csproj" />
     <ProjectReference Include="..\KissU.Modules.SampleB.Service.Contracts\KissU.Modules.SampleB.Service.Contracts.csproj" />

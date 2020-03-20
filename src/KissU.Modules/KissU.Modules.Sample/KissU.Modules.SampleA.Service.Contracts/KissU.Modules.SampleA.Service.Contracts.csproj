@@ -28,10 +28,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Surging\KissU.Surging.Caching\KissU.Surging.Caching.csproj" />
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Surging\KissU.Surging.DotNettyWSServer\KissU.Surging.DotNettyWSServer.csproj" />
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Surging\KissU.Surging.KestrelHttpServer\KissU.Surging.KestrelHttpServer.csproj" />
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Surging\KissU.Surging.Protocol.Mqtt\KissU.Surging.Protocol.Mqtt.csproj" />
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Surging\KissU.Surging.Protocol.WS\KissU.Surging.Protocol.WS.csproj" />
-    <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Surging\KissU.Surging.System\KissU.Surging.System.csproj" />
   </ItemGroup>
 </Project>

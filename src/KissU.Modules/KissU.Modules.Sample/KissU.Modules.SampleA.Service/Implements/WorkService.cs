@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using KissU.Core.Ioc;
 using KissU.Surging.ProxyGenerator;
-using KissU.Surging.ServiceHosting.Extensions.Runtime;
+using KissU.Surging.BackgroundServer.Runtime;
 using KissU.Modules.SampleA.Service.Contracts;
 using KissU.Modules.SampleA.Service.Contracts.Dtos;
 using Microsoft.Extensions.Logging;
@@ -13,11 +13,11 @@ namespace KissU.Modules.SampleA.Service.Implements
 {
     /// <summary>
     /// WorkService.
-    /// Implements the <see cref="KissU.Surging.ServiceHosting.Extensions.Runtime.BackgroundServiceBehavior" />
+    /// Implements the <see cref="KissU.Surging.BackgroundServer.Runtime.BackgroundServiceBehavior" />
     /// Implements the <see cref="KissU.Modules.SampleA.Service.Contracts.IWorkService" />
     /// Implements the <see cref="ISingleInstance" />
     /// </summary>
-    /// <seealso cref="KissU.Surging.ServiceHosting.Extensions.Runtime.BackgroundServiceBehavior" />
+    /// <seealso cref="KissU.Surging.BackgroundServer.Runtime.BackgroundServiceBehavior" />
     /// <seealso cref="KissU.Modules.SampleA.Service.Contracts.IWorkService" />
     /// <seealso cref="ISingleInstance" />
     public class WorkService : BackgroundServiceBehavior, IWorkService, ISingleInstance

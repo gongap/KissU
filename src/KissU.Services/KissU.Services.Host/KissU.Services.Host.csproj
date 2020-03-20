@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="../../common.props" />
   <Import Project="../../configureawait.props" />
   <PropertyGroup>
@@ -7,7 +7,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <TieredCompilation>true</TieredCompilation>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <DockerfileContext>..\..</DockerfileContext>
+    <DockerfileContext>..\..\..</DockerfileContext>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -50,10 +50,8 @@
     <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Surging\KissU.Surging.ServiceHosting\KissU.Surging.ServiceHosting.csproj" />
     <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Surging\KissU.Surging.Swagger\KissU.Surging.Swagger.csproj" />
     <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Surging\KissU.Surging.Zookeeper\KissU.Surging.Zookeeper.csproj" />
-    <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Surging\KissU.Surging.Stage\KissU.Surging.Stage.csproj" />
-    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Admin\KissU.Modules.Admin.Service\KissU.Modules.Admin.Service.csproj" />
-    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.GreatWall\KissU.Modules.GreatWall.Service.Contracts\KissU.Modules.GreatWall.Service.Contracts.csproj" />
-    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.IdentityServer\KissU.Modules.IdentityServer.Service.Contracts\KissU.Modules.IdentityServer.Service.Contracts.csproj" />
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.GreatWall\KissU.Modules.GreatWall.Service\KissU.Modules.GreatWall.Service.csproj" />
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.IdentityServer\KissU.Modules.IdentityServer.Service\KissU.Modules.IdentityServer.Service.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -73,9 +71,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="skyapm.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="stagesettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
