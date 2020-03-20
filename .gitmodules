@@ -1,0 +1,3 @@
+[submodule "src\\KissU.Clients\\KissU.AdminConsole\\App"]
+	path = src\\KissU.Clients\\KissU.AdminConsole\\App
+	url = https://github.com/gongap/KissU.AdminConsole.git
