@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace KissU.Util.Helpers
+namespace KissU.Core.Helpers
 {
     /// <summary>
     /// 随机数操作

@@ -1,4 +1,4 @@
-﻿using KissU.Util.Datas.UnitOfWorks;
+﻿using KissU.Core.Datas.UnitOfWorks;
 
 namespace KissU.Modules.GreatWall.Domain.UnitOfWorks
 {

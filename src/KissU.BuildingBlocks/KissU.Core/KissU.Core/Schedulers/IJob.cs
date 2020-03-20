@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.Schedulers
+﻿namespace KissU.Core.Schedulers
 {
     /// <summary>
     /// 作业

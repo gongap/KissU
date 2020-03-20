@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using KissU.Core;
 using KissU.Surging.Caching.Models;
 using KissU.Surging.Caching.RedisCache;
 using KissU.Surging.CPlatform;

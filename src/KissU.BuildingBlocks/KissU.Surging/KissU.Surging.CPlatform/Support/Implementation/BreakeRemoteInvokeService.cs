@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using Autofac;
+using KissU.Core;
 using KissU.Surging.CPlatform.Filters;
 using KissU.Surging.CPlatform.Filters.Implementation;
 using KissU.Surging.CPlatform.HashAlgorithms;

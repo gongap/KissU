@@ -1,6 +1,4 @@
-﻿using Autofac;
-
-namespace KissU.Util.Dependency
+﻿namespace KissU.Core.Dependency
 {
     /// <summary>
     /// 配置

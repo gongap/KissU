@@ -4,13 +4,14 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
+using KissU.Core.Datas.Sql;
+using KissU.Core.Datas.Sql.Configs;
+using KissU.Core.Domains.Repositories;
+using KissU.Core.Helpers;
+using KissU.Core.Logs;
 using KissU.Util.Datas.Sql;
-using KissU.Util.Datas.Sql.Configs;
 using KissU.Util.Datas.Sql.Queries;
-using KissU.Util.Domains.Repositories;
-using KissU.Util.Helpers;
-using KissU.Util.Logs;
-using Convert = KissU.Util.Helpers.Convert;
+using Convert = KissU.Core.Helpers.Convert;
 
 namespace KissU.Util.Datas.Dapper
 {

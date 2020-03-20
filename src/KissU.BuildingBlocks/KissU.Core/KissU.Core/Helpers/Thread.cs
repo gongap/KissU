@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace KissU.Util.Helpers
+namespace KissU.Core.Helpers
 {
     /// <summary>
     /// 线程操作

@@ -1,8 +1,8 @@
 ﻿using System;
 using AspectCore.DynamicProxy;
-using KissU.Util.Exceptions.Prompts;
+using KissU.Core.Exceptions.Prompts;
 
-namespace KissU.Util
+namespace KissU.Core
 {
     /// <summary>
     /// 异常扩展

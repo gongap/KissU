@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using Autofac;
-using KissU.Util.Dependency;
+using KissU.Core.Dependency;
 using Microsoft.Extensions.DependencyInjection;
-using IContainer = KissU.Util.Dependency.IContainer;
+using IContainer = KissU.Core.Dependency.IContainer;
 
-namespace KissU.Util.Helpers
+namespace KissU.Core.Helpers
 {
     /// <summary>
     /// 容器

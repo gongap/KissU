@@ -1,5 +1,5 @@
 ﻿using System;
-using KissU.Surging.CPlatform.Ioc;
+using KissU.Core.Ioc;
 
 namespace KissU.Surging.Grpc.Runtime
 {

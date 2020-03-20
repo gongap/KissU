@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using Autofac;
+using KissU.Core;
+using KissU.Core.EventBus;
+using KissU.Core.EventBus.Events;
+using KissU.Core.EventBus.Implementation;
 using KissU.Surging.CPlatform;
-using KissU.Surging.CPlatform.EventBus;
-using KissU.Surging.CPlatform.EventBus.Events;
-using KissU.Surging.CPlatform.EventBus.Implementation;
 using KissU.Surging.EventBusRabbitMQ.Configurations;
 using KissU.Surging.EventBusRabbitMQ.Implementation;
 using Microsoft.Extensions.Configuration;

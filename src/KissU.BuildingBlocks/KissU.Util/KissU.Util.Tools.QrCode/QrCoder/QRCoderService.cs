@@ -1,4 +1,5 @@
-﻿using QRCoder;
+﻿using KissU.Core;
+using QRCoder;
 
 namespace KissU.Util.Tools.QrCode.QrCoder
 {

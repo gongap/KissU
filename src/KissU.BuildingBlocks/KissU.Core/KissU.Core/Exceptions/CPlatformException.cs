@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KissU.Surging.CPlatform.Exceptions
+namespace KissU.Core.Exceptions
 {
     /// <summary>
     /// 基础异常类。

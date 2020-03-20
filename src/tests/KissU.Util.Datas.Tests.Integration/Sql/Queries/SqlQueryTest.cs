@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
+using KissU.Core.Datas.Sql;
+using KissU.Core.Dependency;
+using KissU.Core.Helpers;
 using KissU.Util.Datas.Sql;
 using KissU.Util.Datas.Tests.Integration.Commons.Domains.Models;
 using KissU.Util.Datas.Tests.Integration.Commons.Domains.Repositories;
 using KissU.Util.Datas.Tests.Integration.Ef.SqlServer.UnitOfWorks;
-using KissU.Util.Dependency;
-using KissU.Util.Helpers;
 using Xunit;
 using Xunit.Abstractions;
 

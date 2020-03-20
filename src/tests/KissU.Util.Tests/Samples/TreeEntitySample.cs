@@ -1,5 +1,5 @@
 ﻿using System;
-using KissU.Util.Domains.Trees;
+using KissU.Core.Domains.Trees;
 
 namespace KissU.Util.Tests.Samples
 {

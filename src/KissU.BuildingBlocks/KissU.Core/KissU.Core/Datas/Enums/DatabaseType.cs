@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.Datas.Enums
+﻿namespace KissU.Core.Datas.Enums
 {
     /// <summary>
     /// 数据库类型

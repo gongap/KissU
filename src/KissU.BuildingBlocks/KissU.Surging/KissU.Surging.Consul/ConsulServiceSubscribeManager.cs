@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Consul;
+using KissU.Core.Serialization;
 using KissU.Surging.Consul.Configurations;
 using KissU.Surging.Consul.Internal;
 using KissU.Surging.Consul.Utilitys;
 using KissU.Surging.Consul.WatcherProvider;
 using KissU.Surging.CPlatform.Runtime.Client;
 using KissU.Surging.CPlatform.Runtime.Client.Implementation;
-using KissU.Surging.CPlatform.Serialization;
 using Microsoft.Extensions.Logging;
 using LogLevel = Microsoft.Extensions.Logging.LogLevel;
 

@@ -1,7 +1,7 @@
 ﻿using System;
-using KissU.Surging.CPlatform.EventBus.Events;
+using KissU.Core.EventBus.Events;
 
-namespace KissU.Surging.CPlatform.EventBus.Implementation
+namespace KissU.Core.EventBus.Implementation
 {
     /// <summary>
     /// 事件总线

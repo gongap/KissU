@@ -1,5 +1,7 @@
 ﻿using System;
-using KissU.Util.Datas.Queries;
+using KissU.Core;
+using KissU.Core.Datas.Queries;
+using KissU.Core.Datas.Sql.Builders;
 
 namespace KissU.Util.Datas.Sql.Builders.Conditions
 {

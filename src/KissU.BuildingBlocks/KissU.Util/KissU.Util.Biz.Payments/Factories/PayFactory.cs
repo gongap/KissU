@@ -1,4 +1,5 @@
 ﻿using System;
+using KissU.Core;
 using KissU.Util.Biz.Payments.Alipay.Abstractions;
 using KissU.Util.Biz.Payments.Alipay.Configs;
 using KissU.Util.Biz.Payments.Alipay.Services;

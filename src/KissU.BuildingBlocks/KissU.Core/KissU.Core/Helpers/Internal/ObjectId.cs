@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 
-namespace KissU.Util.Helpers.Internal
+namespace KissU.Core.Helpers.Internal
 {
     /// <summary>
     /// Id生成器，代码出自：https://github.com/tangxuehua/ecommon/blob/master/src/ECommon/Utilities/ObjectId.cs

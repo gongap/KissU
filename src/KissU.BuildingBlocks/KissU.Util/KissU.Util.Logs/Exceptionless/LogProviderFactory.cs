@@ -1,4 +1,4 @@
-﻿using KissU.Util.Logs.Abstractions;
+﻿using KissU.Core.Logs.Abstractions;
 
 namespace KissU.Util.Logs.Exceptionless
 {

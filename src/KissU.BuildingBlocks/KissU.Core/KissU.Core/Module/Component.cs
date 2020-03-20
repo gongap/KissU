@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace KissU.Surging.CPlatform.Module
+namespace KissU.Core.Module
 {
     /// <summary>
     /// 组件类

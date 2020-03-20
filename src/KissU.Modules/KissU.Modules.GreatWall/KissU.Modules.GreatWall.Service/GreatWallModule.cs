@@ -1,4 +1,5 @@
 ﻿using Autofac.Extensions.DependencyInjection;
+using KissU.Core.Module;
 using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Module;
 using KissU.Modules.GreatWall.Application.Extensions;

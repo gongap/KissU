@@ -1,5 +1,6 @@
 ﻿using System.Text;
-using KissU.Util.Helpers;
+using KissU.Core;
+using KissU.Core.Helpers;
 using Xunit;
 using Xunit.Abstractions;
 

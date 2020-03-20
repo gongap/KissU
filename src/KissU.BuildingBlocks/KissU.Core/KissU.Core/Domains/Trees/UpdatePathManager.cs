@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using KissU.Util.Exceptions;
-using KissU.Util.Properties;
+using KissU.Core.Exceptions;
+using KissU.Core.Properties;
 
-namespace KissU.Util.Domains.Trees
+namespace KissU.Core.Domains.Trees
 {
     /// <summary>
     /// 树形路径更新服务

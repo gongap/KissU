@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Extensions.Logging;
 
-namespace KissU.Util.Logs.Core
+namespace KissU.Core.Logs.Core
 {
     /// <summary>
     /// 一个空的日志记录器。

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using KissU.Util.Properties;
+using KissU.Core.Properties;
 using Microsoft.Extensions.Logging;
 
-namespace KissU.Util.Exceptions
+namespace KissU.Core.Exceptions
 {
     /// <summary>
     /// 应用程序异常

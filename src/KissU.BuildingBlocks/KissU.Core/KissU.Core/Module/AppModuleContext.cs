@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using KissU.Surging.CPlatform.Utilities;
+using KissU.Core.Utilities;
 
-namespace KissU.Surging.CPlatform.Module
+namespace KissU.Core.Module
 {
     /// <summary>
     /// 应用模块上下文

@@ -2,9 +2,10 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Autofac;
-using KissU.Surging.CPlatform.EventBus.Events;
-using KissU.Surging.CPlatform.EventBus.Implementation;
-using KissU.Surging.CPlatform.Ioc;
+using KissU.Core.EventBus.Events;
+using KissU.Core.EventBus.Implementation;
+using KissU.Core.Ioc;
+using KissU.Core.Utilities;
 using KissU.Surging.CPlatform.Utilities;
 using KissU.Surging.ProxyGenerator;
 
@@ -12,10 +13,10 @@ namespace KissU.Surging.ServiceHosting.Extensions.Runtime
 {
     /// <summary>
     /// BackgroundServiceBehavior.
-    /// Implements the <see cref="KissU.Surging.CPlatform.Ioc.IServiceBehavior" />
+    /// Implements the <see cref="IServiceBehavior" />
     /// Implements the <see cref="System.IDisposable" />
     /// </summary>
-    /// <seealso cref="KissU.Surging.CPlatform.Ioc.IServiceBehavior" />
+    /// <seealso cref="IServiceBehavior" />
     /// <seealso cref="System.IDisposable" />
     public abstract class BackgroundServiceBehavior : IServiceBehavior, IDisposable
     {

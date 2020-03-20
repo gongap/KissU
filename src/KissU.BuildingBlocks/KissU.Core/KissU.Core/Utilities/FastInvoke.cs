@@ -2,7 +2,7 @@
 using System.Reflection;
 using System.Reflection.Emit;
 
-namespace KissU.Surging.CPlatform.Utilities
+namespace KissU.Core.Utilities
 {
     /// <summary>
     /// 快速调用.

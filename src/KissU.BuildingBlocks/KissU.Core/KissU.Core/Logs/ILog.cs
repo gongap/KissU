@@ -1,7 +1,7 @@
 ﻿using System;
-using KissU.Util.Logs.Abstractions;
+using KissU.Core.Logs.Abstractions;
 
-namespace KissU.Util.Logs
+namespace KissU.Core.Logs
 {
     /// <summary>
     /// 日志操作

@@ -1,6 +1,7 @@
 ﻿using System.Text;
-using KissU.Util.Exceptions;
-using KissU.Util.Logs.Contents;
+using KissU.Core;
+using KissU.Core.Exceptions;
+using KissU.Core.Logs.Contents;
 using NLog;
 using NLog.LayoutRenderers;
 

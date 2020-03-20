@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace KissU.Util.Events.Handlers
+namespace KissU.Core.Events.Handlers
 {
     /// <summary>
     /// 内存事件处理器

@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.Datas.Sql.Builders
+﻿namespace KissU.Core.Datas.Sql.Builders
 {
     /// <summary>
     /// OrderBy子句操作

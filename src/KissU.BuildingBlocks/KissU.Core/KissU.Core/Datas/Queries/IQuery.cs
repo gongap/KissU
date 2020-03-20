@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq.Expressions;
-using KissU.Util.Domains.Repositories;
+using KissU.Core.Domains.Repositories;
 
-namespace KissU.Util.Datas.Queries
+namespace KissU.Core.Datas.Queries
 {
     /// <summary>
     /// 查询对象

@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Sources;
 
-namespace KissU.Surging.CPlatform.Utilities
+namespace KissU.Core.Utilities
 {
     /// <summary>
     /// ������

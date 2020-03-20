@@ -1,4 +1,4 @@
-﻿namespace KissU.Surging.CPlatform.Module
+﻿namespace KissU.Core.Module
 {
     /// <summary>
     /// 引擎零件模块

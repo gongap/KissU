@@ -2,10 +2,10 @@
 using System.Linq;
 using System.Threading.Tasks;
 using IdentityServer4.Stores;
+using KissU.Core.Maps;
 using KissU.Modules.IdentityServer.Domain.Models;
 using KissU.Modules.IdentityServer.Domain.Repositories;
 using KissU.Modules.IdentityServer.Domain.UnitOfWorks;
-using KissU.Util.Maps;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Ids4 = IdentityServer4.Models;

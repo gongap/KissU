@@ -1,7 +1,7 @@
-﻿using KissU.Util.Datas.Queries;
+﻿using KissU.Core.Datas.Queries;
+using KissU.Core.Helpers;
 using KissU.Util.Datas.Sql;
 using KissU.Util.Datas.Tests.Integration.Samples;
-using KissU.Util.Helpers;
 using Xunit;
 
 namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer

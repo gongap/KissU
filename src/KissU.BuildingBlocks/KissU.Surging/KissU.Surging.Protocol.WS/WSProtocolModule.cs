@@ -1,4 +1,6 @@
 ﻿using Autofac;
+using KissU.Core;
+using KissU.Core.Module;
 using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Module;
 using KissU.Surging.CPlatform.Runtime.Server;

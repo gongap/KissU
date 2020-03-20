@@ -1,6 +1,6 @@
 ﻿using System;
-using KissU.Util.Datas.Queries;
-using KissU.Util.Datas.Queries.Criterias;
+using KissU.Core.Datas.Queries;
+using KissU.Core.Datas.Queries.Criterias;
 using KissU.Util.Tests.Samples;
 using Xunit;
 

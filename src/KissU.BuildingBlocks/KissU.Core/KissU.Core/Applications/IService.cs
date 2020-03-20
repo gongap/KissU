@@ -1,6 +1,6 @@
-﻿using KissU.Util.Dependency;
+﻿using KissU.Core.Dependency;
 
-namespace KissU.Util.Applications
+namespace KissU.Core.Applications
 {
     /// <summary>
     /// 应用服务

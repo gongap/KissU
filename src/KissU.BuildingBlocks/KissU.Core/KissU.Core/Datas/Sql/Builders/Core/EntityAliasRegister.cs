@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace KissU.Util.Datas.Sql.Builders.Core
+namespace KissU.Core.Datas.Sql.Builders.Core
 {
     /// <summary>
     /// 实体别名注册器

@@ -1,4 +1,4 @@
-﻿using KissU.Util.Helpers;
+﻿using KissU.Core.Helpers;
 using Xunit;
 
 namespace KissU.Util.Tests.Helpers

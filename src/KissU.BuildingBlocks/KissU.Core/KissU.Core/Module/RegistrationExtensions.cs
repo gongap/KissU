@@ -9,7 +9,7 @@ using Autofac.Features.LightweightAdapters;
 using Autofac.Features.OpenGenerics;
 using Autofac.Features.Scanning;
 
-namespace KissU.Surging.CPlatform.Module
+namespace KissU.Core.Module
 {
     /// <summary>
     /// 注册扩展.

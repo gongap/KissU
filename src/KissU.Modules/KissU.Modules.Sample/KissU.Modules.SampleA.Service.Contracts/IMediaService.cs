@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.Surging.CPlatform.Ioc;
+using KissU.Core.Ioc;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Surging.Protocol.WS.Attributes;
 
@@ -8,9 +8,9 @@ namespace KissU.Modules.SampleA.Service.Contracts
 {
     /// <summary>
     /// Interface IMediaService
-    /// Implements the <see cref="KissU.Surging.CPlatform.Ioc.IServiceKey" />
+    /// Implements the <see cref="IServiceKey" />
     /// </summary>
-    /// <seealso cref="KissU.Surging.CPlatform.Ioc.IServiceKey" />
+    /// <seealso cref="IServiceKey" />
     [ServiceBundle("Api/{Service}")]
     [BehaviorContract(IgnoreExtensions = true, Protocol = "media")]
     public interface IMediaService : IServiceKey

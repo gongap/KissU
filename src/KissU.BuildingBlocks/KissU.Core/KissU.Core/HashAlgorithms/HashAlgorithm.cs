@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace KissU.Surging.CPlatform.HashAlgorithms
+namespace KissU.Core.HashAlgorithms
 {
     /// <summary>
     /// 一致性哈希算法

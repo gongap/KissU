@@ -1,4 +1,5 @@
-﻿using KissU.Util.Datas.Sql.Builders.Core;
+﻿using KissU.Core.Datas.Sql.Builders.Core;
+using KissU.Util.Datas.Sql.Builders.Core;
 
 namespace KissU.Util.Datas.SqlServer.Dapper
 {

@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using KissU.Core.Events;
+using KissU.Core.Events.Handlers;
 using KissU.Util.Events;
-using KissU.Util.Events.Handlers;
 
 namespace KissU.Util.Tests.Samples
 {

@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using KissU.Core;
+using KissU.Core.Convertibles;
+using KissU.Core.DependencyResolution;
 using KissU.Surging.CPlatform;
-using KissU.Surging.CPlatform.Convertibles;
-using KissU.Surging.CPlatform.DependencyResolution;
 using KissU.Surging.CPlatform.Runtime.Client;
 using Microsoft.Extensions.DependencyInjection;
 

@@ -1,7 +1,8 @@
 ﻿using EasyCaching.InMemory;
+using KissU.Core.Caches;
+using KissU.Core.Helpers;
 using KissU.Util.Caches;
 using KissU.Util.Caches.EasyCaching;
-using KissU.Util.Helpers;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 

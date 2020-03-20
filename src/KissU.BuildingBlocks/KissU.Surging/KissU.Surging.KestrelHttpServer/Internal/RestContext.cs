@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using Microsoft.Extensions.DependencyInjection;
 using KissU.Surging.CPlatform.Utilities;
 using System.Linq;
+using KissU.Core.Utilities;
 using KissU.Surging.CPlatform.Utilities;
 
 namespace KissU.Surging.KestrelHttpServer.Internal

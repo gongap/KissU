@@ -1,7 +1,7 @@
 ﻿using System;
+using KissU.Core.Helpers;
 using KissU.Util.Biz.Payments.Alipay.Configs;
 using KissU.Util.Biz.Payments.Alipay.Parameters;
-using KissU.Util.Helpers;
 using Xunit;
 using Xunit.Abstractions;
 

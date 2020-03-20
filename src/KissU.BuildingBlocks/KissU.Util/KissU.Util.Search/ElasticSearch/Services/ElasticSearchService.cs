@@ -1,4 +1,5 @@
 ﻿using System;
+using KissU.Core;
 using KissU.Util.Search.ElasticSearch.Configs;
 using Nest;
 

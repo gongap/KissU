@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace KissU.Surging.CPlatform.Module
+namespace KissU.Core.Module
 {
     /// <summary>
     /// 模块提供者

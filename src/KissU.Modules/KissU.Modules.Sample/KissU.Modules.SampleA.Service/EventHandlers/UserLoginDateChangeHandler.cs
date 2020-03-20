@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
-using KissU.Surging.CPlatform.EventBus.Events;
+using KissU.Core.EventBus.Events;
+using KissU.Core.Utilities;
 using KissU.Surging.CPlatform.Utilities;
 using KissU.Surging.EventBusRabbitMQ;
 using KissU.Surging.EventBusRabbitMQ.Attributes;

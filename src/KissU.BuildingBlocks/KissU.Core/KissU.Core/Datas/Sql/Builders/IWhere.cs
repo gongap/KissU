@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.Datas.Sql.Builders
+﻿namespace KissU.Core.Datas.Sql.Builders
 {
     /// <summary>
     /// Where子句操作

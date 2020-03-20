@@ -1,4 +1,5 @@
-﻿using KissU.Surging.CPlatform.Module;
+﻿using KissU.Core.Module;
+using KissU.Surging.CPlatform.Module;
 
 namespace KissU.Surging.Common
 {

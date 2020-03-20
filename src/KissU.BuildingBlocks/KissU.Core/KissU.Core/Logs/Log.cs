@@ -1,11 +1,10 @@
-﻿using KissU.Util.Helpers;
-using KissU.Util.Logs.Abstractions;
-using KissU.Util.Logs.Contents;
-using KissU.Util.Logs.Core;
-using KissU.Util.Logs.Formats;
-using KissU.Util.Sessions;
+﻿using KissU.Core.Logs.Abstractions;
+using KissU.Core.Logs.Contents;
+using KissU.Core.Logs.Core;
+using KissU.Core.Logs.Formats;
+using KissU.Core.Sessions;
 
-namespace KissU.Util.Logs
+namespace KissU.Core.Logs
 {
     /// <summary>
     /// 日志操作
@@ -107,7 +106,7 @@ namespace KissU.Util.Logs
         {
             try
             {
-                return Ioc.Create<ILogProviderFactory>();
+                return Helpers.Ioc.Create<ILogProviderFactory>();
             }
             catch
             {
@@ -122,7 +121,7 @@ namespace KissU.Util.Logs
         {
             try
             {
-                return Ioc.Create<ILogFormat>();
+                return Helpers.Ioc.Create<ILogFormat>();
             }
             catch
             {
@@ -137,7 +136,7 @@ namespace KissU.Util.Logs
         {
             try
             {
-                return Ioc.Create<ILogContext>();
+                return Helpers.Ioc.Create<ILogContext>();
             }
             catch
             {
@@ -152,7 +151,7 @@ namespace KissU.Util.Logs
         {
             try
             {
-                return Ioc.Create<ISession>();
+                return Helpers.Ioc.Create<ISession>();
             }
             catch
             {

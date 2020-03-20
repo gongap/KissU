@@ -1,4 +1,4 @@
-﻿using KissU.Surging.CPlatform.Serialization;
+﻿using KissU.Core.Serialization;
 
 namespace KissU.Surging.CPlatform.Cache
 {

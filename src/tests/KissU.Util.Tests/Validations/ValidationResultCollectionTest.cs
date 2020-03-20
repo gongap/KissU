@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using KissU.Util.Validations;
+using KissU.Core.Validations;
 using Xunit;
 
 namespace KissU.Util.Tests.Validations

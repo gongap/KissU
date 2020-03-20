@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using KissU.Util.Exceptions;
+using KissU.Core.Exceptions;
 using Microsoft.AspNetCore.Identity;
 
 namespace KissU.Modules.GreatWall.Domain.Extensions

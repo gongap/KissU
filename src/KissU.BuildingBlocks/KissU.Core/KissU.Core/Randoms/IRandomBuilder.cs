@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KissU.Util.Randoms
+namespace KissU.Core.Randoms
 {
     /// <summary>
     /// 随机数生成器

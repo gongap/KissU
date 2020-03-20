@@ -4,7 +4,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KissU.Util.Clients
+namespace KissU.Core.Clients
 {
     /// <summary>
     /// Http请求

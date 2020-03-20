@@ -6,14 +6,16 @@ using System.Linq.Dynamic.Core;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
+using KissU.Core;
+using KissU.Core.Datas.Sql;
+using KissU.Core.Datas.Stores;
+using KissU.Core.Datas.UnitOfWorks;
+using KissU.Core.Domains;
+using KissU.Core.Domains.Repositories;
+using KissU.Core.Helpers;
 using KissU.Util.Datas.Sql;
-using KissU.Util.Datas.Stores;
-using KissU.Util.Datas.UnitOfWorks;
-using KissU.Util.Domains;
-using KissU.Util.Domains.Repositories;
-using KissU.Util.Helpers;
 using Microsoft.EntityFrameworkCore;
-using Convert = KissU.Util.Helpers.Convert;
+using Convert = KissU.Core.Helpers.Convert;
 
 namespace KissU.Util.Datas.Ef.Core
 {

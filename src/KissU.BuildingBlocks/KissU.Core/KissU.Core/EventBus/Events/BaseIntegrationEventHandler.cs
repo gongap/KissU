@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace KissU.Surging.CPlatform.EventBus.Events
+namespace KissU.Core.EventBus.Events
 {
     /// <summary>
     /// 集成事件处理程序基类.

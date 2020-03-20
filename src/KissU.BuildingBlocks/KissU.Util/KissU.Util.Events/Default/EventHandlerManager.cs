@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
-using KissU.Util.Events.Handlers;
-using KissU.Util.Helpers;
+using KissU.Core.Events;
+using KissU.Core.Events.Handlers;
+using KissU.Core.Helpers;
 
 namespace KissU.Util.Events.Default
 {

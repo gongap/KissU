@@ -1,5 +1,5 @@
 ﻿using System;
-using KissU.Util.Helpers;
+using KissU.Core.Helpers;
 using Microsoft.AspNetCore.Antiforgery;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;

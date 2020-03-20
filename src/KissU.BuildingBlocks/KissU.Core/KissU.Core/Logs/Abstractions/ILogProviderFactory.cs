@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.Logs.Abstractions
+﻿namespace KissU.Core.Logs.Abstractions
 {
     /// <summary>
     /// 日志提供程序工厂

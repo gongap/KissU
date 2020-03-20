@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KissU.Util.Domains.Auditing
+namespace KissU.Core.Domains.Auditing
 {
     /// <summary>
     /// 创建人操作审计

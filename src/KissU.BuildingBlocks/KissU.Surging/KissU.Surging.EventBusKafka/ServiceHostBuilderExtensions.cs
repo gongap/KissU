@@ -1,5 +1,5 @@
 ﻿using Autofac;
-using KissU.Surging.CPlatform.EventBus;
+using KissU.Core.EventBus;
 using KissU.Surging.ServiceHosting.Internal;
 
 namespace KissU.Surging.EventBusKafka

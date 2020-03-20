@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
-using KissU.Util.Datas.Queries;
+using KissU.Core;
+using KissU.Core.Datas.Queries;
+using KissU.Core.Datas.Sql;
+using KissU.Core.Datas.Sql.Builders;
+using KissU.Core.Datas.Sql.Builders.Core;
+using KissU.Core.Datas.Sql.Matedatas;
+using KissU.Core.Helpers;
 using KissU.Util.Datas.Sql.Builders.Conditions;
 using KissU.Util.Datas.Sql.Builders.Core;
 using KissU.Util.Datas.Sql.Builders.Extensions;
 using KissU.Util.Datas.Sql.Builders.Internal;
-using KissU.Util.Datas.Sql.Matedatas;
-using KissU.Util.Helpers;
 
 namespace KissU.Util.Datas.Sql.Builders.Clauses
 {

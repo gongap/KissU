@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using Convert = KissU.Util.Helpers.Convert;
+using Convert = KissU.Core.Helpers.Convert;
 
-namespace KissU.Util.Domains.Trees
+namespace KissU.Core.Domains.Trees
 {
     /// <summary>
     /// 树形实体

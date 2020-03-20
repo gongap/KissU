@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using KissU.Util.Datas.Stores;
-using KissU.Util.Domains;
-using KissU.Util.Domains.Repositories;
+using KissU.Core.Datas.Stores;
+using KissU.Core.Domains;
+using KissU.Core.Domains.Repositories;
 
 namespace KissU.Util.Datas.Ef.Core
 {

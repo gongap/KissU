@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
-using KissU.Util.Events.Handlers;
+using KissU.Core.Events;
+using KissU.Core.Events.Handlers;
 
 namespace KissU.Util.Events.Default
 {

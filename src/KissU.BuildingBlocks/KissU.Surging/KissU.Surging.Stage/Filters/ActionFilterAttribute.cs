@@ -4,6 +4,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Autofac;
+using KissU.Core.Utilities;
 using KissU.Surging.ApiGateWay;
 using KissU.Surging.ApiGateWay.OAuth;
 using KissU.Surging.CPlatform;

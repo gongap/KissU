@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.Domains
+﻿namespace KissU.Core.Domains
 {
     /// <summary>
     /// 标识

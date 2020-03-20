@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace KissU.Util.Files
+namespace KissU.Core.Files
 {
     /// <summary>
     /// 文件存储服务

@@ -1,4 +1,4 @@
-﻿namespace KissU.Surging.CPlatform.Ioc
+﻿namespace KissU.Core.Ioc
 {
     /// <summary>
     /// 仓储基类.

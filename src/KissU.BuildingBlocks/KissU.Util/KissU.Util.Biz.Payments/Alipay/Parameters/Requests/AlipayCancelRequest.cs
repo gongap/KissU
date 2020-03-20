@@ -1,6 +1,7 @@
-﻿using KissU.Util.Biz.Payments.Properties;
-using KissU.Util.Exceptions;
-using KissU.Util.Validations;
+﻿using KissU.Core;
+using KissU.Core.Exceptions;
+using KissU.Core.Validations;
+using KissU.Util.Biz.Payments.Properties;
 
 namespace KissU.Util.Biz.Payments.Alipay.Parameters.Requests
 {

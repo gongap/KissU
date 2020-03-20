@@ -4,9 +4,9 @@ using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using Autofac;
-using KissU.Surging.CPlatform.Exceptions;
+using KissU.Core.Exceptions;
 
-namespace KissU.Surging.CPlatform.Module
+namespace KissU.Core.Module
 {
     /// <summary>
     /// 抽象模块

@@ -1,13 +1,13 @@
 ﻿using System;
-using KissU.Util.Datas.Queries;
+using KissU.Core.Datas.Queries;
+using KissU.Core.Properties;
 using KissU.Util.Datas.Sql;
 using KissU.Util.Datas.SqlServer.Dapper;
 using KissU.Util.Datas.Tests.Integration.Samples;
 using KissU.Util.Datas.Tests.Integration.XUnitHelpers;
-using KissU.Util.Properties;
 using Xunit;
 using Xunit.Abstractions;
-using String = KissU.Util.Helpers.String;
+using String = KissU.Core.Helpers.String;
 
 namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
 {

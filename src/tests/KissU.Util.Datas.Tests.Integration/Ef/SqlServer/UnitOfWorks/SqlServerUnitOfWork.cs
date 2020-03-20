@@ -1,4 +1,4 @@
-﻿using KissU.Util.Aspects;
+﻿using KissU.Core.Aspects;
 using KissU.Util.Datas.SqlServer.Ef;
 using KissU.Util.Datas.Tests.Integration.Commons.Datas.SqlServer.Configs;
 using Microsoft.EntityFrameworkCore;

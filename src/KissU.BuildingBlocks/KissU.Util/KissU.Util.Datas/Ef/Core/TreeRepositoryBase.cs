@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using KissU.Util.Datas.UnitOfWorks;
-using KissU.Util.Domains.Trees;
+using KissU.Core;
+using KissU.Core.Datas.UnitOfWorks;
+using KissU.Core.Domains.Trees;
 using Microsoft.EntityFrameworkCore;
 
 namespace KissU.Util.Datas.Ef.Core

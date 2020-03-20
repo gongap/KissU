@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq.Expressions;
-using KissU.Util.Datas.Queries;
+using KissU.Core.Datas.Queries;
 
-namespace KissU.Util.Datas.Sql.Builders
+namespace KissU.Core.Datas.Sql.Builders
 {
     /// <summary>
     /// Join子句

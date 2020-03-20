@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Text;
-using KissU.Util.Helpers;
+using KissU.Core.Helpers;
 
-namespace KissU.Util.Events
+namespace KissU.Core.Events
 {
     /// <summary>
     /// 事件

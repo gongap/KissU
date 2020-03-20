@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace KissU.Util.Applications.Operations
+namespace KissU.Core.Applications.Operations
 {
     /// <summary>
     /// 获取指定标识实体

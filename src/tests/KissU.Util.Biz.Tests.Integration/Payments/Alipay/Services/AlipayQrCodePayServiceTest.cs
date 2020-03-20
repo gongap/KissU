@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
+using KissU.Core.Helpers;
 using KissU.Util.Biz.Payments.Alipay.Parameters.Requests;
 using KissU.Util.Biz.Payments.Alipay.Services;
 using KissU.Util.Biz.Payments.Core;
 using KissU.Util.Biz.Tests.Integration.Payments.Alipay.Configs;
-using KissU.Util.Helpers;
 using Xunit;
 using Xunit.Abstractions;
 

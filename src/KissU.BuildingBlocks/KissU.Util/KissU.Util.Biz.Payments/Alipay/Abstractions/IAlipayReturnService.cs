@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.Util.Validations;
+using KissU.Core.Validations;
 
 namespace KissU.Util.Biz.Payments.Alipay.Abstractions
 {

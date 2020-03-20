@@ -8,13 +8,14 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using KissU.Core;
+using KissU.Core.Helpers;
+using KissU.Core.Security.Principals;
 using KissU.Util.AspNetCore.Clients;
-using KissU.Util.Helpers;
-using KissU.Util.Security.Principals;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
-using File = KissU.Util.Helpers.File;
+using File = KissU.Core.Helpers.File;
 using HttpRequest = Microsoft.AspNetCore.Http.HttpRequest;
 using WebClient = KissU.Util.AspNetCore.Clients.WebClient;
 

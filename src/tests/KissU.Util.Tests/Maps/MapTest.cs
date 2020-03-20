@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Castle.DynamicProxy;
-using KissU.Util.Helpers;
-using KissU.Util.Maps;
+using KissU.Core.Helpers;
+using KissU.Core.Maps;
 using KissU.Util.Tests.Samples;
 using Xunit;
 

@@ -1,5 +1,5 @@
-﻿using KissU.Util.Biz.Payments.Wechatpay.Signatures;
-using KissU.Util.Signatures;
+﻿using KissU.Core.Signatures;
+using KissU.Util.Biz.Payments.Wechatpay.Signatures;
 using Xunit;
 
 namespace KissU.Util.Biz.Tests.Integration.Payments.Wechatpay.Signatures

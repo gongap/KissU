@@ -1,7 +1,7 @@
 ﻿using System.Linq;
-using KissU.Util.Exceptions;
+using KissU.Core.Exceptions;
 
-namespace KissU.Util.Validations
+namespace KissU.Core.Validations
 {
     /// <summary>
     /// 验证失败，抛出异常 - 默认验证处理器

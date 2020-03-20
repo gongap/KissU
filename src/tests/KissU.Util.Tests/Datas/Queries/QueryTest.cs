@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Linq.Expressions;
 using System.Text;
-using KissU.Util.Datas.Queries;
-using KissU.Util.Datas.Queries.Criterias;
-using KissU.Util.Properties;
+using KissU.Core;
+using KissU.Core.Datas.Queries;
+using KissU.Core.Datas.Queries.Criterias;
+using KissU.Core.Properties;
 using KissU.Util.Tests.Samples;
 using KissU.Util.Tests.XUnitHelpers;
 using Xunit;

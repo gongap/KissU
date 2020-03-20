@@ -2,7 +2,8 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using KissU.Util.Domains;
+using KissU.Core;
+using KissU.Core.Domains;
 
 namespace KissU.Util.Datas.Tests.Integration.Commons.Domains.Models
 {

@@ -2,7 +2,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace KissU.Surging.CPlatform.Serialization.JsonConverters
+namespace KissU.Core.Serialization.JsonConverters
 {
     /// <summary>
     /// 日期JsonConverter.

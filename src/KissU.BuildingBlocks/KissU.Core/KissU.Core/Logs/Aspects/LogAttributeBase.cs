@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using AspectCore.DynamicProxy;
 using AspectCore.DynamicProxy.Parameters;
-using KissU.Util.Aspects.Base;
+using KissU.Core.Aspects.Base;
 
-namespace KissU.Util.Logs.Aspects
+namespace KissU.Core.Logs.Aspects
 {
     /// <summary>
     /// 日志操作

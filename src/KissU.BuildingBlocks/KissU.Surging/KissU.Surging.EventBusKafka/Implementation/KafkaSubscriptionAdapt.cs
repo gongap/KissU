@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using KissU.Surging.CPlatform.EventBus;
-using KissU.Surging.CPlatform.EventBus.Events;
+using KissU.Core.EventBus;
+using KissU.Core.EventBus.Events;
 
 namespace KissU.Surging.EventBusKafka.Implementation
 {
     /// <summary>
     /// KafkaSubscriptionAdapt.
-    /// Implements the <see cref="KissU.Surging.CPlatform.EventBus.ISubscriptionAdapt" />
+    /// Implements the <see cref="ISubscriptionAdapt" />
     /// </summary>
-    /// <seealso cref="KissU.Surging.CPlatform.EventBus.ISubscriptionAdapt" />
+    /// <seealso cref="ISubscriptionAdapt" />
     public class KafkaSubscriptionAdapt : ISubscriptionAdapt
     {
         private readonly IConsumeConfigurator _consumeConfigurator;

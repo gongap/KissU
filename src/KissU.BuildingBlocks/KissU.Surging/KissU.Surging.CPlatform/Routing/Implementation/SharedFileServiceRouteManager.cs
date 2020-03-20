@@ -4,8 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using KissU.Surging.CPlatform.Address;
-using KissU.Surging.CPlatform.Serialization;
+using KissU.Core.Address;
+using KissU.Core.Serialization;
 using Microsoft.Extensions.Logging;
 
 namespace KissU.Surging.CPlatform.Routing.Implementation

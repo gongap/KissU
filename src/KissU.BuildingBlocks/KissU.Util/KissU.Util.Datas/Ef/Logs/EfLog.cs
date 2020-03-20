@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using KissU.Core;
+using KissU.Core.Datas.UnitOfWorks;
+using KissU.Core.Helpers;
+using KissU.Core.Logs;
 using KissU.Util.Datas.Ef.Configs;
 using KissU.Util.Datas.Ef.Core;
-using KissU.Util.Datas.UnitOfWorks;
-using KissU.Util.Helpers;
-using KissU.Util.Logs;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
@@ -90,11 +91,11 @@ namespace KissU.Util.Datas.Ef.Logs
         {
             try
             {
-                return Util.Logs.Log.GetLog(TraceLogName);
+                return KissU.Core.Logs.Log.GetLog(TraceLogName);
             }
             catch
             {
-                return Util.Logs.Log.Null;
+                return KissU.Core.Logs.Log.Null;
             }
         }
 

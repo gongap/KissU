@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using KissU.Util.Logs;
+using KissU.Core.Logs;
 using Microsoft.AspNetCore.Http;
 
 namespace KissU.Util.AspNetCore.Webs.Middlewares

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace KissU.Util.Validations
+namespace KissU.Core.Validations
 {
     /// <summary>
     /// DataAnnotations验证操作

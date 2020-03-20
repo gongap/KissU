@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Threading;
-using KissU.Util.Logs.Abstractions;
-using KissU.Util.Sessions;
+using KissU.Core.Logs.Abstractions;
+using KissU.Core.Sessions;
 using Microsoft.Extensions.Logging;
-using Enum = KissU.Util.Helpers.Enum;
+using Enum = KissU.Core.Helpers.Enum;
 
-namespace KissU.Util.Logs.Core
+namespace KissU.Core.Logs.Core
 {
     /// <summary>
     /// 日志操作

@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace KissU.Surging.CPlatform.Utilities
+namespace KissU.Core.Utilities
 {
     /// <summary>
     /// 调试检查。这个类不能被继承.

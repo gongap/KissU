@@ -1,4 +1,4 @@
-﻿using KissU.Util.Helpers;
+﻿using KissU.Core.Helpers;
 
 namespace KissU.Util.Tests.Samples
 {

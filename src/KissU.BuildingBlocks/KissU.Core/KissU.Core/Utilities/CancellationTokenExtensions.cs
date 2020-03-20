@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace KissU.Surging.CPlatform.Utilities
+namespace KissU.Core.Utilities
 {
     /// <summary>
     /// 取消令牌扩展.

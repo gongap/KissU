@@ -1,4 +1,4 @@
-﻿using KissU.Util.Dependency;
+﻿using KissU.Core.Dependency;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace KissU.Modules.IdentityServer.Application.Configs

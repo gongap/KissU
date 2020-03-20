@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using KissU.Core.Domains.Trees;
 using KissU.Modules.GreatWall.Domain.Models;
-using KissU.Util.Domains.Trees;
 
 namespace KissU.Modules.GreatWall.Domain.Repositories
 {

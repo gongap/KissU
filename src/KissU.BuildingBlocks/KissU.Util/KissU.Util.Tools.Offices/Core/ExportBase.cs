@@ -6,9 +6,10 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using KissU.Core;
+using KissU.Core.Helpers;
 using KissU.Util.AspNetCore.Helpers;
-using KissU.Util.Helpers;
-using Convert = KissU.Util.Helpers.Convert;
+using Convert = KissU.Core.Helpers.Convert;
 
 namespace KissU.Util.Tools.Offices.Core
 {

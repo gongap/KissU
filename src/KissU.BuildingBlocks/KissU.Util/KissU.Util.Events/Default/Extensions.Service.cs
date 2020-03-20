@@ -1,4 +1,5 @@
-﻿using KissU.Util.Events.Handlers;
+﻿using KissU.Core.Events;
+using KissU.Core.Events.Handlers;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 

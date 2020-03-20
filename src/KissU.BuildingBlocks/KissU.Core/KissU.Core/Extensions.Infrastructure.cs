@@ -2,11 +2,11 @@
 using System.Text;
 using AspectCore.Configuration;
 using Autofac;
-using KissU.Util.Dependency;
+using KissU.Core.Dependency;
 using Microsoft.Extensions.DependencyInjection;
 using IContainer = Autofac.IContainer;
 
-namespace KissU.Util
+namespace KissU.Core
 {
     /// <summary>
     /// 系统扩展 - 基础设施

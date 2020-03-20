@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Autofac;
-using KissU.Surging.CPlatform.EventBus.Events;
-using KissU.Surging.CPlatform.EventBus.Implementation;
-using KissU.Surging.CPlatform.Ioc;
+using KissU.Core.EventBus.Events;
+using KissU.Core.EventBus.Implementation;
+using KissU.Core.Ioc;
+using KissU.Core.Utilities;
 using KissU.Surging.CPlatform.Utilities;
 using KissU.Surging.Protocol.Mqtt.Internal.Messages;
 using KissU.Surging.ProxyGenerator;
@@ -12,9 +13,9 @@ namespace KissU.Surging.Protocol.Mqtt.Internal.Services
 {
     /// <summary>
     /// MqttBehavior.
-    /// Implements the <see cref="KissU.Surging.CPlatform.Ioc.ServiceBase" />
+    /// Implements the <see cref="ServiceBase" />
     /// </summary>
-    /// <seealso cref="KissU.Surging.CPlatform.Ioc.ServiceBase" />
+    /// <seealso cref="ServiceBase" />
     public abstract class MqttBehavior : ServiceBase
     {
         /// <summary>

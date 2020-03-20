@@ -1,4 +1,4 @@
-﻿using KissU.Util.Validations;
+﻿using KissU.Core.Validations;
 
 namespace KissU.Util.Tests.Samples
 {

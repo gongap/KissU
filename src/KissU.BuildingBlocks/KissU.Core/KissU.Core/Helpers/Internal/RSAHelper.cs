@@ -3,7 +3,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace KissU.Util.Helpers.Internal
+namespace KissU.Core.Helpers.Internal
 {
     /// <summary>
     /// RSA加解密 使用OpenSSL的公钥加密/私钥解密

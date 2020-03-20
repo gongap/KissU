@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using KissU.Util.Domains;
+using KissU.Core.Domains;
 
 namespace KissU.Util.Datas.Tests.Integration.Commons.Domains.Models
 {

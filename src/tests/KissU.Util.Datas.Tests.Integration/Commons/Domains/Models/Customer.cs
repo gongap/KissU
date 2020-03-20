@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using KissU.Util.Domains;
-using KissU.Util.Domains.Auditing;
+using KissU.Core.Domains;
+using KissU.Core.Domains.Auditing;
 
 namespace KissU.Util.Datas.Tests.Integration.Commons.Domains.Models
 {
@@ -148,11 +148,11 @@ namespace KissU.Util.Datas.Tests.Integration.Commons.Domains.Models
         {
             return new List<Customer>
             {
-                new Customer(Helpers.Id.ObjectId()) {Name = "A", Nickname = "A1", Mobile = "1"},
-                new Customer(Helpers.Id.ObjectId()) {Name = "A", Nickname = "A2", Mobile = "2"},
-                new Customer(Helpers.Id.ObjectId()) {Name = "B", Nickname = "B1", Mobile = "3"},
-                new Customer(Helpers.Id.ObjectId()) {Name = "B", Nickname = "B2", Mobile = "4"},
-                new Customer(Helpers.Id.ObjectId()) {Name = "C", Mobile = "5"}
+                new Customer(Core.Helpers.Id.ObjectId()) {Name = "A", Nickname = "A1", Mobile = "1"},
+                new Customer(Core.Helpers.Id.ObjectId()) {Name = "A", Nickname = "A2", Mobile = "2"},
+                new Customer(Core.Helpers.Id.ObjectId()) {Name = "B", Nickname = "B1", Mobile = "3"},
+                new Customer(Core.Helpers.Id.ObjectId()) {Name = "B", Nickname = "B2", Mobile = "4"},
+                new Customer(Core.Helpers.Id.ObjectId()) {Name = "C", Mobile = "5"}
             };
         }
     }

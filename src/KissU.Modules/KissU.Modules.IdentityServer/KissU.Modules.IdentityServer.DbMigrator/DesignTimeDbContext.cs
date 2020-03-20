@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
+using KissU.Core.Reflections;
 using KissU.Modules.IdentityServer.Domain.UnitOfWorks;
 using KissU.Util.Datas.SqlServer.Ef;
-using KissU.Util.Reflections;
 using Microsoft.EntityFrameworkCore;
 
 namespace KissU.Modules.IdentityServer.DbMigrator

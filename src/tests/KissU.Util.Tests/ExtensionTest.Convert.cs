@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using KissU.Core;
 using Xunit;
 
 namespace KissU.Util.Tests

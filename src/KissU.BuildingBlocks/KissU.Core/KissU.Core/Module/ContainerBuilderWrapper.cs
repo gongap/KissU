@@ -1,6 +1,6 @@
 ﻿using Autofac;
 
-namespace KissU.Surging.CPlatform.Module
+namespace KissU.Core.Module
 {
     /// <summary>
     /// 容器构建器包装

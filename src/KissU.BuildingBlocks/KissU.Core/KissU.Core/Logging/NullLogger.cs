@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Extensions.Logging;
 
-namespace KissU.Surging.CPlatform.Logging
+namespace KissU.Core.Logging
 {
     /// <summary>
     /// 一个空的日志记录器。

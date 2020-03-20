@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using KissU.Core;
 using KissU.Surging.Caching.HashAlgorithms;
 using KissU.Surging.Caching.Models;
 using KissU.Surging.CPlatform;

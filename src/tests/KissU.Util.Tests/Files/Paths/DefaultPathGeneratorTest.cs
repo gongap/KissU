@@ -1,7 +1,7 @@
 ﻿using System;
-using KissU.Util.Files.Paths;
-using KissU.Util.Helpers;
-using KissU.Util.Randoms;
+using KissU.Core.Files.Paths;
+using KissU.Core.Helpers;
+using KissU.Core.Randoms;
 using KissU.Util.Tests.XUnitHelpers;
 using Xunit;
 

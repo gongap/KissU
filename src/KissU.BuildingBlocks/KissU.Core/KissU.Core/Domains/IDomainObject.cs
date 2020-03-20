@@ -1,6 +1,6 @@
-﻿using KissU.Util.Validations;
+﻿using KissU.Core.Validations;
 
-namespace KissU.Util.Domains
+namespace KissU.Core.Domains
 {
     /// <summary>
     /// 领域对象

@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Autofac;
-using KissU.Surging.CPlatform.EventBus.Events;
-using KissU.Surging.CPlatform.EventBus.Implementation;
-using KissU.Surging.CPlatform.Ioc;
+using KissU.Core.EventBus.Events;
+using KissU.Core.EventBus.Implementation;
+using KissU.Core.Ioc;
+using KissU.Core.Utilities;
 using KissU.Surging.CPlatform.Utilities;
 using KissU.Surging.ProxyGenerator;
 
@@ -12,9 +13,9 @@ namespace KissU.Surging.Protocol.Udp.Runtime
 {
     /// <summary>
     /// UdpBehavior.
-    /// Implements the <see cref="KissU.Surging.CPlatform.Ioc.IServiceBehavior" />
+    /// Implements the <see cref="IServiceBehavior" />
     /// </summary>
-    /// <seealso cref="KissU.Surging.CPlatform.Ioc.IServiceBehavior" />
+    /// <seealso cref="IServiceBehavior" />
     public abstract class UdpBehavior : IServiceBehavior
     {
         /// <summary>

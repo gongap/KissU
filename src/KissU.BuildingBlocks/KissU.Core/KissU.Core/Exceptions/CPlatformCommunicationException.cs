@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KissU.Surging.CPlatform.Exceptions
+namespace KissU.Core.Exceptions
 {
     /// <summary>
     /// 远程执行异常（由服务端转发至客户端的异常信息）。

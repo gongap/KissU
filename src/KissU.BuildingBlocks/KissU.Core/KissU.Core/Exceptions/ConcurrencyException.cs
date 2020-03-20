@@ -1,7 +1,7 @@
 ﻿using System;
-using KissU.Util.Properties;
+using KissU.Core.Properties;
 
-namespace KissU.Util.Exceptions
+namespace KissU.Core.Exceptions
 {
     /// <summary>
     /// 并发异常

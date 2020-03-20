@@ -1,12 +1,12 @@
 ﻿using System;
+using KissU.Core.Applications.Dtos;
+using KissU.Core.Datas.Queries;
+using KissU.Core.Datas.UnitOfWorks;
+using KissU.Core.Domains;
+using KissU.Core.Domains.Repositories;
+using KissU.Core.Maps;
 using KissU.Util.Applications.Aspects;
-using KissU.Util.Applications.Dtos;
-using KissU.Util.Datas.Queries;
-using KissU.Util.Datas.UnitOfWorks;
-using KissU.Util.Domains;
-using KissU.Util.Domains.Repositories;
-using KissU.Util.Maps;
-using Convert = KissU.Util.Helpers.Convert;
+using Convert = KissU.Core.Helpers.Convert;
 
 namespace KissU.Util.Applications
 {

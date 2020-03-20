@@ -1,6 +1,6 @@
 ﻿using System.Linq;
+using KissU.Core.Validations;
 using KissU.Util.Tests.Samples;
-using KissU.Util.Validations;
 using Xunit;
 
 namespace KissU.Util.Tests.Validations

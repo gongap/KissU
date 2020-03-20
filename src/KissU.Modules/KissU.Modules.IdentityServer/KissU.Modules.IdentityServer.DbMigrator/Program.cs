@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
+using KissU.Core.Dependency;
 using KissU.Modules.IdentityServer.Data;
 using KissU.Modules.IdentityServer.Domain.UnitOfWorks;
 using KissU.Util.Datas.SqlServer;
-using KissU.Util.Dependency;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Castle.Components.DictionaryAdapter;
-using KissU.Util.Domains.Trees;
+using KissU.Core;
+using KissU.Core.Domains.Trees;
 using KissU.Util.Tests.Samples;
 using NSubstitute;
 using Xunit;

@@ -1,5 +1,6 @@
 ﻿using System.IO;
-using KissU.Util.Helpers;
+using KissU.Core;
+using KissU.Core.Helpers;
 using KissU.Util.Tools.Offices.Abstractions;
 using KissU.Util.Tools.Offices.Core;
 using NPOI.SS.UserModel;

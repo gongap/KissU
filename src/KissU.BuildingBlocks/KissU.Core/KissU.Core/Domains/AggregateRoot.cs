@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KissU.Util.Domains
+namespace KissU.Core.Domains
 {
     /// <summary>
     /// 聚合根

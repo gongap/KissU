@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq.Expressions;
-using KissU.Util.Datas.Queries;
-using KissU.Util.Helpers;
+using KissU.Core.Datas.Queries;
+using KissU.Core.Helpers;
 
-namespace KissU.Util.Expressions
+namespace KissU.Core.Expressions
 {
     /// <summary>
     /// 谓词表达式生成器

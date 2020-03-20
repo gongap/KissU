@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace KissU.Util.Helpers
+namespace KissU.Core.Helpers
 {
     /// <summary>
     /// 类型转换

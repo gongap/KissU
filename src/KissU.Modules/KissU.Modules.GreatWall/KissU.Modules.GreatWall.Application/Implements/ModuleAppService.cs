@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
+using KissU.Core;
+using KissU.Core.Maps;
 using KissU.Modules.GreatWall.Application.Abstractions;
 using KissU.Modules.GreatWall.Application.Dtos;
 using KissU.Modules.GreatWall.Application.Dtos.Extensions;
@@ -8,7 +10,6 @@ using KissU.Modules.GreatWall.Domain.Repositories;
 using KissU.Modules.GreatWall.Domain.UnitOfWorks;
 using KissU.Util;
 using KissU.Util.Applications;
-using KissU.Util.Maps;
 
 namespace KissU.Modules.GreatWall.Application.Implements
 {

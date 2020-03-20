@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KissU.Util.Locks
+namespace KissU.Core.Locks
 {
     /// <summary>
     /// 业务锁

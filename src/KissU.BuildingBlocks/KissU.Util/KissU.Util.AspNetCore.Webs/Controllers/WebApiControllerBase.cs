@@ -1,8 +1,8 @@
-﻿using KissU.Util.AspNetCore.Webs.Commons;
+﻿using KissU.Core.Logs;
+using KissU.Core.Properties;
+using KissU.Core.Sessions;
+using KissU.Util.AspNetCore.Webs.Commons;
 using KissU.Util.AspNetCore.Webs.Filters;
-using KissU.Util.Logs;
-using KissU.Util.Properties;
-using KissU.Util.Sessions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KissU.Util.AspNetCore.Webs.Controllers
@@ -38,11 +38,11 @@ namespace KissU.Util.AspNetCore.Webs.Controllers
         {
             try
             {
-                return Util.Logs.Log.GetLog(this);
+                return Core.Logs.Log.GetLog(this);
             }
             catch
             {
-                return Util.Logs.Log.Null;
+                return Core.Logs.Log.Null;
             }
         }
 

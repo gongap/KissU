@@ -1,5 +1,5 @@
 ﻿using System.Security.Claims;
-using KissU.Util.Security.Principals;
+using KissU.Core.Security.Principals;
 using Microsoft.AspNetCore.Http;
 
 namespace KissU.Util.AspNetCore

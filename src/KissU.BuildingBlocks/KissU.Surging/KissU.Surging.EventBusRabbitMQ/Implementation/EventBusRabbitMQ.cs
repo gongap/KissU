@@ -5,10 +5,11 @@ using System.Net.Sockets;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using KissU.Surging.CPlatform.DependencyResolution;
-using KissU.Surging.CPlatform.EventBus;
-using KissU.Surging.CPlatform.EventBus.Events;
-using KissU.Surging.CPlatform.EventBus.Implementation;
+using KissU.Core.DependencyResolution;
+using KissU.Core.EventBus;
+using KissU.Core.EventBus.Events;
+using KissU.Core.EventBus.Implementation;
+using KissU.Core.Utilities;
 using KissU.Surging.CPlatform.Utilities;
 using KissU.Surging.EventBusRabbitMQ.Attributes;
 using Microsoft.Extensions.Logging;
@@ -23,10 +24,10 @@ namespace KissU.Surging.EventBusRabbitMQ.Implementation
 {
     /// <summary>
     /// EventBusRabbitMQ.
-    /// Implements the <see cref="KissU.Surging.CPlatform.EventBus.Implementation.IEventBus" />
+    /// Implements the <see cref="IEventBus" />
     /// Implements the <see cref="System.IDisposable" />
     /// </summary>
-    /// <seealso cref="KissU.Surging.CPlatform.EventBus.Implementation.IEventBus" />
+    /// <seealso cref="IEventBus" />
     /// <seealso cref="System.IDisposable" />
     public class EventBusRabbitMQ : IEventBus, IDisposable
     {

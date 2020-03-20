@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq.Expressions;
-using KissU.Util.Domains.Repositories;
-using KissU.Util.Expressions;
-using KissU.Util.Helpers;
+using KissU.Core.Domains.Repositories;
+using KissU.Core.Expressions;
+using KissU.Core.Helpers;
 
-namespace KissU.Util.Datas.Queries.Criterias
+namespace KissU.Core.Datas.Queries.Criterias
 {
     /// <summary>
     /// 范围过滤条件

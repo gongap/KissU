@@ -1,15 +1,15 @@
 ﻿using Greet;
-using KissU.Surging.CPlatform.Ioc;
+using KissU.Core.Ioc;
 
 namespace KissU.Modules.SampleA.Service.Behaviors
 {
     /// <summary>
     /// GreeterBehavior.
     /// Implements the <see cref="Greet.Greeter.GreeterBase" />
-    /// Implements the <see cref="KissU.Surging.CPlatform.Ioc.IServiceBehavior" />
+    /// Implements the <see cref="IServiceBehavior" />
     /// </summary>
     /// <seealso cref="Greet.Greeter.GreeterBase" />
-    /// <seealso cref="KissU.Surging.CPlatform.Ioc.IServiceBehavior" />
+    /// <seealso cref="IServiceBehavior" />
     public class GreeterBehavior : Greeter.GreeterBase, IServiceBehavior
     {
     }

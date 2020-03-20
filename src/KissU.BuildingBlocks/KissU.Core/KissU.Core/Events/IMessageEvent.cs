@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.Events
+﻿namespace KissU.Core.Events
 {
     /// <summary>
     /// 消息事件

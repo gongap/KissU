@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using KissU.Util.Datas.Sql.Matedatas;
-using KissU.Util.Helpers;
+using KissU.Core.Datas.Sql.Matedatas;
+using KissU.Core.Helpers;
 
-namespace KissU.Util.Datas.Sql.Builders.Core
+namespace KissU.Core.Datas.Sql.Builders.Core
 {
     /// <summary>
     /// 名称项，处理名称中包含符号.

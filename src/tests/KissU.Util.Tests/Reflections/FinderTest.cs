@@ -1,5 +1,5 @@
-﻿using KissU.Util.Helpers;
-using KissU.Util.Reflections;
+﻿using KissU.Core.Helpers;
+using KissU.Core.Reflections;
 using Xunit;
 
 namespace KissU.Util.Tests.Reflections

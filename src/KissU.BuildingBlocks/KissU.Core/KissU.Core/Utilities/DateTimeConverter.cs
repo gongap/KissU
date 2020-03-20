@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KissU.Surging.CPlatform.Utilities
+namespace KissU.Core.Utilities
 {
     /// <summary>
     /// 日期时间转换器.

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using KissU.Core.Helpers;
 using KissU.Util.Datas.Ef.Core;
-using KissU.Util.Helpers;
 using Microsoft.EntityFrameworkCore;
 
 namespace KissU.Util.Datas.SqlServer.Ef

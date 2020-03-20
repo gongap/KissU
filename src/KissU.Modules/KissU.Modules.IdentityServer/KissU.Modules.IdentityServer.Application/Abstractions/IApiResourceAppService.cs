@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using KissU.Core.Validations.Aspects;
 using KissU.Modules.IdentityServer.Application.Dtos;
 using KissU.Modules.IdentityServer.Application.Dtos.Requests;
 using KissU.Modules.IdentityServer.Application.Queries;
 using KissU.Util.Applications;
 using KissU.Util.Applications.Aspects;
-using KissU.Util.Validations.Aspects;
 
 namespace KissU.Modules.IdentityServer.Application.Abstractions
 {

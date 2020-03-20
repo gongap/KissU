@@ -1,5 +1,6 @@
 ﻿using System.Linq;
-using KissU.Util.Helpers;
+using KissU.Core;
+using KissU.Core.Helpers;
 using Xunit;
 
 namespace KissU.Util.Tests.Helpers

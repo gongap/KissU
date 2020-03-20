@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using IdentityServer4.Models;
 using IdentityServer4.Stores;
+using KissU.Core.Maps;
 using KissU.Modules.IdentityServer.Domain.Repositories;
-using KissU.Util.Maps;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 

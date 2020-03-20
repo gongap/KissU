@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
-using KissU.Util.Helpers;
+using KissU.Core.Helpers;
 using KissU.Util.Tests.Samples;
 using KissU.Util.Tests.XUnitHelpers;
 using Xunit;
-using Enum = KissU.Util.Helpers.Enum;
+using Enum = KissU.Core.Helpers.Enum;
 
 namespace KissU.Util.Tests.Helpers
 {

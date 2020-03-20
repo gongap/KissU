@@ -1,5 +1,5 @@
 ﻿using System;
-using KissU.Surging.CPlatform.Exceptions;
+using KissU.Core.Exceptions;
 using KissU.Surging.CPlatform.Filters.Implementation;
 
 namespace KissU.Surging.KestrelHttpServer.Filters.Implementation

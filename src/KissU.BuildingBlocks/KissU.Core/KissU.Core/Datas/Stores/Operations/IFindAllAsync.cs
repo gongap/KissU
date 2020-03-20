@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using KissU.Util.Domains;
+using KissU.Core.Domains;
 
-namespace KissU.Util.Datas.Stores.Operations
+namespace KissU.Core.Datas.Stores.Operations
 {
     /// <summary>
     /// 查找实体列表

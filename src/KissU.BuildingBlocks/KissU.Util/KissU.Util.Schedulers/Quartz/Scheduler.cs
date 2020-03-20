@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Reflection;
 using System.Threading.Tasks;
-using KissU.Util.Helpers;
-using KissU.Util.Reflections;
+using KissU.Core;
+using KissU.Core.Helpers;
+using KissU.Core.Reflections;
 using Quartz;
 using Quartz.Impl;
+using IJob = KissU.Core.Schedulers.IJob;
+using IScheduler = KissU.Core.Schedulers.IScheduler;
 using Qz = Quartz;
 
 namespace KissU.Util.Schedulers.Quartz

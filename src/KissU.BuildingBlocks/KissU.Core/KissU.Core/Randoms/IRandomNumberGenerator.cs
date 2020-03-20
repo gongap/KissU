@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.Randoms
+﻿namespace KissU.Core.Randoms
 {
     /// <summary>
     /// 随机数字生成器

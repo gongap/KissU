@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
+using KissU.Core.Maps;
 using KissU.Modules.GreatWall.Application.Dtos.NgAlain;
 using KissU.Modules.GreatWall.Application.Dtos.Responses;
 using KissU.Modules.GreatWall.Domain.Models;
-using KissU.Util.Maps;
 
 namespace KissU.Modules.GreatWall.Application.Dtos.Extensions
 {

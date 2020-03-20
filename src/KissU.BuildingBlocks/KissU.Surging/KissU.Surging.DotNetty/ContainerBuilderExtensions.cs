@@ -1,5 +1,6 @@
 ﻿using System;
 using Autofac;
+using KissU.Core;
 using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Runtime.Client.HealthChecks;
 using KissU.Surging.CPlatform.Runtime.Server;

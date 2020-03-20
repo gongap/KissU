@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using KissU.Core;
+using KissU.Core.Datas.Queries;
+using KissU.Core.Dependency;
+using KissU.Core.Helpers;
 using KissU.Util.Datas.Ef;
-using KissU.Util.Datas.Queries;
 using KissU.Util.Datas.Tests.Integration.Commons.Datas.Criterias;
 using KissU.Util.Datas.Tests.Integration.Commons.Datas.PgSql.Configs;
 using KissU.Util.Datas.Tests.Integration.Commons.Domains.Models;
 using KissU.Util.Datas.Tests.Integration.Commons.Domains.Repositories;
 using KissU.Util.Datas.Tests.Integration.Ef.PgSql.UnitOfWorks;
-using KissU.Util.Dependency;
-using KissU.Util.Helpers;
 using Xunit;
 
 namespace KissU.Util.Datas.Tests.Integration.Ef.PgSql.Tests

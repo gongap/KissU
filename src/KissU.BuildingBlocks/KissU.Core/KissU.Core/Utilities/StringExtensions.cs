@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace KissU.Surging.CPlatform.Utilities
+namespace KissU.Core.Utilities
 {
     /// <summary>
     /// 字符串扩展.

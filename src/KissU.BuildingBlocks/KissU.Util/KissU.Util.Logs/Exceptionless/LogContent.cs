@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using KissU.Core;
 using KissU.Util.Logs.Properties;
 
 namespace KissU.Util.Logs.Exceptionless
@@ -6,7 +7,7 @@ namespace KissU.Util.Logs.Exceptionless
     /// <summary>
     /// Exceptionless日志内容
     /// </summary>
-    public class LogContent : Contents.LogContent, ILogConvert
+    public class LogContent : Core.Logs.Contents.LogContent, ILogConvert
     {
         /// <summary>
         /// 转换

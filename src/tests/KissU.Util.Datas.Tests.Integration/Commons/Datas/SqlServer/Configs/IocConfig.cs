@@ -1,16 +1,17 @@
 ﻿using Autofac;
+using KissU.Core.Datas.Sql;
+using KissU.Core.Datas.Sql.Matedatas;
+using KissU.Core.Datas.Transactions;
+using KissU.Core.Datas.UnitOfWorks;
+using KissU.Core.Dependency;
+using KissU.Core.Sessions;
 using KissU.Util.Datas.Dapper;
 using KissU.Util.Datas.Sql;
-using KissU.Util.Datas.Sql.Matedatas;
 using KissU.Util.Datas.SqlServer.Dapper;
 using KissU.Util.Datas.Tests.Integration.Commons.Domains.Repositories;
 using KissU.Util.Datas.Tests.Integration.Ef.SqlServer.Repositories;
 using KissU.Util.Datas.Tests.Integration.Ef.SqlServer.Stores;
 using KissU.Util.Datas.Tests.Integration.Ef.SqlServer.UnitOfWorks;
-using KissU.Util.Datas.Transactions;
-using KissU.Util.Datas.UnitOfWorks;
-using KissU.Util.Dependency;
-using KissU.Util.Sessions;
 
 namespace KissU.Util.Datas.Tests.Integration.Commons.Datas.SqlServer.Configs
 {

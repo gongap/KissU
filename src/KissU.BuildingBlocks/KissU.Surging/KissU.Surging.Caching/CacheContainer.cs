@@ -1,4 +1,5 @@
 ﻿using System;
+using KissU.Core.Utilities;
 using KissU.Surging.CPlatform.Utilities;
 
 namespace KissU.Surging.Caching

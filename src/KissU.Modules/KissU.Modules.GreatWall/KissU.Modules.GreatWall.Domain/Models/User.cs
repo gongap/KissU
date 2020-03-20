@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using KissU.Core;
+using KissU.Core.Exceptions;
+using KissU.Core.Security.Encryptors;
+using KissU.Core.Validations;
 using KissU.Modules.GreatWall.Domain.Encryptors;
-using KissU.Util;
-using KissU.Util.Exceptions;
-using KissU.Util.Security.Encryptors;
-using KissU.Util.Validations;
 
 namespace KissU.Modules.GreatWall.Domain.Models
 {

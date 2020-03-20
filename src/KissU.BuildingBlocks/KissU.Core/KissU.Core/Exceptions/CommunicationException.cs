@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KissU.Surging.CPlatform.Exceptions
+namespace KissU.Core.Exceptions
 {
     /// <summary>
     /// 通讯异常（与服务端进行通讯时发生的异常）。

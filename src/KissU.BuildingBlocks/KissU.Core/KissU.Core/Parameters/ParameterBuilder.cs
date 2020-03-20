@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using KissU.Util.Helpers;
-using KissU.Util.Parameters.Formats;
+using KissU.Core.Helpers;
+using KissU.Core.Parameters.Formats;
 
-namespace KissU.Util.Parameters
+namespace KissU.Core.Parameters
 {
     /// <summary>
     /// 参数生成器

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using KissU.Core;
 using KissU.Surging.Caching;
 using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Cache;

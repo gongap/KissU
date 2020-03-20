@@ -1,7 +1,8 @@
 ﻿using System;
 using Autofac;
+using KissU.Core;
+using KissU.Core.Convertibles;
 using KissU.Surging.CPlatform;
-using KissU.Surging.CPlatform.Convertibles;
 using KissU.Surging.CPlatform.Diagnostics;
 using KissU.Surging.CPlatform.Runtime.Client;
 using KissU.Surging.ProxyGenerator.Diagnostics;

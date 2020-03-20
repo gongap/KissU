@@ -1,7 +1,9 @@
 ﻿using System;
+using KissU.Core.Datas.Sql.Builders;
+using KissU.Core.Datas.Sql.Builders.Core;
+using KissU.Core.Datas.Sql.Matedatas;
+using KissU.Core.Domains;
 using KissU.Util.Datas.Sql.Builders.Core;
-using KissU.Util.Datas.Sql.Matedatas;
-using KissU.Util.Domains;
 
 namespace KissU.Util.Datas.Sql.Builders.Filters
 {

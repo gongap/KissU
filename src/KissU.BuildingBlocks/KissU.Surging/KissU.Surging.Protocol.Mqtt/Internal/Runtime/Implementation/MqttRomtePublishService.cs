@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
-using KissU.Surging.CPlatform.Ioc;
+using KissU.Core.Ioc;
+using KissU.Core.Utilities;
 using KissU.Surging.CPlatform.Utilities;
 using KissU.Surging.Protocol.Mqtt.Internal.Messages;
 using KissU.Surging.Protocol.Mqtt.Internal.Services;
@@ -8,10 +9,10 @@ namespace KissU.Surging.Protocol.Mqtt.Internal.Runtime.Implementation
 {
     /// <summary>
     /// MqttRomtePublishService.
-    /// Implements the <see cref="KissU.Surging.CPlatform.Ioc.ServiceBase" />
+    /// Implements the <see cref="ServiceBase" />
     /// Implements the <see cref="KissU.Surging.Protocol.Mqtt.Internal.Runtime.IMqttRomtePublishService" />
     /// </summary>
-    /// <seealso cref="KissU.Surging.CPlatform.Ioc.ServiceBase" />
+    /// <seealso cref="ServiceBase" />
     /// <seealso cref="KissU.Surging.Protocol.Mqtt.Internal.Runtime.IMqttRomtePublishService" />
     public class MqttRomtePublishService : ServiceBase, IMqttRomtePublishService
     {

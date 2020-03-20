@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
+using KissU.Core.Exceptions;
+using KissU.Core.Helpers;
 using KissU.Util.Biz.Payments.Alipay.Parameters.Requests;
 using KissU.Util.Biz.Payments.Alipay.Results;
 using KissU.Util.Biz.Payments.Alipay.Services;
@@ -7,11 +9,9 @@ using KissU.Util.Biz.Payments.Core;
 using KissU.Util.Biz.Payments.Properties;
 using KissU.Util.Biz.Tests.Integration.Payments.Alipay.Configs;
 using KissU.Util.Biz.Tests.Integration.XUnitHelpers;
-using KissU.Util.Exceptions;
-using KissU.Util.Helpers;
 using Xunit;
 using Xunit.Abstractions;
-using String = KissU.Util.Helpers.String;
+using String = KissU.Core.Helpers.String;
 
 namespace KissU.Util.Biz.Tests.Integration.Payments.Alipay.Services
 {

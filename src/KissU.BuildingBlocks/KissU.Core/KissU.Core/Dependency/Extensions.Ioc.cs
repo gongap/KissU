@@ -2,7 +2,7 @@
 using Autofac.Builder;
 using Microsoft.Extensions.Hosting;
 
-namespace KissU.Util.Dependency
+namespace KissU.Core.Dependency
 {
     /// <summary>
     /// Autofac扩展

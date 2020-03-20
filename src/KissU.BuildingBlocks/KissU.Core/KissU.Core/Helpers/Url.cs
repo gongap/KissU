@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace KissU.Util.Helpers
+namespace KissU.Core.Helpers
 {
     /// <summary>
     /// Url操作

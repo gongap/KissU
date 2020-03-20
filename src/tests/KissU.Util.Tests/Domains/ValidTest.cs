@@ -1,12 +1,12 @@
 ﻿using System;
 using Autofac;
-using KissU.Util.Dependency;
-using KissU.Util.Exceptions;
-using KissU.Util.Helpers;
+using KissU.Core.Dependency;
+using KissU.Core.Exceptions;
+using KissU.Core.Helpers;
 using KissU.Util.Tests.Samples;
 using KissU.Util.Tests.XUnitHelpers;
 using Xunit;
-using IContainer = KissU.Util.Dependency.IContainer;
+using IContainer = KissU.Core.Dependency.IContainer;
 
 namespace KissU.Util.Tests.Domains
 {

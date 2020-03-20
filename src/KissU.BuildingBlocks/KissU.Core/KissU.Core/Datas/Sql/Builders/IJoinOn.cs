@@ -1,6 +1,6 @@
-﻿using KissU.Util.Datas.Queries;
+﻿using KissU.Core.Datas.Queries;
 
-namespace KissU.Util.Datas.Sql.Builders
+namespace KissU.Core.Datas.Sql.Builders
 {
     /// <summary>
     /// 连接条件

@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.Validations.Validators
+﻿namespace KissU.Core.Validations.Validators
 {
     /// <summary>
     /// 验证正则

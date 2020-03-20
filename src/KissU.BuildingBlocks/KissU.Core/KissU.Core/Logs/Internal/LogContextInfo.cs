@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace KissU.Util.Logs.Internal
+namespace KissU.Core.Logs.Internal
 {
     /// <summary>
     /// 日志上下文信息

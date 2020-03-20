@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KissU.Surging.CPlatform.Ioc
+namespace KissU.Core.Ioc
 {
     /// <summary>
     /// 模块名称属性.

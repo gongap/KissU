@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 using AspectCore.DynamicProxy;
 using AspectCore.Extensions.AspectScope;
-using KissU.Util.Aspects.Base;
-using KissU.Util.Datas.UnitOfWorks;
+using KissU.Core.Aspects.Base;
+using KissU.Core.Datas.UnitOfWorks;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace KissU.Util.Applications.Aspects

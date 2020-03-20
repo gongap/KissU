@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace KissU.Surging.CPlatform.DependencyResolution
+namespace KissU.Core.DependencyResolution
 {
     /// <summary>
     /// 注入IOC容器接口

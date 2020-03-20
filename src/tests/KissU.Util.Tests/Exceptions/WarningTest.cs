@@ -1,5 +1,5 @@
 ﻿using System;
-using KissU.Util.Exceptions;
+using KissU.Core.Exceptions;
 using Xunit;
 
 namespace KissU.Util.Tests.Exceptions

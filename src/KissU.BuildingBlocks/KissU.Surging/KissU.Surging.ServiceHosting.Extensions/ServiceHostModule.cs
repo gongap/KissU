@@ -1,6 +1,8 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using Autofac;
+using KissU.Core;
+using KissU.Core.Module;
 using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Engines;
 using KissU.Surging.CPlatform.Module;

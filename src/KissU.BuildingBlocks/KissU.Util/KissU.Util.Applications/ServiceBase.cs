@@ -1,5 +1,6 @@
-﻿using KissU.Util.Logs;
-using KissU.Util.Sessions;
+﻿using KissU.Core.Applications;
+using KissU.Core.Logs;
+using KissU.Core.Sessions;
 
 namespace KissU.Util.Applications
 {
@@ -31,11 +32,11 @@ namespace KissU.Util.Applications
         {
             try
             {
-                return Logs.Log.GetLog(this);
+                return Core.Logs.Log.GetLog(this);
             }
             catch
             {
-                return Logs.Log.Null;
+                return Core.Logs.Log.Null;
             }
         }
     }

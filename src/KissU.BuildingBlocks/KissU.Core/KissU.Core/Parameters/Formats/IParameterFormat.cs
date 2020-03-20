@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.Parameters.Formats
+﻿namespace KissU.Core.Parameters.Formats
 {
     /// <summary>
     /// 参数格式化器

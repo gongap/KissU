@@ -1,7 +1,8 @@
 ﻿using System.Threading.Tasks;
-using KissU.Surging.CPlatform.Address;
+using KissU.Core;
+using KissU.Core.Address;
+using KissU.Core.Ioc;
 using KissU.Surging.CPlatform.HashAlgorithms;
-using KissU.Surging.CPlatform.Ioc;
 using KissU.Surging.CPlatform.Routing;
 using KissU.Surging.CPlatform.Runtime.Client;
 using KissU.Surging.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors;

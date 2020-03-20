@@ -1,5 +1,5 @@
-﻿using KissU.Modules.IdentityServer.Domain.Models;
-using KissU.Util.Domains.Repositories;
+﻿using KissU.Core.Domains.Repositories;
+using KissU.Modules.IdentityServer.Domain.Models;
 
 namespace KissU.Modules.IdentityServer.Domain.Repositories
 {

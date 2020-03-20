@@ -1,4 +1,6 @@
-﻿namespace KissU.Util.Datas.Sql.Builders.Conditions
+﻿using KissU.Core.Datas.Sql.Builders;
+
+namespace KissU.Util.Datas.Sql.Builders.Conditions
 {
     /// <summary>
     /// Sql小于等于查询条件

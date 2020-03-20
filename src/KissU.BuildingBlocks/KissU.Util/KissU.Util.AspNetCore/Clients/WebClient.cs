@@ -1,5 +1,5 @@
 ﻿using System.Net.Http;
-using KissU.Util.Clients;
+using KissU.Core.Clients;
 
 namespace KissU.Util.AspNetCore.Clients
 {

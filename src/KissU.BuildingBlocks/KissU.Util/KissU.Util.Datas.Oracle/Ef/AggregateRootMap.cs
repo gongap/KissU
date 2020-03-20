@@ -1,5 +1,5 @@
-﻿using KissU.Util.Datas.Ef.Core;
-using KissU.Util.Domains;
+﻿using KissU.Core.Domains;
+using KissU.Util.Datas.Ef.Core;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace KissU.Util.Datas.Oracle.Ef

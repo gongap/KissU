@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Security.Claims;
 using IdentityModel;
+using KissU.Core;
+using KissU.Core.Sessions;
 using KissU.Util.AspNetCore;
 using KissU.Util.AspNetCore.Helpers;
-using KissU.Util.Sessions;
-using Convert = KissU.Util.Helpers.Convert;
+using Convert = KissU.Core.Helpers.Convert;
 
 namespace KissU.Util.Security
 {

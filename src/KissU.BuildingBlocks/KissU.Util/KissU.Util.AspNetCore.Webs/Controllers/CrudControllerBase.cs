@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using KissU.Core;
+using KissU.Core.Applications.Dtos;
+using KissU.Core.Datas.Queries;
 using KissU.Util.Applications;
-using KissU.Util.Applications.Dtos;
 using KissU.Util.AspNetCore.Webs.Models;
 using KissU.Util.AspNetCore.Webs.Properties;
-using KissU.Util.Datas.Queries;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KissU.Util.AspNetCore.Webs.Controllers
@@ -182,9 +183,9 @@ namespace KissU.Util.AspNetCore.Webs.Controllers
         {
             if (request == null)
                 return Fail(WebResource.RequestIsEmpty);
-            var creationList = Util.Helpers.Json.ToObject<List<TDto>>(request.CreationList);
-            var updateList = Util.Helpers.Json.ToObject<List<TDto>>(request.UpdateList);
-            var deleteList = Util.Helpers.Json.ToObject<List<TDto>>(request.DeleteList);
+            var creationList = Core.Helpers.Json.ToObject<List<TDto>>(request.CreationList);
+            var updateList = Core.Helpers.Json.ToObject<List<TDto>>(request.UpdateList);
+            var deleteList = Core.Helpers.Json.ToObject<List<TDto>>(request.DeleteList);
             await _service.SaveAsync(creationList, updateList, deleteList);
             return Success();
         }

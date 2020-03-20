@@ -1,7 +1,7 @@
 using System.Net;
 using Newtonsoft.Json;
 
-namespace KissU.Surging.CPlatform.Address
+namespace KissU.Core.Address
 {
     /// <summary>
     /// ip��ַģ�͡�

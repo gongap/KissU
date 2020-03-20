@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using KissU.Core;
 using KissU.Util.Tests.Samples;
 using Xunit;
 

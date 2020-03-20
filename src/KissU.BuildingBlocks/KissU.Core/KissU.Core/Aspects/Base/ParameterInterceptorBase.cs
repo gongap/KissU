@@ -1,6 +1,6 @@
 ﻿using AspectCore.DynamicProxy.Parameters;
 
-namespace KissU.Util.Aspects.Base
+namespace KissU.Core.Aspects.Base
 {
     /// <summary>
     /// 参数拦截器

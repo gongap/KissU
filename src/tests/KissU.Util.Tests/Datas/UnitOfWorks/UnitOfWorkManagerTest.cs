@@ -1,5 +1,5 @@
 ﻿using System;
-using KissU.Util.Datas.UnitOfWorks;
+using KissU.Core.Datas.UnitOfWorks;
 using KissU.Util.Tests.XUnitHelpers;
 using NSubstitute;
 using Xunit;

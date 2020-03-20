@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
-using KissU.Surging.CPlatform.Address;
+using KissU.Core.Address;
+using KissU.Core.Utilities;
 
 namespace KissU.Surging.CPlatform.Utilities
 {

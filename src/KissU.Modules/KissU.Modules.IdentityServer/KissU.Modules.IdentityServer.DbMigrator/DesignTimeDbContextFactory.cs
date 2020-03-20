@@ -1,5 +1,5 @@
-﻿using KissU.Modules.IdentityServer.Data;
-using KissU.Util.Helpers;
+﻿using KissU.Core.Helpers;
+using KissU.Modules.IdentityServer.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;

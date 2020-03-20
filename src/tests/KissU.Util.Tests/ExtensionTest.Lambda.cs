@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq.Expressions;
+using KissU.Core;
 using KissU.Util.Tests.Samples;
 using Xunit;
 

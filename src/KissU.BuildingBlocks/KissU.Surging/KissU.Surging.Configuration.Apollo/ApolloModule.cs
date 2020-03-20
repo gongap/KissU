@@ -1,4 +1,5 @@
-﻿using KissU.Surging.Configuration.Apollo.Configurations;
+﻿using KissU.Core.Module;
+using KissU.Surging.Configuration.Apollo.Configurations;
 using KissU.Surging.CPlatform.Module;
 
 namespace KissU.Surging.Configuration.Apollo

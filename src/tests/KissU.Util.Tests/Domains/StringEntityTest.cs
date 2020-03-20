@@ -1,4 +1,4 @@
-﻿using KissU.Util.Exceptions;
+﻿using KissU.Core.Exceptions;
 using KissU.Util.Tests.Samples;
 using KissU.Util.Tests.XUnitHelpers;
 using Xunit;

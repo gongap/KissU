@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Com.Ctrip.Framework.Apollo;
 using Com.Ctrip.Framework.Apollo.Core.Utils;
 using Com.Ctrip.Framework.Apollo.Internals;
+using KissU.Core.Utilities;
 using KissU.Surging.CPlatform.Utilities;
 using Microsoft.Extensions.Configuration;
 

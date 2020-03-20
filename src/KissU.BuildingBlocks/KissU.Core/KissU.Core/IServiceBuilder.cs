@@ -1,6 +1,6 @@
 ﻿using Autofac;
 
-namespace KissU.Surging.CPlatform
+namespace KissU.Core
 {
     /// <summary>
     /// 服务构建器

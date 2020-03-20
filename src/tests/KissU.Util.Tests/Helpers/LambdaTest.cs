@@ -4,12 +4,13 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using KissU.Util.Datas.Queries;
-using KissU.Util.Helpers;
+using KissU.Core;
+using KissU.Core.Datas.Queries;
+using KissU.Core.Helpers;
 using KissU.Util.Tests.Samples;
 using Xunit;
-using Convert = KissU.Util.Helpers.Convert;
-using Enum = KissU.Util.Helpers.Enum;
+using Convert = KissU.Core.Helpers.Convert;
+using Enum = KissU.Core.Helpers.Enum;
 
 namespace KissU.Util.Tests.Helpers
 {

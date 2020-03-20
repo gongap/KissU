@@ -1,4 +1,5 @@
-﻿using KissU.Surging.CPlatform;
+﻿using KissU.Core;
+using KissU.Surging.CPlatform;
 
 namespace KissU.Surging.Codec.MessagePack
 {

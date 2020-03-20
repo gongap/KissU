@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using KissU.Core;
+using KissU.Core.Exceptions;
+using KissU.Core.Maps;
+using KissU.Core.Validations;
 using KissU.Util.Biz.Payments.Properties;
-using KissU.Util.Exceptions;
-using KissU.Util.Maps;
-using KissU.Util.Validations;
 
 namespace KissU.Util.Biz.Payments.Core
 {

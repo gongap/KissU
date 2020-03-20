@@ -1,7 +1,7 @@
-﻿using KissU.Util.Properties;
-using System;
+﻿using System;
+using KissU.Core.Properties;
 
-namespace KissU.Surging.CPlatform.Utilities
+namespace KissU.Core.Utilities
 {
     /// <summary>
     /// 校验

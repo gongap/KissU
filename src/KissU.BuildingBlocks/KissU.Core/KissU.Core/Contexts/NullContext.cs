@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.Contexts
+﻿namespace KissU.Core.Contexts
 {
     /// <summary>
     /// 空上下文

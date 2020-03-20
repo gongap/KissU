@@ -1,4 +1,4 @@
-﻿using KissU.Util.Security.Encryptors;
+﻿using KissU.Core.Security.Encryptors;
 
 namespace KissU.Modules.GreatWall.Domain.Encryptors
 {
@@ -14,7 +14,7 @@ namespace KissU.Modules.GreatWall.Domain.Encryptors
         /// <returns>System.String.</returns>
         public string Encrypt(string data)
         {
-            return Util.Helpers.Encrypt.AesEncrypt(data);
+            return Core.Helpers.Encrypt.AesEncrypt(data);
         }
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace KissU.Modules.GreatWall.Domain.Encryptors
         /// <returns>System.String.</returns>
         public string Decrypt(string data)
         {
-            return Util.Helpers.Encrypt.AesDecrypt(data);
+            return Core.Helpers.Encrypt.AesDecrypt(data);
         }
     }
 }

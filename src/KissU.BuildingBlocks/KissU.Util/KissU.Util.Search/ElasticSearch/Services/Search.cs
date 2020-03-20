@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using KissU.Util.Datas.Queries;
-using KissU.Util.Domains.Repositories;
+using KissU.Core;
+using KissU.Core.Datas.Queries;
+using KissU.Core.Domains.Repositories;
 using Nest;
 
 namespace KissU.Util.Search.ElasticSearch.Services

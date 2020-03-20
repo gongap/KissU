@@ -1,5 +1,5 @@
 ﻿using System;
-using KissU.Util.Sessions;
+using KissU.Core.Sessions;
 
 namespace KissU.Util.Datas.Tests.Integration.Commons
 {

@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.Datas.Sql.Builders
+﻿namespace KissU.Core.Datas.Sql.Builders
 {
     /// <summary>
     /// From子句操作

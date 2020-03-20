@@ -1,8 +1,7 @@
-﻿using KissU.Util.Helpers;
-using KissU.Util.Logs.Abstractions;
+﻿using KissU.Core.Logs.Abstractions;
 using Microsoft.Extensions.Logging;
 
-namespace KissU.Util.Logs.Core
+namespace KissU.Core.Logs.Core
 {
     /// <summary>
     /// 日志提供程序
@@ -51,7 +50,7 @@ namespace KissU.Util.Logs.Core
         {
             try
             {
-                return Ioc.Create<ILogger>();
+                return Helpers.Ioc.Create<ILogger>();
             }
             catch
             {

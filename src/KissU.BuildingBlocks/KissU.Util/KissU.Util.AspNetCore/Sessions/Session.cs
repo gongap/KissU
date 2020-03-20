@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
 using IdentityModel;
+using KissU.Core.Sessions;
 using KissU.Util.AspNetCore.Helpers;
-using KissU.Util.Sessions;
 
 namespace KissU.Util.AspNetCore.Sessions
 {

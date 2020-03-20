@@ -1,4 +1,6 @@
-﻿using KissU.Util.Helpers;
+﻿using KissU.Core;
+using KissU.Core.Datas.Sql.Builders;
+using KissU.Core.Helpers;
 
 namespace KissU.Util.Datas.Sql.Builders.Core
 {

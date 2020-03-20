@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using AspectCore.DynamicProxy.Parameters;
-using KissU.Util.Helpers;
+using KissU.Core.Helpers;
 
-namespace KissU.Util.Logs
+namespace KissU.Core.Logs
 {
     /// <summary>
     /// AOP扩展

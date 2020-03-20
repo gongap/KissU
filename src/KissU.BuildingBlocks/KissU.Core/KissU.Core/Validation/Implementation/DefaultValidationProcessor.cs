@@ -2,11 +2,11 @@
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
-using KissU.Surging.CPlatform.Convertibles;
-using KissU.Surging.CPlatform.Exceptions;
-using KissU.Surging.CPlatform.Utilities;
+using KissU.Core.Convertibles;
+using KissU.Core.Exceptions;
+using KissU.Core.Utilities;
 
-namespace KissU.Surging.CPlatform.Validation.Implementation
+namespace KissU.Core.Validation.Implementation
 {
     /// <summary>
     /// 默认验证处理器.

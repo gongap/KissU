@@ -1,5 +1,7 @@
-﻿using KissU.Util.Datas.Sql.Builders.Core;
-using KissU.Util.Helpers;
+﻿using KissU.Core;
+using KissU.Core.Datas.Sql.Builders.Core;
+using KissU.Core.Helpers;
+using KissU.Util.Datas.Sql.Builders.Core;
 
 namespace KissU.Util.Datas.Oracle.Dapper
 {

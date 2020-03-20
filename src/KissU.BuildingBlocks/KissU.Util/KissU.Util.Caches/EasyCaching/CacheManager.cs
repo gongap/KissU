@@ -1,5 +1,7 @@
 ﻿using System;
 using EasyCaching.Core;
+using KissU.Core;
+using KissU.Core.Caches;
 
 namespace KissU.Util.Caches.EasyCaching
 {

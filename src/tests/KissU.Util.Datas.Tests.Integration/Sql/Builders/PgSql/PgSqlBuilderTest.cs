@@ -1,6 +1,6 @@
-﻿using KissU.Util.Datas.PgSql.Dapper;
+﻿using KissU.Core.Helpers;
+using KissU.Util.Datas.PgSql.Dapper;
 using KissU.Util.Datas.Sql;
-using KissU.Util.Helpers;
 using Xunit;
 using Xunit.Abstractions;
 

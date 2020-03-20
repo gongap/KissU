@@ -2,9 +2,9 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Reflection;
-using KissU.Surging.CPlatform.Utilities;
+using KissU.Core.Utilities;
 
-namespace KissU.Surging.CPlatform.DependencyResolution
+namespace KissU.Core.DependencyResolution
 {
     /// <summary>
     /// IOC容器对象

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KissU.Util.Domains.Auditing
+namespace KissU.Core.Domains.Auditing
 {
     /// <summary>
     /// 创建时间审计

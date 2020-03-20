@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using KissU.Core.EventBus.Events;
+using KissU.Core.Ioc;
 using KissU.Surging.Caching;
 using KissU.Surging.Common;
-using KissU.Surging.CPlatform.EventBus.Events;
 using KissU.Surging.CPlatform.Filters.Implementation;
-using KissU.Surging.CPlatform.Ioc;
 using KissU.Surging.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Surging.CPlatform.Support;
@@ -19,9 +19,9 @@ namespace KissU.Modules.SampleA.Service.Contracts
 {
     /// <summary>
     /// Interface IAccountService
-    /// Implements the <see cref="KissU.Surging.CPlatform.Ioc.IServiceKey" />
+    /// Implements the <see cref="IServiceKey" />
     /// </summary>
-    /// <seealso cref="KissU.Surging.CPlatform.Ioc.IServiceKey" />
+    /// <seealso cref="IServiceKey" />
     [ServiceBundle("api/{Service}/{Method}")]
     //[ServiceBundle("api/{Service}")]
     //[ServiceBundle("api/{Service}/{Method}/test")]

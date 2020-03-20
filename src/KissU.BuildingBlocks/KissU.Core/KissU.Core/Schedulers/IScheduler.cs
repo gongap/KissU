@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using System.Threading.Tasks;
 
-namespace KissU.Util.Schedulers
+namespace KissU.Core.Schedulers
 {
     /// <summary>
     /// 调度器

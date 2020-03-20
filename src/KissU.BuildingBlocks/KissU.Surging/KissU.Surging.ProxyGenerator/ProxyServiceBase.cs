@@ -1,18 +1,19 @@
 ﻿using System;
 using Autofac;
-using KissU.Surging.CPlatform.DependencyResolution;
-using KissU.Surging.CPlatform.EventBus.Events;
-using KissU.Surging.CPlatform.EventBus.Implementation;
-using KissU.Surging.CPlatform.Ioc;
+using KissU.Core.DependencyResolution;
+using KissU.Core.EventBus.Events;
+using KissU.Core.EventBus.Implementation;
+using KissU.Core.Ioc;
+using KissU.Core.Utilities;
 using KissU.Surging.CPlatform.Utilities;
 
 namespace KissU.Surging.ProxyGenerator
 {
     /// <summary>
     /// ProxyServiceBase.
-    /// Implements the <see cref="KissU.Surging.CPlatform.Ioc.ServiceBase" />
+    /// Implements the <see cref="ServiceBase" />
     /// </summary>
-    /// <seealso cref="KissU.Surging.CPlatform.Ioc.ServiceBase" />
+    /// <seealso cref="ServiceBase" />
     public abstract class ProxyServiceBase : ServiceBase
     {
         /// <summary>

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
+using KissU.Core.Dependency;
 using KissU.Modules.GreatWall.Application.Extensions;
 using KissU.Modules.GreatWall.Data;
 using KissU.Modules.GreatWall.Domain.UnitOfWorks;
 using KissU.Util.Datas.SqlServer;
-using KissU.Util.Dependency;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

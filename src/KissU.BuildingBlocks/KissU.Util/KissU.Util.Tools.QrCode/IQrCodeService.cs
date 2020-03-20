@@ -1,4 +1,4 @@
-﻿using KissU.Util.Dependency;
+﻿using KissU.Core.Dependency;
 
 namespace KissU.Util.Tools.QrCode
 {

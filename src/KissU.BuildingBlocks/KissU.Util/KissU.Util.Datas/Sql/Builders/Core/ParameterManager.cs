@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using KissU.Util.Datas.Queries;
+using KissU.Core;
+using KissU.Core.Datas.Queries;
+using KissU.Core.Datas.Sql.Builders;
 
 namespace KissU.Util.Datas.Sql.Builders.Core
 {

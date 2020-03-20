@@ -1,4 +1,4 @@
-﻿using KissU.Util.Logs;
+﻿using KissU.Core.Logs;
 using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace KissU.Util.AspNetCore.Webs.Filters

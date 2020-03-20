@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.Files
+﻿namespace KissU.Core.Files
 {
     /// <summary>
     /// 文件信息

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.Util.Datas.Stores.Operations;
-using KissU.Util.Domains.Repositories;
+using KissU.Core.Datas.Stores.Operations;
+using KissU.Core.Domains.Repositories;
 
-namespace KissU.Util.Domains.Trees
+namespace KissU.Core.Domains.Trees
 {
     /// <summary>
     /// 树形仓储

@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.Sessions
+﻿namespace KissU.Core.Sessions
 {
     /// <summary>
     /// 空用户会话

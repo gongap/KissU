@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using KissU.Core;
+using KissU.Core.Applications.Dtos;
+using KissU.Core.Exceptions;
+using KissU.Core.Validations;
 using KissU.Util;
-using KissU.Util.Applications.Dtos;
-using KissU.Util.Exceptions;
-using KissU.Util.Validations;
 
 namespace KissU.Modules.GreatWall.Application.Dtos.Requests
 {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace KissU.Util.Dependency
+namespace KissU.Core.Dependency
 {
     /// <summary>
     /// 依赖注册器

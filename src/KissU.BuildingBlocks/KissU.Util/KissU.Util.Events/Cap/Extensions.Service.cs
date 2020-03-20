@@ -1,7 +1,8 @@
 ﻿using System;
 using DotNetCore.CAP;
+using KissU.Core.Events;
+using KissU.Core.Events.Handlers;
 using KissU.Util.Events.Default;
-using KissU.Util.Events.Handlers;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 

@@ -1,4 +1,4 @@
-﻿using KissU.Util.Datas.Sql.Configs;
+﻿using KissU.Core.Datas.Sql.Configs;
 
 namespace KissU.Util.Datas.Ef.Configs
 {

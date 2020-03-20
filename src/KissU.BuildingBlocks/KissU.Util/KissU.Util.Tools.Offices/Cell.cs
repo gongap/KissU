@@ -1,4 +1,5 @@
-﻿using KissU.Util.Tools.Offices.Core;
+﻿using KissU.Core;
+using KissU.Util.Tools.Offices.Core;
 
 namespace KissU.Util.Tools.Offices
 {

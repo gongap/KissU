@@ -1,4 +1,5 @@
-﻿using KissU.Surging.CPlatform;
+﻿using KissU.Core.Module;
+using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Module;
 using KissU.Surging.ServiceHosting.Internal;
 using Microsoft.Extensions.Logging;

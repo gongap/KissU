@@ -2,10 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using AutoMapper;
-using KissU.Util.Helpers;
-using KissU.Util.Reflections;
+using KissU.Core.Helpers;
+using KissU.Core.Reflections;
 
-namespace KissU.Util.Maps
+namespace KissU.Core.Maps
 {
     /// <summary>
     /// 对象映射

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Data;
 using System.Threading.Tasks;
-using KissU.Util.Dependency;
+using KissU.Core.Dependency;
 
-namespace KissU.Util.Datas.Transactions
+namespace KissU.Core.Datas.Transactions
 {
     /// <summary>
     /// 事务操作管理器

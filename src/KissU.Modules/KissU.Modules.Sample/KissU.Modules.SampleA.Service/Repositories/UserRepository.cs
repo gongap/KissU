@@ -1,12 +1,12 @@
-﻿using KissU.Surging.CPlatform.Ioc;
+﻿using KissU.Core.Ioc;
 
 namespace KissU.Modules.SampleA.Service.Repositories
 {
     /// <summary>
     /// UserRepository.
-    /// Implements the <see cref="KissU.Surging.CPlatform.Ioc.BaseRepository" />
+    /// Implements the <see cref="BaseRepository" />
     /// </summary>
-    /// <seealso cref="KissU.Surging.CPlatform.Ioc.BaseRepository" />
+    /// <seealso cref="BaseRepository" />
     public class UserRepository : BaseRepository
     {
     }

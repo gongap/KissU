@@ -1,6 +1,6 @@
-﻿using KissU.Util.Datas.Tests.Integration.Commons.Domains.Models;
-using KissU.Util.Helpers;
-using KissU.Util.Maps;
+﻿using KissU.Core.Helpers;
+using KissU.Core.Maps;
+using KissU.Util.Datas.Tests.Integration.Commons.Domains.Models;
 
 namespace KissU.Util.Datas.Tests.Integration.Commons.Datas.Pos
 {

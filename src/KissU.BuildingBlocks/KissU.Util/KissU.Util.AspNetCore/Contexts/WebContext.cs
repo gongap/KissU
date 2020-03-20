@@ -1,6 +1,6 @@
-﻿using KissU.Util.AspNetCore.Helpers;
-using KissU.Util.Contexts;
-using KissU.Util.Helpers;
+﻿using KissU.Core.Contexts;
+using KissU.Core.Helpers;
+using KissU.Util.AspNetCore.Helpers;
 
 namespace KissU.Util.AspNetCore.Contexts
 {

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using KissU.Util.Exceptions;
-using KissU.Util.Validations;
+using KissU.Core.Exceptions;
+using KissU.Core.Validations;
 
 namespace KissU.Util.Biz.Payments.Alipay.Configs
 {

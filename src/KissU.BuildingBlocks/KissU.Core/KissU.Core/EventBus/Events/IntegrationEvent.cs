@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KissU.Surging.CPlatform.EventBus.Events
+namespace KissU.Core.EventBus.Events
 {
     /// <summary>
     /// 集成事件.

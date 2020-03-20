@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using AutoMapper;
+using KissU.Core.Utilities;
 using KissU.Surging.CPlatform.Engines;
 using KissU.Surging.CPlatform.Engines.Implementation;
 using KissU.Surging.CPlatform.Utilities;

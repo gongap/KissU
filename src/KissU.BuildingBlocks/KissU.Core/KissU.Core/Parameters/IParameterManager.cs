@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.Parameters
+﻿namespace KissU.Core.Parameters
 {
     /// <summary>
     /// 参数服务

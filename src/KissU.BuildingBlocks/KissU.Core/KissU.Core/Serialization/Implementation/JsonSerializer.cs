@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace KissU.Surging.CPlatform.Serialization.Implementation
+namespace KissU.Core.Serialization.Implementation
 {
     /// <summary>
     /// Json序列化器。

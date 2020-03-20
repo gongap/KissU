@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using Autofac;
+using KissU.Core.Utilities;
 using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Messages;
 using KissU.Surging.CPlatform.Routing;

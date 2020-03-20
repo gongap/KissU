@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using KissU.Util.Datas.Queries;
+using KissU.Core.Datas.Queries;
+using KissU.Core.Datas.Sql;
 
 namespace KissU.Util.Datas.Sql
 {

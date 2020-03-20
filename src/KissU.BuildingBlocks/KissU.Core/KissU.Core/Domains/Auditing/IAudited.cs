@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.Domains.Auditing
+﻿namespace KissU.Core.Domains.Auditing
 {
     /// <summary>
     /// 操作审计

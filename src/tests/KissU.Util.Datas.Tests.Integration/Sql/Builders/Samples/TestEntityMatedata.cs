@@ -1,13 +1,13 @@
 ﻿using System;
-using KissU.Util.Datas.Sql.Matedatas;
+using KissU.Core.Datas.Sql.Matedatas;
 
 namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.Samples
 {
     /// <summary>
     /// TestEntityMatedata.
-    /// Implements the <see cref="KissU.Util.Datas.Sql.Matedatas.IEntityMatedata" />
+    /// Implements the <see cref="IEntityMatedata" />
     /// </summary>
-    /// <seealso cref="KissU.Util.Datas.Sql.Matedatas.IEntityMatedata" />
+    /// <seealso cref="IEntityMatedata" />
     public class TestEntityMatedata : IEntityMatedata
     {
         /// <summary>

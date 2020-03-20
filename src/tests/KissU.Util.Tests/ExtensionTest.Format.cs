@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using KissU.Core;
+using Xunit;
 
 namespace KissU.Util.Tests
 {

@@ -1,4 +1,4 @@
-﻿namespace KissU.Surging.CPlatform.EventBus.Events
+﻿namespace KissU.Core.EventBus.Events
 {
     /// <summary>
     /// 事件上下文.

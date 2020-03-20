@@ -1,6 +1,7 @@
 ﻿using System;
 using EasyCaching.Core;
 using EasyCaching.Core.Configurations;
+using KissU.Core.Caches;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 

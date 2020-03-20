@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using KissU.Core;
 
 namespace KissU.Util.Biz.Enums
 {

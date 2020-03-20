@@ -5,9 +5,9 @@ using AspectCore.DynamicProxy.Parameters;
 using AspectCore.Extensions.AspectScope;
 using AspectCore.Extensions.Autofac;
 using Autofac;
-using KissU.Util.Helpers;
+using KissU.Core.Helpers;
 
-namespace KissU.Util.Dependency
+namespace KissU.Core.Dependency
 {
     /// <summary>
     /// AspectCore扩展

@@ -1,4 +1,4 @@
-﻿using KissU.Surging.CPlatform.Module;
+﻿using KissU.Core.Module;
 
 namespace KissU.Util.AspNetCore
 {

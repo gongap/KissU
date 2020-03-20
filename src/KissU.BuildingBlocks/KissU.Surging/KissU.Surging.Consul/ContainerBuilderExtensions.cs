@@ -1,5 +1,7 @@
 ﻿using System;
 using Autofac;
+using KissU.Core;
+using KissU.Core.Serialization;
 using KissU.Surging.Consul.Configurations;
 using KissU.Surging.Consul.Internal;
 using KissU.Surging.Consul.Internal.Cluster.HealthChecks;
@@ -15,7 +17,6 @@ using KissU.Surging.CPlatform.Mqtt;
 using KissU.Surging.CPlatform.Routing;
 using KissU.Surging.CPlatform.Runtime.Client;
 using KissU.Surging.CPlatform.Runtime.Server;
-using KissU.Surging.CPlatform.Serialization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;

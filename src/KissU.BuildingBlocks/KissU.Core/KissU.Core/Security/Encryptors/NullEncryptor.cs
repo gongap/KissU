@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.Security.Encryptors
+﻿namespace KissU.Core.Security.Encryptors
 {
     /// <summary>
     /// 空加密器

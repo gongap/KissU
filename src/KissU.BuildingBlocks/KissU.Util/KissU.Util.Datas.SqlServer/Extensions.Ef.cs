@@ -1,8 +1,8 @@
 ﻿using System;
+using KissU.Core.Datas.Enums;
+using KissU.Core.Datas.UnitOfWorks;
 using KissU.Util.Datas.Ef.Configs;
 using KissU.Util.Datas.Ef.Core;
-using KissU.Util.Datas.Enums;
-using KissU.Util.Datas.UnitOfWorks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

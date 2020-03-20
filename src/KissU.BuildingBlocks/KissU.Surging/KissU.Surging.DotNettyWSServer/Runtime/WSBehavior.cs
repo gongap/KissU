@@ -2,9 +2,10 @@
 using System.Threading.Tasks;
 using Autofac;
 using DotNetty.Buffers;
-using KissU.Surging.CPlatform.EventBus.Events;
-using KissU.Surging.CPlatform.EventBus.Implementation;
-using KissU.Surging.CPlatform.Ioc;
+using KissU.Core.EventBus.Events;
+using KissU.Core.EventBus.Implementation;
+using KissU.Core.Ioc;
+using KissU.Core.Utilities;
 using KissU.Surging.CPlatform.Utilities;
 using KissU.Surging.ProxyGenerator;
 
@@ -12,9 +13,9 @@ namespace KissU.Surging.DotNettyWSServer.Runtime
 {
     /// <summary>
     /// WSBehavior.
-    /// Implements the <see cref="KissU.Surging.CPlatform.Ioc.IServiceBehavior" />
+    /// Implements the <see cref="IServiceBehavior" />
     /// </summary>
-    /// <seealso cref="KissU.Surging.CPlatform.Ioc.IServiceBehavior" />
+    /// <seealso cref="IServiceBehavior" />
     public class WSBehavior : IServiceBehavior
     {
         /// <summary>

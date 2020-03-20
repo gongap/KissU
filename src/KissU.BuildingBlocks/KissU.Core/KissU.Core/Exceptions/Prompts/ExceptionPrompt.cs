@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using KissU.Util.Helpers;
-using KissU.Util.Properties;
+using KissU.Core.Helpers;
+using KissU.Core.Properties;
 using Microsoft.Extensions.Hosting;
 
-namespace KissU.Util.Exceptions.Prompts
+namespace KissU.Core.Exceptions.Prompts
 {
     /// <summary>
     /// 异常提示

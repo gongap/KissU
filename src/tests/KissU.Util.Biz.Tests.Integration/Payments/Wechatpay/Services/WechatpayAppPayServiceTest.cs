@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Threading.Tasks;
+using KissU.Core.Helpers;
 using KissU.Util.AspNetCore.Helpers;
 using KissU.Util.Biz.Payments.Core;
 using KissU.Util.Biz.Payments.Wechatpay.Configs;
 using KissU.Util.Biz.Payments.Wechatpay.Services;
 using KissU.Util.Biz.Tests.Integration.Payments.Wechatpay.Configs;
-using KissU.Util.Helpers;
 using Xunit;
 using Xunit.Abstractions;
-using String = KissU.Util.Helpers.String;
+using String = KissU.Core.Helpers.String;
 
 namespace KissU.Util.Biz.Tests.Integration.Payments.Wechatpay.Services
 {

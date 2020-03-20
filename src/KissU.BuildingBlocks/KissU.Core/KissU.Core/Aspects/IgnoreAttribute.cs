@@ -1,6 +1,6 @@
 ﻿using AspectCore.DynamicProxy;
 
-namespace KissU.Util.Aspects
+namespace KissU.Core.Aspects
 {
     /// <summary>
     /// 忽略拦截

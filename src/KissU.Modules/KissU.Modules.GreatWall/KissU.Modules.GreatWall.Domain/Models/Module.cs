@@ -1,5 +1,5 @@
-﻿using KissU.Util;
-using KissU.Util.Helpers;
+﻿using KissU.Core;
+using KissU.Core.Helpers;
 
 namespace KissU.Modules.GreatWall.Domain.Models
 {

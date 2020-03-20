@@ -1,10 +1,10 @@
 ﻿using System;
 using System.IO;
-using KissU.Util.Helpers;
-using KissU.Util.Randoms;
-using String = KissU.Util.Helpers.String;
+using KissU.Core.Helpers;
+using KissU.Core.Randoms;
+using String = KissU.Core.Helpers.String;
 
-namespace KissU.Util.Files.Paths
+namespace KissU.Core.Files.Paths
 {
     /// <summary>
     /// 路径生成器

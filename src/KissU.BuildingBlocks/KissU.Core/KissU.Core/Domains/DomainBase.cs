@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
-using KissU.Util.Helpers;
-using KissU.Util.Validations;
-using Convert = KissU.Util.Helpers.Convert;
+using KissU.Core.Helpers;
+using KissU.Core.Validations;
+using Convert = KissU.Core.Helpers.Convert;
 
-namespace KissU.Util.Domains
+namespace KissU.Core.Domains
 {
     /// <summary>
     /// 领域层顶级基类

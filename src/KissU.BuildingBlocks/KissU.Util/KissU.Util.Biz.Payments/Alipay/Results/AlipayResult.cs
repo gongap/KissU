@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using KissU.Core;
 using KissU.Util.Biz.Payments.Alipay.Configs;
 using KissU.Util.Biz.Payments.Alipay.Parameters;
 using Newtonsoft.Json.Linq;

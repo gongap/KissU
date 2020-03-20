@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using KissU.Surging.CPlatform.Ioc;
+using KissU.Core.Ioc;
 using KissU.Surging.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Surging.CPlatform.Support.Attributes;
@@ -9,9 +9,9 @@ namespace KissU.Modules.SampleA.Service.Contracts
 {
     /// <summary>
     /// Interface IChatService
-    /// Implements the <see cref="KissU.Surging.CPlatform.Ioc.IServiceKey" />
+    /// Implements the <see cref="IServiceKey" />
     /// </summary>
-    /// <seealso cref="KissU.Surging.CPlatform.Ioc.IServiceKey" />
+    /// <seealso cref="IServiceKey" />
     [ServiceBundle("Api/{Service}")]
     [BehaviorContract(IgnoreExtensions = true)]
     public interface IChatService : IServiceKey

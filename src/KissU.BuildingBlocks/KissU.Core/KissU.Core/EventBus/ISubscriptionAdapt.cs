@@ -1,4 +1,4 @@
-﻿namespace KissU.Surging.CPlatform.EventBus
+﻿namespace KissU.Core.EventBus
 {
     /// <summary>
     /// 订阅适应器

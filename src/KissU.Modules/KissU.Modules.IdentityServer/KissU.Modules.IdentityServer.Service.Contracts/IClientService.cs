@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.Surging.CPlatform.Ioc;
+using KissU.Core.Domains.Repositories;
+using KissU.Core.Ioc;
+using KissU.Core.Validations.Aspects;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Modules.IdentityServer.Application.Dtos;
 using KissU.Modules.IdentityServer.Application.Dtos.Requests;
 using KissU.Modules.IdentityServer.Application.Queries;
 using KissU.Util.Applications.Aspects;
-using KissU.Util.Domains.Repositories;
-using KissU.Util.Validations.Aspects;
 
 namespace KissU.Modules.IdentityServer.Service.Contracts
 {

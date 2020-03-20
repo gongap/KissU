@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using KissU.Util.Domains;
+using KissU.Core.Domains;
 
 namespace KissU.Util.Biz.Addresses
 {

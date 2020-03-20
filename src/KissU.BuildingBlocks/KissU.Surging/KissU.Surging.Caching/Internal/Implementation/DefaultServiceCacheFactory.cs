@@ -3,8 +3,8 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using KissU.Core.Serialization;
 using KissU.Surging.CPlatform.Cache;
-using KissU.Surging.CPlatform.Serialization;
 
 namespace KissU.Surging.Caching.Internal.Implementation
 {

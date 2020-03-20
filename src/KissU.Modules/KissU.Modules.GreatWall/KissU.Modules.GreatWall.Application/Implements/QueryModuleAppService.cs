@@ -1,4 +1,6 @@
 ﻿using System.Linq;
+using KissU.Core.Datas.Queries;
+using KissU.Core.Domains.Repositories;
 using KissU.Modules.GreatWall.Application.Abstractions;
 using KissU.Modules.GreatWall.Application.Dtos;
 using KissU.Modules.GreatWall.Application.Dtos.Extensions;
@@ -9,8 +11,6 @@ using KissU.Modules.GreatWall.Domain.Enums;
 using KissU.Modules.GreatWall.Domain.Repositories;
 using KissU.Modules.GreatWall.Domain.UnitOfWorks;
 using KissU.Util.Applications.Trees;
-using KissU.Util.Datas.Queries;
-using KissU.Util.Domains.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace KissU.Modules.GreatWall.Application.Implements

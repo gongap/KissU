@@ -4,8 +4,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using KissU.Util.Datas.Sql.Matedatas;
-using KissU.Util.Helpers;
+using KissU.Core;
+using KissU.Core.Datas.Sql;
+using KissU.Core.Datas.Sql.Builders;
+using KissU.Core.Datas.Sql.Matedatas;
+using KissU.Core.Helpers;
 
 namespace KissU.Util.Datas.Sql.Builders.Core
 {

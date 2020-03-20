@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.Datas.Queries
+﻿namespace KissU.Core.Datas.Queries
 {
     /// <summary>
     /// 排序项

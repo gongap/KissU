@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using KissU.Util.Domains;
+using KissU.Core.Domains;
 
-namespace KissU.Util.Datas.Stores.Operations
+namespace KissU.Core.Datas.Stores.Operations
 {
     /// <summary>
     /// 通过表达式判断是否存在

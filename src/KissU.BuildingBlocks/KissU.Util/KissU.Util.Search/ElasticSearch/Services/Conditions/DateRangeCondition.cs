@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
-using KissU.Util.Datas.Queries;
+using KissU.Core;
+using KissU.Core.Datas.Queries;
 
 namespace KissU.Util.Search.ElasticSearch.Services.Conditions
 {

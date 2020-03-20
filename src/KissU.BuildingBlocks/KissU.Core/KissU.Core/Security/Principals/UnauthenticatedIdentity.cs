@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 
-namespace KissU.Util.Security.Principals
+namespace KissU.Core.Security.Principals
 {
     /// <summary>
     /// 未认证的身份标识

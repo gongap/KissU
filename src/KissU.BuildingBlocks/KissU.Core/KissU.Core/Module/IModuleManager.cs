@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace KissU.Surging.CPlatform.Module
+namespace KissU.Core.Module
 {
     /// <summary>
     /// 模块管理器

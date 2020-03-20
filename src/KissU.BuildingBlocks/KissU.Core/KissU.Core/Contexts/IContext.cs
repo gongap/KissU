@@ -1,6 +1,6 @@
-﻿using KissU.Util.Dependency;
+﻿using KissU.Core.Dependency;
 
-namespace KissU.Util.Contexts
+namespace KissU.Core.Contexts
 {
     /// <summary>
     /// 上下文

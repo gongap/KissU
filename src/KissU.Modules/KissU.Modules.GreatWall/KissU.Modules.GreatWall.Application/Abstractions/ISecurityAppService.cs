@@ -1,9 +1,10 @@
 ﻿using System.Threading.Tasks;
+using KissU.Core.Applications;
+using KissU.Core.Aspects;
+using KissU.Core.Validations.Aspects;
 using KissU.Modules.GreatWall.Application.Dtos.Requests;
 using KissU.Modules.GreatWall.Domain.Results;
 using KissU.Util.Applications;
-using KissU.Util.Aspects;
-using KissU.Util.Validations.Aspects;
 
 namespace KissU.Modules.GreatWall.Application.Abstractions
 {

@@ -2,7 +2,7 @@
 using System.Web;
 using Microsoft.Extensions.Hosting;
 
-namespace KissU.Util.Helpers
+namespace KissU.Core.Helpers
 {
     /// <summary>
     /// Host操作

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Text;
-using KissU.Util.Helpers;
-using Enum = KissU.Util.Helpers.Enum;
+using KissU.Core.Helpers;
+using Enum = KissU.Core.Helpers.Enum;
 
-namespace KissU.Util.Randoms
+namespace KissU.Core.Randoms
 {
     /// <summary>
     /// 随机数生成器

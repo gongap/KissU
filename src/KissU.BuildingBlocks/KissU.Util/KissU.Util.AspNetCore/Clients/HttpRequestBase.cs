@@ -7,9 +7,10 @@ using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using KissU.Core;
+using KissU.Core.Clients;
+using KissU.Core.Helpers;
 using KissU.Util.AspNetCore.Helpers;
-using KissU.Util.Clients;
-using KissU.Util.Helpers;
 
 namespace KissU.Util.AspNetCore.Clients
 {

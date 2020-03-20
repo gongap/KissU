@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using KissU.Util.Datas.Queries;
+using KissU.Core;
+using KissU.Core.Datas.Queries;
+using KissU.Core.Datas.Sql;
+using KissU.Core.Datas.Sql.Builders;
+using KissU.Core.Helpers;
+using KissU.Core.Properties;
 using KissU.Util.Datas.Sql.Builders.Conditions;
 using KissU.Util.Datas.Sql.Builders.Core;
 using KissU.Util.Datas.Sql.Builders.Internal;
-using KissU.Util.Helpers;
-using KissU.Util.Properties;
 
 namespace KissU.Util.Datas.Sql.Builders.Clauses
 {

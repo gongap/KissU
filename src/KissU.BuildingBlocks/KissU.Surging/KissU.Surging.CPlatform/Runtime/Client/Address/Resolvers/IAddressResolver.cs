@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using KissU.Surging.CPlatform.Address;
+using KissU.Core.Address;
 
 namespace KissU.Surging.CPlatform.Runtime.Client.Address.Resolvers
 {

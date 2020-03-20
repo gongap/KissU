@@ -1,7 +1,8 @@
 ﻿using System.Linq;
 using Exceptionless;
-using KissU.Util.Logs.Abstractions;
-using KissU.Util.Logs.Contents;
+using KissU.Core;
+using KissU.Core.Logs.Abstractions;
+using KissU.Core.Logs.Contents;
 using KissU.Util.Logs.NLog;
 using Microsoft.Extensions.Logging;
 using el = Exceptionless;

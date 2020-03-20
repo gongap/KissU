@@ -1,7 +1,7 @@
-﻿using KissU.Util.Applications.Operations;
-using KissU.Util.Datas.Queries;
+﻿using KissU.Core.Applications.Operations;
+using KissU.Core.Datas.Queries;
 
-namespace KissU.Util.Applications
+namespace KissU.Core.Applications
 {
     /// <summary>
     /// 查询服务

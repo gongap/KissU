@@ -1,4 +1,4 @@
-﻿namespace KissU.Surging.CPlatform.Module
+﻿namespace KissU.Core.Module
 {
     /// <summary>
     /// 组件生命周期枚举类

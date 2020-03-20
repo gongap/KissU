@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using KissU.Util.Datas.Queries;
+using KissU.Core;
+using KissU.Core.Datas.Queries;
 using KissU.Util.Search.ElasticSearch.Services.Conditions;
 using Nest;
 

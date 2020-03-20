@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace KissU.Util.Reflections
+namespace KissU.Core.Reflections
 {
     /// <summary>
     /// 类型查找器

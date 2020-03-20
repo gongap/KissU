@@ -1,4 +1,4 @@
-﻿using KissU.Util.Datas.Queries;
+﻿using KissU.Core.Datas.Queries;
 using KissU.Util.Datas.Sql.Builders.Conditions;
 using Xunit;
 

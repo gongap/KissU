@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
-using KissU.Util.Domains;
-using KissU.Util.Helpers;
+using KissU.Core.Domains;
+using KissU.Core.Helpers;
 using KissU.Util.Tests.Samples;
 using Xunit;
 

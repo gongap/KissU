@@ -1,5 +1,5 @@
-﻿using KissU.Modules.GreatWall.Data.Pos;
-using KissU.Util.Datas.Stores;
+﻿using KissU.Core.Datas.Stores;
+using KissU.Modules.GreatWall.Data.Pos;
 
 namespace KissU.Modules.GreatWall.Data.Stores.Abstractions
 {

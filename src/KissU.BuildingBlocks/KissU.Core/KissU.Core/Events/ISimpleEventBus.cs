@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.Events
+﻿namespace KissU.Core.Events
 {
     /// <summary>
     /// 基于内存的简单事件总线

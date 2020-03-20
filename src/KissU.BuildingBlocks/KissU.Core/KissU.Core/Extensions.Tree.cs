@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using KissU.Util.Domains.Trees;
+using KissU.Core.Domains.Trees;
 
-namespace KissU.Util
+namespace KissU.Core
 {
     /// <summary>
     /// 树形扩展

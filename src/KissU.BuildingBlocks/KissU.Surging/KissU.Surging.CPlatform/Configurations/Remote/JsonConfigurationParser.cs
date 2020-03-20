@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using KissU.Core.Utilities;
 using KissU.Surging.CPlatform.Properties;
 using KissU.Surging.CPlatform.Utilities;
 using Microsoft.Extensions.Configuration;

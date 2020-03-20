@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
-using KissU.Util.Datas.Queries;
-using KissU.Util.Datas.Queries.Criterias;
-using KissU.Util.Datas.Queries.Internal;
-using KissU.Util.Domains.Repositories;
+using KissU.Core.Datas.Queries;
+using KissU.Core.Datas.Queries.Criterias;
+using KissU.Core.Datas.Queries.Internal;
+using KissU.Core.Domains.Repositories;
 
-namespace KissU.Util
+namespace KissU.Core
 {
     /// <summary>
     /// 查询扩展

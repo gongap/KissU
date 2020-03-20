@@ -1,4 +1,4 @@
-﻿namespace KissU.Surging.CPlatform.Serialization
+﻿namespace KissU.Core.Serialization
 {
     /// <summary>
     /// 添加<see cref="ISerializer" />扩展方法。

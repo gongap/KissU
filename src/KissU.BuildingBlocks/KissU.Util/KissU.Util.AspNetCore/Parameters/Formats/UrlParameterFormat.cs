@@ -1,4 +1,4 @@
-﻿using KissU.Util.Parameters.Formats;
+﻿using KissU.Core.Parameters.Formats;
 
 namespace KissU.Util.AspNetCore.Parameters.Formats
 {

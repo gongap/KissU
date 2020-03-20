@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using KissU.Util.Domains;
+using KissU.Core.Domains;
 
 namespace KissU.Util.Tests.Samples
 {

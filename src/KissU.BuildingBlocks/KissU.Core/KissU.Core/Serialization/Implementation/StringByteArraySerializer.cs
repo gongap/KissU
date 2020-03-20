@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace KissU.Surging.CPlatform.Serialization.Implementation
+namespace KissU.Core.Serialization.Implementation
 {
     /// <summary>
     /// 基于string类型的byte[]序列化器。

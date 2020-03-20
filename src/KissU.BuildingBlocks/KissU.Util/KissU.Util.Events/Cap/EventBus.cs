@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using KissU.Core.Events;
 
 namespace KissU.Util.Events.Cap
 {

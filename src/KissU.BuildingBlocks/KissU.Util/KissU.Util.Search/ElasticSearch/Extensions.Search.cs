@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using KissU.Util.Datas.Queries;
+using KissU.Core;
+using KissU.Core.Datas.Queries;
 using KissU.Util.Search.ElasticSearch.Services;
 
 namespace KissU.Util.Search.ElasticSearch

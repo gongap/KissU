@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using KissU.Core;
 using KissU.Util.Tests.XUnitHelpers;
 using Xunit;
 

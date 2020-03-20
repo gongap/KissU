@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Autofac;
-using KissU.Util.Dependency;
-using KissU.Util.Helpers;
+using KissU.Core.Dependency;
+using KissU.Core.Helpers;
 using KissU.Util.Tests.Samples;
 using Xunit;
 

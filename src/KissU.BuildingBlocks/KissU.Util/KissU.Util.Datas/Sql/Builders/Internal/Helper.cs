@@ -2,11 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using KissU.Util.Datas.Queries;
+using KissU.Core;
+using KissU.Core.Datas.Queries;
+using KissU.Core.Datas.Sql.Builders;
+using KissU.Core.Datas.Sql.Builders.Core;
+using KissU.Core.Helpers;
 using KissU.Util.Datas.Sql.Builders.Conditions;
 using KissU.Util.Datas.Sql.Builders.Core;
-using KissU.Util.Helpers;
-using Enum = KissU.Util.Helpers.Enum;
+using Enum = KissU.Core.Helpers.Enum;
 
 namespace KissU.Util.Datas.Sql.Builders.Internal
 {

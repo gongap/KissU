@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using KissU.Core.EventBus;
+using KissU.Core.EventBus.Events;
+using KissU.Core.EventBus.Implementation;
+using KissU.Core.Module;
 using KissU.Surging.CPlatform.Engines;
-using KissU.Surging.CPlatform.EventBus;
-using KissU.Surging.CPlatform.EventBus.Events;
-using KissU.Surging.CPlatform.EventBus.Implementation;
 using KissU.Surging.CPlatform.Module;
 using KissU.Surging.EventBusKafka.Configurations;
 using KissU.Surging.EventBusKafka.Implementation;

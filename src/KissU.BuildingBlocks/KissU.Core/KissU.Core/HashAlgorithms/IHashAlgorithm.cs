@@ -1,4 +1,4 @@
-﻿namespace KissU.Surging.CPlatform.HashAlgorithms
+﻿namespace KissU.Core.HashAlgorithms
 {
     /// <summary>
     /// 一致性哈希的抽象接口

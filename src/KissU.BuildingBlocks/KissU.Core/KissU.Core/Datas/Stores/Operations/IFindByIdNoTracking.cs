@@ -1,6 +1,6 @@
-﻿using KissU.Util.Domains;
+﻿using KissU.Core.Domains;
 
-namespace KissU.Util.Datas.Stores.Operations
+namespace KissU.Core.Datas.Stores.Operations
 {
     /// <summary>
     /// 通过标识查找

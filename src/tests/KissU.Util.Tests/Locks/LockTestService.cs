@@ -1,8 +1,9 @@
 ﻿using System;
 using EasyCaching.InMemory;
+using KissU.Core.Caches;
+using KissU.Core.Locks.Default;
 using KissU.Util.Caches;
 using KissU.Util.Caches.EasyCaching;
-using KissU.Util.Locks.Default;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace KissU.Util.Tests.Locks

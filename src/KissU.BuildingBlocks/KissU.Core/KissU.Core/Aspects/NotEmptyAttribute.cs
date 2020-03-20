@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
 using AspectCore.DynamicProxy.Parameters;
-using KissU.Util.Aspects.Base;
+using KissU.Core.Aspects.Base;
 
-namespace KissU.Util.Aspects
+namespace KissU.Core.Aspects
 {
     /// <summary>
     /// 验证不能为空

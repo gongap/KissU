@@ -1,6 +1,6 @@
-﻿using KissU.Util.Datas.MySql.Dapper;
+﻿using KissU.Core.Helpers;
+using KissU.Util.Datas.MySql.Dapper;
 using KissU.Util.Datas.Sql;
-using KissU.Util.Helpers;
 using Xunit;
 using Xunit.Abstractions;
 

@@ -1,6 +1,6 @@
-﻿using KissU.Util.Helpers;
+﻿using KissU.Core.Helpers;
 
-namespace KissU.Util.Files
+namespace KissU.Core.Files
 {
     /// <summary>
     /// 文件大小

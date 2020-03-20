@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.Util.Domains.Trees;
-using KissU.Util.Exceptions;
-using KissU.Util.Properties;
+using KissU.Core;
+using KissU.Core.Domains.Trees;
+using KissU.Core.Exceptions;
+using KissU.Core.Properties;
 using KissU.Util.Tests.Samples;
 using KissU.Util.Tests.XUnitHelpers;
 using NSubstitute;

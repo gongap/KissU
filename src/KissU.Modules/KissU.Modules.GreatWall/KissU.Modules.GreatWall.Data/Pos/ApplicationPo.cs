@@ -1,7 +1,7 @@
 ﻿using System;
-using KissU.Util.Datas.Persistence;
-using KissU.Util.Domains;
-using KissU.Util.Domains.Auditing;
+using KissU.Core.Datas.Persistence;
+using KissU.Core.Domains;
+using KissU.Core.Domains.Auditing;
 
 namespace KissU.Modules.GreatWall.Data.Pos
 {

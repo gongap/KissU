@@ -5,7 +5,7 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace KissU.Util.Dependency
+namespace KissU.Core.Dependency
 {
     /// <summary>
     /// Autofac对象容器

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
-namespace KissU.Util.Validations
+namespace KissU.Core.Validations
 {
     /// <summary>
     /// 验证结果集合

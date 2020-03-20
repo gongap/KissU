@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using KissU.Surging.CPlatform.Ioc;
+using KissU.Core.Ioc;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Modules.SampleA.Service.Contracts.Dtos;
 
@@ -7,9 +7,9 @@ namespace KissU.Modules.SampleA.Service.Contracts
 {
     /// <summary>
     /// Interface IWorkService
-    /// Implements the <see cref="KissU.Surging.CPlatform.Ioc.IServiceKey" />
+    /// Implements the <see cref="IServiceKey" />
     /// </summary>
-    /// <seealso cref="KissU.Surging.CPlatform.Ioc.IServiceKey" />
+    /// <seealso cref="IServiceKey" />
     [ServiceBundle("Background/{Service}")]
     public interface IWorkService : IServiceKey
     {

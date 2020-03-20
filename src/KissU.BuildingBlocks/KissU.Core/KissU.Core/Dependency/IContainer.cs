@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Autofac;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace KissU.Util.Dependency
+namespace KissU.Core.Dependency
 {
     /// <summary>
     /// 容器

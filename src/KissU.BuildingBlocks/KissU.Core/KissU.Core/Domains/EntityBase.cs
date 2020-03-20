@@ -1,12 +1,11 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using KissU.Util.Helpers;
-using KissU.Util.Properties;
-using KissU.Util.Sessions;
-using KissU.Util.Validations;
-using Convert = KissU.Util.Helpers.Convert;
+using KissU.Core.Properties;
+using KissU.Core.Sessions;
+using KissU.Core.Validations;
+using Convert = KissU.Core.Helpers.Convert;
 
-namespace KissU.Util.Domains
+namespace KissU.Core.Domains
 {
     /// <summary>
     /// 领域实体
@@ -43,7 +42,7 @@ namespace KissU.Util.Domains
         /// <summary>
         /// 用户会话
         /// </summary>
-        protected virtual ISession Session => Ioc.Create<ISession>();
+        protected virtual ISession Session => Helpers.Ioc.Create<ISession>();
 
         /// <summary>
         /// 标识

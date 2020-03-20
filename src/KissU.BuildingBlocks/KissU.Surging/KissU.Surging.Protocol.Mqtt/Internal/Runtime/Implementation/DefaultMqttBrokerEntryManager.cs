@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using KissU.Surging.CPlatform.Address;
+using KissU.Core.Address;
 using KissU.Surging.CPlatform.Mqtt;
 using KissU.Surging.CPlatform.Mqtt.Implementation;
 using KissU.Surging.CPlatform.Runtime.Client.HealthChecks;

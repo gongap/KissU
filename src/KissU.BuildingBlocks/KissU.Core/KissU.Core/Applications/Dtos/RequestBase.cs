@@ -1,8 +1,8 @@
 ﻿using System.Linq;
-using KissU.Util.Exceptions;
-using KissU.Util.Validations;
+using KissU.Core.Exceptions;
+using KissU.Core.Validations;
 
-namespace KissU.Util.Applications.Dtos
+namespace KissU.Core.Applications.Dtos
 {
     /// <summary>
     /// 请求参数

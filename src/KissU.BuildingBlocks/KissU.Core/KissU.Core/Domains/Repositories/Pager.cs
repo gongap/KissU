@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.Domains.Repositories
+﻿namespace KissU.Core.Domains.Repositories
 {
     /// <summary>
     /// 分页参数

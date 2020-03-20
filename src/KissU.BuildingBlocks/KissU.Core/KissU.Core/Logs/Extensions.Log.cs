@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using KissU.Util.Exceptions;
-using KissU.Util.Helpers;
-using KissU.Util.Logs.Abstractions;
-using KissU.Util.Logs.Contents;
-using KissU.Util.Properties;
-using Convert = KissU.Util.Helpers.Convert;
+using KissU.Core.Exceptions;
+using KissU.Core.Helpers;
+using KissU.Core.Logs.Abstractions;
+using KissU.Core.Logs.Contents;
+using KissU.Core.Properties;
+using Convert = KissU.Core.Helpers.Convert;
 
-namespace KissU.Util.Logs
+namespace KissU.Core.Logs
 {
     /// <summary>
     /// 日志扩展

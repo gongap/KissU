@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace KissU.Util
+namespace KissU.Core
 {
     /// <summary>
     /// 系统扩展 - 验证

@@ -9,8 +9,8 @@ using Autofac.Builder;
 using Autofac.Core;
 using Autofac.Core.Registration;
 using Autofac.Features.Scanning;
+using KissU.Core.EventBus.Events;
 using KissU.Surging.Common.ServicesException;
-using KissU.Surging.CPlatform.EventBus.Events;
 using KissU.Surging.System.Module;
 using KissU.Surging.System.Module.Attributes;
 

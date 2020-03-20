@@ -1,8 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using KissU.Util.Domains;
-using KissU.Util.Domains.Auditing;
+using KissU.Core.Domains;
+using KissU.Core.Domains.Auditing;
 
 namespace KissU.Modules.GreatWall.Domain.Models
 {

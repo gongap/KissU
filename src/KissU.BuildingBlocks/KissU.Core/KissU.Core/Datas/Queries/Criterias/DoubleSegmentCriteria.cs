@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 
-namespace KissU.Util.Datas.Queries.Criterias
+namespace KissU.Core.Datas.Queries.Criterias
 {
     /// <summary>
     /// double范围过滤条件

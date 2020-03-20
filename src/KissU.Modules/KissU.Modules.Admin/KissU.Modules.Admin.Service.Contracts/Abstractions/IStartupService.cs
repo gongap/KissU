@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
-using KissU.Surging.CPlatform.Ioc;
+using KissU.Core.Applications;
+using KissU.Core.Ioc;
 using KissU.Surging.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Surging.CPlatform.Support;
@@ -11,9 +12,9 @@ namespace KissU.Modules.Admin.Service.Contracts.Abstractions
 {
     /// <summary>
     /// Interface IStartupService
-    /// Implements the <see cref="KissU.Util.Applications.IService" />
+    /// Implements the <see cref="IService" />
     /// </summary>
-    /// <seealso cref="KissU.Util.Applications.IService" />
+    /// <seealso cref="IService" />
     [ServiceBundle("api/{Service}")]
     public interface IStartupService : IServiceKey
     {

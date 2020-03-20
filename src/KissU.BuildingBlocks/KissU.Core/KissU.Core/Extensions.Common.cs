@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Convert = KissU.Util.Helpers.Convert;
-using String = KissU.Util.Helpers.String;
+using Convert = KissU.Core.Helpers.Convert;
+using String = KissU.Core.Helpers.String;
 
-namespace KissU.Util
+namespace KissU.Core
 {
     /// <summary>
     /// 系统扩展 - 公共

@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
+using KissU.Core.Parameters;
 using KissU.Util.Biz.Payments.Wechatpay.Configs;
 using KissU.Util.Biz.Payments.Wechatpay.Enums;
 using KissU.Util.Biz.Payments.Wechatpay.Results;
-using KissU.Util.Parameters;
 using Xunit;
 
 namespace KissU.Util.Biz.Tests.Integration.Payments.Wechatpay.Results

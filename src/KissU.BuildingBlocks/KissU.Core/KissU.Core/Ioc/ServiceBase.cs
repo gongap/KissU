@@ -1,7 +1,7 @@
 ﻿using System;
-using KissU.Surging.CPlatform.Utilities;
+using KissU.Core.Utilities;
 
-namespace KissU.Surging.CPlatform.Ioc
+namespace KissU.Core.Ioc
 {
     /// <summary>
     /// 服务基类.

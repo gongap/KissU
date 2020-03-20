@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
-using KissU.Util.Aspects;
+using KissU.Core.Aspects;
 
-namespace KissU.Util.Datas.UnitOfWorks
+namespace KissU.Core.Datas.UnitOfWorks
 {
     /// <summary>
     /// 工作单元

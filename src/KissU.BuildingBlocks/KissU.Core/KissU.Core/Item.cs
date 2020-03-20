@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace KissU.Util
+namespace KissU.Core
 {
     /// <summary>
     /// 列表项

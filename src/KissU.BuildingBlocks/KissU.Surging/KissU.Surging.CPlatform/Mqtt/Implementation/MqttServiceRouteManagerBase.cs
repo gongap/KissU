@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using KissU.Surging.CPlatform.Address;
-using KissU.Surging.CPlatform.Serialization;
+using KissU.Core.Address;
+using KissU.Core.Serialization;
 
 namespace KissU.Surging.CPlatform.Mqtt.Implementation
 {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KissU.Util.Events
+namespace KissU.Core.Events
 {
     /// <summary>
     /// 事件

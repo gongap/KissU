@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 
-namespace KissU.Util.Domains.Repositories
+namespace KissU.Core.Domains.Repositories
 {
     /// <summary>
     /// 查询条件

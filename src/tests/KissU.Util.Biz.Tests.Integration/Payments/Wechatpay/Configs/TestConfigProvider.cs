@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
+using KissU.Core.Parameters;
 using KissU.Util.Biz.Payments.Wechatpay.Configs;
-using KissU.Util.Parameters;
 
 namespace KissU.Util.Biz.Tests.Integration.Payments.Wechatpay.Configs
 {

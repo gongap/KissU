@@ -1,5 +1,6 @@
 ﻿using System;
 using Autofac;
+using KissU.Core;
 
 namespace KissU.Surging.CPlatform
 {

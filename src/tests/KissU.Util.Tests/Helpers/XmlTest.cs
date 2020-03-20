@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using KissU.Util.Helpers;
+using KissU.Core.Helpers;
 using Xunit;
 using Xunit.Abstractions;
 

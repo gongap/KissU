@@ -1,6 +1,6 @@
 ﻿using System;
 using Xunit;
-using String = KissU.Util.Helpers.String;
+using String = KissU.Core.Helpers.String;
 
 namespace KissU.Util.Tests.Helpers
 {

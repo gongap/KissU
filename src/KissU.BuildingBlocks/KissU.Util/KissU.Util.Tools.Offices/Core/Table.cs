@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using KissU.Core;
 
 namespace KissU.Util.Tools.Offices.Core
 {

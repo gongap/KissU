@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.Datas.Sql.Builders.Core
+﻿namespace KissU.Core.Datas.Sql.Builders.Core
 {
     /// <summary>
     /// 方言

@@ -1,4 +1,4 @@
-﻿using KissU.Util.Files;
+﻿using KissU.Core.Files;
 using Xunit;
 
 namespace KissU.Util.Tests.Files

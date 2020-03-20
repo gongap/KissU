@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Text;
+using KissU.Core.Serialization;
 using KissU.Surging.CPlatform.Diagnostics;
 using KissU.Surging.CPlatform.Messages;
-using KissU.Surging.CPlatform.Serialization;
 using KissU.Surging.CPlatform.Utilities;
 using KissUEvents = KissU.Surging.CPlatform.Diagnostics.DiagnosticListenerExtensions;
 

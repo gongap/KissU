@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.Surging.CPlatform.Address;
+using KissU.Core.Address;
+using KissU.Core.Utilities;
 using KissU.Surging.CPlatform.Runtime.Client.HealthChecks;
 using KissU.Surging.CPlatform.Utilities;
 

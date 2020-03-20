@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.Applications.Dtos
+﻿namespace KissU.Core.Applications.Dtos
 {
     /// <summary>
     /// 标识

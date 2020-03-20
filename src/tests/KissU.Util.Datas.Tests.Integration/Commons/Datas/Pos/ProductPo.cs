@@ -1,5 +1,5 @@
-﻿using KissU.Util.Datas.Persistence;
-using KissU.Util.Domains;
+﻿using KissU.Core.Datas.Persistence;
+using KissU.Core.Domains;
 
 namespace KissU.Util.Datas.Tests.Integration.Commons.Datas.Pos
 {

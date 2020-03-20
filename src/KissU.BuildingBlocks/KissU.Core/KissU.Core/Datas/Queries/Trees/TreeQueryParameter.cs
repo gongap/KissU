@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using KissU.Util.Helpers;
+using KissU.Core.Helpers;
 
-namespace KissU.Util.Datas.Queries.Trees
+namespace KissU.Core.Datas.Queries.Trees
 {
     /// <summary>
     /// 树形查询参数

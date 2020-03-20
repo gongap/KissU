@@ -1,13 +1,14 @@
-﻿using KissU.Surging.CPlatform.Module;
+﻿using KissU.Core.Module;
+using KissU.Surging.CPlatform.Module;
 using KissU.Surging.System.MongoProvider.Repositories;
 
 namespace KissU.Surging.System.MongoProvider
 {
     /// <summary>
     /// MongoModule.
-    /// Implements the <see cref="KissU.Surging.CPlatform.Module.SystemModule" />
+    /// Implements the <see cref="SystemModule" />
     /// </summary>
-    /// <seealso cref="KissU.Surging.CPlatform.Module.SystemModule" />
+    /// <seealso cref="SystemModule" />
     public class MongoModule : SystemModule
     {
         /// <summary>

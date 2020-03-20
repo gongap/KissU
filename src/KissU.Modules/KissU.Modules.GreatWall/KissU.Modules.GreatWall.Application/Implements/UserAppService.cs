@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using KissU.Core;
+using KissU.Core.Datas.Queries;
+using KissU.Core.Domains.Repositories;
+using KissU.Core.Maps;
 using KissU.Modules.GreatWall.Application.Abstractions;
 using KissU.Modules.GreatWall.Application.Dtos;
 using KissU.Modules.GreatWall.Application.Dtos.Requests;
@@ -11,9 +15,6 @@ using KissU.Modules.GreatWall.Domain.Services.Abstractions;
 using KissU.Modules.GreatWall.Domain.UnitOfWorks;
 using KissU.Util;
 using KissU.Util.Applications;
-using KissU.Util.Datas.Queries;
-using KissU.Util.Domains.Repositories;
-using KissU.Util.Maps;
 
 namespace KissU.Modules.GreatWall.Application.Implements
 {

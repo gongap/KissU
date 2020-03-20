@@ -1,8 +1,8 @@
 ﻿using System;
-using KissU.Util.Datas.Stores.Operations;
-using KissU.Util.Domains;
+using KissU.Core.Datas.Stores.Operations;
+using KissU.Core.Domains;
 
-namespace KissU.Util.Datas.Stores
+namespace KissU.Core.Datas.Stores
 {
     /// <summary>
     /// 存储器

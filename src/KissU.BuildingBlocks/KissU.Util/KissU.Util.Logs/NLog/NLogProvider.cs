@@ -1,6 +1,6 @@
 ﻿using System;
-using KissU.Util.Logs.Abstractions;
-using KissU.Util.Logs.Formats;
+using KissU.Core.Logs.Abstractions;
+using KissU.Core.Logs.Formats;
 using Microsoft.Extensions.Logging;
 using NLogs = NLog;
 

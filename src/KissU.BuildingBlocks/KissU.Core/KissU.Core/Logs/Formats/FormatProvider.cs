@@ -1,7 +1,7 @@
 ﻿using System;
-using KissU.Util.Logs.Abstractions;
+using KissU.Core.Logs.Abstractions;
 
-namespace KissU.Util.Logs.Formats
+namespace KissU.Core.Logs.Formats
 {
     /// <summary>
     /// 日志格式化提供程序

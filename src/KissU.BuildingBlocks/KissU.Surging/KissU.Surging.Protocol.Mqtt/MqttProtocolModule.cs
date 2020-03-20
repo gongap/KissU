@@ -1,4 +1,6 @@
 ﻿using Autofac;
+using KissU.Core;
+using KissU.Core.Module;
 using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Diagnostics;
 using KissU.Surging.CPlatform.Ids;

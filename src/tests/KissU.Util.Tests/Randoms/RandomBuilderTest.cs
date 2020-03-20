@@ -1,6 +1,6 @@
 ﻿using System;
-using KissU.Util.Datas.Queries;
-using KissU.Util.Randoms;
+using KissU.Core.Datas.Queries;
+using KissU.Core.Randoms;
 using NSubstitute;
 using Xunit;
 

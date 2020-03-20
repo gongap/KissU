@@ -4,12 +4,12 @@ using System.Linq;
 using System.Reflection;
 using AspectCore.Configuration;
 using Autofac;
-using KissU.Util.Events.Handlers;
-using KissU.Util.Helpers;
-using KissU.Util.Reflections;
+using KissU.Core.Events.Handlers;
+using KissU.Core.Helpers;
+using KissU.Core.Reflections;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace KissU.Util.Dependency
+namespace KissU.Core.Dependency
 {
     /// <summary>
     /// 依赖引导器
@@ -86,7 +86,7 @@ namespace KissU.Util.Dependency
         public Autofac.IContainer Bootstrap()
         {
             _assemblies = _finder.GetAssemblies();
-            return Ioc.DefaultContainer.Register(_builder, _services, RegisterServices, _configs);
+            return Helpers.Ioc.DefaultContainer.Register(_builder, _services, RegisterServices, _configs);
         }
 
         /// <summary>

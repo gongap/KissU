@@ -1,7 +1,7 @@
 ﻿using System;
-using KissU.Util.Caches;
+using KissU.Core.Caches;
 
-namespace KissU.Util.Locks.Default
+namespace KissU.Core.Locks.Default
 {
     /// <summary>
     /// 业务锁

@@ -1,9 +1,10 @@
 ﻿using System;
 using Exceptionless;
+using KissU.Core.Logs;
+using KissU.Core.Logs.Abstractions;
+using KissU.Core.Logs.Core;
+using KissU.Core.Logs.Formats;
 using KissU.Util.AspNetCore.Logs.Core;
-using KissU.Util.Logs.Abstractions;
-using KissU.Util.Logs.Core;
-using KissU.Util.Logs.Formats;
 using KissU.Util.Logs.NLog;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;

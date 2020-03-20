@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
-using KissU.Util.Applications.Dtos;
+using KissU.Core.Applications.Dtos;
 
 namespace KissU.Modules.GreatWall.Application.Dtos.Requests
 {

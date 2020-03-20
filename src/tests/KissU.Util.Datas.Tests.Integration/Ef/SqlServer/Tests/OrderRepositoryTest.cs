@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using KissU.Core.Dependency;
+using KissU.Core.Exceptions;
+using KissU.Core.Helpers;
 using KissU.Util.Datas.Ef;
 using KissU.Util.Datas.Tests.Integration.Commons.Domains.Models;
 using KissU.Util.Datas.Tests.Integration.Commons.Domains.Repositories;
 using KissU.Util.Datas.Tests.Integration.Ef.SqlServer.UnitOfWorks;
-using KissU.Util.Dependency;
-using KissU.Util.Exceptions;
-using KissU.Util.Helpers;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
-using Random = KissU.Util.Helpers.Random;
+using Random = KissU.Core.Helpers.Random;
 
 namespace KissU.Util.Datas.Tests.Integration.Ef.SqlServer.Tests
 {

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using KissU.Core;
 
 namespace KissU.Util.Logs.Exceptionless
 {

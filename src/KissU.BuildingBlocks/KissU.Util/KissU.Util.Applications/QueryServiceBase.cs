@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
+using KissU.Core;
+using KissU.Core.Applications;
+using KissU.Core.Datas.Queries;
+using KissU.Core.Datas.Stores;
+using KissU.Core.Domains;
+using KissU.Core.Domains.Repositories;
+using KissU.Core.Maps;
 using KissU.Util.Datas.Ef;
-using KissU.Util.Datas.Queries;
-using KissU.Util.Datas.Stores;
-using KissU.Util.Domains;
-using KissU.Util.Domains.Repositories;
-using KissU.Util.Maps;
 using Microsoft.EntityFrameworkCore;
-using Convert = KissU.Util.Helpers.Convert;
+using Convert = KissU.Core.Helpers.Convert;
 
 namespace KissU.Util.Applications
 {

@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.Datas.Sql.Builders.Extensions
+﻿namespace KissU.Core.Datas.Sql.Builders.Extensions
 {
     /// <summary>
     /// Sql方言扩展

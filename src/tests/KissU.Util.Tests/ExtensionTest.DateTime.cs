@@ -1,6 +1,7 @@
 ﻿using System;
+using KissU.Core;
 using Xunit;
-using Convert = KissU.Util.Helpers.Convert;
+using Convert = KissU.Core.Helpers.Convert;
 
 namespace KissU.Util.Tests
 {

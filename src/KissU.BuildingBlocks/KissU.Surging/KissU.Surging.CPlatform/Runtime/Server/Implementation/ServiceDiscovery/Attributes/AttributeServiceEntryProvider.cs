@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Autofac;
+using KissU.Core;
 using Microsoft.Extensions.Logging;
 
 namespace KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes

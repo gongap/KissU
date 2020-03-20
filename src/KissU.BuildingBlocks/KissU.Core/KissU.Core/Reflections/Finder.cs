@@ -4,11 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using KissU.Util.Helpers;
+using KissU.Core.Helpers;
 using Microsoft.Extensions.PlatformAbstractions;
 using Regex = System.Text.RegularExpressions.Regex;
 
-namespace KissU.Util.Reflections
+namespace KissU.Core.Reflections
 {
     /// <summary>
     /// 类型查找器

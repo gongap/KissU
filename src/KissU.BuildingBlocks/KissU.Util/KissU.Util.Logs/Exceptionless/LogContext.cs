@@ -1,6 +1,6 @@
 ﻿using System;
+using KissU.Core.Logs.Internal;
 using KissU.Util.AspNetCore.Helpers;
-using KissU.Util.Logs.Internal;
 
 namespace KissU.Util.Logs.Exceptionless
 {

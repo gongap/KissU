@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using KissU.Util.Datas.Queries;
+using KissU.Core.Datas.Queries;
+using KissU.Core.Datas.Sql;
+using KissU.Core.Datas.Sql.Builders;
 using KissU.Util.Datas.Sql.Builders;
 
 namespace KissU.Util.Datas.Sql

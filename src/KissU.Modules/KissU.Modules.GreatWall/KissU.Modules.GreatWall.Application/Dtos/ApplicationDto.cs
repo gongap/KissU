@@ -1,8 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using KissU.Core;
+using KissU.Core.Applications.Dtos;
 using KissU.Modules.GreatWall.Domain.Enums;
 using KissU.Util;
-using KissU.Util.Applications.Dtos;
 
 namespace KissU.Modules.GreatWall.Application.Dtos
 {

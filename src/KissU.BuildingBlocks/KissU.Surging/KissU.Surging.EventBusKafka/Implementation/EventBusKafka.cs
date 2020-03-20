@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Confluent.Kafka;
+using KissU.Core;
+using KissU.Core.EventBus;
+using KissU.Core.EventBus.Events;
+using KissU.Core.EventBus.Implementation;
 using KissU.Surging.CPlatform;
-using KissU.Surging.CPlatform.EventBus;
-using KissU.Surging.CPlatform.EventBus.Events;
-using KissU.Surging.CPlatform.EventBus.Implementation;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Polly;
@@ -13,10 +14,10 @@ namespace KissU.Surging.EventBusKafka.Implementation
 {
     /// <summary>
     /// EventBusKafka.
-    /// Implements the <see cref="KissU.Surging.CPlatform.EventBus.Implementation.IEventBus" />
+    /// Implements the <see cref="IEventBus" />
     /// Implements the <see cref="System.IDisposable" />
     /// </summary>
-    /// <seealso cref="KissU.Surging.CPlatform.EventBus.Implementation.IEventBus" />
+    /// <seealso cref="IEventBus" />
     /// <seealso cref="System.IDisposable" />
     public class EventBusKafka : IEventBus, IDisposable
     {

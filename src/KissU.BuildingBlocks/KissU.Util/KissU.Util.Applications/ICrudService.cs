@@ -1,6 +1,7 @@
-﻿using KissU.Util.Applications.Dtos;
+﻿using KissU.Core.Applications;
+using KissU.Core.Applications.Dtos;
+using KissU.Core.Datas.Queries;
 using KissU.Util.Applications.Operations;
-using KissU.Util.Datas.Queries;
 
 namespace KissU.Util.Applications
 {

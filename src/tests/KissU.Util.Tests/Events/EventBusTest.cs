@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
+using KissU.Core.Events.Handlers;
 using KissU.Util.Events.Default;
-using KissU.Util.Events.Handlers;
 using KissU.Util.Tests.Samples;
 using NSubstitute;
 using Xunit;

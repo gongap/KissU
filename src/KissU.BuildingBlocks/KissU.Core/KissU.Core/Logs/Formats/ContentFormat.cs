@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
-using KissU.Util.Exceptions;
-using KissU.Util.Logs.Abstractions;
-using KissU.Util.Logs.Contents;
-using KissU.Util.Properties;
+using KissU.Core.Exceptions;
+using KissU.Core.Logs.Abstractions;
+using KissU.Core.Logs.Contents;
+using KissU.Core.Properties;
 
-namespace KissU.Util.Logs.Formats
+namespace KissU.Core.Logs.Formats
 {
     /// <summary>
     /// 内容格式化器

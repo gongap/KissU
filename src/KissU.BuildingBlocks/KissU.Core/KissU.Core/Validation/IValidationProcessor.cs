@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace KissU.Surging.CPlatform.Validation
+namespace KissU.Core.Validation
 {
     /// <summary>
     /// 验证处理器

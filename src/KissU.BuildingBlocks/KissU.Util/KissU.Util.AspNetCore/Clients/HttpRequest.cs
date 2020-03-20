@@ -2,9 +2,10 @@
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using KissU.Util.Clients;
-using KissU.Util.Helpers;
-using Convert = KissU.Util.Helpers.Convert;
+using KissU.Core;
+using KissU.Core.Clients;
+using KissU.Core.Helpers;
+using Convert = KissU.Core.Helpers.Convert;
 
 namespace KissU.Util.AspNetCore.Clients
 {

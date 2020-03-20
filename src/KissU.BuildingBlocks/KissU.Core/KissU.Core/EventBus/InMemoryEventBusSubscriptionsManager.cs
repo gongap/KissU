@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using KissU.Surging.CPlatform.EventBus.Events;
+using KissU.Core.EventBus.Events;
 
-namespace KissU.Surging.CPlatform.EventBus
+namespace KissU.Core.EventBus
 {
     /// <summary>
     /// 内存中事件总线订阅管理器.

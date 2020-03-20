@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using KissU.Core;
+using KissU.Core.Datas.Sql.Builders;
+using KissU.Core.Datas.Sql.Builders.Core;
 using KissU.Util.Datas.Sql.Builders.Core;
 using KissU.Util.Datas.Sql.Builders.Internal;
 

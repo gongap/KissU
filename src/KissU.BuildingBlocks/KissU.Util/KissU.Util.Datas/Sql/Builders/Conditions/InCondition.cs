@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using KissU.Core;
+using KissU.Core.Datas.Sql.Builders;
 
 namespace KissU.Util.Datas.Sql.Builders.Conditions
 {

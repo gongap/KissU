@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using KissU.Surging.CPlatform.Address;
+using KissU.Core.Address;
 
 namespace KissU.Surging.Zookeeper.Configurations
 {
