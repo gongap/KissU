@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KissU.Util.Properties;
+using System;
 
 namespace KissU.Surging.CPlatform.Utilities
 {
@@ -60,7 +61,7 @@ namespace KissU.Surging.CPlatform.Utilities
         {
             if (string.IsNullOrWhiteSpace(value))
             {
-                throw new ArgumentException(string.Format(CPlatformResource.ArgumentIsNullOrWhitespace, parameterName));
+                throw new ArgumentException(string.Format(LibraryResource.ArgumentIsNullOrWhitespace, parameterName));
             }
 
             return value;
@@ -80,7 +81,7 @@ namespace KissU.Surging.CPlatform.Utilities
         {
             if (condition.Invoke())
             {
-                throw new ArgumentException(string.Format(CPlatformResource.ArgumentIsNullOrWhitespace, parameterName));
+                throw new ArgumentException(string.Format(LibraryResource.ArgumentIsNullOrWhitespace, parameterName));
             }
         }
 
@@ -99,7 +100,7 @@ namespace KissU.Surging.CPlatform.Utilities
         {
             if (condition.Invoke())
             {
-                throw new ArgumentException(string.Format(CPlatformResource.ArgumentIsNullOrWhitespace, parameters));
+                throw new ArgumentException(string.Format(LibraryResource.ArgumentIsNullOrWhitespace, parameters));
             }
         }
     }

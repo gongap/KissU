@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KissU.Util.Properties {
+namespace KissU.Surging.CPlatform.Properties {
     using System;
     
     
@@ -22,24 +22,24 @@ namespace KissU.Util.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class R {
+    internal class CPlatformResource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal R() {
+        internal CPlatformResource() {
         }
         
         /// <summary>
         ///   返回此类使用的缓存的 ResourceManager 实例。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("KissU.Core.Properties.R", typeof(R).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("KissU.Surging.CPlatform.Properties.CPlatformResource", typeof(CPlatformResource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace KissU.Util.Properties {
         ///   重写当前线程的 CurrentUICulture 属性。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,92 +61,74 @@ namespace KissU.Util.Properties {
         }
         
         /// <summary>
-        ///   查找类似 删除成功 的本地化字符串。
+        ///   查找类似 &quot;{0}&quot;参数不能为空 的本地化字符串。
         /// </summary>
-        public static string DeleteSuccess {
+        internal static string ArgumentIsNullOrWhitespace {
             get {
-                return ResourceManager.GetString("DeleteSuccess", resourceCulture);
+                return ResourceManager.GetString("ArgumentIsNullOrWhitespace", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找类似 其他用户正在执行该操作,请稍后再试 的本地化字符串。
+        ///   查找类似 调用远程配置终结点发生错误： {0} - {1} 的本地化字符串。
         /// </summary>
-        public static string GlobalDuplicateRequest {
+        internal static string HttpException {
             get {
-                return ResourceManager.GetString("GlobalDuplicateRequest", resourceCulture);
+                return ResourceManager.GetString("HttpException", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找类似 Id不能为空 的本地化字符串。
+        ///   查找类似 {0} 不能以&apos;{1}&apos;结束 的本地化字符串。
         /// </summary>
-        public static string IdIsEmpty {
+        internal static string InvalidEndCharacter {
             get {
-                return ResourceManager.GetString("IdIsEmpty", resourceCulture);
+                return ResourceManager.GetString("InvalidEndCharacter", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找类似 序号 的本地化字符串。
+        ///   查找类似 {0} 不能以&apos;{1}&apos;开始 的本地化字符串。
         /// </summary>
-        public static string LineNumber {
+        internal static string InvalidStartCharacter {
             get {
-                return ResourceManager.GetString("LineNumber", resourceCulture);
+                return ResourceManager.GetString("InvalidStartCharacter", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找类似 否 的本地化字符串。
+        ///   查找类似 不能解析JSON文本，行号 &apos;{0}&apos;: &apos;{1}&apos;. 的本地化字符串。
         /// </summary>
-        public static string No {
+        internal static string JSONParseException {
             get {
-                return ResourceManager.GetString("No", resourceCulture);
+                return ResourceManager.GetString("JSONParseException", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找类似 操作成功 的本地化字符串。
+        ///   查找类似 路由模板不能以&apos;/&apos;或&apos;〜&apos;字符开头。 的本地化字符串。
         /// </summary>
-        public static string Success {
+        internal static string TemplateRoute_InvalidRouteTemplate {
             get {
-                return ResourceManager.GetString("Success", resourceCulture);
+                return ResourceManager.GetString("TemplateRoute_InvalidRouteTemplate", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找类似 系统忙，请稍后再试 的本地化字符串。
+        ///   查找类似 路由模板中有一个不完整的参数。 检查每个“{”字符是否具有匹配的&apos;}&apos;字符。 的本地化字符串。
         /// </summary>
-        public static string SystemError {
+        internal static string TemplateRoute_MismatchedParameter {
             get {
-                return ResourceManager.GetString("SystemError", resourceCulture);
+                return ResourceManager.GetString("TemplateRoute_MismatchedParameter", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找类似 上传 的本地化字符串。
+        ///   查找类似 此&apos;{0}&apos; JSON 令牌不支持，路径&apos;{1}&apos;,行&apos;{2}&apos;,位置&apos;{3}&apos; 的本地化字符串。
         /// </summary>
-        public static string Upload {
+        internal static string UnsupportedJSONToken {
             get {
-                return ResourceManager.GetString("Upload", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 请不要重复提交 的本地化字符串。
-        /// </summary>
-        public static string UserDuplicateRequest {
-            get {
-                return ResourceManager.GetString("UserDuplicateRequest", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 是 的本地化字符串。
-        /// </summary>
-        public static string Yes {
-            get {
-                return ResourceManager.GetString("Yes", resourceCulture);
+                return ResourceManager.GetString("UnsupportedJSONToken", resourceCulture);
             }
         }
     }

@@ -22,11 +22,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\KissU.Core\KissU.Core\KissU.Core.csproj" />
     <ProjectReference Include="..\KissU.Surging.ServiceHosting\KissU.Surging.ServiceHosting.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="CPlatformResource.Designer.cs">
+    <Compile Update="Properties\CPlatformResource.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>CPlatformResource.resx</DependentUpon>
@@ -34,7 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="CPlatformResource.resx">
+    <EmbeddedResource Update="Properties\CPlatformResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>CPlatformResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
