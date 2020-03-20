@@ -8,6 +8,6 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\KissU.Util\KissU.Util.csproj" />
+    <ProjectReference Include="..\..\KissU.Core\KissU.Core\KissU.Core.csproj" />
   </ItemGroup>
 </Project>

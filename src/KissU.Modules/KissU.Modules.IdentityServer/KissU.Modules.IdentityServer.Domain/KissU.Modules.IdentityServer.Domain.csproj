@@ -18,6 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Util\KissU.Util\KissU.Util.csproj" />
+    <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Core\KissU.Core\KissU.Core.csproj" />
   </ItemGroup>
 </Project>
