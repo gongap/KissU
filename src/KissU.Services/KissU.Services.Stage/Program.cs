@@ -10,6 +10,7 @@ using KissU.Surging.CPlatform.Utilities;
 using KissU.Surging.ProxyGenerator;
 using KissU.Surging.ServiceHosting;
 using KissU.Surging.ServiceHosting.Internal.Implementation;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
 namespace KissU.Services.Stage
@@ -41,7 +42,6 @@ namespace KissU.Services.Stage
                 .ConfigureLogging(logger => { logger.AddConfiguration(AppConfig.GetSection("Logging")); })
                 .Configure(build => { build.AddCacheFile("${cachepath}|cachesettings.json", false, true); })
                 .Configure(build => { build.AddCPlatformFile("${servicepath}|servicesettings.json", false, true); })
-                .Configure(build => { build.AddCacheFile("${stagepath}|stagesettings.json", false, true); })
                 .UseServer(options => { })
                 .UseConsoleLifetime()
                 .UseStartup<Startup>()
