@@ -252,8 +252,7 @@ namespace KissU.Modules.IdentityServer.DbMigrator
             {
                 ClientId = "js_oidc",
                 ClientName = "JavaScript OIDC Client",
-                ClientUri = "http://identityserver.io",
-                //LogoUri = "https://pbs.twimg.com/profile_images/1612989113/Ki-hanja_400x400.png",
+                ClientUri = "http://localhost:4200",
 
                 AllowedGrantTypes = GrantTypes.Implicit,
                 AllowAccessTokensViaBrowser = true,
@@ -262,14 +261,14 @@ namespace KissU.Modules.IdentityServer.DbMigrator
 
                 RedirectUris =
                 {
-                    "http://localhost:7017/index.html",
-                    "http://localhost:7017/callback.html",
-                    "http://localhost:7017/silent.html",
-                    "http://localhost:7017/popup.html"
+                    "http://localhost:4200/index.html",
+                    "http://localhost:4200/callback.html",
+                    "http://localhost:4200/silent.html",
+                    "http://localhost:4200/popup.html"
                 },
 
-                PostLogoutRedirectUris = {"http://localhost:7017/index.html"},
-                AllowedCorsOrigins = {"http://localhost:7017"},
+                PostLogoutRedirectUris = {"http://localhost:4200/index.html"},
+                AllowedCorsOrigins = {"http://localhost:4200"},
 
                 AllowedScopes =
                 {
