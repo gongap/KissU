@@ -119,7 +119,6 @@ namespace KissU.Modules.IdentityServer.Application.Implements
         public async Task<ClientDto> FindEnabledByIdAsync(string clientId)
         {
             var client = await ClientRepository.FindEnabledClientByIdAsync(clientId);
-            var allowedGrantTypes = client.AllowedGrantTypes.MapToList<string>();
             return client.MapTo<ClientDto>();
         }
 
