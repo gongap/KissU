@@ -8,137 +8,152 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.EnsureSchema(
-                "ids");
+                name: "ids");
 
             migrationBuilder.CreateTable(
-                "ApiResources",
+                name: "ApiResources",
                 schema: "ids",
                 columns: table => new
                 {
-                    Id = table.Column<int>()
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Version = table.Column<byte[]>(rowVersion: true, nullable: true),
-                    Enabled = table.Column<bool>(),
-                    Name = table.Column<string>(maxLength: 200),
+                    Enabled = table.Column<bool>(nullable: false),
+                    Name = table.Column<string>(maxLength: 200, nullable: false),
                     DisplayName = table.Column<string>(maxLength: 200, nullable: true),
                     Description = table.Column<string>(maxLength: 1000, nullable: true)
                 },
-                constraints: table => { table.PrimaryKey("PK_ApiResources", x => x.Id); });
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ApiResources", x => x.Id);
+                });
 
             migrationBuilder.CreateTable(
-                "Clients",
+                name: "Clients",
                 schema: "ids",
                 columns: table => new
                 {
-                    Id = table.Column<int>()
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Version = table.Column<byte[]>(rowVersion: true, nullable: true),
-                    ClientId = table.Column<string>(maxLength: 200),
+                    ClientId = table.Column<string>(maxLength: 200, nullable: false),
                     ClientName = table.Column<string>(maxLength: 200, nullable: true),
-                    Enabled = table.Column<bool>(),
+                    Enabled = table.Column<bool>(nullable: false),
                     Description = table.Column<string>(maxLength: 1000, nullable: true),
-                    ProtocolType = table.Column<string>(maxLength: 200),
+                    ProtocolType = table.Column<string>(maxLength: 200, nullable: false),
                     UserCodeType = table.Column<string>(maxLength: 100, nullable: true),
-                    RequireClientSecret = table.Column<bool>(),
-                    RequirePkce = table.Column<bool>(),
-                    AllowPlainTextPkce = table.Column<bool>(),
-                    AllowOfflineAccess = table.Column<bool>(),
-                    AllowAccessTokensViaBrowser = table.Column<bool>(),
+                    RequireClientSecret = table.Column<bool>(nullable: false),
+                    RequirePkce = table.Column<bool>(nullable: false),
+                    AllowPlainTextPkce = table.Column<bool>(nullable: false),
+                    AllowOfflineAccess = table.Column<bool>(nullable: false),
+                    AllowAccessTokensViaBrowser = table.Column<bool>(nullable: false),
                     FrontChannelLogoutUri = table.Column<string>(maxLength: 2000, nullable: true),
-                    FrontChannelLogoutSessionRequired = table.Column<bool>(),
+                    FrontChannelLogoutSessionRequired = table.Column<bool>(nullable: false),
                     BackChannelLogoutUri = table.Column<string>(maxLength: 2000, nullable: true),
-                    BackChannelLogoutSessionRequired = table.Column<bool>(),
-                    EnableLocalLogin = table.Column<bool>(),
-                    IdentityTokenLifetime = table.Column<int>(),
-                    AccessTokenLifetime = table.Column<int>(),
-                    AuthorizationCodeLifetime = table.Column<int>(),
-                    AbsoluteRefreshTokenLifetime = table.Column<int>(),
-                    SlidingRefreshTokenLifetime = table.Column<int>(),
-                    RefreshTokenUsage = table.Column<int>(),
-                    RefreshTokenExpiration = table.Column<int>(),
-                    UpdateAccessTokenClaimsOnRefresh = table.Column<bool>(),
-                    AccessTokenType = table.Column<int>(),
-                    IncludeJwtId = table.Column<bool>(),
-                    AlwaysSendClientClaims = table.Column<bool>(),
-                    AlwaysIncludeUserClaimsInIdToken = table.Column<bool>(),
+                    BackChannelLogoutSessionRequired = table.Column<bool>(nullable: false),
+                    EnableLocalLogin = table.Column<bool>(nullable: false),
+                    IdentityTokenLifetime = table.Column<int>(nullable: false),
+                    AccessTokenLifetime = table.Column<int>(nullable: false),
+                    AuthorizationCodeLifetime = table.Column<int>(nullable: false),
+                    AbsoluteRefreshTokenLifetime = table.Column<int>(nullable: false),
+                    SlidingRefreshTokenLifetime = table.Column<int>(nullable: false),
+                    RefreshTokenUsage = table.Column<int>(nullable: false),
+                    RefreshTokenExpiration = table.Column<int>(nullable: false),
+                    UpdateAccessTokenClaimsOnRefresh = table.Column<bool>(nullable: false),
+                    AccessTokenType = table.Column<int>(nullable: false),
+                    IncludeJwtId = table.Column<bool>(nullable: false),
+                    AlwaysSendClientClaims = table.Column<bool>(nullable: false),
+                    AlwaysIncludeUserClaimsInIdToken = table.Column<bool>(nullable: false),
                     ClientClaimsPrefix = table.Column<string>(maxLength: 200, nullable: true),
                     PairWiseSubjectSalt = table.Column<string>(maxLength: 200, nullable: true),
-                    RequireConsent = table.Column<bool>(),
-                    AllowRememberConsent = table.Column<bool>(),
+                    RequireConsent = table.Column<bool>(nullable: false),
+                    AllowRememberConsent = table.Column<bool>(nullable: false),
                     ConsentLifetime = table.Column<int>(nullable: true),
                     ClientUri = table.Column<string>(maxLength: 2000, nullable: true),
                     LogoUri = table.Column<string>(maxLength: 2000, nullable: true)
                 },
-                constraints: table => { table.PrimaryKey("PK_Clients", x => x.Id); });
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Clients", x => x.Id);
+                });
 
             migrationBuilder.CreateTable(
-                "DeviceFlowCodes",
+                name: "DeviceFlowCodes",
                 schema: "ids",
                 columns: table => new
                 {
-                    UserCode = table.Column<string>(maxLength: 200),
-                    Id = table.Column<int>(),
+                    UserCode = table.Column<string>(maxLength: 200, nullable: false),
+                    Id = table.Column<int>(nullable: false),
                     Version = table.Column<byte[]>(rowVersion: true, nullable: true),
-                    DeviceCode = table.Column<string>(maxLength: 200),
+                    DeviceCode = table.Column<string>(maxLength: 200, nullable: false),
                     SubjectId = table.Column<string>(maxLength: 200, nullable: true),
-                    ClientId = table.Column<string>(maxLength: 200),
-                    CreationTime = table.Column<DateTime>(),
-                    Expiration = table.Column<DateTime>(),
-                    Data = table.Column<string>(maxLength: 50000)
+                    ClientId = table.Column<string>(maxLength: 200, nullable: false),
+                    CreationTime = table.Column<DateTime>(nullable: false),
+                    Expiration = table.Column<DateTime>(nullable: false),
+                    Data = table.Column<string>(maxLength: 50000, nullable: false)
                 },
-                constraints: table => { table.PrimaryKey("PK_DeviceFlowCodes", x => x.UserCode); });
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DeviceFlowCodes", x => x.UserCode);
+                });
 
             migrationBuilder.CreateTable(
-                "IdentityResources",
+                name: "IdentityResources",
                 schema: "ids",
                 columns: table => new
                 {
-                    Id = table.Column<int>()
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Version = table.Column<byte[]>(rowVersion: true, nullable: true),
-                    Required = table.Column<bool>(),
-                    Emphasize = table.Column<bool>(),
-                    ShowInDiscoveryDocument = table.Column<bool>(),
-                    Enabled = table.Column<bool>(),
-                    Name = table.Column<string>(maxLength: 200),
+                    Required = table.Column<bool>(nullable: false),
+                    Emphasize = table.Column<bool>(nullable: false),
+                    ShowInDiscoveryDocument = table.Column<bool>(nullable: false),
+                    Enabled = table.Column<bool>(nullable: false),
+                    Name = table.Column<string>(maxLength: 200, nullable: false),
                     DisplayName = table.Column<string>(maxLength: 200, nullable: true),
                     Description = table.Column<string>(maxLength: 1000, nullable: true)
                 },
-                constraints: table => { table.PrimaryKey("PK_IdentityResources", x => x.Id); });
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_IdentityResources", x => x.Id);
+                });
 
             migrationBuilder.CreateTable(
-                "PersistedGrants",
+                name: "PersistedGrants",
                 schema: "ids",
                 columns: table => new
                 {
-                    Key = table.Column<string>(maxLength: 200),
-                    Id = table.Column<int>(),
+                    Key = table.Column<string>(maxLength: 200, nullable: false),
+                    Id = table.Column<int>(nullable: false),
                     Version = table.Column<byte[]>(rowVersion: true, nullable: true),
-                    Type = table.Column<string>(maxLength: 50),
+                    Type = table.Column<string>(maxLength: 50, nullable: false),
                     SubjectId = table.Column<string>(maxLength: 200, nullable: true),
-                    ClientId = table.Column<string>(maxLength: 200),
-                    Data = table.Column<string>(maxLength: 50000),
-                    CreationTime = table.Column<DateTime>(),
+                    ClientId = table.Column<string>(maxLength: 200, nullable: false),
+                    Data = table.Column<string>(maxLength: 50000, nullable: false),
+                    CreationTime = table.Column<DateTime>(nullable: false),
                     Expiration = table.Column<DateTime>(nullable: true)
                 },
-                constraints: table => { table.PrimaryKey("PK_PersistedGrants", x => x.Key); });
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PersistedGrants", x => x.Key);
+                });
 
             migrationBuilder.CreateTable(
-                "ApiClaims",
+                name: "ApiClaims",
                 schema: "ids",
                 columns: table => new
                 {
-                    ApiResourceId = table.Column<int>(),
-                    Id = table.Column<int>()
+                    ApiResourceId = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Type = table.Column<string>(maxLength: 200, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ApiClaims", x => new {x.ApiResourceId, x.Id});
+                    table.PrimaryKey("PK_ApiClaims", x => new { x.ApiResourceId, x.Id });
                     table.ForeignKey(
-                        "FK_ApiClaims_ApiResources_ApiResourceId",
-                        x => x.ApiResourceId,
+                        name: "FK_ApiClaims_ApiResources_ApiResourceId",
+                        column: x => x.ApiResourceId,
                         principalSchema: "ids",
                         principalTable: "ApiResources",
                         principalColumn: "Id",
@@ -146,22 +161,22 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                "ApiProperties",
+                name: "ApiProperties",
                 schema: "ids",
                 columns: table => new
                 {
-                    ApiResourceId = table.Column<int>(),
-                    Id = table.Column<int>()
+                    ApiResourceId = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Key = table.Column<string>(maxLength: 250),
-                    Value = table.Column<string>(maxLength: 2000)
+                    Key = table.Column<string>(maxLength: 250, nullable: false),
+                    Value = table.Column<string>(maxLength: 2000, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ApiProperties", x => new {x.ApiResourceId, x.Id});
+                    table.PrimaryKey("PK_ApiProperties", x => new { x.ApiResourceId, x.Id });
                     table.ForeignKey(
-                        "FK_ApiProperties_ApiResources_ApiResourceId",
-                        x => x.ApiResourceId,
+                        name: "FK_ApiProperties_ApiResources_ApiResourceId",
+                        column: x => x.ApiResourceId,
                         principalSchema: "ids",
                         principalTable: "ApiResources",
                         principalColumn: "Id",
@@ -169,26 +184,26 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                "ApiScopes",
+                name: "ApiScopes",
                 schema: "ids",
                 columns: table => new
                 {
-                    Id = table.Column<int>()
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ApiResourceId = table.Column<int>(),
-                    Name = table.Column<string>(maxLength: 200),
+                    ApiResourceId = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(maxLength: 200, nullable: false),
                     DisplayName = table.Column<string>(maxLength: 200, nullable: true),
                     Description = table.Column<string>(maxLength: 1000, nullable: true),
-                    Required = table.Column<bool>(),
-                    Emphasize = table.Column<bool>(),
-                    ShowInDiscoveryDocument = table.Column<bool>()
+                    Required = table.Column<bool>(nullable: false),
+                    Emphasize = table.Column<bool>(nullable: false),
+                    ShowInDiscoveryDocument = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ApiScopes", x => x.Id);
                     table.ForeignKey(
-                        "FK_ApiScopes_ApiResources_ApiResourceId",
-                        x => x.ApiResourceId,
+                        name: "FK_ApiScopes_ApiResources_ApiResourceId",
+                        column: x => x.ApiResourceId,
                         principalSchema: "ids",
                         principalTable: "ApiResources",
                         principalColumn: "Id",
@@ -196,15 +211,15 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                "ApiSecrets",
+                name: "ApiSecrets",
                 schema: "ids",
                 columns: table => new
                 {
-                    Id = table.Column<int>()
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ApiResourceId = table.Column<int>(),
-                    Type = table.Column<string>(maxLength: 250),
-                    Value = table.Column<string>(maxLength: 4000),
+                    ApiResourceId = table.Column<int>(nullable: false),
+                    Type = table.Column<string>(maxLength: 250, nullable: false),
+                    Value = table.Column<string>(maxLength: 4000, nullable: false),
                     Description = table.Column<string>(maxLength: 1000, nullable: true),
                     Expiration = table.Column<DateTime>(nullable: true)
                 },
@@ -212,8 +227,8 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                 {
                     table.PrimaryKey("PK_ApiSecrets", x => x.Id);
                     table.ForeignKey(
-                        "FK_ApiSecrets_ApiResources_ApiResourceId",
-                        x => x.ApiResourceId,
+                        name: "FK_ApiSecrets_ApiResources_ApiResourceId",
+                        column: x => x.ApiResourceId,
                         principalSchema: "ids",
                         principalTable: "ApiResources",
                         principalColumn: "Id",
@@ -221,22 +236,22 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                "ClientClaims",
+                name: "ClientClaims",
                 schema: "ids",
                 columns: table => new
                 {
-                    Id = table.Column<int>()
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ClientId = table.Column<int>(),
-                    Type = table.Column<string>(maxLength: 250),
-                    Value = table.Column<string>(maxLength: 250)
+                    ClientId = table.Column<int>(nullable: false),
+                    Type = table.Column<string>(maxLength: 250, nullable: false),
+                    Value = table.Column<string>(maxLength: 250, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ClientClaims", x => x.Id);
                     table.ForeignKey(
-                        "FK_ClientClaims_Clients_ClientId",
-                        x => x.ClientId,
+                        name: "FK_ClientClaims_Clients_ClientId",
+                        column: x => x.ClientId,
                         principalSchema: "ids",
                         principalTable: "Clients",
                         principalColumn: "Id",
@@ -244,21 +259,21 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                "ClientCorsOrigins",
+                name: "ClientCorsOrigins",
                 schema: "ids",
                 columns: table => new
                 {
-                    ClientId = table.Column<int>(),
-                    Id = table.Column<int>()
+                    ClientId = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Origin = table.Column<string>(maxLength: 150)
+                    Origin = table.Column<string>(maxLength: 150, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ClientCorsOrigins", x => new {x.ClientId, x.Id});
+                    table.PrimaryKey("PK_ClientCorsOrigins", x => new { x.ClientId, x.Id });
                     table.ForeignKey(
-                        "FK_ClientCorsOrigins_Clients_ClientId",
-                        x => x.ClientId,
+                        name: "FK_ClientCorsOrigins_Clients_ClientId",
+                        column: x => x.ClientId,
                         principalSchema: "ids",
                         principalTable: "Clients",
                         principalColumn: "Id",
@@ -266,21 +281,21 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                "ClientGrantTypes",
+                name: "ClientGrantTypes",
                 schema: "ids",
                 columns: table => new
                 {
-                    ClientId = table.Column<int>(),
-                    Id = table.Column<int>()
+                    ClientId = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    GrantType = table.Column<string>(maxLength: 250)
+                    GrantType = table.Column<string>(maxLength: 250, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ClientGrantTypes", x => new {x.ClientId, x.Id});
+                    table.PrimaryKey("PK_ClientGrantTypes", x => new { x.ClientId, x.Id });
                     table.ForeignKey(
-                        "FK_ClientGrantTypes_Clients_ClientId",
-                        x => x.ClientId,
+                        name: "FK_ClientGrantTypes_Clients_ClientId",
+                        column: x => x.ClientId,
                         principalSchema: "ids",
                         principalTable: "Clients",
                         principalColumn: "Id",
@@ -288,21 +303,21 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                "ClientIdPRestrictions",
+                name: "ClientIdPRestrictions",
                 schema: "ids",
                 columns: table => new
                 {
-                    ClientId = table.Column<int>(),
-                    Id = table.Column<int>()
+                    ClientId = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Provider = table.Column<string>(maxLength: 200)
+                    Provider = table.Column<string>(maxLength: 200, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ClientIdPRestrictions", x => new {x.ClientId, x.Id});
+                    table.PrimaryKey("PK_ClientIdPRestrictions", x => new { x.ClientId, x.Id });
                     table.ForeignKey(
-                        "FK_ClientIdPRestrictions_Clients_ClientId",
-                        x => x.ClientId,
+                        name: "FK_ClientIdPRestrictions_Clients_ClientId",
+                        column: x => x.ClientId,
                         principalSchema: "ids",
                         principalTable: "Clients",
                         principalColumn: "Id",
@@ -310,21 +325,21 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                "ClientPostLogoutRedirectUris",
+                name: "ClientPostLogoutRedirectUris",
                 schema: "ids",
                 columns: table => new
                 {
-                    ClientId = table.Column<int>(),
-                    Id = table.Column<int>()
+                    ClientId = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PostLogoutRedirectUri = table.Column<string>(maxLength: 2000)
+                    PostLogoutRedirectUri = table.Column<string>(maxLength: 2000, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ClientPostLogoutRedirectUris", x => new {x.ClientId, x.Id});
+                    table.PrimaryKey("PK_ClientPostLogoutRedirectUris", x => new { x.ClientId, x.Id });
                     table.ForeignKey(
-                        "FK_ClientPostLogoutRedirectUris_Clients_ClientId",
-                        x => x.ClientId,
+                        name: "FK_ClientPostLogoutRedirectUris_Clients_ClientId",
+                        column: x => x.ClientId,
                         principalSchema: "ids",
                         principalTable: "Clients",
                         principalColumn: "Id",
@@ -332,22 +347,22 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                "ClientPropertys",
+                name: "ClientPropertys",
                 schema: "ids",
                 columns: table => new
                 {
-                    ClientId = table.Column<int>(),
-                    Id = table.Column<int>()
+                    ClientId = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Key = table.Column<string>(maxLength: 250),
-                    Value = table.Column<string>(maxLength: 2000)
+                    Key = table.Column<string>(maxLength: 250, nullable: false),
+                    Value = table.Column<string>(maxLength: 2000, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ClientPropertys", x => new {x.ClientId, x.Id});
+                    table.PrimaryKey("PK_ClientPropertys", x => new { x.ClientId, x.Id });
                     table.ForeignKey(
-                        "FK_ClientPropertys_Clients_ClientId",
-                        x => x.ClientId,
+                        name: "FK_ClientPropertys_Clients_ClientId",
+                        column: x => x.ClientId,
                         principalSchema: "ids",
                         principalTable: "Clients",
                         principalColumn: "Id",
@@ -355,21 +370,21 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                "ClientRedirectUris",
+                name: "ClientRedirectUris",
                 schema: "ids",
                 columns: table => new
                 {
-                    ClientId = table.Column<int>(),
-                    Id = table.Column<int>()
+                    ClientId = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RedirectUri = table.Column<string>(maxLength: 2000)
+                    RedirectUri = table.Column<string>(maxLength: 2000, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ClientRedirectUris", x => new {x.ClientId, x.Id});
+                    table.PrimaryKey("PK_ClientRedirectUris", x => new { x.ClientId, x.Id });
                     table.ForeignKey(
-                        "FK_ClientRedirectUris_Clients_ClientId",
-                        x => x.ClientId,
+                        name: "FK_ClientRedirectUris_Clients_ClientId",
+                        column: x => x.ClientId,
                         principalSchema: "ids",
                         principalTable: "Clients",
                         principalColumn: "Id",
@@ -377,21 +392,21 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                "ClientScopes",
+                name: "ClientScopes",
                 schema: "ids",
                 columns: table => new
                 {
-                    ClientId = table.Column<int>(),
-                    Id = table.Column<int>()
+                    ClientId = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Scope = table.Column<string>(maxLength: 200)
+                    Scope = table.Column<string>(maxLength: 200, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ClientScopes", x => new {x.ClientId, x.Id});
+                    table.PrimaryKey("PK_ClientScopes", x => new { x.ClientId, x.Id });
                     table.ForeignKey(
-                        "FK_ClientScopes_Clients_ClientId",
-                        x => x.ClientId,
+                        name: "FK_ClientScopes_Clients_ClientId",
+                        column: x => x.ClientId,
                         principalSchema: "ids",
                         principalTable: "Clients",
                         principalColumn: "Id",
@@ -399,15 +414,15 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                "ClientSecrets",
+                name: "ClientSecrets",
                 schema: "ids",
                 columns: table => new
                 {
-                    Id = table.Column<int>()
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ClientId = table.Column<int>(),
-                    Type = table.Column<string>(maxLength: 250),
-                    Value = table.Column<string>(maxLength: 4000),
+                    ClientId = table.Column<int>(nullable: false),
+                    Type = table.Column<string>(maxLength: 250, nullable: false),
+                    Value = table.Column<string>(maxLength: 4000, nullable: false),
                     Description = table.Column<string>(maxLength: 2000, nullable: true),
                     Expiration = table.Column<DateTime>(nullable: true)
                 },
@@ -415,8 +430,8 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                 {
                     table.PrimaryKey("PK_ClientSecrets", x => x.Id);
                     table.ForeignKey(
-                        "FK_ClientSecrets_Clients_ClientId",
-                        x => x.ClientId,
+                        name: "FK_ClientSecrets_Clients_ClientId",
+                        column: x => x.ClientId,
                         principalSchema: "ids",
                         principalTable: "Clients",
                         principalColumn: "Id",
@@ -424,21 +439,21 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                "IdentityClaims",
+                name: "IdentityClaims",
                 schema: "ids",
                 columns: table => new
                 {
-                    IdentityResourceId = table.Column<int>(),
-                    Id = table.Column<int>()
+                    IdentityResourceId = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Type = table.Column<string>(maxLength: 200)
+                    Type = table.Column<string>(maxLength: 200, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_IdentityClaims", x => new {x.IdentityResourceId, x.Id});
+                    table.PrimaryKey("PK_IdentityClaims", x => new { x.IdentityResourceId, x.Id });
                     table.ForeignKey(
-                        "FK_IdentityClaims_IdentityResources_IdentityResourceId",
-                        x => x.IdentityResourceId,
+                        name: "FK_IdentityClaims_IdentityResources_IdentityResourceId",
+                        column: x => x.IdentityResourceId,
                         principalSchema: "ids",
                         principalTable: "IdentityResources",
                         principalColumn: "Id",
@@ -446,22 +461,22 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                "IdentityProperties",
+                name: "IdentityProperties",
                 schema: "ids",
                 columns: table => new
                 {
-                    IdentityResourceId = table.Column<int>(),
-                    Id = table.Column<int>()
+                    IdentityResourceId = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Key = table.Column<string>(maxLength: 250),
-                    Value = table.Column<string>(maxLength: 2000)
+                    Key = table.Column<string>(maxLength: 250, nullable: false),
+                    Value = table.Column<string>(maxLength: 2000, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_IdentityProperties", x => new {x.IdentityResourceId, x.Id});
+                    table.PrimaryKey("PK_IdentityProperties", x => new { x.IdentityResourceId, x.Id });
                     table.ForeignKey(
-                        "FK_IdentityProperties_IdentityResources_IdentityResourceId",
-                        x => x.IdentityResourceId,
+                        name: "FK_IdentityProperties_IdentityResources_IdentityResourceId",
+                        column: x => x.IdentityResourceId,
                         principalSchema: "ids",
                         principalTable: "IdentityResources",
                         principalColumn: "Id",
@@ -469,21 +484,21 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                "ApiScopeClaims",
+                name: "ApiScopeClaims",
                 schema: "ids",
                 columns: table => new
                 {
-                    ApiScopeId = table.Column<int>(),
-                    Id = table.Column<int>()
+                    ApiScopeId = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Type = table.Column<string>(maxLength: 200)
+                    Type = table.Column<string>(maxLength: 200, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ApiScopeClaims", x => new {x.ApiScopeId, x.Id});
+                    table.PrimaryKey("PK_ApiScopeClaims", x => new { x.ApiScopeId, x.Id });
                     table.ForeignKey(
-                        "FK_ApiScopeClaims_ApiScopes_ApiScopeId",
-                        x => x.ApiScopeId,
+                        name: "FK_ApiScopeClaims_ApiScopes_ApiScopeId",
+                        column: x => x.ApiScopeId,
                         principalSchema: "ids",
                         principalTable: "ApiScopes",
                         principalColumn: "Id",
@@ -491,168 +506,168 @@ namespace KissU.Modules.IdentityServer.DbMigrator.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                "IX_ApiResources_Name",
+                name: "IX_ApiResources_Name",
                 schema: "ids",
                 table: "ApiResources",
                 column: "Name",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                "IX_ApiScopes_ApiResourceId",
+                name: "IX_ApiScopes_ApiResourceId",
                 schema: "ids",
                 table: "ApiScopes",
                 column: "ApiResourceId");
 
             migrationBuilder.CreateIndex(
-                "IX_ApiScopes_Name",
+                name: "IX_ApiScopes_Name",
                 schema: "ids",
                 table: "ApiScopes",
                 column: "Name",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                "IX_ApiSecrets_ApiResourceId",
+                name: "IX_ApiSecrets_ApiResourceId",
                 schema: "ids",
                 table: "ApiSecrets",
                 column: "ApiResourceId");
 
             migrationBuilder.CreateIndex(
-                "IX_ClientClaims_ClientId",
+                name: "IX_ClientClaims_ClientId",
                 schema: "ids",
                 table: "ClientClaims",
                 column: "ClientId");
 
             migrationBuilder.CreateIndex(
-                "IX_Clients_ClientId",
+                name: "IX_Clients_ClientId",
                 schema: "ids",
                 table: "Clients",
                 column: "ClientId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                "IX_ClientSecrets_ClientId",
+                name: "IX_ClientSecrets_ClientId",
                 schema: "ids",
                 table: "ClientSecrets",
                 column: "ClientId");
 
             migrationBuilder.CreateIndex(
-                "IX_DeviceFlowCodes_DeviceCode",
+                name: "IX_DeviceFlowCodes_DeviceCode",
                 schema: "ids",
                 table: "DeviceFlowCodes",
                 column: "DeviceCode",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                "IX_DeviceFlowCodes_Expiration",
+                name: "IX_DeviceFlowCodes_Expiration",
                 schema: "ids",
                 table: "DeviceFlowCodes",
                 column: "Expiration");
 
             migrationBuilder.CreateIndex(
-                "IX_IdentityResources_Name",
+                name: "IX_IdentityResources_Name",
                 schema: "ids",
                 table: "IdentityResources",
                 column: "Name",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                "IX_PersistedGrants_Expiration",
+                name: "IX_PersistedGrants_Expiration",
                 schema: "ids",
                 table: "PersistedGrants",
                 column: "Expiration");
 
             migrationBuilder.CreateIndex(
-                "IX_PersistedGrants_SubjectId_ClientId_Type",
+                name: "IX_PersistedGrants_SubjectId_ClientId_Type",
                 schema: "ids",
                 table: "PersistedGrants",
-                columns: new[] {"SubjectId", "ClientId", "Type"});
+                columns: new[] { "SubjectId", "ClientId", "Type" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                "ApiClaims",
-                "ids");
+                name: "ApiClaims",
+                schema: "ids");
 
             migrationBuilder.DropTable(
-                "ApiProperties",
-                "ids");
+                name: "ApiProperties",
+                schema: "ids");
 
             migrationBuilder.DropTable(
-                "ApiScopeClaims",
-                "ids");
+                name: "ApiScopeClaims",
+                schema: "ids");
 
             migrationBuilder.DropTable(
-                "ApiSecrets",
-                "ids");
+                name: "ApiSecrets",
+                schema: "ids");
 
             migrationBuilder.DropTable(
-                "ClientClaims",
-                "ids");
+                name: "ClientClaims",
+                schema: "ids");
 
             migrationBuilder.DropTable(
-                "ClientCorsOrigins",
-                "ids");
+                name: "ClientCorsOrigins",
+                schema: "ids");
 
             migrationBuilder.DropTable(
-                "ClientGrantTypes",
-                "ids");
+                name: "ClientGrantTypes",
+                schema: "ids");
 
             migrationBuilder.DropTable(
-                "ClientIdPRestrictions",
-                "ids");
+                name: "ClientIdPRestrictions",
+                schema: "ids");
 
             migrationBuilder.DropTable(
-                "ClientPostLogoutRedirectUris",
-                "ids");
+                name: "ClientPostLogoutRedirectUris",
+                schema: "ids");
 
             migrationBuilder.DropTable(
-                "ClientPropertys",
-                "ids");
+                name: "ClientPropertys",
+                schema: "ids");
 
             migrationBuilder.DropTable(
-                "ClientRedirectUris",
-                "ids");
+                name: "ClientRedirectUris",
+                schema: "ids");
 
             migrationBuilder.DropTable(
-                "ClientScopes",
-                "ids");
+                name: "ClientScopes",
+                schema: "ids");
 
             migrationBuilder.DropTable(
-                "ClientSecrets",
-                "ids");
+                name: "ClientSecrets",
+                schema: "ids");
 
             migrationBuilder.DropTable(
-                "DeviceFlowCodes",
-                "ids");
+                name: "DeviceFlowCodes",
+                schema: "ids");
 
             migrationBuilder.DropTable(
-                "IdentityClaims",
-                "ids");
+                name: "IdentityClaims",
+                schema: "ids");
 
             migrationBuilder.DropTable(
-                "IdentityProperties",
-                "ids");
+                name: "IdentityProperties",
+                schema: "ids");
 
             migrationBuilder.DropTable(
-                "PersistedGrants",
-                "ids");
+                name: "PersistedGrants",
+                schema: "ids");
 
             migrationBuilder.DropTable(
-                "ApiScopes",
-                "ids");
+                name: "ApiScopes",
+                schema: "ids");
 
             migrationBuilder.DropTable(
-                "Clients",
-                "ids");
+                name: "Clients",
+                schema: "ids");
 
             migrationBuilder.DropTable(
-                "IdentityResources",
-                "ids");
+                name: "IdentityResources",
+                schema: "ids");
 
             migrationBuilder.DropTable(
-                "ApiResources",
-                "ids");
+                name: "ApiResources",
+                schema: "ids");
         }
     }
 }

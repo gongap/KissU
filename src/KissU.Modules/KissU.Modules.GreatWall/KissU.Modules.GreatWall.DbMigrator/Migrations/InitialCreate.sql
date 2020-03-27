@@ -124,10 +124,10 @@ GO
 CREATE TABLE [iam].[Resources] (
     [Id] uniqueidentifier NOT NULL,
     [Version] rowversion NULL,
+    [Enabled] bit NOT NULL,
     [ParentId] uniqueidentifier NULL,
     [Path] nvarchar(max) NULL,
     [Level] int NOT NULL,
-    [Enabled] bit NOT NULL,
     [SortId] int NULL,
     [ApplicationId] uniqueidentifier NULL,
     [Uri] nvarchar(max) NULL,
@@ -157,7 +157,7 @@ CREATE INDEX [IX_Resources_ParentId] ON [iam].[Resources] ([ParentId]);
 GO
 
 INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-VALUES (N'20200115055013_InitialCreate', N'3.1.0');
+VALUES (N'20200326060355_InitialCreate', N'3.1.0');
 
 GO
 

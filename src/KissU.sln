@@ -10,9 +10,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		common.props = common.props
 		common.test.props = common.test.props
 		configureawait.props = configureawait.props
+		docker-compose.override.yml = docker-compose.override.yml
+		docker-compose.prod.yml = docker-compose.prod.yml
+		docker-compose.yml = docker-compose.yml
 		DockerfileSolutionRestore.ps1 = DockerfileSolutionRestore.ps1
 		DockerfileSolutionRestore.txt = DockerfileSolutionRestore.txt
+		GenerateCertificate.bat = GenerateCertificate.bat
 		NuGet.config = NuGet.config
+		server.conf = server.conf
 	EndProjectSection
 	ProjectSection(FolderGlobals) = preProject
 		E_5_4GAP_4KissU_4stylecop_1json__JsonSchema = 

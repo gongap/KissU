@@ -21,7 +21,7 @@ services:
     image: ${REGISTRY:-kissu}/services.host:${PLATFORM:-linux}-${TAG:-latest}
     build:
       context: .
-      dockerfile: KissU.Services/KissU.Services.Hosts/KissU.Services.Host/Dockerfile
+      dockerfile: KissU.Services/KissU.Services.Host/Dockerfile
     depends_on:
       - consul
       - redis

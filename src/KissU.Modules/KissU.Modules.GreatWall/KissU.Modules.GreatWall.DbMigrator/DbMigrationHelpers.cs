@@ -92,12 +92,12 @@ namespace KissU.Modules.GreatWall.DbMigrator
         public static async Task EnsureSeedData(IServiceProvider serviceProvider)
         {
             var userMgr = serviceProvider.GetRequiredService<UserManager<User>>();
-            var alice = await userMgr.FindByNameAsync("alice").ConfigureAwait(false);
+            var alice = await userMgr.FindByNameAsync("admin").ConfigureAwait(false);
             if (alice == null)
             {
                 alice = new User
                 {
-                    UserName = "alice",
+                    UserName = "admin",
                     Enabled = true
                 };
                 var result = await userMgr.CreateAsync(alice, "Pass123$").ConfigureAwait(false);
