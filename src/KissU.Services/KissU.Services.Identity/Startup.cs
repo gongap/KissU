@@ -65,6 +65,8 @@ namespace KissU.Services.Identity
 
             // 添加NLog日志操作
             services.AddNLog();
+
+            services.ConfigureNonBreakingSameSiteCookies();
         }
 
         /// <summary>
@@ -92,6 +94,7 @@ namespace KissU.Services.Identity
             }
 
             app.UseStaticFiles();
+            app.UseCookiePolicy();
             app.UseRouting();
             app.UseIdentityServer();
             app.UseAuthorization();

@@ -241,7 +241,7 @@ namespace KissU.Modules.IdentityServer.DbMigrator
                 AllowedGrantTypes = GrantTypes.Implicit,
                 AllowAccessTokensViaBrowser = true,
 
-                RedirectUris = {"http://localhost:28895/index.html"},
+                RedirectUris = {"http://localhost:4200/index.html"},
                 AllowedScopes = {"api1", "api2.read_only"}
             },
 
@@ -257,6 +257,7 @@ namespace KissU.Modules.IdentityServer.DbMigrator
                 AllowedGrantTypes = GrantTypes.Implicit,
                 AllowAccessTokensViaBrowser = true,
                 RequireClientSecret = false,
+                RequireConsent = true,
                 AccessTokenType = AccessTokenType.Jwt,
 
                 RedirectUris =
