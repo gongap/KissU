@@ -257,14 +257,47 @@ namespace KissU.Modules.IdentityServer.DbMigrator
                 AllowedGrantTypes = GrantTypes.Implicit,
                 AllowAccessTokensViaBrowser = true,
                 RequireClientSecret = false,
-                RequireConsent = true,
                 AccessTokenType = AccessTokenType.Jwt,
 
                 RedirectUris =
                 {
                     "http://localhost:4200/index.html",
                     "http://localhost:4200/callback.html",
-                    "http://localhost:4200/silent.html",
+                    "http://localhost:4200/silent-refresh.html",
+                    "http://localhost:4200/popup.html"
+                },
+
+                PostLogoutRedirectUris = {"http://localhost:4200/index.html"},
+                AllowedCorsOrigins = {"http://localhost:4200"},
+
+                AllowedScopes =
+                {
+                    IdentityServerConstants.StandardScopes.OpenId,
+                    IdentityServerConstants.StandardScopes.Profile,
+                    IdentityServerConstants.StandardScopes.Email,
+                    "api1", "api2.read_only", "api2.full_access"
+                }
+            },
+
+            ///////////////////////////////////////////
+            // JS OIDC Sample
+            //////////////////////////////////////////
+            new Client
+            {
+                ClientId = "js_oidc_code",
+                ClientName = "JavaScript OIDC Client",
+                ClientUri = "http://localhost:4200",
+
+                AllowedGrantTypes = GrantTypes.Code,
+                AllowAccessTokensViaBrowser = true,
+                RequireClientSecret = false,
+                AccessTokenType = AccessTokenType.Jwt,
+
+                RedirectUris =
+                {
+                    "http://localhost:4200/index.html",
+                    "http://localhost:4200/callback.html",
+                    "http://localhost:4200/silent-refresh.html",
                     "http://localhost:4200/popup.html"
                 },
 

@@ -1,9 +1,7 @@
 ﻿using System;
-using AutoMapper;
+using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Reflection;
+using AutoMapper;
 using KissU.Core.Helpers;
 using KissU.Core.Reflections;
 
@@ -20,12 +18,18 @@ namespace KissU.Core.Maps
         private static readonly object Sync = new object();
 
         /// <summary>
+        /// 配置提供器
+        /// </summary>
+        private static IConfigurationProvider _config;
+
+        /// <summary>
         /// 将源对象映射到目标对象
         /// </summary>
         /// <typeparam name="TSource">源类型</typeparam>
         /// <typeparam name="TDestination">目标类型</typeparam>
         /// <param name="source">源对象</param>
         /// <param name="destination">目标对象</param>
+        /// <returns>TDestination.</returns>
         public static TDestination MapTo<TSource, TDestination>(this TSource source, TDestination destination)
         {
             return MapTo<TDestination>(source, destination);
@@ -36,6 +40,7 @@ namespace KissU.Core.Maps
         /// </summary>
         /// <typeparam name="TDestination">目标类型</typeparam>
         /// <param name="source">源对象</param>
+        /// <returns>TDestination.</returns>
         public static TDestination MapTo<TDestination>(this object source) where TDestination : new()
         {
             return MapTo(source, new TDestination());
@@ -46,23 +51,21 @@ namespace KissU.Core.Maps
         /// </summary>
         private static TDestination MapTo<TDestination>(object source, TDestination destination)
         {
-            if (source == null)
-                return default;
-            if (destination == null)
-                return default;
-            var sourceType = GetType(source);
-            var destinationType = GetType(destination);
-            var map = GetMap(sourceType, destinationType);
-            if (map != null)
-                return Mapper.Map(source, destination);
-            lock (Sync)
+            try
             {
-                map = GetMap(sourceType, destinationType);
-                if (map != null)
-                    return Mapper.Map(source, destination);
-                InitMaps(sourceType, destinationType);
+                if (source == null)
+                    return default;
+                if (destination == null)
+                    return default;
+                var sourceType = GetType(source);
+                var destinationType = GetType(destination);
+                return GetResult(sourceType, destinationType, source, destination);
             }
-            return Mapper.Map(source, destination);
+            catch (AutoMapperMappingException ex)
+            {
+                return GetResult(GetType(ex.MemberMap.SourceType), GetType(ex.MemberMap.DestinationType), source,
+                    destination);
+            }
         }
 
         /// <summary>
@@ -70,79 +73,66 @@ namespace KissU.Core.Maps
         /// </summary>
         private static Type GetType(object obj)
         {
-            var type = obj.GetType();
-            if (obj is System.Collections.IEnumerable == false)
-                return type;
-            if (type.IsArray)
-                return type.GetElementType();
-            var genericArgumentsTypes = type.GetTypeInfo().GetGenericArguments();
-            if (genericArgumentsTypes == null || genericArgumentsTypes.Length == 0)
-                throw new ArgumentException("泛型类型参数不能为空");
-            return genericArgumentsTypes[0];
+            return GetType(obj.GetType());
         }
 
         /// <summary>
-        /// 获取映射配置
+        /// 获取类型
         /// </summary>
-        private static TypeMap GetMap(Type sourceType, Type destinationType)
+        private static Type GetType(Type type)
         {
-            try
+            return Reflection.GetElementType(type);
+        }
+
+        /// <summary>
+        /// 获取结果
+        /// </summary>
+        private static TDestination GetResult<TDestination>(Type sourceType, Type destinationType, object source,
+            TDestination destination)
+        {
+            if (Exists(sourceType, destinationType))
+                return GetResult(source, destination);
+            lock (Sync)
             {
-                return Mapper.Configuration.FindTypeMapFor(sourceType, destinationType);
+                if (Exists(sourceType, destinationType))
+                    return GetResult(source, destination);
+                Init(sourceType, destinationType);
             }
-            catch (InvalidOperationException)
-            {
-                lock (Sync)
-                {
-                    try
-                    {
-                        return Mapper.Configuration.FindTypeMapFor(sourceType, destinationType);
-                    }
-                    catch (InvalidOperationException)
-                    {
-                        InitMaps(sourceType, destinationType);
-                    }
-                    return Mapper.Configuration.FindTypeMapFor(sourceType, destinationType);
-                }
-            }
+
+            return GetResult(source, destination);
+        }
+
+        /// <summary>
+        /// 是否已存在映射配置
+        /// </summary>
+        private static bool Exists(Type sourceType, Type destinationType)
+        {
+            return _config?.FindTypeMapFor(sourceType, destinationType) != null;
         }
 
         /// <summary>
         /// 初始化映射配置
         /// </summary>
-        private static void InitMaps(Type sourceType, Type destinationType)
+        private static void Init(Type sourceType, Type destinationType)
         {
-            try
+            if (_config == null)
             {
-                var finder = new Finder();
-                var assemblies = finder.GetAssemblies();
-                var types = finder.Find<Profile>(assemblies).ToArray();
-                ClearConfig();
-                Mapper.Initialize(config => {
-                    types.Select(type => Reflection.CreateInstance<Profile>(type)).ToList().ForEach(t =>
-                    {
-                        config.AddProfile(t);
-                    });
-                    config.CreateMap(sourceType, destinationType);
-                });
-                var maps = Mapper.Configuration.GetAllTypeMaps();
-                foreach (var map in maps)
-                    Mapper.Configuration.RegisterTypeMap(map);
+                var assemblies = new Finder().GetAssemblies();
+                _config = new MapperConfiguration(cfg => cfg.AddMaps(assemblies));
             }
-            catch (InvalidOperationException)
-            {
-                Mapper.Initialize(config => config.CreateMap(sourceType, destinationType));
-            }
+
+            var maps = _config.GetAllTypeMaps();
+            _config = new MapperConfiguration(t => t.CreateMap(sourceType, destinationType));
+            foreach (var map in maps)
+                _config.RegisterTypeMap(map);
         }
 
         /// <summary>
-        /// 清空配置
+        /// 获取映射结果
         /// </summary>
-        private static void ClearConfig()
+        private static TDestination GetResult<TDestination>(object source, TDestination destination)
         {
-            var typeMapper = typeof(Mapper).GetTypeInfo();
-            var configuration = typeMapper.GetDeclaredField("_configuration");
-            configuration.SetValue(null, null, BindingFlags.Static, null, CultureInfo.CurrentCulture);
+            return new Mapper(_config).Map(source, destination);
         }
 
         /// <summary>
@@ -150,9 +140,10 @@ namespace KissU.Core.Maps
         /// </summary>
         /// <typeparam name="TDestination">目标元素类型,范例：Sample,不要加List</typeparam>
         /// <param name="source">源集合</param>
-        public static List<TDestination> MapToList<TDestination>(this System.Collections.IEnumerable source)
+        /// <returns>List&lt;TDestination&gt;.</returns>
+        public static List<TDestination> MapToList<TDestination>(this IEnumerable source)
         {
-            return source.MapTo<List<TDestination>>();
+            return MapTo<List<TDestination>>(source);
         }
     }
 }

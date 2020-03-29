@@ -25,7 +25,6 @@ namespace KissU.Modules.IdentityServer.Data.Mappings.SqlServer
         /// <param name="builder">The builder.</param>
         protected override void MapProperties(EntityTypeBuilder<PersistedGrant> builder)
         {
-            builder.HasKey(x => x.Key);
             builder.Property(x => x.Key).HasMaxLength(200).ValueGeneratedNever();
             builder.Property(x => x.Type).HasMaxLength(50).IsRequired();
             builder.Property(x => x.SubjectId).HasMaxLength(200);
