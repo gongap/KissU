@@ -425,6 +425,8 @@ ng-zorro-antd/input-number
 
 ng-zorro-antd/mention
 
+ng-zorro-antd/message
+
 ng-zorro-antd/modal
 
 ng-zorro-antd/notification
@@ -830,6 +832,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
+angular-oauth2-oidc
+MIT
+
+angular-oauth2-oidc-jwks
+
 core-js
 MIT
 Copyright (c) 2014-2020 Denis Pushkarev
@@ -961,6 +968,9 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
+jsrsasign
+MIT
+
 lodash
 MIT
 Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
@@ -1054,8 +1064,6 @@ ng-zorro-antd/carousel
 ng-zorro-antd/empty
 
 ng-zorro-antd/form
-
-ng-zorro-antd/message
 
 ng-zorro-antd/pagination
 
