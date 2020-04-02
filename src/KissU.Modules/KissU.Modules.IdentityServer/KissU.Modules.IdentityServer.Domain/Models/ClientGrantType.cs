@@ -35,5 +35,10 @@ namespace KissU.Modules.IdentityServer.Domain.Models
         [Required]
         [StringLength(250)]
         public string GrantType { get; set; }
+
+        public override string ToString()
+        {
+            return GrantType;
+        }
     }
 }

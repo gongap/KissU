@@ -19,5 +19,10 @@ namespace KissU.Modules.IdentityServer.Domain.Models
         [Required]
         [StringLength(2000)]
         public string PostLogoutRedirectUri { get; set; }
+
+        public override string ToString()
+        {
+            return PostLogoutRedirectUri;
+        }
     }
 }

@@ -19,5 +19,10 @@ namespace KissU.Modules.IdentityServer.Domain.Models
         [Required]
         [StringLength(200)]
         public string Scope { get; set; }
+
+        public override string ToString()
+        {
+            return Scope;
+        }
     }
 }

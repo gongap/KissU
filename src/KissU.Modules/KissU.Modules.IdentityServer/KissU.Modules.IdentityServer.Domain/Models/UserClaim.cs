@@ -13,5 +13,10 @@ namespace KissU.Modules.IdentityServer.Domain.Models
         /// </summary>
         [StringLength(200)]
         public string Type { get; set; }
+
+        public override string ToString()
+        {
+            return Type;
+        }
     }
 }

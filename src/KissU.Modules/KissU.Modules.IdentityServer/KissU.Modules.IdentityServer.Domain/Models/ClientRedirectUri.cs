@@ -19,5 +19,10 @@ namespace KissU.Modules.IdentityServer.Domain.Models
         [Required]
         [StringLength(2000)]
         public string RedirectUri { get; set; }
+
+        public override string ToString()
+        {
+            return RedirectUri;
+        }
     }
 }
