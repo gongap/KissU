@@ -48,7 +48,7 @@ namespace KissU.Services.Host
 
             using (host.Run())
             {
-                Console.WriteLine($"服务端启动成功，{DateTime.Now}。");
+                Console.WriteLine($"{AppConfig.ServerOptions.Ip}:{AppConfig.ServerOptions.Port}， {DateTime.Now}。");
             }
         }
     }

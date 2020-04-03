@@ -49,7 +49,7 @@ namespace KissU.Services.Stage
 
             using (host.Run())
             {
-                Console.WriteLine($"服务端启动成功，{DateTime.Now}。");
+                Console.WriteLine($"Now listening on: {AppConfig.ServerOptions.Ip}:{AppConfig.ServerOptions.Port}， {DateTime.Now}。");
             }
         }
     }
