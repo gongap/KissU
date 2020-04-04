@@ -14,6 +14,7 @@ using KissU.Surging.KestrelHttpServer.Abstractions;
 using KissU.Surging.KestrelHttpServer.Internal;
 using KissU.Modules.SampleA.Service.Contracts.Dtos;
 using KissU.Surging.Caching.Intercept;
+using Metadatas = KissU.Surging.ProxyGenerator.Interceptors.Implementation.Metadatas;
 
 namespace KissU.Modules.SampleA.Service.Contracts
 {
@@ -49,10 +50,7 @@ namespace KissU.Modules.SampleA.Service.Contracts
         /// <param name="id">用户编号</param>
         /// <returns>Task&lt;System.Boolean&gt;.</returns>
         [ServiceRoute("{id}")]
-        [HttpPost]
-        [HttpPut]
-        [HttpDelete]
-        [HttpGet]
+        [HttpPost(true), HttpPut(true), HttpDelete(true), HttpGet(true)]
         // [ServiceBundle("api/{Service}/{id}", false)]
         Task<bool> Exists(int id);
 
@@ -77,6 +75,8 @@ namespace KissU.Modules.SampleA.Service.Contracts
             RequestCacheEnabled = false)]
         [InterceptMethod(CachingMethod.Get, Key = "GetUserId_{0}", CacheSectionType = SectionType.ddlCache,
             L2Key = "GetUserId_{0}", EnableL2Cache = true, Mode = CacheTargetType.Redis, Time = 480)]
+        [Metadatas.ServiceCacheIntercept(Metadatas.CachingMethod.Get, Key = "GetUserId_{0}", CacheSectionType = "ddlCache", L2Key = "GetUserId_{0}", EnableL2Cache = true, Mode = Metadatas.CacheTargetType.Redis, Time = 480)]
+        [Metadatas.ServiceLogIntercept()]
         [ServiceRoute("{userName}")]
         Task<int> GetUserId(string userName);
 

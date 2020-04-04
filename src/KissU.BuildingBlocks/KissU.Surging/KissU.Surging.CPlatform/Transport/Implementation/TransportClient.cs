@@ -25,6 +25,7 @@ namespace KissU.Surging.CPlatform.Transport.Implementation
 
         private readonly ConcurrentDictionary<string, ManualResetValueTaskSource<TransportMessage>> _resultDictionary =
             new ConcurrentDictionary<string, ManualResetValueTaskSource<TransportMessage>>();
+        private readonly DiagnosticListener _diagnosticListener;
 
         private readonly IServiceExecutor _serviceExecutor;
 
@@ -38,6 +39,7 @@ namespace KissU.Surging.CPlatform.Transport.Implementation
         public TransportClient(IMessageSender messageSender, IMessageListener messageListener, ILogger logger,
             IServiceExecutor serviceExecutor)
         {
+            _diagnosticListener = new DiagnosticListener(DiagnosticListenerExtensions.DiagnosticListenerName);
             _messageSender = messageSender;
             _messageListener = messageListener;
             _logger = logger;
@@ -201,12 +203,10 @@ namespace KissU.Surging.CPlatform.Transport.Implementation
         {
             if (!AppConfig.ServerOptions.DisableDiagnostic)
             {
-                var diagnosticListener = new DiagnosticListener(DiagnosticListenerExtensions.DiagnosticListenerName);
                 var remoteInvokeMessage = message.GetContent<RemoteInvokeMessage>();
                 remoteInvokeMessage.Attachments.TryGetValue("TraceId", out var traceId);
-                diagnosticListener.WriteTransportBefore(TransportType.Rpc, new TransportEventData(
-                    new DiagnosticMessage
-                    {
+                _diagnosticListener.WriteTransportBefore(TransportType.Rpc, new TransportEventData(new DiagnosticMessage
+                {
                         Content = message.Content,
                         ContentType = message.ContentType,
                         Id = message.Id,
@@ -230,9 +230,8 @@ namespace KissU.Surging.CPlatform.Transport.Implementation
         {
             if (!AppConfig.ServerOptions.DisableDiagnostic)
             {
-                var diagnosticListener = new DiagnosticListener(DiagnosticListenerExtensions.DiagnosticListenerName);
                 var remoteInvokeResultMessage = message.GetContent<RemoteInvokeResultMessage>();
-                diagnosticListener.WriteTransportAfter(TransportType.Rpc, new ReceiveEventData(new DiagnosticMessage
+                _diagnosticListener.WriteTransportAfter(TransportType.Rpc, new ReceiveEventData(new DiagnosticMessage
                 {
                     Content = message.Content,
                     ContentType = message.ContentType,
@@ -249,10 +248,8 @@ namespace KissU.Surging.CPlatform.Transport.Implementation
         {
             if (!AppConfig.ServerOptions.DisableDiagnostic)
             {
-                var diagnosticListener = new DiagnosticListener(DiagnosticListenerExtensions.DiagnosticListenerName);
                 var remoteInvokeResultMessage = message.GetContent<RemoteInvokeResultMessage>();
-                diagnosticListener.WriteTransportError(TransportType.Rpc, new TransportErrorEventData(
-                    new DiagnosticMessage
+                _diagnosticListener.WriteTransportError(TransportType.Rpc, new TransportErrorEventData(new DiagnosticMessage
                     {
                         Content = message.Content,
                         ContentType = message.ContentType,

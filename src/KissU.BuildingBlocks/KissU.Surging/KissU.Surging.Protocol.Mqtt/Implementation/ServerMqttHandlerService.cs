@@ -23,6 +23,7 @@ namespace KissU.Surging.Protocol.Mqtt.Implementation
         private readonly IChannelService _channelService;
         private readonly ILogger _logger;
         private readonly IMqttBehaviorProvider _mqttBehaviorProvider;
+        private readonly DiagnosticListener _diagnosticListener;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ServerMqttHandlerService" /> class.
@@ -36,6 +37,7 @@ namespace KissU.Surging.Protocol.Mqtt.Implementation
             _logger = logger;
             _channelService = channelService;
             _mqttBehaviorProvider = mqttBehaviorProvider;
+            _diagnosticListener = new DiagnosticListener(DiagnosticListenerExtensions.DiagnosticListenerName);
         }
 
         /// <summary>
@@ -311,10 +313,9 @@ namespace KissU.Surging.Protocol.Mqtt.Implementation
         {
             if (!AppConfig.ServerOptions.DisableDiagnostic)
             {
-                var diagnosticListener = new DiagnosticListener(DiagnosticListenerExtensions.DiagnosticListenerName);
                 var remoteInvokeMessage = message.GetContent<RemoteInvokeMessage>();
-                diagnosticListener.WriteTransportBefore(TransportType.Mqtt, new TransportEventData(new DiagnosticMessage
-                    {
+                _diagnosticListener.WriteTransportBefore(TransportType.Mqtt, new TransportEventData(new DiagnosticMessage
+                {
                         Content = message.Content,
                         ContentType = message.ContentType,
                         Id = message.Id,
@@ -328,8 +329,7 @@ namespace KissU.Surging.Protocol.Mqtt.Implementation
         {
             if (!AppConfig.ServerOptions.DisableDiagnostic)
             {
-                var diagnosticListener = new DiagnosticListener(DiagnosticListenerExtensions.DiagnosticListenerName);
-                diagnosticListener.WriteTransportAfter(TransportType.Mqtt, new ReceiveEventData(new DiagnosticMessage
+                _diagnosticListener.WriteTransportAfter(TransportType.Mqtt, new ReceiveEventData(new DiagnosticMessage
                 {
                     Content = message.Content,
                     ContentType = message.ContentType,

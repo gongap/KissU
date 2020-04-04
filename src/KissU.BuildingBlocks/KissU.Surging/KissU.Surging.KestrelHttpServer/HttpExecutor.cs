@@ -45,6 +45,7 @@ namespace KissU.Surging.KestrelHttpServer
             ILogger<HttpExecutor> logger, CPlatformContainer serviceProvider,
             IServiceProxyProvider serviceProxyProvider, ITypeConvertibleService typeConvertibleService)
         {
+            _diagnosticListener = new DiagnosticListener(DiagnosticListenerExtensions.DiagnosticListenerName);
             _serviceEntryLocate = serviceEntryLocate;
             _logger = logger;
             _serviceProvider = serviceProvider;
@@ -119,6 +120,7 @@ namespace KissU.Surging.KestrelHttpServer
 
         private readonly ConcurrentDictionary<string, ValueTuple<FastInvokeHandler, object, MethodInfo>> _concurrent =
             new ConcurrentDictionary<string, ValueTuple<FastInvokeHandler, object, MethodInfo>>();
+        private readonly DiagnosticListener _diagnosticListener;
 
         #endregion Field
 
@@ -228,10 +230,9 @@ namespace KissU.Surging.KestrelHttpServer
             if (!AppConfig.ServerOptions.DisableDiagnostic)
             {
                 RpcContext.GetContext().SetAttachment("TraceId", message.Id);
-                var diagnosticListener = new DiagnosticListener(DiagnosticListenerExtensions.DiagnosticListenerName);
                 var remoteInvokeMessage = message.GetContent<HttpRequestMessage>();
-                diagnosticListener.WriteTransportBefore(TransportType.Rest, new TransportEventData(new DiagnosticMessage
-                    {
+                _diagnosticListener.WriteTransportBefore(TransportType.Rest, new TransportEventData(new DiagnosticMessage
+                {
                         Content = message.Content,
                         ContentType = message.ContentType,
                         Id = message.Id,

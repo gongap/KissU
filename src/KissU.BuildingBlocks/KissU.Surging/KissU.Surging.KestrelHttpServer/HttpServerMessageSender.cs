@@ -21,6 +21,7 @@ namespace KissU.Surging.KestrelHttpServer
     {
         private readonly HttpContext _context;
         private readonly ISerializer<string> _serializer;
+        private readonly DiagnosticListener _diagnosticListener;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HttpServerMessageSender" /> class.
@@ -31,6 +32,7 @@ namespace KissU.Surging.KestrelHttpServer
         {
             _serializer = serializer;
             _context = httpContext;
+            _diagnosticListener = new DiagnosticListener(DiagnosticListenerExtensions.DiagnosticListenerName);
         }
 
         /// <summary>
@@ -79,8 +81,7 @@ namespace KissU.Surging.KestrelHttpServer
                 var remoteInvokeResultMessage = message.GetContent<HttpResultMessage>();
                 if (remoteInvokeResultMessage.IsSucceed)
                 {
-                    diagnosticListener.WriteTransportAfter(TransportType.Rest, new ReceiveEventData(
-                        new DiagnosticMessage
+                    _diagnosticListener.WriteTransportAfter(TransportType.Rest, new ReceiveEventData(new DiagnosticMessage
                         {
                             Content = message.Content,
                             ContentType = message.ContentType,
@@ -89,9 +90,8 @@ namespace KissU.Surging.KestrelHttpServer
                 }
                 else
                 {
-                    diagnosticListener.WriteTransportError(TransportType.Rest, new TransportErrorEventData(
-                        new DiagnosticMessage
-                        {
+                    _diagnosticListener.WriteTransportError(TransportType.Rest, new TransportErrorEventData(new DiagnosticMessage
+                    {
                             Content = message.Content,
                             ContentType = message.ContentType,
                             Id = message.Id

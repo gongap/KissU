@@ -40,6 +40,7 @@ namespace KissU.Surging.KestrelHttpServer
         private readonly IModuleProvider _moduleProvider;
         private readonly ISerializer<string> _serializer;
         private readonly IServiceRouteProvider _serviceRouteProvider;
+        private readonly DiagnosticListener _diagnosticListener;
         private IWebHost _host;
         private bool _isCompleted;
 
@@ -65,6 +66,7 @@ namespace KissU.Surging.KestrelHttpServer
             _moduleProvider = moduleProvider;
             _container = container;
             _serviceRouteProvider = serviceRouteProvider;
+            _diagnosticListener = new DiagnosticListener(DiagnosticListenerExtensions.DiagnosticListenerName);
         }
 
         /// <summary>
@@ -182,8 +184,7 @@ namespace KissU.Surging.KestrelHttpServer
 
         private void WirteDiagnosticError(string messageId, Exception ex)
         {
-            var diagnosticListener = new DiagnosticListener(DiagnosticListenerExtensions.DiagnosticListenerName);
-            diagnosticListener.WriteTransportError(TransportType.Rest, new TransportErrorEventData(new DiagnosticMessage
+            _diagnosticListener.WriteTransportError(CPlatform.Diagnostics.TransportType.Rest, new TransportErrorEventData(new DiagnosticMessage
             {
                 Id = messageId
             }, ex));

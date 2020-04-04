@@ -44,7 +44,8 @@ namespace KissU.Surging.Protocol.Mqtt
         {
             _logger = logger;
             _channelService = channelService;
-            _mqttBehaviorProvider = mqttBehaviorProvider;
+            _mqttBehaviorProvider = mqttBehaviorProvider; 
+            _diagnosticListener = new DiagnosticListener(DiagnosticListenerExtensions.DiagnosticListenerName);
         }
 
         #endregion
@@ -191,9 +192,8 @@ namespace KissU.Surging.Protocol.Mqtt
             {
                 var diagnosticListener = new DiagnosticListener(DiagnosticListenerExtensions.DiagnosticListenerName);
                 var remoteInvokeResultMessage = message.GetContent<RemoteInvokeResultMessage>();
-                diagnosticListener.WriteTransportError(TransportType.Mqtt, new TransportErrorEventData(
-                    new DiagnosticMessage
-                    {
+                _diagnosticListener.WriteTransportError(TransportType.Mqtt, new TransportErrorEventData(new DiagnosticMessage
+                {
                         Content = message.Content,
                         ContentType = message.ContentType,
                         Id = message.Id
@@ -273,6 +273,7 @@ namespace KissU.Surging.Protocol.Mqtt
         private IChannel _channel;
         private readonly IChannelService _channelService;
         private readonly IMqttBehaviorProvider _mqttBehaviorProvider;
+        private readonly DiagnosticListener _diagnosticListener;
 
         #endregion Field
     }
