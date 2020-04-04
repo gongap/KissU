@@ -39,7 +39,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base
         /// 请求
         /// </summary>
         /// <param name="param">请求参数</param>
-        /// <returns>Task&lt;AlipayResult&gt;.</returns>
         protected async Task<AlipayResult> Request(TRequest param)
         {
             var config = await ConfigProvider.GetConfigAsync();
@@ -52,8 +51,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base
         /// <summary>
         /// 验证
         /// </summary>
-        /// <param name="config">The configuration.</param>
-        /// <param name="param">The parameter.</param>
         protected void Validate(AlipayConfig config, TRequest param)
         {
             config.CheckNull(nameof(config));
@@ -87,7 +84,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base
         /// <summary>
         /// 获取请求方法
         /// </summary>
-        /// <returns>System.String.</returns>
         protected abstract string GetMethod();
 
         /// <summary>
@@ -111,9 +107,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base
         /// <summary>
         /// 请求结果
         /// </summary>
-        /// <param name="config">The configuration.</param>
-        /// <param name="builder">The builder.</param>
-        /// <returns>Task&lt;AlipayResult&gt;.</returns>
         protected virtual async Task<AlipayResult> RequstResult(AlipayConfig config, AlipayParameterBuilder builder)
         {
             var response = await SendRequest(config, builder);
@@ -125,9 +118,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base
         /// <summary>
         /// 发送请求
         /// </summary>
-        /// <param name="config">The configuration.</param>
-        /// <param name="builder">The builder.</param>
-        /// <returns>Task&lt;System.String&gt;.</returns>
         protected virtual async Task<string> SendRequest(AlipayConfig config, AlipayParameterBuilder builder)
         {
             if (IsSend == false)
@@ -141,9 +131,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base
         /// <summary>
         /// 写日志
         /// </summary>
-        /// <param name="config">The configuration.</param>
-        /// <param name="builder">The builder.</param>
-        /// <param name="result">The result.</param>
         protected void WriteLog(AlipayConfig config, AlipayParameterBuilder builder, AlipayResult result)
         {
             var log = GetLog();
@@ -170,9 +157,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base
         /// <summary>
         /// 写日志
         /// </summary>
-        /// <param name="config">The configuration.</param>
-        /// <param name="builder">The builder.</param>
-        /// <param name="content">The content.</param>
         protected void WriteLog(AlipayConfig config, AlipayParameterBuilder builder, string content)
         {
             var log = GetLog();

@@ -22,7 +22,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Parameters
         /// <summary>
         /// 初始化
         /// </summary>
-        /// <param name="param">The parameter.</param>
         public void Init(WechatRefundRequest param)
         {
             param.CheckNull(nameof(param));
@@ -42,7 +41,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Parameters
         /// 设置退款金额
         /// </summary>
         /// <param name="refundFee">退款金额, 单位: 元</param>
-        /// <returns>WechatpayRefundParameterBuilder.</returns>
         public WechatpayRefundParameterBuilder RefundFee(decimal refundFee)
         {
             Add("refund_fee", Convert.ToInt(refundFee * 100));
@@ -53,7 +51,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Parameters
         /// 设置微信订单号
         /// </summary>
         /// <param name="transactionId">微信订单号</param>
-        /// <returns>WechatpayRefundParameterBuilder.</returns>
         public WechatpayRefundParameterBuilder TransactionId(string transactionId)
         {
             Add("transaction_id", transactionId);
@@ -64,7 +61,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Parameters
         /// 设置商户退款单号
         /// </summary>
         /// <param name="refundId">商户退款单号</param>
-        /// <returns>WechatpayRefundParameterBuilder.</returns>
         public WechatpayRefundParameterBuilder RefundId(string refundId)
         {
             Add("out_refund_no", refundId);
@@ -75,7 +71,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Parameters
         /// 设置退款原因
         /// </summary>
         /// <param name="description">退款原因</param>
-        /// <returns>WechatpayRefundParameterBuilder.</returns>
         public WechatpayRefundParameterBuilder Description(string description)
         {
             Add("refund_desc", description);

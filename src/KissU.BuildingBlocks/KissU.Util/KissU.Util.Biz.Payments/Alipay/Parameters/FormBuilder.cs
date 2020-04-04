@@ -41,7 +41,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Parameters
         /// <param name="name">属性名</param>
         /// <param name="value">属性值</param>
         /// <param name="replaceExisting">是否替换已存在的属性</param>
-        /// <returns>FormBuilder.</returns>
         public FormBuilder Attribute(string name, string value, bool replaceExisting = false)
         {
             _builder.MergeAttribute(name, value.SafeString(), replaceExisting);
@@ -53,7 +52,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Parameters
         /// </summary>
         /// <param name="name">属性名</param>
         /// <param name="value">属性值</param>
-        /// <returns>FormBuilder.</returns>
         public FormBuilder AddAttribute(string name, string value)
         {
             if (string.IsNullOrWhiteSpace(value))
@@ -67,7 +65,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Parameters
         /// </summary>
         /// <param name="name">属性名</param>
         /// <param name="value">属性值</param>
-        /// <returns>FormBuilder.</returns>
         public FormBuilder AddInput(string name, string value)
         {
             if (string.IsNullOrWhiteSpace(value))
@@ -83,7 +80,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Parameters
         /// 添加参数生成器
         /// </summary>
         /// <param name="builder">参数生成器</param>
-        /// <returns>FormBuilder.</returns>
         public FormBuilder AddParam(AlipayParameterBuilder builder)
         {
             builder.CheckNull(nameof(builder));
@@ -137,7 +133,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Parameters
         /// <summary>
         /// 获取结果
         /// </summary>
-        /// <returns>System.String.</returns>
         public string Result()
         {
             using (var writer = new StringWriter())
@@ -166,7 +161,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Parameters
         /// <summary>
         /// 获取Html结果
         /// </summary>
-        /// <returns>A <see cref="System.String" /> that represents this instance.</returns>
         public override string ToString()
         {
             return Result();

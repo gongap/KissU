@@ -72,9 +72,7 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base
         /// <summary>
         /// 获取参数
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         /// <param name="name">参数名</param>
-        /// <returns>T.</returns>
         public T GetParam<T>(string name)
         {
             return Convert.To<T>(GetParam(name));
@@ -84,7 +82,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base
         /// 获取参数
         /// </summary>
         /// <param name="name">参数名</param>
-        /// <returns>System.String.</returns>
         public string GetParam(string name)
         {
             Init();
@@ -142,7 +139,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base
         /// <summary>
         /// 获取日志标题
         /// </summary>
-        /// <returns>System.String.</returns>
         protected virtual string GetCaption()
         {
             return string.Empty;
@@ -151,7 +147,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base
         /// <summary>
         /// 获取参数集合
         /// </summary>
-        /// <returns>IDictionary&lt;System.String, System.String&gt;.</returns>
         public IDictionary<string, string> GetParams()
         {
             Init();
@@ -161,7 +156,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base
         /// <summary>
         /// 验证
         /// </summary>
-        /// <returns>Task&lt;ValidationResultCollection&gt;.</returns>
         public async Task<ValidationResultCollection> ValidateAsync()
         {
             Init();
@@ -195,7 +189,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base
         /// <summary>
         /// 验证
         /// </summary>
-        /// <returns>ValidationResultCollection.</returns>
         protected virtual ValidationResultCollection Validate()
         {
             return ValidationResultCollection.Success;

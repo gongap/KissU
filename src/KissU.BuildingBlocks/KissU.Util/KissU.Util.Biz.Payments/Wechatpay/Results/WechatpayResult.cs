@@ -108,7 +108,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// <summary>
         /// 获取日志操作
         /// </summary>
-        /// <returns>ILog.</returns>
         protected ILog GetLog()
         {
             try
@@ -125,7 +124,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// 获取参数
         /// </summary>
         /// <param name="name">xml节点名称</param>
-        /// <returns>System.String.</returns>
         public string GetParam(string name)
         {
             return _builder.GetValue(name).SafeString();
@@ -134,7 +132,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// <summary>
         /// 获取返回状态码
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetReturnCode()
         {
             return GetParam(WechatpayConst.ReturnCode);
@@ -143,7 +140,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// <summary>
         /// 获取业务结果代码
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetResultCode()
         {
             return GetParam(WechatpayConst.ResultCode);
@@ -152,7 +148,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// <summary>
         /// 获取返回消息
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetReturnMessage()
         {
             return GetParam(WechatpayConst.ReturnMessage);
@@ -161,7 +156,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// <summary>
         /// 获取应用标识
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetAppId()
         {
             return GetParam(WechatpayConst.AppId);
@@ -170,7 +164,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// <summary>
         /// 获取商户号
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetMerchantId()
         {
             return GetParam(WechatpayConst.MerchantId);
@@ -179,7 +172,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// <summary>
         /// 获取随机字符串
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetNonce()
         {
             return GetParam("nonce_str");
@@ -188,7 +180,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// <summary>
         /// 获取预支付标识
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetPrepayId()
         {
             return GetParam("prepay_id");
@@ -197,7 +188,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// <summary>
         /// 获取微信退款单号
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetRefundId()
         {
             return GetParam("refund_id");
@@ -206,7 +196,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// <summary>
         /// 获取交易类型
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetTradeType()
         {
             return GetParam(WechatpayConst.TradeType);
@@ -215,25 +204,31 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// <summary>
         /// 获取错误码
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetErrorCode()
         {
-            return GetParam(WechatpayConst.ErrorCode);
+            var result = GetParam("err_code");
+            if (string.IsNullOrWhiteSpace(result) == false)
+                return result;
+            return GetParam("error_code");
         }
 
         /// <summary>
         /// 获取错误码和描述
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetErrorCodeDescription()
         {
-            return GetParam(WechatpayConst.ErrorCodeDescription);
+            var result = GetParam(WechatpayConst.ErrorCodeDescription);
+            if (string.IsNullOrWhiteSpace(result) == false)
+                return result;
+            result = GetParam("return_msg");
+            if (string.IsNullOrWhiteSpace(result) == false)
+                return result;
+            return GetErrorCode();
         }
 
         /// <summary>
         /// 获取签名
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetSign()
         {
             return _sign;
@@ -242,7 +237,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// <summary>
         /// 获取参数列表
         /// </summary>
-        /// <returns>IDictionary&lt;System.String, System.String&gt;.</returns>
         public IDictionary<string, string> GetParams()
         {
             var builder = new ParameterBuilder(_builder);
@@ -253,7 +247,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// <summary>
         /// 验证
         /// </summary>
-        /// <returns>Task&lt;ValidationResultCollection&gt;.</returns>
         public async Task<ValidationResultCollection> ValidateAsync()
         {
             if (GetReturnCode() != WechatpayConst.Success || GetResultCode() != WechatpayConst.Success)
@@ -267,7 +260,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// <summary>
         /// 验证签名
         /// </summary>
-        /// <returns>Task&lt;System.Boolean&gt;.</returns>
         public async Task<bool> VerifySign()
         {
             var config = await ConfigProvider.GetConfigAsync(_builder);

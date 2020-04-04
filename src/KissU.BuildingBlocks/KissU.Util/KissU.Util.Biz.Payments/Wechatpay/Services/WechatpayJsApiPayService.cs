@@ -29,7 +29,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services
         /// 支付
         /// </summary>
         /// <param name="request">支付参数</param>
-        /// <returns>Task&lt;PayResult&gt;.</returns>
         public async Task<PayResult> PayAsync(WechatpayJsApiPayRequest request)
         {
             return await PayAsync(request.ToParam());
@@ -38,7 +37,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services
         /// <summary>
         /// 获取交易类型
         /// </summary>
-        /// <returns>System.String.</returns>
         protected override string GetTradeType()
         {
             return "JSAPI";
@@ -48,7 +46,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services
         /// 验证参数
         /// </summary>
         /// <param name="param">支付参数</param>
-        /// <exception cref="Warning">必须设置OpenId</exception>
         protected override void ValidateParam(PayParam param)
         {
             if (param.OpenId.IsEmpty())
@@ -69,7 +66,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services
         /// 获取结果
         /// </summary>
         /// <param name="result">支付结果</param>
-        /// <returns>System.String.</returns>
         protected override string GetResult(WechatpayResult result)
         {
             return new WechatpayParameterBuilder(result.Config)

@@ -18,8 +18,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Parameters.Requests
         /// <summary>
         /// 验证
         /// </summary>
-        /// <returns>ValidationResultCollection.</returns>
-        /// <exception cref="Warning"></exception>
         public ValidationResultCollection Validate()
         {
             if (OrderId.IsEmpty())

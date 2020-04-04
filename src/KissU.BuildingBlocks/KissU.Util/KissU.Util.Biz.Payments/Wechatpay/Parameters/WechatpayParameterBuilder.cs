@@ -52,7 +52,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Parameters
         /// <summary>
         /// 初始化支付参数
         /// </summary>
-        /// <param name="param">The parameter.</param>
         public void Init(PayParam param)
         {
             param.CheckNull(nameof(param));
@@ -66,7 +65,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Parameters
         /// </summary>
         /// <param name="name">参数名</param>
         /// <param name="value">参数值</param>
-        /// <returns>WechatpayParameterBuilder.</returns>
         public WechatpayParameterBuilder Add(string name, object value)
         {
             _builder.Add(name, value);
@@ -77,7 +75,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Parameters
         /// 设置应用标识
         /// </summary>
         /// <param name="appId">应用标识</param>
-        /// <returns>WechatpayParameterBuilder.</returns>
         public WechatpayParameterBuilder AppId(string appId)
         {
             _builder.Add(WechatpayConst.AppId, appId);
@@ -88,7 +85,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Parameters
         /// 设置商户号
         /// </summary>
         /// <param name="merchantId">商户号</param>
-        /// <returns>WechatpayParameterBuilder.</returns>
         public WechatpayParameterBuilder MerchantId(string merchantId)
         {
             _builder.Add(WechatpayConst.MerchantId, merchantId);
@@ -99,7 +95,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Parameters
         /// 设置标题
         /// </summary>
         /// <param name="body">标题</param>
-        /// <returns>WechatpayParameterBuilder.</returns>
         public WechatpayParameterBuilder Body(string body)
         {
             _builder.Add(WechatpayConst.Body, body);
@@ -110,7 +105,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Parameters
         /// 设置商户订单号
         /// </summary>
         /// <param name="orderId">商户订单号</param>
-        /// <returns>WechatpayParameterBuilder.</returns>
         public WechatpayParameterBuilder OutTradeNo(string orderId)
         {
             _builder.Add(WechatpayConst.OutTradeNo, orderId);
@@ -121,7 +115,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Parameters
         /// 设置货币类型
         /// </summary>
         /// <param name="feeType">货币类型</param>
-        /// <returns>WechatpayParameterBuilder.</returns>
         public WechatpayParameterBuilder FeeType(string feeType)
         {
             _builder.Add(WechatpayConst.FeeType, feeType);
@@ -132,7 +125,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Parameters
         /// 设置总金额
         /// </summary>
         /// <param name="totalFee">总金额，单位：元</param>
-        /// <returns>WechatpayParameterBuilder.</returns>
         public WechatpayParameterBuilder TotalFee(decimal totalFee)
         {
             _builder.Add(WechatpayConst.TotalFee, Convert.ToInt(totalFee * 100));
@@ -143,7 +135,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Parameters
         /// 设置回调通知地址
         /// </summary>
         /// <param name="notifyUrl">回调通知地址</param>
-        /// <returns>WechatpayParameterBuilder.</returns>
         public WechatpayParameterBuilder NotifyUrl(string notifyUrl)
         {
             _builder.Add(WechatpayConst.NotifyUrl, GetNotifyUrl(notifyUrl));
@@ -164,7 +155,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Parameters
         /// 设置终端IP
         /// </summary>
         /// <param name="ip">终端IP</param>
-        /// <returns>WechatpayParameterBuilder.</returns>
         public WechatpayParameterBuilder SpbillCreateIp(string ip)
         {
             _builder.Add(WechatpayConst.SpbillCreateIp, ip);
@@ -175,7 +165,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Parameters
         /// 设置交易类型
         /// </summary>
         /// <param name="type">交易类型</param>
-        /// <returns>WechatpayParameterBuilder.</returns>
         public WechatpayParameterBuilder TradeType(string type)
         {
             _builder.Add(WechatpayConst.TradeType, type);
@@ -186,7 +175,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Parameters
         /// 设置签名类型
         /// </summary>
         /// <param name="type">签名类型</param>
-        /// <returns>WechatpayParameterBuilder.</returns>
         public WechatpayParameterBuilder SignType(string type)
         {
             _builder.Add(WechatpayConst.SignType, type);
@@ -197,7 +185,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Parameters
         /// 设置伙伴标识
         /// </summary>
         /// <param name="partnerId">伙伴标识</param>
-        /// <returns>WechatpayParameterBuilder.</returns>
         public WechatpayParameterBuilder PartnerId(string partnerId)
         {
             _builder.Add(WechatpayConst.PartnerId, partnerId);
@@ -208,7 +195,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Parameters
         /// 设置时间戳
         /// </summary>
         /// <param name="timestamp">时间戳</param>
-        /// <returns>WechatpayParameterBuilder.</returns>
         public WechatpayParameterBuilder Timestamp(long timestamp = 0)
         {
             _builder.Add(WechatpayConst.Timestamp, timestamp == 0 ? Time.GetUnixTimestamp() : timestamp);
@@ -219,7 +205,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Parameters
         /// 设置包
         /// </summary>
         /// <param name="package">包，默认值: "Sign=WXPay"</param>
-        /// <returns>WechatpayParameterBuilder.</returns>
         public WechatpayParameterBuilder Package(string package = "Sign=WXPay")
         {
             _builder.Add(WechatpayConst.Package, package);
@@ -230,7 +215,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Parameters
         /// 设置附加数据
         /// </summary>
         /// <param name="attach">附加数据</param>
-        /// <returns>WechatpayParameterBuilder.</returns>
         public WechatpayParameterBuilder Attach(string attach)
         {
             _builder.Add(WechatpayConst.Attach, attach);
@@ -241,7 +225,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Parameters
         /// 设置用户标识
         /// </summary>
         /// <param name="openId">用户标识</param>
-        /// <returns>WechatpayParameterBuilder.</returns>
         public WechatpayParameterBuilder OpenId(string openId)
         {
             _builder.Add(WechatpayConst.OpenId, openId);
@@ -252,7 +235,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Parameters
         /// 设置签名参数名称
         /// </summary>
         /// <param name="name">参数名称</param>
-        /// <returns>WechatpayParameterBuilder.</returns>
         public WechatpayParameterBuilder SignParamName(string name)
         {
             _signName = name;
@@ -262,7 +244,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Parameters
         /// <summary>
         /// 获取Xml结果，包含签名
         /// </summary>
-        /// <returns>System.String.</returns>
         public string ToXml()
         {
             return ToXmlDocument(GetSignBuilder()).OuterXml;
@@ -316,7 +297,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Parameters
         /// <summary>
         /// 获取签名
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetSign()
         {
             return SignManagerFactory.Create(Config, _builder).Sign();
@@ -325,7 +305,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Parameters
         /// <summary>
         /// 获取Xml结果，不包含签名
         /// </summary>
-        /// <returns>System.String.</returns>
         public string ToXmlNoContainsSign()
         {
             return ToXmlDocument(_builder).OuterXml;
@@ -334,7 +313,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Parameters
         /// <summary>
         /// 获取Json结果，包含签名
         /// </summary>
-        /// <returns>System.String.</returns>
         public string ToJson()
         {
             return GetSignBuilder().ToJson();
@@ -343,7 +321,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Parameters
         /// <summary>
         /// 输出结果
         /// </summary>
-        /// <returns>A <see cref="System.String" /> that represents this instance.</returns>
         public override string ToString()
         {
             return ToXml();

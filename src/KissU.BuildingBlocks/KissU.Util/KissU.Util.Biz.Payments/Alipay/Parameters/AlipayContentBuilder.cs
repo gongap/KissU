@@ -14,7 +14,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Parameters
         /// 初始化支付参数
         /// </summary>
         /// <param name="param">支付参数</param>
-        /// <returns>AlipayContentBuilder.</returns>
         public AlipayContentBuilder Init(PayParam param)
         {
             if (param == null)
@@ -29,7 +28,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Parameters
         /// 设置支付宝交易号
         /// </summary>
         /// <param name="tradeId">支付宝交易号</param>
-        /// <returns>AlipayContentBuilder.</returns>
         public AlipayContentBuilder TradeNo(string tradeId)
         {
             Add(AlipayConst.TradeNo, tradeId);
@@ -40,7 +38,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Parameters
         /// 设置商户订单号
         /// </summary>
         /// <param name="orderId">商户订单号</param>
-        /// <returns>AlipayContentBuilder.</returns>
         public AlipayContentBuilder OutTradeNo(string orderId)
         {
             Add(AlipayConst.OutTradeNo, orderId);
@@ -51,7 +48,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Parameters
         /// 设置场景
         /// </summary>
         /// <param name="scene">场景</param>
-        /// <returns>AlipayContentBuilder.</returns>
         public AlipayContentBuilder Scene(string scene)
         {
             Add(AlipayConst.Scene, scene);
@@ -62,7 +58,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Parameters
         /// 设置用户付款授权码
         /// </summary>
         /// <param name="code">用户付款授权码</param>
-        /// <returns>AlipayContentBuilder.</returns>
         public AlipayContentBuilder AuthCode(string code)
         {
             Add(AlipayConst.AuthCode, code);
@@ -73,7 +68,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Parameters
         /// 设置订单标题
         /// </summary>
         /// <param name="subject">订单标题</param>
-        /// <returns>AlipayContentBuilder.</returns>
         public AlipayContentBuilder Subject(string subject)
         {
             Add(AlipayConst.Subject, subject);
@@ -84,7 +78,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Parameters
         /// 设置支付超时
         /// </summary>
         /// <param name="timeout">支付超时间隔，单位：分钟</param>
-        /// <returns>AlipayContentBuilder.</returns>
         public AlipayContentBuilder TimeoutExpress(int timeout)
         {
             Add(AlipayConst.TimeoutExpress, $"{timeout}m");
@@ -95,7 +88,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Parameters
         /// 设置金额
         /// </summary>
         /// <param name="amount">支付金额</param>
-        /// <returns>AlipayContentBuilder.</returns>
         public AlipayContentBuilder TotalAmount(decimal amount)
         {
             Add(AlipayConst.TotalAmount, amount);
@@ -105,7 +97,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Parameters
         /// <summary>
         /// 输出结果
         /// </summary>
-        /// <returns>A <see cref="System.String" /> that represents this instance.</returns>
         public override string ToString()
         {
             return Result(UrlParameterFormat.Instance);

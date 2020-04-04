@@ -27,7 +27,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Services
         /// 支付
         /// </summary>
         /// <param name="request">手机网站支付参数</param>
-        /// <returns>Task&lt;System.String&gt;.</returns>
         public async Task<string> PayAsync(AlipayWapPayRequest request)
         {
             var result = await PayAsync(request.ToParam());
@@ -38,7 +37,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Services
         /// 跳转到支付宝收银台
         /// </summary>
         /// <param name="request">手机网站支付参数</param>
-        /// <returns>Task.</returns>
         public async Task RedirectAsync(AlipayWapPayRequest request)
         {
             var result = await PayAsync(request);
@@ -51,7 +49,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Services
         /// 支付
         /// </summary>
         /// <param name="param">支付参数</param>
-        /// <returns>Task&lt;PayResult&gt;.</returns>
         public override async Task<PayResult> PayAsync(PayParam param)
         {
             var config = await ConfigProvider.GetConfigAsync();
@@ -76,7 +73,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Services
         /// <summary>
         /// 获取请求方法
         /// </summary>
-        /// <returns>System.String.</returns>
         protected override string GetMethod()
         {
             return "alipay.trade.wap.pay";

@@ -47,7 +47,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Configs
         /// <summary>
         /// 获取支付网关地址
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetGatewayUrl()
         {
             return $"{GatewayUrl}?charset={Charset}";
@@ -56,7 +55,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Configs
         /// <summary>
         /// 验证
         /// </summary>
-        /// <exception cref="Warning"></exception>
         public void Validate()
         {
             var result = DataAnnotationValidation.Validate(this);

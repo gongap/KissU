@@ -27,7 +27,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services
         /// 支付
         /// </summary>
         /// <param name="request">支付参数</param>
-        /// <returns>Task&lt;PayResult&gt;.</returns>
         public async Task<PayResult> PayAsync(WechatpayAppPayRequest request)
         {
             return await PayAsync(request.ToParam());
@@ -36,7 +35,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services
         /// <summary>
         /// 获取交易类型
         /// </summary>
-        /// <returns>System.String.</returns>
         protected override string GetTradeType()
         {
             return "APP";
@@ -46,7 +44,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services
         /// 获取结果
         /// </summary>
         /// <param name="result">支付结果</param>
-        /// <returns>System.String.</returns>
         protected override string GetResult(WechatpayResult result)
         {
             return new WechatpayParameterBuilder(result.Config)

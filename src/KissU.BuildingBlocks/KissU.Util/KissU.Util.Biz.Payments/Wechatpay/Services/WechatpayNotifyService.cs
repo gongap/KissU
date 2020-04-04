@@ -45,7 +45,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services
         /// <summary>
         /// 获取参数集合
         /// </summary>
-        /// <returns>IDictionary&lt;System.String, System.String&gt;.</returns>
         public IDictionary<string, string> GetParams()
         {
             Init();
@@ -55,9 +54,7 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services
         /// <summary>
         /// 获取参数
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         /// <param name="name">参数名</param>
-        /// <returns>T.</returns>
         public T GetParam<T>(string name)
         {
             return Convert.To<T>(GetParam(name));
@@ -67,7 +64,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services
         /// 获取参数
         /// </summary>
         /// <param name="name">参数名</param>
-        /// <returns>System.String.</returns>
         public string GetParam(string name)
         {
             Init();
@@ -77,7 +73,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services
         /// <summary>
         /// 验证
         /// </summary>
-        /// <returns>Task&lt;ValidationResultCollection&gt;.</returns>
         public async Task<ValidationResultCollection> ValidateAsync()
         {
             Init();
@@ -89,7 +84,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services
         /// <summary>
         /// 返回成功消息
         /// </summary>
-        /// <returns>System.String.</returns>
         public string Success()
         {
             return Return(WechatpayConst.Success, WechatpayConst.Ok);
@@ -98,7 +92,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services
         /// <summary>
         /// 返回失败消息
         /// </summary>
-        /// <returns>System.String.</returns>
         public string Fail()
         {
             return Return(WechatpayConst.Fail, WechatpayConst.Fail);

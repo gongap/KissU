@@ -25,7 +25,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Services
         /// 撤消支付
         /// </summary>
         /// <param name="request">撤消参数</param>
-        /// <returns>Task&lt;AlipayCancelResult&gt;.</returns>
         public async Task<AlipayCancelResult> CancelAsync(AlipayCancelRequest request)
         {
             var result = await Request(request);
@@ -45,7 +44,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Services
         /// <summary>
         /// 获取请求方法
         /// </summary>
-        /// <returns>System.String.</returns>
         protected override string GetMethod()
         {
             return "alipay.trade.cancel";
@@ -54,8 +52,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Services
         /// <summary>
         /// 创建结果
         /// </summary>
-        /// <param name="result">The result.</param>
-        /// <returns>AlipayCancelResult.</returns>
         protected virtual AlipayCancelResult CreateResult(AlipayResult result)
         {
             return new AlipayCancelResult(result);

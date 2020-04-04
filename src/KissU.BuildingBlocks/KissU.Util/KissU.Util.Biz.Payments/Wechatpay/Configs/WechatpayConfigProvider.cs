@@ -26,7 +26,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Configs
         /// 获取配置
         /// </summary>
         /// <param name="parameters">参数服务</param>
-        /// <returns>Task&lt;WechatpayConfig&gt;.</returns>
         public Task<WechatpayConfig> GetConfigAsync(IParameterManager parameters = null)
         {
             return Task.FromResult(_config);

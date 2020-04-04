@@ -23,7 +23,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services.Base
         /// 支付
         /// </summary>
         /// <param name="param">支付参数</param>
-        /// <returns>Task&lt;PayResult&gt;.</returns>
         public virtual async Task<PayResult> PayAsync(PayParam param)
         {
             var result = await Request(param);
@@ -46,7 +45,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services.Base
         /// <summary>
         /// 获取交易类型
         /// </summary>
-        /// <returns>System.String.</returns>
         protected abstract string GetTradeType();
 
         /// <summary>
@@ -62,7 +60,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services.Base
         /// 获取接口地址
         /// </summary>
         /// <param name="config">支付配置</param>
-        /// <returns>System.String.</returns>
         protected override string GetUrl(WechatpayConfig config)
         {
             return config.GetOrderUrl();
@@ -72,7 +69,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services.Base
         /// 创建支付结果
         /// </summary>
         /// <param name="result">支付结果</param>
-        /// <returns>Task&lt;PayResult&gt;.</returns>
         protected virtual async Task<PayResult> CreateResult(WechatpayResult result)
         {
             var success = (await result.ValidateAsync()).IsValid;
@@ -88,7 +84,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services.Base
         /// 获取结果
         /// </summary>
         /// <param name="result">支付结果</param>
-        /// <returns>System.String.</returns>
         protected virtual string GetResult(WechatpayResult result)
         {
             return result.GetPrepayId();

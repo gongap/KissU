@@ -47,7 +47,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Services
         /// <summary>
         /// 返回成功消息
         /// </summary>
-        /// <returns>System.String.</returns>
         public string Success()
         {
             return "success";
@@ -56,7 +55,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Services
         /// <summary>
         /// 返回失败消息
         /// </summary>
-        /// <returns>System.String.</returns>
         public string Fail()
         {
             return "fail";
@@ -74,7 +72,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Services
         /// <summary>
         /// 验证
         /// </summary>
-        /// <returns>ValidationResultCollection.</returns>
         protected override ValidationResultCollection Validate()
         {
             if (Status != TradeStatus.Success)
@@ -85,7 +82,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Services
         /// <summary>
         /// 获取日志标题
         /// </summary>
-        /// <returns>System.String.</returns>
         protected override string GetCaption()
         {
             return "支付宝回调通知";

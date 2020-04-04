@@ -28,7 +28,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Services
         /// 支付
         /// </summary>
         /// <param name="request">条码支付参数</param>
-        /// <returns>Task&lt;PayResult&gt;.</returns>
         public async Task<PayResult> PayAsync(AlipayBarcodePayRequest request)
         {
             return await PayAsync(request.ToParam());
@@ -37,7 +36,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Services
         /// <summary>
         /// 获取场景
         /// </summary>
-        /// <returns>System.String.</returns>
         protected override string GetScene()
         {
             return "bar_code";
@@ -46,7 +44,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Services
         /// <summary>
         /// 获取请求方法
         /// </summary>
-        /// <returns>System.String.</returns>
         protected override string GetMethod()
         {
             return "alipay.trade.pay";
@@ -56,7 +53,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Services
         /// 验证参数
         /// </summary>
         /// <param name="param">支付参数</param>
-        /// <exception cref="Warning"></exception>
         protected override void ValidateParam(PayParam param)
         {
             if (param.AuthCode.IsEmpty())

@@ -25,7 +25,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Services
         /// 支付
         /// </summary>
         /// <param name="request">条码支付参数</param>
-        /// <returns>Task&lt;System.String&gt;.</returns>
         public async Task<string> PayAsync(AlipayPrecreateRequest request)
         {
             var result = await PayAsync(request.ToParam());
@@ -35,7 +34,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Services
         /// <summary>
         /// 获取请求方法
         /// </summary>
-        /// <returns>System.String.</returns>
         protected override string GetMethod()
         {
             return "alipay.trade.precreate";
@@ -44,8 +42,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Services
         /// <summary>
         /// 创建结果
         /// </summary>
-        /// <param name="result">The result.</param>
-        /// <returns>PayResult.</returns>
         protected override PayResult CreateResult(AlipayResult result)
         {
             return new PayResult(result.Success, result.GetTradeNo(), result.Raw)

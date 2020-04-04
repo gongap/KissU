@@ -1,4 +1,5 @@
 ﻿using System.Net.Http;
+using System.Threading.Tasks;
 using KissU.Core.Clients;
 
 namespace KissU.Util.AspNetCore.Clients
@@ -46,6 +47,15 @@ namespace KissU.Util.AspNetCore.Clients
         public IHttpRequest Delete(string url)
         {
             return new HttpRequest(HttpMethod.Delete, url);
+        }
+
+        /// <summary>
+        /// 获取流
+        /// </summary>
+        /// <param name="url">地址</param>
+        public async Task<byte[]> GetStreamAsync(string url)
+        {
+            return await new HttpRequest(HttpMethod.Get, url).GetStreamAsync();
         }
     }
 

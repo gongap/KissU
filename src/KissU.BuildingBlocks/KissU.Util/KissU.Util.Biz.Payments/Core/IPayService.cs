@@ -11,7 +11,6 @@ namespace KissU.Util.Biz.Payments.Core
         /// 支付
         /// </summary>
         /// <param name="param">支付参数</param>
-        /// <returns>Task&lt;PayResult&gt;.</returns>
         Task<PayResult> PayAsync(PayParam param);
     }
 }

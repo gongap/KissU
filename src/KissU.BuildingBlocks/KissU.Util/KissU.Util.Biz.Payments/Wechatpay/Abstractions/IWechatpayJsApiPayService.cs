@@ -13,7 +13,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Abstractions
         /// 支付
         /// </summary>
         /// <param name="request">支付参数</param>
-        /// <returns>Task&lt;PayResult&gt;.</returns>
         Task<PayResult> PayAsync(WechatpayJsApiPayRequest request);
     }
 }

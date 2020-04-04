@@ -12,14 +12,12 @@ namespace KissU.Util.Biz.Payments.Alipay.Abstractions
         /// 支付,返回表单html
         /// </summary>
         /// <param name="request">手机网站支付参数</param>
-        /// <returns>Task&lt;System.String&gt;.</returns>
         Task<string> PayAsync(AlipayWapPayRequest request);
 
         /// <summary>
         /// 跳转到支付宝收银台
         /// </summary>
         /// <param name="request">手机网站支付参数</param>
-        /// <returns>Task.</returns>
         Task RedirectAsync(AlipayWapPayRequest request);
     }
 }

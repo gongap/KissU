@@ -37,8 +37,6 @@ namespace KissU.Util.Biz.Payments.Core
         /// <summary>
         /// 验证
         /// </summary>
-        /// <returns>ValidationResultCollection.</returns>
-        /// <exception cref="Warning"></exception>
         public virtual ValidationResultCollection Validate()
         {
             ValidateMoney();
@@ -77,7 +75,6 @@ namespace KissU.Util.Biz.Payments.Core
         /// <summary>
         /// 转换为支付参数
         /// </summary>
-        /// <returns>PayParam.</returns>
         public virtual PayParam ToParam()
         {
             return this.MapTo<PayParam>();

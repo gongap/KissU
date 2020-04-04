@@ -13,7 +13,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Abstractions
         /// 退款
         /// </summary>
         /// <param name="request">退款参数</param>
-        /// <returns>Task&lt;RefundResult&gt;.</returns>
         Task<RefundResult> RefundAsync(WechatRefundRequest request);
     }
 }

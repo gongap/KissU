@@ -24,7 +24,7 @@ namespace KissU.Util.AspNetCore.Helpers
     /// <summary>
     /// Web操作
     /// </summary>
-    public static partial class Web
+    public static class Web
     {
         #region 静态构造方法
 

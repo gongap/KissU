@@ -30,7 +30,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Services
         /// <summary>
         /// 获取日志标题
         /// </summary>
-        /// <returns>System.String.</returns>
         protected override string GetCaption()
         {
             return "支付宝返回";

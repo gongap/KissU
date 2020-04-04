@@ -10,7 +10,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Configs
         /// <summary>
         /// 获取配置
         /// </summary>
-        /// <returns>Task&lt;AlipayConfig&gt;.</returns>
         Task<AlipayConfig> GetConfigAsync();
     }
 }

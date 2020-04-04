@@ -13,7 +13,7 @@ namespace KissU.Util.Biz.Payments.Alipay.Enums
         [Description("交易未支付，触发关闭交易，无退款")] Close,
 
         /// <summary>
-        /// The refund
+        /// 交易已支付，触发交易退款
         /// </summary>
         [Description("交易已支付，触发交易退款")] Refund,
 

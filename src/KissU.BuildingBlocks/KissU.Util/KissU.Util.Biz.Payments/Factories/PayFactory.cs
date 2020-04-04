@@ -40,8 +40,6 @@ namespace KissU.Util.Biz.Payments.Factories
         /// 创建支付服务
         /// </summary>
         /// <param name="way">支付方式</param>
-        /// <returns>IPayService.</returns>
-        /// <exception cref="NotImplementedException"></exception>
         public IPayService CreatePayService(PayWay way)
         {
             switch (way)
@@ -72,7 +70,6 @@ namespace KissU.Util.Biz.Payments.Factories
         /// <summary>
         /// 创建支付宝回调通知服务
         /// </summary>
-        /// <returns>IAlipayNotifyService.</returns>
         public IAlipayNotifyService CreateAlipayNotifyService()
         {
             return new AlipayNotifyService(_alipayConfigProvider);
@@ -81,7 +78,6 @@ namespace KissU.Util.Biz.Payments.Factories
         /// <summary>
         /// 创建支付宝返回服务
         /// </summary>
-        /// <returns>IAlipayReturnService.</returns>
         public IAlipayReturnService CreateAlipayReturnService()
         {
             return new AlipayReturnService(_alipayConfigProvider);
@@ -90,16 +86,22 @@ namespace KissU.Util.Biz.Payments.Factories
         /// <summary>
         /// 创建支付宝交易撤消服务
         /// </summary>
-        /// <returns>IAlipayCancelService.</returns>
         public IAlipayCancelService CreateAlipayCancelService()
         {
             return new AlipayCancelService(_alipayConfigProvider);
         }
 
         /// <summary>
+        /// 创建支付宝下载对账单服务
+        /// </summary>
+        public IAlipayDownloadBillService CreateAlipayDownloadBillService()
+        {
+            return new AlipayDownloadBillService(_alipayConfigProvider);
+        }
+
+        /// <summary>
         /// 创建支付宝条码支付服务
         /// </summary>
-        /// <returns>IAlipayBarcodePayService.</returns>
         public IAlipayBarcodePayService CreateAlipayBarcodePayService()
         {
             return new AlipayBarcodePayService(_alipayConfigProvider);
@@ -108,7 +110,6 @@ namespace KissU.Util.Biz.Payments.Factories
         /// <summary>
         /// 创建支付宝二维码支付服务
         /// </summary>
-        /// <returns>IAlipayQrCodePayService.</returns>
         public IAlipayQrCodePayService CreateAlipayQrCodePayService()
         {
             return new AlipayQrCodePayService(_alipayConfigProvider);
@@ -117,7 +118,6 @@ namespace KissU.Util.Biz.Payments.Factories
         /// <summary>
         /// 创建支付宝电脑网站支付服务
         /// </summary>
-        /// <returns>IAlipayPagePayService.</returns>
         public IAlipayPagePayService CreateAlipayPagePayService()
         {
             return new AlipayPagePayService(_alipayConfigProvider);
@@ -126,7 +126,6 @@ namespace KissU.Util.Biz.Payments.Factories
         /// <summary>
         /// 创建支付宝手机网站支付服务
         /// </summary>
-        /// <returns>IAlipayWapPayService.</returns>
         public IAlipayWapPayService CreateAlipayWapPayService()
         {
             return new AlipayWapPayService(_alipayConfigProvider);
@@ -135,7 +134,6 @@ namespace KissU.Util.Biz.Payments.Factories
         /// <summary>
         /// 创建支付宝App支付服务
         /// </summary>
-        /// <returns>IAlipayAppPayService.</returns>
         public IAlipayAppPayService CreateAlipayAppPayService()
         {
             return new AlipayAppPayService(_alipayConfigProvider);
@@ -144,7 +142,6 @@ namespace KissU.Util.Biz.Payments.Factories
         /// <summary>
         /// 创建微信回调通知服务
         /// </summary>
-        /// <returns>IWechatpayNotifyService.</returns>
         public IWechatpayNotifyService CreateWechatpayNotifyService()
         {
             return new WechatpayNotifyService(_wechatpayConfigProvider);
@@ -153,7 +150,6 @@ namespace KissU.Util.Biz.Payments.Factories
         /// <summary>
         /// 创建微信退款服务
         /// </summary>
-        /// <returns>IWechatpayRefundService.</returns>
         public IWechatpayRefundService CreateWechatpayRefundService()
         {
             return new WechatpayRefundService(_wechatpayConfigProvider);
@@ -162,16 +158,22 @@ namespace KissU.Util.Biz.Payments.Factories
         /// <summary>
         /// 创建微信关闭订单服务
         /// </summary>
-        /// <returns>IWechatpayCloseOrderService.</returns>
         public IWechatpayCloseOrderService CreateWechatpayCloseOrderService()
         {
             return new WechatpayCloseOrderService(_wechatpayConfigProvider);
         }
 
         /// <summary>
+        /// 创建微信下载对账单服务
+        /// </summary>
+        public IWechatpayDownloadBillService CreateWechatpayDownloadBillService()
+        {
+            return new WechatpayDownloadBillService(_wechatpayConfigProvider);
+        }
+
+        /// <summary>
         /// 创建微信App支付服务
         /// </summary>
-        /// <returns>IWechatpayAppPayService.</returns>
         public IWechatpayAppPayService CreateWechatpayAppPayService()
         {
             return new WechatpayAppPayService(_wechatpayConfigProvider);
@@ -180,7 +182,6 @@ namespace KissU.Util.Biz.Payments.Factories
         /// <summary>
         /// 创建微信小程序支付服务
         /// </summary>
-        /// <returns>IWechatpayMiniProgramPayService.</returns>
         public IWechatpayMiniProgramPayService CreateWechatpayMiniProgramPayService()
         {
             return new WechatpayMiniProgramPayService(_wechatpayConfigProvider);
@@ -189,7 +190,6 @@ namespace KissU.Util.Biz.Payments.Factories
         /// <summary>
         /// 创建微信JsApi支付服务
         /// </summary>
-        /// <returns>IWechatpayJsApiPayService.</returns>
         public IWechatpayJsApiPayService CreateWechatpayJsApiPayService()
         {
             return new WechatpayJsApiPayService(_wechatpayConfigProvider);
@@ -198,7 +198,6 @@ namespace KissU.Util.Biz.Payments.Factories
         /// <summary>
         /// 创建微信扫码支付服务
         /// </summary>
-        /// <returns>IWechatpayNativePayService.</returns>
         public IWechatpayNativePayService CreateWechatpayNativePayService()
         {
             return new WechatpayNativePayService(_wechatpayConfigProvider);

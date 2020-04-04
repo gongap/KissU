@@ -13,7 +13,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Abstractions
         /// 撤消支付
         /// </summary>
         /// <param name="request">撤消参数</param>
-        /// <returns>Task&lt;AlipayCancelResult&gt;.</returns>
         Task<AlipayCancelResult> CancelAsync(AlipayCancelRequest request);
     }
 }

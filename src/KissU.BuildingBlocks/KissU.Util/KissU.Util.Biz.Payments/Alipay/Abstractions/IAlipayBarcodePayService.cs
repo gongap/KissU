@@ -13,7 +13,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Abstractions
         /// 支付
         /// </summary>
         /// <param name="request">条码支付参数</param>
-        /// <returns>Task&lt;PayResult&gt;.</returns>
         Task<PayResult> PayAsync(AlipayBarcodePayRequest request);
     }
 }

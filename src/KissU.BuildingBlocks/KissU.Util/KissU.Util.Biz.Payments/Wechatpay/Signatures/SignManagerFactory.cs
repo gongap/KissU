@@ -17,8 +17,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Signatures
         /// </summary>
         /// <param name="config">微信支付配置</param>
         /// <param name="builder">参数生成器</param>
-        /// <returns>ISignManager.</returns>
-        /// <exception cref="NotImplementedException">未实现签名算法:{config.SignType.Description()}</exception>
         public static ISignManager Create(WechatpayConfig config, ParameterBuilder builder)
         {
             if (config.SignType == WechatpaySignType.Md5)

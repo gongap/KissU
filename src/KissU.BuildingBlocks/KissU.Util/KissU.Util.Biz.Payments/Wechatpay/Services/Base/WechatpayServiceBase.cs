@@ -39,7 +39,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services.Base
         /// 请求
         /// </summary>
         /// <param name="param">请求参数</param>
-        /// <returns>Task&lt;WechatpayResult&gt;.</returns>
         protected virtual async Task<WechatpayResult> Request(TRequest param)
         {
             var config = await ConfigProvider.GetConfigAsync();
@@ -52,8 +51,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services.Base
         /// <summary>
         /// 验证
         /// </summary>
-        /// <param name="config">The configuration.</param>
-        /// <param name="param">The parameter.</param>
         protected void Validate(WechatpayConfig config, TRequest param)
         {
             config.CheckNull(nameof(config));
@@ -81,9 +78,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services.Base
         /// <summary>
         /// 请求结果
         /// </summary>
-        /// <param name="config">The configuration.</param>
-        /// <param name="builder">The builder.</param>
-        /// <returns>Task&lt;WechatpayResult&gt;.</returns>
         protected virtual async Task<WechatpayResult> RequstResult(WechatpayConfig config,
             WechatpayParameterBuilder builder)
         {
@@ -96,9 +90,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services.Base
         /// <summary>
         /// 发送请求
         /// </summary>
-        /// <param name="config">The configuration.</param>
-        /// <param name="builder">The builder.</param>
-        /// <returns>Task&lt;System.String&gt;.</returns>
         protected virtual async Task<string> SendRequest(WechatpayConfig config, WechatpayParameterBuilder builder)
         {
             if (IsSend == false)
@@ -113,15 +104,11 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services.Base
         /// 获取接口地址
         /// </summary>
         /// <param name="config">支付配置</param>
-        /// <returns>System.String.</returns>
         protected abstract string GetUrl(WechatpayConfig config);
 
         /// <summary>
         /// 写日志
         /// </summary>
-        /// <param name="config">The configuration.</param>
-        /// <param name="builder">The builder.</param>
-        /// <param name="result">The result.</param>
         protected void WriteLog(WechatpayConfig config, WechatpayParameterBuilder builder, WechatpayResult result)
         {
             var log = GetLog();

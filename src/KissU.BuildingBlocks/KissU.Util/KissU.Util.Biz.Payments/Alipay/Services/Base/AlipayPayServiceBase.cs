@@ -23,7 +23,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base
         /// 支付
         /// </summary>
         /// <param name="param">支付参数</param>
-        /// <returns>Task&lt;PayResult&gt;.</returns>
         public virtual async Task<PayResult> PayAsync(PayParam param)
         {
             var result = await Request(param);
@@ -44,7 +43,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base
         /// <summary>
         /// 获取场景
         /// </summary>
-        /// <returns>System.String.</returns>
         protected virtual string GetScene()
         {
             return string.Empty;
@@ -53,8 +51,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Services.Base
         /// <summary>
         /// 创建结果
         /// </summary>
-        /// <param name="result">The result.</param>
-        /// <returns>PayResult.</returns>
         protected virtual PayResult CreateResult(AlipayResult result)
         {
             return new PayResult(result.Success, result.GetTradeNo(), result.Raw)

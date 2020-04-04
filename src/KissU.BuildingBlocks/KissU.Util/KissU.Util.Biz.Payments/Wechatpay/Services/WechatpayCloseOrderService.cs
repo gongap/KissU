@@ -26,7 +26,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services
         /// 关闭订单
         /// </summary>
         /// <param name="request">关闭订单参数</param>
-        /// <returns>Task&lt;WechatpayCloseOrderResult&gt;.</returns>
         public async Task<WechatpayCloseOrderResult> CloseOrderAsync(WechatpayCloseOrderRequest request)
         {
             var result = await Request(request);
@@ -48,7 +47,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services
         /// 获取接口地址
         /// </summary>
         /// <param name="config">支付配置</param>
-        /// <returns>System.String.</returns>
         protected override string GetUrl(WechatpayConfig config)
         {
             return config.GetCloseOrderUrl();
@@ -57,7 +55,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Services
         /// <summary>
         /// 创建关闭订单结果
         /// </summary>
-        /// <param name="result">请求结果</param>
         private async Task<WechatpayCloseOrderResult> CreateResult(WechatpayResult result)
         {
             var success = (await result.ValidateAsync()).IsValid;

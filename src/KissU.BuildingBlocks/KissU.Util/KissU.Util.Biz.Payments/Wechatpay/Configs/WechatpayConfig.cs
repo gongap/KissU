@@ -59,7 +59,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Configs
         /// <summary>
         /// 验证
         /// </summary>
-        /// <exception cref="Warning"></exception>
         public void Validate()
         {
             var result = DataAnnotationValidation.Validate(this);
@@ -70,7 +69,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Configs
         /// <summary>
         /// 获取统一下单地址
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetOrderUrl()
         {
             return Url.Combine(GatewayUrl, "pay/unifiedorder");
@@ -79,7 +77,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Configs
         /// <summary>
         /// 获取关闭订单地址
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetCloseOrderUrl()
         {
             return Url.Combine(GatewayUrl, "pay/closeorder");
@@ -88,10 +85,17 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Configs
         /// <summary>
         /// 获取退款地址
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetRefundUrl()
         {
             return Url.Combine(GatewayUrl, "secapi/pay/refund");
+        }
+
+        /// <summary>
+        /// 获取下载对账单地址
+        /// </summary>
+        public string GetDownloadBillUrl()
+        {
+            return Url.Combine(GatewayUrl, "pay/downloadbill");
         }
     }
 }

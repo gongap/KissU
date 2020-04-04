@@ -38,7 +38,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Signatures
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="value">值</param>
-        /// <returns>ISignManager.</returns>
         public ISignManager Add(string key, object value)
         {
             _builder.Add(key, value);
@@ -48,7 +47,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Signatures
         /// <summary>
         /// 签名
         /// </summary>
-        /// <returns>System.String.</returns>
         public string Sign()
         {
             var value = $"{_builder.Result(true)}&key={_key.GetKey()}";
@@ -59,7 +57,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Signatures
         /// 验证签名
         /// </summary>
         /// <param name="sign">签名</param>
-        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool Verify(string sign)
         {
             if (sign.IsEmpty())

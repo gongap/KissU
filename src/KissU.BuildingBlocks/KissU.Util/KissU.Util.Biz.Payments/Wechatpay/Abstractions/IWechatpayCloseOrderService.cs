@@ -13,7 +13,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Abstractions
         /// 关闭订单
         /// </summary>
         /// <param name="request">关闭订单参数</param>
-        /// <returns>Task&lt;WechatpayCloseOrderResult&gt;.</returns>
         Task<WechatpayCloseOrderResult> CloseOrderAsync(WechatpayCloseOrderRequest request);
     }
 }

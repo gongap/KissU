@@ -31,7 +31,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// </summary>
         /// <param name="key">私钥</param>
         /// <param name="response">xml响应消息</param>
-        /// <exception cref="ArgumentNullException">key</exception>
         public WechatpayRefundNotifyResult(string key, string response)
         {
             if (key.IsEmpty())
@@ -92,7 +91,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// <summary>
         /// 获取日志操作
         /// </summary>
-        /// <returns>ILog.</returns>
         protected ILog GetLog()
         {
             try
@@ -109,7 +107,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// 获取参数
         /// </summary>
         /// <param name="name">xml节点名称</param>
-        /// <returns>System.String.</returns>
         public string GetParam(string name)
         {
             return _builder.GetValue(name).SafeString();
@@ -118,7 +115,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// <summary>
         /// 获取返回状态码
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetReturnCode()
         {
             return GetParam(WechatpayConst.ReturnCode);
@@ -127,7 +123,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// <summary>
         /// 获取返回消息
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetReturnMessage()
         {
             return GetParam(WechatpayConst.ReturnMessage);
@@ -136,7 +131,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// <summary>
         /// 获取应用标识
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetAppId()
         {
             return GetParam(WechatpayConst.AppId);
@@ -145,7 +139,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// <summary>
         /// 获取商户号
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetMerchantId()
         {
             return GetParam(WechatpayConst.MerchantId);
@@ -154,7 +147,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// <summary>
         /// 获取随机字符串
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetNonce()
         {
             return GetParam("nonce_str");
@@ -163,7 +155,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// <summary>
         /// 获取加密的请求信息
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetRequestInfo()
         {
             return GetParam("req_info");
@@ -172,7 +163,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// <summary>
         /// 获取微信订单号
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetTransactionId()
         {
             return GetParam("transaction_id");
@@ -181,7 +171,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// <summary>
         /// 获取商户订单号
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetOrderId()
         {
             return GetParam("out_trade_no");
@@ -190,7 +179,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// <summary>
         /// 获取微信退款单号
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetRefundId()
         {
             return GetParam("refund_id");
@@ -199,7 +187,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// <summary>
         /// 获取商户退款单号
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetRefundNo()
         {
             return GetParam("out_refund_no");
@@ -208,7 +195,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// <summary>
         /// 获取订单金额
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetTotalFee()
         {
             return GetParam("total_fee");
@@ -217,7 +203,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// <summary>
         /// 获取应结订单金额
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetSettlementTotalFee()
         {
             return GetParam("settlement_total_fee");
@@ -226,7 +211,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// <summary>
         /// 获取申请退款金额
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetRefundFee()
         {
             return GetParam("refund_fee");
@@ -235,7 +219,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// <summary>
         /// 获取退款金额
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetSettlementRefundFee()
         {
             return GetParam("settlement_refund_fee");
@@ -244,7 +227,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// <summary>
         /// 获取退款状态
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetRefundStatus()
         {
             return GetParam("refund_status");
@@ -253,7 +235,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// <summary>
         /// 获取退款成功时间
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetSuccessTime()
         {
             return GetParam("success_time");
@@ -262,7 +243,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// <summary>
         /// 获取退款入账账户
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetRefundReceiveAccout()
         {
             return GetParam("refund_recv_accout");
@@ -271,7 +251,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// <summary>
         /// 获取退款来源账户
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetRefundAccount()
         {
             return GetParam("refund_account");
@@ -280,7 +259,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// <summary>
         /// 获取退款发起来源
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetRefundRequestSource()
         {
             return GetParam("refund_request_source");
@@ -289,7 +267,6 @@ namespace KissU.Util.Biz.Payments.Wechatpay.Results
         /// <summary>
         /// 获取参数列表
         /// </summary>
-        /// <returns>IDictionary&lt;System.String, System.String&gt;.</returns>
         public IDictionary<string, string> GetParams()
         {
             var builder = new ParameterBuilder(_builder);

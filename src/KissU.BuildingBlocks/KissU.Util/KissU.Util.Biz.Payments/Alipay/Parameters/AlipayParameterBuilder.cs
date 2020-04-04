@@ -52,7 +52,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Parameters
         /// <summary>
         /// 初始化支付参数
         /// </summary>
-        /// <param name="param">The parameter.</param>
         public void Init(PayParam param)
         {
             param.Init();
@@ -113,7 +112,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Parameters
         /// 设置应用标识
         /// </summary>
         /// <param name="appId">应用标识</param>
-        /// <returns>AlipayParameterBuilder.</returns>
         public AlipayParameterBuilder AppId(string appId)
         {
             _builder.Add(AlipayConst.AppId, appId);
@@ -124,7 +122,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Parameters
         /// 设置返回地址
         /// </summary>
         /// <param name="returnUrl">返回地址</param>
-        /// <returns>AlipayParameterBuilder.</returns>
         public AlipayParameterBuilder ReturnUrl(string returnUrl)
         {
             _builder.Add(AlipayConst.ReturnUrl, returnUrl);
@@ -135,7 +132,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Parameters
         /// 设置回调通知地址
         /// </summary>
         /// <param name="notifyUrl">回调通知地址</param>
-        /// <returns>AlipayParameterBuilder.</returns>
         public AlipayParameterBuilder NotifyUrl(string notifyUrl)
         {
             _builder.Add(AlipayConst.NotifyUrl, GetNotifyUrl(notifyUrl));
@@ -156,7 +152,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Parameters
         /// 设置请求方法
         /// </summary>
         /// <param name="method">请求方法</param>
-        /// <returns>AlipayParameterBuilder.</returns>
         public AlipayParameterBuilder Method(string method)
         {
             _builder.Add(AlipayConst.Method, method);
@@ -167,7 +162,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Parameters
         /// 获取值
         /// </summary>
         /// <param name="name">参数名</param>
-        /// <returns>System.Object.</returns>
         public object GetValue(string name)
         {
             return _builder.GetValue(name);
@@ -178,7 +172,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Parameters
         /// </summary>
         /// <param name="isConvertToSingleQuotes">是否将双引号转成单引号</param>
         /// <param name="isUrlEncode">是否Url编码</param>
-        /// <returns>IDictionary&lt;System.String, System.Object&gt;.</returns>
         public IDictionary<string, object> GetDictionary(bool isConvertToSingleQuotes = false, bool isUrlEncode = false)
         {
             return GetSignBuilder(isConvertToSingleQuotes).GetDictionary(true, isUrlEncode, Config.Charset);
@@ -209,7 +202,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Parameters
         /// 获取结果
         /// </summary>
         /// <param name="isUrlEncode">是否Url编码</param>
-        /// <returns>System.String.</returns>
         public string Result(bool isUrlEncode = false)
         {
             return GetSignBuilder().Result(true, isUrlEncode, Config.Charset);
@@ -218,7 +210,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Parameters
         /// <summary>
         /// 输出结果
         /// </summary>
-        /// <returns>A <see cref="System.String" /> that represents this instance.</returns>
         public override string ToString()
         {
             return GetSignBuilder().Result(true);

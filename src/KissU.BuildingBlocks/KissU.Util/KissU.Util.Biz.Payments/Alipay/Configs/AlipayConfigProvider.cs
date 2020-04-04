@@ -24,7 +24,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Configs
         /// <summary>
         /// 获取配置
         /// </summary>
-        /// <returns>Task&lt;AlipayConfig&gt;.</returns>
         public Task<AlipayConfig> GetConfigAsync()
         {
             return Task.FromResult(_config);

@@ -23,8 +23,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Parameters.Requests
         /// <summary>
         /// 验证
         /// </summary>
-        /// <returns>ValidationResultCollection.</returns>
-        /// <exception cref="Warning"></exception>
         public ValidationResultCollection Validate()
         {
             if (TradeId.IsEmpty() && OrderId.IsEmpty())

@@ -97,7 +97,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Results
         /// <summary>
         /// 获取字典
         /// </summary>
-        /// <returns>IDictionary&lt;System.String, System.String&gt;.</returns>
         public IDictionary<string, string> GetDictionary()
         {
             return _result;
@@ -107,7 +106,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Results
         /// 获取值
         /// </summary>
         /// <param name="key">键</param>
-        /// <returns>System.String.</returns>
         public string GetValue(string key)
         {
             if (key.IsEmpty())
@@ -119,7 +117,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Results
         /// 是否包含指定键
         /// </summary>
         /// <param name="key">键</param>
-        /// <returns><c>true</c> if the specified key has key; otherwise, <c>false</c>.</returns>
         public bool HasKey(string key)
         {
             if (key.IsEmpty())
@@ -130,7 +127,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Results
         /// <summary>
         /// 获取状态码
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetCode()
         {
             return GetValue("code");
@@ -139,7 +135,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Results
         /// <summary>
         /// 获取消息
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetMessage()
         {
             return GetValue("msg");
@@ -148,7 +143,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Results
         /// <summary>
         /// 获取支付交易号
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetTradeNo()
         {
             return GetValue(AlipayConst.TradeNo);
@@ -157,7 +151,6 @@ namespace KissU.Util.Biz.Payments.Alipay.Results
         /// <summary>
         /// 获取商户订单号
         /// </summary>
-        /// <returns>System.String.</returns>
         public string GetOutTradeNo()
         {
             return GetValue(AlipayConst.OutTradeNo);
