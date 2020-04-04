@@ -52,7 +52,7 @@ COPY "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.Stage/KissU.Surging.Stage
 COPY "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.Swagger/KissU.Surging.Swagger.csproj" "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.Swagger/KissU.Surging.Swagger.csproj"
 COPY "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.Zookeeper/KissU.Surging.Zookeeper.csproj" "KissU.BuildingBlocks/KissU.Surging/KissU.Surging.Zookeeper/KissU.Surging.Zookeeper.csproj"
 COPY "KissU.BuildingBlocks/KissU.Util/KissU.Util.Applications/KissU.Util.Applications.csproj" "KissU.BuildingBlocks/KissU.Util/KissU.Util.Applications/KissU.Util.Applications.csproj"
-COPY "KissU.BuildingBlocks/KissU.Util/KissU.Util.AspNetCore.Webs/KissU.Util.AspNetCore.Webs.csproj" "KissU.BuildingBlocks/KissU.Util/KissU.Util.AspNetCore.Webs/KissU.Util.AspNetCore.Webs.csproj"
+COPY "KissU.BuildingBlocks/KissU.Util/KissU.Util.AspNetCore.Mvc/KissU.Util.AspNetCore.Mvc.csproj" "KissU.BuildingBlocks/KissU.Util/KissU.Util.AspNetCore.Mvc/KissU.Util.AspNetCore.Mvc.csproj"
 COPY "KissU.BuildingBlocks/KissU.Util/KissU.Util.AspNetCore/KissU.Util.AspNetCore.csproj" "KissU.BuildingBlocks/KissU.Util/KissU.Util.AspNetCore/KissU.Util.AspNetCore.csproj"
 COPY "KissU.BuildingBlocks/KissU.Util/KissU.Util.Biz.Payments/KissU.Util.Biz.Payments.csproj" "KissU.BuildingBlocks/KissU.Util/KissU.Util.Biz.Payments/KissU.Util.Biz.Payments.csproj"
 COPY "KissU.BuildingBlocks/KissU.Util/KissU.Util.Biz/KissU.Util.Biz.csproj" "KissU.BuildingBlocks/KissU.Util/KissU.Util.Biz/KissU.Util.Biz.csproj"

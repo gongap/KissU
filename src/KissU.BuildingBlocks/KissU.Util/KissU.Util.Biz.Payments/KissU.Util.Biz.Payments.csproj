@@ -12,6 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="TinyCsvParser" Version="2.5.2" />
+   </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Properties\PayResource.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

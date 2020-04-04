@@ -171,7 +171,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.Serilog", "Ki
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.AspNetCore", "KissU.BuildingBlocks\KissU.Util\KissU.Util.AspNetCore\KissU.Util.AspNetCore.csproj", "{394D1435-2956-4714-B22D-6EEB14E3AE10}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.AspNetCore.Webs", "KissU.BuildingBlocks\KissU.Util\KissU.Util.AspNetCore.Webs\KissU.Util.AspNetCore.Webs.csproj", "{4987CA49-62D7-4840-B414-6264CE2526A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.AspNetCore.Mvc", "KissU.BuildingBlocks\KissU.Util\KissU.Util.AspNetCore.Mvc\KissU.Util.AspNetCore.Mvc.csproj", "{4987CA49-62D7-4840-B414-6264CE2526A4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.Configuration.Apollo", "KissU.BuildingBlocks\KissU.Surging\KissU.Surging.Configuration.Apollo\KissU.Surging.Configuration.Apollo.csproj", "{E4064CED-EBEF-44A9-B1A3-0B3BC079FC43}"
 EndProject
@@ -220,6 +220,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Services.SampleA.Host", "KissU.Services\KissU.Services.Sample\KissU.Services.SampleA.Host\KissU.Services.SampleA.Host.csproj", "{70C06AF0-5C9B-4260-A362-767CCC5C9C03}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Services.SampleB.Host", "KissU.Services\KissU.Services.Sample\KissU.Services.SampleB.Host\KissU.Services.SampleB.Host.csproj", "{9D3C1BFF-595D-47FF-93FB-C486BA3A412E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.Threading", "KissU.BuildingBlocks\KissU.Util\KissU.Util.Threading\KissU.Util.Threading.csproj", "{9A2B5FF7-CAC2-4AC1-A96E-60779C9FAD0D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -559,6 +561,10 @@ Global
 		{9D3C1BFF-595D-47FF-93FB-C486BA3A412E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D3C1BFF-595D-47FF-93FB-C486BA3A412E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D3C1BFF-595D-47FF-93FB-C486BA3A412E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A2B5FF7-CAC2-4AC1-A96E-60779C9FAD0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A2B5FF7-CAC2-4AC1-A96E-60779C9FAD0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A2B5FF7-CAC2-4AC1-A96E-60779C9FAD0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A2B5FF7-CAC2-4AC1-A96E-60779C9FAD0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -662,6 +668,7 @@ Global
 		{E6FEF199-73E0-41BC-A8AF-4B009D031D7F} = {B4367C3C-5645-40C3-953C-466D82432072}
 		{70C06AF0-5C9B-4260-A362-767CCC5C9C03} = {3ADCCA3A-5EDB-49FB-8096-4BE212E33113}
 		{9D3C1BFF-595D-47FF-93FB-C486BA3A412E} = {3ADCCA3A-5EDB-49FB-8096-4BE212E33113}
+		{9A2B5FF7-CAC2-4AC1-A96E-60779C9FAD0D} = {D4F921B5-1BBD-4F36-A1D0-DE934C035713}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}

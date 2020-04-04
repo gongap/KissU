@@ -198,6 +198,7 @@ namespace KissU.Util.Applications
             var query = CreateQuery(parameter);
             var queryable = Filter(query);
             queryable = Filter(queryable, parameter);
+
             return (await queryable.ToPagerListAsync(query.GetPager())).Convert(ToDto);
         }
 
