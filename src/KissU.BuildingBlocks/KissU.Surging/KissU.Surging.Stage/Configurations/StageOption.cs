@@ -41,6 +41,11 @@ namespace KissU.Surging.Stage.Configurations
         /// <summary>
         /// Gets or sets the API get way.
         /// </summary>
+        public AuthServerOption AuthServer { get; set; }
+
+        /// <summary>
+        /// Gets or sets the API get way.
+        /// </summary>
         public ApiGetwayOption ApiGetWay { get; set; }
 
         /// <summary>

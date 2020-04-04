@@ -14,6 +14,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Surging\KissU.Surging.KestrelHttpServer\KissU.Surging.KestrelHttpServer.csproj" />
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Surging\KissU.Surging.ProxyGenerator\KissU.Surging.ProxyGenerator.csproj" />
     <ProjectReference Include="..\KissU.Modules.Admin.Service.Contracts\KissU.Modules.Admin.Service.Contracts.csproj" />
   </ItemGroup>

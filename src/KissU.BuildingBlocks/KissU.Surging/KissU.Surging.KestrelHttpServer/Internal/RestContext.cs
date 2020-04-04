@@ -1,12 +1,16 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
+using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Microsoft.Extensions.DependencyInjection;
 using KissU.Surging.CPlatform.Utilities;
 using System.Linq;
+using System.Security.Claims;
+using KissU.Core.Security.Principals;
 using KissU.Core.Utilities;
+using KissU.Surging.CPlatform.Filters.Implementation;
 using KissU.Surging.CPlatform.Utilities;
 
 namespace KissU.Surging.KestrelHttpServer.Internal
@@ -65,7 +69,6 @@ namespace KissU.Surging.KestrelHttpServer.Internal
 
         public static RestContext GetContext()
         {
-
             return new RestContext();
         }
 
@@ -77,6 +80,48 @@ namespace KissU.Surging.KestrelHttpServer.Internal
 
         }
 
+        #region User(当前用户安全主体)
 
+        /// <summary>
+        /// 当前用户安全主体
+        /// </summary>
+        public static ClaimsPrincipal User
+        {
+            get
+            {
+                var payload = GetContext().GetAttachment("payload");
+                var principal = GetPrincipal((IDictionary<string, object>)payload);
+                return principal ?? UnauthenticatedPrincipal.Instance;
+            }
+        }
+
+        private static ClaimsPrincipal GetPrincipal(IDictionary<string, object> payload)
+        {
+            var claims = new List<Claim>();
+            foreach (var item in payload) claims.Add(new Claim(item.Key, item.Value.ToString()));
+            claims.Add(new Claim(ClaimTypes.Name, claims.Where(x => x.Type == "name").Select(x => x.Value).FirstOrDefault()));
+            var identity = new ClaimsIdentity(claims, System.Enum.GetName(typeof(AuthorizationType), AuthorizationType.JWTBearer));
+            var claimsPrincipal = new ClaimsPrincipal(identity);
+            return claimsPrincipal;
+        }
+
+        #endregion
+
+        #region Identity(当前用户身份)
+
+        /// <summary>
+        /// 当前用户身份
+        /// </summary>
+        public static ClaimsIdentity Identity
+        {
+            get
+            {
+                if (User.Identity is ClaimsIdentity identity)
+                    return identity;
+                return UnauthenticatedIdentity.Instance;
+            }
+        }
+
+        #endregion
     }
 }

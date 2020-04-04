@@ -39,6 +39,9 @@
     "CertificatePassword": "${CertificatePassword}|",
     "IsCamelCaseResolver": "${IsCamelCaseResolver}|true",
     "Protocols": "Http1AndHttp2",
+    "AuthServer": {
+      "Authority": "http://localhost:9000"
+    },
     "ApiGetWay": {
       "AccessTokenExpireTimeSpan": "30",
       "AuthorizationRoutePath": "api/user/authentication",

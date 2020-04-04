@@ -20,6 +20,7 @@ using KissU.Surging.CPlatform.Messages;
 using KissU.Surging.CPlatform.Transport.Implementation;
 using KissU.Surging.CPlatform.Utilities;
 using KissU.Surging.KestrelHttpServer.Filters.Implementation;
+using KissU.Surging.KestrelHttpServer.Internal;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -83,8 +84,7 @@ namespace KissU.Surging.Stage.Filters
                             }
                             else
                             {
-                                RpcContext.GetContext().SetAttachment("payload", payload);
-                                filterContext.Context.User = GetPrincipal(payload);
+                                RestContext.GetContext().SetAttachment("payload", payload);
                             }
                         }
                         else
@@ -122,9 +122,9 @@ namespace KissU.Surging.Stage.Filters
 
                 //请求获取ids4配置信息 获取jwks_uri
                 var webClient = new WebClient();
-                var gatewayAppConfig = AppConfig.Options.ApiGetWay;
+                var authServer = AppConfig.Options.AuthServer;
                 //知道文档地址
-                var endpoint = $"{gatewayAppConfig.AuthorizationRoutePath}/.well-known/openid-configuration";
+                var endpoint = $"{authServer.Authority}/.well-known/openid-configuration";
 
                 var json = webClient.DownloadString(endpoint);
 
@@ -184,27 +184,6 @@ namespace KissU.Surging.Stage.Filters
             var jwtDecoder = new JwtDecoder(_jsonSerializer, _jwtValidator, _base64UrlEncoder, algorithmFactory);
             var jsonJwt = jwtDecoder.DecodeToObject(token, secret, false);
             return jsonJwt;
-        }
-
-        /// <summary>
-        /// 此方法用解码payload，并返回秘钥的信息对象
-        /// </summary>
-        /// <param name="payload">载荷</param>
-        /// <returns></returns>
-        private ClaimsPrincipal GetPrincipal(IDictionary<string, object> payload)
-        {
-            // 这里就是验证成功后要做的逻辑
-            var claims = new List<Claim>();
-            foreach (var item in payload) claims.Add(new Claim(item.Key, item.Value.ToString()));
-            // 根据验证token后获取的用户名重新在建一个声明
-            claims.Add(new Claim(ClaimTypes.Name,
-                claims.Where(x => x.Type == "name").Select(x => x.Value).FirstOrDefault()));
-            claims.Add(new Claim("application_id", "E9138A35-A4FF-460E-AC55-B743D55B9691"));
-            // 构造身份证
-            var identity = new ClaimsIdentity(claims, "JWTBearer");
-            // 将身份证放在ClaimsPrincipal里面，相当于把身份证给持有人
-            var claimsPrincipal = new ClaimsPrincipal(identity);
-            return claimsPrincipal;
         }
 
         /// <summary>

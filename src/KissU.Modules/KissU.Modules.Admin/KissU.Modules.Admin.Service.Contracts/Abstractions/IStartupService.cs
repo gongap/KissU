@@ -6,6 +6,7 @@ using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Att
 using KissU.Surging.CPlatform.Support;
 using KissU.Surging.CPlatform.Support.Attributes;
 using KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain;
+using KissU.Surging.CPlatform.Filters.Implementation;
 using KissU.Util.Applications;
 
 namespace KissU.Modules.Admin.Service.Contracts.Abstractions
@@ -26,7 +27,7 @@ namespace KissU.Modules.Admin.Service.Contracts.Abstractions
             ExecutionTimeoutInMilliseconds = 2500, BreakerRequestVolumeThreshold = 3, Injection = @"return 1;",
             RequestCacheEnabled = false)]
         [HttpGet(true)]
-        //[Authorization(AuthType = AuthorizationType.JWTBearer)]
+        [Authorization(AuthType = AuthorizationType.JWTBearer)]
         Task<AppData> GetAppDataAsync();
     }
 }

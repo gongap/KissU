@@ -49,7 +49,7 @@ namespace KissU.Services.Stage
 
             using (host.Run())
             {
-                Console.WriteLine($"Now listening on: {AppConfig.ServerOptions.Ip}:{AppConfig.ServerOptions.Port}， {DateTime.Now}。");
+                Console.WriteLine($"{AppConfig.ServerOptions.Ip}:{AppConfig.ServerOptions.Port}， {DateTime.Now}。");
             }
         }
     }

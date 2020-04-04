@@ -1,6 +1,11 @@
 ﻿using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Security.Claims;
 using System.Threading;
+using KissU.Core.Security.Principals;
+using KissU.Surging.CPlatform.Filters.Implementation;
 
 namespace KissU.Surging.CPlatform.Transport.Implementation
 {
@@ -84,5 +89,49 @@ namespace KissU.Surging.CPlatform.Transport.Implementation
         {
             rpcContextThreadLocal.Value = null;
         }
+
+        #region User(当前用户安全主体)
+
+        /// <summary>
+        /// 当前用户安全主体
+        /// </summary>
+        public static ClaimsPrincipal User
+        {
+            get
+            {
+                var payload = GetContext().GetAttachment("payload");
+                var principal = GetPrincipal((IDictionary<string, object>)payload);
+                return principal ?? UnauthenticatedPrincipal.Instance;
+            }
+        }
+
+        private static ClaimsPrincipal GetPrincipal(IDictionary<string, object> payload)
+        {
+            var claims = new List<Claim>();
+            foreach (var item in payload) claims.Add(new Claim(item.Key, item.Value.ToString()));
+            claims.Add(new Claim(ClaimTypes.Name, claims.Where(x => x.Type == "name").Select(x => x.Value).FirstOrDefault()));
+            var identity = new ClaimsIdentity(claims, System.Enum.GetName(typeof(AuthorizationType), AuthorizationType.JWTBearer));
+            var claimsPrincipal = new ClaimsPrincipal(identity);
+            return claimsPrincipal;
+        }
+
+        #endregion
+
+        #region Identity(当前用户身份)
+
+        /// <summary>
+        /// 当前用户身份
+        /// </summary>
+        public static ClaimsIdentity Identity
+        {
+            get
+            {
+                if (User.Identity is ClaimsIdentity identity)
+                    return identity;
+                return UnauthenticatedIdentity.Instance;
+            }
+        }
+
+        #endregion
     }
 }
