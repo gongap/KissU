@@ -6,8 +6,7 @@
     <Description>KissU应用框架的短信操作类库。</Description>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
-
   <ItemGroup>
-    <ProjectReference Include="..\KissU.Util.AspNetCore\KissU.Util.AspNetCore.csproj" />
+    <ProjectReference Include="..\..\KissU.Core\KissU.Core\KissU.Core.csproj" />
   </ItemGroup>
 </Project>

@@ -1,5 +1,5 @@
 ﻿using KissU.Core.Datas.Sql.Builders.Core;
-using KissU.Util.Datas.PgSql.Dapper;
+using KissU.Util.Dapper.PgSql;
 using KissU.Util.Datas.Sql.Builders.Clauses;
 using KissU.Util.Datas.Sql.Builders.Core;
 using Xunit;

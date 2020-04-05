@@ -1,7 +1,7 @@
 ﻿using KissU.Core.Datas.Sql.Matedatas;
 using KissU.Core.Helpers;
+using KissU.Util.Dapper.SqlServer;
 using KissU.Util.Datas.Sql;
-using KissU.Util.Datas.SqlServer.Dapper;
 using KissU.Util.Datas.Tests.Integration.Samples;
 using Xunit;
 

@@ -4,11 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using KissU.Core;
 using KissU.Core.Helpers;
-using KissU.Util.AspNetCore.Helpers;
 using Convert = KissU.Core.Helpers.Convert;
 
 namespace KissU.Util.Tools.Offices.Core
@@ -204,29 +201,6 @@ namespace KissU.Util.Tools.Offices.Core
             }
 
             return this;
-        }
-
-        /// <summary>
-        /// 下载
-        /// </summary>
-        /// <param name="fileName">文件名，不包括扩展名</param>
-        public async Task DownloadAsync(string fileName = "")
-        {
-            await DownloadAsync(fileName, Encoding.UTF8);
-        }
-
-        /// <summary>
-        /// 下载
-        /// </summary>
-        /// <param name="fileName">文件名，不包括扩展名</param>
-        /// <param name="encoding">字符编码</param>
-        public async Task DownloadAsync(string fileName, Encoding encoding)
-        {
-            using (var stream = new MemoryStream())
-            {
-                WriteStream(stream);
-                await Web.DownloadAsync(stream.ToArray(), GetFileName(fileName));
-            }
         }
 
         /// <summary>

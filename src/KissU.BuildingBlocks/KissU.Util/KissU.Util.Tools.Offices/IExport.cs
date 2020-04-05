@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KissU.Util.Tools.Offices
 {
@@ -108,20 +106,5 @@ namespace KissU.Util.Tools.Offices
         /// <param name="fileName">文件名，不包括扩展名</param>
         /// <returns>IExport.</returns>
         IExport Write(string directory, string fileName = "");
-
-        /// <summary>
-        /// 下载
-        /// </summary>
-        /// <param name="fileName">文件名，不包括扩展名</param>
-        /// <returns>Task.</returns>
-        Task DownloadAsync(string fileName = "");
-
-        /// <summary>
-        /// 下载
-        /// </summary>
-        /// <param name="fileName">文件名，不包括扩展名</param>
-        /// <param name="encoding">字符编码</param>
-        /// <returns>Task.</returns>
-        Task DownloadAsync(string fileName, Encoding encoding);
     }
 }

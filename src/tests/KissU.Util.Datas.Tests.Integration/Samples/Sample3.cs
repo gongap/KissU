@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using KissU.Core.Datas.Sql;
-using KissU.Util.Datas.Sql;
 
 namespace KissU.Util.Datas.Tests.Integration.Samples
 {

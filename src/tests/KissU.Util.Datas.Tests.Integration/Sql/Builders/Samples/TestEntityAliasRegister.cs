@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using KissU.Core.Datas.Sql.Builders;
 using KissU.Core.Datas.Sql.Builders.Core;
-using KissU.Util.Datas.Sql.Builders;
-using KissU.Util.Datas.Sql.Builders.Core;
 
 namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.Samples
 {

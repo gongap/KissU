@@ -4,7 +4,6 @@ using System.Linq.Expressions;
 using KissU.Core;
 using KissU.Core.Datas.Sql.Builders;
 using KissU.Core.Helpers;
-using KissU.Util.Datas.Sql.Builders;
 using KissU.Util.Datas.Tests.Integration.Samples;
 
 namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.Samples

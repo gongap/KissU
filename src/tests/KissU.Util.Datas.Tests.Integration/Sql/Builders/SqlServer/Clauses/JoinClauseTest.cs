@@ -1,9 +1,9 @@
 ﻿using KissU.Core.Datas.Queries;
 using KissU.Core.Datas.Sql.Builders.Core;
 using KissU.Core.Helpers;
+using KissU.Util.Dapper.SqlServer;
 using KissU.Util.Datas.Sql.Builders.Clauses;
 using KissU.Util.Datas.Sql.Builders.Core;
-using KissU.Util.Datas.SqlServer.Dapper;
 using KissU.Util.Datas.Tests.Integration.Samples;
 using KissU.Util.Datas.Tests.Integration.Sql.Builders.Samples;
 using Xunit;

@@ -1,8 +1,8 @@
 ﻿using System.Text;
 using System.Threading.Tasks;
 using KissU.Core;
+using KissU.Core.Clients;
 using KissU.Core.Helpers;
-using KissU.Util.AspNetCore.Helpers;
 using Convert = System.Convert;
 
 namespace KissU.Util.Tools.Sms.LuoSiMao
@@ -35,7 +35,7 @@ namespace KissU.Util.Tools.Sms.LuoSiMao
         /// <returns>Task&lt;SmsResult&gt;.</returns>
         public async Task<SmsResult> SendAsync(string mobile, string content)
         {
-            var result = await Web.Client().Post("https://sms-api.luosimao.com/v1/send.json")
+            var result = await new WebClient().Post("https://sms-api.luosimao.com/v1/send.json")
                 .Header("Authorization", await GetAuthorization())
                 .Data("mobile", mobile)
                 .Data("message", content)

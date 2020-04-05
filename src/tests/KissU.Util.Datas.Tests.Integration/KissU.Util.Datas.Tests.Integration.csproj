@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Util\KissU.Util.Dapper\KissU.Util.Dapper.csproj" />
     <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Util\KissU.Util.EntityFrameworkCore.MySql\KissU.Util.EntityFrameworkCore.MySql.csproj" />
     <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Util\KissU.Util.EntityFrameworkCore.PgSql\KissU.Util.EntityFrameworkCore.PgSql.csproj" />
     <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Util\KissU.Util.EntityFrameworkCore.SqlServer\KissU.Util.EntityFrameworkCore.SqlServer.csproj" />

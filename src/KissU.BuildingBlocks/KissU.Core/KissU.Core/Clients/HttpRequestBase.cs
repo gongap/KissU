@@ -7,12 +7,9 @@ using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
-using KissU.Core;
-using KissU.Core.Clients;
 using KissU.Core.Helpers;
-using KissU.Util.AspNetCore.Helpers;
 
-namespace KissU.Util.AspNetCore.Clients
+namespace KissU.Core.Clients
 {
     /// <summary>
     /// Http请求
@@ -464,7 +461,7 @@ namespace KissU.Util.AspNetCore.Clients
         /// <param name="client">Http客户端</param>
         protected virtual void InitHttpClient(HttpClient client)
         {
-            InitToken();
+            //InitToken();
             if (string.IsNullOrWhiteSpace(_token))
                 return;
             client.SetToken("Bearer", _token);
@@ -473,11 +470,11 @@ namespace KissU.Util.AspNetCore.Clients
         /// <summary>
         /// 初始化访问令牌
         /// </summary>
-        protected virtual void InitToken()
+        protected virtual void InitToken(string token)
         {
             if (string.IsNullOrWhiteSpace(_token) == false)
                 return;
-            _token = Web.AccessToken;
+            _token = token;
         }
 
         /// <summary>

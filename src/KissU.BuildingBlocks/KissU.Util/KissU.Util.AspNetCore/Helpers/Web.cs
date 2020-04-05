@@ -9,15 +9,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using KissU.Core;
+using KissU.Core.Clients;
 using KissU.Core.Helpers;
 using KissU.Core.Security.Principals;
-using KissU.Util.AspNetCore.Clients;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using File = KissU.Core.Helpers.File;
 using HttpRequest = Microsoft.AspNetCore.Http.HttpRequest;
-using WebClient = KissU.Util.AspNetCore.Clients.WebClient;
+using WebClient = KissU.Core.Clients.WebClient;
 
 namespace KissU.Util.AspNetCore.Helpers
 {

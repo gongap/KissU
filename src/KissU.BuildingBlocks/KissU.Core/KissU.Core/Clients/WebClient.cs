@@ -1,8 +1,7 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
-using KissU.Core.Clients;
 
-namespace KissU.Util.AspNetCore.Clients
+namespace KissU.Core.Clients
 {
     /// <summary>
     /// Web客户端

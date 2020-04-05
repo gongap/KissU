@@ -2,12 +2,10 @@
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using KissU.Core;
-using KissU.Core.Clients;
 using KissU.Core.Helpers;
 using Convert = KissU.Core.Helpers.Convert;
 
-namespace KissU.Util.AspNetCore.Clients
+namespace KissU.Core.Clients
 {
     /// <summary>
     /// Http请求

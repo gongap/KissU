@@ -2,10 +2,9 @@
 using System.Linq.Expressions;
 using KissU.Core.Datas.Sql.Builders;
 using KissU.Core.Datas.Sql.Builders.Core;
-using KissU.Util.Datas.Sql.Builders;
+using KissU.Util.Dapper.SqlServer;
 using KissU.Util.Datas.Sql.Builders.Conditions;
 using KissU.Util.Datas.Sql.Builders.Core;
-using KissU.Util.Datas.SqlServer.Dapper;
 using KissU.Util.Datas.Tests.Integration.Samples;
 using Xunit;
 
