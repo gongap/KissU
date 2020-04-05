@@ -12,6 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KissU.Util.Datas\KissU.Util.Datas.csproj" />
+    <ProjectReference Include="..\KissU.Util.EntityFrameworkCore\KissU.Util.EntityFrameworkCore.csproj" />
   </ItemGroup>
 </Project>

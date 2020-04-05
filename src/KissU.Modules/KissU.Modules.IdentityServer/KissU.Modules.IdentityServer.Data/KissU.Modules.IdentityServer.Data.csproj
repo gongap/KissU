@@ -14,7 +14,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Util\KissU.Util.Datas.SqlServer\KissU.Util.Datas.SqlServer.csproj" />
+    <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Util\KissU.Util.EntityFrameworkCore.SqlServer\KissU.Util.EntityFrameworkCore.SqlServer.csproj" />
     <ProjectReference Include="..\KissU.Modules.IdentityServer.Domain\KissU.Modules.IdentityServer.Domain.csproj" />
   </ItemGroup>
 </Project>

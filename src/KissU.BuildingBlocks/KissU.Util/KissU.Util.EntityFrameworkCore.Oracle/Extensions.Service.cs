@@ -8,7 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace KissU.Util.Datas.MySql
+namespace KissU.Util.Datas.Oracle
 {
     /// <summary>
     /// 服务扩展
@@ -43,11 +43,11 @@ namespace KissU.Util.Datas.MySql
                 services.Configure<EfConfig>(configuration);
             services.TryAddScoped<TService>(t => t.GetService<TImplementation>());
             services.TryAddScoped<IUnitOfWork>(t => t.GetService<TImplementation>());
-            services.AddSqlQuery<TImplementation, TImplementation>(config =>
-            {
-                config.DatabaseType = GetDbType<TImplementation>();
-                config.IsClearAfterExecution = efConfig.SqlQuery.IsClearAfterExecution;
-            });
+            //services.AddSqlQuery<TImplementation, TImplementation>(config =>
+            //{
+            //    config.DatabaseType = GetDbType<TImplementation>();
+            //    config.IsClearAfterExecution = efConfig.SqlQuery.IsClearAfterExecution;
+            //});
             return services;
         }
 
@@ -56,7 +56,7 @@ namespace KissU.Util.Datas.MySql
         /// </summary>
         private static DatabaseType GetDbType<TUnitOfWork>()
         {
-            return DatabaseType.MySql;
+            return DatabaseType.Oracle;
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace KissU.Util.Datas.MySql
         private static void ConfigConnection<TImplementation>(DbContextOptionsBuilder builder, string connection)
             where TImplementation : UnitOfWorkBase
         {
-            builder.UseMySql(connection);
+            builder.UseOracle(connection);
         }
 
         /// <summary>

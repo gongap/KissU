@@ -14,8 +14,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Util\KissU.Util.Datas.SqlServer\KissU.Util.Datas.SqlServer.csproj" />
-    <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Util\KissU.Util.Datas.PgSql\KissU.Util.Datas.PgSql.csproj" />
+    <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Util\KissU.Util.EntityFrameworkCore.SqlServer\KissU.Util.EntityFrameworkCore.SqlServer.csproj" />
+    <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Util\KissU.Util.EntityFrameworkCore.PgSql\KissU.Util.EntityFrameworkCore.PgSql.csproj" />
     <ProjectReference Include="..\KissU.Modules.GreatWall.Domain\KissU.Modules.GreatWall.Domain.csproj" />
   </ItemGroup>
 </Project>

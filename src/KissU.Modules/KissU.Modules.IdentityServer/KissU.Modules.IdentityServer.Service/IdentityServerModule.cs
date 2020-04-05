@@ -1,12 +1,13 @@
 ﻿using Autofac.Extensions.DependencyInjection;
+using KissU.Core.Datas.Enums;
 using KissU.Core.Module;
 using KissU.Surging.CPlatform;
-using KissU.Surging.CPlatform.Module;
 using KissU.Modules.IdentityServer.Data;
 using KissU.Modules.IdentityServer.Data.UnitOfWorks.SqlServer;
 using KissU.Modules.IdentityServer.Domain.UnitOfWorks;
 using KissU.Util.Datas.SqlServer;
 using Microsoft.Extensions.DependencyInjection;
+using Util.Datas.Dapper;
 
 namespace KissU.Modules.IdentityServer.Service
 {
@@ -25,6 +26,10 @@ namespace KissU.Modules.IdentityServer.Service
             var services = new ServiceCollection();
             services.AddUnitOfWork<IIdentityServerUnitOfWork, IdentityServerUnitOfWork>(AppConfig
                 .GetSection(DbConstants.ConnectionStringSection).GetSection(DbConstants.ConnectionStringName).Value);
+            services.AddSqlQuery<IdentityServerUnitOfWork>(config =>
+            {
+                config.DatabaseType = DatabaseType.SqlServer;
+            });
             builder.ContainerBuilder.Populate(services);
         }
     }

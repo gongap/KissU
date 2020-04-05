@@ -157,11 +157,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.Zookeeper", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Apm.Skywalking", "KissU.BuildingBlocks\KissU.Apm\KissU.Apm.Skywalking\KissU.Apm.Skywalking.csproj", "{3B143AB8-558F-4A8A-B4EA-63FF73F43209}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.Datas.MySql", "KissU.BuildingBlocks\KissU.Util\KissU.Util.Datas.MySql\KissU.Util.Datas.MySql.csproj", "{F1758B31-C2F1-4E58-AE64-DBF3A9DE2E47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.EntityFrameworkCore.MySql", "KissU.BuildingBlocks\KissU.Util\KissU.Util.EntityFrameworkCore.MySql\KissU.Util.EntityFrameworkCore.MySql.csproj", "{F1758B31-C2F1-4E58-AE64-DBF3A9DE2E47}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.Datas.PgSql", "KissU.BuildingBlocks\KissU.Util\KissU.Util.Datas.PgSql\KissU.Util.Datas.PgSql.csproj", "{97E69325-9834-4761-91CE-A1F933D24B38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.EntityFrameworkCore.PgSql", "KissU.BuildingBlocks\KissU.Util\KissU.Util.EntityFrameworkCore.PgSql\KissU.Util.EntityFrameworkCore.PgSql.csproj", "{97E69325-9834-4761-91CE-A1F933D24B38}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.Datas.SqlServer", "KissU.BuildingBlocks\KissU.Util\KissU.Util.Datas.SqlServer\KissU.Util.Datas.SqlServer.csproj", "{A565CA91-F0A2-4F01-80D1-E1CDD5A031AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.EntityFrameworkCore.SqlServer", "KissU.BuildingBlocks\KissU.Util\KissU.Util.EntityFrameworkCore.SqlServer\KissU.Util.EntityFrameworkCore.SqlServer.csproj", "{A565CA91-F0A2-4F01-80D1-E1CDD5A031AF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.IdentityServer.Application", "KissU.Modules\KissU.Modules.IdentityServer\KissU.Modules.IdentityServer.Application\KissU.Modules.IdentityServer.Application.csproj", "{8B967C6E-D981-4335-B51A-84200184BF73}"
 EndProject
@@ -195,7 +195,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Client", "KissU.Clien
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.AdminConsole", "KissU.Clients\KissU.AdminConsole\KissU.AdminConsole.csproj", "{EE3B4953-0382-40CA-8B10-A84BAAF3FE50}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.Datas.Oracle", "KissU.BuildingBlocks\KissU.Util\KissU.Util.Datas.Oracle\KissU.Util.Datas.Oracle.csproj", "{9914A66B-A07B-43CF-B82B-BFAFD1A25E5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.EntityFrameworkCore.Oracle", "KissU.BuildingBlocks\KissU.Util\KissU.Util.EntityFrameworkCore.Oracle\KissU.Util.EntityFrameworkCore.Oracle.csproj", "{9914A66B-A07B-43CF-B82B-BFAFD1A25E5C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Services.Stage", "KissU.Services\KissU.Services.Stage\KissU.Services.Stage.csproj", "{84939877-D56C-4C5F-9C62-BA3CEB282087}"
 EndProject
@@ -222,6 +222,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Services.SampleB.Host", "KissU.Services\KissU.Services.Sample\KissU.Services.SampleB.Host\KissU.Services.SampleB.Host.csproj", "{9D3C1BFF-595D-47FF-93FB-C486BA3A412E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.Threading", "KissU.BuildingBlocks\KissU.Util\KissU.Util.Threading\KissU.Util.Threading.csproj", "{9A2B5FF7-CAC2-4AC1-A96E-60779C9FAD0D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.Dapper", "KissU.BuildingBlocks\KissU.Util\KissU.Util.Dapper\KissU.Util.Dapper.csproj", "{05ACBD55-8A6A-4399-AEF6-EFC307F83C40}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.EntityFrameworkCore", "KissU.BuildingBlocks\KissU.Util\KissU.Util.EntityFrameworkCore\KissU.Util.EntityFrameworkCore.csproj", "{202357B2-5510-4DCE-8CC9-CC8A37AFDE43}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -565,6 +569,14 @@ Global
 		{9A2B5FF7-CAC2-4AC1-A96E-60779C9FAD0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A2B5FF7-CAC2-4AC1-A96E-60779C9FAD0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A2B5FF7-CAC2-4AC1-A96E-60779C9FAD0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05ACBD55-8A6A-4399-AEF6-EFC307F83C40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05ACBD55-8A6A-4399-AEF6-EFC307F83C40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05ACBD55-8A6A-4399-AEF6-EFC307F83C40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05ACBD55-8A6A-4399-AEF6-EFC307F83C40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{202357B2-5510-4DCE-8CC9-CC8A37AFDE43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{202357B2-5510-4DCE-8CC9-CC8A37AFDE43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{202357B2-5510-4DCE-8CC9-CC8A37AFDE43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{202357B2-5510-4DCE-8CC9-CC8A37AFDE43}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -669,6 +681,8 @@ Global
 		{70C06AF0-5C9B-4260-A362-767CCC5C9C03} = {3ADCCA3A-5EDB-49FB-8096-4BE212E33113}
 		{9D3C1BFF-595D-47FF-93FB-C486BA3A412E} = {3ADCCA3A-5EDB-49FB-8096-4BE212E33113}
 		{9A2B5FF7-CAC2-4AC1-A96E-60779C9FAD0D} = {D4F921B5-1BBD-4F36-A1D0-DE934C035713}
+		{05ACBD55-8A6A-4399-AEF6-EFC307F83C40} = {D4F921B5-1BBD-4F36-A1D0-DE934C035713}
+		{202357B2-5510-4DCE-8CC9-CC8A37AFDE43} = {D4F921B5-1BBD-4F36-A1D0-DE934C035713}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}

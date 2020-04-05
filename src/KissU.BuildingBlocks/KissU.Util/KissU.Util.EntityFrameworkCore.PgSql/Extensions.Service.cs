@@ -8,7 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace KissU.Util.Datas.SqlServer
+namespace KissU.Util.Datas.PgSql
 {
     /// <summary>
     /// 服务扩展
@@ -43,11 +43,11 @@ namespace KissU.Util.Datas.SqlServer
                 services.Configure<EfConfig>(configuration);
             services.TryAddScoped<TService>(t => t.GetService<TImplementation>());
             services.TryAddScoped<IUnitOfWork>(t => t.GetService<TImplementation>());
-            services.AddSqlQuery<TImplementation, TImplementation>(config =>
-            {
-                config.DatabaseType = GetDbType<TImplementation>();
-                config.IsClearAfterExecution = efConfig.SqlQuery.IsClearAfterExecution;
-            });
+            //services.AddSqlQuery<TImplementation, TImplementation>(config =>
+            //{
+            //    config.DatabaseType = GetDbType<TImplementation>();
+            //    config.IsClearAfterExecution = efConfig.SqlQuery.IsClearAfterExecution;
+            //});
             return services;
         }
 
@@ -56,7 +56,7 @@ namespace KissU.Util.Datas.SqlServer
         /// </summary>
         private static DatabaseType GetDbType<TUnitOfWork>()
         {
-            return DatabaseType.SqlServer;
+            return DatabaseType.PgSql;
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace KissU.Util.Datas.SqlServer
         private static void ConfigConnection<TImplementation>(DbContextOptionsBuilder builder, string connection)
             where TImplementation : UnitOfWorkBase
         {
-            builder.UseSqlServer(connection);
+            builder.UseNpgsql(connection);
         }
 
         /// <summary>

@@ -1,13 +1,14 @@
 ﻿using Autofac.Extensions.DependencyInjection;
+using KissU.Core.Datas.Enums;
 using KissU.Core.Module;
 using KissU.Surging.CPlatform;
-using KissU.Surging.CPlatform.Module;
 using KissU.Modules.GreatWall.Application.Extensions;
 using KissU.Modules.GreatWall.Data;
 using KissU.Modules.GreatWall.Data.UnitOfWorks.SqlServer;
 using KissU.Modules.GreatWall.Domain.UnitOfWorks;
 using KissU.Util.Datas.SqlServer;
 using Microsoft.Extensions.DependencyInjection;
+using Util.Datas.Dapper;
 
 namespace KissU.Modules.GreatWall.Service
 {
@@ -26,6 +27,10 @@ namespace KissU.Modules.GreatWall.Service
             var services = new ServiceCollection();
             services.AddUnitOfWork<IGreatWallUnitOfWork, GreatWallUnitOfWork>(AppConfig
                 .GetSection(DbConstants.ConnectionStringSection).GetSection(DbConstants.ConnectionStringName).Value);
+            services.AddSqlQuery<GreatWallUnitOfWork>(config =>
+            {
+                config.DatabaseType = DatabaseType.SqlServer;
+            });
             services.AddAspNetIdentityCore(options =>
             {
                 options.Password.MinLength = 6;
