@@ -37,11 +37,10 @@
  */
 #endregion
 
-using System;
 
 namespace WebSocketCore.Net
 {
-  internal enum InputChunkState
+    internal enum InputChunkState
   {
     None,
     Data,

@@ -7,7 +7,6 @@ using KissU.Core.EventBus.Implementation;
 using KissU.Core.Ioc;
 using KissU.Core.Utilities;
 using KissU.Surging.CPlatform.Module;
-using KissU.Surging.CPlatform.Utilities;
 using KissU.Surging.ProxyGenerator;
 
 namespace KissU.Surging.DNS.Runtime

@@ -5,7 +5,6 @@ using KissU.Core.Logs.Abstractions;
 using KissU.Core.Logs.Contents;
 using KissU.Util.Logs.NLog;
 using Microsoft.Extensions.Logging;
-using el = Exceptionless;
 using NLogs = NLog;
 
 namespace KissU.Util.Logs.Exceptionless

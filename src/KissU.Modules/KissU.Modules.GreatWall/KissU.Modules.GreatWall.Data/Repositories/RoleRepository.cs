@@ -7,7 +7,6 @@ using KissU.Core;
 using KissU.Modules.GreatWall.Domain.Models;
 using KissU.Modules.GreatWall.Domain.Repositories;
 using KissU.Modules.GreatWall.Domain.UnitOfWorks;
-using KissU.Util;
 using KissU.Util.EntityFrameworkCore.Core;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;

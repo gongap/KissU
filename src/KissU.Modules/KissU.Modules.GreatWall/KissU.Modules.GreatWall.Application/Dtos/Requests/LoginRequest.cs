@@ -2,7 +2,6 @@
 using KissU.Core;
 using KissU.Core.Exceptions;
 using KissU.Core.Validations;
-using KissU.Util;
 using KissU.Util.Ddd.Applications.Dtos;
 
 namespace KissU.Modules.GreatWall.Application.Dtos.Requests

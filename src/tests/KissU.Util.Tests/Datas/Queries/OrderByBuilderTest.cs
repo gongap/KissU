@@ -1,5 +1,4 @@
-﻿using KissU.Core.Datas.Queries;
-using KissU.Util.Ddd.Datas.Queries;
+﻿using KissU.Util.Ddd.Datas.Queries;
 using Xunit;
 
 namespace KissU.Util.Tests.Datas.Queries

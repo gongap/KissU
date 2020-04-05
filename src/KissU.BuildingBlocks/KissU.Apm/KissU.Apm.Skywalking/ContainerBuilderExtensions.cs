@@ -16,12 +16,11 @@ using KissU.Apm.Skywalking.Transport.Grpc;
 using KissU.Apm.Skywalking.Transport.Grpc.V5;
 using KissU.Apm.Skywalking.Transport.Grpc.V6;
 using KissU.Core;
-using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Diagnostics;
 
 namespace KissU.Apm.Skywalking
 {
-   public static class ContainerBuilderExtensions
+    public static class ContainerBuilderExtensions
     {
         public static IServiceBuilder UseSkywalking(this IServiceBuilder builder)
         {

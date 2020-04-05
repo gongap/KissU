@@ -2,7 +2,6 @@
 using System.Linq.Expressions;
 using System.Text;
 using KissU.Core;
-using KissU.Core.Datas.Queries;
 using KissU.Core.Properties;
 using KissU.Util.Ddd.Datas.Queries;
 using KissU.Util.Ddd.Datas.Queries.Criterias;

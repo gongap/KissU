@@ -37,11 +37,10 @@
  */
 #endregion
 
-using System;
 
 namespace WebSocketCore.Net
 {
-  internal class ReadBufferState
+    internal class ReadBufferState
   {
     #region Private Fields
 

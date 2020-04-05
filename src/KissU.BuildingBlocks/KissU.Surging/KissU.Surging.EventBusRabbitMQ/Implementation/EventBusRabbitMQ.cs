@@ -10,7 +10,6 @@ using KissU.Core.EventBus;
 using KissU.Core.EventBus.Events;
 using KissU.Core.EventBus.Implementation;
 using KissU.Core.Utilities;
-using KissU.Surging.CPlatform.Utilities;
 using KissU.Surging.EventBusRabbitMQ.Attributes;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;

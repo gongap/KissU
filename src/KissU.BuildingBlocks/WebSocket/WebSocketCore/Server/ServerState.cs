@@ -26,11 +26,10 @@
  */
 #endregion
 
-using System;
 
 namespace WebSocketCore.Server
 {
-  internal enum ServerState
+    internal enum ServerState
   {
     Ready,
     Start,

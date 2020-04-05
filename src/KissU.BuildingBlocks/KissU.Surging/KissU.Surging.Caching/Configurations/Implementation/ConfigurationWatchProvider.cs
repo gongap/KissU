@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using KissU.Core;
 using KissU.Surging.Caching.HashAlgorithms;
 using KissU.Surging.Caching.Models;
-using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Cache;
 using KissU.Surging.CPlatform.Cache.Implementation;
 using KissU.Surging.CPlatform.Configurations;

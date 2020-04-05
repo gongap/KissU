@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -17,8 +16,6 @@ using KissU.Surging.ApiGateWay.OAuth;
 using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Filters.Implementation;
 using KissU.Surging.CPlatform.Messages;
-using KissU.Surging.CPlatform.Transport.Implementation;
-using KissU.Surging.CPlatform.Utilities;
 using KissU.Surging.KestrelHttpServer.Filters.Implementation;
 using KissU.Surging.KestrelHttpServer.Internal;
 using Newtonsoft.Json;

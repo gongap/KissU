@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using AutoMapper;
-using KissU.Core.Datas.Queries;
 using KissU.Util.Applications;
 using KissU.Util.Ddd.Applications.Dtos;
 using KissU.Util.Ddd.Datas.Queries;

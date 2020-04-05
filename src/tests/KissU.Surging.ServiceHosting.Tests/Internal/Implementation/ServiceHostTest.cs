@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Autofac;
 using KissU.Surging.ServiceHosting.Internal;
 using KissU.Surging.ServiceHosting.Internal.Implementation;
 using KissU.Surging.ServiceHosting.Startup;
-using KissU.Surging.ServiceHosting.Tests.Samples;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
 using NSubstitute;

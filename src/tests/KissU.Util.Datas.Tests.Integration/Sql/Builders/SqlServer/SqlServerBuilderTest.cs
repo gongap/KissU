@@ -1,5 +1,4 @@
 ﻿using System;
-using KissU.Core.Datas.Queries;
 using KissU.Core.Properties;
 using KissU.Util.Dapper.SqlServer;
 using KissU.Util.Datas.Sql;

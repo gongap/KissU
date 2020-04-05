@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using KissU.Core;
-using KissU.Core.Datas.Queries;
 using KissU.Util.Ddd.Datas.Queries;
 using KissU.Util.Search.ElasticSearch.Services.Conditions;
 using Nest;

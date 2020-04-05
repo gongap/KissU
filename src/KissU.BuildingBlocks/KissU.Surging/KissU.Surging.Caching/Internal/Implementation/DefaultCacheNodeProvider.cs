@@ -2,7 +2,6 @@
 using KissU.Core;
 using KissU.Surging.Caching.Models;
 using KissU.Surging.Caching.RedisCache;
-using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Cache;
 using Microsoft.Extensions.Configuration;
 

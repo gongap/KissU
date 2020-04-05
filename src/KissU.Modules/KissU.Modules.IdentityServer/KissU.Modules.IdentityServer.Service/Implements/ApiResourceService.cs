@@ -7,7 +7,6 @@ using KissU.Modules.IdentityServer.Application.Dtos.Requests;
 using KissU.Modules.IdentityServer.Application.Queries;
 using KissU.Modules.IdentityServer.Service.Contracts;
 using KissU.Surging.ProxyGenerator;
-using KissU.Util;
 using KissU.Util.Ddd.Domains.Repositories;
 
 namespace KissU.Modules.IdentityServer.Service.Implements

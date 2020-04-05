@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-
-namespace KissU.Surging.AutoMapper.AutoMapper
+﻿namespace KissU.Surging.AutoMapper.AutoMapper
 {
     /// <summary>
     /// MapperExtensions.

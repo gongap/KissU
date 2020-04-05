@@ -5,7 +5,6 @@ using System.Reflection;
 using KissU.Core;
 using KissU.Core.EventBus.Events;
 using KissU.Core.EventBus.Implementation;
-using KissU.Surging.CPlatform;
 using KissU.Surging.EventBusRabbitMQ.Utilities;
 
 namespace KissU.Surging.EventBusRabbitMQ.Implementation

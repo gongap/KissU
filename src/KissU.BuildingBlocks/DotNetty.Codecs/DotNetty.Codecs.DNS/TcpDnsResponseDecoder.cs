@@ -1,10 +1,7 @@
 ﻿using DotNetty.Buffers;
-using DotNetty.Codecs.DNS.Messages;
 using DotNetty.Transport.Channels;
 using System;
-using System.Collections.Generic;
 using System.Net;
-using System.Text;
 
 namespace DotNetty.Codecs.DNS
 {

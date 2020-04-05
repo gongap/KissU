@@ -4,7 +4,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using KissU.Core;
-using KissU.Util.Datas.Sql.Builders.Core;
 using KissU.Util.Datas.Sql.Builders.Internal;
 using KissU.Util.Ddd.Datas.Sql.Builders;
 using KissU.Util.Ddd.Datas.Sql.Builders.Core;

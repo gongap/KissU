@@ -37,14 +37,13 @@
  */
 #endregion
 
-using System;
 
 namespace WebSocketCore.Net
 {
-  /// <summary>
-  /// Specifies the scheme for authentication.
-  /// </summary>
-  public enum AuthenticationSchemes
+    /// <summary>
+    /// Specifies the scheme for authentication.
+    /// </summary>
+    public enum AuthenticationSchemes
   {
     /// <summary>
     /// No authentication is allowed.

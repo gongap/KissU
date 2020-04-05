@@ -1,6 +1,5 @@
 ﻿using System;
 using KissU.Core.Module;
-using KissU.Surging.CPlatform.Module;
 using KissU.Surging.KestrelHttpServer;
 using KissU.Surging.KestrelHttpServer.Extensions;
 using KissU.Surging.Stage.Configurations;
@@ -8,7 +7,6 @@ using KissU.Surging.Stage.Filters;
 using KissU.Surging.Stage.Internal;
 using KissU.Surging.Stage.Internal.Implementation;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;

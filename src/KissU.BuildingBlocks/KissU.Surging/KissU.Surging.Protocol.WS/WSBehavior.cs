@@ -5,7 +5,6 @@ using KissU.Core.EventBus.Events;
 using KissU.Core.EventBus.Implementation;
 using KissU.Core.Ioc;
 using KissU.Core.Utilities;
-using KissU.Surging.CPlatform.Utilities;
 using KissU.Surging.Protocol.WS.Runtime;
 using KissU.Surging.ProxyGenerator;
 using WebSocketCore.Server;

@@ -12,7 +12,6 @@ using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Configurations;
 using KissU.Surging.CPlatform.Diagnostics;
 using KissU.Surging.CPlatform.Engines;
-using KissU.Surging.CPlatform.Module;
 using KissU.Surging.CPlatform.Routing;
 using KissU.Surging.KestrelHttpServer.Extensions;
 using KissU.Surging.KestrelHttpServer.Filters;
@@ -21,7 +20,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using TransportType = KissU.Surging.CPlatform.Diagnostics.TransportType;
 
 namespace KissU.Surging.KestrelHttpServer
 {

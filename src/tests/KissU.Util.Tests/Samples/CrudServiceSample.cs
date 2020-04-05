@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using KissU.Core;
-using KissU.Core.Datas.Queries;
 using KissU.Core.Maps;
 using KissU.Util.Applications;
 using KissU.Util.Ddd.Datas.Queries;

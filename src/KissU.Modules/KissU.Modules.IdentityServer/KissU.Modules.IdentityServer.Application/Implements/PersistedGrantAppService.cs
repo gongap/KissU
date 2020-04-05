@@ -1,5 +1,4 @@
-﻿using KissU.Core.Datas.Queries;
-using KissU.Modules.IdentityServer.Application.Abstractions;
+﻿using KissU.Modules.IdentityServer.Application.Abstractions;
 using KissU.Modules.IdentityServer.Application.Dtos;
 using KissU.Modules.IdentityServer.Application.Queries;
 using KissU.Modules.IdentityServer.Domain.Models;

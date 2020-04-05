@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
-using KissU.Core.Datas.Queries;
 using KissU.Core.Exceptions;
 using KissU.Modules.IdentityServer.Application.Abstractions;
 using KissU.Modules.IdentityServer.Application.Dtos;

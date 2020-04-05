@@ -26,11 +26,10 @@
  */
 #endregion
 
-using System;
 
 namespace WebSocketCore.Net
 {
-  internal class HttpHeaderInfo
+    internal class HttpHeaderInfo
   {
     #region Private Fields
 

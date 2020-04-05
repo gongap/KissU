@@ -26,14 +26,13 @@
  */
 #endregion
 
-using System;
 
 namespace WebSocketCore
 {
-  /// <summary>
-  /// Specifies the logging level.
-  /// </summary>
-  public enum LogLevel
+    /// <summary>
+    /// Specifies the logging level.
+    /// </summary>
+    public enum LogLevel
   {
     /// <summary>
     /// Specifies the bottom logging level.

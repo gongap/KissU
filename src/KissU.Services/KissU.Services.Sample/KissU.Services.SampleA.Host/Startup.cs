@@ -1,9 +1,6 @@
 ﻿using Autofac;
 using KissU.Core;
 using KissU.Core.Utilities;
-using KissU.Surging.Caching.Configurations;
-using KissU.Surging.CPlatform.Utilities;
-using KissU.Surging.EventBusKafka.Configurations;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

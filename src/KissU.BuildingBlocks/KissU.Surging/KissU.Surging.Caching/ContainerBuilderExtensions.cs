@@ -14,7 +14,6 @@ using KissU.Surging.Caching.HealthChecks.Implementation;
 using KissU.Surging.Caching.Interfaces;
 using KissU.Surging.Caching.Internal.Implementation;
 using KissU.Surging.Caching.Models;
-using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Cache;
 using Microsoft.Extensions.Configuration;
 

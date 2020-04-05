@@ -5,7 +5,6 @@ using KissU.Core.EventBus.Events;
 using KissU.Core.EventBus.Implementation;
 using KissU.Core.Module;
 using KissU.Surging.CPlatform.Engines;
-using KissU.Surging.CPlatform.Module;
 using KissU.Surging.EventBusKafka.Configurations;
 using KissU.Surging.EventBusKafka.Implementation;
 using Microsoft.Extensions.Configuration;

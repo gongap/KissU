@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using KissU.Surging.CPlatform;
+﻿using KissU.Surging.CPlatform;
 
 namespace KissU.Surging.ProxyGenerator.Interceptors.Implementation.Metadatas
 {

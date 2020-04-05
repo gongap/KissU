@@ -5,7 +5,6 @@ using KissU.Core.Serialization;
 using KissU.Core.Utilities;
 using KissU.Surging.CPlatform.Cache;
 using KissU.Surging.CPlatform.Cache.Implementation;
-using KissU.Surging.CPlatform.Utilities;
 
 namespace KissU.Surging.ApiGateWay.ServiceDiscovery.Implementation
 {

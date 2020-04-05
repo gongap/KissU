@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using KissU.Core;
-using KissU.Core.Datas.Queries;
 using KissU.Core.Dependency;
 using KissU.Core.Helpers;
 using KissU.Util.Datas.Tests.Integration.Commons.Datas.Criterias;

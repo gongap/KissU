@@ -39,11 +39,10 @@
 #endregion
 
 using System;
-using System.Net;
 
 namespace WebSocketCore.Net
 {
-  internal sealed class HttpListenerPrefix
+    internal sealed class HttpListenerPrefix
   {
     #region Private Fields
 

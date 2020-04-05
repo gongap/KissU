@@ -1,17 +1,13 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
-using System.Collections;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Microsoft.Extensions.DependencyInjection;
-using KissU.Surging.CPlatform.Utilities;
 using System.Linq;
 using System.Security.Claims;
 using KissU.Core.Security.Principals;
 using KissU.Core.Utilities;
 using KissU.Surging.CPlatform.Filters.Implementation;
-using KissU.Surging.CPlatform.Utilities;
 
 namespace KissU.Surging.KestrelHttpServer.Internal
 {

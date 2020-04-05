@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
-using KissU.Core;
-using KissU.Core.Datas.Queries;
 using KissU.Core.Maps;
 using KissU.Util.Ddd;
 using KissU.Util.Ddd.Applications;

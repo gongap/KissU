@@ -1,8 +1,5 @@
-﻿using System.Reflection;
-using KissU.Surging.ServiceHosting.Internal.Implementation;
+﻿using KissU.Surging.ServiceHosting.Internal.Implementation;
 using KissU.Surging.ServiceHosting.Tests.Samples;
-using Microsoft.Extensions.Logging;
-using NSubstitute;
 using Xunit;
 
 namespace KissU.Surging.ServiceHosting.Tests.Internal.Implementation

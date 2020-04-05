@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using KissU.Core;
-using KissU.Core.Datas.Queries;
 using KissU.Core.Helpers;
 using KissU.Core.Logs;
 using KissU.Util.Ddd.Applications.Dtos;

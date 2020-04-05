@@ -1,6 +1,5 @@
 ﻿using KissU.Core.Module;
 using KissU.Surging.AutoMapper.AutoMapper;
-using KissU.Surging.CPlatform.Module;
 using Microsoft.Extensions.Configuration;
 using CPlatformAppConfig = KissU.Surging.CPlatform.AppConfig;
 

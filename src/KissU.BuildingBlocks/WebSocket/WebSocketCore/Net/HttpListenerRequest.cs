@@ -38,7 +38,6 @@
 #endregion
 
 using System;
-using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Globalization;
 using System.IO;
@@ -47,13 +46,13 @@ using System.Text;
 
 namespace WebSocketCore.Net
 {
-  /// <summary>
-  /// Represents an incoming request to a <see cref="HttpListener"/> instance.
-  /// </summary>
-  /// <remarks>
-  /// This class cannot be inherited.
-  /// </remarks>
-  public sealed class HttpListenerRequest
+    /// <summary>
+    /// Represents an incoming request to a <see cref="HttpListener"/> instance.
+    /// </summary>
+    /// <remarks>
+    /// This class cannot be inherited.
+    /// </remarks>
+    public sealed class HttpListenerRequest
   {
     #region Private Fields
 

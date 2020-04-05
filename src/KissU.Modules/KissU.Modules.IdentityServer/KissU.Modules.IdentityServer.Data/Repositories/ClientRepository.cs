@@ -5,7 +5,6 @@ using KissU.Core;
 using KissU.Modules.IdentityServer.Domain.Models;
 using KissU.Modules.IdentityServer.Domain.Repositories;
 using KissU.Modules.IdentityServer.Domain.UnitOfWorks;
-using KissU.Util;
 using KissU.Util.EntityFrameworkCore.Core;
 using Microsoft.EntityFrameworkCore;
 

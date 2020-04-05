@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using KissU.Core;
 using KissU.Util.Ddd;
 using KissU.Util.Ddd.Datas.Queries.Trees;
 using KissU.Util.Ddd.Datas.Stores;

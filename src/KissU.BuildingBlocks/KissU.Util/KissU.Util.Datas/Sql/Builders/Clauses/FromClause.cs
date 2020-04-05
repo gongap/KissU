@@ -1,6 +1,5 @@
 ﻿using System;
 using KissU.Core.Properties;
-using KissU.Util.Datas.Sql.Builders.Core;
 using KissU.Util.Datas.Sql.Builders.Extensions;
 using KissU.Util.Datas.Sql.Builders.Internal;
 using KissU.Util.Ddd.Datas.Sql;

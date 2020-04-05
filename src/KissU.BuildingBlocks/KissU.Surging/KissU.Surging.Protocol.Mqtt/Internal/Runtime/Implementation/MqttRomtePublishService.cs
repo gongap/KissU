@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
 using KissU.Core.Ioc;
 using KissU.Core.Utilities;
-using KissU.Surging.CPlatform.Utilities;
 using KissU.Surging.Protocol.Mqtt.Internal.Messages;
 using KissU.Surging.Protocol.Mqtt.Internal.Services;
 

@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using KissU.Core.EventBus.Events;
 using KissU.Core.Utilities;
-using KissU.Surging.CPlatform.Utilities;
 using KissU.Surging.EventBusRabbitMQ.Attributes;
 using KissU.Modules.SampleA.Service.Contracts;
 using KissU.Modules.SampleA.Service.Contracts.Dtos;

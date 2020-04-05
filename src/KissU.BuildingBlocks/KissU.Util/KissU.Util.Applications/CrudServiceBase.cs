@@ -1,5 +1,4 @@
 ﻿using System;
-using KissU.Core.Datas.Queries;
 using KissU.Core.Maps;
 using KissU.Util.Applications.Aspects;
 using KissU.Util.Ddd.Applications.Dtos;

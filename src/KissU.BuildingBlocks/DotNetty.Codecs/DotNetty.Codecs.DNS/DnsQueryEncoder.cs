@@ -1,14 +1,11 @@
 ﻿using DotNetty.Buffers;
 using DotNetty.Codecs.DNS.Messages;
 using DotNetty.Codecs.DNS.Records;
-using DotNetty.Transport.Channels;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DotNetty.Codecs.DNS
 {
-   sealed class DnsQueryEncoder
+    sealed class DnsQueryEncoder
     {
         private readonly IDnsRecordEncoder recordEncoder;
 

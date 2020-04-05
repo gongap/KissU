@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
 using KissU.Core.Helpers;
-using KissU.Util.Datas.Sql.Builders;
-using KissU.Util.Datas.Sql.Builders.Core;
 using KissU.Util.Ddd.Datas.Sql;
 using KissU.Util.Ddd.Datas.Sql.Builders;
 using KissU.Util.Ddd.Datas.Sql.Builders.Core;

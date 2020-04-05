@@ -12,7 +12,6 @@ using KissU.Surging.Consul.Internal.Implementation;
 using KissU.Surging.Consul.WatcherProvider;
 using KissU.Surging.Consul.WatcherProvider.Implementation;
 using KissU.Surging.CPlatform.Cache;
-using KissU.Surging.CPlatform.Module;
 using KissU.Surging.CPlatform.Mqtt;
 using KissU.Surging.CPlatform.Routing;
 using KissU.Surging.CPlatform.Runtime.Client;

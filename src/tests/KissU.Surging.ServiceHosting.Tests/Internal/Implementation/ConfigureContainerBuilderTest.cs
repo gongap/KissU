@@ -2,7 +2,6 @@
 using Autofac;
 using KissU.Surging.ServiceHosting.Internal.Implementation;
 using KissU.Surging.ServiceHosting.Tests.Samples;
-using Microsoft.Extensions.Configuration;
 using Xunit;
 
 namespace KissU.Surging.ServiceHosting.Tests.Internal.Implementation

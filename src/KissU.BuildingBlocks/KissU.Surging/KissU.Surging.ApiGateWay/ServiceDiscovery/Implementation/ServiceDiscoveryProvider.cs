@@ -6,7 +6,6 @@ using KissU.Core.Utilities;
 using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Routing;
 using KissU.Surging.CPlatform.Runtime.Client.HealthChecks;
-using KissU.Surging.CPlatform.Utilities;
 
 namespace KissU.Surging.ApiGateWay.ServiceDiscovery.Implementation
 {

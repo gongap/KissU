@@ -2,7 +2,6 @@
 using System.Linq;
 using KissU.Core;
 using KissU.Modules.GreatWall.Application.Dtos.Responses;
-using KissU.Util;
 
 namespace KissU.Modules.GreatWall.Application.Dtos.NgAlain
 {

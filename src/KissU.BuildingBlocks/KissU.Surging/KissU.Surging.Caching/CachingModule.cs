@@ -14,7 +14,6 @@ using KissU.Surging.Caching.Interfaces;
 using KissU.Surging.Caching.Internal.Implementation;
 using KissU.Surging.Caching.Models;
 using KissU.Surging.CPlatform.Cache;
-using KissU.Surging.CPlatform.Module;
 using Microsoft.Extensions.Configuration;
 
 namespace KissU.Surging.Caching

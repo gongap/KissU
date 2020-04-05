@@ -1,5 +1,4 @@
-﻿using KissU.Core.Datas.Queries;
-using KissU.Util.Ddd.Datas.Queries;
+﻿using KissU.Util.Ddd.Datas.Queries;
 
 namespace KissU.Modules.IdentityServer.Application.Queries
 {

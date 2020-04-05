@@ -6,7 +6,6 @@ using KissU.Core;
 using KissU.Core.Datas.Queries;
 using KissU.Core.Helpers;
 using KissU.Util.Datas.Sql.Builders.Conditions;
-using KissU.Util.Datas.Sql.Builders.Core;
 using KissU.Util.Ddd.Datas.Queries;
 using KissU.Util.Ddd.Datas.Sql.Builders;
 using KissU.Util.Ddd.Datas.Sql.Builders.Core;

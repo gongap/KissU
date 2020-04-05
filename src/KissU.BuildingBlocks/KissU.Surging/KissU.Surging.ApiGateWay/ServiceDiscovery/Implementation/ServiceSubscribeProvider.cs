@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using KissU.Core.Utilities;
 using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Runtime.Client;
-using KissU.Surging.CPlatform.Utilities;
 
 namespace KissU.Surging.ApiGateWay.ServiceDiscovery.Implementation
 {

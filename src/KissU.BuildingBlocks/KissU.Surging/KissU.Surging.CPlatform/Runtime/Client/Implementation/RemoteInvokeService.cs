@@ -10,7 +10,6 @@ using KissU.Surging.CPlatform.Runtime.Client.Address.Resolvers;
 using KissU.Surging.CPlatform.Runtime.Client.HealthChecks;
 using KissU.Surging.CPlatform.Transport;
 using KissU.Surging.CPlatform.Transport.Implementation;
-using KissU.Surging.CPlatform.Utilities;
 using Microsoft.Extensions.Logging;
 
 namespace KissU.Surging.CPlatform.Runtime.Client.Implementation

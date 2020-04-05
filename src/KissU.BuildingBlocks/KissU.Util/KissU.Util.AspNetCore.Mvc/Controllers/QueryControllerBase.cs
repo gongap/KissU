@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using KissU.Core;
-using KissU.Core.Datas.Queries;
-using KissU.Util.Applications;
 using KissU.Util.AspNetCore.Mvc.Properties;
 using KissU.Util.Ddd.Applications;
 using KissU.Util.Ddd.Applications.Dtos;

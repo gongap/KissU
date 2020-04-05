@@ -1,7 +1,6 @@
 ﻿using System;
 using KissU.Core.Module;
 using KissU.Surging.CPlatform.Filters;
-using KissU.Surging.CPlatform.Module;
 
 namespace KissU.Surging.CPlatform
 {

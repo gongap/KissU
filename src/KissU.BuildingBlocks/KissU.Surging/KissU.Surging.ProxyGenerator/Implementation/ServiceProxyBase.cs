@@ -6,11 +6,9 @@ using Autofac;
 using KissU.Core;
 using KissU.Core.Convertibles;
 using KissU.Core.Utilities;
-using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Messages;
 using KissU.Surging.CPlatform.Runtime.Client;
 using KissU.Surging.CPlatform.Support;
-using KissU.Surging.CPlatform.Utilities;
 using KissU.Surging.ProxyGenerator.Interceptors;
 
 namespace KissU.Surging.ProxyGenerator.Implementation

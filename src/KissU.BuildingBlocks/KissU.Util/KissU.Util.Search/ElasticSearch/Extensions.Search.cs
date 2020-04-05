@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Threading.Tasks;
 using KissU.Core;
-using KissU.Core.Datas.Queries;
 using KissU.Util.Ddd.Datas.Queries;
 using KissU.Util.Search.ElasticSearch.Services;
 

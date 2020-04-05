@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using KissU.Surging.ServiceHosting.Internal.Implementation;
 using Microsoft.Extensions.Logging;

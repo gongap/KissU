@@ -6,7 +6,6 @@ using KissU.Core.Utilities;
 using KissU.Surging.Caching.Configurations;
 using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Configurations;
-using KissU.Surging.CPlatform.Utilities;
 using KissU.Surging.ProxyGenerator;
 using KissU.Surging.ServiceHosting;
 using KissU.Surging.ServiceHosting.Internal.Implementation;

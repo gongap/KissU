@@ -6,8 +6,6 @@ using KissU.Core.EventBus;
 using KissU.Core.EventBus.Events;
 using KissU.Core.EventBus.Implementation;
 using KissU.Core.Module;
-using KissU.Surging.CPlatform;
-using KissU.Surging.CPlatform.Module;
 using KissU.Surging.CPlatform.Routing;
 using KissU.Surging.EventBusRabbitMQ.Configurations;
 using KissU.Surging.EventBusRabbitMQ.Implementation;

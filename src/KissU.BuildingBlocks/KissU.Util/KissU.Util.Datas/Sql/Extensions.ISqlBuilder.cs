@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using KissU.Core.Datas.Queries;
-using KissU.Util.Datas.Sql.Builders;
 using KissU.Util.Ddd.Datas.Queries;
 using KissU.Util.Ddd.Datas.Sql;
 using KissU.Util.Ddd.Datas.Sql.Builders;

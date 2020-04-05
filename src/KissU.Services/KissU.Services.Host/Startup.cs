@@ -1,8 +1,6 @@
 ﻿using Autofac;
 using KissU.Core;
 using KissU.Core.Utilities;
-using KissU.Surging.CPlatform.Utilities;
-using KissU.Util;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

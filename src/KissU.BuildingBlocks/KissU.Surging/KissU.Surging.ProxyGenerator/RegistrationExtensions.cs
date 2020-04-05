@@ -1,6 +1,5 @@
 ﻿using System;
 using KissU.Core.Module;
-using KissU.Surging.CPlatform.Module;
 using KissU.Surging.ProxyGenerator.Interceptors;
 using KissU.Surging.ProxyGenerator.Interceptors.Implementation;
 

@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using System.Reflection;
 using KissU.Core.Module;
-using KissU.Surging.CPlatform.Module;
 using KissU.Surging.CPlatform.Runtime.Server;
 using KissU.Surging.KestrelHttpServer;
 using KissU.Surging.Swagger.Internal;

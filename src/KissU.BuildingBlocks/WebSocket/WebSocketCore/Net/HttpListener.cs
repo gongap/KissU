@@ -47,17 +47,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using System.Security.Principal;
-using System.Threading;
 
 // TODO: Logging.
 namespace WebSocketCore.Net
 {
-  /// <summary>
-  /// Provides a simple, programmatically controlled HTTP listener.
-  /// </summary>
-  public sealed class HttpListener : IDisposable
+    /// <summary>
+    /// Provides a simple, programmatically controlled HTTP listener.
+    /// </summary>
+    public sealed class HttpListener : IDisposable
   {
     #region Private Fields
 

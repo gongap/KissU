@@ -30,20 +30,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Threading;
 using WebSocketCore.Net;
 
 namespace WebSocketCore.Server
 {
-  /// <summary>
-  /// Provides the management function for the WebSocket services.
-  /// </summary>
-  /// <remarks>
-  /// This class manages the WebSocket services provided by
-  /// the <see cref="WebSocketServer"/> or <see cref="HttpServer"/>.
-  /// </remarks>
-  public class WebSocketServiceManager
+    /// <summary>
+    /// Provides the management function for the WebSocket services.
+    /// </summary>
+    /// <remarks>
+    /// This class manages the WebSocket services provided by
+    /// the <see cref="WebSocketServer"/> or <see cref="HttpServer"/>.
+    /// </remarks>
+    public class WebSocketServiceManager
   {
     #region Private Fields
 

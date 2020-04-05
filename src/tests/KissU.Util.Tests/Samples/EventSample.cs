@@ -2,7 +2,6 @@
 using System.Linq;
 using KissU.Core.Events;
 using KissU.Core.Events.Handlers;
-using KissU.Util.Events;
 
 namespace KissU.Util.Tests.Samples
 {

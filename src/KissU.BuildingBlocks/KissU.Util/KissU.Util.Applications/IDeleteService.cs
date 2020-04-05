@@ -1,5 +1,4 @@
-﻿using KissU.Core.Datas.Queries;
-using KissU.Util.Applications.Operations;
+﻿using KissU.Util.Applications.Operations;
 using KissU.Util.Ddd.Applications;
 using KissU.Util.Ddd.Datas.Queries;
 
