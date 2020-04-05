@@ -7,8 +7,8 @@ using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using KissU.Core.Domains;
-using KissU.Core.Domains.Repositories;
+using KissU.Util.Ddd.Domains;
+using KissU.Util.Ddd.Domains.Repositories;
 
 namespace KissU.Util.Tests.Samples
 {

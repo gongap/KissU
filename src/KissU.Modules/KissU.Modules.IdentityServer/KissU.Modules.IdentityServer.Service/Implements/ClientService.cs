@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.Core.Domains.Repositories;
 using KissU.Modules.IdentityServer.Application.Abstractions;
 using KissU.Modules.IdentityServer.Application.Dtos;
 using KissU.Modules.IdentityServer.Application.Dtos.Requests;
 using KissU.Modules.IdentityServer.Application.Queries;
 using KissU.Modules.IdentityServer.Service.Contracts;
 using KissU.Surging.ProxyGenerator;
+using KissU.Util.Ddd.Domains.Repositories;
 
 namespace KissU.Modules.IdentityServer.Service.Implements
 {

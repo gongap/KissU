@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq.Expressions;
-using KissU.Core.Datas.Sql.Builders;
 using KissU.Util.Datas.Sql.Builders.Conditions;
 using KissU.Util.Datas.Sql.Builders.Internal;
+using KissU.Util.Ddd.Datas.Sql.Builders;
 
 namespace KissU.Util.Datas.Sql.Builders.Core
 {

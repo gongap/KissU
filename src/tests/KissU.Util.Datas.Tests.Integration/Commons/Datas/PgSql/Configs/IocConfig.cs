@@ -1,11 +1,11 @@
 ﻿using Autofac;
 using KissU.Core.Datas.Transactions;
-using KissU.Core.Datas.UnitOfWorks;
 using KissU.Core.Dependency;
 using KissU.Core.Sessions;
 using KissU.Util.Datas.Tests.Integration.Commons.Domains.Repositories;
 using KissU.Util.Datas.Tests.Integration.Ef.PgSql.Repositories;
 using KissU.Util.Datas.Tests.Integration.Ef.PgSql.UnitOfWorks;
+using KissU.Util.Ddd.Datas.UnitOfWorks;
 
 namespace KissU.Util.Datas.Tests.Integration.Commons.Datas.PgSql.Configs
 {

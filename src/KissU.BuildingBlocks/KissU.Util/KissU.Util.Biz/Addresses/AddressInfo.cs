@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
-using KissU.Core.Domains;
+using KissU.Util.Ddd.Domains;
 
 namespace KissU.Util.Biz.Addresses
 {

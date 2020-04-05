@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using KissU.Core.Datas.Queries;
+using KissU.Util.Ddd.Datas.Queries;
 
 namespace KissU.Modules.GreatWall.Application.Queries
 {

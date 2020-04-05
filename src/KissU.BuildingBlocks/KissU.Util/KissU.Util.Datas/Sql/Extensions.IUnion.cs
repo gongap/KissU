@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using KissU.Core.Datas.Sql;
-using KissU.Core.Datas.Sql.Builders;
-using KissU.Core.Datas.Sql.Builders.Core;
 using KissU.Util.Datas.Sql.Builders;
 using KissU.Util.Datas.Sql.Builders.Core;
+using KissU.Util.Ddd.Datas.Sql;
+using KissU.Util.Ddd.Datas.Sql.Builders;
+using KissU.Util.Ddd.Datas.Sql.Builders.Core;
 
 namespace KissU.Util.Datas.Sql
 {

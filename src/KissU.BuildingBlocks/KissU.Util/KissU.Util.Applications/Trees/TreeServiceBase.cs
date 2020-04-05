@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using KissU.Core;
-using KissU.Core.Datas.Queries.Trees;
-using KissU.Core.Datas.Stores;
-using KissU.Core.Datas.UnitOfWorks;
-using KissU.Core.Domains;
-using KissU.Core.Domains.Trees;
+using KissU.Util.Ddd;
+using KissU.Util.Ddd.Datas.Queries.Trees;
+using KissU.Util.Ddd.Datas.Stores;
+using KissU.Util.Ddd.Datas.UnitOfWorks;
+using KissU.Util.Ddd.Domains;
+using KissU.Util.Ddd.Domains.Trees;
 using Convert = KissU.Core.Helpers.Convert;
 
 namespace KissU.Util.Applications.Trees

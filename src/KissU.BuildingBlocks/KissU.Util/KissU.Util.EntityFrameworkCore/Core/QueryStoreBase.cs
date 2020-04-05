@@ -7,12 +7,13 @@ using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
 using KissU.Core;
-using KissU.Core.Datas.Sql;
-using KissU.Core.Datas.Stores;
-using KissU.Core.Datas.UnitOfWorks;
-using KissU.Core.Domains;
-using KissU.Core.Domains.Repositories;
 using KissU.Core.Helpers;
+using KissU.Util.Ddd;
+using KissU.Util.Ddd.Datas.Sql;
+using KissU.Util.Ddd.Datas.Stores;
+using KissU.Util.Ddd.Datas.UnitOfWorks;
+using KissU.Util.Ddd.Domains;
+using KissU.Util.Ddd.Domains.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Convert = KissU.Core.Helpers.Convert;
 

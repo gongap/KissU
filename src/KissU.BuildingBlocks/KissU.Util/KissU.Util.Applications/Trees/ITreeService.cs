@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.Core.Datas.Queries.Trees;
+using KissU.Util.Ddd.Datas.Queries.Trees;
 
 namespace KissU.Util.Applications.Trees
 {

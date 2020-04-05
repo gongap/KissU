@@ -1,9 +1,9 @@
 ﻿using System;
-using KissU.Core.Datas.Sql;
-using KissU.Core.Datas.Sql.Builders;
-using KissU.Core.Datas.Sql.Matedatas;
 using KissU.Util.Datas.Sql.Builders.Clauses;
 using KissU.Util.Datas.Sql.Builders.Core;
+using KissU.Util.Ddd.Datas.Sql;
+using KissU.Util.Ddd.Datas.Sql.Builders;
+using KissU.Util.Ddd.Datas.Sql.Matedatas;
 
 namespace KissU.Util.Dapper.Oracle
 {

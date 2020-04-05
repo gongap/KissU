@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
-using KissU.Core.Domains.Repositories;
 using KissU.Modules.GreatWall.Domain.Models;
+using KissU.Util.Ddd.Domains.Repositories;
 
 namespace KissU.Modules.GreatWall.Domain.Repositories
 {

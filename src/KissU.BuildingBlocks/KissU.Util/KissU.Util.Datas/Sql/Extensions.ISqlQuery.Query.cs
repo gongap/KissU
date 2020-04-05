@@ -2,7 +2,7 @@
 using System.Data;
 using System.Threading.Tasks;
 using KissU.Core;
-using KissU.Core.Datas.Sql;
+using KissU.Util.Ddd.Datas.Sql;
 using Convert = KissU.Core.Helpers.Convert;
 
 namespace KissU.Util.Datas.Sql

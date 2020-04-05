@@ -1,15 +1,15 @@
 ﻿using System;
 using Dapper;
 using KissU.Core;
-using KissU.Core.Datas.Enums;
-using KissU.Core.Datas.Sql;
-using KissU.Core.Datas.Sql.Configs;
-using KissU.Core.Datas.Sql.Matedatas;
 using KissU.Util.Dapper.Handlers;
 using KissU.Util.Dapper.MySql;
 using KissU.Util.Dapper.Oracle;
 using KissU.Util.Dapper.PgSql;
 using KissU.Util.Dapper.SqlServer;
+using KissU.Util.Ddd.Datas.Enums;
+using KissU.Util.Ddd.Datas.Sql;
+using KissU.Util.Ddd.Datas.Sql.Configs;
+using KissU.Util.Ddd.Datas.Sql.Matedatas;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 

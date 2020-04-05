@@ -1,4 +1,4 @@
-﻿using KissU.Core.Domains;
+﻿using KissU.Util.Ddd.Domains;
 using KissU.Util.EntityFrameworkCore.Core;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

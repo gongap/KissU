@@ -11,6 +11,8 @@ using KissU.Util.Datas.Tests.Integration.Commons.Datas.SqlServer.Configs;
 using KissU.Util.Datas.Tests.Integration.Commons.Domains.Models;
 using KissU.Util.Datas.Tests.Integration.Commons.Domains.Repositories;
 using KissU.Util.Datas.Tests.Integration.Ef.SqlServer.UnitOfWorks;
+using KissU.Util.Ddd;
+using KissU.Util.Ddd.Datas.Queries;
 using KissU.Util.EntityFrameworkCore;
 using Xunit;
 

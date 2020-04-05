@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using KissU.Core;
-using KissU.Core.Applications.Dtos;
 using KissU.Core.Datas.Queries;
-using KissU.Core.Datas.Stores;
-using KissU.Core.Datas.UnitOfWorks;
-using KissU.Core.Domains;
 using KissU.Core.Helpers;
 using KissU.Core.Logs;
+using KissU.Util.Ddd.Applications.Dtos;
+using KissU.Util.Ddd.Datas.Queries;
+using KissU.Util.Ddd.Datas.Stores;
+using KissU.Util.Ddd.Datas.UnitOfWorks;
+using KissU.Util.Ddd.Domains;
 
 namespace KissU.Util.Applications
 {

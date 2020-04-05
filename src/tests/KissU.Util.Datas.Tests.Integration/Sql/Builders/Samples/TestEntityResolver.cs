@@ -2,9 +2,9 @@
 using System.Linq;
 using System.Linq.Expressions;
 using KissU.Core;
-using KissU.Core.Datas.Sql.Builders;
 using KissU.Core.Helpers;
 using KissU.Util.Datas.Tests.Integration.Samples;
+using KissU.Util.Ddd.Datas.Sql.Builders;
 
 namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.Samples
 {

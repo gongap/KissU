@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using KissU.Core.Applications.Dtos;
+using KissU.Util.Ddd.Applications.Dtos;
 
 namespace KissU.Modules.IdentityServer.Application.Dtos
 {

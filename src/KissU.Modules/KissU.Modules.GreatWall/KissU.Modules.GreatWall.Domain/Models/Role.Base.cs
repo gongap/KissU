@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using KissU.Core.Domains;
-using KissU.Core.Domains.Auditing;
-using KissU.Core.Domains.Trees;
+using KissU.Util.Ddd.Domains;
+using KissU.Util.Ddd.Domains.Auditing;
+using KissU.Util.Ddd.Domains.Trees;
 
 namespace KissU.Modules.GreatWall.Domain.Models
 {

@@ -2,7 +2,7 @@
 using AspectCore.DynamicProxy;
 using AspectCore.Extensions.AspectScope;
 using KissU.Core.Aspects.Base;
-using KissU.Core.Datas.UnitOfWorks;
+using KissU.Util.Ddd.Datas.UnitOfWorks;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace KissU.Util.Applications.Aspects

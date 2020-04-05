@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using KissU.Core;
-using KissU.Core.Applications.Dtos;
+using KissU.Util.Ddd.Applications.Dtos;
 using Nest;
 
 namespace KissU.Util.Search.ElasticSearch

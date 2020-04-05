@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Threading.Tasks;
 using KissU.Core;
-using KissU.Core.Domains.Services;
 using KissU.Modules.GreatWall.Domain.Extensions;
 using KissU.Modules.GreatWall.Domain.Models;
 using KissU.Modules.GreatWall.Domain.Options;
 using KissU.Modules.GreatWall.Domain.Purposes;
 using KissU.Modules.GreatWall.Domain.Repositories;
 using KissU.Modules.GreatWall.Domain.Services.Abstractions;
+using KissU.Util.Ddd.Domains.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 

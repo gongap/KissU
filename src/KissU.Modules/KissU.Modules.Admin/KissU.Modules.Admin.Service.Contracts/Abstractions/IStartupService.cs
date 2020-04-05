@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using KissU.Core.Applications;
 using KissU.Core.Ioc;
 using KissU.Surging.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
@@ -8,6 +7,7 @@ using KissU.Surging.CPlatform.Support.Attributes;
 using KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain;
 using KissU.Surging.CPlatform.Filters.Implementation;
 using KissU.Util.Applications;
+using KissU.Util.Ddd.Applications;
 
 namespace KissU.Modules.Admin.Service.Contracts.Abstractions
 {

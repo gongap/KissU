@@ -1,6 +1,6 @@
 ﻿using System;
-using KissU.Core.Datas.Sql.Builders;
 using KissU.Util.Datas.Sql.Builders;
+using KissU.Util.Ddd.Datas.Sql.Builders;
 
 namespace KissU.Util.Datas.Sql
 {

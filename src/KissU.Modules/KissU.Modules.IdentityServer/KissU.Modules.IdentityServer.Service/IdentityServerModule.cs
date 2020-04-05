@@ -1,11 +1,11 @@
 ﻿using Autofac.Extensions.DependencyInjection;
-using KissU.Core.Datas.Enums;
 using KissU.Core.Module;
 using KissU.Surging.CPlatform;
 using KissU.Modules.IdentityServer.Data;
 using KissU.Modules.IdentityServer.Data.UnitOfWorks.SqlServer;
 using KissU.Modules.IdentityServer.Domain.UnitOfWorks;
 using KissU.Util.Dapper;
+using KissU.Util.Ddd.Datas.Enums;
 using KissU.Util.EntityFrameworkCore.SqlServer;
 using Microsoft.Extensions.DependencyInjection;
 

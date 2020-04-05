@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 using KissU.Core;
-using KissU.Core.Domains;
 using KissU.Core.Logs;
+using KissU.Util.Ddd.Domains;
 
 namespace KissU.Util.Applications
 {

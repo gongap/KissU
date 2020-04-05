@@ -1,7 +1,7 @@
 ﻿using System;
-using KissU.Core.Datas.UnitOfWorks;
-using KissU.Core.Domains;
-using KissU.Core.Domains.Repositories;
+using KissU.Util.Ddd.Datas.UnitOfWorks;
+using KissU.Util.Ddd.Domains;
+using KissU.Util.Ddd.Domains.Repositories;
 
 namespace KissU.Util.EntityFrameworkCore.Core
 {

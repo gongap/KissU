@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using KissU.Core;
-using KissU.Core.Datas.UnitOfWorks;
-using KissU.Core.Domains.Trees;
+using KissU.Util.Ddd.Datas.UnitOfWorks;
+using KissU.Util.Ddd.Domains.Trees;
 using Microsoft.EntityFrameworkCore;
 
 namespace KissU.Util.EntityFrameworkCore.Core

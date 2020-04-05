@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using KissU.Core;
 using KissU.Core.Datas.Queries;
-using KissU.Core.Domains.Repositories;
 using KissU.Core.Maps;
 using KissU.Modules.GreatWall.Application.Abstractions;
 using KissU.Modules.GreatWall.Application.Dtos;
@@ -15,6 +14,8 @@ using KissU.Modules.GreatWall.Domain.Services.Abstractions;
 using KissU.Modules.GreatWall.Domain.UnitOfWorks;
 using KissU.Util;
 using KissU.Util.Applications;
+using KissU.Util.Ddd.Datas.Queries;
+using KissU.Util.Ddd.Domains.Repositories;
 
 namespace KissU.Modules.GreatWall.Application.Implements
 {

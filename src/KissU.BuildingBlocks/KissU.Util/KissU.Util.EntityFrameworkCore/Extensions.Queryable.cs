@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using KissU.Core.Datas.Queries.Internal;
-using KissU.Core.Domains.Repositories;
+using KissU.Util.Ddd.Datas.Queries.Internal;
+using KissU.Util.Ddd.Domains.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace KissU.Util.EntityFrameworkCore

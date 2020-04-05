@@ -1,6 +1,6 @@
 ﻿using KissU.Core;
-using KissU.Core.Datas.Sql.Builders;
 using KissU.Core.Helpers;
+using KissU.Util.Ddd.Datas.Sql.Builders;
 
 namespace KissU.Util.Dapper.PgSql
 {

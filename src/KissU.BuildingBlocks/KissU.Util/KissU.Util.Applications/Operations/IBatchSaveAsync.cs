@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.Core.Applications.Dtos;
+using KissU.Util.Ddd.Applications.Dtos;
 
 namespace KissU.Util.Applications.Operations
 {

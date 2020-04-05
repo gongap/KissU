@@ -1,7 +1,7 @@
-﻿using KissU.Core.Datas.Sql.Builders.Core;
-using KissU.Util.Dapper.MySql;
+﻿using KissU.Util.Dapper.MySql;
 using KissU.Util.Datas.Sql.Builders.Clauses;
 using KissU.Util.Datas.Sql.Builders.Core;
+using KissU.Util.Ddd.Datas.Sql.Builders.Core;
 using Xunit;
 
 namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.MySql.Clauses

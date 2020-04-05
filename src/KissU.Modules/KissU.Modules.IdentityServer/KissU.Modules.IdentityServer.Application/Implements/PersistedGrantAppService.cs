@@ -1,5 +1,4 @@
 ﻿using KissU.Core.Datas.Queries;
-using KissU.Core.Domains.Repositories;
 using KissU.Modules.IdentityServer.Application.Abstractions;
 using KissU.Modules.IdentityServer.Application.Dtos;
 using KissU.Modules.IdentityServer.Application.Queries;
@@ -7,6 +6,8 @@ using KissU.Modules.IdentityServer.Domain.Models;
 using KissU.Modules.IdentityServer.Domain.Repositories;
 using KissU.Modules.IdentityServer.Domain.UnitOfWorks;
 using KissU.Util.Applications;
+using KissU.Util.Ddd.Datas.Queries;
+using KissU.Util.Ddd.Domains.Repositories;
 
 namespace KissU.Modules.IdentityServer.Application.Implements
 {

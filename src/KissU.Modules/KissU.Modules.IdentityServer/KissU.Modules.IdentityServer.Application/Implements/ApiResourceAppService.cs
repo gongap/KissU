@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using IdentityServer4;
 using KissU.Core;
 using KissU.Core.Datas.Queries;
-using KissU.Core.Domains.Repositories;
 using KissU.Core.Exceptions;
 using KissU.Core.Maps;
 using KissU.Modules.IdentityServer.Application.Abstractions;
@@ -17,6 +16,8 @@ using KissU.Modules.IdentityServer.Domain.Repositories;
 using KissU.Modules.IdentityServer.Domain.UnitOfWorks;
 using KissU.Util;
 using KissU.Util.Applications;
+using KissU.Util.Ddd.Datas.Queries;
+using KissU.Util.Ddd.Domains.Repositories;
 
 namespace KissU.Modules.IdentityServer.Application.Implements
 {

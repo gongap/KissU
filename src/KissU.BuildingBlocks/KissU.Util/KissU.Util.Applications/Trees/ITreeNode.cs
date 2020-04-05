@@ -1,4 +1,4 @@
-﻿using KissU.Core.Applications.Dtos;
+﻿using KissU.Util.Ddd.Applications.Dtos;
 
 namespace KissU.Util.Applications.Trees
 {

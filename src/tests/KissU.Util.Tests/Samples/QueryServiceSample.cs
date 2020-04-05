@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using AutoMapper;
-using KissU.Core.Applications.Dtos;
 using KissU.Core.Datas.Queries;
-using KissU.Core.Domains.Repositories;
 using KissU.Util.Applications;
+using KissU.Util.Ddd.Applications.Dtos;
+using KissU.Util.Ddd.Datas.Queries;
+using KissU.Util.Ddd.Domains.Repositories;
 
 namespace KissU.Util.Tests.Samples
 {

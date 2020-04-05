@@ -227,6 +227,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.Dapper", "KissU.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.EntityFrameworkCore", "KissU.BuildingBlocks\KissU.Util\KissU.Util.EntityFrameworkCore\KissU.Util.EntityFrameworkCore.csproj", "{202357B2-5510-4DCE-8CC9-CC8A37AFDE43}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.Ddd", "KissU.BuildingBlocks\KissU.Util\KissU.Util.Ddd\KissU.Util.Ddd.csproj", "{C4CC89D3-1BBC-40EF-9E98-AADD3E379798}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -577,6 +579,10 @@ Global
 		{202357B2-5510-4DCE-8CC9-CC8A37AFDE43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{202357B2-5510-4DCE-8CC9-CC8A37AFDE43}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{202357B2-5510-4DCE-8CC9-CC8A37AFDE43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4CC89D3-1BBC-40EF-9E98-AADD3E379798}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4CC89D3-1BBC-40EF-9E98-AADD3E379798}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4CC89D3-1BBC-40EF-9E98-AADD3E379798}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4CC89D3-1BBC-40EF-9E98-AADD3E379798}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -683,6 +689,7 @@ Global
 		{9A2B5FF7-CAC2-4AC1-A96E-60779C9FAD0D} = {D4F921B5-1BBD-4F36-A1D0-DE934C035713}
 		{05ACBD55-8A6A-4399-AEF6-EFC307F83C40} = {D4F921B5-1BBD-4F36-A1D0-DE934C035713}
 		{202357B2-5510-4DCE-8CC9-CC8A37AFDE43} = {D4F921B5-1BBD-4F36-A1D0-DE934C035713}
+		{C4CC89D3-1BBC-40EF-9E98-AADD3E379798} = {D4F921B5-1BBD-4F36-A1D0-DE934C035713}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}

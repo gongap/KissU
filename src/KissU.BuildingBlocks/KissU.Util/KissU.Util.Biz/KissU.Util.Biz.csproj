@@ -6,8 +6,7 @@
     <Description>KissU应用框架的公共业务基础类库。</Description>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
-  
   <ItemGroup>
-    <ProjectReference Include="..\..\KissU.Core\KissU.Core\KissU.Core.csproj" />
+    <ProjectReference Include="..\KissU.Util.Ddd\KissU.Util.Ddd.csproj" />
   </ItemGroup>
 </Project>

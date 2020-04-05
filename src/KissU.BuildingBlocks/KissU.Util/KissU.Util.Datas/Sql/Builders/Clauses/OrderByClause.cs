@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using KissU.Core;
-using KissU.Core.Datas.Sql.Builders;
 using KissU.Core.Properties;
 using KissU.Util.Datas.Sql.Builders.Core;
 using KissU.Util.Datas.Sql.Builders.Internal;
+using KissU.Util.Ddd.Datas.Sql.Builders;
 
 namespace KissU.Util.Datas.Sql.Builders.Clauses
 {

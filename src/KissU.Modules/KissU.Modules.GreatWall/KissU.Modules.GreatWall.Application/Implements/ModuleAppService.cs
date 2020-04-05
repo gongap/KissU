@@ -10,6 +10,7 @@ using KissU.Modules.GreatWall.Domain.Repositories;
 using KissU.Modules.GreatWall.Domain.UnitOfWorks;
 using KissU.Util;
 using KissU.Util.Applications;
+using KissU.Util.Ddd;
 
 namespace KissU.Modules.GreatWall.Application.Implements
 {

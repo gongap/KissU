@@ -2,6 +2,7 @@
 using System.Linq.Expressions;
 using KissU.Core;
 using KissU.Core.Datas.Queries;
+using KissU.Util.Ddd.Datas.Queries;
 
 namespace KissU.Util.Search.ElasticSearch.Services.Conditions
 {

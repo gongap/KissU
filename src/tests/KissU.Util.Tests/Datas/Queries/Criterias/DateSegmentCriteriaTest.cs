@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Text;
 using KissU.Core.Datas.Queries;
-using KissU.Core.Datas.Queries.Criterias;
+using KissU.Util.Ddd.Datas.Queries;
+using KissU.Util.Ddd.Datas.Queries.Criterias;
 using KissU.Util.Tests.Samples;
 using Xunit;
 using Xunit.Abstractions;

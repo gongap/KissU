@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using KissU.Core.Datas.Stores;
-using KissU.Core.Datas.UnitOfWorks;
-using KissU.Core.Domains;
+using KissU.Util.Ddd.Datas.Stores;
+using KissU.Util.Ddd.Datas.UnitOfWorks;
+using KissU.Util.Ddd.Domains;
 using Microsoft.EntityFrameworkCore;
 
 namespace KissU.Util.EntityFrameworkCore.Core

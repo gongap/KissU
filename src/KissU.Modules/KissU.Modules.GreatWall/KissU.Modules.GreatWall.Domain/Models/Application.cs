@@ -1,8 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using KissU.Core.Domains;
 using KissU.Modules.GreatWall.Domain.Enums;
+using KissU.Util.Ddd.Domains;
 
 namespace KissU.Modules.GreatWall.Domain.Models
 {

@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using KissU.Core;
-using KissU.Core.Applications;
-using KissU.Core.Applications.Dtos;
 using KissU.Core.Datas.Queries;
-using KissU.Core.Domains.Repositories;
 using KissU.Util.Applications;
 using KissU.Util.AspNetCore.Mvc.Properties;
+using KissU.Util.Ddd.Applications;
+using KissU.Util.Ddd.Applications.Dtos;
+using KissU.Util.Ddd.Datas.Queries;
+using KissU.Util.Ddd.Domains.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KissU.Util.AspNetCore.Mvc.Controllers

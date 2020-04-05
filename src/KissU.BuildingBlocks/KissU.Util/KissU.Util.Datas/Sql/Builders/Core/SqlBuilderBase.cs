@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using KissU.Core;
-using KissU.Core.Datas.Sql;
-using KissU.Core.Datas.Sql.Builders;
-using KissU.Core.Datas.Sql.Builders.Core;
-using KissU.Core.Datas.Sql.Matedatas;
-using KissU.Core.Domains.Repositories;
 using KissU.Core.Helpers;
 using KissU.Util.Datas.Sql.Builders.Clauses;
 using KissU.Util.Datas.Sql.Builders.Filters;
+using KissU.Util.Ddd.Datas.Sql;
+using KissU.Util.Ddd.Datas.Sql.Builders;
+using KissU.Util.Ddd.Datas.Sql.Builders.Core;
+using KissU.Util.Ddd.Datas.Sql.Matedatas;
+using KissU.Util.Ddd.Domains.Repositories;
 
 namespace KissU.Util.Datas.Sql.Builders.Core
 {

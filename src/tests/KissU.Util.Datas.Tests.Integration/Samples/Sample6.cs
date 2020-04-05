@@ -1,4 +1,4 @@
-﻿using KissU.Core.Domains;
+﻿using KissU.Util.Ddd.Domains;
 
 namespace KissU.Util.Datas.Tests.Integration.Samples
 {

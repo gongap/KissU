@@ -1,5 +1,5 @@
-﻿using KissU.Core.Domains.Repositories;
-using KissU.Util.Datas.Tests.Integration.Commons.Domains.Models;
+﻿using KissU.Util.Datas.Tests.Integration.Commons.Domains.Models;
+using KissU.Util.Ddd.Domains.Repositories;
 
 namespace KissU.Util.Datas.Tests.Integration.Commons.Domains.Repositories
 {
