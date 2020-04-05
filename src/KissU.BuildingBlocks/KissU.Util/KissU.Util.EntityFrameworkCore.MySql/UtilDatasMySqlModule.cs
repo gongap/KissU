@@ -1,6 +1,6 @@
 ﻿using KissU.Core.Module;
 
-namespace KissU.Util.Datas.MySql
+namespace KissU.Util.EntityFrameworkCore.MySql
 {
     /// <summary>
     /// UtilModule.

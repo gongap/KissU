@@ -5,7 +5,7 @@ using KissU.Core.Datas.Queries.Internal;
 using KissU.Core.Domains.Repositories;
 using Microsoft.EntityFrameworkCore;
 
-namespace KissU.Util.Datas.Ef
+namespace KissU.Util.EntityFrameworkCore
 {
     /// <summary>
     /// 查询扩展

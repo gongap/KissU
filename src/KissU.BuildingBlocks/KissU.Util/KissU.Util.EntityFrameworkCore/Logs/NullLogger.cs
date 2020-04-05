@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Extensions.Logging;
 
-namespace KissU.Util.Datas.Ef.Logs
+namespace KissU.Util.EntityFrameworkCore.Logs
 {
     /// <summary>
     /// 空日志记录器

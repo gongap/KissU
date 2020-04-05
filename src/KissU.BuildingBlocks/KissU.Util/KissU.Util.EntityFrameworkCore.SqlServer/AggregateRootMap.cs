@@ -1,8 +1,8 @@
 ﻿using KissU.Core.Domains;
-using KissU.Util.Datas.Ef.Core;
+using KissU.Util.EntityFrameworkCore.Core;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace KissU.Util.Datas.SqlServer.Ef
+namespace KissU.Util.EntityFrameworkCore.SqlServer
 {
     /// <summary>
     /// 聚合根映射配置

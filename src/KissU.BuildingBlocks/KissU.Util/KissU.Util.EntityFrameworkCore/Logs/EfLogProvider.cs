@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace KissU.Util.Datas.Ef.Logs
+namespace KissU.Util.EntityFrameworkCore.Logs
 {
     /// <summary>
     /// Ef日志提供器

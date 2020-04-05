@@ -1,5 +1,5 @@
-﻿using KissU.Util.Datas.PgSql.Ef;
-using KissU.Util.Datas.Tests.Integration.Commons.Datas.PgSql.Configs;
+﻿using KissU.Util.Datas.Tests.Integration.Commons.Datas.PgSql.Configs;
+using KissU.Util.EntityFrameworkCore.PgSql;
 using Microsoft.EntityFrameworkCore;
 
 namespace KissU.Util.Datas.Tests.Integration.Ef.PgSql.UnitOfWorks

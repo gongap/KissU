@@ -9,7 +9,7 @@ using KissU.Core.Domains;
 using KissU.Core.Domains.Trees;
 using Microsoft.EntityFrameworkCore;
 
-namespace KissU.Util.Datas.Ef.Core
+namespace KissU.Util.EntityFrameworkCore.Core
 {
     /// <summary>
     /// 树形仓储

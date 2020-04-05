@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Reflection;
 using KissU.Core.Helpers;
-using KissU.Util.Datas.Ef.Core;
+using KissU.Util.EntityFrameworkCore.Core;
 using Microsoft.EntityFrameworkCore;
 
-namespace KissU.Util.Datas.SqlServer.Ef
+namespace KissU.Util.EntityFrameworkCore.SqlServer
 {
     /// <summary>
     /// SqlServer工作单元
@@ -27,7 +27,7 @@ namespace KissU.Util.Datas.SqlServer.Ef
         /// </summary>
         /// <param name="assembly">程序集</param>
         /// <returns>IEnumerable&lt;Datas.Ef.Core.IMap&gt;.</returns>
-        protected override IEnumerable<Datas.Ef.Core.IMap> GetMapInstances(Assembly assembly)
+        protected override IEnumerable<EntityFrameworkCore.Core.IMap> GetMapInstances(Assembly assembly)
         {
             return Reflection.GetInstancesByInterface<IMap>(assembly);
         }

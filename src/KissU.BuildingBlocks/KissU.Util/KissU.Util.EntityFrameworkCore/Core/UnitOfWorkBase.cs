@@ -15,16 +15,15 @@ using KissU.Core.Exceptions;
 using KissU.Core.Helpers;
 using KissU.Core.Logs;
 using KissU.Core.Sessions;
-using KissU.Util.Datas.Ef.Configs;
-using KissU.Util.Datas.Ef.Logs;
-using KissU.Util.Datas.Sql;
+using KissU.Util.EntityFrameworkCore.Configs;
+using KissU.Util.EntityFrameworkCore.Logs;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace KissU.Util.Datas.Ef.Core
+namespace KissU.Util.EntityFrameworkCore.Core
 {
     /// <summary>
     /// 工作单元

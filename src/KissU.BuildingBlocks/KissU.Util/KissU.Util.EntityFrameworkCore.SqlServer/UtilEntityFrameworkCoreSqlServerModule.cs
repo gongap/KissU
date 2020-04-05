@@ -1,6 +1,6 @@
 ﻿using KissU.Core.Module;
 
-namespace KissU.Util.Datas.SqlServer
+namespace KissU.Util.EntityFrameworkCore.SqlServer
 {
     /// <summary>
     /// UtilModule.

@@ -1,11 +1,9 @@
 ﻿using KissU.Core.Datas.Sql;
 using KissU.Core.Datas.Sql.Builders;
 using KissU.Core.Datas.Sql.Matedatas;
-using KissU.Util.Datas.Sql;
-using KissU.Util.Datas.Sql.Builders;
 using KissU.Util.Datas.Sql.Builders.Core;
 
-namespace KissU.Util.Datas.SqlServer.Dapper
+namespace KissU.Util.Dapper.SqlServer
 {
     /// <summary>
     /// Sql Server Sql生成器

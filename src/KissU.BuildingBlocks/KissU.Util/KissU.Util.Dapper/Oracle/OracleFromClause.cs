@@ -2,12 +2,9 @@
 using KissU.Core.Datas.Sql.Builders;
 using KissU.Core.Datas.Sql.Builders.Core;
 using KissU.Core.Datas.Sql.Matedatas;
-using KissU.Util.Datas.Sql;
-using KissU.Util.Datas.Sql.Builders;
 using KissU.Util.Datas.Sql.Builders.Clauses;
-using KissU.Util.Datas.Sql.Builders.Core;
 
-namespace KissU.Util.Datas.Oracle.Dapper
+namespace KissU.Util.Dapper.Oracle
 {
     /// <summary>
     /// Oracle From子句

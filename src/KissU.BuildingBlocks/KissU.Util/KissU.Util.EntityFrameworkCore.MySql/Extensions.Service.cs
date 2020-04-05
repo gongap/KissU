@@ -1,14 +1,14 @@
 ﻿using System;
 using KissU.Core.Datas.Enums;
 using KissU.Core.Datas.UnitOfWorks;
-using KissU.Util.Datas.Ef.Configs;
-using KissU.Util.Datas.Ef.Core;
+using KissU.Util.EntityFrameworkCore.Configs;
+using KissU.Util.EntityFrameworkCore.Core;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace KissU.Util.Datas.MySql
+namespace KissU.Util.EntityFrameworkCore.MySql
 {
     /// <summary>
     /// 服务扩展

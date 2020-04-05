@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using Dapper;
 
-namespace KissU.Util.Datas.Dapper.Handlers
+namespace KissU.Util.Dapper.Handlers
 {
     /// <summary>
     /// 字符串类型处理器

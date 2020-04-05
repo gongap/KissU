@@ -13,11 +13,10 @@ using KissU.Core.Datas.UnitOfWorks;
 using KissU.Core.Domains;
 using KissU.Core.Domains.Repositories;
 using KissU.Core.Helpers;
-using KissU.Util.Datas.Sql;
 using Microsoft.EntityFrameworkCore;
 using Convert = KissU.Core.Helpers.Convert;
 
-namespace KissU.Util.Datas.Ef.Core
+namespace KissU.Util.EntityFrameworkCore.Core
 {
     /// <summary>
     /// 查询存储器

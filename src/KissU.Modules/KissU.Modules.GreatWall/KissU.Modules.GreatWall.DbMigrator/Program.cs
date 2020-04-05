@@ -4,7 +4,7 @@ using KissU.Core.Dependency;
 using KissU.Modules.GreatWall.Application.Extensions;
 using KissU.Modules.GreatWall.Data;
 using KissU.Modules.GreatWall.Domain.UnitOfWorks;
-using KissU.Util.Datas.SqlServer;
+using KissU.Util.EntityFrameworkCore.SqlServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

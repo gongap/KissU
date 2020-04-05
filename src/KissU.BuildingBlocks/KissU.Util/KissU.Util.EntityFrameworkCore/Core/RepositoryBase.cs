@@ -3,7 +3,7 @@ using KissU.Core.Datas.UnitOfWorks;
 using KissU.Core.Domains;
 using KissU.Core.Domains.Repositories;
 
-namespace KissU.Util.Datas.Ef.Core
+namespace KissU.Util.EntityFrameworkCore.Core
 {
     /// <summary>
     /// 仓储

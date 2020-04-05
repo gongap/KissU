@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 using Dapper;
 using KissU.Core.Datas.Sql;
 using KissU.Core.Domains.Repositories;
-using KissU.Util.Datas.Sql;
 
-namespace KissU.Util.Datas.Dapper
+namespace KissU.Util.Datas
 {
     /// <summary>
     /// 查询对象扩展

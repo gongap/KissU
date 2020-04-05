@@ -1,6 +1,6 @@
-﻿using KissU.Util.Datas.Ef.Core;
+﻿using KissU.Util.EntityFrameworkCore.Core;
 
-namespace KissU.Util.Datas.PgSql.Ef
+namespace KissU.Util.EntityFrameworkCore.PgSql
 {
     /// <summary>
     /// 实体映射配置

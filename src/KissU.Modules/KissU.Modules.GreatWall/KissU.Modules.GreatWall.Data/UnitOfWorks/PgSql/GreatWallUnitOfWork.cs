@@ -1,5 +1,5 @@
 ﻿using KissU.Modules.GreatWall.Domain.UnitOfWorks;
-using KissU.Util.Datas.PgSql.Ef;
+using KissU.Util.EntityFrameworkCore.PgSql;
 using Microsoft.EntityFrameworkCore;
 
 namespace KissU.Modules.GreatWall.Data.UnitOfWorks.PgSql

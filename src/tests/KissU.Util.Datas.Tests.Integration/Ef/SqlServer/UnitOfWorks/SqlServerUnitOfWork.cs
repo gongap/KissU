@@ -1,6 +1,6 @@
 ﻿using KissU.Core.Aspects;
-using KissU.Util.Datas.SqlServer.Ef;
 using KissU.Util.Datas.Tests.Integration.Commons.Datas.SqlServer.Configs;
+using KissU.Util.EntityFrameworkCore.SqlServer;
 using Microsoft.EntityFrameworkCore;
 
 namespace KissU.Util.Datas.Tests.Integration.Ef.SqlServer.UnitOfWorks

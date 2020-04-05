@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.Datas.Ef.Configs
+﻿namespace KissU.Util.EntityFrameworkCore.Configs
 {
     /// <summary>
     /// Ef日志级别

@@ -6,9 +6,9 @@ using KissU.Modules.GreatWall.Application.Extensions;
 using KissU.Modules.GreatWall.Data;
 using KissU.Modules.GreatWall.Data.UnitOfWorks.SqlServer;
 using KissU.Modules.GreatWall.Domain.UnitOfWorks;
-using KissU.Util.Datas.SqlServer;
+using KissU.Util.Dapper;
+using KissU.Util.EntityFrameworkCore.SqlServer;
 using Microsoft.Extensions.DependencyInjection;
-using Util.Datas.Dapper;
 
 namespace KissU.Modules.GreatWall.Service
 {

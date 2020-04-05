@@ -8,7 +8,7 @@ using KissU.Core.Datas.UnitOfWorks;
 using KissU.Core.Domains;
 using Microsoft.EntityFrameworkCore;
 
-namespace KissU.Util.Datas.Ef.Core
+namespace KissU.Util.EntityFrameworkCore.Core
 {
     /// <summary>
     /// 存储器

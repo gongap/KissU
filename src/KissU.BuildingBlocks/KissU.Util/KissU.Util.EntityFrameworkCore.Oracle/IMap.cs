@@ -1,9 +1,9 @@
-﻿namespace KissU.Util.Datas.Oracle.Ef
+﻿namespace KissU.Util.EntityFrameworkCore.Oracle
 {
     /// <summary>
     /// 映射
     /// </summary>
-    public interface IMap : Datas.Ef.Core.IMap
+    public interface IMap : EntityFrameworkCore.Core.IMap
     {
     }
 }

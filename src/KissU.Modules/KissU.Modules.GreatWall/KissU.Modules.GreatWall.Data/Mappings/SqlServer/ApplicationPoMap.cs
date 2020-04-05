@@ -1,5 +1,5 @@
 ﻿using KissU.Modules.GreatWall.Data.Pos;
-using KissU.Util.Datas.SqlServer.Ef;
+using KissU.Util.EntityFrameworkCore.SqlServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

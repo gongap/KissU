@@ -1,5 +1,5 @@
 ﻿using KissU.Modules.GreatWall.Data.Pos;
-using KissU.Util.Datas.PgSql.Ef;
+using KissU.Util.EntityFrameworkCore.PgSql;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

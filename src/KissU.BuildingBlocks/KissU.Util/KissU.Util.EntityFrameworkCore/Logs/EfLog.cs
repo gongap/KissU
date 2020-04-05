@@ -5,12 +5,12 @@ using KissU.Core;
 using KissU.Core.Datas.UnitOfWorks;
 using KissU.Core.Helpers;
 using KissU.Core.Logs;
-using KissU.Util.Datas.Ef.Configs;
-using KissU.Util.Datas.Ef.Core;
+using KissU.Util.EntityFrameworkCore.Configs;
+using KissU.Util.EntityFrameworkCore.Core;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace KissU.Util.Datas.Ef.Logs
+namespace KissU.Util.EntityFrameworkCore.Logs
 {
     /// <summary>
     /// Ef日志记录器

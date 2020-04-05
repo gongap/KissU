@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using KissU.Core.Reflections;
 using KissU.Modules.GreatWall.Domain.UnitOfWorks;
-using KissU.Util.Datas.SqlServer.Ef;
+using KissU.Util.EntityFrameworkCore.SqlServer;
 using Microsoft.EntityFrameworkCore;
 
 namespace KissU.Modules.GreatWall.DbMigrator

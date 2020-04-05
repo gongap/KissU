@@ -1,6 +1,6 @@
 ﻿using KissU.Core.Module;
 
-namespace KissU.Util.Datas.Oracle
+namespace KissU.Util.EntityFrameworkCore.Oracle
 {
     /// <summary>
     /// UtilModule.

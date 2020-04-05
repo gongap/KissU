@@ -2,7 +2,7 @@
 using KissU.Core.Datas.UnitOfWorks;
 using Microsoft.EntityFrameworkCore;
 
-namespace KissU.Util.Datas.Ef
+namespace KissU.Util.EntityFrameworkCore
 {
     /// <summary>
     /// Ef工作单元扩展

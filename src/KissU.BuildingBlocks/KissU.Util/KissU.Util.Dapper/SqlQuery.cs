@@ -13,7 +13,7 @@ using KissU.Util.Datas.Sql;
 using KissU.Util.Datas.Sql.Queries;
 using Convert = KissU.Core.Helpers.Convert;
 
-namespace KissU.Util.Datas.Dapper
+namespace KissU.Util.Dapper
 {
     /// <summary>
     /// Dapper Sql查询对象

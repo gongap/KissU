@@ -5,16 +5,15 @@ using KissU.Core.Datas.Enums;
 using KissU.Core.Datas.Sql;
 using KissU.Core.Datas.Sql.Configs;
 using KissU.Core.Datas.Sql.Matedatas;
-using KissU.Util.Datas.Dapper;
-using KissU.Util.Datas.Dapper.Handlers;
-using KissU.Util.Datas.MySql.Dapper;
-using KissU.Util.Datas.Oracle.Dapper;
-using KissU.Util.Datas.PgSql.Dapper;
-using KissU.Util.Datas.SqlServer.Dapper;
+using KissU.Util.Dapper.Handlers;
+using KissU.Util.Dapper.MySql;
+using KissU.Util.Dapper.Oracle;
+using KissU.Util.Dapper.PgSql;
+using KissU.Util.Dapper.SqlServer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace Util.Datas.Dapper {
+namespace KissU.Util.Dapper {
     /// <summary>
     /// 服务扩展
     /// </summary>

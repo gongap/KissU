@@ -1,9 +1,8 @@
 ﻿using KissU.Core;
 using KissU.Core.Datas.Sql.Builders;
 using KissU.Core.Helpers;
-using KissU.Util.Datas.Sql.Builders;
 
-namespace KissU.Util.Datas.PgSql.Dapper
+namespace KissU.Util.Dapper.PgSql
 {
     /// <summary>
     /// PgSql参数字面值解析器

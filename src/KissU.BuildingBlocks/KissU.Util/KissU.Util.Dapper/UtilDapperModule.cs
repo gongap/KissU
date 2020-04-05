@@ -1,6 +1,6 @@
 ﻿using KissU.Core.Module;
 
-namespace KissU.Util.Datas
+namespace KissU.Util.Dapper
 {
     /// <summary>
     /// UtilModule.

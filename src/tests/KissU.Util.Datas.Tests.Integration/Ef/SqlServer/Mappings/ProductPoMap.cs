@@ -1,5 +1,5 @@
-﻿using KissU.Util.Datas.SqlServer.Ef;
-using KissU.Util.Datas.Tests.Integration.Commons.Datas.Pos;
+﻿using KissU.Util.Datas.Tests.Integration.Commons.Datas.Pos;
+using KissU.Util.EntityFrameworkCore.SqlServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

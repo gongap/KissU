@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Reflection;
 using KissU.Core.Helpers;
-using KissU.Util.Datas.Ef.Core;
-using KissU.Util.Datas.Ef.Internal;
+using KissU.Util.EntityFrameworkCore.Core;
+using KissU.Util.EntityFrameworkCore.Internal;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-namespace KissU.Util.Datas.Oracle.Ef
+namespace KissU.Util.EntityFrameworkCore.Oracle
 {
     /// <summary>
     /// Oracle工作单元
@@ -29,7 +29,7 @@ namespace KissU.Util.Datas.Oracle.Ef
         /// </summary>
         /// <param name="assembly">程序集</param>
         /// <returns>IEnumerable&lt;IMap&gt;.</returns>
-        protected override IEnumerable<Datas.Ef.Core.IMap> GetMapInstances(Assembly assembly)
+        protected override IEnumerable<EntityFrameworkCore.Core.IMap> GetMapInstances(Assembly assembly)
         {
             return Reflection.GetInstancesByInterface<IMap>(assembly);
         }

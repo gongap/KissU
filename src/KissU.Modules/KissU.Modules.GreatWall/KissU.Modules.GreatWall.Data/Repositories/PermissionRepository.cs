@@ -6,7 +6,7 @@ using KissU.Modules.GreatWall.Data.Pos;
 using KissU.Modules.GreatWall.Domain.Models;
 using KissU.Modules.GreatWall.Domain.Repositories;
 using KissU.Modules.GreatWall.Domain.UnitOfWorks;
-using KissU.Util.Datas.Ef.Core;
+using KissU.Util.EntityFrameworkCore.Core;
 using Microsoft.EntityFrameworkCore;
 
 namespace KissU.Modules.GreatWall.Data.Repositories

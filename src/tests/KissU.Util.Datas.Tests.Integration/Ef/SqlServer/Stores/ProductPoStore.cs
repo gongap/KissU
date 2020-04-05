@@ -1,6 +1,6 @@
-﻿using KissU.Util.Datas.Ef.Core;
-using KissU.Util.Datas.Tests.Integration.Commons.Datas.Pos;
+﻿using KissU.Util.Datas.Tests.Integration.Commons.Datas.Pos;
 using KissU.Util.Datas.Tests.Integration.Ef.SqlServer.UnitOfWorks;
+using KissU.Util.EntityFrameworkCore.Core;
 
 namespace KissU.Util.Datas.Tests.Integration.Ef.SqlServer.Stores
 {

@@ -1,6 +1,6 @@
 ﻿using KissU.Core.Datas.Sql.Configs;
 
-namespace KissU.Util.Datas.Ef.Configs
+namespace KissU.Util.EntityFrameworkCore.Configs
 {
     /// <summary>
     /// Ef配置

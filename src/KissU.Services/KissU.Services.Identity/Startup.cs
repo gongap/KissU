@@ -5,7 +5,7 @@ using KissU.Modules.GreatWall.Domain.UnitOfWorks;
 using KissU.Modules.IdentityServer.Data.UnitOfWorks.SqlServer;
 using KissU.Modules.IdentityServer.Domain.UnitOfWorks;
 using KissU.Services.Identity.Extensions;
-using KissU.Util.Datas.SqlServer;
+using KissU.Util.EntityFrameworkCore.SqlServer;
 using KissU.Util.Logs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

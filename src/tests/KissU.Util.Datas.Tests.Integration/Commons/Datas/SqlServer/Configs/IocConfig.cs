@@ -5,7 +5,6 @@ using KissU.Core.Datas.Transactions;
 using KissU.Core.Datas.UnitOfWorks;
 using KissU.Core.Dependency;
 using KissU.Core.Sessions;
-using KissU.Util.Datas.Dapper;
 using KissU.Util.Datas.Sql;
 using KissU.Util.Datas.SqlServer.Dapper;
 using KissU.Util.Datas.Tests.Integration.Commons.Domains.Repositories;

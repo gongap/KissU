@@ -3,7 +3,7 @@ using System.Text;
 using KissU.Core.Domains;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-namespace KissU.Util.Datas.Ef.Internal
+namespace KissU.Util.EntityFrameworkCore.Internal
 {
     /// <summary>
     /// 工具操作

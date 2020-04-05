@@ -1,6 +1,6 @@
 ﻿using KissU.Core.Module;
 
-namespace KissU.Util.Datas.PgSql
+namespace KissU.Util.EntityFrameworkCore.PgSql
 {
     /// <summary>
     /// UtilModule.

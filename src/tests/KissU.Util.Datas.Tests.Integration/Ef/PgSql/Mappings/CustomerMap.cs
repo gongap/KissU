@@ -1,5 +1,5 @@
-﻿using KissU.Util.Datas.PgSql.Ef;
-using KissU.Util.Datas.Tests.Integration.Commons.Domains.Models;
+﻿using KissU.Util.Datas.Tests.Integration.Commons.Domains.Models;
+using KissU.Util.EntityFrameworkCore.PgSql;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

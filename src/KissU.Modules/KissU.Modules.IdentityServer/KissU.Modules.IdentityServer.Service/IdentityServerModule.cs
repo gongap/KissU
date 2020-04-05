@@ -5,9 +5,9 @@ using KissU.Surging.CPlatform;
 using KissU.Modules.IdentityServer.Data;
 using KissU.Modules.IdentityServer.Data.UnitOfWorks.SqlServer;
 using KissU.Modules.IdentityServer.Domain.UnitOfWorks;
-using KissU.Util.Datas.SqlServer;
+using KissU.Util.Dapper;
+using KissU.Util.EntityFrameworkCore.SqlServer;
 using Microsoft.Extensions.DependencyInjection;
-using Util.Datas.Dapper;
 
 namespace KissU.Modules.IdentityServer.Service
 {

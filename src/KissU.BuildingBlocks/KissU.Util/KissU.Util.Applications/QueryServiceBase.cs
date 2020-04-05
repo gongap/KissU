@@ -10,7 +10,7 @@ using KissU.Core.Datas.Stores;
 using KissU.Core.Domains;
 using KissU.Core.Domains.Repositories;
 using KissU.Core.Maps;
-using KissU.Util.Datas.Ef;
+using KissU.Util.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Convert = KissU.Core.Helpers.Convert;
 

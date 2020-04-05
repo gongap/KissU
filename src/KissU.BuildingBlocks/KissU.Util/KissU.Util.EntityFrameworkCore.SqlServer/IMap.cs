@@ -1,9 +1,9 @@
-﻿namespace KissU.Util.Datas.SqlServer.Ef
+﻿namespace KissU.Util.EntityFrameworkCore.SqlServer
 {
     /// <summary>
     /// 映射
     /// </summary>
-    public interface IMap : Datas.Ef.Core.IMap
+    public interface IMap : EntityFrameworkCore.Core.IMap
     {
     }
 }
