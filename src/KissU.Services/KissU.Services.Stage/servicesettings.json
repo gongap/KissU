@@ -14,7 +14,7 @@
     "DisconnTimeInterval": 30,
     "ExecutionTimeoutInMilliseconds": 1000,
     "Protocol": "${Protocol}|None",
-    "RootPath": "${RootPath}|D:\\App",
+    "RootPath": "${RootPath}|D:\\App\\Stage",
     "WebRootPath": "${WebRootPath}|D:\\App\\wwwroot",
     "IsModulePerLifetimeScope": false,
     "ReloadOnChange": false,
