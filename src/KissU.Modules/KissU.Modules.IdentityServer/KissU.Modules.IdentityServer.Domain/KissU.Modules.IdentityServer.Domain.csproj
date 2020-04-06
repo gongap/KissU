@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Util\KissU.Util.Ddd\KissU.Util.Ddd.Domain.csproj" />
     <ProjectReference Include="..\KissU.Modules.IdentityServer.Domain.Shared\KissU.Modules.IdentityServer.Domain.Shared.csproj" />
   </ItemGroup>
 </Project>

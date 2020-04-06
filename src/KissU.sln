@@ -223,7 +223,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.Dapper", "KissU.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.EntityFrameworkCore", "KissU.BuildingBlocks\KissU.Util\KissU.Util.EntityFrameworkCore\KissU.Util.EntityFrameworkCore.csproj", "{202357B2-5510-4DCE-8CC9-CC8A37AFDE43}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.Ddd", "KissU.BuildingBlocks\KissU.Util\KissU.Util.Ddd\KissU.Util.Ddd.csproj", "{C4CC89D3-1BBC-40EF-9E98-AADD3E379798}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.Ddd.Domain", "KissU.BuildingBlocks\KissU.Util\KissU.Util.Ddd\KissU.Util.Ddd.Domain.csproj", "{C4CC89D3-1BBC-40EF-9E98-AADD3E379798}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.AdminConsole.Service.Contracts", "KissU.Modules\KissU.Modules.AdminConsole\KissU.Modules.AdminConsole.Service.Contracts\KissU.Modules.AdminConsole.Service.Contracts.csproj", "{ADA0A3D2-9D0C-47A3-BB61-60E642F5EAF5}"
 EndProject

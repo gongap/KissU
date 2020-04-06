@@ -6,6 +6,11 @@
     <Description>KissU应用框架的核心类库。</Description>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Applications\**" />
+    <EmbeddedResource Remove="Applications\**" />
+    <None Remove="Applications\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Properties\" />

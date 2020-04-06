@@ -15,6 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KissU.Util.Ddd\KissU.Util.Ddd.csproj" />
+    <ProjectReference Include="..\KissU.Util.Ddd\KissU.Util.Ddd.Domain.csproj" />
   </ItemGroup>
 </Project>
