@@ -61,7 +61,7 @@ namespace KissU.Client
             {
                 RpcContext.GetContext().SetAttachment("xid", 124);
 
-                var userProxy = serviceProxyFactory.CreateProxy<IUserService>("User");
+                var userProxy = serviceProxyFactory.CreateProxy<IAccountService>("Account");
                 var e = userProxy.SetSex(Sex.Woman).GetAwaiter().GetResult();
                 var v = userProxy.GetUserId("gongap").GetAwaiter().GetResult();
                 var fa = userProxy.GetUserName(1).GetAwaiter().GetResult();
@@ -109,7 +109,7 @@ namespace KissU.Client
 
         public static void TestRabbitMq(IServiceProxyFactory serviceProxyFactory)
         {
-            serviceProxyFactory.CreateProxy<IUserService>("User").PublishThroughEventBusAsync(new UserEvent
+            serviceProxyFactory.CreateProxy<IAccountService>("User").PublishThroughEventBusAsync(new UserEvent
             {
                 Age = 18,
                 Name = "gongap",

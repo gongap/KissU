@@ -3,7 +3,7 @@
 namespace KissU.Util.Dapper
 {
     /// <summary>
-    /// UtilModule.
+    /// UtilDapperModule.
     /// Implements the <see cref="UtilDapperModule" />
     /// </summary>
     /// <seealso cref="UtilDapperModule" />

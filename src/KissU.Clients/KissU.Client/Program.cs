@@ -63,10 +63,10 @@ namespace KissU.Client
         {
             var sw = new Stopwatch();
             sw.Start();
-            var userProxy = ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy<IUserService>("User");
+            var userProxy = ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy<IAccountService>("User");
             ServiceResolver.Current.Register("User", userProxy);
             var service = ServiceLocator.GetService<IServiceProxyFactory>();
-            userProxy = ServiceResolver.Current.GetService<IUserService>("User");
+            userProxy = ServiceResolver.Current.GetService<IAccountService>("User");
             sw.Stop();
             Console.WriteLine($"代理所花{sw.ElapsedMilliseconds}ms");
             ThreadPool.SetMinThreads(100, 100);
@@ -77,9 +77,9 @@ namespace KissU.Client
               });
         }
 
-        public static async Task Test(IUserService userProxy, int connectionCount)
+        public static async Task Test(IAccountService accountProxy, int connectionCount)
         {
-            var a = await userProxy.GetDictionary();
+            var a = await accountProxy.GetDictionary();
             IncreaseSuccessConnection(connectionCount);
         }
 

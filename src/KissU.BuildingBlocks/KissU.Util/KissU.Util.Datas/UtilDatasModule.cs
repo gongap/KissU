@@ -3,7 +3,7 @@
 namespace KissU.Util.Datas
 {
     /// <summary>
-    /// UtilModule.
+    /// UtilDatasModule.
     /// Implements the <see cref="UtilDatasModule" />
     /// </summary>
     /// <seealso cref="UtilDatasModule" />
