@@ -7,7 +7,7 @@
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\KissU.Core\KissU.Core\KissU.Core.csproj" />
-    <ProjectReference Include="..\KissU.Util.EntityFrameworkCore\KissU.Util.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\KissU.Util.Ddd\KissU.Util.Ddd.csproj" />
+    <!--<ProjectReference Include="..\KissU.Util.EntityFrameworkCore\KissU.Util.EntityFrameworkCore.csproj" />-->
   </ItemGroup>
 </Project>

@@ -10,8 +10,6 @@ using KissU.Util.Ddd.Datas.Queries;
 using KissU.Util.Ddd.Datas.Stores;
 using KissU.Util.Ddd.Domains;
 using KissU.Util.Ddd.Domains.Repositories;
-using KissU.Util.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
 using Convert = KissU.Core.Helpers.Convert;
 
 namespace KissU.Util.Applications
@@ -147,7 +145,9 @@ namespace KissU.Util.Applications
                 return new List<TDto>();
             }
 
-            return (await ExecuteQuery(parameter).ToListAsync()).Select(ToDto).ToList();
+            var query = CreateQuery(parameter);
+            var entities = await _store.QueryAsync(query);
+            return entities.Select(ToDto).ToList();
         }
 
         /// <summary>
@@ -196,10 +196,8 @@ namespace KissU.Util.Applications
             }
 
             var query = CreateQuery(parameter);
-            var queryable = Filter(query);
-            queryable = Filter(queryable, parameter);
-
-            return (await queryable.ToPagerListAsync(query.GetPager())).Convert(ToDto);
+            var entities = await _store.PagerQueryAsync(query);
+            return entities.Convert(ToDto);
         }
 
         /// <summary>
