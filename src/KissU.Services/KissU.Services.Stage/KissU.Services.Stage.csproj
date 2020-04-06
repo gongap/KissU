@@ -51,7 +51,8 @@
     <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Surging\KissU.Surging.Swagger\KissU.Surging.Swagger.csproj" />
     <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Surging\KissU.Surging.Zookeeper\KissU.Surging.Zookeeper.csproj" />
     <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Surging\KissU.Surging.Stage\KissU.Surging.Stage.csproj" />
-    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Admin\KissU.Modules.Admin.Service\KissU.Modules.Admin.Service.csproj" />
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.AdminConsole\KissU.Modules.AdminConsole.Service.Contracts\KissU.Modules.AdminConsole.Service.Contracts.csproj" />
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.AdminConsole\KissU.Modules.AdminConsole.Service\KissU.Modules.AdminConsole.Service.csproj" />
     <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.GreatWall\KissU.Modules.GreatWall.Service.Contracts\KissU.Modules.GreatWall.Service.Contracts.csproj" />
     <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.IdentityServer\KissU.Modules.IdentityServer.Service.Contracts\KissU.Modules.IdentityServer.Service.Contracts.csproj" />
   </ItemGroup>

@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="../../../common.props" />
+  <Import Project="../../../configureawait.props" />
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Description>KissU应用框架的核心类库。</Description>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KissU.Util.Ddd.Application.Contracts\KissU.Util.Ddd.Application.Contracts.csproj" />
+    <ProjectReference Include="..\KissU.Util.Ddd\KissU.Util.Ddd.csproj" />
+  </ItemGroup>
+</Project>
