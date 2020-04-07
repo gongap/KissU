@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using IdentityServer4;
-using KissU.Modules.IdentityServer.Domain.Enums;
+using KissU.Modules.IdentityServer.Domain.Shared.Enums;
 using KissU.Util.Ddd.Domains;
 
 namespace KissU.Modules.IdentityServer.Domain.Models

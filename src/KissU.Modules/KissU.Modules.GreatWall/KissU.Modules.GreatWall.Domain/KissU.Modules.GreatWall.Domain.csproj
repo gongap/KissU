@@ -19,21 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Util\KissU.Util.Ddd\KissU.Util.Ddd.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="GreatWallResource.Designer.cs">
-      <DependentUpon>GreatWallResource.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="GreatWallResource.resx">
-      <LastGenOutput>GreatWallResource.Designer.cs</LastGenOutput>
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
+    <ProjectReference Include="..\KissU.Modules.GreatWall.Domain.Shared\KissU.Modules.GreatWall.Domain.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>

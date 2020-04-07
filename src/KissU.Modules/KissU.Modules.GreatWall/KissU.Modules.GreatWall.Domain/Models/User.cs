@@ -3,7 +3,8 @@ using KissU.Core;
 using KissU.Core.Exceptions;
 using KissU.Core.Security.Encryptors;
 using KissU.Core.Validations;
-using KissU.Modules.GreatWall.Domain.Encryptors;
+using KissU.Modules.GreatWall.Domain.Shared;
+using KissU.Modules.GreatWall.Domain.Shared.Encryptors;
 
 namespace KissU.Modules.GreatWall.Domain.Models
 {

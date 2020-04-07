@@ -4,9 +4,9 @@ using IdentityModel;
 using IdentityServer4.Models;
 using IdentityServer4.Validation;
 using KissU.Core;
-using KissU.Modules.GreatWall.Application.Abstractions;
-using KissU.Modules.GreatWall.Application.Dtos.Requests;
-using KissU.Modules.GreatWall.Domain.Results;
+using KissU.Modules.GreatWall.Application.Contracts.Abstractions;
+using KissU.Modules.GreatWall.Application.Contracts.Dtos.Requests;
+using KissU.Modules.GreatWall.Domain.Shared.Results;
 
 namespace KissU.Services.Identity.Services
 {

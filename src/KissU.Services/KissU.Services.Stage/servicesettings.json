@@ -184,9 +184,5 @@
     "LogLevel": {
       "Default": "${LogLevel}|Debug"
     }
-  },
-  "ConnectionStrings": {
-    "IdentityServerConnection": "Server=192.168.2.76;Database=KissU.IdentityServer;uid=sa;pwd=saP@ss123;MultipleActiveResultSets=true",
-    "GreatWallConnection": "Server=192.168.2.76;Database=KissU.GreatWall;uid=sa;pwd=saP@ss123;MultipleActiveResultSets=true"
   }
 }

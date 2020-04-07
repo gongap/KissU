@@ -2,10 +2,10 @@
 using System.Threading.Tasks;
 using KissU.Core.Ioc;
 using KissU.Core.Validations.Aspects;
+using KissU.Modules.IdentityServer.Application.Contracts.Dtos;
+using KissU.Modules.IdentityServer.Application.Contracts.Dtos.Requests;
+using KissU.Modules.IdentityServer.Application.Contracts.Queries;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
-using KissU.Modules.IdentityServer.Application.Dtos;
-using KissU.Modules.IdentityServer.Application.Dtos.Requests;
-using KissU.Modules.IdentityServer.Application.Queries;
 using KissU.Util.Ddd.Domains.Repositories;
 
 namespace KissU.Modules.IdentityServer.Service.Contracts

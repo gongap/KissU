@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.Modules.GreatWall.Application.Abstractions;
-using KissU.Modules.GreatWall.Application.Dtos.Responses;
+using KissU.Modules.GreatWall.Application.Contracts.Abstractions;
+using KissU.Modules.GreatWall.Application.Contracts.Dtos.Responses;
 using KissU.Modules.GreatWall.Service.Contracts;
 using KissU.Surging.ProxyGenerator;
 

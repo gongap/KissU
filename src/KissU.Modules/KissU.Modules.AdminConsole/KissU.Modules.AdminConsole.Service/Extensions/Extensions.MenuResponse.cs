@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain;
-using KissU.Modules.GreatWall.Application.Dtos.Responses;
+using KissU.Modules.GreatWall.Application.Contracts.Dtos.Responses;
 
 namespace KissU.Modules.Admin.Service.Extensions
 {

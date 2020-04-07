@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using KissU.Util.Ddd.Applications.Dtos;
 
-namespace KissU.Modules.IdentityServer.Application.Dtos
+namespace KissU.Modules.IdentityServer.Application.Contracts.Dtos
 {
     /// <summary>
     /// 设备流代码数据传输对象

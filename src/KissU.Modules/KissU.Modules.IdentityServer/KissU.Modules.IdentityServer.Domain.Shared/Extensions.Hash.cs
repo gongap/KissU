@@ -2,7 +2,7 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace KissU.Modules.IdentityServer.Domain
+namespace KissU.Modules.IdentityServer.Domain.Shared
 {
     /// <summary>
     /// 哈希字符串的扩展方法

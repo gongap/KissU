@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using KissU.Modules.IdentityServer.Domain.Enums;
+using KissU.Modules.IdentityServer.Domain.Shared.Enums;
 using KissU.Util.Ddd.Applications.Dtos;
 
-namespace KissU.Modules.IdentityServer.Application.Dtos.Requests
+namespace KissU.Modules.IdentityServer.Application.Contracts.Dtos.Requests
 {
     /// <summary>
     /// 创建应用程序参数对象

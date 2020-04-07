@@ -1,4 +1,4 @@
-﻿namespace KissU.Modules.IdentityServer.Domain.Enums
+﻿namespace KissU.Modules.IdentityServer.Domain.Shared.Enums
 {
     /// <summary>
     /// 令牌使用类型

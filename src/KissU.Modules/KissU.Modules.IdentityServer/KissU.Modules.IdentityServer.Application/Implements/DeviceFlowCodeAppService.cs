@@ -1,6 +1,6 @@
-﻿using KissU.Modules.IdentityServer.Application.Abstractions;
-using KissU.Modules.IdentityServer.Application.Dtos;
-using KissU.Modules.IdentityServer.Application.Queries;
+﻿using KissU.Modules.IdentityServer.Application.Contracts.Abstractions;
+using KissU.Modules.IdentityServer.Application.Contracts.Dtos;
+using KissU.Modules.IdentityServer.Application.Contracts.Queries;
 using KissU.Modules.IdentityServer.Domain.Models;
 using KissU.Modules.IdentityServer.Domain.Repositories;
 using KissU.Modules.IdentityServer.Domain.UnitOfWorks;

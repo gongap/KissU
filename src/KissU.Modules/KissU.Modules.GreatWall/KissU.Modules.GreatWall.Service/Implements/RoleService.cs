@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.Modules.GreatWall.Application.Abstractions;
-using KissU.Modules.GreatWall.Application.Dtos;
-using KissU.Modules.GreatWall.Application.Dtos.Requests;
-using KissU.Modules.GreatWall.Application.Queries;
+using KissU.Modules.GreatWall.Application.Contracts.Abstractions;
+using KissU.Modules.GreatWall.Application.Contracts.Dtos;
+using KissU.Modules.GreatWall.Application.Contracts.Dtos.Requests;
+using KissU.Modules.GreatWall.Application.Contracts.Queries;
 using KissU.Modules.GreatWall.Service.Contracts;
 using KissU.Surging.ProxyGenerator;
 using KissU.Util.Ddd.Domains.Repositories;

@@ -1,9 +1,9 @@
-﻿using KissU.Modules.IdentityServer.Application.Dtos;
-using KissU.Modules.IdentityServer.Application.Dtos.Requests;
-using KissU.Modules.IdentityServer.Application.Queries;
+﻿using KissU.Modules.IdentityServer.Application.Contracts.Dtos;
+using KissU.Modules.IdentityServer.Application.Contracts.Dtos.Requests;
+using KissU.Modules.IdentityServer.Application.Contracts.Queries;
 using KissU.Util.Applications;
 
-namespace KissU.Modules.IdentityServer.Application.Abstractions
+namespace KissU.Modules.IdentityServer.Application.Contracts.Abstractions
 {
     /// <summary>
     /// 身份资源服务

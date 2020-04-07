@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using KissU.Modules.IdentityServer.Domain.Enums;
+using KissU.Modules.IdentityServer.Domain.Shared.Enums;
 using KissU.Util.Ddd.Applications.Dtos;
 
-namespace KissU.Modules.IdentityServer.Application.Dtos
+namespace KissU.Modules.IdentityServer.Application.Contracts.Dtos
 {
     /// <summary>
     /// Api密钥数据传输对象

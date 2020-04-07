@@ -1,11 +1,11 @@
 ﻿using System;
 using KissU.Core.Sessions;
 using KissU.Modules.GreatWall.Data.Repositories;
-using KissU.Modules.GreatWall.Domain.Describers;
-using KissU.Modules.GreatWall.Domain.Extensions;
 using KissU.Modules.GreatWall.Domain.Models;
-using KissU.Modules.GreatWall.Domain.Options;
 using KissU.Modules.GreatWall.Domain.Services.Implements;
+using KissU.Modules.GreatWall.Domain.Shared.Describers;
+using KissU.Modules.GreatWall.Domain.Shared.Extensions;
+using KissU.Modules.GreatWall.Domain.Shared.Options;
 using KissU.Util.AspNetCore.Sessions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;

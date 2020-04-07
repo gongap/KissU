@@ -1,7 +1,7 @@
 ﻿using KissU.Core.Helpers;
 using KissU.Core.Maps;
-using KissU.Modules.GreatWall.Domain.Enums;
 using KissU.Modules.GreatWall.Domain.Models;
+using KissU.Modules.GreatWall.Domain.Shared.Enums;
 
 namespace KissU.Modules.GreatWall.Data.Pos.Extensions
 {

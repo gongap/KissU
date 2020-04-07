@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using KissU.Core.Ioc;
+using KissU.Modules.GreatWall.Application.Contracts.Dtos.Requests;
+using KissU.Modules.GreatWall.Application.Contracts.Queries;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
-using KissU.Modules.GreatWall.Application.Dtos.Requests;
-using KissU.Modules.GreatWall.Application.Queries;
 
 namespace KissU.Modules.GreatWall.Service.Contracts
 {

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using KissU.Core.Ioc;
+using KissU.Modules.GreatWall.Application.Contracts.Dtos.Responses;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
-using KissU.Modules.GreatWall.Application.Dtos.Responses;
 
 namespace KissU.Modules.GreatWall.Service.Contracts
 {

@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using KissU.Util.Ddd.Applications.Dtos;
 
-namespace KissU.Modules.IdentityServer.Application.Dtos
+namespace KissU.Modules.IdentityServer.Application.Contracts.Dtos
 {
     /// <summary>
     /// 创建Api许可范围数据传输对象

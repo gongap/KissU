@@ -1,6 +1,6 @@
 ﻿using KissU.Util.Ddd.Datas.Queries;
 
-namespace KissU.Modules.IdentityServer.Application.Queries
+namespace KissU.Modules.IdentityServer.Application.Contracts.Queries
 {
     /// <summary>
     /// 设备流代码查询实体

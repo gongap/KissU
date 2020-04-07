@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using KissU.Core.Validations.Aspects;
-using KissU.Modules.IdentityServer.Application.Dtos;
-using KissU.Modules.IdentityServer.Application.Dtos.Requests;
-using KissU.Modules.IdentityServer.Application.Queries;
+using KissU.Modules.IdentityServer.Application.Contracts.Dtos;
+using KissU.Modules.IdentityServer.Application.Contracts.Dtos.Requests;
+using KissU.Modules.IdentityServer.Application.Contracts.Queries;
 using KissU.Util.Applications;
 using KissU.Util.Applications.Aspects;
 
-namespace KissU.Modules.IdentityServer.Application.Abstractions
+namespace KissU.Modules.IdentityServer.Application.Contracts.Abstractions
 {
     /// <summary>
     /// 应用程序服务

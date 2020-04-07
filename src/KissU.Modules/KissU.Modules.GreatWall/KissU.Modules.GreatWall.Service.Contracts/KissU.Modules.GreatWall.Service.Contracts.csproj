@@ -15,6 +15,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Surging\KissU.Surging.CPlatform\KissU.Surging.CPlatform.csproj" />
-    <ProjectReference Include="..\KissU.Modules.GreatWall.Application\KissU.Modules.GreatWall.Application.csproj" />
+    <ProjectReference Include="..\KissU.Modules.GreatWall.Application.Contracts\KissU.Modules.GreatWall.Application.Contracts.csproj" />
   </ItemGroup>
 </Project>

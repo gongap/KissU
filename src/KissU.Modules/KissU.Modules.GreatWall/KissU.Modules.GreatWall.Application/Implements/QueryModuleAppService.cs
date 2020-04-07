@@ -1,12 +1,12 @@
 ﻿using System.Linq;
-using KissU.Modules.GreatWall.Application.Abstractions;
-using KissU.Modules.GreatWall.Application.Dtos;
-using KissU.Modules.GreatWall.Application.Dtos.Extensions;
-using KissU.Modules.GreatWall.Application.Queries;
+using KissU.Modules.GreatWall.Application.Contracts.Abstractions;
+using KissU.Modules.GreatWall.Application.Contracts.Dtos;
+using KissU.Modules.GreatWall.Application.Contracts.Queries;
+using KissU.Modules.GreatWall.Application.Extensions;
 using KissU.Modules.GreatWall.Data.Pos;
 using KissU.Modules.GreatWall.Data.Stores.Abstractions;
-using KissU.Modules.GreatWall.Domain.Enums;
 using KissU.Modules.GreatWall.Domain.Repositories;
+using KissU.Modules.GreatWall.Domain.Shared.Enums;
 using KissU.Modules.GreatWall.Domain.UnitOfWorks;
 using KissU.Util.Applications.Trees;
 using KissU.Util.Ddd.Datas.Queries;

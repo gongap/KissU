@@ -2,10 +2,10 @@
 using System.Threading.Tasks;
 using KissU.Core;
 using KissU.Core.Maps;
-using KissU.Modules.GreatWall.Application.Abstractions;
-using KissU.Modules.GreatWall.Application.Dtos;
-using KissU.Modules.GreatWall.Application.Dtos.Extensions;
-using KissU.Modules.GreatWall.Application.Dtos.Requests;
+using KissU.Modules.GreatWall.Application.Contracts.Abstractions;
+using KissU.Modules.GreatWall.Application.Contracts.Dtos;
+using KissU.Modules.GreatWall.Application.Contracts.Dtos.Requests;
+using KissU.Modules.GreatWall.Application.Extensions;
 using KissU.Modules.GreatWall.Domain.Repositories;
 using KissU.Modules.GreatWall.Domain.UnitOfWorks;
 using KissU.Util.Applications;
