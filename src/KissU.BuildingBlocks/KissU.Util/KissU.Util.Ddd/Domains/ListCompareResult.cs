@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace KissU.Util.Ddd.Domains
+namespace KissU.Util.Ddd.Domain.Domains
 {
     /// <summary>
     /// 列表比较结果

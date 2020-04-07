@@ -3,11 +3,11 @@ using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Linq.Expressions;
 using KissU.Core;
+using KissU.Core.Datas;
 using KissU.Core.Helpers;
 using KissU.Core.Properties;
-using KissU.Util.Ddd.Domains.Repositories;
 
-namespace KissU.Util.Ddd.Datas.Queries.Internal
+namespace KissU.Util.Ddd.Domain.Datas.Queries.Internal
 {
     /// <summary>
     /// 查询工具类

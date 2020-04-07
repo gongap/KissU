@@ -6,7 +6,7 @@ using KissU.Surging.CPlatform.Support;
 using KissU.Surging.CPlatform.Support.Attributes;
 using KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain;
 using KissU.Surging.CPlatform.Filters.Implementation;
-using KissU.Util.Ddd.Applications;
+using KissU.Util.Ddd.Application.Contracts;
 
 namespace KissU.Modules.Admin.Service.Contracts.Abstractions
 {

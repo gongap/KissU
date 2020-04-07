@@ -1,6 +1,6 @@
 ﻿using KissU.Core.Validations;
 
-namespace KissU.Util.Ddd.Applications.Dtos
+namespace KissU.Util.Ddd.Application.Contracts.Dtos
 {
     /// <summary>
     /// 请求参数

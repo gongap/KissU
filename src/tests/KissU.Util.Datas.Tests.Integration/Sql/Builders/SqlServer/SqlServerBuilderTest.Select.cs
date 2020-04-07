@@ -2,7 +2,7 @@
 using KissU.Util.Dapper.SqlServer;
 using KissU.Util.Datas.Sql;
 using KissU.Util.Datas.Tests.Integration.Samples;
-using KissU.Util.Ddd.Datas.Sql.Matedatas;
+using KissU.Util.Ddd.Domain.Datas.Sql.Matedatas;
 using Xunit;
 
 namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer

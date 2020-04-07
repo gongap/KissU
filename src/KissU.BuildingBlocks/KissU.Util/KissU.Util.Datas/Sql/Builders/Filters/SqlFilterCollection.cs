@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using KissU.Util.Ddd.Datas.Sql.Builders;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders;
 
 namespace KissU.Util.Datas.Sql.Builders.Filters
 {

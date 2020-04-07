@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.Ddd.Datas.Sql.Builders
+﻿namespace KissU.Util.Ddd.Domain.Datas.Sql.Builders
 {
     /// <summary>
     /// GroupBy子句操作

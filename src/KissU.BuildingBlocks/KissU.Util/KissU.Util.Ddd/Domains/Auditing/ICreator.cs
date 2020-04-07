@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.Ddd.Domains.Auditing
+﻿namespace KissU.Util.Ddd.Domain.Domains.Auditing
 {
     /// <summary>
     /// 创建人审计

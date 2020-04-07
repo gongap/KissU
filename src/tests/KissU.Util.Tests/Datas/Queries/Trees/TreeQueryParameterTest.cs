@@ -1,4 +1,4 @@
-﻿using KissU.Util.Ddd.Datas.Queries.Trees;
+﻿using KissU.Core.Datas.Queries.Trees;
 using Xunit;
 
 namespace KissU.Util.Tests.Datas.Queries.Trees

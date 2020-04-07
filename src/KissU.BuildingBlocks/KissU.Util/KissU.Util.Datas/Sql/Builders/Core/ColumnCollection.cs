@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using KissU.Core;
-using KissU.Util.Ddd.Datas.Sql.Builders;
-using KissU.Util.Ddd.Datas.Sql.Builders.Core;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders.Core;
 
 namespace KissU.Util.Datas.Sql.Builders.Core
 {

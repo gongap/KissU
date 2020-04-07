@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using KissU.Core;
+using KissU.Core.Datas.Queries;
 using KissU.Core.Dependency;
 using KissU.Core.Helpers;
 using KissU.Util.Datas.Tests.Integration.Commons.Datas.Criterias;
@@ -11,7 +12,8 @@ using KissU.Util.Datas.Tests.Integration.Commons.Domains.Models;
 using KissU.Util.Datas.Tests.Integration.Commons.Domains.Repositories;
 using KissU.Util.Datas.Tests.Integration.Ef.PgSql.UnitOfWorks;
 using KissU.Util.Ddd;
-using KissU.Util.Ddd.Datas.Queries;
+using KissU.Util.Ddd.Domain;
+using KissU.Util.Ddd.Domain.Datas.Queries;
 using KissU.Util.EntityFrameworkCore;
 using Xunit;
 

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using KissU.Core.Datas.Queries;
 
-namespace KissU.Util.Ddd.Datas.Sql.Builders
+namespace KissU.Util.Ddd.Domain.Datas.Sql.Builders
 {
     /// <summary>
     /// 参数管理器

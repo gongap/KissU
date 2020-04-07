@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using KissU.Util.Ddd.Datas.Queries;
+using KissU.Core.Datas.Queries;
 
 namespace KissU.Modules.IdentityServer.Application.Contracts.Queries
 {

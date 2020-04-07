@@ -4,8 +4,8 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
-using KissU.Util.Ddd.Datas.Sql;
-using KissU.Util.Ddd.Domains.Repositories;
+using KissU.Core.Datas;
+using KissU.Util.Ddd.Domain.Datas.Sql;
 
 namespace KissU.Util.Datas
 {

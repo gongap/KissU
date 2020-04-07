@@ -5,7 +5,7 @@ using KissU.Core;
 using KissU.Core.Exceptions;
 using KissU.Core.Properties;
 
-namespace KissU.Util.Ddd.Domains.Trees
+namespace KissU.Util.Ddd.Domain.Domains.Trees
 {
     /// <summary>
     /// 树形路径更新服务

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using KissU.Modules.IdentityServer.Domain.Shared.Enums;
-using KissU.Util.Ddd.Applications.Dtos;
+using KissU.Util.Ddd.Application.Contracts.Dtos;
 
 namespace KissU.Modules.IdentityServer.Application.Contracts.Dtos.Requests
 {

@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using KissU.Core.Logs;
 
-namespace KissU.Util.Applications
+namespace KissU.Util.Ddd.Application
 {
     /// <summary>
     /// 增删改查服务 - 批量Save

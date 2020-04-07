@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using KissU.Core.Datas.Queries;
-using KissU.Util.Ddd.Datas.Queries;
-using KissU.Util.Ddd.Datas.Sql;
+using KissU.Util.Ddd.Domain.Datas.Queries;
+using KissU.Util.Ddd.Domain.Datas.Sql;
 
 namespace KissU.Util.Datas.Sql
 {

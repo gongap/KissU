@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 
-namespace KissU.Util.Ddd.Domains
+namespace KissU.Util.Ddd.Domain.Domains
 {
     /// <summary>
     /// 变更值集合

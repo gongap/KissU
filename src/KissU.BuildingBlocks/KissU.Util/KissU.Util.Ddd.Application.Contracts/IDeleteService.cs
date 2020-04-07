@@ -1,8 +1,7 @@
-﻿using KissU.Util.Applications.Operations;
-using KissU.Util.Ddd.Applications;
-using KissU.Util.Ddd.Datas.Queries;
+﻿using KissU.Core.Datas.Queries;
+using KissU.Util.Ddd.Application.Contracts.Operations;
 
-namespace KissU.Util.Applications
+namespace KissU.Util.Ddd.Application.Contracts
 {
     /// <summary>
     /// 删除服务

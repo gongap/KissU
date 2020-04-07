@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using KissU.Core;
+using KissU.Core.Datas.Queries;
+using KissU.Core.Datas.UnitOfWorks;
 using KissU.Core.Helpers;
 using KissU.Core.Logs;
-using KissU.Util.Ddd.Applications.Dtos;
-using KissU.Util.Ddd.Datas.Queries;
-using KissU.Util.Ddd.Datas.Stores;
-using KissU.Util.Ddd.Datas.UnitOfWorks;
-using KissU.Util.Ddd.Domains;
+using KissU.Util.Ddd.Application.Contracts;
+using KissU.Util.Ddd.Application.Contracts.Dtos;
+using KissU.Util.Ddd.Domain.Datas.Stores;
+using KissU.Util.Ddd.Domain.Domains;
 
-namespace KissU.Util.Applications
+namespace KissU.Util.Ddd.Application
 {
     /// <summary>
     /// 删除服务

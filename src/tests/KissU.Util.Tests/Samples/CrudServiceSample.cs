@@ -1,10 +1,11 @@
 ﻿using System.Threading.Tasks;
 using KissU.Core;
+using KissU.Core.Datas.UnitOfWorks;
 using KissU.Core.Maps;
-using KissU.Util.Applications;
-using KissU.Util.Ddd.Datas.Queries;
-using KissU.Util.Ddd.Datas.UnitOfWorks;
-using KissU.Util.Ddd.Domains.Repositories;
+using KissU.Util.Ddd.Application;
+using KissU.Util.Ddd.Application.Contracts;
+using KissU.Util.Ddd.Domain.Datas.Queries;
+using KissU.Util.Ddd.Domain.Domains.Repositories;
 
 namespace KissU.Util.Tests.Samples
 {

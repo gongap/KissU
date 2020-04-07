@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using KissU.Modules.GreatWall.Domain.Shared.Enums;
-using KissU.Util.Ddd.Domains;
+using KissU.Util.Ddd.Domain.Domains;
 
 namespace KissU.Modules.GreatWall.Domain.Models
 {

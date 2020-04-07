@@ -2,10 +2,10 @@
 using AspectCore.DynamicProxy;
 using AspectCore.Extensions.AspectScope;
 using KissU.Core.Aspects.Base;
-using KissU.Util.Ddd.Datas.UnitOfWorks;
+using KissU.Core.Datas.UnitOfWorks;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace KissU.Util.Applications.Aspects
+namespace KissU.Util.Ddd.Application.Contracts.Aspects
 {
     /// <summary>
     /// 工作单元拦截器

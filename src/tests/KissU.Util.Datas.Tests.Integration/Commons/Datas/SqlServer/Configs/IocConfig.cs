@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using KissU.Core.Datas.Transactions;
+using KissU.Core.Datas.UnitOfWorks;
 using KissU.Core.Dependency;
 using KissU.Core.Sessions;
 using KissU.Util.Dapper;
@@ -8,9 +9,8 @@ using KissU.Util.Datas.Tests.Integration.Commons.Domains.Repositories;
 using KissU.Util.Datas.Tests.Integration.Ef.SqlServer.Repositories;
 using KissU.Util.Datas.Tests.Integration.Ef.SqlServer.Stores;
 using KissU.Util.Datas.Tests.Integration.Ef.SqlServer.UnitOfWorks;
-using KissU.Util.Ddd.Datas.Sql;
-using KissU.Util.Ddd.Datas.Sql.Matedatas;
-using KissU.Util.Ddd.Datas.UnitOfWorks;
+using KissU.Util.Ddd.Domain.Datas.Sql;
+using KissU.Util.Ddd.Domain.Datas.Sql.Matedatas;
 
 namespace KissU.Util.Datas.Tests.Integration.Commons.Datas.SqlServer.Configs
 {

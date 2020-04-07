@@ -2,7 +2,7 @@
 using KissU.Core.Exceptions;
 using KissU.Core.Validations;
 
-namespace KissU.Util.Ddd.Domains.Services
+namespace KissU.Util.Ddd.Domain.Domains.Services
 {
     /// <summary>
     /// 参数

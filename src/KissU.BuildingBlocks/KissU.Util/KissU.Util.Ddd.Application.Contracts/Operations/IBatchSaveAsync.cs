@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.Util.Ddd.Applications.Dtos;
+using KissU.Util.Ddd.Application.Contracts.Dtos;
 
-namespace KissU.Util.Applications.Operations
+namespace KissU.Util.Ddd.Application.Contracts.Operations
 {
     /// <summary>
     /// 批量保存操作

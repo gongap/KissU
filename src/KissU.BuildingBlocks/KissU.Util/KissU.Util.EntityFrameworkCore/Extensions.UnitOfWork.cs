@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using KissU.Util.Ddd.Datas.UnitOfWorks;
+using KissU.Core.Datas.UnitOfWorks;
 using Microsoft.EntityFrameworkCore;
 
 namespace KissU.Util.EntityFrameworkCore

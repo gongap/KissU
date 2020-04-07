@@ -6,7 +6,7 @@ using KissU.Core.Sessions;
 using KissU.Core.Validations;
 using Convert = KissU.Core.Helpers.Convert;
 
-namespace KissU.Util.Ddd.Domains
+namespace KissU.Util.Ddd.Domain.Domains
 {
     /// <summary>
     /// 领域实体

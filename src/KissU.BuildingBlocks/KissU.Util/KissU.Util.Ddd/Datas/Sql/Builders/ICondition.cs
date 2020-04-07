@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.Ddd.Datas.Sql.Builders
+﻿namespace KissU.Util.Ddd.Domain.Datas.Sql.Builders
 {
     /// <summary>
     /// Sql查询条件

@@ -1,4 +1,4 @@
-﻿using KissU.Util.Ddd.Datas.Sql.Matedatas;
+﻿using KissU.Util.Ddd.Domain.Datas.Sql.Matedatas;
 
 namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.Samples
 {

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using KissU.Util.Ddd.Datas.Queries;
-using KissU.Util.Ddd.Domains.Repositories;
+using KissU.Core.Datas;
+using KissU.Core.Datas.Queries;
 
-namespace KissU.Util.Ddd.Applications.Operations
+namespace KissU.Util.Ddd.Application.Contracts.Operations
 {
     /// <summary>
     /// 分页查询

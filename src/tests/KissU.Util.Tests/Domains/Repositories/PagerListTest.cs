@@ -1,5 +1,5 @@
-﻿using KissU.Core.Helpers;
-using KissU.Util.Ddd.Domains.Repositories;
+﻿using KissU.Core.Datas;
+using KissU.Core.Helpers;
 using KissU.Util.Tests.Samples;
 using Xunit;
 

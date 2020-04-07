@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 
-namespace KissU.Util.Ddd.Datas.Queries.Criterias
+namespace KissU.Util.Ddd.Domain.Datas.Queries.Criterias
 {
     /// <summary>
     /// 日期范围过滤条件 - 包含时间

@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using KissU.Core.Validations.Aspects;
-using KissU.Util.Applications.Aspects;
-using KissU.Util.Ddd.Applications.Dtos;
+using KissU.Util.Ddd.Application.Contracts.Aspects;
+using KissU.Util.Ddd.Application.Contracts.Dtos;
 
-namespace KissU.Util.Applications.Operations
+namespace KissU.Util.Ddd.Application.Contracts.Operations
 {
     /// <summary>
     /// 创建操作

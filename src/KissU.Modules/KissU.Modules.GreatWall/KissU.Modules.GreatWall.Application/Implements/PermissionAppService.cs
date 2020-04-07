@@ -8,7 +8,7 @@ using KissU.Modules.GreatWall.Application.Contracts.Queries;
 using KissU.Modules.GreatWall.Domain.Repositories;
 using KissU.Modules.GreatWall.Domain.Services.Abstractions;
 using KissU.Modules.GreatWall.Domain.UnitOfWorks;
-using KissU.Util.Applications;
+using KissU.Util.Ddd.Application;
 
 namespace KissU.Modules.GreatWall.Application.Implements
 {

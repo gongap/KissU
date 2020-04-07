@@ -6,9 +6,9 @@ using System.Linq.Expressions;
 using System.Reflection;
 using KissU.Core;
 using KissU.Core.Helpers;
-using KissU.Util.Ddd.Datas.Sql;
-using KissU.Util.Ddd.Datas.Sql.Builders;
-using KissU.Util.Ddd.Datas.Sql.Matedatas;
+using KissU.Util.Ddd.Domain.Datas.Sql;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders;
+using KissU.Util.Ddd.Domain.Datas.Sql.Matedatas;
 
 namespace KissU.Util.Datas.Sql.Builders.Core
 {

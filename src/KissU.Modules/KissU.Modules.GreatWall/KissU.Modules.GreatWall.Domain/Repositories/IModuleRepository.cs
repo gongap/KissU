@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using KissU.Modules.GreatWall.Domain.Models;
-using KissU.Util.Ddd.Domains.Trees;
+using KissU.Util.Ddd.Domain.Domains.Trees;
 
 namespace KissU.Modules.GreatWall.Domain.Repositories
 {

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using KissU.Util.Ddd.Datas.Sql;
-using KissU.Util.Ddd.Datas.Sql.Builders;
-using KissU.Util.Ddd.Datas.Sql.Builders.Core;
+using KissU.Util.Ddd.Domain.Datas.Sql;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders.Core;
 
 namespace KissU.Util.Datas.Sql
 {

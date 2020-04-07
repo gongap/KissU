@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using KissU.Util.Ddd.Applications.Dtos;
+using KissU.Util.Ddd.Application.Contracts.Dtos;
 
 namespace KissU.Modules.IdentityServer.Application.Contracts.Dtos
 {

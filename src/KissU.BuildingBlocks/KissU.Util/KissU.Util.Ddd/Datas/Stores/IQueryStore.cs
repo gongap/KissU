@@ -1,9 +1,9 @@
 ﻿using System;
 using KissU.Core.Dependency;
-using KissU.Util.Ddd.Datas.Stores.Operations;
-using KissU.Util.Ddd.Domains;
+using KissU.Util.Ddd.Domain.Datas.Stores.Operations;
+using KissU.Util.Ddd.Domain.Domains;
 
-namespace KissU.Util.Ddd.Datas.Stores
+namespace KissU.Util.Ddd.Domain.Datas.Stores
 {
     /// <summary>
     /// 查询存储器

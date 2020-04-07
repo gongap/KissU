@@ -1,7 +1,7 @@
 ﻿using KissU.Core.Logs;
 using KissU.Core.Logs.Core;
 
-namespace KissU.Util.Ddd.Domains.Services
+namespace KissU.Util.Ddd.Domain.Domains.Services
 {
     /// <summary>
     /// 领域服务

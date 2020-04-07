@@ -6,7 +6,8 @@ using KissU.Modules.GreatWall.Domain.Models;
 using KissU.Modules.GreatWall.Domain.Repositories;
 using KissU.Modules.GreatWall.Domain.Services.Abstractions;
 using KissU.Util.Ddd;
-using KissU.Util.Ddd.Domains.Services;
+using KissU.Util.Ddd.Domain;
+using KissU.Util.Ddd.Domain.Domains.Services;
 
 namespace KissU.Modules.GreatWall.Domain.Services.Implements
 {

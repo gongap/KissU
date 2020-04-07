@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using Convert = KissU.Core.Helpers.Convert;
 
-namespace KissU.Util.Ddd.Domains
+namespace KissU.Util.Ddd.Domain.Domains
 {
     /// <summary>
     /// 值对象

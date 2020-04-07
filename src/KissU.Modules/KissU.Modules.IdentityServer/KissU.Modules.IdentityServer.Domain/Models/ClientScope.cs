@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using KissU.Util.Ddd.Domains;
+using KissU.Util.Ddd.Domain.Domains;
 
 namespace KissU.Modules.IdentityServer.Domain.Models
 {

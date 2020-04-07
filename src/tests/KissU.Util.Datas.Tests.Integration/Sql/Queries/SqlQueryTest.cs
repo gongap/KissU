@@ -6,7 +6,7 @@ using KissU.Util.Datas.Sql;
 using KissU.Util.Datas.Tests.Integration.Commons.Domains.Models;
 using KissU.Util.Datas.Tests.Integration.Commons.Domains.Repositories;
 using KissU.Util.Datas.Tests.Integration.Ef.SqlServer.UnitOfWorks;
-using KissU.Util.Ddd.Datas.Sql;
+using KissU.Util.Ddd.Domain.Datas.Sql;
 using Xunit;
 using Xunit.Abstractions;
 

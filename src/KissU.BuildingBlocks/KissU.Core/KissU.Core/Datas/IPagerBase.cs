@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.Ddd.Domains.Repositories
+﻿namespace KissU.Core.Datas
 {
     /// <summary>
     /// 分页

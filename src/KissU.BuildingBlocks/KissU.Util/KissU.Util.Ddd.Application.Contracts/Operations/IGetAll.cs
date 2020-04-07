@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace KissU.Util.Ddd.Applications.Operations
+namespace KissU.Util.Ddd.Application.Contracts.Operations
 {
     /// <summary>
     /// 获取全部数据

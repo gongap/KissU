@@ -1,6 +1,6 @@
 ﻿using KissU.Core.Dependency;
 
-namespace KissU.Util.Ddd.Domains.Services
+namespace KissU.Util.Ddd.Domain.Domains.Services
 {
     /// <summary>
     /// 领域服务

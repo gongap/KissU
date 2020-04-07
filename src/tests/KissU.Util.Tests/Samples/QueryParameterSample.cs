@@ -1,4 +1,4 @@
-﻿using KissU.Util.Ddd.Datas.Queries;
+﻿using KissU.Core.Datas.Queries;
 
 namespace KissU.Util.Tests.Samples
 {

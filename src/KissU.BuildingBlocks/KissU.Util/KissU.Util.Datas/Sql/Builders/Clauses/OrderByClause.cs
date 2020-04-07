@@ -6,7 +6,7 @@ using KissU.Core;
 using KissU.Core.Properties;
 using KissU.Util.Datas.Sql.Builders.Core;
 using KissU.Util.Datas.Sql.Builders.Internal;
-using KissU.Util.Ddd.Datas.Sql.Builders;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders;
 
 namespace KissU.Util.Datas.Sql.Builders.Clauses
 {

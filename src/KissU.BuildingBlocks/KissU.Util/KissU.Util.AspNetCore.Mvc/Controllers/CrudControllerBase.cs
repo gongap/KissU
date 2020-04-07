@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using KissU.Core;
-using KissU.Util.Applications;
+using KissU.Core.Datas.Queries;
 using KissU.Util.AspNetCore.Mvc.Models;
 using KissU.Util.AspNetCore.Mvc.Properties;
-using KissU.Util.Ddd.Applications.Dtos;
-using KissU.Util.Ddd.Datas.Queries;
+using KissU.Util.Ddd.Application.Contracts;
+using KissU.Util.Ddd.Application.Contracts.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KissU.Util.AspNetCore.Mvc.Controllers

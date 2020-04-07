@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KissU.Util.Ddd.Datas.Queries.Trees
+namespace KissU.Core.Datas.Queries.Trees
 {
     /// <summary>
     /// 树形查询参数

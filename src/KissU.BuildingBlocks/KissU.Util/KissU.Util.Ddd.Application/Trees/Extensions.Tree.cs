@@ -2,7 +2,7 @@
 using System.Linq;
 using KissU.Core;
 
-namespace KissU.Util.Applications.Trees
+namespace KissU.Util.Ddd.Application.Trees
 {
     /// <summary>
     /// 树形扩展

@@ -1,6 +1,6 @@
-﻿using KissU.Util.Ddd.Datas.Enums;
+﻿using KissU.Util.Ddd.Domain.Datas.Enums;
 
-namespace KissU.Util.Ddd.Datas.Sql.Configs
+namespace KissU.Util.Ddd.Domain.Datas.Sql.Configs
 {
     /// <summary>
     /// Sql配置

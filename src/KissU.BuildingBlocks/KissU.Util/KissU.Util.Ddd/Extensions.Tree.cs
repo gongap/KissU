@@ -2,9 +2,9 @@
 using System.Linq;
 using System.Threading.Tasks;
 using KissU.Core;
-using KissU.Util.Ddd.Domains.Trees;
+using KissU.Util.Ddd.Domain.Domains.Trees;
 
-namespace KissU.Util.Ddd
+namespace KissU.Util.Ddd.Domain
 {
     /// <summary>
     /// 树形扩展

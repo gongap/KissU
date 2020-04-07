@@ -3,9 +3,9 @@ using System.Linq.Expressions;
 using KissU.Core.Datas.Queries;
 using KissU.Core.Expressions;
 using KissU.Core.Helpers;
-using KissU.Util.Ddd.Domains.Repositories;
+using KissU.Util.Ddd.Domain.Domains.Repositories;
 
-namespace KissU.Util.Ddd.Datas.Queries.Criterias
+namespace KissU.Util.Ddd.Domain.Datas.Queries.Criterias
 {
     /// <summary>
     /// 范围过滤条件

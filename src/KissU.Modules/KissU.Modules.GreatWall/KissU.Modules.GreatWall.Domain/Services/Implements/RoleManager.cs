@@ -10,7 +10,8 @@ using KissU.Modules.GreatWall.Domain.Services.Abstractions;
 using KissU.Modules.GreatWall.Domain.Shared;
 using KissU.Modules.GreatWall.Domain.Shared.Extensions;
 using KissU.Util.Ddd;
-using KissU.Util.Ddd.Domains.Services;
+using KissU.Util.Ddd.Domain;
+using KissU.Util.Ddd.Domain.Domains.Services;
 using Microsoft.AspNetCore.Identity;
 
 namespace KissU.Modules.GreatWall.Domain.Services.Implements

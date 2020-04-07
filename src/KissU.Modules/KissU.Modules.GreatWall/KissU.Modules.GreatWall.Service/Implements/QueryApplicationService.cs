@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using KissU.Core.Datas;
 using KissU.Modules.GreatWall.Application.Contracts.Abstractions;
 using KissU.Modules.GreatWall.Application.Contracts.Dtos;
 using KissU.Modules.GreatWall.Application.Contracts.Queries;
 using KissU.Modules.GreatWall.Service.Contracts;
 using KissU.Surging.ProxyGenerator;
-using KissU.Util.Ddd.Domains.Repositories;
 
 namespace KissU.Modules.GreatWall.Service.Implements
 {

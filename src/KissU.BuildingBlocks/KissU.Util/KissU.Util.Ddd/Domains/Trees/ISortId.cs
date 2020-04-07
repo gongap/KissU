@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.Ddd.Domains.Trees
+﻿namespace KissU.Util.Ddd.Domain.Domains.Trees
 {
     /// <summary>
     /// 排序号

@@ -8,9 +8,9 @@ using KissU.Modules.GreatWall.Data.Stores.Abstractions;
 using KissU.Modules.GreatWall.Domain.Repositories;
 using KissU.Modules.GreatWall.Domain.Shared.Enums;
 using KissU.Modules.GreatWall.Domain.UnitOfWorks;
-using KissU.Util.Applications.Trees;
-using KissU.Util.Ddd.Datas.Queries;
-using KissU.Util.Ddd.Domains.Repositories;
+using KissU.Util.Ddd.Application.Trees;
+using KissU.Util.Ddd.Domain.Datas.Queries;
+using KissU.Util.Ddd.Domain.Domains.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace KissU.Modules.GreatWall.Application.Implements

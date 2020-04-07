@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 
-namespace KissU.Util.Ddd.Domains.Repositories
+namespace KissU.Core.Datas
 {
     /// <summary>
     /// 分页集合

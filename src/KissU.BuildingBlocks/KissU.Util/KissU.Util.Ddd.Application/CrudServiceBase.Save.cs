@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using KissU.Core;
 using KissU.Core.Logs;
-using KissU.Util.Ddd.Domains;
+using KissU.Util.Ddd.Domain.Domains;
 
-namespace KissU.Util.Applications
+namespace KissU.Util.Ddd.Application
 {
     /// <summary>
     /// 增删改查服务 - Save

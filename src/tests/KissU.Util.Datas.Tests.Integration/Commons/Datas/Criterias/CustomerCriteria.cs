@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 using KissU.Util.Datas.Tests.Integration.Commons.Domains.Models;
-using KissU.Util.Ddd.Domains.Repositories;
+using KissU.Util.Ddd.Domain.Domains.Repositories;
 
 namespace KissU.Util.Datas.Tests.Integration.Commons.Datas.Criterias
 {

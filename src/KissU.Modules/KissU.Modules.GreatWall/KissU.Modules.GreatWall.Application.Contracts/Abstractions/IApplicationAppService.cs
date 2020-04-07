@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using KissU.Core.Aspects;
 using KissU.Core.Validations.Aspects;
 using KissU.Modules.GreatWall.Application.Contracts.Dtos;
-using KissU.Util.Ddd.Applications;
+using KissU.Util.Ddd.Application.Contracts;
 
 namespace KissU.Modules.GreatWall.Application.Contracts.Abstractions
 {

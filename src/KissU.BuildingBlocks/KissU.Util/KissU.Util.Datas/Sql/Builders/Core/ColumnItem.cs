@@ -1,7 +1,7 @@
 ﻿using System;
-using KissU.Util.Ddd.Datas.Sql.Builders;
-using KissU.Util.Ddd.Datas.Sql.Builders.Core;
-using KissU.Util.Ddd.Datas.Sql.Builders.Extensions;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders.Core;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders.Extensions;
 
 namespace KissU.Util.Datas.Sql.Builders.Core
 {

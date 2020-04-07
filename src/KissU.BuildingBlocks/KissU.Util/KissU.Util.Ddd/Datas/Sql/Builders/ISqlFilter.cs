@@ -1,6 +1,6 @@
-﻿using KissU.Util.Ddd.Datas.Sql.Builders.Core;
+﻿using KissU.Util.Ddd.Domain.Datas.Sql.Builders.Core;
 
-namespace KissU.Util.Ddd.Datas.Sql.Builders
+namespace KissU.Util.Ddd.Domain.Datas.Sql.Builders
 {
     /// <summary>
     /// Sql过滤器

@@ -4,8 +4,8 @@ using KissU.Core.Validations.Aspects;
 using KissU.Modules.IdentityServer.Application.Contracts.Dtos;
 using KissU.Modules.IdentityServer.Application.Contracts.Dtos.Requests;
 using KissU.Modules.IdentityServer.Application.Contracts.Queries;
-using KissU.Util.Applications;
-using KissU.Util.Applications.Aspects;
+using KissU.Util.Ddd.Application.Contracts;
+using KissU.Util.Ddd.Application.Contracts.Aspects;
 
 namespace KissU.Modules.IdentityServer.Application.Contracts.Abstractions
 {

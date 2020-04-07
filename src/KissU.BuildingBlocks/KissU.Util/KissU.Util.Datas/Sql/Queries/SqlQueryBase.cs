@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
+using KissU.Core.Datas;
 using KissU.Core.Helpers;
-using KissU.Util.Ddd.Datas.Sql;
-using KissU.Util.Ddd.Datas.Sql.Builders;
-using KissU.Util.Ddd.Datas.Sql.Builders.Core;
-using KissU.Util.Ddd.Datas.Sql.Configs;
-using KissU.Util.Ddd.Domains.Repositories;
+using KissU.Util.Ddd.Domain.Datas.Sql;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders.Core;
+using KissU.Util.Ddd.Domain.Datas.Sql.Configs;
 using Microsoft.Extensions.Options;
 
 namespace KissU.Util.Datas.Sql.Queries

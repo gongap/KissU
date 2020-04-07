@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
+using KissU.Core.Datas;
+using KissU.Core.Datas.Queries;
 using KissU.Core.Maps;
-using KissU.Util.Ddd;
-using KissU.Util.Ddd.Applications;
-using KissU.Util.Ddd.Datas.Queries;
-using KissU.Util.Ddd.Datas.Stores;
-using KissU.Util.Ddd.Domains;
-using KissU.Util.Ddd.Domains.Repositories;
+using KissU.Util.Ddd.Application.Contracts;
+using KissU.Util.Ddd.Domain;
+using KissU.Util.Ddd.Domain.Datas.Queries;
+using KissU.Util.Ddd.Domain.Datas.Stores;
+using KissU.Util.Ddd.Domain.Domains;
+using KissU.Util.Ddd.Domain.Domains.Repositories;
 using Convert = KissU.Core.Helpers.Convert;
 
-namespace KissU.Util.Applications
+namespace KissU.Util.Ddd.Application
 {
     /// <summary>
     /// 查询服务

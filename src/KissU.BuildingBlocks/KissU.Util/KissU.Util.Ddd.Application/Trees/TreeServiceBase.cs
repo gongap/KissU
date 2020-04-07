@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using KissU.Util.Ddd;
-using KissU.Util.Ddd.Datas.Queries.Trees;
-using KissU.Util.Ddd.Datas.Stores;
-using KissU.Util.Ddd.Datas.UnitOfWorks;
-using KissU.Util.Ddd.Domains;
-using KissU.Util.Ddd.Domains.Trees;
+using KissU.Core.Datas.Queries.Trees;
+using KissU.Core.Datas.UnitOfWorks;
+using KissU.Util.Ddd.Domain;
+using KissU.Util.Ddd.Domain.Datas.Queries.Trees;
+using KissU.Util.Ddd.Domain.Datas.Stores;
+using KissU.Util.Ddd.Domain.Domains;
+using KissU.Util.Ddd.Domain.Domains.Trees;
 using Convert = KissU.Core.Helpers.Convert;
 
-namespace KissU.Util.Applications.Trees
+namespace KissU.Util.Ddd.Application.Trees
 {
     /// <summary>
     /// 树形服务

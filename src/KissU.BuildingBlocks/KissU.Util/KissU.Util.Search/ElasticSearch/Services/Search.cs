@@ -4,8 +4,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using KissU.Core;
-using KissU.Util.Ddd.Datas.Queries;
-using KissU.Util.Ddd.Domains.Repositories;
+using KissU.Core.Datas;
+using KissU.Core.Datas.Queries;
+using KissU.Util.Ddd.Domain.Datas.Queries;
 using Nest;
 
 namespace KissU.Util.Search.ElasticSearch.Services

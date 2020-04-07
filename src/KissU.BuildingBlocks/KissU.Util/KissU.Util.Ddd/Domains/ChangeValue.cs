@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace KissU.Util.Ddd.Domains
+namespace KissU.Util.Ddd.Domain.Domains
 {
     /// <summary>
     /// 变更值

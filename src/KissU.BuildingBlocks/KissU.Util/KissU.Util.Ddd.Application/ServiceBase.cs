@@ -1,8 +1,8 @@
 ﻿using KissU.Core.Logs;
 using KissU.Core.Sessions;
-using KissU.Util.Ddd.Applications;
+using KissU.Util.Ddd.Application.Contracts;
 
-namespace KissU.Util.Applications
+namespace KissU.Util.Ddd.Application
 {
     /// <summary>
     /// 应用服务

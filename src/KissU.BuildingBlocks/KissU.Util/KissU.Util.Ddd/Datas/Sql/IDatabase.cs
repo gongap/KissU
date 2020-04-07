@@ -1,6 +1,6 @@
 ﻿using System.Data;
 
-namespace KissU.Util.Ddd.Datas.Sql
+namespace KissU.Util.Ddd.Domain.Datas.Sql
 {
     /// <summary>
     /// 数据库

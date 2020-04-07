@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using KissU.Util.Ddd.Domains;
+using KissU.Util.Ddd.Domain.Domains;
 
-namespace KissU.Util.Ddd.Datas.Stores.Operations
+namespace KissU.Util.Ddd.Domain.Datas.Stores.Operations
 {
     /// <summary>
     /// 移除实体

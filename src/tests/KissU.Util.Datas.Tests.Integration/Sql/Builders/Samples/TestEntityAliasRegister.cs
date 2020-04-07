@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using KissU.Util.Ddd.Datas.Sql.Builders;
-using KissU.Util.Ddd.Datas.Sql.Builders.Core;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders.Core;
 
 namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.Samples
 {

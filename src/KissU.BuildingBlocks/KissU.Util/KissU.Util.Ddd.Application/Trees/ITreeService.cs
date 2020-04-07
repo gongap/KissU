@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.Util.Ddd.Datas.Queries.Trees;
+using KissU.Core.Datas.Queries.Trees;
+using KissU.Util.Ddd.Application.Contracts;
 
-namespace KissU.Util.Applications.Trees
+namespace KissU.Util.Ddd.Application.Trees
 {
     /// <summary>
     /// 树形服务

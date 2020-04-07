@@ -1,6 +1,6 @@
 ﻿using KissU.Core.Module;
 
-namespace KissU.Util.Ddd
+namespace KissU.Util.Ddd.Domain
 {
     /// <summary>
     /// UtilDddModule.

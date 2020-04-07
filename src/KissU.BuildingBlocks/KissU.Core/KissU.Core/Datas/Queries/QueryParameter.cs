@@ -1,6 +1,4 @@
-﻿using KissU.Util.Ddd.Domains.Repositories;
-
-namespace KissU.Util.Ddd.Datas.Queries
+﻿namespace KissU.Core.Datas.Queries
 {
     /// <summary>
     /// 查询参数

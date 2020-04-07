@@ -2,10 +2,10 @@
 using System.Text;
 using KissU.Core;
 using KissU.Core.Helpers;
-using KissU.Util.Ddd.Datas.Sql.Builders.Extensions;
-using KissU.Util.Ddd.Datas.Sql.Matedatas;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders.Extensions;
+using KissU.Util.Ddd.Domain.Datas.Sql.Matedatas;
 
-namespace KissU.Util.Ddd.Datas.Sql.Builders.Core
+namespace KissU.Util.Ddd.Domain.Datas.Sql.Builders.Core
 {
     /// <summary>
     /// Sql项

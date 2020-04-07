@@ -1,6 +1,6 @@
 ﻿using KissU.Util.Datas.Sql.Builders.Filters;
-using KissU.Util.Ddd.Datas.Sql;
-using KissU.Util.Ddd.Datas.Sql.Builders;
+using KissU.Util.Ddd.Domain.Datas.Sql;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders;
 
 namespace KissU.Util.Datas.Sql
 {

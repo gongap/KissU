@@ -1,7 +1,7 @@
 ﻿using KissU.Modules.IdentityServer.Application.Contracts.Dtos;
 using KissU.Modules.IdentityServer.Application.Contracts.Dtos.Requests;
 using KissU.Modules.IdentityServer.Application.Contracts.Queries;
-using KissU.Util.Applications;
+using KissU.Util.Ddd.Application.Contracts;
 
 namespace KissU.Modules.IdentityServer.Application.Contracts.Abstractions
 {

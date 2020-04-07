@@ -7,7 +7,7 @@ using KissU.Modules.GreatWall.Domain.Services.Abstractions;
 using KissU.Modules.GreatWall.Domain.Shared.Extensions;
 using KissU.Modules.GreatWall.Domain.Shared.Options;
 using KissU.Modules.GreatWall.Domain.Shared.Purposes;
-using KissU.Util.Ddd.Domains.Services;
+using KissU.Util.Ddd.Domain.Domains.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 

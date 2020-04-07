@@ -1,4 +1,4 @@
-﻿using KissU.Util.Ddd.Domains.Repositories;
+﻿using KissU.Core.Datas;
 using Xunit;
 
 namespace KissU.Util.Tests.Domains.Repositories

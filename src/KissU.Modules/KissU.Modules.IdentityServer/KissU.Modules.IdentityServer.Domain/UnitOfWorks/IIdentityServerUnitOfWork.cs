@@ -1,4 +1,4 @@
-﻿using KissU.Util.Ddd.Datas.UnitOfWorks;
+﻿using KissU.Core.Datas.UnitOfWorks;
 
 namespace KissU.Modules.IdentityServer.Domain.UnitOfWorks
 {

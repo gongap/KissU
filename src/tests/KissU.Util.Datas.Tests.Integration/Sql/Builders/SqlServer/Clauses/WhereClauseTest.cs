@@ -10,8 +10,8 @@ using KissU.Util.Datas.Sql.Builders.Core;
 using KissU.Util.Datas.Tests.Integration.Samples;
 using KissU.Util.Datas.Tests.Integration.Sql.Builders.Samples;
 using KissU.Util.Datas.Tests.Integration.XUnitHelpers;
-using KissU.Util.Ddd.Datas.Queries;
-using KissU.Util.Ddd.Datas.Sql.Builders.Core;
+using KissU.Util.Ddd.Domain.Datas.Queries;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders.Core;
 using Xunit;
 using String = KissU.Core.Helpers.String;
 

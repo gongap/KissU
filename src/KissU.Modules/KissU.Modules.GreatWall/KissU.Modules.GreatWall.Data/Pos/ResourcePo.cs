@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using KissU.Modules.GreatWall.Domain.Shared.Enums;
-using KissU.Util.Ddd.Datas.Persistence;
-using KissU.Util.Ddd.Domains;
-using KissU.Util.Ddd.Domains.Auditing;
+using KissU.Util.Datas.Persistence;
+using KissU.Util.Ddd.Domain.Domains;
+using KissU.Util.Ddd.Domain.Domains.Auditing;
 
 namespace KissU.Modules.GreatWall.Data.Pos
 {

@@ -2,9 +2,9 @@
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
-using KissU.Util.Ddd.Domains;
+using KissU.Util.Ddd.Domain.Domains;
 
-namespace KissU.Util.Ddd.Datas.Stores.Operations
+namespace KissU.Util.Ddd.Domain.Datas.Stores.Operations
 {
     /// <summary>
     /// 查找单个实体

@@ -5,7 +5,7 @@ using System.Linq;
 using KissU.Core;
 using Convert = KissU.Core.Helpers.Convert;
 
-namespace KissU.Util.Ddd.Domains.Trees
+namespace KissU.Util.Ddd.Domain.Domains.Trees
 {
     /// <summary>
     /// 树形实体

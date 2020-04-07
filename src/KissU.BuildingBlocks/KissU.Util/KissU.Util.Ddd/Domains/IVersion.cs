@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.Ddd.Domains
+﻿namespace KissU.Util.Ddd.Domain.Domains
 {
     /// <summary>
     /// 乐观锁

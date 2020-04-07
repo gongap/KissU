@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using KissU.Modules.GreatWall.Application.Contracts.Dtos.Responses;
-using KissU.Util.Ddd.Applications;
+using KissU.Util.Ddd.Application.Contracts;
 
 namespace KissU.Modules.GreatWall.Application.Contracts.Abstractions
 {

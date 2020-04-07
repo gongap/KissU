@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using KissU.Core.Validations.Aspects;
-using KissU.Util.Ddd.Domains;
+using KissU.Util.Ddd.Domain.Domains;
 
-namespace KissU.Util.Ddd.Datas.Stores.Operations
+namespace KissU.Util.Ddd.Domain.Datas.Stores.Operations
 {
     /// <summary>
     /// 修改实体

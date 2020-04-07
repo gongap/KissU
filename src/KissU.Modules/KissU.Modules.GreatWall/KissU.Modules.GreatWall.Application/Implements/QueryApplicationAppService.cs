@@ -6,9 +6,9 @@ using KissU.Modules.GreatWall.Application.Extensions;
 using KissU.Modules.GreatWall.Data.Pos;
 using KissU.Modules.GreatWall.Data.Stores.Abstractions;
 using KissU.Modules.GreatWall.Domain.Repositories;
-using KissU.Util.Applications;
-using KissU.Util.Ddd.Datas.Queries;
-using KissU.Util.Ddd.Domains.Repositories;
+using KissU.Util.Ddd.Application;
+using KissU.Util.Ddd.Domain.Datas.Queries;
+using KissU.Util.Ddd.Domain.Domains.Repositories;
 
 namespace KissU.Modules.GreatWall.Application.Implements
 {

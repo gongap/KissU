@@ -1,7 +1,7 @@
-﻿using KissU.Util.Ddd.Applications.Operations;
-using KissU.Util.Ddd.Datas.Queries;
+﻿using KissU.Core.Datas.Queries;
+using KissU.Util.Ddd.Application.Contracts.Operations;
 
-namespace KissU.Util.Ddd.Applications
+namespace KissU.Util.Ddd.Application.Contracts
 {
     /// <summary>
     /// 查询服务

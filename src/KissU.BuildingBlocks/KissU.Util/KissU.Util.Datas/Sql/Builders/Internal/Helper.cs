@@ -6,9 +6,9 @@ using KissU.Core;
 using KissU.Core.Datas.Queries;
 using KissU.Core.Helpers;
 using KissU.Util.Datas.Sql.Builders.Conditions;
-using KissU.Util.Ddd.Datas.Queries;
-using KissU.Util.Ddd.Datas.Sql.Builders;
-using KissU.Util.Ddd.Datas.Sql.Builders.Core;
+using KissU.Util.Ddd.Domain.Datas.Queries;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders.Core;
 using Enum = KissU.Core.Helpers.Enum;
 
 namespace KissU.Util.Datas.Sql.Builders.Internal

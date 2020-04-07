@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace KissU.Util.Applications.Trees
+namespace KissU.Util.Ddd.Application.Trees
 {
     /// <summary>
     /// 树形参数

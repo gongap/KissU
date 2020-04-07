@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.Ddd.Domains.Tenants
+﻿namespace KissU.Util.Ddd.Domain.Domains.Tenants
 {
     /// <summary>
     /// 租户
