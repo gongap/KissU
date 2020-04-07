@@ -7,6 +7,6 @@
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\KissU.Util.Ddd\KissU.Util.Ddd.Domain.csproj" />
+    <ProjectReference Include="..\KissU.Util.Ddd.Domain\KissU.Util.Ddd.Domain.csproj" />
   </ItemGroup>
 </Project>

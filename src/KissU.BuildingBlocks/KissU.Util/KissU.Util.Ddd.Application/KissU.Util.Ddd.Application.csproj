@@ -12,8 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KissU.Util.Datas\KissU.Util.Ddd.Domain.Datas.csproj" />
+    <ProjectReference Include="..\KissU.Util.Ddd.Domain.Datas\KissU.Util.Ddd.Domain.Datas.csproj" />
     <ProjectReference Include="..\KissU.Util.Ddd.Application.Contracts\KissU.Util.Ddd.Application.Contracts.csproj" />
-    <ProjectReference Include="..\KissU.Util.Ddd\KissU.Util.Ddd.Domain.csproj" />
+    <ProjectReference Include="..\KissU.Util.Ddd.Domain\KissU.Util.Ddd.Domain.csproj" />
   </ItemGroup>
 </Project>

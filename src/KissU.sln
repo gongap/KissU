@@ -63,7 +63,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.Biz.Payments", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.Caches", "KissU.BuildingBlocks\KissU.Util\KissU.Util.Caches\KissU.Util.Caches.csproj", "{5739DCA2-086C-47AB-9E5F-A60A94AB47FF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.Ddd.Domain.Datas", "KissU.BuildingBlocks\KissU.Util\KissU.Util.Datas\KissU.Util.Ddd.Domain.Datas.csproj", "{7232D8EA-5110-4A87-A778-2E7443BFF73C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.Ddd.Domain.Datas", "KissU.BuildingBlocks\KissU.Util\KissU.Util.Ddd.Domain.Datas\KissU.Util.Ddd.Domain.Datas.csproj", "{7232D8EA-5110-4A87-A778-2E7443BFF73C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.Events", "KissU.BuildingBlocks\KissU.Util\KissU.Util.Events\KissU.Util.Events.csproj", "{49D011BD-801C-43C8-83FB-4623C0140071}"
 EndProject
@@ -221,7 +221,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.Dapper", "KissU.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.EntityFrameworkCore", "KissU.BuildingBlocks\KissU.Util\KissU.Util.EntityFrameworkCore\KissU.Util.EntityFrameworkCore.csproj", "{202357B2-5510-4DCE-8CC9-CC8A37AFDE43}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.Ddd.Domain", "KissU.BuildingBlocks\KissU.Util\KissU.Util.Ddd\KissU.Util.Ddd.Domain.csproj", "{C4CC89D3-1BBC-40EF-9E98-AADD3E379798}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Util.Ddd.Domain", "KissU.BuildingBlocks\KissU.Util\KissU.Util.Ddd.Domain\KissU.Util.Ddd.Domain.csproj", "{C4CC89D3-1BBC-40EF-9E98-AADD3E379798}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.AdminConsole.Service.Contracts", "KissU.Modules\KissU.Modules.AdminConsole\KissU.Modules.AdminConsole.Service.Contracts\KissU.Modules.AdminConsole.Service.Contracts.csproj", "{ADA0A3D2-9D0C-47A3-BB61-60E642F5EAF5}"
 EndProject
