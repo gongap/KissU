@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using KissU.Core.Datas.Queries;
 using KissU.Core.Helpers;
-using KissU.Util.Datas.Sql;
-using KissU.Util.Datas.Sql.Builders.Conditions;
 using KissU.Util.Datas.Tests.Integration.Samples;
 using Microsoft.Extensions.Logging;
 using Xunit;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using KissU.Core;
 using KissU.Core.Datas;
 using KissU.Core.Datas.Queries;
-using KissU.Util.Ddd.Domain.Datas.Queries;
+using KissU.Util.Ddd.Data.Queries;
 using Nest;
 
 namespace KissU.Util.Search.ElasticSearch.Services

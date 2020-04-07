@@ -1,6 +1,6 @@
 ﻿using KissU.Core.Module;
 
-namespace KissU.Util.Datas
+namespace KissU.Util.Ddd.Data
 {
     /// <summary>
     /// UtilDatasModule.

@@ -2,9 +2,8 @@
 using System.Collections.ObjectModel;
 using KissU.Core;
 using KissU.Core.Datas.Queries;
-using KissU.Util.Ddd.Domain.Datas.Sql.Builders;
 
-namespace KissU.Util.Datas.Sql.Builders.Core
+namespace KissU.Util.Ddd.Data.Sql.Builders.Core
 {
     /// <summary>
     /// 参数管理器

@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Linq.Expressions;
-using KissU.Util.Datas.Sql.Builders.Conditions;
-using KissU.Util.Datas.Sql.Builders.Internal;
-using KissU.Util.Ddd.Domain.Datas.Sql.Builders;
+using KissU.Util.Ddd.Data.Sql.Builders.Conditions;
+using KissU.Util.Ddd.Data.Sql.Builders.Internal;
 
-namespace KissU.Util.Datas.Sql.Builders.Core
+namespace KissU.Util.Ddd.Data.Sql.Builders.Core
 {
     /// <summary>
     /// 谓词表达式解析器

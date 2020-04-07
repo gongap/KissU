@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using KissU.Core.Datas.Queries;
-using KissU.Util.Ddd.Domain.Datas.Queries;
-using KissU.Util.Ddd.Domain.Datas.Sql;
+using KissU.Util.Ddd.Data.Queries;
 
-namespace KissU.Util.Datas.Sql
+namespace KissU.Util.Ddd.Data.Sql
 {
     /// <summary>
     /// Sql查询对象扩展 - 拼接Sql相关

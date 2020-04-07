@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Text;
-using KissU.Util.Ddd.Domain.Domains;
+using KissU.Util.Ddd.Domain;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace KissU.Util.EntityFrameworkCore.Internal

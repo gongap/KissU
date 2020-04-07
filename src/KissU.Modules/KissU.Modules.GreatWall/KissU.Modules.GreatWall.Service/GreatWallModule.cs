@@ -6,7 +6,7 @@ using KissU.Modules.GreatWall.Data;
 using KissU.Modules.GreatWall.Data.UnitOfWorks.SqlServer;
 using KissU.Modules.GreatWall.Domain.UnitOfWorks;
 using KissU.Util.Dapper;
-using KissU.Util.Ddd.Domain.Datas.Enums;
+using KissU.Util.Ddd.Data.Enums;
 using KissU.Util.EntityFrameworkCore.SqlServer;
 using Microsoft.Extensions.DependencyInjection;
 

@@ -8,9 +8,8 @@ using KissU.Modules.GreatWall.Application.Contracts.Dtos.Responses;
 using KissU.Modules.GreatWall.Application.Extensions;
 using KissU.Modules.GreatWall.Domain.Models;
 using KissU.Modules.GreatWall.Domain.Repositories;
-using KissU.Util.Ddd;
 using KissU.Util.Ddd.Application;
-using KissU.Util.Ddd.Domain;
+using KissU.Util.Ddd.Data;
 using KissU.Util.Security;
 
 namespace KissU.Modules.GreatWall.Application.Implements

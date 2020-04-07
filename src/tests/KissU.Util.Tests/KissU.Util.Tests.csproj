@@ -18,9 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Util\KissU.Util.Applications\KissU.Util.Applications.csproj" />
     <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Util\KissU.Util.Caches\KissU.Util.Caches.csproj" />
-    <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Util\KissU.Util.Datas\KissU.Util.Datas.csproj" />
+    <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Util\KissU.Util.Datas\KissU.Util.Ddd.Domain.Datas.csproj" />
     <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Util\KissU.Util.Events\KissU.Util.Events.csproj" />
     <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Util\KissU.Util.Logs\KissU.Util.Logs.csproj" />
     <ProjectReference Include="..\..\KissU.BuildingBlocks\KissU.Util\KissU.Util.Security\KissU.Util.Security.csproj" />

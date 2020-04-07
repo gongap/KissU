@@ -5,7 +5,7 @@ using KissU.Modules.IdentityServer.Data;
 using KissU.Modules.IdentityServer.Data.UnitOfWorks.SqlServer;
 using KissU.Modules.IdentityServer.Domain.UnitOfWorks;
 using KissU.Util.Dapper;
-using KissU.Util.Ddd.Domain.Datas.Enums;
+using KissU.Util.Ddd.Data.Enums;
 using KissU.Util.EntityFrameworkCore.SqlServer;
 using Microsoft.Extensions.DependencyInjection;
 

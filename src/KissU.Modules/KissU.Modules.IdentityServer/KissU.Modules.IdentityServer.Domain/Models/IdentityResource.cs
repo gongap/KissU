@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using KissU.Util.Ddd.Domain.Domains;
+using KissU.Util.Ddd.Domain;
 
 namespace KissU.Modules.IdentityServer.Domain.Models
 {

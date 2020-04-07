@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using KissU.Util.Ddd.Domain.Datas.Sql.Builders;
 
-namespace KissU.Util.Datas.Sql.Builders.Filters
+namespace KissU.Util.Ddd.Data.Sql.Builders.Filters
 {
     /// <summary>
     /// Sql过滤器集合

@@ -1,4 +1,4 @@
-﻿using KissU.Util.Ddd.Domain.Domains;
+﻿using KissU.Util.Ddd.Domain;
 
 namespace KissU.Util.Tests.Samples
 {

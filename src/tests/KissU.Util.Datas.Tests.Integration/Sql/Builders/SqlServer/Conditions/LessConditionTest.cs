@@ -1,5 +1,4 @@
-﻿using KissU.Util.Datas.Sql.Builders.Conditions;
-using Xunit;
+﻿using Xunit;
 
 namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Conditions
 {

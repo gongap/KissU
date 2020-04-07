@@ -4,7 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using KissU.Core;
 using KissU.Core.Datas.UnitOfWorks;
-using KissU.Util.Ddd.Domain.Domains.Trees;
+using KissU.Util.Ddd.Data.Repositories;
+using KissU.Util.Ddd.Domain.Trees;
 using Microsoft.EntityFrameworkCore;
 
 namespace KissU.Util.EntityFrameworkCore.Core

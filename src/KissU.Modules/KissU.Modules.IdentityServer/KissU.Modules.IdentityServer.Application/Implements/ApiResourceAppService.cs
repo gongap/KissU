@@ -8,15 +8,14 @@ using KissU.Modules.IdentityServer.Application.Contracts.Abstractions;
 using KissU.Modules.IdentityServer.Application.Contracts.Dtos;
 using KissU.Modules.IdentityServer.Application.Contracts.Dtos.Requests;
 using KissU.Modules.IdentityServer.Application.Contracts.Queries;
-using KissU.Modules.IdentityServer.Domain;
 using KissU.Modules.IdentityServer.Domain.Models;
 using KissU.Modules.IdentityServer.Domain.Repositories;
 using KissU.Modules.IdentityServer.Domain.Shared;
 using KissU.Modules.IdentityServer.Domain.Shared.Enums;
 using KissU.Modules.IdentityServer.Domain.UnitOfWorks;
 using KissU.Util.Ddd.Application;
-using KissU.Util.Ddd.Domain.Datas.Queries;
-using KissU.Util.Ddd.Domain.Domains.Repositories;
+using KissU.Util.Ddd.Data.Queries;
+using KissU.Util.Ddd.Data.Repositories;
 
 namespace KissU.Modules.IdentityServer.Application.Implements
 {

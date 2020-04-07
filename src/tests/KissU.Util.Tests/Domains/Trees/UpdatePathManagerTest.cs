@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using KissU.Core;
 using KissU.Core.Exceptions;
 using KissU.Core.Properties;
-using KissU.Util.Ddd.Domain.Domains.Trees;
 using KissU.Util.Tests.Samples;
 using KissU.Util.Tests.XUnitHelpers;
 using NSubstitute;

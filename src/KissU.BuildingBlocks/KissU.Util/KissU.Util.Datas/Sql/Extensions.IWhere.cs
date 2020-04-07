@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using KissU.Core.Datas.Queries;
-using KissU.Util.Ddd.Domain.Datas.Queries;
-using KissU.Util.Ddd.Domain.Datas.Sql;
-using KissU.Util.Ddd.Domain.Datas.Sql.Builders;
+using KissU.Util.Ddd.Data.Queries;
+using KissU.Util.Ddd.Data.Sql.Builders;
 
-namespace KissU.Util.Datas.Sql
+namespace KissU.Util.Ddd.Data.Sql
 {
     /// <summary>
     /// Where子句扩展

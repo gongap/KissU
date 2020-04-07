@@ -4,8 +4,8 @@ using KissU.Core.Datas.UnitOfWorks;
 using KissU.Core.Maps;
 using KissU.Util.Ddd.Application;
 using KissU.Util.Ddd.Application.Contracts;
-using KissU.Util.Ddd.Domain.Datas.Queries;
-using KissU.Util.Ddd.Domain.Domains.Repositories;
+using KissU.Util.Ddd.Data.Queries;
+using KissU.Util.Ddd.Data.Repositories;
 
 namespace KissU.Util.Tests.Samples
 {

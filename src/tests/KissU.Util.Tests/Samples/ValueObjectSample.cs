@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using KissU.Util.Ddd.Domain.Domains;
+using KissU.Util.Ddd.Domain;
 
 namespace KissU.Util.Tests.Samples
 {

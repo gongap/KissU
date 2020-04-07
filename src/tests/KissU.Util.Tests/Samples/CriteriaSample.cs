@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq.Expressions;
-using KissU.Util.Ddd.Domain.Domains.Repositories;
+using KissU.Util.Ddd.Data.Repositories;
 
 namespace KissU.Util.Tests.Samples
 {

@@ -7,11 +7,11 @@ using KissU.Core.Datas;
 using KissU.Core.Datas.Queries;
 using KissU.Core.Maps;
 using KissU.Util.Ddd.Application.Contracts;
+using KissU.Util.Ddd.Data;
+using KissU.Util.Ddd.Data.Queries;
+using KissU.Util.Ddd.Data.Repositories;
+using KissU.Util.Ddd.Data.Stores;
 using KissU.Util.Ddd.Domain;
-using KissU.Util.Ddd.Domain.Datas.Queries;
-using KissU.Util.Ddd.Domain.Datas.Stores;
-using KissU.Util.Ddd.Domain.Domains;
-using KissU.Util.Ddd.Domain.Domains.Repositories;
 using Convert = KissU.Core.Helpers.Convert;
 
 namespace KissU.Util.Ddd.Application

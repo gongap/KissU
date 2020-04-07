@@ -15,9 +15,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Util\KissU.Util.AspNetCore\KissU.Util.AspNetCore.csproj" />
+    <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Util\KissU.Util.Ddd.Application\KissU.Util.Ddd.Application.csproj" />
     <ProjectReference Include="..\..\..\KissU.BuildingBlocks\KissU.Util\KissU.Util.Security\KissU.Util.Security.csproj" />
     <ProjectReference Include="..\KissU.Modules.GreatWall.Application.Contracts\KissU.Modules.GreatWall.Application.Contracts.csproj" />
     <ProjectReference Include="..\KissU.Modules.GreatWall.Data\KissU.Modules.GreatWall.Data.csproj" />
-    <ProjectReference Include="..\KissU.Modules.GreatWall.Domain\KissU.Modules.GreatWall.Domain.csproj" />
   </ItemGroup>
 </Project>

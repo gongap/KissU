@@ -6,16 +6,13 @@ using System.Text;
 using KissU.Core;
 using KissU.Core.Datas.Queries;
 using KissU.Core.Helpers;
-using KissU.Util.Datas.Sql.Builders.Conditions;
-using KissU.Util.Datas.Sql.Builders.Core;
-using KissU.Util.Datas.Sql.Builders.Extensions;
-using KissU.Util.Datas.Sql.Builders.Internal;
-using KissU.Util.Ddd.Domain.Datas.Sql;
-using KissU.Util.Ddd.Domain.Datas.Sql.Builders;
-using KissU.Util.Ddd.Domain.Datas.Sql.Builders.Core;
-using KissU.Util.Ddd.Domain.Datas.Sql.Matedatas;
+using KissU.Util.Ddd.Data.Sql.Builders.Conditions;
+using KissU.Util.Ddd.Data.Sql.Builders.Core;
+using KissU.Util.Ddd.Data.Sql.Builders.Extensions;
+using KissU.Util.Ddd.Data.Sql.Builders.Internal;
+using KissU.Util.Ddd.Data.Sql.Matedatas;
 
-namespace KissU.Util.Datas.Sql.Builders.Clauses
+namespace KissU.Util.Ddd.Data.Sql.Builders.Clauses
 {
     /// <summary>
     /// 表连接子句

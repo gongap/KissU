@@ -5,13 +5,12 @@ using System.Linq.Expressions;
 using KissU.Core;
 using KissU.Core.Datas.Queries;
 using KissU.Core.Helpers;
-using KissU.Util.Datas.Sql.Builders.Conditions;
-using KissU.Util.Ddd.Domain.Datas.Queries;
-using KissU.Util.Ddd.Domain.Datas.Sql.Builders;
-using KissU.Util.Ddd.Domain.Datas.Sql.Builders.Core;
+using KissU.Util.Ddd.Data.Queries;
+using KissU.Util.Ddd.Data.Sql.Builders.Conditions;
+using KissU.Util.Ddd.Data.Sql.Builders.Core;
 using Enum = KissU.Core.Helpers.Enum;
 
-namespace KissU.Util.Datas.Sql.Builders.Internal
+namespace KissU.Util.Ddd.Data.Sql.Builders.Internal
 {
     /// <summary>
     /// Sql生成器辅助操作

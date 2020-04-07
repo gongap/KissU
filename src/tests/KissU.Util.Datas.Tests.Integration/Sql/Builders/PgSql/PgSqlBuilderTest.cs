@@ -1,6 +1,5 @@
 ﻿using KissU.Core.Helpers;
 using KissU.Util.Dapper.PgSql;
-using KissU.Util.Datas.Sql;
 using Xunit;
 using Xunit.Abstractions;
 

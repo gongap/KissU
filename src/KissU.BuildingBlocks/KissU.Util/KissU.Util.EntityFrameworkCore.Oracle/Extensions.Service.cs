@@ -1,6 +1,6 @@
 ﻿using System;
 using KissU.Core.Datas.UnitOfWorks;
-using KissU.Util.Ddd.Domain.Datas.Enums;
+using KissU.Util.Ddd.Data.Enums;
 using KissU.Util.EntityFrameworkCore.Configs;
 using KissU.Util.EntityFrameworkCore.Core;
 using Microsoft.EntityFrameworkCore;

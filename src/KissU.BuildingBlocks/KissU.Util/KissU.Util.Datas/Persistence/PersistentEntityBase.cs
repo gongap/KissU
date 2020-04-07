@@ -1,8 +1,8 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using KissU.Util.Ddd.Domain.Domains;
+using KissU.Util.Ddd.Domain;
 
-namespace KissU.Util.Datas.Persistence
+namespace KissU.Util.Ddd.Data.Persistence
 {
     /// <summary>
     /// 持久化对象

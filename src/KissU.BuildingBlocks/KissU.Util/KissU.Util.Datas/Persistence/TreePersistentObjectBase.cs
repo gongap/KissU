@@ -1,7 +1,7 @@
 ﻿using System;
-using KissU.Util.Ddd.Domain.Domains.Trees;
+using KissU.Util.Ddd.Domain.Trees;
 
-namespace KissU.Util.Datas.Persistence
+namespace KissU.Util.Ddd.Data.Persistence
 {
     /// <summary>
     /// 树形持久化对象

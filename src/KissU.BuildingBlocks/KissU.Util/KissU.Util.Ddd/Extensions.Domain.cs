@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using KissU.Util.Ddd.Domain.Domains;
 
 namespace KissU.Util.Ddd.Domain
 {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.Util.Ddd.Domain.Domains.Services;
+using KissU.Util.Ddd.Domain.Services;
 
 namespace KissU.Modules.GreatWall.Domain.Services.Abstractions
 {

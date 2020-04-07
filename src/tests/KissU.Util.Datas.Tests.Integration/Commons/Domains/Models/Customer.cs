@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using KissU.Util.Ddd.Domain.Domains;
-using KissU.Util.Ddd.Domain.Domains.Auditing;
+using KissU.Util.Ddd.Domain;
+using KissU.Util.Ddd.Domain.Auditing;
 
 namespace KissU.Util.Datas.Tests.Integration.Commons.Domains.Models
 {

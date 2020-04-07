@@ -3,15 +3,9 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using KissU.Core.Properties;
 using KissU.Util.Dapper.SqlServer;
-using KissU.Util.Datas.Sql;
-using KissU.Util.Datas.Sql.Builders.Clauses;
-using KissU.Util.Datas.Sql.Builders.Conditions;
-using KissU.Util.Datas.Sql.Builders.Core;
 using KissU.Util.Datas.Tests.Integration.Samples;
 using KissU.Util.Datas.Tests.Integration.Sql.Builders.Samples;
 using KissU.Util.Datas.Tests.Integration.XUnitHelpers;
-using KissU.Util.Ddd.Domain.Datas.Queries;
-using KissU.Util.Ddd.Domain.Datas.Sql.Builders.Core;
 using Xunit;
 using String = KissU.Core.Helpers.String;
 

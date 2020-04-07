@@ -3,7 +3,6 @@ using KissU.Util.Dapper.MySql;
 using KissU.Util.Dapper.PgSql;
 using KissU.Util.Dapper.SqlServer;
 using KissU.Util.Datas.Tests.Integration.Sql.Builders.Samples;
-using KissU.Util.Ddd.Domain.Datas.Sql.Builders.Core;
 using Xunit;
 
 namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.Base

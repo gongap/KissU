@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using KissU.Util.Ddd;
 using KissU.Util.Ddd.Domain;
-using KissU.Util.Ddd.Domain.Domains;
 using KissU.Util.Tests.Samples;
 using KissU.Util.Tests.XUnitHelpers;
 using Xunit;

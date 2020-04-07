@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using KissU.Modules.GreatWall.Domain.Models;
-using KissU.Util.Ddd.Domain.Domains.Repositories;
+using KissU.Util.Ddd.Data.Repositories;
 
 namespace KissU.Modules.GreatWall.Domain.Repositories
 {

@@ -4,11 +4,10 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using KissU.Core;
-using KissU.Util.Datas.Sql.Builders.Internal;
-using KissU.Util.Ddd.Domain.Datas.Sql.Builders;
-using KissU.Util.Ddd.Domain.Datas.Sql.Builders.Core;
+using KissU.Util.Ddd.Data.Sql.Builders.Core;
+using KissU.Util.Ddd.Data.Sql.Builders.Internal;
 
-namespace KissU.Util.Datas.Sql.Builders.Clauses
+namespace KissU.Util.Ddd.Data.Sql.Builders.Clauses
 {
     /// <summary>
     /// Group By子句

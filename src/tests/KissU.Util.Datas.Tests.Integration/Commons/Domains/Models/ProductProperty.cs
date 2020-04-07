@@ -1,4 +1,4 @@
-﻿using KissU.Util.Ddd.Domain.Domains;
+﻿using KissU.Util.Ddd.Domain;
 
 namespace KissU.Util.Datas.Tests.Integration.Commons.Domains.Models
 {

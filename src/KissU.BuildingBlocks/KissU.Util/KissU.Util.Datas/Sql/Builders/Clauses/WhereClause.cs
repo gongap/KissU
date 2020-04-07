@@ -5,14 +5,12 @@ using KissU.Core;
 using KissU.Core.Datas.Queries;
 using KissU.Core.Helpers;
 using KissU.Core.Properties;
-using KissU.Util.Datas.Sql.Builders.Conditions;
-using KissU.Util.Datas.Sql.Builders.Core;
-using KissU.Util.Datas.Sql.Builders.Internal;
-using KissU.Util.Ddd.Domain.Datas.Queries;
-using KissU.Util.Ddd.Domain.Datas.Sql;
-using KissU.Util.Ddd.Domain.Datas.Sql.Builders;
+using KissU.Util.Ddd.Data.Queries;
+using KissU.Util.Ddd.Data.Sql.Builders.Conditions;
+using KissU.Util.Ddd.Data.Sql.Builders.Core;
+using KissU.Util.Ddd.Data.Sql.Builders.Internal;
 
-namespace KissU.Util.Datas.Sql.Builders.Clauses
+namespace KissU.Util.Ddd.Data.Sql.Builders.Clauses
 {
     /// <summary>
     /// Where子句

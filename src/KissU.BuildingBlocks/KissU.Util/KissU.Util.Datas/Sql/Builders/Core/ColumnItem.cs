@@ -1,9 +1,7 @@
 ﻿using System;
-using KissU.Util.Ddd.Domain.Datas.Sql.Builders;
-using KissU.Util.Ddd.Domain.Datas.Sql.Builders.Core;
-using KissU.Util.Ddd.Domain.Datas.Sql.Builders.Extensions;
+using KissU.Util.Ddd.Data.Sql.Builders.Extensions;
 
-namespace KissU.Util.Datas.Sql.Builders.Core
+namespace KissU.Util.Ddd.Data.Sql.Builders.Core
 {
     /// <summary>
     /// 列

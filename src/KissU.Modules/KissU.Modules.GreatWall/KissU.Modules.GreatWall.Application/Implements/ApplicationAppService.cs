@@ -5,7 +5,6 @@ using KissU.Core.Exceptions;
 using KissU.Modules.GreatWall.Application.Contracts.Abstractions;
 using KissU.Modules.GreatWall.Application.Contracts.Dtos;
 using KissU.Modules.GreatWall.Application.Extensions;
-using KissU.Modules.GreatWall.Domain;
 using KissU.Modules.GreatWall.Domain.Repositories;
 using KissU.Modules.GreatWall.Domain.Shared;
 using KissU.Modules.GreatWall.Domain.UnitOfWorks;

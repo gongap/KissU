@@ -1,6 +1,4 @@
 ﻿using KissU.Core.Datas.Queries;
-using KissU.Util.Datas.Sql.Builders.Conditions;
-using KissU.Util.Datas.Sql.Builders.Core;
 using Xunit;
 
 namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.Base

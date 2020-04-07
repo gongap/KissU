@@ -1,12 +1,11 @@
 ﻿using System;
-using KissU.Util.Ddd.Domain.Datas.Sql.Builders;
 
-namespace KissU.Util.Datas.Sql.Builders.Extensions
+namespace KissU.Util.Ddd.Data.Sql.Builders.Extensions
 {
     /// <summary>
     /// 实体解析器扩展
     /// </summary>
-    public static class Extensions
+    public static partial class Extensions
     {
         /// <summary>
         /// 获取表，带架构

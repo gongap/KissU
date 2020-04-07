@@ -1,5 +1,4 @@
-﻿using KissU.Util.Datas.Sql.Builders.Core;
-using Xunit;
+﻿using Xunit;
 
 namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.Base
 {

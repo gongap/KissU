@@ -1,5 +1,4 @@
 ﻿using KissU.Core.Helpers;
-using KissU.Util.Datas.Sql;
 using KissU.Util.Datas.Tests.Integration.Samples;
 using Xunit;
 

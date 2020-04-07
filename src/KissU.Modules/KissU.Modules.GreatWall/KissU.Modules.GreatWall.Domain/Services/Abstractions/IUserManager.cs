@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using KissU.Modules.GreatWall.Domain.Models;
-using KissU.Util.Ddd.Domain.Domains.Services;
+using KissU.Util.Ddd.Domain.Services;
 
 namespace KissU.Modules.GreatWall.Domain.Services.Abstractions
 {

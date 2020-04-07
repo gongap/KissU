@@ -1,4 +1,4 @@
-﻿using KissU.Util.Ddd.Domain.Datas.Sql.Configs;
+﻿using KissU.Util.Ddd.Data.Sql.Configs;
 
 namespace KissU.Util.EntityFrameworkCore.Configs
 {

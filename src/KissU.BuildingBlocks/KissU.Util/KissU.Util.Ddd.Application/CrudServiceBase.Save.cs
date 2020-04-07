@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using KissU.Core;
 using KissU.Core.Logs;
-using KissU.Util.Ddd.Domain.Domains;
+using KissU.Util.Ddd.Domain;
 
 namespace KissU.Util.Ddd.Application
 {

@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using IdentityServer4;
 using KissU.Modules.IdentityServer.Domain.Shared.Enums;
-using KissU.Util.Ddd.Domain.Domains;
+using KissU.Util.Ddd.Domain;
 
 namespace KissU.Modules.IdentityServer.Domain.Models
 {

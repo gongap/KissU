@@ -10,12 +10,11 @@ using KissU.Core;
 using KissU.Core.Datas;
 using KissU.Core.Datas.UnitOfWorks;
 using KissU.Core.Helpers;
-using KissU.Util.Ddd;
+using KissU.Util.Ddd.Data;
+using KissU.Util.Ddd.Data.Repositories;
+using KissU.Util.Ddd.Data.Sql;
+using KissU.Util.Ddd.Data.Stores;
 using KissU.Util.Ddd.Domain;
-using KissU.Util.Ddd.Domain.Datas.Sql;
-using KissU.Util.Ddd.Domain.Datas.Stores;
-using KissU.Util.Ddd.Domain.Domains;
-using KissU.Util.Ddd.Domain.Domains.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Convert = KissU.Core.Helpers.Convert;
 
