@@ -1,6 +1,6 @@
 ﻿using System;
-using KissU.Util.Ddd.Data.Queries;
-using KissU.Util.Ddd.Data.Queries.Criterias;
+using KissU.Util.Ddd.Domain.Datas.Queries;
+using KissU.Util.Ddd.Domain.Datas.Queries.Criterias;
 using KissU.Util.Tests.Samples;
 using Xunit;
 

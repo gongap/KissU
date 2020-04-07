@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
-using KissU.Util.Ddd.Data.Repositories;
-using KissU.Util.Ddd.Domain;
+using KissU.Util.Ddd.Domain.Datas.Repositories;
 
-namespace KissU.Util.Ddd.Data.Stores.Operations
+namespace KissU.Util.Ddd.Domain.Datas.Stores.Operations
 {
     /// <summary>
     /// 获取查询对象

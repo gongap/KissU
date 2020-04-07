@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using KissU.Core.Datas.Queries;
-using KissU.Util.Ddd.Data.Sql.Builders.Conditions;
-using KissU.Util.Ddd.Data.Sql.Builders.Internal;
-using KissU.Util.Ddd.Data.Sql.Matedatas;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders.Conditions;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders.Internal;
+using KissU.Util.Ddd.Domain.Datas.Sql.Matedatas;
 
-namespace KissU.Util.Ddd.Data.Sql.Builders.Core
+namespace KissU.Util.Ddd.Domain.Datas.Sql.Builders.Core
 {
     /// <summary>
     /// 表连接项

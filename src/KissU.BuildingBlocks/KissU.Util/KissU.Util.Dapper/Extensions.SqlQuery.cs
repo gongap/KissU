@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
 using KissU.Core.Datas;
-using KissU.Util.Ddd.Data.Sql;
+using KissU.Util.Ddd.Domain.Datas.Sql;
 
 namespace KissU.Util.Dapper
 {

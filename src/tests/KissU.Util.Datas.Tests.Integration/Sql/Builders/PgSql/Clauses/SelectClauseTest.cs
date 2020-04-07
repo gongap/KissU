@@ -1,4 +1,6 @@
 ﻿using KissU.Util.Dapper.PgSql;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders.Clauses;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders.Core;
 using Xunit;
 
 namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.PgSql.Clauses

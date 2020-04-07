@@ -1,7 +1,7 @@
 ﻿using System;
-using KissU.Util.Ddd.Data.Sql.Builders;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders;
 
-namespace KissU.Util.Ddd.Data.Sql
+namespace KissU.Util.Ddd.Domain.Datas.Sql
 {
     /// <summary>
     /// OrderBy子句扩展

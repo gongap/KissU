@@ -1,11 +1,11 @@
 ﻿using System;
 using KissU.Core.Properties;
-using KissU.Util.Ddd.Data.Sql.Builders.Core;
-using KissU.Util.Ddd.Data.Sql.Builders.Extensions;
-using KissU.Util.Ddd.Data.Sql.Builders.Internal;
-using KissU.Util.Ddd.Data.Sql.Matedatas;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders.Core;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders.Extensions;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders.Internal;
+using KissU.Util.Ddd.Domain.Datas.Sql.Matedatas;
 
-namespace KissU.Util.Ddd.Data.Sql.Builders.Clauses
+namespace KissU.Util.Ddd.Domain.Datas.Sql.Builders.Clauses
 {
     /// <summary>
     /// From子句

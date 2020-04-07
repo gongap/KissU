@@ -4,12 +4,12 @@ using System.Data;
 using System.Threading.Tasks;
 using KissU.Core.Datas;
 using KissU.Core.Helpers;
-using KissU.Util.Ddd.Data.Sql.Builders;
-using KissU.Util.Ddd.Data.Sql.Builders.Core;
-using KissU.Util.Ddd.Data.Sql.Configs;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders.Core;
+using KissU.Util.Ddd.Domain.Datas.Sql.Configs;
 using Microsoft.Extensions.Options;
 
-namespace KissU.Util.Ddd.Data.Sql.Queries
+namespace KissU.Util.Ddd.Domain.Datas.Sql.Queries
 {
     /// <summary>
     /// Sql查询对象

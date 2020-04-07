@@ -1,6 +1,6 @@
 ﻿using KissU.Util.Ddd.Application.Contracts.Dtos;
 
-namespace KissU.Util.Ddd.Application.Trees
+namespace KissU.Util.Ddd.Application.Contracts.Trees
 {
     /// <summary>
     /// 树节点

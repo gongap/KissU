@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.Ddd.Application.Trees
+﻿namespace KissU.Util.Ddd.Application.Contracts.Trees
 {
     /// <summary>
     /// 加载操作

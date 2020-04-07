@@ -1,8 +1,8 @@
 ﻿using System;
-using KissU.Util.Ddd.Data.Sql.Builders;
-using KissU.Util.Ddd.Data.Sql.Builders.Core;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders.Core;
 
-namespace KissU.Util.Ddd.Data.Sql
+namespace KissU.Util.Ddd.Domain.Datas.Sql
 {
     /// <summary>
     /// 公用表表达式CTE操作扩展

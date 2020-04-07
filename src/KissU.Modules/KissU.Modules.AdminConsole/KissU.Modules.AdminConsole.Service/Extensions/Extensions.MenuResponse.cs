@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain;
+using KissU.Modules.AdminConsole.Service.Contracts.Dtos.NgAlain;
 using KissU.Modules.GreatWall.Application.Contracts.Dtos.Responses;
 
-namespace KissU.Modules.Admin.Service.Extensions
+namespace KissU.Modules.AdminConsole.Service.Extensions
 {
     /// <summary>
     /// 菜单参数扩展

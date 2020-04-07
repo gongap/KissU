@@ -1,6 +1,6 @@
 ﻿using KissU.Core;
 
-namespace KissU.Util.Ddd.Data.Sql.Builders.Extensions
+namespace KissU.Util.Ddd.Domain.Datas.Sql.Builders.Extensions
 {
     /// <summary>
     /// Sql方言扩展

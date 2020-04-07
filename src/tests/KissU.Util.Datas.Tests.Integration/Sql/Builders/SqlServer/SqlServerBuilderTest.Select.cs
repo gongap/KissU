@@ -1,6 +1,8 @@
 ﻿using KissU.Core.Helpers;
 using KissU.Util.Dapper.SqlServer;
 using KissU.Util.Datas.Tests.Integration.Samples;
+using KissU.Util.Ddd.Domain.Datas.Sql;
+using KissU.Util.Ddd.Domain.Datas.Sql.Matedatas;
 using Xunit;
 
 namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer

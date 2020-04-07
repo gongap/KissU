@@ -2,11 +2,11 @@
 using System.Linq;
 using System.Threading.Tasks;
 using KissU.Core;
-using KissU.Util.Ddd.Data.Repositories;
-using KissU.Util.Ddd.Data.Trees;
+using KissU.Util.Ddd.Domain.Datas.Repositories;
+using KissU.Util.Ddd.Domain.Datas.Trees;
 using KissU.Util.Ddd.Domain.Trees;
 
-namespace KissU.Util.Ddd.Data
+namespace KissU.Util.Ddd.Domain.Datas
 {
     /// <summary>
     /// 树形扩展

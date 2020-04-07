@@ -1,14 +1,14 @@
 ﻿using System.Threading.Tasks;
 using KissU.Core.Ioc;
+using KissU.Modules.AdminConsole.Service.Contracts.Dtos.NgAlain;
+using KissU.Surging.CPlatform.Filters.Implementation;
 using KissU.Surging.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Surging.CPlatform.Support;
 using KissU.Surging.CPlatform.Support.Attributes;
-using KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain;
-using KissU.Surging.CPlatform.Filters.Implementation;
 using KissU.Util.Ddd.Application.Contracts;
 
-namespace KissU.Modules.Admin.Service.Contracts.Abstractions
+namespace KissU.Modules.AdminConsole.Service.Contracts.Abstractions
 {
     /// <summary>
     /// Interface IStartupService

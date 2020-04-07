@@ -1,6 +1,6 @@
 ﻿using KissU.Core.Datas.Queries;
 
-namespace KissU.Util.Ddd.Data.Sql.Builders.Core
+namespace KissU.Util.Ddd.Domain.Datas.Sql.Builders.Core
 {
     /// <summary>
     /// 连接条件项

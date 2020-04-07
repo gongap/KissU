@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
-using KissU.Surging.ProxyGenerator;
-using KissU.Modules.Admin.Service.Contracts.Abstractions;
-using KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain;
-using KissU.Modules.Admin.Service.Extensions;
+using KissU.Modules.AdminConsole.Service.Contracts.Abstractions;
+using KissU.Modules.AdminConsole.Service.Contracts.Dtos.NgAlain;
+using KissU.Modules.AdminConsole.Service.Extensions;
 using KissU.Modules.GreatWall.Service.Contracts;
+using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Surging.KestrelHttpServer.Internal;
+using KissU.Surging.ProxyGenerator;
 
-namespace KissU.Modules.Admin.Service.Implements
+namespace KissU.Modules.AdminConsole.Service.Implements
 {
     /// <summary>
     /// 启动服务

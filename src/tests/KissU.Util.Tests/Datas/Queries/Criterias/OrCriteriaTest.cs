@@ -1,4 +1,4 @@
-﻿using KissU.Util.Ddd.Data.Queries.Criterias;
+﻿using KissU.Util.Ddd.Domain.Datas.Queries.Criterias;
 using KissU.Util.Tests.Samples;
 using Xunit;
 

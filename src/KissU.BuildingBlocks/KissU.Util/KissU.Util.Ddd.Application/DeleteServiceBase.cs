@@ -9,8 +9,8 @@ using KissU.Core.Helpers;
 using KissU.Core.Logs;
 using KissU.Util.Ddd.Application.Contracts;
 using KissU.Util.Ddd.Application.Contracts.Dtos;
-using KissU.Util.Ddd.Data.Stores;
 using KissU.Util.Ddd.Domain;
+using KissU.Util.Ddd.Domain.Datas.Stores;
 
 namespace KissU.Util.Ddd.Application
 {

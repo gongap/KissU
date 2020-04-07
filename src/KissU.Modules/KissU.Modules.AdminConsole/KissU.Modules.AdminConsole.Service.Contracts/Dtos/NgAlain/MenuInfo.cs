@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain
+namespace KissU.Modules.AdminConsole.Service.Contracts.Dtos.NgAlain
 {
     /// <summary>
     /// NgAlain菜单

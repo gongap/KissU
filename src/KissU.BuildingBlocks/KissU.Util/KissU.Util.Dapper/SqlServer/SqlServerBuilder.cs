@@ -1,7 +1,7 @@
-﻿using KissU.Util.Ddd.Data.Sql;
-using KissU.Util.Ddd.Data.Sql.Builders;
-using KissU.Util.Ddd.Data.Sql.Builders.Core;
-using KissU.Util.Ddd.Data.Sql.Matedatas;
+﻿using KissU.Util.Ddd.Domain.Datas.Sql;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders.Core;
+using KissU.Util.Ddd.Domain.Datas.Sql.Matedatas;
 
 namespace KissU.Util.Dapper.SqlServer
 {

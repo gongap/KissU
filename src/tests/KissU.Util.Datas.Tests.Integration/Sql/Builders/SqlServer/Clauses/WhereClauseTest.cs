@@ -6,6 +6,11 @@ using KissU.Util.Dapper.SqlServer;
 using KissU.Util.Datas.Tests.Integration.Samples;
 using KissU.Util.Datas.Tests.Integration.Sql.Builders.Samples;
 using KissU.Util.Datas.Tests.Integration.XUnitHelpers;
+using KissU.Util.Ddd.Domain.Datas.Queries;
+using KissU.Util.Ddd.Domain.Datas.Sql;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders.Clauses;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders.Conditions;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders.Core;
 using Xunit;
 using String = KissU.Core.Helpers.String;
 

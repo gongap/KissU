@@ -1,8 +1,8 @@
 ﻿using System;
 using KissU.Core.Datas.Queries;
-using KissU.Util.Ddd.Data.Sql.Builders;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders;
 
-namespace KissU.Util.Ddd.Data.Sql
+namespace KissU.Util.Ddd.Domain.Datas.Sql
 {
     /// <summary>
     /// From子句扩展

@@ -6,10 +6,10 @@ using KissU.Util.Dapper.MySql;
 using KissU.Util.Dapper.Oracle;
 using KissU.Util.Dapper.PgSql;
 using KissU.Util.Dapper.SqlServer;
-using KissU.Util.Ddd.Data.Enums;
-using KissU.Util.Ddd.Data.Sql;
-using KissU.Util.Ddd.Data.Sql.Configs;
-using KissU.Util.Ddd.Data.Sql.Matedatas;
+using KissU.Util.Ddd.Domain.Datas.Enums;
+using KissU.Util.Ddd.Domain.Datas.Sql;
+using KissU.Util.Ddd.Domain.Datas.Sql.Configs;
+using KissU.Util.Ddd.Domain.Datas.Sql.Matedatas;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 

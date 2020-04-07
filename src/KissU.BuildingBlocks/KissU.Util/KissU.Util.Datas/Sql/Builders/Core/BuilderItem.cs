@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.Ddd.Data.Sql.Builders.Core
+﻿namespace KissU.Util.Ddd.Domain.Datas.Sql.Builders.Core
 {
     /// <summary>
     /// Sql生成器操作项

@@ -2,7 +2,7 @@
 using System.Linq.Expressions;
 using KissU.Core;
 
-namespace KissU.Util.Ddd.Data.Queries.Criterias
+namespace KissU.Util.Ddd.Domain.Datas.Queries.Criterias
 {
     /// <summary>
     /// 日期范围过滤条件 - 不包含时间

@@ -9,6 +9,8 @@ using KissU.Util.Datas.Tests.Integration.Commons.Domains.Repositories;
 using KissU.Util.Datas.Tests.Integration.Ef.SqlServer.Repositories;
 using KissU.Util.Datas.Tests.Integration.Ef.SqlServer.Stores;
 using KissU.Util.Datas.Tests.Integration.Ef.SqlServer.UnitOfWorks;
+using KissU.Util.Ddd.Domain.Datas.Sql;
+using KissU.Util.Ddd.Domain.Datas.Sql.Matedatas;
 
 namespace KissU.Util.Datas.Tests.Integration.Commons.Datas.SqlServer.Configs
 {

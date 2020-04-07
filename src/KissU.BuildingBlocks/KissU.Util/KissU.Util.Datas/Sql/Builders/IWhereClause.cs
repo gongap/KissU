@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using KissU.Core.Datas.Queries;
-using KissU.Util.Ddd.Data.Queries;
+using KissU.Util.Ddd.Domain.Datas.Queries;
 
-namespace KissU.Util.Ddd.Data.Sql.Builders
+namespace KissU.Util.Ddd.Domain.Datas.Sql.Builders
 {
     /// <summary>
     /// Where子句

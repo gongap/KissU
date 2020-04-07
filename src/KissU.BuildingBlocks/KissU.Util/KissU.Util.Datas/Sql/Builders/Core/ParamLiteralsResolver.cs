@@ -1,7 +1,7 @@
 ﻿using KissU.Core;
 using KissU.Core.Helpers;
 
-namespace KissU.Util.Ddd.Data.Sql.Builders.Core
+namespace KissU.Util.Ddd.Domain.Datas.Sql.Builders.Core
 {
     /// <summary>
     /// 参数字面值解析器

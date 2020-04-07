@@ -4,10 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using KissU.Core.Datas.Queries.Trees;
 using KissU.Core.Datas.UnitOfWorks;
-using KissU.Util.Ddd.Data;
-using KissU.Util.Ddd.Data.Queries.Trees;
-using KissU.Util.Ddd.Data.Stores;
+using KissU.Util.Ddd.Application.Contracts.Trees;
 using KissU.Util.Ddd.Domain;
+using KissU.Util.Ddd.Domain.Datas;
+using KissU.Util.Ddd.Domain.Datas.Queries.Trees;
+using KissU.Util.Ddd.Domain.Datas.Stores;
 using KissU.Util.Ddd.Domain.Trees;
 using Convert = KissU.Core.Helpers.Convert;
 

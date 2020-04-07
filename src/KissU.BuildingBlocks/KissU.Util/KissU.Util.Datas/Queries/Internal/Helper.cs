@@ -7,7 +7,7 @@ using KissU.Core.Datas;
 using KissU.Core.Helpers;
 using KissU.Core.Properties;
 
-namespace KissU.Util.Ddd.Data.Queries.Internal
+namespace KissU.Util.Ddd.Domain.Datas.Queries.Internal
 {
     /// <summary>
     /// 查询工具类

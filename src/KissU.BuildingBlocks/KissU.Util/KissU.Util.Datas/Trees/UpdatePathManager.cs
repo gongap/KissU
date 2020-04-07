@@ -4,10 +4,10 @@ using System.Threading.Tasks;
 using KissU.Core;
 using KissU.Core.Exceptions;
 using KissU.Core.Properties;
-using KissU.Util.Ddd.Data.Repositories;
+using KissU.Util.Ddd.Domain.Datas.Repositories;
 using KissU.Util.Ddd.Domain.Trees;
 
-namespace KissU.Util.Ddd.Data.Trees
+namespace KissU.Util.Ddd.Domain.Datas.Trees
 {
     /// <summary>
     /// 树形路径更新服务

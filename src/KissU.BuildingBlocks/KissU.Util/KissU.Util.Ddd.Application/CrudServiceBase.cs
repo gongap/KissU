@@ -5,8 +5,8 @@ using KissU.Core.Maps;
 using KissU.Util.Ddd.Application.Contracts;
 using KissU.Util.Ddd.Application.Contracts.Aspects;
 using KissU.Util.Ddd.Application.Contracts.Dtos;
-using KissU.Util.Ddd.Data.Repositories;
 using KissU.Util.Ddd.Domain;
+using KissU.Util.Ddd.Domain.Datas.Repositories;
 using Convert = KissU.Core.Helpers.Convert;
 
 namespace KissU.Util.Ddd.Application

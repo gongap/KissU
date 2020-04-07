@@ -1,7 +1,7 @@
 ﻿using System;
 using KissU.Core;
 
-namespace KissU.Util.Ddd.Data.Sql.Builders.Core
+namespace KissU.Util.Ddd.Domain.Datas.Sql.Builders.Core
 {
     /// <summary>
     /// 排序项

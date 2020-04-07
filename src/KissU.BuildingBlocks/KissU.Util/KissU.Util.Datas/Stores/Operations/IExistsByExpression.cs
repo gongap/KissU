@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
-using KissU.Util.Ddd.Domain;
 
-namespace KissU.Util.Ddd.Data.Stores.Operations
+namespace KissU.Util.Ddd.Domain.Datas.Stores.Operations
 {
     /// <summary>
     /// 通过表达式判断是否存在

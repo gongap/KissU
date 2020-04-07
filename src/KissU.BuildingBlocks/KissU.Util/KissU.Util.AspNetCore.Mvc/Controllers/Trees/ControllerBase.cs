@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using KissU.Core;
 using KissU.Core.Datas.Queries.Trees;
+using KissU.Util.Ddd.Application.Contracts.Trees;
 using KissU.Util.Ddd.Application.Trees;
 using Microsoft.AspNetCore.Mvc;
 

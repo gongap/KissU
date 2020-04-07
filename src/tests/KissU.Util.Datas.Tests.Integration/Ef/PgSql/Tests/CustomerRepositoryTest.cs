@@ -11,6 +11,8 @@ using KissU.Util.Datas.Tests.Integration.Commons.Datas.PgSql.Configs;
 using KissU.Util.Datas.Tests.Integration.Commons.Domains.Models;
 using KissU.Util.Datas.Tests.Integration.Commons.Domains.Repositories;
 using KissU.Util.Datas.Tests.Integration.Ef.PgSql.UnitOfWorks;
+using KissU.Util.Ddd.Domain.Datas;
+using KissU.Util.Ddd.Domain.Datas.Queries;
 using KissU.Util.EntityFrameworkCore;
 using Xunit;
 

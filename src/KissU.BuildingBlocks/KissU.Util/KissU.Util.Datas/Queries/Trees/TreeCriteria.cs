@@ -2,10 +2,10 @@
 using System.Linq.Expressions;
 using KissU.Core;
 using KissU.Core.Datas.Queries.Trees;
-using KissU.Util.Ddd.Data.Repositories;
+using KissU.Util.Ddd.Domain.Datas.Repositories;
 using KissU.Util.Ddd.Domain.Trees;
 
-namespace KissU.Util.Ddd.Data.Queries.Trees
+namespace KissU.Util.Ddd.Domain.Datas.Queries.Trees
 {
     /// <summary>
     /// 树形查询条件

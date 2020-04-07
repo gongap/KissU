@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KissU.Util.Ddd.Data.Sql.Matedatas
+namespace KissU.Util.Ddd.Domain.Datas.Sql.Matedatas
 {
     /// <summary>
     /// 实体元数据

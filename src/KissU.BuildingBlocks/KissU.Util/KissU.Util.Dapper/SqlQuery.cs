@@ -7,9 +7,9 @@ using Dapper;
 using KissU.Core.Datas;
 using KissU.Core.Helpers;
 using KissU.Core.Logs;
-using KissU.Util.Ddd.Data.Sql;
-using KissU.Util.Ddd.Data.Sql.Configs;
-using KissU.Util.Ddd.Data.Sql.Queries;
+using KissU.Util.Ddd.Domain.Datas.Sql;
+using KissU.Util.Ddd.Domain.Datas.Sql.Configs;
+using KissU.Util.Ddd.Domain.Datas.Sql.Queries;
 using Convert = KissU.Core.Helpers.Convert;
 
 namespace KissU.Util.Dapper

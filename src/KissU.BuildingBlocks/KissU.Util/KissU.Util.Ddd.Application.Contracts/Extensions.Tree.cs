@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using KissU.Core;
+using KissU.Util.Ddd.Application.Contracts.Trees;
 
-namespace KissU.Util.Ddd.Application.Trees
+namespace KissU.Util.Ddd.Application.Contracts
 {
     /// <summary>
     /// 树形扩展

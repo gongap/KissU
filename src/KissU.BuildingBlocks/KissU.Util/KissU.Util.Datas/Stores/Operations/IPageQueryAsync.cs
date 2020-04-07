@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using KissU.Core.Datas;
-using KissU.Util.Ddd.Data.Repositories;
-using KissU.Util.Ddd.Domain;
+using KissU.Util.Ddd.Domain.Datas.Repositories;
 
-namespace KissU.Util.Ddd.Data.Stores.Operations
+namespace KissU.Util.Ddd.Domain.Datas.Stores.Operations
 {
     /// <summary>
     /// 分页查询

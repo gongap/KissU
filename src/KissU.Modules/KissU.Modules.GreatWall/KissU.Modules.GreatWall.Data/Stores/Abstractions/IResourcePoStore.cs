@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using KissU.Modules.GreatWall.Data.Pos;
-using KissU.Util.Ddd.Data.Stores;
+using KissU.Util.Ddd.Domain.Datas.Stores;
 
 namespace KissU.Modules.GreatWall.Data.Stores.Abstractions
 {

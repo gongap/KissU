@@ -1,6 +1,6 @@
 ﻿using KissU.Modules.GreatWall.Application.Contracts.Dtos;
 using KissU.Modules.GreatWall.Application.Contracts.Queries;
-using KissU.Util.Ddd.Application.Trees;
+using KissU.Util.Ddd.Application.Contracts.Trees;
 
 namespace KissU.Modules.GreatWall.Application.Contracts.Abstractions
 {

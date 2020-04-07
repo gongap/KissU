@@ -4,6 +4,7 @@ using KissU.Core.Properties;
 using KissU.Util.Dapper.SqlServer;
 using KissU.Util.Datas.Tests.Integration.Samples;
 using KissU.Util.Datas.Tests.Integration.XUnitHelpers;
+using KissU.Util.Ddd.Domain.Datas.Sql;
 using Xunit;
 using Xunit.Abstractions;
 using String = KissU.Core.Helpers.String;

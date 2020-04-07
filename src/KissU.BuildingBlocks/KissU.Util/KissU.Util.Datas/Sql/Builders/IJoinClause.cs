@@ -2,7 +2,7 @@
 using System.Linq.Expressions;
 using KissU.Core.Datas.Queries;
 
-namespace KissU.Util.Ddd.Data.Sql.Builders
+namespace KissU.Util.Ddd.Domain.Datas.Sql.Builders
 {
     /// <summary>
     /// Join子句

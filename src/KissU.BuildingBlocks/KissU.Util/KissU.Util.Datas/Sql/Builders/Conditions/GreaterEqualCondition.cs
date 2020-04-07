@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.Ddd.Data.Sql.Builders.Conditions
+﻿namespace KissU.Util.Ddd.Domain.Datas.Sql.Builders.Conditions
 {
     /// <summary>
     /// Sql大于等于查询条件

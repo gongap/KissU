@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using KissU.Core;
 using Convert = KissU.Core.Helpers.Convert;
 
-namespace KissU.Util.Ddd.Data.Sql
+namespace KissU.Util.Ddd.Domain.Datas.Sql
 {
     /// <summary>
     /// Sql查询对象扩展 - 查询相关

@@ -2,7 +2,7 @@
 using KissU.Core;
 using KissU.Core.Datas.Queries;
 
-namespace KissU.Util.Ddd.Data.Sql.Builders.Conditions
+namespace KissU.Util.Ddd.Domain.Datas.Sql.Builders.Conditions
 {
     /// <summary>
     /// Sql查询条件工厂

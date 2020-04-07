@@ -6,9 +6,9 @@ using System.Linq.Expressions;
 using System.Reflection;
 using KissU.Core;
 using KissU.Core.Helpers;
-using KissU.Util.Ddd.Data.Sql.Matedatas;
+using KissU.Util.Ddd.Domain.Datas.Sql.Matedatas;
 
-namespace KissU.Util.Ddd.Data.Sql.Builders.Core
+namespace KissU.Util.Ddd.Domain.Datas.Sql.Builders.Core
 {
     /// <summary>
     /// 实体解析器

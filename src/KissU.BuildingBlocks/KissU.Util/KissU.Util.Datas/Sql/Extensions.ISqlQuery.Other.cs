@@ -1,7 +1,7 @@
-﻿using KissU.Util.Ddd.Data.Sql.Builders;
-using KissU.Util.Ddd.Data.Sql.Builders.Filters;
+﻿using KissU.Util.Ddd.Domain.Datas.Sql.Builders;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders.Filters;
 
-namespace KissU.Util.Ddd.Data.Sql
+namespace KissU.Util.Ddd.Domain.Datas.Sql
 {
     /// <summary>
     /// Sql查询对象扩展 - 杂项

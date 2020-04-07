@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using KissU.Util.Ddd.Application.Trees;
+using KissU.Util.Ddd.Application.Contracts.Trees;
 
 namespace KissU.Modules.GreatWall.Application.Contracts.Dtos
 {

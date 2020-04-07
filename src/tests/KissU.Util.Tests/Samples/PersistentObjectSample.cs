@@ -1,5 +1,5 @@
 ﻿using System;
-using KissU.Util.Ddd.Data.Persistence;
+using KissU.Util.Ddd.Domain.Datas.Persistence;
 
 namespace KissU.Util.Tests.Samples
 {

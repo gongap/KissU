@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KissU.Util.Ddd.Data.Sql.Builders.Extensions
+namespace KissU.Util.Ddd.Domain.Datas.Sql.Builders.Extensions
 {
     /// <summary>
     /// 实体解析器扩展

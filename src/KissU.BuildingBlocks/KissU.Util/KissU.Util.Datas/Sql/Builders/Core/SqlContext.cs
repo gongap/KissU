@@ -1,7 +1,7 @@
 ﻿using System;
-using KissU.Util.Ddd.Data.Sql.Matedatas;
+using KissU.Util.Ddd.Domain.Datas.Sql.Matedatas;
 
-namespace KissU.Util.Ddd.Data.Sql.Builders.Core
+namespace KissU.Util.Ddd.Domain.Datas.Sql.Builders.Core
 {
     /// <summary>
     /// Sql执行上下文

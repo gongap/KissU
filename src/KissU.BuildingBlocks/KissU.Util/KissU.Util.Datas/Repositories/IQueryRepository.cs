@@ -1,8 +1,7 @@
 ﻿using System;
-using KissU.Util.Ddd.Data.Stores;
-using KissU.Util.Ddd.Domain;
+using KissU.Util.Ddd.Domain.Datas.Stores;
 
-namespace KissU.Util.Ddd.Data.Repositories
+namespace KissU.Util.Ddd.Domain.Datas.Repositories
 {
     /// <summary>
     /// 查询仓储

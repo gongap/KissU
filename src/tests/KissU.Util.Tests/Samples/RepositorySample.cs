@@ -8,8 +8,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using KissU.Core.Datas;
-using KissU.Util.Ddd.Data.Repositories;
 using KissU.Util.Ddd.Domain;
+using KissU.Util.Ddd.Domain.Datas.Repositories;
 
 namespace KissU.Util.Tests.Samples
 {

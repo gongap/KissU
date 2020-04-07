@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using KissU.Core;
 using KissU.Core.Datas.Queries;
 
-namespace KissU.Util.Ddd.Data.Sql.Builders.Core
+namespace KissU.Util.Ddd.Domain.Datas.Sql.Builders.Core
 {
     /// <summary>
     /// 参数管理器

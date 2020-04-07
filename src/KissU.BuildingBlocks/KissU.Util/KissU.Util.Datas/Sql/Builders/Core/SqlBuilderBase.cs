@@ -5,11 +5,11 @@ using System.Text;
 using KissU.Core;
 using KissU.Core.Datas;
 using KissU.Core.Helpers;
-using KissU.Util.Ddd.Data.Sql.Builders.Clauses;
-using KissU.Util.Ddd.Data.Sql.Builders.Filters;
-using KissU.Util.Ddd.Data.Sql.Matedatas;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders.Clauses;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders.Filters;
+using KissU.Util.Ddd.Domain.Datas.Sql.Matedatas;
 
-namespace KissU.Util.Ddd.Data.Sql.Builders.Core
+namespace KissU.Util.Ddd.Domain.Datas.Sql.Builders.Core
 {
     /// <summary>
     /// Sql生成器

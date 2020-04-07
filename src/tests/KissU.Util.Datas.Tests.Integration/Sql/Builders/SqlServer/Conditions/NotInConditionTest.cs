@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders.Conditions;
 using Xunit;
 
 namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Conditions

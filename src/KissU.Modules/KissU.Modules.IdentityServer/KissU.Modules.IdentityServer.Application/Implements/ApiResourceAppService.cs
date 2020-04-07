@@ -14,8 +14,8 @@ using KissU.Modules.IdentityServer.Domain.Shared;
 using KissU.Modules.IdentityServer.Domain.Shared.Enums;
 using KissU.Modules.IdentityServer.Domain.UnitOfWorks;
 using KissU.Util.Ddd.Application;
-using KissU.Util.Ddd.Data.Queries;
-using KissU.Util.Ddd.Data.Repositories;
+using KissU.Util.Ddd.Domain.Datas.Queries;
+using KissU.Util.Ddd.Domain.Datas.Repositories;
 
 namespace KissU.Modules.IdentityServer.Application.Implements
 {

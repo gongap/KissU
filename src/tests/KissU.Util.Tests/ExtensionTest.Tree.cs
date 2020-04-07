@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Castle.Components.DictionaryAdapter;
 using KissU.Core;
-using KissU.Util.Ddd.Data;
+using KissU.Util.Ddd.Domain.Datas;
 using KissU.Util.Ddd.Domain.Trees;
 using KissU.Util.Tests.Samples;
 using NSubstitute;

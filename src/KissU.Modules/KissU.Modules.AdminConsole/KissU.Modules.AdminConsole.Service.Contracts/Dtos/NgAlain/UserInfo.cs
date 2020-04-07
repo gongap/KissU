@@ -1,4 +1,4 @@
-﻿namespace KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain
+﻿namespace KissU.Modules.AdminConsole.Service.Contracts.Dtos.NgAlain
 {
     /// <summary>
     /// NgAlain用户信息

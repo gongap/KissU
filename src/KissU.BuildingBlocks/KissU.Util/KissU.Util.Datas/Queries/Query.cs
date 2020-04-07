@@ -4,11 +4,11 @@ using KissU.Core;
 using KissU.Core.Datas;
 using KissU.Core.Datas.Queries;
 using KissU.Core.Helpers;
-using KissU.Util.Ddd.Data.Queries.Criterias;
-using KissU.Util.Ddd.Data.Queries.Internal;
-using KissU.Util.Ddd.Data.Repositories;
+using KissU.Util.Ddd.Domain.Datas.Queries.Criterias;
+using KissU.Util.Ddd.Domain.Datas.Queries.Internal;
+using KissU.Util.Ddd.Domain.Datas.Repositories;
 
-namespace KissU.Util.Ddd.Data.Queries
+namespace KissU.Util.Ddd.Domain.Datas.Queries
 {
     /// <summary>
     /// 查询对象

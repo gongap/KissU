@@ -1,4 +1,6 @@
-﻿namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.Samples
+﻿using KissU.Util.Ddd.Domain.Datas.Sql.Matedatas;
+
+namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.Samples
 {
     /// <summary>
     /// 表数据库

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using KissU.Core.Datas;
-using KissU.Util.Ddd.Data.Sql.Builders;
+using KissU.Util.Ddd.Domain.Datas.Sql.Builders;
 
-namespace KissU.Util.Ddd.Data.Sql
+namespace KissU.Util.Ddd.Domain.Datas.Sql
 {
     /// <summary>
     /// Sql生成器

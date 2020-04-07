@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using KissU.Core.Datas;
-using KissU.Util.Ddd.Data.Queries.Internal;
+using KissU.Util.Ddd.Domain.Datas.Queries.Internal;
 using Microsoft.EntityFrameworkCore;
 
 namespace KissU.Util.EntityFrameworkCore

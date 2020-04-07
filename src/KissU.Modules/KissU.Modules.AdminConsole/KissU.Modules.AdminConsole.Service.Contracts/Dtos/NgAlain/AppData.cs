@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain
+namespace KissU.Modules.AdminConsole.Service.Contracts.Dtos.NgAlain
 {
     /// <summary>
     /// NgAlain应用程序数据

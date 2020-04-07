@@ -3,7 +3,7 @@ using System.Linq;
 using KissU.Core;
 using KissU.Modules.GreatWall.Application.Contracts.Dtos.Responses;
 
-namespace KissU.Modules.Admin.Service.Contracts.Dtos.NgAlain
+namespace KissU.Modules.AdminConsole.Service.Contracts.Dtos.NgAlain
 {
     /// <summary>
     /// NgAlain菜单结果

@@ -1,7 +1,7 @@
 ﻿using KissU.Core.Datas.Queries;
-using KissU.Util.Ddd.Data.Queries;
+using KissU.Util.Ddd.Domain.Datas.Queries;
 
-namespace KissU.Util.Ddd.Data.Sql.Builders.Conditions
+namespace KissU.Util.Ddd.Domain.Datas.Sql.Builders.Conditions
 {
     /// <summary>
     /// 范围过滤条件

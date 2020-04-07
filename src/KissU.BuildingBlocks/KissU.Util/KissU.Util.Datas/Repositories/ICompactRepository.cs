@@ -1,9 +1,8 @@
 ﻿using System;
 using KissU.Core.Dependency;
-using KissU.Util.Ddd.Data.Stores.Operations;
-using KissU.Util.Ddd.Domain;
+using KissU.Util.Ddd.Domain.Datas.Stores.Operations;
 
-namespace KissU.Util.Ddd.Data.Repositories
+namespace KissU.Util.Ddd.Domain.Datas.Repositories
 {
     /// <summary>
     /// 仓储

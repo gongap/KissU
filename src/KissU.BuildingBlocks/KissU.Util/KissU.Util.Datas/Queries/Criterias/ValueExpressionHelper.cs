@@ -2,7 +2,7 @@
 using System.Linq.Expressions;
 using KissU.Core;
 
-namespace KissU.Util.Ddd.Data.Queries.Criterias
+namespace KissU.Util.Ddd.Domain.Datas.Queries.Criterias
 {
     /// <summary>
     /// 值表达式操作

@@ -2,7 +2,7 @@
 using System.Text;
 using KissU.Core;
 
-namespace KissU.Util.Ddd.Data.Sql.Builders.Conditions
+namespace KissU.Util.Ddd.Domain.Datas.Sql.Builders.Conditions
 {
     /// <summary>
     /// Not In查询条件
