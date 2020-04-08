@@ -1,4 +1,4 @@
-﻿namespace KissU.Core.Parameters.Formats
+﻿namespace KissU.Util.AspNetCore.Parameters.Formats
 {
     /// <summary>
     /// 参数格式化器

@@ -38,10 +38,16 @@ namespace KissU.Util.AspNetCore.Files
             var physicalPath = Web.GetWebRootPath(path);
             var directory = Path.GetDirectoryName(physicalPath);
             if (string.IsNullOrEmpty(directory))
+            {
                 throw new Warning("上传失败");
+            }
+
             if (Directory.Exists(directory) == false)
+            {
                 Directory.CreateDirectory(directory);
-            using (var stream = new FileStream(physicalPath, FileMode.Create))
+            }
+
+            await using (var stream = new FileStream(physicalPath, FileMode.Create))
             {
                 await fileControl.CopyToAsync(stream);
             }

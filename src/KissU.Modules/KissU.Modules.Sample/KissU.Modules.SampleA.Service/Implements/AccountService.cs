@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using KissU.Core;
+using KissU.Core.Commons;
 using KissU.Core.EventBus.Events;
 using KissU.Core.Ioc;
 using KissU.Surging.CPlatform.Transport.Implementation;
@@ -197,7 +198,7 @@ namespace KissU.Modules.SampleA.Service.Implements
         /// <returns>Task&lt;ApiResult&lt;UserModel&gt;&gt;.</returns>
         public Task<ApiResult<UserModel>> GetApiResult()
         {
-            return Task.FromResult(new ApiResult<UserModel> {Value = new UserModel {Name = "gongap"}, StatusCode = 200});
+            return Task.FromResult(new ApiResult<UserModel> {Data = new UserModel {Name = "gongap"}, Code = StateCode.Ok});
         }
 
         /// <summary>

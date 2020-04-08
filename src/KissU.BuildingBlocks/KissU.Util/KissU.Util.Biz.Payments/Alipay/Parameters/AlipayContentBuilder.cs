@@ -1,4 +1,4 @@
-﻿using KissU.Core.Parameters;
+﻿using KissU.Util.AspNetCore.Parameters;
 using KissU.Util.AspNetCore.Parameters.Formats;
 using KissU.Util.Biz.Payments.Alipay.Configs;
 using KissU.Util.Biz.Payments.Core;

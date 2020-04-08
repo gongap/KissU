@@ -6,7 +6,7 @@ using KissU.Core.Logs.Internal;
 using KissU.Util.AspNetCore.Contexts;
 using KissU.Util.AspNetCore.Helpers;
 
-namespace KissU.Util.AspNetCore.Logs.Core
+namespace KissU.Util.Logs
 {
     /// <summary>
     /// 日志上下文
@@ -39,7 +39,7 @@ namespace KissU.Util.AspNetCore.Logs.Core
         /// <summary>
         /// 上下文
         /// </summary>
-        public virtual IContext Context => _context ?? (_context = ContextFactory.Create());
+        public virtual IContext Context => _context ??= ContextFactory.Create();
 
         /// <summary>
         /// 日志标识

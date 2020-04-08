@@ -1,7 +1,8 @@
 ﻿using System;
 using KissU.Core;
-using KissU.Core.Parameters;
 using KissU.Core.Signatures;
+using KissU.Util.AspNetCore.Parameters;
+using KissU.Util.AspNetCore.Signatures;
 using KissU.Util.Biz.Payments.Wechatpay.Configs;
 using KissU.Util.Biz.Payments.Wechatpay.Enums;
 

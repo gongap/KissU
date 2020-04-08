@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.AspNetCore.Mvc.Models
+﻿namespace KissU.Core.Commons
 {
     /// <summary>
     /// 保存参数

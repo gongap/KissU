@@ -1,8 +1,8 @@
 ﻿using KissU.Core;
 using KissU.Core.Helpers;
-using KissU.Core.Parameters;
 using KissU.Core.Signatures;
 using KissU.Util.AspNetCore.Parameters;
+using KissU.Util.AspNetCore.Signatures;
 
 namespace KissU.Util.Biz.Payments.Wechatpay.Signatures
 {

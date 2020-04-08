@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using KissU.Core;
+using KissU.Core.Commons;
 using KissU.Core.Datas.Queries;
-using KissU.Util.AspNetCore.Mvc.Models;
 using KissU.Util.AspNetCore.Mvc.Properties;
 using KissU.Util.Ddd.Application.Contracts;
 using KissU.Util.Ddd.Application.Contracts.Dtos;

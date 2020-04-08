@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using KissU.Core;
+using KissU.Core.Commons;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KissU.Util.AspNetCore.Mvc.Commons

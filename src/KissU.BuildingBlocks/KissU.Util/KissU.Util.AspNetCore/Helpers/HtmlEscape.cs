@@ -1,4 +1,4 @@
-﻿namespace KissU.Util.AspNetCore.Mvc
+﻿namespace KissU.Util.AspNetCore.Helpers
 {
     /// <summary>
     /// Html转义字符

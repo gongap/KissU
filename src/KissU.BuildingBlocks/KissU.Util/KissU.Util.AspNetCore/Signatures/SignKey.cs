@@ -1,4 +1,6 @@
-﻿namespace KissU.Core.Signatures
+﻿using KissU.Core.Signatures;
+
+namespace KissU.Util.AspNetCore.Signatures
 {
     /// <summary>
     /// 签名密钥

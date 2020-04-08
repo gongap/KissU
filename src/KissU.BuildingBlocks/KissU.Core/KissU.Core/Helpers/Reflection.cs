@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using KissU.Core.Commons;
 
 namespace KissU.Core.Helpers
 {

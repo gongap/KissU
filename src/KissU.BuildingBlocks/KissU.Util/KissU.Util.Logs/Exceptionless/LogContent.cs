@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using KissU.Core.Helpers;
+using KissU.Core.Commons;
 using KissU.Util.Logs.Properties;
 
 namespace KissU.Util.Logs.Exceptionless
@@ -23,7 +23,7 @@ namespace KissU.Util.Logs.Exceptionless
                 new Item(LogResource.OperationTime, OperationTime, 3),
                 new Item(LogResource.Duration, Duration, 4),
                 new Item(LogResource.ThreadId, ThreadId, 5),
-                new Item("Url", Url, 6),
+                new Item(LogResource.Url, Url, 6),
                 new Item(LogResource.UserId, UserId, 7),
                 new Item(LogResource.Operator, Operator, 8),
                 new Item(LogResource.Role, Role, 9),

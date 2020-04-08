@@ -2,7 +2,6 @@
 using KissU.Core;
 using KissU.Core.Datas.Queries.Trees;
 using KissU.Util.Ddd.Application.Contracts.Trees;
-using KissU.Util.Ddd.Application.Trees;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KissU.Util.AspNetCore.Mvc.Controllers.Trees

@@ -1,4 +1,4 @@
-﻿namespace KissU.Core.Parameters
+﻿namespace KissU.Util.AspNetCore.Parameters
 {
     /// <summary>
     /// 参数服务

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using KissU.Core;
 using KissU.Core.Helpers;
-using KissU.Core.Parameters.Formats;
+using KissU.Util.AspNetCore.Parameters.Formats;
 
-namespace KissU.Core.Parameters
+namespace KissU.Util.AspNetCore.Parameters
 {
     /// <summary>
     /// 参数生成器

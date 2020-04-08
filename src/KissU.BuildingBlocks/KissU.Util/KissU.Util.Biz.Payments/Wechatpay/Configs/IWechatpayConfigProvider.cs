@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using KissU.Core.Parameters;
+using KissU.Util.AspNetCore.Parameters;
 
 namespace KissU.Util.Biz.Payments.Wechatpay.Configs
 {

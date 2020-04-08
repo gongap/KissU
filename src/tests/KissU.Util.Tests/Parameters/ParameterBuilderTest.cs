@@ -1,5 +1,5 @@
 ﻿using System;
-using KissU.Core.Parameters;
+using KissU.Util.AspNetCore.Parameters;
 using KissU.Util.Tests.Samples;
 using Xunit;
 

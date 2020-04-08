@@ -34,7 +34,7 @@ namespace KissU.Core.Logs.Core
         /// <summary>
         /// 日志内容
         /// </summary>
-        private TContent LogContent => _content ?? (_content = GetContent());
+        private TContent LogContent => _content ??= GetContent();
 
         /// <summary>
         /// 日志提供程序

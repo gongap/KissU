@@ -1,4 +1,4 @@
-﻿using KissU.Core.Signatures;
+﻿using KissU.Util.AspNetCore.Signatures;
 using KissU.Util.Biz.Payments.Wechatpay.Signatures;
 using Xunit;
 

@@ -7,17 +7,9 @@
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="Swaggers\index.html" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Swaggers\index.html" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Extensions\Extensions.Middleware.cs" />
-  </ItemGroup>
+   <ItemGroup>
+     <FrameworkReference Include="Microsoft.AspNetCore.App" />
+   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0" />
@@ -26,6 +18,10 @@
   <ItemGroup>
     <ProjectReference Include="..\KissU.Util.AspNetCore\KissU.Util.AspNetCore.csproj" />
   </ItemGroup>
+
+   <ItemGroup>
+     <EmbeddedResource Include="Swaggers\index.html" />
+   </ItemGroup>
 
   <ItemGroup>
     <Compile Update="Properties\WebResource.Designer.cs">
