@@ -19,7 +19,7 @@ namespace KissU.Util.Logs.Exceptionless
             {
                 TraceId = Guid.NewGuid().ToString(),
                 Stopwatch = GetStopwatch(),
-                Url = Web.Url
+                Url = Web.RequestUrl
             };
         }
     }

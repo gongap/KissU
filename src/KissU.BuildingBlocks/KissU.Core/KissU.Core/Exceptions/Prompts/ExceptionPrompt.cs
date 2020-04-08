@@ -50,7 +50,7 @@ namespace KissU.Core.Exceptions.Prompts
                 return prompt;
             if (exception is Warning warning)
                 return warning.Message;
-            if (Host.Environment.IsDevelopment() || IsShowSystemException)
+            if (IsShowSystemException)
                 return exception.Message;
             return R.SystemError;
         }

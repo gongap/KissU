@@ -461,20 +461,9 @@ namespace KissU.Core.Clients
         /// <param name="client">Http客户端</param>
         protected virtual void InitHttpClient(HttpClient client)
         {
-            //InitToken();
             if (string.IsNullOrWhiteSpace(_token))
                 return;
             client.SetToken("Bearer", _token);
-        }
-
-        /// <summary>
-        /// 初始化访问令牌
-        /// </summary>
-        protected virtual void InitToken(string token)
-        {
-            if (string.IsNullOrWhiteSpace(_token) == false)
-                return;
-            _token = token;
         }
 
         /// <summary>

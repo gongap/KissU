@@ -134,7 +134,7 @@ namespace KissU.Core.Parameters
         private object GetEncodeValue(object value, bool isUrlEncode, string encoding)
         {
             if (isUrlEncode)
-                return Host.UrlEncode(value.SafeString(), encoding);
+                return Url.Encode(value.SafeString(), encoding);
             return value;
         }
 

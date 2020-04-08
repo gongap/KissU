@@ -46,6 +46,35 @@ namespace KissU.Util.AspNetCore.Helpers
 
         #endregion
 
+        #region 属性
+
+        /// <summary>
+        /// Http上下文访问器
+        /// </summary>
+        public static IHttpContextAccessor HttpContextAccessor { get; set; }
+
+        /// <summary>
+        /// 当前Http上下文
+        /// </summary>
+        public static HttpContext HttpContext => HttpContextAccessor?.HttpContext;
+
+        /// <summary>
+        /// 当前Http请求
+        /// </summary>
+        public static HttpRequest Request => HttpContext?.Request;
+
+        /// <summary>
+        /// 当前Http响应
+        /// </summary>
+        public static HttpResponse Response => HttpContext?.Response;
+
+        /// <summary>
+        /// 宿主环境
+        /// </summary>
+        public static IWebHostEnvironment Environment { get; set; }
+
+        #endregion
+
         #region User(当前用户安全主体)
 
         /// <summary>
@@ -116,12 +145,12 @@ namespace KissU.Util.AspNetCore.Helpers
 
         #endregion
 
-        #region Url(请求地址)
+        #region RequestUrl(请求地址)
 
         /// <summary>
         /// 请求地址
         /// </summary>
-        public static string Url => Request?.GetDisplayUrl();
+        public static string RequestUrl => Request?.GetDisplayUrl();
 
         #endregion
 
@@ -140,6 +169,171 @@ namespace KissU.Util.AspNetCore.Helpers
         /// 根路径
         /// </summary>
         public static string RootPath => Environment?.ContentRootPath;
+
+        #endregion
+
+        #region WebRootPath(Web根路径)
+
+        /// <summary>
+        /// Web根路径，即wwwroot
+        /// </summary>
+        public static string WebRootPath => Environment?.WebRootPath;
+
+        /// <summary>
+        /// 获取wwwroot路径
+        /// </summary>
+        /// <param name="relativePath">相对路径</param>
+        /// <returns>System.String.</returns>
+        public static string GetWebRootPath(string relativePath)
+        {
+            if (string.IsNullOrWhiteSpace(relativePath))
+                return string.Empty;
+            var rootPath = WebRootPath;
+            if (string.IsNullOrWhiteSpace(rootPath))
+                return Path.GetFullPath(relativePath);
+            return $"{WebRootPath}\\{relativePath.Replace("/", "\\").TrimStart('\\')}";
+        }
+
+        #endregion
+
+        #region Host(主机)
+
+        /// <summary>
+        /// 主机
+        /// </summary>
+        public static string Host => HttpContext == null ? Dns.GetHostName() : GetClientHostName();
+
+        /// <summary>
+        /// 获取Web客户端主机名
+        /// </summary>
+        private static string GetClientHostName()
+        {
+            var address = GetRemoteAddress();
+            if (string.IsNullOrWhiteSpace(address))
+                return Dns.GetHostName();
+            var result = Dns.GetHostEntry(IPAddress.Parse(address)).HostName;
+            if (result == "localhost.localdomain")
+                result = Dns.GetHostName();
+            return result;
+        }
+
+        /// <summary>
+        /// 获取远程地址
+        /// </summary>
+        private static string GetRemoteAddress()
+        {
+            return Request?.Headers["HTTP_X_FORWARDED_FOR"] ?? Request?.Headers["REMOTE_ADDR"];
+        }
+
+        #endregion
+
+        #region Client( Web客户端 )
+
+        /// <summary>
+        /// Web客户端，用于发送Http请求
+        /// </summary>
+        /// <returns>Clients.WebClient.</returns>
+        public static WebClient Client()
+        {
+            return new WebClient();
+        }
+
+        /// <summary>
+        /// Web客户端，用于发送Http请求
+        /// </summary>
+        /// <typeparam name="TResult">返回结果类型</typeparam>
+        /// <returns>Clients.WebClient&lt;TResult&gt;.</returns>
+        public static WebClient<TResult> Client<TResult>() where TResult : class
+        {
+            return new WebClient<TResult>();
+        }
+
+        #endregion
+
+        #region Ip(客户端Ip地址)
+
+        /// <summary>
+        /// Ip地址
+        /// </summary>
+        private static string _ip;
+
+        /// <summary>
+        /// 设置Ip地址
+        /// </summary>
+        /// <param name="ip">Ip地址</param>
+        public static void SetIp(string ip)
+        {
+            _ip = ip;
+        }
+
+        /// <summary>
+        /// 重置Ip地址
+        /// </summary>
+        public static void ResetIp()
+        {
+            _ip = null;
+        }
+
+        /// <summary>
+        /// 客户端Ip地址
+        /// </summary>
+        public static string Ip
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(_ip) == false)
+                    return _ip;
+                var list = new[] { "127.0.0.1", "::1" };
+                var result = HttpContext?.Connection?.RemoteIpAddress.SafeString();
+                if (string.IsNullOrWhiteSpace(result) || list.Contains(result))
+                    result = Common.IsWindows ? GetLanIp() : GetLanIp(NetworkInterfaceType.Ethernet);
+                return result;
+            }
+        }
+
+        /// <summary>
+        /// 获取局域网IP
+        /// </summary>
+        private static string GetLanIp()
+        {
+            foreach (var hostAddress in Dns.GetHostAddresses(Dns.GetHostName()))
+            {
+                if (hostAddress.AddressFamily == AddressFamily.InterNetwork)
+                    return hostAddress.ToString();
+            }
+
+            return string.Empty;
+        }
+
+        /// <summary>
+        /// 获取局域网IP
+        /// </summary>
+        /// <param name="type">网络接口类型</param>
+        private static string GetLanIp(NetworkInterfaceType type)
+        {
+            try
+            {
+                foreach (var item in NetworkInterface.GetAllNetworkInterfaces())
+                {
+                    if (item.NetworkInterfaceType != type || item.OperationalStatus != OperationalStatus.Up)
+                        continue;
+                    var ipProperties = item.GetIPProperties();
+                    if (ipProperties.GatewayAddresses.FirstOrDefault() == null)
+                        continue;
+                    foreach (var ip in ipProperties.UnicastAddresses)
+                    {
+                        if (ip.Address.AddressFamily == AddressFamily.InterNetwork)
+                            return ip.Address.ToString();
+                    }
+                }
+            }
+            catch
+            {
+                return string.Empty;
+            }
+
+            return string.Empty;
+        }
 
         #endregion
 
@@ -218,288 +412,6 @@ namespace KissU.Util.AspNetCore.Helpers
 
         #endregion
 
-        #region 属性
-
-        /// <summary>
-        /// Http上下文访问器
-        /// </summary>
-        public static IHttpContextAccessor HttpContextAccessor { get; set; }
-
-        /// <summary>
-        /// 当前Http上下文
-        /// </summary>
-        public static HttpContext HttpContext => HttpContextAccessor?.HttpContext;
-
-        /// <summary>
-        /// 当前Http请求
-        /// </summary>
-        public static HttpRequest Request => HttpContext?.Request;
-
-        /// <summary>
-        /// 当前Http响应
-        /// </summary>
-        public static HttpResponse Response => HttpContext?.Response;
-
-        /// <summary>
-        /// 宿主环境
-        /// </summary>
-        public static IWebHostEnvironment Environment { get; set; }
-
-        #endregion
-
-        #region Client( Web客户端 )
-
-        /// <summary>
-        /// Web客户端，用于发送Http请求
-        /// </summary>
-        /// <returns>Clients.WebClient.</returns>
-        public static WebClient Client()
-        {
-            return new WebClient();
-        }
-
-        /// <summary>
-        /// Web客户端，用于发送Http请求
-        /// </summary>
-        /// <typeparam name="TResult">返回结果类型</typeparam>
-        /// <returns>Clients.WebClient&lt;TResult&gt;.</returns>
-        public static WebClient<TResult> Client<TResult>() where TResult : class
-        {
-            return new WebClient<TResult>();
-        }
-
-        #endregion
-
-        #region Ip(客户端Ip地址)
-
-        /// <summary>
-        /// Ip地址
-        /// </summary>
-        private static string _ip;
-
-        /// <summary>
-        /// 设置Ip地址
-        /// </summary>
-        /// <param name="ip">Ip地址</param>
-        public static void SetIp(string ip)
-        {
-            _ip = ip;
-        }
-
-        /// <summary>
-        /// 重置Ip地址
-        /// </summary>
-        public static void ResetIp()
-        {
-            _ip = null;
-        }
-
-        /// <summary>
-        /// 客户端Ip地址
-        /// </summary>
-        public static string Ip
-        {
-            get
-            {
-                if (string.IsNullOrWhiteSpace(_ip) == false)
-                    return _ip;
-                var list = new[] {"127.0.0.1", "::1"};
-                var result = HttpContext?.Connection?.RemoteIpAddress.SafeString();
-                if (string.IsNullOrWhiteSpace(result) || list.Contains(result))
-                    result = Common.IsWindows ? GetLanIp() : GetLanIp(NetworkInterfaceType.Ethernet);
-                return result;
-            }
-        }
-
-        /// <summary>
-        /// 获取局域网IP
-        /// </summary>
-        private static string GetLanIp()
-        {
-            foreach (var hostAddress in Dns.GetHostAddresses(Dns.GetHostName()))
-            {
-                if (hostAddress.AddressFamily == AddressFamily.InterNetwork)
-                    return hostAddress.ToString();
-            }
-
-            return string.Empty;
-        }
-
-        /// <summary>
-        /// 获取局域网IP
-        /// </summary>
-        /// <param name="type">网络接口类型</param>
-        private static string GetLanIp(NetworkInterfaceType type)
-        {
-            try
-            {
-                foreach (var item in NetworkInterface.GetAllNetworkInterfaces())
-                {
-                    if (item.NetworkInterfaceType != type || item.OperationalStatus != OperationalStatus.Up)
-                        continue;
-                    var ipProperties = item.GetIPProperties();
-                    if (ipProperties.GatewayAddresses.FirstOrDefault() == null)
-                        continue;
-                    foreach (var ip in ipProperties.UnicastAddresses)
-                    {
-                        if (ip.Address.AddressFamily == AddressFamily.InterNetwork)
-                            return ip.Address.ToString();
-                    }
-                }
-            }
-            catch
-            {
-                return string.Empty;
-            }
-
-            return string.Empty;
-        }
-
-        #endregion
-
-        #region Host(主机)
-
-        /// <summary>
-        /// 主机
-        /// </summary>
-        public static string Host => HttpContext == null ? Dns.GetHostName() : GetClientHostName();
-
-        /// <summary>
-        /// 获取Web客户端主机名
-        /// </summary>
-        private static string GetClientHostName()
-        {
-            var address = GetRemoteAddress();
-            if (string.IsNullOrWhiteSpace(address))
-                return Dns.GetHostName();
-            var result = Dns.GetHostEntry(IPAddress.Parse(address)).HostName;
-            if (result == "localhost.localdomain")
-                result = Dns.GetHostName();
-            return result;
-        }
-
-        /// <summary>
-        /// 获取远程地址
-        /// </summary>
-        private static string GetRemoteAddress()
-        {
-            return Request?.Headers["HTTP_X_FORWARDED_FOR"] ?? Request?.Headers["REMOTE_ADDR"];
-        }
-
-        #endregion
-
-        #region WebRootPath(Web根路径)
-
-        /// <summary>
-        /// Web根路径，即wwwroot
-        /// </summary>
-        public static string WebRootPath => Environment?.WebRootPath;
-
-        /// <summary>
-        /// 获取wwwroot路径
-        /// </summary>
-        /// <param name="relativePath">相对路径</param>
-        /// <returns>System.String.</returns>
-        public static string GetWebRootPath(string relativePath)
-        {
-            if (string.IsNullOrWhiteSpace(relativePath))
-                return string.Empty;
-            var rootPath = WebRootPath;
-            if (string.IsNullOrWhiteSpace(rootPath))
-                return Path.GetFullPath(relativePath);
-            return $"{WebRootPath}\\{relativePath.Replace("/", "\\").TrimStart('\\')}";
-        }
-
-        #endregion
-
-        #region UrlEncode(Url编码)
-
-        /// <summary>
-        /// Url编码
-        /// </summary>
-        /// <param name="url">url</param>
-        /// <param name="isUpper">编码字符是否转成大写,范例,"http://"转成"http%3A%2F%2F"</param>
-        /// <returns>System.String.</returns>
-        public static string UrlEncode(string url, bool isUpper = false)
-        {
-            return UrlEncode(url, Encoding.UTF8, isUpper);
-        }
-
-        /// <summary>
-        /// Url编码
-        /// </summary>
-        /// <param name="url">url</param>
-        /// <param name="encoding">字符编码</param>
-        /// <param name="isUpper">编码字符是否转成大写,范例,"http://"转成"http%3A%2F%2F"</param>
-        /// <returns>System.String.</returns>
-        public static string UrlEncode(string url, string encoding, bool isUpper = false)
-        {
-            encoding = string.IsNullOrWhiteSpace(encoding) ? "UTF-8" : encoding;
-            return UrlEncode(url, Encoding.GetEncoding(encoding), isUpper);
-        }
-
-        /// <summary>
-        /// Url编码
-        /// </summary>
-        /// <param name="url">url</param>
-        /// <param name="encoding">字符编码</param>
-        /// <param name="isUpper">编码字符是否转成大写,范例,"http://"转成"http%3A%2F%2F"</param>
-        /// <returns>System.String.</returns>
-        public static string UrlEncode(string url, Encoding encoding, bool isUpper = false)
-        {
-            var result = HttpUtility.UrlEncode(url, encoding);
-            if (isUpper == false)
-                return result;
-            return GetUpperEncode(result);
-        }
-
-        /// <summary>
-        /// 获取大写编码字符串
-        /// </summary>
-        private static string GetUpperEncode(string encode)
-        {
-            var result = new StringBuilder();
-            var index = int.MinValue;
-            for (var i = 0; i < encode.Length; i++)
-            {
-                var character = encode[i].ToString();
-                if (character == "%")
-                    index = i;
-                if (i - index == 1 || i - index == 2)
-                    character = character.ToUpper();
-                result.Append(character);
-            }
-
-            return result.ToString();
-        }
-
-        #endregion
-
-        #region UrlDecode(Url解码)
-
-        /// <summary>
-        /// Url解码
-        /// </summary>
-        /// <param name="url">url</param>
-        /// <returns>System.String.</returns>
-        public static string UrlDecode(string url)
-        {
-            return HttpUtility.UrlDecode(url);
-        }
-
-        /// <summary>
-        /// Url解码
-        /// </summary>
-        /// <param name="url">url</param>
-        /// <param name="encoding">字符编码</param>
-        /// <returns>System.String.</returns>
-        public static string UrlDecode(string url, Encoding encoding)
-        {
-            return HttpUtility.UrlDecode(url, encoding);
-        }
-
-        #endregion
-
         #region DownloadAsync(下载)
 
         /// <summary>
@@ -566,7 +478,7 @@ namespace KissU.Util.AspNetCore.Helpers
             if (bytes == null || bytes.Length == 0)
                 return;
             fileName = fileName.Replace(" ", "");
-            fileName = UrlEncode(fileName, encoding);
+            fileName = Url.Encode(fileName, encoding);
             Response.ContentType = "application/octet-stream";
             Response.Headers.Add("Content-Disposition", $"attachment; filename={fileName}");
             Response.Headers.Add("Content-Length", bytes.Length.ToString());

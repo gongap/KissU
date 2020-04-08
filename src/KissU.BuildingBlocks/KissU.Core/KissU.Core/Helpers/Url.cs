@@ -1,4 +1,6 @@
 ﻿using System.IO;
+using System.Text;
+using System.Web;
 
 namespace KissU.Core.Helpers
 {
@@ -41,5 +43,94 @@ namespace KissU.Core.Helpers
                 return url;
             return $"{url}&";
         }
+
+
+        #region UrlEncode(Url编码)
+
+        /// <summary>
+        /// Url编码
+        /// </summary>
+        /// <param name="url">url</param>
+        /// <param name="isUpper">编码字符是否转成大写,范例,"http://"转成"http%3A%2F%2F"</param>
+        /// <returns>System.String.</returns>
+        public static string Encode(string url, bool isUpper = false)
+        {
+            return Encode(url, Encoding.UTF8, isUpper);
+        }
+
+        /// <summary>
+        /// Url编码
+        /// </summary>
+        /// <param name="url">url</param>
+        /// <param name="encoding">字符编码</param>
+        /// <param name="isUpper">编码字符是否转成大写,范例,"http://"转成"http%3A%2F%2F"</param>
+        /// <returns>System.String.</returns>
+        public static string Encode(string url, string encoding, bool isUpper = false)
+        {
+            encoding = string.IsNullOrWhiteSpace(encoding) ? "UTF-8" : encoding;
+            return Encode(url, Encoding.GetEncoding(encoding), isUpper);
+        }
+
+        /// <summary>
+        /// Url编码
+        /// </summary>
+        /// <param name="url">url</param>
+        /// <param name="encoding">字符编码</param>
+        /// <param name="isUpper">编码字符是否转成大写,范例,"http://"转成"http%3A%2F%2F"</param>
+        /// <returns>System.String.</returns>
+        public static string Encode(string url, Encoding encoding, bool isUpper = false)
+        {
+            var result = HttpUtility.UrlEncode(url, encoding);
+            if (isUpper == false)
+                return result;
+            return GetUpperEncode(result);
+        }
+
+        /// <summary>
+        /// 获取大写编码字符串
+        /// </summary>
+        private static string GetUpperEncode(string encode)
+        {
+            var result = new StringBuilder();
+            var index = int.MinValue;
+            for (var i = 0; i < encode.Length; i++)
+            {
+                var character = encode[i].ToString();
+                if (character == "%")
+                    index = i;
+                if (i - index == 1 || i - index == 2)
+                    character = character.ToUpper();
+                result.Append(character);
+            }
+
+            return result.ToString();
+        }
+
+        #endregion
+
+        #region UrlDecode(Url解码)
+
+        /// <summary>
+        /// Url解码
+        /// </summary>
+        /// <param name="url">url</param>
+        /// <returns>System.String.</returns>
+        public static string Decode(string url)
+        {
+            return HttpUtility.UrlDecode(url);
+        }
+
+        /// <summary>
+        /// Url解码
+        /// </summary>
+        /// <param name="url">url</param>
+        /// <param name="encoding">字符编码</param>
+        /// <returns>System.String.</returns>
+        public static string Decode(string url, Encoding encoding)
+        {
+            return HttpUtility.UrlDecode(url, encoding);
+        }
+
+        #endregion
     }
 }

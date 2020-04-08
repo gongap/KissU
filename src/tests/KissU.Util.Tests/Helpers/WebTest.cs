@@ -1,4 +1,5 @@
-﻿using KissU.Util.AspNetCore.Helpers;
+﻿using KissU.Core.Helpers;
+using KissU.Util.AspNetCore.Helpers;
 using Xunit;
 
 namespace KissU.Util.Tests.Helpers
@@ -14,7 +15,7 @@ namespace KissU.Util.Tests.Helpers
         [Fact]
         public void TestUrlEncode()
         {
-            Assert.Equal("http%3a%2f%2fwww.a.com", Web.UrlEncode(@"http://www.a.com"));
+            Assert.Equal("http%3a%2f%2fwww.a.com", Url.Encode(@"http://www.a.com"));
         }
 
         /// <summary>
@@ -23,7 +24,7 @@ namespace KissU.Util.Tests.Helpers
         [Fact]
         public void TestUrlEncode_Upper()
         {
-            Assert.Equal("http%3A%2F%2Fwww.a.com", Web.UrlEncode(@"http://www.a.com", true));
+            Assert.Equal("http%3A%2F%2Fwww.a.com", Url.Encode(@"http://www.a.com", true));
         }
     }
 }

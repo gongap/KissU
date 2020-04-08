@@ -105,7 +105,7 @@ namespace KissU.Util.AspNetCore.Logs.Core
                 Ip = Web.Ip,
                 Host = Web.Host,
                 Browser = Web.Browser,
-                Url = Web.Url
+                Url = Web.RequestUrl
             };
         }
 
