@@ -33,9 +33,8 @@ namespace KissU.Util.Logs
         /// 注册Exceptionless日志操作
         /// </summary>
         /// <param name="services">服务集合</param>
-        /// <param name="configAction">配置操作</param>
-        public static void AddExceptionless(this IServiceCollection services,
-            Action<ExceptionlessConfiguration> configAction)
+        /// <param name="configAction">配置操作</param>         
+        public static void AddExceptionless(this IServiceCollection services, Action<ExceptionlessConfiguration> configAction)
         {
             services.TryAddScoped<ILogProviderFactory, Exceptionless.LogProviderFactory>();
             services.TryAddSingleton(typeof(ILogFormat), t => NullLogFormat.Instance);
