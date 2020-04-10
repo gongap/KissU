@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\..\..\common.props" />
+  <Import Project="..\..\..\..\configureawait.props" />
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile></DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.Util.AspNetCore\KissU.Util.AspNetCore.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.Util.Ddd.Application\KissU.Util.Ddd.Application.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.Util.Security\KissU.Util.Security.csproj" />
+    <ProjectReference Include="..\KissU.Modules.GreatWall.Application.Contracts\KissU.Modules.GreatWall.Application.Contracts.csproj" />
+    <ProjectReference Include="..\KissU.Modules.GreatWall.Data\KissU.Modules.GreatWall.Data.csproj" />
+  </ItemGroup>
+</Project>

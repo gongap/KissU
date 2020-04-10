@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+   <Import Project="..\..\..\common.props" />
+   <Import Project="..\..\..\configureawait.props" />
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Description></Description>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KissU.Surging.KestrelHttpServer\KissU.Surging.KestrelHttpServer.csproj" />
+    <ProjectReference Include="..\KissU.Surging.Log4net\KissU.Surging.Log4net.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,81 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29911.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A55B2676-EE72-4B3A-B8B7-0B4AF0AE6C7D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{6F2B40D6-1199-4314-8FAB-A71C32CDC17C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.GreatWall.Application", "src\KissU.Modules.GreatWall.Application\KissU.Modules.GreatWall.Application.csproj", "{5935343C-A520-48A0-AC0D-C5AF38E8D061}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.GreatWall.Application.Contracts", "src\KissU.Modules.GreatWall.Application.Contracts\KissU.Modules.GreatWall.Application.Contracts.csproj", "{7D5AB940-3BCA-4DBD-A20E-00F29A064167}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.GreatWall.Data", "src\KissU.Modules.GreatWall.Data\KissU.Modules.GreatWall.Data.csproj", "{2127896E-05D5-4DC4-99B4-00B874ABB2B9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.GreatWall.DbMigrator", "src\KissU.Modules.GreatWall.DbMigrator\KissU.Modules.GreatWall.DbMigrator.csproj", "{3B8B5551-2C5F-4269-B849-E7B0E4879E5F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.GreatWall.Domain.Shared", "src\KissU.Modules.GreatWall.Domain.Shared\KissU.Modules.GreatWall.Domain.Shared.csproj", "{A618F7BE-D049-4ED0-B621-378234420DE0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.GreatWall.Domain", "src\KissU.Modules.GreatWall.Domain\KissU.Modules.GreatWall.Domain.csproj", "{A5ADC213-BE1A-4234-B10B-1D7DD0B3A2D3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.GreatWall.Service", "src\KissU.Modules.GreatWall.Service\KissU.Modules.GreatWall.Service.csproj", "{899B9774-C01B-4E93-AC33-828B06EB344A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.GreatWall.Service.Contracts", "src\KissU.Modules.GreatWall.Service.Contracts\KissU.Modules.GreatWall.Service.Contracts.csproj", "{54E9354D-1404-40AB-9C5B-F72B5492DDA7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5935343C-A520-48A0-AC0D-C5AF38E8D061}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5935343C-A520-48A0-AC0D-C5AF38E8D061}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5935343C-A520-48A0-AC0D-C5AF38E8D061}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5935343C-A520-48A0-AC0D-C5AF38E8D061}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D5AB940-3BCA-4DBD-A20E-00F29A064167}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D5AB940-3BCA-4DBD-A20E-00F29A064167}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D5AB940-3BCA-4DBD-A20E-00F29A064167}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D5AB940-3BCA-4DBD-A20E-00F29A064167}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2127896E-05D5-4DC4-99B4-00B874ABB2B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2127896E-05D5-4DC4-99B4-00B874ABB2B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2127896E-05D5-4DC4-99B4-00B874ABB2B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2127896E-05D5-4DC4-99B4-00B874ABB2B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B8B5551-2C5F-4269-B849-E7B0E4879E5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B8B5551-2C5F-4269-B849-E7B0E4879E5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B8B5551-2C5F-4269-B849-E7B0E4879E5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B8B5551-2C5F-4269-B849-E7B0E4879E5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A618F7BE-D049-4ED0-B621-378234420DE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A618F7BE-D049-4ED0-B621-378234420DE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A618F7BE-D049-4ED0-B621-378234420DE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A618F7BE-D049-4ED0-B621-378234420DE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5ADC213-BE1A-4234-B10B-1D7DD0B3A2D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5ADC213-BE1A-4234-B10B-1D7DD0B3A2D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5ADC213-BE1A-4234-B10B-1D7DD0B3A2D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5ADC213-BE1A-4234-B10B-1D7DD0B3A2D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{899B9774-C01B-4E93-AC33-828B06EB344A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{899B9774-C01B-4E93-AC33-828B06EB344A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{899B9774-C01B-4E93-AC33-828B06EB344A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{899B9774-C01B-4E93-AC33-828B06EB344A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54E9354D-1404-40AB-9C5B-F72B5492DDA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54E9354D-1404-40AB-9C5B-F72B5492DDA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54E9354D-1404-40AB-9C5B-F72B5492DDA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54E9354D-1404-40AB-9C5B-F72B5492DDA7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5935343C-A520-48A0-AC0D-C5AF38E8D061} = {A55B2676-EE72-4B3A-B8B7-0B4AF0AE6C7D}
+		{7D5AB940-3BCA-4DBD-A20E-00F29A064167} = {A55B2676-EE72-4B3A-B8B7-0B4AF0AE6C7D}
+		{2127896E-05D5-4DC4-99B4-00B874ABB2B9} = {A55B2676-EE72-4B3A-B8B7-0B4AF0AE6C7D}
+		{3B8B5551-2C5F-4269-B849-E7B0E4879E5F} = {A55B2676-EE72-4B3A-B8B7-0B4AF0AE6C7D}
+		{A618F7BE-D049-4ED0-B621-378234420DE0} = {A55B2676-EE72-4B3A-B8B7-0B4AF0AE6C7D}
+		{A5ADC213-BE1A-4234-B10B-1D7DD0B3A2D3} = {A55B2676-EE72-4B3A-B8B7-0B4AF0AE6C7D}
+		{899B9774-C01B-4E93-AC33-828B06EB344A} = {A55B2676-EE72-4B3A-B8B7-0B4AF0AE6C7D}
+		{54E9354D-1404-40AB-9C5B-F72B5492DDA7} = {A55B2676-EE72-4B3A-B8B7-0B4AF0AE6C7D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {50FE9080-778F-4F2F-A2F2-F1FB7F99E05F}
+	EndGlobalSection
+EndGlobal
