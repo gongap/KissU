@@ -437,7 +437,7 @@ namespace KissU.Surging.Zookeeper
             OnCreated(newCaches.Select(cache => new ServiceCacheEventArgs(cache)).ToArray());
 
             if (_logger.IsEnabled(LogLevel.Information))
-                _logger.LogInformation("缓存数据更新成功。");
+                _logger.LogInformation("Zookeeper缓存数据更新成功。");
         }
 
         private async ValueTask<(ManualResetEvent, ZooKeeper)> GetZooKeeper()

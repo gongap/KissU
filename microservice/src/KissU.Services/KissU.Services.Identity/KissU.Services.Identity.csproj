@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
-  <Import Project="..\..\..\..\common.props" />
-  <Import Project="..\..\..\..\configureawait.props" />
+  <Import Project="..\..\..\common.props" />
+  <Import Project="..\..\..\configureawait.props" />
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>5dcaf32d-576a-4f77-8273-38d7426e24a1</UserSecretsId>
@@ -18,7 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\framework\src\KissU.Util.Logs\KissU.Util.Logs.csproj" />
-    <ProjectReference Include="..\..\..\..\modules\KissU.Modules.GreatWall\src\KissU.Modules.GreatWall.Application\KissU.Modules.GreatWall.Application.csproj" />
-    <ProjectReference Include="..\..\..\..\modules\KissU.Modules.IdentityServer\src\KissU.Modules.IdentityServer.Application\KissU.Modules.IdentityServer.Application.csproj" />
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.GreatWall\src\KissU.Modules.GreatWall.Application\KissU.Modules.GreatWall.Application.csproj" />
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.IdentityServer\src\KissU.Modules.IdentityServer.Application\KissU.Modules.IdentityServer.Application.csproj" />
   </ItemGroup>
 </Project>

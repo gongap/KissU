@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="..\..\..\..\common.props" />
-  <Import Project="..\..\..\..\configureawait.props" />
+
+  <Import Project="..\..\common.props" />
+
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
@@ -18,7 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\framework\src\KissU.Util.Ddd.Domain.Datas\KissU.Util.Ddd.Domain.Datas.csproj" />
+    <ProjectReference Include="..\..\..\..\..\..\framework\src\KissU.Util.Ddd.Domain.Datas\KissU.Util.Ddd.Domain.Datas.csproj" />
     <ProjectReference Include="..\KissU.Modules.IdentityServer.Domain.Shared\KissU.Modules.IdentityServer.Domain.Shared.csproj" />
   </ItemGroup>
+
 </Project>

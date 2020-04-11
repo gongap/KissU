@@ -1,0 +1,22 @@
+<Project>
+  <PropertyGroup>
+    <Company>KissU</Company>
+    <Product>KissU</Product>
+    <Authors>龚安平</Authors>
+    <Copyright>Copyright（c）KissU. All rights reserved.</Copyright>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+    <RepositoryUrl>https://github.com/gongap/KissU.git</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/gongap/KissU</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/gongap/KissU/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageIconUrl></PackageIconUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>kissu;applicationframework;dotnetcore;aspnetcore;</PackageTags>
+    <PackageReleaseNotes>KissU框架以MIT开源发布，可随意使用</PackageReleaseNotes>
+    <VersionMajor>1</VersionMajor>
+    <VersionMinor>0</VersionMinor>
+    <VersionPatch>0.1</VersionPatch>
+    <VersionQuality></VersionQuality>
+    <VersionPrefix>$(VersionMajor).$(VersionMinor).$(VersionPatch)</VersionPrefix>
+    <VersionSuffix></VersionSuffix>
+  </PropertyGroup>
+</Project>

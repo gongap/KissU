@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="..\..\..\..\common.props" />
-  <Import Project="..\..\..\..\configureawait.props" />
+
+  <Import Project="..\..\common.props" />
+
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
@@ -18,7 +19,7 @@
   </ItemGroup>
 
    <ItemGroup>
-     <ProjectReference Include="..\..\..\..\framework\src\KissU.Core\KissU.Core.csproj" />
+     <ProjectReference Include="..\..\..\..\..\..\framework\src\KissU.Core\KissU.Core.csproj" />
    </ItemGroup>
 
   <ItemGroup>
@@ -36,15 +37,4 @@
     </EmbeddedResource>
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Update="Models/User.*.cs">
-      <DependentUpon>User.cs</DependentUpon>
-    </Compile>
-    <Compile Update="Models/Role.*.cs">
-      <DependentUpon>Role.cs</DependentUpon>
-    </Compile>
-    <Compile Update="Models/Module.*.cs">
-      <DependentUpon>Module.cs</DependentUpon>
-    </Compile>
-  </ItemGroup>
 </Project>

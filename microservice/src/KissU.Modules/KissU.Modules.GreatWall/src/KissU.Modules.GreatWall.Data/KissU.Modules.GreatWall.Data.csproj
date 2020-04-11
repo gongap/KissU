@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="..\..\..\..\common.props" />
-  <Import Project="..\..\..\..\configureawait.props" />
+
+  <Import Project="..\..\common.props" />
+
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
@@ -14,8 +15,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\framework\src\KissU.Util.EntityFrameworkCore.SqlServer\KissU.Util.EntityFrameworkCore.SqlServer.csproj" />
-    <ProjectReference Include="..\..\..\..\framework\src\KissU.Util.EntityFrameworkCore.PgSql\KissU.Util.EntityFrameworkCore.PgSql.csproj" />
+    <ProjectReference Include="..\..\..\..\..\..\framework\src\KissU.Util.EntityFrameworkCore.SqlServer\KissU.Util.EntityFrameworkCore.SqlServer.csproj" />
+    <ProjectReference Include="..\..\..\..\..\..\framework\src\KissU.Util.EntityFrameworkCore.PgSql\KissU.Util.EntityFrameworkCore.PgSql.csproj" />
     <ProjectReference Include="..\KissU.Modules.GreatWall.Domain\KissU.Modules.GreatWall.Domain.csproj" />
   </ItemGroup>
+
 </Project>

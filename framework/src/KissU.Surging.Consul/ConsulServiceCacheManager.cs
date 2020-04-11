@@ -380,7 +380,7 @@ namespace KissU.Surging.Consul
             OnCreated(newCaches.Select(cache => new ServiceCacheEventArgs(cache)).ToArray());
 
             if (_logger.IsEnabled(LogLevel.Information))
-                _logger.LogInformation("缓存数据更新成功。");
+                _logger.LogInformation("Consul缓存数据更新成功。");
         }
 
         #endregion

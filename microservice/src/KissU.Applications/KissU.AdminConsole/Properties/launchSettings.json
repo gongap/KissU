@@ -18,7 +18,7 @@
     "KissU.AdminConsole": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "http://localhost:4200",
+      "applicationUrl": "http://localhost:22773",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
