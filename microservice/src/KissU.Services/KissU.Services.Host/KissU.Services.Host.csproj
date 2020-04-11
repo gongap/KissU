@@ -50,9 +50,10 @@
     <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.ServiceHosting\KissU.Surging.ServiceHosting.csproj" />
     <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.Swagger\KissU.Surging.Swagger.csproj" />
     <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.Zookeeper\KissU.Surging.Zookeeper.csproj" />
-    <ProjectReference Include="..\..\..\..\modules\KissU.Modules.AdminConsole\src\KissU.Modules.AdminConsole.Service\KissU.Modules.AdminConsole.Service.csproj" />
+    <!--<ProjectReference Include="..\..\..\..\modules\KissU.Modules.AdminConsole\src\KissU.Modules.AdminConsole.Service\KissU.Modules.AdminConsole.Service.csproj" />
     <ProjectReference Include="..\..\..\..\modules\KissU.Modules.GreatWall\src\KissU.Modules.GreatWall.Service\KissU.Modules.GreatWall.Service.csproj" />
-    <ProjectReference Include="..\..\..\..\modules\KissU.Modules.IdentityServer\src\KissU.Modules.IdentityServer.Service\KissU.Modules.IdentityServer.Service.csproj" />
+    <ProjectReference Include="..\..\..\..\modules\KissU.Modules.IdentityServer\src\KissU.Modules.IdentityServer.Service\KissU.Modules.IdentityServer.Service.csproj" />-->
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.BookStore\src\KissU.Modules.BookStore.Service\KissU.Modules.BookStore.Service.csproj" />
   </ItemGroup>
 
   <ItemGroup>

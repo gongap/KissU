@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>KissU.Modules.BookStore</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore" Version="2.5.0" />
+    <ProjectReference Include="..\KissU.Modules.BookStore.Domain\KissU.Modules.BookStore.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
