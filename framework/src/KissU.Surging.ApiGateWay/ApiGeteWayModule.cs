@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using KissU.Core;
+using KissU.Core.Dependency;
 using KissU.Core.Module;
 using KissU.Surging.ApiGateWay.Aggregation;
 using KissU.Surging.ApiGateWay.OAuth;

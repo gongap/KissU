@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using KissU.Core;
 using KissU.Core.Address;
+using KissU.Core.Dependency;
 using KissU.Surging.CPlatform.Routing;
 using KissU.Surging.CPlatform.Routing.Implementation;
 using KissU.Surging.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors;

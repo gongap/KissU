@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using KissU.Core;
+using KissU.Core.Dependency;
 using KissU.Core.EventBus;
 using KissU.Core.EventBus.Implementation;
 using KissU.Surging.CPlatform.Engines;

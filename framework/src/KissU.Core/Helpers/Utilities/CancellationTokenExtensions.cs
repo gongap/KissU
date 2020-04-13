@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace KissU.Core.Utilities
+namespace KissU.Core.Helpers.Utilities
 {
     /// <summary>
     /// 取消令牌扩展.

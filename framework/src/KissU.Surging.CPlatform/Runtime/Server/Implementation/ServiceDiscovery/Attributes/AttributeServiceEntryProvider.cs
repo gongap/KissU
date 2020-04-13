@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using Autofac;
 using KissU.Core;
+using KissU.Core.Dependency;
 using Microsoft.Extensions.Logging;
 
 namespace KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes

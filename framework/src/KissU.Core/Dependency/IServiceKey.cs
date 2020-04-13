@@ -1,4 +1,4 @@
-﻿namespace KissU.Core.Ioc
+﻿namespace KissU.Core.Dependency
 {
     /// <summary>
     /// 服务键

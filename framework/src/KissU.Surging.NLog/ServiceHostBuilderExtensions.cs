@@ -1,6 +1,6 @@
 ﻿using System;
 using Autofac;
-using KissU.Core.Utilities;
+using KissU.Core.Helpers.Utilities;
 using KissU.Surging.CPlatform;
 using KissU.Surging.ServiceHosting.Internal;
 using Microsoft.Extensions.Logging;

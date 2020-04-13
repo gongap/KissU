@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using KissU.Core.Address;
-using KissU.Core.Utilities;
+using KissU.Core.Dependency;
 using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Routing;
 using KissU.Surging.CPlatform.Runtime.Client.HealthChecks;

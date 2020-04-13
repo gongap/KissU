@@ -1,4 +1,4 @@
-﻿using KissU.Core.Ioc;
+﻿using KissU.Core.Dependency;
 
 namespace KissU.Modules.SampleA.Service.Repositories
 {

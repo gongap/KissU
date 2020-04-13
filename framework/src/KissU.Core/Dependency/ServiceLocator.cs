@@ -1,7 +1,7 @@
 ﻿using System;
 using Autofac;
 
-namespace KissU.Core.Utilities
+namespace KissU.Core.Dependency
 {
     /// <summary>
     /// 服务定位器.

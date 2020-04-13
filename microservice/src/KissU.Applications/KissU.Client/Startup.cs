@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using KissU.Core.Utilities;
+using KissU.Core.Dependency;
 using KissU.Surging.CPlatform.Diagnostics;
 using KissU.Surging.CPlatform.Transport.Implementation;
 using KissU.Surging.ProxyGenerator;

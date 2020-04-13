@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KissU.Core.Ioc
+namespace KissU.Core.Dependency
 {
     /// <summary>
     /// 模块名称属性.

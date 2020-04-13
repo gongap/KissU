@@ -1,6 +1,5 @@
 using Autofac;
-using KissU.Core;
-using KissU.Core.Utilities;
+using KissU.Core.Dependency;
 using KissU.Surging.Caching;
 using KissU.Surging.CPlatform;
 using KissU.Surging.ProxyGenerator;

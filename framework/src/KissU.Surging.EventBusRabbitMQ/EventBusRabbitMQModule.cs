@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Autofac;
 using KissU.Core;
+using KissU.Core.Dependency;
 using KissU.Core.EventBus;
 using KissU.Core.EventBus.Events;
 using KissU.Core.EventBus.Implementation;

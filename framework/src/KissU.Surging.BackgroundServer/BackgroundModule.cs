@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Autofac;
 using KissU.Core;
+using KissU.Core.Dependency;
 using KissU.Core.Module;
 using KissU.Surging.CPlatform.Engines;
 using KissU.Surging.CPlatform.Runtime.Server;

@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json.Linq;
 
-namespace KissU.Core.Utilities
+namespace KissU.Core.Helpers.Utilities
 {
     /// <summary>
     /// 公共类型.

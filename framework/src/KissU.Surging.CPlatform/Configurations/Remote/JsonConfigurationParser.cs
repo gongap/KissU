@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-using KissU.Core.Utilities;
+using KissU.Core.Helpers.Utilities;
 using KissU.Surging.CPlatform.Properties;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;

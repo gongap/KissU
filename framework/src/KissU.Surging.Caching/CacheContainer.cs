@@ -1,5 +1,5 @@
 ﻿using System;
-using KissU.Core.Utilities;
+using KissU.Core.Dependency;
 
 namespace KissU.Surging.Caching
 {

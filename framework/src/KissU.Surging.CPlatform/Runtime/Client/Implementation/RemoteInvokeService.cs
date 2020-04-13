@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using KissU.Core.Address;
 using KissU.Core.Exceptions;
-using KissU.Core.Utilities;
+using KissU.Core.Helpers.Utilities;
 using KissU.Surging.CPlatform.HashAlgorithms;
 using KissU.Surging.CPlatform.Messages;
 using KissU.Surging.CPlatform.Runtime.Client.Address.Resolvers;

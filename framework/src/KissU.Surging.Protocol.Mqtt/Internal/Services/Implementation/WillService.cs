@@ -1,6 +1,7 @@
 ﻿using System.Collections.Concurrent;
 using System.Threading.Tasks;
 using KissU.Core;
+using KissU.Core.Dependency;
 using KissU.Surging.Protocol.Mqtt.Internal.Messages;
 using Microsoft.Extensions.Logging;
 

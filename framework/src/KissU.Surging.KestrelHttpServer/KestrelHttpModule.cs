@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using Autofac;
 using KissU.Core;
+using KissU.Core.Dependency;
 using KissU.Core.Module;
 using KissU.Core.Serialization;
 using KissU.Surging.CPlatform;

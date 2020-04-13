@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using KissU.Core;
+using KissU.Core.Dependency;
 using KissU.Surging.CPlatform.Configurations;
 using KissU.Surging.CPlatform.Configurations.Watch;
 

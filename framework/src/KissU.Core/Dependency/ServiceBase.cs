@@ -1,7 +1,6 @@
 ﻿using System;
-using KissU.Core.Utilities;
 
-namespace KissU.Core.Ioc
+namespace KissU.Core.Dependency
 {
     /// <summary>
     /// 服务基类.

@@ -1,6 +1,7 @@
 ﻿using System;
 using Autofac;
 using KissU.Core;
+using KissU.Core.Module;
 using KissU.Core.Serialization;
 using KissU.Surging.Consul.Configurations;
 using KissU.Surging.Consul.Internal;

@@ -6,13 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using KissU.Core;
 using KissU.Core.Convertibles;
-using KissU.Core.DependencyResolution;
+using KissU.Core.Dependency;
 using KissU.Core.Validation;
 using KissU.Surging.CPlatform.Filters.Implementation;
 using KissU.Surging.CPlatform.Ids;
 using KissU.Surging.CPlatform.Routing.Template;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
-using static KissU.Core.Utilities.FastInvoke;
+using static KissU.Core.Helpers.Utilities.FastInvoke;
 
 namespace KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Implementation
 {

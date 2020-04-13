@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace KissU.Core.Utilities
+namespace KissU.Core.Helpers.Utilities
 {
     /// <summary>
     /// 字符串扩展.
@@ -31,7 +31,7 @@ namespace KissU.Core.Utilities
                 return false;
             }
 
-            var re = new Regex(op, RegexOptions.IgnoreCase);
+            var re = new System.Text.RegularExpressions.Regex(op, RegexOptions.IgnoreCase);
             return re.IsMatch(str);
         }
     }

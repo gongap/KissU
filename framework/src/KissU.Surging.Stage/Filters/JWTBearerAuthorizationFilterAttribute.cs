@@ -10,7 +10,7 @@ using Autofac;
 using JWT;
 using JWT.Algorithms;
 using JWT.Serializers;
-using KissU.Core.Utilities;
+using KissU.Core.Dependency;
 using KissU.Surging.ApiGateWay;
 using KissU.Surging.ApiGateWay.OAuth;
 using KissU.Surging.CPlatform;

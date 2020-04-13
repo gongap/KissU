@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using KissU.Core;
+using KissU.Core.Dependency;
 using KissU.Core.Module;
 using KissU.Core.Serialization;
 using KissU.Surging.CPlatform;

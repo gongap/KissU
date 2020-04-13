@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using KissU.Core;
 using KissU.Core.Convertibles;
+using KissU.Core.Dependency;
 using KissU.Surging.CPlatform.Routing;
 using KissU.Surging.CPlatform.Runtime.Client;
 

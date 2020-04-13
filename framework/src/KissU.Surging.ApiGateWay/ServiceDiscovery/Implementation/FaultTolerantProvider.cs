@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using KissU.Core.Utilities;
+using KissU.Core.Dependency;
 using KissU.Surging.CPlatform.Support;
 
 namespace KissU.Surging.ApiGateWay.ServiceDiscovery.Implementation

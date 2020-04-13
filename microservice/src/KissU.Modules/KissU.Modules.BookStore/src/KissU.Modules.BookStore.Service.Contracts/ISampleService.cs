@@ -1,6 +1,5 @@
-﻿using System;
-using System.Threading.Tasks;
-using KissU.Core.Ioc;
+﻿using System.Threading.Tasks;
+using KissU.Core.Dependency;
 using KissU.Modules.BookStore.Samples;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 

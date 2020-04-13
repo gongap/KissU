@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KissU.Core.Utilities
+namespace KissU.Core.Helpers.Utilities
 {
     /// <summary>
     /// 日期时间转换器.

@@ -1,7 +1,8 @@
 ﻿using System;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using KissU.Core.Utilities;
+using KissU.Core.Dependency;
+using KissU.Core.Helpers.Utilities;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace KissU.Abp.Autofac

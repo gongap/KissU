@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace KissU.Core.Utilities
+namespace KissU.Core.Helpers.Utilities
 {
     /// <summary>
     /// 环境助手.
@@ -67,7 +67,7 @@ namespace KissU.Core.Utilities
             var matchVale = new List<string>();
             var Reg = @"(?<=\${)[^\${}]*(?=})";
             var key = string.Empty;
-            foreach (Match m in Regex.Matches(text, Reg))
+            foreach (Match m in System.Text.RegularExpressions.Regex.Matches(text, Reg))
             {
                 matchVale.Add(m.Value);
             }

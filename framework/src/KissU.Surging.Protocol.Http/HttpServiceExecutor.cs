@@ -6,8 +6,8 @@ using System.Reflection;
 using System.Threading.Tasks;
 using KissU.Core;
 using KissU.Core.Convertibles;
+using KissU.Core.Dependency;
 using KissU.Core.Exceptions;
-using KissU.Core.Utilities;
 using KissU.Surging.CPlatform.Filters;
 using KissU.Surging.CPlatform.Messages;
 using KissU.Surging.CPlatform.Routing;
@@ -15,7 +15,7 @@ using KissU.Surging.CPlatform.Runtime.Server;
 using KissU.Surging.CPlatform.Transport;
 using KissU.Surging.ProxyGenerator;
 using Microsoft.Extensions.Logging;
-using static KissU.Core.Utilities.FastInvoke;
+using static KissU.Core.Helpers.Utilities.FastInvoke;
 
 namespace KissU.Surging.Protocol.Http
 {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using KissU.Core;
+using KissU.Core.Dependency;
 using KissU.Core.EventBus.Events;
 using KissU.Core.EventBus.Implementation;
 using KissU.Surging.EventBusKafka.Utilities;

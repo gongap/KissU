@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using KissU.Core;
 using KissU.Core.Convertibles;
+using KissU.Core.Dependency;
 using KissU.Core.Serialization;
 using KissU.Surging.CPlatform.Ids;
 using KissU.Surging.CPlatform.Runtime.Client;

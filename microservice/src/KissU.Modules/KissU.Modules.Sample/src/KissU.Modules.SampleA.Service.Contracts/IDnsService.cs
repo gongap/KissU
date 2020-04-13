@@ -1,4 +1,4 @@
-﻿using KissU.Core.Ioc;
+﻿using KissU.Core.Dependency;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 
 namespace KissU.Modules.SampleA.Service.Contracts

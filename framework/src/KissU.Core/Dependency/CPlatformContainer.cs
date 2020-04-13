@@ -1,8 +1,7 @@
 ﻿using System;
 using Autofac;
-using KissU.Core.DependencyResolution;
 
-namespace KissU.Core
+namespace KissU.Core.Dependency
 {
     /// <summary>
     /// 平台容器

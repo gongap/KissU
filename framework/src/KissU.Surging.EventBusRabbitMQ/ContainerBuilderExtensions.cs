@@ -5,6 +5,7 @@ using KissU.Core;
 using KissU.Core.EventBus;
 using KissU.Core.EventBus.Events;
 using KissU.Core.EventBus.Implementation;
+using KissU.Core.Module;
 using KissU.Surging.EventBusRabbitMQ.Configurations;
 using KissU.Surging.EventBusRabbitMQ.Implementation;
 using Microsoft.Extensions.Configuration;

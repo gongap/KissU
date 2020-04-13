@@ -2,10 +2,9 @@
 using System.Net;
 using System.Threading.Tasks;
 using Autofac;
+using KissU.Core.Dependency;
 using KissU.Core.EventBus.Events;
 using KissU.Core.EventBus.Implementation;
-using KissU.Core.Ioc;
-using KissU.Core.Utilities;
 using KissU.Surging.CPlatform.Module;
 using KissU.Surging.ProxyGenerator;
 

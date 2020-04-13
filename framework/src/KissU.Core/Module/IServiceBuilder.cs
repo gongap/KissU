@@ -1,6 +1,6 @@
 ﻿using Autofac;
 
-namespace KissU.Core
+namespace KissU.Core.Module
 {
     /// <summary>
     /// 服务构建器

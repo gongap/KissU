@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using KissU.Core;
 using KissU.Core.Convertibles;
+using KissU.Core.Dependency;
 using KissU.Core.Exceptions;
 using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Diagnostics;
@@ -17,7 +18,7 @@ using KissU.Surging.CPlatform.Transport.Implementation;
 using KissU.Surging.ProxyGenerator;
 using Microsoft.Extensions.Logging;
 using KissU.Surging.KestrelHttpServer.Internal;
-using static KissU.Core.Utilities.FastInvoke;
+using static KissU.Core.Helpers.Utilities.FastInvoke;
 
 namespace KissU.Surging.KestrelHttpServer
 {

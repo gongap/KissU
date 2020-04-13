@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using KissU.Core.Utilities;
+using KissU.Core.Helpers.Utilities;
 using KissU.Surging.CPlatform.Utilities;
 
 namespace KissU.Surging.CPlatform.Filters.Implementation

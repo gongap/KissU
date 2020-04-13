@@ -5,8 +5,8 @@ using System.Runtime.CompilerServices;
 using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
 using System.Security.Claims;
+using KissU.Core.Helpers.Utilities;
 using KissU.Core.Security.Principals;
-using KissU.Core.Utilities;
 using KissU.Surging.CPlatform.Filters.Implementation;
 
 namespace KissU.Surging.KestrelHttpServer.Internal

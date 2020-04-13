@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using KissU.Core.Utilities;
+using KissU.Core.Helpers.Utilities;
 
-namespace KissU.Core.DependencyResolution
+namespace KissU.Core.Dependency
 {
     /// <summary>
     /// 扩展依赖注入IOC容器

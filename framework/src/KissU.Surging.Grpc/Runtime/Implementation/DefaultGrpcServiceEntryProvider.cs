@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using KissU.Core;
-using KissU.Core.Ioc;
+using KissU.Core.Dependency;
 using KissU.Surging.CPlatform.Runtime.Server;
 using Microsoft.Extensions.Logging;
 

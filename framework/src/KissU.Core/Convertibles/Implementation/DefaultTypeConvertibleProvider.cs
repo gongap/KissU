@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using KissU.Core.Helpers.Utilities;
 using KissU.Core.Serialization;
-using KissU.Core.Utilities;
 
 namespace KissU.Core.Convertibles.Implementation
 {

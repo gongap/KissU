@@ -1,8 +1,6 @@
 ﻿using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using KissU.Core;
-using KissU.Core.Helpers;
-using KissU.Core.Utilities;
+using KissU.Core.Dependency;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

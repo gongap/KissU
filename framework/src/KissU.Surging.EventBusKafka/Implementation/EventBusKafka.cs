@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Confluent.Kafka;
 using KissU.Core;
+using KissU.Core.Dependency;
 using KissU.Core.EventBus;
 using KissU.Core.EventBus.Events;
 using KissU.Core.EventBus.Implementation;
