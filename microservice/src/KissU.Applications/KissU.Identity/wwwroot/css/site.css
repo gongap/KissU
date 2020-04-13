@@ -1,0 +1,157 @@
+﻿body {
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #24292e;
+    margin-top: 65px;
+    background-color: #fff;
+}
+.navbar-header {
+  position: relative;
+  top: -4px;
+}
+.navbar-brand > .icon-banner {
+  position: relative;
+  top: -2px;
+  display: inline;
+}
+
+.navbar-header-right {
+    width:100px;
+    float: right;
+}
+
+.icon {
+    position: relative;
+    top: -10px;
+}
+
+.alert {
+    font-size: 13px;
+}
+.alert ul {
+    margin-bottom: 0px;
+    padding-left: 15px;
+}
+
+.session-authentication {
+    background-color: #f9f9f9;
+    margin-top: 30px;
+}
+.session-authentication .auth-form label {
+    display: block;
+    margin-bottom: 7px;
+    text-align: left;
+}
+.session-authentication .label-link {
+    float: right;
+    font-size: 12px;
+}
+
+.session-authentication .create-account-callout {
+    padding: 15px 20px;
+    text-align: center;
+    border: 1px solid #d8dee2;
+    border-radius: 5px;
+}
+
+.login-page {
+    width: 340px;
+    margin: 0 auto;
+}
+
+.login-page .page-header {
+    border-bottom: 0px;
+    margin: 0px 0 0px;
+}
+
+.login-page .page-header h1 {
+    font-size: 24px;
+    font-weight: 300;
+    letter-spacing: -.5px;
+}
+
+.login-page .panel-body {
+    padding-top: 25px;
+}
+
+.login-page .footer .py-6{padding-top: 20px !important; padding-bottom: 20px !important;}
+.login-page .footer .mt-6{margin-top: 20px !important;}
+.login-page .footer .f6{font-size: 12px !important;}
+.login-page .footer .p-responsive{padding-right: 16px !important;padding-left: 16px !important;}
+.login-page .footer .d-flex{display: flex !important;}
+.login-page .footer .list-style-none{list-style: none !important;}
+.login-page .footer .flex-justify-center{justify-content: center !important;}
+.login-page .footer ol, .login-page .footer  ul{padding-left: 0; margin-top: 0; margin-bottom: 0;}
+.login-page .footer .mr-3{margin-right: 16px !important;}
+.login-page .footer .link-gray {color: #586069 !important;}
+
+
+.logged-out iframe {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.page-consent .client-logo {
+  float: left;
+}
+.page-consent .client-logo img {
+  width: 80px;
+  height: 80px;
+}
+.page-consent .consent-buttons {
+  margin-top: 25px;
+}
+.page-consent .consent-form .consent-scopecheck {
+  display: inline-block;
+  margin-right: 5px;
+}
+.page-consent .consent-form .consent-description {
+  margin-left: 25px;
+}
+.page-consent .consent-form .consent-description label {
+  font-weight: normal;
+}
+.page-consent .consent-form .consent-remember {
+  padding-left: 16px;
+}
+
+.grants .page-header {
+    margin-bottom: 10px;
+}
+.grants .grant {
+  margin-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid lightgray;
+}
+.grants .grant img {
+  width: 100px;
+  height: 100px;
+}
+.grants .grant .clientname {
+  font-size: 140%;
+  font-weight: bold;
+}
+.grants .grant .granttype {
+  font-size: 120%;
+  font-weight: bold;
+}
+.grants .grant .created {
+  font-size: 120%;
+  font-weight: bold;
+}
+.grants .grant .expires {
+  font-size: 120%;
+  font-weight: bold;
+}
+.grants .grant li {
+  list-style-type: none;
+  display: inline;
+}
+.grants .grant li:after {
+  content: ', ';
+}
+.grants .grant li:last-child:after {
+  content: '';
+}
