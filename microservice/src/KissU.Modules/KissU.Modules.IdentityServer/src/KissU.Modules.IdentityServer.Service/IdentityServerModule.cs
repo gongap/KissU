@@ -1,4 +1,8 @@
 ﻿using Autofac.Extensions.DependencyInjection;
+using IdentityServer;
+using IdentityServer4;
+using KissU.Core;
+using KissU.Core.Dependency;
 using KissU.Core.Module;
 using KissU.Surging.CPlatform;
 using KissU.Modules.IdentityServer.Data;
@@ -11,6 +15,7 @@ using KissU.Util.Ddd.Domain.Datas.Enums;
 using KissU.Util.EntityFrameworkCore.SqlServer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 
 namespace KissU.Modules.IdentityServer.Service
 {
@@ -19,27 +24,54 @@ namespace KissU.Modules.IdentityServer.Service
     /// </summary>
     public class IdentityServerModule : KestrelHttpModule
     {
-        /// <summary>
-        /// 注册第三方组件
-        /// </summary>
-        /// <param name="builder">容器构建器</param>
-        protected override void RegisterBuilder(ContainerBuilderWrapper builder)
+        public override void RegisterBuilder(ConfigurationContext context)
         {
-            base.RegisterBuilder(builder);
-            var services = new ServiceCollection();
-            services.AddUnitOfWork<IIdentityServerUnitOfWork, IdentityServerUnitOfWork>(AppConfig.GetSection(DbConstants.ConnectionStringSection).GetSection(DbConstants.ConnectionStringName).Value);
-            services.AddSqlQuery<IdentityServerUnitOfWork>(config =>
+            base.RegisterBuilder(context);
+            context.Services.AddUnitOfWork<IIdentityServerUnitOfWork, IdentityServerUnitOfWork>(AppConfig.GetSection(DbConstants.ConnectionStringSection).GetSection(DbConstants.ConnectionStringName).Value);
+            context.Services.AddSqlQuery<IdentityServerUnitOfWork>(config =>
             {
                 config.DatabaseType = DatabaseType.SqlServer;
             });
-           // services.AddIdentityServer4();
-            builder.ContainerBuilder.Populate(services);
+            //var builder = context.Services.AddIdentityServer()
+            //    .AddInMemoryIdentityResources(Config.Ids)
+            //    .AddInMemoryApiResources(Config.Apis)
+            //    .AddInMemoryClients(Config.Clients)
+            //    .AddTestUsers(TestUsers.Users);
+
+            //builder.AddDeveloperSigningCredential();
+
+            context.Services.AddIdentityServer4();
+
+            context.Services.AddAuthentication()
+                .AddOpenIdConnect("oidc", "Demo IdentityServer", options =>
+                {
+                    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+                    options.SignOutScheme = IdentityServerConstants.SignoutScheme;
+                    options.SaveTokens = true;
+
+                    options.Authority = "https://demo.identityserver.io/";
+                    options.ClientId = "native.code";
+                    options.ClientSecret = "secret";
+                    options.ResponseType = "code";
+
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        NameClaimType = "name",
+                        RoleClaimType = "role"
+                    };
+                });
+        }
+
+        protected override void RegisterBuilder(ContainerBuilderWrapper wrapper)
+        {
+            base.RegisterBuilder(wrapper);
+            wrapper.ContainerBuilder.AddUtil();
         }
 
         public override void Initialize(ApplicationInitializationContext context)
         {
             base.Initialize(context);
-           // context.Builder.UseIdentityServer();
+            context.Builder.UseIdentityServer();
         }
     }
 }

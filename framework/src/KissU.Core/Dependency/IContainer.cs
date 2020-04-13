@@ -52,16 +52,14 @@ namespace KissU.Core.Dependency
         /// 注册依赖
         /// </summary>
         /// <param name="configs">依赖配置</param>
-        /// <returns>Autofac.IContainer.</returns>
-        Autofac.IContainer Register(params IConfig[] configs);
+        void Register(params IConfig[] configs);
 
         /// <summary>
         /// 注册依赖
         /// </summary>
         /// <param name="builder">容器生成器</param>
         /// <param name="configs">依赖配置</param>
-        /// <returns>Autofac.IContainer.</returns>
-        Autofac.IContainer Register(ContainerBuilder builder, params IConfig[] configs);
+        void Register(ContainerBuilder builder, params IConfig[] configs);
 
         /// <summary>
         /// 注册依赖
@@ -69,8 +67,7 @@ namespace KissU.Core.Dependency
         /// <param name="builder">容器生成器</param>
         /// <param name="services">服务集合</param>
         /// <param name="configs">依赖配置</param>
-        /// <returns>Autofac.IContainer.</returns>
-        Autofac.IContainer Register(ContainerBuilder builder, IServiceCollection services, params IConfig[] configs);
+        void Register(ContainerBuilder builder, IServiceCollection services, params IConfig[] configs);
 
         /// <summary>
         /// 注册依赖
@@ -79,9 +76,7 @@ namespace KissU.Core.Dependency
         /// <param name="services">服务集合</param>
         /// <param name="actionBefore">注册前操作</param>
         /// <param name="configs">依赖配置</param>
-        /// <returns>Autofac.IContainer.</returns>
-        Autofac.IContainer Register(ContainerBuilder builder, IServiceCollection services,
-            Action<ContainerBuilder> actionBefore, params IConfig[] configs);
+        void Register(ContainerBuilder builder, IServiceCollection services, Action<ContainerBuilder> actionBefore, params IConfig[] configs);
 
         /// <summary>
         /// 注册依赖

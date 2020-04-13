@@ -3,7 +3,9 @@ using IdentityServer4.Stores;
 using KissU.Modules.IdentityServer.Application.Services;
 using KissU.Modules.IdentityServer.Application.Services.Options;
 using KissU.Modules.IdentityServer.Data.Stores;
+using KissU.Modules.IdentityServer.Service.Services;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace KissU.Modules.IdentityServer.Service.Extensions
 {
@@ -23,7 +25,8 @@ namespace KissU.Modules.IdentityServer.Service.Extensions
             var builder = services.AddIdentityServer()
                 .AddDeveloperSigningCredential()
                 .AddConfigurationStore()
-                .AddOperationalStore(storeOptionsAction);
+                .AddOperationalStore(storeOptionsAction)
+                .AddResourceOwnerValidator<ResourceOwnerPasswordValidator>();
             return builder;
         }
 
@@ -72,6 +75,7 @@ namespace KissU.Modules.IdentityServer.Service.Extensions
             builder.Services.AddTransient<IPersistedGrantStore, PersistedGrantStore>();
             builder.Services.AddTransient<IDeviceFlowStore, DeviceFlowStore>();
             builder.Services.AddTransient<TokenCleanupService>();
+            builder.Services.AddSingleton<IHostedService, TokenCleanupHost>();
 
             return builder;
         }

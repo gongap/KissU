@@ -89,10 +89,9 @@ namespace KissU.Core.Helpers
         /// 注册依赖
         /// </summary>
         /// <param name="configs">依赖配置</param>
-        /// <returns>Autofac.IContainer.</returns>
-        public static Autofac.IContainer Register(params IConfig[] configs)
+        public static void Register(params IConfig[] configs)
         {
-            return DefaultContainer.Register(null, null, b => b.EnableAop(), configs);
+            DefaultContainer.Register(null, null, b => b.EnableAop(), configs);
         }
 
         /// <summary>
@@ -100,10 +99,9 @@ namespace KissU.Core.Helpers
         /// </summary>
         /// <param name="builder">容器生成器</param>
         /// <param name="configs">依赖配置</param>
-        /// <returns>Autofac.IContainer.</returns>
-        public static Autofac.IContainer Register(ContainerBuilder builder, params IConfig[] configs)
+        public static void Register(ContainerBuilder builder, params IConfig[] configs)
         {
-            return DefaultContainer.Register(builder, null, b => b.EnableAop(), configs);
+            DefaultContainer.Register(builder, null, b => b.EnableAop(), configs);
         }
 
         /// <summary>
@@ -112,11 +110,10 @@ namespace KissU.Core.Helpers
         /// <param name="builder">容器生成器</param>
         /// <param name="services">服务集合</param>
         /// <param name="configs">依赖配置</param>
-        /// <returns>Autofac.IContainer.</returns>
-        public static Autofac.IContainer Register(ContainerBuilder builder, IServiceCollection services,
+        public static void Register(ContainerBuilder builder, IServiceCollection services,
             params IConfig[] configs)
         {
-            return DefaultContainer.Register(builder, services, b => b.EnableAop(), configs);
+            DefaultContainer.Register(builder, services, b => b.EnableAop(), configs);
         }
 
         /// <summary>

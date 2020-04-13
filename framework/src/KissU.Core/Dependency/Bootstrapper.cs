@@ -73,20 +73,19 @@ namespace KissU.Core.Dependency
         /// <param name="aopConfigAction">Aop配置操作</param>
         /// <param name="finder">类型查找器</param>
         /// <returns>Autofac.IContainer.</returns>
-        public static Autofac.IContainer Run(ContainerBuilder builder = null, IServiceCollection services = null,
+        public static void Run(ContainerBuilder builder = null, IServiceCollection services = null,
             IConfig[] configs = null, Action<IAspectConfiguration> aopConfigAction = null, IFind finder = null)
         {
-            return new Bootstrapper(builder, services, configs, aopConfigAction, finder).Bootstrap();
+            new Bootstrapper(builder, services, configs, aopConfigAction, finder).Bootstrap();
         }
 
         /// <summary>
         /// 引导
         /// </summary>
-        /// <returns>Autofac.IContainer.</returns>
-        public Autofac.IContainer Bootstrap()
+        public void Bootstrap()
         {
             _assemblies = _finder.GetAssemblies();
-            return Helpers.Ioc.DefaultContainer.Register(_builder, _services, RegisterServices, _configs);
+            Helpers.Ioc.DefaultContainer.Register(_builder, _services, RegisterServices, _configs);
         }
 
         /// <summary>

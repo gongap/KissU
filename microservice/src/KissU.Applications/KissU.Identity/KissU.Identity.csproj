@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\framework\src\KissU.Util.Logs\KissU.Util.Logs.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.Autofac\KissU.Autofac.csproj" />
     <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.GreatWall\src\KissU.Modules.GreatWall.Application\KissU.Modules.GreatWall.Application.csproj" />
     <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.IdentityServer\src\KissU.Modules.IdentityServer.Application\KissU.Modules.IdentityServer.Application.csproj" />
   </ItemGroup>

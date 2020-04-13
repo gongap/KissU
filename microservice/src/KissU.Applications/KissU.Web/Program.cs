@@ -1,7 +1,5 @@
-using Autofac;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
-using KissU.Core.Dependency;
 using KissU.Surging.Caching.Configurations;
 using KissU.Surging.CPlatform.Configurations;
 
@@ -22,6 +20,6 @@ namespace KissU.Web
                 {
                     webBuilder.UseStartup<Startup>();
                 })
-                .UseAutofac(true);
+                .UseAutofac();
     }
 }

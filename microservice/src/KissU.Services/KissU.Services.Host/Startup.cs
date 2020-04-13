@@ -1,5 +1,7 @@
 ﻿using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using KissU.Core;
+using KissU.Core.Helpers;
 using KissU.Core.Utilities;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,15 +27,19 @@ namespace KissU.Services.Host
         public IContainer ConfigureServices(ContainerBuilder builder)
         {
             var services = new ServiceCollection();
-            return builder.AddUtil(services);
+            services.AddLogging();
+            builder.Populate(services);
+            var container = builder.Build();
+            return container;
         }
 
         /// <summary>
         /// 配置应用
         /// </summary>
-        public void Configure(IContainer app)
+        public void Configure(IContainer container)
         {
-            ServiceLocator.Current = app;
+            ServiceLocator.Current = container;
+            Ioc.Register(container);
         }
     }
 }

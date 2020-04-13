@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using KissU.Core;
 using KissU.Identity.Extensions;
 using KissU.Modules.GreatWall.Application.Extensions;
 using KissU.Modules.GreatWall.Data.UnitOfWorks.SqlServer;
@@ -75,6 +76,7 @@ namespace KissU.Identity
         /// <param name="builder">The builder.</param>
         public void ConfigureContainer(ContainerBuilder builder)
         {
+            builder.AddUtil();
         }
 
         /// <summary>

@@ -79,9 +79,9 @@ namespace KissU.Core.Dependency
         /// </summary>
         /// <param name="configs">依赖配置</param>
         /// <returns>Autofac.IContainer.</returns>
-        public Autofac.IContainer Register(params IConfig[] configs)
+        public void Register(params IConfig[] configs)
         {
-            return Register(null, configs);
+            Register(null, configs);
         }
 
         /// <summary>
@@ -90,9 +90,9 @@ namespace KissU.Core.Dependency
         /// <param name="builder">容器生成器</param>
         /// <param name="configs">依赖配置</param>
         /// <returns>Autofac.IContainer.</returns>
-        public Autofac.IContainer Register(ContainerBuilder builder, params IConfig[] configs)
+        public void Register(ContainerBuilder builder, params IConfig[] configs)
         {
-            return Register(builder, null, configs);
+            Register(builder, null, configs);
         }
 
         /// <summary>
@@ -102,10 +102,10 @@ namespace KissU.Core.Dependency
         /// <param name="services">服务集合</param>
         /// <param name="configs">依赖配置</param>
         /// <returns>Autofac.IContainer.</returns>
-        public Autofac.IContainer Register(ContainerBuilder builder, IServiceCollection services,
+        public void Register(ContainerBuilder builder, IServiceCollection services,
             params IConfig[] configs)
         {
-            return Register(builder, services, null, configs);
+            Register(builder, services, null, configs);
         }
 
         /// <summary>
@@ -116,12 +116,10 @@ namespace KissU.Core.Dependency
         /// <param name="actionBefore">注册前操作</param>
         /// <param name="configs">依赖配置</param>
         /// <returns>Autofac.IContainer.</returns>
-        public Autofac.IContainer Register(ContainerBuilder builder, IServiceCollection services,
+        public void Register(ContainerBuilder builder, IServiceCollection services,
             Action<ContainerBuilder> actionBefore, params IConfig[] configs)
         {
             builder = CreateBuilder(builder, services, actionBefore, configs);
-            _container = builder.Build();
-            return _container;
         }
 
         /// <summary>

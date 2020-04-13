@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using KissU.Core.Dependency;
 using KissU.Core.Logs;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
