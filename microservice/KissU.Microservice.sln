@@ -134,6 +134,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.BookStore.Tes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Client", "src\KissU.Clients\KissU.Client\KissU.Client.csproj", "{145C9D4B-8205-4AA5-A28B-CCCDC1D3524B}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Web", "src\KissU.Clients\KissU.Web\KissU.Web.csproj", "{901ACEA2-F20A-47FA-BB2B-097FDC41F4ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -304,6 +306,10 @@ Global
 		{145C9D4B-8205-4AA5-A28B-CCCDC1D3524B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{145C9D4B-8205-4AA5-A28B-CCCDC1D3524B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{145C9D4B-8205-4AA5-A28B-CCCDC1D3524B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{901ACEA2-F20A-47FA-BB2B-097FDC41F4ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{901ACEA2-F20A-47FA-BB2B-097FDC41F4ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{901ACEA2-F20A-47FA-BB2B-097FDC41F4ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{901ACEA2-F20A-47FA-BB2B-097FDC41F4ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -368,6 +374,7 @@ Global
 		{039F052B-F633-4CD2-93EF-909EC81D968D} = {5D487DC6-2953-46AA-A458-66AD5152E946}
 		{56FDA402-3B5A-4E0E-A295-2C6864A98A7E} = {5D487DC6-2953-46AA-A458-66AD5152E946}
 		{145C9D4B-8205-4AA5-A28B-CCCDC1D3524B} = {15AAF47D-5343-476A-988E-E49A2CB048A2}
+		{901ACEA2-F20A-47FA-BB2B-097FDC41F4ED} = {15AAF47D-5343-476A-988E-E49A2CB048A2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}

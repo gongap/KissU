@@ -96,5 +96,15 @@ namespace KissU.Core.Dependency
         {
             return hostBuilder.UseServiceProviderFactory(new ServiceProviderFactory());
         }
+
+        /// <summary>
+        /// 启用Autofac
+        /// </summary>
+        /// <param name="hostBuilder">主机生成器</param>
+        /// <returns>主机生成器</returns>
+        public static IHostBuilder UseAutofac(this IHostBuilder hostBuilder, bool tag)
+        {
+            return hostBuilder.UseServiceProviderFactory(new ServiceProviderFactory());
+        }
     }
 }

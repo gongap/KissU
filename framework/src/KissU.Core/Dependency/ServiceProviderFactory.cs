@@ -1,6 +1,7 @@
 ﻿using System;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using KissU.Core.Utilities;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace KissU.Core.Dependency
@@ -61,7 +62,7 @@ namespace KissU.Core.Dependency
             if (builder == null) throw new ArgumentNullException(nameof(builder));
 
             var container = builder.AddUtil();
-
+            ServiceLocator.Current = container;
             return new AutofacServiceProvider(container);
         }
     }
