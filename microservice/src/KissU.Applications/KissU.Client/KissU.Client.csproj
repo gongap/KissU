@@ -8,15 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Autofac" Version="4.9.4" />
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.2" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.2" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.2" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.1.2" />
-    <PackageReference Include="System.Text.Encoding.CodePages" Version="4.5.1" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\..\..\framework\src\KissU.Apm.Skywalking\KissU.Apm.Skywalking.csproj" />
     <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.Codec.MessagePack\KissU.Surging.Codec.MessagePack.csproj" />
     <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.Codec.ProtoBuffer\KissU.Surging.Codec.ProtoBuffer.csproj" />

@@ -7,7 +7,6 @@ using KissU.Util.Biz.Payments.Core;
 using KissU.Util.Biz.Tests.Integration.Payments.Alipay.Configs;
 using Xunit;
 using Xunit.Abstractions;
-using String = KissU.Core.Helpers.String;
 
 namespace KissU.Util.Biz.Tests.Integration.Payments.Alipay.Services
 {
@@ -31,7 +30,7 @@ namespace KissU.Util.Biz.Tests.Integration.Payments.Alipay.Services
         /// </summary>
         public void Dispose()
         {
-            Time.Reset();
+            TimeHelper.Reset();
         }
 
         /// <summary>
@@ -49,7 +48,7 @@ namespace KissU.Util.Biz.Tests.Integration.Payments.Alipay.Services
         /// </summary>
         private string GetResult()
         {
-            var result = new String();
+            var result = new StringObj();
             result.Append("app_id=2016090800463464&");
             result.Append(
                 "biz_content=%7b%22out_trade_no%22%3a%2259f7caeeab89e009e4a4e1fb%22%2c%22subject%22%3a%22test%22%2c%22total_amount%22%3a%2210%22%2c%22timeout_express%22%3a%2290m%22%7d&");
@@ -70,7 +69,7 @@ namespace KissU.Util.Biz.Tests.Integration.Payments.Alipay.Services
         /// </summary>
         private async Task<string> PayAsync()
         {
-            Time.SetTime(TestConst.Time);
+            TimeHelper.SetTime(TestConst.Time);
             return await _service.PayAsync(new AlipayAppPayRequest
             {
                 Money = 10,
@@ -86,7 +85,7 @@ namespace KissU.Util.Biz.Tests.Integration.Payments.Alipay.Services
         [Fact]
         public async Task TestPayAsync_1()
         {
-            Time.SetTime(TestConst.Time);
+            TimeHelper.SetTime(TestConst.Time);
             var result = await _service.PayAsync(new PayParam
             {
                 Money = 10,

@@ -38,7 +38,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.PgSql
         public void Test_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select * ");
             result.AppendLine("From \"Test\" ");
             result.Append("Where \"A\"=1 And \"B\"=2 And \"C\"=false And \"D\"=true And \"E\"=5 And \"F\"=6 And ");

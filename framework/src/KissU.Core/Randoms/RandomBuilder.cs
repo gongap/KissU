@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Text;
 using KissU.Core.Helpers;
-using Enum = KissU.Core.Helpers.Enum;
 
 namespace KissU.Core.Randoms
 {
@@ -117,9 +116,9 @@ namespace KissU.Core.Randoms
         /// <returns>TEnum.</returns>
         public TEnum GenerateEnum<TEnum>()
         {
-            var list = Enum.GetItems<TEnum>();
+            var list = EnumHelper.GetItems<TEnum>();
             var index = _random.Generate(0, list.Count);
-            return Enum.Parse<TEnum>(list[index].Value);
+            return EnumHelper.Parse<TEnum>(list[index].Value);
         }
 
         /// <summary>

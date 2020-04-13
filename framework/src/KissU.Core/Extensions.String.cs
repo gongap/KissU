@@ -15,7 +15,7 @@ namespace KissU.Core
         /// <returns>System.String.</returns>
         public static string RemoveEnd(this string value, string removeValue)
         {
-            return String.RemoveEnd(value, removeValue);
+            return StringObj.RemoveEnd(value, removeValue);
         }
     }
 }

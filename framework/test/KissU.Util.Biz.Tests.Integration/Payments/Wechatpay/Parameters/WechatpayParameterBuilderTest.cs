@@ -4,7 +4,6 @@ using KissU.Util.Biz.Payments.Wechatpay.Configs;
 using KissU.Util.Biz.Payments.Wechatpay.Parameters;
 using Xunit;
 using Xunit.Abstractions;
-using String = KissU.Core.Helpers.String;
 
 namespace KissU.Util.Biz.Tests.Integration.Payments.Wechatpay.Parameters
 {
@@ -20,7 +19,7 @@ namespace KissU.Util.Biz.Tests.Integration.Payments.Wechatpay.Parameters
         public WechatpayParameterBuilderTest(ITestOutputHelper output)
         {
             _output = output;
-            Time.SetTime(TestConst.Time);
+            TimeHelper.SetTime(TestConst.Time);
             _builder = new WechatpayParameterBuilder(new WechatpayConfig());
         }
 
@@ -29,7 +28,7 @@ namespace KissU.Util.Biz.Tests.Integration.Payments.Wechatpay.Parameters
         /// </summary>
         public void Dispose()
         {
-            Time.Reset();
+            TimeHelper.Reset();
         }
 
         /// <summary>
@@ -49,7 +48,7 @@ namespace KissU.Util.Biz.Tests.Integration.Payments.Wechatpay.Parameters
         public void TestAppId()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("<xml>");
             result.Append("<appid><![CDATA[a]]></appid>");
             result.Append("</xml>");
@@ -71,7 +70,7 @@ namespace KissU.Util.Biz.Tests.Integration.Payments.Wechatpay.Parameters
         public void TestBody()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("<xml>");
             result.Append("<body><![CDATA[a]]></body>");
             result.Append("</xml>");
@@ -93,7 +92,7 @@ namespace KissU.Util.Biz.Tests.Integration.Payments.Wechatpay.Parameters
         public void TestMerchantId()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("<xml>");
             result.Append("<mch_id><![CDATA[a]]></mch_id>");
             result.Append("</xml>");
@@ -115,7 +114,7 @@ namespace KissU.Util.Biz.Tests.Integration.Payments.Wechatpay.Parameters
         public void TestNotifyUrl()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("<xml>");
             result.Append("<notify_url><![CDATA[a]]></notify_url>");
             result.Append("</xml>");
@@ -137,7 +136,7 @@ namespace KissU.Util.Biz.Tests.Integration.Payments.Wechatpay.Parameters
         public void TestOutTradeNo()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("<xml>");
             result.Append("<out_trade_no><![CDATA[a]]></out_trade_no>");
             result.Append("</xml>");
@@ -159,7 +158,7 @@ namespace KissU.Util.Biz.Tests.Integration.Payments.Wechatpay.Parameters
         public void TestSignType()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("<xml>");
             result.Append("<sign_type><![CDATA[a]]></sign_type>");
             result.Append("</xml>");
@@ -181,7 +180,7 @@ namespace KissU.Util.Biz.Tests.Integration.Payments.Wechatpay.Parameters
         public void TestSpbillCreateIp()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("<xml>");
             result.Append("<spbill_create_ip><![CDATA[a]]></spbill_create_ip>");
             result.Append("</xml>");
@@ -203,7 +202,7 @@ namespace KissU.Util.Biz.Tests.Integration.Payments.Wechatpay.Parameters
         public void TestTotalFee()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("<xml>");
             result.Append("<total_fee>123</total_fee>");
             result.Append("</xml>");
@@ -225,7 +224,7 @@ namespace KissU.Util.Biz.Tests.Integration.Payments.Wechatpay.Parameters
         public void TestTradeType()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("<xml>");
             result.Append("<trade_type><![CDATA[a]]></trade_type>");
             result.Append("</xml>");

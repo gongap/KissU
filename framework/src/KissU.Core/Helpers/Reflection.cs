@@ -211,7 +211,7 @@ namespace KissU.Core.Helpers
         /// <returns>T.</returns>
         public static T CreateInstance<T>(Type type, params object[] parameters)
         {
-            return Convert.To<T>(Activator.CreateInstance(type, parameters));
+            return TypeConvert.To<T>(Activator.CreateInstance(type, parameters));
         }
 
         /// <summary>

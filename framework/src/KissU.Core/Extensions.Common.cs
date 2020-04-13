@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Convert = KissU.Core.Helpers.Convert;
-using String = KissU.Core.Helpers.String;
+using KissU.Core.Helpers;
 
 namespace KissU.Core
 {
@@ -30,7 +29,7 @@ namespace KissU.Core
         {
             if (instance == null)
                 return 0;
-            return Helpers.Enum.GetValue(instance.GetType(), instance);
+            return Helpers.EnumHelper.GetValue(instance.GetType(), instance);
         }
 
         /// <summary>
@@ -43,7 +42,7 @@ namespace KissU.Core
         {
             if (instance == null)
                 return default;
-            return Convert.To<TResult>(Value(instance));
+            return TypeConvert.To<TResult>(Value(instance));
         }
 
         /// <summary>
@@ -55,7 +54,7 @@ namespace KissU.Core
         {
             if (instance == null)
                 return string.Empty;
-            return Helpers.Enum.GetDescription(instance.GetType(), instance);
+            return Helpers.EnumHelper.GetDescription(instance.GetType(), instance);
         }
 
         /// <summary>
@@ -68,7 +67,7 @@ namespace KissU.Core
         /// <returns>System.String.</returns>
         public static string Join<T>(this IEnumerable<T> list, string quotes = "", string separator = ",")
         {
-            return String.Join(list, quotes, separator);
+            return StringObj.Join(list, quotes, separator);
         }
     }
 }

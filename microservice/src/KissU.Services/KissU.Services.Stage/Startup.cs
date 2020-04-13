@@ -39,7 +39,6 @@ namespace KissU.Services.Stage
         public void Configure(IContainer container)
         {
             ServiceLocator.Current = container;
-            Ioc.Register(container);
         }
     }
 }

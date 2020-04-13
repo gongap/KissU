@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using KissU.Core;
 using KissU.Core.Dependency;
 using KissU.Modules.GreatWall.Application.Extensions;
 using KissU.Modules.GreatWall.Data;
@@ -30,6 +31,7 @@ namespace KissU.Modules.GreatWall.DbMigrator
                 options.Password.Digit = true;
             });
             var containerBuilder = serviceProviderFactory.CreateBuilder(services);
+            containerBuilder.AddUtil();
             var serviceProvider = serviceProviderFactory.CreateServiceProvider(containerBuilder);
             await DbMigrationHelpers.MigrateAsync<DesignTimeDbContext>(serviceProvider);
             Console.WriteLine("Press ENTER to stop application...");

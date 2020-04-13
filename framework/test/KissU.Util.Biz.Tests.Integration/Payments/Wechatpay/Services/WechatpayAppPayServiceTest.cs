@@ -8,7 +8,6 @@ using KissU.Util.Biz.Payments.Wechatpay.Services;
 using KissU.Util.Biz.Tests.Integration.Payments.Wechatpay.Configs;
 using Xunit;
 using Xunit.Abstractions;
-using String = KissU.Core.Helpers.String;
 
 namespace KissU.Util.Biz.Tests.Integration.Payments.Wechatpay.Services
 {
@@ -64,7 +63,7 @@ namespace KissU.Util.Biz.Tests.Integration.Payments.Wechatpay.Services
             }));
 
             //结果
-            var expected = new String();
+            var expected = new StringObj();
             expected.Append("<xml>");
             expected.Append("<appid><![CDATA[a]]></appid>");
             expected.Append("<body><![CDATA[b]]></body>");

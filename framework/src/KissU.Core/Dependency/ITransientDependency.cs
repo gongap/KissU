@@ -1,7 +1,7 @@
-﻿namespace KissU.Core.Dependency
+﻿namespace KissU.Core.Ioc
 {
     /// <summary>
-    /// 实现该接口将自动注册到Ioc容器，生命周期为每次创建一个新实例
+    /// 瞬时依赖
     /// </summary>
     public interface ITransientDependency
     {

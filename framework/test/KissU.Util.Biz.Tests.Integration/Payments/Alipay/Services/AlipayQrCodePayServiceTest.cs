@@ -30,7 +30,7 @@ namespace KissU.Util.Biz.Tests.Integration.Payments.Alipay.Services
         /// </summary>
         public void Dispose()
         {
-            Time.Reset();
+            TimeHelper.Reset();
         }
 
         /// <summary>

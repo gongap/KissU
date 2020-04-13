@@ -1,7 +1,7 @@
-﻿namespace KissU.Core.Dependency
+﻿namespace KissU.Core.Ioc
 {
     /// <summary>
-    /// 实现该接口将自动注册到Ioc容器，生命周期为单例
+    /// 单例依赖
     /// </summary>
     public interface ISingletonDependency
     {

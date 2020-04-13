@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using KissU.Core.Helpers;
 using KissU.Core.Properties;
 using KissU.Util.Dapper.SqlServer;
 using KissU.Util.Datas.Tests.Integration.Samples;
@@ -12,7 +13,6 @@ using KissU.Util.Ddd.Domain.Datas.Sql.Builders.Clauses;
 using KissU.Util.Ddd.Domain.Datas.Sql.Builders.Conditions;
 using KissU.Util.Ddd.Domain.Datas.Sql.Builders.Core;
 using Xunit;
-using String = KissU.Core.Helpers.String;
 
 namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
 {
@@ -90,7 +90,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestBetween_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Where [a].[B]>=@_p_0 And [a].[B]<=@_p_1");
 
             //执行
@@ -109,7 +109,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestBetween_10()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Where [a].[B]>=@_p_0 And [a].[B]<@_p_1");
 
             //执行
@@ -130,7 +130,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestBetween_11()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Where [a].[B]>@_p_0 And [a].[B]<@_p_1");
 
             //执行
@@ -151,7 +151,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestBetween_12()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Where [IntValue]>=@_p_0 And [IntValue]<=@_p_1");
 
             //执行
@@ -170,7 +170,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestBetween_13()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Where [a].[B]>=@_p_0");
 
             //执行
@@ -189,7 +189,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestBetween_14()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Where [a].[B]>=@_p_0");
 
             //执行
@@ -208,7 +208,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestBetween_15()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Where [a].[B]<@_p_0");
 
             //执行
@@ -227,7 +227,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestBetween_16()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Where [a].[B]<=@_p_0");
 
             //执行
@@ -246,7 +246,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestBetween_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Where [a].[B]>@_p_0 And [a].[B]<@_p_1");
 
             //执行
@@ -265,7 +265,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestBetween_3()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Where [a].[B]>@_p_0 And [a].[B]<@_p_1");
 
             //执行
@@ -284,7 +284,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestBetween_4()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Where [a].[B]<=@_p_0");
 
             //执行
@@ -302,7 +302,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestBetween_5()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Where [a].[B]>=@_p_0");
 
             //执行
@@ -334,7 +334,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestBetween_7()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Where [a].[B]>=@_p_0 And [a].[B]<=@_p_1");
 
             //执行
@@ -353,7 +353,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestBetween_8()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Where [a].[B]>=@_p_0 And [a].[B]<=@_p_1");
 
             //执行
@@ -372,7 +372,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestBetween_9()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Where [a].[B]>=@_p_0 And [a].[B]<=@_p_1");
 
             //执行
@@ -417,7 +417,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestIn_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Where [user].[Email] In (@_p_0,@_p_1)");
 
             //执行
@@ -435,7 +435,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestIn_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Where [Email] In (@_p_0,@_p_1)");
 
             //执行
@@ -453,7 +453,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestIn_3()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Where [user].[Email] In (@_p_0,@_p_1)");
 
             //执行
@@ -471,7 +471,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestIn_4()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Where [user].[Email] In (");
             result.AppendLine("Select [a] ");
             result.Append("From [b]");
@@ -492,7 +492,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestIn_5()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Where [Email] In (");
             result.AppendLine("Select [a] ");
             result.Append("From [b]");
@@ -513,7 +513,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestIn_6()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Where [user].[Email] In (");
             result.AppendLine("Select [a] ");
             result.Append("From [b]");
@@ -533,7 +533,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestIn_7()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Where [Email] In (");
             result.AppendLine("Select [a] ");
             result.Append("From [b]");
@@ -633,7 +633,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestNotIn_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Where [user].[Email] Not In (@_p_0,@_p_1)");
 
             //执行
@@ -651,7 +651,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestNotIn_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Where [Email] Not In (@_p_0,@_p_1)");
 
             //执行
@@ -669,7 +669,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestNotIn_3()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Where [user].[Email] Not In (@_p_0,@_p_1)");
 
             //执行
@@ -698,7 +698,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestOr_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Where [Email] In (@_p_0,@_p_1)");
 
             //执行
@@ -716,7 +716,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestOr_3()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Where ([Email] In (@_p_0,@_p_1) Or [Url]=@_p_2)");
 
             //执行
@@ -734,7 +734,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestOr_4()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Where ([Email] In (@_p_0,@_p_1) Or [Url]=@_p_2)");
 
             //执行
@@ -752,7 +752,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestOr_5()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Where (([Email]=@_p_0 Or ");
             result.Append("[Email] In (@_p_1,@_p_2)) Or [Url]=@_p_3) ");
             result.Append("And [Url]=@_p_4");
@@ -774,7 +774,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestOrIfNotEmpty_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Where [Email] In (@_p_0,@_p_1)");
 
             //执行
@@ -792,7 +792,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestOrIfNotEmpty_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Where ([Email] In (@_p_0,@_p_1) Or [Url]=@_p_2)");
 
             //执行
@@ -810,7 +810,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestOrIfNotEmpty_3()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Where [Email] In (@_p_0,@_p_1)");
 
             //执行
@@ -828,7 +828,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestOrIfNotEmpty_4()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Where (([Email]=@_p_0 Or ");
             result.Append("[Email] In (@_p_1,@_p_2)) Or [Url]=@_p_3) ");
             result.Append("And [Url]=@_p_4");
@@ -930,7 +930,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestWhere_17()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Where ([Email]=@_p_0 And [StringValue] Like @_p_1 Or [IntValue]=@_p_2) ");
             result.Append("And ([Email]=@_p_3 Or [IntValue]=@_p_4)");
 
@@ -999,7 +999,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestWhere_22()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Where [Email] In (@_p_0,@_p_1)");
 
             //执行

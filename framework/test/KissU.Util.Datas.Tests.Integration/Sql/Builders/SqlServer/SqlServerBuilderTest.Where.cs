@@ -21,7 +21,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestAnd_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a] ");
             result.AppendLine("From [b] ");
             result.Append("Where [Age]=@_p_0 And a<@a");
@@ -43,7 +43,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestAnd_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select * ");
             result.AppendLine("From [Test] ");
             result.Append("Where [Age]=@_p_2 And [Name]=@_p_0 And [Code]=@_p_1");
@@ -68,7 +68,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestBetween_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[B]>=@_p_0 And [a].[B]<=@_p_1");
@@ -91,7 +91,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestContains_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[Email] Like @_p_0");
@@ -114,7 +114,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestContains_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[Email] Like @_p_0");
@@ -137,7 +137,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestEnds_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[Email] Like @_p_0");
@@ -160,7 +160,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestEnds_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[Email] Like @_p_0");
@@ -183,7 +183,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestEqual_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[Email]=@_p_0");
@@ -206,7 +206,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestEqual_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email],[a].[BoolValue] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[Email]=@_p_0");
@@ -229,7 +229,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestGreater_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[Email]>@_p_0");
@@ -252,7 +252,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestGreater_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[Email]>@_p_0");
@@ -275,7 +275,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestGreaterEqual_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[Email]>=@_p_0");
@@ -298,7 +298,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestGreaterEqual_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[Email]>=@_p_0");
@@ -321,7 +321,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestIn_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[Email] In (@_p_0,@_p_1)");
@@ -346,7 +346,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestIn_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[Email] In (@_p_0,@_p_1)");
@@ -371,7 +371,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestIn_3()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[Name]=@_p_1 And ");
@@ -402,7 +402,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestIn_4()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[Name]=@_p_1 And ");
@@ -433,7 +433,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestIn_5()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[Name]=@_p_0 And ");
@@ -463,7 +463,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestIn_6()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[Name]=@_p_0 And ");
@@ -493,7 +493,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestIsEmpty_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where ([a].[Email] Is Null Or [a].[Email]='')");
@@ -514,7 +514,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestIsEmpty_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where ([a].[Email] Is Null Or [a].[Email]='')");
@@ -535,7 +535,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestIsNotEmpty_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[Email] Is Not Null And [a].[Email]<>''");
@@ -556,7 +556,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestIsNotEmpty_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[Email] Is Not Null And [a].[Email]<>''");
@@ -577,7 +577,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestIsNotNull_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[Email] Is Not Null");
@@ -598,7 +598,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestIsNotNull_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[Email] Is Not Null");
@@ -619,7 +619,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestIsNull_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[Email] Is Null");
@@ -640,7 +640,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestIsNull_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[Email] Is Null");
@@ -661,7 +661,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestLess_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[Email]<@_p_0");
@@ -684,7 +684,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestLess_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[Email]<@_p_0");
@@ -707,7 +707,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestLessEqual_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[Email]<=@_p_0");
@@ -730,7 +730,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestLessEqual_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[Email]<=@_p_0");
@@ -753,7 +753,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestNotEqual_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[Email]<>@_p_0");
@@ -776,7 +776,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestNotEqual_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[Email]<>@_p_0");
@@ -799,7 +799,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestNotIn_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[Email] Not In (@_p_0,@_p_1)");
@@ -824,7 +824,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestNotIn_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[Email] Not In (@_p_0,@_p_1)");
@@ -849,7 +849,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestOr_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a] ");
             result.AppendLine("From [b] ");
             result.Append("Where ([Age]=@_p_0 Or a<@a)");
@@ -871,7 +871,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestOr_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select * ");
             result.AppendLine("From [Sample] As [s] ");
             result.Append("Where ([s].[Email]=@_p_0 Or [s].[Url]<>@_p_1)");
@@ -892,7 +892,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestOr_3()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select * ");
             result.AppendLine("From [Test] ");
             result.Append("Where (([Age]=@_p_2 Or [Name]=@_p_0) Or [Code]=@_p_1)");
@@ -917,7 +917,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestOrIf_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a] ");
             result.AppendLine("From [b] ");
             result.Append("Where ([Age]=@_p_0 Or a<@a)");
@@ -940,7 +940,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestOrIfNotEmpty()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select * ");
             result.AppendLine("From [Sample] As [s] ");
             result.Append("Where ([s].[Email]=@_p_0 Or [s].[Url]<>@_p_1)");
@@ -962,7 +962,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestStarts_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[Email] Like @_p_0");
@@ -985,7 +985,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestStarts_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[Email] Like @_p_0");
@@ -1008,7 +1008,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestWhere_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a] ");
             result.AppendLine("From [b] ");
             result.Append("Where [Age]=@_p_0 And a<@a");
@@ -1030,7 +1030,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestWhere_10()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select * ");
             result.AppendLine("From [Sample] As [k] ");
             result.Append("Where ([k].[Email]=@_p_0 And [k].[StringValue] Like @_p_1 Or [k].[IntValue]=@_p_2) ");
@@ -1052,7 +1052,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestWhere_11()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[Email] In (@_p_0,@_p_1)");
@@ -1077,7 +1077,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestWhere_12()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select * ");
             result.AppendLine("From [Sample] As [s] ");
             result.Append("Where [s].[LogLevel]=@_p_0");
@@ -1097,7 +1097,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestWhere_13()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select * ");
             result.AppendLine("From [Sample] As [s] ");
             result.Append("Where [s].[NullableLogLevel]=@_p_0");
@@ -1117,7 +1117,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestWhere_14()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select * ");
             result.AppendLine("From [Sample] As [s] ");
             result.Append("Where [s].[LogLevel]=@_p_0");
@@ -1138,7 +1138,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestWhere_15()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select * ");
             result.AppendLine("From [Sample] As [s] ");
             result.Append("Where [s].[NullableLogLevel]=@_p_0");
@@ -1159,7 +1159,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestWhere_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a] ");
             result.AppendLine("From [b] ");
             result.Append("Where [b].[Name]<>@_p_0");
@@ -1182,7 +1182,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestWhere_3()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[Email]<>@_p_0");
@@ -1205,7 +1205,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestWhere_4()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[Email]<>@_p_0");
@@ -1228,7 +1228,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestWhere_5()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select * ");
             result.AppendLine("From [abc].[Test] ");
             result.Append("Where [b2]<>");
@@ -1256,7 +1256,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestWhere_6()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select * ");
             result.AppendLine("From [Sample] As [s] ");
             result.Append("Where [s].[Email]<>");
@@ -1284,7 +1284,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestWhere_7()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select * ");
             result.AppendLine("From [abc].[Test] ");
             result.Append("Where [b2]<>");
@@ -1313,7 +1313,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestWhere_8()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select * ");
             result.AppendLine("From [Sample] As [s] ");
             result.Append("Where [s].[Email]<>");
@@ -1341,7 +1341,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestWhere_9()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select * ");
             result.AppendLine("From [Sample] As [k] ");
             result.Append("Where [k].[Email]=@_p_0 And [k].[StringValue] Like @_p_1");
@@ -1363,7 +1363,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestWhereIf_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a] ");
             result.AppendLine("From [b] ");
             result.Append("Where [b].[Name]<>@_p_0");
@@ -1387,7 +1387,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestWhereIf_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[Email]<>@_p_0");
@@ -1411,7 +1411,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestWhereIf_3()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[Email]<>@_p_0");
@@ -1435,7 +1435,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestWhereIf_4()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select * ");
             result.AppendLine("From [abc].[Test] ");
             result.Append("Where [b2]<>");
@@ -1464,7 +1464,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestWhereIf_5()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select * ");
             result.AppendLine("From [Sample] As [s] ");
             result.Append("Where [s].[Email]<>");
@@ -1495,7 +1495,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestWhereIf_6()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select * ");
             result.AppendLine("From [abc].[Test] ");
             result.Append("Where [b2]<>");
@@ -1526,7 +1526,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestWhereIf_7()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select * ");
             result.AppendLine("From [Sample] As [s] ");
             result.Append("Where [s].[Email]<>");
@@ -1557,7 +1557,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestWhereIfNotEmpty_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a] ");
             result.AppendLine("From [b] ");
             result.Append("Where [b].[Name]<>@_p_0");
@@ -1581,7 +1581,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestWhereIfNotEmpty_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[Email]<>@_p_0");
@@ -1605,7 +1605,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestWhereIfNotEmpty_3()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Where [a].[Email]<>@_p_0");

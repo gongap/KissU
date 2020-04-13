@@ -38,7 +38,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.MySql
         public void Test_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select `a` ");
             result.Append("From `t`");
 
@@ -56,7 +56,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.MySql
         public void Test_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select `c` ");
             result.Append("From `a.b`");
 
@@ -74,7 +74,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.MySql
         public void Test_3()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select `a3`.`a`,`a1`.`b1`,`a2`.`b2` ");
             result.AppendLine("From `b` As `a2` ");
             result.Append("Join `t.c` As `a3` On `a2`.`d`=@_p_0");
@@ -95,7 +95,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.MySql
         public void TestWith()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("With Recursive `Test` ");
             result.AppendLine("As (Select `a`,`b` ");
             result.AppendLine("From `Test2`)");

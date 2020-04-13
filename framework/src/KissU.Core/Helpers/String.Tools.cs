@@ -7,7 +7,7 @@ namespace KissU.Core.Helpers
     /// <summary>
     /// 字符串操作 - 工具
     /// </summary>
-    public partial class String
+    public partial class StringObj
     {
         #region Join(将集合连接为带分隔符的字符串)
 

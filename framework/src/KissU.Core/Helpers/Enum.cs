@@ -9,7 +9,7 @@ namespace KissU.Core.Helpers
     /// <summary>
     /// 枚举操作
     /// </summary>
-    public static class Enum
+    public static class EnumHelper
     {
         /// <summary>
         /// 获取实例

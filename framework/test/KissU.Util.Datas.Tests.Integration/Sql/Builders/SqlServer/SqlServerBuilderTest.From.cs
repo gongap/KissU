@@ -17,7 +17,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestFrom_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [c] ");
             result.Append("From [a] As [b]");
 
@@ -36,7 +36,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestFrom_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [c] ");
             result.Append("From [b].[Sample] As [a]");
 
@@ -55,7 +55,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestFrom_3()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select * ");
             result.Append("From ");
             result.AppendLine("(Select Count(*) ");
@@ -82,7 +82,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestFrom_4()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select * ");
             result.Append("From ");
             result.AppendLine("(Select Count(*) ");
@@ -108,7 +108,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestFrom_5()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [c] ");
             result.Append("From a");
 
@@ -127,7 +127,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestFrom_6()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [c] ");
             result.Append("From b");
 

@@ -5,7 +5,7 @@ namespace KissU.Core.Helpers
     /// <summary>
     /// 时间操作
     /// </summary>
-    public static class Time
+    public static class TimeHelper
     {
         /// <summary>
         /// 日期
@@ -27,7 +27,7 @@ namespace KissU.Core.Helpers
         /// <param name="dateTime">时间</param>
         public static void SetTime(string dateTime)
         {
-            _dateTime = Convert.ToDateOrNull(dateTime);
+            _dateTime = TypeConvert.ToDateOrNull(dateTime);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace KissU.Core.Helpers
         {
             var start = TimeZoneInfo.ConvertTime(new DateTime(1970, 1, 1), TimeZoneInfo.Local);
             var ticks = (time - start.Add(new TimeSpan(8, 0, 0))).Ticks;
-            return Convert.ToLong(ticks / TimeSpan.TicksPerSecond);
+            return TypeConvert.ToLong(ticks / TimeSpan.TicksPerSecond);
         }
 
         /// <summary>

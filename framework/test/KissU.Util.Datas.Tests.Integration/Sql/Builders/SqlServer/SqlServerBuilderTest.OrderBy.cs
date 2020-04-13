@@ -17,7 +17,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestAppendOrderBy_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Order By b");
@@ -38,7 +38,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestAppendOrderBy_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Order By b");
@@ -60,7 +60,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestOrderBy_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Order By [c].[b] Desc");
@@ -81,7 +81,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestOrderBy_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Order By [a].[Email] Desc");

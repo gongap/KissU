@@ -44,10 +44,6 @@ namespace KissU.Identity
         {
             services.AddControllersWithViews();
 
-            // 添加SqlServer工作单元
-            services.AddUnitOfWork<IIdentityServerUnitOfWork, IdentityServerUnitOfWork>(Configuration.GetConnectionString(Modules.IdentityServer.Data.DbConstants.ConnectionStringName));
-            services.AddUnitOfWork<IGreatWallUnitOfWork, GreatWallUnitOfWork>(Configuration.GetConnectionString(Modules.GreatWall.Data.DbConstants.ConnectionStringName));
-
             // 添加AspNetIdentity
             services.AspNetIdentity(options =>
             {
@@ -64,9 +60,6 @@ namespace KissU.Identity
                 options.TokenCleanupInterval = 600;
             });
 
-            // 添加NLog日志操作
-            services.AddNLog();
-
             services.ConfigureNonBreakingSameSiteCookies();
         }
 
@@ -76,7 +69,6 @@ namespace KissU.Identity
         /// <param name="builder">The builder.</param>
         public void ConfigureContainer(ContainerBuilder builder)
         {
-            builder.AddUtil();
         }
 
         /// <summary>

@@ -17,7 +17,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestAppendGroupBy_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Group By b");
@@ -38,7 +38,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestAppendGroupBy_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Group By b");
@@ -60,7 +60,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestGroupBy_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Group By [b] Having c");
@@ -81,7 +81,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestGroupBy_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Group By [a].[Email] Having b");
@@ -102,7 +102,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestGroupBy_3()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append("Group By [a].[Email],[a].[Url]");

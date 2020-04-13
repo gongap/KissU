@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Convert = KissU.Core.Helpers.Convert;
+using KissU.Core.Helpers;
 
 namespace KissU.Core
 {
@@ -27,7 +27,7 @@ namespace KissU.Core
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public static bool ToBool(this string obj)
         {
-            return Convert.ToBool(obj);
+            return TypeConvert.ToBool(obj);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace KissU.Core
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public static bool? ToBoolOrNull(this string obj)
         {
-            return Convert.ToBoolOrNull(obj);
+            return TypeConvert.ToBoolOrNull(obj);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace KissU.Core
         /// <returns>System.Int32.</returns>
         public static int ToInt(this string obj)
         {
-            return Convert.ToInt(obj);
+            return TypeConvert.ToInt(obj);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace KissU.Core
         /// <returns>System.Nullable&lt;System.Int32&gt;.</returns>
         public static int? ToIntOrNull(this string obj)
         {
-            return Convert.ToIntOrNull(obj);
+            return TypeConvert.ToIntOrNull(obj);
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace KissU.Core
         /// <returns>System.Int64.</returns>
         public static long ToLong(this string obj)
         {
-            return Convert.ToLong(obj);
+            return TypeConvert.ToLong(obj);
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace KissU.Core
         /// <returns>System.Nullable&lt;System.Int64&gt;.</returns>
         public static long? ToLongOrNull(this string obj)
         {
-            return Convert.ToLongOrNull(obj);
+            return TypeConvert.ToLongOrNull(obj);
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace KissU.Core
         /// <returns>System.Double.</returns>
         public static double ToDouble(this string obj)
         {
-            return Convert.ToDouble(obj);
+            return TypeConvert.ToDouble(obj);
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace KissU.Core
         /// <returns>System.Nullable&lt;System.Double&gt;.</returns>
         public static double? ToDoubleOrNull(this string obj)
         {
-            return Convert.ToDoubleOrNull(obj);
+            return TypeConvert.ToDoubleOrNull(obj);
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace KissU.Core
         /// <returns>System.Decimal.</returns>
         public static decimal ToDecimal(this string obj)
         {
-            return Convert.ToDecimal(obj);
+            return TypeConvert.ToDecimal(obj);
         }
 
         /// <summary>
@@ -117,7 +117,7 @@ namespace KissU.Core
         /// <returns>System.Nullable&lt;System.Decimal&gt;.</returns>
         public static decimal? ToDecimalOrNull(this string obj)
         {
-            return Convert.ToDecimalOrNull(obj);
+            return TypeConvert.ToDecimalOrNull(obj);
         }
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace KissU.Core
         /// <returns>DateTime.</returns>
         public static DateTime ToDate(this string obj)
         {
-            return Convert.ToDate(obj);
+            return TypeConvert.ToDate(obj);
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace KissU.Core
         /// <returns>System.Nullable&lt;DateTime&gt;.</returns>
         public static DateTime? ToDateOrNull(this string obj)
         {
-            return Convert.ToDateOrNull(obj);
+            return TypeConvert.ToDateOrNull(obj);
         }
 
         /// <summary>
@@ -147,7 +147,7 @@ namespace KissU.Core
         /// <returns>Guid.</returns>
         public static Guid ToGuid(this string obj)
         {
-            return Convert.ToGuid(obj);
+            return TypeConvert.ToGuid(obj);
         }
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace KissU.Core
         /// <returns>System.Nullable&lt;Guid&gt;.</returns>
         public static Guid? ToGuidOrNull(this string obj)
         {
-            return Convert.ToGuidOrNull(obj);
+            return TypeConvert.ToGuidOrNull(obj);
         }
 
         /// <summary>
@@ -167,7 +167,7 @@ namespace KissU.Core
         /// <returns>List&lt;Guid&gt;.</returns>
         public static List<Guid> ToGuidList(this string obj)
         {
-            return Convert.ToGuidList(obj);
+            return TypeConvert.ToGuidList(obj);
         }
 
         /// <summary>

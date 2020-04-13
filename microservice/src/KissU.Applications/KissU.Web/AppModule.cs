@@ -1,5 +1,4 @@
-﻿using KissU.Autofac;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Hosting;
 using Volo.Abp;
 using Volo.Abp.AspNetCore.Mvc;
@@ -8,7 +7,6 @@ using Volo.Abp.Modularity;
 namespace KissU.Web
 {
     [DependsOn(typeof(AbpAspNetCoreMvcModule))]
-    [DependsOn(typeof(AutofacModule))] //Add dependency to ABP Autofac module
     public class AppModule : AbpModule
     {
         public override void OnApplicationInitialization(ApplicationInitializationContext context)

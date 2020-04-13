@@ -6,7 +6,6 @@ using KissU.Util.Biz.Payments.Core;
 using KissU.Util.Biz.Tests.Integration.Payments.Alipay.Configs;
 using Xunit;
 using Xunit.Abstractions;
-using String = KissU.Core.Helpers.String;
 
 namespace KissU.Util.Biz.Tests.Integration.Payments.Alipay.Services
 {
@@ -30,7 +29,7 @@ namespace KissU.Util.Biz.Tests.Integration.Payments.Alipay.Services
         /// </summary>
         public void Dispose()
         {
-            Time.Reset();
+            TimeHelper.Reset();
         }
 
         /// <summary>
@@ -48,7 +47,7 @@ namespace KissU.Util.Biz.Tests.Integration.Payments.Alipay.Services
         /// </summary>
         private async Task<string> Pay()
         {
-            Time.SetTime(TestConst.Time);
+            TimeHelper.SetTime(TestConst.Time);
             return (await _service.PayAsync(new PayParam
             {
                 OrderId = "59f7caeeab89e009e4a4e1fb",
@@ -64,7 +63,7 @@ namespace KissU.Util.Biz.Tests.Integration.Payments.Alipay.Services
         public async Task TestPayAsync()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append(
                 "<form action=\"https://openapi.alipaydev.com/gateway.do?charset=utf-8\" charset=\"utf-8\" id=\"formAlipay\" method=\"POST\" name=\"formAlipay\" style=\"display:none\">");
             result.Append("<input name=\"app_id\" value=\"2016090800463464\"></input>");

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using KissU.Core;
 using KissU.Core.Dependency;
 using KissU.Modules.IdentityServer.Data;
 using KissU.Modules.IdentityServer.Domain.UnitOfWorks;
@@ -22,6 +23,7 @@ namespace KissU.Modules.IdentityServer.DbMigrator
             services.AddUnitOfWork<IIdentityServerUnitOfWork, DesignTimeDbContext>(
                 configuration.GetConnectionString(DbConstants.ConnectionStringName));
             var containerBuilder = serviceProviderFactory.CreateBuilder(services);
+            containerBuilder.AddUtil();
             var serviceProvider = serviceProviderFactory.CreateServiceProvider(containerBuilder);
             await DbMigrationHelpers.MigrateAsync<DesignTimeDbContext>(serviceProvider);
             Console.WriteLine("Press ENTER to stop application...");

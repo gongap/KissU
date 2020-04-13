@@ -1,5 +1,6 @@
 ﻿using System;
 using KissU.Core.Datas.Queries;
+using KissU.Core.Helpers;
 using KissU.Core.Properties;
 using KissU.Util.Dapper.SqlServer;
 using KissU.Util.Datas.Tests.Integration.Samples;
@@ -7,7 +8,6 @@ using KissU.Util.Datas.Tests.Integration.XUnitHelpers;
 using KissU.Util.Ddd.Domain.Datas.Sql;
 using Xunit;
 using Xunit.Abstractions;
-using String = KissU.Core.Helpers.String;
 
 namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
 {
@@ -62,7 +62,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestIsDeletedFilter_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [s].[StringValue] ");
             result.AppendLine("From [Sample5] As [s] ");
             result.AppendLine("Join [Sample2] As [s2] On [s].[IntValue]=[s2].[IntValue] ");
@@ -84,7 +84,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestIsDeletedFilter_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [s].[StringValue] ");
             result.AppendLine("From [Sample5] As [s] ");
             result.AppendLine("Join [Sample6] As [s2] On [s].[IntValue]=[s2].[IntValue] And [s2].[IsDeleted]=@_p_1 ");
@@ -107,7 +107,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestIsDeletedFilter_3()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [s5].[StringValue] ");
             result.AppendLine("From [Sample5] As [s5] ");
             result.AppendLine("Join [Sample6] As [s6] On [s5].[IntValue]=[s6].[IntValue] And [s6].[IsDeleted]=@_p_1 ");
@@ -147,7 +147,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestPage_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select * ");
             result.AppendLine("From [Test] ");
             result.AppendLine("Order By [a] ");
@@ -170,7 +170,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestUnion_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("(Select [a],[b] ");
             result.AppendLine("From [Test] ");
             result.AppendLine("Where [c]=@_p_1 ");
@@ -198,7 +198,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestUnion_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("(Select [a],[b] ");
             result.AppendLine("From [Test] ");
             result.AppendLine("Where [c]=@_p_1 ");
@@ -227,7 +227,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestUnion_3()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("(Select [a],[b] ");
             result.AppendLine("From [Test] ");
             result.AppendLine("Where [c]=@_p_1 ");
@@ -256,7 +256,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestWith_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("With [Test] ");
             result.AppendLine("As (Select [a],[b] ");
             result.AppendLine("From [Test2])");
@@ -278,7 +278,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestWith_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("With [Test] ");
             result.AppendLine("As (Select [a],[b] ");
             result.AppendLine("From [Test2]),");

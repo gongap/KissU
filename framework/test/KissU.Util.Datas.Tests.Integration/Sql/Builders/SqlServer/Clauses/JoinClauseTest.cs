@@ -55,7 +55,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestAppendOn_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Join [t] ");
             result.Append("On a.id=b.id");
 
@@ -75,7 +75,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestAppendOn_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Join [t] ");
             result.AppendLine("On [a].[id]=@_p_0 And a.id=b.id ");
             result.Append("Join [v] ");
@@ -130,7 +130,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestJoin_10()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Join [a] ");
             result.Append("Join b");
 
@@ -209,7 +209,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestJoin_8()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Join [a] ");
             result.Append("Join [b]");
 
@@ -228,7 +228,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestJoin_9()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Join a ");
             result.Append("Join b");
 
@@ -278,7 +278,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestLeftJoin_4()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Join a ");
             result.Append("Left Join b");
 
@@ -307,7 +307,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestOn_10()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Join [Sample] As [t] ");
             result.AppendLine("On [a].[id]=@_p_0 ");
             result.Append("Join [Sample2] As [t2] ");
@@ -330,7 +330,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestOn_11()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Join [Sample] As [t] ");
             result.AppendLine("On [a].[id]=@_p_0 ");
             result.Append("Join [Sample2] As [t2] ");
@@ -353,7 +353,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestOn_12()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Join [Sample] As [t] ");
             result.AppendLine("On [t].[id]=@_p_0 ");
             result.Append("Join [Sample2] As [t2] ");
@@ -380,7 +380,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestOn_13()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Join [Sample] As [t] ");
             result.AppendLine("On [a].[id]=@_p_0 ");
             result.Append("Join [Sample2] As [t2] ");
@@ -405,7 +405,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestOn_14()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Join [Sample] As [t] ");
             result.AppendLine("On [a].[id]=@_p_0 ");
             result.Append("Join [Sample2] As [t2] ");
@@ -428,7 +428,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestOn_15()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Join [Sample] As [t] ");
             result.AppendLine("On [a].[id]=@_p_0 ");
             result.Append("Join [Sample2] As [t2] ");
@@ -451,7 +451,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestOn_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Join [t] ");
             result.Append("On [a].[id]=@_p_0");
 
@@ -470,7 +470,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestOn_3()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Join [t] ");
             result.Append("On [a].[id]=@_p_0 And [c].[Aid]=@_p_1");
 
@@ -490,7 +490,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestOn_4()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Join [t] ");
             result.AppendLine("On [a].[id]=@_p_0 And [c].[Aid]=@_p_1 ");
             result.Append("Join [n] ");
@@ -515,7 +515,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestOn_5()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Join [t] ");
             result.Append("On [a].[id]<@_p_0");
 
@@ -534,7 +534,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestOn_6()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Join [Sample] ");
             result.AppendLine("On [a].[id]=@_p_0 ");
             result.Append("Join [Sample2] ");
@@ -557,7 +557,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestOn_7()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Join [Sample] As [t] ");
             result.AppendLine("On [a].[id]=@_p_0 ");
             result.Append("Join [Sample2] As [t2] ");
@@ -580,7 +580,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestOn_8()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Join [Sample] ");
             result.AppendLine("On [a].[id]=@_p_0 ");
             result.Append("Join [Sample2] ");
@@ -603,7 +603,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestOn_9()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Join [Sample] As [t] ");
             result.AppendLine("On [a].[id]=@_p_0 ");
             result.Append("Join [Sample2] As [t2] ");
@@ -657,7 +657,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer.Clauses
         public void TestRightJoin_4()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Join a ");
             result.Append("Right Join b");
 

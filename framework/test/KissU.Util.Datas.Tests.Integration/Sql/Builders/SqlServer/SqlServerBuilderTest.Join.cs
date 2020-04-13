@@ -18,7 +18,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestJoin_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a] ");
             result.AppendLine("From [b] ");
             result.Append("Join [c] As [d]");
@@ -39,7 +39,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestJoin_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a] ");
             result.AppendLine("From [b] ");
             result.Append("Join [d].[Sample] As [c]");
@@ -60,7 +60,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestJoin_3()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select * ");
             result.AppendLine("From [Test] ");
             result.AppendLine("Join (Select * ");
@@ -86,7 +86,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestJoin_4()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select * ");
             result.AppendLine("From [Test] ");
             result.AppendLine("Join (Select * ");
@@ -111,7 +111,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestJoin_5()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a] ");
             result.AppendLine("From [b] ");
             result.Append("Join c");
@@ -132,7 +132,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestJoin_6()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a] ");
             result.AppendLine("From [b] ");
             result.Append("Join c");
@@ -154,7 +154,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestLeftJoin_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a] ");
             result.AppendLine("From [b] ");
             result.Append("Left Join [c] As [d]");
@@ -175,7 +175,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestLeftJoin_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a] ");
             result.AppendLine("From [b] ");
             result.Append("Left Join [d].[Sample] As [c]");
@@ -196,7 +196,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestLeftJoin_3()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select * ");
             result.AppendLine("From [Test] ");
             result.AppendLine("Left Join (Select * ");
@@ -222,7 +222,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestLeftJoin_4()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select * ");
             result.AppendLine("From [Test] ");
             result.AppendLine("Left Join (Select * ");
@@ -247,7 +247,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestLeftJoin_5()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a] ");
             result.AppendLine("From [b] ");
             result.Append("Left Join c");
@@ -268,7 +268,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestLeftJoin_6()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a] ");
             result.AppendLine("From [b] ");
             result.Append("Left Join c");
@@ -290,7 +290,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestLeftJoin_7()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a].[Email],[a].[BoolValue],[b].[Description],[b].[IntValue] ");
             result.AppendLine("From [Sample] As [a] ");
             result.Append(
@@ -314,7 +314,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestOn_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a] ");
             result.AppendLine("From [b] ");
             result.Append("Join [c] As [d] On [b].[Id]<>@_p_0");
@@ -335,7 +335,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestOn_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a] ");
             result.AppendLine("From [Sample] As [b] ");
             result.Append("Join [Sample2] As [c] On [b].[IntValue]<>[c].[IntValue]");
@@ -356,7 +356,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestOn_3()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a] ");
             result.AppendLine("From [Sample] As [b] ");
             result.Append("Join [Sample2] As [c] On [b].[IntValue]<>[c].[IntValue]");
@@ -377,7 +377,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestOn_4()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a],[b] ");
             result.AppendLine("From [Sample] As [s] ");
             result.Append("Left Join [Sample2] As [s2] On [s].[IntValue]=[s2].[IntValue] And [s].[StringValue]=@_p_0");
@@ -401,7 +401,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestOn_5()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a],[b] ");
             result.AppendLine("From [Sample] As [s] ");
             result.Append("Left Join [Sample2] As [s2] On [s].[IntValue]=[s2].[IntValue] And [s].[StringValue]=@_p_0");
@@ -426,7 +426,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestRightJoin_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a] ");
             result.AppendLine("From [b] ");
             result.Append("Right Join [c] As [d]");
@@ -447,7 +447,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestRightJoin_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a] ");
             result.AppendLine("From [b] ");
             result.Append("Right Join [d].[Sample] As [c]");
@@ -468,7 +468,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestRightJoin_3()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select * ");
             result.AppendLine("From [Test] ");
             result.AppendLine("Right Join (Select * ");
@@ -494,7 +494,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestRightJoin_4()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select * ");
             result.AppendLine("From [Test] ");
             result.AppendLine("Right Join (Select * ");
@@ -519,7 +519,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestRightJoin_5()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a] ");
             result.AppendLine("From [b] ");
             result.Append("Right Join c");
@@ -540,7 +540,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestRightJoin_6()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [a] ");
             result.AppendLine("From [b] ");
             result.Append("Right Join c");

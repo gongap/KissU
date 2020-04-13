@@ -19,7 +19,7 @@ namespace KissU.Util.Biz.Tests.Integration.Payments.Alipay.Parameters
         public AlipayParameterBuilderTest(ITestOutputHelper output)
         {
             _output = output;
-            Time.SetTime(TestConst.Time);
+            TimeHelper.SetTime(TestConst.Time);
             _builder = new AlipayParameterBuilder(new AlipayConfig());
         }
 
@@ -28,7 +28,7 @@ namespace KissU.Util.Biz.Tests.Integration.Payments.Alipay.Parameters
         /// </summary>
         public void Dispose()
         {
-            Time.Reset();
+            TimeHelper.Reset();
         }
 
         /// <summary>

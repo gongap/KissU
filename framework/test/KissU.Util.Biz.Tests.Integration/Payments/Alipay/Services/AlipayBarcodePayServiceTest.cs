@@ -11,7 +11,6 @@ using KissU.Util.Biz.Tests.Integration.Payments.Alipay.Configs;
 using KissU.Util.Biz.Tests.Integration.XUnitHelpers;
 using Xunit;
 using Xunit.Abstractions;
-using String = KissU.Core.Helpers.String;
 
 namespace KissU.Util.Biz.Tests.Integration.Payments.Alipay.Services
 {
@@ -35,7 +34,7 @@ namespace KissU.Util.Biz.Tests.Integration.Payments.Alipay.Services
         /// </summary>
         public void Dispose()
         {
-            Time.Reset();
+            TimeHelper.Reset();
         }
 
         /// <summary>
@@ -53,7 +52,7 @@ namespace KissU.Util.Biz.Tests.Integration.Payments.Alipay.Services
         /// </summary>
         private async Task<PayResult> PayAsync()
         {
-            Time.SetTime(TestConst.Time);
+            TimeHelper.SetTime(TestConst.Time);
             _service = new AlipayBarcodePayService(new TestConfigProvider());
             var param = new PayParam
             {
@@ -191,7 +190,7 @@ namespace KissU.Util.Biz.Tests.Integration.Payments.Alipay.Services
         public async Task TestRequestParam()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("app_id=2016090800463464&");
             result.Append(
                 "biz_content={\"out_trade_no\":\"59f7caeeab89e009e4a4e1fb\",\"subject\":\"test\",\"total_amount\":\"10\",\"timeout_express\":\"90m\",\"scene\":\"bar_code\",\"auth_code\":\"281023564031402341\"}&");

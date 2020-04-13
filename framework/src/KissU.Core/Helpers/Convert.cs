@@ -8,7 +8,7 @@ namespace KissU.Core.Helpers
     /// <summary>
     /// 类型转换
     /// </summary>
-    public static class Convert
+    public static class TypeConvert
     {
         /// <summary>
         /// 转换为32位整型
@@ -297,7 +297,7 @@ namespace KissU.Core.Helpers
                 if (typeName == "guid")
                     return (T) (object) new Guid(input.ToString());
                 if (type.IsEnum)
-                    return Enum.Parse<T>(input);
+                    return EnumHelper.Parse<T>(input);
                 if (input is IConvertible)
                     return (T) System.Convert.ChangeType(input, type);
                 return (T) input;

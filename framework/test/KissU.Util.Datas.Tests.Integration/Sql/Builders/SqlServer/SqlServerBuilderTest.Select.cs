@@ -19,7 +19,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestAvg_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select Avg([a]) As [b] ");
             result.Append("From [c]");
 
@@ -38,7 +38,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestAvg_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select Avg([DoubleValue]) As [a] ");
             result.Append("From [b]");
 
@@ -57,7 +57,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestCount_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select Count(*) ");
             result.Append("From [b]");
 
@@ -76,7 +76,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestCount_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select Count([DoubleValue]) As [a] ");
             result.Append("From [b]");
 
@@ -95,7 +95,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestDistinct()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select Distinct [a] ");
             result.Append("From [b]");
 
@@ -114,7 +114,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestMax_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select Max([a]) As [b] ");
             result.Append("From [c]");
 
@@ -133,7 +133,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestMax_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select Max([DoubleValue]) As [a] ");
             result.Append("From [b]");
 
@@ -152,7 +152,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestMin_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select Min([a]) As [b] ");
             result.Append("From [c]");
 
@@ -171,7 +171,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestMin_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select Min([DoubleValue]) As [a] ");
             result.Append("From [b]");
 
@@ -190,7 +190,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestSelect_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [b].[a] ");
             result.Append("From [c]");
 
@@ -209,7 +209,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestSelect_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [Email],[IntValue] ");
             result.Append("From [c]");
 
@@ -228,7 +228,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestSelect_3()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [Email] As [e] ");
             result.Append("From [c]");
 
@@ -247,7 +247,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestSelect_4()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Select *,");
             result.AppendLine("(Select Count(*) ");
             result.AppendLine("From [Test2] ");
@@ -273,7 +273,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestSelect_5()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Select *,");
             result.AppendLine("(Select Count(*) ");
             result.AppendLine("From [Test2] ");
@@ -299,7 +299,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestSelect_6()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select a ");
             result.Append("From [c]");
 
@@ -318,7 +318,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestSelect_7()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.Append("Select *,");
             result.AppendLine("(Select Count(*) ");
             result.AppendLine("From [Test2] ");
@@ -345,7 +345,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestSelect_8()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [s].[StringValue],[s].[IsDeleted] ");
             result.Append("From [Sample3] As [s]");
 
@@ -364,7 +364,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestSelect_9()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select [s].[IsDeleted],[s].[StringValue] As [a] ");
             result.Append("From [Sample3] As [s]");
 
@@ -385,7 +385,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestSum_1()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select Sum([a]) As [b] ");
             result.Append("From [c]");
 
@@ -404,7 +404,7 @@ namespace KissU.Util.Datas.Tests.Integration.Sql.Builders.SqlServer
         public void TestSum_2()
         {
             //结果
-            var result = new String();
+            var result = new StringObj();
             result.AppendLine("Select Sum([DoubleValue]) As [a] ");
             result.Append("From [b]");
 
