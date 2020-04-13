@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "KissU.Services.Identity": {
+    "KissU.Identity": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

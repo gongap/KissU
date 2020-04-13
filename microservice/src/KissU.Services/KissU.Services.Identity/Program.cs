@@ -1,9 +1,15 @@
 ﻿using System;
-using System.IO;
-using KissU.Core.Dependency;
-using KissU.Core.Logs;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
+using System.Text;
+using Autofac;
+using KissU.Core;
+using KissU.Core.Utilities;
+using KissU.Surging.Caching.Configurations;
+using KissU.Surging.CPlatform;
+using KissU.Surging.CPlatform.Configurations;
+using KissU.Surging.ProxyGenerator;
+using KissU.Surging.ServiceHosting;
+using KissU.Surging.ServiceHosting.Internal.Implementation;
+using Microsoft.Extensions.Logging;
 
 namespace KissU.Services.Identity
 {
@@ -16,34 +22,33 @@ namespace KissU.Services.Identity
         /// 应用程序入口点
         /// </summary>
         /// <param name="args">入口点参数</param>
-        public static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            try
-            {
-                CreateHostBuilder(args).Build().Run();
-            }
-            catch (Exception ex)
-            {
-                ex.Log(Log.GetLog().Caption("应用程序启动失败"));
-            }
-        }
-
-        /// <summary>
-        /// 创建主机生成器
-        /// </summary>
-        /// <param name="args">入口点参数</param>
-        /// <returns>IHostBuilder.</returns>
-        public static IHostBuilder CreateHostBuilder(string[] args)
-        {
-            return Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webHostBuilder =>
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+            var host = new ServiceHostBuilder()
+                .RegisterServices(builder =>
                 {
-                    webHostBuilder
-                        .UseContentRoot(Directory.GetCurrentDirectory())
-                        .UseIISIntegration()
-                        .UseStartup<Startup>();
+                    builder.AddMicroService(option =>
+                    {
+                        option.AddServiceRuntime()
+                            .AddRelateService()
+                            .AddConfigurationWatch()
+                            .AddServiceEngine(typeof(ServiceEngine));
+                    });
+                    builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
                 })
-                .UseAutofac();
+                .ConfigureLogging(logger => { logger.AddConfiguration(AppConfig.GetSection("Logging")); })
+                .Configure(build => { build.AddCacheFile("${cachepath}|cachesettings.json", false, true); })
+                .Configure(build => { build.AddCPlatformFile("${servicepath}|servicesettings.json", false, true); })
+                .UseServer(options => { })
+                .UseConsoleLifetime()
+                .UseStartup<Startup>()
+                .Build();
+
+            using (host.Run())
+            {
+                Console.WriteLine($"{AppConfig.ServerOptions.Ip}:{AppConfig.ServerOptions.Port}， {DateTime.Now}。");
+            }
         }
     }
 }

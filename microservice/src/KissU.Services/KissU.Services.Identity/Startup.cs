@@ -1,17 +1,8 @@
 ﻿using Autofac;
-using KissU.Modules.GreatWall.Application.Extensions;
-using KissU.Modules.GreatWall.Data.UnitOfWorks.SqlServer;
-using KissU.Modules.GreatWall.Domain.UnitOfWorks;
-using KissU.Modules.IdentityServer.Data.UnitOfWorks.SqlServer;
-using KissU.Modules.IdentityServer.Domain.UnitOfWorks;
-using KissU.Services.Identity.Extensions;
-using KissU.Util.EntityFrameworkCore.SqlServer;
-using KissU.Util.Logs;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
+using KissU.Core;
+using KissU.Core.Utilities;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 
 namespace KissU.Services.Identity
 {
@@ -21,87 +12,28 @@ namespace KissU.Services.Identity
     public class Startup
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="Startup"/> class.
         /// 初始化启动配置
         /// </summary>
-        /// <param name="configuration">配置</param>
-        public Startup(IConfiguration configuration)
+        public Startup(IConfigurationBuilder build)
         {
-            Configuration = configuration;
         }
-
-        /// <summary>
-        /// 配置
-        /// </summary>
-        /// <value>The configuration.</value>
-        public IConfiguration Configuration { get; }
 
         /// <summary>
         /// 配置服务
         /// </summary>
-        /// <param name="services">服务集合</param>
-        public void ConfigureServices(IServiceCollection services)
+        public IContainer ConfigureServices(ContainerBuilder builder)
         {
-            services.AddControllersWithViews();
-
-            // 添加SqlServer工作单元
-            services.AddUnitOfWork<IIdentityServerUnitOfWork, IdentityServerUnitOfWork>(Configuration.GetConnectionString(Modules.IdentityServer.Data.DbConstants.ConnectionStringName));
-            services.AddUnitOfWork<IGreatWallUnitOfWork, GreatWallUnitOfWork>(Configuration.GetConnectionString(Modules.GreatWall.Data.DbConstants.ConnectionStringName));
-
-            // 添加AspNetIdentity
-            services.AspNetIdentity(options =>
-            {
-                options.Password.MinLength = 6;
-                options.Password.NonAlphanumeric = true;
-                options.Password.Uppercase = true;
-                options.Password.Digit = true;
-            });
-
-            // 添加IdentityServer4
-            services.AddIdentityServer4(options =>
-            {
-                options.EnableTokenCleanup = true;
-                options.TokenCleanupInterval = 600;
-            });
-
-            // 添加NLog日志操作
-            services.AddNLog();
-
-            services.ConfigureNonBreakingSameSiteCookies();
+            var services = new ServiceCollection();
+            return builder.AddUtil(services);
         }
 
         /// <summary>
-        /// 配置容器
+        /// 配置应用
         /// </summary>
-        /// <param name="builder">The builder.</param>
-        public void ConfigureContainer(ContainerBuilder builder)
+        public void Configure(IContainer app)
         {
-        }
-
-        /// <summary>
-        /// 配置请求管道
-        /// </summary>
-        /// <param name="app">应用生成器</param>
-        /// <param name="env">web主机环境</param>
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-            }
-
-            app.UseStaticFiles();
-            app.UseCookiePolicy();
-            app.UseRouting();
-            app.UseIdentityServer();
-            app.UseAuthorization();
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapDefaultControllerRoute();
-            });
+            ServiceLocator.Current = app;
         }
     }
 }

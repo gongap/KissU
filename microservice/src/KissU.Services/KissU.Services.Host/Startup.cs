@@ -24,9 +24,8 @@ namespace KissU.Services.Host
         /// </summary>
         public IContainer ConfigureServices(ContainerBuilder builder)
         {
-            var serivces = new ServiceCollection();
-            ServiceLocator.Current = builder.AddUtil(serivces);
-            return ServiceLocator.Current;
+            var services = new ServiceCollection();
+            return builder.AddUtil(services);
         }
 
         /// <summary>
@@ -34,6 +33,7 @@ namespace KissU.Services.Host
         /// </summary>
         public void Configure(IContainer app)
         {
+            ServiceLocator.Current = app;
         }
     }
 }

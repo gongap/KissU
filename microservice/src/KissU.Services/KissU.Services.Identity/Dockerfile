@@ -1,11 +1,14 @@
 #See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
 # You need to build it with the following CLI command:
-# docker build -f "./Dockerfile" --force-rm -t kissu/services.identity:linux-latest  "../../"
+# docker build -f "./Dockerfile" --force-rm -t kissu/services.host:linux-latest  "../../"
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1 AS base
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
+EXPOSE 81
+EXPOSE 8001
+EXPOSE 8101
+EXPOSE 8201
+EXPOSE 8301
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 WORKDIR /src
@@ -14,13 +17,13 @@ WORKDIR /src
 # to take advantage of Docker's build cache, to speed up local container builds
 
 COPY . .
-WORKDIR "/src/KissU.Services/KissU.Services.Identity"
-RUN dotnet build "KissU.Services.Identity.csproj" -c Release -o /app/build
+WORKDIR "/src/KissU.Services/KissU.Services.Host"
+RUN dotnet build "KissU.Services.Host.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "KissU.Services.Identity.csproj" -c Release -o /app/publish
+RUN dotnet publish "KissU.Services.Host.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "KissU.Services.Identity.dll"]
+ENTRYPOINT ["dotnet", "KissU.Services.Host.dll"]
