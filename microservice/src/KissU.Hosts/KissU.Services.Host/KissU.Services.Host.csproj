@@ -1,0 +1,77 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\..\common.props" />
+  <Import Project="..\..\..\configureawait.props" />
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <ServerGarbageCollection>false</ServerGarbageCollection>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TieredCompilation>true</TieredCompilation>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..\..</DockerfileContext>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="4.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.WebSocketCore\KissU.WebSocketCore.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.Core\KissU.Core.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.Apm.Skywalking\KissU.Apm.Skywalking.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.ApiGateWay\KissU.Surging.ApiGateWay.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.Caching\KissU.Surging.Caching.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.Codec.MessagePack\KissU.Surging.Codec.MessagePack.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.Codec.ProtoBuffer\KissU.Surging.Codec.ProtoBuffer.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.Configuration.Apollo\KissU.Surging.Configuration.Apollo.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.Consul\KissU.Surging.Consul.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.CPlatform\KissU.Surging.CPlatform.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.DNS\KissU.Surging.DNS.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.DotNettyWSServer\KissU.Surging.DotNettyWSServer.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.DotNetty\KissU.Surging.DotNetty.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.EventBusKafka\KissU.Surging.EventBusKafka.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.EventBusRabbitMQ\KissU.Surging.EventBusRabbitMQ.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.Grpc\KissU.Surging.Grpc.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.Kestrel.Log4net\KissU.Surging.Kestrel.Log4net.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.Kestrel.Nlog\KissU.Surging.Kestrel.Nlog.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.KestrelHttpServer\KissU.Surging.KestrelHttpServer.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.Log4net\KissU.Surging.Log4net.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.NLog\KissU.Surging.Nlog.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.Protocol.Http\KissU.Surging.Protocol.Http.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.Protocol.Mqtt\KissU.Surging.Protocol.Mqtt.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.Protocol.Udp\KissU.Surging.Protocol.Udp.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.Protocol.WS\KissU.Surging.Protocol.WS.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.ProxyGenerator\KissU.Surging.ProxyGenerator.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.Serilog\KissU.Surging.Serilog.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.BackgroundServer\KissU.Surging.BackgroundServer.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.ServiceHosting\KissU.Surging.ServiceHosting.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.Swagger\KissU.Surging.Swagger.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.Zookeeper\KissU.Surging.Zookeeper.csproj" />
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Sample\src\KissU.Modules.SampleA.Service\KissU.Modules.SampleA.Service.csproj" />
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Sample\src\KissU.Modules.SampleB.Service\KissU.Modules.SampleB.Service.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="apollo.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="cachesettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="NLog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="servicesettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="skyapm.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>
