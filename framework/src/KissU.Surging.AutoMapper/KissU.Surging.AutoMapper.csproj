@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="..\..\common.props" />
-  <Import Project="..\..\configureawait.props" />
+  <Import Project="..\..\..\common.props" />
+  <Import Project="..\..\..\configureawait.props" />
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <Description>通过AutoMapper组件实现Dto对象和实体对象之间的相互转换</Description>

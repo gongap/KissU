@@ -50,7 +50,7 @@ namespace KissU.Core.Reflections
         /// <returns>List&lt;Type&gt;.</returns>
         public List<Type> Find(Type findType, List<Assembly> assemblies = null)
         {
-            assemblies ??= GetAssemblies();
+            assemblies = assemblies ?? GetAssemblies();
             return Reflection.FindTypes(findType, assemblies.ToArray());
         }
 

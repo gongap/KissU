@@ -25,7 +25,7 @@ namespace KissU.Core.Helpers.Utilities
                 result = env;
                 if (string.IsNullOrEmpty(env))
                 {
-                    var arrayData = value.Split("|");
+                    var arrayData = value.Split('|');
                     result = arrayData.Length == 2 ? arrayData[1] : env;
                 }
             }
