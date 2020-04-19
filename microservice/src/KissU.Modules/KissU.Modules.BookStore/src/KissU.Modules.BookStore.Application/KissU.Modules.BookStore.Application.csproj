@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="..\..\..\..\..\..\common.props" />
   <Import Project="..\..\..\..\..\..\configureawait.props" />
@@ -9,8 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.AutoMapper" Version="2.5.0" />
-    <PackageReference Include="Volo.Abp.Ddd.Application" Version="2.5.0" />
+    <ProjectReference Include="..\..\..\..\..\..\framework\src\Volo.Abp.AutoMapper\Volo.Abp.AutoMapper.csproj" />
+    <ProjectReference Include="..\..\..\..\..\..\framework\src\Volo.Abp.Ddd.Application\Volo.Abp.Ddd.Application.csproj" />
     <ProjectReference Include="..\KissU.Modules.BookStore.Application.Contracts\KissU.Modules.BookStore.Application.Contracts.csproj" />
     <ProjectReference Include="..\KissU.Modules.BookStore.Domain\KissU.Modules.BookStore.Domain.csproj" />
   </ItemGroup>
