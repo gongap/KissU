@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Localization;
 using Volo.Abp.Application.Localization.Resources.AbpDdd;
@@ -11,23 +12,27 @@ namespace Volo.Abp.Application.Dtos
     /// Simply implements <see cref="ILimitedResultRequest"/>.
     /// </summary>
     [Serializable]
+    [DataContract]
     public class LimitedResultRequestDto : ILimitedResultRequest, IValidatableObject
     {
         /// <summary>
         /// Default value: 10.
         /// </summary>
+        [DataMember]
         public static int DefaultMaxResultCount { get; set; } = 10;
 
         /// <summary>
         /// Maximum possible value of the <see cref="MaxResultCount"/>.
         /// Default value: 1,000.
         /// </summary>
+        [DataMember]
         public static int MaxMaxResultCount { get; set; } = 1000;
 
         /// <summary>
         /// Maximum result count should be returned.
         /// This is generally used to limit result count on paging.
         /// </summary>
+        [DataMember]
         [Range(1, int.MaxValue)]
         public virtual int MaxResultCount { get; set; } = DefaultMaxResultCount;
 

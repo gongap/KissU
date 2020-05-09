@@ -7,7 +7,7 @@ using KissU.Core.Helpers.Utilities;
 namespace KissU.Core.Dependency
 {
     /// <summary>
-    /// IOC容器对象
+    /// 服务解析器
     /// </summary>
     public class ServiceResolver : IDependencyResolver
     {

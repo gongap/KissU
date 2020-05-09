@@ -11,6 +11,7 @@
 
   <PropertyGroup>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <RootNamespace>KissU.Modules.BookStore.Service</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

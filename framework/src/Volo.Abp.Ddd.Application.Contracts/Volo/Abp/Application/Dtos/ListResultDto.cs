@@ -1,12 +1,15 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace Volo.Abp.Application.Dtos
 {
     [Serializable]
+    [DataContract]
     public class ListResultDto<T> : IListResult<T>
     {
         /// <inheritdoc />
+        [DataMember]
         public IReadOnlyList<T> Items
         {
             get { return _items ?? (_items = new List<T>()); }

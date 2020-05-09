@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace Volo.Abp.Application.Dtos
 {
@@ -8,9 +9,11 @@ namespace Volo.Abp.Application.Dtos
     /// </summary>
     /// <typeparam name="T">Type of the items in the <see cref="ListResultDto{T}.Items"/> list</typeparam>
     [Serializable]
+    [DataContract]
     public class PagedResultDto<T> : ListResultDto<T>, IPagedResult<T>
     {
         /// <inheritdoc />
+        [DataMember]
         public long TotalCount { get; set; } //TODO: Can be a long value..?
 
         /// <summary>

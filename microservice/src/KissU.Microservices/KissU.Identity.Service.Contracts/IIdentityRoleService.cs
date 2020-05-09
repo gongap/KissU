@@ -9,13 +9,13 @@ namespace Volo.Abp.Identity
     [ServiceBundle("api/{Service}")]
     public interface IIdentityRoleService : IServiceKey
     {
-       // [HttpGet]
-        //[ServiceRoute("all")]
-        //Task<ListResultDto<IdentityRoleDto>> GetAllListAsync();
+        [HttpGet]
+        [ServiceRoute("all")]
+        Task<ListResultDto<IdentityRoleDto>> GetAllListAsync();
 
 
-        //[HttpGet]
-        //Task<PagedResultDto<IdentityRoleDto>> GetListAsync(PagedAndSortedResultRequestDto input);
+        [HttpGet]
+        Task<PagedResultDto<IdentityRoleDto>> GetListAsync(PagedAndSortedResultRequestDto input);
 
 
         [HttpGet]
