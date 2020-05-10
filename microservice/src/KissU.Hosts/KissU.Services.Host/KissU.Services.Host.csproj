@@ -50,7 +50,6 @@
     <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.ServiceHosting\KissU.Surging.ServiceHosting.csproj" />
     <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.Swagger\KissU.Surging.Swagger.csproj" />
     <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.Zookeeper\KissU.Surging.Zookeeper.csproj" />
-    <ProjectReference Include="..\..\KissU.Microservices\KissU.Identity.Service\KissU.Identity.Service.csproj" />
   </ItemGroup>
 
   <ItemGroup>

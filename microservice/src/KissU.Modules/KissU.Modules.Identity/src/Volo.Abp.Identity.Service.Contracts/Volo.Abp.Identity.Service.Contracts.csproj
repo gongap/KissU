@@ -11,11 +11,11 @@
 
   <PropertyGroup>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <RootNamespace>KissU.Identity.Service</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\..\framework\src\KissU.Surging.ProxyGenerator\KissU.Surging.ProxyGenerator.csproj" />
-    <ProjectReference Include="..\KissU.Modules.BookStore.Application\KissU.Modules.BookStore.Application.csproj" />
-    <ProjectReference Include="..\KissU.Modules.BookStore.Service.Contracts\KissU.Modules.BookStore.Service.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\..\..\..\framework\src\KissU.Surging.CPlatform\KissU.Surging.CPlatform.csproj" />
+    <ProjectReference Include="..\Volo.Abp.Identity.Application.Contracts\Volo.Abp.Identity.Application.Contracts.csproj" />
   </ItemGroup>
 </Project>

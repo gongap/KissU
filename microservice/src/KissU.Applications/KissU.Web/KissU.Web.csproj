@@ -14,10 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.AspNetCore.Mvc" Version="2.5.0" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\..\..\framework\src\KissU.Apm.Skywalking\KissU.Apm.Skywalking.csproj" />
     <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.Codec.MessagePack\KissU.Surging.Codec.MessagePack.csproj" />
     <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.Codec.ProtoBuffer\KissU.Surging.Codec.ProtoBuffer.csproj" />
@@ -29,6 +25,8 @@
     <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.NLog\KissU.Surging.Nlog.csproj" />
     <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.ProxyGenerator\KissU.Surging.ProxyGenerator.csproj" />
     <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.ServiceHosting\KissU.Surging.ServiceHosting.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\Volo.Abp.Autofac\Volo.Abp.Autofac.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\Volo.Abp.AspNetCore.Mvc\Volo.Abp.AspNetCore.Mvc.csproj" />
     <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Sample\src\KissU.Modules.SampleA.Service.Contracts\KissU.Modules.SampleA.Service.Contracts.csproj" />
   </ItemGroup>
 

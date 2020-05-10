@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
-using KissU.Abp.Autofac;
 using KissU.Surging.Caching.Configurations;
 using KissU.Surging.CPlatform.Configurations;
 
