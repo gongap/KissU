@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using KissU.Core.Dependency;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
+using Volo.Abp.Application.Dtos;
 
 namespace Volo.Abp.Identity.Service.Contracts
 {
@@ -13,8 +14,8 @@ namespace Volo.Abp.Identity.Service.Contracts
         [ServiceRoute("{id}")]
         Task<IdentityUserDto> GetAsync(Guid id);
 
-       // [HttpGet]
-       // Task<PagedResultDto<IdentityUserDto>> GetListAsync(GetIdentityUsersInput input);
+        [HttpGet]
+        Task<PagedResultDto<IdentityUserDto>> GetListAsync(GetIdentityUsersInput input);
 
         [HttpPost]
         Task<IdentityUserDto> CreateAsync(IdentityUserCreateDto input);
@@ -27,9 +28,9 @@ namespace Volo.Abp.Identity.Service.Contracts
         [ServiceRoute("{id}")]
         Task DeleteAsync(Guid id);
 
-       // [HttpGet]
-        //[ServiceRoute("{id}/roles")]
-       // Task<ListResultDto<IdentityRoleDto>> GetRolesAsync(Guid id);
+        [HttpGet]
+        [ServiceRoute("{id}/roles")]
+        Task<ListResultDto<IdentityRoleDto>> GetRolesAsync(Guid id);
 
         [HttpPut]
         [ServiceRoute("{id}/roles")]
