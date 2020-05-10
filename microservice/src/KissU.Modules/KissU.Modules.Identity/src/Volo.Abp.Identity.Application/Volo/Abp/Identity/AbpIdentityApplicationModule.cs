@@ -15,7 +15,11 @@ namespace Volo.Abp.Identity
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
-            context.Services.AddAutoMapperObjectMapper<AbpIdentityApplicationModule>();
+            context.Services.AddAutoMapperObjectMapper<AbpIdentityApplicationModule>(); 
+            Configure<AbpAutoMapperOptions>(options =>
+            {
+                options.AddProfile<AbpIdentityApplicationModuleAutoMapperProfile>(validate: true);
+            });
         }
     }
 }

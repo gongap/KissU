@@ -11,7 +11,7 @@ namespace KissU.Modules.BookStore.Service
     /// </summary>
     public class BookStoreModule : BusinessModule
     {
-        private IAbpApplicationWithExternalServiceProvider application = null;
+        private IAbpApplicationWithExternalServiceProvider application;
 
         /// <summary>
         /// 初始化

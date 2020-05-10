@@ -4,18 +4,18 @@ using KissU.Core.Dependency;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using Volo.Abp.Application.Dtos;
 
-namespace Volo.Abp.Identity
+namespace Volo.Abp.Identity.Service.Contracts
 {
     [ServiceBundle("api/{Service}")]
     public interface IIdentityRoleService : IServiceKey
     {
-        [HttpGet]
-        [ServiceRoute("all")]
-        Task<ListResultDto<IdentityRoleDto>> GetAllListAsync();
+        //[HttpGet]
+        //[ServiceRoute("all")]
+        //Task<ListResultDto<IdentityRoleDto>> GetAllListAsync();
 
 
-        [HttpGet]
-        Task<PagedResultDto<IdentityRoleDto>> GetListAsync(PagedAndSortedResultRequestDto input);
+        //[HttpGet]
+        //Task<PagedResultDto<IdentityRoleDto>> GetListAsync(PagedAndSortedResultRequestDto input);
 
 
         [HttpGet]

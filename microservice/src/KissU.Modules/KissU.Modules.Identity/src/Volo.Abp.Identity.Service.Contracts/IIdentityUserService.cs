@@ -2,9 +2,8 @@ using System;
 using System.Threading.Tasks;
 using KissU.Core.Dependency;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
-using Volo.Abp.Application.Dtos;
 
-namespace Volo.Abp.Identity
+namespace Volo.Abp.Identity.Service.Contracts
 {
 
     [ServiceBundle("api/{Service}")]
