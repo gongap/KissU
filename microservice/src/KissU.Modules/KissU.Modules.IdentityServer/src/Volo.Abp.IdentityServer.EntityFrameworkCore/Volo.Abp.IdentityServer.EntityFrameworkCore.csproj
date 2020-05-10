@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="..\..\..\..\..\..\common.props" />
   <Import Project="..\..\..\..\..\..\configureawait.props" />
@@ -7,7 +7,6 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyName>Volo.Abp.IdentityServer.EntityFrameworkCore</AssemblyName>
     <PackageId>Volo.Abp.IdentityServer.EntityFrameworkCore</PackageId>
-    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
@@ -16,9 +15,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\..\framework\src\Volo.Abp.EntityFrameworkCore\Volo.Abp.EntityFrameworkCore.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Volo.Abp.IdentityServer.Domain\Volo.Abp.IdentityServer.Domain.csproj" />
   </ItemGroup>
   

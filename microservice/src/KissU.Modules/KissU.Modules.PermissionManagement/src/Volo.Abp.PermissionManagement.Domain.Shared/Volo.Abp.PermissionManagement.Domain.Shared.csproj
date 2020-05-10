@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="..\..\..\..\..\..\common.props" />
   <Import Project="..\..\..\..\..\..\configureawait.props" />
@@ -7,7 +7,6 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Volo.Abp.PermissionManagement.Domain.Shared</AssemblyName>
     <PackageId>Volo.Abp.PermissionManagement.Domain.Shared</PackageId>
-    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>

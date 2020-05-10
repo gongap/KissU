@@ -9,12 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\..\framework\src\Volo.Abp.Validation\Volo.Abp.Validation.csproj" />
+    <EmbeddedResource Include="Localization\BookStore\*.json" />
+    <Content Remove="Localization\BookStore\*.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Localization\BookStore\*.json" />
-    <Content Remove="Localization\BookStore\*.json" />
+    <ProjectReference Include="..\..\..\..\..\..\framework\src\Volo.Abp.Validation\Volo.Abp.Validation.csproj" />
   </ItemGroup>
 
 </Project>

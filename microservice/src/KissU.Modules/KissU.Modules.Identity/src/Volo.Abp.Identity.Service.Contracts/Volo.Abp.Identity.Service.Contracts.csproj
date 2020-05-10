@@ -9,11 +9,6 @@
     <DocumentationFile></DocumentationFile>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <RootNamespace>KissU.Identity.Service</RootNamespace>
-  </PropertyGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\..\framework\src\KissU.Surging.CPlatform\KissU.Surging.CPlatform.csproj" />
     <ProjectReference Include="..\Volo.Abp.Identity.Application.Contracts\Volo.Abp.Identity.Application.Contracts.csproj" />

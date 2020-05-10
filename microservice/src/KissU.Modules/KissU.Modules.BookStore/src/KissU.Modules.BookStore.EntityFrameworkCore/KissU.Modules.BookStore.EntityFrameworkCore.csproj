@@ -11,9 +11,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\..\framework\src\Volo.Abp.EntityFrameworkCore\Volo.Abp.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\..\..\..\..\..\framework\src\Volo.Abp.EntityFrameworkCore.SqlServer\Volo.Abp.EntityFrameworkCore.SqlServer.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\KissU.Modules.BookStore.Domain\KissU.Modules.BookStore.Domain.csproj" />
   </ItemGroup>
 

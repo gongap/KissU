@@ -7,18 +7,11 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Volo.Abp.Identity.Domain</AssemblyName>
     <PackageId>Volo.Abp.Identity.Domain</PackageId>
-    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
     <RootNamespace />
   </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Remove="Volo\Abp\Permissions\**" />
-    <EmbeddedResource Remove="Volo\Abp\Permissions\**" />
-    <None Remove="Volo\Abp\Permissions\**" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="3.1.2" />
