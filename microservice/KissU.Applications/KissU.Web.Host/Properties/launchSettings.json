@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "KissU.Web.Host": {
+      "commandName": "Project"
+    }
+  }
+}

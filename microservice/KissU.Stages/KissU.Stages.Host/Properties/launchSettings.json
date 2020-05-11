@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "KissU.Stages.Host": {
+      "commandName": "Project",
+      "nativeDebugging": false
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "KissU.Client.Host": {
+      "commandName": "Project"
+    }
+  }
+}
