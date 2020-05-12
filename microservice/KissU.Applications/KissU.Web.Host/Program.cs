@@ -1,9 +1,10 @@
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
+using KissU.Core.Autofac;
 using KissU.Surging.Caching.Configurations;
 using KissU.Surging.CPlatform.Configurations;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 
-namespace KissU.Web
+namespace KissU.Web.Host
 {
     public class Program
     {
@@ -13,7 +14,7 @@ namespace KissU.Web
         }
 
         internal static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
+            Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder(args)
                 .ConfigureAppConfiguration(builder => builder.AddCPlatformFile("servicesettings.json", false, true))
                 .ConfigureAppConfiguration(builder => builder.AddCacheFile("cachesettings.json", false, true))
                 .ConfigureWebHostDefaults(webBuilder =>

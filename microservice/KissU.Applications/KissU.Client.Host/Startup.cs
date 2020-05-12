@@ -5,17 +5,17 @@ using System.Threading.Tasks;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using KissU.Core.Dependency;
-using KissU.Surging.CPlatform.Diagnostics;
-using KissU.Surging.CPlatform.Transport.Implementation;
-using KissU.Surging.ProxyGenerator;
 using KissU.Modules.SampleA.Service.Contracts;
 using KissU.Modules.SampleA.Service.Contracts.Dtos;
 using KissU.Modules.SampleA.Service.Contracts.Events;
+using KissU.Surging.CPlatform.Diagnostics;
+using KissU.Surging.CPlatform.Transport.Implementation;
+using KissU.Surging.ProxyGenerator;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 
-namespace KissU.Client
+namespace KissU.Client.Host
 {
     public class Startup
     {

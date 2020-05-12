@@ -6,7 +6,7 @@ using KissU.Surging.ProxyGenerator;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace KissU.Web
+namespace KissU.Web.Host
 {
     public class Startup
     {

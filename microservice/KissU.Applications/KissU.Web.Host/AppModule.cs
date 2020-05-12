@@ -4,7 +4,7 @@ using Volo.Abp;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.Modularity;
 
-namespace KissU.Web
+namespace KissU.Web.Host
 {
     [DependsOn(typeof(AbpAspNetCoreMvcModule))]
     public class AppModule : AbpModule

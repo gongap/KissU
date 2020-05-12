@@ -11,7 +11,7 @@ using KissU.Surging.ProxyGenerator;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
-namespace KissU.Web.Pages
+namespace KissU.Web.Host.Pages
 {
     public class IndexModel : PageModel
     {
