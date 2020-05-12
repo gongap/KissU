@@ -49,7 +49,6 @@ using KissU.Surging.CPlatform.Transport.Codec.Implementation;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyModel;
 using Microsoft.Extensions.Logging;
-using Volo.Abp.Modularity;
 
 namespace KissU.Surging.CPlatform
 {
@@ -533,7 +532,6 @@ namespace KissU.Surging.CPlatform
             var assemblies = builder.GetInterfaceService(virtualPaths)
                 .Select(p => p.Assembly)
                 .Union(GetSystemModules())
-                .Union(GetAbpModules())
                 .Distinct()
                 .ToList();
 
@@ -614,33 +612,6 @@ namespace KissU.Surging.CPlatform
             {
                 var abstractModules = GetAbstractModules(referenceAssembly);
                 if (abstractModules.Any(p => p.GetType().IsSubclassOf(typeof(SystemModule))))
-                {
-                    assemblies.Add(referenceAssembly);
-                }
-            }
-
-            return assemblies;
-        }
-
-        /// <summary>
-        /// 获取Abp模块.
-        /// </summary>
-        /// <returns>List&lt;Assembly&gt;.</returns>
-        private static List<Assembly> GetAbpModules()
-        {
-            var assemblies = new List<Assembly>();
-            var referenceAssemblies = GetReferenceAssembly();
-            foreach (var referenceAssembly in referenceAssemblies)
-            {
-                var abpModules = new List<AbpModule>();
-                var arrayModule = referenceAssembly.GetTypes().Where(t => t.IsSubclassOf(typeof(AbpModule))).ToArray();
-                foreach (var moduleType in arrayModule)
-                {
-                    var abpModule = (AbpModule)Activator.CreateInstance(moduleType);
-                    abpModules.Add(abpModule);
-                }
-
-                if (abpModules.Any())
                 {
                     assemblies.Add(referenceAssembly);
                 }

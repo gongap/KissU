@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\..\..\..\..\..\common.props" />
-  <Import Project="..\..\..\..\..\..\configureawait.props" />
+  <Import Project="..\..\..\..\..\common.props" />
+  <Import Project="..\..\..\..\..\configureawait.props" />
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -16,12 +16,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\..\framework\src\KissU.Surging.DNS\KissU.Surging.DNS.csproj" />
-    <ProjectReference Include="..\..\..\..\..\..\framework\src\KissU.Surging.DotNettyWSServer\KissU.Surging.DotNettyWSServer.csproj" />
-    <ProjectReference Include="..\..\..\..\..\..\framework\src\KissU.Surging.EventBusRabbitMQ\KissU.Surging.EventBusRabbitMQ.csproj" />
-    <ProjectReference Include="..\..\..\..\..\..\framework\src\KissU.Surging.Protocol.Udp\KissU.Surging.Protocol.Udp.csproj" />
-    <ProjectReference Include="..\..\..\..\..\..\framework\src\KissU.Surging.BackgroundServer\KissU.Surging.BackgroundServer.csproj" />
-    <ProjectReference Include="..\..\..\..\..\..\framework\src\KissU.WebSocketCore\KissU.WebSocketCore.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.DNS\KissU.Surging.DNS.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.DotNettyWSServer\KissU.Surging.DotNettyWSServer.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.EventBusRabbitMQ\KissU.Surging.EventBusRabbitMQ.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.Protocol.Udp\KissU.Surging.Protocol.Udp.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.BackgroundServer\KissU.Surging.BackgroundServer.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.WebSocketCore\KissU.WebSocketCore.csproj" />
     <ProjectReference Include="..\KissU.Modules.SampleA.Service.Contracts\KissU.Modules.SampleA.Service.Contracts.csproj" />
     <ProjectReference Include="..\KissU.Modules.SampleB.Service.Contracts\KissU.Modules.SampleB.Service.Contracts.csproj" />
   </ItemGroup>

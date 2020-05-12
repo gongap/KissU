@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\..\..\..\..\..\common.props" />
-  <Import Project="..\..\..\..\..\..\configureawait.props" />
+  <Import Project="..\..\..\..\..\common.props" />
+  <Import Project="..\..\..\..\..\configureawait.props" />
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -30,7 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\..\framework\src\Volo.Abp.Autofac\Volo.Abp.Autofac.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\Volo.Abp.Autofac\Volo.Abp.Autofac.csproj" />
     <ProjectReference Include="..\KissU.Modules.BookStore.Application.Contracts\KissU.Modules.BookStore.Application.Contracts.csproj" />
     <ProjectReference Include="..\KissU.Modules.BookStore.EntityFrameworkCore.DbMigrations\KissU.Modules.BookStore.EntityFrameworkCore.DbMigrations.csproj" />
   </ItemGroup>

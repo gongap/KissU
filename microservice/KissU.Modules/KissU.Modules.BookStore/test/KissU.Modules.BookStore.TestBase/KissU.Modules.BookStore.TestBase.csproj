@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\..\..\..\..\..\common.props" />
-  <Import Project="..\..\..\..\..\..\configureawait.props" />
+  <Import Project="..\..\..\..\..\common.props" />
+  <Import Project="..\..\..\..\..\configureawait.props" />
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -15,9 +15,9 @@
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.extensibility.execution" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1" />
-    <ProjectReference Include="..\..\..\..\..\..\framework\src\Volo.Abp.Autofac\Volo.Abp.Autofac.csproj" />
-    <ProjectReference Include="..\..\..\..\..\..\framework\src\Volo.Abp.Authorization\Volo.Abp.Authorization.csproj" />
-    <ProjectReference Include="..\..\..\..\..\..\framework\src\Volo.Abp.TestBase\Volo.Abp.TestBase.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\Volo.Abp.Autofac\Volo.Abp.Autofac.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\Volo.Abp.Authorization\Volo.Abp.Authorization.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\Volo.Abp.TestBase\Volo.Abp.TestBase.csproj" />
     <ProjectReference Include="..\..\src\KissU.Modules.BookStore.Domain\KissU.Modules.BookStore.Domain.csproj" />
   </ItemGroup>
 
