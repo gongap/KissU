@@ -1,20 +1,21 @@
 ﻿using System;
 using Autofac;
-using Autofac.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection;
+using KissU.Abp.Autofac.Extensions.DependencyInjection;
 using KissU.Core.Dependency;
+using Microsoft.Extensions.DependencyInjection;
+using Volo.Abp;
 
-namespace KissU.Core.Autofac
+namespace KissU.Abp.Autofac
 {
     /// <summary>
     /// A factory for creating a <see cref="T:Autofac.ContainerBuilder" /> and an <see cref="T:System.IServiceProvider" />.
     /// </summary>
-    public class AutofacServiceProviderFactory : IServiceProviderFactory<ContainerBuilder>
+    public class AbpAutofacServiceProviderFactory : IServiceProviderFactory<ContainerBuilder>
     {
         private readonly ContainerBuilder _builder;
         private IServiceCollection _services;
 
-        public AutofacServiceProviderFactory(ContainerBuilder builder)
+        public AbpAutofacServiceProviderFactory(ContainerBuilder builder)
         {
             _builder = builder;
         }
@@ -35,7 +36,7 @@ namespace KissU.Core.Autofac
 
         public IServiceProvider CreateServiceProvider(ContainerBuilder containerBuilder)
         {
-            if (containerBuilder == null) throw new ArgumentNullException(nameof(containerBuilder));
+            Check.NotNull(containerBuilder, nameof(containerBuilder));
             var container = containerBuilder.Build();
             ServiceLocator.Current = container;
             return new AutofacServiceProvider(container);

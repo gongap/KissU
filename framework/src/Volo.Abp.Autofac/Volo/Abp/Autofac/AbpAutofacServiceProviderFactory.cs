@@ -1,7 +1,6 @@
 ﻿using System;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using KissU.Core.Dependency;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Volo.Abp.Autofac
@@ -37,7 +36,6 @@ namespace Volo.Abp.Autofac
         {
             Check.NotNull(containerBuilder, nameof(containerBuilder));
             var container = containerBuilder.Build();
-            ServiceLocator.Current = container;
             return new AutofacServiceProvider(container);
         }
     }

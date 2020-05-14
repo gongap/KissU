@@ -2,19 +2,20 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace KissU.Core.Autofac
+namespace KissU.Abp.Autofac.Extensions.Hosting
 {
-    public static class AutofacHostBuilderExtensions
+    public static class AbpAutofacHostBuilderExtensions
     {
         public static IHostBuilder UseAutofac(this IHostBuilder hostBuilder)
         {
             var containerBuilder = new ContainerBuilder();
 
+
             return hostBuilder.ConfigureServices((_, services) =>
                 {
                     services.AddObjectAccessor(containerBuilder);
                 })
-                .UseServiceProviderFactory(new AutofacServiceProviderFactory(containerBuilder));
+                .UseServiceProviderFactory(new AbpAutofacServiceProviderFactory(containerBuilder));
         }
     }
 }
