@@ -1,4 +1,4 @@
-﻿namespace KissU.Core.Commons
+﻿namespace KissU.Core.Common.Application.Dtos
 {
     /// <summary>
     /// 保存参数

@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace KissU.Core.Commons
+namespace KissU.Core.Common
 {
     /// <summary>
     /// 返回结果.

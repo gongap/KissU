@@ -1,6 +1,6 @@
 ﻿using KissU.Core.Helpers;
 
-namespace KissU.Core
+namespace KissU.Core.Extensions
 {
     /// <summary>
     /// 系统扩展 - 字符串

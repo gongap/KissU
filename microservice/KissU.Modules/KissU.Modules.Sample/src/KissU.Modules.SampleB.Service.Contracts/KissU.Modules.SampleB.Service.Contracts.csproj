@@ -16,6 +16,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Core.Common\KissU.Core.Common.csproj" />
     <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.CPlatform\KissU.Surging.CPlatform.csproj" />
   </ItemGroup>
 

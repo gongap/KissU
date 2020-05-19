@@ -1,8 +1,9 @@
 using System;
 using System.Threading.Tasks;
+using KissU.Core.Common.Application.Dtos;
 using KissU.Core.Dependency;
+using KissU.Core.Extensions;
 using KissU.Surging.ProxyGenerator;
-using Volo.Abp.Application.Dtos;
 using Volo.Abp.Identity.Service.Contracts;
 
 namespace Volo.Abp.Identity.Service.Implements
@@ -23,9 +24,10 @@ namespace Volo.Abp.Identity.Service.Implements
             return UserAppService.GetAsync(id);
         }
 
-        public virtual Task<PagedResultDto<IdentityUserDto>> GetListAsync(GetIdentityUsersInput input)
+        public virtual async Task<PagedResult<IdentityUserDto>> GetListAsync(GetIdentityUsersInput input)
         {
-            return UserAppService.GetListAsync(input);
+            var result = await UserAppService.GetListAsync(input);
+            return result.MapTo<PagedResult<IdentityUserDto>>();
         }
 
         public virtual Task<IdentityUserDto> CreateAsync(IdentityUserCreateDto input)
@@ -43,9 +45,10 @@ namespace Volo.Abp.Identity.Service.Implements
             return UserAppService.DeleteAsync(id);
         }
 
-        public virtual Task<ListResultDto<IdentityRoleDto>> GetRolesAsync(Guid id)
+        public virtual async Task<ListResult<IdentityRoleDto>> GetRolesAsync(Guid id)
         {
-            return UserAppService.GetRolesAsync(id);
+            var result = await UserAppService.GetRolesAsync(id);
+            return result.MapTo<ListResult<IdentityRoleDto>>();
         }
 
         public virtual Task UpdateRolesAsync(Guid id, IdentityUserUpdateRolesDto input)

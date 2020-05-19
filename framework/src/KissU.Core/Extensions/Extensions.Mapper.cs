@@ -5,7 +5,7 @@ using AutoMapper;
 using KissU.Core.Helpers;
 using KissU.Core.Reflections;
 
-namespace KissU.Core
+namespace KissU.Core.Extensions
 {
     /// <summary>
     /// 对象映射

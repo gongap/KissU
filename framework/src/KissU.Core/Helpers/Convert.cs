@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using KissU.Core.Extensions;
 
 namespace KissU.Core.Helpers
 {

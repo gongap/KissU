@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using KissU.Core.Commons;
+using KissU.Core.Extensions;
 
 namespace KissU.Core.Helpers
 {

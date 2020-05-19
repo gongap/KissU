@@ -1,13 +1,10 @@
-﻿using System.Runtime.Serialization;
+using System.Runtime.Serialization;
 
-namespace KissU.Core.Commons
+namespace KissU.Core.Common.Application.Dtos
 {
     [DataContract]
-    public class PagedResultRequest
+    public class LimitedResultRequest
     {
-        [DataMember]
-        public virtual int SkipCount { get; set; }
-
         /// <summary>
         /// Default value: 10.
         /// </summary>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using KissU.Core.Extensions;
 using KissU.Core.Helpers;
 using KissU.Core.Properties;
 using Microsoft.Extensions.Hosting;

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
+using KissU.Core.Common.Application.Dtos;
 using KissU.Core.Dependency;
+using KissU.Core.Extensions;
 using KissU.Surging.ProxyGenerator;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Identity.Service.Contracts;
@@ -17,14 +19,16 @@ namespace Volo.Abp.Identity.Service.Implements
             RoleAppService = roleAppService;
         }
 
-        public virtual Task<ListResultDto<IdentityRoleDto>> GetAllListAsync()
+        public virtual async Task<ListResult<IdentityRoleDto>> GetAllListAsync()
         {
-            return RoleAppService.GetAllListAsync();
+            var result = await RoleAppService.GetAllListAsync();
+            return result.MapTo<ListResult<IdentityRoleDto>>();
         }
 
-        public virtual Task<PagedResultDto<IdentityRoleDto>> GetListAsync(PagedAndSortedResultRequestDto input)
+        public virtual async Task<PagedResult<IdentityRoleDto>> GetListAsync(PagedAndSortedResultRequestDto input)
         {
-            return RoleAppService.GetListAsync(input);
+            var result = await RoleAppService.GetListAsync(input);
+            return result.MapTo<PagedResult<IdentityRoleDto>>();
         }
 
         public virtual Task<IdentityRoleDto> GetAsync(Guid id)

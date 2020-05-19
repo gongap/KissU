@@ -1,4 +1,4 @@
-﻿namespace KissU.Core
+﻿namespace KissU.Core.Extensions
 {
     /// <summary>
     /// 系统扩展 - 格式化

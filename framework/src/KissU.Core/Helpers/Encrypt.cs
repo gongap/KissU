@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using KissU.Core.Extensions;
 using KissU.Core.Helpers.Internal;
 
 namespace KissU.Core.Helpers

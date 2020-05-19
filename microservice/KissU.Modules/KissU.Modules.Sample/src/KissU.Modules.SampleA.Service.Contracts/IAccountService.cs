@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.Core.Commons;
 using KissU.Core.Dependency;
 using KissU.Core.EventBus.Events;
 using KissU.Surging.Caching;
@@ -15,6 +14,7 @@ using KissU.Surging.KestrelHttpServer.Internal;
 using KissU.Modules.SampleA.Service.Contracts.Dtos;
 using KissU.Surging.Caching.Intercept;
 using Metadatas = KissU.Surging.ProxyGenerator.Interceptors.Implementation.Metadatas;
+using KissU.Core.Common;
 
 namespace KissU.Modules.SampleA.Service.Contracts
 {

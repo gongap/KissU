@@ -1,7 +1,7 @@
 ﻿using System;
 using KissU.Core.Exceptions.Prompts;
 
-namespace KissU.Core
+namespace KissU.Core.Extensions
 {
     /// <summary>
     /// 异常扩展
