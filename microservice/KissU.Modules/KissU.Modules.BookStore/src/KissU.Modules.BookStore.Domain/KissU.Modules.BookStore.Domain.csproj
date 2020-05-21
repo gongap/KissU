@@ -9,7 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\framework\src\Volo.Abp.Ddd.Domain\Volo.Abp.Ddd.Domain.csproj" />
+    <PackageReference Include="Volo.Abp.Ddd.Domain" Version="2.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\KissU.Modules.BookStore.Domain.Shared\KissU.Modules.BookStore.Domain.Shared.csproj" />
   </ItemGroup>
 

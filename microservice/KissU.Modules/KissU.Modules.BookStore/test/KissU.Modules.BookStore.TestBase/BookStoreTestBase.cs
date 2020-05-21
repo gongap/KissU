@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using KissU.Abp.Autofac;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp;
 using Volo.Abp.Modularity;

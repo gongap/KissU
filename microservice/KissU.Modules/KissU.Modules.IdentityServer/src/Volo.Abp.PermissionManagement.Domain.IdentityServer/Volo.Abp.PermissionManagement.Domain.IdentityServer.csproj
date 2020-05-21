@@ -13,9 +13,4 @@
     <RootNamespace />
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\KissU.Modules.PermissionManagement\src\Volo.Abp.PermissionManagement.Domain\Volo.Abp.PermissionManagement.Domain.csproj" />
-    <ProjectReference Include="..\Volo.Abp.IdentityServer.Domain.Shared\Volo.Abp.IdentityServer.Domain.Shared.csproj" />
-  </ItemGroup>
-
 </Project>

@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\framework\src\Volo.Abp.Validation\Volo.Abp.Validation.csproj" />
+    <PackageReference Include="Volo.Abp.Validation" Version="2.7.0" />
   </ItemGroup>
 
 </Project>

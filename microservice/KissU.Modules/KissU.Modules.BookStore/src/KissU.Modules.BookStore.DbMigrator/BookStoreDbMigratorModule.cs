@@ -1,5 +1,5 @@
-﻿using KissU.Modules.BookStore.EntityFrameworkCore;
-using Volo.Abp.Autofac;
+﻿using KissU.Abp.Autofac;
+using KissU.Modules.BookStore.EntityFrameworkCore;
 using Volo.Abp.Modularity;
 
 namespace KissU.Modules.BookStore.DbMigrator

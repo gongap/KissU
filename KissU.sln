@@ -305,39 +305,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{CD
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Users", "Users", "{D25E2AA4-18F8-45BE-BA39-C7014B0FD884}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Volo.Abp.Users.Domain.Shared", "microservice\KissU.Modules\KissU.Modules.Users\src\Volo.Abp.Users.Domain.Shared\Volo.Abp.Users.Domain.Shared.csproj", "{7760DC15-F7D0-4380-8704-22931B4A0F2C}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Volo.Abp.Users.Domain", "microservice\KissU.Modules\KissU.Modules.Users\src\Volo.Abp.Users.Domain\Volo.Abp.Users.Domain.csproj", "{14F56C6E-3D30-43CA-9751-84B4F37BAF12}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Volo.Abp.Users.Abstractions", "microservice\KissU.Modules\KissU.Modules.Users\src\Volo.Abp.Users.Abstractions\Volo.Abp.Users.Abstractions.csproj", "{0BB92E25-884E-4292-BC13-7FE9A635B219}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Volo.Abp.Users.EntityFrameworkCore", "microservice\KissU.Modules\KissU.Modules.Users\src\Volo.Abp.Users.EntityFrameworkCore\Volo.Abp.Users.EntityFrameworkCore.csproj", "{DA067D4E-E17D-4361-9A46-D874DFBE2410}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{644FBB28-44AD-4FE2-9111-B0DD63B845E1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{7C773681-028A-4555-8126-D6EBE9776E1E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PermissionManagement", "PermissionManagement", "{69EB30B4-C687-4624-AB71-19FDF63C4AD6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Volo.Abp.PermissionManagement.Domain", "microservice\KissU.Modules\KissU.Modules.PermissionManagement\src\Volo.Abp.PermissionManagement.Domain\Volo.Abp.PermissionManagement.Domain.csproj", "{61B119E6-72C2-4888-9615-116E123669F7}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Volo.Abp.PermissionManagement.Application.Contracts", "microservice\KissU.Modules\KissU.Modules.PermissionManagement\src\Volo.Abp.PermissionManagement.Application.Contracts\Volo.Abp.PermissionManagement.Application.Contracts.csproj", "{D0A60375-01CE-448E-B7A0-2DBE4A95C61C}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Volo.Abp.PermissionManagement.Application", "microservice\KissU.Modules\KissU.Modules.PermissionManagement\src\Volo.Abp.PermissionManagement.Application\Volo.Abp.PermissionManagement.Application.csproj", "{36B23CE1-B383-4FFB-894C-FC0CAB9421F7}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Volo.Abp.PermissionManagement.Domain.Shared", "microservice\KissU.Modules\KissU.Modules.PermissionManagement\src\Volo.Abp.PermissionManagement.Domain.Shared\Volo.Abp.PermissionManagement.Domain.Shared.csproj", "{F2434457-4BD3-480F-A99B-C3E9DD2BDB21}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Volo.Abp.PermissionManagement.EntityFrameworkCore", "microservice\KissU.Modules\KissU.Modules.PermissionManagement\src\Volo.Abp.PermissionManagement.EntityFrameworkCore\Volo.Abp.PermissionManagement.EntityFrameworkCore.csproj", "{8282F13C-F805-453A-8D64-A61E5BD9AA23}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityServer", "IdentityServer", "{9E2C4CE3-CD5E-4171-9E16-0FE35DBAABE0}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Volo.Abp.IdentityServer.Domain", "microservice\KissU.Modules\KissU.Modules.IdentityServer\src\Volo.Abp.IdentityServer.Domain\Volo.Abp.IdentityServer.Domain.csproj", "{0F766678-5B85-4F4C-B8E6-FA310E92F4D2}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Volo.Abp.IdentityServer.Domain.Shared", "microservice\KissU.Modules\KissU.Modules.IdentityServer\src\Volo.Abp.IdentityServer.Domain.Shared\Volo.Abp.IdentityServer.Domain.Shared.csproj", "{F7C41BC4-6168-4F6D-B832-C661304A2375}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Volo.Abp.IdentityServer.EntityFrameworkCore", "microservice\KissU.Modules\KissU.Modules.IdentityServer\src\Volo.Abp.IdentityServer.EntityFrameworkCore\Volo.Abp.IdentityServer.EntityFrameworkCore.csproj", "{91115439-6E4B-4A8F-93C2-FD63359D3B69}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Volo.Abp.PermissionManagement.Domain.IdentityServer", "microservice\KissU.Modules\KissU.Modules.IdentityServer\src\Volo.Abp.PermissionManagement.Domain.IdentityServer\Volo.Abp.PermissionManagement.Domain.IdentityServer.csproj", "{ECEFA9F4-79D8-4567-985B-B9E37162D613}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3FED7E08-D281-419B-964C-B7107D9378CE}"
 EndProject
@@ -928,58 +902,6 @@ Global
 		{772BCAA7-DD5A-485D-9D5F-BD7E34EC6E27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{772BCAA7-DD5A-485D-9D5F-BD7E34EC6E27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{772BCAA7-DD5A-485D-9D5F-BD7E34EC6E27}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7760DC15-F7D0-4380-8704-22931B4A0F2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7760DC15-F7D0-4380-8704-22931B4A0F2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7760DC15-F7D0-4380-8704-22931B4A0F2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7760DC15-F7D0-4380-8704-22931B4A0F2C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{14F56C6E-3D30-43CA-9751-84B4F37BAF12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{14F56C6E-3D30-43CA-9751-84B4F37BAF12}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{14F56C6E-3D30-43CA-9751-84B4F37BAF12}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{14F56C6E-3D30-43CA-9751-84B4F37BAF12}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0BB92E25-884E-4292-BC13-7FE9A635B219}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0BB92E25-884E-4292-BC13-7FE9A635B219}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0BB92E25-884E-4292-BC13-7FE9A635B219}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0BB92E25-884E-4292-BC13-7FE9A635B219}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DA067D4E-E17D-4361-9A46-D874DFBE2410}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DA067D4E-E17D-4361-9A46-D874DFBE2410}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DA067D4E-E17D-4361-9A46-D874DFBE2410}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DA067D4E-E17D-4361-9A46-D874DFBE2410}.Release|Any CPU.Build.0 = Release|Any CPU
-		{61B119E6-72C2-4888-9615-116E123669F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{61B119E6-72C2-4888-9615-116E123669F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{61B119E6-72C2-4888-9615-116E123669F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{61B119E6-72C2-4888-9615-116E123669F7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D0A60375-01CE-448E-B7A0-2DBE4A95C61C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D0A60375-01CE-448E-B7A0-2DBE4A95C61C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D0A60375-01CE-448E-B7A0-2DBE4A95C61C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D0A60375-01CE-448E-B7A0-2DBE4A95C61C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{36B23CE1-B383-4FFB-894C-FC0CAB9421F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{36B23CE1-B383-4FFB-894C-FC0CAB9421F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{36B23CE1-B383-4FFB-894C-FC0CAB9421F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{36B23CE1-B383-4FFB-894C-FC0CAB9421F7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F2434457-4BD3-480F-A99B-C3E9DD2BDB21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F2434457-4BD3-480F-A99B-C3E9DD2BDB21}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F2434457-4BD3-480F-A99B-C3E9DD2BDB21}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F2434457-4BD3-480F-A99B-C3E9DD2BDB21}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8282F13C-F805-453A-8D64-A61E5BD9AA23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8282F13C-F805-453A-8D64-A61E5BD9AA23}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8282F13C-F805-453A-8D64-A61E5BD9AA23}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8282F13C-F805-453A-8D64-A61E5BD9AA23}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0F766678-5B85-4F4C-B8E6-FA310E92F4D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0F766678-5B85-4F4C-B8E6-FA310E92F4D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0F766678-5B85-4F4C-B8E6-FA310E92F4D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0F766678-5B85-4F4C-B8E6-FA310E92F4D2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F7C41BC4-6168-4F6D-B832-C661304A2375}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F7C41BC4-6168-4F6D-B832-C661304A2375}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F7C41BC4-6168-4F6D-B832-C661304A2375}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F7C41BC4-6168-4F6D-B832-C661304A2375}.Release|Any CPU.Build.0 = Release|Any CPU
-		{91115439-6E4B-4A8F-93C2-FD63359D3B69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{91115439-6E4B-4A8F-93C2-FD63359D3B69}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{91115439-6E4B-4A8F-93C2-FD63359D3B69}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{91115439-6E4B-4A8F-93C2-FD63359D3B69}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ECEFA9F4-79D8-4567-985B-B9E37162D613}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ECEFA9F4-79D8-4567-985B-B9E37162D613}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ECEFA9F4-79D8-4567-985B-B9E37162D613}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ECEFA9F4-79D8-4567-985B-B9E37162D613}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A809C505-5C77-40AF-9255-7125B02B6C9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A809C505-5C77-40AF-9255-7125B02B6C9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A809C505-5C77-40AF-9255-7125B02B6C9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -1174,23 +1096,10 @@ Global
 		{772BCAA7-DD5A-485D-9D5F-BD7E34EC6E27} = {1D34F083-4723-4647-8B3D-AA9727CA29CB}
 		{CD47BD54-73E8-429E-90D4-D130E0D6F12D} = {EBA864A3-39C4-4279-A823-35BA7EF2469A}
 		{D25E2AA4-18F8-45BE-BA39-C7014B0FD884} = {EBA864A3-39C4-4279-A823-35BA7EF2469A}
-		{7760DC15-F7D0-4380-8704-22931B4A0F2C} = {644FBB28-44AD-4FE2-9111-B0DD63B845E1}
-		{14F56C6E-3D30-43CA-9751-84B4F37BAF12} = {644FBB28-44AD-4FE2-9111-B0DD63B845E1}
-		{0BB92E25-884E-4292-BC13-7FE9A635B219} = {644FBB28-44AD-4FE2-9111-B0DD63B845E1}
-		{DA067D4E-E17D-4361-9A46-D874DFBE2410} = {644FBB28-44AD-4FE2-9111-B0DD63B845E1}
 		{644FBB28-44AD-4FE2-9111-B0DD63B845E1} = {D25E2AA4-18F8-45BE-BA39-C7014B0FD884}
 		{7C773681-028A-4555-8126-D6EBE9776E1E} = {D25E2AA4-18F8-45BE-BA39-C7014B0FD884}
 		{69EB30B4-C687-4624-AB71-19FDF63C4AD6} = {EBA864A3-39C4-4279-A823-35BA7EF2469A}
-		{61B119E6-72C2-4888-9615-116E123669F7} = {0FF7BEE8-768A-40A8-A7AC-48B72C8476D3}
-		{D0A60375-01CE-448E-B7A0-2DBE4A95C61C} = {0FF7BEE8-768A-40A8-A7AC-48B72C8476D3}
-		{36B23CE1-B383-4FFB-894C-FC0CAB9421F7} = {0FF7BEE8-768A-40A8-A7AC-48B72C8476D3}
-		{F2434457-4BD3-480F-A99B-C3E9DD2BDB21} = {0FF7BEE8-768A-40A8-A7AC-48B72C8476D3}
-		{8282F13C-F805-453A-8D64-A61E5BD9AA23} = {0FF7BEE8-768A-40A8-A7AC-48B72C8476D3}
 		{9E2C4CE3-CD5E-4171-9E16-0FE35DBAABE0} = {EBA864A3-39C4-4279-A823-35BA7EF2469A}
-		{0F766678-5B85-4F4C-B8E6-FA310E92F4D2} = {3FED7E08-D281-419B-964C-B7107D9378CE}
-		{F7C41BC4-6168-4F6D-B832-C661304A2375} = {3FED7E08-D281-419B-964C-B7107D9378CE}
-		{91115439-6E4B-4A8F-93C2-FD63359D3B69} = {3FED7E08-D281-419B-964C-B7107D9378CE}
-		{ECEFA9F4-79D8-4567-985B-B9E37162D613} = {3FED7E08-D281-419B-964C-B7107D9378CE}
 		{3FED7E08-D281-419B-964C-B7107D9378CE} = {9E2C4CE3-CD5E-4171-9E16-0FE35DBAABE0}
 		{1EE85D9F-3EBC-455F-BD5C-20D11BBC31B6} = {9E2C4CE3-CD5E-4171-9E16-0FE35DBAABE0}
 		{A809C505-5C77-40AF-9255-7125B02B6C9C} = {1D34F083-4723-4647-8B3D-AA9727CA29CB}

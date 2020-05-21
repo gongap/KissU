@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.2"/>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -30,15 +31,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\framework\src\Volo.Abp.Autofac\Volo.Abp.Autofac.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Core.Autofac\KissU.Core.Autofac.csproj" />
     <ProjectReference Include="..\KissU.Modules.BookStore.Application.Contracts\KissU.Modules.BookStore.Application.Contracts.csproj" />
     <ProjectReference Include="..\KissU.Modules.BookStore.EntityFrameworkCore.DbMigrations\KissU.Modules.BookStore.EntityFrameworkCore.DbMigrations.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Microsoft.Extensions.Hosting">
-      <HintPath>C:\Program Files\dotnet\packs\Microsoft.AspNetCore.App.Ref\3.1.2\ref\netcoreapp3.1\Microsoft.Extensions.Hosting.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
 </Project>
