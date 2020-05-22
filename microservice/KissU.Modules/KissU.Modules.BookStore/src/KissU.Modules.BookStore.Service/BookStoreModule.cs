@@ -11,7 +11,7 @@ namespace KissU.Modules.BookStore.Service
     /// </summary>
     public class BookStoreModule : BusinessModule
     {
-        private IAbpApplicationWithExternalServiceProvider application;
+        private IAbpApplicationWithExternalServiceProvider _application;
 
         /// <summary>
         /// 初始化
@@ -20,8 +20,8 @@ namespace KissU.Modules.BookStore.Service
         public override void Initialize(AppModuleContext moduleContext)
         {
             base.Initialize(moduleContext);
-            var serviceProvoider = moduleContext.ServiceProvoider.GetInstances<IServiceProvider>();
-            application.Initialize(serviceProvoider);
+            var serviceProvider = moduleContext.ServiceProvoider.GetInstances<IServiceProvider>();
+            _application.Initialize(serviceProvider);
         }
 
         /// <summary>
@@ -32,8 +32,8 @@ namespace KissU.Modules.BookStore.Service
         {
             var services = new ServiceCollection();
             services.AddObjectAccessor<BookStoreModule>();
-            application = AbpApplicationFactory.Create<BookStoreApplicationModule>(services);
-            builder.ContainerBuilder.Populate(services);
+            _application = AbpApplicationFactory.Create<BookStoreApplicationModule>(services);
+            builder.ContainerBuilder.Populate(_application.Services);
         }
     }
 }

@@ -1,9 +1,10 @@
 ﻿using System.Threading.Tasks;
 using KissU.Core.Dependency;
+using KissU.Modules.Identity.Service.Contracts;
 using KissU.Surging.ProxyGenerator;
-using Volo.Abp.Identity.Service.Contracts;
+using Volo.Abp.Identity;
 
-namespace Volo.Abp.Identity.Service.Implements
+namespace KissU.Modules.Identity.Service.Implements
 {
     [ModuleName("Profile")]
     public class ProfileService : ProxyServiceBase, IProfileService

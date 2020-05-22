@@ -1,13 +1,15 @@
 ﻿using System;
 using Autofac.Extensions.DependencyInjection;
+using KissU.Abp.Autofac;
 using KissU.Core.Module;
 using Microsoft.Extensions.DependencyInjection;
+using Volo.Abp;
 
-namespace Volo.Abp.Identity.Service
+namespace KissU.Modules.Identity.Service
 {
     public class IdentityModule : BusinessModule
     {
-        private IAbpApplicationWithExternalServiceProvider application;
+        private IAbpApplicationWithExternalServiceProvider _application;
 
         /// <summary>
         /// 初始化
@@ -16,8 +18,8 @@ namespace Volo.Abp.Identity.Service
         public override void Initialize(AppModuleContext moduleContext)
         {
             base.Initialize(moduleContext);
-            var serviceProvoider = moduleContext.ServiceProvoider.GetInstances<IServiceProvider>();
-            application.Initialize(serviceProvoider);
+            var serviceProvider = moduleContext.ServiceProvoider.GetInstances<IServiceProvider>();
+            _application.Initialize(serviceProvider);
         }
 
         /// <summary>
@@ -27,8 +29,7 @@ namespace Volo.Abp.Identity.Service
         protected override void RegisterBuilder(ContainerBuilderWrapper builder)
         {
             var services = new ServiceCollection();
-            services.AddObjectAccessor<AbpIdentityModule>();
-            application = AbpApplicationFactory.Create<AbpIdentityModule>(services);
+            _application = AbpApplicationFactory.Create<AbpIdentityModule>(services);
             builder.ContainerBuilder.Populate(services);
         }
     }

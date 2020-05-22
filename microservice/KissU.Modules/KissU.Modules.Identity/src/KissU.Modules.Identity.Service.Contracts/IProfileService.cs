@@ -1,14 +1,15 @@
 ﻿using System.Threading.Tasks;
 using KissU.Core.Dependency;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
+using Volo.Abp.Identity;
 
-namespace Volo.Abp.Identity.Service.Contracts
+namespace KissU.Modules.Identity.Service.Contracts
 {
 
     [ServiceBundle("api/{Service}")]
     public interface IProfileService : IServiceKey
     {
-        [HttpGet]
+        [HttpGet(true)]
         Task<ProfileDto> GetAsync();
 
         [HttpPut]
