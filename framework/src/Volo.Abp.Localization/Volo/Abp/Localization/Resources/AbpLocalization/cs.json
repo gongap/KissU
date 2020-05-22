@@ -1,7 +1,0 @@
-{
-  "culture": "cs",
-  "texts": {
-    "DisplayName:Abp.Localization.DefaultLanguage": "Výchozí jazyk",
-    "Description:Abp.Localization.DefaultLanguage": "Váchozí jazyk aplikace."
-  }
-}

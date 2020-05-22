@@ -1,9 +1,0 @@
-﻿using System.Collections.Generic;
-
-namespace Volo.Abp.AspNetCore.Mvc.UI.Resources
-{
-    public interface IWebRequestResources
-    {
-        List<string> TryAdd(IEnumerable<string> resources);
-    }
-}

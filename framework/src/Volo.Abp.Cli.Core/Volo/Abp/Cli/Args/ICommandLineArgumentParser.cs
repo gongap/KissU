@@ -1,7 +1,0 @@
-﻿namespace Volo.Abp.Cli.Args
-{
-    public interface ICommandLineArgumentParser
-    {
-        CommandLineArgs Parse(string[] args);
-    }
-}
