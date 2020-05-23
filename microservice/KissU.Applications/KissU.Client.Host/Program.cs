@@ -33,6 +33,7 @@ namespace KissU.Client.Host
                     logger.AddConfiguration(
                         KissU.Surging.CPlatform.AppConfig.GetSection("Logging"));
                 })
+                .Configure(build => build.AddCacheFile("cacheSettings.json", false, true))
                 .Configure(build => build.AddCPlatformFile("servicesettings.json", false, true))
                 .UseClient()
                 .UseProxy()
