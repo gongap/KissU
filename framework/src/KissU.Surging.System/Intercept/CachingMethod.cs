@@ -1,4 +1,4 @@
-﻿namespace KissU.Surging.Caching.Intercept
+﻿namespace KissU.Surging.System.Intercept
 {
     /// <summary>
     /// 表示用于Caching特性的缓存方式。
@@ -10,16 +10,15 @@
         /// 然后将获得的结果添加到缓存中。
         /// </summary>
         Get,
-
         /// <summary>
         /// 表示需要将对象存入缓存。此方式会调用实际方法以获取对象，然后将获得的结果添加到缓存中，
         /// 并直接返回方法的调用结果。
         /// </summary>
         Put,
-
         /// <summary>
         /// 表示需要将对象从缓存中移除。
         /// </summary>
         Remove
     }
+
 }

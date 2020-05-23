@@ -10,6 +10,7 @@ using KissU.Surging.ProxyGenerator.Diagnostics;
 using KissU.Surging.ProxyGenerator.Implementation;
 using KissU.Surging.ProxyGenerator.Interceptors;
 using KissU.Surging.ProxyGenerator.Interceptors.Implementation;
+using KissU.Surging.CPlatform.Routing;
 
 namespace KissU.Surging.ProxyGenerator
 {
@@ -32,6 +33,7 @@ namespace KissU.Surging.ProxyGenerator
                 provider.Resolve<IRemoteInvokeService>(),
                 provider.Resolve<ITypeConvertibleService>(),
                 provider.Resolve<IServiceProvider>(),
+                provider.Resolve<IServiceRouteProvider>(),
                 builder.GetInterfaceService(),
                 builder.GetDataContractName()
             )).As<IServiceProxyFactory>().SingleInstance();

@@ -44,6 +44,7 @@ namespace KissU.Client.Host
             {
                 var testService = ServiceLocator.GetService<TestService>();
                 testService.Test(ServiceLocator.GetService<IServiceProxyFactory>());
+                //testService.TestThriftInvoker(ServiceLocator.GetService<IServiceProxyFactory>());
                 //testService.TestRabbitMq(ServiceLocator.GetService<IServiceProxyFactory>());
                 //testService.TestForRoutePath(ServiceLocator.GetService<IServiceProxyProvider>());
                 //testService.StartRequest(300000);

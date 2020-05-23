@@ -16,7 +16,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Google.Protobuf" Version="3.11.4" />
+    <PackageReference Include="ApacheThrift" Version="0.13.0.1" />
+    <PackageReference Include="Google.Protobuf" Version="3.10.1" />
     <PackageReference Include="Grpc.Core" Version="2.24.0" />
     <PackageReference Include="Grpc.Tools" Version="2.24.0">
       <PrivateAssets>all</PrivateAssets>
@@ -37,6 +38,7 @@
     <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.KestrelHttpServer\KissU.Surging.KestrelHttpServer.csproj" />
     <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.Protocol.Mqtt\KissU.Surging.Protocol.Mqtt.csproj" />
     <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.Protocol.WS\KissU.Surging.Protocol.WS.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.System\KissU.Surging.System.csproj" />
   </ItemGroup>
 
 </Project>

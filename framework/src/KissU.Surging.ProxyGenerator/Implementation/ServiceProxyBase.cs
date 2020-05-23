@@ -11,6 +11,8 @@ using KissU.Surging.CPlatform.Messages;
 using KissU.Surging.CPlatform.Runtime.Client;
 using KissU.Surging.CPlatform.Support;
 using KissU.Surging.ProxyGenerator.Interceptors;
+using KissU.Surging.CPlatform.Routing;
+using KissU.Surging.ProxyGenerator.Interceptors.Implementation;
 
 namespace KissU.Surging.ProxyGenerator.Implementation
 {
@@ -29,7 +31,7 @@ namespace KissU.Surging.ProxyGenerator.Implementation
         /// <param name="serviceKey">The service key.</param>
         /// <param name="serviceProvider">The service provider.</param>
         protected ServiceProxyBase(IRemoteInvokeService remoteInvokeService,
-            ITypeConvertibleService typeConvertibleService, string serviceKey, CPlatformContainer serviceProvider)
+            ITypeConvertibleService typeConvertibleService, String serviceKey, CPlatformContainer serviceProvider, IServiceRouteProvider serviceRouteProvider)
         {
             _remoteInvokeService = remoteInvokeService;
             _typeConvertibleService = typeConvertibleService;
@@ -37,13 +39,11 @@ namespace KissU.Surging.ProxyGenerator.Implementation
             _serviceProvider = serviceProvider;
             _commandProvider = serviceProvider.GetInstances<IServiceCommandProvider>();
             _breakeRemoteInvokeService = serviceProvider.GetInstances<IBreakeRemoteInvokeService>();
+            _serviceRouteProvider = serviceRouteProvider;
             _interceptors = new List<IInterceptor>();
             if (serviceProvider.Current.IsRegistered<IInterceptor>())
             {
-                var interceptors = serviceProvider.GetInstances<IEnumerable<IInterceptor>>();
-                _interceptors = interceptors.Where(p => !typeof(CacheInterceptor).IsAssignableFrom(p.GetType()));
-                _cacheInterceptor = interceptors.Where(p => typeof(CacheInterceptor).IsAssignableFrom(p.GetType()))
-                    .FirstOrDefault();
+                _interceptors = serviceProvider.GetInstances<IEnumerable<IInterceptor>>();
             }
         }
 
@@ -55,10 +55,10 @@ namespace KissU.Surging.ProxyGenerator.Implementation
         private readonly ITypeConvertibleService _typeConvertibleService;
         private readonly string _serviceKey;
         private readonly CPlatformContainer _serviceProvider;
+        private readonly IServiceRouteProvider _serviceRouteProvider;
         private readonly IServiceCommandProvider _commandProvider;
         private readonly IBreakeRemoteInvokeService _breakeRemoteInvokeService;
         private readonly IEnumerable<IInterceptor> _interceptors;
-        private readonly IInterceptor _cacheInterceptor;
 
         #endregion Field
 
@@ -80,7 +80,8 @@ namespace KissU.Surging.ProxyGenerator.Implementation
             var decodeJOject = typeof(T) == UtilityType.ObjectType;
             IInvocation invocation = null;
             var existsInterceptor = _interceptors.Any();
-            if ((_cacheInterceptor == null || !command.RequestCacheEnabled) && !existsInterceptor)
+            var serviceRoute = await _serviceRouteProvider.Locate(serviceId);
+            if ((serviceRoute == null || !serviceRoute.ServiceDescriptor.ExistIntercept()) || decodeJOject)
             {
                 message = await _breakeRemoteInvokeService.InvokeAsync(parameters, serviceId, _serviceKey,
                     decodeJOject);
@@ -101,16 +102,7 @@ namespace KissU.Surging.ProxyGenerator.Implementation
                     }
                 }
             }
-
-            if (_cacheInterceptor != null && command.RequestCacheEnabled)
-            {
-                invocation = GetCacheInvocation(parameters, serviceId, typeof(T));
-                var interceptReuslt = await Intercept(_cacheInterceptor, invocation);
-                message = interceptReuslt.Item1;
-                result = interceptReuslt.Item2 == null ? default(T) : interceptReuslt.Item2;
-            }
-
-            if (existsInterceptor)
+            else
             {
                 invocation = invocation == null ? GetInvocation(parameters, serviceId, typeof(T)) : invocation;
                 foreach (var interceptor in _interceptors)
@@ -175,7 +167,8 @@ namespace KissU.Surging.ProxyGenerator.Implementation
         {
             var existsInterceptor = _interceptors.Any();
             RemoteInvokeResultMessage message = null;
-            if (!existsInterceptor)
+            var serviceRoute = await _serviceRouteProvider.Locate(serviceId);
+            if (serviceRoute == null || !serviceRoute.ServiceDescriptor.ExistIntercept())
                 message = await _breakeRemoteInvokeService.InvokeAsync(parameters, serviceId, _serviceKey, false);
             else
             {

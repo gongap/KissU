@@ -38,7 +38,7 @@ namespace KissU.Surging.ProxyGenerator.Implementation
         public RemoteServiceProxy(IRemoteInvokeService remoteInvokeService,
             ITypeConvertibleService typeConvertibleService, string serviceKey,
             CPlatformContainer serviceProvider, IServiceRouteProvider serviceRouteProvider
-        ) : base(remoteInvokeService, typeConvertibleService, serviceKey, serviceProvider)
+        ) : base(remoteInvokeService, typeConvertibleService, serviceKey, serviceProvider, serviceRouteProvider)
         {
         }
 

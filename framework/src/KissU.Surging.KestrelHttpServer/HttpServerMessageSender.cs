@@ -35,6 +35,13 @@ namespace KissU.Surging.KestrelHttpServer
             _diagnosticListener = new DiagnosticListener(DiagnosticListenerExtensions.DiagnosticListenerName);
         }
 
+        internal HttpServerMessageSender(ISerializer<string> serializer, HttpContext httpContext, DiagnosticListener diagnosticListener)
+        {
+            _serializer = serializer;
+            _context = httpContext;
+            _diagnosticListener = diagnosticListener;
+        }
+
         /// <summary>
         /// send and flush as an asynchronous operation.
         /// </summary>

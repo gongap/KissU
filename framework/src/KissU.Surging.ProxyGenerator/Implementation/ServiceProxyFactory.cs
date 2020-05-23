@@ -8,6 +8,7 @@ using KissU.Core.Convertibles;
 using KissU.Core.Dependency;
 using KissU.Surging.CPlatform.Runtime.Client;
 using Microsoft.Extensions.DependencyInjection;
+using KissU.Surging.CPlatform.Routing;
 
 namespace KissU.Surging.ProxyGenerator.Implementation
 {
@@ -21,6 +22,7 @@ namespace KissU.Surging.ProxyGenerator.Implementation
         private readonly IRemoteInvokeService _remoteInvokeService;
         private readonly ITypeConvertibleService _typeConvertibleService;
         private readonly IServiceProvider _serviceProvider;
+        private readonly IServiceRouteProvider _serviceRouteProvider;
         private Type[] _serviceTypes = new Type[0];
 
         #endregion Field
@@ -35,8 +37,7 @@ namespace KissU.Surging.ProxyGenerator.Implementation
         /// <param name="serviceProvider">The service provider.</param>
         public ServiceProxyFactory(IRemoteInvokeService remoteInvokeService,
             ITypeConvertibleService typeConvertibleService,
-            IServiceProvider serviceProvider) : this(remoteInvokeService, typeConvertibleService, serviceProvider, null,
-            null)
+            IServiceProvider serviceProvider, IServiceRouteProvider serviceRouteProvider) : this(remoteInvokeService, typeConvertibleService, serviceProvider, serviceRouteProvider, null, null)
         {
         }
 
@@ -50,8 +51,9 @@ namespace KissU.Surging.ProxyGenerator.Implementation
         /// <param name="namespaces">The namespaces.</param>
         public ServiceProxyFactory(IRemoteInvokeService remoteInvokeService,
             ITypeConvertibleService typeConvertibleService,
-            IServiceProvider serviceProvider, IEnumerable<Type> types, IEnumerable<string> namespaces)
+            IServiceProvider serviceProvider, IServiceRouteProvider serviceRouteProvider, IEnumerable<Type> types, IEnumerable<string> namespaces)
         {
+            _serviceRouteProvider = serviceRouteProvider;
             _remoteInvokeService = remoteInvokeService;
             _typeConvertibleService = typeConvertibleService;
             _serviceProvider = serviceProvider;
@@ -80,7 +82,7 @@ namespace KissU.Surging.ProxyGenerator.Implementation
                 instance = proxyType.GetTypeInfo().GetConstructors().First().Invoke(new object[]
                 {
                     _remoteInvokeService, _typeConvertibleService, null,
-                    _serviceProvider.GetService<CPlatformContainer>()
+                    _serviceProvider.GetService<CPlatformContainer>(),_serviceRouteProvider
                 });
                 ServiceResolver.Current.Register(null, instance, type);
             }
@@ -104,7 +106,7 @@ namespace KissU.Surging.ProxyGenerator.Implementation
                 instance = proxyType.GetTypeInfo().GetConstructors().First().Invoke(new object[]
                 {
                     _remoteInvokeService, _typeConvertibleService, key,
-                    _serviceProvider.GetService<CPlatformContainer>()
+                    _serviceProvider.GetService<CPlatformContainer>(),_serviceRouteProvider
                 });
                 ServiceResolver.Current.Register(key, instance, type);
             }
@@ -129,7 +131,7 @@ namespace KissU.Surging.ProxyGenerator.Implementation
                 instance = proxyType.GetTypeInfo().GetConstructors().First().Invoke(new object[]
                 {
                     _remoteInvokeService, _typeConvertibleService, key,
-                    _serviceProvider.GetService<CPlatformContainer>()
+                    _serviceProvider.GetService<CPlatformContainer>(),_serviceRouteProvider
                 });
                 ServiceResolver.Current.Register(key, instance, instanceType);
             }

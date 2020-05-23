@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using KissU.Core;
+using System.Threading;
 using KissU.Core.Convertibles;
 using KissU.Core.Dependency;
 using KissU.Core.Validation;
@@ -149,10 +149,15 @@ namespace KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery
 
                     foreach (var parameterInfo in method.GetParameters())
                     {
-                        // �����Ƿ���Ĭ��ֵ���жϣ���Ĭ��ֵ�������û�û����ȡĬ��ֵ
+                        //加入是否有默认值的判断，有默认值，并且用户没传，取默认值
                         if (parameterInfo.HasDefaultValue && !parameters.ContainsKey(parameterInfo.Name))
                         {
                             list.Add(parameterInfo.DefaultValue);
+                            continue;
+                        }
+                        else if (parameterInfo.ParameterType == typeof(CancellationToken))
+                        {
+                            list.Add(new CancellationToken());
                             continue;
                         }
 

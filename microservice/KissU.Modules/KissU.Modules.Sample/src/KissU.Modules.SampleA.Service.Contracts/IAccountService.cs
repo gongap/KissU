@@ -12,9 +12,9 @@ using KissU.Surging.CPlatform.Support.Attributes;
 using KissU.Surging.KestrelHttpServer.Abstractions;
 using KissU.Surging.KestrelHttpServer.Internal;
 using KissU.Modules.SampleA.Service.Contracts.Dtos;
-using KissU.Surging.Caching.Intercept;
 using Metadatas = KissU.Surging.ProxyGenerator.Interceptors.Implementation.Metadatas;
 using KissU.Core.Common;
+using KissU.Surging.System.Intercept;
 
 namespace KissU.Modules.SampleA.Service.Contracts
 {
@@ -104,8 +104,8 @@ namespace KissU.Modules.SampleA.Service.Contracts
             Name=""gongap"",
             Age=19
          };", RequestCacheEnabled = true, InjectionNamespaces = new[] { "KissU.Modules.SampleA.Service.Contracts.Dtos" })]
-        [InterceptMethod(CachingMethod.Get, Key = "GetUser_id_{0}", CacheSectionType = SectionType.ddlCache,
-            Mode = CacheTargetType.Redis, Time = 480)]
+        [InterceptMethod(CachingMethod.Get, Key = "GetUser_id_{0}", CacheSectionType = SectionType.ddlCache,Mode = CacheTargetType.Redis, Time = 480)]
+        [Metadatas.ServiceCacheIntercept(Metadatas.CachingMethod.Get, Key = "GetUser_{0}_{1}", L2Key = "GetUser_{0}_{1}", EnableL2Cache = true, CacheSectionType = "ddlCache", Mode = Metadatas.CacheTargetType.Redis, Time = 480)]
         Task<UserModel> GetUser(UserModel user);
 
         /// <summary>
@@ -206,5 +206,8 @@ namespace KissU.Modules.SampleA.Service.Contracts
         /// </summary>
         /// <returns>Task&lt;Dictionary&lt;System.String, System.Object&gt;&gt;.</returns>
         Task<Dictionary<string, object>> GetAllThings();
+
+        [Metadatas.ServiceCacheIntercept(Metadatas.CachingMethod.Remove, "GetUser_{0}_{1}", CacheSectionType = "ddlCache", Mode = Metadatas.CacheTargetType.Redis)]
+        Task<bool> RemoveUser(UserModel user);
     }
 }

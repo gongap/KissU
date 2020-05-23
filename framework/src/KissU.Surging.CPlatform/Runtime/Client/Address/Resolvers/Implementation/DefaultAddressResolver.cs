@@ -33,31 +33,28 @@ namespace KissU.Surging.CPlatform.Runtime.Client.Address.Resolvers.Implementatio
         private readonly IHealthCheckService _healthCheckService;
         private readonly ILogger<DefaultAddressResolver> _logger;
         private readonly IServiceHeartbeatManager _serviceHeartbeatManager;
-        private readonly IServiceRouteManager _serviceRouteManager;
+        private readonly IServiceRouteProvider _serviceRouteProvider;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DefaultAddressResolver" /> class.
         /// </summary>
         /// <param name="commandProvider">The command provider.</param>
-        /// <param name="serviceRouteManager">The service route manager.</param>
+        /// <param name="serviceRouteProvider">The service route manager.</param>
         /// <param name="logger">The logger.</param>
         /// <param name="container">The container.</param>
         /// <param name="healthCheckService">The health check service.</param>
         /// <param name="serviceHeartbeatManager">The service heartbeat manager.</param>
-        public DefaultAddressResolver(IServiceCommandProvider commandProvider, IServiceRouteManager serviceRouteManager,
+        public DefaultAddressResolver(IServiceCommandProvider commandProvider, IServiceRouteProvider serviceRouteProvider,
             ILogger<DefaultAddressResolver> logger, CPlatformContainer container,
             IHealthCheckService healthCheckService, IServiceHeartbeatManager serviceHeartbeatManager)
         {
             _container = container;
-            _serviceRouteManager = serviceRouteManager;
+            _serviceRouteProvider = serviceRouteProvider;
             _logger = logger;
             LoadAddressSelectors();
             _commandProvider = commandProvider;
             _healthCheckService = healthCheckService;
             _serviceHeartbeatManager = serviceHeartbeatManager;
-            serviceRouteManager.Changed += ServiceRouteManager_Removed;
-            serviceRouteManager.Removed += ServiceRouteManager_Removed;
-            serviceRouteManager.Created += ServiceRouteManager_Add;
         }
 
         /// <summary>
@@ -82,32 +79,18 @@ namespace KissU.Surging.CPlatform.Runtime.Client.Address.Resolvers.Implementatio
                 _logger.LogDebug($"准备为服务id：{serviceId}，解析可用地址。");
             }
 
-            _concurrent.TryGetValue(serviceId, out var descriptor);
-            if (descriptor == null)
+            var serviceRouteTask = _serviceRouteProvider.Locate(serviceId);
+            var serviceRoute = serviceRouteTask.IsCompletedSuccessfully ? serviceRouteTask.Result : await serviceRouteTask;
+            if (serviceRoute == null)
             {
-                var descriptors = await _serviceRouteManager.GetRoutesAsync();
-                descriptor = descriptors.FirstOrDefault(i => i.ServiceDescriptor.Id == serviceId);
-                if (descriptor != null)
-                {
-                    _concurrent.GetOrAdd(serviceId, descriptor);
-                    _serviceHeartbeatManager.AddWhitelist(serviceId);
-                }
-                else
-                {
-                    if (descriptor == null)
-                    {
-                        if (_logger.IsEnabled(LogLevel.Warning))
-                        {
-                            _logger.LogWarning($"根据服务id：{serviceId}，找不到相关服务信息。");
-                        }
-
-                        return null;
-                    }
-                }
+                if (_logger.IsEnabled(LogLevel.Warning))
+                    _logger.LogWarning($"根据服务id：{serviceId}，找不到相关服务信息。");
+                return null;
             }
 
-            var address = new List<AddressModel>();
-            foreach (var addressModel in descriptor.Address)
+            _serviceHeartbeatManager.AddWhitelist(serviceId);
+                var address = new List<AddressModel>();
+            foreach (var addressModel in serviceRoute.Address)
             {
                 _healthCheckService.Monitor(addressModel);
                 var task = _healthCheckService.IsHealth(addressModel);
@@ -141,29 +124,11 @@ namespace KissU.Surging.CPlatform.Runtime.Client.Address.Resolvers.Implementatio
 
             var vt = addressSelector.SelectAsync(new AddressSelectContext
             {
-                Descriptor = descriptor.ServiceDescriptor,
+                Descriptor = serviceRoute.ServiceDescriptor,
                 Address = address,
                 Item = item
             });
             return vt.IsCompletedSuccessfully ? vt.Result : await vt;
-        }
-
-        private static string GetCacheKey(ServiceDescriptor descriptor)
-        {
-            return descriptor.Id;
-        }
-
-        private void ServiceRouteManager_Removed(object sender, ServiceRouteEventArgs e)
-        {
-            var key = GetCacheKey(e.Route.ServiceDescriptor);
-            ServiceRoute value;
-            _concurrent.TryRemove(key, out value);
-        }
-
-        private void ServiceRouteManager_Add(object sender, ServiceRouteEventArgs e)
-        {
-            var key = GetCacheKey(e.Route.ServiceDescriptor);
-            _concurrent.GetOrAdd(key, e.Route);
         }
 
         private void LoadAddressSelectors()

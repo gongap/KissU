@@ -29,5 +29,7 @@ namespace KissU.Surging.ProxyGenerator.Interceptors
         /// <returns>IInvocation.</returns>
         IInvocation GetCacheInvocation(object proxy, IDictionary<string, object> parameters, string serviceId,
             Type returnType);
+
+        string[] GetCacheKeyVaule(IDictionary<string, object> parameterValue);
     }
 }

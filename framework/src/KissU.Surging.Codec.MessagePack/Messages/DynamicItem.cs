@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using KissU.Core.Helpers.Utilities;
 using KissU.Surging.Codec.MessagePack.Utilities;
 using MessagePack;
@@ -67,7 +68,7 @@ namespace KissU.Surging.Codec.MessagePack.Messages
 
             if (valueType == UtilityType.JObjectType || valueType == UtilityType.JArrayType)
                 Content = SerializerUtilitys.Serialize(value.ToString());
-            else
+            else if (valueType != typeof(CancellationToken))
                 Content = SerializerUtilitys.Serialize(value);
         }
 

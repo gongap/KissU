@@ -177,9 +177,8 @@ namespace KissU.Surging.CPlatform.Transport.Implementation
                 var content = message.GetContent<RemoteInvokeResultMessage>();
                 if (!string.IsNullOrEmpty(content.ExceptionMessage))
                 {
-                    task.SetException(
-                        new CPlatformCommunicationException(content.ExceptionMessage, content.StatusCode));
                     WirteDiagnosticError(message);
+                    task.SetException(new CPlatformCommunicationException(content.ExceptionMessage, content.StatusCode));
                 }
                 else
                 {

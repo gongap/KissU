@@ -4,7 +4,7 @@ using KissU.Core.Dependency;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace KissU.Services.Stage
+namespace KissU.Stages.Host
 {
     /// <summary>
     /// 启动配置
