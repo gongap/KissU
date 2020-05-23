@@ -12,8 +12,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Abp.Autofac\KissU.Abp.Autofac.csproj" />
     <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.ProxyGenerator\KissU.Surging.ProxyGenerator.csproj" />
     <ProjectReference Include="..\KissU.Modules.BookStore.Application\KissU.Modules.BookStore.Application.csproj" />
+    <ProjectReference Include="..\KissU.Modules.BookStore.EntityFrameworkCore.DbMigrations\KissU.Modules.BookStore.EntityFrameworkCore.DbMigrations.csproj" />
     <ProjectReference Include="..\KissU.Modules.BookStore.Service.Contracts\KissU.Modules.BookStore.Service.Contracts.csproj" />
   </ItemGroup>
 

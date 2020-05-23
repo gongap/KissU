@@ -13,12 +13,12 @@ namespace KissU.Modules.Identity.Service.Implements
     [ModuleName("IdentityRole")]
     public class IdentityRoleService : ProxyServiceBase, IIdentityRoleService
     {
-        protected IIdentityRoleAppService RoleAppService { get; }
-
         public IdentityRoleService(IIdentityRoleAppService roleAppService)
         {
             RoleAppService = roleAppService;
         }
+
+        protected IIdentityRoleAppService RoleAppService { get; }
 
         public virtual async Task<ListResult<IdentityRoleDto>> GetAllListAsync()
         {
@@ -41,6 +41,7 @@ namespace KissU.Modules.Identity.Service.Implements
         {
             return RoleAppService.CreateAsync(input);
         }
+
         public virtual Task<IdentityRoleDto> UpdateAsync(Guid id, IdentityRoleUpdateDto input)
         {
             return RoleAppService.UpdateAsync(id, input);

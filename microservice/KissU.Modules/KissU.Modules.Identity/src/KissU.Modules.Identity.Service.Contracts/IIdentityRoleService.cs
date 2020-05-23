@@ -11,28 +11,23 @@ namespace KissU.Modules.Identity.Service.Contracts
     [ServiceBundle("api/{Service}")]
     public interface IIdentityRoleService : IServiceKey
     {
-        [HttpGet]
+        [HttpGet(true)]
         [ServiceRoute("all")]
         Task<ListResult<IdentityRoleDto>> GetAllListAsync();
 
-
-        [HttpGet]
+        [HttpPost(true)]
         Task<PagedResult<IdentityRoleDto>> GetListAsync(PagedAndSortedResultRequestDto input);
 
-
-        [HttpGet]
+        [HttpGet(true)]
         [ServiceRoute("{id}")]
         Task<IdentityRoleDto> GetAsync(Guid id);
 
-
-        [HttpPost]
+        [HttpPost(true)]
         Task<IdentityRoleDto> CreateAsync(IdentityRoleCreateDto input);
 
-
-        [HttpPut]
+        [HttpPut(true)]
         [ServiceRoute("{id}")]
         Task<IdentityRoleDto> UpdateAsync(Guid id, IdentityRoleUpdateDto input);
-
 
         [HttpDelete(true)]
         [ServiceRoute("{id}")]

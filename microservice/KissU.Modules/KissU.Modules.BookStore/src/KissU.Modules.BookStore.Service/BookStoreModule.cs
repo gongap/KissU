@@ -31,8 +31,8 @@ namespace KissU.Modules.BookStore.Service
         protected override void RegisterBuilder(ContainerBuilderWrapper builder)
         {
             var services = new ServiceCollection();
-            services.AddObjectAccessor<BookStoreModule>();
-            _application = AbpApplicationFactory.Create<BookStoreApplicationModule>(services);
+            services.AddObjectAccessor<AbpBookStoreModule>();
+            _application = AbpApplicationFactory.Create<AbpBookStoreModule>(services);
             builder.ContainerBuilder.Populate(_application.Services);
         }
     }

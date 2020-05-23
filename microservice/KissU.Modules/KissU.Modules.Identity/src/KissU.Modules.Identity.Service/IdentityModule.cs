@@ -1,6 +1,5 @@
 ﻿using System;
 using Autofac.Extensions.DependencyInjection;
-using KissU.Abp.Autofac;
 using KissU.Core.Module;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp;
@@ -30,7 +29,7 @@ namespace KissU.Modules.Identity.Service
         {
             var services = new ServiceCollection();
             _application = AbpApplicationFactory.Create<AbpIdentityModule>(services);
-            builder.ContainerBuilder.Populate(services);
+            builder.ContainerBuilder.Populate(_application.Services);
         }
     }
 }

@@ -9,12 +9,12 @@ namespace KissU.Modules.Identity.Service.Implements
     [ModuleName("Profile")]
     public class ProfileService : ProxyServiceBase, IProfileService
     {
-        protected IProfileAppService ProfileAppService { get; }
-
         public ProfileService(IProfileAppService profileAppService)
         {
             ProfileAppService = profileAppService;
         }
+
+        protected IProfileAppService ProfileAppService { get; }
 
         public virtual Task<ProfileDto> GetAsync()
         {

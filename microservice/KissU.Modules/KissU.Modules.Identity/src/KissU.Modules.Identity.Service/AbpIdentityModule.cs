@@ -18,10 +18,7 @@ namespace KissU.Modules.Identity.Service
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
-            Configure<AbpDbContextOptions>(options =>
-            {
-                options.UseSqlServer();
-            });
+            Configure<AbpDbContextOptions>(options => { options.UseSqlServer(); });
 
             Configure<AbpSettingOptions>(options =>
             {
@@ -29,10 +26,7 @@ namespace KissU.Modules.Identity.Service
             });
 
             context.Services.AddAutoMapperObjectMapper<AbpIdentityModule>();
-            Configure<AbpAutoMapperOptions>(options =>
-            {
-                options.AddProfile<AbpIdentityAutoMapperProfile>(validate: true);
-            });
+            Configure<AbpAutoMapperOptions>(options => { options.AddProfile<AbpIdentityAutoMapperProfile>(true); });
         }
     }
 }

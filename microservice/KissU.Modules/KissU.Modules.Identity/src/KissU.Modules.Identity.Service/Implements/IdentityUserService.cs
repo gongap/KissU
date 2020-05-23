@@ -9,16 +9,15 @@ using Volo.Abp.Identity;
 
 namespace KissU.Modules.Identity.Service.Implements
 {
-
     [ModuleName("IdentityUser")]
     public class IdentityUserService : ProxyServiceBase, IIdentityUserService
     {
-        protected IIdentityUserAppService UserAppService { get; }
-
         public IdentityUserService(IIdentityUserAppService userAppService)
         {
             UserAppService = userAppService;
         }
+
+        protected IIdentityUserAppService UserAppService { get; }
 
         public virtual Task<IdentityUserDto> GetAsync(Guid id)
         {
