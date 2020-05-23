@@ -27,8 +27,8 @@ namespace KissU.Services.Stage
             var services = new ServiceCollection();
             services.AddLogging();
             builder.Populate(services);
-            var container = builder.Build();
-            return container;
+            ServiceLocator.Current = builder.Build();
+            return ServiceLocator.Current;
         }
 
         /// <summary>
@@ -36,7 +36,6 @@ namespace KissU.Services.Stage
         /// </summary>
         public void Configure(IContainer container)
         {
-            ServiceLocator.Current = container;
         }
     }
 }

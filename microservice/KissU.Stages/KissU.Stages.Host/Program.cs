@@ -10,7 +10,7 @@ using KissU.Surging.ServiceHosting;
 using KissU.Surging.ServiceHosting.Internal.Implementation;
 using Microsoft.Extensions.Logging;
 
-namespace KissU.Services.Stage
+namespace KissU.Stages.Host
 {
     /// <summary>
     /// 应用程序
