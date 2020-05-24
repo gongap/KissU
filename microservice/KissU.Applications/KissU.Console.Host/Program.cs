@@ -15,8 +15,11 @@ namespace KissU.Console.Host
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder(args)
-                .ConfigureAppConfiguration(builder => builder.AddCPlatformFile("servicesettings.json", false, true))
-                .ConfigureAppConfiguration(builder => builder.AddCacheFile("cachesettings.json", false, true))
+                .ConfigureHostConfiguration(builder =>
+                {
+                    builder.AddCPlatformFile("servicesettings.json", false, true);
+                    builder.AddCacheFile("cachesettings.json", false, true);
+                })
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddHostedService<AppHostedService>();

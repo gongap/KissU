@@ -37,6 +37,7 @@ namespace KissU.Abp.Autofac
         public IServiceProvider CreateServiceProvider(ContainerBuilder containerBuilder)
         {
             Check.NotNull(containerBuilder, nameof(containerBuilder));
+            containerBuilder.Register(p => new CPlatformContainer(ServiceLocator.Current));
             var container = containerBuilder.Build();
             ServiceLocator.Current = container;
             return new AutofacServiceProvider(container);

@@ -1,7 +1,10 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
+using Autofac;
 using KissU.Abp.Autofac;
 using KissU.Core.Dependency;
+using KissU.Surging.Caching;
+using KissU.Surging.CPlatform;
 using KissU.Surging.ProxyGenerator;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -16,6 +19,8 @@ namespace KissU.Console.Host
             using (var application = AbpApplicationFactory.Create<AppModule>(options =>
             {
                 options.UseAutofac();
+                var builder = options.Services.GetObject<ContainerBuilder>();
+                builder.AddMicroService(service => { service.AddClient().AddCache(); });
             }))
             {
                 application.Initialize();
@@ -24,7 +29,7 @@ namespace KissU.Console.Host
                 //testService.TestRabbitMq(ServiceLocator.GetService<IServiceProxyFactory>());
                 //testService.TestForRoutePath(ServiceLocator.GetService<IServiceProxyProvider>());
                 //testService.StartRequest(300000);
-                System.Console.ReadLine();
+                application.Shutdown();
             }
 
             return Task.CompletedTask;

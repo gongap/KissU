@@ -10,7 +10,6 @@ using KissU.Modules.SampleA.Service.Contracts.Events;
 using KissU.Surging.CPlatform.Diagnostics;
 using KissU.Surging.CPlatform.Transport.Implementation;
 using KissU.Surging.ProxyGenerator;
-using Newtonsoft.Json;
 
 namespace KissU.Console.Host
 {
@@ -36,7 +35,6 @@ namespace KissU.Console.Host
                     await Test(userProxy, connectionCount);
             });
         }
-
         public async Task Test(IAccountService accountProxy, int connectionCount)
         {
             var a = await accountProxy.GetDictionary();
@@ -69,6 +67,15 @@ namespace KissU.Console.Host
                 RpcContext.GetContext().SetAttachment("xid", 124);
 
                 var userProxy = serviceProxyFactory.CreateProxy<IAccountService>("Account");
+                var asyncProxy = serviceProxyFactory.CreateProxy<IAsyncService>();
+                var result = await asyncProxy.AddAsync(1, 2);
+                var user = userProxy.GetUser(new UserModel
+                {
+                    UserId = 1,
+                    Name = "fanly",
+                    Age = 120,
+                    Sex = 0
+                }).GetAwaiter().GetResult();
                 var e = userProxy.SetSex(Sex.Woman).GetAwaiter().GetResult();
                 var v = userProxy.GetUserId("gongap").GetAwaiter().GetResult();
                 var fa = userProxy.GetUserName(1).GetAwaiter().GetResult();
@@ -129,20 +136,57 @@ namespace KissU.Console.Host
         public void TestForRoutePath(IServiceProxyProvider serviceProxyProvider)
         {
             var model = new Dictionary<string, object>();
-            model.Add("user", JsonConvert.SerializeObject(new
+            model.Add("user", new UserModel
             {
                 Name = "gongap",
                 Age = 18,
                 UserId = 1,
-                Sex = "Man"
-            }));
+                Sex = Sex.Woman
+            });
             var path = "api/account/getuser";
             var serviceKey = "User";
 
-            var userProxy = serviceProxyProvider.Invoke<object>(model, path, serviceKey);
+            var userProxy = serviceProxyProvider.Invoke<UserModel>(model, path, serviceKey);
             var s = userProxy.Result;
             System.Console.WriteLine($"{s}");
             System.Console.WriteLine("Press any key to exit...");
+            System.Console.ReadLine();
+        }
+
+        public void TestThriftInvoker(IServiceProxyFactory serviceProxyFactory)
+        {
+            var proxy = serviceProxyFactory.CreateProxy<IAsyncService>();
+            var proxy1 = serviceProxyFactory.CreateProxy<IThirdAsyncService>();
+            Task.Run(async () =>
+            {
+                do
+                {
+                    var result1 = await proxy.SayHelloAsync();
+                    var result2 = await proxy1.SayHelloAsync();
+                    System.Console.WriteLine("正在循环 1w次调用 GetUser.....");
+
+                    var watch = Stopwatch.StartNew();
+
+                    for (var i = 0; i < 10000; i++)
+                    {
+                        try
+                        {
+                            var result = await proxy.SayHelloAsync();
+                        }
+                        catch (Exception ex)
+                        {
+                            throw ex;
+                        }
+                    }
+                    watch.Stop();
+                    System.Console.WriteLine($"1w次调用结束，执行时间：{watch.ElapsedMilliseconds}ms");
+                    System.Console.WriteLine("Press any key to continue, q to exit the loop...");
+                    var key = System.Console.ReadLine();
+                    if (key.ToLower() == "q")
+                        break;
+                } while (true);
+            }).Wait();
+
             System.Console.ReadLine();
         }
     }

@@ -21,16 +21,14 @@ namespace KissU.Web.Host
 
         internal static IHostBuilder CreateHostBuilder(string[] args) =>
             Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder(args)
-                .ConfigureAppConfiguration(builder => builder.AddCPlatformFile("servicesettings.json", false, true))
-                .ConfigureAppConfiguration(builder => builder.AddCacheFile("cachesettings.json", false, true))
+                .ConfigureHostConfiguration(builder =>
+                {
+                    builder.AddCPlatformFile("servicesettings.json", false, true);
+                    builder.AddCacheFile("cachesettings.json", false, true);
+                })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                })
-                .ConfigureContainer<ContainerBuilder>(builder =>
-                {
-                    builder.AddMicroService(service => { service.AddClient().AddCache(); });
-                    builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
                 })
                 .UseAutofac();
     }

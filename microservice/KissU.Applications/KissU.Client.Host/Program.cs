@@ -23,10 +23,9 @@ namespace KissU.Client.Host
                 {
                     builder.AddMicroService(option =>
                     {
-                        option.AddClient()
-                            .AddCache();
-                        builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
+                        option.AddClient().AddCache();
                     });
+                    builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
                 })
                 .ConfigureLogging(logger =>
                 {
