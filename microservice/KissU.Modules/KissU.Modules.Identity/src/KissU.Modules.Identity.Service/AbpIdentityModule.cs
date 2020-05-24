@@ -26,7 +26,10 @@ namespace KissU.Modules.Identity.Service
             });
 
             context.Services.AddAutoMapperObjectMapper<AbpIdentityModule>();
-            Configure<AbpAutoMapperOptions>(options => { options.AddProfile<AbpIdentityAutoMapperProfile>(true); });
+            Configure<AbpAutoMapperOptions>(options =>
+            {
+                options.AddProfile<AbpIdentityAutoMapperProfile>(true);
+            });
         }
     }
 }

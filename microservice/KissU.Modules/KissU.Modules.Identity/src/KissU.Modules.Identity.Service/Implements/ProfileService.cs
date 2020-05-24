@@ -9,26 +9,26 @@ namespace KissU.Modules.Identity.Service.Implements
     [ModuleName("Profile")]
     public class ProfileService : ProxyServiceBase, IProfileService
     {
-        public ProfileService(IProfileAppService profileAppService)
-        {
-            ProfileAppService = profileAppService;
-        }
+        private readonly IProfileAppService _appService;
 
-        protected IProfileAppService ProfileAppService { get; }
+        public ProfileService(IProfileAppService appService)
+        {
+            _appService = appService;
+        }
 
         public virtual Task<ProfileDto> GetAsync()
         {
-            return ProfileAppService.GetAsync();
+            return _appService.GetAsync();
         }
 
         public virtual Task<ProfileDto> UpdateAsync(UpdateProfileDto input)
         {
-            return ProfileAppService.UpdateAsync(input);
+            return _appService.UpdateAsync(input);
         }
 
         public virtual Task ChangePasswordAsync(ChangePasswordInput input)
         {
-            return ProfileAppService.ChangePasswordAsync(input);
+            return _appService.ChangePasswordAsync(input);
         }
     }
 }

@@ -11,21 +11,21 @@ namespace KissU.Modules.Identity.Service.Implements
     [ModuleName("IdentityUserLookup")]
     public class IdentityUserLookupService : ProxyServiceBase, IIdentityUserLookupService
     {
+        private readonly IIdentityUserLookupAppService _lookupAppService;
+
         public IdentityUserLookupService(IIdentityUserLookupAppService lookupAppService)
         {
-            LookupAppService = lookupAppService;
+            _lookupAppService = lookupAppService;
         }
-
-        protected IIdentityUserLookupAppService LookupAppService { get; }
 
         public virtual Task<UserData> FindByIdAsync(Guid id)
         {
-            return LookupAppService.FindByIdAsync(id);
+            return _lookupAppService.FindByIdAsync(id);
         }
 
         public virtual Task<UserData> FindByUserNameAsync(string userName)
         {
-            return LookupAppService.FindByUserNameAsync(userName);
+            return _lookupAppService.FindByUserNameAsync(userName);
         }
     }
 }

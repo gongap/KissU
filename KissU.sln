@@ -87,21 +87,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "KissU.Services", "KissU.Ser
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "KissU.Applications", "KissU.Applications", "{C1026A33-6D55-42E1-91C5-1B2AEC36CA56}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "KissU.Moduls", "KissU.Moduls", "{EBA864A3-39C4-4279-A823-35BA7EF2469A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "KissU.Modules", "KissU.Modules", "{EBA864A3-39C4-4279-A823-35BA7EF2469A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.BookStore.Domain", "microservice\KissU.Modules\KissU.Modules.BookStore\src\KissU.Modules.BookStore.Domain\KissU.Modules.BookStore.Domain.csproj", "{65AC1CC0-6973-4A72-AFE2-9B3016F490D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.QuickStart.Domain", "microservice\KissU.Modules\KissU.Modules.QuickStart\src\KissU.Modules.QuickStart.Domain\KissU.Modules.QuickStart.Domain.csproj", "{65AC1CC0-6973-4A72-AFE2-9B3016F490D9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.BookStore.Application.Contracts", "microservice\KissU.Modules\KissU.Modules.BookStore\src\KissU.Modules.BookStore.Application.Contracts\KissU.Modules.BookStore.Application.Contracts.csproj", "{11737128-2080-4606-A376-5817E8993F23}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.QuickStart.Application.Contracts", "microservice\KissU.Modules\KissU.Modules.QuickStart\src\KissU.Modules.QuickStart.Application.Contracts\KissU.Modules.QuickStart.Application.Contracts.csproj", "{11737128-2080-4606-A376-5817E8993F23}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.BookStore.Application", "microservice\KissU.Modules\KissU.Modules.BookStore\src\KissU.Modules.BookStore.Application\KissU.Modules.BookStore.Application.csproj", "{3256C859-E509-4EB7-BC2D-97174509F775}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.QuickStart.Application", "microservice\KissU.Modules\KissU.Modules.QuickStart\src\KissU.Modules.QuickStart.Application\KissU.Modules.QuickStart.Application.csproj", "{3256C859-E509-4EB7-BC2D-97174509F775}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.BookStore.Domain.Shared", "microservice\KissU.Modules\KissU.Modules.BookStore\src\KissU.Modules.BookStore.Domain.Shared\KissU.Modules.BookStore.Domain.Shared.csproj", "{15E0BE89-99B4-4DC5-9129-7F3B4A3F10DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.QuickStart.Domain.Shared", "microservice\KissU.Modules\KissU.Modules.QuickStart\src\KissU.Modules.QuickStart.Domain.Shared\KissU.Modules.QuickStart.Domain.Shared.csproj", "{15E0BE89-99B4-4DC5-9129-7F3B4A3F10DC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.BookStore.EntityFrameworkCore", "microservice\KissU.Modules\KissU.Modules.BookStore\src\KissU.Modules.BookStore.EntityFrameworkCore\KissU.Modules.BookStore.EntityFrameworkCore.csproj", "{D7864EA2-4E32-4858-B77A-DA63DEF9B059}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.QuickStart.EntityFrameworkCore", "microservice\KissU.Modules\KissU.Modules.QuickStart\src\KissU.Modules.QuickStart.EntityFrameworkCore\KissU.Modules.QuickStart.EntityFrameworkCore.csproj", "{D7864EA2-4E32-4858-B77A-DA63DEF9B059}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1D34F083-4723-4647-8B3D-AA9727CA29CB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BookStore", "BookStore", "{BF84573E-E924-4BB4-A11A-FD6460A6BE9B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "QuickStart", "QuickStart", "{BF84573E-E924-4BB4-A11A-FD6460A6BE9B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample", "Sample", "{B8356EAF-814D-42E0-8749-E79FBFDB2325}"
 EndProject
@@ -119,27 +119,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.SampleB.Servi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.SampleB.Service.Contracts", "microservice\KissU.Modules\KissU.Modules.Sample\src\KissU.Modules.SampleB.Service.Contracts\KissU.Modules.SampleB.Service.Contracts.csproj", "{AC3A4B16-E84B-4F7F-9F89-EE6648F329C8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.BookStore.Application.Tests", "microservice\KissU.Modules\KissU.Modules.BookStore\test\KissU.Modules.BookStore.Application.Tests\KissU.Modules.BookStore.Application.Tests.csproj", "{875F3E66-96D3-4AC4-B471-FB3F21772517}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.QuickStart.Application.Tests", "microservice\KissU.Modules\KissU.Modules.QuickStart\test\KissU.Modules.QuickStart.Application.Tests\KissU.Modules.QuickStart.Application.Tests.csproj", "{875F3E66-96D3-4AC4-B471-FB3F21772517}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.BookStore.Domain.Tests", "microservice\KissU.Modules\KissU.Modules.BookStore\test\KissU.Modules.BookStore.Domain.Tests\KissU.Modules.BookStore.Domain.Tests.csproj", "{E6030D3C-68D8-45E2-B032-65DD93EC56DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.QuickStart.Domain.Tests", "microservice\KissU.Modules\KissU.Modules.QuickStart\test\KissU.Modules.QuickStart.Domain.Tests\KissU.Modules.QuickStart.Domain.Tests.csproj", "{E6030D3C-68D8-45E2-B032-65DD93EC56DF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.BookStore.EntityFrameworkCore.Tests", "microservice\KissU.Modules\KissU.Modules.BookStore\test\KissU.Modules.BookStore.EntityFrameworkCore.Tests\KissU.Modules.BookStore.EntityFrameworkCore.Tests.csproj", "{A1F502F2-E373-433D-B1DC-7B66D2DD4201}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.QuickStart.EntityFrameworkCore.Tests", "microservice\KissU.Modules\KissU.Modules.QuickStart\test\KissU.Modules.QuickStart.EntityFrameworkCore.Tests\KissU.Modules.QuickStart.EntityFrameworkCore.Tests.csproj", "{A1F502F2-E373-433D-B1DC-7B66D2DD4201}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.BookStore.TestBase", "microservice\KissU.Modules\KissU.Modules.BookStore\test\KissU.Modules.BookStore.TestBase\KissU.Modules.BookStore.TestBase.csproj", "{56FDA402-3B5A-4E0E-A295-2C6864A98A7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.QuickStart.TestBase", "microservice\KissU.Modules\KissU.Modules.QuickStart\test\KissU.Modules.QuickStart.TestBase\KissU.Modules.QuickStart.TestBase.csproj", "{56FDA402-3B5A-4E0E-A295-2C6864A98A7E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.BookStore.DbMigrator", "microservice\KissU.Modules\KissU.Modules.BookStore\src\KissU.Modules.BookStore.DbMigrator\KissU.Modules.BookStore.DbMigrator.csproj", "{14A955D2-DCD7-4A42-BC0C-0AF3ACE08C78}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.QuickStart.DbMigrator", "microservice\KissU.Modules\KissU.Modules.QuickStart\src\KissU.Modules.QuickStart.DbMigrator\KissU.Modules.QuickStart.DbMigrator.csproj", "{14A955D2-DCD7-4A42-BC0C-0AF3ACE08C78}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.BookStore.EntityFrameworkCore.DbMigrations", "microservice\KissU.Modules\KissU.Modules.BookStore\src\KissU.Modules.BookStore.EntityFrameworkCore.DbMigrations\KissU.Modules.BookStore.EntityFrameworkCore.DbMigrations.csproj", "{772BCAA7-DD5A-485D-9D5F-BD7E34EC6E27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.QuickStart.EntityFrameworkCore.DbMigrations", "microservice\KissU.Modules\KissU.Modules.QuickStart\src\KissU.Modules.QuickStart.EntityFrameworkCore.DbMigrations\KissU.Modules.QuickStart.EntityFrameworkCore.DbMigrations.csproj", "{772BCAA7-DD5A-485D-9D5F-BD7E34EC6E27}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{CD47BD54-73E8-429E-90D4-D130E0D6F12D}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Users", "Users", "{D25E2AA4-18F8-45BE-BA39-C7014B0FD884}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{644FBB28-44AD-4FE2-9111-B0DD63B845E1}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{7C773681-028A-4555-8126-D6EBE9776E1E}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PermissionManagement", "PermissionManagement", "{69EB30B4-C687-4624-AB71-19FDF63C4AD6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityServer", "IdentityServer", "{9E2C4CE3-CD5E-4171-9E16-0FE35DBAABE0}"
 EndProject
@@ -147,13 +139,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3FED7E08-D28
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{1EE85D9F-3EBC-455F-BD5C-20D11BBC31B6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.BookStore.Service", "microservice\KissU.Modules\KissU.Modules.BookStore\src\KissU.Modules.BookStore.Service\KissU.Modules.BookStore.Service.csproj", "{A809C505-5C77-40AF-9255-7125B02B6C9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.QuickStart.Service", "microservice\KissU.Modules\KissU.Modules.QuickStart\src\KissU.Modules.QuickStart.Service\KissU.Modules.QuickStart.Service.csproj", "{A809C505-5C77-40AF-9255-7125B02B6C9C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.BookStore.Service.Contracts", "microservice\KissU.Modules\KissU.Modules.BookStore\src\KissU.Modules.BookStore.Service.Contracts\KissU.Modules.BookStore.Service.Contracts.csproj", "{71816105-E808-487C-BCC3-BDA326893286}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0FF7BEE8-768A-40A8-A7AC-48B72C8476D3}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{E96963BE-C9DD-4074-B640-EF73811139C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.QuickStart.Service.Contracts", "microservice\KissU.Modules\KissU.Modules.QuickStart\src\KissU.Modules.QuickStart.Service.Contracts\KissU.Modules.QuickStart.Service.Contracts.csproj", "{71816105-E808-487C-BCC3-BDA326893286}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{12491F0A-1011-48C0-B40D-72FF82CE3F7D}"
 EndProject
@@ -530,17 +518,11 @@ Global
 		{14A955D2-DCD7-4A42-BC0C-0AF3ACE08C78} = {1D34F083-4723-4647-8B3D-AA9727CA29CB}
 		{772BCAA7-DD5A-485D-9D5F-BD7E34EC6E27} = {1D34F083-4723-4647-8B3D-AA9727CA29CB}
 		{CD47BD54-73E8-429E-90D4-D130E0D6F12D} = {EBA864A3-39C4-4279-A823-35BA7EF2469A}
-		{D25E2AA4-18F8-45BE-BA39-C7014B0FD884} = {EBA864A3-39C4-4279-A823-35BA7EF2469A}
-		{644FBB28-44AD-4FE2-9111-B0DD63B845E1} = {D25E2AA4-18F8-45BE-BA39-C7014B0FD884}
-		{7C773681-028A-4555-8126-D6EBE9776E1E} = {D25E2AA4-18F8-45BE-BA39-C7014B0FD884}
-		{69EB30B4-C687-4624-AB71-19FDF63C4AD6} = {EBA864A3-39C4-4279-A823-35BA7EF2469A}
 		{9E2C4CE3-CD5E-4171-9E16-0FE35DBAABE0} = {EBA864A3-39C4-4279-A823-35BA7EF2469A}
 		{3FED7E08-D281-419B-964C-B7107D9378CE} = {9E2C4CE3-CD5E-4171-9E16-0FE35DBAABE0}
 		{1EE85D9F-3EBC-455F-BD5C-20D11BBC31B6} = {9E2C4CE3-CD5E-4171-9E16-0FE35DBAABE0}
 		{A809C505-5C77-40AF-9255-7125B02B6C9C} = {1D34F083-4723-4647-8B3D-AA9727CA29CB}
 		{71816105-E808-487C-BCC3-BDA326893286} = {1D34F083-4723-4647-8B3D-AA9727CA29CB}
-		{0FF7BEE8-768A-40A8-A7AC-48B72C8476D3} = {69EB30B4-C687-4624-AB71-19FDF63C4AD6}
-		{E96963BE-C9DD-4074-B640-EF73811139C0} = {69EB30B4-C687-4624-AB71-19FDF63C4AD6}
 		{12491F0A-1011-48C0-B40D-72FF82CE3F7D} = {CD47BD54-73E8-429E-90D4-D130E0D6F12D}
 		{CB426092-AD3A-475A-B724-B1BC0AB279F4} = {CD47BD54-73E8-429E-90D4-D130E0D6F12D}
 		{9192BD07-8901-413C-AC8A-FB8E8AD28488} = {87BCAE08-4EF0-4DB3-92F4-7FFEEDAFBB57}

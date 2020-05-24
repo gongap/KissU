@@ -13,43 +13,43 @@ namespace KissU.Modules.Identity.Service.Implements
     [ModuleName("IdentityRole")]
     public class IdentityRoleService : ProxyServiceBase, IIdentityRoleService
     {
-        public IdentityRoleService(IIdentityRoleAppService roleAppService)
-        {
-            RoleAppService = roleAppService;
-        }
+        private readonly IIdentityRoleAppService _appService;
 
-        protected IIdentityRoleAppService RoleAppService { get; }
+        public IdentityRoleService(IIdentityRoleAppService appService)
+        {
+            _appService = appService;
+        }
 
         public virtual async Task<ListResult<IdentityRoleDto>> GetAllListAsync()
         {
-            var result = await RoleAppService.GetAllListAsync();
+            var result = await _appService.GetAllListAsync();
             return result.MapTo<ListResult<IdentityRoleDto>>();
         }
 
         public virtual async Task<PagedResult<IdentityRoleDto>> GetListAsync(PagedAndSortedResultRequestDto input)
         {
-            var result = await RoleAppService.GetListAsync(input);
+            var result = await _appService.GetListAsync(input);
             return result.MapTo<PagedResult<IdentityRoleDto>>();
         }
 
         public virtual Task<IdentityRoleDto> GetAsync(Guid id)
         {
-            return RoleAppService.GetAsync(id);
+            return _appService.GetAsync(id);
         }
 
         public virtual Task<IdentityRoleDto> CreateAsync(IdentityRoleCreateDto input)
         {
-            return RoleAppService.CreateAsync(input);
+            return _appService.CreateAsync(input);
         }
 
         public virtual Task<IdentityRoleDto> UpdateAsync(Guid id, IdentityRoleUpdateDto input)
         {
-            return RoleAppService.UpdateAsync(id, input);
+            return _appService.UpdateAsync(id, input);
         }
 
         public virtual Task DeleteAsync(Guid id)
         {
-            return RoleAppService.DeleteAsync(id);
+            return _appService.DeleteAsync(id);
         }
     }
 }
