@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.Modularity;
 
 namespace KissU.Modules.QuickStart.EntityFrameworkCore
@@ -19,7 +20,12 @@ namespace KissU.Modules.QuickStart.EntityFrameworkCore
             {
                 /* Remove "includeAllEntities: true" to create
                  * default repositories only for aggregate roots */
-                options.AddDefaultRepositories(includeAllEntities: true);
+                options.AddDefaultRepositories<QuickStartDbContext>(includeAllEntities: true);
+            });
+
+            Configure<AbpDbContextOptions>(options =>
+            {
+                options.UseSqlServer();
             });
         }
     }

@@ -18,11 +18,6 @@ namespace KissU.Modules.QuickStart.Service
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
-            Configure<AbpDbContextOptions>(options =>
-            {
-                options.UseSqlServer();
-            }); 
-            
             Configure<AbpSettingOptions>(options =>
             {
                 options.DefinitionProviders.Add<QuickStartSettingDefinitionProvider>();

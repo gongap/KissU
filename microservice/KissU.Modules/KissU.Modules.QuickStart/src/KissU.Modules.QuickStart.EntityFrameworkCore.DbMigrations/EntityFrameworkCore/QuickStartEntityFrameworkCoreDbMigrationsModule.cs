@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System;
+using KissU.Modules.QuickStart.Books;
+using Microsoft.Extensions.DependencyInjection;
+using Volo.Abp.Domain.Repositories;
 using Volo.Abp.Modularity;
 
 namespace KissU.Modules.QuickStart.EntityFrameworkCore

@@ -188,6 +188,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.Thrift", "fra
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.System", "framework\src\KissU.Surging.System\KissU.Surging.System.csproj", "{7A165785-8674-4083-BBBB-32DEAF6C0AAA}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.QuickStart.Service.Host", "microservice\KissU.Services\KissU.QuickStart.Service.Host\KissU.QuickStart.Service.Host.csproj", "{A7959F41-C334-4C6E-93C8-C73924FEA2AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -450,6 +452,10 @@ Global
 		{7A165785-8674-4083-BBBB-32DEAF6C0AAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A165785-8674-4083-BBBB-32DEAF6C0AAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A165785-8674-4083-BBBB-32DEAF6C0AAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7959F41-C334-4C6E-93C8-C73924FEA2AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7959F41-C334-4C6E-93C8-C73924FEA2AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7959F41-C334-4C6E-93C8-C73924FEA2AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7959F41-C334-4C6E-93C8-C73924FEA2AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -539,6 +545,7 @@ Global
 		{39578126-E016-470D-A0A1-31111C11C082} = {C1026A33-6D55-42E1-91C5-1B2AEC36CA56}
 		{059CBF56-A1E8-43F7-9E2C-47FB9E483E98} = {85F3412F-E9B8-44DD-BDCB-2857986ADC68}
 		{7A165785-8674-4083-BBBB-32DEAF6C0AAA} = {85F3412F-E9B8-44DD-BDCB-2857986ADC68}
+		{A7959F41-C334-4C6E-93C8-C73924FEA2AD} = {B4367C3C-5645-40C3-953C-466D82432072}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}

@@ -12,21 +12,21 @@ namespace KissU.Modules.QuickStart.Service.Implements
     [ModuleName("Book")]
     public class BookService : ProxyServiceBase, IBookService
     {
-        private readonly IBookService _appService;
+        private readonly IBookAppService _appService;
 
         /// <summary>
         /// 初始化
         /// </summary>
         /// <param name="appService">应用服务</param>
         /// <exception cref="ArgumentNullException">appService</exception>
-        public BookService(IBookService appService)
+        public BookService(IBookAppService appService)
         {
             _appService = appService ?? throw new ArgumentNullException(nameof(appService));
         }
 
-        public Task<BookDto> GetAsync(Guid id)
+        public Task<BookDto> GetAsync(string id)
         {
-            return _appService.GetAsync(id);
+            return _appService.GetAsync(id.ToGuid());
         }
 
         public async Task<PagedResult<BookDto>> GetListAsync(PagedAndSortedResultRequestDto input)
@@ -45,9 +45,9 @@ namespace KissU.Modules.QuickStart.Service.Implements
             return _appService.UpdateAsync(id, input);
         }
 
-        public virtual Task DeleteAsync(Guid id)
+        public virtual Task DeleteAsync(string id)
         {
-            return _appService.DeleteAsync(id);
+            return _appService.DeleteAsync(id.ToGuid());
         }
     }
 }

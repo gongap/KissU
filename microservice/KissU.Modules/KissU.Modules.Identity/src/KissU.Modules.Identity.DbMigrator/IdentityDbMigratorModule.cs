@@ -10,6 +10,5 @@ namespace KissU.Modules.Identity.DbMigrator
     )]
     public class IdentityDbMigratorModule : AbpModule
     {
-
     }
 }

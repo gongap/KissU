@@ -27,7 +27,6 @@ namespace KissU.Modules.QuickStart.EntityFrameworkCore
                 b.ConfigureByConvention(); //auto configure for the base class props
                 b.Property(x => x.Name).IsRequired().HasMaxLength(128);
             });
-
         }
     }
 }

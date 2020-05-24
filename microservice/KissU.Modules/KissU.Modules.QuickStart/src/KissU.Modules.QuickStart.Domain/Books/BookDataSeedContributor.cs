@@ -14,10 +14,10 @@ namespace KissU.Modules.QuickStart.Books
 
         public BookDataSeedContributor(
             IRepository<Book, Guid> bookRepository,
-            IAsyncQueryableExecuter queryableExecuter)
+            IAsyncQueryableExecuter asyncQueryableExecuter)
         {
             _bookRepository = bookRepository;
-            _queryableExecuter = queryableExecuter;
+            _queryableExecuter = asyncQueryableExecuter;
         }
 
         public async Task SeedAsync(DataSeedContext context)

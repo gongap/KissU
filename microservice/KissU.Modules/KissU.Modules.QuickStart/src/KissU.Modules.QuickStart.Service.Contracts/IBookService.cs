@@ -13,7 +13,7 @@ namespace KissU.Modules.QuickStart.Service
     {
         [HttpGet(true)]
         [ServiceRoute("{id}")]
-        Task<BookDto> GetAsync(Guid id);
+        Task<BookDto> GetAsync(string id);
 
         [HttpPost(true)]
         Task<PagedResult<BookDto>> GetListAsync(PagedAndSortedResultRequestDto input);
@@ -27,6 +27,6 @@ namespace KissU.Modules.QuickStart.Service
 
         [HttpDelete(true)]
         [ServiceRoute("{id}")]
-        Task DeleteAsync(Guid id);
+        Task DeleteAsync(string id);
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using KissU.Modules.QuickStart.Books;
+using Microsoft.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
 
 namespace KissU.Modules.QuickStart.EntityFrameworkCore

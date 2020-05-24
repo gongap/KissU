@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "KissU.QuickStart.Service.Host": {
+      "commandName": "Project",
+      "nativeDebugging": false
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

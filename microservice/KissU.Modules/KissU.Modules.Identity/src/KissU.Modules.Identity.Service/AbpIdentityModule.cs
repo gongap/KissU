@@ -18,8 +18,6 @@ namespace KissU.Modules.Identity.Service
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
-            Configure<AbpDbContextOptions>(options => { options.UseSqlServer(); });
-
             Configure<AbpSettingOptions>(options =>
             {
                 options.DefinitionProviders.Add<AbpIdentitySettingDefinitionProvider>();
