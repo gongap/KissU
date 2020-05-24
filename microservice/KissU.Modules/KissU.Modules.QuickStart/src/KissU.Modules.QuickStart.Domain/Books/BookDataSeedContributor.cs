@@ -4,6 +4,7 @@ using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Repositories;
 using Volo.Abp.Linq;
+using Volo.Abp.Uow;
 
 namespace KissU.Modules.QuickStart.Books
 {
@@ -20,6 +21,7 @@ namespace KissU.Modules.QuickStart.Books
             _queryableExecuter = asyncQueryableExecuter;
         }
 
+        [UnitOfWork]
         public async Task SeedAsync(DataSeedContext context)
         {
             if (await _queryableExecuter.CountAsync(_bookRepository) > 0)

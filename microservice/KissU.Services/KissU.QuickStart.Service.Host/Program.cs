@@ -8,6 +8,7 @@ using KissU.Surging.CPlatform.Configurations;
 using KissU.Surging.ProxyGenerator;
 using KissU.Surging.ServiceHosting;
 using KissU.Surging.ServiceHosting.Internal.Implementation;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
 namespace KissU.QuickStart.Service.Host

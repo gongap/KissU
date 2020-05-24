@@ -150,6 +150,7 @@
   },
   "ConnectionStrings": {
     "IdentityServerConnection": "Server=.;Database=KissU.IdentityServer;uid=sa;pwd=saP@ss123;MultipleActiveResultSets=true",
-    "GreatWallConnection": "Server=.;Database=KissU.GreatWall;uid=sa;pwd=saP@ss123;MultipleActiveResultSets=true"
+    "GreatWallConnection": "Server=.;Database=KissU.GreatWall;uid=sa;pwd=saP@ss123;MultipleActiveResultSets=true",
+    "QuickStart": "Server=.;Database=QuickStart;uid=sa;pwd=saP@ss123;MultipleActiveResultSets=true"
   }
 }

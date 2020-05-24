@@ -9,10 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Books\BookDataSeedContributor.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Volo.Abp.Ddd.Domain" Version="2.8.0" />
   </ItemGroup>
 
