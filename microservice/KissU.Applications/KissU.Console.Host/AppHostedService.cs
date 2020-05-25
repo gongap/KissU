@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Autofac;
 using KissU.Abp.Autofac;
+using KissU.Abp.Autofac.Extensions.DependencyInjection;
 using KissU.Core.Dependency;
 using KissU.Surging.Caching;
 using KissU.Surging.CPlatform;
@@ -19,8 +20,8 @@ namespace KissU.Console.Host
             using (var application = AbpApplicationFactory.Create<AppModule>(options =>
             {
                 options.UseAutofac();
-                var builder = options.Services.GetObject<ContainerBuilder>();
-                builder.AddMicroService(service => { service.AddClient().AddCache(); });
+                var containerBuilder = options.Services.GetContainerBuilder();
+                containerBuilder.AddMicroService(service => { service.AddClient().AddCache(); });
             }))
             {
                 application.Initialize();

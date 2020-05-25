@@ -13,7 +13,6 @@ namespace KissU.Modules.QuickStart.Books
         public BookAppService(IRepository<Book, Guid> repository)
             : base(repository)
         {
-
         }
     }
 }

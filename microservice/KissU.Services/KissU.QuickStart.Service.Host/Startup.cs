@@ -27,8 +27,7 @@ namespace KissU.QuickStart.Service.Host
             var services = new ServiceCollection();
             services.AddLogging();
             builder.Populate(services);
-            ServiceLocator.Current = builder.Build();
-            return ServiceLocator.Current;
+            return builder.Build();
         }
 
         /// <summary>
@@ -36,6 +35,7 @@ namespace KissU.QuickStart.Service.Host
         /// </summary>
         public void Configure(IContainer container)
         {
+            ServiceLocator.Current = container;
         }
     }
 }

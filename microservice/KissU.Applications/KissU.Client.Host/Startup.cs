@@ -26,9 +26,7 @@ namespace KissU.Client.Host
             var services = new ServiceCollection();
             services.AddLogging();
             builder.Populate(services);
-            _builder = builder;
-            ServiceLocator.Current = builder.Build();
-            return ServiceLocator.Current;
+            return builder.Build();
         }
 
         /// <summary>
@@ -36,6 +34,7 @@ namespace KissU.Client.Host
         /// </summary>
         public void Configure(IContainer container)
         {
+            ServiceLocator.Current = container;
         }
     }
 }

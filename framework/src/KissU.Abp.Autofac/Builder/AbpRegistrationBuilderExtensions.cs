@@ -31,7 +31,7 @@ namespace KissU.Abp.Autofac.Builder
                 return registrationBuilder;
             }
 
-            registrationBuilder = registrationBuilder.EnablePropertyInjection(moduleContainer, implementationType);
+            registrationBuilder = registrationBuilder.EnablePropertyInjection<TLimit, TActivatorData, TRegistrationStyle>(moduleContainer, implementationType);
             registrationBuilder = registrationBuilder.InvokeRegistrationActions(registrationActionList, serviceType, implementationType);
 
             return registrationBuilder;

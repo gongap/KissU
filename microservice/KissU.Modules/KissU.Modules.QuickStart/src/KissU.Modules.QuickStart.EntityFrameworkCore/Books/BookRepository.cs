@@ -7,9 +7,10 @@ namespace KissU.Modules.QuickStart.Books
 {
     public class BookRepository : EfCoreRepository<QuickStartDbContext, Book, Guid>, IBookRepository
     {
-        public BookRepository(IDbContextProvider<QuickStartDbContext> dbContextProvider)
+        public BookRepository(IDbContextProvider<QuickStartDbContext> dbContextProvider, IServiceProvider serviceProvider)
             : base(dbContextProvider)
         {
+            ServiceProvider = serviceProvider;
         }
     }
 }

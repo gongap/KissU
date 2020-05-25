@@ -12,6 +12,7 @@ namespace KissU.Modules.QuickStart.Books
     {
         private readonly IRepository<Book, Guid> _bookRepository;
         private readonly IAsyncQueryableExecuter _queryableExecuter;
+        public IServiceProvider ServiceProvider { get; set; }
 
         public BookDataSeedContributor(
             IRepository<Book, Guid> bookRepository,

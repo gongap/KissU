@@ -9,6 +9,7 @@ namespace KissU.Abp.Autofac.Extensions.Hosting
         public static IHostBuilder UseAutofac(this IHostBuilder hostBuilder)
         {
             var containerBuilder = new ContainerBuilder();
+
             return hostBuilder.ConfigureServices((_, services) =>
                 {
                     services.AddObjectAccessor(containerBuilder);

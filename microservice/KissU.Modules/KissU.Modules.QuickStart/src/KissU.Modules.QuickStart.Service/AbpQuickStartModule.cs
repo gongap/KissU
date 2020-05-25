@@ -3,7 +3,6 @@ using KissU.Modules.QuickStart.EntityFrameworkCore;
 using KissU.Modules.QuickStart.Settings;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.AutoMapper;
-using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.Modularity;
 using Volo.Abp.Settings;
 

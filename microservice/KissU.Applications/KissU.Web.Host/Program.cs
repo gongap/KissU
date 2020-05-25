@@ -1,14 +1,8 @@
-using Autofac;
 using KissU.Abp.Autofac.Extensions.Hosting;
 using KissU.Surging.Caching.Configurations;
 using KissU.Surging.CPlatform.Configurations;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
-using KissU.Surging.Caching;
-using KissU.Surging.CPlatform;
-using KissU.Surging.ProxyGenerator;
-using Microsoft.AspNetCore.Builder;
-using KissU.Core.Dependency;
 
 namespace KissU.Web.Host
 {

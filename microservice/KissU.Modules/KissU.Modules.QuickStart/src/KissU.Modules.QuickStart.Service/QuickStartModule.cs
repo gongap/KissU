@@ -1,5 +1,5 @@
 ﻿using System;
-using Autofac.Extensions.DependencyInjection;
+using KissU.Abp.Autofac.Extensions.DependencyInjection;
 using KissU.Core.Module;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp;
@@ -31,7 +31,6 @@ namespace KissU.Modules.QuickStart.Service
         protected override void RegisterBuilder(ContainerBuilderWrapper builder)
         {
             var services = new ServiceCollection();
-            services.AddObjectAccessor<AbpQuickStartModule>();
             _application = AbpApplicationFactory.Create<AbpQuickStartModule>(services);
             builder.ContainerBuilder.Populate(_application.Services);
         }
