@@ -47,7 +47,7 @@
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Swagger\KissU.Surging.Swagger.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Thrift\KissU.Surging.Thrift.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Zookeeper\KissU.Surging.Zookeeper.csproj" />
-    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.QuickStart\src\KissU.Modules.QuickStart.Service\KissU.Modules.QuickStart.Service.csproj" />
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Identity\src\KissU.Modules.Identity.Service\KissU.Modules.Identity.Service.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,5 +1,5 @@
 ﻿using System;
-using Autofac.Extensions.DependencyInjection;
+using KissU.Abp.Autofac.Extensions.DependencyInjection;
 using KissU.Core.Module;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp;

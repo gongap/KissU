@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
+using Volo.Abp.Identity;
 using Volo.Abp.Identity.EntityFrameworkCore;
 
 namespace KissU.Modules.Identity.DbMigrations.EntityFrameworkCore
@@ -14,7 +15,6 @@ namespace KissU.Modules.Identity.DbMigrations.EntityFrameworkCore
         public IdentityMigrationsDbContext(DbContextOptions<IdentityMigrationsDbContext> options) 
             : base(options)
         {
-
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
