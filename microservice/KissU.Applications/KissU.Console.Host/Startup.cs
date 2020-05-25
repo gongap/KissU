@@ -3,28 +3,29 @@ using System.Threading.Tasks;
 using Autofac;
 using KissU.Abp.Autofac;
 using KissU.Abp.Autofac.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Volo.Abp;
 using KissU.Core.Dependency;
 using KissU.Surging.Caching;
 using KissU.Surging.CPlatform;
 using KissU.Surging.ProxyGenerator;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Volo.Abp;
 
 namespace KissU.Console.Host
 {
-    public class AppHostedService : IHostedService
+    public class Startup : IHostedService
     {
         public Task StartAsync(CancellationToken cancellationToken)
         {
             using (var application = AbpApplicationFactory.Create<AppModule>(options =>
             {
                 options.UseAutofac();
-                var containerBuilder = options.Services.GetContainerBuilder();
-                containerBuilder.AddMicroService(service => { service.AddClient().AddCache(); });
+                var builder = options.Services.GetContainerBuilder();
+                builder.AddMicroService(service => { service.AddClient().AddCache(); });
+                builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
             }))
             {
-                application.Initialize();
+                application.Initialize(); 
                 var testService = application.ServiceProvider.GetService<TestService>();
                 testService.Test(ServiceLocator.GetService<IServiceProxyFactory>());
                 //testService.TestRabbitMq(ServiceLocator.GetService<IServiceProxyFactory>());

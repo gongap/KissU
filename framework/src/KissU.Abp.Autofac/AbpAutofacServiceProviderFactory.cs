@@ -3,7 +3,6 @@ using Autofac;
 using KissU.Abp.Autofac.Extensions.DependencyInjection;
 using KissU.Core.Dependency;
 using Microsoft.Extensions.DependencyInjection;
-using Volo.Abp;
 
 namespace KissU.Abp.Autofac
 {
@@ -36,10 +35,12 @@ namespace KissU.Abp.Autofac
 
         public IServiceProvider CreateServiceProvider(ContainerBuilder containerBuilder)
         {
-            Check.NotNull(containerBuilder, nameof(containerBuilder));
-            containerBuilder.Register(p => new CPlatformContainer(ServiceLocator.Current));
+            if (containerBuilder == null) throw new ArgumentNullException(nameof(containerBuilder));
+
             var container = containerBuilder.Build();
+
             ServiceLocator.Current = container;
+
             return new AutofacServiceProvider(container);
         }
     }

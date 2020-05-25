@@ -22,7 +22,7 @@ namespace KissU.Console.Host
                 })
                 .ConfigureServices((hostContext, services) =>
                 {
-                    services.AddHostedService<AppHostedService>();
+                    services.AddHostedService<Startup>();
                 });
     }
 }

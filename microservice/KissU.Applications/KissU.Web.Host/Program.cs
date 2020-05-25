@@ -1,6 +1,11 @@
+using Autofac;
 using KissU.Abp.Autofac.Extensions.Hosting;
+using KissU.Core.Dependency;
+using KissU.Surging.Caching;
 using KissU.Surging.Caching.Configurations;
+using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Configurations;
+using KissU.Surging.ProxyGenerator;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
@@ -23,6 +28,11 @@ namespace KissU.Web.Host
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                })
+                .ConfigureContainer<ContainerBuilder>(builder =>
+                {
+                    builder.AddMicroService(service => { service.AddClient().AddCache(); });
+                    builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
                 })
                 .UseAutofac();
     }
