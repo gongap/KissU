@@ -2,11 +2,11 @@
 using System.Threading.Tasks;
 using KissU.Core.Common.Application.Dtos;
 using KissU.Core.Dependency;
-using KissU.Core.Extensions;
 using KissU.Modules.Identity.Service.Contracts;
 using KissU.Surging.ProxyGenerator;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Identity;
+using Volo.Abp.ObjectMapping;
 
 namespace KissU.Modules.Identity.Service.Implements
 {
@@ -14,22 +14,24 @@ namespace KissU.Modules.Identity.Service.Implements
     public class IdentityRoleService : ProxyServiceBase, IIdentityRoleService
     {
         private readonly IIdentityRoleAppService _appService;
+        private readonly IObjectMapper _objectMapper;
 
-        public IdentityRoleService(IIdentityRoleAppService appService)
+        public IdentityRoleService(IIdentityRoleAppService appService, IObjectMapper objectMapper)
         {
             _appService = appService;
+            _objectMapper = objectMapper;
         }
 
         public virtual async Task<ListResult<IdentityRoleDto>> GetAllListAsync()
         {
             var result = await _appService.GetAllListAsync();
-            return result.MapTo<ListResult<IdentityRoleDto>>();
+            return _objectMapper.Map<ListResultDto<IdentityRoleDto>, ListResult<IdentityRoleDto>>(result);
         }
 
         public virtual async Task<PagedResult<IdentityRoleDto>> GetListAsync(PagedAndSortedResultRequestDto input)
         {
             var result = await _appService.GetListAsync(input);
-            return result.MapTo<PagedResult<IdentityRoleDto>>();
+            return _objectMapper.Map<PagedResultDto<IdentityRoleDto>, PagedResult<IdentityRoleDto>>(result);
         }
 
         public virtual Task<IdentityRoleDto> GetAsync(Guid id)

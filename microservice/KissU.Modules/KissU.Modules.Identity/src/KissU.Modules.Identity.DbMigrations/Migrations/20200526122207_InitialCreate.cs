@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace KissU.Modules.Identity.DbMigrations.Migrations
 {
-    public partial class Initial : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,6 +28,21 @@ namespace KissU.Modules.Identity.DbMigrations.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "AbpPermissionGrants",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    TenantId = table.Column<Guid>(nullable: true),
+                    Name = table.Column<string>(maxLength: 128, nullable: false),
+                    ProviderName = table.Column<string>(maxLength: 64, nullable: false),
+                    ProviderKey = table.Column<string>(maxLength: 64, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AbpPermissionGrants", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AbpRoles",
                 columns: table => new
                 {
@@ -44,6 +59,21 @@ namespace KissU.Modules.Identity.DbMigrations.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AbpRoles", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AbpSettings",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Name = table.Column<string>(maxLength: 128, nullable: false),
+                    Value = table.Column<string>(maxLength: 2048, nullable: false),
+                    ProviderName = table.Column<string>(maxLength: 64, nullable: true),
+                    ProviderKey = table.Column<string>(maxLength: 64, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AbpSettings", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -192,6 +222,11 @@ namespace KissU.Modules.Identity.DbMigrations.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_AbpPermissionGrants_Name_ProviderName_ProviderKey",
+                table: "AbpPermissionGrants",
+                columns: new[] { "Name", "ProviderName", "ProviderKey" });
+
+            migrationBuilder.CreateIndex(
                 name: "IX_AbpRoleClaims_RoleId",
                 table: "AbpRoleClaims",
                 column: "RoleId");
@@ -200,6 +235,11 @@ namespace KissU.Modules.Identity.DbMigrations.Migrations
                 name: "IX_AbpRoles_NormalizedName",
                 table: "AbpRoles",
                 column: "NormalizedName");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AbpSettings_Name_ProviderName_ProviderKey",
+                table: "AbpSettings",
+                columns: new[] { "Name", "ProviderName", "ProviderKey" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AbpUserClaims_UserId",
@@ -243,7 +283,13 @@ namespace KissU.Modules.Identity.DbMigrations.Migrations
                 name: "AbpClaimTypes");
 
             migrationBuilder.DropTable(
+                name: "AbpPermissionGrants");
+
+            migrationBuilder.DropTable(
                 name: "AbpRoleClaims");
+
+            migrationBuilder.DropTable(
+                name: "AbpSettings");
 
             migrationBuilder.DropTable(
                 name: "AbpUserClaims");

@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
-using Volo.Abp.Identity;
 using Volo.Abp.Identity.EntityFrameworkCore;
+using Volo.Abp.PermissionManagement.EntityFrameworkCore;
+using Volo.Abp.SettingManagement.EntityFrameworkCore;
 
 namespace KissU.Modules.Identity.DbMigrations.EntityFrameworkCore
 {
@@ -24,6 +25,8 @@ namespace KissU.Modules.Identity.DbMigrations.EntityFrameworkCore
             /* Configure your own tables/entities inside the ConfigureIdentity method */
 
             builder.ConfigureIdentity();
+            builder.ConfigurePermissionManagement();
+            builder.ConfigureSettingManagement();
         }
     }
 }

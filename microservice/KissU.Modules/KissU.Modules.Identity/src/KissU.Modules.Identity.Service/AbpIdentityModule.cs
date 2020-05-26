@@ -4,21 +4,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.AutoMapper;
 using Volo.Abp.Identity;
 using Volo.Abp.Modularity;
-using Volo.Abp.PermissionManagement;
-using Volo.Abp.PermissionManagement.EntityFrameworkCore;
-using Volo.Abp.PermissionManagement.Identity;
-using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Volo.Abp.Settings;
 
 namespace KissU.Modules.Identity.Service
 {
     [DependsOn(
-        typeof(AbpIdentityApplicationModule),
-        typeof(AbpPermissionManagementApplicationModule),
         typeof(IdentityEntityFrameworkCoreDbMigrationsModule),
-        typeof(AbpPermissionManagementEntityFrameworkCoreModule),
-        typeof(AbpSettingManagementEntityFrameworkCoreModule),
-        typeof(AbpPermissionManagementDomainIdentityModule),
+        typeof(AbpIdentityApplicationModule),
         typeof(AbpAutofacModule)
     )]
     public class AbpIdentityModule : AbpModule
@@ -35,6 +27,8 @@ namespace KissU.Modules.Identity.Service
             {
                 options.AddProfile<AbpIdentityAutoMapperProfile>(true);
             });
+
+            context.Services.AddAlwaysAllowAuthorization();
         }
     }
 }
