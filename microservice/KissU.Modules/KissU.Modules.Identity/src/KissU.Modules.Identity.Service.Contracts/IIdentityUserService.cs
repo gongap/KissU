@@ -1,6 +1,6 @@
 using System;
 using System.Threading.Tasks;
-using KissU.Core.Common.Application.Dtos;
+using KissU.Core.Common;
 using KissU.Core.Dependency;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using Volo.Abp.Identity;
@@ -12,7 +12,7 @@ namespace KissU.Modules.Identity.Service.Contracts
     {
         [HttpGet(true)]
         [ServiceRoute("{id}")]
-        Task<IdentityUserDto> GetAsync(Guid id);
+        Task<IdentityUserDto> GetAsync(string id);
 
         [HttpPost(true)]
         Task<PagedResult<IdentityUserDto>> GetListAsync(GetIdentityUsersInput input);
@@ -22,19 +22,19 @@ namespace KissU.Modules.Identity.Service.Contracts
 
         [HttpPut(true)]
         [ServiceRoute("{id}")]
-        Task<IdentityUserDto> UpdateAsync(Guid id, IdentityUserUpdateDto input);
+        Task<IdentityUserDto> UpdateAsync(string id, IdentityUserUpdateDto input);
 
         [HttpDelete(true)]
         [ServiceRoute("{id}")]
-        Task DeleteAsync(Guid id);
+        Task DeleteAsync(string id);
 
         [HttpGet(true)]
         [ServiceRoute("{id}/roles")]
-        Task<ListResult<IdentityRoleDto>> GetRolesAsync(Guid id);
+        Task<ListResult<IdentityRoleDto>> GetRolesAsync(string id);
 
         [HttpPut(true)]
         [ServiceRoute("{id}/roles")]
-        Task UpdateRolesAsync(Guid id, IdentityUserUpdateRolesDto input);
+        Task UpdateRolesAsync(string id, IdentityUserUpdateRolesDto input);
 
         [HttpGet(true)]
         [ServiceRoute("by-username/{userName}")]

@@ -1,12 +1,11 @@
-﻿using System;
-using System.Threading.Tasks;
-using KissU.Core.Common.Application.Dtos;
+﻿using System.Threading.Tasks;
+using KissU.Core.Common;
 using KissU.Core.Dependency;
+using KissU.Core.Extensions;
 using KissU.Modules.Identity.Service.Contracts;
 using KissU.Surging.ProxyGenerator;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Identity;
-using Volo.Abp.ObjectMapping;
 
 namespace KissU.Modules.Identity.Service.Implements
 {
@@ -14,29 +13,27 @@ namespace KissU.Modules.Identity.Service.Implements
     public class IdentityRoleService : ProxyServiceBase, IIdentityRoleService
     {
         private readonly IIdentityRoleAppService _appService;
-        private readonly IObjectMapper _objectMapper;
 
-        public IdentityRoleService(IIdentityRoleAppService appService, IObjectMapper objectMapper)
+        public IdentityRoleService(IIdentityRoleAppService appService)
         {
             _appService = appService;
-            _objectMapper = objectMapper;
         }
 
         public virtual async Task<ListResult<IdentityRoleDto>> GetAllListAsync()
         {
             var result = await _appService.GetAllListAsync();
-            return _objectMapper.Map<ListResultDto<IdentityRoleDto>, ListResult<IdentityRoleDto>>(result);
+            return new ListResult<IdentityRoleDto>(result.Items);
         }
 
         public virtual async Task<PagedResult<IdentityRoleDto>> GetListAsync(PagedAndSortedResultRequestDto input)
         {
             var result = await _appService.GetListAsync(input);
-            return _objectMapper.Map<PagedResultDto<IdentityRoleDto>, PagedResult<IdentityRoleDto>>(result);
+            return new PagedResult<IdentityRoleDto>(result.TotalCount, result.Items);
         }
 
-        public virtual Task<IdentityRoleDto> GetAsync(Guid id)
+        public virtual Task<IdentityRoleDto> GetAsync(string id)
         {
-            return _appService.GetAsync(id);
+            return _appService.GetAsync(id.ToGuid());
         }
 
         public virtual Task<IdentityRoleDto> CreateAsync(IdentityRoleCreateDto input)
@@ -44,14 +41,14 @@ namespace KissU.Modules.Identity.Service.Implements
             return _appService.CreateAsync(input);
         }
 
-        public virtual Task<IdentityRoleDto> UpdateAsync(Guid id, IdentityRoleUpdateDto input)
+        public virtual Task<IdentityRoleDto> UpdateAsync(string id, IdentityRoleUpdateDto input)
         {
-            return _appService.UpdateAsync(id, input);
+            return _appService.UpdateAsync(id.ToGuid(), input);
         }
 
-        public virtual Task DeleteAsync(Guid id)
+        public virtual Task DeleteAsync(string id)
         {
-            return _appService.DeleteAsync(id);
+            return _appService.DeleteAsync(id.ToGuid());
         }
     }
 }

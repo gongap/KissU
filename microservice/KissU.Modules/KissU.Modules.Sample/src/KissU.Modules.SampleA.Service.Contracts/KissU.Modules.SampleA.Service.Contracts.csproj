@@ -32,7 +32,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Core.Common\KissU.Core.Common.csproj" />
     <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.Caching\KissU.Surging.Caching.csproj" />
     <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.DotNettyWSServer\KissU.Surging.DotNettyWSServer.csproj" />
     <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.KestrelHttpServer\KissU.Surging.KestrelHttpServer.csproj" />

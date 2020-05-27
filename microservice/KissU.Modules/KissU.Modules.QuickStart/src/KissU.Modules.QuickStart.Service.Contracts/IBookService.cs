@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using KissU.Core.Common.Application.Dtos;
+using KissU.Core.Common;
 using KissU.Core.Dependency;
 using KissU.Modules.QuickStart.Books;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;

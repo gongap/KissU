@@ -11,7 +11,7 @@ namespace KissU.Modules.Identity.Service.Contracts
     {
         [HttpGet(true)]
         [ServiceRoute("{id}")]
-        Task<UserData> FindByIdAsync(Guid id);
+        Task<UserData> FindByIdAsync(string id);
 
         [HttpGet(true)]
         [ServiceRoute("by-username/{userName}")]

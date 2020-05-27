@@ -1,12 +1,10 @@
-using System;
 using System.Threading.Tasks;
-using KissU.Core.Common.Application.Dtos;
+using KissU.Core.Common;
 using KissU.Core.Dependency;
+using KissU.Core.Extensions;
 using KissU.Modules.Identity.Service.Contracts;
 using KissU.Surging.ProxyGenerator;
-using Volo.Abp.Application.Dtos;
 using Volo.Abp.Identity;
-using Volo.Abp.ObjectMapping;
 
 namespace KissU.Modules.Identity.Service.Implements
 {
@@ -14,23 +12,15 @@ namespace KissU.Modules.Identity.Service.Implements
     public class IdentityUserService : ProxyServiceBase, IIdentityUserService
     {
         private readonly IIdentityUserAppService _userAppService;
-        private readonly IObjectMapper _objectMapper;
 
-        public IdentityUserService(IIdentityUserAppService userAppService, IObjectMapper objectMapper)
+        public IdentityUserService(IIdentityUserAppService userAppService)
         {
             _userAppService = userAppService;
-            _objectMapper = objectMapper;
         }
 
-        public virtual Task<IdentityUserDto> GetAsync(Guid id)
+        public virtual Task<IdentityUserDto> GetAsync(string id)
         {
-            return _userAppService.GetAsync(id);
-        }
-
-        public virtual async Task<PagedResult<IdentityUserDto>> GetListAsync(GetIdentityUsersInput input)
-        {
-            var result = await _userAppService.GetListAsync(input);
-            return _objectMapper.Map<PagedResultDto<IdentityUserDto>, PagedResult<IdentityUserDto>>(result);
+            return _userAppService.GetAsync(id.ToGuid());
         }
 
         public virtual Task<IdentityUserDto> CreateAsync(IdentityUserCreateDto input)
@@ -38,25 +28,31 @@ namespace KissU.Modules.Identity.Service.Implements
             return _userAppService.CreateAsync(input);
         }
 
-        public virtual Task<IdentityUserDto> UpdateAsync(Guid id, IdentityUserUpdateDto input)
+        public virtual Task<IdentityUserDto> UpdateAsync(string id, IdentityUserUpdateDto input)
         {
-            return _userAppService.UpdateAsync(id, input);
+            return _userAppService.UpdateAsync(id.ToGuid(), input);
         }
 
-        public virtual Task DeleteAsync(Guid id)
+        public virtual Task DeleteAsync(string id)
         {
-            return _userAppService.DeleteAsync(id);
+            return _userAppService.DeleteAsync(id.ToGuid());
         }
 
-        public virtual async Task<ListResult<IdentityRoleDto>> GetRolesAsync(Guid id)
+        public virtual async Task<ListResult<IdentityRoleDto>> GetRolesAsync(string id)
         {
-            var result = await _userAppService.GetRolesAsync(id);
-            return _objectMapper.Map<ListResultDto<IdentityRoleDto>, ListResult<IdentityRoleDto>>(result);
+            var result = await _userAppService.GetRolesAsync(id.ToGuid());
+            return new ListResult<IdentityRoleDto>(result.Items);
         }
 
-        public virtual Task UpdateRolesAsync(Guid id, IdentityUserUpdateRolesDto input)
+        public virtual async Task<PagedResult<IdentityUserDto>> GetListAsync(GetIdentityUsersInput input)
         {
-            return _userAppService.UpdateRolesAsync(id, input);
+            var result = await _userAppService.GetListAsync(input);
+            return new PagedResult<IdentityUserDto>(result.TotalCount, result.Items);
+        }
+
+        public virtual Task UpdateRolesAsync(string id, IdentityUserUpdateRolesDto input)
+        {
+            return _userAppService.UpdateRolesAsync(id.ToGuid(), input);
         }
 
         public virtual Task<IdentityUserDto> FindByUsernameAsync(string username)
