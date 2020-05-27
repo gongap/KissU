@@ -11,13 +11,12 @@
 
   <ItemGroup>
     <PackageReference Include="Volo.Abp.AutoMapper" Version="2.8.0" />
-    <PackageReference Include="Volo.Abp.Identity.Application" Version="2.8.0" />
-    <PackageReference Include="Volo.Abp.PermissionManagement.Domain.Identity" Version="2.8.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Abp.Autofac\KissU.Abp.Autofac.csproj" />
     <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.ProxyGenerator\KissU.Surging.ProxyGenerator.csproj" />
+    <ProjectReference Include="..\KissU.Modules.Identity.Application\KissU.Modules.Identity.Application.csproj" />
     <ProjectReference Include="..\KissU.Modules.Identity.DbMigrations\KissU.Modules.Identity.DbMigrations.csproj" />
     <ProjectReference Include="..\KissU.Modules.Identity.Service.Contracts\KissU.Modules.Identity.Service.Contracts.csproj" />
   </ItemGroup>
