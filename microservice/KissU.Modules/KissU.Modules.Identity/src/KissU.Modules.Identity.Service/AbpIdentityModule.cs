@@ -9,8 +9,8 @@ using Volo.Abp.Settings;
 namespace KissU.Modules.Identity.Service
 {
     [DependsOn(
-        typeof(IdentityEntityFrameworkCoreDbMigrationsModule),
         typeof(AbpIdentityApplicationModule),
+        typeof(IdentityEntityFrameworkCoreDbMigrationsModule),
         typeof(AbpAutofacModule)
     )]
     public class AbpIdentityModule : AbpModule
