@@ -1,15 +1,13 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.AutoMapper;
 using Volo.Abp.Modularity;
-using Volo.Abp.PermissionManagement;
 
 namespace Volo.Abp.Identity
 {
     [DependsOn(
         typeof(AbpIdentityDomainModule),
         typeof(AbpIdentityApplicationContractsModule), 
-        typeof(AbpAutoMapperModule),
-        typeof(AbpPermissionManagementApplicationModule)
+        typeof(AbpAutoMapperModule)
         )]
     public class AbpIdentityApplicationModule : AbpModule
     {

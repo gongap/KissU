@@ -5,8 +5,6 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <AssemblyName>KissU.Modules.Identity.Domain</AssemblyName>
-    <PackageId>KissU.Modules.Identity.Domain</PackageId>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
@@ -24,7 +22,6 @@
     <PackageReference Include="Volo.Abp.Users.Domain" Version="2.8.0" />
     <PackageReference Include="Volo.Abp.AutoMapper" Version="2.8.0" />
     <PackageReference Include="Volo.Abp.Ddd.Domain" Version="2.8.0" />
-    <PackageReference Include="Volo.Abp.PermissionManagement.Application.Contracts" Version="2.8.0" />
   </ItemGroup>
 
   <ItemGroup>

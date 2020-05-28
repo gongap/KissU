@@ -5,8 +5,6 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <AssemblyName>KissU.Modules.Identity.Application.Contracts</AssemblyName>
-    <PackageId>KissU.Modules.Identity.Application.Contracts</PackageId>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
@@ -18,7 +16,6 @@
     <PackageReference Include="Volo.Abp.Authorization" Version="2.8.0" />
     <PackageReference Include="Volo.Abp.Ddd.Application" Version="2.8.0" />
     <PackageReference Include="Volo.Abp.Users.Abstractions" Version="2.8.0" />
-    <PackageReference Include="Volo.Abp.PermissionManagement.Application.Contracts" Version="2.8.0" />
   </ItemGroup>
 
   <ItemGroup>

@@ -5,8 +5,6 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <AssemblyName>KissU.Modules.PermissionManagement.Domain.Identity</AssemblyName>
-    <PackageId>KissU.Modules.PermissionManagement.Domain.Identity</PackageId>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
@@ -14,8 +12,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\KissU.Modules.PermissionManagement\src\KissU.Modules.PermissionManagement.Domain\KissU.Modules.PermissionManagement.Domain.csproj" />
-    <ProjectReference Include="..\KissU.Modules.Identity.Domain\KissU.Modules.Identity.Domain.csproj" />
+    <EmbeddedResource Include="Volo\Abp\SettingManagement\Localization\Resources\AbpSettingManagement\*.json" />
+    <Content Remove="Volo\Abp\SettingManagement\Localization\Resources\AbpSettingManagement\*.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Localization" Version="2.8.0" />
   </ItemGroup>
 
 </Project>

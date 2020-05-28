@@ -5,8 +5,6 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <AssemblyName>KissU.Modules.Identity.Application</AssemblyName>
-    <PackageId>KissU.Modules.Identity.Application</PackageId>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
@@ -15,7 +13,6 @@
 
   <ItemGroup>
     <PackageReference Include="Volo.Abp.AutoMapper" Version="2.8.0" />
-    <PackageReference Include="Volo.Abp.PermissionManagement.Application" Version="2.8.0" />
   </ItemGroup>
 
   <ItemGroup>

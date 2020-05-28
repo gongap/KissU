@@ -226,7 +226,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.PermissionMan
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.PermissionManagement.Service.Host", "microservice\KissU.Services\KissU.PermissionManagement.Service.Host\KissU.PermissionManagement.Service.Host.csproj", "{51822063-2244-4F8E-B741-E6D22C4EAF87}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.PermissionManagement.Domain.Identity", "microservice\KissU.Modules\KissU.Modules.Identity\src\KissU.Modules.PermissionManagement.Domain.Identity\KissU.Modules.PermissionManagement.Domain.Identity.csproj", "{D6060801-8B61-49F0-9CC1-B2CFF70B30D0}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SettingManagement", "SettingManagement", "{F40DD111-AD0B-4536-B1EA-4AFF20F4FEDB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.SettingManagement.Domain.Shared", "microservice\KissU.Modules\KissU.Modules.SettingManagement\src\KissU.Modules.SettingManagement.Domain.Shared\KissU.Modules.SettingManagement.Domain.Shared.csproj", "{E2F6878B-E254-437E-9380-BED81C06BD91}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.SettingManagement.Domain", "microservice\KissU.Modules\KissU.Modules.SettingManagement\src\KissU.Modules.SettingManagement.Domain\KissU.Modules.SettingManagement.Domain.csproj", "{91983D9D-A651-47BA-8B7F-43A00580BE47}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.SettingManagement.EntityFrameworkCore", "microservice\KissU.Modules\KissU.Modules.SettingManagement\src\KissU.Modules.SettingManagement.EntityFrameworkCore\KissU.Modules.SettingManagement.EntityFrameworkCore.csproj", "{EF7017AA-F3C5-49AB-9E78-29E7DCC54069}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.SettingManagement.MongoDB", "microservice\KissU.Modules\KissU.Modules.SettingManagement\src\KissU.Modules.SettingManagement.MongoDB\KissU.Modules.SettingManagement.MongoDB.csproj", "{16F14C6E-F55E-4373-900F-9385575D2B42}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.PermissionManagement.Domain.Identity", "microservice\KissU.Modules\KissU.Modules.PermissionManagement\src\KissU.Modules.PermissionManagement.Domain.Identity\KissU.Modules.PermissionManagement.Domain.Identity.csproj", "{59BBCA58-22CB-42D8-91C3-6D4C3A579AC6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.SettingManagement.DbMigrator", "microservice\KissU.Modules\KissU.Modules.SettingManagement\src\KissU.Modules.SettingManagement.DbMigrator\KissU.Modules.SettingManagement.DbMigrator.csproj", "{BA8623B3-1442-4C1A-865B-8E20F9C96302}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.SettingManagement.DbMigrations", "microservice\KissU.Modules\KissU.Modules.SettingManagement\src\KissU.Modules.SettingManagement.DbMigrations\KissU.Modules.SettingManagement.DbMigrations.csproj", "{E4695AC6-3BDD-4AEB-854F-EC94B15E8579}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -554,10 +568,34 @@ Global
 		{51822063-2244-4F8E-B741-E6D22C4EAF87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51822063-2244-4F8E-B741-E6D22C4EAF87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51822063-2244-4F8E-B741-E6D22C4EAF87}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D6060801-8B61-49F0-9CC1-B2CFF70B30D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D6060801-8B61-49F0-9CC1-B2CFF70B30D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D6060801-8B61-49F0-9CC1-B2CFF70B30D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D6060801-8B61-49F0-9CC1-B2CFF70B30D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2F6878B-E254-437E-9380-BED81C06BD91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2F6878B-E254-437E-9380-BED81C06BD91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2F6878B-E254-437E-9380-BED81C06BD91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2F6878B-E254-437E-9380-BED81C06BD91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91983D9D-A651-47BA-8B7F-43A00580BE47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91983D9D-A651-47BA-8B7F-43A00580BE47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91983D9D-A651-47BA-8B7F-43A00580BE47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91983D9D-A651-47BA-8B7F-43A00580BE47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF7017AA-F3C5-49AB-9E78-29E7DCC54069}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF7017AA-F3C5-49AB-9E78-29E7DCC54069}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF7017AA-F3C5-49AB-9E78-29E7DCC54069}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF7017AA-F3C5-49AB-9E78-29E7DCC54069}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16F14C6E-F55E-4373-900F-9385575D2B42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16F14C6E-F55E-4373-900F-9385575D2B42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16F14C6E-F55E-4373-900F-9385575D2B42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16F14C6E-F55E-4373-900F-9385575D2B42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59BBCA58-22CB-42D8-91C3-6D4C3A579AC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59BBCA58-22CB-42D8-91C3-6D4C3A579AC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59BBCA58-22CB-42D8-91C3-6D4C3A579AC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59BBCA58-22CB-42D8-91C3-6D4C3A579AC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA8623B3-1442-4C1A-865B-8E20F9C96302}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA8623B3-1442-4C1A-865B-8E20F9C96302}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA8623B3-1442-4C1A-865B-8E20F9C96302}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA8623B3-1442-4C1A-865B-8E20F9C96302}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4695AC6-3BDD-4AEB-854F-EC94B15E8579}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4695AC6-3BDD-4AEB-854F-EC94B15E8579}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4695AC6-3BDD-4AEB-854F-EC94B15E8579}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4695AC6-3BDD-4AEB-854F-EC94B15E8579}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -666,7 +704,14 @@ Global
 		{DC5099A8-8EA8-4460-9DC4-49980D8B775F} = {47461177-B541-44A9-97CF-6185A71A8A88}
 		{1BA101A4-EBAA-4325-9BCD-A2C4DCEBE9EB} = {47461177-B541-44A9-97CF-6185A71A8A88}
 		{51822063-2244-4F8E-B741-E6D22C4EAF87} = {B4367C3C-5645-40C3-953C-466D82432072}
-		{D6060801-8B61-49F0-9CC1-B2CFF70B30D0} = {12491F0A-1011-48C0-B40D-72FF82CE3F7D}
+		{F40DD111-AD0B-4536-B1EA-4AFF20F4FEDB} = {EBA864A3-39C4-4279-A823-35BA7EF2469A}
+		{E2F6878B-E254-437E-9380-BED81C06BD91} = {F40DD111-AD0B-4536-B1EA-4AFF20F4FEDB}
+		{91983D9D-A651-47BA-8B7F-43A00580BE47} = {F40DD111-AD0B-4536-B1EA-4AFF20F4FEDB}
+		{EF7017AA-F3C5-49AB-9E78-29E7DCC54069} = {F40DD111-AD0B-4536-B1EA-4AFF20F4FEDB}
+		{16F14C6E-F55E-4373-900F-9385575D2B42} = {F40DD111-AD0B-4536-B1EA-4AFF20F4FEDB}
+		{59BBCA58-22CB-42D8-91C3-6D4C3A579AC6} = {47461177-B541-44A9-97CF-6185A71A8A88}
+		{BA8623B3-1442-4C1A-865B-8E20F9C96302} = {F40DD111-AD0B-4536-B1EA-4AFF20F4FEDB}
+		{E4695AC6-3BDD-4AEB-854F-EC94B15E8579} = {F40DD111-AD0B-4536-B1EA-4AFF20F4FEDB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}

@@ -149,6 +149,6 @@
     }
   },
   "ConnectionStrings": {
-    "AbpPermissionManagement": "Server=.;Database=KissU.PermissionManagement;uid=sa;pwd=saP@ss123;MultipleActiveResultSets=true"
+    "AbpPermissionManagement": "Server=.;Database=KissU.AbpPermissionManagement;uid=sa;pwd=saP@ss123;MultipleActiveResultSets=true"
   }
 }
