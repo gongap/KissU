@@ -2,7 +2,7 @@
   "ServerEngine": { //微服务框架配置
     "Ip": "${Server_IP}|127.0.0.1", //"配置微服务主机的Ip地址或域名": null,容器内部IP(环境变量)
     "WatchInterval": 30, //设置向服务注册中心更新路由数据的心跳值，缺省值为20s
-    "Port": "${Server_Port}|85", //微服务主机运行的端口号
+    "Port": "${Server_Port}|86", //微服务主机运行的端口号
     "MappingIp": "${Mapping_ip}", //映射的Ip地址,暂不需要配置
     "MappingPort": "${Mapping_Port}", //映射的端口号,暂不需要配置
     "Token": "true", //是否验证Token,缺省值为True
@@ -19,10 +19,10 @@
     "IsModulePerLifetimeScope": false, //模块是否使用每个生命周期范围
     "ReloadOnChange": false, //当配置改变后是否重新加载
     "Ports": {
-      "HttpPort": "${HttpPort}|8005", //指定微服务对外提供的Http端口号,微服务组件必须依赖KestrelHttpModule才会对外提供Http服务，该配置项才有效
-      "WSPort": "${WSPort}|8105",
-      "MQTTPort": "${MQTTPort}|8205",
-      "GrpcPort": "${GrpcPort}|8305"
+      "HttpPort": "${HttpPort}|8006", //指定微服务对外提供的Http端口号,微服务组件必须依赖KestrelHttpModule才会对外提供Http服务，该配置项才有效
+      "WSPort": "${WSPort}|8106",
+      "MQTTPort": "${MQTTPort}|8206",
+      "GrpcPort": "${GrpcPort}|8306"
     },
     "RequestCacheEnabled": false, //启用请求缓存
     "Packages": [ //如果引用多个同类型的组件，需要配置Packages，如果是自定义按需引用，无需配置Packages
@@ -149,6 +149,6 @@
     }
   },
   "ConnectionStrings": {
-    "AbpFeatureManagement": "Server=.;Database=KissU.AbpFeatureManagement;uid=sa;pwd=saP@ss123;MultipleActiveResultSets=true"
+    "AbpFeatureManagement": "Server=.;Database=KissU.AbpTenantManagement;uid=sa;pwd=saP@ss123;MultipleActiveResultSets=true"
   }
 }

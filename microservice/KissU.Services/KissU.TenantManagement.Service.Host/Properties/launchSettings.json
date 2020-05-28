@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "KissU.FeatureManagement.Service.Host": {
+    "KissU.TenantManagement.Service.Host": {
       "commandName": "Project",
       "nativeDebugging": false
     },
