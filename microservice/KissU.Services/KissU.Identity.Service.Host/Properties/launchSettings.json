@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "KissU.Identity.Service.Host": {
+    "Project": {
       "commandName": "Project",
       "nativeDebugging": false
     },

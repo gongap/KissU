@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "KissU.PermissionManagement.Service.Host": {
+    "Project": {
       "commandName": "Project",
       "nativeDebugging": false
     },
