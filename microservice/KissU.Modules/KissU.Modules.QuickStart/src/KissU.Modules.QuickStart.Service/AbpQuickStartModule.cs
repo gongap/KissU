@@ -10,7 +10,7 @@ namespace KissU.Modules.QuickStart.Service
 {
     [DependsOn(
         typeof(QuickStartApplicationModule),
-        typeof(QuickStartEntityFrameworkCoreDbMigrationsModule),
+        typeof(EntityFrameworkCoreDbMigrationsModule),
         typeof(AbpAutofacModule)
     )]
     public class AbpQuickStartModule : AbpModule

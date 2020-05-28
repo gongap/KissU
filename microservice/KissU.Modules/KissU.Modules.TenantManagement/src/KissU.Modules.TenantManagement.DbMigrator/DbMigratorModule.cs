@@ -6,9 +6,9 @@ namespace KissU.Modules.Identity.DbMigrator
 {
     [DependsOn(
         typeof(AbpAutofacModule),
-        typeof(IdentityEntityFrameworkCoreDbMigrationsModule)
+        typeof(EntityFrameworkCoreDbMigrationsModule)
     )]
-    public class IdentityDbMigratorModule : AbpModule
+    public class DbMigratorModule : AbpModule
     {
     }
 }

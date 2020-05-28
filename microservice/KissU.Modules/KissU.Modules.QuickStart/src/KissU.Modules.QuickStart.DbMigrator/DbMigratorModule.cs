@@ -7,9 +7,9 @@ namespace KissU.Modules.QuickStart.DbMigrator
 {
     [DependsOn(
         typeof(AbpAutofacModule),
-        typeof(QuickStartEntityFrameworkCoreDbMigrationsModule)
+        typeof(EntityFrameworkCoreDbMigrationsModule)
     )]
-    public class QuickStartDbMigratorModule : AbpModule
+    public class DbMigratorModule : AbpModule
     {
     }
 }

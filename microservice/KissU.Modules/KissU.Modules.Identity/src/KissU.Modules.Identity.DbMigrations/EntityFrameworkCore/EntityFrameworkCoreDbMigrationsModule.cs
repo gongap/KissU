@@ -8,11 +8,11 @@ namespace KissU.Modules.Identity.DbMigrations.EntityFrameworkCore
     [DependsOn(
         typeof(AbpIdentityEntityFrameworkCoreModule)
     )]
-    public class IdentityEntityFrameworkCoreDbMigrationsModule : AbpModule
+    public class EntityFrameworkCoreDbMigrationsModule : AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
-            context.Services.AddAbpDbContext<IdentityMigrationsDbContext>();
+            context.Services.AddAbpDbContext<MigrationsDbContext>();
 
             Configure<AbpDbContextOptions>(options =>
             {

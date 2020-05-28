@@ -6,11 +6,11 @@ using Volo.Abp.DependencyInjection;
 namespace KissU.Modules.Identity.DbMigrations.EntityFrameworkCore
 {
     [Dependency(ReplaceServices = true)]
-    public class EntityFrameworkCoreIdentityDbSchemaMigrator : IIdentityDbSchemaMigrator, ITransientDependency
+    public class EntityFrameworkCoreDbSchemaMigrator : DbSchemaMigrator, ITransientDependency
     {
-        private readonly IdentityMigrationsDbContext _dbContext;
+        private readonly MigrationsDbContext _dbContext;
 
-        public EntityFrameworkCoreIdentityDbSchemaMigrator(IdentityMigrationsDbContext dbContext)
+        public EntityFrameworkCoreDbSchemaMigrator(MigrationsDbContext dbContext)
         {
             _dbContext = dbContext;
         }

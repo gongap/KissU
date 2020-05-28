@@ -9,11 +9,11 @@ namespace KissU.Modules.QuickStart.EntityFrameworkCore
     [DependsOn(
         typeof(QuickStartEntityFrameworkCoreModule)
         )]
-    public class QuickStartEntityFrameworkCoreDbMigrationsModule : AbpModule
+    public class EntityFrameworkCoreDbMigrationsModule : AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
-            context.Services.AddAbpDbContext<QuickStartMigrationsDbContext>();
+            context.Services.AddAbpDbContext<MigrationsDbContext>();
         }
     }
 }

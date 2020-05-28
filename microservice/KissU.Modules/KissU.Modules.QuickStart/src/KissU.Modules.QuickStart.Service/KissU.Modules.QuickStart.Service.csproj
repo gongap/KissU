@@ -16,7 +16,7 @@
     <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.KestrelHttpServer\KissU.Surging.KestrelHttpServer.csproj" />
     <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.ProxyGenerator\KissU.Surging.ProxyGenerator.csproj" />
     <ProjectReference Include="..\KissU.Modules.QuickStart.Application\KissU.Modules.QuickStart.Application.csproj" />
-    <ProjectReference Include="..\KissU.Modules.QuickStart.EntityFrameworkCore.DbMigrations\KissU.Modules.QuickStart.EntityFrameworkCore.DbMigrations.csproj" />
+    <ProjectReference Include="..\KissU.Modules.QuickStart.DbMigrations\KissU.Modules.QuickStart.DbMigrations.csproj" />
     <ProjectReference Include="..\KissU.Modules.QuickStart.Service.Contracts\KissU.Modules.QuickStart.Service.Contracts.csproj" />
   </ItemGroup>
 

@@ -9,6 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Logs\**" />
+    <EmbeddedResource Remove="Logs\**" />
+    <None Remove="Logs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="appsettings.json" />
   </ItemGroup>
 
@@ -33,7 +39,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Abp.Autofac\KissU.Abp.Autofac.csproj" />
     <ProjectReference Include="..\KissU.Modules.QuickStart.Application.Contracts\KissU.Modules.QuickStart.Application.Contracts.csproj" />
-    <ProjectReference Include="..\KissU.Modules.QuickStart.EntityFrameworkCore.DbMigrations\KissU.Modules.QuickStart.EntityFrameworkCore.DbMigrations.csproj" />
+    <ProjectReference Include="..\KissU.Modules.QuickStart.DbMigrations\KissU.Modules.QuickStart.DbMigrations.csproj" />
   </ItemGroup>
 
 </Project>

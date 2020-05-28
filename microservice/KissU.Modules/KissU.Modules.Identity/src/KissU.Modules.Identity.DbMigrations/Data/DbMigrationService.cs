@@ -6,21 +6,21 @@ using Volo.Abp.DependencyInjection;
 
 namespace KissU.Modules.Identity.DbMigrations.Data
 {
-    public class IdentityDbMigrationService : ITransientDependency
+    public class DbMigrationService : ITransientDependency
     {
-        public ILogger<IdentityDbMigrationService> Logger { get; set; }
+        public ILogger<DbMigrationService> Logger { get; set; }
 
         private readonly IDataSeeder _dataSeeder;
-        private readonly IIdentityDbSchemaMigrator _dbSchemaMigrator;
+        private readonly DbSchemaMigrator _dbSchemaMigrator;
 
-        public IdentityDbMigrationService(
+        public DbMigrationService(
             IDataSeeder dataSeeder,
-            IIdentityDbSchemaMigrator dbSchemaMigrator)
+            DbSchemaMigrator dbSchemaMigrator)
         {
             _dataSeeder = dataSeeder;
             _dbSchemaMigrator = dbSchemaMigrator;
 
-            Logger = NullLogger<IdentityDbMigrationService>.Instance;
+            Logger = NullLogger<DbMigrationService>.Instance;
         }
 
         public async Task MigrateAsync()

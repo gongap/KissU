@@ -10,7 +10,7 @@ namespace KissU.Modules.Identity.Service
 {
     [DependsOn(
         typeof(AbpIdentityApplicationModule),
-        typeof(IdentityEntityFrameworkCoreDbMigrationsModule),
+        typeof(EntityFrameworkCoreDbMigrationsModule),
         typeof(AbpAutofacModule)
     )]
     public class AbpIdentityModule : AbpModule

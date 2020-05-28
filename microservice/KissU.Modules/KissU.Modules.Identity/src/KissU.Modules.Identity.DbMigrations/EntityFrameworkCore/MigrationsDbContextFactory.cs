@@ -7,16 +7,16 @@ namespace KissU.Modules.Identity.DbMigrations.EntityFrameworkCore
 {
     /* This class is needed for EF Core console commands
      * (like Add-Migration and Update-Database commands) */
-    public class IdentityMigrationsDbContextFactory : IDesignTimeDbContextFactory<IdentityMigrationsDbContext>
+    public class MigrationsDbContextFactory : IDesignTimeDbContextFactory<MigrationsDbContext>
     {
-        public IdentityMigrationsDbContext CreateDbContext(string[] args)
+        public MigrationsDbContext CreateDbContext(string[] args)
         {
             var configuration = BuildConfiguration();
 
-            var builder = new DbContextOptionsBuilder<IdentityMigrationsDbContext>()
+            var builder = new DbContextOptionsBuilder<MigrationsDbContext>()
                 .UseSqlServer(configuration.GetConnectionString("Default"));
 
-            return new IdentityMigrationsDbContext(builder.Options);
+            return new MigrationsDbContext(builder.Options);
         }
 
         private static IConfigurationRoot BuildConfiguration()

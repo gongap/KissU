@@ -13,7 +13,7 @@ namespace KissU.Modules.Identity.DbMigrator
     {
         public async Task StartAsync(CancellationToken cancellationToken)
         {
-            using (var application = AbpApplicationFactory.Create<IdentityDbMigratorModule>(options =>
+            using (var application = AbpApplicationFactory.Create<DbMigratorModule>(options =>
             {
                 options.UseAutofac();
                 options.Services.AddLogging(c => c.AddSerilog());
@@ -23,7 +23,7 @@ namespace KissU.Modules.Identity.DbMigrator
 
                 await application
                     .ServiceProvider
-                    .GetRequiredService<IdentityDbMigrationService>()
+                    .GetRequiredService<DbMigrationService>()
                     .MigrateAsync();
 
                 application.Shutdown();

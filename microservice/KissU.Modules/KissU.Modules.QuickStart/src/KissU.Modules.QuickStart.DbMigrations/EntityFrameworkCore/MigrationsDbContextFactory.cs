@@ -7,18 +7,18 @@ namespace KissU.Modules.QuickStart.EntityFrameworkCore
 {
     /* This class is needed for EF Core console commands
      * (like Add-Migration and Update-Database commands) */
-    public class QuickStartMigrationsDbContextFactory : IDesignTimeDbContextFactory<QuickStartMigrationsDbContext>
+    public class MigrationsDbContextFactory : IDesignTimeDbContextFactory<MigrationsDbContext>
     {
-        public QuickStartMigrationsDbContext CreateDbContext(string[] args)
+        public MigrationsDbContext CreateDbContext(string[] args)
         {
             QuickStartEfCoreEntityExtensionMappings.Configure();
             
             var configuration = BuildConfiguration();
 
-            var builder = new DbContextOptionsBuilder<QuickStartMigrationsDbContext>()
+            var builder = new DbContextOptionsBuilder<MigrationsDbContext>()
                 .UseSqlServer(configuration.GetConnectionString("Default"));
 
-            return new QuickStartMigrationsDbContext(builder.Options);
+            return new MigrationsDbContext(builder.Options);
         }
 
         private static IConfigurationRoot BuildConfiguration()

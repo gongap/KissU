@@ -13,7 +13,7 @@ namespace KissU.Modules.QuickStart.DbMigrator
     {
         public async Task StartAsync(CancellationToken cancellationToken)
         {
-            using (var application = AbpApplicationFactory.Create<QuickStartDbMigratorModule>(options =>
+            using (var application = AbpApplicationFactory.Create<DbMigratorModule>(options =>
             {
                 options.UseAutofac();
                 options.Services.AddLogging(c => c.AddSerilog());

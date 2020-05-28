@@ -9,9 +9,9 @@ namespace KissU.Modules.Identity.DbMigrations.EntityFrameworkCore
      * It is a unified model that includes configuration for
      * all used modules and your application.
      */
-    public class IdentityMigrationsDbContext : AbpDbContext<IdentityMigrationsDbContext>
+    public class MigrationsDbContext : AbpDbContext<MigrationsDbContext>
     {
-        public IdentityMigrationsDbContext(DbContextOptions<IdentityMigrationsDbContext> options) 
+        public MigrationsDbContext(DbContextOptions<MigrationsDbContext> options) 
             : base(options)
         {
         }

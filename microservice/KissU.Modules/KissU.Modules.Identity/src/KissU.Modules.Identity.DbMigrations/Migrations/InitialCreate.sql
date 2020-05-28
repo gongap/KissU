@@ -231,7 +231,7 @@ CREATE INDEX [IX_AbpUsers_UserName] ON [AbpUsers] ([UserName]);
 GO
 
 INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-VALUES (N'20200528081719_InitialCreate', N'3.1.2');
+VALUES (N'20200528123425_InitialCreate', N'3.1.2');
 
 GO
 

@@ -6,12 +6,12 @@ using Volo.Abp.DependencyInjection;
 namespace KissU.Modules.QuickStart.EntityFrameworkCore
 {
     [Dependency(ReplaceServices = true)]
-    public class EntityFrameworkCoreQuickStartDbSchemaMigrator 
+    public class EntityFrameworkCoreDbSchemaMigrator 
         : IQuickStartDbSchemaMigrator, ITransientDependency
     {
-        private readonly QuickStartMigrationsDbContext _dbContext;
+        private readonly MigrationsDbContext _dbContext;
 
-        public EntityFrameworkCoreQuickStartDbSchemaMigrator(QuickStartMigrationsDbContext dbContext)
+        public EntityFrameworkCoreDbSchemaMigrator(MigrationsDbContext dbContext)
         {
             _dbContext = dbContext;
         }

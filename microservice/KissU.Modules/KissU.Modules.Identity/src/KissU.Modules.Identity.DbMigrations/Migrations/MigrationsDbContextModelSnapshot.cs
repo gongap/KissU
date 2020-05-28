@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace KissU.Modules.Identity.DbMigrations.Migrations
 {
-    [DbContext(typeof(IdentityMigrationsDbContext))]
-    partial class IdentityMigrationsDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(MigrationsDbContext))]
+    partial class MigrationsDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
