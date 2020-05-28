@@ -14,10 +14,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.Users.EntityFrameworkCore" Version="2.8.0" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\..\..\KissU.Modules.Users\src\KissU.Modules.Users.EntityFrameworkCore\KissU.Modules.Users.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\KissU.Modules.Identity.Domain\KissU.Modules.Identity.Domain.csproj" />
   </ItemGroup>
   

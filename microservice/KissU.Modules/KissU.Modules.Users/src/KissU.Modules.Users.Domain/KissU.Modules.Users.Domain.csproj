@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\..\configureawait.props" />
+  <Import Project="..\..\..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <RootNamespace />
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Ddd.Domain" Version="2.8.0" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\KissU.Modules.Users.Abstractions\KissU.Modules.Users.Abstractions.csproj" />
+    <ProjectReference Include="..\KissU.Modules.Users.Domain.Shared\KissU.Modules.Users.Domain.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

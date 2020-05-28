@@ -32,7 +32,7 @@ namespace KissU.Modules.QuickStart.Service.Implements
         public async Task<PagedResult<BookDto>> GetListAsync(PagedAndSortedResultRequestDto input)
         {
             var result = await _appService.GetListAsync(input);
-            return result.MapTo<PagedResult<BookDto>>();
+            return new PagedResult<BookDto>(result.TotalCount, result.Items);
         }
 
         public Task<BookDto> CreateAsync(CreateUpdateBookDto input)
