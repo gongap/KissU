@@ -200,6 +200,22 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Identity.Appl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Identity.Application.Contracts", "microservice\KissU.Modules\KissU.Modules.Identity\src\KissU.Modules.Identity.Application.Contracts\KissU.Modules.Identity.Application.Contracts.csproj", "{65478E9F-E3F7-4A41-A36B-E5C45CD7B5B5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PermissionManagement", "PermissionManagement", "{C570117C-CCEC-43EC-9BB2-B9D0FFF927B1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.PermissionManagement.Domain.Shared", "microservice\KissU.Modules\KissU.Modules.PermissionManagement\src\KissU.Modules.PermissionManagement.Domain.Shared\KissU.Modules.PermissionManagement.Domain.Shared.csproj", "{66B94BD3-21D1-4838-B492-A64E3E2BFA70}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.PermissionManagement.Domain", "microservice\KissU.Modules\KissU.Modules.PermissionManagement\src\KissU.Modules.PermissionManagement.Domain\KissU.Modules.PermissionManagement.Domain.csproj", "{EAD03ABE-6FAA-48FC-8A3D-2A0C12E2B8C1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.PermissionManagement.EntityFrameworkCore", "microservice\KissU.Modules\KissU.Modules.PermissionManagement\src\KissU.Modules.PermissionManagement.EntityFrameworkCore\KissU.Modules.PermissionManagement.EntityFrameworkCore.csproj", "{C7A91C91-CC10-442D-99EF-3E1A07528E0C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.PermissionManagement.Application.Contracts", "microservice\KissU.Modules\KissU.Modules.PermissionManagement\src\KissU.Modules.PermissionManagement.Application.Contracts\KissU.Modules.PermissionManagement.Application.Contracts.csproj", "{76B1958B-4C1F-47B2-94FC-AED0E6BF2B59}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.PermissionManagement.Application", "microservice\KissU.Modules\KissU.Modules.PermissionManagement\src\KissU.Modules.PermissionManagement.Application\KissU.Modules.PermissionManagement.Application.csproj", "{1B22430E-A438-4435-842F-60EDE2DDD16C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{47461177-B541-44A9-97CF-6185A71A8A88}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{3DCB8D5D-8A70-46E3-830E-DF59C4015A0C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -486,6 +502,26 @@ Global
 		{65478E9F-E3F7-4A41-A36B-E5C45CD7B5B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65478E9F-E3F7-4A41-A36B-E5C45CD7B5B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65478E9F-E3F7-4A41-A36B-E5C45CD7B5B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66B94BD3-21D1-4838-B492-A64E3E2BFA70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66B94BD3-21D1-4838-B492-A64E3E2BFA70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66B94BD3-21D1-4838-B492-A64E3E2BFA70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66B94BD3-21D1-4838-B492-A64E3E2BFA70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAD03ABE-6FAA-48FC-8A3D-2A0C12E2B8C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAD03ABE-6FAA-48FC-8A3D-2A0C12E2B8C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAD03ABE-6FAA-48FC-8A3D-2A0C12E2B8C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAD03ABE-6FAA-48FC-8A3D-2A0C12E2B8C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7A91C91-CC10-442D-99EF-3E1A07528E0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7A91C91-CC10-442D-99EF-3E1A07528E0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7A91C91-CC10-442D-99EF-3E1A07528E0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7A91C91-CC10-442D-99EF-3E1A07528E0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76B1958B-4C1F-47B2-94FC-AED0E6BF2B59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76B1958B-4C1F-47B2-94FC-AED0E6BF2B59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76B1958B-4C1F-47B2-94FC-AED0E6BF2B59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76B1958B-4C1F-47B2-94FC-AED0E6BF2B59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B22430E-A438-4435-842F-60EDE2DDD16C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B22430E-A438-4435-842F-60EDE2DDD16C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B22430E-A438-4435-842F-60EDE2DDD16C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B22430E-A438-4435-842F-60EDE2DDD16C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -581,6 +617,14 @@ Global
 		{303BDBB3-9F23-4623-BE7D-99A751289770} = {12491F0A-1011-48C0-B40D-72FF82CE3F7D}
 		{FB8FFA08-9B59-474A-9736-90ED182C3336} = {12491F0A-1011-48C0-B40D-72FF82CE3F7D}
 		{65478E9F-E3F7-4A41-A36B-E5C45CD7B5B5} = {12491F0A-1011-48C0-B40D-72FF82CE3F7D}
+		{C570117C-CCEC-43EC-9BB2-B9D0FFF927B1} = {EBA864A3-39C4-4279-A823-35BA7EF2469A}
+		{66B94BD3-21D1-4838-B492-A64E3E2BFA70} = {47461177-B541-44A9-97CF-6185A71A8A88}
+		{EAD03ABE-6FAA-48FC-8A3D-2A0C12E2B8C1} = {47461177-B541-44A9-97CF-6185A71A8A88}
+		{C7A91C91-CC10-442D-99EF-3E1A07528E0C} = {47461177-B541-44A9-97CF-6185A71A8A88}
+		{76B1958B-4C1F-47B2-94FC-AED0E6BF2B59} = {47461177-B541-44A9-97CF-6185A71A8A88}
+		{1B22430E-A438-4435-842F-60EDE2DDD16C} = {47461177-B541-44A9-97CF-6185A71A8A88}
+		{47461177-B541-44A9-97CF-6185A71A8A88} = {C570117C-CCEC-43EC-9BB2-B9D0FFF927B1}
+		{3DCB8D5D-8A70-46E3-830E-DF59C4015A0C} = {C570117C-CCEC-43EC-9BB2-B9D0FFF927B1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}
