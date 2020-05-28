@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\..\common.props" />
+  <Import Project="..\..\..\..\..\configureawait.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>KissU.Modules.PermissionManagement.Domain.Identity</AssemblyName>
+    <PackageId>KissU.Modules.PermissionManagement.Domain.Identity</PackageId>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <RootNamespace />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\KissU.Modules.PermissionManagement\src\KissU.Modules.PermissionManagement.Domain\KissU.Modules.PermissionManagement.Domain.csproj" />
+    <ProjectReference Include="..\KissU.Modules.Identity.Domain\KissU.Modules.Identity.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

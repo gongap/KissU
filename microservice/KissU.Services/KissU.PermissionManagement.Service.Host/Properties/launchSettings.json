@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "KissU.PermissionManagement.Service.Host": {
+      "commandName": "Project",
+      "nativeDebugging": false
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
