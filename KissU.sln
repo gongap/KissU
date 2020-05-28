@@ -304,6 +304,24 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.TenantManagement.Serv
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.TenantManagement.DbMigrations", "microservice\KissU.Modules\KissU.Modules.TenantManagement\src\KissU.Modules.TenantManagement.DbMigrations\KissU.Modules.TenantManagement.DbMigrations.csproj", "{46E79B65-8448-45E2-958E-0B85B024E891}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AuditLogging", "AuditLogging", "{2DCFD96E-1B8A-4788-A681-B745FD04A2C6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8B53B072-44E1-480D-9B73-230E433EBBF0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{76574AED-6AA6-40A7-8867-07EDF743AA9A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.AuditLogging.Domain", "microservice\KissU.Modules\KissU.Modules.AuditLogging\src\KissU.Modules.AuditLogging.Domain\KissU.Modules.AuditLogging.Domain.csproj", "{65DC5477-AFDF-4280-BE4F-62789EB0A291}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.AuditLogging.Domain.Shared", "microservice\KissU.Modules\KissU.Modules.AuditLogging\src\KissU.Modules.AuditLogging.Domain.Shared\KissU.Modules.AuditLogging.Domain.Shared.csproj", "{99D3B19F-3187-4CA6-A06B-56B517341BBE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.AuditLogging.EntityFrameworkCore", "microservice\KissU.Modules\KissU.Modules.AuditLogging\src\KissU.Modules.AuditLogging.EntityFrameworkCore\KissU.Modules.AuditLogging.EntityFrameworkCore.csproj", "{D8B368CA-E604-4739-8937-9B4E00FCA2E2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.AuditLogging.MongoDB", "microservice\KissU.Modules\KissU.Modules.AuditLogging\src\KissU.Modules.AuditLogging.MongoDB\KissU.Modules.AuditLogging.MongoDB.csproj", "{CB7185D5-9A1F-4FB0-B9EB-9002BF11987B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.AuditLogging.DbMigrations", "microservice\KissU.Modules\KissU.Modules.AuditLogging\src\KissU.Modules.AuditLogging.DbMigrations\KissU.Modules.AuditLogging.DbMigrations.csproj", "{CB62C54A-4578-4482-B4E3-FF25042C9567}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.AuditLogging.DbMigrator", "microservice\KissU.Modules\KissU.Modules.AuditLogging\src\KissU.Modules.AuditLogging.DbMigrator\KissU.Modules.AuditLogging.DbMigrator.csproj", "{6F755BE8-E2C1-4FE7-89C8-5A8D7399A441}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -746,6 +764,30 @@ Global
 		{46E79B65-8448-45E2-958E-0B85B024E891}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46E79B65-8448-45E2-958E-0B85B024E891}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46E79B65-8448-45E2-958E-0B85B024E891}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65DC5477-AFDF-4280-BE4F-62789EB0A291}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65DC5477-AFDF-4280-BE4F-62789EB0A291}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65DC5477-AFDF-4280-BE4F-62789EB0A291}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65DC5477-AFDF-4280-BE4F-62789EB0A291}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99D3B19F-3187-4CA6-A06B-56B517341BBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99D3B19F-3187-4CA6-A06B-56B517341BBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99D3B19F-3187-4CA6-A06B-56B517341BBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99D3B19F-3187-4CA6-A06B-56B517341BBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8B368CA-E604-4739-8937-9B4E00FCA2E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8B368CA-E604-4739-8937-9B4E00FCA2E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8B368CA-E604-4739-8937-9B4E00FCA2E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8B368CA-E604-4739-8937-9B4E00FCA2E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB7185D5-9A1F-4FB0-B9EB-9002BF11987B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB7185D5-9A1F-4FB0-B9EB-9002BF11987B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB7185D5-9A1F-4FB0-B9EB-9002BF11987B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB7185D5-9A1F-4FB0-B9EB-9002BF11987B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB62C54A-4578-4482-B4E3-FF25042C9567}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB62C54A-4578-4482-B4E3-FF25042C9567}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB62C54A-4578-4482-B4E3-FF25042C9567}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB62C54A-4578-4482-B4E3-FF25042C9567}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F755BE8-E2C1-4FE7-89C8-5A8D7399A441}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F755BE8-E2C1-4FE7-89C8-5A8D7399A441}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F755BE8-E2C1-4FE7-89C8-5A8D7399A441}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F755BE8-E2C1-4FE7-89C8-5A8D7399A441}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -893,6 +935,15 @@ Global
 		{7FDB65A1-92B1-4642-83AE-3E529B5F661E} = {AEB1DABC-31D5-4335-8EEC-A9967DCEA25A}
 		{B1A445BA-5E4A-4E73-B473-8DD7E232D2A3} = {B4367C3C-5645-40C3-953C-466D82432072}
 		{46E79B65-8448-45E2-958E-0B85B024E891} = {AEB1DABC-31D5-4335-8EEC-A9967DCEA25A}
+		{2DCFD96E-1B8A-4788-A681-B745FD04A2C6} = {EBA864A3-39C4-4279-A823-35BA7EF2469A}
+		{8B53B072-44E1-480D-9B73-230E433EBBF0} = {2DCFD96E-1B8A-4788-A681-B745FD04A2C6}
+		{76574AED-6AA6-40A7-8867-07EDF743AA9A} = {2DCFD96E-1B8A-4788-A681-B745FD04A2C6}
+		{65DC5477-AFDF-4280-BE4F-62789EB0A291} = {8B53B072-44E1-480D-9B73-230E433EBBF0}
+		{99D3B19F-3187-4CA6-A06B-56B517341BBE} = {8B53B072-44E1-480D-9B73-230E433EBBF0}
+		{D8B368CA-E604-4739-8937-9B4E00FCA2E2} = {8B53B072-44E1-480D-9B73-230E433EBBF0}
+		{CB7185D5-9A1F-4FB0-B9EB-9002BF11987B} = {8B53B072-44E1-480D-9B73-230E433EBBF0}
+		{CB62C54A-4578-4482-B4E3-FF25042C9567} = {8B53B072-44E1-480D-9B73-230E433EBBF0}
+		{6F755BE8-E2C1-4FE7-89C8-5A8D7399A441} = {8B53B072-44E1-480D-9B73-230E433EBBF0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}
