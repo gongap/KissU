@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\..\configureawait.props" />
+  <Import Project="..\..\..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.AutoMapper" Version="2.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KissU.Modules.FeatureManagement.Application.Contracts\KissU.Modules.FeatureManagement.Application.Contracts.csproj" />
+    <ProjectReference Include="..\KissU.Modules.FeatureManagement.Domain\KissU.Modules.FeatureManagement.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

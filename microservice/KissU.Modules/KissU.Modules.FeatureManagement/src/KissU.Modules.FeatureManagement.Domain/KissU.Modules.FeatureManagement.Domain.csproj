@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\..\configureawait.props" />
+  <Import Project="..\..\..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Ddd.Domain" Version="2.8.0" />
+    <PackageReference Include="Volo.Abp.Features" Version="2.8.0" />
+    <PackageReference Include="Volo.Abp.Caching" Version="2.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KissU.Modules.FeatureManagement.Domain.Shared\KissU.Modules.FeatureManagement.Domain.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -28,18 +28,33 @@ namespace KissU.Modules.Identity.DbMigrations.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AbpPermissionGrants",
+                name: "AbpOrganizationUnits",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
+                    ExtraProperties = table.Column<string>(nullable: true),
+                    ConcurrencyStamp = table.Column<string>(nullable: true),
+                    CreationTime = table.Column<DateTime>(nullable: false),
+                    CreatorId = table.Column<Guid>(nullable: true),
+                    LastModificationTime = table.Column<DateTime>(nullable: true),
+                    LastModifierId = table.Column<Guid>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false, defaultValue: false),
+                    DeleterId = table.Column<Guid>(nullable: true),
+                    DeletionTime = table.Column<DateTime>(nullable: true),
                     TenantId = table.Column<Guid>(nullable: true),
-                    Name = table.Column<string>(maxLength: 128, nullable: false),
-                    ProviderName = table.Column<string>(maxLength: 64, nullable: false),
-                    ProviderKey = table.Column<string>(maxLength: 64, nullable: false)
+                    ParentId = table.Column<Guid>(nullable: true),
+                    Code = table.Column<string>(maxLength: 95, nullable: false),
+                    DisplayName = table.Column<string>(maxLength: 128, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AbpPermissionGrants", x => x.Id);
+                    table.PrimaryKey("PK_AbpOrganizationUnits", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AbpOrganizationUnits_AbpOrganizationUnits_ParentId",
+                        column: x => x.ParentId,
+                        principalTable: "AbpOrganizationUnits",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -59,21 +74,6 @@ namespace KissU.Modules.Identity.DbMigrations.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AbpRoles", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AbpSettings",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(nullable: false),
-                    Name = table.Column<string>(maxLength: 128, nullable: false),
-                    Value = table.Column<string>(maxLength: 2048, nullable: false),
-                    ProviderName = table.Column<string>(maxLength: 64, nullable: true),
-                    ProviderKey = table.Column<string>(maxLength: 64, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AbpSettings", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -110,6 +110,33 @@ namespace KissU.Modules.Identity.DbMigrations.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AbpUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AbpOrganizationUnitRoles",
+                columns: table => new
+                {
+                    RoleId = table.Column<Guid>(nullable: false),
+                    OrganizationUnitId = table.Column<Guid>(nullable: false),
+                    CreationTime = table.Column<DateTime>(nullable: false),
+                    CreatorId = table.Column<Guid>(nullable: true),
+                    TenantId = table.Column<Guid>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AbpOrganizationUnitRoles", x => new { x.OrganizationUnitId, x.RoleId });
+                    table.ForeignKey(
+                        name: "FK_AbpOrganizationUnitRoles_AbpOrganizationUnits_OrganizationUnitId",
+                        column: x => x.OrganizationUnitId,
+                        principalTable: "AbpOrganizationUnits",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AbpOrganizationUnitRoles_AbpRoles_RoleId",
+                        column: x => x.RoleId,
+                        principalTable: "AbpRoles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -176,6 +203,33 @@ namespace KissU.Modules.Identity.DbMigrations.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "AbpUserOrganizationUnits",
+                columns: table => new
+                {
+                    UserId = table.Column<Guid>(nullable: false),
+                    OrganizationUnitId = table.Column<Guid>(nullable: false),
+                    CreationTime = table.Column<DateTime>(nullable: false),
+                    CreatorId = table.Column<Guid>(nullable: true),
+                    TenantId = table.Column<Guid>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AbpUserOrganizationUnits", x => new { x.OrganizationUnitId, x.UserId });
+                    table.ForeignKey(
+                        name: "FK_AbpUserOrganizationUnits_AbpOrganizationUnits_OrganizationUnitId",
+                        column: x => x.OrganizationUnitId,
+                        principalTable: "AbpOrganizationUnits",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AbpUserOrganizationUnits_AbpUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AbpUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AbpUserRoles",
                 columns: table => new
                 {
@@ -222,9 +276,19 @@ namespace KissU.Modules.Identity.DbMigrations.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_AbpPermissionGrants_Name_ProviderName_ProviderKey",
-                table: "AbpPermissionGrants",
-                columns: new[] { "Name", "ProviderName", "ProviderKey" });
+                name: "IX_AbpOrganizationUnitRoles_RoleId_OrganizationUnitId",
+                table: "AbpOrganizationUnitRoles",
+                columns: new[] { "RoleId", "OrganizationUnitId" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AbpOrganizationUnits_Code",
+                table: "AbpOrganizationUnits",
+                column: "Code");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AbpOrganizationUnits_ParentId",
+                table: "AbpOrganizationUnits",
+                column: "ParentId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AbpRoleClaims_RoleId",
@@ -237,11 +301,6 @@ namespace KissU.Modules.Identity.DbMigrations.Migrations
                 column: "NormalizedName");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AbpSettings_Name_ProviderName_ProviderKey",
-                table: "AbpSettings",
-                columns: new[] { "Name", "ProviderName", "ProviderKey" });
-
-            migrationBuilder.CreateIndex(
                 name: "IX_AbpUserClaims_UserId",
                 table: "AbpUserClaims",
                 column: "UserId");
@@ -250,6 +309,11 @@ namespace KissU.Modules.Identity.DbMigrations.Migrations
                 name: "IX_AbpUserLogins_LoginProvider_ProviderKey",
                 table: "AbpUserLogins",
                 columns: new[] { "LoginProvider", "ProviderKey" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AbpUserOrganizationUnits_UserId_OrganizationUnitId",
+                table: "AbpUserOrganizationUnits",
+                columns: new[] { "UserId", "OrganizationUnitId" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AbpUserRoles_RoleId_UserId",
@@ -283,13 +347,10 @@ namespace KissU.Modules.Identity.DbMigrations.Migrations
                 name: "AbpClaimTypes");
 
             migrationBuilder.DropTable(
-                name: "AbpPermissionGrants");
+                name: "AbpOrganizationUnitRoles");
 
             migrationBuilder.DropTable(
                 name: "AbpRoleClaims");
-
-            migrationBuilder.DropTable(
-                name: "AbpSettings");
 
             migrationBuilder.DropTable(
                 name: "AbpUserClaims");
@@ -298,10 +359,16 @@ namespace KissU.Modules.Identity.DbMigrations.Migrations
                 name: "AbpUserLogins");
 
             migrationBuilder.DropTable(
+                name: "AbpUserOrganizationUnits");
+
+            migrationBuilder.DropTable(
                 name: "AbpUserRoles");
 
             migrationBuilder.DropTable(
                 name: "AbpUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "AbpOrganizationUnits");
 
             migrationBuilder.DropTable(
                 name: "AbpRoles");

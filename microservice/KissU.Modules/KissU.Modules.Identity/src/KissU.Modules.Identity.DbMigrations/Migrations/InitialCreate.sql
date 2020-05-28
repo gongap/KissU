@@ -25,13 +25,23 @@ CREATE TABLE [AbpClaimTypes] (
 
 GO
 
-CREATE TABLE [AbpPermissionGrants] (
+CREATE TABLE [AbpOrganizationUnits] (
     [Id] uniqueidentifier NOT NULL,
+    [ExtraProperties] nvarchar(max) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    [CreationTime] datetime2 NOT NULL,
+    [CreatorId] uniqueidentifier NULL,
+    [LastModificationTime] datetime2 NULL,
+    [LastModifierId] uniqueidentifier NULL,
+    [IsDeleted] bit NOT NULL DEFAULT CAST(0 AS bit),
+    [DeleterId] uniqueidentifier NULL,
+    [DeletionTime] datetime2 NULL,
     [TenantId] uniqueidentifier NULL,
-    [Name] nvarchar(128) NOT NULL,
-    [ProviderName] nvarchar(64) NOT NULL,
-    [ProviderKey] nvarchar(64) NOT NULL,
-    CONSTRAINT [PK_AbpPermissionGrants] PRIMARY KEY ([Id])
+    [ParentId] uniqueidentifier NULL,
+    [Code] nvarchar(95) NOT NULL,
+    [DisplayName] nvarchar(128) NOT NULL,
+    CONSTRAINT [PK_AbpOrganizationUnits] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_AbpOrganizationUnits_AbpOrganizationUnits_ParentId] FOREIGN KEY ([ParentId]) REFERENCES [AbpOrganizationUnits] ([Id]) ON DELETE NO ACTION
 );
 
 GO
@@ -47,17 +57,6 @@ CREATE TABLE [AbpRoles] (
     [IsStatic] bit NOT NULL,
     [IsPublic] bit NOT NULL,
     CONSTRAINT [PK_AbpRoles] PRIMARY KEY ([Id])
-);
-
-GO
-
-CREATE TABLE [AbpSettings] (
-    [Id] uniqueidentifier NOT NULL,
-    [Name] nvarchar(128) NOT NULL,
-    [Value] nvarchar(2048) NOT NULL,
-    [ProviderName] nvarchar(64) NULL,
-    [ProviderKey] nvarchar(64) NULL,
-    CONSTRAINT [PK_AbpSettings] PRIMARY KEY ([Id])
 );
 
 GO
@@ -90,6 +89,19 @@ CREATE TABLE [AbpUsers] (
     [LockoutEnabled] bit NOT NULL DEFAULT CAST(0 AS bit),
     [AccessFailedCount] int NOT NULL DEFAULT 0,
     CONSTRAINT [PK_AbpUsers] PRIMARY KEY ([Id])
+);
+
+GO
+
+CREATE TABLE [AbpOrganizationUnitRoles] (
+    [RoleId] uniqueidentifier NOT NULL,
+    [OrganizationUnitId] uniqueidentifier NOT NULL,
+    [CreationTime] datetime2 NOT NULL,
+    [CreatorId] uniqueidentifier NULL,
+    [TenantId] uniqueidentifier NULL,
+    CONSTRAINT [PK_AbpOrganizationUnitRoles] PRIMARY KEY ([OrganizationUnitId], [RoleId]),
+    CONSTRAINT [FK_AbpOrganizationUnitRoles_AbpOrganizationUnits_OrganizationUnitId] FOREIGN KEY ([OrganizationUnitId]) REFERENCES [AbpOrganizationUnits] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_AbpOrganizationUnitRoles_AbpRoles_RoleId] FOREIGN KEY ([RoleId]) REFERENCES [AbpRoles] ([Id]) ON DELETE CASCADE
 );
 
 GO
@@ -130,6 +142,19 @@ CREATE TABLE [AbpUserLogins] (
 
 GO
 
+CREATE TABLE [AbpUserOrganizationUnits] (
+    [UserId] uniqueidentifier NOT NULL,
+    [OrganizationUnitId] uniqueidentifier NOT NULL,
+    [CreationTime] datetime2 NOT NULL,
+    [CreatorId] uniqueidentifier NULL,
+    [TenantId] uniqueidentifier NULL,
+    CONSTRAINT [PK_AbpUserOrganizationUnits] PRIMARY KEY ([OrganizationUnitId], [UserId]),
+    CONSTRAINT [FK_AbpUserOrganizationUnits_AbpOrganizationUnits_OrganizationUnitId] FOREIGN KEY ([OrganizationUnitId]) REFERENCES [AbpOrganizationUnits] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_AbpUserOrganizationUnits_AbpUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [AbpUsers] ([Id]) ON DELETE CASCADE
+);
+
+GO
+
 CREATE TABLE [AbpUserRoles] (
     [UserId] uniqueidentifier NOT NULL,
     [RoleId] uniqueidentifier NOT NULL,
@@ -153,7 +178,15 @@ CREATE TABLE [AbpUserTokens] (
 
 GO
 
-CREATE INDEX [IX_AbpPermissionGrants_Name_ProviderName_ProviderKey] ON [AbpPermissionGrants] ([Name], [ProviderName], [ProviderKey]);
+CREATE INDEX [IX_AbpOrganizationUnitRoles_RoleId_OrganizationUnitId] ON [AbpOrganizationUnitRoles] ([RoleId], [OrganizationUnitId]);
+
+GO
+
+CREATE INDEX [IX_AbpOrganizationUnits_Code] ON [AbpOrganizationUnits] ([Code]);
+
+GO
+
+CREATE INDEX [IX_AbpOrganizationUnits_ParentId] ON [AbpOrganizationUnits] ([ParentId]);
 
 GO
 
@@ -165,15 +198,15 @@ CREATE INDEX [IX_AbpRoles_NormalizedName] ON [AbpRoles] ([NormalizedName]);
 
 GO
 
-CREATE INDEX [IX_AbpSettings_Name_ProviderName_ProviderKey] ON [AbpSettings] ([Name], [ProviderName], [ProviderKey]);
-
-GO
-
 CREATE INDEX [IX_AbpUserClaims_UserId] ON [AbpUserClaims] ([UserId]);
 
 GO
 
 CREATE INDEX [IX_AbpUserLogins_LoginProvider_ProviderKey] ON [AbpUserLogins] ([LoginProvider], [ProviderKey]);
+
+GO
+
+CREATE INDEX [IX_AbpUserOrganizationUnits_UserId_OrganizationUnitId] ON [AbpUserOrganizationUnits] ([UserId], [OrganizationUnitId]);
 
 GO
 
@@ -198,7 +231,7 @@ CREATE INDEX [IX_AbpUsers_UserName] ON [AbpUsers] ([UserName]);
 GO
 
 INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-VALUES (N'20200526122207_InitialCreate', N'3.1.2');
+VALUES (N'20200528081719_InitialCreate', N'3.1.2');
 
 GO
 

@@ -9,23 +9,23 @@ END;
 
 GO
 
-CREATE TABLE [AbpPermissionGrants] (
+CREATE TABLE [AbpFeatureValues] (
     [Id] uniqueidentifier NOT NULL,
-    [TenantId] uniqueidentifier NULL,
     [Name] nvarchar(128) NOT NULL,
-    [ProviderName] nvarchar(64) NOT NULL,
-    [ProviderKey] nvarchar(64) NOT NULL,
-    CONSTRAINT [PK_AbpPermissionGrants] PRIMARY KEY ([Id])
+    [Value] nvarchar(128) NOT NULL,
+    [ProviderName] nvarchar(64) NULL,
+    [ProviderKey] nvarchar(64) NULL,
+    CONSTRAINT [PK_AbpFeatureValues] PRIMARY KEY ([Id])
 );
 
 GO
 
-CREATE INDEX [IX_AbpPermissionGrants_Name_ProviderName_ProviderKey] ON [AbpPermissionGrants] ([Name], [ProviderName], [ProviderKey]);
+CREATE INDEX [IX_AbpFeatureValues_Name_ProviderName_ProviderKey] ON [AbpFeatureValues] ([Name], [ProviderName], [ProviderKey]);
 
 GO
 
 INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-VALUES (N'20200528081920_InitialCreate', N'3.1.2');
+VALUES (N'20200528081502_InitialCreate', N'3.1.2');
 
 GO
 
