@@ -119,14 +119,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.SampleB.Servi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.SampleB.Service.Contracts", "microservice\KissU.Modules\KissU.Modules.Sample\src\KissU.Modules.SampleB.Service.Contracts\KissU.Modules.SampleB.Service.Contracts.csproj", "{AC3A4B16-E84B-4F7F-9F89-EE6648F329C8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.QuickStart.Application.Tests", "microservice\KissU.Modules\KissU.Modules.QuickStart\test\KissU.Modules.QuickStart.Application.Tests\KissU.Modules.QuickStart.Application.Tests.csproj", "{875F3E66-96D3-4AC4-B471-FB3F21772517}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.QuickStart.Domain.Tests", "microservice\KissU.Modules\KissU.Modules.QuickStart\test\KissU.Modules.QuickStart.Domain.Tests\KissU.Modules.QuickStart.Domain.Tests.csproj", "{E6030D3C-68D8-45E2-B032-65DD93EC56DF}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.QuickStart.EntityFrameworkCore.Tests", "microservice\KissU.Modules\KissU.Modules.QuickStart\test\KissU.Modules.QuickStart.EntityFrameworkCore.Tests\KissU.Modules.QuickStart.EntityFrameworkCore.Tests.csproj", "{A1F502F2-E373-433D-B1DC-7B66D2DD4201}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.QuickStart.TestBase", "microservice\KissU.Modules\KissU.Modules.QuickStart\test\KissU.Modules.QuickStart.TestBase\KissU.Modules.QuickStart.TestBase.csproj", "{56FDA402-3B5A-4E0E-A295-2C6864A98A7E}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.QuickStart.DbMigrator", "microservice\KissU.Modules\KissU.Modules.QuickStart\src\KissU.Modules.QuickStart.DbMigrator\KissU.Modules.QuickStart.DbMigrator.csproj", "{14A955D2-DCD7-4A42-BC0C-0AF3ACE08C78}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.QuickStart.EntityFrameworkCore.DbMigrations", "microservice\KissU.Modules\KissU.Modules.QuickStart\src\KissU.Modules.QuickStart.EntityFrameworkCore.DbMigrations\KissU.Modules.QuickStart.EntityFrameworkCore.DbMigrations.csproj", "{772BCAA7-DD5A-485D-9D5F-BD7E34EC6E27}"
@@ -490,22 +482,6 @@ Global
 		{AC3A4B16-E84B-4F7F-9F89-EE6648F329C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC3A4B16-E84B-4F7F-9F89-EE6648F329C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC3A4B16-E84B-4F7F-9F89-EE6648F329C8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{875F3E66-96D3-4AC4-B471-FB3F21772517}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{875F3E66-96D3-4AC4-B471-FB3F21772517}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{875F3E66-96D3-4AC4-B471-FB3F21772517}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{875F3E66-96D3-4AC4-B471-FB3F21772517}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E6030D3C-68D8-45E2-B032-65DD93EC56DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E6030D3C-68D8-45E2-B032-65DD93EC56DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E6030D3C-68D8-45E2-B032-65DD93EC56DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E6030D3C-68D8-45E2-B032-65DD93EC56DF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A1F502F2-E373-433D-B1DC-7B66D2DD4201}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A1F502F2-E373-433D-B1DC-7B66D2DD4201}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A1F502F2-E373-433D-B1DC-7B66D2DD4201}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A1F502F2-E373-433D-B1DC-7B66D2DD4201}.Release|Any CPU.Build.0 = Release|Any CPU
-		{56FDA402-3B5A-4E0E-A295-2C6864A98A7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{56FDA402-3B5A-4E0E-A295-2C6864A98A7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{56FDA402-3B5A-4E0E-A295-2C6864A98A7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{56FDA402-3B5A-4E0E-A295-2C6864A98A7E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{14A955D2-DCD7-4A42-BC0C-0AF3ACE08C78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{14A955D2-DCD7-4A42-BC0C-0AF3ACE08C78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14A955D2-DCD7-4A42-BC0C-0AF3ACE08C78}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -831,10 +807,6 @@ Global
 		{AC9516AB-56AD-4D81-B53A-CCE2D640B564} = {FD143243-F931-4DCF-BD88-5EECC179F68C}
 		{9B809F3E-5912-4518-9769-4510DCA238E4} = {FD143243-F931-4DCF-BD88-5EECC179F68C}
 		{AC3A4B16-E84B-4F7F-9F89-EE6648F329C8} = {FD143243-F931-4DCF-BD88-5EECC179F68C}
-		{875F3E66-96D3-4AC4-B471-FB3F21772517} = {5D487DC6-2953-46AA-A458-66AD5152E946}
-		{E6030D3C-68D8-45E2-B032-65DD93EC56DF} = {5D487DC6-2953-46AA-A458-66AD5152E946}
-		{A1F502F2-E373-433D-B1DC-7B66D2DD4201} = {5D487DC6-2953-46AA-A458-66AD5152E946}
-		{56FDA402-3B5A-4E0E-A295-2C6864A98A7E} = {5D487DC6-2953-46AA-A458-66AD5152E946}
 		{14A955D2-DCD7-4A42-BC0C-0AF3ACE08C78} = {1D34F083-4723-4647-8B3D-AA9727CA29CB}
 		{772BCAA7-DD5A-485D-9D5F-BD7E34EC6E27} = {1D34F083-4723-4647-8B3D-AA9727CA29CB}
 		{CD47BD54-73E8-429E-90D4-D130E0D6F12D} = {EBA864A3-39C4-4279-A823-35BA7EF2469A}
