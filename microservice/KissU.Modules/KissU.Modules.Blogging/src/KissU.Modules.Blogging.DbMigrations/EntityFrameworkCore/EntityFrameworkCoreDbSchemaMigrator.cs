@@ -3,7 +3,7 @@ using KissU.Modules.Blogging.DbMigrations.Data;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.DependencyInjection;
 
-namespace KissU.Modules.Identity.DbMigrations.EntityFrameworkCore
+namespace KissU.Modules.Blogging.DbMigrations.EntityFrameworkCore
 {
     [Dependency(ReplaceServices = true)]
     public class EntityFrameworkCoreDbSchemaMigrator : DbSchemaMigrator, ITransientDependency

@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using KissU.Core.Extensions;
+using KissU.Modules.Blogging.Application.Contracts.Comments;
+using KissU.Modules.Blogging.Application.Contracts.Comments.Dtos;
 using KissU.Surging.ProxyGenerator;
-using Volo.Blogging.Comments;
-using Volo.Blogging.Comments.Dtos;
 
-namespace Volo.Blogging
+namespace KissU.Modules.Blogging.Service.Implements
 {
     public class CommentService : ProxyServiceBase, ICommentService
     {

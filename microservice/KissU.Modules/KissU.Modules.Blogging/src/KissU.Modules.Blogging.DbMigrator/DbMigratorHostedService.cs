@@ -7,7 +7,7 @@ using Microsoft.Extensions.Hosting;
 using Serilog;
 using Volo.Abp;
 
-namespace KissU.Modules.QuickStart.DbMigrator
+namespace KissU.Modules.Blogging.DbMigrator
 {
     public class DbMigratorHostedService : IHostedService
     {

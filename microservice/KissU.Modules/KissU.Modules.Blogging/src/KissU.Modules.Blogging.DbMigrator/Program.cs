@@ -5,7 +5,7 @@ using Microsoft.Extensions.Hosting;
 using Serilog;
 using Serilog.Events;
 
-namespace KissU.Modules.QuickStart.DbMigrator
+namespace KissU.Modules.Blogging.DbMigrator
 {
     class Program
     {

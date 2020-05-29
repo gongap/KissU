@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using KissU.Core.Extensions;
+using KissU.Modules.Blogging.Application.Contracts.Tagging;
+using KissU.Modules.Blogging.Application.Contracts.Tagging.Dtos;
 using KissU.Surging.ProxyGenerator;
-using Volo.Blogging.Tagging;
-using Volo.Blogging.Tagging.Dtos;
 
-namespace Volo.Blogging
+namespace KissU.Modules.Blogging.Service.Implements
 {
     public class TagService : ProxyServiceBase, ITagService
     {

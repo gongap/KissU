@@ -1,9 +1,9 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using KissU.Modules.Blogging.EntityFrameworkCore.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.Modularity;
-using Volo.Blogging.EntityFrameworkCore;
 
-namespace KissU.Modules.Identity.DbMigrations.EntityFrameworkCore
+namespace KissU.Modules.Blogging.DbMigrations.EntityFrameworkCore
 {
     [DependsOn(
         typeof(BloggingEntityFrameworkCoreModule)

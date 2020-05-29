@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <content Remove="Volo\Blogging\Localization\Resources\*.json" />
-    <EmbeddedResource Include="Volo\Blogging\Localization\Resources\*.json" />
+    <content Remove="Localization\Resources\*.json" />
+    <EmbeddedResource Include="Localization\Resources\*.json" />
   </ItemGroup>
 
   <ItemGroup>

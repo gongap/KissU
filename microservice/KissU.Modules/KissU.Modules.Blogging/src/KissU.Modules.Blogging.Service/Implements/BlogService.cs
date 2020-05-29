@@ -1,13 +1,11 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using KissU.Core.Common;
 using KissU.Core.Extensions;
+using KissU.Modules.Blogging.Application.Contracts.Blogs;
+using KissU.Modules.Blogging.Application.Contracts.Blogs.Dtos;
 using KissU.Surging.ProxyGenerator;
-using Volo.Abp.Application.Dtos;
-using Volo.Blogging.Blogs;
-using Volo.Blogging.Blogs.Dtos;
 
-namespace Volo.Blogging
+namespace KissU.Modules.Blogging.Service.Implements
 {
     public class BlogService : ProxyServiceBase, IBlogService
     {

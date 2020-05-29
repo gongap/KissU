@@ -1,10 +1,10 @@
 ﻿using KissU.Abp.Autofac;
-using KissU.Modules.Identity.DbMigrations.EntityFrameworkCore;
+using KissU.Modules.Blogging.Application;
+using KissU.Modules.Blogging.DbMigrations.EntityFrameworkCore;
+using KissU.Modules.Blogging.Domain.Shared.Localization;
 using Localization.Resources.AbpUi;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
-using Volo.Blogging;
-using Volo.Blogging.Localization;
 
 namespace KissU.Modules.Blogging.Service
 {
