@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
-using KissU.Modules.Identity.DbMigrations.Data;
+using KissU.Modules.BackgroundJobs.DbMigrations.Data;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.DependencyInjection;
 
-namespace KissU.Modules.Identity.DbMigrations.EntityFrameworkCore
+namespace KissU.Modules.BackgroundJobs.DbMigrations.EntityFrameworkCore
 {
     [Dependency(ReplaceServices = true)]
     public class EntityFrameworkCoreDbSchemaMigrator : DbSchemaMigrator, ITransientDependency

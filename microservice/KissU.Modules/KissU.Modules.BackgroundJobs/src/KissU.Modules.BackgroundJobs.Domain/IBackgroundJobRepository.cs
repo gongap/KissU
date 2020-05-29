@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Volo.Abp.Domain.Repositories;
 
-namespace KissU.Modules.BackgroundJobs
+namespace KissU.Modules.BackgroundJobs.Domain
 {
     public interface IBackgroundJobRepository : IBasicRepository<BackgroundJobRecord, Guid>
     {

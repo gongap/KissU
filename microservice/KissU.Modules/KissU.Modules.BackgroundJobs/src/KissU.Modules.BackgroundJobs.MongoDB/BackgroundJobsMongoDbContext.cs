@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using KissU.Modules.BackgroundJobs.Domain;
+using MongoDB.Driver;
 using Volo.Abp.Data;
 using Volo.Abp.MongoDB;
 

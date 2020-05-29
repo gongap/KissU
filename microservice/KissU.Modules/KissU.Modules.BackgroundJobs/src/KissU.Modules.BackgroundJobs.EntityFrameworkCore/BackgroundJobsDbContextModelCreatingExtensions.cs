@@ -1,4 +1,6 @@
 ﻿using System;
+using KissU.Modules.BackgroundJobs.Domain;
+using KissU.Modules.BackgroundJobs.Domain.Shared;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp;
 using Volo.Abp.BackgroundJobs;

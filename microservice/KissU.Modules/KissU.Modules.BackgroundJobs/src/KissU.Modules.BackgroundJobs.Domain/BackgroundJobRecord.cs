@@ -3,7 +3,7 @@ using Volo.Abp.Auditing;
 using Volo.Abp.BackgroundJobs;
 using Volo.Abp.Domain.Entities;
 
-namespace KissU.Modules.BackgroundJobs
+namespace KissU.Modules.BackgroundJobs.Domain
 {
     public class BackgroundJobRecord : AggregateRoot<Guid>, IHasCreationTime
     {

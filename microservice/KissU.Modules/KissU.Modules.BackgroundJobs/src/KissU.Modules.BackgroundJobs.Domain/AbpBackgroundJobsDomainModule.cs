@@ -1,9 +1,10 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using KissU.Modules.BackgroundJobs.Domain.Shared;
+using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.AutoMapper;
 using Volo.Abp.BackgroundJobs;
 using Volo.Abp.Modularity;
 
-namespace KissU.Modules.BackgroundJobs
+namespace KissU.Modules.BackgroundJobs.Domain
 {
     [DependsOn(
         typeof(AbpBackgroundJobsDomainSharedModule),

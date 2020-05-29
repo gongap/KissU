@@ -1,6 +1,6 @@
 ﻿using Volo.Abp.Data;
 
-namespace KissU.Modules.BackgroundJobs
+namespace KissU.Modules.BackgroundJobs.Domain
 {
     public static class BackgroundJobsDbProperties
     {

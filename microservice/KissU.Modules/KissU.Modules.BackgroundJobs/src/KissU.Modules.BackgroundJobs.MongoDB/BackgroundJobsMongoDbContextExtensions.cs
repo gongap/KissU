@@ -1,4 +1,5 @@
 ﻿using System;
+using KissU.Modules.BackgroundJobs.Domain;
 using Volo.Abp;
 using Volo.Abp.MongoDB;
 

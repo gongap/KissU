@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace KissU.Modules.Identity.DbMigrations.Data
+namespace KissU.Modules.BackgroundJobs.DbMigrations.Data
 {
     public interface DbSchemaMigrator
     {

@@ -1,4 +1,4 @@
-﻿namespace KissU.Modules.BackgroundJobs
+﻿namespace KissU.Modules.BackgroundJobs.Domain.Shared
 {
     public static class BackgroundJobRecordConsts
     {

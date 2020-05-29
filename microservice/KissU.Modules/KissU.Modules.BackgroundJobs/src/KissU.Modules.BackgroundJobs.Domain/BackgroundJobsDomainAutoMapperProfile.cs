@@ -2,7 +2,7 @@
 using Volo.Abp.AutoMapper;
 using Volo.Abp.BackgroundJobs;
 
-namespace KissU.Modules.BackgroundJobs
+namespace KissU.Modules.BackgroundJobs.Domain
 {
     public class BackgroundJobsDomainAutoMapperProfile : Profile
     {
