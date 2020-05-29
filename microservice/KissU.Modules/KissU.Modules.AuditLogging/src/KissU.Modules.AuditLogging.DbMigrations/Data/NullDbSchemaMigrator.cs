@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Volo.Abp.DependencyInjection;
 
-namespace KissU.Modules.Identity.DbMigrations.Data
+namespace KissU.Modules.AuditLogging.DbMigrations.Data
 {
     /* This is used if database provider does't define
      * IIdentityDbSchemaMigrator implementation.
