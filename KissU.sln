@@ -356,6 +356,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Blogging.DbMi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Blogging.Service.Host", "microservice\KissU.Services\KissU.Blogging.Service.Host\KissU.Blogging.Service.Host.csproj", "{7709C238-FA11-4C06-A50B-3459190437EB}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Services.Sample.Host", "microservice\KissU.Services\KissU.Services.Sample.Host\KissU.Services.Sample.Host.csproj", "{6309C4F8-59E2-498F-B9CC-303312A3120E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -878,6 +880,10 @@ Global
 		{7709C238-FA11-4C06-A50B-3459190437EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7709C238-FA11-4C06-A50B-3459190437EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7709C238-FA11-4C06-A50B-3459190437EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6309C4F8-59E2-498F-B9CC-303312A3120E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6309C4F8-59E2-498F-B9CC-303312A3120E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6309C4F8-59E2-498F-B9CC-303312A3120E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6309C4F8-59E2-498F-B9CC-303312A3120E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1051,6 +1057,7 @@ Global
 		{DF974928-7E84-4A38-9CEF-EC55AC9D297A} = {C4CEED45-1D86-489F-9146-419BB9A0F1D1}
 		{82DD08F7-8172-49BD-8CE5-13D2097A837F} = {C4CEED45-1D86-489F-9146-419BB9A0F1D1}
 		{7709C238-FA11-4C06-A50B-3459190437EB} = {B4367C3C-5645-40C3-953C-466D82432072}
+		{6309C4F8-59E2-498F-B9CC-303312A3120E} = {B4367C3C-5645-40C3-953C-466D82432072}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}
