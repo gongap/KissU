@@ -338,6 +338,24 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.QuickStart.Db
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.TenantManagement.DbMigrator", "microservice\KissU.Modules\KissU.Modules.TenantManagement\src\KissU.Modules.TenantManagement.DbMigrator\KissU.Modules.TenantManagement.DbMigrator.csproj", "{C07012BA-6A4A-4393-945A-C5AFE39032C0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BackgroundJobs", "BackgroundJobs", "{E3E42FD1-BFE2-419D-9327-1E62E48A3295}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.BackgroundJobs.Domain.Shared", "microservice\KissU.Modules\KissU.Modules.BackgroundJobs\src\KissU.Modules.BackgroundJobs.Domain.Shared\KissU.Modules.BackgroundJobs.Domain.Shared.csproj", "{20848183-E9EF-4664-9C8A-EF06AC7DAF9A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{72E588E9-D0D5-4F21-940D-B04D3E8B0C99}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{1EF98758-C5D4-4A46-9716-5CB8046C460C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.BackgroundJobs.Domain", "microservice\KissU.Modules\KissU.Modules.BackgroundJobs\src\KissU.Modules.BackgroundJobs.Domain\KissU.Modules.BackgroundJobs.Domain.csproj", "{61E8039B-1CC7-405A-97F6-FA51E3D725CD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.BackgroundJobs.EntityFrameworkCore", "microservice\KissU.Modules\KissU.Modules.BackgroundJobs\src\KissU.Modules.BackgroundJobs.EntityFrameworkCore\KissU.Modules.BackgroundJobs.EntityFrameworkCore.csproj", "{1F300067-E812-49C3-8351-36EF3AC849A3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.BackgroundJobs.MongoDB", "microservice\KissU.Modules\KissU.Modules.BackgroundJobs\src\KissU.Modules.BackgroundJobs.MongoDB\KissU.Modules.BackgroundJobs.MongoDB.csproj", "{B201BD5C-A4FD-4D5F-8C25-180A69318CEE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.BackgroundJobs.DbMigrations", "microservice\KissU.Modules\KissU.Modules.BackgroundJobs\src\KissU.Modules.BackgroundJobs.DbMigrations\KissU.Modules.BackgroundJobs.DbMigrations.csproj", "{59EFE2CB-DE01-45B4-A780-A17818D85761}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.BackgroundJobs.DbMigrator", "microservice\KissU.Modules\KissU.Modules.BackgroundJobs\src\KissU.Modules.BackgroundJobs.DbMigrator\KissU.Modules.BackgroundJobs.DbMigrator.csproj", "{84AFC8D7-5064-4586-8168-46937A7F1F90}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -836,6 +854,30 @@ Global
 		{C07012BA-6A4A-4393-945A-C5AFE39032C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C07012BA-6A4A-4393-945A-C5AFE39032C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C07012BA-6A4A-4393-945A-C5AFE39032C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20848183-E9EF-4664-9C8A-EF06AC7DAF9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20848183-E9EF-4664-9C8A-EF06AC7DAF9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20848183-E9EF-4664-9C8A-EF06AC7DAF9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20848183-E9EF-4664-9C8A-EF06AC7DAF9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61E8039B-1CC7-405A-97F6-FA51E3D725CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61E8039B-1CC7-405A-97F6-FA51E3D725CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61E8039B-1CC7-405A-97F6-FA51E3D725CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61E8039B-1CC7-405A-97F6-FA51E3D725CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F300067-E812-49C3-8351-36EF3AC849A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F300067-E812-49C3-8351-36EF3AC849A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F300067-E812-49C3-8351-36EF3AC849A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F300067-E812-49C3-8351-36EF3AC849A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B201BD5C-A4FD-4D5F-8C25-180A69318CEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B201BD5C-A4FD-4D5F-8C25-180A69318CEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B201BD5C-A4FD-4D5F-8C25-180A69318CEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B201BD5C-A4FD-4D5F-8C25-180A69318CEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59EFE2CB-DE01-45B4-A780-A17818D85761}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59EFE2CB-DE01-45B4-A780-A17818D85761}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59EFE2CB-DE01-45B4-A780-A17818D85761}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59EFE2CB-DE01-45B4-A780-A17818D85761}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84AFC8D7-5064-4586-8168-46937A7F1F90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84AFC8D7-5064-4586-8168-46937A7F1F90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84AFC8D7-5064-4586-8168-46937A7F1F90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84AFC8D7-5064-4586-8168-46937A7F1F90}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1000,6 +1042,15 @@ Global
 		{26D9CEAF-B24C-48F6-B4B8-12463930FF88} = {3FED7E08-D281-419B-964C-B7107D9378CE}
 		{F6E3EDCE-4EC1-4F71-BABB-098E9ABE9FDC} = {1D34F083-4723-4647-8B3D-AA9727CA29CB}
 		{C07012BA-6A4A-4393-945A-C5AFE39032C0} = {AEB1DABC-31D5-4335-8EEC-A9967DCEA25A}
+		{E3E42FD1-BFE2-419D-9327-1E62E48A3295} = {EBA864A3-39C4-4279-A823-35BA7EF2469A}
+		{20848183-E9EF-4664-9C8A-EF06AC7DAF9A} = {72E588E9-D0D5-4F21-940D-B04D3E8B0C99}
+		{72E588E9-D0D5-4F21-940D-B04D3E8B0C99} = {E3E42FD1-BFE2-419D-9327-1E62E48A3295}
+		{1EF98758-C5D4-4A46-9716-5CB8046C460C} = {E3E42FD1-BFE2-419D-9327-1E62E48A3295}
+		{61E8039B-1CC7-405A-97F6-FA51E3D725CD} = {72E588E9-D0D5-4F21-940D-B04D3E8B0C99}
+		{1F300067-E812-49C3-8351-36EF3AC849A3} = {72E588E9-D0D5-4F21-940D-B04D3E8B0C99}
+		{B201BD5C-A4FD-4D5F-8C25-180A69318CEE} = {72E588E9-D0D5-4F21-940D-B04D3E8B0C99}
+		{59EFE2CB-DE01-45B4-A780-A17818D85761} = {72E588E9-D0D5-4F21-940D-B04D3E8B0C99}
+		{84AFC8D7-5064-4586-8168-46937A7F1F90} = {72E588E9-D0D5-4F21-940D-B04D3E8B0C99}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}

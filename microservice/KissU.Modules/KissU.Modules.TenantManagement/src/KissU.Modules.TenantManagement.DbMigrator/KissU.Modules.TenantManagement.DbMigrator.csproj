@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Abp.Autofac\KissU.Abp.Autofac.csproj" />
-    <ProjectReference Include="..\KissU.Modules.FeatureManagement.DbMigrations\KissU.Modules.FeatureManagement.DbMigrations.csproj" />
+    <ProjectReference Include="..\KissU.Modules.TenantManagement.DbMigrations\KissU.Modules.TenantManagement.DbMigrations.csproj" />
   </ItemGroup>
 
   <ItemGroup>

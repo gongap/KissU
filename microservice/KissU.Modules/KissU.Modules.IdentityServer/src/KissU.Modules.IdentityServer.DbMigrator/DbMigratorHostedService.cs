@@ -1,13 +1,13 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using KissU.Abp.Autofac;
-using KissU.Modules.Identity.DbMigrations.Data;
+using KissU.Modules.IdentityServer.DbMigrations.Data;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 using Volo.Abp;
 
-namespace KissU.Modules.Identity.DbMigrator
+namespace KissU.Modules.IdentityServer.DbMigrator
 {
     public class DbMigratorHostedService : IHostedService
     {

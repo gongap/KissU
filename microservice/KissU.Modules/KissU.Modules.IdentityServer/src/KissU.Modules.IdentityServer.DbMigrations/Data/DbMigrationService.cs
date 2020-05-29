@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging.Abstractions;
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
 
-namespace KissU.Modules.Identity.DbMigrations.Data
+namespace KissU.Modules.IdentityServer.DbMigrations.Data
 {
     public class DbMigrationService : ITransientDependency
     {
