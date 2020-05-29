@@ -1,4 +1,5 @@
 ﻿using System;
+using Volo.Abp;
 using Volo.Abp.MongoDB;
 
 namespace KissU.Modules.AuditLogging.MongoDB

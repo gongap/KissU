@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\..\configureawait.props" />
+  <Import Project="..\..\..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore" Version="2.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\KissU.Modules.Users\src\KissU.Modules.Users.EntityFrameworkCore\KissU.Modules.Users.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\KissU.Modules.Blogging.Domain\KissU.Modules.Blogging.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -22,12 +22,6 @@ namespace KissU.Modules.Identity.Service
                 options.DefinitionProviders.Add<AbpIdentitySettingDefinitionProvider>();
             });
 
-            context.Services.AddAutoMapperObjectMapper<AbpIdentityModule>();
-            Configure<AbpAutoMapperOptions>(options =>
-            {
-                options.AddProfile<AbpIdentityAutoMapperProfile>(true);
-            });
-
             context.Services.AddAlwaysAllowAuthorization();
         }
     }

@@ -21,12 +21,6 @@ namespace KissU.Modules.QuickStart.Service
             {
                 options.DefinitionProviders.Add<QuickStartSettingDefinitionProvider>();
             });
-
-            context.Services.AddAutoMapperObjectMapper<AbpQuickStartModule>();
-            Configure<AbpAutoMapperOptions>(options =>
-            {
-                options.AddProfile<AbpQuickStartAutoMapperProfile>(validate: true);
-            });
         }
     }
 }
