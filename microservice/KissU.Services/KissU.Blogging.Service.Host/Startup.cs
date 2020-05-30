@@ -4,7 +4,7 @@ using KissU.Core.Dependency;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace KissU.QuickStart.Service.Host
+namespace KissU.Service.Host
 {
     /// <summary>
     /// 启动配置
