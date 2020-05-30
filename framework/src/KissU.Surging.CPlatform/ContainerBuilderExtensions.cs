@@ -866,14 +866,25 @@ namespace KissU.Surging.CPlatform
         }
 
         /// <summary>
+        /// 使用权重轮询选择器。
+        /// </summary>
+        /// <param name="builder">服务构建者。</param>
+        /// <returns>服务构建者。</returns>
+        public static IServiceBuilder UseRoundRobinAddressSelector(this IServiceBuilder builder)
+        {
+            builder.Services.RegisterType(typeof(RoundRobinAddressSelector))
+                .Named(AddressSelectorMode.RoundRobin.ToString(), typeof(IAddressSelector)).SingleInstance();
+            return builder;
+        }
+
+        /// <summary>
         /// 设置服务地址选择器
         /// </summary>
         /// <param name="builder">服务构建器</param>
         /// <returns>服务构建器</returns>
         public static IServiceBuilder UseAddressSelector(this IServiceBuilder builder)
         {
-            return builder.UseRandomAddressSelector().UsePollingAddressSelector().UseFairPollingAddressSelector()
-                .UseHashAlgorithmAddressSelector();
+            return builder.UseRandomAddressSelector().UsePollingAddressSelector().UseFairPollingAddressSelector().UseHashAlgorithmAddressSelector().UseRoundRobinAddressSelector();
         }
 
         #endregion AddressSelector

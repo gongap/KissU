@@ -1,8 +1,10 @@
-﻿using System.Collections.Concurrent;
+﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using KissU.Core.Helpers.Utilities;
 using KissU.Surging.CPlatform.Runtime.Server;
 using KissU.Surging.CPlatform.Transport.Implementation;
 using KissU.Surging.CPlatform.Utilities;
@@ -163,6 +165,9 @@ namespace KissU.Surging.CPlatform.Routing.Implementation
         {
             var addess = NetUtils.GetHostAddress();
             addess.ProcessorTime = processorTime;
+            addess.Weight = AppConfig.ServerOptions.Weight;
+            if (addess.Weight > 0)
+                addess.Timestamp = DateTimeConverter.DateTimeToUnixTimestamp(DateTime.Now);
             RpcContext.GetContext().SetAttachment("Host", addess);
             var addressDescriptors = _serviceEntryManager.GetEntries().Select(i =>
             {

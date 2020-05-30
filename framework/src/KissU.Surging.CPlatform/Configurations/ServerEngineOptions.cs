@@ -62,6 +62,8 @@ namespace KissU.Surging.CPlatform.Configurations
         /// </summary>
         public int SoBacklog { get; set; } = 8192;
 
+        public int Weight { get; set; }
+
         /// <summary>
         /// Gets or sets a value indicating whether [enable route watch].
         /// </summary>

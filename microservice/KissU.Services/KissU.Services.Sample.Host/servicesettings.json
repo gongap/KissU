@@ -10,6 +10,7 @@
     "DockerDeployMode": "${DockerDeployMode}|Standard", //Docker容器部署模式
     "Libuv": true, //是否开启Libuv高性能事件驱动的I/O库,缺省值为false
     "SoBacklog": 100, //用于临时存放已完成三次握手的请求的队列的最大长度
+    "Weight": 20, //权重轮询
     "MaxConcurrentRequests": 20, //信号量最大并发度
     "DisconnTimeInterval": 30, //断开连接时间间隔
     "ExecutionTimeoutInMilliseconds": 1000, //执行超时时间（毫秒）

@@ -14,6 +14,12 @@ namespace KissU.Core.Address
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public decimal ProcessorTime { get; set; }
 
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, PropertyName = "Wt")]
+        public int Weight { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, PropertyName = "Tp")]
+        public long Timestamp { get; set; }
+
         /// <summary>
         /// 创建终结点。
         /// </summary>
