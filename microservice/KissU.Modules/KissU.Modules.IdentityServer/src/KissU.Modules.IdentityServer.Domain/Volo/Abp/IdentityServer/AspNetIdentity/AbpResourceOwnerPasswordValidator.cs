@@ -14,7 +14,7 @@ using KissU.Modules.IdentityServer.Localization;
 using Volo.Abp.Security.Claims;
 using Volo.Abp.Uow;
 using Volo.Abp.Validation;
-using IdentityUser = Volo.Abp.Identity.IdentityUser;
+using IdentityUser = KissU.Modules.Identity.Domain.IdentityUser;
 
 namespace KissU.Modules.IdentityServer.AspNetIdentity
 {

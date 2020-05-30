@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
+using KissU.Modules.Identity.Domain.Shared;
 using KissU.Modules.PermissionManagement;
 using Volo.Abp.Authorization.Permissions;
 using Volo.Abp.Guids;
-using Volo.Abp.Identity;
 using Volo.Abp.MultiTenancy;
 
 namespace Volo.Abp.PermissionManagement.Identity

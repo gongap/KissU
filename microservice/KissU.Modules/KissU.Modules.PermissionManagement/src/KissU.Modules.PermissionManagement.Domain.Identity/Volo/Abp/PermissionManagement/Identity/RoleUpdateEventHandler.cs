@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
+using KissU.Modules.Identity.Domain;
 using KissU.Modules.PermissionManagement;
 using Volo.Abp.Authorization.Permissions;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Entities.Events;
 using Volo.Abp.EventBus;
-using Volo.Abp.Identity;
 
 namespace Volo.Abp.PermissionManagement.Identity
 {

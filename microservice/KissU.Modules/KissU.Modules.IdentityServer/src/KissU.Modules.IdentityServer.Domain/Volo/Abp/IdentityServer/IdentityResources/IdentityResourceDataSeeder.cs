@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
+using KissU.Modules.Identity.Domain;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Guids;
-using Volo.Abp.Identity;
 
 namespace KissU.Modules.IdentityServer.IdentityResources
 {

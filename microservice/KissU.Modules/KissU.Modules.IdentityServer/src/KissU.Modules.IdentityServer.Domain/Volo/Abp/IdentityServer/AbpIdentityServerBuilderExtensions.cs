@@ -2,9 +2,9 @@
 using System.IdentityModel.Tokens.Jwt;
 using IdentityModel;
 using IdentityServer4.Services;
+using KissU.Modules.Identity.Domain;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using Volo.Abp.Identity;
 using KissU.Modules.IdentityServer.AspNetIdentity;
 using Volo.Abp.Security.Claims;
 

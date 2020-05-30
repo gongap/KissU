@@ -1,5 +1,6 @@
 ﻿using IdentityServer4.Services;
 using IdentityServer4.Stores;
+using KissU.Modules.Identity.Domain;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
@@ -7,7 +8,6 @@ using Volo.Abp.AutoMapper;
 using Volo.Abp.BackgroundWorkers;
 using Volo.Abp.Caching;
 using Volo.Abp.EventBus.Distributed;
-using Volo.Abp.Identity;
 using KissU.Modules.IdentityServer.ApiResources;
 using KissU.Modules.IdentityServer.Clients;
 using KissU.Modules.IdentityServer.Devices;

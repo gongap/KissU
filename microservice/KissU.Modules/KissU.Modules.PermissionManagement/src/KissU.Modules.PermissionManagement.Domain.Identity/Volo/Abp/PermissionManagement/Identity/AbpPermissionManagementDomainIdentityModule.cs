@@ -1,6 +1,6 @@
-﻿using KissU.Modules.PermissionManagement;
+﻿using KissU.Modules.Identity.Domain.Shared;
+using KissU.Modules.PermissionManagement;
 using Volo.Abp.Authorization.Permissions;
-using Volo.Abp.Identity;
 using Volo.Abp.Modularity;
 
 namespace Volo.Abp.PermissionManagement.Identity

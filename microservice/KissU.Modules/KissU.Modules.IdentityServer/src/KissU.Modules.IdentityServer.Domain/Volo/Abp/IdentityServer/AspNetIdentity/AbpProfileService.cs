@@ -2,11 +2,11 @@
 using System.Security.Principal;
 using IdentityServer4.AspNetIdentity;
 using IdentityServer4.Models;
+using KissU.Modules.Identity.Domain;
 using Microsoft.AspNetCore.Identity;
-using Volo.Abp.Identity;
 using Volo.Abp.MultiTenancy;
 using Volo.Abp.Uow;
-using IdentityUser = Volo.Abp.Identity.IdentityUser;
+using IdentityUser = KissU.Modules.Identity.Domain.IdentityUser;
 
 namespace KissU.Modules.IdentityServer.AspNetIdentity
 {

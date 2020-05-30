@@ -1,6 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using KissU.Modules.Identity.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
-using Volo.Abp.Identity.EntityFrameworkCore;
 using Volo.Abp.Modularity;
 
 namespace KissU.Modules.Identity.DbMigrations.EntityFrameworkCore
