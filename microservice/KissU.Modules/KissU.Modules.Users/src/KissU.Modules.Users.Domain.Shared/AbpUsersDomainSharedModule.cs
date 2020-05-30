@@ -1,6 +1,6 @@
 ﻿using Volo.Abp.Modularity;
 
-namespace Volo.Abp.Users
+namespace KissU.Modules.Users.Domain.Shared
 {
     public class AbpUsersDomainSharedModule : AbpModule
     {

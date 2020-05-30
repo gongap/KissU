@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using KissU.Modules.Identity.Domain.Shared;
+using KissU.Modules.Users.Abstractions;
 using Volo.Abp.Users;
 
 namespace KissU.Modules.Identity.Domain

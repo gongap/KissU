@@ -4,9 +4,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using KissU.Modules.Blogging.Domain.Users;
 using KissU.Modules.Blogging.EntityFrameworkCore.EntityFrameworkCore;
+using KissU.Modules.Users.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
-using Volo.Abp.Users.EntityFrameworkCore;
 
 namespace KissU.Modules.Blogging.EntityFrameworkCore.Users
 {

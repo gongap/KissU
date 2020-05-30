@@ -1,7 +1,7 @@
 using System;
 using JetBrains.Annotations;
 
-namespace Volo.Abp.Users
+namespace KissU.Modules.Users.Abstractions
 {
     public interface IUserData
     {

@@ -1,4 +1,6 @@
-﻿using Volo.Abp.Uow;
+﻿using KissU.Modules.Users.Abstractions;
+using KissU.Modules.Users.Domain;
+using Volo.Abp.Uow;
 using Volo.Abp.Users;
 
 namespace KissU.Modules.Blogging.Domain.Users

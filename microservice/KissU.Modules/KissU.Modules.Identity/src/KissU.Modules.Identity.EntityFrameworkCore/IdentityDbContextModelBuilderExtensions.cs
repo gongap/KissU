@@ -2,10 +2,10 @@
 using JetBrains.Annotations;
 using KissU.Modules.Identity.Domain;
 using KissU.Modules.Identity.Domain.Shared;
+using KissU.Modules.Users.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp;
 using Volo.Abp.EntityFrameworkCore.Modeling;
-using Volo.Abp.Users.EntityFrameworkCore;
 
 namespace KissU.Modules.Identity.EntityFrameworkCore
 {

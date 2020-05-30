@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Volo.Abp.Users
+namespace KissU.Modules.Users.Abstractions
 {
     public interface IExternalUserLookupServiceProvider
     {

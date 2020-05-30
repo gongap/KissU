@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Volo.Abp.Domain.Entities;
 
-namespace Volo.Abp.Users
+namespace KissU.Modules.Users.Domain
 {
     public static class UserLookupServiceExtensions
     {

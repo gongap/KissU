@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using KissU.Modules.Users.Abstractions;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Entities.Events.Distributed;
 using Volo.Abp.EventBus.Distributed;

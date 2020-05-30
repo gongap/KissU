@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Volo.Abp.Domain.Entities;
 using Volo.Abp.Domain.Repositories;
 
-namespace Volo.Abp.Users
+namespace KissU.Modules.Users.Domain
 {
     public interface IUserRepository<TUser> : IBasicRepository<TUser, Guid>
         where TUser : class, IUser, IAggregateRoot<Guid>

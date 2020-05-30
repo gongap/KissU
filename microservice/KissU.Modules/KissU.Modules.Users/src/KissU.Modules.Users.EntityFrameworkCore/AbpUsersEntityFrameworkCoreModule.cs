@@ -1,7 +1,8 @@
-﻿using Volo.Abp.EntityFrameworkCore;
+﻿using KissU.Modules.Users.Domain;
+using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.Modularity;
 
-namespace Volo.Abp.Users.EntityFrameworkCore
+namespace KissU.Modules.Users.EntityFrameworkCore
 {
     [DependsOn(
         typeof(AbpUsersDomainModule),

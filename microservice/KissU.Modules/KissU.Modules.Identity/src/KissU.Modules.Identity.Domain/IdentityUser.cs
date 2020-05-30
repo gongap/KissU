@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Security.Claims;
 using JetBrains.Annotations;
+using KissU.Modules.Users.Domain;
 using Microsoft.AspNetCore.Identity;
 using Volo.Abp;
 using Volo.Abp.Auditing;

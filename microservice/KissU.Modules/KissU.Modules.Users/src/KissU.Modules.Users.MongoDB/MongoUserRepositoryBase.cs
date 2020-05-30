@@ -4,12 +4,14 @@ using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Threading;
 using System.Threading.Tasks;
+using KissU.Modules.Users.Abstractions;
+using KissU.Modules.Users.Domain;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 using Volo.Abp.Domain.Repositories.MongoDB;
 using Volo.Abp.MongoDB;
 
-namespace Volo.Abp.Users.MongoDB
+namespace KissU.Modules.Users.MongoDB
 {
     public abstract class MongoUserRepositoryBase<TDbContext, TUser> : MongoDbRepository<TDbContext, TUser, Guid>, IUserRepository<TUser>
         where TDbContext : IAbpMongoDbContext

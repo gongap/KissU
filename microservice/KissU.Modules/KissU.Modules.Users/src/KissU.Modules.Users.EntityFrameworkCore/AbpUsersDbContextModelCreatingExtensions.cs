@@ -1,7 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using KissU.Modules.Users.Domain;
+using KissU.Modules.Users.Domain.Shared;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Volo.Abp.Users.EntityFrameworkCore
+namespace KissU.Modules.Users.EntityFrameworkCore
 {
     public static class AbpUsersDbContextModelCreatingExtensions
     {

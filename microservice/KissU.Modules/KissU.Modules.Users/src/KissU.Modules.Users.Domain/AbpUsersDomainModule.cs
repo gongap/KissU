@@ -1,7 +1,9 @@
-﻿using Volo.Abp.Domain;
+﻿using KissU.Modules.Users.Abstractions;
+using KissU.Modules.Users.Domain.Shared;
+using Volo.Abp.Domain;
 using Volo.Abp.Modularity;
 
-namespace Volo.Abp.Users
+namespace KissU.Modules.Users.Domain
 {
     [DependsOn(
         typeof(AbpUsersDomainSharedModule),

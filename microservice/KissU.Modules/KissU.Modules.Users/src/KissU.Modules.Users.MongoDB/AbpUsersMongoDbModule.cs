@@ -1,7 +1,8 @@
-﻿using Volo.Abp.Modularity;
+﻿using KissU.Modules.Users.Domain;
+using Volo.Abp.Modularity;
 using Volo.Abp.MongoDB;
 
-namespace Volo.Abp.Users.MongoDB
+namespace KissU.Modules.Users.MongoDB
 {
     [DependsOn(
         typeof(AbpUsersDomainModule),

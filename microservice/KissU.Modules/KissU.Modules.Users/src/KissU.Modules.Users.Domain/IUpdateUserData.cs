@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
+using KissU.Modules.Users.Abstractions;
 
-namespace Volo.Abp.Users
+namespace KissU.Modules.Users.Domain
 {
     public interface IUpdateUserData
     {

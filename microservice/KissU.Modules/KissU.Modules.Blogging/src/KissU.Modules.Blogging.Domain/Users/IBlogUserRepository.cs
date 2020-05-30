@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using KissU.Modules.Users.Domain;
 using Volo.Abp.Domain.Repositories;
 using Volo.Abp.Users;
 

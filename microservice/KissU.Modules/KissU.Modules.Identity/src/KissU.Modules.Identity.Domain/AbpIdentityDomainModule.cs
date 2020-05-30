@@ -1,6 +1,8 @@
 ﻿using KissU.Modules.Identity.Domain.Extensions;
 using KissU.Modules.Identity.Domain.Shared;
 using KissU.Modules.Identity.Domain.Shared.ObjectExtending;
+using KissU.Modules.Users.Abstractions;
+using KissU.Modules.Users.Domain;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;

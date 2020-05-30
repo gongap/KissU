@@ -1,4 +1,5 @@
 ﻿using KissU.Modules.Identity.Domain.Shared;
+using KissU.Modules.Users.Abstractions;
 using Volo.Abp.Application;
 using Volo.Abp.Authorization;
 using Volo.Abp.Modularity;

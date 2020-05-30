@@ -1,4 +1,4 @@
-namespace Volo.Abp.Users
+namespace KissU.Modules.Users.Domain.Shared
 {
     public class AbpUserConsts
     {

@@ -1,4 +1,6 @@
-namespace Volo.Abp.Users
+using KissU.Modules.Users.Abstractions;
+
+namespace KissU.Modules.Users.Domain
 {
     public static class AbpUserExtensions
     {

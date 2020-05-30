@@ -2,7 +2,7 @@
 using Volo.Abp.Modularity;
 using Volo.Abp.MultiTenancy;
 
-namespace Volo.Abp.Users
+namespace KissU.Modules.Users.Abstractions
 {
     //TODO: Consider to (somehow) move this to the framework to the same assemblily of ICurrentUser!
 

@@ -1,4 +1,6 @@
 ﻿using System;
+using KissU.Modules.Users.Abstractions;
+using KissU.Modules.Users.Domain;
 using Volo.Abp.Domain.Entities;
 using Volo.Abp.Users;
 

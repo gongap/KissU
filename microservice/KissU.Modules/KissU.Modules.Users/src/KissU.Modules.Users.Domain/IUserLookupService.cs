@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using KissU.Modules.Users.Abstractions;
 
-namespace Volo.Abp.Users
+namespace KissU.Modules.Users.Domain
 {
     public interface IUserLookupService<TUser>
         where TUser : class, IUser

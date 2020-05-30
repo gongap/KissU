@@ -3,7 +3,7 @@ using JetBrains.Annotations;
 using Volo.Abp.Domain.Entities;
 using Volo.Abp.MultiTenancy;
 
-namespace Volo.Abp.Users
+namespace KissU.Modules.Users.Domain
 {
     public interface IUser : IAggregateRoot<Guid>, IMultiTenant
     {

@@ -10,10 +10,10 @@ using KissU.Modules.Blogging.Domain.Shared.Posts;
 using KissU.Modules.Blogging.Domain.Shared.Tagging;
 using KissU.Modules.Blogging.Domain.Tagging;
 using KissU.Modules.Blogging.Domain.Users;
+using KissU.Modules.Users.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp;
 using Volo.Abp.EntityFrameworkCore.Modeling;
-using Volo.Abp.Users.EntityFrameworkCore;
 
 namespace KissU.Modules.Blogging.EntityFrameworkCore.EntityFrameworkCore
 {

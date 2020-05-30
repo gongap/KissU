@@ -1,7 +1,7 @@
 ﻿using System;
 using Volo.Abp.EventBus;
 
-namespace Volo.Abp.Users
+namespace KissU.Modules.Users.Abstractions
 {
     [EventName("Volo.Abp.Users.User")]
     public class UserEto : IUserData

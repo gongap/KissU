@@ -1,7 +1,7 @@
 ﻿using KissU.Modules.Identity.Domain;
+using KissU.Modules.Users.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.Modularity;
-using Volo.Abp.Users.EntityFrameworkCore;
 
 namespace KissU.Modules.Identity.EntityFrameworkCore
 {
