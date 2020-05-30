@@ -1,4 +1,5 @@
 ﻿using KissU.Modules.IdentityServer.EntityFrameworkCore;
+using KissU.Modules.IdentityServer.EntityFrameworkCore.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
 

@@ -11,11 +11,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Volo\Abp\IdentityServer\Localization\Resources\*.json" />
+    <EmbeddedResource Include="Localization\Resources\*.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Volo\Abp\IdentityServer\Localization\Resources\*.json" />
+    <None Remove="Localization\Resources\*.json" />
   </ItemGroup>
 
   <ItemGroup>
