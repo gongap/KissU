@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using KissU.Core.Dependency;
+using KissU.Modules.FeatureManagement.Application.Contracts;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 
 namespace KissU.Modules.FeatureManagement.Service.Contracts

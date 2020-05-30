@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using KissU.Core.Dependency;
+using KissU.Modules.FeatureManagement.Application.Contracts;
 using KissU.Surging.ProxyGenerator;
 using KissU.Modules.FeatureManagement.Service.Contracts;
 

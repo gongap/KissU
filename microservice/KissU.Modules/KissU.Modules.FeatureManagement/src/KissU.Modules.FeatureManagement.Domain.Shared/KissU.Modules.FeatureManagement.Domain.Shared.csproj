@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Volo\Abp\FeatureManagement\Localization\Domain\*.json" />
-    <content Remove="Volo\Abp\FeatureManagement\Localization\Domain\*.json" />
+    <EmbeddedResource Include="Localization\Domain\*.json" />
+    <content Remove="Localization\Domain\*.json" />
   </ItemGroup>
   
   <ItemGroup>

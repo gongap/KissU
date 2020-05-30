@@ -1,6 +1,7 @@
 ﻿using KissU.Abp.Autofac;
-using KissU.Modules.Identity.DbMigrations.EntityFrameworkCore;
-using KissU.Modules.FeatureManagement.Localization;
+using KissU.Modules.FeatureManagement.Application;
+using KissU.Modules.FeatureManagement.DbMigrations.EntityFrameworkCore;
+using KissU.Modules.FeatureManagement.Domain.Shared.Localization;
 using Localization.Resources.AbpUi;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.Localization;
