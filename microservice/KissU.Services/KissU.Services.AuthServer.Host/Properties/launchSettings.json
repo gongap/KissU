@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "Project": {
+      "commandName": "Project",
+      "nativeDebugging": false
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

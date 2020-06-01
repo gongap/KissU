@@ -5,7 +5,6 @@ using KissU.Core.Serialization;
 using KissU.Surging.CPlatform.Diagnostics;
 using KissU.Surging.CPlatform.Messages;
 using KissU.Surging.CPlatform.Utilities;
-using KissUEvents = KissU.Surging.CPlatform.Diagnostics.DiagnosticListenerExtensions;
 
 namespace KissU.Surging.KestrelHttpServer.Diagnostics
 {
@@ -52,13 +51,13 @@ namespace KissU.Surging.KestrelHttpServer.Diagnostics
         /// <summary>
         /// Gets the name of the listener.
         /// </summary>
-        public string ListenerName => KissUEvents.DiagnosticListenerName;
+        public string ListenerName => DiagnosticListenerExtensions.DiagnosticListenerName;
 
         /// <summary>
         /// Transports the before.
         /// </summary>
         /// <param name="eventData">The event data.</param>
-        [DiagnosticName(KissUEvents.BeforeTransport, TransportType.Rest)]
+        [DiagnosticName(DiagnosticListenerExtensions.BeforeTransport, TransportType.Rest)]
         public void TransportBefore([Object] TransportEventData eventData)
         {
             var message = eventData.Message.GetContent<HttpRequestMessage>();
@@ -79,7 +78,7 @@ namespace KissU.Surging.KestrelHttpServer.Diagnostics
         /// Transports the after.
         /// </summary>
         /// <param name="eventData">The event data.</param>
-        [DiagnosticName(KissUEvents.AfterTransport, TransportType.Rest)]
+        [DiagnosticName(DiagnosticListenerExtensions.AfterTransport, TransportType.Rest)]
         public void TransportAfter([Object] ReceiveEventData eventData)
         {
             _resultDictionary.TryRemove(eventData.OperationId.ToString(), out var context);
@@ -93,7 +92,7 @@ namespace KissU.Surging.KestrelHttpServer.Diagnostics
         /// Transports the error.
         /// </summary>
         /// <param name="eventData">The event data.</param>
-        [DiagnosticName(KissUEvents.ErrorTransport, TransportType.Rest)]
+        [DiagnosticName(DiagnosticListenerExtensions.ErrorTransport, TransportType.Rest)]
         public void TransportError([Object] TransportErrorEventData eventData)
         {
             _resultDictionary.TryRemove(eventData.OperationId.ToString(), out var context);
