@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using KissU.Core;
-using KissU.Core.Convertibles;
-using KissU.Core.Dependency;
-using KissU.Core.Exceptions;
+using KissU.Convertibles;
+
+using KissU.Dependency;
+using KissU.Exceptions;
 using KissU.Surging.CPlatform.Filters;
 using KissU.Surging.CPlatform.Messages;
 using KissU.Surging.CPlatform.Routing;
@@ -15,7 +15,7 @@ using KissU.Surging.CPlatform.Runtime.Server;
 using KissU.Surging.CPlatform.Transport;
 using KissU.Surging.ProxyGenerator;
 using Microsoft.Extensions.Logging;
-using static KissU.Core.Helpers.Utilities.FastInvoke;
+using static KissU.Helpers.Utilities.FastInvoke;
 
 namespace KissU.Surging.Protocol.Http
 {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KissU.Core.Dependency
+namespace KissU.Dependency
 {
     /// <summary>
     /// 模块名称属性.

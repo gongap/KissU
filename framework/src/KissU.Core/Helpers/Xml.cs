@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
-using KissU.Core.Extensions;
+using KissU.Extensions;
 
-namespace KissU.Core.Helpers
+namespace KissU.Helpers
 {
     /// <summary>
     /// Xml操作 - 生成器

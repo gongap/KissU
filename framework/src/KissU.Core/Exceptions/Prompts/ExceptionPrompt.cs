@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using KissU.Core.Extensions;
-using KissU.Core.Helpers;
+using KissU.Extensions;
 using KissU.Properties;
-using Microsoft.Extensions.Hosting;
 
-namespace KissU.Core.Exceptions.Prompts
+namespace KissU.Exceptions.Prompts
 {
     /// <summary>
     /// 异常提示

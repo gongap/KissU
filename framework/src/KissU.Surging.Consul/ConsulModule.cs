@@ -1,7 +1,7 @@
 ﻿using System;
 using Autofac;
-using KissU.Core.Module;
-using KissU.Core.Serialization;
+using KissU.Module;
+using KissU.Serialization;
 using KissU.Surging.Consul.Configurations;
 using KissU.Surging.Consul.Internal;
 using KissU.Surging.Consul.Internal.Cluster.HealthChecks;

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
-using KissU.Core.Serialization;
+using KissU.Serialization;
 using KissU.Surging.CPlatform.Messages;
 using KissU.Surging.CPlatform.Routing;
 using KissU.Surging.CPlatform.Routing.Template;

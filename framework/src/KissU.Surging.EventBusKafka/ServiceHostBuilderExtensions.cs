@@ -1,6 +1,6 @@
 ﻿using Autofac;
-using KissU.Core.EventBus;
-using KissU.Core.Hosting;
+using KissU.EventBus;
+using KissU.ServiceHosting;
 
 namespace KissU.Surging.EventBusKafka
 {

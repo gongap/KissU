@@ -1,7 +1,7 @@
 ﻿using System;
 using Autofac;
 
-namespace KissU.Core.Hosting
+namespace KissU.ServiceHosting
 {
     /// <summary>
     /// 服务主机

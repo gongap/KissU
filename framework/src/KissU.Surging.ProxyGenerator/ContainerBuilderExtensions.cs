@@ -1,8 +1,8 @@
 ﻿using System;
 using Autofac;
-using KissU.Core;
-using KissU.Core.Convertibles;
-using KissU.Core.Module;
+using KissU.Convertibles;
+
+using KissU.Module;
 using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Diagnostics;
 using KissU.Surging.CPlatform.Runtime.Client;

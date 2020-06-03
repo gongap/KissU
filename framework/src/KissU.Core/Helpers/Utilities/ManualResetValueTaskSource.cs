@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Sources;
 
-namespace KissU.Core.Helpers.Utilities
+namespace KissU.Helpers.Utilities
 {
     /// <summary>
     /// ������

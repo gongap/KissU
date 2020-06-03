@@ -1,5 +1,5 @@
 ﻿using Autofac;
-using KissU.Core.Hosting;
+using KissU.ServiceHosting;
 using KissU.Surging.CPlatform.Engines;
 
 namespace KissU.Surging.ProxyGenerator

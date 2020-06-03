@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KissU.Core.Serialization
+namespace KissU.Serialization
 {
     /// <summary>
     /// 一个抽象的序列化器。

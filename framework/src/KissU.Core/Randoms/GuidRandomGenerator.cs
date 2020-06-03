@@ -1,6 +1,6 @@
-﻿using KissU.Core.Helpers;
+﻿using KissU.Helpers;
 
-namespace KissU.Core.Randoms
+namespace KissU.Randoms
 {
     /// <summary>
     /// Guid随机数生成器，每次创建一个新的Guid字符串，去掉了Guid的分隔符

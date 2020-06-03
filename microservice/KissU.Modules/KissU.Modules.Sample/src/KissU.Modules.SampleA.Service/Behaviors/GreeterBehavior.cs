@@ -1,5 +1,5 @@
 ﻿using Greet;
-using KissU.Core.Dependency;
+using KissU.Dependency;
 
 namespace KissU.Modules.SampleA.Service.Behaviors
 {

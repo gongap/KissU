@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
 using System.Security.Principal;
 
-namespace KissU.Core.Security.Principals
+namespace KissU.Security.Principals
 {
     /// <summary>
     /// 未认证安全主体

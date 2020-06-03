@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Text;
-using KissU.Core.Serialization;
+using KissU.Serialization;
 using KissU.Surging.CPlatform.Diagnostics;
 using KissU.Surging.CPlatform.Messages;
 using KissU.Surging.CPlatform.Utilities;

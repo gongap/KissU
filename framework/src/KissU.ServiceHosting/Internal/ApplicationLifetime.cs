@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading;
-using KissU.Core.Hosting;
 using Microsoft.Extensions.Logging;
 
 namespace KissU.ServiceHosting.Internal

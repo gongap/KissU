@@ -1,9 +1,9 @@
 ﻿using System.Net;
 using Autofac;
-using KissU.Core;
-using KissU.Core.Dependency;
-using KissU.Core.Module;
-using KissU.Core.Serialization;
+
+using KissU.Dependency;
+using KissU.Module;
+using KissU.Serialization;
 using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Diagnostics;
 using KissU.Surging.CPlatform.Engines;

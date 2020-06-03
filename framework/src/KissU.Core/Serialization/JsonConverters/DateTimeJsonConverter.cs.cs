@@ -2,7 +2,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace KissU.Core.Serialization.JsonConverters
+namespace KissU.Serialization.JsonConverters
 {
     /// <summary>
     /// 日期JsonConverter.

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using KissU.Core.Helpers.Utilities;
+using KissU.Helpers.Utilities;
 using KissU.Surging.CPlatform.Properties;
 using Microsoft.Extensions.Configuration;
 

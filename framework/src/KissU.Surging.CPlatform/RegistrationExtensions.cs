@@ -1,5 +1,5 @@
 ﻿using System;
-using KissU.Core.Module;
+using KissU.Module;
 using KissU.Surging.CPlatform.Filters;
 
 namespace KissU.Surging.CPlatform

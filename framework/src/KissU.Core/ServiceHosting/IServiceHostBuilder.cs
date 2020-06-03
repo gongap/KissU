@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace KissU.Core.Hosting
+namespace KissU.ServiceHosting
 {
     /// <summary>
     /// 服务主机构建器

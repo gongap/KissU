@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KissU.Core.Helpers
+namespace KissU.Helpers
 {
     /// <summary>
     /// 时间操作

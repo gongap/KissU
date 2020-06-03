@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace KissU.Core.Convertibles
+namespace KissU.Convertibles
 {
     /// <summary>
     /// 类型转换。

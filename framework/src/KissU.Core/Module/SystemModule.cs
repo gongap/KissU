@@ -1,4 +1,4 @@
-﻿namespace KissU.Core.Module
+﻿namespace KissU.Module
 {
     /// <summary>
     /// 系统模块基类

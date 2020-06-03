@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
-using KissU.Core.Common;
-using KissU.Core.Dependency;
+using KissU.Common;
+using KissU.Dependency;
+using KissU.Extensions;
 using KissU.Surging.ProxyGenerator;
 using KissU.Modules.TenantManagement.Service.Contracts;
-using KissU.Core.Extensions;
 
 namespace KissU.Modules.TenantManagement.Service.Implements
 {

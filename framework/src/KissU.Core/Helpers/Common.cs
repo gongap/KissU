@@ -2,7 +2,7 @@
 using System.IO;
 using System.Runtime.InteropServices;
 
-namespace KissU.Core.Helpers
+namespace KissU.Helpers
 {
     /// <summary>
     /// 常用公共操作

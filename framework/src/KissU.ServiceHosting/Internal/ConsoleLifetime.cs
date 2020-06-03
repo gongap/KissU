@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using KissU.Core.Hosting;
 
 namespace KissU.ServiceHosting.Internal
 {

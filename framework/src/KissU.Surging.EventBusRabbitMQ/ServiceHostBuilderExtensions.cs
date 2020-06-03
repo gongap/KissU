@@ -1,9 +1,9 @@
 ﻿using Autofac;
-using KissU.Core;
-using KissU.Core.Dependency;
-using KissU.Core.EventBus;
-using KissU.Core.EventBus.Implementation;
-using KissU.Core.Hosting;
+
+using KissU.Dependency;
+using KissU.EventBus;
+using KissU.EventBus.Implementation;
+using KissU.ServiceHosting;
 using KissU.Surging.CPlatform.Engines;
 using KissU.Surging.CPlatform.Routing;
 

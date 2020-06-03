@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Autofac;
-using KissU.Core.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace KissU.ServiceHosting.Internal

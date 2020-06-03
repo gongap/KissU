@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace KissU.Core.Hosting
+namespace KissU.ServiceHosting
 {
     /// <summary>
     /// 主机生存期

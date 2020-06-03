@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace KissU.Core.Module
+namespace KissU.Module
 {
     /// <summary>
     /// 组件类

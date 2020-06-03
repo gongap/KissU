@@ -2,7 +2,7 @@
 using System.Reflection;
 using System.Reflection.Emit;
 
-namespace KissU.Core.Helpers.Utilities
+namespace KissU.Helpers.Utilities
 {
     /// <summary>
     /// 快速调用.

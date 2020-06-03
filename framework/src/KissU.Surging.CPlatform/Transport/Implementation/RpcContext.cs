@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Security.Claims;
 using System.Threading;
-using KissU.Core.Security.Principals;
+using KissU.Security.Principals;
 using KissU.Surging.CPlatform.Filters.Implementation;
 
 namespace KissU.Surging.CPlatform.Transport.Implementation

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using KissU.Core.Dependency;
-using KissU.Core.Helpers.Utilities;
+using KissU.Dependency;
+using KissU.Helpers.Utilities;
 
-namespace KissU.Core.Module
+namespace KissU.Module
 {
     /// <summary>
     /// 应用模块上下文

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using Autofac;
-using KissU.Core;
-using KissU.Core.Dependency;
-using KissU.Core.EventBus;
-using KissU.Core.EventBus.Events;
-using KissU.Core.EventBus.Implementation;
-using KissU.Core.Module;
+
+using KissU.Dependency;
+using KissU.EventBus;
+using KissU.EventBus.Events;
+using KissU.EventBus.Implementation;
+using KissU.Module;
 using KissU.Surging.CPlatform.Routing;
 using KissU.Surging.EventBusRabbitMQ.Configurations;
 using KissU.Surging.EventBusRabbitMQ.Implementation;

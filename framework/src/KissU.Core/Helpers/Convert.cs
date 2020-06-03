@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using KissU.Core.Extensions;
+using KissU.Extensions;
 
-namespace KissU.Core.Helpers
+namespace KissU.Helpers
 {
     /// <summary>
     /// 类型转换

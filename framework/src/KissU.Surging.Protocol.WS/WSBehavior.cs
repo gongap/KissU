@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using Autofac;
-using KissU.Core.Dependency;
-using KissU.Core.EventBus.Events;
-using KissU.Core.EventBus.Implementation;
+using KissU.Dependency;
+using KissU.EventBus.Events;
+using KissU.EventBus.Implementation;
 using KissU.Surging.Protocol.WS.Runtime;
 using KissU.Surging.ProxyGenerator;
 using WebSocketCore.Server;

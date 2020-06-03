@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
-using KissU.Core.Helpers.Utilities;
-using KissU.Core.Serialization;
+using KissU.Helpers.Utilities;
+using KissU.Serialization;
 
-namespace KissU.Core.Convertibles.Implementation
+namespace KissU.Convertibles.Implementation
 {
     /// <summary>
     /// 一个默认的类型转换提供程序。

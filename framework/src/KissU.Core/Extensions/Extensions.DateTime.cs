@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace KissU.Core.Extensions
+namespace KissU.Extensions
 {
     /// <summary>
     /// 系统扩展 - 日期

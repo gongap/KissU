@@ -1,5 +1,5 @@
-﻿using KissU.Core.Address;
-using KissU.Core.Serialization;
+﻿using KissU.Address;
+using KissU.Serialization;
 using Newtonsoft.Json;
 
 namespace KissU.Surging.CPlatform.Mqtt

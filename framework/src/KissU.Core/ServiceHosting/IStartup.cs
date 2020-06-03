@@ -1,6 +1,6 @@
 ﻿using Autofac;
 
-namespace KissU.Core.Hosting
+namespace KissU.ServiceHosting
 {
     /// <summary>
     /// 启动配置接口

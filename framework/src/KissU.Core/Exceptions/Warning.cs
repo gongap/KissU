@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using KissU.Core.Extensions;
+using KissU.Extensions;
 using KissU.Properties;
 using Microsoft.Extensions.Logging;
 
-namespace KissU.Core.Exceptions
+namespace KissU.Exceptions
 {
     /// <summary>
     /// 应用程序异常

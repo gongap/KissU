@@ -6,7 +6,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
-using KissU.Core.Address;
+using KissU.Address;
 
 namespace KissU.Surging.Zookeeper.Internal.Cluster.HealthChecks.Implementation
 {

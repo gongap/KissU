@@ -1,6 +1,6 @@
-﻿using KissU.Core.Extensions;
+﻿using KissU.Extensions;
 
-namespace KissU.Core.Helpers
+namespace KissU.Helpers
 {
     /// <summary>
     /// 验证操作

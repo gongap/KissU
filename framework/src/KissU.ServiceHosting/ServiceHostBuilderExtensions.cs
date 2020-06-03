@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Reflection;
-using KissU.Core.Hosting;
 using KissU.ServiceHosting.Internal;
 using KissU.ServiceHosting.Startup;
 using Microsoft.Extensions.Configuration;

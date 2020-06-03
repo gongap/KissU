@@ -1,4 +1,4 @@
-﻿namespace KissU.Core.Dependency
+﻿namespace KissU.Dependency
 {
     /// <summary>
     /// 仓储基类.

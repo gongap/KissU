@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace KissU.Core.Validation
+namespace KissU.Validation
 {
     /// <summary>
     /// 验证处理器

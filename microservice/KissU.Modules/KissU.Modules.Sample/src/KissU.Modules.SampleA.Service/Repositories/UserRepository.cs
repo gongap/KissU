@@ -1,4 +1,4 @@
-﻿using KissU.Core.Dependency;
+﻿using KissU.Dependency;
 
 namespace KissU.Modules.SampleA.Service.Repositories
 {

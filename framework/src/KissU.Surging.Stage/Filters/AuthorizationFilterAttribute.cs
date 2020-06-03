@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Autofac;
-using KissU.Core.Dependency;
+using KissU.Dependency;
 using KissU.Surging.ApiGateWay;
 using KissU.Surging.ApiGateWay.OAuth;
 using KissU.Surging.CPlatform;

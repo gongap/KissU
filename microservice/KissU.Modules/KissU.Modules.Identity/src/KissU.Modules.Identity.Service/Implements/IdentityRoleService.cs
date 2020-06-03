@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using KissU.Core.Common;
-using KissU.Core.Dependency;
-using KissU.Core.Extensions;
+using KissU.Common;
+using KissU.Dependency;
+using KissU.Extensions;
 using KissU.Modules.Identity.Application.Contracts;
 using KissU.Modules.Identity.Service.Contracts;
 using KissU.Surging.ProxyGenerator;

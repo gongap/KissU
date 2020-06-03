@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Consul;
-using KissU.Core.Serialization;
+using KissU.Serialization;
 using KissU.Surging.Consul.Configurations;
 using KissU.Surging.Consul.Internal;
 using KissU.Surging.Consul.Utilitys;

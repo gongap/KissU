@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using KissU.Core.Dependency;
+using KissU.Dependency;
 using KissU.Modules.Users.Abstractions;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using Volo.Abp.Users;

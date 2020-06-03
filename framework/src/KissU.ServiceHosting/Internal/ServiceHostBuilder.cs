@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using KissU.Core.Dependency;
-using KissU.Core.Hosting;
+using KissU.Dependency;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;

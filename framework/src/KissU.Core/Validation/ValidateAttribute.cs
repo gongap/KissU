@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KissU.Core.Validation
+namespace KissU.Validation
 {
     /// <summary>
     /// 验证属性.

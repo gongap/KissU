@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.Core.Address;
-using KissU.Core.Dependency;
+using KissU.Address;
+using KissU.Dependency;
 using KissU.Surging.CPlatform.Runtime.Client.HealthChecks;
 
 namespace KissU.Surging.ApiGateWay.ServiceDiscovery.Implementation

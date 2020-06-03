@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
-using KissU.Core.Common;
-using KissU.Core.Extensions;
+using KissU.Common;
+using KissU.Extensions;
 using KissU.Modules.Blogging.Application.Contracts.Posts;
 using KissU.Surging.ProxyGenerator;
 

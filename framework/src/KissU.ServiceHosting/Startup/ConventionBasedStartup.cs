@@ -2,7 +2,6 @@
 using System.Reflection;
 using System.Runtime.ExceptionServices;
 using Autofac;
-using KissU.Core.Hosting;
 
 namespace KissU.ServiceHosting.Startup
 {

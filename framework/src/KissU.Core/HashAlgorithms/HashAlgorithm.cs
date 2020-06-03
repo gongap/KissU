@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace KissU.Core.HashAlgorithms
+namespace KissU.HashAlgorithms
 {
     /// <summary>
     /// 一致性哈希算法

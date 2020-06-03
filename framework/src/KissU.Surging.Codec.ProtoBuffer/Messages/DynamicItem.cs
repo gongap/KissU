@@ -1,5 +1,5 @@
 ﻿using System;
-using KissU.Core.Helpers.Utilities;
+using KissU.Helpers.Utilities;
 using KissU.Surging.Codec.ProtoBuffer.Utilities;
 using Newtonsoft.Json;
 using ProtoBuf;

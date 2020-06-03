@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 using Autofac;
-using KissU.Core.Dependency;
+using KissU.Dependency;
 using KissU.ServiceHosting;
 using KissU.ServiceHosting.Internal;
 using KissU.Surging.Caching.Configurations;

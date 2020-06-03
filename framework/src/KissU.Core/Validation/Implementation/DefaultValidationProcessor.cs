@@ -2,11 +2,11 @@
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
-using KissU.Core.Convertibles;
-using KissU.Core.Exceptions;
-using KissU.Core.Helpers.Utilities;
+using KissU.Convertibles;
+using KissU.Exceptions;
+using KissU.Helpers.Utilities;
 
-namespace KissU.Core.Validation.Implementation
+namespace KissU.Validation.Implementation
 {
     /// <summary>
     /// 默认验证处理器.

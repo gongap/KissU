@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using KissU.Core.Helpers;
+using KissU.Helpers;
 
-namespace KissU.Core.Extensions
+namespace KissU.Extensions
 {
     /// <summary>
     /// 系统扩展 - 类型转换

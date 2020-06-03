@@ -1,4 +1,4 @@
-﻿using KissU.Core.EventBus.Events;
+﻿using KissU.EventBus.Events;
 
 namespace KissU.Modules.SampleA.Service.Contracts.Events
 {

@@ -1,7 +1,7 @@
 using System.Net;
 using Newtonsoft.Json;
 
-namespace KissU.Core.Address
+namespace KissU.Address
 {
     /// <summary>
     /// ip地址模型。

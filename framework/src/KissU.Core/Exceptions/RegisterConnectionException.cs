@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KissU.Core.Exceptions
+namespace KissU.Exceptions
 {
     /// <summary>
     /// 注册连接异常.

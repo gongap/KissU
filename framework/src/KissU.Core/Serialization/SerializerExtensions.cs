@@ -1,4 +1,4 @@
-﻿namespace KissU.Core.Serialization
+﻿namespace KissU.Serialization
 {
     /// <summary>
     /// 添加<see cref="ISerializer" />扩展方法。

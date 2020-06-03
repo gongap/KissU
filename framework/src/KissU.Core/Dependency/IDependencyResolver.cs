@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace KissU.Core.Dependency
+namespace KissU.Dependency
 {
     /// <summary>
     /// 注入IOC容器接口

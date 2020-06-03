@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 
-namespace KissU.Core.Hosting
+namespace KissU.ServiceHosting
 {
     /// <summary>
     /// 应用生存期

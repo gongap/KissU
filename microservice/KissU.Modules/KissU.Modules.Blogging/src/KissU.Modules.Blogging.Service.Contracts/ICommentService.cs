@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.Core.Dependency;
+using KissU.Dependency;
 using KissU.Modules.Blogging.Application.Contracts.Comments.Dtos;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 

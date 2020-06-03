@@ -1,5 +1,5 @@
-﻿using KissU.Core.Helpers.Utilities;
-using KissU.Core.Module;
+﻿using KissU.Helpers.Utilities;
+using KissU.Module;
 using KissU.Surging.CPlatform;
 using KissU.Surging.KestrelHttpServer;
 using KissU.Surging.Log4net;

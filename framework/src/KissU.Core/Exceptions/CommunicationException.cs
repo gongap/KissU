@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KissU.Core.Exceptions
+namespace KissU.Exceptions
 {
     /// <summary>
     /// 通讯异常（与服务端进行通讯时发生的异常）。

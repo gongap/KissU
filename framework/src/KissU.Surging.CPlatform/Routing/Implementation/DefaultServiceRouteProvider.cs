@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using KissU.Core.Helpers.Utilities;
+using KissU.Helpers.Utilities;
 using KissU.Surging.CPlatform.Runtime.Server;
 using KissU.Surging.CPlatform.Transport.Implementation;
 using KissU.Surging.CPlatform.Utilities;

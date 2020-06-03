@@ -1,6 +1,6 @@
 using Autofac;
 using KissU.Autofac.Extensions.Hosting;
-using KissU.Core.Dependency;
+using KissU.Dependency;
 using KissU.Surging.Caching;
 using KissU.Surging.Caching.Configurations;
 using KissU.Surging.CPlatform;

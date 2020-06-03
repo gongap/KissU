@@ -1,4 +1,4 @@
-﻿using KissU.Core.Address;
+﻿using KissU.Address;
 
 namespace KissU.Surging.ApiGateWay.ServiceDiscovery.Implementation
 {

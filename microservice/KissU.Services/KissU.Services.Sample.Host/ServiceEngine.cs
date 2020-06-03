@@ -1,4 +1,4 @@
-﻿using KissU.Core.Helpers.Utilities;
+﻿using KissU.Helpers.Utilities;
 using KissU.Surging.CPlatform.Engines.Implementation;
 
 namespace KissU.Service.Host

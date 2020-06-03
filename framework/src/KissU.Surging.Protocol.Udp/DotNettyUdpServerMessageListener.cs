@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using DotNetty.Transport.Bootstrapping;
 using DotNetty.Transport.Channels;
 using DotNetty.Transport.Channels.Sockets;
-using KissU.Core.Serialization;
+using KissU.Serialization;
 using KissU.Surging.CPlatform.Messages;
 using KissU.Surging.CPlatform.Transport;
 using KissU.Surging.CPlatform.Transport.Codec;

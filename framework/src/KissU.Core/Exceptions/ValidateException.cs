@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KissU.Core.Exceptions
+namespace KissU.Exceptions
 {
     /// <summary>
     /// 对象校验异常

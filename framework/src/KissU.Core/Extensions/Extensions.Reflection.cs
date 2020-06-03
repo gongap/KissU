@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace KissU.Core.Extensions
+namespace KissU.Extensions
 {
     /// <summary>
     /// 系统扩展 - 反射

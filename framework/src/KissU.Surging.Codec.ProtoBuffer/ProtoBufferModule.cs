@@ -1,4 +1,4 @@
-﻿using KissU.Core.Module;
+﻿using KissU.Module;
 using KissU.Surging.CPlatform.Transport.Codec;
 
 namespace KissU.Surging.Codec.ProtoBuffer

@@ -4,7 +4,7 @@ using DotNetty.Buffers;
 using DotNetty.Codecs.Http;
 using DotNetty.Common.Utilities;
 using DotNetty.Transport.Channels;
-using KissU.Core.Serialization;
+using KissU.Serialization;
 using KissU.Surging.CPlatform.Messages;
 using KissU.Surging.CPlatform.Transport;
 using KissU.Surging.CPlatform.Transport.Codec;

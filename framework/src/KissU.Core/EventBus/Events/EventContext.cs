@@ -1,4 +1,4 @@
-﻿namespace KissU.Core.EventBus.Events
+﻿namespace KissU.EventBus.Events
 {
     /// <summary>
     /// 事件上下文.

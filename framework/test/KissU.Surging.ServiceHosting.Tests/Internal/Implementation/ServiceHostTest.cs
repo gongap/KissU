@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Autofac;
-using KissU.Core.Hosting;
+using KissU.ServiceHosting;
 using KissU.ServiceHosting.Internal;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;

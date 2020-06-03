@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using KissU.Core.Exceptions;
+using KissU.Exceptions;
 using Microsoft.Extensions.Logging;
 
-namespace KissU.Core.Convertibles.Implementation
+namespace KissU.Convertibles.Implementation
 {
     /// <summary>
     /// 一个默认的类型转换服务。

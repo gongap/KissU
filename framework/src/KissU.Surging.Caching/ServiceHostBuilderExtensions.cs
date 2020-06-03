@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using Autofac;
-using KissU.Core.Hosting;
+using KissU.ServiceHosting;
 using KissU.Surging.Caching.Configurations;
 using KissU.Surging.CPlatform.Cache;
 

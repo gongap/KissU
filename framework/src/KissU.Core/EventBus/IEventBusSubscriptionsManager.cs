@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using KissU.Core.EventBus.Events;
+using KissU.EventBus.Events;
 
-namespace KissU.Core.EventBus
+namespace KissU.EventBus
 {
     /// <summary>
     /// 事件总线订阅管理器

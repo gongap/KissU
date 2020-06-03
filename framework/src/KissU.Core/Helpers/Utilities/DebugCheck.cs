@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace KissU.Core.Helpers.Utilities
+namespace KissU.Helpers.Utilities
 {
     /// <summary>
     /// 调试检查。这个类不能被继承.

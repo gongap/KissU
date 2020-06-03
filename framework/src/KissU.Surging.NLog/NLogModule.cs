@@ -1,5 +1,5 @@
-﻿using KissU.Core.Helpers.Utilities;
-using KissU.Core.Module;
+﻿using KissU.Helpers.Utilities;
+using KissU.Module;
 using KissU.Surging.CPlatform;
 using Microsoft.Extensions.Logging;
 using NLog;

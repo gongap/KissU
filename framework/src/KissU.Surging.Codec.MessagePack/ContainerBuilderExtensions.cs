@@ -1,5 +1,5 @@
-﻿using KissU.Core;
-using KissU.Core.Module;
+﻿
+using KissU.Module;
 using KissU.Surging.CPlatform;
 
 namespace KissU.Surging.Codec.MessagePack

@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
-using KissU.Core.Serialization;
+using KissU.Serialization;
 using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Diagnostics;
 using KissU.Surging.CPlatform.Messages;

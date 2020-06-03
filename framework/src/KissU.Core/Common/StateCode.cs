@@ -1,4 +1,4 @@
-﻿namespace KissU.Core.Common
+﻿namespace KissU.Common
 {
     /// <summary>
     /// 状态码

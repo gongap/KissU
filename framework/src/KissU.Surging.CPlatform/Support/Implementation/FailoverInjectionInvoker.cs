@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using KissU.Core.Convertibles;
+using KissU.Convertibles;
 using KissU.Surging.CPlatform.Runtime.Server;
 
 namespace KissU.Surging.CPlatform.Support.Implementation

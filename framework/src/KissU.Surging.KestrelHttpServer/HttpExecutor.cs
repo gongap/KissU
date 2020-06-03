@@ -3,10 +3,10 @@ using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Reflection;
 using System.Threading.Tasks;
-using KissU.Core;
-using KissU.Core.Convertibles;
-using KissU.Core.Dependency;
-using KissU.Core.Exceptions;
+using KissU.Convertibles;
+
+using KissU.Dependency;
+using KissU.Exceptions;
 using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Diagnostics;
 using KissU.Surging.CPlatform.Filters;
@@ -18,7 +18,7 @@ using KissU.Surging.CPlatform.Transport.Implementation;
 using KissU.Surging.ProxyGenerator;
 using Microsoft.Extensions.Logging;
 using KissU.Surging.KestrelHttpServer.Internal;
-using static KissU.Core.Helpers.Utilities.FastInvoke;
+using static KissU.Helpers.Utilities.FastInvoke;
 
 namespace KissU.Surging.KestrelHttpServer
 {

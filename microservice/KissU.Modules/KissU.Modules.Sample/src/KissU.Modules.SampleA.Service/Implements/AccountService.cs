@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using KissU.Core.Common;
-using KissU.Core.Dependency;
-using KissU.Core.EventBus.Events;
+using KissU.Common;
+using KissU.Dependency;
+using KissU.EventBus.Events;
 using KissU.Surging.CPlatform.Transport.Implementation;
 using KissU.Surging.KestrelHttpServer.Abstractions;
 using KissU.Surging.KestrelHttpServer.Internal;

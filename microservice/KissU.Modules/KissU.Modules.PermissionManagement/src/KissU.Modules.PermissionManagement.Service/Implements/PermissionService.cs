@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using KissU.Core.Dependency;
+using KissU.Dependency;
 using KissU.Surging.ProxyGenerator;
 using KissU.Modules.PermissionManagement.Service.Contracts;
 

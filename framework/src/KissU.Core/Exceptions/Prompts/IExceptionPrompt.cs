@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KissU.Core.Exceptions.Prompts
+namespace KissU.Exceptions.Prompts
 {
     /// <summary>
     /// 异常提示

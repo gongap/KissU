@@ -2,9 +2,9 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Reflection;
-using KissU.Core.Helpers.Utilities;
+using KissU.Helpers.Utilities;
 
-namespace KissU.Core.Dependency
+namespace KissU.Dependency
 {
     /// <summary>
     /// 服务解析器

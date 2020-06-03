@@ -1,4 +1,4 @@
-﻿namespace KissU.Core.EventBus
+﻿namespace KissU.EventBus
 {
     /// <summary>
     /// 订阅适应器

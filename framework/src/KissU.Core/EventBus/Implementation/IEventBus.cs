@@ -1,7 +1,7 @@
 ﻿using System;
-using KissU.Core.EventBus.Events;
+using KissU.EventBus.Events;
 
-namespace KissU.Core.EventBus.Implementation
+namespace KissU.EventBus.Implementation
 {
     /// <summary>
     /// 事件总线

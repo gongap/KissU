@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using KissU.Core.Dependency;
-using KissU.Core.Serialization;
+using KissU.Dependency;
+using KissU.Serialization;
 using KissU.Surging.CPlatform.Cache;
 using KissU.Surging.CPlatform.Cache.Implementation;
 

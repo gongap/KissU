@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using KissU.Core.Address;
-using KissU.Core.Serialization;
+using KissU.Address;
+using KissU.Serialization;
 using KissU.Surging.CPlatform.Routing;
 
 namespace KissU.Surging.CPlatform.Runtime.Client.Implementation

@@ -1,7 +1,7 @@
 ﻿using Autofac;
-using KissU.Core;
-using KissU.Core.Module;
-using KissU.Core.Serialization;
+
+using KissU.Module;
+using KissU.Serialization;
 using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Routing;
 using KissU.Surging.CPlatform.Runtime.Server;

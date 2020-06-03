@@ -4,9 +4,9 @@ using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using Autofac;
-using KissU.Core.Exceptions;
+using KissU.Exceptions;
 
-namespace KissU.Core.Module
+namespace KissU.Module
 {
     /// <summary>
     /// 抽象模块

@@ -1,6 +1,6 @@
 ﻿using System;
 using KissU.Autofac.Extensions.DependencyInjection;
-using KissU.Core.Module;
+using KissU.Module;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp;
 

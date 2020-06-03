@@ -1,5 +1,5 @@
 ﻿using System;
-using KissU.Core.Module;
+using KissU.Module;
 using KissU.Surging.KestrelHttpServer;
 using KissU.Surging.KestrelHttpServer.Extensions;
 using KissU.Surging.Stage.Configurations;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using KissU.Core.Serialization;
+using KissU.Serialization;
 using KissU.Surging.CPlatform.Cache;
 using KissU.Surging.CPlatform.Cache.Implementation;
 using KissU.Surging.Zookeeper.Configurations;

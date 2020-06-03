@@ -9,7 +9,7 @@ using DotNetty.Transport.Bootstrapping;
 using DotNetty.Transport.Channels;
 using DotNetty.Transport.Channels.Sockets;
 using DotNetty.Transport.Libuv;
-using KissU.Core.Address;
+using KissU.Address;
 using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Messages;
 using KissU.Surging.CPlatform.Runtime.Client.HealthChecks;

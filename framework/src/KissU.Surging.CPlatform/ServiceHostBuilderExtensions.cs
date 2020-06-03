@@ -6,11 +6,11 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Autofac;
-using KissU.Core;
-using KissU.Core.Address;
-using KissU.Core.Dependency;
-using KissU.Core.Hosting;
-using KissU.Core.Module;
+using KissU.Address;
+
+using KissU.Dependency;
+using KissU.Module;
+using KissU.ServiceHosting;
 using KissU.Surging.CPlatform.Configurations;
 using KissU.Surging.CPlatform.Engines;
 using KissU.Surging.CPlatform.Routing;

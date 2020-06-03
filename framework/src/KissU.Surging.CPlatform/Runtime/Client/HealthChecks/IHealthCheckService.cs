@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using KissU.Core.Address;
+using KissU.Address;
 using KissU.Surging.CPlatform.Runtime.Client.HealthChecks.Implementation;
 
 namespace KissU.Surging.CPlatform.Runtime.Client.HealthChecks

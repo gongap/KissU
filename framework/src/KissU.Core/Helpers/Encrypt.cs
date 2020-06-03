@@ -2,10 +2,10 @@
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using KissU.Core.Extensions;
-using KissU.Core.Helpers.Internal;
+using KissU.Extensions;
+using KissU.Helpers.Internal;
 
-namespace KissU.Core.Helpers
+namespace KissU.Helpers
 {
     /// <summary>
     /// 加密操作

@@ -1,6 +1,6 @@
 ﻿using System;
-using KissU.Core.Module;
-using KissU.Core.Serialization;
+using KissU.Module;
+using KissU.Serialization;
 using KissU.Surging.CPlatform.Cache;
 using KissU.Surging.CPlatform.Mqtt;
 using KissU.Surging.CPlatform.Routing;

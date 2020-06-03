@@ -1,7 +1,7 @@
 ﻿using System;
-using KissU.Core.Extensions;
+using KissU.Extensions;
 
-namespace KissU.Core.Helpers
+namespace KissU.Helpers
 {
     /// <summary>
     /// 标识生成器

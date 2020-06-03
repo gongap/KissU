@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Linq;
 
-namespace KissU.Core.HashAlgorithms
+namespace KissU.HashAlgorithms
 {
     /// <summary>
     /// 针对<see cref="T" />哈希算法实现

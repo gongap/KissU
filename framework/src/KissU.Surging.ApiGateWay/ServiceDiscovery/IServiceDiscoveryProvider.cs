@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.Core.Address;
+using KissU.Address;
 using KissU.Surging.ApiGateWay.ServiceDiscovery.Implementation;
 using KissU.Surging.CPlatform;
 

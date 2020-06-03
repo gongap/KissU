@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace KissU.Core.EventBus.Events
+namespace KissU.EventBus.Events
 {
     /// <summary>
     /// 集成事件处理程序

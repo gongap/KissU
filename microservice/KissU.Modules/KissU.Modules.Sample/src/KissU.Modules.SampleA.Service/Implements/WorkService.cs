@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using KissU.Core.Dependency;
+using KissU.Dependency;
 using KissU.Surging.ProxyGenerator;
 using KissU.Surging.BackgroundServer.Runtime;
 using KissU.Modules.SampleA.Service.Contracts;

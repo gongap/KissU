@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KissU.Core.Convertibles
+namespace KissU.Convertibles
 {
     /// <summary>
     /// 一个抽象的类型转换服务。

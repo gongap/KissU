@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Autofac;
-using KissU.Core;
-using KissU.Core.Convertibles;
-using KissU.Core.Dependency;
-using KissU.Core.Helpers.Utilities;
+using KissU.Convertibles;
+
+using KissU.Dependency;
+using KissU.Helpers.Utilities;
 using KissU.Surging.CPlatform.Messages;
 using KissU.Surging.CPlatform.Runtime.Client;
 using KissU.Surging.CPlatform.Support;

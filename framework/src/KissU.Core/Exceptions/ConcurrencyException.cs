@@ -1,7 +1,7 @@
 ﻿using System;
 using KissU.Properties;
 
-namespace KissU.Core.Exceptions
+namespace KissU.Exceptions
 {
     /// <summary>
     /// 并发异常

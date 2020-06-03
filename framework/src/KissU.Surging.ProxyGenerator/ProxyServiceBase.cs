@@ -1,8 +1,8 @@
 ﻿using System;
 using Autofac;
-using KissU.Core.Dependency;
-using KissU.Core.EventBus.Events;
-using KissU.Core.EventBus.Implementation;
+using KissU.Dependency;
+using KissU.EventBus.Events;
+using KissU.EventBus.Implementation;
 
 namespace KissU.Surging.ProxyGenerator
 {

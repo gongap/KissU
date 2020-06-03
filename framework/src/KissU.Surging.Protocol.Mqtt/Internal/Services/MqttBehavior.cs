@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Autofac;
-using KissU.Core.Dependency;
-using KissU.Core.EventBus.Events;
-using KissU.Core.EventBus.Implementation;
+using KissU.Dependency;
+using KissU.EventBus.Events;
+using KissU.EventBus.Implementation;
 using KissU.Surging.Protocol.Mqtt.Internal.Messages;
 using KissU.Surging.ProxyGenerator;
 

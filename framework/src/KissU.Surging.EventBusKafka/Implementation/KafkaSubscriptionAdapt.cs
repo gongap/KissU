@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using KissU.Core.EventBus;
-using KissU.Core.EventBus.Events;
+using KissU.EventBus;
+using KissU.EventBus.Events;
 
 namespace KissU.Surging.EventBusKafka.Implementation
 {

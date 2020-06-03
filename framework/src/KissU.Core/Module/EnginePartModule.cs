@@ -1,4 +1,4 @@
-﻿namespace KissU.Core.Module
+﻿namespace KissU.Module
 {
     /// <summary>
     /// 引擎零件模块

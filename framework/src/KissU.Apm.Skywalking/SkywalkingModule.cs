@@ -15,7 +15,7 @@ using KissU.Apm.Skywalking.Core.Transport;
 using KissU.Apm.Skywalking.Transport.Grpc;
 using KissU.Apm.Skywalking.Transport.Grpc.V5;
 using KissU.Apm.Skywalking.Transport.Grpc.V6;
-using KissU.Core.Module;
+using KissU.Module;
 using KissU.Surging.CPlatform.Diagnostics;
 
 namespace KissU.Apm.Skywalking

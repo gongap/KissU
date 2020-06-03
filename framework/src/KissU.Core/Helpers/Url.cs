@@ -2,7 +2,7 @@
 using System.Text;
 using System.Web;
 
-namespace KissU.Core.Helpers
+namespace KissU.Helpers
 {
     /// <summary>
     /// Url操作

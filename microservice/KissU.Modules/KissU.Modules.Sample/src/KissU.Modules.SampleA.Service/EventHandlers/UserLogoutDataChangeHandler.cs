@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
-using KissU.Core.Dependency;
-using KissU.Core.EventBus.Events;
+using KissU.Dependency;
+using KissU.EventBus.Events;
 using KissU.Surging.EventBusRabbitMQ.Attributes;
 using KissU.Modules.SampleA.Service.Contracts;
 using KissU.Modules.SampleA.Service.Contracts.Dtos;

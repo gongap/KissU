@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using KissU.Core.Dependency;
+using KissU.Dependency;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Surging.CPlatform.Support.Attributes;
 

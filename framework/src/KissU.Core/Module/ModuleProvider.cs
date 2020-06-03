@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using KissU.Core.Dependency;
+using KissU.Dependency;
 using Microsoft.Extensions.Logging;
 
-namespace KissU.Core.Module
+namespace KissU.Module
 {
     /// <summary>
     /// 模块提供器.

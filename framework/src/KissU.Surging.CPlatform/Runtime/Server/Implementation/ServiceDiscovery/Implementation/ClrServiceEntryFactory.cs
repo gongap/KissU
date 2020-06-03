@@ -5,14 +5,14 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
-using KissU.Core.Convertibles;
-using KissU.Core.Dependency;
-using KissU.Core.Validation;
+using KissU.Convertibles;
+using KissU.Dependency;
 using KissU.Surging.CPlatform.Filters.Implementation;
 using KissU.Surging.CPlatform.Ids;
 using KissU.Surging.CPlatform.Routing.Template;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
-using static KissU.Core.Helpers.Utilities.FastInvoke;
+using KissU.Validation;
+using static KissU.Helpers.Utilities.FastInvoke;
 
 namespace KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Implementation
 {

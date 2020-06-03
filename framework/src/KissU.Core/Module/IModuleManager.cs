@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace KissU.Core.Module
+namespace KissU.Module
 {
     /// <summary>
     /// 模块管理器

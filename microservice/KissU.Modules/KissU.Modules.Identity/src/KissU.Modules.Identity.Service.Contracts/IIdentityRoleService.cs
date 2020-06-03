@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
-using KissU.Core.Common;
-using KissU.Core.Dependency;
+using KissU.Common;
+using KissU.Dependency;
 using KissU.Modules.Identity.Application.Contracts;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using Volo.Abp.Application.Dtos;

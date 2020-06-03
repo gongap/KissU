@@ -1,5 +1,5 @@
 ﻿using Autofac;
-using KissU.Core.Module;
+using KissU.Module;
 using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Runtime.Client.HealthChecks;
 using KissU.Surging.CPlatform.Runtime.Server;

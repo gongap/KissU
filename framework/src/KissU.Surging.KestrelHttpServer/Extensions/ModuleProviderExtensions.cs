@@ -1,5 +1,5 @@
 ﻿using System;
-using KissU.Core.Module;
+using KissU.Module;
 
 namespace KissU.Surging.KestrelHttpServer.Extensions
 {

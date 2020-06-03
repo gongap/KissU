@@ -1,4 +1,4 @@
-﻿namespace KissU.Core.HashAlgorithms
+﻿namespace KissU.HashAlgorithms
 {
     /// <summary>
     /// 一致性哈希的抽象接口

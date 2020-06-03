@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KissU.Core.Exceptions
+namespace KissU.Exceptions
 {
     /// <summary>
     /// 基础异常类。
