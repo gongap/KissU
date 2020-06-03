@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Thrift\KissU.Surging.Thrift.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.ServiceHosting\KissU.ServiceHosting.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Apm.Skywalking\KissU.Apm.Skywalking.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Codec.MessagePack\KissU.Surging.Codec.MessagePack.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Codec.ProtoBuffer\KissU.Surging.Codec.ProtoBuffer.csproj" />
@@ -20,7 +21,6 @@
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Log4net\KissU.Surging.Log4net.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.NLog\KissU.Surging.Nlog.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.ProxyGenerator\KissU.Surging.ProxyGenerator.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.ServiceHosting\KissU.Surging.ServiceHosting.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Zookeeper\KissU.Surging.Zookeeper.csproj" />
     <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Sample\src\KissU.Modules.SampleA.Service.Contracts\KissU.Modules.SampleA.Service.Contracts.csproj" />
   </ItemGroup>

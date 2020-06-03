@@ -8,7 +8,7 @@
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-    <RootNamespace>KissU.Abp.Autofac</RootNamespace>
+    <RootNamespace>KissU.Autofac</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

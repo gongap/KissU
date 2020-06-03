@@ -3,7 +3,6 @@ using Autofac;
 using KissU.Core.Helpers.Utilities;
 using KissU.Core.Hosting;
 using KissU.Surging.CPlatform;
-using KissU.Surging.ServiceHosting.Internal;
 using Microsoft.Extensions.Logging;
 using NLog;
 using LogLevel = Microsoft.Extensions.Logging.LogLevel;

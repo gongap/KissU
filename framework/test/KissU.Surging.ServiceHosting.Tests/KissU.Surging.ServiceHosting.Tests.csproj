@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\KissU.Surging.ServiceHosting\KissU.Surging.ServiceHosting.csproj" />
+    <ProjectReference Include="..\..\src\KissU.ServiceHosting\KissU.ServiceHosting.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -41,7 +41,7 @@ namespace KissU.Surging.Configuration.Apollo.Configurations
         /// Sets the data.
         /// </summary>
         /// <param name="properties">The properties.</param>
-        protected override void SetData(Properties properties)
+        protected override void SetData(Com.Ctrip.Framework.Apollo.Core.Utils.Properties properties)
         {
             var data = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 

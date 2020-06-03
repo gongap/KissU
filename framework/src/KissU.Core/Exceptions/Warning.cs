@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using KissU.Core.Extensions;
-using KissU.Core.Properties;
+using KissU.Properties;
 using Microsoft.Extensions.Logging;
 
 namespace KissU.Core.Exceptions

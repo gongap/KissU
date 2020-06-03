@@ -1,5 +1,5 @@
 ﻿using System;
-using KissU.Core.Properties;
+using KissU.Properties;
 
 namespace KissU.Core.Helpers.Utilities
 {

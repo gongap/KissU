@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using KissU.Core.Extensions;
 using KissU.Core.Helpers;
-using KissU.Core.Properties;
+using KissU.Properties;
 using Microsoft.Extensions.Hosting;
 
 namespace KissU.Core.Exceptions.Prompts

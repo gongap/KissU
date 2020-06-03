@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KissU.Core.Properties {
+namespace KissU.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace KissU.Core.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("KissU.Core.Properties.LogResource", typeof(LogResource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("KissU.Properties.LogResource", typeof(LogResource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
