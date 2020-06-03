@@ -1,7 +1,7 @@
 ﻿using System;
 using Autofac;
 
-namespace KissU.Surging.ServiceHosting.Internal
+namespace KissU.Core.Hosting
 {
     /// <summary>
     /// 服务主机
@@ -11,7 +11,7 @@ namespace KissU.Surging.ServiceHosting.Internal
         /// <summary>
         /// 运行
         /// </summary>
-        /// <returns>IDisposable.</returns>
+        /// <returns>An IDisposable that ends the logical operation scope on dispose.</returns>
         IDisposable Run();
 
         /// <summary>

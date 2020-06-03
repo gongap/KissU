@@ -1,6 +1,6 @@
 ﻿using Autofac;
+using KissU.Core.Hosting;
 using KissU.Surging.CPlatform.Engines;
-using KissU.Surging.ServiceHosting.Internal;
 
 namespace KissU.Surging.ProxyGenerator
 {
@@ -16,7 +16,7 @@ namespace KissU.Surging.ProxyGenerator
         /// <returns>IServiceHostBuilder.</returns>
         public static IServiceHostBuilder UseProxy(this IServiceHostBuilder hostBuilder)
         {
-            return hostBuilder.MapServices(mapper =>
+            return hostBuilder.Configure(mapper =>
             {
                 mapper.Resolve<IServiceEngineLifetime>().ServiceEngineStarted.Register(() =>
                 {

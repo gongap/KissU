@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Threading;
+using KissU.Core.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace KissU.Surging.ServiceHosting.Internal.Implementation
+namespace KissU.Surging.ServiceHosting.Internal
 {
     /// <summary>
-    /// 应用生命周期
+    /// 应用生存期
     /// </summary>
     public class ApplicationLifetime : IApplicationLifetime
     {
@@ -90,15 +91,15 @@ namespace KissU.Surging.ServiceHosting.Internal.Implementation
         /// <summary>
         /// 执行处理程序.
         /// </summary>
-        /// <param name="cancel">取消令牌源</param>
-        private void ExecuteHandlers(CancellationTokenSource cancel)
+        /// <param name="cts">取消令牌源</param>
+        private void ExecuteHandlers(CancellationTokenSource cts)
         {
-            if (cancel.IsCancellationRequested)
+            if (cts.IsCancellationRequested)
             {
                 return;
             }
 
-            cancel.Cancel(false);
+            cts.Cancel(false);
         }
     }
 }

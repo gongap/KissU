@@ -1,5 +1,5 @@
 ﻿using Autofac;
-using KissU.Surging.ServiceHosting.Startup.Implementation;
+using KissU.Surging.ServiceHosting.Startup;
 using NSubstitute;
 using Xunit;
 

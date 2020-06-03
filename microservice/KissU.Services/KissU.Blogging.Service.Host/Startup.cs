@@ -22,7 +22,7 @@ namespace KissU.Service.Host
         /// <summary>
         /// 配置服务
         /// </summary>
-        public IContainer ConfigureServices(ContainerBuilder builder)
+        public IContainer ConfigureContainer(ContainerBuilder builder)
         {
             var services = new ServiceCollection();
             services.AddLogging();
@@ -31,7 +31,7 @@ namespace KissU.Service.Host
         }
 
         /// <summary>
-        /// 配置应用
+        /// 配置容器
         /// </summary>
         public void Configure(IContainer container)
         {

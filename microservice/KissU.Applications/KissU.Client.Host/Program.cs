@@ -8,7 +8,7 @@ using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Configurations;
 using KissU.Surging.ProxyGenerator;
 using KissU.Surging.ServiceHosting;
-using KissU.Surging.ServiceHosting.Internal.Implementation;
+using KissU.Surging.ServiceHosting.Internal;
 using Microsoft.Extensions.Logging;
 
 namespace KissU.Client.Host
@@ -19,7 +19,7 @@ namespace KissU.Client.Host
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             var host = new ServiceHostBuilder()
-                .RegisterServices(builder =>
+                .ConfigureContainer(builder =>
                 {
                     builder.AddMicroService(option =>
                     {

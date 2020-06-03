@@ -1,10 +1,10 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace KissU.Surging.ServiceHosting.Internal
+namespace KissU.Core.Hosting
 {
     /// <summary>
-    /// 主机生命周期
+    /// 主机生存期
     /// </summary>
     public interface IHostLifetime
     {

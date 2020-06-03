@@ -1,8 +1,8 @@
 ﻿using System;
 using Autofac;
 using KissU.Core.Helpers.Utilities;
+using KissU.Core.Hosting;
 using KissU.Surging.CPlatform;
-using KissU.Surging.ServiceHosting.Internal;
 using Microsoft.Extensions.Logging;
 
 namespace KissU.Surging.Log4net
@@ -22,7 +22,7 @@ namespace KissU.Surging.Log4net
             string log4NetConfigFile = "log4net.config")
         {
             hostBuilder.ConfigureLogging(logger => { logger.AddConfiguration(AppConfig.GetSection("Logging")); });
-            return hostBuilder.MapServices(mapper =>
+            return hostBuilder.Configure(mapper =>
             {
                 var section = AppConfig.GetSection("Logging");
                 log4NetConfigFile = EnvironmentHelper.GetEnvironmentVariable(log4NetConfigFile);
@@ -41,7 +41,7 @@ namespace KissU.Surging.Log4net
             string log4NetConfigFile = "log4net.config")
         {
             hostBuilder.ConfigureLogging(logger => { logger.SetMinimumLevel(minLevel); });
-            return hostBuilder.MapServices(mapper =>
+            return hostBuilder.Configure(mapper =>
             {
                 log4NetConfigFile = EnvironmentHelper.GetEnvironmentVariable(log4NetConfigFile);
                 mapper.Resolve<ILoggerFactory>().AddProvider(new Log4NetProvider(log4NetConfigFile));
@@ -59,7 +59,7 @@ namespace KissU.Surging.Log4net
             Func<string, LogLevel, bool> filter, string log4NetConfigFile = "log4net.config")
         {
             hostBuilder.ConfigureLogging(logger => { logger.AddFilter(filter); });
-            return hostBuilder.MapServices(mapper =>
+            return hostBuilder.Configure(mapper =>
             {
                 log4NetConfigFile = EnvironmentHelper.GetEnvironmentVariable(log4NetConfigFile);
                 mapper.Resolve<ILoggerFactory>().AddProvider(new Log4NetProvider(log4NetConfigFile));

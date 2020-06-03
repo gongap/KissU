@@ -1,6 +1,7 @@
 ﻿using Autofac;
+using KissU.Core.Hosting;
 
-namespace KissU.Surging.ServiceHosting.Startup.Implementation
+namespace KissU.Surging.ServiceHosting.Startup
 {
     /// <summary>
     /// 启动基类
@@ -10,36 +11,36 @@ namespace KissU.Surging.ServiceHosting.Startup.Implementation
         /// <summary>
         /// 配置容器
         /// </summary>
-        /// <param name="app">容器</param>
-        public abstract void Configure(IContainer app);
+        /// <param name="container">容器</param>
+        public abstract void Configure(IContainer container);
 
         /// <summary>
         /// 配置服务
         /// </summary>
-        /// <param name="services">容器构建器</param>
+        /// <param name="builder">容器构建器</param>
         /// <returns>容器</returns>
-        IContainer IStartup.ConfigureServices(ContainerBuilder services)
+        IContainer IStartup.ConfigureContainer(ContainerBuilder builder)
         {
-            ConfigureServices(services);
-            return CreateServiceProvider(services);
+            ConfigureContainer(builder);
+            return BuildServiceProvider(builder);
         }
 
         /// <summary>
         /// 配置服务
         /// </summary>
-        /// <param name="services">容器构建器</param>
-        public virtual void ConfigureServices(ContainerBuilder services)
+        /// <param name="builder">容器构建器</param>
+        public virtual void ConfigureContainer(ContainerBuilder builder)
         {
         }
 
         /// <summary>
-        /// 创建服务提供程序
+        /// 构建服务提供程序
         /// </summary>
-        /// <param name="services">容器构建器</param>
+        /// <param name="builder">容器构建器</param>
         /// <returns>容器</returns>
-        public virtual IContainer CreateServiceProvider(ContainerBuilder services)
+        public virtual IContainer BuildServiceProvider(ContainerBuilder builder)
         {
-            return services.Build();
+            return builder.Build();
         }
     }
 
@@ -52,15 +53,15 @@ namespace KissU.Surging.ServiceHosting.Startup.Implementation
         /// <summary>
         /// 创建服务提供程序
         /// </summary>
-        /// <param name="services">容器构建器</param>
+        /// <param name="builder">容器构建器</param>
         /// <returns>容器</returns>
-        public override IContainer CreateServiceProvider(ContainerBuilder services)
+        public override IContainer BuildServiceProvider(ContainerBuilder builder)
         {
-            return services.Build();
+            return builder.Build();
         }
 
         /// <summary>
-        /// 配置容器
+        /// 配置服务
         /// </summary>
         /// <param name="builder">构建器类型</param>
         public virtual void ConfigureContainer(TBuilder builder)

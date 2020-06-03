@@ -1,6 +1,6 @@
 ﻿using Autofac;
 using KissU.Core.EventBus;
-using KissU.Surging.ServiceHosting.Internal;
+using KissU.Core.Hosting;
 
 namespace KissU.Surging.EventBusKafka
 {
@@ -16,7 +16,7 @@ namespace KissU.Surging.EventBusKafka
         /// <returns>IServiceHostBuilder.</returns>
         public static IServiceHostBuilder SubscribeAt(this IServiceHostBuilder hostBuilder)
         {
-            return hostBuilder.MapServices(mapper => { mapper.Resolve<ISubscriptionAdapt>().SubscribeAt(); });
+            return hostBuilder.Configure(mapper => { mapper.Resolve<ISubscriptionAdapt>().SubscribeAt(); });
         }
     }
 }

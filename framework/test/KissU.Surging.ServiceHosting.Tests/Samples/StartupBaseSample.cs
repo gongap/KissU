@@ -1,5 +1,5 @@
 ﻿using Autofac;
-using KissU.Surging.ServiceHosting.Startup.Implementation;
+using KissU.Surging.ServiceHosting.Startup;
 
 namespace KissU.Surging.ServiceHosting.Tests.Samples
 {
@@ -13,8 +13,8 @@ namespace KissU.Surging.ServiceHosting.Tests.Samples
         /// <summary>
         /// 配置容器
         /// </summary>
-        /// <param name="app">容器</param>
-        public override void Configure(IContainer app)
+        /// <param name="container">容器</param>
+        public override void Configure(IContainer container)
         {
         }
     }

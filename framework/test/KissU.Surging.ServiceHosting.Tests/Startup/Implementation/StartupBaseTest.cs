@@ -17,7 +17,7 @@ namespace KissU.Surging.ServiceHosting.Tests.Startup.Implementation
         {
             var builder = new ContainerBuilder();
             var startup = new StartupBaseSample();
-            var container = startup.CreateServiceProvider(builder);
+            var container = startup.BuildServiceProvider(builder);
             Assert.NotNull(container);
         }
     }

@@ -1,6 +1,6 @@
 ﻿using Autofac;
 
-namespace KissU.Surging.ServiceHosting.Startup
+namespace KissU.Core.Hosting
 {
     /// <summary>
     /// 启动配置接口
@@ -10,14 +10,14 @@ namespace KissU.Surging.ServiceHosting.Startup
         /// <summary>
         /// 配置服务
         /// </summary>
-        /// <param name="services">容器构建器</param>
+        /// <param name="builder">容器构建器</param>
         /// <returns>容器</returns>
-        IContainer ConfigureServices(ContainerBuilder services);
+        IContainer ConfigureContainer(ContainerBuilder builder);
 
         /// <summary>
-        /// 配置应用
+        /// 配置容器
         /// </summary>
-        /// <param name="app">容器</param>
-        void Configure(IContainer app);
+        /// <param name="container">容器</param>
+        void Configure(IContainer container);
     }
 }

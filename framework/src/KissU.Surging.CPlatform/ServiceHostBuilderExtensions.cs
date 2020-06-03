@@ -9,6 +9,7 @@ using Autofac;
 using KissU.Core;
 using KissU.Core.Address;
 using KissU.Core.Dependency;
+using KissU.Core.Hosting;
 using KissU.Core.Module;
 using KissU.Surging.CPlatform.Configurations;
 using KissU.Surging.CPlatform.Engines;
@@ -17,7 +18,6 @@ using KissU.Surging.CPlatform.Runtime.Client;
 using KissU.Surging.CPlatform.Runtime.Server;
 using KissU.Surging.CPlatform.Support;
 using KissU.Surging.CPlatform.Utilities;
-using KissU.Surging.ServiceHosting.Internal;
 using Microsoft.Extensions.Configuration;
 using IServiceHost = KissU.Surging.CPlatform.Runtime.Server.IServiceHost;
 
@@ -39,7 +39,7 @@ namespace KissU.Surging.CPlatform
         public static IServiceHostBuilder UseServer(this IServiceHostBuilder hostBuilder, string ip, int port,
             string token = "True")
         {
-            return hostBuilder.MapServices(async mapper =>
+            return hostBuilder.Configure(async mapper =>
             {
                 BuildServiceEngine(mapper);
                 mapper.Resolve<IServiceTokenGenerator>().GeneratorToken(token);
@@ -91,7 +91,7 @@ namespace KissU.Surging.CPlatform
         /// <returns>IServiceHostBuilder.</returns>
         public static IServiceHostBuilder UseClient(this IServiceHostBuilder hostBuilder)
         {
-            return hostBuilder.MapServices(mapper =>
+            return hostBuilder.Configure(mapper =>
             {
                 var serviceEntryManager = mapper.Resolve<IServiceEntryManager>();
                 var addressDescriptors = serviceEntryManager.GetEntries().Select(i =>

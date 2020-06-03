@@ -8,11 +8,9 @@ namespace KissU.Surging.ServiceHosting.Tests.Samples
     /// </summary>
     public interface IStartupSample
     {
-        void Configure(IContainer container, IConfigurationBuilder builder);
+        void Configure(IContainer container);
 
-        void ConfigureContainer(IContainer container);
-
-        void ConfigureServices(ContainerBuilder builder);
+        void ConfigureContainer(ContainerBuilder builder);
     }
 
     /// <summary>
@@ -20,14 +18,10 @@ namespace KissU.Surging.ServiceHosting.Tests.Samples
     /// </summary>
     public class StartupSample : IStartupSample
     {
-        public void Configure(IContainer container, IConfigurationBuilder builder)
+        public void Configure(IContainer container)
         {
         }
-
-        public void ConfigureContainer(IContainer container)
-        {
-        }
-        public void ConfigureServices(ContainerBuilder builder)
+        public void ConfigureContainer(ContainerBuilder builder)
         {
         }
     }

@@ -2,16 +2,17 @@
 using System.Reflection;
 using System.Runtime.ExceptionServices;
 using Autofac;
+using KissU.Core.Hosting;
 
-namespace KissU.Surging.ServiceHosting.Startup.Implementation
+namespace KissU.Surging.ServiceHosting.Startup
 {
     /// <summary>
-    /// 基于约定的启动
+    /// 基于约定的启动类
     /// </summary>
     public class ConventionBasedStartup : IStartup
     {
         /// <summary>
-        /// The methods
+        /// 启动方法
         /// </summary>
         private readonly StartupMethods _methods;
 
@@ -26,14 +27,14 @@ namespace KissU.Surging.ServiceHosting.Startup.Implementation
         }
 
         /// <summary>
-        /// 配置应用
+        /// 配置容器
         /// </summary>
-        /// <param name="app">容器</param>
-        public void Configure(IContainer app)
+        /// <param name="container">容器</param>
+        public void Configure(IContainer container)
         {
             try
             {
-                _methods.ConfigureDelegate(app);
+                _methods.ConfigureDelegate(container);
             }
             catch (Exception ex)
             {
@@ -49,13 +50,13 @@ namespace KissU.Surging.ServiceHosting.Startup.Implementation
         /// <summary>
         /// 配置服务
         /// </summary>
-        /// <param name="services">容器构建器</param>
+        /// <param name="builder">容器构建器</param>
         /// <returns>容器</returns>
-        public IContainer ConfigureServices(ContainerBuilder services)
+        public IContainer ConfigureContainer(ContainerBuilder builder)
         {
             try
             {
-                return _methods.ConfigureServicesDelegate(services);
+                return _methods.ConfigureContainerDelegate(builder);
             }
             catch (Exception ex)
             {

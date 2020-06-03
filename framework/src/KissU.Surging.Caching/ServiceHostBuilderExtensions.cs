@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using Autofac;
+using KissU.Core.Hosting;
 using KissU.Surging.Caching.Configurations;
 using KissU.Surging.CPlatform.Cache;
-using KissU.Surging.ServiceHosting.Internal;
 
 namespace KissU.Surging.Caching
 {
@@ -18,7 +18,7 @@ namespace KissU.Surging.Caching
         /// <returns>IServiceHostBuilder.</returns>
         public static IServiceHostBuilder UseServiceCache(this IServiceHostBuilder hostBuilder)
         {
-            return hostBuilder.MapServices(mapper =>
+            return hostBuilder.Configure(mapper =>
             {
                 var serviceCacheProvider = mapper.Resolve<ICacheNodeProvider>();
                 var addressDescriptors = serviceCacheProvider.GetServiceCaches().ToList();

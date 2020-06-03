@@ -1,4 +1,4 @@
-﻿using KissU.Surging.ServiceHosting.Internal.Implementation;
+﻿using KissU.Surging.ServiceHosting.Internal;
 using KissU.Surging.ServiceHosting.Tests.Samples;
 using Xunit;
 

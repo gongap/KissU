@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using Autofac;
 
-namespace KissU.Surging.ServiceHosting.Internal.Implementation
+namespace KissU.Surging.ServiceHosting.Internal
 {
     /// <summary>
     /// 服务配置构建器
@@ -32,16 +32,16 @@ namespace KissU.Surging.ServiceHosting.Internal.Implementation
         /// <returns>构建委托</returns>
         public Func<ContainerBuilder, IContainer> Build(object instance)
         {
-            return services => Invoke(instance, services);
+            return builder => Invoke(instance, builder);
         }
 
         /// <summary>
         /// 调用
         /// </summary>
         /// <param name="instance">实例</param>
-        /// <param name="services">服务构建器</param>
+        /// <param name="builder">容器构建器</param>
         /// <returns>容器</returns>
-        private IContainer Invoke(object instance, ContainerBuilder services)
+        private IContainer Invoke(object instance, ContainerBuilder builder)
         {
             if (MethodInfo == null)
             {
@@ -53,14 +53,14 @@ namespace KissU.Surging.ServiceHosting.Internal.Implementation
             if (parameters.Length > 1 ||
                 parameters.Any(p => p.ParameterType != typeof(ContainerBuilder)))
             {
-                throw new InvalidOperationException("ConfigureServices方法必须是无参数或只有一个参数为ContainerBuilder类型");
+                throw new InvalidOperationException("ConfigureContainer方法必须是无参数或只有一个参数为ContainerBuilder类型");
             }
 
             var arguments = new object[MethodInfo.GetParameters().Length];
 
             if (parameters.Length > 0)
             {
-                arguments[0] = services;
+                arguments[0] = builder;
             }
 
             return MethodInfo.Invoke(instance, arguments) as IContainer;

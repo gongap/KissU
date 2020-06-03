@@ -1,5 +1,5 @@
 ﻿using Autofac;
-using KissU.Surging.ServiceHosting.Startup.Implementation;
+using KissU.Surging.ServiceHosting.Startup;
 using KissU.Surging.ServiceHosting.Tests.Samples;
 using NSubstitute;
 using Xunit;
@@ -58,7 +58,7 @@ namespace KissU.Surging.ServiceHosting.Tests.Startup.Implementation
             var startupMethods = new StartupMethods(instance, Configure, ConfigureServices);
             var startup = new ConventionBasedStartup(startupMethods);
             var builder = new ContainerBuilder();
-            var container2 = startup.ConfigureServices(builder);
+            var container2 = startup.ConfigureContainer(builder);
             Assert.True(container1 == container2);
         }
     }

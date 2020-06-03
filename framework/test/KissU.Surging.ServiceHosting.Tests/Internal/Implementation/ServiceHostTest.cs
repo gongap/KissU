@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Autofac;
+using KissU.Core.Hosting;
 using KissU.Surging.ServiceHosting.Internal;
-using KissU.Surging.ServiceHosting.Internal.Implementation;
 using KissU.Surging.ServiceHosting.Startup;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
@@ -54,7 +54,7 @@ namespace KissU.Surging.ServiceHosting.Tests.Internal.Implementation
             var services = new ServiceCollection();
             services.AddSingleton(startup);
             var serviceProvider = services.BuildServiceProvider();
-            startup.ConfigureServices(containerBuilder).Returns(container);
+            startup.ConfigureContainer(containerBuilder).Returns(container);
             var serviceHost = new ServiceHost(containerBuilder, serviceProvider, consoleLifetime, null);
             serviceHost.Initialize();
         }

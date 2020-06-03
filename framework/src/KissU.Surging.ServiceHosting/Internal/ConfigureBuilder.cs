@@ -2,7 +2,7 @@
 using System.Reflection;
 using Autofac;
 
-namespace KissU.Surging.ServiceHosting.Internal.Implementation
+namespace KissU.Surging.ServiceHosting.Internal
 {
     /// <summary>
     /// 配置构建器
@@ -13,10 +13,10 @@ namespace KissU.Surging.ServiceHosting.Internal.Implementation
         /// Initializes a new instance of the <see cref="ConfigureBuilder" /> class.
         /// 初始化
         /// </summary>
-        /// <param name="configure">配置方法</param>
-        public ConfigureBuilder(MethodInfo configure)
+        /// <param name="methodInfo">配置方法</param>
+        public ConfigureBuilder(MethodInfo methodInfo)
         {
-            MethodInfo = configure;
+            MethodInfo = methodInfo;
         }
 
         /// <summary>

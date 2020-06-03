@@ -2,21 +2,22 @@
 using System.Collections.Generic;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using KissU.Core.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace KissU.Surging.ServiceHosting.Internal.Implementation
+namespace KissU.Surging.ServiceHosting.Internal
 {
     /// <summary>
     /// 服务主机构建器
     /// </summary>
     public class ServiceHostBuilder : IServiceHostBuilder
     {
-        private readonly List<Action<IConfigurationBuilder>> _configureDelegates;
+        private readonly List<Action<IConfigurationBuilder>> _configureAppDelegates;
         private readonly List<Action<IServiceCollection>> _configureServicesDelegates;
-        private readonly List<Action<IContainer>> _mapServicesDelegates;
-        private readonly List<Action<ContainerBuilder>> _registerServicesDelegates;
+        private readonly List<Action<IContainer>> _configureDelegates;
+        private readonly List<Action<ContainerBuilder>> _configureContainerDelegates;
         private Action<ILoggingBuilder> _loggingDelegate;
 
         /// <summary>
@@ -26,9 +27,9 @@ namespace KissU.Surging.ServiceHosting.Internal.Implementation
         public ServiceHostBuilder()
         {
             _configureServicesDelegates = new List<Action<IServiceCollection>>();
-            _registerServicesDelegates = new List<Action<ContainerBuilder>>();
-            _configureDelegates = new List<Action<IConfigurationBuilder>>();
-            _mapServicesDelegates = new List<Action<IContainer>>();
+            _configureContainerDelegates = new List<Action<ContainerBuilder>>();
+            _configureAppDelegates = new List<Action<IConfigurationBuilder>>();
+            _configureDelegates = new List<Action<IContainer>>();
         }
 
         /// <summary>
@@ -49,12 +50,12 @@ namespace KissU.Surging.ServiceHosting.Internal.Implementation
             }
 
             services.AddSingleton(typeof(IConfigurationBuilder), config);
-            var hostingServices = RegisterServices();
+            var hostingServices = ConfigureContainer();
             var applicationServices = services.Clone();
             var hostingServiceProvider = services.BuildServiceProvider();
             hostingServices.Populate(services);
             var hostLifetime = hostingServiceProvider.GetService<IHostLifetime>();
-            var host = new ServiceHost(hostingServices, hostingServiceProvider, hostLifetime, _mapServicesDelegates);
+            var host = new ServiceHost(hostingServices, hostingServiceProvider, hostLifetime, _configureDelegates);
             var container = host.Initialize();
             return host;
         }
@@ -65,14 +66,14 @@ namespace KissU.Surging.ServiceHosting.Internal.Implementation
         /// <param name="mapper">映射器</param>
         /// <returns>服务主机构建器</returns>
         /// <exception cref="ArgumentNullException">mapper</exception>
-        public IServiceHostBuilder MapServices(Action<IContainer> mapper)
+        public IServiceHostBuilder Configure(Action<IContainer> mapper)
         {
             if (mapper == null)
             {
                 throw new ArgumentNullException(nameof(mapper));
             }
 
-            _mapServicesDelegates.Add(mapper);
+            _configureDelegates.Add(mapper);
             return this;
         }
 
@@ -82,14 +83,14 @@ namespace KissU.Surging.ServiceHosting.Internal.Implementation
         /// <param name="builder">构建器</param>
         /// <returns>服务主机构建器</returns>
         /// <exception cref="ArgumentNullException">builder</exception>
-        public IServiceHostBuilder RegisterServices(Action<ContainerBuilder> builder)
+        public IServiceHostBuilder ConfigureContainer(Action<ContainerBuilder> builder)
         {
             if (builder == null)
             {
                 throw new ArgumentNullException(nameof(builder));
             }
 
-            _registerServicesDelegates.Add(builder);
+            _configureContainerDelegates.Add(builder);
             return this;
         }
 
@@ -123,7 +124,7 @@ namespace KissU.Surging.ServiceHosting.Internal.Implementation
                 throw new ArgumentNullException(nameof(builder));
             }
 
-            _configureDelegates.Add(builder);
+            _configureAppDelegates.Add(builder);
             return this;
         }
 
@@ -161,7 +162,7 @@ namespace KissU.Surging.ServiceHosting.Internal.Implementation
         private IConfigurationBuilder Configure()
         {
             var config = new ConfigurationBuilder().SetBasePath(AppContext.BaseDirectory);
-            foreach (var configure in _configureDelegates)
+            foreach (var configure in _configureAppDelegates)
             {
                 configure(config);
             }
@@ -173,10 +174,10 @@ namespace KissU.Surging.ServiceHosting.Internal.Implementation
         /// 注册服务
         /// </summary>
         /// <returns>容器构建器</returns>
-        private ContainerBuilder RegisterServices()
+        private ContainerBuilder ConfigureContainer()
         {
             var hostingServices = new ContainerBuilder();
-            foreach (var registerServices in _registerServicesDelegates)
+            foreach (var registerServices in _configureContainerDelegates)
             {
                 registerServices(hostingServices);
             }

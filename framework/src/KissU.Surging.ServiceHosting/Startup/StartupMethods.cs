@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using Autofac;
 
-namespace KissU.Surging.ServiceHosting.Startup.Implementation
+namespace KissU.Surging.ServiceHosting.Startup
 {
     /// <summary>
     /// 启动方法
@@ -15,16 +15,15 @@ namespace KissU.Surging.ServiceHosting.Startup.Implementation
         /// </summary>
         /// <param name="instance">实例</param>
         /// <param name="configure">配置容器的委托</param>
-        /// <param name="configureServices">配置服务的委托</param>
-        public StartupMethods(object instance, Action<IContainer> configure,
-            Func<ContainerBuilder, IContainer> configureServices)
+        /// <param name="configureContainer">配置服务的委托</param>
+        public StartupMethods(object instance, Action<IContainer> configure, Func<ContainerBuilder, IContainer> configureContainer)
         {
             Debug.Assert(configure != null, "configure != null");
-            Debug.Assert(configureServices != null, "configureServices != null");
+            Debug.Assert(configureContainer != null, "configureContainer != null");
 
             StartupInstance = instance;
             ConfigureDelegate = configure;
-            ConfigureServicesDelegate = configureServices;
+            ConfigureContainerDelegate = configureContainer;
         }
 
         /// <summary>
@@ -35,7 +34,7 @@ namespace KissU.Surging.ServiceHosting.Startup.Implementation
         /// <summary>
         /// 配置服务的委托
         /// </summary>
-        public Func<ContainerBuilder, IContainer> ConfigureServicesDelegate { get; }
+        public Func<ContainerBuilder, IContainer> ConfigureContainerDelegate { get; }
 
         /// <summary>
         /// 配置容器的委托

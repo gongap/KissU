@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Autofac;
-using KissU.Surging.ServiceHosting.Startup;
+using KissU.Core.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace KissU.Surging.ServiceHosting.Internal.Implementation
+namespace KissU.Surging.ServiceHosting.Internal
 {
     /// <summary>
     /// 服务主机
@@ -115,7 +115,7 @@ namespace KissU.Surging.ServiceHosting.Internal.Implementation
             if (_applicationServices == null)
             {
                 EnsureStartup();
-                _applicationServices = _startup.ConfigureServices(_builder);
+                _applicationServices = _startup.ConfigureContainer(_builder);
             }
         }
 

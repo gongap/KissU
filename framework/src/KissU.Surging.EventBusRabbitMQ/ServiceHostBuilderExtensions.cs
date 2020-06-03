@@ -3,9 +3,9 @@ using KissU.Core;
 using KissU.Core.Dependency;
 using KissU.Core.EventBus;
 using KissU.Core.EventBus.Implementation;
+using KissU.Core.Hosting;
 using KissU.Surging.CPlatform.Engines;
 using KissU.Surging.CPlatform.Routing;
-using KissU.Surging.ServiceHosting.Internal;
 
 namespace KissU.Surging.EventBusRabbitMQ
 {
@@ -21,7 +21,7 @@ namespace KissU.Surging.EventBusRabbitMQ
         /// <returns>IServiceHostBuilder.</returns>
         public static IServiceHostBuilder SubscribeAt(this IServiceHostBuilder hostBuilder)
         {
-            return hostBuilder.MapServices(mapper =>
+            return hostBuilder.Configure(mapper =>
             {
                 mapper.Resolve<IServiceEngineLifetime>().ServiceEngineStarted.Register(() =>
                 {

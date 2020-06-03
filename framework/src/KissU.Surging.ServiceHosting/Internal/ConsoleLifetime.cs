@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using KissU.Core.Hosting;
 
-namespace KissU.Surging.ServiceHosting.Internal.Implementation
+namespace KissU.Surging.ServiceHosting.Internal
 {
     /// <summary>
     /// 服务端用来阻止Host主线程退出，直到按下Ctrl+C
@@ -15,7 +16,7 @@ namespace KissU.Surging.ServiceHosting.Internal.Implementation
         /// Initializes a new instance of the <see cref="ConsoleLifetime" /> class.
         /// 初始化
         /// </summary>
-        /// <param name="applicationLifetime">应用生命周期</param>
+        /// <param name="applicationLifetime">应用生存期</param>
         /// <exception cref="ArgumentNullException">applicationLifetime</exception>
         public ConsoleLifetime(IApplicationLifetime applicationLifetime)
         {
@@ -23,7 +24,7 @@ namespace KissU.Surging.ServiceHosting.Internal.Implementation
         }
 
         /// <summary>
-        /// 应用生命周期
+        /// 应用生存期
         /// </summary>
         private IApplicationLifetime ApplicationLifetime { get; }
 

@@ -1,9 +1,9 @@
 ﻿using System.Threading;
 
-namespace KissU.Surging.ServiceHosting.Internal
+namespace KissU.Core.Hosting
 {
     /// <summary>
-    /// 应用生命周期
+    /// 应用生存期
     /// </summary>
     public interface IApplicationLifetime
     {

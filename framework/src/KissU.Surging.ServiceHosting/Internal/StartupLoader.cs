@@ -3,11 +3,11 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using Autofac;
-using KissU.Surging.ServiceHosting.Startup.Implementation;
+using KissU.Surging.ServiceHosting.Startup;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace KissU.Surging.ServiceHosting.Internal.Implementation
+namespace KissU.Surging.ServiceHosting.Internal
 {
     /// <summary>
     /// 启动加载器
