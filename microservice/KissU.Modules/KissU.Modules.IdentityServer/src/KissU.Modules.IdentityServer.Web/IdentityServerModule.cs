@@ -1,14 +1,26 @@
 ﻿using System;
 using KissU.Abp.Autofac.Extensions.DependencyInjection;
 using KissU.Core.Module;
+using KissU.Surging.KestrelHttpServer;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp;
 
-namespace KissU.Modules.IdentityServer.Service
+namespace KissU.Modules.IdentityServer.Web
 {
-    public class IdentityServerModule : BusinessModule
+    public class IdentityServerModule : KestrelHttpModule
     {
         private IAbpApplicationWithExternalServiceProvider _application;
+
+        /// <summary>
+        /// Initializes the specified context.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        public override void Initialize(KissU.Surging.KestrelHttpServer.ApplicationInitializationContext context)
+        {
+            base.Initialize(context);
+            context.Builder.UseIdentityServer();
+        }
 
         /// <summary>
         /// 初始化
@@ -27,8 +39,9 @@ namespace KissU.Modules.IdentityServer.Service
         /// <param name="builder">容器构建器</param>
         protected override void RegisterBuilder(ContainerBuilderWrapper builder)
         {
+            base.RegisterBuilder(builder);
             var services = new ServiceCollection();
-            _application = AbpApplicationFactory.Create<AbpIdentityModule>(services);
+            _application = AbpApplicationFactory.Create<AbpIdentityServerModule>(services);
             builder.ContainerBuilder.Populate(_application.Services);
         }
     }

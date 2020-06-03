@@ -1,16 +1,17 @@
 ﻿using KissU.Abp.Autofac;
 using KissU.Modules.Identity.Domain;
 using KissU.Modules.IdentityServer.DbMigrations.EntityFrameworkCore;
+using Volo.Abp;
 using Volo.Abp.Modularity;
 using Volo.Abp.Settings;
 
-namespace KissU.Modules.IdentityServer.Service
+namespace KissU.Modules.IdentityServer.Web
 {
     [DependsOn(
         typeof(EntityFrameworkCoreDbMigrationsModule),
         typeof(AbpAutofacModule)
     )]
-    public class AbpIdentityModule : AbpModule
+    public class AbpIdentityServerModule : AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
@@ -18,6 +19,11 @@ namespace KissU.Modules.IdentityServer.Service
             {
                 options.DefinitionProviders.Add<AbpIdentitySettingDefinitionProvider>();
             });
+        }
+
+        public override void OnApplicationInitialization(ApplicationInitializationContext context)
+        {
+            var app = context.GetApplicationBuilder();
         }
     }
 }

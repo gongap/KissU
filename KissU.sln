@@ -360,9 +360,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Services.Sample.Host"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Services.AuthServer.Host", "microservice\KissU.Services\KissU.Services.AuthServer.Host\KissU.Services.AuthServer.Host.csproj", "{FDC724F1-C83C-4E20-8ACA-01EF27F8AFAE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.IdentityServer.Service.Contracts", "microservice\KissU.Modules\KissU.Modules.IdentityServer\src\KissU.Modules.IdentityServer.Service.Contracts\KissU.Modules.IdentityServer.Service.Contracts.csproj", "{2C393054-300A-4920-8539-BB4FF2054652}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.IdentityServer.Service", "microservice\KissU.Modules\KissU.Modules.IdentityServer\src\KissU.Modules.IdentityServer.Service\KissU.Modules.IdentityServer.Service.csproj", "{D28727B1-F6DE-4C42-A1B9-A2F0DAFD38DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.IdentityServer.Web", "microservice\KissU.Modules\KissU.Modules.IdentityServer\src\KissU.Modules.IdentityServer.Web\KissU.Modules.IdentityServer.Web.csproj", "{430DD543-B5C0-437E-BE47-8D7CD03C0A33}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -894,14 +892,10 @@ Global
 		{FDC724F1-C83C-4E20-8ACA-01EF27F8AFAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDC724F1-C83C-4E20-8ACA-01EF27F8AFAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDC724F1-C83C-4E20-8ACA-01EF27F8AFAE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2C393054-300A-4920-8539-BB4FF2054652}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2C393054-300A-4920-8539-BB4FF2054652}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2C393054-300A-4920-8539-BB4FF2054652}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2C393054-300A-4920-8539-BB4FF2054652}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D28727B1-F6DE-4C42-A1B9-A2F0DAFD38DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D28727B1-F6DE-4C42-A1B9-A2F0DAFD38DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D28727B1-F6DE-4C42-A1B9-A2F0DAFD38DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D28727B1-F6DE-4C42-A1B9-A2F0DAFD38DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{430DD543-B5C0-437E-BE47-8D7CD03C0A33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{430DD543-B5C0-437E-BE47-8D7CD03C0A33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{430DD543-B5C0-437E-BE47-8D7CD03C0A33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{430DD543-B5C0-437E-BE47-8D7CD03C0A33}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1077,8 +1071,7 @@ Global
 		{7709C238-FA11-4C06-A50B-3459190437EB} = {B4367C3C-5645-40C3-953C-466D82432072}
 		{6309C4F8-59E2-498F-B9CC-303312A3120E} = {B4367C3C-5645-40C3-953C-466D82432072}
 		{FDC724F1-C83C-4E20-8ACA-01EF27F8AFAE} = {B4367C3C-5645-40C3-953C-466D82432072}
-		{2C393054-300A-4920-8539-BB4FF2054652} = {3FED7E08-D281-419B-964C-B7107D9378CE}
-		{D28727B1-F6DE-4C42-A1B9-A2F0DAFD38DD} = {3FED7E08-D281-419B-964C-B7107D9378CE}
+		{430DD543-B5C0-437E-BE47-8D7CD03C0A33} = {3FED7E08-D281-419B-964C-B7107D9378CE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}
