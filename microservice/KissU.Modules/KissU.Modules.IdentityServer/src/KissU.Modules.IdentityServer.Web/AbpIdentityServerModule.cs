@@ -20,10 +20,5 @@ namespace KissU.Modules.IdentityServer.Web
                 options.DefinitionProviders.Add<AbpIdentitySettingDefinitionProvider>();
             });
         }
-
-        public override void OnApplicationInitialization(ApplicationInitializationContext context)
-        {
-            var app = context.GetApplicationBuilder();
-        }
     }
 }
