@@ -1,6 +1,5 @@
 ﻿using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using KissU.Core.Dependency;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -8,8 +7,6 @@ namespace KissU.Client.Host
 {
     public class Startup
     {
-        private ContainerBuilder _builder;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="Startup"/> class.
         /// 初始化启动配置
@@ -34,7 +31,6 @@ namespace KissU.Client.Host
         /// </summary>
         public void Configure(IContainer container)
         {
-            ServiceLocator.Current = container;
         }
     }
 }

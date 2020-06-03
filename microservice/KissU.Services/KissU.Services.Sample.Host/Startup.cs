@@ -1,6 +1,5 @@
 ﻿using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using KissU.Core.Dependency;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -35,7 +34,6 @@ namespace KissU.Service.Host
         /// </summary>
         public void Configure(IContainer container)
         {
-            ServiceLocator.Current = container;
         }
     }
 }

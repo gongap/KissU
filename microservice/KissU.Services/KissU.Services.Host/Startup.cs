@@ -35,7 +35,6 @@ namespace KissU.Service.Host
         /// </summary>
         public void Configure(IContainer container)
         {
-            ServiceLocator.Current = container;
         }
     }
 }

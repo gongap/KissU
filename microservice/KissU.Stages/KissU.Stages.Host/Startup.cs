@@ -1,6 +1,5 @@
 ﻿using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using KissU.Core.Dependency;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -27,8 +26,7 @@ namespace KissU.Stages.Host
             var services = new ServiceCollection();
             services.AddLogging();
             builder.Populate(services);
-            ServiceLocator.Current = builder.Build();
-            return ServiceLocator.Current;
+            return builder.Build();
         }
 
         /// <summary>

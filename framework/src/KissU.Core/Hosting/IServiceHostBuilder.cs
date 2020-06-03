@@ -34,9 +34,9 @@ namespace KissU.Core.Hosting
         /// <summary>
         /// 配置服务
         /// </summary>
-        /// <param name="services">服务集合</param>
+        /// <param name="serviceAction">服务集合</param>
         /// <returns>服务主机构建器</returns>
-        IServiceHostBuilder ConfigureServices(Action<IServiceCollection> services);
+        IServiceHostBuilder ConfigureServices(Action<IServiceCollection> serviceAction);
 
         /// <summary>
         /// 配置应用
