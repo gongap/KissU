@@ -1,4 +1,4 @@
-﻿using KissU.Abp.Autofac;
+﻿using KissU.Autofac;
 using KissU.Modules.FeatureManagement.Application;
 using KissU.Modules.FeatureManagement.DbMigrations.EntityFrameworkCore;
 using KissU.Modules.FeatureManagement.Domain.Shared.Localization;

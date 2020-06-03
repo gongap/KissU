@@ -8,7 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace KissU.Surging.ServiceHosting.Internal
+namespace KissU.ServiceHosting.Internal
 {
     /// <summary>
     /// 服务主机构建器

@@ -2,7 +2,7 @@
 using System.Reflection;
 using Autofac;
 
-namespace KissU.Surging.ServiceHosting.Internal
+namespace KissU.ServiceHosting.Internal
 {
     /// <summary>
     /// 配置构建器

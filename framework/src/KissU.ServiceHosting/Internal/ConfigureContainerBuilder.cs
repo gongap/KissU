@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace KissU.Surging.ServiceHosting.Internal
+namespace KissU.ServiceHosting.Internal
 {
     /// <summary>
     /// 容器配置构建器

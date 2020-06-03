@@ -2,13 +2,13 @@
 using System.Text;
 using Autofac;
 using KissU.Core.Dependency;
+using KissU.ServiceHosting;
+using KissU.ServiceHosting.Internal;
 using KissU.Surging.Caching;
 using KissU.Surging.Caching.Configurations;
 using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Configurations;
 using KissU.Surging.ProxyGenerator;
-using KissU.Surging.ServiceHosting;
-using KissU.Surging.ServiceHosting.Internal;
 using Microsoft.Extensions.Logging;
 
 namespace KissU.Client.Host

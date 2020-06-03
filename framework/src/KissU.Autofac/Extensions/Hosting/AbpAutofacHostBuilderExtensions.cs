@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace KissU.Abp.Autofac.Extensions.Hosting
+namespace KissU.Autofac.Extensions.Hosting
 {
     public static class AbpAutofacHostBuilderExtensions
     {

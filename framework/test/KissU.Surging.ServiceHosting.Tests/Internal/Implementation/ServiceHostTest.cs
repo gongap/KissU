@@ -2,8 +2,7 @@
 using System.Threading.Tasks;
 using Autofac;
 using KissU.Core.Hosting;
-using KissU.Surging.ServiceHosting.Internal;
-using KissU.Surging.ServiceHosting.Startup;
+using KissU.ServiceHosting.Internal;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
 using NSubstitute;

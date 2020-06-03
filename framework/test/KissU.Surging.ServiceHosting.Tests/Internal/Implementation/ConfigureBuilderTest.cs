@@ -1,5 +1,5 @@
 ﻿using Autofac;
-using KissU.Surging.ServiceHosting.Internal;
+using KissU.ServiceHosting.Internal;
 using KissU.Surging.ServiceHosting.Tests.Samples;
 using Xunit;
 

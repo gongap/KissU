@@ -79,6 +79,33 @@ namespace KissU.Properties {
         }
         
         /// <summary>
+        ///   查找类似 删除成功 的本地化字符串。
+        /// </summary>
+        public static string DeleteSuccess {
+            get {
+                return ResourceManager.GetString("DeleteSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 其他用户正在执行该操作,请稍后再试 的本地化字符串。
+        /// </summary>
+        public static string GlobalDuplicateRequest {
+            get {
+                return ResourceManager.GetString("GlobalDuplicateRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Id不能为空 的本地化字符串。
+        /// </summary>
+        public static string IdIsEmpty {
+            get {
+                return ResourceManager.GetString("IdIsEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 身份证不正确 的本地化字符串。
         /// </summary>
         public static string InvalidIdCard {
@@ -93,6 +120,24 @@ namespace KissU.Properties {
         public static string InvalidMobilePhone {
             get {
                 return ResourceManager.GetString("InvalidMobilePhone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 序号 的本地化字符串。
+        /// </summary>
+        public static string LineNumber {
+            get {
+                return ResourceManager.GetString("LineNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 否 的本地化字符串。
+        /// </summary>
+        public static string No {
+            get {
+                return ResourceManager.GetString("No", resourceCulture);
             }
         }
         
@@ -124,11 +169,56 @@ namespace KissU.Properties {
         }
         
         /// <summary>
+        ///   查找类似 操作成功 的本地化字符串。
+        /// </summary>
+        public static string Success {
+            get {
+                return ResourceManager.GetString("Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 系统忙，请稍后再试 的本地化字符串。
+        /// </summary>
+        public static string SystemError {
+            get {
+                return ResourceManager.GetString("SystemError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 必须设置表名 的本地化字符串。
         /// </summary>
         public static string TableIsEmpty {
             get {
                 return ResourceManager.GetString("TableIsEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 上传 的本地化字符串。
+        /// </summary>
+        public static string Upload {
+            get {
+                return ResourceManager.GetString("Upload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 请不要重复提交 的本地化字符串。
+        /// </summary>
+        public static string UserDuplicateRequest {
+            get {
+                return ResourceManager.GetString("UserDuplicateRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 是 的本地化字符串。
+        /// </summary>
+        public static string Yes {
+            get {
+                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
     }

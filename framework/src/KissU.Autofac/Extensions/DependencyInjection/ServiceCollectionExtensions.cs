@@ -31,7 +31,7 @@ using JetBrains.Annotations;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp;
 
-namespace KissU.Abp.Autofac.Extensions.DependencyInjection
+namespace KissU.Autofac.Extensions.DependencyInjection
 {
     /// <summary>
     /// Extension methods on <see cref="IServiceCollection"/> to register the <see cref="IServiceProviderFactory{TContainerBuilder}"/>.

@@ -29,7 +29,7 @@ using Autofac.Core;
 using Autofac.Core.Registration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace KissU.Abp.Autofac.Extensions.DependencyInjection
+namespace KissU.Autofac.Extensions.DependencyInjection
 {
     /// <summary>
     /// Autofac implementation of the ASP.NET Core <see cref="IServiceProvider"/>.

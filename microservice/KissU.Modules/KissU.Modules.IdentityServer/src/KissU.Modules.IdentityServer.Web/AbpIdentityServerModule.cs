@@ -1,4 +1,4 @@
-﻿using KissU.Abp.Autofac;
+﻿using KissU.Autofac;
 using KissU.Modules.Identity.Domain;
 using KissU.Modules.IdentityServer.DbMigrations.EntityFrameworkCore;
 using Volo.Abp;

@@ -1,4 +1,4 @@
-﻿using KissU.Abp.Autofac;
+﻿using KissU.Autofac;
 using KissU.Modules.Identity.DbMigrations.EntityFrameworkCore;
 using KissU.Modules.PermissionManagement.Localization;
 using Localization.Resources.AbpUi;

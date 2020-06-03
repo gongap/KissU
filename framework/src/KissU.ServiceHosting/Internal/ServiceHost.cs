@@ -6,7 +6,7 @@ using Autofac;
 using KissU.Core.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace KissU.Surging.ServiceHosting.Internal
+namespace KissU.ServiceHosting.Internal
 {
     /// <summary>
     /// 服务主机

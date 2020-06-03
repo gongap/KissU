@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using KissU.Core.Hosting;
 
-namespace KissU.Surging.ServiceHosting.Internal
+namespace KissU.ServiceHosting.Internal
 {
     /// <summary>
     /// 服务端用来阻止Host主线程退出，直到按下Ctrl+C

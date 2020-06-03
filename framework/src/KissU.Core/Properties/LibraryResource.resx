@@ -123,11 +123,26 @@
   <data name="ConcurrencyExceptionMessage" xml:space="preserve">
     <value>当前操作的数据已被其他人修改，请刷新后重试</value>
   </data>
+  <data name="DeleteSuccess" xml:space="preserve">
+    <value>删除成功</value>
+  </data>
+  <data name="GlobalDuplicateRequest" xml:space="preserve">
+    <value>其他用户正在执行该操作,请稍后再试</value>
+  </data>
+  <data name="IdIsEmpty" xml:space="preserve">
+    <value>Id不能为空</value>
+  </data>
   <data name="InvalidIdCard" xml:space="preserve">
     <value>身份证不正确</value>
   </data>
   <data name="InvalidMobilePhone" xml:space="preserve">
     <value>手机号不正确</value>
+  </data>
+  <data name="LineNumber" xml:space="preserve">
+    <value>序号</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>否</value>
   </data>
   <data name="NotSupportMoveToChildren" xml:space="preserve">
     <value>不允许将节点移动到自己或子节点下</value>
@@ -138,7 +153,22 @@
   <data name="OrderIsEmptyForPage" xml:space="preserve">
     <value>分页必须设置排序字段</value>
   </data>
+  <data name="Success" xml:space="preserve">
+    <value>操作成功</value>
+  </data>
+  <data name="SystemError" xml:space="preserve">
+    <value>系统忙，请稍后再试</value>
+  </data>
   <data name="TableIsEmpty" xml:space="preserve">
     <value>必须设置表名</value>
+  </data>
+  <data name="Upload" xml:space="preserve">
+    <value>上传</value>
+  </data>
+  <data name="UserDuplicateRequest" xml:space="preserve">
+    <value>请不要重复提交</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>是</value>
   </data>
 </root>

@@ -1,8 +1,8 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using Autofac;
-using KissU.Abp.Autofac;
-using KissU.Abp.Autofac.Extensions.DependencyInjection;
+using KissU.Autofac;
+using KissU.Autofac.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Volo.Abp;
 using KissU.Core.Dependency;

@@ -1,4 +1,4 @@
-﻿using KissU.Surging.ServiceHosting.Internal;
+﻿using KissU.ServiceHosting.Internal;
 using Microsoft.Extensions.Logging;
 using NSubstitute;
 using Xunit;

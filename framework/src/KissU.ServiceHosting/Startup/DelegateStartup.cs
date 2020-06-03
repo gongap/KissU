@@ -1,7 +1,7 @@
 ﻿using System;
 using Autofac;
 
-namespace KissU.Surging.ServiceHosting.Startup
+namespace KissU.ServiceHosting.Startup
 {
     /// <summary>
     /// 委托启动类

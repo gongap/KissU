@@ -4,7 +4,7 @@ using System.Runtime.ExceptionServices;
 using Autofac;
 using KissU.Core.Hosting;
 
-namespace KissU.Surging.ServiceHosting.Startup
+namespace KissU.ServiceHosting.Startup
 {
     /// <summary>
     /// 基于约定的启动类

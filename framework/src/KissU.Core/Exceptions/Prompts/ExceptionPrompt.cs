@@ -53,7 +53,7 @@ namespace KissU.Core.Exceptions.Prompts
                 return warning.Message;
             if (IsShowSystemException)
                 return exception.Message;
-            return R.SystemError;
+            return LibraryResource.SystemError;
         }
 
         /// <summary>

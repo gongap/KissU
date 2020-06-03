@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp;
 
-namespace KissU.Abp.Autofac
+namespace KissU.Autofac
 {
     public static class AbpAutofacAbpApplicationCreationOptionsExtensions
     {

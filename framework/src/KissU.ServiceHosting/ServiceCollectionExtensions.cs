@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace KissU.Surging.ServiceHosting
+namespace KissU.ServiceHosting
 {
     /// <summary>
     /// 服务集合扩展.

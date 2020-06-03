@@ -130,7 +130,7 @@ namespace KissU.Core.Exceptions
         public string GetPrompt(LogLevel level)
         {
             if (level == LogLevel.Error)
-                return R.SystemError;
+                return LibraryResource.SystemError;
             return Message;
         }
     }

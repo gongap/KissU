@@ -3,7 +3,7 @@ using System.Threading;
 using KissU.Core.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace KissU.Surging.ServiceHosting.Internal
+namespace KissU.ServiceHosting.Internal
 {
     /// <summary>
     /// 应用生存期

@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp;
 
-namespace KissU.Abp.Autofac.Extensions.DependencyInjection
+namespace KissU.Autofac.Extensions.DependencyInjection
 {
     public static class AbpAutofacServiceCollectionExtensions
     {

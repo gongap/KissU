@@ -1,5 +1,5 @@
 using Autofac;
-using KissU.Abp.Autofac.Extensions.Hosting;
+using KissU.Autofac.Extensions.Hosting;
 using KissU.Core.Dependency;
 using KissU.Surging.Caching;
 using KissU.Surging.Caching.Configurations;

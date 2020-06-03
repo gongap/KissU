@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using Autofac;
 
-namespace KissU.Surging.ServiceHosting.Startup
+namespace KissU.ServiceHosting.Startup
 {
     /// <summary>
     /// 启动方法

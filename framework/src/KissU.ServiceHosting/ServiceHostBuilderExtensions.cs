@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Reflection;
 using KissU.Core.Hosting;
-using KissU.Surging.ServiceHosting.Internal;
-using KissU.Surging.ServiceHosting.Startup;
+using KissU.ServiceHosting.Internal;
+using KissU.ServiceHosting.Startup;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace KissU.Surging.ServiceHosting
+namespace KissU.ServiceHosting
 {
     /// <summary>
     /// 服务主机生成器扩展.

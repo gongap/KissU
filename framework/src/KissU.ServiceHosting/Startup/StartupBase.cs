@@ -1,7 +1,7 @@
 ﻿using Autofac;
 using KissU.Core.Hosting;
 
-namespace KissU.Surging.ServiceHosting.Startup
+namespace KissU.ServiceHosting.Startup
 {
     /// <summary>
     /// 启动基类

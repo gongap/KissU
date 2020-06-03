@@ -1,5 +1,5 @@
 ﻿using System;
-using KissU.Abp.Autofac.Extensions.DependencyInjection;
+using KissU.Autofac.Extensions.DependencyInjection;
 using KissU.Core.Module;
 using KissU.Surging.KestrelHttpServer;
 using Microsoft.Extensions.DependencyInjection;

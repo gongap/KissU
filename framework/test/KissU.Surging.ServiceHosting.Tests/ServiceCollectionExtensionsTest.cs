@@ -1,4 +1,5 @@
-﻿using KissU.Surging.ServiceHosting.Tests.Samples;
+﻿using KissU.ServiceHosting;
+using KissU.Surging.ServiceHosting.Tests.Samples;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 

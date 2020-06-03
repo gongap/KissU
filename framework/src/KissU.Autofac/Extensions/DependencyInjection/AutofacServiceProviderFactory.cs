@@ -27,7 +27,7 @@ using System;
 using Autofac;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace KissU.Abp.Autofac.Extensions.DependencyInjection
+namespace KissU.Autofac.Extensions.DependencyInjection
 {
     /// <summary>
     /// A factory for creating a <see cref="ContainerBuilder"/> and an <see cref="T:System.IServiceProvider" />.
