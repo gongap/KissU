@@ -4,7 +4,7 @@ using Volo.Abp.Modularity;
 namespace KissU.Autofac
 {
     [DependsOn(typeof(AbpCastleCoreModule))]
-    public class AbpAutofacModule : AbpModule
+    public class AppAutofacModule : AbpModule
     {
 
     }

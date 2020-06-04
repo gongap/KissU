@@ -5,7 +5,7 @@ using Volo.Abp.Modularity;
 namespace KissU.Modules.BackgroundJobs.DbMigrator
 {
     [DependsOn(
-        typeof(AbpAutofacModule),
+        typeof(AppAutofacModule),
         typeof(EntityFrameworkCoreDbMigrationsModule)
     )]
     public class DbMigratorModule : AbpModule

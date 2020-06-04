@@ -11,7 +11,7 @@ namespace KissU.Modules.TenantManagement.Service
     [DependsOn(
         typeof(AbpTenantManagementApplicationModule),
         typeof(EntityFrameworkCoreDbMigrationsModule),
-        typeof(AbpAutofacModule)
+        typeof(AppAutofacModule)
     )]
     public class AbpTenantManagementModule : AbpModule
     {

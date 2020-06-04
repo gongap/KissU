@@ -23,46 +23,44 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 // OTHER DEALINGS IN THE SOFTWARE.
 
-using System;
+using System.Diagnostics.CodeAnalysis;
 using Autofac;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace KissU.Autofac.Extensions.DependencyInjection
+namespace KissU.Autofac.DependencyInjection
 {
     /// <summary>
-    /// Autofac implementation of the ASP.NET Core <see cref="IServiceScope"/>.
+    /// Autofac implementation of the ASP.NET Core <see cref="IServiceScopeFactory"/>.
     /// </summary>
-    /// <seealso cref="Microsoft.Extensions.DependencyInjection.IServiceScope" />
-    internal class AutofacServiceScope : IServiceScope
+    /// <seealso cref="Microsoft.Extensions.DependencyInjection.IServiceScopeFactory" />
+    [SuppressMessage("Microsoft.ApiDesignGuidelines", "CA2213", Justification = "The creator of the root service lifetime scope is responsible for disposal.")]
+    internal class AutofacServiceScopeFactory : IServiceScopeFactory
     {
         private readonly ILifetimeScope _lifetimeScope;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AutofacServiceScope"/> class.
+        /// Initializes a new instance of the <see cref="AutofacServiceScopeFactory"/> class.
         /// </summary>
-        /// <param name="lifetimeScope">
-        /// The lifetime scope from which services should be resolved for this service scope.
-        /// </param>
-        public AutofacServiceScope(ILifetimeScope lifetimeScope)
+        /// <param name="lifetimeScope">The lifetime scope.</param>
+        public AutofacServiceScopeFactory(ILifetimeScope lifetimeScope)
         {
             this._lifetimeScope = lifetimeScope;
-            this.ServiceProvider = this._lifetimeScope.Resolve<IServiceProvider>();
         }
 
         /// <summary>
-        /// Gets an <see cref="IServiceProvider" /> corresponding to this service scope.
+        /// Creates an <see cref="IServiceScope" /> which contains an
+        /// <see cref="System.IServiceProvider" /> used to resolve dependencies within
+        /// the scope.
         /// </summary>
-        /// <value>
-        /// An <see cref="IServiceProvider" /> that can be used to resolve dependencies from the scope.
-        /// </value>
-        public IServiceProvider ServiceProvider { get; }
-
-        /// <summary>
-        /// Disposes of the lifetime scope and resolved disposable services.
-        /// </summary>
-        public void Dispose()
+        /// <returns>
+        /// An <see cref="IServiceScope" /> controlling the lifetime of the scope. Once
+        /// this is disposed, any scoped services that have been resolved
+        /// from the <see cref="IServiceScope.ServiceProvider" />
+        /// will also be disposed.
+        /// </returns>
+        public IServiceScope CreateScope()
         {
-            this._lifetimeScope.Dispose();
+            return new AutofacServiceScope(this._lifetimeScope.BeginLifetimeScope());
         }
     }
 }

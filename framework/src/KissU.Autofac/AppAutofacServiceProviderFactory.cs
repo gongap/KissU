@@ -1,6 +1,6 @@
 ﻿using System;
 using Autofac;
-using KissU.Autofac.Extensions.DependencyInjection;
+using KissU.Autofac.DependencyInjection;
 using KissU.Dependency;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -9,12 +9,12 @@ namespace KissU.Autofac
     /// <summary>
     /// A factory for creating a <see cref="T:Autofac.ContainerBuilder" /> and an <see cref="T:System.IServiceProvider" />.
     /// </summary>
-    public class AbpAutofacServiceProviderFactory : IServiceProviderFactory<ContainerBuilder>
+    public class AppAutofacServiceProviderFactory : IServiceProviderFactory<ContainerBuilder>
     {
         private readonly ContainerBuilder _builder;
         private IServiceCollection _services;
 
-        public AbpAutofacServiceProviderFactory(ContainerBuilder builder)
+        public AppAutofacServiceProviderFactory(ContainerBuilder builder)
         {
             _builder = builder;
         }

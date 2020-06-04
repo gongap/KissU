@@ -4,7 +4,7 @@ using Volo.Abp.Modularity;
 namespace KissU.Console.Host
 {
     [DependsOn(
-        typeof(AbpAutofacModule)
+        typeof(AppAutofacModule)
     )]
     public class AppModule : AbpModule
     {

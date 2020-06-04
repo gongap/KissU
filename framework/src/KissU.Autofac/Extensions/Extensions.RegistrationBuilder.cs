@@ -9,9 +9,12 @@ using Volo.Abp.Castle.DynamicProxy;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Modularity;
 
-namespace KissU.Autofac.Builder
+namespace KissU.Autofac.Extensions
 {
-    public static class AbpRegistrationBuilderExtensions
+    /// <summary>
+    /// 系统扩展 - IRegistrationBuilder
+    /// </summary>
+    public static partial class Extensions
     {
         public static IRegistrationBuilder<TLimit, TActivatorData, TRegistrationStyle> ConfigureAbpConventions<TLimit, TActivatorData, TRegistrationStyle>(
                 this IRegistrationBuilder<TLimit, TActivatorData, TRegistrationStyle> registrationBuilder, 

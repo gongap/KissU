@@ -9,7 +9,7 @@ namespace KissU.Modules.IdentityServer.Web
 {
     [DependsOn(
         typeof(EntityFrameworkCoreDbMigrationsModule),
-        typeof(AbpAutofacModule)
+        typeof(AppAutofacModule)
     )]
     public class AbpIdentityServerModule : AbpModule
     {

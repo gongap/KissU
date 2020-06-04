@@ -27,11 +27,11 @@ using System;
 using System.Reflection;
 using Autofac;
 using Autofac.Builder;
-using KissU.Autofac.Builder;
+using KissU.Autofac.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.Modularity;
 
-namespace KissU.Autofac.Extensions.DependencyInjection
+namespace KissU.Autofac.DependencyInjection
 {
     /// <summary>
     /// Extension methods for registering ASP.NET Core dependencies with Autofac.

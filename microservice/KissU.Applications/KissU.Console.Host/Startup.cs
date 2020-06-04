@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Autofac;
 using KissU.Autofac;
-using KissU.Autofac.Extensions.DependencyInjection;
+using KissU.Autofac.Extensions;
 using KissU.Dependency;
 using Microsoft.Extensions.Hosting;
 using Volo.Abp;

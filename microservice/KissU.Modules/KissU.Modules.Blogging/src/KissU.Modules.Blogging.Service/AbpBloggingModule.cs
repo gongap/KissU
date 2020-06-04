@@ -11,7 +11,7 @@ namespace KissU.Modules.Blogging.Service
     [DependsOn(
         typeof(BloggingApplicationModule),
         typeof(EntityFrameworkCoreDbMigrationsModule),
-        typeof(AbpAutofacModule)
+        typeof(AppAutofacModule)
     )]
     public class AbpBloggingModule : AbpModule
     {

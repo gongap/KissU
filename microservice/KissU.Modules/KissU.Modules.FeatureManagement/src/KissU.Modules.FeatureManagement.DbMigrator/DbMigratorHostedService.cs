@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using KissU.Autofac;
+using KissU.Autofac.Extensions;
 using KissU.Modules.FeatureManagement.DbMigrations.Data;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
