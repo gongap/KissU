@@ -33,9 +33,9 @@ namespace KissU.Surging.DotNettyWSServer
     {
         /// <summary>
         /// WebSocketFrameDecoder.
-        /// Implements the <see cref="DotNetty.Codecs.MessageToMessageDecoder{DotNetty.Codecs.Http.WebSockets.WebSocketFrame}" />
+        /// Implements the <see cref="WebSocketFrame" />
         /// </summary>
-        /// <seealso cref="DotNetty.Codecs.MessageToMessageDecoder{DotNetty.Codecs.Http.WebSockets.WebSocketFrame}" />
+        /// <seealso cref="WebSocketFrame" />
         public class WebSocketFrameDecoder : MessageToMessageDecoder<WebSocketFrame>
         {
             /// <summary>
@@ -57,9 +57,9 @@ namespace KissU.Surging.DotNettyWSServer
 
         /// <summary>
         /// WebSocketFramePrepender.
-        /// Implements the <see cref="DotNetty.Codecs.MessageToMessageDecoder{DotNetty.Buffers.IByteBuffer}" />
+        /// Implements the <see cref="IByteBuffer" />
         /// </summary>
-        /// <seealso cref="DotNetty.Codecs.MessageToMessageDecoder{DotNetty.Buffers.IByteBuffer}" />
+        /// <seealso cref="IByteBuffer" />
         public class WebSocketFramePrepender : MessageToMessageDecoder<IByteBuffer>
         {
             /// <summary>
@@ -80,10 +80,10 @@ namespace KissU.Surging.DotNettyWSServer
         /// ServerHandler.
         /// Implements the
         /// <see
-        ///     cref="DotNetty.Transport.Channels.SimpleChannelInboundHandler{DotNetty.Codecs.Http.WebSockets.TextWebSocketFrame}" />
+        ///     cref="TextWebSocketFrame" />
         /// </summary>
         /// <seealso
-        ///     cref="DotNetty.Transport.Channels.SimpleChannelInboundHandler{DotNetty.Codecs.Http.WebSockets.TextWebSocketFrame}" />
+        ///     cref="TextWebSocketFrame" />
         private class ServerHandler : SimpleChannelInboundHandler<TextWebSocketFrame>
         {
             private readonly ILogger _logger;

@@ -9,11 +9,11 @@ namespace KissU.Surging.KestrelHttpServer.Internal
     /// HttpFormCollection.
     /// Implements the
     /// <see
-    ///     cref="System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String, Microsoft.Extensions.Primitives.StringValues}}" />
+    ///     cref="StringValues" />
     /// Implements the <see cref="System.Collections.IEnumerable" />
     /// </summary>
     /// <seealso
-    ///     cref="System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String, Microsoft.Extensions.Primitives.StringValues}}" />
+    ///     cref="StringValues" />
     /// <seealso cref="System.Collections.IEnumerable" />
     public class HttpFormCollection : IEnumerable<KeyValuePair<string, StringValues>>, IEnumerable
     {
@@ -177,10 +177,10 @@ namespace KissU.Surging.KestrelHttpServer.Internal
     /// Struct Enumerator
     /// Implements the
     /// <see
-    ///     cref="System.Collections.Generic.IEnumerator{System.Collections.Generic.KeyValuePair{System.String, Microsoft.Extensions.Primitives.StringValues}}" />
+    ///     cref="StringValues" />
     /// </summary>
     /// <seealso
-    ///     cref="System.Collections.Generic.IEnumerator{System.Collections.Generic.KeyValuePair{System.String, Microsoft.Extensions.Primitives.StringValues}}" />
+    ///     cref="StringValues" />
     public struct Enumerator : IEnumerator<KeyValuePair<string, StringValues>>
     {
         private Dictionary<string, StringValues>.Enumerator _dictionaryEnumerator;

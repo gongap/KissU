@@ -119,9 +119,9 @@ namespace KissU.Surging.DotNetty
 
         /// <summary>
         /// DefaultChannelHandler.
-        /// Implements the <see cref="DotNetty.Transport.Channels.ChannelHandlerAdapter" />
+        /// Implements the <see cref="ChannelHandlerAdapter" />
         /// </summary>
-        /// <seealso cref="DotNetty.Transport.Channels.ChannelHandlerAdapter" />
+        /// <seealso cref="ChannelHandlerAdapter" />
         protected class DefaultChannelHandler : ChannelHandlerAdapter
         {
             private readonly DotNettyTransportClientFactory _factory;

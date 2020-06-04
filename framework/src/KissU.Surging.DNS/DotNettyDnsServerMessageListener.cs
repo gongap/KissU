@@ -92,10 +92,10 @@ namespace KissU.Surging.DNS
         /// <summary>
         /// ServerHandler.
         /// Implements the
-        /// <see cref="DotNetty.Transport.Channels.SimpleChannelInboundHandler{DotNetty.Codecs.DNS.Messages.DatagramDnsQuery}" />
+        /// <see cref="DatagramDnsQuery" />
         /// </summary>
         /// <seealso
-        ///     cref="DotNetty.Transport.Channels.SimpleChannelInboundHandler{DotNetty.Codecs.DNS.Messages.DatagramDnsQuery}" />
+        ///     cref="DatagramDnsQuery" />
         private class ServerHandler : SimpleChannelInboundHandler<DatagramDnsQuery>
         {
             private readonly ILogger _logger;

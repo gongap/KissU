@@ -5,12 +5,12 @@ using KissU.ServiceHosting.Startup;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace KissU.ServiceHosting
+namespace KissU.ServiceHosting.Extensions
 {
     /// <summary>
     /// 服务主机生成器扩展.
     /// </summary>
-    public static class ServiceHostBuilderExtensions
+    public static partial class Extensions
     {
         /// <summary>
         /// 使用启动类

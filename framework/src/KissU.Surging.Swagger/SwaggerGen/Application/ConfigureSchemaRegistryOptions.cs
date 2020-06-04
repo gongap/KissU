@@ -11,10 +11,10 @@ namespace KissU.Surging.Swagger.SwaggerGen.Application
     /// ConfigureSchemaRegistryOptions.
     /// Implements the
     /// <see
-    ///     cref="Microsoft.Extensions.Options.IConfigureOptions{KissU.Surging.Swagger.SwaggerGen.Generator.SchemaRegistryOptions}" />
+    ///     cref="SchemaRegistryOptions" />
     /// </summary>
     /// <seealso
-    ///     cref="Microsoft.Extensions.Options.IConfigureOptions{KissU.Surging.Swagger.SwaggerGen.Generator.SchemaRegistryOptions}" />
+    ///     cref="SchemaRegistryOptions" />
     internal class ConfigureSchemaRegistryOptions : IConfigureOptions<SchemaRegistryOptions>
     {
         private readonly IServiceProvider _serviceProvider;

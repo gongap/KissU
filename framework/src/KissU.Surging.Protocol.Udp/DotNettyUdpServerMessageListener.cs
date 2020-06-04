@@ -25,10 +25,10 @@ namespace KissU.Surging.Protocol.Udp
         /// ServerHandler.
         /// Implements the
         /// <see
-        ///     cref="DotNetty.Transport.Channels.SimpleChannelInboundHandler{DotNetty.Transport.Channels.Sockets.DatagramPacket}" />
+        ///     cref="DatagramPacket" />
         /// </summary>
         /// <seealso
-        ///     cref="DotNetty.Transport.Channels.SimpleChannelInboundHandler{DotNetty.Transport.Channels.Sockets.DatagramPacket}" />
+        ///     cref="DatagramPacket" />
         private class ServerHandler : SimpleChannelInboundHandler<DatagramPacket>
         {
             private readonly ILogger _logger;

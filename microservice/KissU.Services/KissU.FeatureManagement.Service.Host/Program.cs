@@ -3,6 +3,7 @@ using System.Text;
 using Autofac;
 using KissU.Dependency;
 using KissU.ServiceHosting;
+using KissU.ServiceHosting.Extensions;
 using KissU.ServiceHosting.Internal;
 using KissU.Surging.Caching.Configurations;
 using KissU.Surging.CPlatform;

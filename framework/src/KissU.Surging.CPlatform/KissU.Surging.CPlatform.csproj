@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\KissU.Core\KissU.Core.csproj" />
+    <ProjectReference Include="..\KissU.ServiceHosting\KissU.ServiceHosting.csproj" />
   </ItemGroup>
 
   <ItemGroup>

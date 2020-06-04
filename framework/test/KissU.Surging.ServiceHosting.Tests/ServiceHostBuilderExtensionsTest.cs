@@ -1,4 +1,5 @@
 ﻿using KissU.ServiceHosting;
+using KissU.ServiceHosting.Extensions;
 using KissU.ServiceHosting.Internal;
 using KissU.Surging.ServiceHosting.Tests.Samples;
 using Xunit;

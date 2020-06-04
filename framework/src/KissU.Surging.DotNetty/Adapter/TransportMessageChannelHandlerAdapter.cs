@@ -7,9 +7,9 @@ namespace KissU.Surging.DotNetty.Adapter
 {
     /// <summary>
     /// TransportMessageChannelHandlerAdapter.
-    /// Implements the <see cref="DotNetty.Transport.Channels.ChannelHandlerAdapter" />
+    /// Implements the <see cref="ChannelHandlerAdapter" />
     /// </summary>
-    /// <seealso cref="DotNetty.Transport.Channels.ChannelHandlerAdapter" />
+    /// <seealso cref="ChannelHandlerAdapter" />
     internal class TransportMessageChannelHandlerAdapter : ChannelHandlerAdapter
     {
         private readonly ITransportMessageDecoder _transportMessageDecoder;

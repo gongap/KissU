@@ -1,11 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace KissU.ServiceHosting
+namespace KissU.ServiceHosting.Extensions
 {
     /// <summary>
     /// 服务集合扩展.
     /// </summary>
-    public static class ServiceCollectionExtensions
+    public static partial class Extensions
     {
         /// <summary>
         /// 克隆

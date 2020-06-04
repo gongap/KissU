@@ -5,9 +5,9 @@ namespace KissU.Surging.KestrelHttpServer.Internal
 {
     /// <summary>
     /// HttpFormFileCollection.
-    /// Implements the <see cref="System.Collections.Generic.List{KissU.Surging.KestrelHttpServer.Internal.HttpFormFile}" />
+    /// Implements the <see cref="HttpFormFile" />
     /// </summary>
-    /// <seealso cref="System.Collections.Generic.List{KissU.Surging.KestrelHttpServer.Internal.HttpFormFile}" />
+    /// <seealso cref="HttpFormFile" />
     public class HttpFormFileCollection : List<HttpFormFile>
     {
         /// <summary>

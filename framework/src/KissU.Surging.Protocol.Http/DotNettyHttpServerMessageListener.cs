@@ -127,9 +127,9 @@ namespace KissU.Surging.Protocol.Http
         /// <summary>
         /// ServerHandler.
         /// Implements the
-        /// <see cref="DotNetty.Transport.Channels.SimpleChannelInboundHandler{DotNetty.Codecs.Http.IFullHttpRequest}" />
+        /// <see cref="IFullHttpRequest" />
         /// </summary>
-        /// <seealso cref="DotNetty.Transport.Channels.SimpleChannelInboundHandler{DotNetty.Codecs.Http.IFullHttpRequest}" />
+        /// <seealso cref="IFullHttpRequest" />
         private class ServerHandler : SimpleChannelInboundHandler<IFullHttpRequest>
         {
             private readonly ILogger _logger;

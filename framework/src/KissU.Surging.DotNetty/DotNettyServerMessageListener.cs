@@ -127,9 +127,9 @@ namespace KissU.Surging.DotNetty
 
         /// <summary>
         /// ServerHandler.
-        /// Implements the <see cref="DotNetty.Transport.Channels.ChannelHandlerAdapter" />
+        /// Implements the <see cref="ChannelHandlerAdapter" />
         /// </summary>
-        /// <seealso cref="DotNetty.Transport.Channels.ChannelHandlerAdapter" />
+        /// <seealso cref="ChannelHandlerAdapter" />
         private class ServerHandler : ChannelHandlerAdapter
         {
             private readonly ILogger _logger;

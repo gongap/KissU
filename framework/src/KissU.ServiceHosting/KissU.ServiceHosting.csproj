@@ -3,7 +3,6 @@
    <Import Project="..\..\..\configureawait.props" />
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Description></Description>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 

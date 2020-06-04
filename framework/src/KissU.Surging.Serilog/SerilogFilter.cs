@@ -5,9 +5,9 @@ namespace KissU.Surging.Serilog
 {
     /// <summary>
     /// SerilogVerboseFilter.
-    /// Implements the <see cref="Serilog.Core.ILogEventFilter" />
+    /// Implements the <see cref="ILogEventFilter" />
     /// </summary>
-    /// <seealso cref="Serilog.Core.ILogEventFilter" />
+    /// <seealso cref="ILogEventFilter" />
     public class SerilogVerboseFilter : ILogEventFilter
     {
         /// <summary>
@@ -26,9 +26,9 @@ namespace KissU.Surging.Serilog
 
     /// <summary>
     /// SerilogDebugFilter.
-    /// Implements the <see cref="Serilog.Core.ILogEventFilter" />
+    /// Implements the <see cref="ILogEventFilter" />
     /// </summary>
-    /// <seealso cref="Serilog.Core.ILogEventFilter" />
+    /// <seealso cref="ILogEventFilter" />
     public class SerilogDebugFilter : ILogEventFilter
     {
         /// <summary>
@@ -47,9 +47,9 @@ namespace KissU.Surging.Serilog
 
     /// <summary>
     /// SerilogErrorFilter.
-    /// Implements the <see cref="Serilog.Core.ILogEventFilter" />
+    /// Implements the <see cref="ILogEventFilter" />
     /// </summary>
-    /// <seealso cref="Serilog.Core.ILogEventFilter" />
+    /// <seealso cref="ILogEventFilter" />
     public class SerilogErrorFilter : ILogEventFilter
     {
         /// <summary>
@@ -68,9 +68,9 @@ namespace KissU.Surging.Serilog
 
     /// <summary>
     /// SerilogFatalFilter.
-    /// Implements the <see cref="Serilog.Core.ILogEventFilter" />
+    /// Implements the <see cref="ILogEventFilter" />
     /// </summary>
-    /// <seealso cref="Serilog.Core.ILogEventFilter" />
+    /// <seealso cref="ILogEventFilter" />
     public class SerilogFatalFilter : ILogEventFilter
     {
         /// <summary>
@@ -89,9 +89,9 @@ namespace KissU.Surging.Serilog
 
     /// <summary>
     /// SerilogInformationFilter.
-    /// Implements the <see cref="Serilog.Core.ILogEventFilter" />
+    /// Implements the <see cref="ILogEventFilter" />
     /// </summary>
-    /// <seealso cref="Serilog.Core.ILogEventFilter" />
+    /// <seealso cref="ILogEventFilter" />
     public class SerilogInformationFilter : ILogEventFilter
     {
         /// <summary>
@@ -110,9 +110,9 @@ namespace KissU.Surging.Serilog
 
     /// <summary>
     /// SerilogWarningFilter.
-    /// Implements the <see cref="Serilog.Core.ILogEventFilter" />
+    /// Implements the <see cref="ILogEventFilter" />
     /// </summary>
-    /// <seealso cref="Serilog.Core.ILogEventFilter" />
+    /// <seealso cref="ILogEventFilter" />
     public class SerilogWarningFilter : ILogEventFilter
     {
         /// <summary>
