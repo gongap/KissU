@@ -1,4 +1,4 @@
-﻿using KissU.Autofac;
+﻿using KissU.Abp.Autofac;
 using KissU.Modules.AuditLogging.DbMigrations.EntityFrameworkCore;
 using Volo.Abp.Modularity;
 

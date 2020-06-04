@@ -1,4 +1,4 @@
-﻿using KissU.Autofac;
+﻿using KissU.Abp.Autofac;
 using Volo.Abp.Modularity;
 
 namespace KissU.Console.Host

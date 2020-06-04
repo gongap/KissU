@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Autofac\KissU.Abp.Autofac.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Abp.Autofac\KissU.Abp.Autofac.csproj" />
     <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.KestrelHttpServer\KissU.Surging.KestrelHttpServer.csproj" />
     <ProjectReference Include="..\KissU.Modules.IdentityServer.DbMigrations\KissU.Modules.IdentityServer.DbMigrations.csproj" />
   </ItemGroup>
