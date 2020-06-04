@@ -59,7 +59,9 @@ namespace KissU.ServiceHosting.Internal
                     }
                     catch (Exception ex)
                     {
-                        throw new Exception($"无法解析的服务类型: '{parameterInfo.ParameterType.FullName}'参数： '{parameterInfo.Name}' 方法： '{MethodInfo.Name}' 类型 '{MethodInfo.DeclaringType?.FullName}'.", ex);
+                        throw new Exception(
+                            $"无法解析的服务类型: '{parameterInfo.ParameterType.FullName}'参数： '{parameterInfo.Name}' 方法： '{MethodInfo.Name}' 类型 '{MethodInfo.DeclaringType?.FullName}'.",
+                            ex);
                     }
                 }
             }

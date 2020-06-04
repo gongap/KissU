@@ -14,10 +14,10 @@ namespace KissU.ServiceHosting.Internal
     /// </summary>
     public class ServiceHostBuilder : IServiceHostBuilder
     {
-        private readonly List<Action<IConfigurationBuilder>> _configureHostConfigurationDelegates;
-        private readonly List<Action<IServiceCollection>> _configureServicesDelegates;
         private readonly List<Action<ContainerBuilder>> _configureContainerDelegates;
         private readonly List<Action<IContainer>> _configureDelegates;
+        private readonly List<Action<IConfigurationBuilder>> _configureHostConfigurationDelegates;
+        private readonly List<Action<IServiceCollection>> _configureServicesDelegates;
         private Action<ILoggingBuilder> _loggingDelegate;
 
         /// <summary>
