@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using KissU.Address;
+using KissU.Surging.CPlatform.Address;
 using KissU.Surging.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors;
 
 namespace KissU.Surging.Zookeeper.Internal.Cluster.Implementation.Selectors.Implementation

@@ -3,7 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using KissU.Address;
+using KissU.Surging.CPlatform.Address;
 using KissU.Surging.CPlatform.HashAlgorithms;
 using KissU.Surging.CPlatform.Routing;
 using KissU.Surging.CPlatform.Routing.Implementation;

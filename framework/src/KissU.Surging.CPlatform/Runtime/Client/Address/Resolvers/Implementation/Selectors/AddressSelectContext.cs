@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using KissU.Address;
+using KissU.Surging.CPlatform.Address;
 
 namespace KissU.Surging.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors
 {

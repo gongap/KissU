@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.Address;
+using KissU.Surging.CPlatform.Address;
 
 namespace KissU.Surging.Protocol.Mqtt.Internal.Runtime
 {

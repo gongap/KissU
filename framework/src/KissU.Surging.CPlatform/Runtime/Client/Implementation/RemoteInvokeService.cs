@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using KissU.Address;
 using KissU.Exceptions;
 using KissU.Helpers.Utilities;
+using KissU.Surging.CPlatform.Address;
 using KissU.Surging.CPlatform.HashAlgorithms;
 using KissU.Surging.CPlatform.Messages;
 using KissU.Surging.CPlatform.Runtime.Client.Address.Resolvers;

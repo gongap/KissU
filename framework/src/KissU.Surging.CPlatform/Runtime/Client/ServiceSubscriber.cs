@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using KissU.Address;
+using KissU.Surging.CPlatform.Address;
 
 namespace KissU.Surging.CPlatform.Runtime.Client
 {

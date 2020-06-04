@@ -6,7 +6,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
-using KissU.Address;
+using KissU.Surging.CPlatform.Address;
 
 namespace KissU.Surging.Consul.Internal.Cluster.HealthChecks.Implementation
 {

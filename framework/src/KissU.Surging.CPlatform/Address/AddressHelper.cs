@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using System.Text.RegularExpressions;
 
-namespace KissU.Address
+namespace KissU.Surging.CPlatform.Address
 {
     /// <summary>
     /// 地址帮助类
