@@ -67,7 +67,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.Swagger", "fr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.Zookeeper", "framework\src\KissU.Surging.Zookeeper\KissU.Surging.Zookeeper.csproj", "{5CFC8C22-238C-4BA1-B02B-806883747A6F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.Apm.Skywalking", "framework\src\KissU.Apm.Skywalking\KissU.Surging.Apm.Skywalking.csproj", "{3B143AB8-558F-4A8A-B4EA-63FF73F43209}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.Apm.Skywalking", "framework\src\KissU.Surging.Apm.Skywalking\KissU.Surging.Apm.Skywalking.csproj", "{3B143AB8-558F-4A8A-B4EA-63FF73F43209}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.Serilog", "framework\src\KissU.Surging.Serilog\KissU.Surging.Serilog.csproj", "{5EEDC170-07E8-47D1-AAFE-4FC72AF5E2EF}"
 EndProject
@@ -354,11 +354,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.IdentityServe
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "KissU", "KissU", "{4D9CA966-DD85-45D8-A6BB-F6FD864BD30C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Abp.Autofac", "framework\src\KissU.Autofac\KissU.Abp.Autofac.csproj", "{8557B082-B25B-4D6C-9B50-5E1D09B2F9EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Abp.Autofac", "framework\src\KissU.Abp.Autofac\KissU.Abp.Autofac.csproj", "{8557B082-B25B-4D6C-9B50-5E1D09B2F9EE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.ServiceHosting", "framework\src\KissU.ServiceHosting\KissU.ServiceHosting.csproj", "{DDA91DB5-C949-4D4F-A38A-4BB52ABBE9C6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.AuthServer.Host", "microservice\KissU.Applications\KissU.AuthServer.Host\KissU.AuthServer.Host.csproj", "{CEEB75E7-2AEB-422D-B869-060CA4D52848}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "KissU.Abp", "KissU.Abp", "{63464C4E-C932-49D6-8C22-46B6F5C5AFBE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1062,9 +1064,10 @@ Global
 		{7709C238-FA11-4C06-A50B-3459190437EB} = {B4367C3C-5645-40C3-953C-466D82432072}
 		{430DD543-B5C0-437E-BE47-8D7CD03C0A33} = {3FED7E08-D281-419B-964C-B7107D9378CE}
 		{4D9CA966-DD85-45D8-A6BB-F6FD864BD30C} = {F1B4AAEF-9162-4DFA-8B62-4069FC914839}
-		{8557B082-B25B-4D6C-9B50-5E1D09B2F9EE} = {4D9CA966-DD85-45D8-A6BB-F6FD864BD30C}
+		{8557B082-B25B-4D6C-9B50-5E1D09B2F9EE} = {63464C4E-C932-49D6-8C22-46B6F5C5AFBE}
 		{DDA91DB5-C949-4D4F-A38A-4BB52ABBE9C6} = {4D9CA966-DD85-45D8-A6BB-F6FD864BD30C}
 		{CEEB75E7-2AEB-422D-B869-060CA4D52848} = {C1026A33-6D55-42E1-91C5-1B2AEC36CA56}
+		{63464C4E-C932-49D6-8C22-46B6F5C5AFBE} = {F1B4AAEF-9162-4DFA-8B62-4069FC914839}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}
