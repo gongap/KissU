@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using KissU.Dependency;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
