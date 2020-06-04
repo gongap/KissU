@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Autofac\KissU.Autofac.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Autofac\KissU.Abp.Autofac.csproj" />
     <ProjectReference Include="..\KissU.Modules.Identity.DbMigrations\KissU.Modules.Identity.DbMigrations.csproj" />
   </ItemGroup>
 

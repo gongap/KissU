@@ -354,7 +354,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.IdentityServe
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "KissU", "KissU", "{4D9CA966-DD85-45D8-A6BB-F6FD864BD30C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Autofac", "framework\src\KissU.Autofac\KissU.Autofac.csproj", "{8557B082-B25B-4D6C-9B50-5E1D09B2F9EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Abp.Autofac", "framework\src\KissU.Autofac\KissU.Abp.Autofac.csproj", "{8557B082-B25B-4D6C-9B50-5E1D09B2F9EE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.ServiceHosting", "framework\src\KissU.ServiceHosting\KissU.ServiceHosting.csproj", "{DDA91DB5-C949-4D4F-A38A-4BB52ABBE9C6}"
 EndProject
