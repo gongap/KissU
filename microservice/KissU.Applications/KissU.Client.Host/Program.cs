@@ -16,30 +16,10 @@ namespace KissU.Client.Host
 {
     public class Program
     {
-        private static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-            var host = new ServiceHostBuilder()
-                .ConfigureContainer(builder =>
-                {
-                    builder.AddMicroService(option =>
-                    {
-                        option.AddClient().AddCache();
-                    });
-                    builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
-                })
-                .ConfigureLogging(logger =>
-                {
-                    logger.AddConfiguration(
-                        KissU.Surging.CPlatform.AppConfig.GetSection("Logging"));
-                })
-                .Configure(build => build.AddCacheFile("cacheSettings.json", false, true))
-                .Configure(build => build.AddCPlatformFile("servicesettings.json", false, true))
-                .UseClient()
-                .UseProxy()
-                .UseStartup<Startup>()
-                .Build();
-
+            var host = CreateHostBuilder(args).Build();
             using (host.Run())
             {
                 var testService = ServiceLocator.GetService<TestService>();
@@ -51,5 +31,23 @@ namespace KissU.Client.Host
                 Console.ReadLine();
             }
         }
+
+        internal static IServiceHostBuilder CreateHostBuilder(string[] args) =>
+            new ServiceHostBuilder()
+                .ConfigureConfiguration(builder => { builder.AddCacheFile("${cachepath}|cachesettings.json", false, true); })
+                .ConfigureConfiguration(builder => { builder.AddCPlatformFile("${servicepath}|servicesettings.json", false, true); })
+                .ConfigureLogging(logger => { logger.AddConfiguration(Surging.CPlatform.AppConfig.GetSection("Logging")); })
+                .ConfigureContainer(builder =>
+                {
+                    builder.AddMicroService(option =>
+                    {
+                        option.AddClient().AddCache();
+                    });
+                    builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
+                })
+                .Configure(container => { ServiceLocator.Current = container; })
+                .UseClient()
+                .UseProxy()
+                .UseStartup<Startup>();
     }
 }

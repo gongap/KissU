@@ -13,42 +13,37 @@ using Microsoft.Extensions.Logging;
 
 namespace KissU.Stages.Host
 {
-    /// <summary>
-    /// 应用程序
-    /// </summary>
     public class Program
     {
-        /// <summary>
-        /// 应用程序入口点
-        /// </summary>
-        /// <param name="args">入口点参数</param>
-        private static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-            var host = new ServiceHostBuilder()
+            var host = CreateHostBuilder(args).Build();
+            using (host.Run())
+            {
+                Console.WriteLine($@"{AppConfig.ServerOptions.Ip}:{AppConfig.ServerOptions.Port}， {DateTime.Now}。");
+            }
+        }
+
+        internal static IServiceHostBuilder CreateHostBuilder(string[] args) =>
+            new ServiceHostBuilder()
+                .ConfigureConfiguration(builder => { builder.AddCacheFile("${cachepath}|cachesettings.json", false, true); })
+                .ConfigureConfiguration(builder => { builder.AddCPlatformFile("${servicepath}|servicesettings.json", false, true); })
+                .ConfigureLogging(logger => { logger.AddConfiguration(AppConfig.GetSection("Logging")); })
                 .ConfigureContainer(builder =>
                 {
                     builder.AddMicroService(option =>
                     {
                         option.AddServiceRuntime()
-                        .AddRelateService()
-                        .AddConfigurationWatch()
-                        .AddServiceEngine(typeof(ServiceEngine));
+                            .AddRelateService()
+                            .AddConfigurationWatch()
+                            .AddServiceEngine(typeof(ServiceEngine));
                     });
                     builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
                 })
-                .ConfigureLogging(logger => { logger.AddConfiguration(AppConfig.GetSection("Logging")); })
-                .Configure(build => { build.AddCacheFile("${cachepath}|cachesettings.json", false, true); })
-                .Configure(build => { build.AddCPlatformFile("${servicepath}|servicesettings.json", false, true); })
+                .Configure(container => { ServiceLocator.Current = container; })
                 .UseServer(options => { })
                 .UseConsoleLifetime()
-                .UseStartup<Startup>()
-                .Build();
-
-            using (host.Run())
-            {
-                Console.WriteLine($"{AppConfig.ServerOptions.Ip}:{AppConfig.ServerOptions.Port}， {DateTime.Now}。");
-            }
-        }
+                .UseStartup<Startup>();
     }
 }

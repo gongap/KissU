@@ -39,11 +39,11 @@ namespace KissU.ServiceHosting
         IServiceHostBuilder ConfigureServices(Action<IServiceCollection> serviceAction);
 
         /// <summary>
-        /// 配置应用
+        /// 配置主机
         /// </summary>
         /// <param name="config">配置</param>
         /// <returns>服务主机构建器</returns>
-        IServiceHostBuilder Configure(Action<IConfigurationBuilder> config);
+        IServiceHostBuilder ConfigureConfiguration(Action<IConfigurationBuilder> config);
 
         /// <summary>
         /// 配置容器

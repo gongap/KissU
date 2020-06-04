@@ -16,7 +16,7 @@ namespace KissU.ServiceHosting.Internal
     {
         private readonly List<Action<ContainerBuilder>> _configureContainerDelegates;
         private readonly List<Action<IContainer>> _configureDelegates;
-        private readonly List<Action<IConfigurationBuilder>> _configureHostConfigurationDelegates;
+        private readonly List<Action<IConfigurationBuilder>> _configureConfigurationDelegates;
         private readonly List<Action<IServiceCollection>> _configureServicesDelegates;
         private Action<ILoggingBuilder> _loggingDelegate;
 
@@ -26,7 +26,7 @@ namespace KissU.ServiceHosting.Internal
         /// </summary>
         public ServiceHostBuilder()
         {
-            _configureHostConfigurationDelegates = new List<Action<IConfigurationBuilder>>();
+            _configureConfigurationDelegates = new List<Action<IConfigurationBuilder>>();
             _configureServicesDelegates = new List<Action<IServiceCollection>>();
             _configureContainerDelegates = new List<Action<ContainerBuilder>>();
             _configureDelegates = new List<Action<IContainer>>();
@@ -39,7 +39,7 @@ namespace KissU.ServiceHosting.Internal
         public IServiceHost Build()
         {
             var services = ConfigureServices();
-            var config = ConfigureHostConfiguration();
+            var config = ConfigureConfiguration();
             if (_loggingDelegate != null)
             {
                 services.AddLogging(_loggingDelegate);
@@ -55,7 +55,7 @@ namespace KissU.ServiceHosting.Internal
             containerBuilder.Populate(services);
             var hostLifetime = serviceProvider.GetService<IHostLifetime>();
             var host = new ServiceHost(containerBuilder, serviceProvider, hostLifetime, _configureDelegates);
-            ServiceLocator.Current = host.Initialize();
+            var container = host.Initialize();
             return host;
         }
 
@@ -82,14 +82,14 @@ namespace KissU.ServiceHosting.Internal
         /// <param name="action">配置构建器的委托</param>
         /// <returns>服务主机构建器</returns>
         /// <exception cref="ArgumentNullException">action</exception>
-        public IServiceHostBuilder Configure(Action<IConfigurationBuilder> action)
+        public IServiceHostBuilder ConfigureConfiguration(Action<IConfigurationBuilder> action)
         {
             if (action == null)
             {
                 throw new ArgumentNullException(nameof(action));
             }
 
-            _configureHostConfigurationDelegates.Add(action);
+            _configureConfigurationDelegates.Add(action);
             return this;
         }
 
@@ -139,10 +139,10 @@ namespace KissU.ServiceHosting.Internal
             return this;
         }
 
-        private IConfigurationBuilder ConfigureHostConfiguration()
+        private IConfigurationBuilder ConfigureConfiguration()
         {
             var config = new ConfigurationBuilder().SetBasePath(AppContext.BaseDirectory);
-            foreach (var configure in _configureHostConfigurationDelegates)
+            foreach (var configure in _configureConfigurationDelegates)
             {
                 configure(config);
             }
