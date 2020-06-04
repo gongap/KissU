@@ -1,7 +1,7 @@
 ﻿using KissU.Helpers.Utilities;
 using KissU.Surging.CPlatform.Engines.Implementation;
 
-namespace KissU.Service.Host
+namespace KissU.AuthServer.Host
 {
     /// <summary>
     /// 微服务引擎虚拟路径提供程序

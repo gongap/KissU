@@ -10,7 +10,7 @@ using KissU.Surging.CPlatform.Configurations;
 using KissU.Surging.ProxyGenerator;
 using Microsoft.Extensions.Logging;
 
-namespace KissU.Service.Host
+namespace KissU.AuthServer.Host
 {
     /// <summary>
     /// 应用程序
