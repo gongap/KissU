@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using System.Threading.Tasks;
-using KissU.Helpers.Utilities;
+using KissU.Helpers;
 using KissU.Surging.CPlatform.Filters;
 using KissU.Surging.CPlatform.Messages;
 using KissU.Surging.CPlatform.Routing;
@@ -147,7 +147,7 @@ namespace KissU.Surging.CPlatform.Runtime.Server.Implementation
                 }
 
                 if (remoteInvokeMessage.DecodeJObject &&
-                    !(resultMessage.Result is IConvertible && UtilityType.ConvertibleType.GetTypeInfo()
+                    !(resultMessage.Result is IConvertible && TypeHelper.ConvertibleType.GetTypeInfo()
                           .IsAssignableFrom(resultMessage.Result.GetType())))
                 {
                     resultMessage.Result = JsonConvert.SerializeObject(resultMessage.Result);

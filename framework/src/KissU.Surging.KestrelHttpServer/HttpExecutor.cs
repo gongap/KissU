@@ -18,7 +18,7 @@ using KissU.Surging.CPlatform.Transport.Implementation;
 using KissU.Surging.ProxyGenerator;
 using Microsoft.Extensions.Logging;
 using KissU.Surging.KestrelHttpServer.Internal;
-using static KissU.Helpers.Utilities.FastInvoke;
+using static KissU.Helpers.FastInvoke;
 
 namespace KissU.Surging.KestrelHttpServer
 {

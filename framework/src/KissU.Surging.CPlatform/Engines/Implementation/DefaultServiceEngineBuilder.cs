@@ -54,7 +54,6 @@ namespace KissU.Surging.CPlatform.Engines.Implementation
                     }
 
                     serviceBuilder.RegisterServices(paths);
-                    serviceBuilder.RegisterRepositories(paths);
                     serviceBuilder.RegisterServiceBus(paths);
                     serviceBuilder.RegisterInstanceByConstraint(paths);
                 }
@@ -111,7 +110,6 @@ namespace KissU.Surging.CPlatform.Engines.Implementation
                     }
 
                     serviceBuilder.RegisterServices(paths);
-                    serviceBuilder.RegisterRepositories(paths);
                     serviceBuilder.RegisterServiceBus(paths);
                     result = new ValueTuple<List<Type>, IEnumerable<string>>(serviceBuilder.GetInterfaceService(paths),
                         serviceBuilder.GetDataContractName(paths));

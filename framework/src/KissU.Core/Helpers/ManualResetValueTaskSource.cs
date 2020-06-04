@@ -4,12 +4,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Sources;
 
-namespace KissU.Helpers.Utilities
+namespace KissU.Helpers
 {
-    /// <summary>
-    /// ������
-    /// </summary>
-    /// <typeparam name="T">��������</typeparam>
     internal interface IStrongBox<T>
     {
         ref T Value { get; }
@@ -17,9 +13,6 @@ namespace KissU.Helpers.Utilities
         bool RunContinuationsAsynchronously { get; set; }
     }
 
-    /// <summary>
-    /// ����ѡ��
-    /// </summary>
     public enum ContinuationOptions
     {
         None,

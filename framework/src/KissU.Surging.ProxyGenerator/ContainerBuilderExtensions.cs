@@ -113,7 +113,6 @@ namespace KissU.Surging.ProxyGenerator
         {
             return builder
                 .RegisterServices()
-                .RegisterRepositories()
                 .RegisterServiceBus()
                 .RegisterModules()
                 .RegisterInstanceByConstraint()

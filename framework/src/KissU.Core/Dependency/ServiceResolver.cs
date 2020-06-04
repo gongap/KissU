@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Reflection;
-using KissU.Helpers.Utilities;
+using KissU.Extensions;
+using KissU.Helpers;
 
 namespace KissU.Dependency
 {
@@ -50,7 +52,7 @@ namespace KissU.Dependency
         /// <param name="value">值</param>
         public virtual void Register(string key, object value)
         {
-            DebugCheck.NotNull(value);
+            Debug.Assert(value != null, "NotNull");
 
             _initializers.GetOrAdd(ValueTuple.Create(value.GetType(), key), value);
             var interFaces = value.GetType().GetTypeInfo().GetInterfaces();
@@ -68,7 +70,7 @@ namespace KissU.Dependency
         /// <param name="type">The type.</param>
         public virtual void Register(string key, object value, Type type)
         {
-            DebugCheck.NotNull(value);
+            Debug.Assert(value != null, "NotNull");
             _initializers.GetOrAdd(ValueTuple.Create(type, key), value);
         }
     }

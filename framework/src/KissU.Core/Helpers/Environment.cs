@@ -1,15 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 
-namespace KissU.Helpers.Utilities
+namespace KissU.Helpers
 {
     /// <summary>
     /// 环境助手.
     /// </summary>
     public class EnvironmentHelper
     {
+        /// <summary>
+        /// 换行符
+        /// </summary>
+        public static string Line => Environment.NewLine;
+
+        /// <summary>
+        /// 是否Linux操作系统
+        /// </summary>
+        public static bool IsLinux => RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
+
+        /// <summary>
+        /// 是否Windows操作系统
+        /// </summary>
+        public static bool IsWindows => RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
+
+        /// <summary>
+        /// 是否苹果操作系统
+        /// </summary>
+        public static bool IsOsx => RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
+
+        /// <summary>
+        /// 当前操作系统
+        /// </summary>
+        public static string OS => IsWindows ? "Windows" : IsLinux ? "Linux" : IsOsx ? "OSX" : string.Empty;
+
         /// <summary>
         /// 获取环境变量.
         /// </summary>

@@ -2,13 +2,13 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using KissU.Helpers.Utilities;
+using KissU.Helpers;
 using KissU.Surging.CPlatform.Runtime.Server;
 using KissU.Surging.CPlatform.Transport.Implementation;
 using KissU.Surging.CPlatform.Utilities;
 using Microsoft.Extensions.Logging;
+using Regex = System.Text.RegularExpressions.Regex;
 
 namespace KissU.Surging.CPlatform.Routing.Implementation
 {
@@ -167,7 +167,7 @@ namespace KissU.Surging.CPlatform.Routing.Implementation
             addess.ProcessorTime = processorTime;
             addess.Weight = AppConfig.ServerOptions.Weight;
             if (addess.Weight > 0)
-                addess.Timestamp = DateTimeConverter.DateTimeToUnixTimestamp(DateTime.Now);
+                addess.Timestamp = TimeHelper.DateTimeToUnixTimestamp(DateTime.Now);
             RpcContext.GetContext().SetAttachment("Host", addess);
             var addressDescriptors = _serviceEntryManager.GetEntries().Select(i =>
             {

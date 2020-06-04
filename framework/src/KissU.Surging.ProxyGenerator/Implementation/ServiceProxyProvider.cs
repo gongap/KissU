@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 
 using KissU.Dependency;
+using KissU.Extensions;
 using KissU.Surging.CPlatform.Routing;
 
 namespace KissU.Surging.ProxyGenerator.Implementation

@@ -12,7 +12,7 @@ using KissU.Surging.CPlatform.Ids;
 using KissU.Surging.CPlatform.Routing.Template;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Validation;
-using static KissU.Helpers.Utilities.FastInvoke;
+using static KissU.Helpers.FastInvoke;
 
 namespace KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Implementation
 {

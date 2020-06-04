@@ -44,7 +44,6 @@ namespace KissU.Helpers
             return $"{url}&";
         }
 
-
         #region UrlEncode(Url编码)
 
         /// <summary>

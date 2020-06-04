@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Autofac;
 using KissU.Dependency;
-using KissU.Helpers.Utilities;
+using KissU.Helpers;
 using KissU.Surging.CPlatform.Messages;
 using KissU.Surging.CPlatform.Runtime.Server;
 using KissU.Surging.Swagger.Swagger.Model;
@@ -239,7 +239,7 @@ namespace KissU.Surging.Swagger.SwaggerGen.Generator
                 if (entry.Methods.Count() == 0)
                 {
                     if (parameterInfo != null && parameterInfo.Any(p =>
-                            !UtilityType.ConvertibleType.GetTypeInfo().IsAssignableFrom(p.ParameterType)))
+                            !TypeHelper.ConvertibleType.GetTypeInfo().IsAssignableFrom(p.ParameterType)))
                         pathItem.Post = CreateOperation(entry, methodInfo, schemaRegistry);
                     else
                         pathItem.Get = CreateOperation(entry, methodInfo, schemaRegistry);
@@ -414,7 +414,7 @@ namespace KissU.Surging.Swagger.SwaggerGen.Generator
             if (parameterInfo.Count() > 1)
             {
                 return parameterInfo != null && parameterInfo.Any(p =>
-                           !UtilityType.ConvertibleType.GetTypeInfo().IsAssignableFrom(p.ParameterType) &&
+                           !TypeHelper.ConvertibleType.GetTypeInfo().IsAssignableFrom(p.ParameterType) &&
                            p.ParameterType.Name != "HttpFormCollection")
                     ? new List<IParameter> {CreateServiceKeyParameter()}.Union(new List<IParameter>
                         {CreateBodyParameter(parameterInfo, schemaRegistry)}).ToList()
@@ -424,7 +424,7 @@ namespace KissU.Surging.Swagger.SwaggerGen.Generator
             }
 
             return parameterInfo != null && parameterInfo.Any(p =>
-                       !UtilityType.ConvertibleType.GetTypeInfo().IsAssignableFrom(p.ParameterType) &&
+                       !TypeHelper.ConvertibleType.GetTypeInfo().IsAssignableFrom(p.ParameterType) &&
                        p.ParameterType.Name != "HttpFormCollection")
                 ? new List<IParameter> {CreateServiceKeyParameter()}
                     .Union(parameterInfo.Select(p => CreateBodyParameter(p, schemaRegistry))).ToList()

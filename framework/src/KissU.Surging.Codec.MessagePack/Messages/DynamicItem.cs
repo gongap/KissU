@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Threading;
-using KissU.Helpers.Utilities;
+using KissU.Helpers;
 using KissU.Surging.Codec.MessagePack.Utilities;
 using MessagePack;
 using Newtonsoft.Json;
@@ -27,7 +27,7 @@ namespace KissU.Surging.Codec.MessagePack.Messages
                 return null;
 
             var typeName = Type.GetType(TypeName);
-            if (typeName == UtilityType.JObjectType || typeName == UtilityType.JArrayType)
+            if (typeName == TypeHelper.JObjectType || typeName == TypeHelper.JArrayType)
             {
                 var content = SerializerUtilitys.Deserialize<string>(Content);
                 return JsonConvert.DeserializeObject(content, typeName);
@@ -66,7 +66,7 @@ namespace KissU.Surging.Codec.MessagePack.Messages
             else
                 TypeName = valueType.AssemblyQualifiedName;
 
-            if (valueType == UtilityType.JObjectType || valueType == UtilityType.JArrayType)
+            if (valueType == TypeHelper.JObjectType || valueType == TypeHelper.JArrayType)
                 Content = SerializerUtilitys.Serialize(value.ToString());
             else if (valueType != typeof(CancellationToken))
                 Content = SerializerUtilitys.Serialize(value);

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace KissU.Randoms
 {
@@ -63,5 +64,13 @@ namespace KissU.Randoms
         /// <typeparam name="TEnum">枚举类型</typeparam>
         /// <returns>TEnum.</returns>
         TEnum GenerateEnum<TEnum>();
+
+        /// <summary>
+        /// 对集合随机排序
+        /// </summary>
+        /// <typeparam name="T">集合元素类型</typeparam>
+        /// <param name="array">集合</param>
+        /// <returns>List&lt;T&gt;.</returns>
+        List<T> Sort<T>(IEnumerable<T> array);
     }
 }

@@ -1,10 +1,9 @@
 ﻿using System.Threading;
 
-namespace KissU.Helpers.Utilities
+namespace KissU.Helpers
 {
     public class AtomicLong
     {
-
         private long _value;
 
         public AtomicLong()

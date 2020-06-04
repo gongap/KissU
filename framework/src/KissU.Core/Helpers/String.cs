@@ -6,10 +6,143 @@ using KissU.Extensions;
 namespace KissU.Helpers
 {
     /// <summary>
-    /// 字符串操作 - 工具
+    /// 字符串操作 - 字符串生成器
     /// </summary>
-    public partial class StringObj
+    public partial class StringHelper
     {
+        /// <summary>
+        /// 初始化字符串操作
+        /// </summary>
+        public StringHelper()
+        {
+            Builder = new StringBuilder();
+        }
+
+        /// <summary>
+        /// 字符串生成器
+        /// </summary>
+        private StringBuilder Builder { get; set; }
+
+        /// <summary>
+        /// 字符串长度
+        /// </summary>
+        public int Length => Builder.Length;
+
+        /// <summary>
+        /// 空字符串
+        /// </summary>
+        public string Empty => string.Empty;
+
+        /// <summary>
+        /// 追加内容
+        /// </summary>
+        /// <typeparam name="T">值的类型</typeparam>
+        /// <param name="value">值</param>
+        /// <returns>String.</returns>
+        public StringHelper Append<T>(T value)
+        {
+            Builder.Append(value);
+            return this;
+        }
+
+        /// <summary>
+        /// 追加内容
+        /// </summary>
+        /// <param name="value">值</param>
+        /// <param name="args">参数</param>
+        /// <returns>String.</returns>
+        public StringHelper Append(string value, params object[] args)
+        {
+            if (args == null)
+                args = new object[] {string.Empty};
+            if (args.Length == 0)
+                Builder.Append(value);
+            else
+                Builder.AppendFormat(value, args);
+            return this;
+        }
+
+        /// <summary>
+        /// 追加内容并换行
+        /// </summary>
+        /// <returns>String.</returns>
+        public StringHelper AppendLine()
+        {
+            Builder.AppendLine();
+            return this;
+        }
+
+        /// <summary>
+        /// 追加内容并换行
+        /// </summary>
+        /// <typeparam name="T">值的类型</typeparam>
+        /// <param name="value">值</param>
+        /// <returns>String.</returns>
+        public StringHelper AppendLine<T>(T value)
+        {
+            Append(value);
+            Builder.AppendLine();
+            return this;
+        }
+
+        /// <summary>
+        /// 追加内容并换行
+        /// </summary>
+        /// <param name="value">值</param>
+        /// <param name="args">参数</param>
+        /// <returns>String.</returns>
+        public StringHelper AppendLine(string value, params object[] args)
+        {
+            Append(value, args);
+            Builder.AppendLine();
+            return this;
+        }
+
+        /// <summary>
+        /// 替换内容
+        /// </summary>
+        /// <param name="value">值</param>
+        /// <returns>String.</returns>
+        public StringHelper Replace(string value)
+        {
+            Builder.Clear();
+            Builder.Append(value);
+            return this;
+        }
+
+        /// <summary>
+        /// 移除末尾字符串
+        /// </summary>
+        /// <param name="end">末尾字符串</param>
+        /// <returns>String.</returns>
+        public StringHelper RemoveEnd(string end)
+        {
+            var result = Builder.ToString();
+            if (!result.EndsWith(end))
+                return this;
+            Builder = new StringBuilder(result.TrimEnd(end.ToCharArray()));
+            return this;
+        }
+
+        /// <summary>
+        /// 清空字符串
+        /// </summary>
+        /// <returns>String.</returns>
+        public StringHelper Clear()
+        {
+            Builder = Builder.Clear();
+            return this;
+        }
+
+        /// <summary>
+        /// 转换为字符串
+        /// </summary>
+        /// <returns>A <see cref="System.String" /> that represents this instance.</returns>
+        public override string ToString()
+        {
+            return Builder.ToString();
+        }
+
         #region Join(将集合连接为带分隔符的字符串)
 
         /// <summary>
@@ -131,7 +264,7 @@ namespace KissU.Helpers
             var charBytes = Encoding.UTF8.GetBytes(text.ToString());
             if (charBytes[0] <= 127)
                 return text.ToString();
-            var unicode = (ushort) (charBytes[0] * 256 + charBytes[1]);
+            var unicode = (ushort)(charBytes[0] * 256 + charBytes[1]);
             var pinYin = ResolveByCode(unicode);
             if (!string.IsNullOrWhiteSpace(pinYin))
                 return pinYin;
@@ -197,10 +330,10 @@ namespace KissU.Helpers
         /// </summary>
         private static string ResolveByConst(string text)
         {
-            var index = Const.ChinesePinYin.IndexOf(text, StringComparison.Ordinal);
+            var index = ConstHelper.ChinesePinYin.IndexOf(text, StringComparison.Ordinal);
             if (index < 0)
                 return string.Empty;
-            return Const.ChinesePinYin.Substring(index + 1, 1);
+            return ConstHelper.ChinesePinYin.Substring(index + 1, 1);
         }
 
         #endregion

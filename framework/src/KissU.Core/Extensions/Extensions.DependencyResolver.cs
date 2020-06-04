@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
-using KissU.Helpers.Utilities;
+using KissU.Dependency;
+using KissU.Helpers;
 
-namespace KissU.Dependency
+namespace KissU.Extensions
 {
     /// <summary>
-    /// 扩展依赖注入IOC容器
+    /// 系统扩展 - 依赖注入IOC容器
     /// </summary>
-    public static class DependencyResolverExtensions
+    public static partial class Extensions
     {
         /// <summary>
         /// 通过KEY获取<see cref="T" />实例
@@ -21,7 +23,7 @@ namespace KissU.Dependency
         {
             Check.NotNull(resolver, "resolver");
 
-            return (T) resolver.GetService(typeof(T), key);
+            return (T)resolver.GetService(typeof(T), key);
         }
 
         /// <summary>
@@ -33,7 +35,7 @@ namespace KissU.Dependency
         public static T GetService<T>(this IDependencyResolver resolver)
         {
             Check.NotNull(resolver, "resolver");
-            return (T) resolver.GetService(typeof(T), null);
+            return (T)resolver.GetService(typeof(T), null);
         }
 
         /// <summary>
@@ -97,10 +99,10 @@ namespace KissU.Dependency
         internal static IEnumerable<object> GetServiceAsServices(this IDependencyResolver resolver, Type type,
             object key)
         {
-            DebugCheck.NotNull(resolver);
+            Debug.Assert(resolver != null, "NotNull");
 
             var service = resolver.GetService(type, key);
-            return service == null ? Enumerable.Empty<object>() : new[] {service};
+            return service == null ? Enumerable.Empty<object>() : new[] { service };
         }
     }
 }

@@ -42,7 +42,7 @@ namespace KissU.Extensions
         {
             if (instance == null)
                 return default;
-            return TypeConvert.To<TResult>(Value(instance));
+            return ConvertHelper.To<TResult>(Value(instance));
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace KissU.Extensions
         /// <returns>System.String.</returns>
         public static string Join<T>(this IEnumerable<T> list, string quotes = "", string separator = ",")
         {
-            return StringObj.Join(list, quotes, separator);
+            return StringHelper.Join(list, quotes, separator);
         }
     }
 }

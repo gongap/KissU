@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using KissU.Helpers.Utilities;
+using KissU.Helpers;
 using KissU.Surging.CPlatform.Address;
 
 namespace KissU.Surging.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation
@@ -40,7 +40,7 @@ namespace KissU.Surging.CPlatform.Runtime.Client.Address.Resolvers.Implementatio
                 long timestamp = addressModel.Timestamp;
                 if (timestamp > 0L)
                 {
-                    var uptime = (System.DateTime.Now - DateTimeConverter.UnixTimestampToDateTime(timestamp)).TotalMilliseconds;
+                    var uptime = (System.DateTime.Now - TimeHelper.UnixTimestampToDateTime(timestamp)).TotalMilliseconds;
                     if (uptime < 0)
                     {
                         return 1;

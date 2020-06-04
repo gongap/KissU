@@ -10,14 +10,14 @@ namespace KissU.Helpers
     /// <summary>
     /// Xml操作 - 生成器
     /// </summary>
-    public partial class Xml
+    public partial class XmlHelper
     {
         /// <summary>
         /// 初始化Xml操作
         /// </summary>
         /// <param name="xml">Xml字符串</param>
         /// <exception cref="ArgumentException">xml</exception>
-        public Xml(string xml = null)
+        public XmlHelper(string xml = null)
         {
             Document = new XmlDocument();
             Document.LoadXml(GetXml(xml));

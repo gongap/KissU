@@ -15,7 +15,7 @@ using KissU.Surging.CPlatform.Runtime.Server;
 using KissU.Surging.CPlatform.Transport;
 using KissU.Surging.ProxyGenerator;
 using Microsoft.Extensions.Logging;
-using static KissU.Helpers.Utilities.FastInvoke;
+using static KissU.Helpers.FastInvoke;
 
 namespace KissU.Surging.Protocol.Http
 {

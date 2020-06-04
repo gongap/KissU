@@ -9,6 +9,7 @@ using KissU.Dependency;
 using KissU.Surging.CPlatform.Runtime.Client;
 using Microsoft.Extensions.DependencyInjection;
 using KissU.Surging.CPlatform.Routing;
+using KissU.Extensions;
 
 namespace KissU.Surging.ProxyGenerator.Implementation
 {

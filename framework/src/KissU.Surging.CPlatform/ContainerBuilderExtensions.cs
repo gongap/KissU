@@ -10,7 +10,7 @@ using KissU.Convertibles;
 using KissU.Convertibles.Implementation;
 using KissU.Dependency;
 using KissU.EventBus.Events;
-using KissU.Helpers.Utilities;
+using KissU.Helpers;
 using KissU.Module;
 using KissU.Serialization;
 using KissU.Serialization.Implementation;
@@ -216,8 +216,7 @@ namespace KissU.Surging.CPlatform
             builder.Services.RegisterType(typeof(DefaultServiceExecutor)).As(typeof(IServiceExecutor))
                 .Named<IServiceExecutor>(CommunicationProtocol.Tcp.ToString()).SingleInstance();
 
-            return builder.RegisterServices().RegisterRepositories().RegisterServiceBus().RegisterModules()
-                .RegisterInstanceByConstraint().AddRuntime();
+            return builder.RegisterServices().RegisterServiceBus().RegisterModules().RegisterInstanceByConstraint().AddRuntime();
         }
 
         /// <summary>
@@ -298,6 +297,10 @@ namespace KissU.Surging.CPlatform
                     .AsImplementedInterfaces().AsSelf().SingleInstance();
 
                 services.RegisterAssemblyTypes(assembly)
+                    .Where(t => typeof(IScopedDependency).GetTypeInfo().IsAssignableFrom(t))
+                    .AsImplementedInterfaces().AsSelf().InstancePerLifetimeScope();
+
+                services.RegisterAssemblyTypes(assembly)
                     .Where(t => typeof(ITransientDependency).GetTypeInfo().IsAssignableFrom(t))
                     .AsImplementedInterfaces().AsSelf().InstancePerDependency();
             }
@@ -366,14 +369,14 @@ namespace KissU.Surging.CPlatform
                         .AsImplementedInterfaces();
                     services.RegisterAssemblyTypes(assembly)
                         // 注入实现IServiceBehavior接口并ModuleName为空的类，作为接口实现类
-                        .Where(t => !typeof(ISingleInstance).GetTypeInfo().IsAssignableFrom(t) &&
+                        .Where(t => !typeof(ISingletonDependency).GetTypeInfo().IsAssignableFrom(t) &&
                                     typeof(IServiceBehavior).GetTypeInfo().IsAssignableFrom(t) &&
                                     t.GetTypeInfo().GetCustomAttribute<ModuleNameAttribute>() == null)
                         .AsImplementedInterfaces();
 
                     services.RegisterAssemblyTypes(assembly)
                         // 注入实现IServiceBehavior接口并ModuleName为空的类，作为接口实现类
-                        .Where(t => typeof(ISingleInstance).GetTypeInfo().IsAssignableFrom(t) &&
+                        .Where(t => typeof(ISingletonDependency).GetTypeInfo().IsAssignableFrom(t) &&
                                     typeof(IServiceBehavior).GetTypeInfo().IsAssignableFrom(t) &&
                                     t.GetTypeInfo().GetCustomAttribute<ModuleNameAttribute>() == null).SingleInstance()
                         .AsImplementedInterfaces();
@@ -429,26 +432,6 @@ namespace KissU.Surging.CPlatform
                     .AsImplementedInterfaces().SingleInstance();
                 services.RegisterAssemblyTypes(assembly)
                     .Where(t => typeof(IIntegrationEventHandler).IsAssignableFrom(t)).SingleInstance();
-            }
-
-            return builder;
-        }
-
-        /// <summary>
-        /// 依赖注入仓储模块程序集
-        /// </summary>
-        /// <param name="builder">IOC容器</param>
-        /// <param name="virtualPaths">虚拟路径</param>
-        /// <returns>IServiceBuilder.</returns>
-        public static IServiceBuilder RegisterRepositories(this IServiceBuilder builder, params string[] virtualPaths)
-        {
-            var services = builder.Services;
-            var referenceAssemblies = GetAssemblies(virtualPaths);
-
-            foreach (var assembly in referenceAssemblies)
-            {
-                services.RegisterAssemblyTypes(assembly)
-                    .Where(t => typeof(BaseRepository).GetTypeInfo().IsAssignableFrom(t));
             }
 
             return builder;

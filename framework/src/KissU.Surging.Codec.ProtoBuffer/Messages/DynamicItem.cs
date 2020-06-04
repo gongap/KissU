@@ -1,5 +1,5 @@
 ﻿using System;
-using KissU.Helpers.Utilities;
+using KissU.Helpers;
 using KissU.Surging.Codec.ProtoBuffer.Utilities;
 using Newtonsoft.Json;
 using ProtoBuf;
@@ -23,7 +23,7 @@ namespace KissU.Surging.Codec.ProtoBuffer.Messages
             if (Content == null || TypeName == null)
                 return null;
             var typeName = Type.GetType(TypeName);
-            if (typeName == UtilityType.JObjectType || typeName == UtilityType.JArrayType)
+            if (typeName == TypeHelper.JObjectType || typeName == TypeHelper.JArrayType)
             {
                 var content = SerializerUtilitys.Deserialize<string>(Content);
                 return JsonConvert.DeserializeObject(content, typeName);
@@ -60,7 +60,7 @@ namespace KissU.Surging.Codec.ProtoBuffer.Messages
                 TypeName = valueType.FullName;
             else
                 TypeName = valueType.AssemblyQualifiedName;
-            if (valueType == UtilityType.JObjectType || valueType == UtilityType.JArrayType)
+            if (valueType == TypeHelper.JObjectType || valueType == TypeHelper.JArrayType)
                 Content = SerializerUtilitys.Serialize(value.ToString());
             else
                 Content = SerializerUtilitys.Serialize(value);

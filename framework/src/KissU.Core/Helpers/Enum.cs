@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using KissU.Common;
 using KissU.Extensions;
 
 namespace KissU.Helpers
@@ -28,7 +29,7 @@ namespace KissU.Helpers
                 throw new ArgumentNullException(nameof(member));
             }
 
-            return (TEnum) System.Enum.Parse(Common.GetType<TEnum>(), value, true);
+            return (TEnum) System.Enum.Parse(TypeHelper.GetType<TEnum>(), value, true);
         }
 
         /// <summary>
@@ -39,7 +40,7 @@ namespace KissU.Helpers
         /// <returns>System.String.</returns>
         public static string GetName<TEnum>(object member)
         {
-            return GetName(Common.GetType<TEnum>(), member);
+            return GetName(TypeHelper.GetType<TEnum>(), member);
         }
 
         /// <summary>
@@ -69,7 +70,7 @@ namespace KissU.Helpers
         /// <returns>System.Int32.</returns>
         public static int GetValue<TEnum>(object member)
         {
-            return GetValue(Common.GetType<TEnum>(), member);
+            return GetValue(TypeHelper.GetType<TEnum>(), member);
         }
 
         /// <summary>
@@ -95,7 +96,7 @@ namespace KissU.Helpers
         /// <returns>System.String.</returns>
         public static string GetDescription<TEnum>(object member)
         {
-            return Reflection.GetDescription<TEnum>(GetName<TEnum>(member));
+            return ReflectionHelper.GetDescription<TEnum>(GetName<TEnum>(member));
         }
 
         /// <summary>
@@ -106,7 +107,7 @@ namespace KissU.Helpers
         /// <returns>System.String.</returns>
         public static string GetDescription(Type type, object member)
         {
-            return Reflection.GetDescription(type, GetName(type, member));
+            return ReflectionHelper.GetDescription(type, GetName(type, member));
         }
 
         /// <summary>
@@ -127,7 +128,7 @@ namespace KissU.Helpers
         /// <exception cref="InvalidOperationException">类型 {type} 不是枚举</exception>
         public static List<Item> GetItems(Type type)
         {
-            type = Common.GetType(type);
+            type = TypeHelper.GetType(type);
             if (type.IsEnum == false)
                 throw new InvalidOperationException($"类型 {type} 不是枚举");
             var result = new List<Item>();
@@ -144,7 +145,7 @@ namespace KissU.Helpers
             if (!field.FieldType.IsEnum)
                 return;
             var value = GetValue(type, field.Name);
-            var description = Reflection.GetDescription(field);
+            var description = ReflectionHelper.GetDescription(field);
             result.Add(new Item(description, value, value));
         }
 
@@ -166,7 +167,7 @@ namespace KissU.Helpers
         /// <exception cref="InvalidOperationException">类型 {type} 不是枚举</exception>
         public static List<string> GetNames(Type type)
         {
-            type = Common.GetType(type);
+            type = TypeHelper.GetType(type);
             if (type.IsEnum == false)
                 throw new InvalidOperationException($"类型 {type} 不是枚举");
             var result = new List<string>();

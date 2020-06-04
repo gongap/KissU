@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using KissU.Helpers;
 
@@ -32,7 +34,7 @@ namespace KissU.Randoms
         public string GenerateString(int maxLength, string text = null)
         {
             if (text == null)
-                text = Const.Letters + Const.Numbers;
+                text = ConstHelper.Letters + ConstHelper.Numbers;
             var result = new StringBuilder();
             var length = GetRandomLength(maxLength);
             for (var i = 0; i < length; i++)
@@ -47,7 +49,7 @@ namespace KissU.Randoms
         /// <returns>System.String.</returns>
         public string GenerateLetters(int maxLength)
         {
-            return GenerateString(maxLength, Const.Letters);
+            return GenerateString(maxLength, ConstHelper.Letters);
         }
 
         /// <summary>
@@ -57,7 +59,7 @@ namespace KissU.Randoms
         /// <returns>System.String.</returns>
         public string GenerateChinese(int maxLength)
         {
-            return GenerateString(maxLength, Const.SimplifiedChinese);
+            return GenerateString(maxLength, ConstHelper.SimplifiedChinese);
         }
 
         /// <summary>
@@ -67,7 +69,7 @@ namespace KissU.Randoms
         /// <returns>System.String.</returns>
         public string GenerateNumbers(int maxLength)
         {
-            return GenerateString(maxLength, Const.Numbers);
+            return GenerateString(maxLength, ConstHelper.Numbers);
         }
 
         /// <summary>
@@ -119,6 +121,30 @@ namespace KissU.Randoms
             var list = EnumHelper.GetItems<TEnum>();
             var index = _random.Generate(0, list.Count);
             return EnumHelper.Parse<TEnum>(list[index].Value);
+        }
+
+        /// <summary>
+        /// 对集合随机排序
+        /// </summary>
+        /// <typeparam name="T">集合元素类型</typeparam>
+        /// <param name="array">集合</param>
+        /// <returns>List&lt;T&gt;.</returns>
+        public List<T> Sort<T>(IEnumerable<T> array)
+        {
+            if (array == null)
+                return null;
+            var random = new System.Random();
+            var list = array.ToList();
+            for (var i = 0; i < list.Count; i++)
+            {
+                var index1 = random.Next(0, list.Count);
+                var index2 = random.Next(0, list.Count);
+                var temp = list[index1];
+                list[index1] = list[index2];
+                list[index2] = temp;
+            }
+
+            return list;
         }
 
         /// <summary>

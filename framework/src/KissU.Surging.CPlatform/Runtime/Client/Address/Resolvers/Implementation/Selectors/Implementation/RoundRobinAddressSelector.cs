@@ -3,7 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using KissU.Helpers.Utilities;
+using KissU.Helpers;
 using KissU.Surging.CPlatform.Address;
 using KissU.Surging.CPlatform.Routing;
 using KissU.Surging.CPlatform.Routing.Implementation;
@@ -146,7 +146,7 @@ namespace KissU.Surging.CPlatform.Runtime.Client.Address.Resolvers.Implementatio
             {
                 int totalWeight = 0;
                 long maxCurrent = long.MinValue;
-                var now = DateTimeConverter.DateTimeToUnixTimestamp(DateTime.Now);
+                var now = TimeHelper.DateTimeToUnixTimestamp(DateTime.Now);
                 AddressModel selectedAddr = null;
                 WeightedRoundRobin selectedWRR = null;
                 foreach (var address in _address)

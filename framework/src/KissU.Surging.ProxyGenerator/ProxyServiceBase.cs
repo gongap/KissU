@@ -3,6 +3,7 @@ using Autofac;
 using KissU.Dependency;
 using KissU.EventBus.Events;
 using KissU.EventBus.Implementation;
+using KissU.Extensions;
 
 namespace KissU.Surging.ProxyGenerator
 {

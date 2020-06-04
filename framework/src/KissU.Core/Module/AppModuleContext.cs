@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using KissU.Dependency;
-using KissU.Helpers.Utilities;
+using KissU.Helpers;
 
 namespace KissU.Module
 {

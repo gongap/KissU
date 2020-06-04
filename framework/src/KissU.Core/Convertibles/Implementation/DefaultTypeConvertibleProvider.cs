@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
-using KissU.Helpers.Utilities;
+using KissU.Helpers;
 using KissU.Serialization;
 
 namespace KissU.Convertibles.Implementation
@@ -65,7 +65,7 @@ namespace KissU.Convertibles.Implementation
         /// <returns>System.Object.</returns>
         private static object SimpleTypeConvert(object instance, Type conversionType)
         {
-            if (instance is IConvertible && UtilityType.ConvertibleType.GetTypeInfo().IsAssignableFrom(conversionType))
+            if (instance is IConvertible && TypeHelper.ConvertibleType.GetTypeInfo().IsAssignableFrom(conversionType))
             {
                 return Convert.ChangeType(instance, conversionType);
             }

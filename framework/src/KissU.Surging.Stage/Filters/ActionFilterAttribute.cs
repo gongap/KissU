@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Autofac;
 using KissU.Dependency;
-using KissU.Helpers.Utilities;
+using KissU.Helpers;
 using KissU.Surging.ApiGateWay;
 using KissU.Surging.ApiGateWay.OAuth;
 using KissU.Surging.CPlatform;
@@ -91,7 +91,7 @@ namespace KissU.Surging.Stage.Filters
             {
                 if (long.TryParse(model["timeStamp"].ToString(), out var timeStamp))
                 {
-                    time = DateTimeConverter.UnixTimestampToDateTime(timeStamp);
+                    time = TimeHelper.UnixTimestampToDateTime(timeStamp);
                     var seconds = (DateTime.Now - time).TotalSeconds;
                     if (seconds <= 3560 && seconds >= 0)
                     {

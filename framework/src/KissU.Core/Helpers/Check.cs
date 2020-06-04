@@ -1,7 +1,7 @@
 ﻿using System;
 using KissU.Properties;
 
-namespace KissU.Helpers.Utilities
+namespace KissU.Helpers
 {
     /// <summary>
     /// 校验

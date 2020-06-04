@@ -7,9 +7,9 @@ using KissU.Extensions;
 namespace KissU.Helpers
 {
     /// <summary>
-    /// 类型转换
+    /// 类型转换助手
     /// </summary>
-    public static class TypeConvert
+    public static class ConvertHelper
     {
         /// <summary>
         /// 转换为32位整型
@@ -289,7 +289,7 @@ namespace KissU.Helpers
                 return default;
             if (input is string && string.IsNullOrWhiteSpace(input.ToString()))
                 return default;
-            var type = Common.GetType<T>();
+            var type = TypeHelper.GetType<T>();
             var typeName = type.Name.ToLower();
             try
             {

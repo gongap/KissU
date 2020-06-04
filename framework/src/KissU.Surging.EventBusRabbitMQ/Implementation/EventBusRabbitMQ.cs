@@ -9,7 +9,7 @@ using KissU.Dependency;
 using KissU.EventBus;
 using KissU.EventBus.Events;
 using KissU.EventBus.Implementation;
-using KissU.Helpers.Utilities;
+using KissU.Helpers;
 using KissU.Surging.EventBusRabbitMQ.Attributes;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;

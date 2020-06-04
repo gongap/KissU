@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KissU.Common;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -11,7 +12,7 @@ namespace KissU.Helpers
     /// <summary>
     /// 反射操作
     /// </summary>
-    public static partial class Reflection
+    public static partial class ReflectionHelper
     {
         /// <summary>
         /// 获取类型描述，使用DescriptionAttribute设置描述
@@ -20,7 +21,7 @@ namespace KissU.Helpers
         /// <returns>System.String.</returns>
         public static string GetDescription<T>()
         {
-            return GetDescription(Common.GetType<T>());
+            return GetDescription(TypeHelper.GetType<T>());
         }
 
         /// <summary>
@@ -31,7 +32,7 @@ namespace KissU.Helpers
         /// <returns>System.String.</returns>
         public static string GetDescription<T>(string memberName)
         {
-            return GetDescription(Common.GetType<T>(), memberName);
+            return GetDescription(TypeHelper.GetType<T>(), memberName);
         }
 
         /// <summary>
@@ -70,7 +71,7 @@ namespace KissU.Helpers
         /// <returns>System.String.</returns>
         public static string GetDisplayName<T>()
         {
-            return GetDisplayName(Common.GetType<T>());
+            return GetDisplayName(TypeHelper.GetType<T>());
         }
 
         /// <summary>
@@ -82,9 +83,9 @@ namespace KissU.Helpers
         {
             if (member == null)
                 return string.Empty;
-            if (member.GetCustomAttribute<DisplayAttribute>() is DisplayAttribute displayAttribute)
+            if (member.GetCustomAttribute<DisplayAttribute>() is { } displayAttribute)
                 return displayAttribute.Name;
-            if (member.GetCustomAttribute<DisplayNameAttribute>() is DisplayNameAttribute displayNameAttribute)
+            if (member.GetCustomAttribute<DisplayNameAttribute>() is { } displayNameAttribute)
                 return displayNameAttribute.DisplayName;
             return string.Empty;
         }
@@ -96,7 +97,7 @@ namespace KissU.Helpers
         /// <returns>System.String.</returns>
         public static string GetDisplayNameOrDescription<T>()
         {
-            return GetDisplayNameOrDescription(Common.GetType<T>());
+            return GetDisplayNameOrDescription(TypeHelper.GetType<T>());
         }
 
         /// <summary>
@@ -210,7 +211,7 @@ namespace KissU.Helpers
         /// <returns>T.</returns>
         public static T CreateInstance<T>(Type type, params object[] parameters)
         {
-            return TypeConvert.To<T>(Activator.CreateInstance(type, parameters));
+            return ConvertHelper.To<T>(Activator.CreateInstance(type, parameters));
         }
 
         /// <summary>

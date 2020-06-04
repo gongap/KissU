@@ -6,13 +6,13 @@ using Autofac;
 using KissU.Convertibles;
 
 using KissU.Dependency;
-using KissU.Helpers.Utilities;
 using KissU.Surging.CPlatform.Messages;
 using KissU.Surging.CPlatform.Runtime.Client;
 using KissU.Surging.CPlatform.Support;
 using KissU.Surging.ProxyGenerator.Interceptors;
 using KissU.Surging.CPlatform.Routing;
 using KissU.Surging.ProxyGenerator.Interceptors.Implementation;
+using KissU.Helpers;
 
 namespace KissU.Surging.ProxyGenerator.Implementation
 {
@@ -77,7 +77,7 @@ namespace KissU.Surging.ProxyGenerator.Implementation
             var vt = _commandProvider.GetCommand(serviceId);
             var command = vt.IsCompletedSuccessfully ? vt.Result : await vt;
             RemoteInvokeResultMessage message = null;
-            var decodeJOject = typeof(T) == UtilityType.ObjectType;
+            var decodeJOject = typeof(T) == TypeHelper.ObjectType;
             IInvocation invocation = null;
             var existsInterceptor = _interceptors.Any();
             var serviceRoute = await _serviceRouteProvider.Locate(serviceId);
@@ -98,7 +98,7 @@ namespace KissU.Surging.ProxyGenerator.Implementation
                     {
                         var invoker = _serviceProvider.GetInstances<IClusterInvoker>(command.Strategy.ToString());
                         return await invoker.Invoke<T>(parameters, serviceId, _serviceKey,
-                            typeof(T) == UtilityType.ObjectType);
+                            typeof(T) == TypeHelper.ObjectType);
                     }
                 }
             }

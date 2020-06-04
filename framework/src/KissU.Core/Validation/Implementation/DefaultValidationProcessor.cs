@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using KissU.Convertibles;
 using KissU.Exceptions;
-using KissU.Helpers.Utilities;
+using KissU.Helpers;
 
 namespace KissU.Validation.Implementation
 {

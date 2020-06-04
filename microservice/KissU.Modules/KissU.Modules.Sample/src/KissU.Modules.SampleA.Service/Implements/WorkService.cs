@@ -15,12 +15,12 @@ namespace KissU.Modules.SampleA.Service.Implements
     /// WorkService.
     /// Implements the <see cref="KissU.Surging.BackgroundServer.Runtime.BackgroundServiceBehavior" />
     /// Implements the <see cref="KissU.Modules.SampleA.Service.Contracts.IWorkService" />
-    /// Implements the <see cref="ISingleInstance" />
+    /// Implements the <see cref="ISingletonDependency" />
     /// </summary>
     /// <seealso cref="KissU.Surging.BackgroundServer.Runtime.BackgroundServiceBehavior" />
     /// <seealso cref="KissU.Modules.SampleA.Service.Contracts.IWorkService" />
-    /// <seealso cref="ISingleInstance" />
-    public class WorkService : BackgroundServiceBehavior, IWorkService, ISingleInstance
+    /// <seealso cref="ISingletonDependency" />
+    public class WorkService : BackgroundServiceBehavior, IWorkService, ISingletonDependency
     {
         private readonly ILogger<WorkService> _logger;
         private readonly Queue<Message> _queue = new Queue<Message>();

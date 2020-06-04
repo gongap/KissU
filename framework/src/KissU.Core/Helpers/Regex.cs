@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using KissU.Extensions;
 
 namespace KissU.Helpers
 {
     /// <summary>
     /// 正则操作
     /// </summary>
-    public static class Regex
+    public static class RegexHelper
     {
         /// <summary>
         /// 获取匹配值集合
@@ -114,6 +115,19 @@ namespace KissU.Helpers
         public static bool IsMatch(string input, string pattern, RegexOptions options)
         {
             return System.Text.RegularExpressions.Regex.IsMatch(input, pattern, options);
+        }
+
+        /// <summary>
+        /// 是否数字
+        /// </summary>
+        /// <param name="input">输入值</param>
+        /// <returns><c>true</c> if the specified input is number; otherwise, <c>false</c>.</returns>
+        public static bool IsNumber(string input)
+        {
+            if (input.IsEmpty())
+                return false;
+            const string pattern = @"^(-?\d*)(\.\d+)?$";
+            return RegexHelper.IsMatch(input, pattern);
         }
     }
 }
