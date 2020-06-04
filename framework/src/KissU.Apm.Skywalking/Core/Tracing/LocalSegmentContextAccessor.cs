@@ -20,7 +20,7 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using KissU.Surging.CPlatform.Diagnostics;
 
-namespace KissU.Apm.Skywalking.Core.Tracing
+namespace KissU.Surging.Apm.Skywalking.Core.Tracing
 {
     public class LocalSegmentContextAccessor : ILocalSegmentContextAccessor
     {

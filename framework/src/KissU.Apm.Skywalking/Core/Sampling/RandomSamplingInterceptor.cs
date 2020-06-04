@@ -17,10 +17,10 @@
  */
 
 using System;
-using KissU.Apm.Skywalking.Abstractions.Config;
-using KissU.Apm.Skywalking.Abstractions.Tracing;
+using KissU.Surging.Apm.Skywalking.Abstractions.Config;
+using KissU.Surging.Apm.Skywalking.Abstractions.Tracing;
 
-namespace KissU.Apm.Skywalking.Core.Sampling
+namespace KissU.Surging.Apm.Skywalking.Core.Sampling
 {
     public class RandomSamplingInterceptor : ISamplingInterceptor
     {

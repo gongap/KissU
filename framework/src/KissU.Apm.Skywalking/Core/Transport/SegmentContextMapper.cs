@@ -17,10 +17,10 @@
  */
 
 using System.Collections.Generic;
-using KissU.Apm.Skywalking.Abstractions.Transport;
+using KissU.Surging.Apm.Skywalking.Abstractions.Transport;
 using KissU.Surging.CPlatform.Diagnostics;
 
-namespace KissU.Apm.Skywalking.Core.Transport
+namespace KissU.Surging.Apm.Skywalking.Core.Transport
 {
     public class SegmentContextMapper : ISegmentContextMapper
     {

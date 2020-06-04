@@ -21,7 +21,7 @@ using System.Collections.Generic;
 using KissU.Surging.CPlatform.Diagnostics;
 using Microsoft.Extensions.Logging;
 
-namespace KissU.Apm.Skywalking.Core.Diagnostics
+namespace KissU.Surging.Apm.Skywalking.Core.Diagnostics
 {
     internal class TracingDiagnosticObserver : IObserver<KeyValuePair<string, object>>
     {

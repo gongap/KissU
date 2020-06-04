@@ -1,25 +1,25 @@
 ﻿using Autofac;
-using KissU.Apm.Skywalking.Abstractions;
-using KissU.Apm.Skywalking.Abstractions.Config;
-using KissU.Apm.Skywalking.Abstractions.Tracing;
-using KissU.Apm.Skywalking.Abstractions.Transport;
-using KissU.Apm.Skywalking.Abstractions.Transport.V5;
-using KissU.Apm.Skywalking.Configuration;
-using KissU.Apm.Skywalking.Core;
-using KissU.Apm.Skywalking.Core.Common;
-using KissU.Apm.Skywalking.Core.Diagnostics;
-using KissU.Apm.Skywalking.Core.Sampling;
-using KissU.Apm.Skywalking.Core.Service;
-using KissU.Apm.Skywalking.Core.Tracing;
-using KissU.Apm.Skywalking.Core.Transport;
-using KissU.Apm.Skywalking.Transport.Grpc;
-using KissU.Apm.Skywalking.Transport.Grpc.V5;
-using KissU.Apm.Skywalking.Transport.Grpc.V6;
+using KissU.Surging.Apm.Skywalking.Abstractions;
+using KissU.Surging.Apm.Skywalking.Abstractions.Config;
+using KissU.Surging.Apm.Skywalking.Abstractions.Tracing;
+using KissU.Surging.Apm.Skywalking.Abstractions.Transport;
+using KissU.Surging.Apm.Skywalking.Abstractions.Transport.V5;
+using KissU.Surging.Apm.Skywalking.Configuration;
+using KissU.Surging.Apm.Skywalking.Core;
+using KissU.Surging.Apm.Skywalking.Core.Common;
+using KissU.Surging.Apm.Skywalking.Core.Diagnostics;
+using KissU.Surging.Apm.Skywalking.Core.Sampling;
+using KissU.Surging.Apm.Skywalking.Core.Service;
+using KissU.Surging.Apm.Skywalking.Core.Tracing;
+using KissU.Surging.Apm.Skywalking.Core.Transport;
+using KissU.Surging.Apm.Skywalking.Transport.Grpc;
+using KissU.Surging.Apm.Skywalking.Transport.Grpc.V5;
+using KissU.Surging.Apm.Skywalking.Transport.Grpc.V6;
 
 using KissU.Module;
 using KissU.Surging.CPlatform.Diagnostics;
 
-namespace KissU.Apm.Skywalking
+namespace KissU.Surging.Apm.Skywalking
 {
     public static class ContainerBuilderExtensions
     {

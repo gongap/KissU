@@ -17,9 +17,9 @@
  */
 
 using System;
-using KissU.Apm.Skywalking.Abstractions.Logging;
+using KissU.Surging.Apm.Skywalking.Abstractions.Logging;
 
-namespace KissU.Apm.Skywalking.Core.Logging
+namespace KissU.Surging.Apm.Skywalking.Core.Logging
 {
     public class NullLoggerFactory : ILoggerFactory
     {

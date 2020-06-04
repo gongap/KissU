@@ -1,6 +1,6 @@
-﻿using KissU.Apm.Skywalking.Abstractions;
+﻿using KissU.Surging.Apm.Skywalking.Abstractions;
 
-namespace KissU.Apm.Skywalking.Core.Common
+namespace KissU.Surging.Apm.Skywalking.Core.Common
 {
     internal class HostingEnvironmentProvider : IEnvironmentProvider
     {

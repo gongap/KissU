@@ -20,7 +20,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace KissU.Apm.Skywalking.Transport.Grpc.Common
+namespace KissU.Surging.Apm.Skywalking.Transport.Grpc.Common
 {
     internal class AsyncLock
     {

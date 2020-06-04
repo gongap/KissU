@@ -18,9 +18,9 @@
 
 using System;
 using Grpc.Core;
-using KissU.Apm.Skywalking.Abstractions.Config;
+using KissU.Surging.Apm.Skywalking.Abstractions.Config;
 
-namespace KissU.Apm.Skywalking.Transport.Grpc
+namespace KissU.Surging.Apm.Skywalking.Transport.Grpc
 {
     [Config("SkyWalking", "Transport", "gRPC")]
     public class GrpcConfig

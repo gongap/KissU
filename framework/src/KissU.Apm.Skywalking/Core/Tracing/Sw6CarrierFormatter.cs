@@ -17,13 +17,13 @@
  */
 
 using System.Linq;
-using KissU.Apm.Skywalking.Abstractions;
-using KissU.Apm.Skywalking.Abstractions.Config;
-using KissU.Apm.Skywalking.Abstractions.Tracing;
-using KissU.Apm.Skywalking.Core.Common;
+using KissU.Surging.Apm.Skywalking.Abstractions;
+using KissU.Surging.Apm.Skywalking.Abstractions.Config;
+using KissU.Surging.Apm.Skywalking.Abstractions.Tracing;
+using KissU.Surging.Apm.Skywalking.Core.Common;
 using KissU.Surging.CPlatform.Diagnostics;
 
-namespace KissU.Apm.Skywalking.Core.Tracing
+namespace KissU.Surging.Apm.Skywalking.Core.Tracing
 {
     public class Sw6CarrierFormatter : ICarrierFormatter
     {

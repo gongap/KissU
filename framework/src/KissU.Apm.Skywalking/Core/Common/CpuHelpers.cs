@@ -20,7 +20,7 @@ using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace KissU.Apm.Skywalking.Core.Common
+namespace KissU.Surging.Apm.Skywalking.Core.Common
 {
     internal static class CpuHelpers
     {

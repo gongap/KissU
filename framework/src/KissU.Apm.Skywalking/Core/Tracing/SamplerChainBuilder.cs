@@ -20,9 +20,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using KissU.Apm.Skywalking.Abstractions.Tracing;
+using KissU.Surging.Apm.Skywalking.Abstractions.Tracing;
 
-namespace KissU.Apm.Skywalking.Core.Tracing
+namespace KissU.Surging.Apm.Skywalking.Core.Tracing
 {
     public class SamplerChainBuilder : ISamplerChainBuilder
     {

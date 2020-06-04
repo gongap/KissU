@@ -19,14 +19,14 @@
 using System;
 using System.Linq;
 using Google.Protobuf;
-using KissU.Apm.Skywalking.Abstractions.Transport;
+using KissU.Surging.Apm.Skywalking.Abstractions.Transport;
 using KissU.Surging.CPlatform.Diagnostics;
 using SkyWalking.NetworkProtocol;
 using SpanLayer = SkyWalking.NetworkProtocol.SpanLayer;
 using SpanType = SkyWalking.NetworkProtocol.SpanType;
 using UniqueId = SkyWalking.NetworkProtocol.UniqueId;
 
-namespace KissU.Apm.Skywalking.Transport.Grpc.Common
+namespace KissU.Surging.Apm.Skywalking.Transport.Grpc.Common
 {
     internal static class SegmentV5Helpers
     {

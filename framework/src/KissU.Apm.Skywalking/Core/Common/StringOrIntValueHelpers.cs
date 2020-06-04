@@ -19,7 +19,7 @@
 using System;
 using KissU.Surging.CPlatform.Diagnostics;
 
-namespace KissU.Apm.Skywalking.Core.Common
+namespace KissU.Surging.Apm.Skywalking.Core.Common
 {
     public static class StringOrIntValueHelpers
     {

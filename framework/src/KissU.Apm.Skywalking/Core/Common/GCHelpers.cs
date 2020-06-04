@@ -19,7 +19,7 @@
 using System;
 using System.Threading;
 
-namespace KissU.Apm.Skywalking.Core.Common
+namespace KissU.Surging.Apm.Skywalking.Core.Common
 {
     internal static class GCHelpers
     {

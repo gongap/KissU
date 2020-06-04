@@ -18,9 +18,9 @@
 
 using System;
 using System.Text;
-using KissU.Apm.Skywalking.Abstractions;
+using KissU.Surging.Apm.Skywalking.Abstractions;
 
-namespace KissU.Apm.Skywalking.Core
+namespace KissU.Surging.Apm.Skywalking.Core
 {
     public class Base64Formatter : IBase64Formatter
     {

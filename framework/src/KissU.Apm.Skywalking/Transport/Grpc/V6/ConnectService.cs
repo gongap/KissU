@@ -19,10 +19,10 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using KissU.Apm.Skywalking.Abstractions;
+using KissU.Surging.Apm.Skywalking.Abstractions;
 using Microsoft.Extensions.Logging;
 
-namespace KissU.Apm.Skywalking.Transport.Grpc.V6
+namespace KissU.Surging.Apm.Skywalking.Transport.Grpc.V6
 {
     public class ConnectService: ExecutionService
     {

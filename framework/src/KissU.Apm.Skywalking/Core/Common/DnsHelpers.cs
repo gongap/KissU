@@ -20,7 +20,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 
-namespace KissU.Apm.Skywalking.Core.Common
+namespace KissU.Surging.Apm.Skywalking.Core.Common
 {
     public static class DnsHelpers
     {

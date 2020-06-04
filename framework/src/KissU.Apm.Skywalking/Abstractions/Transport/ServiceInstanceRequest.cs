@@ -1,8 +1,8 @@
 /*
- * Licensed to the KissU.Apm.Skywalking.Abstractions under one or more
+ * Licensed to the KissU.Surging.Apm.Skywalking.Abstractions under one or more
  * contributor license agreements.  See the NOTICE file distributed with
  * this work for additional information regarding copyright ownership.
- * The KissU.Apm.Skywalking.Abstractions licenses this file to You under the Apache License, Version 2.0
+ * The KissU.Surging.Apm.Skywalking.Abstractions licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
  *
@@ -16,7 +16,7 @@
  *
  */
 
-namespace KissU.Apm.Skywalking.Abstractions.Transport
+namespace KissU.Surging.Apm.Skywalking.Abstractions.Transport
 {
     public class ServiceInstanceRequest
     {

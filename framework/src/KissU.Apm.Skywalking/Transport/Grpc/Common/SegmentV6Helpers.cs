@@ -19,7 +19,7 @@
 using System;
 using System.Linq;
 using Google.Protobuf;
-using KissU.Apm.Skywalking.Abstractions.Transport;
+using KissU.Surging.Apm.Skywalking.Abstractions.Transport;
 using KissU.Surging.CPlatform.Diagnostics;
 using SkyWalking.NetworkProtocol;
 using SegmentReference = SkyWalking.NetworkProtocol.SegmentReference;
@@ -27,7 +27,7 @@ using SpanLayer = SkyWalking.NetworkProtocol.SpanLayer;
 using SpanType = SkyWalking.NetworkProtocol.SpanType;
 using UniqueId = SkyWalking.NetworkProtocol.UniqueId;
 
-namespace KissU.Apm.Skywalking.Transport.Grpc.Common
+namespace KissU.Surging.Apm.Skywalking.Transport.Grpc.Common
 {
     internal static class SegmentV6Helpers
     {
@@ -68,8 +68,8 @@ namespace KissU.Apm.Skywalking.Transport.Grpc.Common
                 ParentSpanId = request.ParentSpanId,
                 StartTime = request.StartTime,
                 EndTime = request.EndTime,
-                SpanType = (SpanType) request.SpanType,
-                SpanLayer = (SpanLayer) request.SpanLayer,
+                SpanType = (SpanType)request.SpanType,
+                SpanLayer = (SpanLayer)request.SpanLayer,
                 IsError = request.IsError
             };
 
@@ -77,7 +77,7 @@ namespace KissU.Apm.Skywalking.Transport.Grpc.Common
             ReadStringOrIntValue(spanObject, request.OperationName, OperationNameReader, OperationNameIdReader);
             ReadStringOrIntValue(spanObject, request.Peer, PeerReader, PeerIdReader);
 
-            spanObject.Tags.Add(request.Tags.Select(x => new KeyStringValuePair {Key = x.Key, Value = x.Value}));
+            spanObject.Tags.Add(request.Tags.Select(x => new KeyStringValuePair { Key = x.Key, Value = x.Value }));
             spanObject.Refs.AddRange(request.References.Select(MapToSegmentReference).ToArray());
             spanObject.Logs.AddRange(request.Logs.Select(MapToLogMessage).ToArray());
 
@@ -91,7 +91,7 @@ namespace KissU.Apm.Skywalking.Transport.Grpc.Common
                 ParentServiceInstanceId = referenceRequest.ParentServiceInstanceId,
                 EntryServiceInstanceId = referenceRequest.EntryServiceInstanceId,
                 ParentSpanId = referenceRequest.ParentSpanId,
-                RefType = (RefType) referenceRequest.RefType,
+                RefType = (RefType)referenceRequest.RefType,
                 ParentTraceSegmentId = MapToUniqueId(referenceRequest.ParentSegmentId)
             };
 
@@ -107,8 +107,8 @@ namespace KissU.Apm.Skywalking.Transport.Grpc.Common
 
         private static Log MapToLogMessage(LogDataRequest request)
         {
-            var logMessage = new Log {Time = request.Timestamp};
-            logMessage.Data.AddRange(request.Data.Select(x => new KeyStringValuePair {Key = x.Key, Value = x.Value})
+            var logMessage = new Log { Time = request.Timestamp };
+            logMessage.Data.AddRange(request.Data.Select(x => new KeyStringValuePair { Key = x.Key, Value = x.Value })
                 .ToArray());
             return logMessage;
         }

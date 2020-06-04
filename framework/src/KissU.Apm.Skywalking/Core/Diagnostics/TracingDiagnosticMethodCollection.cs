@@ -21,7 +21,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using KissU.Surging.CPlatform.Diagnostics;
 
-namespace KissU.Apm.Skywalking.Core.Diagnostics
+namespace KissU.Surging.Apm.Skywalking.Core.Diagnostics
 {
     internal class TracingDiagnosticMethodCollection : IEnumerable<TracingDiagnosticMethod>
     {

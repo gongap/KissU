@@ -20,7 +20,7 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 
-namespace KissU.Apm.Skywalking.Transport.Grpc.Common
+namespace KissU.Surging.Apm.Skywalking.Transport.Grpc.Common
 {
     internal class Call
     {

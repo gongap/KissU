@@ -22,7 +22,7 @@ using System.Diagnostics;
 using KissU.Surging.CPlatform.Diagnostics;
 using Microsoft.Extensions.Logging;
 
-namespace KissU.Apm.Skywalking.Core.Diagnostics
+namespace KissU.Surging.Apm.Skywalking.Core.Diagnostics
 {
     public class TracingDiagnosticProcessorObserver : IObserver<DiagnosticListener>
     {

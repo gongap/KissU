@@ -18,10 +18,10 @@
 
 using System.Collections.Generic;
 using System.IO;
-using KissU.Apm.Skywalking.Abstractions.Config;
+using KissU.Surging.Apm.Skywalking.Abstractions.Config;
 using Microsoft.Extensions.Configuration;
 
-namespace KissU.Apm.Skywalking.Configuration
+namespace KissU.Surging.Apm.Skywalking.Configuration
 {
     internal static class ConfigurationBuilderExtensions
     {

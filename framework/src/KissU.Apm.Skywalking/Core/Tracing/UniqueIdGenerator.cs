@@ -18,11 +18,11 @@
 
 using System;
 using System.Threading;
-using KissU.Apm.Skywalking.Abstractions;
-using KissU.Apm.Skywalking.Abstractions.Tracing;
+using KissU.Surging.Apm.Skywalking.Abstractions;
+using KissU.Surging.Apm.Skywalking.Abstractions.Tracing;
 using KissU.Surging.CPlatform.Diagnostics;
 
-namespace KissU.Apm.Skywalking.Core.Tracing
+namespace KissU.Surging.Apm.Skywalking.Core.Tracing
 {
     public class UniqueIdGenerator : IUniqueIdGenerator
     {
