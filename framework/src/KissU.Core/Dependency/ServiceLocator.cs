@@ -1,5 +1,6 @@
 ﻿using System;
 using Autofac;
+using Autofac.Extensions.DependencyInjection;
 
 namespace KissU.Dependency
 {
@@ -11,7 +12,20 @@ namespace KissU.Dependency
         /// <summary>
         /// 当前容器.
         /// </summary>
-        public static IContainer Current { get; set; }
+        public static ILifetimeScope Current { get; private set; }
+
+        public static void Register(IServiceProvider serviceProvider)
+        {
+            if (serviceProvider is AutofacServiceProvider autofacServiceProvider)
+            {
+                Current = autofacServiceProvider.LifetimeScope;
+            }
+        }
+
+        public static void Register(IContainer container)
+        {
+            Current = container;
+        }
 
         /// <summary>
         /// 获得服务.

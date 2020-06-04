@@ -41,7 +41,7 @@ namespace KissU.Stages.Host
                     });
                     builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
                 })
-                .Configure(container => { ServiceLocator.Current = container; })
+                .Configure(ServiceLocator.Register)
                 .UseServer(options => { })
                 .UseConsoleLifetime()
                 .UseStartup<Startup>();

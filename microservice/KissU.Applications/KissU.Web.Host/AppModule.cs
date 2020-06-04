@@ -1,6 +1,4 @@
-﻿using KissU.Surging.ProxyGenerator;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Hosting;
 using Volo.Abp;
 using Volo.Abp.AspNetCore.Mvc;
@@ -28,10 +26,6 @@ namespace KissU.Web.Host
             app.UseStaticFiles();
             app.UseRouting();
             app.UseConfiguredEndpoints();
-
-            using var scope = context.ServiceProvider.CreateScope();
-            var serviceProxyFactory = scope.ServiceProvider.GetRequiredService<IServiceProxyFactory>();
-            new TestService().Test(serviceProxyFactory);
         }
     }
 }

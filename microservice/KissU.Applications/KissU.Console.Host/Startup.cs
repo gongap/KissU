@@ -1,7 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using Autofac;
-using KissU.Autofac;
 using KissU.Autofac.Extensions;
 using KissU.Dependency;
 using Microsoft.Extensions.Hosting;
@@ -25,7 +24,8 @@ namespace KissU.Console.Host
                 builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
             }))
             {
-                application.Initialize(); 
+                application.Initialize();
+                ServiceLocator.Register(application.ServiceProvider);
                 var testService = application.ServiceProvider.GetService<TestService>();
                 testService.Test(ServiceLocator.GetService<IServiceProxyFactory>());
                 //testService.TestRabbitMq(ServiceLocator.GetService<IServiceProxyFactory>());

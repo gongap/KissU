@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using KissU.Autofac.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -17,7 +18,7 @@ namespace KissU.Autofac.Extensions
                 {
                     services.AddObjectAccessor(containerBuilder);
                 })
-                .UseServiceProviderFactory(new AppAutofacServiceProviderFactory(containerBuilder));
+                .UseServiceProviderFactory(new AutofacServiceProviderFactory(containerBuilder));
         }
     }
 }

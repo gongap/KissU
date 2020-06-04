@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using JetBrains.Annotations;
-using KissU.Autofac.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp;
 

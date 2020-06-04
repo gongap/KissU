@@ -45,7 +45,7 @@ namespace KissU.Client.Host
                     });
                     builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
                 })
-                .Configure(container => { ServiceLocator.Current = container; })
+                .Configure(ServiceLocator.Register)
                 .UseClient()
                 .UseProxy()
                 .UseStartup<Startup>();
