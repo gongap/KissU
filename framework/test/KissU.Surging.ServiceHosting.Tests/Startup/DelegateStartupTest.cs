@@ -3,7 +3,7 @@ using KissU.ServiceHosting.Startup;
 using NSubstitute;
 using Xunit;
 
-namespace KissU.Surging.ServiceHosting.Tests.Startup.Implementation
+namespace KissU.Surging.ServiceHosting.Tests.Startup
 {
     /// <summary>
     /// 委托启动测试.

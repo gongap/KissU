@@ -2,7 +2,7 @@
 using KissU.Surging.ServiceHosting.Tests.Samples;
 using Xunit;
 
-namespace KissU.Surging.ServiceHosting.Tests.Startup.Implementation
+namespace KissU.Surging.ServiceHosting.Tests.Startup
 {
     /// <summary>
     /// 启动基类测试.

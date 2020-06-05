@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 using NSubstitute;
 using Xunit;
 
-namespace KissU.Surging.ServiceHosting.Tests.Internal.Implementation
+namespace KissU.Surging.ServiceHosting.Tests.Internal
 {
     /// <summary>
     /// 控制台生命周期测试.

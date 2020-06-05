@@ -1,9 +1,8 @@
-﻿using Autofac;
-using KissU.ServiceHosting.Internal;
+﻿using KissU.ServiceHosting.Internal;
 using KissU.Surging.ServiceHosting.Tests.Samples;
 using Xunit;
 
-namespace KissU.Surging.ServiceHosting.Tests.Internal.Implementation
+namespace KissU.Surging.ServiceHosting.Tests.Internal
 {
     /// <summary>
     /// 配置构建器测试.

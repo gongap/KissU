@@ -1,10 +1,9 @@
-﻿using KissU.ServiceHosting;
-using KissU.ServiceHosting.Extensions;
+﻿using KissU.ServiceHosting.Extensions;
 using KissU.ServiceHosting.Internal;
 using KissU.Surging.ServiceHosting.Tests.Samples;
 using Xunit;
 
-namespace KissU.Surging.ServiceHosting.Tests
+namespace KissU.Surging.ServiceHosting.Tests.Extensions
 {
     /// <summary>
     /// 服务主机生成器扩展测试

@@ -3,12 +3,12 @@ using System.Threading.Tasks;
 using Autofac;
 using KissU.ServiceHosting;
 using KissU.ServiceHosting.Internal;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using NSubstitute;
 using Xunit;
 
-namespace KissU.Surging.ServiceHosting.Tests.Internal.Implementation
+namespace KissU.Surging.ServiceHosting.Tests.Internal
 {
     /// <summary>
     /// ServiceHostTest.

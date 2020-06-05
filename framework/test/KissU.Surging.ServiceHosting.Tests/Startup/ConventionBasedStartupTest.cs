@@ -4,7 +4,7 @@ using KissU.Surging.ServiceHosting.Tests.Samples;
 using NSubstitute;
 using Xunit;
 
-namespace KissU.Surging.ServiceHosting.Tests.Startup.Implementation
+namespace KissU.Surging.ServiceHosting.Tests.Startup
 {
     /// <summary>
     /// 基于约定的启动测试.

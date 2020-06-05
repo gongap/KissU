@@ -2,7 +2,7 @@
 using KissU.Surging.ServiceHosting.Tests.Samples;
 using Xunit;
 
-namespace KissU.Surging.ServiceHosting.Tests.Internal.Implementation
+namespace KissU.Surging.ServiceHosting.Tests.Internal
 {
     /// <summary>
     /// ConfigureServicesBuilderTest.

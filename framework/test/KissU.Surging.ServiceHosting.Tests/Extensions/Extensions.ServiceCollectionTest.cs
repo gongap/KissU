@@ -1,10 +1,9 @@
-﻿using KissU.ServiceHosting;
-using KissU.ServiceHosting.Extensions;
+﻿using KissU.ServiceHosting.Extensions;
 using KissU.Surging.ServiceHosting.Tests.Samples;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
-namespace KissU.Surging.ServiceHosting.Tests
+namespace KissU.Surging.ServiceHosting.Tests.Extensions
 {
     /// <summary>
     /// 服务集合扩展测试.
