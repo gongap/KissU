@@ -12,7 +12,7 @@ namespace KissU.Modules.FeatureManagement.Service
     [DependsOn(
         typeof(AbpFeatureManagementApplicationModule),
         typeof(EntityFrameworkCoreDbMigrationsModule),
-        typeof(AppAutofacModule)
+        typeof(AbpAutofacModule)
     )]
     public class AbpFeatureManagementModule : AbpModule
     {

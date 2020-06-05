@@ -12,7 +12,7 @@ namespace KissU.Modules.PermissionManagement.Service
     [DependsOn(
         typeof(AbpPermissionManagementApplicationModule),
         typeof(EntityFrameworkCoreDbMigrationsModule),
-        typeof(AppAutofacModule)
+        typeof(AbpAutofacModule)
     )]
     public class AbpPermissionManagementModule : AbpModule
     {

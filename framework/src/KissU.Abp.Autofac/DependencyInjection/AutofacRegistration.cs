@@ -25,9 +25,7 @@ namespace KissU.Abp.Autofac.DependencyInjection
         /// <param name="services">
         /// The set of service descriptors to register in the container.
         /// </param>
-        public static void Populate(
-                this ContainerBuilder builder,
-                IServiceCollection services)
+        public static void Populate(this ContainerBuilder builder, IServiceCollection services)
         {
             builder.RegisterType<AutofacServiceProvider>().As<IServiceProvider>();
             builder.RegisterType<AutofacServiceScopeFactory>().As<IServiceScopeFactory>();
@@ -47,8 +45,7 @@ namespace KissU.Abp.Autofac.DependencyInjection
         /// and available for additional configuration.
         /// </returns>
         private static IRegistrationBuilder<object, TActivatorData, TRegistrationStyle> ConfigureLifecycle<TActivatorData, TRegistrationStyle>(
-                this IRegistrationBuilder<object, TActivatorData, TRegistrationStyle> registrationBuilder,
-                ServiceLifetime lifecycleKind)
+                this IRegistrationBuilder<object, TActivatorData, TRegistrationStyle> registrationBuilder, ServiceLifetime lifecycleKind)
         {
             switch (lifecycleKind)
             {
@@ -75,9 +72,7 @@ namespace KissU.Abp.Autofac.DependencyInjection
         /// <param name="services">
         /// The set of service descriptors to register in the container.
         /// </param>
-        private static void Register(
-                ContainerBuilder builder,
-                IServiceCollection services)
+        private static void Register(ContainerBuilder builder, IServiceCollection services)
         {
             var moduleContainer = services.GetSingletonInstance<IModuleContainer>();
             var registrationActionList = services.GetRegistrationActionList();
