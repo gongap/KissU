@@ -1,6 +1,6 @@
 ﻿using KissU.Module;
-using KissU.ServiceHosting;
 using KissU.Surging.CPlatform;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Serilog;
 

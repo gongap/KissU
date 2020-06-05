@@ -3,6 +3,7 @@ using Autofac;
 using KissU.Helpers;
 using KissU.ServiceHosting;
 using KissU.Surging.CPlatform;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 namespace KissU.Surging.Log4net

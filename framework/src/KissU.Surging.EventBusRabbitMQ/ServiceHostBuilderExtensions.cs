@@ -1,5 +1,4 @@
 ﻿using Autofac;
-
 using KissU.Dependency;
 using KissU.EventBus;
 using KissU.EventBus.Implementation;

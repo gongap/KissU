@@ -18,14 +18,13 @@ using KissU.Surging.CPlatform.Runtime.Server;
 using KissU.Surging.CPlatform.Support;
 using KissU.Surging.CPlatform.Utilities;
 using Microsoft.Extensions.Configuration;
-using IServiceHost = KissU.Surging.CPlatform.Runtime.Server.IServiceHost;
 
 namespace KissU.Surging.CPlatform
 {
     /// <summary>
     /// 服务构建器扩展.
     /// </summary>
-    public static class ServiceHostBuilderExtensions
+    public static class HostBuilderExtensions
     {
         /// <summary>
         /// Uses the server.

@@ -1,37 +1,36 @@
-﻿using System;
-using System.Text;
+﻿using System.Threading.Tasks;
 using Autofac;
 using KissU.Dependency;
-using KissU.ServiceHosting;
-using KissU.ServiceHosting.Extensions;
-using KissU.ServiceHosting.Internal;
+using KissU.Extensions;
 using KissU.Surging.Caching.Configurations;
 using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Configurations;
 using KissU.Surging.ProxyGenerator;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 namespace KissU.Service.Host
 {
     public class Program
     {
-        public static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-            var host = CreateHostBuilder(args).Build();
-            using (host.Run())
-            {
-                Console.WriteLine($@"{AppConfig.ServerOptions.Ip}:{AppConfig.ServerOptions.Port}， {DateTime.Now}。");
-            }
+            await CreateHostBuilder(args).RunConsoleAsync();
         }
 
-        internal static IServiceHostBuilder CreateHostBuilder(string[] args) =>
-            new ServiceHostBuilder()
-                .ConfigureConfiguration(builder => { builder.AddCacheFile("${cachepath}|cachesettings.json", false, true); })
-                .ConfigureConfiguration(builder => { builder.AddCPlatformFile("${servicepath}|servicesettings.json", false, true); })
+        internal static IHostBuilder CreateHostBuilder(string[] args) =>
+            Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder()
+                .ConfigureHostConfiguration(builder =>
+                {
+                    builder.AddCPlatformFile("servicesettings.json", false, true);
+                    builder.AddCacheFile("cachesettings.json", false, true);
+                })
                 .ConfigureLogging(logger => { logger.AddConfiguration(AppConfig.GetSection("Logging")); })
+                .ConfigureServices(services => { })
+                .UseServiceHostBuilder()
                 .ConfigureContainer(builder =>
                 {
+                    builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
                     builder.AddMicroService(option =>
                     {
                         option.AddServiceRuntime()
@@ -39,11 +38,9 @@ namespace KissU.Service.Host
                             .AddConfigurationWatch()
                             .AddServiceEngine(typeof(ServiceEngine));
                     });
-                    builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
                 })
                 .Configure(ServiceLocator.Register)
-                .UseServer(options => { })
-                .UseConsoleLifetime()
-                .UseStartup<Startup>();
+                .UseServer(options => { });
+
     }
 }
