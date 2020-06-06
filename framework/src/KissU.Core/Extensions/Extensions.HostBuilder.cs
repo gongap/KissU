@@ -21,6 +21,11 @@ namespace KissU.Extensions
             return UseServiceHostBuilder(hostBuilder, configurationAction, null);
         }
 
+        public static IHostBuilder UseServiceHostBuilder(this IHostBuilder hostBuilder, Action<IContainer> configureDelegates)
+        {
+            return UseServiceHostBuilder(hostBuilder, null, configureDelegates);
+        }
+
         public static IHostBuilder UseServiceHostBuilder(this IHostBuilder hostBuilder, Action<ContainerBuilder> configurationAction = null, Action<IContainer> configureDelegates = null)
         {
             var serviceHostBuilder = hostBuilder is IServiceHostBuilder builder ? builder : new ServiceHostBuilder(hostBuilder);

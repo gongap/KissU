@@ -29,11 +29,10 @@ namespace KissU.Web.Host
                 {
                     webBuilder.UseStartup<Startup>();
                 })
-                .ConfigureContainer<ContainerBuilder>(builder =>
+                .UseAutofac(builder =>
                 {
                     builder.AddMicroService(service => { service.AddClient().AddCache(); });
                     builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
-                })
-                .UseAutofac();
+                }, ServiceLocator.Register);
     }
 }

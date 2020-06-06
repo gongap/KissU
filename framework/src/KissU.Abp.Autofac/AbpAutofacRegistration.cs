@@ -3,16 +3,17 @@ using System.Reflection;
 using Autofac;
 using Autofac.Builder;
 using Autofac.Extensions.DependencyInjection;
+using KissU.Abp.Autofac.DependencyInjection;
 using KissU.Abp.Autofac.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.Modularity;
 
-namespace KissU.Abp.Autofac.DependencyInjection
+namespace KissU.Abp.Autofac
 {
     /// <summary>
     /// Extension methods for registering ASP.NET Core dependencies with Autofac.
     /// </summary>
-    public static class AutofacRegistration
+    public static class AbpAutofacRegistration
     {
         /// <summary>
         /// Populates the Autofac container builder with the set of registered service descriptors

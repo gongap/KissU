@@ -1,7 +1,6 @@
 ﻿using System;
 using Autofac;
 using KissU.Abp.Autofac.DependencyInjection;
-using KissU.Dependency;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp;
 
@@ -12,7 +11,12 @@ namespace KissU.Abp.Autofac.Extensions
     /// </summary>
     public static partial class Extensions
     {
-        public static void UseAutofac(this AbpApplicationCreationOptions options)
+        public static void UseAutofac(this AbpApplicationCreationOptions options, Action<IContainer> configureDelegates)
+        {
+            UseAutofac(options, null, configureDelegates);
+        }
+
+        public static void UseAutofac(this AbpApplicationCreationOptions options, Action<ContainerBuilder> configurationAction = null, Action<IContainer> configureDelegates = null)
         {
             var builder = new ContainerBuilder();
             options.Services.AddObjectAccessor(builder);

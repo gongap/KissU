@@ -1,7 +1,6 @@
 ﻿using System;
 using Autofac;
 using KissU.Abp.Autofac.DependencyInjection;
-using KissU.Dependency;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -12,7 +11,12 @@ namespace KissU.Abp.Autofac.Extensions
     /// </summary>
     public static partial class Extensions
     {
-        public static IHostBuilder UseAutofac(this IHostBuilder hostBuilder)
+        public static IHostBuilder UseAutofac(this IHostBuilder hostBuilder, Action<IContainer> configureDelegates)
+        {
+           return UseAutofac(hostBuilder, null, configureDelegates);
+        }
+
+        public static IHostBuilder UseAutofac(this IHostBuilder hostBuilder, Action<ContainerBuilder> configurationAction = null, Action<IContainer> configureDelegates = null)
         {
             var containerBuilder = new ContainerBuilder();
 

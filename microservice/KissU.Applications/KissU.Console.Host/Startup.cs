@@ -18,10 +18,10 @@ namespace KissU.Console.Host
         {
             using (var application = AbpApplicationFactory.Create<AppModule>(options =>
             {
-                options.UseAutofac();
-                var builder = options.Services.GetContainerBuilder();
-                builder.AddMicroService(service => { service.AddClient().AddCache(); });
-                builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
+                options.UseAutofac(builder => {
+                    builder.AddMicroService(service => { service.AddClient().AddCache(); });
+                    builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
+                }, ServiceLocator.Register);
             }))
             {
                 application.Initialize();
