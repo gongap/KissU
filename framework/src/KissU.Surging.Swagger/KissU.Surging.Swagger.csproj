@@ -32,7 +32,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KissU.Surging.CPlatform\KissU.Surging.CPlatform.csproj" />
     <ProjectReference Include="..\KissU.Surging.KestrelHttpServer\KissU.Surging.KestrelHttpServer.csproj" />
   </ItemGroup>
 </Project>

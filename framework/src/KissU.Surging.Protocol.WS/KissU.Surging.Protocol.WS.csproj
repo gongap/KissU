@@ -8,8 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KissU.Surging.CPlatform\KissU.Surging.CPlatform.csproj" />
-    <ProjectReference Include="..\KissU.Surging.ProxyGenerator\KissU.Surging.ProxyGenerator.csproj" />
     <ProjectReference Include="..\KissU.WebSocketCore\KissU.WebSocketCore.csproj" />
+    <ProjectReference Include="..\KissU.Surging.ProxyGenerator\KissU.Surging.ProxyGenerator.csproj" />
   </ItemGroup>
 </Project>
