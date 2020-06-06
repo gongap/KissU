@@ -168,21 +168,5 @@
     "Properties": {
       "Application": "Sample"
     }
-  },
-  "Logging": {
-    "Debug": {
-      "LogLevel": {
-        "Default": "Information"
-      }
-    },
-    "Console": {
-      "IncludeScopes": true,
-      "LogLevel": {
-        "Default": "${LogLevel}|Debug"
-      }
-    },
-    "LogLevel": {
-      "Default": "${LogLevel}|Debug"
-    }
   }
 }

@@ -18,10 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\KissU.ServiceHosting\KissU.ServiceHosting.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="TestResource.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
