@@ -7,8 +7,8 @@ using System.Net;
 using System.Threading.Tasks;
 using Autofac;
 using KissU.Dependency;
+using KissU.Extensions;
 using KissU.Module;
-using KissU.ServiceHosting;
 using KissU.Surging.CPlatform.Address;
 using KissU.Surging.CPlatform.Configurations;
 using KissU.Surging.CPlatform.Engines;
@@ -18,6 +18,7 @@ using KissU.Surging.CPlatform.Runtime.Server;
 using KissU.Surging.CPlatform.Support;
 using KissU.Surging.CPlatform.Utilities;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 
 namespace KissU.Surging.CPlatform
 {
@@ -33,8 +34,8 @@ namespace KissU.Surging.CPlatform
         /// <param name="ip">The ip.</param>
         /// <param name="port">The port.</param>
         /// <param name="token">The token.</param>
-        /// <returns>IServiceHostBuilder.</returns>
-        public static IServiceHostBuilder UseServer(this IServiceHostBuilder hostBuilder, string ip, int port,
+        /// <returns>IHostBuilder.</returns>
+        public static IHostBuilder UseServer(this IHostBuilder hostBuilder, string ip, int port,
             string token = "True")
         {
             return hostBuilder.Configure(async mapper =>
@@ -72,12 +73,12 @@ namespace KissU.Surging.CPlatform
         /// </summary>
         /// <param name="hostBuilder">The host builder.</param>
         /// <param name="options">The options.</param>
-        /// <returns>IServiceHostBuilder.</returns>
-        public static IServiceHostBuilder UseServer(this IServiceHostBuilder hostBuilder,
-            Action<ServerEngineOptions> options)
+        /// <returns>IHostBuilder.</returns>
+        public static IHostBuilder UseServer(this IHostBuilder hostBuilder,
+            Action<ServerEngineOptions> options = null)
         {
             var serverOptions = new ServerEngineOptions();
-            options.Invoke(serverOptions);
+            options?.Invoke(serverOptions);
             AppConfig.ServerOptions = serverOptions;
             return hostBuilder.UseServer(serverOptions.Ip, serverOptions.Port, serverOptions.Token);
         }
@@ -86,8 +87,8 @@ namespace KissU.Surging.CPlatform
         /// Uses the client.
         /// </summary>
         /// <param name="hostBuilder">The host builder.</param>
-        /// <returns>IServiceHostBuilder.</returns>
-        public static IServiceHostBuilder UseClient(this IServiceHostBuilder hostBuilder)
+        /// <returns>IHostBuilder.</returns>
+        public static IHostBuilder UseClient(this IHostBuilder hostBuilder)
         {
             return hostBuilder.Configure(mapper =>
             {

@@ -34,7 +34,7 @@ namespace KissU.ServiceHosting
         /// <param name="configureDelegate">注册服务的委托</param>
         /// <returns>服务主机构建器</returns>
         /// <exception cref="ArgumentNullException">container</exception>
-        public IServiceHostBuilder ConfigureContainer(Action<ContainerBuilder> configureDelegate)
+        public IHostBuilder ConfigureContainer(Action<ContainerBuilder> configureDelegate)
         {
             if (configureDelegate == null)
             {
@@ -51,7 +51,7 @@ namespace KissU.ServiceHosting
         /// <param name="configureDelegate">配置容器的委托</param>
         /// <returns>服务主机构建器</returns>
         /// <exception cref="ArgumentNullException">container</exception>
-        public IServiceHostBuilder Configure(Action<IContainer> configureDelegate)
+        public IHostBuilder Configure(Action<IContainer> configureDelegate)
         {
             if (configureDelegate == null)
             {

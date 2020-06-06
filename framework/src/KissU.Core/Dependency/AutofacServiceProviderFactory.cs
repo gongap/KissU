@@ -11,6 +11,8 @@ namespace KissU.Dependency
     /// </summary>
     public class AutofacServiceProviderFactory : IServiceProviderFactory<ContainerBuilder>
     {
+        private readonly ContainerBuilder _builder;
+        private IServiceCollection _services;
         private readonly Action<ContainerBuilder> _configurationAction;
         private readonly Action<IContainer> _configureDelegates;
 
@@ -20,9 +22,20 @@ namespace KissU.Dependency
         /// <param name="configurationAction">Action on a <see cref="ContainerBuilder"/> that adds component registrations to the conatiner.</param>
         /// <param name="configureDelegates">Action on a <see cref="Container"/> that adds component registrations to the conatiner.</param>
         public AutofacServiceProviderFactory(Action<ContainerBuilder> configurationAction = null, Action<IContainer> configureDelegates = null)
+            : this(new ContainerBuilder())
         {
-            _configurationAction = configurationAction ?? (builder => { });
-            _configureDelegates = configureDelegates ?? (container => { });
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AutofacServiceProviderFactory"/> class.
+        /// </summary>
+        /// <param name="configurationAction">Action on a <see cref="ContainerBuilder"/> that adds component registrations to the conatiner.</param>
+        /// <param name="configureDelegates">Action on a <see cref="Container"/> that adds component registrations to the conatiner.</param>
+        public AutofacServiceProviderFactory(ContainerBuilder builder, Action<ContainerBuilder> configurationAction = null, Action<IContainer> configureDelegates = null)
+        {
+            _builder = builder;
+            _configurationAction = configurationAction ?? (configure => { });
+            _configureDelegates = configureDelegates ?? (configure => { });
         }
 
         /// <summary>
@@ -32,13 +45,13 @@ namespace KissU.Dependency
         /// <returns>A container builder that can be used to create an <see cref="IServiceProvider" />.</returns>
         public ContainerBuilder CreateBuilder(IServiceCollection services)
         {
-            var builder = new ContainerBuilder();
+            _services = services;
 
-            builder.Populate(services);
+            _builder.Populate(services);
 
-            _configurationAction(builder);
+            _configurationAction(_builder);
 
-            return builder;
+            return _builder;
         }
 
         /// <summary>
@@ -51,6 +64,8 @@ namespace KissU.Dependency
             if (containerBuilder == null) throw new ArgumentNullException(nameof(containerBuilder));
 
             var container = containerBuilder.Build();
+
+            ServiceLocator.Register(container);
 
             _configureDelegates(container);
 

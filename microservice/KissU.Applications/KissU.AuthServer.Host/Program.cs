@@ -1,7 +1,7 @@
 ﻿using Autofac;
 using System.Threading.Tasks;
 using KissU.Dependency;
-using KissU.ServiceHosting;
+using KissU.Extensions;
 using KissU.Surging.Caching.Configurations;
 using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Configurations;
@@ -18,27 +18,24 @@ namespace KissU.AuthServer.Host
         }
 
         internal static IHostBuilder CreateHostBuilder(string[] args) =>
-            ServiceHost.CreateDefaultBuilder(hostBuilder =>
+            Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder(args)
+                .ConfigureHostConfiguration(builder =>
                 {
-                    hostBuilder.ConfigureHostConfiguration(builder =>
-                    {
-                        builder.AddCPlatformFile("servicesettings.json", false, true);
-                        builder.AddCacheFile("cachesettings.json", false, true);
-                    });
+                    builder.AddCPlatformFile("servicesettings.json", false, true);
+                    builder.AddCacheFile("cachesettings.json", false, true);
                 })
-                .ConfigureContainer(containerBuilder =>
+                .ConfigureContainer(builder =>
                 {
-                    containerBuilder.AddMicroService(option =>
+                    builder.AddMicroService(option =>
                     {
                         option.AddServiceRuntime()
                             .AddRelateService()
                             .AddConfigurationWatch()
                             .AddServiceEngine(typeof(ServiceEngine));
                     });
-                    containerBuilder.Register(p => new CPlatformContainer(ServiceLocator.Current));
+                    builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
                 })
-                .Configure(ServiceLocator.Register)
-                .UseServer(options => { });
+                .UseServer();
 
     }
 }

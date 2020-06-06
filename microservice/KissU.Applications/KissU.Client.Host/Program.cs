@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Autofac;
 using KissU.Dependency;
-using KissU.ServiceHosting;
+using KissU.Extensions;
 using KissU.Surging.Caching;
 using KissU.Surging.Caching.Configurations;
 using KissU.Surging.CPlatform;
@@ -20,13 +20,11 @@ namespace KissU.Client.Host
         }
 
         internal static IHostBuilder CreateHostBuilder(string[] args) =>
-            ServiceHost.CreateDefaultBuilder(hostBuilder =>
+            Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder(args)
+                .ConfigureHostConfiguration(builder =>
                 {
-                    hostBuilder.ConfigureHostConfiguration(builder =>
-                    {
-                        builder.AddCPlatformFile("servicesettings.json", false, true);
-                        builder.AddCacheFile("cachesettings.json", false, true);
-                    });
+                    builder.AddCPlatformFile("servicesettings.json", false, true);
+                    builder.AddCacheFile("cachesettings.json", false, true);
                 })
                 .ConfigureContainer(builder =>
                 {
@@ -36,9 +34,11 @@ namespace KissU.Client.Host
                     });
                     builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
                 })
-                .Configure(ServiceLocator.Register)
                 .UseClient()
                 .UseProxy()
-                .ConfigureServices((hostContext, services) => { services.AddHostedService<Startup>(); });
+                .ConfigureServices((hostContext, services) =>
+                {
+                    services.AddHostedService<Startup>();
+                });
     }
 }

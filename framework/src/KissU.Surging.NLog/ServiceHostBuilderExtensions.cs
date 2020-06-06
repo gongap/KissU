@@ -1,7 +1,7 @@
 ﻿using System;
 using Autofac;
+using KissU.Extensions;
 using KissU.Helpers;
-using KissU.ServiceHosting;
 using KissU.Surging.CPlatform;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -21,7 +21,7 @@ namespace KissU.Surging.Nlog
         /// <param name="hostBuilder">The host builder.</param>
         /// <param name="nlogConfigFile">The nlog configuration file.</param>
         /// <returns>IServiceHostBuilder.</returns>
-        public static IServiceHostBuilder UseNLog(this IServiceHostBuilder hostBuilder,
+        public static IHostBuilder UseNLog(this IHostBuilder hostBuilder,
             string nlogConfigFile = "nLog.config")
         {
             hostBuilder.ConfigureLogging(logger => { logger.AddConfiguration(AppConfig.GetSection("Logging")); });
@@ -40,8 +40,8 @@ namespace KissU.Surging.Nlog
         /// <param name="hostBuilder">The host builder.</param>
         /// <param name="minLevel">The minimum level.</param>
         /// <param name="nlogConfigFile">The nlog configuration file.</param>
-        /// <returns>IServiceHostBuilder.</returns>
-        public static IServiceHostBuilder UseNLog(this IServiceHostBuilder hostBuilder, LogLevel minLevel,
+        /// <returns>IHostBuilder.</returns>
+        public static IHostBuilder UseNLog(this IHostBuilder hostBuilder, LogLevel minLevel,
             string nlogConfigFile = "nLog.config")
         {
             hostBuilder.ConfigureLogging(logger => { logger.SetMinimumLevel(minLevel); });
@@ -59,8 +59,8 @@ namespace KissU.Surging.Nlog
         /// <param name="hostBuilder">The host builder.</param>
         /// <param name="filter">The filter.</param>
         /// <param name="nlogConfigFile">The nlog configuration file.</param>
-        /// <returns>IServiceHostBuilder.</returns>
-        public static IServiceHostBuilder UseNLog(this IServiceHostBuilder hostBuilder,
+        /// <returns>IHostBuilder.</returns>
+        public static IHostBuilder UseNLog(this IHostBuilder hostBuilder,
             Func<string, LogLevel, bool> filter, string nlogConfigFile = "nLog.config")
         {
             hostBuilder.ConfigureLogging(logger => { logger.AddFilter(filter); });

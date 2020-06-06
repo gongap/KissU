@@ -1,6 +1,7 @@
 ﻿using Autofac;
-using KissU.ServiceHosting;
+using KissU.Extensions;
 using KissU.Surging.CPlatform.Engines;
+using Microsoft.Extensions.Hosting;
 
 namespace KissU.Surging.ProxyGenerator
 {
@@ -13,8 +14,8 @@ namespace KissU.Surging.ProxyGenerator
         /// Uses the proxy.
         /// </summary>
         /// <param name="hostBuilder">The host builder.</param>
-        /// <returns>IServiceHostBuilder.</returns>
-        public static IServiceHostBuilder UseProxy(this IServiceHostBuilder hostBuilder)
+        /// <returns>IHostBuilder.</returns>
+        public static IHostBuilder UseProxy(this IHostBuilder hostBuilder)
         {
             return hostBuilder.Configure(mapper =>
             {

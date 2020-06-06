@@ -1,8 +1,9 @@
 ﻿using System.Linq;
 using Autofac;
-using KissU.ServiceHosting;
+using KissU.Extensions;
 using KissU.Surging.Caching.Configurations;
 using KissU.Surging.CPlatform.Cache;
+using Microsoft.Extensions.Hosting;
 
 namespace KissU.Surging.Caching
 {
@@ -15,8 +16,8 @@ namespace KissU.Surging.Caching
         /// Uses the service cache.
         /// </summary>
         /// <param name="hostBuilder">The host builder.</param>
-        /// <returns>IServiceHostBuilder.</returns>
-        public static IServiceHostBuilder UseServiceCache(this IServiceHostBuilder hostBuilder)
+        /// <returns>IHostBuilder.</returns>
+        public static IHostBuilder UseServiceCache(this IHostBuilder hostBuilder)
         {
             return hostBuilder.Configure(mapper =>
             {

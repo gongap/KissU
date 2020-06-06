@@ -2,9 +2,10 @@
 using KissU.Dependency;
 using KissU.EventBus;
 using KissU.EventBus.Implementation;
-using KissU.ServiceHosting;
+using KissU.Extensions;
 using KissU.Surging.CPlatform.Engines;
 using KissU.Surging.CPlatform.Routing;
+using Microsoft.Extensions.Hosting;
 
 namespace KissU.Surging.EventBusRabbitMQ
 {
@@ -17,8 +18,8 @@ namespace KissU.Surging.EventBusRabbitMQ
         /// Subscribes at.
         /// </summary>
         /// <param name="hostBuilder">The host builder.</param>
-        /// <returns>IServiceHostBuilder.</returns>
-        public static IServiceHostBuilder SubscribeAt(this IServiceHostBuilder hostBuilder)
+        /// <returns>IHostBuilder.</returns>
+        public static IHostBuilder SubscribeAt(this IHostBuilder hostBuilder)
         {
             return hostBuilder.Configure(mapper =>
             {

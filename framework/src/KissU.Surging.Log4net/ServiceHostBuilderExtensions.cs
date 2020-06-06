@@ -1,7 +1,7 @@
 ﻿using System;
 using Autofac;
+using KissU.Extensions;
 using KissU.Helpers;
-using KissU.ServiceHosting;
 using KissU.Surging.CPlatform;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -18,11 +18,10 @@ namespace KissU.Surging.Log4net
         /// </summary>
         /// <param name="hostBuilder">The host builder.</param>
         /// <param name="log4NetConfigFile">The log4 net configuration file.</param>
-        /// <returns>IServiceHostBuilder.</returns>
-        public static IServiceHostBuilder UseLog4net(this IServiceHostBuilder hostBuilder,
+        /// <returns>IHostBuilder.</returns>
+        public static IHostBuilder UseLog4net(this IHostBuilder hostBuilder,
             string log4NetConfigFile = "log4net.config")
         {
-            hostBuilder.ConfigureLogging(logger => { logger.AddConfiguration(AppConfig.GetSection("Logging")); });
             return hostBuilder.Configure(mapper =>
             {
                 var section = AppConfig.GetSection("Logging");
@@ -37,8 +36,8 @@ namespace KissU.Surging.Log4net
         /// <param name="hostBuilder">The host builder.</param>
         /// <param name="minLevel">The minimum level.</param>
         /// <param name="log4NetConfigFile">The log4 net configuration file.</param>
-        /// <returns>IServiceHostBuilder.</returns>
-        public static IServiceHostBuilder UseLog4net(this IServiceHostBuilder hostBuilder, LogLevel minLevel,
+        /// <returns>IHostBuilder.</returns>
+        public static IHostBuilder UseLog4net(this IHostBuilder hostBuilder, LogLevel minLevel,
             string log4NetConfigFile = "log4net.config")
         {
             hostBuilder.ConfigureLogging(logger => { logger.SetMinimumLevel(minLevel); });
@@ -55,8 +54,8 @@ namespace KissU.Surging.Log4net
         /// <param name="hostBuilder">The host builder.</param>
         /// <param name="filter">The filter.</param>
         /// <param name="log4NetConfigFile">The log4 net configuration file.</param>
-        /// <returns>IServiceHostBuilder.</returns>
-        public static IServiceHostBuilder UseLog4net(this IServiceHostBuilder hostBuilder,
+        /// <returns>IHostBuilder.</returns>
+        public static IHostBuilder UseLog4net(this IHostBuilder hostBuilder,
             Func<string, LogLevel, bool> filter, string log4NetConfigFile = "log4net.config")
         {
             hostBuilder.ConfigureLogging(logger => { logger.AddFilter(filter); });
