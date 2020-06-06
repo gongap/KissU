@@ -52,6 +52,7 @@ namespace KissU.Dependency
 
             var container = containerBuilder.Build();
 
+            ServiceLocator.Register(container);
             _configureDelegates(container);
 
             return new AutofacServiceProvider(container);

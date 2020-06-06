@@ -6,6 +6,8 @@ using KissU.Surging.Caching.Configurations;
 using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Configurations;
 using KissU.Surging.ProxyGenerator;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
@@ -20,17 +22,16 @@ namespace KissU.Service.Host
 
         internal static IHostBuilder CreateHostBuilder(string[] args) =>
             Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder()
-                .ConfigureHostConfiguration(builder =>
+                .ConfigureLogging(logger => { logger.AddConfiguration(AppConfig.GetSection("Logging")); })
+                .ConfigureServices((hostContext, services) => { })
+                .UseServiceHostBuilder()
+                .ConfigureConfiguration(builder =>
                 {
                     builder.AddCPlatformFile("servicesettings.json", false, true);
                     builder.AddCacheFile("cachesettings.json", false, true);
                 })
-                .ConfigureLogging(logger => { logger.AddConfiguration(AppConfig.GetSection("Logging")); })
-                .ConfigureServices(services => { })
-                .UseServiceHostBuilder()
                 .ConfigureContainer(builder =>
                 {
-                    builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
                     builder.AddMicroService(option =>
                     {
                         option.AddServiceRuntime()
@@ -38,6 +39,7 @@ namespace KissU.Service.Host
                             .AddConfigurationWatch()
                             .AddServiceEngine(typeof(ServiceEngine));
                     });
+                    builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
                 })
                 .Configure(ServiceLocator.Register)
                 .UseServer(options => { });

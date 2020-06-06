@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using Autofac;
+using KissU.Abp.Autofac.Extensions;
 using KissU.Dependency;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
-using AutofacServiceProviderFactory = KissU.Dependency.AutofacServiceProviderFactory;
 
 namespace KissU.ServiceHosting
 {
@@ -17,6 +18,7 @@ namespace KissU.ServiceHosting
         private readonly IHostBuilder _hostBuilder;
         private readonly List<Action<ContainerBuilder>> _configureContainerDelegates;
         private readonly List<Action<IContainer>> _configureDelegates;
+        private readonly List<Action<IConfigurationBuilder>> _configureConfigurationDelegates;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ServiceHostBuilder" /> class.
@@ -27,6 +29,7 @@ namespace KissU.ServiceHosting
             _hostBuilder = hostBuilder ?? throw new ArgumentNullException(nameof(hostBuilder));
             _configureContainerDelegates = new List<Action<ContainerBuilder>>();
             _configureDelegates = new List<Action<IContainer>>();
+            _configureConfigurationDelegates = new List<Action<IConfigurationBuilder>>();
         }
 
         /// <summary>
@@ -47,6 +50,23 @@ namespace KissU.ServiceHosting
         }
 
         /// <summary>
+        /// 配置应用
+        /// </summary>
+        /// <param name="action">配置构建器的委托</param>
+        /// <returns>服务主机构建器</returns>
+        /// <exception cref="ArgumentNullException">action</exception>
+        public IServiceHostBuilder ConfigureConfiguration(Action<IConfigurationBuilder> action)
+        {
+            if (action == null)
+            {
+                throw new ArgumentNullException(nameof(action));
+            }
+
+            _configureConfigurationDelegates.Add(action);
+            return this;
+        }
+
+        /// <summary>
         /// 配置容器
         /// </summary>
         /// <param name="configureDelegate">配置容器的委托</param>
@@ -61,6 +81,18 @@ namespace KissU.ServiceHosting
 
             _configureDelegates.Add(configureDelegate);
             return this;
+        }
+
+
+        private IConfigurationBuilder ConfigureConfiguration()
+        {
+            var config = new ConfigurationBuilder().SetBasePath(AppContext.BaseDirectory);
+            foreach (var configure in _configureConfigurationDelegates)
+            {
+                configure(config);
+            }
+
+            return config;
         }
 
         #region Microsoft.Extensions.Hosting
@@ -151,6 +183,14 @@ namespace KissU.ServiceHosting
         /// <returns>An initialized <see cref="T:Microsoft.Extensions.Hosting.IHost" />.</returns>
         public IHost Build()
         {
+
+            var config = ConfigureConfiguration();
+            _hostBuilder.ConfigureServices((d, services) => {
+                services.AddSingleton(typeof(IConfigurationBuilder), config);
+                services.ClearServiceProviderFactories();
+            });
+
+          
             _hostBuilder.UseServiceProviderFactory(new AutofacServiceProviderFactory(
                 builder =>
                 {
@@ -160,14 +200,16 @@ namespace KissU.ServiceHosting
                     }
                 }, container =>
                 {
-                    ServiceLocator.Register(container);
                     foreach (var configure in _configureDelegates)
                     {
                         configure(container);
                     }
-                }));
+                })
+            );
 
-            return _hostBuilder.Build();
+            var host = _hostBuilder.Build();
+
+            return host;
         }
         #endregion
     }
