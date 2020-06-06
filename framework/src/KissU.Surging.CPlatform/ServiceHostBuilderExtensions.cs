@@ -35,15 +35,13 @@ namespace KissU.Surging.CPlatform
         /// <param name="port">The port.</param>
         /// <param name="token">The token.</param>
         /// <returns>IHostBuilder.</returns>
-        public static IHostBuilder UseServer(this IHostBuilder hostBuilder, string ip, int port,
-            string token = "True")
+        public static IHostBuilder UseServer(this IHostBuilder hostBuilder, string ip, int port, string token = "True")
         {
             return hostBuilder.Configure(async mapper =>
             {
                 BuildServiceEngine(mapper);
                 mapper.Resolve<IServiceTokenGenerator>().GeneratorToken(token);
-                var _port = AppConfig.ServerOptions.Port =
-                    AppConfig.ServerOptions.Port == 0 ? port : AppConfig.ServerOptions.Port;
+                var _port = AppConfig.ServerOptions.Port = AppConfig.ServerOptions.Port == 0 ? port : AppConfig.ServerOptions.Port;
                 var _ip = AppConfig.ServerOptions.Ip = AppConfig.ServerOptions.Ip ?? ip;
                 _port = AppConfig.ServerOptions.Port = AppConfig.ServerOptions.IpEndpoint?.Port ?? _port;
                 _ip = AppConfig.ServerOptions.Ip = AppConfig.ServerOptions.IpEndpoint?.Address.ToString() ?? _ip;
