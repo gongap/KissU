@@ -20,7 +20,7 @@ namespace KissU.Abp.Autofac.Extensions
         {
             var builder = new ContainerBuilder();
             options.Services.AddObjectAccessor(builder);
-            options.Services.AddSingleton((IServiceProviderFactory<ContainerBuilder>) new AutofacServiceProviderFactory(builder));
+            options.Services.AddSingleton((IServiceProviderFactory<ContainerBuilder>) new AutofacServiceProviderFactory(builder, configurationAction, configureDelegates));
         }
     }
 }
