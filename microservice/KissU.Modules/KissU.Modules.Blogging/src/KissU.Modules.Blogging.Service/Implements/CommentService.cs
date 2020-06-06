@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using KissU.Dependency;
 using KissU.Extensions;
 using KissU.Modules.Blogging.Application.Contracts.Comments;
 using KissU.Modules.Blogging.Application.Contracts.Comments.Dtos;
@@ -7,6 +8,7 @@ using KissU.Surging.ProxyGenerator;
 
 namespace KissU.Modules.Blogging.Service.Implements
 {
+    [ModuleName("Comment")]
     public class CommentService : ProxyServiceBase, ICommentService
     {
         private readonly ICommentAppService _commentAppService;

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using KissU.Dependency;
 using KissU.Extensions;
 using KissU.Modules.Blogging.Application.Contracts.Tagging;
 using KissU.Modules.Blogging.Application.Contracts.Tagging.Dtos;
@@ -7,6 +8,7 @@ using KissU.Surging.ProxyGenerator;
 
 namespace KissU.Modules.Blogging.Service.Implements
 {
+    [ModuleName("Tag")]
     public class TagService : ProxyServiceBase, ITagService
     {
         private readonly ITagAppService _tagAppService;

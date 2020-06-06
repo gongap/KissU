@@ -1,11 +1,13 @@
 ﻿using System.Threading.Tasks;
 using KissU.Common;
+using KissU.Dependency;
 using KissU.Extensions;
 using KissU.Modules.Blogging.Application.Contracts.Posts;
 using KissU.Surging.ProxyGenerator;
 
 namespace KissU.Modules.Blogging.Service.Implements
 {
+    [ModuleName("Post")]
     public class PostService : ProxyServiceBase, IPostService
     {
         private readonly IPostAppService _postAppService;

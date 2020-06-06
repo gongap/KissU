@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using KissU.Common;
+using KissU.Dependency;
 using KissU.Extensions;
 using KissU.Modules.Blogging.Application.Contracts.Blogs;
 using KissU.Modules.Blogging.Application.Contracts.Blogs.Dtos;
@@ -7,6 +8,7 @@ using KissU.Surging.ProxyGenerator;
 
 namespace KissU.Modules.Blogging.Service.Implements
 {
+    [ModuleName("Blog")]
     public class BlogService : ProxyServiceBase, IBlogService
     {
         private readonly IBlogAppService _blogAppService;
