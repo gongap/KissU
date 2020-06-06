@@ -1,14 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using KissU.Dependency;
 using KissU.Modules.Blogging.Application.Contracts.Tagging.Dtos;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 
-[ServiceBundle("api/{Service}")]
-public interface ITagService : IServiceKey
+namespace KissU.Modules.Blogging.Service.Contracts
 {
-    [HttpGet(true)]
-    [ServiceRoute("popular/{blogId}")]
-    Task<List<TagDto>> GetPopularTags(string blogId, GetPopularTagsInput input);
+    [ServiceBundle("api/{Service}")]
+    public interface ITagService : IServiceKey
+    {
+        [HttpGet(true)]
+        [ServiceRoute("popular/{blogId}")]
+        Task<List<TagDto>> GetPopularTags(string blogId, GetPopularTagsInput input);
+    }
 }
