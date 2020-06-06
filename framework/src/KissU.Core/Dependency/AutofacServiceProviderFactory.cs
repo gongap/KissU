@@ -22,7 +22,7 @@ namespace KissU.Dependency
         /// <param name="configurationAction">Action on a <see cref="ContainerBuilder"/> that adds component registrations to the conatiner.</param>
         /// <param name="configureDelegates">Action on a <see cref="Container"/> that adds component registrations to the conatiner.</param>
         public AutofacServiceProviderFactory(Action<ContainerBuilder> configurationAction = null, Action<IContainer> configureDelegates = null)
-            : this(new ContainerBuilder())
+            : this(new ContainerBuilder(), configurationAction, configureDelegates)
         {
         }
 
