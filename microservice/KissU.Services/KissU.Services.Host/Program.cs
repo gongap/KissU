@@ -1,5 +1,5 @@
-﻿using System.Threading.Tasks;
-using Autofac;
+﻿using Autofac;
+using System.Threading.Tasks;
 using KissU.Dependency;
 using KissU.ServiceHosting;
 using KissU.Surging.Caching.Configurations;
@@ -7,7 +7,6 @@ using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Configurations;
 using KissU.Surging.ProxyGenerator;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace KissU.Service.Host
 {
@@ -21,24 +20,22 @@ namespace KissU.Service.Host
         internal static IHostBuilder CreateHostBuilder(string[] args) =>
             ServiceHost.CreateDefaultBuilder(hostBuilder =>
                 {
-                    hostBuilder.ConfigureLogging(logger => { logger.AddConfiguration(AppConfig.GetSection("Logging")); });
-                    hostBuilder.ConfigureServices((hostContext, services) => { });
+                    hostBuilder.ConfigureHostConfiguration(builder =>
+                    {
+                        builder.AddCPlatformFile("servicesettings.json", false, true);
+                        builder.AddCacheFile("cachesettings.json", false, true);
+                    });
                 })
-                .ConfigureConfiguration(builder =>
+                .ConfigureContainer(containerBuilder =>
                 {
-                    builder.AddCPlatformFile("servicesettings.json", false, true);
-                    builder.AddCacheFile("cachesettings.json", false, true);
-                })
-                .ConfigureContainer(builder =>
-                {
-                    builder.AddMicroService(option =>
+                    containerBuilder.AddMicroService(option =>
                     {
                         option.AddServiceRuntime()
                             .AddRelateService()
                             .AddConfigurationWatch()
                             .AddServiceEngine(typeof(ServiceEngine));
                     });
-                    builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
+                    containerBuilder.Register(p => new CPlatformContainer(ServiceLocator.Current));
                 })
                 .Configure(ServiceLocator.Register)
                 .UseServer(options => { });

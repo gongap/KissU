@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Autofac;
-using KissU.Abp.Autofac.Extensions;
 using KissU.Dependency;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 
 namespace KissU.ServiceHosting
@@ -18,7 +16,6 @@ namespace KissU.ServiceHosting
         private readonly IHostBuilder _hostBuilder;
         private readonly List<Action<ContainerBuilder>> _configureContainerDelegates;
         private readonly List<Action<IContainer>> _configureDelegates;
-        private readonly List<Action<IConfigurationBuilder>> _configureConfigurationDelegates;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ServiceHostBuilder" /> class.
@@ -29,7 +26,6 @@ namespace KissU.ServiceHosting
             _hostBuilder = hostBuilder ?? throw new ArgumentNullException(nameof(hostBuilder));
             _configureContainerDelegates = new List<Action<ContainerBuilder>>();
             _configureDelegates = new List<Action<IContainer>>();
-            _configureConfigurationDelegates = new List<Action<IConfigurationBuilder>>();
         }
 
         /// <summary>
@@ -50,23 +46,6 @@ namespace KissU.ServiceHosting
         }
 
         /// <summary>
-        /// 配置应用
-        /// </summary>
-        /// <param name="action">配置构建器的委托</param>
-        /// <returns>服务主机构建器</returns>
-        /// <exception cref="ArgumentNullException">action</exception>
-        public IServiceHostBuilder ConfigureConfiguration(Action<IConfigurationBuilder> action)
-        {
-            if (action == null)
-            {
-                throw new ArgumentNullException(nameof(action));
-            }
-
-            _configureConfigurationDelegates.Add(action);
-            return this;
-        }
-
-        /// <summary>
         /// 配置容器
         /// </summary>
         /// <param name="configureDelegate">配置容器的委托</param>
@@ -83,19 +62,38 @@ namespace KissU.ServiceHosting
             return this;
         }
 
-
-        private IConfigurationBuilder ConfigureConfiguration()
+        /// <summary>
+        /// 构建主机
+        /// </summary>
+        /// <returns>An initialized <see cref="T:Microsoft.Extensions.Hosting.IHost" />.</returns>
+        public IHost Build()
         {
-            var config = new ConfigurationBuilder().SetBasePath(AppContext.BaseDirectory);
-            foreach (var configure in _configureConfigurationDelegates)
+            _hostBuilder.ConfigureHostConfiguration(configurationBuilder =>
             {
-                configure(config);
-            }
+                _hostBuilder.ConfigureServices(services =>
+                {
+                    services.AddSingleton(typeof(IConfigurationBuilder), configurationBuilder);
+                });
+            });
 
-            return config;
+            _hostBuilder.UseServiceProviderFactory(new AutofacServiceProviderFactory(
+                builder =>
+                {
+                    foreach (var configure in _configureContainerDelegates)
+                    {
+                        configure(builder);
+                    }
+                }, container =>
+                {
+                    foreach (var configure in _configureDelegates)
+                    {
+                        configure(container);
+                    }
+                })
+            );
+
+            return _hostBuilder.Build();
         }
-
-        #region Microsoft.Extensions.Hosting
 
         /// <summary>
         /// A central location for sharing state between components during the host building process.
@@ -176,41 +174,5 @@ namespace KissU.ServiceHosting
             _hostBuilder.ConfigureContainer(configureDelegate);
             return this;
         }
-
-        /// <summary>
-        /// Run the given actions to initialize the host. This can only be called once.
-        /// </summary>
-        /// <returns>An initialized <see cref="T:Microsoft.Extensions.Hosting.IHost" />.</returns>
-        public IHost Build()
-        {
-
-            var config = ConfigureConfiguration();
-            _hostBuilder.ConfigureServices((d, services) => {
-                services.AddSingleton(typeof(IConfigurationBuilder), config);
-                services.ClearServiceProviderFactories();
-            });
-
-          
-            _hostBuilder.UseServiceProviderFactory(new AutofacServiceProviderFactory(
-                builder =>
-                {
-                    foreach (var configure in _configureContainerDelegates)
-                    {
-                        configure(builder);
-                    }
-                }, container =>
-                {
-                    foreach (var configure in _configureDelegates)
-                    {
-                        configure(container);
-                    }
-                })
-            );
-
-            var host = _hostBuilder.Build();
-
-            return host;
-        }
-        #endregion
     }
 }
