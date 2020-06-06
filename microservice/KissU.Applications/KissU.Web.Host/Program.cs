@@ -34,6 +34,6 @@ namespace KissU.Web.Host
                     builder.AddMicroService(service => { service.AddClient().AddCache(); });
                     builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
                 })
-                .UseAutofac();
+                .UseAutofac(ServiceLocator.Register);
     }
 }

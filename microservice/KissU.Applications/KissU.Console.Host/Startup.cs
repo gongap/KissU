@@ -18,14 +18,13 @@ namespace KissU.Console.Host
         {
             using (var application = AbpApplicationFactory.Create<AppModule>(options =>
             {
-                options.UseAutofac();
+                options.UseAutofac(ServiceLocator.Register);
                 var builder = options.Services.GetContainerBuilder();
                 builder.AddMicroService(service => { service.AddClient().AddCache(); });
                 builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
             }))
             {
                 application.Initialize();
-                ServiceLocator.Register(application.ServiceProvider);
                 var testService = application.ServiceProvider.GetService<TestService>();
                 testService.Test(ServiceLocator.GetService<IServiceProxyFactory>());
                 //testService.TestRabbitMq(ServiceLocator.GetService<IServiceProxyFactory>());

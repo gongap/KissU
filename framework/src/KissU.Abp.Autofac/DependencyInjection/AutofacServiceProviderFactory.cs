@@ -12,10 +12,12 @@ namespace KissU.Abp.Autofac.DependencyInjection
     {
         private readonly ContainerBuilder _builder;
         private IServiceCollection _services;
+        private readonly Action<IContainer> _configureDelegates;
 
-        public AutofacServiceProviderFactory(ContainerBuilder builder)
+        public AutofacServiceProviderFactory(ContainerBuilder builder, Action<IContainer> configureDelegates = null)
         {
             _builder = builder;
+            _configureDelegates = configureDelegates ?? (container => { });
         }
 
         /// <summary>
@@ -37,6 +39,8 @@ namespace KissU.Abp.Autofac.DependencyInjection
             if (containerBuilder == null) throw new ArgumentNullException(nameof(containerBuilder));
 
             var container = containerBuilder.Build();
+
+            _configureDelegates(container);
 
             return new AutofacServiceProvider(container);
         }
