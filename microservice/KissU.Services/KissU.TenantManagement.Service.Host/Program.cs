@@ -1,49 +1,44 @@
-﻿using System;
-using System.Text;
-using Autofac;
+﻿using Autofac;
+using System.Threading.Tasks;
 using KissU.Dependency;
 using KissU.ServiceHosting;
-using KissU.ServiceHosting.Extensions;
-using KissU.ServiceHosting.Internal;
 using KissU.Surging.Caching.Configurations;
 using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Configurations;
 using KissU.Surging.ProxyGenerator;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Hosting;
 
 namespace KissU.Service.Host
 {
     public class Program
     {
-        public static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-            var host = CreateHostBuilder(args).Build();
-            using (host.Run())
-            {
-                Console.WriteLine($@"{AppConfig.ServerOptions.Ip}:{AppConfig.ServerOptions.Port}， {DateTime.Now}。");
-            }
+            await CreateHostBuilder(args).RunConsoleAsync();
         }
 
-        internal static IServiceHostBuilder CreateHostBuilder(string[] args) =>
-            new ServiceHostBuilder()
-                .ConfigureConfiguration(builder => { builder.AddCacheFile("${cachepath}|cachesettings.json", false, true); })
-                .ConfigureConfiguration(builder => { builder.AddCPlatformFile("${servicepath}|servicesettings.json", false, true); })
-                .ConfigureLogging(logger => { logger.AddConfiguration(AppConfig.GetSection("Logging")); })
-                .ConfigureContainer(builder =>
+        internal static IHostBuilder CreateHostBuilder(string[] args) =>
+            ServiceHost.CreateDefaultBuilder(hostBuilder =>
                 {
-                    builder.AddMicroService(option =>
+                    hostBuilder.ConfigureHostConfiguration(builder =>
+                    {
+                        builder.AddCPlatformFile("servicesettings.json", false, true);
+                        builder.AddCacheFile("cachesettings.json", false, true);
+                    });
+                })
+                .ConfigureContainer(containerBuilder =>
+                {
+                    containerBuilder.AddMicroService(option =>
                     {
                         option.AddServiceRuntime()
                             .AddRelateService()
                             .AddConfigurationWatch()
                             .AddServiceEngine(typeof(ServiceEngine));
                     });
-                    builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
+                    containerBuilder.Register(p => new CPlatformContainer(ServiceLocator.Current));
                 })
                 .Configure(ServiceLocator.Register)
-                .UseServer(options => { })
-                .UseConsoleLifetime()
-                .UseStartup<Startup>();
+                .UseServer(options => { });
+
     }
 }

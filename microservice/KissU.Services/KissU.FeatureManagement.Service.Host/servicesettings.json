@@ -132,24 +132,5 @@
     "Properties": {
       "Application": "Sample"
     }
-  },
-  "Logging": {
-    "Debug": {
-      "LogLevel": {
-        "Default": "Information"
-      }
-    },
-    "Console": {
-      "IncludeScopes": true,
-      "LogLevel": {
-        "Default": "${LogLevel}|Debug"
-      }
-    },
-    "LogLevel": {
-      "Default": "${LogLevel}|Debug"
-    }
-  },
-  "ConnectionStrings": {
-    "AbpFeatureManagement": "Server=.;Database=KissU.AbpFeatureManagement;uid=sa;pwd=saP@ss123;MultipleActiveResultSets=true"
   }
 }

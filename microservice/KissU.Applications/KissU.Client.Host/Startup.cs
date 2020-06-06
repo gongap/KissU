@@ -1,36 +1,27 @@
-﻿using Autofac;
-using Autofac.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
+using KissU.Dependency;
+using Microsoft.Extensions.Hosting;
+using KissU.Surging.ProxyGenerator;
 
 namespace KissU.Client.Host
 {
-    public class Startup
+    public class Startup : IHostedService
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Startup"/> class.
-        /// 初始化启动配置
-        /// </summary>
-        public Startup(IConfigurationBuilder build)
+        public Task StartAsync(CancellationToken cancellationToken)
         {
+            var testService = ServiceLocator.GetService<TestService>();
+            testService.Test(ServiceLocator.GetService<IServiceProxyFactory>());
+            //testService.TestThriftInvoker(ServiceLocator.GetService<IServiceProxyFactory>());
+            //testService.TestRabbitMq(ServiceLocator.GetService<IServiceProxyFactory>());
+            //testService.TestForRoutePath(ServiceLocator.GetService<IServiceProxyProvider>());
+            //testService.StartRequest(300000);
+            Console.ReadLine();
+
+            return Task.CompletedTask;
         }
 
-        /// <summary>
-        /// 配置服务
-        /// </summary>
-        public IContainer ConfigureServices(ContainerBuilder builder)
-        {
-            var services = new ServiceCollection();
-            services.AddLogging();
-            builder.Populate(services);
-            return builder.Build();
-        }
-
-        /// <summary>
-        /// 配置应用
-        /// </summary>
-        public void Configure(IContainer container)
-        {
-        }
+        public Task StopAsync(CancellationToken cancellationToken) => Task.CompletedTask;
     }
 }
