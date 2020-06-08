@@ -1,4 +1,5 @@
-﻿using KissU.Modules.IdentityServer.Domain;
+﻿using KissU.Modules.Identity.AspNetCore;
+using KissU.Modules.IdentityServer.Domain;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.Modularity;

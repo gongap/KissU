@@ -4,34 +4,37 @@ using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.Modularity;
 using IdentityUser = Microsoft.AspNetCore.Identity.IdentityUser;
 
-[DependsOn(
-    typeof(AbpIdentityDomainModule)
-)]
-public class AbpIdentityAspNetCoreModule : AbpModule
+namespace KissU.Modules.Identity.AspNetCore
 {
-    public override void ConfigureServices(ServiceConfigurationContext context)
+    [DependsOn(
+        typeof(AbpIdentityDomainModule)
+    )]
+    public class AbpIdentityAspNetCoreModule : AbpModule
     {
-        context.Services
-            .GetObject<IdentityBuilder>()
-            .AddDefaultTokenProviders()
-            .AddSignInManager();
-
-        //(TODO: Extract an extension method like IdentityBuilder.AddAbpSecurityStampValidator())
-        context.Services.AddScoped<AbpSecurityStampValidator>();
-        context.Services.AddScoped(typeof(SecurityStampValidator<IdentityUser>), provider => provider.GetService(typeof(AbpSecurityStampValidator)));
-        context.Services.AddScoped(typeof(ISecurityStampValidator), provider => provider.GetService(typeof(AbpSecurityStampValidator)));
-
-        var options = context.Services.ExecutePreConfiguredActions(new AbpIdentityAspNetCoreOptions());
-
-        if (options.ConfigureAuthentication)
+        public override void ConfigureServices(ServiceConfigurationContext context)
         {
             context.Services
-                .AddAuthentication(o =>
-                {
-                    o.DefaultScheme = IdentityConstants.ApplicationScheme;
-                    o.DefaultSignInScheme = IdentityConstants.ExternalScheme;
-                })
-                .AddIdentityCookies();
+                .GetObject<IdentityBuilder>()
+                .AddDefaultTokenProviders()
+                .AddSignInManager();
+
+            //(TODO: Extract an extension method like IdentityBuilder.AddAbpSecurityStampValidator())
+            context.Services.AddScoped<AbpSecurityStampValidator>();
+            context.Services.AddScoped(typeof(SecurityStampValidator<IdentityUser>), provider => provider.GetService(typeof(AbpSecurityStampValidator)));
+            context.Services.AddScoped(typeof(ISecurityStampValidator), provider => provider.GetService(typeof(AbpSecurityStampValidator)));
+
+            var options = context.Services.ExecutePreConfiguredActions(new AbpIdentityAspNetCoreOptions());
+
+            if (options.ConfigureAuthentication)
+            {
+                context.Services
+                    .AddAuthentication(o =>
+                    {
+                        o.DefaultScheme = IdentityConstants.ApplicationScheme;
+                        o.DefaultSignInScheme = IdentityConstants.ExternalScheme;
+                    })
+                    .AddIdentityCookies();
+            }
         }
     }
 }

@@ -10,7 +10,6 @@
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
     <IsPackable>true</IsPackable>
     <OutputType>Library</OutputType>
-    <RootNamespace />
   </PropertyGroup>
 
   <ItemGroup>

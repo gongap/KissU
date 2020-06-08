@@ -6,24 +6,27 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Volo.Abp.Uow;
 
-public class AbpSecurityStampValidator : SecurityStampValidator<IdentityUser>
+namespace KissU.Modules.Identity.AspNetCore
 {
-    public AbpSecurityStampValidator(
-        IOptions<SecurityStampValidatorOptions> options,
-        SignInManager<IdentityUser> signInManager,
-        ISystemClock systemClock,
-        ILoggerFactory loggerFactory)
-        : base(
-            options, 
-            signInManager,
-            systemClock,
-            loggerFactory)
+    public class AbpSecurityStampValidator : SecurityStampValidator<IdentityUser>
     {
-    }
+        public AbpSecurityStampValidator(
+            IOptions<SecurityStampValidatorOptions> options,
+            SignInManager<IdentityUser> signInManager,
+            ISystemClock systemClock,
+            ILoggerFactory loggerFactory)
+            : base(
+                options, 
+                signInManager,
+                systemClock,
+                loggerFactory)
+        {
+        }
 
-    [UnitOfWork]
-    public override Task ValidateAsync(CookieValidatePrincipalContext context)
-    {
-        return base.ValidateAsync(context);
+        [UnitOfWork]
+        public override Task ValidateAsync(CookieValidatePrincipalContext context)
+        {
+            return base.ValidateAsync(context);
+        }
     }
 }

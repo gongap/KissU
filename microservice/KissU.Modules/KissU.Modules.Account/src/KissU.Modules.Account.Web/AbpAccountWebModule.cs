@@ -1,4 +1,5 @@
 ﻿using KissU.Modules.Account.Application.Contracts.Localization;
+using KissU.Modules.Identity.AspNetCore;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.AspNetCore.Mvc.Localization;

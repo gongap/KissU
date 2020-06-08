@@ -1,7 +1,10 @@
-﻿public class AbpIdentityAspNetCoreOptions
+﻿namespace KissU.Modules.Identity.AspNetCore
 {
-    /// <summary>
-    /// Default: true.
-    /// </summary>
-    public bool ConfigureAuthentication { get; set; } = true;
+    public class AbpIdentityAspNetCoreOptions
+    {
+        /// <summary>
+        /// Default: true.
+        /// </summary>
+        public bool ConfigureAuthentication { get; set; } = true;
+    }
 }
