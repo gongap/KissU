@@ -1,4 +1,5 @@
 ﻿using KissU.Modules.Account.Application.Contracts.Localization;
+using KissU.Modules.Account.Service;
 using KissU.Modules.Identity.AspNetCore;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,6 +14,7 @@ using Volo.Abp.VirtualFileSystem;
 namespace KissU.Modules.Account.Web
 {
     [DependsOn(
+        typeof(AbpAccountModule),
         typeof(AbpIdentityAspNetCoreModule),
         typeof(AbpAutoMapperModule),
         typeof(AbpAspNetCoreMvcUiThemeSharedModule)
@@ -36,7 +38,7 @@ namespace KissU.Modules.Account.Web
         {
             Configure<AbpVirtualFileSystemOptions>(options =>
             {
-                options.FileSets.AddEmbedded<AbpAccountWebModule>("Volo.Abp.Account.Web");
+                options.FileSets.AddEmbedded<AbpAccountWebModule>("KissU.Modules.Account.Web");
             });
 
             Configure<AbpNavigationOptions>(options =>

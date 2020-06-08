@@ -17,19 +17,20 @@
     <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic" Version="2.8.0" />
     <PackageReference Include="Volo.Abp.EventBus.RabbitMQ" Version="2.8.0" />
     <PackageReference Include="Volo.Abp.EntityFrameworkCore.SqlServer" Version="2.8.0" />
-    <PackageReference Include="Volo.Abp.Identity.Application.Contracts" Version="2.8.0" />
-    <PackageReference Include="Volo.Abp.TenantManagement.Application.Contracts" Version="2.8.0" />
-    <PackageReference Include="Volo.Abp.Identity.EntityFrameworkCore" Version="2.8.0" />
-    <PackageReference Include="Volo.Abp.IdentityServer.EntityFrameworkCore" Version="2.8.0" />
-    <PackageReference Include="Volo.Abp.AuditLogging.EntityFrameworkCore" Version="2.8.0" />
-    <PackageReference Include="Volo.Abp.PermissionManagement.EntityFrameworkCore" Version="2.8.0" />
-    <PackageReference Include="Volo.Abp.FeatureManagement.EntityFrameworkCore" Version="2.8.0" />
-    <PackageReference Include="Volo.Abp.SettingManagement.EntityFrameworkCore" Version="2.8.0" />
-    <PackageReference Include="Volo.Abp.TenantManagement.EntityFrameworkCore" Version="2.8.0" />
+  </ItemGroup>
 
-    
-    <PackageReference Include="Volo.Abp.Account.Web.IdentityServer" Version="2.8.0" />
-    <PackageReference Include="Volo.Abp.Account.Application" Version="2.8.0" />
+  <ItemGroup>
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Account\src\KissU.Modules.Account.Application\KissU.Modules.Account.Application.csproj" />
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Account\src\KissU.Modules.Account.Web.IdentityServer\KissU.Modules.Account.Web.IdentityServer.csproj" />
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.AuditLogging\src\KissU.Modules.AuditLogging.EntityFrameworkCore\KissU.Modules.AuditLogging.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.FeatureManagement\src\KissU.Modules.FeatureManagement.EntityFrameworkCore\KissU.Modules.FeatureManagement.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.IdentityServer\src\KissU.Modules.IdentityServer.EntityFrameworkCore\KissU.Modules.IdentityServer.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Identity\src\KissU.Modules.Identity.Application.Contracts\KissU.Modules.Identity.Application.Contracts.csproj" />
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Identity\src\KissU.Modules.Identity.EntityFrameworkCore\KissU.Modules.Identity.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.PermissionManagement\src\KissU.Modules.PermissionManagement.EntityFrameworkCore\KissU.Modules.PermissionManagement.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.SettingManagement\src\KissU.Modules.SettingManagement.EntityFrameworkCore\KissU.Modules.SettingManagement.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.TenantManagement\src\KissU.Modules.TenantManagement.Application.Contracts\KissU.Modules.TenantManagement.Application.Contracts.csproj" />
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.TenantManagement\src\KissU.Modules.TenantManagement.EntityFrameworkCore\KissU.Modules.TenantManagement.EntityFrameworkCore.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,6 +38,10 @@
     <Content Remove="Logs\**" />
     <EmbeddedResource Remove="Logs\**" />
     <None Remove="Logs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

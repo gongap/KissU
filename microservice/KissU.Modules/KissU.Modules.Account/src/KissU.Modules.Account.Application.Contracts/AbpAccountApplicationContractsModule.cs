@@ -30,7 +30,7 @@ namespace KissU.Modules.Account.Application.Contracts
 
             Configure<AbpExceptionLocalizationOptions>(options =>
             {
-                options.MapCodeNamespace("Volo.Account", typeof(AccountResource));
+                options.MapCodeNamespace("KissU.Modules.Account", typeof(AccountResource));
             });
         }
     }

@@ -3,7 +3,6 @@ using KissU.Abp.Autofac;
 using KissU.Module;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp;
-using Volo.Abp.Account;
 
 namespace KissU.Modules.Account.Service
 {

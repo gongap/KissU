@@ -37,7 +37,7 @@
   
   <ItemGroup>
     <ProjectReference Include="..\..\..\KissU.Modules.Identity\src\KissU.Modules.Identity.AspNetCore\KissU.Modules.Identity.AspNetCore.csproj" />
-    <ProjectReference Include="..\KissU.Modules.Account.Service.Contracts\KissU.Modules.Account.Service.Contracts.csproj" />
+    <ProjectReference Include="..\KissU.Modules.Account.Service\KissU.Modules.Account.Service.csproj" />
   </ItemGroup>
 
 </Project>

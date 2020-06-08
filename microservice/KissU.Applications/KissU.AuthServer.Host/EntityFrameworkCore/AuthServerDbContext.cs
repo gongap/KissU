@@ -1,12 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Volo.Abp.AuditLogging.EntityFrameworkCore;
+﻿using KissU.Modules.AuditLogging.EntityFrameworkCore.EntityFrameworkCore;
+using KissU.Modules.FeatureManagement.EntityFrameworkCore;
+using KissU.Modules.Identity.EntityFrameworkCore;
+using KissU.Modules.IdentityServer.EntityFrameworkCore.EntityFrameworkCore;
+using KissU.Modules.PermissionManagement.EntityFrameworkCore;
+using KissU.Modules.SettingManagement.EntityFrameworkCore;
+using KissU.Modules.TenantManagement.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
-using Volo.Abp.FeatureManagement.EntityFrameworkCore;
-using Volo.Abp.Identity.EntityFrameworkCore;
-using Volo.Abp.IdentityServer.EntityFrameworkCore;
-using Volo.Abp.PermissionManagement.EntityFrameworkCore;
-using Volo.Abp.SettingManagement.EntityFrameworkCore;
-using Volo.Abp.TenantManagement.EntityFrameworkCore;
 
 namespace KissU.AuthServer.Host.EntityFrameworkCore
 {

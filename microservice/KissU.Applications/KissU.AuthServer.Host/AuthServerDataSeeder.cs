@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using KissU.Modules.Identity.Application.Contracts;
+using KissU.Modules.IdentityServer.Domain.ApiResources;
+using KissU.Modules.IdentityServer.Domain.Clients;
+using KissU.Modules.IdentityServer.Domain.IdentityResources;
+using KissU.Modules.PermissionManagement.Domain;
+using KissU.Modules.TenantManagement.Application.Contracts;
 using Volo.Abp.Authorization.Permissions;
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Guids;
-using Volo.Abp.Identity;
-using Volo.Abp.IdentityServer.ApiResources;
-using Volo.Abp.IdentityServer.Clients;
-using Volo.Abp.IdentityServer.IdentityResources;
-using Volo.Abp.PermissionManagement;
-using Volo.Abp.TenantManagement;
 using Volo.Abp.Uow;
 
 namespace KissU.AuthServer.Host
