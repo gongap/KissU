@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace KissU.Modules.PermissionManagement
+namespace KissU.Modules.PermissionManagement.Application.Contracts
 {
     public class PermissionGrantInfoDto
     {

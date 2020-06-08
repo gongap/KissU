@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KissU.Modules.TenantManagement
+namespace KissU.Modules.TenantManagement.Domain.Shared
 {
     [Serializable]
     public class TenantEto

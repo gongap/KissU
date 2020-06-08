@@ -37,7 +37,6 @@
     <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.KestrelHttpServer\KissU.Surging.KestrelHttpServer.csproj" />
     <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.Protocol.Mqtt\KissU.Surging.Protocol.Mqtt.csproj" />
     <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.Protocol.WS\KissU.Surging.Protocol.WS.csproj" />
-    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.System\KissU.Surging.System.csproj" />
   </ItemGroup>
 
 </Project>

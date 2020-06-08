@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using KissU.Common;
 using KissU.Dependency;
+using KissU.Modules.TenantManagement.Application.Contracts;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 
 namespace KissU.Modules.TenantManagement.Service.Contracts

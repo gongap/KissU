@@ -2,9 +2,8 @@
 using System.Threading.Tasks;
 using Volo.Abp;
 using Volo.Abp.Domain.Services;
-using Volo.Abp.UI;
 
-namespace KissU.Modules.TenantManagement
+namespace KissU.Modules.TenantManagement.Domain
 {
     public class TenantManager : DomainService, ITenantManager
     {

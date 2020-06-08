@@ -1,9 +1,10 @@
 using System;
 using JetBrains.Annotations;
+using KissU.Modules.TenantManagement.Domain.Shared;
 using Volo.Abp;
 using Volo.Abp.Domain.Entities;
 
-namespace KissU.Modules.TenantManagement
+namespace KissU.Modules.TenantManagement.Domain
 {
     public class TenantConnectionString : Entity
     {

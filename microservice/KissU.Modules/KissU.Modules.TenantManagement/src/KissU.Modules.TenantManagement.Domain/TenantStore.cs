@@ -4,7 +4,7 @@ using Volo.Abp.DependencyInjection;
 using Volo.Abp.MultiTenancy;
 using Volo.Abp.ObjectMapping;
 
-namespace KissU.Modules.TenantManagement
+namespace KissU.Modules.TenantManagement.Domain
 {
     //TODO: This class should use caching instead of querying everytime!
 

@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using KissU.Modules.SettingManagement.Domain;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 using Volo.Abp.Domain.Repositories.MongoDB;
 using Volo.Abp.MongoDB;
 
-namespace Volo.Abp.SettingManagement.MongoDB
+namespace KissU.Modules.SettingManagement.MongoDB
 {
     public class MongoSettingRepository : MongoDbRepository<ISettingManagementMongoDbContext, Setting, Guid>, ISettingRepository
     {

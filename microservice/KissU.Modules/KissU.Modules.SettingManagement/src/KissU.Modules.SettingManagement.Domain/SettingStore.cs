@@ -2,7 +2,7 @@
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Settings;
 
-namespace Volo.Abp.SettingManagement
+namespace KissU.Modules.SettingManagement.Domain
 {
     public class SettingStore : ISettingStore, ITransientDependency
     {

@@ -5,7 +5,7 @@ using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.MultiTenancy;
 
-namespace KissU.Modules.PermissionManagement
+namespace KissU.Modules.PermissionManagement.Domain
 {
     public class PermissionDataSeedContributor : IDataSeedContributor, ITransientDependency
     {

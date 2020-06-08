@@ -1,6 +1,6 @@
 ﻿using Volo.Abp.Data;
 
-namespace KissU.Modules.PermissionManagement
+namespace KissU.Modules.PermissionManagement.Domain
 {
     public static class AbpPermissionManagementDbProperties
     {

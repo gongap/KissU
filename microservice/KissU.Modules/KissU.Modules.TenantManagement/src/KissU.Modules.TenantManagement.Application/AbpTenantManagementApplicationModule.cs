@@ -1,8 +1,10 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using KissU.Modules.TenantManagement.Application.Contracts;
+using KissU.Modules.TenantManagement.Domain;
+using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.AutoMapper;
 using Volo.Abp.Modularity;
 
-namespace KissU.Modules.TenantManagement
+namespace KissU.Modules.TenantManagement.Application
 {
     [DependsOn(typeof(AbpTenantManagementDomainModule))]
     [DependsOn(typeof(AbpTenantManagementApplicationContractsModule))]

@@ -1,9 +1,8 @@
-﻿using KissU.Modules.PermissionManagement;
-using Volo.Abp.Authorization.Permissions;
+﻿using Volo.Abp.Authorization.Permissions;
 using Volo.Abp.Guids;
 using Volo.Abp.MultiTenancy;
 
-namespace Volo.Abp.PermissionManagement.Identity
+namespace KissU.Modules.PermissionManagement.Domain.Identity
 {
     public class UserPermissionManagementProvider : PermissionManagementProvider
     {

@@ -44,7 +44,6 @@ namespace KissU.Surging.Kestrel.Nlog
             base.Initialize(context);
             var section = AppConfig.GetSection("Logging");
             nlogConfigFile = EnvironmentHelper.GetEnvironmentVariable(nlogConfigFile);
-
             LogManager.LoadConfiguration(nlogConfigFile);
             serviceProvider.GetService<ILoggerFactory>().AddProvider(new NLogProvider());
         }

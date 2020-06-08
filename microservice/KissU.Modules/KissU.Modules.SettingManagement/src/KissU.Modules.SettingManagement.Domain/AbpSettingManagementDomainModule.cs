@@ -1,9 +1,10 @@
-﻿using Volo.Abp.Caching;
+﻿using KissU.Modules.SettingManagement.Domain.Shared;
+using Volo.Abp.Caching;
 using Volo.Abp.Domain;
 using Volo.Abp.Modularity;
 using Volo.Abp.Settings;
 
-namespace Volo.Abp.SettingManagement
+namespace KissU.Modules.SettingManagement.Domain
 {
     [DependsOn(
         typeof(AbpSettingsModule),

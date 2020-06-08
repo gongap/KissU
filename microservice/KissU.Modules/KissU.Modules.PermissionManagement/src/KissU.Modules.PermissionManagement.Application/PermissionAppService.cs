@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using KissU.Modules.PermissionManagement.Application.Contracts;
+using KissU.Modules.PermissionManagement.Domain;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Options;
 using Volo.Abp;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Authorization.Permissions;
 using Volo.Abp.MultiTenancy;
 
-namespace KissU.Modules.PermissionManagement
+namespace KissU.Modules.PermissionManagement.Application
 {
     [Authorize]
     public class PermissionAppService : ApplicationService, IPermissionAppService

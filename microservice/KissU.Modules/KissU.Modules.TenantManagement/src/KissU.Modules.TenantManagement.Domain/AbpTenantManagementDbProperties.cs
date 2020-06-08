@@ -1,6 +1,6 @@
 ﻿using Volo.Abp.Data;
 
-namespace KissU.Modules.TenantManagement
+namespace KissU.Modules.TenantManagement.Domain
 {
     public static class AbpTenantManagementDbProperties
     {

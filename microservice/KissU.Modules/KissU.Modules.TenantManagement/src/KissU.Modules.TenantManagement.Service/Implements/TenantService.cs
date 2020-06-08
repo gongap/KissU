@@ -2,6 +2,7 @@
 using KissU.Common;
 using KissU.Dependency;
 using KissU.Extensions;
+using KissU.Modules.TenantManagement.Application.Contracts;
 using KissU.Surging.ProxyGenerator;
 using KissU.Modules.TenantManagement.Service.Contracts;
 

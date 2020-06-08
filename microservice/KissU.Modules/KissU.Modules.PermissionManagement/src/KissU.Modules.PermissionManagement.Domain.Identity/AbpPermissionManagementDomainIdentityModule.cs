@@ -1,9 +1,8 @@
 ﻿using KissU.Modules.Identity.Domain.Shared;
-using KissU.Modules.PermissionManagement;
 using Volo.Abp.Authorization.Permissions;
 using Volo.Abp.Modularity;
 
-namespace Volo.Abp.PermissionManagement.Identity
+namespace KissU.Modules.PermissionManagement.Domain.Identity
 {
     [DependsOn(
         typeof(AbpIdentityDomainSharedModule),

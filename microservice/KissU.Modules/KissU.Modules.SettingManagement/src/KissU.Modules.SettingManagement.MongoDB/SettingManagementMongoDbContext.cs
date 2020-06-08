@@ -1,8 +1,9 @@
+using KissU.Modules.SettingManagement.Domain;
 using MongoDB.Driver;
 using Volo.Abp.Data;
 using Volo.Abp.MongoDB;
 
-namespace Volo.Abp.SettingManagement.MongoDB
+namespace KissU.Modules.SettingManagement.MongoDB
 {
     [ConnectionStringName(AbpSettingManagementDbProperties.ConnectionStringName)]
     public class SettingManagementMongoDbContext : AbpMongoDbContext, ISettingManagementMongoDbContext

@@ -1,9 +1,12 @@
 ﻿using System;
 using JetBrains.Annotations;
+using KissU.Modules.SettingManagement.Domain;
+using KissU.Modules.SettingManagement.Domain.Shared;
 using Microsoft.EntityFrameworkCore;
+using Volo.Abp;
 using Volo.Abp.EntityFrameworkCore.Modeling;
 
-namespace Volo.Abp.SettingManagement.EntityFrameworkCore
+namespace KissU.Modules.SettingManagement.EntityFrameworkCore
 {
     public class SettingManagementModelBuilderConfigurationOptions : AbpModelBuilderConfigurationOptions
     {

@@ -1,5 +1,7 @@
 using System;
 using JetBrains.Annotations;
+using KissU.Modules.TenantManagement.Domain;
+using KissU.Modules.TenantManagement.Domain.Shared;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp;
 using Volo.Abp.EntityFrameworkCore.Modeling;

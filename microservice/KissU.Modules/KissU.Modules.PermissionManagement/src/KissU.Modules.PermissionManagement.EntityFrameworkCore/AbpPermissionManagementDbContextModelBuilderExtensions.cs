@@ -1,5 +1,7 @@
 ﻿using System;
 using JetBrains.Annotations;
+using KissU.Modules.PermissionManagement.Domain;
+using KissU.Modules.PermissionManagement.Domain.Shared;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp;
 using Volo.Abp.EntityFrameworkCore.Modeling;

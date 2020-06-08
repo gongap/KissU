@@ -2,7 +2,7 @@
 using Volo.Abp.Settings;
 using Volo.Abp.Users;
 
-namespace Volo.Abp.SettingManagement
+namespace KissU.Modules.SettingManagement.Domain
 {
     public class UserSettingManagementProvider : SettingManagementProvider, ITransientDependency
     {

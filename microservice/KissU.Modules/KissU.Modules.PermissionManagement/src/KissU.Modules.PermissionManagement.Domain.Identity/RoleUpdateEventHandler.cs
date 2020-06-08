@@ -1,12 +1,10 @@
 ﻿using System.Threading.Tasks;
 using KissU.Modules.Identity.Domain;
-using KissU.Modules.PermissionManagement;
 using Volo.Abp.Authorization.Permissions;
 using Volo.Abp.DependencyInjection;
-using Volo.Abp.Domain.Entities.Events;
 using Volo.Abp.EventBus;
 
-namespace Volo.Abp.PermissionManagement.Identity
+namespace KissU.Modules.PermissionManagement.Domain.Identity
 {
     public class RoleUpdateEventHandler :
         ILocalEventHandler<IdentityRoleNameChangedEvent>,

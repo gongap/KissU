@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using JetBrains.Annotations;
 
-namespace KissU.Modules.PermissionManagement
+namespace KissU.Modules.PermissionManagement.Domain
 {
     //TODO: Write extension methods for simple IsGranted check
 

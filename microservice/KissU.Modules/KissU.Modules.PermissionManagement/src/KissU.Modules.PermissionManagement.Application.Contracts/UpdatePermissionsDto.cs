@@ -1,4 +1,4 @@
-﻿namespace KissU.Modules.PermissionManagement
+﻿namespace KissU.Modules.PermissionManagement.Application.Contracts
 {
     public class UpdatePermissionsDto
     {

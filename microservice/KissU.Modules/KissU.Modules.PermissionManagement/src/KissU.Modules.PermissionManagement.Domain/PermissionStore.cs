@@ -5,7 +5,7 @@ using Volo.Abp.Authorization.Permissions;
 using Volo.Abp.Caching;
 using Volo.Abp.DependencyInjection;
 
-namespace KissU.Modules.PermissionManagement
+namespace KissU.Modules.PermissionManagement.Domain
 {
     public class PermissionStore : IPermissionStore, ITransientDependency
     {

@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
-using KissU.Modules.PermissionManagement;
+using Volo.Abp;
 using Volo.Abp.Authorization.Permissions;
 
-namespace Volo.Abp.PermissionManagement
+namespace KissU.Modules.PermissionManagement.Domain.Identity
 {
     public static class UserPermissionManagerExtensions
     {

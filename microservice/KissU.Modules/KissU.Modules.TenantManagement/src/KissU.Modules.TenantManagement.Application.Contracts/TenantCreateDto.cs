@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace KissU.Modules.TenantManagement
+namespace KissU.Modules.TenantManagement.Application.Contracts
 {
     public class TenantCreateDto : TenantCreateOrUpdateDtoBase
     {

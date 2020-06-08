@@ -1,9 +1,10 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
+using Volo.Abp;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Settings;
 
-namespace Volo.Abp.SettingManagement
+namespace KissU.Modules.SettingManagement.Domain
 {
     public class ConfigurationSettingManagementProvider : ISettingManagementProvider, ITransientDependency
     {

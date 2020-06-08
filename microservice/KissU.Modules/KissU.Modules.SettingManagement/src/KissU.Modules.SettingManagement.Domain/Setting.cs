@@ -1,8 +1,9 @@
 ﻿using System;
 using JetBrains.Annotations;
+using Volo.Abp;
 using Volo.Abp.Domain.Entities;
 
-namespace Volo.Abp.SettingManagement
+namespace KissU.Modules.SettingManagement.Domain
 {
     public class Setting : Entity<Guid>, IAggregateRoot<Guid>
     {

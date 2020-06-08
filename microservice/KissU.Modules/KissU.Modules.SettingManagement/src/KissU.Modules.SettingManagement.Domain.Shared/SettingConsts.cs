@@ -1,4 +1,4 @@
-﻿namespace Volo.Abp.SettingManagement
+﻿namespace KissU.Modules.SettingManagement.Domain.Shared
 {
     public static class SettingConsts
     {

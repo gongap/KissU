@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KissU.Modules.PermissionManagement
+namespace KissU.Modules.PermissionManagement.Domain
 {
     [Serializable]
     public class PermissionGrantCacheItem

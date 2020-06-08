@@ -1,8 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using KissU.Modules.SettingManagement.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
-using Volo.Abp.SettingManagement.EntityFrameworkCore;
 
-namespace KissU.Modules.Identity.DbMigrations.EntityFrameworkCore
+namespace KissU.Modules.SettingManagement.DbMigrations.EntityFrameworkCore
 {
     /* This DbContext is only used for database migrations.
      * It is not used on runtime. See IdentityDbContext for the runtime DbContext.

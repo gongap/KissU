@@ -1,9 +1,9 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using KissU.Modules.SettingManagement.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.Modularity;
-using Volo.Abp.SettingManagement.EntityFrameworkCore;
 
-namespace KissU.Modules.Identity.DbMigrations.EntityFrameworkCore
+namespace KissU.Modules.SettingManagement.DbMigrations.EntityFrameworkCore
 {
     [DependsOn(
         typeof(AbpSettingManagementEntityFrameworkCoreModule)

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using KissU.Modules.TenantManagement.Domain.Shared;
+using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.AutoMapper;
 using Volo.Abp.Data;
 using Volo.Abp.Domain;
@@ -7,7 +8,7 @@ using Volo.Abp.Modularity;
 using Volo.Abp.MultiTenancy;
 using Volo.Abp.UI;
 
-namespace KissU.Modules.TenantManagement
+namespace KissU.Modules.TenantManagement.Domain
 {
     [DependsOn(typeof(AbpMultiTenancyModule))]
     [DependsOn(typeof(AbpTenantManagementDomainSharedModule))]

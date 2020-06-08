@@ -5,7 +5,7 @@ using Microsoft.Extensions.Hosting;
 using Serilog;
 using Serilog.Events;
 
-namespace KissU.Modules.Identity.DbMigrator
+namespace KissU.Modules.TenantManagement.DbMigrator
 {
     class Program
     {

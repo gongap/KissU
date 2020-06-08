@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using KissU.Modules.TenantManagement.Application.Contracts;
+using KissU.Modules.TenantManagement.Domain;
 using Microsoft.AspNetCore.Authorization;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Data;
 using Volo.Abp.ObjectExtending;
 
-namespace KissU.Modules.TenantManagement
+namespace KissU.Modules.TenantManagement.Application
 {
     [Authorize(TenantManagementPermissions.Tenants.Default)]
     public class TenantAppService : TenantManagementAppServiceBase, ITenantAppService

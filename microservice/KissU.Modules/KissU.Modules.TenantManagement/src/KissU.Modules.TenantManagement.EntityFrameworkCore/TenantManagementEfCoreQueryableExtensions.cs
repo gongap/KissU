@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using KissU.Modules.TenantManagement.Domain;
 using Microsoft.EntityFrameworkCore;
 
 namespace KissU.Modules.TenantManagement.EntityFrameworkCore

@@ -1,11 +1,11 @@
-﻿using Volo.Abp.Localization;
+﻿using KissU.Modules.PermissionManagement.Domain.Shared.Localization;
+using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
-using KissU.Modules.PermissionManagement.Localization;
 using Volo.Abp.Validation;
 using Volo.Abp.Validation.Localization;
 using Volo.Abp.VirtualFileSystem;
 
-namespace KissU.Modules.PermissionManagement
+namespace KissU.Modules.PermissionManagement.Domain.Shared
 {
     [DependsOn(
         typeof(AbpValidationModule)

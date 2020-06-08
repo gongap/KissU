@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using MongoDB.Driver.Linq;
 using System.Linq;
 using System.Linq.Dynamic.Core;
+using KissU.Modules.TenantManagement.Domain;
 using MongoDB.Driver;
 using Volo.Abp.Domain.Repositories.MongoDB;
 using Volo.Abp.MongoDB;

@@ -1,7 +1,7 @@
 using JetBrains.Annotations;
 using Volo.Abp.MongoDB;
 
-namespace Volo.Abp.SettingManagement.MongoDB
+namespace KissU.Modules.SettingManagement.MongoDB
 {
     public class SettingManagementMongoModelBuilderConfigurationOptions : AbpMongoModelBuilderConfigurationOptions
     {

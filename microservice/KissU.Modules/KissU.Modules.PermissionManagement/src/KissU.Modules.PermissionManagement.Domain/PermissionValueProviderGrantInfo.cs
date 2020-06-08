@@ -1,6 +1,6 @@
 ﻿using JetBrains.Annotations;
 
-namespace KissU.Modules.PermissionManagement
+namespace KissU.Modules.PermissionManagement.Domain
 {
     public class PermissionValueProviderGrantInfo //TODO: Rename to PermissionGrantInfo
     {

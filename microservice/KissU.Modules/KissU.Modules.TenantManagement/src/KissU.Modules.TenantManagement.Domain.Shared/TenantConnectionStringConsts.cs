@@ -1,4 +1,4 @@
-﻿namespace KissU.Modules.TenantManagement
+﻿namespace KissU.Modules.TenantManagement.Domain.Shared
 {
     public static class TenantConnectionStringConsts
     {

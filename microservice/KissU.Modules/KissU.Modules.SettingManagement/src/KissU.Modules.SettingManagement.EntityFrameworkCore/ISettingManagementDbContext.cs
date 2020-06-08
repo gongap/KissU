@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using KissU.Modules.SettingManagement.Domain;
+using Microsoft.EntityFrameworkCore;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
 
-namespace Volo.Abp.SettingManagement.EntityFrameworkCore
+namespace KissU.Modules.SettingManagement.EntityFrameworkCore
 {
     [ConnectionStringName(AbpSettingManagementDbProperties.ConnectionStringName)]
     public interface ISettingManagementDbContext : IEfCoreDbContext

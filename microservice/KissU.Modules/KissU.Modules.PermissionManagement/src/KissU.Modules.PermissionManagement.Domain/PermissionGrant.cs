@@ -4,7 +4,7 @@ using Volo.Abp;
 using Volo.Abp.Domain.Entities;
 using Volo.Abp.MultiTenancy;
 
-namespace KissU.Modules.PermissionManagement
+namespace KissU.Modules.PermissionManagement.Domain
 {
     //TODO: To aggregate root?
     public class PermissionGrant : Entity<Guid>, IMultiTenant

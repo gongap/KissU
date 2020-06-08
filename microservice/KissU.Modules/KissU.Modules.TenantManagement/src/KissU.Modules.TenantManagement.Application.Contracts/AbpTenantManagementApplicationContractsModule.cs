@@ -1,7 +1,8 @@
-﻿using Volo.Abp.Application;
+﻿using KissU.Modules.TenantManagement.Domain.Shared;
+using Volo.Abp.Application;
 using Volo.Abp.Modularity;
 
-namespace KissU.Modules.TenantManagement
+namespace KissU.Modules.TenantManagement.Application.Contracts
 {
     [DependsOn(
         typeof(AbpDddApplicationModule),

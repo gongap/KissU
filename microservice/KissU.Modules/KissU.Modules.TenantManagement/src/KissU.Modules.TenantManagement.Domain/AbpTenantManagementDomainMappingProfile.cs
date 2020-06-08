@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
+using KissU.Modules.TenantManagement.Domain.Shared;
 using Volo.Abp.Data;
 using Volo.Abp.MultiTenancy;
 
-namespace KissU.Modules.TenantManagement
+namespace KissU.Modules.TenantManagement.Domain
 {
     public class AbpTenantManagementDomainMappingProfile : Profile
     {

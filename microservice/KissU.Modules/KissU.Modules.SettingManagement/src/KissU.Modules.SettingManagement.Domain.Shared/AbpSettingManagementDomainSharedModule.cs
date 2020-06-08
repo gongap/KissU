@@ -1,9 +1,9 @@
-﻿using Volo.Abp.Modularity;
+﻿using KissU.Modules.SettingManagement.Domain.Shared.Localization;
 using Volo.Abp.Localization;
-using Volo.Abp.SettingManagement.Localization;
+using Volo.Abp.Modularity;
 using Volo.Abp.VirtualFileSystem;
 
-namespace Volo.Abp.SettingManagement
+namespace KissU.Modules.SettingManagement.Domain.Shared
 {
     [DependsOn(typeof(AbpLocalizationModule))]
     public class AbpSettingManagementDomainSharedModule : AbpModule

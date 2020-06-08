@@ -1,11 +1,11 @@
-﻿using Volo.Abp.Localization;
+﻿using KissU.Modules.TenantManagement.Domain.Shared.Localization;
+using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
-using KissU.Modules.TenantManagement.Localization;
 using Volo.Abp.Validation;
 using Volo.Abp.Validation.Localization;
 using Volo.Abp.VirtualFileSystem;
 
-namespace KissU.Modules.TenantManagement
+namespace KissU.Modules.TenantManagement.Domain.Shared
 {
     [DependsOn(typeof(AbpValidationModule))]
     public class AbpTenantManagementDomainSharedModule : AbpModule

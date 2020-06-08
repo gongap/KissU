@@ -1,8 +1,8 @@
 ﻿using KissU.Abp.Autofac;
-using KissU.Modules.Identity.DbMigrations.EntityFrameworkCore;
+using KissU.Modules.TenantManagement.DbMigrations.EntityFrameworkCore;
 using Volo.Abp.Modularity;
 
-namespace KissU.Modules.Identity.DbMigrator
+namespace KissU.Modules.TenantManagement.DbMigrator
 {
     [DependsOn(
         typeof(AbpAutofacModule),

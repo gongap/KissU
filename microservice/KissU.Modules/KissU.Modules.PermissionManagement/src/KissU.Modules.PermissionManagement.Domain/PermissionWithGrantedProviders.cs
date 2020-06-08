@@ -2,7 +2,7 @@
 using JetBrains.Annotations;
 using Volo.Abp;
 
-namespace KissU.Modules.PermissionManagement
+namespace KissU.Modules.PermissionManagement.Domain
 {
     public class PermissionWithGrantedProviders
     {

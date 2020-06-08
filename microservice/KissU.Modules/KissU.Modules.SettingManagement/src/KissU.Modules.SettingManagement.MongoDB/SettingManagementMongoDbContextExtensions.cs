@@ -1,7 +1,9 @@
 using System;
+using KissU.Modules.SettingManagement.Domain;
+using Volo.Abp;
 using Volo.Abp.MongoDB;
 
-namespace Volo.Abp.SettingManagement.MongoDB
+namespace KissU.Modules.SettingManagement.MongoDB
 {
     public static class SettingManagementMongoDbContextExtensions
     {

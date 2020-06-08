@@ -1,7 +1,7 @@
-﻿using Volo.Abp.Application.Services;
-using KissU.Modules.TenantManagement.Localization;
+﻿using KissU.Modules.TenantManagement.Domain.Shared.Localization;
+using Volo.Abp.Application.Services;
 
-namespace KissU.Modules.TenantManagement
+namespace KissU.Modules.TenantManagement.Application
 {
     public abstract class TenantManagementAppServiceBase : ApplicationService
     {

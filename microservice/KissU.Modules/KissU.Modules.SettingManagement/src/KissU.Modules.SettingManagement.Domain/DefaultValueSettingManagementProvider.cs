@@ -1,8 +1,9 @@
 ﻿using System.Threading.Tasks;
+using Volo.Abp;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Settings;
 
-namespace Volo.Abp.SettingManagement
+namespace KissU.Modules.SettingManagement.Domain
 {
     public class DefaultValueSettingManagementProvider : ISettingManagementProvider, ISingletonDependency
     {

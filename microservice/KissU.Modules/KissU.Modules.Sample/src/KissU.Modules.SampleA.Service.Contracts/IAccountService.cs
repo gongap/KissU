@@ -13,8 +13,8 @@ using KissU.Surging.CPlatform.Support.Attributes;
 using KissU.Surging.KestrelHttpServer.Abstractions;
 using KissU.Surging.KestrelHttpServer.Internal;
 using KissU.Modules.SampleA.Service.Contracts.Dtos;
+using KissU.Surging.Caching.Interceptors;
 using Metadatas = KissU.Surging.ProxyGenerator.Interceptors.Implementation.Metadatas;
-using KissU.Surging.System.Intercept;
 
 namespace KissU.Modules.SampleA.Service.Contracts
 {

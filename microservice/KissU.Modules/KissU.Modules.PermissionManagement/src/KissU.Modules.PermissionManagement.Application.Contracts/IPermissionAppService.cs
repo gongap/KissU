@@ -2,7 +2,7 @@
 using JetBrains.Annotations;
 using Volo.Abp.Application.Services;
 
-namespace KissU.Modules.PermissionManagement
+namespace KissU.Modules.PermissionManagement.Application.Contracts
 {
     public interface IPermissionAppService : IApplicationService
     {

@@ -1,8 +1,9 @@
+using KissU.Modules.SettingManagement.Domain;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.Modularity;
 
-namespace Volo.Abp.SettingManagement.EntityFrameworkCore
+namespace KissU.Modules.SettingManagement.EntityFrameworkCore
 {
     [DependsOn(
         typeof(AbpSettingManagementDomainModule),

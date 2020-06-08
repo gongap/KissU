@@ -1,9 +1,9 @@
-﻿using Volo.Abp.Authorization.Permissions;
+﻿using KissU.Modules.TenantManagement.Domain.Shared.Localization;
+using Volo.Abp.Authorization.Permissions;
 using Volo.Abp.Localization;
 using Volo.Abp.MultiTenancy;
-using KissU.Modules.TenantManagement.Localization;
 
-namespace KissU.Modules.TenantManagement
+namespace KissU.Modules.TenantManagement.Application.Contracts
 {
     public class AbpTenantManagementPermissionDefinitionProvider : PermissionDefinitionProvider
     {

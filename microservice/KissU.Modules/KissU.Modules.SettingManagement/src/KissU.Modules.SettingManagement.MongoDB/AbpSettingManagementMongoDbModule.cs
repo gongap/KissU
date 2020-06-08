@@ -1,8 +1,9 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using KissU.Modules.SettingManagement.Domain;
+using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.Modularity;
 using Volo.Abp.MongoDB;
 
-namespace Volo.Abp.SettingManagement.MongoDB
+namespace KissU.Modules.SettingManagement.MongoDB
 {
     [DependsOn(
         typeof(AbpSettingManagementDomainModule),

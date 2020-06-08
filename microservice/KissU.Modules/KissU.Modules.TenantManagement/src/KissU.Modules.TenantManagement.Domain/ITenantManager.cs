@@ -2,7 +2,7 @@
 using JetBrains.Annotations;
 using Volo.Abp.Domain.Services;
 
-namespace KissU.Modules.TenantManagement
+namespace KissU.Modules.TenantManagement.Domain
 {
     public interface ITenantManager : IDomainService
     {

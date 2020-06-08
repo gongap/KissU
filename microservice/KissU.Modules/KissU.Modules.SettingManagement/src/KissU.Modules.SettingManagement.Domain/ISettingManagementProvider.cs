@@ -2,7 +2,7 @@
 using JetBrains.Annotations;
 using Volo.Abp.Settings;
 
-namespace Volo.Abp.SettingManagement
+namespace KissU.Modules.SettingManagement.Domain
 {
     public interface ISettingManagementProvider 
     {

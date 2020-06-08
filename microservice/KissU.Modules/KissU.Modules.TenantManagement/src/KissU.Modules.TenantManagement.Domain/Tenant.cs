@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
+using KissU.Modules.TenantManagement.Domain.Shared;
 using Volo.Abp;
 using Volo.Abp.Domain.Entities.Auditing;
 
-namespace KissU.Modules.TenantManagement
+namespace KissU.Modules.TenantManagement.Domain
 {
     public class Tenant : FullAuditedAggregateRoot<Guid>
     {

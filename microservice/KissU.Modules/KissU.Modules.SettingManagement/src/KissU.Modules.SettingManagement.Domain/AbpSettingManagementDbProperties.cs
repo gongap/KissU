@@ -1,6 +1,6 @@
 ﻿using Volo.Abp.Data;
 
-namespace Volo.Abp.SettingManagement
+namespace KissU.Modules.SettingManagement.Domain
 {
     public static class AbpSettingManagementDbProperties
     {

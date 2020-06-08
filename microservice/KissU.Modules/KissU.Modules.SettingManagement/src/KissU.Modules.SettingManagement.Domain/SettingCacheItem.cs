@@ -1,7 +1,7 @@
 ﻿using System;
 using Volo.Abp.MultiTenancy;
 
-namespace Volo.Abp.SettingManagement
+namespace KissU.Modules.SettingManagement.Domain
 {
     [Serializable]
     [IgnoreMultiTenancy]

@@ -5,7 +5,7 @@ using Volo.Abp.Domain.Entities.Events;
 using Volo.Abp.EventBus;
 using Volo.Abp.MultiTenancy;
 
-namespace KissU.Modules.PermissionManagement
+namespace KissU.Modules.PermissionManagement.Domain
 {
     public class PermissionGrantCacheItemInvalidator : ILocalEventHandler<EntityChangedEventData<PermissionGrant>>, ITransientDependency
     {

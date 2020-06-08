@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Volo.Abp.Application.Services;
 
-namespace KissU.Modules.TenantManagement
+namespace KissU.Modules.TenantManagement.Application.Contracts
 {
     public interface ITenantAppService : ICrudAppService<TenantDto, Guid, GetTenantsInput, TenantCreateDto, TenantUpdateDto>
     {

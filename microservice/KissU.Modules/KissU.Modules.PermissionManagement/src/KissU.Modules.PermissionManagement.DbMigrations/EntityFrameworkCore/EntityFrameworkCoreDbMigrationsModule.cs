@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.Modularity;
 
-namespace KissU.Modules.Identity.DbMigrations.EntityFrameworkCore
+namespace KissU.Modules.PermissionManagement.DbMigrations.EntityFrameworkCore
 {
     [DependsOn(
         typeof(AbpPermissionManagementEntityFrameworkCoreModule)

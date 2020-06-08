@@ -2,7 +2,7 @@
 using Volo.Abp.MultiTenancy;
 using Volo.Abp.Settings;
 
-namespace Volo.Abp.SettingManagement
+namespace KissU.Modules.SettingManagement.Domain
 {
     public class TenantSettingManagementProvider : SettingManagementProvider, ITransientDependency
     {
