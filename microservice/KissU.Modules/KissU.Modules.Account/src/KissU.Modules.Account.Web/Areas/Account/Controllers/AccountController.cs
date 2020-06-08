@@ -17,7 +17,6 @@ using IdentityUser = KissU.Modules.Identity.Domain.IdentityUser;
 
 namespace KissU.Modules.Account.Web.Areas.Account.Controllers
 {
-    [RemoteService(Name = AccountRemoteServiceConsts.RemoteServiceName)]
     [Controller]
     [ControllerName("Login")]
     [Area("account")]

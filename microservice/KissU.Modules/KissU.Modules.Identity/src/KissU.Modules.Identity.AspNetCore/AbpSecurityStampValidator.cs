@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Volo.Abp.Uow;
+using IdentityUser = KissU.Modules.Identity.Domain.IdentityUser;
 
 namespace KissU.Modules.Identity.AspNetCore
 {

@@ -19,8 +19,6 @@
     <Content Remove="Pages\**\*.cshtml" />
     <Content Remove="Pages\**\*.css" />
     <Content Remove="Pages\**\*.js" />
-    <Content Remove="Properties\launchSettings.json" />
-    <None Include="Properties\launchSettings.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,6 +28,10 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\KissU.Modules.IdentityServer\src\KissU.Modules.IdentityServer.Domain\KissU.Modules.IdentityServer.Domain.csproj" />
     <ProjectReference Include="..\KissU.Modules.Account.Web\KissU.Modules.Account.Web.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
 
 </Project>

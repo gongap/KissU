@@ -20,14 +20,16 @@
     <EmbeddedResource Include="Pages\**\*.cshtml" />
     <EmbeddedResource Include="Pages\**\*.js" />
     <EmbeddedResource Include="Pages\**\*.css" />
+    <Compile Remove="Areas\**" />
+    <Content Remove="Areas\**" />
     <Content Remove="Modules\**\*.cshtml" />
     <Content Remove="Modules\**\*.js" />
     <Content Remove="Modules\**\*.css" />
     <Content Remove="Pages\**\*.cshtml" />
     <Content Remove="Pages\**\*.js" />
     <Content Remove="Pages\**\*.css" />
-    <Content Remove="Properties\launchSettings.json" />
-    <None Include="Properties\launchSettings.json" />
+    <EmbeddedResource Remove="Areas\**" />
+    <None Remove="Areas\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,7 +39,11 @@
   
   <ItemGroup>
     <ProjectReference Include="..\..\..\KissU.Modules.Identity\src\KissU.Modules.Identity.AspNetCore\KissU.Modules.Identity.AspNetCore.csproj" />
-    <ProjectReference Include="..\KissU.Modules.Account.Service\KissU.Modules.Account.Service.csproj" />
+    <ProjectReference Include="..\KissU.Modules.Account.Application.Contracts\KissU.Modules.Account.Application.Contracts.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
 
 </Project>

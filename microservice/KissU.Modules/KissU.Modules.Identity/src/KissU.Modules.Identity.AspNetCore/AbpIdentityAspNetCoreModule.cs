@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.Modularity;
-using IdentityUser = Microsoft.AspNetCore.Identity.IdentityUser;
+using IdentityUser = KissU.Modules.Identity.Domain.IdentityUser;
 
 namespace KissU.Modules.Identity.AspNetCore
 {
