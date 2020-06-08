@@ -1,52 +1,35 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="..\..\..\common.props" />
-  <Import Project="..\..\..\configureawait.props" />
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <ServerGarbageCollection>false</ServerGarbageCollection>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <TieredCompilation>true</TieredCompilation>
-    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <DockerfileContext>..\..\..</DockerfileContext>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\framework\src\KissU.Core\KissU.Core.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.WebSocketCore\KissU.WebSocketCore.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Apm.Skywalking\KissU.Surging.Apm.Skywalking.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.ApiGateWay\KissU.Surging.ApiGateWay.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Caching\KissU.Surging.Caching.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Codec.MessagePack\KissU.Surging.Codec.MessagePack.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Codec.ProtoBuffer\KissU.Surging.Codec.ProtoBuffer.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Configuration.Apollo\KissU.Surging.Configuration.Apollo.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Consul\KissU.Surging.Consul.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.CPlatform\KissU.Surging.CPlatform.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.DNS\KissU.Surging.DNS.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.DotNettyWSServer\KissU.Surging.DotNettyWSServer.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.DotNetty\KissU.Surging.DotNetty.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.EventBusKafka\KissU.Surging.EventBusKafka.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.EventBusRabbitMQ\KissU.Surging.EventBusRabbitMQ.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Grpc\KissU.Surging.Grpc.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Kestrel.Log4net\KissU.Surging.Kestrel.Log4net.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Kestrel.Nlog\KissU.Surging.Kestrel.Nlog.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.KestrelHttpServer\KissU.Surging.KestrelHttpServer.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Log4net\KissU.Surging.Log4net.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.NLog\KissU.Surging.Nlog.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Protocol.Http\KissU.Surging.Protocol.Http.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Protocol.Mqtt\KissU.Surging.Protocol.Mqtt.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Protocol.Udp\KissU.Surging.Protocol.Udp.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Protocol.WS\KissU.Surging.Protocol.WS.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.ProxyGenerator\KissU.Surging.ProxyGenerator.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Serilog\KissU.Surging.Serilog.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.BackgroundServer\KissU.Surging.BackgroundServer.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Swagger\KissU.Surging.Swagger.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Thrift\KissU.Surging.Thrift.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Zookeeper\KissU.Surging.Zookeeper.csproj" />
-    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.IdentityServer\src\KissU.Modules.IdentityServer.Web\KissU.Modules.IdentityServer.Web.csproj" />
+    <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="4.1.0" />
+    <PackageReference Include="Serilog.Sinks.Elasticsearch" Version="6.5.0" />
+    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="3.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.DataProtection.StackExchangeRedis" Version="3.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.2" />
+    <PackageReference Include="Volo.Abp.Autofac" Version="2.8.0" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic" Version="2.8.0" />
+    <PackageReference Include="Volo.Abp.EventBus.RabbitMQ" Version="2.8.0" />
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore.SqlServer" Version="2.8.0" />
+    <PackageReference Include="Volo.Abp.Identity.Application.Contracts" Version="2.8.0" />
+    <PackageReference Include="Volo.Abp.TenantManagement.Application.Contracts" Version="2.8.0" />
+    <PackageReference Include="Volo.Abp.Identity.EntityFrameworkCore" Version="2.8.0" />
+    <PackageReference Include="Volo.Abp.IdentityServer.EntityFrameworkCore" Version="2.8.0" />
+    <PackageReference Include="Volo.Abp.AuditLogging.EntityFrameworkCore" Version="2.8.0" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.EntityFrameworkCore" Version="2.8.0" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.EntityFrameworkCore" Version="2.8.0" />
+    <PackageReference Include="Volo.Abp.SettingManagement.EntityFrameworkCore" Version="2.8.0" />
+    <PackageReference Include="Volo.Abp.TenantManagement.EntityFrameworkCore" Version="2.8.0" />
+
+    
+    <PackageReference Include="Volo.Abp.Account.Web.IdentityServer" Version="2.8.0" />
+    <PackageReference Include="Volo.Abp.Account.Application" Version="2.8.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -56,27 +39,4 @@
     <None Remove="Logs\**" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="apollo.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="appsettings.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="cachesettings.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="NLog.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="log4net.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="servicesettings.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="skyapm.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
 </Project>
