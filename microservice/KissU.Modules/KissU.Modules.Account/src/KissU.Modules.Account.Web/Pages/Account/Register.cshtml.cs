@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
-using KissU.Modules.Account.Application.Contracts;
-using KissU.Modules.Account.Application.Contracts.Models;
-using KissU.Modules.Account.Application.Contracts.Settings;
+using KissU.Modules.Identity.Application.Contracts;
+using KissU.Modules.Identity.Application.Contracts.Account;
+using KissU.Modules.Identity.Application.Contracts.Settings;
 using KissU.Modules.Identity.Domain.Shared;
 using Microsoft.AspNetCore.Mvc;
 using Volo.Abp;

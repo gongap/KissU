@@ -1,6 +1,5 @@
-﻿using KissU.Modules.Account.Application.Contracts;
-using KissU.Modules.Account.Application.Contracts.Localization;
-using KissU.Modules.Identity.Application.Contracts;
+﻿using KissU.Modules.Identity.Application.Contracts;
+using KissU.Modules.Identity.Application.Contracts.Localization;
 using KissU.Modules.Identity.AspNetCore;
 using Localization.Resources.AbpUi;
 using Microsoft.AspNetCore.Identity;

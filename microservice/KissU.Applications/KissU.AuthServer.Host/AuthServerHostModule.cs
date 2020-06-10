@@ -1,5 +1,4 @@
 using KissU.AuthServer.Host.EntityFrameworkCore;
-using KissU.Modules.Account.Application;
 using KissU.Modules.Account.Web.IdentityServer;
 using KissU.Modules.AuditLogging.EntityFrameworkCore.EntityFrameworkCore;
 using KissU.Modules.Identity.Application;

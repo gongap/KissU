@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using KissU.Modules.Account.Application.Contracts.Localization;
+using KissU.Modules.Identity.Application.Contracts.Localization;
 using Localization.Resources.AbpUi;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Localization;

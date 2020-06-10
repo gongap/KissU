@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Volo.Abp.Auditing;
 
-namespace KissU.Modules.Account.Application.Contracts.Models
+namespace KissU.Modules.Identity.Application.Contracts.Account
 {
     public class UserLoginInfo
     {

@@ -1,7 +1,7 @@
 ﻿using KissU.Abp.Autofac;
-using KissU.Modules.Account.Application.Contracts.Localization;
-using KissU.Modules.Account.Application.Settings;
 using KissU.Modules.Identity.Application;
+using KissU.Modules.Identity.Application.Contracts.Localization;
+using KissU.Modules.Identity.Application.Settings;
 using KissU.Modules.Identity.DbMigrations.EntityFrameworkCore;
 using KissU.Modules.Identity.Domain;
 using Localization.Resources.AbpUi;

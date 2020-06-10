@@ -1,4 +1,4 @@
-﻿using KissU.Modules.Account.Application.Contracts.Localization;
+﻿using KissU.Modules.Identity.Application.Contracts.Localization;
 using KissU.Modules.Identity.Domain.Shared;
 using KissU.Modules.Users.Abstractions;
 using Volo.Abp.Application;

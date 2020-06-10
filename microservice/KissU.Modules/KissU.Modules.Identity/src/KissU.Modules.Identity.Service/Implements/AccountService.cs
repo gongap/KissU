@@ -1,12 +1,11 @@
 ﻿using System.Threading.Tasks;
 using KissU.Dependency;
-using KissU.Modules.Account.Application.Contracts;
-using KissU.Modules.Account.Application.Contracts.Models;
-using KissU.Modules.Account.Service.Contracts;
 using KissU.Modules.Identity.Application.Contracts;
+using KissU.Modules.Identity.Application.Contracts.Account;
+using KissU.Modules.Identity.Service.Contracts;
 using KissU.Surging.ProxyGenerator;
 
-namespace KissU.Modules.Account.Service.Implements
+namespace KissU.Modules.Identity.Service.Implements
 {
     [ModuleName("Account")]
     public class AccountService : ProxyServiceBase, IAccountService
