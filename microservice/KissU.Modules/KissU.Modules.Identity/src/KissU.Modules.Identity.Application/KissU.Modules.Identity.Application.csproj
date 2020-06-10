@@ -11,6 +11,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Text.Encodings.Web" Version="4.7.0" />
+    <PackageReference Include="Volo.Abp.UI.Navigation" Version="2.8.0" />
     <PackageReference Include="Volo.Abp.AutoMapper" Version="2.8.0" />
   </ItemGroup>
 
