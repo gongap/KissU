@@ -15,14 +15,14 @@ namespace KissU.Modules.SampleA.Service.EventHandlers
     [QueueConsumer("UserLogoutDateChangeHandler")]
     public class UserLogoutDataChangeHandler : IIntegrationEventHandler<LogoutEvent>
     {
-        private readonly IAccountService _accountService;
+        private readonly IUserService _userService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UserLogoutDataChangeHandler" /> class.
         /// </summary>
         public UserLogoutDataChangeHandler()
         {
-            _accountService = ServiceLocator.GetService<IAccountService>("Account");
+            _userService = ServiceLocator.GetService<IUserService>("User");
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace KissU.Modules.SampleA.Service.EventHandlers
         public async Task Handle(LogoutEvent @event)
         {
             Console.WriteLine("消费1。");
-            await _accountService.Update(int.Parse(@event.UserId), new UserModel());
+            await _userService.Update(int.Parse(@event.UserId), new UserModel());
             Console.WriteLine("消费1失败。");
             throw new Exception();
         }

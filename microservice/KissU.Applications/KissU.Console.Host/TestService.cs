@@ -23,10 +23,10 @@ namespace KissU.Console.Host
         {
             var sw = new Stopwatch();
             sw.Start();
-            var userProxy = ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy<IAccountService>("User");
+            var userProxy = ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy<IUserService>("User");
             ServiceResolver.Current.Register("User", userProxy);
             var service = ServiceLocator.GetService<IServiceProxyFactory>();
-            userProxy = ServiceResolver.Current.GetService<IAccountService>("User");
+            userProxy = ServiceResolver.Current.GetService<IUserService>("User");
             sw.Stop();
             System.Console.WriteLine($"代理所花{sw.ElapsedMilliseconds}ms");
             ThreadPool.SetMinThreads(100, 100);
@@ -36,9 +36,9 @@ namespace KissU.Console.Host
                     await Test(userProxy, connectionCount);
             });
         }
-        public async Task Test(IAccountService accountProxy, int connectionCount)
+        public async Task Test(IUserService userProxy, int connectionCount)
         {
-            var a = await accountProxy.GetDictionary();
+            var a = await userProxy.GetDictionary();
             IncreaseSuccessConnection(connectionCount);
         }
 
@@ -67,7 +67,7 @@ namespace KissU.Console.Host
             {
                 RpcContext.GetContext().SetAttachment("xid", 124);
 
-                var userProxy = serviceProxyFactory.CreateProxy<IAccountService>("Account");
+                var userProxy = serviceProxyFactory.CreateProxy<IUserService>("User");
                 var asyncProxy = serviceProxyFactory.CreateProxy<IAsyncService>();
                 var result = await asyncProxy.AddAsync(1, 2);
                 var user = userProxy.GetUser(new UserModel
@@ -124,7 +124,7 @@ namespace KissU.Console.Host
 
         public void TestRabbitMq(IServiceProxyFactory serviceProxyFactory)
         {
-            serviceProxyFactory.CreateProxy<IAccountService>("User").PublishThroughEventBusAsync(new UserEvent
+            serviceProxyFactory.CreateProxy<IUserService>("User").PublishThroughEventBusAsync(new UserEvent
             {
                 Age = 18,
                 Name = "gongap",
@@ -144,7 +144,7 @@ namespace KissU.Console.Host
                 UserId = 1,
                 Sex = Sex.Woman
             });
-            var path = "api/account/getuser";
+            var path = "api/user/getuser";
             var serviceKey = "User";
 
             var userProxy = serviceProxyProvider.Invoke<UserModel>(model, path, serviceKey);

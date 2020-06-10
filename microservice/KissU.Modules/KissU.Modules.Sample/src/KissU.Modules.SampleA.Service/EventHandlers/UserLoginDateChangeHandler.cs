@@ -16,14 +16,14 @@ namespace KissU.Modules.SampleA.Service.EventHandlers
     [QueueConsumer("UserLoginDateChangeHandler", QueueConsumerMode.Normal, QueueConsumerMode.Fail)]
     public class UserLoginDateChangeHandler : BaseIntegrationEventHandler<UserEvent>
     {
-        private readonly IAccountService _accountService;
+        private readonly IUserService _userService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UserLoginDateChangeHandler" /> class.
         /// </summary>
         public UserLoginDateChangeHandler()
         {
-            _accountService = ServiceLocator.GetService<IAccountService>("Account");
+            _userService = ServiceLocator.GetService<IUserService>("User");
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace KissU.Modules.SampleA.Service.EventHandlers
         public override async Task Handle(UserEvent @event)
         {
             Console.WriteLine("消费1。");
-            await _accountService.Update(@event.UserId, new UserModel
+            await _userService.Update(@event.UserId, new UserModel
             {
                 Age = @event.Age,
                 Name = @event.Name,

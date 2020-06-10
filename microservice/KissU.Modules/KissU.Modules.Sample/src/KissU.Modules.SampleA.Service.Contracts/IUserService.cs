@@ -27,7 +27,7 @@ namespace KissU.Modules.SampleA.Service.Contracts
     //[ServiceBundle("api/{Service}")]
     //[ServiceBundle("api/{Service}/{Method}/test")]
     //[ServiceBundle("api/{Service}/{Method}/test",false)]
-    public interface IAccountService : IServiceKey
+    public interface IUserService : IServiceKey
     {
         /// <summary>
         /// 用戶授权

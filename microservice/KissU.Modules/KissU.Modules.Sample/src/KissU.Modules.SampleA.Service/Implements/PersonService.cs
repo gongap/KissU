@@ -17,7 +17,7 @@ using static ThriftCore.Calculator;
 namespace KissU.Modules.SampleA.Service.Implements
 {
     [ModuleName("Person")]
-    public class PersonService : ProxyServiceBase, IAccountService
+    public class PersonService : ProxyServiceBase, IUserService
     {
         #region Implementation of IUserService
         private readonly UserRepository _repository;
@@ -28,7 +28,7 @@ namespace KissU.Modules.SampleA.Service.Implements
 
         public Task<string> GetUserName(int id)
         {
-            return GetService<IAccountService>("User").GetUserName(id);
+            return GetService<IUserService>("User").GetUserName(id);
         }
 
         public Task<bool> Exists(int id)
