@@ -17,7 +17,7 @@ namespace KissU.Modules.Identity.Domain
         {
             return IdentityDataSeeder.SeedAsync(
                 context["AdminEmail"] as string ?? "admin@abp.io",
-                context["AdminPassword"] as string ?? "1q2w3E*",
+                context["AdminPassword"] as string ?? "adminP@ss123",
                 context.TenantId
             );
         }

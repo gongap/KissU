@@ -24,16 +24,12 @@
     <EmbeddedResource Include="Pages\**\*.cshtml" />
     <EmbeddedResource Include="Pages\**\*.js" />
     <EmbeddedResource Include="Pages\**\*.css" />
-    <Compile Remove="Areas\**" />
-    <Content Remove="Areas\**" />
     <Content Remove="Modules\**\*.cshtml" />
     <Content Remove="Modules\**\*.js" />
     <Content Remove="Modules\**\*.css" />
     <Content Remove="Pages\**\*.cshtml" />
     <Content Remove="Pages\**\*.js" />
     <Content Remove="Pages\**\*.css" />
-    <EmbeddedResource Remove="Areas\**" />
-    <None Remove="Areas\**" />
   </ItemGroup>
 
   <ItemGroup>

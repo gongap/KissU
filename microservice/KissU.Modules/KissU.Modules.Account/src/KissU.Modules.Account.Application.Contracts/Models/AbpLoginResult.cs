@@ -1,4 +1,4 @@
-﻿namespace KissU.Modules.Account.Web.Areas.Account.Controllers.Models
+﻿namespace KissU.Modules.Account.Application.Contracts.Models
 {
     public class AbpLoginResult
     {

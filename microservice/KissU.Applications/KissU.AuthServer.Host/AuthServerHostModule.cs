@@ -30,7 +30,7 @@ namespace KissU.AuthServer.Host
 {
     [DependsOn(
         typeof(AbpAutofacModule),
-        typeof(AbpEventBusRabbitMqModule),
+        //typeof(AbpEventBusRabbitMqModule),
         typeof(AbpPermissionManagementEntityFrameworkCoreModule),
         typeof(AbpAuditLoggingEntityFrameworkCoreModule),
         typeof(AbpSettingManagementEntityFrameworkCoreModule),
@@ -72,21 +72,20 @@ namespace KissU.AuthServer.Host
                 options.Languages.Add(new LanguageInfo("en", "en", "English"));
             });
 
-            context.Services.AddStackExchangeRedisCache(options =>
-            {
-                options.Configuration = configuration["Redis:Configuration"];
-            });
-
             Configure<AbpAuditingOptions>(options =>
             {
                 options.IsEnabledForGetRequests = true;
                 options.ApplicationName = "AuthServer";
             });
 
+            //context.Services.AddStackExchangeRedisCache(options =>
+            //{
+            //    options.Configuration = configuration["Redis:Configuration"];
+            //});
+
             //TODO: ConnectionMultiplexer.Connect call has problem since redis may not be ready when this service has started!
-            var redis = ConnectionMultiplexer.Connect(configuration["Redis:Configuration"]);
-            context.Services.AddDataProtection()
-                .PersistKeysToStackExchangeRedis(redis, "MsDemo-DataProtection-Keys");
+            //var redis = ConnectionMultiplexer.Connect(configuration["Redis:Configuration"]);
+            //context.Services.AddDataProtection().PersistKeysToStackExchangeRedis(redis, "MsDemo-DataProtection-Keys");
         }
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
@@ -102,6 +101,7 @@ namespace KissU.AuthServer.Host
                 app.UseMultiTenancy();
             }
             app.UseIdentityServer();
+            app.UseAuthorization();
             app.UseAuditing();
             app.UseConfiguredEndpoints();
 
