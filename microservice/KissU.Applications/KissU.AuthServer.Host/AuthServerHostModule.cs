@@ -1,7 +1,7 @@
 using KissU.AuthServer.Host.EntityFrameworkCore;
+using KissU.Modules.Account.Application;
 using KissU.Modules.Account.Web.IdentityServer;
 using KissU.Modules.AuditLogging.EntityFrameworkCore.EntityFrameworkCore;
-using KissU.Modules.Identity.Application;
 using KissU.Modules.Identity.Application.Contracts;
 using KissU.Modules.Identity.EntityFrameworkCore;
 using KissU.Modules.IdentityServer.EntityFrameworkCore.EntityFrameworkCore;
@@ -36,7 +36,7 @@ namespace KissU.AuthServer.Host
         typeof(AbpSettingManagementEntityFrameworkCoreModule),
         typeof(AbpIdentityEntityFrameworkCoreModule),
         typeof(AbpIdentityApplicationContractsModule),
-        typeof(AbpIdentityApplicationModule),
+        typeof(AbpAccountApplicationModule),
         typeof(AbpIdentityServerEntityFrameworkCoreModule),
         typeof(AbpEntityFrameworkCoreSqlServerModule),
         typeof(AbpAccountWebIdentityServerModule),

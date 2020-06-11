@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using KissU.Modules.Identity.Application.Contracts.Localization;
+using KissU.Modules.Account.Application.Contracts.Localization;
 using KissU.Modules.Identity.Domain;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

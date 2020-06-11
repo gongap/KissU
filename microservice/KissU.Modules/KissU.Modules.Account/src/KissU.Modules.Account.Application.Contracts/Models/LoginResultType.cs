@@ -1,4 +1,4 @@
-﻿namespace KissU.Modules.Identity.Application.Contracts.Account
+﻿namespace KissU.Modules.Account.Application.Contracts.Models
 {
     public enum LoginResultType : byte
     {

@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using KissU.Modules.Identity.Application.Contracts.Settings;
+using KissU.Modules.Account.Application.Contracts.Settings;
 using KissU.Modules.Identity.Domain.Shared;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;

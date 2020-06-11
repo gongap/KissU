@@ -1,4 +1,4 @@
-﻿using KissU.Modules.Identity.Application.Contracts.Localization;
+﻿using KissU.Modules.Account.Application.Contracts.Localization;
 using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.AspNetCore.Mvc.Razor.Internal;
 using Volo.Abp.AspNetCore.Mvc.UI.RazorPages;

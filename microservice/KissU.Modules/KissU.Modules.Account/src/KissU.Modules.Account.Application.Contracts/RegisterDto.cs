@@ -2,7 +2,7 @@
 using KissU.Modules.Identity.Domain.Shared;
 using Volo.Abp.Auditing;
 
-namespace KissU.Modules.Identity.Application.Contracts.Account
+namespace KissU.Modules.Account.Application.Contracts
 {
     public class RegisterDto
     {

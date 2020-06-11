@@ -1,9 +1,9 @@
-﻿using KissU.Modules.Identity.Application.Contracts.Localization;
-using KissU.Modules.Identity.Application.Contracts.Settings;
+﻿using KissU.Modules.Account.Application.Contracts.Localization;
+using KissU.Modules.Account.Application.Contracts.Settings;
 using Volo.Abp.Localization;
 using Volo.Abp.Settings;
 
-namespace KissU.Modules.Identity.Application.Settings
+namespace KissU.Modules.Account.Application.Settings
 {
     public class AccountSettingDefinitionProvider : SettingDefinitionProvider
     {

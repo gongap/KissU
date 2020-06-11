@@ -1,4 +1,4 @@
-﻿namespace KissU.Modules.Identity.Application.Contracts.Settings
+﻿namespace KissU.Modules.Account.Application.Contracts.Settings
 {
     public class AccountSettingNames
     {

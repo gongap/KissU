@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
+using KissU.Modules.Account.Application.Contracts;
+using KissU.Modules.Account.Application.Contracts.Models;
+using KissU.Modules.Account.Application.Contracts.Settings;
 using KissU.Modules.Identity.Application.Contracts;
-using KissU.Modules.Identity.Application.Contracts.Account;
-using KissU.Modules.Identity.Application.Contracts.Settings;
 using KissU.Modules.Identity.Domain;
 using KissU.Modules.Identity.Domain.Extensions;
 using Microsoft.AspNetCore.Identity;
@@ -10,10 +11,10 @@ using Volo.Abp;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Settings;
 using Volo.Abp.Validation;
-using UserLoginInfo = KissU.Modules.Identity.Application.Contracts.Account.UserLoginInfo;
+using UserLoginInfo = KissU.Modules.Account.Application.Contracts.Models.UserLoginInfo;
 using IdentityUser = KissU.Modules.Identity.Domain.IdentityUser;
 
-namespace KissU.Modules.Identity.Application
+namespace KissU.Modules.Account.Application
 {
     public class AccountAppService : ApplicationService, IAccountAppService
     {

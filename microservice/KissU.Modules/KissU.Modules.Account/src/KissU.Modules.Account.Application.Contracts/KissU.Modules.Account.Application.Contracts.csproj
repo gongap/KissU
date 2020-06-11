@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\..\common.props" />
+  <Import Project="..\..\..\..\..\configureawait.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\Resources\*.json" />
+    <Content Remove="Localization\Resources\*.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\KissU.Modules.Identity\src\KissU.Modules.Identity.Application.Contracts\KissU.Modules.Identity.Application.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

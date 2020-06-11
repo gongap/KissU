@@ -1,13 +1,14 @@
 ﻿using System.Threading.Tasks;
 using KissU.Dependency;
+using KissU.Modules.Account.Application.Contracts;
+using KissU.Modules.Account.Application.Contracts.Models;
+using KissU.Modules.Account.Service.Contracts;
 using KissU.Modules.Identity.Application.Contracts;
-using KissU.Modules.Identity.Application.Contracts.Account;
-using KissU.Modules.Identity.Service.Contracts;
 using KissU.Surging.ProxyGenerator;
 
-namespace KissU.Modules.Identity.Service.Implements
+namespace KissU.Modules.Account.Service.Implements
 {
-    [ModuleName("Account")]
+    [ModuleName(AccountRemoteServiceConsts.RemoteServiceName)]
     public class AccountService : ProxyServiceBase, IAccountService
     {
         private readonly IAccountAppService _accountAppService;
