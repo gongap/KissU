@@ -32,9 +32,9 @@ namespace KissU.Surging.Apm.Skywalking
         /// Inject dependent third-party components
         /// </summary>
         /// <param name="builder"></param>
-        protected override void RegisterBuilder(ContainerBuilderWrapper builder)
+        protected override void ConfigureContainer(ContainerBuilderWrapper builder)
         {
-            base.RegisterBuilder(builder);
+            base.ConfigureContainer(builder);
             builder.RegisterType<AsyncQueueSegmentDispatcher>().As<ISegmentDispatcher>().SingleInstance();
             builder.RegisterType<RegisterService>().As<IExecutionService>().SingleInstance();
             builder.RegisterType<PingService>().As<IExecutionService>().SingleInstance();

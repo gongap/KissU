@@ -33,13 +33,13 @@ namespace KissU.Surging.Protocol.WS
         /// Inject dependent third-party components
         /// </summary>
         /// <param name="builder">构建器包装</param>
-        protected override void RegisterBuilder(ContainerBuilderWrapper builder)
+        protected override void ConfigureContainer(ContainerBuilderWrapper builder)
         {
             var options = new WebSocketOptions();
             var section = AppConfig.GetSection("WebSocket");
             if (section.Exists())
                 options = section.Get<WebSocketOptions>();
-            base.RegisterBuilder(builder);
+            base.ConfigureContainer(builder);
             builder.Register(provider =>
             {
                 return new DefaultWSServiceEntryProvider(

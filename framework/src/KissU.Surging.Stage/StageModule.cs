@@ -120,7 +120,7 @@ namespace KissU.Surging.Stage
         /// Inject dependent third-party components
         /// </summary>
         /// <param name="builder">The builder.</param>
-        protected override void RegisterBuilder(ContainerBuilderWrapper builder)
+        protected override void ConfigureContainer(ContainerBuilderWrapper builder)
         {
             CPlatform.AppConfig.ServerOptions.DisableServiceRegistration = true;
             var section = CPlatform.AppConfig.GetSection("Stage");

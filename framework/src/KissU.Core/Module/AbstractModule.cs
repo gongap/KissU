@@ -97,7 +97,7 @@ namespace KissU.Module
                 if (Enable)
                 {
                     // 注册创建容器
-                    RegisterBuilder(Builder);
+                    ConfigureContainer(Builder);
 
                     // 注册组件
                     RegisterComponents(Builder);
@@ -113,7 +113,7 @@ namespace KissU.Module
         /// 注册服务
         /// </summary>
         /// <param name="builder">构建器包装</param>
-        protected virtual void RegisterBuilder(ContainerBuilderWrapper builder)
+        protected virtual void ConfigureContainer(ContainerBuilderWrapper builder)
         {
         }
 

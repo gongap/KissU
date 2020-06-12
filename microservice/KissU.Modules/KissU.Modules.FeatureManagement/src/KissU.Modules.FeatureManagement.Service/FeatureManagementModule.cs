@@ -25,7 +25,7 @@ namespace KissU.Modules.FeatureManagement.Service
         /// 注册第三方组件
         /// </summary>
         /// <param name="builder">容器构建器</param>
-        protected override void RegisterBuilder(ContainerBuilderWrapper builder)
+        protected override void ConfigureContainer(ContainerBuilderWrapper builder)
         {
             var services = new ServiceCollection();
             _application = AbpApplicationFactory.Create<AbpFeatureManagementModule>(services);

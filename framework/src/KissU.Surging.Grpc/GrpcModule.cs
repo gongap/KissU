@@ -31,7 +31,7 @@ namespace KissU.Surging.Grpc
         /// 注册服务
         /// </summary>
         /// <param name="builder">构建器包装</param>
-        protected override void RegisterBuilder(ContainerBuilderWrapper builder)
+        protected override void ConfigureContainer(ContainerBuilderWrapper builder)
         {
             builder.Register(provider =>
             {

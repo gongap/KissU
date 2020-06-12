@@ -25,9 +25,9 @@ namespace KissU.Surging.Configuration.Apollo
         /// Inject dependent third-party components
         /// </summary>
         /// <param name="builder">构建器包装</param>
-        protected override void RegisterBuilder(ContainerBuilderWrapper builder)
+        protected override void ConfigureContainer(ContainerBuilderWrapper builder)
         {
-            base.RegisterBuilder(builder);
+            base.ConfigureContainer(builder);
             builder.RegisterType(typeof(ConfigurationFactory)).As(typeof(IConfigurationFactory));
         }
     }

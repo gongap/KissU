@@ -43,9 +43,9 @@ namespace KissU.Surging.Consul
         /// Inject dependent third-party components
         /// </summary>
         /// <param name="builder">构建器包装</param>
-        protected override void RegisterBuilder(ContainerBuilderWrapper builder)
+        protected override void ConfigureContainer(ContainerBuilderWrapper builder)
         {
-            base.RegisterBuilder(builder);
+            base.ConfigureContainer(builder);
             var configInfo = new ConfigInfo(null);
             UseConsulAddressSelector(builder)
                 .UseHealthCheck(builder)

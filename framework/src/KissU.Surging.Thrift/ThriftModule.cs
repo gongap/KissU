@@ -24,9 +24,9 @@ namespace KissU.Surging.Thrift
         /// Inject dependent third-party components
         /// </summary>
         /// <param name="builder"></param>
-        protected override void RegisterBuilder(ContainerBuilderWrapper builder)
+        protected override void ConfigureContainer(ContainerBuilderWrapper builder)
         {
-            base.RegisterBuilder(builder);
+            base.ConfigureContainer(builder);
             builder.Register(provider =>
             {
                 IServiceExecutor serviceExecutor = null;

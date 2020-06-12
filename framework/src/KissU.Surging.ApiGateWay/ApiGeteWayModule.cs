@@ -34,7 +34,7 @@ namespace KissU.Surging.ApiGateWay
         /// 注册服务
         /// </summary>
         /// <param name="builder">构建器包装</param>
-        protected override void RegisterBuilder(ContainerBuilderWrapper builder)
+        protected override void ConfigureContainer(ContainerBuilderWrapper builder)
         {
             builder.RegisterType<FaultTolerantProvider>().As<IFaultTolerantProvider>().SingleInstance();
             builder.RegisterType<DefaultHealthCheckService>().As<IHealthCheckService>().SingleInstance();
