@@ -31,7 +31,7 @@ namespace KissU.Surging.Serilog
                 .CreateLogger();
 
             serviceProvider.GetInstances<ILoggerFactory>().AddSerilog(logger);
-            serviceProvider.GetInstances<IApplicationLifetime>().ApplicationStopped.Register(Log.CloseAndFlush);
+            serviceProvider.GetInstances<IHostApplicationLifetime>().ApplicationStopped.Register(Log.CloseAndFlush);
         }
     }
 }

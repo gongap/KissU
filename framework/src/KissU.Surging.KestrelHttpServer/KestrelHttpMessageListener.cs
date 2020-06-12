@@ -5,7 +5,6 @@ using System.Net;
 using System.Threading.Tasks;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-
 using KissU.Dependency;
 using KissU.Module;
 using KissU.Serialization;
@@ -16,6 +15,7 @@ using KissU.Surging.CPlatform.Engines;
 using KissU.Surging.CPlatform.Routing;
 using KissU.Surging.KestrelHttpServer.Extensions;
 using KissU.Surging.KestrelHttpServer.Filters;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
@@ -90,8 +90,7 @@ namespace KissU.Surging.KestrelHttpServer
                     address = IPAddress.Any;
                 }
 
-                var hostBuilder = new WebHostBuilder()
-                    .UseContentRoot(Directory.GetCurrentDirectory())
+                var hostBuilder = WebHost.CreateDefaultBuilder()
                     .UseKestrel((context, options) =>
                     {
                         options.Limits.MinRequestBodyDataRate = null;
@@ -106,8 +105,7 @@ namespace KissU.Surging.KestrelHttpServer
                     .ConfigureServices(ConfigureServices)
                     .ConfigureLogging(logger =>
                     {
-                        logger.AddConfiguration(
-                            AppConfig.GetSection("Logging"));
+                        logger.AddConfiguration(AppConfig.GetSection("Logging"));
                     })
                     .Configure(AppResolve);
 

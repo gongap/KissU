@@ -26896,3 +26896,5 @@ Configure your application startup by adding app.UseAuthorization() inside the c
 2020-06-11 17:16:32.344 +08:00 [DBG] Added 0 entity changes to the current audit log
 2020-06-11 17:16:32.385 +08:00 [DBG] Added 0 entity changes to the current audit log
 2020-06-11 17:16:32.392 +08:00 [INF] Request finished in 1071.0335ms 200 application/javascript
+2020-06-11 17:19:32.370 +08:00 [DBG] Stopped background worker: KissU.Modules.IdentityServer.Domain.Tokens.TokenCleanupBackgroundWorker
+2020-06-11 17:19:32.372 +08:00 [INF] Application is shutting down...
