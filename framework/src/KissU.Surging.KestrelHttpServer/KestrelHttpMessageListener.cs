@@ -4,7 +4,7 @@ using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 using Autofac;
-using Autofac.Extensions.DependencyInjection;
+using KissU.Abp.Autofac;
 using KissU.Dependency;
 using KissU.Module;
 using KissU.Serialization;
@@ -15,11 +15,11 @@ using KissU.Surging.CPlatform.Engines;
 using KissU.Surging.CPlatform.Routing;
 using KissU.Surging.KestrelHttpServer.Extensions;
 using KissU.Surging.KestrelHttpServer.Filters;
-using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 namespace KissU.Surging.KestrelHttpServer
@@ -40,8 +40,8 @@ namespace KissU.Surging.KestrelHttpServer
         private readonly ISerializer<string> _serializer;
         private readonly IServiceRouteProvider _serviceRouteProvider;
         private readonly DiagnosticListener _diagnosticListener;
-        private IWebHost _host;
-        private bool _isCompleted;
+        private IHost _host;
+        private readonly bool _isCompleted;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="KestrelHttpMessageListener" /> class.
@@ -90,27 +90,38 @@ namespace KissU.Surging.KestrelHttpServer
                     address = IPAddress.Any;
                 }
 
-                var hostBuilder = WebHost.CreateDefaultBuilder()
-                    .UseKestrel((context, options) =>
+                var hostBuilder = Host.CreateDefaultBuilder()
+                    .ConfigureWebHostDefaults(webBuilder =>
                     {
-                        options.Limits.MinRequestBodyDataRate = null;
-                        options.Limits.MinResponseDataRate = null;
-                        options.Limits.MaxRequestBodySize = null;
-                        options.Limits.KeepAliveTimeout = TimeSpan.FromMinutes(30);
-                        if (port != null && port > 0)
-                            options.Listen(address, port.Value,
-                                listenOptions => { listenOptions.Protocols = HttpProtocols.Http1AndHttp2; });
-                        ConfigureHost(context, options, address);
-                    })
-                    .ConfigureServices(ConfigureServices)
-                    .ConfigureLogging(logger =>
-                    {
-                        logger.AddConfiguration(AppConfig.GetSection("Logging"));
-                    })
-                    .Configure(AppResolve);
+                        webBuilder.UseKestrel((context, options) =>
+                            {
+                                options.Limits.MinRequestBodyDataRate = null;
+                                options.Limits.MinResponseDataRate = null;
+                                options.Limits.MaxRequestBodySize = null;
+                                options.Limits.KeepAliveTimeout = TimeSpan.FromMinutes(30);
+                                if (port != null && port > 0)
+                                {
+                                    options.Listen(address, port.Value, listenOptions =>
+                                    {
+                                        listenOptions.Protocols = HttpProtocols.Http1AndHttp2;
+                                    });
+                                }
 
-                if (Directory.Exists(AppConfig.ServerOptions.WebRootPath))
-                    hostBuilder = hostBuilder.UseWebRoot(AppConfig.ServerOptions.WebRootPath);
+                                ConfigureHost(context, options, address);
+                            })
+                            .ConfigureServices(ConfigureServices)
+                            .ConfigureLogging(logger =>
+                            {
+                                logger.AddConfiguration(AppConfig.GetSection("Logging"));
+                            })
+                            .Configure(AppResolve);
+
+                        if (Directory.Exists(AppConfig.ServerOptions.WebRootPath))
+                        {
+                            webBuilder.UseWebRoot(AppConfig.ServerOptions.WebRootPath);
+                        }
+                    });
+
                 _host = hostBuilder.Build();
                 _lifetime.ServiceEngineStarted.Register(async () => { await _host.RunAsync(); });
             }
