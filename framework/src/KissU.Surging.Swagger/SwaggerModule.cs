@@ -38,7 +38,7 @@ namespace KissU.Surging.Swagger
         /// Initializes the specified context.
         /// </summary>
         /// <param name="context">The context.</param>
-        public override void Initialize(ApplicationInitializationContext context)
+        public override void Configure(ApplicationInitializationContext context)
         {
             var info = AppConfig.SwaggerConfig.Info == null
                 ? AppConfig.SwaggerOptions
@@ -59,7 +59,7 @@ namespace KissU.Surging.Swagger
         /// Registers the builder.
         /// </summary>
         /// <param name="context">The context.</param>
-        public override void RegisterBuilder(ConfigurationContext context)
+        public override void ConfigureServices(ServiceConfigurationContext context)
         {
             var serviceCollection = context.Services;
             var info = AppConfig.SwaggerConfig.Info == null

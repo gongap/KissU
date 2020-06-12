@@ -38,7 +38,7 @@ namespace KissU.Surging.KestrelHttpServer
         /// Initializes the specified builder.
         /// </summary>
         /// <param name="builder">The builder.</param>
-        public virtual void Initialize(ApplicationInitializationContext builder)
+        public virtual void Configure(ApplicationInitializationContext builder)
         {
             RestContext.GetContext().Initialize(builder.Builder.ApplicationServices);
         }
@@ -47,7 +47,7 @@ namespace KissU.Surging.KestrelHttpServer
         /// Registers the builder.
         /// </summary>
         /// <param name="context">The context.</param>
-        public virtual void RegisterBuilder(WebHostContext context)
+        public virtual void ConfigureWebHost(WebHostContext context)
         {
         }
 
@@ -55,7 +55,7 @@ namespace KissU.Surging.KestrelHttpServer
         /// Registers the builder.
         /// </summary>
         /// <param name="context">The context.</param>
-        public virtual void RegisterBuilder(ConfigurationContext context)
+        public virtual void ConfigureServices(ServiceConfigurationContext context)
         {
             context.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             context.Services.AddFilters(typeof(HttpRequestFilterAttribute));

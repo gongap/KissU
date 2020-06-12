@@ -36,7 +36,7 @@ namespace KissU.Surging.Stage
         /// Registers the builder.
         /// </summary>
         /// <param name="context">The context.</param>
-        public override void RegisterBuilder(WebHostContext context)
+        public override void ConfigureWebHost(WebHostContext context)
         {
             _listener.Listen(context);
         }
@@ -45,7 +45,7 @@ namespace KissU.Surging.Stage
         /// Initializes the specified context.
         /// </summary>
         /// <param name="context">The context.</param>
-        public override void Initialize(ApplicationInitializationContext context)
+        public override void Configure(ApplicationInitializationContext context)
         {
             var policy = AppConfig.Options.AccessPolicy;
             if (policy != null)
@@ -70,7 +70,7 @@ namespace KissU.Surging.Stage
         /// Registers the builder.
         /// </summary>
         /// <param name="context">The context.</param>
-        public override void RegisterBuilder(ConfigurationContext context)
+        public override void ConfigureServices(ServiceConfigurationContext context)
         {
             var apiConfig = AppConfig.Options.ApiGetWay;
             if (apiConfig != null)

@@ -15,13 +15,17 @@ namespace KissU.Module
         /// <param name="modules">模块集合</param>
         /// <param name="virtualPaths">虚拟目录集合</param>
         /// <param name="serviceProvoider">平台容器</param>
-        public AppModuleContext(List<AbstractModule> modules, string[] virtualPaths,
-            CPlatformContainer serviceProvoider)
+        public AppModuleContext(List<AbstractModule> modules, string[] virtualPaths, CPlatformContainer serviceProvoider)
         {
+            ServiceProvoider = Check.NotNull(serviceProvoider, nameof(serviceProvoider));
             Modules = Check.NotNull(modules, nameof(modules));
             VirtualPaths = Check.NotNull(virtualPaths, nameof(virtualPaths));
-            ServiceProvoider = Check.NotNull(serviceProvoider, nameof(serviceProvoider));
         }
+
+        /// <summary>
+        /// 平台容器
+        /// </summary>
+        public CPlatformContainer ServiceProvoider { get; }
 
         /// <summary>
         /// 模块集合
@@ -32,10 +36,5 @@ namespace KissU.Module
         /// 虚拟目录集合
         /// </summary>
         public string[] VirtualPaths { get; }
-
-        /// <summary>
-        /// 平台容器
-        /// </summary>
-        public CPlatformContainer ServiceProvoider { get; }
     }
 }

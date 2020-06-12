@@ -30,7 +30,7 @@ namespace KissU.Surging.Kestrel.Nlog
         /// Registers the builder.
         /// </summary>
         /// <param name="context">The context.</param>
-        public override void RegisterBuilder(WebHostContext context)
+        public override void ConfigureWebHost(WebHostContext context)
         {
         }
 
@@ -38,10 +38,10 @@ namespace KissU.Surging.Kestrel.Nlog
         /// Initializes the specified context.
         /// </summary>
         /// <param name="context">The context.</param>
-        public override void Initialize(ApplicationInitializationContext context)
+        public override void Configure(ApplicationInitializationContext context)
         {
             var serviceProvider = context.Builder.ApplicationServices;
-            base.Initialize(context);
+            base.Configure(context);
             var section = AppConfig.GetSection("Logging");
             nlogConfigFile = EnvironmentHelper.GetEnvironmentVariable(nlogConfigFile);
             LogManager.LoadConfiguration(nlogConfigFile);
@@ -52,7 +52,7 @@ namespace KissU.Surging.Kestrel.Nlog
         /// Registers the builder.
         /// </summary>
         /// <param name="context">The context.</param>
-        public override void RegisterBuilder(ConfigurationContext context)
+        public override void ConfigureServices(ServiceConfigurationContext context)
         {
             context.Services.AddLogging();
         }

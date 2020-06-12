@@ -17,12 +17,12 @@ namespace KissU.Modules.Account.Service
         /// Initializes the specified builder.
         /// </summary>
         /// <param name="builder">The builder.</param>
-        public override void Initialize(Surging.KestrelHttpServer.ApplicationInitializationContext builder)
+        public override void Configure(Surging.KestrelHttpServer.ApplicationInitializationContext builder)
         {
             _application.Initialize(builder.Builder.ApplicationServices);
         }
 
-        public override void RegisterBuilder(ConfigurationContext context)
+        public override void ConfigureServices(ServiceConfigurationContext context)
         {
             _application = context.Services.AddApplication<AbpAccountModule>();
         }

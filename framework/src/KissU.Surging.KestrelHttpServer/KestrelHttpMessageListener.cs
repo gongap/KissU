@@ -81,7 +81,7 @@ namespace KissU.Surging.KestrelHttpServer
         /// </summary>
         /// <param name="address">The address.</param>
         /// <param name="port">The port.</param>
-        public async Task StartAsync(IPAddress address, int? port)
+        public Task StartAsync(IPAddress address, int? port)
         {
             try
             {
@@ -129,6 +129,8 @@ namespace KissU.Surging.KestrelHttpServer
             {
                 _logger.LogError($"http服务主机启动失败，监听地址：{address}:{port}。 ");
             }
+
+            return Task.CompletedTask;
         }
 
         /// <summary>
@@ -151,7 +153,7 @@ namespace KissU.Surging.KestrelHttpServer
             var builder = new ContainerBuilder();
             services.AddMvc()
                 .AddNewtonsoftJson();
-            _moduleProvider.ConfigureServices(new ConfigurationContext(services,
+            _moduleProvider.ConfigureServices(new ServiceConfigurationContext(services,
                 _moduleProvider.Modules,
                 _moduleProvider.VirtualPaths,
                 AppConfig.Configuration));
@@ -164,7 +166,7 @@ namespace KissU.Surging.KestrelHttpServer
             app.UseStaticFiles();
             app.UseRouting();
             app.UseEndpoints(endpoints => { endpoints.MapDefaultControllerRoute(); });
-            _moduleProvider.Initialize(new ApplicationInitializationContext(app, _moduleProvider.Modules,
+            _moduleProvider.Configure(new ApplicationInitializationContext(app, _moduleProvider.Modules,
                 _moduleProvider.VirtualPaths,
                 AppConfig.Configuration));
             app.Run(async context =>

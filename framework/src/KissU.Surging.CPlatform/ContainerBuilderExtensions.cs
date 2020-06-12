@@ -211,12 +211,15 @@ namespace KissU.Surging.CPlatform
         /// <returns>服务构建器</returns>
         public static IServiceBuilder AddServiceRuntime(this IServiceBuilder builder)
         {
-            builder.Services.RegisterType(typeof(DefaultServiceEntryLocate)).As(typeof(IServiceEntryLocate))
-                .SingleInstance();
-            builder.Services.RegisterType(typeof(DefaultServiceExecutor)).As(typeof(IServiceExecutor))
-                .Named<IServiceExecutor>(CommunicationProtocol.Tcp.ToString()).SingleInstance();
+            builder.Services.RegisterType(typeof(DefaultServiceEntryLocate)).As(typeof(IServiceEntryLocate)).SingleInstance();
+            builder.Services.RegisterType(typeof(DefaultServiceExecutor)).As(typeof(IServiceExecutor)).Named<IServiceExecutor>(CommunicationProtocol.Tcp.ToString()).SingleInstance();
 
-            return builder.RegisterServices().RegisterServiceBus().RegisterModules().RegisterInstanceByConstraint().AddRuntime();
+            return builder
+                .RegisterServices()
+                .RegisterServiceBus()
+                .RegisterModules()
+                .RegisterInstanceByConstraint()
+                .AddRuntime();
         }
 
         /// <summary>
