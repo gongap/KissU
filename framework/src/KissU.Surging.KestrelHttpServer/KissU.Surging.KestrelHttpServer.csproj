@@ -22,7 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KissU.Abp.Autofac\KissU.Abp.Autofac.csproj" />
     <ProjectReference Include="..\KissU.Surging.ProxyGenerator\KissU.Surging.ProxyGenerator.csproj" />
   </ItemGroup>
 </Project>

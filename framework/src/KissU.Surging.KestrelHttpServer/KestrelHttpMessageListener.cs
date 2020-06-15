@@ -4,7 +4,7 @@ using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 using Autofac;
-using KissU.Abp.Autofac;
+using Autofac.Extensions.DependencyInjection;
 using KissU.Dependency;
 using KissU.Module;
 using KissU.Serialization;
