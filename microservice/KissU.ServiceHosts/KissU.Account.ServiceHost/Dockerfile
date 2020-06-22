@@ -17,13 +17,13 @@ WORKDIR /src
 # to take advantage of Docker's build cache, to speed up local container builds
 
 COPY . .
-WORKDIR "/src/KissU.Services/KissU.Services.Host"
-RUN dotnet build "KissU.Services.Host.csproj" -c Release -o /app/build
+WORKDIR "/src/KissU.ServiceHosts/KissU.ServiceHosts.Host"
+RUN dotnet build "KissU.ServiceHosts.Host.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "KissU.Services.Host.csproj" -c Release -o /app/publish
+RUN dotnet publish "KissU.ServiceHosts.Host.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "KissU.Services.Host.dll"]
+ENTRYPOINT ["dotnet", "KissU.ServiceHosts.Host.dll"]
