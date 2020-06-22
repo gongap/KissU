@@ -9,12 +9,13 @@
 
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore.SqlServer" Version="2.8.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Abp.Autofac\KissU.Abp.Autofac.csproj" />
     <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.ProxyGenerator\KissU.Surging.ProxyGenerator.csproj" />
-    <ProjectReference Include="..\..\..\KissU.Modules.Identity\src\KissU.Modules.Identity.DbMigrations\KissU.Modules.Identity.DbMigrations.csproj" />
+    <ProjectReference Include="..\..\..\KissU.Modules.Identity\src\KissU.Modules.Identity.EntityFrameworkCore\KissU.Modules.Identity.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\KissU.Modules.Account.Application\KissU.Modules.Account.Application.csproj" />
     <ProjectReference Include="..\KissU.Modules.Account.Service.Contracts\KissU.Modules.Account.Service.Contracts.csproj" />
   </ItemGroup>

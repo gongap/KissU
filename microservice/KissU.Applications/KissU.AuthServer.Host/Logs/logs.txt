@@ -32333,3 +32333,368 @@ Volo.Abp.UserFriendlyException: Given tenant is not available: KISSU
 2020-06-22 13:50:42.135 +08:00 [DBG] Added 0 entity changes to the current audit log
 2020-06-22 13:50:42.137 +08:00 [DBG] Added 0 entity changes to the current audit log
 2020-06-22 13:50:42.141 +08:00 [INF] Request finished in 120.4617ms 200 application/javascript
+2020-06-22 13:52:29.104 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/Account/Register  
+2020-06-22 13:52:29.115 +08:00 [INF] Executing endpoint '/Account/Register'
+2020-06-22 13:52:29.118 +08:00 [INF] Route matched with {page = "/Account/Register", controller = "", area = "", action = ""}. Executing page /Account/Register
+2020-06-22 13:52:29.125 +08:00 [INF] Executing handler method KissU.Modules.Account.Web.Pages.Account.RegisterModel.OnGetAsync - ModelState is "Valid"
+2020-06-22 13:52:29.127 +08:00 [INF] Executed handler method OnGetAsync, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-06-22 13:52:29.171 +08:00 [DBG] Added bundle 'Basic.Global' to the page in 0.44 ms.
+2020-06-22 13:52:29.176 +08:00 [DBG] Added bundle 'Basic.Global' to the page in 0.84 ms.
+2020-06-22 13:52:29.178 +08:00 [INF] Executed page /Account/Register in 57.4209ms
+2020-06-22 13:52:29.182 +08:00 [INF] Executed endpoint '/Account/Register'
+2020-06-22 13:52:29.201 +08:00 [DBG] Added 0 entity changes to the current audit log
+2020-06-22 13:52:29.203 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/Abp/ApplicationConfigurationScript  
+2020-06-22 13:52:29.203 +08:00 [DBG] Added 0 entity changes to the current audit log
+2020-06-22 13:52:29.204 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/Abp/ServiceProxyScript  
+2020-06-22 13:52:29.209 +08:00 [INF] Executing endpoint 'Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc)'
+2020-06-22 13:52:29.209 +08:00 [INF] Request finished in 105.1653ms 200 text/html; charset=utf-8
+2020-06-22 13:52:29.213 +08:00 [INF] Executing endpoint 'Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController.GetAll (Volo.Abp.AspNetCore.Mvc)'
+2020-06-22 13:52:29.218 +08:00 [INF] Route matched with {area = "Abp", action = "Get", controller = "AbpApplicationConfigurationScript", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Get() on controller Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController (Volo.Abp.AspNetCore.Mvc).
+2020-06-22 13:52:29.223 +08:00 [INF] Route matched with {area = "Abp", action = "GetAll", controller = "AbpServiceProxyScript", page = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAll(Volo.Abp.AspNetCore.Mvc.ProxyScripting.ServiceProxyGenerationModel) on controller Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController (Volo.Abp.AspNetCore.Mvc).
+2020-06-22 13:52:29.229 +08:00 [DBG] Executing AbpApplicationConfigurationAppService.GetAsync()...
+2020-06-22 13:52:29.235 +08:00 [INF] Executing ContentResult with HTTP Response ContentType of application/javascript
+2020-06-22 13:52:29.237 +08:00 [INF] Authorization failed.
+2020-06-22 13:52:29.238 +08:00 [INF] Executed action Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController.GetAll (Volo.Abp.AspNetCore.Mvc) in 4.4856ms
+2020-06-22 13:52:29.240 +08:00 [INF] Authorization failed.
+2020-06-22 13:52:29.245 +08:00 [INF] Executed endpoint 'Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController.GetAll (Volo.Abp.AspNetCore.Mvc)'
+2020-06-22 13:52:29.247 +08:00 [INF] Authorization failed.
+2020-06-22 13:52:29.254 +08:00 [INF] Authorization failed.
+2020-06-22 13:52:29.256 +08:00 [INF] Authorization failed.
+2020-06-22 13:52:29.257 +08:00 [DBG] Added 0 entity changes to the current audit log
+2020-06-22 13:52:29.259 +08:00 [INF] Authorization failed.
+2020-06-22 13:52:29.262 +08:00 [DBG] Added 0 entity changes to the current audit log
+2020-06-22 13:52:29.264 +08:00 [INF] Authorization failed.
+2020-06-22 13:52:29.267 +08:00 [INF] Request finished in 62.7718ms 200 application/javascript
+2020-06-22 13:52:29.269 +08:00 [INF] Authorization failed.
+2020-06-22 13:52:29.273 +08:00 [INF] Authorization failed.
+2020-06-22 13:52:29.275 +08:00 [INF] Authorization failed.
+2020-06-22 13:52:29.276 +08:00 [INF] Authorization failed.
+2020-06-22 13:52:29.277 +08:00 [INF] Authorization failed.
+2020-06-22 13:52:29.278 +08:00 [INF] Authorization failed.
+2020-06-22 13:52:29.279 +08:00 [INF] Authorization failed.
+2020-06-22 13:52:29.283 +08:00 [INF] Authorization failed.
+2020-06-22 13:52:29.285 +08:00 [INF] Authorization failed.
+2020-06-22 13:52:29.286 +08:00 [INF] Authorization failed.
+2020-06-22 13:52:29.288 +08:00 [DBG] Executed AbpApplicationConfigurationAppService.GetAsync().
+2020-06-22 13:52:29.289 +08:00 [INF] Executing ContentResult with HTTP Response ContentType of application/javascript
+2020-06-22 13:52:29.290 +08:00 [INF] Executed action Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc) in 63.256ms
+2020-06-22 13:52:29.295 +08:00 [INF] Executed endpoint 'Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc)'
+2020-06-22 13:52:29.305 +08:00 [DBG] Added 0 entity changes to the current audit log
+2020-06-22 13:52:29.307 +08:00 [DBG] Added 0 entity changes to the current audit log
+2020-06-22 13:52:29.309 +08:00 [INF] Request finished in 106.5553ms 200 application/javascript
+2020-06-22 13:52:30.931 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/Abp/MultiTenancy/TenantSwitchModal  
+2020-06-22 13:52:30.935 +08:00 [INF] Executing endpoint '/Abp/MultiTenancy/TenantSwitchModal'
+2020-06-22 13:52:30.939 +08:00 [INF] Route matched with {page = "/Abp/MultiTenancy/TenantSwitchModal", controller = "", area = "", action = ""}. Executing page /Abp/MultiTenancy/TenantSwitchModal
+2020-06-22 13:52:30.944 +08:00 [INF] Executing handler method Pages.Abp.MultiTenancy.TenantSwitchModalModel.OnGetAsync - ModelState is "Valid"
+2020-06-22 13:52:30.946 +08:00 [INF] Executed handler method OnGetAsync, returned result .
+2020-06-22 13:52:30.949 +08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2020-06-22 13:52:30.951 +08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-06-22 13:52:30.958 +08:00 [INF] Executed page /Abp/MultiTenancy/TenantSwitchModal in 14.6011ms
+2020-06-22 13:52:30.962 +08:00 [INF] Executed endpoint '/Abp/MultiTenancy/TenantSwitchModal'
+2020-06-22 13:52:30.972 +08:00 [DBG] Added 0 entity changes to the current audit log
+2020-06-22 13:52:30.974 +08:00 [DBG] Added 0 entity changes to the current audit log
+2020-06-22 13:52:30.976 +08:00 [INF] Request finished in 44.9161ms 200 text/html; charset=utf-8
+2020-06-22 13:52:34.914 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/Account/Login  
+2020-06-22 13:52:34.919 +08:00 [INF] Executing endpoint '/Account/Login'
+2020-06-22 13:52:34.924 +08:00 [INF] Route matched with {page = "/Account/Login", controller = "", area = "", action = ""}. Executing page /Account/Login
+2020-06-22 13:52:34.933 +08:00 [INF] Executing handler method KissU.Modules.Account.Web.Pages.Account.LoginModel.OnGetAsync - ModelState is "Valid"
+2020-06-22 13:52:34.937 +08:00 [INF] Executed handler method OnGetAsync, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-06-22 13:52:34.987 +08:00 [DBG] Added bundle 'Basic.Global' to the page in 0.47 ms.
+2020-06-22 13:52:34.994 +08:00 [DBG] Added bundle 'Basic.Global' to the page in 1.13 ms.
+2020-06-22 13:52:34.999 +08:00 [INF] Executed page /Account/Login in 70.124ms
+2020-06-22 13:52:35.001 +08:00 [INF] Executed endpoint '/Account/Login'
+2020-06-22 13:52:35.014 +08:00 [DBG] Added 0 entity changes to the current audit log
+2020-06-22 13:52:35.015 +08:00 [DBG] Added 0 entity changes to the current audit log
+2020-06-22 13:52:35.020 +08:00 [INF] Request finished in 105.7777ms 200 text/html; charset=utf-8
+2020-06-22 13:52:35.032 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/Abp/ServiceProxyScript  
+2020-06-22 13:52:35.032 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/Abp/ApplicationConfigurationScript  
+2020-06-22 13:52:35.036 +08:00 [INF] Executing endpoint 'Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController.GetAll (Volo.Abp.AspNetCore.Mvc)'
+2020-06-22 13:52:35.040 +08:00 [INF] Executing endpoint 'Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc)'
+2020-06-22 13:52:35.046 +08:00 [INF] Route matched with {area = "Abp", action = "GetAll", controller = "AbpServiceProxyScript", page = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAll(Volo.Abp.AspNetCore.Mvc.ProxyScripting.ServiceProxyGenerationModel) on controller Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController (Volo.Abp.AspNetCore.Mvc).
+2020-06-22 13:52:35.051 +08:00 [INF] Route matched with {area = "Abp", action = "Get", controller = "AbpApplicationConfigurationScript", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Get() on controller Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController (Volo.Abp.AspNetCore.Mvc).
+2020-06-22 13:52:35.057 +08:00 [INF] Executing ContentResult with HTTP Response ContentType of application/javascript
+2020-06-22 13:52:35.067 +08:00 [INF] Executed action Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController.GetAll (Volo.Abp.AspNetCore.Mvc) in 11.2548ms
+2020-06-22 13:52:35.067 +08:00 [DBG] Executing AbpApplicationConfigurationAppService.GetAsync()...
+2020-06-22 13:52:35.073 +08:00 [INF] Executed endpoint 'Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController.GetAll (Volo.Abp.AspNetCore.Mvc)'
+2020-06-22 13:52:35.076 +08:00 [INF] Authorization failed.
+2020-06-22 13:52:35.082 +08:00 [INF] Authorization failed.
+2020-06-22 13:52:35.085 +08:00 [INF] Authorization failed.
+2020-06-22 13:52:35.087 +08:00 [INF] Authorization failed.
+2020-06-22 13:52:35.088 +08:00 [DBG] Added 0 entity changes to the current audit log
+2020-06-22 13:52:35.091 +08:00 [INF] Authorization failed.
+2020-06-22 13:52:35.094 +08:00 [DBG] Added 0 entity changes to the current audit log
+2020-06-22 13:52:35.096 +08:00 [INF] Authorization failed.
+2020-06-22 13:52:35.099 +08:00 [INF] Request finished in 67.1375ms 200 application/javascript
+2020-06-22 13:52:35.103 +08:00 [INF] Authorization failed.
+2020-06-22 13:52:35.106 +08:00 [INF] Authorization failed.
+2020-06-22 13:52:35.107 +08:00 [INF] Authorization failed.
+2020-06-22 13:52:35.109 +08:00 [INF] Authorization failed.
+2020-06-22 13:52:35.113 +08:00 [INF] Authorization failed.
+2020-06-22 13:52:35.115 +08:00 [INF] Authorization failed.
+2020-06-22 13:52:35.116 +08:00 [INF] Authorization failed.
+2020-06-22 13:52:35.118 +08:00 [INF] Authorization failed.
+2020-06-22 13:52:35.119 +08:00 [INF] Authorization failed.
+2020-06-22 13:52:35.120 +08:00 [INF] Authorization failed.
+2020-06-22 13:52:35.123 +08:00 [INF] Authorization failed.
+2020-06-22 13:52:35.126 +08:00 [DBG] Executed AbpApplicationConfigurationAppService.GetAsync().
+2020-06-22 13:52:35.129 +08:00 [INF] Executing ContentResult with HTTP Response ContentType of application/javascript
+2020-06-22 13:52:35.130 +08:00 [INF] Executed action Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc) in 65.3025ms
+2020-06-22 13:52:35.136 +08:00 [INF] Executed endpoint 'Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc)'
+2020-06-22 13:52:35.147 +08:00 [DBG] Added 0 entity changes to the current audit log
+2020-06-22 13:52:35.148 +08:00 [DBG] Added 0 entity changes to the current audit log
+2020-06-22 13:52:35.152 +08:00 [INF] Request finished in 120.4513ms 200 application/javascript
+2020-06-22 13:52:36.179 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:8090/Account/Login application/x-www-form-urlencoded 324
+2020-06-22 13:52:36.184 +08:00 [INF] No CORS policy found for the specified request.
+2020-06-22 13:52:36.187 +08:00 [INF] Executing endpoint '/Account/Login'
+2020-06-22 13:52:36.189 +08:00 [INF] Route matched with {page = "/Account/Login", controller = "", area = "", action = ""}. Executing page /Account/Login
+2020-06-22 13:52:36.213 +08:00 [INF] Executing handler method KissU.Modules.Account.Web.Pages.Account.LoginModel.OnPostAsync - ModelState is "Valid"
+2020-06-22 13:52:36.260 +08:00 [DBG] Augmenting SignInContext
+2020-06-22 13:52:36.262 +08:00 [DBG] Adding idp claim with value: local
+2020-06-22 13:52:36.263 +08:00 [DBG] Adding auth_time claim with value: 1592805156
+2020-06-22 13:52:36.265 +08:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2020-06-22 13:52:36.267 +08:00 [INF] {"Username":"admin","Provider":null,"ProviderUserId":null,"SubjectId":"1048a2a6-9e07-3308-72e4-39f5ec59423c","DisplayName":"admin","Endpoint":"UI","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HM0ME07MHSET:0000000F","TimeStamp":"2020-06-22T05:52:36.0000000Z","ProcessId":20388,"LocalIpAddress":"::1:8090","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-06-22 13:52:36.286 +08:00 [INF] Executed handler method OnPostAsync, returned result Microsoft.AspNetCore.Mvc.RedirectResult.
+2020-06-22 13:52:36.288 +08:00 [DBG] Added 0 entity changes to the current audit log
+2020-06-22 13:52:36.290 +08:00 [INF] Executing RedirectResult, redirecting to /.
+2020-06-22 13:52:36.293 +08:00 [INF] Executed page /Account/Login in 99.3328ms
+2020-06-22 13:52:36.296 +08:00 [INF] Executed endpoint '/Account/Login'
+2020-06-22 13:52:36.301 +08:00 [DBG] Added 0 entity changes to the current audit log
+2020-06-22 13:52:36.303 +08:00 [DBG] Added 0 entity changes to the current audit log
+2020-06-22 13:52:36.305 +08:00 [INF] Request finished in 126.17ms 302 
+2020-06-22 13:52:36.309 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/  
+2020-06-22 13:52:36.315 +08:00 [INF] Executing endpoint '/Index'
+2020-06-22 13:52:36.318 +08:00 [INF] Route matched with {page = "/Index", controller = "", area = "", action = ""}. Executing page /Index
+2020-06-22 13:52:36.320 +08:00 [INF] Executing handler method KissU.AuthServer.Host.Pages.IndexModel.OnGet - ModelState is "Valid"
+2020-06-22 13:52:36.322 +08:00 [INF] Executed handler method OnGet, returned result .
+2020-06-22 13:52:36.323 +08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2020-06-22 13:52:36.325 +08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-06-22 13:52:36.331 +08:00 [DBG] Added bundle 'Basic.Global' to the page in 0.44 ms.
+2020-06-22 13:52:36.336 +08:00 [DBG] Added bundle 'Basic.Global' to the page in 0.81 ms.
+2020-06-22 13:52:36.340 +08:00 [INF] Executed page /Index in 19.6708ms
+2020-06-22 13:52:36.343 +08:00 [INF] Executed endpoint '/Index'
+2020-06-22 13:52:36.351 +08:00 [DBG] Added 0 entity changes to the current audit log
+2020-06-22 13:52:36.353 +08:00 [DBG] Added 0 entity changes to the current audit log
+2020-06-22 13:52:36.355 +08:00 [INF] Request finished in 45.5107ms 200 text/html; charset=utf-8
+2020-06-22 13:52:36.367 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/Abp/ApplicationConfigurationScript  
+2020-06-22 13:52:36.367 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/Abp/ServiceProxyScript  
+2020-06-22 13:52:36.375 +08:00 [INF] Executing endpoint 'Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc)'
+2020-06-22 13:52:36.377 +08:00 [INF] Executing endpoint 'Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController.GetAll (Volo.Abp.AspNetCore.Mvc)'
+2020-06-22 13:52:36.382 +08:00 [INF] Route matched with {area = "Abp", action = "Get", controller = "AbpApplicationConfigurationScript", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Get() on controller Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController (Volo.Abp.AspNetCore.Mvc).
+2020-06-22 13:52:36.385 +08:00 [INF] Route matched with {area = "Abp", action = "GetAll", controller = "AbpServiceProxyScript", page = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAll(Volo.Abp.AspNetCore.Mvc.ProxyScripting.ServiceProxyGenerationModel) on controller Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController (Volo.Abp.AspNetCore.Mvc).
+2020-06-22 13:52:36.392 +08:00 [DBG] Executing AbpApplicationConfigurationAppService.GetAsync()...
+2020-06-22 13:52:36.396 +08:00 [INF] Executing ContentResult with HTTP Response ContentType of application/javascript
+2020-06-22 13:52:36.398 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Roles
+2020-06-22 13:52:36.400 +08:00 [INF] Executed action Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController.GetAll (Volo.Abp.AspNetCore.Mvc) in 4.4483ms
+2020-06-22 13:52:36.405 +08:00 [DBG] Found in the cache: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Roles
+2020-06-22 13:52:36.408 +08:00 [INF] Executed endpoint 'Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController.GetAll (Volo.Abp.AspNetCore.Mvc)'
+2020-06-22 13:52:36.412 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:R,pk:admin,n:AbpIdentity.Roles
+2020-06-22 13:52:36.418 +08:00 [DBG] Found in the cache: pn:R,pk:admin,n:AbpIdentity.Roles
+2020-06-22 13:52:36.418 +08:00 [DBG] Added 0 entity changes to the current audit log
+2020-06-22 13:52:36.419 +08:00 [INF] Authorization was successful.
+2020-06-22 13:52:36.421 +08:00 [DBG] Added 0 entity changes to the current audit log
+2020-06-22 13:52:36.422 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Roles.Create
+2020-06-22 13:52:36.423 +08:00 [INF] Request finished in 56.4642ms 200 application/javascript
+2020-06-22 13:52:36.427 +08:00 [DBG] Found in the cache: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Roles.Create
+2020-06-22 13:52:36.431 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:R,pk:admin,n:AbpIdentity.Roles.Create
+2020-06-22 13:52:36.432 +08:00 [DBG] Found in the cache: pn:R,pk:admin,n:AbpIdentity.Roles.Create
+2020-06-22 13:52:36.433 +08:00 [INF] Authorization was successful.
+2020-06-22 13:52:36.435 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Roles.Update
+2020-06-22 13:52:36.438 +08:00 [DBG] Found in the cache: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Roles.Update
+2020-06-22 13:52:36.440 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:R,pk:admin,n:AbpIdentity.Roles.Update
+2020-06-22 13:52:36.442 +08:00 [DBG] Found in the cache: pn:R,pk:admin,n:AbpIdentity.Roles.Update
+2020-06-22 13:52:36.443 +08:00 [INF] Authorization was successful.
+2020-06-22 13:52:36.444 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Roles.Delete
+2020-06-22 13:52:36.446 +08:00 [DBG] Found in the cache: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Roles.Delete
+2020-06-22 13:52:36.449 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:R,pk:admin,n:AbpIdentity.Roles.Delete
+2020-06-22 13:52:36.450 +08:00 [DBG] Found in the cache: pn:R,pk:admin,n:AbpIdentity.Roles.Delete
+2020-06-22 13:52:36.451 +08:00 [INF] Authorization was successful.
+2020-06-22 13:52:36.452 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Roles.ManagePermissions
+2020-06-22 13:52:36.454 +08:00 [DBG] Found in the cache: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Roles.ManagePermissions
+2020-06-22 13:52:36.455 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:R,pk:admin,n:AbpIdentity.Roles.ManagePermissions
+2020-06-22 13:52:36.458 +08:00 [DBG] Found in the cache: pn:R,pk:admin,n:AbpIdentity.Roles.ManagePermissions
+2020-06-22 13:52:36.460 +08:00 [INF] Authorization was successful.
+2020-06-22 13:52:36.462 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Users
+2020-06-22 13:52:36.463 +08:00 [DBG] Found in the cache: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Users
+2020-06-22 13:52:36.464 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:R,pk:admin,n:AbpIdentity.Users
+2020-06-22 13:52:36.465 +08:00 [DBG] Found in the cache: pn:R,pk:admin,n:AbpIdentity.Users
+2020-06-22 13:52:36.468 +08:00 [INF] Authorization was successful.
+2020-06-22 13:52:36.469 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Users.Create
+2020-06-22 13:52:36.471 +08:00 [DBG] Found in the cache: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Users.Create
+2020-06-22 13:52:36.472 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:R,pk:admin,n:AbpIdentity.Users.Create
+2020-06-22 13:52:36.474 +08:00 [DBG] Found in the cache: pn:R,pk:admin,n:AbpIdentity.Users.Create
+2020-06-22 13:52:36.475 +08:00 [INF] Authorization was successful.
+2020-06-22 13:52:36.478 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Users.Update
+2020-06-22 13:52:36.480 +08:00 [DBG] Found in the cache: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Users.Update
+2020-06-22 13:52:36.481 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:R,pk:admin,n:AbpIdentity.Users.Update
+2020-06-22 13:52:36.482 +08:00 [DBG] Found in the cache: pn:R,pk:admin,n:AbpIdentity.Users.Update
+2020-06-22 13:52:36.483 +08:00 [INF] Authorization was successful.
+2020-06-22 13:52:36.485 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Users.Delete
+2020-06-22 13:52:36.488 +08:00 [DBG] Found in the cache: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Users.Delete
+2020-06-22 13:52:36.490 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:R,pk:admin,n:AbpIdentity.Users.Delete
+2020-06-22 13:52:36.492 +08:00 [DBG] Found in the cache: pn:R,pk:admin,n:AbpIdentity.Users.Delete
+2020-06-22 13:52:36.493 +08:00 [INF] Authorization was successful.
+2020-06-22 13:52:36.494 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Users.ManagePermissions
+2020-06-22 13:52:36.496 +08:00 [DBG] Found in the cache: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Users.ManagePermissions
+2020-06-22 13:52:36.499 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:R,pk:admin,n:AbpIdentity.Users.ManagePermissions
+2020-06-22 13:52:36.500 +08:00 [DBG] Found in the cache: pn:R,pk:admin,n:AbpIdentity.Users.ManagePermissions
+2020-06-22 13:52:36.502 +08:00 [INF] Authorization was successful.
+2020-06-22 13:52:36.503 +08:00 [INF] Authorization failed.
+2020-06-22 13:52:36.504 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpTenantManagement.Tenants
+2020-06-22 13:52:36.505 +08:00 [DBG] Found in the cache: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpTenantManagement.Tenants
+2020-06-22 13:52:36.508 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:R,pk:admin,n:AbpTenantManagement.Tenants
+2020-06-22 13:52:36.510 +08:00 [DBG] Found in the cache: pn:R,pk:admin,n:AbpTenantManagement.Tenants
+2020-06-22 13:52:36.511 +08:00 [INF] Authorization was successful.
+2020-06-22 13:52:36.512 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpTenantManagement.Tenants.Create
+2020-06-22 13:52:36.514 +08:00 [DBG] Found in the cache: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpTenantManagement.Tenants.Create
+2020-06-22 13:52:36.515 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:R,pk:admin,n:AbpTenantManagement.Tenants.Create
+2020-06-22 13:52:36.518 +08:00 [DBG] Found in the cache: pn:R,pk:admin,n:AbpTenantManagement.Tenants.Create
+2020-06-22 13:52:36.520 +08:00 [INF] Authorization was successful.
+2020-06-22 13:52:36.521 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpTenantManagement.Tenants.Update
+2020-06-22 13:52:36.523 +08:00 [DBG] Found in the cache: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpTenantManagement.Tenants.Update
+2020-06-22 13:52:36.524 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:R,pk:admin,n:AbpTenantManagement.Tenants.Update
+2020-06-22 13:52:36.527 +08:00 [DBG] Found in the cache: pn:R,pk:admin,n:AbpTenantManagement.Tenants.Update
+2020-06-22 13:52:36.528 +08:00 [INF] Authorization was successful.
+2020-06-22 13:52:36.530 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpTenantManagement.Tenants.Delete
+2020-06-22 13:52:36.532 +08:00 [DBG] Found in the cache: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpTenantManagement.Tenants.Delete
+2020-06-22 13:52:36.533 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:R,pk:admin,n:AbpTenantManagement.Tenants.Delete
+2020-06-22 13:52:36.534 +08:00 [DBG] Found in the cache: pn:R,pk:admin,n:AbpTenantManagement.Tenants.Delete
+2020-06-22 13:52:36.535 +08:00 [INF] Authorization was successful.
+2020-06-22 13:52:36.538 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpTenantManagement.Tenants.ManageFeatures
+2020-06-22 13:52:36.540 +08:00 [DBG] Found in the cache: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpTenantManagement.Tenants.ManageFeatures
+2020-06-22 13:52:36.542 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:R,pk:admin,n:AbpTenantManagement.Tenants.ManageFeatures
+2020-06-22 13:52:36.543 +08:00 [DBG] Found in the cache: pn:R,pk:admin,n:AbpTenantManagement.Tenants.ManageFeatures
+2020-06-22 13:52:36.544 +08:00 [INF] Authorization was successful.
+2020-06-22 13:52:36.546 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpTenantManagement.Tenants.ManageConnectionStrings
+2020-06-22 13:52:36.548 +08:00 [DBG] Found in the cache: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpTenantManagement.Tenants.ManageConnectionStrings
+2020-06-22 13:52:36.552 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:R,pk:admin,n:AbpTenantManagement.Tenants.ManageConnectionStrings
+2020-06-22 13:52:36.553 +08:00 [DBG] Found in the cache: pn:R,pk:admin,n:AbpTenantManagement.Tenants.ManageConnectionStrings
+2020-06-22 13:52:36.554 +08:00 [INF] Authorization was successful.
+2020-06-22 13:52:36.557 +08:00 [DBG] Executed AbpApplicationConfigurationAppService.GetAsync().
+2020-06-22 13:52:36.559 +08:00 [INF] Executing ContentResult with HTTP Response ContentType of application/javascript
+2020-06-22 13:52:36.561 +08:00 [INF] Executed action Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc) in 170.9631ms
+2020-06-22 13:52:36.567 +08:00 [INF] Executed endpoint 'Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc)'
+2020-06-22 13:52:36.578 +08:00 [DBG] Added 0 entity changes to the current audit log
+2020-06-22 13:52:36.579 +08:00 [DBG] Added 0 entity changes to the current audit log
+2020-06-22 13:52:36.582 +08:00 [INF] Request finished in 215.4835ms 200 application/javascript
+2020-06-22 13:52:47.880 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/Account/Manage  
+2020-06-22 13:52:48.105 +08:00 [INF] Authorization was successful.
+2020-06-22 13:52:48.107 +08:00 [INF] Executing endpoint '/Account/Manage'
+2020-06-22 13:52:48.112 +08:00 [INF] Route matched with {page = "/Account/Manage", controller = "", area = "", action = ""}. Executing page /Account/Manage
+2020-06-22 13:52:48.129 +08:00 [INF] Executing handler method KissU.Modules.Account.Web.Pages.Account.ManageModel.OnGetAsync - ModelState is "Valid"
+2020-06-22 13:52:48.141 +08:00 [INF] Authorization was successful.
+2020-06-22 13:52:48.219 +08:00 [INF] Executed handler method OnGetAsync, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-06-22 13:52:48.222 +08:00 [DBG] Added 0 entity changes to the current audit log
+2020-06-22 13:52:48.316 +08:00 [DBG] Added bundle 'Basic.Global' to the page in 0.48 ms.
+2020-06-22 13:52:48.322 +08:00 [DBG] Added bundle 'Basic.Global' to the page in 0.83 ms.
+2020-06-22 13:52:48.330 +08:00 [DBG] Added bundle 'KissU.Modules.Account.Web.Pages.Account.ManageModel' to the page in 0.52 ms.
+2020-06-22 13:52:48.334 +08:00 [INF] Executed page /Account/Manage in 216.7428ms
+2020-06-22 13:52:48.338 +08:00 [INF] Executed endpoint '/Account/Manage'
+2020-06-22 13:52:48.359 +08:00 [DBG] Added 0 entity changes to the current audit log
+2020-06-22 13:52:48.361 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/Pages/Account/Manage.js?_v=637283916145973828  
+2020-06-22 13:52:48.360 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/Abp/ApplicationConfigurationScript  
+2020-06-22 13:52:48.361 +08:00 [DBG] Added 0 entity changes to the current audit log
+2020-06-22 13:52:48.361 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/Abp/ServiceProxyScript  
+2020-06-22 13:52:48.369 +08:00 [INF] Request finished in 488.4106ms 200 text/html; charset=utf-8
+2020-06-22 13:52:48.370 +08:00 [INF] Sending file. Request path: '/Pages/Account/Manage.js'. Physical path: 'N/A'
+2020-06-22 13:52:48.371 +08:00 [INF] Executing endpoint 'Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc)'
+2020-06-22 13:52:48.376 +08:00 [INF] Executing endpoint 'Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController.GetAll (Volo.Abp.AspNetCore.Mvc)'
+2020-06-22 13:52:48.379 +08:00 [INF] Request finished in 17.6827ms 200 application/javascript
+2020-06-22 13:52:48.385 +08:00 [INF] Route matched with {area = "Abp", action = "Get", controller = "AbpApplicationConfigurationScript", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Get() on controller Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController (Volo.Abp.AspNetCore.Mvc).
+2020-06-22 13:52:48.388 +08:00 [INF] Route matched with {area = "Abp", action = "GetAll", controller = "AbpServiceProxyScript", page = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAll(Volo.Abp.AspNetCore.Mvc.ProxyScripting.ServiceProxyGenerationModel) on controller Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController (Volo.Abp.AspNetCore.Mvc).
+2020-06-22 13:52:48.397 +08:00 [DBG] Executing AbpApplicationConfigurationAppService.GetAsync()...
+2020-06-22 13:52:48.404 +08:00 [INF] Executing ContentResult with HTTP Response ContentType of application/javascript
+2020-06-22 13:52:48.406 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Roles
+2020-06-22 13:52:48.408 +08:00 [INF] Executed action Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController.GetAll (Volo.Abp.AspNetCore.Mvc) in 4.5755ms
+2020-06-22 13:52:48.409 +08:00 [DBG] Found in the cache: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Roles
+2020-06-22 13:52:48.413 +08:00 [INF] Executed endpoint 'Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController.GetAll (Volo.Abp.AspNetCore.Mvc)'
+2020-06-22 13:52:48.416 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:R,pk:admin,n:AbpIdentity.Roles
+2020-06-22 13:52:48.422 +08:00 [DBG] Added 0 entity changes to the current audit log
+2020-06-22 13:52:48.422 +08:00 [DBG] Found in the cache: pn:R,pk:admin,n:AbpIdentity.Roles
+2020-06-22 13:52:48.423 +08:00 [DBG] Added 0 entity changes to the current audit log
+2020-06-22 13:52:48.424 +08:00 [INF] Authorization was successful.
+2020-06-22 13:52:48.426 +08:00 [INF] Request finished in 64.381ms 200 application/javascript
+2020-06-22 13:52:48.427 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Roles.Create
+2020-06-22 13:52:48.433 +08:00 [DBG] Found in the cache: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Roles.Create
+2020-06-22 13:52:48.435 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:R,pk:admin,n:AbpIdentity.Roles.Create
+2020-06-22 13:52:48.437 +08:00 [DBG] Found in the cache: pn:R,pk:admin,n:AbpIdentity.Roles.Create
+2020-06-22 13:52:48.438 +08:00 [INF] Authorization was successful.
+2020-06-22 13:52:48.442 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Roles.Update
+2020-06-22 13:52:48.444 +08:00 [DBG] Found in the cache: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Roles.Update
+2020-06-22 13:52:48.445 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:R,pk:admin,n:AbpIdentity.Roles.Update
+2020-06-22 13:52:48.446 +08:00 [DBG] Found in the cache: pn:R,pk:admin,n:AbpIdentity.Roles.Update
+2020-06-22 13:52:48.448 +08:00 [INF] Authorization was successful.
+2020-06-22 13:52:48.452 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Roles.Delete
+2020-06-22 13:52:48.453 +08:00 [DBG] Found in the cache: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Roles.Delete
+2020-06-22 13:52:48.455 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:R,pk:admin,n:AbpIdentity.Roles.Delete
+2020-06-22 13:52:48.456 +08:00 [DBG] Found in the cache: pn:R,pk:admin,n:AbpIdentity.Roles.Delete
+2020-06-22 13:52:48.457 +08:00 [INF] Authorization was successful.
+2020-06-22 13:52:48.461 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Roles.ManagePermissions
+2020-06-22 13:52:48.463 +08:00 [DBG] Found in the cache: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Roles.ManagePermissions
+2020-06-22 13:52:48.464 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:R,pk:admin,n:AbpIdentity.Roles.ManagePermissions
+2020-06-22 13:52:48.466 +08:00 [DBG] Found in the cache: pn:R,pk:admin,n:AbpIdentity.Roles.ManagePermissions
+2020-06-22 13:52:48.468 +08:00 [INF] Authorization was successful.
+2020-06-22 13:52:48.469 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Users
+2020-06-22 13:52:48.471 +08:00 [DBG] Found in the cache: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Users
+2020-06-22 13:52:48.472 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:R,pk:admin,n:AbpIdentity.Users
+2020-06-22 13:52:48.474 +08:00 [DBG] Found in the cache: pn:R,pk:admin,n:AbpIdentity.Users
+2020-06-22 13:52:48.475 +08:00 [INF] Authorization was successful.
+2020-06-22 13:52:48.476 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Users.Create
+2020-06-22 13:52:48.478 +08:00 [DBG] Found in the cache: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Users.Create
+2020-06-22 13:52:48.479 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:R,pk:admin,n:AbpIdentity.Users.Create
+2020-06-22 13:52:48.482 +08:00 [DBG] Found in the cache: pn:R,pk:admin,n:AbpIdentity.Users.Create
+2020-06-22 13:52:48.484 +08:00 [INF] Authorization was successful.
+2020-06-22 13:52:48.485 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Users.Update
+2020-06-22 13:52:48.486 +08:00 [DBG] Found in the cache: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Users.Update
+2020-06-22 13:52:48.488 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:R,pk:admin,n:AbpIdentity.Users.Update
+2020-06-22 13:52:48.490 +08:00 [DBG] Found in the cache: pn:R,pk:admin,n:AbpIdentity.Users.Update
+2020-06-22 13:52:48.492 +08:00 [INF] Authorization was successful.
+2020-06-22 13:52:48.493 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Users.Delete
+2020-06-22 13:52:48.495 +08:00 [DBG] Found in the cache: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Users.Delete
+2020-06-22 13:52:48.496 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:R,pk:admin,n:AbpIdentity.Users.Delete
+2020-06-22 13:52:48.497 +08:00 [DBG] Found in the cache: pn:R,pk:admin,n:AbpIdentity.Users.Delete
+2020-06-22 13:52:48.501 +08:00 [INF] Authorization was successful.
+2020-06-22 13:52:48.502 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Users.ManagePermissions
+2020-06-22 13:52:48.504 +08:00 [DBG] Found in the cache: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpIdentity.Users.ManagePermissions
+2020-06-22 13:52:48.505 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:R,pk:admin,n:AbpIdentity.Users.ManagePermissions
+2020-06-22 13:52:48.506 +08:00 [DBG] Found in the cache: pn:R,pk:admin,n:AbpIdentity.Users.ManagePermissions
+2020-06-22 13:52:48.507 +08:00 [INF] Authorization was successful.
+2020-06-22 13:52:48.508 +08:00 [INF] Authorization failed.
+2020-06-22 13:52:48.511 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpTenantManagement.Tenants
+2020-06-22 13:52:48.513 +08:00 [DBG] Found in the cache: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpTenantManagement.Tenants
+2020-06-22 13:52:48.514 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:R,pk:admin,n:AbpTenantManagement.Tenants
+2020-06-22 13:52:48.516 +08:00 [DBG] Found in the cache: pn:R,pk:admin,n:AbpTenantManagement.Tenants
+2020-06-22 13:52:48.517 +08:00 [INF] Authorization was successful.
+2020-06-22 13:52:48.518 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpTenantManagement.Tenants.Create
+2020-06-22 13:52:48.521 +08:00 [DBG] Found in the cache: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpTenantManagement.Tenants.Create
+2020-06-22 13:52:48.522 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:R,pk:admin,n:AbpTenantManagement.Tenants.Create
+2020-06-22 13:52:48.523 +08:00 [DBG] Found in the cache: pn:R,pk:admin,n:AbpTenantManagement.Tenants.Create
+2020-06-22 13:52:48.525 +08:00 [INF] Authorization was successful.
+2020-06-22 13:52:48.526 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpTenantManagement.Tenants.Update
+2020-06-22 13:52:48.527 +08:00 [DBG] Found in the cache: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpTenantManagement.Tenants.Update
+2020-06-22 13:52:48.529 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:R,pk:admin,n:AbpTenantManagement.Tenants.Update
+2020-06-22 13:52:48.532 +08:00 [DBG] Found in the cache: pn:R,pk:admin,n:AbpTenantManagement.Tenants.Update
+2020-06-22 13:52:48.534 +08:00 [INF] Authorization was successful.
+2020-06-22 13:52:48.535 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpTenantManagement.Tenants.Delete
+2020-06-22 13:52:48.537 +08:00 [DBG] Found in the cache: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpTenantManagement.Tenants.Delete
+2020-06-22 13:52:48.538 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:R,pk:admin,n:AbpTenantManagement.Tenants.Delete
+2020-06-22 13:52:48.539 +08:00 [DBG] Found in the cache: pn:R,pk:admin,n:AbpTenantManagement.Tenants.Delete
+2020-06-22 13:52:48.542 +08:00 [INF] Authorization was successful.
+2020-06-22 13:52:48.543 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpTenantManagement.Tenants.ManageFeatures
+2020-06-22 13:52:48.545 +08:00 [DBG] Found in the cache: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpTenantManagement.Tenants.ManageFeatures
+2020-06-22 13:52:48.546 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:R,pk:admin,n:AbpTenantManagement.Tenants.ManageFeatures
+2020-06-22 13:52:48.548 +08:00 [DBG] Found in the cache: pn:R,pk:admin,n:AbpTenantManagement.Tenants.ManageFeatures
+2020-06-22 13:52:48.551 +08:00 [INF] Authorization was successful.
+2020-06-22 13:52:48.552 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpTenantManagement.Tenants.ManageConnectionStrings
+2020-06-22 13:52:48.554 +08:00 [DBG] Found in the cache: pn:U,pk:1048a2a6-9e07-3308-72e4-39f5ec59423c,n:AbpTenantManagement.Tenants.ManageConnectionStrings
+2020-06-22 13:52:48.556 +08:00 [DBG] PermissionStore.GetCacheItemAsync: pn:R,pk:admin,n:AbpTenantManagement.Tenants.ManageConnectionStrings
+2020-06-22 13:52:48.557 +08:00 [DBG] Found in the cache: pn:R,pk:admin,n:AbpTenantManagement.Tenants.ManageConnectionStrings
+2020-06-22 13:52:48.558 +08:00 [INF] Authorization was successful.
+2020-06-22 13:52:48.560 +08:00 [DBG] Executed AbpApplicationConfigurationAppService.GetAsync().
+2020-06-22 13:52:48.562 +08:00 [INF] Executing ContentResult with HTTP Response ContentType of application/javascript
+2020-06-22 13:52:48.564 +08:00 [INF] Executed action Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc) in 168.5027ms
+2020-06-22 13:52:48.568 +08:00 [INF] Executed endpoint 'Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc)'
+2020-06-22 13:52:48.581 +08:00 [DBG] Added 0 entity changes to the current audit log
+2020-06-22 13:52:48.584 +08:00 [DBG] Added 0 entity changes to the current audit log
+2020-06-22 13:52:48.587 +08:00 [INF] Request finished in 227.1633ms 200 application/javascript
+2020-06-22 14:49:07.500 +08:00 [DBG] Stopped background worker: KissU.Modules.IdentityServer.Domain.Tokens.TokenCleanupBackgroundWorker
+2020-06-22 14:49:07.503 +08:00 [INF] Application is shutting down...

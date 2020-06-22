@@ -1,8 +1,8 @@
-﻿using KissU.Modules.Identity.Domain;
+﻿using KissU.Modules.Identity.AspNetCore.Extensions;
+using KissU.Modules.Identity.Domain;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.Modularity;
-using IdentityUser = KissU.Modules.Identity.Domain.IdentityUser;
 
 namespace KissU.Modules.Identity.AspNetCore
 {
@@ -18,10 +18,7 @@ namespace KissU.Modules.Identity.AspNetCore
                 .AddDefaultTokenProviders()
                 .AddSignInManager();
 
-            //(TODO: Extract an extension method like IdentityBuilder.AddAbpSecurityStampValidator())
-            context.Services.AddScoped<AbpSecurityStampValidator>();
-            context.Services.AddScoped(typeof(SecurityStampValidator<IdentityUser>), provider => provider.GetService(typeof(AbpSecurityStampValidator)));
-            context.Services.AddScoped(typeof(ISecurityStampValidator), provider => provider.GetService(typeof(AbpSecurityStampValidator)));
+            context.Services.AddAbpSecurityStampValidator();
 
             var options = context.Services.ExecutePreConfiguredActions(new AbpIdentityAspNetCoreOptions());
 

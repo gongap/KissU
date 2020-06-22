@@ -11,16 +11,8 @@ namespace KissU.Modules.Identity.AspNetCore
 {
     public class AbpSecurityStampValidator : SecurityStampValidator<IdentityUser>
     {
-        public AbpSecurityStampValidator(
-            IOptions<SecurityStampValidatorOptions> options,
-            SignInManager<IdentityUser> signInManager,
-            ISystemClock systemClock,
-            ILoggerFactory loggerFactory)
-            : base(
-                options, 
-                signInManager,
-                systemClock,
-                loggerFactory)
+        public AbpSecurityStampValidator(IOptions<SecurityStampValidatorOptions> options, SignInManager<IdentityUser> signInManager, ISystemClock systemClock, ILoggerFactory loggerFactory)
+            : base(options, signInManager, systemClock, loggerFactory)
         {
         }
 

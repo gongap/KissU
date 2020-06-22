@@ -6,10 +6,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore.SqlServer" Version="2.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Abp.Autofac\KissU.Abp.Autofac.csproj" />
     <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.ProxyGenerator\KissU.Surging.ProxyGenerator.csproj" />
     <ProjectReference Include="..\KissU.Modules.Identity.Application\KissU.Modules.Identity.Application.csproj" />
-    <ProjectReference Include="..\KissU.Modules.Identity.DbMigrations\KissU.Modules.Identity.DbMigrations.csproj" />
+    <ProjectReference Include="..\KissU.Modules.Identity.EntityFrameworkCore\KissU.Modules.Identity.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\KissU.Modules.Identity.Service.Contracts\KissU.Modules.Identity.Service.Contracts.csproj" />
   </ItemGroup>
 </Project>

@@ -11,13 +11,14 @@
 
   <ItemGroup>
     <PackageReference Include="Volo.Abp.UI" Version="2.8.0" />
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore.SqlServer" Version="2.8.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Abp.Autofac\KissU.Abp.Autofac.csproj" />
     <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.ProxyGenerator\KissU.Surging.ProxyGenerator.csproj" />
     <ProjectReference Include="..\KissU.Modules.FeatureManagement.Application\KissU.Modules.FeatureManagement.Application.csproj" />
-    <ProjectReference Include="..\KissU.Modules.FeatureManagement.DbMigrations\KissU.Modules.FeatureManagement.DbMigrations.csproj" />
+    <ProjectReference Include="..\KissU.Modules.FeatureManagement.EntityFrameworkCore\KissU.Modules.FeatureManagement.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\KissU.Modules.FeatureManagement.Service.Contracts\KissU.Modules.FeatureManagement.Service.Contracts.csproj" />
   </ItemGroup>
 </Project>
