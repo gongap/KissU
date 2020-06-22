@@ -17,11 +17,11 @@ namespace KissU.AuthServer.Host
 {
     public class AuthServerDataSeeder : IDataSeedContributor, ITransientDependency
     {
-        private readonly IApiResourceRepository _apiResourceRepository;
-        private readonly IClientRepository _clientRepository;
-        private readonly IIdentityResourceDataSeeder _identityResourceDataSeeder;
         private readonly IGuidGenerator _guidGenerator;
+        private readonly IClientRepository _clientRepository;
+        private readonly IApiResourceRepository _apiResourceRepository;
         private readonly IPermissionDataSeeder _permissionDataSeeder;
+        private readonly IIdentityResourceDataSeeder _identityResourceDataSeeder;
 
         public AuthServerDataSeeder(
             IClientRepository clientRepository,

@@ -1,4 +1,3 @@
-using KissU.AuthServer.Host.EntityFrameworkCore;
 using KissU.Modules.Account.Application;
 using KissU.Modules.Account.Web.IdentityServer;
 using KissU.Modules.AuditLogging.EntityFrameworkCore.EntityFrameworkCore;
@@ -34,28 +33,23 @@ namespace KissU.AuthServer.Host
         typeof(AbpPermissionManagementEntityFrameworkCoreModule),
         typeof(AbpAuditLoggingEntityFrameworkCoreModule),
         typeof(AbpSettingManagementEntityFrameworkCoreModule),
+        typeof(AbpTenantManagementEntityFrameworkCoreModule),
         typeof(AbpIdentityEntityFrameworkCoreModule),
+        typeof(AbpIdentityServerEntityFrameworkCoreModule),
         typeof(AbpIdentityApplicationContractsModule),
         typeof(AbpAccountApplicationModule),
-        typeof(AbpIdentityServerEntityFrameworkCoreModule),
         typeof(AbpEntityFrameworkCoreSqlServerModule),
         typeof(AbpAccountWebIdentityServerModule),
         typeof(AbpAspNetCoreMvcUiBasicThemeModule),
-        typeof(AbpTenantManagementEntityFrameworkCoreModule),
         typeof(AbpTenantManagementApplicationContractsModule)
     )]
     public class AuthServerHostModule : AbpModule
     {
-        private bool isMultiTenancyEnabled = false;
+        private bool isMultiTenancyEnabled = true;
 
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
             var configuration = context.Services.GetConfiguration();
-
-            context.Services.AddAbpDbContext<AuthServerDbContext>(options =>
-            {
-                options.AddDefaultRepositories();
-            });
 
             Configure<AbpMultiTenancyOptions>(options =>
             {
@@ -108,12 +102,10 @@ namespace KissU.AuthServer.Host
             //TODO: Problem on a clustered environment
             AsyncHelper.RunSync(async () =>
             {
-                using (var scope = context.ServiceProvider.CreateScope())
-                {
-                    await scope.ServiceProvider
-                        .GetRequiredService<IDataSeeder>()
-                        .SeedAsync();
-                }
+                using var scope = context.ServiceProvider.CreateScope();
+                await scope.ServiceProvider
+                    .GetRequiredService<IDataSeeder>()
+                    .SeedAsync();
             });
         }
     }
