@@ -147,7 +147,7 @@ namespace KissU.Surging.KestrelHttpServer
             {
                 if (_logger.IsEnabled(LogLevel.Error))
                 {
-                    _logger.LogError(exception, $"执行远程调用逻辑时候发生了错误：{GetExceptionMessage(exception)}");
+                    _logger.LogError(exception, $"执行远程调用逻辑时候发生了错误：{exception.Message}");
                 }
 
                 resultMessage = new HttpResultMessage<object> { Data = null, Message = "执行发生了错误。", StatusCode = (int)StatusCode.RequestError };
@@ -207,7 +207,7 @@ namespace KissU.Surging.KestrelHttpServer
             {
                 if (_logger.IsEnabled(LogLevel.Error))
                 {
-                    _logger.LogError(exception, $"执行本地逻辑时候发生了错误：{GetExceptionMessage(exception)}");
+                    _logger.LogError(exception, $"执行本地逻辑时候发生了错误：{exception.Message}");
                 }
 
                 resultMessage.Message = "执行发生了错误。";

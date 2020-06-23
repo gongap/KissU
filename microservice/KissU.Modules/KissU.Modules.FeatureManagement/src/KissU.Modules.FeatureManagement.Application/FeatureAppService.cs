@@ -5,8 +5,10 @@ using JetBrains.Annotations;
 using KissU.Modules.FeatureManagement.Application.Contracts;
 using KissU.Modules.FeatureManagement.Domain;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Volo.Abp;
+using Volo.Abp.Authorization;
 using Volo.Abp.Features;
 
 namespace KissU.Modules.FeatureManagement.Application
@@ -84,7 +86,9 @@ namespace KissU.Modules.FeatureManagement.Application
                 throw new AbpException($"No policy defined to get/set permissions for the provider '{policyName}'. Use {nameof(FeatureManagementOptions)} to map the policy.");
             }
 
-            await AuthorizationService.CheckAsync(policyName);
+            
+            var authorizationService = this.ServiceProvider.GetRequiredService<IAbpAuthorizationService>();
+            await authorizationService.CheckAsync(policyName);
         }
     }
 }

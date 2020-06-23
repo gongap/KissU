@@ -31,7 +31,7 @@ namespace KissU.Modules.FeatureManagement.Service
                     .AddBaseTypes(
                         typeof(AbpUiResource)
                     );
-            }); 
+            });
 
             context.Services.AddAlwaysAllowAuthorization();
         }

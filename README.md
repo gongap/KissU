@@ -2,7 +2,8 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://mit-license.org/)
 
 <blockquote>
-KissU 是一个分布式微服务应用框架,提供高性能RPC远程服务调用，采用Zookeeper、Consul作为服务的注册中心，集成了哈希，随机，轮询，压力最小优先作为负载均衡的算法，RPC集成采用的是netty框架，采用异步传输。
+"作为面向服务架构(SOA)的一个变体,微服务是一种将应用程序分解成松散耦合服务的新型架构风格. 通过细粒度的服务和轻量级的协议,微服务提供了更多的模块化,使应用程序更容易理解,开发,测试,并且更容易抵抗架构侵蚀. 它使小型团队能够开发,部署和扩展各自的服务,实现开发的并行化.它还允许通过连续重构形成单个服务的架构. 基于微服务架构可以实现持续交付和部署."
+KissU 框架的主要目标之一就是提供便捷的基础设施来创建微服务解决方案.
 </blockquote>
 
 > 源码路径：[源代码 ***C#***](https://github.com/gongap/KissU/)
