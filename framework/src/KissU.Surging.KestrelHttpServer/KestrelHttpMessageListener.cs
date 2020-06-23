@@ -91,6 +91,7 @@ namespace KissU.Surging.KestrelHttpServer
                 }
 
                 var hostBuilder = Host.CreateDefaultBuilder()
+                    .ConfigureLogging(configure => configure.ClearProviders())
                     .ConfigureWebHostDefaults(webBuilder =>
                     {
                         webBuilder.UseKestrel((context, options) =>

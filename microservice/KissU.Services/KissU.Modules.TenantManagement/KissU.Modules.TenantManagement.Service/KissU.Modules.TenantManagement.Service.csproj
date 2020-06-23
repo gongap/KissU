@@ -19,5 +19,6 @@
     <ProjectReference Include="..\..\..\..\framework\src\KissU.Abp.Autofac\KissU.Abp.Autofac.csproj" />
     <ProjectReference Include="..\..\..\KissU.Modules\KissU.Modules.TenantManagement\src\KissU.Modules.TenantManagement.Application\KissU.Modules.TenantManagement.Application.csproj" />
     <ProjectReference Include="..\..\..\KissU.Modules\KissU.Modules.TenantManagement\src\KissU.Modules.TenantManagement.EntityFrameworkCore\KissU.Modules.TenantManagement.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\KissU.Modules.TenantManagement.Service.Contracts\KissU.Modules.TenantManagement.Service.Contracts.csproj" />
   </ItemGroup>
 </Project>

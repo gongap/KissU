@@ -9,7 +9,7 @@ namespace KissU.Modules.Blogging.Service.Contracts
     [ServiceBundle("api/{Service}")]
     public interface ITagService : IServiceKey
     {
-        [HttpGet(true)]
+        [HttpPost(true)]
         [ServiceRoute("popular/{blogId}")]
         Task<List<TagDto>> GetPopularTags(string blogId, GetPopularTagsInput input);
     }

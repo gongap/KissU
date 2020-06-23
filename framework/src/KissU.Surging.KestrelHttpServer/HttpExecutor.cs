@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Threading.Tasks;
 using KissU.Convertibles;
-
 using KissU.Dependency;
 using KissU.Exceptions;
 using KissU.Surging.CPlatform;
@@ -18,6 +17,7 @@ using KissU.Surging.CPlatform.Transport.Implementation;
 using KissU.Surging.ProxyGenerator;
 using Microsoft.Extensions.Logging;
 using KissU.Surging.KestrelHttpServer.Internal;
+using Volo.Abp;
 using static KissU.Helpers.FastInvoke;
 
 namespace KissU.Surging.KestrelHttpServer
@@ -68,10 +68,15 @@ namespace KissU.Surging.KestrelHttpServer
         public async Task ExecuteAsync(IMessageSender sender, TransportMessage message)
         {
             if (_logger.IsEnabled(LogLevel.Trace))
+            {
                 _logger.LogTrace("服务提供者接收到消息。");
+            }
 
             if (!message.IsHttpMessage())
+            {
                 return;
+            }
+
             HttpRequestMessage httpMessage;
             try
             {
@@ -86,7 +91,9 @@ namespace KissU.Surging.KestrelHttpServer
             if (httpMessage.Attachments != null)
             {
                 foreach (var attachment in httpMessage.Attachments)
+                {
                     RpcContext.GetContext().SetAttachment(attachment.Key, attachment.Value);
+                }
             }
 
             WirteDiagnosticBefore(message);
@@ -132,18 +139,18 @@ namespace KissU.Surging.KestrelHttpServer
             var resultMessage = new HttpResultMessage<object>();
             try
             {
-                resultMessage.Data = await _serviceProxyProvider.Invoke<object>(httpMessage.Parameters,
-                    httpMessage.RoutePath, httpMessage.ServiceKey);
+                resultMessage.Data = await _serviceProxyProvider.Invoke<object>(httpMessage.Parameters, httpMessage.RoutePath, httpMessage.ServiceKey);
                 resultMessage.IsSucceed = resultMessage.Data != default;
-                resultMessage.StatusCode =
-                    resultMessage.IsSucceed ? (int) StatusCode.Success : (int) StatusCode.RequestError;
+                resultMessage.StatusCode = resultMessage.IsSucceed ? (int)StatusCode.Success : (int)StatusCode.RequestError;
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
                 if (_logger.IsEnabled(LogLevel.Error))
-                    _logger.LogError(ex, "执行远程调用逻辑时候发生了错误。");
-                resultMessage = new HttpResultMessage<object>
-                    {Data = null, Message = "执行发生了错误。", StatusCode = (int) StatusCode.RequestError};
+                {
+                    _logger.LogError(exception, $"执行远程调用逻辑时候发生了错误：{GetExceptionMessage(exception)}");
+                }
+
+                resultMessage = new HttpResultMessage<object> { Data = null, Message = "执行发生了错误。", StatusCode = (int)StatusCode.RequestError };
             }
 
             return resultMessage;
@@ -167,25 +174,42 @@ namespace KissU.Surging.KestrelHttpServer
                     task.Wait();
                     var taskType = task.GetType().GetTypeInfo();
                     if (taskType.IsGenericType)
+                    {
                         resultMessage.Data = taskType.GetProperty("Result").GetValue(task);
+                    }
                 }
 
                 resultMessage.IsSucceed = resultMessage.Data != null;
                 resultMessage.StatusCode =
-                    resultMessage.IsSucceed ? (int) StatusCode.Success : (int) StatusCode.RequestError;
+                    resultMessage.IsSucceed ? (int)StatusCode.Success : (int)StatusCode.RequestError;
             }
             catch (ValidateException validateException)
             {
                 if (_logger.IsEnabled(LogLevel.Error))
-                    _logger.LogError(validateException, "执行本地逻辑时候发生了错误。", validateException);
+                {
+                    _logger.LogError(validateException, $"执行本地逻辑时候发生了错误：{validateException.Message}", validateException);
+                }
 
                 resultMessage.Message = validateException.Message;
                 resultMessage.StatusCode = validateException.HResult;
             }
+            catch (Exception exception) when (exception.InnerException is BusinessException businessException)
+            {
+                if (_logger.IsEnabled(LogLevel.Error))
+                {
+                    _logger.LogError(businessException, $"执行本地逻辑时候发生了错误：{businessException.Message}", businessException);
+                }
+
+                resultMessage.Message = businessException.Message;
+                resultMessage.StatusCode = businessException.HResult;
+            }
             catch (Exception exception)
             {
                 if (_logger.IsEnabled(LogLevel.Error))
-                    _logger.LogError(exception, "执行本地逻辑时候发生了错误。");
+                {
+                    _logger.LogError(exception, $"执行本地逻辑时候发生了错误：{GetExceptionMessage(exception)}");
+                }
+
                 resultMessage.Message = "执行发生了错误。";
                 resultMessage.StatusCode = exception.HResult;
             }
@@ -193,29 +217,36 @@ namespace KissU.Surging.KestrelHttpServer
             return resultMessage;
         }
 
-        private async Task SendRemoteInvokeResult(IMessageSender sender, string messageId,
-            HttpResultMessage resultMessage)
+        private async Task SendRemoteInvokeResult(IMessageSender sender, string messageId, HttpResultMessage resultMessage)
         {
             try
             {
                 if (_logger.IsEnabled(LogLevel.Debug))
+                {
                     _logger.LogDebug("准备发送响应消息。");
+                }
 
                 await sender.SendAndFlushAsync(new TransportMessage(messageId, resultMessage));
                 if (_logger.IsEnabled(LogLevel.Debug))
+                {
                     _logger.LogDebug("响应消息发送成功。");
+                }
             }
             catch (Exception exception)
             {
                 if (_logger.IsEnabled(LogLevel.Error))
+                {
                     _logger.LogError(exception, "发送响应消息时候发生了异常。");
+                }
             }
         }
 
         private static string GetExceptionMessage(Exception exception)
         {
             if (exception == null)
+            {
                 return string.Empty;
+            }
 
             var message = exception.Message;
             if (exception.InnerException != null)
@@ -234,11 +265,11 @@ namespace KissU.Surging.KestrelHttpServer
                 var remoteInvokeMessage = message.GetContent<HttpRequestMessage>();
                 _diagnosticListener.WriteTransportBefore(TransportType.Rest, new TransportEventData(new DiagnosticMessage
                 {
-                        Content = message.Content,
-                        ContentType = message.ContentType,
-                        Id = message.Id,
-                        MessageName = remoteInvokeMessage.RoutePath
-                    }, TransportType.Rest.ToString(),
+                    Content = message.Content,
+                    ContentType = message.ContentType,
+                    Id = message.Id,
+                    MessageName = remoteInvokeMessage.RoutePath
+                }, TransportType.Rest.ToString(),
                     message.Id,
                     RestContext.GetContext().GetAttachment("RemoteIpAddress")?.ToString()));
             }
