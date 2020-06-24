@@ -22,7 +22,7 @@ namespace KissU.Surging.Apm.Skywalking
 {
     public class SkywalkingModule : EnginePartModule
     {
-        public override void Initialize(AppModuleContext context)
+        public override void Initialize(ModuleInitializationContext context)
         {
             base.Initialize(context);
             context.ServiceProvoider.GetInstances<IInstrumentStartup>().StartAsync();

@@ -57,7 +57,7 @@ namespace KissU.Modularity
                     };
                     if (p.Enable)
                     {
-                        p.Initialize(new AppModuleContext(Modules, VirtualPaths, _serviceProvoider));
+                        p.Initialize(new ModuleInitializationContext(Modules, VirtualPaths, _serviceProvoider));
                     }
 
                     var type = p.GetType().BaseType;

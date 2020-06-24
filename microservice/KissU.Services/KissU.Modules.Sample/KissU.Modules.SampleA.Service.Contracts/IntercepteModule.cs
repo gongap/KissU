@@ -7,7 +7,7 @@ namespace KissU.Modules.SampleA.Service.Contracts
 {
     public class IntercepteModule : SystemModule
     {
-        public override void Initialize(AppModuleContext context)
+        public override void Initialize(ModuleInitializationContext context)
         {
             base.Initialize(context);
         }

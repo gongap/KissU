@@ -23,7 +23,7 @@ namespace KissU.Surging.EventBusKafka
         /// Initializes the specified context.
         /// </summary>
         /// <param name="context">The context.</param>
-        public override void Initialize(AppModuleContext context)
+        public override void Initialize(ModuleInitializationContext context)
         {
             var serviceProvider = context.ServiceProvoider;
             base.Initialize(context);

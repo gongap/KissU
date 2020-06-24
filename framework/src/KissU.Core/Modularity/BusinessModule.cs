@@ -9,7 +9,7 @@
         /// 初始化
         /// </summary>
         /// <param name="serviceProvider">The service provider.</param>
-        public override void Initialize(AppModuleContext serviceProvider)
+        public override void Initialize(ModuleInitializationContext serviceProvider)
         {
             base.Initialize(serviceProvider);
         }

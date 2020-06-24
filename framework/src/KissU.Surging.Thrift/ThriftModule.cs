@@ -15,7 +15,7 @@ namespace KissU.Surging.Thrift
 {
     class ThriftModule : EnginePartModule
     {
-        public override void Initialize(AppModuleContext context)
+        public override void Initialize(ModuleInitializationContext context)
         {
             base.Initialize(context);
         }

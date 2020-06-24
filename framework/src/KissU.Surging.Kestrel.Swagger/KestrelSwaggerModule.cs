@@ -27,7 +27,7 @@ namespace KissU.Surging.Kestrel.Swagger
         /// Initializes the specified context.
         /// </summary>
         /// <param name="context">The context.</param>
-        public override void Initialize(AppModuleContext context)
+        public override void Initialize(ModuleInitializationContext context)
         {
             var serviceProvider = context.ServiceProvoider;
             _serviceSchemaProvider = serviceProvider.GetInstances<IServiceSchemaProvider>();

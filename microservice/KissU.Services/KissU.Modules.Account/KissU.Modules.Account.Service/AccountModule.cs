@@ -14,7 +14,7 @@ namespace KissU.Modules.Account.Service
         /// 初始化
         /// </summary>
         /// <param name="moduleContext">应用模块上下文</param>
-        public override void Initialize(AppModuleContext moduleContext)
+        public override void Initialize(ModuleInitializationContext moduleContext)
         {
             var serviceProvider = moduleContext.ServiceProvoider.GetInstances<IServiceProvider>();
             _application.Initialize(serviceProvider);

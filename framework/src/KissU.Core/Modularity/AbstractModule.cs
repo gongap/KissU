@@ -81,7 +81,7 @@ namespace KissU.Modularity
         /// 初始化
         /// </summary>
         /// <param name="serviceProvider">The service provider.</param>
-        public virtual void Initialize(AppModuleContext serviceProvider)
+        public virtual void Initialize(ModuleInitializationContext serviceProvider)
         {
             Dispose();
         }

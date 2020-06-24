@@ -24,7 +24,7 @@ namespace KissU.Surging.ApiGateWay
         /// Initializes the specified context.
         /// </summary>
         /// <param name="context">The context.</param>
-        public override void Initialize(AppModuleContext context)
+        public override void Initialize(ModuleInitializationContext context)
         {
             base.Initialize(context);
         }

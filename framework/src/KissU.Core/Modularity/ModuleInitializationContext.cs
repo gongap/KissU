@@ -7,15 +7,15 @@ namespace KissU.Modularity
     /// <summary>
     /// 应用模块上下文
     /// </summary>
-    public class AppModuleContext
+    public class ModuleInitializationContext
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AppModuleContext" /> class.
+        /// Initializes a new instance of the <see cref="ModuleInitializationContext" /> class.
         /// </summary>
         /// <param name="modules">模块集合</param>
         /// <param name="virtualPaths">虚拟目录集合</param>
         /// <param name="serviceProvoider">平台容器</param>
-        public AppModuleContext(List<AbstractModule> modules, string[] virtualPaths, CPlatformContainer serviceProvoider)
+        public ModuleInitializationContext(List<AbstractModule> modules, string[] virtualPaths, CPlatformContainer serviceProvoider)
         {
             ServiceProvoider = Check.NotNull(serviceProvoider, nameof(serviceProvoider));
             Modules = Check.NotNull(modules, nameof(modules));
