@@ -1,4 +1,4 @@
-﻿namespace KissU.Surging.Swagger.SwaggerGen.Generator
+﻿namespace KissU.Surging.Kestrel.Swagger.SwaggerGen.Generator
 {
     /// <summary>
     /// StringExtensions.

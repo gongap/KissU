@@ -1,6 +1,6 @@
-﻿using KissU.Surging.Swagger.Swagger.Model;
+﻿using KissU.Surging.Kestrel.Swagger.Swagger.Model;
 
-namespace KissU.Surging.Swagger
+namespace KissU.Surging.Kestrel.Swagger
 {
     /// <summary>
     /// AppConfig.

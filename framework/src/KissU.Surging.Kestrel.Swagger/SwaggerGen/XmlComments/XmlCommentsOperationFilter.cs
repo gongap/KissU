@@ -4,17 +4,17 @@ using System.Linq;
 using System.Reflection;
 using System.Xml.XPath;
 using KissU.Surging.CPlatform.Runtime.Server;
-using KissU.Surging.Swagger.Swagger.Model;
-using KissU.Surging.Swagger.SwaggerGen.Generator;
+using KissU.Surging.Kestrel.Swagger.Swagger.Model;
+using KissU.Surging.Kestrel.Swagger.SwaggerGen.Generator;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 
-namespace KissU.Surging.Swagger.SwaggerGen.XmlComments
+namespace KissU.Surging.Kestrel.Swagger.SwaggerGen.XmlComments
 {
     /// <summary>
     /// XmlCommentsOperationFilter.
-    /// Implements the <see cref="KissU.Surging.Swagger.SwaggerGen.Generator.IOperationFilter" />
+    /// Implements the <see cref="IOperationFilter" />
     /// </summary>
-    /// <seealso cref="KissU.Surging.Swagger.SwaggerGen.Generator.IOperationFilter" />
+    /// <seealso cref="IOperationFilter" />
     public class XmlCommentsOperationFilter : IOperationFilter
     {
         private const string MemberXPath = "/doc/members/member[@name='{0}']";

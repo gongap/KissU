@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace KissU.Surging.Swagger.Internal
+namespace KissU.Surging.Kestrel.Swagger.Internal
 {
     /// <summary>
     /// Interface IServiceSchemaProvider

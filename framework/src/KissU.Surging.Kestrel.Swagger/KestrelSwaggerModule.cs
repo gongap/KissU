@@ -2,24 +2,23 @@
 using System.Reflection;
 using KissU.Modularity;
 using KissU.Surging.CPlatform.Runtime.Server;
-using KissU.Surging.Swagger.Internal;
-using KissU.Surging.Swagger.Swagger.Application;
-using KissU.Surging.Swagger.Swagger.Filters;
-using KissU.Surging.Swagger.Swagger.Model;
-using KissU.Surging.Swagger.SwaggerGen.Application;
-using KissU.Surging.Swagger.SwaggerUI;
+using KissU.Surging.Kestrel.Swagger.Internal;
+using KissU.Surging.Kestrel.Swagger.Swagger.Application;
+using KissU.Surging.Kestrel.Swagger.Swagger.Filters;
+using KissU.Surging.Kestrel.Swagger.Swagger.Model;
+using KissU.Surging.Kestrel.Swagger.SwaggerGen.Application;
+using KissU.Surging.Kestrel.Swagger.SwaggerUI;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp;
 using Volo.Abp.Modularity;
 
-namespace KissU.Surging.Swagger
+namespace KissU.Surging.Kestrel.Swagger
 {
     /// <summary>
     /// SwaggerModule.
-    /// Implements the <see cref="EnginePartModule" />
+    /// Implements the <see cref="KestrelHttpModule" />
     /// </summary>
-    /// <seealso cref="EnginePartModule" />
+    /// <seealso cref="KestrelHttpModule" />
     public class KestrelSwaggerModule : KestrelHttpModule
     {
         private IServiceEntryProvider _serviceEntryProvider;
@@ -43,16 +42,14 @@ namespace KissU.Surging.Swagger
         public override void Configure(ApplicationInitializationContext context)
         {
             var app = context.GetApplicationBuilder();
-             var info = AppConfig.SwaggerConfig.Info == null
-                ? AppConfig.SwaggerOptions
-                : AppConfig.SwaggerConfig.Info;
-            if (info != null)
+             var config = AppConfig.SwaggerConfig.Info ?? AppConfig.SwaggerOptions;
+            if (config != null)
             {
                 app.UseSwagger();
                 app.UseSwaggerUI(c =>
                 {
                     var areaName = AppConfig.SwaggerConfig.Options?.IngressName;
-                    c.SwaggerEndpoint($"../swagger/{info.Version}/swagger.json", info.Title, areaName);
+                    c.SwaggerEndpoint($"../swagger/{config.Version}/swagger.json", config.Title, areaName);
                     c.SwaggerEndpoint(_serviceEntryProvider.GetALLEntries(), areaName);
                 });
             }
@@ -61,25 +58,26 @@ namespace KissU.Surging.Swagger
         /// <summary>
         /// Registers the builder.
         /// </summary>
-        /// <param name="serviceCollection">The context.</param>
+        /// <param name="context">The context.</param>
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
-            var info = AppConfig.SwaggerConfig.Info == null
-                ? AppConfig.SwaggerOptions
-                : AppConfig.SwaggerConfig.Info;
+            var config = AppConfig.SwaggerConfig.Info ?? AppConfig.SwaggerOptions;
             var swaggerOptions = AppConfig.SwaggerConfig.Options;
-            if (info != null)
+            if (config != null)
             {
                 context.Services.AddSwaggerGen(options =>
                 {
                     options.OperationFilter<AddAuthorizationOperationFilter>();
-                    options.SwaggerDoc(info.Version, info);
+                    options.SwaggerDoc(config.Version, config);
                     if (swaggerOptions != null && swaggerOptions.IgnoreFullyQualified)
+                    {
                         options.IgnoreFullyQualified();
+                    }
+
                     options.GenerateSwaggerDoc(_serviceEntryProvider.GetALLEntries());
                     options.DocInclusionPredicateV2((docName, apiDesc) =>
                     {
-                        if (docName == info.Version)
+                        if (docName == config.Version)
                             return true;
                         var assembly = apiDesc.Type.Assembly;
 

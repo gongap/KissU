@@ -49,7 +49,7 @@
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.ProxyGenerator\KissU.Surging.ProxyGenerator.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Serilog\KissU.Surging.Serilog.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.BackgroundServer\KissU.Surging.BackgroundServer.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Swagger\KissU.Surging.Kestrel.Swagger.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Kestrel.Swagger\KissU.Surging.Kestrel.Swagger.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Zookeeper\KissU.Surging.Zookeeper.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Stage\KissU.Surging.Stage.csproj" />
     <ProjectReference Include="..\..\KissU.Services\KissU.Modules.Sample\KissU.Modules.SampleA.Service.Contracts\KissU.Modules.SampleA.Service.Contracts.csproj" />

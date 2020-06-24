@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.ApplicationModels;
 
-namespace KissU.Surging.Swagger.SwaggerGen.Application
+namespace KissU.Surging.Kestrel.Swagger.SwaggerGen.Application
 {
     /// <summary>
     /// SwaggerApplicationConvention.

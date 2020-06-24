@@ -4,9 +4,9 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using KissU.Surging.CPlatform.Runtime.Server;
-using KissU.Surging.Swagger.Swagger.Model;
+using KissU.Surging.Kestrel.Swagger.Swagger.Model;
 
-namespace KissU.Surging.Swagger.SwaggerUI
+namespace KissU.Surging.Kestrel.Swagger.SwaggerUI
 {
     /// <summary>
     /// SwaggerUIOptionsExtensions.

@@ -16,14 +16,14 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 
-namespace KissU.Surging.Swagger.SwaggerUI
+namespace KissU.Surging.Kestrel.Swagger.SwaggerUI
 {
     /// <summary>
     /// SwaggerUIMiddleware.
     /// </summary>
     public class SwaggerUIMiddleware
     {
-        private const string EmbeddedFileNamespace = "KissU.Surging.Swagger.SwaggerUI.swagger_ui_dist";
+        private const string EmbeddedFileNamespace = "KissU.Surging.Kestrel.Swagger.SwaggerUI.swagger_ui_dist";
 
         private readonly SwaggerUIOptions _options;
         private readonly StaticFileMiddleware _staticFileMiddleware;

@@ -1,10 +1,10 @@
-﻿namespace KissU.Surging.Swagger.Swagger.Model
+﻿namespace KissU.Surging.Kestrel.Swagger.Swagger.Model
 {
     /// <summary>
     /// BasicAuthScheme.
-    /// Implements the <see cref="KissU.Surging.Swagger.Swagger.Model.SecurityScheme" />
+    /// Implements the <see cref="SecurityScheme" />
     /// </summary>
-    /// <seealso cref="KissU.Surging.Swagger.Swagger.Model.SecurityScheme" />
+    /// <seealso cref="SecurityScheme" />
     public class BasicAuthScheme : SecurityScheme
     {
         /// <summary>

@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace KissU.Surging.Swagger.SwaggerGen.XmlComments
+namespace KissU.Surging.Kestrel.Swagger.SwaggerGen.XmlComments
 {
     /// <summary>
     /// XmlCommentsTextHelper.

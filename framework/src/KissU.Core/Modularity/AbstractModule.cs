@@ -127,15 +127,6 @@ namespace KissU.Modularity
         }
 
         /// <summary>
-        /// Initializes the specified builder.
-        /// </summary>
-        /// <param name="context">The context.</param>
-        public virtual void Configure(ApplicationInitializationContext context)
-        {
-
-        }
-
-        /// <summary>
         /// 配置服务
         /// </summary>
         /// <param name="context">The services.</param>

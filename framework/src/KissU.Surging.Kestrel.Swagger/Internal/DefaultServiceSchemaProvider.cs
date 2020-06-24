@@ -4,13 +4,13 @@ using System.IO;
 using System.Linq;
 using KissU.Surging.CPlatform.Runtime.Server;
 
-namespace KissU.Surging.Swagger.Internal
+namespace KissU.Surging.Kestrel.Swagger.Internal
 {
     /// <summary>
     /// DefaultServiceSchemaProvider.
-    /// Implements the <see cref="KissU.Surging.Swagger.Internal.IServiceSchemaProvider" />
+    /// Implements the <see cref="IServiceSchemaProvider" />
     /// </summary>
-    /// <seealso cref="KissU.Surging.Swagger.Internal.IServiceSchemaProvider" />
+    /// <seealso cref="IServiceSchemaProvider" />
     public class DefaultServiceSchemaProvider : IServiceSchemaProvider
     {
         private readonly IServiceEntryProvider _serviceEntryProvider;

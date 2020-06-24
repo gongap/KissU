@@ -2,13 +2,13 @@
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 
-namespace KissU.Surging.Swagger.SwaggerGen.Generator
+namespace KissU.Surging.Kestrel.Swagger.SwaggerGen.Generator
 {
     /// <summary>
     /// SchemaRegistryFactory.
-    /// Implements the <see cref="KissU.Surging.Swagger.SwaggerGen.Generator.ISchemaRegistryFactory" />
+    /// Implements the <see cref="ISchemaRegistryFactory" />
     /// </summary>
-    /// <seealso cref="KissU.Surging.Swagger.SwaggerGen.Generator.ISchemaRegistryFactory" />
+    /// <seealso cref="ISchemaRegistryFactory" />
     public class SchemaRegistryFactory : ISchemaRegistryFactory
     {
         private readonly JsonSerializerSettings _jsonSerializerSettings;

@@ -3,7 +3,7 @@ using System.Reflection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace KissU.Surging.Swagger.Swagger.Application
+namespace KissU.Surging.Kestrel.Swagger.Swagger.Application
 {
     /// <summary>
     /// SwaggerContractResolver.

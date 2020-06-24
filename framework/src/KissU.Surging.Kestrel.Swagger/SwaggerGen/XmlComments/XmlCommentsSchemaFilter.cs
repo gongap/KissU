@@ -1,16 +1,16 @@
 ﻿using System.Reflection;
 using System.Xml.XPath;
-using KissU.Surging.Swagger.Swagger.Model;
-using KissU.Surging.Swagger.SwaggerGen.Generator;
+using KissU.Surging.Kestrel.Swagger.Swagger.Model;
+using KissU.Surging.Kestrel.Swagger.SwaggerGen.Generator;
 using Newtonsoft.Json.Serialization;
 
-namespace KissU.Surging.Swagger.SwaggerGen.XmlComments
+namespace KissU.Surging.Kestrel.Swagger.SwaggerGen.XmlComments
 {
     /// <summary>
     /// XmlCommentsSchemaFilter.
-    /// Implements the <see cref="KissU.Surging.Swagger.SwaggerGen.Generator.ISchemaFilter" />
+    /// Implements the <see cref="ISchemaFilter" />
     /// </summary>
-    /// <seealso cref="KissU.Surging.Swagger.SwaggerGen.Generator.ISchemaFilter" />
+    /// <seealso cref="ISchemaFilter" />
     public class XmlCommentsSchemaFilter : ISchemaFilter
     {
         private const string MemberXPath = "/doc/members/member[@name='{0}']";

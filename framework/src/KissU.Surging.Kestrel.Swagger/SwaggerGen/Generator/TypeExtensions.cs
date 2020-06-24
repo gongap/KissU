@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace KissU.Surging.Swagger.SwaggerGen.Generator
+namespace KissU.Surging.Kestrel.Swagger.SwaggerGen.Generator
 {
     /// <summary>
     /// TypeExtensions.

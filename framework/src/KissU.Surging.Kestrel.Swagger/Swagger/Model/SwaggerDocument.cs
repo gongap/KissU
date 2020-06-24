@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace KissU.Surging.Swagger.Swagger.Model
+namespace KissU.Surging.Kestrel.Swagger.Swagger.Model
 {
     /// <summary>
     /// SwaggerDocument.
@@ -469,9 +469,9 @@ namespace KissU.Surging.Swagger.Swagger.Model
 
     /// <summary>
     /// BodyParameter.
-    /// Implements the <see cref="KissU.Surging.Swagger.Swagger.Model.IParameter" />
+    /// Implements the <see cref="IParameter" />
     /// </summary>
-    /// <seealso cref="KissU.Surging.Swagger.Swagger.Model.IParameter" />
+    /// <seealso cref="IParameter" />
     public class BodyParameter : IParameter
     {
         /// <summary>
@@ -517,11 +517,11 @@ namespace KissU.Surging.Swagger.Swagger.Model
 
     /// <summary>
     /// NonBodyParameter.
-    /// Implements the <see cref="KissU.Surging.Swagger.Swagger.Model.PartialSchema" />
-    /// Implements the <see cref="KissU.Surging.Swagger.Swagger.Model.IParameter" />
+    /// Implements the <see cref="PartialSchema" />
+    /// Implements the <see cref="IParameter" />
     /// </summary>
-    /// <seealso cref="KissU.Surging.Swagger.Swagger.Model.PartialSchema" />
-    /// <seealso cref="KissU.Surging.Swagger.Swagger.Model.IParameter" />
+    /// <seealso cref="PartialSchema" />
+    /// <seealso cref="IParameter" />
     public class NonBodyParameter : PartialSchema, IParameter
     {
         /// <summary>
@@ -863,9 +863,9 @@ namespace KissU.Surging.Swagger.Swagger.Model
 
     /// <summary>
     /// Header.
-    /// Implements the <see cref="KissU.Surging.Swagger.Swagger.Model.PartialSchema" />
+    /// Implements the <see cref="PartialSchema" />
     /// </summary>
-    /// <seealso cref="KissU.Surging.Swagger.Swagger.Model.PartialSchema" />
+    /// <seealso cref="PartialSchema" />
     public class Header : PartialSchema
     {
         /// <summary>

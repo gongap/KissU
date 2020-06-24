@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
-using KissU.Surging.Swagger.Swagger.Model;
+using KissU.Surging.Kestrel.Swagger.Swagger.Model;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 
-namespace KissU.Surging.Swagger.SwaggerGen.Generator
+namespace KissU.Surging.Kestrel.Swagger.SwaggerGen.Generator
 {
     /// <summary>
     /// SchemaRegistry.
-    /// Implements the <see cref="KissU.Surging.Swagger.SwaggerGen.Generator.ISchemaRegistry" />
+    /// Implements the <see cref="ISchemaRegistry" />
     /// </summary>
-    /// <seealso cref="KissU.Surging.Swagger.SwaggerGen.Generator.ISchemaRegistry" />
+    /// <seealso cref="ISchemaRegistry" />
     public class SchemaRegistry : ISchemaRegistry
     {
         private static readonly Dictionary<Type, Func<Schema>> PrimitiveTypeMap = new Dictionary<Type, Func<Schema>>

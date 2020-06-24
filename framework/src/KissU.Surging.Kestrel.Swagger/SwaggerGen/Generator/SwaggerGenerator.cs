@@ -10,7 +10,7 @@ using KissU.Dependency;
 using KissU.Helpers;
 using KissU.Surging.CPlatform.Messages;
 using KissU.Surging.CPlatform.Runtime.Server;
-using KissU.Surging.Swagger.Swagger.Model;
+using KissU.Surging.Kestrel.Swagger.Swagger.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
@@ -18,13 +18,13 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Primitives;
 
-namespace KissU.Surging.Swagger.SwaggerGen.Generator
+namespace KissU.Surging.Kestrel.Swagger.SwaggerGen.Generator
 {
     /// <summary>
     /// SwaggerGenerator.
-    /// Implements the <see cref="KissU.Surging.Swagger.Swagger.Model.ISwaggerProvider" />
+    /// Implements the <see cref="ISwaggerProvider" />
     /// </summary>
-    /// <seealso cref="KissU.Surging.Swagger.Swagger.Model.ISwaggerProvider" />
+    /// <seealso cref="ISwaggerProvider" />
     public class SwaggerGenerator : ISwaggerProvider
     {
         private static readonly Dictionary<BindingSource, string> ParameterLocationMap =

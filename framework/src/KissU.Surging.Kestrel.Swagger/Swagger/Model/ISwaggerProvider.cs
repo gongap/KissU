@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KissU.Surging.Swagger.Swagger.Model
+namespace KissU.Surging.Kestrel.Swagger.Swagger.Model
 {
     /// <summary>
     /// Interface ISwaggerProvider

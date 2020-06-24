@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using Newtonsoft.Json;
 
-namespace KissU.Surging.Swagger.SwaggerUI
+namespace KissU.Surging.Kestrel.Swagger.SwaggerUI
 {
     /// <summary>
     /// SwaggerUIOptions.
@@ -21,7 +21,7 @@ namespace KissU.Surging.Swagger.SwaggerUI
         /// Gets or sets a Stream function for retrieving the swagger-ui page
         /// </summary>
         public Func<Stream> IndexStream { get; set; } = () => typeof(SwaggerUIOptions).GetTypeInfo().Assembly
-            .GetManifestResourceStream("KissU.Surging.Swagger.SwaggerUI.index.html");
+            .GetManifestResourceStream("KissU.Surging.Kestrel.Swagger.SwaggerUI.index.html");
 
         /// <summary>
         /// Gets or sets a title for the swagger-ui page

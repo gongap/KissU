@@ -47,7 +47,7 @@ namespace KissU.Surging.KestrelHttpServer
         /// <summary>
         /// 配置服务
         /// </summary>
-        /// <param name="services">The services.</param>
+        /// <param name="context">The services.</param>
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
             context.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();

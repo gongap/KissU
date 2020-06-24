@@ -4,12 +4,12 @@ using System.Linq;
 using System.Reflection;
 using System.Xml.XPath;
 using KissU.Surging.CPlatform.Runtime.Server;
-using KissU.Surging.Swagger.Swagger.Model;
-using KissU.Surging.Swagger.SwaggerGen.Generator;
-using KissU.Surging.Swagger.SwaggerGen.XmlComments;
+using KissU.Surging.Kestrel.Swagger.Swagger.Model;
+using KissU.Surging.Kestrel.Swagger.SwaggerGen.Generator;
+using KissU.Surging.Kestrel.Swagger.SwaggerGen.XmlComments;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 
-namespace KissU.Surging.Swagger.SwaggerGen.Application
+namespace KissU.Surging.Kestrel.Swagger.SwaggerGen.Application
 {
     /// <summary>
     /// SwaggerGenOptionsExtensions.

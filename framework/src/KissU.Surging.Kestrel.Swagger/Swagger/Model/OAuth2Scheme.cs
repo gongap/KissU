@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 
-namespace KissU.Surging.Swagger.Swagger.Model
+namespace KissU.Surging.Kestrel.Swagger.Swagger.Model
 {
     /// <summary>
     /// OAuth2Scheme.
-    /// Implements the <see cref="KissU.Surging.Swagger.Swagger.Model.SecurityScheme" />
+    /// Implements the <see cref="SecurityScheme" />
     /// </summary>
-    /// <seealso cref="KissU.Surging.Swagger.Swagger.Model.SecurityScheme" />
+    /// <seealso cref="SecurityScheme" />
     public class OAuth2Scheme : SecurityScheme
     {
         /// <summary>

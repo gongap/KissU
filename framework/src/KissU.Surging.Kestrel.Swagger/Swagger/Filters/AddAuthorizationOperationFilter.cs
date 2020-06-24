@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using KissU.Surging.CPlatform.Filters.Implementation;
-using KissU.Surging.Swagger.Swagger.Model;
-using KissU.Surging.Swagger.SwaggerGen.Generator;
+using KissU.Surging.Kestrel.Swagger.Swagger.Model;
+using KissU.Surging.Kestrel.Swagger.SwaggerGen.Generator;
 
-namespace KissU.Surging.Swagger.Swagger.Filters
+namespace KissU.Surging.Kestrel.Swagger.Swagger.Filters
 {
     /// <summary>
     /// AddAuthorizationOperationFilter.
-    /// Implements the <see cref="KissU.Surging.Swagger.SwaggerGen.Generator.IOperationFilter" />
+    /// Implements the <see cref="IOperationFilter" />
     /// </summary>
-    /// <seealso cref="KissU.Surging.Swagger.SwaggerGen.Generator.IOperationFilter" />
+    /// <seealso cref="IOperationFilter" />
     public class AddAuthorizationOperationFilter : IOperationFilter
     {
         /// <summary>

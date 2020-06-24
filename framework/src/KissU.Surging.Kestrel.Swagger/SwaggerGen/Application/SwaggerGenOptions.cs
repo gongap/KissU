@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using KissU.Surging.Swagger.SwaggerGen.Generator;
+using KissU.Surging.Kestrel.Swagger.SwaggerGen.Generator;
 
-namespace KissU.Surging.Swagger.SwaggerGen.Application
+namespace KissU.Surging.Kestrel.Swagger.SwaggerGen.Application
 {
     /// <summary>
     /// SwaggerGenOptions.

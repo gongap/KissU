@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using KissU.Surging.Swagger.Swagger.Model;
-using KissU.Surging.Swagger.SwaggerGen.Generator;
+using KissU.Surging.Kestrel.Swagger.Swagger.Model;
+using KissU.Surging.Kestrel.Swagger.SwaggerGen.Generator;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
-namespace KissU.Surging.Swagger.SwaggerGen.Application
+namespace KissU.Surging.Kestrel.Swagger.SwaggerGen.Application
 {
     /// <summary>
     /// ConfigureSchemaRegistryOptions.

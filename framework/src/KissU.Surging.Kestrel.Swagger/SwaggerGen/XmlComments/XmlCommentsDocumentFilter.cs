@@ -1,17 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Xml.XPath;
-using KissU.Surging.Swagger.Swagger.Model;
-using KissU.Surging.Swagger.SwaggerGen.Generator;
+using KissU.Surging.Kestrel.Swagger.Swagger.Model;
+using KissU.Surging.Kestrel.Swagger.SwaggerGen.Generator;
 using Microsoft.AspNetCore.Mvc.Controllers;
 
-namespace KissU.Surging.Swagger.SwaggerGen.XmlComments
+namespace KissU.Surging.Kestrel.Swagger.SwaggerGen.XmlComments
 {
     /// <summary>
     /// XmlCommentsDocumentFilter.
-    /// Implements the <see cref="KissU.Surging.Swagger.SwaggerGen.Generator.IDocumentFilter" />
+    /// Implements the <see cref="IDocumentFilter" />
     /// </summary>
-    /// <seealso cref="KissU.Surging.Swagger.SwaggerGen.Generator.IDocumentFilter" />
+    /// <seealso cref="IDocumentFilter" />
     public class XmlCommentsDocumentFilter : IDocumentFilter
     {
         private const string MemberXPath = "/doc/members/member[@name='{0}']";

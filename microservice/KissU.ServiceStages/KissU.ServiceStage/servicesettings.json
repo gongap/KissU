@@ -28,7 +28,7 @@
     "Packages": [
       {
         "TypeName": "EnginePartModule",
-        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;SerilogModule;NLogModule;MessagePackModule;ConsulModule;WSProtocolModule;MqttProtocolModule;EventBusRabbitMQModule;CachingModule;KestrelHttpModule;DnsProtocolModule;SwaggerModule;ApiGeteWayModule;SkywalkingModule;KestrelNLogModule;ServiceHostModule;GrpcModule;ApolloModule;"
+        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;SerilogModule;NLogModule;MessagePackModule;ConsulModule;WSProtocolModule;MqttProtocolModule;EventBusRabbitMQModule;CachingModule;KestrelHttpModule;DnsProtocolModule;KestrelSwaggerModule;ApiGeteWayModule;SkywalkingModule;KestrelNLogModule;ServiceHostModule;GrpcModule;ApolloModule;"
       }
     ]
   },

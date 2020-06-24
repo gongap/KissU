@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 
-namespace KissU.Surging.Swagger.Swagger.Application
+namespace KissU.Surging.Kestrel.Swagger.Swagger.Application
 {
     /// <summary>
     /// SwaggerSerializerFactory.

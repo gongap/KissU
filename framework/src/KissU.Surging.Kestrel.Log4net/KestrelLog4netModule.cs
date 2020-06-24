@@ -5,6 +5,7 @@ using KissU.Surging.Log4net;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Volo.Abp;
+using Volo.Abp.Modularity;
 
 namespace KissU.Surging.Kestrel.Log4net
 {
