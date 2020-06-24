@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace KissU.Module
+namespace KissU.Modularity
 {
     /// <summary>
     /// 模块提供者

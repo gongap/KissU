@@ -5,7 +5,7 @@ using Autofac;
 using KissU.EventBus;
 using KissU.EventBus.Events;
 using KissU.EventBus.Implementation;
-using KissU.Module;
+using KissU.Modularity;
 using KissU.Surging.EventBusKafka.Configurations;
 using KissU.Surging.EventBusKafka.Implementation;
 using Microsoft.Extensions.Configuration;

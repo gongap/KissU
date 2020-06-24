@@ -18,7 +18,7 @@ namespace KissU.Modules.TenantManagement.Domain
     [DependsOn(typeof(AbpUiModule))] //TODO: It's not good to depend on the UI module. However, UserFriendlyException is inside it!
     public class AbpTenantManagementDomainModule : AbpModule
     {
-        public override void ConfigureServices(ServiceConfigurationContext context)
+        public override void ConfigureServices(Volo.Abp.Modularity.ServiceConfigurationContext context)
         {
             context.Services.AddAutoMapperObjectMapper<AbpTenantManagementDomainModule>();
 

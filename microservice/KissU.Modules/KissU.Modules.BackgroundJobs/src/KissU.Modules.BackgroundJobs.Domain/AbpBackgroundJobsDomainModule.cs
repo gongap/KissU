@@ -13,7 +13,7 @@ namespace KissU.Modules.BackgroundJobs.Domain
         )]
     public class AbpBackgroundJobsDomainModule : AbpModule
     {
-        public override void ConfigureServices(ServiceConfigurationContext context)
+        public override void ConfigureServices(Volo.Abp.Modularity.ServiceConfigurationContext context)
         {
             context.Services.AddAutoMapperObjectMapper<AbpBackgroundJobsDomainModule>();
             Configure<AbpAutoMapperOptions>(options =>

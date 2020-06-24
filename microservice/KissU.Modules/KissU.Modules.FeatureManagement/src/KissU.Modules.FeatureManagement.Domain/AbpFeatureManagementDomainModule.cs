@@ -14,7 +14,7 @@ namespace KissU.Modules.FeatureManagement.Domain
         )]
     public class AbpFeatureManagementDomainModule : AbpModule
     {
-        public override void ConfigureServices(ServiceConfigurationContext context)
+        public override void ConfigureServices(Volo.Abp.Modularity.ServiceConfigurationContext context)
         {
             Configure<FeatureManagementOptions>(options =>
             {

@@ -1,5 +1,7 @@
 ﻿using System;
-using KissU.Module;
+using KissU.Modularity;
+using Volo.Abp;
+using Volo.Abp.Modularity;
 
 namespace KissU.Surging.KestrelHttpServer.Extensions
 {
@@ -12,19 +14,17 @@ namespace KissU.Surging.KestrelHttpServer.Extensions
         /// Initializes the specified builder.
         /// </summary>
         /// <param name="moduleProvider">The module provider.</param>
-        /// <param name="builder">The builder.</param>
+        /// <param name="app">The applicationInitializationContext.</param>
         public static void Configure(this IModuleProvider moduleProvider, ApplicationInitializationContext app)
         {
             moduleProvider.Modules.ForEach(p =>
             {
                 try
                 {
-                    using (var abstractModule = p)
-                        if (abstractModule.Enable)
-                        {
-                            var module = abstractModule as KestrelHttpModule;
-                            module?.Configure(app);
-                        }
+                    if (p.Enable)
+                    {
+                        p.Configure(app);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -44,9 +44,10 @@ namespace KissU.Surging.KestrelHttpServer.Extensions
             {
                 try
                 {
-                    p.ConfigureServices(context.Services);
-                    var module = p as KestrelHttpModule;
-                    module?.ConfigureServices(context);
+                    if (p.Enable)
+                    {
+                        p.ConfigureServices(context);
+                    }
                 }
                 catch (Exception ex)
                 {

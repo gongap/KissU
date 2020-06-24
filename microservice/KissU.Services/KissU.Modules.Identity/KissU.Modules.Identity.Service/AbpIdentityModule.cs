@@ -16,7 +16,7 @@ namespace KissU.Modules.Identity.Service
     )]
     public class AbpIdentityModule : AbpModule
     {
-        public override void ConfigureServices(ServiceConfigurationContext context)
+        public override void ConfigureServices(Volo.Abp.Modularity.ServiceConfigurationContext context)
         {
             Configure<AbpDbContextOptions>(options =>
             {

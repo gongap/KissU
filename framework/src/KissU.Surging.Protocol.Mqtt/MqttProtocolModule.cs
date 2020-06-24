@@ -1,7 +1,7 @@
 ﻿using Autofac;
 
 using KissU.Dependency;
-using KissU.Module;
+using KissU.Modularity;
 using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Diagnostics;
 using KissU.Surging.CPlatform.Ids;

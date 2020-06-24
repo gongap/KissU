@@ -13,7 +13,7 @@ namespace KissU.Modules.FeatureManagement.Application
         )]
     public class AbpFeatureManagementApplicationModule : AbpModule
     {
-        public override void ConfigureServices(ServiceConfigurationContext context)
+        public override void ConfigureServices(Volo.Abp.Modularity.ServiceConfigurationContext context)
         {
             context.Services.AddAutoMapperObjectMapper<AbpFeatureManagementApplicationModule>();
             Configure<AbpAutoMapperOptions>(options =>

@@ -1,7 +1,7 @@
 ﻿using Autofac;
 
 using KissU.Dependency;
-using KissU.Module;
+using KissU.Modularity;
 using KissU.Surging.ApiGateWay.Aggregation;
 using KissU.Surging.ApiGateWay.OAuth;
 using KissU.Surging.ApiGateWay.OAuth.Implementation;

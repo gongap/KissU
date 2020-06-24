@@ -1,4 +1,4 @@
-﻿using KissU.Module;
+﻿using KissU.Modularity;
 using KissU.Surging.Configuration.Apollo.Configurations;
 
 namespace KissU.Surging.Configuration.Apollo

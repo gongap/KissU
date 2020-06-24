@@ -1,8 +1,11 @@
 ﻿using KissU.Helpers;
-using KissU.Module;
+using KissU.Modularity;
 using KissU.Surging.CPlatform;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NLog;
+using Volo.Abp;
+using Volo.Abp.Modularity;
 
 namespace KissU.Surging.Nlog
 {
@@ -30,12 +33,26 @@ namespace KissU.Surging.Nlog
         }
 
         /// <summary>
-        /// Inject dependent third-party components
+        /// Initializes the specified context.
         /// </summary>
-        /// <param name="builder">构建器包装</param>
-        protected override void ConfigureContainer(ContainerBuilderWrapper builder)
+        /// <param name="context">The context.</param>
+        public override void Configure(ApplicationInitializationContext context)
         {
-            base.ConfigureContainer(builder);
+            var serviceProvider = context.ServiceProvider;
+            base.Configure(context);
+            var section = AppConfig.GetSection("Logging");
+            nlogConfigFile = EnvironmentHelper.GetEnvironmentVariable(nlogConfigFile);
+            LogManager.LoadConfiguration(nlogConfigFile);
+            serviceProvider.GetService<ILoggerFactory>().AddProvider(new NLogProvider());
+        }
+
+        /// <summary>
+        /// 配置服务
+        /// </summary>
+        /// <param name="services">The services.</param>
+        public override void ConfigureServices(ServiceConfigurationContext  context)
+        {
+            context.Services.AddLogging();
         }
     }
 }

@@ -17,7 +17,7 @@ namespace KissU.Modules.Blogging.Application
         typeof(AbpAutoMapperModule))]
     public class BloggingApplicationModule : AbpModule
     {
-        public override void ConfigureServices(ServiceConfigurationContext context)
+        public override void ConfigureServices(Volo.Abp.Modularity.ServiceConfigurationContext context)
         {
             context.Services.AddAutoMapperObjectMapper<BloggingApplicationModule>();
             Configure<AbpAutoMapperOptions>(options =>

@@ -1,33 +1,17 @@
-﻿namespace KissU.Module
+﻿namespace KissU.Modularity
 {
     /// <summary>
-    /// 引擎零件模块
+    /// 系统模块基类
     /// </summary>
-    public class EnginePartModule : AbstractModule
+    public class SystemModule : AbstractModule
     {
         /// <summary>
-        /// Initializes the specified context.
+        /// 初始化.
         /// </summary>
         /// <param name="context">The context.</param>
         public override void Initialize(AppModuleContext context)
         {
             base.Initialize(context);
-        }
-
-        /// <summary>
-        /// 释放资源
-        /// </summary>
-        public override void Dispose()
-        {
-            base.Dispose();
-        }
-
-        /// <summary>
-        /// Registers the service builder.
-        /// </summary>
-        /// <param name="builder">The builder.</param>
-        protected virtual void RegisterServiceBuilder(IServiceBuilder builder)
-        {
         }
 
         /// <summary>

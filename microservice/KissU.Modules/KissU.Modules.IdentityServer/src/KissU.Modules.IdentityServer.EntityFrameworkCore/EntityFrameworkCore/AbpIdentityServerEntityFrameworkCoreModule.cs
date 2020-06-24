@@ -31,7 +31,7 @@ namespace KissU.Modules.IdentityServer.EntityFrameworkCore.EntityFrameworkCore
             );
         }
 
-        public override void ConfigureServices(ServiceConfigurationContext context)
+        public override void ConfigureServices(Volo.Abp.Modularity.ServiceConfigurationContext context)
         {
             context.Services.AddAbpDbContext<IdentityServerDbContext>(options =>
             {

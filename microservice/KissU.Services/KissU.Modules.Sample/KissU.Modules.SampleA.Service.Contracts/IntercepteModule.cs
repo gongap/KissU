@@ -1,4 +1,4 @@
-﻿using KissU.Module;
+﻿using KissU.Modularity;
 using KissU.Surging.Caching.Interceptors;
 using KissU.Surging.ProxyGenerator;
 using KissU.Surging.ProxyGenerator.Interceptors;

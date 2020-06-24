@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Autofac;
 using KissU.Dependency;
 using KissU.Extensions;
-using KissU.Module;
+using KissU.Modularity;
 using KissU.Surging.CPlatform.Address;
 using KissU.Surging.CPlatform.Configurations;
 using KissU.Surging.CPlatform.Engines;

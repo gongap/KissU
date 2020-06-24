@@ -11,7 +11,7 @@ namespace KissU.Modules.IdentityServer.DbMigrations.EntityFrameworkCore
     )]
     public class EntityFrameworkCoreDbMigrationsModule : AbpModule
     {
-        public override void ConfigureServices(ServiceConfigurationContext context)
+        public override void ConfigureServices(Volo.Abp.Modularity.ServiceConfigurationContext context)
         {
             context.Services.AddAbpDbContext<MigrationsDbContext>();
 

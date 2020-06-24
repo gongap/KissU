@@ -1,4 +1,4 @@
-﻿namespace KissU.Module
+﻿namespace KissU.Modularity
 {
     /// <summary>
     /// 业务模块基类

@@ -16,7 +16,7 @@ namespace KissU.Modules.Blogging.Service
     )]
     public class AbpBloggingModule : AbpModule
     {
-        public override void ConfigureServices(ServiceConfigurationContext context)
+        public override void ConfigureServices(Volo.Abp.Modularity.ServiceConfigurationContext context)
         {
             Configure<AbpDbContextOptions>(options =>
             {

@@ -11,7 +11,7 @@ using KissU.Convertibles.Implementation;
 using KissU.Dependency;
 using KissU.EventBus.Events;
 using KissU.Helpers;
-using KissU.Module;
+using KissU.Modularity;
 using KissU.Serialization;
 using KissU.Serialization.Implementation;
 using KissU.Surging.CPlatform.Cache;

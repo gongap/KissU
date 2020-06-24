@@ -1,6 +1,6 @@
 ﻿using Autofac;
 
-namespace KissU.Module
+namespace KissU.Modularity
 {
     /// <summary>
     /// 容器构建器包装

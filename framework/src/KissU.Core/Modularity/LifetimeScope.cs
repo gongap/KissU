@@ -1,4 +1,4 @@
-﻿namespace KissU.Module
+﻿namespace KissU.Modularity
 {
     /// <summary>
     /// 组件生命周期枚举类

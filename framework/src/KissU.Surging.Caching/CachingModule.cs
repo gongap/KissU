@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using KissU.Module;
+using KissU.Modularity;
 using KissU.Surging.Caching.AddressResolvers;
 using KissU.Surging.Caching.AddressResolvers.Implementation;
 using KissU.Surging.Caching.Configurations;

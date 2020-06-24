@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using Autofac;
 using KissU.Dependency;
-using KissU.Module;
+using KissU.Modularity;
 using KissU.Serialization;
 using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Diagnostics;
@@ -15,6 +15,8 @@ using KissU.Surging.KestrelHttpServer.Internal;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Volo.Abp;
+using Volo.Abp.Modularity;
 
 namespace KissU.Surging.KestrelHttpServer
 {
@@ -28,10 +30,10 @@ namespace KissU.Surging.KestrelHttpServer
         /// <summary>
         /// Initializes the specified builder.
         /// </summary>
-        /// <param name="builder">The builder.</param>
-        public virtual void Configure(ApplicationInitializationContext builder)
+        /// <param name="context">The builder.</param>
+        public override void Configure(ApplicationInitializationContext context)
         {
-            RestContext.GetContext().Initialize(builder.Builder.ApplicationServices);
+            RestContext.GetContext().Initialize(context.ServiceProvider);
         }
 
         /// <summary>
@@ -43,10 +45,10 @@ namespace KissU.Surging.KestrelHttpServer
         }
 
         /// <summary>
-        /// Registers the builder.
+        /// 配置服务
         /// </summary>
-        /// <param name="context">The context.</param>
-        public virtual void ConfigureServices(ServiceConfigurationContext context)
+        /// <param name="services">The services.</param>
+        public override void ConfigureServices(ServiceConfigurationContext context)
         {
             context.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             context.Services.AddFilters(typeof(HttpRequestFilterAttribute));

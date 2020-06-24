@@ -2,7 +2,7 @@
 using KissU.Dependency;
 using KissU.Helpers;
 
-namespace KissU.Module
+namespace KissU.Modularity
 {
     /// <summary>
     /// 应用模块上下文

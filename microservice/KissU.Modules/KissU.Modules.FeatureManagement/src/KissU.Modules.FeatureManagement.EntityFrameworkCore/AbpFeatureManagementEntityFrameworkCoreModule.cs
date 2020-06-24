@@ -11,7 +11,7 @@ namespace KissU.Modules.FeatureManagement.EntityFrameworkCore
     )]
     public class AbpFeatureManagementEntityFrameworkCoreModule : AbpModule
     {
-        public override void ConfigureServices(ServiceConfigurationContext context)
+        public override void ConfigureServices(Volo.Abp.Modularity.ServiceConfigurationContext context)
         {
             context.Services.AddAbpDbContext<FeatureManagementDbContext>(options =>
             {

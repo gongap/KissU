@@ -9,7 +9,7 @@ namespace KissU.Modules.Blogging.Application.Contracts
     [DependsOn(typeof(BloggingDomainSharedModule))]
     public class BloggingApplicationContractsModule : AbpModule
     {
-        public override void ConfigureServices(ServiceConfigurationContext context)
+        public override void ConfigureServices(Volo.Abp.Modularity.ServiceConfigurationContext context)
         {
             Configure<AbpVirtualFileSystemOptions>(options =>
             {

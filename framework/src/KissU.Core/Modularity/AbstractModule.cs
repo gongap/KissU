@@ -7,8 +7,10 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using KissU.Exceptions;
 using Microsoft.Extensions.DependencyInjection;
+using Volo.Abp;
+using Volo.Abp.Modularity;
 
-namespace KissU.Module
+namespace KissU.Modularity
 {
     /// <summary>
     /// 抽象模块
@@ -33,7 +35,7 @@ namespace KissU.Module
         /// <summary>
         /// 容器创建包装属性
         /// </summary>
-        public IServiceCollection Services { get; set; }
+        public ServiceConfigurationContext ServiceConfigurationContext { get; set; }
 
         /// <summary>
         /// 唯一标识guid
@@ -98,8 +100,9 @@ namespace KissU.Module
             try
             {
                 base.Load(builder);
+                var services = new ServiceCollection();
                 Builder = new ContainerBuilderWrapper(builder);
-                Services = new ServiceCollection();
+                ServiceConfigurationContext = new ServiceConfigurationContext(services);
 
                 // 如果可用
                 if (Enable)
@@ -110,9 +113,11 @@ namespace KissU.Module
                     // 注册组件
                     RegisterComponents(Builder);
 
-                    ConfigureServices(Services);
+                    // 配置服务
+                    ConfigureServices(ServiceConfigurationContext);
 
-                    Builder.ContainerBuilder.Populate(Services);
+                    // 填充容器
+                    Builder.ContainerBuilder.Populate(ServiceConfigurationContext.Services);
                 }
             }
             catch (Exception ex)
@@ -122,10 +127,19 @@ namespace KissU.Module
         }
 
         /// <summary>
-        /// ConfigureServices
+        /// Initializes the specified builder.
         /// </summary>
-        /// <param name="services">The services.</param>
-        public virtual void ConfigureServices(IServiceCollection services)
+        /// <param name="context">The context.</param>
+        public virtual void Configure(ApplicationInitializationContext context)
+        {
+
+        }
+
+        /// <summary>
+        /// 配置服务
+        /// </summary>
+        /// <param name="context">The services.</param>
+        public virtual void ConfigureServices(ServiceConfigurationContext context)
         {
         }
 

@@ -4,7 +4,7 @@ using System.Linq;
 using KissU.Dependency;
 using Microsoft.Extensions.Logging;
 
-namespace KissU.Module
+namespace KissU.Modularity
 {
     /// <summary>
     /// 模块提供器.

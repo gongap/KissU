@@ -1,7 +1,6 @@
 ﻿using System;
 using Autofac;
-
-using KissU.Module;
+using KissU.Modularity;
 using KissU.Serialization;
 using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Cache;

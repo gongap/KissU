@@ -1,5 +1,5 @@
 ﻿using System;
-using KissU.Module;
+using KissU.Modularity;
 using KissU.Surging.KestrelHttpServer;
 using KissU.Surging.KestrelHttpServer.Extensions;
 using KissU.Surging.Stage.Configurations;
@@ -70,7 +70,7 @@ namespace KissU.Surging.Stage
         /// Registers the builder.
         /// </summary>
         /// <param name="context">The context.</param>
-        public override void ConfigureServices(ServiceConfigurationContext context)
+        public override void ConfigureServices(Volo.Abp.Modularity.ServiceConfigurationContext context)
         {
             var apiConfig = AppConfig.Options.ApiGetWay;
             if (apiConfig != null)

@@ -1,5 +1,5 @@
 ﻿using System;
-using KissU.Module;
+using KissU.Modularity;
 using KissU.Surging.ProxyGenerator.Interceptors;
 using KissU.Surging.ProxyGenerator.Interceptors.Implementation;
 

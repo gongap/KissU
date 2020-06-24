@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using KissU.Modularity;
 using KissU.Surging.Apm.Skywalking.Abstractions;
 using KissU.Surging.Apm.Skywalking.Abstractions.Config;
 using KissU.Surging.Apm.Skywalking.Abstractions.Tracing;
@@ -15,8 +16,6 @@ using KissU.Surging.Apm.Skywalking.Core.Transport;
 using KissU.Surging.Apm.Skywalking.Transport.Grpc;
 using KissU.Surging.Apm.Skywalking.Transport.Grpc.V5;
 using KissU.Surging.Apm.Skywalking.Transport.Grpc.V6;
-
-using KissU.Module;
 using KissU.Surging.CPlatform.Diagnostics;
 
 namespace KissU.Surging.Apm.Skywalking

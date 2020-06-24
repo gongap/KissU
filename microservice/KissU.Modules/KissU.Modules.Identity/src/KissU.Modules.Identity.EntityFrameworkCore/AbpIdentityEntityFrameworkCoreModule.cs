@@ -10,7 +10,7 @@ namespace KissU.Modules.Identity.EntityFrameworkCore
         typeof(AbpUsersEntityFrameworkCoreModule))]
     public class AbpIdentityEntityFrameworkCoreModule : AbpModule
     {
-        public override void ConfigureServices(ServiceConfigurationContext context)
+        public override void ConfigureServices(Volo.Abp.Modularity.ServiceConfigurationContext context)
         {
             context.Services.AddAbpDbContext<IdentityDbContext>(options =>
             {

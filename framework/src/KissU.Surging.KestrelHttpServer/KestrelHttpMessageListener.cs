@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using KissU.Dependency;
-using KissU.Module;
+using KissU.Modularity;
 using KissU.Serialization;
 using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Configurations;
@@ -21,6 +21,9 @@ using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Volo.Abp;
+using Volo.Abp.DependencyInjection;
+using Volo.Abp.Modularity;
 
 namespace KissU.Surging.KestrelHttpServer
 {
@@ -151,25 +154,18 @@ namespace KissU.Surging.KestrelHttpServer
         /// <param name="services">The services.</param>
         public void ConfigureServices(IServiceCollection services)
         {
-            var builder = new ContainerBuilder();
-            services.AddMvc()
-                .AddNewtonsoftJson();
-            _moduleProvider.ConfigureServices(new ServiceConfigurationContext(services,
-                _moduleProvider.Modules,
-                _moduleProvider.VirtualPaths,
-                AppConfig.Configuration));
-            builder.Populate(services);
-            builder.Update(_container.Current.ComponentRegistry);
+            services.AddObjectAccessor<IApplicationBuilder>();
+            services.AddMvc().AddNewtonsoftJson();
+            _moduleProvider.ConfigureServices(new ServiceConfigurationContext(services));
         }
 
         private void AppResolve(IApplicationBuilder app)
         {
+            app.ApplicationServices.GetRequiredService<ObjectAccessor<IApplicationBuilder>>().Value = app;
             app.UseStaticFiles();
             app.UseRouting();
             app.UseEndpoints(endpoints => { endpoints.MapDefaultControllerRoute(); });
-            _moduleProvider.Configure(new ApplicationInitializationContext(app, _moduleProvider.Modules,
-                _moduleProvider.VirtualPaths,
-                AppConfig.Configuration));
+            _moduleProvider.Configure(new ApplicationInitializationContext(app.ApplicationServices));
             app.Run(async context =>
             {
                 var messageId = Guid.NewGuid().ToString("N");

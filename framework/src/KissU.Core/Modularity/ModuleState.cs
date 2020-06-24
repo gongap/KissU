@@ -1,4 +1,4 @@
-﻿namespace KissU.Module
+﻿namespace KissU.Modularity
 {
     /// <summary>
     /// 模块状态枚举。

@@ -1,4 +1,5 @@
 ﻿using KissU.Helpers;
+using KissU.Modularity;
 using KissU.Module;
 using KissU.Surging.CPlatform;
 using KissU.Surging.KestrelHttpServer;
@@ -39,7 +40,7 @@ namespace KissU.Surging.Kestrel.Log4net
         /// <param name="context">The context.</param>
         public override void Configure(ApplicationInitializationContext context)
         {
-            var serviceProvider = context.Builder.ApplicationServices;
+            var serviceProvider = context.ServiceProvider;
             base.Configure(context);
             var section = AppConfig.GetSection("Logging");
             log4NetConfigFile = EnvironmentHelper.GetEnvironmentVariable(log4NetConfigFile);

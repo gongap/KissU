@@ -47,7 +47,7 @@ namespace KissU.AuthServer.Host
     {
         private bool isMultiTenancyEnabled = true;
 
-        public override void ConfigureServices(ServiceConfigurationContext context)
+        public override void ConfigureServices(Volo.Abp.Modularity.ServiceConfigurationContext context)
         {
             var configuration = context.Services.GetConfiguration();
 

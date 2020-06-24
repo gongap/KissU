@@ -1,7 +1,6 @@
 ﻿using System;
 using Autofac;
-
-using KissU.Module;
+using KissU.Modularity;
 
 namespace KissU.Surging.CPlatform
 {

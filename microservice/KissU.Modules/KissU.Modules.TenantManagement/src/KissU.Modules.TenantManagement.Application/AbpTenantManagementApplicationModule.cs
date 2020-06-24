@@ -11,7 +11,7 @@ namespace KissU.Modules.TenantManagement.Application
     [DependsOn(typeof(AbpAutoMapperModule))]
     public class AbpTenantManagementApplicationModule : AbpModule
     {
-        public override void ConfigureServices(ServiceConfigurationContext context)
+        public override void ConfigureServices(Volo.Abp.Modularity.ServiceConfigurationContext context)
         {
             context.Services.AddAutoMapperObjectMapper<AbpTenantManagementApplicationModule>();
             Configure<AbpAutoMapperOptions>(options =>
