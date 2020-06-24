@@ -28,15 +28,6 @@ namespace KissU.Surging.Zookeeper
     public class ZookeeperModule : EnginePartModule
     {
         /// <summary>
-        /// Initializes the specified context.
-        /// </summary>
-        /// <param name="context">The context.</param>
-        public override void Initialize(ModuleInitializationContext context)
-        {
-            base.Initialize(context);
-        }
-
-        /// <summary>
         /// Inject dependent third-party components
         /// </summary>
         /// <param name="builder">构建器包装</param>

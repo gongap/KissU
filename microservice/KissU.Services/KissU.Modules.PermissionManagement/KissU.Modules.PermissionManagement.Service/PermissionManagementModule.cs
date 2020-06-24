@@ -16,7 +16,6 @@ namespace KissU.Modules.PermissionManagement.Service
         /// <param name="moduleContext">应用模块上下文</param>
         public override void Initialize(ModuleInitializationContext moduleContext)
         {
-            base.Initialize(moduleContext);
             var serviceProvider = moduleContext.ServiceProvoider.GetInstances<IServiceProvider>();
             _application.Initialize(serviceProvider);
         }

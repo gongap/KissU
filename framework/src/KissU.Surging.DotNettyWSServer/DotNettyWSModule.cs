@@ -19,15 +19,6 @@ namespace KissU.Surging.DotNettyWSServer
     public class DotNettyWSModule : EnginePartModule
     {
         /// <summary>
-        /// 初始化
-        /// </summary>
-        /// <param name="serviceProvider">The service provider.</param>
-        public override void Initialize(ModuleInitializationContext serviceProvider)
-        {
-            base.Initialize(serviceProvider);
-        }
-
-        /// <summary>
         /// 注册服务
         /// </summary>
         /// <param name="builder">构建器包装</param>

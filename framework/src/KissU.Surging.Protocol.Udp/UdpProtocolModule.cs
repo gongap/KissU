@@ -19,15 +19,6 @@ namespace KissU.Surging.Protocol.Udp
     public class DnsProtocolModule : EnginePartModule
     {
         /// <summary>
-        /// 初始化
-        /// </summary>
-        /// <param name="serviceProvider">The service provider.</param>
-        public override void Initialize(ModuleInitializationContext serviceProvider)
-        {
-            base.Initialize(serviceProvider);
-        }
-
-        /// <summary>
         /// Inject dependent third-party components
         /// </summary>
         /// <param name="builder">构建器包装</param>

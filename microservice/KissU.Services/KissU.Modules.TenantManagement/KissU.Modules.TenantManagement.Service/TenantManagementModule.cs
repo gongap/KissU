@@ -13,11 +13,10 @@ namespace KissU.Modules.TenantManagement.Service
         /// <summary>
         /// 初始化
         /// </summary>
-        /// <param name="moduleContext">应用模块上下文</param>
-        public override void Initialize(ModuleInitializationContext moduleContext)
+        /// <param name="context">应用模块上下文</param>
+        public override void Initialize(ModuleInitializationContext context)
         {
-            base.Initialize(moduleContext);
-            var serviceProvider = moduleContext.ServiceProvoider.GetInstances<IServiceProvider>();
+            var serviceProvider = context.ServiceProvoider.GetInstances<IServiceProvider>();
             _application.Initialize(serviceProvider);
         }
 

@@ -19,15 +19,6 @@ namespace KissU.Surging.Grpc
     public class GrpcModule : EnginePartModule
     {
         /// <summary>
-        /// Initializes the specified context.
-        /// </summary>
-        /// <param name="context">The context.</param>
-        public override void Initialize(ModuleInitializationContext context)
-        {
-            base.Initialize(context);
-        }
-
-        /// <summary>
         /// 注册服务
         /// </summary>
         /// <param name="builder">构建器包装</param>
