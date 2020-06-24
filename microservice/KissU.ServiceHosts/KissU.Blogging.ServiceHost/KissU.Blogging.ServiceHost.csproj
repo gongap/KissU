@@ -32,6 +32,8 @@
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.EventBusKafka\KissU.Surging.EventBusKafka.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.EventBusRabbitMQ\KissU.Surging.EventBusRabbitMQ.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Grpc\KissU.Surging.Grpc.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Kestrel.Log4net\KissU.Surging.Kestrel.Log4net.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Kestrel.Nlog\KissU.Surging.Kestrel.Nlog.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.KestrelHttpServer\KissU.Surging.KestrelHttpServer.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Log4net\KissU.Surging.Log4net.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.NLog\KissU.Surging.Nlog.csproj" />
@@ -42,7 +44,7 @@
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.ProxyGenerator\KissU.Surging.ProxyGenerator.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Serilog\KissU.Surging.Serilog.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.BackgroundServer\KissU.Surging.BackgroundServer.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Swagger\KissU.Surging.Swagger.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Kestrel.Swagger\KissU.Surging.Kestrel.Swagger.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Thrift\KissU.Surging.Thrift.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Zookeeper\KissU.Surging.Zookeeper.csproj" />
     <ProjectReference Include="..\..\KissU.Services\KissU.Modules.Blogging\KissU.Modules.Blogging.Service\KissU.Modules.Blogging.Service.csproj" />

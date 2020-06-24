@@ -42,7 +42,7 @@ namespace KissU.Surging.CPlatform
                 BuildServiceEngine(mapper);
                 mapper.Resolve<IServiceTokenGenerator>().GeneratorToken(token);
                 var _port = AppConfig.ServerOptions.Port = AppConfig.ServerOptions.Port == 0 ? port : AppConfig.ServerOptions.Port;
-                var _ip = AppConfig.ServerOptions.Ip = AppConfig.ServerOptions.Ip ?? ip;
+                var _ip = AppConfig.ServerOptions.Ip ??= ip;
                 _port = AppConfig.ServerOptions.Port = AppConfig.ServerOptions.IpEndpoint?.Port ?? _port;
                 _ip = AppConfig.ServerOptions.Ip = AppConfig.ServerOptions.IpEndpoint?.Address.ToString() ?? _ip;
                 _ip = NetUtils.GetHostAddress(_ip);

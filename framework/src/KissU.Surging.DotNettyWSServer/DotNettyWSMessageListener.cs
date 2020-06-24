@@ -104,8 +104,15 @@ namespace KissU.Surging.DotNettyWSServer
             public override void ChannelActive(IChannelHandlerContext ctx)
             {
                 if (_logger.IsEnabled(LogLevel.Information))
+                {
                     _logger.LogInformation("ws 连接 ctx:" + ctx);
-                if (PlayerGroup.ChannelGroup == null) PlayerGroup.ChannelGroup = new DefaultChannelGroup(ctx.Executor);
+                }
+
+                if (PlayerGroup.ChannelGroup == null)
+                {
+                    PlayerGroup.ChannelGroup = new DefaultChannelGroup(ctx.Executor);
+                }
+
                 PlayerGroup.AddChannel(ctx.Channel);
             }
 
@@ -119,7 +126,9 @@ namespace KissU.Surging.DotNettyWSServer
                 context.CloseAsync();
                 PlayerGroup.RemoveChannel(context.Channel);
                 if (_logger.IsEnabled(LogLevel.Error))
+                {
                     _logger.LogError(exception, $"与服务器：{context.Channel.RemoteAddress}通信时发送了错误。");
+                }
             }
 
             /// <summary>
@@ -166,13 +175,12 @@ namespace KissU.Surging.DotNettyWSServer
         public async Task StartAsync(EndPoint endPoint)
         {
             if (_logger.IsEnabled(LogLevel.Debug))
+            {
                 _logger.LogDebug($"准备启动服务主机，监听地址：{endPoint}。");
-
+            }
 
             IEventLoopGroup bossGroup = new MultithreadEventLoopGroup(1);
-            IEventLoopGroup
-                workerGroup =
-                    new MultithreadEventLoopGroup(); //Default eventLoopCount is Environment.ProcessorCount * 2
+            IEventLoopGroup workerGroup = new MultithreadEventLoopGroup(); //Default eventLoopCount is Environment.ProcessorCount * 2
             var bootstrap = new ServerBootstrap();
 
             if (AppConfig.ServerOptions.Libuv)
@@ -215,9 +223,11 @@ namespace KissU.Surging.DotNettyWSServer
             {
                 _channel = await bootstrap.BindAsync(endPoint);
                 if (_logger.IsEnabled(LogLevel.Debug))
+                {
                     _logger.LogDebug($"WS服务主机启动成功，监听地址：{endPoint}。");
+                }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 _logger.LogError($"WS服务主机启动失败，监听地址：{endPoint}。 ");
             }
@@ -232,7 +242,10 @@ namespace KissU.Surging.DotNettyWSServer
         public async Task OnReceived(IMessageSender sender, TransportMessage message)
         {
             if (Received == null)
+            {
                 return;
+            }
+
             await Received(sender, message);
         }
 

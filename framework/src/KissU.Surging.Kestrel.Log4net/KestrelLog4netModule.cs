@@ -1,11 +1,10 @@
 ﻿using KissU.Helpers;
 using KissU.Modularity;
-using KissU.Module;
 using KissU.Surging.CPlatform;
-using KissU.Surging.KestrelHttpServer;
 using KissU.Surging.Log4net;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Volo.Abp;
 
 namespace KissU.Surging.Kestrel.Log4net
 {
@@ -17,22 +16,6 @@ namespace KissU.Surging.Kestrel.Log4net
     public class KestrelLog4netModule : KestrelHttpModule
     {
         private string log4NetConfigFile = "${LogPath}|log4net.config";
-
-        /// <summary>
-        /// Initializes the specified context.
-        /// </summary>
-        /// <param name="context">The context.</param>
-        public override void Initialize(AppModuleContext context)
-        {
-        }
-
-        /// <summary>
-        /// Registers the builder.
-        /// </summary>
-        /// <param name="context">The context.</param>
-        public override void ConfigureWebHost(WebHostContext context)
-        {
-        }
 
         /// <summary>
         /// Initializes the specified context.
@@ -54,14 +37,6 @@ namespace KissU.Surging.Kestrel.Log4net
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
             context.Services.AddLogging();
-        }
-
-        /// <summary>
-        /// Inject dependent third-party components
-        /// </summary>
-        /// <param name="builder">构建器包装</param>
-        protected override void ConfigureContainer(ContainerBuilderWrapper builder)
-        {
         }
     }
 }

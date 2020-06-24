@@ -11,6 +11,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using Volo.Abp;
+using Volo.Abp.Modularity;
 
 namespace KissU.Surging.Stage
 {
@@ -19,7 +21,7 @@ namespace KissU.Surging.Stage
     /// Implements the <see cref="KestrelHttpModule" />
     /// </summary>
     /// <seealso cref="KestrelHttpModule" />
-    public class StageModule : KestrelHttpModule
+    public class StageModule : KestrelHttpServerModule
     {
         private IWebServerListener _listener;
 
@@ -47,10 +49,11 @@ namespace KissU.Surging.Stage
         /// <param name="context">The context.</param>
         public override void Configure(ApplicationInitializationContext context)
         {
+            var app = context.GetApplicationBuilder();
             var policy = AppConfig.Options.AccessPolicy;
             if (policy != null)
             {
-                context.Builder.UseCors(builder =>
+                app.UseCors(builder =>
                 {
                     if (policy.Origins != null)
                         builder.WithOrigins(policy.Origins);
@@ -70,7 +73,7 @@ namespace KissU.Surging.Stage
         /// Registers the builder.
         /// </summary>
         /// <param name="context">The context.</param>
-        public override void ConfigureServices(Volo.Abp.Modularity.ServiceConfigurationContext context)
+        public override void ConfigureServices(ServiceConfigurationContext context)
         {
             var apiConfig = AppConfig.Options.ApiGetWay;
             if (apiConfig != null)

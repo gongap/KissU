@@ -20,7 +20,7 @@ namespace KissU.Surging.Swagger
     /// Implements the <see cref="EnginePartModule" />
     /// </summary>
     /// <seealso cref="EnginePartModule" />
-    public class SwaggerModule : EnginePartModule
+    public class KestrelSwaggerModule : KestrelHttpModule
     {
         private IServiceEntryProvider _serviceEntryProvider;
         private IServiceSchemaProvider _serviceSchemaProvider;
@@ -109,8 +109,7 @@ namespace KissU.Surging.Swagger
                 AppConfig.SwaggerConfig = section.Get<DocumentConfiguration>();
             }
 
-            builder.RegisterType(typeof(DefaultServiceSchemaProvider)).As(typeof(IServiceSchemaProvider))
-                .SingleInstance();
+            builder.RegisterType(typeof(DefaultServiceSchemaProvider)).As(typeof(IServiceSchemaProvider)).SingleInstance();
         }
     }
 }

@@ -23,7 +23,8 @@ namespace KissU.Surging.KestrelHttpServer.Extensions
                 {
                     if (p.Enable)
                     {
-                        p.Configure(app);
+                        var module = p as KestrelHttpModule;
+                        module?.Configure(app);
                     }
                 }
                 catch (Exception ex)
@@ -46,7 +47,8 @@ namespace KissU.Surging.KestrelHttpServer.Extensions
                 {
                     if (p.Enable)
                     {
-                        p.ConfigureServices(context);
+                        var module = p as KestrelHttpModule;
+                        module?.ConfigureServices(context);
                     }
                 }
                 catch (Exception ex)
@@ -69,7 +71,7 @@ namespace KissU.Surging.KestrelHttpServer.Extensions
                 {
                     if (p.Enable)
                     {
-                        var module = p as KestrelHttpModule;
+                        var module = p as KestrelHttpServerModule;
                         module?.ConfigureWebHost(context);
                     }
                 }

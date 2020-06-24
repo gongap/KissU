@@ -25,7 +25,7 @@ namespace KissU.Surging.KestrelHttpServer
     /// Implements the <see cref="EnginePartModule" />
     /// </summary>
     /// <seealso cref="EnginePartModule" />
-    public class KestrelHttpModule : EnginePartModule
+    public class KestrelHttpServerModule : KestrelHttpModule
     {
         /// <summary>
         /// Initializes the specified builder.

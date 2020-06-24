@@ -8,7 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KissU.Surging.KestrelHttpServer\KissU.Surging.KestrelHttpServer.csproj" />
     <ProjectReference Include="..\KissU.Surging.NLog\KissU.Surging.Nlog.csproj" />
   </ItemGroup>
 </Project>
