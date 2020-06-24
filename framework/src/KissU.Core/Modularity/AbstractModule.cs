@@ -7,8 +7,6 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using KissU.Exceptions;
 using Microsoft.Extensions.DependencyInjection;
-using Volo.Abp;
-using Volo.Abp.Modularity;
 
 namespace KissU.Modularity
 {

@@ -1,8 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Volo.Abp;
-using Volo.Abp.Modularity;
-
-namespace KissU.Modularity
+﻿namespace KissU.Modularity
 {
     /// <summary>
     /// KestrelHttpModule

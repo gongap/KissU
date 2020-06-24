@@ -3,14 +3,13 @@ using System.Reflection;
 using KissU.Modularity;
 using KissU.Surging.CPlatform.Runtime.Server;
 using KissU.Surging.Kestrel.Swagger.Internal;
-using KissU.Surging.Kestrel.Swagger.Swagger.Application;
 using KissU.Surging.Kestrel.Swagger.Swagger.Filters;
 using KissU.Surging.Kestrel.Swagger.Swagger.Model;
 using KissU.Surging.Kestrel.Swagger.SwaggerGen.Application;
-using KissU.Surging.Kestrel.Swagger.SwaggerUI;
 using Microsoft.Extensions.Configuration;
-using Volo.Abp;
-using Volo.Abp.Modularity;
+using KissU.Surging.Kestrel.Swagger.Swagger.Application;
+using KissU.Surging.Kestrel.Swagger.SwaggerUI;
+using KissU.Surging.KestrelHttpServer;
 
 namespace KissU.Surging.Kestrel.Swagger
 {

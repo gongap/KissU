@@ -72,8 +72,7 @@ namespace KissU.Surging.KestrelHttpServer
         /// <param name="port">The port.</param>
         public override async Task StartAsync(string ip, int port)
         {
-            await _messageListenerFactory(new IPEndPoint(IPAddress.Parse(ip),
-                AppConfig.ServerOptions.Ports.HttpPort ?? 0));
+            await _messageListenerFactory(new IPEndPoint(IPAddress.Parse(ip), AppConfig.ServerOptions.Ports.HttpPort ?? 0));
         }
 
         #endregion Overrides of ServiceHostAbstract

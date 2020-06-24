@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using KissU.Dependency;
+using KissU.Extensions;
 using KissU.Modularity;
 using KissU.Serialization;
 using KissU.Surging.CPlatform;
@@ -21,9 +22,6 @@ using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Volo.Abp;
-using Volo.Abp.DependencyInjection;
-using Volo.Abp.Modularity;
 
 namespace KissU.Surging.KestrelHttpServer
 {
