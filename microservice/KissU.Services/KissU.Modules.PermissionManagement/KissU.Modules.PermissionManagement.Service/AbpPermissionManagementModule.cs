@@ -1,7 +1,7 @@
 ﻿using KissU.Abp.Autofac;
 using KissU.Modules.PermissionManagement.Application;
-using KissU.Modules.PermissionManagement.Domain;
 using KissU.Modules.PermissionManagement.Domain.Identity;
+using KissU.Modules.PermissionManagement.Domain.IdentityServer;
 using KissU.Modules.PermissionManagement.Domain.Shared.Localization;
 using KissU.Modules.PermissionManagement.EntityFrameworkCore;
 using Localization.Resources.AbpUi;
@@ -13,6 +13,8 @@ using Volo.Abp.Modularity;
 namespace KissU.Modules.PermissionManagement.Service
 {
     [DependsOn(
+        typeof(AbpPermissionManagementDomainIdentityModule),
+        typeof(AbpPermissionManagementDomainIdentityServerModule),
         typeof(AbpPermissionManagementApplicationModule),
         typeof(AbpPermissionManagementEntityFrameworkCoreModule),
         typeof(AbpAutofacModule)
@@ -33,12 +35,6 @@ namespace KissU.Modules.PermissionManagement.Service
                     .AddBaseTypes(
                         typeof(AbpUiResource)
                     );
-            }); 
-            
-            Configure<PermissionManagementOptions>(options =>
-            {
-                options.ManagementProviders.Add<UserPermissionManagementProvider>();
-                options.ManagementProviders.Add<RolePermissionManagementProvider>();
             });
 
             context.Services.AddAlwaysAllowAuthorization();
