@@ -26,15 +26,6 @@ namespace KissU.Surging.KestrelHttpServer
     public class KestrelHttpModule : EnginePartModule
     {
         /// <summary>
-        /// Initializes the specified context.
-        /// </summary>
-        /// <param name="context">The context.</param>
-        public override void Initialize(AppModuleContext context)
-        {
-            base.Initialize(context);
-        }
-
-        /// <summary>
         /// Initializes the specified builder.
         /// </summary>
         /// <param name="builder">The builder.</param>

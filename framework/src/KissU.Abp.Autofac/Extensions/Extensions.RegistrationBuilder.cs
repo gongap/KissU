@@ -68,7 +68,7 @@ namespace KissU.Abp.Autofac.Extensions
             where TActivatorData : ReflectionActivatorData
         {
             //Enable Property Injection only for types in an assembly containing an AbpModule
-            if (moduleContainer.Modules.Any(m => m.Assembly == implementationType.Assembly))
+            if (moduleContainer != null && moduleContainer.Modules.Any(m => m.Assembly == implementationType.Assembly))
             {
                 registrationBuilder = registrationBuilder.PropertiesAutowired();
             }

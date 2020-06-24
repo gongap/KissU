@@ -44,11 +44,9 @@ namespace KissU.Surging.KestrelHttpServer.Extensions
             {
                 try
                 {
-                    if (p.Enable)
-                    {
-                        var module = p as KestrelHttpModule;
-                        module?.ConfigureServices(context);
-                    }
+                    p.ConfigureServices(context.Services);
+                    var module = p as KestrelHttpModule;
+                    module?.ConfigureServices(context);
                 }
                 catch (Exception ex)
                 {

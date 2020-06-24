@@ -86,7 +86,6 @@ namespace KissU.Modules.FeatureManagement.Application
                 throw new AbpException($"No policy defined to get/set permissions for the provider '{policyName}'. Use {nameof(FeatureManagementOptions)} to map the policy.");
             }
 
-            
             var authorizationService = this.ServiceProvider.GetRequiredService<IAbpAuthorizationService>();
             await authorizationService.CheckAsync(policyName);
         }

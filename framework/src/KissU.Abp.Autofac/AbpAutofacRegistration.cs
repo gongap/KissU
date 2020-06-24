@@ -75,7 +75,7 @@ namespace KissU.Abp.Autofac
         /// </param>
         private static void Register(ContainerBuilder builder, IServiceCollection services)
         {
-            var moduleContainer = services.GetSingletonInstance<IModuleContainer>();
+            var moduleContainer = services.GetSingletonInstanceOrNull<IModuleContainer>();
             var registrationActionList = services.GetRegistrationActionList();
 
             foreach (var service in services)

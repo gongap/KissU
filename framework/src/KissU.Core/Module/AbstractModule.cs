@@ -4,7 +4,9 @@ using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using KissU.Exceptions;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace KissU.Module
 {
@@ -27,6 +29,11 @@ namespace KissU.Module
         /// 容器创建包装属性
         /// </summary>
         public ContainerBuilderWrapper Builder { get; set; }
+
+        /// <summary>
+        /// 容器创建包装属性
+        /// </summary>
+        public IServiceCollection Services { get; set; }
 
         /// <summary>
         /// 唯一标识guid
@@ -92,6 +99,7 @@ namespace KissU.Module
             {
                 base.Load(builder);
                 Builder = new ContainerBuilderWrapper(builder);
+                Services = new ServiceCollection();
 
                 // 如果可用
                 if (Enable)
@@ -101,12 +109,24 @@ namespace KissU.Module
 
                     // 注册组件
                     RegisterComponents(Builder);
+
+                    ConfigureServices(Services);
+
+                    Builder.ContainerBuilder.Populate(Services);
                 }
             }
             catch (Exception ex)
             {
                 throw new CPlatformException(string.Format("注册模块组件类型时发生错误：{0}", ex.Message));
             }
+        }
+
+        /// <summary>
+        /// ConfigureServices
+        /// </summary>
+        /// <param name="services">The services.</param>
+        public virtual void ConfigureServices(IServiceCollection services)
+        {
         }
 
         /// <summary>
