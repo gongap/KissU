@@ -9,15 +9,16 @@ using Volo.Abp.VirtualFileSystem;
 namespace KissU.Modules.Account.Application.Contracts
 {
     [DependsOn(
-        typeof(AbpIdentityApplicationContractsModule)
+        typeof(AbpIdentityApplicationContractsModule),
+            typeof(AbpLocalizationModule)
     )]
     public class AbpAccountApplicationContractsModule : AbpModule
     {
-        public override void ConfigureServices(Volo.Abp.Modularity.ServiceConfigurationContext context)
+        public override void ConfigureServices(ServiceConfigurationContext context)
         {
             Configure<AbpVirtualFileSystemOptions>(options =>
             {
-                options.FileSets.AddEmbedded<AbpAccountApplicationContractsModule>();
+                options.FileSets.AddEmbedded<AbpAccountApplicationContractsModule>("KissU.Modules.Account.Application.Contracts");
             });
 
             Configure<AbpLocalizationOptions>(options =>
@@ -25,12 +26,12 @@ namespace KissU.Modules.Account.Application.Contracts
                 options.Resources
                     .Add<AccountResource>("en")
                     .AddBaseTypes(typeof(AbpValidationResource))
-                    .AddVirtualJson("Localization/Resources");
+                    .AddVirtualJson("/Localization/Resources");
             });
 
             Configure<AbpExceptionLocalizationOptions>(options =>
             {
-                options.MapCodeNamespace("KissU.Modules.Account.Application.Contracts.Localization", typeof(AccountResource));
+                options.MapCodeNamespace("Volo.Abp.Account", typeof(AccountResource));
             });
         }
     }

@@ -14,7 +14,7 @@ namespace KissU.Modules.Blogging.Domain.Shared
         {
             Configure<AbpVirtualFileSystemOptions>(options =>
             {
-                options.FileSets.AddEmbedded<BloggingDomainSharedModule>();
+                options.FileSets.AddEmbedded<BloggingDomainSharedModule>("KissU.Modules.Blogging.Domain.Shared");
             });
 
             Configure<AbpLocalizationOptions>(options =>
@@ -22,7 +22,7 @@ namespace KissU.Modules.Blogging.Domain.Shared
                 options.Resources
                     .Add<BloggingResource>("en")
                     .AddBaseTypes(typeof(AbpValidationResource))
-                    .AddVirtualJson("Volo/Blogging/Localization/Resources");
+                    .AddVirtualJson("/Localization/Resources");
             });
         }
     }

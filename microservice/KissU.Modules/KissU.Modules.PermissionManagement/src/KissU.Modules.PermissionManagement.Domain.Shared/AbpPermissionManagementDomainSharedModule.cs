@@ -16,7 +16,7 @@ namespace KissU.Modules.PermissionManagement.Domain.Shared
         {
             Configure<AbpVirtualFileSystemOptions>(options =>
             {
-                options.FileSets.AddEmbedded<AbpPermissionManagementDomainSharedModule>();
+                options.FileSets.AddEmbedded<AbpPermissionManagementDomainSharedModule>("KissU.Modules.PermissionManagement.Domain.Shared");
             });
 
             Configure<AbpLocalizationOptions>(options =>
@@ -25,7 +25,7 @@ namespace KissU.Modules.PermissionManagement.Domain.Shared
                     .Add<AbpPermissionManagementResource>("en")
                     .AddBaseTypes(
                         typeof(AbpValidationResource)
-                    ).AddVirtualJson("/Volo/Abp/PermissionManagement/Localization/Domain");
+                    ).AddVirtualJson("/Localization/Domain");
             });
         }
     }

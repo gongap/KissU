@@ -17,7 +17,7 @@ namespace KissU.Modules.Account.Application
         {
             Configure<AbpVirtualFileSystemOptions>(options =>
             {
-                options.FileSets.AddEmbedded<AbpAccountApplicationModule>();
+                options.FileSets.AddEmbedded<AbpAccountApplicationModule>("KissU.Modules.Account.Application");
             });
         }
     }

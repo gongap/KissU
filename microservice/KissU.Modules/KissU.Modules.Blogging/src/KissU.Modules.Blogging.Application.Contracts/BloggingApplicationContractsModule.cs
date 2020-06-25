@@ -13,13 +13,14 @@ namespace KissU.Modules.Blogging.Application.Contracts
         {
             Configure<AbpVirtualFileSystemOptions>(options =>
             {
-                options.FileSets.AddEmbedded<BloggingApplicationContractsModule>();
+                options.FileSets.AddEmbedded<BloggingApplicationContractsModule>("KissU.Modules.Blogging.Application.Contracts");
             });
+
             Configure<AbpLocalizationOptions>(options =>
             {
                 options.Resources
                     .Get<BloggingResource>()
-                    .AddVirtualJson("Volo/Blogging/Localization/Resources/Blogging/ApplicationContracts");
+                    .AddVirtualJson("/Localization/Resources/Blogging/ApplicationContracts");
             });
         }
     }

@@ -16,7 +16,7 @@ namespace KissU.Modules.FeatureManagement.Domain.Shared
         {
             Configure<AbpVirtualFileSystemOptions>(options =>
             {
-                options.FileSets.AddEmbedded<AbpFeatureManagementDomainSharedModule>();
+                options.FileSets.AddEmbedded<AbpFeatureManagementDomainSharedModule>("KissU.Modules.FeatureManagement.Domain.Shared");
             });
 
             Configure<AbpLocalizationOptions>(options =>
@@ -25,7 +25,7 @@ namespace KissU.Modules.FeatureManagement.Domain.Shared
                     .Add<AbpFeatureManagementResource>("en")
                     .AddBaseTypes(
                         typeof(AbpValidationResource)
-                    ).AddVirtualJson("Volo/Abp/FeatureManagement/Localization/Domain");
+                    ).AddVirtualJson("/Localization/Domain");
             });
         }
     }

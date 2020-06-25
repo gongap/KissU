@@ -15,7 +15,7 @@ namespace KissU.Modules.FeatureManagement.Application.Contracts
         {
             Configure<AbpVirtualFileSystemOptions>(options =>
             {
-                options.FileSets.AddEmbedded<AbpFeatureManagementApplicationContractsModule>();
+                options.FileSets.AddEmbedded<AbpFeatureManagementApplicationContractsModule>("KissU.Modules.FeatureManagement.Application.Contracts");
             });
         }
     }

@@ -10,6 +10,7 @@
     <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
     <PackageReference Include="Serilog.Sinks.File" Version="4.1.0" />
     <PackageReference Include="Serilog.Sinks.Elasticsearch" Version="6.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc4" />
     <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="3.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.DataProtection.StackExchangeRedis" Version="3.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.2" />
@@ -17,20 +18,23 @@
     <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic" Version="2.8.0" />
     <PackageReference Include="Volo.Abp.EventBus.RabbitMQ" Version="2.8.0" />
     <PackageReference Include="Volo.Abp.EntityFrameworkCore.SqlServer" Version="2.8.0" />
+    <PackageReference Include="Volo.Abp.AutoMapper" Version="2.8.0" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared" Version="2.8.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Account\src\KissU.Modules.Account.Application\KissU.Modules.Account.Application.csproj" />
-    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Account\src\KissU.Modules.Account.Web.IdentityServer\KissU.Modules.Account.Web.IdentityServer.csproj" />
-    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.AuditLogging\src\KissU.Modules.AuditLogging.EntityFrameworkCore\KissU.Modules.AuditLogging.EntityFrameworkCore.csproj" />
-    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.FeatureManagement\src\KissU.Modules.FeatureManagement.EntityFrameworkCore\KissU.Modules.FeatureManagement.EntityFrameworkCore.csproj" />
-    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.IdentityServer\src\KissU.Modules.IdentityServer.EntityFrameworkCore\KissU.Modules.IdentityServer.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Account\src\KissU.Modules.Account.Application.Contracts\KissU.Modules.Account.Application.Contracts.csproj" />
     <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Identity\src\KissU.Modules.Identity.Application.Contracts\KissU.Modules.Identity.Application.Contracts.csproj" />
-    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Identity\src\KissU.Modules.Identity.EntityFrameworkCore\KissU.Modules.Identity.EntityFrameworkCore.csproj" />
-    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.PermissionManagement\src\KissU.Modules.PermissionManagement.EntityFrameworkCore\KissU.Modules.PermissionManagement.EntityFrameworkCore.csproj" />
-    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.SettingManagement\src\KissU.Modules.SettingManagement.EntityFrameworkCore\KissU.Modules.SettingManagement.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.TenantManagement\src\KissU.Modules.TenantManagement.Application.Contracts\KissU.Modules.TenantManagement.Application.Contracts.csproj" />
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Account\src\KissU.Modules.Account.Application\KissU.Modules.Account.Application.csproj" />
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Identity\src\KissU.Modules.Identity.AspNetCore\KissU.Modules.Identity.AspNetCore.csproj" />
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Identity\src\KissU.Modules.Identity.EntityFrameworkCore\KissU.Modules.Identity.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.AuditLogging\src\KissU.Modules.AuditLogging.EntityFrameworkCore\KissU.Modules.AuditLogging.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.IdentityServer\src\KissU.Modules.IdentityServer.EntityFrameworkCore\KissU.Modules.IdentityServer.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.TenantManagement\src\KissU.Modules.TenantManagement.EntityFrameworkCore\KissU.Modules.TenantManagement.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.SettingManagement\src\KissU.Modules.SettingManagement.EntityFrameworkCore\KissU.Modules.SettingManagement.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.FeatureManagement\src\KissU.Modules.FeatureManagement.EntityFrameworkCore\KissU.Modules.FeatureManagement.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.PermissionManagement\src\KissU.Modules.PermissionManagement.EntityFrameworkCore\KissU.Modules.PermissionManagement.EntityFrameworkCore.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,6 +42,21 @@
     <Content Remove="Logs\**" />
     <EmbeddedResource Remove="Logs\**" />
     <None Remove="Logs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Modules\**\*.cshtml" />
+    <EmbeddedResource Include="Modules\**\*.js" />
+    <EmbeddedResource Include="Modules\**\*.css" />
+    <EmbeddedResource Include="Pages\**\*.cshtml" />
+    <EmbeddedResource Include="Pages\**\*.js" />
+    <EmbeddedResource Include="Pages\**\*.css" />
+    <Content Remove="Modules\**\*.cshtml" />
+    <Content Remove="Modules\**\*.js" />
+    <Content Remove="Modules\**\*.css" />
+    <Content Remove="Pages\**\*.cshtml" />
+    <Content Remove="Pages\**\*.js" />
+    <Content Remove="Pages\**\*.css" />
   </ItemGroup>
 
 </Project>

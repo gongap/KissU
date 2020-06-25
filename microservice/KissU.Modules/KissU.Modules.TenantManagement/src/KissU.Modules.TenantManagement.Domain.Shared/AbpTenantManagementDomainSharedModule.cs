@@ -14,7 +14,7 @@ namespace KissU.Modules.TenantManagement.Domain.Shared
         {
             Configure<AbpVirtualFileSystemOptions>(options =>
             {
-                options.FileSets.AddEmbedded<AbpTenantManagementDomainSharedModule>();
+                options.FileSets.AddEmbedded<AbpTenantManagementDomainSharedModule>("KissU.Modules.TenantManagement.Domain.Shared");
             });
 
             Configure<AbpLocalizationOptions>(options =>
@@ -23,7 +23,7 @@ namespace KissU.Modules.TenantManagement.Domain.Shared
                     .Add<AbpTenantManagementResource>("en")
                     .AddBaseTypes(
                         typeof(AbpValidationResource)
-                    ).AddVirtualJson("/Volo/Abp/TenantManagement/Localization/Resources");
+                    ).AddVirtualJson("/Localization/Resources");
             });
         }
     }

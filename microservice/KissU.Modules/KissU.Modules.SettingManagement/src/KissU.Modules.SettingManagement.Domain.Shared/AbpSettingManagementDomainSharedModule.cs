@@ -12,14 +12,14 @@ namespace KissU.Modules.SettingManagement.Domain.Shared
         {
             Configure<AbpVirtualFileSystemOptions>(options =>
             {
-                options.FileSets.AddEmbedded<AbpSettingManagementDomainSharedModule>();
+                options.FileSets.AddEmbedded<AbpSettingManagementDomainSharedModule>("KissU.Modules.SettingManagement.Domain.Shared");
             });
 
             Configure<AbpLocalizationOptions>(options =>
             {
                 options.Resources
                     .Add<AbpSettingManagementResource>("en")
-                    .AddVirtualJson("/Volo/Abp/SettingManagement/Localization/Resources/AbpSettingManagement");
+                    .AddVirtualJson("/Localization/Resources/AbpSettingManagement");
             });
         }
     }

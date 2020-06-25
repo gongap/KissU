@@ -19,7 +19,7 @@ namespace KissU.Modules.Identity.Domain.Shared
         {
             Configure<AbpVirtualFileSystemOptions>(options =>
             {
-                options.FileSets.AddEmbedded<AbpIdentityDomainSharedModule>();
+                options.FileSets.AddEmbedded<AbpIdentityDomainSharedModule>("KissU.Modules.Identity.Domain.Shared");
             });
 
             Configure<AbpLocalizationOptions>(options =>
@@ -28,7 +28,7 @@ namespace KissU.Modules.Identity.Domain.Shared
                     .Add<IdentityResource>("en")
                     .AddBaseTypes(
                         typeof(AbpValidationResource)
-                    ).AddVirtualJson("/Volo/Abp/Identity/Localization");
+                    ).AddVirtualJson("/Localization");
             });
 
             Configure<AbpExceptionLocalizationOptions>(options =>

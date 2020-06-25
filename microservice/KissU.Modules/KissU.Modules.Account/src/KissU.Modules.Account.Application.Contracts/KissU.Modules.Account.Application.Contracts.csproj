@@ -8,12 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Localization\Resources\*.json" />
-    <Content Remove="Localization\Resources\*.json" />
+    <ProjectReference Include="..\..\..\KissU.Modules.Identity\src\KissU.Modules.Identity.Application.Contracts\KissU.Modules.Identity.Application.Contracts.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\KissU.Modules.Identity\src\KissU.Modules.Identity.Application.Contracts\KissU.Modules.Identity.Application.Contracts.csproj" />
+    <content Remove="Localization\Resources\*.json" />
+    <EmbeddedResource Include="Localization\Resources\*.json" />
   </ItemGroup>
 
 </Project>
