@@ -123,11 +123,7 @@ namespace KissU.Modules.PermissionManagement.Application
                 throw new AbpException($"No policy defined to get/set permissions for the provider '{policyName}'. Use {nameof(PermissionManagementOptions)} to map the policy.");
             }
 
-
-            //await AuthorizationService.CheckAsync(policyName);
-
-            var authorizationService = this.ServiceProvider.GetRequiredService<IAbpAuthorizationService>();
-            await authorizationService.CheckAsync(policyName);
+            await AuthorizationService.CheckAsync(policyName);
         }
     }
 }
