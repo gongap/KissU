@@ -1,10 +1,7 @@
-﻿using System.IO;
-using KissU.AuthServer.Host.Modules.Account;
+﻿using KissU.AuthServer.Host.Modules.Account;
 using KissU.Modules.Account.Application;
-using KissU.Modules.Account.Application.Contracts;
 using KissU.Modules.Account.Application.Contracts.Localization;
 using KissU.Modules.AuditLogging.EntityFrameworkCore.EntityFrameworkCore;
-using KissU.Modules.Identity.Application.Contracts;
 using KissU.Modules.Identity.AspNetCore;
 using KissU.Modules.Identity.EntityFrameworkCore;
 using KissU.Modules.IdentityServer.Domain;
@@ -15,13 +12,11 @@ using KissU.Modules.TenantManagement.Application.Contracts;
 using KissU.Modules.TenantManagement.EntityFrameworkCore;
 using Localization.Resources.AbpUi;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using StackExchange.Redis;
 using Volo.Abp;
 using Volo.Abp.AspNetCore.Mvc.Localization;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic;
@@ -33,7 +28,6 @@ using Volo.Abp.AutoMapper;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore.SqlServer;
-using Volo.Abp.EventBus.RabbitMq;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.MultiTenancy;
@@ -45,7 +39,6 @@ namespace KissU.AuthServer.Host
 {
     [DependsOn(
         typeof(AbpAutofacModule),
-        //typeof(AbpEventBusRabbitMqModule),,
         typeof(AbpAutoMapperModule),
         typeof(AbpPermissionManagementEntityFrameworkCoreModule),
         typeof(AbpAuditLoggingEntityFrameworkCoreModule),
@@ -53,13 +46,11 @@ namespace KissU.AuthServer.Host
         typeof(AbpTenantManagementEntityFrameworkCoreModule),
         typeof(AbpIdentityEntityFrameworkCoreModule),
         typeof(AbpIdentityServerEntityFrameworkCoreModule),
-        typeof(AbpIdentityApplicationContractsModule),
-        typeof(AbpAccountApplicationModule),
         typeof(AbpEntityFrameworkCoreSqlServerModule),
+        typeof(AbpAccountApplicationModule),
         typeof(AbpIdentityServerDomainModule),
-        typeof(AbpAspNetCoreMvcUiThemeSharedModule),
         typeof(AbpIdentityAspNetCoreModule),
-        typeof(AbpAccountApplicationContractsModule),
+        typeof(AbpAspNetCoreMvcUiThemeSharedModule),
         typeof(AbpAspNetCoreMvcUiBasicThemeModule),
         typeof(AbpTenantManagementApplicationContractsModule)
     )]
@@ -111,15 +102,6 @@ namespace KissU.AuthServer.Host
             ConfigureAutoMapper(context.Services);
             ConfigureNavigationServices();
             ConfigureSwaggerServices(context.Services);
-
-            //context.Services.AddStackExchangeRedisCache(options =>
-            //{
-            //    options.Configuration = configuration["Redis:Configuration"];
-            //});
-
-            //TODO: ConnectionMultiplexer.Connect call has problem since redis may not be ready when this service has started!
-            //var redis = ConnectionMultiplexer.Connect(configuration["Redis:Configuration"]);
-            //context.Services.AddDataProtection().PersistKeysToStackExchangeRedis(redis, "MsDemo-DataProtection-Keys");
         }
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
@@ -159,7 +141,6 @@ namespace KissU.AuthServer.Host
             app.UseAuditing();
             app.UseConfiguredEndpoints();
 
-            //TODO: Problem on a clustered environment
             RunDataSeeder(context);
         }
 
