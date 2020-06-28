@@ -1,4 +1,9 @@
-﻿using KissU.AuthServer.Host.Modules.Account;
+﻿using System;
+using System.IO;
+using System.Linq;
+using KissU.AuthServer.Host.Localization;
+using KissU.AuthServer.Host.Modules.Account;
+using KissU.AuthServer.Host.MultiTenancy;
 using KissU.Modules.Account.Application;
 using KissU.Modules.Account.Application.Contracts.Localization;
 using KissU.Modules.AuditLogging.EntityFrameworkCore.EntityFrameworkCore;
@@ -12,11 +17,14 @@ using KissU.Modules.TenantManagement.Application.Contracts;
 using KissU.Modules.TenantManagement.EntityFrameworkCore;
 using Localization.Resources.AbpUi;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
+using StackExchange.Redis;
 using Volo.Abp;
 using Volo.Abp.AspNetCore.Mvc.Localization;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic;
@@ -34,6 +42,10 @@ using Volo.Abp.MultiTenancy;
 using Volo.Abp.Threading;
 using Volo.Abp.UI.Navigation;
 using Volo.Abp.VirtualFileSystem;
+using Volo.Abp.AspNetCore.Serilog;
+using Volo.Abp.BackgroundJobs;
+using Volo.Abp.Caching;
+using Volo.Abp.UI.Navigation.Urls;
 
 namespace KissU.AuthServer.Host
 {
@@ -52,16 +64,18 @@ namespace KissU.AuthServer.Host
         typeof(AbpIdentityAspNetCoreModule),
         typeof(AbpAspNetCoreMvcUiThemeSharedModule),
         typeof(AbpAspNetCoreMvcUiBasicThemeModule),
-        typeof(AbpTenantManagementApplicationContractsModule)
+        typeof(AbpTenantManagementApplicationContractsModule),
+        typeof(AbpAspNetCoreSerilogModule)
     )]
     public class AuthServerHostModule : AbpModule
     {
-        private bool isMultiTenancyEnabled = true;
+        private const string DefaultCorsPolicyName = "Default";
 
         public override void PreConfigureServices(ServiceConfigurationContext context)
         {
             context.Services.PreConfigure<AbpMvcDataAnnotationsLocalizationOptions>(options =>
             {
+                options.AddAssemblyResource(typeof(AuthServerResource), typeof(AuthServerHostModule).Assembly);
                 options.AddAssemblyResource(typeof(AccountResource), typeof(AuthServerHostModule).Assembly);
             });
         }
@@ -73,7 +87,7 @@ namespace KissU.AuthServer.Host
 
             Configure<AbpMultiTenancyOptions>(options =>
             {
-                options.IsEnabled = isMultiTenancyEnabled;
+                options.IsEnabled = MultiTenancyConsts.IsEnabled;
             });
 
             Configure<AbpDbContextOptions>(options =>
@@ -87,6 +101,16 @@ namespace KissU.AuthServer.Host
                 options.ApplicationName = "AuthServer";
             });
 
+            Configure<AppUrlOptions>(options =>
+            {
+                options.Applications["MVC"].RootUrl = configuration["App:SelfUrl"];
+            }); 
+            
+            Configure<AbpBackgroundJobOptions>(options =>
+            {
+                options.IsJobExecutionEnabled = false;
+            });
+
             Configure<AbpToolbarOptions>(options =>
             {
                 options.Contributors.Add(new AccountModuleToolbarContributor());
@@ -97,19 +121,19 @@ namespace KissU.AuthServer.Host
                 options.Conventions.AuthorizePage("/Account/Manage");
             });
 
-            ConfigureVirtualFileSystem(hostingEnvironment);
             ConfigureLocalizationServices();
             ConfigureAutoMapper(context.Services);
             ConfigureNavigationServices();
-            ConfigureSwaggerServices(context.Services);
+            ConfigureCache(configuration);
+            ConfigureVirtualFileSystem(context);
+            //ConfigureRedis(context, configuration, hostingEnvironment);
+            ConfigureCors(context, configuration);
         }
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
         {
             var app = context.GetApplicationBuilder();
             var env = context.GetEnvironment();
-
-            app.UseCorrelationId();
 
             if (env.IsDevelopment())
             {
@@ -120,25 +144,22 @@ namespace KissU.AuthServer.Host
                 app.UseErrorPage();
             }
 
+            app.UseCorrelationId();
             app.UseVirtualFiles();
             app.UseRouting();
-            app.UseAbpRequestLocalization();
+            app.UseCors(DefaultCorsPolicyName);
+            app.UseAuthentication();
 
-            if (isMultiTenancyEnabled)
+            if (MultiTenancyConsts.IsEnabled)
             {
                 app.UseMultiTenancy();
             }
 
+            app.UseAbpRequestLocalization();
             app.UseIdentityServer();
             app.UseAuthorization();
-
-            app.UseSwagger();
-            app.UseSwaggerUI(options =>
-            {
-                options.SwaggerEndpoint("/swagger/v1/swagger.json", "AuthServer API");
-            });
-
             app.UseAuditing();
+            app.UseAbpSerilogEnrichers();
             app.UseConfiguredEndpoints();
 
             RunDataSeeder(context);
@@ -167,13 +188,18 @@ namespace KissU.AuthServer.Host
             Configure<AbpLocalizationOptions>(options =>
             {
                 options.Resources
-                    .Get<AccountResource>()
-                    .AddBaseTypes(typeof(AbpUiResource));
-                options.Languages.Add(new LanguageInfo("zh-Hans", "zh-Hans", "简体中文"));
+                    .Add<AuthServerResource>("en")
+                    .AddBaseTypes(typeof(AccountResource))
+                    .AddBaseTypes(typeof(AbpUiResource))
+                    .AddVirtualJson("/Localization/Resources");
+
                 options.Languages.Add(new LanguageInfo("cs", "cs", "Čeština"));
                 options.Languages.Add(new LanguageInfo("en", "en", "English"));
                 options.Languages.Add(new LanguageInfo("pt-BR", "pt-BR", "Português"));
+                options.Languages.Add(new LanguageInfo("ru", "ru", "Русский"));
                 options.Languages.Add(new LanguageInfo("tr", "tr", "Türkçe"));
+                options.Languages.Add(new LanguageInfo("zh-Hans", "zh-Hans", "简体中文"));
+                options.Languages.Add(new LanguageInfo("zh-Hant", "zh-Hant", "繁體中文"));
             });
         }
 
@@ -192,13 +218,21 @@ namespace KissU.AuthServer.Host
         /// <summary>
         /// 配置虚拟文件系统
         /// </summary>
-        /// <param name="hostingEnvironment">主机环境</param>
-        private void ConfigureVirtualFileSystem(IWebHostEnvironment hostingEnvironment)
+        private void ConfigureVirtualFileSystem(ServiceConfigurationContext context)
         {
             Configure<AbpVirtualFileSystemOptions>(options =>
             {
                 options.FileSets.AddEmbedded<AuthServerHostModule>("KissU.AuthServer.Host");
             });
+
+            var hostingEnvironment = context.Services.GetHostingEnvironment();
+            if (hostingEnvironment.IsDevelopment())
+            {
+                Configure<AbpVirtualFileSystemOptions>(options =>
+                {
+                    options.FileSets.ReplaceEmbeddedByPhysical<AuthServerHostModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}KissU.AuthServer.Host"));
+                });
+            }
         }
 
         /// <summary>
@@ -213,18 +247,56 @@ namespace KissU.AuthServer.Host
         }
 
         /// <summary>
-        /// 配置Swagger文档服务
+        ///配置缓存
         /// </summary>
-        /// <param name="services">服务集合</param>
-        private void ConfigureSwaggerServices(IServiceCollection services)
+        private void ConfigureCache(IConfiguration configuration)
         {
-            services.AddSwaggerGen(
-                options =>
+            Configure<AbpDistributedCacheOptions>(options =>
+            {
+                options.KeyPrefix = "AuthServer:";
+            });
+        }
+
+        /// <summary>
+        /// 配置Redis
+        /// </summary>
+        private void ConfigureRedis(ServiceConfigurationContext context, IConfiguration configuration, IWebHostEnvironment hostingEnvironment)
+        {
+            context.Services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = configuration["Redis:Configuration"];
+            });
+
+            if (!hostingEnvironment.IsDevelopment())
+            {
+                var redis = ConnectionMultiplexer.Connect(configuration["Redis:Configuration"]);
+                context.Services.AddDataProtection().PersistKeysToStackExchangeRedis(redis, "AuthServer-Protection-Keys");
+            }
+        }
+
+        /// <summary>
+        /// 配置跨域源.
+        /// </summary>
+        private void ConfigureCors(ServiceConfigurationContext context, IConfiguration configuration)
+        {
+            context.Services.AddCors(options =>
+            {
+                options.AddPolicy(DefaultCorsPolicyName, builder =>
                 {
-                    options.SwaggerDoc("v1", new OpenApiInfo { Title = "SpectrumMonitoring API", Version = "v1" });
-                    options.DocInclusionPredicate((docName, description) => true);
-                    options.CustomSchemaIds(type => type.FullName);
+                    builder
+                        .WithOrigins(
+                            configuration["App:CorsOrigins"]
+                                .Split(",", StringSplitOptions.RemoveEmptyEntries)
+                                .Select(o => o.RemovePostFix("/"))
+                                .ToArray()
+                        )
+                        .WithAbpExposedHeaders()
+                        .SetIsOriginAllowedToAllowWildcardSubdomains()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .AllowCredentials();
                 });
+            });
         }
     }
 }
