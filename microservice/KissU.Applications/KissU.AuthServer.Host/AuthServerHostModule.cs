@@ -188,7 +188,6 @@ namespace KissU.AuthServer.Host
             {
                 options.Resources
                     .Add<AuthServerResource>("en")
-                    .AddBaseTypes(typeof(AccountResource))
                     .AddBaseTypes(typeof(AbpUiResource))
                     .AddVirtualJson("/Localization/Resources");
 
