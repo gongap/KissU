@@ -59,12 +59,11 @@ namespace KissU.AuthServer.Host
         typeof(AbpIdentityEntityFrameworkCoreModule),
         typeof(AbpIdentityServerEntityFrameworkCoreModule),
         typeof(AbpEntityFrameworkCoreSqlServerModule),
+        typeof(AbpTenantManagementApplicationContractsModule),
         typeof(AbpAccountApplicationModule),
         typeof(AbpIdentityServerDomainModule),
         typeof(AbpIdentityAspNetCoreModule),
-        typeof(AbpAspNetCoreMvcUiThemeSharedModule),
         typeof(AbpAspNetCoreMvcUiBasicThemeModule),
-        typeof(AbpTenantManagementApplicationContractsModule),
         typeof(AbpAspNetCoreSerilogModule)
     )]
     public class AuthServerHostModule : AbpModule
