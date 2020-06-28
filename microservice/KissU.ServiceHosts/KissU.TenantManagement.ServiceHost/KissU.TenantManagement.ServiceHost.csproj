@@ -8,7 +8,7 @@
     <TieredCompilation>true</TieredCompilation>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..\..</DockerfileContext>
-    <RootNamespace>KissU.Service.Host</RootNamespace>
+    <RootNamespace>KissU.ServiceHost</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

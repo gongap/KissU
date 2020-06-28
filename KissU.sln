@@ -386,6 +386,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.MicroService.Shared",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "KissU.Shared", "KissU.Shared", "{F9EFB995-23E1-4170-B05F-877CF71C80DB}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.PublicWebSite.Host", "microservice\KissU.Applications\KissU.PublicWebSite.Host\KissU.PublicWebSite.Host.csproj", "{32269343-56DB-4D4A-9384-7693DD2E758E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.ConsoleClient.Host", "microservice\KissU.Applications\KissU.ConsoleClient.Host\KissU.ConsoleClient.Host.csproj", "{AA3423AD-C54E-43C1-AC6A-27D0419094A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -928,6 +932,14 @@ Global
 		{6A0888A0-2258-42C6-B6F9-5232EB2D7E50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A0888A0-2258-42C6-B6F9-5232EB2D7E50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A0888A0-2258-42C6-B6F9-5232EB2D7E50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32269343-56DB-4D4A-9384-7693DD2E758E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32269343-56DB-4D4A-9384-7693DD2E758E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32269343-56DB-4D4A-9384-7693DD2E758E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32269343-56DB-4D4A-9384-7693DD2E758E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA3423AD-C54E-43C1-AC6A-27D0419094A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA3423AD-C54E-43C1-AC6A-27D0419094A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA3423AD-C54E-43C1-AC6A-27D0419094A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA3423AD-C54E-43C1-AC6A-27D0419094A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1116,6 +1128,8 @@ Global
 		{EABCFB29-06E6-4755-975E-ABB3A3E5BE1D} = {85F3412F-E9B8-44DD-BDCB-2857986ADC68}
 		{6A0888A0-2258-42C6-B6F9-5232EB2D7E50} = {F9EFB995-23E1-4170-B05F-877CF71C80DB}
 		{F9EFB995-23E1-4170-B05F-877CF71C80DB} = {87BCAE08-4EF0-4DB3-92F4-7FFEEDAFBB57}
+		{32269343-56DB-4D4A-9384-7693DD2E758E} = {C1026A33-6D55-42E1-91C5-1B2AEC36CA56}
+		{AA3423AD-C54E-43C1-AC6A-27D0419094A8} = {C1026A33-6D55-42E1-91C5-1B2AEC36CA56}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}

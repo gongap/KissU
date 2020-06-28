@@ -1,5 +1,5 @@
-﻿using Autofac;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Autofac;
 using KissU.Dependency;
 using KissU.Extensions;
 using KissU.Surging.Caching.Configurations;
@@ -9,7 +9,7 @@ using KissU.Surging.ProxyGenerator;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace KissU.Service.Host
+namespace KissU.ServiceHost
 {
     public class Program
     {
