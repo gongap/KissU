@@ -52,6 +52,8 @@
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Kestrel.Swagger\KissU.Surging.Kestrel.Swagger.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Zookeeper\KissU.Surging.Zookeeper.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Stage\KissU.Surging.Stage.csproj" />
+    <ProjectReference Include="..\..\KissU.Services\KissU.Modules.Application\KissU.Modules.Application.Service.Contracts\KissU.Modules.Application.Service.Contracts.csproj" />
+    <ProjectReference Include="..\..\KissU.Services\KissU.Modules.Blogging\KissU.Modules.Blogging.Service.Contracts\KissU.Modules.Blogging.Service.Contracts.csproj" />
     <ProjectReference Include="..\..\KissU.Services\KissU.Modules.Sample\KissU.Modules.SampleA.Service.Contracts\KissU.Modules.SampleA.Service.Contracts.csproj" />
     <ProjectReference Include="..\..\KissU.Services\KissU.Modules.Sample\KissU.Modules.SampleB.Service.Contracts\KissU.Modules.SampleB.Service.Contracts.csproj" />
   </ItemGroup>

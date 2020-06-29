@@ -7,9 +7,9 @@ namespace KissU.Modules.Application.Service.Implements
 {
     public class AbpApplicationConfigurationService : ProxyServiceBase, IAbpApplicationConfigurationService
     {
-        private readonly IAbpApplicationConfigurationService _appService;
+        private readonly IAbpApplicationConfigurationAppService _appService;
 
-        public AbpApplicationConfigurationService(IAbpApplicationConfigurationService appService)
+        public AbpApplicationConfigurationService(IAbpApplicationConfigurationAppService appService)
         {
             _appService = appService;
         }

@@ -13,22 +13,22 @@
     "MaxConcurrentRequests": 20,
     "DisconnTimeInterval": 30,
     "ExecutionTimeoutInMilliseconds": 1000,
-    "Protocol": "${Protocol}|None",
+    "Protocol": "${Protocol}|Http",
     "RootPath": "${RootPath}|D:\\App\\Stage",
     "WebRootPath": "${WebRootPath}|D:\\App\\wwwroot",
     "IsModulePerLifetimeScope": false,
     "ReloadOnChange": false,
     "Ports": {
-      "HttpPort": "${HttpPort}|9001",
-      "WSPort": "${WSPort}|9101",
-      "MQTTPort": "${MQTTPort}|9201",
-      "GrpcPort": "${GrpcPort}|9301"
+      "HttpPort": "${HttpPort}|8001",
+      "WSPort": "${WSPort}|8101",
+      "MQTTPort": "${MQTTPort}|8201",
+      "GrpcPort": "${GrpcPort}|8301"
     },
     "RequestCacheEnabled": false,
     "Packages": [
       {
         "TypeName": "EnginePartModule",
-        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;SerilogModule;NLogModule;MessagePackModule;ConsulModule;WSProtocolModule;MqttProtocolModule;EventBusRabbitMQModule;CachingModule;KestrelHttpModule;DnsProtocolModule;KestrelSwaggerModule;ApiGeteWayModule;SkywalkingModule;KestrelNLogModule;ServiceHostModule;GrpcModule;ApolloModule;"
+        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;SerilogModule;NLogModule;MessagePackModule;ConsulModule;WSProtocolModule;MqttProtocolModule;EventBusRabbitMQModule;CachingModule;KestrelHttpServerModule;DnsProtocolModule;KestrelSwaggerModule;ApiGeteWayModule;SkywalkingModule;KestrelNLogModule;GrpcModule;ApolloModule;"
       }
     ]
   },

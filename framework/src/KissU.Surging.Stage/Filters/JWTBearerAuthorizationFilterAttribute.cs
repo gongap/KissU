@@ -96,8 +96,6 @@ namespace KissU.Surging.Stage.Filters
                     }
                 }
             }
-
-            base.OnAuthorization(filterContext);
         }
 
         #region  ValidateClientAuthentication

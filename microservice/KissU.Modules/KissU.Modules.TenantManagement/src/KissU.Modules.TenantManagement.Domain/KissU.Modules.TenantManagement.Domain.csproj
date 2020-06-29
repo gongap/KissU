@@ -11,11 +11,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.AutoMapper" Version="2.8.0" />
-    <PackageReference Include="Volo.Abp.Data" Version="2.8.0" />
-    <PackageReference Include="Volo.Abp.Ddd.Domain" Version="2.8.0" />
-    <PackageReference Include="Volo.Abp.MultiTenancy" Version="2.8.0" />
-    <PackageReference Include="Volo.Abp.UI" Version="2.8.0" />
+    <PackageReference Include="Volo.Abp.AutoMapper" Version="2.9.0" />
+    <PackageReference Include="Volo.Abp.Data" Version="2.9.0" />
+    <PackageReference Include="Volo.Abp.Ddd.Domain" Version="2.9.0" />
+    <PackageReference Include="Volo.Abp.MultiTenancy" Version="2.9.0" />
+    <PackageReference Include="Volo.Abp.UI" Version="2.9.0" />
   </ItemGroup>
 
   <ItemGroup>
