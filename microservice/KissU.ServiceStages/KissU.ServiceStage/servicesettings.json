@@ -13,16 +13,16 @@
     "MaxConcurrentRequests": 20,
     "DisconnTimeInterval": 30,
     "ExecutionTimeoutInMilliseconds": 1000,
-    "Protocol": "${Protocol}|Http",
-    "RootPath": "${RootPath}|D:\\App\\Stage",
-    "WebRootPath": "${WebRootPath}|D:\\App\\wwwroot",
+    "Protocol": "${Protocol}|None", //Http¡¢Tcp¡¢None
+    "RootPath": "${RootPath}|D:\\userapp",
+    "WebRootPath": "${WebRootPath}|D:\\UserApp\\wwwroot",
     "IsModulePerLifetimeScope": false,
     "ReloadOnChange": false,
     "Ports": {
-      "HttpPort": "${HttpPort}|8001",
-      "WSPort": "${WSPort}|8101",
-      "MQTTPort": "${MQTTPort}|8201",
-      "GrpcPort": "${GrpcPort}|8301"
+      "HttpPort": "${HttpPort}|281",
+      "WSPort": "${WSPort}|961",
+      "MQTTPort": "${MQTTPort}|971",
+      "GrpcPort": "${GrpcPort}|951"
     },
     "RequestCacheEnabled": false,
     "Packages": [

@@ -235,7 +235,7 @@ namespace KissU.Surging.KestrelHttpServer
             {
                 if (_logger.IsEnabled(LogLevel.Error))
                 {
-                    _logger.LogError(exception, "发送响应消息时候发生了异常。");
+                    _logger.LogError(exception, $"发送响应消息时候发生了异常。{exception.Message}");
                 }
             }
         }
