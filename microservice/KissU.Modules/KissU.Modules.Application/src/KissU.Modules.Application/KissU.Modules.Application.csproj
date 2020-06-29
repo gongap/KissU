@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\..\common.props" />
+  <Import Project="..\..\..\..\..\configureawait.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>KissU.Modules.Application</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Localization" Version="2.9.0" />
+    <PackageReference Include="Volo.Abp.UI" Version="2.9.0" />
+    <PackageReference Include="Volo.Abp.Timing" Version="2.9.0" />
+    <PackageReference Include="Volo.Abp.MultiTenancy" Version="2.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KissU.Modules.Application.Contracts\KissU.Modules.Application.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>
