@@ -5,7 +5,7 @@ using KissU.Surging.ProxyGenerator;
 
 namespace KissU.Modules.Application.Service.Implements
 {
-    public class AbpApplicationConfigurationService : ProxyServiceBase, IAbpApplicationConfigurationService
+    public abstract class AbpApplicationConfigurationService : ProxyServiceBase, IAbpApplicationConfigurationService
     {
         private readonly IAbpApplicationConfigurationAppService _appService;
 
