@@ -106,73 +106,72 @@ namespace KissU.AuthServer.Host
                 "address"
             };
 
+            var client = CreateDefaultClient("console-client-demo");
             await CreateClientAsync(
-                "console-client-demo",
+                client,
                 new[] { "BloggingService", "IdentityService", "InternalGateway", "ProductService", "TenantManagementService" },
                 new[] { "client_credentials", "password" },
                 commonSecret,
                 permissions: new[] { IdentityPermissions.Users.Default, TenantManagementPermissions.Tenants.Default, "ProductManagement.Product" }
             );
-            
+
+            client = CreateDefaultClient("backend-admin-app-client");
             await CreateClientAsync(
-                "backend-admin-app-client",
+                client,
                 commonScopes.Union(new[] { "BackendAdminAppGateway", "IdentityService", "ProductService", "TenantManagementService" }),
                 new[] { "hybrid" },
                 commonSecret,
                 permissions: new[] { IdentityPermissions.Users.Default, "ProductManagement.Product" },
-                redirectUri: "http://localhost:51954/signin-oidc",
-                postLogoutRedirectUri: "http://localhost:51954/signout-callback-oidc"
+                redirectUris: new[] {"http://localhost:51954/signin-oidc"},
+                postLogoutRedirectUris: new[] {"http://localhost:51954/signout-callback-oidc"}
             );
 
+            client = CreateDefaultClient("public-website-client");
             await CreateClientAsync(
-                "public-website-client",
+                client,
                 commonScopes.Union(new[] { "PublicWebSiteGateway", "BloggingService", "ProductService" }),
                 new[] { "hybrid" },
                 commonSecret,
-                redirectUri: "http://localhost:53435/signin-oidc",
-                postLogoutRedirectUri: "http://localhost:53435/signout-callback-oidc"
+                redirectUris: new[] {"http://localhost:53435/signin-oidc"},
+                postLogoutRedirectUris: new[] {"http://localhost:53435/signout-callback-oidc"}
             );
 
+            client = CreateDefaultClient("blogging-service-client");
             await CreateClientAsync(
-                "blogging-service-client",
+                client,
                 new[] { "InternalGateway", "IdentityService" },
                 new[] { "client_credentials" },
                 commonSecret,
                 permissions: new[] { IdentityPermissions.UserLookup.Default }
             );
+
+            client = CreateDefaultClient("angularImplicitClient");
+            client.AllowAccessTokensViaBrowser = true;
+            await CreateClientAsync(
+                client,
+                commonScopes,
+                new[] { "implicit"},
+                commonSecret,
+                redirectUris: new[] { "http://localhost:4200", "http://localhost:4200/silent-renew.html" },
+                allowedCorsOrigins: new[] { "http://localhost:4200" },
+                postLogoutRedirectUris: new[] {"http://localhost:4200" }
+            );
         }
 
         private async Task<Client> CreateClientAsync(
-            string name,
+            Client model,
             IEnumerable<string> scopes,
             IEnumerable<string> grantTypes,
             string secret,
-            string redirectUri = null,
-            string postLogoutRedirectUri = null,
+            IEnumerable<string> redirectUris = null,
+            IEnumerable<string> postLogoutRedirectUris = null,
+            IEnumerable<string> allowedCorsOrigins = null,
             IEnumerable<string> permissions = null)
         {
-            var client = await _clientRepository.FindByCliendIdAsync(name);
+            var client = await _clientRepository.FindByCliendIdAsync(model.ClientId);
             if (client == null)
             {
-                client = await _clientRepository.InsertAsync(
-                    new Client(
-                        _guidGenerator.Create(),
-                        name
-                    )
-                    {
-                        ClientName = name,
-                        ProtocolType = "oidc",
-                        Description = name,
-                        AlwaysIncludeUserClaimsInIdToken = true,
-                        AllowOfflineAccess = true,
-                        AbsoluteRefreshTokenLifetime = 31536000, //365 days
-                        AccessTokenLifetime = 31536000, //365 days
-                        AuthorizationCodeLifetime = 300,
-                        IdentityTokenLifetime = 300,
-                        RequireConsent = false
-                    },
-                    autoSave: true
-                );
+                client = await _clientRepository.InsertAsync(model,autoSave: true);
             }
 
             foreach (var scope in scopes)
@@ -196,19 +195,36 @@ namespace KissU.AuthServer.Host
                 client.AddSecret(secret);
             }
 
-            if (redirectUri != null)
+            if (redirectUris != null)
             {
-                if (client.FindRedirectUri(redirectUri) == null)
+                foreach (var redirectUri in redirectUris)
                 {
-                    client.AddRedirectUri(redirectUri);
+                    if (client.FindRedirectUri(redirectUri) == null)
+                    {
+                        client.AddRedirectUri(redirectUri);
+                    }
                 }
             }
 
-            if (postLogoutRedirectUri != null)
+            if (postLogoutRedirectUris != null)
             {
-                if (client.FindPostLogoutRedirectUri(postLogoutRedirectUri) == null)
+                foreach (var postLogoutRedirectUri in postLogoutRedirectUris)
                 {
-                    client.AddPostLogoutRedirectUri(postLogoutRedirectUri);
+                    if (client.FindPostLogoutRedirectUri(postLogoutRedirectUri) == null)
+                    {
+                        client.AddPostLogoutRedirectUri(postLogoutRedirectUri);
+                    }
+                }
+            }            
+            
+            if (allowedCorsOrigins != null)
+            {
+                foreach (var allowedCorsOrigin in allowedCorsOrigins)
+                {
+                    if (client.FindCorsOrigin(allowedCorsOrigin) == null)
+                    {
+                        client.AddCorsOrigin(allowedCorsOrigin);
+                    }
                 }
             }
 
@@ -216,12 +232,32 @@ namespace KissU.AuthServer.Host
             {
                 await _permissionDataSeeder.SeedAsync(
                     ClientPermissionValueProvider.ProviderName,
-                    name,
+                    client.ClientId,
                     permissions
                 );
             }
 
             return await _clientRepository.UpdateAsync(client);
+        }
+
+        private Client CreateDefaultClient(string name)
+        {
+            return new Client(
+                _guidGenerator.Create(),
+                name
+            )
+            {
+                ClientName = name,
+                ProtocolType = "oidc",
+                Description = name,
+                AlwaysIncludeUserClaimsInIdToken = true,
+                AllowOfflineAccess = true,
+                AbsoluteRefreshTokenLifetime = 31536000, //365 days
+                AccessTokenLifetime = 31536000, //365 days
+                AuthorizationCodeLifetime = 300,
+                IdentityTokenLifetime = 300,
+                RequireConsent = false,
+            };
         }
     }
 }
