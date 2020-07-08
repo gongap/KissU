@@ -5,7 +5,7 @@ using KissU.Modules.Identity.Domain.Shared;
 using Microsoft.AspNetCore.Mvc;
 using Volo.Abp.Validation;
 
-namespace Volo.Abp.Account.Web.Pages.Account
+namespace KissU.Modules.Account.Web.Pages.Account
 {
     public class ManageModel : AccountPageModel
     {

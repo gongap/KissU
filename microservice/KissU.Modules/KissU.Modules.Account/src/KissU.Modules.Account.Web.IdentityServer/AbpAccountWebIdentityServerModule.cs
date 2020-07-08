@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.Modularity;
 using Volo.Abp.VirtualFileSystem;
 
-namespace Volo.Abp.Account.Web
+namespace KissU.Modules.Account.Web.IdentityServer
 {
     [DependsOn(
         typeof(AbpAccountWebModule),

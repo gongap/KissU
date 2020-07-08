@@ -2,10 +2,9 @@
 using System.IO;
 using System.Linq;
 using KissU.AuthServer.Host.Localization;
-using KissU.AuthServer.Host.Modules.Account;
-using KissU.AuthServer.Host.MultiTenancy;
 using KissU.Modules.Account.Application;
 using KissU.Modules.Account.Application.Contracts.Localization;
+using KissU.Modules.Account.Web.IdentityServer;
 using KissU.Modules.AuditLogging.EntityFrameworkCore.EntityFrameworkCore;
 using KissU.Modules.Identity.AspNetCore;
 using KissU.Modules.Identity.EntityFrameworkCore;
@@ -15,6 +14,7 @@ using KissU.Modules.PermissionManagement.EntityFrameworkCore;
 using KissU.Modules.SettingManagement.EntityFrameworkCore;
 using KissU.Modules.TenantManagement.Application.Contracts;
 using KissU.Modules.TenantManagement.EntityFrameworkCore;
+using KissU.MultiTenancy;
 using Localization.Resources.AbpUi;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors;
@@ -51,7 +51,6 @@ namespace KissU.AuthServer.Host
 {
     [DependsOn(
         typeof(AbpAutofacModule),
-        typeof(AbpAutoMapperModule),
         typeof(AbpPermissionManagementEntityFrameworkCoreModule),
         typeof(AbpAuditLoggingEntityFrameworkCoreModule),
         typeof(AbpSettingManagementEntityFrameworkCoreModule),
@@ -61,8 +60,7 @@ namespace KissU.AuthServer.Host
         typeof(AbpEntityFrameworkCoreSqlServerModule),
         typeof(AbpTenantManagementApplicationContractsModule),
         typeof(AbpAccountApplicationModule),
-        typeof(AbpIdentityServerDomainModule),
-        typeof(AbpIdentityAspNetCoreModule),
+        typeof(AbpAccountWebIdentityServerModule),
         typeof(AbpAspNetCoreMvcUiBasicThemeModule),
         typeof(AbpAspNetCoreSerilogModule)
     )]
@@ -110,19 +108,7 @@ namespace KissU.AuthServer.Host
                 options.IsJobExecutionEnabled = false;
             });
 
-            Configure<AbpToolbarOptions>(options =>
-            {
-                options.Contributors.Add(new AccountModuleToolbarContributor());
-            });
-
-            Configure<RazorPagesOptions>(options =>
-            {
-                options.Conventions.AuthorizePage("/Account/Manage");
-            });
-
             ConfigureLocalizationServices();
-            ConfigureAutoMapper(context.Services);
-            ConfigureNavigationServices();
             ConfigureCache(configuration);
             ConfigureVirtualFileSystem(context);
             //ConfigureRedis(context, configuration, hostingEnvironment);
@@ -202,18 +188,6 @@ namespace KissU.AuthServer.Host
         }
 
         /// <summary>
-        /// 配置AutoMapper映射
-        /// </summary>
-        private void ConfigureAutoMapper(IServiceCollection services)
-        {
-            services.AddAutoMapperObjectMapper<AuthServerHostModule>();
-            Configure<AbpAutoMapperOptions>(options =>
-            {
-                options.AddProfile<AccountWebAutoMapperProfile>(validate: true);
-            });
-        }
-
-        /// <summary>
         /// 配置虚拟文件系统
         /// </summary>
         private void ConfigureVirtualFileSystem(ServiceConfigurationContext context)
@@ -231,17 +205,6 @@ namespace KissU.AuthServer.Host
                     options.FileSets.ReplaceEmbeddedByPhysical<AuthServerHostModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}KissU.AuthServer.Host"));
                 });
             }
-        }
-
-        /// <summary>
-        /// 配置导航服务
-        /// </summary>
-        private void ConfigureNavigationServices()
-        {
-            Configure<AbpNavigationOptions>(options =>
-            {
-                options.MenuContributors.Add(new AccountUserMenuContributor());
-            });
         }
 
         /// <summary>

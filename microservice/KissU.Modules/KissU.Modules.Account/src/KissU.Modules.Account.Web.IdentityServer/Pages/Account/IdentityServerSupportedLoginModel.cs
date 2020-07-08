@@ -1,6 +1,3 @@
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
 using System;
 using System.Diagnostics;
 using System.Linq;
@@ -13,11 +10,15 @@ using IdentityServer4.Models;
 using IdentityServer4.Services;
 using IdentityServer4.Stores;
 using KissU.Modules.Account.Application.Contracts.Settings;
+using KissU.Modules.Account.Web.Pages.Account;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.MultiTenancy;
 using Volo.Abp.Settings;
 
-namespace Volo.Abp.Account.Web.Pages.Account
+namespace KissU.Modules.Account.Web.IdentityServer.Pages.Account
 {
     [ExposeServices(typeof(LoginModel))]
     public class IdentityServerSupportedLoginModel : LoginModel

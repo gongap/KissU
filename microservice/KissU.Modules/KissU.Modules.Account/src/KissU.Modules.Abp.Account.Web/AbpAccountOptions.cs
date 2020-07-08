@@ -1,4 +1,4 @@
-﻿namespace Volo.Abp.Account.Web
+﻿namespace KissU.Modules.Account.Web
 {
     public class AbpAccountOptions
     {

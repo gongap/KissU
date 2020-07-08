@@ -7,9 +7,10 @@ using IdentityServer4.Models;
 using IdentityServer4.Services;
 using IdentityServer4.Stores;
 using Microsoft.AspNetCore.Mvc;
+using Volo.Abp;
 using Volo.Abp.AspNetCore.Mvc.UI.RazorPages;
 
-namespace Volo.Abp.Account.Web.Pages
+namespace KissU.Modules.Account.Web.IdentityServer.Pages
 {
     //TODO: Move this into the Account folder!!!
     public class ConsentModel : AbpPageModel

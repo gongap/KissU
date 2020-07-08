@@ -3,7 +3,7 @@ using KissU.Modules.Account.Application.Contracts.Localization;
 using Localization.Resources.AbpUi;
 using Volo.Abp.UI.Navigation;
 
-namespace Volo.Abp.Account.Web
+namespace KissU.Modules.Account.Web
 {
     public class AbpAccountUserMenuContributor : IMenuContributor
     {

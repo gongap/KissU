@@ -11,7 +11,7 @@ using Volo.Abp.Modularity;
 using Volo.Abp.UI.Navigation;
 using Volo.Abp.VirtualFileSystem;
 
-namespace Volo.Abp.Account.Web
+namespace KissU.Modules.Account.Web
 {
     [DependsOn(
         typeof(AbpAccountApplicationContractsModule),

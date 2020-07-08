@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Volo.Abp.Account.Web.Pages.Account
+namespace KissU.Modules.Account.Web.Pages.Account
 {
     public class LogoutModel : AccountPageModel
     {

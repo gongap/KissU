@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.Toolbars;
 
-namespace Volo.Abp.Account.Web
+namespace KissU.Modules.Account.Web
 {
     public class AccountModuleToolbarContributor : IToolbarContributor
     {

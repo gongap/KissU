@@ -1,11 +1,12 @@
 ﻿using System.Security.Claims;
-using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using IdentityServer4.Services;
+using KissU.Modules.Account.Web.Pages.Account;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Volo.Abp.DependencyInjection;
 
-namespace Volo.Abp.Account.Web.Pages.Account
+namespace KissU.Modules.Account.Web.IdentityServer.Pages.Account
 {
     [ExposeServices(typeof(LogoutModel))]
     public class IdentityServerSupportedLogoutModel : LogoutModel

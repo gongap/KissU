@@ -1,8 +1,8 @@
-﻿using Volo.Abp.Account.Web.Pages.Account;
-using AutoMapper;
+﻿using AutoMapper;
+using KissU.Modules.Account.Web.Pages.Account;
 using KissU.Modules.Identity.Application.Contracts;
 
-namespace Volo.Abp.Account.Web
+namespace KissU.Modules.Account.Web
 {
     public class AbpAccountWebAutoMapperProfile : Profile
     {

@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace Volo.Abp.Account.Web.Pages.Account
+namespace KissU.Modules.Account.Web.Pages.Account
 {
     public class SendSecurityCodeModel : AccountPageModel
     {

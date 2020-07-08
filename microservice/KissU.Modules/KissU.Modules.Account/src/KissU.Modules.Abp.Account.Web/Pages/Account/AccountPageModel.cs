@@ -5,10 +5,11 @@ using KissU.Modules.Account.Application.Contracts.Localization;
 using KissU.Modules.Identity.Domain;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Volo.Abp;
 using Volo.Abp.AspNetCore.Mvc.UI.RazorPages;
 using IdentityUser = KissU.Modules.Identity.Domain.IdentityUser;
 
-namespace Volo.Abp.Account.Web.Pages.Account
+namespace KissU.Modules.Account.Web.Pages.Account
 {
     public abstract class AccountPageModel : AbpPageModel
     {

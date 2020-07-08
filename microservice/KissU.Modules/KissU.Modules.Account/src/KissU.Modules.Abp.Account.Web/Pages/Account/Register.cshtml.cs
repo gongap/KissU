@@ -4,11 +4,12 @@ using KissU.Modules.Account.Application.Contracts;
 using KissU.Modules.Account.Application.Contracts.Settings;
 using KissU.Modules.Identity.Domain.Shared;
 using Microsoft.AspNetCore.Mvc;
+using Volo.Abp;
 using Volo.Abp.Auditing;
 using Volo.Abp.Settings;
 using Volo.Abp.Validation;
 
-namespace Volo.Abp.Account.Web.Pages.Account
+namespace KissU.Modules.Account.Web.Pages.Account
 {
     public class RegisterModel : AccountPageModel
     {
