@@ -39,7 +39,7 @@ namespace KissU.AuthServer.Host.Pages.Account
 
         //TODO: Why there is an ExternalProviders if only the VisibleExternalProviders is used.
         public IEnumerable<ExternalProviderModel> ExternalProviders { get; set; }
-        public IEnumerable<ExternalProviderModel> VisibleExternalProviders => ExternalProviders.Where(x => !String.IsNullOrWhiteSpace(x.DisplayName));
+        public IEnumerable<ExternalProviderModel> VisibleExternalProviders => ExternalProviders.Where(x => !string.IsNullOrWhiteSpace(x.DisplayName));
 
         public bool IsExternalLoginOnly => EnableLocalLogin == false && ExternalProviders?.Count() == 1;
         public string ExternalLoginScheme => IsExternalLoginOnly ? ExternalProviders?.SingleOrDefault()?.AuthenticationScheme : null;
@@ -84,7 +84,7 @@ namespace KissU.AuthServer.Host.Pages.Account
             ValidateModel();
 
             ExternalProviders = await GetExternalProviders();
-            
+
             EnableLocalLogin = await SettingProvider.IsTrueAsync(AccountSettingNames.EnableLocalLogin);
 
             await ReplaceEmailToUsernameOfInputIfNeeds();
@@ -255,11 +255,11 @@ namespace KissU.AuthServer.Host.Pages.Account
         public class LoginInputModel
         {
             [Required]
-            [StringLength(IdentityUserConsts.MaxEmailLength)]
+            [DynamicStringLength(typeof(IdentityUserConsts), nameof(IdentityUserConsts.MaxEmailLength))]
             public string UserNameOrEmailAddress { get; set; }
 
             [Required]
-            [StringLength(IdentityUserConsts.MaxPasswordLength)]
+            [DynamicStringLength(typeof(IdentityUserConsts), nameof(IdentityUserConsts.MaxPasswordLength))]
             [DataType(DataType.Password)]
             [DisableAuditing]
             public string Password { get; set; }

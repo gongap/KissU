@@ -18,7 +18,8 @@ namespace KissU.Modules.IdentityServer.Domain.Clients
         public virtual async Task<IdentityServer4.Models.Client> FindClientByIdAsync(string clientId)
         {
             var client = await ClientRepository.FindByCliendIdAsync(clientId);
-            return ObjectMapper.Map<Client, IdentityServer4.Models.Client>(client);
+            var result = ObjectMapper.Map<Client, IdentityServer4.Models.Client>(client);
+            return result;
         }
     }
 }

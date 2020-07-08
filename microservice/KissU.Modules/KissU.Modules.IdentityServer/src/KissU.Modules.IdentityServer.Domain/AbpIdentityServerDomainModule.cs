@@ -19,7 +19,7 @@ using Volo.Abp;
 using Volo.Abp.AutoMapper;
 using Volo.Abp.BackgroundWorkers;
 using Volo.Abp.Caching;
-using Volo.Abp.EventBus.Distributed;
+using Volo.Abp.Domain.Entities.Events.Distributed;
 using Volo.Abp.Modularity;
 using Volo.Abp.ObjectExtending.Modularity;
 using Volo.Abp.Security;
@@ -47,7 +47,7 @@ namespace KissU.Modules.IdentityServer.Domain
                 options.AddProfile<IdentityServerAutoMapperProfile>(validate: true);
             });
 
-            Configure<AbpDistributedEventBusOptions>(options =>
+            Configure<AbpDistributedEntityEventOptions>(options =>
             {
                 options.EtoMappings.Add<ApiResource, ApiResourceEto>(typeof(AbpIdentityServerDomainModule));
                 options.EtoMappings.Add<Client, ClientEto>(typeof(AbpIdentityServerDomainModule));

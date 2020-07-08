@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using KissU.Modules.Identity.Application.Contracts;
@@ -106,18 +107,16 @@ namespace KissU.AuthServer.Host
                 "address"
             };
 
-            var client = CreateDefaultClient("console-client-demo");
             await CreateClientAsync(
-                client,
+                "console-client-demo",
                 new[] { "BloggingService", "IdentityService", "InternalGateway", "ProductService", "TenantManagementService" },
                 new[] { "client_credentials", "password" },
                 commonSecret,
                 permissions: new[] { IdentityPermissions.Users.Default, TenantManagementPermissions.Tenants.Default, "ProductManagement.Product" }
             );
 
-            client = CreateDefaultClient("backend-admin-app-client");
             await CreateClientAsync(
-                client,
+                "backend-admin-app-client",
                 commonScopes.Union(new[] { "BackendAdminAppGateway", "IdentityService", "ProductService", "TenantManagementService" }),
                 new[] { "hybrid" },
                 commonSecret,
@@ -126,9 +125,8 @@ namespace KissU.AuthServer.Host
                 postLogoutRedirectUris: new[] {"http://localhost:51954/signout-callback-oidc"}
             );
 
-            client = CreateDefaultClient("public-website-client");
             await CreateClientAsync(
-                client,
+                "public-website-client",
                 commonScopes.Union(new[] { "PublicWebSiteGateway", "BloggingService", "ProductService" }),
                 new[] { "hybrid" },
                 commonSecret,
@@ -136,42 +134,62 @@ namespace KissU.AuthServer.Host
                 postLogoutRedirectUris: new[] {"http://localhost:53435/signout-callback-oidc"}
             );
 
-            client = CreateDefaultClient("blogging-service-client");
             await CreateClientAsync(
-                client,
+                "blogging-service-client",
                 new[] { "InternalGateway", "IdentityService" },
                 new[] { "client_credentials" },
                 commonSecret,
                 permissions: new[] { IdentityPermissions.UserLookup.Default }
             );
 
-            client = CreateDefaultClient("angularImplicitClient");
-            client.AllowAccessTokensViaBrowser = true;
             await CreateClientAsync(
-                client,
+                "angularImplicitClient",
                 commonScopes,
                 new[] { "implicit"},
                 commonSecret,
                 redirectUris: new[] { "http://localhost:4200", "http://localhost:4200/silent-renew.html" },
                 allowedCorsOrigins: new[] { "http://localhost:4200" },
-                postLogoutRedirectUris: new[] {"http://localhost:4200" }
+                postLogoutRedirectUris: new[] {"http://localhost:4200" },
+                config : client =>
+                {
+                    client.AllowAccessTokensViaBrowser = true;
+                    client.AllowOfflineAccess = true;
+                    client.FrontChannelLogoutUri = "http://localhost:4200";
+                }
             );
+          
         }
 
         private async Task<Client> CreateClientAsync(
-            Client model,
+            string name,
             IEnumerable<string> scopes,
             IEnumerable<string> grantTypes,
             string secret,
             IEnumerable<string> redirectUris = null,
             IEnumerable<string> postLogoutRedirectUris = null,
             IEnumerable<string> allowedCorsOrigins = null,
-            IEnumerable<string> permissions = null)
+            IEnumerable<string> permissions = null,
+            Action<Client> config = null)
         {
-            var client = await _clientRepository.FindByCliendIdAsync(model.ClientId);
+            var client = await _clientRepository.FindByCliendIdAsync(name);
             if (client == null)
             {
-                client = await _clientRepository.InsertAsync(model,autoSave: true);
+                client = await _clientRepository.InsertAsync(new Client(
+                    _guidGenerator.Create(),
+                    name
+                )
+                {
+                    ClientName = name,
+                    ProtocolType = "oidc",
+                    Description = name,
+                    AlwaysIncludeUserClaimsInIdToken = true,
+                    AllowOfflineAccess = true,
+                    AbsoluteRefreshTokenLifetime = 31536000, //365 days
+                    AccessTokenLifetime = 31536000, //365 days
+                    AuthorizationCodeLifetime = 300,
+                    IdentityTokenLifetime = 300,
+                    RequireConsent = false,
+                }, autoSave: true);
             }
 
             foreach (var scope in scopes)
@@ -237,27 +255,9 @@ namespace KissU.AuthServer.Host
                 );
             }
 
-            return await _clientRepository.UpdateAsync(client);
-        }
+            config?.Invoke(client);
 
-        private Client CreateDefaultClient(string name)
-        {
-            return new Client(
-                _guidGenerator.Create(),
-                name
-            )
-            {
-                ClientName = name,
-                ProtocolType = "oidc",
-                Description = name,
-                AlwaysIncludeUserClaimsInIdToken = true,
-                AllowOfflineAccess = true,
-                AbsoluteRefreshTokenLifetime = 31536000, //365 days
-                AccessTokenLifetime = 31536000, //365 days
-                AuthorizationCodeLifetime = 300,
-                IdentityTokenLifetime = 300,
-                RequireConsent = false,
-            };
+            return await _clientRepository.UpdateAsync(client);
         }
     }
 }

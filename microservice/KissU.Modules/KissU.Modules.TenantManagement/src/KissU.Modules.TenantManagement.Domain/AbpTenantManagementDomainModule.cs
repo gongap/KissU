@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.AutoMapper;
 using Volo.Abp.Data;
 using Volo.Abp.Domain;
-using Volo.Abp.EventBus.Distributed;
+using Volo.Abp.Domain.Entities.Events.Distributed;
 using Volo.Abp.Modularity;
 using Volo.Abp.MultiTenancy;
 using Volo.Abp.UI;
@@ -27,7 +27,7 @@ namespace KissU.Modules.TenantManagement.Domain
                 options.AddProfile<AbpTenantManagementDomainMappingProfile>(validate: true);
             });
 
-            Configure<AbpDistributedEventBusOptions>(options =>
+            Configure<AbpDistributedEntityEventOptions>(options =>
             {
                 options.EtoMappings.Add<Tenant, TenantEto>();
             });

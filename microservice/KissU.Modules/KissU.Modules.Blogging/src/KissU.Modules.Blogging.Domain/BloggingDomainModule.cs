@@ -10,6 +10,7 @@ using KissU.Modules.Blogging.Domain.Tagging;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.AutoMapper;
 using Volo.Abp.Domain;
+using Volo.Abp.Domain.Entities.Events.Distributed;
 using Volo.Abp.EventBus.Distributed;
 using Volo.Abp.Modularity;
 
@@ -30,7 +31,7 @@ namespace KissU.Modules.Blogging.Domain
                 options.AddProfile<BloggingDomainMappingProfile>(validate: true);
             });
 
-            Configure<AbpDistributedEventBusOptions>(options =>
+            Configure<AbpDistributedEntityEventOptions>(options =>
             {
                 options.EtoMappings.Add<Blog, BlogEto>(typeof(BloggingDomainModule));
                 options.EtoMappings.Add<Comment, CommentEto>(typeof(BloggingDomainModule));

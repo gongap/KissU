@@ -9,11 +9,9 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 using Volo.Abp.AutoMapper;
 using Volo.Abp.Domain;
-using Volo.Abp.EventBus.Distributed;
+using Volo.Abp.Domain.Entities.Events.Distributed;
 using Volo.Abp.Modularity;
-using Volo.Abp.ObjectExtending;
 using Volo.Abp.ObjectExtending.Modularity;
-using Volo.Abp.Users;
 
 namespace KissU.Modules.Identity.Domain
 {
@@ -34,7 +32,7 @@ namespace KissU.Modules.Identity.Domain
                 options.AddProfile<IdentityDomainMappingProfile>(validate: true);
             });
 
-            Configure<AbpDistributedEventBusOptions>(options =>
+            Configure<AbpDistributedEntityEventOptions>(options =>
             {
                 options.EtoMappings.Add<IdentityUser, UserEto>(typeof(AbpIdentityDomainModule));
                 options.EtoMappings.Add<IdentityClaimType, IdentityClaimTypeEto>(typeof(AbpIdentityDomainModule));
