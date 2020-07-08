@@ -30,7 +30,7 @@ namespace KissU.Modules.Account.Web.IdentityServer
         {
             Configure<AbpVirtualFileSystemOptions>(options =>
             {
-                options.FileSets.AddEmbedded<AbpAccountWebIdentityServerModule>();
+                options.FileSets.AddEmbedded<AbpAccountWebIdentityServerModule>("KissU.Modules.Account.Web.IdentityServer");
             });
 
             //TODO: Try to reuse from AbpIdentityAspNetCoreModule

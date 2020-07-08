@@ -6,6 +6,7 @@ using KissU.Modules.Account.Application;
 using KissU.Modules.Account.Application.Contracts.Localization;
 using KissU.Modules.Account.Web.IdentityServer;
 using KissU.Modules.AuditLogging.EntityFrameworkCore.EntityFrameworkCore;
+using KissU.Modules.Identity.Application.Contracts;
 using KissU.Modules.Identity.AspNetCore;
 using KissU.Modules.Identity.EntityFrameworkCore;
 using KissU.Modules.IdentityServer.Domain;
@@ -45,6 +46,7 @@ using Volo.Abp.VirtualFileSystem;
 using Volo.Abp.AspNetCore.Serilog;
 using Volo.Abp.BackgroundJobs;
 using Volo.Abp.Caching;
+using Volo.Abp.EventBus.RabbitMq;
 using Volo.Abp.UI.Navigation.Urls;
 
 namespace KissU.AuthServer.Host
@@ -54,14 +56,15 @@ namespace KissU.AuthServer.Host
         typeof(AbpPermissionManagementEntityFrameworkCoreModule),
         typeof(AbpAuditLoggingEntityFrameworkCoreModule),
         typeof(AbpSettingManagementEntityFrameworkCoreModule),
-        typeof(AbpTenantManagementEntityFrameworkCoreModule),
         typeof(AbpIdentityEntityFrameworkCoreModule),
+        typeof(AbpIdentityApplicationContractsModule),
+        typeof(AbpAccountApplicationModule),
         typeof(AbpIdentityServerEntityFrameworkCoreModule),
         typeof(AbpEntityFrameworkCoreSqlServerModule),
-        typeof(AbpTenantManagementApplicationContractsModule),
-        typeof(AbpAccountApplicationModule),
         typeof(AbpAccountWebIdentityServerModule),
         typeof(AbpAspNetCoreMvcUiBasicThemeModule),
+        typeof(AbpTenantManagementEntityFrameworkCoreModule),
+        typeof(AbpTenantManagementApplicationContractsModule),
         typeof(AbpAspNetCoreSerilogModule)
     )]
     public class AuthServerHostModule : AbpModule

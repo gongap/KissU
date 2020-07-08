@@ -38,7 +38,7 @@ namespace KissU.Modules.Account.Web
         {
             Configure<AbpVirtualFileSystemOptions>(options =>
             {
-                options.FileSets.AddEmbedded<AbpAccountWebModule>();
+                options.FileSets.AddEmbedded<AbpAccountWebModule>("KissU.Modules.Account.Web");
             });
 
             Configure<AbpNavigationOptions>(options =>
