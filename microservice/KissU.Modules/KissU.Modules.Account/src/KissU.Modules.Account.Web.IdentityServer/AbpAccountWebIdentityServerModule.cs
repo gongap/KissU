@@ -33,7 +33,6 @@ namespace KissU.Modules.Account.Web.IdentityServer
                 options.FileSets.AddEmbedded<AbpAccountWebIdentityServerModule>("KissU.Modules.Account.Web.IdentityServer");
             });
 
-            //TODO: Try to reuse from AbpIdentityAspNetCoreModule
             context.Services
                 .AddAuthentication(o =>
                 {

@@ -155,6 +155,7 @@ namespace KissU.AuthServer.Host
                     client.AllowAccessTokensViaBrowser = true;
                     client.AllowOfflineAccess = true;
                     client.FrontChannelLogoutUri = "http://localhost:4200";
+                    client.RequireConsent = true;
                 }
             );
           
