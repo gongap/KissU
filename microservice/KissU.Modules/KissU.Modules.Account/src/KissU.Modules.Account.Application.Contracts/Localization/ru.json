@@ -40,6 +40,9 @@
     "DisplayName:Abp.Account.IsSelfRegistrationEnabled": "Самостоятельная регистрация включена",
     "Description:Abp.Account.IsSelfRegistrationEnabled": "Позволяет новым пользователям регистрироваться самостоятельно.",
     "DisplayName:Abp.Account.EnableLocalLogin": "Вход с помощью локальной учетной записи приложения",
-    "Description:Abp.Account.EnableLocalLogin": "Указывает на то, разрешено ли пользователям входить с помощью локальной учетной записи приложения."
+    "Description:Abp.Account.EnableLocalLogin": "Указывает на то, разрешено ли пользователям входить с помощью локальной учетной записи приложения.",
+    "LoggedOutTitle": "Signed Out",
+    "LoggedOutText": "You have been signed out and you will be redirected soon.",
+    "ReturnToText": "Click here to redirect to {0}"
   }
 }

@@ -40,6 +40,9 @@
     "DisplayName:Abp.Account.IsSelfRegistrationEnabled": "启用自行注册",
     "Description:Abp.Account.IsSelfRegistrationEnabled": "是否允许用户自行注册帐户.",
     "DisplayName:Abp.Account.EnableLocalLogin": "使用本地帐户进行身份验证",
-    "Description:Abp.Account.EnableLocalLogin": "服务器是否将允许用户使用本地帐户进行身份验证。"
+    "Description:Abp.Account.EnableLocalLogin": "服务器是否将允许用户使用本地帐户进行身份验证。",
+    "LoggedOutTitle": "退出",
+    "LoggedOutText": "您已登出，不久将被重定向。",
+    "ReturnToText": "点击此处重定向到 {0}"
   }
 }

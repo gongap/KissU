@@ -3,6 +3,7 @@ using KissU.Modules.Identity.Application.Contracts;
 using Volo.Abp.Localization;
 using Volo.Abp.Localization.ExceptionHandling;
 using Volo.Abp.Modularity;
+using Volo.Abp.Validation;
 using Volo.Abp.Validation.Localization;
 using Volo.Abp.VirtualFileSystem;
 
@@ -10,7 +11,7 @@ namespace KissU.Modules.Account.Application.Contracts
 {
     [DependsOn(
         typeof(AbpIdentityApplicationContractsModule),
-            typeof(AbpLocalizationModule)
+        typeof(AbpValidationModule)
     )]
     public class AbpAccountApplicationContractsModule : AbpModule
     {
@@ -26,12 +27,12 @@ namespace KissU.Modules.Account.Application.Contracts
                 options.Resources
                     .Add<AccountResource>("en")
                     .AddBaseTypes(typeof(AbpValidationResource))
-                    .AddVirtualJson("/Localization/Resources");
+                    .AddVirtualJson("/Localization");
             });
 
             Configure<AbpExceptionLocalizationOptions>(options =>
             {
-                options.MapCodeNamespace("Volo.Abp.Account", typeof(AccountResource));
+                options.MapCodeNamespace("KissU.Modules.Account", typeof(AccountResource));
             });
         }
     }

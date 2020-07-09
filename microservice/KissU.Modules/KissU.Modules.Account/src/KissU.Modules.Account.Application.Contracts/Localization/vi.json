@@ -16,6 +16,9 @@
     "Register": "Đăng ký",
     "InvalidLoginRequest": "Yêu cầu đăng nhập không hợp lệ",
     "ThereAreNoLoginSchemesConfiguredForThisClient": "Không có chương trình đăng nhập được cấu hình cho khách hàng này.",
-    "LogInUsingYourProviderAccount": "Đăng nhập bằng tài khoản {0} của bạn"
+    "LogInUsingYourProviderAccount": "Đăng nhập bằng tài khoản {0} của bạn",
+    "LoggedOutTitle": "Signed Out",
+    "LoggedOutText": "You have been signed out and you will be redirected soon.",
+    "ReturnToText": "Click here to redirect to {0}"
   }
 }

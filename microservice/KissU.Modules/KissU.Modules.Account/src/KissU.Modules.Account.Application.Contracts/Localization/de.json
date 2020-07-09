@@ -40,6 +40,9 @@
     "DisplayName:Abp.Account.IsSelfRegistrationEnabled": "Ist die Selbstregistrierung aktiviert",
     "Description:Abp.Account.IsSelfRegistrationEnabled": "Gibt an, ob ein Benutzer das Konto selbst registrieren kann.",
     "DisplayName:Abp.Account.EnableLocalLogin": "Authentifizierung mit einem lokalen Konto",
-    "Description:Abp.Account.EnableLocalLogin": "Gibt an, ob der Server Benutzern die Authentifizierung mit einem lokalen Konto erlaubt."
+    "Description:Abp.Account.EnableLocalLogin": "Gibt an, ob der Server Benutzern die Authentifizierung mit einem lokalen Konto erlaubt.",
+    "LoggedOutTitle": "Signed Out",
+    "LoggedOutText": "You have been signed out and you will be redirected soon.",
+    "ReturnToText": "Click here to redirect to {0}"
   }
 }

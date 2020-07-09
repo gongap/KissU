@@ -16,6 +16,9 @@
     "Register": "Zarejestruj",
     "InvalidLoginRequest": "Logowanie nieudane",
     "ThereAreNoLoginSchemesConfiguredForThisClient": "Nie istnieje skonfigurany schemat logowania dla użytkownika.",
-    "LogInUsingYourProviderAccount": "Zaloguj używając konta {0}"
+    "LogInUsingYourProviderAccount": "Zaloguj używając konta {0}",
+    "LoggedOutTitle": "Signed Out",
+    "LoggedOutText": "You have been signed out and you will be redirected soon.",
+    "ReturnToText": "Click here to redirect to {0}"
   }
 }

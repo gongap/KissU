@@ -40,6 +40,9 @@
     "DisplayName:Abp.Account.IsSelfRegistrationEnabled": "Is zelfregistratie ingeschakeld",
     "Description:Abp.Account.IsSelfRegistrationEnabled": "Of een gebruiker het account zelf kan registreren.",
     "DisplayName:Abp.Account.EnableLocalLogin": "Verifieer met een lokaal account",
-    "Description:Abp.Account.EnableLocalLogin": "Geeft aan of de server gebruikers toestaat zich te verifiëren met een lokaal account."
+    "Description:Abp.Account.EnableLocalLogin": "Geeft aan of de server gebruikers toestaat zich te verifiëren met een lokaal account.",
+    "LoggedOutTitle": "Signed Out",
+    "LoggedOutText": "You have been signed out and you will be redirected soon.",
+    "ReturnToText": "Click here to redirect to {0}"
   }
 }

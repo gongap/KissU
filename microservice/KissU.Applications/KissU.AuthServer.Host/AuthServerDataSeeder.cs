@@ -148,8 +148,8 @@ namespace KissU.AuthServer.Host
                 new[] { "implicit"},
                 commonSecret,
                 allowedCorsOrigins: new[] { "http://localhost:4200" },
-                redirectUris: new[] { "http://localhost:4200", "http://localhost:4200/callback/1", "http://localhost:4200/silent-renew.html" },
-                postLogoutRedirectUris: new[] { "http://localhost:4200", "http://localhost:4200/account/login" },
+                redirectUris: new[] { "http://localhost:4200", "http://localhost:4200/callback/ids4", "http://localhost:4200/silent-renew.html" },
+                postLogoutRedirectUris: new[] { "http://localhost:4200" },
                 config : client =>
                 {
                     client.AllowAccessTokensViaBrowser = true;

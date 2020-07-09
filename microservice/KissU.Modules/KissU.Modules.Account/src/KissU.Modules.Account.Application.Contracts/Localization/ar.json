@@ -40,6 +40,9 @@
     "DisplayName:Abp.Account.IsSelfRegistrationEnabled": "هل تم تمكين التسجيل الذاتي",
     "Description:Abp.Account.IsSelfRegistrationEnabled": "ما إذا كان يمكن للمستخدم تسجيل الحساب بنفسه أم لا.",
     "DisplayName:Abp.Account.EnableLocalLogin": "المصادقة باستخدام حساب محلي",
-    "Description:Abp.Account.EnableLocalLogin": "يشير إلى ما إذا كان الخادم سيسمح للمستخدمين بالمصادقة باستخدام حساب محلي."
+    "Description:Abp.Account.EnableLocalLogin": "يشير إلى ما إذا كان الخادم سيسمح للمستخدمين بالمصادقة باستخدام حساب محلي.",
+    "LoggedOutTitle": "Signed Out",
+    "LoggedOutText": "You have been signed out and you will be redirected soon.",
+    "ReturnToText": "Click here to redirect to {0}"
   }
 }

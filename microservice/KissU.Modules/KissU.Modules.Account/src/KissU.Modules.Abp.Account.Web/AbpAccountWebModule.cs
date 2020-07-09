@@ -1,12 +1,14 @@
 ﻿using KissU.Modules.Account.Application.Contracts;
 using KissU.Modules.Account.Application.Contracts.Localization;
 using KissU.Modules.Identity.AspNetCore;
+using Localization.Resources.AbpUi;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.AspNetCore.Mvc.Localization;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.Toolbars;
 using Volo.Abp.AutoMapper;
+using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.UI.Navigation;
 using Volo.Abp.VirtualFileSystem;
@@ -61,6 +63,13 @@ namespace KissU.Modules.Account.Web
             {
                 options.AddProfile<AbpAccountWebAutoMapperProfile>(validate: true);
             });
+
+            //Configure<AbpLocalizationOptions>(options =>
+            //{
+            //    options.Resources
+            //        .Get<AccountResource>()
+            //        .AddBaseTypes(typeof(AbpUiResource));
+            //});
         }
     }
 }

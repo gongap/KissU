@@ -35,6 +35,9 @@
     "PasswordChanged": "Senha alterada",
     "NewPasswordConfirmFailed": "Por favor, confirme a nova senha.",
     "Manage": "Gerenciar",
-    "ManageYourProfile": "Gerenciar perfil"
+    "ManageYourProfile": "Gerenciar perfil",
+    "LoggedOutTitle": "Signed Out",
+    "LoggedOutText": "You have been signed out and you will be redirected soon.",
+    "ReturnToText": "Click here to redirect to {0}"
   }
 }

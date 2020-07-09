@@ -26,9 +26,7 @@ namespace KissU.Modules.Identity.Domain.Shared
             {
                 options.Resources
                     .Add<IdentityResource>("en")
-                    .AddBaseTypes(
-                        typeof(AbpValidationResource)
-                    ).AddVirtualJson("/Localization");
+                    .AddBaseTypes(typeof(AbpValidationResource)).AddVirtualJson("/Localization");
             });
 
             Configure<AbpExceptionLocalizationOptions>(options =>
