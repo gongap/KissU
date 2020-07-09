@@ -4,28 +4,20 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Http.Client;
-using Volo.Abp.Identity;
 using Volo.Abp.IdentityModel;
-using Volo.Abp.TenantManagement;
 
 namespace KissU.ConsoleClient.Host
 {
     public class ClientDemoService : ITransientDependency
     {
-        private readonly IIdentityUserAppService _userAppService;
-        private readonly ITenantAppService _tenantAppService;
         private readonly IIdentityModelAuthenticationService _authenticator;
         private readonly AbpRemoteServiceOptions _remoteServiceOptions;
 
         public ClientDemoService(
-            IIdentityUserAppService userAppService,
             IIdentityModelAuthenticationService authenticator, 
-            IOptions<AbpRemoteServiceOptions> remoteServiceOptions,
-            ITenantAppService tenantAppService)
+            IOptions<AbpRemoteServiceOptions> remoteServiceOptions)
         {
-            _userAppService = userAppService;
             _authenticator = authenticator;
-            _tenantAppService = tenantAppService;
             _remoteServiceOptions = remoteServiceOptions.Value;
         }
 
@@ -51,7 +43,7 @@ namespace KissU.ConsoleClient.Host
                 {
                     await _authenticator.TryAuthenticateAsync(client);
 
-                    var url = GetServerUrl() + "Test/Index";
+                    var url = GetServerUrl() + "api/user/getuserid/{username}?userName=10";
 
                     var response = await client.GetAsync(url);
 
@@ -86,14 +78,14 @@ namespace KissU.ConsoleClient.Host
 
             try
             {
-                var output = await _userAppService.GetListAsync(new GetIdentityUsersInput());
+                //var output = await _userAppService.GetListAsync(new GetIdentityUsersInput());
 
-                Console.WriteLine("Total user count: " + output.TotalCount);
+                //Console.WriteLine("Total user count: " + output.TotalCount);
 
-                foreach (var user in output.Items)
-                {
-                    Console.WriteLine($"- UserName={user.UserName}, Email={user.Email}, Name={user.Name}, Surname={user.Surname}");
-                }
+                //foreach (var user in output.Items)
+                //{
+                //    Console.WriteLine($"- UserName={user.UserName}, Email={user.Email}, Name={user.Name}, Surname={user.Surname}");
+                //}
             }
             catch (Exception e)
             {
@@ -115,14 +107,14 @@ namespace KissU.ConsoleClient.Host
 
             try
             {
-                var output = await _tenantAppService.GetListAsync(new GetTenantsInput());
+                //var output = await _tenantAppService.GetListAsync(new GetTenantsInput());
 
-                Console.WriteLine("Total tenant count: " + output.TotalCount);
+                //Console.WriteLine("Total tenant count: " + output.TotalCount);
 
-                foreach (var tenant in output.Items)
-                {
-                    Console.WriteLine($"- Id={tenant.Id}, Name={tenant.Name}");
-                }
+                //foreach (var tenant in output.Items)
+                //{
+                //    Console.WriteLine($"- Id={tenant.Id}, Name={tenant.Name}");
+                //}
             }
             catch (Exception e)
             {

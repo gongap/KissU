@@ -14,8 +14,6 @@ namespace KissU.PublicWebSite.Host
 
             //TODO: Localize menu items
             context.Menu.AddItem(new ApplicationMenuItem("App.Home", "Home", "/"));
-            context.Menu.AddItem(new ApplicationMenuItem("App.Products", "Products", "/Products"));
-            context.Menu.AddItem(new ApplicationMenuItem("App.Blog", "Blog", "/blog/abp"));
 
             return Task.CompletedTask;
         }

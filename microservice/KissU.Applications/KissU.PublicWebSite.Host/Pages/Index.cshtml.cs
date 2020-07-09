@@ -8,7 +8,6 @@ namespace KissU.PublicWebSite.Host.Pages
     {
         public void OnGet()
         {
-
         }
         
         public async Task OnPostLoginAsync()

@@ -63,13 +63,6 @@ namespace KissU.Modules.Account.Web
             {
                 options.AddProfile<AbpAccountWebAutoMapperProfile>(validate: true);
             });
-
-            //Configure<AbpLocalizationOptions>(options =>
-            //{
-            //    options.Resources
-            //        .Get<AccountResource>()
-            //        .AddBaseTypes(typeof(AbpUiResource));
-            //});
         }
     }
 }

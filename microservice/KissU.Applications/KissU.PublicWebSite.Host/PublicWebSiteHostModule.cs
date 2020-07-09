@@ -73,15 +73,6 @@ namespace KissU.PublicWebSite.Host
                     options.Scope.Add("BloggingService");
                     options.ClaimActions.MapAbpClaimTypes();
                 });
-
-            //context.Services.AddStackExchangeRedisCache(options =>
-            //{
-            //    options.Configuration = configuration["Redis:Configuration"];
-            //});
-
-            //var redis = ConnectionMultiplexer.Connect(configuration["Redis:Configuration"]);
-            //context.Services.AddDataProtection()
-            //    .PersistKeysToStackExchangeRedis(redis, "MsDemo-DataProtection-Keys");
         }
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
