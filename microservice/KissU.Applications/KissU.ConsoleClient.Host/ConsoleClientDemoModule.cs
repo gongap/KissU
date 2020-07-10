@@ -1,4 +1,4 @@
-﻿using Volo.Abp.Autofac;
+﻿using KissU.Abp.Autofac;
 using Volo.Abp.Http.Client.IdentityModel;
 using Volo.Abp.Modularity;
 

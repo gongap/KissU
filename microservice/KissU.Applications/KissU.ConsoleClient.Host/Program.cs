@@ -1,4 +1,6 @@
 ﻿using System.Threading.Tasks;
+using KissU.Surging.Caching.Configurations;
+using KissU.Surging.CPlatform.Configurations;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
@@ -25,6 +27,11 @@ namespace KissU.ConsoleClient.Host
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder(args)
+                .ConfigureHostConfiguration(builder =>
+                {
+                    builder.AddCPlatformFile("servicesettings.json", false, true);
+                    builder.AddCacheFile("cachesettings.json", false, true);
+                })
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddHostedService<ConsoleClientDemoHostedService>();
