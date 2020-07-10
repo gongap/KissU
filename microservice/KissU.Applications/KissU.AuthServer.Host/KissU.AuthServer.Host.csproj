@@ -49,19 +49,21 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Localization\AuthServer\*.json" />
-    <EmbeddedResource Include="Modules\**\*.cshtml" />
-    <EmbeddedResource Include="Modules\**\*.js" />
-    <EmbeddedResource Include="Modules\**\*.css" />
     <EmbeddedResource Include="Pages\**\*.cshtml" />
     <EmbeddedResource Include="Pages\**\*.js" />
     <EmbeddedResource Include="Pages\**\*.css" />
     <content Remove="Localization\AuthServer\*.json" />
-    <Content Remove="Modules\**\*.cshtml" />
-    <Content Remove="Modules\**\*.js" />
-    <Content Remove="Modules\**\*.css" />
     <Content Remove="Pages\**\*.cshtml" />
     <Content Remove="Pages\**\*.js" />
     <Content Remove="Pages\**\*.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Pages\Error.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Pages\Error.cshtml" />
   </ItemGroup>
 
 </Project>

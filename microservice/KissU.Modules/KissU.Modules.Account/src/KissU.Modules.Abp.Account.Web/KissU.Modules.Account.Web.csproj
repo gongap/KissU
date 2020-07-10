@@ -10,14 +10,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Modules\**\*.js" />
-    <EmbeddedResource Include="Modules\**\*.css" />
     <EmbeddedResource Include="Pages\**\*.js" />
     <EmbeddedResource Include="Pages\**\*.css" />
-    <Content Remove="Modules\**\*.js" />
-    <Content Remove="Modules\**\*.css" />
+    <Compile Remove="Areas\**" />
+    <Compile Remove="Modules\**" />
+    <Content Remove="Areas\**" />
+    <Content Remove="Modules\**" />
     <Content Remove="Pages\**\*.js" />
     <Content Remove="Pages\**\*.css" />
+    <EmbeddedResource Remove="Areas\**" />
+    <EmbeddedResource Remove="Modules\**" />
+    <None Remove="Areas\**" />
+    <None Remove="Modules\**" />
   </ItemGroup>
 
   <ItemGroup>

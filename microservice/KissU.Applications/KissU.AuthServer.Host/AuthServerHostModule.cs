@@ -7,9 +7,7 @@ using KissU.Modules.Account.Application.Contracts.Localization;
 using KissU.Modules.Account.Web.IdentityServer;
 using KissU.Modules.AuditLogging.EntityFrameworkCore.EntityFrameworkCore;
 using KissU.Modules.Identity.Application.Contracts;
-using KissU.Modules.Identity.AspNetCore;
 using KissU.Modules.Identity.EntityFrameworkCore;
-using KissU.Modules.IdentityServer.Domain;
 using KissU.Modules.IdentityServer.EntityFrameworkCore.EntityFrameworkCore;
 using KissU.Modules.PermissionManagement.EntityFrameworkCore;
 using KissU.Modules.SettingManagement.EntityFrameworkCore;
@@ -19,21 +17,16 @@ using KissU.MultiTenancy;
 using Localization.Resources.AbpUi;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using StackExchange.Redis;
 using Volo.Abp;
 using Volo.Abp.AspNetCore.Mvc.Localization;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared;
-using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.Toolbars;
 using Volo.Abp.Auditing;
 using Volo.Abp.Autofac;
-using Volo.Abp.AutoMapper;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore.SqlServer;
@@ -41,12 +34,10 @@ using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.MultiTenancy;
 using Volo.Abp.Threading;
-using Volo.Abp.UI.Navigation;
 using Volo.Abp.VirtualFileSystem;
 using Volo.Abp.AspNetCore.Serilog;
 using Volo.Abp.BackgroundJobs;
 using Volo.Abp.Caching;
-using Volo.Abp.EventBus.RabbitMq;
 using Volo.Abp.UI.Navigation.Urls;
 
 namespace KissU.AuthServer.Host
@@ -87,7 +78,7 @@ namespace KissU.AuthServer.Host
 
             Configure<AbpMultiTenancyOptions>(options =>
             {
-                options.IsEnabled = MultiTenancyConsts.IsEnabled;
+                options.IsEnabled = IsEnabledMultiTenancy();
             });
 
             Configure<AbpDbContextOptions>(options =>
@@ -114,7 +105,7 @@ namespace KissU.AuthServer.Host
             ConfigureLocalizationServices();
             ConfigureCache(configuration);
             ConfigureVirtualFileSystem(context);
-            //ConfigureRedis(context, configuration, hostingEnvironment);
+            ConfigureRedis(context, configuration, hostingEnvironment);
             ConfigureCors(context, configuration);
         }
 
@@ -138,7 +129,7 @@ namespace KissU.AuthServer.Host
             app.UseCors(DefaultCorsPolicyName);
             app.UseAuthentication();
 
-            if (MultiTenancyConsts.IsEnabled)
+            if (IsEnabledMultiTenancy())
             {
                 app.UseMultiTenancy();
             }
@@ -151,6 +142,11 @@ namespace KissU.AuthServer.Host
             app.UseConfiguredEndpoints();
 
             RunDataSeeder(context);
+        }
+
+        private bool IsEnabledMultiTenancy()
+        {
+            return MultiTenancyConsts.IsEnabled;
         }
 
         /// <summary>
@@ -226,16 +222,16 @@ namespace KissU.AuthServer.Host
         /// </summary>
         private void ConfigureRedis(ServiceConfigurationContext context, IConfiguration configuration, IWebHostEnvironment hostingEnvironment)
         {
-            context.Services.AddStackExchangeRedisCache(options =>
-            {
-                options.Configuration = configuration["Redis:Configuration"];
-            });
+            //context.Services.AddStackExchangeRedisCache(options =>
+            //{
+            //    options.Configuration = configuration["Redis:Configuration"];
+            //});
 
-            if (!hostingEnvironment.IsDevelopment())
-            {
-                var redis = ConnectionMultiplexer.Connect(configuration["Redis:Configuration"]);
-                context.Services.AddDataProtection().PersistKeysToStackExchangeRedis(redis, "AuthServer-Protection-Keys");
-            }
+            //if (!hostingEnvironment.IsDevelopment())
+            //{
+            //    var redis = ConnectionMultiplexer.Connect(configuration["Redis:Configuration"]);
+            //    context.Services.AddDataProtection().PersistKeysToStackExchangeRedis(redis, "AuthServer-Protection-Keys");
+            //}
         }
 
         /// <summary>

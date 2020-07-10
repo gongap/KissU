@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
+﻿using Autofac;
+using KissU.Dependency;
+using KissU.Surging.Caching;
+using KissU.Surging.CPlatform;
+using KissU.Surging.ProxyGenerator;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 
 namespace KissU.PublicWebSite.Host
 {
@@ -12,9 +15,16 @@ namespace KissU.PublicWebSite.Host
             services.AddApplication<PublicWebSiteHostModule>();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            builder.AddMicroService(service => { service.AddClient().AddCache(); });
+            builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
+        }
+
+        public void Configure(IApplicationBuilder app)
         {
             app.InitializeApplication();
+            ServiceLocator.Register(app.ApplicationServices);
         }
     }
 }

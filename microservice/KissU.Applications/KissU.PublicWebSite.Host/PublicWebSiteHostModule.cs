@@ -1,16 +1,13 @@
 using System;
+using KissU.Abp.Autofac;
 using KissU.MultiTenancy;
 using Microsoft.AspNetCore.Authentication.OAuth.Claims;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.DataProtection;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
-using StackExchange.Redis;
 using Volo.Abp;
 using Volo.Abp.AspNetCore.Authentication.OAuth;
-using Volo.Abp.AspNetCore.Mvc.Client;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic;
-using Volo.Abp.Autofac;
 using Volo.Abp.Http.Client.IdentityModel.Web;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
@@ -21,7 +18,6 @@ namespace KissU.PublicWebSite.Host
 {
     [DependsOn(
         typeof(AbpAutofacModule),
-        typeof(AbpAspNetCoreMvcClientModule),
         typeof(AbpAspNetCoreAuthenticationOAuthModule),
         typeof(AbpHttpClientIdentityModelWebModule),
         typeof(AbpAspNetCoreMvcUiBasicThemeModule)
@@ -39,7 +35,7 @@ namespace KissU.PublicWebSite.Host
 
             Configure<AbpMultiTenancyOptions>(options =>
             {
-                options.IsEnabled = MultiTenancyConsts.IsEnabled;
+                options.IsEnabled = IsEnabledMultiTenancy();
             });
 
             Configure<AbpNavigationOptions>(options =>
@@ -83,8 +79,8 @@ namespace KissU.PublicWebSite.Host
             app.UseVirtualFiles();
             app.UseRouting();
             app.UseAuthentication();
-            
-            if (MultiTenancyConsts.IsEnabled)
+
+            if (IsEnabledMultiTenancy())
             {
                 app.UseMultiTenancy();
             }
@@ -92,6 +88,11 @@ namespace KissU.PublicWebSite.Host
             app.UseAbpRequestLocalization();
             app.UseAuthorization();
             app.UseConfiguredEndpoints();
+        }
+
+        private bool IsEnabledMultiTenancy()
+        {
+            return MultiTenancyConsts.IsEnabled;
         }
     }
 }
