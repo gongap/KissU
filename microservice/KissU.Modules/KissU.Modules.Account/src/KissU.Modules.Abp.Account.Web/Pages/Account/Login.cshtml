@@ -6,6 +6,11 @@
 @model KissU.Modules.Account.Web.Pages.Account.LoginModel
 @inject IHtmlLocalizer<AccountResource> L
 @inject Volo.Abp.Settings.ISettingProvider SettingProvider
+
+<abp-style-bundle name="MyGlobalBundle">
+    <abp-style src="/Pages/Account/Login.css" />
+</abp-style-bundle>
+
 @if (Model.EnableLocalLogin)
 {
     <div class="card mt-3 shadow-sm rounded">
