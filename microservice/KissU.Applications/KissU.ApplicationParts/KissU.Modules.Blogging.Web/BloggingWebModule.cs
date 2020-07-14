@@ -1,4 +1,5 @@
 ﻿using KissU.Modules.Blogging.Domain.Shared.Localization;
+using KissU.Modules.Blogging.Service;
 using KissU.Modules.Blogging.Service.Contracts;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,6 +17,7 @@ namespace Volo.Blogging
 {
     [DependsOn(
         typeof(BloggingServiceContractsModule),
+        typeof(BloggingServiceModule),
         typeof(AbpAspNetCoreMvcUiBootstrapModule),
         typeof(AbpAspNetCoreMvcUiBundlingModule),
         typeof(AbpAutoMapperModule)

@@ -13,6 +13,7 @@ using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.MultiTenancy;
 using Volo.Abp.UI.Navigation;
+using Volo.Blogging;
 
 namespace KissU.PublicWebSite.Host
 {
@@ -20,7 +21,8 @@ namespace KissU.PublicWebSite.Host
         typeof(AbpAutofacModule),
         typeof(AbpAspNetCoreAuthenticationOAuthModule),
         typeof(AbpHttpClientIdentityModelWebModule),
-        typeof(AbpAspNetCoreMvcUiBasicThemeModule)
+        typeof(AbpAspNetCoreMvcUiBasicThemeModule),
+        typeof(BloggingWebModule)
         )]
     public class PublicWebSiteHostModule : AbpModule
     {
