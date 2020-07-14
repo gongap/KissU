@@ -7,7 +7,7 @@ using Volo.Abp.Json;
 
 namespace KissU.Modules.Application.Service.Implements
 {
-    public abstract class AbpApplicationConfigurationScriptService : ProxyServiceBase, IAbpApplicationConfigurationScriptService
+    public class AbpApplicationConfigurationScriptService : ProxyServiceBase, IAbpApplicationConfigurationScriptService
     {
         private readonly IAbpApplicationConfigurationAppService _configurationAppService;
         private readonly IJsonSerializer _jsonSerializer;

@@ -18,6 +18,5 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.CPlatform\KissU.Surging.CPlatform.csproj" />
     <ProjectReference Include="..\..\..\KissU.Modules\KissU.Modules.Blogging\src\KissU.Modules.Blogging.Application.Contracts\KissU.Modules.Blogging.Application.Contracts.csproj" />
-    <ProjectReference Include="..\..\KissU.Modules.Application\KissU.Modules.Application.Service.Contracts\KissU.Modules.Application.Service.Contracts.csproj" />
   </ItemGroup>
 </Project>
