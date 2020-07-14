@@ -13,7 +13,7 @@ namespace KissU.Modules.Account.Service.Contracts
         )]
     public class AccountServiceContractsModule : AbpModule
     {
-        public override void ConfigureServices(Volo.Abp.Modularity.ServiceConfigurationContext context)
+        public override void ConfigureServices(ServiceConfigurationContext context)
         {
             Configure<AbpLocalizationOptions>(options =>
             {
