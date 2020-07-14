@@ -1,22 +1,23 @@
 ﻿using KissU.Abp.Autofac;
-using KissU.Modules.Identity.Application;
+using KissU.Modules.Account.Application;
+using KissU.Modules.Account.Service.Contracts;
 using KissU.Modules.Identity.Domain;
 using KissU.Modules.Identity.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.Modularity;
 using Volo.Abp.Settings;
 
-namespace KissU.Modules.Identity.Service
+namespace KissU.Modules.Account.Service
 {
     [DependsOn(
-        typeof(AbpIdentityApplicationModule),
+        typeof(AccountServiceContractsModule),
+        typeof(AbpAccountApplicationModule),
         typeof(AbpIdentityEntityFrameworkCoreModule),
         typeof(AbpAutofacModule)
-    )]
-    public class AbpIdentityModule : AbpModule
+        )]
+    public class AbpAccountServiceModule : AbpModule
     {
-        public override void ConfigureServices(ServiceConfigurationContext context)
+        public override void ConfigureServices(Volo.Abp.Modularity.ServiceConfigurationContext context)
         {
             Configure<AbpDbContextOptions>(options =>
             {
@@ -27,8 +28,6 @@ namespace KissU.Modules.Identity.Service
             {
                 options.DefinitionProviders.Add<AbpIdentitySettingDefinitionProvider>();
             });
-
-            context.Services.AddAlwaysAllowAuthorization();
         }
     }
 }

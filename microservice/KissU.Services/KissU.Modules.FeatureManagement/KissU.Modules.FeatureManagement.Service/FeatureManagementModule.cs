@@ -27,7 +27,7 @@ namespace KissU.Modules.FeatureManagement.Service
         protected override void ConfigureContainer(ContainerBuilderWrapper builder)
         {
             var services = new ServiceCollection();
-            _application = AbpApplicationFactory.Create<AbpFeatureManagementModule>(services);
+            _application = AbpApplicationFactory.Create<FeatureManagementServiceModule>(services);
             builder.ContainerBuilder.Populate(_application.Services);
         }
     }

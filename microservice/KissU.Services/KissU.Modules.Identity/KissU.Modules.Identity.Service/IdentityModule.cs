@@ -27,7 +27,7 @@ namespace KissU.Modules.Identity.Service
         protected override void ConfigureContainer(ContainerBuilderWrapper builder)
         {
             var services = new ServiceCollection();
-            _application = AbpApplicationFactory.Create<AbpIdentityModule>(services);
+            _application = AbpApplicationFactory.Create<IdentityServiceModule>(services);
             builder.ContainerBuilder.Populate(_application.Services);
         }
     }

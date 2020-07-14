@@ -1,11 +1,8 @@
-﻿using System.Threading.Tasks;
-using KissU.Dependency;
-using KissU.Extensions;
+﻿using KissU.Dependency;
 using KissU.Modules.Application.MultiTenancy;
-using KissU.Modules.Application.Service.Contracts;
-using KissU.Surging.ProxyGenerator;
+using KissU.Modules.Application.Service.Implements;
 
-namespace KissU.Modules.Application.Service.Implements
+namespace KissU.Modules.Blogging.Service.Common
 {
     [ModuleName("Bloging")]
     public class BlogingTenantService : AbpTenantService

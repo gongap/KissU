@@ -1,10 +1,8 @@
-﻿using System.Threading.Tasks;
-using KissU.Dependency;
+﻿using KissU.Dependency;
 using KissU.Modules.Application.Configurations;
-using KissU.Modules.Application.Service.Contracts;
-using KissU.Surging.ProxyGenerator;
+using KissU.Modules.Application.Service.Implements;
 
-namespace KissU.Modules.Application.Service.Implements
+namespace KissU.Modules.Blogging.Service.Common
 {
     [ModuleName("Bloging")]
     public class BlogingApplicationConfigurationService : AbpApplicationConfigurationService

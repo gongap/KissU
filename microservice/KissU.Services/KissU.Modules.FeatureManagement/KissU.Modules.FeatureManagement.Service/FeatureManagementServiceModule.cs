@@ -1,25 +1,23 @@
 ﻿using KissU.Abp.Autofac;
-using KissU.Modules.PermissionManagement.Application;
-using KissU.Modules.PermissionManagement.Domain.Identity;
-using KissU.Modules.PermissionManagement.Domain.IdentityServer;
-using KissU.Modules.PermissionManagement.Domain.Shared.Localization;
-using KissU.Modules.PermissionManagement.EntityFrameworkCore;
+using KissU.Modules.FeatureManagement.Application;
+using KissU.Modules.FeatureManagement.Domain.Shared.Localization;
+using KissU.Modules.FeatureManagement.EntityFrameworkCore;
+using KissU.Modules.FeatureManagement.Service.Contracts;
 using Localization.Resources.AbpUi;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 
-namespace KissU.Modules.PermissionManagement.Service
+namespace KissU.Modules.FeatureManagement.Service
 {
     [DependsOn(
-        typeof(AbpPermissionManagementDomainIdentityModule),
-        typeof(AbpPermissionManagementDomainIdentityServerModule),
-        typeof(AbpPermissionManagementApplicationModule),
-        typeof(AbpPermissionManagementEntityFrameworkCoreModule),
+        typeof(FeatureManagementServiceContractsModule),
+        typeof(AbpFeatureManagementApplicationModule),
+        typeof(AbpFeatureManagementEntityFrameworkCoreModule),
         typeof(AbpAutofacModule)
     )]
-    public class AbpPermissionManagementModule : AbpModule
+    public class FeatureManagementServiceModule : AbpModule
     {
         public override void ConfigureServices(Volo.Abp.Modularity.ServiceConfigurationContext context)
         {
@@ -31,7 +29,7 @@ namespace KissU.Modules.PermissionManagement.Service
             Configure<AbpLocalizationOptions>(options =>
             {
                 options.Resources
-                    .Get<AbpPermissionManagementResource>()
+                    .Get<AbpFeatureManagementResource>()
                     .AddBaseTypes(
                         typeof(AbpUiResource)
                     );

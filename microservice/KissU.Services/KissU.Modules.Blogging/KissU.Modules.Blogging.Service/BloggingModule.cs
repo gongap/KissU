@@ -30,7 +30,7 @@ namespace KissU.Modules.Blogging.Service
         protected override void ConfigureContainer(ContainerBuilderWrapper builder)
         {
             var services = new ServiceCollection();
-            _application = AbpApplicationFactory.Create<AbpBloggingModule>(services);
+            _application = AbpApplicationFactory.Create<BloggingServiceModule>(services);
             builder.ContainerBuilder.Populate(_application.Services);
         }
     }

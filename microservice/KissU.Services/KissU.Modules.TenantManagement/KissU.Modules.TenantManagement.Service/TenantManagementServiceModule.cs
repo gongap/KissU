@@ -1,21 +1,20 @@
 ﻿using KissU.Abp.Autofac;
 using KissU.Modules.TenantManagement.Application;
-using KissU.Modules.TenantManagement.Domain.Shared.Localization;
 using KissU.Modules.TenantManagement.EntityFrameworkCore;
-using Localization.Resources.AbpUi;
+using KissU.Modules.TenantManagement.Service.Contracts;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
-using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 
 namespace KissU.Modules.TenantManagement.Service
 {
     [DependsOn(
+        typeof(TenantManagementServiceContractsModule),
         typeof(AbpTenantManagementApplicationModule),
         typeof(AbpTenantManagementEntityFrameworkCoreModule),
         typeof(AbpAutofacModule)
     )]
-    public class AbpTenantManagementModule : AbpModule
+    public class TenantManagementServiceModule : AbpModule
     {
         public override void ConfigureServices(Volo.Abp.Modularity.ServiceConfigurationContext context)
         {
@@ -23,15 +22,6 @@ namespace KissU.Modules.TenantManagement.Service
             {
                 options.UseSqlServer();
             });
-
-            Configure<AbpLocalizationOptions>(options =>
-            {
-                options.Resources
-                    .Get<AbpTenantManagementResource>()
-                    .AddBaseTypes(
-                        typeof(AbpUiResource)
-                    );
-            }); 
 
             context.Services.AddAlwaysAllowAuthorization();
         }

@@ -1,24 +1,22 @@
 ﻿using KissU.Abp.Autofac;
-using KissU.Modules.Account.Application;
-using KissU.Modules.Account.Application.Contracts.Localization;
+using KissU.Modules.Identity.Application;
 using KissU.Modules.Identity.Domain;
 using KissU.Modules.Identity.EntityFrameworkCore;
-using Localization.Resources.AbpUi;
+using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
-using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.Settings;
 
-namespace KissU.Modules.Account.Service
+namespace KissU.Modules.Identity.Service
 {
     [DependsOn(
-        typeof(AbpAccountApplicationModule),
+        typeof(AbpIdentityApplicationModule),
         typeof(AbpIdentityEntityFrameworkCoreModule),
         typeof(AbpAutofacModule)
-        )]
-    public class AbpAccountModule : AbpModule
+    )]
+    public class IdentityServiceModule : AbpModule
     {
-        public override void ConfigureServices(Volo.Abp.Modularity.ServiceConfigurationContext context)
+        public override void ConfigureServices(ServiceConfigurationContext context)
         {
             Configure<AbpDbContextOptions>(options =>
             {
@@ -30,12 +28,7 @@ namespace KissU.Modules.Account.Service
                 options.DefinitionProviders.Add<AbpIdentitySettingDefinitionProvider>();
             });
 
-            Configure<AbpLocalizationOptions>(options =>
-            {
-                options.Resources
-                    .Get<AccountResource>()
-                    .AddBaseTypes(typeof(AbpUiResource));
-            });
+            context.Services.AddAlwaysAllowAuthorization();
         }
     }
 }

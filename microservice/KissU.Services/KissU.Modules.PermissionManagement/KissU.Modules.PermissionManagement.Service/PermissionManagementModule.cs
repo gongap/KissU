@@ -27,7 +27,7 @@ namespace KissU.Modules.PermissionManagement.Service
         protected override void ConfigureContainer(ContainerBuilderWrapper builder)
         {
             var services = new ServiceCollection();
-            _application = AbpApplicationFactory.Create<AbpPermissionManagementModule>(services);
+            _application = AbpApplicationFactory.Create<PermissionManagementServiceModule>(services);
             builder.ContainerBuilder.Populate(_application.Services);
         }
     }

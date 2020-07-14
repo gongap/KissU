@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\..\..\..\common.props" />
   <Import Project="..\..\..\..\configureawait.props" />
+
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
@@ -10,7 +11,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.UI" Version="3.0.3" />
     <PackageReference Include="Volo.Abp.EntityFrameworkCore.SqlServer" Version="3.0.3" />
   </ItemGroup>
 

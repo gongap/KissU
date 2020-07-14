@@ -27,7 +27,7 @@ namespace KissU.Modules.TenantManagement.Service
         protected override void ConfigureContainer(ContainerBuilderWrapper builder)
         {
             var services = new ServiceCollection();
-            _application = AbpApplicationFactory.Create<AbpTenantManagementModule>(services);
+            _application = AbpApplicationFactory.Create<TenantManagementServiceModule>(services);
             builder.ContainerBuilder.Populate(_application.Services);
         }
     }
