@@ -1,5 +1,4 @@
 ﻿using KissU.Abp.Autofac;
-using KissU.Modules.Application;
 using KissU.Modules.Blogging.Application;
 using KissU.Modules.Blogging.EntityFrameworkCore.EntityFrameworkCore;
 using KissU.Modules.Blogging.Service.Contracts;
@@ -12,7 +11,6 @@ namespace KissU.Modules.Blogging.Service
     [DependsOn(
         typeof(BloggingServiceContractsModule),
         typeof(BloggingApplicationModule),
-        typeof(AbpApplicationModule),
         typeof(BloggingEntityFrameworkCoreModule),
         typeof(AbpAutofacModule)
     )]
