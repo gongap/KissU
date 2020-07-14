@@ -1,0 +1,11 @@
+﻿body {
+    font-family: "Poppins",sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    background: #eee url(/images/bg-transparent.png) top center no-repeat;
+    color: #000;
+    background-attachment: fixed !important;
+    background-size: cover !important;
+/*    padding-top: 48px;*/
+}

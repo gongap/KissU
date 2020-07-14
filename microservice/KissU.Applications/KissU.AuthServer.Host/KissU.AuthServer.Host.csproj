@@ -24,12 +24,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Account\src\KissU.Modules.Account.Application.Contracts\KissU.Modules.Account.Application.Contracts.csproj" />
-    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Account\src\KissU.Modules.Account.Web.IdentityServer\KissU.Modules.Account.Web.IdentityServer.csproj" />
-    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Identity\src\KissU.Modules.Identity.Application.Contracts\KissU.Modules.Identity.Application.Contracts.csproj" />
     <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.TenantManagement\src\KissU.Modules.TenantManagement.Application.Contracts\KissU.Modules.TenantManagement.Application.Contracts.csproj" />
     <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Account\src\KissU.Modules.Account.Application\KissU.Modules.Account.Application.csproj" />
-    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Identity\src\KissU.Modules.Identity.AspNetCore\KissU.Modules.Identity.AspNetCore.csproj" />
     <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Identity\src\KissU.Modules.Identity.EntityFrameworkCore\KissU.Modules.Identity.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.AuditLogging\src\KissU.Modules.AuditLogging.EntityFrameworkCore\KissU.Modules.AuditLogging.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.IdentityServer\src\KissU.Modules.IdentityServer.EntityFrameworkCore\KissU.Modules.IdentityServer.EntityFrameworkCore.csproj" />
@@ -38,6 +34,7 @@
     <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.FeatureManagement\src\KissU.Modules.FeatureManagement.EntityFrameworkCore\KissU.Modules.FeatureManagement.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.PermissionManagement\src\KissU.Modules.PermissionManagement.EntityFrameworkCore\KissU.Modules.PermissionManagement.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\..\KissU.Shared\KissU.MicroService.Shared\KissU.MicroService.Shared.csproj" />
+    <ProjectReference Include="..\KissU.ApplicationParts\KissU.Modules.Account.Web.IdentityServer\KissU.Modules.Account.Web.IdentityServer.csproj" />
   </ItemGroup>
 
   <ItemGroup>
