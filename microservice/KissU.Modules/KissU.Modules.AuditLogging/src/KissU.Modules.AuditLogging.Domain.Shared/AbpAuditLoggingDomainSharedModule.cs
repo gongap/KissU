@@ -6,7 +6,7 @@ namespace KissU.Modules.AuditLogging.Domain.Shared
 {
     public class AbpAuditLoggingDomainSharedModule : AbpModule
     {
-        public override void ConfigureServices(Volo.Abp.Modularity.ServiceConfigurationContext context)
+        public override void ConfigureServices(ServiceConfigurationContext context)
         {
             Configure<AbpLocalizationOptions>(options =>
             {

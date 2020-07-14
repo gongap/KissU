@@ -13,7 +13,7 @@ namespace KissU.Modules.IdentityServer.Domain.Shared
         )]
     public class AbpIdentityServerDomainSharedModule : AbpModule
     {
-        public override void ConfigureServices(Volo.Abp.Modularity.ServiceConfigurationContext context)
+        public override void ConfigureServices(ServiceConfigurationContext context)
         {
             Configure<AbpVirtualFileSystemOptions>(options =>
             {

@@ -11,7 +11,7 @@ namespace KissU.Modules.SettingManagement.EntityFrameworkCore
         )]
     public class AbpSettingManagementEntityFrameworkCoreModule : AbpModule
     {
-        public override void ConfigureServices(Volo.Abp.Modularity.ServiceConfigurationContext context)
+        public override void ConfigureServices(ServiceConfigurationContext context)
         {
             context.Services.AddAbpDbContext<SettingManagementDbContext>(options =>
             {

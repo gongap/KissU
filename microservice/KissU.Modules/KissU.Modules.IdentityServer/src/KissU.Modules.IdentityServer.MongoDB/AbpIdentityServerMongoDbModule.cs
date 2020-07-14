@@ -26,7 +26,7 @@ namespace KissU.Modules.IdentityServer.MongoDB
             );
         }
 
-        public override void ConfigureServices(Volo.Abp.Modularity.ServiceConfigurationContext context)
+        public override void ConfigureServices(ServiceConfigurationContext context)
         {
             context.Services.AddMongoDbContext<AbpIdentityServerMongoDbContext>(options =>
             {

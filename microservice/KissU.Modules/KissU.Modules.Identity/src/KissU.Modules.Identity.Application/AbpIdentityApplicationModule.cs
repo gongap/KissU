@@ -13,7 +13,7 @@ namespace KissU.Modules.Identity.Application
         )]
     public class AbpIdentityApplicationModule : AbpModule
     {
-        public override void ConfigureServices(Volo.Abp.Modularity.ServiceConfigurationContext context)
+        public override void ConfigureServices(ServiceConfigurationContext context)
         {
             context.Services.AddAutoMapperObjectMapper<AbpIdentityApplicationModule>();
 

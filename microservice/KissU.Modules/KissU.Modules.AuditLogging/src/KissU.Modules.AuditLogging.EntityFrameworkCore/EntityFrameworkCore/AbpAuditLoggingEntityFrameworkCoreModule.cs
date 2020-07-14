@@ -9,7 +9,7 @@ namespace KissU.Modules.AuditLogging.EntityFrameworkCore.EntityFrameworkCore
     [DependsOn(typeof(AbpEntityFrameworkCoreModule))]
     public class AbpAuditLoggingEntityFrameworkCoreModule : AbpModule
     {
-        public override void ConfigureServices(Volo.Abp.Modularity.ServiceConfigurationContext context)
+        public override void ConfigureServices(ServiceConfigurationContext context)
         {
             context.Services.AddAbpDbContext<AbpAuditLoggingDbContext>(options =>
             {

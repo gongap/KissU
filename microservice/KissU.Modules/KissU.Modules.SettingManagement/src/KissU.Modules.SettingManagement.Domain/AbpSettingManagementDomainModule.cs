@@ -14,7 +14,7 @@ namespace KissU.Modules.SettingManagement.Domain
         )]
     public class AbpSettingManagementDomainModule : AbpModule
     {
-        public override void ConfigureServices(Volo.Abp.Modularity.ServiceConfigurationContext context)
+        public override void ConfigureServices(ServiceConfigurationContext context)
         {
             Configure<SettingManagementOptions>(options =>
             {

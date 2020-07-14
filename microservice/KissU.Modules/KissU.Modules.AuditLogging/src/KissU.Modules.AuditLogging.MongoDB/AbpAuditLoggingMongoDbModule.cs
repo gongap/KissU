@@ -9,7 +9,7 @@ namespace KissU.Modules.AuditLogging.MongoDB
     [DependsOn(typeof(AbpMongoDbModule))]
     public class AbpAuditLoggingMongoDbModule : AbpModule
     {
-        public override void ConfigureServices(Volo.Abp.Modularity.ServiceConfigurationContext context)
+        public override void ConfigureServices(ServiceConfigurationContext context)
         {
             context.Services.AddMongoDbContext<AuditLoggingMongoDbContext>(options =>
             {

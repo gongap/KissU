@@ -12,7 +12,7 @@ namespace KissU.Modules.PermissionManagement.Domain.Shared
         )]
     public class AbpPermissionManagementDomainSharedModule : AbpModule
     {
-        public override void ConfigureServices(Volo.Abp.Modularity.ServiceConfigurationContext context)
+        public override void ConfigureServices(ServiceConfigurationContext context)
         {
             Configure<AbpVirtualFileSystemOptions>(options =>
             {

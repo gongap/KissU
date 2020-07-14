@@ -10,7 +10,7 @@ namespace KissU.Modules.Blogging.Domain.Shared
     [DependsOn(typeof(AbpValidationModule))]
     public class BloggingDomainSharedModule : AbpModule
     {
-        public override void ConfigureServices(Volo.Abp.Modularity.ServiceConfigurationContext context)
+        public override void ConfigureServices(ServiceConfigurationContext context)
         {
             Configure<AbpVirtualFileSystemOptions>(options =>
             {

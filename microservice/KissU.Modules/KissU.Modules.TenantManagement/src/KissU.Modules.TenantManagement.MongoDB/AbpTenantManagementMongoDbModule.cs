@@ -11,7 +11,7 @@ namespace KissU.Modules.TenantManagement.MongoDB
         )]
     public class AbpTenantManagementMongoDbModule : AbpModule
     {
-        public override void ConfigureServices(Volo.Abp.Modularity.ServiceConfigurationContext context)
+        public override void ConfigureServices(ServiceConfigurationContext context)
         {
             context.Services.AddMongoDbContext<TenantManagementMongoDbContext>(options =>
             {

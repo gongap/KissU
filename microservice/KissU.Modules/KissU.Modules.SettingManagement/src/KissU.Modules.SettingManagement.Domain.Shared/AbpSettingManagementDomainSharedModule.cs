@@ -8,7 +8,7 @@ namespace KissU.Modules.SettingManagement.Domain.Shared
     [DependsOn(typeof(AbpLocalizationModule))]
     public class AbpSettingManagementDomainSharedModule : AbpModule
     {
-        public override void ConfigureServices(Volo.Abp.Modularity.ServiceConfigurationContext context)
+        public override void ConfigureServices(ServiceConfigurationContext context)
         {
             Configure<AbpVirtualFileSystemOptions>(options =>
             {

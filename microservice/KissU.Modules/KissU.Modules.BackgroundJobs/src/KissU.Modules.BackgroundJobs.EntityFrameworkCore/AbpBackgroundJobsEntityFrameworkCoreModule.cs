@@ -11,7 +11,7 @@ namespace KissU.Modules.BackgroundJobs.EntityFrameworkCore
     )]
     public class AbpBackgroundJobsEntityFrameworkCoreModule : AbpModule
     {
-        public override void ConfigureServices(Volo.Abp.Modularity.ServiceConfigurationContext context)
+        public override void ConfigureServices(ServiceConfigurationContext context)
         {
             context.Services.AddAbpDbContext<BackgroundJobsDbContext>(options =>
             {

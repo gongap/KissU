@@ -10,7 +10,7 @@ namespace KissU.Modules.PermissionManagement.Domain.Identity
         )]
     public class AbpPermissionManagementDomainIdentityModule : AbpModule
     {
-        public override void ConfigureServices(Volo.Abp.Modularity.ServiceConfigurationContext context)
+        public override void ConfigureServices(ServiceConfigurationContext context)
         {
             Configure<PermissionManagementOptions>(options =>
             {

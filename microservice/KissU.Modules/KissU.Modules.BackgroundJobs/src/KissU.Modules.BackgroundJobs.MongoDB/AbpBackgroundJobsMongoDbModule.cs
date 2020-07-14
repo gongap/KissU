@@ -11,7 +11,7 @@ namespace KissU.Modules.BackgroundJobs.MongoDB
         )]
     public class AbpBackgroundJobsMongoDbModule : AbpModule
     {
-        public override void ConfigureServices(Volo.Abp.Modularity.ServiceConfigurationContext context)
+        public override void ConfigureServices(ServiceConfigurationContext context)
         {
             context.Services.AddMongoDbContext<BackgroundJobsMongoDbContext>(options =>
             {
