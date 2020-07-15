@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using Volo.Abp.Http;
 
 namespace KissU.Modules.Blogging.Web
 {

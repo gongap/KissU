@@ -292,6 +292,7 @@ namespace KissU.Surging.KestrelHttpServer
             {
                 var name = GetName("name=", section.ContentDisposition);
                 var fileName = GetName("filename=", section.ContentDisposition);
+                var contentType = section.ContentType;
                 var buffer = new MemoryStream();
                 await section.Body.CopyToAsync(buffer);
                 if (string.IsNullOrEmpty(fileName))
@@ -305,7 +306,7 @@ namespace KissU.Surging.KestrelHttpServer
                 {
                     var fileCollection = new HttpFormFileCollection();
                     StreamReader streamReader = new StreamReader(buffer);
-                    fileCollection.Add(new HttpFormFile(buffer.Length, name, fileName, buffer.GetBuffer()));
+                    fileCollection.Add(new HttpFormFile(buffer.Length, name, contentType, fileName, buffer.GetBuffer()));
                     collection.Add(name, (null, fileCollection));
                 }
                 var formCollection = await GetMultipartForm(reader);

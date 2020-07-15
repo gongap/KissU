@@ -16,13 +16,13 @@ namespace KissU.Modules.Blogging.Service.Contracts
 
         [HttpGet(true)]
         [ServiceRoute("www/{name}")]
-        Task<FileResult> GetForWebAsync(string fileName, string contentType);
+        Task<FileResult> GetForWebAsync(string fileName);
 
         [HttpPost(true)]
         Task<FileUploadOutputDto> CreateAsync(FileUploadInputDto input);
 
         [HttpPost(true)]
         [ServiceRoute("images/upload")]
-        Task<string> UploadImage(HttpFormCollection form);
+        Task<FileUploadResult> UploadImage(HttpFormCollection form);
     }
 }

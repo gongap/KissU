@@ -12,10 +12,11 @@
         /// <param name="name">The name.</param>
         /// <param name="fileName">Name of the file.</param>
         /// <param name="file">The file.</param>
-        public HttpFormFile(long length, string name, string fileName, byte[] file)
+        public HttpFormFile(long length, string name, string contentType, string fileName, byte[] file)
         {
             Length = length;
             Name = name;
+            ContentType = contentType;
             FileName = fileName;
             File = file;
         }
@@ -29,6 +30,11 @@
         /// Gets the name.
         /// </summary>
         public string Name { get; }
+
+        /// <summary>
+        /// Gets the content type.
+        /// </summary>
+        public string ContentType { get; }
 
         /// <summary>
         /// Gets the name of the file.

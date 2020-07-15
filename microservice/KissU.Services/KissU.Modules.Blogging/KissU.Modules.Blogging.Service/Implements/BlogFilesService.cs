@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.IO;
+using System.Threading.Tasks;
 using KissU.Dependency;
 using KissU.Modules.Blogging.Application.Contracts.Files;
 using KissU.Modules.Blogging.Service.Contracts;
@@ -6,6 +8,7 @@ using KissU.Surging.KestrelHttpServer.Abstractions;
 using KissU.Surging.KestrelHttpServer.Internal;
 using KissU.Surging.ProxyGenerator;
 using Volo.Abp;
+using Volo.Abp.Http;
 
 namespace KissU.Modules.Blogging.Service.Implements
 {
@@ -24,9 +27,10 @@ namespace KissU.Modules.Blogging.Service.Implements
             return await _fileAppService.GetAsync(name);
         }
 
-        public async Task<FileResult> GetForWebAsync(string fileName, string contentType)
+        public async Task<FileResult> GetForWebAsync(string fileName)
         {
             var file = await _fileAppService.GetAsync(fileName);
+            var contentType = MimeTypes.GetByExtension(Path.GetExtension(fileName));
             return new FileContentResult(file.Bytes, contentType, fileName);
         }
 
@@ -35,7 +39,7 @@ namespace KissU.Modules.Blogging.Service.Implements
             return await _fileAppService.CreateAsync(input);
         }
 
-        public async Task<string> UploadImage(HttpFormCollection form)
+        public async Task<FileUploadResult> UploadImage(HttpFormCollection form)
         {
             var file = form.Files[0];
 
@@ -57,7 +61,7 @@ namespace KissU.Modules.Blogging.Service.Implements
                 }
             );
 
-            return output.WebUrl;
+            return new FileUploadResult(output.WebUrl);
         }
     }
 }
