@@ -5378,3 +5378,551 @@ Cannot resolve parameter 'KissU.Modules.Blogging.Application.Contracts.Posts.IPo
 2020-07-15 10:29:45.098 +08:00 [INF] Executed action Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc) in 63.9128ms
 2020-07-15 10:29:45.101 +08:00 [INF] Executed endpoint 'Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc)'
 2020-07-15 10:29:45.104 +08:00 [INF] Request finished in 85.734ms 200 application/javascript
+2020-07-15 10:50:55.838 +08:00 [INF] Application is shutting down...
+2020-07-15 10:58:54.577 +08:00 [INF] Starting PublicWebSite.Host.
+2020-07-15 10:58:56.347 +08:00 [INF] User profile is available. Using 'C:\Users\Gongap\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-07-15 10:58:56.489 +08:00 [INF] Loaded ABP modules:
+2020-07-15 10:58:56.490 +08:00 [INF] - Volo.Abp.Castle.AbpCastleCoreModule
+2020-07-15 10:58:56.492 +08:00 [INF] - KissU.Abp.Autofac.AbpAutofacModule
+2020-07-15 10:58:56.493 +08:00 [INF] - Volo.Abp.Security.AbpSecurityModule
+2020-07-15 10:58:56.494 +08:00 [INF] - Volo.Abp.AspNetCore.Authentication.OAuth.AbpAspNetCoreAuthenticationOAuthModule
+2020-07-15 10:58:56.495 +08:00 [INF] - Volo.Abp.Http.AbpHttpAbstractionsModule
+2020-07-15 10:58:56.496 +08:00 [INF] - Volo.Abp.VirtualFileSystem.AbpVirtualFileSystemModule
+2020-07-15 10:58:56.497 +08:00 [INF] - Volo.Abp.Localization.AbpLocalizationAbstractionsModule
+2020-07-15 10:58:56.501 +08:00 [INF] - Volo.Abp.Validation.AbpValidationAbstractionsModule
+2020-07-15 10:58:56.502 +08:00 [INF] - Volo.Abp.ObjectExtending.AbpObjectExtendingModule
+2020-07-15 10:58:56.504 +08:00 [INF] - Volo.Abp.Uow.AbpUnitOfWorkModule
+2020-07-15 10:58:56.505 +08:00 [INF] - Volo.Abp.Data.AbpDataModule
+2020-07-15 10:58:56.506 +08:00 [INF] - Volo.Abp.MultiTenancy.AbpMultiTenancyModule
+2020-07-15 10:58:56.507 +08:00 [INF] - Volo.Abp.Settings.AbpSettingsModule
+2020-07-15 10:58:56.518 +08:00 [INF] - Volo.Abp.Timing.AbpTimingModule
+2020-07-15 10:58:56.519 +08:00 [INF] - Volo.Abp.Json.AbpJsonModule
+2020-07-15 10:58:56.520 +08:00 [INF] - Volo.Abp.Minify.AbpMinifyModule
+2020-07-15 10:58:56.521 +08:00 [INF] - Volo.Abp.Http.AbpHttpModule
+2020-07-15 10:58:56.523 +08:00 [INF] - Volo.Abp.Threading.AbpThreadingModule
+2020-07-15 10:58:56.524 +08:00 [INF] - Volo.Abp.Localization.AbpLocalizationModule
+2020-07-15 10:58:56.525 +08:00 [INF] - Volo.Abp.Validation.AbpValidationModule
+2020-07-15 10:58:56.526 +08:00 [INF] - Volo.Abp.Http.Client.AbpHttpClientModule
+2020-07-15 10:58:56.560 +08:00 [INF] - Volo.Abp.IdentityModel.AbpIdentityModelModule
+2020-07-15 10:58:56.562 +08:00 [INF] - Volo.Abp.Http.Client.IdentityModel.AbpHttpClientIdentityModelModule
+2020-07-15 10:58:56.563 +08:00 [INF] - Volo.Abp.Http.Client.IdentityModel.Web.AbpHttpClientIdentityModelWebModule
+2020-07-15 10:58:56.564 +08:00 [INF] - Volo.Abp.Auditing.AbpAuditingModule
+2020-07-15 10:58:56.565 +08:00 [INF] - Volo.Abp.Authorization.AbpAuthorizationModule
+2020-07-15 10:58:56.566 +08:00 [INF] - Volo.Abp.EventBus.AbpEventBusModule
+2020-07-15 10:58:56.567 +08:00 [INF] - Volo.Abp.Guids.AbpGuidsModule
+2020-07-15 10:58:56.571 +08:00 [INF] - Volo.Abp.ObjectMapping.AbpObjectMappingModule
+2020-07-15 10:58:56.572 +08:00 [INF] - Volo.Abp.Domain.AbpDddDomainModule
+2020-07-15 10:58:56.573 +08:00 [INF] - Volo.Abp.UI.AbpUiModule
+2020-07-15 10:58:56.574 +08:00 [INF] - Volo.Abp.AspNetCore.AbpAspNetCoreModule
+2020-07-15 10:58:56.576 +08:00 [INF] - Volo.Abp.ApiVersioning.AbpApiVersioningAbstractionsModule
+2020-07-15 10:58:56.577 +08:00 [INF] - Volo.Abp.Application.AbpDddApplicationContractsModule
+2020-07-15 10:58:56.578 +08:00 [INF] - Volo.Abp.Features.AbpFeaturesModule
+2020-07-15 10:58:56.582 +08:00 [INF] - Volo.Abp.Application.AbpDddApplicationModule
+2020-07-15 10:58:56.583 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcContractsModule
+2020-07-15 10:58:56.584 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcModule
+2020-07-15 10:58:56.585 +08:00 [INF] - Volo.Abp.UI.Navigation.AbpUiNavigationModule
+2020-07-15 10:58:56.586 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.AbpAspNetCoreMvcUiModule
+2020-07-15 10:58:56.587 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.AbpAspNetCoreMvcUiBootstrapModule
+2020-07-15 10:58:56.589 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Bundling.AbpAspNetCoreMvcUiBundlingModule
+2020-07-15 10:58:56.603 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Packages.AbpAspNetCoreMvcUiPackagesModule
+2020-07-15 10:58:56.604 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Widgets.AbpAspNetCoreMvcUiWidgetsModule
+2020-07-15 10:58:56.605 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.AbpAspNetCoreMvcUiThemeSharedModule
+2020-07-15 10:58:56.606 +08:00 [INF] - Volo.Abp.AspNetCore.MultiTenancy.AbpAspNetCoreMultiTenancyModule
+2020-07-15 10:58:56.608 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.AbpAspNetCoreMvcUiMultiTenancyModule
+2020-07-15 10:58:56.609 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic.AbpAspNetCoreMvcUiBasicThemeModule
+2020-07-15 10:58:56.610 +08:00 [INF] - KissU.Modules.Blogging.Domain.Shared.BloggingDomainSharedModule
+2020-07-15 10:58:56.611 +08:00 [INF] - KissU.Modules.Blogging.Application.Contracts.BloggingApplicationContractsModule
+2020-07-15 10:58:56.615 +08:00 [INF] - KissU.Modules.Blogging.Service.Contracts.BloggingServiceContractsModule
+2020-07-15 10:58:56.617 +08:00 [INF] - Volo.Abp.AutoMapper.AbpAutoMapperModule
+2020-07-15 10:58:56.618 +08:00 [INF] - KissU.Modules.Blogging.Web.BloggingWebModule
+2020-07-15 10:58:56.619 +08:00 [INF] - KissU.PublicWebSite.Host.PublicWebSiteHostModule
+2020-07-15 10:58:56.761 +08:00 [FTL] Application startup exception
+Volo.Abp.AbpInitializationException: An error occurred during the initialize Volo.Abp.Modularity.OnPreApplicationInitializationModuleLifecycleContributor phase of the module Volo.Abp.AutoMapper.AbpAutoMapperModule, Volo.Abp.AutoMapper, Version=3.0.3.0, Culture=neutral, PublicKeyToken=null: Object reference not set to an instance of an object.. See the inner exception for details.
+ ---> System.NullReferenceException: Object reference not set to an instance of an object.
+   at Volo.Abp.Validation.DynamicStringLengthAttribute..ctor(Type sourceType, String maximumLengthPropertyName, String minimumLengthPropertyName)
+   at System.Reflection.CustomAttribute._CreateCaObject(RuntimeModule pModule, RuntimeType type, IRuntimeMethodInfo pCtor, Byte** ppBlob, Byte* pEndBlob, Int32* pcNamedArgs)
+   at System.Reflection.CustomAttribute.CreateCaObject(RuntimeModule module, RuntimeType type, IRuntimeMethodInfo ctor, IntPtr& blob, IntPtr blobEnd, Int32& namedArgs)
+   at System.Reflection.CustomAttribute.AddCustomAttributes(ListBuilder`1& attributes, RuntimeModule decoratedModule, Int32 decoratedMetadataToken, RuntimeType attributeFilterType, Boolean mustBeInheritable, ListBuilder`1 derivedAttributes)
+   at System.Reflection.CustomAttribute.GetCustomAttributes(RuntimeModule decoratedModule, Int32 decoratedMetadataToken, Int32 pcaCount, RuntimeType attributeFilterType)
+   at System.Reflection.CustomAttribute.GetCustomAttributes(RuntimePropertyInfo property, RuntimeType caType)
+   at System.Reflection.RuntimePropertyInfo.GetCustomAttributes(Boolean inherit)
+   at AutoMapper.Configuration.MappingExpressionBase.Configure(TypeMap typeMap)
+   at AutoMapper.ProfileMap.BuildTypeMap(IConfigurationProvider configurationProvider, ITypeMapConfiguration config)
+   at AutoMapper.ProfileMap.Register(IConfigurationProvider configurationProvider)
+   at AutoMapper.MapperConfiguration.Seal()
+   at AutoMapper.MapperConfiguration..ctor(MapperConfigurationExpression configurationExpression)
+   at AutoMapper.MapperConfiguration..ctor(Action`1 configure)
+   at Volo.Abp.AutoMapper.AbpAutoMapperModule.CreateMappings(IServiceProvider serviceProvider)
+   at Volo.Abp.AutoMapper.AbpAutoMapperModule.OnPreApplicationInitialization(ApplicationInitializationContext context)
+   at Volo.Abp.Modularity.OnPreApplicationInitializationModuleLifecycleContributor.Initialize(ApplicationInitializationContext context, IAbpModule module)
+   at Volo.Abp.Modularity.ModuleManager.InitializeModules(ApplicationInitializationContext context)
+   --- End of inner exception stack trace ---
+   at Volo.Abp.Modularity.ModuleManager.InitializeModules(ApplicationInitializationContext context)
+   at Volo.Abp.AbpApplicationBase.InitializeModules()
+   at Volo.Abp.AbpApplicationWithExternalServiceProvider.Initialize(IServiceProvider serviceProvider)
+   at Microsoft.AspNetCore.Builder.AbpApplicationBuilderExtensions.InitializeApplication(IApplicationBuilder app)
+   at KissU.PublicWebSite.Host.Startup.Configure(IApplicationBuilder app) in E:\GAP\KissU\microservice\KissU.Applications\KissU.PublicWebSite.Host\Startup.cs:line 26
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.<>c__DisplayClass4_0.<Build>b__0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostBuilder.<>c__DisplayClass13_0.<UseStartup>b__2(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Mvc.Filters.MiddlewareFilterBuilderStartupFilter.<>c__DisplayClass0_0.<Configure>g__MiddlewareFilterBuilder|0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.HostFilteringStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+2020-07-15 10:58:56.874 +08:00 [FTL] PublicWebSite.Host terminated unexpectedly!
+Volo.Abp.AbpInitializationException: An error occurred during the initialize Volo.Abp.Modularity.OnPreApplicationInitializationModuleLifecycleContributor phase of the module Volo.Abp.AutoMapper.AbpAutoMapperModule, Volo.Abp.AutoMapper, Version=3.0.3.0, Culture=neutral, PublicKeyToken=null: Object reference not set to an instance of an object.. See the inner exception for details.
+ ---> System.NullReferenceException: Object reference not set to an instance of an object.
+   at Volo.Abp.Validation.DynamicStringLengthAttribute..ctor(Type sourceType, String maximumLengthPropertyName, String minimumLengthPropertyName)
+   at System.Reflection.CustomAttribute._CreateCaObject(RuntimeModule pModule, RuntimeType type, IRuntimeMethodInfo pCtor, Byte** ppBlob, Byte* pEndBlob, Int32* pcNamedArgs)
+   at System.Reflection.CustomAttribute.CreateCaObject(RuntimeModule module, RuntimeType type, IRuntimeMethodInfo ctor, IntPtr& blob, IntPtr blobEnd, Int32& namedArgs)
+   at System.Reflection.CustomAttribute.AddCustomAttributes(ListBuilder`1& attributes, RuntimeModule decoratedModule, Int32 decoratedMetadataToken, RuntimeType attributeFilterType, Boolean mustBeInheritable, ListBuilder`1 derivedAttributes)
+   at System.Reflection.CustomAttribute.GetCustomAttributes(RuntimeModule decoratedModule, Int32 decoratedMetadataToken, Int32 pcaCount, RuntimeType attributeFilterType)
+   at System.Reflection.CustomAttribute.GetCustomAttributes(RuntimePropertyInfo property, RuntimeType caType)
+   at System.Reflection.RuntimePropertyInfo.GetCustomAttributes(Boolean inherit)
+   at AutoMapper.Configuration.MappingExpressionBase.Configure(TypeMap typeMap)
+   at AutoMapper.ProfileMap.BuildTypeMap(IConfigurationProvider configurationProvider, ITypeMapConfiguration config)
+   at AutoMapper.ProfileMap.Register(IConfigurationProvider configurationProvider)
+   at AutoMapper.MapperConfiguration.Seal()
+   at AutoMapper.MapperConfiguration..ctor(MapperConfigurationExpression configurationExpression)
+   at AutoMapper.MapperConfiguration..ctor(Action`1 configure)
+   at Volo.Abp.AutoMapper.AbpAutoMapperModule.CreateMappings(IServiceProvider serviceProvider)
+   at Volo.Abp.AutoMapper.AbpAutoMapperModule.OnPreApplicationInitialization(ApplicationInitializationContext context)
+   at Volo.Abp.Modularity.OnPreApplicationInitializationModuleLifecycleContributor.Initialize(ApplicationInitializationContext context, IAbpModule module)
+   at Volo.Abp.Modularity.ModuleManager.InitializeModules(ApplicationInitializationContext context)
+   --- End of inner exception stack trace ---
+   at Volo.Abp.Modularity.ModuleManager.InitializeModules(ApplicationInitializationContext context)
+   at Volo.Abp.AbpApplicationBase.InitializeModules()
+   at Volo.Abp.AbpApplicationWithExternalServiceProvider.Initialize(IServiceProvider serviceProvider)
+   at Microsoft.AspNetCore.Builder.AbpApplicationBuilderExtensions.InitializeApplication(IApplicationBuilder app)
+   at KissU.PublicWebSite.Host.Startup.Configure(IApplicationBuilder app) in E:\GAP\KissU\microservice\KissU.Applications\KissU.PublicWebSite.Host\Startup.cs:line 26
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor, Boolean wrapExceptions)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.Invoke(Object instance, IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.ConfigureBuilder.<>c__DisplayClass4_0.<Build>b__0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostBuilder.<>c__DisplayClass13_0.<UseStartup>b__2(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Mvc.Filters.MiddlewareFilterBuilderStartupFilter.<>c__DisplayClass0_0.<Configure>g__MiddlewareFilterBuilder|0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.HostFilteringStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at KissU.PublicWebSite.Host.Program.Main(String[] args) in E:\GAP\KissU\microservice\KissU.Applications\KissU.PublicWebSite.Host\Program.cs:line 39
+2020-07-15 10:59:59.089 +08:00 [INF] Starting PublicWebSite.Host.
+2020-07-15 11:00:00.166 +08:00 [INF] User profile is available. Using 'C:\Users\Gongap\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-07-15 11:00:00.240 +08:00 [INF] Loaded ABP modules:
+2020-07-15 11:00:00.242 +08:00 [INF] - Volo.Abp.Castle.AbpCastleCoreModule
+2020-07-15 11:00:00.243 +08:00 [INF] - KissU.Abp.Autofac.AbpAutofacModule
+2020-07-15 11:00:00.244 +08:00 [INF] - Volo.Abp.Security.AbpSecurityModule
+2020-07-15 11:00:00.244 +08:00 [INF] - Volo.Abp.AspNetCore.Authentication.OAuth.AbpAspNetCoreAuthenticationOAuthModule
+2020-07-15 11:00:00.245 +08:00 [INF] - Volo.Abp.Http.AbpHttpAbstractionsModule
+2020-07-15 11:00:00.246 +08:00 [INF] - Volo.Abp.VirtualFileSystem.AbpVirtualFileSystemModule
+2020-07-15 11:00:00.247 +08:00 [INF] - Volo.Abp.Localization.AbpLocalizationAbstractionsModule
+2020-07-15 11:00:00.248 +08:00 [INF] - Volo.Abp.Validation.AbpValidationAbstractionsModule
+2020-07-15 11:00:00.249 +08:00 [INF] - Volo.Abp.ObjectExtending.AbpObjectExtendingModule
+2020-07-15 11:00:00.252 +08:00 [INF] - Volo.Abp.Uow.AbpUnitOfWorkModule
+2020-07-15 11:00:00.253 +08:00 [INF] - Volo.Abp.Data.AbpDataModule
+2020-07-15 11:00:00.254 +08:00 [INF] - Volo.Abp.MultiTenancy.AbpMultiTenancyModule
+2020-07-15 11:00:00.255 +08:00 [INF] - Volo.Abp.Settings.AbpSettingsModule
+2020-07-15 11:00:00.256 +08:00 [INF] - Volo.Abp.Timing.AbpTimingModule
+2020-07-15 11:00:00.257 +08:00 [INF] - Volo.Abp.Json.AbpJsonModule
+2020-07-15 11:00:00.258 +08:00 [INF] - Volo.Abp.Minify.AbpMinifyModule
+2020-07-15 11:00:00.259 +08:00 [INF] - Volo.Abp.Http.AbpHttpModule
+2020-07-15 11:00:00.260 +08:00 [INF] - Volo.Abp.Threading.AbpThreadingModule
+2020-07-15 11:00:00.263 +08:00 [INF] - Volo.Abp.Localization.AbpLocalizationModule
+2020-07-15 11:00:00.264 +08:00 [INF] - Volo.Abp.Validation.AbpValidationModule
+2020-07-15 11:00:00.265 +08:00 [INF] - Volo.Abp.Http.Client.AbpHttpClientModule
+2020-07-15 11:00:00.266 +08:00 [INF] - Volo.Abp.IdentityModel.AbpIdentityModelModule
+2020-07-15 11:00:00.267 +08:00 [INF] - Volo.Abp.Http.Client.IdentityModel.AbpHttpClientIdentityModelModule
+2020-07-15 11:00:00.268 +08:00 [INF] - Volo.Abp.Http.Client.IdentityModel.Web.AbpHttpClientIdentityModelWebModule
+2020-07-15 11:00:00.269 +08:00 [INF] - Volo.Abp.Auditing.AbpAuditingModule
+2020-07-15 11:00:00.269 +08:00 [INF] - Volo.Abp.Authorization.AbpAuthorizationModule
+2020-07-15 11:00:00.270 +08:00 [INF] - Volo.Abp.EventBus.AbpEventBusModule
+2020-07-15 11:00:00.271 +08:00 [INF] - Volo.Abp.Guids.AbpGuidsModule
+2020-07-15 11:00:00.279 +08:00 [INF] - Volo.Abp.ObjectMapping.AbpObjectMappingModule
+2020-07-15 11:00:00.280 +08:00 [INF] - Volo.Abp.Domain.AbpDddDomainModule
+2020-07-15 11:00:00.281 +08:00 [INF] - Volo.Abp.UI.AbpUiModule
+2020-07-15 11:00:00.282 +08:00 [INF] - Volo.Abp.AspNetCore.AbpAspNetCoreModule
+2020-07-15 11:00:00.282 +08:00 [INF] - Volo.Abp.ApiVersioning.AbpApiVersioningAbstractionsModule
+2020-07-15 11:00:00.283 +08:00 [INF] - Volo.Abp.Application.AbpDddApplicationContractsModule
+2020-07-15 11:00:00.284 +08:00 [INF] - Volo.Abp.Features.AbpFeaturesModule
+2020-07-15 11:00:00.285 +08:00 [INF] - Volo.Abp.Application.AbpDddApplicationModule
+2020-07-15 11:00:00.288 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcContractsModule
+2020-07-15 11:00:00.289 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcModule
+2020-07-15 11:00:00.290 +08:00 [INF] - Volo.Abp.UI.Navigation.AbpUiNavigationModule
+2020-07-15 11:00:00.291 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.AbpAspNetCoreMvcUiModule
+2020-07-15 11:00:00.293 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.AbpAspNetCoreMvcUiBootstrapModule
+2020-07-15 11:00:00.298 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Bundling.AbpAspNetCoreMvcUiBundlingModule
+2020-07-15 11:00:00.299 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Packages.AbpAspNetCoreMvcUiPackagesModule
+2020-07-15 11:00:00.300 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Widgets.AbpAspNetCoreMvcUiWidgetsModule
+2020-07-15 11:00:00.301 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.AbpAspNetCoreMvcUiThemeSharedModule
+2020-07-15 11:00:00.302 +08:00 [INF] - Volo.Abp.AspNetCore.MultiTenancy.AbpAspNetCoreMultiTenancyModule
+2020-07-15 11:00:00.303 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.AbpAspNetCoreMvcUiMultiTenancyModule
+2020-07-15 11:00:00.304 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic.AbpAspNetCoreMvcUiBasicThemeModule
+2020-07-15 11:00:00.305 +08:00 [INF] - KissU.Modules.Blogging.Domain.Shared.BloggingDomainSharedModule
+2020-07-15 11:00:00.311 +08:00 [INF] - KissU.Modules.Blogging.Application.Contracts.BloggingApplicationContractsModule
+2020-07-15 11:00:00.313 +08:00 [INF] - KissU.Modules.Blogging.Service.Contracts.BloggingServiceContractsModule
+2020-07-15 11:00:00.315 +08:00 [INF] - Volo.Abp.AutoMapper.AbpAutoMapperModule
+2020-07-15 11:00:00.316 +08:00 [INF] - KissU.Modules.Blogging.Web.BloggingWebModule
+2020-07-15 11:00:00.317 +08:00 [INF] - KissU.PublicWebSite.Host.PublicWebSiteHostModule
+2020-07-15 11:00:00.789 +08:00 [INF] Initialized all ABP modules.
+2020-07-15 11:00:00.832 +08:00 [INF] Now listening on: http://localhost:53435
+2020-07-15 11:00:00.835 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-07-15 11:00:00.837 +08:00 [INF] Hosting environment: Development
+2020-07-15 11:00:00.838 +08:00 [INF] Content root path: E:\GAP\KissU\microservice\KissU.Applications\KissU.PublicWebSite.Host
+2020-07-15 11:00:04.315 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/Blogs  
+2020-07-15 11:00:04.495 +08:00 [INF] Executing endpoint '/Blogs/Index'
+2020-07-15 11:00:04.596 +08:00 [INF] Route matched with {page = "/Blogs/Index", area = "", action = "", controller = ""}. Executing page /Blogs/Index
+2020-07-15 11:00:04.611 +08:00 [DBG] 发现了以下类型转换提供程序：KissU.Convertibles.Implementation.DefaultTypeConvertibleProvider。
+2020-07-15 11:00:04.620 +08:00 [INF] 发现了以下服务：
+KissU.Surging.CPlatform.Module.IEchoService。
+2020-07-15 11:00:04.627 +08:00 [DBG] 为方法：System.Threading.Tasks.Task`1[KissU.Surging.CPlatform.Address.IpAddressModel] Locate(System.String, System.String)生成服务Id：KissU.Surging.CPlatform.Module.IEchoService.Locate_key_routePath。
+2020-07-15 11:00:04.642 +08:00 [INF] 发现了以下服务：
+KissU.Modules.Blogging.Service.Contracts.IBlogService,
+KissU.Modules.Blogging.Service.Contracts.ICommentService,
+KissU.Modules.Blogging.Service.Contracts.IPostService,
+KissU.Modules.Blogging.Service.Contracts.ITagService,
+KissU.Surging.CPlatform.Module.IEchoService。
+2020-07-15 11:00:04.645 +08:00 [DBG] 为方法：System.Threading.Tasks.Task`1[KissU.Common.ListResult`1[KissU.Modules.Blogging.Application.Contracts.Blogs.Dtos.BlogDto]] GetListAsync()生成服务Id：KissU.Modules.Blogging.Service.Contracts.IBlogService.GetListAsync。
+2020-07-15 11:00:04.647 +08:00 [DBG] 为方法：System.Threading.Tasks.Task`1[KissU.Modules.Blogging.Application.Contracts.Blogs.Dtos.BlogDto] GetByShortNameAsync(System.String)生成服务Id：KissU.Modules.Blogging.Service.Contracts.IBlogService.GetByShortNameAsync_shortName。
+2020-07-15 11:00:04.649 +08:00 [DBG] 为方法：System.Threading.Tasks.Task`1[KissU.Modules.Blogging.Application.Contracts.Blogs.Dtos.BlogDto] GetAsync(System.String)生成服务Id：KissU.Modules.Blogging.Service.Contracts.IBlogService.GetAsync_id。
+2020-07-15 11:00:04.651 +08:00 [DBG] 为方法：System.Threading.Tasks.Task`1[KissU.Modules.Blogging.Application.Contracts.Blogs.Dtos.BlogDto] Create(KissU.Modules.Blogging.Application.Contracts.Blogs.Dtos.CreateBlogDto)生成服务Id：KissU.Modules.Blogging.Service.Contracts.IBlogService.Create_input。
+2020-07-15 11:00:04.653 +08:00 [DBG] 为方法：System.Threading.Tasks.Task`1[KissU.Modules.Blogging.Application.Contracts.Blogs.Dtos.BlogDto] Update(System.String, KissU.Modules.Blogging.Application.Contracts.Blogs.Dtos.UpdateBlogDto)生成服务Id：KissU.Modules.Blogging.Service.Contracts.IBlogService.Update_id_input。
+2020-07-15 11:00:04.655 +08:00 [DBG] 为方法：System.Threading.Tasks.Task Delete(System.String)生成服务Id：KissU.Modules.Blogging.Service.Contracts.IBlogService.Delete_id。
+2020-07-15 11:00:04.657 +08:00 [DBG] 为方法：System.Threading.Tasks.Task`1[System.Collections.Generic.List`1[KissU.Modules.Blogging.Application.Contracts.Comments.Dtos.CommentWithRepliesDto]] GetHierarchicalListOfPostAsync(System.String)生成服务Id：KissU.Modules.Blogging.Service.Contracts.ICommentService.GetHierarchicalListOfPostAsync_postId。
+2020-07-15 11:00:04.662 +08:00 [DBG] 为方法：System.Threading.Tasks.Task`1[KissU.Modules.Blogging.Application.Contracts.Comments.Dtos.CommentWithDetailsDto] CreateAsync(KissU.Modules.Blogging.Application.Contracts.Comments.Dtos.CreateCommentDto)生成服务Id：KissU.Modules.Blogging.Service.Contracts.ICommentService.CreateAsync_input。
+2020-07-15 11:00:04.663 +08:00 [DBG] 为方法：System.Threading.Tasks.Task`1[KissU.Modules.Blogging.Application.Contracts.Comments.Dtos.CommentWithDetailsDto] UpdateAsync(System.String, KissU.Modules.Blogging.Application.Contracts.Comments.Dtos.UpdateCommentDto)生成服务Id：KissU.Modules.Blogging.Service.Contracts.ICommentService.UpdateAsync_id_input。
+2020-07-15 11:00:04.664 +08:00 [DBG] 为方法：System.Threading.Tasks.Task DeleteAsync(System.String)生成服务Id：KissU.Modules.Blogging.Service.Contracts.ICommentService.DeleteAsync_id。
+2020-07-15 11:00:04.665 +08:00 [DBG] 为方法：System.Threading.Tasks.Task`1[KissU.Common.ListResult`1[KissU.Modules.Blogging.Application.Contracts.Posts.PostWithDetailsDto]] GetListByBlogIdAndTagName(System.String, System.String)生成服务Id：KissU.Modules.Blogging.Service.Contracts.IPostService.GetListByBlogIdAndTagName_blogId_tagName。
+2020-07-15 11:00:04.666 +08:00 [DBG] 为方法：System.Threading.Tasks.Task`1[KissU.Common.ListResult`1[KissU.Modules.Blogging.Application.Contracts.Posts.PostWithDetailsDto]] GetTimeOrderedListAsync(System.String)生成服务Id：KissU.Modules.Blogging.Service.Contracts.IPostService.GetTimeOrderedListAsync_blogId。
+2020-07-15 11:00:04.673 +08:00 [DBG] 为方法：System.Threading.Tasks.Task`1[KissU.Modules.Blogging.Application.Contracts.Posts.PostWithDetailsDto] GetForReadingAsync(KissU.Modules.Blogging.Application.Contracts.Posts.GetPostInput)生成服务Id：KissU.Modules.Blogging.Service.Contracts.IPostService.GetForReadingAsync_input。
+2020-07-15 11:00:04.675 +08:00 [DBG] 为方法：System.Threading.Tasks.Task`1[KissU.Modules.Blogging.Application.Contracts.Posts.PostWithDetailsDto] GetAsync(System.String)生成服务Id：KissU.Modules.Blogging.Service.Contracts.IPostService.GetAsync_id。
+2020-07-15 11:00:04.677 +08:00 [DBG] 为方法：System.Threading.Tasks.Task`1[KissU.Modules.Blogging.Application.Contracts.Posts.PostWithDetailsDto] CreateAsync(KissU.Modules.Blogging.Application.Contracts.Posts.CreatePostDto)生成服务Id：KissU.Modules.Blogging.Service.Contracts.IPostService.CreateAsync_input。
+2020-07-15 11:00:04.678 +08:00 [DBG] 为方法：System.Threading.Tasks.Task`1[KissU.Modules.Blogging.Application.Contracts.Posts.PostWithDetailsDto] UpdateAsync(System.String, KissU.Modules.Blogging.Application.Contracts.Posts.UpdatePostDto)生成服务Id：KissU.Modules.Blogging.Service.Contracts.IPostService.UpdateAsync_id_input。
+2020-07-15 11:00:04.679 +08:00 [DBG] 为方法：System.Threading.Tasks.Task DeleteAsync(System.String)生成服务Id：KissU.Modules.Blogging.Service.Contracts.IPostService.DeleteAsync_id。
+2020-07-15 11:00:04.680 +08:00 [DBG] 为方法：System.Threading.Tasks.Task`1[System.Collections.Generic.List`1[KissU.Modules.Blogging.Application.Contracts.Tagging.Dtos.TagDto]] GetPopularTags(System.String, KissU.Modules.Blogging.Application.Contracts.Tagging.Dtos.GetPopularTagsInput)生成服务Id：KissU.Modules.Blogging.Service.Contracts.ITagService.GetPopularTags_blogId_input。
+2020-07-15 11:00:04.682 +08:00 [DBG] 为方法：System.Threading.Tasks.Task`1[KissU.Surging.CPlatform.Address.IpAddressModel] Locate(System.String, System.String)生成服务Id：KissU.Surging.CPlatform.Module.IEchoService.Locate_key_routePath。
+2020-07-15 11:00:04.883 +08:00 [DBG] 准备从节点：services/serviceRoutes/KissU.Modules.Blogging.Service.Contracts.IBlogService.Create_input中获取路由信息。
+2020-07-15 11:00:04.897 +08:00 [DBG] 准备转换服务路由，配置内容：{"AddressDescriptors":[{"Value":"{\"Ip\":\"127.0.0.1\",\"Port\":82,\"WsPort\":8102,\"MqttPort\":8202,\"HttpPort\":8002,\"Wt\":20,\"Tp\":1594808576}"}],"ServiceDescriptor":{"Id":"KissU.Modules.Blogging.Service.Contracts.IBlogService.Create_input","Token":"e963f894f99e4d60b493448d38adc8b0","RoutePath":"api/blog/create","Metadatas":{"HttpMethod":"POST"}}。
+2020-07-15 11:00:04.930 +08:00 [DBG] 准备从节点：services/serviceRoutes/KissU.Modules.Blogging.Service.Contracts.IBlogService.Delete_id中获取路由信息。
+2020-07-15 11:00:04.935 +08:00 [DBG] 准备转换服务路由，配置内容：{"AddressDescriptors":[{"Value":"{\"Ip\":\"127.0.0.1\",\"Port\":82,\"WsPort\":8102,\"MqttPort\":8202,\"HttpPort\":8002,\"Wt\":20,\"Tp\":1594808576}"}],"ServiceDescriptor":{"Id":"KissU.Modules.Blogging.Service.Contracts.IBlogService.Delete_id","Token":"e963f894f99e4d60b493448d38adc8b0","RoutePath":"api/blog/delete/{id}","Metadatas":{"HttpMethod":"DELETE"}}。
+2020-07-15 11:00:04.938 +08:00 [DBG] 准备从节点：services/serviceRoutes/KissU.Modules.Blogging.Service.Contracts.IBlogService.GetAsync_id中获取路由信息。
+2020-07-15 11:00:04.944 +08:00 [DBG] 准备转换服务路由，配置内容：{"AddressDescriptors":[{"Value":"{\"Ip\":\"127.0.0.1\",\"Port\":82,\"WsPort\":8102,\"MqttPort\":8202,\"HttpPort\":8002,\"Wt\":20,\"Tp\":1594808576}"}],"ServiceDescriptor":{"Id":"KissU.Modules.Blogging.Service.Contracts.IBlogService.GetAsync_id","Token":"e963f894f99e4d60b493448d38adc8b0","RoutePath":"api/blog/getasync/{id}","Metadatas":{"HttpMethod":"GET"}}。
+2020-07-15 11:00:04.946 +08:00 [DBG] 准备从节点：services/serviceRoutes/KissU.Modules.Blogging.Service.Contracts.IBlogService.GetByShortNameAsync_shortName中获取路由信息。
+2020-07-15 11:00:04.951 +08:00 [DBG] 准备转换服务路由，配置内容：{"AddressDescriptors":[{"Value":"{\"Ip\":\"127.0.0.1\",\"Port\":82,\"WsPort\":8102,\"MqttPort\":8202,\"HttpPort\":8002,\"Wt\":20,\"Tp\":1594808576}"}],"ServiceDescriptor":{"Id":"KissU.Modules.Blogging.Service.Contracts.IBlogService.GetByShortNameAsync_shortName","Token":"e963f894f99e4d60b493448d38adc8b0","RoutePath":"api/blog/by-shortname/getbyshortnameasync/{shortname}","Metadatas":{"HttpMethod":"GET"}}。
+2020-07-15 11:00:04.956 +08:00 [DBG] 准备从节点：services/serviceRoutes/KissU.Modules.Blogging.Service.Contracts.IBlogService.GetListAsync中获取路由信息。
+2020-07-15 11:00:04.962 +08:00 [DBG] 准备转换服务路由，配置内容：{"AddressDescriptors":[{"Value":"{\"Ip\":\"127.0.0.1\",\"Port\":82,\"WsPort\":8102,\"MqttPort\":8202,\"HttpPort\":8002,\"Wt\":20,\"Tp\":1594808576}"}],"ServiceDescriptor":{"Id":"KissU.Modules.Blogging.Service.Contracts.IBlogService.GetListAsync","Token":"e963f894f99e4d60b493448d38adc8b0","RoutePath":"api/blog/getlistasync","Metadatas":{"HttpMethod":"GET"}}。
+2020-07-15 11:00:04.964 +08:00 [DBG] 准备从节点：services/serviceRoutes/KissU.Modules.Blogging.Service.Contracts.IBlogService.Update_id_input中获取路由信息。
+2020-07-15 11:00:04.969 +08:00 [DBG] 准备转换服务路由，配置内容：{"AddressDescriptors":[{"Value":"{\"Ip\":\"127.0.0.1\",\"Port\":82,\"WsPort\":8102,\"MqttPort\":8202,\"HttpPort\":8002,\"Wt\":20,\"Tp\":1594808576}"}],"ServiceDescriptor":{"Id":"KissU.Modules.Blogging.Service.Contracts.IBlogService.Update_id_input","Token":"e963f894f99e4d60b493448d38adc8b0","RoutePath":"api/blog/update/{id}","Metadatas":{"HttpMethod":"PUT"}}。
+2020-07-15 11:00:04.975 +08:00 [DBG] 准备从节点：services/serviceRoutes/KissU.Modules.Blogging.Service.Contracts.ICommentService.CreateAsync_input中获取路由信息。
+2020-07-15 11:00:04.981 +08:00 [DBG] 准备转换服务路由，配置内容：{"AddressDescriptors":[{"Value":"{\"Ip\":\"127.0.0.1\",\"Port\":82,\"WsPort\":8102,\"MqttPort\":8202,\"HttpPort\":8002,\"Wt\":20,\"Tp\":1594808576}"}],"ServiceDescriptor":{"Id":"KissU.Modules.Blogging.Service.Contracts.ICommentService.CreateAsync_input","Token":"e963f894f99e4d60b493448d38adc8b0","RoutePath":"api/comment/createasync","Metadatas":{"HttpMethod":"POST"}}。
+2020-07-15 11:00:04.985 +08:00 [DBG] 准备从节点：services/serviceRoutes/KissU.Modules.Blogging.Service.Contracts.ICommentService.DeleteAsync_id中获取路由信息。
+2020-07-15 11:00:04.991 +08:00 [DBG] 准备转换服务路由，配置内容：{"AddressDescriptors":[{"Value":"{\"Ip\":\"127.0.0.1\",\"Port\":82,\"WsPort\":8102,\"MqttPort\":8202,\"HttpPort\":8002,\"Wt\":20,\"Tp\":1594808576}"}],"ServiceDescriptor":{"Id":"KissU.Modules.Blogging.Service.Contracts.ICommentService.DeleteAsync_id","Token":"e963f894f99e4d60b493448d38adc8b0","RoutePath":"api/comment/deleteasync/{id}","Metadatas":{"HttpMethod":"DELETE"}}。
+2020-07-15 11:00:04.996 +08:00 [DBG] 准备从节点：services/serviceRoutes/KissU.Modules.Blogging.Service.Contracts.ICommentService.GetHierarchicalListOfPostAsync_postId中获取路由信息。
+2020-07-15 11:00:05.000 +08:00 [DBG] 准备转换服务路由，配置内容：{"AddressDescriptors":[{"Value":"{\"Ip\":\"127.0.0.1\",\"Port\":82,\"WsPort\":8102,\"MqttPort\":8202,\"HttpPort\":8002,\"Wt\":20,\"Tp\":1594808576}"}],"ServiceDescriptor":{"Id":"KissU.Modules.Blogging.Service.Contracts.ICommentService.GetHierarchicalListOfPostAsync_postId","Token":"e963f894f99e4d60b493448d38adc8b0","RoutePath":"api/comment/hierarchical/gethierarchicallistofpostasync/{postid}","Metadatas":{"HttpMethod":"GET"}}。
+2020-07-15 11:00:05.008 +08:00 [DBG] 准备从节点：services/serviceRoutes/KissU.Modules.Blogging.Service.Contracts.ICommentService.UpdateAsync_id_input中获取路由信息。
+2020-07-15 11:00:05.012 +08:00 [DBG] 准备转换服务路由，配置内容：{"AddressDescriptors":[{"Value":"{\"Ip\":\"127.0.0.1\",\"Port\":82,\"WsPort\":8102,\"MqttPort\":8202,\"HttpPort\":8002,\"Wt\":20,\"Tp\":1594808576}"}],"ServiceDescriptor":{"Id":"KissU.Modules.Blogging.Service.Contracts.ICommentService.UpdateAsync_id_input","Token":"e963f894f99e4d60b493448d38adc8b0","RoutePath":"api/comment/updateasync/{id}","Metadatas":{"HttpMethod":"PUT"}}。
+2020-07-15 11:00:05.016 +08:00 [DBG] 准备从节点：services/serviceRoutes/KissU.Modules.Blogging.Service.Contracts.IPostService.CreateAsync_input中获取路由信息。
+2020-07-15 11:00:05.023 +08:00 [DBG] 准备转换服务路由，配置内容：{"AddressDescriptors":[{"Value":"{\"Ip\":\"127.0.0.1\",\"Port\":82,\"WsPort\":8102,\"MqttPort\":8202,\"HttpPort\":8002,\"Wt\":20,\"Tp\":1594808576}"}],"ServiceDescriptor":{"Id":"KissU.Modules.Blogging.Service.Contracts.IPostService.CreateAsync_input","Token":"e963f894f99e4d60b493448d38adc8b0","RoutePath":"api/post/createasync","Metadatas":{"HttpMethod":"POST"}}。
+2020-07-15 11:00:05.029 +08:00 [DBG] 准备从节点：services/serviceRoutes/KissU.Modules.Blogging.Service.Contracts.IPostService.DeleteAsync_id中获取路由信息。
+2020-07-15 11:00:05.033 +08:00 [DBG] 准备转换服务路由，配置内容：{"AddressDescriptors":[{"Value":"{\"Ip\":\"127.0.0.1\",\"Port\":82,\"WsPort\":8102,\"MqttPort\":8202,\"HttpPort\":8002,\"Wt\":20,\"Tp\":1594808576}"}],"ServiceDescriptor":{"Id":"KissU.Modules.Blogging.Service.Contracts.IPostService.DeleteAsync_id","Token":"e963f894f99e4d60b493448d38adc8b0","RoutePath":"api/post/deleteasync/{id}","Metadatas":{"HttpMethod":"DELETE"}}。
+2020-07-15 11:00:05.039 +08:00 [DBG] 准备从节点：services/serviceRoutes/KissU.Modules.Blogging.Service.Contracts.IPostService.GetAsync_id中获取路由信息。
+2020-07-15 11:00:05.049 +08:00 [DBG] 准备转换服务路由，配置内容：{"AddressDescriptors":[{"Value":"{\"Ip\":\"127.0.0.1\",\"Port\":82,\"WsPort\":8102,\"MqttPort\":8202,\"HttpPort\":8002,\"Wt\":20,\"Tp\":1594808576}"}],"ServiceDescriptor":{"Id":"KissU.Modules.Blogging.Service.Contracts.IPostService.GetAsync_id","Token":"e963f894f99e4d60b493448d38adc8b0","RoutePath":"api/post/getasync/{id}","Metadatas":{"HttpMethod":"GET"}}。
+2020-07-15 11:00:05.055 +08:00 [DBG] 准备从节点：services/serviceRoutes/KissU.Modules.Blogging.Service.Contracts.IPostService.GetForReadingAsync_input中获取路由信息。
+2020-07-15 11:00:05.067 +08:00 [DBG] 准备转换服务路由，配置内容：{"AddressDescriptors":[{"Value":"{\"Ip\":\"127.0.0.1\",\"Port\":82,\"WsPort\":8102,\"MqttPort\":8202,\"HttpPort\":8002,\"Wt\":20,\"Tp\":1594808576}"}],"ServiceDescriptor":{"Id":"KissU.Modules.Blogging.Service.Contracts.IPostService.GetForReadingAsync_input","Token":"e963f894f99e4d60b493448d38adc8b0","RoutePath":"api/post/read/getforreadingasync","Metadatas":{"HttpMethod":"POST"}}。
+2020-07-15 11:00:05.074 +08:00 [DBG] 准备从节点：services/serviceRoutes/KissU.Modules.Blogging.Service.Contracts.IPostService.GetListByBlogIdAndTagName_blogId_tagName中获取路由信息。
+2020-07-15 11:00:05.081 +08:00 [DBG] 准备转换服务路由，配置内容：{"AddressDescriptors":[{"Value":"{\"Ip\":\"127.0.0.1\",\"Port\":82,\"WsPort\":8102,\"MqttPort\":8202,\"HttpPort\":8002,\"Wt\":20,\"Tp\":1594808576}"}],"ServiceDescriptor":{"Id":"KissU.Modules.Blogging.Service.Contracts.IPostService.GetListByBlogIdAndTagName_blogId_tagName","Token":"e963f894f99e4d60b493448d38adc8b0","RoutePath":"api/post/getlistbyblogidandtagname/{blogid}/all","Metadatas":{"HttpMethod":"GET"}}。
+2020-07-15 11:00:05.087 +08:00 [DBG] 准备从节点：services/serviceRoutes/KissU.Modules.Blogging.Service.Contracts.IPostService.GetTimeOrderedListAsync_blogId中获取路由信息。
+2020-07-15 11:00:05.094 +08:00 [DBG] 准备转换服务路由，配置内容：{"AddressDescriptors":[{"Value":"{\"Ip\":\"127.0.0.1\",\"Port\":82,\"WsPort\":8102,\"MqttPort\":8202,\"HttpPort\":8002,\"Wt\":20,\"Tp\":1594808576}"}],"ServiceDescriptor":{"Id":"KissU.Modules.Blogging.Service.Contracts.IPostService.GetTimeOrderedListAsync_blogId","Token":"e963f894f99e4d60b493448d38adc8b0","RoutePath":"api/post/gettimeorderedlistasync/{blogid}/all/by-time","Metadatas":{"HttpMethod":"GET"}}。
+2020-07-15 11:00:05.096 +08:00 [DBG] 准备从节点：services/serviceRoutes/KissU.Modules.Blogging.Service.Contracts.IPostService.UpdateAsync_id_input中获取路由信息。
+2020-07-15 11:00:05.100 +08:00 [DBG] 准备转换服务路由，配置内容：{"AddressDescriptors":[{"Value":"{\"Ip\":\"127.0.0.1\",\"Port\":82,\"WsPort\":8102,\"MqttPort\":8202,\"HttpPort\":8002,\"Wt\":20,\"Tp\":1594808576}"}],"ServiceDescriptor":{"Id":"KissU.Modules.Blogging.Service.Contracts.IPostService.UpdateAsync_id_input","Token":"e963f894f99e4d60b493448d38adc8b0","RoutePath":"api/post/updateasync/{id}","Metadatas":{"HttpMethod":"PUT"}}。
+2020-07-15 11:00:05.103 +08:00 [DBG] 准备从节点：services/serviceRoutes/KissU.Modules.Blogging.Service.Contracts.ITagService.GetPopularTags_blogId_input中获取路由信息。
+2020-07-15 11:00:05.110 +08:00 [DBG] 准备转换服务路由，配置内容：{"AddressDescriptors":[{"Value":"{\"Ip\":\"127.0.0.1\",\"Port\":82,\"WsPort\":8102,\"MqttPort\":8202,\"HttpPort\":8002,\"Wt\":20,\"Tp\":1594808576}"}],"ServiceDescriptor":{"Id":"KissU.Modules.Blogging.Service.Contracts.ITagService.GetPopularTags_blogId_input","Token":"e963f894f99e4d60b493448d38adc8b0","RoutePath":"api/tag/popular/getpopulartags/{blogid}","Metadatas":{"HttpMethod":"POST"}}。
+2020-07-15 11:00:05.114 +08:00 [DBG] 准备从节点：services/serviceRoutes/KissU.Surging.CPlatform.Module.IEchoService.Locate_key_routePath中获取路由信息。
+2020-07-15 11:00:05.120 +08:00 [DBG] 准备转换服务路由，配置内容：{"AddressDescriptors":[{"Value":"{\"Ip\":\"127.0.0.1\",\"Port\":82,\"WsPort\":8102,\"MqttPort\":8202,\"HttpPort\":8002,\"Wt\":20,\"Tp\":1594808576}"}],"ServiceDescriptor":{"Id":"KissU.Surging.CPlatform.Module.IEchoService.Locate_key_routePath","Token":"e963f894f99e4d60b493448d38adc8b0","RoutePath":"/locate","Metadatas":{}}。
+2020-07-15 11:00:05.124 +08:00 [DBG] 准备从节点：services/serviceRoutes/KissU.Surging.Protocol.Mqtt.Internal.Runtime.IMqttRomtePublishService.Publish_deviceId_message中获取路由信息。
+2020-07-15 11:00:05.129 +08:00 [DBG] 准备转换服务路由，配置内容：{"AddressDescriptors":[{"Value":"{\"Ip\":\"127.0.0.1\",\"Port\":82,\"WsPort\":8102,\"MqttPort\":8202,\"HttpPort\":8002,\"Wt\":20,\"Tp\":1594808576}"}],"ServiceDescriptor":{"Id":"KissU.Surging.Protocol.Mqtt.Internal.Runtime.IMqttRomtePublishService.Publish_deviceId_message","Token":"e963f894f99e4d60b493448d38adc8b0","RoutePath":"device/publish","Metadatas":{}}。
+2020-07-15 11:00:05.147 +08:00 [DBG] 准备从节点：services/serviceCommands/KissU.Modules.Blogging.Service.Contracts.IBlogService.Create_input中获取服务命令信息。
+2020-07-15 11:00:05.154 +08:00 [DBG] 准备转换服务命令，配置内容：{"ServiceId":"KissU.Modules.Blogging.Service.Contracts.IBlogService.Create_input","FailoverCluster":3,"CircuitBreakerForceOpen":false,"Strategy":"Failover","ExecutionTimeoutInMilliseconds":1000,"RequestCacheEnabled":false,"Injection":"return null","FallBackName":null,"ShuntStrategy":"Polling","InjectionNamespaces":null,"BreakeErrorThresholdPercentage":50,"BreakeSleepWindowInMilliseconds":60000,"BreakerForceClosed":false,"BreakerRequestVolumeThreshold":20,"MaxConcurrentRequests":20}。
+2020-07-15 11:00:05.182 +08:00 [DBG] 准备从节点：services/serviceCommands/KissU.Modules.Blogging.Service.Contracts.IBlogService.Delete_id中获取服务命令信息。
+2020-07-15 11:00:05.188 +08:00 [DBG] 准备转换服务命令，配置内容：{"ServiceId":"KissU.Modules.Blogging.Service.Contracts.IBlogService.Delete_id","FailoverCluster":3,"CircuitBreakerForceOpen":false,"Strategy":"Failover","ExecutionTimeoutInMilliseconds":1000,"RequestCacheEnabled":false,"Injection":"return null","FallBackName":null,"ShuntStrategy":"Polling","InjectionNamespaces":null,"BreakeErrorThresholdPercentage":50,"BreakeSleepWindowInMilliseconds":60000,"BreakerForceClosed":false,"BreakerRequestVolumeThreshold":20,"MaxConcurrentRequests":20}。
+2020-07-15 11:00:05.190 +08:00 [DBG] 准备从节点：services/serviceCommands/KissU.Modules.Blogging.Service.Contracts.IBlogService.GetAsync_id中获取服务命令信息。
+2020-07-15 11:00:05.195 +08:00 [DBG] 准备转换服务命令，配置内容：{"ServiceId":"KissU.Modules.Blogging.Service.Contracts.IBlogService.GetAsync_id","FailoverCluster":3,"CircuitBreakerForceOpen":false,"Strategy":"Failover","ExecutionTimeoutInMilliseconds":1000,"RequestCacheEnabled":false,"Injection":"return null","FallBackName":null,"ShuntStrategy":"Polling","InjectionNamespaces":null,"BreakeErrorThresholdPercentage":50,"BreakeSleepWindowInMilliseconds":60000,"BreakerForceClosed":false,"BreakerRequestVolumeThreshold":20,"MaxConcurrentRequests":20}。
+2020-07-15 11:00:05.198 +08:00 [DBG] 准备从节点：services/serviceCommands/KissU.Modules.Blogging.Service.Contracts.IBlogService.GetByShortNameAsync_shortName中获取服务命令信息。
+2020-07-15 11:00:05.203 +08:00 [DBG] 准备转换服务命令，配置内容：{"ServiceId":"KissU.Modules.Blogging.Service.Contracts.IBlogService.GetByShortNameAsync_shortName","FailoverCluster":3,"CircuitBreakerForceOpen":false,"Strategy":"Failover","ExecutionTimeoutInMilliseconds":1000,"RequestCacheEnabled":false,"Injection":"return null","FallBackName":null,"ShuntStrategy":"Polling","InjectionNamespaces":null,"BreakeErrorThresholdPercentage":50,"BreakeSleepWindowInMilliseconds":60000,"BreakerForceClosed":false,"BreakerRequestVolumeThreshold":20,"MaxConcurrentRequests":20}。
+2020-07-15 11:00:05.206 +08:00 [DBG] 准备从节点：services/serviceCommands/KissU.Modules.Blogging.Service.Contracts.IBlogService.GetListAsync中获取服务命令信息。
+2020-07-15 11:00:05.210 +08:00 [DBG] 准备转换服务命令，配置内容：{"ServiceId":"KissU.Modules.Blogging.Service.Contracts.IBlogService.GetListAsync","FailoverCluster":3,"CircuitBreakerForceOpen":false,"Strategy":"Failover","ExecutionTimeoutInMilliseconds":1000,"RequestCacheEnabled":false,"Injection":"return null","FallBackName":null,"ShuntStrategy":"Polling","InjectionNamespaces":null,"BreakeErrorThresholdPercentage":50,"BreakeSleepWindowInMilliseconds":60000,"BreakerForceClosed":false,"BreakerRequestVolumeThreshold":20,"MaxConcurrentRequests":20}。
+2020-07-15 11:00:05.211 +08:00 [DBG] 准备从节点：services/serviceCommands/KissU.Modules.Blogging.Service.Contracts.IBlogService.Update_id_input中获取服务命令信息。
+2020-07-15 11:00:05.216 +08:00 [DBG] 准备转换服务命令，配置内容：{"ServiceId":"KissU.Modules.Blogging.Service.Contracts.IBlogService.Update_id_input","FailoverCluster":3,"CircuitBreakerForceOpen":false,"Strategy":"Failover","ExecutionTimeoutInMilliseconds":1000,"RequestCacheEnabled":false,"Injection":"return null","FallBackName":null,"ShuntStrategy":"Polling","InjectionNamespaces":null,"BreakeErrorThresholdPercentage":50,"BreakeSleepWindowInMilliseconds":60000,"BreakerForceClosed":false,"BreakerRequestVolumeThreshold":20,"MaxConcurrentRequests":20}。
+2020-07-15 11:00:05.217 +08:00 [DBG] 准备从节点：services/serviceCommands/KissU.Modules.Blogging.Service.Contracts.ICommentService.CreateAsync_input中获取服务命令信息。
+2020-07-15 11:00:05.225 +08:00 [DBG] 准备转换服务命令，配置内容：{"ServiceId":"KissU.Modules.Blogging.Service.Contracts.ICommentService.CreateAsync_input","FailoverCluster":3,"CircuitBreakerForceOpen":false,"Strategy":"Failover","ExecutionTimeoutInMilliseconds":1000,"RequestCacheEnabled":false,"Injection":"return null","FallBackName":null,"ShuntStrategy":"Polling","InjectionNamespaces":null,"BreakeErrorThresholdPercentage":50,"BreakeSleepWindowInMilliseconds":60000,"BreakerForceClosed":false,"BreakerRequestVolumeThreshold":20,"MaxConcurrentRequests":20}。
+2020-07-15 11:00:05.228 +08:00 [DBG] 准备从节点：services/serviceCommands/KissU.Modules.Blogging.Service.Contracts.ICommentService.DeleteAsync_id中获取服务命令信息。
+2020-07-15 11:00:05.234 +08:00 [DBG] 准备转换服务命令，配置内容：{"ServiceId":"KissU.Modules.Blogging.Service.Contracts.ICommentService.DeleteAsync_id","FailoverCluster":3,"CircuitBreakerForceOpen":false,"Strategy":"Failover","ExecutionTimeoutInMilliseconds":1000,"RequestCacheEnabled":false,"Injection":"return null","FallBackName":null,"ShuntStrategy":"Polling","InjectionNamespaces":null,"BreakeErrorThresholdPercentage":50,"BreakeSleepWindowInMilliseconds":60000,"BreakerForceClosed":false,"BreakerRequestVolumeThreshold":20,"MaxConcurrentRequests":20}。
+2020-07-15 11:00:05.242 +08:00 [DBG] 准备从节点：services/serviceCommands/KissU.Modules.Blogging.Service.Contracts.ICommentService.GetHierarchicalListOfPostAsync_postId中获取服务命令信息。
+2020-07-15 11:00:05.247 +08:00 [DBG] 准备转换服务命令，配置内容：{"ServiceId":"KissU.Modules.Blogging.Service.Contracts.ICommentService.GetHierarchicalListOfPostAsync_postId","FailoverCluster":3,"CircuitBreakerForceOpen":false,"Strategy":"Failover","ExecutionTimeoutInMilliseconds":1000,"RequestCacheEnabled":false,"Injection":"return null","FallBackName":null,"ShuntStrategy":"Polling","InjectionNamespaces":null,"BreakeErrorThresholdPercentage":50,"BreakeSleepWindowInMilliseconds":60000,"BreakerForceClosed":false,"BreakerRequestVolumeThreshold":20,"MaxConcurrentRequests":20}。
+2020-07-15 11:00:05.250 +08:00 [DBG] 准备从节点：services/serviceCommands/KissU.Modules.Blogging.Service.Contracts.ICommentService.UpdateAsync_id_input中获取服务命令信息。
+2020-07-15 11:00:05.257 +08:00 [DBG] 准备转换服务命令，配置内容：{"ServiceId":"KissU.Modules.Blogging.Service.Contracts.ICommentService.UpdateAsync_id_input","FailoverCluster":3,"CircuitBreakerForceOpen":false,"Strategy":"Failover","ExecutionTimeoutInMilliseconds":1000,"RequestCacheEnabled":false,"Injection":"return null","FallBackName":null,"ShuntStrategy":"Polling","InjectionNamespaces":null,"BreakeErrorThresholdPercentage":50,"BreakeSleepWindowInMilliseconds":60000,"BreakerForceClosed":false,"BreakerRequestVolumeThreshold":20,"MaxConcurrentRequests":20}。
+2020-07-15 11:00:05.262 +08:00 [DBG] 准备从节点：services/serviceCommands/KissU.Modules.Blogging.Service.Contracts.IPostService.CreateAsync_input中获取服务命令信息。
+2020-07-15 11:00:05.266 +08:00 [DBG] 准备转换服务命令，配置内容：{"ServiceId":"KissU.Modules.Blogging.Service.Contracts.IPostService.CreateAsync_input","FailoverCluster":3,"CircuitBreakerForceOpen":false,"Strategy":"Failover","ExecutionTimeoutInMilliseconds":1000,"RequestCacheEnabled":false,"Injection":"return null","FallBackName":null,"ShuntStrategy":"Polling","InjectionNamespaces":null,"BreakeErrorThresholdPercentage":50,"BreakeSleepWindowInMilliseconds":60000,"BreakerForceClosed":false,"BreakerRequestVolumeThreshold":20,"MaxConcurrentRequests":20}。
+2020-07-15 11:00:05.267 +08:00 [DBG] 准备从节点：services/serviceCommands/KissU.Modules.Blogging.Service.Contracts.IPostService.DeleteAsync_id中获取服务命令信息。
+2020-07-15 11:00:05.275 +08:00 [DBG] 准备转换服务命令，配置内容：{"ServiceId":"KissU.Modules.Blogging.Service.Contracts.IPostService.DeleteAsync_id","FailoverCluster":3,"CircuitBreakerForceOpen":false,"Strategy":"Failover","ExecutionTimeoutInMilliseconds":1000,"RequestCacheEnabled":false,"Injection":"return null","FallBackName":null,"ShuntStrategy":"Polling","InjectionNamespaces":null,"BreakeErrorThresholdPercentage":50,"BreakeSleepWindowInMilliseconds":60000,"BreakerForceClosed":false,"BreakerRequestVolumeThreshold":20,"MaxConcurrentRequests":20}。
+2020-07-15 11:00:05.277 +08:00 [DBG] 准备从节点：services/serviceCommands/KissU.Modules.Blogging.Service.Contracts.IPostService.GetAsync_id中获取服务命令信息。
+2020-07-15 11:00:05.281 +08:00 [DBG] 准备转换服务命令，配置内容：{"ServiceId":"KissU.Modules.Blogging.Service.Contracts.IPostService.GetAsync_id","FailoverCluster":3,"CircuitBreakerForceOpen":false,"Strategy":"Failover","ExecutionTimeoutInMilliseconds":1000,"RequestCacheEnabled":false,"Injection":"return null","FallBackName":null,"ShuntStrategy":"Polling","InjectionNamespaces":null,"BreakeErrorThresholdPercentage":50,"BreakeSleepWindowInMilliseconds":60000,"BreakerForceClosed":false,"BreakerRequestVolumeThreshold":20,"MaxConcurrentRequests":20}。
+2020-07-15 11:00:05.284 +08:00 [DBG] 准备从节点：services/serviceCommands/KissU.Modules.Blogging.Service.Contracts.IPostService.GetForReadingAsync_input中获取服务命令信息。
+2020-07-15 11:00:05.292 +08:00 [DBG] 准备转换服务命令，配置内容：{"ServiceId":"KissU.Modules.Blogging.Service.Contracts.IPostService.GetForReadingAsync_input","FailoverCluster":3,"CircuitBreakerForceOpen":false,"Strategy":"Failover","ExecutionTimeoutInMilliseconds":1000,"RequestCacheEnabled":false,"Injection":"return null","FallBackName":null,"ShuntStrategy":"Polling","InjectionNamespaces":null,"BreakeErrorThresholdPercentage":50,"BreakeSleepWindowInMilliseconds":60000,"BreakerForceClosed":false,"BreakerRequestVolumeThreshold":20,"MaxConcurrentRequests":20}。
+2020-07-15 11:00:05.294 +08:00 [DBG] 准备从节点：services/serviceCommands/KissU.Modules.Blogging.Service.Contracts.IPostService.GetListByBlogIdAndTagName_blogId_tagName中获取服务命令信息。
+2020-07-15 11:00:05.298 +08:00 [DBG] 准备转换服务命令，配置内容：{"ServiceId":"KissU.Modules.Blogging.Service.Contracts.IPostService.GetListByBlogIdAndTagName_blogId_tagName","FailoverCluster":3,"CircuitBreakerForceOpen":false,"Strategy":"Failover","ExecutionTimeoutInMilliseconds":1000,"RequestCacheEnabled":false,"Injection":"return null","FallBackName":null,"ShuntStrategy":"Polling","InjectionNamespaces":null,"BreakeErrorThresholdPercentage":50,"BreakeSleepWindowInMilliseconds":60000,"BreakerForceClosed":false,"BreakerRequestVolumeThreshold":20,"MaxConcurrentRequests":20}。
+2020-07-15 11:00:05.300 +08:00 [DBG] 准备从节点：services/serviceCommands/KissU.Modules.Blogging.Service.Contracts.IPostService.GetTimeOrderedListAsync_blogId中获取服务命令信息。
+2020-07-15 11:00:05.307 +08:00 [DBG] 准备转换服务命令，配置内容：{"ServiceId":"KissU.Modules.Blogging.Service.Contracts.IPostService.GetTimeOrderedListAsync_blogId","FailoverCluster":3,"CircuitBreakerForceOpen":false,"Strategy":"Failover","ExecutionTimeoutInMilliseconds":1000,"RequestCacheEnabled":false,"Injection":"return null","FallBackName":null,"ShuntStrategy":"Polling","InjectionNamespaces":null,"BreakeErrorThresholdPercentage":50,"BreakeSleepWindowInMilliseconds":60000,"BreakerForceClosed":false,"BreakerRequestVolumeThreshold":20,"MaxConcurrentRequests":20}。
+2020-07-15 11:00:05.309 +08:00 [DBG] 准备从节点：services/serviceCommands/KissU.Modules.Blogging.Service.Contracts.IPostService.UpdateAsync_id_input中获取服务命令信息。
+2020-07-15 11:00:05.314 +08:00 [DBG] 准备转换服务命令，配置内容：{"ServiceId":"KissU.Modules.Blogging.Service.Contracts.IPostService.UpdateAsync_id_input","FailoverCluster":3,"CircuitBreakerForceOpen":false,"Strategy":"Failover","ExecutionTimeoutInMilliseconds":1000,"RequestCacheEnabled":false,"Injection":"return null","FallBackName":null,"ShuntStrategy":"Polling","InjectionNamespaces":null,"BreakeErrorThresholdPercentage":50,"BreakeSleepWindowInMilliseconds":60000,"BreakerForceClosed":false,"BreakerRequestVolumeThreshold":20,"MaxConcurrentRequests":20}。
+2020-07-15 11:00:05.318 +08:00 [DBG] 准备从节点：services/serviceCommands/KissU.Modules.Blogging.Service.Contracts.ITagService.GetPopularTags_blogId_input中获取服务命令信息。
+2020-07-15 11:00:05.328 +08:00 [DBG] 准备转换服务命令，配置内容：{"ServiceId":"KissU.Modules.Blogging.Service.Contracts.ITagService.GetPopularTags_blogId_input","FailoverCluster":3,"CircuitBreakerForceOpen":false,"Strategy":"Failover","ExecutionTimeoutInMilliseconds":1000,"RequestCacheEnabled":false,"Injection":"return null","FallBackName":null,"ShuntStrategy":"Polling","InjectionNamespaces":null,"BreakeErrorThresholdPercentage":50,"BreakeSleepWindowInMilliseconds":60000,"BreakerForceClosed":false,"BreakerRequestVolumeThreshold":20,"MaxConcurrentRequests":20}。
+2020-07-15 11:00:05.331 +08:00 [DBG] 准备从节点：services/serviceCommands/KissU.Surging.CPlatform.Module.IEchoService.Locate_key_routePath中获取服务命令信息。
+2020-07-15 11:00:05.345 +08:00 [DBG] 准备转换服务命令，配置内容：{"ServiceId":"KissU.Surging.CPlatform.Module.IEchoService.Locate_key_routePath","FailoverCluster":3,"CircuitBreakerForceOpen":false,"Strategy":"Failover","ExecutionTimeoutInMilliseconds":1000,"RequestCacheEnabled":false,"Injection":"return null","FallBackName":null,"ShuntStrategy":"HashAlgorithm","InjectionNamespaces":null,"BreakeErrorThresholdPercentage":50,"BreakeSleepWindowInMilliseconds":60000,"BreakerForceClosed":false,"BreakerRequestVolumeThreshold":20,"MaxConcurrentRequests":20}。
+2020-07-15 11:00:05.376 +08:00 [DBG] 准备从节点：services/serviceCommands/KissU.Surging.Protocol.Mqtt.Internal.Runtime.IMqttRomtePublishService.Publish_deviceId_message中获取服务命令信息。
+2020-07-15 11:00:05.383 +08:00 [DBG] 准备转换服务命令，配置内容：{"ServiceId":"KissU.Surging.Protocol.Mqtt.Internal.Runtime.IMqttRomtePublishService.Publish_deviceId_message","FailoverCluster":3,"CircuitBreakerForceOpen":false,"Strategy":"Failover","ExecutionTimeoutInMilliseconds":1000,"RequestCacheEnabled":false,"Injection":"return null","FallBackName":null,"ShuntStrategy":"HashAlgorithm","InjectionNamespaces":null,"BreakeErrorThresholdPercentage":50,"BreakeSleepWindowInMilliseconds":60000,"BreakerForceClosed":false,"BreakerRequestVolumeThreshold":20,"MaxConcurrentRequests":20}。
+2020-07-15 11:00:05.683 +08:00 [DBG] 为方法：System.Threading.Tasks.Task`1[KissU.Common.ListResult`1[KissU.Modules.Blogging.Application.Contracts.Blogs.Dtos.BlogDto]] GetListAsync()生成服务Id：KissU.Modules.Blogging.Service.Contracts.IBlogService.GetListAsync。
+2020-07-15 11:00:05.705 +08:00 [DBG] 为方法：System.Threading.Tasks.Task`1[KissU.Modules.Blogging.Application.Contracts.Blogs.Dtos.BlogDto] GetByShortNameAsync(System.String)生成服务Id：KissU.Modules.Blogging.Service.Contracts.IBlogService.GetByShortNameAsync_shortName。
+2020-07-15 11:00:05.708 +08:00 [DBG] 为方法：System.Threading.Tasks.Task`1[KissU.Modules.Blogging.Application.Contracts.Blogs.Dtos.BlogDto] GetAsync(System.String)生成服务Id：KissU.Modules.Blogging.Service.Contracts.IBlogService.GetAsync_id。
+2020-07-15 11:00:05.709 +08:00 [DBG] 为方法：System.Threading.Tasks.Task`1[KissU.Modules.Blogging.Application.Contracts.Blogs.Dtos.BlogDto] Create(KissU.Modules.Blogging.Application.Contracts.Blogs.Dtos.CreateBlogDto)生成服务Id：KissU.Modules.Blogging.Service.Contracts.IBlogService.Create_input。
+2020-07-15 11:00:05.710 +08:00 [DBG] 为方法：System.Threading.Tasks.Task`1[KissU.Modules.Blogging.Application.Contracts.Blogs.Dtos.BlogDto] Update(System.String, KissU.Modules.Blogging.Application.Contracts.Blogs.Dtos.UpdateBlogDto)生成服务Id：KissU.Modules.Blogging.Service.Contracts.IBlogService.Update_id_input。
+2020-07-15 11:00:05.711 +08:00 [DBG] 为方法：System.Threading.Tasks.Task Delete(System.String)生成服务Id：KissU.Modules.Blogging.Service.Contracts.IBlogService.Delete_id。
+2020-07-15 11:00:05.726 +08:00 [DBG] 为方法：System.Threading.Tasks.Task`1[System.Collections.Generic.List`1[KissU.Modules.Blogging.Application.Contracts.Comments.Dtos.CommentWithRepliesDto]] GetHierarchicalListOfPostAsync(System.String)生成服务Id：KissU.Modules.Blogging.Service.Contracts.ICommentService.GetHierarchicalListOfPostAsync_postId。
+2020-07-15 11:00:05.728 +08:00 [DBG] 为方法：System.Threading.Tasks.Task`1[KissU.Modules.Blogging.Application.Contracts.Comments.Dtos.CommentWithDetailsDto] CreateAsync(KissU.Modules.Blogging.Application.Contracts.Comments.Dtos.CreateCommentDto)生成服务Id：KissU.Modules.Blogging.Service.Contracts.ICommentService.CreateAsync_input。
+2020-07-15 11:00:05.730 +08:00 [DBG] 为方法：System.Threading.Tasks.Task`1[KissU.Modules.Blogging.Application.Contracts.Comments.Dtos.CommentWithDetailsDto] UpdateAsync(System.String, KissU.Modules.Blogging.Application.Contracts.Comments.Dtos.UpdateCommentDto)生成服务Id：KissU.Modules.Blogging.Service.Contracts.ICommentService.UpdateAsync_id_input。
+2020-07-15 11:00:05.731 +08:00 [DBG] 为方法：System.Threading.Tasks.Task DeleteAsync(System.String)生成服务Id：KissU.Modules.Blogging.Service.Contracts.ICommentService.DeleteAsync_id。
+2020-07-15 11:00:05.734 +08:00 [DBG] 为方法：System.Threading.Tasks.Task`1[KissU.Common.ListResult`1[KissU.Modules.Blogging.Application.Contracts.Posts.PostWithDetailsDto]] GetListByBlogIdAndTagName(System.String, System.String)生成服务Id：KissU.Modules.Blogging.Service.Contracts.IPostService.GetListByBlogIdAndTagName_blogId_tagName。
+2020-07-15 11:00:05.738 +08:00 [DBG] 为方法：System.Threading.Tasks.Task`1[KissU.Common.ListResult`1[KissU.Modules.Blogging.Application.Contracts.Posts.PostWithDetailsDto]] GetTimeOrderedListAsync(System.String)生成服务Id：KissU.Modules.Blogging.Service.Contracts.IPostService.GetTimeOrderedListAsync_blogId。
+2020-07-15 11:00:05.739 +08:00 [DBG] 为方法：System.Threading.Tasks.Task`1[KissU.Modules.Blogging.Application.Contracts.Posts.PostWithDetailsDto] GetForReadingAsync(KissU.Modules.Blogging.Application.Contracts.Posts.GetPostInput)生成服务Id：KissU.Modules.Blogging.Service.Contracts.IPostService.GetForReadingAsync_input。
+2020-07-15 11:00:05.740 +08:00 [DBG] 为方法：System.Threading.Tasks.Task`1[KissU.Modules.Blogging.Application.Contracts.Posts.PostWithDetailsDto] GetAsync(System.String)生成服务Id：KissU.Modules.Blogging.Service.Contracts.IPostService.GetAsync_id。
+2020-07-15 11:00:05.741 +08:00 [DBG] 为方法：System.Threading.Tasks.Task`1[KissU.Modules.Blogging.Application.Contracts.Posts.PostWithDetailsDto] CreateAsync(KissU.Modules.Blogging.Application.Contracts.Posts.CreatePostDto)生成服务Id：KissU.Modules.Blogging.Service.Contracts.IPostService.CreateAsync_input。
+2020-07-15 11:00:05.742 +08:00 [DBG] 为方法：System.Threading.Tasks.Task`1[KissU.Modules.Blogging.Application.Contracts.Posts.PostWithDetailsDto] UpdateAsync(System.String, KissU.Modules.Blogging.Application.Contracts.Posts.UpdatePostDto)生成服务Id：KissU.Modules.Blogging.Service.Contracts.IPostService.UpdateAsync_id_input。
+2020-07-15 11:00:05.743 +08:00 [DBG] 为方法：System.Threading.Tasks.Task DeleteAsync(System.String)生成服务Id：KissU.Modules.Blogging.Service.Contracts.IPostService.DeleteAsync_id。
+2020-07-15 11:00:05.747 +08:00 [DBG] 为方法：System.Threading.Tasks.Task`1[System.Collections.Generic.List`1[KissU.Modules.Blogging.Application.Contracts.Tagging.Dtos.TagDto]] GetPopularTags(System.String, KissU.Modules.Blogging.Application.Contracts.Tagging.Dtos.GetPopularTagsInput)生成服务Id：KissU.Modules.Blogging.Service.Contracts.ITagService.GetPopularTags_blogId_input。
+2020-07-15 11:00:05.751 +08:00 [DBG] 为方法：System.Threading.Tasks.Task`1[KissU.Surging.CPlatform.Address.IpAddressModel] Locate(System.String, System.String)生成服务Id：KissU.Surging.CPlatform.Module.IEchoService.Locate_key_routePath。
+2020-07-15 11:00:07.817 +08:00 [INF] Executing handler method KissU.Modules.Blogging.Web.Pages.Blogs.IndexModel.OnGetAsync - ModelState is "Valid"
+2020-07-15 11:00:07.843 +08:00 [DBG] 准备为服务id：KissU.Modules.Blogging.Service.Contracts.IBlogService.GetListAsync，解析可用地址。
+2020-07-15 11:00:07.855 +08:00 [INF] 根据服务id：KissU.Modules.Blogging.Service.Contracts.IBlogService.GetListAsync，找到以下可用地址：127.0.0.1:82。
+2020-07-15 11:00:07.858 +08:00 [DBG] 使用地址：'127.0.0.1:82'进行调用。
+2020-07-15 11:00:07.860 +08:00 [DBG] 准备为服务端地址：127.0.0.1:82创建客户端。
+2020-07-15 11:00:08.159 +08:00 [DBG] 准备发送消息。
+2020-07-15 11:00:08.164 +08:00 [DBG] 准备获取Id为：921427425e1c4557b5d523ad970a67bd的响应内容。
+2020-07-15 11:00:08.303 +08:00 [DBG] 消息发送成功。
+2020-07-15 11:00:08.397 +08:00 [INF] Executed handler method OnGetAsync, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-07-15 11:00:08.653 +08:00 [DBG] Added bundle 'Basic.Global' to the page in 15.37 ms.
+2020-07-15 11:00:08.751 +08:00 [DBG] Added bundle 'Basic.Global' to the page in 9.36 ms.
+2020-07-15 11:00:08.773 +08:00 [INF] Executed page /Blogs/Index in 4167.0597ms
+2020-07-15 11:00:08.777 +08:00 [INF] Executed endpoint '/Blogs/Index'
+2020-07-15 11:00:08.787 +08:00 [INF] Request finished in 4474.4124ms 200 text/html; charset=utf-8
+2020-07-15 11:00:08.810 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/Abp/ServiceProxyScript  
+2020-07-15 11:00:08.813 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/Abp/ApplicationConfigurationScript  
+2020-07-15 11:00:08.821 +08:00 [INF] Executing endpoint 'Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController.GetAll (Volo.Abp.AspNetCore.Mvc)'
+2020-07-15 11:00:08.823 +08:00 [INF] Executing endpoint 'Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc)'
+2020-07-15 11:00:08.843 +08:00 [INF] Route matched with {area = "Abp", action = "Get", controller = "AbpApplicationConfigurationScript", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Get() on controller Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController (Volo.Abp.AspNetCore.Mvc).
+2020-07-15 11:00:08.851 +08:00 [INF] Route matched with {area = "Abp", action = "GetAll", controller = "AbpServiceProxyScript", page = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAll(Volo.Abp.AspNetCore.Mvc.ProxyScripting.ServiceProxyGenerationModel) on controller Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController (Volo.Abp.AspNetCore.Mvc).
+2020-07-15 11:00:08.959 +08:00 [DBG] Executing AbpApplicationConfigurationAppService.GetAsync()...
+2020-07-15 11:00:08.971 +08:00 [DBG] ActionApiDescriptionModel.Create: AbpTenant.FindTenantByNameAsyncByName
+2020-07-15 11:00:08.981 +08:00 [DBG] ActionApiDescriptionModel.Create: AbpTenant.FindTenantByIdAsyncById
+2020-07-15 11:00:08.982 +08:00 [DBG] ActionApiDescriptionModel.Create: AbpApplicationConfiguration.GetAsync
+2020-07-15 11:00:08.985 +08:00 [DBG] ActionApiDescriptionModel.Create: AbpApiDefinition.GetByModel
+2020-07-15 11:00:08.996 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:08.997 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:08.999 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:09.004 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:09.005 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:09.006 +08:00 [INF] Executing ContentResult with HTTP Response ContentType of application/javascript
+2020-07-15 11:00:09.007 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:09.008 +08:00 [INF] Executed action Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController.GetAll (Volo.Abp.AspNetCore.Mvc) in 153.6717ms
+2020-07-15 11:00:09.009 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:09.011 +08:00 [INF] Executed endpoint 'Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController.GetAll (Volo.Abp.AspNetCore.Mvc)'
+2020-07-15 11:00:09.014 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:09.015 +08:00 [INF] Request finished in 204.8433ms 200 application/javascript
+2020-07-15 11:00:09.016 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:09.019 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:09.020 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:09.021 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:09.023 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:09.024 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:09.025 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:09.026 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:09.027 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:09.533 +08:00 [DBG] Executed AbpApplicationConfigurationAppService.GetAsync().
+2020-07-15 11:00:09.567 +08:00 [INF] Executing ContentResult with HTTP Response ContentType of application/javascript
+2020-07-15 11:00:09.570 +08:00 [INF] Executed action Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc) in 723.7697ms
+2020-07-15 11:00:09.572 +08:00 [INF] Executed endpoint 'Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc)'
+2020-07-15 11:00:09.574 +08:00 [INF] Request finished in 760.3858ms 200 application/javascript
+2020-07-15 11:00:13.796 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/Products  
+2020-07-15 11:00:13.805 +08:00 [INF] Request finished in 9.2618ms 404 
+2020-07-15 11:00:15.683 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/Blogs  
+2020-07-15 11:00:15.690 +08:00 [INF] Executing endpoint '/Blogs/Index'
+2020-07-15 11:00:15.696 +08:00 [INF] Route matched with {page = "/Blogs/Index", area = "", action = "", controller = ""}. Executing page /Blogs/Index
+2020-07-15 11:00:15.700 +08:00 [INF] Executing handler method KissU.Modules.Blogging.Web.Pages.Blogs.IndexModel.OnGetAsync - ModelState is "Valid"
+2020-07-15 11:00:15.702 +08:00 [DBG] 准备为服务id：KissU.Modules.Blogging.Service.Contracts.IBlogService.GetListAsync，解析可用地址。
+2020-07-15 11:00:15.704 +08:00 [INF] 根据服务id：KissU.Modules.Blogging.Service.Contracts.IBlogService.GetListAsync，找到以下可用地址：127.0.0.1:82。
+2020-07-15 11:00:15.705 +08:00 [DBG] 使用地址：'127.0.0.1:82'进行调用。
+2020-07-15 11:00:15.706 +08:00 [DBG] 准备为服务端地址：127.0.0.1:82创建客户端。
+2020-07-15 11:00:15.707 +08:00 [DBG] 准备发送消息。
+2020-07-15 11:00:15.708 +08:00 [DBG] 准备获取Id为：c4d7a3b789434ec79ebdff2394cf506e的响应内容。
+2020-07-15 11:00:15.712 +08:00 [DBG] 消息发送成功。
+2020-07-15 11:00:15.720 +08:00 [INF] Executed handler method OnGetAsync, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-07-15 11:00:15.731 +08:00 [DBG] Added bundle 'Basic.Global' to the page in 3.08 ms.
+2020-07-15 11:00:15.740 +08:00 [DBG] Added bundle 'Basic.Global' to the page in 2.89 ms.
+2020-07-15 11:00:15.744 +08:00 [INF] Executed page /Blogs/Index in 44.4851ms
+2020-07-15 11:00:15.749 +08:00 [INF] Executed endpoint '/Blogs/Index'
+2020-07-15 11:00:15.751 +08:00 [INF] Request finished in 68.5406ms 200 text/html; charset=utf-8
+2020-07-15 11:00:16.620 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/  
+2020-07-15 11:00:16.629 +08:00 [INF] Executing endpoint '/Index'
+2020-07-15 11:00:16.636 +08:00 [INF] Route matched with {page = "/Index", area = "", action = "", controller = ""}. Executing page /Index
+2020-07-15 11:00:16.640 +08:00 [INF] Executing handler method KissU.PublicWebSite.Host.Pages.IndexModel.OnGet - ModelState is "Valid"
+2020-07-15 11:00:16.643 +08:00 [INF] Executed handler method OnGet, returned result .
+2020-07-15 11:00:16.650 +08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2020-07-15 11:00:16.654 +08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-07-15 11:00:16.677 +08:00 [DBG] Added bundle 'Basic.Global' to the page in 1.66 ms.
+2020-07-15 11:00:16.684 +08:00 [DBG] Added bundle 'Basic.Global' to the page in 2.42 ms.
+2020-07-15 11:00:16.687 +08:00 [INF] Executed page /Index in 48.5748ms
+2020-07-15 11:00:16.690 +08:00 [INF] Executed endpoint '/Index'
+2020-07-15 11:00:16.691 +08:00 [INF] Request finished in 71.6002ms 200 text/html; charset=utf-8
+2020-07-15 11:00:16.717 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/Abp/ServiceProxyScript  
+2020-07-15 11:00:16.717 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/Abp/ApplicationConfigurationScript  
+2020-07-15 11:00:16.720 +08:00 [INF] Executing endpoint 'Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController.GetAll (Volo.Abp.AspNetCore.Mvc)'
+2020-07-15 11:00:16.722 +08:00 [INF] Executing endpoint 'Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc)'
+2020-07-15 11:00:16.723 +08:00 [INF] Route matched with {area = "Abp", action = "GetAll", controller = "AbpServiceProxyScript", page = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAll(Volo.Abp.AspNetCore.Mvc.ProxyScripting.ServiceProxyGenerationModel) on controller Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController (Volo.Abp.AspNetCore.Mvc).
+2020-07-15 11:00:16.725 +08:00 [INF] Route matched with {area = "Abp", action = "Get", controller = "AbpApplicationConfigurationScript", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Get() on controller Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController (Volo.Abp.AspNetCore.Mvc).
+2020-07-15 11:00:16.734 +08:00 [INF] Executing ContentResult with HTTP Response ContentType of application/javascript
+2020-07-15 11:00:16.737 +08:00 [INF] Executed action Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController.GetAll (Volo.Abp.AspNetCore.Mvc) in 4.8895ms
+2020-07-15 11:00:16.738 +08:00 [DBG] Executing AbpApplicationConfigurationAppService.GetAsync()...
+2020-07-15 11:00:16.745 +08:00 [INF] Executed endpoint 'Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController.GetAll (Volo.Abp.AspNetCore.Mvc)'
+2020-07-15 11:00:16.747 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:16.748 +08:00 [INF] Request finished in 31.8488ms 200 application/javascript
+2020-07-15 11:00:16.749 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:16.753 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:16.754 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:16.755 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:16.755 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:16.756 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:16.757 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:16.758 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:16.764 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:16.767 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:16.768 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:16.770 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:16.773 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:16.776 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:16.779 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:16.782 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:16.790 +08:00 [DBG] Executed AbpApplicationConfigurationAppService.GetAsync().
+2020-07-15 11:00:16.793 +08:00 [INF] Executing ContentResult with HTTP Response ContentType of application/javascript
+2020-07-15 11:00:16.799 +08:00 [INF] Executed action Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc) in 63.4523ms
+2020-07-15 11:00:16.802 +08:00 [INF] Executed endpoint 'Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc)'
+2020-07-15 11:00:16.804 +08:00 [INF] Request finished in 87.8523ms 200 application/javascript
+2020-07-15 11:00:17.571 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/  
+2020-07-15 11:00:17.577 +08:00 [INF] Executing endpoint '/Index'
+2020-07-15 11:00:17.580 +08:00 [INF] Route matched with {page = "/Index", area = "", action = "", controller = ""}. Executing page /Index
+2020-07-15 11:00:17.584 +08:00 [INF] Executing handler method KissU.PublicWebSite.Host.Pages.IndexModel.OnGet - ModelState is "Valid"
+2020-07-15 11:00:17.586 +08:00 [INF] Executed handler method OnGet, returned result .
+2020-07-15 11:00:17.587 +08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2020-07-15 11:00:17.588 +08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-07-15 11:00:17.599 +08:00 [DBG] Added bundle 'Basic.Global' to the page in 2.54 ms.
+2020-07-15 11:00:17.607 +08:00 [DBG] Added bundle 'Basic.Global' to the page in 2.53 ms.
+2020-07-15 11:00:17.611 +08:00 [INF] Executed page /Index in 27.2442ms
+2020-07-15 11:00:17.617 +08:00 [INF] Executed endpoint '/Index'
+2020-07-15 11:00:17.621 +08:00 [INF] Request finished in 49.1792ms 200 text/html; charset=utf-8
+2020-07-15 11:00:17.639 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/Abp/ServiceProxyScript  
+2020-07-15 11:00:17.639 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/Abp/ApplicationConfigurationScript  
+2020-07-15 11:00:17.645 +08:00 [INF] Executing endpoint 'Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController.GetAll (Volo.Abp.AspNetCore.Mvc)'
+2020-07-15 11:00:17.645 +08:00 [INF] Executing endpoint 'Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc)'
+2020-07-15 11:00:17.648 +08:00 [INF] Route matched with {area = "Abp", action = "GetAll", controller = "AbpServiceProxyScript", page = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAll(Volo.Abp.AspNetCore.Mvc.ProxyScripting.ServiceProxyGenerationModel) on controller Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController (Volo.Abp.AspNetCore.Mvc).
+2020-07-15 11:00:17.650 +08:00 [INF] Route matched with {area = "Abp", action = "Get", controller = "AbpApplicationConfigurationScript", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Get() on controller Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController (Volo.Abp.AspNetCore.Mvc).
+2020-07-15 11:00:17.655 +08:00 [INF] Executing ContentResult with HTTP Response ContentType of application/javascript
+2020-07-15 11:00:17.657 +08:00 [DBG] Executing AbpApplicationConfigurationAppService.GetAsync()...
+2020-07-15 11:00:17.657 +08:00 [INF] Executed action Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController.GetAll (Volo.Abp.AspNetCore.Mvc) in 5.1972ms
+2020-07-15 11:00:17.660 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:17.667 +08:00 [INF] Executed endpoint 'Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController.GetAll (Volo.Abp.AspNetCore.Mvc)'
+2020-07-15 11:00:17.668 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:17.669 +08:00 [INF] Request finished in 29.791ms 200 application/javascript
+2020-07-15 11:00:17.670 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:17.677 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:17.680 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:17.683 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:17.686 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:17.688 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:17.690 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:17.692 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:17.698 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:17.700 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:17.703 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:17.705 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:17.710 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:17.713 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:17.716 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:17.721 +08:00 [DBG] Executed AbpApplicationConfigurationAppService.GetAsync().
+2020-07-15 11:00:17.723 +08:00 [INF] Executing ContentResult with HTTP Response ContentType of application/javascript
+2020-07-15 11:00:17.724 +08:00 [INF] Executed action Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc) in 68.5775ms
+2020-07-15 11:00:17.728 +08:00 [INF] Executed endpoint 'Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc)'
+2020-07-15 11:00:17.734 +08:00 [INF] Request finished in 94.7422ms 200 application/javascript
+2020-07-15 11:00:18.931 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/Products  
+2020-07-15 11:00:18.935 +08:00 [INF] Request finished in 4.785ms 404 
+2020-07-15 11:00:20.152 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/  
+2020-07-15 11:00:20.156 +08:00 [INF] Executing endpoint '/Index'
+2020-07-15 11:00:20.159 +08:00 [INF] Route matched with {page = "/Index", area = "", action = "", controller = ""}. Executing page /Index
+2020-07-15 11:00:20.164 +08:00 [INF] Executing handler method KissU.PublicWebSite.Host.Pages.IndexModel.OnGet - ModelState is "Valid"
+2020-07-15 11:00:20.165 +08:00 [INF] Executed handler method OnGet, returned result .
+2020-07-15 11:00:20.167 +08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2020-07-15 11:00:20.168 +08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-07-15 11:00:20.176 +08:00 [DBG] Added bundle 'Basic.Global' to the page in 2.87 ms.
+2020-07-15 11:00:20.184 +08:00 [DBG] Added bundle 'Basic.Global' to the page in 2.60 ms.
+2020-07-15 11:00:20.187 +08:00 [INF] Executed page /Index in 24.2297ms
+2020-07-15 11:00:20.190 +08:00 [INF] Executed endpoint '/Index'
+2020-07-15 11:00:20.193 +08:00 [INF] Request finished in 40.6379ms 200 text/html; charset=utf-8
+2020-07-15 11:00:21.265 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/Blogs  
+2020-07-15 11:00:21.269 +08:00 [INF] Executing endpoint '/Blogs/Index'
+2020-07-15 11:00:21.271 +08:00 [INF] Route matched with {page = "/Blogs/Index", area = "", action = "", controller = ""}. Executing page /Blogs/Index
+2020-07-15 11:00:21.274 +08:00 [INF] Executing handler method KissU.Modules.Blogging.Web.Pages.Blogs.IndexModel.OnGetAsync - ModelState is "Valid"
+2020-07-15 11:00:21.279 +08:00 [DBG] 准备为服务id：KissU.Modules.Blogging.Service.Contracts.IBlogService.GetListAsync，解析可用地址。
+2020-07-15 11:00:21.280 +08:00 [INF] 根据服务id：KissU.Modules.Blogging.Service.Contracts.IBlogService.GetListAsync，找到以下可用地址：127.0.0.1:82。
+2020-07-15 11:00:21.281 +08:00 [DBG] 使用地址：'127.0.0.1:82'进行调用。
+2020-07-15 11:00:21.281 +08:00 [DBG] 准备为服务端地址：127.0.0.1:82创建客户端。
+2020-07-15 11:00:21.282 +08:00 [DBG] 准备发送消息。
+2020-07-15 11:00:21.283 +08:00 [DBG] 准备获取Id为：0f71522ac2df43a786fbce84523db2f8的响应内容。
+2020-07-15 11:00:21.285 +08:00 [DBG] 消息发送成功。
+2020-07-15 11:00:21.292 +08:00 [INF] Executed handler method OnGetAsync, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-07-15 11:00:21.301 +08:00 [DBG] Added bundle 'Basic.Global' to the page in 1.77 ms.
+2020-07-15 11:00:21.312 +08:00 [DBG] Added bundle 'Basic.Global' to the page in 3.76 ms.
+2020-07-15 11:00:21.315 +08:00 [INF] Executed page /Blogs/Index in 42.3739ms
+2020-07-15 11:00:21.317 +08:00 [INF] Executed endpoint '/Blogs/Index'
+2020-07-15 11:00:21.321 +08:00 [INF] Request finished in 55.8279ms 200 text/html; charset=utf-8
+2020-07-15 11:00:21.344 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/Abp/ServiceProxyScript  
+2020-07-15 11:00:21.344 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/Abp/ApplicationConfigurationScript  
+2020-07-15 11:00:21.348 +08:00 [INF] Executing endpoint 'Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController.GetAll (Volo.Abp.AspNetCore.Mvc)'
+2020-07-15 11:00:21.349 +08:00 [INF] Executing endpoint 'Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc)'
+2020-07-15 11:00:21.351 +08:00 [INF] Route matched with {area = "Abp", action = "GetAll", controller = "AbpServiceProxyScript", page = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAll(Volo.Abp.AspNetCore.Mvc.ProxyScripting.ServiceProxyGenerationModel) on controller Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController (Volo.Abp.AspNetCore.Mvc).
+2020-07-15 11:00:21.353 +08:00 [INF] Route matched with {area = "Abp", action = "Get", controller = "AbpApplicationConfigurationScript", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Get() on controller Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController (Volo.Abp.AspNetCore.Mvc).
+2020-07-15 11:00:21.364 +08:00 [INF] Executing ContentResult with HTTP Response ContentType of application/javascript
+2020-07-15 11:00:21.367 +08:00 [DBG] Executing AbpApplicationConfigurationAppService.GetAsync()...
+2020-07-15 11:00:21.370 +08:00 [INF] Executed action Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController.GetAll (Volo.Abp.AspNetCore.Mvc) in 9.0691ms
+2020-07-15 11:00:21.375 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:21.376 +08:00 [INF] Executed endpoint 'Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController.GetAll (Volo.Abp.AspNetCore.Mvc)'
+2020-07-15 11:00:21.377 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:21.381 +08:00 [INF] Request finished in 36.7751ms 200 application/javascript
+2020-07-15 11:00:21.382 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:21.384 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:21.386 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:21.388 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:21.396 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:21.398 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:21.400 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:21.402 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:21.405 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:21.407 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:21.410 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:21.416 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:21.417 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:21.419 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:21.420 +08:00 [INF] Authorization failed.
+2020-07-15 11:00:21.424 +08:00 [DBG] Executed AbpApplicationConfigurationAppService.GetAsync().
+2020-07-15 11:00:21.431 +08:00 [INF] Executing ContentResult with HTTP Response ContentType of application/javascript
+2020-07-15 11:00:21.433 +08:00 [INF] Executed action Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc) in 68.5274ms
+2020-07-15 11:00:21.435 +08:00 [INF] Executed endpoint 'Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc)'
+2020-07-15 11:00:21.442 +08:00 [INF] Request finished in 97.342ms 200 application/javascript

@@ -5,8 +5,10 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <IsPackable>true</IsPackable>
+    <TypeScriptToolsVersion>2.8</TypeScriptToolsVersion>
     <OutputType>Library</OutputType>
+    <IsPackable>true</IsPackable>
+    <GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
   </PropertyGroup>
 
   <ItemGroup>

@@ -9656,3 +9656,15 @@ VALUES (@p22, @p23, @p24, @p25, @p26, @p27, @p28, @p29, @p30);
 2020-07-15 10:00:27.316 +08:00 [DBG] Added 0 entity changes to the current audit log
 2020-07-15 10:00:27.318 +08:00 [DBG] Added 0 entity changes to the current audit log
 2020-07-15 10:00:27.321 +08:00 [INF] Request finished in 69.9617ms 200 text/html; charset=utf-8
+2020-07-15 10:48:52.897 +08:00 [INF] Entity Framework Core 3.1.5 initialized 'IdentityServerDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-07-15 10:48:52.918 +08:00 [INF] Executed DbCommand (8ms) [Parameters=[@__p_1='?' (DbType = Int32), @__maxExpirationDate_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_1) [i].[Key], [i].[ClientId], [i].[ConcurrencyStamp], [i].[CreationTime], [i].[Data], [i].[Expiration], [i].[ExtraProperties], [i].[Id], [i].[SubjectId], [i].[Type]
+FROM [IdentityServerPersistedGrants] AS [i]
+WHERE [i].[Expiration] IS NOT NULL AND ([i].[Expiration] < @__maxExpirationDate_0)
+ORDER BY [i].[ClientId]
+2020-07-15 10:48:52.928 +08:00 [INF] Entity Framework Core 3.1.5 initialized 'IdentityServerDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2020-07-15 10:48:52.938 +08:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_1='?' (DbType = Int32), @__maxExpirationDate_0='?' (DbType = DateTime2)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(@__p_1) [i].[Id], [i].[ClientId], [i].[ConcurrencyStamp], [i].[CreationTime], [i].[CreatorId], [i].[Data], [i].[DeviceCode], [i].[Expiration], [i].[ExtraProperties], [i].[SubjectId], [i].[UserCode]
+FROM [IdentityServerDeviceFlowCodes] AS [i]
+WHERE [i].[Expiration] < @__maxExpirationDate_0
+ORDER BY [i].[ClientId]
