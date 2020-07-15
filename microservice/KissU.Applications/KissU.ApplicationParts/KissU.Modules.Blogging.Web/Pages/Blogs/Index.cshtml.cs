@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using KissU.Dependency;
-using KissU.Modules.Blogging.Application.Contracts.Blogs;
 using KissU.Modules.Blogging.Application.Contracts.Blogs.Dtos;
 using KissU.Modules.Blogging.Service.Contracts;
 using KissU.Surging.ProxyGenerator;
@@ -16,9 +15,9 @@ namespace KissU.Modules.Blogging.Web.Pages.Blogs
 
         public IReadOnlyList<BlogDto> Blogs { get; private set; }
 
-        public IndexModel()
+        public IndexModel(IServiceProxyFactory serviceProxyFactory)
         {
-            _blogService = ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy<IBlogService>();
+            _blogService = serviceProxyFactory.CreateProxy<IBlogService>();
         }
 
         public virtual async Task<IActionResult> OnGetAsync()
