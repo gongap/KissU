@@ -3,12 +3,12 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using KissU.Modules.Blogging.Domain.Shared.Localization;
+using Markdig;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Localization;
-using Markdig;
 using Volo.Abp.DependencyInjection;
 
-namespace Volo.Blogging.Pages.Blog
+namespace KissU.Modules.Blogging.Web.Pages.Blogs
 {
     public class BloggingPageHelper : ITransientDependency
     {

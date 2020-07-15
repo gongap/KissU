@@ -5,10 +5,10 @@ using KissU.Modules.Blogging.Application.Contracts.Blogs.Dtos;
 using KissU.Modules.Blogging.Application.Contracts.Posts;
 using KissU.Modules.Blogging.Application.Contracts.Tagging;
 using KissU.Modules.Blogging.Application.Contracts.Tagging.Dtos;
+using KissU.Modules.Blogging.Web.Pages.Blogs.Shared.Helpers;
 using Microsoft.AspNetCore.Mvc;
-using Volo.Blogging.Pages.Blogs.Shared.Helpers;
 
-namespace Volo.Blogging.Pages.Blog.Posts
+namespace KissU.Modules.Blogging.Web.Pages.Blogs.Posts
 {
     public class IndexModel : BloggingPageModel
     {

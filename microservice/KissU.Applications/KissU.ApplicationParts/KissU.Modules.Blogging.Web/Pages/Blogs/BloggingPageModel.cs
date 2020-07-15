@@ -1,6 +1,6 @@
 ﻿using Volo.Abp.AspNetCore.Mvc.UI.RazorPages;
 
-namespace Volo.Blogging.Pages.Blog
+namespace KissU.Modules.Blogging.Web.Pages.Blogs
 {
     public abstract class BloggingPageModel : AbpPageModel
     {

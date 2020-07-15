@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace Volo.Blogging.Pages.Blogs.Shared.Helpers
+namespace KissU.Modules.Blogging.Web.Pages.Blogs.Shared.Helpers
 {
     public static class BlogNameControlHelper
     {

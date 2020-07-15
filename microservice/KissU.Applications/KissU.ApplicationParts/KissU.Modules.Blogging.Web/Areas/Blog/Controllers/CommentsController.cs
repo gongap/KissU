@@ -4,7 +4,7 @@ using KissU.Modules.Blogging.Application.Contracts.Comments;
 using KissU.Modules.Blogging.Application.Contracts.Comments.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Volo.Blogging.Areas.Blog.Controllers
+namespace KissU.Modules.Blogging.Web.Areas.Blog.Controllers
 {
     //TODO: Is that being used?
 

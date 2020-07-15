@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
 
-namespace Volo.Blogging.Bundling
+namespace KissU.Modules.Blogging.Web.Bundling
 {
     public class PrismjsStyleBundleContributorBloggingExtension : BundleContributor
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Volo.Blogging
+namespace KissU.Modules.Blogging.Web
 {
     public class BloggingUrlOptions
     {

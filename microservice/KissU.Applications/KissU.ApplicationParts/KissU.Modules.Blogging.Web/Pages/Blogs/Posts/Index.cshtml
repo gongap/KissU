@@ -2,13 +2,12 @@
 @using KissU.Modules.Blogging.Application.Contracts
 @using Microsoft.AspNetCore.Authorization
 @using Volo.Abp.AspNetCore.Mvc.UI.Packages.OwlCarousel
-@using Volo.Blogging
 @inject IAuthorizationService Authorization
-@model Volo.Blogging.Pages.Blog.Posts.IndexModel
 @using Microsoft.AspNetCore.Mvc.Localization
 @using KissU.Modules.Blogging.Domain.Shared.Localization
-@using Volo.Blogging.Pages.Blog
-@using IndexModel = Volo.Blogging.Pages.Blog.Posts.IndexModel
+@using KissU.Modules.Blogging.Web.Pages.Blogs
+@using IndexModel = KissU.Modules.Blogging.Web.Pages.Blogs.Posts.IndexModel
+@model IndexModel
 @inject IHtmlLocalizer<BloggingResource> L
 @inject BloggingPageHelper BloggingPageHelper
 @{

@@ -1,26 +1,29 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using KissU.Dependency;
 using KissU.Modules.Blogging.Application.Contracts.Blogs;
 using KissU.Modules.Blogging.Application.Contracts.Blogs.Dtos;
+using KissU.Modules.Blogging.Service.Contracts;
+using KissU.Surging.ProxyGenerator;
 using Microsoft.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Mvc.UI.RazorPages;
 
-namespace Volo.Blogging.Pages.Blog
+namespace KissU.Modules.Blogging.Web.Pages.Blogs
 {
     public class IndexModel : AbpPageModel
     {
-        private readonly IBlogAppService _blogAppService;
+        private readonly IBlogService _blogService;
 
         public IReadOnlyList<BlogDto> Blogs { get; private set; }
 
-        public IndexModel(IBlogAppService blogAppService)
+        public IndexModel()
         {
-            _blogAppService = blogAppService;
+            _blogService = ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy<IBlogService>();
         }
 
         public virtual async Task<IActionResult> OnGetAsync()
         {
-            var result = await _blogAppService.GetListAsync();
+            var result = await _blogService.GetListAsync();
 
             if (result.Items.Count == 1)
             {

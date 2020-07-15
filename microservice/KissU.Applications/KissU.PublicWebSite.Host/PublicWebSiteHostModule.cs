@@ -1,5 +1,6 @@
 using System;
 using KissU.Abp.Autofac;
+using KissU.Modules.Blogging.Web;
 using KissU.MultiTenancy;
 using Microsoft.AspNetCore.Authentication.OAuth.Claims;
 using Microsoft.AspNetCore.Builder;
@@ -13,16 +14,15 @@ using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.MultiTenancy;
 using Volo.Abp.UI.Navigation;
-using Volo.Blogging;
 
 namespace KissU.PublicWebSite.Host
 {
     [DependsOn(
-        typeof(AbpAutofacModule),
-        typeof(AbpAspNetCoreAuthenticationOAuthModule),
-        typeof(AbpHttpClientIdentityModelWebModule),
-        typeof(AbpAspNetCoreMvcUiBasicThemeModule),
-        typeof(BloggingWebModule)
+        typeof(AbpAutofacModule)
+        , typeof(AbpAspNetCoreAuthenticationOAuthModule)
+        , typeof(AbpHttpClientIdentityModelWebModule)
+        , typeof(AbpAspNetCoreMvcUiBasicThemeModule)
+        , typeof(BloggingWebModule)
         )]
     public class PublicWebSiteHostModule : AbpModule
     {
@@ -46,10 +46,10 @@ namespace KissU.PublicWebSite.Host
             });
 
             context.Services.AddAuthentication(options =>
-                {
-                    options.DefaultScheme = "Cookies";
-                    options.DefaultChallengeScheme = "oidc";
-                })
+            {
+                options.DefaultScheme = "Cookies";
+                options.DefaultChallengeScheme = "oidc";
+            })
                 .AddCookie("Cookies", options =>
                 {
                     options.ExpireTimeSpan = TimeSpan.FromDays(365);

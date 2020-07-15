@@ -6,12 +6,12 @@ using KissU.Modules.Blogging.Application.Contracts;
 using KissU.Modules.Blogging.Application.Contracts.Blogs;
 using KissU.Modules.Blogging.Application.Contracts.Posts;
 using KissU.Modules.Blogging.Domain.Shared.Posts;
+using KissU.Modules.Blogging.Web.Pages.Blogs.Shared.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Volo.Abp.Validation;
-using Volo.Blogging.Pages.Blogs.Shared.Helpers;
 
-namespace Volo.Blogging.Pages.Blog.Posts
+namespace KissU.Modules.Blogging.Web.Pages.Blogs.Posts
 {
     public class EditModel : BloggingPageModel
     {

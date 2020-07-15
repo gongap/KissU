@@ -6,7 +6,7 @@ using System.Text;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
-namespace Volo.Blogging.Areas.Blog.Helpers.TagHelpers
+namespace KissU.Modules.Blogging.Web.Areas.Blog.Helpers.TagHelpers
 {
     /// <inheritdoc />
     /// <summary>

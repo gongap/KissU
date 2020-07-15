@@ -1,4 +1,4 @@
-﻿namespace Volo.Blogging.SocialMedia
+﻿namespace KissU.Modules.Blogging.Web.SocialMedia
 {
     public class BloggingTwitterOptions
     {

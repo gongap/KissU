@@ -7,10 +7,10 @@ using KissU.Modules.Blogging.Application.Contracts.Blogs.Dtos;
 using KissU.Modules.Blogging.Application.Contracts.Comments;
 using KissU.Modules.Blogging.Application.Contracts.Comments.Dtos;
 using KissU.Modules.Blogging.Application.Contracts.Posts;
+using KissU.Modules.Blogging.Web.Pages.Blogs.Shared.Helpers;
 using Microsoft.AspNetCore.Mvc;
-using Volo.Blogging.Pages.Blogs.Shared.Helpers;
 
-namespace Volo.Blogging.Pages.Blog.Posts
+namespace KissU.Modules.Blogging.Web.Pages.Blogs.Posts
 {
     public class DetailModel : BloggingPageModel
     {

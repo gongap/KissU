@@ -1,6 +1,6 @@
 ﻿using KissU.Modules.Blogging.Domain.Shared.Localization;
-using KissU.Modules.Blogging.Service;
 using KissU.Modules.Blogging.Service.Contracts;
+using KissU.Modules.Blogging.Web.Bundling;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -11,13 +11,11 @@ using Volo.Abp.AspNetCore.Mvc.UI.Packages.Prismjs;
 using Volo.Abp.AutoMapper;
 using Volo.Abp.Modularity;
 using Volo.Abp.VirtualFileSystem;
-using Volo.Blogging.Bundling;
 
-namespace Volo.Blogging
+namespace KissU.Modules.Blogging.Web
 {
     [DependsOn(
         typeof(BloggingServiceContractsModule),
-        typeof(BloggingServiceModule),
         typeof(AbpAspNetCoreMvcUiBootstrapModule),
         typeof(AbpAspNetCoreMvcUiBundlingModule),
         typeof(AbpAutoMapperModule)

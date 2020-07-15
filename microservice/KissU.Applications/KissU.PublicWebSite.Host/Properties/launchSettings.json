@@ -15,9 +15,8 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "PublicWebSite.Host": {
+    "Project": {
       "commandName": "Project",
-      "launchBrowser": true,
       "applicationUrl": "http://localhost:53435",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

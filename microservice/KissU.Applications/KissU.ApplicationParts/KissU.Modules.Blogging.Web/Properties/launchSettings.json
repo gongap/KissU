@@ -3,8 +3,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:5231/",
-      "sslPort": 44323
+      "applicationUrl": "http://localhost:9936/",
+      "sslPort": 44344
     }
   },
   "profiles": {
@@ -18,10 +18,10 @@
     "KissU.Modules.Blogging.Web": {
       "commandName": "Project",
       "launchBrowser": true,
+      "applicationUrl": "https://localhost:5001;http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "https://localhost:5001;http://localhost:5000"
+      }
     }
   }
 }
