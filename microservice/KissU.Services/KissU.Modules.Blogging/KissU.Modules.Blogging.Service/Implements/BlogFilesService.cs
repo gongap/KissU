@@ -38,10 +38,6 @@ namespace KissU.Modules.Blogging.Service.Implements
         public async Task<string> UploadImage(HttpFormCollection form)
         {
             var file = form.Files[0];
-            if (file == null)
-            {
-                throw new UserFriendlyException("No file found!");
-            }
 
             if (file.Length <= 0)
             {
