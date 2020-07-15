@@ -1,10 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.Dependency;
-using KissU.Modules.Blogging.Application.Contracts.Blogs;
 using KissU.Modules.Blogging.Application.Contracts.Blogs.Dtos;
 using KissU.Modules.Blogging.Application.Contracts.Posts;
-using KissU.Modules.Blogging.Application.Contracts.Tagging;
 using KissU.Modules.Blogging.Application.Contracts.Tagging.Dtos;
 using KissU.Modules.Blogging.Service.Contracts;
 using KissU.Modules.Blogging.Web.Pages.Blogs.Shared.Helpers;
@@ -23,7 +20,7 @@ namespace KissU.Modules.Blogging.Web.Pages.Blogs.Posts
         public string BlogShortName { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public string TagName { get; set; }
+        public string TagName { get; set; } = string.Empty;
 
         public BlogDto Blog { get; set; }
 

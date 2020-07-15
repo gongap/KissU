@@ -3,11 +3,12 @@ using System.ComponentModel.DataAnnotations;
 using System.Net;
 using System.Threading.Tasks;
 using KissU.Modules.Blogging.Application.Contracts;
-using KissU.Modules.Blogging.Application.Contracts.Blogs;
 using KissU.Modules.Blogging.Application.Contracts.Blogs.Dtos;
 using KissU.Modules.Blogging.Application.Contracts.Posts;
 using KissU.Modules.Blogging.Domain.Shared.Posts;
+using KissU.Modules.Blogging.Service.Contracts;
 using KissU.Modules.Blogging.Web.Pages.Blogs.Shared.Helpers;
+using KissU.Surging.ProxyGenerator;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -17,8 +18,8 @@ namespace KissU.Modules.Blogging.Web.Pages.Blogs.Posts
 {
     public class NewModel : BloggingPageModel
     {
-        private readonly IPostAppService _postAppService;
-        private readonly IBlogAppService _blogAppService;
+        private readonly IPostService _postService;
+        private readonly IBlogService _blogService;
         private readonly IAuthorizationService _authorization;
         private readonly BloggingUrlOptions _blogOptions;
 
@@ -30,10 +31,10 @@ namespace KissU.Modules.Blogging.Web.Pages.Blogs.Posts
 
         public BlogDto Blog { get; set; }
 
-        public NewModel(IPostAppService postAppService, IBlogAppService blogAppService, IAuthorizationService authorization, IOptions<BloggingUrlOptions> blogOptions)
+        public NewModel(IServiceProxyFactory serviceProxyFactory, IAuthorizationService authorization, IOptions<BloggingUrlOptions> blogOptions)
         {
-            _postAppService = postAppService;
-            _blogAppService = blogAppService;
+            _postService = serviceProxyFactory.CreateProxy<IPostService>();
+            _blogService = serviceProxyFactory.CreateProxy<IBlogService>();
             _authorization = authorization;
             _blogOptions = blogOptions.Value;
         }
@@ -49,7 +50,7 @@ namespace KissU.Modules.Blogging.Web.Pages.Blogs.Posts
                 return NotFound();
             }
 
-            Blog = await _blogAppService.GetByShortNameAsync(BlogShortName);
+            Blog = await _blogService.GetByShortNameAsync(BlogShortName);
             Post = new CreatePostViewModel
             {
                 BlogId = Blog.Id
@@ -60,14 +61,14 @@ namespace KissU.Modules.Blogging.Web.Pages.Blogs.Posts
 
         public virtual async Task<ActionResult> OnPost()
         {
-            var blog = await _blogAppService.GetAsync(Post.BlogId);
+            var blog = await _blogService.GetAsync(Post.BlogId.ToString());
 
             if (string.IsNullOrEmpty(Post.Description))
             {
                 Post.Description = Post.Content.Truncate(PostConsts.MaxSeoFriendlyDescriptionLength);
             }
 
-            var postWithDetailsDto = await _postAppService.CreateAsync(ObjectMapper.Map<CreatePostViewModel, CreatePostDto>(Post));
+            var postWithDetailsDto = await _postService.CreateAsync(ObjectMapper.Map<CreatePostViewModel, CreatePostDto>(Post));
 
             //TODO: Try Url.Page(...)
             var urlPrefix = _blogOptions.RoutePrefix;

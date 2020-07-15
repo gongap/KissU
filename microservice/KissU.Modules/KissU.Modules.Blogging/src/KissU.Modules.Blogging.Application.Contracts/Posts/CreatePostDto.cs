@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using KissU.Modules.Blogging.Domain.Shared.Posts;
+using Volo.Abp.Validation;
 
 namespace KissU.Modules.Blogging.Application.Contracts.Posts
 {
@@ -9,22 +10,22 @@ namespace KissU.Modules.Blogging.Application.Contracts.Posts
         public Guid BlogId { get; set; }
 
         [Required]
-        [StringLength(PostConsts.MaxTitleLength)]
+        [DynamicStringLength(typeof(PostConsts), nameof(PostConsts.MaxTitleLength))]
         public string Title { get; set; }
 
         [Required]
         public string CoverImage { get; set; }
 
         [Required]
-        [StringLength(PostConsts.MaxUrlLength)]
+        [DynamicStringLength(typeof(PostConsts), nameof(PostConsts.MaxUrlLength))]
         public string Url { get; set; }
 
-        [StringLength(PostConsts.MaxContentLength)]
+        [DynamicStringLength(typeof(PostConsts), nameof(PostConsts.MaxContentLength))]
         public string Content { get; set; }
 
         public string Tags { get; set; }
 
-        [StringLength(PostConsts.MaxDescriptionLength)]
+        [DynamicStringLength(typeof(PostConsts), nameof(PostConsts.MaxDescriptionLength))]
         public string Description { get; set; }
 
     }

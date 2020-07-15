@@ -67,7 +67,6 @@ namespace KissU.AuthServer.Host
             context.Services.PreConfigure<AbpMvcDataAnnotationsLocalizationOptions>(options =>
             {
                 options.AddAssemblyResource(typeof(AuthServerResource), typeof(AuthServerHostModule).Assembly);
-                options.AddAssemblyResource(typeof(AccountResource), typeof(AuthServerHostModule).Assembly);
             });
         }
 

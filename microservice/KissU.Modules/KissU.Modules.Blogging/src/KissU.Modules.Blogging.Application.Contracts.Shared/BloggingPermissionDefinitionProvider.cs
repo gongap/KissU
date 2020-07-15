@@ -2,7 +2,7 @@
 using Volo.Abp.Authorization.Permissions;
 using Volo.Abp.Localization;
 
-namespace KissU.Modules.Blogging.Application.Contracts
+namespace KissU.Modules.Blogging.Application.Contracts.Shared
 {
     public class BloggingPermissionDefinitionProvider : PermissionDefinitionProvider
     {

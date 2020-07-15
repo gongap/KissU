@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
-using KissU.Modules.Blogging.Application.Contracts.Posts;
+using KissU.Modules.Blogging.Service.Contracts;
+using KissU.Surging.ProxyGenerator;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KissU.Modules.Blogging.Web.Areas.Blog.Controllers
@@ -11,17 +12,17 @@ namespace KissU.Modules.Blogging.Web.Areas.Blog.Controllers
     [Route("Blog/[controller]/[action]")]
     public class PostsController : BloggingControllerBase
     {
-        private readonly IPostAppService _postAppService;
+        private readonly IPostService _postService;
 
-        public PostsController(IPostAppService postAppService)
+        public PostsController(IServiceProxyFactory serviceProxyFactory)
         {
-            _postAppService = postAppService;
+            _postService = serviceProxyFactory.CreateProxy<IPostService>();
         }
 
         [HttpPost]
         public async Task Delete(Guid id)
         {
-            await _postAppService.DeleteAsync(id);
+            await _postService.DeleteAsync(id.ToString());
         }
     }
 }

@@ -17,6 +17,7 @@
     },
     "Project": {
       "commandName": "Project",
+      "launchBrowser": true,
       "applicationUrl": "http://localhost:8090",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

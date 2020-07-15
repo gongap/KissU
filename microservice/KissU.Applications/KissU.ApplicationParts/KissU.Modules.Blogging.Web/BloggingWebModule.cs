@@ -1,9 +1,10 @@
-﻿using KissU.Modules.Blogging.Domain.Shared.Localization;
+﻿using KissU.Modules.Blogging.Domain.Shared.Localization.Blogging;
 using KissU.Modules.Blogging.Service.Contracts;
 using KissU.Modules.Blogging.Web.Bundling;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Mvc.Localization;
 using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap;
 using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
@@ -37,6 +38,8 @@ namespace KissU.Modules.Blogging.Web
 
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
+            context.Services.AddAlwaysAllowAuthorization();
+
             Configure<AbpVirtualFileSystemOptions>(options =>
             {
                 options.FileSets.AddEmbedded<BloggingWebModule>();

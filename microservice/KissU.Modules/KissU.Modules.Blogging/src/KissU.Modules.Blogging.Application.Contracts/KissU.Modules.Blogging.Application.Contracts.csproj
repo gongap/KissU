@@ -8,15 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Localization\Resources\Blogging\ApplicationContracts\*.json" />
-    <None Remove="Localization\Resources\Blogging\ApplicationContracts\*.json" />
+    <ProjectReference Include="..\KissU.Modules.Blogging.Application.Contracts.Shared\KissU.Modules.Blogging.Application.Contracts.Shared.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Volo.Abp.Ddd.Application" Version="3.0.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\KissU.Modules.Blogging.Domain.Shared\KissU.Modules.Blogging.Domain.Shared.csproj" />
-  </ItemGroup>
 </Project>

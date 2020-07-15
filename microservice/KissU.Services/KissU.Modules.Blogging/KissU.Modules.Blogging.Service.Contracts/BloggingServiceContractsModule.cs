@@ -1,5 +1,5 @@
 ﻿using KissU.Modules.Blogging.Application.Contracts;
-using KissU.Modules.Blogging.Domain.Shared.Localization;
+using KissU.Modules.Blogging.Domain.Shared.Localization.Blogging;
 using Localization.Resources.AbpUi;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;

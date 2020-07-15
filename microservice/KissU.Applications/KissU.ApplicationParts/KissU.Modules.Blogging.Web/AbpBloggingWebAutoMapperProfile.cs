@@ -9,8 +9,8 @@ namespace KissU.Modules.Blogging.Web
     {
         public AbpBloggingWebAutoMapperProfile()
         {
-            //CreateMap<PostWithDetailsDto, EditPostViewModel>().Ignore(x => x.Tags);
-            //CreateMap<NewModel.CreatePostViewModel, CreatePostDto>();
+            CreateMap<PostWithDetailsDto, EditPostViewModel>().Ignore(x => x.Tags);
+            CreateMap<NewModel.CreatePostViewModel, CreatePostDto>();
         }
     }
 }

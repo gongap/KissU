@@ -1,4 +1,4 @@
-﻿using KissU.Modules.Blogging.Domain.Shared.Localization;
+﻿using KissU.Modules.Blogging.Domain.Shared.Localization.Blogging;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.Validation;
@@ -22,7 +22,7 @@ namespace KissU.Modules.Blogging.Domain.Shared
                 options.Resources
                     .Add<BloggingResource>("en")
                     .AddBaseTypes(typeof(AbpValidationResource))
-                    .AddVirtualJson("/Localization/Resources");
+                    .AddVirtualJson("Localization/Blogging/Resources");
             });
         }
     }

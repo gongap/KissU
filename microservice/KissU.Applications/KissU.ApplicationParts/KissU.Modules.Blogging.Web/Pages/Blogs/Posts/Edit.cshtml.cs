@@ -3,10 +3,11 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using KissU.Modules.Blogging.Application.Contracts;
-using KissU.Modules.Blogging.Application.Contracts.Blogs;
 using KissU.Modules.Blogging.Application.Contracts.Posts;
 using KissU.Modules.Blogging.Domain.Shared.Posts;
+using KissU.Modules.Blogging.Service.Contracts;
 using KissU.Modules.Blogging.Web.Pages.Blogs.Shared.Helpers;
+using KissU.Surging.ProxyGenerator;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Volo.Abp.Validation;
@@ -15,8 +16,8 @@ namespace KissU.Modules.Blogging.Web.Pages.Blogs.Posts
 {
     public class EditModel : BloggingPageModel
     {
-        private readonly IPostAppService _postAppService;
-        private readonly IBlogAppService _blogAppService;
+        private readonly IPostService _postService;
+        private readonly IBlogService _blogService;
         private readonly IAuthorizationService _authorization;
 
         [BindProperty(SupportsGet = true)]
@@ -28,12 +29,13 @@ namespace KissU.Modules.Blogging.Web.Pages.Blogs.Posts
         [BindProperty]
         public EditPostViewModel Post { get; set; }
 
-        public EditModel(IPostAppService postAppService, IBlogAppService blogAppService, IAuthorizationService authorization)
+        public EditModel(IServiceProxyFactory serviceProxyFactory, IAuthorizationService authorization)
         {
-            _postAppService = postAppService;
-            _blogAppService = blogAppService;
+            _postService = serviceProxyFactory.CreateProxy<IPostService>();
+            _blogService = serviceProxyFactory.CreateProxy<IBlogService>();
             _authorization = authorization;
         }
+
 
         public virtual async Task<ActionResult> OnGetAsync()
         {
@@ -46,7 +48,7 @@ namespace KissU.Modules.Blogging.Web.Pages.Blogs.Posts
                 return NotFound();
             }
 
-            var postDto = await _postAppService.GetAsync(new Guid(PostId));
+            var postDto = await _postService.GetAsync(PostId);
             Post = ObjectMapper.Map<PostWithDetailsDto, EditPostViewModel>(postDto);
             Post.Tags = String.Join(", ", postDto.Tags.Select(p => p.Name).ToArray());
 
@@ -68,8 +70,8 @@ namespace KissU.Modules.Blogging.Web.Pages.Blogs.Posts
                     Post.Description
             };
 
-            var editedPost = await _postAppService.UpdateAsync(Post.Id, post);
-            var blog = await _blogAppService.GetAsync(editedPost.BlogId);
+            var editedPost = await _postService.UpdateAsync(Post.Id.ToString(), post);
+            var blog = await _blogService.GetAsync(editedPost.BlogId.ToString());
 
             return RedirectToPage("/Blogs/Posts/Detail", new { blogShortName = blog.ShortName, postUrl = editedPost.Url });
         }

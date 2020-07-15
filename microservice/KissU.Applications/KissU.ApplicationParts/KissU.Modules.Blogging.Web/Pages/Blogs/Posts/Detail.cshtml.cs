@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web;
-using KissU.Modules.Blogging.Application.Contracts.Blogs;
 using KissU.Modules.Blogging.Application.Contracts.Blogs.Dtos;
-using KissU.Modules.Blogging.Application.Contracts.Comments;
 using KissU.Modules.Blogging.Application.Contracts.Comments.Dtos;
 using KissU.Modules.Blogging.Application.Contracts.Posts;
+using KissU.Modules.Blogging.Service.Contracts;
 using KissU.Modules.Blogging.Web.Pages.Blogs.Shared.Helpers;
+using KissU.Surging.ProxyGenerator;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KissU.Modules.Blogging.Web.Pages.Blogs.Posts
@@ -15,9 +15,9 @@ namespace KissU.Modules.Blogging.Web.Pages.Blogs.Posts
     public class DetailModel : BloggingPageModel
     {
         private const int TwitterLinkLength = 23;
-        private readonly IPostAppService _postAppService;
-        private readonly IBlogAppService _blogAppService;
-        private readonly ICommentAppService _commentAppService;
+        private readonly IPostService _postService;
+        private readonly IBlogService _blogService;
+        private readonly ICommentService _commentService;
 
         [BindProperty(SupportsGet = true)]
         public string BlogShortName { get; set; }
@@ -39,11 +39,11 @@ namespace KissU.Modules.Blogging.Web.Pages.Blogs.Posts
 
         public BlogDto Blog { get; set; }
 
-        public DetailModel(IPostAppService postAppService, IBlogAppService blogAppService, ICommentAppService commentAppService)
+        public DetailModel(IServiceProxyFactory serviceProxyFactory)
         {
-            _postAppService = postAppService;
-            _blogAppService = blogAppService;
-            _commentAppService = commentAppService;
+            _postService = serviceProxyFactory.CreateProxy<IPostService>();
+            _blogService = serviceProxyFactory.CreateProxy<IBlogService>();
+            _commentService = serviceProxyFactory.CreateProxy<ICommentService>();
         }
 
         public virtual async Task<IActionResult> OnGetAsync()
@@ -60,7 +60,7 @@ namespace KissU.Modules.Blogging.Web.Pages.Blogs.Posts
 
         public virtual async Task<IActionResult> OnPostAsync()
         {
-            var comment = await _commentAppService.CreateAsync(new CreateCommentDto()
+            var comment = await _commentService.CreateAsync(new CreateCommentDto()
             {
                 RepliedCommentId = NewComment.RepliedCommentId,
                 PostId = NewComment.PostId,
@@ -76,9 +76,9 @@ namespace KissU.Modules.Blogging.Web.Pages.Blogs.Posts
 
         private async Task GetData()
         {
-            Blog = await _blogAppService.GetByShortNameAsync(BlogShortName);
-            Post = await _postAppService.GetForReadingAsync(new GetPostInput { BlogId = Blog.Id, Url = PostUrl });
-            CommentsWithReplies = await _commentAppService.GetHierarchicalListOfPostAsync(Post.Id);
+            Blog = await _blogService.GetByShortNameAsync(BlogShortName);
+            Post = await _postService.GetForReadingAsync(new GetPostInput { BlogId = Blog.Id, Url = PostUrl });
+            CommentsWithReplies = await _commentService.GetHierarchicalListOfPostAsync(Post.Id.ToString());
             CountComments();
         }
 

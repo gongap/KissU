@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
-using KissU.Modules.Blogging.Application.Contracts.Comments;
 using KissU.Modules.Blogging.Application.Contracts.Comments.Dtos;
+using KissU.Modules.Blogging.Service.Contracts;
+using KissU.Surging.ProxyGenerator;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KissU.Modules.Blogging.Web.Areas.Blog.Controllers
@@ -12,24 +13,23 @@ namespace KissU.Modules.Blogging.Web.Areas.Blog.Controllers
     [Route("Blog/[controller]/[action]")]
     public class CommentsController : BloggingControllerBase
     {
-        private readonly ICommentAppService _commentAppService;
+        private readonly ICommentService _commentService;
 
-        public CommentsController(ICommentAppService commentAppService)
+        public CommentsController(IServiceProxyFactory serviceProxyFactory)
         {
-            _commentAppService = commentAppService;
-
+            _commentService = serviceProxyFactory.CreateProxy<ICommentService>();
         }
 
         [HttpPost]
         public async Task Delete(Guid id)
         {
-            await _commentAppService.DeleteAsync(id);
+            await _commentService.DeleteAsync(id.ToString());
         }
 
         [HttpPost]
         public async Task Update(Guid id, UpdateCommentDto commentDto)
         {
-            await _commentAppService.UpdateAsync(id, commentDto);
+            await _commentService.UpdateAsync(id.ToString(), commentDto);
         }
     }
 }

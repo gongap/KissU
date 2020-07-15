@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using KissU.Modules.Blogging.Domain.Shared.Localization;
+using KissU.Modules.Blogging.Domain.Shared.Localization.Blogging;
 using Markdig;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Localization;
