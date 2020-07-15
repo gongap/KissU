@@ -16622,3 +16622,4 @@ Volo.Abp.AbpException: There is already an existing permission group with name: 
    at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
 2020-07-15 14:39:38.415 +08:00 [INF] Request finished in 29.9718ms 200 application/javascript
 2020-07-15 14:39:38.451 +08:00 [INF] Request finished in 66.4827ms 500 
+2020-07-15 14:40:56.780 +08:00 [INF] Application is shutting down...
