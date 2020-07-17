@@ -39,19 +39,19 @@ namespace KissU.Modules.Blogging.Service.Implements
             return await _fileAppService.CreateAsync(input);
         }
 
-        public async Task<FileUploadResult> UploadImage(HttpFormCollection form)
+        public async Task<FileUploadResult> UploadAsync(HttpFormCollection formData)
         {
-            var file = form.Files[0];
+            var file = formData.Files[0];
 
             if (file.Length <= 0)
             {
                 throw new UserFriendlyException("File is empty!");
             }
 
-            //if (!file.ContentType.Contains("image"))
-            //{
-            //    throw new UserFriendlyException("Not a valid image!");
-            //}
+            if (!file.ContentType.Contains("image"))
+            {
+                throw new UserFriendlyException("Not a valid image!");
+            }
 
             var output = await _fileAppService.CreateAsync(
                 new FileUploadInputDto

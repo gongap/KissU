@@ -1,8 +1,11 @@
-﻿using KissU.Abp.Autofac;
+﻿using System;
+using System.Linq;
+using KissU.Abp.Autofac;
 using KissU.Modules.Identity.Application;
 using KissU.Modules.Identity.Domain;
 using KissU.Modules.Identity.EntityFrameworkCore;
 using KissU.Modules.Identity.Service.Contracts;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.Modularity;

@@ -1,6 +1,7 @@
 ﻿using System.Security.Principal;
 using System.Threading.Tasks;
 using KissU.Modules.Blogging.Application.Contracts;
+using KissU.Modules.Blogging.Application.Contracts.Shared;
 using KissU.Modules.Blogging.Domain.Comments;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authorization.Infrastructure;

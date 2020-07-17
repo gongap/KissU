@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using KissU.Modules.Blogging.Application.Contracts;
 using KissU.Modules.Blogging.Application.Contracts.Blogs;
 using KissU.Modules.Blogging.Application.Contracts.Blogs.Dtos;
+using KissU.Modules.Blogging.Application.Contracts.Shared;
 using KissU.Modules.Blogging.Domain.Blogs;
 using Microsoft.AspNetCore.Authorization;
 using Volo.Abp.Application.Dtos;

@@ -52,9 +52,18 @@
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Kestrel.Swagger\KissU.Surging.Kestrel.Swagger.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Zookeeper\KissU.Surging.Zookeeper.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Stage\KissU.Surging.Stage.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\KissU.Services\KissU.Modules.Account\KissU.Modules.Account.Service.Contracts\KissU.Modules.Account.Service.Contracts.csproj" />
+    <ProjectReference Include="..\..\KissU.Services\KissU.Modules.Application\KissU.Modules.Application.Service.Contracts\KissU.Modules.Application.Service.Contracts.csproj" />
     <ProjectReference Include="..\..\KissU.Services\KissU.Modules.Blogging\KissU.Modules.Blogging.Service.Contracts\KissU.Modules.Blogging.Service.Contracts.csproj" />
+    <ProjectReference Include="..\..\KissU.Services\KissU.Modules.FeatureManagement\KissU.Modules.FeatureManagement.Service.Contracts\KissU.Modules.FeatureManagement.Service.Contracts.csproj" />
+    <ProjectReference Include="..\..\KissU.Services\KissU.Modules.Identity\KissU.Modules.Identity.Service.Contracts\KissU.Modules.Identity.Service.Contracts.csproj" />
+    <ProjectReference Include="..\..\KissU.Services\KissU.Modules.PermissionManagement\KissU.Modules.PermissionManagement.Service.Contracts\KissU.Modules.PermissionManagement.Service.Contracts.csproj" />
     <ProjectReference Include="..\..\KissU.Services\KissU.Modules.Sample\KissU.Modules.SampleA.Service.Contracts\KissU.Modules.SampleA.Service.Contracts.csproj" />
     <ProjectReference Include="..\..\KissU.Services\KissU.Modules.Sample\KissU.Modules.SampleB.Service.Contracts\KissU.Modules.SampleB.Service.Contracts.csproj" />
+    <ProjectReference Include="..\..\KissU.Services\KissU.Modules.TenantManagement\KissU.Modules.TenantManagement.Service.Contracts\KissU.Modules.TenantManagement.Service.Contracts.csproj" />
   </ItemGroup>
 
   <ItemGroup>

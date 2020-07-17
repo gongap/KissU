@@ -22,7 +22,7 @@ namespace KissU.Modules.Blogging.Service.Contracts
         Task<FileUploadOutputDto> CreateAsync(FileUploadInputDto input);
 
         [HttpPost(true)]
-        [ServiceRoute("images/upload")]
-        Task<FileUploadResult> UploadImage(HttpFormCollection form);
+        [ServiceRoute("images")]
+        Task<FileUploadResult> UploadAsync(HttpFormCollection formData);
     }
 }

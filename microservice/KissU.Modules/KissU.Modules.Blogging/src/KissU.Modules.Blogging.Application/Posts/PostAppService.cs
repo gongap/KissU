@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using KissU.Modules.Blogging.Application.Contracts;
 using KissU.Modules.Blogging.Application.Contracts.Posts;
+using KissU.Modules.Blogging.Application.Contracts.Shared;
 using KissU.Modules.Blogging.Application.Contracts.Tagging.Dtos;
 using KissU.Modules.Blogging.Domain.Comments;
 using KissU.Modules.Blogging.Domain.Posts;

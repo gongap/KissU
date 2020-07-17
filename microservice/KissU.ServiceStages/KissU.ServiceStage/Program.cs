@@ -19,7 +19,7 @@ namespace KissU.ServiceStage
         }
 
         internal static IHostBuilder CreateHostBuilder(string[] args) =>
-            Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder(args)
+            Host.CreateDefaultBuilder(args)
                 .ConfigureLogging(configure => configure.ClearProviders())
                 .ConfigureHostConfiguration(builder =>
                 {

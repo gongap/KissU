@@ -27,7 +27,7 @@
 
         $.ajax({
             type: "POST",
-            url: "/api/blogging/files/images/upload",
+            url: "http://localhost:281/api/blogging/files/images/uploadasync",
             data: formData,
             contentType: false,
             processData: false,
