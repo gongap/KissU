@@ -31,7 +31,7 @@
   
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\framework\src\KissU.Surging.ProxyGenerator\KissU.Surging.ProxyGenerator.csproj" />
-    <ProjectReference Include="..\..\..\KissU.Services\KissU.Modules.Blogging\KissU.Modules.Blogging.Service.Contracts\KissU.Modules.Blogging.Service.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\KissU.Services\KissU.Modules.Blogging\KissU.Modules.Blogging.Service.Contracts\KissU.Services.Blogging.Contract.csproj" />
   </ItemGroup>
 
 </Project>

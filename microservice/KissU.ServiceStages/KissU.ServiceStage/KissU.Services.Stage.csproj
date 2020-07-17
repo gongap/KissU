@@ -55,14 +55,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\KissU.Services\KissU.Modules.Account\KissU.Modules.Account.Service.Contracts\KissU.Modules.Account.Service.Contracts.csproj" />
-    <ProjectReference Include="..\..\KissU.Services\KissU.Modules.Blogging\KissU.Modules.Blogging.Service.Contracts\KissU.Modules.Blogging.Service.Contracts.csproj" />
-    <ProjectReference Include="..\..\KissU.Services\KissU.Modules.FeatureManagement\KissU.Modules.FeatureManagement.Service.Contracts\KissU.Modules.FeatureManagement.Service.Contracts.csproj" />
-    <ProjectReference Include="..\..\KissU.Services\KissU.Modules.Identity\KissU.Modules.Identity.Service.Contracts\KissU.Modules.Identity.Service.Contracts.csproj" />
-    <ProjectReference Include="..\..\KissU.Services\KissU.Modules.PermissionManagement\KissU.Modules.PermissionManagement.Service.Contracts\KissU.Modules.PermissionManagement.Service.Contracts.csproj" />
-    <ProjectReference Include="..\..\KissU.Services\KissU.Modules.Sample\KissU.Modules.SampleA.Service.Contracts\KissU.Modules.SampleA.Service.Contracts.csproj" />
-    <ProjectReference Include="..\..\KissU.Services\KissU.Modules.Sample\KissU.Modules.SampleB.Service.Contracts\KissU.Modules.SampleB.Service.Contracts.csproj" />
-    <ProjectReference Include="..\..\KissU.Services\KissU.Modules.TenantManagement\KissU.Modules.TenantManagement.Service.Contracts\KissU.Modules.TenantManagement.Service.Contracts.csproj" />
+    <ProjectReference Include="..\..\KissU.Services\KissU.Modules.Account\KissU.Modules.Account.Service.Contracts\KissU.Services.Account.Contract.csproj" />
+    <ProjectReference Include="..\..\KissU.Services\KissU.Modules.Blogging\KissU.Modules.Blogging.Service.Contracts\KissU.Services.Blogging.Contract.csproj" />
+    <ProjectReference Include="..\..\KissU.Services\KissU.Modules.FeatureManagement\KissU.Modules.FeatureManagement.Service.Contracts\KissU.Services.FeatureManagement.Contract.csproj" />
+    <ProjectReference Include="..\..\KissU.Services\KissU.Modules.Identity\KissU.Modules.Identity.Service.Contracts\KissU.Services.Identity.Contract.csproj" />
+    <ProjectReference Include="..\..\KissU.Services\KissU.Modules.PermissionManagement\KissU.Modules.PermissionManagement.Service.Contracts\KissU.Services.PermissionManagement.Contract.csproj" />
+    <ProjectReference Include="..\..\KissU.Services\KissU.Modules.Sample\KissU.Modules.SampleA.Service.Contracts\KissU.Services.SampleA.Contract.csproj" />
+    <ProjectReference Include="..\..\KissU.Services\KissU.Modules.Sample\KissU.Modules.SampleB.Service.Contracts\KissU.Services.SampleB.Contract.csproj" />
+    <ProjectReference Include="..\..\KissU.Services\KissU.Modules.TenantManagement\KissU.Modules.TenantManagement.Service.Contracts\KissU.Services.TenantManagement.Contract.csproj" />
   </ItemGroup>
 
   <ItemGroup>

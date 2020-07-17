@@ -41,7 +41,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\KissU.Modules\KissU.Modules.Identity\src\KissU.Modules.Identity.AspNetCore\KissU.Modules.Identity.AspNetCore.csproj" />
-    <ProjectReference Include="..\..\..\KissU.Services\KissU.Modules.Account\KissU.Modules.Account.Service.Contracts\KissU.Modules.Account.Service.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\KissU.Services\KissU.Modules.Account\KissU.Modules.Account.Service.Contracts\KissU.Services.Account.Contract.csproj" />
   </ItemGroup>
   
 </Project>

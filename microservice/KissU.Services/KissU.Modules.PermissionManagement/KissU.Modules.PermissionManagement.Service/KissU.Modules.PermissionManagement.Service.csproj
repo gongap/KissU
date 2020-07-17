@@ -21,6 +21,6 @@
     <ProjectReference Include="..\..\..\KissU.Modules\KissU.Modules.PermissionManagement\src\KissU.Modules.PermissionManagement.EntityFrameworkCore\KissU.Modules.PermissionManagement.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\..\..\KissU.Modules\KissU.Modules.PermissionManagement\src\KissU.Modules.PermissionManagement.Domain.Identity\KissU.Modules.PermissionManagement.Domain.Identity.csproj" />
     <ProjectReference Include="..\..\..\KissU.Modules\KissU.Modules.PermissionManagement\src\KissU.Modules.PermissionManagement.Domain.IdentityServer\KissU.Modules.PermissionManagement.Domain.IdentityServer.csproj" />
-    <ProjectReference Include="..\KissU.Modules.PermissionManagement.Service.Contracts\KissU.Modules.PermissionManagement.Service.Contracts.csproj" />
+    <ProjectReference Include="..\KissU.Modules.PermissionManagement.Service.Contracts\KissU.Services.PermissionManagement.Contract.csproj" />
   </ItemGroup>
 </Project>

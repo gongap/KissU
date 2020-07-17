@@ -10,7 +10,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Abp.Autofac\KissU.Abp.Autofac.csproj" />
     <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.ProxyGenerator\KissU.Surging.ProxyGenerator.csproj" />
-    <ProjectReference Include="..\..\..\..\KissU.ServiceContracts\KissU.Application.ServiceContract\KissU.Application.ServiceContract.csproj" />
+    <ProjectReference Include="..\..\..\..\KissU.ServiceContracts\KissU.Application.ServiceContract\KissU.Services.Application.Contract.csproj" />
     <ProjectReference Include="..\KissU.Modules.Application\KissU.Modules.Application.csproj" />
   </ItemGroup>
 

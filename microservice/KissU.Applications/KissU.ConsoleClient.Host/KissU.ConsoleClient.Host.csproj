@@ -25,8 +25,8 @@
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.NLog\KissU.Surging.Nlog.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Caching\KissU.Surging.Caching.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.ProxyGenerator\KissU.Surging.ProxyGenerator.csproj" />
-    <ProjectReference Include="..\..\KissU.Services\KissU.Modules.Sample\KissU.Modules.SampleA.Service.Contracts\KissU.Modules.SampleA.Service.Contracts.csproj" />
-    <ProjectReference Include="..\..\KissU.Services\KissU.Modules.Sample\KissU.Modules.SampleB.Service.Contracts\KissU.Modules.SampleB.Service.Contracts.csproj" />
+    <ProjectReference Include="..\..\KissU.Services\KissU.Modules.Sample\KissU.Modules.SampleA.Service.Contracts\KissU.Services.SampleA.Contract.csproj" />
+    <ProjectReference Include="..\..\KissU.Services\KissU.Modules.Sample\KissU.Modules.SampleB.Service.Contracts\KissU.Services.SampleB.Contract.csproj" />
   </ItemGroup>
 
   <ItemGroup>
