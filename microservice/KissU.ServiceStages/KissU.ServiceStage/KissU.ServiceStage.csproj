@@ -56,7 +56,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\KissU.Services\KissU.Modules.Account\KissU.Modules.Account.Service.Contracts\KissU.Modules.Account.Service.Contracts.csproj" />
-    <ProjectReference Include="..\..\KissU.Services\KissU.Modules.Application\KissU.Modules.Application.Service.Contracts\KissU.Modules.Application.Service.Contracts.csproj" />
     <ProjectReference Include="..\..\KissU.Services\KissU.Modules.Blogging\KissU.Modules.Blogging.Service.Contracts\KissU.Modules.Blogging.Service.Contracts.csproj" />
     <ProjectReference Include="..\..\KissU.Services\KissU.Modules.FeatureManagement\KissU.Modules.FeatureManagement.Service.Contracts\KissU.Modules.FeatureManagement.Service.Contracts.csproj" />
     <ProjectReference Include="..\..\KissU.Services\KissU.Modules.Identity\KissU.Modules.Identity.Service.Contracts\KissU.Modules.Identity.Service.Contracts.csproj" />
