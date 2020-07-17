@@ -47,14 +47,6 @@
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Kestrel.Swagger\KissU.Surging.Kestrel.Swagger.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Thrift\KissU.Surging.Thrift.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Zookeeper\KissU.Surging.Zookeeper.csproj" />
-    <ProjectReference Include="..\..\KissU.Services\KissU.Modules.Account\KissU.Modules.Account.Service\KissU.Modules.Account.Service.csproj" />
-    <ProjectReference Include="..\..\KissU.Services\KissU.Modules.Blogging\KissU.Modules.Blogging.Service\KissU.Modules.Blogging.Service.csproj" />
-    <ProjectReference Include="..\..\KissU.Services\KissU.Modules.FeatureManagement\KissU.Modules.FeatureManagement.Service\KissU.Modules.FeatureManagement.Service.csproj" />
-    <ProjectReference Include="..\..\KissU.Services\KissU.Modules.Identity\KissU.Modules.Identity.Service\KissU.Modules.Identity.Service.csproj" />
-    <ProjectReference Include="..\..\KissU.Services\KissU.Modules.PermissionManagement\KissU.Modules.PermissionManagement.Service\KissU.Modules.PermissionManagement.Service.csproj" />
-    <ProjectReference Include="..\..\KissU.Services\KissU.Modules.Sample\KissU.Modules.SampleA.Service\KissU.Modules.SampleA.Service.csproj" />
-    <ProjectReference Include="..\..\KissU.Services\KissU.Modules.Sample\KissU.Modules.SampleB.Service\KissU.Modules.SampleB.Service.csproj" />
-    <ProjectReference Include="..\..\KissU.Services\KissU.Modules.TenantManagement\KissU.Modules.TenantManagement.Service\KissU.Modules.TenantManagement.Service.csproj" />
   </ItemGroup>
   
   <ItemGroup>
