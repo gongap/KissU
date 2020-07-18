@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\..\..\..\common.props" />
+  <Import Project="..\..\..\..\..\configureawait.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile></DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Http" Version="3.0.3" />
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore.SqlServer" Version="3.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Abp.Autofac\KissU.Abp.Autofac.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.ProxyGenerator\KissU.Surging.ProxyGenerator.csproj" />
+    <ProjectReference Include="..\..\..\..\KissU.Services.Contracts\KissU.Services.Blogging.Contract\KissU.Services.Blogging.Contract.csproj" />
+    <ProjectReference Include="..\KissU.Modules.Blogging.Application\KissU.Modules.Blogging.Application.csproj" />
+    <ProjectReference Include="..\KissU.Modules.Blogging.EntityFrameworkCore\KissU.Modules.Blogging.EntityFrameworkCore.csproj" />
+  </ItemGroup>
+
+</Project>

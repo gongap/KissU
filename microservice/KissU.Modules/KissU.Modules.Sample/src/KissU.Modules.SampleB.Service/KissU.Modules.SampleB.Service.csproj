@@ -7,11 +7,17 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile></DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Abp.Autofac\KissU.Abp.Autofac.csproj" />
     <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.ProxyGenerator\KissU.Surging.ProxyGenerator.csproj" />
-    <ProjectReference Include="..\..\..\..\KissU.Services.Contracts\KissU.Services.Application.Contract\KissU.Services.Application.Contract.csproj" />
-    <ProjectReference Include="..\KissU.Modules.Application\KissU.Modules.Application.csproj" />
+    <ProjectReference Include="..\..\..\..\KissU.Services.Contracts\KissU.Services.SampleB.Contract\KissU.Services.SampleB.Contract.csproj" />
   </ItemGroup>
 
 </Project>

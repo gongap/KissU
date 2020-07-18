@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\..\..\..\configureawait.props" />
+  <Import Project="..\..\..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile></DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore.SqlServer" Version="3.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Abp.Autofac\KissU.Abp.Autofac.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.ProxyGenerator\KissU.Surging.ProxyGenerator.csproj" />
+    <ProjectReference Include="..\..\..\..\KissU.Services.Contracts\KissU.Services.PermissionManagement.Contract\KissU.Services.PermissionManagement.Contract.csproj" />
+    <ProjectReference Include="..\KissU.Modules.PermissionManagement.Application\KissU.Modules.PermissionManagement.Application.csproj" />
+    <ProjectReference Include="..\KissU.Modules.PermissionManagement.EntityFrameworkCore\KissU.Modules.PermissionManagement.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\KissU.Modules.PermissionManagement.Domain.Identity\KissU.Modules.PermissionManagement.Domain.Identity.csproj" />
+    <ProjectReference Include="..\KissU.Modules.PermissionManagement.Domain.IdentityServer\KissU.Modules.PermissionManagement.Domain.IdentityServer.csproj" />
+  </ItemGroup>
+</Project>
