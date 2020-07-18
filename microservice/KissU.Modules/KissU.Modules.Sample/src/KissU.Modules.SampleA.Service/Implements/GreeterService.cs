@@ -2,17 +2,17 @@
 using Greet;
 using Grpc.Core;
 using KissU.Modules.SampleA.Service.Behaviors;
-using KissU.Modules.SampleA.Service.Contracts;
+using KissU.Services.SampleA.Contract;
 
 namespace KissU.Modules.SampleA.Service.Implements
 {
     /// <summary>
     /// GreeterService.
     /// Implements the <see cref="KissU.Modules.SampleA.Service.Behaviors.GreeterBehavior" />
-    /// Implements the <see cref="KissU.Modules.SampleA.Service.Contracts.IGreeterService" />
+    /// Implements the <see cref="IGreeterService" />
     /// </summary>
     /// <seealso cref="KissU.Modules.SampleA.Service.Behaviors.GreeterBehavior" />
-    /// <seealso cref="KissU.Modules.SampleA.Service.Contracts.IGreeterService" />
+    /// <seealso cref="IGreeterService" />
     public class GreeterService : GreeterBehavior, IGreeterService
     {
         /// <summary>

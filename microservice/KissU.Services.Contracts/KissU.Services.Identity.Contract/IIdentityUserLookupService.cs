@@ -1,11 +1,9 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using KissU.Dependency;
 using KissU.Modules.Users.Abstractions;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
-using Volo.Abp.Users;
 
-namespace KissU.Modules.Identity.Service.Contracts
+namespace KissU.Services.Identity.Contract
 {
     [ServiceBundle("api/{Service}")]
     public interface IIdentityUserLookupService : IServiceKey

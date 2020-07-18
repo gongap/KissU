@@ -2,7 +2,7 @@
 using KissU.Dependency;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 
-namespace KissU.Modules.Application.Service.Contracts
+namespace KissU.Services.Application.Contract
 {
     [ServiceBundle("Abp/ApplicationConfigurationScript")]
     public interface IAbpApplicationConfigurationScriptService : IServiceKey

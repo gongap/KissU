@@ -1,4 +1,4 @@
-﻿namespace KissU.MultiTenancy
+﻿namespace KissU.Shared.MultiTenancy
 {
     public static class MultiTenancyConsts
     {

@@ -1,7 +1,7 @@
 ﻿using KissU.Abp.Autofac;
 using KissU.Modules.FeatureManagement.Application;
 using KissU.Modules.FeatureManagement.EntityFrameworkCore;
-using KissU.Modules.FeatureManagement.Service.Contracts;
+using KissU.Services.FeatureManagement.Contract;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.Modularity;

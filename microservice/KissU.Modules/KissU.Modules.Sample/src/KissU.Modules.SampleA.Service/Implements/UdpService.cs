@@ -1,17 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using KissU.Services.SampleA.Contract;
 using KissU.Surging.Protocol.Udp.Runtime;
-using KissU.Modules.SampleA.Service.Contracts;
 
 namespace KissU.Modules.SampleA.Service.Implements
 {
     /// <summary>
     /// UdpService.
     /// Implements the <see cref="KissU.Surging.Protocol.Udp.Runtime.UdpBehavior" />
-    /// Implements the <see cref="KissU.Modules.SampleA.Service.Contracts.IUdpService" />
+    /// Implements the <see cref="IUdpService" />
     /// </summary>
     /// <seealso cref="KissU.Surging.Protocol.Udp.Runtime.UdpBehavior" />
-    /// <seealso cref="KissU.Modules.SampleA.Service.Contracts.IUdpService" />
+    /// <seealso cref="IUdpService" />
     public class UdpService : UdpBehavior, IUdpService
     {
         /// <summary>

@@ -4,26 +4,21 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
+
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 using System.IO;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Thrift;
-using Thrift.Collections;
-
+using Thrift.Processor;
 using Thrift.Protocol;
 using Thrift.Protocol.Entities;
 using Thrift.Protocol.Utilities;
 using Thrift.Transport;
-using Thrift.Transport.Client;
-using Thrift.Transport.Server;
-using Thrift.Processor;
 
-
-namespace ThriftCore
+namespace KissU.Services.SampleA.Contract.Thrifts.ThriftCore
 {
   public partial class ThirdCalculator
   {

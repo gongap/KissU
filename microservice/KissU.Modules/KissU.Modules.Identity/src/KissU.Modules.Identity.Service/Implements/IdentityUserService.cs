@@ -3,7 +3,7 @@ using KissU.Common;
 using KissU.Dependency;
 using KissU.Extensions;
 using KissU.Modules.Identity.Application.Contracts;
-using KissU.Modules.Identity.Service.Contracts;
+using KissU.Services.Identity.Contract;
 using KissU.Surging.ProxyGenerator;
 
 namespace KissU.Modules.Identity.Service.Implements

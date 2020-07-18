@@ -2,11 +2,11 @@
 using System.Threading.Tasks;
 using KissU.Dependency;
 using KissU.EventBus.Events;
+using KissU.Services.SampleA.Contract;
+using KissU.Services.SampleA.Contract.Dtos;
+using KissU.Services.SampleA.Contract.Events;
 using KissU.Surging.EventBusRabbitMQ;
 using KissU.Surging.EventBusRabbitMQ.Attributes;
-using KissU.Modules.SampleA.Service.Contracts;
-using KissU.Modules.SampleA.Service.Contracts.Dtos;
-using KissU.Modules.SampleA.Service.Contracts.Events;
 
 namespace KissU.Modules.SampleA.Service.EventHandlers
 {

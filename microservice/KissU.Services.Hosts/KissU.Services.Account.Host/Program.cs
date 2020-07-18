@@ -9,7 +9,7 @@ using KissU.Surging.ProxyGenerator;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace KissU.ServiceHost
+namespace KissU.Services.Hosts
 {
     public class Program
     {

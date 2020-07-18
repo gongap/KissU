@@ -1,6 +1,6 @@
 ﻿using KissU.EventBus.Events;
 
-namespace KissU.Modules.SampleA.Service.Contracts.Events
+namespace KissU.Services.SampleA.Contract.Events
 {
     /// <summary>
     /// UserEvent.

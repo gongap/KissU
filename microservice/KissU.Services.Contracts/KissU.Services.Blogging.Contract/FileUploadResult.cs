@@ -1,4 +1,4 @@
-﻿namespace KissU.Modules.Blogging.Service.Contracts
+﻿namespace KissU.Services.Blogging.Contract
 {
     public class FileUploadResult
     {

@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 using KissU.Dependency;
 using KissU.Extensions;
 using KissU.Modules.Identity.Application.Contracts;
-using KissU.Modules.Identity.Service.Contracts;
 using KissU.Modules.Users.Abstractions;
+using KissU.Services.Identity.Contract;
 using KissU.Surging.ProxyGenerator;
 using Volo.Abp.Users;
 

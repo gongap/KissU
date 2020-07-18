@@ -9,10 +9,10 @@ using KissU.Surging.CPlatform.Transport.Implementation;
 using KissU.Surging.KestrelHttpServer.Abstractions;
 using KissU.Surging.KestrelHttpServer.Internal;
 using KissU.Surging.ProxyGenerator;
-using KissU.Modules.SampleA.Service.Contracts;
-using KissU.Modules.SampleA.Service.Contracts.Dtos;
 using KissU.Modules.SampleA.Service.Repositories;
-using KissU.Modules.SampleB.Service.Contracts;
+using KissU.Services.SampleA.Contract;
+using KissU.Services.SampleA.Contract.Dtos;
+using KissU.Services.SampleB.Contract;
 
 namespace KissU.Modules.SampleA.Service.Implements
 {

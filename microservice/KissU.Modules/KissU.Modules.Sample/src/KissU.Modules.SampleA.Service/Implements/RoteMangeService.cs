@@ -1,17 +1,17 @@
 ﻿using System.Threading.Tasks;
+using KissU.Services.SampleA.Contract;
+using KissU.Services.SampleA.Contract.Dtos;
 using KissU.Surging.ProxyGenerator;
-using KissU.Modules.SampleA.Service.Contracts;
-using KissU.Modules.SampleA.Service.Contracts.Dtos;
 
 namespace KissU.Modules.SampleA.Service.Implements
 {
     /// <summary>
     /// RoteMangeService.
     /// Implements the <see cref="KissU.Surging.ProxyGenerator.ProxyServiceBase" />
-    /// Implements the <see cref="KissU.Modules.SampleA.Service.Contracts.IRoteMangeService" />
+    /// Implements the <see cref="IRoteMangeService" />
     /// </summary>
     /// <seealso cref="KissU.Surging.ProxyGenerator.ProxyServiceBase" />
-    /// <seealso cref="KissU.Modules.SampleA.Service.Contracts.IRoteMangeService" />
+    /// <seealso cref="IRoteMangeService" />
     public class RoteMangeService : ProxyServiceBase, IRoteMangeService
     {
         /// <summary>

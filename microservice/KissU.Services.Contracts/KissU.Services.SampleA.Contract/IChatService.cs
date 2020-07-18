@@ -5,7 +5,7 @@ using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Att
 using KissU.Surging.CPlatform.Support.Attributes;
 using KissU.Surging.Protocol.WS.Attributes;
 
-namespace KissU.Modules.SampleA.Service.Contracts
+namespace KissU.Services.SampleA.Contract
 {
     /// <summary>
     /// Interface IChatService

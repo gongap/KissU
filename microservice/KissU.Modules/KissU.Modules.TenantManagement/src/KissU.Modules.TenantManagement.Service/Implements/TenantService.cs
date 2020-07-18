@@ -3,8 +3,8 @@ using KissU.Common;
 using KissU.Dependency;
 using KissU.Extensions;
 using KissU.Modules.TenantManagement.Application.Contracts;
+using KissU.Services.TenantManagement.Contract;
 using KissU.Surging.ProxyGenerator;
-using KissU.Modules.TenantManagement.Service.Contracts;
 
 namespace KissU.Modules.TenantManagement.Service.Implements
 {

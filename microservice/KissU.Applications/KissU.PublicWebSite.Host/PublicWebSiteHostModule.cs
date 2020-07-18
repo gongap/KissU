@@ -1,7 +1,7 @@
 ﻿using System;
 using KissU.Abp.Autofac;
-using KissU.Modules.Blogging.Web;
-using KissU.MultiTenancy;
+using KissU.ApplicationParts.Blogging;
+using KissU.Shared.MultiTenancy;
 using Microsoft.AspNetCore.Authentication.OAuth.Claims;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;

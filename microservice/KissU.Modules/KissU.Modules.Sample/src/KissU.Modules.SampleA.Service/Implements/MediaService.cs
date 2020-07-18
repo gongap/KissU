@@ -1,18 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using KissU.Services.SampleA.Contract;
 using KissU.Surging.Protocol.WS;
-using KissU.Modules.SampleA.Service.Contracts;
 
 namespace KissU.Modules.SampleA.Service.Implements
 {
     /// <summary>
     /// MediaService.
     /// Implements the <see cref="KissU.Surging.Protocol.WS.WSBehavior" />
-    /// Implements the <see cref="KissU.Modules.SampleA.Service.Contracts.IMediaService" />
+    /// Implements the <see cref="IMediaService" />
     /// </summary>
     /// <seealso cref="KissU.Surging.Protocol.WS.WSBehavior" />
-    /// <seealso cref="KissU.Modules.SampleA.Service.Contracts.IMediaService" />
+    /// <seealso cref="IMediaService" />
     public class MediaService : WSBehavior, IMediaService
     {
         /// <summary>

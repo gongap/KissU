@@ -1,6 +1,6 @@
 {
   "apollo": {
-    "AppId": "kissU-services-stage",
+    "AppId": "kissu-services-stages",
     "MetaServer": "http://10.1.6.121:8080/",
     //"RefreshInterval": 60000,
     "Env": "Dev",

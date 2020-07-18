@@ -5,7 +5,7 @@ using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.UI;
 
-namespace KissU.Modules.TenantManagement.Service.Contracts
+namespace KissU.Services.TenantManagement.Contract
 {
     [DependsOn(
         typeof(AbpTenantManagementApplicationContractsModule),

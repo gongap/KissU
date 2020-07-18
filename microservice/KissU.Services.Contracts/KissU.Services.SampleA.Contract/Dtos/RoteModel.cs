@@ -1,6 +1,6 @@
 ﻿using ProtoBuf;
 
-namespace KissU.Modules.SampleA.Service.Contracts.Dtos
+namespace KissU.Services.SampleA.Contract.Dtos
 {
     /// <summary>
     /// RoteModel.

@@ -1,10 +1,9 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using KissU.Dependency;
 using KissU.Modules.Application.MultiTenancy;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 
-namespace KissU.Modules.Application.Service.Contracts
+namespace KissU.Services.Application.Contract
 {
     [ServiceBundle("api/abp/multi-tenancy")]
     public interface IAbpTenantService : IServiceKey

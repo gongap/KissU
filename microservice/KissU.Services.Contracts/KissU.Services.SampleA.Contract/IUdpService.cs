@@ -1,7 +1,7 @@
 ﻿using KissU.Dependency;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 
-namespace KissU.Modules.SampleA.Service.Contracts
+namespace KissU.Services.SampleA.Contract
 {
     /// <summary>
     /// Interface IUdpService

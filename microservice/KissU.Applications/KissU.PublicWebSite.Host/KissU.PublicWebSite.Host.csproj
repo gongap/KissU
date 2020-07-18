@@ -35,7 +35,7 @@
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Caching\KissU.Surging.Caching.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.ProxyGenerator\KissU.Surging.ProxyGenerator.csproj" />
     <ProjectReference Include="..\..\KissU.Shared\KissU.Shared.csproj" />
-    <ProjectReference Include="..\KissU.ApplicationParts\KissU.Modules.Blogging.Web\KissU.Modules.Blogging.Web.csproj" />
+    <ProjectReference Include="..\KissU.ApplicationParts\KissU.ApplicationParts.Blogging\KissU.ApplicationParts.Blogging.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,4 +1,4 @@
-﻿using KissU.Modules.Application.Service.Contracts;
+﻿using KissU.Services.Application.Contract;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.Modularity;
 

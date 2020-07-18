@@ -6,13 +6,13 @@ using System.IO;
 using KissU.Common;
 using KissU.Dependency;
 using KissU.EventBus.Events;
-using KissU.Modules.SampleA.Service.Contracts;
-using KissU.Modules.SampleA.Service.Contracts.Dtos;
 using KissU.Modules.SampleA.Service.Repositories;
+using KissU.Services.SampleA.Contract;
+using KissU.Services.SampleA.Contract.Dtos;
 using KissU.Surging.KestrelHttpServer.Abstractions;
 using KissU.Surging.KestrelHttpServer.Internal;
 using KissU.Surging.ProxyGenerator;
-using static ThriftCore.Calculator;
+using static KissU.Services.SampleA.Contract.Thrifts.ThriftCore.Calculator;
 
 namespace KissU.Modules.SampleA.Service.Implements
 {

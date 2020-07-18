@@ -3,7 +3,7 @@ using Autofac.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace KissU.ServiceHost
+namespace KissU.Services.Hosts
 {
     /// <summary>
     /// 启动配置

@@ -25098,3 +25098,199 @@ System.NullReferenceException: Object reference not set to an instance of an obj
 2020-07-15 23:10:56.541 +08:00 [DBG] 准备转换服务路由，配置内容：{"addressDescriptors":[],"serviceDescriptor":{"id":"KissU.Modules.Blogging.Service.Contracts.IPostService.GetListByBlogIdAndTagName_blogId_tagName","token":"a830a4cf9dd94b2f85e7173897f885b7","routePath":"api/post/getlistbyblogidandtagname/{blogid}/all","metadatas":{"httpMethod":"GET"}}。
 2020-07-15 23:10:56.544 +08:00 [DBG] 准备转换服务路由，配置内容：{"addressDescriptors":[],"serviceDescriptor":{"id":"KissU.Modules.Blogging.Service.Contracts.ITagService.GetPopularTags_blogId_input","token":"a830a4cf9dd94b2f85e7173897f885b7","routePath":"api/tag/popular/getpopulartags/{blogid}","metadatas":{"httpMethod":"POST"}}。
 2020-07-16 00:45:19.419 +08:00 [INF] Application is shutting down...
+2020-07-19 00:51:58.776 +08:00 [INF] Starting PublicWebSite.Host.
+2020-07-19 00:52:00.117 +08:00 [INF] User profile is available. Using 'C:\Users\Gongap\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-07-19 00:52:00.186 +08:00 [INF] Loaded ABP modules:
+2020-07-19 00:52:00.189 +08:00 [INF] - Volo.Abp.Castle.AbpCastleCoreModule
+2020-07-19 00:52:00.190 +08:00 [INF] - KissU.Abp.Autofac.AbpAutofacModule
+2020-07-19 00:52:00.191 +08:00 [INF] - Volo.Abp.Security.AbpSecurityModule
+2020-07-19 00:52:00.192 +08:00 [INF] - Volo.Abp.AspNetCore.Authentication.OAuth.AbpAspNetCoreAuthenticationOAuthModule
+2020-07-19 00:52:00.193 +08:00 [INF] - Volo.Abp.Http.AbpHttpAbstractionsModule
+2020-07-19 00:52:00.193 +08:00 [INF] - Volo.Abp.VirtualFileSystem.AbpVirtualFileSystemModule
+2020-07-19 00:52:00.194 +08:00 [INF] - Volo.Abp.Localization.AbpLocalizationAbstractionsModule
+2020-07-19 00:52:00.195 +08:00 [INF] - Volo.Abp.Validation.AbpValidationAbstractionsModule
+2020-07-19 00:52:00.197 +08:00 [INF] - Volo.Abp.ObjectExtending.AbpObjectExtendingModule
+2020-07-19 00:52:00.198 +08:00 [INF] - Volo.Abp.Uow.AbpUnitOfWorkModule
+2020-07-19 00:52:00.199 +08:00 [INF] - Volo.Abp.Data.AbpDataModule
+2020-07-19 00:52:00.200 +08:00 [INF] - Volo.Abp.MultiTenancy.AbpMultiTenancyModule
+2020-07-19 00:52:00.201 +08:00 [INF] - Volo.Abp.Settings.AbpSettingsModule
+2020-07-19 00:52:00.203 +08:00 [INF] - Volo.Abp.Timing.AbpTimingModule
+2020-07-19 00:52:00.203 +08:00 [INF] - Volo.Abp.Json.AbpJsonModule
+2020-07-19 00:52:00.204 +08:00 [INF] - Volo.Abp.Minify.AbpMinifyModule
+2020-07-19 00:52:00.205 +08:00 [INF] - Volo.Abp.Http.AbpHttpModule
+2020-07-19 00:52:00.208 +08:00 [INF] - Volo.Abp.Threading.AbpThreadingModule
+2020-07-19 00:52:00.208 +08:00 [INF] - Volo.Abp.Localization.AbpLocalizationModule
+2020-07-19 00:52:00.209 +08:00 [INF] - Volo.Abp.Validation.AbpValidationModule
+2020-07-19 00:52:00.210 +08:00 [INF] - Volo.Abp.Http.Client.AbpHttpClientModule
+2020-07-19 00:52:00.211 +08:00 [INF] - Volo.Abp.IdentityModel.AbpIdentityModelModule
+2020-07-19 00:52:00.212 +08:00 [INF] - Volo.Abp.Http.Client.IdentityModel.AbpHttpClientIdentityModelModule
+2020-07-19 00:52:00.213 +08:00 [INF] - Volo.Abp.Http.Client.IdentityModel.Web.AbpHttpClientIdentityModelWebModule
+2020-07-19 00:52:00.214 +08:00 [INF] - Volo.Abp.Auditing.AbpAuditingModule
+2020-07-19 00:52:00.216 +08:00 [INF] - Volo.Abp.Authorization.AbpAuthorizationModule
+2020-07-19 00:52:00.217 +08:00 [INF] - Volo.Abp.EventBus.AbpEventBusModule
+2020-07-19 00:52:00.219 +08:00 [INF] - Volo.Abp.Guids.AbpGuidsModule
+2020-07-19 00:52:00.220 +08:00 [INF] - Volo.Abp.ObjectMapping.AbpObjectMappingModule
+2020-07-19 00:52:00.221 +08:00 [INF] - Volo.Abp.Domain.AbpDddDomainModule
+2020-07-19 00:52:00.222 +08:00 [INF] - Volo.Abp.UI.AbpUiModule
+2020-07-19 00:52:00.223 +08:00 [INF] - Volo.Abp.AspNetCore.AbpAspNetCoreModule
+2020-07-19 00:52:00.226 +08:00 [INF] - Volo.Abp.ApiVersioning.AbpApiVersioningAbstractionsModule
+2020-07-19 00:52:00.228 +08:00 [INF] - Volo.Abp.Application.AbpDddApplicationContractsModule
+2020-07-19 00:52:00.229 +08:00 [INF] - Volo.Abp.Features.AbpFeaturesModule
+2020-07-19 00:52:00.230 +08:00 [INF] - Volo.Abp.Application.AbpDddApplicationModule
+2020-07-19 00:52:00.232 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcContractsModule
+2020-07-19 00:52:00.234 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcModule
+2020-07-19 00:52:00.237 +08:00 [INF] - Volo.Abp.UI.Navigation.AbpUiNavigationModule
+2020-07-19 00:52:00.238 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.AbpAspNetCoreMvcUiModule
+2020-07-19 00:52:00.240 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.AbpAspNetCoreMvcUiBootstrapModule
+2020-07-19 00:52:00.242 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Bundling.AbpAspNetCoreMvcUiBundlingModule
+2020-07-19 00:52:00.243 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Packages.AbpAspNetCoreMvcUiPackagesModule
+2020-07-19 00:52:00.245 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Widgets.AbpAspNetCoreMvcUiWidgetsModule
+2020-07-19 00:52:00.247 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.AbpAspNetCoreMvcUiThemeSharedModule
+2020-07-19 00:52:00.249 +08:00 [INF] - Volo.Abp.AspNetCore.MultiTenancy.AbpAspNetCoreMultiTenancyModule
+2020-07-19 00:52:00.250 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.AbpAspNetCoreMvcUiMultiTenancyModule
+2020-07-19 00:52:00.251 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic.AbpAspNetCoreMvcUiBasicThemeModule
+2020-07-19 00:52:00.252 +08:00 [INF] - KissU.Modules.Blogging.Domain.Shared.BloggingDomainSharedModule
+2020-07-19 00:52:00.253 +08:00 [INF] - KissU.Modules.Blogging.Application.Contracts.Shared.BloggingApplicationContractsSharedModule
+2020-07-19 00:52:00.256 +08:00 [INF] - KissU.Modules.Blogging.Application.Contracts.BloggingApplicationContractsModule
+2020-07-19 00:52:00.257 +08:00 [INF] - KissU.Services.Blogging.Contract.BloggingServiceContractsModule
+2020-07-19 00:52:00.259 +08:00 [INF] - Volo.Abp.AutoMapper.AbpAutoMapperModule
+2020-07-19 00:52:00.260 +08:00 [INF] - KissU.ApplicationParts.Blogging.BloggingWebModule
+2020-07-19 00:52:00.261 +08:00 [INF] - KissU.PublicWebSite.Host.PublicWebSiteHostModule
+2020-07-19 00:52:00.901 +08:00 [INF] Initialized all ABP modules.
+2020-07-19 00:52:00.941 +08:00 [INF] Now listening on: http://localhost:53435
+2020-07-19 00:52:00.943 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-07-19 00:52:00.946 +08:00 [INF] Hosting environment: Development
+2020-07-19 00:52:00.947 +08:00 [INF] Content root path: E:\GAP\KissU\microservice\KissU.Applications\KissU.PublicWebSite.Host
+2020-07-19 00:52:01.562 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/  
+2020-07-19 00:52:01.789 +08:00 [INF] Executing endpoint '/Index'
+2020-07-19 00:52:01.890 +08:00 [INF] Route matched with {page = "/Index", area = "", action = "", controller = ""}. Executing page /Index
+2020-07-19 00:52:01.916 +08:00 [INF] Executing handler method KissU.PublicWebSite.Host.Pages.IndexModel.OnGet - ModelState is "Valid"
+2020-07-19 00:52:01.923 +08:00 [INF] Executed handler method OnGet, returned result .
+2020-07-19 00:52:01.929 +08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2020-07-19 00:52:01.931 +08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-07-19 00:52:02.177 +08:00 [DBG] Added bundle 'Basic.Global' to the page in 16.06 ms.
+2020-07-19 00:52:02.439 +08:00 [DBG] Added bundle 'Basic.Global' to the page in 14.71 ms.
+2020-07-19 00:52:02.464 +08:00 [INF] Executed page /Index in 566.3657ms
+2020-07-19 00:52:02.471 +08:00 [INF] Executed endpoint '/Index'
+2020-07-19 00:52:02.477 +08:00 [INF] Request finished in 918.6464ms 200 text/html; charset=utf-8
+2020-07-19 00:52:02.529 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/themes/basic/layout.css?_v=637297005380000000  
+2020-07-19 00:52:02.545 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/libs/abp/utils/abp-utils.umd.min.js?_v=637226461195769478  
+2020-07-19 00:52:02.548 +08:00 [INF] The file /themes/basic/layout.css was not modified
+2020-07-19 00:52:02.551 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/libs/abp/aspnetcore-mvc-ui-theme-shared/datatables/datatables-styles.css?_v=637297004840000000  
+2020-07-19 00:52:02.556 +08:00 [INF] The file /libs/abp/utils/abp-utils.umd.min.js was not modified
+2020-07-19 00:52:02.560 +08:00 [INF] Request finished in 31.1423ms 304 text/css
+2020-07-19 00:52:02.564 +08:00 [INF] The file /libs/abp/aspnetcore-mvc-ui-theme-shared/datatables/datatables-styles.css was not modified
+2020-07-19 00:52:02.568 +08:00 [INF] Request finished in 22.6434ms 304 application/javascript
+2020-07-19 00:52:02.576 +08:00 [INF] Request finished in 24.9219ms 304 text/css
+2020-07-19 00:52:02.589 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/libs/select2/js/select2-bootstrap-modal-patch.js?_v=637226461195799509  
+2020-07-19 00:52:02.594 +08:00 [INF] The file /libs/select2/js/select2-bootstrap-modal-patch.js was not modified
+2020-07-19 00:52:02.598 +08:00 [INF] Request finished in 8.5805ms 304 application/javascript
+2020-07-19 00:52:02.608 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/libs/abp/aspnetcore-mvc-ui-theme-shared/ui-extensions.js?_v=637297004840000000  
+2020-07-19 00:52:02.608 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/libs/abp/aspnetcore-mvc-ui-theme-shared/jquery/jquery-extensions.js?_v=637297004840000000  
+2020-07-19 00:52:02.611 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/libs/abp/aspnetcore-mvc-ui-theme-shared/jquery-form/jquery-form-extensions.js?_v=637297004840000000  
+2020-07-19 00:52:02.611 +08:00 [INF] The file /libs/abp/aspnetcore-mvc-ui-theme-shared/ui-extensions.js was not modified
+2020-07-19 00:52:02.612 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/libs/abp/aspnetcore-mvc-ui-theme-shared/jquery/widget-manager.js?_v=637297004840000000  
+2020-07-19 00:52:02.612 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/libs/abp/aspnetcore-mvc-ui-theme-shared/bootstrap/dom-event-handlers.js?_v=637297004840000000  
+2020-07-19 00:52:02.613 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/libs/abp/aspnetcore-mvc-ui-theme-shared/bootstrap/modal-manager.js?_v=637297004840000000  
+2020-07-19 00:52:02.616 +08:00 [INF] The file /libs/abp/aspnetcore-mvc-ui-theme-shared/jquery/jquery-extensions.js was not modified
+2020-07-19 00:52:02.622 +08:00 [INF] The file /libs/abp/aspnetcore-mvc-ui-theme-shared/jquery-form/jquery-form-extensions.js was not modified
+2020-07-19 00:52:02.625 +08:00 [INF] Request finished in 17.5415ms 304 application/javascript
+2020-07-19 00:52:02.629 +08:00 [INF] The file /libs/abp/aspnetcore-mvc-ui-theme-shared/jquery/widget-manager.js was not modified
+2020-07-19 00:52:02.632 +08:00 [INF] The file /libs/abp/aspnetcore-mvc-ui-theme-shared/bootstrap/dom-event-handlers.js was not modified
+2020-07-19 00:52:02.638 +08:00 [INF] The file /libs/abp/aspnetcore-mvc-ui-theme-shared/bootstrap/modal-manager.js was not modified
+2020-07-19 00:52:02.641 +08:00 [INF] Request finished in 33.0255ms 304 application/javascript
+2020-07-19 00:52:02.645 +08:00 [INF] Request finished in 34.2826ms 304 application/javascript
+2020-07-19 00:52:02.648 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/libs/abp/aspnetcore-mvc-ui-theme-shared/datatables/datatables-extensions.js?_v=637297004840000000  
+2020-07-19 00:52:02.651 +08:00 [INF] Request finished in 39.6639ms 304 application/javascript
+2020-07-19 00:52:02.656 +08:00 [INF] Request finished in 44.222ms 304 application/javascript
+2020-07-19 00:52:02.659 +08:00 [INF] Request finished in 45.9504ms 304 application/javascript
+2020-07-19 00:52:02.661 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/libs/abp/aspnetcore-mvc-ui-theme-shared/sweetalert/abp-sweetalert.js?_v=637297004840000000  
+2020-07-19 00:52:02.663 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/libs/abp/aspnetcore-mvc-ui-theme-shared/toastr/abp-toastr.js?_v=637297004840000000  
+2020-07-19 00:52:02.669 +08:00 [INF] The file /libs/abp/aspnetcore-mvc-ui-theme-shared/datatables/datatables-extensions.js was not modified
+2020-07-19 00:52:02.672 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/Pages/Abp/MultiTenancy/tenant-switch.js?_v=637297004900000000  
+2020-07-19 00:52:02.674 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/Abp/ApplicationConfigurationScript  
+2020-07-19 00:52:02.677 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/themes/basic/layout.js?_v=637297005380000000  
+2020-07-19 00:52:02.681 +08:00 [INF] The file /libs/abp/aspnetcore-mvc-ui-theme-shared/sweetalert/abp-sweetalert.js was not modified
+2020-07-19 00:52:02.685 +08:00 [INF] The file /libs/abp/aspnetcore-mvc-ui-theme-shared/toastr/abp-toastr.js was not modified
+2020-07-19 00:52:02.689 +08:00 [INF] Request finished in 41.9888ms 304 application/javascript
+2020-07-19 00:52:02.694 +08:00 [INF] The file /Pages/Abp/MultiTenancy/tenant-switch.js was not modified
+2020-07-19 00:52:02.701 +08:00 [INF] The file /themes/basic/layout.js was not modified
+2020-07-19 00:52:02.705 +08:00 [INF] Executing endpoint 'Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc)'
+2020-07-19 00:52:02.705 +08:00 [INF] Request finished in 43.5835ms 304 application/javascript
+2020-07-19 00:52:02.709 +08:00 [INF] Request finished in 45.4542ms 304 application/javascript
+2020-07-19 00:52:02.711 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/Abp/ServiceProxyScript  
+2020-07-19 00:52:02.714 +08:00 [INF] Request finished in 42.3015ms 304 application/javascript
+2020-07-19 00:52:02.720 +08:00 [INF] Request finished in 42.2356ms 304 application/javascript
+2020-07-19 00:52:02.727 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/product-images/asus.jpg  
+2020-07-19 00:52:02.731 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/product-images/playstation.jpg  
+2020-07-19 00:52:02.738 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/product-images/nikon.jpg  
+2020-07-19 00:52:02.742 +08:00 [INF] Route matched with {area = "Abp", action = "Get", controller = "AbpApplicationConfigurationScript", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Get() on controller Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController (Volo.Abp.AspNetCore.Mvc).
+2020-07-19 00:52:02.744 +08:00 [INF] The file /product-images/asus.jpg was not modified
+2020-07-19 00:52:02.744 +08:00 [INF] Executing endpoint 'Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController.GetAll (Volo.Abp.AspNetCore.Mvc)'
+2020-07-19 00:52:02.746 +08:00 [INF] The file /product-images/playstation.jpg was not modified
+2020-07-19 00:52:02.748 +08:00 [INF] The file /product-images/nikon.jpg was not modified
+2020-07-19 00:52:02.762 +08:00 [INF] Request finished in 34.8227ms 304 image/jpeg
+2020-07-19 00:52:02.772 +08:00 [INF] Request finished in 40.1526ms 304 image/jpeg
+2020-07-19 00:52:02.775 +08:00 [INF] Request finished in 36.8798ms 304 image/jpeg
+2020-07-19 00:52:02.795 +08:00 [INF] Route matched with {area = "Abp", action = "GetAll", controller = "AbpServiceProxyScript", page = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAll(Volo.Abp.AspNetCore.Mvc.ProxyScripting.ServiceProxyGenerationModel) on controller Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController (Volo.Abp.AspNetCore.Mvc).
+2020-07-19 00:52:02.913 +08:00 [DBG] Executing AbpApplicationConfigurationAppService.GetAsync()...
+2020-07-19 00:52:03.010 +08:00 [DBG] ActionApiDescriptionModel.Create: AbpTenant.FindTenantByNameAsyncByName
+2020-07-19 00:52:03.032 +08:00 [DBG] ActionApiDescriptionModel.Create: AbpTenant.FindTenantByIdAsyncById
+2020-07-19 00:52:03.035 +08:00 [DBG] ActionApiDescriptionModel.Create: AbpApplicationConfiguration.GetAsync
+2020-07-19 00:52:03.038 +08:00 [DBG] ActionApiDescriptionModel.Create: AbpApiDefinition.GetByModel
+2020-07-19 00:52:03.069 +08:00 [INF] Executing ContentResult with HTTP Response ContentType of application/javascript
+2020-07-19 00:52:03.072 +08:00 [INF] Executed action Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController.GetAll (Volo.Abp.AspNetCore.Mvc) in 266.8977ms
+2020-07-19 00:52:03.075 +08:00 [INF] Executed endpoint 'Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController.GetAll (Volo.Abp.AspNetCore.Mvc)'
+2020-07-19 00:52:03.080 +08:00 [INF] Request finished in 368.6284ms 200 application/javascript
+2020-07-19 00:52:03.554 +08:00 [DBG] Executed AbpApplicationConfigurationAppService.GetAsync().
+2020-07-19 00:52:03.596 +08:00 [INF] Executing ContentResult with HTTP Response ContentType of application/javascript
+2020-07-19 00:52:03.600 +08:00 [INF] Executed action Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc) in 842.4289ms
+2020-07-19 00:52:03.604 +08:00 [INF] Executed endpoint 'Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc)'
+2020-07-19 00:52:03.610 +08:00 [INF] Request finished in 935.6759ms 200 application/javascript
+2020-07-19 00:52:04.284 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/favicon.ico  
+2020-07-19 00:52:04.291 +08:00 [INF] Request finished in 6.8216ms 404 
+2020-07-19 00:52:17.050 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:53435/?handler=Login application/x-www-form-urlencoded 182
+2020-07-19 00:52:17.056 +08:00 [INF] Executing endpoint '/Index'
+2020-07-19 00:52:17.060 +08:00 [INF] Route matched with {page = "/Index", area = "", action = "", controller = ""}. Executing page /Index
+2020-07-19 00:52:17.067 +08:00 [INF] Executing handler method KissU.PublicWebSite.Host.Pages.IndexModel.OnPostLoginAsync - ModelState is "Valid"
+2020-07-19 00:52:17.568 +08:00 [INF] AuthenticationScheme: oidc was challenged.
+2020-07-19 00:52:17.576 +08:00 [INF] Executed handler method OnPostLoginAsync, returned result .
+2020-07-19 00:52:17.579 +08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2020-07-19 00:52:17.580 +08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-07-19 00:52:17.594 +08:00 [DBG] Added bundle 'Basic.Global' to the page in 1.78 ms.
+2020-07-19 00:52:17.601 +08:00 [DBG] Added bundle 'Basic.Global' to the page in 3.03 ms.
+2020-07-19 00:52:17.607 +08:00 [INF] Executed page /Index in 544.7744ms
+2020-07-19 00:52:17.611 +08:00 [INF] Executed endpoint '/Index'
+2020-07-19 00:52:17.618 +08:00 [INF] Request finished in 567.8368ms 302 text/html; charset=utf-8
+2020-07-19 00:52:18.387 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:53435/signin-oidc application/x-www-form-urlencoded 1702
+2020-07-19 00:52:19.371 +08:00 [INF] AuthenticationScheme: Cookies signed in.
+2020-07-19 00:52:19.374 +08:00 [INF] Request finished in 987.0279ms 302 
+2020-07-19 00:52:19.382 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/?handler=Login  
+2020-07-19 00:52:19.387 +08:00 [INF] Executing endpoint '/Index'
+2020-07-19 00:52:19.391 +08:00 [INF] Route matched with {page = "/Index", area = "", action = "", controller = ""}. Executing page /Index
+2020-07-19 00:52:19.394 +08:00 [INF] Executing handler method KissU.PublicWebSite.Host.Pages.IndexModel.OnGet - ModelState is "Valid"
+2020-07-19 00:52:19.395 +08:00 [INF] Executed handler method OnGet, returned result .
+2020-07-19 00:52:19.397 +08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2020-07-19 00:52:19.398 +08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-07-19 00:52:19.412 +08:00 [DBG] Added bundle 'Basic.Global' to the page in 1.30 ms.
+2020-07-19 00:52:19.436 +08:00 [DBG] Added bundle 'Basic.Global' to the page in 2.76 ms.
+2020-07-19 00:52:19.439 +08:00 [INF] Executed page /Index in 45.7895ms
+2020-07-19 00:52:19.441 +08:00 [INF] Executed endpoint '/Index'
+2020-07-19 00:52:19.443 +08:00 [INF] Request finished in 61.3658ms 200 text/html; charset=utf-8
+2020-07-19 00:52:19.478 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/Abp/ServiceProxyScript  
+2020-07-19 00:52:19.478 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:53435/Abp/ApplicationConfigurationScript  
+2020-07-19 00:52:19.484 +08:00 [INF] Executing endpoint 'Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController.GetAll (Volo.Abp.AspNetCore.Mvc)'
+2020-07-19 00:52:19.484 +08:00 [INF] Executing endpoint 'Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc)'
+2020-07-19 00:52:19.488 +08:00 [INF] Route matched with {area = "Abp", action = "GetAll", controller = "AbpServiceProxyScript", page = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAll(Volo.Abp.AspNetCore.Mvc.ProxyScripting.ServiceProxyGenerationModel) on controller Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController (Volo.Abp.AspNetCore.Mvc).
+2020-07-19 00:52:19.492 +08:00 [INF] Route matched with {area = "Abp", action = "Get", controller = "AbpApplicationConfigurationScript", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Get() on controller Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController (Volo.Abp.AspNetCore.Mvc).
+2020-07-19 00:52:19.498 +08:00 [INF] Executing ContentResult with HTTP Response ContentType of application/javascript
+2020-07-19 00:52:19.506 +08:00 [INF] Executed action Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController.GetAll (Volo.Abp.AspNetCore.Mvc) in 9.7225ms
+2020-07-19 00:52:19.508 +08:00 [DBG] Executing AbpApplicationConfigurationAppService.GetAsync()...
+2020-07-19 00:52:19.512 +08:00 [INF] Executed endpoint 'Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController.GetAll (Volo.Abp.AspNetCore.Mvc)'
+2020-07-19 00:52:19.517 +08:00 [DBG] Executed AbpApplicationConfigurationAppService.GetAsync().
+2020-07-19 00:52:19.521 +08:00 [INF] Request finished in 43.0185ms 200 application/javascript
+2020-07-19 00:52:19.525 +08:00 [INF] Executing ContentResult with HTTP Response ContentType of application/javascript
+2020-07-19 00:52:19.530 +08:00 [INF] Executed action Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc) in 26.1749ms
+2020-07-19 00:52:19.535 +08:00 [INF] Executed endpoint 'Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc)'
+2020-07-19 00:52:19.540 +08:00 [INF] Request finished in 61.3573ms 200 application/javascript
+2020-07-19 00:53:06.394 +08:00 [INF] Application is shutting down...

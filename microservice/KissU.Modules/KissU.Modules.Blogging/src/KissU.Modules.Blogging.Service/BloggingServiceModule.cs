@@ -5,7 +5,7 @@ using KissU.Abp.Autofac;
 using KissU.Modules.Blogging.Application;
 using KissU.Modules.Blogging.Application.Files;
 using KissU.Modules.Blogging.EntityFrameworkCore.EntityFrameworkCore;
-using KissU.Modules.Blogging.Service.Contracts;
+using KissU.Services.Blogging.Contract;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;

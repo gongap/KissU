@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using System.Threading.Tasks;
 using KissU.Modules.Application.Configurations;
-using KissU.Modules.Application.Service.Contracts;
+using KissU.Services.Application.Contract;
 using KissU.Surging.ProxyGenerator;
 using Volo.Abp.Json;
 

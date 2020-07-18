@@ -1,6 +1,6 @@
 ﻿using Volo.Abp.Modularity;
 
-namespace KissU.Modules.Application.Service.Contracts
+namespace KissU.Services.Application.Contract
 {
     public class AppServiceContractsModule : AbpModule
     {

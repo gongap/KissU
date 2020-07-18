@@ -5,7 +5,7 @@ using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.UI;
 
-namespace KissU.Modules.Account.Service.Contracts
+namespace KissU.Services.Account.Contract
 {
     [DependsOn(
         typeof(AbpAccountApplicationContractsModule),

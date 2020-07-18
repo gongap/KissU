@@ -4,7 +4,7 @@ using KissU.Modules.Account.Application.Contracts;
 using KissU.Modules.Identity.Application.Contracts;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 
-namespace KissU.Modules.Account.Service.Contracts
+namespace KissU.Services.Account.Contract
 {
     [ServiceBundle("api/{Service}")]
     public interface IAccountService : IServiceKey

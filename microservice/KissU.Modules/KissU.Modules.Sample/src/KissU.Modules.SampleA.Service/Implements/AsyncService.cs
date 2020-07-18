@@ -1,9 +1,9 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using KissU.Modules.SampleA.Service.Contracts;
+using KissU.Services.SampleA.Contract;
 using KissU.Surging.ProxyGenerator;
 using KissU.Surging.Thrift.Attributes;
-using static ThriftCore.Calculator;
+using static KissU.Services.SampleA.Contract.Thrifts.ThriftCore.Calculator;
 
 namespace KissU.Modules.SampleA.Service.Implements
 {

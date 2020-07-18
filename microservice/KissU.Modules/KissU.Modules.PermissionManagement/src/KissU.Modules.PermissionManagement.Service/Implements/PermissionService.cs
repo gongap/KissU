@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 using KissU.Dependency;
 using KissU.Modules.PermissionManagement.Application.Contracts;
+using KissU.Services.PermissionManagement.Contract;
 using KissU.Surging.ProxyGenerator;
-using KissU.Modules.PermissionManagement.Service.Contracts;
 
 namespace KissU.Modules.PermissionManagement.Service.Implements
 {

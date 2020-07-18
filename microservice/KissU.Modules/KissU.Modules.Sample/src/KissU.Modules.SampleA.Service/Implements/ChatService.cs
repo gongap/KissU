@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using KissU.Dependency;
+using KissU.Services.SampleA.Contract;
 using KissU.Surging.Protocol.WS;
 using KissU.Surging.ProxyGenerator;
-using KissU.Modules.SampleA.Service.Contracts;
 using WebSocketCore;
 
 namespace KissU.Modules.SampleA.Service.Implements
@@ -12,10 +12,10 @@ namespace KissU.Modules.SampleA.Service.Implements
     /// <summary>
     /// ChatService.
     /// Implements the <see cref="KissU.Surging.Protocol.WS.WSBehavior" />
-    /// Implements the <see cref="KissU.Modules.SampleA.Service.Contracts.IChatService" />
+    /// Implements the <see cref="IChatService" />
     /// </summary>
     /// <seealso cref="KissU.Surging.Protocol.WS.WSBehavior" />
-    /// <seealso cref="KissU.Modules.SampleA.Service.Contracts.IChatService" />
+    /// <seealso cref="IChatService" />
     public class ChatService : WSBehavior, IChatService
     {
         private static readonly ConcurrentDictionary<string, string>

@@ -4,7 +4,7 @@ using KissU.Dependency;
 using KissU.Modules.Blogging.Application.Contracts.Blogs.Dtos;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 
-namespace KissU.Modules.Blogging.Service.Contracts
+namespace KissU.Services.Blogging.Contract
 {
     [ServiceBundle("api/{Service}")]
     public interface IBlogService : IServiceKey

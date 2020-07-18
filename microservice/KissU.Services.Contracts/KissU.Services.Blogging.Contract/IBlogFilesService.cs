@@ -5,7 +5,7 @@ using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Att
 using KissU.Surging.KestrelHttpServer.Abstractions;
 using KissU.Surging.KestrelHttpServer.Internal;
 
-namespace KissU.Modules.Blogging.Service.Contracts
+namespace KissU.Services.Blogging.Contract
 {
     [ServiceBundle("api/blogging/files")]
     public interface IBlogFilesService : IServiceKey
