@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Abp.Autofac\KissU.Abp.Autofac.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Abp.Business\KissU.Abp.Business.csproj" />
     <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.ProxyGenerator\KissU.Surging.ProxyGenerator.csproj" />
     <ProjectReference Include="..\..\..\..\KissU.Services.Contracts\KissU.Services.FeatureManagement.Contract\KissU.Services.FeatureManagement.Contract.csproj" />
     <ProjectReference Include="..\KissU.Modules.FeatureManagement.Application\KissU.Modules.FeatureManagement.Application.csproj" />

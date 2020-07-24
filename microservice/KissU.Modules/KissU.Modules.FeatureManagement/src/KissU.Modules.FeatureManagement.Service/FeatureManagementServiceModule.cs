@@ -1,4 +1,5 @@
-﻿using KissU.Abp.Autofac;
+﻿using KissU.Abp;
+using KissU.Abp.Autofac;
 using KissU.Modules.FeatureManagement.Application;
 using KissU.Modules.FeatureManagement.EntityFrameworkCore;
 using KissU.Services.FeatureManagement.Contract;
@@ -14,7 +15,7 @@ namespace KissU.Modules.FeatureManagement.Service
         typeof(AbpFeatureManagementEntityFrameworkCoreModule),
         typeof(AbpAutofacModule)
     )]
-    public class FeatureManagementServiceModule : AbpModule
+    public class FeatureManagementServiceModule : AbpModule, IAbpStartupModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {

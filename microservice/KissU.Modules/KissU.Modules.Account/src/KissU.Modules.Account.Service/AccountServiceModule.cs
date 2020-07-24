@@ -1,4 +1,5 @@
-﻿using KissU.Abp.Autofac;
+﻿using KissU.Abp;
+using KissU.Abp.Autofac;
 using KissU.Modules.Account.Application;
 using KissU.Modules.Identity.Domain;
 using KissU.Modules.Identity.EntityFrameworkCore;
@@ -15,7 +16,7 @@ namespace KissU.Modules.Account.Service
         typeof(AbpIdentityEntityFrameworkCoreModule),
         typeof(AbpAutofacModule)
         )]
-    public class AbpAccountServiceModule : AbpModule
+    public class AbpAccountServiceModule : AbpModule, IAbpStartupModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {

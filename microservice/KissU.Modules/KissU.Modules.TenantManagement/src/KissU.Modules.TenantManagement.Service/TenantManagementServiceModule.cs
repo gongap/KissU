@@ -1,4 +1,5 @@
-﻿using KissU.Abp.Autofac;
+﻿using KissU.Abp;
+using KissU.Abp.Autofac;
 using KissU.Modules.TenantManagement.Application;
 using KissU.Modules.TenantManagement.EntityFrameworkCore;
 using KissU.Services.TenantManagement.Contract;
@@ -14,7 +15,7 @@ namespace KissU.Modules.TenantManagement.Service
         typeof(AbpTenantManagementEntityFrameworkCoreModule),
         typeof(AbpAutofacModule)
     )]
-    public class TenantManagementServiceModule : AbpModule
+    public class TenantManagementServiceModule : AbpModule, IAbpStartupModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {

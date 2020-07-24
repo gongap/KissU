@@ -1,4 +1,5 @@
-﻿using KissU.Abp.Autofac;
+﻿using KissU.Abp;
+using KissU.Abp.Autofac;
 using KissU.Modules.PermissionManagement.Application;
 using KissU.Modules.PermissionManagement.Domain.Identity;
 using KissU.Modules.PermissionManagement.Domain.IdentityServer;
@@ -17,7 +18,7 @@ namespace KissU.Modules.PermissionManagement.Service
         typeof(AbpPermissionManagementEntityFrameworkCoreModule),
         typeof(AbpAutofacModule)
     )]
-    public class PermissionManagementServiceModule : AbpModule
+    public class PermissionManagementServiceModule : AbpModule, IAbpStartupModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {

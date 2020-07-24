@@ -1,11 +1,9 @@
-﻿using System;
-using System.Linq;
+﻿using KissU.Abp;
 using KissU.Abp.Autofac;
 using KissU.Modules.Identity.Application;
 using KissU.Modules.Identity.Domain;
 using KissU.Modules.Identity.EntityFrameworkCore;
 using KissU.Services.Identity.Contract;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.Modularity;
@@ -18,7 +16,7 @@ namespace KissU.Modules.Identity.Service
         typeof(AbpIdentityEntityFrameworkCoreModule),
         typeof(AbpAutofacModule)
     )]
-    public class IdentityServiceModule : AbpModule
+    public class IdentityServiceModule : AbpModule, IAbpStartupModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
