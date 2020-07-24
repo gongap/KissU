@@ -396,6 +396,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.ApplicationParts.Acco
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.ApplicationParts.Blogging", "microservice\KissU.Applications\KissU.ApplicationParts\KissU.ApplicationParts.Blogging\KissU.ApplicationParts.Blogging.csproj", "{15C81048-9A40-48F2-952B-4569839B0ECB}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Abp.Business", "framework\src\KissU.Abp.Business\KissU.Abp.Business.csproj", "{9818E43D-757B-40A4-8D7D-0C19B680F0E7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -966,6 +968,10 @@ Global
 		{15C81048-9A40-48F2-952B-4569839B0ECB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15C81048-9A40-48F2-952B-4569839B0ECB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15C81048-9A40-48F2-952B-4569839B0ECB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9818E43D-757B-40A4-8D7D-0C19B680F0E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9818E43D-757B-40A4-8D7D-0C19B680F0E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9818E43D-757B-40A4-8D7D-0C19B680F0E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9818E43D-757B-40A4-8D7D-0C19B680F0E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1159,6 +1165,7 @@ Global
 		{2FF474FA-3D5A-467E-8D27-6C88F3B0C706} = {06DA79D2-B5D4-4542-8F6C-9DF0AC5234D6}
 		{7E515C97-521D-4616-AA25-2519301462AE} = {06DA79D2-B5D4-4542-8F6C-9DF0AC5234D6}
 		{15C81048-9A40-48F2-952B-4569839B0ECB} = {06DA79D2-B5D4-4542-8F6C-9DF0AC5234D6}
+		{9818E43D-757B-40A4-8D7D-0C19B680F0E7} = {63464C4E-C932-49D6-8C22-46B6F5C5AFBE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}
