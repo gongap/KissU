@@ -6,12 +6,12 @@ using Volo.Abp.UI;
 namespace KissU.Modules.Application
 {
     [DependsOn(
-        typeof(AbpApplicationContractsModule),
+        typeof(ConfigurationApplicationContractsModule),
         typeof(AbpMultiTenancyModule),
         typeof(AbpLocalizationModule),
         typeof(AbpUiModule)
     )]
-    public class AbpApplicationModule : AbpModule
+    public class ConfigurationApplicationModule : AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {

@@ -17,7 +17,6 @@ using Volo.Abp.MultiTenancy;
 using Volo.Abp.Settings;
 using Volo.Abp.Timing;
 using Volo.Abp.Users;
-using TimeZone = KissU.Modules.Application.Configurations.TimeZone;
 
 namespace KissU.Modules.Application.Configurations
 {

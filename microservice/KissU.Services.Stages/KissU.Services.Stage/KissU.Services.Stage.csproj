@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\framework\src\KissU.Core\KissU.Core.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.Abp.Business\KissU.Abp.Business.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.WebSocketCore\KissU.WebSocketCore.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Apm.Skywalking\KissU.Surging.Apm.Skywalking.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.ApiGateWay\KissU.Surging.ApiGateWay.csproj" />
@@ -55,9 +56,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\KissU.Services.Contracts\KissU.Services.Account.Contract\KissU.Services.Account.Contract.csproj" />
-    <ProjectReference Include="..\..\KissU.Services.Contracts\KissU.Services.Application.Contract\KissU.Services.Application.Contract.csproj" />
+    <ProjectReference Include="..\..\KissU.Services.Contracts\KissU.Services.Configuration.Contract\KissU.Services.Configuration.Contract.csproj" />
     <ProjectReference Include="..\..\KissU.Services.Contracts\KissU.Services.Blogging.Contract\KissU.Services.Blogging.Contract.csproj" />
+    <ProjectReference Include="..\..\KissU.Services.Contracts\KissU.Services.Account.Contract\KissU.Services.Account.Contract.csproj" />
     <ProjectReference Include="..\..\KissU.Services.Contracts\KissU.Services.FeatureManagement.Contract\KissU.Services.FeatureManagement.Contract.csproj" />
     <ProjectReference Include="..\..\KissU.Services.Contracts\KissU.Services.Identity.Contract\KissU.Services.Identity.Contract.csproj" />
     <ProjectReference Include="..\..\KissU.Services.Contracts\KissU.Services.PermissionManagement.Contract\KissU.Services.PermissionManagement.Contract.csproj" />

@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.CPlatform\KissU.Surging.CPlatform.csproj" />
-    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Application\src\KissU.Modules.Application.Contracts\KissU.Modules.Application.Contracts.csproj" />
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Configuration\src\KissU.Modules.Configuration.Application.Contracts\KissU.Modules.Configuration.Application.Contracts.csproj" />
   </ItemGroup>
 
 </Project>

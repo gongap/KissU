@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
 using KissU.Extensions;
 using KissU.Modules.Application.MultiTenancy;
-using KissU.Services.Application.Contract;
+using KissU.Services.Configuration.Contract;
 using KissU.Surging.ProxyGenerator;
 
-namespace KissU.Modules.Application.Service.Implements
+namespace KissU.Modules.Configuration.Service.Implements
 {
     public class AbpTenantService : ProxyServiceBase, IAbpTenantService
     {

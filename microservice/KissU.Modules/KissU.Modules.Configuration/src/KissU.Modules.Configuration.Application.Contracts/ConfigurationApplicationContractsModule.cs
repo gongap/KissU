@@ -6,7 +6,7 @@ namespace KissU.Modules.Application
     [DependsOn(
         typeof(AbpDddApplicationModule)
     )]
-    public class AbpApplicationContractsModule : AbpModule
+    public class ConfigurationApplicationContractsModule : AbpModule
     {
     }
 }

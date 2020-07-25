@@ -1,5 +1,6 @@
 ﻿using KissU.Abp;
 using KissU.Abp.Autofac;
+using KissU.Abp.Business;
 using KissU.Modules.TenantManagement.Application;
 using KissU.Modules.TenantManagement.EntityFrameworkCore;
 using KissU.Services.TenantManagement.Contract;

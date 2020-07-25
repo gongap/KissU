@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KissU.Modules.Application.Contracts\KissU.Modules.Application.Contracts.csproj" />
+    <ProjectReference Include="..\KissU.Modules.Configuration.Application.Contracts\KissU.Modules.Configuration.Application.Contracts.csproj" />
   </ItemGroup>
 
 </Project>

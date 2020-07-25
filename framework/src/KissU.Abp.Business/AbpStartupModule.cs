@@ -1,7 +1,7 @@
 ﻿using KissU.Abp.Autofac;
 using Volo.Abp.Modularity;
 
-namespace KissU.Abp
+namespace KissU.Abp.Business
 {
     [DependsOn(
         typeof(AbpAutofacModule)

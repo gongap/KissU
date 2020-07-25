@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using KissU.Modules.Application.Configurations;
-using KissU.Services.Application.Contract;
+using KissU.Services.Configuration.Contract;
 using KissU.Surging.ProxyGenerator;
 
-namespace KissU.Modules.Application.Service.Implements
+namespace KissU.Modules.Configuration.Service.Implements
 {
     public class AbpApplicationConfigurationService : ProxyServiceBase, IAbpApplicationConfigurationService
     {

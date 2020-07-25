@@ -1,5 +1,6 @@
 ﻿using KissU.Abp;
 using KissU.Abp.Autofac;
+using KissU.Abp.Business;
 using KissU.Modules.PermissionManagement.Application;
 using KissU.Modules.PermissionManagement.Domain.Identity;
 using KissU.Modules.PermissionManagement.Domain.IdentityServer;

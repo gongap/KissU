@@ -13,7 +13,7 @@ using Microsoft.Extensions.DependencyModel;
 using Volo.Abp;
 using Volo.Abp.Modularity.PlugIns;
 
-namespace KissU.Abp
+namespace KissU.Abp.Business
 {
     public class AbpBusinessModule : BusinessModule
     {

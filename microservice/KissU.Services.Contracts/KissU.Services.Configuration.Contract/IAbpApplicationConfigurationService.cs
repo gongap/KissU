@@ -3,7 +3,7 @@ using KissU.Dependency;
 using KissU.Modules.Application.Configurations;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 
-namespace KissU.Services.Application.Contract
+namespace KissU.Services.Configuration.Contract
 {
     [ServiceBundle("api/abp/application-configuration")]
     public interface IAbpApplicationConfigurationService : IServiceKey
