@@ -15,7 +15,7 @@ using Volo.Abp.Modularity.PlugIns;
 
 namespace KissU.Abp.Business
 {
-    public class AbpBusinessModule : BusinessModule
+    public class AbpBusinessModule : EnginePartModule
     {
         private IAbpApplicationWithExternalServiceProvider _application;
         private static readonly List<Assembly> _referenceAssembly = new List<Assembly>();
