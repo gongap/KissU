@@ -5,16 +5,19 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using KissU.Dependency;
-using KissU.Extensions;
+using KissU.Modules.Identity.Application.Contracts;
+using KissU.Modules.TenantManagement.Application.Contracts;
+using KissU.Services.Identity.Contract;
 using KissU.Services.SampleA.Contract;
 using KissU.Services.SampleA.Contract.Dtos;
 using KissU.Services.SampleA.Contract.Events;
-using KissU.Surging.CPlatform.Diagnostics;
+using KissU.Services.TenantManagement.Contract;
 using KissU.Surging.CPlatform.Transport.Implementation;
 using KissU.Surging.ProxyGenerator;
 using Microsoft.Extensions.Options;
 using Volo.Abp.Http.Client;
 using Volo.Abp.IdentityModel;
+using KissU.Extensions;
 
 namespace KissU.ConsoleClient.Host
 {
@@ -26,7 +29,7 @@ namespace KissU.ConsoleClient.Host
         private static DateTime begintime;
 
         public ClientDemoService(
-            IIdentityModelAuthenticationService authenticator, 
+            IIdentityModelAuthenticationService authenticator,
             IOptions<AbpRemoteServiceOptions> remoteServiceOptions)
         {
             _authenticator = authenticator;
@@ -35,14 +38,16 @@ namespace KissU.ConsoleClient.Host
 
         public async Task RunAsync()
         {
-            await TestWithHttpClient(); 
-            Test(ServiceLocator.GetService<IServiceProxyFactory>());
+            await TestWithHttpClient();
+            await TestIdentityService();
+            await TestTenantManagementService();
+            await TestForRoutePath();
+            await TestRabbitMq();
+            //TestParallel();
+            //TestDotNettyInvoker();
+            //TestThriftInvoker();
         }
 
-        /// <summary>
-        /// Shows how to manually create an HttpClient and authenticate using the
-        /// IIdentityModelAuthenticationService service.
-        /// </summary>
         private async Task TestWithHttpClient()
         {
             Console.WriteLine();
@@ -54,9 +59,7 @@ namespace KissU.ConsoleClient.Host
                 {
                     await _authenticator.TryAuthenticateAsync(client);
 
-                    var serverUrl = _remoteServiceOptions.RemoteServices.Default.BaseUrl.EnsureEndsWith('/');;
-
-                    var url = serverUrl + "api/user/getuserid/{username}?userName=10";
+                    var url = GetServerUrl() + "api/user/getuserid/{username}?userName=10";
 
                     var response = await client.GetAsync(url);
 
@@ -77,177 +80,273 @@ namespace KissU.ConsoleClient.Host
             }
         }
 
-        private void StartRequest(int connectionCount)
+        private async Task TestIdentityService()
         {
-            var sw = new Stopwatch();
-            sw.Start();
-            var userProxy = ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy<IUserService>("User");
-            ServiceResolver.Current.Register("User", userProxy);
-            var service = ServiceLocator.GetService<IServiceProxyFactory>();
-            userProxy = ServiceResolver.Current.GetService<IUserService>("User");
-            sw.Stop();
-            System.Console.WriteLine($"代理所花{sw.ElapsedMilliseconds}ms");
-            ThreadPool.SetMinThreads(100, 100);
-            Parallel.For(0, connectionCount / 6000, new ParallelOptions { MaxDegreeOfParallelism = 50 }, async u =>
-            {
-                for (var i = 0; i < 6000; i++)
-                    await Test(userProxy, connectionCount);
-            });
-        }
+            Console.WriteLine();
+            Console.WriteLine("*** TestIdentityService ************************************");
 
-        public async Task Test(IUserService userProxy, int connectionCount)
-        {
-            var a = await userProxy.GetDictionary();
-            IncreaseSuccessConnection(connectionCount);
-        }
-
-        private void IncreaseSuccessConnection(int connectionCount)
-        {
-            Interlocked.Increment(ref _endedConnenctionCount);
-            if (_endedConnenctionCount == 1)
+            try
             {
-                begintime = DateTime.Now;
+                var userProxy = ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy<IIdentityUserService>();
+                var output = await userProxy.GetListAsync(new GetIdentityUsersInput());
+
+                Console.WriteLine("Total user count: " + output.TotalCount);
+
+                foreach (var user in output.Items)
+                {
+                    Console.WriteLine($"- UserName={user.UserName}, Email={user.Email}, Name={user.Name}, Surname={user.Surname}");
+                }
             }
-
-            if (_endedConnenctionCount >= connectionCount)
+            catch (Exception e)
             {
-                System.Console.WriteLine($"结束时间{(DateTime.Now - begintime).TotalMilliseconds}");
+                Console.WriteLine(e);
             }
         }
 
-        /// <summary>
-        /// 测试
-        /// </summary>
-        /// <param name="serviceProxyFactory"></param>
-        public void Test(IServiceProxyFactory serviceProxyFactory)
+        private async Task TestTenantManagementService()
         {
-            var tracingContext = ServiceLocator.GetService<ITracingContext>();
-            Task.Run(async () =>
-            {
-                RpcContext.GetContext().SetAttachment("xid", 124);
+            Console.WriteLine();
+            Console.WriteLine("*** TestTenantManagementService ************************************");
 
+            try
+            {
+                var tenantProxy = ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy<ITenantService>();
+                var output = await tenantProxy.GetListAsync(new GetTenantsInput());
+
+                Console.WriteLine("Total tenant count: " + output.TotalCount);
+
+                foreach (var tenant in output.Items)
+                {
+                    Console.WriteLine($"- Id={tenant.Id}, Name={tenant.Name}");
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+        }
+
+        private async Task TestForRoutePath()
+        {
+            Console.WriteLine();
+            Console.WriteLine("*** TestForRoutePath ************************************");
+
+            try
+            {
+                var serviceProxyProvider = ServiceLocator.GetService<IServiceProxyProvider>();
+                var model = new Dictionary<string, object>
+                {
+                    {
+                        "user",
+                        new UserModel
+                        {
+                            Name = "gongap",
+                            Age = 18,
+                            UserId = 1,
+                            Sex = Sex.Woman
+                        }
+                    }
+                };
+                var path = "api/user/getuser";
+                var serviceKey = "User";
+
+                var output = await serviceProxyProvider.Invoke<UserModel>(model, path, serviceKey);
+                Console.WriteLine($"{output}");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+        }
+
+        private async Task TestRabbitMq()
+        {
+            Console.WriteLine();
+            Console.WriteLine("*** TestRabbitMq ************************************");
+
+            try
+            {
+                var serviceProxyFactory = ServiceLocator.GetService<IServiceProxyFactory>();
+                await serviceProxyFactory.CreateProxy<IUserService>("User").PublishThroughEventBusAsync(new UserEvent
+                {
+                    Age = 18,
+                    Name = "gongap",
+                    UserId = 1
+                });
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+        }
+
+        private void TestParallel()
+        {
+            Console.WriteLine();
+            Console.WriteLine("*** TestParallel ************************************");
+
+            try
+            {
+                var connectionCount = 300000;
+                var sw = new Stopwatch();
+                sw.Start();
+                var userProxy = ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy<IUserService>("User");
+                ServiceResolver.Current.Register("User", userProxy);
+                userProxy = ServiceResolver.Current.GetService<IUserService>("User");
+                sw.Stop();
+                Console.WriteLine($"代理所花{sw.ElapsedMilliseconds}ms");
+
+                ThreadPool.SetMinThreads(100, 100);
+                Parallel.For(0, connectionCount / 6000, new ParallelOptions { MaxDegreeOfParallelism = 50 }, async u =>
+                {
+                    for (var i = 0; i < 6000; i++)
+                    {
+                        await StartRequest(userProxy, connectionCount);
+                    }
+                });
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
+            async Task StartRequest(IUserService userProxy, int connectionCount)
+            {
+                var a = await userProxy.GetDictionary();
+                Interlocked.Increment(ref _endedConnenctionCount);
+                if (_endedConnenctionCount == 1)
+                {
+                    begintime = DateTime.Now;
+                }
+
+                if (_endedConnenctionCount >= connectionCount)
+                {
+                    Console.WriteLine($"结束时间{(DateTime.Now - begintime).TotalMilliseconds}");
+                }
+            }
+        }
+
+        private void TestDotNettyInvoker()
+        {
+            Console.WriteLine();
+            Console.WriteLine("*** TestThriftInvoker ************************************");
+
+            try
+            {
+                var serviceProxyFactory = ServiceLocator.GetService<IServiceProxyFactory>();
                 var userProxy = serviceProxyFactory.CreateProxy<IUserService>("User");
                 var asyncProxy = serviceProxyFactory.CreateProxy<IAsyncService>();
-                var result = await asyncProxy.AddAsync(1, 2);
-                var user = userProxy.GetUser(new UserModel
-                {
-                    UserId = 1,
-                    Name = "fanly",
-                    Age = 120,
-                    Sex = 0
-                }).GetAwaiter().GetResult();
-                var e = userProxy.SetSex(Sex.Woman).GetAwaiter().GetResult();
-                var v = userProxy.GetUserId("gongap").GetAwaiter().GetResult();
-                var fa = userProxy.GetUserName(1).GetAwaiter().GetResult();
-                userProxy.Try().GetAwaiter().GetResult();
-                var v1 = userProxy.GetUserLastSignInTime(1).Result;
-                var things = userProxy.GetAllThings().Result;
-                var apiResult = userProxy.GetApiResult().GetAwaiter().GetResult();
-                userProxy.PublishThroughEventBusAsync(new UserEvent
-                {
-                    UserId = 1,
-                    Name = "gongap"
-                }).Wait();
-
-                userProxy.PublishThroughEventBusAsync(new UserEvent
-                {
-                    UserId = 1,
-                    Name = "gongap"
-                }).Wait();
-
-                var r = await userProxy.GetDictionary();
                 var serviceProxyProvider = ServiceLocator.GetService<IServiceProxyProvider>();
-
-                do
+                Task.Run(async () =>
                 {
-                    System.Console.WriteLine("正在循环 1w次调用 GetUser.....");
-
-                    //1w次调用
-                    var watch = Stopwatch.StartNew();
-                    for (var i = 0; i < 10000; i++)
+                    RpcContext.GetContext().SetAttachment("xid", 124);
+                    var result = await asyncProxy.AddAsync(1, 2);
+                    var user = userProxy.GetUser(new UserModel
                     {
-                        //var a = userProxy.GetDictionary().Result;
-                        var a = await userProxy.GetDictionary();
-                        //var result = serviceProxyProvider.Invoke<object>(new Dictionary<string, object>(), "api/user/GetDictionary", "User").Result;
-                    }
+                        UserId = 1,
+                        Name = "fanly",
+                        Age = 120,
+                        Sex = 0
+                    }).GetAwaiter().GetResult();
+                    var e = userProxy.SetSex(Sex.Woman).GetAwaiter().GetResult();
+                    var v = userProxy.GetUserId("gongap").GetAwaiter().GetResult();
+                    var fa = userProxy.GetUserName(1).GetAwaiter().GetResult();
+                    userProxy.Try().GetAwaiter().GetResult();
+                    var v1 = userProxy.GetUserLastSignInTime(1).Result;
+                    var things = userProxy.GetAllThings().Result;
+                    var apiResult = userProxy.GetApiResult().GetAwaiter().GetResult();
+                    userProxy.PublishThroughEventBusAsync(new UserEvent
+                    {
+                        UserId = 1,
+                        Name = "gongap"
+                    }).Wait();
 
-                    watch.Stop();
-                    System.Console.WriteLine($"1w次调用结束，执行时间：{watch.ElapsedMilliseconds}ms");
-                    System.Console.WriteLine("Press any key to continue, q to exit the loop...");
-                    var key = System.Console.ReadLine();
-                    if (key.ToLower() == "q")
-                        break;
-                } while (true);
-            }).Wait();
+                    userProxy.PublishThroughEventBusAsync(new UserEvent
+                    {
+                        UserId = 1,
+                        Name = "gongap"
+                    }).Wait();
+
+                    var r = await userProxy.GetDictionary();
+
+                    do
+                    {
+                        Console.WriteLine("正在循环 1w次调用 GetDictionary.....");
+
+                        //1w次调用
+                        var watch = Stopwatch.StartNew();
+                        for (var i = 0; i < 10000; i++)
+                        {
+                            var output = await userProxy.GetDictionary();
+                            //var output = serviceProxyProvider.Invoke<object>(new Dictionary<string, object>(), "api/user/GetDictionary", "User").Result;
+                        }
+
+                        watch.Stop();
+                        Console.WriteLine($"1w次调用结束，执行时间：{watch.ElapsedMilliseconds}ms");
+                        Console.WriteLine("Press any key to continue, q to exit the loop...");
+                        var key = Console.ReadLine();
+                        if (key != null && key.ToLower() == "q")
+                        {
+                            break;
+                        }
+                    } while (true);
+                }).Wait();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
 
-        public void TestRabbitMq(IServiceProxyFactory serviceProxyFactory)
+        private void TestThriftInvoker()
         {
-            serviceProxyFactory.CreateProxy<IUserService>("User").PublishThroughEventBusAsync(new UserEvent
-            {
-                Age = 18,
-                Name = "gongap",
-                UserId = 1
-            });
-            System.Console.WriteLine("Press any key to exit...");
-            System.Console.ReadLine();
-        }
+            Console.WriteLine();
+            Console.WriteLine("*** TestThriftInvoker ************************************");
 
-        public void TestForRoutePath(IServiceProxyProvider serviceProxyProvider)
-        {
-            var model = new Dictionary<string, object>();
-            model.Add("user", new UserModel
+            try
             {
-                Name = "gongap",
-                Age = 18,
-                UserId = 1,
-                Sex = Sex.Woman
-            });
-            var path = "api/user/getuser";
-            var serviceKey = "User";
-
-            var userProxy = serviceProxyProvider.Invoke<UserModel>(model, path, serviceKey);
-            var s = userProxy.Result;
-            System.Console.WriteLine($"{s}");
-            System.Console.WriteLine("Press any key to exit...");
-            System.Console.ReadLine();
-        }
-
-        public void TestThriftInvoker(IServiceProxyFactory serviceProxyFactory)
-        {
-            var proxy = serviceProxyFactory.CreateProxy<IAsyncService>();
-            var proxy1 = serviceProxyFactory.CreateProxy<IThirdAsyncService>();
-            Task.Run(async () =>
-            {
-                do
+                var serviceProxyFactory = ServiceLocator.GetService<IServiceProxyFactory>();
+                var proxy = serviceProxyFactory.CreateProxy<IAsyncService>();
+                var proxy1 = serviceProxyFactory.CreateProxy<IThirdAsyncService>();
+                Task.Run(async () =>
                 {
-                    var result1 = await proxy.SayHelloAsync();
-                    var result2 = await proxy1.SayHelloAsync();
-                    System.Console.WriteLine("正在循环 1w次调用 GetUser.....");
-
-                    var watch = Stopwatch.StartNew();
-
-                    for (var i = 0; i < 10000; i++)
+                    do
                     {
-                        try
+                        var result1 = await proxy.SayHelloAsync();
+                        var result2 = await proxy1.SayHelloAsync();
+                        Console.WriteLine("正在循环 1w次调用 SayHello.....");
+                        var watch = Stopwatch.StartNew();
+                        for (var i = 0; i < 10000; i++)
                         {
-                            var result = await proxy.SayHelloAsync();
+                            try
+                            {
+                                var result = await proxy.SayHelloAsync();
+                            }
+                            catch (Exception ex)
+                            {
+                                throw ex;
+                            }
                         }
-                        catch (Exception ex)
+                        watch.Stop();
+                        Console.WriteLine($"1w次调用结束，执行时间：{watch.ElapsedMilliseconds}ms");
+                        Console.WriteLine("Press any key to continue, q to exit the loop...");
+                        var key = Console.ReadLine();
+                        if (key != null && key.ToLower() == "q")
                         {
-                            throw ex;
+                            break;
                         }
-                    }
-                    watch.Stop();
-                    System.Console.WriteLine($"1w次调用结束，执行时间：{watch.ElapsedMilliseconds}ms");
-                    System.Console.WriteLine("Press any key to continue, q to exit the loop...");
-                    var key = System.Console.ReadLine();
-                    if (key.ToLower() == "q")
-                        break;
-                } while (true);
-            }).Wait();
+                    } while (true);
+                }).Wait();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+        }
 
-            System.Console.ReadLine();
+        private string GetServerUrl()
+        {
+            return _remoteServiceOptions.RemoteServices.Default.BaseUrl.EnsureEndsWith('/');
         }
     }
 }

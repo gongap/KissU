@@ -16,21 +16,17 @@ namespace KissU.PublicWebSite.Host
     {
         public static int Main(string[] args)
         {
-            //TODO: Temporary: it's not good to read appsettings.json here just to configure logging
-            var configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")
-                .AddEnvironmentVariables()
-                .Build();
-
             Log.Logger = new LoggerConfiguration()
+#if DEBUG
                 .MinimumLevel.Debug()
+#else
+                .MinimumLevel.Information()
+#endif
                 .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
                 .MinimumLevel.Override("Microsoft.EntityFrameworkCore", LogEventLevel.Warning)
-                .Enrich.WithProperty("Application", "PublicWebSite")
                 .Enrich.FromLogContext()
                 .WriteTo.Console()
-                .WriteTo.File("Logs/logs.txt")
+                .WriteTo.Async(c => c.File("Logs/logs.txt"))
                 .CreateLogger();
 
             try

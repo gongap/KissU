@@ -66,8 +66,8 @@
         "Enable": true
       }
     ],
-    "HttpsPort": "${StageHttpsPorts}|449,446",
-    "HttpPorts": "${StageHttpPorts}|285,282,283"
+    "HttpsPort": "${StageHttpsPorts}|446,449",
+    "HttpPorts": "${StageHttpPorts}|282,283,284,285"
   },
   "Consul": {
     "ConnectionString": "${Register_Conn}|127.0.0.1:8500",

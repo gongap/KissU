@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using KissU.Surging.Caching.Configurations;
 using KissU.Surging.CPlatform.Configurations;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,16 +14,31 @@ namespace KissU.ConsoleClient.Host
         static async Task Main(string[] args)
         {
             Log.Logger = new LoggerConfiguration()
+#if DEBUG
                 .MinimumLevel.Debug()
+#else
+                .MinimumLevel.Information()
+#endif
                 .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+                .MinimumLevel.Override("Microsoft.EntityFrameworkCore", LogEventLevel.Warning)
                 .Enrich.FromLogContext()
                 .WriteTo.Console()
-                .WriteTo.File("Logs/logs.txt")
+                .WriteTo.Async(c => c.File("Logs/logs.txt"))
                 .CreateLogger();
 
-            Log.Information("Starting ConsoleClientDemo...");
-
-            await CreateHostBuilder(args).RunConsoleAsync();
+            try
+            {
+                Log.Information("Starting ConsoleClient.");
+                await CreateHostBuilder(args).RunConsoleAsync();
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "ConsoleClient terminated unexpectedly!");
+            }
+            finally
+            {
+                Log.CloseAndFlush();
+            }
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -35,6 +51,6 @@ namespace KissU.ConsoleClient.Host
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddHostedService<ConsoleClientDemoHostedService>();
-                });
+                }).UseSerilog();
     }
 }
