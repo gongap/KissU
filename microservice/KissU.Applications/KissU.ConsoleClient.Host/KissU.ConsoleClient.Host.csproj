@@ -16,7 +16,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\framework\src\KissU.Abp.Autofac\KissU.Abp.Autofac.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Apm.Skywalking\KissU.Surging.Apm.Skywalking.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Codec.MessagePack\KissU.Surging.Codec.MessagePack.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Codec.ProtoBuffer\KissU.Surging.Codec.ProtoBuffer.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.EventBusRabbitMQ\KissU.Surging.EventBusRabbitMQ.csproj" />
