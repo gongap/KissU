@@ -40,8 +40,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\KissU.Modules\KissU.Modules.Account\src\KissU.Modules.Account.Service.Contracts\KissU.Modules.Account.Service.Contracts.csproj" />
     <ProjectReference Include="..\..\..\KissU.Modules\KissU.Modules.Identity\src\KissU.Modules.Identity.AspNetCore\KissU.Modules.Identity.AspNetCore.csproj" />
-    <ProjectReference Include="..\..\..\KissU.Services.Contracts\KissU.Services.Account.Contract\KissU.Services.Account.Contract.csproj" />
   </ItemGroup>
   
 </Project>

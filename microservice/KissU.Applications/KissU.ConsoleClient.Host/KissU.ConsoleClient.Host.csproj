@@ -28,10 +28,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\KissU.Services.Contracts\KissU.Services.SampleA.Contract\KissU.Services.SampleA.Contract.csproj" />
-    <ProjectReference Include="..\..\KissU.Services.Contracts\KissU.Services.SampleB.Contract\KissU.Services.SampleB.Contract.csproj" />
-    <ProjectReference Include="..\..\KissU.Services.Contracts\KissU.Services.Identity.Contract\KissU.Services.Identity.Contract.csproj" />
-    <ProjectReference Include="..\..\KissU.Services.Contracts\KissU.Services.TenantManagement.Contract\KissU.Services.TenantManagement.Contract.csproj" />
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Identity\src\KissU.Modules.Identity.Service.Contracts\KissU.Modules.Identity.Service.Contracts.csproj" />
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Sample\src\KissU.Modules.SampleA.Service.Contracts\KissU.Modules.SampleA.Service.Contracts.csproj" />
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Sample\src\KissU.Modules.SampleB.Service.Contracts\KissU.Modules.SampleB.Service.Contracts.csproj" />
+    <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.TenantManagement\src\KissU.Modules.TenantManagement.Service.Contracts\KissU.Modules.TenantManagement.Service.Contracts.csproj" />
   </ItemGroup>
 
   <ItemGroup>
