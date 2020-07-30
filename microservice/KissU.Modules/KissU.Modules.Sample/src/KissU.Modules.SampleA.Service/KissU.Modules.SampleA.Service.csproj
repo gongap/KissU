@@ -23,8 +23,8 @@
     <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.BackgroundServer\KissU.Surging.BackgroundServer.csproj" />
     <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.Thrift\KissU.Surging.Thrift.csproj" />
     <ProjectReference Include="..\..\..\..\..\framework\src\KissU.WebSocketCore\KissU.WebSocketCore.csproj" />
-    <ProjectReference Include="..\..\..\..\KissU.Services.Contracts\KissU.Services.SampleA.Contract\KissU.Services.SampleA.Contract.csproj" />
-    <ProjectReference Include="..\..\..\..\KissU.Services.Contracts\KissU.Services.SampleB.Contract\KissU.Services.SampleB.Contract.csproj" />
+    <ProjectReference Include="..\KissU.Modules.SampleA.Service.Contracts\KissU.Modules.SampleA.Service.Contracts.csproj" />
+    <ProjectReference Include="..\KissU.Modules.SampleB.Service.Contracts\KissU.Modules.SampleB.Service.Contracts.csproj" />
   </ItemGroup>
 
 </Project>
