@@ -1,8 +1,6 @@
 ﻿using System;
 using System.IO;
 using KissU.Abp;
-using KissU.Abp.Autofac;
-using KissU.Abp.Business;
 using KissU.Modules.Blogging.Application;
 using KissU.Modules.Blogging.Application.Files;
 using KissU.Modules.Blogging.EntityFrameworkCore.EntityFrameworkCore;
@@ -16,10 +14,9 @@ namespace KissU.Modules.Blogging.Service
     [DependsOn(
         typeof(BloggingServiceContractsModule),
         typeof(BloggingApplicationModule),
-        typeof(BloggingEntityFrameworkCoreModule),
-        typeof(AbpAutofacModule)
+        typeof(BloggingEntityFrameworkCoreModule)
     )]
-    public class BloggingServiceModule : AbpModule, IAbpStartupModule
+    public class BloggingServiceModule : Volo.Abp.Modularity.AbpModule, IAbpServiceModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {

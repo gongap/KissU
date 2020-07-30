@@ -1,11 +1,10 @@
 ﻿using Volo.Abp.Castle;
 using Volo.Abp.Modularity;
 
-namespace KissU.Abp.Autofac
+namespace KissU.Abp
 {
     [DependsOn(typeof(AbpCastleCoreModule))]
-    public class AbpAutofacModule : AbpModule
+    public class AbpStartupModule : Volo.Abp.Modularity.AbpModule
     {
-
     }
 }

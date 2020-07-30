@@ -29,7 +29,7 @@
     "Packages": [ //如果引用多个同类型的组件，需要配置Packages，如果是自定义按需引用，无需配置Packages
       {
         "TypeName": "EnginePartModule",
-        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;SerilogModule;NLogModule;MessagePackModule;ConsulModule;CachingModule;KestrelHttpServerModule;KestrelSwaggerModule;ApiGeteWayModule;KestrelNLogModule;ApolloModule;AbpBusinessModule;"
+        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;SerilogModule;NLogModule;MessagePackModule;ConsulModule;CachingModule;KestrelHttpServerModule;KestrelSwaggerModule;ApiGeteWayModule;KestrelNLogModule;ApolloModule;AbpModule;"
       }
     ]
   },

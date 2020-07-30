@@ -1,5 +1,4 @@
 ﻿using System;
-using KissU.Abp.Autofac;
 using KissU.ApplicationParts.Blogging;
 using KissU.Shared.MultiTenancy;
 using Microsoft.AspNetCore.Authentication.OAuth.Claims;
@@ -9,6 +8,7 @@ using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Volo.Abp;
 using Volo.Abp.AspNetCore.Authentication.OAuth;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic;
+using Volo.Abp.Autofac;
 using Volo.Abp.Http.Client.IdentityModel.Web;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;

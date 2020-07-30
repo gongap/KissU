@@ -1,7 +1,5 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using KissU.Abp.Autofac;
-using KissU.Abp.Autofac.Extensions;
 using KissU.Modules.Blogging.DbMigrations.Data;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;

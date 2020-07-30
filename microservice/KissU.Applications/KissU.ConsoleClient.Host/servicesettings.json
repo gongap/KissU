@@ -16,7 +16,7 @@
     "Packages": [
       {
         "TypeName": "EnginePartModule",
-        "Using": "${UseEngineParts}|DotNettyModule;NLogModule;MessagePackModule;ConsulModule;HttpProtocolModule;ServiceProxyModule;EventBusRabbitMQModule;AbpBusinessModule;"
+        "Using": "${UseEngineParts}|DotNettyModule;NLogModule;MessagePackModule;ConsulModule;HttpProtocolModule;ServiceProxyModule;EventBusRabbitMQModule;AbpModule;"
       }
     ]
   },

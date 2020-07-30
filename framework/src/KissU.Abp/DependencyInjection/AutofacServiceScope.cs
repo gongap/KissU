@@ -2,7 +2,7 @@
 using Autofac;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace KissU.Abp.Autofac.DependencyInjection
+namespace KissU.Abp.DependencyInjection
 {
     /// <summary>
     /// Autofac implementation of the ASP.NET Core <see cref="IServiceScope"/>.

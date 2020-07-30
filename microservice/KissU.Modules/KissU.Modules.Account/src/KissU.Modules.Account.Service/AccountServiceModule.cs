@@ -1,6 +1,4 @@
 ﻿using KissU.Abp;
-using KissU.Abp.Autofac;
-using KissU.Abp.Business;
 using KissU.Modules.Account.Application;
 using KissU.Modules.Account.Service.Contracts;
 using KissU.Modules.Identity.Domain;
@@ -14,10 +12,9 @@ namespace KissU.Modules.Account.Service
     [DependsOn(
         typeof(AccountServiceContractsModule),
         typeof(AbpAccountApplicationModule),
-        typeof(AbpIdentityEntityFrameworkCoreModule),
-        typeof(AbpAutofacModule)
+        typeof(AbpIdentityEntityFrameworkCoreModule)
         )]
-    public class AbpAccountServiceModule : AbpModule, IAbpStartupModule
+    public class AbpAccountServiceModule : Volo.Abp.Modularity.AbpModule, IAbpServiceModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {

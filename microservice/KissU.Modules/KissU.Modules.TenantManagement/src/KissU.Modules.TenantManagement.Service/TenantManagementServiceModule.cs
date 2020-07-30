@@ -1,6 +1,4 @@
 ﻿using KissU.Abp;
-using KissU.Abp.Autofac;
-using KissU.Abp.Business;
 using KissU.Modules.TenantManagement.Application;
 using KissU.Modules.TenantManagement.EntityFrameworkCore;
 using KissU.Modules.TenantManagement.Service.Contracts;
@@ -13,10 +11,9 @@ namespace KissU.Modules.TenantManagement.Service
     [DependsOn(
         typeof(TenantManagementServiceContractsModule),
         typeof(AbpTenantManagementApplicationModule),
-        typeof(AbpTenantManagementEntityFrameworkCoreModule),
-        typeof(AbpAutofacModule)
+        typeof(AbpTenantManagementEntityFrameworkCoreModule)
     )]
-    public class TenantManagementServiceModule : AbpModule, IAbpStartupModule
+    public class TenantManagementServiceModule : Volo.Abp.Modularity.AbpModule, IAbpServiceModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {

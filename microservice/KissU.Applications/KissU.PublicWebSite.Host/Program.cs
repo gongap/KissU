@@ -1,14 +1,10 @@
 ﻿using System;
-using System.IO;
-using KissU.Abp.Autofac.Extensions;
 using KissU.Surging.Caching.Configurations;
 using KissU.Surging.CPlatform.Configurations;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 using Serilog.Events;
-using Serilog.Sinks.Elasticsearch;
 
 namespace KissU.PublicWebSite.Host
 {

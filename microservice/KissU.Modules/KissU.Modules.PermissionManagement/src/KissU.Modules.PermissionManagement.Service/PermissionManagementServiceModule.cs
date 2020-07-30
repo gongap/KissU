@@ -1,6 +1,4 @@
 ﻿using KissU.Abp;
-using KissU.Abp.Autofac;
-using KissU.Abp.Business;
 using KissU.Modules.PermissionManagement.Application;
 using KissU.Modules.PermissionManagement.Domain.Identity;
 using KissU.Modules.PermissionManagement.Domain.IdentityServer;
@@ -16,10 +14,9 @@ namespace KissU.Modules.PermissionManagement.Service
         typeof(AbpPermissionManagementApplicationModule),
         typeof(AbpPermissionManagementDomainIdentityModule),
         typeof(AbpPermissionManagementDomainIdentityServerModule),
-        typeof(AbpPermissionManagementEntityFrameworkCoreModule),
-        typeof(AbpAutofacModule)
+        typeof(AbpPermissionManagementEntityFrameworkCoreModule)
     )]
-    public class PermissionManagementServiceModule : AbpModule, IAbpStartupModule
+    public class PermissionManagementServiceModule : Volo.Abp.Modularity.AbpModule, IAbpServiceModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {

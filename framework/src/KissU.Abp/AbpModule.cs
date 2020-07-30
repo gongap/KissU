@@ -1,5 +1,4 @@
 ﻿using System;
-using KissU.Abp.Autofac;
 using KissU.Helpers;
 using KissU.Modularity;
 using KissU.Surging.CPlatform;
@@ -7,9 +6,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp;
 using Volo.Abp.Modularity.PlugIns;
 
-namespace KissU.Abp.Business
+namespace KissU.Abp
 {
-    public class AbpBusinessModule : EnginePartModule
+    public class AbpModule : EnginePartModule
     {
         private IAbpApplicationWithExternalServiceProvider _application;
 
@@ -34,7 +33,7 @@ namespace KissU.Abp.Business
             _application = AbpApplicationFactory.Create<AbpStartupModule>(services, options =>
             {
                 var assemblies = ModuleHelper.GetAssemblies();
-                var moduleTypes = ReflectionHelper.FindTypes<IAbpStartupModule>(assemblies.ToArray());
+                var moduleTypes = ReflectionHelper.FindTypes<IAbpServiceModule>(assemblies.ToArray());
                 options.PlugInSources.AddTypes(moduleTypes.ToArray());
             });
             builder.ContainerBuilder.Populate(_application.Services);

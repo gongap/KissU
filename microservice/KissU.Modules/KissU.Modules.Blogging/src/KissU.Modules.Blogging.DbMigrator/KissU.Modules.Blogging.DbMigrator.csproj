@@ -37,7 +37,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Abp.Autofac\KissU.Abp.Autofac.csproj" />
+    <PackageReference Include="Volo.Abp.Autofac" Version="3.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\KissU.Modules.Blogging.DbMigrations\KissU.Modules.Blogging.DbMigrations.csproj" />
   </ItemGroup>
 

@@ -1,5 +1,5 @@
-﻿using KissU.Abp.Autofac;
-using KissU.Modules.SettingManagement.DbMigrations.EntityFrameworkCore;
+﻿using KissU.Modules.SettingManagement.DbMigrations.EntityFrameworkCore;
+using Volo.Abp.Autofac;
 using Volo.Abp.Modularity;
 
 namespace KissU.Modules.SettingManagement.DbMigrator

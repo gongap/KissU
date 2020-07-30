@@ -1,6 +1,4 @@
 ﻿using KissU.Abp;
-using KissU.Abp.Autofac;
-using KissU.Abp.Business;
 using KissU.Modules.FeatureManagement.Application;
 using KissU.Modules.FeatureManagement.EntityFrameworkCore;
 using KissU.Modules.FeatureManagement.Service.Contracts;
@@ -13,10 +11,9 @@ namespace KissU.Modules.FeatureManagement.Service
     [DependsOn(
         typeof(FeatureManagementServiceContractsModule),
         typeof(AbpFeatureManagementApplicationModule),
-        typeof(AbpFeatureManagementEntityFrameworkCoreModule),
-        typeof(AbpAutofacModule)
+        typeof(AbpFeatureManagementEntityFrameworkCoreModule)
     )]
-    public class FeatureManagementServiceModule : AbpModule, IAbpStartupModule
+    public class FeatureManagementServiceModule : Volo.Abp.Modularity.AbpModule, IAbpServiceModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {

@@ -1,10 +1,10 @@
 ﻿using System;
 using Autofac;
-using KissU.Abp.Autofac.DependencyInjection;
+using KissU.Abp.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp;
 
-namespace KissU.Abp.Autofac.Extensions
+namespace KissU.Abp.Extensions
 {
     /// <summary>
     /// 系统扩展 - AbpApplicationCreationOptions
