@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
-using KissU.Services.SampleA.Contract;
-using KissU.Services.SampleA.Contract.Dtos;
+using KissU.Modules.SampleA.Service.Contracts;
+using KissU.Modules.SampleA.Service.Contracts.Dtos;
 using KissU.Surging.ProxyGenerator;
 
 namespace KissU.Modules.SampleA.Service.Implements

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using KissU.Dependency;
-using KissU.Services.SampleA.Contract;
+using KissU.Modules.SampleA.Service.Contracts;
 using KissU.Surging.Protocol.WS;
 using KissU.Surging.ProxyGenerator;
 using WebSocketCore;

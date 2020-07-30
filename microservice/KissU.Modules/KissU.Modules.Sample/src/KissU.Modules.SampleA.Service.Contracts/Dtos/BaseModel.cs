@@ -1,7 +1,7 @@
 ﻿using System;
 using ProtoBuf;
 
-namespace KissU.Services.SampleA.Contract.Dtos
+namespace KissU.Modules.SampleA.Service.Contracts.Dtos
 {
     /// <summary>
     /// BaseModel.

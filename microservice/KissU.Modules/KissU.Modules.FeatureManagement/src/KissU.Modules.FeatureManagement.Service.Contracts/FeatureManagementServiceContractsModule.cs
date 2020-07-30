@@ -5,7 +5,7 @@ using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.UI;
 
-namespace KissU.Services.FeatureManagement.Contract
+namespace KissU.Modules.FeatureManagement.Service.Contracts
 {
     [DependsOn(
         typeof(AbpFeatureManagementApplicationContractsModule),

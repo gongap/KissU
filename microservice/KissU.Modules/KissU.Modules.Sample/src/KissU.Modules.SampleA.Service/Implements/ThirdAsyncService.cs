@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using KissU.Services.SampleA.Contract;
+using KissU.Modules.SampleA.Service.Contracts;
 using KissU.Surging.ProxyGenerator;
 using KissU.Surging.Thrift.Attributes;
-using static KissU.Services.SampleA.Contract.Thrifts.ThriftCore.ThirdCalculator;
+using static KissU.Modules.SampleA.Service.Contracts.Thrifts.ThriftCore.ThirdCalculator;
 
 namespace KissU.Modules.SampleA.Service.Implements
 {

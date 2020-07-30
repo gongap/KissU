@@ -1,6 +1,6 @@
 ﻿using KissU.ApplicationParts.Blogging.Bundling;
 using KissU.Modules.Blogging.Domain.Shared.Localization.Blogging;
-using KissU.Services.Blogging.Contract;
+using KissU.Modules.Blogging.Service.Contracts;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;

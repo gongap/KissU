@@ -70,26 +70,12 @@ namespace KissU.ServiceHosting
         {
             _hostBuilder.ConfigureHostConfiguration(configurationBuilder =>
             {
-                _hostBuilder.ConfigureServices(services =>
-                {
-                    services.AddSingleton(typeof(IConfigurationBuilder), configurationBuilder);
-                });
+                _hostBuilder.ConfigureServices(services => services.AddSingleton(typeof(IConfigurationBuilder), configurationBuilder));
             });
 
             _hostBuilder.UseServiceProviderFactory(new AutofacServiceProviderFactory(
-                builder =>
-                {
-                    foreach (var configure in _configureContainerDelegates)
-                    {
-                        configure(builder);
-                    }
-                }, container =>
-                {
-                    foreach (var configure in _configureDelegates)
-                    {
-                        configure(container);
-                    }
-                })
+                    builder => _configureContainerDelegates.ForEach(configure => configure(builder)),
+                    container => _configureDelegates.ForEach(configure => configure(container)))
             );
 
             return _hostBuilder.Build();

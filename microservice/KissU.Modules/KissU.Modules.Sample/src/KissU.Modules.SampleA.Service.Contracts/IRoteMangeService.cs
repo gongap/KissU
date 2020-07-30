@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using KissU.Services.SampleA.Contract.Dtos;
+using KissU.Modules.SampleA.Service.Contracts.Dtos;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 
-namespace KissU.Services.SampleA.Contract
+namespace KissU.Modules.SampleA.Service.Contracts
 {
     /// <summary>
     /// Interface IRoteMangeService

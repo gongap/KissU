@@ -3,7 +3,7 @@ using KissU.Surging.Caching.Interceptors;
 using KissU.Surging.ProxyGenerator;
 using KissU.Surging.ProxyGenerator.Interceptors;
 
-namespace KissU.Services.SampleA.Contract
+namespace KissU.Modules.SampleA.Service.Contracts
 {
     public class IntercepteModule : SystemModule
     {

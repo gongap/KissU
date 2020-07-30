@@ -5,7 +5,7 @@ using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Att
 using KissU.Surging.CPlatform.Support;
 using KissU.Surging.CPlatform.Support.Attributes;
 
-namespace KissU.Services.SampleB.Contract
+namespace KissU.Modules.SampleB.Service.Contracts
 {
     /// <summary>
     /// Interface IManagerService

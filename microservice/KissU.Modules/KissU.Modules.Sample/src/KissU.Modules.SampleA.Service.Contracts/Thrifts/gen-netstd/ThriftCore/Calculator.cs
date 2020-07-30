@@ -18,7 +18,7 @@ using Thrift.Protocol.Entities;
 using Thrift.Protocol.Utilities;
 using Thrift.Transport;
 
-namespace KissU.Services.SampleA.Contract.Thrifts.ThriftCore
+namespace KissU.Modules.SampleA.Service.Contracts.Thrifts.ThriftCore
 {
   public partial class Calculator
   {

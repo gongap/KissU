@@ -1,6 +1,6 @@
 ﻿using KissU.Abp.Business;
 using KissU.Modules.Application;
-using KissU.Services.Configuration.Contract;
+using KissU.Modules.Configuration.Service.Contracts;
 using Volo.Abp.Modularity;
 
 namespace KissU.Modules.Configuration.Service

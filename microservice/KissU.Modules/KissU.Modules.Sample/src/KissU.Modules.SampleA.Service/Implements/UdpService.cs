@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.Services.SampleA.Contract;
+using KissU.Modules.SampleA.Service.Contracts;
 using KissU.Surging.Protocol.Udp.Runtime;
 
 namespace KissU.Modules.SampleA.Service.Implements

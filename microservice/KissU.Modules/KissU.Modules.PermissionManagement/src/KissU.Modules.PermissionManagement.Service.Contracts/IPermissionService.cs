@@ -3,7 +3,7 @@ using KissU.Dependency;
 using KissU.Modules.PermissionManagement.Application.Contracts;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 
-namespace KissU.Services.PermissionManagement.Contract
+namespace KissU.Modules.PermissionManagement.Service.Contracts
 {
     [ServiceBundle("api/{Service}")]
     public interface IPermissionService : IServiceKey

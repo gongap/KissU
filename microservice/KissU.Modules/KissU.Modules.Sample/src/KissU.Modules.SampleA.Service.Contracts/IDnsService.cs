@@ -1,7 +1,7 @@
 ﻿using KissU.Dependency;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 
-namespace KissU.Services.SampleA.Contract
+namespace KissU.Modules.SampleA.Service.Contracts
 {
     /// <summary>
     /// Interface IDnsService

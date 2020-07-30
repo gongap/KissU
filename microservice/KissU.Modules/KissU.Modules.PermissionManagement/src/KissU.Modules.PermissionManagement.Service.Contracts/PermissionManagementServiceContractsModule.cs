@@ -5,7 +5,7 @@ using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.UI;
 
-namespace KissU.Services.PermissionManagement.Contract
+namespace KissU.Modules.PermissionManagement.Service.Contracts
 {
     [DependsOn(
         typeof(AbpPermissionManagementApplicationContractsModule),

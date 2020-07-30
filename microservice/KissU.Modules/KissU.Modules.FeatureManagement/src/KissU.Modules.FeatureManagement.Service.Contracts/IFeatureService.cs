@@ -3,7 +3,7 @@ using KissU.Dependency;
 using KissU.Modules.FeatureManagement.Application.Contracts;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 
-namespace KissU.Services.FeatureManagement.Contract
+namespace KissU.Modules.FeatureManagement.Service.Contracts
 {
     [ServiceBundle("api/{Service}")]
     public interface IFeatureService : IServiceKey

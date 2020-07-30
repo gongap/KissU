@@ -5,7 +5,7 @@ using KissU.Modules.Identity.Application.Contracts;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using Volo.Abp.Application.Dtos;
 
-namespace KissU.Services.Identity.Contract
+namespace KissU.Modules.Identity.Service.Contracts
 {
     [ServiceBundle("api/{Service}")]
     public interface IIdentityRoleService : IServiceKey

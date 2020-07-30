@@ -4,7 +4,7 @@ using KissU.Dependency;
 using KissU.Extensions;
 using KissU.Modules.Blogging.Application.Contracts.Tagging;
 using KissU.Modules.Blogging.Application.Contracts.Tagging.Dtos;
-using KissU.Services.Blogging.Contract;
+using KissU.Modules.Blogging.Service.Contracts;
 using KissU.Surging.ProxyGenerator;
 
 namespace KissU.Modules.Blogging.Service.Implements

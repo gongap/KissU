@@ -3,7 +3,7 @@ using KissU.Dependency;
 using KissU.Modules.Application.MultiTenancy;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 
-namespace KissU.Services.Configuration.Contract
+namespace KissU.Modules.Configuration.Service.Contracts
 {
     [ServiceBundle("api/abp/multi-tenancy")]
     public interface IAbpTenantService : IServiceKey

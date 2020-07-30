@@ -4,7 +4,7 @@ using KissU.ApplicationParts.Blogging.Pages.Blogs.Shared.Helpers;
 using KissU.Modules.Blogging.Application.Contracts.Blogs.Dtos;
 using KissU.Modules.Blogging.Application.Contracts.Posts;
 using KissU.Modules.Blogging.Application.Contracts.Tagging.Dtos;
-using KissU.Services.Blogging.Contract;
+using KissU.Modules.Blogging.Service.Contracts;
 using KissU.Surging.ProxyGenerator;
 using Microsoft.AspNetCore.Mvc;
 

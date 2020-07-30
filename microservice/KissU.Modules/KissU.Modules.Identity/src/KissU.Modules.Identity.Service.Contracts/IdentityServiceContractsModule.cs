@@ -5,7 +5,7 @@ using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.UI;
 
-namespace KissU.Services.Identity.Contract
+namespace KissU.Modules.Identity.Service.Contracts
 {
     [DependsOn(
         typeof(AbpIdentityApplicationContractsModule),

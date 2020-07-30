@@ -4,7 +4,7 @@ using KissU.Dependency;
 using KissU.Modules.TenantManagement.Application.Contracts;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 
-namespace KissU.Services.TenantManagement.Contract
+namespace KissU.Modules.TenantManagement.Service.Contracts
 {
     [ServiceBundle("api/{Service}")]
     public interface ITenantService : IServiceKey

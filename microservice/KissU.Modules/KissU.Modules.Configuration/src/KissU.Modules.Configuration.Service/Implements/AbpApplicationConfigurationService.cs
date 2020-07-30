@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using KissU.Modules.Application.Configurations;
-using KissU.Services.Configuration.Contract;
+using KissU.Modules.Configuration.Service.Contracts;
 using KissU.Surging.ProxyGenerator;
 
 namespace KissU.Modules.Configuration.Service.Implements

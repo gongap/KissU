@@ -2,7 +2,7 @@
 using KissU.Surging.Caching.Interceptors;
 using ProtoBuf;
 
-namespace KissU.Services.SampleA.Contract.Dtos
+namespace KissU.Modules.SampleA.Service.Contracts.Dtos
 {
     /// <summary>
     /// UserModel.

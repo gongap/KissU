@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using KissU.Modules.Blogging.Application.Contracts.Comments.Dtos;
-using KissU.Services.Blogging.Contract;
+using KissU.Modules.Blogging.Service.Contracts;
 using KissU.Surging.ProxyGenerator;
 using Microsoft.AspNetCore.Mvc;
 

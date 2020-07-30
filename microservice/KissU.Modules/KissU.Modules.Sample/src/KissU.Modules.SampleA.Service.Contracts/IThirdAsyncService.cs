@@ -1,10 +1,10 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using KissU.Dependency;
-using KissU.Services.SampleA.Contract.Thrifts.ThriftCore;
+using KissU.Modules.SampleA.Service.Contracts.Thrifts.ThriftCore;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 
-namespace KissU.Services.SampleA.Contract
+namespace KissU.Modules.SampleA.Service.Contracts
 {
     [ServiceBundle("api/{Service}/{Method}")]
     public interface IThirdAsyncService : ThirdCalculator.IAsync, IServiceKey

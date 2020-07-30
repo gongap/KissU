@@ -3,7 +3,7 @@ using System.IO;
 using System.Threading.Tasks;
 using KissU.Dependency;
 using KissU.Modules.Blogging.Application.Contracts.Files;
-using KissU.Services.Blogging.Contract;
+using KissU.Modules.Blogging.Service.Contracts;
 using KissU.Surging.KestrelHttpServer.Abstractions;
 using KissU.Surging.KestrelHttpServer.Internal;
 using KissU.Surging.ProxyGenerator;

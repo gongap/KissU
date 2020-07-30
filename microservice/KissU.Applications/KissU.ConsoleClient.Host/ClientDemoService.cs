@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 using KissU.Dependency;
 using KissU.Modules.Identity.Application.Contracts;
 using KissU.Modules.TenantManagement.Application.Contracts;
-using KissU.Services.Identity.Contract;
-using KissU.Services.SampleA.Contract;
-using KissU.Services.SampleA.Contract.Dtos;
-using KissU.Services.SampleA.Contract.Events;
-using KissU.Services.TenantManagement.Contract;
 using KissU.Surging.CPlatform.Transport.Implementation;
 using KissU.Surging.ProxyGenerator;
 using Microsoft.Extensions.Options;
 using Volo.Abp.Http.Client;
 using Volo.Abp.IdentityModel;
 using KissU.Extensions;
+using KissU.Modules.Identity.Service.Contracts;
+using KissU.Modules.SampleA.Service.Contracts;
+using KissU.Modules.SampleA.Service.Contracts.Dtos;
+using KissU.Modules.SampleA.Service.Contracts.Events;
+using KissU.Modules.TenantManagement.Service.Contracts;
 
 namespace KissU.ConsoleClient.Host
 {

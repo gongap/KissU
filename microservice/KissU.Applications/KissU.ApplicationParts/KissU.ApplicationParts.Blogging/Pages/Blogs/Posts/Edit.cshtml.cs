@@ -6,7 +6,7 @@ using KissU.ApplicationParts.Blogging.Pages.Blogs.Shared.Helpers;
 using KissU.Modules.Blogging.Application.Contracts.Posts;
 using KissU.Modules.Blogging.Application.Contracts.Shared;
 using KissU.Modules.Blogging.Domain.Shared.Posts;
-using KissU.Services.Blogging.Contract;
+using KissU.Modules.Blogging.Service.Contracts;
 using KissU.Surging.ProxyGenerator;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

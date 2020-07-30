@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 using KissU.Dependency;
 using KissU.Modules.Account.Application.Contracts;
+using KissU.Modules.Account.Service.Contracts;
 using KissU.Modules.Identity.Application.Contracts;
-using KissU.Services.Account.Contract;
 using KissU.Surging.ProxyGenerator;
 
 namespace KissU.Modules.Account.Service.Implements

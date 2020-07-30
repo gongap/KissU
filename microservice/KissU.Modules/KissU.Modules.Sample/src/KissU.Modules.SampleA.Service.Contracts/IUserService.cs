@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using KissU.Common;
 using KissU.Dependency;
 using KissU.EventBus.Events;
-using KissU.Services.SampleA.Contract.Dtos;
+using KissU.Modules.SampleA.Service.Contracts.Dtos;
 using KissU.Surging.Caching.Interceptors;
 using KissU.Surging.CPlatform.Filters.Implementation;
 using KissU.Surging.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
@@ -17,7 +17,7 @@ using CacheTargetType = KissU.Surging.Caching.CacheTargetType;
 using CachingMethod = KissU.Surging.Caching.Interceptors.CachingMethod;
 using Metadatas = KissU.Surging.ProxyGenerator.Interceptors.Implementation.Metadatas;
 
-namespace KissU.Services.SampleA.Contract
+namespace KissU.Modules.SampleA.Service.Contracts
 {
     /// <summary>
     /// Interface IAccountService

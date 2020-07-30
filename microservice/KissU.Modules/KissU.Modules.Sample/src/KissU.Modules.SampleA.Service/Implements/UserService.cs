@@ -5,14 +5,14 @@ using System.Threading.Tasks;
 using KissU.Common;
 using KissU.Dependency;
 using KissU.EventBus.Events;
+using KissU.Modules.SampleA.Service.Contracts;
+using KissU.Modules.SampleA.Service.Contracts.Dtos;
 using KissU.Surging.CPlatform.Transport.Implementation;
 using KissU.Surging.KestrelHttpServer.Abstractions;
 using KissU.Surging.KestrelHttpServer.Internal;
 using KissU.Surging.ProxyGenerator;
 using KissU.Modules.SampleA.Service.Repositories;
-using KissU.Services.SampleA.Contract;
-using KissU.Services.SampleA.Contract.Dtos;
-using KissU.Services.SampleB.Contract;
+using KissU.Modules.SampleB.Service.Contracts;
 
 namespace KissU.Modules.SampleA.Service.Implements
 {

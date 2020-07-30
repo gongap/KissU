@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace KissU.Services.SampleA.Contract.Dtos
+namespace KissU.Modules.SampleA.Service.Contracts.Dtos
 {
     /// <summary>
     /// Message.

@@ -1,11 +1,11 @@
 ﻿using System.Threading.Tasks;
 using KissU.Dependency;
-using KissU.Services.SampleA.Contract.Dtos;
+using KissU.Modules.SampleA.Service.Contracts.Dtos;
 using KissU.Surging.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Surging.CPlatform.Support.Attributes;
 
-namespace KissU.Services.SampleA.Contract
+namespace KissU.Modules.SampleA.Service.Contracts
 {
     /// <summary>
     /// Interface IControllerService

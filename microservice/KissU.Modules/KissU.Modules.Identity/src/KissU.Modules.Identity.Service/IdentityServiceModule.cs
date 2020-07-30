@@ -4,7 +4,7 @@ using KissU.Abp.Business;
 using KissU.Modules.Identity.Application;
 using KissU.Modules.Identity.Domain;
 using KissU.Modules.Identity.EntityFrameworkCore;
-using KissU.Services.Identity.Contract;
+using KissU.Modules.Identity.Service.Contracts;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.Modularity;

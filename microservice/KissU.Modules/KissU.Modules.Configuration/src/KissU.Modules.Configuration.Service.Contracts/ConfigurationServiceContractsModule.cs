@@ -1,7 +1,7 @@
 ﻿using KissU.Modules.Application;
 using Volo.Abp.Modularity;
 
-namespace KissU.Services.Configuration.Contract
+namespace KissU.Modules.Configuration.Service.Contracts
 {
     [DependsOn(typeof(ConfigurationApplicationContractsModule))]
     public class ConfigurationServiceContractsModule : AbpModule

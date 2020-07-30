@@ -2,7 +2,7 @@
 using Greet;
 using Grpc.Core;
 using KissU.Modules.SampleA.Service.Behaviors;
-using KissU.Services.SampleA.Contract;
+using KissU.Modules.SampleA.Service.Contracts;
 
 namespace KissU.Modules.SampleA.Service.Implements
 {
