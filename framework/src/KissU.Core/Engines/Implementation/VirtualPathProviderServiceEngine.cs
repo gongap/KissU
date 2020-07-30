@@ -1,4 +1,4 @@
-﻿namespace KissU.Surging.CPlatform.Engines.Implementation
+﻿namespace KissU.Engines.Implementation
 {
     /// <summary>
     /// 服务引擎虚拟路径提供者.

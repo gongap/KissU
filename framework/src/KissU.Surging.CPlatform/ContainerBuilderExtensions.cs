@@ -7,6 +7,8 @@ using Autofac;
 using KissU.Convertibles;
 using KissU.Convertibles.Implementation;
 using KissU.Dependency;
+using KissU.Engines;
+using KissU.Engines.Implementation;
 using KissU.EventBus.Events;
 using KissU.Helpers;
 using KissU.Modularity;
@@ -192,12 +194,12 @@ namespace KissU.Surging.CPlatform
         /// <param name="builder">服务构建器.</param>
         /// <param name="engine">引擎类型</param>
         /// <returns>IServiceBuilder.</returns>
-        public static IServiceBuilder AddServiceEngine(this IServiceBuilder builder, Type engine)
+        public static IServiceBuilder AddServiceEngine(this IServiceBuilder builder, Type engine = null)
         {
             var services = builder.Services;
+            engine ??= typeof(DefaultVirtualPathProviderServiceEngine);
             services.RegisterType(engine).As(typeof(IServiceEngine)).SingleInstance();
-            builder.Services.RegisterType(typeof(DefaultServiceEngineBuilder)).As(typeof(IServiceEngineBuilder))
-                .SingleInstance();
+            builder.Services.RegisterType(typeof(DefaultServiceEngineBuilder)).As(typeof(IServiceEngineBuilder)).SingleInstance();
             return builder;
         }
 

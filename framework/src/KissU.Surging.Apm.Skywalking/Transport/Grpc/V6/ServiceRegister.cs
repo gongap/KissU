@@ -23,7 +23,6 @@ using KissU.Surging.Apm.Skywalking.Abstractions.Common;
 using KissU.Surging.Apm.Skywalking.Abstractions.Config;
 using KissU.Surging.Apm.Skywalking.Abstractions.Transport;
 using KissU.Surging.Apm.Skywalking.Transport.Grpc.Common;
-using KissU.Surging.Apm.Skywalking.Transport.Grpc.Common;
 using Microsoft.Extensions.Logging;
 using SkyWalking.NetworkProtocol;
 
@@ -61,7 +60,7 @@ namespace KissU.Surging.Apm.Skywalking.Transport.Grpc.V6
             return await new Call(_logger, _connectionManager).Execute(async () =>
                 {
                     var client = new Register.RegisterClient(connection);
-                    var services = new Services();
+                    var services = new SkyWalking.NetworkProtocol.Services();
                     services.Services_.Add(new Service
                     {
                         ServiceName = serviceRequest.ServiceName

@@ -1,4 +1,4 @@
-﻿namespace KissU.Surging.CPlatform.Engines
+﻿namespace KissU.Engines
 {
     /// <summary>
     /// 服务引擎

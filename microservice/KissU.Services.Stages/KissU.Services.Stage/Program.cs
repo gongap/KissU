@@ -33,7 +33,7 @@ namespace KissU.Services.Stages
                         option.AddServiceRuntime()
                             .AddRelateService()
                             .AddConfigurationWatch()
-                            .AddServiceEngine(typeof(ServiceEngine));
+                            .AddServiceEngine();
                     });
                     builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
                 })
