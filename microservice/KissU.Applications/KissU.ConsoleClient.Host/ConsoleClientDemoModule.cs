@@ -1,4 +1,5 @@
 ﻿using KissU.Abp.Autofac;
+using KissU.Abp.Business;
 using Volo.Abp.Http.Client.IdentityModel;
 using Volo.Abp.Modularity;
 
@@ -8,8 +9,7 @@ namespace KissU.ConsoleClient.Host
         typeof(AbpAutofacModule),
         typeof(AbpHttpClientIdentityModelModule)
         )]
-    public class ConsoleClientDemoModule : AbpModule
+    public class ConsoleClientDemoModule : AbpModule, IAbpStartupModule
     {
-         
     }
 }
