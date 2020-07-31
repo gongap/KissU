@@ -25,7 +25,8 @@
     "SessionTimeout": "${Register_SessionTimeout}|50",
     "RoutePath": "${Register_RoutePath}",
     "ReloadOnChange": true,
-    "EnableChildrenMonitor": false
+    "EnableChildrenMonitor": false,
+    "MqttRoutePath": "${MqttRoutePath}|D:\\App\\Mqtt"
   },
   "EventBus": {
     "EventBusConnection": "${EventBusConnection}|localhost",

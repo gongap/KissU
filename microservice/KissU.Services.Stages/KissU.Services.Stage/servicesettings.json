@@ -74,7 +74,8 @@
     "SessionTimeout": "${Register_SessionTimeout}|50",
     "RoutePath": "${Register_RoutePath}",
     "ReloadOnChange": true,
-    "EnableChildrenMonitor": false
+    "EnableChildrenMonitor": false,
+    "MqttRoutePath": "${MqttRoutePath}|D:\\App\\Mqtt"
   },
   "Zookeeper": {
     "ConnectionString": "${Zookeeper_ConnectionString}|127.0.0.1:2181",

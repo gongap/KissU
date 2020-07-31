@@ -38,7 +38,8 @@
     "SessionTimeout": "${Register_SessionTimeout}|50", //会话超时时间
     "RoutePath": "${Register_RoutePath}", //服务组件地址,服务引擎会通过指定该地址扫描到相应的服务组件，并解析到相应的服务与命令
     "ReloadOnChange": true, //当配置改变后是否重新加载
-    "EnableChildrenMonitor": false //启用子节点监视器
+    "EnableChildrenMonitor": false, //启用子节点监视器,
+    "MqttRoutePath": "${MqttRoutePath}|D:\\App\\Mqtt"
   },
   "Zookeeper": {
     "ConnectionString": "${Zookeeper_ConnectionString}|127.0.0.1:2181", // Zookeeper服务地址,

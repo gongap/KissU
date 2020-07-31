@@ -144,7 +144,6 @@ namespace KissU.Surging.Consul.Configurations
         /// </summary>
         public string RoutePath { get; set; }
 
-
         /// <summary>
         /// Mqtt路由配置路径。
         /// </summary>
