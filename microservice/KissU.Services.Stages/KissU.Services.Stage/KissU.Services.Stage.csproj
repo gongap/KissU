@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\framework\src\KissU.Abp\KissU.Surging.Abp.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Abp\KissU.Surging.Abp.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.WebSocketCore\KissU.WebSocketCore.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Apm.Skywalking\KissU.Surging.Apm.Skywalking.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.ApiGateWay\KissU.Surging.ApiGateWay.csproj" />

@@ -363,7 +363,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.ApplicationParts.Acco
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.ApplicationParts.Blogging", "microservice\KissU.Applications\KissU.ApplicationParts\KissU.ApplicationParts.Blogging\KissU.ApplicationParts.Blogging.csproj", "{15C81048-9A40-48F2-952B-4569839B0ECB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.Abp", "framework\src\KissU.Abp\KissU.Surging.Abp.csproj", "{9818E43D-757B-40A4-8D7D-0C19B680F0E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.Abp", "framework\src\KissU.Surging.Abp\KissU.Surging.Abp.csproj", "{9818E43D-757B-40A4-8D7D-0C19B680F0E7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Configuration.Application.Contracts", "microservice\KissU.Modules\KissU.Modules.Configuration\src\KissU.Modules.Configuration.Application.Contracts\KissU.Modules.Configuration.Application.Contracts.csproj", "{DEFE344E-A2B6-463B-9AC3-DE02ED43CD67}"
 EndProject
