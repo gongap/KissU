@@ -9,7 +9,7 @@ using Volo.Abp.Castle.DynamicProxy;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Modularity;
 
-namespace KissU.Abp.Extensions
+namespace KissU.Surging.Abp.Extensions
 {
     /// <summary>
     /// 系统扩展 - IRegistrationBuilder

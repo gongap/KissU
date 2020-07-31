@@ -7,7 +7,7 @@ using JetBrains.Annotations;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp;
 
-namespace KissU.Abp.Extensions
+namespace KissU.Surging.Abp.Extensions
 {
     /// <summary>
     /// 系统扩展 - IServiceCollection

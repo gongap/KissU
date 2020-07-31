@@ -5,7 +5,6 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <Description></Description>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <RootNamespace>KissU.Abp</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

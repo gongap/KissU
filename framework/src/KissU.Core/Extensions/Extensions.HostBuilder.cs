@@ -1,6 +1,5 @@
 ﻿using System;
 using Autofac;
-using KissU.Dependency;
 using KissU.ServiceHosting;
 using Microsoft.Extensions.Hosting;
 
@@ -19,11 +18,6 @@ namespace KissU.Extensions
         public static IHostBuilder ConfigureContainer(this IHostBuilder hostBuilder, Action<ContainerBuilder> configurationAction)
         {
             return UseServiceHostBuilder(hostBuilder, configurationAction, null);
-        }
-
-        public static IHostBuilder UseServiceHostBuilder(this IHostBuilder hostBuilder, Action<IContainer> configureDelegates)
-        {
-            return UseServiceHostBuilder(hostBuilder, null, configureDelegates);
         }
 
         public static IHostBuilder UseServiceHostBuilder(this IHostBuilder hostBuilder, Action<ContainerBuilder> configurationAction = null, Action<IContainer> configureDelegates = null)

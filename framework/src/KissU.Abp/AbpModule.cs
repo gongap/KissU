@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp;
 using Volo.Abp.Modularity.PlugIns;
 
-namespace KissU.Abp
+namespace KissU.Surging.Abp
 {
     public class AbpModule : EnginePartModule
     {
