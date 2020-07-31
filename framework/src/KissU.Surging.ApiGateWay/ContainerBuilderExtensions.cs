@@ -28,14 +28,14 @@ namespace KissU.Surging.ApiGateWay
         /// <returns>服务构建者</returns>
         public static IServiceBuilder AddApiGateWay(this IServiceBuilder builder, ConfigInfo config = null)
         {
-            var services = builder.Services;
-            services.RegisterType<FaultTolerantProvider>().As<IFaultTolerantProvider>().SingleInstance();
-            services.RegisterType<DefaultHealthCheckService>().As<IHealthCheckService>().SingleInstance();
-            services.RegisterType<ServiceDiscoveryProvider>().As<IServiceDiscoveryProvider>().SingleInstance();
-            services.RegisterType<ServiceRegisterProvider>().As<IServiceRegisterProvider>().SingleInstance();
-            services.RegisterType<ServiceSubscribeProvider>().As<IServiceSubscribeProvider>().SingleInstance();
-            services.RegisterType<ServiceCacheProvider>().As<IServiceCacheProvider>().SingleInstance();
-            services.RegisterType<ServicePartProvider>().As<IServicePartProvider>().SingleInstance();
+            var containerBuilder = builder.ContainerBuilder;
+            containerBuilder.RegisterType<FaultTolerantProvider>().As<IFaultTolerantProvider>().SingleInstance();
+            containerBuilder.RegisterType<DefaultHealthCheckService>().As<IHealthCheckService>().SingleInstance();
+            containerBuilder.RegisterType<ServiceDiscoveryProvider>().As<IServiceDiscoveryProvider>().SingleInstance();
+            containerBuilder.RegisterType<ServiceRegisterProvider>().As<IServiceRegisterProvider>().SingleInstance();
+            containerBuilder.RegisterType<ServiceSubscribeProvider>().As<IServiceSubscribeProvider>().SingleInstance();
+            containerBuilder.RegisterType<ServiceCacheProvider>().As<IServiceCacheProvider>().SingleInstance();
+            containerBuilder.RegisterType<ServicePartProvider>().As<IServicePartProvider>().SingleInstance();
             if (config != null)
             {
                 AppConfig.AccessTokenExpireTimeSpan = config.AccessTokenExpireTimeSpan;
@@ -43,7 +43,7 @@ namespace KissU.Surging.ApiGateWay
                 AppConfig.AuthorizationServiceKey = config.AuthorizationServiceKey;
             }
 
-            builder.Services.Register(provider =>
+            builder.ContainerBuilder.Register(provider =>
             {
                 var serviceProxyProvider = provider.Resolve<IServiceProxyProvider>();
                 var serviceRouteProvider = provider.Resolve<IServiceRouteProvider>();

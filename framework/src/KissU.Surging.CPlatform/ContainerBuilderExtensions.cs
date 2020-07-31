@@ -65,10 +65,10 @@ namespace KissU.Surging.CPlatform
         /// <returns>服务构建器</returns>
         public static IServiceBuilder AddJsonSerialization(this IServiceBuilder builder)
         {
-            var services = builder.Services;
-            services.RegisterType(typeof(JsonSerializer)).As(typeof(ISerializer<string>)).SingleInstance();
-            services.RegisterType(typeof(StringByteArraySerializer)).As(typeof(ISerializer<byte[]>)).SingleInstance();
-            services.RegisterType(typeof(StringObjectSerializer)).As(typeof(ISerializer<object>)).SingleInstance();
+            var containerBuilder = builder.ContainerBuilder;
+            containerBuilder.RegisterType(typeof(JsonSerializer)).As(typeof(ISerializer<string>)).SingleInstance();
+            containerBuilder.RegisterType(typeof(StringByteArraySerializer)).As(typeof(ISerializer<byte[]>)).SingleInstance();
+            containerBuilder.RegisterType(typeof(StringObjectSerializer)).As(typeof(ISerializer<object>)).SingleInstance();
             return builder;
         }
 
@@ -114,8 +114,8 @@ namespace KissU.Surging.CPlatform
         /// <returns>服务构建器</returns>
         public static IServiceBuilder AddConfigurationWatch(this IServiceBuilder builder)
         {
-            var services = builder.Services;
-            services.RegisterType(typeof(ConfigurationWatchManager)).As(typeof(IConfigurationWatchManager))
+            var containerBuilder = builder.ContainerBuilder;
+            containerBuilder.RegisterType(typeof(ConfigurationWatchManager)).As(typeof(IConfigurationWatchManager))
                 .SingleInstance();
             return builder;
         }
@@ -139,7 +139,7 @@ namespace KissU.Surging.CPlatform
         /// <returns>服务构建器</returns>
         public static IServiceBuilder AddClientRuntime(this IServiceBuilder builder)
         {
-            var services = builder.Services;
+            var services = builder.ContainerBuilder;
             services.RegisterType(typeof(DefaultServiceEntryLocate)).As(typeof(IServiceEntryLocate)).SingleInstance();
             services.RegisterType(typeof(DefaultHealthCheckService)).As(typeof(IHealthCheckService)).SingleInstance();
             services.RegisterType(typeof(DefaultAddressResolver)).As(typeof(IAddressResolver)).SingleInstance();
@@ -154,13 +154,13 @@ namespace KissU.Surging.CPlatform
         /// <returns>服务构建器</returns>
         public static IServiceBuilder AddClusterSupport(this IServiceBuilder builder)
         {
-            var services = builder.Services;
-            services.RegisterType(typeof(ServiceCommandProvider)).As(typeof(IServiceCommandProvider)).SingleInstance();
-            services.RegisterType(typeof(BreakeRemoteInvokeService)).As(typeof(IBreakeRemoteInvokeService))
+            var containerBuilder = builder.ContainerBuilder;
+            containerBuilder.RegisterType(typeof(ServiceCommandProvider)).As(typeof(IServiceCommandProvider)).SingleInstance();
+            containerBuilder.RegisterType(typeof(BreakeRemoteInvokeService)).As(typeof(IBreakeRemoteInvokeService))
                 .SingleInstance();
-            services.RegisterType(typeof(FailoverInjectionInvoker)).AsImplementedInterfaces()
+            containerBuilder.RegisterType(typeof(FailoverInjectionInvoker)).AsImplementedInterfaces()
                 .Named(StrategyType.Injection.ToString(), typeof(IClusterInvoker)).SingleInstance();
-            services.RegisterType(typeof(FailoverHandoverInvoker)).AsImplementedInterfaces()
+            containerBuilder.RegisterType(typeof(FailoverHandoverInvoker)).AsImplementedInterfaces()
                 .Named(StrategyType.Failover.ToString(), typeof(IClusterInvoker)).SingleInstance();
             return builder;
         }
@@ -173,15 +173,15 @@ namespace KissU.Surging.CPlatform
         /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder AddFilter(this IServiceBuilder builder, IFilter filter)
         {
-            var services = builder.Services;
-            services.Register(p => filter).As(typeof(IFilter)).SingleInstance();
+            var containerBuilder = builder.ContainerBuilder;
+            containerBuilder.Register(p => filter).As(typeof(IFilter)).SingleInstance();
             switch (filter)
             {
                 case IExceptionFilter exceptionFilter:
-                    services.Register(p => exceptionFilter).As(typeof(IExceptionFilter)).SingleInstance();
+                    containerBuilder.Register(p => exceptionFilter).As(typeof(IExceptionFilter)).SingleInstance();
                     break;
                 case IAuthorizationFilter authorizationFilter:
-                    services.Register(p => authorizationFilter).As(typeof(IAuthorizationFilter)).SingleInstance();
+                    containerBuilder.Register(p => authorizationFilter).As(typeof(IAuthorizationFilter)).SingleInstance();
                     break;
             }
 
@@ -196,10 +196,10 @@ namespace KissU.Surging.CPlatform
         /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder AddServiceEngine(this IServiceBuilder builder, Type engine = null)
         {
-            var services = builder.Services;
+            var containerBuilder = builder.ContainerBuilder;
             engine ??= typeof(DefaultVirtualPathProviderServiceEngine);
-            services.RegisterType(engine).As(typeof(IServiceEngine)).SingleInstance();
-            builder.Services.RegisterType(typeof(DefaultServiceEngineBuilder)).As(typeof(IServiceEngineBuilder)).SingleInstance();
+            containerBuilder.RegisterType(engine).As(typeof(IServiceEngine)).SingleInstance();
+            builder.ContainerBuilder.RegisterType(typeof(DefaultServiceEngineBuilder)).As(typeof(IServiceEngineBuilder)).SingleInstance();
             return builder;
         }
 
@@ -210,8 +210,8 @@ namespace KissU.Surging.CPlatform
         /// <returns>服务构建器</returns>
         public static IServiceBuilder AddServiceRuntime(this IServiceBuilder builder)
         {
-            builder.Services.RegisterType(typeof(DefaultServiceEntryLocate)).As(typeof(IServiceEntryLocate)).SingleInstance();
-            builder.Services.RegisterType(typeof(DefaultServiceExecutor)).As(typeof(IServiceExecutor)).Named<IServiceExecutor>(CommunicationProtocol.Tcp.ToString()).SingleInstance();
+            builder.ContainerBuilder.RegisterType(typeof(DefaultServiceEntryLocate)).As(typeof(IServiceEntryLocate)).SingleInstance();
+            builder.ContainerBuilder.RegisterType(typeof(DefaultServiceExecutor)).As(typeof(IServiceExecutor)).Named<IServiceExecutor>(CommunicationProtocol.Tcp.ToString()).SingleInstance();
 
             return builder
                 .RegisterServices()
@@ -228,10 +228,10 @@ namespace KissU.Surging.CPlatform
         /// <returns>服务构建器</returns>
         public static IServiceBuilder AddRelateServiceRuntime(this IServiceBuilder builder)
         {
-            var services = builder.Services;
-            services.RegisterType(typeof(DefaultHealthCheckService)).As(typeof(IHealthCheckService)).SingleInstance();
-            services.RegisterType(typeof(DefaultAddressResolver)).As(typeof(IAddressResolver)).SingleInstance();
-            services.RegisterType(typeof(RemoteInvokeService)).As(typeof(IRemoteInvokeService)).SingleInstance();
+            var containerBuilder = builder.ContainerBuilder;
+            containerBuilder.RegisterType(typeof(DefaultHealthCheckService)).As(typeof(IHealthCheckService)).SingleInstance();
+            containerBuilder.RegisterType(typeof(DefaultAddressResolver)).As(typeof(IAddressResolver)).SingleInstance();
+            containerBuilder.RegisterType(typeof(RemoteInvokeService)).As(typeof(IRemoteInvokeService)).SingleInstance();
             return builder.UseAddressSelector().AddClusterSupport();
         }
 
@@ -289,20 +289,20 @@ namespace KissU.Surging.CPlatform
         public static IServiceBuilder RegisterInstanceByConstraint(this IServiceBuilder builder,
             params string[] virtualPaths)
         {
-            var services = builder.Services;
+            var containerBuilder = builder.ContainerBuilder;
             var referenceAssemblies = ModuleHelper.GetReferenceAssembly(virtualPaths);
 
             foreach (var assembly in referenceAssemblies)
             {
-                services.RegisterAssemblyTypes(assembly)
+                containerBuilder.RegisterAssemblyTypes(assembly)
                     .Where(t => typeof(ISingletonDependency).GetTypeInfo().IsAssignableFrom(t))
                     .AsImplementedInterfaces().AsSelf().SingleInstance();
 
-                services.RegisterAssemblyTypes(assembly)
+                containerBuilder.RegisterAssemblyTypes(assembly)
                     .Where(t => typeof(IScopedDependency).GetTypeInfo().IsAssignableFrom(t))
                     .AsImplementedInterfaces().AsSelf().InstancePerLifetimeScope();
 
-                services.RegisterAssemblyTypes(assembly)
+                containerBuilder.RegisterAssemblyTypes(assembly)
                     .Where(t => typeof(ITransientDependency).GetTypeInfo().IsAssignableFrom(t))
                     .AsImplementedInterfaces().AsSelf().InstancePerDependency();
             }
@@ -317,11 +317,11 @@ namespace KissU.Surging.CPlatform
         /// <returns>IServiceBuilder.</returns>
         private static IServiceBuilder AddRuntime(this IServiceBuilder builder)
         {
-            var services = builder.Services;
+            var containerBuilder = builder.ContainerBuilder;
 
-            services.RegisterType(typeof(ClrServiceEntryFactory)).As(typeof(IClrServiceEntryFactory)).SingleInstance();
+            containerBuilder.RegisterType(typeof(ClrServiceEntryFactory)).As(typeof(IClrServiceEntryFactory)).SingleInstance();
 
-            services.Register(provider =>
+            containerBuilder.Register(provider =>
             {
                 try
                 {
@@ -336,7 +336,7 @@ namespace KissU.Surging.CPlatform
                     builder = null;
                 }
             }).As<IServiceEntryProvider>();
-            builder.Services.RegisterType(typeof(DefaultServiceEntryManager)).As(typeof(IServiceEntryManager))
+            builder.ContainerBuilder.RegisterType(typeof(DefaultServiceEntryManager)).As(typeof(IServiceEntryManager))
                 .SingleInstance();
             return builder;
         }
@@ -361,22 +361,22 @@ namespace KissU.Surging.CPlatform
         {
             try
             {
-                var services = builder.Services;
+                var containerBuilder = builder.ContainerBuilder;
                 var referenceAssemblies = ModuleHelper.GetAssemblies(virtualPaths);
                 foreach (var assembly in referenceAssemblies)
                 {
-                    services.RegisterAssemblyTypes(assembly)
+                    containerBuilder.RegisterAssemblyTypes(assembly)
                         // 注入继承IServiceKey接口的所有接口
                         .Where(t => typeof(IServiceKey).GetTypeInfo().IsAssignableFrom(t) && t.IsInterface)
                         .AsImplementedInterfaces();
-                    services.RegisterAssemblyTypes(assembly)
+                    containerBuilder.RegisterAssemblyTypes(assembly)
                         // 注入实现IServiceBehavior接口并ModuleName为空的类，作为接口实现类
                         .Where(t => !typeof(ISingletonDependency).GetTypeInfo().IsAssignableFrom(t) &&
                                     typeof(IServiceBehavior).GetTypeInfo().IsAssignableFrom(t) &&
                                     t.GetTypeInfo().GetCustomAttribute<ModuleNameAttribute>() == null)
                         .AsImplementedInterfaces();
 
-                    services.RegisterAssemblyTypes(assembly)
+                    containerBuilder.RegisterAssemblyTypes(assembly)
                         // 注入实现IServiceBehavior接口并ModuleName为空的类，作为接口实现类
                         .Where(t => typeof(ISingletonDependency).GetTypeInfo().IsAssignableFrom(t) &&
                                     typeof(IServiceBehavior).GetTypeInfo().IsAssignableFrom(t) &&
@@ -394,9 +394,9 @@ namespace KissU.Surging.CPlatform
                             .FirstOrDefault(t => typeof(IServiceKey).GetTypeInfo().IsAssignableFrom(t));
                         if (interfaceObj != null)
                         {
-                            services.RegisterType(type).AsImplementedInterfaces()
+                            containerBuilder.RegisterType(type).AsImplementedInterfaces()
                                 .Named(module.ModuleName, interfaceObj);
-                            services.RegisterType(type).Named(module.ModuleName, type);
+                            containerBuilder.RegisterType(type).Named(module.ModuleName, type);
                         }
                     }
                 }
@@ -424,15 +424,15 @@ namespace KissU.Surging.CPlatform
         public static IServiceBuilder RegisterServiceBus
             (this IServiceBuilder builder, params string[] virtualPaths)
         {
-            var services = builder.Services;
+            var containerBuilder = builder.ContainerBuilder;
             var referenceAssemblies = ModuleHelper.GetAssemblies(virtualPaths);
 
             foreach (var assembly in referenceAssemblies)
             {
-                services.RegisterAssemblyTypes(assembly)
+                containerBuilder.RegisterAssemblyTypes(assembly)
                     .Where(t => typeof(IIntegrationEventHandler).GetTypeInfo().IsAssignableFrom(t))
                     .AsImplementedInterfaces().SingleInstance();
-                services.RegisterAssemblyTypes(assembly)
+                containerBuilder.RegisterAssemblyTypes(assembly)
                     .Where(t => typeof(IIntegrationEventHandler).IsAssignableFrom(t)).SingleInstance();
             }
 
@@ -448,7 +448,7 @@ namespace KissU.Surging.CPlatform
         /// <exception cref="ArgumentNullException">builder</exception>
         public static IServiceBuilder RegisterModules(this IServiceBuilder builder, params string[] virtualPaths)
         {
-            var services = builder.Services;
+            var containerBuilder = builder.ContainerBuilder;
             var referenceAssemblies = ModuleHelper.GetAssemblies(virtualPaths);
             if (builder == null)
             {
@@ -461,7 +461,7 @@ namespace KissU.Surging.CPlatform
             {
                 ModuleHelper.GetAbstractModules(moduleAssembly).ForEach(p =>
                 {
-                    services.RegisterModule(p);
+                    containerBuilder.RegisterModule(p);
                     if (packages.ContainsKey(p.TypeName))
                     {
                         var useModules = packages[p.TypeName];
@@ -479,7 +479,7 @@ namespace KissU.Surging.CPlatform
                 });
             }
 
-            builder.Services.Register(provider => new ModuleProvider(
+            builder.ContainerBuilder.Register(provider => new ModuleProvider(
                 _modules, virtualPaths, provider.Resolve<ILogger<ModuleProvider>>(),
                 provider.Resolve<CPlatformContainer>()
             )).As<IModuleProvider>().SingleInstance();
@@ -550,7 +550,7 @@ namespace KissU.Surging.CPlatform
         public static IServiceBuilder UseRouteManager<T>(this IServiceBuilder builder)
             where T : class, IServiceRouteManager
         {
-            builder.Services.RegisterType(typeof(T)).As(typeof(IServiceRouteManager)).SingleInstance();
+            builder.ContainerBuilder.RegisterType(typeof(T)).As(typeof(IServiceRouteManager)).SingleInstance();
             return builder;
         }
 
@@ -563,7 +563,7 @@ namespace KissU.Surging.CPlatform
         public static IServiceBuilder UseRouteManager(this IServiceBuilder builder,
             Func<IServiceProvider, IServiceRouteManager> factory)
         {
-            builder.Services.RegisterAdapter(factory).InstancePerLifetimeScope();
+            builder.ContainerBuilder.RegisterAdapter(factory).InstancePerLifetimeScope();
             return builder;
         }
 
@@ -576,7 +576,7 @@ namespace KissU.Surging.CPlatform
         public static IServiceBuilder UseSubscribeManager(this IServiceBuilder builder,
             Func<IServiceProvider, IServiceSubscribeManager> factory)
         {
-            builder.Services.RegisterAdapter(factory).InstancePerLifetimeScope();
+            builder.ContainerBuilder.RegisterAdapter(factory).InstancePerLifetimeScope();
             return builder;
         }
 
@@ -589,7 +589,7 @@ namespace KissU.Surging.CPlatform
         public static IServiceBuilder UseCommandManager(this IServiceBuilder builder,
             Func<IServiceProvider, IServiceCommandManager> factory)
         {
-            builder.Services.RegisterAdapter(factory).InstancePerLifetimeScope();
+            builder.ContainerBuilder.RegisterAdapter(factory).InstancePerLifetimeScope();
             return builder;
         }
 
@@ -602,7 +602,7 @@ namespace KissU.Surging.CPlatform
         public static IServiceBuilder UseCacheManager(this IServiceBuilder builder,
             Func<IServiceProvider, IServiceCacheManager> factory)
         {
-            builder.Services.RegisterAdapter(factory).InstancePerLifetimeScope();
+            builder.ContainerBuilder.RegisterAdapter(factory).InstancePerLifetimeScope();
             return builder;
         }
 
@@ -614,7 +614,7 @@ namespace KissU.Surging.CPlatform
         /// <returns>服务构建器</returns>
         public static IServiceBuilder UseRouteManager(this IServiceBuilder builder, IServiceRouteManager instance)
         {
-            builder.Services.RegisterInstance(instance);
+            builder.ContainerBuilder.RegisterInstance(instance);
             return builder;
         }
 
@@ -627,7 +627,7 @@ namespace KissU.Surging.CPlatform
         public static IServiceBuilder UseMqttRouteManager(this IServiceBuilder builder,
             Func<IServiceProvider, IMqttServiceRouteManager> factory)
         {
-            builder.Services.RegisterAdapter(factory).InstancePerLifetimeScope();
+            builder.ContainerBuilder.RegisterAdapter(factory).InstancePerLifetimeScope();
             return builder;
         }
 
@@ -642,7 +642,7 @@ namespace KissU.Surging.CPlatform
         /// <returns>服务构建器</returns>
         public static IServiceBuilder UsePollingAddressSelector(this IServiceBuilder builder)
         {
-            builder.Services.RegisterType(typeof(PollingAddressSelector))
+            builder.ContainerBuilder.RegisterType(typeof(PollingAddressSelector))
                 .Named(AddressSelectorMode.Polling.ToString(), typeof(IAddressSelector)).SingleInstance();
             return builder;
         }
@@ -654,7 +654,7 @@ namespace KissU.Surging.CPlatform
         /// <returns>服务构建器</returns>
         public static IServiceBuilder UseFairPollingAddressSelector(this IServiceBuilder builder)
         {
-            builder.Services.RegisterType(typeof(FairPollingAdrSelector))
+            builder.ContainerBuilder.RegisterType(typeof(FairPollingAdrSelector))
                 .Named(AddressSelectorMode.FairPolling.ToString(), typeof(IAddressSelector)).SingleInstance();
             return builder;
         }
@@ -666,7 +666,7 @@ namespace KissU.Surging.CPlatform
         /// <returns>服务构建器</returns>
         public static IServiceBuilder UseHashAlgorithmAddressSelector(this IServiceBuilder builder)
         {
-            builder.Services.RegisterType(typeof(HashAlgorithmAdrSelector))
+            builder.ContainerBuilder.RegisterType(typeof(HashAlgorithmAdrSelector))
                 .Named(AddressSelectorMode.HashAlgorithm.ToString(), typeof(IAddressSelector)).SingleInstance();
             return builder;
         }
@@ -678,7 +678,7 @@ namespace KissU.Surging.CPlatform
         /// <returns>服务构建器</returns>
         public static IServiceBuilder UseRandomAddressSelector(this IServiceBuilder builder)
         {
-            builder.Services.RegisterType(typeof(RandomAddressSelector))
+            builder.ContainerBuilder.RegisterType(typeof(RandomAddressSelector))
                 .Named(AddressSelectorMode.Random.ToString(), typeof(IAddressSelector)).SingleInstance();
             return builder;
         }
@@ -690,7 +690,7 @@ namespace KissU.Surging.CPlatform
         /// <returns>服务构建者。</returns>
         public static IServiceBuilder UseRoundRobinAddressSelector(this IServiceBuilder builder)
         {
-            builder.Services.RegisterType(typeof(RoundRobinAddressSelector))
+            builder.ContainerBuilder.RegisterType(typeof(RoundRobinAddressSelector))
                 .Named(AddressSelectorMode.RoundRobin.ToString(), typeof(IAddressSelector)).SingleInstance();
             return builder;
         }
@@ -717,7 +717,7 @@ namespace KissU.Surging.CPlatform
         /// <returns>服务构建器</returns>
         public static IServiceBuilder UseCodec(this IServiceBuilder builder, ITransportMessageCodecFactory codecFactory)
         {
-            builder.Services.RegisterInstance(codecFactory).SingleInstance();
+            builder.ContainerBuilder.RegisterInstance(codecFactory).SingleInstance();
             return builder;
         }
 
@@ -730,7 +730,7 @@ namespace KissU.Surging.CPlatform
         public static IServiceBuilder UseCodec<T>(this IServiceBuilder builder)
             where T : class, ITransportMessageCodecFactory
         {
-            builder.Services.RegisterType(typeof(T)).As(typeof(ITransportMessageCodecFactory)).SingleInstance();
+            builder.ContainerBuilder.RegisterType(typeof(T)).As(typeof(ITransportMessageCodecFactory)).SingleInstance();
             return builder;
         }
 
@@ -743,7 +743,7 @@ namespace KissU.Surging.CPlatform
         public static IServiceBuilder UseCodec(this IServiceBuilder builder,
             Func<IServiceProvider, ITransportMessageCodecFactory> codecFactory)
         {
-            builder.Services.RegisterAdapter(codecFactory).SingleInstance();
+            builder.ContainerBuilder.RegisterAdapter(codecFactory).SingleInstance();
             return builder;
         }
 

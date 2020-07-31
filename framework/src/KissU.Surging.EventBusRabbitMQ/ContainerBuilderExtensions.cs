@@ -27,13 +27,13 @@ namespace KissU.Surging.EventBusRabbitMQ
         /// <returns>服务构建者。</returns>
         public static IServiceBuilder UseRabbitMQTransport(this IServiceBuilder builder)
         {
-            builder.Services.RegisterType(typeof(Implementation.EventBusRabbitMQ)).As(typeof(IEventBus))
+            builder.ContainerBuilder.RegisterType(typeof(Implementation.EventBusRabbitMQ)).As(typeof(IEventBus))
                 .SingleInstance();
-            builder.Services.RegisterType(typeof(DefaultConsumeConfigurator)).As(typeof(IConsumeConfigurator))
+            builder.ContainerBuilder.RegisterType(typeof(DefaultConsumeConfigurator)).As(typeof(IConsumeConfigurator))
                 .SingleInstance();
-            builder.Services.RegisterType(typeof(InMemoryEventBusSubscriptionsManager))
+            builder.ContainerBuilder.RegisterType(typeof(InMemoryEventBusSubscriptionsManager))
                 .As(typeof(IEventBusSubscriptionsManager)).SingleInstance();
-            builder.Services.Register(provider =>
+            builder.ContainerBuilder.Register(provider =>
             {
                 var logger = provider.Resolve<ILogger<DefaultRabbitMQPersistentConnection>>();
                 var option = new EventBusOption();
@@ -70,8 +70,8 @@ namespace KissU.Surging.EventBusRabbitMQ
         public static IServiceBuilder UseRabbitMQEventAdapt(this IServiceBuilder builder,
             Func<IServiceProvider, ISubscriptionAdapt> adapt)
         {
-            var services = builder.Services;
-            services.RegisterAdapter(adapt);
+            var containerBuilder = builder.ContainerBuilder;
+            containerBuilder.RegisterAdapter(adapt);
             return builder;
         }
 

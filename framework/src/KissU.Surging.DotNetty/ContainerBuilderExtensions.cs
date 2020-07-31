@@ -24,9 +24,9 @@ namespace KissU.Surging.DotNetty
         [Obsolete]
         public static IServiceBuilder UseDotNettyTransport(this IServiceBuilder builder)
         {
-            var services = builder.Services;
+            var containerBuilder = builder.ContainerBuilder;
 
-            services.Register(provider =>
+            containerBuilder.Register(provider =>
             {
                 IServiceExecutor serviceExecutor = null;
                 if (provider.IsRegistered(typeof(IServiceExecutor)))
@@ -39,7 +39,7 @@ namespace KissU.Surging.DotNetty
             if (AppConfig.ServerOptions.Protocol == CommunicationProtocol.Tcp ||
                 AppConfig.ServerOptions.Protocol == CommunicationProtocol.None)
             {
-                RegisterDefaultProtocol(services);
+                RegisterDefaultProtocol(containerBuilder);
             }
 
             return builder;

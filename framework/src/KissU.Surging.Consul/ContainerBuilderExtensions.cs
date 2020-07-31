@@ -142,7 +142,7 @@ namespace KissU.Surging.Consul
         /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder UseConsulWatch(this IServiceBuilder builder, ConfigInfo configInfo)
         {
-            builder.Services.Register(provider =>
+            builder.ContainerBuilder.Register(provider =>
             {
                 return new ClientWatchManager(provider.Resolve<ILogger<ClientWatchManager>>(), configInfo);
             }).As<IClientWatchManager>().SingleInstance();
@@ -156,7 +156,7 @@ namespace KissU.Surging.Consul
         /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder UseConsulAddressSelector(this IServiceBuilder builder)
         {
-            builder.Services.RegisterType<ConsulRandomAddressSelector>().As<IConsulAddressSelector>().SingleInstance();
+            builder.ContainerBuilder.RegisterType<ConsulRandomAddressSelector>().As<IConsulAddressSelector>().SingleInstance();
             return builder;
         }
 
@@ -167,7 +167,7 @@ namespace KissU.Surging.Consul
         /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder UseHealthCheck(this IServiceBuilder builder)
         {
-            builder.Services.RegisterType<DefaultHealthCheckService>().As<IHealthCheckService>().SingleInstance();
+            builder.ContainerBuilder.RegisterType<DefaultHealthCheckService>().As<IHealthCheckService>().SingleInstance();
             return builder;
         }
 
@@ -180,7 +180,7 @@ namespace KissU.Surging.Consul
         /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder UseCounlClientProvider(this IServiceBuilder builder, ConfigInfo configInfo)
         {
-            builder.Services.Register(provider =>
+            builder.ContainerBuilder.Register(provider =>
                     new DefaultConsulClientProvider(
                         GetConfigInfo(configInfo),
                         provider.Resolve<IHealthCheckService>(),

@@ -105,14 +105,14 @@ namespace KissU.Modularity
                 // 如果可用
                 if (Enable)
                 {
-                    // 注册创建容器
+                    // 配置服务
+                    ConfigureServices(ServiceConfigurationContext);
+
+                    // 配置容器
                     ConfigureContainer(Builder);
 
                     // 注册组件
                     RegisterComponents(Builder);
-
-                    // 配置服务
-                    ConfigureServices(ServiceConfigurationContext);
 
                     // 填充容器
                     Builder.ContainerBuilder.Populate(ServiceConfigurationContext.Services);

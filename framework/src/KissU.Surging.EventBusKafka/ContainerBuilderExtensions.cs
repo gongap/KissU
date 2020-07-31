@@ -35,15 +35,15 @@ namespace KissU.Surging.EventBusKafka
             options.Invoke(AppConfig.Options);
             AppConfig.KafkaConsumerConfig = AppConfig.Options.GetConsumerConfig();
             AppConfig.KafkaProducerConfig = AppConfig.Options.GetProducerConfig();
-            var services = builder.Services;
-            builder.Services.RegisterType(typeof(Implementation.EventBusKafka)).As(typeof(IEventBus)).SingleInstance();
-            builder.Services.RegisterType(typeof(DefaultConsumeConfigurator)).As(typeof(IConsumeConfigurator))
+            var containerBuilder = builder.ContainerBuilder;
+            containerBuilder.RegisterType(typeof(Implementation.EventBusKafka)).As(typeof(IEventBus)).SingleInstance();
+            containerBuilder.RegisterType(typeof(DefaultConsumeConfigurator)).As(typeof(IConsumeConfigurator))
                 .SingleInstance();
-            builder.Services.RegisterType(typeof(InMemoryEventBusSubscriptionsManager))
+            containerBuilder.RegisterType(typeof(InMemoryEventBusSubscriptionsManager))
                 .As(typeof(IEventBusSubscriptionsManager)).SingleInstance();
-            builder.Services.RegisterType(typeof(KafkaProducerPersistentConnection))
+            containerBuilder.RegisterType(typeof(KafkaProducerPersistentConnection))
                 .Named(KafkaConnectionType.Producer.ToString(), typeof(IKafkaPersisterConnection)).SingleInstance();
-            builder.Services.RegisterType(typeof(KafkaConsumerPersistentConnection))
+            containerBuilder.RegisterType(typeof(KafkaConsumerPersistentConnection))
                 .Named(KafkaConnectionType.Consumer.ToString(), typeof(IKafkaPersisterConnection)).SingleInstance();
             return builder;
         }
@@ -57,8 +57,8 @@ namespace KissU.Surging.EventBusKafka
         public static IServiceBuilder UseKafkaMQEventAdapt(this IServiceBuilder builder,
             Func<IServiceProvider, ISubscriptionAdapt> adapt)
         {
-            var services = builder.Services;
-            services.RegisterAdapter(adapt);
+            var containerBuilder = builder.ContainerBuilder;
+            containerBuilder.RegisterAdapter(adapt);
             return builder;
         }
 

@@ -25,10 +25,10 @@ namespace KissU.Surging.ProxyGenerator
         /// <returns>服务构建者。</returns>
         public static IServiceBuilder AddClientProxy(this IServiceBuilder builder)
         {
-            var services = builder.Services;
-            services.RegisterType<ServiceProxyGenerater>().As<IServiceProxyGenerater>().SingleInstance();
-            services.RegisterType<ServiceProxyProvider>().As<IServiceProxyProvider>().SingleInstance();
-            builder.Services.Register(provider => new ServiceProxyFactory(
+            var containerBuilder = builder.ContainerBuilder;
+            containerBuilder.RegisterType<ServiceProxyGenerater>().As<IServiceProxyGenerater>().SingleInstance();
+            containerBuilder.RegisterType<ServiceProxyProvider>().As<IServiceProxyProvider>().SingleInstance();
+            builder.ContainerBuilder.Register(provider => new ServiceProxyFactory(
                 provider.Resolve<IRemoteInvokeService>(),
                 provider.Resolve<ITypeConvertibleService>(),
                 provider.Resolve<IServiceProvider>(),
@@ -48,9 +48,9 @@ namespace KissU.Surging.ProxyGenerator
         public static IServiceBuilder AddClientIntercepted(this IServiceBuilder builder,
             params Type[] interceptorServiceTypes)
         {
-            var services = builder.Services;
-            services.RegisterTypes(interceptorServiceTypes).As<IInterceptor>().SingleInstance();
-            services.RegisterType<InterceptorProvider>().As<IInterceptorProvider>().SingleInstance();
+            var containerBuilder = builder.ContainerBuilder;
+            containerBuilder.RegisterTypes(interceptorServiceTypes).As<IInterceptor>().SingleInstance();
+            containerBuilder.RegisterType<InterceptorProvider>().As<IInterceptorProvider>().SingleInstance();
             return builder;
         }
 
@@ -61,8 +61,8 @@ namespace KissU.Surging.ProxyGenerator
         /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder AddRpcTransportDiagnostic(this IServiceBuilder builder)
         {
-            var services = builder.Services;
-            services.RegisterType<RpcTransportDiagnosticProcessor>().As<ITracingDiagnosticProcessor>().SingleInstance();
+            var containerBuilder = builder.ContainerBuilder;
+            containerBuilder.RegisterType<RpcTransportDiagnosticProcessor>().As<ITracingDiagnosticProcessor>().SingleInstance();
             return builder;
         }
 
@@ -74,9 +74,9 @@ namespace KissU.Surging.ProxyGenerator
         /// <returns>服务构建者</returns>
         public static IServiceBuilder AddClientIntercepted(this IServiceBuilder builder, Type interceptorServiceType)
         {
-            var services = builder.Services;
-            services.RegisterType(interceptorServiceType).As<IInterceptor>().SingleInstance();
-            services.RegisterType<InterceptorProvider>().As<IInterceptorProvider>().SingleInstance();
+            var containerBuilder = builder.ContainerBuilder;
+            containerBuilder.RegisterType(interceptorServiceType).As<IInterceptor>().SingleInstance();
+            containerBuilder.RegisterType<InterceptorProvider>().As<IInterceptorProvider>().SingleInstance();
             return builder;
         }
 

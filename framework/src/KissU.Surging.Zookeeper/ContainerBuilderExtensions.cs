@@ -171,7 +171,7 @@ namespace KissU.Surging.Zookeeper
         /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder UseZookeeperAddressSelector(this IServiceBuilder builder)
         {
-            builder.Services.RegisterType<ZookeeperRandomAddressSelector>().As<IZookeeperAddressSelector>()
+            builder.ContainerBuilder.RegisterType<ZookeeperRandomAddressSelector>().As<IZookeeperAddressSelector>()
                 .SingleInstance();
             return builder;
         }
@@ -183,7 +183,7 @@ namespace KissU.Surging.Zookeeper
         /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder UseHealthCheck(this IServiceBuilder builder)
         {
-            builder.Services.RegisterType<DefaultHealthCheckService>().As<IHealthCheckService>().SingleInstance();
+            builder.ContainerBuilder.RegisterType<DefaultHealthCheckService>().As<IHealthCheckService>().SingleInstance();
             return builder;
         }
 
@@ -196,7 +196,7 @@ namespace KissU.Surging.Zookeeper
         /// <returns>IServiceBuilder.</returns>
         public static IServiceBuilder UseZookeeperClientProvider(this IServiceBuilder builder, ConfigInfo configInfo)
         {
-            builder.Services.Register(provider =>
+            builder.ContainerBuilder.Register(provider =>
                     new DefaultZookeeperClientProvider(
                         GetConfigInfo(configInfo),
                         provider.Resolve<IHealthCheckService>(),

@@ -33,16 +33,16 @@ namespace KissU.Surging.Caching
         /// <returns>服务构建者</returns>
         public static IServiceBuilder AddCache(this IServiceBuilder builder)
         {
-            var services = builder.Services;
-            services.RegisterType(typeof(DefaultHealthCheckService)).As(typeof(IHealthCheckService)).SingleInstance();
-            services.RegisterType(typeof(DefaultAddressResolver)).As(typeof(IAddressResolver)).SingleInstance();
-            services.RegisterType(typeof(HashAlgorithm)).As(typeof(IHashAlgorithm)).SingleInstance();
-            services.RegisterType(typeof(DefaultServiceCacheFactory)).As(typeof(IServiceCacheFactory)).SingleInstance();
-            services.RegisterType(typeof(DefaultCacheNodeProvider)).As(typeof(ICacheNodeProvider)).SingleInstance();
-            services.RegisterType(typeof(ConfigurationWatchProvider)).As(typeof(IConfigurationWatchProvider))
+            var containerBuilder = builder.ContainerBuilder;
+            containerBuilder.RegisterType(typeof(DefaultHealthCheckService)).As(typeof(IHealthCheckService)).SingleInstance();
+            containerBuilder.RegisterType(typeof(DefaultAddressResolver)).As(typeof(IAddressResolver)).SingleInstance();
+            containerBuilder.RegisterType(typeof(HashAlgorithm)).As(typeof(IHashAlgorithm)).SingleInstance();
+            containerBuilder.RegisterType(typeof(DefaultServiceCacheFactory)).As(typeof(IServiceCacheFactory)).SingleInstance();
+            containerBuilder.RegisterType(typeof(DefaultCacheNodeProvider)).As(typeof(ICacheNodeProvider)).SingleInstance();
+            containerBuilder.RegisterType(typeof(ConfigurationWatchProvider)).As(typeof(IConfigurationWatchProvider))
                 .SingleInstance();
-            RegisterConfigInstance(services);
-            RegisterLocalInstance("ICacheClient`1", services);
+            RegisterConfigInstance(containerBuilder);
+            RegisterLocalInstance("ICacheClient`1", containerBuilder);
             return builder;
         }
 

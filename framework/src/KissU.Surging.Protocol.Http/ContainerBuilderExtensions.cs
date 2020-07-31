@@ -22,16 +22,16 @@ namespace KissU.Surging.Protocol.Http
         /// <returns>服务构建者。</returns>
         public static IServiceBuilder AddHttpProtocol(this IServiceBuilder builder)
         {
-            var services = builder.Services;
-            services.RegisterType(typeof(HttpServiceExecutor)).As(typeof(IServiceExecutor))
+            var containerBuilder = builder.ContainerBuilder;
+            containerBuilder.RegisterType(typeof(HttpServiceExecutor)).As(typeof(IServiceExecutor))
                 .Named<IServiceExecutor>(CommunicationProtocol.Http.ToString()).SingleInstance();
             if (AppConfig.ServerOptions.Protocol == CommunicationProtocol.Http)
             {
-                RegisterDefaultProtocol(services);
+                RegisterDefaultProtocol(containerBuilder);
             }
             else if (AppConfig.ServerOptions.Protocol == CommunicationProtocol.None)
             {
-                RegisterHttpProtocol(services);
+                RegisterHttpProtocol(containerBuilder);
             }
 
             return builder;
