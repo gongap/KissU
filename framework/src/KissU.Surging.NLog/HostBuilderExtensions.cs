@@ -13,7 +13,7 @@ namespace KissU.Surging.Nlog
     /// <summary>
     /// ServiceHostBuilderExtensions.
     /// </summary>
-    public static class ServiceHostBuilderExtensions
+    public static class HostBuilderExtensions
     {
         /// <summary>
         /// Uses the n log.

@@ -18,7 +18,7 @@ namespace KissU.Surging.EventBusRabbitMQ
     /// <summary>
     /// ContainerBuilderExtensions.
     /// </summary>
-    public static class ContainerBuilderExtensions
+    public static class ServiceBuilderExtensions
     {
         /// <summary>
         /// 使用RabbitMQ进行传输。

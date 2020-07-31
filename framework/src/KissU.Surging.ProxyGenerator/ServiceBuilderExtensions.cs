@@ -16,7 +16,7 @@ namespace KissU.Surging.ProxyGenerator
     /// <summary>
     /// ContainerBuilderExtensions.
     /// </summary>
-    public static class ContainerBuilderExtensions
+    public static class ServiceBuilderExtensions
     {
         /// <summary>
         /// 添加客户端代理

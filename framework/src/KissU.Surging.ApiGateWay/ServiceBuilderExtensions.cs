@@ -1,5 +1,4 @@
 ﻿using Autofac;
-
 using KissU.Dependency;
 using KissU.Modularity;
 using KissU.Surging.ApiGateWay.Aggregation;
@@ -18,7 +17,7 @@ namespace KissU.Surging.ApiGateWay
     /// <summary>
     /// ContainerBuilderExtensions.
     /// </summary>
-    public static class ContainerBuilderExtensions
+    public static class ServiceBuilderExtensions
     {
         /// <summary>
         /// 添加网关中间件

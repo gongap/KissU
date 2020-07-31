@@ -54,7 +54,7 @@ namespace KissU.Surging.CPlatform
     /// <summary>
     /// 容器构建器扩展.
     /// </summary>
-    public static class ContainerBuilderExtensions
+    public static class ServiceBuilderExtensions
     {
         private static readonly List<AbstractModule> _modules = new List<AbstractModule>();
 

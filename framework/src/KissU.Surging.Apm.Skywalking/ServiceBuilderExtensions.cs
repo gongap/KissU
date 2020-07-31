@@ -20,7 +20,7 @@ using KissU.Surging.CPlatform.Diagnostics;
 
 namespace KissU.Surging.Apm.Skywalking
 {
-    public static class ContainerBuilderExtensions
+    public static class ServiceBuilderExtensions
     {
         public static IServiceBuilder UseSkywalking(this IServiceBuilder builder)
         {

@@ -11,7 +11,7 @@ namespace KissU.Surging.Log4net
     /// <summary>
     /// ServiceHostBuilderExtensions.
     /// </summary>
-    public static class ServiceHostBuilderExtensions
+    public static class HostBuilderExtensions
     {
         /// <summary>
         /// Uses the log4net.

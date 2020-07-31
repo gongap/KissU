@@ -1,21 +1,21 @@
 ﻿using KissU.Modularity;
 using KissU.Surging.CPlatform;
 
-namespace KissU.Surging.Codec.MessagePack
+namespace KissU.Surging.Codec.ProtoBuffer
 {
     /// <summary>
     /// ContainerBuilderExtensions.
     /// </summary>
-    public static class ContainerBuilderExtensions
+    public static class ServiceBuilderExtensions
     {
         /// <summary>
-        /// 使用messagepack编码解码方式
+        /// Uses the proto buffer codec.
         /// </summary>
         /// <param name="builder">The builder.</param>
         /// <returns>IServiceBuilder.</returns>
-        public static IServiceBuilder UseMessagePackCodec(this IServiceBuilder builder)
+        public static IServiceBuilder UseProtoBufferCodec(this IServiceBuilder builder)
         {
-            return builder.UseCodec<MessagePackTransportMessageCodecFactory>();
+            return builder.UseCodec<ProtoBufferTransportMessageCodecFactory>();
         }
     }
 }

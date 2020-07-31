@@ -16,7 +16,7 @@ namespace KissU.Surging.EventBusKafka
     /// <summary>
     /// ContainerBuilderExtensions.
     /// </summary>
-    public static class ContainerBuilderExtensions
+    public static class ServiceBuilderExtensions
     {
         /// <summary>
         /// 使用KafkaMQ进行传输。

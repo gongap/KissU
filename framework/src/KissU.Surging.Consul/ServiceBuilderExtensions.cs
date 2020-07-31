@@ -26,7 +26,7 @@ namespace KissU.Surging.Consul
     /// <summary>
     /// ContainerBuilderExtensions.
     /// </summary>
-    public static class ContainerBuilderExtensions
+    public static class ServiceBuilderExtensions
     {
         /// <summary>
         /// 设置服务路由管理者。

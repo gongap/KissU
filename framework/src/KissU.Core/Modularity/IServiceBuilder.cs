@@ -9,7 +9,7 @@ namespace KissU.Modularity
     public interface IServiceBuilder
     {
         /// <summary>
-        /// 服务集合
+        /// 容器构建器
         /// </summary>
         ContainerBuilder ContainerBuilder { get; set; }
 

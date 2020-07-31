@@ -13,7 +13,7 @@ namespace KissU.Surging.Protocol.Http
     /// <summary>
     /// ContainerBuilderExtensions.
     /// </summary>
-    public static class ContainerBuilderExtensions
+    public static class ServiceBuilderExtensions
     {
         /// <summary>
         /// 添加http协议

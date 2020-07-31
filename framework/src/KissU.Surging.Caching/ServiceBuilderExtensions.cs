@@ -22,7 +22,7 @@ namespace KissU.Surging.Caching
     /// <summary>
     /// 容器生成扩展
     /// </summary>
-    public static class ContainerBuilderExtensions
+    public static class ServiceBuilderExtensions
     {
         private const string CacheSectionName = "CachingProvider";
 

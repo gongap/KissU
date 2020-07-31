@@ -14,7 +14,7 @@ namespace KissU.Surging.DotNetty
     /// <summary>
     /// ContainerBuilderExtensions.
     /// </summary>
-    public static class ContainerBuilderExtensions
+    public static class ServiceBuilderExtensions
     {
         /// <summary>
         /// 使用DotNetty进行传输。
