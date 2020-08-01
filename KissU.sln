@@ -389,6 +389,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.SampleA.Servi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.SampleB.Service.Contracts", "microservice\KissU.Modules\KissU.Modules.Sample\src\KissU.Modules.SampleB.Service.Contracts\KissU.Modules.SampleB.Service.Contracts.csproj", "{E355B2A2-EAC5-421C-B4B2-4BFC44DACA4C}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU", "framework\src\KissU\KissU.csproj", "{CE2D1A16-3192-4086-B0C9-6E60CA8467D2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -959,6 +961,10 @@ Global
 		{E355B2A2-EAC5-421C-B4B2-4BFC44DACA4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E355B2A2-EAC5-421C-B4B2-4BFC44DACA4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E355B2A2-EAC5-421C-B4B2-4BFC44DACA4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE2D1A16-3192-4086-B0C9-6E60CA8467D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE2D1A16-3192-4086-B0C9-6E60CA8467D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE2D1A16-3192-4086-B0C9-6E60CA8467D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE2D1A16-3192-4086-B0C9-6E60CA8467D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1148,6 +1154,7 @@ Global
 		{1200D241-D721-4893-BB3B-69CFEF7D1110} = {AEB1DABC-31D5-4335-8EEC-A9967DCEA25A}
 		{A8FF37ED-2665-4A1A-A302-366026C22221} = {0D8330AC-9B3C-490B-B815-BC6C9C8B79D1}
 		{E355B2A2-EAC5-421C-B4B2-4BFC44DACA4C} = {0D8330AC-9B3C-490B-B815-BC6C9C8B79D1}
+		{CE2D1A16-3192-4086-B0C9-6E60CA8467D2} = {F1B4AAEF-9162-4DFA-8B62-4069FC914839}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}
