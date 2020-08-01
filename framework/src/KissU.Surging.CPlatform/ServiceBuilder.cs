@@ -24,7 +24,7 @@ namespace KissU.Surging.CPlatform
             }
 
             ContainerBuilder = builder;
-            Services = services;
+            Services = services ?? new ServiceCollection();
         }
 
         /// <summary>

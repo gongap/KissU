@@ -17,7 +17,7 @@ namespace KissU.Surging.EventBusKafka
         /// <returns>IHostBuilder.</returns>
         public static IHostBuilder SubscribeAt(this IHostBuilder hostBuilder)
         {
-            return hostBuilder.Configure(mapper => { mapper.Resolve<ISubscriptionAdapt>().SubscribeAt(); });
+            return hostBuilder.UseServiceHostBuilder(mapper => { mapper.Resolve<ISubscriptionAdapt>().SubscribeAt(); });
         }
     }
 }

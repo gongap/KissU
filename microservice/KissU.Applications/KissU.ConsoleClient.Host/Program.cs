@@ -31,7 +31,7 @@ namespace KissU.ConsoleClient.Host
                     builder.AddCPlatformFile("servicesettings.json", false, true);
                     builder.AddCacheFile("cachesettings.json", false, true);
                 })
-                .ConfigureContainer(builder =>
+                .UseServiceHostBuilder(builder =>
                 {
                     builder.AddMicroService(service => { service.AddClient().AddCache(); });
                     builder.Register(p => new CPlatformContainer(ServiceLocator.Current));

@@ -4,9 +4,7 @@ using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using Autofac;
-using Autofac.Extensions.DependencyInjection;
 using KissU.Exceptions;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace KissU.Modularity
 {
@@ -29,11 +27,6 @@ namespace KissU.Modularity
         /// 容器创建包装属性
         /// </summary>
         public ContainerBuilderWrapper Builder { get; set; }
-
-        /// <summary>
-        /// 容器创建包装属性
-        /// </summary>
-        public ServiceConfigurationContext ServiceConfigurationContext { get; set; }
 
         /// <summary>
         /// 唯一标识guid
@@ -98,9 +91,7 @@ namespace KissU.Modularity
             try
             {
                 base.Load(builder);
-                var services = new ServiceCollection();
                 Builder = new ContainerBuilderWrapper(builder);
-                ServiceConfigurationContext = new ServiceConfigurationContext(services);
 
                 // 如果可用
                 if (Enable)
@@ -110,12 +101,6 @@ namespace KissU.Modularity
 
                     // 注册组件
                     RegisterComponents(Builder);
-
-                    // 配置服务
-                    ConfigureServices(ServiceConfigurationContext);
-
-                    // 填充容器
-                    Builder.ContainerBuilder.Populate(ServiceConfigurationContext.Services);
                 }
             }
             catch (Exception ex)

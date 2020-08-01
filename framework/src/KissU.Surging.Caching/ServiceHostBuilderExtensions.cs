@@ -19,7 +19,7 @@ namespace KissU.Surging.Caching
         /// <returns>IHostBuilder.</returns>
         public static IHostBuilder UseServiceCache(this IHostBuilder hostBuilder)
         {
-            return hostBuilder.Configure(mapper =>
+            return hostBuilder.UseServiceHostBuilder(mapper =>
             {
                 var serviceCacheProvider = mapper.Resolve<ICacheNodeProvider>();
                 var addressDescriptors = serviceCacheProvider.GetServiceCaches().ToList();

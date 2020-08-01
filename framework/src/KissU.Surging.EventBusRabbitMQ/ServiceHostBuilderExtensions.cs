@@ -21,7 +21,7 @@ namespace KissU.Surging.EventBusRabbitMQ
         /// <returns>IHostBuilder.</returns>
         public static IHostBuilder SubscribeAt(this IHostBuilder hostBuilder)
         {
-            return hostBuilder.Configure(mapper =>
+            return hostBuilder.UseServiceHostBuilder(mapper =>
             {
                 mapper.Resolve<IServiceEngineLifetime>().ServiceEngineStarted.Register(() =>
                 {

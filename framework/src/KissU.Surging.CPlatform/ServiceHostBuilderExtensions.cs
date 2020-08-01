@@ -38,7 +38,7 @@ namespace KissU.Surging.CPlatform
         /// <returns>IHostBuilder.</returns>
         public static IHostBuilder UseServer(this IHostBuilder hostBuilder, string ip, int port, string token = "True")
         {
-            return hostBuilder.Configure(async mapper =>
+            return hostBuilder.UseServiceHostBuilder(async mapper =>
             {
                 BuildServiceEngine(mapper);
                 mapper.Resolve<IServiceTokenGenerator>().GeneratorToken(token);
@@ -89,7 +89,7 @@ namespace KissU.Surging.CPlatform
         /// <returns>IHostBuilder.</returns>
         public static IHostBuilder UseClient(this IHostBuilder hostBuilder)
         {
-            return hostBuilder.Configure(mapper =>
+            return hostBuilder.UseServiceHostBuilder(mapper =>
             {
                 var serviceEntryManager = mapper.Resolve<IServiceEntryManager>();
                 var addressDescriptors = serviceEntryManager.GetEntries().Select(i =>

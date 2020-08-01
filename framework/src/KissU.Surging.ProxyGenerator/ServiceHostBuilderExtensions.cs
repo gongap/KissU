@@ -17,7 +17,7 @@ namespace KissU.Surging.ProxyGenerator
         /// <returns>IHostBuilder.</returns>
         public static IHostBuilder UseProxy(this IHostBuilder hostBuilder)
         {
-            return hostBuilder.Configure(mapper =>
+            return hostBuilder.UseServiceHostBuilder(mapper =>
             {
                 mapper.Resolve<IServiceEngineLifetime>().ServiceEngineStarted.Register(() =>
                 {

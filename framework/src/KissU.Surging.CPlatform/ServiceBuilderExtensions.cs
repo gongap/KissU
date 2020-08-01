@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
 using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using KissU.Convertibles;
 using KissU.Convertibles.Implementation;
 using KissU.Dependency;
@@ -448,6 +449,7 @@ namespace KissU.Surging.CPlatform
         /// <exception cref="ArgumentNullException">builder</exception>
         public static IServiceBuilder RegisterModules(this IServiceBuilder builder, params string[] virtualPaths)
         {
+            var services = builder.Services;
             var containerBuilder = builder.ContainerBuilder;
             var referenceAssemblies = ModuleHelper.GetAssemblies(virtualPaths);
             if (builder == null)
@@ -455,12 +457,14 @@ namespace KissU.Surging.CPlatform
                 throw new ArgumentNullException("builder");
             }
 
+            var serviceConfigurationContext = new ServiceConfigurationContext(services);
             // 从servicesettings.json取到packages
             var packages = ConvertDictionary(AppConfig.ServerOptions.Packages);
             foreach (var moduleAssembly in referenceAssemblies)
             {
                 ModuleHelper.GetAbstractModules(moduleAssembly).ForEach(p =>
                 {
+                    p.ConfigureServices(serviceConfigurationContext);
                     containerBuilder.RegisterModule(p);
                     if (packages.ContainsKey(p.TypeName))
                     {
@@ -479,6 +483,7 @@ namespace KissU.Surging.CPlatform
                 });
             }
 
+            builder.ContainerBuilder.Populate(serviceConfigurationContext.Services);
             builder.ContainerBuilder.Register(provider => new ModuleProvider(
                 _modules, virtualPaths, provider.Resolve<ILogger<ModuleProvider>>(),
                 provider.Resolve<CPlatformContainer>()
