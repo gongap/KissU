@@ -464,7 +464,6 @@ namespace KissU.Surging.CPlatform
             {
                 ModuleHelper.GetAbstractModules(moduleAssembly).ForEach(p =>
                 {
-                    p.ConfigureServices(serviceConfigurationContext);
                     containerBuilder.RegisterModule(p);
                     if (packages.ContainsKey(p.TypeName))
                     {
@@ -472,6 +471,7 @@ namespace KissU.Surging.CPlatform
                         if (useModules.AsSpan().IndexOf(p.ModuleName) >= 0)
                         {
                             p.Enable = true;
+                            p.ConfigureServices(serviceConfigurationContext);
                         }
                         else
                         {
