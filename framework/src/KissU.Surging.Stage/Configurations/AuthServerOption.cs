@@ -9,5 +9,10 @@
         /// Gets or sets the white list.
         /// </summary>
         public string Authority { get; set; }
+
+        /// <summary>
+        /// Gets or sets the white list.
+        /// </summary>
+        public string ApiName { get; set; }
     }
 }

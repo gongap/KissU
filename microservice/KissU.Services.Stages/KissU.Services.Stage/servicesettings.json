@@ -40,7 +40,8 @@
     "IsCamelCaseResolver": "${IsCamelCaseResolver}|true",
     "Protocols": "Http1AndHttp2",
     "AuthServer": {
-      "Authority": "http://localhost:8090"
+      "Authority": "http://localhost:8090",
+      "ApiName": "IdentityService"
     },
     "ApiGetWay": {
       "AccessTokenExpireTimeSpan": "30",

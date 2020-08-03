@@ -162,8 +162,8 @@ namespace KissU.Surging.KestrelHttpServer
             app.ApplicationServices.GetRequiredService<ObjectAccessor<IApplicationBuilder>>().Value = app;
             app.UseStaticFiles();
             app.UseRouting();
-            app.UseEndpoints(endpoints => { endpoints.MapDefaultControllerRoute(); });
             _moduleProvider.Configure(new ApplicationInitializationContext(app.ApplicationServices));
+            app.UseEndpoints(endpoints => { endpoints.MapDefaultControllerRoute(); });
             app.Run(async context =>
             {
                 var messageId = Guid.NewGuid().ToString("N");

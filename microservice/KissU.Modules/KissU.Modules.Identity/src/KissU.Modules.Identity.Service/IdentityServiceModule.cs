@@ -28,7 +28,7 @@ namespace KissU.Modules.Identity.Service
                 options.DefinitionProviders.Add<AbpIdentitySettingDefinitionProvider>();
             });
 
-            context.Services.AddAlwaysAllowAuthorization();
+            //context.Services.AddAlwaysAllowAuthorization();
         }
     }
 }

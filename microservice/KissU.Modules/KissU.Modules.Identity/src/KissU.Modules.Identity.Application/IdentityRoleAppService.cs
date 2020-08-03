@@ -10,7 +10,7 @@ using Volo.Abp.ObjectExtending;
 
 namespace KissU.Modules.Identity.Application
 {
-    [Authorize(IdentityPermissions.Roles.Default)]
+    //[Authorize(IdentityPermissions.Roles.Default)]
     public class IdentityRoleAppService : IdentityAppServiceBase, IIdentityRoleAppService
     {
         protected IdentityRoleManager RoleManager { get; }
@@ -50,7 +50,7 @@ namespace KissU.Modules.Identity.Application
                 );
         }
 
-        [Authorize(IdentityPermissions.Roles.Create)]
+        //[Authorize(IdentityPermissions.Roles.Create)]
         public virtual async Task<IdentityRoleDto> CreateAsync(IdentityRoleCreateDto input)
         {
             var role = new IdentityRole(

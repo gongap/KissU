@@ -6,6 +6,7 @@ using KissU.Surging.Stage.Configurations;
 using KissU.Surging.Stage.Filters;
 using KissU.Surging.Stage.Internal;
 using KissU.Surging.Stage.Internal.Implementation;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -65,6 +66,9 @@ namespace KissU.Surging.Stage
                         builder.AllowCredentials();
                 });
             }
+
+            app.UseAuthentication();
+            app.UseAuthorization();
         }
 
         /// <summary>
@@ -111,8 +115,16 @@ namespace KissU.Surging.Stage
                 }
             });
 
+            context.Services
+                .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddIdentityServerAuthentication(options =>
+                {
+                    options.Authority = AppConfig.Options.AuthServer.Authority;
+                    options.ApiName = AppConfig.Options.AuthServer.ApiName;
+                    options.RequireHttpsMetadata = false;
+                });
+
             context.Services.AddSingleton<IIPChecker, IPAddressChecker>();
-            context.Services.AddFilters(typeof(JWTBearerAuthorizationFilterAttribute));
             context.Services.AddFilters(typeof(ActionFilterAttribute));
             context.Services.AddFilters(typeof(IPFilterAttribute));
         }

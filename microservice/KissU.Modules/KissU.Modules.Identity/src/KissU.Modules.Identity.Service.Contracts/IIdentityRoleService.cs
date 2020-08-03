@@ -2,6 +2,7 @@
 using KissU.Common;
 using KissU.Dependency;
 using KissU.Modules.Identity.Application.Contracts;
+using KissU.Surging.CPlatform.Filters.Implementation;
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using Volo.Abp.Application.Dtos;
 
@@ -21,6 +22,7 @@ namespace KissU.Modules.Identity.Service.Contracts
         [ServiceRoute("{id}")]
         Task<IdentityRoleDto> GetAsync(string id);
 
+        //[Authorization(AuthType = AuthorizationType.JWTBearer)]
         [HttpPost(true)]
         Task<IdentityRoleDto> CreateAsync(IdentityRoleCreateDto input);
 

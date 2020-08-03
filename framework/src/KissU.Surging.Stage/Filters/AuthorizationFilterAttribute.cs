@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Autofac;
 using KissU.Dependency;
 using KissU.Surging.ApiGateWay;
@@ -37,8 +38,9 @@ namespace KissU.Surging.Stage.Filters
         {
             var gatewayAppConfig = AppConfig.Options.ApiGetWay;
             if (filterContext.Route != null && filterContext.Route.ServiceDescriptor.DisableNetwork())
-                filterContext.Result = new HttpResultMessage<object>
-                    {IsSucceed = false, StatusCode = (int) ServiceStatusCode.RequestError, Message = "Request error"};
+            {
+                filterContext.Result = new HttpResultMessage<object> {IsSucceed = false, StatusCode = (int) ServiceStatusCode.RequestError, Message = "Request error"};
+            }
             else
             {
                 if (filterContext.Route != null && filterContext.Route.ServiceDescriptor.EnableAuthorization())
@@ -73,8 +75,10 @@ namespace KissU.Surging.Stage.Filters
                 }
             }
 
-            if (string.Compare(filterContext.Path.ToLower(), gatewayAppConfig.TokenEndpointPath, true) == 0)
+            if (string.Compare(filterContext.Path.ToLower(), gatewayAppConfig.TokenEndpointPath, StringComparison.OrdinalIgnoreCase) == 0)
+            {
                 filterContext.Context.Items.Add("path", gatewayAppConfig.AuthorizationRoutePath);
+            }
         }
     }
 }
