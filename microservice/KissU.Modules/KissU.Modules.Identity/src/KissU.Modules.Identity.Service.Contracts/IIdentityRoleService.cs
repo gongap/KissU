@@ -22,7 +22,7 @@ namespace KissU.Modules.Identity.Service.Contracts
         [ServiceRoute("{id}")]
         Task<IdentityRoleDto> GetAsync(string id);
 
-        //[Authorization(AuthType = AuthorizationType.JWTBearer)]
+        [Authorization(AuthType = AuthorizationType.JWTBearer)]
         [HttpPost(true)]
         Task<IdentityRoleDto> CreateAsync(IdentityRoleCreateDto input);
 

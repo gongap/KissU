@@ -6,8 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
 using System.Security.Claims;
 using KissU.Helpers;
-using KissU.Security.Principals;
-using KissU.Surging.CPlatform.Filters.Implementation;
+using KissU.Serialization.Implementation;
 
 namespace KissU.Surging.KestrelHttpServer.Internal
 {
@@ -56,6 +55,17 @@ namespace KissU.Surging.KestrelHttpServer.Internal
             htpContextAccessor.HttpContext.Items = contextParameters;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+
+        public void SetClaimsPrincipal(string key, ClaimsPrincipal claimsPrincipal)
+        {
+            if (claimsPrincipal != null)
+            {
+                var claimTypes = claimsPrincipal.Identities.SelectMany(x => x.Claims).GroupBy(x => x.Type).ToDictionary(y => y.Key, m => m.Select(n => n.Value).ToList());
+                SetAttachment(key, new JsonSerializer().Serialize(claimTypes));
+            }
+        }
+
         private static IServiceProvider serviceProvider;
 
         internal void Initialize(IServiceProvider provider)
@@ -73,51 +83,6 @@ namespace KissU.Surging.KestrelHttpServer.Internal
             Check.NotNull(serviceProvider, "serviceProvider");
             var htpContextAccessor = serviceProvider.GetRequiredService<IHttpContextAccessor>();
             htpContextAccessor.HttpContext.Items.Clear();
-
         }
-
-        #region User(当前用户安全主体)
-
-        /// <summary>
-        /// 当前用户安全主体
-        /// </summary>
-        public static ClaimsPrincipal User
-        {
-            get
-            {
-                var payload = GetContext().GetAttachment("payload");
-                var principal = GetPrincipal((IDictionary<string, object>)payload);
-                return principal ?? UnauthenticatedPrincipal.Instance;
-            }
-        }
-
-        private static ClaimsPrincipal GetPrincipal(IDictionary<string, object> payload)
-        {
-            var claims = new List<Claim>();
-            foreach (var item in payload) claims.Add(new Claim(item.Key, item.Value.ToString()));
-            claims.Add(new Claim(ClaimTypes.Name, claims.Where(x => x.Type == "name").Select(x => x.Value).FirstOrDefault()));
-            var identity = new ClaimsIdentity(claims, System.Enum.GetName(typeof(AuthorizationType), AuthorizationType.JWTBearer));
-            var claimsPrincipal = new ClaimsPrincipal(identity);
-            return claimsPrincipal;
-        }
-
-        #endregion
-
-        #region Identity(当前用户身份)
-
-        /// <summary>
-        /// 当前用户身份
-        /// </summary>
-        public static ClaimsIdentity Identity
-        {
-            get
-            {
-                if (User.Identity is ClaimsIdentity identity)
-                    return identity;
-                return UnauthenticatedIdentity.Instance;
-            }
-        }
-
-        #endregion
     }
 }

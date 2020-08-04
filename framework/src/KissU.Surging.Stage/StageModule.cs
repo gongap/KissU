@@ -82,8 +82,7 @@ namespace KissU.Surging.Stage
             {
                 ApiGateWay.AppConfig.CacheMode = apiConfig.CacheMode;
                 ApiGateWay.AppConfig.AuthorizationServiceKey = apiConfig.AuthorizationServiceKey;
-                ApiGateWay.AppConfig.AccessTokenExpireTimeSpan =
-                    TimeSpan.FromMinutes(apiConfig.AccessTokenExpireTimeSpan);
+                ApiGateWay.AppConfig.AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(apiConfig.AccessTokenExpireTimeSpan);
                 ApiGateWay.AppConfig.AuthorizationRoutePath = apiConfig.AuthorizationRoutePath;
                 ApiGateWay.AppConfig.TokenEndpointPath = apiConfig.TokenEndpointPath;
             }
@@ -126,6 +125,7 @@ namespace KissU.Surging.Stage
 
             context.Services.AddSingleton<IIPChecker, IPAddressChecker>();
             context.Services.AddFilters(typeof(ActionFilterAttribute));
+            //context.Services.AddFilters(typeof(JWTBearerAuthorizationFilterAttribute));
             context.Services.AddFilters(typeof(IPFilterAttribute));
         }
 

@@ -6,20 +6,24 @@ using KissU.Modules.Identity.Domain;
 using KissU.Modules.Identity.Domain.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Volo.Abp.Application.Dtos;
+using Volo.Abp.Json;
 using Volo.Abp.ObjectExtending;
 
 namespace KissU.Modules.Identity.Application
 {
-    //[Authorize(IdentityPermissions.Roles.Default)]
+    [Authorize(IdentityPermissions.Roles.Default)]
     public class IdentityRoleAppService : IdentityAppServiceBase, IIdentityRoleAppService
     {
+        private readonly IJsonSerializer _jsonSerializer;
         protected IdentityRoleManager RoleManager { get; }
         protected IIdentityRoleRepository RoleRepository { get; }
 
         public IdentityRoleAppService(
+            IJsonSerializer jsonSerializer,
             IdentityRoleManager roleManager,
             IIdentityRoleRepository roleRepository)
         {
+            _jsonSerializer = jsonSerializer;
             RoleManager = roleManager;
             RoleRepository = roleRepository;
         }
@@ -50,7 +54,7 @@ namespace KissU.Modules.Identity.Application
                 );
         }
 
-        //[Authorize(IdentityPermissions.Roles.Create)]
+        [Authorize(IdentityPermissions.Roles.Create)]
         public virtual async Task<IdentityRoleDto> CreateAsync(IdentityRoleCreateDto input)
         {
             var role = new IdentityRole(

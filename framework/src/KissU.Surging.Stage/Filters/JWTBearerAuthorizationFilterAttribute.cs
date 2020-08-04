@@ -81,7 +81,7 @@ namespace KissU.Surging.Stage.Filters
                             }
                             else
                             {
-                                RestContext.GetContext().SetAttachment("payload", payload);
+                                RestContext.GetContext().SetAttachment("payload", _jsonSerializer.Serialize(payload));
                             }
                         }
                         else
