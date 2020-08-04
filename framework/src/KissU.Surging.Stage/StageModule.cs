@@ -125,7 +125,7 @@ namespace KissU.Surging.Stage
 
             context.Services.AddSingleton<IIPChecker, IPAddressChecker>();
             context.Services.AddFilters(typeof(ActionFilterAttribute));
-            //context.Services.AddFilters(typeof(JWTBearerAuthorizationFilterAttribute));
+            context.Services.AddFilters(typeof(JWTBearerAuthorizationFilterAttribute));
             context.Services.AddFilters(typeof(IPFilterAttribute));
         }
 

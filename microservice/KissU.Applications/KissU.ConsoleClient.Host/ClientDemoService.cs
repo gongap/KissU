@@ -120,10 +120,10 @@ namespace KissU.ConsoleClient.Host
             Console.WriteLine("The accessToken: " + accessToken);
             using (var httpClient = new HttpClient())
             {
-                httpClient.SetBearerToken(accessToken);
 
                 do
                 {
+                    httpClient.SetBearerToken(accessToken);
                     var url = GetServerUrl() + "api/identityrole/createasync";
                     var postData = _jsonSerializer.Serialize(new { input = new IdentityRoleCreateDto { Name = $"Test{Volo.Abp.RandomHelper.GetRandom()}", IsDefault = true, IsPublic = true } });
                     var responseMessage = await httpClient.PostAsync(url, new StringContent(postData, Encoding.UTF8, MimeTypes.Application.Json));

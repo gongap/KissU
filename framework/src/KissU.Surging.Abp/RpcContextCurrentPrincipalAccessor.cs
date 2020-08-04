@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using KissU.Extensions;
 using System.Linq;
 using Newtonsoft.Json.Linq;
+using System.Net.Http.Headers;
 
 namespace KissU.Surging.Abp
 {
@@ -30,19 +31,25 @@ namespace KissU.Surging.Abp
             {
                 var payload = RpcContext.GetContext().GetAttachment("payload").SafeString();
                 var claimTypes = _jsonSerializer.Deserialize<IDictionary<string, object>>(payload);
+                if (claimTypes == null)
+                {
+                    return base.GetClaimsPrincipal();
+                }
+
                 var claims = new List<Claim>();
                 foreach (var claimType in claimTypes)
                 {
+                    var type = InboundJwtClaimTypeMap(claimType.Key);
                     if (claimType.Value is JArray claimArray)
                     {
                         foreach (var item in claimArray)
                         {
-                            claims.Add(new Claim(claimType.Key, item.Value<string>()));
+                            claims.Add(new Claim(type, item.Value<string>()));
                         }
                     }
                     else
                     {
-                        claims.Add(new Claim(claimType.Key, claimType.Value.ToString()));
+                        claims.Add(new Claim(type, claimType.Value.ToString()));
                     }
                 }
 
@@ -58,6 +65,21 @@ namespace KissU.Surging.Abp
             }
 
             return base.GetClaimsPrincipal();
+        }
+
+        private string InboundJwtClaimTypeMap(string claimType)
+        {
+            return claimType switch
+            {
+                "sub" => AbpClaimTypes.UserId,
+                "role" => AbpClaimTypes.Role,
+                "email" => AbpClaimTypes.Email,
+                "email_verified" => AbpClaimTypes.EmailVerified,
+                "phone_number" => AbpClaimTypes.PhoneNumber,
+                "phone_number_verified" => AbpClaimTypes.PhoneNumberVerified,
+                "name" => AbpClaimTypes.UserName,
+                _ => claimType,
+            };
         }
     }
 }

@@ -211,12 +211,6 @@ namespace KissU.Surging.KestrelHttpServer
         public async Task<bool> OnAuthorization(HttpContext context, HttpServerMessageSender sender, string messageId,
             IEnumerable<IAuthorizationFilter> filters)
         {
-            if (context.User.Identity?.IsAuthenticated == true)
-            {
-                RestContext.GetContext().SetClaimsPrincipal("payload", context.User);
-                return true;
-            }
-
             foreach (var filter in filters)
             {
                 var path = HttpUtility.UrlDecode(GetRoutePath(context.Request.Path.ToString()));
