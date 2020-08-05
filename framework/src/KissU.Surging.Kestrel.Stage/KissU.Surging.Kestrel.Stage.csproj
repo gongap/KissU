@@ -8,7 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KissU.Surging.Log4net\KissU.Surging.Log4net.csproj" />
+    <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.5" />
+    <PackageReference Include="IPNetwork2" Version="2.4.0.124" />
+    <PackageReference Include="JWT" Version="5.2.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KissU.Surging.ApiGateWay\KissU.Surging.ApiGateWay.csproj" />
     <ProjectReference Include="..\KissU.Surging.Kestrel\KissU.Surging.Kestrel.csproj" />
   </ItemGroup>
 </Project>

@@ -1,12 +1,13 @@
 ﻿using System.Threading.Tasks;
+using KissU.Surging.Kestrel.Abstractions;
 
 namespace KissU.Surging.KestrelHttpServer.Abstractions
 {
     /// <summary>
     /// ActionResult.
-    /// Implements the <see cref="KissU.Surging.KestrelHttpServer.Abstractions.IActionResult" />
+    /// Implements the <see cref="IActionResult" />
     /// </summary>
-    /// <seealso cref="KissU.Surging.KestrelHttpServer.Abstractions.IActionResult" />
+    /// <seealso cref="IActionResult" />
     public abstract class ActionResult : IActionResult
     {
         /// <summary>

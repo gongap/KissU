@@ -40,6 +40,7 @@
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Kestrel.Log4net\KissU.Surging.Kestrel.Log4net.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Kestrel.Nlog\KissU.Surging.Kestrel.Nlog.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.KestrelHttpServer\KissU.Surging.KestrelHttpServer.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Kestrel.Stage\KissU.Surging.Kestrel.Stage.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Log4net\KissU.Surging.Log4net.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.NLog\KissU.Surging.Nlog.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Protocol.Http\KissU.Surging.Protocol.Http.csproj" />
@@ -51,7 +52,6 @@
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.BackgroundServer\KissU.Surging.BackgroundServer.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Kestrel.Swagger\KissU.Surging.Kestrel.Swagger.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Zookeeper\KissU.Surging.Zookeeper.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Stage\KissU.Surging.Stage.csproj" />
   </ItemGroup>
 
   <ItemGroup>

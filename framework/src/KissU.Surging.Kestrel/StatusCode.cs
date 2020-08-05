@@ -1,4 +1,4 @@
-﻿namespace KissU.Surging.KestrelHttpServer
+﻿namespace KissU.Surging.Kestrel
 {
     /// <summary>
     /// Enum StatusCode

@@ -49,7 +49,7 @@ namespace KissU.Modularity
         {
             Type[] types =
             {
-                typeof(SystemModule), typeof(BusinessModule), typeof(EnginePartModule), typeof(KestrelHttpModule), typeof(AbstractModule)
+                typeof(SystemModule), typeof(BusinessModule), typeof(EnginePartModule), typeof(AbstractModule)
             };
 
             Modules.ForEach(p =>

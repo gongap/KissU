@@ -9,5 +9,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\KissU.Surging.NLog\KissU.Surging.Nlog.csproj" />
+    <ProjectReference Include="..\KissU.Surging.Kestrel\KissU.Surging.Kestrel.csproj" />
   </ItemGroup>
 </Project>

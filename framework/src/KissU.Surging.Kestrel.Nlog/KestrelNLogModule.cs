@@ -25,7 +25,6 @@ namespace KissU.Surging.Kestrel.Nlog
         {
             var serviceProvider = context.ServiceProvider;
             base.Configure(context);
-            var section = AppConfig.GetSection("Logging");
             nlogConfigFile = EnvironmentHelper.GetEnvironmentVariable(nlogConfigFile);
             LogManager.LoadConfiguration(nlogConfigFile);
             serviceProvider.GetService<ILoggerFactory>().AddProvider(new NLogProvider());

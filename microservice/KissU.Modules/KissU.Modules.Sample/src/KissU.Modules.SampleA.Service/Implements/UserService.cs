@@ -13,6 +13,7 @@ using KissU.Surging.KestrelHttpServer.Internal;
 using KissU.Surging.ProxyGenerator;
 using KissU.Modules.SampleA.Service.Repositories;
 using KissU.Modules.SampleB.Service.Contracts;
+using KissU.Surging.Kestrel.Abstractions;
 
 namespace KissU.Modules.SampleA.Service.Implements
 {

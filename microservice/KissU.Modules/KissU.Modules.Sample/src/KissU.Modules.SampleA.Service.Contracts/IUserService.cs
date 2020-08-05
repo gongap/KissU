@@ -11,6 +11,7 @@ using KissU.Surging.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Se
 using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Surging.CPlatform.Support;
 using KissU.Surging.CPlatform.Support.Attributes;
+using KissU.Surging.Kestrel.Abstractions;
 using KissU.Surging.KestrelHttpServer.Abstractions;
 using KissU.Surging.KestrelHttpServer.Internal;
 using CacheTargetType = KissU.Surging.Caching.CacheTargetType;

@@ -1,7 +1,7 @@
 ﻿using System;
-using KissU.Module;
+using KissU.Modularity;
 
-namespace KissU.Surging.KestrelHttpServer.Extensions
+namespace KissU.Surging.Kestrel.Extensions
 {
     /// <summary>
     /// ModuleProviderExtensions.
@@ -12,19 +12,18 @@ namespace KissU.Surging.KestrelHttpServer.Extensions
         /// Initializes the specified builder.
         /// </summary>
         /// <param name="moduleProvider">The module provider.</param>
-        /// <param name="builder">The builder.</param>
-        public static void Initialize(this IModuleProvider moduleProvider, ApplicationInitializationContext builder)
+        /// <param name="app">The applicationInitializationContext.</param>
+        public static void Configure(this IModuleProvider moduleProvider, ApplicationInitializationContext app)
         {
             moduleProvider.Modules.ForEach(p =>
             {
                 try
                 {
-                    using (var abstractModule = p)
-                        if (abstractModule.Enable)
-                        {
-                            var module = abstractModule as KestrelHttpModule;
-                            module?.Initialize(builder);
-                        }
+                    if (p.Enable)
+                    {
+                        var module = p as KestrelHttpModule;
+                        module?.Configure(app);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -38,7 +37,7 @@ namespace KissU.Surging.KestrelHttpServer.Extensions
         /// </summary>
         /// <param name="moduleProvider">The module provider.</param>
         /// <param name="context">The context.</param>
-        public static void ConfigureServices(this IModuleProvider moduleProvider, ConfigurationContext context)
+        public static void ConfigureServices(this IModuleProvider moduleProvider, ServiceConfigurationContext context)
         {
             moduleProvider.Modules.ForEach(p =>
             {
@@ -47,7 +46,7 @@ namespace KissU.Surging.KestrelHttpServer.Extensions
                     if (p.Enable)
                     {
                         var module = p as KestrelHttpModule;
-                        module?.RegisterBuilder(context);
+                        module?.ConfigureServices(context);
                     }
                 }
                 catch (Exception ex)
@@ -71,7 +70,7 @@ namespace KissU.Surging.KestrelHttpServer.Extensions
                     if (p.Enable)
                     {
                         var module = p as KestrelHttpModule;
-                        module?.RegisterBuilder(context);
+                        module?.ConfigureWebHost(context);
                     }
                 }
                 catch (Exception ex)

@@ -8,8 +8,10 @@ using KissU.Surging.CPlatform.Diagnostics;
 using KissU.Surging.CPlatform.Engines;
 using KissU.Surging.CPlatform.Routing;
 using KissU.Surging.CPlatform.Runtime.Server;
+using KissU.Surging.Kestrel;
+using KissU.Surging.Kestrel.Extensions;
+using KissU.Surging.Kestrel.Internal;
 using KissU.Surging.KestrelHttpServer.Diagnostics;
-using KissU.Surging.KestrelHttpServer.Extensions;
 using KissU.Surging.KestrelHttpServer.Filters.Implementation;
 using KissU.Surging.KestrelHttpServer.Internal;
 using Microsoft.AspNetCore.Http;
@@ -32,14 +34,6 @@ namespace KissU.Surging.KestrelHttpServer
         public override void Configure(ApplicationInitializationContext context)
         {
             RestContext.GetContext().Initialize(context.ServiceProvider);
-        }
-
-        /// <summary>
-        /// Registers the builder.
-        /// </summary>
-        /// <param name="context">The context.</param>
-        public virtual void ConfigureWebHost(WebHostContext context)
-        {
         }
 
         /// <summary>

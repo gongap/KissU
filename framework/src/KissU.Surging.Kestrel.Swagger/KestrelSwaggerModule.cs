@@ -9,7 +9,6 @@ using KissU.Surging.Kestrel.Swagger.SwaggerGen.Application;
 using Microsoft.Extensions.Configuration;
 using KissU.Surging.Kestrel.Swagger.Swagger.Application;
 using KissU.Surging.Kestrel.Swagger.SwaggerUI;
-using KissU.Surging.KestrelHttpServer;
 
 namespace KissU.Surging.Kestrel.Swagger
 {

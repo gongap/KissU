@@ -1,13 +1,14 @@
 ﻿using System.Threading.Tasks;
 using KissU.Surging.CPlatform.Messages;
+using KissU.Surging.Kestrel.Filters;
 
 namespace KissU.Surging.KestrelHttpServer.Filters.Implementation
 {
     /// <summary>
     /// CustomerExceptionFilterAttribute.
-    /// Implements the <see cref="KissU.Surging.KestrelHttpServer.Filters.IExceptionFilter" />
+    /// Implements the <see cref="IExceptionFilter" />
     /// </summary>
-    /// <seealso cref="KissU.Surging.KestrelHttpServer.Filters.IExceptionFilter" />
+    /// <seealso cref="IExceptionFilter" />
     public class CustomerExceptionFilterAttribute : IExceptionFilter
     {
         /// <summary>

@@ -6,14 +6,15 @@ using KissU.Surging.CPlatform;
 using KissU.Surging.CPlatform.Messages;
 using KissU.Surging.CPlatform.Routing;
 using KissU.Surging.CPlatform.Runtime.Server;
+using KissU.Surging.Kestrel.Filters;
 
 namespace KissU.Surging.KestrelHttpServer.Filters.Implementation
 {
     /// <summary>
     /// HttpRequestFilterAttribute.
-    /// Implements the <see cref="KissU.Surging.KestrelHttpServer.Filters.IActionFilter" />
+    /// Implements the <see cref="IActionFilter" />
     /// </summary>
-    /// <seealso cref="KissU.Surging.KestrelHttpServer.Filters.IActionFilter" />
+    /// <seealso cref="IActionFilter" />
     public class HttpRequestFilterAttribute : IActionFilter
     {
         /// <summary>
