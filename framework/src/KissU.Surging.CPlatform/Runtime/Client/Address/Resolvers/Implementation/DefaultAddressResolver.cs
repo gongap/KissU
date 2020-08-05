@@ -111,9 +111,9 @@ namespace KissU.Surging.CPlatform.Runtime.Client.Address.Resolvers.Implementatio
                 return null;
             }
 
-            if (_logger.IsEnabled(LogLevel.Information))
+            if (_logger.IsEnabled(LogLevel.Debug))
             {
-                _logger.LogInformation(
+                _logger.LogDebug(
                     $"根据服务id：{serviceId}，找到以下可用地址：{string.Join(",", address.Select(i => i.ToString()))}。");
             }
 

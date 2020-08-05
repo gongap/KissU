@@ -41,6 +41,7 @@
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Kestrel.Nlog\KissU.Surging.Kestrel.Nlog.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.KestrelHttpServer\KissU.Surging.KestrelHttpServer.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Kestrel.Stage\KissU.Surging.Kestrel.Stage.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Kestrel.IdentityServer\KissU.Surging.Kestrel.IdentityServer.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Log4net\KissU.Surging.Log4net.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.NLog\KissU.Surging.Nlog.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Protocol.Http\KissU.Surging.Protocol.Http.csproj" />

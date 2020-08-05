@@ -1,0 +1,536 @@
+2020-08-05 17:09:35.482 +08:00 [INF] Starting IdentityServer.
+2020-08-05 17:09:39.068 +08:00 [INF] User profile is available. Using 'C:\Users\Gongap\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-08-05 17:09:39.183 +08:00 [INF] Loaded ABP modules:
+2020-08-05 17:09:39.184 +08:00 [INF] - Volo.Abp.Castle.AbpCastleCoreModule
+2020-08-05 17:09:39.186 +08:00 [INF] - Volo.Abp.Autofac.AbpAutofacModule
+2020-08-05 17:09:39.187 +08:00 [INF] - Volo.Abp.Security.AbpSecurityModule
+2020-08-05 17:09:39.188 +08:00 [INF] - Volo.Abp.Localization.AbpLocalizationAbstractionsModule
+2020-08-05 17:09:39.190 +08:00 [INF] - Volo.Abp.Validation.AbpValidationAbstractionsModule
+2020-08-05 17:09:39.191 +08:00 [INF] - Volo.Abp.ObjectExtending.AbpObjectExtendingModule
+2020-08-05 17:09:39.194 +08:00 [INF] - Volo.Abp.Uow.AbpUnitOfWorkModule
+2020-08-05 17:09:39.196 +08:00 [INF] - Volo.Abp.Data.AbpDataModule
+2020-08-05 17:09:39.197 +08:00 [INF] - Volo.Abp.MultiTenancy.AbpMultiTenancyModule
+2020-08-05 17:09:39.198 +08:00 [INF] - Volo.Abp.Authorization.AbpAuthorizationModule
+2020-08-05 17:09:39.200 +08:00 [INF] - Volo.Abp.VirtualFileSystem.AbpVirtualFileSystemModule
+2020-08-05 17:09:39.201 +08:00 [INF] - Volo.Abp.Settings.AbpSettingsModule
+2020-08-05 17:09:39.204 +08:00 [INF] - Volo.Abp.Timing.AbpTimingModule
+2020-08-05 17:09:39.205 +08:00 [INF] - Volo.Abp.Json.AbpJsonModule
+2020-08-05 17:09:39.212 +08:00 [INF] - Volo.Abp.Threading.AbpThreadingModule
+2020-08-05 17:09:39.217 +08:00 [INF] - Volo.Abp.Auditing.AbpAuditingModule
+2020-08-05 17:09:39.219 +08:00 [INF] - Volo.Abp.EventBus.AbpEventBusModule
+2020-08-05 17:09:39.220 +08:00 [INF] - Volo.Abp.Guids.AbpGuidsModule
+2020-08-05 17:09:39.221 +08:00 [INF] - Volo.Abp.ObjectMapping.AbpObjectMappingModule
+2020-08-05 17:09:39.223 +08:00 [INF] - Volo.Abp.Domain.AbpDddDomainModule
+2020-08-05 17:09:39.225 +08:00 [INF] - Volo.Abp.Localization.AbpLocalizationModule
+2020-08-05 17:09:39.226 +08:00 [INF] - Volo.Abp.Validation.AbpValidationModule
+2020-08-05 17:09:39.228 +08:00 [INF] - KissU.Modules.PermissionManagement.Domain.Shared.AbpPermissionManagementDomainSharedModule
+2020-08-05 17:09:39.229 +08:00 [INF] - Volo.Abp.Serialization.AbpSerializationModule
+2020-08-05 17:09:39.231 +08:00 [INF] - Volo.Abp.Caching.AbpCachingModule
+2020-08-05 17:09:39.232 +08:00 [INF] - KissU.Modules.PermissionManagement.Domain.AbpPermissionManagementDomainModule
+2020-08-05 17:09:39.234 +08:00 [INF] - Volo.Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule
+2020-08-05 17:09:39.239 +08:00 [INF] - KissU.Modules.PermissionManagement.EntityFrameworkCore.AbpPermissionManagementEntityFrameworkCoreModule
+2020-08-05 17:09:39.241 +08:00 [INF] - KissU.Modules.AuditLogging.Domain.Shared.AbpAuditLoggingDomainSharedModule
+2020-08-05 17:09:39.243 +08:00 [INF] - KissU.Modules.AuditLogging.Domain.AbpAuditLoggingDomainModule
+2020-08-05 17:09:39.246 +08:00 [INF] - KissU.Modules.AuditLogging.EntityFrameworkCore.EntityFrameworkCore.AbpAuditLoggingEntityFrameworkCoreModule
+2020-08-05 17:09:39.249 +08:00 [INF] - KissU.Modules.SettingManagement.Domain.Shared.AbpSettingManagementDomainSharedModule
+2020-08-05 17:09:39.252 +08:00 [INF] - KissU.Modules.SettingManagement.Domain.AbpSettingManagementDomainModule
+2020-08-05 17:09:39.254 +08:00 [INF] - KissU.Modules.SettingManagement.EntityFrameworkCore.AbpSettingManagementEntityFrameworkCoreModule
+2020-08-05 17:09:39.256 +08:00 [INF] - Volo.Abp.Users.AbpUsersDomainSharedModule
+2020-08-05 17:09:39.259 +08:00 [INF] - KissU.Modules.Identity.Domain.Shared.AbpIdentityDomainSharedModule
+2020-08-05 17:09:39.261 +08:00 [INF] - KissU.Modules.Users.Domain.Shared.AbpUsersDomainSharedModule
+2020-08-05 17:09:39.263 +08:00 [INF] - KissU.Modules.Users.Abstractions.AbpUsersAbstractionModule
+2020-08-05 17:09:39.265 +08:00 [INF] - KissU.Modules.Users.Domain.AbpUsersDomainModule
+2020-08-05 17:09:39.268 +08:00 [INF] - Volo.Abp.AutoMapper.AbpAutoMapperModule
+2020-08-05 17:09:39.270 +08:00 [INF] - KissU.Modules.Identity.Domain.AbpIdentityDomainModule
+2020-08-05 17:09:39.272 +08:00 [INF] - KissU.Modules.Users.EntityFrameworkCore.AbpUsersEntityFrameworkCoreModule
+2020-08-05 17:09:39.274 +08:00 [INF] - KissU.Modules.Identity.EntityFrameworkCore.AbpIdentityEntityFrameworkCoreModule
+2020-08-05 17:09:39.276 +08:00 [INF] - Volo.Abp.Application.AbpDddApplicationContractsModule
+2020-08-05 17:09:39.281 +08:00 [INF] - Volo.Abp.Http.AbpHttpAbstractionsModule
+2020-08-05 17:09:39.283 +08:00 [INF] - Volo.Abp.Features.AbpFeaturesModule
+2020-08-05 17:09:39.285 +08:00 [INF] - Volo.Abp.Application.AbpDddApplicationModule
+2020-08-05 17:09:39.287 +08:00 [INF] - KissU.Modules.Identity.Application.Contracts.AbpIdentityApplicationContractsModule
+2020-08-05 17:09:39.290 +08:00 [INF] - KissU.Modules.Account.Application.Contracts.AbpAccountApplicationContractsModule
+2020-08-05 17:09:39.293 +08:00 [INF] - KissU.Modules.Identity.Application.AbpIdentityApplicationModule
+2020-08-05 17:09:39.295 +08:00 [INF] - Volo.Abp.UI.AbpUiModule
+2020-08-05 17:09:39.297 +08:00 [INF] - Volo.Abp.UI.Navigation.AbpUiNavigationModule
+2020-08-05 17:09:39.300 +08:00 [INF] - KissU.Modules.Account.Application.AbpAccountApplicationModule
+2020-08-05 17:09:39.302 +08:00 [INF] - KissU.Modules.IdentityServer.Domain.Shared.AbpIdentityServerDomainSharedModule
+2020-08-05 17:09:39.304 +08:00 [INF] - Volo.Abp.BackgroundWorkers.AbpBackgroundWorkersModule
+2020-08-05 17:09:39.305 +08:00 [INF] - KissU.Modules.IdentityServer.Domain.AbpIdentityServerDomainModule
+2020-08-05 17:09:39.307 +08:00 [INF] - KissU.Modules.IdentityServer.EntityFrameworkCore.EntityFrameworkCore.AbpIdentityServerEntityFrameworkCoreModule
+2020-08-05 17:09:39.313 +08:00 [INF] - Volo.Abp.EntityFrameworkCore.SqlServer.AbpEntityFrameworkCoreSqlServerModule
+2020-08-05 17:09:39.315 +08:00 [INF] - KissU.Modules.Account.Service.Contracts.AccountServiceContractsModule
+2020-08-05 17:09:39.317 +08:00 [INF] - KissU.Modules.Identity.AspNetCore.AbpIdentityAspNetCoreModule
+2020-08-05 17:09:39.320 +08:00 [INF] - Volo.Abp.Minify.AbpMinifyModule
+2020-08-05 17:09:39.322 +08:00 [INF] - Volo.Abp.Http.AbpHttpModule
+2020-08-05 17:09:39.324 +08:00 [INF] - Volo.Abp.AspNetCore.AbpAspNetCoreModule
+2020-08-05 17:09:39.326 +08:00 [INF] - Volo.Abp.ApiVersioning.AbpApiVersioningAbstractionsModule
+2020-08-05 17:09:39.328 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcContractsModule
+2020-08-05 17:09:39.331 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcModule
+2020-08-05 17:09:39.333 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.AbpAspNetCoreMvcUiModule
+2020-08-05 17:09:39.335 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.AbpAspNetCoreMvcUiBootstrapModule
+2020-08-05 17:09:39.337 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Bundling.AbpAspNetCoreMvcUiBundlingModule
+2020-08-05 17:09:39.339 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Packages.AbpAspNetCoreMvcUiPackagesModule
+2020-08-05 17:09:39.342 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Widgets.AbpAspNetCoreMvcUiWidgetsModule
+2020-08-05 17:09:39.344 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.AbpAspNetCoreMvcUiThemeSharedModule
+2020-08-05 17:09:39.347 +08:00 [INF] - KissU.ApplicationParts.Account.AbpAccountWebModule
+2020-08-05 17:09:39.348 +08:00 [INF] - KissU.ApplicationParts.Account.IdentityServer.AbpAccountWebIdentityServerModule
+2020-08-05 17:09:39.353 +08:00 [INF] - Volo.Abp.AspNetCore.MultiTenancy.AbpAspNetCoreMultiTenancyModule
+2020-08-05 17:09:39.355 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.AbpAspNetCoreMvcUiMultiTenancyModule
+2020-08-05 17:09:39.357 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic.AbpAspNetCoreMvcUiBasicThemeModule
+2020-08-05 17:09:39.359 +08:00 [INF] - KissU.Modules.TenantManagement.Domain.Shared.AbpTenantManagementDomainSharedModule
+2020-08-05 17:09:39.362 +08:00 [INF] - KissU.Modules.TenantManagement.Domain.AbpTenantManagementDomainModule
+2020-08-05 17:09:39.364 +08:00 [INF] - KissU.Modules.TenantManagement.EntityFrameworkCore.AbpTenantManagementEntityFrameworkCoreModule
+2020-08-05 17:09:39.366 +08:00 [INF] - KissU.Modules.TenantManagement.Application.Contracts.AbpTenantManagementApplicationContractsModule
+2020-08-05 17:09:39.368 +08:00 [INF] - Volo.Abp.AspNetCore.Serilog.AbpAspNetCoreSerilogModule
+2020-08-05 17:09:39.371 +08:00 [INF] - KissU.AuthServer.Host.AuthServerHostModule
+2020-08-05 17:09:39.774 +08:00 [INF] Starting IdentityServer4 version 3.1.3.0
+2020-08-05 17:09:39.986 +08:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-08-05 17:09:43.545 +08:00 [INF] Initialized all ABP modules.
+2020-08-05 17:09:43.600 +08:00 [INF] Now listening on: http://localhost:8090
+2020-08-05 17:09:43.604 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-08-05 17:09:43.609 +08:00 [INF] Hosting environment: Development
+2020-08-05 17:09:43.611 +08:00 [INF] Content root path: E:\GAP\KissU\microservice\KissU.Applications\KissU.AuthServer.Host
+2020-08-05 17:09:44.611 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/  
+2020-08-05 17:09:51.724 +08:00 [INF] Executing endpoint '/Index'
+2020-08-05 17:09:51.852 +08:00 [INF] Route matched with {page = "/Index", area = "", action = "", controller = ""}. Executing page /Index
+2020-08-05 17:09:51.892 +08:00 [INF] Executing handler method KissU.AuthServer.Host.Pages.IndexModel.OnGet - ModelState is "Valid"
+2020-08-05 17:09:51.897 +08:00 [INF] Executed handler method OnGet, returned result .
+2020-08-05 17:09:51.910 +08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2020-08-05 17:09:51.912 +08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-08-05 17:09:52.562 +08:00 [INF] Executed page /Index in 700.914ms
+2020-08-05 17:09:52.565 +08:00 [INF] Executed endpoint '/Index'
+2020-08-05 17:09:52.624 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/abp/core/abp.css?_v=637302273996368426  
+2020-08-05 17:09:52.626 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/bootstrap/css/bootstrap.css?_v=637302273996378415  
+2020-08-05 17:09:52.640 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/@fortawesome/fontawesome-free/css/all.css?_v=637302273996668396  
+2020-08-05 17:09:52.641 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/@fortawesome/fontawesome-free/css/v4-shims.css?_v=637302273996668396  
+2020-08-05 17:09:52.643 +08:00 [INF] Sending file. Request path: '/libs/abp/core/abp.css'. Physical path: 'E:\GAP\KissU\microservice\KissU.Applications\KissU.AuthServer.Host\wwwroot\libs\abp\core\abp.css'
+2020-08-05 17:09:52.645 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/toastr/toastr.min.css?_v=637302273996788422  
+2020-08-05 17:09:52.660 +08:00 [INF] Sending file. Request path: '/libs/@fortawesome/fontawesome-free/css/v4-shims.css'. Physical path: 'E:\GAP\KissU\microservice\KissU.Applications\KissU.AuthServer.Host\wwwroot\libs\@fortawesome\fontawesome-free\css\v4-shims.css'
+2020-08-05 17:09:52.660 +08:00 [INF] Sending file. Request path: '/libs/@fortawesome/fontawesome-free/css/all.css'. Physical path: 'E:\GAP\KissU\microservice\KissU.Applications\KissU.AuthServer.Host\wwwroot\libs\@fortawesome\fontawesome-free\css\all.css'
+2020-08-05 17:09:52.660 +08:00 [INF] Sending file. Request path: '/libs/bootstrap/css/bootstrap.css'. Physical path: 'E:\GAP\KissU\microservice\KissU.Applications\KissU.AuthServer.Host\wwwroot\libs\bootstrap\css\bootstrap.css'
+2020-08-05 17:09:52.666 +08:00 [INF] Request finished in 40.9752ms 200 text/css
+2020-08-05 17:09:52.673 +08:00 [INF] Sending file. Request path: '/libs/toastr/toastr.min.css'. Physical path: 'E:\GAP\KissU\microservice\KissU.Applications\KissU.AuthServer.Host\wwwroot\libs\toastr\toastr.min.css'
+2020-08-05 17:09:52.677 +08:00 [INF] Request finished in 36.17ms 200 text/css
+2020-08-05 17:09:52.680 +08:00 [INF] Request finished in 39.7405ms 200 text/css
+2020-08-05 17:09:52.688 +08:00 [INF] Request finished in 61.3681ms 200 text/css
+2020-08-05 17:09:52.695 +08:00 [INF] Request finished in 50.3964ms 200 text/css
+2020-08-05 17:09:52.701 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/select2/css/select2.min.css?_v=637302273996408397  
+2020-08-05 17:09:52.704 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/bootstrap-datepicker/bootstrap-datepicker.min.css?_v=637302273995948435  
+2020-08-05 17:09:52.709 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/datatables.net-bs4/css/dataTables.bootstrap4.css?_v=637302273996388403  
+2020-08-05 17:09:52.717 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css?_v=637302273996408397  
+2020-08-05 17:09:52.722 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/abp/aspnetcore-mvc-ui-theme-shared/datatables/datatables-styles.css?_v=637316058080000000  
+2020-08-05 17:09:52.728 +08:00 [INF] Sending file. Request path: '/libs/select2/css/select2.min.css'. Physical path: 'E:\GAP\KissU\microservice\KissU.Applications\KissU.AuthServer.Host\wwwroot\libs\select2\css\select2.min.css'
+2020-08-05 17:09:52.733 +08:00 [INF] Sending file. Request path: '/libs/bootstrap-datepicker/bootstrap-datepicker.min.css'. Physical path: 'E:\GAP\KissU\microservice\KissU.Applications\KissU.AuthServer.Host\wwwroot\libs\bootstrap-datepicker\bootstrap-datepicker.min.css'
+2020-08-05 17:09:52.741 +08:00 [INF] Sending file. Request path: '/libs/datatables.net-bs4/css/dataTables.bootstrap4.css'. Physical path: 'E:\GAP\KissU\microservice\KissU.Applications\KissU.AuthServer.Host\wwwroot\libs\datatables.net-bs4\css\dataTables.bootstrap4.css'
+2020-08-05 17:09:52.745 +08:00 [INF] Sending file. Request path: '/libs/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css'. Physical path: 'E:\GAP\KissU\microservice\KissU.Applications\KissU.AuthServer.Host\wwwroot\libs\malihu-custom-scrollbar-plugin\jquery.mCustomScrollbar.css'
+2020-08-05 17:09:52.753 +08:00 [INF] Sending file. Request path: '/libs/abp/aspnetcore-mvc-ui-theme-shared/datatables/datatables-styles.css'. Physical path: 'N/A'
+2020-08-05 17:09:52.756 +08:00 [INF] Request finished in 54.4034ms 200 text/css
+2020-08-05 17:09:52.761 +08:00 [INF] Request finished in 57.7413ms 200 text/css
+2020-08-05 17:09:52.770 +08:00 [INF] Request finished in 60.6803ms 200 text/css
+2020-08-05 17:09:52.774 +08:00 [INF] Request finished in 56.8772ms 200 text/css
+2020-08-05 17:09:52.778 +08:00 [INF] Request finished in 55.996ms 200 text/css
+2020-08-05 17:09:52.781 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/themes/basic/layout.css?_v=637316058860000000  
+2020-08-05 17:09:52.784 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/abp/utils/abp-utils.umd.min.js?_v=637302273996908397  
+2020-08-05 17:09:52.786 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/abp/core/abp.js?_v=637302273996648406  
+2020-08-05 17:09:52.788 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/jquery/jquery.js?_v=637302273995958406  
+2020-08-05 17:09:52.792 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/abp/jquery/abp.jquery.js?_v=637302273996388403  
+2020-08-05 17:09:52.795 +08:00 [INF] Sending file. Request path: '/themes/basic/layout.css'. Physical path: 'N/A'
+2020-08-05 17:09:52.799 +08:00 [INF] Sending file. Request path: '/libs/abp/utils/abp-utils.umd.min.js'. Physical path: 'E:\GAP\KissU\microservice\KissU.Applications\KissU.AuthServer.Host\wwwroot\libs\abp\utils\abp-utils.umd.min.js'
+2020-08-05 17:09:52.805 +08:00 [INF] Sending file. Request path: '/libs/abp/core/abp.js'. Physical path: 'E:\GAP\KissU\microservice\KissU.Applications\KissU.AuthServer.Host\wwwroot\libs\abp\core\abp.js'
+2020-08-05 17:09:52.812 +08:00 [INF] Sending file. Request path: '/libs/abp/jquery/abp.jquery.js'. Physical path: 'E:\GAP\KissU\microservice\KissU.Applications\KissU.AuthServer.Host\wwwroot\libs\abp\jquery\abp.jquery.js'
+2020-08-05 17:09:52.819 +08:00 [INF] Request finished in 35.9345ms 200 text/css
+2020-08-05 17:09:52.825 +08:00 [INF] Request finished in 41.8399ms 200 application/javascript
+2020-08-05 17:09:52.826 +08:00 [INF] Sending file. Request path: '/libs/jquery/jquery.js'. Physical path: 'E:\GAP\KissU\microservice\KissU.Applications\KissU.AuthServer.Host\wwwroot\libs\jquery\jquery.js'
+2020-08-05 17:09:52.831 +08:00 [INF] Request finished in 45.2676ms 200 application/javascript
+2020-08-05 17:09:52.839 +08:00 [INF] Request finished in 46.815ms 200 application/javascript
+2020-08-05 17:09:52.841 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/bootstrap/js/bootstrap.bundle.js?_v=637302273996388403  
+2020-08-05 17:09:52.845 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/lodash/lodash.min.js?_v=637302273995978421  
+2020-08-05 17:09:52.849 +08:00 [INF] Request finished in 61.0164ms 200 application/javascript
+2020-08-05 17:09:52.852 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/jquery-validation/jquery.validate.js?_v=637302273995978421  
+2020-08-05 17:09:52.856 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js?_v=637302273995988423  
+2020-08-05 17:09:52.864 +08:00 [INF] Sending file. Request path: '/libs/bootstrap/js/bootstrap.bundle.js'. Physical path: 'E:\GAP\KissU\microservice\KissU.Applications\KissU.AuthServer.Host\wwwroot\libs\bootstrap\js\bootstrap.bundle.js'
+2020-08-05 17:09:52.864 +08:00 [INF] Sending file. Request path: '/libs/lodash/lodash.min.js'. Physical path: 'E:\GAP\KissU\microservice\KissU.Applications\KissU.AuthServer.Host\wwwroot\libs\lodash\lodash.min.js'
+2020-08-05 17:09:52.871 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/jquery-form/jquery.form.min.js?_v=637302273995978421  
+2020-08-05 17:09:52.879 +08:00 [INF] Sending file. Request path: '/libs/jquery-validation/jquery.validate.js'. Physical path: 'E:\GAP\KissU\microservice\KissU.Applications\KissU.AuthServer.Host\wwwroot\libs\jquery-validation\jquery.validate.js'
+2020-08-05 17:09:52.907 +08:00 [INF] Request finished in 55.1321ms 200 application/javascript
+2020-08-05 17:09:52.890 +08:00 [INF] Request finished in 48.7826ms 200 application/javascript
+2020-08-05 17:09:52.894 +08:00 [INF] Request finished in 49.3916ms 200 application/javascript
+2020-08-05 17:09:52.902 +08:00 [INF] Sending file. Request path: '/libs/jquery-form/jquery.form.min.js'. Physical path: 'E:\GAP\KissU\microservice\KissU.Applications\KissU.AuthServer.Host\wwwroot\libs\jquery-form\jquery.form.min.js'
+2020-08-05 17:09:52.883 +08:00 [INF] Sending file. Request path: '/libs/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js'. Physical path: 'E:\GAP\KissU\microservice\KissU.Applications\KissU.AuthServer.Host\wwwroot\libs\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js'
+2020-08-05 17:09:52.911 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/datatables.net/js/jquery.dataTables.js?_v=637302273996398412  
+2020-08-05 17:09:52.914 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/select2/js/select2.min.js?_v=637302273996418403  
+2020-08-05 17:09:52.917 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/select2/js/select2-bootstrap-modal-patch.js?_v=637302273996418403  
+2020-08-05 17:09:52.923 +08:00 [INF] Request finished in 52.568ms 200 application/javascript
+2020-08-05 17:09:52.930 +08:00 [INF] Request finished in 73.5643ms 200 application/javascript
+2020-08-05 17:09:52.943 +08:00 [INF] Sending file. Request path: '/libs/select2/js/select2.min.js'. Physical path: 'E:\GAP\KissU\microservice\KissU.Applications\KissU.AuthServer.Host\wwwroot\libs\select2\js\select2.min.js'
+2020-08-05 17:09:52.944 +08:00 [INF] Sending file. Request path: '/libs/datatables.net/js/jquery.dataTables.js'. Physical path: 'E:\GAP\KissU\microservice\KissU.Applications\KissU.AuthServer.Host\wwwroot\libs\datatables.net\js\jquery.dataTables.js'
+2020-08-05 17:09:52.947 +08:00 [INF] Sending file. Request path: '/libs/select2/js/select2-bootstrap-modal-patch.js'. Physical path: 'E:\GAP\KissU\microservice\KissU.Applications\KissU.AuthServer.Host\wwwroot\libs\select2\js\select2-bootstrap-modal-patch.js'
+2020-08-05 17:09:52.949 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/sweetalert/sweetalert.min.js?_v=637302273996028412  
+2020-08-05 17:09:52.955 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/datatables.net-bs4/js/dataTables.bootstrap4.js?_v=637302273996398412  
+2020-08-05 17:09:52.960 +08:00 [INF] Request finished in 45.7455ms 200 application/javascript
+2020-08-05 17:09:52.968 +08:00 [INF] Request finished in 56.6572ms 200 application/javascript
+2020-08-05 17:09:53.004 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/luxon/luxon.min.js?_v=637302273996678402  
+2020-08-05 17:09:52.980 +08:00 [INF] Sending file. Request path: '/libs/sweetalert/sweetalert.min.js'. Physical path: 'E:\GAP\KissU\microservice\KissU.Applications\KissU.AuthServer.Host\wwwroot\libs\sweetalert\sweetalert.min.js'
+2020-08-05 17:09:53.013 +08:00 [INF] Request finished in 64.0448ms 200 application/javascript
+2020-08-05 17:09:52.990 +08:00 [INF] Sending file. Request path: '/libs/datatables.net-bs4/js/dataTables.bootstrap4.js'. Physical path: 'E:\GAP\KissU\microservice\KissU.Applications\KissU.AuthServer.Host\wwwroot\libs\datatables.net-bs4\js\dataTables.bootstrap4.js'
+2020-08-05 17:09:52.973 +08:00 [INF] Request finished in 56.1809ms 200 application/javascript
+2020-08-05 17:09:53.008 +08:00 [INF] Sending file. Request path: '/libs/luxon/luxon.min.js'. Physical path: 'E:\GAP\KissU\microservice\KissU.Applications\KissU.AuthServer.Host\wwwroot\libs\luxon\luxon.min.js'
+2020-08-05 17:09:52.989 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/toastr/toastr.min.js?_v=637302273996938386  
+2020-08-05 17:09:53.019 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/timeago/jquery.timeago.js?_v=637302273996038405  
+2020-08-05 17:09:53.046 +08:00 [INF] Request finished in 86.2536ms 200 application/javascript
+2020-08-05 17:09:53.048 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js?_v=637302273996008419  
+2020-08-05 17:09:53.057 +08:00 [INF] Request finished in 52.4723ms 200 application/javascript
+2020-08-05 17:09:53.065 +08:00 [INF] Sending file. Request path: '/libs/toastr/toastr.min.js'. Physical path: 'E:\GAP\KissU\microservice\KissU.Applications\KissU.AuthServer.Host\wwwroot\libs\toastr\toastr.min.js'
+2020-08-05 17:09:53.070 +08:00 [INF] Sending file. Request path: '/libs/timeago/jquery.timeago.js'. Physical path: 'E:\GAP\KissU\microservice\KissU.Applications\KissU.AuthServer.Host\wwwroot\libs\timeago\jquery.timeago.js'
+2020-08-05 17:09:53.073 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/bootstrap-datepicker/bootstrap-datepicker.min.js?_v=637302273995948435  
+2020-08-05 17:09:53.081 +08:00 [INF] Sending file. Request path: '/libs/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js'. Physical path: 'E:\GAP\KissU\microservice\KissU.Applications\KissU.AuthServer.Host\wwwroot\libs\malihu-custom-scrollbar-plugin\jquery.mCustomScrollbar.concat.min.js'
+2020-08-05 17:09:53.083 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/images/anonymous-user.png  
+2020-08-05 17:09:53.091 +08:00 [INF] Request finished in 101.0523ms 200 application/javascript
+2020-08-05 17:09:53.098 +08:00 [INF] Request finished in 78.8022ms 200 application/javascript
+2020-08-05 17:09:53.109 +08:00 [INF] Sending file. Request path: '/libs/bootstrap-datepicker/bootstrap-datepicker.min.js'. Physical path: 'E:\GAP\KissU\microservice\KissU.Applications\KissU.AuthServer.Host\wwwroot\libs\bootstrap-datepicker\bootstrap-datepicker.min.js'
+2020-08-05 17:09:53.111 +08:00 [INF] Request finished in 63.1327ms 200 application/javascript
+2020-08-05 17:09:53.117 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/abp/aspnetcore-mvc-ui-theme-shared/ui-extensions.js?_v=637316058080000000  
+2020-08-05 17:09:53.121 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/abp/aspnetcore-mvc-ui-theme-shared/jquery/jquery-extensions.js?_v=637316058080000000  
+2020-08-05 17:09:53.125 +08:00 [INF] Sending file. Request path: '/images/anonymous-user.png'. Physical path: 'E:\GAP\KissU\microservice\KissU.Applications\KissU.AuthServer.Host\wwwroot\images\anonymous-user.png'
+2020-08-05 17:09:53.138 +08:00 [INF] Request finished in 65.6515ms 200 application/javascript
+2020-08-05 17:09:53.142 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/abp/aspnetcore-mvc-ui-theme-shared/jquery-form/jquery-form-extensions.js?_v=637316058080000000  
+2020-08-05 17:09:53.146 +08:00 [INF] Sending file. Request path: '/libs/abp/aspnetcore-mvc-ui-theme-shared/ui-extensions.js'. Physical path: 'N/A'
+2020-08-05 17:09:53.152 +08:00 [INF] Sending file. Request path: '/libs/abp/aspnetcore-mvc-ui-theme-shared/jquery/jquery-extensions.js'. Physical path: 'N/A'
+2020-08-05 17:09:53.156 +08:00 [INF] Request finished in 72.9897ms 200 image/png
+2020-08-05 17:09:53.159 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/abp/aspnetcore-mvc-ui-theme-shared/jquery/widget-manager.js?_v=637316058080000000  
+2020-08-05 17:09:53.166 +08:00 [INF] Sending file. Request path: '/libs/abp/aspnetcore-mvc-ui-theme-shared/jquery-form/jquery-form-extensions.js'. Physical path: 'N/A'
+2020-08-05 17:09:53.174 +08:00 [INF] Request finished in 56.3153ms 200 application/javascript
+2020-08-05 17:09:53.179 +08:00 [INF] Request finished in 57.8228ms 200 application/javascript
+2020-08-05 17:09:53.186 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/abp/aspnetcore-mvc-ui-theme-shared/bootstrap/dom-event-handlers.js?_v=637316058080000000  
+2020-08-05 17:09:53.194 +08:00 [INF] Sending file. Request path: '/libs/abp/aspnetcore-mvc-ui-theme-shared/jquery/widget-manager.js'. Physical path: 'N/A'
+2020-08-05 17:09:53.196 +08:00 [INF] Request finished in 53.5517ms 200 application/javascript
+2020-08-05 17:09:53.200 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/abp/aspnetcore-mvc-ui-theme-shared/bootstrap/modal-manager.js?_v=637316058080000000  
+2020-08-05 17:09:53.204 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/abp/aspnetcore-mvc-ui-theme-shared/datatables/datatables-extensions.js?_v=637316058080000000  
+2020-08-05 17:09:53.211 +08:00 [INF] Sending file. Request path: '/libs/abp/aspnetcore-mvc-ui-theme-shared/bootstrap/dom-event-handlers.js'. Physical path: 'N/A'
+2020-08-05 17:09:53.215 +08:00 [INF] Request finished in 55.5078ms 200 application/javascript
+2020-08-05 17:09:53.220 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/abp/aspnetcore-mvc-ui-theme-shared/sweetalert/abp-sweetalert.js?_v=637316058080000000  
+2020-08-05 17:09:53.228 +08:00 [INF] Sending file. Request path: '/libs/abp/aspnetcore-mvc-ui-theme-shared/bootstrap/modal-manager.js'. Physical path: 'N/A'
+2020-08-05 17:09:53.232 +08:00 [INF] Sending file. Request path: '/libs/abp/aspnetcore-mvc-ui-theme-shared/datatables/datatables-extensions.js'. Physical path: 'N/A'
+2020-08-05 17:09:53.239 +08:00 [INF] Request finished in 53.8777ms 200 application/javascript
+2020-08-05 17:09:53.242 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/abp/aspnetcore-mvc-ui-theme-shared/toastr/abp-toastr.js?_v=637316058080000000  
+2020-08-05 17:09:53.248 +08:00 [INF] Sending file. Request path: '/libs/abp/aspnetcore-mvc-ui-theme-shared/sweetalert/abp-sweetalert.js'. Physical path: 'N/A'
+2020-08-05 17:09:53.254 +08:00 [INF] Request finished in 53.9357ms 200 application/javascript
+2020-08-05 17:09:53.260 +08:00 [INF] Request finished in 56.0978ms 200 application/javascript
+2020-08-05 17:09:53.264 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/Pages/Abp/MultiTenancy/tenant-switch.js?_v=637316058200000000  
+2020-08-05 17:09:53.271 +08:00 [INF] Sending file. Request path: '/libs/abp/aspnetcore-mvc-ui-theme-shared/toastr/abp-toastr.js'. Physical path: 'N/A'
+2020-08-05 17:09:53.280 +08:00 [INF] Request finished in 60.2805ms 200 application/javascript
+2020-08-05 17:09:53.283 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/themes/basic/layout.js?_v=637316058860000000  
+2020-08-05 17:09:53.286 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/jquery-validation/localization/messages_zh.js?_v=637302274002508408  
+2020-08-05 17:09:53.293 +08:00 [INF] Sending file. Request path: '/Pages/Abp/MultiTenancy/tenant-switch.js'. Physical path: 'N/A'
+2020-08-05 17:09:53.302 +08:00 [INF] Request finished in 59.4765ms 200 application/javascript
+2020-08-05 17:09:53.305 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/libs/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js?_v=637302274001878405  
+2020-08-05 17:09:53.308 +08:00 [INF] Sending file. Request path: '/themes/basic/layout.js'. Physical path: 'N/A'
+2020-08-05 17:09:53.316 +08:00 [INF] Sending file. Request path: '/libs/jquery-validation/localization/messages_zh.js'. Physical path: 'E:\GAP\KissU\microservice\KissU.Applications\KissU.AuthServer.Host\wwwroot\libs\jquery-validation\localization\messages_zh.js'
+2020-08-05 17:09:53.320 +08:00 [INF] Request finished in 55.9321ms 200 application/javascript
+2020-08-05 17:09:53.325 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/Abp/ApplicationConfigurationScript  
+2020-08-05 17:09:53.332 +08:00 [INF] Sending file. Request path: '/libs/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js'. Physical path: 'E:\GAP\KissU\microservice\KissU.Applications\KissU.AuthServer.Host\wwwroot\libs\bootstrap-datepicker\locales\bootstrap-datepicker.zh-CN.min.js'
+2020-08-05 17:09:53.338 +08:00 [INF] Request finished in 54.7574ms 200 application/javascript
+2020-08-05 17:09:53.345 +08:00 [INF] Request finished in 59.4634ms 200 application/javascript
+2020-08-05 17:09:53.348 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/Abp/ServiceProxyScript  
+2020-08-05 17:09:53.361 +08:00 [INF] Request finished in 55.5686ms 200 application/javascript
+2020-08-05 17:09:53.369 +08:00 [INF] Executing endpoint 'Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc)'
+2020-08-05 17:09:53.378 +08:00 [INF] Executing endpoint 'Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController.GetAll (Volo.Abp.AspNetCore.Mvc)'
+2020-08-05 17:09:53.402 +08:00 [INF] Route matched with {area = "Abp", action = "Get", controller = "AbpApplicationConfigurationScript", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Get() on controller Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController (Volo.Abp.AspNetCore.Mvc).
+2020-08-05 17:09:53.419 +08:00 [INF] Route matched with {area = "Abp", action = "GetAll", controller = "AbpServiceProxyScript", page = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAll(Volo.Abp.AspNetCore.Mvc.ProxyScripting.ServiceProxyGenerationModel) on controller Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController (Volo.Abp.AspNetCore.Mvc).
+2020-08-05 17:09:53.534 +08:00 [INF] Authorization failed.
+2020-08-05 17:09:53.538 +08:00 [INF] Authorization failed.
+2020-08-05 17:09:53.539 +08:00 [INF] Authorization failed.
+2020-08-05 17:09:53.542 +08:00 [INF] Authorization failed.
+2020-08-05 17:09:53.547 +08:00 [INF] Authorization failed.
+2020-08-05 17:09:53.550 +08:00 [INF] Authorization failed.
+2020-08-05 17:09:53.552 +08:00 [INF] Authorization failed.
+2020-08-05 17:09:53.557 +08:00 [INF] Authorization failed.
+2020-08-05 17:09:53.559 +08:00 [INF] Authorization failed.
+2020-08-05 17:09:53.563 +08:00 [INF] Authorization failed.
+2020-08-05 17:09:53.569 +08:00 [INF] Request finished in 8962.8585ms 200 text/html; charset=utf-8
+2020-08-05 17:09:53.570 +08:00 [INF] Authorization failed.
+2020-08-05 17:09:53.574 +08:00 [INF] Authorization failed.
+2020-08-05 17:09:53.579 +08:00 [INF] Authorization failed.
+2020-08-05 17:09:53.582 +08:00 [INF] Authorization failed.
+2020-08-05 17:09:53.584 +08:00 [INF] Authorization failed.
+2020-08-05 17:09:53.588 +08:00 [INF] Authorization failed.
+2020-08-05 17:09:53.590 +08:00 [INF] Authorization failed.
+2020-08-05 17:09:53.614 +08:00 [INF] Executing ContentResult with HTTP Response ContentType of application/javascript
+2020-08-05 17:09:53.618 +08:00 [INF] Executed action Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController.GetAll (Volo.Abp.AspNetCore.Mvc) in 191.4627ms
+2020-08-05 17:09:53.623 +08:00 [INF] Executed endpoint 'Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController.GetAll (Volo.Abp.AspNetCore.Mvc)'
+2020-08-05 17:09:53.643 +08:00 [INF] Request finished in 295.5492ms 200 application/javascript
+2020-08-05 17:09:54.465 +08:00 [INF] Executing ContentResult with HTTP Response ContentType of application/javascript
+2020-08-05 17:09:54.470 +08:00 [INF] Executed action Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc) in 1059.908ms
+2020-08-05 17:09:54.475 +08:00 [INF] Executed endpoint 'Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc)'
+2020-08-05 17:09:54.500 +08:00 [INF] Request finished in 1175.1061ms 200 application/javascript
+2020-08-05 17:09:54.504 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/favicon.ico  
+2020-08-05 17:09:54.521 +08:00 [INF] Request finished in 17.0896ms 404 
+2020-08-05 17:10:41.286 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/Account/Login  
+2020-08-05 17:10:41.301 +08:00 [INF] Executing endpoint '/Account/Login'
+2020-08-05 17:10:41.315 +08:00 [INF] Route matched with {page = "/Account/Login", area = "", action = "", controller = ""}. Executing page /Account/Login
+2020-08-05 17:10:41.355 +08:00 [INF] Executing handler method KissU.ApplicationParts.Account.Pages.Account.LoginModel.OnGetAsync - ModelState is "Valid"
+2020-08-05 17:10:41.368 +08:00 [INF] Executed handler method OnGetAsync, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-08-05 17:10:41.491 +08:00 [INF] Executed page /Account/Login in 173.0393ms
+2020-08-05 17:10:41.495 +08:00 [INF] Executed endpoint '/Account/Login'
+2020-08-05 17:10:41.520 +08:00 [INF] Request finished in 235.0263ms 200 text/html; charset=utf-8
+2020-08-05 17:10:41.527 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/Pages/Account/Login.css?_v=637322153344498823  
+2020-08-05 17:10:41.531 +08:00 [INF] Sending file. Request path: '/Pages/Account/Login.css'. Physical path: 'N/A'
+2020-08-05 17:10:41.532 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/Abp/ApplicationConfigurationScript  
+2020-08-05 17:10:41.532 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/Abp/ServiceProxyScript  
+2020-08-05 17:10:41.534 +08:00 [INF] Request finished in 7.0561ms 200 text/css
+2020-08-05 17:10:41.543 +08:00 [INF] Executing endpoint 'Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController.GetAll (Volo.Abp.AspNetCore.Mvc)'
+2020-08-05 17:10:41.543 +08:00 [INF] Executing endpoint 'Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc)'
+2020-08-05 17:10:41.550 +08:00 [INF] Route matched with {area = "Abp", action = "GetAll", controller = "AbpServiceProxyScript", page = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAll(Volo.Abp.AspNetCore.Mvc.ProxyScripting.ServiceProxyGenerationModel) on controller Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController (Volo.Abp.AspNetCore.Mvc).
+2020-08-05 17:10:41.553 +08:00 [INF] Route matched with {area = "Abp", action = "Get", controller = "AbpApplicationConfigurationScript", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Get() on controller Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController (Volo.Abp.AspNetCore.Mvc).
+2020-08-05 17:10:41.559 +08:00 [INF] Executing ContentResult with HTTP Response ContentType of application/javascript
+2020-08-05 17:10:41.567 +08:00 [INF] Authorization failed.
+2020-08-05 17:10:41.567 +08:00 [INF] Executed action Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController.GetAll (Volo.Abp.AspNetCore.Mvc) in 10.2431ms
+2020-08-05 17:10:41.568 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/images/bg-transparent.png  
+2020-08-05 17:10:41.569 +08:00 [INF] Authorization failed.
+2020-08-05 17:10:41.573 +08:00 [INF] Executed endpoint 'Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController.GetAll (Volo.Abp.AspNetCore.Mvc)'
+2020-08-05 17:10:41.580 +08:00 [INF] Sending file. Request path: '/images/bg-transparent.png'. Physical path: 'E:\GAP\KissU\microservice\KissU.Applications\KissU.AuthServer.Host\wwwroot\images\bg-transparent.png'
+2020-08-05 17:10:41.581 +08:00 [INF] Authorization failed.
+2020-08-05 17:10:41.588 +08:00 [INF] Request finished in 20.0102ms 200 image/png
+2020-08-05 17:10:41.591 +08:00 [INF] Request finished in 58.5042ms 200 application/javascript
+2020-08-05 17:10:41.592 +08:00 [INF] Authorization failed.
+2020-08-05 17:10:41.599 +08:00 [INF] Authorization failed.
+2020-08-05 17:10:41.601 +08:00 [INF] Authorization failed.
+2020-08-05 17:10:41.603 +08:00 [INF] Authorization failed.
+2020-08-05 17:10:41.605 +08:00 [INF] Authorization failed.
+2020-08-05 17:10:41.608 +08:00 [INF] Authorization failed.
+2020-08-05 17:10:41.613 +08:00 [INF] Authorization failed.
+2020-08-05 17:10:41.615 +08:00 [INF] Authorization failed.
+2020-08-05 17:10:41.617 +08:00 [INF] Authorization failed.
+2020-08-05 17:10:41.618 +08:00 [INF] Authorization failed.
+2020-08-05 17:10:41.620 +08:00 [INF] Authorization failed.
+2020-08-05 17:10:41.623 +08:00 [INF] Authorization failed.
+2020-08-05 17:10:41.625 +08:00 [INF] Authorization failed.
+2020-08-05 17:10:41.628 +08:00 [INF] Authorization failed.
+2020-08-05 17:10:41.637 +08:00 [INF] Executing ContentResult with HTTP Response ContentType of application/javascript
+2020-08-05 17:10:41.638 +08:00 [INF] Executed action Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc) in 74.5596ms
+2020-08-05 17:10:41.645 +08:00 [INF] Executed endpoint 'Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc)'
+2020-08-05 17:10:41.654 +08:00 [INF] Request finished in 121.916ms 200 application/javascript
+2020-08-05 17:11:28.547 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/.well-known/openid-configuration  
+2020-08-05 17:11:28.569 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2020-08-05 17:11:28.762 +08:00 [INF] Request finished in 214.3639ms 200 application/json; charset=UTF-8
+2020-08-05 17:11:28.778 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/.well-known/openid-configuration/jwks  
+2020-08-05 17:11:28.784 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2020-08-05 17:11:28.802 +08:00 [INF] Request finished in 24.6742ms 200 application/jwk-set+json; charset=UTF-8
+2020-08-05 17:11:28.821 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:8090/connect/token application/x-www-form-urlencoded 189
+2020-08-05 17:11:28.886 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.TokenEndpoint for /connect/token
+2020-08-05 17:11:29.091 +08:00 [INF] {"ClientId":"console-client-demo","AuthenticationMethod":"SharedSecret","Category":"Authentication","Name":"Client Authentication Success","EventType":"Success","Id":1010,"Message":null,"ActivityId":"0HM1P3T5IOQ1P:00000003","TimeStamp":"2020-08-05T09:11:29.0000000Z","ProcessId":28068,"LocalIpAddress":"::1:8090","RemoteIpAddress":"::1","$type":"ClientAuthenticationSuccessEvent"}
+2020-08-05 17:11:29.353 +08:00 [INF] Credentials validated for username: admin
+2020-08-05 17:11:29.357 +08:00 [INF] {"Username":"admin","Provider":null,"ProviderUserId":null,"SubjectId":"1048a2a6-9e07-3308-72e4-39f5ec59423c","DisplayName":"admin","Endpoint":"Token","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HM1P3T5IOQ1P:00000003","TimeStamp":"2020-08-05T09:11:29.0000000Z","ProcessId":28068,"LocalIpAddress":"::1:8090","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-08-05 17:11:29.439 +08:00 [INF] {"Username":"admin","Provider":null,"ProviderUserId":null,"SubjectId":"1048a2a6-9e07-3308-72e4-39f5ec59423c","DisplayName":null,"Endpoint":"Token","ClientId":"console-client-demo","Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HM1P3T5IOQ1P:00000003","TimeStamp":"2020-08-05T09:11:29.0000000Z","ProcessId":28068,"LocalIpAddress":"::1:8090","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-08-05 17:11:29.462 +08:00 [INF] Token request validation success, {"ClientId":"console-client-demo","ClientName":"console-client-demo","GrantType":"password","Scopes":"IdentityService InternalGateway ProductService TenantManagementService","AuthorizationCode":null,"RefreshToken":null,"UserName":"admin","AuthenticationContextReferenceClasses":null,"Tenant":null,"IdP":null,"Raw":{"grant_type":"password","username":"admin","password":"***REDACTED***","scope":"InternalGateway IdentityService ProductService TenantManagementService","client_id":"console-client-demo","client_secret":"***REDACTED***"},"$type":"TokenRequestValidationLog"}
+2020-08-05 17:11:29.694 +08:00 [INF] {"ClientId":"console-client-demo","ClientName":"console-client-demo","RedirectUri":null,"Endpoint":"Token","SubjectId":"1048a2a6-9e07-3308-72e4-39f5ec59423c","Scopes":"IdentityService InternalGateway ProductService TenantManagementService","GrantType":"password","Tokens":[{"TokenType":"access_token","TokenValue":"****xc0Q","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HM1P3T5IOQ1P:00000003","TimeStamp":"2020-08-05T09:11:29.0000000Z","ProcessId":28068,"LocalIpAddress":"::1:8090","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2020-08-05 17:11:29.722 +08:00 [INF] Request finished in 901.8417ms 200 application/json; charset=UTF-8
+2020-08-05 17:11:29.797 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/.well-known/openid-configuration  
+2020-08-05 17:11:29.803 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2020-08-05 17:11:29.819 +08:00 [INF] Request finished in 21.4469ms 200 application/json; charset=UTF-8
+2020-08-05 17:11:29.844 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/.well-known/openid-configuration/jwks  
+2020-08-05 17:11:29.850 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2020-08-05 17:11:29.852 +08:00 [INF] Request finished in 8.4029ms 200 application/jwk-set+json; charset=UTF-8
+2020-08-05 17:13:39.928 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/.well-known/openid-configuration  
+2020-08-05 17:13:39.948 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2020-08-05 17:13:39.977 +08:00 [INF] Request finished in 49.0933ms 200 application/json; charset=UTF-8
+2020-08-05 17:13:39.994 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/.well-known/openid-configuration/jwks  
+2020-08-05 17:13:40.003 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2020-08-05 17:13:40.006 +08:00 [INF] Request finished in 11.6194ms 200 application/jwk-set+json; charset=UTF-8
+2020-08-05 17:13:40.022 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:8090/connect/token application/x-www-form-urlencoded 189
+2020-08-05 17:13:40.031 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.TokenEndpoint for /connect/token
+2020-08-05 17:13:40.157 +08:00 [INF] {"ClientId":"console-client-demo","AuthenticationMethod":"SharedSecret","Category":"Authentication","Name":"Client Authentication Success","EventType":"Success","Id":1010,"Message":null,"ActivityId":"0HM1P3T5IOQ1R:00000003","TimeStamp":"2020-08-05T09:13:40.0000000Z","ProcessId":28068,"LocalIpAddress":"::1:8090","RemoteIpAddress":"::1","$type":"ClientAuthenticationSuccessEvent"}
+2020-08-05 17:13:40.212 +08:00 [INF] Credentials validated for username: admin
+2020-08-05 17:13:40.214 +08:00 [INF] {"Username":"admin","Provider":null,"ProviderUserId":null,"SubjectId":"1048a2a6-9e07-3308-72e4-39f5ec59423c","DisplayName":"admin","Endpoint":"Token","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HM1P3T5IOQ1R:00000003","TimeStamp":"2020-08-05T09:13:40.0000000Z","ProcessId":28068,"LocalIpAddress":"::1:8090","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-08-05 17:13:40.247 +08:00 [INF] {"Username":"admin","Provider":null,"ProviderUserId":null,"SubjectId":"1048a2a6-9e07-3308-72e4-39f5ec59423c","DisplayName":null,"Endpoint":"Token","ClientId":"console-client-demo","Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HM1P3T5IOQ1R:00000003","TimeStamp":"2020-08-05T09:13:40.0000000Z","ProcessId":28068,"LocalIpAddress":"::1:8090","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-08-05 17:13:40.267 +08:00 [INF] Token request validation success, {"ClientId":"console-client-demo","ClientName":"console-client-demo","GrantType":"password","Scopes":"IdentityService InternalGateway ProductService TenantManagementService","AuthorizationCode":null,"RefreshToken":null,"UserName":"admin","AuthenticationContextReferenceClasses":null,"Tenant":null,"IdP":null,"Raw":{"grant_type":"password","username":"admin","password":"***REDACTED***","scope":"InternalGateway IdentityService ProductService TenantManagementService","client_id":"console-client-demo","client_secret":"***REDACTED***"},"$type":"TokenRequestValidationLog"}
+2020-08-05 17:13:40.311 +08:00 [INF] {"ClientId":"console-client-demo","ClientName":"console-client-demo","RedirectUri":null,"Endpoint":"Token","SubjectId":"1048a2a6-9e07-3308-72e4-39f5ec59423c","Scopes":"IdentityService InternalGateway ProductService TenantManagementService","GrantType":"password","Tokens":[{"TokenType":"access_token","TokenValue":"****om9Q","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HM1P3T5IOQ1R:00000003","TimeStamp":"2020-08-05T09:13:40.0000000Z","ProcessId":28068,"LocalIpAddress":"::1:8090","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2020-08-05 17:13:40.334 +08:00 [INF] Request finished in 312.2146ms 200 application/json; charset=UTF-8
+2020-08-05 17:15:32.463 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/.well-known/openid-configuration  
+2020-08-05 17:15:32.475 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2020-08-05 17:15:32.503 +08:00 [INF] Request finished in 40.191ms 200 application/json; charset=UTF-8
+2020-08-05 17:15:32.519 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/.well-known/openid-configuration/jwks  
+2020-08-05 17:15:32.526 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2020-08-05 17:15:32.529 +08:00 [INF] Request finished in 9.6571ms 200 application/jwk-set+json; charset=UTF-8
+2020-08-05 17:15:32.546 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:8090/connect/token application/x-www-form-urlencoded 189
+2020-08-05 17:15:32.556 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.TokenEndpoint for /connect/token
+2020-08-05 17:15:32.698 +08:00 [INF] {"ClientId":"console-client-demo","AuthenticationMethod":"SharedSecret","Category":"Authentication","Name":"Client Authentication Success","EventType":"Success","Id":1010,"Message":null,"ActivityId":"0HM1P3T5IOQ1S:00000003","TimeStamp":"2020-08-05T09:15:32.0000000Z","ProcessId":28068,"LocalIpAddress":"::1:8090","RemoteIpAddress":"::1","$type":"ClientAuthenticationSuccessEvent"}
+2020-08-05 17:15:32.772 +08:00 [INF] Credentials validated for username: admin
+2020-08-05 17:15:32.775 +08:00 [INF] {"Username":"admin","Provider":null,"ProviderUserId":null,"SubjectId":"1048a2a6-9e07-3308-72e4-39f5ec59423c","DisplayName":"admin","Endpoint":"Token","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HM1P3T5IOQ1S:00000003","TimeStamp":"2020-08-05T09:15:32.0000000Z","ProcessId":28068,"LocalIpAddress":"::1:8090","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-08-05 17:15:32.811 +08:00 [INF] {"Username":"admin","Provider":null,"ProviderUserId":null,"SubjectId":"1048a2a6-9e07-3308-72e4-39f5ec59423c","DisplayName":null,"Endpoint":"Token","ClientId":"console-client-demo","Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HM1P3T5IOQ1S:00000003","TimeStamp":"2020-08-05T09:15:32.0000000Z","ProcessId":28068,"LocalIpAddress":"::1:8090","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-08-05 17:15:32.829 +08:00 [INF] Token request validation success, {"ClientId":"console-client-demo","ClientName":"console-client-demo","GrantType":"password","Scopes":"IdentityService InternalGateway ProductService TenantManagementService","AuthorizationCode":null,"RefreshToken":null,"UserName":"admin","AuthenticationContextReferenceClasses":null,"Tenant":null,"IdP":null,"Raw":{"grant_type":"password","username":"admin","password":"***REDACTED***","scope":"InternalGateway IdentityService ProductService TenantManagementService","client_id":"console-client-demo","client_secret":"***REDACTED***"},"$type":"TokenRequestValidationLog"}
+2020-08-05 17:15:32.890 +08:00 [INF] {"ClientId":"console-client-demo","ClientName":"console-client-demo","RedirectUri":null,"Endpoint":"Token","SubjectId":"1048a2a6-9e07-3308-72e4-39f5ec59423c","Scopes":"IdentityService InternalGateway ProductService TenantManagementService","GrantType":"password","Tokens":[{"TokenType":"access_token","TokenValue":"****pmXA","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HM1P3T5IOQ1S:00000003","TimeStamp":"2020-08-05T09:15:32.0000000Z","ProcessId":28068,"LocalIpAddress":"::1:8090","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2020-08-05 17:15:32.915 +08:00 [INF] Request finished in 368.3366ms 200 application/json; charset=UTF-8
+2020-08-05 23:17:42.126 +08:00 [INF] Starting IdentityServer.
+2020-08-05 23:17:44.102 +08:00 [INF] User profile is available. Using 'C:\Users\Gongap\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-08-05 23:17:44.209 +08:00 [INF] Loaded ABP modules:
+2020-08-05 23:17:44.212 +08:00 [INF] - Volo.Abp.Castle.AbpCastleCoreModule
+2020-08-05 23:17:44.214 +08:00 [INF] - Volo.Abp.Autofac.AbpAutofacModule
+2020-08-05 23:17:44.215 +08:00 [INF] - Volo.Abp.Security.AbpSecurityModule
+2020-08-05 23:17:44.216 +08:00 [INF] - Volo.Abp.Localization.AbpLocalizationAbstractionsModule
+2020-08-05 23:17:44.217 +08:00 [INF] - Volo.Abp.Validation.AbpValidationAbstractionsModule
+2020-08-05 23:17:44.218 +08:00 [INF] - Volo.Abp.ObjectExtending.AbpObjectExtendingModule
+2020-08-05 23:17:44.220 +08:00 [INF] - Volo.Abp.Uow.AbpUnitOfWorkModule
+2020-08-05 23:17:44.221 +08:00 [INF] - Volo.Abp.Data.AbpDataModule
+2020-08-05 23:17:44.222 +08:00 [INF] - Volo.Abp.MultiTenancy.AbpMultiTenancyModule
+2020-08-05 23:17:44.223 +08:00 [INF] - Volo.Abp.Authorization.AbpAuthorizationModule
+2020-08-05 23:17:44.224 +08:00 [INF] - Volo.Abp.VirtualFileSystem.AbpVirtualFileSystemModule
+2020-08-05 23:17:44.225 +08:00 [INF] - Volo.Abp.Settings.AbpSettingsModule
+2020-08-05 23:17:44.226 +08:00 [INF] - Volo.Abp.Timing.AbpTimingModule
+2020-08-05 23:17:44.227 +08:00 [INF] - Volo.Abp.Json.AbpJsonModule
+2020-08-05 23:17:44.228 +08:00 [INF] - Volo.Abp.Threading.AbpThreadingModule
+2020-08-05 23:17:44.231 +08:00 [INF] - Volo.Abp.Auditing.AbpAuditingModule
+2020-08-05 23:17:44.232 +08:00 [INF] - Volo.Abp.EventBus.AbpEventBusModule
+2020-08-05 23:17:44.233 +08:00 [INF] - Volo.Abp.Guids.AbpGuidsModule
+2020-08-05 23:17:44.234 +08:00 [INF] - Volo.Abp.ObjectMapping.AbpObjectMappingModule
+2020-08-05 23:17:44.235 +08:00 [INF] - Volo.Abp.Domain.AbpDddDomainModule
+2020-08-05 23:17:44.236 +08:00 [INF] - Volo.Abp.Localization.AbpLocalizationModule
+2020-08-05 23:17:44.237 +08:00 [INF] - Volo.Abp.Validation.AbpValidationModule
+2020-08-05 23:17:44.238 +08:00 [INF] - KissU.Modules.PermissionManagement.Domain.Shared.AbpPermissionManagementDomainSharedModule
+2020-08-05 23:17:44.240 +08:00 [INF] - Volo.Abp.Serialization.AbpSerializationModule
+2020-08-05 23:17:44.242 +08:00 [INF] - Volo.Abp.Caching.AbpCachingModule
+2020-08-05 23:17:44.243 +08:00 [INF] - KissU.Modules.PermissionManagement.Domain.AbpPermissionManagementDomainModule
+2020-08-05 23:17:44.244 +08:00 [INF] - Volo.Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule
+2020-08-05 23:17:44.246 +08:00 [INF] - KissU.Modules.PermissionManagement.EntityFrameworkCore.AbpPermissionManagementEntityFrameworkCoreModule
+2020-08-05 23:17:44.249 +08:00 [INF] - KissU.Modules.AuditLogging.Domain.Shared.AbpAuditLoggingDomainSharedModule
+2020-08-05 23:17:44.251 +08:00 [INF] - KissU.Modules.AuditLogging.Domain.AbpAuditLoggingDomainModule
+2020-08-05 23:17:44.252 +08:00 [INF] - KissU.Modules.AuditLogging.EntityFrameworkCore.EntityFrameworkCore.AbpAuditLoggingEntityFrameworkCoreModule
+2020-08-05 23:17:44.255 +08:00 [INF] - KissU.Modules.SettingManagement.Domain.Shared.AbpSettingManagementDomainSharedModule
+2020-08-05 23:17:44.256 +08:00 [INF] - KissU.Modules.SettingManagement.Domain.AbpSettingManagementDomainModule
+2020-08-05 23:17:44.257 +08:00 [INF] - KissU.Modules.SettingManagement.EntityFrameworkCore.AbpSettingManagementEntityFrameworkCoreModule
+2020-08-05 23:17:44.260 +08:00 [INF] - Volo.Abp.Users.AbpUsersDomainSharedModule
+2020-08-05 23:17:44.262 +08:00 [INF] - KissU.Modules.Identity.Domain.Shared.AbpIdentityDomainSharedModule
+2020-08-05 23:17:44.263 +08:00 [INF] - KissU.Modules.Users.Domain.Shared.AbpUsersDomainSharedModule
+2020-08-05 23:17:44.265 +08:00 [INF] - KissU.Modules.Users.Abstractions.AbpUsersAbstractionModule
+2020-08-05 23:17:44.266 +08:00 [INF] - KissU.Modules.Users.Domain.AbpUsersDomainModule
+2020-08-05 23:17:44.269 +08:00 [INF] - Volo.Abp.AutoMapper.AbpAutoMapperModule
+2020-08-05 23:17:44.270 +08:00 [INF] - KissU.Modules.Identity.Domain.AbpIdentityDomainModule
+2020-08-05 23:17:44.272 +08:00 [INF] - KissU.Modules.Users.EntityFrameworkCore.AbpUsersEntityFrameworkCoreModule
+2020-08-05 23:17:44.274 +08:00 [INF] - KissU.Modules.Identity.EntityFrameworkCore.AbpIdentityEntityFrameworkCoreModule
+2020-08-05 23:17:44.275 +08:00 [INF] - Volo.Abp.Application.AbpDddApplicationContractsModule
+2020-08-05 23:17:44.277 +08:00 [INF] - Volo.Abp.Http.AbpHttpAbstractionsModule
+2020-08-05 23:17:44.280 +08:00 [INF] - Volo.Abp.Features.AbpFeaturesModule
+2020-08-05 23:17:44.282 +08:00 [INF] - Volo.Abp.Application.AbpDddApplicationModule
+2020-08-05 23:17:44.284 +08:00 [INF] - KissU.Modules.Identity.Application.Contracts.AbpIdentityApplicationContractsModule
+2020-08-05 23:17:44.285 +08:00 [INF] - KissU.Modules.Account.Application.Contracts.AbpAccountApplicationContractsModule
+2020-08-05 23:17:44.286 +08:00 [INF] - KissU.Modules.Identity.Application.AbpIdentityApplicationModule
+2020-08-05 23:17:44.289 +08:00 [INF] - Volo.Abp.UI.AbpUiModule
+2020-08-05 23:17:44.291 +08:00 [INF] - Volo.Abp.UI.Navigation.AbpUiNavigationModule
+2020-08-05 23:17:44.293 +08:00 [INF] - KissU.Modules.Account.Application.AbpAccountApplicationModule
+2020-08-05 23:17:44.294 +08:00 [INF] - KissU.Modules.IdentityServer.Domain.Shared.AbpIdentityServerDomainSharedModule
+2020-08-05 23:17:44.296 +08:00 [INF] - Volo.Abp.BackgroundWorkers.AbpBackgroundWorkersModule
+2020-08-05 23:17:44.299 +08:00 [INF] - KissU.Modules.IdentityServer.Domain.AbpIdentityServerDomainModule
+2020-08-05 23:17:44.300 +08:00 [INF] - KissU.Modules.IdentityServer.EntityFrameworkCore.EntityFrameworkCore.AbpIdentityServerEntityFrameworkCoreModule
+2020-08-05 23:17:44.302 +08:00 [INF] - Volo.Abp.EntityFrameworkCore.SqlServer.AbpEntityFrameworkCoreSqlServerModule
+2020-08-05 23:17:44.304 +08:00 [INF] - KissU.Modules.Account.Service.Contracts.AccountServiceContractsModule
+2020-08-05 23:17:44.305 +08:00 [INF] - KissU.Modules.Identity.AspNetCore.AbpIdentityAspNetCoreModule
+2020-08-05 23:17:44.307 +08:00 [INF] - Volo.Abp.Minify.AbpMinifyModule
+2020-08-05 23:17:44.310 +08:00 [INF] - Volo.Abp.Http.AbpHttpModule
+2020-08-05 23:17:44.311 +08:00 [INF] - Volo.Abp.AspNetCore.AbpAspNetCoreModule
+2020-08-05 23:17:44.314 +08:00 [INF] - Volo.Abp.ApiVersioning.AbpApiVersioningAbstractionsModule
+2020-08-05 23:17:44.315 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcContractsModule
+2020-08-05 23:17:44.316 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcModule
+2020-08-05 23:17:44.319 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.AbpAspNetCoreMvcUiModule
+2020-08-05 23:17:44.321 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.AbpAspNetCoreMvcUiBootstrapModule
+2020-08-05 23:17:44.322 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Bundling.AbpAspNetCoreMvcUiBundlingModule
+2020-08-05 23:17:44.324 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Packages.AbpAspNetCoreMvcUiPackagesModule
+2020-08-05 23:17:44.325 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Widgets.AbpAspNetCoreMvcUiWidgetsModule
+2020-08-05 23:17:44.327 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.AbpAspNetCoreMvcUiThemeSharedModule
+2020-08-05 23:17:44.330 +08:00 [INF] - KissU.ApplicationParts.Account.AbpAccountWebModule
+2020-08-05 23:17:44.331 +08:00 [INF] - KissU.ApplicationParts.Account.IdentityServer.AbpAccountWebIdentityServerModule
+2020-08-05 23:17:44.333 +08:00 [INF] - Volo.Abp.AspNetCore.MultiTenancy.AbpAspNetCoreMultiTenancyModule
+2020-08-05 23:17:44.335 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.AbpAspNetCoreMvcUiMultiTenancyModule
+2020-08-05 23:17:44.336 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic.AbpAspNetCoreMvcUiBasicThemeModule
+2020-08-05 23:17:44.339 +08:00 [INF] - KissU.Modules.TenantManagement.Domain.Shared.AbpTenantManagementDomainSharedModule
+2020-08-05 23:17:44.341 +08:00 [INF] - KissU.Modules.TenantManagement.Domain.AbpTenantManagementDomainModule
+2020-08-05 23:17:44.342 +08:00 [INF] - KissU.Modules.TenantManagement.EntityFrameworkCore.AbpTenantManagementEntityFrameworkCoreModule
+2020-08-05 23:17:44.344 +08:00 [INF] - KissU.Modules.TenantManagement.Application.Contracts.AbpTenantManagementApplicationContractsModule
+2020-08-05 23:17:44.346 +08:00 [INF] - Volo.Abp.AspNetCore.Serilog.AbpAspNetCoreSerilogModule
+2020-08-05 23:17:44.349 +08:00 [INF] - KissU.AuthServer.Host.AuthServerHostModule
+2020-08-05 23:17:44.727 +08:00 [INF] Starting IdentityServer4 version 3.1.3.0
+2020-08-05 23:17:44.977 +08:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-08-05 23:17:48.843 +08:00 [INF] Initialized all ABP modules.
+2020-08-05 23:17:48.909 +08:00 [INF] Now listening on: http://localhost:8090
+2020-08-05 23:17:48.912 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-08-05 23:17:48.914 +08:00 [INF] Hosting environment: Development
+2020-08-05 23:17:48.916 +08:00 [INF] Content root path: E:\GAP\KissU\microservice\KissU.Applications\KissU.AuthServer.Host
+2020-08-05 23:17:51.350 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/  
+2020-08-05 23:17:58.755 +08:00 [INF] Executing endpoint '/Index'
+2020-08-05 23:17:58.901 +08:00 [INF] Route matched with {page = "/Index", area = "", action = "", controller = ""}. Executing page /Index
+2020-08-05 23:17:58.946 +08:00 [INF] Executing handler method KissU.AuthServer.Host.Pages.IndexModel.OnGet - ModelState is "Valid"
+2020-08-05 23:17:58.951 +08:00 [INF] Executed handler method OnGet, returned result .
+2020-08-05 23:17:58.961 +08:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2020-08-05 23:17:58.963 +08:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2020-08-05 23:17:59.622 +08:00 [INF] Executed page /Index in 708.7266ms
+2020-08-05 23:17:59.625 +08:00 [INF] Executed endpoint '/Index'
+2020-08-05 23:17:59.847 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/Abp/ApplicationConfigurationScript  
+2020-08-05 23:17:59.851 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/Abp/ServiceProxyScript  
+2020-08-05 23:17:59.869 +08:00 [INF] Executing endpoint 'Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc)'
+2020-08-05 23:17:59.874 +08:00 [INF] Executing endpoint 'Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController.GetAll (Volo.Abp.AspNetCore.Mvc)'
+2020-08-05 23:17:59.906 +08:00 [INF] Route matched with {area = "Abp", action = "Get", controller = "AbpApplicationConfigurationScript", page = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] Get() on controller Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController (Volo.Abp.AspNetCore.Mvc).
+2020-08-05 23:17:59.915 +08:00 [INF] Route matched with {area = "Abp", action = "GetAll", controller = "AbpServiceProxyScript", page = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult GetAll(Volo.Abp.AspNetCore.Mvc.ProxyScripting.ServiceProxyGenerationModel) on controller Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController (Volo.Abp.AspNetCore.Mvc).
+2020-08-05 23:18:00.103 +08:00 [INF] Authorization failed.
+2020-08-05 23:18:00.257 +08:00 [INF] Authorization failed.
+2020-08-05 23:18:00.261 +08:00 [INF] Executing ContentResult with HTTP Response ContentType of application/javascript
+2020-08-05 23:18:00.265 +08:00 [INF] Authorization failed.
+2020-08-05 23:18:00.271 +08:00 [INF] Executed action Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController.GetAll (Volo.Abp.AspNetCore.Mvc) in 340.4651ms
+2020-08-05 23:18:00.273 +08:00 [INF] Authorization failed.
+2020-08-05 23:18:00.282 +08:00 [INF] Executed endpoint 'Volo.Abp.AspNetCore.Mvc.ProxyScripting.AbpServiceProxyScriptController.GetAll (Volo.Abp.AspNetCore.Mvc)'
+2020-08-05 23:18:00.285 +08:00 [INF] Authorization failed.
+2020-08-05 23:18:00.294 +08:00 [INF] Authorization failed.
+2020-08-05 23:18:00.297 +08:00 [INF] Authorization failed.
+2020-08-05 23:18:00.325 +08:00 [INF] Authorization failed.
+2020-08-05 23:18:00.327 +08:00 [INF] Authorization failed.
+2020-08-05 23:18:00.330 +08:00 [INF] Authorization failed.
+2020-08-05 23:18:00.335 +08:00 [INF] Authorization failed.
+2020-08-05 23:18:00.337 +08:00 [INF] Authorization failed.
+2020-08-05 23:18:00.340 +08:00 [INF] Authorization failed.
+2020-08-05 23:18:00.344 +08:00 [INF] Request finished in 491.7405ms 200 application/javascript
+2020-08-05 23:18:00.346 +08:00 [INF] Authorization failed.
+2020-08-05 23:18:00.347 +08:00 [INF] Request finished in 9005.5236ms 200 text/html; charset=utf-8
+2020-08-05 23:18:00.351 +08:00 [INF] Authorization failed.
+2020-08-05 23:18:00.358 +08:00 [INF] Authorization failed.
+2020-08-05 23:18:00.360 +08:00 [INF] Authorization failed.
+2020-08-05 23:18:01.319 +08:00 [INF] Executing ContentResult with HTTP Response ContentType of application/javascript
+2020-08-05 23:18:01.329 +08:00 [INF] Executed action Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc) in 1414.2123ms
+2020-08-05 23:18:01.342 +08:00 [INF] Executed endpoint 'Volo.Abp.AspNetCore.Mvc.ApplicationConfigurations.AbpApplicationConfigurationScriptController.Get (Volo.Abp.AspNetCore.Mvc)'
+2020-08-05 23:18:01.372 +08:00 [INF] Request finished in 1525.2393ms 200 application/javascript
+2020-08-05 23:18:01.381 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/favicon.ico  
+2020-08-05 23:18:01.409 +08:00 [INF] Request finished in 28.2592ms 404 
+2020-08-05 23:19:31.045 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/.well-known/openid-configuration  
+2020-08-05 23:19:31.072 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2020-08-05 23:19:31.243 +08:00 [INF] Request finished in 199.0354ms 200 application/json; charset=UTF-8
+2020-08-05 23:19:31.259 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/.well-known/openid-configuration/jwks  
+2020-08-05 23:19:31.268 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2020-08-05 23:19:31.285 +08:00 [INF] Request finished in 26.287ms 200 application/jwk-set+json; charset=UTF-8
+2020-08-05 23:19:31.302 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:8090/connect/token application/x-www-form-urlencoded 189
+2020-08-05 23:19:31.370 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.TokenEndpoint for /connect/token
+2020-08-05 23:19:31.555 +08:00 [INF] {"ClientId":"console-client-demo","AuthenticationMethod":"SharedSecret","Category":"Authentication","Name":"Client Authentication Success","EventType":"Success","Id":1010,"Message":null,"ActivityId":"0HM1PAARE7FQS:00000003","TimeStamp":"2020-08-05T15:19:31.0000000Z","ProcessId":28960,"LocalIpAddress":"::1:8090","RemoteIpAddress":"::1","$type":"ClientAuthenticationSuccessEvent"}
+2020-08-05 23:19:31.778 +08:00 [INF] Credentials validated for username: admin
+2020-08-05 23:19:31.781 +08:00 [INF] {"Username":"admin","Provider":null,"ProviderUserId":null,"SubjectId":"1048a2a6-9e07-3308-72e4-39f5ec59423c","DisplayName":"admin","Endpoint":"Token","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HM1PAARE7FQS:00000003","TimeStamp":"2020-08-05T15:19:31.0000000Z","ProcessId":28960,"LocalIpAddress":"::1:8090","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-08-05 23:19:31.859 +08:00 [INF] {"Username":"admin","Provider":null,"ProviderUserId":null,"SubjectId":"1048a2a6-9e07-3308-72e4-39f5ec59423c","DisplayName":null,"Endpoint":"Token","ClientId":"console-client-demo","Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HM1PAARE7FQS:00000003","TimeStamp":"2020-08-05T15:19:31.0000000Z","ProcessId":28960,"LocalIpAddress":"::1:8090","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-08-05 23:19:31.883 +08:00 [INF] Token request validation success, {"ClientId":"console-client-demo","ClientName":"console-client-demo","GrantType":"password","Scopes":"IdentityService InternalGateway ProductService TenantManagementService","AuthorizationCode":null,"RefreshToken":null,"UserName":"admin","AuthenticationContextReferenceClasses":null,"Tenant":null,"IdP":null,"Raw":{"grant_type":"password","username":"admin","password":"***REDACTED***","scope":"InternalGateway IdentityService ProductService TenantManagementService","client_id":"console-client-demo","client_secret":"***REDACTED***"},"$type":"TokenRequestValidationLog"}
+2020-08-05 23:19:32.111 +08:00 [INF] {"ClientId":"console-client-demo","ClientName":"console-client-demo","RedirectUri":null,"Endpoint":"Token","SubjectId":"1048a2a6-9e07-3308-72e4-39f5ec59423c","Scopes":"IdentityService InternalGateway ProductService TenantManagementService","GrantType":"password","Tokens":[{"TokenType":"access_token","TokenValue":"****VbeA","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HM1PAARE7FQS:00000003","TimeStamp":"2020-08-05T15:19:32.0000000Z","ProcessId":28960,"LocalIpAddress":"::1:8090","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2020-08-05 23:19:32.141 +08:00 [INF] Request finished in 838.9885ms 200 application/json; charset=UTF-8
+2020-08-05 23:19:32.273 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/.well-known/openid-configuration  
+2020-08-05 23:19:32.280 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2020-08-05 23:19:32.294 +08:00 [INF] Request finished in 20.2842ms 200 application/json; charset=UTF-8
+2020-08-05 23:19:32.324 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/.well-known/openid-configuration/jwks  
+2020-08-05 23:19:32.330 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2020-08-05 23:19:32.332 +08:00 [INF] Request finished in 7.5177ms 200 application/jwk-set+json; charset=UTF-8
+2020-08-05 23:20:35.518 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/.well-known/openid-configuration  
+2020-08-05 23:20:35.551 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2020-08-05 23:20:35.586 +08:00 [INF] Request finished in 68.4018ms 200 application/json; charset=UTF-8
+2020-08-05 23:20:35.602 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/.well-known/openid-configuration/jwks  
+2020-08-05 23:20:35.608 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2020-08-05 23:20:35.611 +08:00 [INF] Request finished in 8.7281ms 200 application/jwk-set+json; charset=UTF-8
+2020-08-05 23:20:35.627 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:8090/connect/token application/x-www-form-urlencoded 189
+2020-08-05 23:20:35.637 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.TokenEndpoint for /connect/token
+2020-08-05 23:20:35.763 +08:00 [INF] {"ClientId":"console-client-demo","AuthenticationMethod":"SharedSecret","Category":"Authentication","Name":"Client Authentication Success","EventType":"Success","Id":1010,"Message":null,"ActivityId":"0HM1PAARE7FQU:00000003","TimeStamp":"2020-08-05T15:20:35.0000000Z","ProcessId":28960,"LocalIpAddress":"::1:8090","RemoteIpAddress":"::1","$type":"ClientAuthenticationSuccessEvent"}
+2020-08-05 23:20:35.818 +08:00 [INF] Credentials validated for username: admin
+2020-08-05 23:20:35.821 +08:00 [INF] {"Username":"admin","Provider":null,"ProviderUserId":null,"SubjectId":"1048a2a6-9e07-3308-72e4-39f5ec59423c","DisplayName":"admin","Endpoint":"Token","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HM1PAARE7FQU:00000003","TimeStamp":"2020-08-05T15:20:35.0000000Z","ProcessId":28960,"LocalIpAddress":"::1:8090","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-08-05 23:20:35.859 +08:00 [INF] {"Username":"admin","Provider":null,"ProviderUserId":null,"SubjectId":"1048a2a6-9e07-3308-72e4-39f5ec59423c","DisplayName":null,"Endpoint":"Token","ClientId":"console-client-demo","Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HM1PAARE7FQU:00000003","TimeStamp":"2020-08-05T15:20:35.0000000Z","ProcessId":28960,"LocalIpAddress":"::1:8090","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-08-05 23:20:35.882 +08:00 [INF] Token request validation success, {"ClientId":"console-client-demo","ClientName":"console-client-demo","GrantType":"password","Scopes":"IdentityService InternalGateway ProductService TenantManagementService","AuthorizationCode":null,"RefreshToken":null,"UserName":"admin","AuthenticationContextReferenceClasses":null,"Tenant":null,"IdP":null,"Raw":{"grant_type":"password","username":"admin","password":"***REDACTED***","scope":"InternalGateway IdentityService ProductService TenantManagementService","client_id":"console-client-demo","client_secret":"***REDACTED***"},"$type":"TokenRequestValidationLog"}
+2020-08-05 23:20:35.939 +08:00 [INF] {"ClientId":"console-client-demo","ClientName":"console-client-demo","RedirectUri":null,"Endpoint":"Token","SubjectId":"1048a2a6-9e07-3308-72e4-39f5ec59423c","Scopes":"IdentityService InternalGateway ProductService TenantManagementService","GrantType":"password","Tokens":[{"TokenType":"access_token","TokenValue":"****PTTg","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HM1PAARE7FQU:00000003","TimeStamp":"2020-08-05T15:20:35.0000000Z","ProcessId":28960,"LocalIpAddress":"::1:8090","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2020-08-05 23:20:35.962 +08:00 [INF] Request finished in 335.8221ms 200 application/json; charset=UTF-8

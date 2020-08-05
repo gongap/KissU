@@ -53,8 +53,8 @@ namespace KissU.ConsoleClient.Host
 
         public async Task RunAsync()
         {
-            //await TestWithHttpClient();
             await TestWithHttpClientAndIdentityModelAuthenticationServiceAsync();
+            //await TestWithHttpClient();
             //await TestIdentityService();
             //await TestTenantManagementService();
             //await TestForRoutePath();

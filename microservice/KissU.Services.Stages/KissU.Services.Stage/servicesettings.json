@@ -32,6 +32,10 @@
       }
     ]
   },
+  "AuthServer": {
+    "Authority": "http://localhost:8090",
+    "ApiName": "IdentityService"
+  },
   "Stage": {
     "EnableHttps": true, // ≤ª…Ë÷√ports£¨ƒ¨»œhttpsPort:443
     "CertificateFileName": "${CertificateFileName}|",
@@ -39,10 +43,6 @@
     "CertificatePassword": "${CertificatePassword}|",
     "IsCamelCaseResolver": "${IsCamelCaseResolver}|true",
     "Protocols": "Http1AndHttp2",
-    "AuthServer": {
-      "Authority": "http://localhost:8090",
-      "ApiName": "IdentityService"
-    },
     "ApiGetWay": {
       "AccessTokenExpireTimeSpan": "30",
       "AuthorizationRoutePath": "api/user/authentication",

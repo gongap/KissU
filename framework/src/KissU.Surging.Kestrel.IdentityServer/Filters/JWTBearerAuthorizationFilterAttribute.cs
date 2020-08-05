@@ -6,24 +6,24 @@ using KissU.Surging.CPlatform.Messages;
 using KissU.Surging.Kestrel.Filters;
 using KissU.Surging.Kestrel.Internal;
 
-namespace KissU.Surging.Stage.Filters
+namespace KissU.Surging.Kestrel.IdentityServer.Filters
 {
     /// <summary>
     /// JWTBearerAuthorizationFilterAttribute.
-    /// Implements the <see cref="KissU.Surging.Stage.Filters.AuthorizationFilterAttribute" />
+    /// Implements the <see cref="Surging.Stage.Filters.AuthorizationFilterAttribute" />
     /// </summary>
-    /// <seealso cref="KissU.Surging.Stage.Filters.AuthorizationFilterAttribute" />
-    public class JWTBearerAuthorizationFilterAttribute : AuthorizationFilterAttribute
+    /// <seealso cref="Surging.Stage.Filters.AuthorizationFilterAttribute" />
+    public class JWTBearerAuthorizationFilterAttribute : IAuthorizationFilter
     {
         /// <summary>
         /// Called when [authorization].
         /// </summary>
         /// <param name="filterContext">The filter context.</param>
-        public override async Task OnAuthorization(AuthorizationFilterContext filterContext)
+        public async Task OnAuthorization(AuthorizationFilterContext filterContext)
         {
             if (filterContext.Route != null && filterContext.Route.ServiceDescriptor.DisableNetwork())
             {
-                filterContext.Result = new HttpResultMessage<object>{IsSucceed = false, StatusCode = (int) ServiceStatusCode.RequestError, Message = "Request error"};
+                filterContext.Result = new HttpResultMessage<object> { IsSucceed = false, StatusCode = (int)ServiceStatusCode.RequestError, Message = "Request error" };
             }
             else
             {

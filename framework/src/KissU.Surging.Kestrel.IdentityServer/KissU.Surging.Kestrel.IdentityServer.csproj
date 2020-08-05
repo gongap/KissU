@@ -7,9 +7,11 @@
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="IPNetwork2" Version="2.4.0.124" />
-  </ItemGroup>
+   <ItemGroup>
+     <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
+     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.5" />
+     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.2" />
+   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\KissU.Surging.ApiGateWay\KissU.Surging.ApiGateWay.csproj" />

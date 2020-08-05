@@ -1,4 +1,4 @@
-﻿namespace KissU.Surging.Stage.Configurations
+﻿namespace KissU.Surging.Kestrel.IdentityServer.Configurations
 {
     /// <summary>
     /// AuthServerOption.
