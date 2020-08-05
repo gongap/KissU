@@ -85,7 +85,7 @@ namespace KissU.Modularity
                 {
                     if (p.Enable)
                     {
-                        _logger.LogDebug($"已初始化加载模块，类型：{p.TypeName}模块名：{p.ModuleName}。");
+                        _logger.LogInformation($"已初始化加载模块，类型：{p.TypeName}模块名：{p.ModuleName}。");
                     }
                 });
             }

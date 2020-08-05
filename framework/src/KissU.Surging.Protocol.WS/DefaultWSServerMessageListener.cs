@@ -85,8 +85,8 @@ namespace KissU.Surging.Protocol.WS
                 //允许转发请求
                 Server.AllowForwardedRequest = true;
                 Server.Start();
-                if (_logger.IsEnabled(LogLevel.Debug))
-                    _logger.LogDebug($"WS服务主机启动成功，监听地址：{endPoint}。");
+                if (_logger.IsEnabled(LogLevel.Information))
+                    _logger.LogInformation($"WS服务主机启动成功，监听地址：{endPoint}。");
             }
             catch
             {

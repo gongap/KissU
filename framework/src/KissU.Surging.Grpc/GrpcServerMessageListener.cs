@@ -97,8 +97,8 @@ namespace KissU.Surging.Grpc
                 }
 
                 Server.Start();
-                if (_logger.IsEnabled(LogLevel.Debug))
-                    _logger.LogDebug($"Grpc服务主机启动成功，监听地址：{endPoint}。");
+                if (_logger.IsEnabled(LogLevel.Information))
+                    _logger.LogInformation($"Grpc服务主机启动成功，监听地址：{endPoint}。");
             }
             catch
             {

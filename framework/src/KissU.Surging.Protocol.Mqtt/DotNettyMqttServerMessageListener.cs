@@ -56,7 +56,7 @@ namespace KissU.Surging.Protocol.Mqtt
         /// <exception cref="NotImplementedException"></exception>
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _channel.CloseAsync();
         }
 
         /// <summary>
@@ -83,8 +83,8 @@ namespace KissU.Surging.Protocol.Mqtt
         /// <param name="endPoint">The end point.</param>
         public async Task StartAsync(EndPoint endPoint)
         {
-            if (_logger.IsEnabled(LogLevel.Debug))
-                _logger.LogDebug($"准备启动Mqtt服务主机，监听地址：{endPoint}。");
+            if (_logger.IsEnabled(LogLevel.Information))
+                _logger.LogInformation($"准备启动Mqtt服务主机，监听地址：{endPoint}。");
             IEventLoopGroup bossGroup = new MultithreadEventLoopGroup(1);
             IEventLoopGroup
                 workerGroup =
@@ -123,8 +123,8 @@ namespace KissU.Surging.Protocol.Mqtt
             try
             {
                 _channel = await bootstrap.BindAsync(endPoint);
-                if (_logger.IsEnabled(LogLevel.Debug))
-                    _logger.LogDebug($"mqtt服务主机启动成功，监听地址：{endPoint}。");
+                if (_logger.IsEnabled(LogLevel.Information))
+                    _logger.LogInformation($"mqtt服务主机启动成功，监听地址：{endPoint}。");
             }
             catch
             {

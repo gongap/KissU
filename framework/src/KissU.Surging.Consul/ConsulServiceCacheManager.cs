@@ -353,7 +353,7 @@ namespace KissU.Surging.Consul
 
             if (_logger.IsEnabled(LogLevel.Debug))
                 _logger.LogDebug($"需要被删除的服务缓存节点：{string.Join(",", deletedChildrens)}");
-            if (_logger.IsEnabled(LogLevel.Information))
+            if (_logger.IsEnabled(LogLevel.Debug))
                 _logger.LogDebug($"需要被添加的服务缓存节点：{string.Join(",", createdChildrens)}");
 
             //获取新增的缓存信息。

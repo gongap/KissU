@@ -269,8 +269,8 @@ namespace KissU.Surging.Consul
 
             foreach (var children in childrens)
             {
-                if (_logger.IsEnabled(LogLevel.Debug))
-                    _logger.LogDebug($"准备从节点：{children}中获取mqtt路由信息。");
+                if (_logger.IsEnabled(LogLevel.Trace))
+                    _logger.LogTrace($"准备从节点：{children}中获取mqtt路由信息。");
 
                 var route = await GetRoute(children);
                 if (route != null)

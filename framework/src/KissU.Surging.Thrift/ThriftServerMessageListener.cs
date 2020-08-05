@@ -97,8 +97,8 @@ namespace KissU.Surging.Thrift
                 var server = new TThreadPoolAsyncServer(new TSingletonProcessorFactory(processor), serverTransport, new TFramedTransport.Factory(), new TFramedTransport.Factory(), factory1, factory2, config, _logger);
                 server.ServeAsync(cancellationToken);
 
-                if (_logger.IsEnabled(LogLevel.Debug))
-                    _logger.LogDebug($"Thrift服务主机启动成功，监听地址：{endPoint}。");
+                if (_logger.IsEnabled(LogLevel.Information))
+                    _logger.LogInformation($"Thrift服务主机启动成功，监听地址：{endPoint}。");
             }
             catch
             {

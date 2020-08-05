@@ -2,7 +2,10 @@
   "profiles": {
     "Project": {
       "commandName": "Project",
-      "nativeDebugging": false
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development",
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
     },
     "Docker": {
       "commandName": "Docker"

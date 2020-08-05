@@ -10,7 +10,7 @@ namespace KissU.Extensions
     /// </summary>
     public static partial class Extensions
     {
-        public static IHostBuilder UseServiceHostBuilder(this IHostBuilder hostBuilder, Action<IContainer> configureDelegates)
+        public static IHostBuilder UseServiceHostBuilder(this IHostBuilder hostBuilder, Action<IContainer> configureDelegates = null)
         {
             return UseServiceHostBuilder(hostBuilder, null, configureDelegates);
         }
