@@ -41,11 +41,11 @@ namespace KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery
         /// <returns>服务条目集合。</returns>
         public IEnumerable<ServiceEntry> GetEntries()
         {
-            var services = GetTypes();
+            var services = GetTypes().Distinct().ToArray();
 
-            if (_logger.IsEnabled(LogLevel.Information))
+            if (_logger.IsEnabled(LogLevel.Debug))
             {
-                _logger.LogInformation($"发现了以下服务：\n{string.Join(",\n", services.Select(i => i.ToString()))}。");
+                _logger.LogDebug($"发现了{services.Length}个本地服务：\n\t{string.Join(",\n\t", services.Select(i => i.ToString()))}.");
             }
 
             var entries = new List<ServiceEntry>();
@@ -68,9 +68,9 @@ namespace KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery
                 var typeInfo = i.GetTypeInfo();
                 return typeInfo.IsInterface && typeInfo.GetCustomAttribute<ServiceBundleAttribute>() != null;
             }).Distinct().ToArray();
-            if (_logger.IsEnabled(LogLevel.Information))
+            if (_logger.IsEnabled(LogLevel.Debug))
             {
-                _logger.LogInformation($"发现了以下服务：\n{string.Join(",\n", services.Select(i => i.ToString()))}。");
+                _logger.LogDebug($"发现了{services.Length}个服务：\n\t{string.Join(",\n\t", services.Select(i => i.ToString()))}.");
             }
 
             var entries = new List<ServiceEntry>();
@@ -91,8 +91,7 @@ namespace KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery
             var services = _types.Where(i =>
             {
                 var typeInfo = i.GetTypeInfo();
-                return typeInfo.IsInterface && typeInfo.GetCustomAttribute<ServiceBundleAttribute>() != null &&
-                       _serviceProvider.Current.IsRegistered(i);
+                return typeInfo.IsInterface && typeInfo.GetCustomAttribute<ServiceBundleAttribute>() != null && _serviceProvider.Current.IsRegistered(i);
             }).Distinct().ToArray();
             return services;
         }

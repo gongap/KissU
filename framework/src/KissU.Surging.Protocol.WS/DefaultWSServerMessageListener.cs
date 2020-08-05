@@ -74,6 +74,11 @@ namespace KissU.Surging.Protocol.WS
         /// <param name="endPoint">The end point.</param>
         public async Task StartAsync(EndPoint endPoint)
         {
+            if (_logger.IsEnabled(LogLevel.Debug))
+            {
+                _logger.LogDebug($"准备启动WS服务主机，监听地址：{endPoint}。");
+            }
+
             var ipEndPoint = endPoint as IPEndPoint;
             Server = new WebSocketServer(ipEndPoint.Address, ipEndPoint.Port);
             try

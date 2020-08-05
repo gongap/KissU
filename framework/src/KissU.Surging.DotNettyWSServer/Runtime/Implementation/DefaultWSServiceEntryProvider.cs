@@ -68,9 +68,9 @@ namespace KissU.Surging.DotNettyWSServer.Runtime.Implementation
                     }
                 }
 
-                if (_logger.IsEnabled(LogLevel.Information))
+                if (_logger.IsEnabled(LogLevel.Debug))
                 {
-                    _logger.LogInformation($"发现了以下WS服务：{string.Join(",", _wSServiceEntries.Select(i => i.Type.FullName))}。");
+                    _logger.LogDebug($"{nameof(DotNettyWSModule)}发现了{_wSServiceEntries.Count}个WS服务：\n\t{string.Join(",\n\t", _wSServiceEntries.Select(i => i.Type.FullName))}.");
                 }
             }
 

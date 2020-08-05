@@ -10,11 +10,11 @@ namespace KissU.Modules.SampleA.Service.Implements
     /// <summary>
     /// ControllerService.
     /// Implements the <see cref="KissU.Surging.Protocol.Mqtt.Internal.Services.MqttBehavior" />
-    /// Implements the <see cref="IControllerService" />
+    /// Implements the <see cref="IMqttService" />
     /// </summary>
     /// <seealso cref="KissU.Surging.Protocol.Mqtt.Internal.Services.MqttBehavior" />
-    /// <seealso cref="IControllerService" />
-    public class ControllerService : MqttBehavior, IControllerService
+    /// <seealso cref="IMqttService" />
+    public class MqttService : MqttBehavior, IMqttService
     {
         /// <summary>
         /// Determines whether the specified device identifier is online.

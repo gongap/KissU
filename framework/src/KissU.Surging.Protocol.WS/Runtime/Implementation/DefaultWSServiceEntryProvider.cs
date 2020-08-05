@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-
 using KissU.Dependency;
 using KissU.Surging.CPlatform.Routing.Template;
 using KissU.Surging.CPlatform.Runtime.Server;
@@ -64,9 +63,9 @@ namespace KissU.Surging.Protocol.WS.Runtime.Implementation
                     }
                 }
 
-                if (_logger.IsEnabled(LogLevel.Information))
+                if (_logger.IsEnabled(LogLevel.Debug))
                 {
-                    _logger.LogInformation($"发现了以下WS服务：{string.Join(",", _wSServiceEntries.Select(i => i.Type.FullName))}。");
+                    _logger.LogDebug($"{nameof(WSProtocolModule)}发现了{_wSServiceEntries.Count}个WS服务：\n\t{string.Join(",\n\t", _wSServiceEntries.Select(i => i.Type.FullName))}.");
                 }
             }
 

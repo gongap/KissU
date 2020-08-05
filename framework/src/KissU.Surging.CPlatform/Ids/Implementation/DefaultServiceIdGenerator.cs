@@ -49,9 +49,9 @@ namespace KissU.Surging.CPlatform.Ids.Implementation
                 id += "_" + string.Join("_", parameters.Select(i => i.Name));
             }
 
-            if (_logger.IsEnabled(LogLevel.Debug))
+            if (_logger.IsEnabled(LogLevel.Trace))
             {
-                _logger.LogDebug($"为方法：{method}生成服务Id：{id}。");
+                _logger.LogTrace($"为方法：{method}生成服务Id：{id}。");
             }
 
             return id;

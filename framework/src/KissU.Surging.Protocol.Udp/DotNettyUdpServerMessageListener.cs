@@ -113,8 +113,8 @@ namespace KissU.Surging.Protocol.Udp
         /// <param name="endPoint">The end point.</param>
         public async Task StartAsync(EndPoint endPoint)
         {
-            if (_logger.IsEnabled(LogLevel.Information))
-                _logger.LogInformation($"准备启动服务主机，监听地址：{endPoint}。");
+            if (_logger.IsEnabled(LogLevel.Debug))
+                _logger.LogDebug($"准备启动Udp服务主机，监听地址：{endPoint}。");
 
             var group = new MultithreadEventLoopGroup();
             var bootstrap = new Bootstrap();

@@ -66,9 +66,7 @@ namespace KissU.Surging.Grpc.Runtime.Implementation
 
                 if (_logger.IsEnabled(LogLevel.Debug))
                 {
-                    _logger.LogDebug(
-                        $"发现了以下grpc服务：{string.Join(",", _grpcServiceEntries.Select(i => i.Type.FullName))}。");
-                    ;
+                    _logger.LogDebug($"{nameof(GrpcModule)}发现了{_grpcServiceEntries.Count}个grpc服务：\n\t{string.Join(",\n\t", _grpcServiceEntries.Select(i => i.Type.FullName))}"); ;
                 }
             }
 

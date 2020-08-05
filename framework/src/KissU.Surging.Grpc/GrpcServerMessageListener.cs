@@ -70,6 +70,11 @@ namespace KissU.Surging.Grpc
         /// <returns>Task.</returns>
         public Task StartAsync(EndPoint endPoint)
         {
+            if (_logger.IsEnabled(LogLevel.Debug))
+            {
+                _logger.LogDebug($"准备启动Grpc服务主机，监听地址：{endPoint}。");
+            }
+
             var ipEndPoint = endPoint as IPEndPoint;
             Server = new Server
                 {Ports = {new ServerPort(ipEndPoint.Address.ToString(), ipEndPoint.Port, ServerCredentials.Insecure)}};

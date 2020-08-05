@@ -60,7 +60,7 @@ namespace KissU.Surging.BackgroundServer.Runtime.Implementation
                 if (_logger.IsEnabled(LogLevel.Debug))
                 {
                     _logger.LogDebug(
-                        $"发现了以下后台托管服务：{string.Join(",", _backgroundServiceEntries.Select(i => i.Type.FullName))}。");
+                        $"发现了{_backgroundServiceEntries.Count}个后台托管服务：{string.Join(",", _backgroundServiceEntries.Select(i => i.Type.FullName))}。");
                 }
             }
 

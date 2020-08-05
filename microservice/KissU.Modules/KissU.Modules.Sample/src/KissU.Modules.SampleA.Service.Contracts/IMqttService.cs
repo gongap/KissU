@@ -13,7 +13,7 @@ namespace KissU.Modules.SampleA.Service.Contracts
     /// </summary>
     /// <seealso cref="IServiceKey" />
     [ServiceBundle("Device/{Service}")]
-    public interface IControllerService : IServiceKey
+    public interface IMqttService : IServiceKey
     {
         /// <summary>
         /// Publishes the specified device identifier.

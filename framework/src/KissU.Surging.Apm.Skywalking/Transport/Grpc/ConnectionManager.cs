@@ -68,17 +68,17 @@ namespace KissU.Surging.Apm.Skywalking.Transport.Grpc
                 {
                     await _channel.ConnectAsync(_config.GetConnectTimeout());
                     _state = ConnectionState.Connected;
-                    _logger.LogInformation($"Connected server[{_channel.Target}].");
+                    _logger.LogInformation($"Skywalking£ºConnected server[{_channel.Target}].");
                 }
                 catch (TaskCanceledException ex)
                 {
                     _state = ConnectionState.Failure;
-                    _logger.LogError($"Connect server timeout.", ex);
+                    _logger.LogError($"Skywalking£ºConnect server timeout.", ex);
                 }
                 catch (Exception ex)
                 {
                     _state = ConnectionState.Failure;
-                    _logger.LogError($"Connect server fail.", ex);
+                    _logger.LogError($"Skywalking£ºConnect server fail.", ex);
                 }
             }
         }

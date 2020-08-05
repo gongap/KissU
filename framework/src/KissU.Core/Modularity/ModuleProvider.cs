@@ -47,48 +47,42 @@ namespace KissU.Modularity
         /// </summary>
         public virtual void Initialize()
         {
+            Type[] types =
+            {
+                typeof(SystemModule), typeof(BusinessModule), typeof(EnginePartModule), typeof(KestrelHttpModule), typeof(AbstractModule)
+            };
+
             Modules.ForEach(p =>
             {
-                try
-                {
-                    Type[] types =
-                    {
-                        typeof(SystemModule), typeof(BusinessModule), typeof(EnginePartModule), typeof(AbstractModule)
-                    };
-                    if (p.Enable)
-                    {
-                        p.Initialize(new ModuleInitializationContext(Modules, VirtualPaths, _serviceProvoider));
-                    }
 
-                    var type = p.GetType().BaseType;
-                    if (types.Any(ty => ty == type))
-                    {
-                        p.Dispose();
-                    }
-                }
-                catch (Exception ex)
+                if (p.Enable && types.All(x => x != p.GetType()))
                 {
-                    throw ex;
+                    p.Initialize(new ModuleInitializationContext(Modules, VirtualPaths, _serviceProvoider));
+                }
+
+                if (types.Any(ty => ty == p.GetType().BaseType))
+                {
+                    p.Dispose();
                 }
             });
-            WriteLog();
+
+            WriteLog(types);
         }
 
         /// <summary>
         /// 写日志.
         /// </summary>
-        public void WriteLog()
+        private void WriteLog(Type[] types)
         {
-            if (_logger.IsEnabled(LogLevel.Debug))
+            if (!_logger.IsEnabled(LogLevel.Debug)) return;
+            _logger.LogDebug($"Loaded modules");
+            Modules.ForEach(p =>
             {
-                Modules.ForEach(p =>
+                if (p.Enable && types.All(x => x != p.GetType()))
                 {
-                    if (p.Enable)
-                    {
-                        _logger.LogInformation($"已初始化加载模块，类型：{p.TypeName}模块名：{p.ModuleName}。");
-                    }
-                });
-            }
+                    _logger.LogDebug($"{p.TypeName}：{p.ModuleName}");
+                }
+            });
         }
     }
 }

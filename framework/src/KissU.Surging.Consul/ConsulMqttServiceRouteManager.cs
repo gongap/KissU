@@ -230,8 +230,8 @@ namespace KissU.Surging.Consul
 
         private async Task<MqttServiceRoute> GetRoute(byte[] data)
         {
-            if (_logger.IsEnabled(LogLevel.Debug))
-                _logger.LogDebug($"准备转换mqtt服务路由，配置内容：{Encoding.UTF8.GetString(data)}。");
+            if (_logger.IsEnabled(LogLevel.Trace))
+                _logger.LogTrace($"准备转换mqtt服务路由，配置内容：{Encoding.UTF8.GetString(data)}。");
 
             if (data == null)
                 return null;

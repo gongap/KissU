@@ -232,8 +232,8 @@ namespace KissU.Surging.Zookeeper
 
         private ServiceCommandDescriptor GetServiceCommand(byte[] data)
         {
-            if (_logger.IsEnabled(LogLevel.Debug))
-                _logger.LogDebug($"准备转换服务命令，配置内容：{Encoding.UTF8.GetString(data)}。");
+            if (_logger.IsEnabled(LogLevel.Trace))
+                _logger.LogTrace($"准备转换服务命令，配置内容：{Encoding.UTF8.GetString(data)}。");
 
             if (data == null)
                 return null;
@@ -269,8 +269,8 @@ namespace KissU.Surging.Zookeeper
 
             foreach (var children in childrens)
             {
-                if (_logger.IsEnabled(LogLevel.Debug))
-                    _logger.LogDebug($"准备从节点：{children}中获取服务命令信息。");
+                if (_logger.IsEnabled(LogLevel.Trace))
+                    _logger.LogTrace($"准备从节点：{children}中获取服务命令信息。");
 
                 var nodePath = $"{rootPath}{children}";
                 var serviceCommand = await GetServiceCommand(nodePath);

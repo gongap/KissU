@@ -174,9 +174,9 @@ namespace KissU.Surging.DotNettyWSServer
         /// <param name="endPoint">The end point.</param>
         public async Task StartAsync(EndPoint endPoint)
         {
-            if (_logger.IsEnabled(LogLevel.Information))
+            if (_logger.IsEnabled(LogLevel.Debug))
             {
-                _logger.LogInformation($"准备启动服务主机，监听地址：{endPoint}。");
+                _logger.LogDebug($"准备启动WS服务主机，监听地址：{endPoint}。");
             }
 
             IEventLoopGroup bossGroup = new MultithreadEventLoopGroup(1);

@@ -29,24 +29,25 @@ namespace KissU.Surging.CPlatform.Runtime.Server.Implementation
         /// <exception cref="InvalidOperationException">本地包含多个Id为：{entry.Descriptor.Id} 的服务条目。</exception>
         public void UpdateEntries(IEnumerable<IServiceEntryProvider> providers)
         {
-            var list = new List<ServiceEntry>();
+            var serviceEntries = new List<ServiceEntry>();
             var allEntries = new List<ServiceEntry>();
             foreach (var provider in providers)
             {
+                allEntries.AddRange(provider.GetALLEntries());
+
                 var entries = provider.GetEntries().ToArray();
                 foreach (var entry in entries)
                 {
-                    if (list.Any(i => i.Descriptor.Id == entry.Descriptor.Id))
+                    if (serviceEntries.Any(i => i.Descriptor.Id == entry.Descriptor.Id))
                     {
                         throw new InvalidOperationException($"本地包含多个Id为：{entry.Descriptor.Id} 的服务条目。");
                     }
                 }
 
-                list.AddRange(entries);
-                allEntries.AddRange(provider.GetALLEntries());
+                serviceEntries.AddRange(entries);
             }
 
-            _serviceEntries = list.ToArray();
+            _serviceEntries = serviceEntries;
             _allEntries = allEntries;
         }
 

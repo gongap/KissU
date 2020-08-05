@@ -71,8 +71,8 @@ namespace KissU.Surging.Protocol.Http
         /// <param name="endPoint">The end point.</param>
         public async Task StartAsync(EndPoint endPoint)
         {
-            if (_logger.IsEnabled(LogLevel.Information))
-                _logger.LogInformation($"准备启动服务主机，监听地址：{endPoint}。");
+            if (_logger.IsEnabled(LogLevel.Debug))
+                _logger.LogDebug($"准备启动Http服务主机，监听地址：{endPoint}。");
             var serverCompletion = new TaskCompletionSource();
             var bossGroup = new MultithreadEventLoopGroup(1);
             var workerGroup =
