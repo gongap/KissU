@@ -23,7 +23,6 @@ namespace KissU.Surging.Nlog
         {
             var serviceProvider = context.ServiceProvoider;
             base.Initialize(context);
-            var section = AppConfig.GetSection("Logging");
             nlogConfigFile = EnvironmentHelper.GetEnvironmentVariable(nlogConfigFile);
             LogManager.LoadConfiguration(nlogConfigFile);
             serviceProvider.GetInstances<ILoggerFactory>().AddProvider(new NLogProvider());

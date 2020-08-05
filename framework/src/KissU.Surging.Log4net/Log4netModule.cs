@@ -22,7 +22,6 @@ namespace KissU.Surging.Log4net
         {
             var serviceProvider = context.ServiceProvoider;
             base.Initialize(context);
-            var section = AppConfig.GetSection("Logging");
             log4NetConfigFile = EnvironmentHelper.GetEnvironmentVariable(log4NetConfigFile);
             serviceProvider.GetInstances<ILoggerFactory>().AddProvider(new Log4NetProvider(log4NetConfigFile));
         }
