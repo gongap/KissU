@@ -49,12 +49,11 @@
     <Content Remove="Pages\**\*.css" />
   </ItemGroup>
 
+  
   <ItemGroup>
-    <EmbeddedResource Remove="Pages\Error.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Pages\Error.cshtml" />
+    <None Update="NLog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

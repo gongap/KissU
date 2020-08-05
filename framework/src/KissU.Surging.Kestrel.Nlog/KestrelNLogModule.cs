@@ -23,12 +23,12 @@ namespace KissU.Surging.Kestrel.Nlog
         /// <param name="context">The context.</param>
         public override void Configure(ApplicationInitializationContext context)
         {
-            var serviceProvider = context.ServiceProvider;
-            base.Configure(context);
-            var section = AppConfig.GetSection("Logging");
-            nlogConfigFile = EnvironmentHelper.GetEnvironmentVariable(nlogConfigFile);
-            LogManager.LoadConfiguration(nlogConfigFile);
-            serviceProvider.GetService<ILoggerFactory>().AddProvider(new NLogProvider());
+            //var serviceProvider = context.ServiceProvider;
+            //base.Configure(context);
+            //var section = AppConfig.GetSection("Logging");
+            //nlogConfigFile = EnvironmentHelper.GetEnvironmentVariable(nlogConfigFile);
+            //LogManager.LoadConfiguration(nlogConfigFile);
+            //serviceProvider.GetService<ILoggerFactory>().AddProvider(new NLogProvider());
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace KissU.Surging.Kestrel.Nlog
         /// <param name="context">The context.</param>
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
-            context.Services.AddLogging();
+            //context.Services.AddLogging();
         }
     }
 }

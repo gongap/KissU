@@ -28,7 +28,7 @@
     "Packages": [
       {
         "TypeName": "EnginePartModule",
-        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;SerilogModule;NLogModule;MessagePackModule;ConsulModule;WSProtocolModule;MqttProtocolModule;EventBusRabbitMQModule;CachingModule;KestrelHttpServerModule;DnsProtocolModule;KestrelSwaggerModule;ApiGeteWayModule;SkywalkingModule;KestrelNLogModule;GrpcModule;ApolloModule;AbpModule;"
+        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;NLogModule;MessagePackModule;ConsulModule;WSProtocolModule;MqttProtocolModule;EventBusRabbitMQModule;CachingModule;KestrelHttpServerModule;DnsProtocolModule;KestrelSwaggerModule;ApiGeteWayModule;SkywalkingModule;GrpcModule;ApolloModule;AbpModule;"
       }
     ]
   },
@@ -76,7 +76,7 @@
     "RoutePath": "${Register_RoutePath}",
     "ReloadOnChange": true,
     "EnableChildrenMonitor": false,
-    "MqttRoutePath": "${MqttRoutePath}|D:\\App\\Mqtt"
+    "MqttRoutePath": "${MqttRoutePath}"
   },
   "Zookeeper": {
     "ConnectionString": "${Zookeeper_ConnectionString}|127.0.0.1:2181",

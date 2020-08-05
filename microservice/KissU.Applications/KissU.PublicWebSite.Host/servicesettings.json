@@ -26,7 +26,7 @@
     "RoutePath": "${Register_RoutePath}",
     "ReloadOnChange": true,
     "EnableChildrenMonitor": false,
-    "MqttRoutePath": "${MqttRoutePath}|D:\\App\\Mqtt"
+    "MqttRoutePath": "${MqttRoutePath}"
   },
   "EventBus": {
     "EventBusConnection": "${EventBusConnection}|localhost",

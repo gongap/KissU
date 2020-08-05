@@ -16,7 +16,7 @@
     "ExecutionTimeoutInMilliseconds": 1000, //执行超时时间（毫秒）
     "Protocol": "${Protocol}|None", //配置微服务组件支持的协议 缺省值为: None, Tcp, Http, WS, Mqtt, Dns, Udp
     "RootPath": "${RootPath}|D:\\App\\Host", //指定服务引擎解析的业务模块路径
-    "WebRootPath": "${WebRootPath}|D:\\App\\wwwroot", //指定Web主机根路径
+    "WebRootPath": "${WebRootPath}", //指定Web主机根路径
     "IsModulePerLifetimeScope": false, //模块是否使用每个生命周期范围
     "ReloadOnChange": false, //当配置改变后是否重新加载
     "Ports": {
@@ -29,7 +29,7 @@
     "Packages": [ //如果引用多个同类型的组件，需要配置Packages，如果是自定义按需引用，无需配置Packages
       {
         "TypeName": "EnginePartModule",
-        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;SerilogModule;NLogModule;MessagePackModule;ConsulModule;WSProtocolModule;MqttProtocolModule;EventBusRabbitMQModule;CachingModule;KestrelHttpServerModule;DnsProtocolModule;KestrelSwaggerModule;ApiGeteWayModule;SkywalkingModule;KestrelNLogModule;GrpcModule;ApolloModule;AbpModule;"
+        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;NLogModule;MessagePackModule;ConsulModule;WSProtocolModule;MqttProtocolModule;EventBusRabbitMQModule;CachingModule;KestrelHttpServerModule;DnsProtocolModule;KestrelSwaggerModule;ApiGeteWayModule;SkywalkingModule;GrpcModule;ApolloModule;AbpModule;"
       }
     ]
   },
@@ -39,7 +39,7 @@
     "RoutePath": "${Register_RoutePath}", //服务组件地址,服务引擎会通过指定该地址扫描到相应的服务组件，并解析到相应的服务与命令
     "ReloadOnChange": true, //当配置改变后是否重新加载
     "EnableChildrenMonitor": false, //启用子节点监视器
-    "MqttRoutePath": "${MqttRoutePath}|D:\\App\\Mqtt" //Mqtt路由配置路径
+    "MqttRoutePath": "${MqttRoutePath}" //Mqtt路由配置路径
   },
   "Zookeeper": {
     "ConnectionString": "${Zookeeper_ConnectionString}|127.0.0.1:2181", // Zookeeper服务地址,
