@@ -17,9 +17,12 @@ using KissU.CPlatform.Routing;
 using KissU.Kestrel;
 using KissU.Kestrel.Extensions;
 using KissU.Kestrel.Filters;
+using KissU.Kestrel.Internal;
 using KissU.KestrelHttpServer.Filters;
+using KissU.KestrelHttpServer.Filters.Implementation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -154,13 +157,17 @@ namespace KissU.KestrelHttpServer
         /// <param name="services">The services.</param>
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddObjectAccessor<IApplicationBuilder>();
             services.AddMvc().AddNewtonsoftJson();
+            services.AddObjectAccessor<IApplicationBuilder>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddFilters(typeof(HttpRequestFilterAttribute));
+            services.AddFilters(typeof(CustomerExceptionFilterAttribute));
             _moduleProvider.ConfigureServices(new ServiceConfigurationContext(services));
         }
 
         private void AppResolve(IApplicationBuilder app)
         {
+            RestContext.GetContext().Initialize(app.ApplicationServices);
             app.ApplicationServices.GetRequiredService<ObjectAccessor<IApplicationBuilder>>().Value = app;
             app.UseStaticFiles();
             app.UseRouting();

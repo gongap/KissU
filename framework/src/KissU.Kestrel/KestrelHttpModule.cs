@@ -16,6 +16,14 @@ namespace KissU.Kestrel
         }
 
         /// <summary>
+        /// 配置服务
+        /// </summary>
+        /// <param name="context">The services.</param>
+        public virtual void ConfigureServices(ServiceConfigurationContext context)
+        {
+        }
+
+        /// <summary>
         /// Registers the builder.
         /// </summary>
         /// </summary>

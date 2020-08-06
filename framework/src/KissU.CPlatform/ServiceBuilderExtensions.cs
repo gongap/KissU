@@ -455,21 +455,18 @@ namespace KissU.CPlatform
                 throw new ArgumentNullException("builder");
             }
 
-            var serviceConfigurationContext = new ServiceConfigurationContext(services);
             // 从servicesettings.json取到packages
             var packages = ConvertDictionary(AppConfig.ServerOptions.Packages);
             foreach (var moduleAssembly in referenceAssemblies)
             {
                 ModuleHelper.GetAbstractModules(moduleAssembly).ForEach(p =>
                 {
-                    containerBuilder.RegisterModule(p);
                     if (packages.ContainsKey(p.TypeName))
                     {
                         var useModules = packages[p.TypeName];
                         if (useModules.AsSpan().IndexOf(p.ModuleName) >= 0)
                         {
                             p.Enable = true;
-                            p.ConfigureServices(serviceConfigurationContext);
                         }
                         else
                         {
@@ -477,11 +474,15 @@ namespace KissU.CPlatform
                         }
                     }
 
+                    if (p.Enable)
+                    {
+                        containerBuilder.RegisterModule(p);
+                    }
+
                     _modules.Add(p);
                 });
             }
 
-            builder.ContainerBuilder.Populate(serviceConfigurationContext.Services);
             builder.ContainerBuilder.Register(provider => new ModuleProvider(
                 _modules, virtualPaths, provider.Resolve<ILogger<ModuleProvider>>(),
                 provider.Resolve<CPlatformContainer>()

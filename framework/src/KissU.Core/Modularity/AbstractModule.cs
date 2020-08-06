@@ -110,14 +110,6 @@ namespace KissU.Modularity
         }
 
         /// <summary>
-        /// 配置服务
-        /// </summary>
-        /// <param name="context">The services.</param>
-        public virtual void ConfigureServices(ServiceConfigurationContext context)
-        {
-        }
-
-        /// <summary>
         /// 注册服务
         /// </summary>
         /// <param name="builder">构建器包装</param>

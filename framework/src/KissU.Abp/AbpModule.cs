@@ -8,7 +8,7 @@ using Volo.Abp.Modularity.PlugIns;
 
 namespace KissU.Abp
 {
-    public class AbpModule : EnginePartModule
+    public class AbpModule : SystemModule
     {
         private IAbpApplicationWithExternalServiceProvider _application;
 

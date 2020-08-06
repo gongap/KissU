@@ -672,3 +672,197 @@
 2020-08-06 00:10:02.180 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/favicon.ico  
 2020-08-06 00:10:02.198 +08:00 [INF] Request finished in 18.5296ms 404 
 2020-08-06 00:10:47.398 +08:00 [INF] Application is shutting down...
+2020-08-06 15:38:48.855 +08:00 [INF] Starting IdentityServer.
+2020-08-06 15:38:50.627 +08:00 [INF] User profile is available. Using 'C:\Users\Gongap\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2020-08-06 15:38:50.739 +08:00 [INF] Loaded ABP modules:
+2020-08-06 15:38:50.743 +08:00 [INF] - Volo.Abp.Castle.AbpCastleCoreModule
+2020-08-06 15:38:50.746 +08:00 [INF] - Volo.Abp.Autofac.AbpAutofacModule
+2020-08-06 15:38:50.747 +08:00 [INF] - Volo.Abp.Security.AbpSecurityModule
+2020-08-06 15:38:50.749 +08:00 [INF] - Volo.Abp.Localization.AbpLocalizationAbstractionsModule
+2020-08-06 15:38:50.750 +08:00 [INF] - Volo.Abp.Validation.AbpValidationAbstractionsModule
+2020-08-06 15:38:50.751 +08:00 [INF] - Volo.Abp.ObjectExtending.AbpObjectExtendingModule
+2020-08-06 15:38:50.752 +08:00 [INF] - Volo.Abp.Uow.AbpUnitOfWorkModule
+2020-08-06 15:38:50.753 +08:00 [INF] - Volo.Abp.Data.AbpDataModule
+2020-08-06 15:38:50.755 +08:00 [INF] - Volo.Abp.MultiTenancy.AbpMultiTenancyModule
+2020-08-06 15:38:50.756 +08:00 [INF] - Volo.Abp.Authorization.AbpAuthorizationModule
+2020-08-06 15:38:50.757 +08:00 [INF] - Volo.Abp.VirtualFileSystem.AbpVirtualFileSystemModule
+2020-08-06 15:38:50.773 +08:00 [INF] - Volo.Abp.Settings.AbpSettingsModule
+2020-08-06 15:38:50.786 +08:00 [INF] - Volo.Abp.Timing.AbpTimingModule
+2020-08-06 15:38:50.789 +08:00 [INF] - Volo.Abp.Json.AbpJsonModule
+2020-08-06 15:38:50.791 +08:00 [INF] - Volo.Abp.Threading.AbpThreadingModule
+2020-08-06 15:38:50.793 +08:00 [INF] - Volo.Abp.Auditing.AbpAuditingModule
+2020-08-06 15:38:50.795 +08:00 [INF] - Volo.Abp.EventBus.AbpEventBusModule
+2020-08-06 15:38:50.796 +08:00 [INF] - Volo.Abp.Guids.AbpGuidsModule
+2020-08-06 15:38:50.798 +08:00 [INF] - Volo.Abp.ObjectMapping.AbpObjectMappingModule
+2020-08-06 15:38:50.799 +08:00 [INF] - Volo.Abp.Domain.AbpDddDomainModule
+2020-08-06 15:38:50.801 +08:00 [INF] - Volo.Abp.Localization.AbpLocalizationModule
+2020-08-06 15:38:50.803 +08:00 [INF] - Volo.Abp.Validation.AbpValidationModule
+2020-08-06 15:38:50.804 +08:00 [INF] - KissU.Modules.PermissionManagement.Domain.Shared.AbpPermissionManagementDomainSharedModule
+2020-08-06 15:38:50.806 +08:00 [INF] - Volo.Abp.Serialization.AbpSerializationModule
+2020-08-06 15:38:50.808 +08:00 [INF] - Volo.Abp.Caching.AbpCachingModule
+2020-08-06 15:38:50.810 +08:00 [INF] - KissU.Modules.PermissionManagement.Domain.AbpPermissionManagementDomainModule
+2020-08-06 15:38:50.813 +08:00 [INF] - Volo.Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule
+2020-08-06 15:38:50.814 +08:00 [INF] - KissU.Modules.PermissionManagement.EntityFrameworkCore.AbpPermissionManagementEntityFrameworkCoreModule
+2020-08-06 15:38:50.829 +08:00 [INF] - KissU.Modules.AuditLogging.Domain.Shared.AbpAuditLoggingDomainSharedModule
+2020-08-06 15:38:50.832 +08:00 [INF] - KissU.Modules.AuditLogging.Domain.AbpAuditLoggingDomainModule
+2020-08-06 15:38:50.834 +08:00 [INF] - KissU.Modules.AuditLogging.EntityFrameworkCore.EntityFrameworkCore.AbpAuditLoggingEntityFrameworkCoreModule
+2020-08-06 15:38:50.835 +08:00 [INF] - KissU.Modules.SettingManagement.Domain.Shared.AbpSettingManagementDomainSharedModule
+2020-08-06 15:38:50.837 +08:00 [INF] - KissU.Modules.SettingManagement.Domain.AbpSettingManagementDomainModule
+2020-08-06 15:38:50.838 +08:00 [INF] - KissU.Modules.SettingManagement.EntityFrameworkCore.AbpSettingManagementEntityFrameworkCoreModule
+2020-08-06 15:38:50.840 +08:00 [INF] - Volo.Abp.Users.AbpUsersDomainSharedModule
+2020-08-06 15:38:50.851 +08:00 [INF] - KissU.Modules.Identity.Domain.Shared.AbpIdentityDomainSharedModule
+2020-08-06 15:38:50.854 +08:00 [INF] - KissU.Modules.Users.Domain.Shared.AbpUsersDomainSharedModule
+2020-08-06 15:38:50.855 +08:00 [INF] - KissU.Modules.Users.Abstractions.AbpUsersAbstractionModule
+2020-08-06 15:38:50.856 +08:00 [INF] - KissU.Modules.Users.Domain.AbpUsersDomainModule
+2020-08-06 15:38:50.867 +08:00 [INF] - Volo.Abp.AutoMapper.AbpAutoMapperModule
+2020-08-06 15:38:50.870 +08:00 [INF] - KissU.Modules.Identity.Domain.AbpIdentityDomainModule
+2020-08-06 15:38:50.871 +08:00 [INF] - KissU.Modules.Users.EntityFrameworkCore.AbpUsersEntityFrameworkCoreModule
+2020-08-06 15:38:50.873 +08:00 [INF] - KissU.Modules.Identity.EntityFrameworkCore.AbpIdentityEntityFrameworkCoreModule
+2020-08-06 15:38:50.875 +08:00 [INF] - Volo.Abp.Application.AbpDddApplicationContractsModule
+2020-08-06 15:38:50.885 +08:00 [INF] - Volo.Abp.Http.AbpHttpAbstractionsModule
+2020-08-06 15:38:50.888 +08:00 [INF] - Volo.Abp.Features.AbpFeaturesModule
+2020-08-06 15:38:50.889 +08:00 [INF] - Volo.Abp.Application.AbpDddApplicationModule
+2020-08-06 15:38:50.901 +08:00 [INF] - KissU.Modules.Identity.Application.Contracts.AbpIdentityApplicationContractsModule
+2020-08-06 15:38:50.904 +08:00 [INF] - KissU.Modules.Account.Application.Contracts.AbpAccountApplicationContractsModule
+2020-08-06 15:38:50.905 +08:00 [INF] - KissU.Modules.Identity.Application.AbpIdentityApplicationModule
+2020-08-06 15:38:50.907 +08:00 [INF] - Volo.Abp.UI.AbpUiModule
+2020-08-06 15:38:50.918 +08:00 [INF] - Volo.Abp.UI.Navigation.AbpUiNavigationModule
+2020-08-06 15:38:50.921 +08:00 [INF] - KissU.Modules.Account.Application.AbpAccountApplicationModule
+2020-08-06 15:38:50.924 +08:00 [INF] - KissU.Modules.IdentityServer.Domain.Shared.AbpIdentityServerDomainSharedModule
+2020-08-06 15:38:50.934 +08:00 [INF] - Volo.Abp.BackgroundWorkers.AbpBackgroundWorkersModule
+2020-08-06 15:38:50.936 +08:00 [INF] - KissU.Modules.IdentityServer.Domain.AbpIdentityServerDomainModule
+2020-08-06 15:38:50.938 +08:00 [INF] - KissU.Modules.IdentityServer.EntityFrameworkCore.EntityFrameworkCore.AbpIdentityServerEntityFrameworkCoreModule
+2020-08-06 15:38:50.951 +08:00 [INF] - Volo.Abp.EntityFrameworkCore.SqlServer.AbpEntityFrameworkCoreSqlServerModule
+2020-08-06 15:38:50.981 +08:00 [INF] - KissU.Modules.Account.Service.Contracts.AccountServiceContractsModule
+2020-08-06 15:38:51.033 +08:00 [INF] - KissU.Modules.Identity.AspNetCore.AbpIdentityAspNetCoreModule
+2020-08-06 15:38:51.036 +08:00 [INF] - Volo.Abp.Minify.AbpMinifyModule
+2020-08-06 15:38:51.038 +08:00 [INF] - Volo.Abp.Http.AbpHttpModule
+2020-08-06 15:38:51.040 +08:00 [INF] - Volo.Abp.AspNetCore.AbpAspNetCoreModule
+2020-08-06 15:38:51.068 +08:00 [INF] - Volo.Abp.ApiVersioning.AbpApiVersioningAbstractionsModule
+2020-08-06 15:38:51.069 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcContractsModule
+2020-08-06 15:38:51.071 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.AbpAspNetCoreMvcModule
+2020-08-06 15:38:51.072 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.AbpAspNetCoreMvcUiModule
+2020-08-06 15:38:51.085 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.AbpAspNetCoreMvcUiBootstrapModule
+2020-08-06 15:38:51.087 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Bundling.AbpAspNetCoreMvcUiBundlingModule
+2020-08-06 15:38:51.089 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Packages.AbpAspNetCoreMvcUiPackagesModule
+2020-08-06 15:38:51.091 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Widgets.AbpAspNetCoreMvcUiWidgetsModule
+2020-08-06 15:38:51.106 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.AbpAspNetCoreMvcUiThemeSharedModule
+2020-08-06 15:38:51.108 +08:00 [INF] - KissU.ApplicationParts.Account.AbpAccountWebModule
+2020-08-06 15:38:51.119 +08:00 [INF] - KissU.ApplicationParts.Account.IdentityServer.AbpAccountWebIdentityServerModule
+2020-08-06 15:38:51.121 +08:00 [INF] - Volo.Abp.AspNetCore.MultiTenancy.AbpAspNetCoreMultiTenancyModule
+2020-08-06 15:38:51.123 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.AbpAspNetCoreMvcUiMultiTenancyModule
+2020-08-06 15:38:51.136 +08:00 [INF] - Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic.AbpAspNetCoreMvcUiBasicThemeModule
+2020-08-06 15:38:51.138 +08:00 [INF] - KissU.Modules.TenantManagement.Domain.Shared.AbpTenantManagementDomainSharedModule
+2020-08-06 15:38:51.139 +08:00 [INF] - KissU.Modules.TenantManagement.Domain.AbpTenantManagementDomainModule
+2020-08-06 15:38:51.152 +08:00 [INF] - KissU.Modules.TenantManagement.EntityFrameworkCore.AbpTenantManagementEntityFrameworkCoreModule
+2020-08-06 15:38:51.154 +08:00 [INF] - KissU.Modules.TenantManagement.Application.Contracts.AbpTenantManagementApplicationContractsModule
+2020-08-06 15:38:51.155 +08:00 [INF] - Volo.Abp.AspNetCore.Serilog.AbpAspNetCoreSerilogModule
+2020-08-06 15:38:51.157 +08:00 [INF] - KissU.AuthServer.Host.AuthServerHostModule
+2020-08-06 15:38:51.513 +08:00 [DBG] Started background worker: KissU.Modules.IdentityServer.Domain.Tokens.TokenCleanupBackgroundWorker
+2020-08-06 15:38:51.543 +08:00 [INF] Starting IdentityServer4 version 3.1.3.0
+2020-08-06 15:38:51.756 +08:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2020-08-06 15:38:51.760 +08:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for authentication
+2020-08-06 15:38:51.762 +08:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-in
+2020-08-06 15:38:51.764 +08:00 [DBG] Using Identity.External as default ASP.NET Core scheme for sign-out
+2020-08-06 15:38:51.767 +08:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for challenge
+2020-08-06 15:38:51.768 +08:00 [DBG] Using Identity.Application as default ASP.NET Core scheme for forbid
+2020-08-06 15:38:55.932 +08:00 [INF] Initialized all ABP modules.
+2020-08-06 15:38:55.986 +08:00 [INF] Now listening on: http://localhost:8090
+2020-08-06 15:38:55.989 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2020-08-06 15:38:55.990 +08:00 [INF] Hosting environment: Development
+2020-08-06 15:38:55.992 +08:00 [INF] Content root path: E:\GAP\KissU\microservice\KissU.Applications\KissU.AuthServer.Host
+2020-08-06 15:39:14.834 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/.well-known/openid-configuration  
+2020-08-06 15:39:14.919 +08:00 [DBG] Login Url: /Account/Login
+2020-08-06 15:39:14.921 +08:00 [DBG] Login Return Url Parameter: ReturnUrl
+2020-08-06 15:39:14.923 +08:00 [DBG] Logout Url: /Account/Logout
+2020-08-06 15:39:14.924 +08:00 [DBG] ConsentUrl Url: /consent
+2020-08-06 15:39:14.926 +08:00 [DBG] Consent Return Url Parameter: returnUrl
+2020-08-06 15:39:14.927 +08:00 [DBG] Error Url: /home/error
+2020-08-06 15:39:14.929 +08:00 [DBG] Error Id Parameter: errorId
+2020-08-06 15:39:15.061 +08:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2020-08-06 15:39:15.081 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2020-08-06 15:39:15.085 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2020-08-06 15:39:15.089 +08:00 [DBG] Start discovery request
+2020-08-06 15:39:15.278 +08:00 [INF] Request finished in 447.7583ms 200 application/json; charset=UTF-8
+2020-08-06 15:39:15.295 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/.well-known/openid-configuration/jwks  
+2020-08-06 15:39:15.301 +08:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2020-08-06 15:39:15.307 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2020-08-06 15:39:15.310 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2020-08-06 15:39:15.313 +08:00 [DBG] Start key discovery request
+2020-08-06 15:39:15.332 +08:00 [INF] Request finished in 36.3866ms 200 application/jwk-set+json; charset=UTF-8
+2020-08-06 15:39:15.349 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:8090/connect/token application/x-www-form-urlencoded 189
+2020-08-06 15:39:15.365 +08:00 [DBG] Request path /connect/token matched to endpoint type Token
+2020-08-06 15:39:15.449 +08:00 [DBG] Endpoint enabled: Token, successfully created handler: IdentityServer4.Endpoints.TokenEndpoint
+2020-08-06 15:39:15.453 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.TokenEndpoint for /connect/token
+2020-08-06 15:39:15.459 +08:00 [DBG] Start token request.
+2020-08-06 15:39:15.463 +08:00 [DBG] Start client validation
+2020-08-06 15:39:15.468 +08:00 [DBG] Start parsing Basic Authentication secret
+2020-08-06 15:39:15.471 +08:00 [DBG] Start parsing for secret in post body
+2020-08-06 15:39:15.477 +08:00 [DBG] Parser found secret: PostBodySecretParser
+2020-08-06 15:39:15.479 +08:00 [DBG] Secret id found: console-client-demo
+2020-08-06 15:39:15.736 +08:00 [DBG] client configuration validation for client console-client-demo succeeded.
+2020-08-06 15:39:15.747 +08:00 [DBG] Secret validator success: HashedSharedSecretValidator
+2020-08-06 15:39:15.750 +08:00 [DBG] Client validation success
+2020-08-06 15:39:15.761 +08:00 [INF] {"ClientId":"console-client-demo","AuthenticationMethod":"SharedSecret","Category":"Authentication","Name":"Client Authentication Success","EventType":"Success","Id":1010,"Message":null,"ActivityId":"0HM1PRF8NMUVF:00000003","TimeStamp":"2020-08-06T07:39:15.0000000Z","ProcessId":8100,"LocalIpAddress":"::1:8090","RemoteIpAddress":"::1","$type":"ClientAuthenticationSuccessEvent"}
+2020-08-06 15:39:15.791 +08:00 [DBG] Start token request validation
+2020-08-06 15:39:15.799 +08:00 [DBG] Start resource owner password token request validation
+2020-08-06 15:39:16.081 +08:00 [INF] Credentials validated for username: admin
+2020-08-06 15:39:16.084 +08:00 [INF] {"Username":"admin","Provider":null,"ProviderUserId":null,"SubjectId":"1048a2a6-9e07-3308-72e4-39f5ec59423c","DisplayName":"admin","Endpoint":"Token","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HM1PRF8NMUVF:00000003","TimeStamp":"2020-08-06T07:39:16.0000000Z","ProcessId":8100,"LocalIpAddress":"::1:8090","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-08-06 15:39:16.191 +08:00 [INF] {"Username":"admin","Provider":null,"ProviderUserId":null,"SubjectId":"1048a2a6-9e07-3308-72e4-39f5ec59423c","DisplayName":null,"Endpoint":"Token","ClientId":"console-client-demo","Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HM1PRF8NMUVF:00000003","TimeStamp":"2020-08-06T07:39:16.0000000Z","ProcessId":8100,"LocalIpAddress":"::1:8090","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-08-06 15:39:16.213 +08:00 [DBG] Resource owner password token request validation success.
+2020-08-06 15:39:16.221 +08:00 [INF] Token request validation success, {"ClientId":"console-client-demo","ClientName":"console-client-demo","GrantType":"password","Scopes":"IdentityService InternalGateway ProductService TenantManagementService","AuthorizationCode":null,"RefreshToken":null,"UserName":"admin","AuthenticationContextReferenceClasses":null,"Tenant":null,"IdP":null,"Raw":{"grant_type":"password","username":"admin","password":"***REDACTED***","scope":"InternalGateway IdentityService ProductService TenantManagementService","client_id":"console-client-demo","client_secret":"***REDACTED***"},"$type":"TokenRequestValidationLog"}
+2020-08-06 15:39:16.260 +08:00 [DBG] Getting claims for access token for client: console-client-demo
+2020-08-06 15:39:16.264 +08:00 [DBG] Getting claims for access token for subject: 1048a2a6-9e07-3308-72e4-39f5ec59423c
+2020-08-06 15:39:16.559 +08:00 [INF] {"ClientId":"console-client-demo","ClientName":"console-client-demo","RedirectUri":null,"Endpoint":"Token","SubjectId":"1048a2a6-9e07-3308-72e4-39f5ec59423c","Scopes":"IdentityService InternalGateway ProductService TenantManagementService","GrantType":"password","Tokens":[{"TokenType":"access_token","TokenValue":"****8_3w","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HM1PRF8NMUVF:00000003","TimeStamp":"2020-08-06T07:39:16.0000000Z","ProcessId":8100,"LocalIpAddress":"::1:8090","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2020-08-06 15:39:16.593 +08:00 [DBG] Token request success.
+2020-08-06 15:39:16.600 +08:00 [INF] Request finished in 1250.7933ms 200 application/json; charset=UTF-8
+2020-08-06 15:43:59.785 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/.well-known/openid-configuration  
+2020-08-06 15:43:59.832 +08:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2020-08-06 15:43:59.858 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2020-08-06 15:43:59.862 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2020-08-06 15:43:59.865 +08:00 [DBG] Start discovery request
+2020-08-06 15:43:59.971 +08:00 [INF] Request finished in 187.2441ms 200 application/json; charset=UTF-8
+2020-08-06 15:44:00.010 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/.well-known/openid-configuration/jwks  
+2020-08-06 15:44:00.018 +08:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2020-08-06 15:44:00.027 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2020-08-06 15:44:00.029 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2020-08-06 15:44:00.032 +08:00 [DBG] Start key discovery request
+2020-08-06 15:44:00.035 +08:00 [INF] Request finished in 24.5508ms 200 application/jwk-set+json; charset=UTF-8
+2020-08-06 15:44:00.071 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:8090/connect/token application/x-www-form-urlencoded 189
+2020-08-06 15:44:00.085 +08:00 [DBG] Request path /connect/token matched to endpoint type Token
+2020-08-06 15:44:00.118 +08:00 [DBG] Endpoint enabled: Token, successfully created handler: IdentityServer4.Endpoints.TokenEndpoint
+2020-08-06 15:44:00.132 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.TokenEndpoint for /connect/token
+2020-08-06 15:44:00.137 +08:00 [DBG] Start token request.
+2020-08-06 15:44:00.139 +08:00 [DBG] Start client validation
+2020-08-06 15:44:00.142 +08:00 [DBG] Start parsing Basic Authentication secret
+2020-08-06 15:44:00.144 +08:00 [DBG] Start parsing for secret in post body
+2020-08-06 15:44:00.147 +08:00 [DBG] Parser found secret: PostBodySecretParser
+2020-08-06 15:44:00.149 +08:00 [DBG] Secret id found: console-client-demo
+2020-08-06 15:44:00.550 +08:00 [DBG] client configuration validation for client console-client-demo succeeded.
+2020-08-06 15:44:00.554 +08:00 [DBG] Secret validator success: HashedSharedSecretValidator
+2020-08-06 15:44:00.557 +08:00 [DBG] Client validation success
+2020-08-06 15:44:00.559 +08:00 [INF] {"ClientId":"console-client-demo","AuthenticationMethod":"SharedSecret","Category":"Authentication","Name":"Client Authentication Success","EventType":"Success","Id":1010,"Message":null,"ActivityId":"0HM1PRF8NMUVG:00000003","TimeStamp":"2020-08-06T07:44:00.0000000Z","ProcessId":8100,"LocalIpAddress":"::1:8090","RemoteIpAddress":"::1","$type":"ClientAuthenticationSuccessEvent"}
+2020-08-06 15:44:00.579 +08:00 [DBG] Start token request validation
+2020-08-06 15:44:00.582 +08:00 [DBG] Start resource owner password token request validation
+2020-08-06 15:44:00.780 +08:00 [INF] Credentials validated for username: admin
+2020-08-06 15:44:00.785 +08:00 [INF] {"Username":"admin","Provider":null,"ProviderUserId":null,"SubjectId":"1048a2a6-9e07-3308-72e4-39f5ec59423c","DisplayName":"admin","Endpoint":"Token","ClientId":null,"Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HM1PRF8NMUVG:00000003","TimeStamp":"2020-08-06T07:44:00.0000000Z","ProcessId":8100,"LocalIpAddress":"::1:8090","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-08-06 15:44:00.912 +08:00 [INF] {"Username":"admin","Provider":null,"ProviderUserId":null,"SubjectId":"1048a2a6-9e07-3308-72e4-39f5ec59423c","DisplayName":null,"Endpoint":"Token","ClientId":"console-client-demo","Category":"Authentication","Name":"User Login Success","EventType":"Success","Id":1000,"Message":null,"ActivityId":"0HM1PRF8NMUVG:00000003","TimeStamp":"2020-08-06T07:44:00.0000000Z","ProcessId":8100,"LocalIpAddress":"::1:8090","RemoteIpAddress":"::1","$type":"UserLoginSuccessEvent"}
+2020-08-06 15:44:00.942 +08:00 [DBG] Resource owner password token request validation success.
+2020-08-06 15:44:00.948 +08:00 [INF] Token request validation success, {"ClientId":"console-client-demo","ClientName":"console-client-demo","GrantType":"password","Scopes":"IdentityService InternalGateway ProductService TenantManagementService","AuthorizationCode":null,"RefreshToken":null,"UserName":"admin","AuthenticationContextReferenceClasses":null,"Tenant":null,"IdP":null,"Raw":{"grant_type":"password","username":"admin","password":"***REDACTED***","scope":"InternalGateway IdentityService ProductService TenantManagementService","client_id":"console-client-demo","client_secret":"***REDACTED***"},"$type":"TokenRequestValidationLog"}
+2020-08-06 15:44:00.987 +08:00 [DBG] Getting claims for access token for client: console-client-demo
+2020-08-06 15:44:00.990 +08:00 [DBG] Getting claims for access token for subject: 1048a2a6-9e07-3308-72e4-39f5ec59423c
+2020-08-06 15:44:01.063 +08:00 [INF] {"ClientId":"console-client-demo","ClientName":"console-client-demo","RedirectUri":null,"Endpoint":"Token","SubjectId":"1048a2a6-9e07-3308-72e4-39f5ec59423c","Scopes":"IdentityService InternalGateway ProductService TenantManagementService","GrantType":"password","Tokens":[{"TokenType":"access_token","TokenValue":"****e5Hw","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HM1PRF8NMUVG:00000003","TimeStamp":"2020-08-06T07:44:01.0000000Z","ProcessId":8100,"LocalIpAddress":"::1:8090","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2020-08-06 15:44:01.095 +08:00 [DBG] Token request success.
+2020-08-06 15:44:01.099 +08:00 [INF] Request finished in 1027.9387ms 200 application/json; charset=UTF-8
+2020-08-06 15:44:01.363 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/.well-known/openid-configuration  
+2020-08-06 15:44:01.372 +08:00 [DBG] Request path /.well-known/openid-configuration matched to endpoint type Discovery
+2020-08-06 15:44:01.384 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryEndpoint
+2020-08-06 15:44:01.387 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2020-08-06 15:44:01.390 +08:00 [DBG] Start discovery request
+2020-08-06 15:44:01.412 +08:00 [INF] Request finished in 48.9189ms 200 application/json; charset=UTF-8
+2020-08-06 15:44:01.469 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:8090/.well-known/openid-configuration/jwks  
+2020-08-06 15:44:01.475 +08:00 [DBG] Request path /.well-known/openid-configuration/jwks matched to endpoint type Discovery
+2020-08-06 15:44:01.480 +08:00 [DBG] Endpoint enabled: Discovery, successfully created handler: IdentityServer4.Endpoints.DiscoveryKeyEndpoint
+2020-08-06 15:44:01.483 +08:00 [INF] Invoking IdentityServer endpoint: IdentityServer4.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2020-08-06 15:44:01.486 +08:00 [DBG] Start key discovery request
+2020-08-06 15:44:01.488 +08:00 [INF] Request finished in 18.8052ms 200 application/jwk-set+json; charset=UTF-8

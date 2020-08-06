@@ -8,14 +8,8 @@ using KissU.CPlatform.Diagnostics;
 using KissU.CPlatform.Engines;
 using KissU.CPlatform.Routing;
 using KissU.CPlatform.Runtime.Server;
-using KissU.Kestrel;
-using KissU.Kestrel.Extensions;
-using KissU.Kestrel.Internal;
 using KissU.KestrelHttpServer.Diagnostics;
 using KissU.KestrelHttpServer.Filters.Implementation;
-using KissU.KestrelHttpServer.Internal;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 namespace KissU.KestrelHttpServer
@@ -25,28 +19,8 @@ namespace KissU.KestrelHttpServer
     /// Implements the <see cref="EnginePartModule" />
     /// </summary>
     /// <seealso cref="EnginePartModule" />
-    public class KestrelHttpServerModule : KestrelHttpModule
+    public class KestrelHttpServerModule : EnginePartModule
     {
-        /// <summary>
-        /// Initializes the specified builder.
-        /// </summary>
-        /// <param name="context">The builder.</param>
-        public override void Configure(ApplicationInitializationContext context)
-        {
-            RestContext.GetContext().Initialize(context.ServiceProvider);
-        }
-
-        /// <summary>
-        /// 配置服务
-        /// </summary>
-        /// <param name="context">The services.</param>
-        public override void ConfigureServices(ServiceConfigurationContext context)
-        {
-            context.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            context.Services.AddFilters(typeof(HttpRequestFilterAttribute));
-            context.Services.AddFilters(typeof(CustomerExceptionFilterAttribute));
-        }
-
         /// <summary>
         /// Inject dependent third-party components
         /// </summary>
