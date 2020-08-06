@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.Common;
 using KissU.Dependency;
 using KissU.EventBus.Events;
 using KissU.Modules.SampleA.Service.Contracts.Dtos;
@@ -14,6 +13,7 @@ using KissU.CPlatform.Support.Attributes;
 using KissU.Kestrel.Abstractions;
 using KissU.KestrelHttpServer.Abstractions;
 using KissU.KestrelHttpServer.Internal;
+using KissU.Models;
 using CacheTargetType = KissU.Caching.CacheTargetType;
 using CachingMethod = KissU.Caching.Interceptors.CachingMethod;
 using Metadatas = KissU.ProxyGenerator.Interceptors.Implementation.Metadatas;

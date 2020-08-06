@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using KissU.Common;
 using KissU.Dependency;
 using KissU.EventBus.Events;
 using KissU.Modules.SampleA.Service.Contracts;
@@ -14,6 +13,7 @@ using KissU.ProxyGenerator;
 using KissU.Modules.SampleA.Service.Repositories;
 using KissU.Modules.SampleB.Service.Contracts;
 using KissU.Kestrel.Abstractions;
+using KissU.Models;
 
 namespace KissU.Modules.SampleA.Service.Implements
 {

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace KissU.Common
+namespace KissU.Models
 {
     [DataContract]
     public class ListResult<T>

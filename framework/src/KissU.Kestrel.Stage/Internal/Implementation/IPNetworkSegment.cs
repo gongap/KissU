@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace KissU.Stage.Internal.Implementation
+namespace KissU.Kestrel.Stage.Internal.Implementation
 {
     /// <summary>
     /// IPNetworkSegment.

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KissU.Stage.Configurations
+namespace KissU.Kestrel.Stage.Configurations
 {
     /// <summary>
     /// DataRateOption.

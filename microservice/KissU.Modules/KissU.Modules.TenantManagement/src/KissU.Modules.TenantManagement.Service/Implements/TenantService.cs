@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using KissU.Common;
 using KissU.Dependency;
 using KissU.Extensions;
+using KissU.Models;
 using KissU.Modules.TenantManagement.Application.Contracts;
 using KissU.Modules.TenantManagement.Service.Contracts;
 using KissU.ProxyGenerator;

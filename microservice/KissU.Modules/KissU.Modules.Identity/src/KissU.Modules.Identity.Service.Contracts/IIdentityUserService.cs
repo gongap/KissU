@@ -1,8 +1,8 @@
 using System.Threading.Tasks;
-using KissU.Common;
 using KissU.Dependency;
 using KissU.Modules.Identity.Application.Contracts;
 using KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
+using KissU.Models;
 
 namespace KissU.Modules.Identity.Service.Contracts
 {

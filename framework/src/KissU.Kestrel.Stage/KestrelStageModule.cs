@@ -1,18 +1,17 @@
 ﻿using System;
-using KissU.Modularity;
-using KissU.Kestrel;
 using KissU.Kestrel.Extensions;
-using KissU.Stage.Configurations;
-using KissU.Stage.Filters;
-using KissU.Stage.Internal;
-using KissU.Stage.Internal.Implementation;
+using KissU.Kestrel.Stage.Configurations;
+using KissU.Kestrel.Stage.Filters;
+using KissU.Kestrel.Stage.Internal;
+using KissU.Kestrel.Stage.Internal.Implementation;
+using KissU.Modularity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace KissU.Stage
+namespace KissU.Kestrel.Stage
 {
     /// <summary>
     /// StageModule.

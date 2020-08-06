@@ -1,4 +1,4 @@
-﻿namespace KissU.Engines.Implementation
+﻿namespace KissU.CPlatform.Engines.Implementation
 {
     /// <summary>
     /// 服务引擎虚拟路径提供者.

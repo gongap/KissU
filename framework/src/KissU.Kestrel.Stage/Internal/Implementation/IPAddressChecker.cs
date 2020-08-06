@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 
-namespace KissU.Stage.Internal.Implementation
+namespace KissU.Kestrel.Stage.Internal.Implementation
 {
     /// <summary>
     /// IPAddressChecker.
-    /// Implements the <see cref="KissU.Stage.Internal.IIPChecker" />
+    /// Implements the <see cref="IIPChecker" />
     /// </summary>
-    /// <seealso cref="KissU.Stage.Internal.IIPChecker" />
+    /// <seealso cref="IIPChecker" />
     public class IPAddressChecker : IIPChecker
     {
         private readonly ConcurrentDictionary<string, ValueTuple<List<string>, List<string>>> _ipAddresses =

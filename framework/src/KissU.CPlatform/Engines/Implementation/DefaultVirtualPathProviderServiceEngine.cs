@@ -1,6 +1,6 @@
 ﻿using KissU.Helpers;
 
-namespace KissU.Engines.Implementation
+namespace KissU.CPlatform.Engines.Implementation
 {
     /// <summary>
     /// 微服务引擎虚拟路径提供程序

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 
-namespace KissU.Stage.Configurations
+namespace KissU.Kestrel.Stage.Configurations
 {
     /// <summary>
     /// StageOption.

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-using KissU.Common;
 using KissU.Dependency;
 using KissU.EventBus.Events;
 using KissU.Modules.SampleA.Service.Contracts;
@@ -12,6 +11,7 @@ using KissU.Modules.SampleA.Service.Repositories;
 using KissU.Kestrel.Abstractions;
 using KissU.KestrelHttpServer.Abstractions;
 using KissU.KestrelHttpServer.Internal;
+using KissU.Models;
 using KissU.ProxyGenerator;
 using static KissU.Modules.SampleA.Service.Contracts.Thrifts.ThriftCore.Calculator;
 

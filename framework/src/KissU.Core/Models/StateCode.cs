@@ -1,4 +1,4 @@
-﻿namespace KissU.Common
+﻿namespace KissU.Models
 {
     /// <summary>
     /// 状态码

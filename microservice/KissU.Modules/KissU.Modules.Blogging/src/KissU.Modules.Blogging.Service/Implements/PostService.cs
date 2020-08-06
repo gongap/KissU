@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using KissU.Common;
 using KissU.Dependency;
 using KissU.Extensions;
+using KissU.Models;
 using KissU.Modules.Blogging.Application.Contracts.Posts;
 using KissU.Modules.Blogging.Service.Contracts;
 using KissU.ProxyGenerator;

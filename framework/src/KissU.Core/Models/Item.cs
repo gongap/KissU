@@ -2,7 +2,7 @@
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
-namespace KissU.Common
+namespace KissU.Models
 {
     /// <summary>
     /// 列表项

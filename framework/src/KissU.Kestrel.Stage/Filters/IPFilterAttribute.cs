@@ -3,10 +3,10 @@ using KissU.ApiGateWay;
 using KissU.CPlatform.Messages;
 using KissU.Kestrel.Filters;
 using KissU.Kestrel.Internal;
-using KissU.Stage.Internal;
+using KissU.Kestrel.Stage.Internal;
 using Microsoft.AspNetCore.Http;
 
-namespace KissU.Stage.Filters
+namespace KissU.Kestrel.Stage.Filters
 {
     /// <summary>
     /// IPFilterAttribute.

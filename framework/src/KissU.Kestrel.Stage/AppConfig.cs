@@ -1,6 +1,6 @@
-﻿using KissU.Stage.Configurations;
+﻿using KissU.Kestrel.Stage.Configurations;
 
-namespace KissU.Stage
+namespace KissU.Kestrel.Stage
 {
     /// <summary>
     /// AppConfig.

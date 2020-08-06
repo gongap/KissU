@@ -3,18 +3,17 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
-using KissU.Kestrel;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Logging;
 
-namespace KissU.Stage.Internal.Implementation
+namespace KissU.Kestrel.Stage.Internal.Implementation
 {
     /// <summary>
     /// WebServerListener.
-    /// Implements the <see cref="KissU.Stage.Internal.IWebServerListener" />
+    /// Implements the <see cref="IWebServerListener" />
     /// </summary>
-    /// <seealso cref="KissU.Stage.Internal.IWebServerListener" />
+    /// <seealso cref="IWebServerListener" />
     public class WebServerListener : IWebServerListener
     {
         private readonly ILogger<WebServerListener> _logger;

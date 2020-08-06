@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Autofac;
-using KissU.Dependency;
 using KissU.ApiGateWay;
 using KissU.ApiGateWay.OAuth;
 using KissU.CPlatform;
 using KissU.CPlatform.Filters.Implementation;
 using KissU.CPlatform.Messages;
+using KissU.Dependency;
 using KissU.Kestrel.Filters;
 using KissU.Kestrel.Internal;
 
-namespace KissU.Stage.Filters
+namespace KissU.Kestrel.Stage.Filters
 {
     /// <summary>
     /// AuthorizationFilterAttribute.

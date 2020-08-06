@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using KissU.Common;
 using KissU.Dependency;
 using KissU.Modules.Blogging.Application.Contracts.Blogs.Dtos;
 using KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
+using KissU.Models;
 
 namespace KissU.Modules.Blogging.Service.Contracts
 {

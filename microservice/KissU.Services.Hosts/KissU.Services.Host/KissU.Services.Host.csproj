@@ -49,7 +49,7 @@
     <ProjectReference Include="..\..\..\framework\src\KissU.Zookeeper\KissU.Zookeeper.csproj" />
   </ItemGroup>
 
-  <!--<ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Account\src\KissU.Modules.Account.Service\KissU.Modules.Account.Service.csproj" />
     <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Configuration\src\KissU.Modules.Configuration.Service\KissU.Modules.Configuration.Service.csproj" />
     <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Blogging\src\KissU.Modules.Blogging.Service\KissU.Modules.Blogging.Service.csproj" />
@@ -59,7 +59,7 @@
     <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Sample\src\KissU.Modules.SampleA.Service\KissU.Modules.SampleA.Service.csproj" />
     <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Sample\src\KissU.Modules.SampleB.Service\KissU.Modules.SampleB.Service.csproj" />
     <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.TenantManagement\src\KissU.Modules.TenantManagement.Service\KissU.Modules.TenantManagement.Service.csproj" />
-  </ItemGroup>-->
+  </ItemGroup>
 
   <ItemGroup>
     <None Update="apollo.json">

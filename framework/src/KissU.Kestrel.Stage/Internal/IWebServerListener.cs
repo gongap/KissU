@@ -1,6 +1,4 @@
-﻿using KissU.Kestrel;
-
-namespace KissU.Stage.Internal
+﻿namespace KissU.Kestrel.Stage.Internal
 {
     /// <summary>
     /// Interface IWebServerListener

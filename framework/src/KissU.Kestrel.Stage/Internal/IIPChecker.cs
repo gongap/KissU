@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace KissU.Stage.Internal
+namespace KissU.Kestrel.Stage.Internal
 {
     /// <summary>
     /// Interface IIPChecker

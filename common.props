@@ -10,7 +10,7 @@
     <PackageLicenseUrl>https://github.com/gongap/KissU/blob/master/LICENSE</PackageLicenseUrl>
     <PackageIconUrl></PackageIconUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>kissu;applicationframework;dotnetcore;aspnetcore;</PackageTags>
+    <PackageTags>kissu;microservice;applicationframework;dotnetcore;aspnetcore;</PackageTags>
     <PackageReleaseNotes>KissU框架以MIT开源发布，可随意使用</PackageReleaseNotes>
     <VersionMajor>1</VersionMajor>
     <VersionMinor>0</VersionMinor>
