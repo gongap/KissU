@@ -3,7 +3,7 @@ using KissU.Dependency;
 using KissU.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
 using KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.CPlatform.Support.Attributes;
-using KissU.Protocol.WS.Attributes;
+using KissU.WebSocket.Attributes;
 
 namespace KissU.Modules.SampleA.Service.Contracts
 {

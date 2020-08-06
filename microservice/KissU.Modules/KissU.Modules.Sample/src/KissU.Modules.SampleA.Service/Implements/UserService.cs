@@ -7,11 +7,11 @@ using KissU.EventBus.Events;
 using KissU.Modules.SampleA.Service.Contracts;
 using KissU.Modules.SampleA.Service.Contracts.Dtos;
 using KissU.CPlatform.Transport.Implementation;
-using KissU.KestrelHttpServer.Abstractions;
-using KissU.KestrelHttpServer.Internal;
 using KissU.Modules.SampleA.Service.Repositories;
 using KissU.Modules.SampleB.Service.Contracts;
 using KissU.Kestrel.Abstractions;
+using KissU.Kestrel.Http.Abstractions;
+using KissU.Kestrel.Http.Internal;
 using KissU.Models;
 using KissU.ServiceProxy;
 

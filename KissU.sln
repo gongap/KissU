@@ -11,9 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F1B4AAEF-916
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{8C5BB6A1-6362-4935-9278-993935F43949}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.WebSocketCore", "framework\src\KissU.WebSocketCore\KissU.WebSocketCore.csproj", "{4CDDEDA4-8D7D-44BB-A4DA-5322F1E311D2}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.DotNetty.Codecs.DNS", "framework\src\KissU.DotNetty.Codecs.DNS\KissU.DotNetty.Codecs.DNS.csproj", "{9E90FE21-74E0-4703-AF3A-159F8DA4E635}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.WebSocket", "framework\src\KissU.WebSocket\KissU.WebSocket.csproj", "{4CDDEDA4-8D7D-44BB-A4DA-5322F1E311D2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.CPlatform", "framework\src\KissU.CPlatform\KissU.CPlatform.csproj", "{D4C75857-11D2-4F16-9E30-E3D6BEB015DD}"
 EndProject
@@ -25,33 +23,31 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Codec.MessagePack", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Codec.ProtoBuffer", "framework\src\KissU.Codec.ProtoBuffer\KissU.Codec.ProtoBuffer.csproj", "{FFB9A30E-F36D-4243-BEDA-CB1B3DB646E1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Consul", "framework\src\KissU.Consul\KissU.Consul.csproj", "{E73E092B-24D0-4C54-BD26-F01C89A31652}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.ServiceDiscovery.Consul", "framework\src\KissU.ServiceDiscovery.Consul\KissU.ServiceDiscovery.Consul.csproj", "{E73E092B-24D0-4C54-BD26-F01C89A31652}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Protocol.DNS", "framework\src\KissU.Protocol.DNS\KissU.Protocol.DNS.csproj", "{C5A07EEF-0F59-4621-83BF-6B90BF324BF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.DotNetty.DNS", "framework\src\KissU.DotNetty.DNS\KissU.DotNetty.DNS.csproj", "{C5A07EEF-0F59-4621-83BF-6B90BF324BF7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.DotNetty", "framework\src\KissU.DotNetty\KissU.DotNetty.csproj", "{6C05E7AF-E9EB-4D23-9C08-947E26E0C1E1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.DotNettyWSServer", "framework\src\KissU.DotNettyWSServer\KissU.DotNettyWSServer.csproj", "{B5754E2C-D258-40F7-A3AF-7457FBAE52BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.DotNetty.WebSocket", "framework\src\KissU.DotNetty.WebSocket\KissU.DotNetty.WebSocket.csproj", "{B5754E2C-D258-40F7-A3AF-7457FBAE52BB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.EventBusKafka", "framework\src\KissU.EventBusKafka\KissU.EventBusKafka.csproj", "{6254E583-4BE2-4E6F-B859-54F50E8CE8A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.EventBus.Kafka", "framework\src\KissU.EventBus.Kafka\KissU.EventBus.Kafka.csproj", "{6254E583-4BE2-4E6F-B859-54F50E8CE8A2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.EventBusRabbitMQ", "framework\src\KissU.EventBusRabbitMQ\KissU.EventBusRabbitMQ.csproj", "{882509A8-C9ED-439E-871F-7D44706A9CC3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.EventBus.RabbitMQ", "framework\src\KissU.EventBus.RabbitMQ\KissU.EventBus.RabbitMQ.csproj", "{882509A8-C9ED-439E-871F-7D44706A9CC3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Protocol.Grpc", "framework\src\KissU.Protocol.Grpc\KissU.Protocol.Grpc.csproj", "{2F3CE0B7-52EB-4831-B94B-38BCF173FB19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Grpc", "framework\src\KissU.Grpc\KissU.Grpc.csproj", "{2F3CE0B7-52EB-4831-B94B-38BCF173FB19}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.KestrelHttpServer", "framework\src\KissU.KestrelHttpServer\KissU.KestrelHttpServer.csproj", "{E72EAC21-2C6F-4096-AA3C-AD1EA45C1003}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Kestrel.Http", "framework\src\KissU.Kestrel.Http\KissU.Kestrel.Http.csproj", "{E72EAC21-2C6F-4096-AA3C-AD1EA45C1003}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Logging.Log4net", "framework\src\KissU.Logging.Log4net\KissU.Logging.Log4net.csproj", "{C7F7B887-003D-4691-904F-F99DB4F56D69}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Logging.Nlog", "framework\src\KissU.Logging.NLog\KissU.Logging.Nlog.csproj", "{C8E46CFD-2740-4124-A227-93FB34039B0C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Protocol.Http", "framework\src\KissU.Protocol.Http\KissU.Protocol.Http.csproj", "{4710EA6B-FFB2-4A15-AD03-3F51283BF0F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.DotNetty.Http", "framework\src\KissU.DotNetty.Http\KissU.DotNetty.Http.csproj", "{4710EA6B-FFB2-4A15-AD03-3F51283BF0F0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Protocol.Mqtt", "framework\src\KissU.Protocol.Mqtt\KissU.Protocol.Mqtt.csproj", "{365D110C-0D40-4DA8-BB29-558050FACB6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.DotNetty.Mqtt", "framework\src\KissU.DotNetty.Mqtt\KissU.DotNetty.Mqtt.csproj", "{365D110C-0D40-4DA8-BB29-558050FACB6E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Protocol.Udp", "framework\src\KissU.Protocol.Udp\KissU.Protocol.Udp.csproj", "{6F63B30C-34EC-4429-81B0-3FB1F107AE56}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Protocol.WS", "framework\src\KissU.Protocol.WS\KissU.Protocol.WS.csproj", "{358C0383-E858-4681-AE2B-EDA5B4D8FB9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.DotNetty.Udp", "framework\src\KissU.DotNetty.Udp\KissU.DotNetty.Udp.csproj", "{6F63B30C-34EC-4429-81B0-3FB1F107AE56}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.ServiceProxy", "framework\src\KissU.ServiceProxy\KissU.ServiceProxy.csproj", "{BB001DE2-D4DD-4015-A070-341851A7252D}"
 EndProject
@@ -59,7 +55,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.BackgroundServer", "f
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Kestrel.Swagger", "framework\src\KissU.Kestrel.Swagger\KissU.Kestrel.Swagger.csproj", "{5C93C1B9-2BAF-4EAC-A811-1D3B3EE71912}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Zookeeper", "framework\src\KissU.Zookeeper\KissU.Zookeeper.csproj", "{5CFC8C22-238C-4BA1-B02B-806883747A6F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.ServiceDiscovery.Zookeeper", "framework\src\KissU.ServiceDiscovery.Zookeeper\KissU.ServiceDiscovery.Zookeeper.csproj", "{5CFC8C22-238C-4BA1-B02B-806883747A6F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Apm.Skywalking", "framework\src\KissU.Apm.Skywalking\KissU.Apm.Skywalking.csproj", "{3B143AB8-558F-4A8A-B4EA-63FF73F43209}"
 EndProject
@@ -403,10 +399,6 @@ Global
 		{4CDDEDA4-8D7D-44BB-A4DA-5322F1E311D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CDDEDA4-8D7D-44BB-A4DA-5322F1E311D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CDDEDA4-8D7D-44BB-A4DA-5322F1E311D2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9E90FE21-74E0-4703-AF3A-159F8DA4E635}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9E90FE21-74E0-4703-AF3A-159F8DA4E635}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9E90FE21-74E0-4703-AF3A-159F8DA4E635}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9E90FE21-74E0-4703-AF3A-159F8DA4E635}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D4C75857-11D2-4F16-9E30-E3D6BEB015DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D4C75857-11D2-4F16-9E30-E3D6BEB015DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4C75857-11D2-4F16-9E30-E3D6BEB015DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -479,10 +471,6 @@ Global
 		{6F63B30C-34EC-4429-81B0-3FB1F107AE56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F63B30C-34EC-4429-81B0-3FB1F107AE56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F63B30C-34EC-4429-81B0-3FB1F107AE56}.Release|Any CPU.Build.0 = Release|Any CPU
-		{358C0383-E858-4681-AE2B-EDA5B4D8FB9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{358C0383-E858-4681-AE2B-EDA5B4D8FB9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{358C0383-E858-4681-AE2B-EDA5B4D8FB9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{358C0383-E858-4681-AE2B-EDA5B4D8FB9B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BB001DE2-D4DD-4015-A070-341851A7252D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BB001DE2-D4DD-4015-A070-341851A7252D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB001DE2-D4DD-4015-A070-341851A7252D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -979,7 +967,6 @@ Global
 		{F1B4AAEF-9162-4DFA-8B62-4069FC914839} = {E0971BD6-02FF-4724-8C69-2294D1C60714}
 		{8C5BB6A1-6362-4935-9278-993935F43949} = {E0971BD6-02FF-4724-8C69-2294D1C60714}
 		{4CDDEDA4-8D7D-44BB-A4DA-5322F1E311D2} = {F1B4AAEF-9162-4DFA-8B62-4069FC914839}
-		{9E90FE21-74E0-4703-AF3A-159F8DA4E635} = {F1B4AAEF-9162-4DFA-8B62-4069FC914839}
 		{D4C75857-11D2-4F16-9E30-E3D6BEB015DD} = {F1B4AAEF-9162-4DFA-8B62-4069FC914839}
 		{F0438BB2-E448-422C-A78E-9D2ABBAE3D4D} = {F1B4AAEF-9162-4DFA-8B62-4069FC914839}
 		{A3DC2456-2BEC-4224-AA95-BE1915B9377F} = {F1B4AAEF-9162-4DFA-8B62-4069FC914839}
@@ -998,7 +985,6 @@ Global
 		{4710EA6B-FFB2-4A15-AD03-3F51283BF0F0} = {F1B4AAEF-9162-4DFA-8B62-4069FC914839}
 		{365D110C-0D40-4DA8-BB29-558050FACB6E} = {F1B4AAEF-9162-4DFA-8B62-4069FC914839}
 		{6F63B30C-34EC-4429-81B0-3FB1F107AE56} = {F1B4AAEF-9162-4DFA-8B62-4069FC914839}
-		{358C0383-E858-4681-AE2B-EDA5B4D8FB9B} = {F1B4AAEF-9162-4DFA-8B62-4069FC914839}
 		{BB001DE2-D4DD-4015-A070-341851A7252D} = {F1B4AAEF-9162-4DFA-8B62-4069FC914839}
 		{246793A0-82BC-4BD5-8ED4-B0E2A2982476} = {F1B4AAEF-9162-4DFA-8B62-4069FC914839}
 		{5C93C1B9-2BAF-4EAC-A811-1D3B3EE71912} = {F1B4AAEF-9162-4DFA-8B62-4069FC914839}

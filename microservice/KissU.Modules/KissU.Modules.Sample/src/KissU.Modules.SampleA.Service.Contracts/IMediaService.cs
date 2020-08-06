@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using KissU.Dependency;
 using KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
-using KissU.Protocol.WS.Attributes;
+using KissU.WebSocket.Attributes;
 
 namespace KissU.Modules.SampleA.Service.Contracts
 {

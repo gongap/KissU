@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using System.Threading.Tasks;
+using KissU.DotNetty.DNS.Runtime;
 using KissU.Modules.SampleA.Service.Contracts;
-using KissU.Protocol.DNS.Runtime;
 
 namespace KissU.Modules.SampleA.Service.Implements
 {

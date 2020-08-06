@@ -2,8 +2,8 @@
 using KissU.Dependency;
 using KissU.Modules.Blogging.Application.Contracts.Files;
 using KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
-using KissU.KestrelHttpServer.Abstractions;
-using KissU.KestrelHttpServer.Internal;
+using KissU.Kestrel.Http.Abstractions;
+using KissU.Kestrel.Http.Internal;
 
 namespace KissU.Modules.Blogging.Service.Contracts
 {

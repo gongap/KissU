@@ -8,8 +8,8 @@ using KissU.Modules.SampleA.Service.Contracts;
 using KissU.Modules.SampleA.Service.Contracts.Dtos;
 using KissU.Modules.SampleA.Service.Repositories;
 using KissU.Kestrel.Abstractions;
-using KissU.KestrelHttpServer.Abstractions;
-using KissU.KestrelHttpServer.Internal;
+using KissU.Kestrel.Http.Abstractions;
+using KissU.Kestrel.Http.Internal;
 using KissU.Models;
 using KissU.ServiceProxy;
 

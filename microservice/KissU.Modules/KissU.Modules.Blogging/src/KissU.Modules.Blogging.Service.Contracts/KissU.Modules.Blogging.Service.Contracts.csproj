@@ -16,7 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\framework\src\KissU.CPlatform\KissU.CPlatform.csproj" />
-    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.KestrelHttpServer\KissU.KestrelHttpServer.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Kestrel.Http\KissU.Kestrel.Http.csproj" />
     <ProjectReference Include="..\KissU.Modules.Blogging.Application.Contracts\KissU.Modules.Blogging.Application.Contracts.csproj" />
   </ItemGroup>
 </Project>

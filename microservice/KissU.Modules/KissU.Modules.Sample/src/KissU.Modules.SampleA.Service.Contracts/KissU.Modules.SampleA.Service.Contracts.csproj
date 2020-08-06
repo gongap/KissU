@@ -33,10 +33,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Caching\KissU.Caching.csproj" />
-    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.DotNettyWSServer\KissU.DotNettyWSServer.csproj" />
-    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.KestrelHttpServer\KissU.KestrelHttpServer.csproj" />
-    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Protocol.Mqtt\KissU.Protocol.Mqtt.csproj" />
-    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Protocol.WS\KissU.Protocol.WS.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.DotNetty.WebSocket\KissU.DotNetty.WebSocket.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Kestrel.Http\KissU.Kestrel.Http.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.DotNetty.Mqtt\KissU.DotNetty.Mqtt.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.WebSocket\KissU.WebSocket.csproj" />
   </ItemGroup>
 
 </Project>

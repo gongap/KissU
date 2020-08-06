@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using KissU.Dependency;
 using KissU.Modules.SampleA.Service.Contracts;
-using KissU.Protocol.WS;
 using KissU.ServiceProxy;
-using WebSocketCore;
+using KissU.WebSocket;
+using KissU.WebSocket.Core;
 
 namespace KissU.Modules.SampleA.Service.Implements
 {
     /// <summary>
     /// ChatService.
-    /// Implements the <see cref="KissU.Protocol.WS.WSBehavior" />
+    /// Implements the <see cref="WSBehavior" />
     /// Implements the <see cref="IChatService" />
     /// </summary>
-    /// <seealso cref="KissU.Protocol.WS.WSBehavior" />
+    /// <seealso cref="WSBehavior" />
     /// <seealso cref="IChatService" />
     public class ChatService : WSBehavior, IChatService
     {

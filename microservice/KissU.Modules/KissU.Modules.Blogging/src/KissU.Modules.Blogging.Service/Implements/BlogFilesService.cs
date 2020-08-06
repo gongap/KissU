@@ -2,10 +2,10 @@
 using System.IO;
 using System.Threading.Tasks;
 using KissU.Dependency;
+using KissU.Kestrel.Http.Abstractions;
+using KissU.Kestrel.Http.Internal;
 using KissU.Modules.Blogging.Application.Contracts.Files;
 using KissU.Modules.Blogging.Service.Contracts;
-using KissU.KestrelHttpServer.Abstractions;
-using KissU.KestrelHttpServer.Internal;
 using KissU.ServiceProxy;
 using Volo.Abp;
 using Volo.Abp.Http;

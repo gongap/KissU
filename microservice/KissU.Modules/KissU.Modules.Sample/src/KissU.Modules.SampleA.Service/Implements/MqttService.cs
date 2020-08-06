@@ -1,18 +1,18 @@
 ﻿using System.Threading.Tasks;
+using KissU.DotNetty.Mqtt.Internal.Messages;
+using KissU.DotNetty.Mqtt.Internal.Services;
 using KissU.Modules.SampleA.Service.Contracts;
 using KissU.Modules.SampleA.Service.Contracts.Dtos;
 using KissU.Modules.SampleB.Service.Contracts;
-using KissU.Protocol.Mqtt.Internal.Messages;
-using KissU.Protocol.Mqtt.Internal.Services;
 
 namespace KissU.Modules.SampleA.Service.Implements
 {
     /// <summary>
     /// ControllerService.
-    /// Implements the <see cref="KissU.Protocol.Mqtt.Internal.Services.MqttBehavior" />
+    /// Implements the <see cref="MqttBehavior" />
     /// Implements the <see cref="IMqttService" />
     /// </summary>
-    /// <seealso cref="KissU.Protocol.Mqtt.Internal.Services.MqttBehavior" />
+    /// <seealso cref="MqttBehavior" />
     /// <seealso cref="IMqttService" />
     public class MqttService : MqttBehavior, IMqttService
     {
