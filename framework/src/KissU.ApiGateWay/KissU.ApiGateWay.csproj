@@ -9,6 +9,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\KissU.Caching\KissU.Caching.csproj" />
-    <ProjectReference Include="..\KissU.ProxyGenerator\KissU.ProxyGenerator.csproj" />
+    <ProjectReference Include="..\KissU.ServiceProxy\KissU.ServiceProxy.csproj" />
   </ItemGroup>
 </Project>

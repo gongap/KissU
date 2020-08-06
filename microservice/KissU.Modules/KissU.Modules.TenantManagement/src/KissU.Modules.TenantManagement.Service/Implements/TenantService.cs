@@ -4,7 +4,7 @@ using KissU.Extensions;
 using KissU.Models;
 using KissU.Modules.TenantManagement.Application.Contracts;
 using KissU.Modules.TenantManagement.Service.Contracts;
-using KissU.ProxyGenerator;
+using KissU.ServiceProxy;
 
 namespace KissU.Modules.TenantManagement.Service.Implements
 {

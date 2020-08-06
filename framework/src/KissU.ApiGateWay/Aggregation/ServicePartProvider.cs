@@ -3,7 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using KissU.ProxyGenerator;
+using KissU.ServiceProxy;
 using Newtonsoft.Json.Linq;
 
 namespace KissU.ApiGateWay.Aggregation

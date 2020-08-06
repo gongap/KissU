@@ -1,7 +1,7 @@
 ﻿using KissU.Helpers;
 using KissU.Modularity;
 using KissU.CPlatform;
-using KissU.Nlog;
+using KissU.Logging.Nlog;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NLog;

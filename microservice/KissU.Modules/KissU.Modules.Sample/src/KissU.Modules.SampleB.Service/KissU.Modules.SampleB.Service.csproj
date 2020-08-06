@@ -16,7 +16,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.ProxyGenerator\KissU.ProxyGenerator.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.ServiceProxy\KissU.ServiceProxy.csproj" />
     <ProjectReference Include="..\KissU.Modules.SampleB.Service.Contracts\KissU.Modules.SampleB.Service.Contracts.csproj" />
   </ItemGroup>
 

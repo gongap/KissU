@@ -5,7 +5,7 @@ using KissU.Extensions;
 using KissU.Caching.Configurations;
 using KissU.CPlatform;
 using KissU.CPlatform.Configurations;
-using KissU.ProxyGenerator;
+using KissU.ServiceProxy;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 

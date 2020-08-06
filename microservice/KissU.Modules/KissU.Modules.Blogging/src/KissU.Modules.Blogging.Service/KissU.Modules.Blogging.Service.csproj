@@ -17,7 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Abp\KissU.Abp.csproj" />
-    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.ProxyGenerator\KissU.ProxyGenerator.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.ServiceProxy\KissU.ServiceProxy.csproj" />
     <ProjectReference Include="..\KissU.Modules.Blogging.Application\KissU.Modules.Blogging.Application.csproj" />
     <ProjectReference Include="..\KissU.Modules.Blogging.EntityFrameworkCore\KissU.Modules.Blogging.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\KissU.Modules.Blogging.Service.Contracts\KissU.Modules.Blogging.Service.Contracts.csproj" />

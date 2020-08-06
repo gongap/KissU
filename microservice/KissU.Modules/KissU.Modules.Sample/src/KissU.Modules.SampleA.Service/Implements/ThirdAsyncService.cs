@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using KissU.Modules.SampleA.Service.Contracts;
-using KissU.ProxyGenerator;
+using KissU.ServiceProxy;
 using KissU.Thrift.Attributes;
 using static KissU.Modules.SampleA.Service.Contracts.Thrifts.ThriftCore.ThirdCalculator;
 

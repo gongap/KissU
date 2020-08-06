@@ -2,9 +2,10 @@
 using System.Threading.Tasks;
 using KissU.CPlatform.Cache;
 using KissU.CPlatform.Routing;
-using KissU.ProxyGenerator.Interceptors;
-using KissU.ProxyGenerator.Interceptors.Implementation;
-using Metadatas = KissU.ProxyGenerator.Interceptors.Implementation.Metadatas;
+using KissU.ServiceProxy.Interceptors;
+using KissU.ServiceProxy.Interceptors.Implementation;
+using KissU.ServiceProxy.Interceptors.Implementation.Metadatas;
+
 namespace KissU.Caching.Interceptors
 {
     /// <summary>
@@ -36,18 +37,18 @@ namespace KissU.Caching.Interceptors
             }
         }
 
-        private async Task CacheIntercept(Metadatas.ServiceCacheIntercept attribute, string key, string[] keyVaules,IInvocation invocation,string l2Key,bool enableL2Cache)
+        private async Task CacheIntercept(ServiceCacheIntercept attribute, string key, string[] keyVaules,IInvocation invocation,string l2Key,bool enableL2Cache)
         {
             ICacheProvider cacheProvider = null;
             switch (attribute.Mode)
             {
-                case Metadatas.CacheTargetType.Redis:
+                case ServiceProxy.Interceptors.Implementation.Metadatas.CacheTargetType.Redis:
                     {
                         cacheProvider = CacheContainer.GetService<ICacheProvider>(string.Format("{0}.{1}",
                            attribute.CacheSectionType.ToString(), CacheTargetType.Redis.ToString()));
                         break;
                     }
-                case Metadatas.CacheTargetType.MemoryCache:
+                case ServiceProxy.Interceptors.Implementation.Metadatas.CacheTargetType.MemoryCache:
                     {
                         cacheProvider = CacheContainer.GetService<ICacheProvider>(CacheTargetType.MemoryCache.ToString());
                         break;
@@ -61,12 +62,12 @@ namespace KissU.Caching.Interceptors
             }
         }
 
-        private async Task Invoke(ICacheProvider cacheProvider, Metadatas.ServiceCacheIntercept attribute, string key, string[] keyVaules, IInvocation invocation)
+        private async Task Invoke(ICacheProvider cacheProvider, ServiceCacheIntercept attribute, string key, string[] keyVaules, IInvocation invocation)
         {
 
             switch (attribute.Method)
             {
-                case Metadatas.CachingMethod.Get:
+                case ServiceProxy.Interceptors.Implementation.Metadatas.CachingMethod.Get:
                     {
                         var retrunValue = await cacheProvider.GetFromCacheFirst(key, async () =>
                         {
@@ -87,12 +88,12 @@ namespace KissU.Caching.Interceptors
         }
 
 
-        private async Task Invoke(ICacheProvider cacheProvider, ICacheProvider l2cacheProvider,string l2Key, Metadatas.ServiceCacheIntercept attribute, string key, string[] keyVaules, IInvocation invocation)
+        private async Task Invoke(ICacheProvider cacheProvider, ICacheProvider l2cacheProvider,string l2Key, ServiceCacheIntercept attribute, string key, string[] keyVaules, IInvocation invocation)
         {
 
             switch (attribute.Method)
             {
-                case Metadatas.CachingMethod.Get:
+                case ServiceProxy.Interceptors.Implementation.Metadatas.CachingMethod.Get:
                     {
                         var retrunValue = await cacheProvider.GetFromCacheFirst(l2cacheProvider, l2Key,key, async () =>
                         {

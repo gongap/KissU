@@ -1,15 +1,15 @@
 ﻿using System.Threading.Tasks;
 using KissU.Modules.SampleB.Service.Contracts;
-using KissU.ProxyGenerator;
+using KissU.ServiceProxy;
 
 namespace KissU.Modules.SampleB.Service.Implements
 {
     /// <summary>
     /// ManagerService.
-    /// Implements the <see cref="KissU.ProxyGenerator.ProxyServiceBase" />
+    /// Implements the <see cref="ProxyServiceBase" />
     /// Implements the <see cref="IManagerService" />
     /// </summary>
-    /// <seealso cref="KissU.ProxyGenerator.ProxyServiceBase" />
+    /// <seealso cref="ProxyServiceBase" />
     /// <seealso cref="IManagerService" />
     public class ManagerService : ProxyServiceBase, IManagerService
     {

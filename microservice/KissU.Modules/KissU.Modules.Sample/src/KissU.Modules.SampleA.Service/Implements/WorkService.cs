@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using KissU.Dependency;
 using KissU.Modules.SampleA.Service.Contracts;
 using KissU.Modules.SampleA.Service.Contracts.Dtos;
-using KissU.ProxyGenerator;
 using KissU.BackgroundServer.Runtime;
+using KissU.ServiceProxy;
 using Microsoft.Extensions.Logging;
 
 namespace KissU.Modules.SampleA.Service.Implements

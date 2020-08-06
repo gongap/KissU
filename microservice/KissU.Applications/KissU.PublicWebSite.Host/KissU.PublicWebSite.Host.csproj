@@ -32,9 +32,9 @@
     <ProjectReference Include="..\..\..\framework\src\KissU.Consul\KissU.Consul.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.CPlatform\KissU.CPlatform.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.DotNetty\KissU.DotNetty.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.NLog\KissU.Nlog.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.Logging.NLog\KissU.Logging.Nlog.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Caching\KissU.Caching.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.ProxyGenerator\KissU.ProxyGenerator.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.ServiceProxy\KissU.ServiceProxy.csproj" />
     <ProjectReference Include="..\..\KissU.Shared\KissU.Shared.csproj" />
     <ProjectReference Include="..\KissU.ApplicationParts\KissU.ApplicationParts.Blogging\KissU.ApplicationParts.Blogging.csproj" />
   </ItemGroup>

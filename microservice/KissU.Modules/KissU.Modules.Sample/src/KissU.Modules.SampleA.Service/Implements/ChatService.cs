@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using KissU.Dependency;
 using KissU.Modules.SampleA.Service.Contracts;
 using KissU.Protocol.WS;
-using KissU.ProxyGenerator;
+using KissU.ServiceProxy;
 using WebSocketCore;
 
 namespace KissU.Modules.SampleA.Service.Implements

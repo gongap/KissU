@@ -14,9 +14,9 @@ using KissU.Kestrel.Abstractions;
 using KissU.KestrelHttpServer.Abstractions;
 using KissU.KestrelHttpServer.Internal;
 using KissU.Models;
+using KissU.ServiceProxy.Interceptors.Implementation.Metadatas;
 using CacheTargetType = KissU.Caching.CacheTargetType;
 using CachingMethod = KissU.Caching.Interceptors.CachingMethod;
-using Metadatas = KissU.ProxyGenerator.Interceptors.Implementation.Metadatas;
 
 namespace KissU.Modules.SampleA.Service.Contracts
 {
@@ -77,8 +77,8 @@ namespace KissU.Modules.SampleA.Service.Contracts
             RequestCacheEnabled = false)]
         [InterceptMethod(CachingMethod.Get, Key = "GetUserId_{0}", CacheSectionType = SectionType.ddlCache,
             L2Key = "GetUserId_{0}", EnableL2Cache = true, Mode = CacheTargetType.Redis, Time = 480)]
-        [Metadatas.ServiceCacheIntercept(Metadatas.CachingMethod.Get, Key = "GetUserId_{0}", CacheSectionType = "ddlCache", L2Key = "GetUserId_{0}", EnableL2Cache = true, Mode = Metadatas.CacheTargetType.Redis, Time = 480)]
-        [Metadatas.ServiceLogIntercept()]
+        [ServiceCacheIntercept(ServiceProxy.Interceptors.Implementation.Metadatas.CachingMethod.Get, Key = "GetUserId_{0}", CacheSectionType = "ddlCache", L2Key = "GetUserId_{0}", EnableL2Cache = true, Mode = ServiceProxy.Interceptors.Implementation.Metadatas.CacheTargetType.Redis, Time = 480)]
+        [ServiceLogIntercept()]
         [ServiceRoute("{userName}")]
         Task<int> GetUserId(string userName);
 
@@ -107,7 +107,7 @@ namespace KissU.Modules.SampleA.Service.Contracts
             Age=19
          };", RequestCacheEnabled = true, InjectionNamespaces = new[] { "KissU.Modules.SampleA.Service.Contracts.Dtos" })]
         [InterceptMethod(CachingMethod.Get, Key = "GetUser_id_{0}", CacheSectionType = SectionType.ddlCache,Mode = CacheTargetType.Redis, Time = 480)]
-        [Metadatas.ServiceCacheIntercept(Metadatas.CachingMethod.Get, Key = "GetUser_{0}_{1}", L2Key = "GetUser_{0}_{1}", EnableL2Cache = true, CacheSectionType = "ddlCache", Mode = Metadatas.CacheTargetType.Redis, Time = 480)]
+        [ServiceCacheIntercept(ServiceProxy.Interceptors.Implementation.Metadatas.CachingMethod.Get, Key = "GetUser_{0}_{1}", L2Key = "GetUser_{0}_{1}", EnableL2Cache = true, CacheSectionType = "ddlCache", Mode = ServiceProxy.Interceptors.Implementation.Metadatas.CacheTargetType.Redis, Time = 480)]
         Task<UserModel> GetUser(UserModel user);
 
         /// <summary>
@@ -209,7 +209,7 @@ namespace KissU.Modules.SampleA.Service.Contracts
         /// <returns>Task&lt;Dictionary&lt;System.String, System.Object&gt;&gt;.</returns>
         Task<Dictionary<string, object>> GetAllThings();
 
-        [Metadatas.ServiceCacheIntercept(Metadatas.CachingMethod.Remove, "GetUser_{0}_{1}", CacheSectionType = "ddlCache", Mode = Metadatas.CacheTargetType.Redis)]
+        [ServiceCacheIntercept(ServiceProxy.Interceptors.Implementation.Metadatas.CachingMethod.Remove, "GetUser_{0}_{1}", CacheSectionType = "ddlCache", Mode = ServiceProxy.Interceptors.Implementation.Metadatas.CacheTargetType.Redis)]
         Task<bool> RemoveUser(UserModel user);
     }
 }

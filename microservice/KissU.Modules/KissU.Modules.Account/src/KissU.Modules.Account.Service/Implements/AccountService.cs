@@ -3,7 +3,7 @@ using KissU.Dependency;
 using KissU.Modules.Account.Application.Contracts;
 using KissU.Modules.Account.Service.Contracts;
 using KissU.Modules.Identity.Application.Contracts;
-using KissU.ProxyGenerator;
+using KissU.ServiceProxy;
 
 namespace KissU.Modules.Account.Service.Implements
 {

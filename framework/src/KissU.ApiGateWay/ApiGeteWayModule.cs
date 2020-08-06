@@ -9,7 +9,7 @@ using KissU.ApiGateWay.ServiceDiscovery.Implementation;
 using KissU.CPlatform.Routing;
 using KissU.CPlatform.Runtime.Client.HealthChecks;
 using KissU.CPlatform.Runtime.Client.HealthChecks.Implementation;
-using KissU.ProxyGenerator;
+using KissU.ServiceProxy;
 
 namespace KissU.ApiGateWay
 {

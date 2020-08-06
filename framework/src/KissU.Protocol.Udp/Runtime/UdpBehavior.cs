@@ -5,7 +5,7 @@ using Autofac;
 using KissU.Dependency;
 using KissU.EventBus.Events;
 using KissU.EventBus.Implementation;
-using KissU.ProxyGenerator;
+using KissU.ServiceProxy;
 
 namespace KissU.Protocol.Udp.Runtime
 {

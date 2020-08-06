@@ -1,7 +1,7 @@
 ﻿using KissU.Modularity;
 using KissU.Caching.Interceptors;
-using KissU.ProxyGenerator;
-using KissU.ProxyGenerator.Interceptors;
+using KissU.ServiceProxy;
+using KissU.ServiceProxy.Interceptors;
 
 namespace KissU.Modules.SampleA.Service.Contracts
 {

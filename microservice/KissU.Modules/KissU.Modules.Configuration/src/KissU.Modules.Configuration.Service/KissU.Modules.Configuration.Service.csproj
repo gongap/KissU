@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Abp\KissU.Abp.csproj" />
-    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.ProxyGenerator\KissU.ProxyGenerator.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.ServiceProxy\KissU.ServiceProxy.csproj" />
     <ProjectReference Include="..\KissU.Modules.Configuration.Application\KissU.Modules.Configuration.Application.csproj" />
     <ProjectReference Include="..\KissU.Modules.Configuration.Service.Contracts\KissU.Modules.Configuration.Service.Contracts.csproj" />
   </ItemGroup>

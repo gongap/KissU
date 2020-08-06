@@ -2,7 +2,7 @@
 using KissU.Dependency;
 using KissU.Caching;
 using KissU.CPlatform;
-using KissU.ProxyGenerator;
+using KissU.ServiceProxy;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 

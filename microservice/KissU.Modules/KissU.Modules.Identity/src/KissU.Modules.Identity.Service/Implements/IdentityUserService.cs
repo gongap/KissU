@@ -4,7 +4,7 @@ using KissU.Extensions;
 using KissU.Models;
 using KissU.Modules.Identity.Application.Contracts;
 using KissU.Modules.Identity.Service.Contracts;
-using KissU.ProxyGenerator;
+using KissU.ServiceProxy;
 
 namespace KissU.Modules.Identity.Service.Implements
 {

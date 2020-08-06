@@ -13,7 +13,7 @@ using KissU.CPlatform.Messages;
 using KissU.CPlatform.Routing;
 using KissU.CPlatform.Runtime.Server;
 using KissU.CPlatform.Transport;
-using KissU.ProxyGenerator;
+using KissU.ServiceProxy;
 using Microsoft.Extensions.Logging;
 using static KissU.Helpers.FastInvoke;
 

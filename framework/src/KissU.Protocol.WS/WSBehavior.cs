@@ -5,7 +5,7 @@ using KissU.Dependency;
 using KissU.EventBus.Events;
 using KissU.EventBus.Implementation;
 using KissU.Protocol.WS.Runtime;
-using KissU.ProxyGenerator;
+using KissU.ServiceProxy;
 using WebSocketCore.Server;
 
 namespace KissU.Protocol.WS

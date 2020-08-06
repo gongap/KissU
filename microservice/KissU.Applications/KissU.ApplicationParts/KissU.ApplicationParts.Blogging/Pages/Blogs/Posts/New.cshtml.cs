@@ -8,7 +8,7 @@ using KissU.Modules.Blogging.Application.Contracts.Posts;
 using KissU.Modules.Blogging.Application.Contracts.Shared;
 using KissU.Modules.Blogging.Domain.Shared.Posts;
 using KissU.Modules.Blogging.Service.Contracts;
-using KissU.ProxyGenerator;
+using KissU.ServiceProxy;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;

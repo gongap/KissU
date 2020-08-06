@@ -2,7 +2,7 @@
 using KissU.Dependency;
 using KissU.Modules.FeatureManagement.Application.Contracts;
 using KissU.Modules.FeatureManagement.Service.Contracts;
-using KissU.ProxyGenerator;
+using KissU.ServiceProxy;
 
 namespace KissU.Modules.FeatureManagement.Service.Implements
 {

@@ -8,7 +8,7 @@ using KissU.Dependency;
 using KissU.Caching;
 using KissU.CPlatform.Cache;
 using KissU.CPlatform.Routing;
-using KissU.ProxyGenerator;
+using KissU.ServiceProxy;
 using Newtonsoft.Json;
 
 namespace KissU.ApiGateWay.OAuth.Implementation

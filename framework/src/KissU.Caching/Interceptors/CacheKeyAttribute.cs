@@ -1,5 +1,5 @@
 ﻿using System;
-using KissU.ProxyGenerator.Interceptors.Implementation;
+using KissU.ServiceProxy.Interceptors.Implementation;
 
 namespace KissU.Caching.Interceptors
 {

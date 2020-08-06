@@ -16,9 +16,9 @@ using KissU.CPlatform.Transport;
 using KissU.CPlatform.Transport.Implementation;
 using KissU.Kestrel;
 using KissU.Kestrel.Internal;
-using KissU.ProxyGenerator;
 using Microsoft.Extensions.Logging;
 using KissU.KestrelHttpServer.Internal;
+using KissU.ServiceProxy;
 using static KissU.Helpers.FastInvoke;
 
 namespace KissU.KestrelHttpServer

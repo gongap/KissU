@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using KissU.Modules.Blogging.Application.Contracts.Comments.Dtos;
 using KissU.Modules.Blogging.Service.Contracts;
-using KissU.ProxyGenerator;
+using KissU.ServiceProxy;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KissU.ApplicationParts.Blogging.Areas.Blog.Controllers

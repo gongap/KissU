@@ -1,7 +1,7 @@
 ﻿using KissU.Helpers;
 using KissU.Modularity;
 using KissU.CPlatform;
-using KissU.Log4net;
+using KissU.Logging.Log4net;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 

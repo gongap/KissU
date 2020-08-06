@@ -23,6 +23,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\KissU.Kestrel\KissU.Kestrel.csproj" />
-    <ProjectReference Include="..\KissU.ProxyGenerator\KissU.ProxyGenerator.csproj" />
+    <ProjectReference Include="..\KissU.ServiceProxy\KissU.ServiceProxy.csproj" />
   </ItemGroup>
 </Project>

@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KissU.Log4net\KissU.Log4net.csproj" />
+    <ProjectReference Include="..\KissU.Logging.Log4net\KissU.Logging.Log4net.csproj" />
     <ProjectReference Include="..\KissU.Kestrel\KissU.Kestrel.csproj" />
   </ItemGroup>
 </Project>

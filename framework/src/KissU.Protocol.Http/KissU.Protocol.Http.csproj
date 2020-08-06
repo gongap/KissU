@@ -15,6 +15,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\KissU.DotNetty\KissU.DotNetty.csproj" />
-    <ProjectReference Include="..\KissU.ProxyGenerator\KissU.ProxyGenerator.csproj" />
+    <ProjectReference Include="..\KissU.ServiceProxy\KissU.ServiceProxy.csproj" />
   </ItemGroup>
 </Project>

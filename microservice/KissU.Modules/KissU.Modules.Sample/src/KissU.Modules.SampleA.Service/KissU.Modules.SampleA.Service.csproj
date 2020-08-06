@@ -16,7 +16,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.DNS\KissU.DNS.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Protocol.DNS\KissU.Protocol.DNS.csproj" />
     <ProjectReference Include="..\..\..\..\..\framework\src\KissU.DotNettyWSServer\KissU.DotNettyWSServer.csproj" />
     <ProjectReference Include="..\..\..\..\..\framework\src\KissU.EventBusRabbitMQ\KissU.EventBusRabbitMQ.csproj" />
     <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Protocol.Udp\KissU.Protocol.Udp.csproj" />

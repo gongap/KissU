@@ -5,7 +5,7 @@ using KissU.Dependency;
 using KissU.EventBus.Events;
 using KissU.EventBus.Implementation;
 using KissU.Protocol.Mqtt.Internal.Messages;
-using KissU.ProxyGenerator;
+using KissU.ServiceProxy;
 
 namespace KissU.Protocol.Mqtt.Internal.Services
 {

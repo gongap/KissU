@@ -10,7 +10,7 @@ using Serilog.Events;
 using KissU.Extensions;
 using KissU.Caching;
 using KissU.CPlatform;
-using KissU.ProxyGenerator;
+using KissU.ServiceProxy;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
