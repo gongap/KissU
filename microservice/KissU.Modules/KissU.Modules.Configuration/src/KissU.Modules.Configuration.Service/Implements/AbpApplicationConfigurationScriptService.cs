@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using KissU.Modules.Application.Configurations;
 using KissU.Modules.Configuration.Service.Contracts;
-using KissU.Surging.ProxyGenerator;
+using KissU.ProxyGenerator;
 using Volo.Abp.Json;
 
 namespace KissU.Modules.Configuration.Service.Implements

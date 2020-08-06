@@ -2,8 +2,8 @@
 using KissU.Common;
 using KissU.Dependency;
 using KissU.Modules.Identity.Application.Contracts;
-using KissU.Surging.CPlatform.Filters.Implementation;
-using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
+using KissU.CPlatform.Filters.Implementation;
+using KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using Volo.Abp.Application.Dtos;
 
 namespace KissU.Modules.Identity.Service.Contracts

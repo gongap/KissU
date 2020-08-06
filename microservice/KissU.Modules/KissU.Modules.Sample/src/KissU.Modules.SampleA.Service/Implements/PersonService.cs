@@ -9,10 +9,10 @@ using KissU.EventBus.Events;
 using KissU.Modules.SampleA.Service.Contracts;
 using KissU.Modules.SampleA.Service.Contracts.Dtos;
 using KissU.Modules.SampleA.Service.Repositories;
-using KissU.Surging.Kestrel.Abstractions;
-using KissU.Surging.KestrelHttpServer.Abstractions;
-using KissU.Surging.KestrelHttpServer.Internal;
-using KissU.Surging.ProxyGenerator;
+using KissU.Kestrel.Abstractions;
+using KissU.KestrelHttpServer.Abstractions;
+using KissU.KestrelHttpServer.Internal;
+using KissU.ProxyGenerator;
 using static KissU.Modules.SampleA.Service.Contracts.Thrifts.ThriftCore.Calculator;
 
 namespace KissU.Modules.SampleA.Service.Implements

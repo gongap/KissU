@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using KissU.Dependency;
 using KissU.Modules.PermissionManagement.Application.Contracts;
-using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
+using KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 
 namespace KissU.Modules.PermissionManagement.Service.Contracts
 {

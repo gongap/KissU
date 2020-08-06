@@ -5,7 +5,7 @@ using KissU.Modules.Blogging.Application.Contracts.Blogs.Dtos;
 using KissU.Modules.Blogging.Application.Contracts.Posts;
 using KissU.Modules.Blogging.Application.Contracts.Tagging.Dtos;
 using KissU.Modules.Blogging.Service.Contracts;
-using KissU.Surging.ProxyGenerator;
+using KissU.ProxyGenerator;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KissU.ApplicationParts.Blogging.Pages.Blogs.Posts

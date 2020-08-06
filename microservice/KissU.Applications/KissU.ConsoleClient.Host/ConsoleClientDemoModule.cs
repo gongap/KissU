@@ -1,4 +1,4 @@
-﻿using KissU.Surging.Abp;
+﻿using KissU.Abp;
 using Volo.Abp.Http.Client.IdentityModel;
 using Volo.Abp.Modularity;
 

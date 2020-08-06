@@ -2,15 +2,15 @@
 using System.Threading.Tasks;
 using Autofac;
 using KissU.Dependency;
-using KissU.Surging.Caching.Configurations;
-using KissU.Surging.CPlatform.Configurations;
+using KissU.Caching.Configurations;
+using KissU.CPlatform.Configurations;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 using Serilog.Events;
 using KissU.Extensions;
-using KissU.Surging.Caching;
-using KissU.Surging.CPlatform;
-using KissU.Surging.ProxyGenerator;
+using KissU.Caching;
+using KissU.CPlatform;
+using KissU.ProxyGenerator;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 

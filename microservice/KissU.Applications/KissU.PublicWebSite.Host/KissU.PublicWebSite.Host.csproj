@@ -25,16 +25,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Apm.Skywalking\KissU.Surging.Apm.Skywalking.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Codec.MessagePack\KissU.Surging.Codec.MessagePack.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Codec.ProtoBuffer\KissU.Surging.Codec.ProtoBuffer.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.EventBusRabbitMQ\KissU.Surging.EventBusRabbitMQ.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Consul\KissU.Surging.Consul.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.CPlatform\KissU.Surging.CPlatform.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.DotNetty\KissU.Surging.DotNetty.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.NLog\KissU.Surging.Nlog.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Caching\KissU.Surging.Caching.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.ProxyGenerator\KissU.Surging.ProxyGenerator.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.Apm.Skywalking\KissU.Apm.Skywalking.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.Codec.MessagePack\KissU.Codec.MessagePack.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.Codec.ProtoBuffer\KissU.Codec.ProtoBuffer.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.EventBusRabbitMQ\KissU.EventBusRabbitMQ.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.Consul\KissU.Consul.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.CPlatform\KissU.CPlatform.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.DotNetty\KissU.DotNetty.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.NLog\KissU.Nlog.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.Caching\KissU.Caching.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.ProxyGenerator\KissU.ProxyGenerator.csproj" />
     <ProjectReference Include="..\..\KissU.Shared\KissU.Shared.csproj" />
     <ProjectReference Include="..\KissU.ApplicationParts\KissU.ApplicationParts.Blogging\KissU.ApplicationParts.Blogging.csproj" />
   </ItemGroup>

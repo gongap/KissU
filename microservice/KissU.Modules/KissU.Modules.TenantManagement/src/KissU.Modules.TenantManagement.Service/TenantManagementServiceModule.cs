@@ -1,7 +1,7 @@
 ﻿using KissU.Modules.TenantManagement.Application;
 using KissU.Modules.TenantManagement.EntityFrameworkCore;
 using KissU.Modules.TenantManagement.Service.Contracts;
-using KissU.Surging.Abp;
+using KissU.Abp;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.Modularity;

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using KissU.Dependency;
-using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
-using KissU.Surging.Protocol.WS.Attributes;
+using KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
+using KissU.Protocol.WS.Attributes;
 
 namespace KissU.Modules.SampleA.Service.Contracts
 {

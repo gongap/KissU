@@ -5,7 +5,7 @@ using KissU.Extensions;
 using KissU.Modules.Blogging.Application.Contracts.Blogs;
 using KissU.Modules.Blogging.Application.Contracts.Blogs.Dtos;
 using KissU.Modules.Blogging.Service.Contracts;
-using KissU.Surging.ProxyGenerator;
+using KissU.ProxyGenerator;
 
 namespace KissU.Modules.Blogging.Service.Implements
 {

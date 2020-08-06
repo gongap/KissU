@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using KissU.Surging.Caching.Interceptors;
+using KissU.Caching.Interceptors;
 using ProtoBuf;
 
 namespace KissU.Modules.SampleA.Service.Contracts.Dtos

@@ -2,7 +2,7 @@
 using KissU.Dependency;
 using KissU.Modules.Account.Application.Contracts;
 using KissU.Modules.Identity.Application.Contracts;
-using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
+using KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 
 namespace KissU.Modules.Account.Service.Contracts
 {

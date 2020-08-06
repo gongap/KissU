@@ -1,6 +1,6 @@
 ﻿using System;
-using KissU.Surging.Caching.Configurations;
-using KissU.Surging.CPlatform.Configurations;
+using KissU.Caching.Configurations;
+using KissU.CPlatform.Configurations;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Serilog;

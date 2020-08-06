@@ -16,40 +16,40 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Abp\KissU.Surging.Abp.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.Abp\KissU.Abp.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.WebSocketCore\KissU.WebSocketCore.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Apm.Skywalking\KissU.Surging.Apm.Skywalking.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.ApiGateWay\KissU.Surging.ApiGateWay.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Caching\KissU.Surging.Caching.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Codec.MessagePack\KissU.Surging.Codec.MessagePack.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Codec.ProtoBuffer\KissU.Surging.Codec.ProtoBuffer.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Configuration.Apollo\KissU.Surging.Configuration.Apollo.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Consul\KissU.Surging.Consul.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.CPlatform\KissU.Surging.CPlatform.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.DNS\KissU.Surging.DNS.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.DotNettyWSServer\KissU.Surging.DotNettyWSServer.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.DotNetty\KissU.Surging.DotNetty.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.EventBusKafka\KissU.Surging.EventBusKafka.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.EventBusRabbitMQ\KissU.Surging.EventBusRabbitMQ.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Grpc\KissU.Surging.Grpc.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Kestrel.Log4net\KissU.Surging.Kestrel.Log4net.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Kestrel.Nlog\KissU.Surging.Kestrel.Nlog.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.KestrelHttpServer\KissU.Surging.KestrelHttpServer.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Log4net\KissU.Surging.Log4net.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.NLog\KissU.Surging.Nlog.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Protocol.Http\KissU.Surging.Protocol.Http.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Protocol.Mqtt\KissU.Surging.Protocol.Mqtt.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Protocol.Udp\KissU.Surging.Protocol.Udp.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Protocol.WS\KissU.Surging.Protocol.WS.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.ProxyGenerator\KissU.Surging.ProxyGenerator.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Serilog\KissU.Surging.Serilog.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.BackgroundServer\KissU.Surging.BackgroundServer.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Kestrel.Swagger\KissU.Surging.Kestrel.Swagger.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Thrift\KissU.Surging.Thrift.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Surging.Zookeeper\KissU.Surging.Zookeeper.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.Apm.Skywalking\KissU.Apm.Skywalking.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.ApiGateWay\KissU.ApiGateWay.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.Caching\KissU.Caching.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.Codec.MessagePack\KissU.Codec.MessagePack.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.Codec.ProtoBuffer\KissU.Codec.ProtoBuffer.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.Configuration.Apollo\KissU.Configuration.Apollo.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.Consul\KissU.Consul.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.CPlatform\KissU.CPlatform.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.DNS\KissU.DNS.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.DotNettyWSServer\KissU.DotNettyWSServer.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.DotNetty\KissU.DotNetty.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.EventBusKafka\KissU.EventBusKafka.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.EventBusRabbitMQ\KissU.EventBusRabbitMQ.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.Grpc\KissU.Grpc.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.Kestrel.Log4net\KissU.Kestrel.Log4net.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.Kestrel.Nlog\KissU.Kestrel.Nlog.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.KestrelHttpServer\KissU.KestrelHttpServer.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.Log4net\KissU.Log4net.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.NLog\KissU.Nlog.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.Protocol.Http\KissU.Protocol.Http.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.Protocol.Mqtt\KissU.Protocol.Mqtt.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.Protocol.Udp\KissU.Protocol.Udp.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.Protocol.WS\KissU.Protocol.WS.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.ProxyGenerator\KissU.ProxyGenerator.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.Serilog\KissU.Serilog.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.BackgroundServer\KissU.BackgroundServer.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.Kestrel.Swagger\KissU.Kestrel.Swagger.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.Thrift\KissU.Thrift.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.Zookeeper\KissU.Zookeeper.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
+  <!--<ItemGroup>
     <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Account\src\KissU.Modules.Account.Service\KissU.Modules.Account.Service.csproj" />
     <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Configuration\src\KissU.Modules.Configuration.Service\KissU.Modules.Configuration.Service.csproj" />
     <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Blogging\src\KissU.Modules.Blogging.Service\KissU.Modules.Blogging.Service.csproj" />
@@ -59,7 +59,7 @@
     <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Sample\src\KissU.Modules.SampleA.Service\KissU.Modules.SampleA.Service.csproj" />
     <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.Sample\src\KissU.Modules.SampleB.Service\KissU.Modules.SampleB.Service.csproj" />
     <ProjectReference Include="..\..\KissU.Modules\KissU.Modules.TenantManagement\src\KissU.Modules.TenantManagement.Service\KissU.Modules.TenantManagement.Service.csproj" />
-  </ItemGroup>
+  </ItemGroup>-->
 
   <ItemGroup>
     <None Update="apollo.json">

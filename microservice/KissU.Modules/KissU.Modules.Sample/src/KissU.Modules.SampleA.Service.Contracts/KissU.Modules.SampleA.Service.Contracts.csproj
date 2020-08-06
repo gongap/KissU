@@ -32,11 +32,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.Caching\KissU.Surging.Caching.csproj" />
-    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.DotNettyWSServer\KissU.Surging.DotNettyWSServer.csproj" />
-    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.KestrelHttpServer\KissU.Surging.KestrelHttpServer.csproj" />
-    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.Protocol.Mqtt\KissU.Surging.Protocol.Mqtt.csproj" />
-    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.Protocol.WS\KissU.Surging.Protocol.WS.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Caching\KissU.Caching.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.DotNettyWSServer\KissU.DotNettyWSServer.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.KestrelHttpServer\KissU.KestrelHttpServer.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Protocol.Mqtt\KissU.Protocol.Mqtt.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Protocol.WS\KissU.Protocol.WS.csproj" />
   </ItemGroup>
 
 </Project>

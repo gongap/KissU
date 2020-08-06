@@ -15,8 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.Abp\KissU.Surging.Abp.csproj" />
-    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.ProxyGenerator\KissU.Surging.ProxyGenerator.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Abp\KissU.Abp.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.ProxyGenerator\KissU.ProxyGenerator.csproj" />
     <ProjectReference Include="..\KissU.Modules.TenantManagement.Application\KissU.Modules.TenantManagement.Application.csproj" />
     <ProjectReference Include="..\KissU.Modules.TenantManagement.EntityFrameworkCore\KissU.Modules.TenantManagement.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\KissU.Modules.TenantManagement.Service.Contracts\KissU.Modules.TenantManagement.Service.Contracts.csproj" />

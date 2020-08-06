@@ -15,57 +15,57 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.WebSocketCore", "fram
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.DotNetty.Codecs.DNS", "framework\src\KissU.DotNetty.Codecs.DNS\KissU.DotNetty.Codecs.DNS.csproj", "{9E90FE21-74E0-4703-AF3A-159F8DA4E635}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.CPlatform", "framework\src\KissU.Surging.CPlatform\KissU.Surging.CPlatform.csproj", "{D4C75857-11D2-4F16-9E30-E3D6BEB015DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.CPlatform", "framework\src\KissU.CPlatform\KissU.CPlatform.csproj", "{D4C75857-11D2-4F16-9E30-E3D6BEB015DD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.ApiGateWay", "framework\src\KissU.Surging.ApiGateWay\KissU.Surging.ApiGateWay.csproj", "{F0438BB2-E448-422C-A78E-9D2ABBAE3D4D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.ApiGateWay", "framework\src\KissU.ApiGateWay\KissU.ApiGateWay.csproj", "{F0438BB2-E448-422C-A78E-9D2ABBAE3D4D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.Caching", "framework\src\KissU.Surging.Caching\KissU.Surging.Caching.csproj", "{A3DC2456-2BEC-4224-AA95-BE1915B9377F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Caching", "framework\src\KissU.Caching\KissU.Caching.csproj", "{A3DC2456-2BEC-4224-AA95-BE1915B9377F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.Codec.MessagePack", "framework\src\KissU.Surging.Codec.MessagePack\KissU.Surging.Codec.MessagePack.csproj", "{750B3E79-67C6-46A3-B08D-8A3010E8FFC7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Codec.MessagePack", "framework\src\KissU.Codec.MessagePack\KissU.Codec.MessagePack.csproj", "{750B3E79-67C6-46A3-B08D-8A3010E8FFC7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.Codec.ProtoBuffer", "framework\src\KissU.Surging.Codec.ProtoBuffer\KissU.Surging.Codec.ProtoBuffer.csproj", "{FFB9A30E-F36D-4243-BEDA-CB1B3DB646E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Codec.ProtoBuffer", "framework\src\KissU.Codec.ProtoBuffer\KissU.Codec.ProtoBuffer.csproj", "{FFB9A30E-F36D-4243-BEDA-CB1B3DB646E1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.Consul", "framework\src\KissU.Surging.Consul\KissU.Surging.Consul.csproj", "{E73E092B-24D0-4C54-BD26-F01C89A31652}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Consul", "framework\src\KissU.Consul\KissU.Consul.csproj", "{E73E092B-24D0-4C54-BD26-F01C89A31652}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.DNS", "framework\src\KissU.Surging.DNS\KissU.Surging.DNS.csproj", "{C5A07EEF-0F59-4621-83BF-6B90BF324BF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.DNS", "framework\src\KissU.DNS\KissU.DNS.csproj", "{C5A07EEF-0F59-4621-83BF-6B90BF324BF7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.DotNetty", "framework\src\KissU.Surging.DotNetty\KissU.Surging.DotNetty.csproj", "{6C05E7AF-E9EB-4D23-9C08-947E26E0C1E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.DotNetty", "framework\src\KissU.DotNetty\KissU.DotNetty.csproj", "{6C05E7AF-E9EB-4D23-9C08-947E26E0C1E1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.DotNettyWSServer", "framework\src\KissU.Surging.DotNettyWSServer\KissU.Surging.DotNettyWSServer.csproj", "{B5754E2C-D258-40F7-A3AF-7457FBAE52BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.DotNettyWSServer", "framework\src\KissU.DotNettyWSServer\KissU.DotNettyWSServer.csproj", "{B5754E2C-D258-40F7-A3AF-7457FBAE52BB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.EventBusKafka", "framework\src\KissU.Surging.EventBusKafka\KissU.Surging.EventBusKafka.csproj", "{6254E583-4BE2-4E6F-B859-54F50E8CE8A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.EventBusKafka", "framework\src\KissU.EventBusKafka\KissU.EventBusKafka.csproj", "{6254E583-4BE2-4E6F-B859-54F50E8CE8A2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.EventBusRabbitMQ", "framework\src\KissU.Surging.EventBusRabbitMQ\KissU.Surging.EventBusRabbitMQ.csproj", "{882509A8-C9ED-439E-871F-7D44706A9CC3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.EventBusRabbitMQ", "framework\src\KissU.EventBusRabbitMQ\KissU.EventBusRabbitMQ.csproj", "{882509A8-C9ED-439E-871F-7D44706A9CC3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.Grpc", "framework\src\KissU.Surging.Grpc\KissU.Surging.Grpc.csproj", "{2F3CE0B7-52EB-4831-B94B-38BCF173FB19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Grpc", "framework\src\KissU.Grpc\KissU.Grpc.csproj", "{2F3CE0B7-52EB-4831-B94B-38BCF173FB19}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.KestrelHttpServer", "framework\src\KissU.Surging.KestrelHttpServer\KissU.Surging.KestrelHttpServer.csproj", "{E72EAC21-2C6F-4096-AA3C-AD1EA45C1003}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.KestrelHttpServer", "framework\src\KissU.KestrelHttpServer\KissU.KestrelHttpServer.csproj", "{E72EAC21-2C6F-4096-AA3C-AD1EA45C1003}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.Log4net", "framework\src\KissU.Surging.Log4net\KissU.Surging.Log4net.csproj", "{C7F7B887-003D-4691-904F-F99DB4F56D69}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Log4net", "framework\src\KissU.Log4net\KissU.Log4net.csproj", "{C7F7B887-003D-4691-904F-F99DB4F56D69}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.Nlog", "framework\src\KissU.Surging.NLog\KissU.Surging.Nlog.csproj", "{C8E46CFD-2740-4124-A227-93FB34039B0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Nlog", "framework\src\KissU.NLog\KissU.Nlog.csproj", "{C8E46CFD-2740-4124-A227-93FB34039B0C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.Protocol.Http", "framework\src\KissU.Surging.Protocol.Http\KissU.Surging.Protocol.Http.csproj", "{4710EA6B-FFB2-4A15-AD03-3F51283BF0F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Protocol.Http", "framework\src\KissU.Protocol.Http\KissU.Protocol.Http.csproj", "{4710EA6B-FFB2-4A15-AD03-3F51283BF0F0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.Protocol.Mqtt", "framework\src\KissU.Surging.Protocol.Mqtt\KissU.Surging.Protocol.Mqtt.csproj", "{365D110C-0D40-4DA8-BB29-558050FACB6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Protocol.Mqtt", "framework\src\KissU.Protocol.Mqtt\KissU.Protocol.Mqtt.csproj", "{365D110C-0D40-4DA8-BB29-558050FACB6E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.Protocol.Udp", "framework\src\KissU.Surging.Protocol.Udp\KissU.Surging.Protocol.Udp.csproj", "{6F63B30C-34EC-4429-81B0-3FB1F107AE56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Protocol.Udp", "framework\src\KissU.Protocol.Udp\KissU.Protocol.Udp.csproj", "{6F63B30C-34EC-4429-81B0-3FB1F107AE56}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.Protocol.WS", "framework\src\KissU.Surging.Protocol.WS\KissU.Surging.Protocol.WS.csproj", "{358C0383-E858-4681-AE2B-EDA5B4D8FB9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Protocol.WS", "framework\src\KissU.Protocol.WS\KissU.Protocol.WS.csproj", "{358C0383-E858-4681-AE2B-EDA5B4D8FB9B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.ProxyGenerator", "framework\src\KissU.Surging.ProxyGenerator\KissU.Surging.ProxyGenerator.csproj", "{BB001DE2-D4DD-4015-A070-341851A7252D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.ProxyGenerator", "framework\src\KissU.ProxyGenerator\KissU.ProxyGenerator.csproj", "{BB001DE2-D4DD-4015-A070-341851A7252D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.BackgroundServer", "framework\src\KissU.Surging.BackgroundServer\KissU.Surging.BackgroundServer.csproj", "{246793A0-82BC-4BD5-8ED4-B0E2A2982476}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.BackgroundServer", "framework\src\KissU.BackgroundServer\KissU.BackgroundServer.csproj", "{246793A0-82BC-4BD5-8ED4-B0E2A2982476}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.Kestrel.Swagger", "framework\src\KissU.Surging.Kestrel.Swagger\KissU.Surging.Kestrel.Swagger.csproj", "{5C93C1B9-2BAF-4EAC-A811-1D3B3EE71912}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Kestrel.Swagger", "framework\src\KissU.Kestrel.Swagger\KissU.Kestrel.Swagger.csproj", "{5C93C1B9-2BAF-4EAC-A811-1D3B3EE71912}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.Zookeeper", "framework\src\KissU.Surging.Zookeeper\KissU.Surging.Zookeeper.csproj", "{5CFC8C22-238C-4BA1-B02B-806883747A6F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Zookeeper", "framework\src\KissU.Zookeeper\KissU.Zookeeper.csproj", "{5CFC8C22-238C-4BA1-B02B-806883747A6F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.Apm.Skywalking", "framework\src\KissU.Surging.Apm.Skywalking\KissU.Surging.Apm.Skywalking.csproj", "{3B143AB8-558F-4A8A-B4EA-63FF73F43209}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Apm.Skywalking", "framework\src\KissU.Apm.Skywalking\KissU.Apm.Skywalking.csproj", "{3B143AB8-558F-4A8A-B4EA-63FF73F43209}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.Serilog", "framework\src\KissU.Surging.Serilog\KissU.Surging.Serilog.csproj", "{5EEDC170-07E8-47D1-AAFE-4FC72AF5E2EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Serilog", "framework\src\KissU.Serilog\KissU.Serilog.csproj", "{5EEDC170-07E8-47D1-AAFE-4FC72AF5E2EF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.Configuration.Apollo", "framework\src\KissU.Surging.Configuration.Apollo\KissU.Surging.Configuration.Apollo.csproj", "{E4064CED-EBEF-44A9-B1A3-0B3BC079FC43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Configuration.Apollo", "framework\src\KissU.Configuration.Apollo\KissU.Configuration.Apollo.csproj", "{E4064CED-EBEF-44A9-B1A3-0B3BC079FC43}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Core", "framework\src\KissU.Core\KissU.Core.csproj", "{0B2AF152-4417-46BC-A652-6BF30EF0F101}"
 EndProject
@@ -107,7 +107,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Identity.DbMi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Identity.DbMigrator", "microservice\KissU.Modules\KissU.Modules.Identity\src\KissU.Modules.Identity.DbMigrator\KissU.Modules.Identity.DbMigrator.csproj", "{570235F6-9A03-43F1-B512-63DB02CE6FE4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.Thrift", "framework\src\KissU.Surging.Thrift\KissU.Surging.Thrift.csproj", "{059CBF56-A1E8-43F7-9E2C-47FB9E483E98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Thrift", "framework\src\KissU.Thrift\KissU.Thrift.csproj", "{059CBF56-A1E8-43F7-9E2C-47FB9E483E98}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Identity.Domain.Shared", "microservice\KissU.Modules\KissU.Modules.Identity\src\KissU.Modules.Identity.Domain.Shared\KissU.Modules.Identity.Domain.Shared.csproj", "{9B767C3C-8ADD-47C8-BD56-392EE11AA0A6}"
 EndProject
@@ -331,9 +331,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.SampleA.Servi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.SampleB.Service", "microservice\KissU.Modules\KissU.Modules.Sample\src\KissU.Modules.SampleB.Service\KissU.Modules.SampleB.Service.csproj", "{0C19FD77-7BBB-43CD-9FEA-703B78F2924D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.Kestrel.Nlog", "framework\src\KissU.Surging.Kestrel.Nlog\KissU.Surging.Kestrel.Nlog.csproj", "{ECAF6F9C-D40D-49C9-9BE9-B3FCA4B95D2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Kestrel.Nlog", "framework\src\KissU.Kestrel.Nlog\KissU.Kestrel.Nlog.csproj", "{ECAF6F9C-D40D-49C9-9BE9-B3FCA4B95D2E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.Kestrel.Log4net", "framework\src\KissU.Surging.Kestrel.Log4net\KissU.Surging.Kestrel.Log4net.csproj", "{EABCFB29-06E6-4755-975E-ABB3A3E5BE1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Kestrel.Log4net", "framework\src\KissU.Kestrel.Log4net\KissU.Kestrel.Log4net.csproj", "{EABCFB29-06E6-4755-975E-ABB3A3E5BE1D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Shared", "microservice\KissU.Shared\KissU.Shared.csproj", "{6A0888A0-2258-42C6-B6F9-5232EB2D7E50}"
 EndProject
@@ -361,7 +361,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.ApplicationParts.Acco
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.ApplicationParts.Blogging", "microservice\KissU.Applications\KissU.ApplicationParts\KissU.ApplicationParts.Blogging\KissU.ApplicationParts.Blogging.csproj", "{15C81048-9A40-48F2-952B-4569839B0ECB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.Abp", "framework\src\KissU.Surging.Abp\KissU.Surging.Abp.csproj", "{9818E43D-757B-40A4-8D7D-0C19B680F0E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Abp", "framework\src\KissU.Abp\KissU.Abp.csproj", "{9818E43D-757B-40A4-8D7D-0C19B680F0E7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Configuration.Application.Contracts", "microservice\KissU.Modules\KissU.Modules.Configuration\src\KissU.Modules.Configuration.Application.Contracts\KissU.Modules.Configuration.Application.Contracts.csproj", "{DEFE344E-A2B6-463B-9AC3-DE02ED43CD67}"
 EndProject
@@ -389,11 +389,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.SampleB.Servi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU", "framework\src\KissU\KissU.csproj", "{CE2D1A16-3192-4086-B0C9-6E60CA8467D2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.Kestrel.Stage", "framework\src\KissU.Surging.Kestrel.Stage\KissU.Surging.Kestrel.Stage.csproj", "{D24A472F-6A9D-44C1-82CB-D49AF9945255}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Kestrel.Stage", "framework\src\KissU.Kestrel.Stage\KissU.Kestrel.Stage.csproj", "{D24A472F-6A9D-44C1-82CB-D49AF9945255}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.Kestrel", "framework\src\KissU.Surging.Kestrel\KissU.Surging.Kestrel.csproj", "{F73A3D74-64BC-4685-96F8-FF11D3DD38AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Kestrel", "framework\src\KissU.Kestrel\KissU.Kestrel.csproj", "{F73A3D74-64BC-4685-96F8-FF11D3DD38AE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Surging.Kestrel.IdentityServer", "framework\src\KissU.Surging.Kestrel.IdentityServer\KissU.Surging.Kestrel.IdentityServer.csproj", "{4B87550D-E25F-489B-BC62-76C248C08A67}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Kestrel.IdentityServer", "framework\src\KissU.Kestrel.IdentityServer\KissU.Kestrel.IdentityServer.csproj", "{4B87550D-E25F-489B-BC62-76C248C08A67}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

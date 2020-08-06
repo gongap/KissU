@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using KissU.Dependency;
 using KissU.Modules.Blogging.Application.Contracts.Files;
-using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
-using KissU.Surging.KestrelHttpServer.Abstractions;
-using KissU.Surging.KestrelHttpServer.Internal;
+using KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
+using KissU.KestrelHttpServer.Abstractions;
+using KissU.KestrelHttpServer.Internal;
 
 namespace KissU.Modules.Blogging.Service.Contracts
 {

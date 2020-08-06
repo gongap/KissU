@@ -3,7 +3,7 @@ using KissU.Modules.PermissionManagement.Domain.Identity;
 using KissU.Modules.PermissionManagement.Domain.IdentityServer;
 using KissU.Modules.PermissionManagement.EntityFrameworkCore;
 using KissU.Modules.PermissionManagement.Service.Contracts;
-using KissU.Surging.Abp;
+using KissU.Abp;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.Modularity;

@@ -7,7 +7,7 @@ using KissU.Modules.Blogging.Application.Contracts.Posts;
 using KissU.Modules.Blogging.Application.Contracts.Shared;
 using KissU.Modules.Blogging.Domain.Shared.Posts;
 using KissU.Modules.Blogging.Service.Contracts;
-using KissU.Surging.ProxyGenerator;
+using KissU.ProxyGenerator;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Volo.Abp.Validation;

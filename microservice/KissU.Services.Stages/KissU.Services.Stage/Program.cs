@@ -2,10 +2,10 @@
 using Autofac;
 using KissU.Dependency;
 using KissU.Extensions;
-using KissU.Surging.Caching.Configurations;
-using KissU.Surging.CPlatform;
-using KissU.Surging.CPlatform.Configurations;
-using KissU.Surging.ProxyGenerator;
+using KissU.Caching.Configurations;
+using KissU.CPlatform;
+using KissU.CPlatform.Configurations;
+using KissU.ProxyGenerator;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 

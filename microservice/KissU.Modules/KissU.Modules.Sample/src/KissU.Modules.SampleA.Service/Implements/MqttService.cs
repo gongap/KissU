@@ -2,17 +2,17 @@
 using KissU.Modules.SampleA.Service.Contracts;
 using KissU.Modules.SampleA.Service.Contracts.Dtos;
 using KissU.Modules.SampleB.Service.Contracts;
-using KissU.Surging.Protocol.Mqtt.Internal.Messages;
-using KissU.Surging.Protocol.Mqtt.Internal.Services;
+using KissU.Protocol.Mqtt.Internal.Messages;
+using KissU.Protocol.Mqtt.Internal.Services;
 
 namespace KissU.Modules.SampleA.Service.Implements
 {
     /// <summary>
     /// ControllerService.
-    /// Implements the <see cref="KissU.Surging.Protocol.Mqtt.Internal.Services.MqttBehavior" />
+    /// Implements the <see cref="KissU.Protocol.Mqtt.Internal.Services.MqttBehavior" />
     /// Implements the <see cref="IMqttService" />
     /// </summary>
-    /// <seealso cref="KissU.Surging.Protocol.Mqtt.Internal.Services.MqttBehavior" />
+    /// <seealso cref="KissU.Protocol.Mqtt.Internal.Services.MqttBehavior" />
     /// <seealso cref="IMqttService" />
     public class MqttService : MqttBehavior, IMqttService
     {

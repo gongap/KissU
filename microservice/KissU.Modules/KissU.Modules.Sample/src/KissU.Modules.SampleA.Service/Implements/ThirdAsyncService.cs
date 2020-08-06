@@ -4,8 +4,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using KissU.Modules.SampleA.Service.Contracts;
-using KissU.Surging.ProxyGenerator;
-using KissU.Surging.Thrift.Attributes;
+using KissU.ProxyGenerator;
+using KissU.Thrift.Attributes;
 using static KissU.Modules.SampleA.Service.Contracts.Thrifts.ThriftCore.ThirdCalculator;
 
 namespace KissU.Modules.SampleA.Service.Implements

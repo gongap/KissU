@@ -14,7 +14,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.CPlatform\KissU.Surging.CPlatform.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.CPlatform\KissU.CPlatform.csproj" />
     <ProjectReference Include="..\KissU.Modules.FeatureManagement.Application.Contracts\KissU.Modules.FeatureManagement.Application.Contracts.csproj" />
   </ItemGroup>
 </Project>

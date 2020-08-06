@@ -5,7 +5,7 @@ using KissU.EventBus.Events;
 using KissU.Modules.SampleA.Service.Contracts;
 using KissU.Modules.SampleA.Service.Contracts.Dtos;
 using KissU.Modules.SampleA.Service.Contracts.Events;
-using KissU.Surging.EventBusRabbitMQ.Attributes;
+using KissU.EventBusRabbitMQ.Attributes;
 
 namespace KissU.Modules.SampleA.Service.EventHandlers
 {

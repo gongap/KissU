@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+   <Import Project="..\..\..\common.props" />
+   <Import Project="..\..\..\configureawait.props" />
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Description></Description>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KissU.Log4net\KissU.Log4net.csproj" />
+    <ProjectReference Include="..\KissU.Kestrel\KissU.Kestrel.csproj" />
+  </ItemGroup>
+</Project>

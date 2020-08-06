@@ -1,13 +1,13 @@
-﻿using KissU.Surging.CPlatform;
+﻿using KissU.CPlatform;
 using ProtoBuf;
 
 namespace KissU.Modules.SampleA.Service.Contracts.Dtos
 {
     /// <summary>
     /// IdentityUser.
-    /// Implements the <see cref="KissU.Surging.CPlatform.RequestData" />
+    /// Implements the <see cref="KissU.CPlatform.RequestData" />
     /// </summary>
-    /// <seealso cref="KissU.Surging.CPlatform.RequestData" />
+    /// <seealso cref="KissU.CPlatform.RequestData" />
     [ProtoContract]
     public class IdentityUser : RequestData
     {

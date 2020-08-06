@@ -5,7 +5,7 @@ using KissU.Extensions;
 using KissU.Modules.Identity.Application.Contracts;
 using KissU.Modules.Identity.Service.Contracts;
 using KissU.Modules.Users.Abstractions;
-using KissU.Surging.ProxyGenerator;
+using KissU.ProxyGenerator;
 using Volo.Abp.Users;
 
 namespace KissU.Modules.Identity.Service.Implements

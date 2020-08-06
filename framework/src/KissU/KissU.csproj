@@ -4,8 +4,6 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>KissU.Core</AssemblyName>
-    <PackageId>KissU.Core</PackageId>
     <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
@@ -15,9 +13,5 @@
 
   <ItemGroup>
     <PackageReference Include="Volo.Abp" Version="3.0.5" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\KissU.Core\KissU.Core.csproj" />
   </ItemGroup>
 </Project>

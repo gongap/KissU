@@ -2,8 +2,8 @@
 using System.Threading.Tasks;
 using KissU.Dependency;
 using KissU.Modules.SampleA.Service.Contracts.Thrifts.ThriftCore;
-using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
-using KissU.Surging.CPlatform.Support.Attributes;
+using KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
+using KissU.CPlatform.Support.Attributes;
 
 namespace KissU.Modules.SampleA.Service.Contracts
 {

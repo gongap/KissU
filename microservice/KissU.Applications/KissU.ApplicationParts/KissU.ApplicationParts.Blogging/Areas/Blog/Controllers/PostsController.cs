@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using KissU.Modules.Blogging.Service.Contracts;
-using KissU.Surging.ProxyGenerator;
+using KissU.ProxyGenerator;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KissU.ApplicationParts.Blogging.Areas.Blog.Controllers

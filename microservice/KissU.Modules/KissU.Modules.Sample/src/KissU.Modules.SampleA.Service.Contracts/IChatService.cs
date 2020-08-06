@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using KissU.Dependency;
-using KissU.Surging.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
-using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
-using KissU.Surging.CPlatform.Support.Attributes;
-using KissU.Surging.Protocol.WS.Attributes;
+using KissU.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
+using KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
+using KissU.CPlatform.Support.Attributes;
+using KissU.Protocol.WS.Attributes;
 
 namespace KissU.Modules.SampleA.Service.Contracts
 {

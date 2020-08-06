@@ -15,8 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.CPlatform\KissU.Surging.CPlatform.csproj" />
-    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.KestrelHttpServer\KissU.Surging.KestrelHttpServer.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.CPlatform\KissU.CPlatform.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.KestrelHttpServer\KissU.KestrelHttpServer.csproj" />
     <ProjectReference Include="..\KissU.Modules.Blogging.Application.Contracts\KissU.Modules.Blogging.Application.Contracts.csproj" />
   </ItemGroup>
 </Project>

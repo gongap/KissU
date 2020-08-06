@@ -2,7 +2,7 @@
 using KissU.Dependency;
 using KissU.Modules.PermissionManagement.Application.Contracts;
 using KissU.Modules.PermissionManagement.Service.Contracts;
-using KissU.Surging.ProxyGenerator;
+using KissU.ProxyGenerator;
 
 namespace KissU.Modules.PermissionManagement.Service.Implements
 {

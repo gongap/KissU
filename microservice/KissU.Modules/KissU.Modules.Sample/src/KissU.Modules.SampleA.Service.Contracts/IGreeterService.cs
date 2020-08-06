@@ -2,7 +2,7 @@
 using Greet;
 using Grpc.Core;
 using KissU.Dependency;
-using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
+using KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 
 namespace KissU.Modules.SampleA.Service.Contracts
 {

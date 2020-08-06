@@ -87,7 +87,7 @@
     }
 
   },
-  "Swagger": { //Swagger配置,只有微服务组件对外提供了Http服务，才可能生成Swagger文档。微服务必须依赖KestrelHttpModule和安装了KissU.Surging.Kestrel.Swagger.SwaggerUI组件包，并且配置了Swagger相关参数，才可能生成SwaggerApi文档。
+  "Swagger": { //Swagger配置,只有微服务组件对外提供了Http服务，才可能生成Swagger文档。微服务必须依赖KestrelHttpModule和安装了KissU.Kestrel.Swagger.SwaggerUI组件包，并且配置了Swagger相关参数，才可能生成SwaggerApi文档。
     "Info": {
       "Version": "${SwaggerVersion}|V1", // Api文档的版本号,
       "Title": "${SwaggerTitle}|KissU Services", //Api文档标题

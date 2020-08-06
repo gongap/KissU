@@ -7,22 +7,22 @@ using KissU.Dependency;
 using KissU.EventBus.Events;
 using KissU.Modules.SampleA.Service.Contracts;
 using KissU.Modules.SampleA.Service.Contracts.Dtos;
-using KissU.Surging.CPlatform.Transport.Implementation;
-using KissU.Surging.KestrelHttpServer.Abstractions;
-using KissU.Surging.KestrelHttpServer.Internal;
-using KissU.Surging.ProxyGenerator;
+using KissU.CPlatform.Transport.Implementation;
+using KissU.KestrelHttpServer.Abstractions;
+using KissU.KestrelHttpServer.Internal;
+using KissU.ProxyGenerator;
 using KissU.Modules.SampleA.Service.Repositories;
 using KissU.Modules.SampleB.Service.Contracts;
-using KissU.Surging.Kestrel.Abstractions;
+using KissU.Kestrel.Abstractions;
 
 namespace KissU.Modules.SampleA.Service.Implements
 {
     /// <summary>
     /// UserService.
-    /// Implements the <see cref="KissU.Surging.ProxyGenerator.ProxyServiceBase" />
+    /// Implements the <see cref="KissU.ProxyGenerator.ProxyServiceBase" />
     /// Implements the <see cref="IUserService" />
     /// </summary>
-    /// <seealso cref="KissU.Surging.ProxyGenerator.ProxyServiceBase" />
+    /// <seealso cref="KissU.ProxyGenerator.ProxyServiceBase" />
     /// <seealso cref="IUserService" />
     [ModuleName("User")]
     public class UserService : ProxyServiceBase, IUserService

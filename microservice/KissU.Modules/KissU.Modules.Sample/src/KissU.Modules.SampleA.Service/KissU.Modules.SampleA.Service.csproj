@@ -16,12 +16,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.DNS\KissU.Surging.DNS.csproj" />
-    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.DotNettyWSServer\KissU.Surging.DotNettyWSServer.csproj" />
-    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.EventBusRabbitMQ\KissU.Surging.EventBusRabbitMQ.csproj" />
-    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.Protocol.Udp\KissU.Surging.Protocol.Udp.csproj" />
-    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.BackgroundServer\KissU.Surging.BackgroundServer.csproj" />
-    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Surging.Thrift\KissU.Surging.Thrift.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.DNS\KissU.DNS.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.DotNettyWSServer\KissU.DotNettyWSServer.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.EventBusRabbitMQ\KissU.EventBusRabbitMQ.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Protocol.Udp\KissU.Protocol.Udp.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.BackgroundServer\KissU.BackgroundServer.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Thrift\KissU.Thrift.csproj" />
     <ProjectReference Include="..\..\..\..\..\framework\src\KissU.WebSocketCore\KissU.WebSocketCore.csproj" />
     <ProjectReference Include="..\KissU.Modules.SampleA.Service.Contracts\KissU.Modules.SampleA.Service.Contracts.csproj" />
     <ProjectReference Include="..\KissU.Modules.SampleB.Service.Contracts\KissU.Modules.SampleB.Service.Contracts.csproj" />

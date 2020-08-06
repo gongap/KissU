@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 using KissU.Dependency;
 using KissU.Modules.Blogging.Application.Contracts.Files;
 using KissU.Modules.Blogging.Service.Contracts;
-using KissU.Surging.KestrelHttpServer.Abstractions;
-using KissU.Surging.KestrelHttpServer.Internal;
-using KissU.Surging.ProxyGenerator;
+using KissU.KestrelHttpServer.Abstractions;
+using KissU.KestrelHttpServer.Internal;
+using KissU.ProxyGenerator;
 using Volo.Abp;
 using Volo.Abp.Http;
 

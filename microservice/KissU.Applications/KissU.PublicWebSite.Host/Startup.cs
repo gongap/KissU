@@ -1,8 +1,8 @@
 ﻿using Autofac;
 using KissU.Dependency;
-using KissU.Surging.Caching;
-using KissU.Surging.CPlatform;
-using KissU.Surging.ProxyGenerator;
+using KissU.Caching;
+using KissU.CPlatform;
+using KissU.ProxyGenerator;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 

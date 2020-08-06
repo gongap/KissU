@@ -2,7 +2,7 @@
 using KissU.Extensions;
 using KissU.Modules.Application.MultiTenancy;
 using KissU.Modules.Configuration.Service.Contracts;
-using KissU.Surging.ProxyGenerator;
+using KissU.ProxyGenerator;
 
 namespace KissU.Modules.Configuration.Service.Implements
 {

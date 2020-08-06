@@ -5,18 +5,18 @@ using KissU.Common;
 using KissU.Dependency;
 using KissU.EventBus.Events;
 using KissU.Modules.SampleA.Service.Contracts.Dtos;
-using KissU.Surging.Caching.Interceptors;
-using KissU.Surging.CPlatform.Filters.Implementation;
-using KissU.Surging.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
-using KissU.Surging.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
-using KissU.Surging.CPlatform.Support;
-using KissU.Surging.CPlatform.Support.Attributes;
-using KissU.Surging.Kestrel.Abstractions;
-using KissU.Surging.KestrelHttpServer.Abstractions;
-using KissU.Surging.KestrelHttpServer.Internal;
-using CacheTargetType = KissU.Surging.Caching.CacheTargetType;
-using CachingMethod = KissU.Surging.Caching.Interceptors.CachingMethod;
-using Metadatas = KissU.Surging.ProxyGenerator.Interceptors.Implementation.Metadatas;
+using KissU.Caching.Interceptors;
+using KissU.CPlatform.Filters.Implementation;
+using KissU.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
+using KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
+using KissU.CPlatform.Support;
+using KissU.CPlatform.Support.Attributes;
+using KissU.Kestrel.Abstractions;
+using KissU.KestrelHttpServer.Abstractions;
+using KissU.KestrelHttpServer.Internal;
+using CacheTargetType = KissU.Caching.CacheTargetType;
+using CachingMethod = KissU.Caching.Interceptors.CachingMethod;
+using Metadatas = KissU.ProxyGenerator.Interceptors.Implementation.Metadatas;
 
 namespace KissU.Modules.SampleA.Service.Contracts
 {
