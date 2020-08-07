@@ -1,8 +1,10 @@
-﻿using KissU.CPlatform;
+﻿using System.IO;
+using KissU.CPlatform;
 using KissU.Modularity;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Serilog;
+using Serilog.Events;
 
 namespace KissU.Logging.Serilog
 {
@@ -23,11 +25,16 @@ namespace KissU.Logging.Serilog
             base.Initialize(context);
 
             var logger = new LoggerConfiguration().ReadFrom.Configuration(AppConfig.Configuration)
-                //.WriteTo.RollingFile(new ElasticsearchJsonFormatter(renderMessageTemplate:false),"c:/logs/log-{Date}.log")
-                //.WriteTo.Logger(config =>
-                //{
-                //    //config.Filter.ByIncludingOnly(evt => evt.Level == LogEventLevel.Information).ReadFrom.Configuration(AppConfig.Configuration.GetSection("Information"))
-                //})
+#if DEBUG
+                .MinimumLevel.Debug()
+#else
+                .MinimumLevel.Information()
+#endif
+                .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+                .MinimumLevel.Override("Microsoft.EntityFrameworkCore", LogEventLevel.Warning)
+                .Enrich.FromLogContext()
+                .WriteTo.Console()
+                .WriteTo.Async(c => c.File(Path.Combine(Directory.GetCurrentDirectory(), "logs/logs.txt")))
                 .CreateLogger();
 
             serviceProvider.GetInstances<ILoggerFactory>().AddSerilog(logger);

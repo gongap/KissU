@@ -21,7 +21,7 @@ namespace KissU.Modules.IdentityServer.DbMigrator
                 .MinimumLevel.Override("Acme.Identity", LogEventLevel.Information)
 #endif
                 .Enrich.FromLogContext()
-                .WriteTo.File(Path.Combine(Directory.GetCurrentDirectory(), "Logs/logs.txt"))
+                .WriteTo.File(Path.Combine(Directory.GetCurrentDirectory(), "logs/logs.txt"))
                 .WriteTo.Console()
                 .CreateLogger();
 

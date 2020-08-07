@@ -252,5 +252,4 @@ paket-files/
 *.sln.iml
 
 # KissU
-microservice/src/KissU.Applications/KissU.AuthServer.Host/Logs/*.*
-microservice/src/KissU.Applications/KissU.PublicWebSite.Host/Logs/*.*
+[Ll]ogs/

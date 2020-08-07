@@ -21,7 +21,7 @@ namespace KissU.AuthServer.Host
                 .MinimumLevel.Override("Microsoft.EntityFrameworkCore", LogEventLevel.Warning)
                 .Enrich.FromLogContext()
                 .WriteTo.Console()
-                .WriteTo.Async(c => c.File("Logs/logs.txt"))
+                .WriteTo.Async(c => c.File(Path.Combine(Directory.GetCurrentDirectory(), "logs/logs.txt")))
                 .CreateLogger();
 
             try

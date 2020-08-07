@@ -21,7 +21,7 @@ namespace KissU.Modules.Blogging.DbMigrator
                 .MinimumLevel.Override("Acme.QuickStart", LogEventLevel.Information)
 #endif
                 .Enrich.FromLogContext()
-                .WriteTo.File(Path.Combine(Directory.GetCurrentDirectory(), "Logs/logs.txt"))
+                .WriteTo.File(Path.Combine(Directory.GetCurrentDirectory(), "logs/logs.txt"))
                 .WriteTo.Console()
                 .CreateLogger();
 
