@@ -106,6 +106,8 @@ namespace KissU.AuthServer.Host
             ConfigureVirtualFileSystem(context);
             ConfigureRedis(context, configuration, hostingEnvironment);
             ConfigureCors(context, configuration);
+
+            context.Services.ConfigureNonBreakingSameSiteCookies();
         }
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
@@ -125,6 +127,7 @@ namespace KissU.AuthServer.Host
             app.UseCorrelationId();
             app.UseVirtualFiles();
             app.UseRouting();
+            app.UseCookiePolicy();
             app.UseCors(DefaultCorsPolicyName);
             app.UseAuthentication();
 
