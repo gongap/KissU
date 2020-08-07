@@ -17,6 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KissU.Kestrel.Http\KissU.Kestrel.Http.csproj" />
+    <ProjectReference Include="..\KissU.CPlatform\KissU.CPlatform.csproj" />
   </ItemGroup>
 </Project>
