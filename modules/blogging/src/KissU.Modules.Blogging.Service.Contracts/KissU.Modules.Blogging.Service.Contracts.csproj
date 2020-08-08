@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\..\..\common.props" />
+  <Import Project="..\..\..\..\configureawait.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile></DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.UI" Version="3.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.CPlatform\KissU.CPlatform.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Kestrel.Http\KissU.Kestrel.Http.csproj" />
+    <ProjectReference Include="..\KissU.Modules.Blogging.Application.Contracts\KissU.Modules.Blogging.Application.Contracts.csproj" />
+  </ItemGroup>
+</Project>

@@ -7,17 +7,16 @@
     <NoWarn>$(NoWarn);CS1591</NoWarn>
     <RepositoryUrl>https://github.com/gongap/KissU.git</RepositoryUrl>
     <PackageProjectUrl>https://github.com/gongap/KissU</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/gongap/KissU/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIconUrl></PackageIconUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>kissu;microservice;applicationframework;dotnetcore;aspnetcore;</PackageTags>
-    <PackageReleaseNotes>KissU框架以MIT开源发布，可随意使用</PackageReleaseNotes>
     <VersionMajor>1</VersionMajor>
     <VersionMinor>0</VersionMinor>
-    <VersionPatch>0.1</VersionPatch>
-    <VersionQuality></VersionQuality>
-    <VersionPrefix>$(VersionMajor).$(VersionMinor).$(VersionPatch)</VersionPrefix>
-    <VersionSuffix></VersionSuffix>
+    <VersionPatch>0</VersionPatch>
+		<VersionQuality>20200808-01</VersionQuality>
+		<VersionPrefix>$(VersionMajor).$(VersionMinor).$(VersionPatch)</VersionPrefix>
+		<VersionSuffix>preview-$(VersionQuality)</VersionSuffix>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
 </Project>

@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\configureawait.props" />
+  <Import Project="..\..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.AutoMapper" Version="3.0.5" />
+    <PackageReference Include="Volo.Abp.Ddd.Domain" Version="3.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\users\src\KissU.Modules.Users.Domain\KissU.Modules.Users.Domain.csproj" />
+    <ProjectReference Include="..\KissU.Modules.Blogging.Domain.Shared\KissU.Modules.Blogging.Domain.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

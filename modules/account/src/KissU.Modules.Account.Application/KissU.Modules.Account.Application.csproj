@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\common.props" />
+  <Import Project="..\..\..\..\configureawait.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Text.Encodings.Web" Version="4.7.0" />
+    <PackageReference Include="Volo.Abp.UI.Navigation" Version="3.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\identity\src\KissU.Modules.Identity.Application\KissU.Modules.Identity.Application.csproj" />
+    <ProjectReference Include="..\KissU.Modules.Account.Application.Contracts\KissU.Modules.Account.Application.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

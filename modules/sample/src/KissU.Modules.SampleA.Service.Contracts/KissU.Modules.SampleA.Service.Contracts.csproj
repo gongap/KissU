@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\common.props" />
+  <Import Project="..\..\..\..\configureawait.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile></DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ApacheThrift" Version="0.13.0.1" />
+    <PackageReference Include="Google.Protobuf" Version="3.10.1" />
+    <PackageReference Include="Grpc.Core" Version="2.24.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.24.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="MessagePack" Version="1.7.3.4" />
+    <PackageReference Include="protobuf-net" Version="2.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Caching\KissU.Caching.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.DotNetty.WebSocket\KissU.DotNetty.WebSocket.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Kestrel.Http\KissU.Kestrel.Http.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.DotNetty.Mqtt\KissU.DotNetty.Mqtt.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.WebSocket\KissU.WebSocket.csproj" />
+  </ItemGroup>
+
+</Project>

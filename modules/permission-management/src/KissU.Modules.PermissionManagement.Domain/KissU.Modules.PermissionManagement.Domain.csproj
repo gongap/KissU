@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\configureawait.props" />
+  <Import Project="..\..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Authorization" Version="3.0.5" />
+    <PackageReference Include="Volo.Abp.Caching" Version="3.0.5" />
+    <PackageReference Include="Volo.Abp.Ddd.Domain" Version="3.0.5" />
+    <PackageReference Include="Volo.Abp.Json" Version="3.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KissU.Modules.PermissionManagement.Domain.Shared\KissU.Modules.PermissionManagement.Domain.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

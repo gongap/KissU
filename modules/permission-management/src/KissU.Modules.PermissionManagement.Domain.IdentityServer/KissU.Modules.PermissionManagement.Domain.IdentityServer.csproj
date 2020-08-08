@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\configureawait.props" />
+  <Import Project="..\..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\identityserver\src\KissU.Modules.IdentityServer.Domain\KissU.Modules.IdentityServer.Domain.csproj" />
+    <ProjectReference Include="..\KissU.Modules.PermissionManagement.Domain\KissU.Modules.PermissionManagement.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

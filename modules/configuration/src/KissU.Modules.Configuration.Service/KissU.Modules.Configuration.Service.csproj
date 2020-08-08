@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\common.props" />
+  <Import Project="..\..\..\..\configureawait.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Abp\KissU.Abp.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.ServiceProxy\KissU.ServiceProxy.csproj" />
+    <ProjectReference Include="..\KissU.Modules.Configuration.Application\KissU.Modules.Configuration.Application.csproj" />
+    <ProjectReference Include="..\KissU.Modules.Configuration.Service.Contracts\KissU.Modules.Configuration.Service.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>
