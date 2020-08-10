@@ -11,7 +11,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\identityserver\src\KissU.Modules.IdentityServer.Domain\KissU.Modules.IdentityServer.Domain.csproj" />
+    <PackageReference Include="KissU.Modules.IdentityServer.Domain" Version="1.0.0-preview-20200808-01" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\KissU.Modules.PermissionManagement.Domain\KissU.Modules.PermissionManagement.Domain.csproj" />
   </ItemGroup>
 

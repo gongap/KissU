@@ -1,0 +1,79 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\..\common.props" />
+  <Import Project="..\..\..\configureawait.props" />
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <ServerGarbageCollection>false</ServerGarbageCollection>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TieredCompilation>true</TieredCompilation>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..</DockerfileContext>
+    <RootNamespace>KissU.Services.Hosts</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="KissU.Abp" Version="1.0.0-preview-20200808-01" />
+    <PackageReference Include="KissU.WebSocket" Version="1.0.0-preview-20200808-01" />
+    <PackageReference Include="KissU.Apm.Skywalking" Version="1.0.0-preview-20200808-01" />
+    <PackageReference Include="KissU.ApiGateWay" Version="1.0.0-preview-20200808-01" />
+    <PackageReference Include="KissU.Caching" Version="1.0.0-preview-20200808-01" />
+    <PackageReference Include="KissU.Codec.MessagePack" Version="1.0.0-preview-20200808-01" />
+    <PackageReference Include="KissU.Codec.ProtoBuffer" Version="1.0.0-preview-20200808-01" />
+    <PackageReference Include="KissU.Configuration.Apollo" Version="1.0.0-preview-20200808-01" />
+    <PackageReference Include="KissU.ServiceDiscovery.Consul" Version="1.0.0-preview-20200808-01" />
+    <PackageReference Include="KissU.CPlatform" Version="1.0.0-preview-20200808-01" />
+    <PackageReference Include="KissU.DotNetty.DNS" Version="1.0.0-preview-20200808-01" />
+    <PackageReference Include="KissU.DotNetty.WebSocket" Version="1.0.0-preview-20200808-01" />
+    <PackageReference Include="KissU.DotNetty" Version="1.0.0-preview-20200808-01" />
+    <PackageReference Include="KissU.EventBus.Kafka" Version="1.0.0-preview-20200808-01" />
+    <PackageReference Include="KissU.EventBus.RabbitMQ" Version="1.0.0-preview-20200808-01" />
+    <PackageReference Include="KissU.Grpc" Version="1.0.0-preview-20200808-01" />
+    <PackageReference Include="KissU.Kestrel.Nlog" Version="1.0.0-preview-20200808-01" />
+    <PackageReference Include="KissU.Kestrel.Http" Version="1.0.0-preview-20200808-01" />
+    <PackageReference Include="KissU.Kestrel.IdentityServer" Version="1.0.0-preview-20200808-01" />
+    <PackageReference Include="KissU.Logging.NLog" Version="1.0.0-preview-20200808-01" />
+    <PackageReference Include="KissU.DotNetty.Http" Version="1.0.0-preview-20200808-01" />
+    <PackageReference Include="KissU.DotNetty.Mqtt" Version="1.0.0-preview-20200808-01" />
+    <PackageReference Include="KissU.DotNetty.Udp" Version="1.0.0-preview-20200808-01" />
+    <PackageReference Include="KissU.ServiceProxy" Version="1.0.0-preview-20200808-01" />
+    <PackageReference Include="KissU.Logging.Serilog" Version="1.0.0-preview-20200808-01" />
+    <PackageReference Include="KissU.BackgroundServer" Version="1.0.0-preview-20200808-01" />
+    <PackageReference Include="KissU.Kestrel.Swagger" Version="1.0.0-preview-20200808-01" />
+    <PackageReference Include="KissU.ServiceDiscovery.Zookeeper" Version="1.0.0-preview-20200808-01" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="KissU.Modules.Blogging.Service" Version="1.0.0-preview-20200808-01" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="apollo.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="appsettings.Development.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="cachesettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="NLog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="servicesettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="skyapm.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>

@@ -18,10 +18,10 @@
     <PackageReference Include="Volo.Abp.Caching" Version="3.0.5" />
     <PackageReference Include="Volo.Abp.Validation" Version="3.0.5" />
     <PackageReference Include="Volo.Abp.BackgroundWorkers" Version="3.0.5" />
+    <PackageReference Include="KissU.Modules.Identity.Domain" Version="1.0.0-preview-20200808-01" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\identity\src\KissU.Modules.Identity.Domain\KissU.Modules.Identity.Domain.csproj" />
     <ProjectReference Include="..\KissU.Modules.IdentityServer.Domain.Shared\KissU.Modules.IdentityServer.Domain.Shared.csproj" />
   </ItemGroup>
 

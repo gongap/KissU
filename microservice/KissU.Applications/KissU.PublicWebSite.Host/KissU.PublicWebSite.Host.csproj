@@ -1,0 +1,61 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+    <MvcRazorExcludeRefAssembliesFromPublish>false</MvcRazorExcludeRefAssembliesFromPublish>
+    <PreserveCompilationReferences>true</PreserveCompilationReferences>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="4.1.0" />
+    <PackageReference Include="Serilog.Sinks.Async" Version="1.4.0" />
+    <PackageReference Include="Serilog.Sinks.Elasticsearch" Version="6.5.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="3.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="3.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.DataProtection.StackExchangeRedis" Version="3.1.2" />
+    <PackageReference Include="Volo.Abp.Autofac" Version="3.0.5" />
+    <PackageReference Include="Volo.Abp.Http.Client.IdentityModel.Web" Version="3.0.5" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic" Version="3.0.5" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Authentication.OAuth" Version="3.0.5" />
+    <PackageReference Include="KissU.Apm.Skywalking" Version="1.0.0-preview-20200808-01" />
+    <PackageReference Include="KissU.Codec.MessagePack" Version="1.0.0-preview-20200808-01" />
+    <PackageReference Include="KissU.Codec.ProtoBuffer" Version="1.0.0-preview-20200808-01" />
+    <PackageReference Include="KissU.EventBus.RabbitMQ" Version="1.0.0-preview-20200808-01" />
+    <PackageReference Include="KissU.ServiceDiscovery.Consul" Version="1.0.0-preview-20200808-01" />
+    <PackageReference Include="KissU.CPlatform" Version="1.0.0-preview-20200808-01" />
+    <PackageReference Include="KissU.DotNetty" Version="1.0.0-preview-20200808-01" />
+    <PackageReference Include="KissU.Logging.Nlog" Version="1.0.0-preview-20200808-01" />
+    <PackageReference Include="KissU.Caching" Version="1.0.0-preview-20200808-01" />
+    <PackageReference Include="KissU.ServiceProxy" Version="1.0.0-preview-20200808-01" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\KissU.Shared\KissU.Shared.csproj" />
+    <ProjectReference Include="..\KissU.ApplicationParts\KissU.ApplicationParts.Blogging\KissU.ApplicationParts.Blogging.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Logs\**" />
+    <Content Remove="Logs\**" />
+    <EmbeddedResource Remove="Logs\**" />
+    <None Remove="Logs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="cachesettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="NLog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="servicesettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
