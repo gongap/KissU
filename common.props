@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Company>KissU</Company>
     <Product>KissU</Product>
-    <Copyright>Copyright（c）KissU. All rights reserved.</Copyright>
+    <Copyright>Copyright © Gongap. All rights reserved.</Copyright>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
     <RepositoryUrl>https://github.com/gongap/KissU.git</RepositoryUrl>
     <PackageProjectUrl>https://github.com/gongap/KissU</PackageProjectUrl>

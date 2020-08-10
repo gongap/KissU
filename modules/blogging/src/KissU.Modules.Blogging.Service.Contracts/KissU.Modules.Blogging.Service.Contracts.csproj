@@ -12,11 +12,11 @@
 
   <ItemGroup>
     <PackageReference Include="Volo.Abp.UI" Version="3.0.5" />
+    <PackageReference Include="KissU.CPlatform" Version="1.0.0-preview-20200808-01" />
+    <PackageReference Include="KissU.Kestrel.Http" Version="1.0.0-preview-20200808-01" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.CPlatform\KissU.CPlatform.csproj" />
-    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Kestrel.Http\KissU.Kestrel.Http.csproj" />
     <ProjectReference Include="..\KissU.Modules.Blogging.Application.Contracts\KissU.Modules.Blogging.Application.Contracts.csproj" />
   </ItemGroup>
 </Project>

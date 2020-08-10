@@ -4,22 +4,18 @@ $rootFolder = Join-Path $packFolder "../"
 
 # List of solutions
 $solutions = (
-    "framework"
-    # "modules/account",
-    # "modules/audit-logging",
-    # "modules/background-jobs",
-    # "modules/blogging",
-    # "modules/client-simulation",
-    # "modules/docs",
-    # "modules/feature-management",
-    # "modules/identity",
-    # "modules/identityserver",
-    # "modules/permission-management",
-    # "modules/setting-management",
-    # "modules/tenant-management",
-    # "modules/users",
-    # "modules/virtual-file-explorer",
-	# "modules/blob-storing-database"
+    "framework",
+    "modules/account",
+    "modules/audit-logging",
+    "modules/background-jobs",
+    "modules/feature-management",
+    "modules/identity",
+    "modules/identityserver",
+    "modules/permission-management",
+    "modules/setting-management",
+    "modules/tenant-management",
+    "modules/users",
+    "modules/blogging"
 )
 
 # List of projects
@@ -60,138 +56,93 @@ $projects = (
     "framework/src/KissU.Kestrel.Log4net",
     "framework/src/KissU.Kestrel.Stage",
     "framework/src/KissU.Kestrel",
-    "framework/src/KissU.Kestrel.IdentityServer"
+    "framework/src/KissU.Kestrel.IdentityServer",
 
-    # # modules/account
-    # "modules/account/src/Volo.Abp.Account.Application.Contracts",
-    # "modules/account/src/Volo.Abp.Account.Application",
-    # "modules/account/src/Volo.Abp.Account.HttpApi.Client",
-    # "modules/account/src/Volo.Abp.Account.HttpApi",
-    # "modules/account/src/Volo.Abp.Account.Web",
-    # "modules/account/src/Volo.Abp.Account.Web.IdentityServer",
+    # modules/account
+    "modules/account/src/KissU.Modules.Account.Application.Contracts",
+    "modules/account/src/KissU.Modules.Account.Application",
+    "modules/account/src/KissU.Modules.Account.Service.Contracts",
+    "modules/account/src/KissU.Modules.Account.Service",
         
-    # # modules/audit-logging
-    # "modules/audit-logging/src/Volo.Abp.AuditLogging.Domain",
-    # "modules/audit-logging/src/Volo.Abp.AuditLogging.Domain.Shared",
-    # "modules/audit-logging/src/Volo.Abp.AuditLogging.EntityFrameworkCore",
-    # "modules/audit-logging/src/Volo.Abp.AuditLogging.MongoDB",
+    # modules/audit-logging
+    "modules/audit-logging/src/KissU.Modules.AuditLogging.Domain",
+    "modules/audit-logging/src/KissU.Modules.AuditLogging.Domain.Shared",
+    "modules/audit-logging/src/KissU.Modules.AuditLogging.EntityFrameworkCore",
+    "modules/audit-logging/src/KissU.Modules.AuditLogging.MongoDB",
 
-    # # modules/background-jobs
-    # "modules/background-jobs/src/Volo.Abp.BackgroundJobs.Domain",
-    # "modules/background-jobs/src/Volo.Abp.BackgroundJobs.Domain.Shared",
-    # "modules/background-jobs/src/Volo.Abp.BackgroundJobs.EntityFrameworkCore",
-    # "modules/background-jobs/src/Volo.Abp.BackgroundJobs.MongoDB",
+    # modules/background-jobs
+    "modules/background-jobs/src/KissU.Modules.BackgroundJobs.Domain",
+    "modules/background-jobs/src/KissU.Modules.BackgroundJobs.Domain.Shared",
+    "modules/background-jobs/src/KissU.Modules.BackgroundJobs.EntityFrameworkCore",
+    "modules/background-jobs/src/KissU.Modules.BackgroundJobs.MongoDB",
 
-    # # modules/blogging
-    # "modules/blogging/src/Volo.Blogging.Application.Contracts.Shared",
-    # "modules/blogging/src/Volo.Blogging.Application.Contracts",
-    # "modules/blogging/src/Volo.Blogging.Application",
-    # "modules/blogging/src/Volo.Blogging.Domain",
-    # "modules/blogging/src/Volo.Blogging.Domain.Shared",
-    # "modules/blogging/src/Volo.Blogging.EntityFrameworkCore",
-    # "modules/blogging/src/Volo.Blogging.HttpApi.Client",
-    # "modules/blogging/src/Volo.Blogging.HttpApi",
-    # "modules/blogging/src/Volo.Blogging.MongoDB",
-    # "modules/blogging/src/Volo.Blogging.Web",
-    # "modules/blogging/src/Volo.Blogging.Admin.Application",
-    # "modules/blogging/src/Volo.Blogging.Admin.Application.Contracts",
-    # "modules/blogging/src/Volo.Blogging.Admin.HttpApi",
-    # "modules/blogging/src/Volo.Blogging.Admin.HttpApi.Client",
-    # "modules/blogging/src/Volo.Blogging.Admin.Web",
+    # modules/blogging
+    "modules/blogging/src/KissU.Modules.Blogging.Application.Contracts.Shared",
+    "modules/blogging/src/KissU.Modules.Blogging.Application.Contracts",
+    "modules/blogging/src/KissU.Modules.Blogging.Application",
+    "modules/blogging/src/KissU.Modules.Blogging.Domain",
+    "modules/blogging/src/KissU.Modules.Blogging.Domain.Shared",
+    "modules/blogging/src/KissU.Modules.Blogging.EntityFrameworkCore",
+    "modules/blogging/src/KissU.Modules.Blogging.Service.Contracts",
+    "modules/blogging/src/KissU.Modules.Blogging.Service",
 
-    # # modules/client-simulation
-    # "modules/client-simulation/src/Volo.ClientSimulation",
-    # "modules/client-simulation/src/Volo.ClientSimulation.Web",
+    # modules/feature-management
+    "modules/feature-management/src/KissU.Modules.FeatureManagement.Application.Contracts",
+    "modules/feature-management/src/KissU.Modules.FeatureManagement.Application",
+    "modules/feature-management/src/KissU.Modules.FeatureManagement.Domain",
+    "modules/feature-management/src/KissU.Modules.FeatureManagement.Domain.Shared",
+    "modules/feature-management/src/KissU.Modules.FeatureManagement.EntityFrameworkCore",
+    "modules/feature-management/src/KissU.Modules.FeatureManagement.MongoDB",
+    "modules/feature-management/src/KissU.Modules.FeatureManagement.Service.Contracts",
+    "modules/feature-management/src/KissU.Modules.FeatureManagement.Service",
 
-    # # modules/docs
-    # "modules/docs/src/Volo.Docs.Admin.Application.Contracts",
-    # "modules/docs/src/Volo.Docs.Admin.Application",
-    # "modules/docs/src/Volo.Docs.Admin.HttpApi.Client",
-    # "modules/docs/src/Volo.Docs.Admin.HttpApi",
-    # "modules/docs/src/Volo.Docs.Admin.Web",
-    # "modules/docs/src/Volo.Docs.Application.Contracts",
-    # "modules/docs/src/Volo.Docs.Application",
-    # "modules/docs/src/Volo.Docs.Domain",
-    # "modules/docs/src/Volo.Docs.Domain.Shared",
-    # "modules/docs/src/Volo.Docs.EntityFrameworkCore",
-    # "modules/docs/src/Volo.Docs.HttpApi.Client",
-    # "modules/docs/src/Volo.Docs.HttpApi",
-    # "modules/docs/src/Volo.Docs.MongoDB",
-    # "modules/docs/src/Volo.Docs.Web",
-
-    # # modules/feature-management
-    # "modules/feature-management/src/Volo.Abp.FeatureManagement.Application.Contracts",
-    # "modules/feature-management/src/Volo.Abp.FeatureManagement.Application",
-    # "modules/feature-management/src/Volo.Abp.FeatureManagement.Domain",
-    # "modules/feature-management/src/Volo.Abp.FeatureManagement.Domain.Shared",
-    # "modules/feature-management/src/Volo.Abp.FeatureManagement.EntityFrameworkCore",
-    # "modules/feature-management/src/Volo.Abp.FeatureManagement.HttpApi.Client",
-    # "modules/feature-management/src/Volo.Abp.FeatureManagement.HttpApi",
-    # "modules/feature-management/src/Volo.Abp.FeatureManagement.MongoDB",
-    # "modules/feature-management/src/Volo.Abp.FeatureManagement.Web",
-
-    # # modules/identity
-    # "modules/identity/src/Volo.Abp.Identity.Application.Contracts",
-    # "modules/identity/src/Volo.Abp.Identity.Application",
-    # "modules/identity/src/Volo.Abp.Identity.AspNetCore",
-    # "modules/identity/src/Volo.Abp.Identity.Domain",
-    # "modules/identity/src/Volo.Abp.Identity.Domain.Shared",
-    # "modules/identity/src/Volo.Abp.Identity.EntityFrameworkCore",
-    # "modules/identity/src/Volo.Abp.Identity.HttpApi.Client",
-    # "modules/identity/src/Volo.Abp.Identity.HttpApi",
-    # "modules/identity/src/Volo.Abp.Identity.MongoDB",
-    # "modules/identity/src/Volo.Abp.Identity.Web",
-    # "modules/identity/src/Volo.Abp.PermissionManagement.Domain.Identity",
+    # modules/identity
+    "modules/identity/src/KissU.Modules.Identity.Application.Contracts",
+    "modules/identity/src/KissU.Modules.Identity.Application",
+    "modules/identity/src/KissU.Modules.Identity.AspNetCore",
+    "modules/identity/src/KissU.Modules.Identity.Domain",
+    "modules/identity/src/KissU.Modules.Identity.Domain.Shared",
+    "modules/identity/src/KissU.Modules.Identity.EntityFrameworkCore",
+    "modules/identity/src/KissU.Modules.Identity.Service.Contracts",
+    "modules/identity/src/KissU.Modules.Identity.Service",
     
-    # # modules/identityserver
-    # "modules/identityserver/src/Volo.Abp.IdentityServer.Domain",
-    # "modules/identityserver/src/Volo.Abp.IdentityServer.Domain.Shared",
-    # "modules/identityserver/src/Volo.Abp.IdentityServer.EntityFrameworkCore",
-    # "modules/identityserver/src/Volo.Abp.IdentityServer.MongoDB",
-    # "modules/identityserver/src/Volo.Abp.PermissionManagement.Domain.IdentityServer",
+    # modules/identityserver
+    "modules/identityserver/src/KissU.Modules.IdentityServer.Domain",
+    "modules/identityserver/src/KissU.Modules.IdentityServer.Domain.Shared",
+    "modules/identityserver/src/KissU.Modules.IdentityServer.EntityFrameworkCore",
+    "modules/identityserver/src/KissU.Modules.IdentityServer.MongoDB",
 
-    # # modules/permission-management
-    # "modules/permission-management/src/Volo.Abp.PermissionManagement.Application.Contracts",
-    # "modules/permission-management/src/Volo.Abp.PermissionManagement.Application",
-    # "modules/permission-management/src/Volo.Abp.PermissionManagement.Domain",
-    # "modules/permission-management/src/Volo.Abp.PermissionManagement.Domain.Shared",
-    # "modules/permission-management/src/Volo.Abp.PermissionManagement.EntityFrameworkCore",
-    # "modules/permission-management/src/Volo.Abp.PermissionManagement.HttpApi.Client",
-    # "modules/permission-management/src/Volo.Abp.PermissionManagement.HttpApi",
-    # "modules/permission-management/src/Volo.Abp.PermissionManagement.MongoDB",
-    # "modules/permission-management/src/Volo.Abp.PermissionManagement.Web",
+    # modules/permission-management
+    "modules/permission-management/src/KissU.Modules.PermissionManagement.Application.Contracts",
+    "modules/permission-management/src/KissU.Modules.PermissionManagement.Application",
+    "modules/permission-management/src/KissU.Modules.PermissionManagement.Domain",
+    "modules/permission-management/src/KissU.Modules.PermissionManagement.Domain.Shared",
+    "modules/permission-management/src/KissU.Modules.PermissionManagement.Domain.Identity",
+    "modules/permission-management/src/KissU.Modules.PermissionManagement.Domain.IdentityServer",
+    "modules/permission-management/src/KissU.Modules.PermissionManagement.EntityFrameworkCore",
+    "modules/permission-management/src/KissU.Modules.PermissionManagement.Service.Contracts",
+    "modules/permission-management/src/KissU.Modules.PermissionManagement.Service",
 
-    # # modules/setting-management
-    # "modules/setting-management/src/Volo.Abp.SettingManagement.Domain",
-    # "modules/setting-management/src/Volo.Abp.SettingManagement.Domain.Shared",
-    # "modules/setting-management/src/Volo.Abp.SettingManagement.EntityFrameworkCore",
-    # "modules/setting-management/src/Volo.Abp.SettingManagement.MongoDB",
-    # "modules/setting-management/src/Volo.Abp.SettingManagement.Web",
+    # modules/setting-management
+    "modules/setting-management/src/KissU.Modules.SettingManagement.Domain",
+    "modules/setting-management/src/KissU.Modules.SettingManagement.Domain.Shared",
+    "modules/setting-management/src/KissU.Modules.SettingManagement.EntityFrameworkCore",
+    "modules/setting-management/src/KissU.Modules.SettingManagement.MongoDB",
 
-    # # modules/tenant-management
-    # "modules/tenant-management/src/Volo.Abp.TenantManagement.Application.Contracts",
-    # "modules/tenant-management/src/Volo.Abp.TenantManagement.Application",
-    # "modules/tenant-management/src/Volo.Abp.TenantManagement.Domain",
-    # "modules/tenant-management/src/Volo.Abp.TenantManagement.Domain.Shared",
-    # "modules/tenant-management/src/Volo.Abp.TenantManagement.EntityFrameworkCore",
-    # "modules/tenant-management/src/Volo.Abp.TenantManagement.HttpApi.Client",
-    # "modules/tenant-management/src/Volo.Abp.TenantManagement.HttpApi",
-    # "modules/tenant-management/src/Volo.Abp.TenantManagement.MongoDB",
-    # "modules/tenant-management/src/Volo.Abp.TenantManagement.Web",
+    # modules/tenant-management
+    "modules/tenant-management/src/KissU.Modules.TenantManagement.Application.Contracts",
+    "modules/tenant-management/src/KissU.Modules.TenantManagement.Application",
+    "modules/tenant-management/src/KissU.Modules.TenantManagement.Domain",
+    "modules/tenant-management/src/KissU.Modules.TenantManagement.Domain.Shared",
+    "modules/tenant-management/src/KissU.Modules.TenantManagement.EntityFrameworkCore",
+    "modules/tenant-management/src/KissU.Modules.TenantManagement.MongoDB",
+    "modules/tenant-management/src/KissU.Modules.TenantManagement.Service.Contracts",
+    "modules/tenant-management/src/KissU.Modules.TenantManagement.Service",
 
-    # # modules/users
-    # "modules/users/src/Volo.Abp.Users.Abstractions",
-    # "modules/users/src/Volo.Abp.Users.Domain",
-    # "modules/users/src/Volo.Abp.Users.Domain.Shared",
-    # "modules/users/src/Volo.Abp.Users.EntityFrameworkCore",
-    # "modules/users/src/Volo.Abp.Users.MongoDB",
-
-    # # modules/virtual-file-explorer
-    # "modules/virtual-file-explorer/src/Volo.Abp.VirtualFileExplorer.Web",
-	
-    # # modules/blob-storing-database
-    # "modules/blob-storing-database/src/Volo.Abp.BlobStoring.Database.Domain",
-    # "modules/blob-storing-database/src/Volo.Abp.BlobStoring.Database.Domain.Shared",
-    # "modules/blob-storing-database/src/Volo.Abp.BlobStoring.Database.EntityFrameworkCore",
-    # "modules/blob-storing-database/src/Volo.Abp.BlobStoring.Database.MongoDB"
+    # modules/users
+    "modules/users/src/KissU.Modules.Users.Abstractions",
+    "modules/users/src/KissU.Modules.Users.Domain",
+    "modules/users/src/KissU.Modules.Users.Domain.Shared",
+    "modules/users/src/KissU.Modules.Users.MongoDB",
+    "modules/users/src/KissU.Modules.Users.EntityFrameworkCore"
 )

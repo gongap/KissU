@@ -12,11 +12,11 @@
 
   <ItemGroup>
     <PackageReference Include="Volo.Abp.EntityFrameworkCore.SqlServer" Version="3.0.5" />
+    <PackageReference Include="KissU.Abp" Version="1.0.0-preview-20200808-01" />
+    <PackageReference Include="KissU.ServiceProxy" Version="1.0.0-preview-20200808-01" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.Abp\KissU.Abp.csproj" />
-    <ProjectReference Include="..\..\..\..\..\framework\src\KissU.ServiceProxy\KissU.ServiceProxy.csproj" />
     <ProjectReference Include="..\KissU.Modules.TenantManagement.Application\KissU.Modules.TenantManagement.Application.csproj" />
     <ProjectReference Include="..\KissU.Modules.TenantManagement.EntityFrameworkCore\KissU.Modules.TenantManagement.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\KissU.Modules.TenantManagement.Service.Contracts\KissU.Modules.TenantManagement.Service.Contracts.csproj" />
