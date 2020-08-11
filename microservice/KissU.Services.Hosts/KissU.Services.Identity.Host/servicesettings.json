@@ -33,6 +33,10 @@
       }
     ]
   },
+  "AuthServer": {
+    "Authority": "http://localhost:8090",
+    "ApiName": "IdentityService"
+  },
   "Consul": { //Consul服务注册中心配置
     "ConnectionString": "${Register_Conn}|127.0.0.1:8500", //Consul服务注册中心地址
     "SessionTimeout": "${Register_SessionTimeout}|50", //会话超时时间
@@ -87,7 +91,7 @@
     }
 
   },
-  "Swagger": { 
+  "Swagger": {
     "Info": {
       "Version": "${SwaggerVersion}|V1", // Api文档的版本号,
       "Title": "${SwaggerTitle}|KissU Services", //Api文档标题
