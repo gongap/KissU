@@ -14,10 +14,10 @@
     <PackageReference Include="Volo.Abp.AutoMapper" Version="3.0.5" />
     <PackageReference Include="Volo.Abp.Authorization" Version="3.0.5" />
     <PackageReference Include="Volo.Abp.Ddd.Application" Version="3.0.5" />
-    <PackageReference Include="KissU.Modules.Users.Abstractions" Version="1.0.0-preview-20200808-01" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\users\src\KissU.Modules.Users.Abstractions\KissU.Modules.Users.Abstractions.csproj" />
     <ProjectReference Include="..\KissU.Modules.Identity.Domain.Shared\KissU.Modules.Identity.Domain.Shared.csproj" />
   </ItemGroup>
 

@@ -11,10 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="KissU.Modules.Users.EntityFrameworkCore" Version="1.0.0-preview-20200808-01" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\..\..\users\src\KissU.Modules.Users.EntityFrameworkCore\KissU.Modules.Users.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\KissU.Modules.Identity.Domain\KissU.Modules.Identity.Domain.csproj" />
   </ItemGroup>
   

@@ -10,10 +10,10 @@
   <ItemGroup>
     <PackageReference Include="System.Text.Encodings.Web" Version="4.7.0" />
     <PackageReference Include="Volo.Abp.UI.Navigation" Version="3.0.5" />
-    <PackageReference Include="KissU.Modules.Identity.Application" Version="1.0.0-preview-20200808-01" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\identity\src\KissU.Modules.Identity.Application\KissU.Modules.Identity.Application.csproj" />
     <ProjectReference Include="..\KissU.Modules.Account.Application.Contracts\KissU.Modules.Account.Application.Contracts.csproj" />
   </ItemGroup>
 

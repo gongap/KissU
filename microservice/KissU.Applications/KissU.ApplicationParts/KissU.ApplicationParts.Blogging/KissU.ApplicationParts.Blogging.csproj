@@ -1,8 +1,4 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
-
-  <Import Project="..\..\..\..\common.props" />
-  <Import Project="..\..\..\..\configureawait.props" />
-
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <TypeScriptToolsVersion>2.8</TypeScriptToolsVersion>
@@ -30,5 +26,4 @@
     <Content Remove="compilerconfig.json" />
     <None Include="compilerconfig.json" />
   </ItemGroup>
-
 </Project>

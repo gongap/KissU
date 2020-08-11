@@ -14,8 +14,7 @@ $solutions = (
     "modules/permission-management",
     "modules/setting-management",
     "modules/tenant-management",
-    "modules/users",
-    "modules/blogging"
+    "modules/users"
 )
 
 # List of projects
@@ -75,16 +74,6 @@ $projects = (
     "modules/background-jobs/src/KissU.Modules.BackgroundJobs.Domain.Shared",
     "modules/background-jobs/src/KissU.Modules.BackgroundJobs.EntityFrameworkCore",
     "modules/background-jobs/src/KissU.Modules.BackgroundJobs.MongoDB",
-
-    # modules/blogging
-    "modules/blogging/src/KissU.Modules.Blogging.Application.Contracts.Shared",
-    "modules/blogging/src/KissU.Modules.Blogging.Application.Contracts",
-    "modules/blogging/src/KissU.Modules.Blogging.Application",
-    "modules/blogging/src/KissU.Modules.Blogging.Domain",
-    "modules/blogging/src/KissU.Modules.Blogging.Domain.Shared",
-    "modules/blogging/src/KissU.Modules.Blogging.EntityFrameworkCore",
-    "modules/blogging/src/KissU.Modules.Blogging.Service.Contracts",
-    "modules/blogging/src/KissU.Modules.Blogging.Service",
 
     # modules/feature-management
     "modules/feature-management/src/KissU.Modules.FeatureManagement.Application.Contracts",
