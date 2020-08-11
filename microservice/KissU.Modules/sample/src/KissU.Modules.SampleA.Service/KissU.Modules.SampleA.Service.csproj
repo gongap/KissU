@@ -16,13 +16,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="KissU.DotNetty.DNS" Version="1.0.0-preview-20200808-01" />
-    <PackageReference Include="KissU.DotNetty.WebSocket" Version="1.0.0-preview-20200808-01" />
-    <PackageReference Include="KissU.EventBus.RabbitMQ" Version="1.0.0-preview-20200808-01" />
-    <PackageReference Include="KissU.DotNetty.Udp" Version="1.0.0-preview-20200808-01" />
-    <PackageReference Include="KissU.BackgroundServer" Version="1.0.0-preview-20200808-01" />
-    <PackageReference Include="KissU.Thrift" Version="1.0.0-preview-20200808-01" />
-    <PackageReference Include="KissU.WebSocket" Version="1.0.0-preview-20200808-01" />
+    <PackageReference Include="KissU.DotNetty.DNS" Version="1.0.0-preview-20200811-01" />
+    <PackageReference Include="KissU.DotNetty.WebSocket" Version="1.0.0-preview-20200811-01" />
+    <PackageReference Include="KissU.EventBus.RabbitMQ" Version="1.0.0-preview-20200811-01" />
+    <PackageReference Include="KissU.DotNetty.Udp" Version="1.0.0-preview-20200811-01" />
+    <PackageReference Include="KissU.BackgroundServer" Version="1.0.0-preview-20200811-01" />
+    <PackageReference Include="KissU.Thrift" Version="1.0.0-preview-20200811-01" />
+    <PackageReference Include="KissU.WebSocket" Version="1.0.0-preview-20200811-01" />
   </ItemGroup>
 
   <ItemGroup>
