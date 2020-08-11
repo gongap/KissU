@@ -47,7 +47,6 @@
     <PackageReference Include="KissU.BackgroundServer" Version="1.0.0-preview-20200808-01" />
     <PackageReference Include="KissU.Modules.TenantManagement.Service" Version="1.0.0-preview-20200808-01" />
     <PackageReference Include="KissU.Modules.Account.Service.Contracts" Version="1.0.0-preview-20200808-01" />
-    <PackageReference Include="KissU.Modules.Blogging.Service.Contracts" Version="1.0.0-preview-20200808-01" />
     <PackageReference Include="KissU.Modules.FeatureManagement.Service.Contracts" Version="1.0.0-preview-20200808-01" />
     <PackageReference Include="KissU.Modules.Identity.Service.Contracts" Version="1.0.0-preview-20200808-01" />
     <PackageReference Include="KissU.Modules.PermissionManagement.Service.Contracts" Version="1.0.0-preview-20200808-01" />
@@ -55,6 +54,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\KissU.Modules\blogging\src\KissU.Modules.Blogging.Service.Contracts\KissU.Modules.Blogging.Service.Contracts.csproj" />
     <ProjectReference Include="..\..\KissU.Modules\sample\src\KissU.Modules.SampleA.Service.Contracts\KissU.Modules.SampleA.Service.Contracts.csproj" />
     <ProjectReference Include="..\..\KissU.Modules\sample\src\KissU.Modules.SampleB.Service.Contracts\KissU.Modules.SampleB.Service.Contracts.csproj" />
   </ItemGroup>
