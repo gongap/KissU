@@ -1,30 +1,72 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using KissU.Dependency;
-using KissU.CPlatform.Transport.Implementation;
+using Microsoft.Extensions.Options;
+using Volo.Abp.Http.Client;
 using KissU.Extensions;
 using KissU.Modules.SampleA.Service.Contracts;
 using KissU.Modules.SampleA.Service.Contracts.Dtos;
 using KissU.Modules.SampleA.Service.Contracts.Events;
+using Microsoft.Extensions.Configuration;
+using KissU.CPlatform.Transport.Implementation;
 using KissU.ServiceProxy;
+using Volo.Abp.Json;
+using Volo.Abp.Users;
 
 namespace KissU.ConsoleClient.Host
 {
     public class ClientDemoService : Volo.Abp.DependencyInjection.ITransientDependency
     {
+        private readonly AbpRemoteServiceOptions _remoteServiceOptions;
         private static int _endedConnenctionCount;
         private static DateTime begintime;
 
+        public ClientDemoService(IOptions<AbpRemoteServiceOptions> remoteServiceOptions)
+        {
+            _remoteServiceOptions = remoteServiceOptions.Value;
+        }
+
         public async Task RunAsync()
         {
+            await TestWithHttpClient();
             await TestForRoutePath();
             await TestRabbitMq();
             TestParallel();
             //TestDotNettyInvoker();
             //TestThriftInvoker();
+        }
+
+        private async Task TestWithHttpClient()
+        {
+            Console.WriteLine();
+            Console.WriteLine("*** TestWithHttpClient ************************************");
+
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    var url = _remoteServiceOptions.RemoteServices.Default.BaseUrl.EnsureEndsWith('/') + "api/user/getuserid/{username}?userName=10";
+                    var response = await client.GetAsync(url);
+
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        Console.WriteLine(response.StatusCode);
+                    }
+                    else
+                    {
+                        var responseContent = await response.Content.ReadAsStringAsync();
+                        Console.WriteLine(responseContent);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
 
         private async Task TestForRoutePath()
