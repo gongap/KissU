@@ -89,8 +89,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.SampleB.Servi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.SampleB.Service.Contracts", "test\KissU.Modules.SampleB.Service.Contracts\KissU.Modules.SampleB.Service.Contracts.csproj", "{D7C07647-B729-4095-983A-987B6CBBA8EC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.ConsoleClient.Host", "test\KissU.ConsoleClient.Host\KissU.ConsoleClient.Host.csproj", "{935D36B4-4B7E-445D-BB95-A0628990321C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -261,10 +259,6 @@ Global
 		{D7C07647-B729-4095-983A-987B6CBBA8EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7C07647-B729-4095-983A-987B6CBBA8EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7C07647-B729-4095-983A-987B6CBBA8EC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{935D36B4-4B7E-445D-BB95-A0628990321C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{935D36B4-4B7E-445D-BB95-A0628990321C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{935D36B4-4B7E-445D-BB95-A0628990321C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{935D36B4-4B7E-445D-BB95-A0628990321C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -311,7 +305,6 @@ Global
 		{5E2ED79A-A80B-4DBF-96E3-226D60109998} = {8C5BB6A1-6362-4935-9278-993935F43949}
 		{E50E85C2-9C7A-40F2-9CEC-9E66C09B64F3} = {8C5BB6A1-6362-4935-9278-993935F43949}
 		{D7C07647-B729-4095-983A-987B6CBBA8EC} = {8C5BB6A1-6362-4935-9278-993935F43949}
-		{935D36B4-4B7E-445D-BB95-A0628990321C} = {8C5BB6A1-6362-4935-9278-993935F43949}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}

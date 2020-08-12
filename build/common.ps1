@@ -22,9 +22,9 @@ $solutionPaths = @(
 if ($full -eq "-f")
 {
 	# List of additional solutions required for full build
-	$solutionPaths += (
-		"../microservice"
-	) 
+	# $solutionPaths += (
+	# 	""
+	# ) 
 }else
 { 
 	Write-host ""
