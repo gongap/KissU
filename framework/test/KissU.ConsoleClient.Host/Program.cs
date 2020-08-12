@@ -1,12 +1,9 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Autofac;
 using KissU.Dependency;
 using KissU.Caching.Configurations;
 using KissU.CPlatform.Configurations;
 using Microsoft.Extensions.Hosting;
-using Serilog;
-using Serilog.Events;
 using KissU.Extensions;
 using KissU.Caching;
 using KissU.CPlatform;

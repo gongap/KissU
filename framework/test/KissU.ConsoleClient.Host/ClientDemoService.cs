@@ -1,204 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Net.Http;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using KissU.Dependency;
-using KissU.Modules.Identity.Application.Contracts;
-using KissU.Modules.TenantManagement.Application.Contracts;
 using KissU.CPlatform.Transport.Implementation;
-using Microsoft.Extensions.Options;
-using Volo.Abp.Http.Client;
-using Volo.Abp.IdentityModel;
 using KissU.Extensions;
-using KissU.Modules.Identity.Service.Contracts;
 using KissU.Modules.SampleA.Service.Contracts;
 using KissU.Modules.SampleA.Service.Contracts.Dtos;
 using KissU.Modules.SampleA.Service.Contracts.Events;
-using KissU.Modules.TenantManagement.Service.Contracts;
-using Microsoft.Extensions.Configuration;
-using Volo.Abp;
-using IdentityModel.Client;
 using KissU.ServiceProxy;
-using Volo.Abp.Http;
-using Volo.Abp.Json;
-using Volo.Abp.Users;
 
 namespace KissU.ConsoleClient.Host
 {
     public class ClientDemoService : Volo.Abp.DependencyInjection.ITransientDependency
     {
-        private readonly IConfiguration _configuration;
-        private readonly ICurrentUser _currentUser;
-        private readonly IIdentityModelAuthenticationService _authenticationService;
-        private readonly AbpRemoteServiceOptions _remoteServiceOptions;
         private static int _endedConnenctionCount;
         private static DateTime begintime;
-        private readonly IJsonSerializer _jsonSerializer;
-
-        public ClientDemoService(
-            ICurrentUser currentUser,
-            IIdentityModelAuthenticationService authenticationService,
-            IConfiguration configuration,
-            IOptions<AbpRemoteServiceOptions> remoteServiceOptions, IJsonSerializer jsonSerializer)
-        {
-            _currentUser = currentUser;
-            _authenticationService = authenticationService;
-            _configuration = configuration;
-            _jsonSerializer = jsonSerializer;
-            _remoteServiceOptions = remoteServiceOptions.Value;
-        }
 
         public async Task RunAsync()
         {
-            //await TestWithHttpClientAndIdentityModelAuthenticationServiceAsync();
-            //await TestWithHttpClient();
-            //await TestIdentityService();
-            //await TestTenantManagementService();
             await TestForRoutePath();
-            //await TestRabbitMq();
-            //TestParallel();
+            await TestRabbitMq();
+            TestParallel();
             //TestDotNettyInvoker();
             //TestThriftInvoker();
-        }
-
-        private async Task TestWithHttpClient()
-        {
-            Console.WriteLine();
-            Console.WriteLine("*** TestWithHttpClient ************************************");
-
-            try
-            {
-                using (var client = new HttpClient())
-                {
-                    await _authenticationService.TryAuthenticateAsync(client);
-
-                    var url = GetServerUrl() + "api/user/getuserid/{username}?userName=10";
-                    var response = await client.GetAsync(url);
-
-                    if (!response.IsSuccessStatusCode)
-                    {
-                        Console.WriteLine(response.StatusCode);
-                    }
-                    else
-                    {
-                        var responseContent = await response.Content.ReadAsStringAsync();
-                        Console.WriteLine(responseContent);
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
-        }
-
-
-        /* Shows how to use HttpClient to perform a request to the HTTP API.
-         * It uses ABP's IIdentityModelAuthenticationService to simplify obtaining access tokens.
-         */
-        private async Task TestWithHttpClientAndIdentityModelAuthenticationServiceAsync()
-        {
-            Console.WriteLine();
-            Console.WriteLine($"***** {nameof(TestWithHttpClientAndIdentityModelAuthenticationServiceAsync)} *****");
-
-            //Get access token using ABP's IIdentityModelAuthenticationService
-
-            var accessToken = await _authenticationService.GetAccessTokenAsync(
-                new IdentityClientConfiguration(
-                    _configuration["IdentityClients:Default:Authority"],
-                    _configuration["IdentityClients:Default:Scope"],
-                    _configuration["IdentityClients:Default:ClientId"],
-                    _configuration["IdentityClients:Default:ClientSecret"],
-                    _configuration["IdentityClients:Default:GrantType"],
-                    _configuration["IdentityClients:Default:UserName"],
-                    _configuration["IdentityClients:Default:UserPassword"]
-                )
-            );
-            Console.WriteLine("The accessToken: " + accessToken);
-            using (var httpClient = new HttpClient())
-            {
-
-                do
-                {
-                    httpClient.SetBearerToken(accessToken);
-                    var url = GetServerUrl() + "api/identityrole/createasync";
-                    var postData = _jsonSerializer.Serialize(new { input = new IdentityRoleCreateDto { Name = $"Test{Volo.Abp.RandomHelper.GetRandom()}", IsDefault = true, IsPublic = true } });
-                    var responseMessage = await httpClient.PostAsync(url, new StringContent(postData, Encoding.UTF8, MimeTypes.Application.Json));
-                    if (responseMessage.IsSuccessStatusCode)
-                    {
-                        var responseString = await responseMessage.Content.ReadAsStringAsync();
-                        Console.WriteLine("Result: " + responseString);
-                    }
-                    else
-                    {
-                        throw new Exception("Remote server returns error code: " + responseMessage.StatusCode);
-                    }
-
-                    Console.WriteLine("Press any key to continue, q to exit the loop...");
-                    var key = Console.ReadLine();
-                    if (key != null && key.ToLower() == "q")
-                    {
-                        break;
-                    }
-                } while (true);
-            }
-
-            //var userName = _currentUser.UserName;
-            //RpcContext.GetContext().SetAttachment("xid", RandomHelper.GetRandom());
-
-            //var roleProxy = ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy<IIdentityRoleService>();
-            //var roleOutput = await roleProxy.CreateAsync(new IdentityRoleCreateDto { Name = $"Test{Volo.Abp.RandomHelper.GetRandom()}", IsDefault = true, IsPublic = true });
-
-            //Console.WriteLine("Total IdentityRoleCreateDto: " + roleOutput.Name);
-        }
-
-        private async Task TestIdentityService()
-        {
-            Console.WriteLine();
-            Console.WriteLine($"*** {nameof(TestIdentityService)} ************************************");
-
-            try
-            {
-                var userProxy = ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy<IIdentityUserService>();
-                var output = await userProxy.GetListAsync(new GetIdentityUsersInput());
-
-                Console.WriteLine("Total user count: " + output.TotalCount);
-
-                foreach (var user in output.Items)
-                {
-                    Console.WriteLine($"- UserName={user.UserName}, Email={user.Email}, Name={user.Name}, Surname={user.Surname}");
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
-        }
-
-        private async Task TestTenantManagementService()
-        {
-            Console.WriteLine();
-            Console.WriteLine("*** TestTenantManagementService ************************************");
-
-            try
-            {
-                var tenantProxy = ServiceLocator.GetService<IServiceProxyFactory>().CreateProxy<ITenantService>();
-                var output = await tenantProxy.GetListAsync(new GetTenantsInput());
-
-                Console.WriteLine("Total tenant count: " + output.TotalCount);
-
-                foreach (var tenant in output.Items)
-                {
-                    Console.WriteLine($"- Id={tenant.Id}, Name={tenant.Name}");
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
         }
 
         private async Task TestForRoutePath()
@@ -417,11 +243,6 @@ namespace KissU.ConsoleClient.Host
             {
                 Console.WriteLine(e);
             }
-        }
-
-        private string GetServerUrl()
-        {
-            return _remoteServiceOptions.RemoteServices.Default.BaseUrl.EnsureEndsWith('/');
         }
     }
 }

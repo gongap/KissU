@@ -10,7 +10,6 @@
     <PackageReference Include="Serilog.Sinks.Async" Version="1.4.0" />
     <PackageReference Include="Serilog.Extensions.Logging" Version="3.0.1" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.5" />
-    <PackageReference Include="Volo.Abp.Http.Client.IdentityModel" Version="3.0.5" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,8 +28,6 @@
   <ItemGroup>
     <ProjectReference Include="..\KissU.Modules.SampleA.Service.Contracts\KissU.Modules.SampleA.Service.Contracts.csproj" />
     <ProjectReference Include="..\KissU.Modules.SampleB.Service.Contracts\KissU.Modules.SampleB.Service.Contracts.csproj" />
-    <ProjectReference Include="..\..\..\modules\identity\src\KissU.Modules.Identity.Service\KissU.Modules.Identity.Service.csproj" />
-    <ProjectReference Include="..\..\..\modules\tenant-management\src\KissU.Modules.TenantManagement.Service\KissU.Modules.TenantManagement.Service.csproj" />
   </ItemGroup>
 
   <ItemGroup>
