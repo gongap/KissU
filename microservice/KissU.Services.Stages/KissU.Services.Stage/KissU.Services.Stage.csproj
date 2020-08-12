@@ -14,11 +14,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.8" />
-    <PackageReference Include="System.Text.Encoding.CodePages" Version="4.5.1" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="KissU.Abp" Version="1.0.0-preview-20200811-01" />
     <PackageReference Include="KissU.CPlatform" Version="1.0.0-preview-20200811-01" />
     <PackageReference Include="KissU.WebSocket" Version="1.0.0-preview-20200811-01" />
@@ -45,10 +40,9 @@
     <PackageReference Include="KissU.EventBus.RabbitMQ" Version="1.0.0-preview-20200811-01" />
     <PackageReference Include="KissU.ServiceProxy" Version="1.0.0-preview-20200811-01" />
     <PackageReference Include="KissU.BackgroundServer" Version="1.0.0-preview-20200811-01" />
-    <PackageReference Include="KissU.Modules.TenantManagement.Service" Version="1.0.0-preview-20200811-01" />
     <PackageReference Include="KissU.Modules.Account.Service.Contracts" Version="1.0.0-preview-20200811-01" />
-    <PackageReference Include="KissU.Modules.FeatureManagement.Service.Contracts" Version="1.0.0-preview-20200811-01" />
     <PackageReference Include="KissU.Modules.Identity.Service.Contracts" Version="1.0.0-preview-20200811-01" />
+    <PackageReference Include="KissU.Modules.FeatureManagement.Service.Contracts" Version="1.0.0-preview-20200811-01" />
     <PackageReference Include="KissU.Modules.PermissionManagement.Service.Contracts" Version="1.0.0-preview-20200811-01" />
     <PackageReference Include="KissU.Modules.TenantManagement.Service.Contracts" Version="1.0.0-preview-20200811-01" />
   </ItemGroup>

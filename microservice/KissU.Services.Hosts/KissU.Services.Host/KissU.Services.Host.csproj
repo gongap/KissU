@@ -38,8 +38,8 @@
     <PackageReference Include="KissU.ServiceProxy" Version="1.0.0-preview-20200811-01" />
     <PackageReference Include="KissU.BackgroundServer" Version="1.0.0-preview-20200811-01" />
     <PackageReference Include="KissU.Modules.Account.Service" Version="1.0.0-preview-20200811-01" />
-    <PackageReference Include="KissU.Modules.FeatureManagement.Service" Version="1.0.0-preview-20200811-01" />
     <PackageReference Include="KissU.Modules.Identity.Service" Version="1.0.0-preview-20200811-01" />
+    <PackageReference Include="KissU.Modules.FeatureManagement.Service" Version="1.0.0-preview-20200811-01" />
     <PackageReference Include="KissU.Modules.PermissionManagement.Service" Version="1.0.0-preview-20200811-01" />
     <PackageReference Include="KissU.Modules.TenantManagement.Service" Version="1.0.0-preview-20200811-01" />
   </ItemGroup>
