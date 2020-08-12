@@ -45,12 +45,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\KissU.Modules\blogging\src\KissU.Modules.Blogging.Service\KissU.Modules.Blogging.Service.csproj" />
-    <ProjectReference Include="..\..\KissU.Modules\sample\src\KissU.Modules.SampleA.Service\KissU.Modules.SampleA.Service.csproj" />
-    <ProjectReference Include="..\..\KissU.Modules\sample\src\KissU.Modules.SampleB.Service\KissU.Modules.SampleB.Service.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="apollo.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

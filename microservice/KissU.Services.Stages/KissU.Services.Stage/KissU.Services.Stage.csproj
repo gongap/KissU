@@ -49,8 +49,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\KissU.Modules\blogging\src\KissU.Modules.Blogging.Service.Contracts\KissU.Modules.Blogging.Service.Contracts.csproj" />
-    <ProjectReference Include="..\..\KissU.Modules\sample\src\KissU.Modules.SampleA.Service.Contracts\KissU.Modules.SampleA.Service.Contracts.csproj" />
-    <ProjectReference Include="..\..\KissU.Modules\sample\src\KissU.Modules.SampleB.Service.Contracts\KissU.Modules.SampleB.Service.Contracts.csproj" />
   </ItemGroup>
 
   <ItemGroup>

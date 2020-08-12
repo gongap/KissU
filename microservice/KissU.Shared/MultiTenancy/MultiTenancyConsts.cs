@@ -2,9 +2,8 @@
 {
     public static class MultiTenancyConsts
     {
-        /* Enable/disable multi-tenancy easily in a single point.
-         * If you will never need to multi-tenancy, you can remove
-         * related modules and code parts, including this file.
+        /*  启用/禁用多租户。
+         *  如果您永远不需要多租户，则可以删除相关模块和代码部分，包括此文件。
          */
         public const bool IsEnabled = true;
     }
