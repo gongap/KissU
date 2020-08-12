@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Diagnostics;
+using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using KissU.Convertibles;
@@ -150,6 +151,11 @@ namespace KissU.Kestrel.Http
                 }
 
                 resultMessage = new HttpResultMessage<object> { Data = null, Message = "执行发生了错误。", StatusCode = (int)StatusCode.RequestError };
+
+                if (exception.InnerException.GetType().BaseType.FullName == "Volo.Abp.BusinessException" || exception.InnerException.GetType().FullName == "Volo.Abp.Validation.AbpValidationException")
+                {
+                    resultMessage.Message = exception.InnerException.Message;
+                }
             }
 
             return resultMessage;
@@ -192,16 +198,6 @@ namespace KissU.Kestrel.Http
                 resultMessage.Message = validateException.Message;
                 resultMessage.StatusCode = validateException.HResult;
             }
-            //catch (Exception exception) when (exception.InnerException is BusinessException businessException)
-            //{
-            //    if (_logger.IsEnabled(LogLevel.Error))
-            //    {
-            //        _logger.LogError(businessException, $"执行本地逻辑时候发生了错误：{businessException.Message}", businessException);
-            //    }
-
-            //    resultMessage.Message = businessException.Message;
-            //    resultMessage.StatusCode = businessException.HResult;
-            //}
             catch (Exception exception)
             {
                 if (_logger.IsEnabled(LogLevel.Error))
@@ -211,6 +207,11 @@ namespace KissU.Kestrel.Http
 
                 resultMessage.Message = "执行发生了错误。";
                 resultMessage.StatusCode = exception.HResult;
+
+                if (exception.InnerException.GetType().BaseType.FullName == "Volo.Abp.BusinessException" || exception.InnerException.GetType().FullName == "Volo.Abp.Validation.AbpValidationException")
+                {
+                    resultMessage.Message = exception.InnerException.Message;
+                }
             }
 
             return resultMessage;

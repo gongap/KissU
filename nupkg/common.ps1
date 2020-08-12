@@ -21,7 +21,6 @@ $solutions = (
 $projects = (
 
     # framework
-    "framework/src/KissU",
     "framework/src/KissU.Core",
     "framework/src/KissU.Abp",
     "framework/src/KissU.WebSocket",

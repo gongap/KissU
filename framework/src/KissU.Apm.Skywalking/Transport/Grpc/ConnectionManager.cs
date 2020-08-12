@@ -68,17 +68,17 @@ namespace KissU.Apm.Skywalking.Transport.Grpc
                 {
                     await _channel.ConnectAsync(_config.GetConnectTimeout());
                     _state = ConnectionState.Connected;
-                    _logger.LogInformation($"Skywalking��Connected server[{_channel.Target}].");
+                    _logger.LogInformation($"Skywalking:Connected server[{_channel.Target}].");
                 }
                 catch (TaskCanceledException ex)
                 {
                     _state = ConnectionState.Failure;
-                    _logger.LogError($"Skywalking��Connect server timeout.", ex);
+                    _logger.LogError($"Skywalking:Connect server timeout.", ex);
                 }
                 catch (Exception ex)
                 {
                     _state = ConnectionState.Failure;
-                    _logger.LogError($"Skywalking��Connect server fail.", ex);
+                    _logger.LogError($"Skywalking:Connect server fail.", ex);
                 }
             }
         }

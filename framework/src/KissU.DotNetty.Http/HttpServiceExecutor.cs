@@ -169,7 +169,7 @@ namespace KissU.DotNetty.Http
             catch (ValidateException validateException)
             {
                 if (_logger.IsEnabled(LogLevel.Error))
-                    _logger.LogError(validateException, "执行本地逻辑时候发生了错误。", validateException);
+                    _logger.LogError(validateException, "执行远程调用逻辑时候发生了错误。", validateException);
 
                 resultMessage.Message = validateException.Message;
                 resultMessage.StatusCode = validateException.HResult;
