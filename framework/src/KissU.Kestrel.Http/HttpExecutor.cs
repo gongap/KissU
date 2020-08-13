@@ -15,6 +15,7 @@ using KissU.CPlatform.Transport;
 using KissU.CPlatform.Transport.Implementation;
 using KissU.Dependency;
 using KissU.Exceptions;
+using KissU.Exceptions.Prompts;
 using KissU.Helpers;
 using KissU.Kestrel.Internal;
 using KissU.ServiceProxy;
@@ -150,12 +151,10 @@ namespace KissU.Kestrel.Http
                     _logger.LogError(exception, $"执行远程调用逻辑时候发生了错误：{exception.Message}");
                 }
 
-                resultMessage = new HttpResultMessage<object> { Data = null, Message = "执行发生了错误。", StatusCode = (int)StatusCode.RequestError };
-
-                if (exception.InnerException.GetType().BaseType.FullName == "Volo.Abp.BusinessException" || exception.InnerException.GetType().FullName == "Volo.Abp.Validation.AbpValidationException")
-                {
-                    resultMessage.Message = exception.InnerException.Message;
-                }
+                resultMessage.Data = null;
+                resultMessage.StatusCode = (int) StatusCode.RequestError;
+                resultMessage.Message = "执行发生了错误。";
+                resultMessage.Message = ExceptionPrompt.GetPrompt(exception);
             }
 
             return resultMessage;
@@ -185,8 +184,7 @@ namespace KissU.Kestrel.Http
                 }
 
                 resultMessage.IsSucceed = resultMessage.Data != null;
-                resultMessage.StatusCode =
-                    resultMessage.IsSucceed ? (int)StatusCode.Success : (int)StatusCode.RequestError;
+                resultMessage.StatusCode = resultMessage.IsSucceed ? (int)StatusCode.Success : (int)StatusCode.RequestError;
             }
             catch (ValidateException validateException)
             {
@@ -205,13 +203,9 @@ namespace KissU.Kestrel.Http
                     _logger.LogError(exception, $"执行本地逻辑时候发生了错误：{exception.Message}");
                 }
 
-                resultMessage.Message = "执行发生了错误。";
                 resultMessage.StatusCode = exception.HResult;
-
-                if (exception.InnerException.GetType().BaseType.FullName == "Volo.Abp.BusinessException" || exception.InnerException.GetType().FullName == "Volo.Abp.Validation.AbpValidationException")
-                {
-                    resultMessage.Message = exception.InnerException.Message;
-                }
+                resultMessage.Message = "执行发生了错误。";
+                resultMessage.Message = ExceptionPrompt.GetPrompt(exception);
             }
 
             return resultMessage;

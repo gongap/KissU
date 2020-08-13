@@ -7,15 +7,14 @@ using System.Collections.Generic;
 using KissU.Extensions;
 using System.Linq;
 using Newtonsoft.Json.Linq;
-using System.Net.Http.Headers;
 
 namespace KissU.Abp
 {
-    public class RpcContextCurrentPrincipalAccessor : ThreadCurrentPrincipalAccessor
+    public class AbpCurrentPrincipalAccessor : ThreadCurrentPrincipalAccessor
     {
         private readonly IJsonSerializer _jsonSerializer;
 
-        public RpcContextCurrentPrincipalAccessor(IJsonSerializer jsonSerializer)
+        public AbpCurrentPrincipalAccessor(IJsonSerializer jsonSerializer)
         {
             _jsonSerializer = jsonSerializer;
         }

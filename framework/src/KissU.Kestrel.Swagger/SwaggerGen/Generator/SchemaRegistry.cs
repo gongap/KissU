@@ -323,14 +323,18 @@ namespace KissU.Kestrel.Swagger.SwaggerGen.Generator
             if (!jsonProperty.Writable)
                 schema.ReadOnly = true;
 
-            try
-            {
-                if (jsonProperty.TryGetMemberInfo(out var memberInfo))
-                    schema.AssignAttributeMetadata(memberInfo.GetCustomAttributes(true));
-            }
-            catch (Exception ex)
+            if (jsonProperty.TryGetMemberInfo(out var memberInfo))
             {
 
+                try
+                {
+                    var customAttributes = memberInfo.GetCustomAttributes(true);
+                    if (customAttributes != null)
+                    {
+                        schema.AssignAttributeMetadata(customAttributes);
+                    }
+                }
+                catch { }
             }
 
             return schema;

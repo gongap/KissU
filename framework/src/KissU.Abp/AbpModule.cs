@@ -2,6 +2,7 @@
 using KissU.Helpers;
 using KissU.Modularity;
 using KissU.CPlatform;
+using KissU.Exceptions.Prompts;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp;
 using Volo.Abp.Modularity.PlugIns;
@@ -20,6 +21,8 @@ namespace KissU.Abp
         {
             var serviceProvider = moduleContext.ServiceProvoider.GetInstances<IServiceProvider>();
             _application.Initialize(serviceProvider);
+            var abpExceptionPrompt = moduleContext.ServiceProvoider.GetInstances<AbpExceptionPrompt>();
+            ExceptionPrompt.AddPrompt(abpExceptionPrompt);
         }
 
         /// <summary>
