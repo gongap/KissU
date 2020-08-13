@@ -20,7 +20,7 @@ namespace KissU.Kestrel.Http.Filters.Implementation
         {
             context.Result = new HttpResultMessage<object>
             {
-                Data = null,
+                Result = null,
                 StatusCode = 400,
                 IsSucceed = false,
                 Message = context.Exception.Message

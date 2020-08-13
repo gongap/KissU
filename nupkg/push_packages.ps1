@@ -1,6 +1,6 @@
 . ".\common.ps1"
 
-$apiKey = $args[0]
+$apiKey = "oy2atwr4cfnng4kysizagocz3nzrxm3uvc3a6wgzrm6xgm"
 
 # Get the version
 [xml]$commonPropsXml = Get-Content (Join-Path $rootFolder "common.props")

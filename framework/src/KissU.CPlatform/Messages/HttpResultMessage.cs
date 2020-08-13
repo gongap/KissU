@@ -11,22 +11,22 @@
         /// <summary>
         /// 数据
         /// </summary>
-        public T Data { get; set; }
+        public T Result { get; set; }
 
         /// <summary>
         /// 生成自定义服务数据集
         /// </summary>
         /// <param name="successd">状态值（true:成功 false：失败）</param>
         /// <param name="message">返回到客户端的消息</param>
-        /// <param name="data">返回到客户端的数据集</param>
+        /// <param name="result">返回到客户端的数据集</param>
         /// <returns>返回信息结果集</returns>
-        public static HttpResultMessage<T> Create(bool successd, string message, T data)
+        public static HttpResultMessage<T> Create(bool successd, string message, T result)
         {
             return new HttpResultMessage<T>
             {
                 IsSucceed = successd,
                 Message = message,
-                Data = data
+                Result = result
             };
         }
 
@@ -34,14 +34,14 @@
         /// 生成自定义服务数据集
         /// </summary>
         /// <param name="successd">状态值（true:成功 false:失败）</param>
-        /// <param name="data">返回到客户端的数据集</param>
+        /// <param name="result">返回到客户端的数据集</param>
         /// <returns>返回信息结果集</returns>
-        public static HttpResultMessage<T> Create(bool successd, T data)
+        public static HttpResultMessage<T> Create(bool successd, T result)
         {
             return new HttpResultMessage<T>
             {
                 IsSucceed = successd,
-                Data = data
+                Result = result
             };
         }
     }

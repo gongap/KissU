@@ -140,8 +140,8 @@ namespace KissU.Kestrel.Http
             var resultMessage = new HttpResultMessage<object>();
             try
             {
-                resultMessage.Data = await _serviceProxyProvider.Invoke<object>(httpMessage.Parameters, httpMessage.RoutePath, httpMessage.ServiceKey);
-                resultMessage.IsSucceed = resultMessage.Data != default;
+                resultMessage.Result = await _serviceProxyProvider.Invoke<object>(httpMessage.Parameters, httpMessage.RoutePath, httpMessage.ServiceKey);
+                resultMessage.IsSucceed = resultMessage.Result != default;
                 resultMessage.StatusCode = resultMessage.IsSucceed ? (int)StatusCode.Success : (int)StatusCode.RequestError;
             }
             catch (Exception exception)
@@ -151,7 +151,7 @@ namespace KissU.Kestrel.Http
                     _logger.LogError(exception, $"执行远程调用逻辑时候发生了错误：{exception.Message}");
                 }
 
-                resultMessage.Data = null;
+                resultMessage.Result = null;
                 resultMessage.StatusCode = (int) StatusCode.RequestError;
                 resultMessage.Message = "执行发生了错误。";
                 resultMessage.Message = ExceptionPrompt.GetPrompt(exception);
@@ -171,7 +171,7 @@ namespace KissU.Kestrel.Http
 
                 if (task == null)
                 {
-                    resultMessage.Data = result;
+                    resultMessage.Result = result;
                 }
                 else
                 {
@@ -179,11 +179,11 @@ namespace KissU.Kestrel.Http
                     var taskType = task.GetType().GetTypeInfo();
                     if (taskType.IsGenericType)
                     {
-                        resultMessage.Data = taskType.GetProperty("Result").GetValue(task);
+                        resultMessage.Result = taskType.GetProperty("Result").GetValue(task);
                     }
                 }
 
-                resultMessage.IsSucceed = resultMessage.Data != null;
+                resultMessage.IsSucceed = resultMessage.Result != null;
                 resultMessage.StatusCode = resultMessage.IsSucceed ? (int)StatusCode.Success : (int)StatusCode.RequestError;
             }
             catch (ValidateException validateException)

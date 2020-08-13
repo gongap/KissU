@@ -50,7 +50,7 @@ namespace KissU.Kestrel.Http
         public async Task SendAndFlushAsync(TransportMessage message)
         {
             var httpMessage = message.GetContent<HttpResultMessage<object>>();
-            var actionResult = httpMessage.Data as IActionResult;
+            var actionResult = httpMessage.Result as IActionResult;
             WirteDiagnostic(message);
             if (actionResult == null)
             {

@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\..\common.props" />
+  <Import Project="..\..\..\configureawait.props" />
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>engine-cli</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Internal\Messages\**" />
+    <EmbeddedResource Remove="Internal\Messages\**" />
+    <None Remove="Internal\Messages\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ApacheThrift" Version="0.13.0.1" />
+    <PackageReference Include="Autofac" Version="4.9.4" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="5.0.1" />
+    <PackageReference Include="DotNetty.Codecs" Version="0.6.0" />
+    <PackageReference Include="DotNetty.Transport.Libuv" Version="0.6.0" />
+    <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="3.0.0" />
+    <PackageReference Include="MessagePack" Version="1.7.3.4" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.5" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.5" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KissU.CPlatform\KissU.CPlatform.csproj" />
+  </ItemGroup>
+
+</Project>

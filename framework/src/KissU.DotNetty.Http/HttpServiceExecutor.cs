@@ -152,17 +152,17 @@ namespace KissU.DotNetty.Http
                 var task = methodResult as Task;
                 if (task == null)
                 {
-                    resultMessage.Data = methodResult;
+                    resultMessage.Result = methodResult;
                 }
                 else
                 {
                     await task;
                     var taskType = task.GetType().GetTypeInfo();
                     if (taskType.IsGenericType)
-                        resultMessage.Data = taskType.GetProperty("Result").GetValue(task);
+                        resultMessage.Result = taskType.GetProperty("Result").GetValue(task);
                 }
 
-                resultMessage.IsSucceed = resultMessage.Data != null;
+                resultMessage.IsSucceed = resultMessage.Result != null;
                 resultMessage.StatusCode =
                     resultMessage.IsSucceed ? (int) StatusCode.Success : (int) StatusCode.RequestError;
             }
@@ -179,7 +179,7 @@ namespace KissU.DotNetty.Http
                 if (_logger.IsEnabled(LogLevel.Error))
                     _logger.LogError(ex, "执行远程调用逻辑时候发生了错误。");
                 resultMessage = new HttpResultMessage<object>
-                    {Data = null, Message = "执行发生了错误。", StatusCode = (int) StatusCode.RequestError};
+                    {Result = null, Message = "执行发生了错误。", StatusCode = (int) StatusCode.RequestError};
             }
 
             return resultMessage;
@@ -196,17 +196,17 @@ namespace KissU.DotNetty.Http
 
                 if (task == null)
                 {
-                    resultMessage.Data = result;
+                    resultMessage.Result = result;
                 }
                 else
                 {
                     task.Wait();
                     var taskType = task.GetType().GetTypeInfo();
                     if (taskType.IsGenericType)
-                        resultMessage.Data = taskType.GetProperty("Result").GetValue(task);
+                        resultMessage.Result = taskType.GetProperty("Result").GetValue(task);
                 }
 
-                resultMessage.IsSucceed = resultMessage.Data != null;
+                resultMessage.IsSucceed = resultMessage.Result != null;
                 resultMessage.StatusCode =
                     resultMessage.IsSucceed ? (int) StatusCode.Success : (int) StatusCode.RequestError;
             }
