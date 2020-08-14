@@ -16,7 +16,7 @@ namespace KissU.Modules.PermissionManagement.Service
         typeof(AbpPermissionManagementDomainIdentityServerModule),
         typeof(AbpPermissionManagementEntityFrameworkCoreModule)
     )]
-    public class PermissionManagementServiceModule : Volo.Abp.Modularity.AbpModule, IAbpServiceModule
+    public class PermissionManagementServiceModule : Volo.Abp.Modularity.AbpModule, IAbpStartupModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {

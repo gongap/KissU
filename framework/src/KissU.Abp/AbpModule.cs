@@ -36,7 +36,7 @@ namespace KissU.Abp
             _application = AbpApplicationFactory.Create<AbpStartupModule>(services, options =>
             {
                 var assemblies = ModuleHelper.GetAssemblies();
-                var moduleTypes = ReflectionHelper.FindTypes<IAbpServiceModule>(assemblies.ToArray());
+                var moduleTypes = ReflectionHelper.FindTypes<IAbpStartupModule>(assemblies.ToArray());
                 options.PlugInSources.AddTypes(moduleTypes.ToArray());
             });
             builder.ContainerBuilder.Populate(_application.Services);

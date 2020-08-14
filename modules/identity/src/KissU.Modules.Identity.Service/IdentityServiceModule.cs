@@ -14,7 +14,7 @@ namespace KissU.Modules.Identity.Service
         typeof(AbpIdentityApplicationModule),
         typeof(AbpIdentityEntityFrameworkCoreModule)
     )]
-    public class IdentityServiceModule : Volo.Abp.Modularity.AbpModule, IAbpServiceModule
+    public class IdentityServiceModule : Volo.Abp.Modularity.AbpModule, IAbpStartupModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {

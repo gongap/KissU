@@ -13,7 +13,7 @@ namespace KissU.Modules.FeatureManagement.Service
         typeof(AbpFeatureManagementApplicationModule),
         typeof(AbpFeatureManagementEntityFrameworkCoreModule)
     )]
-    public class FeatureManagementServiceModule : Volo.Abp.Modularity.AbpModule, IAbpServiceModule
+    public class FeatureManagementServiceModule : Volo.Abp.Modularity.AbpModule, IAbpStartupModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {

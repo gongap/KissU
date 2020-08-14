@@ -13,7 +13,7 @@ namespace KissU.Modules.TenantManagement.Service
         typeof(AbpTenantManagementApplicationModule),
         typeof(AbpTenantManagementEntityFrameworkCoreModule)
     )]
-    public class TenantManagementServiceModule : Volo.Abp.Modularity.AbpModule, IAbpServiceModule
+    public class TenantManagementServiceModule : Volo.Abp.Modularity.AbpModule, IAbpStartupModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {

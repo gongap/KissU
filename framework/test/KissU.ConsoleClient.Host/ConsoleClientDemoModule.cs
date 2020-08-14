@@ -2,7 +2,7 @@
 
 namespace KissU.ConsoleClient.Host
 {
-    public class ConsoleClientDemoModule : Volo.Abp.Modularity.AbpModule, IAbpServiceModule
+    public class ConsoleClientDemoModule : Volo.Abp.Modularity.AbpModule, IAbpStartupModule
     {
     }
 }
