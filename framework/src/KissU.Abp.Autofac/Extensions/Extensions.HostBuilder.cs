@@ -1,10 +1,10 @@
 ﻿using System;
 using Autofac;
-using KissU.Abp.DependencyInjection;
+using KissU.Abp.Autofac.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace KissU.Abp.Extensions
+namespace KissU.Abp.Autofac.Extensions
 {
     /// <summary>
     /// 系统扩展 - IHostBuilder

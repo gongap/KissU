@@ -1,4 +1,5 @@
 ﻿using System;
+using KissU.Abp.Autofac;
 using KissU.Helpers;
 using KissU.Modularity;
 using KissU.CPlatform;
@@ -33,7 +34,7 @@ namespace KissU.Abp
         {
             base.ConfigureContainer(builder);
             var services = new ServiceCollection();
-            _application = AbpApplicationFactory.Create<AbpStartupModule>(services, options =>
+            _application = AbpApplicationFactory.Create<AbpAutofacModule>(services, options =>
             {
                 var assemblies = ModuleHelper.GetAssemblies();
                 var moduleTypes = ReflectionHelper.FindTypes<IAbpStartupModule>(assemblies.ToArray());
