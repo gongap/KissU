@@ -21,8 +21,10 @@ $solutions = (
 $projects = (
 
     # framework
+    "framework/src/KissU",
     "framework/src/KissU.Core",
     "framework/src/KissU.Abp",
+    "framework/src/KissU.AspNetCore",
     "framework/src/KissU.WebSocket",
     "framework/src/KissU.CPlatform",
     "framework/src/KissU.ApiGateWay",
