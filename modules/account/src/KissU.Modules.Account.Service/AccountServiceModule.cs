@@ -2,7 +2,7 @@
 using KissU.Modules.Account.Service.Contracts;
 using KissU.Modules.Identity.Domain;
 using KissU.Modules.Identity.EntityFrameworkCore;
-using KissU.Abp;
+using KissU.Abp.Business;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.Modularity;
 using Volo.Abp.Settings;

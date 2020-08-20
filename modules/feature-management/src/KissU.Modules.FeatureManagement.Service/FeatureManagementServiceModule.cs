@@ -1,7 +1,7 @@
 ﻿using KissU.Modules.FeatureManagement.Application;
 using KissU.Modules.FeatureManagement.EntityFrameworkCore;
 using KissU.Modules.FeatureManagement.Service.Contracts;
-using KissU.Abp;
+using KissU.Abp.Business;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.Modularity;
