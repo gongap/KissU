@@ -74,7 +74,7 @@ namespace KissU.EventBus.RabbitMQ.Implementation
 
             try
             {
-                _connection.Dispose();
+                _connection?.Dispose();
             }
             catch (IOException ex)
             {

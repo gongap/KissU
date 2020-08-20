@@ -65,7 +65,11 @@ namespace KissU.WebSocket.Runtime.Implementation
 
                 if (_logger.IsEnabled(LogLevel.Debug))
                 {
-                    _logger.LogDebug($"{nameof(WSProtocolModule)}发现了{_wSServiceEntries.Count}个WS服务：\n\t{string.Join(",\n\t", _wSServiceEntries.Select(i => i.Type.FullName))}.");
+                    _logger.LogDebug($"发现了{_wSServiceEntries.Count()}个WS服务：");
+                    foreach (var service in _wSServiceEntries)
+                    {
+                        _logger.LogDebug(service.Type.FullName);
+                    }
                 }
             }
 

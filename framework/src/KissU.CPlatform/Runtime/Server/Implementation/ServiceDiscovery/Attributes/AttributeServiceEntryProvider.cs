@@ -45,7 +45,11 @@ namespace KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attribu
 
             if (_logger.IsEnabled(LogLevel.Debug))
             {
-                _logger.LogDebug($"发现了{services.Length}个本地服务：\n\t{string.Join(",\n\t", services.Select(i => i.ToString()))}.");
+                _logger.LogDebug($"发现了{services.Count()}个本地服务：");
+                foreach (var service in services)
+                {
+                    _logger.LogDebug(service.ToString());
+                }
             }
 
             var entries = new List<ServiceEntry>();
@@ -70,7 +74,11 @@ namespace KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attribu
             }).Distinct().ToArray();
             if (_logger.IsEnabled(LogLevel.Debug))
             {
-                _logger.LogDebug($"发现了{services.Length}个服务：\n\t{string.Join(",\n\t", services.Select(i => i.ToString()))}.");
+                _logger.LogDebug($"发现了{services.Count()}个服务：");
+                foreach (var service in services)
+                {
+                    _logger.LogDebug(service.ToString());
+                }
             }
 
             var entries = new List<ServiceEntry>();

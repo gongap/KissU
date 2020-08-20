@@ -53,7 +53,11 @@ namespace KissU.Thrift.Runtime.Implementation
                 }
                 if (_logger.IsEnabled(LogLevel.Debug))
                 {
-                    _logger.LogDebug($"发现了{_thriftServiceEntries.Count}个thrift服务：{string.Join(",", _thriftServiceEntries.Select(i => i.Type.FullName))}。"); ;
+                    _logger.LogDebug($"发现了{_thriftServiceEntries.Count()}个thrift服务：");
+                    foreach (var service in _thriftServiceEntries)
+                    {
+                        _logger.LogDebug(service.Type.FullName);
+                    }
                 }
             }
             return _thriftServiceEntries;

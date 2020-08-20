@@ -1,15 +1,14 @@
 ﻿using System.Threading.Tasks;
 using Autofac;
-using KissU.Dependency;
-using KissU.Extensions;
 using KissU.Caching.Configurations;
 using KissU.CPlatform;
 using KissU.CPlatform.Configurations;
+using KissU.Dependency;
+using KissU.Extensions;
 using KissU.ServiceProxy;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
-namespace KissU.Services.Hosts
+namespace KissU.Services.Host
 {
     public class Program
     {
@@ -19,8 +18,7 @@ namespace KissU.Services.Hosts
         }
 
         internal static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureLogging(configure => configure.ClearProviders())
+            Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder(args)
                 .ConfigureHostConfiguration(builder =>
                 {
                     builder.AddCPlatformFile("servicesettings.json", false, true);

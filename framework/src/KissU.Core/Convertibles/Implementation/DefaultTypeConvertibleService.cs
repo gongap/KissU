@@ -34,7 +34,11 @@ namespace KissU.Convertibles.Implementation
             providers = providers.ToArray();
             if (_logger.IsEnabled(LogLevel.Debug))
             {
-                _logger.LogDebug($"发现了{providers.Count()}个类型转换提供程序：{string.Join(",", providers.Select(p => p.ToString()))}。");
+                _logger.LogDebug($"发现了{providers.Count()}个类型转换提供程序：");
+                foreach (var provider in providers)
+                {
+                    _logger.LogDebug(provider.ToString());
+                }
             }
 
             _converters = providers.SelectMany(p => p.GetConverters()).ToArray();

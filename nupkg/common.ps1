@@ -23,8 +23,8 @@ $projects = (
     # framework
     "framework/src/KissU",
     "framework/src/KissU.Core",
-    "framework/src/KissU.Abp",
     "framework/src/KissU.Abp.Autofac",
+    "framework/src/KissU.Abp.Business",
     "framework/src/KissU.AspNetCore",
     "framework/src/KissU.WebSocket",
     "framework/src/KissU.CPlatform",

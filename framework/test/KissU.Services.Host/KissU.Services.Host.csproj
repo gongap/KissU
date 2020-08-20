@@ -1,4 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\..\common.props" />
+  <Import Project="..\..\..\configureawait.props" />
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <ServerGarbageCollection>false</ServerGarbageCollection>
@@ -6,7 +8,6 @@
     <TieredCompilation>true</TieredCompilation>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..</DockerfileContext>
-    <RootNamespace>KissU.Services.Hosts</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -14,7 +15,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\framework\src\KissU.Abp\KissU.Abp.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.Abp.Business\KissU.Abp.Business.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.CPlatform\KissU.CPlatform.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.WebSocket\KissU.WebSocket.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Grpc\KissU.Grpc.csproj" />
@@ -41,8 +42,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KissU.Modules.SampleA.Service\KissU.Modules.SampleA.Service.csproj" />
-    <ProjectReference Include="..\KissU.Modules.SampleB.Service\KissU.Modules.SampleB.Service.csproj" />
     <ProjectReference Include="..\..\..\modules\account\src\KissU.Modules.Account.Service\KissU.Modules.Account.Service.csproj" />
     <ProjectReference Include="..\..\..\modules\identity\src\KissU.Modules.Identity.Service\KissU.Modules.Identity.Service.csproj" />
     <ProjectReference Include="..\..\..\modules\feature-management\src\KissU.Modules.FeatureManagement.Service\KissU.Modules.FeatureManagement.Service.csproj" />

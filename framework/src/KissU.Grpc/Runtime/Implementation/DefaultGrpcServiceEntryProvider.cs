@@ -65,7 +65,11 @@ namespace KissU.Google.Grpc.Runtime.Implementation
 
                 if (_logger.IsEnabled(LogLevel.Debug))
                 {
-                    _logger.LogDebug($"{nameof(GrpcModule)}发现了{_grpcServiceEntries.Count}个grpc服务：\n\t{string.Join(",\n\t", _grpcServiceEntries.Select(i => i.Type.FullName))}"); ;
+                    _logger.LogDebug($"发现了{_grpcServiceEntries.Count()}个grpc服务：");
+                    foreach (var service in _grpcServiceEntries)
+                    {
+                        _logger.LogDebug(service.Type.FullName);
+                    }
                 }
             }
 

@@ -1,16 +1,18 @@
 ﻿using System.Threading.Tasks;
 using Autofac;
-using KissU.Caching.Configurations;
-using KissU.CPlatform;
-using KissU.CPlatform.Configurations;
 using KissU.Dependency;
-using KissU.Extensions;
-using KissU.ServiceProxy;
+using KissU.Caching.Configurations;
+using KissU.CPlatform.Configurations;
 using Microsoft.Extensions.Hosting;
+using KissU.Extensions;
+using KissU.Caching;
+using KissU.CPlatform;
+using KissU.ServiceProxy;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace KissU.Services.Stage
+namespace KissU.Client.Host
 {
-    public class Program
+    internal class Program
     {
         static async Task Main(string[] args)
         {
@@ -18,7 +20,7 @@ namespace KissU.Services.Stage
         }
 
         internal static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
+            Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder(args)
                 .ConfigureHostConfiguration(builder =>
                 {
                     builder.AddCPlatformFile("servicesettings.json", false, true);
@@ -26,16 +28,13 @@ namespace KissU.Services.Stage
                 })
                 .UseServiceHostBuilder(builder =>
                 {
-                    builder.AddMicroService(option =>
-                    {
-                        option.AddServiceRuntime()
-                            .AddRelateService()
-                            .AddConfigurationWatch()
-                            .AddServiceEngine();
-                    });
+                    builder.AddMicroService(service => { service.AddClient().AddCache(); });
                     builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
                 })
-                .UseServer();
-
+                .ConfigureServices((hostContext, services) =>
+                {
+                    services.AddHostedService<AppHostedService>();
+                })
+                .UseClient();
     }
 }
