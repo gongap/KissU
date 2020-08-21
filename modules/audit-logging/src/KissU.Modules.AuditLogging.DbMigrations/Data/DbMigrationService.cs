@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using KissU.Modules.AuditLogging.Domain;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Volo.Abp.Data;
@@ -25,7 +26,7 @@ namespace KissU.Modules.AuditLogging.DbMigrations.Data
 
         public async Task MigrateAsync()
         {
-            Logger.LogInformation("Started database migrations...");
+            Logger.LogInformation($"Started {AbpAuditLoggingDbProperties.ConnectionStringName} database migrations...");
 
             Logger.LogInformation("Migrating database schema...");
             await _dbSchemaMigrator.MigrateAsync();

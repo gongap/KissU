@@ -164,7 +164,7 @@ namespace KissU.DotNetty.DNS
         /// </summary>
         public void Dispose()
         {
-            Task.Run(async () => { await _channel.DisconnectAsync(); }).Wait();
+            Task.Run(async () => { await _channel?.DisconnectAsync(); }).Wait();
         }
 
         /// <summary>

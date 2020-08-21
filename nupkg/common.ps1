@@ -70,12 +70,16 @@ $projects = (
     "modules/audit-logging/src/KissU.Modules.AuditLogging.Domain.Shared",
     "modules/audit-logging/src/KissU.Modules.AuditLogging.EntityFrameworkCore",
     "modules/audit-logging/src/KissU.Modules.AuditLogging.MongoDB",
+    "modules/audit-logging/src/KissU.Modules.AuditLogging.DbMigrations",
+    "modules/audit-logging/src/KissU.Modules.AuditLogging.DbMigrator",
 
     # modules/background-jobs
     "modules/background-jobs/src/KissU.Modules.BackgroundJobs.Domain",
     "modules/background-jobs/src/KissU.Modules.BackgroundJobs.Domain.Shared",
     "modules/background-jobs/src/KissU.Modules.BackgroundJobs.EntityFrameworkCore",
     "modules/background-jobs/src/KissU.Modules.BackgroundJobs.MongoDB",
+    "modules/background-jobs/src/KissU.Modules.BackgroundJobs.DbMigrations",
+    "modules/background-jobs/src/KissU.Modules.BackgroundJobs.DbMigrator",
 
     # modules/feature-management
     "modules/feature-management/src/KissU.Modules.FeatureManagement.Application.Contracts",
@@ -84,6 +88,8 @@ $projects = (
     "modules/feature-management/src/KissU.Modules.FeatureManagement.Domain.Shared",
     "modules/feature-management/src/KissU.Modules.FeatureManagement.EntityFrameworkCore",
     "modules/feature-management/src/KissU.Modules.FeatureManagement.MongoDB",
+    "modules/feature-management/src/KissU.Modules.FeatureManagement.DbMigrations",
+    "modules/feature-management/src/KissU.Modules.FeatureManagement.DbMigrator",
     "modules/feature-management/src/KissU.Modules.FeatureManagement.Service.Contracts",
     "modules/feature-management/src/KissU.Modules.FeatureManagement.Service",
 
@@ -94,6 +100,8 @@ $projects = (
     "modules/identity/src/KissU.Modules.Identity.Domain",
     "modules/identity/src/KissU.Modules.Identity.Domain.Shared",
     "modules/identity/src/KissU.Modules.Identity.EntityFrameworkCore",
+    "modules/identity/src/KissU.Modules.Identity.DbMigrations",
+    "modules/identity/src/KissU.Modules.Identity.DbMigrator",
     "modules/identity/src/KissU.Modules.Identity.Service.Contracts",
     "modules/identity/src/KissU.Modules.Identity.Service",
     
@@ -102,6 +110,8 @@ $projects = (
     "modules/identityserver/src/KissU.Modules.IdentityServer.Domain.Shared",
     "modules/identityserver/src/KissU.Modules.IdentityServer.EntityFrameworkCore",
     "modules/identityserver/src/KissU.Modules.IdentityServer.MongoDB",
+    "modules/identityserver/src/KissU.Modules.IdentityServer.DbMigrations",
+    "modules/identityserver/src/KissU.Modules.IdentityServer.DbMigrator",
 
     # modules/permission-management
     "modules/permission-management/src/KissU.Modules.PermissionManagement.Application.Contracts",
@@ -111,6 +121,8 @@ $projects = (
     "modules/permission-management/src/KissU.Modules.PermissionManagement.Domain.Identity",
     "modules/permission-management/src/KissU.Modules.PermissionManagement.Domain.IdentityServer",
     "modules/permission-management/src/KissU.Modules.PermissionManagement.EntityFrameworkCore",
+    "modules/permission-management/src/KissU.Modules.PermissionManagement.DbMigrations",
+    "modules/permission-management/src/KissU.Modules.PermissionManagement.DbMigrator",
     "modules/permission-management/src/KissU.Modules.PermissionManagement.Service.Contracts",
     "modules/permission-management/src/KissU.Modules.PermissionManagement.Service",
 
@@ -119,6 +131,8 @@ $projects = (
     "modules/setting-management/src/KissU.Modules.SettingManagement.Domain.Shared",
     "modules/setting-management/src/KissU.Modules.SettingManagement.EntityFrameworkCore",
     "modules/setting-management/src/KissU.Modules.SettingManagement.MongoDB",
+    "modules/setting-management/src/KissU.Modules.SettingManagement.DbMigrations",
+    "modules/setting-management/src/KissU.Modules.SettingManagement.DbMigrator",
 
     # modules/tenant-management
     "modules/tenant-management/src/KissU.Modules.TenantManagement.Application.Contracts",
@@ -127,6 +141,8 @@ $projects = (
     "modules/tenant-management/src/KissU.Modules.TenantManagement.Domain.Shared",
     "modules/tenant-management/src/KissU.Modules.TenantManagement.EntityFrameworkCore",
     "modules/tenant-management/src/KissU.Modules.TenantManagement.MongoDB",
+    "modules/tenant-management/src/KissU.Modules.TenantManagement.DbMigrations",
+    "modules/tenant-management/src/KissU.Modules.TenantManagement.DbMigrator",
     "modules/tenant-management/src/KissU.Modules.TenantManagement.Service.Contracts",
     "modules/tenant-management/src/KissU.Modules.TenantManagement.Service",
 
@@ -134,6 +150,6 @@ $projects = (
     "modules/users/src/KissU.Modules.Users.Abstractions",
     "modules/users/src/KissU.Modules.Users.Domain",
     "modules/users/src/KissU.Modules.Users.Domain.Shared",
-    "modules/users/src/KissU.Modules.Users.MongoDB",
-    "modules/users/src/KissU.Modules.Users.EntityFrameworkCore"
+    "modules/users/src/KissU.Modules.Users.EntityFrameworkCore",
+    "modules/users/src/KissU.Modules.Users.MongoDB"
 )
