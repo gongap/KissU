@@ -10,7 +10,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace KissU.Services.Host
 {
-    public class Program
+    internal class Program
     {
         static async Task Main(string[] args)
         {

@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using KissU.Modules.IdentityServer.Domain;
+using KissU.Modules.IdentityServer.Domain.IdentityResources;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Volo.Abp.Data;
@@ -11,11 +12,11 @@ namespace KissU.Modules.IdentityServer.DbMigrations.Data
     {
         public ILogger<DbMigrationService> Logger { get; set; }
 
-        private readonly IDataSeeder _dataSeeder;
+        private readonly IIdentityResourceDataSeeder _dataSeeder;
         private readonly DbSchemaMigrator _dbSchemaMigrator;
 
         public DbMigrationService(
-            IDataSeeder dataSeeder,
+            IIdentityResourceDataSeeder dataSeeder,
             DbSchemaMigrator dbSchemaMigrator)
         {
             _dataSeeder = dataSeeder;
@@ -32,7 +33,7 @@ namespace KissU.Modules.IdentityServer.DbMigrations.Data
             await _dbSchemaMigrator.MigrateAsync();
 
             Logger.LogInformation("Executing database seed...");
-            await _dataSeeder.SeedAsync();
+            await _dataSeeder.CreateStandardResourcesAsync();
 
             Logger.LogInformation("Successfully completed database migrations.");
         }
