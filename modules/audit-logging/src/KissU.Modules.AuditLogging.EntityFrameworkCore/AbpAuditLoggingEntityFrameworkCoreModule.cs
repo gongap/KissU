@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.Modularity;
 
-namespace KissU.Modules.AuditLogging.EntityFrameworkCore.EntityFrameworkCore
+namespace KissU.Modules.AuditLogging.EntityFrameworkCore
 {
     [DependsOn(typeof(AbpAuditLoggingDomainModule))]
     [DependsOn(typeof(AbpEntityFrameworkCoreModule))]

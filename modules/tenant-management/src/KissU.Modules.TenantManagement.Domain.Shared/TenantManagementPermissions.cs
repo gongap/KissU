@@ -1,6 +1,6 @@
 ﻿using Volo.Abp.Reflection;
 
-namespace KissU.Modules.TenantManagement.Application.Contracts
+namespace KissU.Modules.TenantManagement.Domain.Shared
 {
     public static class TenantManagementPermissions
     {

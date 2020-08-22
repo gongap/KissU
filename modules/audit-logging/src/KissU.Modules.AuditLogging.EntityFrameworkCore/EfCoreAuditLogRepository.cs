@@ -11,7 +11,7 @@ using Volo.Abp.Auditing;
 using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
 
-namespace KissU.Modules.AuditLogging.EntityFrameworkCore.EntityFrameworkCore
+namespace KissU.Modules.AuditLogging.EntityFrameworkCore
 {
     public class EfCoreAuditLogRepository : EfCoreRepository<IAuditLoggingDbContext, AuditLog, Guid>, IAuditLogRepository
     {

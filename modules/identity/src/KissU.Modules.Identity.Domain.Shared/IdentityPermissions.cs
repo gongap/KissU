@@ -1,6 +1,6 @@
 ﻿using Volo.Abp.Reflection;
 
-namespace KissU.Modules.Identity.Application.Contracts
+namespace KissU.Modules.Identity.Domain.Shared
 {
     public static class IdentityPermissions
     {

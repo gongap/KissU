@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using KissU.Modules.TenantManagement.Application.Contracts;
 using KissU.Modules.TenantManagement.Domain;
+using KissU.Modules.TenantManagement.Domain.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Data;

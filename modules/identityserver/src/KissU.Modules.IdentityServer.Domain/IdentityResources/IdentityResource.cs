@@ -90,5 +90,18 @@ namespace KissU.Modules.IdentityServer.Domain.IdentityResources
         {
             return UserClaims.FirstOrDefault(c => c.Type == type);
         }
+
+        public static IdentityServer4.Models.IdentityResource[] GetStandardResources()
+        {
+            return new[]
+            {
+                new IdentityServer4.Models.IdentityResources.OpenId(),
+                new IdentityServer4.Models.IdentityResources.Profile(),
+                new IdentityServer4.Models.IdentityResources.Email(),
+                new IdentityServer4.Models.IdentityResources.Address(),
+                new IdentityServer4.Models.IdentityResources.Phone(),
+                new IdentityServer4.Models.IdentityResource("role", "Roles of the user", new[] {"role"})
+            };
+        }
     }
 }

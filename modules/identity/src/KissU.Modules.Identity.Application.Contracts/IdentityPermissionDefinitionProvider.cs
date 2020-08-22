@@ -1,4 +1,5 @@
-﻿using KissU.Modules.Identity.Domain.Shared.Localization;
+﻿using KissU.Modules.Identity.Domain.Shared;
+using KissU.Modules.Identity.Domain.Shared.Localization;
 using Volo.Abp.Authorization.Permissions;
 using Volo.Abp.Localization;
 

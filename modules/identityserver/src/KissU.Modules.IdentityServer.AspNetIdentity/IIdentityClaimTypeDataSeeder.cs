@@ -2,8 +2,8 @@
 
 namespace KissU.Modules.IdentityServer.AspNetIdentity
 {
-    public interface IIdentityResourceDataSeeder
+    public interface IIdentityClaimTypeDataSeeder
     {
-        Task CreateStandardResourcesAsync();
+        Task CreateStandardClaimTypesAsync();
     }
 }

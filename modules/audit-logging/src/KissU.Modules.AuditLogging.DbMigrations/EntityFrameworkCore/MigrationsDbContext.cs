@@ -1,5 +1,5 @@
 ﻿using KissU.Modules.AuditLogging.Domain;
-using KissU.Modules.AuditLogging.EntityFrameworkCore.EntityFrameworkCore;
+using KissU.Modules.AuditLogging.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;

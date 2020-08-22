@@ -1,5 +1,5 @@
 ﻿using KissU.Modules.AuditLogging.DbMigrations.Data;
-using KissU.Modules.AuditLogging.EntityFrameworkCore.EntityFrameworkCore;
+using KissU.Modules.AuditLogging.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Volo.Abp.EntityFrameworkCore;

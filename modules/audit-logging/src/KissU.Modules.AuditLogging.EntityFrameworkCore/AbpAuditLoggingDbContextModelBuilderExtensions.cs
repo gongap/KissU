@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Volo.Abp;
 using Volo.Abp.EntityFrameworkCore.Modeling;
 
-namespace KissU.Modules.AuditLogging.EntityFrameworkCore.EntityFrameworkCore
+namespace KissU.Modules.AuditLogging.EntityFrameworkCore
 {
     public static class AbpAuditLoggingDbContextModelBuilderExtensions
     {

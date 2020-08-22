@@ -18,14 +18,6 @@ namespace KissU.Modules.IdentityServer.Domain
                 options = new AbpIdentityServerBuilderOptions();
             }
 
-            //TODO: AspNet Identity integration lines. Can be extracted to a extension method
-            if (options.IntegrateToAspNetIdentity)
-            {
-                //builder.AddAspNetIdentity<IdentityUser>();
-                //builder.AddProfileService<AbpProfileService>();
-                //builder.AddResourceOwnerValidator<AbpResourceOwnerPasswordValidator>();
-            }
-
             builder.Services.Replace(ServiceDescriptor.Transient<IClaimsService, AbpClaimsService>());
 
             if (options.UpdateAbpClaimTypes)

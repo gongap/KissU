@@ -6,8 +6,8 @@ using Volo.Abp.Modularity;
 namespace KissU.Modules.IdentityServer.AspNetIdentity
 {
     [DependsOn(
-        typeof(AbpIdentityServerDomainModule),
-        typeof(AbpIdentityDomainModule)
+        typeof(AbpIdentityDomainModule),
+        typeof(AbpIdentityServerDomainModule)
         )]
     public class AbpIdentityServerAspNetIdentityModule : AbpModule
     {
@@ -18,10 +18,6 @@ namespace KissU.Modules.IdentityServer.AspNetIdentity
                 var builderOptions = context.Services.ExecutePreConfiguredActions<AbpIdentityServerBuilderOptions>();
                 builder.AddAspNetIdentity(builderOptions);
             });
-        }
-
-        public override void ConfigureServices(ServiceConfigurationContext context)
-        {
         }
     }
 }
