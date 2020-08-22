@@ -106,6 +106,7 @@ $projects = (
     "modules/identity/src/KissU.Modules.Identity.Service",
     
     # modules/identityserver
+    "modules/identityserver/src/KissU.Modules.IdentityServer.AspNetIdentity",
     "modules/identityserver/src/KissU.Modules.IdentityServer.Domain",
     "modules/identityserver/src/KissU.Modules.IdentityServer.Domain.Shared",
     "modules/identityserver/src/KissU.Modules.IdentityServer.EntityFrameworkCore",

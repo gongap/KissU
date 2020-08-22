@@ -5,7 +5,6 @@ using System.Linq.Dynamic.Core;
 using System.Threading;
 using System.Threading.Tasks;
 using KissU.Modules.IdentityServer.Domain.IdentityResources;
-using KissU.Modules.IdentityServer.EntityFrameworkCore.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;

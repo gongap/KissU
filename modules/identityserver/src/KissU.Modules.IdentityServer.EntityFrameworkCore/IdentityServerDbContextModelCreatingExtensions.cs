@@ -18,7 +18,7 @@ using Volo.Abp.EntityFrameworkCore.Modeling;
 using Volo.Abp.EntityFrameworkCore.ValueComparers;
 using Volo.Abp.EntityFrameworkCore.ValueConverters;
 
-namespace KissU.Modules.IdentityServer.EntityFrameworkCore.EntityFrameworkCore
+namespace KissU.Modules.IdentityServer.EntityFrameworkCore
 {
     public static class IdentityServerDbContextModelCreatingExtensions
     {

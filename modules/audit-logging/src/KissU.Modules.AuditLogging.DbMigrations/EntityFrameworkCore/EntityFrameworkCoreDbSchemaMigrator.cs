@@ -6,7 +6,7 @@ using Volo.Abp.DependencyInjection;
 namespace KissU.Modules.AuditLogging.DbMigrations.EntityFrameworkCore
 {
     [Dependency(ReplaceServices = true)]
-    public class EntityFrameworkCoreDbSchemaMigrator : DbSchemaMigrator, ITransientDependency
+    public class EntityFrameworkCoreDbSchemaMigrator : IDbSchemaMigrator, ITransientDependency
     {
         private readonly MigrationsDbContext _dbContext;
 

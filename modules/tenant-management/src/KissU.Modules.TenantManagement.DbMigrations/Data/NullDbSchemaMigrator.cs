@@ -6,7 +6,7 @@ namespace KissU.Modules.TenantManagement.DbMigrations.Data
     /* This is used if database provider does't define
      * IIdentityDbSchemaMigrator implementation.
      */
-    public class NullDbSchemaMigrator : DbSchemaMigrator, ITransientDependency
+    public class NullDbSchemaMigrator : IDbSchemaMigrator, ITransientDependency
     {
         public Task MigrateAsync()
         {

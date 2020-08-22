@@ -13,7 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.Modularity;
 
-namespace KissU.Modules.IdentityServer.EntityFrameworkCore.EntityFrameworkCore
+namespace KissU.Modules.IdentityServer.EntityFrameworkCore
 {
     [DependsOn(
         typeof(AbpIdentityServerDomainModule),

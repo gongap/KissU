@@ -1,5 +1,7 @@
-﻿using KissU.Modules.Identity.EntityFrameworkCore;
+﻿using KissU.Modules.Identity.Domain;
+using KissU.Modules.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
 
 namespace KissU.Modules.Identity.DbMigrations.EntityFrameworkCore
@@ -9,6 +11,7 @@ namespace KissU.Modules.Identity.DbMigrations.EntityFrameworkCore
      * It is a unified model that includes configuration for
      * all used modules and your application.
      */
+    [ConnectionStringName(AbpIdentityDbProperties.ConnectionStringName)]
     public class MigrationsDbContext : AbpDbContext<MigrationsDbContext>
     {
         public MigrationsDbContext(DbContextOptions<MigrationsDbContext> options) 

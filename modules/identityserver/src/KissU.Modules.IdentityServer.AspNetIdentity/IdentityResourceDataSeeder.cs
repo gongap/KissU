@@ -1,9 +1,10 @@
 ﻿using System.Threading.Tasks;
 using KissU.Modules.Identity.Domain;
+using KissU.Modules.IdentityServer.Domain.IdentityResources;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Guids;
 
-namespace KissU.Modules.IdentityServer.Domain.IdentityResources
+namespace KissU.Modules.IdentityServer.AspNetIdentity
 {
     public class IdentityResourceDataSeeder : IIdentityResourceDataSeeder, ITransientDependency
     {

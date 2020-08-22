@@ -2,7 +2,7 @@
 
 namespace KissU.Modules.FeatureManagement.DbMigrations.Data
 {
-    public interface DbSchemaMigrator
+    public interface IDbSchemaMigrator
     {
         Task MigrateAsync();
     }

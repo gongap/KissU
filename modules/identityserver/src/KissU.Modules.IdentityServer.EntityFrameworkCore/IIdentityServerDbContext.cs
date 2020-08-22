@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
 
-namespace KissU.Modules.IdentityServer.EntityFrameworkCore.EntityFrameworkCore
+namespace KissU.Modules.IdentityServer.EntityFrameworkCore
 {
     [ConnectionStringName(AbpIdentityServerDbProperties.ConnectionStringName)]
     public interface IIdentityServerDbContext : IEfCoreDbContext

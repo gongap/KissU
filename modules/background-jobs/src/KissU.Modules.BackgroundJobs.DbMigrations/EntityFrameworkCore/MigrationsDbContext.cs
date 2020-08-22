@@ -1,5 +1,7 @@
-﻿using KissU.Modules.BackgroundJobs.EntityFrameworkCore;
+﻿using KissU.Modules.BackgroundJobs.Domain;
+using KissU.Modules.BackgroundJobs.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
 
 namespace KissU.Modules.BackgroundJobs.DbMigrations.EntityFrameworkCore
@@ -9,6 +11,8 @@ namespace KissU.Modules.BackgroundJobs.DbMigrations.EntityFrameworkCore
      * It is a unified model that includes configuration for
      * all used modules and your application.
      */
+     
+    [ConnectionStringName(BackgroundJobsDbProperties.ConnectionStringName)]
     public class MigrationsDbContext : AbpDbContext<MigrationsDbContext>
     {
         public MigrationsDbContext(DbContextOptions<MigrationsDbContext> options) 

@@ -1,5 +1,7 @@
-﻿using KissU.Modules.AuditLogging.EntityFrameworkCore.EntityFrameworkCore;
+﻿using KissU.Modules.AuditLogging.Domain;
+using KissU.Modules.AuditLogging.EntityFrameworkCore.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
 
 namespace KissU.Modules.AuditLogging.DbMigrations.EntityFrameworkCore
@@ -9,6 +11,7 @@ namespace KissU.Modules.AuditLogging.DbMigrations.EntityFrameworkCore
      * It is a unified model that includes configuration for
      * all used modules and your application.
      */
+    [ConnectionStringName(AbpAuditLoggingDbProperties.ConnectionStringName)]
     public class MigrationsDbContext : AbpDbContext<MigrationsDbContext>
     {
         public MigrationsDbContext(DbContextOptions<MigrationsDbContext> options) 

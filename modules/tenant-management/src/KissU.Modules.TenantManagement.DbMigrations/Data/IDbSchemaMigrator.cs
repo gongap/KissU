@@ -2,7 +2,7 @@
 
 namespace KissU.Modules.TenantManagement.DbMigrations.Data
 {
-    public interface DbSchemaMigrator
+    public interface IDbSchemaMigrator
     {
         Task MigrateAsync();
     }

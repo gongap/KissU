@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.IdentityServe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.IdentityServer.DbMigrator", "src\KissU.Modules.IdentityServer.DbMigrator\KissU.Modules.IdentityServer.DbMigrator.csproj", "{26D9CEAF-B24C-48F6-B4B8-12463930FF88}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.IdentityServer.AspNetIdentity", "src\KissU.Modules.IdentityServer.AspNetIdentity\KissU.Modules.IdentityServer.AspNetIdentity.csproj", "{6C8D5AF1-FBAE-4668-AB99-53681A0F41D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{26D9CEAF-B24C-48F6-B4B8-12463930FF88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26D9CEAF-B24C-48F6-B4B8-12463930FF88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26D9CEAF-B24C-48F6-B4B8-12463930FF88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C8D5AF1-FBAE-4668-AB99-53681A0F41D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C8D5AF1-FBAE-4668-AB99-53681A0F41D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C8D5AF1-FBAE-4668-AB99-53681A0F41D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C8D5AF1-FBAE-4668-AB99-53681A0F41D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +66,7 @@ Global
 		{452AEBEC-E9E8-4150-90C7-ADE9799870BE} = {3FED7E08-D281-419B-964C-B7107D9378CE}
 		{A72FCDB6-7E6B-46E4-9478-F62FF788F722} = {3FED7E08-D281-419B-964C-B7107D9378CE}
 		{26D9CEAF-B24C-48F6-B4B8-12463930FF88} = {3FED7E08-D281-419B-964C-B7107D9378CE}
+		{6C8D5AF1-FBAE-4668-AB99-53681A0F41D6} = {3FED7E08-D281-419B-964C-B7107D9378CE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}

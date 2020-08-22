@@ -1,5 +1,7 @@
-﻿using KissU.Modules.PermissionManagement.EntityFrameworkCore;
+﻿using KissU.Modules.PermissionManagement.Domain;
+using KissU.Modules.PermissionManagement.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
 
 namespace KissU.Modules.PermissionManagement.DbMigrations.EntityFrameworkCore
@@ -9,6 +11,7 @@ namespace KissU.Modules.PermissionManagement.DbMigrations.EntityFrameworkCore
      * It is a unified model that includes configuration for
      * all used modules and your application.
      */
+    [ConnectionStringName(AbpPermissionManagementDbProperties.ConnectionStringName)]
     public class MigrationsDbContext : AbpDbContext<MigrationsDbContext>
     {
         public MigrationsDbContext(DbContextOptions<MigrationsDbContext> options) 

@@ -8,7 +8,7 @@ using Volo.Abp.MultiTenancy;
 using Volo.Abp.Uow;
 using IdentityUser = KissU.Modules.Identity.Domain.IdentityUser;
 
-namespace KissU.Modules.IdentityServer.Domain.AspNetIdentity
+namespace KissU.Modules.IdentityServer.AspNetIdentity
 {
     public class AbpProfileService : ProfileService<IdentityUser>
     {

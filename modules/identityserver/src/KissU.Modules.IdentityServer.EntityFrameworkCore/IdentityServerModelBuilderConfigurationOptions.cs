@@ -2,7 +2,7 @@
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore.Modeling;
 
-namespace KissU.Modules.IdentityServer.EntityFrameworkCore.EntityFrameworkCore
+namespace KissU.Modules.IdentityServer.EntityFrameworkCore
 {
     public class IdentityServerModelBuilderConfigurationOptions : AbpModelBuilderConfigurationOptions
     {

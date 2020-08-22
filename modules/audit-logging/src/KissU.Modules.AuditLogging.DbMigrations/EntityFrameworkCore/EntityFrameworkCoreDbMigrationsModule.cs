@@ -1,5 +1,7 @@
-﻿using KissU.Modules.AuditLogging.EntityFrameworkCore.EntityFrameworkCore;
+﻿using KissU.Modules.AuditLogging.DbMigrations.Data;
+using KissU.Modules.AuditLogging.EntityFrameworkCore.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.Modularity;
 
@@ -13,6 +15,7 @@ namespace KissU.Modules.AuditLogging.DbMigrations.EntityFrameworkCore
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
             context.Services.AddAbpDbContext<MigrationsDbContext>();
+            context.Services.Replace(ServiceDescriptor.Singleton<IDbSchemaMigrator, EntityFrameworkCoreDbSchemaMigrator>());
 
             Configure<AbpDbContextOptions>(options =>
             {

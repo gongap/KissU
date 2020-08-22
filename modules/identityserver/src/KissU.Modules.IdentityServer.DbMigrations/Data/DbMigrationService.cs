@@ -12,12 +12,12 @@ namespace KissU.Modules.IdentityServer.DbMigrations.Data
     {
         public ILogger<DbMigrationService> Logger { get; set; }
 
-        private readonly IIdentityResourceDataSeeder _dataSeeder;
-        private readonly DbSchemaMigrator _dbSchemaMigrator;
+        private readonly IDataSeeder _dataSeeder;
+        private readonly IDbSchemaMigrator _dbSchemaMigrator;
 
         public DbMigrationService(
-            IIdentityResourceDataSeeder dataSeeder,
-            DbSchemaMigrator dbSchemaMigrator)
+            IDataSeeder dataSeeder,
+            IDbSchemaMigrator dbSchemaMigrator)
         {
             _dataSeeder = dataSeeder;
             _dbSchemaMigrator = dbSchemaMigrator;
@@ -33,7 +33,7 @@ namespace KissU.Modules.IdentityServer.DbMigrations.Data
             await _dbSchemaMigrator.MigrateAsync();
 
             Logger.LogInformation("Executing database seed...");
-            await _dataSeeder.CreateStandardResourcesAsync();
+            await _dataSeeder.SeedAsync();
 
             Logger.LogInformation("Successfully completed database migrations.");
         }

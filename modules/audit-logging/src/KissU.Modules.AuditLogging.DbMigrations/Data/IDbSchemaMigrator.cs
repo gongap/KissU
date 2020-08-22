@@ -2,7 +2,7 @@
 
 namespace KissU.Modules.AuditLogging.DbMigrations.Data
 {
-    public interface DbSchemaMigrator
+    public interface IDbSchemaMigrator
     {
         Task MigrateAsync();
     }

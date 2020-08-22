@@ -1,6 +1,5 @@
 ﻿using IdentityServer4.Services;
 using IdentityServer4.Stores;
-using KissU.Modules.Identity.Domain;
 using KissU.Modules.IdentityServer.Domain.ApiResources;
 using KissU.Modules.IdentityServer.Domain.Clients;
 using KissU.Modules.IdentityServer.Domain.Devices;
@@ -30,7 +29,6 @@ namespace KissU.Modules.IdentityServer.Domain
     [DependsOn(
         typeof(AbpIdentityServerDomainSharedModule),
         typeof(AbpAutoMapperModule),
-        typeof(AbpIdentityDomainModule),
         typeof(AbpSecurityModule),
         typeof(AbpCachingModule),
         typeof(AbpValidationModule),

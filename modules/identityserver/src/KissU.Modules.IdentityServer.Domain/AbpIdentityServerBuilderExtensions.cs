@@ -1,8 +1,6 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using IdentityModel;
 using IdentityServer4.Services;
-using KissU.Modules.Identity.Domain;
-using KissU.Modules.IdentityServer.Domain.AspNetIdentity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Volo.Abp.Security.Claims;
@@ -23,9 +21,9 @@ namespace KissU.Modules.IdentityServer.Domain
             //TODO: AspNet Identity integration lines. Can be extracted to a extension method
             if (options.IntegrateToAspNetIdentity)
             {
-                builder.AddAspNetIdentity<IdentityUser>();
-                builder.AddProfileService<AbpProfileService>();
-                builder.AddResourceOwnerValidator<AbpResourceOwnerPasswordValidator>();
+                //builder.AddAspNetIdentity<IdentityUser>();
+                //builder.AddProfileService<AbpProfileService>();
+                //builder.AddResourceOwnerValidator<AbpResourceOwnerPasswordValidator>();
             }
 
             builder.Services.Replace(ServiceDescriptor.Transient<IClaimsService, AbpClaimsService>());

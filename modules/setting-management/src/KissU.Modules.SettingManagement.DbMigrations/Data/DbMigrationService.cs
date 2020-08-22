@@ -12,11 +12,11 @@ namespace KissU.Modules.SettingManagement.DbMigrations.Data
         public ILogger<DbMigrationService> Logger { get; set; }
 
         private readonly IDataSeeder _dataSeeder;
-        private readonly DbSchemaMigrator _dbSchemaMigrator;
+        private readonly IDbSchemaMigrator _dbSchemaMigrator;
 
         public DbMigrationService(
             IDataSeeder dataSeeder,
-            DbSchemaMigrator dbSchemaMigrator)
+            IDbSchemaMigrator dbSchemaMigrator)
         {
             _dataSeeder = dataSeeder;
             _dbSchemaMigrator = dbSchemaMigrator;

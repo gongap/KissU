@@ -16,7 +16,7 @@ using Volo.Abp.Uow;
 using Volo.Abp.Validation;
 using IdentityUser = KissU.Modules.Identity.Domain.IdentityUser;
 
-namespace KissU.Modules.IdentityServer.Domain.AspNetIdentity
+namespace KissU.Modules.IdentityServer.AspNetIdentity
 {
     public class AbpResourceOwnerPasswordValidator : IResourceOwnerPasswordValidator
     {
