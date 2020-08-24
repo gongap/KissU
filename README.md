@@ -71,11 +71,15 @@ KissU 框架的主要目标之一就是提供便捷的基础设施来创建微�
 
 ## 框架由来
 
-KissU是一个**开源微服务框架**, 在 [Surging](https://github.com/fanliang11/surging), [ABP](https://github.com/abpframework/abp), [Util](https://github.com/dotnetcore/Util)等众多优秀开源项目基础上整合出的一套专注于基于.NET Core的微服务开发框架.
+KissU是一个**开源微服务框架**, 在 [Surging](https://github.com/fanliang11/surging), [ABP](https://github.com/abpframework/abp) 等众多优秀开源项目基础上整合出的一套专注于基于.NET Core的微服务开发框架.
 
-KissU并不是一个完善的微服务框架，我总是根据自己项目上的需求来扩展它，所以它基本只是为了满足我个人习惯和项目的产物。
+[Surging](https://github.com/fanliang11/surging) 是一个**分布式微服务引擎**,提供高性能RPC远程服务调用，服务引擎支持http、TCP、WS、Mqtt协议,采用Zookeeper、Consul作为surging服务的注册中心，集成了哈希一致性，随机，轮询、压力最小优先作为负载均衡的算法，底层协议集成采用的组件是dotnetty、websocket-sharp、Kestrel.
 
-由于技术更新异常迅速，多年来大量的代码被持续重构，还有更多的代码被抛弃，这也是KissU不完善的一个重要原因。
+[ABP](https://github.com/abpframework/abp) 是一个**开源应用程序框架**,专注于基于ASP.NET Core的Web应用程序开发,但也支持开发其他类型的应用程序.
+
+框架是一种可复用的基础代码库，如果它只解决纯技术问题，可以认为是技术框架，如果它与你的业务相关，则可认为是应用框架（框架，应用框架均没有标准定义，我在此以个人理解描述术语含义，以方便后续讨论，并非权威定义）。
+
+Surging提供的基础类库是最基础的微服务技术框架，Abp基于DDD的经典分层架构思想，实现了众多DDD的概念。KissU将这两个框架结合，利用Surging提供微服务的基础设施，Abp实现具体的服务内部业务逻辑，提供基础设施来实现微服务中的领域驱动设计.
 
 发布KissU的目的，是希望帮助技术还比较落后的.net团队能够搭建出自己的微服务框架，提供一个示范，同时也希望它成为跟我有相似开发习惯和偏好的.net同学的重要工具。
 
