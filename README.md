@@ -7,6 +7,16 @@ KissU 框架的主要目标之一就是提供便捷的基础设施来创建微�
 
 > 源码路径：[源代码 ***C#***](https://github.com/gongap/KissU)
 
+## KissU的由来
+
+KissU是一个**开源微服务框架**, 在 [ABP](https://github.com/aspnetboilerplate/aspnetboilerplate),[Surging](https://www.nopcommerce.com) )等优秀开源代码基础上整合出的一套专注于基于.NET Core的微服务开发框架.
+
+KissU并不是一个完善的微服务框架，我总是根据自己项目上的需求来扩展它，所以它基本只是为了满足我个人习惯和项目的产物。
+
+由于技术更新异常迅速，多年来大量的代码被持续重构，还有更多的代码被抛弃，这也是KissU不完善的一个重要原因。
+
+发布KissU的目的，是希望帮助技术还比较落后的.net团队能够搭建出自己的微服务框架，提供一个示范，同时也希望它成为跟我有相似开发习惯和偏好的.net同学的重要工具。
+
 ## 文档目录
 
 > 本文档会持续更新
