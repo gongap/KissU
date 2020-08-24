@@ -5,14 +5,14 @@
 KissU 框架的主要目标之一就是提供便捷的基础设施来创建微服务解决方案.
 </blockquote>
 
-> 源码路径：[源代码 ***C#***](https://github.com/gongap/KissU/)
+> 源码路径：[源代码 ***C#***](https://github.com/gongap/KissU)
 
 ## 文档目录
 
 > 本文档会持续更新
 
-- 概述
-  - 简介
+- [概述](docs/zh-Hans/Index.md)
+  - 入门
   - 版本更新
 - 教程
   - 服务主机如何构建
