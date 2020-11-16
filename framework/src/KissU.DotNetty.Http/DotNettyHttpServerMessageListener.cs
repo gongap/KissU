@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using DotNetty.Codecs.Http;
-using DotNetty.Common.Concurrency;
 using DotNetty.Transport.Bootstrapping;
 using DotNetty.Transport.Channels;
 using DotNetty.Transport.Channels.Sockets;
@@ -18,6 +17,7 @@ using KissU.CPlatform.Transport;
 using KissU.CPlatform.Transport.Codec;
 using KissU.Serialization;
 using Microsoft.Extensions.Logging;
+using TaskCompletionSource = DotNetty.Common.Concurrency.TaskCompletionSource;
 
 namespace KissU.DotNetty.Http
 {
