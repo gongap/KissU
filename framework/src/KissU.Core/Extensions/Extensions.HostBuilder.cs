@@ -11,28 +11,6 @@ namespace KissU.Extensions
     /// </summary>
     public static partial class Extensions
     {
-        public static IHostBuilder ConfigureMicroServiceHostDefaults(this IHostBuilder hostBuilder)
-        {
-            return hostBuilder
-                .ConfigureHostConfiguration(builder =>
-                {
-                    builder.AddCPlatformFile("servicesettings.json", false, true);
-                    builder.AddCacheFile("cachesettings.json", false, true);
-                })
-                .UseServiceHostBuilder(builder =>
-                {
-                    builder.AddMicroService(option =>
-                    {
-                        option.AddServiceRuntime()
-                            .AddRelateService()
-                            .AddConfigurationWatch()
-                            .AddServiceEngine();
-                    });
-                    builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
-                })
-                .UseServer();
-        }
-
         public static IHostBuilder UseServiceHostBuilder(this IHostBuilder hostBuilder, Action<IContainer> configureDelegates = null)
         {
             return UseServiceHostBuilder(hostBuilder, null, configureDelegates);
