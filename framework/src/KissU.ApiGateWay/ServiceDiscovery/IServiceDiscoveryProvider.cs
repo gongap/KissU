@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using KissU.Address;
 using KissU.ApiGateWay.ServiceDiscovery.Implementation;
 using KissU.CPlatform;
-using KissU.CPlatform.Address;
 
 namespace KissU.ApiGateWay.ServiceDiscovery
 {

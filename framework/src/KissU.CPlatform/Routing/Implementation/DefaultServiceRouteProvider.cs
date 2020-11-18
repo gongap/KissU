@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using KissU.Helpers;
 using KissU.CPlatform.Runtime.Server;
 using KissU.CPlatform.Transport.Implementation;
-using KissU.CPlatform.Utilities;
 using Microsoft.Extensions.Logging;
 using Regex = System.Text.RegularExpressions.Regex;
 
@@ -87,7 +86,7 @@ namespace KissU.CPlatform.Routing.Implementation
         /// <returns>ValueTask&lt;ServiceRoute&gt;.</returns>
         public ValueTask<ServiceRoute> GetLocalRouteByPathRegex(string path)
         {
-            var addess = NetUtils.GetHostAddress();
+            var addess = AppConfig.GetHostAddress();
 
             if (_localRoutes.Count == 0)
             {
@@ -163,7 +162,7 @@ namespace KissU.CPlatform.Routing.Implementation
         /// <returns>Task.</returns>
         public async Task RegisterRoutes(decimal processorTime)
         {
-            var addess = NetUtils.GetHostAddress();
+            var addess = AppConfig.GetHostAddress();
             addess.ProcessorTime = processorTime;
             addess.Weight = AppConfig.ServerOptions.Weight;
             if (addess.Weight > 0)

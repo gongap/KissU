@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using KissU.Address;
 using KissU.Helpers;
-using KissU.CPlatform.Address;
 
 namespace KissU.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation
 {

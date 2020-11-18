@@ -3,8 +3,8 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using KissU.Address;
 using KissU.Serialization;
-using KissU.CPlatform.Address;
 
 namespace KissU.CPlatform.Routing.Implementation
 {

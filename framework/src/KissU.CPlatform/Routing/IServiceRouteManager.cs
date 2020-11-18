@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.CPlatform.Address;
+using KissU.Address;
 using KissU.CPlatform.Routing.Implementation;
 
 namespace KissU.CPlatform.Routing

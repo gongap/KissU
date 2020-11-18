@@ -5,11 +5,10 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Consul;
-using KissU.CPlatform.Address;
+using KissU.Address;
 using KissU.CPlatform.Routing;
 using KissU.CPlatform.Routing.Implementation;
 using KissU.CPlatform.Runtime.Client;
-using KissU.CPlatform.Utilities;
 using KissU.Serialization;
 using KissU.ServiceDiscovery.Consul.Configurations;
 using KissU.ServiceDiscovery.Consul.Internal;
@@ -115,7 +114,7 @@ namespace KissU.ServiceDiscovery.Consul
             try
             {
                 await _consulClientProvider.Check();
-                var hostAddr = NetUtils.GetHostAddress();
+                var hostAddr = CPlatform.AppConfig.GetHostAddress();
                 var serviceRoutes =
                     await GetRoutes(routes.Select(p => $"{_configInfo.RoutePath}{p.ServiceDescriptor.Id}"));
                 foreach (var route in routes)

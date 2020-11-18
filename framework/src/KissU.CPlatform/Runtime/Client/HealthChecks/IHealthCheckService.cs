@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using KissU.CPlatform.Address;
+using KissU.Address;
 using KissU.CPlatform.Runtime.Client.HealthChecks.Implementation;
 
 namespace KissU.CPlatform.Runtime.Client.HealthChecks

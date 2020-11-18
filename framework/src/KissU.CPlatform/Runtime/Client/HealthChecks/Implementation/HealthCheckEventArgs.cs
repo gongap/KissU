@@ -1,4 +1,4 @@
-﻿using KissU.CPlatform.Address;
+﻿using KissU.Address;
 
 namespace KissU.CPlatform.Runtime.Client.HealthChecks.Implementation
 {

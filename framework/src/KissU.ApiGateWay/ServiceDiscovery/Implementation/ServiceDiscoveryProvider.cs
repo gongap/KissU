@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using KissU.Address;
 using KissU.Dependency;
 using KissU.CPlatform;
-using KissU.CPlatform.Address;
 using KissU.CPlatform.Routing;
 using KissU.CPlatform.Runtime.Client.HealthChecks;
 

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace KissU.CPlatform.Utilities
+namespace KissU.Helpers
 {
     /// <summary>
     /// 任务助手.
     /// </summary>
-    internal static class TaskHelpers
+    public static class TaskHelpers
     {
         private static readonly Task _defaultCompleted = Task.FromResult(default(AsyncVoid));
         private static readonly Task<object> _completedTaskReturningNull = Task.FromResult<object>(null);
@@ -15,7 +15,7 @@ namespace KissU.CPlatform.Utilities
         /// 取消此实例.
         /// </summary>
         /// <returns>Task.</returns>
-        internal static Task Canceled()
+        public static Task Canceled()
         {
             return CancelCache<AsyncVoid>.Canceled;
         }
@@ -25,7 +25,7 @@ namespace KissU.CPlatform.Utilities
         /// </summary>
         /// <typeparam name="TResult">The type of the t result.</typeparam>
         /// <returns>Task&lt;TResult&gt;.</returns>
-        internal static Task<TResult> Canceled<TResult>()
+        public static Task<TResult> Canceled<TResult>()
         {
             return CancelCache<TResult>.Canceled;
         }
@@ -34,7 +34,7 @@ namespace KissU.CPlatform.Utilities
         /// 完成此实例.
         /// </summary>
         /// <returns>Task.</returns>
-        internal static Task Completed()
+        public static Task Completed()
         {
             return _defaultCompleted;
         }
@@ -44,7 +44,7 @@ namespace KissU.CPlatform.Utilities
         /// </summary>
         /// <param name="exception">The exception.</param>
         /// <returns>Task.</returns>
-        internal static Task FromError(Exception exception)
+        public static Task FromError(Exception exception)
         {
             return FromError<AsyncVoid>(exception);
         }
@@ -55,7 +55,7 @@ namespace KissU.CPlatform.Utilities
         /// <typeparam name="TResult">The type of the t result.</typeparam>
         /// <param name="exception">The exception.</param>
         /// <returns>Task&lt;TResult&gt;.</returns>
-        internal static Task<TResult> FromError<TResult>(Exception exception)
+        public static Task<TResult> FromError<TResult>(Exception exception)
         {
             var tcs = new TaskCompletionSource<TResult>();
             tcs.SetException(exception);
@@ -66,7 +66,7 @@ namespace KissU.CPlatform.Utilities
         /// 返回空结果
         /// </summary>
         /// <returns>Task&lt;System.Object&gt;.</returns>
-        internal static Task<object> NullResult()
+        public static Task<object> NullResult()
         {
             return _completedTaskReturningNull;
         }

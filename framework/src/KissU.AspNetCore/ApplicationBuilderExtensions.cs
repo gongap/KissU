@@ -1,7 +1,7 @@
 using System.Linq;
 using System.Net;
 using JetBrains.Annotations;
-using KissU.CPlatform.Address;
+using KissU.Address;
 using KissU.CPlatform.Runtime.Client;
 using KissU.CPlatform.Runtime.Server;
 using KissU.Helpers;

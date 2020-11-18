@@ -2,7 +2,6 @@
 using System.Threading;
 using System.Threading.Tasks;
 using KissU.Helpers;
-using KissU.CPlatform.Utilities;
 
 namespace KissU.CPlatform.Filters.Implementation
 {

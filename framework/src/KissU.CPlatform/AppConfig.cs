@@ -1,6 +1,8 @@
 ﻿using System;
+using KissU.Address;
 using KissU.CPlatform.Configurations;
 using KissU.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
+using KissU.Helpers;
 using Microsoft.Extensions.Configuration;
 
 namespace KissU.CPlatform
@@ -10,6 +12,8 @@ namespace KissU.CPlatform
     /// </summary>
     public class AppConfig
     {
+        private static AddressModel _host;
+
         /// <summary>
         /// 负载均衡模式
         /// </summary>
@@ -61,6 +65,40 @@ namespace KissU.CPlatform
         public static IConfigurationSection GetSection(string name)
         {
             return Configuration?.GetSection(name);
+        }
+
+
+        /// <summary>
+        /// Gets the host address.
+        /// </summary>
+        /// <returns>AddressModel.</returns>
+        public static AddressModel GetHostAddress()
+        {
+            if (_host != null)
+            {
+                return _host;
+            }
+
+            var ports = AppConfig.ServerOptions.Ports;
+            var address = NetUtils.GetHostAddress(AppConfig.ServerOptions.Ip);
+            var port = AppConfig.ServerOptions.Port;
+            var mappingIp = AppConfig.ServerOptions.MappingIP ?? address;
+            var mappingPort = AppConfig.ServerOptions.MappingPort;
+            if (mappingPort == 0)
+            {
+                mappingPort = port;
+            }
+
+            _host = new IpAddressModel
+            {
+                HttpPort = ports.HttpPort,
+                Ip = mappingIp,
+                Port = mappingPort,
+                MqttPort = ports.MQTTPort,
+                WanIp = AppConfig.ServerOptions.WanIp,
+                WsPort = ports.WSPort
+            };
+            return _host;
         }
     }
 }

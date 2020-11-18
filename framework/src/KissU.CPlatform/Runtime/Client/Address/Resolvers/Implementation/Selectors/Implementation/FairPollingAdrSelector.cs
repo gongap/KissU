@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using KissU.CPlatform.Address;
+using KissU.Address;
 using KissU.CPlatform.Routing;
 using KissU.CPlatform.Routing.Implementation;
 using KissU.CPlatform.Runtime.Client.HealthChecks;

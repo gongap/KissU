@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using KissU.CPlatform.Address;
+using KissU.Address;
 using KissU.CPlatform.Mqtt;
 using KissU.CPlatform.Mqtt.Implementation;
 using KissU.CPlatform.Runtime.Client.HealthChecks;

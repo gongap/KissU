@@ -4,7 +4,6 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
 using Autofac;
-using Autofac.Extensions.DependencyInjection;
 using KissU.Convertibles;
 using KissU.Convertibles.Implementation;
 using KissU.Dependency;

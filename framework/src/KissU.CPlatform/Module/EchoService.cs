@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
+using KissU.Address;
 using KissU.Dependency;
-using KissU.CPlatform.Address;
 using KissU.CPlatform.HashAlgorithms;
 using KissU.CPlatform.Routing;
 using KissU.CPlatform.Runtime.Client;

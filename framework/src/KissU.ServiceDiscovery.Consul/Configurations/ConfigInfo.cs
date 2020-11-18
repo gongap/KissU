@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using KissU.CPlatform.Address;
+using KissU.Address;
 
 namespace KissU.ServiceDiscovery.Consul.Configurations
 {

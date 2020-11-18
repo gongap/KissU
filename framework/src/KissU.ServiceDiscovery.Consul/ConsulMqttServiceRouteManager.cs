@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Consul;
-using KissU.CPlatform.Address;
+using KissU.Address;
 using KissU.CPlatform.Mqtt;
 using KissU.CPlatform.Mqtt.Implementation;
 using KissU.CPlatform.Runtime.Client;
-using KissU.CPlatform.Utilities;
 using KissU.Serialization;
 using KissU.ServiceDiscovery.Consul.Configurations;
 using KissU.ServiceDiscovery.Consul.Internal;
@@ -113,7 +112,7 @@ namespace KissU.ServiceDiscovery.Consul
         /// <returns>一个任务。</returns>
         public override async Task SetRoutesAsync(IEnumerable<MqttServiceRoute> routes)
         {
-            var hostAddr = NetUtils.GetHostAddress();
+            var hostAddr = CPlatform.AppConfig.GetHostAddress();
             var mqttServiceRoutes =
                 await GetRoutes(routes.Select(p => $"{_configInfo.MqttRoutePath}{p.MqttDescriptor.Topic}"));
             foreach (var route in routes)

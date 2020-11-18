@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Text;
+using KissU.CPlatform;
 using KissU.CPlatform.Diagnostics;
 using KissU.CPlatform.Messages;
-using KissU.CPlatform.Utilities;
 using KissU.Serialization;
 using KissUEvents = KissU.CPlatform.Diagnostics.DiagnosticListenerExtensions;
 
@@ -72,7 +72,7 @@ namespace KissU.ServiceProxy.Diagnostics
             context.Span.Peer = new StringOrIntValue(eventData.RemoteAddress);
             context.Span.AddTag(Tags.RPC_METHOD, eventData.Method);
             context.Span.AddTag(Tags.RPC_PARAMETERS, _serializer.Serialize(message.Parameters));
-            context.Span.AddTag(Tags.RPC_LOCAL_ADDRESS, NetUtils.GetHostAddress().ToString());
+            context.Span.AddTag(Tags.RPC_LOCAL_ADDRESS, AppConfig.GetHostAddress().ToString());
             _resultDictionary.TryAdd(eventData.OperationId.ToString(), context);
         }
 

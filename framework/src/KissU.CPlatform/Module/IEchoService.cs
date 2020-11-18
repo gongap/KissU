@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
+using KissU.Address;
 using KissU.Dependency;
-using KissU.CPlatform.Address;
 using KissU.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation;
 using KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.CPlatform.Support.Attributes;

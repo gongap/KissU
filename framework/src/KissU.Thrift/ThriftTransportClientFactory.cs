@@ -2,7 +2,7 @@
 using System.Collections.Concurrent;
 using System.Net;
 using System.Threading.Tasks;
-using KissU.CPlatform.Address;
+using KissU.Address;
 using KissU.CPlatform.Runtime.Client.HealthChecks;
 using KissU.CPlatform.Runtime.Server;
 using KissU.CPlatform.Transport;

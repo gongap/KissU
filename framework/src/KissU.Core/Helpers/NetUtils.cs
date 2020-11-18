@@ -2,9 +2,8 @@
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using KissU.Extensions;
-using KissU.CPlatform.Address;
 
-namespace KissU.CPlatform.Utilities
+namespace KissU.Helpers
 {
     /// <summary>
     /// 网络工具.
@@ -25,7 +24,6 @@ namespace KissU.CPlatform.Utilities
         private const int MAX_PORT = 65535;
         private const string LOCAL_IP_PATTERN = "127(\\.\\d{1,3}){3}$";
         private const string IP_PATTERN = "\\d{1,3}(\\.\\d{1,3}){3,5}$";
-        private static AddressModel _host;
 
         /// <summary>
         /// Determines whether [is invalid port] [the specified port].
@@ -126,39 +124,6 @@ namespace KissU.CPlatform.Utilities
             }
 
             return result;
-        }
-
-        /// <summary>
-        /// Gets the host address.
-        /// </summary>
-        /// <returns>AddressModel.</returns>
-        public static AddressModel GetHostAddress()
-        {
-            if (_host != null)
-            {
-                return _host;
-            }
-
-            var ports = AppConfig.ServerOptions.Ports;
-            var address = GetHostAddress(AppConfig.ServerOptions.Ip);
-            var port = AppConfig.ServerOptions.Port;
-            var mappingIp = AppConfig.ServerOptions.MappingIP ?? address;
-            var mappingPort = AppConfig.ServerOptions.MappingPort;
-            if (mappingPort == 0)
-            {
-                mappingPort = port;
-            }
-
-            _host = new IpAddressModel
-            {
-                HttpPort = ports.HttpPort,
-                Ip = mappingIp,
-                Port = mappingPort,
-                MqttPort = ports.MQTTPort,
-                WanIp = AppConfig.ServerOptions.WanIp,
-                WsPort = ports.WSPort
-            };
-            return _host;
         }
     }
 }

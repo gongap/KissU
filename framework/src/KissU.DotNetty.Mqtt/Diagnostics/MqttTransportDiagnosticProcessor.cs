@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Text;
+using KissU.CPlatform;
 using KissU.CPlatform.Diagnostics;
 using KissU.CPlatform.Messages;
-using KissU.CPlatform.Utilities;
 using KissU.Serialization;
 using KissUEvents = KissU.CPlatform.Diagnostics.DiagnosticListenerExtensions;
 
@@ -74,7 +74,7 @@ namespace KissU.DotNetty.Mqtt.Diagnostics
             context.Span.AddTag(Tags.MQTT_CLIENT_ID, eventData.TraceId);
             context.Span.AddTag(Tags.MQTT_METHOD, eventData.Method);
             context.Span.AddTag(Tags.REST_PARAMETERS, _serializer.Serialize(message.Parameters));
-            context.Span.AddTag(Tags.MQTT_BROKER_ADDRESS, NetUtils.GetHostAddress().ToString());
+            context.Span.AddTag(Tags.MQTT_BROKER_ADDRESS, AppConfig.GetHostAddress().ToString());
         }
 
         /// <summary>

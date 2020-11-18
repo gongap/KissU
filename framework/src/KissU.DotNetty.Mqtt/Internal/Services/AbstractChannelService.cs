@@ -8,7 +8,6 @@ using DotNetty.Transport.Channels;
 using KissU.CPlatform;
 using KissU.CPlatform.Ids;
 using KissU.CPlatform.Messages;
-using KissU.CPlatform.Utilities;
 using KissU.DotNetty.Mqtt.Internal.Channel;
 using KissU.DotNetty.Mqtt.Internal.Messages;
 using KissU.DotNetty.Mqtt.Internal.Runtime;
@@ -287,7 +286,7 @@ namespace KissU.DotNetty.Mqtt.Internal.Services
         protected async Task RegisterMqttBroker(string topic)
         {
             var addresses = await _mqttBrokerEntryManger.GetMqttBrokerAddress(topic);
-            var host = NetUtils.GetHostAddress();
+            var host = AppConfig.GetHostAddress();
             if (addresses == null || !addresses.Any(p => p.ToString() == host.ToString()))
                 await _mqttBrokerEntryManger.Register(topic, host);
         }
@@ -301,11 +300,11 @@ namespace KissU.DotNetty.Mqtt.Internal.Services
             if (Topics.ContainsKey(topic))
             {
                 if (Topics[topic].Count() == 0)
-                    await _mqttBrokerEntryManger.CancellationReg(topic, NetUtils.GetHostAddress());
+                    await _mqttBrokerEntryManger.CancellationReg(topic, AppConfig.GetHostAddress());
             }
             else
             {
-                await _mqttBrokerEntryManger.CancellationReg(topic, NetUtils.GetHostAddress());
+                await _mqttBrokerEntryManger.CancellationReg(topic, AppConfig.GetHostAddress());
             }
         }
     }

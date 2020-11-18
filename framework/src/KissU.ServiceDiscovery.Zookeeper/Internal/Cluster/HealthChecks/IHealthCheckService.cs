@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using KissU.CPlatform.Address;
+using KissU.Address;
 
 namespace KissU.ServiceDiscovery.Zookeeper.Internal.Cluster.HealthChecks
 {

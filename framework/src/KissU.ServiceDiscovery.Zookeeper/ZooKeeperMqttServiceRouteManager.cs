@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using KissU.CPlatform.Address;
+using KissU.Address;
 using KissU.CPlatform.Mqtt;
 using KissU.CPlatform.Mqtt.Implementation;
-using KissU.CPlatform.Utilities;
 using KissU.Serialization;
 using KissU.ServiceDiscovery.Zookeeper.Configurations;
 using KissU.ServiceDiscovery.Zookeeper.Internal;
@@ -206,7 +205,7 @@ namespace KissU.ServiceDiscovery.Zookeeper
         /// <returns>一个任务。</returns>
         public override async Task SetRoutesAsync(IEnumerable<MqttServiceRoute> routes)
         {
-            var hostAddr = NetUtils.GetHostAddress();
+            var hostAddr = CPlatform.AppConfig.GetHostAddress();
             var serviceRoutes = await GetRoutes(routes.Select(p => p.MqttDescriptor.Topic));
             if (serviceRoutes.Count() > 0)
             {

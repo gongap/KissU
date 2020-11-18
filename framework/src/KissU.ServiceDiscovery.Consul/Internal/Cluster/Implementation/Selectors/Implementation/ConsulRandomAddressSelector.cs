@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using KissU.CPlatform.Address;
+using KissU.Address;
 using KissU.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors;
 
 namespace KissU.ServiceDiscovery.Consul.Internal.Cluster.Implementation.Selectors.Implementation

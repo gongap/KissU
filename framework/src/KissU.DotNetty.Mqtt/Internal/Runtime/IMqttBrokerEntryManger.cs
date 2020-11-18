@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.CPlatform.Address;
+using KissU.Address;
 
 namespace KissU.DotNetty.Mqtt.Internal.Runtime
 {

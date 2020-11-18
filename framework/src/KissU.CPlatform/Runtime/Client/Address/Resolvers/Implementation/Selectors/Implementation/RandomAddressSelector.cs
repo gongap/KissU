@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using KissU.CPlatform.Address;
+using KissU.Address;
 
 namespace KissU.CPlatform.Runtime.Client.Address.Resolvers.Implementation.Selectors.Implementation
 {

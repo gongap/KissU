@@ -2,10 +2,10 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using KissU.CPlatform;
 using KissU.CPlatform.Runtime.Client;
 using KissU.CPlatform.Runtime.Client.HealthChecks;
 using KissU.CPlatform.Transport;
-using KissU.CPlatform.Utilities;
 using KissU.Exceptions;
 using KissU.Extensions;
 using Microsoft.Extensions.Logging;
@@ -64,7 +64,7 @@ namespace KissU.DotNetty.Mqtt.Internal.Runtime.Implementation
             if (mqttContext != null)
             {
                 var invokeMessage = context.InvokeMessage;
-                var host = NetUtils.GetHostAddress();
+                var host = AppConfig.GetHostAddress();
                 var addresses = await _mqttBrokerEntryManger.GetMqttBrokerAddress(mqttContext.topic);
                 addresses = addresses.Except(new[] {host});
                 foreach (var address in addresses)
@@ -100,7 +100,7 @@ namespace KissU.DotNetty.Mqtt.Internal.Runtime.Implementation
             if (mqttContext != null)
             {
                 var invokeMessage = context.InvokeMessage;
-                var host = NetUtils.GetHostAddress();
+                var host = AppConfig.GetHostAddress();
                 var addresses = await _mqttBrokerEntryManger.GetMqttBrokerAddress(mqttContext.topic);
                 if (addresses != null)
                 {

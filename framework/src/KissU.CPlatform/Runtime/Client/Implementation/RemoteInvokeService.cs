@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using KissU.Address;
 using KissU.Exceptions;
 using KissU.Extensions;
-using KissU.CPlatform.Address;
 using KissU.CPlatform.HashAlgorithms;
 using KissU.CPlatform.Messages;
 using KissU.CPlatform.Runtime.Client.Address.Resolvers;

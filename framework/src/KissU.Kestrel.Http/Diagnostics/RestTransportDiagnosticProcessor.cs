@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Text;
+using KissU.CPlatform;
 using KissU.CPlatform.Diagnostics;
 using KissU.CPlatform.Messages;
-using KissU.CPlatform.Utilities;
 using KissU.Serialization;
 
 namespace KissU.Kestrel.Http.Diagnostics
@@ -70,7 +70,7 @@ namespace KissU.Kestrel.Http.Diagnostics
             context.Span.Peer = new StringOrIntValue(eventData.RemoteAddress);
             context.Span.AddTag(Tags.REST_METHOD, eventData.Method);
             context.Span.AddTag(Tags.REST_PARAMETERS, _serializer.Serialize(message.Parameters));
-            context.Span.AddTag(Tags.REST_LOCAL_ADDRESS, NetUtils.GetHostAddress().ToString());
+            context.Span.AddTag(Tags.REST_LOCAL_ADDRESS, AppConfig.GetHostAddress().ToString());
             _resultDictionary.TryAdd(eventData.OperationId.ToString(), context);
         }
 
