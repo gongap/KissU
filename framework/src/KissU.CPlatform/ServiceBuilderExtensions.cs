@@ -446,7 +446,6 @@ namespace KissU.CPlatform
         /// <exception cref="ArgumentNullException">builder</exception>
         public static IServiceBuilder RegisterModules(this IServiceBuilder builder, params string[] virtualPaths)
         {
-            var services = builder.Services;
             var containerBuilder = builder.ContainerBuilder;
             var referenceAssemblies = ModuleHelper.GetAssemblies(virtualPaths);
             if (builder == null)

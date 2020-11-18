@@ -67,7 +67,6 @@ namespace KissU.CPlatform
             return Configuration?.GetSection(name);
         }
 
-
         /// <summary>
         /// Gets the host address.
         /// </summary>
@@ -79,11 +78,11 @@ namespace KissU.CPlatform
                 return _host;
             }
 
-            var ports = AppConfig.ServerOptions.Ports;
-            var address = NetUtils.GetHostAddress(AppConfig.ServerOptions.Ip);
-            var port = AppConfig.ServerOptions.Port;
-            var mappingIp = AppConfig.ServerOptions.MappingIP ?? address;
-            var mappingPort = AppConfig.ServerOptions.MappingPort;
+            var ports = ServerOptions.Ports;
+            var address = NetUtils.GetHostAddress(ServerOptions.Ip);
+            var port = ServerOptions.Port;
+            var mappingIp = ServerOptions.MappingIP ?? address;
+            var mappingPort = ServerOptions.MappingPort;
             if (mappingPort == 0)
             {
                 mappingPort = port;
@@ -95,7 +94,7 @@ namespace KissU.CPlatform
                 Ip = mappingIp,
                 Port = mappingPort,
                 MqttPort = ports.MQTTPort,
-                WanIp = AppConfig.ServerOptions.WanIp,
+                WanIp = ServerOptions.WanIp,
                 WsPort = ports.WSPort
             };
             return _host;

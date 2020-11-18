@@ -20,7 +20,7 @@ namespace KissU.EventBus.RabbitMQ
         /// <returns>IHostBuilder.</returns>
         public static IHostBuilder SubscribeAt(this IHostBuilder hostBuilder)
         {
-            return hostBuilder.UseServiceHostBuilder(mapper =>
+            return hostBuilder.ConfigureMicroServiceHost(mapper =>
             {
                 mapper.Resolve<IServiceEngineLifetime>().ServiceEngineStarted.Register(() =>
                 {

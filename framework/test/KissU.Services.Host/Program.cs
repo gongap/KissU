@@ -24,7 +24,7 @@ namespace KissU.Services
                     builder.AddCPlatformFile("servicesettings.json", false, true);
                     builder.AddCacheFile("cachesettings.json", false, true);
                 })
-                .UseServiceHostBuilder(builder =>
+                .ConfigureMicroServiceHost(builder =>
                 {
                     builder.AddMicroService(option =>
                     {

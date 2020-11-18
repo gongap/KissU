@@ -37,7 +37,7 @@ namespace KissU.CPlatform
         /// <returns>IHostBuilder.</returns>
         public static IHostBuilder UseServer(this IHostBuilder hostBuilder, string ip, int port, string token = "True")
         {
-            return hostBuilder.UseServiceHostBuilder(async mapper =>
+            return hostBuilder.ConfigureMicroServiceHost(async mapper =>
             {
                 BuildServiceEngine(mapper);
                 mapper.Resolve<IServiceTokenGenerator>().GeneratorToken(token);
@@ -88,7 +88,7 @@ namespace KissU.CPlatform
         /// <returns>IHostBuilder.</returns>
         public static IHostBuilder UseClient(this IHostBuilder hostBuilder)
         {
-            return hostBuilder.UseServiceHostBuilder(mapper =>
+            return hostBuilder.ConfigureMicroServiceHost(mapper =>
             {
                 var serviceEntryManager = mapper.Resolve<IServiceEntryManager>();
                 var addressDescriptors = serviceEntryManager.GetEntries().Select(i =>

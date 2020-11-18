@@ -25,7 +25,7 @@ namespace KissU.Logging.Nlog
             string nlogConfigFile = "nLog.config")
         {
             hostBuilder.ConfigureLogging(logger => { logger.AddConfiguration(AppConfig.GetSection("Logging")); });
-            return hostBuilder.UseServiceHostBuilder(mapper =>
+            return hostBuilder.ConfigureMicroServiceHost(mapper =>
             {
                 var section = AppConfig.GetSection("Logging");
                 nlogConfigFile = EnvironmentHelper.GetEnvironmentVariable(nlogConfigFile);
@@ -45,7 +45,7 @@ namespace KissU.Logging.Nlog
             string nlogConfigFile = "nLog.config")
         {
             hostBuilder.ConfigureLogging(logger => { logger.SetMinimumLevel(minLevel); });
-            return hostBuilder.UseServiceHostBuilder(mapper =>
+            return hostBuilder.ConfigureMicroServiceHost(mapper =>
             {
                 nlogConfigFile = EnvironmentHelper.GetEnvironmentVariable(nlogConfigFile);
                 LogManager.LoadConfiguration(nlogConfigFile);
@@ -64,7 +64,7 @@ namespace KissU.Logging.Nlog
             Func<string, LogLevel, bool> filter, string nlogConfigFile = "nLog.config")
         {
             hostBuilder.ConfigureLogging(logger => { logger.AddFilter(filter); });
-            return hostBuilder.UseServiceHostBuilder(mapper =>
+            return hostBuilder.ConfigureMicroServiceHost(mapper =>
             {
                 nlogConfigFile = EnvironmentHelper.GetEnvironmentVariable(nlogConfigFile);
                 LogManager.LoadConfiguration(nlogConfigFile);

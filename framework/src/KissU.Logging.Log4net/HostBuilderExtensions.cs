@@ -22,7 +22,7 @@ namespace KissU.Logging.Log4net
         public static IHostBuilder UseLog4net(this IHostBuilder hostBuilder,
             string log4NetConfigFile = "log4net.config")
         {
-            return hostBuilder.UseServiceHostBuilder(mapper =>
+            return hostBuilder.ConfigureMicroServiceHost(mapper =>
             {
                 var section = AppConfig.GetSection("Logging");
                 log4NetConfigFile = EnvironmentHelper.GetEnvironmentVariable(log4NetConfigFile);
@@ -41,7 +41,7 @@ namespace KissU.Logging.Log4net
             string log4NetConfigFile = "log4net.config")
         {
             hostBuilder.ConfigureLogging(logger => { logger.SetMinimumLevel(minLevel); });
-            return hostBuilder.UseServiceHostBuilder(mapper =>
+            return hostBuilder.ConfigureMicroServiceHost(mapper =>
             {
                 log4NetConfigFile = EnvironmentHelper.GetEnvironmentVariable(log4NetConfigFile);
                 mapper.Resolve<ILoggerFactory>().AddProvider(new Log4NetProvider(log4NetConfigFile));
@@ -59,7 +59,7 @@ namespace KissU.Logging.Log4net
             Func<string, LogLevel, bool> filter, string log4NetConfigFile = "log4net.config")
         {
             hostBuilder.ConfigureLogging(logger => { logger.AddFilter(filter); });
-            return hostBuilder.UseServiceHostBuilder(mapper =>
+            return hostBuilder.ConfigureMicroServiceHost(mapper =>
             {
                 log4NetConfigFile = EnvironmentHelper.GetEnvironmentVariable(log4NetConfigFile);
                 mapper.Resolve<ILoggerFactory>().AddProvider(new Log4NetProvider(log4NetConfigFile));

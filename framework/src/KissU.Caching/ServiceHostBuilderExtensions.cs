@@ -19,7 +19,7 @@ namespace KissU.Caching
         /// <returns>IHostBuilder.</returns>
         public static IHostBuilder UseServiceCache(this IHostBuilder hostBuilder)
         {
-            return hostBuilder.UseServiceHostBuilder(mapper =>
+            return hostBuilder.ConfigureMicroServiceHost(mapper =>
             {
                 var serviceCacheProvider = mapper.Resolve<ICacheNodeProvider>();
                 var addressDescriptors = serviceCacheProvider.GetServiceCaches().ToList();

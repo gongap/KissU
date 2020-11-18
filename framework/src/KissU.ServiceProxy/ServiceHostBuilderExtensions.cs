@@ -17,7 +17,7 @@ namespace KissU.ServiceProxy
         /// <returns>IHostBuilder.</returns>
         public static IHostBuilder UseProxy(this IHostBuilder hostBuilder)
         {
-            return hostBuilder.UseServiceHostBuilder(mapper =>
+            return hostBuilder.ConfigureMicroServiceHost(mapper =>
             {
                 mapper.Resolve<IServiceEngineLifetime>().ServiceEngineStarted.Register(() =>
                 {
