@@ -17,7 +17,7 @@ namespace KissU.Extensions
 
         public static IHostBuilder ConfigureMicroServiceHost(this IHostBuilder hostBuilder, Action<ContainerBuilder> configurationAction, Action<IContainer> configureDelegates = null)
         {
-            var serviceHostBuilder = hostBuilder is IServiceHostBuilder builder ?? builder : new ServiceHostBuilder(hostBuilder);
+            var serviceHostBuilder = hostBuilder is IServiceHostBuilder builder ? builder : new ServiceHostBuilder(hostBuilder);
             if (configurationAction != null)
             {
                 serviceHostBuilder.ConfigureContainer(configurationAction);
