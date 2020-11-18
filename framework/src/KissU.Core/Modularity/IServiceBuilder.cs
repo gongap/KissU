@@ -1,5 +1,4 @@
 ﻿using Autofac;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace KissU.Modularity
 {
@@ -12,10 +11,5 @@ namespace KissU.Modularity
         /// 容器构建器
         /// </summary>
         ContainerBuilder ContainerBuilder { get; set; }
-
-        /// <summary>
-        /// 服务集合
-        /// </summary>
-        IServiceCollection Services { get; set; }
     }
 }
