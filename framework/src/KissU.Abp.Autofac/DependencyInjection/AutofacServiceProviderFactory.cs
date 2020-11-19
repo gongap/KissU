@@ -2,7 +2,6 @@
 using Autofac;
 using Autofac.Core;
 using Autofac.Extensions.DependencyInjection;
-using KissU.Dependency;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace KissU.Abp.Autofac.DependencyInjection
@@ -65,8 +64,6 @@ namespace KissU.Abp.Autofac.DependencyInjection
             if (containerBuilder == null) throw new ArgumentNullException(nameof(containerBuilder));
 
             var container = containerBuilder.Build();
-
-            ServiceLocator.Register(container);
 
             _configureDelegates(container);
 

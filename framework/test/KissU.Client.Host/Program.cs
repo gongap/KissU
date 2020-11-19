@@ -9,6 +9,7 @@ using KissU.Caching;
 using KissU.CPlatform;
 using KissU.ServiceProxy;
 using Microsoft.Extensions.DependencyInjection;
+using KissU.Abp.Autofac.Extensions;
 
 namespace KissU.Client.Host
 {
@@ -26,7 +27,7 @@ namespace KissU.Client.Host
                     builder.AddCPlatformFile("servicesettings.json", false, true);
                     builder.AddCacheFile("cachesettings.json", false, true);
                 })
-                .ConfigureMicroServiceHost(builder =>
+                .ConfigureContainer(builder =>
                 {
                     builder.AddMicroService(service => { service.AddClient().AddCache(); });
                     builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
@@ -35,6 +36,7 @@ namespace KissU.Client.Host
                 {
                     services.AddHostedService<AppHostedService>();
                 })
-                .UseClient();
+                .UseClient()
+                .UseAutofac();
     }
 }

@@ -347,6 +347,8 @@ namespace KissU.CPlatform
         public static void AddMicroService(this ContainerBuilder builder, Action<IServiceBuilder> option)
         {
             option.Invoke(builder.AddCoreService());
+            builder.RegisterBuildCallback(ServiceLocator.Register);
+            builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
         }
 
         /// <summary>

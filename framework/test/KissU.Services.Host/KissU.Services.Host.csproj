@@ -15,6 +15,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\framework\src\KissU.Abp.Autofac\KissU.Abp.Autofac.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Abp.Business\KissU.Abp.Business.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.CPlatform\KissU.CPlatform.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.WebSocket\KissU.WebSocket.csproj" />

@@ -16,7 +16,7 @@ namespace KissU.EventBus.Kafka
         /// <returns>IHostBuilder.</returns>
         public static IHostBuilder SubscribeAt(this IHostBuilder hostBuilder)
         {
-            return hostBuilder.ConfigureMicroServiceHost(mapper => { mapper.Resolve<ISubscriptionAdapt>().SubscribeAt(); });
+            return hostBuilder.ConfigureContainer(mapper => { mapper.Resolve<ISubscriptionAdapt>().SubscribeAt(); });
         }
     }
 }

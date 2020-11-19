@@ -1,6 +1,5 @@
 ﻿using System;
 using Autofac;
-using KissU.ServiceHosting;
 using Microsoft.Extensions.Hosting;
 
 namespace KissU.Extensions
@@ -10,25 +9,32 @@ namespace KissU.Extensions
     /// </summary>
     public static partial class Extensions
     {
-        public static IHostBuilder ConfigureMicroServiceHost(this IHostBuilder hostBuilder, Action<IContainer> configureDelegates = null)
+        public static IHostBuilder ConfigureContainer(this IHostBuilder hostBuilder, Action<IContainer> configureDelegates)
         {
-            return ConfigureMicroServiceHost(hostBuilder, null, configureDelegates);
+            return ConfigureContainer(hostBuilder, null, configureDelegates);
         }
 
-        public static IHostBuilder ConfigureMicroServiceHost(this IHostBuilder hostBuilder, Action<ContainerBuilder> configurationAction, Action<IContainer> configureDelegates = null)
+        public static IHostBuilder ConfigureContainer(this IHostBuilder hostBuilder, Action<ContainerBuilder> configurationAction)
         {
-            var serviceHostBuilder = hostBuilder is IServiceHostBuilder builder ? builder : new ServiceHostBuilder(hostBuilder);
+            return hostBuilder.ConfigureContainer(configurationAction, null);
+        }
+
+        public static IHostBuilder ConfigureContainer(this IHostBuilder hostBuilder, Action<ContainerBuilder> configurationAction = null, Action<IContainer> configureDelegates = null)
+        {
             if (configurationAction != null)
             {
-                serviceHostBuilder.ConfigureContainer(configurationAction);
+                hostBuilder.ConfigureContainer<ContainerBuilder>(configurationAction);
             }
 
             if (configureDelegates != null)
             {
-                serviceHostBuilder.Configure(configureDelegates);
+                hostBuilder.ConfigureContainer<ContainerBuilder>(builder =>
+                {
+                    builder.RegisterBuildCallback(configureDelegates);
+                });
             }
 
-            return serviceHostBuilder;
+            return hostBuilder;
         }
     }
 }
