@@ -1,4 +1,5 @@
-﻿using Localization.Resources.AbpUi;
+﻿using KissU.Modularity;
+using Localization.Resources.AbpUi;
 using Volo.Abp.Identity;
 using Volo.Abp.Identity.Localization;
 using Volo.Abp.Localization;
@@ -11,7 +12,7 @@ namespace KissU.Modules.Identity.Service.Contracts
         typeof(AbpIdentityApplicationContractsModule),
         typeof(AbpUiModule)
     )]
-    public class IdentityServiceContractsModule : AbpModule
+    public class IdentityServiceContractsModule : AbpBusunessModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
