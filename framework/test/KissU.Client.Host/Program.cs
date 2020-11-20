@@ -9,7 +9,6 @@ using KissU.Caching;
 using KissU.CPlatform;
 using KissU.ServiceProxy;
 using Microsoft.Extensions.DependencyInjection;
-using KissU.Abp.Autofac.Extensions;
 
 namespace KissU.Client.Host
 {

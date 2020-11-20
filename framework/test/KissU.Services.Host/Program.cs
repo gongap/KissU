@@ -4,6 +4,7 @@ using KissU.CPlatform;
 using KissU.CPlatform.Configurations;
 using KissU.Extensions;
 using KissU.ServiceProxy;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 namespace KissU.Services
@@ -31,6 +32,10 @@ namespace KissU.Services
                             .AddConfigurationWatch()
                             .AddServiceEngine();
                     });
+                })
+                .ConfigureServices(services =>
+                {
+                    services.AddApplication<AppModule>();
                 })
                 .UseServer()
                 .UseAutofac();
