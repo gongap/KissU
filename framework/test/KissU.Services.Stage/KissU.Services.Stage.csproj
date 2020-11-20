@@ -24,7 +24,6 @@
     <ProjectReference Include="..\..\..\framework\src\KissU.DotNetty.DNS\KissU.DotNetty.DNS.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.DotNetty.WebSocket\KissU.DotNetty.WebSocket.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Kestrel.Http\KissU.Kestrel.Http.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Kestrel.Nlog\KissU.Kestrel.Nlog.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Kestrel.Swagger\KissU.Kestrel.Swagger.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Kestrel.Stage\KissU.Kestrel.Stage.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Kestrel.IdentityServer\KissU.Kestrel.IdentityServer.csproj" />
@@ -44,6 +43,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\modules\identity\KissU.Modules.Identity.Service\KissU.Modules.Identity.Service.csproj" />
+    <ProjectReference Include="..\..\src\KissU.Logging.Log4net\KissU.Logging.Log4net.csproj" />
+    <ProjectReference Include="..\..\src\KissU.Logging.Serilog\KissU.Logging.Serilog.csproj" />
   </ItemGroup>
 
   <ItemGroup>

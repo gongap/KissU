@@ -116,10 +116,6 @@ namespace KissU.Kestrel.Http
                                 ConfigureHost(context, options, address);
                             })
                             .ConfigureServices(ConfigureServices)
-                            .ConfigureLogging(logger =>
-                            {
-                                logger.AddConfiguration(AppConfig.GetSection("Logging"));
-                            })
                             .Configure(AppResolve);
 
                         if (Directory.Exists(AppConfig.ServerOptions.WebRootPath))
