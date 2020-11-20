@@ -7,9 +7,12 @@ using Microsoft.Extensions.Hosting;
 using KissU.Extensions;
 using KissU.Caching;
 using KissU.CPlatform;
+using KissU.Helpers;
+using KissU.Modularity;
 using KissU.ServiceProxy;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Volo.Abp.Modularity.PlugIns;
 
 namespace KissU.Client.Host
 {
@@ -35,7 +38,12 @@ namespace KissU.Client.Host
                 })
                 .ConfigureServices(services =>
                 {
-                    services.AddApplication<AppModule>();
+                    services.AddApplication<AppModule>(options =>
+                    {
+                        var assemblies = ModuleHelper.GetAssemblies();
+                        var moduleTypes = ReflectionHelper.FindTypes<AbpBusunessModule>(assemblies.ToArray());
+                        options.PlugInSources.AddTypes(moduleTypes.ToArray());
+                    });
                 })
                 .UseClient()
                 .UseAutofac();
