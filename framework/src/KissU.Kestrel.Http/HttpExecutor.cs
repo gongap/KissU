@@ -25,9 +25,9 @@ namespace KissU.Kestrel.Http
 {
     /// <summary>
     /// HttpExecutor.
-    /// Implements the <see cref="KissU.CPlatform.Runtime.Server.IServiceExecutor" />
+    /// Implements the <see cref="IServiceExecutor" />
     /// </summary>
-    /// <seealso cref="KissU.CPlatform.Runtime.Server.IServiceExecutor" />
+    /// <seealso cref="IServiceExecutor" />
     public class HttpExecutor : IServiceExecutor
     {
         #region Constructor

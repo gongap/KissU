@@ -14,9 +14,9 @@ namespace KissU.Kestrel.Http
 {
     /// <summary>
     /// HttpServerMessageSender.
-    /// Implements the <see cref="KissU.CPlatform.Transport.IMessageSender" />
+    /// Implements the <see cref="IMessageSender" />
     /// </summary>
-    /// <seealso cref="KissU.CPlatform.Transport.IMessageSender" />
+    /// <seealso cref="IMessageSender" />
     public class HttpServerMessageSender : IMessageSender
     {
         private readonly HttpContext _context;

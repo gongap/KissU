@@ -22,9 +22,9 @@ namespace KissU.Kestrel.Http
 {
     /// <summary>
     /// HttpMessageListener.
-    /// Implements the <see cref="KissU.CPlatform.Transport.IMessageListener" />
+    /// Implements the <see cref="IMessageListener" />
     /// </summary>
-    /// <seealso cref="KissU.CPlatform.Transport.IMessageListener" />
+    /// <seealso cref="IMessageListener" />
     public abstract class HttpMessageListener : IMessageListener
     {
         private readonly ILogger<HttpMessageListener> _logger;

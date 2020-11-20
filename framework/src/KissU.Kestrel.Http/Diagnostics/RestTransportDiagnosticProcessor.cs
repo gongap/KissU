@@ -10,9 +10,9 @@ namespace KissU.Kestrel.Http.Diagnostics
 {
     /// <summary>
     /// RestTransportDiagnosticProcessor.
-    /// Implements the <see cref="KissU.CPlatform.Diagnostics.ITracingDiagnosticProcessor" />
+    /// Implements the <see cref="ITracingDiagnosticProcessor" />
     /// </summary>
-    /// <seealso cref="KissU.CPlatform.Diagnostics.ITracingDiagnosticProcessor" />
+    /// <seealso cref="ITracingDiagnosticProcessor" />
     public class RestTransportDiagnosticProcessor : ITracingDiagnosticProcessor
     {
         private readonly ConcurrentDictionary<string, SegmentContext> _resultDictionary =

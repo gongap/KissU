@@ -9,6 +9,7 @@ using KissU.Caching;
 using KissU.CPlatform;
 using KissU.ServiceProxy;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace KissU.Client.Host
 {
@@ -26,6 +27,7 @@ namespace KissU.Client.Host
                     builder.AddCPlatformFile("servicesettings.json", false, true);
                     builder.AddCacheFile("cachesettings.json", false, true);
                 })
+                .ConfigureLogging(configure => configure.ClearProviders())
                 .ConfigureContainer(builder =>
                 {
                     builder.AddMicroService(service => { service.AddClient().AddCache(); });

@@ -8,6 +8,7 @@ using KissU.Modularity;
 using KissU.ServiceProxy;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Volo.Abp.Modularity.PlugIns;
 
 namespace KissU.Services
@@ -26,6 +27,7 @@ namespace KissU.Services
                     builder.AddCPlatformFile("servicesettings.json", false, true);
                     builder.AddCacheFile("cachesettings.json", false, true);
                 })
+                .ConfigureLogging(configure => configure.ClearProviders())
                 .ConfigureContainer(builder =>
                 {
                     builder.AddMicroService(option =>

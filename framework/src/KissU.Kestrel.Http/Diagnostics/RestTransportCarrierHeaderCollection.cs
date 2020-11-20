@@ -6,9 +6,9 @@ namespace KissU.Kestrel.Http.Diagnostics
 {
     /// <summary>
     /// RestTransportCarrierHeaderCollection.
-    /// Implements the <see cref="KissU.CPlatform.Diagnostics.ICarrierHeaderCollection" />
+    /// Implements the <see cref="ICarrierHeaderCollection" />
     /// </summary>
-    /// <seealso cref="KissU.CPlatform.Diagnostics.ICarrierHeaderCollection" />
+    /// <seealso cref="ICarrierHeaderCollection" />
     public class RestTransportCarrierHeaderCollection : ICarrierHeaderCollection
     {
         private readonly TracingHeaders _tracingHeaders;

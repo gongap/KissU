@@ -32,10 +32,10 @@ namespace KissU.Kestrel.Http
     /// <summary>
     /// KestrelHttpMessageListener.
     /// Implements the <see cref="HttpMessageListener" />
-    /// Implements the <see cref="System.IDisposable" />
+    /// Implements the <see cref="IDisposable" />
     /// </summary>
     /// <seealso cref="HttpMessageListener" />
-    /// <seealso cref="System.IDisposable" />
+    /// <seealso cref="IDisposable" />
     public class KestrelHttpMessageListener : HttpMessageListener, IDisposable
     {
         private readonly CPlatformContainer _container;
