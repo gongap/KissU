@@ -83,6 +83,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.AspNetCore", "src\Kis
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Client.Host", "test\KissU.Client.Host\KissU.Client.Host.csproj", "{421E8CC0-A5E5-4EB5-8C73-A756EFB81461}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "modules", "modules", "{1D15EBD3-D08A-4E2B-88FB-0516210463C2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Identity.Service.Contracts", "modules\identity\KissU.Modules.Identity.Service.Contracts\KissU.Modules.Identity.Service.Contracts.csproj", "{5E8AFF4D-C407-41F6-BE1B-859F9834C22B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Identity.Service", "modules\identity\KissU.Modules.Identity.Service\KissU.Modules.Identity.Service.csproj", "{C9733166-8A61-4A0E-A594-B42D56BFBB83}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "identity", "identity", "{DF4BFA36-7CB0-41C1-9D7A-7CE091F009DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -241,6 +249,14 @@ Global
 		{421E8CC0-A5E5-4EB5-8C73-A756EFB81461}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{421E8CC0-A5E5-4EB5-8C73-A756EFB81461}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{421E8CC0-A5E5-4EB5-8C73-A756EFB81461}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E8AFF4D-C407-41F6-BE1B-859F9834C22B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E8AFF4D-C407-41F6-BE1B-859F9834C22B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E8AFF4D-C407-41F6-BE1B-859F9834C22B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E8AFF4D-C407-41F6-BE1B-859F9834C22B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9733166-8A61-4A0E-A594-B42D56BFBB83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9733166-8A61-4A0E-A594-B42D56BFBB83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9733166-8A61-4A0E-A594-B42D56BFBB83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9733166-8A61-4A0E-A594-B42D56BFBB83}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -284,6 +300,9 @@ Global
 		{DBA09983-661A-484C-BD60-0D15D4209AA1} = {F1B4AAEF-9162-4DFA-8B62-4069FC914839}
 		{3DDA109E-20CD-4646-849E-94892CA48D60} = {F1B4AAEF-9162-4DFA-8B62-4069FC914839}
 		{421E8CC0-A5E5-4EB5-8C73-A756EFB81461} = {8C5BB6A1-6362-4935-9278-993935F43949}
+		{5E8AFF4D-C407-41F6-BE1B-859F9834C22B} = {DF4BFA36-7CB0-41C1-9D7A-7CE091F009DE}
+		{C9733166-8A61-4A0E-A594-B42D56BFBB83} = {DF4BFA36-7CB0-41C1-9D7A-7CE091F009DE}
+		{DF4BFA36-7CB0-41C1-9D7A-7CE091F009DE} = {1D15EBD3-D08A-4E2B-88FB-0516210463C2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}
