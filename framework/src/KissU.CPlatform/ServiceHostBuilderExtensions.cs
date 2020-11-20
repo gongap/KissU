@@ -39,7 +39,6 @@ namespace KissU.CPlatform
         {
             return hostBuilder.ConfigureContainer(async mapper =>
             {
-                //BuildServiceEngine(mapper);
                 mapper.Resolve<IServiceTokenGenerator>().GeneratorToken(token);
                 var _port = AppConfig.ServerOptions.Port = AppConfig.ServerOptions.Port == 0 ? port : AppConfig.ServerOptions.Port;
                 var _ip = AppConfig.ServerOptions.Ip ??= ip;
@@ -113,29 +112,11 @@ namespace KissU.CPlatform
         }
 
         /// <summary>
-        /// 构建服务引擎.
-        /// </summary>
-        /// <param name="container">The container.</param>
-        [Obsolete]
-        public static void BuildServiceEngine(IContainer container)
-        {
-            if (container.IsRegistered<IServiceEngine>())
-            {
-                var builder = new ContainerBuilder();
-                container.Resolve<IServiceEngineBuilder>().Build(builder);
-                var configBuilder = container.Resolve<IConfigurationBuilder>();
-                var appSettingPath = Path.Combine(AppConfig.ServerOptions.RootPath, "appsettings.json");
-                configBuilder.AddCPlatformFile("${appsettingspath}|" + appSettingPath, false, true);
-                builder.Update(container);
-            }
-        }
-
-        /// <summary>
         /// 配置路由.
         /// </summary>
         /// <param name="mapper">The mapper.</param>
         /// <returns>A <see cref="Task" /> representing the asynchronous operation.</returns>
-        public static async Task ConfigureRoute(IContainer mapper)
+        public static async Task ConfigureRoute(ILifetimeScope mapper)
         {
             if (AppConfig.ServerOptions.Protocol == CommunicationProtocol.Tcp ||
                 AppConfig.ServerOptions.Protocol == CommunicationProtocol.None)

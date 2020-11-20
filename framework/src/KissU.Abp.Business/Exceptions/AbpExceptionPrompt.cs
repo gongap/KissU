@@ -27,7 +27,7 @@ namespace KissU.Abp.Business.Exceptions
         /// <returns>System.String.</returns>
         public string GetPrompt(Exception exception)
         {
-            var errorInfo = _errorInfoConverter.Convert(exception);
+            var errorInfo = _errorInfoConverter.Convert(exception, true);
             return _jsonSerializer.Serialize(errorInfo);
         }
     }

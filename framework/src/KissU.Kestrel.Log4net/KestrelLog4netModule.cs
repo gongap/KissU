@@ -4,6 +4,8 @@ using KissU.CPlatform;
 using KissU.Logging.Log4net;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Volo.Abp;
+using Volo.Abp.Modularity;
 
 namespace KissU.Kestrel.Log4net
 {

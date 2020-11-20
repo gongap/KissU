@@ -1,5 +1,5 @@
 ﻿using System;
-using KissU.Abp.Autofac;
+using Autofac.Extensions.DependencyInjection;
 using KissU.Abp.Business.Exceptions;
 using KissU.CPlatform;
 using KissU.Exceptions.Prompts;

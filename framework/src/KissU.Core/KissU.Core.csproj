@@ -12,7 +12,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Autofac" Version="4.9.4" />
+    <PackageReference Include="Volo.Abp.Core" Version="4.0.0-rc.3" />
+    <PackageReference Include="Volo.Abp.Autofac" Version="4.0.0-rc.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="System.Reflection.Emit.Lightweight" Version="4.7.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.PlatformAbstractions" Version="1.1.0" />
+
+    <!--<PackageReference Include="Autofac" Version="4.9.4" />
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="5.0.1" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.5" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
@@ -34,11 +41,7 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="3.1.5" />
     <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="3.1.5" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.5" />
-    <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="3.1.5" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <!--<ProjectReference Include="..\KissU\KissU.csproj" />-->
+    <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="3.1.5" />-->
   </ItemGroup>
 
   <ItemGroup>

@@ -5,6 +5,8 @@ using KissU.Logging.Nlog;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NLog;
+using Volo.Abp;
+using Volo.Abp.Modularity;
 
 namespace KissU.Kestrel.Nlog
 {

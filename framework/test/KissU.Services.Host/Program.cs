@@ -1,10 +1,7 @@
 ﻿using System.Threading.Tasks;
-using Autofac;
-using KissU.Abp.Autofac.Extensions;
 using KissU.Caching.Configurations;
 using KissU.CPlatform;
 using KissU.CPlatform.Configurations;
-using KissU.Dependency;
 using KissU.Extensions;
 using KissU.ServiceProxy;
 using Microsoft.Extensions.Hosting;

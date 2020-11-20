@@ -1,4 +1,4 @@
-﻿using KissU.Abp.Autofac;
+﻿using Volo.Abp.Autofac;
 using Volo.Abp.Json;
 using Volo.Abp.Modularity;
 

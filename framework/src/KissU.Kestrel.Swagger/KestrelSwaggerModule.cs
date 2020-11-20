@@ -9,6 +9,8 @@ using KissU.Kestrel.Swagger.SwaggerGen.Application;
 using Microsoft.Extensions.Configuration;
 using KissU.Kestrel.Swagger.Swagger.Application;
 using KissU.Kestrel.Swagger.SwaggerUI;
+using Volo.Abp;
+using Volo.Abp.Modularity;
 
 namespace KissU.Kestrel.Swagger
 {

@@ -9,7 +9,7 @@ namespace KissU.Extensions
     /// </summary>
     public static partial class Extensions
     {
-        public static IHostBuilder ConfigureContainer(this IHostBuilder hostBuilder, Action<IContainer> configureDelegates)
+        public static IHostBuilder ConfigureContainer(this IHostBuilder hostBuilder, Action<ILifetimeScope> configureDelegates)
         {
             return ConfigureContainer(hostBuilder, null, configureDelegates);
         }
@@ -19,7 +19,7 @@ namespace KissU.Extensions
             return hostBuilder.ConfigureContainer(configurationAction, null);
         }
 
-        public static IHostBuilder ConfigureContainer(this IHostBuilder hostBuilder, Action<ContainerBuilder> configurationAction = null, Action<IContainer> configureDelegates = null)
+        public static IHostBuilder ConfigureContainer(this IHostBuilder hostBuilder, Action<ContainerBuilder> configurationAction = null, Action<ILifetimeScope> configureDelegates = null)
         {
             if (configurationAction != null)
             {
