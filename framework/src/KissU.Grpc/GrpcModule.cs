@@ -3,12 +3,12 @@ using KissU.CPlatform;
 using KissU.CPlatform.Runtime.Server;
 using KissU.CPlatform.Runtime.Server.Implementation;
 using KissU.Dependency;
-using KissU.Google.Grpc.Runtime;
-using KissU.Google.Grpc.Runtime.Implementation;
+using KissU.Grpc.Runtime;
+using KissU.Grpc.Runtime.Implementation;
 using KissU.Modularity;
 using Microsoft.Extensions.Logging;
 
-namespace KissU.Google.Grpc
+namespace KissU.Grpc
 {
     /// <summary>
     /// GrpcModule.

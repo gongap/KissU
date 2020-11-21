@@ -5,13 +5,13 @@ using KissU.CPlatform;
 using KissU.CPlatform.Runtime.Server.Implementation;
 using KissU.CPlatform.Transport;
 
-namespace KissU.Google.Grpc
+namespace KissU.Grpc
 {
     /// <summary>
     /// GrpcServiceHost.
-    /// Implements the <see cref="KissU.CPlatform.Runtime.Server.Implementation.ServiceHostAbstract" />
+    /// Implements the <see cref="ServiceHostAbstract" />
     /// </summary>
-    /// <seealso cref="KissU.CPlatform.Runtime.Server.Implementation.ServiceHostAbstract" />
+    /// <seealso cref="ServiceHostAbstract" />
     public class GrpcServiceHost : ServiceHostAbstract
     {
         /// <summary>

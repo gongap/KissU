@@ -1,7 +1,7 @@
 ﻿using System;
 using KissU.Dependency;
 
-namespace KissU.Google.Grpc.Runtime
+namespace KissU.Grpc.Runtime
 {
     /// <summary>
     /// GrpcServiceEntry.

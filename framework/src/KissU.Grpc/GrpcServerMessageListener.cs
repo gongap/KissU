@@ -5,18 +5,18 @@ using System.Threading.Tasks;
 using Grpc.Core;
 using KissU.CPlatform.Messages;
 using KissU.CPlatform.Transport;
-using KissU.Google.Grpc.Runtime;
+using KissU.Grpc.Runtime;
 using Microsoft.Extensions.Logging;
 
-namespace KissU.Google.Grpc
+namespace KissU.Grpc
 {
     /// <summary>
     /// GrpcServerMessageListener.
-    /// Implements the <see cref="KissU.CPlatform.Transport.IMessageListener" />
-    /// Implements the <see cref="System.IDisposable" />
+    /// Implements the <see cref="IMessageListener" />
+    /// Implements the <see cref="IDisposable" />
     /// </summary>
-    /// <seealso cref="KissU.CPlatform.Transport.IMessageListener" />
-    /// <seealso cref="System.IDisposable" />
+    /// <seealso cref="IMessageListener" />
+    /// <seealso cref="IDisposable" />
     public class GrpcServerMessageListener : IMessageListener, IDisposable
     {
         private readonly IGrpcServiceEntryProvider _grpcServiceEntryProvider;
