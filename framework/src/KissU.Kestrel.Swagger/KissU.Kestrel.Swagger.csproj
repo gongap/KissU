@@ -27,7 +27,7 @@
     <EmbeddedResource Include="SwaggerUI\swagger-ui-dist\swagger-ui.js.map" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\KissU.Kestrel\KissU.Kestrel.csproj" />
-  </ItemGroup>
+   <ItemGroup>
+     <ProjectReference Include="..\KissU.AspNetCore\KissU.AspNetCore.csproj" />
+   </ItemGroup>
 </Project>

@@ -14,7 +14,7 @@
    </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\KissU.AspNetCore\KissU.AspNetCore.csproj" />
     <ProjectReference Include="..\KissU.ApiGateWay\KissU.ApiGateWay.csproj" />
-    <ProjectReference Include="..\KissU.Kestrel\KissU.Kestrel.csproj" />
   </ItemGroup>
 </Project>

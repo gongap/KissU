@@ -21,7 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KissU.Kestrel\KissU.Kestrel.csproj" />
-    <ProjectReference Include="..\KissU.ServiceProxy\KissU.ServiceProxy.csproj" />
+    <ProjectReference Include="..\KissU.AspNetCore\KissU.AspNetCore.csproj" />
   </ItemGroup>
 </Project>
