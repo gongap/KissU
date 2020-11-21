@@ -1,7 +1,7 @@
 ﻿using KissU.CPlatform.Messages;
 using Microsoft.AspNetCore.Http;
 
-namespace KissU.Kestrel.Abstractions
+namespace KissU.AspNetCore.Abstractions
 {
     /// <summary>
     /// ActionContext.

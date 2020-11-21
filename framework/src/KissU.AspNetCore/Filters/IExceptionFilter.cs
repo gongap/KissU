@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace KissU.Kestrel.Filters
+namespace KissU.AspNetCore.Filters
 {
     /// <summary>
     /// Interface IExceptionFilter

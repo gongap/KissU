@@ -3,7 +3,7 @@ using KissU.Modularity;
 using Volo.Abp;
 using Volo.Abp.Modularity;
 
-namespace KissU.Kestrel.Extensions
+namespace KissU.AspNetCore.Extensions
 {
     /// <summary>
     /// ModuleProviderExtensions.

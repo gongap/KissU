@@ -1,4 +1,4 @@
-﻿namespace KissU.Kestrel
+﻿namespace KissU.AspNetCore
 {
     /// <summary>
     /// Enum StatusCode

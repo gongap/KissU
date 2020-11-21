@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Threading.Tasks;
-using KissU.Kestrel.Abstractions;
+using KissU.AspNetCore.Abstractions;
 using KissU.Kestrel.Http.Internal;
 using Microsoft.Net.Http.Headers;
 

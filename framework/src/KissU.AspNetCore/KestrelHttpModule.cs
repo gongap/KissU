@@ -2,7 +2,7 @@
 using Volo.Abp;
 using Volo.Abp.Modularity;
 
-namespace KissU.Kestrel
+namespace KissU.AspNetCore
 {
     /// <summary>
     /// KestrelHttpModule

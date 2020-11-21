@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Reflection;
+using KissU.AspNetCore;
 using KissU.Modularity;
 using KissU.CPlatform.Runtime.Server;
 using KissU.Kestrel.Swagger.Internal;

@@ -3,7 +3,7 @@ using KissU.Helpers;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 
-namespace KissU.Kestrel
+namespace KissU.AspNetCore
 {
     /// <summary>
     /// WebHostContext.

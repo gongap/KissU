@@ -2,7 +2,7 @@
 using KissU.CPlatform.Routing;
 using Microsoft.AspNetCore.Http;
 
-namespace KissU.Kestrel.Filters
+namespace KissU.AspNetCore.Filters
 {
     /// <summary>
     /// AuthorizationFilterContext.

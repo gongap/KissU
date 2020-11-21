@@ -8,7 +8,7 @@ using KissU.Serialization.Implementation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace KissU.Kestrel.Internal
+namespace KissU.AspNetCore.Internal
 {
     public class RestContext
     {

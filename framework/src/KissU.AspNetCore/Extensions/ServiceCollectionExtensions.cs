@@ -1,8 +1,8 @@
 ﻿using System;
-using KissU.Kestrel.Filters;
+using KissU.AspNetCore.Filters;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace KissU.Kestrel.Extensions
+namespace KissU.AspNetCore.Extensions
 {
     /// <summary>
     /// ServiceCollectionExtensions.

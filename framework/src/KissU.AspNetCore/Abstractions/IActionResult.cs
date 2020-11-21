@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace KissU.Kestrel.Abstractions
+namespace KissU.AspNetCore.Abstractions
 {
     /// <summary>
     /// Interface IActionResult
