@@ -23,7 +23,7 @@ namespace KissU.AspNetCore.Extensions
                 {
                     if (p.Enable)
                     {
-                        var module = p as KestrelHttpModule;
+                        var module = p as AspNetCoreModule;
                         module?.Configure(app);
                     }
                 }
@@ -47,7 +47,7 @@ namespace KissU.AspNetCore.Extensions
                 {
                     if (p.Enable)
                     {
-                        var module = p as KestrelHttpModule;
+                        var module = p as AspNetCoreModule;
                         module?.ConfigureServices(context);
                     }
                 }
@@ -71,7 +71,7 @@ namespace KissU.AspNetCore.Extensions
                 {
                     if (p.Enable)
                     {
-                        var module = p as KestrelHttpModule;
+                        var module = p as AspNetCoreModule;
                         module?.ConfigureWebHost(context);
                     }
                 }

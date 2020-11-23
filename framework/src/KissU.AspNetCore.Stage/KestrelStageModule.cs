@@ -18,10 +18,10 @@ namespace KissU.Kestrel.Stage
 {
     /// <summary>
     /// StageModule.
-    /// Implements the <see cref="KestrelHttpModule" />
+    /// Implements the <see cref="AspNetCoreModule" />
     /// </summary>
-    /// <seealso cref="KestrelHttpModule" />
-    public class KestrelStageModule : KestrelHttpModule
+    /// <seealso cref="AspNetCoreModule" />
+    public class KestrelStageModule : AspNetCoreModule
     {
         private IWebServerListener _listener;
 

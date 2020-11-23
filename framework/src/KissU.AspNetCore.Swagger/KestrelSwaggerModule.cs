@@ -17,10 +17,10 @@ namespace KissU.Kestrel.Swagger
 {
     /// <summary>
     /// SwaggerModule.
-    /// Implements the <see cref="KestrelHttpModule" />
+    /// Implements the <see cref="AspNetCoreModule" />
     /// </summary>
-    /// <seealso cref="KestrelHttpModule" />
-    public class KestrelSwaggerModule : KestrelHttpModule
+    /// <seealso cref="AspNetCoreModule" />
+    public class KestrelSwaggerModule : AspNetCoreModule
     {
         private IServiceEntryProvider _serviceEntryProvider;
         private IServiceSchemaProvider _serviceSchemaProvider;

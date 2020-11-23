@@ -14,10 +14,10 @@ namespace KissU.Kestrel.IdentityServer
 {
     /// <summary>
     /// KestrelNLogModule.
-    /// Implements the <see cref="KestrelHttpModule" />
+    /// Implements the <see cref="AspNetCoreModule" />
     /// </summary>
-    /// <seealso cref="KestrelHttpModule" />
-    public class KestrelIdentityServerModule : KestrelHttpModule
+    /// <seealso cref="AspNetCoreModule" />
+    public class KestrelIdentityServerModule : AspNetCoreModule
     {
         /// <summary>
         /// Initializes the specified context.

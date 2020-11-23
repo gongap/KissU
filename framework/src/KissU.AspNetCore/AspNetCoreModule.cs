@@ -7,7 +7,7 @@ namespace KissU.AspNetCore
     /// <summary>
     /// KestrelHttpModule
     /// </summary>
-    public class KestrelHttpModule : AbstractModule
+    public class AspNetCoreModule : AbstractModule
     {
         /// <summary>
         /// Initializes the specified builder.
