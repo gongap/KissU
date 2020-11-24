@@ -25,26 +25,18 @@ namespace KissU.Client.Host
 
         internal static IHostBuilder CreateHostBuilder(string[] args) =>
             Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder(args)
+                .ConfigureLogging(configure => configure.ClearProviders())
                 .ConfigureHostConfiguration(builder =>
                 {
                     builder.AddCPlatformFile("servicesettings.json", false, true);
                     builder.AddCacheFile("cachesettings.json", false, true);
                 })
-                .ConfigureLogging(configure => configure.ClearProviders())
                 .ConfigureContainer(builder =>
                 {
                     builder.AddMicroService(service => { service.AddClient().AddCache(); });
                     builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
                 })
-                .ConfigureServices(services =>
-                {
-                    services.AddApplication<AppModule>(options =>
-                    {
-                        var assemblies = ModuleHelper.GetAssemblies();
-                        var moduleTypes = ReflectionHelper.FindTypes<AbpBusunessModule>(assemblies.ToArray());
-                        options.PlugInSources.AddTypes(moduleTypes.ToArray());
-                    });
-                })
+                .UseAbp()
                 .UseClient()
                 .UseAutofac();
     }

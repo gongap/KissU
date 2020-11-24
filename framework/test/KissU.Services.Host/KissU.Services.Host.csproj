@@ -39,12 +39,14 @@
     <ProjectReference Include="..\..\..\framework\src\KissU.Logging.Log4net\KissU.Logging.Log4net.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Logging.Serilog\KissU.Logging.Serilog.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.AspNetCore.IdentityServer\KissU.AspNetCore.IdentityServer.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.AspNetCore.Stage\KissU.AspNetCore.Stage.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.AspNetCore.Swagger\KissU.AspNetCore.Swagger.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\modules\identity\KissU.Modules.Identity.Service\KissU.Modules.Identity.Service.csproj" />
+    <ProjectReference Include="..\..\modules\feature-management\KissU.Modules.FeatureManagement.Service\KissU.Modules.FeatureManagement.Service.csproj" />
+    <ProjectReference Include="..\..\modules\permission-management\KissU.Modules.PermissionManagement.Service\KissU.Modules.PermissionManagement.Service.csproj" />
+    <ProjectReference Include="..\..\modules\tenant-management\KissU.Modules.TenantManagement.Service\KissU.Modules.TenantManagement.Service.csproj" />
   </ItemGroup>
 
   <ItemGroup>

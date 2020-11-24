@@ -19,6 +19,9 @@ using KissU.CPlatform.Support;
 using KissU.Helpers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Volo.Abp;
+using Volo.Abp.Modularity;
 
 namespace KissU.CPlatform
 {
@@ -62,6 +65,30 @@ namespace KissU.CPlatform
 
                     mapper.Resolve<IServiceEngineLifetime>().NotifyStarted();
                 }).ConfigureAwait(false);
+            });
+        }
+        
+        /// <summary>
+        /// Uses the server.
+        /// </summary>
+        /// <param name="hostBuilder">The host builder.</param>
+        /// <param name="options">The options.</param>
+        /// <returns>IHostBuilder.</returns>
+        public static IHostBuilder UseAbp(this IHostBuilder hostBuilder, Action<AbpApplicationCreationOptions> optionsAction = null)
+        {
+            hostBuilder.ConfigureServices(services =>
+            {
+                services.AddApplication<AbpModule>(options =>
+                {
+                    if (optionsAction != null)
+                    {
+                        options.Invoke(optionsAction);
+                    }
+
+                    var assemblies = ModuleHelper.GetAssemblies();
+                    var moduleTypes = ReflectionHelper.FindTypes<AbpBusunessModule>(assemblies.ToArray());
+                    options.PlugInSources.AddTypes(moduleTypes.ToArray());
+                });
             });
         }
 

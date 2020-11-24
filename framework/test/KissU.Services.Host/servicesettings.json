@@ -20,7 +20,7 @@
     "IsModulePerLifetimeScope": false, //模块是否使用每个生命周期范围
     "ReloadOnChange": false, //当配置改变后是否重新加载
     "Ports": {
-      "HttpPort": "${HttpPort}|8001", //指定微服务对外提供的Http端口号,微服务组件必须依赖KestrelHttpModule才会对外提供Http服务，该配置项才有效
+      "HttpPort": "${HttpPort}|8001",
       "WSPort": "${WSPort}|8101",
       "MQTTPort": "${MQTTPort}|8201",
       "GrpcPort": "${GrpcPort}|8301"
@@ -29,7 +29,7 @@
     "Packages": [ //如果引用多个同类型的组件，需要配置Packages，如果是自定义按需引用，无需配置Packages
       {
         "TypeName": "EnginePartModule",
-        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;NLogModule;MessagePackModule;ConsulModule;WSProtocolModule;MqttProtocolModule;EventBusRabbitMQModule;CachingModule;HttpProtocolModule;DnsProtocolModule;ApiGeteWayModule;SkywalkingModule;GrpcModule;ApolloModule;AbpBusinessModule;"
+        "Using": "${UseEngineParts}|ServiceProxyModule;DotNettyModule;NLogModule;MessagePackModule;ConsulModule;WSProtocolModule;MqttProtocolModule;EventBusRabbitMQModule;CachingModule;KestrelHttpServerModule;KestrelSwaggerModule;DnsProtocolModule;ApiGeteWayModule;SkywalkingModule;GrpcModule;ApolloModule;AbpBusinessModule;"
       }
     ]
   },

@@ -22,12 +22,12 @@ namespace KissU.Services
 
         internal static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .ConfigureLogging(configure => configure.ClearProviders())
                 .ConfigureHostConfiguration(builder =>
                 {
                     builder.AddCPlatformFile("servicesettings.json", false, true);
                     builder.AddCacheFile("cachesettings.json", false, true);
                 })
-                .ConfigureLogging(configure => configure.ClearProviders())
                 .ConfigureContainer(builder =>
                 {
                     builder.AddMicroService(option =>
@@ -38,15 +38,7 @@ namespace KissU.Services
                             .AddServiceEngine();
                     });
                 })
-                .ConfigureServices(services =>
-                {
-                    services.AddApplication<AppModule>(options =>
-                    {
-                        var assemblies = ModuleHelper.GetAssemblies();
-                        var moduleTypes = ReflectionHelper.FindTypes<AbpBusunessModule>(assemblies.ToArray());
-                        options.PlugInSources.AddTypes(moduleTypes.ToArray());
-                    });
-                })
+                .UseAbp()
                 .UseServer()
                 .UseAutofac();
 
