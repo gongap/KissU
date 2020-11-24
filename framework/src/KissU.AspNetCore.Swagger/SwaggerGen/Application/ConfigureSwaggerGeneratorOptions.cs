@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
-using KissU.Kestrel.Swagger.Swagger.Model;
-using KissU.Kestrel.Swagger.SwaggerGen.Generator;
+using KissU.AspNetCore.Swagger.Swagger.Model;
+using KissU.AspNetCore.Swagger.SwaggerGen.Generator;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
-namespace KissU.Kestrel.Swagger.SwaggerGen.Application
+namespace KissU.AspNetCore.Swagger.SwaggerGen.Application
 {
     /// <summary>
     /// ConfigureSwaggerGeneratorOptions.

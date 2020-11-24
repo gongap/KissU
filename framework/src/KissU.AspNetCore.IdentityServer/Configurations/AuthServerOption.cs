@@ -1,4 +1,4 @@
-﻿namespace KissU.Kestrel.IdentityServer.Configurations
+﻿namespace KissU.AspNetCore.IdentityServer.Configurations
 {
     /// <summary>
     /// AuthServerOption.

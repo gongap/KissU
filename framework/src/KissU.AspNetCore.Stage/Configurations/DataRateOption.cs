@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KissU.Kestrel.Stage.Configurations
+namespace KissU.AspNetCore.Stage.Configurations
 {
     /// <summary>
     /// DataRateOption.

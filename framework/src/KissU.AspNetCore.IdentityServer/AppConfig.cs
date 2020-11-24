@@ -1,6 +1,6 @@
-﻿using KissU.Kestrel.IdentityServer.Configurations;
+﻿using KissU.AspNetCore.IdentityServer.Configurations;
 
-namespace KissU.Kestrel.IdentityServer
+namespace KissU.AspNetCore.IdentityServer
 {
     /// <summary>
     /// AppConfig.

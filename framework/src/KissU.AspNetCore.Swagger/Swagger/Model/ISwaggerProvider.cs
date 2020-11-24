@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KissU.Kestrel.Swagger.Swagger.Model
+namespace KissU.AspNetCore.Swagger.Swagger.Model
 {
     /// <summary>
     /// Interface ISwaggerProvider

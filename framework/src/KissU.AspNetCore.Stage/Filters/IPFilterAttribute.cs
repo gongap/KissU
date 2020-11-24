@@ -2,11 +2,11 @@
 using KissU.ApiGateWay;
 using KissU.AspNetCore.Filters;
 using KissU.AspNetCore.Internal;
+using KissU.AspNetCore.Stage.Internal;
 using KissU.CPlatform.Messages;
-using KissU.Kestrel.Stage.Internal;
 using Microsoft.AspNetCore.Http;
 
-namespace KissU.Kestrel.Stage.Filters
+namespace KissU.AspNetCore.Stage.Filters
 {
     /// <summary>
     /// IPFilterAttribute.

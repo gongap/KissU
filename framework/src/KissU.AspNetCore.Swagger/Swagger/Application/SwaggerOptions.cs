@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using KissU.Kestrel.Swagger.Swagger.Model;
+using KissU.AspNetCore.Swagger.Swagger.Model;
 using Microsoft.AspNetCore.Http;
 
-namespace KissU.Kestrel.Swagger.Swagger.Application
+namespace KissU.AspNetCore.Swagger.Swagger.Application
 {
     /// <summary>
     /// SwaggerOptions.

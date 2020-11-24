@@ -13,7 +13,7 @@ using KissU.CPlatform.Messages;
 using KissU.Dependency;
 using KissU.Helpers;
 
-namespace KissU.Kestrel.Stage.Filters
+namespace KissU.AspNetCore.Stage.Filters
 {
     /// <summary>
     /// ActionFilterAttribute.

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace KissU.Kestrel.Swagger.Swagger.Model
+namespace KissU.AspNetCore.Swagger.Swagger.Model
 {
     /// <summary>
     /// OAuth2Scheme.

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace KissU.Kestrel.Swagger.SwaggerGen.Generator
+namespace KissU.AspNetCore.Swagger.SwaggerGen.Generator
 {
     /// <summary>
     /// SchemaIdManager.

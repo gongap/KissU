@@ -16,7 +16,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 
-namespace KissU.Kestrel.Swagger.SwaggerUI
+namespace KissU.AspNetCore.Swagger.SwaggerUI
 {
     /// <summary>
     /// SwaggerUIMiddleware.

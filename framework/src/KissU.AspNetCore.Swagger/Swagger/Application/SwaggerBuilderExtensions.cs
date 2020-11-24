@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Builder;
 
-namespace KissU.Kestrel.Swagger.Swagger.Application
+namespace KissU.AspNetCore.Swagger.Swagger.Application
 {
     /// <summary>
     /// SwaggerBuilderExtensions.

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using KissU.Kestrel.Swagger.Swagger.Model;
+using KissU.AspNetCore.Swagger.Swagger.Model;
 
-namespace KissU.Kestrel.Swagger.SwaggerGen.Generator
+namespace KissU.AspNetCore.Swagger.SwaggerGen.Generator
 {
     /// <summary>
     /// SchemaExtensions.

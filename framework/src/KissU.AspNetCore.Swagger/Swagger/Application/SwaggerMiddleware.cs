@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Text;
 using System.Threading.Tasks;
-using KissU.Kestrel.Swagger.Swagger.Model;
+using KissU.AspNetCore.Swagger.Swagger.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Routing.Template;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 
-namespace KissU.Kestrel.Swagger.Swagger.Application
+namespace KissU.AspNetCore.Swagger.Swagger.Application
 {
     /// <summary>
     /// SwaggerMiddleware.

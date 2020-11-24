@@ -1,6 +1,6 @@
-﻿using KissU.Kestrel.Swagger.Swagger.Model;
+﻿using KissU.AspNetCore.Swagger.Swagger.Model;
 
-namespace KissU.Kestrel.Swagger
+namespace KissU.AspNetCore.Swagger
 {
     /// <summary>
     /// AppConfig.

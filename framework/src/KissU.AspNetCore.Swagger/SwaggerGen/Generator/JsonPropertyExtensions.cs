@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace KissU.Kestrel.Swagger.SwaggerGen.Generator
+namespace KissU.AspNetCore.Swagger.SwaggerGen.Generator
 {
     /// <summary>
     /// JsonPropertyExtensions.

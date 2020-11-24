@@ -3,7 +3,7 @@ using System.Reflection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace KissU.Kestrel.Swagger.Swagger.Application
+namespace KissU.AspNetCore.Swagger.Swagger.Application
 {
     /// <summary>
     /// SwaggerContractResolver.

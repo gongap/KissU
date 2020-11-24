@@ -6,7 +6,7 @@ using KissU.CPlatform;
 using KissU.CPlatform.Filters.Implementation;
 using KissU.CPlatform.Messages;
 
-namespace KissU.Kestrel.IdentityServer.Filters
+namespace KissU.AspNetCore.IdentityServer.Filters
 {
     /// <summary>
     /// JWTBearerAuthorizationFilterAttribute.

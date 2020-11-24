@@ -1,6 +1,4 @@
-﻿using KissU.AspNetCore;
-
-namespace KissU.Kestrel.Stage.Internal
+﻿namespace KissU.AspNetCore.Stage.Internal
 {
     /// <summary>
     /// Interface IWebServerListener

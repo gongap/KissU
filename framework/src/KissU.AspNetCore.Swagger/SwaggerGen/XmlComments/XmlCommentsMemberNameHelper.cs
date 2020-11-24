@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace KissU.Kestrel.Swagger.SwaggerGen.XmlComments
+namespace KissU.AspNetCore.Swagger.SwaggerGen.XmlComments
 {
     /// <summary>
     /// XmlCommentsMemberNameHelper.

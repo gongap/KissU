@@ -1,8 +1,8 @@
 ﻿using System.Reflection;
-using KissU.Kestrel.Swagger.Swagger.Model;
+using KissU.AspNetCore.Swagger.Swagger.Model;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 
-namespace KissU.Kestrel.Swagger.SwaggerGen.Generator
+namespace KissU.AspNetCore.Swagger.SwaggerGen.Generator
 {
     /// <summary>
     /// Interface IParameterFilter

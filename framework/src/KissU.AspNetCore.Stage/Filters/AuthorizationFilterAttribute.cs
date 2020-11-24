@@ -10,7 +10,7 @@ using KissU.CPlatform.Filters.Implementation;
 using KissU.CPlatform.Messages;
 using KissU.Dependency;
 
-namespace KissU.Kestrel.Stage.Filters
+namespace KissU.AspNetCore.Stage.Filters
 {
     /// <summary>
     /// AuthorizationFilterAttribute.

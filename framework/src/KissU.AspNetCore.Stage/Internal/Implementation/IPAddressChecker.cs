@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 
-namespace KissU.Kestrel.Stage.Internal.Implementation
+namespace KissU.AspNetCore.Stage.Internal.Implementation
 {
     /// <summary>
     /// IPAddressChecker.

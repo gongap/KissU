@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Xml.XPath;
+using KissU.AspNetCore.Swagger.Swagger.Model;
+using KissU.AspNetCore.Swagger.SwaggerGen.Generator;
 using KissU.CPlatform.Runtime.Server;
-using KissU.Kestrel.Swagger.Swagger.Model;
-using KissU.Kestrel.Swagger.SwaggerGen.Generator;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 
-namespace KissU.Kestrel.Swagger.SwaggerGen.XmlComments
+namespace KissU.AspNetCore.Swagger.SwaggerGen.XmlComments
 {
     /// <summary>
     /// XmlCommentsOperationFilter.

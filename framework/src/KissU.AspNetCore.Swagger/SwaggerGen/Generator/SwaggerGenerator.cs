@@ -6,11 +6,11 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Autofac;
-using KissU.Dependency;
-using KissU.Helpers;
+using KissU.AspNetCore.Swagger.Swagger.Model;
 using KissU.CPlatform.Messages;
 using KissU.CPlatform.Runtime.Server;
-using KissU.Kestrel.Swagger.Swagger.Model;
+using KissU.Dependency;
+using KissU.Helpers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
@@ -18,7 +18,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Primitives;
 
-namespace KissU.Kestrel.Swagger.SwaggerGen.Generator
+namespace KissU.AspNetCore.Swagger.SwaggerGen.Generator
 {
     /// <summary>
     /// SwaggerGenerator.

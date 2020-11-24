@@ -1,10 +1,10 @@
 ﻿using System.Reflection;
 using System.Xml.XPath;
-using KissU.Kestrel.Swagger.Swagger.Model;
-using KissU.Kestrel.Swagger.SwaggerGen.Generator;
+using KissU.AspNetCore.Swagger.Swagger.Model;
+using KissU.AspNetCore.Swagger.SwaggerGen.Generator;
 using Newtonsoft.Json.Serialization;
 
-namespace KissU.Kestrel.Swagger.SwaggerGen.XmlComments
+namespace KissU.AspNetCore.Swagger.SwaggerGen.XmlComments
 {
     /// <summary>
     /// XmlCommentsSchemaFilter.

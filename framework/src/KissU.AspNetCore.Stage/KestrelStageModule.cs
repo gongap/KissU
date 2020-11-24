@@ -1,10 +1,9 @@
 ﻿using System;
-using KissU.AspNetCore;
 using KissU.AspNetCore.Extensions;
-using KissU.Kestrel.Stage.Configurations;
-using KissU.Kestrel.Stage.Filters;
-using KissU.Kestrel.Stage.Internal;
-using KissU.Kestrel.Stage.Internal.Implementation;
+using KissU.AspNetCore.Stage.Configurations;
+using KissU.AspNetCore.Stage.Filters;
+using KissU.AspNetCore.Stage.Internal;
+using KissU.AspNetCore.Stage.Internal.Implementation;
 using KissU.Modularity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
@@ -14,7 +13,7 @@ using Newtonsoft.Json.Serialization;
 using Volo.Abp;
 using Volo.Abp.Modularity;
 
-namespace KissU.Kestrel.Stage
+namespace KissU.AspNetCore.Stage
 {
     /// <summary>
     /// StageModule.

@@ -1,18 +1,11 @@
 ﻿using System.Threading.Tasks;
-using Autofac;
-using KissU.Dependency;
 using KissU.Caching.Configurations;
 using KissU.CPlatform.Configurations;
 using Microsoft.Extensions.Hosting;
-using KissU.Extensions;
 using KissU.Caching;
 using KissU.CPlatform;
-using KissU.Helpers;
-using KissU.Modularity;
 using KissU.ServiceProxy;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Volo.Abp.Modularity.PlugIns;
 
 namespace KissU.Client.Host
 {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace KissU.Kestrel.Swagger.Internal
+namespace KissU.AspNetCore.Swagger.Internal
 {
     /// <summary>
     /// Interface IServiceSchemaProvider

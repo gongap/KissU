@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using KissU.AspNetCore.Swagger.Swagger.Model;
+using KissU.AspNetCore.Swagger.SwaggerGen.Generator;
 using KissU.CPlatform.Filters.Implementation;
-using KissU.Kestrel.Swagger.Swagger.Model;
-using KissU.Kestrel.Swagger.SwaggerGen.Generator;
 
-namespace KissU.Kestrel.Swagger.Swagger.Filters
+namespace KissU.AspNetCore.Swagger.Swagger.Filters
 {
     /// <summary>
     /// AddAuthorizationOperationFilter.

@@ -1,6 +1,6 @@
-﻿using KissU.Kestrel.Stage.Configurations;
+﻿using KissU.AspNetCore.Stage.Configurations;
 
-namespace KissU.Kestrel.Stage
+namespace KissU.AspNetCore.Stage
 {
     /// <summary>
     /// AppConfig.

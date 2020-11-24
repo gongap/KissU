@@ -25,6 +25,7 @@ namespace KissU.Logging.Nlog
             nlogConfigFile = EnvironmentHelper.GetEnvironmentVariable(nlogConfigFile);
             LogManager.LoadConfiguration(nlogConfigFile);
             serviceProvider.GetInstances<ILoggerFactory>().AddProvider(new NLogProvider());
+
         }
     }
 }

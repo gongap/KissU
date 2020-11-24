@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using KissU.CPlatform.Runtime.Server;
 
-namespace KissU.Kestrel.Swagger.Internal
+namespace KissU.AspNetCore.Swagger.Internal
 {
     /// <summary>
     /// DefaultServiceSchemaProvider.

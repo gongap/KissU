@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using KissU.AspNetCore.Swagger.Swagger.Model;
 using KissU.CPlatform.Runtime.Server;
-using KissU.Kestrel.Swagger.Swagger.Model;
 
-namespace KissU.Kestrel.Swagger.SwaggerUI
+namespace KissU.AspNetCore.Swagger.SwaggerUI
 {
     /// <summary>
     /// SwaggerUIOptionsExtensions.

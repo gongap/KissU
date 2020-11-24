@@ -97,6 +97,7 @@ namespace KissU.Kestrel.Http
                 }
 
                 var hostBuilder = Host.CreateDefaultBuilder()
+                    .ConfigureLogging(configure => configure.ClearProviders())
                     .ConfigureWebHostDefaults(webBuilder =>
                     {
                         webBuilder.UseKestrel((context, options) =>
@@ -152,6 +153,7 @@ namespace KissU.Kestrel.Http
         /// <param name="services">The services.</param>
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton(ServiceLocator.GetService<ILoggerFactory>());
             services.AddMvc().AddNewtonsoftJson();
             services.AddObjectAccessor<IApplicationBuilder>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();

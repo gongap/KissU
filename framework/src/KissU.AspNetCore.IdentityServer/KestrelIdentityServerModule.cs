@@ -1,8 +1,7 @@
-﻿using KissU.AspNetCore;
-using KissU.AspNetCore.Extensions;
+﻿using KissU.AspNetCore.Extensions;
+using KissU.AspNetCore.IdentityServer.Configurations;
+using KissU.AspNetCore.IdentityServer.Filters;
 using KissU.Modularity;
-using KissU.Kestrel.IdentityServer.Configurations;
-using KissU.Kestrel.IdentityServer.Filters;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
@@ -10,7 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp;
 using Volo.Abp.Modularity;
 
-namespace KissU.Kestrel.IdentityServer
+namespace KissU.AspNetCore.IdentityServer
 {
     /// <summary>
     /// KestrelNLogModule.

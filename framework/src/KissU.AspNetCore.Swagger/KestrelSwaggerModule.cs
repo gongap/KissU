@@ -1,19 +1,18 @@
 ﻿using System.Linq;
 using System.Reflection;
-using KissU.AspNetCore;
-using KissU.Modularity;
+using KissU.AspNetCore.Swagger.Internal;
+using KissU.AspNetCore.Swagger.Swagger.Application;
+using KissU.AspNetCore.Swagger.Swagger.Filters;
+using KissU.AspNetCore.Swagger.Swagger.Model;
+using KissU.AspNetCore.Swagger.SwaggerGen.Application;
+using KissU.AspNetCore.Swagger.SwaggerUI;
 using KissU.CPlatform.Runtime.Server;
-using KissU.Kestrel.Swagger.Internal;
-using KissU.Kestrel.Swagger.Swagger.Filters;
-using KissU.Kestrel.Swagger.Swagger.Model;
-using KissU.Kestrel.Swagger.SwaggerGen.Application;
+using KissU.Modularity;
 using Microsoft.Extensions.Configuration;
-using KissU.Kestrel.Swagger.Swagger.Application;
-using KissU.Kestrel.Swagger.SwaggerUI;
 using Volo.Abp;
 using Volo.Abp.Modularity;
 
-namespace KissU.Kestrel.Swagger
+namespace KissU.AspNetCore.Swagger
 {
     /// <summary>
     /// SwaggerModule.
