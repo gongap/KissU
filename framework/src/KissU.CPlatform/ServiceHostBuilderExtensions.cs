@@ -22,6 +22,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp;
 using Volo.Abp.Modularity;
+using Volo.Abp.Modularity.PlugIns;
 
 namespace KissU.CPlatform
 {
@@ -76,15 +77,11 @@ namespace KissU.CPlatform
         /// <returns>IHostBuilder.</returns>
         public static IHostBuilder UseAbp(this IHostBuilder hostBuilder, Action<AbpApplicationCreationOptions> optionsAction = null)
         {
-            hostBuilder.ConfigureServices(services =>
+            return hostBuilder.ConfigureServices(services =>
             {
-                services.AddApplication<AbpModule>(options =>
+                services.AddApplication<AbpStartupModule>(options =>
                 {
-                    if (optionsAction != null)
-                    {
-                        options.Invoke(optionsAction);
-                    }
-
+                    optionsAction?.Invoke(options);
                     var assemblies = ModuleHelper.GetAssemblies();
                     var moduleTypes = ReflectionHelper.FindTypes<AbpBusunessModule>(assemblies.ToArray());
                     options.PlugInSources.AddTypes(moduleTypes.ToArray());

@@ -28,15 +28,12 @@ namespace KissU.Services
                     builder.AddCPlatformFile("servicesettings.json", false, true);
                     builder.AddCacheFile("cachesettings.json", false, true);
                 })
-                .ConfigureContainer(builder =>
+                .AddMicroService(builder =>
                 {
-                    builder.AddMicroService(option =>
-                    {
-                        option.AddServiceRuntime()
-                            .AddRelateService()
-                            .AddConfigurationWatch()
-                            .AddServiceEngine();
-                    });
+                    builder.AddServiceRuntime()
+                        .AddRelateService()
+                        .AddConfigurationWatch()
+                        .AddServiceEngine();
                 })
                 .UseAbp()
                 .UseServer()

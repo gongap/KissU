@@ -1,10 +1,10 @@
 ﻿using Volo.Abp.Autofac;
 using Volo.Abp.Modularity;
 
-namespace KissU.Services
+namespace KissU.Modularity
 {
     [DependsOn(typeof(AbpAutofacModule))]
-    public class AppModule : AbpModule
+    public class AbpStartupModule : AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {

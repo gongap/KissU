@@ -1,16 +1,14 @@
 ﻿using KissU.Dependency;
+using KissU.Modularity;
 using Volo.Abp;
-using Volo.Abp.Autofac;
 using Volo.Abp.Http.Client.IdentityModel;
 using Volo.Abp.Modularity;
 using Volo.Abp.Threading;
 
 namespace KissU.Client.Host
 {
-    [DependsOn(
-        typeof(AbpAutofacModule),
-        typeof(AbpHttpClientIdentityModelModule))]
-    public class AppModule : AbpModule
+    [DependsOn(typeof(AbpHttpClientIdentityModelModule))]
+    public class AppModule : AbpBusunessModule
     {
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
         {
