@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -23,10 +24,9 @@ namespace KissU.AspNetCore.Swagger.SwaggerUI
     /// </summary>
     public class SwaggerUIMiddleware
     {
-        private const string EmbeddedFileNamespace = "KissU.Kestrel.Swagger.SwaggerUI.swagger_ui_dist";
-
         private readonly SwaggerUIOptions _options;
         private readonly StaticFileMiddleware _staticFileMiddleware;
+        private Func<string> EmbeddedFileNamespace { get; set; } = () => $"{typeof(SwaggerUIMiddleware).Assembly.GetName().Name}.SwaggerUI.swagger_ui_dist";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SwaggerUIMiddleware" /> class.
@@ -148,7 +148,7 @@ namespace KissU.AspNetCore.Swagger.SwaggerUI
             {
                 RequestPath = string.IsNullOrEmpty(options.RoutePrefix) ? string.Empty : $"/{options.RoutePrefix}",
                 FileProvider = new EmbeddedFileProvider(typeof(SwaggerUIMiddleware).GetTypeInfo().Assembly,
-                    EmbeddedFileNamespace)
+                    EmbeddedFileNamespace())
             };
 
             return new StaticFileMiddleware(next, hostingEnv, Options.Create(staticFileOptions), loggerFactory);
