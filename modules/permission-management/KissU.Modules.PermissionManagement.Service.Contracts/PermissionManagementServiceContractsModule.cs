@@ -1,4 +1,5 @@
-﻿using Localization.Resources.AbpUi;
+﻿using KissU.Modularity;
+using Localization.Resources.AbpUi;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.PermissionManagement;
@@ -11,7 +12,7 @@ namespace KissU.Modules.PermissionManagement.Service.Contracts
         typeof(AbpPermissionManagementApplicationContractsModule),
         typeof(AbpUiModule)
     )]
-    public class PermissionManagementServiceContractsModule : AbpModule
+    public class PermissionManagementServiceContractsModule : AbpBusunessModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {

@@ -1,6 +1,7 @@
-﻿using KissU.Modules.Account.Application.Contracts;
-using KissU.Modules.Account.Application.Contracts.Localization;
+﻿using KissU.Modularity;
 using Localization.Resources.AbpUi;
+using Volo.Abp.Account;
+using Volo.Abp.Account.Localization;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.UI;
@@ -11,7 +12,7 @@ namespace KissU.Modules.Account.Service.Contracts
         typeof(AbpAccountApplicationContractsModule),
         typeof(AbpUiModule)
         )]
-    public class AccountServiceContractsModule : AbpModule
+    public class AccountServiceContractsModule : AbpBusunessModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {

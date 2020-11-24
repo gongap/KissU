@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 using KissU.Dependency;
-using KissU.Modules.Account.Application.Contracts;
-using KissU.Modules.Identity.Application.Contracts;
 using KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
+using Volo.Abp.Identity;
+using Volo.Abp.Account;
 
 namespace KissU.Modules.Account.Service.Contracts
 {

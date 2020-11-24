@@ -1,4 +1,5 @@
-﻿using Localization.Resources.AbpUi;
+﻿using KissU.Modularity;
+using Localization.Resources.AbpUi;
 using Volo.Abp.FeatureManagement;
 using Volo.Abp.FeatureManagement.Localization;
 using Volo.Abp.Localization;
@@ -11,7 +12,7 @@ namespace KissU.Modules.FeatureManagement.Service.Contracts
         typeof(AbpFeatureManagementApplicationContractsModule),
         typeof(AbpUiModule)
     )]
-    public class FeatureManagementServiceContractsModule : AbpModule
+    public class FeatureManagementServiceContractsModule : AbpBusunessModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {

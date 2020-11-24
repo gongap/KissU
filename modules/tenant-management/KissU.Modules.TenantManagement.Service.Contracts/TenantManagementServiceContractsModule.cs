@@ -1,4 +1,5 @@
-﻿using Localization.Resources.AbpUi;
+﻿using KissU.Modularity;
+using Localization.Resources.AbpUi;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.TenantManagement;
@@ -11,7 +12,7 @@ namespace KissU.Modules.TenantManagement.Service.Contracts
         typeof(AbpTenantManagementApplicationContractsModule),
         typeof(AbpUiModule)
     )]
-    public class TenantManagementServiceContractsModule : AbpModule
+    public class TenantManagementServiceContractsModule : AbpBusunessModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {

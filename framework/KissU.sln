@@ -103,6 +103,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.TenantManagem
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.TenantManagement.Service.Contracts", "..\modules\tenant-management\KissU.Modules.TenantManagement.Service.Contracts\KissU.Modules.TenantManagement.Service.Contracts.csproj", "{24400FA6-8C9C-4166-9C40-35EEDF8D687B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "account", "account", "{C509549F-8B9F-4FC2-B9C8-32B08D1A8C4E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Account.Service", "..\modules\account\KissU.Modules.Account.Service\KissU.Modules.Account.Service.csproj", "{70EDC165-2BED-457A-89A7-09774E70F329}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Account.Service.Contracts", "..\modules\account\KissU.Modules.Account.Service.Contracts\KissU.Modules.Account.Service.Contracts.csproj", "{BE1D8D12-C16C-4572-9ECD-9002FD243025}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -281,6 +287,14 @@ Global
 		{24400FA6-8C9C-4166-9C40-35EEDF8D687B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24400FA6-8C9C-4166-9C40-35EEDF8D687B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24400FA6-8C9C-4166-9C40-35EEDF8D687B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70EDC165-2BED-457A-89A7-09774E70F329}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70EDC165-2BED-457A-89A7-09774E70F329}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70EDC165-2BED-457A-89A7-09774E70F329}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70EDC165-2BED-457A-89A7-09774E70F329}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE1D8D12-C16C-4572-9ECD-9002FD243025}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE1D8D12-C16C-4572-9ECD-9002FD243025}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE1D8D12-C16C-4572-9ECD-9002FD243025}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE1D8D12-C16C-4572-9ECD-9002FD243025}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -333,6 +347,9 @@ Global
 		{700177ED-0FCD-4FFE-BF7B-36B08D0E9CE2} = {79F3E832-1DA4-45E0-ACC6-76A0C9DA2F7C}
 		{79D8E19A-CA3B-450D-A922-981CDFC4CD5D} = {F20BA723-CD68-4AA7-A61B-A5A67FE6D203}
 		{24400FA6-8C9C-4166-9C40-35EEDF8D687B} = {F20BA723-CD68-4AA7-A61B-A5A67FE6D203}
+		{C509549F-8B9F-4FC2-B9C8-32B08D1A8C4E} = {1D15EBD3-D08A-4E2B-88FB-0516210463C2}
+		{70EDC165-2BED-457A-89A7-09774E70F329} = {C509549F-8B9F-4FC2-B9C8-32B08D1A8C4E}
+		{BE1D8D12-C16C-4572-9ECD-9002FD243025} = {C509549F-8B9F-4FC2-B9C8-32B08D1A8C4E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}
