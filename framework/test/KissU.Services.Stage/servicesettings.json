@@ -14,8 +14,8 @@
     "DisconnTimeInterval": 30,
     "ExecutionTimeoutInMilliseconds": 1000,
     "Protocol": "${Protocol}|None", //Http¡¢Tcp¡¢None
-    "RootPath": "${RootPath}|D:\\userapp",
-    "WebRootPath": "${WebRootPath}|D:\\UserApp\\wwwroot",
+    "RootPath": "${RootPath}",
+    "WebRootPath": "${WebRootPath}",
     "IsModulePerLifetimeScope": false,
     "ReloadOnChange": false,
     "Ports": {

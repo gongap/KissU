@@ -8,7 +8,7 @@
     "Token": "true",
     "Libuv": true,
     "Protocol": "${Protocol}|Http", //Http¡¢Tcp¡¢None
-    "RootPath": "${RootPath}|d:\\microKissU",
+    "RootPath": "${RootPath}",
     "Ports": {
       "HttpPort": "${HttpPort}|8080"
     },

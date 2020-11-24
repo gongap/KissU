@@ -329,8 +329,6 @@ namespace KissU.ServiceDiscovery.Consul
             }
             else
             {
-                if (_logger.IsEnabled(LogLevel.Warning))
-                    _logger.LogWarning($"无法获取路由信息，因为节点：{_configInfo.MqttRoutePath}，不存在。");
                 _routes = new MqttServiceRoute[0];
             }
         }
