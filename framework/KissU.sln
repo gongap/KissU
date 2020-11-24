@@ -71,9 +71,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Client.Host", "test\K
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "modules", "modules", "{1D15EBD3-D08A-4E2B-88FB-0516210463C2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Identity.Service.Contracts", "modules\identity\KissU.Modules.Identity.Service.Contracts\KissU.Modules.Identity.Service.Contracts.csproj", "{5E8AFF4D-C407-41F6-BE1B-859F9834C22B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Identity.Service.Contracts", "..\modules\identity\KissU.Modules.Identity.Service.Contracts\KissU.Modules.Identity.Service.Contracts.csproj", "{5E8AFF4D-C407-41F6-BE1B-859F9834C22B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Identity.Service", "modules\identity\KissU.Modules.Identity.Service\KissU.Modules.Identity.Service.csproj", "{C9733166-8A61-4A0E-A594-B42D56BFBB83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Identity.Service", "..\modules\identity\KissU.Modules.Identity.Service\KissU.Modules.Identity.Service.csproj", "{C9733166-8A61-4A0E-A594-B42D56BFBB83}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "identity", "identity", "{DF4BFA36-7CB0-41C1-9D7A-7CE091F009DE}"
 EndProject
@@ -91,17 +91,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "permission-management", "pe
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tenant-management", "tenant-management", "{F20BA723-CD68-4AA7-A61B-A5A67FE6D203}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.FeatureManagement.Service", "modules\feature-management\KissU.Modules.FeatureManagement.Service\KissU.Modules.FeatureManagement.Service.csproj", "{7137F80F-D776-4E58-981E-CBC1A55D593A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.FeatureManagement.Service", "..\modules\feature-management\KissU.Modules.FeatureManagement.Service\KissU.Modules.FeatureManagement.Service.csproj", "{7137F80F-D776-4E58-981E-CBC1A55D593A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.FeatureManagement.Service.Contracts", "modules\feature-management\KissU.Modules.FeatureManagement.Service.Contracts\KissU.Modules.FeatureManagement.Service.Contracts.csproj", "{4122762B-372C-4320-AFB1-C329CA95E924}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.FeatureManagement.Service.Contracts", "..\modules\feature-management\KissU.Modules.FeatureManagement.Service.Contracts\KissU.Modules.FeatureManagement.Service.Contracts.csproj", "{4122762B-372C-4320-AFB1-C329CA95E924}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.PermissionManagement.Service", "modules\permission-management\KissU.Modules.PermissionManagement.Service\KissU.Modules.PermissionManagement.Service.csproj", "{922B3096-B040-4309-B7B3-18BB349FBC32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.PermissionManagement.Service", "..\modules\permission-management\KissU.Modules.PermissionManagement.Service\KissU.Modules.PermissionManagement.Service.csproj", "{922B3096-B040-4309-B7B3-18BB349FBC32}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.PermissionManagement.Service.Contracts", "modules\permission-management\KissU.Modules.PermissionManagement.Service.Contracts\KissU.Modules.PermissionManagement.Service.Contracts.csproj", "{700177ED-0FCD-4FFE-BF7B-36B08D0E9CE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.PermissionManagement.Service.Contracts", "..\modules\permission-management\KissU.Modules.PermissionManagement.Service.Contracts\KissU.Modules.PermissionManagement.Service.Contracts.csproj", "{700177ED-0FCD-4FFE-BF7B-36B08D0E9CE2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.TenantManagement.Service", "modules\tenant-management\KissU.Modules.TenantManagement.Service\KissU.Modules.TenantManagement.Service.csproj", "{79D8E19A-CA3B-450D-A922-981CDFC4CD5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.TenantManagement.Service", "..\modules\tenant-management\KissU.Modules.TenantManagement.Service\KissU.Modules.TenantManagement.Service.csproj", "{79D8E19A-CA3B-450D-A922-981CDFC4CD5D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.TenantManagement.Service.Contracts", "modules\tenant-management\KissU.Modules.TenantManagement.Service.Contracts\KissU.Modules.TenantManagement.Service.Contracts.csproj", "{24400FA6-8C9C-4166-9C40-35EEDF8D687B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.TenantManagement.Service.Contracts", "..\modules\tenant-management\KissU.Modules.TenantManagement.Service.Contracts\KissU.Modules.TenantManagement.Service.Contracts.csproj", "{24400FA6-8C9C-4166-9C40-35EEDF8D687B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
