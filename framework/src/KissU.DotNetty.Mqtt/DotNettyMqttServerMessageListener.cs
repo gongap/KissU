@@ -18,6 +18,7 @@ using KissU.DotNetty.Mqtt.Implementation;
 using KissU.DotNetty.Mqtt.Internal.Runtime;
 using KissU.DotNetty.Mqtt.Internal.Services;
 using Microsoft.Extensions.Logging;
+using TransportType = KissU.CPlatform.Diagnostics.TransportType;
 
 namespace KissU.DotNetty.Mqtt
 {

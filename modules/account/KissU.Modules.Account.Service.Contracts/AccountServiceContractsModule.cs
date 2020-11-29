@@ -12,7 +12,7 @@ namespace KissU.Modules.Account.Service.Contracts
         typeof(AbpAccountApplicationContractsModule),
         typeof(AbpUiModule)
         )]
-    public class AccountServiceContractsModule : AbpBusunessModule
+    public class AccountServiceContractsModule : AbpBusinessModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {

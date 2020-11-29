@@ -26,11 +26,11 @@ namespace KissU.Client.Host
                 })
                 .AddMicroService(builder =>
                 {
-                    builder.AddClient()
-                        .AddCache();
+                    builder.AddClient().AddCache();
                 })
-                .UseAbp()
+                .AddAbp()
                 .UseClient()
+                .UseAbp
                 .UseAutofac();
     }
 }

@@ -30,8 +30,9 @@ namespace KissU.Services
                         .AddConfigurationWatch()
                         .AddServiceEngine();
                 })
-                .UseAbp()
+                .AddAbp()
                 .UseServer()
+                .UseAbp
                 .UseAutofac();
 
     }

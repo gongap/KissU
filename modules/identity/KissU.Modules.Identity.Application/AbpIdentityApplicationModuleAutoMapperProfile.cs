@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using System.Collections.Generic;
 using Volo.Abp.AutoMapper;
 
 namespace Volo.Abp.Identity

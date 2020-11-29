@@ -75,7 +75,7 @@ namespace KissU.CPlatform
         /// <param name="hostBuilder">The host builder.</param>
         /// <param name="options">The options.</param>
         /// <returns>IHostBuilder.</returns>
-        public static IHostBuilder UseAbp(this IHostBuilder hostBuilder, Action<AbpApplicationCreationOptions> optionsAction = null)
+        public static IHostBuilder AddAbp(this IHostBuilder hostBuilder, Action<AbpApplicationCreationOptions> optionsAction = null)
         {
             return hostBuilder.ConfigureServices(services =>
             {
@@ -83,9 +83,24 @@ namespace KissU.CPlatform
                 {
                     optionsAction?.Invoke(options);
                     var assemblies = ModuleHelper.GetAssemblies();
-                    var moduleTypes = ReflectionHelper.FindTypes<AbpBusunessModule>(assemblies.ToArray());
+                    var moduleTypes = ReflectionHelper.FindTypes<AbpBusinessModule>(assemblies.ToArray());
                     options.PlugInSources.AddTypes(moduleTypes.ToArray());
                 });
+            });
+        }
+
+        /// <summary>
+        /// Uses the server.
+        /// </summary>
+        /// <param name="hostBuilder">The host builder.</param>
+        /// <param name="options">The options.</param>
+        /// <returns>IHostBuilder.</returns>
+        public static IHostBuilder UseAbp(this IHostBuilder hostBuilder)
+        {
+            return hostBuilder.ConfigureContainer(async mapper =>
+            {
+                var serviceProvider = mapper.Resolve<IServiceProvider>();
+                mapper.Resolve<IAbpApplicationWithExternalServiceProvider>().Initialize(serviceProvider);
             });
         }
 

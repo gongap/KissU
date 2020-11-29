@@ -13,7 +13,7 @@ namespace KissU.Modules.TenantManagement.Service
         typeof(AbpTenantManagementApplicationModule),
         typeof(AbpTenantManagementEntityFrameworkCoreModule)
     )]
-    public class TenantManagementServiceModule : AbpBusunessModule
+    public class TenantManagementServiceModule : AbpBusinessModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {

@@ -13,7 +13,7 @@ namespace KissU.Modules.FeatureManagement.Service
         typeof(AbpFeatureManagementApplicationModule),
         typeof(AbpFeatureManagementEntityFrameworkCoreModule)
     )]
-    public class FeatureManagementServiceModule : AbpBusunessModule
+    public class FeatureManagementServiceModule : AbpBusinessModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {

@@ -5,7 +5,7 @@ using Volo.Abp.Settings;
 using Volo.Abp.Account;
 using KissU.Modularity;
 using Volo.Abp.Identity;
-using KissU.Modules.Identity.EntityFrameworkCore;
+using Volo.Abp.Identity.EntityFrameworkCore;
 
 namespace KissU.Modules.Account.Service
 {
@@ -14,7 +14,7 @@ namespace KissU.Modules.Account.Service
         typeof(AbpAccountApplicationModule),
         typeof(AbpIdentityEntityFrameworkCoreModule)
         )]
-    public class AbpAccountServiceModule : AbpBusunessModule
+    public class AbpAccountServiceModule : AbpBusinessModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {

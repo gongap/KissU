@@ -8,7 +8,7 @@ using Volo.Abp.Threading;
 namespace KissU.Client.Host
 {
     [DependsOn(typeof(AbpHttpClientIdentityModelModule))]
-    public class AppModule : AbpBusunessModule
+    public class AppModule : AbpBusinessModule
     {
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
         {

@@ -12,7 +12,7 @@ namespace KissU.Modules.PermissionManagement.Service
         typeof(AbpPermissionManagementApplicationModule),
         typeof(AbpPermissionManagementEntityFrameworkCoreModule)
     )]
-    public class PermissionManagementServiceModule : AbpBusunessModule
+    public class PermissionManagementServiceModule : AbpBusinessModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {

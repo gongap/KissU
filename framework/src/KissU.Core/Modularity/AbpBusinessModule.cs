@@ -2,7 +2,7 @@
 
 namespace KissU.Modularity
 {
-    public class AbpBusunessModule : AbpModule
+    public class AbpBusinessModule : AbpModule
     {
     }
 }
