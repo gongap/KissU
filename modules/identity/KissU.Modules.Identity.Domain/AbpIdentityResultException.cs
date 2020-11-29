@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using JetBrains.Annotations;
-using KissU.Modules.Identity.Domain.Extensions;
-using KissU.Modules.Identity.Domain.Shared.Localization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Localization;
-using Volo.Abp;
 using Volo.Abp.ExceptionHandling;
+using Volo.Abp.Identity.Localization;
 using Volo.Abp.Localization;
 
-namespace KissU.Modules.Identity.Domain
+namespace Volo.Abp.Identity
 {
     [Serializable]
     public class AbpIdentityResultException : BusinessException, ILocalizeErrorMessage
@@ -20,7 +18,7 @@ namespace KissU.Modules.Identity.Domain
 
         public AbpIdentityResultException([NotNull] IdentityResult identityResult)
             : base(
-                code: $"Identity.{identityResult.Errors.First().Code}",
+                code: $"Volo.Abp.Identity:{identityResult.Errors.First().Code}",
                 message: identityResult.Errors.Select(err => err.Description).JoinAsString(", "))
         {
             IdentityResult = Check.NotNull(identityResult, nameof(identityResult));
@@ -34,7 +32,21 @@ namespace KissU.Modules.Identity.Domain
 
         public virtual string LocalizeMessage(LocalizationContext context)
         {
-            return IdentityResult.LocalizeErrors(context.LocalizerFactory.Create<IdentityResource>());
+            var localizer = context.LocalizerFactory.Create<IdentityResource>();
+
+            SetData(localizer);
+
+            return IdentityResult.LocalizeErrors(localizer);
+        }
+
+        protected virtual void SetData(IStringLocalizer localizer)
+        {
+            var values = IdentityResult.GetValuesFromErrorMessage(localizer);
+
+            for (var index = 0; index < values.Length; index++)
+            {
+                Data[index.ToString()] = values[index];
+            }
         }
     }
 }

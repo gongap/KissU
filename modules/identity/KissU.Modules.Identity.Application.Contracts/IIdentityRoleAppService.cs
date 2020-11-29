@@ -3,20 +3,16 @@ using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 
-namespace KissU.Modules.Identity.Application.Contracts
+namespace Volo.Abp.Identity
 {
-    public interface IIdentityRoleAppService : IApplicationService
+    public interface IIdentityRoleAppService
+        : ICrudAppService<
+            IdentityRoleDto,
+            Guid,
+            GetIdentityRolesInput,
+            IdentityRoleCreateDto,
+            IdentityRoleUpdateDto>
     {
         Task<ListResultDto<IdentityRoleDto>> GetAllListAsync();
-        
-        Task<PagedResultDto<IdentityRoleDto>> GetListAsync(PagedAndSortedResultRequestDto input);
-
-        Task<IdentityRoleDto> CreateAsync(IdentityRoleCreateDto input);
-
-        Task<IdentityRoleDto> GetAsync(Guid id);
-
-        Task<IdentityRoleDto> UpdateAsync(Guid id, IdentityRoleUpdateDto input);
-
-        Task DeleteAsync(Guid id);
     }
 }

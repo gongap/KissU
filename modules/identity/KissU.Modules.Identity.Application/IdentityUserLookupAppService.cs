@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using KissU.Modules.Identity.Application.Contracts;
-using KissU.Modules.Identity.Domain;
-using KissU.Modules.Identity.Domain.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Users;
 
-namespace KissU.Modules.Identity.Application
+namespace Volo.Abp.Identity
 {
     [Authorize(IdentityPermissions.UserLookup.Default)]
     public class IdentityUserLookupAppService : IdentityAppServiceBase, IIdentityUserLookupAppService

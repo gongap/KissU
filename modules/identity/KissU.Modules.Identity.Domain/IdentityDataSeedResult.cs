@@ -1,4 +1,4 @@
-﻿namespace KissU.Modules.Identity.Domain
+﻿namespace Volo.Abp.Identity
 {
     public class IdentityDataSeedResult
     {

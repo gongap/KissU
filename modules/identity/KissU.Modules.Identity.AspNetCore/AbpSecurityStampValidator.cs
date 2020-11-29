@@ -5,14 +5,21 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Volo.Abp.Uow;
-using IdentityUser = KissU.Modules.Identity.Domain.IdentityUser;
 
-namespace KissU.Modules.Identity.AspNetCore
+namespace Volo.Abp.Identity.AspNetCore
 {
     public class AbpSecurityStampValidator : SecurityStampValidator<IdentityUser>
     {
-        public AbpSecurityStampValidator(IOptions<SecurityStampValidatorOptions> options, SignInManager<IdentityUser> signInManager, ISystemClock systemClock, ILoggerFactory loggerFactory)
-            : base(options, signInManager, systemClock, loggerFactory)
+        public AbpSecurityStampValidator(
+            IOptions<SecurityStampValidatorOptions> options,
+            SignInManager<IdentityUser> signInManager,
+            ISystemClock systemClock,
+            ILoggerFactory loggerFactory)
+            : base(
+                options, 
+                signInManager,
+                systemClock,
+                loggerFactory)
         {
         }
 

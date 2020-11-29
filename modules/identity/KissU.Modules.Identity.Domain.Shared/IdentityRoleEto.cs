@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KissU.Modules.Identity.Domain.Shared
+namespace Volo.Abp.Identity
 {
     [Serializable]
     public class IdentityRoleEto

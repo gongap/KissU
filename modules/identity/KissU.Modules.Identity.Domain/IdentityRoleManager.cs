@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using KissU.Modules.Identity.Domain.Shared.Localization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
-using Volo.Abp;
 using Volo.Abp.Domain.Entities;
 using Volo.Abp.Domain.Services;
+using Volo.Abp.Identity.Localization;
 using Volo.Abp.Threading;
 
-namespace KissU.Modules.Identity.Domain
+namespace Volo.Abp.Identity
 {
     public class IdentityRoleManager : RoleManager<IdentityRole>, IDomainService
     {
@@ -29,10 +29,10 @@ namespace KissU.Modules.Identity.Domain
             IStringLocalizer<IdentityResource> localizer,
             ICancellationTokenProvider cancellationTokenProvider)
             : base(
-                  store, 
-                  roleValidators, 
-                  keyNormalizer, 
-                  errors, 
+                  store,
+                  roleValidators,
+                  keyNormalizer,
+                  errors,
                   logger)
         {
             Localizer = localizer;
@@ -50,21 +50,21 @@ namespace KissU.Modules.Identity.Domain
             return role;
         }
 
-        public override async Task<IdentityResult> SetRoleNameAsync(IdentityRole role, string name)
+        public async override Task<IdentityResult> SetRoleNameAsync(IdentityRole role, string name)
         {
             if (role.IsStatic && role.Name != name)
             {
-                throw new BusinessException(Localizer["Identity.StaticRoleRenamingErrorMessage"]); // TODO: localize & change exception type
+                throw new BusinessException(IdentityErrorCodes.StaticRoleRenaming);
             }
 
             return await base.SetRoleNameAsync(role, name);
         }
 
-        public override async Task<IdentityResult> DeleteAsync(IdentityRole role)
+        public async override Task<IdentityResult> DeleteAsync(IdentityRole role)
         {
             if (role.IsStatic)
             {
-                throw new BusinessException(Localizer["Identity.StaticRoleDeletionErrorMessage"]); // TODO: localize & change exception type
+                throw new BusinessException(IdentityErrorCodes.StaticRoleDeletion);
             }
 
             return await base.DeleteAsync(role);

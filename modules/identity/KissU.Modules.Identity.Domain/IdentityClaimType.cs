@@ -1,10 +1,8 @@
-﻿using System;
-using JetBrains.Annotations;
-using KissU.Modules.Identity.Domain.Shared;
-using Volo.Abp;
+﻿using JetBrains.Annotations;
+using System;
 using Volo.Abp.Domain.Entities;
 
-namespace KissU.Modules.Identity.Domain
+namespace Volo.Abp.Identity
 {
     public class IdentityClaimType : AggregateRoot<Guid>
     {

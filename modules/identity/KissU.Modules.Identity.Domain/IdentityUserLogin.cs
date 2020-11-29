@@ -1,11 +1,10 @@
 using System;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Identity;
-using Volo.Abp;
 using Volo.Abp.Domain.Entities;
 using Volo.Abp.MultiTenancy;
 
-namespace KissU.Modules.Identity.Domain
+namespace Volo.Abp.Identity
 {
     /// <summary>
     /// Represents a login and its associated provider for a user.

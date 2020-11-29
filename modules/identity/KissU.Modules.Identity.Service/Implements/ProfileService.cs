@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 using KissU.Dependency;
-using KissU.Modules.Identity.Application.Contracts;
 using KissU.Modules.Identity.Service.Contracts;
 using KissU.ServiceProxy;
+using Volo.Abp.Identity;
 
 namespace KissU.Modules.Identity.Service.Implements
 {

@@ -1,7 +1,7 @@
 ﻿using System;
 using Volo.Abp.ObjectExtending.Modularity;
 
-namespace KissU.Modules.Identity.Domain.Shared.ObjectExtending
+namespace Volo.Abp.ObjectExtending
 {
     public static class IdentityModuleExtensionConfigurationDictionaryExtensions
     {

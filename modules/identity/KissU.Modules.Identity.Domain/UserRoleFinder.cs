@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
-using KissU.Modules.Identity.Domain.Shared;
 using Volo.Abp.DependencyInjection;
 
-namespace KissU.Modules.Identity.Domain
+namespace Volo.Abp.Identity
 {
     public class UserRoleFinder : IUserRoleFinder, ITransientDependency
     {

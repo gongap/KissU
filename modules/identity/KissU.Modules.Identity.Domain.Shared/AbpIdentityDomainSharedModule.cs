@@ -1,4 +1,6 @@
-﻿using KissU.Modules.Identity.Domain.Shared.Localization;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Volo.Abp.Features;
+using Volo.Abp.Identity.Localization;
 using Volo.Abp.Localization;
 using Volo.Abp.Localization.ExceptionHandling;
 using Volo.Abp.Modularity;
@@ -7,11 +9,12 @@ using Volo.Abp.Validation;
 using Volo.Abp.Validation.Localization;
 using Volo.Abp.VirtualFileSystem;
 
-namespace KissU.Modules.Identity.Domain.Shared
+namespace Volo.Abp.Identity
 {
     [DependsOn(
         typeof(AbpUsersDomainSharedModule),
-        typeof(AbpValidationModule)
+        typeof(AbpValidationModule),
+        typeof(AbpFeaturesModule)
         )]
     public class AbpIdentityDomainSharedModule : AbpModule
     {
@@ -19,14 +22,16 @@ namespace KissU.Modules.Identity.Domain.Shared
         {
             Configure<AbpVirtualFileSystemOptions>(options =>
             {
-                options.FileSets.AddEmbedded<AbpIdentityDomainSharedModule>("KissU.Modules.Identity.Domain.Shared");
+                options.FileSets.AddEmbedded<AbpIdentityDomainSharedModule>();
             });
 
             Configure<AbpLocalizationOptions>(options =>
             {
                 options.Resources
                     .Add<IdentityResource>("en")
-                    .AddBaseTypes(typeof(AbpValidationResource)).AddVirtualJson("/Localization");
+                    .AddBaseTypes(
+                        typeof(AbpValidationResource)
+                    ).AddVirtualJson("/Volo/Abp/Identity/Localization");
             });
 
             Configure<AbpExceptionLocalizationOptions>(options =>

@@ -1,9 +1,8 @@
-﻿using KissU.Modules.Identity.Domain;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.Modularity;
 using Volo.Abp.Users.EntityFrameworkCore;
 
-namespace KissU.Modules.Identity.EntityFrameworkCore
+namespace Volo.Abp.Identity.EntityFrameworkCore
 {
     [DependsOn(
         typeof(AbpIdentityDomainModule), 

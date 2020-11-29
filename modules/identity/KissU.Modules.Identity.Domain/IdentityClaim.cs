@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Security.Claims;
 using JetBrains.Annotations;
-using Volo.Abp;
 using Volo.Abp.Domain.Entities;
 using Volo.Abp.MultiTenancy;
 
-namespace KissU.Modules.Identity.Domain
+namespace Volo.Abp.Identity
 {
     public abstract class IdentityClaim : Entity<Guid>, IMultiTenant
     {

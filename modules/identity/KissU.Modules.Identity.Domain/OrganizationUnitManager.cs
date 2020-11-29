@@ -1,15 +1,14 @@
-﻿using System;
+﻿using Microsoft.Extensions.Localization;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using KissU.Modules.Identity.Domain.Shared.Localization;
-using Microsoft.Extensions.Localization;
-using Volo.Abp;
 using Volo.Abp.Domain.Services;
+using Volo.Abp.Identity.Localization;
 using Volo.Abp.Threading;
 using Volo.Abp.Uow;
 
-namespace KissU.Modules.Identity.Domain
+namespace Volo.Abp.Identity
 {
     /// <summary>
     /// Performs domain logic for Organization Units.
@@ -55,8 +54,8 @@ namespace KissU.Modules.Identity.Domain
                 return OrganizationUnit.CalculateNextCode(lastChild.Code);
             }
 
-            var parentCode = parentId != null 
-                ? await GetCodeOrDefaultAsync(parentId.Value) 
+            var parentCode = parentId != null
+                ? await GetCodeOrDefaultAsync(parentId.Value)
                 : null;
 
             return OrganizationUnit.AppendCode(
@@ -78,9 +77,15 @@ namespace KissU.Modules.Identity.Domain
 
             foreach (var child in children)
             {
+                await OrganizationUnitRepository.RemoveAllMembersAsync(child);
+                await OrganizationUnitRepository.RemoveAllRolesAsync(child);
                 await OrganizationUnitRepository.DeleteAsync(child);
             }
 
+            var organizationUnit = await OrganizationUnitRepository.GetAsync(id);
+
+            await OrganizationUnitRepository.RemoveAllMembersAsync(organizationUnit);
+            await OrganizationUnitRepository.RemoveAllRolesAsync(organizationUnit);
             await OrganizationUnitRepository.DeleteAsync(id);
         }
 
@@ -126,7 +131,8 @@ namespace KissU.Modules.Identity.Domain
 
             if (siblings.Any(ou => ou.DisplayName == organizationUnit.DisplayName))
             {
-                throw new UserFriendlyException(Localizer["OrganizationUnitDuplicateDisplayNameWarning", organizationUnit.DisplayName]);
+                throw new BusinessException(IdentityErrorCodes.DuplicateOrganizationUnitDisplayName)
+                    .WithData("0", organizationUnit.DisplayName);
             }
         }
 
@@ -134,7 +140,7 @@ namespace KissU.Modules.Identity.Domain
         {
             if (!recursive)
             {
-                return await OrganizationUnitRepository.GetChildrenAsync(parentId);
+                return await OrganizationUnitRepository.GetChildrenAsync(parentId, includeDetails: true);
             }
 
             if (!parentId.HasValue)
@@ -144,7 +150,7 @@ namespace KissU.Modules.Identity.Domain
 
             var code = await GetCodeOrDefaultAsync(parentId.Value);
 
-            return await OrganizationUnitRepository.GetAllChildrenWithParentCodeAsync(code, parentId);
+            return await OrganizationUnitRepository.GetAllChildrenWithParentCodeAsync(code, parentId, includeDetails: true);
         }
 
         public virtual Task<bool> IsInOrganizationUnitAsync(IdentityUser user, OrganizationUnit ou)
@@ -169,7 +175,7 @@ namespace KissU.Modules.Identity.Domain
                 return Task.FromResult(0);
             }
             ou.AddRole(role.Id);
-            return Task.FromResult(0);
+            return OrganizationUnitRepository.UpdateAsync(ou);
         }
 
         public virtual async Task RemoveRoleFromOrganizationUnitAsync(Guid roleId, Guid ouId)
@@ -183,7 +189,7 @@ namespace KissU.Modules.Identity.Domain
         public virtual Task RemoveRoleFromOrganizationUnitAsync(IdentityRole role, OrganizationUnit organizationUnit)
         {
             organizationUnit.RemoveRole(role.Id);
-            return Task.FromResult(0);
+            return OrganizationUnitRepository.UpdateAsync(organizationUnit);
         }
     }
 }

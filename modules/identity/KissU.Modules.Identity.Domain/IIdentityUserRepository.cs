@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Volo.Abp.Domain.Repositories;
 
-namespace KissU.Modules.Identity.Domain
+namespace Volo.Abp.Identity
 {
     public interface IIdentityUserRepository : IBasicRepository<IdentityUser, Guid>
     {

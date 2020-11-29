@@ -5,13 +5,12 @@ using System.Linq;
 using System.Security.Claims;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Identity;
-using Volo.Abp;
 using Volo.Abp.Auditing;
 using Volo.Abp.Domain.Entities.Auditing;
 using Volo.Abp.Guids;
 using Volo.Abp.Users;
 
-namespace KissU.Modules.Identity.Domain
+namespace Volo.Abp.Identity
 {
     public class IdentityUser : FullAuditedAggregateRoot<Guid>, IUser
     {
@@ -31,11 +30,13 @@ namespace KissU.Modules.Identity.Domain
         /// <summary>
         /// Gets or sets the Name for the user.
         /// </summary>
+        [CanBeNull]
         public virtual string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the Surname for the user.
         /// </summary>
+        [CanBeNull]
         public virtual string Surname { get; set; }
 
         /// <summary>
@@ -67,9 +68,12 @@ namespace KissU.Modules.Identity.Domain
         [DisableAuditing]
         public virtual string SecurityStamp { get; protected internal set; }
 
+        public virtual bool IsExternal { get; set; }
+
         /// <summary>
         /// Gets or sets a telephone number for the user.
         /// </summary>
+        [CanBeNull]
         public virtual string PhoneNumber { get; protected internal set; }
 
         /// <summary>
@@ -134,12 +138,16 @@ namespace KissU.Modules.Identity.Domain
         {
         }
 
-        public IdentityUser(Guid id, [NotNull] string userName, [NotNull] string email, Guid? tenantId = null)
+        public IdentityUser(
+            Guid id,
+            [NotNull] string userName,
+            [NotNull] string email,
+            Guid? tenantId = null)
+            : base(id)
         {
             Check.NotNull(userName, nameof(userName));
             Check.NotNull(email, nameof(email));
 
-            Id = id;
             TenantId = tenantId;
             UserName = userName;
             NormalizedUserName = userName.ToUpperInvariant();
@@ -153,8 +161,6 @@ namespace KissU.Modules.Identity.Domain
             Logins = new Collection<IdentityUserLogin>();
             Tokens = new Collection<IdentityUserToken>();
             OrganizationUnits = new Collection<IdentityUserOrganizationUnit>();
-
-            ExtraProperties = new Volo.Abp.Data.ExtraPropertyDictionary();
         }
 
         public virtual void AddRole(Guid roleId)
@@ -255,7 +261,8 @@ namespace KissU.Modules.Identity.Domain
             Check.NotNull(loginProvider, nameof(loginProvider));
             Check.NotNull(providerKey, nameof(providerKey));
 
-            Logins.RemoveAll(userLogin => userLogin.LoginProvider == loginProvider && userLogin.ProviderKey == providerKey);
+            Logins.RemoveAll(userLogin =>
+                userLogin.LoginProvider == loginProvider && userLogin.ProviderKey == providerKey);
         }
 
         [CanBeNull]
@@ -317,9 +324,37 @@ namespace KissU.Modules.Identity.Domain
             );
         }
 
+        /// <summary>
+        /// Use <see cref="IdentityUserManager.ConfirmEmailAsync"/> for regular email confirmation.
+        /// Using this skips the confirmation process and directly sets the <see cref="EmailConfirmed"/>.
+        /// </summary>
+        public virtual void SetEmailConfirmed(bool confirmed)
+        {
+            EmailConfirmed = confirmed;
+        }
+
+        public virtual void SetPhoneNumberConfirmed(bool confirmed)
+        {
+            PhoneNumberConfirmed = confirmed;
+        }
+
         public override string ToString()
         {
             return $"{base.ToString()}, UserName = {UserName}";
+        }
+
+        /// <summary>
+        /// Normally use <see cref="IdentityUserManager.ChangePhoneNumberAsync"/> to change the phone number
+        /// in the application code.
+        /// This method is to directly set it with a confirmation information.
+        /// </summary>
+        /// <param name="phoneNumber"></param>
+        /// <param name="confirmed"></param>
+        /// <exception cref="NotImplementedException"></exception>
+        public void SetPhoneNumber(string phoneNumber, bool confirmed)
+        {
+            PhoneNumber = phoneNumber;
+            PhoneNumberConfirmed = !phoneNumber.IsNullOrWhiteSpace() && confirmed;
         }
     }
 }

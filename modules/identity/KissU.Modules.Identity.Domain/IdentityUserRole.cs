@@ -2,7 +2,7 @@ using System;
 using Volo.Abp.Domain.Entities;
 using Volo.Abp.MultiTenancy;
 
-namespace KissU.Modules.Identity.Domain
+namespace Volo.Abp.Identity
 {
     /// <summary>
     /// Represents the link between a user and a role.

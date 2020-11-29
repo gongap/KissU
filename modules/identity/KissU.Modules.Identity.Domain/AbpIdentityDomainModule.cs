@@ -1,7 +1,4 @@
-﻿using KissU.Modules.Identity.Domain.Extensions;
-using KissU.Modules.Identity.Domain.Shared;
-using KissU.Modules.Identity.Domain.Shared.ObjectExtending;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
@@ -9,10 +6,12 @@ using Volo.Abp.AutoMapper;
 using Volo.Abp.Domain;
 using Volo.Abp.Domain.Entities.Events.Distributed;
 using Volo.Abp.Modularity;
+using Volo.Abp.ObjectExtending;
 using Volo.Abp.ObjectExtending.Modularity;
+using Volo.Abp.Security.Claims;
 using Volo.Abp.Users;
 
-namespace KissU.Modules.Identity.Domain
+namespace Volo.Abp.Identity
 {
     [DependsOn(
         typeof(AbpDddDomainModule),
@@ -36,8 +35,9 @@ namespace KissU.Modules.Identity.Domain
                 options.EtoMappings.Add<IdentityUser, UserEto>(typeof(AbpIdentityDomainModule));
                 options.EtoMappings.Add<IdentityClaimType, IdentityClaimTypeEto>(typeof(AbpIdentityDomainModule));
                 options.EtoMappings.Add<IdentityRole, IdentityRoleEto>(typeof(AbpIdentityDomainModule));
+                options.EtoMappings.Add<OrganizationUnit, OrganizationUnitEto>(typeof(AbpIdentityDomainModule));
             });
-            
+
             var identityBuilder = context.Services.AddAbpIdentity(options =>
             {
                 options.User.RequireUniqueEmail = true;
@@ -45,6 +45,13 @@ namespace KissU.Modules.Identity.Domain
 
             context.Services.AddObjectAccessor(identityBuilder);
             context.Services.ExecutePreConfiguredActions(identityBuilder);
+
+            Configure<IdentityOptions>(options =>
+            {
+                options.ClaimsIdentity.UserIdClaimType = AbpClaimTypes.UserId;
+                options.ClaimsIdentity.UserNameClaimType = AbpClaimTypes.UserName;
+                options.ClaimsIdentity.RoleClaimType = AbpClaimTypes.Role;
+            });
 
             AddAbpIdentityOptionsFactory(context.Services);
         }
@@ -67,6 +74,12 @@ namespace KissU.Modules.Identity.Domain
                 IdentityModuleExtensionConsts.ModuleName,
                 IdentityModuleExtensionConsts.EntityNames.ClaimType,
                 typeof(IdentityClaimType)
+            );
+
+            ModuleExtensionConfigurationHelper.ApplyEntityConfigurationToEntity(
+                IdentityModuleExtensionConsts.ModuleName,
+                IdentityModuleExtensionConsts.EntityNames.OrganizationUnit,
+                typeof(OrganizationUnit)
             );
         }
 

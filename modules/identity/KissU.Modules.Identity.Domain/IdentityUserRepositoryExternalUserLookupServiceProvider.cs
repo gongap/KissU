@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Users;
 
-namespace KissU.Modules.Identity.Domain
+namespace Volo.Abp.Identity
 {
     public class IdentityUserRepositoryExternalUserLookupServiceProvider : IExternalUserLookupServiceProvider, ITransientDependency
     {

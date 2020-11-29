@@ -1,11 +1,11 @@
-﻿namespace KissU.Modules.Identity.Domain.Shared
+﻿namespace Volo.Abp.Identity
 {
     public static class OrganizationUnitConsts
     {
         /// <summary>
-        /// Maximum length of the <see cref="DisplayName"/> property.
+        /// Maximum length of the DisplayName property.
         /// </summary>
-        public const int MaxDisplayNameLength = 128;
+        public static int MaxDisplayNameLength { get; set; } = 128;
 
         /// <summary>
         /// Maximum depth of an OU hierarchy.
@@ -18,7 +18,7 @@
         public const int CodeUnitLength = 5;
 
         /// <summary>
-        /// Maximum length of the <see cref="Code"/> property.
+        /// Maximum length of the Code property.
         /// </summary>
         public const int MaxCodeLength = MaxDepth * (CodeUnitLength + 1) - 1;
     }

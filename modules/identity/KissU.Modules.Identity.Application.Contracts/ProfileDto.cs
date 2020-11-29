@@ -1,6 +1,6 @@
 ﻿using Volo.Abp.ObjectExtending;
 
-namespace KissU.Modules.Identity.Application.Contracts
+namespace Volo.Abp.Identity
 {
     public class ProfileDto : ExtensibleObject
     {
@@ -13,5 +13,9 @@ namespace KissU.Modules.Identity.Application.Contracts
         public string Surname { get; set; }
 
         public string PhoneNumber { get; set; }
+
+        public bool IsExternal { get; set; }
+
+        public bool HasPassword { get; set; }
     }
 }

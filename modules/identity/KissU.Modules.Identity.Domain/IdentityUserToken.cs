@@ -1,10 +1,9 @@
 using System;
 using JetBrains.Annotations;
-using Volo.Abp;
 using Volo.Abp.Domain.Entities;
 using Volo.Abp.MultiTenancy;
 
-namespace KissU.Modules.Identity.Domain
+namespace Volo.Abp.Identity
 {
     /// <summary>
     /// Represents an authentication token for a user.

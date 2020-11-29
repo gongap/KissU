@@ -1,6 +1,6 @@
 ﻿using Volo.Abp.Users;
 
-namespace KissU.Modules.Identity.Domain.Shared
+namespace Volo.Abp.Identity
 {
     public static class IdentityUserConsts
     {
@@ -32,5 +32,10 @@ namespace KissU.Modules.Identity.Domain.Shared
         /// Default value: 256
         /// </summary>
         public static int MaxSecurityStampLength { get; set; } = 256;
+
+        /// <summary>
+        /// Default value: 16
+        /// </summary>
+        public static int MaxLoginProviderLength { get; set; } = 16;
     }
 }

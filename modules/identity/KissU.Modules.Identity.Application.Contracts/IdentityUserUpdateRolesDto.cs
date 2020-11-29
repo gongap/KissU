@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace KissU.Modules.Identity.Application.Contracts
+namespace Volo.Abp.Identity
 {
     public class IdentityUserUpdateRolesDto
     {

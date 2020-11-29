@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Volo.Abp.Identity;
 
-namespace KissU.Modules.Identity.Domain.Extensions
+namespace Microsoft.Extensions.DependencyInjection
 {
     public static class AbpIdentityServiceCollectionExtensions
     {
@@ -29,11 +29,12 @@ namespace KissU.Modules.Identity.Domain.Extensions
             //AbpRoleStore
             services.TryAddScoped<IdentityRoleStore>();
             services.TryAddScoped(typeof(IRoleStore<IdentityRole>), provider => provider.GetService(typeof(IdentityRoleStore)));
-            
+
             return services
                 .AddIdentityCore<IdentityUser>(setupAction)
                 .AddRoles<IdentityRole>()
-                .AddClaimsPrincipalFactory<AbpUserClaimsPrincipalFactory>();
+                .AddClaimsPrincipalFactory<AbpUserClaimsPrincipalFactory>()
+                .AddTokenProvider<LinkUserTokenProvider>(LinkUserTokenProvider.LinkUserTokenProviderName);
         }
     }
 }

@@ -1,9 +1,8 @@
-﻿using KissU.Modules.Identity.Domain.Shared;
-using KissU.Modules.Identity.Domain.Shared.Localization;
-using Volo.Abp.Authorization.Permissions;
+﻿using Volo.Abp.Authorization.Permissions;
+using Volo.Abp.Identity.Localization;
 using Volo.Abp.Localization;
 
-namespace KissU.Modules.Identity.Application.Contracts
+namespace Volo.Abp.Identity
 {
     public class IdentityPermissionDefinitionProvider : PermissionDefinitionProvider
     {

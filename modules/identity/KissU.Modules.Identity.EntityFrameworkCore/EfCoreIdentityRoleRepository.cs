@@ -4,12 +4,11 @@ using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Threading;
 using System.Threading.Tasks;
-using KissU.Modules.Identity.Domain;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
 
-namespace KissU.Modules.Identity.EntityFrameworkCore
+namespace Volo.Abp.Identity.EntityFrameworkCore
 {
     public class EfCoreIdentityRoleRepository : EfCoreRepository<IIdentityDbContext, IdentityRole, Guid>, IIdentityRoleRepository
     {
@@ -59,6 +58,17 @@ namespace KissU.Modules.Identity.EntityFrameworkCore
             bool includeDetails = false, CancellationToken cancellationToken = default)
         {
             return await DbSet.IncludeDetails(includeDetails).Where(r => r.IsDefault).ToListAsync(GetCancellationToken(cancellationToken));
+        }
+
+        public async Task<long> GetCountAsync(
+            string filter = null,
+            CancellationToken cancellationToken = default)
+        {
+            return await DbSet
+                .WhereIf(!filter.IsNullOrWhiteSpace(),
+                    x => x.Name.Contains(filter) ||
+                         x.NormalizedName.Contains(filter))
+                .LongCountAsync(GetCancellationToken(cancellationToken));
         }
 
         public override IQueryable<IdentityRole> WithDetails()

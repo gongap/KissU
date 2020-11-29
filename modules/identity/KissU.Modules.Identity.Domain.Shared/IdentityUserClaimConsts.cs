@@ -1,9 +1,15 @@
-﻿namespace KissU.Modules.Identity.Domain.Shared
+﻿namespace Volo.Abp.Identity
 {
     public static class IdentityUserClaimConsts
     {
-        public const int MaxClaimTypeLength = 256;
+        /// <summary>
+        /// Default value: 256
+        /// </summary>
+        public static int MaxClaimTypeLength { get; set; } = 256;
 
-        public const int MaxClaimValueLength = 1024;
+        /// <summary>
+        /// Default value: 1024
+        /// </summary>
+        public static int MaxClaimValueLength { get; set; } = 1024;
     }
 }

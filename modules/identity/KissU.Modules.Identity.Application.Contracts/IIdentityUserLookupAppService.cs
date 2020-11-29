@@ -4,7 +4,7 @@ using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Users;
 
-namespace KissU.Modules.Identity.Application.Contracts
+namespace Volo.Abp.Identity
 {
     public interface IIdentityUserLookupAppService : IApplicationService
     {

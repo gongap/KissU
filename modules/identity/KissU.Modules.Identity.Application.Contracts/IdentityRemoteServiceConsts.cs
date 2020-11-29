@@ -1,4 +1,4 @@
-﻿namespace KissU.Modules.Identity.Application.Contracts
+﻿namespace Volo.Abp.Identity
 {
     public static class IdentityRemoteServiceConsts
     {

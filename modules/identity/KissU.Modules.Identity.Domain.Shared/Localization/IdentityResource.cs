@@ -1,6 +1,6 @@
 ﻿using Volo.Abp.Localization;
 
-namespace KissU.Modules.Identity.Domain.Shared.Localization
+namespace Volo.Abp.Identity.Localization
 {
     [LocalizationResourceName("AbpIdentity")]
     public class IdentityResource

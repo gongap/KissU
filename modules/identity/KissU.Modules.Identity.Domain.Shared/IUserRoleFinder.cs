@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace KissU.Modules.Identity.Domain.Shared
+namespace Volo.Abp.Identity
 {
     public interface IUserRoleFinder
     {

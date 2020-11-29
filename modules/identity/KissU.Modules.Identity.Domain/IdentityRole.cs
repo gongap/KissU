@@ -4,13 +4,12 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Security.Claims;
 using JetBrains.Annotations;
-using Volo.Abp;
 using Volo.Abp.Auditing;
 using Volo.Abp.Domain.Entities;
 using Volo.Abp.Guids;
 using Volo.Abp.MultiTenancy;
 
-namespace KissU.Modules.Identity.Domain
+namespace Volo.Abp.Identity
 {
     /// <summary>
     /// Represents a role in the identity system

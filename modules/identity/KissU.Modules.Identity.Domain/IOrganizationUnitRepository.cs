@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Volo.Abp.Domain.Repositories;
 
-namespace KissU.Modules.Identity.Domain
+namespace Volo.Abp.Identity
 {
     public interface IOrganizationUnitRepository : IBasicRepository<OrganizationUnit, Guid>
     {
@@ -55,6 +55,22 @@ namespace KissU.Modules.Identity.Domain
             CancellationToken cancellationToken = default
         );
 
+        Task<List<IdentityRole>> GetUnaddedRolesAsync(
+            OrganizationUnit organizationUnit,
+            string sorting = null,
+            int maxResultCount = int.MaxValue,
+            int skipCount = 0,
+            string filter = null,
+            bool includeDetails = false,
+            CancellationToken cancellationToken = default
+        );
+
+        Task<int> GetUnaddedRolesCountAsync(
+            OrganizationUnit organizationUnit,
+            string filter = null,
+            CancellationToken cancellationToken = default
+        );
+
         Task<List<IdentityUser>> GetMembersAsync(
             OrganizationUnit organizationUnit,
             string sorting = null,
@@ -64,7 +80,35 @@ namespace KissU.Modules.Identity.Domain
             bool includeDetails = false,
             CancellationToken cancellationToken = default
         );
+
         Task<int> GetMembersCountAsync(
+            OrganizationUnit organizationUnit,
+            string filter = null,
+            CancellationToken cancellationToken = default
+        );
+
+        Task<List<IdentityUser>> GetUnaddedUsersAsync(
+            OrganizationUnit organizationUnit,
+            string sorting = null,
+            int maxResultCount = int.MaxValue,
+            int skipCount = 0,
+            string filter = null,
+            bool includeDetails = false,
+            CancellationToken cancellationToken = default
+        );
+
+        Task<int> GetUnaddedUsersCountAsync(
+            OrganizationUnit organizationUnit,
+            string filter = null,
+            CancellationToken cancellationToken = default
+        );
+
+        Task RemoveAllRolesAsync(
+            OrganizationUnit organizationUnit,
+            CancellationToken cancellationToken = default
+        );
+
+        Task RemoveAllMembersAsync(
             OrganizationUnit organizationUnit,
             CancellationToken cancellationToken = default
         );

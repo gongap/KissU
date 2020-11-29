@@ -1,9 +1,8 @@
 using System.ComponentModel.DataAnnotations;
-using KissU.Modules.Identity.Domain.Shared;
 using Volo.Abp.Auditing;
 using Volo.Abp.Validation;
 
-namespace KissU.Modules.Identity.Application.Contracts
+namespace Volo.Abp.Identity
 {
     public class IdentityUserCreateDto : IdentityUserCreateOrUpdateDtoBase
     {

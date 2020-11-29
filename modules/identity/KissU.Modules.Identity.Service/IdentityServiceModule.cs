@@ -1,10 +1,9 @@
 ﻿using KissU.Modularity;
-using KissU.Modules.Identity.Application;
-using KissU.Modules.Identity.Domain;
-using KissU.Modules.Identity.EntityFrameworkCore;
 using KissU.Modules.Identity.Service.Contracts;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
+using Volo.Abp.Identity;
+using Volo.Abp.Identity.EntityFrameworkCore;
 using Volo.Abp.Modularity;
 using Volo.Abp.Settings;
 

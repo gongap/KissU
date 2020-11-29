@@ -1,28 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.Modules.Identity.Application.Contracts;
-using KissU.Modules.Identity.Domain;
-using KissU.Modules.Identity.Domain.Extensions;
-using KissU.Modules.Identity.Domain.Shared;
 using Microsoft.AspNetCore.Authorization;
-using Volo.Abp;
+using Microsoft.AspNetCore.Identity;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.ObjectExtending;
 
-namespace KissU.Modules.Identity.Application
+namespace Volo.Abp.Identity
 {
     public class IdentityUserAppService : IdentityAppServiceBase, IIdentityUserAppService
     {
         protected IdentityUserManager UserManager { get; }
         protected IIdentityUserRepository UserRepository { get; }
+        public IIdentityRoleRepository RoleRepository { get; }
 
         public IdentityUserAppService(
             IdentityUserManager userManager,
-            IIdentityUserRepository userRepository)
+            IIdentityUserRepository userRepository,
+            IIdentityRoleRepository roleRepository)
         {
             UserManager = userManager;
             UserRepository = userRepository;
+            RoleRepository = roleRepository;
         }
 
         //TODO: [Authorize(IdentityPermissions.Users.Default)] should go the IdentityUserAppService class.
@@ -56,6 +55,14 @@ namespace KissU.Modules.Identity.Application
             return new ListResultDto<IdentityRoleDto>(
                 ObjectMapper.Map<List<IdentityRole>, List<IdentityRoleDto>>(roles)
             );
+        }
+
+        [Authorize(IdentityPermissions.Users.Default)]
+        public virtual async Task<ListResultDto<IdentityRoleDto>> GetAssignableRolesAsync()
+        {
+            var list = await RoleRepository.GetListAsync();
+            return new ListResultDto<IdentityRoleDto>(
+                ObjectMapper.Map<List<IdentityRole>, List<IdentityRoleDto>>(list));
         }
 
         [Authorize(IdentityPermissions.Users.Create)]
@@ -96,7 +103,7 @@ namespace KissU.Modules.Identity.Application
                 (await UserManager.RemovePasswordAsync(user)).CheckErrors();
                 (await UserManager.AddPasswordAsync(user, input.Password)).CheckErrors();
             }
-            
+
             await CurrentUnitOfWork.SaveChangesAsync();
 
             return ObjectMapper.Map<IdentityUser, IdentityUserDto>(user);
@@ -128,10 +135,10 @@ namespace KissU.Modules.Identity.Application
         }
 
         [Authorize(IdentityPermissions.Users.Default)]
-        public virtual async Task<IdentityUserDto> FindByUsernameAsync(string username)
+        public virtual async Task<IdentityUserDto> FindByUsernameAsync(string userName)
         {
             return ObjectMapper.Map<IdentityUser, IdentityUserDto>(
-                await UserManager.FindByNameAsync(username)
+                await UserManager.FindByNameAsync(userName)
             );
         }
 
@@ -155,7 +162,6 @@ namespace KissU.Modules.Identity.Application
                 (await UserManager.SetPhoneNumberAsync(user, input.PhoneNumber)).CheckErrors();
             }
 
-            (await UserManager.SetTwoFactorEnabledAsync(user, input.TwoFactorEnabled)).CheckErrors();
             (await UserManager.SetLockoutEnabledAsync(user, input.LockoutEnabled)).CheckErrors();
 
             user.Name = input.Name;

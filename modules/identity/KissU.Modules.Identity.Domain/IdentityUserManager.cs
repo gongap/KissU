@@ -4,27 +4,24 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
-using KissU.Modules.Identity.Domain.Shared;
-using KissU.Modules.Identity.Domain.Shared.Settings;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Volo.Abp;
 using Volo.Abp.Domain.Entities;
 using Volo.Abp.Domain.Repositories;
 using Volo.Abp.Domain.Services;
-using Volo.Abp.Settings;
 using Volo.Abp.Threading;
 using Volo.Abp.Uow;
+using Volo.Abp.Settings;
+using Volo.Abp.Identity.Settings;
 
-namespace KissU.Modules.Identity.Domain
+namespace Volo.Abp.Identity
 {
     public class IdentityUserManager : UserManager<IdentityUser>, IDomainService
     {
         protected IIdentityRoleRepository RoleRepository { get; }
         protected IIdentityUserRepository UserRepository { get; }
         protected IOrganizationUnitRepository OrganizationUnitRepository { get; }
-        protected IIdentityUserRepository IdentityUserRepository { get; }
         protected ISettingProvider SettingProvider { get; }
         protected ICancellationTokenProvider CancellationTokenProvider { get; }
 
@@ -44,21 +41,19 @@ namespace KissU.Modules.Identity.Domain
             ILogger<IdentityUserManager> logger,
             ICancellationTokenProvider cancellationTokenProvider,
             IOrganizationUnitRepository organizationUnitRepository,
-            IIdentityUserRepository identityUserRepository,
             ISettingProvider settingProvider)
             : base(
-                  store,
-                  optionsAccessor,
-                  passwordHasher,
-                  userValidators,
-                  passwordValidators,
-                  keyNormalizer,
-                  errors,
-                  services,
-                  logger)
+                store,
+                optionsAccessor,
+                passwordHasher,
+                userValidators,
+                passwordValidators,
+                keyNormalizer,
+                errors,
+                services,
+                logger)
         {
             OrganizationUnitRepository = organizationUnitRepository;
-            IdentityUserRepository = identityUserRepository;
             SettingProvider = settingProvider;
             RoleRepository = roleRepository;
             UserRepository = userRepository;
@@ -76,7 +71,8 @@ namespace KissU.Modules.Identity.Domain
             return user;
         }
 
-        public virtual async Task<IdentityResult> SetRolesAsync([NotNull] IdentityUser user, [NotNull] IEnumerable<string> roleNames)
+        public virtual async Task<IdentityResult> SetRolesAsync([NotNull] IdentityUser user,
+            [NotNull] IEnumerable<string> roleNames)
         {
             Check.NotNull(user, nameof(user));
             Check.NotNull(roleNames, nameof(roleNames));
@@ -98,30 +94,31 @@ namespace KissU.Modules.Identity.Domain
             return IdentityResult.Success;
         }
 
-
         public virtual async Task<bool> IsInOrganizationUnitAsync(Guid userId, Guid ouId)
         {
-            var user = await IdentityUserRepository.GetAsync(userId, cancellationToken: CancellationToken);
+            var user = await UserRepository.GetAsync(userId, cancellationToken: CancellationToken);
             return user.IsInOrganizationUnit(ouId);
         }
 
         public virtual async Task<bool> IsInOrganizationUnitAsync(IdentityUser user, OrganizationUnit ou)
         {
-            await IdentityUserRepository.EnsureCollectionLoadedAsync(user, u => u.OrganizationUnits, CancellationTokenProvider.Token);
+            await UserRepository.EnsureCollectionLoadedAsync(user, u => u.OrganizationUnits,
+                CancellationTokenProvider.Token);
             return user.IsInOrganizationUnit(ou.Id);
         }
 
         public virtual async Task AddToOrganizationUnitAsync(Guid userId, Guid ouId)
         {
             await AddToOrganizationUnitAsync(
-                await IdentityUserRepository.GetAsync(userId, cancellationToken: CancellationToken),
+                await UserRepository.GetAsync(userId, cancellationToken: CancellationToken),
                 await OrganizationUnitRepository.GetAsync(ouId, cancellationToken: CancellationToken)
-                );
+            );
         }
 
         public virtual async Task AddToOrganizationUnitAsync(IdentityUser user, OrganizationUnit ou)
         {
-            await IdentityUserRepository.EnsureCollectionLoadedAsync(user, u => u.OrganizationUnits, CancellationTokenProvider.Token);
+            await UserRepository.EnsureCollectionLoadedAsync(user, u => u.OrganizationUnits,
+                CancellationTokenProvider.Token);
 
             if (user.OrganizationUnits.Any(cou => cou.OrganizationUnitId == ou.Id))
             {
@@ -131,25 +128,29 @@ namespace KissU.Modules.Identity.Domain
             await CheckMaxUserOrganizationUnitMembershipCountAsync(user.OrganizationUnits.Count + 1);
 
             user.AddOrganizationUnit(ou.Id);
+            await UserRepository.UpdateAsync(user, cancellationToken: CancellationToken);
         }
 
         public virtual async Task RemoveFromOrganizationUnitAsync(Guid userId, Guid ouId)
         {
-            var user = await IdentityUserRepository.GetAsync(userId, cancellationToken: CancellationToken);
+            var user = await UserRepository.GetAsync(userId, cancellationToken: CancellationToken);
             user.RemoveOrganizationUnit(ouId);
+            await UserRepository.UpdateAsync(user, cancellationToken: CancellationToken);
         }
 
         public virtual async Task RemoveFromOrganizationUnitAsync(IdentityUser user, OrganizationUnit ou)
         {
-            await IdentityUserRepository.EnsureCollectionLoadedAsync(user, u => u.OrganizationUnits, CancellationTokenProvider.Token);
+            await UserRepository.EnsureCollectionLoadedAsync(user, u => u.OrganizationUnits,
+                CancellationTokenProvider.Token);
 
             user.RemoveOrganizationUnit(ou.Id);
+            await UserRepository.UpdateAsync(user, cancellationToken: CancellationToken);
         }
 
         public virtual async Task SetOrganizationUnitsAsync(Guid userId, params Guid[] organizationUnitIds)
         {
             await SetOrganizationUnitsAsync(
-                await IdentityUserRepository.GetAsync(userId, cancellationToken: CancellationToken),
+                await UserRepository.GetAsync(userId, cancellationToken: CancellationToken),
                 organizationUnitIds
             );
         }
@@ -161,7 +162,8 @@ namespace KissU.Modules.Identity.Domain
 
             await CheckMaxUserOrganizationUnitMembershipCountAsync(organizationUnitIds.Length);
 
-            await IdentityUserRepository.EnsureCollectionLoadedAsync(user, u => u.OrganizationUnits, CancellationTokenProvider.Token);
+            await UserRepository.EnsureCollectionLoadedAsync(user, u => u.OrganizationUnits,
+                CancellationTokenProvider.Token);
 
             //Remove from removed OUs
             foreach (var ouId in user.OrganizationUnits.Select(uou => uou.OrganizationUnitId).ToArray())
@@ -180,11 +182,14 @@ namespace KissU.Modules.Identity.Domain
                     user.AddOrganizationUnit(organizationUnitId);
                 }
             }
+
+            await UserRepository.UpdateAsync(user, cancellationToken: CancellationToken);
         }
 
         private async Task CheckMaxUserOrganizationUnitMembershipCountAsync(int requestedCount)
         {
-            var maxCount = await SettingProvider.GetAsync<int>(IdentitySettingNames.OrganizationUnit.MaxUserMembershipCount);
+            var maxCount =
+                await SettingProvider.GetAsync<int>(IdentitySettingNames.OrganizationUnit.MaxUserMembershipCount);
             if (requestedCount > maxCount)
             {
                 throw new BusinessException(IdentityErrorCodes.MaxAllowedOuMembership)
@@ -193,12 +198,15 @@ namespace KissU.Modules.Identity.Domain
         }
 
         [UnitOfWork]
-        public virtual async Task<List<OrganizationUnit>> GetOrganizationUnitsAsync(IdentityUser user)
+        public virtual async Task<List<OrganizationUnit>> GetOrganizationUnitsAsync(IdentityUser user,
+            bool includeDetails = false)
         {
-            await IdentityUserRepository.EnsureCollectionLoadedAsync(user, u => u.OrganizationUnits, CancellationTokenProvider.Token);
+            await UserRepository.EnsureCollectionLoadedAsync(user, u => u.OrganizationUnits,
+                CancellationTokenProvider.Token);
 
             return await OrganizationUnitRepository.GetListAsync(
                 user.OrganizationUnits.Select(t => t.OrganizationUnitId),
+                includeDetails,
                 cancellationToken: CancellationToken
             );
         }
@@ -210,12 +218,12 @@ namespace KissU.Modules.Identity.Domain
         {
             if (includeChildren)
             {
-                return await IdentityUserRepository
+                return await UserRepository
                     .GetUsersInOrganizationUnitWithChildrenAsync(organizationUnit.Code, CancellationToken);
             }
             else
             {
-                return await IdentityUserRepository
+                return await UserRepository
                     .GetUsersInOrganizationUnitAsync(organizationUnit.Id, CancellationToken);
             }
         }

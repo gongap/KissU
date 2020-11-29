@@ -1,30 +1,23 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.Modules.Identity.Application.Contracts;
-using KissU.Modules.Identity.Domain;
-using KissU.Modules.Identity.Domain.Extensions;
-using KissU.Modules.Identity.Domain.Shared;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Volo.Abp.Application.Dtos;
-using Volo.Abp.Json;
 using Volo.Abp.ObjectExtending;
 
-namespace KissU.Modules.Identity.Application
+namespace Volo.Abp.Identity
 {
     [Authorize(IdentityPermissions.Roles.Default)]
     public class IdentityRoleAppService : IdentityAppServiceBase, IIdentityRoleAppService
     {
-        private readonly IJsonSerializer _jsonSerializer;
         protected IdentityRoleManager RoleManager { get; }
         protected IIdentityRoleRepository RoleRepository { get; }
 
         public IdentityRoleAppService(
-            IJsonSerializer jsonSerializer,
             IdentityRoleManager roleManager,
             IIdentityRoleRepository roleRepository)
         {
-            _jsonSerializer = jsonSerializer;
             RoleManager = roleManager;
             RoleRepository = roleRepository;
         }
@@ -44,9 +37,9 @@ namespace KissU.Modules.Identity.Application
             );
         }
 
-        public virtual async Task<PagedResultDto<IdentityRoleDto>> GetListAsync(PagedAndSortedResultRequestDto input)
+        public virtual async Task<PagedResultDto<IdentityRoleDto>> GetListAsync(GetIdentityRolesInput input)
         {
-            var list = await RoleRepository.GetListAsync(input.Sorting, input.MaxResultCount, input.SkipCount);
+            var list = await RoleRepository.GetListAsync(input.Sorting, input.MaxResultCount, input.SkipCount, input.Filter);
             var totalCount = await RoleRepository.GetCountAsync();
 
             return new PagedResultDto<IdentityRoleDto>(
@@ -64,7 +57,7 @@ namespace KissU.Modules.Identity.Application
                 CurrentTenant.Id
             )
             {
-                IsDefault = input.IsDefault, 
+                IsDefault = input.IsDefault,
                 IsPublic = input.IsPublic
             };
 

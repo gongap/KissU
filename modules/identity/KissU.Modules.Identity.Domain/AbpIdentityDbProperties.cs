@@ -1,6 +1,6 @@
 ﻿using Volo.Abp.Data;
 
-namespace KissU.Modules.Identity.Domain
+namespace Volo.Abp.Identity
 {
     public static class AbpIdentityDbProperties
     {

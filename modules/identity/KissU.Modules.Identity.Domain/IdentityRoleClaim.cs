@@ -2,7 +2,7 @@ using System;
 using System.Security.Claims;
 using JetBrains.Annotations;
 
-namespace KissU.Modules.Identity.Domain
+namespace Volo.Abp.Identity
 {
     /// <summary>
     /// Represents a claim that is granted to all users within a role.

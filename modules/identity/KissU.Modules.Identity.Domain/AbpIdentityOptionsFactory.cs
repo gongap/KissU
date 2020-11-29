@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using KissU.Modules.Identity.Domain.Shared.Settings;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
+using Volo.Abp.Identity.Settings;
 using Volo.Abp.Options;
 using Volo.Abp.Settings;
 using Volo.Abp.Threading;
 
-namespace KissU.Modules.Identity.Domain
+namespace Volo.Abp.Identity
 {
     public class AbpIdentityOptionsFactory : AbpOptionsFactory<IdentityOptions>
     {

@@ -1,9 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using KissU.Modules.Identity.Domain.Shared;
 using Volo.Abp.ObjectExtending;
 using Volo.Abp.Validation;
 
-namespace KissU.Modules.Identity.Application.Contracts
+namespace Volo.Abp.Identity
 {
     public class IdentityRoleCreateOrUpdateDtoBase : ExtensibleObject
     {
@@ -14,5 +13,10 @@ namespace KissU.Modules.Identity.Application.Contracts
         public bool IsDefault { get; set; }
 
         public bool IsPublic { get; set; }
+
+        protected IdentityRoleCreateOrUpdateDtoBase() : base(false)
+        {
+            
+        }
     }
 }

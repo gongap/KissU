@@ -1,4 +1,4 @@
-﻿namespace KissU.Modules.Identity.AspNetCore
+﻿namespace Volo.Abp.Identity.AspNetCore
 {
     public class AbpIdentityAspNetCoreOptions
     {

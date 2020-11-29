@@ -1,9 +1,15 @@
-﻿namespace KissU.Modules.Identity.Domain.Shared
+﻿namespace Volo.Abp.Identity
 {
     public static class IdentityUserTokenConsts
     {
-        public const int MaxLoginProviderLength = 64;
+        /// <summary>
+        /// Default value: 64
+        /// </summary>
+        public static int MaxLoginProviderLength { get; set; } = 64;
 
-        public const int MaxNameLength = 128;
+        /// <summary>
+        /// Default value: 128
+        /// </summary>
+        public static int MaxNameLength { get; set; } = 128;
     }
 }

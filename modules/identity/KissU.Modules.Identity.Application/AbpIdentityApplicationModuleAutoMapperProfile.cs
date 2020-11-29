@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
-using KissU.Modules.Identity.Application.Contracts;
-using KissU.Modules.Identity.Domain;
+using Volo.Abp.AutoMapper;
 
-namespace KissU.Modules.Identity.Application
+namespace Volo.Abp.Identity
 {
     public class AbpIdentityApplicationModuleAutoMapperProfile : Profile
     {
@@ -13,8 +12,10 @@ namespace KissU.Modules.Identity.Application
 
             CreateMap<IdentityRole, IdentityRoleDto>()
                 .MapExtraProperties();
-            
+
             CreateMap<IdentityUser, ProfileDto>()
+                .ForMember(dest => dest.HasPassword,
+                    op => op.MapFrom(src => src.PasswordHash != null))
                 .MapExtraProperties();
         }
     }

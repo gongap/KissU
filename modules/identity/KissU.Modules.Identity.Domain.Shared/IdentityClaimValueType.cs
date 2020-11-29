@@ -1,4 +1,4 @@
-﻿namespace KissU.Modules.Identity.Domain.Shared
+﻿namespace Volo.Abp.Identity
 {
     public enum IdentityClaimValueType
     {

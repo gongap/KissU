@@ -1,8 +1,7 @@
-﻿using System.Linq;
-using KissU.Modules.Identity.Domain;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
-namespace KissU.Modules.Identity.EntityFrameworkCore
+namespace Volo.Abp.Identity.EntityFrameworkCore
 {
     public static class IdentityEfCoreQueryableExtensions
     {

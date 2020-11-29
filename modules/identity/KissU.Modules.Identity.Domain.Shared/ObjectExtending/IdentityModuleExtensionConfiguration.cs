@@ -1,7 +1,7 @@
 ﻿using System;
 using Volo.Abp.ObjectExtending.Modularity;
 
-namespace KissU.Modules.Identity.Domain.Shared.ObjectExtending
+namespace Volo.Abp.ObjectExtending
 {
     public class IdentityModuleExtensionConfiguration : ModuleExtensionConfiguration
     {
@@ -28,6 +28,15 @@ namespace KissU.Modules.Identity.Domain.Shared.ObjectExtending
         {
             return this.ConfigureEntity(
                 IdentityModuleExtensionConsts.EntityNames.ClaimType,
+                configureAction
+            );
+        }
+        
+        public IdentityModuleExtensionConfiguration ConfigureOrganizationUnit(
+            Action<EntityExtensionConfiguration> configureAction)
+        {
+            return this.ConfigureEntity(
+                IdentityModuleExtensionConsts.EntityNames.OrganizationUnit,
                 configureAction
             );
         }

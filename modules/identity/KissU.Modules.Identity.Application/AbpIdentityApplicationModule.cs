@@ -1,15 +1,15 @@
-﻿using KissU.Modules.Identity.Application.Contracts;
-using KissU.Modules.Identity.Domain;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.AutoMapper;
 using Volo.Abp.Modularity;
+using Volo.Abp.PermissionManagement;
 
-namespace KissU.Modules.Identity.Application
+namespace Volo.Abp.Identity
 {
     [DependsOn(
         typeof(AbpIdentityDomainModule),
         typeof(AbpIdentityApplicationContractsModule), 
-        typeof(AbpAutoMapperModule)
+        typeof(AbpAutoMapperModule),
+        typeof(AbpPermissionManagementApplicationModule)
         )]
     public class AbpIdentityApplicationModule : AbpModule
     {

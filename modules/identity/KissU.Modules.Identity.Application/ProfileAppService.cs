@@ -1,14 +1,13 @@
-﻿using System.Threading.Tasks;
-using KissU.Modules.Identity.Application.Contracts;
-using KissU.Modules.Identity.Domain;
-using KissU.Modules.Identity.Domain.Extensions;
-using KissU.Modules.Identity.Domain.Shared.Settings;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Volo.Abp.Identity.Settings;
 using Volo.Abp.ObjectExtending;
 using Volo.Abp.Settings;
 using Volo.Abp.Users;
 
-namespace KissU.Modules.Identity.Application
+namespace Volo.Abp.Identity
 {
     [Authorize]
     public class ProfileAppService : IdentityAppServiceBase, IProfileAppService
@@ -22,9 +21,9 @@ namespace KissU.Modules.Identity.Application
 
         public virtual async Task<ProfileDto> GetAsync()
         {
-            return ObjectMapper.Map<IdentityUser, ProfileDto>(
-                await UserManager.GetByIdAsync(CurrentUser.GetId())
-            );
+            var currentUser = await UserManager.GetByIdAsync(CurrentUser.GetId());
+
+            return ObjectMapper.Map<IdentityUser, ProfileDto>(currentUser);
         }
 
         public virtual async Task<ProfileDto> UpdateAsync(UpdateProfileDto input)
@@ -58,6 +57,19 @@ namespace KissU.Modules.Identity.Application
         public virtual async Task ChangePasswordAsync(ChangePasswordInput input)
         {
             var currentUser = await UserManager.GetByIdAsync(CurrentUser.GetId());
+
+            if (currentUser.IsExternal)
+            {
+                throw new BusinessException(code: IdentityErrorCodes.ExternalUserPasswordChange);
+            }
+
+            if (currentUser.PasswordHash == null)
+            {
+                (await UserManager.AddPasswordAsync(currentUser, input.NewPassword)).CheckErrors();
+
+                return;
+            }
+
             (await UserManager.ChangePasswordAsync(currentUser, input.CurrentPassword, input.NewPassword)).CheckErrors();
         }
     }

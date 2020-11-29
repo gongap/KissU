@@ -1,7 +1,7 @@
-﻿using KissU.Modules.Identity.Domain.Shared.Localization;
-using Volo.Abp.Application.Services;
+﻿using Volo.Abp.Application.Services;
+using Volo.Abp.Identity.Localization;
 
-namespace KissU.Modules.Identity.Application
+namespace Volo.Abp.Identity
 {
     public abstract class IdentityAppServiceBase : ApplicationService
     {

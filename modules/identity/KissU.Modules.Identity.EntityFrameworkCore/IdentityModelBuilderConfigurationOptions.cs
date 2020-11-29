@@ -1,7 +1,7 @@
 ﻿using JetBrains.Annotations;
 using Volo.Abp.EntityFrameworkCore.Modeling;
 
-namespace KissU.Modules.Identity.EntityFrameworkCore
+namespace Volo.Abp.Identity.EntityFrameworkCore
 {
     public class IdentityModelBuilderConfigurationOptions : AbpModelBuilderConfigurationOptions
     {

@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Volo.Abp.Domain.Repositories;
 
-namespace KissU.Modules.Identity.Domain
+namespace Volo.Abp.Identity
 {
     public interface IIdentityRoleRepository : IBasicRepository<IdentityRole, Guid>
     {
@@ -29,6 +29,11 @@ namespace KissU.Modules.Identity.Domain
 
         Task<List<IdentityRole>> GetDefaultOnesAsync(
             bool includeDetails = false,
+            CancellationToken cancellationToken = default
+        );
+
+        Task<long> GetCountAsync(
+            string filter = null,
             CancellationToken cancellationToken = default
         );
     }

@@ -3,7 +3,7 @@ using Volo.Abp.Application.Dtos;
 using Volo.Abp.Domain.Entities;
 using Volo.Abp.MultiTenancy;
 
-namespace KissU.Modules.Identity.Application.Contracts
+namespace Volo.Abp.Identity
 {
     public class IdentityUserDto : ExtensibleFullAuditedEntityDto<Guid>, IMultiTenant, IHasConcurrencyStamp
     {
@@ -22,8 +22,6 @@ namespace KissU.Modules.Identity.Application.Contracts
         public string PhoneNumber { get; set; }
 
         public bool PhoneNumberConfirmed { get; set; }
-
-        public bool TwoFactorEnabled { get; set; }
 
         public bool LockoutEnabled { get; set; }
 

@@ -1,8 +1,8 @@
-﻿using KissU.Modules.Identity.Domain.Shared;
+﻿using System.ComponentModel.DataAnnotations;
 using Volo.Abp.ObjectExtending;
 using Volo.Abp.Validation;
 
-namespace KissU.Modules.Identity.Application.Contracts
+namespace Volo.Abp.Identity
 {
     public class UpdateProfileDto : ExtensibleObject
     {

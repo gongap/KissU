@@ -1,4 +1,4 @@
-﻿namespace KissU.Modules.Identity.Domain.Shared.ObjectExtending
+﻿namespace Volo.Abp.ObjectExtending
 {
     public static class IdentityModuleExtensionConsts
     {
@@ -11,6 +11,8 @@
             public const string Role = "Role";
 
             public const string ClaimType = "ClaimType";
+            
+            public const string OrganizationUnit = "OrganizationUnit";
         }
     }
 }

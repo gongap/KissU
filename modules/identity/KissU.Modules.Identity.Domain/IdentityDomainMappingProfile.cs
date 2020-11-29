@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
-using KissU.Modules.Identity.Domain.Shared;
 using Volo.Abp.Users;
 
-namespace KissU.Modules.Identity.Domain
+namespace Volo.Abp.Identity
 {
     public class IdentityDomainMappingProfile : Profile
     {
@@ -11,6 +10,7 @@ namespace KissU.Modules.Identity.Domain
             CreateMap<IdentityUser, UserEto>();
             CreateMap<IdentityClaimType, IdentityClaimTypeEto>();
             CreateMap<IdentityRole, IdentityRoleEto>();
+            CreateMap<OrganizationUnit, OrganizationUnitEto>();
         }
     }
 }

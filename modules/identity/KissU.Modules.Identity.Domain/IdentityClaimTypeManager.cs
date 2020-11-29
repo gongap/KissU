@@ -1,8 +1,7 @@
 ﻿using System.Threading.Tasks;
-using Volo.Abp;
 using Volo.Abp.Domain.Services;
 
-namespace KissU.Modules.Identity.Domain
+namespace Volo.Abp.Identity
 {
     //TODO: Rename to IdentityClaimTypeManager in v2.0!
     public class IdenityClaimTypeManager : DomainService
