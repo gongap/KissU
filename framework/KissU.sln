@@ -109,6 +109,22 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Account.Servi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Account.Service.Contracts", "..\modules\account\KissU.Modules.Account.Service.Contracts\KissU.Modules.Account.Service.Contracts.csproj", "{BE1D8D12-C16C-4572-9ECD-9002FD243025}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Identity.Application", "..\modules\identity\KissU.Modules.Identity.Application\KissU.Modules.Identity.Application.csproj", "{B4C1E81A-A879-4C31-812A-E2956EF27B82}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Identity.Application.Contracts", "..\modules\identity\KissU.Modules.Identity.Application.Contracts\KissU.Modules.Identity.Application.Contracts.csproj", "{C1335676-2FF1-4E03-9DDE-C68F23A8E79F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Identity.AspNetCore", "..\modules\identity\KissU.Modules.Identity.AspNetCore\KissU.Modules.Identity.AspNetCore.csproj", "{76ACA958-6FFC-4BEB-AF5E-956841D220E6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Identity.DbMigrations", "..\modules\identity\KissU.Modules.Identity.DbMigrations\KissU.Modules.Identity.DbMigrations.csproj", "{D19C9B1E-C27D-4264-8402-2547A4346855}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Identity.DbMigrator", "..\modules\identity\KissU.Modules.Identity.DbMigrator\KissU.Modules.Identity.DbMigrator.csproj", "{1F9329F4-B6DD-4978-A3CA-CD388C01401B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Identity.Domain", "..\modules\identity\KissU.Modules.Identity.Domain\KissU.Modules.Identity.Domain.csproj", "{49582390-475C-439A-A4F6-DD88FD4EBE51}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Identity.Domain.Shared", "..\modules\identity\KissU.Modules.Identity.Domain.Shared\KissU.Modules.Identity.Domain.Shared.csproj", "{83DFC5CC-46D5-40F0-89EE-0EA25957B552}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KissU.Modules.Identity.EntityFrameworkCore", "..\modules\identity\KissU.Modules.Identity.EntityFrameworkCore\KissU.Modules.Identity.EntityFrameworkCore.csproj", "{5070EF24-2033-4E51-ABE0-6BC849E8996A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -295,6 +311,38 @@ Global
 		{BE1D8D12-C16C-4572-9ECD-9002FD243025}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE1D8D12-C16C-4572-9ECD-9002FD243025}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE1D8D12-C16C-4572-9ECD-9002FD243025}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4C1E81A-A879-4C31-812A-E2956EF27B82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4C1E81A-A879-4C31-812A-E2956EF27B82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4C1E81A-A879-4C31-812A-E2956EF27B82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4C1E81A-A879-4C31-812A-E2956EF27B82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1335676-2FF1-4E03-9DDE-C68F23A8E79F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1335676-2FF1-4E03-9DDE-C68F23A8E79F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1335676-2FF1-4E03-9DDE-C68F23A8E79F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1335676-2FF1-4E03-9DDE-C68F23A8E79F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76ACA958-6FFC-4BEB-AF5E-956841D220E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76ACA958-6FFC-4BEB-AF5E-956841D220E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76ACA958-6FFC-4BEB-AF5E-956841D220E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76ACA958-6FFC-4BEB-AF5E-956841D220E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D19C9B1E-C27D-4264-8402-2547A4346855}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D19C9B1E-C27D-4264-8402-2547A4346855}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D19C9B1E-C27D-4264-8402-2547A4346855}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D19C9B1E-C27D-4264-8402-2547A4346855}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F9329F4-B6DD-4978-A3CA-CD388C01401B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F9329F4-B6DD-4978-A3CA-CD388C01401B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F9329F4-B6DD-4978-A3CA-CD388C01401B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F9329F4-B6DD-4978-A3CA-CD388C01401B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49582390-475C-439A-A4F6-DD88FD4EBE51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49582390-475C-439A-A4F6-DD88FD4EBE51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49582390-475C-439A-A4F6-DD88FD4EBE51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49582390-475C-439A-A4F6-DD88FD4EBE51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83DFC5CC-46D5-40F0-89EE-0EA25957B552}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83DFC5CC-46D5-40F0-89EE-0EA25957B552}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83DFC5CC-46D5-40F0-89EE-0EA25957B552}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83DFC5CC-46D5-40F0-89EE-0EA25957B552}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5070EF24-2033-4E51-ABE0-6BC849E8996A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5070EF24-2033-4E51-ABE0-6BC849E8996A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5070EF24-2033-4E51-ABE0-6BC849E8996A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5070EF24-2033-4E51-ABE0-6BC849E8996A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -350,6 +398,14 @@ Global
 		{C509549F-8B9F-4FC2-B9C8-32B08D1A8C4E} = {1D15EBD3-D08A-4E2B-88FB-0516210463C2}
 		{70EDC165-2BED-457A-89A7-09774E70F329} = {C509549F-8B9F-4FC2-B9C8-32B08D1A8C4E}
 		{BE1D8D12-C16C-4572-9ECD-9002FD243025} = {C509549F-8B9F-4FC2-B9C8-32B08D1A8C4E}
+		{B4C1E81A-A879-4C31-812A-E2956EF27B82} = {DF4BFA36-7CB0-41C1-9D7A-7CE091F009DE}
+		{C1335676-2FF1-4E03-9DDE-C68F23A8E79F} = {DF4BFA36-7CB0-41C1-9D7A-7CE091F009DE}
+		{76ACA958-6FFC-4BEB-AF5E-956841D220E6} = {DF4BFA36-7CB0-41C1-9D7A-7CE091F009DE}
+		{D19C9B1E-C27D-4264-8402-2547A4346855} = {DF4BFA36-7CB0-41C1-9D7A-7CE091F009DE}
+		{1F9329F4-B6DD-4978-A3CA-CD388C01401B} = {DF4BFA36-7CB0-41C1-9D7A-7CE091F009DE}
+		{49582390-475C-439A-A4F6-DD88FD4EBE51} = {DF4BFA36-7CB0-41C1-9D7A-7CE091F009DE}
+		{83DFC5CC-46D5-40F0-89EE-0EA25957B552} = {DF4BFA36-7CB0-41C1-9D7A-7CE091F009DE}
+		{5070EF24-2033-4E51-ABE0-6BC849E8996A} = {DF4BFA36-7CB0-41C1-9D7A-7CE091F009DE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA6E8E23-8AB6-4AB6-9B31-494CB7CE5E63}

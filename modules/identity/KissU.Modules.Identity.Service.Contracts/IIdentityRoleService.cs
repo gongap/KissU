@@ -1,9 +1,10 @@
 ﻿using System.Threading.Tasks;
 using KissU.Dependency;
+using KissU.Modules.Identity.Application.Contracts;
 using KissU.CPlatform.Filters.Implementation;
 using KissU.CPlatform.Runtime.Server.Implementation.ServiceDiscovery.Attributes;
 using KissU.Models;
-using Volo.Abp.Identity;
+using Volo.Abp.Application.Dtos;
 
 namespace KissU.Modules.Identity.Service.Contracts
 {
@@ -15,7 +16,7 @@ namespace KissU.Modules.Identity.Service.Contracts
         Task<ListResult<IdentityRoleDto>> GetAllListAsync();
 
         [HttpPost(true)]
-        Task<PagedResult<IdentityRoleDto>> GetListAsync(GetIdentityRolesInput input);
+        Task<PagedResult<IdentityRoleDto>> GetListAsync(PagedAndSortedResultRequestDto input);
 
         [HttpGet(true)]
         [ServiceRoute("{id}")]

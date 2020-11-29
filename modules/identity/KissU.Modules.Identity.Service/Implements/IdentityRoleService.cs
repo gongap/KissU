@@ -2,10 +2,10 @@
 using KissU.Dependency;
 using KissU.Extensions;
 using KissU.Models;
+using KissU.Modules.Identity.Application.Contracts;
 using KissU.Modules.Identity.Service.Contracts;
 using KissU.ServiceProxy;
 using Volo.Abp.Application.Dtos;
-using Volo.Abp.Identity;
 
 namespace KissU.Modules.Identity.Service.Implements
 {
@@ -25,7 +25,7 @@ namespace KissU.Modules.Identity.Service.Implements
             return new ListResult<IdentityRoleDto>(result.Items);
         }
 
-        public virtual async Task<PagedResult<IdentityRoleDto>> GetListAsync(GetIdentityRolesInput input)
+        public virtual async Task<PagedResult<IdentityRoleDto>> GetListAsync(PagedAndSortedResultRequestDto input)
         {
             var result = await _appService.GetListAsync(input);
             return new PagedResult<IdentityRoleDto>(result.TotalCount, result.Items);

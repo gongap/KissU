@@ -3,9 +3,9 @@ using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.Modularity;
 using Volo.Abp.Settings;
 using Volo.Abp.Account;
-using Volo.Abp.Identity.EntityFrameworkCore;
 using KissU.Modularity;
 using Volo.Abp.Identity;
+using KissU.Modules.Identity.EntityFrameworkCore;
 
 namespace KissU.Modules.Account.Service
 {
