@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using KissU.Kestrel.Abstractions;
+using KissU.AspNetCore.Abstractions;
 
 namespace KissU.Kestrel.Http.Abstractions
 {

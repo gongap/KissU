@@ -19,6 +19,10 @@ using KissU.CPlatform.Support;
 using KissU.Helpers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Volo.Abp;
+using Volo.Abp.Modularity;
+using Volo.Abp.Modularity.PlugIns;
 
 namespace KissU.CPlatform
 {
@@ -37,9 +41,8 @@ namespace KissU.CPlatform
         /// <returns>IHostBuilder.</returns>
         public static IHostBuilder UseServer(this IHostBuilder hostBuilder, string ip, int port, string token = "True")
         {
-            return hostBuilder.ConfigureMicroServiceHost(async mapper =>
+            return hostBuilder.ConfigureContainer(async mapper =>
             {
-                BuildServiceEngine(mapper);
                 mapper.Resolve<IServiceTokenGenerator>().GeneratorToken(token);
                 var _port = AppConfig.ServerOptions.Port = AppConfig.ServerOptions.Port == 0 ? port : AppConfig.ServerOptions.Port;
                 var _ip = AppConfig.ServerOptions.Ip ??= ip;
@@ -65,6 +68,41 @@ namespace KissU.CPlatform
                 }).ConfigureAwait(false);
             });
         }
+        
+        /// <summary>
+        /// Uses the server.
+        /// </summary>
+        /// <param name="hostBuilder">The host builder.</param>
+        /// <param name="options">The options.</param>
+        /// <returns>IHostBuilder.</returns>
+        public static IHostBuilder AddAbp(this IHostBuilder hostBuilder, Action<AbpApplicationCreationOptions> optionsAction = null)
+        {
+            return hostBuilder.ConfigureServices(services =>
+            {
+                services.AddApplication<AbpStartupModule>(options =>
+                {
+                    optionsAction?.Invoke(options);
+                    var assemblies = ModuleHelper.GetAssemblies();
+                    var moduleTypes = ReflectionHelper.FindTypes<AbpBusinessModule>(assemblies.ToArray());
+                    options.PlugInSources.AddTypes(moduleTypes.ToArray());
+                });
+            });
+        }
+
+        /// <summary>
+        /// Uses the server.
+        /// </summary>
+        /// <param name="hostBuilder">The host builder.</param>
+        /// <param name="options">The options.</param>
+        /// <returns>IHostBuilder.</returns>
+        public static IHostBuilder UseAbp(this IHostBuilder hostBuilder)
+        {
+            return hostBuilder.ConfigureContainer(async mapper =>
+            {
+                var serviceProvider = mapper.Resolve<IServiceProvider>();
+                mapper.Resolve<IAbpApplicationWithExternalServiceProvider>().Initialize(serviceProvider);
+            });
+        }
 
         /// <summary>
         /// Uses the server.
@@ -88,7 +126,7 @@ namespace KissU.CPlatform
         /// <returns>IHostBuilder.</returns>
         public static IHostBuilder UseClient(this IHostBuilder hostBuilder)
         {
-            return hostBuilder.ConfigureMicroServiceHost(mapper =>
+            return hostBuilder.ConfigureContainer(mapper =>
             {
                 var serviceEntryManager = mapper.Resolve<IServiceEntryManager>();
                 var addressDescriptors = serviceEntryManager.GetEntries().Select(i =>
@@ -113,29 +151,11 @@ namespace KissU.CPlatform
         }
 
         /// <summary>
-        /// 构建服务引擎.
-        /// </summary>
-        /// <param name="container">The container.</param>
-        [Obsolete]
-        public static void BuildServiceEngine(IContainer container)
-        {
-            if (container.IsRegistered<IServiceEngine>())
-            {
-                var builder = new ContainerBuilder();
-                container.Resolve<IServiceEngineBuilder>().Build(builder);
-                var configBuilder = container.Resolve<IConfigurationBuilder>();
-                var appSettingPath = Path.Combine(AppConfig.ServerOptions.RootPath, "appsettings.json");
-                configBuilder.AddCPlatformFile("${appsettingspath}|" + appSettingPath, false, true);
-                builder.Update(container);
-            }
-        }
-
-        /// <summary>
         /// 配置路由.
         /// </summary>
         /// <param name="mapper">The mapper.</param>
         /// <returns>A <see cref="Task" /> representing the asynchronous operation.</returns>
-        public static async Task ConfigureRoute(IContainer mapper)
+        public static async Task ConfigureRoute(ILifetimeScope mapper)
         {
             if (AppConfig.ServerOptions.Protocol == CommunicationProtocol.Tcp ||
                 AppConfig.ServerOptions.Protocol == CommunicationProtocol.None)

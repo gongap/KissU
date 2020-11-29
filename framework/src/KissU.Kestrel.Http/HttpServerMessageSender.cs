@@ -2,11 +2,11 @@
 using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
+using KissU.AspNetCore.Abstractions;
 using KissU.CPlatform;
 using KissU.CPlatform.Diagnostics;
 using KissU.CPlatform.Messages;
 using KissU.CPlatform.Transport;
-using KissU.Kestrel.Abstractions;
 using KissU.Serialization;
 using Microsoft.AspNetCore.Http;
 
@@ -14,9 +14,9 @@ namespace KissU.Kestrel.Http
 {
     /// <summary>
     /// HttpServerMessageSender.
-    /// Implements the <see cref="KissU.CPlatform.Transport.IMessageSender" />
+    /// Implements the <see cref="IMessageSender" />
     /// </summary>
-    /// <seealso cref="KissU.CPlatform.Transport.IMessageSender" />
+    /// <seealso cref="IMessageSender" />
     public class HttpServerMessageSender : IMessageSender
     {
         private readonly HttpContext _context;

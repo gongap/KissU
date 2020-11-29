@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using KissU.AspNetCore.Filters;
+using KissU.AspNetCore.Internal;
 using KissU.CPlatform.Messages;
 using KissU.CPlatform.Routing;
 using KissU.CPlatform.Routing.Template;
 using KissU.CPlatform.Transport;
-using KissU.Kestrel.Filters;
 using KissU.Kestrel.Http.Internal;
-using KissU.Kestrel.Internal;
 using KissU.Serialization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.WebUtilities;
@@ -22,9 +22,9 @@ namespace KissU.Kestrel.Http
 {
     /// <summary>
     /// HttpMessageListener.
-    /// Implements the <see cref="KissU.CPlatform.Transport.IMessageListener" />
+    /// Implements the <see cref="IMessageListener" />
     /// </summary>
-    /// <seealso cref="KissU.CPlatform.Transport.IMessageListener" />
+    /// <seealso cref="IMessageListener" />
     public abstract class HttpMessageListener : IMessageListener
     {
         private readonly ILogger<HttpMessageListener> _logger;

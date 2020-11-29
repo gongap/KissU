@@ -5,7 +5,7 @@ using KissU.CPlatform.Runtime.Server;
 using KissU.Dependency;
 using Microsoft.Extensions.Logging;
 
-namespace KissU.Google.Grpc.Runtime.Implementation
+namespace KissU.Grpc.Runtime.Implementation
 {
     /// <summary>
     /// DefaultGrpcServiceEntryProvider.

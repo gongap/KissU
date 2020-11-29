@@ -1,6 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
    <Import Project="..\..\..\common.props" />
-   <Import Project="..\..\..\configureawait.props" />
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <Description></Description>
@@ -18,11 +17,9 @@
     <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel.Transport.Libuv" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="3.1.5" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KissU.Kestrel\KissU.Kestrel.csproj" />
-    <ProjectReference Include="..\KissU.ServiceProxy\KissU.ServiceProxy.csproj" />
+    <ProjectReference Include="..\KissU.AspNetCore\KissU.AspNetCore.csproj" />
   </ItemGroup>
 </Project>

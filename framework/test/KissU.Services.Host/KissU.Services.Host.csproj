@@ -15,7 +15,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\framework\src\KissU.Abp.Business\KissU.Abp.Business.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.CPlatform\KissU.CPlatform.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.WebSocket\KissU.WebSocket.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Grpc\KissU.Grpc.csproj" />
@@ -25,8 +24,6 @@
     <ProjectReference Include="..\..\..\framework\src\KissU.DotNetty.DNS\KissU.DotNetty.DNS.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.DotNetty.WebSocket\KissU.DotNetty.WebSocket.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Kestrel.Http\KissU.Kestrel.Http.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Kestrel.Nlog\KissU.Kestrel.Nlog.csproj" />
-    <ProjectReference Include="..\..\..\framework\src\KissU.Kestrel.Swagger\KissU.Kestrel.Swagger.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.DotNetty.Http\KissU.DotNetty.Http.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.DotNetty.Mqtt\KissU.DotNetty.Mqtt.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.DotNetty.Udp\KissU.DotNetty.Udp.csproj" />
@@ -39,14 +36,17 @@
     <ProjectReference Include="..\..\..\framework\src\KissU.EventBus.RabbitMQ\KissU.EventBus.RabbitMQ.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.ServiceProxy\KissU.ServiceProxy.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.BackgroundServer\KissU.BackgroundServer.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.Logging.Log4net\KissU.Logging.Log4net.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.Logging.Serilog\KissU.Logging.Serilog.csproj" />
+    <ProjectReference Include="..\..\..\framework\src\KissU.AspNetCore.Swagger\KissU.AspNetCore.Swagger.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\modules\account\src\KissU.Modules.Account.Service\KissU.Modules.Account.Service.csproj" />
-    <ProjectReference Include="..\..\..\modules\identity\src\KissU.Modules.Identity.Service\KissU.Modules.Identity.Service.csproj" />
-    <ProjectReference Include="..\..\..\modules\feature-management\src\KissU.Modules.FeatureManagement.Service\KissU.Modules.FeatureManagement.Service.csproj" />
-    <ProjectReference Include="..\..\..\modules\permission-management\src\KissU.Modules.PermissionManagement.Service\KissU.Modules.PermissionManagement.Service.csproj" />
-    <ProjectReference Include="..\..\..\modules\tenant-management\src\KissU.Modules.TenantManagement.Service\KissU.Modules.TenantManagement.Service.csproj" />
+    <ProjectReference Include="..\..\..\modules\account\KissU.Modules.Account.Service\KissU.Modules.Account.Service.csproj" />
+    <ProjectReference Include="..\..\..\modules\feature-management\KissU.Modules.FeatureManagement.Service\KissU.Modules.FeatureManagement.Service.csproj" />
+    <ProjectReference Include="..\..\..\modules\identity\KissU.Modules.Identity.Service\KissU.Modules.Identity.Service.csproj" />
+    <ProjectReference Include="..\..\..\modules\permission-management\KissU.Modules.PermissionManagement.Service\KissU.Modules.PermissionManagement.Service.csproj" />
+    <ProjectReference Include="..\..\..\modules\tenant-management\KissU.Modules.TenantManagement.Service\KissU.Modules.TenantManagement.Service.csproj" />
   </ItemGroup>
 
   <ItemGroup>

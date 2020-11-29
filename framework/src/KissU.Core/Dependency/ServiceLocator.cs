@@ -22,7 +22,7 @@ namespace KissU.Dependency
             }
         }
 
-        public static void Register(IContainer container)
+        public static void Register(ILifetimeScope container)
         {
             Current = container;
         }

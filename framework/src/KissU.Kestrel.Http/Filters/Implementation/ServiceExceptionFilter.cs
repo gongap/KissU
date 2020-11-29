@@ -6,9 +6,9 @@ namespace KissU.Kestrel.Http.Filters.Implementation
 {
     /// <summary>
     /// ServiceExceptionFilter.
-    /// Implements the <see cref="KissU.CPlatform.Filters.Implementation.ExceptionFilterAttribute" />
+    /// Implements the <see cref="ExceptionFilterAttribute" />
     /// </summary>
-    /// <seealso cref="KissU.CPlatform.Filters.Implementation.ExceptionFilterAttribute" />
+    /// <seealso cref="ExceptionFilterAttribute" />
     public class ServiceExceptionFilter : ExceptionFilterAttribute
     {
         /// <summary>

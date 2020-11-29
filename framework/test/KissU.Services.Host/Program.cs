@@ -1,12 +1,10 @@
 ﻿using System.Threading.Tasks;
-using Autofac;
 using KissU.Caching.Configurations;
 using KissU.CPlatform;
 using KissU.CPlatform.Configurations;
-using KissU.Dependency;
-using KissU.Extensions;
 using KissU.ServiceProxy;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace KissU.Services
 {
@@ -19,23 +17,23 @@ namespace KissU.Services
 
         internal static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .ConfigureLogging(configure => configure.ClearProviders())
                 .ConfigureHostConfiguration(builder =>
                 {
                     builder.AddCPlatformFile("servicesettings.json", false, true);
                     builder.AddCacheFile("cachesettings.json", false, true);
                 })
-                .ConfigureMicroServiceHost(builder =>
+                .AddMicroService(builder =>
                 {
-                    builder.AddMicroService(option =>
-                    {
-                        option.AddServiceRuntime()
-                            .AddRelateService()
-                            .AddConfigurationWatch()
-                            .AddServiceEngine();
-                    });
-                    builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
+                    builder.AddServiceRuntime()
+                        .AddRelateService()
+                        .AddConfigurationWatch()
+                        .AddServiceEngine();
                 })
-                .UseServer();
+                .AddAbp()
+                .UseServer()
+                .UseAbp()
+                .UseAutofac();
 
     }
 }

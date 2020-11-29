@@ -10,11 +10,11 @@ namespace KissU.Kestrel.Http.Internal
     /// Implements the
     /// <see
     ///     cref="StringValues" />
-    /// Implements the <see cref="System.Collections.IEnumerable" />
+    /// Implements the <see cref="IEnumerable" />
     /// </summary>
     /// <seealso
     ///     cref="StringValues" />
-    /// <seealso cref="System.Collections.IEnumerable" />
+    /// <seealso cref="IEnumerable" />
     public class HttpFormCollection : IEnumerable<KeyValuePair<string, StringValues>>, IEnumerable
     {
         /// <summary>

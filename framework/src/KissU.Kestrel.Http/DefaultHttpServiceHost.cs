@@ -10,9 +10,9 @@ namespace KissU.Kestrel.Http
 {
     /// <summary>
     /// DefaultHttpServiceHost.
-    /// Implements the <see cref="KissU.CPlatform.Runtime.Server.Implementation.ServiceHostAbstract" />
+    /// Implements the <see cref="ServiceHostAbstract" />
     /// </summary>
-    /// <seealso cref="KissU.CPlatform.Runtime.Server.Implementation.ServiceHostAbstract" />
+    /// <seealso cref="ServiceHostAbstract" />
     public class DefaultHttpServiceHost : ServiceHostAbstract
     {
         /// <summary>

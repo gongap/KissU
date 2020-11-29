@@ -6,13 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.5" />
-    <PackageReference Include="Volo.Abp.Http.Client" Version="3.0.5" />
-    <PackageReference Include="Volo.Abp.Http.Client.IdentityModel" Version="3.0.5" />
+    <PackageReference Include="Volo.Abp.Http.Client" Version="4.0.0-rc.4" />
+    <PackageReference Include="Volo.Abp.Http.Client.IdentityModel" Version="4.0.0-rc.4" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\framework\src\KissU.Abp.Business\KissU.Abp.Business.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.CPlatform\KissU.CPlatform.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Codec.MessagePack\KissU.Codec.MessagePack.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Codec.ProtoBuffer\KissU.Codec.ProtoBuffer.csproj" />
@@ -23,10 +21,14 @@
     <ProjectReference Include="..\..\..\framework\src\KissU.Logging.Nlog\KissU.Logging.Nlog.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.Caching\KissU.Caching.csproj" />
     <ProjectReference Include="..\..\..\framework\src\KissU.ServiceProxy\KissU.ServiceProxy.csproj" />
+    <ProjectReference Include="..\..\..\modules\account\KissU.Modules.Account.Service.Contracts\KissU.Modules.Account.Service.Contracts.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\modules\identity\src\KissU.Modules.Identity.Service.Contracts\KissU.Modules.Identity.Service.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\modules\feature-management\KissU.Modules.FeatureManagement.Service.Contracts\KissU.Modules.FeatureManagement.Service.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\modules\identity\KissU.Modules.Identity.Service.Contracts\KissU.Modules.Identity.Service.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\modules\permission-management\KissU.Modules.PermissionManagement.Service.Contracts\KissU.Modules.PermissionManagement.Service.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\modules\tenant-management\KissU.Modules.TenantManagement.Service.Contracts\KissU.Modules.TenantManagement.Service.Contracts.csproj" />
   </ItemGroup>
 
   <ItemGroup>

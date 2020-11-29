@@ -43,8 +43,10 @@ using KissU.CPlatform.Support.Implementation;
 using KissU.CPlatform.Transport.Codec;
 using KissU.CPlatform.Transport.Codec.Implementation;
 using KissU.Validation;
+using KissU.Extensions;
 using KissU.Validation.Implementation;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 namespace KissU.CPlatform
@@ -338,6 +340,16 @@ namespace KissU.CPlatform
                 .SingleInstance();
             return builder;
         }
+        
+        /// <summary>
+        /// 添加微服务
+        /// </summary>
+        /// <param name="builder">服务构建器.</param>
+        /// <param name="option">选项.</param>
+        public static IHostBuilder AddMicroService(this IHostBuilder hostBuilder, Action<IServiceBuilder> option)
+        {
+            return hostBuilder.ConfigureContainer(builder => builder.AddMicroService(option));
+        }
 
         /// <summary>
         /// 添加微服务
@@ -347,6 +359,8 @@ namespace KissU.CPlatform
         public static void AddMicroService(this ContainerBuilder builder, Action<IServiceBuilder> option)
         {
             option.Invoke(builder.AddCoreService());
+            builder.RegisterBuildCallback(ServiceLocator.Register);
+            builder.Register(p => new CPlatformContainer(ServiceLocator.Current));
         }
 
         /// <summary>

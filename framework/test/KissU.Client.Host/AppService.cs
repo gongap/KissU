@@ -5,13 +5,13 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using KissU.Dependency;
-using KissU.Extensions;
 using KissU.Models;
-using KissU.Modules.Identity.Application.Contracts;
 using KissU.Modules.Identity.Service.Contracts;
 using KissU.ServiceProxy;
+using KissU.Extensions;
 using Microsoft.Extensions.Options;
 using Volo.Abp.Http.Client;
+using Volo.Abp.Identity;
 
 namespace KissU.Client.Host
 {

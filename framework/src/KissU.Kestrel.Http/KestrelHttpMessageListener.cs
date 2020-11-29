@@ -3,16 +3,17 @@ using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
+using KissU.AspNetCore;
+using KissU.AspNetCore.Extensions;
+using KissU.AspNetCore.Filters;
+using KissU.AspNetCore.Internal;
 using KissU.CPlatform;
 using KissU.CPlatform.Configurations;
 using KissU.CPlatform.Diagnostics;
 using KissU.CPlatform.Engines;
 using KissU.CPlatform.Routing;
 using KissU.Dependency;
-using KissU.Kestrel.Extensions;
-using KissU.Kestrel.Filters;
 using KissU.Kestrel.Http.Filters.Implementation;
-using KissU.Kestrel.Internal;
 using KissU.Modularity;
 using KissU.Serialization;
 using Microsoft.AspNetCore.Builder;
@@ -23,16 +24,19 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using KissU.Extensions;
+using Volo.Abp.Modularity;
+using Volo.Abp;
+using Volo.Abp.DependencyInjection;
 
 namespace KissU.Kestrel.Http
 {
     /// <summary>
     /// KestrelHttpMessageListener.
     /// Implements the <see cref="HttpMessageListener" />
-    /// Implements the <see cref="System.IDisposable" />
+    /// Implements the <see cref="IDisposable" />
     /// </summary>
     /// <seealso cref="HttpMessageListener" />
-    /// <seealso cref="System.IDisposable" />
+    /// <seealso cref="IDisposable" />
     public class KestrelHttpMessageListener : HttpMessageListener, IDisposable
     {
         private readonly CPlatformContainer _container;
@@ -113,10 +117,6 @@ namespace KissU.Kestrel.Http
                                 ConfigureHost(context, options, address);
                             })
                             .ConfigureServices(ConfigureServices)
-                            .ConfigureLogging(logger =>
-                            {
-                                logger.AddConfiguration(AppConfig.GetSection("Logging"));
-                            })
                             .Configure(AppResolve);
 
                         if (Directory.Exists(AppConfig.ServerOptions.WebRootPath))
@@ -153,6 +153,7 @@ namespace KissU.Kestrel.Http
         /// <param name="services">The services.</param>
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton(ServiceLocator.GetService<ILoggerFactory>());
             services.AddMvc().AddNewtonsoftJson();
             services.AddObjectAccessor<IApplicationBuilder>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();

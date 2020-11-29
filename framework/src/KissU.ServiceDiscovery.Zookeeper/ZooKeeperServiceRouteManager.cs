@@ -340,8 +340,6 @@ namespace KissU.ServiceDiscovery.Zookeeper
             }
             else
             {
-                if (_logger.IsEnabled(LogLevel.Warning))
-                    _logger.LogWarning($"无法获取路由信息，因为节点：{_configInfo.RoutePath}，不存在。");
                 _routes = new ServiceRoute[0];
             }
         }
